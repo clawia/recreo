@@ -1,0 +1,15 @@
+schema: 1
+id: faux-paquet
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Jeu fautif d'ADR-0070, jamais servi"
+items:
+  - enonce: "Combien font 2 + 3 ?"
+    bonneReponse: "5"
+    distracteurs:
+      - "4"
+    indice: "Compte sur tes doigts."
+    modeDeComparaisonAnnonce: "forme-exacte"

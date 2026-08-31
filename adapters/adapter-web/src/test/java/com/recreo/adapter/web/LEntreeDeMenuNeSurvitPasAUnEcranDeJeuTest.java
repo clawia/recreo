@@ -23,6 +23,7 @@ import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.debutDeDeclara
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.gabarits;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.lire;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurDeclaree;
+import static com.recreo.adapter.web.LHabillageNeRogneJamaisUnElementPressableTest.PRESSABLES;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -353,7 +354,7 @@ class LEntreeDeMenuNeSurvitPasAUnEcranDeJeuTest {
                 String coquille = coquilles.get(0);
                 Element racineDeZone = documents.get(coquille).select(zone.get()).first();
                 List<Element> actionnablesPermanents = documents.get(coquille)
-                        .select("button, a[href]").stream()
+                        .select(PRESSABLES).stream()
                         .filter(element -> !estDansLElement(element, racineDeZone))
                         .toList();
 

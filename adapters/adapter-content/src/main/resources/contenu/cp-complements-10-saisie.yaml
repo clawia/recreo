@@ -1,0 +1,65 @@
+schema: 1
+id: cp-complements-10-saisie
+type: saisie
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Compléments à 10"
+# S24-SAI-2, conditions CPL-1 a CPL-8 de nadia-prof (arbitrage prealable de s24, section 4.3).
+# CPL-4 : aucun item de ce paquet n'exige la forme exacte, la competence ne porte pas sur
+# l'orthographe. La declaration vaut pour le paquet entier.
+# CPL-3 : chaque item accepte aussi l'ecriture a zero initial de sa reponse - 07 vaut 7.
+# Refus de nadia-prof du 2026-08-31 : sans elle, un enfant qui ecrit 03 pour 3 s'entend dire
+# qu'il s'est trompe et perd un essai, ce que SEUIL-2 declare disqualifiant.
+# Ces ecritures sont ecrites ENTRE GUILLEMETS, et ce n'est pas une preference de style :
+# sans eux, YAML lit 010 en octal et sert 8. Mesure du 2026-08-31, snakeyaml et pyyaml
+# rendent tous deux 8 sur la forme nue.
+# Les espaces qui precedent un ? ou un : sont insecables (ADR-0067, TYP-1) : ce qu'un enfant
+# lit ne change pas, et le paquet neuf n'herite d'aucune dette d'orphelins.
+exigenceDeForme: libre
+items:
+  - enonce: "0 + ? = 10"
+    formeDeReference: "10"
+    formesAcceptees: ["dix", "010"]
+    indice: "Tu n'as levé aucun doigt : lève maintenant tous ceux qui manquent pour arriver à 10, puis compte-les."
+  - enonce: "1 + ? = 10"
+    formeDeReference: "9"
+    formesAcceptees: ["neuf", "09"]
+    indice: "Lève 1 doigt, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "2 + ? = 10"
+    formeDeReference: "8"
+    formesAcceptees: ["huit", "08"]
+    indice: "Lève 2 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "3 + ? = 10"
+    formeDeReference: "7"
+    formesAcceptees: ["sept", "07"]
+    indice: "Lève 3 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "4 + ? = 10"
+    formeDeReference: "6"
+    formesAcceptees: ["six", "06"]
+    indice: "Lève 4 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "5 + ? = 10"
+    formeDeReference: "5"
+    formesAcceptees: ["cinq", "05"]
+    indice: "Lève 5 doigts d'une main, puis compte les doigts de ton autre main."
+  - enonce: "6 + ? = 10"
+    formeDeReference: "4"
+    formesAcceptees: ["quatre", "04"]
+    indice: "Lève 6 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "7 + ? = 10"
+    formeDeReference: "3"
+    formesAcceptees: ["trois", "03"]
+    indice: "Lève 7 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "8 + ? = 10"
+    formeDeReference: "2"
+    formesAcceptees: ["deux", "02"]
+    indice: "Lève 8 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "9 + ? = 10"
+    formeDeReference: "1"
+    formesAcceptees: ["un", "01"]
+    indice: "Lève 9 doigts, puis compte ceux qui manquent pour arriver à 10."
+  - enonce: "10 + ? = 10"
+    formeDeReference: "0"
+    formesAcceptees: ["zéro", "00"]
+    indice: "Tu as déjà levé tes 10 doigts : combien t'en reste-t-il à lever pour arriver à 10 ?"

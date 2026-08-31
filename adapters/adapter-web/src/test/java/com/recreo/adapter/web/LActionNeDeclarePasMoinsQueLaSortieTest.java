@@ -30,6 +30,7 @@ import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.gabarits;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.lire;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurALaPosition;
 import static com.recreo.adapter.web.TailleDesTextesEtBoutonsTest.valeurDeclaree;
+import static com.recreo.adapter.web.LHabillageNeRogneJamaisUnElementPressableTest.PRESSABLES;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -345,7 +346,7 @@ class LActionNeDeclarePasMoinsQueLaSortieTest {
             String source = gabarit.getKey();
             Document document = gabarit.getValue();
             Elements zone = zoneEchangee.map(document::select).orElseGet(Elements::new);
-            for (Element bouton : document.select("button, a[href]")) {
+            for (Element bouton : document.select(PRESSABLES)) {
                 String origine = "ecran " + source + ", <" + bouton.tagName() + "> \"" + bouton.text()
                         + "\"";
                 String role = role(origine, bouton, defauts);

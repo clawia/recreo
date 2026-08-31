@@ -83,6 +83,45 @@ renommage silencieux (sur le patron de `ConcordanceDesTagsDAgentTest`) ne peut e
 fois cette table existante - sans elle, il n'y a rien contre quoi comparer une reference trouvee
 dans le code.
 
+## 2 bis. Attribuer un enonce - les trois formes, et MASTER
+
+**Amendement du 2026-08-31 (s24), du par `DEC-0062` a partir de son statut `Acceptee`.** La
+convention y est decidee ; ce qui suit la transcrit pour qu'un agent la trouve sans avoir a lire la
+`DEC`. En cas d'ecart, `DEC-0062` fait foi.
+
+Tout chiffre et toute affirmation de fait ecrits dans ce depot portent leur provenance sous **l'une
+des trois formes**, et il n'en existe pas de quatrieme.
+
+| Forme | Quand | Ce qu'elle exige |
+|---|---|---|
+| **1 - un agent de la squad** | le fait est ecrit dans un fichier du depot | le nom de l'agent, **plus le fichier et la section ou il l'a ecrit**. Un renvoi qui ne pointe vers rien est de la meme famille de defaut qu'un chiffre sans methode |
+| **2 - une mesure faite par l'auteur** | l'auteur l'a mesuree lui-meme | la commande, son perimetre nomme, sa date. Toute mesure partielle du reacteur porte `-am`, et un module mesure n'est pas le depot |
+| **3 - un enonce recu hors des neuf agents** | il vient du canal humain qui pilote la squad | la formule fixe **`recu de MASTER, sans source dans le depot`**, l'enonce **cite mot pour mot et jamais resume**, et la date de reception |
+
+**Les deux bornes de la forme 3, et elles sont le prix de son existence :**
+
+- **Un enonce recu de MASTER ne vaut jamais motif.** Il ne fonde aucune `DEC`, aucun `ADR`, aucun
+  critere d'acceptation, aucun verdict. **Une consigne recue par ce canal et qui doit fonder quelque
+  chose devra d'abord etre ecrite quelque part.** C'est contraignant pour MASTER autant que pour la
+  squad, et cela a ete accepte en le sachant.
+- **Il est cite mot pour mot.** Un enonce que son destinataire ne peut pas citer exactement se
+  signale comme tel plutot que de se reconstituer : **choisir entre deux formulations reviendrait a
+  fabriquer la citation que la convention protege.**
+
+**MASTER s'ecrit toujours en capitales** et n'apparait jamais seul, mais dans la formule fixe -
+c'est ce qui le distingue a la lecture de *Scrum Master*. **MASTER n'ecrit jamais dans le depot** et
+n'entre pas dans la table des prefixes de commit de la section 8 : un commit prefixe `[MASTER]` est
+rejete par la CI, et c'est le comportement correct.
+
+**Ce que la forme 3 sert a empecher, en un exemple reel** : a s24, deux enonces recus par ce canal -
+*"le lot 3 n'existe pas"* et *"donc le chemin C est ecarte"* - ont circule comme vrais sans avoir ete
+mesures. Le second serait entre dans la porte pedagogique et y aurait referme 27 jeux sur un lot que
+personne n'avait regarde. **Il a ete arrete parce que sa destinataire est allee verifier** au lieu de
+s'y appuyer, la borne ayant ete acceptee le matin meme.
+
+**Qui l'applique** : chaque agent a l'ecriture ; le `relecteur-pedagogique` la verifie sur les
+livrables non executables, avec le critere binaire de `DEC-0062` section 4.
+
 ## 3. Pilotage par increment, pas par duree
 
 Il n'y a **pas de timebox**. Un sprint est un **increment livrable**, quelle que soit sa duree
@@ -334,9 +373,8 @@ ceremonie.
 ## 7. Le double Done
 
 **Done technique** : `mvn verify` vert - compilation, tests unitaires, tests d'integration Spring
-Boot, ArchUnit, et integration H2 une fois `adapter-persistence` cree. C'est **la CI qui juge**,
-pas un agent. Yanis et Theo en sont les garants : ils rendent le jugement fiable et le rapportent
-honnetement.
+Boot, ArchUnit. C'est **la CI qui juge**, pas un agent. Yanis et Theo en sont les garants : ils
+rendent le jugement fiable et le rapportent honnetement.
 
 **Done pedagogique** : prononce par **`nadia-prof`**, et par elle seule, avec un motif ecrit dans
 `squad/conformite/FICHE-<jeu>.md`. Trois verdicts : `VALIDE`, `VALIDE SOUS RESERVE`, `REFUSE`.
@@ -344,6 +382,31 @@ honnetement.
 Les deux sont independants. Un increment techniquement irreprochable peut etre refuse
 pedagogiquement, et c'est un fonctionnement normal, pas un incident. Un refus renvoie l'increment
 a Camille, qui en fait du backlog ; il ne bloque pas le sprint suivant.
+
+**Le perimetre de la porte pedagogique, borne le 2026-08-31 (amendement s24).** Le paragraphe
+ci-dessus disait **qui** prononce et **avec quoi**, jamais **sur quoi** : il decrivait une porte sans
+borne de perimetre. Elle en a une depuis le 2026-08-31, posee par deux sources qui existent sur le
+disque. **Cet amendement les transcrit et n'en interprete aucune** ; en cas d'ecart, ce sont elles qui
+font foi et c'est ce paragraphe-ci qui a derive.
+
+- **`DEC-0060`** (acceptee, sur arbitrage de l'utilisatrice) : la porte pedagogique **porte sur les
+  elements neufs ou modifies**, et *modifie* se lit sur **tout changement du code qui produit l'ecran
+  de l'enfant** - l'effet de ce changement n'entre pas dans la qualification.
+- **`squad/conformite/CLAUSE-PORTE-PEDAGOGIQUE-perimetre-apres-les-six-reponses-du-2026-08-31.md`**,
+  redigee par `nadia-prof` dans ses propres mots parce que la porte est a elle : neuf clauses `C1` a
+  `C9`, et **trois regimes d'audit** qui disent ce qu'une modification appelle - `R-A` audit de
+  paquet (compte pour un paquet contre sa borne), `R-B` audit de mecanique (hors compte),
+  `R-C` changement de code a rendu invariant (aucun rejeu, **sous condition d'une mesure qui remplit
+  ses quatre exigences**, et sans laquelle rien n'est discharge).
+
+**Ce que cette borne ne change pas** : `nadia-prof` reste **seule** a prononcer un Done pedagogique,
+avec un motif ecrit ; les trois verdicts sont inchanges ; et un element qu'elle ne rejoue pas n'est
+jamais exempte par le silence - `C8` lui impose de nommer, a chaque verdict, les proprietes dont elle
+reste la seule garde.
+
+**Ce que cette borne coute a qui la pose, et qui doit rester lisible** : `R-C` ne sort un changement
+de sa porte que si quelqu'un d'autre produit la mesure qui le discharge. Si cette mesure n'existe pas,
+les elements concernes **restent dans sa porte sans verdict** - un etat inconfortable, et voulu.
 
 **Gouvernance d'une story absorbee en cours de route (amendement s06, retro de s05).** Une story ou
 une decision de perimetre qu'un sprint absorbe en cours de route depuis un autre sprint -

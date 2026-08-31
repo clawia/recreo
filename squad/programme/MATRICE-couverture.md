@@ -83,7 +83,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp, cp-ranger-nombres | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
+| mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp ; **saisie-complements-10-cp** (2026-08-31, s24) | bandit manchot ; **saisie** | couvert-valide - **statut inchange par le second jeu.** `CPL-1` : *"deux entrees sur une meme ligne ne sont pas une double couverture"*. La ligne etait deja verte avant s24 et le lot de saisie **n'ajoute aucune ligne** |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | - | - | non couvert |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | bandit-manchot-comparer-cp | bandit manchot | couvert-valide |
@@ -235,13 +235,24 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | bandit-manchot-multiplications-divisions-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
-| mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | - | - | non couvert |
+| mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | bandit-manchot-fractions-cm1 | bandit manchot | **couvert-valide** (2026-08-31, s24) - **couverture partielle, mention exigee par `FRA-9` et reprise telle quelle** : *"moitie 'notion de fraction simple' seule ; la moitie 'reperage sur une droite numerique' reste non couverte"* |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | bandit-manchot-problemes-etapes-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Resoudre des problemes de durees (calcul d'une duree, d'un horaire d'arrivee) | bandit-manchot-problemes-durees-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre, nommer et tracer des figures planes (carre, rectangle, triangle, cercle) avec outils (regle, equerre, compas) | - | - | non couvrable en l'etat |
 | mathematiques | CM1 | Espace et geometrie | Reconnaitre et utiliser la notion de symetrie axiale simple | - | - | non couvrable en l'etat |
+
+**Note du 2026-08-30 (ouverture s24, `camille-po`) - "Notion de fraction simple..." passe
+`non couvert` -> `en cours`, avec une couverture partielle a nommer d'avance.** `DEC-0059` ouvre
+`S24-FRA` sur la **moitie "notion" seule**, sur l'arbitrage prealable de `nadia-prof` du 2026-08-30
+(`squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md`,
+section 8bis, conditions `FRA-1` a `FRA-9`), qui rend actionnable son avis du 2026-08-14. **La
+mention que `FRA-9` exige sur cette ligne le jour ou elle bougerait vers `couvert-valide`, ecrite par
+elle et non par moi, et qui est une condition et non une remarque** : *"moitie 'notion de fraction
+simple' seule ; la moitie 'reperage sur une droite numerique' reste non couverte"*. Son avis de fond
+est inchange : le reperage exige une ligne reellement dessinee et graduee, famille visuelle. Je
+l'ecris des l'ouverture pour qu'elle ne se perde pas entre le planning et l'audit.
 
 **Note du 2026-08-25 (hors sprint, `camille-po`) - deux lignes reclassees `non couvert` ->
 `non couvrable en l'etat`, nature reversible** (`DEC-0046`, sur avis de `nadia-prof`,
@@ -498,12 +509,35 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp | bandit manchot | en cours |
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvrable en l'etat |
-| francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | - | - | non couvert |
+| francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp | bandit manchot | **couvert-valide** (2026-08-31, s24, second passage - reserve levee) |
 | francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | non couvert |
 | francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | - | - | non couvert |
-| francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | - | - | non couvert |
+| francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | bandit-manchot-pluriel-cp | bandit manchot | **couvert-valide** (2026-08-31, s24) |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
 | francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | bandit-manchot-mot-manquant-cp | bandit manchot | couvert-valide |
+
+**Note du 2026-08-30 (ouverture s24, `camille-po`) - deux lignes passent `non couvert` ->
+`en cours`, sur le niveau le plus creux du produit.** `DEC-0059` ouvre `S24-NAR` sur "Comprendre un
+texte narratif tres court" (conditions `NAR-1` a `NAR-10`) et `S24-PLU` sur "Reconnaitre et utiliser
+les marques du pluriel les plus frequentes (-s)" (conditions `PLU-1` a `PLU-9`), toutes deux
+arbitrees individuellement par `nadia-prof` le 2026-08-30 (meme arbitrage prealable, sections 3
+et 4). **Motif du choix, verifie sur cette matrice avant d'etre ecrit** : le francais CP porte 3
+lignes `couvert-valide` sur 11 atteignables (27,3 %), contre 54,5 % en mathematiques CP, 70,0 % en
+mathematiques CM1 et 72,7 % en francais CM1 - c'est le point le plus faible du produit.
+
+**Deux mentions a porter d'avance, pour qu'un statut vert futur ne les laisse pas dans l'ombre** :
+
+- Sur "Comprendre un texte narratif tres court", la mention que `nadia-prof` exige le jour ou la
+  ligne bougerait vers `couvert-valide` est *"textes de deux phrases, un texte par question,
+  questions explicites seulement"*. Elle nomme aussi une limite qui n'est pas une mention de matrice
+  mais qui vaut d'etre lue avec la ligne : ce paquet s'adresse a un enfant **qui decode deja** et
+  n'est pas utilisable en debut de CP - ce produit n'ayant aucun niveau a l'interieur du CP.
+- Sur "Reconnaitre et utiliser les marques du pluriel", **aucune mention de couverture partielle
+  n'est due** : `nadia-prof` ecrit que la ligne se restreint deja d'elle-meme au `-s` et que `PLU-3`
+  suit cette restriction au lieu de l'inventer.
+
+**Ce que cette note ne fait pas** : aucune des deux lignes n'atteint `couvert-valide` par ce
+planning, et je ne prejuge d'aucun audit.
 
 **Note du 2026-08-24 (s19, `camille-po`) - arbitrage de l'utilisatrice : statut `non couvrable en
 l'etat` sur "Lire a voix haute...".** Cette competence exige une reconnaissance vocale, hors
@@ -2698,3 +2732,182 @@ dans aucun document que j'ai ecrit (voir `docs/backlog/backlog.md`, section "Spr
 
 **Ce que ce document ne fait pas.** Il ne prononce aucun Done pedagogique lui-meme et ne fait
 bouger aucune autre ligne que celle nommee ci-dessus.
+
+## Note du 2026-08-30 (ouverture s24, `camille-po`) - trois lignes passent `en cours`, aucune n'atteint `couvert-valide` par ce planning ; la mecanique de saisie ouvre sans debloquer aucune ligne
+
+L'utilisatrice arbitre l'ouverture de s24 (*"ouvre s24 avec les trois paquets et la saisie"*).
+Perimetre complet, motifs et questions ouvertes : `DEC-0059`. Stories et criteres :
+`docs/backlog/backlog.md`, section "Backlog - perimetre s24".
+
+**Trois lignes changent de colonne, toutes de `non couvert` vers `en cours`** - detail et mentions de
+couverture partielle exigees par `nadia-prof` : les deux notes datees du 2026-08-30 ajoutees sous les
+tableaux "Mathematiques - CM1" et "Francais - CP" ci-dessus, que je ne recopie pas ici.
+
+- **"Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi)"** (francais CP,
+  `S24-NAR`) : `non couvert` -> `en cours`.
+- **"Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s)"** (francais CP,
+  `S24-PLU`) : `non couvert` -> `en cours`.
+- **"Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une
+  droite numerique"** (mathematiques CM1, `S24-FRA`, moitie "notion" seule) : `non couvert` ->
+  `en cours`.
+
+| Matiere / niveau | Nombre de competences | non couvert | en cours | couvert-valide | non couvrable en l'etat |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 5 | 0 | 6 | 0 |
+| mathematiques CM1 | 12 | 2 | 1 | 7 | 2 |
+| francais CP | 12 | 5 | 3 | 3 | 1 |
+| francais CM1 | 12 | 3 | 0 | 8 | 1 |
+| **Total** | **47** | **15** | **4** | **24** | **4** |
+
+**Le chiffre, avec sa base, verifie ligne par ligne contre les quatre tableaux de matiere de cette
+matrice avant d'etre ecrit (2026-08-30), pas repris d'un autre document du depot.** Le denominateur
+atteignable reste **43** sur **47**, inchange. **Le compte de lignes `couvert-valide` ne bouge pas :
+24/43 (55,8 %) reste 24/43 (55,8 %).** Un passage a `en cours` est un geste de planning, jamais un
+mouvement de couverture, et je l'ecris pour qu'aucun rapport d'ouverture ne le presente autrement.
+
+**Ce que ce perimetre pourrait rendre a la cloture, chiffre honnete et non acquis** : si
+`nadia-prof` prononce trois Done pedagogiques sur les trois paquets, **24/43 (55,8 %) -> 27/43
+(62,8 %)**, un gain de 7,0 points. Ce chiffre est **entierement conditionne** a des audits qui
+n'existent pas, sur des paquets qui n'existent pas, et l'historique du produit ne le rend pas
+probable a taux plein : a s23, trois paquets ouverts ont donne trois lignes, mais apres deux refus,
+trois tours de correction et cinq reaudits.
+
+**La quatrieme ligne `en cours` du tableau ci-dessus n'est pas neuve** : c'est "Associer les
+graphemes aux phonemes" (francais CP), `en cours` depuis le sprint 3, inchangee par ce planning.
+
+## Ce que ce planning ouvre et qui ne touche aucune ligne : la mecanique de saisie
+
+`DEC-0059` ouvre aussi la **mecanique de saisie** (`S24-SAI-1`, `S24-SAI-2`), instruite depuis s19 et
+jamais implementee. **Elle ne debloque aucune ligne de cette matrice, et ce fait est verifie ligne par
+ligne, pas suppose** : les 18 lignes `non couvert` d'avant ce planning ont ete confrontees une par
+une aux six refus prealables `R1` a `R6` de `nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`) et a la separation d'avec
+l'operation posee. Le tableau complet est en section 5.1 de `DEC-0059` ; ce qu'il faut retenir ici,
+pour qu'un lecteur de cette matrice ne cherche pas un mouvement qui n'existera pas :
+
+- `R1` ferme "Copier un mot, une phrase courte" ; `R2` ferme les deux lignes de comprehension et de
+  restitution ; `R3` ferme "Rediger un texte narratif court" ; `R6` (2026-08-25) ferme "Ecrire de
+  maniere autonome un mot simple", que `nadia-prof` retire elle-meme de la liste des candidats.
+- Les deux lignes d'operation posee relevent d'une **troisieme** mecanique et jamais de la saisie -
+  `theo-archi` et `nadia-prof` le disent separement, et elle demande de ne jamais les compter
+  ensemble dans un arbitrage de sequencement.
+- Le seul usage qu'elle recommande positivement - la reponse numerique courte sur des paquets de
+  calcul **deja `couvert-valide`** - **n'est pas de la couverture neuve** : elle l'ecrit elle-meme,
+  *"c'est une amelioration d'existant"*.
+
+**Aucune ligne de cette matrice ne change de statut par ce lot, ni a l'ouverture ni a la cloture.**
+
+## Ce que cette note ne fait pas
+
+Elle ne prononce aucun Done pedagogique, n'en anticipe aucun, et ne fait bouger aucune ligne au-dela
+des trois nommees ci-dessus. `SUB` ("Reperer les substituts d'un personnage", francais CM1) reste
+`non couvert` : elle est arbitree et developpable, mais la regle de composition de `nadia-prof` (au
+plus un paquet du type `COMP-2` par sprint) interdit de la prendre avec `S24-NAR`. **C'est un report,
+compte comme le premier** (`DEC-0059`, section 2). `DEN` (moitie "lire, ecrire, decomposer" de
+"Denombrer... jusqu'a 100", mathematiques CP) reste `non couvert` : elle est un quatrieme paquet
+**conditionnel**, non engage, et ne ferait de toute facon pas bouger sa ligne au-dela d'`en cours`
+par la condition `DEN-2` de `nadia-prof`.
+
+---
+
+# Synthese apres les verdicts du sprint 24 (2026-08-31, cloture)
+
+Ecrite par `camille-po`, seule proprietaire de ce fichier (`squad/README.md`). `sofia-sm` a recompte
+et **a refuse de l'ecrire**, ce qui est la bonne conduite : le comptage se verifie a plusieurs, le
+fichier a une main.
+
+## Le ratio, recompte par moi et non repris
+
+**27/43 = 62,8 %.**
+
+**Methode, nommee pour etre refaite par un tiers** : comptage de la colonne Statut des **quatre
+tableaux de matiere** de ce fichier - Mathematiques CP, Mathematiques CM1, Francais CP, Francais CM1 -
+sur l'arbre issu de la fusion de `s24-sofia-review` (`0cc4724`), **apres** l'ecriture des quatre
+lignes ci-dessous et non avant. Sont exclues du comptage les lignes d'en-tete et de separation des
+tableaux, et les tableaux de synthese historiques de ce fichier, qui ne sont pas des tableaux de
+matiere. Une ligne portant `couvert-valide` est comptee dans ce statut meme quand la cellule porte en
+plus une mention de couverture partielle.
+
+| | Lignes | `couvert-valide` | `en cours` | `non couvert` | `non couvrable en l'etat` |
+|---|---|---|---|---|---|
+| Mathematiques CP | 11 | 6 | 0 | 5 | 0 |
+| Mathematiques CM1 | 12 | 8 | 0 | 2 | 2 |
+| Francais CP | 12 | 5 | 1 | 5 | 1 |
+| Francais CM1 | 12 | 8 | 0 | 3 | 1 |
+| **Total** | **47** | **27** | **1** | **15** | **4** |
+
+Denominateur atteignable : **47 - 4 = 43**. **27/43 = 62,8 %**, contre 24/43 = 55,8 % a l'ouverture
+de s24. **Mon compte est identique a celui de `sofia-sm`**, etabli separement.
+
+**La zone la plus creuse du produit etait la cible, et elle a bouge** : le francais CP passe de
+**3/11 (27,3 %)** a **5/11 (45,5 %)** d'atteignable. C'est le motif ecrit de `DEC-0059`, section 2,
+pour avoir prefere `NAR` a `SUB` ; il se verifie.
+
+## Les quatre lignes ecrites, et leur verdict source
+
+Les quatre verdicts sont de `nadia-prof`, tous prononces apres avoir joue. **Je les ai lus dans les
+fiches avant d'ecrire, plutot que de les reprendre d'un rapport.**
+
+| Ligne | Jeu | Verdict, et ou je l'ai lu |
+|---|---|---|
+| Marques du pluriel en `-s` (francais CP) | `bandit-manchot-pluriel-cp` | **VALIDE**, `FICHE-bandit-manchot-pluriel-cp.md` |
+| Comprendre un texte narratif tres court (francais CP) | `bandit-manchot-texte-narratif-cp` | **VALIDE**, reserve 1 levee au second passage, `FICHE-bandit-manchot-texte-narratif-cp.md` |
+| Notion de fraction simple (mathematiques CM1) | `bandit-manchot-fractions-cm1` | **VALIDE**, reserve 1 levee au second passage, `FICHE-bandit-manchot-fractions-cm1.md` |
+| Complements a 10 (mathematiques CP) - **deja verte, ne bouge pas** | `saisie-complements-10-cp` | **VALIDE**, refus du 2026-08-31 leve, `FICHE-saisie-complements-10-cp.md` |
+
+**La mention de `FRA-9` est portee telle quelle et ce n'est pas une remarque, c'est une condition** :
+la ligne des fractions dirait plus que ce que le jeu sert sans elle. Elle est recopiee mot pour mot
+depuis la fiche, sans etre resumee.
+
+**La ligne "Complements a 10" porte desormais deux jeux et garde son statut.** `CPL-1` :
+*"deux entrees sur une meme ligne ne sont pas une double couverture"*. Je nomme le second jeu plutot
+que de le taire - la colonne "Jeu(x) couvrant" est plurielle par construction, et une matrice qui
+cacherait un jeu livre dirait moins que ce qui existe - **mais le ratio n'en tire rien.** Le lot de
+saisie de s24 ajoute **zero ligne**, ce que j'avais etabli sur 18 lignes, que `nadia-prof` a etendu a
+23, et qui se verifie ici pour la troisieme fois.
+
+## Ce que le lot de saisie apporte, et qu'aucune colonne de ce fichier ne mesure
+
+Ce fichier compte des lignes de programme. Il ne compte pas ceci, et `nadia-prof` demande que ce soit
+ecrit la ou on lit la couverture :
+
+> **Le catalogue contient desormais un jeu sur trente et un ou un enfant qui ne sait pas peut
+> echouer.**
+
+Sur les 582 items du catalogue qui portent deux ou trois propositions - 94,6 % des 615 items
+enumeres, chiffre et methode de `nadia-prof` du 2026-08-30 - un enfant qui presse au hasard a
+necessairement raison au dernier essai. **Un compteur de couverture ne verra jamais cette
+difference-la.** Elle est instruite par `DEC-0061`, candidate de tete a l'ouverture de s25.
+
+## La mention datee que `DEC-0063` prevoyait n'est pas ecrite, et c'est `nadia-prof` qui l'a rendue sans objet
+
+`DEC-0063`, section 3, prevoyait qu'une ligne dont le jeu devient modifie par un changement de code
+partage garde `couvert-valide` **et recoive une mention** *"reaudit du au titre de `DEC-0060`, `Q1`"*.
+Sous `Q1`, les lots 1 et 3 de s24 rendaient bien les 27 jeux modifies.
+
+**Cette mention n'est pas portee, parce qu'elle serait fausse.** `nadia-prof` a prononce le
+2026-08-31, apres avoir reverifie elle-meme la garde et le corps :
+
+> *"Les lots 3 et 4 sont discharges sous R-C. Les 27 jeux existants ne sont pas rejoues, et le chemin
+> C est ecarte pour s24."*
+> `squad/conformite/CLAUSE-PORTE-PEDAGOGIQUE-perimetre-apres-les-six-reponses-du-2026-08-31.md`,
+> section 12.
+
+**Aucun reaudit n'est donc du sur les 27, et aucune ligne ne porte de dette.** `DEC-0063` avait ecrit
+que sa clause gouvernait la porte et que la matrice suivrait ; c'est ce qui se produit, dans l'autre
+sens que celui que j'avais anticipe. **Le detail est dans l'amendement du 2026-08-31 a `DEC-0063`.**
+
+**Ce que cette decharge ne cree pas, et `nadia-prof` l'ecrit** : aucune presomption pour le prochain
+lot partage. Chaque lot est instruit pour lui-meme. **Un lot qui modifierait un corps qui s'execute
+ferait rentrer les 27 dans la porte**, et ce jour-la la mention de `DEC-0063` sera due.
+
+## Ce que cette synthese ne fait pas
+
+- Elle **ne prononce aucun Done pedagogique** : les quatre verdicts sont de `nadia-prof` et je n'ai
+  fait que les lire et les reporter.
+- Elle **ne fait bouger aucune ligne au-dela des trois nommees**, et n'en retire aucune.
+- La ligne **"Associer les graphemes aux phonemes"** reste `en cours` : c'est la derniere de ce
+  statut, ouverte depuis s03, et rien de s24 ne la touche.
+- `SUB` reste `non couvert` et son report reste **le premier**, compte a `DEC-0059`, section 2. Le
+  motif de composition qui l'a ecartee - au plus un paquet du type `COMP-2` par sprint - a ete
+  consomme par `NAR`, qui est desormais verte. **Le motif ne vaut plus pour s25.**

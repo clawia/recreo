@@ -119,14 +119,38 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
         return (char) 0x22 + valeur + (char) 0x22;
     }
 
-    /** Le texte des items, tel que l'enfant le recoit. */
+    /**
+     * Le texte des items, tel que l'enfant le recoit.
+     *
+     * <p><b>Lot 5a de s24, decision 4 : borne aux chaines que l'enfant lit.</b> Un item de saisie
+     * fait servir des chaines que personne ne lit - les formes acceptees, le bareme auquel la
+     * mecanique compare ce que l'enfant ecrit. {@code CPL-3} y fait figurer l'ecriture en lettres du
+     * nombre, et SAI-1 comme SAI-3 tolerent l'absence d'accent : exiger l'accent sur une forme
+     * acceptee rougirait sur <b>la tolerance elle-meme</b>, c'est-a-dire sur exactement ce que
+     * nadia-prof a demande. Un garde-fou qui rougit sur un mot etranger a son objet est la faute
+     * mesuree en s05.</p>
+     *
+     * <p>La borne n'est pas un trou : ces chaines restent jugees par la clause 1 de
+     * {@link LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest} - une notation d'echappement y
+     * rend la tolerance morte, et rien ne le dirait.</p>
+     */
     static List<ChaineServie> textesDesItems(Path racine, String racineClasspath) {
         List<ChaineServie> textes = new ArrayList<>();
+        int compares = 0;
         for (LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.TexteServi texte
                 : LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.textesServis(
                         racine, racineClasspath)) {
+            if (!texte.luParLEnfant()) {
+                compares++;
+                continue;
+            }
             textes.add(new ChaineServie(texte.origine(), texte.valeur()));
         }
+        assertThat(textes)
+                .as("%s : ce garde-fou ecarte %d chaine(s) comparee(s) et n'en garde aucune a lire."
+                        + " Une borne qui emporte toute la population n'est plus une borne", racine,
+                        compares)
+                .isNotEmpty();
         return textes;
     }
 

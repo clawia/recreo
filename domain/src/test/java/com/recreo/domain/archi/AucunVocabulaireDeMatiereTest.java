@@ -52,6 +52,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * "graphie", "phoneme" et "nasale" y entrent avec ADR-0024, et pourquoi "son" n'y entre pas : il est
  * dans "raison", "comparaison", "saison". Une regle qui rougit sur un mot etranger a son objet est
  * la faute mesuree en s05, et elle coute plus cher qu'une regle absente.</p>
+ *
+ * <p><b>Le declencheur qu'ADR-0058 section 2 avait ecrit d'avance est leve, et la mesure est
+ * ici.</b> Il disait : "le lot qui ouvre la saisie decide de l'entree d'<i>accent</i> dans cette
+ * liste, en la mesurant sur ses propres sources". Le lot 2 de s24 a ouvert la saisie ; la mesure du
+ * 2026-08-31, sur les dix-huit sources des deux arbres que cette regle balaie, rend <b>une</b>
+ * occurrence de la sous-chaine "accent" : la Javadoc de {@code ReponseAEcrire}, ou elle est dans
+ * "integralement accentue" - la formulation de SAI-8 elle-meme, recopiee de l'arbitrage de
+ * nadia-prof. Ce mot n'y entre donc pas : il tomberait sur le premier usage legitime, et c'est
+ * exactement la seconde condition d'entree ci-dessus. Le motif de prudence de theo-archi est
+ * confirme par une mesure au lieu d'etre reconduit sur une intuition, et le declencheur est
+ * clos.</p>
  */
 class AucunVocabulaireDeMatiereTest {
 

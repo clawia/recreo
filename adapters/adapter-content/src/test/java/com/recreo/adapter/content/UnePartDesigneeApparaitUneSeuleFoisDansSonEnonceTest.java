@@ -38,6 +38,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *   <li><b>mise a l'epreuve</b> : sur un item reel mute pour declarer une part absente de sa phrase,
  *       puis une part qui y figure deux fois, et sur un paquet qui ne declare jamais rien.</li>
  * </ul>
+ *
+ * <p><b>Lot 5a de s24, decision 13 : borne, et ce n'est pas une exemption.</b> L'item de saisie ne
+ * porte pas {@code partDesignee} (ADR-0058 section 1) : le critere n'a pas d'objet, il lui manque sa
+ * <b>composante</b>. Que l'ajout futur de cette composante a l'item de saisie ne passe pas en silence
+ * est tenu ailleurs, par le classement des composantes de
+ * {@link AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest}, qui derive desormais de la scellure
+ * d'{@code Item} et non de {@code Question} seule.</p>
  */
 class UnePartDesigneeApparaitUneSeuleFoisDansSonEnonceTest {
 
@@ -62,7 +69,16 @@ class UnePartDesigneeApparaitUneSeuleFoisDansSonEnonceTest {
             if (tire.isEmpty()) {
                 break;
             }
-            Question question = (Question) tire.orElseThrow();
+            Item item = tire.orElseThrow();
+            if (!(item instanceof Question question)) {
+                // Lot 5a de s24, decision 13 : borne. ReponseAEcrire ne porte pas partDesignee
+                // (ADR-0058 section 1) : le critere n'a pas d'objet, ce n'est pas une exemption mais
+                // une composante absente. Que l'ajout futur de partDesignee a l'item de saisie ne
+                // passe pas en silence est tenu ailleurs, par le classement des composantes de
+                // AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest, qui derive de la scellure.
+                dejaVus.add(item.id());
+                continue;
+            }
             items.add(question);
             dejaVus.add(question.id());
         }

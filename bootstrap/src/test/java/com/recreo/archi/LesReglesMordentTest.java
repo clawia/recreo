@@ -115,6 +115,26 @@ class LesReglesMordentTest {
     }
 
     /**
+     * ADR-0058, R-A : l'adaptateur de rendu ne nomme aucune mecanique hors de son point de descente.
+     * Le contre-exemple est la forme reelle, pas une fixture : c'est ainsi qu'{@code EtatDePartie}
+     * etait ecrit jusqu'a s24, et cette regle est ce qui l'a fait changer.
+     *
+     * <p>La seconde assertion est celle qui rend la morsure non decorative : le message doit nommer
+     * la classe fautive <b>et</b> la mecanique dont elle depend. Une morsure qui se contenterait du
+     * nom de la classe serait verte sur une regle qui refuserait n'importe quelle dependance de ce
+     * module.</p>
+     */
+    @Test
+    void unPorteurDEtatTypeSurUneMecaniqueHorsDuPointDeDescenteEstRefuse() {
+        assertThatThrownBy(() -> DecouplageMecaniqueContenuTest
+                .adapterWebNeNommeAucuneMecaniqueHorsDeSonPointDeDescente
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("PorteurDEtatTypeSurUneMecaniqueContreExemple")
+                .hasMessageContaining("BanditManchotSession");
+    }
+
+    /**
      * ADR-0044 : la selection des jeux montres reste derriere le port entrant. Le contre-exemple
      * est ecrit comme le chemin le moins cher l'ecrirait - le catalogue filtre dans l'adaptateur
      * web en lisant le descripteur de contenu - parce que c'est cette forme-la, et pas une faute
@@ -308,6 +328,23 @@ class LesReglesMordentTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("com.recreo.domain.content.ReglageDeLongueurDePartieContreExemple.nombreDeManches")
                 .hasMessageContaining("int");
+    }
+
+    /**
+     * ADR-0069 : la meme regle, sur un booleen. Les trois morsures ci-dessus portent toutes sur une
+     * <b>grandeur</b> - un entier, un entier cache dans un argument generique - et laissaient croire
+     * que la regle ne visait que les bornes chiffrees. Elle refuse aussi un mode declare en booleen,
+     * et c'est ce que la conception de la saisie a rencontre : la section 1 d'ADR-0058 decidait "un
+     * booleen formeExacteExigee" sur l'item, forme mesuree rouge sur l'arbre reel le 2026-08-30.
+     * Sans cette morsure, la portee reelle de la regle restait a decouvrir par un lot.
+     */
+    @Test
+    void unModeDeComparaisonEnBooleenDansLeContratDeContenuEstRefuse() {
+        assertThatThrownBy(() -> DifficulteTest.leContratDeContenuNePorteQueDuTexte
+                .check(contreExemples("com.recreo.domain.content")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("com.recreo.domain.content.ModeDeSaisieEnBooleenContreExemple.formeExacteExigee")
+                .hasMessageContaining("boolean");
     }
 
     /** ADR-0007 : le dixieme chargeur, hors de l'adaptateur de contenu. */

@@ -1,0 +1,21 @@
+# Jeu fautif du lot 5b de s24 : un paquet enumere dont les items ne portent pas "enonce" en premier
+# champ. Le comptage d'ADR-0064 y trouvait zero item, et zero se lisait "paquet combinatoire" : le
+# paquet etait alors juge sur un tirage borne sans que rien ne le dise. Jamais livre, jamais servi a
+# un enfant, jamais charge - ce fichier n'est lu que par le comptage.
+schema: 1
+id: paquet-enumere-au-premier-champ-autre
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Competence de fixture"
+items:
+  - bonneReponse: "juste"
+    enonce: "Enonce de fixture 1"
+    distracteurs: ["faux"]
+    indice: "Indice de fixture 1"
+  - bonneReponse: "juste"
+    enonce: "Enonce de fixture 2"
+    distracteurs: ["faux"]
+    indice: "Indice de fixture 2"

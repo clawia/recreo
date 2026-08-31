@@ -126,18 +126,17 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
     }
 
     /** Les items reellement tires par la chaine de contenu, pas relus dans le YAML. */
-    private static List<Question> itemsTires(ContentSource contenu, int tirages) {
+    private static List<Item> itemsTires(ContentSource contenu, int tirages) {
         RandomSource hasard = new Random(7)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for (int tirage = 0; tirage < tirages; tirage++) {
             Item item = contenu.next(hasard, dejaVus).orElse(null);
             if (item == null) {
                 break;
             }
-            Question question = (Question) item;
-            items.add(question);
-            dejaVus.add(question.id());
+            items.add(item);
+            dejaVus.add(item.id());
         }
         return items;
     }
@@ -205,8 +204,13 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
             // l'epuiser, plus un tirage pour constater l'epuisement.
             int declares = ChaquePaquetPorteUnIndiceTest.itemsDeclares(racine, paquet);
             int tirages = declares > 0 ? declares + 1 : TIRAGES_SUR_UN_PAQUET_COMBINATOIRE;
-            List<Question> items =
+            List<Item> tires =
                     itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet), tirages);
+            // Lot 5a de s24, decision 2 : etendu a l'item de saisie. La propriete met en rapport un
+            // indice et une reponse juste, et l'item de saisie porte les deux - sa forme de
+            // reference est sa bonne reponse. Un paquet de saisie qui affirmerait une regle generale
+            // dementie par un autre de ses items se contredirait devant l'enfant de la meme facon.
+            List<ClassementDesItems.ItemLu> items = ClassementDesItems.lus(tires);
             if (declares > 0) {
                 // ADR-0064 : un paquet enumere est lu EN ENTIER, ou ce garde-fou est rouge et le dit.
                 assertThat(items)
@@ -216,7 +220,7 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
                         .hasSize(declares);
             }
 
-            for (Question itemPortantLIndice : items) {
+            for (ClassementDesItems.ItemLu itemPortantLIndice : items) {
                 Matcher regle = REGLE_GENERALE_NON_TEMPEREE.matcher(itemPortantLIndice.indice().orElse(""));
                 if (!regle.find()) {
                     continue;
@@ -229,16 +233,16 @@ class AucunIndiceNeContreditUnAutreItemDuMemePaquetTest {
                 }
                 String terminaison = regle.group(3);
 
-                for (Question autreItem : items) {
+                for (ClassementDesItems.ItemLu autreItem : items) {
                     String sujet = sujetGrammatical(autreItem.enonce());
                     if (sujet == null || !personnesVisees.contains(sujet)) {
                         continue;
                     }
-                    assertThat(autreItem.bonneReponse())
+                    assertThat(autreItem.reponseJuste())
                             .as("paquet %s : l'indice de \"%s\" enonce une regle generale (terminaison"
                                             + " '-%s') que la bonne reponse \"%s\" de l'item \"%s\" dement",
                                     paquet, itemPortantLIndice.enonce(), terminaison,
-                                    autreItem.bonneReponse(), autreItem.enonce())
+                                    autreItem.reponseJuste(), autreItem.enonce())
                             .endsWith(terminaison);
                 }
             }

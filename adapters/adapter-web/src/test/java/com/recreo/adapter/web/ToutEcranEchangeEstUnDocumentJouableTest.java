@@ -81,6 +81,9 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
     /** Le seul niveau du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    /** S24 : le jeu de la seconde mecanique du catalogue de test (PartieControllerTest). */
+    private static final String JEU_SAISIE_ID = PartieControllerTest.JEU_SAISIE_ID;
+
     private static final String NIVEAU = "CP";
 
     /**
@@ -217,6 +220,33 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
         // coquille (ADR-0020, "un identifiant porte deux fois"), exactement le defaut que ce
         // meme fichier existe pour attraper - c'est lui qui a mesure la regression, pas une
         // relecture.
+        // S24, ADR-0058 : les trois etats de l'ecran de la seconde mecanique, et ses deux routes.
+        // ADR-0020 mord ici comme ailleurs : le fragment de saisie ne reprend pas l'identifiant de
+        // la zone qui le recoit, sans quoi le document assemble en porterait deux.
+        MockHttpSession partieDeSaisie = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_SAISIE_ID).session(partieDeSaisie));
+        ecrans.add(new Ecran("manche de saisie apres une reponse fausse, la partie continue",
+                "POST /parties/{jeuId}/reponses",
+                assembler(corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID)
+                        .session(partieDeSaisie).param("reponseEcrite", "1")))));
+        corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(partieDeSaisie)
+                .param("reponseEcrite", "2"));
+        ecrans.add(new Ecran("manche de saisie en revelation, le champ a disparu",
+                "POST /parties/{jeuId}/reponses",
+                assembler(corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID)
+                        .session(partieDeSaisie).param("reponseEcrite", "3")))));
+        ecrans.add(new Ecran("manche de saisie suivante, apres le geste de suite",
+                "POST /parties/{jeuId}/manche",
+                assembler(corps(post("/parties/{jeuId}/manche", JEU_SAISIE_ID)
+                        .session(partieDeSaisie)))));
+
+        MockHttpSession partieDeSaisieReussie = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_SAISIE_ID).session(partieDeSaisieReussie));
+        ecrans.add(new Ecran("manche de saisie apres une reponse juste par tolerance",
+                "POST /parties/{jeuId}/reponses",
+                assembler(corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID)
+                        .session(partieDeSaisieReussie).param("reponseEcrite", "sept")))));
+
         ecrans.add(new Ecran("liste filtree par niveau, aucune partie en cours", "GET /niveaux/{niveau}",
                 Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU)))));
 

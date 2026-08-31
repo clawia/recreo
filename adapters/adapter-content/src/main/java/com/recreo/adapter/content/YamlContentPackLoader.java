@@ -23,7 +23,8 @@ public final class YamlContentPackLoader implements ContentCatalogPort {
 
     private static final Map<String, ContentSourceFactory> FABRIQUES = Map.of(
             "question", new QuestionContentSourceFactory(),
-            "additions-bornees", new AdditionsBorneesContentSourceFactory());
+            "additions-bornees", new AdditionsBorneesContentSourceFactory(),
+            "saisie", new SaisieContentSourceFactory());
 
     private final String racine;
 

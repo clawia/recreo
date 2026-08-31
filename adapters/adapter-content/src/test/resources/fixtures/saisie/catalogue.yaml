@@ -1,0 +1,7 @@
+jeux:
+  - id: jeu-saisie
+    titre: "Jeu saisie"
+    consigne: "Ecris ta reponse."
+    mecanique: saisie
+    paquet: paquet-saisie
+    nombreDeManches: 3

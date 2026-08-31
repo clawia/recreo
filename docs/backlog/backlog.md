@@ -7380,3 +7380,695 @@ audit etait conduit. Rien a corriger de mon cote ; le fait reste route par elle 
   la plus recente) : toutes les stories de `S23-LIA` et de `S23-ETA` sont fermees, aucune n'attend
   plus d'agent ; `yanis-qa`/`theo-archi` restent destinataires du signalement sur `LIA-3` et sur la
   coherence indice/enonce des 21 items d'`ETA` non gardes par un test.
+
+## Backlog - perimetre s24 (`DEC-0059`)
+
+**Arbitrage de l'utilisatrice a l'ouverture** : *"ouvre s24 avec les trois paquets et la saisie"*.
+Il repond a la question que `DEC-0057`, section 7, lui posait sur le **moment** d'ouvrir la mecanique
+de saisie. Le perimetre complet, ses motifs et tout ce qu'il ne tranche pas : `DEC-0059`.
+
+**Deux lots, dans cet ordre de priorite** :
+
+- **Lot A - trois paquets de contenu sur la mecanique existante** : `S24-NAR`, `S24-PLU`, `S24-FRA`.
+  Trois lignes passent `non couvert` -> `en cours`. Aucun arbitrage prealable supplementaire n'est
+  du : `nadia-prof` les a arbitrees individuellement le 2026-08-30, avec des conditions ecrites pour
+  etre reprises telles quelles.
+- **Lot B - la mecanique de saisie** : `S24-SAI-1` (la mecanique), `S24-SAI-2` (son premier paquet,
+  **conditionnel** a un arbitrage prealable de `nadia-prof` pose des l'ouverture). **Ce lot ne
+  debloque aucune ligne de la matrice** - verifie une par une sur les 18 lignes `non couvert` contre
+  `R1` a `R6` et la separation d'avec l'operation posee (`DEC-0059`, section 5.1). Il est pris pour
+  ce qu'il est, pas pour un gain de couverture.
+
+**En cas de conflit de capacite, le Lot A prime le Lot B** (`DEC-0059`, section 5.2).
+
+**Un quatrieme paquet conditionnel, non engage** : `S24-DEN`, a n'affecter que si `nadia-prof`
+reconfirme sa borne d'audit a quatre paquets ou plus pendant le sprint (`DEC-0059`, section 6.1).
+Il ne gagne **aucune** ligne de matrice, par la condition `DEN-2` de `nadia-prof`.
+
+**`SUB` ("Reperer les substituts d'un personnage", francais CM1) est arbitree, developpable, et
+n'entre pas a s24** : la regle de composition de `nadia-prof` (au plus un paquet du type `COMP-2` par
+sprint) interdit de la prendre avec `NAR`. **Premier report, s24, compte comme tel** (`DEC-0059`,
+section 2). Un second report a s25 demandera un motif ecrit a cote de celui-ci.
+
+**Qui redige les items** : `marc-dev`, `lea-dev` et `sofia-sm` (casquette dev) redigent les enonces,
+reponses et distracteurs de chaque paquet, sur la specification et les criteres ci-dessous
+(`squad/README.md`, section 10, amendement hors sprint du 2026-08-29). Je ne redige pas les items ;
+`nadia-prof` reste seule autorite sur le Done pedagogique.
+
+**Ce que chaque developpeur doit faire avant d'ecrire vingt items, et ce n'est pas une formalite** :
+appliquer l'**etape 2 de la procedure de specification de `nadia-prof`** (arbitrage prealable de s23,
+section 12.3) a chaque couple (condition de forme, condition de distribution) de sa story - enumerer
+la population que la forme autorise, y compter la cible de la distribution, et **arreter si le compte
+vaut zero**. A s23, trois specifications ont ete trouvees mathematiquement viciees avant tout item
+ecrit (`ETA-4` contre `ETA-7`, `RAN-5`, `RAN-4`), dont deux par leur propre auteur. Les points ou
+cette verification n'a **pas** ete faite a ce jour sont nommes dans les stories ci-dessous, chacun a
+sa place, plutot que laisses a decouvrir. L'outillage de ces etapes est au backlog et non affecte
+(`DEC-0058`, obstacle 8 de s23) : la verification reste manuelle a s24.
+
+### S24-NAR - Comprendre un texte narratif tres court (francais CP)
+
+- **Besoin** : en tant qu'eleve de CP, je veux lire deux phrases toutes simples et repondre a une
+  question sur qui a fait quoi, ou cela se passe, afin de verifier que j'ai vraiment compris ce que
+  j'ai decode, et pas seulement reconnu des lettres.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Lecture et comprehension de
+  l'ecrit", "Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi)"
+  (`squad/programme/francais/competences-cp.md`).
+- **Arbitrage prealable** : rendu le 2026-08-30, `ACCEPTE sous conditions NAR-1 a NAR-10`
+  (`squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md`,
+  section 3). **Aucun arbitrage supplementaire n'est du.**
+- **Ce que ce paquet est - la forme, dans les mots de `nadia-prof`** : un `texteSupport` porte le
+  texte, l'`enonce` porte la question, trois propositions. La cle `texteSupport` est generique et
+  facultative (`ADR-0050`), deja servie par `cm1-comprehension.yaml` : **aucune architecture neuve**.
+- **Ce que ce paquet n'est pas, et le confondre serait refaire la ligne du CM1** : la ligne CP dit
+  *"questions explicites : qui, ou, quoi"*. **Aucune inference n'est demandee.** `nadia-prof` ecrit
+  qu'exiger une inference au CP *"serait exiger la ligne du CM1 sur un enfant de six ans"*. Ce n'est
+  pas une tolerance, c'est la definition du perimetre.
+- **Criteres d'acceptation**, repris des dix conditions de `nadia-prof`, avec ses mots et ses unites
+  de compte :
+  - Etant donne chaque item, quand on lit son `texteSupport`, alors il compte **au plus 18 mots** et
+    **au plus deux phrases** ; et le `texteSupport` et l'`enonce` reunis comptent **au plus 25 mots**
+    (`NAR-2`). *Un mot est une suite de caracteres sans espace ; l'unite de compte est l'item.*
+  - Etant donne chaque item, quand on lit chaque mot de son `texteSupport` et de son `enonce`, alors
+    aucun ne depasse **neuf lettres**, l'apostrophe non comptee (`NAR-3`).
+  - Etant donne chaque item, quand on lit son `enonce`, alors il commence par *"Qui"*, *"Ou"* ou
+    *"Que"*, et sa reponse se lit **litteralement** dans le texte (`NAR-4`).
+  - Etant donne chaque item, quand on cherche chacune de ses **trois** propositions dans le
+    `texteSupport` **de ce meme item**, alors les trois y figurent **en toutes lettres** (`NAR-5`).
+  - Etant donne chaque item, quand on masque son `texteSupport` et qu'on ne laisse que l'`enonce` et
+    les trois propositions, alors **un enfant qui n'a pas lu le texte ne fait pas mieux que le
+    hasard** : aucune reponse n'est un fait de culture generale, aucun distracteur ne s'elimine seul
+    (`NAR-6`). *Verification par un tiers, item par item, sur la totalite du paquet et jamais sur un
+    echantillon.*
+  - Etant donne le paquet complet, quand on compte ses prenoms distincts par genre, alors ils sont
+    **equilibres a un pres** ; et quand on lit les roles, activites et emotions, alors aucun n'est
+    distribue par genre (`NAR-7`). *Unite de compte : le prenom distinct.*
+  - Etant donne chaque item, quand on lit sa situation, alors elle ne suppose **ni** configuration
+    familiale, **ni** logement, **ni** animal, **ni** depart en vacances, **ni** objet possede
+    (`NAR-8`).
+  - Etant donne chaque item, quand on lit son indice, alors il dit **ou regarder** dans le texte et
+    jamais la reponse (*"Relis la deuxieme phrase."* est un indice), en **huit mots au plus**
+    (`NAR-9`).
+  - Etant donne le paquet complet, quand on compte ses items, alors il en porte **au moins vingt** ;
+    et quand on compare leurs `texteSupport` deux a deux, alors **deux items ne partagent jamais le
+    meme** (`NAR-10`). *Motif de `nadia-prof` : la mecanique tire une manche au hasard et ne sait pas
+    poser deux questions sur un meme texte.*
+- **Ce qui n'est pas testable par un automate et releve de la seule porte de `nadia-prof`** :
+  `NAR-6` (**irreductible** - c'est la propriete du type de `COMP-2`, celle qui a attrape trois items
+  sur vingt le 2026-08-29 sur `cm1-comprehension`, *"precisement les trois que l'auteur croyait
+  bons"*), `NAR-4`, `NAR-7`, `NAR-8` et `NAR-9`. `NAR-2`, `NAR-3`, `NAR-5` et `NAR-10` sont
+  calculables.
+- **Signale a `yanis-qa` et `theo-archi`, sans que je demande qu'il soit fait dans ce lot** :
+  `nadia-prof` ecrit que **`NAR-5` s'automatise** par un test de la meme forme que
+  `aucuneCompositionNeRecopieUnMotDuTexteSupport` de `PaquetCm1ComprehensionTest`, **l'assertion
+  retournee**. *"Cette propriete sort de ma main le jour ou ce test existe ; je ne demande pas qu'il
+  soit ecrit dans le meme lot, je dis qu'il est possible."*
+- **Point de satisfaisabilite a instruire AVANT d'ecrire vingt items, non instruit a ce jour, et
+  c'est moi qui le leve** : `NAR-2` (18 mots, 2 phrases) et `NAR-5` (les **trois** propositions
+  figurent dans ce texte) se rencontrent, au sens de l'etape 1 de la procedure de `nadia-prof`.
+  Un texte de 18 mots doit loger trois candidats distincts **plus** l'action qui les separe. Le cas
+  le plus serre est la question en *"Ou"* : trois lieux, chacun introduit par une preposition, dans
+  deux phrases. **L'etape 2 - enumerer et compter - n'a ete faite ni par `nadia-prof` ni par moi.**
+  Le developpeur construit **trois items reels, un par forme de question (`Qui`, `Ou`, `Que`), avant
+  d'ecrire les dix-sept autres**, et remonte a `sofia-sm` si la forme *"Ou"* ne tient pas dans les
+  bornes - c'est une correction de specification, elle est a `nadia-prof`, pas un contournement a
+  inventer.
+- **Ce que `nadia-prof` demande d'ecrire sur la matrice le jour ou la ligne bougera**, et qui est une
+  condition et non une remarque : *"textes de deux phrases, un texte par question, questions
+  explicites seulement"*.
+- **Ce qu'elle nomme comme limite et que la matrice ne doit pas masquer** : ce paquet s'adresse a un
+  enfant **qui decode deja**, il n'est pas utilisable en debut de CP. Ce n'est pas propre a lui -
+  `cp-mot-manquant` et `cp-problemes-additifs` sont dans le meme cas - et ce produit n'a pas de
+  niveau a l'interieur du CP.
+- **Matiere premiere** : aucune identifiee dans `contenu-repris/` sur cette ligne ; le paquet est
+  integralement neuf.
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-texte-narratif-cp`,
+  `paquet: cp-texte-narratif`.
+- **Lien decision** : `DEC-0059`, section 2 ; arbitrage prealable de s23, section 3.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S24-PLU - Reconnaitre et utiliser les marques du pluriel les plus frequentes (`-s`) (francais CP)
+
+- **Besoin** : en tant qu'eleve de CP, je veux choisir la bonne facon d'ecrire un petit groupe de
+  mots dans une phrase, afin d'apprendre a regarder le petit mot devant le nom pour savoir s'il faut
+  un `s` a la fin, meme quand je ne l'entends pas.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Orthographe et grammaire",
+  "Reconnaitre et utiliser les marques du pluriel les plus frequentes (`-s`)"
+  (`squad/programme/francais/competences-cp.md`).
+- **Arbitrage prealable** : rendu le 2026-08-30, `ACCEPTE sous conditions PLU-1 a PLU-9` (meme
+  document, section 4). **Aucun arbitrage supplementaire n'est du.**
+- **Ce que ce paquet est - la forme, dans les mots de `nadia-prof`** : une phrase dont un groupe est
+  remplace par `___` ; les trois propositions sont **trois ecritures du meme groupe determinant +
+  nom** (`les chats` / `les chat` / `le chats`). Le `-s` du pluriel etant **muet** en francais, la
+  competence est orthographique et l'exercice ecrit est la bonne forme : *"c'est un des rares
+  candidats ou la mecanique est mieux placee que la voix."*
+- **Le piege que les conditions ferment, et qu'il faut connaitre pour ecrire les items** : si toutes
+  les bonnes reponses portent un `s`, un enfant apprend *"choisis la plus longue"* et reussit tout le
+  paquet sans regarder le determinant. `PLU-1`, `PLU-4` et `PLU-5` ferment ce chemin.
+- **Criteres d'acceptation**, repris des neuf conditions de `nadia-prof` :
+  - Etant donne chaque item, quand on lit ses trois propositions, alors elles portent le **groupe
+    entier, determinant compris** ; et quand on lit le reste de la phrase, alors elle ne contient
+    **aucun autre indice de nombre pour ce groupe** (`PLU-1`).
+  - Etant donne chaque item, quand on lit le determinant de sa bonne reponse, alors il appartient a
+    la population fermee **`un`, `une`, `le`, `la`, `les`, `des`** - six elements, et aucun autre
+    (`PLU-2`).
+  - Etant donne chaque item, quand on lit le nom de sa bonne reponse, alors il **ne se termine pas**
+    par `-eau`, `-au`, `-eu`, `-al`, `-ail`, **n'appartient pas** aux sept noms en `-ou` qui prennent
+    `-x` (`bijou`, `caillou`, `chou`, `genou`, `hibou`, `joujou`, `pou` - liste fermee et complete),
+    et **n'est pas deja termine** par `-s`, `-x` ou `-z` au singulier (`PLU-3`).
+  - Etant donne chaque item, quand on lit ses deux distracteurs, alors chacun appartient a l'une des
+    deux familles derivees **de la bonne reponse**, et le fichier **nomme** sa derivation :
+    **(a)** le nom porte la marque inverse de celle qu'exige son determinant, le determinant restant
+    celui de la bonne reponse (`les chats` donne `les chat`) ; **(b)** le determinant passe au nombre
+    inverse, le nom restant celui de la bonne reponse (`les chats` donne `le chats`). Un tiers doit
+    pouvoir **recalculer** les deux distracteurs a partir de la bonne reponse et de la table de
+    `PLU-2` (`un` et `une` donnent `des` ; `le` et `la` donnent `les` ; `les` et `des` donnent le
+    singulier du genre du nom) (`PLU-4`).
+  - Etant donne le paquet complet de `N` items, quand on compte les items dont la bonne reponse porte
+    la marque `-s` sur le nom, alors ils sont **au moins `arrondi inferieur(N/3)`** ; et quand on
+    compte ceux dont elle ne la porte pas, alors ils sont **au moins `arrondi inferieur(N/3)`**
+    (`PLU-5`). *Unite de compte : l'item.*
+  - Etant donne chaque item, quand on compte les mots de sa phrase support, alors ils sont **au plus
+    10** ; et quand on compte les caracteres d'une proposition, espaces comprises, alors ils sont
+    **au plus 15** (`PLU-6`).
+  - Etant donne chaque item, quand on lit chaque mot de sa phrase et de ses propositions, alors aucun
+    ne depasse **neuf lettres**, apostrophe non comptee (`PLU-7`).
+  - Etant donne chaque item, quand on lit son indice, alors il renvoie **au determinant** et jamais a
+    la reponse (*"Regarde le petit mot devant le nom."* est un indice), en **huit mots au plus**
+    (`PLU-8`).
+  - Etant donne le paquet complet, quand on compte ses items, alors il en porte **au moins vingt** ;
+    et quand on compte les emplois de chaque nom, alors aucun n'est utilise **plus de deux fois**
+    (`PLU-9`).
+- **Specification que j'ajoute, parce qu'elle est la consequence directe de `PLU-1` et qu'un
+  developpeur la decouvrirait sinon a l'item 12** : en francais, un verbe s'accorde **visiblement**
+  avec son sujet (*"le chat dort"* contre *"les chats dorment"*). **Un groupe place en position sujet
+  trahit donc son nombre par le verbe, et viole `PLU-1`.** Le groupe a completer est place en
+  position **complement** (*"Je regarde ___ dans le jardin."*), ou dans toute position ou aucun autre
+  mot de la phrase ne porte la marque du nombre. *C'est ma lecture de `PLU-1`, pas une condition
+  neuve de `nadia-prof` : si elle la juge trop etroite ou trop large, sa formulation prime.*
+- **Ce qui n'est pas testable par un automate et releve de la seule porte de `nadia-prof`** : `PLU-1`
+  (*"la phrase ne doit porter aucun autre indice de nombre"* - un jugement de langue), `PLU-8`, et le
+  niveau. `PLU-2` a `PLU-7` et `PLU-9` sont **calculables a partir du fichier** : la table de
+  derivation de `PLU-4` se recalcule, la repartition de `PLU-5` se compte, les longueurs se mesurent.
+  **Ce paquet n'est pas du type `COMP-2`** et ne consomme pas la condition d'au plus un par sprint.
+- **Couverture** : ligne entiere. **Aucune mention de couverture partielle n'est necessaire** -
+  `nadia-prof` l'ecrit : la ligne se restreint deja d'elle-meme au `-s`, et `PLU-3` suit cette
+  restriction au lieu de l'inventer.
+- **Matiere premiere** : aucune identifiee dans `contenu-repris/` sur cette ligne ; le paquet est
+  integralement neuf.
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-pluriel-cp`,
+  `paquet: cp-pluriel`.
+- **Lien decision** : `DEC-0059`, section 2 ; arbitrage prealable de s23, section 4.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S24-FRA - Notion de fraction simple, moitie "notion" seule (mathematiques CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux reconnaitre a quoi correspond une fraction ecrite en
+  chiffres ou dite en toutes lettres, afin de comprendre ce que veut dire partager un tout en parts
+  egales avant d'avoir a calculer avec.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), domaine "Nombres et calculs",
+  "Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une
+  droite numerique" (`squad/programme/mathematiques/competences-cm1.md`), **moitie "notion" seule**.
+- **Arbitrage prealable** : rendu le 2026-08-30, `ACCEPTE sous conditions FRA-1 a FRA-9` (meme
+  document, section 8bis). Ce n'est pas un arbitrage neuf : c'est celui du 2026-08-14
+  (`ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1, "Proxy 2") rendu actionnable.
+  **Aucun arbitrage supplementaire n'est du.**
+- **Ce que ce paquet est** : **aucun visuel, aucun dessin.** `nadia-prof` a verifie forme par forme,
+  en les ecrivant, que les conditions ci-dessous tiennent entierement en mots.
+- **Criteres d'acceptation**, repris des neuf conditions de `nadia-prof` :
+  - Etant donne le paquet complet, quand on lit chaque fraction **enoncee** et chaque **bonne
+    reponse**, alors elle est **inferieure a 1** et son denominateur est compris **entre 2 et 10**
+    (`FRA-1`). *La clause ne porte pas sur les distracteurs - voir `FRA-5`.*
+  - Etant donne chaque item, quand on identifie sa forme, alors elle est l'une des quatre suivantes
+    et d'aucune autre : **(a)** de l'ecriture chiffree vers la denomination ; **(b)** de la
+    denomination vers l'ecriture chiffree ; **(c)** de la situation de partage vers la fraction ;
+    **(d)** la lecture du denominateur seul. **Aucune comparaison de deux fractions, aucun calcul,
+    aucune equivalence** (`FRA-2`).
+  - Etant donne le paquet complet, quand on le classe par forme de `FRA-2`, alors **chacune des
+    quatre porte au moins trois items** (`FRA-3`). *Unite de compte : l'item.*
+  - Etant donne le paquet complet de `N` items, quand on compte les items dont la fraction a pour
+    numerateur 1, alors ils sont **au moins `arrondi inferieur(N/3)`** (`FRA-4`).
+  - Etant donne chaque item, quand on lit ses deux distracteurs, alors chacun appartient a l'une des
+    trois familles suivantes et le fichier **nomme** la derivation : **(a)** le numerateur et le
+    denominateur echanges ; **(b)** le denominateur decale de un ; **(c)** pour les formes (a) et (b)
+    de `FRA-2` seulement, une denomination formee sur le **numerateur** au lieu du denominateur. Un
+    tiers doit pouvoir **recalculer** les deux distracteurs a partir de la bonne reponse et de la
+    famille declaree (`FRA-5`).
+  - Etant donne chaque item, quand on compare ses trois propositions deux a deux, alors elles sont
+    **distinctes** (`FRA-6`).
+  - Etant donne chaque item, quand on compte les mots de son enonce, alors ils sont **au plus 25** ;
+    et quand on lit chaque mot, alors aucun ne depasse **onze lettres** (`FRA-7`).
+  - Etant donne chaque item, quand on lit son indice, alors il rappelle **ce que dit le
+    denominateur** et jamais la reponse, en **douze mots au plus** ; et quand on lit sa situation de
+    partage, alors elle ne suppose **ni** gouter, **ni** anniversaire, **ni** part de gateau, **ni**
+    objet possede - *"une bande de papier, un ruban, une longueur conviennent a tout le monde"*
+    (`FRA-8`).
+  - Etant donne le paquet complet, quand on compte ses items, alors il en porte **au moins vingt**
+    (`FRA-9`).
+- **Point de lecture a faire trancher AVANT d'ecrire les items de la forme (d), releve par moi en
+  appliquant l'etape 2 de la procedure de `nadia-prof` a `FRA-2` x `FRA-5`** : sur la forme **(d)**,
+  "la lecture du denominateur seul", la bonne reponse est un **nombre**, pas une fraction. La famille
+  (c) de `FRA-5` est explicitement reservee aux formes (a) et (b). La famille (a), *"le numerateur et
+  le denominateur echanges"*, decrit une **fraction** et non un nombre : dire ce qu'elle produit sur
+  la forme (d) suppose une lecture - vraisemblablement *"le denominateur de la fraction dont les deux
+  termes ont ete echanges"*, soit le numerateur d'origine. **`FRA-3` impose au moins trois items de
+  forme (d) ; ils ont donc besoin de deux distracteurs derives et je ne connais avec certitude que la
+  famille (b).** Le developpeur **ne choisit pas la lecture** : il remonte a `sofia-sm`, qui pose la
+  question a `nadia-prof`. Motif de cette prudence, dans ses propres mots sur `D-4` et `D-5` : une
+  clause a deux lectures a deja coute un cycle de refus a ce produit, et elle ecrit avoir *"assez paye
+  `D-4` et `D-5` pour ne pas recommencer"*.
+- **Ce qui n'est pas testable par un automate et releve de la seule porte de `nadia-prof`** : `FRA-8`
+  et le jugement de niveau. `FRA-1` a `FRA-7` et `FRA-9` sont calculables a partir du fichier.
+  **Ce paquet n'est pas du type `COMP-2`.**
+- **Couverture partielle nommee - c'est une condition, pas une remarque** (`FRA-9`). La mention
+  exacte que `nadia-prof` exige sur la matrice le jour ou la ligne bouge est : **"moitie 'notion de
+  fraction simple' seule ; la moitie 'reperage sur une droite numerique' reste non couverte"**. Son
+  avis de fond du 2026-08-14 est inchange : le reperage exige une ligne reellement dessinee et
+  graduee, et *"je prefere une case vide a une case fausse"*.
+- **Matiere premiere** : `contenu-repris/fractions/cm1-compare.yml` a ete **REFUSE** par `nadia-prof`
+  sur trois motifs (comparer deux fractions n'est pas la competence demandee ; la mesure du fichier
+  lui-meme ; la mecanique qu'il suppose n'existe pas) - meme document, section 8. **Ce fichier n'est
+  pas la matiere de ce paquet** : le paquet est neuf.
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-fractions-cm1`,
+  `paquet: cm1-fractions`.
+- **Lien decision** : `DEC-0059`, section 2 ; arbitrage prealable de s23, section 8bis ;
+  `ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md`, section 1, "Proxy 2".
+- **Agent pressenti** : a affecter au planning par `sofia-sm`.
+
+### S24-SAI-1 - La mecanique de saisie existe et un enfant peut y jouer une partie entiere
+
+- **Besoin** : en tant qu'eleve, je veux ecrire ma reponse moi-meme au lieu de la choisir parmi
+  celles qu'on me montre, afin que ce soit vraiment moi qui trouve, et pas la chance.
+- **Competence programme visee** : **transverse - pas de contenu pedagogique.** Cette story livre une
+  mecanique, pas un contenu. **Elle ne fait bouger aucune ligne de la matrice** et ce n'est pas un
+  manque : `DEC-0059`, section 5.1, verifie une par une les 18 lignes `non couvert` et montre
+  qu'aucune n'est ouverte par cette mecanique, en raison des six refus prealables `R1` a `R6` de
+  `nadia-prof` et de la separation d'avec l'operation posee.
+- **Conception deja rendue, a ne pas rouvrir** : `SAI-1` a `SAI-12` (dont `SAI-2` amendee en `SAI-2a`,
+  `SAI-2b`, `SAI-2c` le 2026-08-25, et `SAI-9` amendee le 2026-08-24), `R1` a `R6`, `SEUIL-1` a
+  `SEUIL-5`, toutes dans
+  `squad/conformite/ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md` ; `ADR-0058` et `ADR-0059` pour
+  l'architecture. `ADR-0058` l'ecrit lui-meme : *"ce qui reste a decider par un lot est de
+  l'implementation, pas de l'architecture."*
+- **Criteres d'acceptation** - je ne reformule aucune condition de `nadia-prof` et je ne les recopie
+  pas toutes : je pose ce qui doit etre **observable sur l'increment livre**, chaque critere nommant
+  la condition dont il derive.
+  - Etant donne une manche d'un jeu de saisie, quand l'enfant arrive sur l'ecran, alors il dispose
+    d'un champ ou ecrire sa reponse et d'un moyen de la valider, **tous deux atteignables et
+    actionnables au clavier seul, sans souris** (`SEUIL-4`).
+  - Etant donne un champ de saisie renseigne, quand l'enfant efface et retape avant de valider, alors
+    sa correction est prise en compte : **aucune frappe n'est irreversible** (`SEUIL-3`).
+  - Etant donne une reponse validee, quand le serveur rend son verdict, alors l'enfant voit
+    **a l'ecran, au moment du verdict, la chaine sur laquelle ce verdict a ete rendu** (`SAI-9`, dans
+    sa redaction amendee du 2026-08-24, qui fait foi contre la redaction d'origine ; `SEUIL-1`).
+  - Etant donne un paquet qui ne declare pas la stricte egalite, quand l'enfant repond avec un accent
+    manquant, une majuscule de plus ou de moins, ou une espace de trop entre deux mots, alors la
+    reponse est **JUSTE** (`SAI-1`, `SAI-3`, `SAI-4`).
+  - Etant donne un paquet qui declare la stricte egalite au titre de `SAI-2a`, quand l'enfant repond
+    avec un accent manquant, alors la reponse est **FAUSSE** ; et le mode strict ne s'obtient **que**
+    par cette declaration du contenu, jamais autrement.
+  - Etant donne une reponse juste ecrite sous une forme acceptee du paquet, quand elle est evaluee,
+    alors elle **ne consomme aucun des trois essais** de la manche (`SEUIL-2`).
+  - Etant donne le domaine et l'application, quand les regles ArchUnit du depot sont executees, alors
+    la mecanique de saisie **ne connait aucune regle d'orthographe francaise** : les formes acceptees
+    viennent du contenu, la normalisation appartient a la mecanique
+    (`uneMecaniqueIgnoreLaMatiere`, `ADR-0058`).
+  - Etant donne `ADR-0058`, quand on execute la suite de tests apres ce lot, alors **les deux regles
+    executables que cet `ADR` declare dues avec le lot de code sont ecrites et vertes** - il nomme
+    lui-meme laquelle est deja verte et lesquelles ne le sont pas.
+  - Etant donne `mvn -B clean verify` a la racine du reacteur, quand il s'execute apres ce lot, alors
+    il est vert. *Perimetre : le reacteur complet, aucun `-pl` - toute mesure partielle porte `-am`
+    (`CLAUDE.md`).*
+- **Ce que cette story ne fait pas** : elle ne met aucun jeu au catalogue et n'expose donc rien a un
+  enfant. C'est `S24-SAI-2` qui le fait, et elle est conditionnelle.
+- **Ce que je ne tranche pas, et qui appartient a `theo-archi`** : le decoupage du lot, le retypage de
+  l'etat de partie de `adapter-web` (20 occurrences de `BanditManchot` sur 19 lignes dans 3 fichiers,
+  mesure par lui dans `ADR-0058`), l'ordre de fusion avec le Lot A. **Aucun chiffre d'effort de
+  developpement n'existe pour ce lot dans le depot et je n'en invente pas.**
+- **Ce que `nadia-prof` garde en propre sur cette mecanique, et qu'aucune CI ne verra** : `SAI-6` et
+  `SAI-7` (le contenu des listes de formes acceptees - *"le point le plus dangereux de toute cette
+  mecanique : un bareme faux passe une CI verte sans laisser de trace"*), `SAI-2b`, `SAI-2c`, `SAI-8`,
+  et les six refus `R1` a `R6`, qu'aucune regle n'empeche d'etre violes.
+- **Lien decision** : `DEC-0059`, section 5 ; `DEC-0042` (Lot C) ; `DEC-0047`, amendement du
+  2026-08-25 ; `ADR-0058` ; `ADR-0059`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, avec faisabilite de `theo-archi`.
+
+### S24-SAI-2 - Un premier paquet joue sur la mecanique de saisie (CONDITIONNELLE)
+
+- **Statut** : **conditionnelle a un arbitrage prealable de `nadia-prof`, pose des l'ouverture du
+  sprint** (`DEC-0059`, section 6.2). **Aucun developpement ne commence avant sa reponse.**
+- **Note du 2026-08-31 - le statut sous la bascule, ecrit avant le declencheur** : `nadia-prof` a
+  repondu le 2026-08-30 (complements a 10 en saisie numerique, `CPL-1` a `CPL-8`), la condition
+  ci-dessus est donc levee et la story est engagee au perimetre. **Si `sofia-sm` declare la bascule
+  de son planning de s24** (section 5.3 de `planning.md`), **cette story sort du sprint et son statut
+  devient *reportee a s25, rang 1*** - elle n'est ni supprimee ni transformee en intention, et le
+  report est compte comme le premier de ce paquet (`DEC-0059`, amendement du 2026-08-31, section A.3,
+  condition 3). Dans ce cas `S24-DEN` prend sa place et la mecanique de saisie est livree sans etre
+  atteignable depuis le catalogue, ce que la meme section A.3 autorise sous quatre conditions
+  cumulatives.
+- **Pourquoi cette story existe** : une mecanique qui n'apparait dans aucune entree de catalogue
+  n'est jouable par aucun enfant, et ce produit a deja cloture quatre sprints d'affilee sans
+  increment jouable (`DEC-0037`, cloture de s17). s24 vise la mecanique **jouable**.
+- **Pourquoi elle est conditionnelle et pourquoi je ne choisis pas son contenu** : le seul usage que
+  `nadia-prof` recommande positivement pour la saisie est *"la reponse numerique courte, qui supprime
+  la chance sur les paquets de calcul deja `couvert-valide`"*, en ecrivant elle-meme que *"ce n'est
+  pas une couverture neuve, c'est une amelioration d'existant"*. Juger si un second jeu sur une ligne
+  deja verte vaut son audit est un jugement pedagogique : il est a elle.
+- **Competence programme visee** : **aucune ligne neuve.** Si la cible retenue est un paquet de calcul
+  CP deja `couvert-valide` (complements a 10, additions jusqu'a 10), la ligne concernee **ne change
+  pas de statut** : elle est deja `couvert-valide` et un second jeu ne la deplace pas.
+- **Les trois questions posees a `nadia-prof`, dont la reponse fixe cette story** :
+  1. Sur quel contenu ce premier paquet doit-il porter ?
+  2. Un jeu de saisie sur une ligne deja `couvert-valide` demande-t-il un Done pedagogique complet ?
+     *Ma lecture, a confirmer ou corriger par elle : oui, c'est une entree de catalogue neuve donc une
+     `FICHE-<jeu>.md` neuve, mais la ligne de matrice ne bouge pas.*
+  3. Quelles conditions s'ajoutent a `SAI-1` a `SAI-12` et `SEUIL-1` a `SEUIL-5` pour ce paquet
+     precis ? Ces conditions decrivent la **mecanique** ; elles ne decrivent pas un **paquet**.
+- **Criteres d'acceptation deja acquis quelle que soit la reponse, parce qu'ils viennent de conditions
+  deja ecrites** :
+  - Etant donne le paquet, quand on lit sa cible, alors elle **n'est aucune** des lignes fermees par
+    `R1` a `R6` ni l'une des deux operations posees (`DEC-0059`, section 5.1, tableau).
+  - Etant donne un paquet de niveau CP a reponse numerique, quand on lit chaque bonne reponse, alors
+    elle compte **au plus deux chiffres**. *Origine : `SAI-11`, qui bornait la saisie CP au numerique
+    court. Elle a ete **levee** le 2026-08-25 sur sa moitie "refus de l'alphabetique" ; la borne de
+    deux chiffres reste la description de l'usage que `nadia-prof` recommande, et c'est a ce titre
+    que je la reprends - a elle de dire si elle la maintient comme condition.*
+  - Etant donne le paquet, quand on lit ses listes de formes acceptees, alors chacune a ete **relue
+    par `nadia-prof`** avant l'audit (`SEUIL-5` : *"une liste de formes acceptees ecrite a l'estime
+    est un bareme secret : elle decide de la note sans que personne ne l'ait validee, et aucune CI ne
+    la verra jamais"*).
+  - Etant donne le paquet, quand il declare ou non la stricte egalite, alors il le fait **au niveau
+    de l'item** et non du seul paquet (`SAI-2a`, observation de `nadia-prof` reprise par `ADR-0058`).
+- **Lien decision** : `DEC-0059`, sections 5.3 et 6.2 ;
+  `squad/conformite/ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`, sections 6, 7, 10 et ses trois
+  amendements du 2026-08-25.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage prealable, par `sofia-sm` ; le developpement
+  n'est affecte qu'apres.
+
+### S24-DEN - "Lire, ecrire et decomposer les nombres jusqu'a 100" (mathematiques CP) - QUATRIEME PAQUET CONDITIONNEL
+
+- **Statut** : **conditionnelle a la reconfirmation par `nadia-prof` de sa borne d'audit a quatre
+  paquets ou plus** (`DEC-0059`, sections 4.4 et 6.1). **Non engagee au perimetre de s24.**
+- **Ce qu'elle rapporte, dit avant qu'on l'affecte** : **zero ligne de matrice.** La condition
+  `DEN-2` de `nadia-prof` est explicite et qu'elle declare non negociable - *"la ligne reste
+  `en cours` dans la matrice, jamais `couvert-valide`, meme si je valide le paquet"* - parce que le
+  verbe "denombrer", premier de cette ligne, n'est travaille par aucun jeu et demande une famille
+  visuelle avec interaction reelle sur une collection. Ce qu'elle rapporte est **un jeu de plus
+  qu'un enfant de CP peut jouer**, ce qu'aucun compteur de couverture ne voit.
+- **Besoin** : en tant qu'eleve de CP, je veux passer des chiffres aux mots et des mots aux chiffres
+  pour des nombres jusqu'a cent, et dire combien il y a de dizaines et d'unites, afin de comprendre
+  comment les nombres sont construits et de ne plus me tromper sur *soixante-douze* ou
+  *quatre-vingts*.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs",
+  "Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100"
+  (`squad/programme/mathematiques/competences-cp.md`), **moitie "lire, ecrire, decomposer" seule**.
+- **Arbitrage prealable** : rendu le **2026-08-24**, `REFUSE sur "denombrer" - ACCEPTE SOUS
+  CONDITIONS DEN-1 a DEN-8 sur "lire, ecrire, decomposer", en couverture partielle nommee`
+  (`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, section 1).
+  **Aucun arbitrage supplementaire n'est du** : la matrice le decrit depuis cette date comme
+  *"candidat ouvrable sans arbitrage supplementaire des qu'une capacite de developpement lui est
+  affectee"*.
+- **Criteres d'acceptation**, repris des huit conditions de `nadia-prof` :
+  - Etant donne le paquet complet, quand on lit chaque enonce et chaque proposition, alors **aucun
+    item ne demande a l'enfant de compter une quantite affichee** - ni glyphe repete, ni face de de,
+    ni suite de caracteres a denombrer (`DEN-1`). *`nadia-prof` : "un seul item de ce type et je
+    refuse le paquet entier, sans discussion sur les autres."*
+  - Etant donne le paquet complet, quand on le classe par sens de transcription, alors **les deux
+    sens sont presents** : chiffres vers lettres (lire) et lettres vers chiffres (ecrire) (`DEN-3`).
+  - Etant donne chaque item, quand on lit ses distracteurs, alors ils se distinguent par la **valeur
+    designee** et jamais par l'orthographe des mots-nombres ; et quand on lit la designation
+    litterale de l'enonce, alors elle est **sans faute et constante dans tout le paquet**
+    (`DEN-3`, reconduction de `GN-1` et `GN-2`).
+  - Etant donne le paquet complet, quand on isole les items de decomposition, alors **au moins la
+    moitie d'entre eux emploie le vocabulaire dizaines/unites** (*"4 dizaines et 7 unites"*), et non
+    la seule ecriture additive (*"40 + 7"*) (`DEN-4`).
+  - Etant donne tout texte lu par l'enfant, quand on y cherche le mot **"decomposer"**, alors il n'y
+    figure jamais : la consigne dit *"Combien y a-t-il de dizaines ?"* ou *"Choisis la bonne
+    ecriture"* (`DEN-5`).
+  - Etant donne le paquet complet, quand on compte les items dont la **bonne reponse** porte sur un
+    nombre entre **60 et 99**, alors ils representent **au moins un tiers** des items (`DEN-6`).
+  - Etant donne le paquet complet, quand on le parcourt, alors il porte **au moins un nombre entre 11
+    et 16** et **au moins un multiple de dix ecrit sans unite** (`DEN-7`).
+  - Etant donne chaque item, quand on lit ses propositions, alors elles ont **le meme nombre de
+    chiffres**, ou une ecriture litterale de longueur comparable a un mot pres : **aucun item n'est
+    resoluble sans lire le nombre** (`DEN-8`).
+- **Couverture partielle nommee - c'est une condition et `nadia-prof` la declare non negociable**
+  (`DEN-2`). La note exacte a porter sur la matrice, **sous sa signature** : *"le verbe 'denombrer',
+  premier de cette ligne, n'est travaille par aucun jeu ; seuls 'lire', 'ecrire' et 'decomposer' le
+  sont"*. **La ligne reste `en cours`.**
+- **Matiere premiere** : `contenu-repris/associer/cp-chiffre-mot.yml` existe sur cette ligne, mais
+  j'ai deja ecrit qu'il *"ne tient aucune des huit conditions en l'etat, redaction quasi entiere a
+  refaire"* (`DEC-0051`, niveau 2 ; repris plus haut dans ce fichier). **Le traiter comme une reserve
+  a relire, pas comme un point de depart.**
+- **Ce qui n'est pas testable par un automate** : `DEN-1` (l'absence de demande de comptage se lit,
+  mais son intention se juge), `DEN-4`, et le niveau. `DEN-6`, `DEN-7` et `DEN-8` sont calculables.
+  **Ce paquet n'est pas du type `COMP-2`.**
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-nombres-100-cp`,
+  `paquet: cp-nombres-100`.
+- **Lien decision** : `DEC-0059`, sections 4.3, 4.4 et 6.1 ;
+  `ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, section 1.
+- **Agent pressenti** : **aucun tant que `nadia-prof` n'a pas repondu.** `sofia-sm` affecte ensuite,
+  si elle a la capacite.
+
+---
+
+## Backlog - le score cesse d'etre parfait par elimination (`DEC-0061`), non engage a s24
+
+Ecrit le 2026-08-31, hors du perimetre gele de s24, sur la reserve 5 elargie de `nadia-prof` du
+2026-08-30 et l'obstacle 2 du planning de s24 que `sofia-sm` m'a rendu au fond.
+
+### S25-SCO-1 - Le score d'une partie cesse d'etre parfait par elimination - NON ENGAGEE, candidate de tete a s25
+
+- **Statut** : **non engagee.** Candidate de tete a l'ouverture de s25 (`DEC-0061`, section 4).
+  **Bloquee par deux instructions nommees, dans cet ordre** : le resultat pedagogique attendu, du a
+  `nadia-prof` ; puis la forme de la correction et son cout, dus a `theo-archi` avec son `ADR`
+  (`DEC-0061`, section 5). **Aucun developpement ne commence avant les deux.**
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux que le resultat affiche a la fin d'une
+  partie me dise vraiment ce que j'ai su faire, afin qu'un bon score veuille dire quelque chose et
+  que je sache sur quoi revenir.
+- **Competence programme visee** : **transverse - pas de contenu pedagogique.** Le defaut est une
+  propriete de la mecanique `M5` face au nombre de propositions d'un item ; `nadia-prof` l'ecrit
+  ainsi : *"Ce n'est pas un defaut de contenu, c'est une propriete de `M5`"*. **Aucune ligne de la
+  matrice ne bouge**, ni par cette story ni par sa livraison.
+- **Le fait, avec sa source** : sur les 615 items enumeres des 27 paquets, **582 (94,6 pour cent)
+  portent deux ou trois propositions** ; un enfant qui presse au hasard sans represser une
+  proposition barree y a necessairement raison au dernier essai, compte comme reussite. Chiffre,
+  population et methode de `nadia-prof` (arbitrage prealable de s24, section 7.1), **non reproduits
+  par moi**. Ce que j'ai verifie moi-meme dans `BanditManchotSession.java` :
+  `ESSAIS_AVANT_REVELATION` vaut `3`, `jouer` teste la bonne reponse avant de compter l'essai,
+  `resoudre(true)` incremente `reussites` sans regarder `essaisSurLaManche`, et
+  `propositionsEssayees` conserve les propositions pressees.
+
+#### Criteres d'acceptation correctifs - rouges aujourd'hui, verifies contre l'existant avant d'etre ecrits
+
+Chacun a ete confronte au comportement actuel de `BanditManchotSession` avant d'etre ecrit ; c'est
+ce qui les distingue d'une phrase.
+
+- **`SCO-1`** - Etant donne un item a **trois** propositions, quand l'enfant presse successivement
+  les deux distracteurs puis la bonne reponse, alors **la manche n'est pas comptee comme une
+  reussite**. *Aujourd'hui elle l'est : `resoudre(true)` fait `reussites + 1` quel que soit le nombre
+  d'essais deja depenses.*
+- **`SCO-2`** - Etant donne un item a **deux** propositions, quand l'enfant presse le distracteur
+  puis la bonne reponse, alors **la manche n'est pas comptee comme une reussite**. *Aujourd'hui elle
+  l'est, par le meme chemin.*
+- **`SCO-3`** - Etant donne un paquet dont **tous** les items portent trois propositions, quand une
+  partie complete est jouee par un choix qui ne presse jamais deux fois la meme proposition et ne
+  connait aucune reponse, alors **le score final n'est pas parfait**. *Aujourd'hui il l'est,
+  systematiquement et sur 94,6 pour cent des items du catalogue.* **C'est le critere qui porte
+  l'intention produit ; les deux precedents en sont le detail.**
+
+#### Criteres de non-regression - verts aujourd'hui, et ecrits pour qu'une correction ne deborde pas
+
+Ils ne corrigent rien et je ne les presente pas comme des correctifs. Ils bornent le remede.
+
+- **`SCO-4`** - Sur n'importe quel item, une manche resolue **au premier essai** reste comptee comme
+  une reussite. *Vert aujourd'hui.*
+- **`SCO-5`** - Une manche resolue par la **revelation** n'est jamais comptee comme une reussite
+  (`M11`, clause 3). *Vert aujourd'hui.*
+- **`SCO-6`** - Une partie de `nombreDeManches` manches en presente toujours `nombreDeManches`
+  distinctes, quel que soit le nombre d'essais depenses sur chacune, et ne se termine jamais au
+  milieu d'une question (`M3`). *Vert aujourd'hui.*
+- **`SCO-7`** - **Une reponse juste ne coute jamais un essai** (`SEUIL-2`). *Vert aujourd'hui, et
+  `nadia-prof` nomme `SEUIL-2` parmi les proprietes qu'aucun garde-fou executable ne tient
+  (arbitrage prealable de s24, section 8).* Cette story est l'occasion de le rendre executable ; ce
+  n'est pas une exigence de plus, c'est le meme comportement, ecrit.
+
+#### Ce que cette story ne dit pas, et ce n'est pas un oubli
+
+- **Elle ne dit pas comment `M5` change.** Le nombre d'essais, sa modulation par le nombre de
+  propositions, le comptage du score, ou toute autre voie sont a `theo-archi` avec son `ADR`. Les
+  criteres ci-dessus sont des **resultats observables**, jamais un chemin.
+- **Elle ne dit pas ce qu'un enfant doit pouvoir faire d'une manche** quand l'elimination est
+  possible : c'est a `nadia-prof`, et c'est la premiere des deux instructions bloquantes.
+- **Elle ne retire aucun Done** et ne conteste aucun contenu : tous les paquets vises ont ete valides
+  sur leur contenu, qui est juste.
+- **Le sort des Done deja prononces sur les 27 jeux que la correction ferait bouger n'est pas
+  tranche ici** : la question est posee a l'utilisatrice par `DEC-0060`, section 8, `Q2`. Elle est
+  bloquante pour la livraison, pas pour l'instruction.
+- **Ce qui n'est pas testable par un automate** : rien, une fois le remede choisi. `SCO-1` a `SCO-7`
+  sont tous calculables sur la session du domaine, sans navigateur et sans jugement. C'est
+  precisement pourquoi ce defaut aurait pu etre attrape par un test des s04, et ne l'a pas ete.
+- **Lien decision** : `DEC-0061` ; `DEC-0044`, section 1 (non rouverte, exacte sur ce qu'elle a
+  juge) ; reserve 5 de `nadia-prof`, elargie le 2026-08-30.
+- **Agent pressenti** : **aucun.** `nadia-prof` rend le resultat attendu, `theo-archi` rend l'`ADR`,
+  puis `sofia-sm` affecte si elle a la capacite.
+
+---
+
+## Backlog ouvert a la cloture de s24 (2026-08-31)
+
+### S25-NAR-1 - Aucune phrase seule ne suffit sur `cp-texte-narratif` - NON ENGAGEE
+
+- **Statut** : **non engagee.** `nadia-prof` : *"Je ne le demande pas et je ne le bloque pas."* Elle
+  n'ouvre **aucune reserve** sur ce paquet et son Done du 2026-08-31 est entier.
+- **Rang** : **derriere `S25-SCO-1`** (`DEC-0061`). Motif : le score parfait par elimination touche
+  94,6 % des items du catalogue et le retour de fin de partie de tous les jeux ; ce point-ci touche
+  une part des items d'un seul paquet, sur une competence deja `couvert-valide`, et `nadia-prof`
+  juge le raccourci *"reel, et moins grave que celui de s12"*. **Un rang, pas un classement de
+  valeur.**
+- **Besoin** : en tant qu'eleve de CP, je veux avoir a lire tout le petit texte pour repondre, afin
+  d'apprendre a le comprendre plutot qu'a reperer le mot qui ressemble a la reponse.
+- **Competence programme visee** : francais, CP (cycle 2), "Lecture et comprehension de l'ecrit",
+  "Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi)"
+  (`squad/programme/francais/competences-cp.md`). **La ligne est deja `couvert-valide` depuis le
+  2026-08-31 et cette story ne la fait pas bouger** : elle ameliore un increment valide, elle n'ouvre
+  aucune couverture.
+- **Le libelle est de `nadia-prof`, repris mot pour mot, et son contraire aussi** :
+  *"reecrire les items dont une seule phrase decide, pour qu'aucune phrase seule ne suffise"*, et
+  **surement pas** *"ajouter des items"*. **Je ne le traduis pas en une propriete plus commode a
+  tester.**
+- **Pourquoi ajouter des items est explicitement exclu, dans ses mots** : *"Ajouter des items ne
+  retire aucun raccourci : cela dilue un denominateur. [...] Ce serait rendre un compteur plus vert
+  en laissant le defaut ou il est."* Une story qui ferait tomber le taux en allongeant le paquet
+  serait **refusee par construction**, et c'est ecrit ici pour que personne ne la propose.
+- **Ce que le geste est** : mettre un distracteur dans la meme phrase que la reponse, **item par
+  item, sur les items existants**. C'est ce que `lea-dev` a fait sur l'item 2 le 2026-08-31.
+
+#### Critere d'acceptation correctif - rouge aujourd'hui, verifie contre l'existant
+
+- **`NARR-1`** - Etant donne les 20 items de `cp-texte-narratif`, quand on mesure **par la methode de
+  `nadia-prof`** - decoupage du support sur les trois ponctuations fortes, repliage de casse,
+  occurrence par sous-chaine - alors **le nombre d'items pour lesquels une phrase du support porte la
+  bonne reponse sans porter aucun distracteur est nul, sur chacune des phrases**.
+  *Aujourd'hui il ne l'est pas : **9 items sur 20 pour la premiere phrase (45,0 %), 10 sur 20 pour la
+  seconde (50,0 %)**, chiffres de `nadia-prof` refaits par elle le 2026-08-31 et non reproduits par
+  moi.* **Le zero est sa formulation** - *"qu'aucune phrase seule ne suffise"* - **et non un seuil que
+  j'invente** : `NAR-11` est **sans seuil chiffre**, par son choix explicite, et je n'en fabrique pas.
+
+#### Criteres de non-regression - verts aujourd'hui, et c'est le vrai risque d'une reecriture
+
+Une reecriture item par item touche les supports, donc les huit conditions qui se comptent sur le
+paquet. `nadia-prof` les a toutes refaites le 2026-08-31 plutot que de raisonner sur le diff ; une
+reecriture plus large doit tenir le meme standard.
+
+- **`NARR-2`** - le paquet compte toujours **20 items**, et **aucun n'est ajoute ni retire**.
+- **`NARR-3`** - `NAR-1` a `NAR-10` tiennent toutes, **reverifiees sur le paquet entier et non sur le
+  diff** : support 18 mots max et 2 phrases max, support plus enonce 23 mots max (`NAR-2`) ; mot le
+  plus long 9 lettres (`NAR-3`) ; les 20 enonces commencent par *Qui*, *Ou* ou *Que* (`NAR-4`) ; zero
+  proposition absente de son support sur les 60 (`NAR-5`) ; 20 prenoms distincts, 10 masculins et 10
+  feminins (`NAR-7`) ; aucun mot de logement ni de configuration familiale (`NAR-8`) ; indice de 8
+  mots au plus et aucun indice ne nomme sa reponse (`NAR-9`) ; 20 supports distincts (`NAR-10`).
+- **`NARR-4`** - `ADR-0072` reste vert. **La marge nulle est epinglee dans un contre-exemple gele,
+  pas dans le paquet servi** : `nadia-prof` le precise elle-meme pour couper court a la lecture
+  *"on ne peut pas y toucher, un test epingle 50,0 %"*, qui serait fausse.
+
+#### Le cout reel, et il n'est pas dans le code
+
+- **Une reecriture rouvre un audit de type `COMP-2`** - `NAR-6` en est, et `nadia-prof` n'accepte
+  **qu'un seul paquet de ce type par sprint**. Un sprint qui prend cette story **ne peut prendre
+  aucun autre paquet `COMP-2`**, `SUB` comprise.
+- **Sous `DEC-0060` `Q1`, reecrire le contenu rend le jeu modifie** et le fait rentrer dans la porte
+  par la voie ordinaire : c'est un audit de contenu plein, pas une decharge de structure.
+- **`lea-dev` a eu raison de ne pas le faire seule** : elle a remonte le point plutot que de rouvrir
+  un audit `COMP-2` de sa propre initiative, et `nadia-prof` le note.
+- **Lien decision** : `FICHE-bandit-manchot-texte-narratif-cp.md`, sections 3 et 5 du second verdict
+  du 2026-08-31 ; `NAR-11` (non retroactive, sans seuil) ; `ADR-0072`.
+- **Agent pressenti** : **aucun.** `sofia-sm` affecte si elle a la capacite, et seulement dans un
+  sprint qui n'a pas deja consomme son quota `COMP-2`.
+
+---
+
+## Rang propose a l'ouverture de s25 (2026-08-31)
+
+**Ce que ce bloc est** : mon rang, et rien d'autre. **L'affectation et la capacite sont a
+`sofia-sm`**, l'arbitrage prealable de tout contenu neuf est a `nadia-prof`, et je ne prejuge ni de
+l'un ni de l'autre. Aucun chiffre de couverture n'est projete ici : un objectif de sprint n'est pas
+un Done, et je n'ai aucune methode pour prevoir un verdict.
+
+### 1. `S25-SCO-1` - le score parfait par elimination. **Tete.**
+
+Motifs ecrits dans `DEC-0061` et son amendement, plus deux faits neufs de la cloture :
+
+- **`nadia-prof`, a verser tel quel** : *"le catalogue contient desormais un jeu sur trente et un ou
+  un enfant qui ne sait pas peut echouer."* Trente sur trente et un ne le permettent pas.
+- **La file de reaudit des 27 ne s'ouvre pas** - `nadia-prof` a discharge les lots 1, 3 et 4 le
+  2026-08-31 - donc **l'argument de sequencement de l'amendement A.3 de `DEC-0061` tombe** : corriger
+  `M5` a s25 ne profite plus d'une file deja ouverte. **Je le signale contre mon propre rang.** Ce
+  qui ne tombe pas : le cout du report **augmente mecaniquement a chaque sprint**, puisque chaque jeu
+  neuf est un jeu de plus a reauditer le jour de la correction. Le rang tient sur ce motif-la, plus
+  faible et suffisant.
+
+### 2. Le motif des quatre proprietes promises et non tenues - et la part qui est de ma main
+
+La retro de s24 etablit quatre cas en une journee : *"un enonce qui affirme plus large que ce que son
+code verifie, et une CI verte qui le certifie"*. Trois sont des garde-fous - **c'est de
+`theo-archi` et `yanis-qa`, je n'y touche pas et je ne le classe pas.**
+
+**Le quatrieme est `CPL-3` et il est de mon perimetre.** Une condition pedagogique *ecrite, datee,
+precise* du 2026-08-30 que **rien n'executait** : un enfant de CP qui ecrit `03` pour `3` s'entend
+dire qu'il s'est trompe et perd un essai. **Trouve par `nadia-prof` en jouant, apres 923 tests
+verts.**
+
+**La cause, verifiee dans mon propre backlog plutot que supposee** : la story `S24-SAI-2` porte
+quatre criteres ecrits **avant** la reponse de `nadia-prof`, puis une note de statut qui renvoie a
+*"`CPL-1` a `CPL-8`"*. **Quand elle a repondu le 2026-08-30, je ne suis pas revenue transformer ses
+huit conditions en huit criteres.** `CPL-3` n'est donc jamais devenue un critere dont `yanis-qa`
+pouvait tirer un test. **Un renvoi vers une plage de conditions dans un autre document n'est pas un
+critere d'acceptation** - ma propre charte dit que `yanis-qa` doit pouvoir en tirer un test sans me
+redemander ce que je voulais dire, et un intervalle ne le permet pas.
+
+**La regle que j'adopte, et elle est verifiable par un tiers sur mes stories** :
+
+> **Une story ne cite jamais une plage de conditions.** Chaque condition applicable devient **un
+> critere nomme, dans les mots de la condition**. Quand un arbitrage prealable arrive apres
+> l'ecriture d'une story, **la story est reprise dans le meme geste** : une reponse qui n'est pas
+> recopiee en criteres n'a pas ete recue.
+
+**Ce n'est pas une story et ce n'est pas du developpement** : c'est ma conduite, elle s'applique des
+maintenant, et elle se controle en relisant mes stories - une plage citee est un defaut visible.
+
+### 3. `S25-NAR-1` - aucune phrase seule ne suffit. **Derriere `S25-SCO-1`.**
+
+Ecrite ci-dessus. **Non demandee et non bloquee** par `nadia-prof`. Elle consomme le quota d'un seul
+paquet de type `COMP-2` par sprint, ce qui la met en concurrence directe avec le point 4.
+
+### 4. `SUB` - le motif de son premier report n'existe plus, et c'est a moi de le dire
+
+`DEC-0059`, section 2, a reporte `SUB` ("Reperer les substituts d'un personnage", francais CM1) et
+**a compte ce report comme le premier**. Le motif etait unique et explicite : la regle de composition
+de `nadia-prof` interdit deux paquets de type `COMP-2` dans un meme sprint, et `NAR` avait ete
+preferee.
+
+> **`NAR` est `couvert-valide` depuis le 2026-08-31. Le quota `COMP-2` de s25 est libre. Le motif du
+> premier report est consomme et ne peut pas resservir.**
+
+**Si `SUB` n'est pas prise a s25, c'est un second report, et il devra porter un motif neuf, ecrit,
+qui ne soit pas la composition.** `DEC-0007` a tenu la couverture programme fermee trois sprints
+d'affilee, chaque fois pour un motif defendable. **Je l'ecris maintenant, contre moi, pour que le
+motif du second report ne s'invente pas au moment ou il servira.**
+
+*Elle reste sous arbitrage prealable de `nadia-prof` comme tout paquet, et je ne prejuge pas de sa
+capacite : `NAR` et `SUB` sont les deux paquets dont elle a dit que l'audit lui couterait le plus
+cher.*
+
+### 5. Nomme, non engage, et non classe par moi
+
+Ces points existent, ont un proprietaire, et **ne sont pas ranges par ce bloc** parce qu'ils ne sont
+pas de mon perimetre. Ils sont ecrits ici pour qu'ils ne disparaissent pas du fil.
+
+| Point | Proprietaire |
+|---|---|
+| Les trois garde-fous qui verifiaient moins que leur nom (retro de s24, 5.1, cas 1 a 3) | `theo-archi`, `yanis-qa` |
+| La **capture de rendu de reference**, chiffree par `theo-archi` et **non financee** - `nadia-prof` : *"reste la seule voie pour un lot qui modifie un corps qui s'execute"* | `theo-archi` pour le contenu, `sofia-sm` pour la capacite |
+| La charte de `relecteur-pedagogique`, a amender pour que la convention de `DEC-0062` lui soit opposable | `sofia-sm`, ou l'utilisatrice (`DEC-0062`, amendement C) |
+| Dettes d'outillage des obstacles 4, 6 et 7 du planning de s24, toujours non engagees | `camille-po` pour le rang, `theo-archi` pour le contenu |
+| `D4` (longueur maximale d'une reponse a ecrire) et le cout d'un accent sur la tablette visee - **mordront au premier paquet alphabetique de saisie** | `nadia-prof`, `camille-po` ; l'utilisatrice pour l'accent |
