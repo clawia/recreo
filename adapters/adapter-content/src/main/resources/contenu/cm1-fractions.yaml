@@ -70,6 +70,29 @@ descripteur:
 # FRA-8 : aucune situation de partage ne suppose gouter, anniversaire, part de gateau ni objet
 # possede. Les six situations portent sur une bande de papier, un ruban, une ficelle, une
 # longueur, une corde et une piste, aucune rattachee a quelqu'un.
+#
+# Correction du 2026-08-31 (Done pedagogique VALIDE SOUS RESERVE, nadia-prof,
+# FICHE-bandit-manchot-fractions-cm1.md, reserve 1). Le paquet emploie six indices qui tournent a
+# l'identique sur les quatre formes ; deux d'entre eux disaient que le nombre du bas donne le NOM
+# de la part, ce qui est juste sur les formes (a) et (b), ou la reponse est une denomination, et a
+# cote de la cible sur la forme (d), ou la reponse est un nombre. Un enfant bloque pouvait chercher
+# "dixiemes" parmi 7, 9 et 10 et ne rien trouver.
+#
+# Deux items de forme (d) corriges, et deux seulement - ceux que nadia-prof nomme, "Dans 3/4" et
+# "Dans 7/10". Leurs indices parlent desormais de compter les parts, jamais de les nommer ; les
+# quatre autres indices de cette forme conviennent tels quels, elle l'ecrit. Les memes textes
+# restent en place sur les items des formes (a), (b) et (c), ou nommer la part est exactement ce
+# que la question demande.
+#
+# Ce que cette correction ne touche pas, verifie et non suppose : aucune bonne reponse, aucun
+# distracteur, aucun enonce, aucune famille declaree. Les comptes que ce fichier declare sur
+# lui-meme sont inchanges - 24 items, six par forme, 10 numerateurs 1, famille (a) sur 4 des 6
+# items de forme (d), rangs 2/2/2. FRA-8 etait tenue a la lettre avant cette correction, et c'est
+# pourquoi la reserve n'etait pas bloquante.
+#
+# FRA-11 (neuve, 2026-08-31, NON RETROACTIVE) : sur un paquet a plusieurs formes d'items, l'indice
+# est accorde a la forme de son item. Elle ne s'applique pas a ce paquet et vaut pour les paquets a
+# formes multiples suivants.
 items:
   - enonce: "Comment lit-on la fraction 3/8 ?"
     bonneReponse: "trois huitièmes"
@@ -254,7 +277,7 @@ items:
   - enonce: "Dans 3/4, en combien de parts égales le tout est-il partagé ?"
     bonneReponse: "4"
     distracteurs: ["3", "5"]
-    indice: "Le nombre du bas donne le nom de la part."
+    indice: "Le nombre du bas dit combien de parts il faut compter."
     fraction: "3/4"
     forme: "d"
     famillesDistracteurs:
@@ -272,7 +295,7 @@ items:
   - enonce: "Dans 7/10, en combien de parts égales le tout est-il partagé ?"
     bonneReponse: "10"
     distracteurs: ["7", "9"]
-    indice: "Le nom de la part vient du nombre du bas."
+    indice: "Cherche le nombre de parts, il est écrit en bas."
     fraction: "7/10"
     forme: "d"
     famillesDistracteurs:
