@@ -245,6 +245,44 @@ extraire_jdkhome_pour_version() {
   ' "${fichier}"
 }
 
+# fichier_de_toolchains_gouvernant <chemin_lu_par_ce_shell> <chemin_lu_par_maven> <maven_lisible:0|1>
+# Pure. Rend le chemin du fichier de toolchains qui gouverne reellement la compilation.
+#
+# Ecrite le 2026-08-31 (s25, apres le lot F). Le lot F a appris au *diagnostic* que Maven resout
+# son fichier sur le user.home de sa machine virtuelle et non sur HOME ; le *verdict*, lui, est
+# reste sur HOME. Le diagnostic savait donc ce que le verdict ignorait, et cela coute dans les deux
+# sens - mesure a l'appui, les deux cas ci-dessous sur l'enveloppe telle que le lot F la laisse :
+#
+#   - faux rouge : le fichier du shell declare 21 sur un JDK 25, celui de Maven declare 21 sur un
+#     21.0.10. L'enveloppe refuse. La mesure qu'elle empeche etait juste ;
+#   - faux vert : le fichier du shell declare 21 sur un 21.0.10, celui de Maven declare 21 sur un
+#     JDK 25. L'enveloppe lance Maven. La compilation se fait sur 25 et le rapport cite 21.
+#
+# La correction n'est donc pas une exemption pour un cas benin : c'est le verdict qui changeait de
+# sujet. Il juge desormais le fichier que Maven lit, et le faux vert se ferme dans le meme geste.
+# Quand la machine virtuelle n'a pas rapporte de repertoire utilisateur, le repli est le fichier du
+# shell, et l'appelant doit le dire : c'est un etat degrade, pas un etat normal.
+fichier_de_toolchains_gouvernant() {
+  if [ "$3" = "1" ]; then
+    printf '%s' "$2"
+  else
+    printf '%s' "$1"
+  fi
+}
+
+# mention_du_fichier_gouvernant <maven_lisible:0|1> <meme_fichier_que_le_shell:0|1>
+# Pure. Dit de quel fichier le verdict parle, sans jamais le nommer : ADR-0010 vaut ici comme
+# ailleurs, et ces trois phrases sont ecrites pour etre recopiables dans un rapport de sprint.
+mention_du_fichier_gouvernant() {
+  if [ "$1" != "1" ]; then
+    printf "sur le fichier de toolchains de ce shell, faute d'avoir pu demander son repertoire utilisateur a une machine virtuelle - ce fichier n'est peut-etre pas celui que Maven lit"
+  elif [ "$2" = "1" ]; then
+    printf 'sur le fichier de toolchains que Maven lit, qui est aussi celui de ce shell'
+  else
+    printf "sur le fichier de toolchains que Maven lit, qui n'est pas celui de ce shell"
+  fi
+}
+
 # --- enveloppe : la seule partie qui touche le poste, non testee ---
 if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
   version_java_brute="$(java -version 2>&1 | head -n1)"
@@ -298,13 +336,21 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     echo "diagnostic - la machine virtuelle n'a pas rapporte de user.home" >&2
   fi
 
+  # Seconde correction du 2026-08-31, apres le lot F : le champ "JDK de compilation" portait le
+  # meme defaut que le champ voisin, un cran plus loin. Il lisait le jdkHome du fichier du shell,
+  # alors que le JDK qui compile est celui que declare le fichier lu par Maven. Sur le poste de
+  # reference les deux different, et ce champ est celui que les rapports de sprint recopient : il
+  # annoncait donc une version de compilation qui n'etait pas celle qui compilait. Meme juge que
+  # l'enveloppe, pour que les deux ne puissent pas diverger.
+  fichier_gouvernant="$(fichier_de_toolchains_gouvernant     "${fichier_trouve}" "${fichier_de_maven:-}" "${toolchains_de_maven_trouve}")"
+
   jdk_home_21=""
-  if [ -n "${fichier_trouve}" ]; then
-    jdk_home_21="$(extraire_jdkhome_pour_version "${fichier_trouve}" "21")"
+  if [ -n "${fichier_gouvernant}" ]; then
+    jdk_home_21="$(extraire_jdkhome_pour_version "${fichier_gouvernant}" "21")"
   fi
 
   if [ -n "${jdk_home_21}" ]; then
-    echo "diagnostic - jdkHome declare pour la version 21 dans ${fichier_trouve} : ${jdk_home_21}" >&2
+    echo "diagnostic - jdkHome declare pour la version 21 dans ${fichier_gouvernant} : ${jdk_home_21}" >&2
     version_compilation="$(extraire_version_java "$("${jdk_home_21}/bin/java" -version 2>&1 | head -n1)")"
   elif [ -n "${JAVA_HOME:-}" ]; then
     echo "diagnostic - pas de version 21 dans un fichier de toolchains, repli sur JAVA_HOME" >&2

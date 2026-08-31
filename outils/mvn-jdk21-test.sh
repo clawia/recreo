@@ -47,6 +47,26 @@ fabriquer_jdk() {
   printf '%s' "${racine}"
 }
 
+# fabriquer_java_du_path <repertoire_utilisateur_rapporte>
+# Le java du PATH est ce a quoi l'enveloppe demande le repertoire utilisateur de la machine
+# virtuelle, depuis la correction du 2026-08-31 : c'est lui qui decide quel fichier de toolchains
+# gouverne. Sans ce temoin, chaque cas de ce fichier lirait le fichier de toolchains reel du poste
+# et prouverait ce que le poste a, pas ce que la fixture declare. Mesure faite avant de l'ecrire :
+# sans lui, cinq des sept cas historiques ci-dessous passent au rouge et les deux autres restent
+# verts pour une raison etrangere a leur objet.
+fabriquer_java_du_path() {
+  {
+    echo '#!/usr/bin/env bash'
+    echo 'for argument in "$@"; do'
+    echo '  case "${argument}" in'
+    printf "    -XshowSettings*) printf 'Property settings:\\n    user.home = %%s\\n' '%s' >&2; exit 0 ;;\n" "$1"
+    echo '  esac'
+    echo 'done'
+    echo 'printf '"'"'openjdk version "1.8.0_202" 2019-01-01\n'"'"' >&2'
+  } > "${BAC}/bin/java"
+  chmod +x "${BAC}/bin/java"
+}
+
 # fabriquer_home <nom> <version_declaree_ou_vide> <jdk_home_ou_vide>
 # Rend un HOME jetable. Avec une version vide, le fichier de toolchains ne declare aucun jdk 21.
 fabriquer_home() {
@@ -67,8 +87,12 @@ fabriquer_home() {
   printf '%s' "${maison}"
 }
 
-# jouer <maison> : lance l'enveloppe dans un environnement jetable, rend "<code>|<mvn lance ?>"
+# jouer <maison> [repertoire_utilisateur_de_la_machine_virtuelle]
+# Lance l'enveloppe dans un environnement jetable, rend "<code>|<mvn lance ?>". Sans second
+# argument, la machine virtuelle rapporte la meme maison que le shell : c'est le cas ordinaire, et
+# c'est celui que les sept cas historiques decrivent.
 jouer() {
+  fabriquer_java_du_path "${2:-$1}"
   temoin="${BAC}/temoin-$$-${RANDOM}"
   rm -f "${temoin}"
   HOME="$1" PATH="${BAC}/bin:${PATH}" TEMOIN_MVN="${temoin}" \
@@ -144,6 +168,40 @@ maison_creuse="$(fabriquer_home creuse "21" "${racine_vide}")"
 verifier_egal "une racine de JDK sans bin/javac fait refuser sans lancer Maven" \
   "1|mvn non lance" \
   "$(jouer "${maison_creuse}")"
+
+# --- HOME et le repertoire utilisateur de la machine virtuelle divergent (2026-08-31, theo-archi) ---
+#
+# Le lot F a appris au diagnostic que Maven resout son fichier de toolchains sur le user.home de sa
+# machine virtuelle et non sur HOME. Le verdict, lui, etait reste sur HOME : le diagnostic savait ce
+# que le verdict ignorait. Les deux cas ci-dessous sont ce que cela coutait, et ils sont mesures dans
+# les deux sens - ce n'est pas seulement un faux rouge genant, c'est aussi un faux vert.
+
+maison_de_maven="$(fabriquer_home de-maven "21" "${jdk_21}")"
+maison_du_shell_menteuse="$(fabriquer_home du-shell-menteuse "21" "${jdk_25}")"
+
+verifier_egal "le fichier du shell ment, celui que Maven lit est bon : Maven est lance" \
+  "0|mvn lance" \
+  "$(jouer "${maison_du_shell_menteuse}" "${maison_de_maven}")"
+
+verifier_egal "et le verdict dit sur quel fichier il porte" \
+  "trouve" \
+  "$(grep -q "sur le fichier de toolchains que Maven lit, qui n'est pas celui de ce shell" "${BAC}/sortie" && echo trouve || echo absent)"
+
+maison_de_maven_menteuse="$(fabriquer_home de-maven-menteuse "21" "${jdk_25}")"
+maison_du_shell_bonne="$(fabriquer_home du-shell-bonne "21" "${jdk_21}")"
+
+verifier_egal "le fichier du shell est bon, celui que Maven lit ment : refus, et Maven n'est pas lance" \
+  "1|mvn non lance" \
+  "$(jouer "${maison_du_shell_bonne}" "${maison_de_maven_menteuse}")"
+
+# La machine virtuelle ne rapporte rien : repli sur le fichier du shell, et l'enveloppe le dit
+# plutot que de laisser croire qu'elle a juge le fichier de Maven. C'est un etat degrade, pas un
+# etat normal, et il est nomme comme tel.
+maison_sans_vm="$(fabriquer_home sans-vm "21" "${jdk_21}")"
+
+verifier_egal "sans repertoire utilisateur rapporte, le repli sur le fichier du shell est annonce" \
+  "trouve" \
+  "$(jouer "${maison_sans_vm}" muet > /dev/null 2>&1; grep -q "ce fichier n'est peut-etre pas celui que Maven lit" "${BAC}/sortie" && echo trouve || echo absent)"
 
 # --- test negatif global, meme motif que verifier-jdk-test.sh ---
 
