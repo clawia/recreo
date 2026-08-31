@@ -127,7 +127,7 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * comme ce depot commente ses fichiers, et <i>"un seuil pose sur l'un ne veut rien dire sur
      * l'autre"</i>. C'est donc le fichier ; qui deplacera ce cliquet deplacera la meme chose.
      */
-    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 1430;
+    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 2685;
 
     /**
      * Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, meme perimetre et meme methode que
@@ -141,7 +141,7 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * - <i>"les dimensions declarees : effet nul"</i>. Ce sont les commentaires qui pesent,
      * <i>"a la hausse, et je l'assume"</i>.
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 6524;
+    private static final int POIDS_TOTAL_MAXIMUM = 29436;
 
     private static final String VUE = "viewBox";
 

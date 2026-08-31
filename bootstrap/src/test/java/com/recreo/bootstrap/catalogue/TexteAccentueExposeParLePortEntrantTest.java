@@ -149,8 +149,18 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-fractions-cm1",
             // S25-FIG (DEC-0065 amendement A.3 ; FIG-1 a FIG-4 du 2026-08-24, reconduites le
             // 2026-08-31 ; CON-1 a CON-5) : entree neuve, reconnaitre et nommer quelques figures
-            // planes, CP. Premier jeu illustre du produit (ADR-0073).
+            // planes, CP. Les deux entrees ci-dessous sont les deux premiers jeux illustres du
+            // produit (ADR-0073) ; elles sont nees le meme jour, et aucune des deux n'est "le
+            // premier" - c'est la fusion qui les ordonne, pas leur contenu.
             "bandit-manchot-figures-planes-cp",
+            // S25-MON-1 (arbitrage prealable de s25 sur les seize lignes, section 2.2, MON-1 a
+            // MON-5 ; arbitrage du palier 1, CON-1 a CON-5) : entree neuve. La ligne de la monnaie
+            // avait ete refusee en contenu textuel le meme jour et rouverte sur sa forme illustree
+            // - "le paquet textuel nommait les pieces, le paquet illustre les montre".
+            "bandit-manchot-monnaie-cp",
+            // S25-SUB (arbitrage prealable s23, section 5, SUB-1 a SUB-10) : entree neuve,
+            // reperer les substituts d'un personnage dans un texte, CM1.
+            "bandit-manchot-substituts-cm1",
             // S25-SEM (DEC-0065 amendement A.2 et A.3 ; SEM-1 a SEM-9 du 2026-08-31) : entree
             // neuve, se reperer dans la journee et la semaine, CP, couverture partielle nommee.
             "bandit-manchot-semaine-cp",
@@ -209,6 +219,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les fractions simples",
             // S25-FIG : titre neuf.
             "Les figures",
+            // S25-MON-1 : titre neuf.
+            "La monnaie",
+            // S25-SUB : titre neuf. Sans point d'interrogation, donc sans espace devant un signe
+            // double : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "De qui parle le texte",
             // S25-SEM : titre neuf, il nomme la moitie servie de la ligne et pas l'autre.
             "La journée et la semaine",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -263,6 +278,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S25-FIG : consigne neuve, generique - elle dit quoi faire du dessin et ne decrit
             // aucune figure (CON-2).
             "Regarde bien le dessin, puis choisis son nom.",
+            // S25-MON-1 : consigne neuve. Elle ne nomme aucune valeur et ne decrit ni la position,
+            // ni la forme, ni la quantite, ni la couleur de ce que les dessins montrent (MON-1,
+            // CON-2) - elle dit seulement ou regarder.
+            "Regarde bien l'argent, puis réponds.",
+            // S25-SUB : consigne neuve, generique - elle ne nomme aucun texte-support ni aucun
+            // personnage d'aucun item.
+            "Lis le texte, puis dis de qui on parle.",
             // S25-SEM : consigne neuve.
             "Choisis la bonne réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
@@ -345,6 +367,14 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "repérage sur une droite numérique",
             // S25-FIG : competence neuve, ligne entiere.
             "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)",
+            // S25-MON-1 : competence neuve, et la ligne est entiere - nadia-prof ecrit que "le
+            // paquet sert reconnaitre par l'image et utiliser par la question". Le libelle est
+            // celui du referentiel, mot pour mot.
+            "Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes "
+                    + "concrets",
+            // S25-SUB : competence neuve, ligne entiere. nadia-prof a verifie avant d'arbitrer
+            // qu'elle est distincte de "Comprendre un texte narratif ou documentaire", deja verte.
+            "Repérer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte",
             // S25-SEM : competence neuve, couverture partielle nommee (SEM-3). Le libelle est
             // celui du referentiel, la moitie "lire l'heure pleine" comprise, parce que c'est la
             // ligne entiere que le descripteur du paquet nomme ; ce que le paquet couvre

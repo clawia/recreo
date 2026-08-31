@@ -19,12 +19,15 @@
      qui est dessine aussi. Ces trois disques ne portent aucune denomination, aucun relief, aucune
      face nationale : ils portent un chiffre et un rapport de taille, et rien d'autre.
 
-     Aucune couleur : FIG-3 et QUA-5 exigent qu'une figure lue en niveaux de gris donne la meme
-     reponse. Ce qui distingue les trois disques ici est le chiffre grave et le diametre, jamais
-     une teinte. -->
+     Une seule couleur, aucun remplissage : FIG-3 et QUA-5 exigent qu'une figure lue en niveaux de
+     gris donne la meme reponse. La teinte est ecrite EN CLAIR et vaut #1c2733, la valeur de
+     --recreo-texte. Ni currentColor, ni une variable CSS : mesure du 2026-08-31, un SVG charge
+     par <img> est un document isole - la couleur de la page n'y entre pas, currentColor y rend
+     du noir, et une variable maison n'y est pas definie. Une teinte non declaree est donc une
+     teinte que personne ne gouverne. -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      viewBox="0 0 300 100" width="300" height="100" role="img" fill="none"
-     stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+     stroke="#1c2733" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
 
   <defs>
     <path id="p0" d="M20 2 A18 22 0 0 1 20 58 A18 22 0 0 1 20 2 Z"/>

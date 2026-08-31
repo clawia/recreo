@@ -722,10 +722,12 @@ parallele par `theo-archi` ; voir `DV-2`, section 11.
    Mesure : rapport declare 1,0 rendu 1,0, rapport declare 3,0 rendu 3,0, aux dix largeurs, y
    compris la ou max-width mord. Une declaration "height" fixe casserait FIG-1 des la premiere
    largeur ou max-width mord.
-   La valeur de max-height est un EMPLACEMENT, pas une proposition : elle depend de l'arbitrage du
-   pli (section 3) et je ne la choisis pas a la place de nadia-prof. Les deux valeurs mesurees sont
-   11rem (176px, le confort de lecture) et 3,3125rem (53px, ce que le pli laisse aujourd'hui apres
-   un echec). */
+   La valeur de max-height est TRANCHEE depuis le 2026-08-31 et vaut 11rem (176 px) : voir
+   contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md, section 1. Elle passe le plancher de
+   lisibilite du dessin le plus exigeant du palier 1 - un cadran a douze nombres, 123 px - avec
+   53 px de marge, et reste sous le niveau de confort de 202 px. L'autre valeur mesuree
+   (3,3125rem, 53 px, ce que le pli laissait apres un echec) est ecartee : elle mettrait un veto
+   technique sur le cadran la ou l'utilisatrice a arbitre qu'il n'y en a aucun. */
 .image-item {
     display: block;
     max-height: 11rem;
@@ -878,7 +880,7 @@ Ni une decision ni une demande : ce que ma proposition suppose et que je n'ecris
 
 | # | Ce qui manque | A qui |
 |---|---|---|
-| **DV-1** | **La taille intrinseque du dessin servi.** Mes trois declarations ne font jamais grandir un dessin au-dela de sa taille naturelle : un fichier declare a 100x100 restera a 100 px meme sous un plafond de 176. Le fichier servi doit donc declarer ses dimensions **au moins egales au plafond retenu**. C'est ce que `FIG-1` exige deja - *"ses proportions sont declarees par le contenu"* - et c'est une propriete du fichier, pas de ma feuille | `theo-archi`, `nadia-prof` |
+| **DV-1** | **RENDUE le 2026-08-31**, et transformee en condition ecrite : `DES-1` a `DES-7`, dans `contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md`. Mesure decisive : un fichier qui ne declare que son `viewBox` sort **exactement au plafond de la feuille**, 176 px, quel qu'il soit - le fichier n'a alors aucune voix sur sa propre taille, et une rangee de pieces occupe 133 px de plus que sa lisibilite ne demande | rendue a `lea-dev`, `sofia-sm` ; `nadia-prof` garde le veto |
 | **DV-2** | **Comment un item porte une donnee de dessin.** `camille-po` ecrit qu'aucun `ADR` ne le dit. Mon balisage nomme `dessin.source()` et `dessin.remplacement()` **a titre d'illustration** : je ne propose aucun contrat et je ne presume pas la reponse. Si le contrat rendu differe, seuls les deux `th:` du gabarit changent ; **aucune regle de feuille de la section 8 n'en depend** | `theo-archi` |
 | **DV-3** | **Le contraste du trait du dessin servi.** Ma feuille garantit la surface (`--recreo-fond`, 14,09:1 avec `--recreo-texte`) ; elle ne peut pas garantir la teinte d'un trait qu'un fichier de contenu apporte. Il faut soit une condition d'ecriture (famille `FIG-3`), soit un garde-fou qui lise les `.svg` servis | `nadia-prof`, `theo-archi`, `yanis-qa` |
 | **DV-4** | **La longueur maximale d'une proposition, sur `LIS` et au-dela.** Section 4.3 : c'est elle, et non le texteSupport, qui decide du budget vertical, et aucune condition ne la borne. Meme famille que `D4` a s24 | `nadia-prof`, `camille-po` |
