@@ -96,3 +96,59 @@ est acceptable sur cette forme-la.
 assertion est rouge. Si l'issue 2 est retenue, seuls les six items de la forme (d) sont a reecrire ;
 le test les recalcule depuis les declarations du fichier et rougira de lui-meme si la reecriture
 s'ecarte de la famille declaree.
+
+---
+
+## 6. Resolution - `nadia-prof` a tranche le 2026-08-31, la branche est verte
+
+*Bloc ajoute par `marc-dev` le 2026-08-31, apres coup. Rien de ce qui precede n'est efface :
+les sections 1 a 5 decrivent l'etat du matin et restent lisibles a leur place.*
+
+**Ce qu'elle a rendu** :
+`squad/conformite/ARBITRAGE-FRA-la-forme-d-contre-le-seuil-minimal-de-rang.md`. Elle **tient le
+seuil de rang sans le deplacer d'un point** et **amende sa propre `FRA-5`**, sur le test qui separe
+une propriete d'un moyen : le seuil dit ce que l'enfant ne doit pas pouvoir faire, la liste des
+familles de distracteurs est une facon d'ecrire un item. Un moyen se remplace.
+
+**Elle a reverifie le fait par enumeration, et il est plus fort que ma mesure.** Mon 0,0 % portait
+sur six items ; sur les 45 fractions qu'`FRA-1` admet, le rang *"la plus petite"* est realisable
+**0 fois sur 45** - impossible, et non rare.
+
+**Mes deux issues sont refusees toutes les deux, et la seconde par un motif que je n'avais pas
+vu.** L'issue 1 - declarer le rang hors d'atteinte - a une premisse fausse : ce qui ne peut pas
+tenir la propriete n'est pas la competence, c'est sa liste. Une declaration l'aurait consignee comme
+une propriete du monde, sans plafond, donc sans reexamen. Et la voie que ni elle ni moi n'avions
+nommee - retirer la forme (d) - est la plus dangereuse : ses six items sont **les seuls du paquet a
+propositions numeriques**, donc leur retrait sortirait `cm1-fractions` du domaine du garde-fou de
+rang tout entier, et la CI serait verte parce que plus rien ne serait regarde.
+
+**Ce qui remplace** : une **famille (e)**, `n + d`, sur la forme (d) seule - l'enfant qui lit le
+denominateur comme les parts *restantes* au lieu du *tout* -, un plancher `FRA-5e-1` sur la famille
+(a), et deux clauses de forme (`FRA-5e-2`, `FRA-5e-3`).
+
+**Ce que le lot a fait** : **deux items reecrits, et deux seulement.** Les quatre autres portaient
+deja la famille (a) et couvraient deja deux des trois rangs. Comptes recalcules sur le fichier
+servi - lecture directe du YAML, tri des trois propositions, rang de la bonne reponse :
+
+| | Avant | Apres |
+|---|---|---|
+| rang *la plus petite* | 0 / 6 - **0,0 %** | 2 / 6 - **33,3 %** |
+| rang *celle du milieu* | 3 / 6 - 50,0 % | 2 / 6 - 33,3 % |
+| rang *la plus grande* | 3 / 6 - 50,0 % | 2 / 6 - 33,3 % |
+| famille (a) sur la forme (d) | 6 / 6 | 4 / 6 - **66,7 %**, plancher `FRA-5e-1` tenu |
+
+**Etat de `s24-marc-fra`** : verte. `mvn -B clean verify` a la racine du reacteur, reacteur complet
+donc aucun `-am` a citer - **BUILD SUCCESS, 825 tests, 0 echec**, +14 sur la base de la fusion
+d'ouverture mesuree a 811. Elle est fusionnable, sous reserve de l'ordre de fusion que `sofia-sm`
+tient.
+
+**Un defaut de ma mesure du matin, que je verse plutot que de le taire** : l'entree de catalogue
+neuve manquait a l'inventaire de `TexteAccentueExposeParLePortEntrantTest`, et **ce rouge-la
+n'apparaissait pas** sur la mesure partielle d'`adapter-content` qui m'avait servi a instruire cet
+obstacle. C'est le `verify` a la racine qui l'a rendu. Le perimetre etait nomme a cote du chiffre,
+comme `CLAUDE.md` l'exige, et c'est ce qui rend l'ecart lisible - mais il illustre exactement
+pourquoi la porte technique est la commande de la racine et rien d'autre.
+
+**Ce qui reste ouvert sur ce paquet, et qui n'est pas de moi** : le Done pedagogique. `nadia-prof`
+n'a rien audite, elle l'ecrit, et elle nomme ce qu'aucun automate ne gardera - la plausibilite de
+`n + d` item par item, `FRA-8`, et le jugement de niveau sur les vingt-quatre items.
