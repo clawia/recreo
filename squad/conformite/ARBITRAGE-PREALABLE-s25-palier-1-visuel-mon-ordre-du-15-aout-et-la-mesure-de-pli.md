@@ -444,3 +444,225 @@ Une ligne qui quitte le denominateur sans motif lisible ne revient jamais.
   coute - ici, rien.
 - Il **n'efface rien** : mon avis du 2026-08-15 reste lisible tel qu'il a ete ecrit, y compris ses
   deux phrases que la section 1.2 corrige. La correction est un ajout date, pas une reecriture.
+
+---
+
+## 9. Amendement du 2026-08-31, apres `ADR-0073` - trois reponses, une collision que personne n'avait vue, et une clause neuve
+
+**Rien de ce qui precede n'est efface.** Ce bloc repond aux trois questions de `sofia-sm` posees apres
+l'avis de faisabilite de `theo-archi`, et ajoute deux faits que la lecture de son lot m'a donnes.
+
+**Ce que j'ai verifie moi-meme avant de repondre, plutot que de reprendre l'enonce relaye** : le
+commit `5e45d83` sur `origin/s25-theo`, son `ADR-0073`, la Javadoc de
+`LIllustrationDeContenuResoutEtAucuneNeDortTest`, le paquet de contre-exemple `cp-figures-fautif.yaml`
+et les deux fichiers de dessin qu'il porte. **Les faits transmis sont exacts** - y compris le critere
+d'`ADR-0058` qu'il invoque, que j'ai relu chez lui : *"la facon dont l'enfant repond a change -
+choisir contre ecrire"*, et elle ne change pas ici.
+
+### 9.1 Question 1 - le surcout de la seconde passe reste-t-il entier ? **Oui.**
+
+**Mon motif etait, mot pour mot** : *"l'exactitude de ce qui est dessine est du contenu, pas de la
+forme"*. **Ce motif ne mentionne pas la mecanique et n'en depend pas.** Que l'enfant reponde d'une
+facon neuve ou de l'ancienne, il faut toujours que quelqu'un regarde chaque dessin et dise si la
+petite aiguille pointe bien le trois. **Le surcout est entier, et le fait de `theo-archi` ne l'entame
+pas d'un point. La lecture de `sofia-sm` est juste.**
+
+*Je le confirme d'autant plus volontiers qu'il joue contre mon confort : c'est le seul endroit ou son
+travail pourrait alleger ma charge, et il ne l'allege pas.*
+
+### 9.2 Question 2 - l'audit de mecanique est-il du ? **Non au sens ou je l'entends. Et quelque chose de plus petit est du, que je nomme.**
+
+**Ce que j'appelle un audit de mecanique, et la definition est de moi, du 2026-08-30** : *"j'en audite
+le comportement - `SEUIL-1` a `SEUIL-5`, ce que voit l'enfant apres un echec, apres trois, ce qu'il
+peut corriger, ce qui lui coute un essai"*. **Ce sont toutes des proprietes de la facon de repondre.**
+Elles ont ete auditees a s24 sur la saisie, elles l'avaient ete avant sur le choix, et **le palier 1
+n'en touche aucune**. `SEUIL-1` a `SEUIL-5` ne sont pas a rejouer.
+
+**Cet audit-la tombe donc, et je le dis sans le remplacer par un equivalent de meme taille pour
+proteger mon chiffre.**
+
+**Ce qui est du a la place, et c'est plus petit** : un **audit d'ecran**, une fois, pas par paquet. Ce
+que je regarderai en jouant, et qui n'est ni du comportement de mecanique ni du contenu de paquet :
+
+- **le dessin est-il la quand l'enfant en a besoin** - au premier regard, apres un echec, apres trois,
+  a la revelation. **Un dessin qui disparaitrait apres une reponse fausse rendrait la deuxieme
+  tentative impossible** : l'enfant aurait perdu la donnee de la question sans avoir rien fait de mal.
+  C'est le defaut que je cherche en priorite, et aucun test ne le verra ;
+- **ce que l'enfant voit si un identifiant ne resout rien.** Le garde-fou de `theo-archi` rend rouge un
+  identifiant qui ne resout pas, et c'est bien. **Ma question est celle d'apres : si cela arrivait
+  quand meme, l'enfant voit-il un cadre vide, c'est-a-dire une question sans sa donnee ?** Je la pose
+  comme une question, pas comme une demande ;
+- **le dessin et l'indice tiennent-ils ensemble au-dessus du pli** - c'est `P3`, et c'est la mesure
+  d'`ines-design` que je lirai, pas la mienne.
+
+**Je le price en dessous d'un paquet** : une session de jeu sur un seul jeu, avec quelques erreurs
+volontaires, pas la reprise d'un comportement entier.
+
+### 9.3 Question 3 - cela change-t-il mon chiffre ? **Oui. Il monte de trois a quatre, et le refuser serait malhonnete.**
+
+**Le motif exact de ma descente a trois, tel que je l'ai ecrit hier** : *"J'ai price cet audit ce matin
+pour la mecanique visuelle et je l'ai trouve plus lourd que celui de la saisie : je descends donc a
+trois paquets."* **La descente n'avait pas d'autre motif que cet audit.**
+
+`theo-archi` etablit que cet audit n'est pas du. **Le motif de ma reduction a disparu ; la reduction
+doit disparaitre avec lui.** C'est exactement la regle que j'applique aux autres et que je me suis
+ecrite : *"quand une equipe atteint la barre que tu avais toi-meme ecrite, tu leves ta reserve"*. Une
+barre qu'on garde apres que son motif est tombe n'est plus une barre, c'est une habitude.
+
+> **Ma capacite pour s25 : quatre paquets, dont au plus deux paquets visuels, plus l'audit d'ecran de
+> la section 9.2.** Ma borne de quatre a cinq paquets sur mecanique existante s'applique telle quelle,
+> puisque `ADR-0073` etablit qu'il n'y a pas de mecanique neuve.
+
+**Ce que je ne fais pas en montant a quatre : je ne monte pas a cinq.** La borne haute suppose des
+paquets de texte, et deux de ces quatre portent des dessins a verifier un par un. **Quatre est le
+chiffre que je tiens, pas le chiffre qui arrange.**
+
+**Sur mon plafond de deux paquets visuels** : son motif d'hier etait *"trois paquets visuels plus un
+audit de mecanique"*. Ce terme-la est tombe aussi, et l'honnetete demande que je le dise. **Je garde
+neanmoins le plafond a deux pour s25 seulement**, et pour un motif que je nomme au lieu de le
+supposer : **aucun paquet visuel n'a jamais existe et je n'en ai jamais audite un.** Je ne sais pas ce
+que coute reellement la passe d'exactitude sur vingt dessins ; je le saurai apres les deux premiers, et
+**je repricerai a s26 avec une mesure au lieu d'une prudence**. Ce n'est pas une barre permanente et
+cela ne doit pas etre cite comme telle.
+
+### 9.4 Ce que cela donne, et la reserve que la section 9.5 y attache
+
+**Methode** : 27 lignes vertes ; le reclassement de la section 6 porte le denominateur a 41 ; quatre
+paquets bougeant chacun une ligne distincte ajoutent quatre au numerateur.
+
+Composition possible a quatre paquets, **deux visuels et deux de contenu seul** : `FIG` et `MON` en
+visuel, `SEM` et l'un de `SUB` ou `LIS` en texte. **Quatre lignes distinctes** : figures planes,
+monnaie, l'heure - par sa moitie *se reperer* -, et celle de `SUB` ou de `LIS`.
+
+| Etat | Compte | Taux |
+|---|---|---|
+| Aujourd'hui, `130ba64` | 27 / 43 | 62,8 % |
+| Apres reclassement seul | 27 / 41 | 65,9 % |
+| **Apres reclassement et quatre lignes** | **31 / 41** | **75,6 %** |
+
+**La ligne de plus n'est pas de moi, elle est de `theo-archi`** : elle vient de sa mesure, pas de ma
+capacite. Je l'ecris pour qu'elle soit portee a son credit dans le rapport de sprint.
+
+**Et mon plafond de deux paquets visuels ne coute toujours aucune ligne** - parce que `SEM`, qui est du
+texte, atteint la meme ligne que `HOR`, qui est un dessin. C'est le fait non intuitif de la section 2,
+et c'est la seconde fois qu'il sert.
+
+### 9.5 La collision que personne n'avait vue - deux de mes trois paquets ont besoin de chiffres dans le dessin
+
+**C'est le fait le plus important de cet amendement, et il vaut mieux maintenant qu'au dernier lot.**
+
+La Javadoc du garde-fou de `theo-archi` porte une clause que je ne lui avais pas demandee, sur un motif
+que je trouve juste : *"Du texte pose dans le dessin n'est ni l'un ni l'autre : ce serait un troisieme
+angle mort, ouvert le jour meme ou le depot en referme deja deux. Un dessin ne porte donc ni `<text`
+ni `<tspan`."* Et il me route la suite explicitement : *"Ce que cette clause ne decide pas : si une
+figure legendee est pedagogiquement souhaitable."*
+
+**Je reponds a sa question, et ma reponse en souleve une autre qu'il n'avait pas posee.**
+
+- **Une figure legendee : non, jamais, et sa clause a raison.** Un dessin de carre qui porte le mot
+  *carre* donne la reponse. C'est la contrefacon de `CON-1` prise par l'autre bout - non plus le texte
+  qui fait le travail de l'image, mais **l'image qui porte la reponse**. Ma famille `CON` ne couvrait
+  pas ce cas ce matin, et sa clause le couvre. **Je ne demanderai jamais qu'elle cede pour une
+  legende.**
+- **Mais deux de mes trois paquets de palier 1 ont besoin de chiffres dans le dessin**, et je l'ai
+  ecrit hier sans savoir que la clause existerait.
+
+| Paquet | Ce que mes conditions exigent | Collision |
+|---|---|---|
+| `FIG` - figures planes | `FIG-1` a `FIG-4` : aucune n'appelle de texte dans le dessin | **aucune** |
+| `HOR` - lire l'heure | **`HOR-2`** : *"les chiffres du cadran sont ecrits"* | **oui** - un cadran porte douze nombres |
+| `MON` - monnaie | **`MON-1`** : les pieces sont montrees, pas nommees ; **`MON-2`** : les valeurs sont celles qui existent | **oui** - une piece de deux euros porte un *2* grave dessus |
+
+**Je maintiens `HOR-2` et `MON-1`, et pour le motif pedagogique sur lequel je les ai ecrites hier, pas
+contre la clause de `theo-archi`.**
+
+- **Le cadran** : j'ai ecrit hier qu'*"un cadran sans chiffres demande de compter les reperes : c'est
+  une autre tache, plus dure, et ce n'est pas celle de la ligne"*. C'est vrai, et l'horloge de la
+  classe porte ses douze nombres. Je ne deplace pas ce poteau, dans un sens ni dans l'autre.
+- **La piece** : un enfant de CP reconnait une piece de deux euros **en lisant le 2 dessus**. Sans le
+  chiffre, il ne reste que la taille et la couleur - et `FIG-3`, `HOR-3` et `QUA-5` interdisent toutes
+  les trois que la couleur decide. **Une piece sans son chiffre n'est pas une piece, c'est un jeton**,
+  et l'exercice deviendrait la devinette que je refuse partout ailleurs.
+
+**Ce que je ne fais pas** : je ne demande pas que le garde-fou soit affaibli, et je ne dis pas comment
+un chiffre pourrait etre rendu sans ouvrir l'angle mort qu'il nomme. **Ce n'est pas ma competence et
+il l'a etablie mieux que je ne saurais.**
+
+**Ce que je verse comme un jugement pedagogique, qui est le mien** : un **chiffre grave sur une piece
+ou ecrit sur un cadran n'est pas du texte que l'enfant lit**, au sens ou les garde-fous d'accentuation
+et de vocabulaire l'entendent. Ce n'est pas un mot, il ne s'accentue pas, il ne se traduit pas :
+**c'est une partie de l'objet dessine**, au meme titre que les aiguilles. Si cette distinction est
+tenable dans un automate, elle debloque `HOR` et `MON` ; si elle ne l'est pas, elle ne l'est pas, et
+je prefere l'entendre dire clairement.
+
+**Ce que cela coute si la clause ne peut pas porter les chiffres**, avec sa methode, pour que le
+planning ne le decouvre pas :
+
+| Issue | Composition a quatre paquets | Lignes | Taux |
+|---|---|---|---|
+| Les chiffres peuvent etre dessines | `FIG`, `MON`, `SEM`, `SUB` ou `LIS` | **+4** | **31 / 41 = 75,6 %** |
+| Les chiffres ne peuvent pas etre dessines | `FIG`, `SEM`, `SUB` ou `LIS`, `DEN` | **+3** | **30 / 41 = 73,2 %** |
+
+**Une ligne du sprint depend donc d'une question technique a laquelle je ne sais pas repondre**, et
+elle est posee aujourd'hui plutot qu'au dernier lot. C'est exactement ce que `DEC-0057` cherchait a
+produire.
+
+### 9.6 `CON-5` - clause neuve, datee du 2026-08-31, sur un champ qui n'existait pas ce matin
+
+`ADR-0073` introduit `illustrationTexteAlternatif`, et son paquet de contre-exemple en donne un bon
+exemple - *"Une figure géométrique à reconnaître."* -, qui ne livre rien. **Ma famille `CON-1` a
+`CON-4`, ecrite ce matin, ne couvre pas ce champ : il n'existait pas.**
+
+> **`CON-5`** - Le texte alternatif d'une illustration **decrit ce qu'il y a a regarder, jamais la
+> reponse ni ce qui permet de la deduire**. *"Une figure geometrique a reconnaitre"* convient ; *"un
+> carre bleu"*, *"une horloge indiquant trois heures"*, *"trois pieces de deux euros"* sont des
+> contrefacons au sens de `CON-1`. **Le test est le meme** : en ne gardant que le texte alternatif, la
+> reponse reste-t-elle trouvable ?
+>
+> *Verification : item par item, sur la totalite du paquet, par moi.*
+
+**Pourquoi celle-ci compte plus que les autres, et c'est le motif que je veux voir retenu** : le texte
+alternatif est **le seul endroit du produit ou une reponse peut fuir sans que personne s'en
+apercoive**, parce que personne ne le lit a l'ecran. Un enfant qui utilise un lecteur d'ecran
+recevrait la reponse, un enfant qui n'en utilise pas ne la recevrait pas - **le meme exercice ne
+serait pas le meme pour les deux**, ce qui est un defaut d'equite en plus d'un defaut pedagogique.
+
+**Elle n'est pas automatisable**, et elle rejoint la liste de ce dont je suis seule garde.
+
+### 9.7 Les deux faits transmis sans question attachee - je reponds quand meme
+
+**La coupure `explication` / `graphie`.** `theo-archi` route a `camille-po` un choix entre corriger la
+coupure et *"ecrire le premier paquet illustre sans explication, ce qui est une contrainte
+pedagogique"*. **La contrainte pedagogique est a moi, alors je la leve tout de suite : aucune de mes
+conditions de palier 1 n'exige d'`explication`.** `FIG-1` a `FIG-4`, `MON-1` a `MON-5` et `HOR-1` a
+`HOR-8` demandent un **indice**, jamais une explication. **Le premier paquet illustre peut donc etre
+ecrit sans explication sans qu'aucune de mes conditions ne cede**, et ce n'est pas une concession : je
+n'en avais pas demande.
+
+*Ce que je verse pour plus tard, sans en faire une condition et sans le rendre bloquant* : le jour ou
+la coupure sera corrigee, une explication sur un paquet d'horloge vaudrait une story - *"tu as lu la
+grande aiguille"* est exactement ce qu'un enfant a besoin de s'entendre dire, et un indice ne le dit
+pas. **Je ne le demande pas a s25.**
+
+**La contrainte non ecrite : `enonce` en premier champ.** Elle n'est pas de ma porte et je n'ai rien a
+y decider. **Mais elle a une consequence qui est de ma porte, et je la nomme** : mes conditions de
+longueur - `SEM-4`, `HOR-7`, `LIS-3`, et les plafonds de mots des autres - sont tenues par des
+garde-fous de comptage textuel. Si un item illustre declarait `illustration` en premier champ, **il
+sortirait de ce comptage**, et mes conditions de longueur cesseraient d'etre executees **exactement
+sur les paquets qui sont neufs**. C'est la forme de `CPL-3` : une condition ecrite, datee, precise, et
+rien qui l'execute.
+
+**Ce que je demande donc, en une phrase, a qui ecrira le premier paquet illustre** : que `enonce` reste
+le premier champ de chaque item. `theo-archi` ecrit que le message du garde-fou le dit ; je le redis
+ici pour que ce ne soit pas la seule trace.
+
+### 9.8 Ce que cet amendement ne fait pas
+
+- Il **ne rouvre pas** l'arbitrage du palier 1 : `FIG`, `MON` et `HOR` restent les trois lignes, et
+  aucune de leurs conditions n'est modifiee, ni durcie, ni allegee.
+- Il **ne prononce aucun Done pedagogique** et n'anticipe rien sur le lot de `theo-archi`.
+- Il **ne demande l'affaiblissement d'aucun garde-fou.** La clause du texte dans le dessin est juste,
+  je l'approuve, et je pose la question des chiffres sans prejuger qu'elle ait une reponse.
+- Il **ne decide rien de technique** : la resolution de la collision 9.5 est a `theo-archi`.
+- Il **n'efface rien** : mon chiffre de trois paquets reste lisible en section 5, avec son motif, et
+  la section 9.3 dit pourquoi il monte a quatre.
