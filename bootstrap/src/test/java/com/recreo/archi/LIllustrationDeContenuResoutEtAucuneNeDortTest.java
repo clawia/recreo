@@ -93,6 +93,12 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
 
     private static final String EXTENSION = ".svg";
 
+    /**
+     * La cle a laquelle le comptage textuel partage reconnait un item enumere (ADR-0064, lot 5a de
+     * s24). Nommee ici parce que la clause 6 la juge, jamais lue comme une donnee de jeu.
+     */
+    private static final String CLE_ENONCE = "enonce";
+
     /** ADR-0013 : le jeu fautif de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
             "LIllustrationDeContenuResoutEtAucuneNeDortTest");
@@ -176,15 +182,23 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
                     && (champs.containsKey(CLE_ILLUSTRATION) || champs.containsKey(CLE_TEXTE_ALTERNATIF))) {
                 Object identifiant = champs.get(CLE_ILLUSTRATION);
                 Object alternatif = champs.get(CLE_TEXTE_ALTERNATIF);
+                String premiereCle = champs.keySet().stream().findFirst()
+                        .map(String::valueOf).orElse(null);
                 declarees.add(new IllustrationDeclaree(nom,
                         identifiant == null ? null : String.valueOf(identifiant),
-                        alternatif == null ? null : String.valueOf(alternatif)));
+                        alternatif == null ? null : String.valueOf(alternatif),
+                        premiereCle));
             }
         }
     }
 
-    /** Une illustration telle qu'un item la declare, avant toute resolution. */
-    record IllustrationDeclaree(String paquet, String identifiant, String texteAlternatif) {
+    /**
+     * Une illustration telle qu'un item la declare, avant toute resolution. {@code premiereCle} est
+     * la premiere cle de l'item dans l'ordre du fichier - SnakeYAML rend les cles dans cet ordre -
+     * et c'est la clause 6 qui la juge.
+     */
+    record IllustrationDeclaree(String paquet, String identifiant, String texteAlternatif,
+                                 String premiereCle) {
     }
 
     /**
@@ -212,6 +226,14 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
                 fautes.add(ou + " : aucun fichier " + declaree.identifiant() + EXTENSION + " sous "
                         + ILLUSTRATIONS_DE_CONTENU + ". L'enfant recoit une image cassee et rien ne"
                         + " le dit (ADR-0073 clause 2)");
+            }
+            if (!CLE_ENONCE.equals(declaree.premiereCle())) {
+                fautes.add(ou + " : sa premiere cle est '" + declaree.premiereCle() + "' et non '"
+                        + CLE_ENONCE + "'. Le comptage textuel partage des garde-fous de contenu"
+                        + " reconnait un item enumere a sa premiere cle (ADR-0064) : un item illustre"
+                        + " qui commence autrement sort du comptage, et les conditions de longueur"
+                        + " cessent d'etre executees sur lui sans que rien ne le dise (ADR-0073"
+                        + " clause 6)");
             }
             if (declaree.texteAlternatif() == null || declaree.texteAlternatif().isBlank()) {
                 fautes.add(ou + " : aucun " + CLE_TEXTE_ALTERNATIF + ". Une image qui porte la"
@@ -321,7 +343,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
         List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
         declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-absente",
-                "Une figure geometrique a reconnaitre."));
+                "Une figure geometrique a reconnaitre.", CLE_ENONCE));
 
         assertThatThrownBy(() -> verifier(declarees, illustrationsDuDepot(racine), decorDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
@@ -354,7 +376,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         for (String echappee : List.of("../images/cabinet-fronton", "https://exemple.org/figure.png",
                 "figure-carre.svg")) {
             List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
-            declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", echappee, "Une figure."));
+            declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", echappee, "Une figure.", CLE_ENONCE));
 
             assertThatThrownBy(() -> verifier(declarees, illustrations, decor))
                     .isInstanceOf(AssertionError.class)
@@ -370,7 +392,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         Map<String, String> illustrations = new LinkedHashMap<>(illustrationsDuDepot(racine));
         illustrations.put("figure-muette", "<svg xmlns=\"http://www.w3.org/2000/svg\"></svg>");
         List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
-        declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-muette", null));
+        declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-muette", null, CLE_ENONCE));
 
         assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
@@ -386,7 +408,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
                 "<svg xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"0\">carre</text></svg>");
         List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
         declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-legendee",
-                "Une figure geometrique."));
+                "Une figure geometrique.", CLE_ENONCE));
 
         assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
@@ -401,12 +423,14 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * dessin sur disque. Un juge pur mordu sur des donnees fabriquees a la main resterait vert le
      * jour ou le recensement lirait mal.
      *
-     * <p>Le paquet fautif porte quatre fautes distinctes, une par clause : un identifiant qui ne
-     * resout pas, une illustration sans texte alternatif, un dessin que personne ne declare, et du
-     * texte dans un dessin.</p>
+     * <p>Le paquet fautif porte cinq fautes distinctes, une par clause : un identifiant qui ne
+     * resout pas, une illustration sans texte alternatif, un dessin que personne ne declare, du
+     * texte dans un dessin, et un item qui ne commence pas par son enonce. <b>Cette derniere ne
+     * peut etre prouvee que d'ici</b> : elle depend de l'ordre des cles tel que SnakeYAML le rend,
+     * et aucune mutation en memoire ne l'exerce.</p>
      */
     @Test
-    void leJeuFautifCommiteEstRefuseSurSesQuatreFautes() {
+    void leJeuFautifCommiteEstRefuseSurSesCinqFautes() {
         Path jeuFautif = CONTRE_EXEMPLE.resolve("paquet-illustre-fautif");
         List<IllustrationDeclaree> declarees =
                 illustrationsDeclarees(List.of(jeuFautif.resolve("contenu")));
@@ -416,14 +440,41 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         assertThat(declarees)
                 .as("ADR-0051 : ce jeu fautif ne prouve rien si le recensement n'y lit aucune"
                         + " declaration d'illustration")
-                .hasSize(2);
+                .hasSize(3);
 
         assertThatThrownBy(() -> verifier(declarees, illustrations,
                 decorDuDepot(LesGardeFousSontMisALEpreuveTest.racineDuDepot())))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("figure-absente")
                 .hasMessageContaining(CLE_TEXTE_ALTERNATIF)
-                .hasMessageContaining("figure-legendee");
+                .hasMessageContaining("figure-legendee")
+                .hasMessageContaining("figure-triangle");
+    }
+
+    /**
+     * Morsure 7, clause 6, et elle vient d'une lecture de <b>nadia-prof</b> que ma mesure ne donnait
+     * pas. J'avais mesure qu'une <b>forme d'item</b> dont le premier champ n'est pas {@code enonce}
+     * sort du comptage textuel partage - bruyamment, le paquet entier tombant a zero item. Elle en a
+     * tire le cas <b>partiel</b>, qui est le dangereux : un paquet dont <b>certains</b> items
+     * commencent par {@code illustration} est compte en partie, les conditions de longueur cessent
+     * d'etre executees sur les items manquants, et deux des huit garde-fous qui partagent ce
+     * comptage ne portent pas la clause {@code hasSize(declares)} qui le rattraperait (routage 2 du
+     * rapport qualite de s24). C'est la forme de {@code CPL-3} : une condition ecrite que rien
+     * n'executait.
+     */
+    @Test
+    void unItemIllustreQuiNeCommencePasParSonEnonceFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        Map<String, String> illustrations = new LinkedHashMap<>(illustrationsDuDepot(racine));
+        illustrations.put("figure-mal-ordonnee", "<svg xmlns=\"http://www.w3.org/2000/svg\"></svg>");
+        List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
+        declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-mal-ordonnee",
+                "Une figure geometrique.", CLE_ILLUSTRATION));
+
+        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("figure-mal-ordonnee")
+                .hasMessageContaining(CLE_ENONCE);
     }
 
     /** Morsure 6 : la clause de non-vacuite mord elle aussi (ADR-0051). */

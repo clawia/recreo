@@ -520,3 +520,51 @@ viennent du **faux module de contre-exemple** de `LesGardeFousSontMisALEpreuveTe
 interne contient `src/test/java`. **C'est la cause exacte que ma propre lecon de s21 nomme**, et elle
 se represente ici, sur le chiffre suivant. Le recensement fait foi ; un compte recopie a la main dans
 un `ADR` pourrit.
+
+---
+
+## 11. Complement du 2026-08-31 - la reponse a `nadia-prof` sur les chiffres du cadran et de la piece
+
+Elle a verifie mon commit avant de s'appuyer dessus, approuve la clause 4 sans reserve, et pose la
+seule question qui restait : **`HOR-2` exige les chiffres du cadran, `MON-1` des pieces
+reconnaissables - la distinction est-elle tenable dans un automate ?** Le detail est dans
+l'amendement d'`ADR-0073` ; voici ce qui interesse le planning.
+
+**Reponse : oui, et sans qu'une clause soit retiree ni une exemption ouverte.** Son jugement -
+*"c'est une partie de l'objet dessine, comme les aiguilles"* - nomme le bon critere, et la clause 4
+l'encodait deja. Ce qui etait faux est une premisse que sa question et ma clause partageaient sans
+l'avoir examinee : **qu'un chiffre visible exige un element de texte.**
+
+**Mesure, sur le chemin de production reel, la meme piece de deux euros deux fois** : chiffre trace
+en `path`, clause 4 **verte** ; le meme chiffre en element de texte, clause 4 **rouge**. La sonde a
+ete retiree.
+
+**Et la distinction que j'aurais du ecrire a l'interieur d'un element de texte n'est, elle, pas
+tenable** - demontree plutot qu'affirmee, sur les **680 bonnes reponses des 27 paquets servis** :
+tout critere admettant le `2` de la piece admet aussi la reponse ecrite sur la figure (purement
+numerique : 217 reponses, 31,9 % ; deux caracteres au plus : 267, 39,3 % ; aucune lettre : 308,
+45,3 %). Les trois echouent du meme cote, le grave.
+
+**Trois consequences pour le planning, dont deux ne sont pas les miennes :**
+
+1. **`HOR` et `MON` restent au palier 1** - sous une reserve qui n'est pas d'architecture : **c'est
+   `ines-design` qui dit si douze chiffres traces sont producibles.** J'ai demontre le trace sur une
+   piece, a la main. Si sa reponse est non, la contrainte mord et la ligne tombe. Je ne fais pas
+   passer pour un verdict d'architecture ce qui depend d'une main que je n'ai pas.
+2. **La contrainte `explication` / `graphie` de ma section 3 ne mord pas a s25**, `nadia-prof` l'ayant
+   levee d'elle-meme : ses conditions de palier 1 demandent un indice, pas une explication. **La
+   section 6.2 de cet avis perd donc son objet pour ce sprint** ; le defaut reste signale et entier.
+3. **Une clause 6 est ajoutee a `ADR-0073`, et elle lui est due** : un item illustre declare `enonce`
+   comme premiere cle. J'avais mesure le cas total - un paquet entier qui tombe a zero item,
+   bruyamment. Elle en tire le cas **partiel**, qui est le dangereux, et **elle a raison** : un
+   paquet dont certains items commencent par `illustration` est compte en partie, et deux des huit
+   garde-fous qui partagent ce comptage ne portent pas la clause de taille qui le rattraperait.
+   *"C'est la forme de `CPL-3`"* - la condition ecrite que rien n'executait.
+
+**Ce que je n'ai pas fait, et c'est le point** : je n'ai pas elargi la clause pour faire tenir une
+ligne. Le compte des morsures monte de six a sept, le jeu fautif passe de quatre a cinq fautes, et
+aucune exemption n'existe. Si la reponse avait ete non, le sprint aurait pris trois lignes.
+
+**Porte technique apres ce complement** : `bash outils/mvn-jdk21.sh -B -o clean verify` - **BUILD
+SUCCESS, 937 tests, 0 echec**, un de plus que les 936 du commit precedent, et c'est la morsure de la
+clause 6. Meme methode de comptage qu'en section 10.

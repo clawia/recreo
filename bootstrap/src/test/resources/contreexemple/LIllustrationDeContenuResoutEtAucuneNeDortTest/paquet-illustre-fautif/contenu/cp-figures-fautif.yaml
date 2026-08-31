@@ -22,3 +22,12 @@ items:
     bonneReponse: "un cercle"
     distracteurs: ["un ovale", "un losange"]
     indice: "Il est tout rond, sans aucun coin."
+  # Faute 4 : l'item commence par 'illustration' et non par 'enonce'. Le comptage textuel partage
+  # ne le reconnait pas comme un item enumere, et les conditions de longueur cessent de s'executer
+  # sur lui. Seule une lecture du fichier dans l'ordre des cles le voit.
+  - illustration: "figure-triangle"
+    enonce: "Quelle est cette figure ?"
+    illustrationTexteAlternatif: "Une figure géométrique à trois côtés."
+    bonneReponse: "un triangle"
+    distracteurs: ["un carré", "un cercle"]
+    indice: "Compte ses côtés : il y en a trois."

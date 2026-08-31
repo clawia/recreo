@@ -408,3 +408,142 @@ recopie a la main dans un `ADR` pourrit.
    pour lever ce rouge est **d'ajouter une exemption a `RessourcesTiercesTest`** - c'est-a-dire de
    percer la garantie hors ligne d'`ADR-0014` sous la pression d'une fin de sprint. Une decision
    ecrite avant le lot coute une demi-journee ; celle-la aurait coute une garantie.
+
+---
+
+## Amendement du 2026-08-31, meme jour - la clause 4 face au cadran et a la piece, et une clause 6 que je n'avais pas vue
+
+`nadia-prof` a verifie ce commit avant de s'appuyer dessus, approuve la clause 4 sans reserve -
+*"une figure legendee, non, jamais : c'est ma condition de contrefacon prise par l'autre bout,
+l'image qui porte la reponse"* - et pose la seule question qui restait, en la posant exactement comme
+il faut : **`HOR-2` exige les chiffres du cadran et `MON-1` des pieces reconnaissables ; si la
+distinction est tenable dans un automate, ces deux lignes restent au palier 1 ; sinon elle ne l'est
+pas, et elle prefere l'entendre dire.**
+
+Elle verse un jugement, comme le sien :
+
+> Un chiffre grave sur une piece n'est pas du texte que l'enfant lit - ce n'est pas un mot, il ne
+> s'accentue pas, **c'est une partie de l'objet dessine, comme les aiguilles**.
+
+### 1. Ce jugement est exact, et la clause 4 l'encode deja
+
+**Sa phrase nomme le bon critere : dessine contre ecrit.** C'est mot pour mot ce que la clause 4
+separe. Ce qui etait faux n'est pas son jugement, c'est une premisse que sa question et ma clause
+partageaient sans l'avoir examinee : **qu'un chiffre visible exige un element `<text>`.** Il ne
+l'exige pas. Un `2` trace en `<path>` est de la geometrie, exactement comme les aiguilles.
+
+**Mesure, sur le chemin de production reel, et non sur une fixture.** Une piece de deux euros deposee
+sous le repertoire d'illustrations de `adapter-web`, un paquet servi qui la declare, **la meme piece
+deux fois, le meme chiffre visible, le meme nom de fichier** :
+
+| Le chiffre est ecrit | Clause 4 |
+|---|---|
+| en `path`, avec les commandes de trace | **verte** |
+| en element `text` | **rouge**, *"du texte pose dans le dessin echappe a tous les garde-fous qui jugent le texte lu par l'enfant"* |
+
+*Perimetre : `bootstrap` et ses amonts, `-am` porte. Dans les deux etats le seul autre rouge est
+l'epinglage du zero, qui est le signal voulu - le premier paquet illustre est arrive. La sonde a ete
+retiree ; rien n'en subsiste dans l'arbre.*
+
+**`HOR` et `MON` restent donc au palier 1, et je n'ai rien affaibli.** La clause 4 n'est pas touchee,
+aucune exemption n'est ouverte, et le compte des morsures monte au lieu de baisser.
+
+### 2. La distinction a l'interieur d'un element de texte, elle, n'est pas tenable - et je le mesure plutot que de l'affirmer
+
+Il faut le dire pour que personne ne la reecrive dans six mois. **Tout critere qui admettrait le `2`
+de la piece a l'interieur d'un element de texte admet aussi la reponse ecrite sur la figure.** Trois
+familles essayees, mesurees sur le contenu servi - les **680 bonnes reponses** des 27 paquets du
+repertoire de contenu de `adapter-content`, comptage a `130ba64` :
+
+| Critere qu'on serait tente d'ecrire | Ce qu'il laisse passer |
+|---|---|
+| le contenu est purement numerique | **217 bonnes reponses sur 680 (31,9 %)** sont purement numeriques - un `8` pose sur un octogone donne la reponse a *"combien de cotes ?"* |
+| le contenu fait au plus deux caracteres | **267 sur 680 (39,3 %)**, dont `Le`, `un`, `ce`, `sa`, `va` |
+| le contenu ne porte aucune lettre | **308 sur 680 (45,3 %)** |
+
+**Les trois echouent dans le meme sens et c'est le sens grave** : elles autorisent d'ecrire la
+reponse sur le dessin, c'est-a-dire exactement la contrefacon que `nadia-prof` refuse. Aucune ne
+distingue *"un chiffre qui fait partie de l'objet"* de *"un chiffre qui est la reponse"* : cette
+difference n'est pas dans les caracteres, elle est dans le rapport entre le dessin et la question -
+et ce rapport, aucune machine de ce depot ne le lit. **Une regle qui enumererait les cas admis - le
+cadran, la piece - serait une liste d'exemples deguisee en regle**, la famille que ce depot a deja
+sanctionnee.
+
+C'est le meme refus que dans `ADR-0072`, et le meme motif : je ne peux pas formuler la propriete, je
+le montre au lieu de l'affirmer, et je nomme ce qui la remplace.
+
+### 3. Un fait qui renforce la reponse, et qui ne vient pas de moi
+
+**Le depot ne vendorise aucune police et n'ecrit aucune regle de police telechargee** - verifie a
+`130ba64` : zero fichier `.woff`, `.woff2`, `.ttf` ou `.otf` dans les modules, zero regle
+`@font-face` dans la feuille maison comme dans la feuille tierce. Un element de texte dans un SVG est
+donc rendu avec la police que l'appareil possede, a ses metriques : **la position et la taille des
+chiffres d'un cadran ne seraient reproductibles sur aucun appareil.** Tracer les chiffres n'est pas
+une concession arrachee par ma clause, c'est ce qu'un dessin independant de l'appareil demande de
+toute facon.
+
+### 4. La troisieme voie - la porte de `nadia-prof` porterait la distinction - est refusee, et pour un motif mesure
+
+Elle est defendable en apparence : `nadia-prof` juge deja la contrefacon par description et jugera le
+texte alternatif. **Elle est refusee ici, et le motif n'est pas la mefiance.**
+
+L'objet meme de la clause 4 est que du texte pose dans un dessin **echappe aux garde-fous
+automatiques** qui jugent le texte lu par l'enfant - les accents, le cliquet de `TYP-1`, la notation
+d'`ADR-0060`. Router la distinction vers une porte humaine ne ferme pas ce trou : **elle le laisse
+ouvert et lui ajoute un juge.** Et le depot a mesure ce que vaut la relecture humaine seule sur cette
+matiere exacte : le `relecteur-pedagogique` a compte **onze** espaces ordinaires devant un signe
+double dans le texte rendu, **trois neuves a s24**, sous une porte technique verte et apres relecture.
+Ce n'est pas un reproche a la relecture, c'est la raison d'etre d'un cliquet.
+
+Ecrire *"pas de texte, sauf si `nadia-prof` l'accepte"* serait une exemption sans perimetre derivable
+- une regle qui ne garde rien, et qui aurait en plus l'apparence d'en garder une. **La reponse
+honnete etait dans la question de depart : la distinction dessine contre ecrit est tenable, et c'est
+la seule qui le soit.**
+
+### 5. Clause 6 - un item illustre declare `enonce` comme premiere cle
+
+Elle vient d'une lecture de `nadia-prof` que ma mesure ne donnait pas, et elle lui est due.
+
+J'avais mesure qu'une **forme d'item** dont le premier champ n'est pas `enonce` sort du comptage
+textuel partage (`ChaquePaquetPorteUnIndiceTest.itemsDeclares`, `ADR-0064`), et que le paquet entier
+tombe alors a zero item - **bruyamment**. Elle en tire le cas **partiel**, qui est le dangereux : un
+paquet dont **certains** items commencent par `illustration` est compte **en partie**. Les conditions
+de longueur cessent d'etre executees sur les items manquants, et **deux des huit garde-fous qui
+partagent ce comptage ne portent pas la clause de taille** qui le rattraperait (routage 2 du rapport
+qualite de s24). Ses mots : *"c'est la forme de `CPL-3`"* - la condition ecrite que rien n'executait,
+qui a coute un refus a s24.
+
+**Decision** : un item qui declare une illustration declare `enonce` comme **premiere** cle.
+
+**Sa morsure est la seule du fichier qui ne peut pas etre jouee en memoire** : elle depend de l'ordre
+des cles tel que SnakeYAML le rend. Le jeu fautif commite porte donc une cinquieme faute, un item qui
+commence par `illustration`, et le test qui le traverse l'exige nommement.
+
+### 6. Ce que cet amendement change au compte
+
+`LIllustrationDeContenuResoutEtAucuneNeDortTest` passe de **10 a 11 tests** : sept morsures au lieu
+de six, et un jeu fautif commite qui porte cinq fautes au lieu de quatre. **Aucune clause n'est
+retiree, aucune exemption n'est ouverte, aucune regle ArchUnit n'est ajoutee** - compte du depot
+inchange a 31, par le meme recensement.
+
+### 7. Ce que cet amendement ne decide pas
+
+**Que les chiffres traces soient producibles.** Je l'ai demontre sur une piece, a la main. Un cadran
+de douze chiffres est un autre volume de travail, et **c'est `ines-design` qui dit si c'est
+producible**, pas moi. Si sa reponse est non, la contrainte mord pour de bon et la conclusion
+redevient celle que `nadia-prof` avait envisagee. **Ma reponse est donc precise : la distinction est
+tenable dans une regle executable, et la ligne tient si le trace tient.** Je ne fais pas passer pour
+un verdict d'architecture ce qui depend d'une main que je n'ai pas.
+
+**Une limite que je nomme plutot que de la laisser trouver** : rien n'empeche quelqu'un de tracer une
+**phrase entiere** en `path`. La clause 4 ne la verrait pas. Je n'ecris pas de garde-fou contre ce
+cas - il faudrait mesurer une longueur de trace ou compter des courbes, c'est-a-dire une liste
+d'exemples sous forme de nombre - et **ce residu-la, lui, reste a la porte de `nadia-prof`**. La
+difference avec la section 4 est de taille et non de nature : router *"un mot legende, ou pas"* a la
+porte, c'est lui donner tout le probleme ; router *"quelqu'un a-t-il dessine une phrase a la main"*,
+c'est lui donner ce qu'aucune machine ne peut prendre.
+
+**Une consequence de planning que je nomme sans la decider** : `nadia-prof` releve sa capacite de
+trois a quatre paquets au motif que le palier 1 n'ouvre pas de mecanique au sens de `SEUIL-1` a
+`SEUIL-5`. C'est une decision a elle, sur un fait que cet `ADR` etablit. Le rang des lignes reste a
+`camille-po`.
