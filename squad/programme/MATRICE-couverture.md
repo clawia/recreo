@@ -83,7 +83,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp, cp-ranger-nombres | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp | bandit manchot | couvert-valide |
+| mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp ; **saisie-complements-10-cp** (2026-08-31, s24) | bandit manchot ; **saisie** | couvert-valide - **statut inchange par le second jeu.** `CPL-1` : *"deux entrees sur une meme ligne ne sont pas une double couverture"*. La ligne etait deja verte avant s24 et le lot de saisie **n'ajoute aucune ligne** |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | - | - | non couvert |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | bandit-manchot-comparer-cp | bandit manchot | couvert-valide |
@@ -235,7 +235,7 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | bandit-manchot-multiplications-divisions-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | - | - | non couvert |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | - | - | non couvert |
-| mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | bandit-manchot-fractions-cm1 (`S24-FRA`, en construction) | bandit manchot | en cours |
+| mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | bandit-manchot-fractions-cm1 | bandit manchot | **couvert-valide** (2026-08-31, s24) - **couverture partielle, mention exigee par `FRA-9` et reprise telle quelle** : *"moitie 'notion de fraction simple' seule ; la moitie 'reperage sur une droite numerique' reste non couverte"* |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | bandit-manchot-problemes-etapes-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Calculer un perimetre de figures usuelles (carre, rectangle) | bandit-manchot-perimetre-cm1 | bandit manchot | couvert-valide |
@@ -509,10 +509,10 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp | bandit manchot | en cours |
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvrable en l'etat |
-| francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp (`S24-NAR`, en construction) | bandit manchot | en cours |
+| francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp | bandit manchot | **couvert-valide** (2026-08-31, s24, second passage - reserve levee) |
 | francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | non couvert |
 | francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | - | - | non couvert |
-| francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | bandit-manchot-pluriel-cp (`S24-PLU`, en construction) | bandit manchot | en cours |
+| francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | bandit-manchot-pluriel-cp | bandit manchot | **couvert-valide** (2026-08-31, s24) |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
 | francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | bandit-manchot-mot-manquant-cp | bandit manchot | couvert-valide |
 
@@ -2807,3 +2807,107 @@ compte comme le premier** (`DEC-0059`, section 2). `DEN` (moitie "lire, ecrire, 
 "Denombrer... jusqu'a 100", mathematiques CP) reste `non couvert` : elle est un quatrieme paquet
 **conditionnel**, non engage, et ne ferait de toute facon pas bouger sa ligne au-dela d'`en cours`
 par la condition `DEN-2` de `nadia-prof`.
+
+---
+
+# Synthese apres les verdicts du sprint 24 (2026-08-31, cloture)
+
+Ecrite par `camille-po`, seule proprietaire de ce fichier (`squad/README.md`). `sofia-sm` a recompte
+et **a refuse de l'ecrire**, ce qui est la bonne conduite : le comptage se verifie a plusieurs, le
+fichier a une main.
+
+## Le ratio, recompte par moi et non repris
+
+**27/43 = 62,8 %.**
+
+**Methode, nommee pour etre refaite par un tiers** : comptage de la colonne Statut des **quatre
+tableaux de matiere** de ce fichier - Mathematiques CP, Mathematiques CM1, Francais CP, Francais CM1 -
+sur l'arbre issu de la fusion de `s24-sofia-review` (`0cc4724`), **apres** l'ecriture des quatre
+lignes ci-dessous et non avant. Sont exclues du comptage les lignes d'en-tete et de separation des
+tableaux, et les tableaux de synthese historiques de ce fichier, qui ne sont pas des tableaux de
+matiere. Une ligne portant `couvert-valide` est comptee dans ce statut meme quand la cellule porte en
+plus une mention de couverture partielle.
+
+| | Lignes | `couvert-valide` | `en cours` | `non couvert` | `non couvrable en l'etat` |
+|---|---|---|---|---|---|
+| Mathematiques CP | 11 | 6 | 0 | 5 | 0 |
+| Mathematiques CM1 | 12 | 8 | 0 | 2 | 2 |
+| Francais CP | 12 | 5 | 1 | 5 | 1 |
+| Francais CM1 | 12 | 8 | 0 | 3 | 1 |
+| **Total** | **47** | **27** | **1** | **15** | **4** |
+
+Denominateur atteignable : **47 - 4 = 43**. **27/43 = 62,8 %**, contre 24/43 = 55,8 % a l'ouverture
+de s24. **Mon compte est identique a celui de `sofia-sm`**, etabli separement.
+
+**La zone la plus creuse du produit etait la cible, et elle a bouge** : le francais CP passe de
+**3/11 (27,3 %)** a **5/11 (45,5 %)** d'atteignable. C'est le motif ecrit de `DEC-0059`, section 2,
+pour avoir prefere `NAR` a `SUB` ; il se verifie.
+
+## Les quatre lignes ecrites, et leur verdict source
+
+Les quatre verdicts sont de `nadia-prof`, tous prononces apres avoir joue. **Je les ai lus dans les
+fiches avant d'ecrire, plutot que de les reprendre d'un rapport.**
+
+| Ligne | Jeu | Verdict, et ou je l'ai lu |
+|---|---|---|
+| Marques du pluriel en `-s` (francais CP) | `bandit-manchot-pluriel-cp` | **VALIDE**, `FICHE-bandit-manchot-pluriel-cp.md` |
+| Comprendre un texte narratif tres court (francais CP) | `bandit-manchot-texte-narratif-cp` | **VALIDE**, reserve 1 levee au second passage, `FICHE-bandit-manchot-texte-narratif-cp.md` |
+| Notion de fraction simple (mathematiques CM1) | `bandit-manchot-fractions-cm1` | **VALIDE**, reserve 1 levee au second passage, `FICHE-bandit-manchot-fractions-cm1.md` |
+| Complements a 10 (mathematiques CP) - **deja verte, ne bouge pas** | `saisie-complements-10-cp` | **VALIDE**, refus du 2026-08-31 leve, `FICHE-saisie-complements-10-cp.md` |
+
+**La mention de `FRA-9` est portee telle quelle et ce n'est pas une remarque, c'est une condition** :
+la ligne des fractions dirait plus que ce que le jeu sert sans elle. Elle est recopiee mot pour mot
+depuis la fiche, sans etre resumee.
+
+**La ligne "Complements a 10" porte desormais deux jeux et garde son statut.** `CPL-1` :
+*"deux entrees sur une meme ligne ne sont pas une double couverture"*. Je nomme le second jeu plutot
+que de le taire - la colonne "Jeu(x) couvrant" est plurielle par construction, et une matrice qui
+cacherait un jeu livre dirait moins que ce qui existe - **mais le ratio n'en tire rien.** Le lot de
+saisie de s24 ajoute **zero ligne**, ce que j'avais etabli sur 18 lignes, que `nadia-prof` a etendu a
+23, et qui se verifie ici pour la troisieme fois.
+
+## Ce que le lot de saisie apporte, et qu'aucune colonne de ce fichier ne mesure
+
+Ce fichier compte des lignes de programme. Il ne compte pas ceci, et `nadia-prof` demande que ce soit
+ecrit la ou on lit la couverture :
+
+> **Le catalogue contient desormais un jeu sur trente et un ou un enfant qui ne sait pas peut
+> echouer.**
+
+Sur les 582 items du catalogue qui portent deux ou trois propositions - 94,6 % des 615 items
+enumeres, chiffre et methode de `nadia-prof` du 2026-08-30 - un enfant qui presse au hasard a
+necessairement raison au dernier essai. **Un compteur de couverture ne verra jamais cette
+difference-la.** Elle est instruite par `DEC-0061`, candidate de tete a l'ouverture de s25.
+
+## La mention datee que `DEC-0063` prevoyait n'est pas ecrite, et c'est `nadia-prof` qui l'a rendue sans objet
+
+`DEC-0063`, section 3, prevoyait qu'une ligne dont le jeu devient modifie par un changement de code
+partage garde `couvert-valide` **et recoive une mention** *"reaudit du au titre de `DEC-0060`, `Q1`"*.
+Sous `Q1`, les lots 1 et 3 de s24 rendaient bien les 27 jeux modifies.
+
+**Cette mention n'est pas portee, parce qu'elle serait fausse.** `nadia-prof` a prononce le
+2026-08-31, apres avoir reverifie elle-meme la garde et le corps :
+
+> *"Les lots 3 et 4 sont discharges sous R-C. Les 27 jeux existants ne sont pas rejoues, et le chemin
+> C est ecarte pour s24."*
+> `squad/conformite/CLAUSE-PORTE-PEDAGOGIQUE-perimetre-apres-les-six-reponses-du-2026-08-31.md`,
+> section 12.
+
+**Aucun reaudit n'est donc du sur les 27, et aucune ligne ne porte de dette.** `DEC-0063` avait ecrit
+que sa clause gouvernait la porte et que la matrice suivrait ; c'est ce qui se produit, dans l'autre
+sens que celui que j'avais anticipe. **Le detail est dans l'amendement du 2026-08-31 a `DEC-0063`.**
+
+**Ce que cette decharge ne cree pas, et `nadia-prof` l'ecrit** : aucune presomption pour le prochain
+lot partage. Chaque lot est instruit pour lui-meme. **Un lot qui modifierait un corps qui s'execute
+ferait rentrer les 27 dans la porte**, et ce jour-la la mention de `DEC-0063` sera due.
+
+## Ce que cette synthese ne fait pas
+
+- Elle **ne prononce aucun Done pedagogique** : les quatre verdicts sont de `nadia-prof` et je n'ai
+  fait que les lire et les reporter.
+- Elle **ne fait bouger aucune ligne au-dela des trois nommees**, et n'en retire aucune.
+- La ligne **"Associer les graphemes aux phonemes"** reste `en cours` : c'est la derniere de ce
+  statut, ouverte depuis s03, et rien de s24 ne la touche.
+- `SUB` reste `non couvert` et son report reste **le premier**, compte a `DEC-0059`, section 2. Le
+  motif de composition qui l'a ecartee - au plus un paquet du type `COMP-2` par sprint - a ete
+  consomme par `NAR`, qui est desormais verte. **Le motif ne vaut plus pour s25.**
