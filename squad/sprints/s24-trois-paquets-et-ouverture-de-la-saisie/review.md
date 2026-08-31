@@ -586,3 +586,44 @@ clos ici sur une intention annoncee.
 - **Matrice : 24/43 (55,8 %), inchangee.** Trois lignes `en cours` attendent un verdict.
 - **Dix-neuf obstacles ouverts**, chacun avec son proprietaire nomme. Six obstacles du planning clos
   par un fichier qui existe sur le disque.
+
+
+---
+
+## 9. Le Done pedagogique de s24 - `nadia-prof`, 2026-08-31
+
+*Section ajoutee par `nadia-prof` apres la review de `sofia-sm`, qui a ete ecrite avant que je sois
+appelee et alors que la porte technique etait rouge. **Je ne modifie pas un mot de ce qui precede.**
+Les sections 1 a 8 restent lisibles telles qu'elles ont ete rendues.*
+
+**J'ai joue.** Application lancee depuis le jar servi, construit sur l'arbre de cloture, sur le JDK
+21 de la toolchain declaree. Lignee de l'arbre verifiee par moi : les six branches d'agents sont
+ancetres du sommet de cloture. **Le vert de la CI n'a prononce aucun de ces verdicts.**
+
+| Increment | Verdict | Motif en une ligne |
+|---|---|---|
+| `bandit-manchot-pluriel-cp` (`S24-PLU`) | **VALIDE** | Neuf conditions tenues, 21 items lus, et **aucune strategie de surface ne gagne** - les quatre strategies decisives mesurees gagnent zero fois |
+| `bandit-manchot-texte-narratif-cp` (`S24-NAR`) | **VALIDE SOUS RESERVE** | Dix conditions tenues, `NAR-6` verifiee texte masque sur les 20 items. **Reserve** : l'item 2 fait aller Nina *"au salon"*, ce que `NAR-8` interdit - une situation qui suppose un logement |
+| `bandit-manchot-fractions-cm1` (`S24-FRA`) | **VALIDE SOUS RESERVE** | Conditions tenues, famille (e) verifiee item par item, rangs **33,3 / 33,3 / 33,3 %** refaits par moi sur le paquet livre. **Reserve** : deux indices de forme (d) parlent du **nom** de la part la ou la reponse est un **nombre**. **`FRA-9` exige sa mention exacte sur la ligne de matrice** |
+| `S24-SAI-2` - le paquet de saisie | **REFUSE** | `CPL-3` non tenue : l'ecriture a zero initial n'est pas acceptee. Un enfant qui ecrit `03` pour `3` **s'entend dire qu'il s'est trompe et perd un essai**. `SEUIL-2` franchi sur ce paquet |
+| `S24-SAI-1` - la mecanique de saisie | **audit rendu, les cinq seuils tenus** | Joue au travers d'une entree de catalogue de sonde posee hors du depot, faute d'entree livree. **Audit degrade sur ce point seul, et je le declare.** La mecanique n'est pas la cause du refus : j'ai isole la cause par sonde |
+| La saisie **jouable** | **aucun Done possible** | Il n'y a pas de jeu : 30 entrees au catalogue, 31 paquets servis, et l'entree manquante est celle-la |
+
+**Les verdicts vivent dans les fiches**, avec leurs motifs, leurs mesures et leurs methodes :
+`FICHE-bandit-manchot-pluriel-cp.md`, `FICHE-bandit-manchot-texte-narratif-cp.md`,
+`FICHE-bandit-manchot-fractions-cm1.md`, `FICHE-saisie-complements-10-cp.md`.
+
+**Sur la retenue de l'entree de catalogue, que `sofia-sm` me route en section 3 :** son motif est
+verifie et son geste est le bon - elle a applique `CPL-9c` plutot que de l'enfreindre. **Ce que cela
+coute est entier et je ne l'adoucis pas** : pour un enfant, le gain de s24 sur la saisie est nul.
+**Et un second motif apparait apres avoir joue** : si l'entree etait entree, le jeu aurait ete servi
+avec le defaut ci-dessus. **Ce que la retenue a coute n'est pas un bon jeu retenu, c'est un jeu
+defectueux non servi.**
+
+**La decharge du lot 3 et du lot 4 est prononcee** : voir la section 12 de ma clause opposable. La
+troisieme forme de preuve de structure de `theo-archi` tient, et je l'ai reverifiee moi-meme.
+
+**Ce que ce sprint confirme sur la porte** : 923 tests verts, et un enfant de CP qui ecrit `03` a
+tort. `SAI-6` et `SAI-7` etaient nommees le 2026-08-30 comme *"le point le plus dangereux de la
+mecanique de saisie : un bareme faux passe une CI verte sans laisser de trace"*. **C'est arrive, et
+le seul garde-fou qui l'a vu, c'est d'avoir joue.**

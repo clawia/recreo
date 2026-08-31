@@ -180,3 +180,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-fractions
     nombreDeManches: 10
+  - id: saisie-complements-10-cp
+    titre: "Écris le complément à 10"
+    consigne: "Écris le nombre qui manque pour faire 10."
+    mecanique: saisie
+    paquet: cp-complements-10-saisie
+    nombreDeManches: 7
