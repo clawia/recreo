@@ -88,6 +88,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-problemes-additifs-cp",
             "bandit-manchot-comparer-nombres-cp",
             "bandit-manchot-complements-10-cp",
+            // S24-SAI-2 : seconde entree sur la meme competence, en saisie. CPL-9a de
+            // nadia-prof - un enfant de CP doit distinguer les deux sans les ouvrir.
+            "saisie-complements-10-cp",
             "bandit-manchot-tables-multiplication-cm1",
             "bandit-manchot-perimetre-cm1",
             "bandit-manchot-conversions-unites-cm1",
@@ -154,6 +157,7 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Petits problèmes",
             "Compare les nombres",
             "Les compléments à 10",
+            "Écris le complément à 10",
             "Les tables de multiplication",
             "Le périmètre",
             "Les mesures",
@@ -204,6 +208,7 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis trouve la réponse !",
             "Quel signe faut-il mettre ?",
             "Combien manque-t-il pour faire 10 ?",
+            "Écris le nombre qui manque pour faire 10.",
             "Quel est le résultat ?",
             "Quel est le périmètre ?",
             "Convertis dans la bonne unité !",
@@ -244,9 +249,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Choisis la bonne écriture pour compléter la phrase.",
             // S24-FRA : consigne neuve.
             "Lis bien la fraction, puis choisis la réponse.",
-            // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
-            // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
+            // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
+            // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
+            // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
             "bandit-manchot",
+            "saisie",
             // matiere (descripteur de chaque paquet reference par le catalogue).
             // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
             "Mathématiques",
