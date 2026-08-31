@@ -416,3 +416,31 @@ supprime le risque qu'`ines-design` a nomme sans le minimiser.
 - Il **ne modifie aucun fichier** sous `domain/`, `application/`, `adapters/` ou `bootstrap/`. J'ai
   lu `Item`, `BanditManchotSession`, `YamlContentPackLoader` et `EtatDePartie` pour verifier quatre
   faits ; je n'en ai touche aucun.
+
+---
+
+## 11. Ajout date du 2026-08-31, apres-midi - ce que la livraison des quatre lots change a cette clause
+
+Le texte ci-dessus n'est pas modifie. Cette section s'y ajoute, comme la clause C9 l'exige.
+
+- **L'exigence 2 de la section 4 gagne une voie alternative**, sous double condition conjointe -
+  code de rendu non modifie **et** code ajoute inatteignable, l'inatteignabilite etant enumeree et
+  non lue. Le libelle et le motif sont dans
+  `squad/conformite/SUITES-s24-apres-la-livraison-des-quatre-lots-2026-08-31.md`, section 2.2.
+  **Le libelle d'origine de l'exigence 2 reste en vigueur partout ou les deux conditions ne sont pas
+  reunies ensemble.**
+- **Le lot 1 est discharge sous R-C** : chemin A acquis, aucun des 27 jeux n'entre en rejeu de son
+  fait.
+- **Le lot 3 existe** - `3dac4f5`, pousse sur `origin/s24-marc` le 2026-08-31 a 10:02 - contrairement
+  a ce qui m'a ete transmis et a ce que la reponse d'invariance de `theo-archi`, ecrite quatorze
+  minutes plus tard, a pu constater. **Le chemin C n'est donc pas ecarte pour s24**, et la section 3.3
+  ci-dessus reste applicable telle qu'elle est ecrite.
+- **La capture de reference que `theo-archi` chiffre ne contredit pas la clause C5.** C5 refuse que
+  **je** sois le harnais de non-regression, pas qu'il en existe un. Je ne la demande pas ; si elle est
+  financee, je m'en servirai.
+- **Deux conditions neuves et non retroactives** sont posees ce jour : `NAR-11` sur les paquets a
+  texte support, `CPL-9` sur le titre et la consigne d'une entree de catalogue. Elles vivent dans le
+  document de suites, sections 4.3 et 5.
+- **Une condition de contenu est amendee** : `FRA-5` gagne une famille (e) sur la forme (d) de
+  `FRA-2`, avec son plancher et sa verification de satisfaisabilite
+  (`squad/conformite/ARBITRAGE-FRA-la-forme-d-contre-le-seuil-minimal-de-rang.md`).
