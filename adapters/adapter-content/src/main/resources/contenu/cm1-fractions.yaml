@@ -33,13 +33,36 @@ descripteur:
 # FRA-4 : dix items sur vingt-quatre ont pour numerateur 1, pour un minimum de
 # arrondi-inferieur(24/3) = 8.
 #
-# FRA-5, les familles employees : (a) le numerateur et le denominateur echanges ; (b) le
-# denominateur decale de un. La famille (c) - une denomination formee sur le numerateur - n'est
-# employee par aucun item : FRA-5 l'autorise sur les formes (a) et (b) sans l'exiger, et la
-# famille (a) est indisponible sur un item de numerateur 1, ou l'echange produit d/1, qui n'a pas
-# de denomination. Ces items-la portent donc deux distracteurs de famille (b), un par decalage :
-# FRA-5 n'exige pas deux familles distinctes, il exige que chaque distracteur appartienne a une
-# famille et que la derivation soit nommee.
+# FRA-5, les familles employees : (a) le numerateur et le denominateur echanges ; (b) le
+# denominateur decale de un ; (e) le numerateur et le denominateur additionnes, sur la forme (d)
+# seule. La famille (c) - une denomination formee sur le numerateur - n'est employee par aucun
+# item : FRA-5 l'autorise sur les formes (a) et (b) sans l'exiger, et la famille (a) est
+# indisponible sur un item de numerateur 1, ou l'echange produit d/1, qui n'a pas de denomination.
+# Ces items-la portent donc deux distracteurs de famille (b), un par decalage : FRA-5 n'exige pas
+# deux familles distinctes, il exige que chaque distracteur appartienne a une famille et que la
+# derivation soit nommee.
+#
+# FRA-5, famille (e), amendement de nadia-prof du 2026-08-31
+# (ARBITRAGE-FRA-la-forme-d-contre-le-seuil-minimal-de-rang.md). Elle attrape l'enfant qui lit le
+# denominateur comme le nombre de parts RESTANTES au lieu du nombre de parts total : sur 3/8, il
+# repond 11 - trois parts prises plus huit qui restent. C'est le contresens meme que la forme (d)
+# existe pour trouver, du meme genre que la famille (a) appliquee a l'autre malentendu, et jamais
+# un distracteur ecrit pour satisfaire un seuil.
+#
+# Ce que l'amendement debloque, et pourquoi il etait du : avec les seules familles (a) et (b), la
+# bonne reponse d'un item de forme (d) ne peut JAMAIS etre la plus petite des trois propositions -
+# FRA-1 impose n < d et la famille (a) rend n. Un enfant qui elimine systematiquement la plus
+# petite n'eliminait donc jamais la bonne reponse. nadia-prof l'a reverifie par enumeration sur les
+# 45 fractions admises : 0 sur 45, impossible et non rare.
+#
+# Le seul couple qui atteint ce rang est (b) avec d+1 et (e), qui donne les propositions
+# {d, d+1, n+d} - elle le nomme pour qu'on ne le cherche pas. Deux items le portent, "Dans 3/8"
+# (8, 9, 11) et "Dans 2/5" (5, 6, 7), et tous deux ont un numerateur d'au moins 2, ce que FRA-5e-2
+# exige : sur un numerateur de 1, n+d vaudrait d+1 et FRA-6 ne serait pas tenue.
+#
+# FRA-5e-1 : la famille (a) figure sur quatre des six items de forme (d), soit 66,7 %, au-dessus du
+# plancher de la moitie. Le distracteur qui apprend le plus sur cette forme n'est pas efface par
+# l'assouplissement.
 #
 # FRA-10 : sur l'item "Dans 3/4", le decalage vers le bas produirait 3, deja donne par la famille
 # (a) ; c'est donc le decalage vers le haut qui est retenu, 5.
@@ -212,22 +235,22 @@ items:
       "1/4": "b"
   - enonce: "Dans 3/8, en combien de parts égales le tout est-il partagé ?"
     bonneReponse: "8"
-    distracteurs: ["3", "9"]
+    distracteurs: ["9", "11"]
     indice: "Le nombre du bas dit en combien de parts on partage."
     fraction: "3/8"
     forme: "d"
     famillesDistracteurs:
-      "3": "a"
       "9": "b"
+      "11": "e"
   - enonce: "Dans 2/5, en combien de parts égales le tout est-il partagé ?"
     bonneReponse: "5"
-    distracteurs: ["2", "4"]
+    distracteurs: ["6", "7"]
     indice: "Regarde le nombre du bas : il compte les parts égales."
     fraction: "2/5"
     forme: "d"
     famillesDistracteurs:
-      "2": "a"
-      "4": "b"
+      "6": "b"
+      "7": "e"
   - enonce: "Dans 3/4, en combien de parts égales le tout est-il partagé ?"
     bonneReponse: "4"
     distracteurs: ["3", "5"]

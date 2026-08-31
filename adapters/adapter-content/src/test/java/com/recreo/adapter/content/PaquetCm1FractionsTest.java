@@ -10,6 +10,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -142,6 +143,15 @@ class PaquetCm1FractionsTest {
             ajouterValeur(valeurs, forme, numerateur, denominateur + 1, denominateur + 1);
             return valeurs;
         }
+        if ("e".equals(famille)) {
+            // FRA-5e-3 : la famille (e) est reservee a la forme (d). Sur les autres formes, la
+            // bonne reponse n'est pas un nombre de parts et n+d n'y designe aucune erreur - la
+            // liste rendue est donc vide, et le distracteur declare (e) n'y sera jamais retrouve.
+            if ("d".equals(forme)) {
+                valeurs.add(String.valueOf(numerateur + denominateur));
+            }
+            return valeurs;
+        }
         throw new AssertionError("famille de distracteur inconnue de FRA-5 : '" + famille + "'");
     }
 
@@ -253,6 +263,68 @@ class PaquetCm1FractionsTest {
                                 chiffres(item.fraction().numerateur(), item.fraction().denominateur()))
                         .contains(distracteur);
             }
+        }
+    }
+
+    /**
+     * FRA-5e-3, amendement du 2026-08-31 : la famille (e) est reservee a la forme (d). Sur les
+     * formes (a), (b) et (c), la bonne reponse n'est pas un nombre de parts et {@code n + d} n'y
+     * designe aucune erreur.
+     */
+    @Test
+    void laFamilleENEstEmployeeQueSurLaFormeD() {
+        for (ItemDeclare item : itemsDeclares()) {
+            if ("d".equals(item.forme())) {
+                continue;
+            }
+            assertThat(item.famillesDistracteurs().values())
+                    .as("FRA-5e-3 : '%s' - la famille (e) est reservee a la forme (d)", enonce(item))
+                    .doesNotContain("e");
+        }
+    }
+
+    /**
+     * FRA-5e-1, amendement du 2026-08-31 : la famille (a) figure sur au moins la moitie des items
+     * de forme (d). C'est le prix de l'assouplissement et non un durcissement - la famille (a) est
+     * le distracteur qui apprend le plus sur cette forme, et un ajout de famille ne doit pas
+     * l'effacer. Unite de compte : l'item de forme (d).
+     */
+    @Test
+    void laFamilleAFigureSurAuMoinsLaMoitieDesItemsDeFormeD() {
+        List<ItemDeclare> formeD = itemsDeclares().stream()
+                .filter(item -> "d".equals(item.forme()))
+                .toList();
+        long avecLaFamilleA = formeD.stream()
+                .filter(item -> item.famillesDistracteurs().containsValue("a"))
+                .count();
+
+        assertThat(formeD)
+                .as("FRA-3 : la forme (d) porte au moins %d items, sans quoi ce plancher ne borne"
+                        + " rien", ITEMS_MINIMUM_PAR_FORME)
+                .hasSizeGreaterThanOrEqualTo(ITEMS_MINIMUM_PAR_FORME);
+        assertThat(avecLaFamilleA * 2)
+                .as("FRA-5e-1 : la famille (a) figure sur %d des %d items de forme (d), il en faut"
+                        + " au moins la moitie", avecLaFamilleA, formeD.size())
+                .isGreaterThanOrEqualTo(formeD.size());
+    }
+
+    /**
+     * FRA-5e-2, amendement du 2026-08-31 : un item qui declare a la fois (b) et (e) exige un
+     * numerateur d'au moins 2. Quand il vaut 1, {@code n + d} egale {@code d + 1} et FRA-6 - trois
+     * propositions distinctes - n'est pas tenue. nadia-prof le verifie par enumeration : les neuf
+     * fractions de numerateur 1 sont exactement celles qui ne peuvent pas porter ce couple.
+     */
+    @Test
+    void unItemQuiDeclareLesFamillesBEtENAJamaisUnNumerateurDeUn() {
+        for (ItemDeclare item : itemsDeclares()) {
+            Collection<String> familles = item.famillesDistracteurs().values();
+            if (!familles.contains("b") || !familles.contains("e")) {
+                continue;
+            }
+            assertThat(item.fraction().numerateur())
+                    .as("FRA-5e-2 : '%s' - le couple (b) et (e) exige un numerateur d'au moins 2,"
+                            + " sans quoi n+d vaut d+1 et deux propositions coincident", enonce(item))
+                    .isGreaterThanOrEqualTo(2);
         }
     }
 

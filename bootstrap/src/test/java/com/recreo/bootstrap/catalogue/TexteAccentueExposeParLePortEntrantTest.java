@@ -134,6 +134,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S23-ETA (arbitrage prealable s23, ETA-1 a ETA-10, ETA-4b) : entree neuve,
             // problemes a deux etapes mobilisant les quatre operations.
             "bandit-manchot-problemes-etapes-cm1",
+            // S24-FRA (arbitrage prealable s23, section 8bis, FRA-1 a FRA-9 ; arbitrage de s24,
+            // section 5.2, FRA-10 ; amendement du 2026-08-31, famille (e)) : entree neuve, la
+            // notion de fraction simple au CM1, moitie "notion" seule.
+            "bandit-manchot-fractions-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -180,6 +184,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Range les nombres",
             // S23-ETA : titre neuf.
             "Les problèmes à deux étapes",
+            // S24-FRA : titre neuf.
+            "Les fractions simples",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -222,6 +228,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Choisis la liste rangée du plus petit au plus grand.",
             // S23-ETA : consigne neuve.
             "Lis bien, résous les deux étapes, puis choisis la réponse.",
+            // S24-FRA : consigne neuve.
+            "Lis bien la fraction, puis choisis la réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique,
             // valeur unique pour les jeux du catalogue reel, compte sur catalogue.yaml, pas recopie.
             "bandit-manchot",
@@ -284,7 +292,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S23-RAN : competence neuve, moitie "ranger" de la ligne comparer-et-ranger.
             "Ranger des nombres entiers jusqu'à 100 dans l'ordre croissant",
             // S23-ETA : competence neuve.
-            "Résoudre des problèmes à deux étapes mobilisant les quatre opérations");
+            "Résoudre des problèmes à deux étapes mobilisant les quatre opérations",
+            // S24-FRA : competence neuve, couverture partielle nommee (FRA-9). Le libelle est celui
+            // du referentiel, la moitie "reperage sur une droite numerique" comprise, parce que
+            // c'est la ligne entiere que le descripteur du paquet nomme ; ce que le paquet couvre
+            // reellement est la moitie "notion", et la mention exacte que nadia-prof exige sur la
+            // matrice reste due le jour ou la ligne bougera.
+            "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
+                    + "repérage sur une droite numérique");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
