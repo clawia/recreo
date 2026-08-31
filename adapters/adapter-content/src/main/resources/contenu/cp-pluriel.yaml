@@ -55,7 +55,7 @@ items:
     bonneReponse: "un panier"
     distracteurs: ["un paniers", "des panier"]
     indice: "Observe d'abord le mot placé devant."
-  - enonce: "Noé compte ___ devant la porte."
+  - enonce: "Noé montre ___ devant la porte."
     bonneReponse: "les marches"
     distracteurs: ["les marche", "la marches"]
     indice: "Le mot devant le nom donne l'accord."
@@ -83,7 +83,7 @@ items:
     bonneReponse: "des billes"
     distracteurs: ["des bille", "une billes"]
     indice: "Le petit mot devant t'indique le nombre."
-  - enonce: "Zoé écrit ___ sur le mur."
+  - enonce: "Zoé écrit ___ au tableau."
     bonneReponse: "un mot"
     distracteurs: ["un mots", "des mot"]
     indice: "Observe d'abord le mot placé devant."
@@ -103,7 +103,7 @@ items:
     bonneReponse: "la brosse"
     distracteurs: ["la brosses", "les brosse"]
     indice: "Observe d'abord le mot placé devant."
-  - enonce: "Rémi aligne ___ contre le mur."
+  - enonce: "Rémi pousse ___ contre le mur."
     bonneReponse: "les chaises"
     distracteurs: ["les chaise", "la chaises"]
     indice: "Le mot devant le nom donne l'accord."
