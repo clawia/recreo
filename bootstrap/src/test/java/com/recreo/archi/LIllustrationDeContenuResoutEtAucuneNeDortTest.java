@@ -48,15 +48,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * inapplicable au decor - c'est-a-dire ferait disparaitre C5 - et c'est pourquoi la separation est
  * verifiee ici sur le materiau reel plutot que recommandee en prose.
  *
- * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement (ADR-0051).</b> Aucun paquet servi ne
- * declare d'illustration au 2026-08-31, et aucun fichier ne vit sous {@code static/illustrations/} :
- * les quatre premieres clauses portent sur une population <b>vide</b>. Elles ne sont pas decoratives
- * pour autant, et pour deux raisons verifiables. D'abord elles mordent, ici, sur du materiau reel
- * mute en memoire - rien n'est ecrit sur disque. Ensuite
- * {@link #aucunPaquetServiNeDeclareEncoreDIllustration()} <b>epingle le zero</b> : le jour ou un
- * paquet declare une illustration, ce test-la rougit, et celui qui pose ce paquet passe par ici
- * plutot que de decouvrir six mois plus tard qu'il n'etait garde par rien. Le plafond vaut
- * exactement la taille de la population.
+ * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement (ADR-0051).</b> Ce paragraphe disait,
+ * au 2026-08-31 et de la main de theo-archi, qu'aucun paquet servi ne declarait d'illustration et
+ * qu'aucun fichier ne vivait sous {@code static/illustrations/} : les quatre premieres clauses
+ * portaient alors sur une population <b>vide</b>, et
+ * {@code aucunPaquetServiNeDeclareEncoreDIllustration} epinglait ce zero pour rougir le jour ou le
+ * premier paquet illustre entrerait. <b>Ce jour est arrive dans le meme sprint</b> : S25-FIG-1 pose
+ * {@code cp-figures-planes}, douze items qui declarent une illustration et douze dessins sous
+ * {@code static/illustrations/}. Le cliquet a rougi, il a fait son travail, et il est <b>retourne</b>
+ * par {@link #lesClausesDIllustrationPortentDesormaisSurUnePopulationNonVide()} : ce qui est epingle
+ * n'est plus le zero mais le fait que le perimetre ne redevienne pas vide en silence. Les cinq
+ * morsures en memoire, elles, n'ont pas bouge d'une ligne.
  *
  * <p><b>Un trou que je m'inflige et que je nomme plutot que de le laisser trouver.</b> Ce fichier
  * ecrit {@code "illustration"} et {@code "illustrationTexteAlternatif"} en litteraux de chaine. Vu
@@ -317,24 +319,37 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     }
 
     /**
-     * ADR-0051, et le cliquet dont le plafond vaut exactement la taille de la population. Ce test
-     * <b>doit</b> rougir le jour ou le premier paquet illustre entre : c'est ainsi que le lot qui le
-     * pose lit ADR-0073 au lieu de le decouvrir apres coup.
+     * ADR-0051, et le cliquet dont le plafond vaut exactement la taille de la population.
+     *
+     * <p><b>Ce test s'appelait {@code aucunPaquetServiNeDeclareEncoreDIllustration} et epinglait le
+     * zero</b> : theo-archi l'avait ecrit pour qu'il rougisse le jour ou le premier paquet illustre
+     * entrerait, <i>"c'est ainsi que le lot qui le pose lit ADR-0073 au lieu de le decouvrir apres
+     * coup"</i>. Ce jour est le 2026-08-31 et ce lot est celui de S25-FIG-1 : douze items de
+     * {@code cp-figures-planes} declarent une illustration, douze dessins vivent sous
+     * {@code static/illustrations}. Le rouge attendu a eu lieu, ADR-0073 a ete lu, et le cliquet est
+     * <b>retourne</b> plutot que supprime.
+     *
+     * <p><b>Pourquoi retourne et non retire.</b> ADR-0051 demande qu'un garde-fou declare ce qu'il
+     * examine. Tant que la population etait vide, le declarer voulait dire epingler le zero ; elle
+     * ne l'est plus, et le declarer veut dire epingler qu'elle ne l'est pas. Retirer ce test aurait
+     * rendu les quatre clauses de {@link #verifier} muettes le jour ou un paquet illustre sortirait
+     * du catalogue ou ou un repertoire d'illustrations disparaitrait : elles passeraient au vert sur
+     * une population vide, exactement le silence contre lequel ce test a ete ecrit.
      */
     @Test
-    void aucunPaquetServiNeDeclareEncoreDIllustration() {
+    void lesClausesDIllustrationPortentDesormaisSurUnePopulationNonVide() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
 
         assertThat(declareesDuDepot(racine))
-                .as("ADR-0051 : les clauses 1, 2, 4 et 5 d'ADR-0073 portent aujourd'hui sur une"
-                        + " population vide, et ce garde-fou le declare plutot que de passer en"
-                        + " silence. Quand ce test rougit, ce n'est pas un defaut : c'est le premier"
-                        + " paquet illustre qui arrive, et il faut lire ADR-0073 avant de lever ce"
-                        + " rouge")
-                .isEmpty();
+                .as("ADR-0051 : les clauses 1, 2, 5 et 6 d'ADR-0073 jugent les illustrations que les"
+                        + " paquets servis declarent. Si ce perimetre redevenait vide, elles"
+                        + " passeraient au vert sans rien examiner")
+                .isNotEmpty();
         assertThat(illustrationsDuDepot(racine))
-                .as("meme motif : aucun fichier ne vit encore sous " + ILLUSTRATIONS_DE_CONTENU)
-                .isEmpty();
+                .as("meme motif pour la clause 4 : sans un seul fichier sous "
+                        + ILLUSTRATIONS_DE_CONTENU + ", ni le sens 'aucun dessin ne dort' ni"
+                        + " l'interdiction de texte dans un dessin ne portent sur quoi que ce soit")
+                .isNotEmpty();
     }
 
     /** Morsure 1, sur materiau reel mute en memoire : un identifiant qui ne resout aucun fichier. */

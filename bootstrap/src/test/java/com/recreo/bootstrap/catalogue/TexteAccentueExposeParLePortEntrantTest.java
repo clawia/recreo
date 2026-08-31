@@ -147,6 +147,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // section 5.2, FRA-10 ; amendement du 2026-08-31, famille (e)) : entree neuve, la
             // notion de fraction simple au CM1, moitie "notion" seule.
             "bandit-manchot-fractions-cm1",
+            // S25-FIG (DEC-0065 amendement A.3 ; FIG-1 a FIG-4 du 2026-08-24, reconduites le
+            // 2026-08-31 ; CON-1 a CON-5) : entree neuve, reconnaitre et nommer quelques figures
+            // planes, CP. Premier jeu illustre du produit (ADR-0073).
+            "bandit-manchot-figures-planes-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -200,6 +204,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Un ou plusieurs ?",
             // S24-FRA : titre neuf.
             "Les fractions simples",
+            // S25-FIG : titre neuf.
+            "Les figures",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -249,6 +255,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Choisis la bonne écriture pour compléter la phrase.",
             // S24-FRA : consigne neuve.
             "Lis bien la fraction, puis choisis la réponse.",
+            // S25-FIG : consigne neuve, generique - elle dit quoi faire du dessin et ne decrit
+            // aucune figure (CON-2).
+            "Regarde bien le dessin, puis choisis son nom.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -268,6 +277,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lecture et compréhension de l'écrit",
             // S21-9 : domaine neuf, premiere ligne couverte.
             "Langage oral et conscience phonologique",
+            // S25-FIG : domaine neuf, premiere ligne couverte du domaine geometrique du CP.
+            "Espace et géométrie",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -324,7 +335,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // reellement est la moitie "notion", et la mention exacte que nadia-prof exige sur la
             // matrice reste due le jour ou la ligne bougera.
             "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
-                    + "repérage sur une droite numérique");
+                    + "repérage sur une droite numérique",
+            // S25-FIG : competence neuve, ligne entiere.
+            "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

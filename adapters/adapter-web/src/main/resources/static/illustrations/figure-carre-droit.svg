@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIG, item illustre du palier 1. Carre pose sur un cote, grande taille.
+     ADR-0073 clause 4 : aucun element de texte, la figure est entierement tracee.
+     (Les deux balises que la clause 4 refuse ne sont pas citees ici : le garde-fou lit le
+     fichier entier, commentaire compris, et il a rougi sur cette ligne meme.)
+     FIG-1 : les proportions sont declarees ici et nulle part ailleurs - viewBox carre, cote de 72
+     unites sur 100, donc un carre a toute largeur d'ecran. La regle de feuille plafonne la hauteur
+     et ne touche pas au rapport.
+     DV-1 : la taille intrinseque (480 px) est superieure au plafond de rendu retenu (176 px), sans
+     quoi ces declarations ne feraient jamais grandir le dessin jusqu'a ce plafond.
+     FIG-3 : trait unique, aucun remplissage, aucune teinte - la couleur ne distingue rien. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+  <rect x="14" y="14" width="72" height="72" fill="none" stroke="#1c2733" stroke-width="6"
+        stroke-linejoin="round"/>
+</svg>

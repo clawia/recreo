@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JEU FAUTIF, JAMAIS SERVI. Taille intrinseque de 120 px, sous le plafond de rendu de 176 px :
+     la feuille ne fait jamais grandir un dessin au-dela de sa taille naturelle (DV-1). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="120" height="120" role="img">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#1c2733"/>
+</svg>

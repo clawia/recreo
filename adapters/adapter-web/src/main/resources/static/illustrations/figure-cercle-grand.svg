@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIG, item illustre du palier 1. Cercle, grande taille.
+     FIG-4 : c'est un CERCLE et non un disque - le trait seul est trace, la surface interieure
+     n'est pas remplie. Un disque rempli serait une autre notion, et le paquet ne la nomme nulle
+     part.
+     FIG-2 : un cercle n'a ni orientation ni proportions a faire varier ; ses trois exemplaires
+     varient donc par la taille seule, et c'est une propriete de la figure, pas un relachement de
+     la condition. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#1c2733" stroke-width="6"/>
+</svg>
