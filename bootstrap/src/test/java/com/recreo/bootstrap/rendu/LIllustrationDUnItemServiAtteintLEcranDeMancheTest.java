@@ -251,7 +251,7 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
         if (!alternatifAttendu.equals(image.attr("alt"))) {
             defauts.add(ou + " : le texte alternatif rendu vaut \"" + image.attr("alt")
                     + "\", attendu exactement \"" + alternatifAttendu + "\". Une image qui porte la"
-                    + " question ne parvient pas a une lecture d'ecran sans lui (ADR-0073 clause 5)");
+                    + " question ne parvient pas a un lecteur d'ecran sans lui (ADR-0073 clause 5)");
         }
         return defauts;
     }

@@ -198,7 +198,7 @@ class PaquetCpFiguresPlanesTest {
                             item.get("enonce"))
                     .isEqualTo("enonce");
             assertThat(String.valueOf(item.get("illustrationTexteAlternatif")))
-                    .as("ADR-0073 clause 5 : l'item '%s' declare le texte qu'une lecture d'ecran"
+                    .as("ADR-0073 clause 5 : l'item '%s' declare le texte qu'un lecteur d'ecran"
                             + " annonce", item.get("enonce"))
                     .isNotBlank();
         }

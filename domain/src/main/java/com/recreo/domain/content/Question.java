@@ -48,7 +48,7 @@ public record Question(ItemId id, String enonce, String bonneReponse, List<Strin
 
     /**
      * ADR-0073 clause 5 : les deux cles de l'illustration se gardent l'une l'autre. Une image qui
-     * porte la question de la manche ne parvient pas a une lecture d'ecran sans son texte
+     * porte la question de la manche ne parvient pas a un lecteur d'ecran sans son texte
      * alternatif, et un texte alternatif sans image ne decrit rien. L'invariant est pose ici plutot
      * que dans la seule fabrique de contenu : il vaut pour tout site de construction, y compris ceux
      * qui n'ont jamais lu un fichier.

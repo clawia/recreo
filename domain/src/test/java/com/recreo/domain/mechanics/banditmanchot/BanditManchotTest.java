@@ -252,7 +252,7 @@ class BanditManchotTest {
     /**
      * ADR-0073 clause 5 : les deux cles se gardent l'une l'autre des la construction de l'item, et
      * pas seulement a la lecture d'un fichier. Une image qui porte la question de la manche ne
-     * parvient pas a une lecture d'ecran sans son texte alternatif ; un texte alternatif sans image
+     * parvient pas a un lecteur d'ecran sans son texte alternatif ; un texte alternatif sans image
      * ne decrit rien.
      */
     @Test
