@@ -3049,3 +3049,22 @@ Un sprint qui prend `SEM` **et** le palier 1 ne gagne pas deux lignes sur cet ob
   jugement que j'attendais depuis le 2026-08-25 et qu'elle refuse - *"reconnaitre une symetrie et
   l'utiliser pour completer une figure [...] c'est le meme objet a deux degres, et le degre servi
   serait le plus facile"*.
+
+### 5. Correction du 2026-08-31 (meme jour, troisieme etat) - la monnaie rouvre, le tableau de la section 3 ci-dessus est faux sur une ligne
+
+Le tableau de la section 3 porte *"`MON-1` a `MON-5`, image obligatoire [...] **2 paquets** (visuel +
+textuel)"*. **Ce chiffre est faux et son autrice l'a corrige** (`nadia-prof`, amendement du
+2026-08-31 a son arbitrage des seize lignes, section 12) : **un paquet, ligne entiere** - *"le paquet
+sert reconnaitre par l'image et utiliser par la question"*. Sa methode ne fait appel a rien
+d'exterieur : compter deux paquets revenait a compter comme second **celui qu'elle venait de refuser
+trois pages plus haut**.
+
+**Ce que cela change a cette matrice** : rien aujourd'hui, aucune ligne ne bouge. Ce que cela change
+au plafond de s25 est dans `DEC-0065`, second amendement : **quatre paquets, quatre lignes
+distinctes, 31 sur 41 (75,6 %)** au lieu de 30 sur 41.
+
+**Le piege de comptage, recompte par `sofia-sm` sur les onze lignes du tableau *Mathematiques - CP***
+et que cette matrice doit porter parce qu'il se reproduira : *"Se reperer dans la journee, la
+semaine ; lire l'heure pleine sur une horloge"* est **une seule ligne**, que le point-virgule coupe
+en deux moities. `SEM` la fait passer au vert par une moitie, `HOR` par l'autre. **Prendre les deux
+dans le meme sprint est excellent pour l'enfant et ne rapporte qu'une ligne.**

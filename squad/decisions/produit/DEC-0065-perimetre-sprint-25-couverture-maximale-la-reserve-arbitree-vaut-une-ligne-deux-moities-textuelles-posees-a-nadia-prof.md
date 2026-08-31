@@ -1,6 +1,6 @@
 # DEC-0065 - Perimetre du sprint 25 : objectif de couverture maximale, la reserve arbitree ne vaut qu'une ligne, deux moities textuelles posees a `nadia-prof` comme seule voie d'elargissement
 
-- **Statut** : Acceptee, **amendee le 2026-08-31** (deux arbitrages de l'utilisatrice et l'arbitrage prealable de nadia-prof : MON refusee, SEM et LIS ouvertes, palier 1 visuel ouvert, denominateur revu par DEC-0066). Voir l'amendement en fin de document.
+- **Statut** : Acceptee, **amendee deux fois le 2026-08-31** (deux arbitrages de l'utilisatrice et l'arbitrage prealable de nadia-prof : MON refusee, SEM et LIS ouvertes, palier 1 visuel ouvert, denominateur revu par DEC-0066). Second amendement du 2026-08-31 : **la monnaie rouvre sur sa forme illustree**, le chiffre de deux paquets etait faux et son autrice le corrige ; composition a quatre paquets dont deux visuels, quatre lignes distinctes, plafond 31 sur 41 (75,6 %) ; le lot G - instruction de la dette de pli - est sacrifie et la bascule est rendue a l'utilisatrice. Voir les deux amendements en fin de document.
 - **Date** : 2026-08-31
 - **Auteur** : `camille-po`
 - **Sprint** : s25 (ouverture)
@@ -565,3 +565,176 @@ Je ne les fais pas entrer au perimetre - l'objectif est de l'utilisatrice et la 
 - Il **ne rediscute aucun des deux arbitrages de l'utilisatrice** et ne les repose pas.
 - Il **ne releve la borne de `nadia-prof` d'aucune unite** et ne lui demande rien au-dela du scenario
   B qu'elle a elle-meme decrit.
+
+---
+
+## Second amendement du 2026-08-31 - la monnaie rouvre : le fait sur lequel je l'avais ecartee etait faux, et le quatrieme paquet entre au perimetre
+
+**Statut de la decision apres ce second amendement : Acceptee, amendee deux fois le 2026-08-31.**
+
+**Reponse a `Q2` du planning de s25, section 5.3.** `sofia-sm` a ecrit qu'aucun developpeur ne
+commence un dessin de piece avant que cet amendement existe sur le disque. Il existe.
+
+### B.1 Ce qui a change, et ce n'est pas un avis mais un fait
+
+**Deux choses, et une seule est de moi.**
+
+**1. `sofia-sm` a etabli que le desaccord n'en etait pas un.** Elle a compare les deux positions
+avant de les router : *"Le refus de `camille-po` porte sur un paquet de contenu textuel [...]
+L'acceptation de `nadia-prof` porte sur un paquet illustre. [...] Le desaccord ne nait qu'a l'arrivee
+de l'image."* **Elle a raison, et c'est verifiable dans mes propres mots** : ma story close ne parle
+que des huit items de `contenu-repris/quiz/cp-monnaie.yml`, qui sont du texte. Je n'ai jamais juge
+un paquet illustre, parce qu'aucun n'existait quand je l'ai ecrite.
+
+**2. Le chiffre sur lequel j'ai ecarte la monnaie etait faux, et son autrice le dit.**
+`nadia-prof`, amendement du 2026-08-31 a son arbitrage des seize lignes, section 12 :
+
+> *"La monnaie : **un paquet**. La phrase de la section 3.1 - 'deux d'entre elles, monnaie et `DEN`,
+> demandent le visuel et un paquet textuel, donc deux paquets chacune' - reste lisible a sa place et
+> **elle est fausse sur la monnaie**."*
+>
+> *"Compter deux paquets, c'etait compter comme second paquet **celui que je venais de refuser trois
+> pages plus haut**. Ce n'est pas une hesitation entre deux lectures defendables : c'est une
+> incoherence interne, et elle n'a qu'un sens de resolution."*
+
+**J'ai verifie qu'elle n'a pas choisi le chiffre qui ouvre la ligne, plutot que de la croire**, et
+son moyen de verification tient : `MON-3` et le refus du textuel sont ecrits dans la version du
+matin, **avant** que la question du cout ne se pose. *"Si le chiffre juste avait ete deux, il
+m'aurait fallu rouvrir un refus ; c'est l'inverse."* Relu sur le fichier : c'est exact.
+
+**Ce que j'en retiens sur ma propre conduite** : mon amendement A.3 ecrivait *"un paquet pour une
+ligne, contre deux pour la monnaie"* en citant un document, et je l'ai qualifie de fait de cout et
+non de pedagogie - ce qui etait juste. **Mais je n'ai pas vu que le meme jour, la meme autrice,
+portait deux couts differents pour le meme paquet.** `sofia-sm` l'a vu en instruisant, et c'est la
+famille de defaut que `DEC-0062` amendement B a sanctionnee la veille. **Un chiffre relaye d'un
+document se verifie contre les autres documents du meme auteur, pas seulement contre sa source.**
+
+### B.2 Ma decision : je rouvre `S25-MON-1` sur la forme illustree
+
+**Et je la prends avec mon critere, pas comme une consequence mecanique de sa reponse.** `nadia-prof`
+ecrit elle-meme : *"la monnaie redevient candidate ; le perimetre reste le sien, et je n'ai aucune
+preference entre monnaie et figures planes."* Le chiffre corrige rend les deux paquets egaux en
+cout ; il ne dit pas que le quatrieme paquet doit etre pris.
+
+**Le critere que j'ai corrige en fermant cette story** - *"un enfant apprend-il quelque chose que le
+catalogue ne lui apprend pas deja"* - **applique au paquet illustre :**
+
+| Ce que le paquet textuel faisait | Ce que le paquet illustre fait |
+|---|---|
+| *"Tu as une piece de 2 euros et une piece de 1 euro"* - l'enonce a **deja fait la reconnaissance** a la place de l'enfant ; il reste une addition dans la limite de 10, deja verte | **`MON-1`** : les pieces sont **montrees, pas nommees**. L'enfant identifie la valeur d'une piece a sa taille, sa couleur et sa gravure. **Aucun jeu du catalogue ne travaille cela** |
+| N'importe quels nombres auraient fait l'affaire ; le symbole d'euro etait colle au resultat | **`MON-3`** : sur au moins un tiers des items, la reponse demande de **composer une somme avec les valeurs montrees**, et non de faire une addition qui serait juste avec n'importe quels nombres. **Les valeurs disponibles ne sont pas quelconques** - on paie 7 euros avec 5 et 2, pas avec 7 |
+| Rien ne garantissait que l'exercice ne soit pas du calcul deguise | **`CON-1`** : *"en effacant l'image, la reponse reste-t-elle trouvable ?"* Si oui, l'item est refuse. **C'est exactement la garantie que mon refus reclamait**, et elle est opposable a chaque item |
+
+**Mon verdict : le paquet illustre passe mon critere, et le paquet textuel ne le passait pas. Ce ne
+sont pas deux lectures du meme objet, ce sont deux objets.** Je rouvre.
+
+**Deux faits techniques qui levaient le dernier doute, et que je n'ai pas eu a supposer** - je les
+verse ici parce qu'ils portent le quatrieme paquet et qu'ils ne sont pas de moi :
+
+- **Une piece dessinee peut porter sa valeur gravee.** `theo-archi` a amende `ADR-0073` le
+  2026-08-31 en repondant nommement sur `HOR-2` et `MON-1` : un chiffre **trace en geometrie** passe
+  sa clause, le meme **ecrit en texte** la fait rougir, mesure sur la meme piece deux fois. **La
+  collision que `nadia-prof` avait nommee en section 9.5 est reglee** ; elle ecrit ne pas savoir si
+  elle l'est, et cet amendement le lui dit.
+- **La monnaie illustree passe le pli.** `ines-design` mesure **43 px** pour une piece contre un
+  budget de **53 px**, et sa mesure **converge au pixel** avec celle de `nadia-prof`, faite
+  independamment. Le cadran, lui, demande 123 px - ce qui ne le bloque plus, le pli restant hors de
+  la porte pedagogique par arbitrage de l'utilisatrice.
+
+### B.3 La composition retenue - quatre paquets, quatre lignes distinctes
+
+**Sous la borne de `nadia-prof`, atteinte exactement et non depassee** : *"quatre paquets, dont au
+plus deux paquets visuels, plus l'audit d'ecran de la section 9.2"*.
+
+| Paquet | Nature | Ligne visee | Story |
+|---|---|---|---|
+| **`FIG`** - figures planes | **visuel (1 sur 2)** | Reconnaitre et nommer quelques figures planes (maths CP), **ligne entiere** | `S25-FIG-1` |
+| **`MON`** - la monnaie illustree | **visuel (2 sur 2)** | Reconnaitre et utiliser la monnaie (maths CP), **ligne entiere** | `S25-MON-1`, **rouverte** |
+| **`SEM`** - se reperer dans la journee, la semaine | texte | Ligne de l'heure (maths CP), **avec mention** | `S25-SEM-1` |
+| **`SUB`** - substituts d'un personnage | texte, **`COMP-2` du sprint** | Reperer les substituts (francais CM1), **ligne entiere** | `S25-SUB-1` |
+
+**Quatre lignes distinctes : 31 sur 41, soit 75,6 %.** *Methode : 27 lignes vertes au 2026-08-31,
+denominateur 41 apres `DEC-0066`, quatre paquets bougeant chacun une ligne distincte. **Plafond, pas
+prevision** : il suppose que quatre paquets ecrits dans le sprint passent la porte du premier coup,
+ce qui n'est jamais arrive sur ce produit.*
+
+**Pourquoi `HOR` n'est pas le quatrieme paquet, et le piege que `sofia-sm` a verifie plutot que
+suppose** : `SEM` et `HOR` visent **la meme et unique ligne** du referentiel, que le point-virgule
+coupe en deux moities sans en faire deux lignes. **Sans `MON`, quatre paquets ne donneraient que
+trois lignes.** J'avais nomme ce piege en A.3 ; elle l'a recompte sur les onze lignes du tableau
+*Mathematiques - CP*, une par une, et il tient.
+
+**Ce que la composition ne dit pas** : `HOR` est un excellent paquet, et `nadia-prof` ecrit que
+prendre `SEM` et `HOR` ensemble est *"excellent pour l'enfant"*. Il ne rapporte simplement pas de
+seconde ligne, et l'objectif du sprint est la couverture. **Dans un sprint dont l'objectif serait la
+valeur pour l'enfant, `HOR` passerait devant `SUB`.**
+
+**Ce qui reste hors perimetre et que cet amendement ne rouvre pas** : `S25-LIS-1` (second report,
+motif mesure par `ines-design`), `S25-DEN-1` (zero ligne), `S25-SCO-1` (second report, motif de
+capacite ecrit par `sofia-sm`), `S25-NAR-1` (premier report). **Leurs motifs sont ailleurs, dates, et
+aucun ne depend de la monnaie.**
+
+### B.4 Ce que je sacrifie, nommement, et c'est ce que l'utilisatrice a demande
+
+`sofia-sm` a nomme le cout d'avance plutot que de me laisser le decouvrir : *"le quatrieme paquet et
+l'instruction de la dette de pli ne tiennent pas ensemble sur trois tetes. Le choix entre les deux
+appartient a `camille-po` pour le perimetre, pas a moi."*
+
+> **Je sacrifie le lot G - l'instruction de la dette de pli sur le catalogue livre - comme lot de
+> developpeur. C'est l'arbitrage "Instruire dans s25" de l'utilisatrice, et je l'ecris sans
+> l'habiller.**
+
+**J'ai cherche autre chose a sacrifier avant de m'y resoudre, et voici ce que chaque option donne :**
+
+| Option examinee | Pourquoi je ne la retiens pas |
+|---|---|
+| **Sacrifier le lot F** (les deux dettes d'outillage de s24) a la place | **Le lot G en depend.** `sofia-sm` : *"une enveloppe de mesure qui imprime au lieu de refuser est ce qui a induit en erreur une lectrice competente le 2026-08-30. On repare l'instrument avant de mesurer avec."* Garder G en sacrifiant F, c'est mesurer avec l'instrument casse - le contraire de ce que l'arbitrage demande |
+| **Sacrifier le lot H** (`S25-FRA-1`, item 18) | Un item et un verbe ne liberent pas la capacite d'un paquet illustre - vingt dessins plus vingt items. **Ce n'est pas un substitut et je ne fais pas semblant qu'il en soit un.** Et c'est un defaut qu'un enfant lit aujourd'hui |
+| **Sacrifier `SEM`** pour garder le lot G | Cela ramene le sprint a trois lignes : le quatrieme paquet n'aurait plus d'objet, et j'aurais paye une ligne pour rien |
+| **Mettre `MON` sur `marc-dev`** | `sofia-sm` a ecrit pourquoi elle ne met aucun paquet derriere le lot A sur la meme tete : *"faire glisser le lot technique fait tomber le paquet visuel"*, c'est-a-dire le seul element de l'ordre de sacrifice de `nadia-prof` qui ne tombe jamais. **C'est une question de sequencement et elle est a elle** |
+
+**Ce que je fais a la place, et ce n'est pas un substitut** : `sofia-sm` a etabli que l'arbitrage
+*"Instruire dans s25"* demande **deux choses, et une seule est du travail de developpeur**.
+
+1. **Le comptage item par item sur tout le catalogue** - c'est le lot G, et c'est lui qui sort.
+2. **La borne qu'il faudrait sur la longueur des propositions** - *"ce n'est pas du travail de
+   developpeur"*, c'est `DV-4` d'`ines-design`, deja routee a `nadia-prof` et a moi. **Cette
+   moitie-la est la mienne et je la prends dans s25**, sans consommer aucune tete : je pose la
+   question de la borne a `nadia-prof` avec le materiau qu'`ines-design` a deja produit, dont son
+   verdict que **ce ne sont pas les mots qui debordent mais les propositions**.
+
+**La moitie que je prends ne remplace pas celle que je sacrifie**, et personne ne doit lire ce
+paragraphe comme si l'arbitrage etait execute. **Le comptage n'aura pas lieu a s25.**
+
+### B.5 La bascule, si l'utilisatrice prefere son arbitrage a la quatrieme ligne
+
+**C'est son arbitrage que je troque, pas le mien. Je rends donc la bascule en une phrase, pour
+qu'elle n'ait pas a la reconstruire :**
+
+> **Si l'utilisatrice prefere l'instruction de la dette de pli a la quatrieme ligne, `S25-MON-1`
+> retourne close, le lot G revient au perimetre engage, et le plafond du sprint redescend a
+> +3 lignes, soit 30 sur 41 (73,2 %).** Rien d'autre ne bouge : les trois paquets engages, la
+> composition et les quatre reports sont inchanges dans les deux cas.
+
+**Et le fait qui doit accompagner ce choix, pour qu'il se fasse en le sachant** : la dette de pli
+**n'a pas de terme**. Un sprint de plus a l'instruire ne coute rien d'irreversible. La quatrieme
+ligne, elle, ne se rattrape pas au meme prix : le plafond de deux paquets visuels que `nadia-prof`
+tient **pour s25 seulement** vient de ce qu'elle n'en a jamais audite un, et elle a ecrit qu'elle
+**repricera a s26 avec une mesure au lieu d'une prudence**. **Je donne ce fait sans en tirer la
+conclusion : il n'est pas de moi et il ne tranche pas a sa place.**
+
+### B.6 Ce que ce second amendement ne fait pas
+
+- Il **n'efface rien** de l'amendement precedent, y compris la phrase *"une image. Deux paquets, pas
+  un"*, qui reste lisible a sa place et qui est fausse.
+- Il **ne conteste aucun jugement pedagogique** : le verdict `ACCEPTE` sur `MON-1` a `MON-5` est de
+  `nadia-prof`, le refus du paquet textuel aussi, et je n'ai fait qu'appliquer mon critere de
+  perimetre a un objet que je n'avais jamais juge.
+- Il **ne rouvre ni le pli** (hors de la porte pedagogique par arbitrage de l'utilisatrice), **ni la
+  question des chiffres traces** (reglee par `ADR-0073` amende), **ni la livraison du palier 1**, qui
+  se livre entier, cadran compris.
+- Il **ne fait bouger aucune ligne de la matrice** et ne prononce aucun Done.
+- Il **n'affecte personne** : la repartition des huit items de travail est a `sofia-sm`, y compris
+  celle du paquet que cet amendement ouvre.
+- Il **ne releve la borne de `nadia-prof` d'aucune unite** : quatre paquets, deux visuels au plus,
+  c'est exactement ce qu'elle a ecrit.
