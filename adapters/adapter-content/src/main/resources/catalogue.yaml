@@ -168,3 +168,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-texte-narratif
     nombreDeManches: 10
+  - id: bandit-manchot-pluriel-cp
+    titre: "Un ou plusieurs ?"
+    consigne: "Choisis la bonne écriture pour compléter la phrase."
+    mecanique: bandit-manchot
+    paquet: cp-pluriel
+    nombreDeManches: 10
