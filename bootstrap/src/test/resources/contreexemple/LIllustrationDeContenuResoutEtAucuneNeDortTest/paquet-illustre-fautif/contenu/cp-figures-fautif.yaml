@@ -1,0 +1,24 @@
+# Jeu fautif d'ADR-0073. Ce paquet n'est servi par rien : il vit sous contreexemple/ et le
+# recensement de production ne le voit pas. Trois fautes, une par clause, dans un seul fichier.
+schema: 1
+id: cp-figures-fautif
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Espace et géométrie"
+  competence: "Reconnaître et nommer les figures planes usuelles"
+items:
+  # Faute 1 : l'identifiant ne resout aucun fichier du repertoire d'illustrations.
+  - enonce: "Quelle est cette figure ?"
+    illustration: "figure-absente"
+    illustrationTexteAlternatif: "Une figure géométrique à reconnaître."
+    bonneReponse: "un carré"
+    distracteurs: ["un rectangle", "un triangle"]
+    indice: "Ses quatre côtés ont la même longueur."
+  # Faute 2 : l'illustration est declaree sans texte alternatif.
+  - enonce: "Quelle est cette figure ?"
+    illustration: "figure-cercle"
+    bonneReponse: "un cercle"
+    distracteurs: ["un ovale", "un losange"]
+    indice: "Il est tout rond, sans aucun coin."
