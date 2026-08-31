@@ -345,6 +345,31 @@ Les deux sont independants. Un increment techniquement irreprochable peut etre r
 pedagogiquement, et c'est un fonctionnement normal, pas un incident. Un refus renvoie l'increment
 a Camille, qui en fait du backlog ; il ne bloque pas le sprint suivant.
 
+**Le perimetre de la porte pedagogique, borne le 2026-08-31 (amendement s24).** Le paragraphe
+ci-dessus disait **qui** prononce et **avec quoi**, jamais **sur quoi** : il decrivait une porte sans
+borne de perimetre. Elle en a une depuis le 2026-08-31, posee par deux sources qui existent sur le
+disque. **Cet amendement les transcrit et n'en interprete aucune** ; en cas d'ecart, ce sont elles qui
+font foi et c'est ce paragraphe-ci qui a derive.
+
+- **`DEC-0060`** (acceptee, sur arbitrage de l'utilisatrice) : la porte pedagogique **porte sur les
+  elements neufs ou modifies**, et *modifie* se lit sur **tout changement du code qui produit l'ecran
+  de l'enfant** - l'effet de ce changement n'entre pas dans la qualification.
+- **`squad/conformite/CLAUSE-PORTE-PEDAGOGIQUE-perimetre-apres-les-six-reponses-du-2026-08-31.md`**,
+  redigee par `nadia-prof` dans ses propres mots parce que la porte est a elle : neuf clauses `C1` a
+  `C9`, et **trois regimes d'audit** qui disent ce qu'une modification appelle - `R-A` audit de
+  paquet (compte pour un paquet contre sa borne), `R-B` audit de mecanique (hors compte),
+  `R-C` changement de code a rendu invariant (aucun rejeu, **sous condition d'une mesure qui remplit
+  ses quatre exigences**, et sans laquelle rien n'est discharge).
+
+**Ce que cette borne ne change pas** : `nadia-prof` reste **seule** a prononcer un Done pedagogique,
+avec un motif ecrit ; les trois verdicts sont inchanges ; et un element qu'elle ne rejoue pas n'est
+jamais exempte par le silence - `C8` lui impose de nommer, a chaque verdict, les proprietes dont elle
+reste la seule garde.
+
+**Ce que cette borne coute a qui la pose, et qui doit rester lisible** : `R-C` ne sort un changement
+de sa porte que si quelqu'un d'autre produit la mesure qui le discharge. Si cette mesure n'existe pas,
+les elements concernes **restent dans sa porte sans verdict** - un etat inconfortable, et voulu.
+
 **Gouvernance d'une story absorbee en cours de route (amendement s06, retro de s05).** Une story ou
 une decision de perimetre qu'un sprint absorbe en cours de route depuis un autre sprint -
 deplacement d'une story planifiee ailleurs, execution anticipee d'un chantier prevu au sprint
