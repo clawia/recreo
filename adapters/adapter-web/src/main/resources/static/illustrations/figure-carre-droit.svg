@@ -6,10 +6,14 @@
      FIG-1 : les proportions sont declarees ici et nulle part ailleurs - viewBox carre, cote de 72
      unites sur 100, donc un carre a toute largeur d'ecran. La regle de feuille plafonne la hauteur
      et ne touche pas au rapport.
-     DV-1 : la taille intrinseque (480 px) est superieure au plafond de rendu retenu (176 px), sans
-     quoi ces declarations ne feraient jamais grandir le dessin jusqu'a ce plafond.
+     DES-1 a DES-3 (ines-design, 2026-08-31) : le fichier declare sa taille en unites
+     utilisateur, dans le meme rapport que son cadre de vue, et cette taille vaut 176 px -
+     le plafond de rendu, pas au-dela. Un cadre de vue seul sortirait a 176 px quoi qu'il
+     soit : c'est la feuille qui deciderait, pas le dessin. Declarer plus que 176 est sans
+     effet et trompeur ; une figure plane sans chiffre n'a pas d'autre plancher que son
+     trait, qui rend ici 10,56 px pour un minimum de 2.
      FIG-3 : trait unique, aucun remplissage, aucune teinte - la couleur ne distingue rien. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
   <rect x="14" y="14" width="72" height="72" fill="none" stroke="#1c2733" stroke-width="6"
         stroke-linejoin="round"/>
 </svg>

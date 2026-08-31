@@ -2,7 +2,7 @@
 <!-- FIG, item illustre du palier 1. Triangle a un angle droit, taille moyenne.
      FIG-2 : la forme "triangle" ne se reduit pas au triangle equilateral pose sur sa base, et un
      paquet qui n'en montrerait qu'un enseignerait le contraire. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="480" height="480" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
   <polygon points="16,86 16,20 84,86" fill="none" stroke="#1c2733" stroke-width="6"
            stroke-linejoin="round"/>
 </svg>
