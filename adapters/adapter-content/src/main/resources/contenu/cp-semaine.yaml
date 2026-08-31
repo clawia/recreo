@@ -1,0 +1,137 @@
+schema: 1
+id: cp-semaine
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Grandeurs et mesures"
+  competence: "Se repérer dans la journée, la semaine ; lire l'heure pleine sur une horloge"
+#
+# S25-SEM (DEC-0065, amendement, sections A.2 et A.3). Arbitrage prealable de nadia-prof du
+# 2026-08-31
+# (squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md,
+# section 2.3), conditions SEM-1 a SEM-9. ACCEPTE SOUS CONDITIONS sur la moitie "se reperer dans la
+# journee, la semaine" ; la moitie "lire l'heure pleine sur une horloge" est REFUSEE et rejoint la
+# famille visuelle.
+#
+# La mention exacte que nadia-prof exige sur la matrice le jour ou la ligne bougera, ecrite par elle
+# et reprise mot pour mot : "moitie 'se reperer dans la journee, la semaine' seule ; la moitie 'lire
+# l'heure pleine sur une horloge' reste non couverte". Le descripteur ci-dessus porte le libelle
+# ENTIER de la ligne du referentiel, parce que c'est la ligne que ce paquet vise ; ce qu'il couvre
+# reellement est sa premiere moitie, et la mention le dit.
+#
+# SEM-3 : aucun item ne decrit une horloge, un cadran ni la position d'une aiguille, sous quelque
+# forme que ce soit. Les items 8 et 9 de contenu-repris/quiz/cp-durees.yml - "La grande aiguille est
+# sur le 12 et la petite aiguille sur le 3" - sont ecartes pour ce motif exact : cette phrase decrit
+# le cadran a la place de l'enfant. Cette moitie de la ligne n'est pas servie et le paquet ne fait
+# pas semblant de la servir.
+#
+# SEM-2 : aucun item ne demande de calculer une duree - le calcul de duree est une ligne de CM1 deja
+# verte (bandit-manchot-problemes-durees-cm1). La COMPARAISON de durees ("Qu'est-ce qui dure le plus
+# longtemps ?", item 10 de la matiere premiere) est a la frontiere : le backlog demande de remonter
+# plutot que de trancher. Aucun item de ce paquet n'en porte, donc la question n'est pas posee ici -
+# ce n'est pas un arbitrage rendu, c'est un perimetre qui n'y va pas.
+#
+# SEM-1 : moments de la journee, jours de la semaine et leur ordre, mois et leur ordre, saisons.
+# Rien d'autre. SEM-5 : les propositions d'un item sont toujours de la meme categorie que la bonne
+# reponse. SEM-6 : dix items sur vingt-trois demandent ce qui vient JUSTE avant ou JUSTE apres,
+# contre huit exiges par le tiers - la marge est de deux items, et elle est voulue : un paquet
+# exactement a la borne ne survit pas au retrait d'un seul item.
+# SEM-7 : aucune situation ne suppose une configuration familiale, un rythme scolaire, un depart en
+# vacances, une fete religieuse ni un pays ; le mercredi et le samedi ne portent aucune activite.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede le point d'interrogation d'un enonce est insecable. Ce
+# paquet entre a zero occurrence detachable.
+items:
+  - enonce: "Quel jour vient juste après mardi ?"
+    bonneReponse: "mercredi"
+    distracteurs: ["lundi", "jeudi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient juste avant samedi ?"
+    bonneReponse: "vendredi"
+    distracteurs: ["dimanche", "jeudi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient juste après dimanche ?"
+    bonneReponse: "lundi"
+    distracteurs: ["samedi", "mardi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient juste avant jeudi ?"
+    bonneReponse: "mercredi"
+    distracteurs: ["vendredi", "mardi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel mois vient juste après mars ?"
+    bonneReponse: "avril"
+    distracteurs: ["février", "mai"]
+    indice: "Récite les douze mois dans l'ordre."
+  - enonce: "Quel mois vient juste avant janvier ?"
+    bonneReponse: "décembre"
+    distracteurs: ["novembre", "février"]
+    indice: "Récite les douze mois dans l'ordre."
+  - enonce: "Quel mois vient juste après juillet ?"
+    bonneReponse: "août"
+    distracteurs: ["juin", "octobre"]
+    indice: "Récite les douze mois dans l'ordre."
+  - enonce: "Quelle saison vient juste après le printemps ?"
+    bonneReponse: "l'été"
+    distracteurs: ["l'automne", "l'hiver"]
+    indice: "Pense au tour des quatre saisons."
+  - enonce: "Quelle saison vient juste avant le printemps ?"
+    bonneReponse: "l'hiver"
+    distracteurs: ["l'été", "l'automne"]
+    indice: "Pense au tour des quatre saisons."
+  - enonce: "Quel moment vient juste après le matin ?"
+    bonneReponse: "le midi"
+    distracteurs: ["le soir", "la nuit"]
+    indice: "Pense au fil de la journée."
+  - enonce: "Quel est le premier jour de la semaine ?"
+    bonneReponse: "lundi"
+    distracteurs: ["dimanche", "samedi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel est le dernier jour de la semaine ?"
+    bonneReponse: "dimanche"
+    distracteurs: ["samedi", "vendredi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient entre mardi et jeudi ?"
+    bonneReponse: "mercredi"
+    distracteurs: ["lundi", "vendredi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient entre vendredi et dimanche ?"
+    bonneReponse: "samedi"
+    distracteurs: ["jeudi", "lundi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel est le premier mois de l'année ?"
+    bonneReponse: "janvier"
+    distracteurs: ["décembre", "juin"]
+    indice: "Récite les douze mois dans l'ordre."
+  - enonce: "Quel est le dernier mois de l'année ?"
+    bonneReponse: "décembre"
+    distracteurs: ["novembre", "janvier"]
+    indice: "Récite les douze mois dans l'ordre."
+  - enonce: "Quel mois vient entre avril et juin ?"
+    bonneReponse: "mai"
+    distracteurs: ["mars", "juillet"]
+    indice: "Récite les douze mois dans l'ordre."
+  - enonce: "Quel mois vient entre janvier et mars ?"
+    bonneReponse: "février"
+    distracteurs: ["avril", "décembre"]
+    indice: "Récite les douze mois dans l'ordre."
+  - enonce: "Pendant quelle saison les feuilles tombent ?"
+    bonneReponse: "l'automne"
+    distracteurs: ["le printemps", "l'été"]
+    indice: "Pense au tour des quatre saisons."
+  - enonce: "Pendant quelle saison les fleurs poussent ?"
+    bonneReponse: "le printemps"
+    distracteurs: ["l'automne", "l'hiver"]
+    indice: "Pense au tour des quatre saisons."
+  - enonce: "Le soleil se lève à quel moment ?"
+    bonneReponse: "le matin"
+    distracteurs: ["le soir", "la nuit"]
+    indice: "Pense au fil de la journée."
+  - enonce: "Le soleil se couche à quel moment ?"
+    bonneReponse: "le soir"
+    distracteurs: ["le matin", "le midi"]
+    indice: "Pense au fil de la journée."
+  - enonce: "Quand fait-il tout noir dehors ?"
+    bonneReponse: "la nuit"
+    distracteurs: ["le matin", "le midi"]
+    indice: "Pense au fil de la journée."

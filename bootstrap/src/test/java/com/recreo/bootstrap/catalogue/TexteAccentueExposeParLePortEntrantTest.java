@@ -151,6 +151,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // 2026-08-31 ; CON-1 a CON-5) : entree neuve, reconnaitre et nommer quelques figures
             // planes, CP. Premier jeu illustre du produit (ADR-0073).
             "bandit-manchot-figures-planes-cp",
+            // S25-SEM (DEC-0065 amendement A.2 et A.3 ; SEM-1 a SEM-9 du 2026-08-31) : entree
+            // neuve, se reperer dans la journee et la semaine, CP, couverture partielle nommee.
+            "bandit-manchot-semaine-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -206,6 +209,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les fractions simples",
             // S25-FIG : titre neuf.
             "Les figures",
+            // S25-SEM : titre neuf, il nomme la moitie servie de la ligne et pas l'autre.
+            "La journée et la semaine",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -258,6 +263,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S25-FIG : consigne neuve, generique - elle dit quoi faire du dessin et ne decrit
             // aucune figure (CON-2).
             "Regarde bien le dessin, puis choisis son nom.",
+            // S25-SEM : consigne neuve.
+            "Choisis la bonne réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -337,7 +344,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
                     + "repérage sur une droite numérique",
             // S25-FIG : competence neuve, ligne entiere.
-            "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)");
+            "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)",
+            // S25-SEM : competence neuve, couverture partielle nommee (SEM-3). Le libelle est
+            // celui du referentiel, la moitie "lire l'heure pleine" comprise, parce que c'est la
+            // ligne entiere que le descripteur du paquet nomme ; ce que le paquet couvre
+            // reellement est la moitie "se reperer dans la journee, la semaine", et la mention
+            // exacte que nadia-prof exige sur la matrice reste due le jour ou la ligne bougera.
+            "Se repérer dans la journée, la semaine ; lire l'heure pleine sur une horloge");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
