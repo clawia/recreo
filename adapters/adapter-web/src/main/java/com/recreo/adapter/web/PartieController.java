@@ -2,11 +2,16 @@ package com.recreo.adapter.web;
 
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.port.in.PartieUseCase;
+import com.recreo.domain.content.ExigenceDeForme;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.SessionStatus;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMove;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotSession;
 import com.recreo.domain.mechanics.banditmanchot.Verdict;
+import com.recreo.domain.mechanics.saisie.ContinuerMove;
+import com.recreo.domain.mechanics.saisie.SaisieMove;
+import com.recreo.domain.mechanics.saisie.SaisieSession;
+import com.recreo.domain.mechanics.saisie.SaisieVerdict;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -61,6 +66,15 @@ public class PartieController {
     /** M12 : les trois textes exacts, voulus par nadia-prof, ecrits ici pour ne pas etre reinventes. */
     private static final String MESSAGE_BRAVO = "Bravo !";
     private static final String MESSAGE_ECHEC = "Ce n'est pas ça. Essaie encore !";
+
+    /**
+     * Le texte que l'enfant lit sur l'ecran de saisie quand ses trois essais sont depenses. Il ne
+     * nomme pas la reponse : c'est le bloc {@code .forme-de-reference} qui la porte, sous la chaine
+     * que l'enfant a ecrite (SAI-9b). <b>Candidat</b>, au sens ou ines-design l'emploie : la
+     * formulation de tout ce que l'enfant lit apres avoir repondu est une propriete dont nadia-prof
+     * reste la seule garde, et elle la jugera sur l'increment joue.
+     */
+    private static final String MESSAGE_REVELATION = "Ce n'est pas ça.";
 
     /**
      * ADR-0027 : chaque point d'appel de l'ecran de jeu declare si un geste de l'enfant a demande
@@ -257,6 +271,36 @@ public class PartieController {
     }
 
     /**
+     * Le coup de la mecanique de saisie : une route et un parametre distincts de ceux du choix
+     * parmi des propositions, parce que ce n'est pas le meme geste. Une route neuve entre d'elle-meme
+     * dans le perimetre du garde-fou de tabulation, qui derive ses routes du registre de Spring.
+     */
+    @PostMapping("/parties/{jeuId}/reponses")
+    public String repondre(@PathVariable String jeuId, @RequestParam String reponseEcrite,
+                            HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
+                actuelle -> partie.jouer(jeuId, actuelle, new SaisieMove(reponseEcrite)));
+        synchroniserMarqueurDePartie(etat.session(), requete, reponse);
+
+        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE);
+    }
+
+    /**
+     * Le geste qui suit la revelation sur un ecran de saisie. Il resout la manche sans la compter
+     * comme une reussite, exactement comme l'appui sur la reponse nommee chez l'autre mecanique -
+     * la difference est qu'il n'y a plus rien a ecrire a ce moment-la, donc plus de champ a l'ecran.
+     */
+    @PostMapping("/parties/{jeuId}/manche")
+    public String mancheSuivante(@PathVariable String jeuId, HttpServletRequest requete,
+                                  HttpServletResponse reponse, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
+                actuelle -> partie.jouer(jeuId, actuelle, new ContinuerMove()));
+        synchroniserMarqueurDePartie(etat.session(), requete, reponse);
+
+        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE);
+    }
+
+    /**
      * ADR-0020 : une partie terminee n'a plus de manche a montrer. Le controle est ici, dans le seul
      * point de passage de l'ecran de jeu, et non dans chaque route : toute route qui demande cet
      * ecran obtient l'ecran de fin de partie a la place d'un ecran mort. Symetrique du choix
@@ -309,6 +353,9 @@ public class PartieController {
         if (session instanceof BanditManchotSession banditSession) {
             return mancheDeBanditManchot(modele, jeuId, consigne, banditSession, gesteDeLEnfant,
                     propositionFraichementPressee);
+        }
+        if (session instanceof SaisieSession saisieSession) {
+            return mancheDeSaisie(modele, jeuId, consigne, saisieSession);
         }
         throw new PartieIndisponible(
                 "aucun ecran de jeu pour ce type de session : " + session.getClass().getSimpleName());
@@ -371,6 +418,126 @@ public class PartieController {
         modele.addAttribute("focus", focus);
         modele.addAttribute("focusCibles", focusCibles);
         return "fragments/manche :: manche";
+    }
+
+    /**
+     * ADR-0058, R-A : <b>le point de descente nomme</b> de la mecanique de saisie, seconde branche
+     * de {@code mancheModele}. Ce qui vaut pour la premiere vaut ici : le modele est calcule a
+     * partir du seul etat de la manche, jamais d'un champ neuf sur la session.
+     *
+     * <p><b>Trois etats, et un seul texte a l'ecran a la fois.</b> Manche fraiche : rien, ou le
+     * retour de la manche precedente si elle a ete reussie. Refus avec des essais restants : la
+     * chaine reste dans le champ, corrigeable, et la reponse attendue n'est <b>jamais</b> nommee -
+     * ni par un mot, ni par une marque (SAI-9a). Revelation : le champ disparait, il n'y a plus
+     * rien a ecrire, et les deux chaines sont montrees ensemble (SAI-9b).</p>
+     *
+     * <p><b>D5, arbitrage de nadia-prof du 2026-08-31 - variante A sous condition.</b> Le champ
+     * garde la tentative refusee et elle y est corrigeable, parce que le mot qui fonde SAI-9a est
+     * <i>corriger</i> et qu'un champ vide ne se corrige pas. Sa condition : au moment ou l'enfant
+     * peut appuyer pour renvoyer, la chaine du champ doit lui etre montree <b>comme deja
+     * refusee</b> - sans quoi elle porte deux sens a la fois, "ce que tu as ecrit, refuse" et "ce
+     * que tu vas envoyer", et un enfant de six ans n'en tient qu'un. La forme qui sert cette
+     * condition ici est celle que nadia-prof decrit elle-meme : la meme chaine barree dans la liste
+     * au-dessus du champ. Ce n'est pas une repetition, elle l'ecrit - "l'une dit refusee, l'autre
+     * dit modifiable".</p>
+     *
+     * <p><b>SAI-12 : la liste porte toutes les tentatives de la manche, la derniere comprise.</b>
+     * C'est la reponse de nadia-prof du 2026-08-30 - "toutes celles de la manche, cumulativement" -
+     * et elle la reconfirme le 2026-08-31 contre la description de la variante A, qui laissait la
+     * liste vide au deuxieme essai. Les chaines sont brutes, jamais repliees, et une chaine retapee
+     * a l'identique y figure deux fois : c'est exactement ce que SAI-12 existe pour montrer.</p>
+     */
+    private String mancheDeSaisie(Model modele, String jeuId, String consigne,
+                                   SaisieSession session) {
+        if (session.status() == SessionStatus.TERMINEE) {
+            return retourDeSaisie(modele, jeuId, session);
+        }
+        modele.addAttribute("jeuId", jeuId);
+        modele.addAttribute("consigne", consigne);
+        modele.addAttribute("enonce", session.enonceManche().orElseThrow());
+        modele.addAttribute("score", session.score());
+        modele.addAttribute("tentatives", session.tentatives());
+        modele.addAttribute("mancheResolue", session.revelee());
+        modele.addAttribute("brouillon", session.revelee() ? null
+                : session.derniereTentative().orElse(null));
+
+        String message = null;
+        boolean signalJuste = false;
+        String chaineJugee = null;
+        String formeDeReference = null;
+        String explication = null;
+        String indice = session.indice().orElse(null);
+        String focus = FOCUS_ENONCE;
+        boolean focusSurLeChamp = false;
+        boolean focusSurLaSuite = false;
+
+        if (session.revelee()) {
+            message = MESSAGE_REVELATION;
+            chaineJugee = session.derniereTentative().orElseThrow();
+            formeDeReference = session.formeDeReferenceRevelee().orElseThrow();
+            explication = session.explicationRevelee().orElse(null);
+            focus = FOCUS_BOUTON;
+            focusSurLaSuite = true;
+        } else if (!session.tentatives().isEmpty()) {
+            message = MESSAGE_ECHEC;
+            focus = FOCUS_BOUTON;
+            focusSurLeChamp = true;
+        } else if (session.dernierVerdict().map(SaisieVerdict::juste).orElse(false)) {
+            SaisieVerdict verdict = session.dernierVerdict().orElseThrow();
+            message = MESSAGE_BRAVO;
+            signalJuste = true;
+            chaineJugee = chaineJugeeMontreeALaReussite(verdict);
+            formeDeReference = formeDeReferenceMontreeALaReussite(verdict);
+        }
+
+        modele.addAttribute("message", message);
+        modele.addAttribute("signalJuste", signalJuste);
+        modele.addAttribute("chaineJugee", chaineJugee);
+        modele.addAttribute("formeDeReference", formeDeReference);
+        modele.addAttribute("explication", explication);
+        modele.addAttribute("indice", indice);
+        modele.addAttribute("focus", focus);
+        modele.addAttribute("focusSurLeChamp", focusSurLeChamp);
+        modele.addAttribute("focusSurLaSuite", focusSurLaSuite);
+        return "fragments/saisie :: saisie";
+    }
+
+    /**
+     * SAI-2c : sur un item en forme exacte, la chaine jugee est montree <b>aussi</b> a la reussite.
+     * Sur un item en forme libre, elle ne l'est pas : ce que l'enfant a ecrit y a ete accepte tel
+     * quel ou par une tolerance, et c'est la forme de reference qui l'interesse alors, pas sa
+     * propre chaine.
+     */
+    private static String chaineJugeeMontreeALaReussite(SaisieVerdict verdict) {
+        return verdict.exigenceDeForme() == ExigenceDeForme.FORME_EXACTE
+                ? verdict.chaineJugee() : null;
+    }
+
+    /**
+     * SAI-8 : quand une reponse est acceptee par une tolerance, le retour montre la forme de
+     * reference, integralement accentuee et sans faute. La condition est derivee de ce que le
+     * verdict porte - une tolerance a joue si la chaine recue n'est pas la forme de reference elle-
+     * meme - et jamais d'un drapeau que le domaine aurait pose : le domaine transporte, il ne
+     * decide pas d'afficher.
+     */
+    private static String formeDeReferenceMontreeALaReussite(SaisieVerdict verdict) {
+        return verdict.chaineJugee().equals(verdict.formeDeReference())
+                ? null : verdict.formeDeReference();
+    }
+
+    /**
+     * L'ecran de fin de partie d'une partie de saisie. Le meme gabarit que celui de l'autre
+     * mecanique : ce que cet ecran montre - le score, le verdict de la derniere manche resolue, la
+     * reponse attendue et l'explication - ne depend pas de la facon dont l'enfant a repondu.
+     */
+    private String retourDeSaisie(Model modele, String jeuId, SaisieSession session) {
+        SaisieVerdict verdict = session.dernierVerdict().orElseThrow();
+        modele.addAttribute("jeuId", jeuId);
+        modele.addAttribute("score", session.score());
+        modele.addAttribute("juste", verdict.juste());
+        modele.addAttribute("bonneReponse", verdict.formeDeReference());
+        modele.addAttribute("explication", verdict.explication().orElse(null));
+        return "fragments/retour :: retour";
     }
 
     /**

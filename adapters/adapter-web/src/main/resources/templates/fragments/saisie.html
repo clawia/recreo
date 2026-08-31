@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0058 section 7, proposition-ines-ecran-de-saisie.md section 2 : un ecran de saisie est un
+     SECOND fragment, jamais une branche de fragments/manche.html. Ce qui s'y reprend a l'identique
+     est le bloc .message-jeu et ses enfants - .signal, .icone-signal, .verdict, .explication,
+     .indice - sans changer une seule de leurs regles : ils portent deja M11 clause 1 (jamais la
+     couleur seule) et servent SAI-10 sans modification.
+     Le cabinet ne s'y reprend PAS. ADR-0030 point 1.d fait tenir la garantie que le meuble
+     n'atteint ni l'ecran de retour ni la fin de partie par le seul fait que son balisage n'est
+     ecrit que dans fragments/manche.html ; le recopier ici la casserait. Un ecran de saisie n'a
+     d'ailleurs pas de colonnes a encadrer.
+     data-arrivee n'est pas pose ici, et ce n'est pas un oubli : la population de
+     LEcranDeJeuDeclareCommentIlEstArriveTest est derivee du selecteur .propositions, et un ecran
+     sans propositions en est hors par construction. Poser un marqueur qu'aucune regle ne lit serait
+     un drapeau mort. Limite nommee plutot que decouverte : si un mouvement est ajoute un jour a cet
+     ecran, cette population doit etre re-derivee dans le meme geste.
+     S10, M13 : data-focus est declare par le serveur, jamais devine par un script. "enonce" designe
+     l'enonce (manche fraiche) ; l'autre valeur designe l'element porteur de data-focus-cible - le
+     champ apres un refus, pour que l'enfant corrige ce qu'il a ecrit, le bouton de suite apres la
+     revelation. -->
+<div th:fragment="saisie" class="ecran-de-jeu" th:attr="data-focus=${focus}">
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <!-- proposition-ines-ecran-de-saisie.md section 3.1 point 1 : la consigne EST l'etiquette du
+         champ. Un <input> sans nom accessible est un defaut ; une etiquette de plus serait un
+         second texte disant ce que la consigne dit deja, sur un ecran destine a un enfant qui lit
+         peu. Consequence assumee : le libelle de l'invite est celui de la consigne du paquet, donc
+         il est ecrit par nadia-prof et jamais par ce gabarit. -->
+    <label class="consigne" for="reponse-ecrite" th:text="${consigne}"></label>
+    <!-- ReponseAEcrire ne porte ni texteSupport ni partDesignee : l'enonce est rendu tel quel, en
+         une seule chaine, sans boucle de segments. Un gabarit qui declarerait ces deux blocs pour
+         un type d'item qui ne peut pas les remplir poserait deux conditions mortes.
+         S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <p> n'est pas
+         focalisable nativement ; c'est la seule maniere dont focus() peut l'atteindre quand
+         data-focus="enonce" le designe (M13 clause 4). -->
+    <p class="enonce" tabindex="-1" th:text="${enonce}"></p>
+    <!-- SAI-12, reponse de nadia-prof du 2026-08-30 reconfirmee le 2026-08-31 (arbitrage D5,
+         section 3.3) : la liste porte TOUTES les tentatives de la manche, la derniere comprise -
+         une au deuxieme essai, deux au troisieme, trois a la revelation. Les chaines sont brutes,
+         telles que l'enfant les a tapees, jamais repliees, et une chaine retapee a l'identique y
+         figure deux fois : c'est precisement le defaut que SAI-12 existe pour rendre visible.
+         D5, condition de nadia-prof : la chaine presente dans le champ doit etre montree a l'enfant
+         COMME DEJA REFUSEE au moment ou il peut appuyer pour la renvoyer. C'est la forme qu'elle
+         decrit elle-meme - la meme chaine barree dans la liste au-dessus du champ - et ce n'est pas
+         une repetition : "l'une dit refusee, l'autre dit modifiable". La liste est placee au-dessus
+         du champ pour cette raison, et non sous le verdict comme sur l'ecran a boutons.
+         Le trait est le signe de M9, deja arbitre par nadia-prof (condition F16) pour dire "tu as
+         deja essaye ca" : meme sens, meme signe, seconde mecanique. -->
+    <ul class="tentatives" th:unless="${tentatives.isEmpty()}">
+        <li class="tentative-passee" th:each="tentative : ${tentatives}" th:text="${tentative}"></li>
+    </ul>
+    <!-- SEUIL-4 : le champ et le moyen de valider sont atteignables et actionnables au clavier
+         seul. Un <input> est focalisable nativement, et le garde-fou de tabulation le voit deja.
+         SEUIL-3 : l'enfant efface, retape et relit avant d'envoyer ; aucune frappe n'est
+         irreversible.
+         D5, variante A : th:value="${brouillon}" garde la tentative refusee dans le champ, ou elle
+         est corrigeable - effacer une lettre suffit, la ou un champ vide obligerait a tout retaper.
+         Section 3.1 de la proposition d'ines-design, points 2, 3 et 8 :
+         - aucun placeholder. Un texte fantome est gris donc sous le contraste, il disparait a la
+           premiere lettre donc au moment ou l'enfant en aurait besoin, et il double la consigne ;
+         - type="text" et jamais type="number", meme sur un paquet de calcul : type="number" refuse
+           ou reformate certaines frappes sans que ni l'enfant ni le serveur ne le sachent, ce qui
+           aggrave a un endroit qui nous appartient l'ecart "ce que l'enfant a produit / ce que le
+           serveur a recu" que nadia-prof a nomme comme un angle mort assume ;
+         - autocomplete="off" n'est PAS une neutralisation de la correction automatique du clavier,
+           que l'utilisatrice a acceptee le 2026-08-25. Il evite la liste des valeurs deja tapees
+           ailleurs, que le navigateur affiche par-dessus l'ecran de jeu et qui peut souffler une
+           reponse. Motif de forme, jamais de bareme.
+         D2 reste ouverte et rien n'est ecrit ici a sa place : le mode de clavier de l'item
+         (inputmode) est une cle du contrat de contenu, donc une decision de theo-archi, et
+         ADR-0070 refuse une cle ecrite avant que son champ existe. CPL-7 - "au CP, entrer un
+         chiffre ne doit pas obliger l'enfant a chercher parmi des lettres" - mordra sur le premier
+         paquet de saisie servi, pas sur ce fragment. -->
+    <form class="saisie" th:unless="${mancheResolue}"
+          th:attr="hx-post=@{'/parties/' + ${jeuId} + '/reponses'}"
+          hx-target="#jeu" hx-swap="innerHTML">
+        <input class="champ-reponse" id="reponse-ecrite" name="reponseEcrite" type="text"
+               data-role="action" autocomplete="off"
+               th:attr="data-focus-cible=${focusSurLeChamp}" th:value="${brouillon}">
+        <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+    </form>
+    <!-- M5, SAI-9b : a la revelation, le champ disparait et un seul bouton reste. La manche est
+         resolue par ce geste, il n'y a plus rien a ecrire, et un champ qui subsisterait - meme
+         desactive - resterait une zone que l'enfant tape sans effet. Une seule action possible a la
+         fois (proposition d'ines-design, section 2.4). -->
+    <button type="button" class="btn continuer-manche" data-role="action" th:if="${mancheResolue}"
+            th:attr="hx-post=@{'/parties/' + ${jeuId} + '/manche'}, data-focus-cible=${focusSurLaSuite}"
+            hx-target="#jeu" hx-swap="innerHTML">Continuer</button>
+    <!-- Le seul emplacement ou le jeu parle de la reponse de l'enfant. M11 clause 1 et SAI-10 : le
+         signal non textuel accompagne le texte, jamais la couleur seule, et il n'a que deux etats.
+         SAI-9a : avant la revelation, .chaine-jugee et .forme-de-reference sont tous deux absents.
+         La chaine de l'enfant est sous ses yeux dans le champ et dans la liste ci-dessus, et la
+         reponse attendue n'est nommee ni par un mot, ni par une marque, ni par une longueur de
+         boite.
+         SAI-9b : a la revelation seulement, les deux chaines sont montrees ensemble. .forme-attendue
+         est le plus gros texte de la boite : ce que l'enfant doit lire en premier a ce moment est la
+         bonne reponse, pas son erreur.
+         SAI-2c : sur un item en forme exacte, la chaine jugee est montree AUSSI a la reussite -
+         c'est la seule protection ecrite contre un clavier de tablette qui aurait corrige la frappe
+         a l'insu de l'enfant et du serveur.
+         .chaine-jugee est un element distinct et non une portion de la phrase de verdict : c'est ce
+         qui rend SEUIL-1 et SAI-2c verifiables structurellement, la ou une chaine noyee dans un
+         texte de modele ne le serait pas. -->
+    <div class="message-jeu" role="status" th:if="${message != null}">
+        <div class="signal" th:classappend="${signalJuste} ? 'est-juste' : 'est-faux'">
+            <span class="icone-signal" aria-hidden="true"></span>
+            <p class="verdict" th:text="${message}"></p>
+        </div>
+        <p class="chaine-jugee" th:if="${chaineJugee != null}"
+           th:text="'Tu as écrit : ' + ${chaineJugee} + '.'"></p>
+        <p class="forme-de-reference" th:if="${formeDeReference != null}">On écrit :
+            <span class="forme-attendue" th:text="${formeDeReference}"></span></p>
+        <p class="explication" th:if="${explication != null}" th:text="${explication}"></p>
+        <p class="indice" th:if="${indice != null}" th:text="${indice}"></p>
+    </div>
+</div>
+</body>
+</html>

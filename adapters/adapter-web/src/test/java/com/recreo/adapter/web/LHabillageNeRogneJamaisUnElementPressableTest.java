@@ -53,7 +53,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <ul>
  *   <li><b>perimetre derive</b> : la population des classes d'ancetres vient du balayage des gabarits,
  *       en remontant la chaine des parents de chaque element pressable. Le pressable est derive par le
- *       meme selecteur qu'{@code LActionNeDeclarePasMoinsQueLaSortieTest} - {@code button, a[href]} -
+ *       meme selecteur qu'{@code LActionNeDeclarePasMoinsQueLaSortieTest} - {@code PRESSABLES} -
  *       pour que les deux garde-fous s'accordent sur ce qu'est un bouton. Aucun nom de classe
  *       d'habillage n'est ecrit ici : un cabinet, un bandeau, un socle ou tout habillage a venir entre
  *       dans cette population le jour ou le gabarit le pose, sans que ce fichier change ;</li>
@@ -79,13 +79,27 @@ class LHabillageNeRogneJamaisUnElementPressableTest {
     /**
      * Le pressable, derive comme dans LActionNeDeclarePasMoinsQueLaSortieTest.
      *
+     * <p><b>ADR-0058 section 7, s24 : "input" rejoint le selecteur, et les quatre autres garde-fous
+     * qui derivaient leurs pressables de la meme enumeration lisent desormais ce litteral-ci plutot
+     * que de le recopier.</b> Avant ce lot, quatre fichiers ecrivaient "button, a[href]" chacun de
+     * leur cote, et un champ de saisie sous le plancher de lisibilite de 1,25 rem ou sous la cible
+     * tactile de 44 px passait une CI verte. C'est l'omission par enumeration de types, la lecon que
+     * ce depot a payee deux sprints.</p>
+     *
+     * <p><b>L'extension mord dans les deux sens, et le second est le moins visible.</b>
+     * {@code LHabillageResteImmobileTest} derive l'habillage par complementaire - toute classe posee
+     * dans un gabarit, moins toute classe portee par un pressable. Tant qu'"input" n'etait pas dans
+     * ce selecteur, ".champ-reponse" etait de l'<b>habillage</b>, et la regle
+     * ".champ-reponse:focus-visible" posait une pseudo-classe interactive sur une classe
+     * d'habillage - ce que ce garde-fou-la refuse nommement. Un seul geste ferme les deux.</p>
+     *
      * <p>Visible dans le paquet depuis ADR-0033 : {@code LHabillageResteImmobileTest} definit
      * l'habillage comme le <b>complementaire</b> du pressable, et deux garde-fous qui n'appelleraient
      * pas "pressable" la meme chose se contrediraient sans que rien ne le dise - une classe sortie de
      * la population des ancetres ici et absente de l'habillage la-bas ne serait gardee par ni l'un ni
      * l'autre. Un seul litteral, lu par les deux.
      */
-    static final String PRESSABLES = "button, a[href]";
+    static final String PRESSABLES = "button, a[href], input";
 
     /** Les proprietes dont une valeur peut rogner ce qui depasse d'une boite. */
     private static final List<String> PROPRIETES_DE_ROGNAGE =

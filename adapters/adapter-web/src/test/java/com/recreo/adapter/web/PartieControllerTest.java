@@ -13,7 +13,10 @@ import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.source.AdditionsBorneesContentSource;
 import com.recreo.domain.content.source.ListContentSource;
+import com.recreo.domain.content.ExigenceDeForme;
+import com.recreo.domain.content.ReponseAEcrire;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
+import com.recreo.domain.mechanics.saisie.Saisie;
 import jakarta.servlet.http.Cookie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -50,6 +53,9 @@ class PartieControllerTest {
     private static final String JEU_REPETE_ID = "jeu-repete";
     private static final String JEU_QUATRE_PROPOSITIONS_ID = "jeu-quatre-propositions";
     private static final String JEU_MOT_DESIGNE_ID = "jeu-mot-designe";
+
+    /** S24 : le jeu de la seconde mecanique du catalogue de test (voir JeuDeTestConfiguration). */
+    static final String JEU_SAISIE_ID = "jeu-saisie";
 
     /** Le seul niveau du catalogue de test (JeuDeTestConfiguration). */
     private static final String NIVEAU = "CP";
@@ -796,8 +802,28 @@ class PartieControllerTest {
                                     new Question(new ItemId("q-designe"), "Le chat dort", "nom",
                                             List.of("verbe"), Optional.empty(), Optional.empty(),
                                             Optional.of("chat")))),
+                            10),
+                    // S24 : un jeu de la seconde mecanique. Trois items, donc trois manches
+                    // resolues epuisent le vivier et terminent la partie ; le premier declare la
+                    // forme libre et porte une forme acceptee, le deuxieme declare la forme exacte -
+                    // de quoi exercer SAI-8 et SAI-2c sur le meme jeu - et le troisieme existe pour
+                    // qu'un ecran de manche suive la resolution du deuxieme.
+                    new GameDefinition(JEU_SAISIE_ID, "Jeu de saisie", "Ecris ta reponse.",
+                            Saisie.ID, DESCRIPTEUR,
+                            new ListContentSource(DESCRIPTEUR, List.of(
+                                    new ReponseAEcrire(new ItemId("s1"), "3 + ? = 10", "7",
+                                            List.of("sept"), Optional.of("Compte ceux qui manquent."),
+                                            Optional.of("explication de s1"),
+                                            ExigenceDeForme.FORME_LIBRE),
+                                    new ReponseAEcrire(new ItemId("s2"), "Ecris le mot", "elle",
+                                            List.of(), Optional.of("Deux l et un e."),
+                                            Optional.empty(), ExigenceDeForme.FORME_EXACTE),
+                                    new ReponseAEcrire(new ItemId("s3"), "5 + ? = 10", "5",
+                                            List.of(), Optional.of("Autant qu'il y en a deja."),
+                                            Optional.empty(), ExigenceDeForme.FORME_LIBRE))),
                             10));
-            MechanicRegistryPort mecaniques = id -> new BanditManchot();
+            MechanicRegistryPort mecaniques =
+                    id -> Saisie.ID.equals(id) ? new Saisie() : new BanditManchot();
             RandomSource hasard = bound -> 0;
             return new PartieService(catalogue, mecaniques, hasard);
         }
