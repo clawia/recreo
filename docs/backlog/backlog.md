@@ -7911,3 +7911,164 @@ Ils ne corrigent rien et je ne les presente pas comme des correctifs. Ils bornen
   juge) ; reserve 5 de `nadia-prof`, elargie le 2026-08-30.
 - **Agent pressenti** : **aucun.** `nadia-prof` rend le resultat attendu, `theo-archi` rend l'`ADR`,
   puis `sofia-sm` affecte si elle a la capacite.
+
+---
+
+## Backlog ouvert a la cloture de s24 (2026-08-31)
+
+### S25-NAR-1 - Aucune phrase seule ne suffit sur `cp-texte-narratif` - NON ENGAGEE
+
+- **Statut** : **non engagee.** `nadia-prof` : *"Je ne le demande pas et je ne le bloque pas."* Elle
+  n'ouvre **aucune reserve** sur ce paquet et son Done du 2026-08-31 est entier.
+- **Rang** : **derriere `S25-SCO-1`** (`DEC-0061`). Motif : le score parfait par elimination touche
+  94,6 % des items du catalogue et le retour de fin de partie de tous les jeux ; ce point-ci touche
+  une part des items d'un seul paquet, sur une competence deja `couvert-valide`, et `nadia-prof`
+  juge le raccourci *"reel, et moins grave que celui de s12"*. **Un rang, pas un classement de
+  valeur.**
+- **Besoin** : en tant qu'eleve de CP, je veux avoir a lire tout le petit texte pour repondre, afin
+  d'apprendre a le comprendre plutot qu'a reperer le mot qui ressemble a la reponse.
+- **Competence programme visee** : francais, CP (cycle 2), "Lecture et comprehension de l'ecrit",
+  "Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi)"
+  (`squad/programme/francais/competences-cp.md`). **La ligne est deja `couvert-valide` depuis le
+  2026-08-31 et cette story ne la fait pas bouger** : elle ameliore un increment valide, elle n'ouvre
+  aucune couverture.
+- **Le libelle est de `nadia-prof`, repris mot pour mot, et son contraire aussi** :
+  *"reecrire les items dont une seule phrase decide, pour qu'aucune phrase seule ne suffise"*, et
+  **surement pas** *"ajouter des items"*. **Je ne le traduis pas en une propriete plus commode a
+  tester.**
+- **Pourquoi ajouter des items est explicitement exclu, dans ses mots** : *"Ajouter des items ne
+  retire aucun raccourci : cela dilue un denominateur. [...] Ce serait rendre un compteur plus vert
+  en laissant le defaut ou il est."* Une story qui ferait tomber le taux en allongeant le paquet
+  serait **refusee par construction**, et c'est ecrit ici pour que personne ne la propose.
+- **Ce que le geste est** : mettre un distracteur dans la meme phrase que la reponse, **item par
+  item, sur les items existants**. C'est ce que `lea-dev` a fait sur l'item 2 le 2026-08-31.
+
+#### Critere d'acceptation correctif - rouge aujourd'hui, verifie contre l'existant
+
+- **`NARR-1`** - Etant donne les 20 items de `cp-texte-narratif`, quand on mesure **par la methode de
+  `nadia-prof`** - decoupage du support sur les trois ponctuations fortes, repliage de casse,
+  occurrence par sous-chaine - alors **le nombre d'items pour lesquels une phrase du support porte la
+  bonne reponse sans porter aucun distracteur est nul, sur chacune des phrases**.
+  *Aujourd'hui il ne l'est pas : **9 items sur 20 pour la premiere phrase (45,0 %), 10 sur 20 pour la
+  seconde (50,0 %)**, chiffres de `nadia-prof` refaits par elle le 2026-08-31 et non reproduits par
+  moi.* **Le zero est sa formulation** - *"qu'aucune phrase seule ne suffise"* - **et non un seuil que
+  j'invente** : `NAR-11` est **sans seuil chiffre**, par son choix explicite, et je n'en fabrique pas.
+
+#### Criteres de non-regression - verts aujourd'hui, et c'est le vrai risque d'une reecriture
+
+Une reecriture item par item touche les supports, donc les huit conditions qui se comptent sur le
+paquet. `nadia-prof` les a toutes refaites le 2026-08-31 plutot que de raisonner sur le diff ; une
+reecriture plus large doit tenir le meme standard.
+
+- **`NARR-2`** - le paquet compte toujours **20 items**, et **aucun n'est ajoute ni retire**.
+- **`NARR-3`** - `NAR-1` a `NAR-10` tiennent toutes, **reverifiees sur le paquet entier et non sur le
+  diff** : support 18 mots max et 2 phrases max, support plus enonce 23 mots max (`NAR-2`) ; mot le
+  plus long 9 lettres (`NAR-3`) ; les 20 enonces commencent par *Qui*, *Ou* ou *Que* (`NAR-4`) ; zero
+  proposition absente de son support sur les 60 (`NAR-5`) ; 20 prenoms distincts, 10 masculins et 10
+  feminins (`NAR-7`) ; aucun mot de logement ni de configuration familiale (`NAR-8`) ; indice de 8
+  mots au plus et aucun indice ne nomme sa reponse (`NAR-9`) ; 20 supports distincts (`NAR-10`).
+- **`NARR-4`** - `ADR-0072` reste vert. **La marge nulle est epinglee dans un contre-exemple gele,
+  pas dans le paquet servi** : `nadia-prof` le precise elle-meme pour couper court a la lecture
+  *"on ne peut pas y toucher, un test epingle 50,0 %"*, qui serait fausse.
+
+#### Le cout reel, et il n'est pas dans le code
+
+- **Une reecriture rouvre un audit de type `COMP-2`** - `NAR-6` en est, et `nadia-prof` n'accepte
+  **qu'un seul paquet de ce type par sprint**. Un sprint qui prend cette story **ne peut prendre
+  aucun autre paquet `COMP-2`**, `SUB` comprise.
+- **Sous `DEC-0060` `Q1`, reecrire le contenu rend le jeu modifie** et le fait rentrer dans la porte
+  par la voie ordinaire : c'est un audit de contenu plein, pas une decharge de structure.
+- **`lea-dev` a eu raison de ne pas le faire seule** : elle a remonte le point plutot que de rouvrir
+  un audit `COMP-2` de sa propre initiative, et `nadia-prof` le note.
+- **Lien decision** : `FICHE-bandit-manchot-texte-narratif-cp.md`, sections 3 et 5 du second verdict
+  du 2026-08-31 ; `NAR-11` (non retroactive, sans seuil) ; `ADR-0072`.
+- **Agent pressenti** : **aucun.** `sofia-sm` affecte si elle a la capacite, et seulement dans un
+  sprint qui n'a pas deja consomme son quota `COMP-2`.
+
+---
+
+## Rang propose a l'ouverture de s25 (2026-08-31)
+
+**Ce que ce bloc est** : mon rang, et rien d'autre. **L'affectation et la capacite sont a
+`sofia-sm`**, l'arbitrage prealable de tout contenu neuf est a `nadia-prof`, et je ne prejuge ni de
+l'un ni de l'autre. Aucun chiffre de couverture n'est projete ici : un objectif de sprint n'est pas
+un Done, et je n'ai aucune methode pour prevoir un verdict.
+
+### 1. `S25-SCO-1` - le score parfait par elimination. **Tete.**
+
+Motifs ecrits dans `DEC-0061` et son amendement, plus deux faits neufs de la cloture :
+
+- **`nadia-prof`, a verser tel quel** : *"le catalogue contient desormais un jeu sur trente et un ou
+  un enfant qui ne sait pas peut echouer."* Trente sur trente et un ne le permettent pas.
+- **La file de reaudit des 27 ne s'ouvre pas** - `nadia-prof` a discharge les lots 1, 3 et 4 le
+  2026-08-31 - donc **l'argument de sequencement de l'amendement A.3 de `DEC-0061` tombe** : corriger
+  `M5` a s25 ne profite plus d'une file deja ouverte. **Je le signale contre mon propre rang.** Ce
+  qui ne tombe pas : le cout du report **augmente mecaniquement a chaque sprint**, puisque chaque jeu
+  neuf est un jeu de plus a reauditer le jour de la correction. Le rang tient sur ce motif-la, plus
+  faible et suffisant.
+
+### 2. Le motif des quatre proprietes promises et non tenues - et la part qui est de ma main
+
+La retro de s24 etablit quatre cas en une journee : *"un enonce qui affirme plus large que ce que son
+code verifie, et une CI verte qui le certifie"*. Trois sont des garde-fous - **c'est de
+`theo-archi` et `yanis-qa`, je n'y touche pas et je ne le classe pas.**
+
+**Le quatrieme est `CPL-3` et il est de mon perimetre.** Une condition pedagogique *ecrite, datee,
+precise* du 2026-08-30 que **rien n'executait** : un enfant de CP qui ecrit `03` pour `3` s'entend
+dire qu'il s'est trompe et perd un essai. **Trouve par `nadia-prof` en jouant, apres 923 tests
+verts.**
+
+**La cause, verifiee dans mon propre backlog plutot que supposee** : la story `S24-SAI-2` porte
+quatre criteres ecrits **avant** la reponse de `nadia-prof`, puis une note de statut qui renvoie a
+*"`CPL-1` a `CPL-8`"*. **Quand elle a repondu le 2026-08-30, je ne suis pas revenue transformer ses
+huit conditions en huit criteres.** `CPL-3` n'est donc jamais devenue un critere dont `yanis-qa`
+pouvait tirer un test. **Un renvoi vers une plage de conditions dans un autre document n'est pas un
+critere d'acceptation** - ma propre charte dit que `yanis-qa` doit pouvoir en tirer un test sans me
+redemander ce que je voulais dire, et un intervalle ne le permet pas.
+
+**La regle que j'adopte, et elle est verifiable par un tiers sur mes stories** :
+
+> **Une story ne cite jamais une plage de conditions.** Chaque condition applicable devient **un
+> critere nomme, dans les mots de la condition**. Quand un arbitrage prealable arrive apres
+> l'ecriture d'une story, **la story est reprise dans le meme geste** : une reponse qui n'est pas
+> recopiee en criteres n'a pas ete recue.
+
+**Ce n'est pas une story et ce n'est pas du developpement** : c'est ma conduite, elle s'applique des
+maintenant, et elle se controle en relisant mes stories - une plage citee est un defaut visible.
+
+### 3. `S25-NAR-1` - aucune phrase seule ne suffit. **Derriere `S25-SCO-1`.**
+
+Ecrite ci-dessus. **Non demandee et non bloquee** par `nadia-prof`. Elle consomme le quota d'un seul
+paquet de type `COMP-2` par sprint, ce qui la met en concurrence directe avec le point 4.
+
+### 4. `SUB` - le motif de son premier report n'existe plus, et c'est a moi de le dire
+
+`DEC-0059`, section 2, a reporte `SUB` ("Reperer les substituts d'un personnage", francais CM1) et
+**a compte ce report comme le premier**. Le motif etait unique et explicite : la regle de composition
+de `nadia-prof` interdit deux paquets de type `COMP-2` dans un meme sprint, et `NAR` avait ete
+preferee.
+
+> **`NAR` est `couvert-valide` depuis le 2026-08-31. Le quota `COMP-2` de s25 est libre. Le motif du
+> premier report est consomme et ne peut pas resservir.**
+
+**Si `SUB` n'est pas prise a s25, c'est un second report, et il devra porter un motif neuf, ecrit,
+qui ne soit pas la composition.** `DEC-0007` a tenu la couverture programme fermee trois sprints
+d'affilee, chaque fois pour un motif defendable. **Je l'ecris maintenant, contre moi, pour que le
+motif du second report ne s'invente pas au moment ou il servira.**
+
+*Elle reste sous arbitrage prealable de `nadia-prof` comme tout paquet, et je ne prejuge pas de sa
+capacite : `NAR` et `SUB` sont les deux paquets dont elle a dit que l'audit lui couterait le plus
+cher.*
+
+### 5. Nomme, non engage, et non classe par moi
+
+Ces points existent, ont un proprietaire, et **ne sont pas ranges par ce bloc** parce qu'ils ne sont
+pas de mon perimetre. Ils sont ecrits ici pour qu'ils ne disparaissent pas du fil.
+
+| Point | Proprietaire |
+|---|---|
+| Les trois garde-fous qui verifiaient moins que leur nom (retro de s24, 5.1, cas 1 a 3) | `theo-archi`, `yanis-qa` |
+| La **capture de rendu de reference**, chiffree par `theo-archi` et **non financee** - `nadia-prof` : *"reste la seule voie pour un lot qui modifie un corps qui s'execute"* | `theo-archi` pour le contenu, `sofia-sm` pour la capacite |
+| La charte de `relecteur-pedagogique`, a amender pour que la convention de `DEC-0062` lui soit opposable | `sofia-sm`, ou l'utilisatrice (`DEC-0062`, amendement C) |
+| Dettes d'outillage des obstacles 4, 6 et 7 du planning de s24, toujours non engagees | `camille-po` pour le rang, `theo-archi` pour le contenu |
+| `D4` (longueur maximale d'une reponse a ecrire) et le cout d'un accent sur la tablette visee - **mordront au premier paquet alphabetique de saisie** | `nadia-prof`, `camille-po` ; l'utilisatrice pour l'accent |
