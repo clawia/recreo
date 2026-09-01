@@ -8943,8 +8943,11 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   proposition.** C'est la regle qui trie les cinq lignes (arbitrage, section 3) ; elle est testee
   par ses deux declinaisons calculables, les conditions `VOI-10` et `VOI-13`.
 - **Condition `VOI-10`** (testable) - **Le texte que l'adulte prononce est un champ distinct, et
-  il ne contient jamais une proposition ni la reponse.** *Calculable : aucune chaine du champ 1 ne
-  contient une chaine du jeu de propositions de son item.*
+  il ne contient jamais une proposition ni la reponse.** `VOI-10` reste lisible ici avec sa date :
+  son motif est juste, son operateur de sous-chaine est faux. **Amendement du 2026-09-01,
+  `VOI-14`** (`ADR-0076`) - une proposition fuit si elle est **enoncee**, c'est-a-dire si elle
+  apparait comme suite contigue de jetons dans le texte de l'adulte, jamais si elle y est
+  seulement contenue. Motif de `nadia-prof` : *"designer n'est pas contenir."*
 - **Condition `VOI-12`** (testable pour son existence, jugee par `nadia-prof` pour son contenu ;
   **exigence bloquante** - *"sans elle, je refuserai les paquets a voix"*) - **L'ecran dit a
   l'adulte ce qu'il ne doit pas faire, en une phrase, a l'endroit ou il lit son texte**, jamais
@@ -8979,8 +8982,8 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   (`squad/programme/francais/competences-cp.md`). Ligne `non couvert` -> `en cours` par cette
   story.
 - **Statut** : paquet neuf, un des cinq paquets de la famille "la voix est un adulte", au plafond
-  de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073` (voir
-  tableau en tete de section).
+  de la borne de `nadia-prof`. **Non conditionnel** : `theo-archi` a tranche (`ADR-0075`) - champ
+  d'item (voir tableau en tete de section).
 - **Ce qu'elle rapporte** : **+1 ligne, entiere.**
 - **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.1.
   *"Avec un adulte qui prononce et un ecran qui ne montre pas le mot, [mon refus du 2026-08-31]
@@ -9018,7 +9021,8 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   (`squad/programme/francais/competences-cp.md`). Ligne `non couvert` -> `en cours` par cette
   story.
 - **Statut** : paquet neuf, un des cinq paquets de la famille "la voix est un adulte", au plafond
-  de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073`.
+  de la borne de `nadia-prof`. **Non conditionnel** : `theo-archi` a tranche (`ADR-0075`) - champ
+  d'item.
 - **Ce qu'elle rapporte** : **+1 ligne, entiere.**
 - **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.2 - *"celle
   ou la voix humaine est le mieux justifiee"*. *"Avec une voix et sans mot ecrit, la graphie
@@ -9066,9 +9070,9 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   passe a `couvert-valide` que si `S26-L3` et `S26-L4` sont toutes deux livrees et
   validees**, la clause 3 restant entiere et son fichier `cp-le-bon-son.yaml` intact.
 - **Statut** : deux paquets neufs, sur les cinq paquets de la famille "la voix est un adulte", au
-  plafond de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073` -
-  et **c'est cette ligne, entiere, qui est la premiere candidate a un report si la reponse est
-  "mecanique"**, la regle de composition interdisant de livrer une seule moitie.
+  plafond de la borne de `nadia-prof`. **Non conditionnel** : `theo-archi` a tranche (`ADR-0075`) -
+  champ d'item ; la branche "mecanique", qui aurait fait de cette ligne la premiere candidate a un
+  report, ne s'est pas realisee.
 - **Ce qu'elles rapportent ensemble** : **+1 ligne, sur une clause 3 deja acquise depuis s03.**
   Livrees separement ou une seule des deux, **elles rapportent zero ligne.**
 - **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.3 - *"la
@@ -9141,9 +9145,9 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   (`squad/programme/francais/competences-cp.md`). Ligne `non couvert` -> `en cours` par cette
   story.
 - **Statut** : paquet neuf, un des cinq paquets de la famille "la voix est un adulte", au plafond
-  de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073`. **Premier
-  paquet a reponse alphabetique sur la mecanique de saisie** - jusqu'ici seule la reponse numerique
-  a ete jouee (`saisie-complements-10-cp`).
+  de la borne de `nadia-prof`. **Non conditionnel** : `theo-archi` a tranche (`ADR-0075`) - champ
+  d'item. **Premier paquet a reponse alphabetique sur la mecanique de saisie** - jusqu'ici seule la
+  reponse numerique a ete jouee (`saisie-complements-10-cp`).
 - **Ce qu'elle rapporte** : **+1 ligne, entiere.**
 - **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.5 - *"c'est
   ma propre condition qui se leve"*. `SAI-11` interdisait la saisie alphabetique au CP *"tant
