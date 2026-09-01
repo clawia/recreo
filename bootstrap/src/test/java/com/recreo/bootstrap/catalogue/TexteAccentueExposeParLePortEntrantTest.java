@@ -164,6 +164,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S25-SEM (DEC-0065 amendement A.2 et A.3 ; SEM-1 a SEM-9 du 2026-08-31) : entree
             // neuve, se reperer dans la journee et la semaine, CP, couverture partielle nommee.
             "bandit-manchot-semaine-cp",
+            // S26-L1 a S26-L5 (DEC-0068, la voix est celle d'un adulte present) : cinq entrees
+            // neuves, la famille a voix (ADR-0075).
+            "bandit-manchot-position-syllabe-cp",
+            "bandit-manchot-son-dans-mot-cp",
+            "bandit-manchot-lettre-du-son-cp",
+            "bandit-manchot-digraphe-du-son-cp",
+            "saisie-mot-dicte-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -226,6 +233,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "De qui parle le texte",
             // S25-SEM : titre neuf, il nomme la moitie servie de la ligne et pas l'autre.
             "La journée et la semaine",
+            // S26-L1 a S26-L5 : cinq titres neufs.
+            "La position du son",
+            "Le son caché",
+            "La bonne lettre",
+            "Le bon groupe de lettres",
+            "Écris le mot dicté",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -287,6 +300,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis le texte, puis dis de qui on parle.",
             // S25-SEM : consigne neuve.
             "Choisis la bonne réponse.",
+            // S26-L1 a S26-L5 : cinq consignes neuves.
+            "Écoute l'adulte lire le mot, puis dis si le son cherché est au début, au milieu ou à la fin.",
+            "Écoute le mot que l'adulte va dire, puis réponds oui ou non.",
+            "Écoute l'adulte lire le mot, puis choisis la lettre qui fait ce son.",
+            "Écoute l'adulte lire le mot, puis choisis le groupe de lettres qui fait ce son.",
+            "Écoute le mot que l'adulte va dire, puis écris-le.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -308,6 +327,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Langage oral et conscience phonologique",
             // S25-FIG : domaine neuf, premiere ligne couverte du domaine geometrique du CP.
             "Espace et géométrie",
+            // S26-L5 : domaine neuf, premier paquet de ce domaine.
+            "Écriture",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -380,7 +401,16 @@ class TexteAccentueExposeParLePortEntrantTest {
             // ligne entiere que le descripteur du paquet nomme ; ce que le paquet couvre
             // reellement est la moitie "se reperer dans la journee, la semaine", et la mention
             // exacte que nadia-prof exige sur la matrice reste due le jour ou la ligne bougera.
-            "Se repérer dans la journée, la semaine ; lire l'heure pleine sur une horloge");
+            "Se repérer dans la journée, la semaine ; lire l'heure pleine sur une horloge",
+            // S26-L1 : competence neuve.
+            "Localiser une syllabe dans un mot (début / milieu / fin)",
+            // S26-L2 : competence neuve.
+            "Identifier un son (phonème) dans un mot",
+            // S26-L3 et S26-L4 partagent la competence "Associer les graphèmes aux phonèmes..."
+            // deja presente ci-dessus (paquet cp-le-bon-son, S19-5) : aucune entree neuve.
+            // S26-L5 : competence neuve, premier paquet du domaine "Écriture".
+            "Écrire de manière autonome un mot simple en respectant les correspondances "
+                    + "graphème/phonème connues");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
