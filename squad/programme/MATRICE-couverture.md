@@ -85,11 +85,11 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp ; **saisie-complements-10-cp** (2026-08-31, s24) | bandit manchot ; **saisie** | couvert-valide - **statut inchange par le second jeu.** `CPL-1` : *"deux entrees sur une meme ligne ne sont pas une double couverture"*. La ligne etait deja verte avant s24 et le lot de saisie **n'ajoute aucune ligne** |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | - | - | non couvert |
+| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | bandit-manchot-monnaie-cp | bandit manchot ; **item illustre (palier 1)** | **couvert-valide** (2026-09-01, s25) - **ligne entiere.** `nadia-prof` : *"les deux verbes de la ligne - reconnaitre et utiliser - sont servis par le meme paquet"*. **Aucune mention de couverture partielle n'est due** |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | bandit-manchot-comparer-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | - | - | non couvert |
+| mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | bandit-manchot-semaine-cp | bandit manchot | **couvert-valide** (2026-09-01, s25) - **couverture partielle, mention exigee par `SEM` et reprise mot pour mot** : *"moitie 'se reperer dans la journee, la semaine' seule ; la moitie 'lire l'heure pleine sur une horloge' reste non couverte"*. **Sans cette mention, la ligne dirait plus que ce que le jeu sert** |
 | mathematiques | CP | Espace et geometrie | Se reperer et decrire des deplacements sur un quadrillage simple | - | - | non couvert |
-| mathematiques | CP | Espace et geometrie | Reconnaitre et nommer quelques figures planes (carre, rectangle, triangle, cercle) | - | - | non couvert |
+| mathematiques | CP | Espace et geometrie | Reconnaitre et nommer quelques figures planes (carre, rectangle, triangle, cercle) | bandit-manchot-figures-planes-cp | bandit manchot ; **item illustre (palier 1)** | **couvert-valide** (2026-09-01, s25) - **ligne entiere, sans mention de couverture partielle**, `nadia-prof` le dit en ces termes. Reserve d'indice **levee** a la cloture : designation de 8 sur 12 a **0 sur 12** |
 
 **Note du 2026-08-24 (s19, `camille-po`) - deux questions de validite de proxy dues depuis s13,
 sans reponse a ce jour.** Les lignes "Denombrer, lire, ecrire et decomposer les nombres jusqu'a
@@ -648,7 +648,7 @@ Source : `squad/programme/francais/competences-cm1.md`.
 |---|---|---|---|---|---|---|
 | francais | CM1 | Lecture et comprehension de l'ecrit | Lire silencieusement un texte de longueur croissante et en restituer l'essentiel | - | - | non couvert |
 | francais | CM1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif ou documentaire (questions explicites et implicites, inferences simples) | bandit-manchot-comprehension-cm1 | bandit manchot | couvert-valide |
-| francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | - | - | non couvert |
+| francais | CM1 | Lecture et comprehension de l'ecrit | Reperer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte | bandit-manchot-substituts-cm1 | bandit manchot | **couvert-valide** (2026-09-01, s25, **second passage - refus du 2026-08-31 leve**) - **ligne entiere**, avec la mention exigee depuis le 2026-08-30 et reprise telle quelle : *"textes de trois phrases au plus, un texte par question, pronoms et groupes nominaux servis tous les deux"* |
 | francais | CM1 | Ecriture | Rediger un texte narratif court et coherent (quelques phrases, temps du recit respecte) | - | - | **non couvrable en l'etat** (2026-08-31, s25, DEC-0066) - **jugement humain sur une production libre (ADR-0008), nature irreversible** : la ligne dit *rediger*. nadia-prof, 2026-08-31 : *"R3 refusait par avance quelle que soit la qualite du lot ; je le reconduis et je l'etends au choix [...] l'enfant ne redige pas"* |
 | francais | CM1 | Ecriture | Relire et corriger son texte a l'aide de reperes simples (majuscules, ponctuation) | - | - | non couvrable en l'etat |
 | francais | CM1 | Orthographe et grammaire | Accorder le verbe avec son sujet (cas frequents, temps simples : present, futur, imparfait) | bandit-manchot-accord-sujet-verbe-cm1 | bandit manchot | couvert-valide |
@@ -3068,3 +3068,83 @@ et que cette matrice doit porter parce qu'il se reproduira : *"Se reperer dans l
 semaine ; lire l'heure pleine sur une horloge"* est **une seule ligne**, que le point-virgule coupe
 en deux moities. `SEM` la fait passer au vert par une moitie, `HOR` par l'autre. **Prendre les deux
 dans le meme sprint est excellent pour l'enfant et ne rapporte qu'une ligne.**
+
+---
+
+## Synthese apres les verdicts du sprint 25 (2026-09-01) - quatre lignes, et deux chiffres qu'il ne faut pas additionner
+
+**Quatre `VALIDE` prononces par `nadia-prof` le 2026-09-01 sur l'arbre de cloture `834c6bc`.** Je les
+ai lus et reportes ; **je n'en prononce aucun.**
+
+| Ligne | Jeu | Verdict |
+|---|---|---|
+| Reconnaitre et nommer quelques figures planes (maths CP) | `bandit-manchot-figures-planes-cp` | **VALIDE**, reserve d'indice levee a la cloture |
+| Reconnaitre et utiliser la monnaie (maths CP) | `bandit-manchot-monnaie-cp` | **VALIDE**, reserve de vocabulaire levee a la cloture |
+| Se reperer dans la journee, la semaine ; lire l'heure pleine (maths CP) | `bandit-manchot-semaine-cp` | **VALIDE**, avec mention de couverture partielle |
+| Reperer les substituts d'un personnage (francais CM1) | `bandit-manchot-substituts-cm1` | **VALIDE**, **second passage** - le refus du 2026-08-31 est leve et reste lisible |
+
+### Le compte, avec sa methode
+
+*Methode : comptage automatise des quatre tableaux de matiere de ce fichier, colonne `Statut`, sur ce
+seul fichier, apres report des quatre verdicts. Aucun module compile - la question du `-am` ne se
+pose pas pour cette mesure.*
+
+| Statut | Compte |
+|---|---|
+| `couvert-valide` | **31** |
+| `non couvert` | 9 |
+| `en cours` | 1 |
+| `non couvrable en l'etat` | 6 |
+| **Total** | **47** |
+
+**Denominateur atteignable : 47 - 6 = 41. Ratio : 31 / 41 = 75,6 %.**
+
+### Les deux chiffres du sprint, et pourquoi je refuse de les additionner
+
+**C'est le point de cette synthese, et c'est le seul endroit du depot ou la confusion se produirait.**
+
+| Etat | Vertes | Denominateur | Taux | Ce qui a change |
+|---|---|---|---|---|
+| **Ouverture de s25, 2026-08-31** | 27 | **43** | **62,8 %** | - |
+| Apres `DEC-0066`, meme jour | 27 | **41** | 65,9 % | **le denominateur seul** |
+| **Cloture de s25, 2026-09-01** | **31** | **41** | **75,6 %** | **le numerateur : quatre lignes** |
+
+> **Le sprint affiche +12,8 points, et ce n'est pas ce qu'il a produit.**
+>
+> **3,1 points viennent du reclassement de `DEC-0066`** - deux lignes sorties du denominateur sur
+> arbitrage de l'utilisatrice, **sans qu'un seul numerateur bouge**. Aucun enfant ne pouvait jouer
+> quoi que ce soit de plus le soir du 2026-08-31 que le matin.
+>
+> **9,7 points viennent des quatre lignes**, et **elles sont le seul progres reel du sprint.**
+>
+> **Une serie de couverture qui joindrait 62,8 % a 75,6 % en ligne droite mesurerait deux choses
+> differentes avec la meme unite.** La serie se coupe au 2026-08-31 : avant, un pourcentage sur 43 ;
+> apres, un pourcentage sur 41.
+
+*Le meme avertissement est ecrit dans `DEC-0066`, section 3, et dans l'amendement du 2026-08-31
+ci-dessus. C'est la troisieme fois, et c'est ici qu'il servait.*
+
+### Par matiere et par niveau, meme methode, meme perimetre
+
+| Matiere / niveau | `couvert-valide` | atteignable | Part | Variation dans le sprint |
+|---|---|---|---|---|
+| **mathematiques CP** | **9** | 11 | **81,8 %** | 54,5 % -> 81,8 %, **trois lignes** |
+| mathematiques CM1 | 8 | 10 | 80,0 % | inchangee |
+| **francais CP** | 5 | **10** | **50,0 %** | 45,5 % -> 50,0 %, **par le seul denominateur** |
+| francais CM1 | 9 | 10 | 90,0 % | 72,7 % -> 90,0 %, **une ligne plus le denominateur** |
+
+**Le francais CP reste le point le plus faible du produit et il n'a rien gagne a s25** : ses 4,5
+points viennent de la sortie de *"Copier un mot"* du denominateur, pas d'un jeu. **Les quatre lignes
+du sprint sont trois en mathematiques CP et une en francais CM1**, c'est-a-dire dans les deux zones
+qui etaient deja les mieux servies. C'est la consequence assumee d'un sprint dont l'objectif etait la
+couverture et non l'equilibre ; je le porte ici pour que le rang de s26 l'ait sous les yeux.
+
+### Ce que cette synthese ne fait pas
+
+- Elle **ne prononce aucun Done** : les quatre verdicts sont de `nadia-prof`.
+- Elle **n'additionne pas** le gain de denominateur et le gain de lignes, et elle nomme les deux.
+- Elle **ne reprend aucun chiffre de la porte technique** : la mesure de `1 018` tests est celle de
+  `sofia-sm`, `theo-archi`, `yanis-qa` et `nadia-prof`, je ne l'ai pas reproduite, et **aucune ligne
+  de cette matrice ne repose dessus** - `nadia-prof` ecrit elle-meme *"aucun verdict fonde sur les
+  1 018 tests verts"*.
+- Elle **ne touche pas** a la ligne `en cours` des graphemes et phonemes, qui attend de l'audio.

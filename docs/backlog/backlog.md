@@ -8730,3 +8730,122 @@ objet et je ne l'avais jamais juge.**
   **lot G**, l'instruction de la dette de pli sur le catalogue livre, **sort du perimetre engage**.
   C'est l'arbitrage *"Instruire dans s25"* de l'utilisatrice, et la bascule lui est rendue en une
   phrase dans `DEC-0065`, section B.5.
+
+---
+
+# Etat du backlog a la cloture de s25 (2026-09-01) - `DEC-0067`
+
+**Quatre `VALIDE` prononces par `nadia-prof` sur l'arbre de cloture `834c6bc`.** Je les reporte ; je
+n'en prononce aucun.
+
+## Livrees et validees - ces quatre stories sont closes
+
+| Story | Jeu | Ligne | Verdict |
+|---|---|---|---|
+| `S25-FIG-1` | `bandit-manchot-figures-planes-cp` | Figures planes (maths CP), **entiere** | **VALIDE**, reserve d'indice levee - designation de 8 sur 12 a **0 sur 12** |
+| `S25-MON-1` | `bandit-manchot-monnaie-cp` | Monnaie (maths CP), **entiere** | **VALIDE**, reserve de vocabulaire levee. *Un indice donne desormais une methode d'addition vraie et reutilisable - `nadia-prof` : "l'ancien indice reformulait la consigne ; celui-ci apprend quelque chose"* |
+| `S25-SEM-1` | `bandit-manchot-semaine-cp` | Ligne de l'heure (maths CP), **avec mention** | **VALIDE** |
+| `S25-SUB-1` | `bandit-manchot-substituts-cm1` | Substituts (francais CM1), **entiere** | **VALIDE au second passage** - le refus du 2026-08-31 est leve et reste lisible |
+
+**`S25-MON-1` etait close comme refusee le 2026-08-31 au matin et rouverte le soir sur sa forme
+illustree** (`DEC-0065`, second amendement). Elle est verte. **Le fait qui l'avait fait fermer -
+*"deux paquets, pas un"* - etait faux, et le paquet textuel que je refusais l'est toujours** :
+`nadia-prof` ne l'a jamais accepte non plus.
+
+## Reports - l'etat exact de chaque compteur
+
+- **`SUB`** : **compteur eteint.** Un report unique (s24, `DEC-0059`), la story est livree et valide.
+  **Il n'y aura pas de motif de second report a ecrire.**
+- **`S25-LIS-1`** : **premier report tenu.** Son motif d'exclusion `COMP-2` est eteint - `SUB` est
+  verte - mais sa condition d'ouverture est rendue **negativement** : `ines-design` a mesure que
+  *"ce ne sont pas les mots qui debordent, ce sont les propositions"*. **Il manque `DV-4`, une borne
+  sur la longueur des propositions, et la poser est de moi** - rang 1 de s26. **Un second report a
+  s26 ne pourra donc pas invoquer `DV-4`.**
+- **`S25-NAR-1`** : **second report**, et elle est **remplacee par `S26-NAR-1` ci-dessous**, qui
+  porte ses deux defauts. Le compteur suit la story fusionnee.
+- **`S25-SCO-1`** : **second report**, pose par `sofia-sm` au planning de s25 sur un motif de
+  capacite et de dependance qui lui appartient. **Un report a s26 serait le troisieme.**
+- **`S25-DEN-1`** : non engagee, zero ligne, inchangee. Le paquet reste arbitre et developpable ;
+  `DEN-2` interdit toujours que sa ligne passe au vert.
+
+### S26-NAR-1 - `cp-texte-narratif` : deux raccourcis de surface dans le meme paquet - NON URGENTE
+
+- **Statut** : **non engagee.** Elle remplace `S25-NAR-1` et porte **son report** : *deuxieme report
+  compte a la cloture de s25.*
+- **Ce qu'elle rapporte** : **zero ligne.** *"Comprendre un texte narratif tres court"* est
+  `couvert-valide` depuis le 2026-08-31 et **le Done n'est ni retire ni conteste** - `nadia-prof` :
+  *"un verdict prononce ne se reecrit pas"*, et aucune de ses conditions `NAR-1` a `NAR-10` ne portait
+  ces proprietes.
+- **Urgence, dans ses mots et non dans les miens** : *"Ce n'est pas urgent et cela ne bloque rien."*
+- **Besoin** : en tant qu'eleve de CP, je veux avoir a lire vraiment le petit texte pour repondre,
+  afin d'apprendre a le comprendre plutot qu'a reperer ou se trouve la reponse.
+- **Competence programme visee** : francais, CP (cycle 2), "Lecture et comprehension de l'ecrit",
+  "Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi)"
+  (`squad/programme/francais/competences-cp.md`). **Ligne deja verte ; cette story ne la fait pas
+  bouger.**
+- **Ce que la fusion change, et pourquoi je fusionne plutot que d'empiler** : les deux defauts se
+  corrigent par le meme geste - **reecrire des items existants** - et une reecriture rouvre de toute
+  facon un audit `NAR-6`, du type `COMP-2`. **Deux stories separees consommeraient deux quotas pour
+  un seul geste.**
+
+#### Defaut A - une phrase seule suffit (mesure du 2026-08-31)
+
+- **`NARR-1`** - Etant donne les 20 items, quand on mesure **par la methode de `nadia-prof`** -
+  decoupage du support sur les trois ponctuations fortes, repliage de casse, occurrence par
+  sous-chaine - alors **le nombre d'items pour lesquels une phrase du support porte la bonne reponse
+  sans porter aucun distracteur est nul, sur chacune des phrases**. *Aujourd'hui : **9 items sur 20
+  pour la premiere phrase (45,0 %), 10 sur 20 pour la seconde (50,0 %)**, chiffres d'elle, non
+  reproduits par moi.* **Le zero est sa formulation** - *"qu'aucune phrase seule ne suffise"* - et
+  `NAR-11` est **sans seuil chiffre par son choix explicite** ; je n'en fabrique pas.
+- **Ce qui est exclu par construction**, dans ses mots : **surement pas *"ajouter des items"***.
+  *"Ajouter des items ne retire aucun raccourci : cela dilue un denominateur. Ce serait rendre un
+  compteur plus vert en laissant le defaut ou il est."*
+
+#### Defaut B - un rang suffit (mesure du 2026-09-01)
+
+- **`NARR-5`** - Etant donne les 20 items, quand on mesure **par la methode de `nadia-prof`** - *pour
+  chaque item, la position, dans le texte support, de la proposition qui est la bonne reponse, parmi
+  les trois propositions telles qu'elles y figurent* - alors **la position de la bonne reponse est
+  ramenee au hasard**. *Aujourd'hui : **premiere 9 sur 20 (45,0 %)**, milieu 4 sur 20 (20,0 %),
+  derniere 7 sur 20 (35,0 %) ; hasard a trois propositions : 33,3 %.*
+- **La demande est dans ses mots et je ne la traduis pas** : *"ramener la position de la reponse au
+  hasard, comme `cm1-substituts` vient de le faire"*. **Je ne pose aucun seuil** : elle ecrit
+  *"je ne pose aucun seuil chiffre, parce que je n'ai pas de mesure qui en fonde un"*, et le seuil qui
+  existe - *aucune position au-dessus de la moitie* - **appartient a l'`ADR` du garde-fou que
+  `theo-archi` ecrirait**, pas a cette story.
+- **Le piege que `marc-dev` a trouve sur `cm1-substituts` et qui vaut ici** : sa premiere reecriture
+  tenait la borne d'un bout **en rendant le referent dernier nomme sur 55 % des items**. **Corriger
+  une position en en creant une autre n'est pas corriger.** `SUB-11` a ete amendee pour cela ; la
+  meme prudence s'applique, et **les trois positions se mesurent, pas seulement la premiere**.
+
+#### Criteres de non-regression - verts aujourd'hui, et c'est le vrai risque d'une reecriture
+
+- **`NARR-2`** - le paquet compte toujours **20 items**, aucun ajoute, aucun retire.
+- **`NARR-3`** - `NAR-1` a `NAR-10` tiennent toutes, **reverifiees sur le paquet entier et non sur le
+  diff**. *`nadia-prof` a refait ses huit conditions comptables sur `cm1-substituts` parce que le
+  contenu avait change sur quatorze textes sur vingt ; une reecriture ici tient le meme standard.*
+- **`NARR-4`** - `ADR-0072` reste vert. **La marge nulle est epinglee dans un contre-exemple gele, pas
+  dans le paquet servi.**
+
+#### Ce que cette story coute, et il faut le savoir avant de l'affecter
+
+- **Elle consomme le quota `COMP-2` du sprint qui la prendra** (`NAR-6`), donc elle est **exclusive
+  de `LIS`** comme `SUB` l'etait.
+- **Sous `DEC-0060` `Q1`, reecrire le contenu rend le jeu modifie** : audit de contenu plein, par la
+  voie ordinaire.
+- **Lien decision** : `DEC-0067`, sections 3.2 et 4 ; `FICHE-bandit-manchot-texte-narratif-cp.md`,
+  constat du 2026-09-01 ; `NAR-11`, sans seuil et non retroactive ; `ADR-0072`.
+- **Agent pressenti** : **aucun.** `sofia-sm` affecte si elle a la capacite, et seulement dans un
+  sprint qui n'a pas deja consomme son quota `COMP-2`.
+
+### Ce que ce bloc ne contient pas
+
+- **Aucune story sur les cinq lignes d'audio** : elles butent sur la source de la voix, qui est un
+  arbitrage de l'utilisatrice et non une capacite. **C'est le plus gros gisement restant du produit.**
+- **Aucune story sur le palier 2 ni le palier 3** : ni le quadrillage ni `denombrer` n'ont ete
+  ouverts, et `nadia-prof` a ecrit qu'elle repricerait son plafond visuel a s26 *"avec une mesure au
+  lieu d'une prudence"*, apres avoir audite ses deux premiers paquets illustres.
+- **Aucune story sur les quatre postes techniques routes a la cloture** - le trou d'`ADR-0008`, le
+  garde-fou *"un rang suffit"*, `CON-6` `(b')`, et les trois identifiants que rien n'execute. **Ils
+  sont a `theo-archi`, `yanis-qa`, `marc-dev` et `ines-design`** ; je les range dans `DEC-0067`,
+  section 5, avec ce que leur report coute, et je ne les traduis pas en stories produit.
