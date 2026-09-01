@@ -1,0 +1,15 @@
+schema: 1
+id: paquet-saisie-fuite
+type: saisie
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet fautif d'ADR-0075, jamais servi a un enfant"
+exigenceDeForme: libre
+items:
+  - enonce: "Ecris le mot."
+    formeDeReference: "velo"
+    formesAcceptees: []
+    indice: "Indice de fixture"
+    texteAVoixHaute: "Le mot a ecrire est velo."

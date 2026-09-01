@@ -39,12 +39,26 @@ import java.util.Optional;
  * c'est le critere d'ADR-0058, et c'est pourquoi le palier 1 du visuel n'est ni une forme d'item de
  * plus ni une mecanique de plus. Ou le fichier est servi, sous quel nom et avec quelle extension
  * n'est pas ici : le contenu declare ce qu'il montre, l'adapter web decide ou il le prend.</p>
+ *
+ * <p>ADR-0075 (`DEC-0068`, la voix est celle d'un adulte present) : {@code texteAVoixHaute} porte
+ * le texte que l'adulte lit a voix haute a l'enfant, distinct de tout ce que {@code enonce} et les
+ * propositions donnent a lire. Sixieme composante optionnelle, meme patron que les cinq
+ * precedentes : la mecanique le transporte sans jamais le lire, un paquet qui ne s'appuie pas sur
+ * une voix ne remplit aucun champ factice, et la facon dont l'enfant repond ne change pas (critere
+ * d'ADR-0058) - c'est un champ d'item, pas une mecanique de plus. Il nomme ce que le texte
+ * <b>est</b>, jamais qui le prononce : l'adulte est une premisse de produit (`CLAUDE.md`,
+ * `DEC-0046`) qui peut changer de forme sans que ce champ ne change de nom (meme geste que
+ * {@code partDesignee}, ADR-0062). {@code VOI-10} (nadia-prof, 2026-09-01) : ce champ ne porte
+ * jamais une proposition de son item, ni la bonne reponse - une regle de fermeture, pas une liste
+ * d'interdits. ADR-0075, decision 3 : il entre desormais dans l'identite d'ecran d'ADR-0032, parce
+ * que l'identite d'un tour est ce qui le distingue pour l'enfant, vu <b>ou entendu</b>.</p>
  */
 public record Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
                         Optional<String> indice, Optional<String> explication,
                         Optional<String> partDesignee, Optional<String> texteSupport,
                         Optional<String> illustration,
-                        Optional<String> illustrationTexteAlternatif) implements Item {
+                        Optional<String> illustrationTexteAlternatif,
+                        Optional<String> texteAVoixHaute) implements Item {
 
     /**
      * ADR-0073 clause 5 : les deux cles de l'illustration se gardent l'une l'autre. Une image qui
@@ -109,5 +123,18 @@ public record Question(ItemId id, String enonce, String bonneReponse, List<Strin
                      Optional<String> partDesignee, Optional<String> texteSupport) {
         this(id, enonce, bonneReponse, distracteurs, indice, explication, partDesignee, texteSupport,
                 Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * ADR-0073 : meme defaut d'ADR-0016 qu'au-dessus, assume pour le meme motif - ne pas rouvrir les
+     * sites de construction qui declarent une illustration mais aucune voix. Laisse
+     * {@code texteAVoixHaute} vide.
+     */
+    public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
+                     Optional<String> indice, Optional<String> explication,
+                     Optional<String> partDesignee, Optional<String> texteSupport,
+                     Optional<String> illustration, Optional<String> illustrationTexteAlternatif) {
+        this(id, enonce, bonneReponse, distracteurs, indice, explication, partDesignee, texteSupport,
+                illustration, illustrationTexteAlternatif, Optional.empty());
     }
 }

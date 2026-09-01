@@ -1,0 +1,8 @@
+schema: 1
+jeux:
+  - id: bandit-manchot-consigne-adulte-sans-voix
+    titre: "Jeu corrige"
+    consigne: "Choisis la bonne reponse"
+    mecanique: bandit-manchot
+    paquet: paquet-consigne-adulte-sans-voix
+    nombreDeManches: 2

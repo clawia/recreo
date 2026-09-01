@@ -1,0 +1,19 @@
+schema: 1
+id: paquet-sain
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet licite d'ADR-0075, jamais servi a un enfant"
+items:
+  - enonce: "Choisis ce que tu entends."
+    bonneReponse: "au debut"
+    distracteurs: ["au milieu", "a la fin"]
+    indice: "Indice de fixture 1"
+    texteAVoixHaute: "Le mot est chapeau."
+  - enonce: "Choisis ce que tu entends."
+    bonneReponse: "au milieu"
+    distracteurs: ["au debut", "a la fin"]
+    indice: "Indice de fixture 2"
+    texteAVoixHaute: "Le mot est domino."

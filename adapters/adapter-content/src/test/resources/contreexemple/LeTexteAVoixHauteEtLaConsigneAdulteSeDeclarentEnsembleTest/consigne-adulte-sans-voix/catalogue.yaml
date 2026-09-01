@@ -1,0 +1,9 @@
+schema: 1
+jeux:
+  - id: bandit-manchot-consigne-adulte-sans-voix
+    titre: "Jeu fautif"
+    consigne: "Choisis la bonne reponse"
+    consigneAdulte: "Dites le mot normalement, sans le couper."
+    mecanique: bandit-manchot
+    paquet: paquet-consigne-adulte-sans-voix
+    nombreDeManches: 2

@@ -61,6 +61,22 @@ class SaisieContentSourceFactoryTest {
         assertThat(items.get(1).indice()).isEmpty();
     }
 
+    /**
+     * ADR-0075 : la cle facultative 'texteAVoixHaute' est lue sur cette fabrique aussi, meme patron
+     * que 'indice' et 'explication' - absente sur un item, presente sur un autre.
+     */
+    @Test
+    void laVoixEstLueQuandLePaquetLaDeclareEtAbsenteSinon() {
+        List<ReponseAEcrire> items = tousLesItems(paquetDeSonde());
+
+        assertThat(items.get(0).texteAVoixHaute())
+                .as("le premier item ne declare aucune voix")
+                .isEmpty();
+        assertThat(items.get(1).texteAVoixHaute())
+                .as("le second item declare sa voix, transmise telle quelle")
+                .contains("Le mot est eleve.");
+    }
+
     @Test
     void laFormeDeReferenceNAPasAFigurerDansLesFormesAcceptees() {
         assertThat(tousLesItems(paquetDeSonde()).get(1).formesAcceptees())

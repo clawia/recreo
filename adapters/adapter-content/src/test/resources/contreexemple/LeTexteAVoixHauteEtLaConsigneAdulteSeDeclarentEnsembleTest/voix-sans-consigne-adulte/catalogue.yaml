@@ -1,0 +1,8 @@
+schema: 1
+jeux:
+  - id: bandit-manchot-voix-sans-consigne-adulte
+    titre: "Jeu fautif"
+    consigne: "Ecoute bien"
+    mecanique: bandit-manchot
+    paquet: paquet-voix-sans-consigne-adulte
+    nombreDeManches: 2

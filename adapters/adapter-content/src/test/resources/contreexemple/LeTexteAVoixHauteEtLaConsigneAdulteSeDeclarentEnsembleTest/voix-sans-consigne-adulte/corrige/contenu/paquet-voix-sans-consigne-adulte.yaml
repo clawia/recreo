@@ -1,0 +1,14 @@
+schema: 1
+id: paquet-voix-sans-consigne-adulte
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet corrige d'ADR-0075, jamais servi a un enfant"
+items:
+  - enonce: "Choisis ce que tu entends."
+    bonneReponse: "au debut"
+    distracteurs: ["au milieu", "a la fin"]
+    indice: "Indice de fixture"
+    texteAVoixHaute: "Le mot est chapeau."

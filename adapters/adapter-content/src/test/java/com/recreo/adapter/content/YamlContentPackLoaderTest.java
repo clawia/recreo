@@ -111,6 +111,28 @@ class YamlContentPackLoaderTest {
         assertThat(second.illustrationTexteAlternatif()).isEmpty();
     }
 
+    /**
+     * ADR-0075 : la cle 'texteAVoixHaute' traverse le chargeur jusqu'a l'item, telle qu'elle est
+     * ecrite - sur le meme patron que les deux cles de l'illustration ci-dessus. Sans cette lecture,
+     * le texte que l'adulte doit lire a voix haute serait ignore en silence et n'atteindrait jamais
+     * l'ecran.
+     */
+    @Test
+    void leTexteAVoixHauteTraverseLeChargeurJusquALItem() {
+        List<GameDefinition> jeux = new YamlContentPackLoader("/fixtures/voix").games();
+        ContentSource contenu = jeu(jeux, "jeu-a-voix").contenu();
+
+        Question premier = (Question) contenu.next(borne -> 0, Set.<ItemId>of()).orElseThrow();
+        assertThat(premier.texteAVoixHaute())
+                .as("le texte declare par l'item arrive tel quel")
+                .contains("Le mot est chapeau.");
+
+        Question second = (Question) contenu.next(borne -> 0, Set.of(premier.id())).orElseThrow();
+        assertThat(second.texteAVoixHaute())
+                .as("un item qui ne s'appuie sur aucune voix ne porte aucune valeur factice")
+                .isEmpty();
+    }
+
     @Test
     void unChampObligatoireManquantNommeLeFichierEtLeChamp() {
         assertThatThrownBy(() -> new YamlContentPackLoader("/fixtures/champ-manquant").games())

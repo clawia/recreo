@@ -25,13 +25,32 @@ import java.util.Optional;
  *
  * <p>{@code indice} et {@code explication} sont facultatifs et se comportent exactement comme sur
  * {@link Question} : un item qui n'en porte pas ne remplit aucune valeur factice.</p>
+ *
+ * <p>ADR-0075 : {@code texteAVoixHaute} porte le texte que l'adulte lit a voix haute a l'enfant,
+ * sur le meme patron que sur {@link Question} et pour le meme motif - la ligne "ecrire un mot en
+ * autonomie" (`nadia-prof`, `ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, section 4.5) est un
+ * item de saisie, et un champ pose sur {@link Question} seule serait faux pour elle. Meme regle de
+ * fermeture ({@code VOI-10}) : ce texte ne porte jamais {@code formeDeReference} ni aucune des
+ * {@code formesAcceptees}. Il entre dans l'identite d'ecran d'ADR-0032 au meme titre que sur
+ * {@link Question} (ADR-0075, decision 3 et 5).</p>
  */
 public record ReponseAEcrire(ItemId id, String enonce, String formeDeReference,
                               List<String> formesAcceptees, Optional<String> indice,
-                              Optional<String> explication,
-                              ExigenceDeForme exigenceDeForme) implements Item {
+                              Optional<String> explication, ExigenceDeForme exigenceDeForme,
+                              Optional<String> texteAVoixHaute) implements Item {
 
     public ReponseAEcrire {
         formesAcceptees = List.copyOf(formesAcceptees);
+    }
+
+    /**
+     * ADR-0016 : constructeur de commodite qui laisse {@code texteAVoixHaute} vide, pour ne pas
+     * rouvrir les sites de construction qui ne s'appuient sur aucune voix.
+     */
+    public ReponseAEcrire(ItemId id, String enonce, String formeDeReference,
+                           List<String> formesAcceptees, Optional<String> indice,
+                           Optional<String> explication, ExigenceDeForme exigenceDeForme) {
+        this(id, enonce, formeDeReference, formesAcceptees, indice, explication, exigenceDeForme,
+                Optional.empty());
     }
 }
