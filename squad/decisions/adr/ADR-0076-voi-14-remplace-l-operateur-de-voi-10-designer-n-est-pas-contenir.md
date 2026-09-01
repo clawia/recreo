@@ -313,6 +313,29 @@ sur la meme population dans la meme execution. *Commande :
 > **Les cinq lignes concordent cellule pour cellule, et par un instrument different.** 45 items rouges
 > sur 45 sous l'ancien operateur, **0 sur 45 sous `VOI-14`**, sans qu'une ligne de contenu ait bouge.
 
+**Remesuree apres correction du contenu, plutot que supposee stable.** `lea-dev` a corrige cinq items
+de `cp-position-syllabe` sur le decoupage oral (`60a4d59`, sur les cinq signaux de `nadia-prof`,
+section 16.8) **apres** la fusion sur laquelle ma premiere mesure avait tourne : les stimulus
+`papa`, `banane`, `maison`, `tomate` et `ananas` sont remplaces par `tapis`, `parasol`, `canape`,
+`macaron` et `coussin`. **Un tableau vert ne vaut que pour l'arbre sur lequel il a tourne**, et c'est
+la meme discipline que celle que j'oppose a un chiffre recopie. Meme commande, meme instrument, sur
+l'arbre fusionne :
+
+| Paquet | Items | Sous-chaine | Jetons (`VOI-14`) |
+|---|---|---|---|
+| `cp-position-syllabe` | 18 | 0 | **0** |
+| `cp-son-dans-mot` | 12 | 0 | **0** |
+| `cp-lettre-du-son` | 18 | 18 | **0** |
+| `cp-digraphe-du-son` | 15 | 15 | **0** |
+| `cp-mot-dicte` | 12 | 12 | **0** |
+
+**Le tableau est inchange, et il est desormais mesure sur le contenu servi apres correction.** Deux
+verifications de plus, parce que ces cinq stimulus entrent dans des garde-fous sensibles au contenu :
+l'identite d'ecran d'`ADR-0032` amende - **18 ecrans distincts sur 18 items, aucune collision**,
+`texteAVoixHaute` faisant desormais partie de l'identite - et la clause 4 de traversee, verte sur ses
+5 tests. **La distribution des reponses est 6 / 6 / 6**, recomptee par mon propre chemin et
+concordante avec le recompte de `lea-dev`.
+
 **Un ecart apparent, que je resous plutot que de le laisser** : ma premiere mesure, faite avant son
 arbitrage, annoncait *"71 ecarts sur 43 stimulus distincts"* la ou elle compte **45 items**. Les deux
 sont justes et ne comptent pas la meme chose - 71 est un nombre de couples *(item, proposition)*, un
@@ -322,8 +345,8 @@ moto."* et *"Le mot est lune."* vivent a la fois dans `cp-lettre-du-son` et dans
 licite - l'identite d'`ADR-0032` est **par paquet**. *Mon premier chiffre etait juste et son unite
 etait mal nommee : un nombre de couples annonce comme un nombre d'items.*
 
-**Porte technique**, arbre de reconciliation `s26-theo-reco` - `s26-marc` a `5a57161`, qui porte
-deja `s26-contenu`, plus ce lot -, `bash outils/mvn-jdk21.sh -B -o clean verify` sur la racine :
+**Porte technique**, arbre de reconciliation `s26-theo-reco` - `s26-marc` a `5a57161`, plus la tete
+de `s26-contenu` a `efb3a6d` qui porte les corrections de `lea-dev`, plus ce lot -, `bash outils/mvn-jdk21.sh -B -o clean verify` sur la racine :
 **BUILD SUCCESS**, **1 079 tests, 0 echec, 0 erreur**. Par module : domain 82, application 13,
 `adapter-web` 377, `adapter-content` 451, `bootstrap` 150, plus 6 en failsafe. *Methode : somme de
 l'attribut `tests` de chaque rapport XML de surefire et de failsafe apres `clean`, les deux moteurs
