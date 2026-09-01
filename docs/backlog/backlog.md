@@ -8849,3 +8849,337 @@ illustree** (`DEC-0065`, second amendement). Elle est verte. **Le fait qui l'ava
   garde-fou *"un rang suffit"*, `CON-6` `(b')`, et les trois identifiants que rien n'execute. **Ils
   sont a `theo-archi`, `yanis-qa`, `marc-dev` et `ines-design`** ; je les range dans `DEC-0067`,
   section 5, avec ce que leur report coute, et je ne les traduis pas en stories produit.
+
+## Backlog - perimetre s26, "la voix est un adulte" plus la dette (`DEC-0068`, `squad/sprints/s26-la-voix-et-la-dette/planning.md`)
+
+**Arbitrage de l'utilisatrice a l'ouverture, mot pour mot** : *"demarre s26 avec en plus la
+dette"*.
+
+Perimetre complet, motifs et tout ce que je ne tranche pas : `DEC-0067` (rang, amendee le
+2026-09-01), `DEC-0068` (l'arbitrage sur la voix, amendee le meme jour) et le planning du sprint
+(`squad/sprints/s26-la-voix-et-la-dette/planning.md`, tenu par `sofia-sm`), qui nomme deja les cinq
+identifiants de story ci-dessous et leur affectation. **Je m'y accroche plutot que de le doubler** :
+les cinq stories qui suivent portent les criteres d'acceptation que le planning ne porte pas
+lui-meme, sur les cinq identifiants qu'il a deja fixes. Le verdict pedagogique qui les rend
+actionnables : `squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, sections 3 et
+4, et son addendum du meme jour, sections 11 a 15.
+
+**Attention de lecture, parce que la collision est reelle et volontairement non evitee par le
+planning** : les identifiants de story `S26-VOI-1` a `S26-VOI-5` ne correspondent **pas** aux
+memes numeros que les conditions `VOI-1` a `VOI-13` de `nadia-prof`. `S26-VOI-3` est la story du
+paquet "graphemes, clause 1" ; `VOI-3` est la condition "pas de scansion syllabique". Je nomme
+toujours une story avec le mot "story" ou son prefixe complet, et une condition par son seul
+identifiant, pour ne jamais laisser les deux se confondre sous la plume de qui relit vite.
+
+**Cinq paquets, pas quatre.** `nadia-prof` a mesure que la ligne "Associer les graphemes aux
+phonemes" exige deux paquets distincts et non un seul (addendum, section 11) : la clause 1
+(voyelles et consonnes simples) et la clause 2 (`ou`, `oi`, `ch`) ne partagent ni le meme espace de
+reponse ni la meme condition de distribution, et un paquet unique reproduirait la forme exacte de
+`CON-6` - une clause juste en intention dont l'extension n'attrape pas le materiau qui l'a motivee.
+**Les deux paquets partent ensemble ou ne partent pas** : la ligne reste `en cours` tant que les
+deux ne sont pas livres et valides (addendum, section 11.6). Ce n'est pas une priorisation, c'est
+un fait de composition, et il n'est pas de moi.
+
+**Le total tombe exactement sur la borne haute de `nadia-prof` (quatre a cinq paquets sur une
+mecanique existante), sans marge.** Ses mots : *"il n'y a aucune marge. Si un sixieme paquet
+apparait - une reprise de dette, un correctif de contenu, un paquet qu'on croit 'petit' -, je
+decline par ecrit."* (addendum, section 12.1). **Aucun sixieme paquet n'est donc a affecter ce
+sprint, quel qu'en soit le motif.**
+
+**Une question technique reste ouverte a la date d'ecriture de ces stories et conditionne la
+moitie du perimetre** - routee a `theo-archi` par `DEC-0067` (sections B.5 et B.7) et reprise dans
+le planning (section "Avis de faisabilite") : la voix est-elle un champ d'item (le cas d'`ADR-0073`)
+ou une mecanique neuve ?
+
+| Sa conclusion | Borne de `nadia-prof` | Lignes que s26 ferme | Plafond |
+|---|---|---|---|
+| **Champ d'item** | 5 paquets, inchangee | **4 sur 4** | 35/41 = **85,4 %** |
+| **Mecanique** | **4 paquets** | **3 sur 4** | 34/41 = **82,9 %** |
+
+**Je ne tranche pas laquelle des quatre lignes ne tiendrait pas sous la seconde conclusion**, et le
+planning ecrit la meme chose : *"le choix de laquelle reste a `camille-po`, jamais [a `sofia-sm`]."*
+Les cinq stories ci-dessous sont ecrites pour les deux cas ; si la reponse est "mecanique", je
+rearbitrerai laquelle des cinq ne rentre pas - **et la regle de composition ci-dessus interdit de
+sacrifier une seule des deux moities de la ligne des graphemes**, ce qui fait de cette ligne
+entiere, et non d'un paquet isole, la candidate naturelle a un report si la borne se resserre.
+
+**Une cinquieme ligne de la famille existe et ne recoit aucune story.** *"Decoder un mot regulier
+inconnu par assemblage syllabique"* reste `non couvert`. `nadia-prof` la refuse pour ce moyen -
+*"c'est la seule des cinq dont les propositions sont des sons"*, et `VOI-1` l'interdit par
+construction (arbitrage, section 4.4) - et nomme deux voies qui la debloqueraient : un corpus
+enregistre, toujours ferme par `DEC-0042` ; ou une captation de la voix de l'enfant, qu'elle ne
+reclame pas. *"Je n'oppose pas un principe, je constate une impasse."* Rien ici ne traduit ce
+refus en story.
+
+**La dette technique nommee par l'utilisatrice est deja traduite en stories, mais pas par moi.**
+Le planning porte `S26-DETTE-1` (le trou d'`ADR-0008`), `S26-DETTE-2` (le garde-fou "un rang
+suffit" avec sa clause de non-vacuite), `S26-DETTE-3` (`SUB-8`) et `S26-DETTE-4` (`DES-6`),
+affectees a `theo-archi`, `marc-dev` et `ines-design`. **Toutes les quatre sont transverses - pas
+de contenu pedagogique** : aucune ne porte de competence programme, et je ne les recopie pas ici
+pour ne pas doubler le planning qui les porte deja. `MON-6` (population vide) et `S26-NAR-1` (non
+urgente) ne sont pas retenues ce sprint, meme note.
+
+### Quatre conditions que personne ne garde, sur les cinq paquets
+
+`VOI-3`, `VOI-5`, `VOI-8` et `VOI-13` sont, dans les mots de `nadia-prof`, les premieres conditions
+de ce depot dont elle n'est pas la garde : *"le manquement se produit dans la bouche d'un adulte,
+dans une cuisine, et il ne laisse aucune trace - ni test, ni capture, ni journal, ni fichier. Je ne
+peux pas l'auditer, meme en jouant."* **Elles sont ecrites comme non gardees dans chacune des cinq
+stories ci-dessous et dans chacune des cinq fiches de conformite ouvertes ce sprint**, pour ne pas
+etre lues comme les autres. La seule contrepartie que le produit peut offrir est la condition
+`VOI-12` : *"sans elle, je refuserai les paquets a voix [...] un produit qui confie une condition a
+quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
+
+### Conditions communes aux cinq paquets, reprises telles quelles de l'arbitrage prealable
+
+- **Condition `VOI-1`** - **L'adulte prononce le stimulus ; il ne prononce jamais une
+  proposition.** C'est la regle qui trie les cinq lignes (arbitrage, section 3) ; elle est testee
+  par ses deux declinaisons calculables, les conditions `VOI-10` et `VOI-13`.
+- **Condition `VOI-10`** (testable) - **Le texte que l'adulte prononce est un champ distinct, et
+  il ne contient jamais une proposition ni la reponse.** *Calculable : aucune chaine du champ 1 ne
+  contient une chaine du jeu de propositions de son item.*
+- **Condition `VOI-12`** (testable pour son existence, jugee par `nadia-prof` pour son contenu ;
+  **exigence bloquante** - *"sans elle, je refuserai les paquets a voix"*) - **L'ecran dit a
+  l'adulte ce qu'il ne doit pas faire, en une phrase, a l'endroit ou il lit son texte**, jamais
+  derriere un clic ni un depliement. Clause verifiable en cinq points (arbitrage, section 13.1) :
+  presence sans geste ; destinataire nomme ; l'interdit est celui de ce paquet, et une seule des
+  conditions `VOI-3`, `VOI-5`, `VOI-7`, `VOI-8`, `VOI-13` ; lisible sans le depot (aucun mot de
+  jargon) ; ne fuit pas (ni la bonne reponse, ni les propositions). *`nadia-prof` s'interdit de la
+  durcir sur piece (arbitrage, section 13, ecrite avant l'objet d'`ines-design`).*
+- **Condition `VOI-13`** (calculable pour sa moitie technique ; **comptee comme la quatrieme
+  condition non gardee** pour le reste) - **Le mot travaille est ecrit une seule fois a l'ecran,
+  dans le texte de l'adulte, et nulle part ailleurs** - ni consigne, ni enonce, ni proposition, ni
+  indice, ni texte alternatif, ni ecran d'erreur, ni ecran de revelation. *Remplace la condition
+  `VOI-2`, que `nadia-prof` a trouvee insatisfaisable le 2026-09-01 : `VOI-2` interdisait que le mot
+  soit ecrit a l'ecran, et le texte de l'adulte l'exige. `VOI-2` reste lisible a sa place, dans
+  l'arbitrage, avec sa date, et elle est fausse.* **Ce que le produit ne peut pas garder, dans ses
+  mots** : *"rien n'empeche l'enfant de lire le texte de l'adulte par-dessus son epaule."* La seule
+  contrepartie est le cinquieme interdit de la condition `VOI-12` : *"Ne montrez pas cette ligne a
+  l'enfant."*, ou une phrase qui dise la meme chose, sur les cinq paquets.
+- **Materiel de forme, non tranche** : `ines-design` a rendu une proposition prealable
+  (`squad/design/proposition-ines-s26-ecran-voix.md`, `squad/design/prototype-ines-s26-ecran-voix.
+  html`) - un bloc unique portant a la fois le stimulus et la mise en garde, jamais deux endroits.
+  Aucune mecanique n'y est tranchee. Le contenu qu'elle y met (les mots, les phrases) est un exemple
+  et non un acquis ; elle le dit elle-meme.
+
+### `S26-VOI-1` - Paquet "localiser une syllabe" (francais CP)
+
+- **Besoin** : en tant qu'eleve de CP, je veux ecouter un adulte dire un mot et une syllabe a
+  chercher, et dire si je l'entends au debut, au milieu ou a la fin, afin d'apprendre a reperer la
+  place d'une syllabe dans un mot que je n'ai pas besoin de lire.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Langage oral et conscience
+  phonologique", "Localiser une syllabe dans un mot (debut / milieu / fin)"
+  (`squad/programme/francais/competences-cp.md`). Ligne `non couvert` -> `en cours` par cette
+  story.
+- **Statut** : paquet neuf, un des cinq paquets de la famille "la voix est un adulte", au plafond
+  de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073` (voir
+  tableau en tete de section).
+- **Ce qu'elle rapporte** : **+1 ligne, entiere.**
+- **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.1.
+  *"Avec un adulte qui prononce et un ecran qui ne montre pas le mot, [mon refus du 2026-08-31]
+  tombe entierement : il n'y a plus de lettres a regarder. L'enfant entend, segmente dans sa tete,
+  et situe. C'est la competence, et rien ne la fait a sa place."*
+- **Criteres d'acceptation** :
+  - **Condition `VOI-3` - NON GARDEE.** **L'adulte dit le mot d'un seul tenant, a vitesse normale.
+    Aucune scansion syllabique, aucune pause a l'interieur du mot.** *"Un adulte qui dit
+    'cha - peau' a fait la segmentation a la place de l'enfant : c'est la contrefacon, transposee a
+    la voix."* **Aucun test, aucune capture, aucune relecture ne peut le verifier** : c'est un
+    humain dans la piece qui la tient, ou personne. La seule contrepartie du produit est la
+    condition `VOI-12`, phrase candidate de `nadia-prof` : *"Dites le mot normalement, sans le
+    couper."*
+  - **Condition `VOI-4` (testable)** - Etant donne le paquet complet, quand on compte les items par
+    nombre de syllabes du mot et par position de la syllabe cherchee, alors **les mots comptent
+    deux ou trois syllabes**, et **la syllabe cherchee occupe chacune des trois positions (debut,
+    milieu, fin) sur l'ensemble du paquet, aucune n'etant majoritaire**. *Unite de compte : l'item.
+    Motif de `nadia-prof`* : *"c'est la generalisation que `SUB-11` m'a apprise a s25 - borner une
+    seule position en ouvre une autre."*
+  - Conditions `VOI-1`, `VOI-10`, `VOI-12`, `VOI-13` - communes, section ci-dessus.
+- **Identifiants proposes, a confirmer par le developpeur** : `id:
+  bandit-manchot-position-syllabe-cp`, `paquet: cp-position-syllabe`.
+- **Lien decision** : `DEC-0068` et son amendement ; `squad/conformite/ARBITRAGE-PREALABLE-s26-la-
+  voix-est-un-adulte.md`, sections 3, 4.1, 5, 6, 7, 13 ; `DEC-0067`, amendement, sections B.4 a
+  B.7 ; `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
+- **Agent affecte** : `marc-dev` (planning du sprint).
+
+### `S26-VOI-2` - Paquet "identifier un son" (francais CP)
+
+- **Besoin** : en tant qu'eleve de CP, je veux ecouter un adulte dire un mot et dire si j'entends
+  dedans le son qu'on me demande d'ecouter, afin d'apprendre a reperer un son sans avoir besoin de
+  voir comment il s'ecrit.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Langage oral et conscience
+  phonologique", "Identifier un son (phoneme) dans un mot"
+  (`squad/programme/francais/competences-cp.md`). Ligne `non couvert` -> `en cours` par cette
+  story.
+- **Statut** : paquet neuf, un des cinq paquets de la famille "la voix est un adulte", au plafond
+  de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073`.
+- **Ce qu'elle rapporte** : **+1 ligne, entiere.**
+- **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.2 - *"celle
+  ou la voix humaine est le mieux justifiee"*. *"Avec une voix et sans mot ecrit, la graphie
+  n'apparait jamais - et c'est precisement ce que la competence demande : detacher le son de la
+  lettre. La forme parlee n'est pas un pis-aller ici, c'est la seule forme juste."*
+- **Dependance ouverte, non tranchee ici** : `sofia-sm` a route a `nadia-prof` un doute
+  d'`ines-design` sur sa proposition prealable d'ecran (`squad/sprints/s26-la-voix-et-la-dette/
+  planning.md`, "Obstacles ouverts", troisieme ligne ; `squad/design/proposition-ines-s26-ecran-
+  voix.md`, section 6, point 4) : sa consigne d'exemple pour cette ligne ecrit le grapheme cible
+  ("Entends-tu le son « ch » dans ce mot ?"), ce qui pourrait defaire le motif meme de la ligne -
+  *"detacher le son de la lettre"*. **Je ne tranche pas ce point, qui est pedagogique, et je ne
+  choisis pas a la place de `nadia-prof`.** Tant qu'elle n'a pas repondu, la lecture prudente par
+  defaut, et non un arbitrage de ma part, est qu'**aucun item de ce paquet n'affiche a l'enfant de
+  lettre correspondant au son cherche**, dans la consigne comme ailleurs.
+  - **Condition `VOI-5` - NON GARDEE.** **L'adulte n'appuie pas le son cherche. Ni accentuation, ni
+    allongement, ni pause autour de lui.** *"Un adulte qui etire la voyelle a designe la reponse."*
+    **Aucun test ne peut le verifier.** Phrase candidate de `nadia-prof` pour la condition
+    `VOI-12` : *"Dites le mot normalement, sans appuyer sur aucun son."*
+  - **Condition `VOI-6` (testable)** - Etant donne le paquet complet, quand on compte, pour le son
+    cherche, les items ou il est present dans le mot et ceux ou il est absent, alors **aucune des
+    deux parts n'est majoritaire, et la position du son quand il est present varie**. *Motif :
+    "repondre toujours 'oui' est une strategie gagnante" sinon, "et l'enfant n'ecoute plus."*
+  - Conditions `VOI-1`, `VOI-10`, `VOI-12`, `VOI-13` - communes, section ci-dessus.
+- **Identifiants proposes, a confirmer par le developpeur** : `id:
+  bandit-manchot-son-dans-mot-cp`, `paquet: cp-son-dans-mot`.
+- **Lien decision** : `DEC-0068` et son amendement ; `squad/conformite/ARBITRAGE-PREALABLE-s26-la-
+  voix-est-un-adulte.md`, sections 3, 4.2, 5, 6, 7, 13 ; `squad/design/proposition-ines-s26-ecran-
+  voix.md`, section 6, point 4 ; `DEC-0067`, amendement, sections B.4 a B.7 ;
+  `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
+- **Agent affecte** : `marc-dev` (planning du sprint).
+
+### `S26-VOI-3` et `S26-VOI-4` - Associer les graphemes aux phonemes, les deux moities neuves (francais CP)
+
+- **Ce que ces deux stories sont** : **les deux moities d'une seule ligne**, qui ne se ferme
+  qu'ensemble (`nadia-prof`, addendum, section 11.6). Elles sont ecrites separement parce qu'elles
+  sont deux paquets, deux fiches de conformite, et deux jugements distincts - mais aucune des deux,
+  livree seule, ne fait bouger la ligne de matrice.
+- **Besoin commun** : en tant qu'eleve de CP, je veux ecouter un adulte dire un mot ou un son et
+  choisir la bonne lettre ou le bon groupe de lettres qui fait ce son, afin d'apprendre a associer
+  ce que j'entends a ce qui s'ecrit.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Lecture et comprehension de
+  l'ecrit", "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes
+  `ch`, `ou`, `on`...)" (`squad/programme/francais/competences-cp.md`). Ligne `en cours` depuis
+  s03 (clause 3, les trois nasales, deja acquise par `bandit-manchot-le-bon-son-cp`) ; **elle ne
+  passe a `couvert-valide` que si `S26-VOI-3` et `S26-VOI-4` sont toutes deux livrees et
+  validees**, la clause 3 restant entiere et son fichier `cp-le-bon-son.yaml` intact.
+- **Statut** : deux paquets neufs, sur les cinq paquets de la famille "la voix est un adulte", au
+  plafond de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073` -
+  et **c'est cette ligne, entiere, qui est la premiere candidate a un report si la reponse est
+  "mecanique"**, la regle de composition interdisant de livrer une seule moitie.
+- **Ce qu'elles rapportent ensemble** : **+1 ligne, sur une clause 3 deja acquise depuis s03.**
+  Livrees separement ou une seule des deux, **elles rapportent zero ligne.**
+- **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.3 - *"la
+  ligne peut se fermer"*. *"Ce que je crains"* [dans mon refus du 2026-08-06 sur le melange des six
+  sons] *"n'est pas une charge cognitive, c'est une fuite de reponse"*, mesuree sur le materiel
+  reel (addendum, section 11.2) : sur le paquet melange refuse, le son `ch` - seule consonne parmi
+  cinq voyelles - est bonne reponse 4 fois sur 24 items et **jamais distracteur**, soit
+  **P(bonne / presente) = 100 %**. **Quatre items sur vingt-quatre se gagnaient sans rien
+  entendre.**
+- **Non-regression, verifiable par un tiers sans redemander a `nadia-prof`** : `git diff 96a80b4 --
+  adapters/adapter-content/src/main/resources/contenu/cp-le-bon-son.yaml` doit rester **vide**. Si
+  ce fichier est touche, les 15 items des trois nasales rentrent dans l'audit de `nadia-prof`
+  (addendum, section 12.2) ; **ces deux stories ne le touchent pas.**
+
+#### `S26-VOI-3` - Clause 1 : voyelles et consonnes simples
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet complet, quand on releve les lettres servies en proposition, alors
+    l'espace de reponse est **une lettre simple, parmi une vingtaine** (le materiel de reference,
+    `contenu-repris/mots/cp-premiere-lettre.yml`, en sert 22 - **matiere premiere pour la forme
+    seulement, refusee comme contenu** : la bonne reponse y est la premiere lettre du mot affiche
+    sur 24 items sur 24, addendum section 14.2 ; chaque item repasse devant `nadia-prof`).
+  - **Condition de distribution, dans les mots de `nadia-prof`** (addendum, section 11.4) - *"chaque
+    lettre servie est distracteur au moins aussi souvent qu'elle est reponse"* - **seule condition
+    qui ait un sens sur un espace ouvert de lettres**, a la difference d'un tiers par item comme sur
+    la clause 2. **Elle n'a pas de numero de condition attribue par `nadia-prof`** ; je la cite mot
+    pour mot plutot que d'en inventer un.
+  - **Condition `VOI-7` (testable)** - **L'adulte dit le mot entier, jamais le grapheme isole** (le
+    son de la lettre seule). *"Dire le son d'un digraphe [ou d'une lettre] devant trois propositions
+    dont l'une est cette lettre, c'est prononcer une proposition : c'est la condition `VOI-1`."*
+  - Conditions `VOI-1`, `VOI-10`, `VOI-12`, `VOI-13` - communes, section ci-dessus. Phrase candidate
+    de la condition `VOI-12` pour ce paquet (interdit rattache a `VOI-7`) : *"Dites le mot entier,
+    jamais le son tout seul."*
+- **Identifiants proposes, a confirmer par le developpeur** : `id: bandit-manchot-lettre-du-son-cp`,
+  `paquet: cp-lettre-du-son`.
+- **Agent affecte** : `lea-dev` (planning du sprint).
+
+#### `S26-VOI-4` - Clause 2 : les digraphes `ou`, `oi`, `ch`
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet complet, quand on releve les groupes de lettres servis en proposition,
+    alors l'espace de reponse est **exactement trois digraphes stables : `ou`, `oi`, `ch`**, jamais
+    un autre.
+  - **Condition de distribution, dans les mots de `nadia-prof`** (addendum, section 11.4) - *"chacun
+    des trois est reponse sur un tiers des items"*, la condition qui a rendu les trois nasales du
+    paquet servi a exactement 33,3 % chacune (addendum, section 11.2). Meme absence de numero de
+    condition, meme citation mot pour mot.
+  - **Condition `VOI-7` (testable)** - **L'adulte dit le mot entier, jamais le grapheme isole.**
+    *"L'adulte dit 'chat' ; l'enfant en extrait le son et choisit sa graphie."*
+  - Conditions `VOI-1`, `VOI-10`, `VOI-12`, `VOI-13` - communes, section ci-dessus. Phrase candidate
+    de la condition `VOI-12` pour ce paquet, identique a celle de `S26-VOI-3` (meme interdit,
+    `VOI-7`) : *"Dites le mot entier, jamais le son tout seul."*
+- **Identifiants proposes, a confirmer par le developpeur** : `id:
+  bandit-manchot-digraphe-du-son-cp`, `paquet: cp-digraphe-du-son`.
+- **Agent affecte** : `lea-dev` (planning du sprint).
+
+- **Lien decision (les deux stories)** : `DEC-0068` et son amendement ; `squad/conformite/
+  ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, sections 2.1, 4.3, 5, 6, 7, 11 a 13 ; `DEC-0067`,
+  amendement, sections B.4 a B.7 ; la barre du 2026-08-10 sur les digraphes
+  (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, verdict du 2026-08-10, section 6),
+  reconduite mot pour mot sur sa clause 3 ; `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
+
+### `S26-VOI-5` - Paquet "ecrire un mot en autonomie" (francais CP, saisie alphabetique)
+
+- **Besoin** : en tant qu'eleve de CP, je veux ecouter un adulte me dire un mot autant de fois que
+  j'en ai besoin et le taper moi-meme au clavier, afin d'apprendre a ecrire un mot que je sais dire
+  en respectant les lettres qui font les sons que j'entends.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Ecriture", "Ecrire de maniere
+  autonome un mot simple en respectant les correspondances grapheme/phoneme connues"
+  (`squad/programme/francais/competences-cp.md`). Ligne `non couvert` -> `en cours` par cette
+  story.
+- **Statut** : paquet neuf, un des cinq paquets de la famille "la voix est un adulte", au plafond
+  de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073`. **Premier
+  paquet a reponse alphabetique sur la mecanique de saisie** - jusqu'ici seule la reponse numerique
+  a ete jouee (`saisie-complements-10-cp`).
+- **Ce qu'elle rapporte** : **+1 ligne, entiere.**
+- **Arbitrage prealable** : **ACCEPTE**, arbitrage prealable de `nadia-prof`, section 4.5 - *"c'est
+  ma propre condition qui se leve"*. `SAI-11` interdisait la saisie alphabetique au CP *"tant
+  qu'aucun arbitrage de l'utilisatrice n'a repondu"* a la question du contexte de jeu ; l'arbitrage
+  du 2026-09-01 (*"un adulte va faire la lecture a l'enfant de CP"*) y repond : *"ce n'est pas moi
+  qui leve ma condition : c'est ma condition qui prevoyait sa propre levee, et le cas s'est
+  produit."*
+- **Ce qui reste couvert par une condition deja tranchee, verifie plutot que suppose** : la lettre
+  accentuee sur tablette reste sans reponse, mais `SAI-1` (2026-08-24) compte deja **juste par
+  defaut** une reponse ecrite sans accent - un enfant qui tape `velo` a raison. **Cette question
+  n'est pas due pour que cette ligne s'ouvre.**
+- **Criteres d'acceptation** :
+  - **Condition `VOI-8` - NON GARDEE.** **L'adulte dit le mot, puis autant de fois que l'enfant le
+    demande. Il ne l'epelle jamais, ne le decoupe jamais en syllabes, et n'ecrit rien.** *"Epeler,
+    c'est faire l'exercice."* **Aucun test ne peut le verifier.** Phrase candidate de `nadia-prof`
+    pour la condition `VOI-12` : *"Dites le mot autant de fois qu'il le demande, mais ne l'epelez
+    jamais."*
+  - **Condition `VOI-9` (partiellement testable ; la regularite reelle reste jugee par
+    `nadia-prof`)** - **Les mots du paquet sont reguliers et de deux syllabes au plus, et aucun ne
+    porte de lettre muette finale** autre que celles que le CP a apprises. *"Un mot dont l'ecriture
+    ne se deduit pas du son n'evalue pas cette ligne, il evalue une memoire d'orthographe."*
+  - Conditions `VOI-1`, `VOI-10`, `VOI-12`, `VOI-13` - communes, section ci-dessus.
+  - **Ce qui reste a `theo-archi` et a `sofia-sm` (casquette dev), et que je ne tranche pas** :
+    lesquelles des conditions `SAI-1` a `SAI-12` et `SEUIL-1` a `SEUIL-5`, ecrites pour une reponse
+    numerique, s'appliquent telles quelles a une reponse alphabetique, et lesquelles en demandent
+    une nouvelle (par exemple la comparaison caractere a caractere plutot que numerique). Meme
+    geste que `S24-SAI-2` a s24.
+- **Identifiants proposes, a confirmer par le developpeur** : `id: saisie-mot-dicte-cp`, `paquet:
+  cp-mot-dicte`.
+- **Lien decision** : `DEC-0068` et son amendement ; `squad/conformite/ARBITRAGE-PREALABLE-s26-la-
+  voix-est-un-adulte.md`, sections 3, 4.5, 5, 6, 7, 13 ; `DEC-0067`, amendement, sections B.4 a
+  B.7 ; `ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md` (`SAI-1` a `SAI-12`), second amendement du
+  2026-08-25 (levee de `SAI-11`) ; `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
+- **Agent affecte** : `sofia-sm`, casquette dev (planning du sprint).
+
+### Ce que ce bloc ne contient pas
+
+- **Aucune story sur la ligne refusee** - decoder un mot regulier par assemblage syllabique. Le
+  motif est nomme en tete de section.
+- **Aucune story de dette technique** : `S26-DETTE-1` a `S26-DETTE-4` vivent dans
+  `squad/sprints/s26-la-voix-et-la-dette/planning.md` et dans `DEC-0067`, section 5 ; aucune ne
+  porte de competence programme, je ne les recopie pas ici.
+- **Aucune story sur `DV-4`** (la borne de longueur des propositions, rang 2 de `DEC-0067`) : elle
+  ne consomme aucun paquet de contenu, mais elle ne fait pas non plus bouger de ligne ce sprint -
+  `LIS` ne tient pas dans une borne entierement consommee par les cinq paquets a voix (`DEC-0067`,
+  amendement, section B.6). Elle reste un arbitrage a poser, pas une story de developpement.

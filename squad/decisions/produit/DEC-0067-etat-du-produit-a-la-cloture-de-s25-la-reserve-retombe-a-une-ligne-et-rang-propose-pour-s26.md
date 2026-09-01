@@ -395,6 +395,17 @@ satisfait-il la barre du 2026-08-10, ou en faut-il deux ?** C'est un jugement su
 distribution des items, pas sur un decoupage technique. **Je le pose plutot que de le decider, et
 c'est ce chiffre qui fait la difference entre 4 et 5 paquets.**
 
+**Reponse du 2026-09-01, rendue par `nadia-prof` - il en faut deux.** Elle mesure sur le materiel
+reel (`ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, addendum, section 11) que le melange des
+deux clauses dans un paquet reproduit la forme exacte de `CON-6` - la famille minoritaire (`ch`)
+n'est jamais distracteur sur le paquet refuse d'origine, `P(bonne / presente) = 100 %` - et que les
+deux clauses n'admettent pas la meme condition de distribution (un tiers d'items pour trois
+digraphes, contre un espace de 22 lettres). **Le total est donc cinq paquets, pas quatre, et il
+tombe exactement sur ma borne haute sans marge** (section B.5 ci-dessous, inchangee sur le fond).
+Stories, criteres et fiches : `docs/backlog/backlog.md`, section "Backlog - perimetre s26" ;
+`squad/conformite/FICHE-bandit-manchot-lettre-du-son-cp.md` et `FICHE-bandit-manchot-digraphe-du-
+son-cp.md`.
+
 ### B.5 Ce que la capacite rend, et le fait de composition qui en decoule
 
 **La borne de `nadia-prof` est inchangee - quatre a cinq paquets sur une mecanique existante - et
