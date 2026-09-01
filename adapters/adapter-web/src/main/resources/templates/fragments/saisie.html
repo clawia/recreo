@@ -21,6 +21,16 @@
      revelation. -->
 <div th:fragment="saisie" class="ecran-de-jeu" th:attr="data-focus=${focus}">
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <!-- Meme bloc que fragments/manche.html, meme motif : voir son commentaire (ADR-0075 section
+         7, VOI-12). Ce fragment est le second a le porter parce que le champ vit sur les DEUX
+         formes d'item (ADR-0075 section 5) : la ligne "ecrire un mot en autonomie" est un item de
+         saisie, la seule des cinq lignes ouvertes par nadia-prof a ne pas passer par des
+         propositions en texte. -->
+    <div class="bloc-adulte" tabindex="-1" th:if="${texteAVoixHaute != null}">
+        <p class="etiquette-adulte">Adulte, à voix haute :</p>
+        <p class="stimulus-a-lire" th:text="${texteAVoixHaute}"></p>
+        <p class="consigne-adulte" th:if="${consigneAdulte != null}" th:text="${consigneAdulte}"></p>
+    </div>
     <!-- proposition-ines-ecran-de-saisie.md section 3.1 point 1 : la consigne EST l'etiquette du
          champ. Un <input> sans nom accessible est un defaut ; une etiquette de plus serait un
          second texte disant ce que la consigne dit deja, sur un ecran destine a un enfant qui lit

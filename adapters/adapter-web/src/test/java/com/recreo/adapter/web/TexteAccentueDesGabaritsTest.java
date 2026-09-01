@@ -135,7 +135,14 @@ class TexteAccentueDesGabaritsTest {
             // ca.", est pose par le modele et n'est donc pas un noeud de texte de gabarit.
             "Je réponds",                          // candidat d'ines-design, section 2.6
             "Continuer",                           // candidat d'ines-design, section 2.4
-            "On écrit :");                         // SAI-9b, exemple de nadia-prof du 2026-08-24
+            "On écrit :",                          // SAI-9b, exemple de nadia-prof du 2026-08-24
+            // S26, fragments/manche.html et fragments/saisie.html, .bloc-adulte (ADR-0075 section
+            // 7, VOI-12). Destinataire : l'adulte, pas l'enfant - nadia-prof ecrit elle-meme
+            // qu'elle le juge "au meme titre que ce que l'enfant lit" (ARBITRAGE-PREALABLE-s26-
+            // la-voix-est-un-adulte.md, section 5.3). Candidat d'ines-design (proposition-ines-
+            // s26-ecran-voix.md, section 1) : elle le propose, nadia-prof seule l'arbitre en
+            // jouant un paquet reel - aucun paquet n'existe encore a ce commit.
+            "Adulte, à voix haute :");
 
     /** ADR-0013 obligation 1 : le perimetre balaye vient du repertoire, jamais d'une liste. */
     private static List<Path> tousLesGabarits(Path racine) {
