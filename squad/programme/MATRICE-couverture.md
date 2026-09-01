@@ -3148,3 +3148,43 @@ couverture et non l'equilibre ; je le porte ici pour que le rang de s26 l'ait so
   de cette matrice ne repose dessus** - `nadia-prof` ecrit elle-meme *"aucun verdict fonde sur les
   1 018 tests verts"*.
 - Elle **ne touche pas** a la ligne `en cours` des graphemes et phonemes, qui attend de l'audio.
+
+---
+
+## Note du 2026-09-01 (ouverture de s26, `DEC-0068`) - l'obstacle de production de la famille audio est leve, et **aucune ligne ne bouge**
+
+**Aucun statut de cette matrice n'est modifie par cette note. Elle enregistre un fait, elle ne
+prejuge d'aucun verdict.**
+
+**Le fait** : la question de la source de la voix, ouverte depuis le 2026-08-24 et routee a chaque
+sprint depuis, est tranchee.
+
+> **De l'utilisatrice, 2026-09-01**, ses mots cites entre guillemets :
+>
+> **"pour les exercices avec la voix, un adulte va faire la lecture a l'enfant de cp il faudra juste
+> distinguer ce qui doit etre lu de la consigne de l'enfant"**
+
+**Ce que cela change a ce qui bloquait cinq lignes** : `DEC-0042`, arbitrage 2, avait nomme deux
+voies - un corpus enregistre, ou une synthese embarquee - et etabli qu'aucune ne tenait. **La reponse
+n'est aucune des deux : il n'y a pas de voix dans le produit.** L'obstacle de production - *"ce n'est
+ni du code ni du contenu YAML : c'est un enregistrement"* - **disparait.**
+
+**Ce que cela ne change pas, et c'est pourquoi rien ne bouge ici** :
+
+- **Les cinq lignes concernees restent `non couvert` ou `en cours`** - localiser une syllabe,
+  identifier un son, les graphemes et phonemes, decoder par assemblage, et ecrire un mot en autonomie.
+  **`nadia-prof` instruit ce que ce moyen ouvre, et son verdict decide.** L'utilisatrice a arbitre un
+  **moyen**, pas un resultat.
+- **La ligne *"Lire a voix haute un texte court et simple avec fluidite croissante"* reste
+  `non couvrable en l'etat`, et son motif est inchange.** Le critere de cette matrice exige une
+  decision de l'utilisatrice **sur la contrainte fondatrice en cause** ; celle-ci porte sur la voix de
+  l'enfant **recue** par l'application, et l'arbitrage porte sur la voix d'un adulte **emise** dans la
+  piece. **Ce ne sont pas deux degres d'une meme chose. Motif complet et adjacence nommee :
+  `DEC-0068`, section 5.3.**
+- **Le denominateur est inchange : 41.** Aucune ligne n'entre dans le statut `non couvrable en
+  l'etat` ni n'en sort.
+
+**Etat de cette matrice a la date de cette note, inchange depuis la cloture de s25** : 31
+`couvert-valide`, 9 `non couvert`, 1 `en cours`, 6 `non couvrable en l'etat`, total 47, denominateur
+41, **31 / 41 = 75,6 %**. *Meme methode que la synthese de s25 : comptage automatise des quatre
+tableaux de matiere de ce fichier, colonne `Statut`, sur ce seul fichier, aucun module compile.*
