@@ -195,8 +195,9 @@ verdict** dans le bloc de validation des cinq `squad/conformite/FICHE-*.md`.
 
 - **Auteure de cet addendum** : `sofia-sm`. Rien du texte precedent (les deux passages de
   `nadia-prof`) n'est modifie ni retire.
-- **Horodatage de debut** : 2026-09-01 14:32 (`planning.md`). **Horodatage de fin** : 2026-09-01
-  21:33. **Duree effective** : environ 7h.
+- **Horodatage de debut** : 2026-09-01 14:32, repris de `planning.md`.
+- **Horodatage de fin** : 2026-09-01 21:49
+- **Duree effective** : environ 7h17.
 - **Increment livre, en une phrase** : les quatre lignes du domaine *Langage oral et conscience
   phonologique* sont servies par cinq paquets a voix (un adulte present lit le texte que l'enfant
   n'a pas a lire), et la dette du JavaScript porteur non file (`ADR-0008`) est fermee.
