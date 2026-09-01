@@ -10,7 +10,7 @@
   `contenu-repris/` ne porte cette forme.
 - **Entree de catalogue** : `saisie-mot-dicte-cp` (identifiant propose, a confirmer par le
   developpeur).
-- **Statut global** : **ouverte, aucun increment livre a ce jour.** Rien n'a encore ete joue.
+- **Statut global** : **REFUSE** (Done pedagogique **non prononce**, 2026-09-01, sur `round-two` a `bc59642`). **Motif bloquant : `VOI-12` NON TENUE**, plus **une reserve nommee qui ne bloque pas** - `gomme` et `bulle` ne se deduisent pas du son. **Hors `VOI-12`, ce paquet serait VALIDE SOUS RESERVE.** `SAI-1`, `SAI-3` et `SAI-4` sont verifiees en jeu. Le refus est ecrit ci-dessous et n'est pas efface.
 - **Arbitrage prealable de `nadia-prof` rendu** : `squad/conformite/ARBITRAGE-PREALABLE-s26-la-
   voix-est-un-adulte.md`, section 4.5 (acceptation - *"c'est ma propre condition qui se leve"*,
   `SAI-11` etant desormais levee sur sa condition remplie) et sections 5, 6, 7, 13 (conditions
@@ -23,7 +23,7 @@
   `camille-po`** : lesquelles des conditions `SAI-1` a `SAI-12` et `SEUIL-1` a `SEUIL-5`, ecrites
   pour une reponse numerique, s'appliquent telles quelles a une reponse alphabetique, et lesquelles
   en demandent une nouvelle.
-- **Derniere mise a jour** : 2026-09-01 (ouverture par `camille-po`, `DEC-0068`, s26).
+- **Derniere mise a jour** : 2026-09-01 (**verdict de `nadia-prof` apres avoir joue**, s26).
 
 ## Competences visees
 
@@ -61,3 +61,140 @@
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. Il reste vide tant qu'aucun
 > increment n'a ete livre et joue.
+
+### Verdict du 2026-09-01 sur l'increment de s26 (`round-two`, `bc59642`) - **REFUSE**
+
+- **Increment juge** : `round-two` a `bc59642`. Jar reconstruit et lance par moi, `mvn -B clean
+  package`, JDK 21.0.10 rapporte par la machine virtuelle. **J'ai joue**, je n'ai pas lu.
+- **Ce que j'ai fait** : plusieurs parties completes sur ce jeu, avec des erreurs volontaires, des
+  echecs repetes sur un meme item jusqu'a la revelation, et une partie menee jusqu'a l'ecran de
+  fin. Puis l'audit d'exactitude de **tous** les items du paquet, **dits a voix haute par moi**,
+  parce qu'aucun test ne sait prononcer.
+- **Ma borne** : 75 items pour les cinq paquets, sous mon plafond de 115. `cp-le-bon-son.yaml` est
+  **inchange** - `git diff 96a80b4 --` sur ce fichier est vide -, donc la clause 3 de ma barre du
+  2026-08-10 est tenue par constat et je n'ai pas rejoue ses 15 items, exactement comme je l'avais
+  ecrit d'avance (addendum, section 12.2). **Je n'ai rien echantillonne et je n'ai pas eu a
+  decliner.**
+
+#### Le motif bloquant, commun aux cinq paquets : **`VOI-12` est NON TENUE**
+
+**Il manque la cinquieme phrase d'adulte**, celle que j'ai attachee a `VOI-12` en section 14.3 de
+mon addendum, **avant que ce contenu n'existe** : *"`VOI-12` gagne donc un cinquieme interdit, qui
+vaut sur les cinq paquets - "Ne montrez pas cette ligne a l'enfant." ou une phrase qui dise la meme
+chose."*
+
+**Je l'ai cherchee et elle n'est nulle part.** Verifie sur l'accueil, sur la page de niveau, sur
+l'ecran de jeu, et sur les cinq `consigneAdulte` du catalogue : aucune formulation ne dit a l'adulte
+que l'enfant ne doit pas lire la ligne qu'il lui lit.
+
+**Pourquoi ce n'est pas une formalite, et je le mesure sur ce jeu-ci** : un enfant assis a cote lit
+le bloc adulte. Ce que je mesure ci-dessous, paquet par paquet, c'est que **lire cette ligne suffit
+a gagner sans la competence** - sur les cinq, sans exception. C'est le constat que j'avais ecrit en
+section 14.2 et que l'increment confirme.
+
+> **Ce que j'avais ecrit d'avance et que je tiens** : *"Sans `VOI-12`, je refuserai les paquets a
+> voix. Non pas parce que le contenu serait mauvais, mais parce qu'un produit qui confie une
+> condition a quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
+
+**Ce refus se leve avec une phrase par paquet.** Il ne demande aucune reecriture de contenu, aucun
+changement de mecanique et aucune reprise d'audit : tout ce que j'ai verifie est ecrit ci-dessous
+pour n'avoir pas a etre reverifie.
+
+#### `VOI-12`, point par point, sur l'objet reel
+
+| Point (arbitrage, 13.1) | Mesure sur cet increment | Etat |
+|---|---|---|
+| 1 - presence sans geste, sur **chaque** ecran ou l'adulte a un texte | le bloc adulte porte ses trois parties ensemble, sans clic ni survol, sur l'ecran d'item, apres une bonne reponse, apres une erreur **et** sur l'ecran de revelation | **TENU** |
+| 2 - destinataire nomme | *"Adulte, a voix haute :"* - je le lis et je sais sans hesiter a qui il parle | **TENU** |
+| 3 - l'interdit de CE paquet, rattache a une et une seule condition | les quatre phrases livrees se rattachent chacune a exactement une condition | **TENU pour les quatre phrases livrees** |
+| 4 - lisible sans le depot | une phrase par paquet, aucun des mots que j'avais interdits | **TENU** |
+| 5 - la phrase ne fuit pas | aucune `consigneAdulte` ne porte une proposition de son item | **TENU** |
+| **la cinquieme phrase de la section 14.3** | **absente des cinq paquets et de tous les ecrans** | **NON TENU** |
+
+**Je nomme exactement ce qui echoue, pour qu'un tiers puisse le verifier sans me le redemander** :
+les cinq points de 13.1 sont tenus sur les quatre phrases livrees. **Ce qui manque est la phrase
+elle-meme, exigee par la section 14.3.** Je ne pretends pas que le point 3 echoue : il ne echoue
+pas.
+
+#### Ce que je corrige de ma propre main avant de m'en servir - `VOI-13` etait trop large
+
+**`VOI-13`, telle que je l'ai ecrite le 2026-09-01, interdit le mot *"ni sur l'ecran d'erreur, ni
+sur l'ecran de revelation"*. Cette enumeration est trop large et je la corrige, datee du meme
+jour.**
+
+**Ce que j'ai mesure** : sur `saisie-mot-dicte-cp`, le mot sort du bloc adulte - *"On ecrit :
+jupe"* - **exactement au moment ou l'item cesse d'etre jouable**, jamais avant. Sur les quatre jeux
+a propositions, il n'en sort jamais. **Le motif de `VOI-13` est donc entierement satisfait** : ce
+que je crains est que l'enfant lise au lieu d'entendre, et il ne peut pas lire tant qu'il peut
+repondre.
+
+**Une dictee qui ne montrerait jamais l'orthographe apres l'echec ne corrigerait rien.** J'aurais
+refuse, sur la lettre de ma propre clause, le seul geste qui apprend quelque chose a l'enfant qui
+s'est trompe.
+
+> **`VOI-13` corrigee (2026-09-01)** - le mot travaille n'apparait hors du texte de l'adulte
+> **sur aucun ecran ou l'item peut encore etre repondu**. Apres resolution de l'item, l'afficher est
+> non seulement permis mais **attendu** sur un paquet de saisie. *Troisieme de mes clauses fausse en
+> extension aujourd'hui, apres `VOI-2` et `VOI-10`, et la seule dont la lettre m'aurait fait refuser
+> a tort.*
+
+**Etat mesure sur ce jeu** : `VOI-13` corrigee est **TENUE**.
+
+**`VOI-12` bloque, et j'ajoute une reserve nommee qui ne bloque pas.**
+
+#### Ce que j'ai verifie sur ce paquet, et qui est TENU
+
+**Les 12 mots, dictes a voix haute par moi et tapes.**
+
+| Verification | Mesure | Etat |
+|---|---|---|
+| **`SAI-1`** - une reponse sans accent compte juste | j'ai tape `velo` pour `velo` accentue : **compte juste**, score incremente, aucun indice affiche | **TENU** |
+| **`SAI-3`** - la casse ne penalise pas | j'ai tape `DUNE` pour `dune` : **compte juste** | **TENU** |
+| **`SAI-4`** - les espaces de bord ne penalisent pas | j'ai tape `" moto "` : **compte juste** | **TENU** |
+| **`VOI-9`** - mots reguliers, deux syllabes au plus | **12 sur 12** : velo, lune, jupe, robe, moto, pile, gomme, tasse, cape, dune, mule, bulle. Aucune consonne finale muette ; le seul `e` final est celui que le CP a appris | **TENU** |
+| **`VOI-13`** (corrigee) | le mot ne quitte le bloc adulte **qu'au moment ou l'item cesse d'etre jouable** - mesure a l'essai pres | **TENU** |
+| **L'enfant bloque peut avancer** | apres trois echecs : *"Ce n'est pas ca. Tu as ecrit : zzz. On ecrit : jupe."* **L'orthographe est donnee et l'enfant repart** | **TENU** |
+| **`VOI-1` n'a pas d'objet ici** | aucune proposition, l'enfant produit. C'est ce que j'ai tranche en section 16.3, et l'increment le respecte : la branche `saisie` du garde-fou a disparu | **TENU** |
+
+#### Reserve nommee - **deux items sur douze ne se deduisent pas du son**
+
+**Elle ne bloque pas le Done ; elle sera a corriger dans un sprint suivant.**
+
+**`gomme` et `bulle`.** Un enfant qui entend [gom] et ecrit `gome`, ou qui entend [byl] et ecrit
+`bule`, **a applique correctement les correspondances grapheme/phoneme qu'il connait**. Les deux
+ecritures se lisent exactement pareil. Le doublement de la consonne n'est pas deductible du son :
+**c'est une memoire d'orthographe.**
+
+**C'est le motif de ma propre `VOI-9`, que je cite** : *"la ligne dit "en respectant les
+correspondances grapheme/phoneme **connues**" - un mot dont l'ecriture ne se deduit pas du son
+n'evalue pas cette ligne, il evalue une memoire d'orthographe."*
+
+**Je ne durcis pas ma clause : je constate que sa lettre laisse passer ce que son motif ecarte**, et
+c'est une reserve, pas un motif. **Les dix autres sont irreprochables** - et `tasse` en particulier
+est bien deductible, parce que `tase` se lirait [taz] : la regle du `s` entre deux voyelles est au
+programme du CP et elle force le doublement. `gomme` et `bulle` n'ont pas cette excuse.
+
+**Ce que l'increment fait bien malgre tout** : l'enfant qui echoue finit par voir *"On ecrit :
+gomme"*. **Il n'est pas laisse sans reponse.** Ce qui manque est l'explication du doublement - et ce
+paquet n'a pas de champ pour la porter. C'est ce que je nomme, pas ce que je concois.
+
+**Ce qui leve la reserve** : deux mots remplaces par deux mots deductibles, ou un moyen de dire
+pourquoi on double. Le choix est a `camille-po`.
+
+#### Ce qui gagnerait sans la phrase manquante
+
+**C'est le paquet ou l'exposition est la pire des cinq** : un enfant qui lit *"Le mot est gomme."*
+**recopie**. Il ne gagne pas *"un peu"* sans la competence - il ne fait strictement rien de
+l'exercice.
+
+#### Ce dont je reste seule garde sur ce paquet
+
+- **`VOI-8` - NON GARDEE.** Qu'un adulte n'epelle pas. Le garde-fou attrape une epellation **ecrite**
+  dans le texte ; il n'attrape pas celle qui sort de la bouche. Sa phrase est bonne : *"Dites le mot
+  autant de fois qu'il le demande, mais ne l'epelez jamais."*
+- **La regularite reelle de chaque mot pour un CP.** C'est ce que je viens de faire, et c'est ce qui
+  a trouve `gomme` et `bulle`.
+
+#### Verdict s'il n'y avait pas `VOI-12`
+
+**VALIDE SOUS RESERVE**, la reserve etant `gomme` et `bulle`.
