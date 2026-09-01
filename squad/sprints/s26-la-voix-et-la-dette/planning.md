@@ -207,3 +207,81 @@ d'`ines-design`, sous les cinq points de `VOI-12` et la contrainte d'`ADR-0074`.
 (`s26-camille`) ecrit les cinq stories de contenu. Ce planning n'affecte donc plus les
 `S26-L1` a `S26-L5` a `marc-dev`/`lea-dev`/`sofia-sm` comme table ci-dessus le disait a
 l'ouverture : l'affectation reelle, au moment de cet addendum, est celle de ce paragraphe.
+
+---
+
+## Addendum du 2026-09-01 (sofia-sm) - ecart d'affectation journalise, etat des lots, un blocage a router sans attendre
+
+- **Auteure de l'addendum** : `sofia-sm`.
+- **Ce qu'il ne fait pas** : rien du texte ci-dessus n'est modifie ni retire.
+
+### L'ecart d'affectation, et son auteur
+
+**L'auteur de l'ecart est l'orchestrateur.** La table "Stories retenues" ci-dessus affecte
+`S26-L1`/`S26-L2` a `marc-dev`, `S26-L3`/`S26-L4` a `lea-dev`, `S26-L5` a `sofia-sm`. Dans les
+faits, **les cinq paquets de contenu ont ete affectes a `lea-dev` seule** (branche `s26-contenu`),
+par l'orchestrateur, sans relire cette table avant d'ecrire la consigne de lancement. C'est ecrit
+ici tel quel parce que l'attribution est une regle de ce depot, et parce que c'est la **seconde
+fois ce sprint** que l'orchestrateur ecrit a cote d'un fichier du depot au lieu de le lire - la
+premiere etant `CLAUDE.md` citant `DEC-0068` avant sa fusion (obstacle clos plus haut dans ce
+planning).
+
+**Ce que `lea-dev` a bien fait, et qui n'annule pas le defaut** : elle a suivi l'instruction la
+plus recente **et l'a signalee** plutot que de choisir en silence entre deux consignes
+contradictoires (la mienne dans ce planning, celle de l'orchestrateur en cours de sprint). Le
+resultat est bon - les cinq paquets existent, 75 items, +17 tests - mais le geste de
+l'orchestrateur ne l'est pas : **c'est precisement ce qu'un planning existe pour empecher**, et
+seule la discipline de `lea-dev` a rendu l'ecart visible au lieu de le laisser se dissoudre dans
+le silence.
+
+**Table d'affectation, mise en accord avec ce qui a reellement ete fait, a la date de cet
+addendum** :
+
+| Story | Contenu (items) | Champ / cablage technique |
+|---|---|---|
+| `S26-L1` a `S26-L5` | `lea-dev` (`s26-contenu`), **et non** `marc-dev`/`lea-dev`/`sofia-sm` comme ecrit a l'ouverture | - |
+| Champ `texteAVoixHaute`, amendement d'identite `ADR-0075`, clause 4 de traversee | - | `marc-dev` (`s26-marc`) |
+| Ecran d'`ines-design`, cinq points de `VOI-12`, contrainte `ADR-0074` | - | `lea-dev` (`s26-lea`, deja fusionnee dans `s26-marc`) |
+
+### Etat des lots a la date de cet addendum
+
+| Branche | Commit | Etat |
+|---|---|---|
+| `s26-marc` | `95aa0a3` | Champ cable jusqu'a l'ecran. **1047 tests, 0 echec.** Les deux pieges de `VOI-12` verifies sur le controleur reel, pas sur un double |
+| `s26-contenu` | `ab574e2` | Les cinq paquets, 75 items, **+17 tests**. Batie sur `s26-marc` a `b1e8883` - **anterieure au cablage** de `95aa0a3` |
+| `s26-lea` | `a4b2272` | Deja fusionnee dans `s26-marc` |
+| `round-two` | `ae9afd2` | Inchange par cet addendum : aucun de ces lots n'y est encore fusionne |
+
+**`s26-contenu` doit etre rebasee ou fusionnee sur `s26-marc` a `95aa0a3` avant d'entrer sur
+`round-two`** : c'est cette jonction, et non `b1e8883`, qui rend le bloc adulte visible dans le
+jar. `lea-dev` a joue le jar sur sa base et les cinq jeux se jouent, mais le bloc ne s'y affichait
+pas - attendu a ce commit-la, pas apres.
+
+**Trois garde-fous transverses mis a jour par `lea-dev` dans le meme commit** (populations
+declarees, `ADR-0051`/`ADR-0064`), chacun avec son motif et son compte reel dans le diff :
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`,
+`LesFormesAccepteesDUnPaquetDeSaisieServiSontLeBaremeReelTest`,
+`TexteAccentueExposeParLePortEntrantTest`.
+
+### Un blocage en cours d'arbitrage, porte au planning sans attendre sa resolution
+
+**Le crochet `VOI-10` de `marc-dev` rougirait par construction sur trois paquets sur cinq** : le
+mot que l'adulte prononce contient toujours la lettre ou le digraphe a trouver (`"chat"` contient
+`"ch"`), et la dictee enonce la forme de reference elle-meme. `lea-dev` l'a mesure par un script
+repliquant l'operateur du test, sans toucher ni au test ni au branchement.
+
+| Obstacle | Categorie | Route a | Statut |
+|---|---|---|---|
+| `VOI-10` rougirait par construction sur 3 paquets sur 5 - decision d'architecture sur le critere du test | technique, architecture | `theo-archi` (deja saisi par l'orchestrateur) | ouvert |
+| Le versant pedagogique - dire `"chat"` pour faire trouver `"ch"` est-il licite ? | pedagogie | `nadia-prof` | ouvert |
+
+**Enjeu, ecrit sans le trancher** : soit le critere du test `VOI-10` change, soit le sprint passe
+de quatre lignes a une. Je ne route qu'une seule fois chaque volet, sur son propre perimetre
+(amendement s19) : la question d'architecture a `theo-archi`, la question pedagogique a
+`nadia-prof`, et aucun des deux ne repond a la place de l'autre.
+
+### Ce qui reste, dans l'ordre
+
+La clause 4 de traversee de `marc-dev` (elle attend le contenu reel, donc la jonction
+`s26-contenu`/`s26-marc` ci-dessus), la porte technique de `yanis-qa`, la relecture du
+`relecteur-pedagogique`, puis la porte pedagogique de `nadia-prof`.
