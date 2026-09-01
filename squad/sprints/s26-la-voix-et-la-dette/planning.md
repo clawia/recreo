@@ -133,3 +133,77 @@ addendum) ; elles ne creent aucune decision nouvelle.
   (`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`) ou si la forme est neuve.
 - `sofia-sm` route la reponse de `theo-archi` sur le calibrage des` S26-VOI-*` des qu'elle arrive et
   ajuste l'affectation en consequence si une ligne bascule hors borne.
+
+---
+
+## Addendum du 2026-09-01 (sofia-sm) - la reponse de theo-archi ferme la borne haute, l'avis de faisabilite se cloture
+
+- **Auteure de l'addendum** : `sofia-sm`.
+- **Ce qu'il ne fait pas** : rien du texte ci-dessus n'est modifie ni retire. Cet addendum applique,
+  pour la premiere fois a un `planning.md`, la discipline de l'amendement s22 (`squad/README.md`
+  section 2) : l'avis de faisabilite de `theo-archi` etait le seul contenu obligatoire de ce
+  planning (README section 4) reste ouvert a l'ecriture du fichier ci-dessus, marque "en cours
+  d'instruction" ; il est rendu, et cette section le cloture sans toucher un mot de ce qui precede.
+
+### Ce que `theo-archi` a rendu (`s26-theo`, `d1afa5e`, fusionne dans `round-two` a `1d9a376`)
+
+- **La famille a voix est un champ d'item, pas une mecanique - `ADR-0075`.** La question posee par
+  `camille-po` (`DEC-0067`, B.5/B.7) est tranchee. **La borne haute de `nadia-prof` se realise : 5
+  paquets, 4 lignes sur 4, 35 / 41 = 85,4 %.** Sa branche mecanique (4 paquets, 3 lignes, 82,9 %) ne
+  se realise pas. Mesure par sonde sur quatre paquets reels, pas deduite.
+- **Ce n'est pas pour autant le cas d'`ADR-0073` a l'identique** : `ADR-0032` (l'identite d'un tour)
+  rougit sur trois paquets sur quatre, six collisions - `VOI-13` chasse de l'ecran de l'enfant la
+  matiere qui distinguait deux tours (l'illustration, vue ; le texte de l'adulte, entendu, jamais vu
+  par l'enfant). **`ADR-0075` amende `ADR-0032` sur son critere**, jamais sur sa propriete : ce
+  n'est pas le critere qui a derive, c'est le monde qu'il doit couvrir qui s'est elargi.
+- **`S26-DETTE-1` est fermee - `ADR-0074`.** La dette du rang 3 de `DEC-0067`, a son troisieme
+  sprint de routage, portee de la dette n. 4 de `CLAUDE.md`. Mordue sur l'arbre de production et
+  non sur une fixture : `M7` (l'element `<script>` de dix lignes) laissait le reacteur a 1 012
+  tests et 1 echec avant le remede, `9/0` apres, mutant retire et verifie. Le remede ferme le
+  porteur (tout JavaScript servi vit dans un fichier, jamais dans un gabarit) et non le
+  vocabulaire interdit, dont le perimetre ne portait pas jusqu'au gabarit.
+- **L'obstacle `P(bonne / presente)`, ouvert dans le tableau ci-dessus, change de statut sans que
+  la ligne d'origine soit reecrite** : `theo-archi` l'a chiffre lui-meme et le coupe du perimetre
+  de s26. Sa forme naive rougit 8 paquets deja valides sur 33, population utile vide la ou elle
+  compte - **quatrieme instance du meme defaut** (la famille du critere enumere / releve automatique
+  sans clause de non-vacuite, deja nommee au rang 4 de `DEC-0067`). **C'est un routage a
+  journaliser pour un prochain sprint, pas un abandon** : le seuil qui resterait a poser est un
+  jugement pedagogique, pas le sien.
+- **Verdict de `theo-archi`, cite mot pour mot** : *"le perimetre complet tient, et il ne tient que
+  parce que la dette en est sortie - payee au planning plutot que reportee une quatrieme fois."*
+- **Contrainte a porter aux stories de graphemes (`S26-VOI-3`, `S26-VOI-4`)** :
+  `cp-le-bon-son.yaml` ne doit pas etre touche par ce lot - un geste de forme y coute 15 items sur
+  les 115 de la borne de `nadia-prof`, pour rien, en reactivant sa clause 3 (rejeu des nasales).
+- **Sa mesure, distincte de la mienne et nommee comme telle** : `theo-archi` rapporte 1 022 tests,
+  0 echec, JDK 21.0.10 rapporte par la machine virtuelle des tests, sur son arbre fusionne avec
+  `round-two` a `7934d37`. **Ma propre mesure**, faite apres avoir fusionne `s26-theo` en plus de
+  `s26-camille`, `s26-ines` et `s26-nadia` deja dans `round-two`, sur le reacteur complet
+  (`bash outils/mvn-jdk21.sh -B clean verify`, sans `-pl`) : **1 022 tests** (80 domain + 13
+  application + 368 adapter-web + 410 adapter-content + 145 bootstrap unitaires + 6 bootstrap
+  integration), 0 echec, 0 erreur, BUILD SUCCESS. Les deux chiffres coincident ; ce n'est pas le
+  meme arbre (le mien porte trois branches de plus), et je ne recopie pas le sien comme preuve du
+  mien.
+
+### La borne, non conditionnelle
+
+La table "Avis de faisabilite" ci-dessus et sa borne conditionnelle sont desormais tranchees sur
+la premiere ligne de leurs deux scenarios : **champ d'item, 5 paquets, 4 lignes sur 4, plafond
+35 / 41 = 85,4 %.** Le scenario "mecanique" ne s'est pas realise et reste lisible ci-dessus pour
+memoire, jamais comme un etat actuel.
+
+### Un fait signale par `theo-archi`, pour la retro et non pour ce planning
+
+**`ADR-0066` a mordu deux fois ce sprint, le meme jour, sur deux auteurs differents** : sur
+`CLAUDE.md` citant `DEC-0068` avant sa fusion (defaut de l'orchestrateur, voir l'obstacle clos
+ci-dessus), et sur `theo-archi` lui-meme, citant `ADR-0074` avant d'ecrire le fichier qui le porte.
+Je ne tranche rien ici : je le garde pour qu'il n'atterrisse pas seulement dans une memoire
+d'agent, et je le porterai a `retro.md` a la cloture.
+
+### L'implementation, lancee
+
+`marc-dev` (`s26-marc`) prend le champ `texteAVoixHaute` sur les deux formes d'item, l'amendement
+d'identite d'`ADR-0075`, et la clause 4 de traversee. `lea-dev` (`s26-lea`) cable l'ecran
+d'`ines-design`, sous les cinq points de `VOI-12` et la contrainte d'`ADR-0074`. `camille-po`
+(`s26-camille`) ecrit les cinq stories de contenu. Ce planning n'affecte donc plus les
+`S26-VOI-1` a `S26-VOI-5` a `marc-dev`/`lea-dev`/`sofia-sm` comme table ci-dessus le disait a
+l'ouverture : l'affectation reelle, au moment de cet addendum, est celle de ce paragraphe.
