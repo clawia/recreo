@@ -34,6 +34,33 @@
 <div th:fragment="manche" class="ecran-de-jeu"
      th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste', data-focus=${focus}">
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <!-- ADR-0075 section 7, VOI-12 (nadia-prof, ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md,
+         section 13, son exigence bloquante) : le bloc ou vit tout ce qu'un adulte doit lire pour
+         cette manche - le stimulus qu'il prononce et la phrase qui lui dit ce qu'il ne doit pas
+         faire -, un seul objet visuel, jamais deux blocs separes (proposition-ines-s26-ecran-
+         voix.md, section 1). Premier bloc de la manche, avant .consigne : c'est un des canaux non
+         colores qui le distinguent (meme proposition, section 2.1), avec le cadre complet et
+         l'etiquette en toutes lettres portes par recreo.css.
+         texteAVoixHaute est le champ d'item que pose ADR-0075 (Optional<String> sur Question et
+         ReponseAEcrire) ; consigneAdulte porte la phrase d'interdit, invariante a l'interieur d'un
+         paquet et variable d'un paquet a l'autre comme la consigne de l'enfant (ADR-0075 section
+         7, deuxieme point) - donc un champ de modele a elle, jamais un libelle de gabarit.
+         Les deux th:if sont independants, sur le meme principe que texteSupport et illustration
+         ci-dessous (ADR-0020, jamais un paragraphe vide) : le lot qui pose le champ doit fournir
+         les deux ensemble, sous peine de rendre un bloc incomplet - VOI-12 point 1 ("en meme
+         temps") reste alors une garantie de contenu, pas une garantie de ce gabarit.
+         Ni ce controleur ni aucun paquet ne remplit encore ces deux attributs a ce commit : le
+         bloc est pret a etre servi le jour ou le lot qui pose texteAVoixHaute les cablera
+         (ADR-0075, "Pourquoi ces quatre clauses ne sont pas dans ce commit").
+         Rendu par la meme condition sur tous les etats de cet ecran - item, echec, revelation :
+         ce fragment ne le retire jamais lui-meme, a la difference de .message-jeu qui n'apparait
+         qu'avec une reponse (VOI-8 - l'adulte doit pouvoir redire le stimulus autant de fois que
+         l'enfant le demande ; nadia-prof, section 12.4, chemin de la revelation). -->
+    <div class="bloc-adulte" tabindex="-1" th:if="${texteAVoixHaute != null}">
+        <p class="etiquette-adulte">Adulte, à voix haute :</p>
+        <p class="stimulus-a-lire" th:text="${texteAVoixHaute}"></p>
+        <p class="consigne-adulte" th:if="${consigneAdulte != null}" th:text="${consigneAdulte}"></p>
+    </div>
     <p class="consigne" th:text="${consigne}"></p>
     <!-- ADR-0050 (S17-2) : le texte-support est un champ de contenu optionnel, rendu entre la
          consigne et l'enonce quand l'item en declare un, dans un style distinct des deux (COMP-5,
