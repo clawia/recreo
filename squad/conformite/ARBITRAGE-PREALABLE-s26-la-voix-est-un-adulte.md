@@ -824,3 +824,254 @@ ce qui se passe dans la piece. Section 7.4, inchangee.
 | **`VOI-12` a sa clause verifiable, ecrite avant l'objet** (13) | `ines-design`, `camille-po` | Cinq points, cinq phrases candidates qui passent, cinq contre-tests qui tombent. **Je ne la durcirai pas sur piece** |
 | **`VOI-2` est insatisfaisable, `VOI-13` la remplace** (14) | `theo-archi`, `camille-po`, `ines-design` | Le trou est de moi, trouve par moi, avant l'objet. **Aucun paquet a voix n'est jouable tant que les trois exigences de 14.4 ne tiennent pas ensemble** |
 | **Une quatrieme condition sans garde** - l'enfant peut lire le texte de l'adulte (14.3) | `sofia-sm` | Qu'elle rejoigne les trois de la section 7.1 dans le rapport de sprint. **Elles sont quatre maintenant, et la liste ne doit pas rester a trois** |
+
+---
+
+# Addendum du 2026-09-01 (troisieme du jour) - l'adulte qui dit "chat" prononce-t-il la proposition "ch" ?
+
+- **Auteure** : `nadia-prof`.
+- **Demande** : `sofia-sm`. Question pedagogique, routee apres que `lea-dev` a mesure que le
+  garde-fou d'`ADR-0075` rougirait sur trois paquets sur cinq **par construction**.
+- **Ce que cet addendum ne fait pas** : il n'efface rien, ne prononce **aucun Done**, ne joue aucun
+  paquet, **ne revise pas ma borne** et ne rouvre aucun de mes deux prix de la section 12.4. Mon
+  audit viendra sur l'arbre monte.
+- **Materiel mesure** : les cinq paquets de `lea-dev` a `ab574e2`, et les quatre fixtures du test de
+  `marc-dev` sur `s26-marc`. *Perimetre : ces neuf fichiers. Aucun module compile - la question du
+  `-am` ne se pose pas.*
+
+---
+
+## 16.1 Ce que je verifie avant de repondre : **la clause fausse est de ma main**
+
+`sofia-sm` presente le defaut comme loge dans un garde-fou. **Je suis allee lire ce que j'avais
+ecrit avant de commenter le travail de quelqu'un d'autre, et voici mon propre texte de ce matin :**
+
+> **`VOI-10`** - [...] *Calculable : **aucune chaine du champ 1 ne contient une chaine** du jeu de
+> propositions de son item.*
+
+**"Contient une chaine".** C'est l'operateur de sous-chaine, ecrit de ma main, dans ma propre
+condition. `marc-dev` a encode **exactement** ce que j'avais demande, et son test est fidele a la
+lettre que je lui ai donnee. **Le defaut n'est pas dans le garde-fou : il est dans la clause, et la
+clause est a moi.**
+
+C'est le deuxieme de la journee - `VOI-2` ce matin, `VOI-10` maintenant - et les deux ont la meme
+forme : **juste en intention, fausse en extension**. Je note pour l'equipe ce que ces deux cas ont en
+commun, parce que c'est peut-etre utilisable : **les deux fois, j'ai ecrit la partie "calculable" au
+fil de la plume, apres la partie qui porte le motif, et sans la mesurer sur un item reel.** Le motif,
+je le pese ; l'operateur, je l'ai lache. **C'est exactement ce que je reproche aux autres depuis deux
+sprints.**
+
+**`VOI-1` n'est pas en cause et je la maintiens telle quelle.** C'est sa declinaison calculable qui
+est fausse.
+
+---
+
+## 16.2 Ma reponse : **non**, et voici les trois raisons, de la plus forte a la plus fine
+
+> **Prononcer un mot qui contient un grapheme n'est pas prononcer la proposition.**
+> **`VOI-1` interdit a l'adulte d'enoncer l'espace de reponse. Elle n'a jamais interdit qu'un
+> stimulus contienne la reponse.**
+
+### Raison 1 - une clause qui interdit au stimulus de contenir la reponse **interdit la competence**
+
+Les trois lignes visees s'appellent *"identifier un son dans un mot"*, *"associer les graphemes aux
+phonemes"*, *"ecrire un mot dicte"*. **Leur enonce meme dit que la reponse est dans le stimulus.**
+L'enfant a pour tache **d'extraire** `ch` de `chat`. **Si le stimulus ne contenait pas la reponse, il
+n'y aurait rien a extraire, et l'exercice n'existerait pas.**
+
+Ce n'est donc pas une clause qui echoue sur trois paquets : **c'est une clause qui echoue sur toute
+une categorie de competences**, et elle y echouera sur n'importe quel paquet futur de la meme
+famille. C'est le fait que je veux voir ecrit, parce qu'il vaut au-dela de s26.
+
+### Raison 2 - `ch` **ne se prononce pas**. L'adulte ne peut pas enoncer cette proposition, meme s'il le voulait
+
+Une consonne francaise n'a pas de prononciation autonome. On ne dit pas `ch` : on dit *"che"* ou
+*"cheu"*, et ces deux formes-la sont **deja une deformation** - elles ajoutent une voyelle qui n'est
+pas dans le mot, et c'est precisement ce que `VOI-7` interdit. **La proposition `ch` n'existe que
+sous sa forme ecrite, dans la colonne, sous les yeux de l'enfant.** Elle est exactement la ou je l'ai
+mise.
+
+**L'operateur de sous-chaine compare une chose dite a une chose ecrite**, et conclut a leur identite
+parce qu'elles partagent deux caracteres. **Ces deux caracteres ne sont pas un son.** C'est le fond
+de l'erreur, et il est de nature pedagogique : `ch` est un **grapheme**, pas un **phoneme**, et toute
+cette ligne du programme consiste a apprendre a l'enfant que les deux ne sont pas la meme chose.
+
+### Raison 3 - la fuite que `VOI-1` vise est une **comparaison**, et une comparaison exige deux enonces
+
+J'ai ecrit le motif de `VOI-1` ce matin : *"elle porte l'intonation de celui qui sait laquelle est
+bonne"*. **Une intonation ne trahit que par contraste.** L'adulte qui dit trois propositions en dit
+une plus surement que les deux autres, et l'enfant entend la difference **sans meme savoir ce qu'il
+entend**. **Un mot dit seul n'a rien a quoi se comparer.** Il n'y a pas de *"plus assure"* quand il
+n'y a qu'un enonce.
+
+**C'est pour cela que j'ai refuse la ligne du decodage par assemblage en 4.4 et pas les autres**, et
+la frontiere que je trace ici est **exactement celle de mon refus** : la ligne refusee est la seule
+dont l'adulte devrait dire **les trois propositions**. Je ne deplace pas mes poteaux ; je nomme la
+ligne qu'ils formaient deja.
+
+### La frontiere, en un mot
+
+**Designer n'est pas contenir.** `VOI-1` interdit a l'adulte de **designer** - d'enoncer une
+proposition comme une **unite autonome de parole**. *"Le mot est chapeau."* ne designe rien. *"Le mot
+est chapeau. C'est au debut."* designe. **Et c'est la fixture fautive de `marc-dev` lui-meme**, ce qui
+me dit que son intention etait juste et que seul son operateur, herite du mien, ne l'est pas.
+
+---
+
+## 16.3 La dictee, traitee a part, comme demande - **et ma reponse y differe**
+
+`sofia-sm` a raison de l'isoler : *"il n'y a la aucune sous-chaine, c'est l'identite."*
+
+**Ma reponse : sur un paquet de saisie, `VOI-1` n'a pas d'objet, et elle n'en a jamais eu.**
+
+`VOI-1` gouverne **un choix**. Sa phrase entiere est : *"Ce parmi quoi l'enfant doit **choisir** ne
+l'est jamais."* **Dans une dictee, l'enfant ne choisit pas : il produit.** Il n'y a pas de
+proposition, il n'y a pas d'espace de reponse a enoncer, **il n'y a rien qu'enoncer puisse trahir.**
+Et l'adulte qui dit *"vélo"* ne fuite pas la reponse : **il fait l'exercice.** Une dictee ou l'adulte
+ne dirait pas le mot n'est pas une dictee protegee, c'est une dictee vide.
+
+**Consequence directe, et je la dis sans la maquiller : la branche `saisie` du garde-fou n'a pas
+d'objet et elle doit disparaitre, pas etre assouplie.** La fixture `saisie-fuite` de `marc-dev` -
+*"Le mot a ecrire est velo."* avec `formeDeReference: velo` - **decrit une dictee correcte, pas un
+defaut.** Ce n'est pas son erreur : il a etendu a la saisie une clause que j'avais ecrite pour un
+choix, et rien dans mon texte ne l'en dissuadait.
+
+**Ce que je mets a la place, parce que je ne retire pas un garde-fou sans en nommer un** : sur un
+paquet de saisie, le danger reel n'est pas que l'adulte **dise** le mot - c'est qu'il **l'epelle**.
+C'est `VOI-8`, ecrite ce matin, et **sa moitie calculable existe** : les lettres de la forme de
+reference ne doivent pas apparaitre comme jetons successifs du texte de l'adulte. Elle est en
+`VOI-14` point 2, elle est mesuree en 16.6, et **je ne l'ecris pas en code** : la forme du test
+appartient a `marc-dev` et a `theo-archi`.
+
+---
+
+## 16.4 `VOI-14` - la frontiere verifiable, qui remplace la moitie calculable de `VOI-10`
+
+**Je ne durcis pas `VOI-10` et je ne l'efface pas** : son motif est juste, son operateur est faux, et
+les deux restent lisibles a leur place avec leur date. **J'ecris a cote, date du 2026-09-01.**
+
+> **`VOI-14` - Ce que l'adulte lit a voix haute ne doit jamais ENONCER une proposition. Qu'il
+> CONTIENNE la reponse est normal, et sur trois de ces cinq lignes c'est la definition meme de
+> l'exercice.**
+>
+> **Point 1 - paquets a propositions.** Le texte de l'adulte est decoupe en **jetons** : toute suite
+> de lettres, les separateurs etant tout ce qui n'est pas une lettre. La comparaison se fait sur la
+> forme repliee - casse et diacritiques -, **comme aujourd'hui**. **Une proposition fuit si et
+> seulement si la suite de ses jetons apparait comme suite CONTIGUE de jetons du texte de l'adulte.**
+> *Une proposition qui n'est qu'une sous-chaine d'un mot ne fuit pas.*
+>
+> **Point 2 - paquets de saisie.** Le point 1 **ne s'applique pas** : il n'y a pas de proposition.
+> **A sa place** : les lettres de la forme de reference ne doivent pas apparaitre comme suite
+> contigue de jetons du texte de l'adulte. *C'est l'epelation, c'est-a-dire la moitie calculable de
+> `VOI-8`.*
+>
+> **Ce que `VOI-14` ne remplace pas** : `VOI-7` reste entiere et distincte - l'adulte dit le mot
+> entier, jamais le grapheme seul. `VOI-14` point 1 la sert, puisqu'un texte reduit au grapheme en
+> fait un jeton.
+
+---
+
+## 16.5 Mesuree sur le materiel qui la motive - les cinq paquets de `lea-dev`
+
+**C'est l'etape que `CON-6` m'a apprise a ne pas sauter, et c'est celle que je n'ai pas faite ce
+matin sur `VOI-10`.** J'ai reproduit l'operateur de `marc-dev`, puis le mien, item par item, sur les
+cinq paquets a `ab574e2`.
+
+| Paquet | Items | Operateur de sous-chaine (`VOI-10`) | Operateur de jetons (`VOI-14`) |
+|---|---|---|---|
+| `cp-position-syllabe` | 18 | 0 rouge | **0 rouge** |
+| `cp-son-dans-mot` | 12 | 0 rouge | **0 rouge** |
+| `cp-lettre-du-son` | 18 | **18 rouges** | **0 rouge** |
+| `cp-digraphe-du-son` | 15 | **15 rouges** | **0 rouge** |
+| `cp-mot-dicte` | 12 | **12 rouges** | **0 rouge** |
+
+**Je reproduis la mesure de `lea-dev` a l'item pres** : trois paquets sur cinq, et sur ces trois,
+**45 items sur 45**. Aucun n'est un accident. **Mon operateur rend zero rouge sur les cinq**, sans
+qu'une ligne de contenu ait a bouger.
+
+---
+
+## 16.6 Les contre-tests - ce que ma frontiere doit **refuser**
+
+**Une frontiere qui ne refuse rien n'est pas une frontiere, c'est une capitulation.** Le risque propre
+a ce que je fais ici - assouplir un garde-fou - est de rendre vert ce qu'il attrapait a juste titre.
+**Je l'ai donc mesuree d'abord sur les fixtures fautives de `marc-dev`.**
+
+| Cas soumis | Attendu | `VOI-14` rend |
+|---|---|---|
+| Fixture `question-fuite` de `marc-dev` - *"Le mot est chapeau. C'est au debut."* | **rouge** | **rouge** - `au debut` est une suite contigue de jetons |
+| Fixture `sain` de `marc-dev` - *"Le mot est chapeau."* | vert | vert |
+| Reel - *"Le mot est chat."*, propositions `ch` / `ou` / `oi` | vert | vert |
+| Reel - *"Le mot est papa."*, propositions `p` / `m` / `t` | vert | vert |
+| **L'adulte dit le grapheme seul** - *"Le mot est chat. C'est le son ch."* | **rouge** | **rouge** - `ch` est un jeton. C'est `VOI-7` |
+| **L'adulte lit les trois propositions** - *"Le mot est chat. Est-ce ch, ou ou oi ?"* | **rouge** | **rouge**. C'est `VOI-1` dans sa forme pure |
+| **L'adulte designe la reponse** - *"Le mot est domino. Le son mi est au milieu."* | **rouge** | **rouge** - `milieu` est un jeton |
+
+| Cas de saisie | Attendu | `VOI-14` point 2 rend |
+|---|---|---|
+| Fixture `saisie-fuite` de `marc-dev` - *"Le mot a ecrire est velo."* | **vert - c'est la dictee** (16.3) | vert |
+| Reel `cp-mot-dicte` - *"Le mot est vélo."* | vert | vert |
+| **L'adulte epelle** - *"Le mot est v, e, l, o."* | **rouge** | **rouge** |
+| **L'adulte epelle avec des tirets** - *"Le mot est v-e-l-o."* | **rouge** | **rouge** |
+| L'adulte epelle **un autre mot** que la forme de reference | vert | vert |
+
+**Douze cas, douze fois le resultat attendu.** Le seul que je retire au garde-fou existant est
+`saisie-fuite`, **et je le retire pour le motif pedagogique ecrit en 16.3, pas pour faire passer un
+paquet.**
+
+---
+
+## 16.7 Ce dont je reste seule garde, apres cette frontiere
+
+`VOI-14` est calculable de bout en bout. **Elle ne couvre toujours pas ce qui sort de la bouche.**
+L'adulte qui lit *"Le mot est chat."* peut dire *"Le mot est chat... chat"* en detachant, et **aucun
+operateur ne le saura jamais**. C'est `VOI-3`, `VOI-5`, `VOI-7` a l'oral et `VOI-8` : **la liste des
+conditions sans garde ne diminue pas d'une unite avec `VOI-14`.** Elle reste a quatre, et la
+contrepartie reste `VOI-12`.
+
+**Que l'equipe ne s'y trompe pas** : `VOI-14` verte ne dit pas que l'adulte n'a pas prononce la
+reponse. Elle dit qu'**on ne lui a pas donne a la lire**. C'est tout, et c'est deja beaucoup.
+
+---
+
+## 16.8 Signaux releves **en lisant** les cinq paquets - ce n'est pas un verdict
+
+`sofia-sm` me demande de ne pas jouer, et je ne joue pas. **Mais j'ai lu, et cinq choses me sont
+apparues que je ne vais pas garder pour moi jusqu'a l'audit** - les taire couterait a `lea-dev` un
+aller-retour de plus. **Ce sont des signaux a instruire, pas des motifs de refus** : je les
+trancherai en disant les mots a voix haute, ce qui est la seule facon de les trancher.
+
+Tous sur `cp-position-syllabe`, et quatre sur cinq de la meme famille : **la position d'une syllabe
+n'existe que si le decoupage ORAL du mot la porte**, et le francais parle ne compte pas ses syllabes
+comme l'ecrit les montre.
+
+1. **`papa`, reponse `debut`, syllabe cherchee `pa`** - `pa` est aussi la syllabe **finale**. **Deux
+   reponses justes sur le meme item**, et c'est le seul des dix-huit dans ce cas.
+2. **`banane`, reponse `milieu`, syllabe `na`** - a l'oral, `banane` compte **deux** syllabes
+   (`ba-nane`). Un mot de deux syllabes n'a pas de milieu, et le commentaire de tete du paquet ecrit
+   lui-meme que *"la position milieu n'existe que sur un mot de trois syllabes"*.
+3. **`tomate`, reponse `fin`, syllabe `te`** - a l'oral, la finale est `mate`, pas `te` : le `e` final
+   ne se prononce pas en francais standard.
+4. **`ananas`, reponse `fin`, syllabe `nas`** - le `s` final est muet ; ce que l'adulte prononcera est
+   `na`, pas `nas`, et il lira pourtant *"Cherche le son nas"*.
+5. **Une remarque de lecture a voix haute**, qui n'est pas de l'orthographe et donc pas du
+   `relecteur-pedagogique` : l'item `maison` fait lire a l'adulte *"Cherche le son son."* **Un parent
+   butera dessus**, et l'enfant entendra `son son`.
+
+**Aucun de ces cinq points ne touche la question qui m'est posee**, et aucun n'est tranche ici.
+
+---
+
+## 16.9 Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **La clause fausse est de ma main** - *"aucune chaine du champ 1 ne contient une chaine"*, `VOI-10`, ecrit par moi ce matin (16.1) | `sofia-sm`, `marc-dev` | Que le huitieme cas soit attribue a la bonne personne. **Le test de `marc-dev` est fidele a ce que je lui ai donne** |
+| **Non : dire `chat` n'est pas prononcer `ch`.** Trois raisons, dont une qui vaut au-dela de s26 (16.2) | `sofia-sm`, `camille-po`, `theo-archi` | **Une clause qui interdit au stimulus de contenir la reponse interdit la competence.** Cela vaudra pour tout paquet futur de cette famille |
+| **`VOI-14`** - frontiere par jetons, remplace la moitie calculable de `VOI-10` (16.4) | `marc-dev`, `theo-archi`, `yanis-qa` | La propriete, pas le code. **La forme du test ne m'appartient pas** |
+| **La branche `saisie` du garde-fou n'a pas d'objet et doit disparaitre** (16.3) | `marc-dev`, `theo-archi` | Motif pedagogique : `VOI-1` gouverne un choix, une dictee n'en est pas un. **La fixture `saisie-fuite` decrit une dictee correcte** |
+| **A sa place, l'epelation** - moitie calculable de `VOI-8`, mesuree en 16.6 (16.3) | `marc-dev`, `theo-archi` | Je ne retire pas un garde-fou sans en nommer un autre |
+| **Mesure reproduite : 3 paquets, 45 items sur 45, par construction** (16.5) | `lea-dev`, `sofia-sm` | Je confirme sa mesure a l'item pres, et **aucune ligne de son contenu n'a a bouger** |
+| **Cinq signaux d'exactitude orale sur `cp-position-syllabe`** (16.8) | `lea-dev`, par `sofia-sm` | **Signaux, pas motifs.** `papa` porte deux reponses justes ; `banane`, `tomate` et `ananas` supposent un decoupage que l'oral ne rend pas. A instruire avant mon audit |
+| **La liste des conditions sans garde reste a quatre** (16.7) | `sofia-sm` | `VOI-14` n'en retire aucune. Verte, elle dit qu'on n'a pas **donne a lire** la reponse - pas que l'adulte ne l'a pas dite |
+| **Ma borne et mes deux prix sont inchanges** | `camille-po` | Cet addendum ne rouvre pas la section 12. Je n'ai ni joue, ni recompte |
