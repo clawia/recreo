@@ -1301,3 +1301,205 @@ elles disent ce que j'ai verifie en jouant, pas ce qu'un test garde.**
 | **Lecture prudente sur la graphie : confirmee** (17.5) | `camille-po`, `lea-dev` | C'est la condition d'existence de la ligne, pas une precaution |
 | **Aucune ligne de matrice ne bouge : 31 / 41** (17.1) | `camille-po` | Le plafond de 85,4 pour cent n'est pas atteint, et il n'est pas perdu |
 | **Ma borne n'a pas ete le facteur limitant** - 75 items pour 115 (17.1) | `sofia-sm` | Je n'ai rien echantillonne et je n'ai pas eu a decliner |
+
+---
+
+# Addendum du 2026-09-01 (cinquieme) - **le refus est leve sur les cinq. Trois lignes se ferment, pas quatre**
+
+- **Auteure** : `nadia-prof`.
+- **Increment juge** : `round-two` a `a5147d8`. **Jar reconstruit et relance par moi**, JDK 21.0.10
+  rapporte par la machine virtuelle. **J'ai rejoue.**
+- **Perimetre** : le delta, et rien de plus large - **plus une chose que le delta m'a obligee a
+  regarder**, dite en 18.4. J'avais borne moi-meme ce que la levee demandait ; je m'y tiens et je ne
+  rejoue pas les 75 items.
+- **Ou vivent les verdicts** : dans les cinq `squad/conformite/FICHE-*.md`, bloc de validation,
+  **second verdict**. Les refus du matin n'y sont pas effaces.
+
+---
+
+## 18.1 Les cinq verdicts - **VALIDE sur les cinq**
+
+| Paquet | Verdict | Ce qui a ete leve |
+|---|---|---|
+| `bandit-manchot-position-syllabe-cp` | **VALIDE** | `VOI-12` |
+| `bandit-manchot-son-dans-mot-cp` | **VALIDE** | `VOI-12` |
+| `bandit-manchot-lettre-du-son-cp` | **VALIDE** | `VOI-12` **et son second motif** |
+| `bandit-manchot-digraphe-du-son-cp` | **VALIDE** | `VOI-12` |
+| `saisie-mot-dicte-cp` | **VALIDE, sans reserve** | `VOI-12` **et ma reserve non bloquante** |
+
+**Je leve parce que c'est verifie, pas parce que la levee arrange le sprint.** Et le fait que je
+tienne a dire en premier : **le texte de la cinquieme phrase est celui que j'avais moi-meme rendu
+candidat et mesure TENU en section 13.2.** Je ne peux pas trouver insuffisant ce que j'ai propose -
+ce serait deplacer mes poteaux, et je m'en suis interdit la possibilite par ecrit avant l'objet.
+
+### Ce que j'ai mesure, et ou
+
+| Ce que j'ai regarde | Mesure |
+|---|---|
+| **Point 1 - la cinquieme phrase sur chaque ecran d'adulte** | **cinq jeux x trois etats** (item, erreur, revelation) = **15 etats, 15 fois presente** |
+| **Point 5 - la phrase ne fuit pas** | 8 tirages par jeu, **0 ecart** hors le faux positif que je corrige en 18.3 |
+| **`VOI-13` corrigee** | **188 ecrans jouables** sur les cinq jeux, **0 ecart** |
+| **Non-regression** | **une partie complete de chacun des cinq**, menee jusqu'a l'ecran de fin |
+
+---
+
+## 18.2 Les trois points qu'on m'a demande de regarder
+
+### 18.2.1 La cinquieme phrase contre mes cinq points
+
+**Les cinq sont tenus.** Detail par point dans chaque fiche. Deux remarques qui ne tiennent pas dans
+un tableau :
+
+**Sur le point 3 et l'identite entre paquets.** `lea-dev` a devance l'objection : ce cinquieme
+interdit porte sur `VOI-13`, qui est **le meme interdit sur les cinq paquets**, donc la meme phrase
+est correcte. **C'est exactement ce que ma clause dit** - elle n'interdit l'identite que *"sur deux
+paquets dont les interdits different"*. **Je lis ma clause comme je l'ai ecrite**, ni plus large ni
+plus etroite.
+
+**Sur le point 4 et les deux phrases dans un meme champ.** `consigneAdulte` porte desormais deux
+phrases. **Ce n'est pas une entorse : c'est ce que j'ai demande.** La section 14.3 dit que le
+cinquieme interdit *"est soumis aux cinq points de 13.1 comme les quatre autres"* - donc **une phrase
+de plus**, chacune restant une phrase. **Douze mots au total, lus une fois en debut de partie.** Je
+n'en fais pas une reserve : en fabriquer une ici serait sa propre faute.
+
+### 18.2.2 *"le tout premier son"* - **c'est le mot juste, et il tient sur les 18**
+
+Le correctif est de moi, la formulation est de `lea-dev`, et **je la trouve meilleure que ce que
+j'aurais ecrit**. *"le tout premier son"* est la formule de classe au CP, et le **"tout"** ferme la
+porte a l'enfant qui comprendrait *"le premier que je remarque"*.
+
+**Verifie mot par mot, dit a voix haute : 18 sur 18.** La reponse est le premier phoneme de chaque
+mot ; aucun mot ne commence par une lettre muette, un groupe consonantique ou un digraphe, donc
+**aucun item ne devient ambigu**. Et sur les cinq items que j'avais nommes - `pomme`, `moto`,
+`table`, `tortue`, `lapin` -, l'ambiguite tombe entierement : un distracteur peut encore etre une
+lettre du mot, **il ne peut pas en etre le premier son**.
+
+**C'est present avant toute reponse**, dans la consigne **et** dans l'enonce, sans qu'aucune erreur
+soit necessaire. **C'etait tout le defaut.** Et l'enonce reste **unique et invariant** sur les 18,
+donc `VOI-13` n'y perd rien.
+
+*Sa voisine `cp-digraphe-du-son` garde *"qui fait ce son"* et **c'est correct** : un seul des trois
+digraphes est present dans chaque mot, la question y est bien posee. **Je ne demande pas un
+alignement de forme qui n'aurait aucun motif.***
+
+### 18.2.3 `brosse` et `trousse` - **le remede va la ou etait le defaut, et il ne rouvre rien**
+
+**Je verifie l'argument plutot que de l'accepter** : *"brose"* dirait `[broz]`, *"trouse"* dirait
+`[trouz]`, le `s` simple entre deux voyelles se lisant `[z]`. **Le doublement se deduit du son
+entendu**, meme regle que `tasse`, deja dans le paquet.
+
+**La difference avec ce que j'avais refuse est nette et c'est elle qui compte** : un enfant qui ecrit
+`brose` et **redit le mot peut trouver son erreur**. Un enfant qui ecrivait `gome` ne le pouvait
+jamais, et l'indice offert - *"demande a l'adulte de redire le mot"* - ne pouvait pas l'aider.
+
+**Joue** : `brose` refuse puis `brosse` accepte ; `trouse` refuse puis `trousse` accepte.
+
+**Ce que j'ai cherche en plus, puisqu'on me demandait si le remede rouvrait autre chose** : une
+syllabe chacun (`VOI-9` en autorise deux), pas de consonne finale muette, et **un groupe
+consonantique initial que nul autre mot du paquet ne porte**. Ce dernier est une marche de
+difficulte reelle - **mais elle se deduit du son**, donc elle reste dans la ligne. **Je le nomme et
+je ne le compte pas contre.**
+
+---
+
+## 18.3 **Quatrieme correction contre moi aujourd'hui** - l'operateur de mon point 5
+
+**En mesurant le point 5, j'ai trouve mon propre operateur faux.**
+
+Le texte de l'adulte contient desormais *"a l'enfant"*. **L'apostrophe produit un jeton `l`**, et `l`
+est une proposition de `cp-lettre-du-son` : **3 tirages sur 8** de ce jeu-la sont declares fuites par
+mon propre point 5.
+
+**Faux positif, et c'est la famille exacte que j'ai denoncee ce matin sur "chat" et "ch"** : *"l'"*
+est un **article elide**, pas la designation d'une lettre.
+
+> **Correction datee du 2026-09-01** - dans le decoupage en jetons de mon point 5 comme de `VOI-14`,
+> **l'article elide n'est pas un jeton de l'espace de reponse.**
+
+**`VOI-2`, `VOI-10`, `VOI-13`, et maintenant l'operateur du point 5 : quatre de mes clauses fausses
+en extension en une journee.** Toutes les quatre trouvees par la mesure, aucune par la relecture.
+**C'est la lecon que je retiens et que je rends a l'equipe** : je pese mes motifs, je lache mes
+operateurs, et un operateur non mesure sur un item reel est un defaut en attente.
+
+**Et le fait qui doit rester** : **aucun test n'a rougi**, parce que le point 5 de `VOI-12` n'est
+encode nulle part - le garde-fou d'`ADR-0075` lit `texteAVoixHaute`, pas `consigneAdulte`. **C'est
+moi seule qui pouvais trouver ce faux positif, comme c'est moi seule qui aurais pu manquer un vrai.**
+
+---
+
+## 18.4 **Trois lignes se ferment, pas quatre** - et la quatrieme bute sur ma barre du 2026-08-10
+
+**C'est la seule chose que j'ai regardee au-dela du delta, et je l'ai regardee parce que le delta la
+rendait actuelle : c'est maintenant que la ligne bougerait.**
+
+**Ma barre du 2026-08-10, clause 1, mot pour mot** : *"les **voyelles simples** et les consonnes
+simples sont couvertes, par ce jeu ou par un autre."*
+
+**`cp-lettre-du-son` sert `p`, `m`, `t`, `r`, `l`, `s` : six consonnes, aucune voyelle.** Verifie sur
+tout le contenu servi - **aucun paquet de CP n'a une voyelle simple pour bonne reponse.**
+
+| Clause de ma barre du 2026-08-10 | Etat au 2026-09-01 |
+|---|---|
+| 1 - voyelles simples **et** consonnes simples | **a moitie** : les consonnes oui, **les voyelles par rien** |
+| 2 - `ou`, `oi`, `ch` par un jeu qui emet un son | **remplie** par `cp-digraphe-du-son` |
+| 3 - les trois nasales gardent leurs proprietes | **remplie** : `git diff` vide sur `cp-le-bon-son.yaml` a `a5147d8` |
+| 4 - j'aurai joue | **remplie** |
+
+**Ce n'est un reproche a aucun des deux paquets.** Le Done porte sur l'increment, la matrice porte
+sur la couverture d'une competence - la distinction que j'ai tenue le 2026-08-10 sur `cp-le-bon-son`
+et que je tiens ici. **Les deux moities sont VALIDE ; la ligne n'est pas couverte.**
+
+**Je le dis maintenant plutot qu'apres, parce que me taire ferait passer la ligne a `couvert-valide`
+contre une barre qui n'est pas atteinte** - et ma barre existe precisement pour empecher cela :
+*"il vaut mieux que le trou soit visible dans la matrice que comble par des items qui ne verifient
+rien."*
+
+### Ce que le sprint ferme reellement
+
+| Ligne | Etat |
+|---|---|
+| Localiser une syllabe dans un mot | **`couvert-valide`** |
+| Identifier un son (phoneme) dans un mot | **`couvert-valide`** |
+| Ecrire de maniere autonome un mot simple | **`couvert-valide`** |
+| Associer les graphemes aux phonemes | **reste `en cours`** - il manque les voyelles simples |
+
+**31 / 41 devient 34 / 41, soit 82,9 pour cent** - et non 35 / 41. *Perimetre : `MATRICE-couverture.md`
+seul, denominateur 41 apres les quatre `non couvrable en l'etat`. Le compte final appartient a
+`camille-po`.*
+
+*Ce 82,9 pour cent n'a rien a voir avec celui que j'avais price en 12.4 pour la branche "mecanique" :
+`theo-archi` a tranche "champ d'item", ma borne est restee a cinq paquets, et les cinq ont ete
+livres. **Meme nombre, autre cause.** Je le nomme pour que personne ne rapproche les deux.*
+
+**Et ce que le domaine gagne, parce que c'est vrai aussi** : *"Langage oral et conscience
+phonologique"* passe de **1 sur 3 a 3 sur 3** et se ferme entierement. **Un paquet de voyelles simples
+ferme la derniere ligne**, et je le dis d'avance pour que ce ne soit pas decouvert au sprint suivant.
+
+---
+
+## 18.5 Ce que le vert ne prouve toujours pas
+
+**1 090 tests verts, et la liste des conditions que personne ne tient ne diminue pas d'une unite :**
+`VOI-3`, `VOI-5`, `VOI-8` et la moitie non calculable de `VOI-13`.
+
+> **La cinquieme phrase ne fait pas respecter `VOI-13` : elle la dit.** C'etait exactement la
+> contrepartie que je demandais - le produit n'a que ce levier-la - **et il ne faut pas la lire comme
+> une garantie.** Un adulte qui laisse l'enfant lire la ligne fait echouer les cinq jeux, et rien ne
+> le saura.
+
+J'y ajoute **le point 2 et la moitie du point 3 de `VOI-12`, et desormais son point 5**, qu'aucun
+automate ne lit.
+
+---
+
+## 18.6 Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **VALIDE sur les cinq. Done pedagogique prononce** (18.1) | `camille-po` | Les cinq fiches portent le verdict, le refus du matin n'est pas efface |
+| **Trois lignes a `couvert-valide`, pas quatre** (18.4) | `camille-po` | **34 / 41.** La ligne des graphemes reste `en cours` : clause 1 de ma barre du 2026-08-10, les voyelles simples ne sont servies par rien |
+| **Un paquet de voyelles simples ferme la derniere ligne** (18.4) | `camille-po` | Dit d'avance. Clauses 2, 3 et 4 sont deja remplies |
+| **Quatrieme clause a moi fausse en extension** - l'article elide (18.3) | `marc-dev`, `theo-archi`, `yanis-qa` | La propriete, pas le code. **Et le point 5 de `VOI-12` n'est encode nulle part** : que nul ne le croie couvert |
+| **La lecon que je retiens contre moi** (18.3) | `sofia-sm` | Je pese mes motifs et je lache mes operateurs. **Quatre en un jour, toutes trouvees par la mesure, aucune par la relecture** |
+| **La liste des conditions sans garde reste a quatre** (18.5) | `sofia-sm` | La cinquieme phrase **dit** `VOI-13`, elle ne la fait pas respecter |
+| **Le correctif de `lea-dev` est meilleur que ma propre formulation** sur *"le tout premier son"* (18.2.2) | `lea-dev`, par `sofia-sm` | Je le dis parce que c'est vrai et parce qu'une porte qui ne sait que refuser n'apprend rien a personne |
