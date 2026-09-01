@@ -282,3 +282,66 @@ est *"reecrire les items dont une seule phrase decide, pour qu'aucune phrase seu
 - Il **n'est pas fonde sur la CI** ni sur le vert d'`ADR-0072`.
 - **Sur quelles proprietes je reste la seule garde** : inchange par rapport au premier passage -
   `NAR-6` integralement, `NAR-4`, `NAR-7`, `NAR-8`, et desormais `NAR-11` pour les paquets suivants.
+
+---
+
+## Constat du 2026-09-01 (s25) - le raccourci de position sur ce paquet. **Le Done du 2026-08-31 n'est ni retire ni conteste.**
+
+**Ce bloc n'est pas un verdict.** Il n'annule rien, ne suspend rien, ne remet pas ce jeu dans ma
+porte.
+
+### Le fait, refait par moi
+
+`marc-dev` et `yanis-qa` me routent une mesure prise sur ce paquet avec l'instrument qui a fait
+refuser `cm1-substituts`. **Je l'ai refaite, exhaustivement sur les vingt items** : *pour chaque
+item, la position, dans le texte support, de la proposition qui est la bonne reponse, parmi les trois
+propositions telles qu'elles y figurent.*
+
+> **La bonne reponse est la premiere proposition citee sur 9 items sur 20, soit 45,0 pour cent.**
+> **La strategie "la reponse est dans la premiere phrase" y gagne decisivement 9 fois sur 20, soit
+> 45,0 pour cent.** Hasard a trois propositions : 33,3 pour cent.
+
+**Je reproduis leur chiffre a la decimale.** `marc-dev` ecrit : *"je prefere le dire que le garder."*
+**Il a eu raison, et c'est la conduite qui rend cette porte utile.**
+
+### Ce que je n'en fais pas, et pourquoi
+
+**Je ne retire pas le Done.** Trois raisons, et chacune suffirait :
+
+1. **`NAR-11` dit en toutes lettres qu'elle ne s'applique pas a ce paquet** - *"Elle ne s'applique
+   pas a `NAR` de s24. Elle vaut pour les paquets a texte support suivants."* Je l'ai ecrite ainsi le
+   2026-08-31, avant de connaitre ce chiffre.
+2. **Aucune condition `NAR-1` a `NAR-10` ne porte cette propriete.**
+3. **Un verdict prononce ne se reecrit pas.**
+
+**Revenir dessus serait exactement le deplacement de poteau que j'ai refuse trois fois ce sprint** -
+sur `NAR` a s24, sur la reserve d'indice des figures, et sur le cinquieme item de composition de la
+monnaie.
+
+### Ce que j'en fais : je nomme le mecanisme, faute de pouvoir poser un nombre
+
+**On va me demander pourquoi 94,8 pour cent fait refuser et 45,0 pour cent non. Voici la reponse, et
+ce n'est pas un seuil.**
+
+> **Un raccourci de surface devient disqualifiant quand il est *renforce* : quand il gagne assez
+> souvent pour que l'enfant ne soit jamais corrige.** A 94,8 pour cent, l'enfant qui prend le
+> raccourci a presque toujours raison - **rien dans le jeu ne lui apprend qu'il a tort**, et il en
+> sort conforte. **A 45,0 pour cent, il a tort plus d'une fois sur deux** : le jeu le contredit plus
+> souvent qu'il ne le confirme, et la strategie ne survit pas a la partie.
+
+**Je maintiens ce que `NAR-11` disait : je ne pose aucun seuil chiffre, parce que je n'ai pas de
+mesure qui en fonde un.** Ce que je peux nommer, c'est le mecanisme - le renforcement - et **la
+majorite en est la charniere naturelle**, non parce que cinquante est un joli nombre, mais parce que
+c'est le point ou une strategie cesse d'etre punie plus qu'elle n'est recompensee.
+
+**45,0 pour cent reste au-dessus du hasard de douze points, et je ne le trouve pas satisfaisant.**
+C'est une reserve, pas un motif.
+
+### Ce que je route
+
+- **A `camille-po`, comme du backlog** : une reprise de ce paquet gagnerait a ramener la position de
+  la reponse au hasard, comme `cm1-substituts` vient de le faire. **Ce n'est pas urgent et cela ne
+  bloque rien.**
+- **A `theo-archi` et `yanis-qa`** : le garde-fou qui existe couvre la strategie *"une phrase
+  suffit"*. Celui que `cm1-substituts` a fait naitre couvre *"un rang suffit"*. **Ce paquet-ci n'est
+  garde par ni l'un ni l'autre**, et il est le seul autre paquet a texte support du CP.

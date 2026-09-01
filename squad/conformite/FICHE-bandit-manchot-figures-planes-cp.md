@@ -445,3 +445,90 @@ quatre il ne tient pas**, comme `sofia-sm` l'a fait pour son propre angle mort.
   reportee dans le paquet comme n'etant pas un precedent. **Et sa verification que le diff des douze
   dessins ne touche aucune ligne de geometrie confirme ma propre passe** - deux lectures
   independantes, meme resultat.
+
+---
+
+## Section 15 - 2026-09-01, arbre de cloture `834c6bc` : **la reserve de la section 10 est levee**, et `yanis-qa` me corrige deux fois
+
+**Le verdict du 2026-08-31 reste VALIDE SOUS RESERVE et n'est pas rejoue. Ce que je prononce ici est
+la levee de sa reserve**, sur l'arbre que la cloture me presente - ce que j'avais annonce vouloir
+faire plutot que de me prononcer sur une branche non fusionnee.
+
+### 15.1 La reserve est levee
+
+*Methode : la meme qu'a la section 10, sur `834c6bc`. Perimetre : les douze items du paquet.*
+
+| Mesure | Etat que j'avais valide | **Cloture** |
+|---|---|---|
+| l'indice designe la reponse | 8 / 12 | **0 / 12** |
+| (a) chaque indice porte au moins deux reponses | non | **oui** |
+| (b) indice fonction du jeu de propositions | non | **oui**, sur les quatre jeux |
+| (b') chaque reponse portee par au moins deux indices | non | **oui**, sur les quatre reponses |
+
+**Verifie en jouant** : un rectangle incline se presente avec l'indice *"Regarde si la figure a des
+coins."* - l'indice des coins n'accompagne plus les seuls cercles, et il ne designe plus rien.
+
+**La reserve de la section 10 est levee. Le Done du 2026-08-31 tient sans reserve residuelle.**
+
+### 15.2 `yanis-qa` me corrige, et il a raison deux fois
+
+**Premiere correction - ma clause (b) n'est pas vide sur `cp-monnaie`, elle y est rouge.** J'avais
+ecrit en section 14.4 qu'elle y etait *"vraie sans rien contraindre"*. **C'est faux.** Le paquet
+compte 11 jeux de propositions pour 12 items, donc **un jeu partage par deux items** - et ce jeu est
+servi par **deux reponses sur trois**. La seconde moitie de (b), *"ce jeu est servi par toutes ses
+reponses"*, y **echoue**.
+
+*Verifie par moi sur `834c6bc`. Et il note justement que mon tableau 14.1 portait deja un "non" a cet
+endroit : c'est en reformulant la clause que j'ai transforme un rouge en vide.* **Une reformulation
+qui change un verdict sans que personne mesure a nouveau est exactement ce que je sanctionne
+ailleurs.**
+
+**Seconde correction - (b') telle que je l'ai ecrite est insatisfaisable sur un paquet a reponses
+uniques**, 10 reponses sur 11 n'y etant servies qu'une fois. Il propose de la **restreindre aux
+reponses servies au moins deux fois**. J'ai mesure sa restriction :
+
+| (b') restreinte | Resultat |
+|---|---|
+| `cp-figures-planes`, cloture | **verte**, sur 4 reponses concernees |
+| `cp-monnaie`, cloture | **verte**, sur 1 reponse concernee |
+| `cp-figures-planes`, etat fautif | **rouge sur les quatre reponses** |
+
+**Elle ne denature pas ma clause : elle la rend applicable sans rien lui retirer.** Une reponse servie
+une seule fois ne peut porter qu'un indice - lui en demander deux n'est pas une exigence, c'est une
+impossibilite, et une clause impossible ne garde rien. **J'adopte la restriction telle qu'il l'ecrit.**
+
+**Et un fait qui compte pour l'encodage** : sur l'etat fautif, **(b') est rouge sur les quatre
+reponses quand la seconde moitie de (b) est verte sur les quatre jeux**. **C'est donc (b') qui
+attrape le defaut, et non (b).** J'avais ecrit hier que (b) etait *"la borne principale"* : **c'est
+inexact, et je le corrige.**
+
+### 15.3 Un troisieme defaut, celui-la de mon propre instrument, et personne ne me l'a signale
+
+**Ma mesure de designation ne veut rien dire sur un paquet dont les distracteurs ne sont pas
+eux-memes des reponses ailleurs dans le paquet.**
+
+Elle compte les items dont une seule proposition appartient a l'ensemble des reponses que porte leur
+indice. **Sur `cp-figures-planes` elle a un sens** : les quatre formes sont a la fois reponses et
+distracteurs, donc l'ensemble de reference est le meme. **Sur `cp-monnaie` elle n'en a aucun** : les
+distracteurs sont des sommes qui ne sont la bonne reponse d'aucun item, l'intersection se reduit
+mecaniquement a la bonne reponse elle-meme, et la mesure monte quand le paquet s'ameliore.
+
+**Le fait qui le prouve : elle passe de 8 sur 12 a 10 sur 12 sur `cp-monnaie` entre l'etat que j'ai
+valide et la cloture** - alors que le plafond y tombe de 7 items sur 12 a 5, et que les indices y ont
+ete refaits. **Un chiffre qui empire quand le paquet s'ameliore ne mesure pas le paquet.**
+
+**Consequence sur ce que j'ai ecrit** : le *"8 sur 12"* que j'ai consigne pour `cp-monnaie` le
+2026-08-31, en le presentant comme *"la meme que sur les figures"*, **ne se compare pas a celui des
+figures**. Je l'avais verse au nom de l'honnetete ; il etait sans valeur, et le dire est la meme
+honnetete. **La mesure de designation ne vaut que pour les paquets a pool ferme de propositions**, et
+je la borne ainsi desormais.
+
+### 15.4 Le risque "vert et vide", precise
+
+`yanis-qa` note que mon risque vise un paquet **a venir**, a jeux tous distincts. **C'est exact et je
+le precise** : sur les deux paquets servis aujourd'hui, (b) et (b') restreinte **mordent** - (b) est
+meme rouge sur `cp-monnaie`. **Le risque n'est pas realise ; il reste reel** pour un paquet dont
+aucun jeu de propositions ne se repeterait, et ou seules (a), (c) et mon jugement (d) resteraient.
+
+**Ce que je demande a l'encodage, et c'est inchange** : les quatre clauses, ou la Javadoc dit
+laquelle le test ne tient pas.

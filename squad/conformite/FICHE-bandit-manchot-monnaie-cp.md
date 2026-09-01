@@ -231,3 +231,60 @@ non pour demander quoi que ce soit.
 **Cela ne rouvre pas le verdict** : `CON-6` est non retroactive et `sofia-sm` a reecrit ses indices
 d'elle-meme. **Je le consigne pour que la mesure existe sur l'etat valide**, et pour que personne ne
 croie ce paquet couvert par une regle qui, sur sa forme, ne tient presque rien.
+
+---
+
+## Section E - 2026-09-01, arbre de cloture `834c6bc` : **la reserve 1 est levee**, la reserve 2 tient
+
+**Le verdict du 2026-08-31 reste VALIDE SOUS RESERVE et n'est pas rejoue.**
+
+### E.1 Reserve 1 - le vocabulaire de l'indice : **levee**
+
+Ma reserve visait *"Lis le nombre grave sur chaque objet, puis ajoute."* - **"grave"** hors du
+vocabulaire du CP, **"objet"** abstrait pour une piece.
+
+**Les trois indices de la cloture ne portent plus ni l'un ni l'autre** :
+
+- *"Commence par le plus grand nombre, puis ajoute les autres."* (5 items)
+- *"Ajoute ce qui est a droite du trait pour retrouver le nombre de gauche."* (5 items)
+- *"Tout est pareil ici. Ajoute plusieurs fois le meme nombre."* (2 items)
+
+**Et le premier fait ce que je n'avais pas demande : il donne une methode de calcul vraie et
+reutilisable.** Commencer par le plus grand nombre est une strategie d'addition qui sert au-dela de
+ce jeu. **L'ancien indice reformulait la consigne ; celui-ci apprend quelque chose.** C'est
+exactement ma clause `(d)` de `CON-6`, celle qu'aucun automate ne verra, et elle est tenue.
+
+**Verifie en jouant** : deux billets de cinq euros, indice *"Tout est pareil ici. Ajoute plusieurs
+fois le meme nombre."* - juste, utile, et il ne donne pas la somme.
+
+**Reserve 1 levee.**
+
+### E.2 Reserve 2 - le nombre de termes : **elle tient, et c'est voulu**
+
+L'item a *"10 + 5 + 2 + 2 + 1"* est inchange, et **j'ai confirme le 2026-08-31 qu'il ne devait pas
+l'etre** : `MON-6` est ecrite non retroactive. La reserve reste attachee au paquet **comme une
+information pour la suite**, pas comme une demande.
+
+### E.3 Ce que `CON-6` donne sur ce paquet a la cloture, et ce que je corrige de ma propre mesure
+
+| Clause | Etat que j'ai valide | Cloture |
+|---|---|---|
+| (a) chaque indice porte au moins deux reponses | verte | verte |
+| (b) le jeu de propositions partage est servi par toutes ses reponses | **rouge** | **rouge** - deux reponses sur trois |
+| (b') restreinte aux reponses servies au moins deux fois | verte | verte |
+| (c) indice le plus repandu | **7 / 12** | **5 / 12** |
+
+**Deux choses que je corrige, et les deux sont de moi.**
+
+- **J'avais ecrit que (b) etait "vide" sur ce paquet. Elle y est rouge**, sur son unique jeu partage.
+  `yanis-qa` l'a vu, je l'ai remesure, il a raison. *Ce rouge ne rouvre rien : `CON-6` est non
+  retroactive.*
+- **Ma mesure de designation ne vaut rien sur ce paquet**, et le *"8 sur 12"* que j'ai consigne ici
+  le 2026-08-31 en le disant comparable a celui des figures ne l'etait pas. Elle monte a **10 sur
+  12** a la cloture, **alors que le paquet s'ameliore sur toutes les autres mesures**. Un chiffre qui
+  empire quand le paquet s'ameliore ne mesure pas le paquet. Le detail est en section 15.3 de
+  `FICHE-bandit-manchot-figures-planes-cp.md`.
+
+**Ce que cela laisse** : sur un paquet de cette forme - reponses uniques, distracteurs hors du pool
+des reponses - **la seule borne calculable qui morde vraiment est le plafond**, et il est passe de 7
+a 5 sur 12 sans que je l'aie demande. **Le reste est mon jugement, et il est favorable.**
