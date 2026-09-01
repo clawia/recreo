@@ -68,8 +68,14 @@ sur un critere binaire : la forme est employee, ou elle ne l'est pas.
 | Forme | Ce que tu verifies |
 |---|---|
 | **1 - un agent de la squad** | le nom de l'agent **et** le fichier et la section ou il l'a ecrit. Un renvoi qui ne resout pas est un defaut, au meme titre qu'un chiffre sans methode |
-| **2 - une mesure faite par l'auteur** | la commande, son perimetre nomme, sa date. Toute mesure partielle du reacteur porte `-am` |
+| **2 - l'utilisatrice** | la mention `de l'utilisatrice`, **ses mots cites entre guillemets**, et la date |
 | **3 - un enonce recu hors des neuf agents** | la formule fixe `recu de MASTER, sans source dans le depot`, l'enonce cite **mot pour mot et jamais resume**, et la date de reception |
+
+**Attention a une divergence connue** : `squad/README.md` section 2 bis transcrit ces trois formes
+et **se trompe sur la forme 2**, ou il decrit une exigence de mesure au lieu de l'attribution a
+l'utilisatrice. `DEC-0062` section 3.1 fait foi. L'exigence de mesure existe, mais elle est une autre
+regle - elle vaut pour tout chiffre, quelle que soit sa forme d'attribution : la commande, son
+perimetre nomme, sa date, et `-am` sur toute mesure partielle du reacteur.
 
 **Les deux bornes de la forme 3**, qui sont ce que tu verifies le plus souvent :
 
