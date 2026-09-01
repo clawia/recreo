@@ -302,3 +302,25 @@ de test restent la source primaire de ce que `yanis-qa` a mesure.
 | `ADR-0074` | Tout JavaScript servi vit dans un fichier | Architecture | Accepte, amende |
 | `ADR-0075` | La famille a voix est un champ d'item | Architecture | Accepte |
 | `ADR-0076` | `VOI-14` remplace l'operateur de `VOI-10` | Architecture | Accepte |
+
+---
+
+## Addendum du 2026-09-01 (sofia-sm, second passage) - `DEC-0069` de `camille-po` fait entrer, l'obstacle du rang de s27 se cloture
+
+`camille-po` a rendu pendant l'ecriture de cet addendum (`s26-camille`, `dc0f6e7`, apres le commit
+stale `5c95976` deja signale plus haut) : `DEC-0069`, qui recompte le plafond a **34/41 = 82,9 %**
+(et non 85,4 % comme annonce a l'ouverture), pour le motif pedagogique deja cite - la ligne des
+graphemes reste `en cours`. Elle propose le rang de s27 : un paquet de voyelles simples.
+
+Fait entrer par un patch cible de la seule difference reelle entre les deux commits de sa branche
+(le nouveau `DEC-0069`, `DEC-index.md`, `docs/backlog/backlog.md`, `MATRICE-couverture.md`), la
+fusion complete de `s26-camille` restant refusee pour le meme motif que ci-dessus. Trois conflits
+resolus dans `MATRICE-couverture.md`, en faveur du contenu de `camille-po` a jour du verdict
+`VALIDE` de `nadia-prof` - le contenu de `round-two` y datait d'avant ce verdict.
+
+**L'obstacle "rang de s27 non instruit" (tableau ci-dessus) est donc clos.** `DEC-0069` rejoint la
+table "Decisions prises" ci-dessus.
+
+| Reference | Titre | Type | Statut |
+|---|---|---|---|
+| `DEC-0069` | Etat du produit a la cloture de s26 : trois lignes se ferment, rang de s27 | Produit | Proposee |

@@ -30,6 +30,7 @@ technique du JavaScript porteur non file, ouverte depuis trois sprints, est ferm
 | `ADR-0074` | Tout JavaScript servi vit dans un fichier | Architecture | Accepte, amende |
 | `ADR-0075` | La famille a voix est un champ d'item | Architecture | Accepte |
 | `ADR-0076` | `VOI-14` remplace l'operateur de `VOI-10` | Architecture | Accepte |
+| `DEC-0069` | Etat du produit a la cloture de s26 : trois lignes fermees, rang de s27 | Produit | Proposee |
 
 ## Etat des deux Done
 
@@ -46,9 +47,10 @@ technique du JavaScript porteur non file, ouverte depuis trois sprints, est ferm
 ## Ce qui reste ouvert - a ne pas annoncer ferme
 
 - **La ligne "Associer les graphemes aux phonemes" ne passe pas a `couvert-valide`** : trois
-  lignes se ferment sur quatre. `cp-lettre-du-son` sert six consonnes et aucune voyelle simple ;
-  la barre de `nadia-prof` exige les deux. Un paquet de voyelles simples la fermerait a s27 - rang
-  non encore instruit par `camille-po` a cette cloture.
+  lignes se ferment sur quatre, **34/41 = 82,9 %** et non 85,4 % comme annonce a l'ouverture.
+  `cp-lettre-du-son` sert six consonnes et aucune voyelle simple ; la barre de `nadia-prof` exige
+  les deux. **`DEC-0069` (`camille-po`, Proposee) instruit le rang de s27** : un paquet de
+  voyelles simples fermerait la ligne.
 - **`P(bonne / presente)` reste non garde par `adapter-content`**, coupe du perimetre de s26 par
   `theo-archi` lui-meme (forme naive rougirait 8 paquets deja valides sur 33, population utile
   vide) : a instruire, pas un abandon.
