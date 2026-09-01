@@ -1,0 +1,8 @@
+schema: 1
+jeux:
+  - id: jeu-illustre
+    titre: "Jeu illustre"
+    consigne: "Regarde bien le dessin"
+    mecanique: bandit-manchot
+    paquet: paquet-illustre
+    nombreDeManches: 2

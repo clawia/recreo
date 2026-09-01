@@ -20,6 +20,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * S24-FRA (DEC-0059 section 2) et l'arbitrage prealable de nadia-prof du 2026-08-30
@@ -76,6 +77,32 @@ class PaquetCm1FractionsTest {
      * double) et les autres blancs separent deux mots. {@code \s} de Java ne voit pas l'insecable.
      */
     private static final Pattern BLANCS = Pattern.compile("[\\s\\u00A0]+");
+
+    /**
+     * <b>S25-FRA-1, et la forme de cette liste n'est pas indifferente.</b> {@code nadia-prof} a
+     * constate, apres avoir prononce le Done et sans le retirer, que l'item de forme (c) a trois
+     * parts employait <i>courir</i> la ou ses cinq freres emploient un verbe dont le complement
+     * d'objet direct est naturellement une part : <i>"on colorie une part, on coupe une part. On ne
+     * court pas une part."</i> Et <i>"est courue"</i> est un participe passif qu'un enfant de neuf
+     * ans ne rencontre nulle part ailleurs.
+     *
+     * <p><b>Une liste d'autorisation, jamais une liste de refus</b> (ADR-0039) : une liste qui
+     * nommerait <i>courir</i> serait verte par defaut sur le prochain verbe aussi mal choisi, et
+     * c'est exactement la forme que ce depot a deja sanctionnee. Ici, le mode de defaillance d'un
+     * verbe neuf est un <b>rouge</b>, donc un diff relu.
+     *
+     * <p><b>Ce que cette clause ne prouve pas, et {@code nadia-prof} l'ecrit elle-meme</b> :
+     * <i>"aucun automate ne verra jamais qu'on ne court pas une part"</i>. Elle ne juge aucun verbe.
+     * Elle empeche seulement qu'un verbe entre dans ce paquet sans passer par elle - ce que
+     * {@code FRA-12} demande sous la forme <i>"verification : item par item, par moi"</i>. Les cinq
+     * premiers sont ceux qu'elle nomme dans sa fiche ; le sixieme est celui que ce lot propose, et
+     * il attend son verdict comme n'importe quel contenu neuf.
+     */
+    private static final List<String> VERBES_DE_PRELEVEMENT_AUTORISES = List.of(
+            "colorie", "prend", "garde", "peint", "coupe", "marque");
+
+    /** Le patron des items de mise en situation : "On en <verbe> <n>." */
+    private static final String DEBUT_DU_PRELEVEMENT = "On en ";
 
     /** Le nom du numerateur, de un a dix - FRA-1 borne le denominateur a dix. */
     private static final List<String> NUMERATEUR_EN_LETTRES = List.of(
@@ -476,6 +503,67 @@ class PaquetCm1FractionsTest {
                     famillesParDistracteur));
         }
         return items;
+    }
+
+    /**
+     * S25-FRA-1, critere FRA-13 : sur un item de mise en situation, le verbe qui designe le
+     * prelevement est l'un de ceux que {@code nadia-prof} a nommes. Voir
+     * {@link #VERBES_DE_PRELEVEMENT_AUTORISES} pour ce que cette clause tient et ce qu'elle ne
+     * tient pas.
+     *
+     * <p>FRA-14, non-regression : le compte d'items ne bouge pas d'une unite - cette correction
+     * n'ajoute ni ne retire rien, et {@code lePaquetPorteAuMoinsVingtItems} le tient deja. FRA-15 :
+     * les conditions FRA-1 a FRA-11 sont rejouees par les autres tests de ce fichier, sur le paquet
+     * entier et jamais sur le diff.</p>
+     */
+    @Test
+    void chaqueItemDeMiseEnSituationEmploieUnVerbeQuAdmetUnePart() {
+        verifierLesVerbesDePrelevement(VERBES_DE_PRELEVEMENT_AUTORISES);
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la liste mutee, sur le corpus reel. C'est la forme exacte que prendra
+     * le defaut le jour ou un item de mise en situation neuf emploiera un verbe que personne n'a
+     * relu - celle qu'a prise <i>courir</i>, que soixante-dix parties ont fallu pour voir sortir.
+     */
+    @Test
+    void unVerbeDePrelevementHorsDeLaListeFaitEchouerLeGardeFou() {
+        List<String> amputee = new ArrayList<>(VERBES_DE_PRELEVEMENT_AUTORISES);
+        String retire = amputee.remove(0);
+
+        assertThatThrownBy(() -> verifierLesVerbesDePrelevement(amputee))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(retire)
+                .hasMessageContaining("FRA-13");
+    }
+
+    /** Extrait pour que la liste soit mutable par la mise a l'epreuve, et elle seule. */
+    private static void verifierLesVerbesDePrelevement(List<String> autorises) {
+        List<ItemDeclare> misesEnSituation = itemsDeclares().stream()
+                .filter(item -> enonce(item).contains(DEBUT_DU_PRELEVEMENT))
+                .toList();
+
+        assertThat(misesEnSituation)
+                .as("ADR-0051 : cette clause ne juge rien si le paquet ne porte aucun item de mise"
+                        + " en situation")
+                .isNotEmpty();
+
+        List<String> defauts = new ArrayList<>();
+        for (ItemDeclare item : misesEnSituation) {
+            String enonce = enonce(item);
+            String apres = enonce.substring(enonce.indexOf(DEBUT_DU_PRELEVEMENT)
+                    + DEBUT_DU_PRELEVEMENT.length());
+            String verbe = BLANCS.split(apres)[0];
+            if (!autorises.contains(verbe)) {
+                defauts.add("'" + enonce + "' : le verbe '" + verbe + "' n'est pas de ceux que"
+                        + " nadia-prof a nommes. Un verbe neuf entre par son verdict, item par item,"
+                        + " jamais par un fichier de test (FRA-12, FRA-13)");
+            }
+        }
+        assertThat(defauts)
+                .as("FRA-13 : le verbe qui designe le prelevement admet une part comme complement"
+                        + " d'objet direct en francais courant")
+                .isEmpty();
     }
 
     @SuppressWarnings("unchecked")

@@ -218,6 +218,58 @@ class BanditManchotTest {
                 .isEmpty();
     }
 
+    /**
+     * ADR-0073 : l'illustration de la manche courante suit l'item joue, vide quand il n'en declare
+     * aucune. La mecanique la transporte sans la lire : elle ne sait pas ce que ce dessin represente,
+     * et le verdict d'une manche illustree ne differe en rien de celui d'une manche de texte - c'est
+     * ce qui fait que le palier 1 n'est pas une mecanique de plus (ADR-0058, ADR-0073 clause 6).
+     */
+    @Test
+    void lIllustrationDeLaMancheSuitLItemJoueEtRienQuandIlNEnDeclareAucune() {
+        ContentSource contenu = new ListContentSource(DESCRIPTEUR, List.of(
+                new Question(new ItemId("q1"), "Quelle est cette forme ?", "un carre",
+                        List.of("un triangle"), Optional.empty(), Optional.empty(), Optional.empty(),
+                        Optional.empty(), Optional.of("forme-a"), Optional.of("Une forme fermee.")),
+                new Question(new ItemId("q2"), "deux", "2", List.of("3"))));
+        BanditManchotSession session = demarrer(contenu);
+
+        assertThat(session.illustrationManche())
+                .as("le premier item declare l'identifiant de son dessin")
+                .contains("forme-a");
+        assertThat(session.illustrationTexteAlternatifManche())
+                .as("ADR-0073 clause 5 : son texte alternatif voyage avec lui")
+                .contains("Une forme fermee.");
+
+        BanditManchotSession suivante = jouer(session, "un carre");
+        assertThat(suivante.illustrationManche())
+                .as("le second item ne montre rien : le cas ordinaire, pas une valeur vide oubliee")
+                .isEmpty();
+        assertThat(suivante.illustrationTexteAlternatifManche())
+                .as("les deux composantes sont vides ensemble, jamais l'une sans l'autre")
+                .isEmpty();
+    }
+
+    /**
+     * ADR-0073 clause 5 : les deux cles se gardent l'une l'autre des la construction de l'item, et
+     * pas seulement a la lecture d'un fichier. Une image qui porte la question de la manche ne
+     * parvient pas a un lecteur d'ecran sans son texte alternatif ; un texte alternatif sans image
+     * ne decrit rien.
+     */
+    @Test
+    void uneIllustrationDeclareeSansSonTexteAlternatifEstRefuseeALaConstruction() {
+        assertThatThrownBy(() -> new Question(new ItemId("q1"), "Quelle est cette forme ?", "un carre",
+                List.of("un triangle"), Optional.empty(), Optional.empty(), Optional.empty(),
+                Optional.empty(), Optional.of("forme-a"), Optional.empty()))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("ADR-0073 clause 5");
+
+        assertThatThrownBy(() -> new Question(new ItemId("q2"), "Quelle est cette forme ?", "un carre",
+                List.of("un triangle"), Optional.empty(), Optional.empty(), Optional.empty(),
+                Optional.empty(), Optional.empty(), Optional.of("Une forme fermee.")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("ADR-0073 clause 5");
+    }
+
     @Test
     void lEnchainementDesManchesConserveLeScoreCumule() {
         BanditManchotSession session = demarrer(troisManches());

@@ -1,0 +1,60 @@
+{
+ "dessins": [
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "demonstration-chiffres-traces.svg",
+   "epaisseurDeTraitRendue": 7.2,
+   "glyphesDefinis": 10,
+   "hauteurDEncreMax": 45.6,
+   "hauteurDEncreMin": 41.31,
+   "hauteurDImageMinimale": {
+    "enonce": 201.8,
+    "plancherDeLisibilite": 122.8,
+    "traitAuPlancherDuProduit": 111.1
+   },
+   "hauteurRendue": 400,
+   "instancesDeGlyphe": 15,
+   "largeurDEncreMax": 36.65,
+   "largeurRendue": 400,
+   "partDeLaHauteurDeLImage": 0.114,
+   "partDuTraitDansLaHauteurDeLImage": 0.018
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "demonstration-pieces-tracees.svg",
+   "epaisseurDeTraitRendue": 4.65,
+   "glyphesDefinis": 10,
+   "hauteurDEncreMax": 52.08,
+   "hauteurDEncreMin": 44.8,
+   "hauteurDImageMinimale": {
+    "enonce": 44.2,
+    "plancherDeLisibilite": 26.9,
+    "traitAuPlancherDuProduit": 43.0
+   },
+   "hauteurRendue": 100,
+   "instancesDeGlyphe": 3,
+   "largeurDEncreMax": 29.76,
+   "largeurRendue": 300,
+   "partDeLaHauteurDeLImage": 0.5208,
+   "partDuTraitDansLaHauteurDeLImage": 0.0465
+  }
+ ],
+ "reperesDuProduit": {
+  "famille": "system-ui",
+  "graisse": "400",
+  "reperes": {
+   "enonce": {
+    "hauteurDEncreDUnChiffre": 23,
+    "largeurMoyenneDUnChiffre": 17.25,
+    "taille": "2rem"
+   },
+   "plancherDeLisibilite": {
+    "hauteurDEncreDUnChiffre": 14,
+    "largeurMoyenneDUnChiffre": 10.78,
+    "taille": "1.25rem"
+   }
+  }
+ }
+}

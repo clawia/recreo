@@ -30,10 +30,36 @@ import java.util.Optional;
  * propre, plus petit que celui de la question. Meme genre que {@code indice} et {@code explication} :
  * un champ de contenu optionnel, jamais lu par la mecanique, jamais rempli d'une valeur factice par
  * un paquet qui n'en porte pas.</p>
+ *
+ * <p>ADR-0073 : {@code illustration} declare, par un <b>identifiant</b> et jamais par un chemin,
+ * l'image fixe que l'item montre ; {@code illustrationTexteAlternatif} declare ce qu'une lecture
+ * d'ecran en annonce. Quatrieme et cinquieme composantes optionnelles de ce record, sur le patron
+ * exact des trois precedentes : la mecanique les transporte sans jamais les lire, et un paquet qui
+ * n'illustre rien ne remplit aucun champ factice. La facon dont l'enfant repond ne change pas -
+ * c'est le critere d'ADR-0058, et c'est pourquoi le palier 1 du visuel n'est ni une forme d'item de
+ * plus ni une mecanique de plus. Ou le fichier est servi, sous quel nom et avec quelle extension
+ * n'est pas ici : le contenu declare ce qu'il montre, l'adapter web decide ou il le prend.</p>
  */
 public record Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
                         Optional<String> indice, Optional<String> explication,
-                        Optional<String> partDesignee, Optional<String> texteSupport) implements Item {
+                        Optional<String> partDesignee, Optional<String> texteSupport,
+                        Optional<String> illustration,
+                        Optional<String> illustrationTexteAlternatif) implements Item {
+
+    /**
+     * ADR-0073 clause 5 : les deux cles de l'illustration se gardent l'une l'autre. Une image qui
+     * porte la question de la manche ne parvient pas a un lecteur d'ecran sans son texte
+     * alternatif, et un texte alternatif sans image ne decrit rien. L'invariant est pose ici plutot
+     * que dans la seule fabrique de contenu : il vaut pour tout site de construction, y compris ceux
+     * qui n'ont jamais lu un fichier.
+     */
+    public Question {
+        if (illustration.isPresent() != illustrationTexteAlternatif.isPresent()) {
+            throw new IllegalArgumentException(
+                    "ADR-0073 clause 5 : une illustration et son texte alternatif se declarent"
+                            + " ensemble ou pas du tout - item " + id.value());
+        }
+    }
 
     public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs) {
         this(id, enonce, bonneReponse, distracteurs, Optional.empty());
@@ -71,5 +97,17 @@ public record Question(ItemId id, String enonce, String bonneReponse, List<Strin
                      Optional<String> indice, Optional<String> explication,
                      Optional<String> partDesignee) {
         this(id, enonce, bonneReponse, distracteurs, indice, explication, partDesignee, Optional.empty());
+    }
+
+    /**
+     * ADR-0073 : meme defaut d'ADR-0016 qu'au-dessus, assume pour le meme motif - ne pas rouvrir les
+     * sites de construction des paquets qui ne montrent aucune image. Laisse les deux composantes
+     * de l'illustration vides, donc ensemble, donc conformes a la clause 5.
+     */
+    public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
+                     Optional<String> indice, Optional<String> explication,
+                     Optional<String> partDesignee, Optional<String> texteSupport) {
+        this(id, enonce, bonneReponse, distracteurs, indice, explication, partDesignee, texteSupport,
+                Optional.empty(), Optional.empty());
     }
 }

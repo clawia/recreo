@@ -403,7 +403,33 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des groupes determinant + nom"
                     + " (\"les chats\", \"les chat\", \"le chats\"), valeurDe rend null sur les"
                     + " trois propositions de chaque item. Mesure du 2026-08-31 sur le paquet"
-                    + " servi : aucune des 63 propositions ne commence par un chiffre"));
+                    + " servi : aucune des 63 propositions ne commence par un chiffre"),
+            // S25-FIG : entree neuve, figures planes CP, premier paquet illustre du produit.
+            Map.entry("cp-figures-planes",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont les quatre noms de figures planes de"
+                    + " la ligne du programme (\"un carre\", \"un rectangle\", \"un triangle\","
+                    + " \"un cercle\"), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-08-31 sur le paquet servi : aucune des 36 propositions"
+                    + " ne commence par un chiffre. Le fait que ce paquet soit illustre ne change"
+                    + " rien a ce motif - la propriete decrit une strategie de pression sur des"
+                    + " propositions, et les propositions d'un item du palier 1 sont en texte"),
+            // S25-SUB : entree neuve, substituts d'un personnage, CM1.
+            Map.entry("cm1-substituts",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des personnages et des groupes"
+                    + " nominaux tires du texte de leur propre item (\"Nadia\", \"les"
+                    + " jardiniers\", \"la troupe\"), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-08-31 sur le paquet servi :"
+                    + " aucune des 60 propositions ne commence par un chiffre"),
+            // S25-SEM : entree neuve, se reperer dans la journee et la semaine, CP.
+            Map.entry("cp-semaine",
+            "23 items sur 23 portent deux distracteurs (trois propositions), mais aucune des 69"
+                    + " propositions n'est numerique : ce sont des noms de jours, de mois, de"
+                    + " saisons et de moments de la journee (\"mercredi\", \"decembre\","
+                    + " \"l'hiver\", \"le matin\"), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-08-31 sur le paquet servi :"
+                    + " aucune des 69 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

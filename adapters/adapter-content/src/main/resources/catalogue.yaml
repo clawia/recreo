@@ -186,3 +186,27 @@ jeux:
     mecanique: saisie
     paquet: cp-complements-10-saisie
     nombreDeManches: 7
+  - id: bandit-manchot-figures-planes-cp
+    titre: "Les figures"
+    consigne: "Regarde bien le dessin, puis choisis son nom."
+    mecanique: bandit-manchot
+    paquet: cp-figures-planes
+    nombreDeManches: 10
+  - id: bandit-manchot-monnaie-cp
+    titre: "La monnaie"
+    consigne: "Regarde bien l'argent, puis réponds."
+    mecanique: bandit-manchot
+    paquet: cp-monnaie
+    nombreDeManches: 10
+  - id: bandit-manchot-substituts-cm1
+    titre: "De qui parle le texte"
+    consigne: "Lis le texte, puis dis de qui on parle."
+    mecanique: bandit-manchot
+    paquet: cm1-substituts
+    nombreDeManches: 10
+  - id: bandit-manchot-semaine-cp
+    titre: "La journée et la semaine"
+    consigne: "Choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cp-semaine
+    nombreDeManches: 10

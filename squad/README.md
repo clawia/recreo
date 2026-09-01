@@ -95,8 +95,18 @@ des trois formes**, et il n'en existe pas de quatrieme.
 | Forme | Quand | Ce qu'elle exige |
 |---|---|---|
 | **1 - un agent de la squad** | le fait est ecrit dans un fichier du depot | le nom de l'agent, **plus le fichier et la section ou il l'a ecrit**. Un renvoi qui ne pointe vers rien est de la meme famille de defaut qu'un chiffre sans methode |
-| **2 - une mesure faite par l'auteur** | l'auteur l'a mesuree lui-meme | la commande, son perimetre nomme, sa date. Toute mesure partielle du reacteur porte `-am`, et un module mesure n'est pas le depot |
+| **2 - l'utilisatrice** | l'enonce vient d'elle | la mention **`de l'utilisatrice`**, **ses mots cites entre guillemets**, et la date |
 | **3 - un enonce recu hors des neuf agents** | il vient du canal humain qui pilote la squad | la formule fixe **`recu de MASTER, sans source dans le depot`**, l'enonce **cite mot pour mot et jamais resume**, et la date de reception |
+
+**Correction du 2026-09-01 (`sofia-sm`), et elle porte sur ma propre transcription.** Cette table
+decrivait en forme 2 *"une mesure faite par l'auteur - la commande, son perimetre nomme, sa date"*,
+la ou `DEC-0062` section 3.1 ecrit **`de l'utilisatrice`, ses mots cites, la date**. **Effet : un
+arbitrage de l'utilisatrice n'avait plus de forme du tout** - c'est la moitie du trou que `DEC-0062`
+existe pour fermer, rouverte dans le fichier cense la diffuser. Trouve par `relecteur-pedagogique`
+**en verifiant la charte qu'il applique**, et corrige ici parce que ce fichier est a moi. *L'exigence
+que j'y avais mise n'est pas fausse - elle est ailleurs : un chiffre porte sa methode et son
+perimetre, section 4, et toute mesure partielle du reacteur porte `-am`. Ce n'est pas une forme
+d'attribution, et la loger ici en chassait une.*
 
 **Les deux bornes de la forme 3, et elles sont le prix de son existence :**
 

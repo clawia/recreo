@@ -381,6 +381,13 @@ public class PartieController {
         // ADR-0050 : le texte-support d'un item de comprehension, vide sur tout item qui n'en porte
         // pas - le gabarit ne rend alors aucun paragraphe (th:if), jamais une balise vide.
         modele.addAttribute("texteSupport", session.texteSupportManche().orElse(null));
+        // ADR-0073 : l'item declare un identifiant, cet adapter est le seul endroit du produit qui
+        // sache ou le fichier est servi et sous quelle extension - le gabarit compose les trois
+        // termes, le contenu n'en connait qu'un. Vide sur tout item qui ne montre rien : le gabarit
+        // ne rend alors aucun bloc (th:if), jamais une image cassee.
+        modele.addAttribute("illustration", session.illustrationManche().orElse(null));
+        modele.addAttribute("illustrationTexteAlternatif",
+                session.illustrationTexteAlternatifManche().orElse(null));
         modele.addAttribute("segmentsEnonce", segmentsEnonce(session));
         modele.addAttribute("propositions", session.propositions());
         modele.addAttribute("score", session.score());

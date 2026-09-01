@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VEHICULE DE MESURE, JAMAIS DU CONTENU SERVI.
+
+     Second rapport de geometrie du prototype : 3 pour 1, celui d'une collection posee en rangee.
+     Il sert a montrer ce qu'un rapport large change au budget vertical - sur un ecran etroit,
+     c'est la LARGEUR disponible qui plafonne la hauteur, et non la regle max-height -, et rien
+     d'autre. Aucun objet dessine ici ne represente une piece, un jeton ni une valeur : trois
+     disques nus, dont nadia-prof n'a a juger ni l'exactitude ni la denomination, parce qu'ils
+     n'en portent aucune.
+
+     Trait noir plein, aucun remplissage colore : FIG-3 et QUA-5 interdisent que la couleur porte
+     l'information, et un vehicule de mesure ne doit pas suggerer le contraire. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="1440" height="480"
+     role="img">
+  <circle cx="50" cy="50" r="36" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <circle cx="150" cy="50" r="36" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <circle cx="250" cy="50" r="36" fill="none" stroke="#1c2733" stroke-width="6"/>
+</svg>

@@ -93,6 +93,57 @@ def lire_horodatage(fichier: Path, etiquette: str):
     return resultat
 
 
+def racine_principale_du_depot(repo: Path) -> Path:
+    """Rend la racine du depot principal, meme si `repo` est un worktree.
+
+    Correction du 2026-08-31 (s25, lot F ; defaut constate a la review de s24, section 2.4 de la
+    retro). Le dossier des transcriptions est deduit du chemin du depot ; un worktree a un autre
+    chemin, donc un autre dossier, et ce dossier-la est vide. Lance depuis le worktree ou la
+    ceremonie se conduit, l'outil rendait "aucune invocation mesuree" pour les neuf agents : la
+    commande reussissait, le rapport s'ecrivait, et il decrivait un autre arbre que celui du
+    sprint. C'est l'ecart muet que CLAUDE.md sanctionne, applique a l'outil qui mesure.
+
+    Dans un worktree, `.git` est un fichier et non un repertoire ; il porte une ligne
+    `gitdir: <racine principale>/.git/worktrees/<nom>`. La racine principale est donc le
+    grand-parent du repertoire `.git` ainsi designe. Hors worktree, `.git` est un repertoire et
+    `repo` est deja la racine principale : la fonction rend alors son argument inchange.
+
+    Rend `repo` sans rien deviner quand la forme n'est pas reconnue - la refuser ici ferait
+    echouer l'outil sur un depot exporte sans `.git`, ou il n'y a pourtant rien d'ambigu.
+    """
+    marque = repo / ".git"
+    if not marque.is_file():
+        return repo
+    try:
+        contenu = marque.read_text(encoding="utf-8")
+    except OSError:
+        return repo
+    for ligne in contenu.splitlines():
+        if not ligne.startswith("gitdir:"):
+            continue
+        designe = Path(ligne.split(":", 1)[1].strip())
+        if designe.name and designe.parent.name == "worktrees":
+            # <racine>/.git/worktrees/<nom> : deux parents pour remonter a <racine>/.git
+            return designe.parent.parent.parent
+        return designe.parent
+    return repo
+
+
+def verdict_de_collecte(dossier_projet: Path):
+    """Rend "utilisable" ou le motif du refus, sans jamais rendre un rapport vide pour vrai.
+
+    Le mode de defaillance corrige ici n'est pas un plantage, c'est un rapport d'apparence
+    normale : le script trouvait un dossier vide, ecrivait "aucune invocation mesuree" pour les
+    neuf agents - la bonne formulation du script, et une description fausse du sprint. Un outil de
+    mesure qui ne trouve pas sa matiere refuse ; il ne rend pas un zero deguise en constat.
+    """
+    if not dossier_projet.is_dir():
+        return "dossier absent"
+    if not any(dossier_projet.glob("*.jsonl")) and not any(dossier_projet.glob("*/subagents")):
+        return "dossier vide"
+    return "utilisable"
+
+
 def charger_fenetres_sprints(repo: Path):
     """Construit la liste des fenetres temporelles, une par sprint."""
     racine = repo / "squad" / "sprints"
@@ -370,9 +421,26 @@ def main():
     options = analyseur.parse_args()
 
     repo = options.repo.resolve()
+    # Le depot principal, jamais le worktree : les transcriptions vivent sous le chemin du depot
+    # d'origine. Les fenetres de sprint, elles, restent lues dans `repo` - ce sont les fichiers de
+    # ceremonie de l'arbre qu'on mesure.
+    depot_des_transcriptions = racine_principale_du_depot(repo)
     dossier_projet = options.projects_dir or (
-        Path.home() / ".claude" / "projects" / encoder_chemin_projet(repo)
+        Path.home() / ".claude" / "projects" / encoder_chemin_projet(depot_des_transcriptions)
     )
+
+    verdict = verdict_de_collecte(dossier_projet)
+    if verdict != "utilisable":
+        print(
+            f"Refus : le dossier des transcriptions deduit est inutilisable ({verdict}).\n"
+            "Aucun rapport n'est ecrit. Un rapport rendu sur un dossier vide dirait "
+            '"aucune invocation mesuree" pour chaque agent : la bonne formulation de cet outil, '
+            "et une description fausse du sprint.\n"
+            "Verifier que --repo designe le depot dont les transcriptions sont cherchees, ou "
+            "passer --projects-dir explicitement.",
+            file=sys.stderr,
+        )
+        return 1
 
     fenetres = charger_fenetres_sprints(repo)
     if not fenetres:

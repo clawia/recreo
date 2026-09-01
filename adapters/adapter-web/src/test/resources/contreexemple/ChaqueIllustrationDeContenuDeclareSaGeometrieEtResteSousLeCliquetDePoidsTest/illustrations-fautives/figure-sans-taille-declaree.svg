@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JEU FAUTIF, JAMAIS SERVI. Un cadre de vue et rien de plus : le fichier n a aucune voix sur sa
+     propre taille et sort exactement au plafond de la feuille, quel qu il soit. C est la forme du
+     contre-exemple d ADR-0073, celle dont tout dessin copie sur ce modele herite (DES-1). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#1c2733" stroke-width="6"/>
+</svg>

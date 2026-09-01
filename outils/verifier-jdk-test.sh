@@ -67,8 +67,11 @@ verifier_egal "JAVA_HOME valant un chemin de poste de travail rend renseignee, j
   "$(etat_renseignee "${chemin_de_poste_simule}")"
 
 # --- etat_toolchains : ne recoit jamais de chemin, seulement des faits ---
+#
+# Depuis le 2026-08-31, ce juge porte le nom de ce qu'il a toujours dit : le fichier que ce
+# script lit, jamais celui que Maven lit. Le second est etat_fichier_de_toolchains_de_maven.
 
-verifier_egal "un fichier de toolchains lu par Maven rend oui" \
+verifier_egal "un fichier de toolchains lu par ce script rend oui" \
   "oui" \
   "$(etat_toolchains 1 0)"
 
@@ -126,15 +129,15 @@ verifier_egal "un fichier inexistant rend une chaine vide sans faire echouer le 
 
 # --- formater_constat : assemblage, et le test qui compte ---
 
-verifier_egal "le constat assemble les quatre faits dans l'ordre attendu" \
-  "java du PATH : 1.8.0_202 | JDK de compilation : 21.0.10 | JAVA_HOME : renseignee | toolchains lu par Maven : non (fichier present sous un nom non lu)" \
-  "$(formater_constat "1.8.0_202" "21.0.10" "renseignee" "non (fichier present sous un nom non lu)")"
+verifier_egal "le constat assemble les cinq faits dans l'ordre attendu" \
+  "java du PATH : 1.8.0_202 | JDK de compilation : 21.0.10 | JAVA_HOME : renseignee | toolchains lu par ce script : non (fichier present sous un nom non lu) | toolchains lu par Maven : oui (un autre que celui lu par ce script)" \
+  "$(formater_constat "1.8.0_202" "21.0.10" "renseignee" "non (fichier present sous un nom non lu)" "oui (un autre que celui lu par ce script)")"
 
 prefixe_home="/home"
 chemin_unix_simule="${prefixe_home}/quelquun/jdk-21"
 verifier_egal "une version de compilation corrompue en chemin de poste est refusee dans le constat, jamais recopiee" \
-  "java du PATH : 1.8.0_202 | JDK de compilation : valeur refusee (ressemble a un chemin de poste de travail) | JAVA_HOME : vide | toolchains lu par Maven : non (aucun fichier trouve)" \
-  "$(formater_constat "1.8.0_202" "${chemin_unix_simule}" "vide" "non (aucun fichier trouve)")"
+  "java du PATH : 1.8.0_202 | JDK de compilation : valeur refusee (ressemble a un chemin de poste de travail) | JAVA_HOME : vide | toolchains lu par ce script : non (aucun fichier trouve) | toolchains lu par Maven : non (aucun sous le repertoire utilisateur de la machine virtuelle)" \
+  "$(formater_constat "1.8.0_202" "${chemin_unix_simule}" "vide" "non (aucun fichier trouve)" "non (aucun sous le repertoire utilisateur de la machine virtuelle)")"
 
 # --- version_majeure_java et ligne_de_lancement (obstacle 23, 2026-08-29) ---
 #
@@ -177,6 +180,112 @@ verifier_egal "une toolchain jdk 21 qui designe un JRE 8 ne fait plus annoncer 2
 verifier_egal "un JDK muet sur sa version ne fait rien confirmer" \
   "Maven lance sur le JDK que designe la toolchain jdk 21, et ce JDK rapporte inconnue : la declaration de version n'a pas ete confirmee" \
   "$(ligne_de_lancement "21" "inconnue")"
+
+
+# --- verdict_de_version et message_de_refus_de_toolchain (s25, lot F, 2026-08-31) ---
+#
+# Le cas qui compte : l'enveloppe ne lance plus Maven quand le JDK designe dement la declaration.
+# Ce sont ces deux fonctions qui portent le verdict et son message ; l'enveloppe ne fait que les
+# appeler et sortir en erreur. Sans elles, quatre occurrences documentees d'un avertissement
+# imprime puis ignore, dont une filtree par son propre auteur le jour de son ecriture.
+
+verifier_egal "une toolchain jdk 21 qui designe un JDK 21 est conforme" \
+  "conforme" \
+  "$(verdict_de_version "21" "21.0.10")"
+
+verifier_egal "une toolchain jdk 21 qui designe un JDK 25 n'est pas conforme - le cas mesure du poste" \
+  "non conforme" \
+  "$(verdict_de_version "21" "25.0.2")"
+
+verifier_egal "une toolchain jdk 21 qui designe un JRE 8 n'est pas conforme" \
+  "non conforme" \
+  "$(verdict_de_version "21" "1.8.0_202")"
+
+verifier_egal "une version illisible n'est jamais conforme : on ne verifie pas ce qu'on ne lit pas" \
+  "non conforme" \
+  "$(verdict_de_version "21" "inconnue")"
+
+verifier_egal "une version vide n'est jamais conforme non plus" \
+  "non conforme" \
+  "$(verdict_de_version "21" "")"
+
+verifier_egal "un 21.0.10 reste conforme a une demande de 21 malgre son micro" \
+  "conforme" \
+  "$(verdict_de_version "21" "21")"
+
+verifier_egal "le refus nomme la version demandee et la version constatee des sa premiere ligne" \
+  "erreur : refus de lancer Maven. La toolchain jdk 21 designe un JDK qui rapporte 25.0.2." \
+  "$(message_de_refus_de_toolchain "21" "25.0.2" | head -n1)"
+
+verifier_egal "le refus nomme la seconde cause, celle des douze rapports inexacts" \
+  "  2. HOME et le repertoire utilisateur de la machine virtuelle ne designent pas le meme" \
+  "$(message_de_refus_de_toolchain "21" "25.0.2" | sed -n '5p')"
+
+# --- repertoire_utilisateur_de_la_machine_virtuelle ---
+#
+# La sortie de java -XshowSettings:properties est fabriquee ici : la fonction est pure, elle ne
+# lance aucun java. Les valeurs de user.home evitent volontairement les quatre formes qu'ADR-0010
+# refuse, pour que ce fichier de test reste lisible par verifier-chemins.sh.
+
+proprietes_fabriquees='Property settings:
+    java.version = 21.0.10
+    user.home = /opt/comptes/quelquun
+    user.language = fr'
+
+verifier_egal "user.home est isole de la sortie de la machine virtuelle" \
+  "/opt/comptes/quelquun" \
+  "$(repertoire_utilisateur_de_la_machine_virtuelle "${proprietes_fabriquees}")"
+
+verifier_egal "une sortie sans user.home rend une chaine vide, jamais une valeur devinee" \
+  "" \
+  "$(repertoire_utilisateur_de_la_machine_virtuelle 'Property settings:
+    java.version = 21.0.10')"
+
+verifier_egal "une entree vide rend une chaine vide" \
+  "" \
+  "$(repertoire_utilisateur_de_la_machine_virtuelle '')"
+
+verifier_egal "une propriete dont le nom contient user.home sans l'etre n'est pas prise pour elle" \
+  "/opt/comptes/quelquun" \
+  "$(repertoire_utilisateur_de_la_machine_virtuelle 'Property settings:
+    sun.java.command = user.home = /piege
+    user.home = /opt/comptes/quelquun')"
+
+# --- etat_fichier_de_toolchains_de_maven : le champ qui repondait sur un autre fichier ---
+
+verifier_egal "le fichier de Maven trouve et identique a celui du script rend le fait complet" \
+  "oui (le meme que celui lu par ce script)" \
+  "$(etat_fichier_de_toolchains_de_maven 1 1)"
+
+verifier_egal "le fichier de Maven trouve mais distinct est dit, au lieu d'etre confondu avec le premier" \
+  "oui (un autre que celui lu par ce script)" \
+  "$(etat_fichier_de_toolchains_de_maven 1 0)"
+
+verifier_egal "aucun fichier sous le user.home de la machine virtuelle rend un motif distinct" \
+  "non (aucun sous le repertoire utilisateur de la machine virtuelle)" \
+  "$(etat_fichier_de_toolchains_de_maven 0 0)"
+
+# --- fichier_de_toolchains_gouvernant et mention_du_fichier_gouvernant (2026-08-31, theo-archi) ---
+
+verifier_egal "quand Maven a un fichier lisible, c'est le sien qui gouverne" \
+  "celui-de-maven" \
+  "$(fichier_de_toolchains_gouvernant "celui-du-shell" "celui-de-maven" 1)"
+
+verifier_egal "quand il n'y en a pas, le repli est le fichier du shell" \
+  "celui-du-shell" \
+  "$(fichier_de_toolchains_gouvernant "celui-du-shell" "" 0)"
+
+verifier_egal "le verdict dit quand il porte sur un fichier distinct de celui du shell" \
+  "sur le fichier de toolchains que Maven lit, qui n'est pas celui de ce shell" \
+  "$(mention_du_fichier_gouvernant 1 0)"
+
+verifier_egal "et quand les deux ecritures designent le meme fichier" \
+  "sur le fichier de toolchains que Maven lit, qui est aussi celui de ce shell" \
+  "$(mention_du_fichier_gouvernant 1 1)"
+
+verifier_egal "le repli est annonce comme un etat degrade, jamais confondu avec le cas normal" \
+  "sur le fichier de toolchains de ce shell, faute d'avoir pu demander son repertoire utilisateur a une machine virtuelle - ce fichier n'est peut-etre pas celui que Maven lit" \
+  "$(mention_du_fichier_gouvernant 0 0)"
 
 # --- test negatif global : aucune sortie collectee, quel que soit le cas, ne contient de chemin ---
 

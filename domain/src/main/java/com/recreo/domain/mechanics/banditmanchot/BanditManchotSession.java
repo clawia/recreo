@@ -213,6 +213,25 @@ public final class BanditManchotSession implements GameSession {
         return Optional.ofNullable(mancheCourante).flatMap(Question::texteSupport);
     }
 
+    /**
+     * ADR-0073 : l'identifiant de l'image que la manche courante montre, vide quand l'item n'en
+     * declare aucune - le cas ordinaire, jamais un cas particulier a verifier en plus. Cette
+     * mecanique ne le lit pas : elle le transporte, exactement comme le texte-support et la part
+     * designee, et ce qu'il designe ne change ni la facon de repondre ni le verdict.
+     */
+    public Optional<String> illustrationManche() {
+        return Optional.ofNullable(mancheCourante).flatMap(Question::illustration);
+    }
+
+    /**
+     * ADR-0073 clause 5 : ce qu'un lecteur d'ecran annonce de l'image de la manche courante. Vide
+     * exactement quand {@link #illustrationManche()} l'est - les deux cles se gardent l'une l'autre
+     * des la construction de l'item.
+     */
+    public Optional<String> illustrationTexteAlternatifManche() {
+        return Optional.ofNullable(mancheCourante).flatMap(Question::illustrationTexteAlternatif);
+    }
+
     public List<String> propositions() {
         return propositions;
     }

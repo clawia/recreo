@@ -104,6 +104,50 @@ class RessourcesTiercesTest {
                 && valeur.chars().allMatch(c -> CARACTERES_D_UNE_CIBLE_LITTERALE.indexOf(c) >= 0);
     }
 
+    /**
+     * ADR-0073 clause 3, <b>et c'est le point le plus dangereux de ce lot</b>. Une illustration de
+     * contenu ne peut pas tenir le critere de chemin litteral : sa cible depend de l'item tire, donc
+     * l'expression est calculee, et l'ensemble des cibles n'est pas enumerable en lisant le gabarit.
+     * La preuve ne disparait pas pour autant, elle <b>change de source</b> - elle se lit desormais
+     * sur la donnee, dans {@code LIllustrationDeContenuResoutEtAucuneNeDortTest}, qui verifie dans
+     * les deux sens que tout identifiant declare resout et qu'aucun fichier ne dort.
+     *
+     * <p><b>Le chemin le plus court pour lever ce rouge etait d'elargir ce garde-fou</b>, et
+     * elargir ce garde-fou perce la garantie hors ligne d'ADR-0014 pour tout le depot, pas pour
+     * l'illustration. ADR-0073 en decide donc la forme avant le lot, et elle est etroite au terme
+     * pres : <b>prefixe litteral exactement egal au repertoire d'illustrations de contenu, un unique
+     * terme calcule, extension litterale</b>. Une expression qui construirait le repertoire lui-meme,
+     * qui porterait deux termes calcules, qui changerait d'extension ou qui viserait un autre
+     * repertoire reste refusee - et deux mises a l'epreuve ci-dessous mordent ce refus, sur un
+     * gabarit ou la forme admise est deja presente. Sans cette seconde moitie, la morsure prouverait
+     * que l'exemption existe, pas qu'elle est etroite.
+     */
+    private static final String PREFIXE_D_UNE_ILLUSTRATION_DE_CONTENU = "'/illustrations/' + ";
+
+    private static final String SUFFIXE_D_UNE_ILLUSTRATION_DE_CONTENU = " + '.svg'";
+
+    /**
+     * Le terme calcule d'une illustration : une variable de modele simple, sans appel, sans operateur
+     * et sans concatenation. C'est ce qui fait qu'il y en a exactement un.
+     */
+    private static final String CARACTERES_D_UN_TERME_CALCULE =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    private static boolean estUneIllustrationDeContenu(String valeur) {
+        if (!valeur.startsWith(PREFIXE_D_UNE_ILLUSTRATION_DE_CONTENU)
+                || !valeur.endsWith(SUFFIXE_D_UNE_ILLUSTRATION_DE_CONTENU)) {
+            return false;
+        }
+        String terme = valeur.substring(PREFIXE_D_UNE_ILLUSTRATION_DE_CONTENU.length(),
+                valeur.length() - SUFFIXE_D_UNE_ILLUSTRATION_DE_CONTENU.length()).strip();
+        if (!terme.startsWith("${") || !terme.endsWith("}")) {
+            return false;
+        }
+        String nom = terme.substring(2, terme.length() - 1);
+        return !nom.isEmpty()
+                && nom.chars().allMatch(c -> CARACTERES_D_UN_TERME_CALCULE.indexOf(c) >= 0);
+    }
+
     private record Ressource(String chemin, String origine, String cheminSource, String empreinte) {
     }
 
@@ -314,7 +358,15 @@ class RessourcesTiercesTest {
         for (Path gabarit : gabarits(racine)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
             for (Element reference : referencesDeRessource(document)) {
-                verifierCibleLocale(racine, gabarit, cheminDeGabarit(gabarit, reference), gabarit.toString());
+                String chemin = cheminDeGabarit(gabarit, reference);
+                if (chemin == null) {
+                    // ADR-0073 clause 3 : une illustration de contenu ne designe pas un fichier
+                    // connu du gabarit. Qu'elle resolve vers un fichier reellement servi, et
+                    // qu'aucun fichier servi ne dorme, est verifie sur la donnee par
+                    // LIllustrationDeContenuResoutEtAucuneNeDortTest, dans les deux sens.
+                    continue;
+                }
+                verifierCibleLocale(racine, gabarit, chemin, gabarit.toString());
             }
         }
     }
@@ -371,10 +423,16 @@ class RessourcesTiercesTest {
         if (valeur.startsWith("@{") && valeur.endsWith("}")) {
             valeur = valeur.substring(2, valeur.length() - 1).strip();
         }
+        if (estUneIllustrationDeContenu(valeur)) {
+            return null;
+        }
         assertThat(estUneCibleLitterale(valeur))
                 .as("ADR-0014 : %s reference une ressource par une expression calculee (%s) ; une "
                         + "ressource de page s'ecrit en chemin litteral, sinon rien ne prouve "
-                        + "qu'elle est servie hors ligne", gabarit, brut)
+                        + "qu'elle est servie hors ligne. La seule exception est l'illustration de "
+                        + "contenu d'ADR-0073, dont la forme est bornee au terme pres : %s${...}%s, "
+                        + "et dont la preuve se lit sur la donnee et non ici", gabarit, brut,
+                        PREFIXE_D_UNE_ILLUSTRATION_DE_CONTENU, SUFFIXE_D_UNE_ILLUSTRATION_DE_CONTENU)
                 .isTrue();
         return valeur;
     }
@@ -398,6 +456,9 @@ class RessourcesTiercesTest {
                 continue;
             }
             String derniere = cheminDeGabarit(gabarit, feuilles.get(feuilles.size() - 1));
+            if (derniere == null) {
+                continue;
+            }
             assertThat(derniere)
                     .as("ADR-0014 : dans %s, la derniere feuille chargee est %s, une feuille tierce ; "
                             + "la feuille maison doit passer apres, sinon la regle tierce l'emporte "
@@ -591,6 +652,89 @@ class RessourcesTiercesTest {
                 verifierAucuneRessourceExterne(CONTRE_EXEMPLES.resolve("image-calculee")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("expression calculee");
+    }
+
+    /**
+     * ADR-0073 clause 3, et c'est la premiere des deux moities : l'exemption <b>existe</b> et elle est
+     * exercee par la production, pas par une fixture. Le plafond vaut exactement la taille de la
+     * population - une reference admise, celle du fragment de manche. Un second gabarit qui voudrait
+     * une illustration de contenu rend ce test rouge, et son auteur lit ADR-0073 au lieu de decouvrir
+     * apres coup que le garde-fou a cesse de compter.
+     */
+    @Test
+    void uneSeuleReferenceDeLaProductionEstUneIllustrationDeContenu() {
+        List<String> admises = new ArrayList<>();
+        for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
+            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            for (Element reference : referencesDeRessource(document)) {
+                if (cheminDeGabarit(gabarit, reference) == null) {
+                    admises.add(gabarit + " -> " + reference.attr("th:src"));
+                }
+            }
+        }
+
+        assertThat(admises)
+                .as("ADR-0051 et ADR-0073 clause 3 : cette exemption ne prouve rien tant qu'aucune "
+                        + "reference de production ne l'emprunte, et elle cesse d'etre etroite des "
+                        + "qu'une seconde l'emprunte sans qu'on l'ait decide")
+                .hasSize(1);
+    }
+
+    /**
+     * Les references d'un gabarit, jugees sur une source donnee plutot que sur le fichier lu : c'est
+     * ce qui permet de mordre en mutant le <b>gabarit reel en memoire</b>, plutot qu'en fabriquant un
+     * gabarit fautif qui ressemblerait a ce que j'imagine.
+     */
+    private static void verifierLesReferencesDe(Path gabarit, String source) {
+        Document document = Jsoup.parse(source, gabarit.toString());
+        for (Element reference : referencesDeRessource(document)) {
+            cheminDeGabarit(gabarit, reference);
+        }
+    }
+
+    /** Le gabarit de production qui porte la forme admise, decouvert et jamais nomme ici. */
+    private static Path gabaritQuiPorteUneIllustrationDeContenu() {
+        for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
+            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            for (Element reference : referencesDeRessource(document)) {
+                if (cheminDeGabarit(gabarit, reference) == null) {
+                    return gabarit;
+                }
+            }
+        }
+        throw new AssertionError("ADR-0051 : aucun gabarit de production ne porte d'illustration de "
+                + "contenu, les morsures de la clause 3 ne s'exercent alors sur rien");
+    }
+
+    /**
+     * <b>ADR-0073 clause 3, seconde moitie, et c'est elle qui compte.</b> La moitie precedente prouve
+     * que l'exemption existe ; celle-ci prouve qu'elle est <b>etroite</b>. Chaque mutation pose une
+     * seconde forme calculee <b>dans le meme gabarit</b>, la forme admise restant a sa place, et
+     * chacune doit rester rouge : une image de decor dont le nom depend de l'item (c'est la condition
+     * C5 d'ADR-0036, reprise mot pour mot), un repertoire lui-meme construit, deux termes calcules la
+     * ou un seul est admis, et une extension calculee. Sans cette moitie-la, la morsure prouverait que
+     * l'exemption existe, pas qu'elle est etroite - et c'est le chemin que {@code theo-archi} nomme
+     * comme le plus dangereux du sprint.
+     */
+    @Test
+    void uneSecondeFormeCalculeePoseeDansLeMemeGabaritResteRefusee() {
+        Path gabarit = gabaritQuiPorteUneIllustrationDeContenu();
+        String source = lire(gabarit);
+        verifierLesReferencesDe(gabarit, source);
+
+        for (String secondeForme : List.of(
+                "@{'/images/fronton-' + ${enonce} + '.png'}",
+                "@{'/' + ${repertoire} + '/' + ${illustration} + '.svg'}",
+                "@{'/illustrations/' + ${famille} + '-' + ${illustration} + '.svg'}",
+                "@{'/illustrations/' + ${illustration} + ${extension}}")) {
+            String mute = source.replace("</body>",
+                    "<img th:src=\"" + secondeForme + "\" alt=\"\"></body>");
+            assertThatThrownBy(() -> verifierLesReferencesDe(gabarit, mute))
+                    .as("une seconde forme calculee (%s) posee a cote de la forme admise doit rester "
+                            + "refusee", secondeForme)
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("expression calculee");
+        }
     }
 
     @Test

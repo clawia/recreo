@@ -1,0 +1,260 @@
+{
+ "dessins": [
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-en-tout-a.svg",
+   "epaisseurDeTraitRendue": 10.08,
+   "glyphesDefinis": 2,
+   "hauteurDEncreMax": 70.56,
+   "hauteurDEncreMin": 57.12,
+   "hauteurDImageMinimale": {
+    "enonce": 57.4,
+    "plancherDeLisibilite": 34.9,
+    "traitAuPlancherDuProduit": 34.9
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 2,
+   "largeurDEncreMax": 40.32,
+   "largeurRendue": 278,
+   "partDeLaHauteurDeLImage": 0.4009,
+   "partDuTraitDansLaHauteurDeLImage": 0.0573
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-en-tout-b.svg",
+   "epaisseurDeTraitRendue": 10.08,
+   "glyphesDefinis": 2,
+   "hauteurDEncreMax": 70.56,
+   "hauteurDEncreMin": 57.12,
+   "hauteurDImageMinimale": {
+    "enonce": 57.4,
+    "plancherDeLisibilite": 34.9,
+    "traitAuPlancherDuProduit": 34.9
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 3,
+   "largeurDEncreMax": 40.32,
+   "largeurRendue": 428,
+   "partDeLaHauteurDeLImage": 0.4009,
+   "partDuTraitDansLaHauteurDeLImage": 0.0573
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-en-tout-c.svg",
+   "epaisseurDeTraitRendue": 8.16,
+   "glyphesDefinis": 1,
+   "hauteurDEncreMax": 57.12,
+   "hauteurDEncreMin": 57.12,
+   "hauteurDImageMinimale": {
+    "enonce": 70.9,
+    "plancherDeLisibilite": 43.1,
+    "traitAuPlancherDuProduit": 43.1
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 3,
+   "largeurDEncreMax": 12.24,
+   "largeurRendue": 380,
+   "partDeLaHauteurDeLImage": 0.3245,
+   "partDuTraitDansLaHauteurDeLImage": 0.0464
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-en-tout-d.svg",
+   "epaisseurDeTraitRendue": 8,
+   "glyphesDefinis": 2,
+   "hauteurDEncreMax": 70.56,
+   "hauteurDEncreMin": 51.64,
+   "hauteurDImageMinimale": {
+    "enonce": 57.4,
+    "plancherDeLisibilite": 34.9,
+    "traitAuPlancherDuProduit": 44.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 2,
+   "largeurDEncreMax": 40.32,
+   "largeurRendue": 384,
+   "partDeLaHauteurDeLImage": 0.4009,
+   "partDuTraitDansLaHauteurDeLImage": 0.0455
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-en-tout-e.svg",
+   "epaisseurDeTraitRendue": 8,
+   "glyphesDefinis": 1,
+   "hauteurDEncreMax": 51.64,
+   "hauteurDEncreMin": 51.64,
+   "hauteurDImageMinimale": {
+    "enonce": 78.4,
+    "plancherDeLisibilite": 47.7,
+    "traitAuPlancherDuProduit": 44.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 2,
+   "largeurDEncreMax": 29,
+   "largeurRendue": 466,
+   "partDeLaHauteurDeLImage": 0.2934,
+   "partDuTraitDansLaHauteurDeLImage": 0.0455
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-en-tout-f.svg",
+   "epaisseurDeTraitRendue": 8,
+   "glyphesDefinis": 3,
+   "hauteurDEncreMax": 70.56,
+   "hauteurDEncreMin": 56,
+   "hauteurDImageMinimale": {
+    "enonce": 57.4,
+    "plancherDeLisibilite": 34.9,
+    "traitAuPlancherDuProduit": 44.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 4,
+   "largeurDEncreMax": 45.82,
+   "largeurRendue": 534,
+   "partDeLaHauteurDeLImage": 0.4009,
+   "partDuTraitDansLaHauteurDeLImage": 0.0455
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-en-tout-g.svg",
+   "epaisseurDeTraitRendue": 4,
+   "glyphesDefinis": 4,
+   "hauteurDEncreMax": 35.28,
+   "hauteurDEncreMin": 25.82,
+   "hauteurDImageMinimale": {
+    "enonce": 114.7,
+    "plancherDeLisibilite": 69.8,
+    "traitAuPlancherDuProduit": 88.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 6,
+   "largeurDEncreMax": 22.91,
+   "largeurRendue": 308,
+   "partDeLaHauteurDeLImage": 0.2005,
+   "partDuTraitDansLaHauteurDeLImage": 0.0227
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-meme-somme-a.svg",
+   "epaisseurDeTraitRendue": 8,
+   "glyphesDefinis": 3,
+   "hauteurDEncreMax": 70.56,
+   "hauteurDEncreMin": 51.64,
+   "hauteurDImageMinimale": {
+    "enonce": 57.4,
+    "plancherDeLisibilite": 34.9,
+    "traitAuPlancherDuProduit": 44.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 4,
+   "largeurDEncreMax": 40.32,
+   "largeurRendue": 678,
+   "partDeLaHauteurDeLImage": 0.4009,
+   "partDuTraitDansLaHauteurDeLImage": 0.0455
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-meme-somme-b.svg",
+   "epaisseurDeTraitRendue": 4,
+   "glyphesDefinis": 3,
+   "hauteurDEncreMax": 35.28,
+   "hauteurDEncreMin": 25.82,
+   "hauteurDImageMinimale": {
+    "enonce": 114.7,
+    "plancherDeLisibilite": 69.8,
+    "traitAuPlancherDuProduit": 88.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 5,
+   "largeurDEncreMax": 20.16,
+   "largeurRendue": 327,
+   "partDeLaHauteurDeLImage": 0.2005,
+   "partDuTraitDansLaHauteurDeLImage": 0.0227
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-meme-somme-c.svg",
+   "epaisseurDeTraitRendue": 10.08,
+   "glyphesDefinis": 2,
+   "hauteurDEncreMax": 70.56,
+   "hauteurDEncreMin": 57.12,
+   "hauteurDImageMinimale": {
+    "enonce": 57.4,
+    "plancherDeLisibilite": 34.9,
+    "traitAuPlancherDuProduit": 34.9
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 4,
+   "largeurDEncreMax": 40.32,
+   "largeurRendue": 548,
+   "partDeLaHauteurDeLImage": 0.4009,
+   "partDuTraitDansLaHauteurDeLImage": 0.0573
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-meme-somme-d.svg",
+   "epaisseurDeTraitRendue": 4,
+   "glyphesDefinis": 4,
+   "hauteurDEncreMax": 35.28,
+   "hauteurDEncreMin": 25.82,
+   "hauteurDImageMinimale": {
+    "enonce": 114.7,
+    "plancherDeLisibilite": 69.8,
+    "traitAuPlancherDuProduit": 88.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 6,
+   "largeurDEncreMax": 22.91,
+   "largeurRendue": 392,
+   "partDeLaHauteurDeLImage": 0.2005,
+   "partDuTraitDansLaHauteurDeLImage": 0.0227
+  },
+  {
+   "aucunTextNiTspan": true,
+   "boitesDeGlypheQuiSeRecouvrent": 0,
+   "dessin": "monnaie-meme-somme-e.svg",
+   "epaisseurDeTraitRendue": 4,
+   "glyphesDefinis": 4,
+   "hauteurDEncreMax": 35.28,
+   "hauteurDEncreMin": 25.82,
+   "hauteurDImageMinimale": {
+    "enonce": 114.7,
+    "plancherDeLisibilite": 69.8,
+    "traitAuPlancherDuProduit": 88.0
+   },
+   "hauteurRendue": 176,
+   "instancesDeGlyphe": 8,
+   "largeurDEncreMax": 22.91,
+   "largeurRendue": 433,
+   "partDeLaHauteurDeLImage": 0.2005,
+   "partDuTraitDansLaHauteurDeLImage": 0.0227
+  }
+ ],
+ "reperesDuProduit": {
+  "famille": "system-ui",
+  "graisse": "400",
+  "reperes": {
+   "enonce": {
+    "hauteurDEncreDUnChiffre": 23,
+    "largeurMoyenneDUnChiffre": 17.25,
+    "taille": "2rem"
+   },
+   "plancherDeLisibilite": {
+    "hauteurDEncreDUnChiffre": 14,
+    "largeurMoyenneDUnChiffre": 10.78,
+    "taille": "1.25rem"
+   }
+  }
+ }
+}

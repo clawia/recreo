@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIG, item illustre du palier 1. Cercle, petite taille. Trait seul, aucun remplissage. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <circle cx="50" cy="50" r="20" fill="none" stroke="#1c2733" stroke-width="6"/>
+</svg>

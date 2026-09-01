@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FIG, item illustre du palier 1. Carre incline de 20 degres, petite taille.
+     Troisieme exemple de la forme (FIG-2) : ni l'orientation ni la taille des deux autres. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <rect x="27" y="27" width="46" height="46" fill="none" stroke="#1c2733" stroke-width="6"
+        stroke-linejoin="round" transform="rotate(20 50 50)"/>
+</svg>

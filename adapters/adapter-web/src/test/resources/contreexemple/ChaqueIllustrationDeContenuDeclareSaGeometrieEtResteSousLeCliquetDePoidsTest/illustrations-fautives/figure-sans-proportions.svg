@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JEU FAUTIF, JAMAIS SERVI. Aucun cadre de vue : les proportions de la figure ne sont plus
+     declarees par le fichier, donc la boite que la feuille lui donne les gouverne (FIG-1, DES-1). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="176" height="176" role="img">
+  <rect x="14" y="14" width="72" height="72" fill="none" stroke="#1c2733" stroke-width="6"/>
+</svg>

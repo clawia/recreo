@@ -16,20 +16,51 @@
 #
 # Ce script est une enveloppe : les transformations qu'il emploie vivent toutes dans
 # verifier-jdk.sh et sont couvertes par verifier-jdk-test.sh - extraire_jdkhome_pour_version,
-# extraire_version_java, et depuis le 2026-08-29 version_majeure_java et ligne_de_lancement. Sa
-# preuve est manuelle et datee : sur le poste de reference, le 2026-08-17,
-# "bash outils/mvn-jdk21.sh -B clean verify" passe le build complet sans JAVA_HOME, la ou
-# "mvn -B clean verify" echoue a la phase validate en nommant ce qui manque.
+# extraire_version_java, version_majeure_java, ligne_de_lancement, et depuis le 2026-08-31
+# verdict_de_version et message_de_refus_de_toolchain. Sa preuve est manuelle et datee : sur le
+# poste de reference, le 2026-08-17, "bash outils/mvn-jdk21.sh -B clean verify" passe le build
+# complet sans JAVA_HOME, la ou "mvn -B clean verify" echoue a la phase validate en nommant ce qui
+# manque.
 #
 # Ce que ce script n'affirme plus depuis le 2026-08-29 (obstacle 23) : que le JDK qu'il a resolu
 # est un 21. Il le constate en le lui demandant, et sa premiere ligne dit ce que ce JDK rapporte.
+#
+# Ce qu'il ne fait plus depuis le 2026-08-31 (s25, lot F) : lancer Maven quand ce constat le
+# dement. La dette est ouverte par S21-1 le 2026-08-27 - "il doit refuser au lieu d'imprimer" - et
+# elle a ete documentee quatre fois sans etre payee. Entre-temps l'avertissement a ete filtre par
+# son propre auteur le jour ou il l'ecrivait, et il a induit en erreur une lectrice competente le
+# 2026-08-30 : un avertissement qu'un filtre de lecture ordinaire fait disparaitre n'est pas un
+# garde-fou. Le refus est bruyant, il porte un code de sortie non nul, et il nomme les deux causes
+# possibles plutot que de laisser deviner.
 set -uo pipefail
 
 repertoire_outils="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=outils/verifier-jdk.sh
 . "${repertoire_outils}/verifier-jdk.sh"
 
-fichier_toolchains="${HOME}/.m2/toolchains.xml"
+# Le fichier que Maven lit, et non celui que ce shell lit. Maven resout son fichier de toolchains
+# sur le user.home de sa machine virtuelle ; HOME est une variable du shell, et rien ne garantit
+# que les deux designent le meme repertoire. Le lot F du 2026-08-31 l'a appris au diagnostic et
+# l'a laisse ignorer du verdict ; la mesure du meme jour montre que cela coute dans les deux sens,
+# un faux rouge et un faux vert. Le detail est dans fichier_de_toolchains_gouvernant.
+fichier_du_shell="${HOME}/.m2/toolchains.xml"
+proprietes_vm="$(java -XshowSettings:properties -version 2>&1)"
+user_home_vm="$(repertoire_utilisateur_de_la_machine_virtuelle "${proprietes_vm}")"
+
+fichier_de_maven=""
+maven_lisible=0
+meme_fichier=0
+if [ -n "${user_home_vm}" ] && [ -f "${user_home_vm}/.m2/toolchains.xml" ]; then
+  fichier_de_maven="${user_home_vm}/.m2/toolchains.xml"
+  maven_lisible=1
+  if [ "${fichier_de_maven}" -ef "${fichier_du_shell}" ]; then
+    meme_fichier=1
+  fi
+fi
+
+fichier_toolchains="$(fichier_de_toolchains_gouvernant   "${fichier_du_shell}" "${fichier_de_maven}" "${maven_lisible}")"
+echo "Verdict rendu $(mention_du_fichier_gouvernant "${maven_lisible}" "${meme_fichier}")." >&2
+
 jdk_home="$(extraire_jdkhome_pour_version "${fichier_toolchains}" "21")"
 
 if [ -z "${jdk_home}" ]; then
@@ -47,21 +78,14 @@ if [ ! -e "${jdk_home}/bin/javac" ] && [ ! -e "${jdk_home}/bin/javac.exe" ]; the
 fi
 
 version_jdk="$(extraire_version_java "$("${jdk_home}/bin/java" -version 2>&1 | head -n1)")"
-majeure_jdk="$(version_majeure_java "${version_jdk}")"
 
 # L'enveloppe verifie ce qu'elle affiche, ou elle n'affiche rien : la ligne ci-dessous est derivee
 # de ce que le JDK rapporte, jamais de ce que la toolchain declare (obstacle 23, ADR-0009).
 ligne_de_lancement "21" "${version_jdk}" >&2
 
-if [ "${majeure_jdk}" != "21" ]; then
-  echo "diagnostic - Maven lit le fichier de toolchains du profil utilisateur de sa machine virtuelle." >&2
-  echo "Quand ce repertoire n'est pas celui de HOME, cette enveloppe et Maven ne lisent pas le meme" >&2
-  echo "fichier, et c'est le JDK trouve par Maven qui compile et execute les tests." >&2
-  if [ "${majeure_jdk}" = "inconnue" ] || [ "${majeure_jdk}" -lt 17 ]; then
-    echo "erreur : spring-boot-maven-plugin ne peut pas etre charge par une machine virtuelle" >&2
-    echo "anterieure a 17, et le JDK designe par la toolchain jdk 21 rapporte ${version_jdk}." >&2
-    exit 1
-  fi
+if [ "$(verdict_de_version "21" "${version_jdk}")" != "conforme" ]; then
+  message_de_refus_de_toolchain "21" "${version_jdk}" >&2
+  exit 1
 fi
 
 JAVA_HOME="${jdk_home}" exec mvn "$@"

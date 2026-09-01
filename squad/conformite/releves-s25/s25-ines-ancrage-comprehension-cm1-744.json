@@ -1,0 +1,515 @@
+{
+ "basDeLEcranMax": 744,
+ "hauteurDeSupportMax": 90,
+ "items": {
+  "Comment le lion organise-t-il ses journées ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 626,
+    "rangeesDePropositions": 3
+   },
+   "basDeLEcran": 744,
+   "basDeLIndice": 744,
+   "basDuVerdict": 665,
+   "defilement": 0,
+   "enonce": "Comment le lion organise-t-il ses journées ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 32,
+   "propositions": [
+    {
+     "caracteres": 17,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "seulement la nuit"
+    },
+    {
+     "caracteres": 28,
+     "haut": 454,
+     "hauteur": 66,
+     "texte": "principalement matin et soir"
+    },
+    {
+     "caracteres": 13,
+     "haut": 536,
+     "hauteur": 66,
+     "texte": "tout le temps"
+    }
+   ],
+   "rangeesDePropositions": 3,
+   "sousLePli": true,
+   "texteSupport": "Le lion se repose la majeure partie de la journée à l'ombre d'un acacia. C'est surtout au lever et au coucher du soleil qu'il part chasser avec le reste de son groupe."
+  },
+  "Où Zoé va-t-elle probablement passer l'après-midi ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 710,
+    "rangeesDePropositions": 2
+   },
+   "basDeLEcran": 710,
+   "basDeLIndice": 710,
+   "basDuVerdict": 631,
+   "defilement": 0,
+   "enonce": "Où Zoé va-t-elle probablement passer l'après-midi ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 30,
+   "propositions": [
+    {
+     "caracteres": 17,
+     "haut": 420,
+     "hauteur": 66,
+     "texte": "à la bibliothèque"
+    },
+    {
+     "caracteres": 16,
+     "haut": 420,
+     "hauteur": 66,
+     "texte": "au bord de l'eau"
+    },
+    {
+     "caracteres": 16,
+     "haut": 502,
+     "hauteur": 66,
+     "texte": "chez le dentiste"
+    }
+   ],
+   "rangeesDePropositions": 2,
+   "sousLePli": true,
+   "texteSupport": "Zoé glisse son maillot de bain, ses lunettes et une serviette dans son sac. Sa maman ajoute un tube de crème contre le soleil avant de fermer la fermeture éclair."
+  },
+  "Pourquoi Manon réagit-elle ainsi ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 544,
+    "rangeesDePropositions": 2
+   },
+   "basDeLEcran": 662,
+   "basDeLIndice": 662,
+   "basDuVerdict": 583,
+   "defilement": 0,
+   "enonce": "Pourquoi Manon réagit-elle ainsi ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 29,
+   "propositions": [
+    {
+     "caracteres": 17,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "une longue course"
+    },
+    {
+     "caracteres": 20,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "la poussière la gêne"
+    },
+    {
+     "caracteres": 13,
+     "haut": 454,
+     "hauteur": 66,
+     "texte": "un plat épicé"
+    }
+   ],
+   "rangeesDePropositions": 2,
+   "sousLePli": true,
+   "texteSupport": "Manon éternue sans arrêt depuis qu'elle est entrée dans le grenier. Elle a les yeux qui piquent au milieu des vieilles caisses en carton jamais ouvertes depuis des années."
+  },
+  "Pourquoi les pompiers sont-ils venus ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 514,
+    "rangeesDePropositions": 2
+   },
+   "basDeLEcran": 632,
+   "basDeLIndice": 632,
+   "basDuVerdict": 553,
+   "defilement": 0,
+   "enonce": "Pourquoi les pompiers sont-ils venus ?",
+   "hauteurDuTexteSupport": 60,
+   "motsDuTexteSupport": 20,
+   "propositions": [
+    {
+     "caracteres": 15,
+     "haut": 342,
+     "hauteur": 66,
+     "texte": "une fuite d'eau"
+    },
+    {
+     "caracteres": 11,
+     "haut": 342,
+     "hauteur": 66,
+     "texte": "un incendie"
+    },
+    {
+     "caracteres": 14,
+     "haut": 424,
+     "hauteur": 66,
+     "texte": "un chat coincé"
+    }
+   ],
+   "rangeesDePropositions": 2,
+   "sousLePli": true,
+   "texteSupport": "Le camion de pompiers freine devant l'immeuble, sirène allumée. Une épaisse fumée grise sort par la fenêtre du deuxième étage."
+  },
+  "Qu'a-t-il pu se passer cette nuit ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 596,
+    "rangeesDePropositions": 3
+   },
+   "basDeLEcran": 714,
+   "basDeLIndice": 714,
+   "basDuVerdict": 635,
+   "defilement": 0,
+   "enonce": "Qu'a-t-il pu se passer cette nuit ?",
+   "hauteurDuTexteSupport": 60,
+   "motsDuTexteSupport": 25,
+   "propositions": [
+    {
+     "caracteres": 21,
+     "haut": 342,
+     "hauteur": 66,
+     "texte": "la visite d'un animal"
+    },
+    {
+     "caracteres": 18,
+     "haut": 424,
+     "hauteur": 66,
+     "texte": "une grosse tempête"
+    },
+    {
+     "caracteres": 18,
+     "haut": 506,
+     "hauteur": 66,
+     "texte": "une chute de neige"
+    }
+   ],
+   "rangeesDePropositions": 3,
+   "sousLePli": true,
+   "texteSupport": "Ce matin, des branches cassées jonchent le jardin et la barrière du voisin est couchée par terre. Plusieurs éléments du toit sont tombés dans l'allée."
+  },
+  "Que contient probablement ce carton ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 626,
+    "rangeesDePropositions": 3
+   },
+   "basDeLEcran": 744,
+   "basDeLIndice": 744,
+   "basDuVerdict": 665,
+   "defilement": 0,
+   "enonce": "Que contient probablement ce carton ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 30,
+   "propositions": [
+    {
+     "caracteres": 23,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "des jouets pour enfants"
+    },
+    {
+     "caracteres": 23,
+     "haut": 454,
+     "hauteur": 66,
+     "texte": "des outils de jardinage"
+    },
+    {
+     "caracteres": 27,
+     "haut": 536,
+     "hauteur": 66,
+     "texte": "des produits de boulangerie"
+    }
+   ],
+   "rangeesDePropositions": 3,
+   "sousLePli": true,
+   "texteSupport": "Le facteur dépose un grand carton devant la porte des Dupont, marqué d'une étiquette jaune « Cuisine ». Une bonne odeur de pain chaud s'échappe du carton pendant qu'il repart."
+  },
+  "Que fait Monsieur Albert de ses journées ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 608,
+    "rangeesDePropositions": 2
+   },
+   "basDeLEcran": 662,
+   "basDeLIndice": 662,
+   "basDuVerdict": 583,
+   "defilement": 0,
+   "enonce": "Que fait Monsieur Albert de ses journées ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 29,
+   "propositions": [
+    {
+     "caracteres": 22,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "il travaille au bureau"
+    },
+    {
+     "caracteres": 10,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "il jardine"
+    },
+    {
+     "caracteres": 21,
+     "haut": 454,
+     "hauteur": 66,
+     "texte": "il enseigne à l'école"
+    }
+   ],
+   "rangeesDePropositions": 2,
+   "sousLePli": true,
+   "texteSupport": "Le vieux Monsieur Albert arrose ses tomates tous les matins avant le lever du soleil. Il porte toujours son grand chapeau de paille et ses bottes couvertes de terre."
+  },
+  "Que va faire Tom juste après ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 514,
+    "rangeesDePropositions": 2
+   },
+   "basDeLEcran": 608,
+   "basDeLIndice": null,
+   "basDuVerdict": 583,
+   "defilement": 0,
+   "enonce": "Pourquoi Manon réagit-elle ainsi ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 29,
+   "propositions": [
+    {
+     "caracteres": 20,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "la poussière la gêne"
+    },
+    {
+     "caracteres": 13,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "un plat épicé"
+    },
+    {
+     "caracteres": 17,
+     "haut": 454,
+     "hauteur": 66,
+     "texte": "une longue course"
+    }
+   ],
+   "rangeesDePropositions": 2,
+   "sousLePli": true,
+   "texteSupport": "Manon éternue sans arrêt depuis qu'elle est entrée dans le grenier. Elle a les yeux qui piquent au milieu des vieilles caisses en carton jamais ouvertes depuis des années."
+  },
+  "Que vend le pêcheur aujourd'hui à son étal ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 596,
+    "rangeesDePropositions": 3
+   },
+   "basDeLEcran": 744,
+   "basDeLIndice": 744,
+   "basDuVerdict": 635,
+   "defilement": 0,
+   "enonce": "Que vend le pêcheur aujourd'hui à son étal ?",
+   "hauteurDuTexteSupport": 60,
+   "motsDuTexteSupport": 33,
+   "propositions": [
+    {
+     "caracteres": 18,
+     "haut": 342,
+     "hauteur": 66,
+     "texte": "des poissons frais"
+    },
+    {
+     "caracteres": 20,
+     "haut": 424,
+     "hauteur": 66,
+     "texte": "des vêtements chauds"
+    },
+    {
+     "caracteres": 19,
+     "haut": 506,
+     "hauteur": 66,
+     "texte": "des produits sucrés"
+    }
+   ],
+   "rangeesDePropositions": 3,
+   "sousLePli": true,
+   "texteSupport": "Ce matin, le filet du pêcheur est revenu vide de la mer. Sur son étal, il a posé des pots au miel doré et des sachets de pain d'épice faits par sa femme."
+  },
+  "Que vient-il de se passer sur le terrain ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 544,
+    "rangeesDePropositions": 2
+   },
+   "basDeLEcran": 690,
+   "basDeLIndice": null,
+   "basDuVerdict": 665,
+   "defilement": 0,
+   "enonce": "Que contient probablement ce carton ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 30,
+   "propositions": [
+    {
+     "caracteres": 23,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "des jouets pour enfants"
+    },
+    {
+     "caracteres": 27,
+     "haut": 454,
+     "hauteur": 66,
+     "texte": "des produits de boulangerie"
+    },
+    {
+     "caracteres": 23,
+     "haut": 536,
+     "hauteur": 66,
+     "texte": "des outils de jardinage"
+    }
+   ],
+   "rangeesDePropositions": 3,
+   "sousLePli": true,
+   "texteSupport": "Le facteur dépose un grand carton devant la porte des Dupont, marqué d'une étiquette jaune « Cuisine ». Une bonne odeur de pain chaud s'échappe du carton pendant qu'il repart."
+  },
+  "Quel genre de sortie Grand-père prépare-t-il ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 626,
+    "rangeesDePropositions": 3
+   },
+   "basDeLEcran": 744,
+   "basDeLIndice": 744,
+   "basDuVerdict": 665,
+   "defilement": 0,
+   "enonce": "Quel genre de sortie Grand-père prépare-t-il ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 29,
+   "propositions": [
+    {
+     "caracteres": 19,
+     "haut": 372,
+     "hauteur": 66,
+     "texte": "une visite médicale"
+    },
+    {
+     "caracteres": 25,
+     "haut": 454,
+     "hauteur": 66,
+     "texte": "une randonnée en montagne"
+    },
+    {
+     "caracteres": 20,
+     "haut": 536,
+     "hauteur": 66,
+     "texte": "une sortie au cinéma"
+    }
+   ],
+   "rangeesDePropositions": 3,
+   "sousLePli": true,
+   "texteSupport": "Avant de partir en promenade, Grand-père glisse une gourde d'eau et une carte du sentier dans son sac à dos. Il chausse ses grosses chaussures de marche à crampons."
+  },
+  "Quel métier exerce probablement la personne qui vit ici ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 628,
+    "rangeesDePropositions": 1
+   },
+   "basDeLEcran": 628,
+   "basDeLIndice": 628,
+   "basDuVerdict": 549,
+   "defilement": 0,
+   "enonce": "Quel métier exerce probablement la personne qui vit ici ?",
+   "hauteurDuTexteSupport": 90,
+   "motsDuTexteSupport": 34,
+   "propositions": [
+    {
+     "caracteres": 9,
+     "haut": 420,
+     "hauteur": 66,
+     "texte": "cuisinier"
+    },
+    {
+     "caracteres": 7,
+     "haut": 420,
+     "hauteur": 66,
+     "texte": "médecin"
+    },
+    {
+     "caracteres": 10,
+     "haut": 420,
+     "hauteur": 66,
+     "texte": "enseignant"
+    }
+   ],
+   "rangeesDePropositions": 1,
+   "sousLePli": true,
+   "texteSupport": "Sur la table de la cuisine, une pile de cahiers corrigés attend à côté d'un stylo rouge posé sur une pile de copies. Une odeur de café refroidi flotte dans la pièce depuis longtemps."
+  },
+  "Quelle saison correspond le mieux à cette scène ?": {
+   "aDesPropositions": true,
+   "auRepos": {
+    "basDeLEcran": 480,
+    "rangeesDePropositions": 1
+   },
+   "basDeLEcran": 598,
+   "basDeLIndice": 598,
+   "basDuVerdict": 519,
+   "defilement": 0,
+   "enonce": "Quelle saison correspond le mieux à cette scène ?",
+   "hauteurDuTexteSupport": 60,
+   "motsDuTexteSupport": 29,
+   "propositions": [
+    {
+     "caracteres": 5,
+     "haut": 390,
+     "hauteur": 66,
+     "texte": "l'été"
+    },
+    {
+     "caracteres": 12,
+     "haut": 390,
+     "hauteur": 66,
+     "texte": "le printemps"
+    },
+    {
+     "caracteres": 7,
+     "haut": 390,
+     "hauteur": 66,
+     "texte": "l'hiver"
+    }
+   ],
+   "rangeesDePropositions": 1,
+   "sousLePli": true,
+   "texteSupport": "Léo a mis trois pulls l'un sur l'autre et un gros bonnet avant de sortir. Sur le trottoir verglacé, son souffle forme un petit nuage blanc devant sa bouche."
+  }
+ },
+ "itemsAttendus": 20,
+ "itemsSousLePliApresUnEchec": [
+  "Comment le lion organise-t-il ses journées ?",
+  "Où Zoé va-t-elle probablement passer l'après-midi ?",
+  "Pourquoi Manon réagit-elle ainsi ?",
+  "Pourquoi les pompiers sont-ils venus ?",
+  "Qu'a-t-il pu se passer cette nuit ?",
+  "Que contient probablement ce carton ?",
+  "Que fait Monsieur Albert de ses journées ?",
+  "Que va faire Tom juste après ?",
+  "Que vend le pêcheur aujourd'hui à son étal ?",
+  "Que vient-il de se passer sur le terrain ?",
+  "Quel genre de sortie Grand-père prépare-t-il ?",
+  "Quel métier exerce probablement la personne qui vit ici ?",
+  "Quelle saison correspond le mieux à cette scène ?"
+ ],
+ "itemsVus": 13,
+ "jeu": "bandit-manchot-comprehension-cm1",
+ "largeur": 744,
+ "motsMax": 34,
+ "motsMin": 20,
+ "nombreSousLePli": 13,
+ "parties": 20,
+ "pli": 551,
+ "viewportLu": [
+  744,
+  551
+ ]
+}

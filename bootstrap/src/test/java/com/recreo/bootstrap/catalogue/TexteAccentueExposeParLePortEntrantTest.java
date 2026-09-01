@@ -147,6 +147,23 @@ class TexteAccentueExposeParLePortEntrantTest {
             // section 5.2, FRA-10 ; amendement du 2026-08-31, famille (e)) : entree neuve, la
             // notion de fraction simple au CM1, moitie "notion" seule.
             "bandit-manchot-fractions-cm1",
+            // S25-FIG (DEC-0065 amendement A.3 ; FIG-1 a FIG-4 du 2026-08-24, reconduites le
+            // 2026-08-31 ; CON-1 a CON-5) : entree neuve, reconnaitre et nommer quelques figures
+            // planes, CP. Les deux entrees ci-dessous sont les deux premiers jeux illustres du
+            // produit (ADR-0073) ; elles sont nees le meme jour, et aucune des deux n'est "le
+            // premier" - c'est la fusion qui les ordonne, pas leur contenu.
+            "bandit-manchot-figures-planes-cp",
+            // S25-MON-1 (arbitrage prealable de s25 sur les seize lignes, section 2.2, MON-1 a
+            // MON-5 ; arbitrage du palier 1, CON-1 a CON-5) : entree neuve. La ligne de la monnaie
+            // avait ete refusee en contenu textuel le meme jour et rouverte sur sa forme illustree
+            // - "le paquet textuel nommait les pieces, le paquet illustre les montre".
+            "bandit-manchot-monnaie-cp",
+            // S25-SUB (arbitrage prealable s23, section 5, SUB-1 a SUB-10) : entree neuve,
+            // reperer les substituts d'un personnage dans un texte, CM1.
+            "bandit-manchot-substituts-cm1",
+            // S25-SEM (DEC-0065 amendement A.2 et A.3 ; SEM-1 a SEM-9 du 2026-08-31) : entree
+            // neuve, se reperer dans la journee et la semaine, CP, couverture partielle nommee.
+            "bandit-manchot-semaine-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -200,6 +217,15 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Un ou plusieurs ?",
             // S24-FRA : titre neuf.
             "Les fractions simples",
+            // S25-FIG : titre neuf.
+            "Les figures",
+            // S25-MON-1 : titre neuf.
+            "La monnaie",
+            // S25-SUB : titre neuf. Sans point d'interrogation, donc sans espace devant un signe
+            // double : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "De qui parle le texte",
+            // S25-SEM : titre neuf, il nomme la moitie servie de la ligne et pas l'autre.
+            "La journée et la semaine",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -249,6 +275,18 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Choisis la bonne écriture pour compléter la phrase.",
             // S24-FRA : consigne neuve.
             "Lis bien la fraction, puis choisis la réponse.",
+            // S25-FIG : consigne neuve, generique - elle dit quoi faire du dessin et ne decrit
+            // aucune figure (CON-2).
+            "Regarde bien le dessin, puis choisis son nom.",
+            // S25-MON-1 : consigne neuve. Elle ne nomme aucune valeur et ne decrit ni la position,
+            // ni la forme, ni la quantite, ni la couleur de ce que les dessins montrent (MON-1,
+            // CON-2) - elle dit seulement ou regarder.
+            "Regarde bien l'argent, puis réponds.",
+            // S25-SUB : consigne neuve, generique - elle ne nomme aucun texte-support ni aucun
+            // personnage d'aucun item.
+            "Lis le texte, puis dis de qui on parle.",
+            // S25-SEM : consigne neuve.
+            "Choisis la bonne réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -268,6 +306,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lecture et compréhension de l'écrit",
             // S21-9 : domaine neuf, premiere ligne couverte.
             "Langage oral et conscience phonologique",
+            // S25-FIG : domaine neuf, premiere ligne couverte du domaine geometrique du CP.
+            "Espace et géométrie",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -324,7 +364,23 @@ class TexteAccentueExposeParLePortEntrantTest {
             // reellement est la moitie "notion", et la mention exacte que nadia-prof exige sur la
             // matrice reste due le jour ou la ligne bougera.
             "Notion de fraction simple (unités fractionnaires, fractions inférieures à 1) et "
-                    + "repérage sur une droite numérique");
+                    + "repérage sur une droite numérique",
+            // S25-FIG : competence neuve, ligne entiere.
+            "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)",
+            // S25-MON-1 : competence neuve, et la ligne est entiere - nadia-prof ecrit que "le
+            // paquet sert reconnaitre par l'image et utiliser par la question". Le libelle est
+            // celui du referentiel, mot pour mot.
+            "Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes "
+                    + "concrets",
+            // S25-SUB : competence neuve, ligne entiere. nadia-prof a verifie avant d'arbitrer
+            // qu'elle est distincte de "Comprendre un texte narratif ou documentaire", deja verte.
+            "Repérer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte",
+            // S25-SEM : competence neuve, couverture partielle nommee (SEM-3). Le libelle est
+            // celui du referentiel, la moitie "lire l'heure pleine" comprise, parce que c'est la
+            // ligne entiere que le descripteur du paquet nomme ; ce que le paquet couvre
+            // reellement est la moitie "se reperer dans la journee, la semaine", et la mention
+            // exacte que nadia-prof exige sur la matrice reste due le jour ou la ligne bougera.
+            "Se repérer dans la journée, la semaine ; lire l'heure pleine sur une horloge");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

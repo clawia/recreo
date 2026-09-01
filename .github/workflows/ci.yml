@@ -78,16 +78,32 @@ jobs:
       # perimetre reste derive du repertoire, jamais une liste de noms : les deux emplacements sont
       # balayes, et l'etape est rouge si l'un des deux ne rend aucun fichier - un motif de balayage
       # qui ne trouve plus rien est le faux vert que ce depot combat depuis ADR-0013.
+      # s25 (2026-08-31), lot F : le meme constat pour la troisieme fois, et sur un autre axe que
+      # les deux precedents. Le perimetre etait derive du repertoire mais fige sur une seule
+      # extension : outils/rapport-tokens-horodatage-test.py, ecrit a s22, n'a ete lance par aucun
+      # automate depuis sa creation, exactement comme verifier-jdk-test.sh avant ADR-0025 et
+      # verifier-provenance-lots-test.sh avant s21. Un balayage qui derive son perimetre d'un
+      # repertoire mais pas de l'extension n'est derive qu'a moitie. Les juges Python sont donc
+      # balayes eux aussi, avec la meme regle : un motif qui ne rend aucun fichier est rouge.
+      #
+      # squad/outils/*/*-test.py n'est volontairement pas dans la liste : aucun juge Python n'y
+      # vit aujourd'hui, et la regle du balayage vide rendrait l'etape rouge pour une population
+      # legitimement absente. Ce motif s'ajoute le jour ou le premier y est ecrit, et pas avant -
+      # un motif ajoute d'avance serait un faux rouge, symetrique exact du faux vert combattu ici.
       - name: Tester les juges purs des outils
         run: |
           set -euo pipefail
+          if command -v python3 > /dev/null; then PY=python3; else PY=python; fi
           total=0
-          for motif in "outils/*-test.sh" "squad/outils/*/*-test.sh"; do
+          for motif in "outils/*-test.sh" "squad/outils/*/*-test.sh" "outils/*-test.py"; do
             trouves=0
             for test in ${motif}; do
               [ -f "${test}" ] || continue
               echo "--- ${test}"
-              bash "${test}"
+              case "${test}" in
+                *.py) "${PY}" "${test}" ;;
+                *) bash "${test}" ;;
+              esac
               trouves=$((trouves + 1))
             done
             if [ "${trouves}" -eq 0 ]; then
