@@ -384,17 +384,17 @@ public class PartieController {
         boolean fraiche = session.propositionsEssayees().isEmpty();
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("consigne", consigne);
-        // ADR-0075 section 7, VOI-12 : les deux attributs du bloc-adulte se derivent l'un de la
-        // manche courante (le stimulus, propre a l'item), l'autre de l'entree de catalogue fixee au
-        // demarrage de la partie (la mise en garde, invariante sur tout le paquet comme la
-        // consigne). Poses ensemble, dans le meme geste : un contenu qui declare l'un sans l'autre
-        // est refuse par LeTexteAVoixHauteEtLaConsigneAdulteSeDeclarentEnsembleTest cote contenu ;
-        // ce controleur ne fait que transmettre ce qu'il recoit, jamais l'un sans l'autre non plus.
-        // VOI-8 : session.texteAVoixHauteManche() ne depend d'aucun etat d'essai ni de revelation,
-        // donc ce bloc reste identique sur un item frais, un echec et la revelation - jamais vide
-        // au changement d'etat.
-        modele.addAttribute("texteAVoixHaute", session.texteAVoixHauteManche().orElse(null));
-        modele.addAttribute("consigneAdulte", consigneAdulte);
+        // ADR-0075 section 7, VOI-12 : le stimulus (propre a l'item joue) et la mise en garde
+        // (invariante sur tout le paquet, fixee au demarrage de la partie comme la consigne) sont
+        // combines en un seul objet - BlocAdulte.creerOuNull leve plutot que de poser l'un sans
+        // l'autre (yanis-qa a mesure que deux attributs de modele independants laissaient passer un
+        // bloc-adulte incomplet des que le second manquait, sans passer par le garde-fou de contenu
+        // qui ne garde que le fichier YAML, jamais le document rendu). VOI-8 :
+        // session.texteAVoixHauteManche() ne depend d'aucun etat d'essai ni de revelation, donc ce
+        // bloc reste identique sur un item frais, un echec et la revelation - jamais vide au
+        // changement d'etat.
+        modele.addAttribute("blocAdulte",
+                BlocAdulte.creerOuNull(session.texteAVoixHauteManche().orElse(null), consigneAdulte));
         // ADR-0050 : le texte-support d'un item de comprehension, vide sur tout item qui n'en porte
         // pas - le gabarit ne rend alors aucun paragraphe (th:if), jamais une balise vide.
         modele.addAttribute("texteSupport", session.texteSupportManche().orElse(null));
@@ -481,8 +481,10 @@ public class PartieController {
         // ADR-0075 section 7, VOI-12 : meme geste que sur mancheDeBanditManchot - voir son
         // commentaire. La ligne "ecrire un mot en autonomie" est la seule des cinq lignes ouvertes
         // par nadia-prof a passer par cette mecanique (ADR-0075 section 5).
-        modele.addAttribute("texteAVoixHaute", session.texteAVoixHauteManche().orElse(null));
-        modele.addAttribute("consigneAdulte", consigneAdulte);
+        // ADR-0075 section 7, VOI-12 : meme geste que sur mancheDeBanditManchot - voir son
+        // commentaire.
+        modele.addAttribute("blocAdulte",
+                BlocAdulte.creerOuNull(session.texteAVoixHauteManche().orElse(null), consigneAdulte));
         modele.addAttribute("enonce", session.enonceManche().orElseThrow());
         modele.addAttribute("score", session.score());
         modele.addAttribute("tentatives", session.tentatives());
