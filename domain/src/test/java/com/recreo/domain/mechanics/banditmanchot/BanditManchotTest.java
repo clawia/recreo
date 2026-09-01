@@ -250,6 +250,36 @@ class BanditManchotTest {
     }
 
     /**
+     * ADR-0075 : le texte a voix haute de la manche courante suit l'item joue, vide quand il n'en
+     * declare aucun - le cas ordinaire. VOI-8 : un echec sur la manche ne le fait pas disparaitre,
+     * puisqu'il ne depend que de {@code mancheCourante}, jamais du nombre d'essais.
+     */
+    @Test
+    void leTexteAVoixHauteDeLaMancheSuitLItemJoueEtSurvitAUnEchec() {
+        ContentSource contenu = new ListContentSource(DESCRIPTEUR, List.of(
+                new Question(new ItemId("q1"), "Choisis ce que tu entends.", "au debut",
+                        List.of("au milieu", "a la fin"), Optional.empty(), Optional.empty(),
+                        Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
+                        Optional.of("Le mot est chapeau.")),
+                new Question(new ItemId("q2"), "deux", "2", List.of("3"))));
+        BanditManchotSession session = demarrer(contenu);
+
+        assertThat(session.texteAVoixHauteManche())
+                .as("le premier item declare son texte a voix haute")
+                .contains("Le mot est chapeau.");
+
+        BanditManchotSession apresEchec = jouer(session, "au milieu");
+        assertThat(apresEchec.texteAVoixHauteManche())
+                .as("VOI-8 : un echec sur la meme manche ne fait pas disparaitre le texte a voix haute")
+                .contains("Le mot est chapeau.");
+
+        BanditManchotSession suivante = jouer(apresEchec, "au debut");
+        assertThat(suivante.texteAVoixHauteManche())
+                .as("le second item ne s'appuie sur aucune voix : le cas ordinaire")
+                .isEmpty();
+    }
+
+    /**
      * ADR-0073 clause 5 : les deux cles se gardent l'une l'autre des la construction de l'item, et
      * pas seulement a la lecture d'un fichier. Une image qui porte la question de la manche ne
      * parvient pas a un lecteur d'ecran sans son texte alternatif ; un texte alternatif sans image

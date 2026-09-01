@@ -124,7 +124,8 @@ public class PartieController {
 
         if (etat.portePartieEnCours()) {
             modele.addAttribute("reprise", true);
-            mancheModele(modele, etat.jeuId(), etat.consigne(), etat.session(), SANS_GESTE);
+            mancheModele(modele, etat.jeuId(), etat.consigne(), etat.consigneAdulte(), etat.session(),
+                    SANS_GESTE);
             return "accueil";
         }
 
@@ -244,7 +245,8 @@ public class PartieController {
         if (!etat.portePartieEnCours()) {
             throw new PartieIndisponible("aucune partie en cours a reprendre");
         }
-        return mancheModele(modele, etat.jeuId(), etat.consigne(), etat.session(), PAR_UN_GESTE);
+        return mancheModele(modele, etat.jeuId(), etat.consigne(), etat.consigneAdulte(), etat.session(),
+                PAR_UN_GESTE);
     }
 
     @PostMapping("/parties/{jeuId}")
@@ -252,11 +254,12 @@ public class PartieController {
                             HttpServletResponse reponse, Model modele) {
         GameDefinition jeu = jeuOuEchec(jeuId);
         GameSession session = partie.demarrer(jeuId);
+        String consigneAdulte = jeu.consigneAdulte().orElse(null);
 
-        new EtatDePartieEnSession(requete).demarrer(jeuId, jeu.consigne(), session);
+        new EtatDePartieEnSession(requete).demarrer(jeuId, jeu.consigne(), consigneAdulte, session);
         synchroniserMarqueurDePartie(session, requete, reponse);
 
-        return mancheModele(modele, jeuId, jeu.consigne(), session, PAR_UN_GESTE);
+        return mancheModele(modele, jeuId, jeu.consigne(), consigneAdulte, session, PAR_UN_GESTE);
     }
 
     @PostMapping("/parties/{jeuId}/coups")
@@ -266,8 +269,8 @@ public class PartieController {
                 actuelle -> partie.jouer(jeuId, actuelle, new BanditManchotMove(propositionChoisie)));
         synchroniserMarqueurDePartie(etat.session(), requete, reponse);
 
-        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE,
-                propositionChoisie);
+        return mancheModele(modele, jeuId, etat.consigne(), etat.consigneAdulte(), etat.session(),
+                PAR_UN_GESTE, propositionChoisie);
     }
 
     /**
@@ -282,7 +285,8 @@ public class PartieController {
                 actuelle -> partie.jouer(jeuId, actuelle, new SaisieMove(reponseEcrite)));
         synchroniserMarqueurDePartie(etat.session(), requete, reponse);
 
-        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE);
+        return mancheModele(modele, jeuId, etat.consigne(), etat.consigneAdulte(), etat.session(),
+                PAR_UN_GESTE);
     }
 
     /**
@@ -297,7 +301,8 @@ public class PartieController {
                 actuelle -> partie.jouer(jeuId, actuelle, new ContinuerMove()));
         synchroniserMarqueurDePartie(etat.session(), requete, reponse);
 
-        return mancheModele(modele, jeuId, etat.consigne(), etat.session(), PAR_UN_GESTE);
+        return mancheModele(modele, jeuId, etat.consigne(), etat.consigneAdulte(), etat.session(),
+                PAR_UN_GESTE);
     }
 
     /**
@@ -329,9 +334,9 @@ public class PartieController {
      * point de focus sont tous calcules ici, a partir du seul etat de la manche courante - jamais
      * d'un champ neuf sur la session (avis de faisabilite de theo-archi, s10, correction 2).</p>
      */
-    private String mancheModele(Model modele, String jeuId, String consigne,
+    private String mancheModele(Model modele, String jeuId, String consigne, String consigneAdulte,
                                 GameSession session, boolean gesteDeLEnfant) {
-        return mancheModele(modele, jeuId, consigne, session, gesteDeLEnfant, null);
+        return mancheModele(modele, jeuId, consigne, consigneAdulte, session, gesteDeLEnfant, null);
     }
 
     /**
@@ -347,15 +352,15 @@ public class PartieController {
      * accueil}, {@code demarrer}) : theo-archi a refuse une comparaison par identite de reference
      * comme protocole non documente entre les deux surcharges, d'ou ce parametre explicite.
      */
-    private String mancheModele(Model modele, String jeuId, String consigne,
+    private String mancheModele(Model modele, String jeuId, String consigne, String consigneAdulte,
                                 GameSession session, boolean gesteDeLEnfant,
                                 String propositionFraichementPressee) {
         if (session instanceof BanditManchotSession banditSession) {
-            return mancheDeBanditManchot(modele, jeuId, consigne, banditSession, gesteDeLEnfant,
-                    propositionFraichementPressee);
+            return mancheDeBanditManchot(modele, jeuId, consigne, consigneAdulte, banditSession,
+                    gesteDeLEnfant, propositionFraichementPressee);
         }
         if (session instanceof SaisieSession saisieSession) {
-            return mancheDeSaisie(modele, jeuId, consigne, saisieSession);
+            return mancheDeSaisie(modele, jeuId, consigne, consigneAdulte, saisieSession);
         }
         throw new PartieIndisponible(
                 "aucun ecran de jeu pour ce type de session : " + session.getClass().getSimpleName());
@@ -370,7 +375,8 @@ public class PartieController {
      * {@code theo-archi} recommande cette forme-la tant que deux mecaniques existent.
      */
     private String mancheDeBanditManchot(Model modele, String jeuId, String consigne,
-                                          BanditManchotSession session, boolean gesteDeLEnfant,
+                                          String consigneAdulte, BanditManchotSession session,
+                                          boolean gesteDeLEnfant,
                                           String propositionFraichementPressee) {
         if (session.status() == SessionStatus.TERMINEE) {
             return retourModele(modele, jeuId, session);
@@ -378,6 +384,17 @@ public class PartieController {
         boolean fraiche = session.propositionsEssayees().isEmpty();
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("consigne", consigne);
+        // ADR-0075 section 7, VOI-12 : les deux attributs du bloc-adulte se derivent l'un de la
+        // manche courante (le stimulus, propre a l'item), l'autre de l'entree de catalogue fixee au
+        // demarrage de la partie (la mise en garde, invariante sur tout le paquet comme la
+        // consigne). Poses ensemble, dans le meme geste : un contenu qui declare l'un sans l'autre
+        // est refuse par LeTexteAVoixHauteEtLaConsigneAdulteSeDeclarentEnsembleTest cote contenu ;
+        // ce controleur ne fait que transmettre ce qu'il recoit, jamais l'un sans l'autre non plus.
+        // VOI-8 : session.texteAVoixHauteManche() ne depend d'aucun etat d'essai ni de revelation,
+        // donc ce bloc reste identique sur un item frais, un echec et la revelation - jamais vide
+        // au changement d'etat.
+        modele.addAttribute("texteAVoixHaute", session.texteAVoixHauteManche().orElse(null));
+        modele.addAttribute("consigneAdulte", consigneAdulte);
         // ADR-0050 : le texte-support d'un item de comprehension, vide sur tout item qui n'en porte
         // pas - le gabarit ne rend alors aucun paragraphe (th:if), jamais une balise vide.
         modele.addAttribute("texteSupport", session.texteSupportManche().orElse(null));
@@ -455,12 +472,17 @@ public class PartieController {
      * a l'identique y figure deux fois : c'est exactement ce que SAI-12 existe pour montrer.</p>
      */
     private String mancheDeSaisie(Model modele, String jeuId, String consigne,
-                                   SaisieSession session) {
+                                   String consigneAdulte, SaisieSession session) {
         if (session.status() == SessionStatus.TERMINEE) {
             return retourDeSaisie(modele, jeuId, session);
         }
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("consigne", consigne);
+        // ADR-0075 section 7, VOI-12 : meme geste que sur mancheDeBanditManchot - voir son
+        // commentaire. La ligne "ecrire un mot en autonomie" est la seule des cinq lignes ouvertes
+        // par nadia-prof a passer par cette mecanique (ADR-0075 section 5).
+        modele.addAttribute("texteAVoixHaute", session.texteAVoixHauteManche().orElse(null));
+        modele.addAttribute("consigneAdulte", consigneAdulte);
         modele.addAttribute("enonce", session.enonceManche().orElseThrow());
         modele.addAttribute("score", session.score());
         modele.addAttribute("tentatives", session.tentatives());

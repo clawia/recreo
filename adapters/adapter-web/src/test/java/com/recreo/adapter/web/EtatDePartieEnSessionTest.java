@@ -139,7 +139,7 @@ class EtatDePartieEnSessionTest {
         MockHttpServletRequest requete = new MockHttpServletRequest();
         requete.setSession(new MockHttpSession());
         GameSession session = new BanditManchot().start(contenuRepete(), bound -> 0, nombreDeManches);
-        new EtatDePartieEnSession(requete).demarrer(JEU_ID, "Choisis la bonne reponse", session);
+        new EtatDePartieEnSession(requete).demarrer(JEU_ID, "Choisis la bonne reponse", null, session);
         return requete;
     }
 

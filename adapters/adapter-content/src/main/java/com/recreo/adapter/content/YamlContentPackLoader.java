@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * ADR-0007 : seule implementation de ContentCatalogPort, seule classe du projet autorisee a lire
@@ -59,10 +60,11 @@ public final class YamlContentPackLoader implements ContentCatalogPort {
         String mecanique = texte(jeu, "mecanique", catalogue);
         String paquetId = texte(jeu, "paquet", catalogue);
         int nombreDeManches = entier(jeu, "nombreDeManches", catalogue);
+        Optional<String> consigneAdulte = texteFacultatif(jeu, "consigneAdulte");
 
         ContentSource contenu = chargerPaquet(paquetId);
         return new GameDefinition(id, titre, consigne, new MechanicId(mecanique), contenu.descriptor(),
-                contenu, nombreDeManches);
+                contenu, nombreDeManches, consigneAdulte);
     }
 
     /** Visibilite de paquet : DEC-0009, tests qui doivent charger un paquet retire du catalogue. */
@@ -123,6 +125,17 @@ public final class YamlContentPackLoader implements ContentCatalogPort {
 
     private static String texte(Map<?, ?> map, String champ, String chemin) {
         return String.valueOf(champObligatoire(map, champ, chemin));
+    }
+
+    /**
+     * ADR-0075 section 7 : 'consigneAdulte' est la seule cle facultative du niveau catalogue -
+     * absente, elle vaut "ce jeu ne s'appuie sur aucune voix", le cas ordinaire, jamais un cas
+     * particulier a remplir d'une valeur factice (meme patron que les champs facultatifs d'item,
+     * ADR-0016).
+     */
+    private static Optional<String> texteFacultatif(Map<?, ?> map, String champ) {
+        Object valeur = map.get(champ);
+        return valeur == null ? Optional.empty() : Optional.of(String.valueOf(valeur));
     }
 
     private static int entier(Map<?, ?> map, String champ, String chemin) {

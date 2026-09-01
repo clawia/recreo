@@ -232,6 +232,21 @@ public final class BanditManchotSession implements GameSession {
         return Optional.ofNullable(mancheCourante).flatMap(Question::illustrationTexteAlternatif);
     }
 
+    /**
+     * ADR-0075 : le texte que l'adulte lit a voix haute pour la manche courante, vide quand l'item
+     * n'en declare pas - le cas ordinaire, jamais un cas particulier a verifier en plus. Cette
+     * mecanique ne le lit pas, elle le transporte, exactement comme le texte-support et
+     * l'illustration : il ne change ni la facon de repondre ni le verdict (ADR-0058).
+     *
+     * <p>VOI-8 : cette methode ne depend d'aucun etat d'essai ni de revelation - {@code
+     * mancheCourante} reste le meme tant que la manche n'est pas resolue, donc cette valeur est
+     * identique sur un item frais, un echec et une revelation. C'est ce qui permet a l'adulte de
+     * redire le stimulus autant de fois que l'enfant le demande, sur le meme fragment.</p>
+     */
+    public Optional<String> texteAVoixHauteManche() {
+        return Optional.ofNullable(mancheCourante).flatMap(Question::texteAVoixHaute);
+    }
+
     public List<String> propositions() {
         return propositions;
     }
