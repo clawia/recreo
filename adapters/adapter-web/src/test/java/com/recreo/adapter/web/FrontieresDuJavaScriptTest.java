@@ -298,6 +298,91 @@ class FrontieresDuJavaScriptTest {
     }
 
     /**
+     * <b>yanis-qa, s26, obstacle qualite - un quatrieme porteur, distinct des trois qu'ADR-0074
+     * nomme.</b> Le WHATWG URL Standard retire toute tabulation et tout retour a la ligne ASCII
+     * <b>partout dans l'URL</b>, pas seulement en tete, avant d'en analyser le schema (etape de
+     * suppression des tabulations et retours a la ligne du parseur d'URL) : un navigateur normalise
+     * {@code "ja\tvascript:alert(1)"} en {@code "javascript:alert(1)"} et l'execute au clic. La
+     * clause 3 d'ADR-0074 ne fait que
+     * {@code attribut.getValue().stripLeading().toLowerCase(Locale.ROOT).startsWith("javascript:")}
+     * - {@code stripLeading()} ne retire que l'espace en tete, jamais un caractere de controle logé
+     * au milieu du schema, donc cette ecriture-la reste invisible.
+     *
+     * <p><b>Rouge a ce commit</b> : mesure sur le meme materiau que
+     * {@code uneUrlDeSchemaJavascriptDansUnGabaritFaitEchouerLeGardeFou} ci-dessus, seul le
+     * caractere de tabulation change. {@code verifierQuAucunGabaritNePorteDeJavaScript} ne leve
+     * aucune {@code AssertionError} sur ce gabarit mute, donc {@code assertThatThrownBy} echoue -
+     * le porteur passe au travers du garde-fou. Route a sofia-sm / theo-archi : le remede (retirer
+     * les caracteres de controle avant de comparer, pas seulement en tete) est un choix de forme de
+     * la clause 3, pas a moi de trancher.</p>
+     */
+    @Test
+    void uneTabulationALInterieurDuSchemaJavascriptFaitEchouerLeGardeFou() throws IOException {
+        Path racine = copieDesGabarits(tempo.resolve("tabulation-dans-le-schema-javascript"));
+        LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest.muterUneSeuleFois(
+                racine.resolve("accueil.html"),
+                "<script defer th:src=\"@{/js/recreo.js}\"></script>",
+                "<a href=\"ja\tvascript:sessionStorage.clear()\">tricher</a>"
+                        + "<script defer th:src=\"@{/js/recreo.js}\"></script>");
+
+        assertThatThrownBy(() -> verifierQuAucunGabaritNePorteDeJavaScript(racine))
+                .as("un navigateur retire les tabulations de l'URL avant d'en lire le schema"
+                        + " (WHATWG URL Standard) et executerait ce lien comme javascript:"
+                        + " sessionStorage.clear() ; ADR-0074 clause 3 le voit depuis que sa"
+                        + " normalisation est celle du navigateur dont elle se reclame")
+                .isInstanceOf(AssertionError.class);
+    }
+
+    /**
+     * <b>ADR-0074 clause 3, amendement du 2026-09-01 : ce que le navigateur retire d'une URL avant
+     * d'en lire le schema.</b>
+     *
+     * <p>La clause se reclamait de ce que le navigateur execute, et son encodage suivait une
+     * normalisation plus faible que la sienne : {@code stripLeading()} ne retire que l'espace en
+     * tete. <b>Le defaut n'etait pas dans la derivation des trois porteurs, il etait dans
+     * l'implementation de l'un d'eux</b> - trouve par {@code yanis-qa}, encode rouge a
+     * {@code 77e2385}.</p>
+     *
+     * <p>Les deux etapes ci-dessous sont celles du parseur d'URL du WHATWG URL Standard, dans son
+     * ordre, et non une liste de caracteres relevee sur un incident :</p>
+     * <ol>
+     *   <li><b>suppression de toute tabulation et de tout retour a la ligne ASCII</b> (U+0009,
+     *       U+000A, U+000D) <b>partout dans l'entree</b>, pas seulement en tete ;</li>
+     *   <li><b>retrait des controles C0 et de l'espace</b> en tete et en queue - soit tout ce qui
+     *       vaut U+0020 ou moins, ce que {@code stripLeading()} ne fait pas : il ignore U+0000 a
+     *       U+0008 et U+000E a U+001F.</li>
+     * </ol>
+     *
+     * <p>Le schema est ensuite compare <b>sans egard a la casse</b>, comme le standard le prescrit.
+     * <b>Ce qui n'est deliberement pas fait, et c'est mesure</b> : aucun decodage de pourcentage.
+     * Un navigateur ne pourcent-decode pas un schema, donc {@code %6Aavascript:} n'est pas une URL
+     * javascript - le traiter comme telle serait un faux rouge, et le cas est epingle vert par
+     * {@link #uneUrlPourcentEncodeeNEstPasUneUrlJavascript}.</p>
+     *
+     * <p><b>Le decodage des entites HTML n'a pas a etre fait ici</b> : l'analyseur le fait deja.
+     * Mesure du 2026-09-01 sur jsoup - {@code ja&#9;vascript:} rend la valeur {@code ja<TAB>vascript:},
+     * {@code java&NewLine;script:} rend un U+000A, {@code java&#13;script:} un U+000D. Les quatre
+     * ecritures arrivent donc ici sous leur forme decodee et sont couvertes par l'etape 1.</p>
+     */
+    private static String urlNormaliseeCommeUnNavigateur(String valeur) {
+        StringBuilder sansTabulationNiRetour = new StringBuilder(valeur.length());
+        for (char signe : valeur.toCharArray()) {
+            if (signe != '\t' && signe != '\n' && signe != '\r') {
+                sansTabulationNiRetour.append(signe);
+            }
+        }
+        int debut = 0;
+        int fin = sansTabulationNiRetour.length();
+        while (debut < fin && sansTabulationNiRetour.charAt(debut) <= ' ') {
+            debut++;
+        }
+        while (fin > debut && sansTabulationNiRetour.charAt(fin - 1) <= ' ') {
+            fin--;
+        }
+        return sansTabulationNiRetour.substring(debut, fin).toLowerCase(Locale.ROOT);
+    }
+
+    /**
      * ADR-0074 : le prefixe de gabarit est retire avant le test du nom. Les deux ecritures que
      * Thymeleaf accepte sont traitees - celle des documents qui declarent l'espace de noms, celle
      * des documents qui ne le peuvent pas.
@@ -353,7 +438,7 @@ class FrontieresDuJavaScriptTest {
                         porteurs.add(gabarit + " : l'attribut " + attribut.getKey()
                                 + " lie du JavaScript a un evenement");
                     }
-                    if (attribut.getValue().stripLeading().toLowerCase(Locale.ROOT)
+                    if (urlNormaliseeCommeUnNavigateur(attribut.getValue())
                             .startsWith("javascript:")) {
                         porteurs.add(gabarit + " : l'attribut " + attribut.getKey()
                                 + " porte une URL de schema javascript:");
@@ -407,5 +492,108 @@ class FrontieresDuJavaScriptTest {
         } catch (IOException echec) {
             throw new UncheckedIOException(echec);
         }
+    }
+
+    /**
+     * <b>ADR-0074 clause 3 : les trois autres ecritures de la meme famille, mutees sur le gabarit
+     * reel.</b> {@code yanis-qa} n'en avait mute qu'une - la tabulation nue -, et une famille
+     * mesuree sur un seul cas est un incident, pas un perimetre.
+     *
+     * <p>Les trois passent par une etape distincte de la normalisation : le <b>controle C0 en
+     * tete</b>, que {@code stripLeading()} ne retire pas ; la <b>tabulation ecrite en entite</b>,
+     * qui prouve que l'analyseur decode avant nous ; le <b>retour a la ligne nomme</b>, meme etape 1
+     * que la tabulation. Chacune est verifiee rouge separement, sans quoi une seule d'entre elles
+     * pourrait porter les trois.
+     */
+    @Test
+    void lesAutresEcrituresDUnSchemaJavascriptFontEchouerLeGardeFou() throws IOException {
+        record Ecriture(String nom, String href) {
+        }
+        List<Ecriture> ecritures = List.of(
+                new Ecriture("controle-c0-en-tete", "&#1;javascript:sessionStorage.clear()"),
+                new Ecriture("tabulation-en-entite", "ja&#9;vascript:sessionStorage.clear()"),
+                new Ecriture("retour-ligne-nomme", "java&NewLine;script:sessionStorage.clear()"));
+
+        for (Ecriture ecriture : ecritures) {
+            Path racine = copieDesGabarits(tempo.resolve("schema-" + ecriture.nom()));
+            LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest.muterUneSeuleFois(
+                    racine.resolve("accueil.html"),
+                    "<script defer th:src=\"@{/js/recreo.js}\"></script>",
+                    "<a href=\"" + ecriture.href() + "\">tricher</a>"
+                            + "<script defer th:src=\"@{/js/recreo.js}\"></script>");
+
+            assertThatThrownBy(() -> verifierQuAucunGabaritNePorteDeJavaScript(racine))
+                    .as("ADR-0074 clause 3 : %s - un navigateur normalise cette URL en javascript:",
+                            ecriture.nom())
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("javascript:");
+        }
+    }
+
+    /**
+     * <b>ADR-0074 clause 3, le cote qui doit rester vert : un navigateur ne pourcent-decode pas un
+     * schema.</b> {@code %6Aavascript:} n'est pas une URL javascript et ne s'execute pas ; la
+     * declarer fuitee serait un faux rouge. <b>Une normalisation qui va plus loin que celle du
+     * navigateur est aussi fausse qu'une qui va moins loin</b>, et c'est la borne de la correction.
+     */
+    @Test
+    void uneUrlPourcentEncodeeNEstPasUneUrlJavascript() throws IOException {
+        Path racine = copieDesGabarits(tempo.resolve("schema-pourcent-encode"));
+        LaLargeurOffreeAUneRangeeEstUneFonctionEpingleeTest.muterUneSeuleFois(
+                racine.resolve("accueil.html"),
+                "<script defer th:src=\"@{/js/recreo.js}\"></script>",
+                "<a href=\"%6Aavascript:sessionStorage.clear()\">lien</a>"
+                        + "<script defer th:src=\"@{/js/recreo.js}\"></script>");
+
+        verifierQuAucunGabaritNePorteDeJavaScript(racine);
+    }
+
+    /**
+     * <b>ADR-0074 clause 2 : la meme hypothese de normalisation faible y est cherchee, et elle n'y
+     * est pas.</b> La question est de {@code sofia-sm} : la comparaison de <b>nom d'attribut</b>
+     * se laisse-t-elle contourner comme la clause 3 se laissait contourner ?
+     *
+     * <p><b>Mesure du 2026-09-01, et c'est l'analyseur qui repond</b> : une tabulation dans un nom
+     * d'attribut ne produit pas un gestionnaire deforme, elle <b>termine le nom</b>. La source
+     * {@code on<TAB>click="x()"} rend <b>deux</b> attributs - {@code on}, vide, et {@code click} -
+     * dont aucun n'est un gestionnaire d'evenement, ni pour le navigateur ni pour cette clause. La
+     * casse, elle, est repliee par l'analyseur avant nous : {@code ONCLICK} arrive en
+     * {@code onclick} et {@code hx-on:CLICK} en {@code hx-on:click}.</p>
+     *
+     * <p><b>Ce test epingle la mesure plutot que de la laisser en prose</b> : si un analyseur futur
+     * cessait de scinder ou de replier la casse, il rougirait ici au lieu d'ouvrir un porteur en
+     * silence. C'est la difference entre une clause verifiee et une clause supposee - celle qui a
+     * coute le quatrieme porteur.</p>
+     */
+    @Test
+    void unNomDAttributNeSeLaissePasDeformerCommeUneUrl() {
+        Document coupe = Jsoup.parse("<a on\tclick=\"x()\">t</a>", "", Parser.htmlParser());
+        List<String> noms = new ArrayList<>();
+        for (Element element : coupe.getAllElements()) {
+            for (Attribute attribut : element.attributes()) {
+                noms.add(attribut.getKey());
+            }
+        }
+        assertThat(noms)
+                .as("une tabulation termine un nom d'attribut : elle ne fabrique aucun gestionnaire")
+                .containsExactly("on", "click");
+        assertThat(noms.stream().map(FrontieresDuJavaScriptTest::nomLocal)
+                .filter(FrontieresDuJavaScriptTest::lieDuJavaScriptAUnEvenement).toList())
+                .as("et aucun des deux fragments n'est un gestionnaire d'evenement")
+                .isEmpty();
+
+        Document casse = Jsoup.parse("<a ONCLICK=\"x()\" hx-on:CLICK=\"y()\">t</a>", "",
+                Parser.htmlParser());
+        List<String> gestionnaires = new ArrayList<>();
+        for (Element element : casse.getAllElements()) {
+            for (Attribute attribut : element.attributes()) {
+                if (lieDuJavaScriptAUnEvenement(nomLocal(attribut.getKey()))) {
+                    gestionnaires.add(attribut.getKey());
+                }
+            }
+        }
+        assertThat(gestionnaires)
+                .as("la casse d'un nom d'attribut est repliee par l'analyseur avant cette clause")
+                .containsExactlyInAnyOrder("onclick", "hx-on:click");
     }
 }

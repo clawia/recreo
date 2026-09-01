@@ -298,3 +298,121 @@ l'arbre.**
   et a qui il s'adresse ne sont pas ici.
 - **Il ne rouvre aucun Done** : les six gabarits servis passent sans modification, mesure ci-dessus.
 - **Il ne price aucun sprint** et ne range aucune dette : le rang appartient a `camille-po`.
+
+---
+
+## Amendement du 2026-09-01 - la clause 3 se reclamait du navigateur et normalisait moins que lui
+
+**Statut apres cet amendement : Accepte, amende le 2026-09-01.** Le texte ci-dessus n'est pas
+efface : sa **derivation** est intacte, c'est l'**implementation** d'un de ses trois porteurs qui
+etait fautive.
+
+### A.1 Le fait, trouve par `yanis-qa`
+
+Branche `s26-yanis`, commit `77e2385`, methode encodee **rouge** dans
+`FrontieresDuJavaScriptTest`. Mutation d'une copie du gabarit reel :
+
+```html
+<a href="ja&#9;vascript:sessionStorage.clear()">tricher</a>
+```
+
+**Le garde-fou reste vert.** La clause testait
+`attribut.getValue().stripLeading().toLowerCase(Locale.ROOT).startsWith("javascript:")`, et
+`stripLeading()` ne retire l'espace **qu'en tete de chaine**. Un navigateur, lui, retire les
+tabulations et les retours a la ligne **partout dans l'entree** avant d'en lire le schema, puis
+executerait ce lien.
+
+*Reproduit par `theo-archi` sur son propre arbre avant toute correction : `bash outils/mvn-jdk21.sh
+-B -o -pl adapters/adapter-web -am test -Dtest=FrontieresDuJavaScriptTest`, **10 tests, 1 echec**.
+Perimetre : le module `adapter-web` et ses amonts, `-am` porte.*
+
+### A.2 Ou est le defaut, et il n'est pas ou on l'attendrait
+
+**La section 3 de cet `ADR` derive ses trois porteurs de ce que le navigateur execute, et cette
+derivation tient.** Le quatrieme porteur que `yanis-qa` nomme n'en est pas un quatrieme : c'est le
+**troisieme**, mal reconnu.
+
+> **La regle promettait ce que le navigateur fait ; son encodage faisait moins.** Une clause qui
+> invoque une source normative et n'en applique qu'une partie est une promesse plus large que ce
+> qu'elle verifie - la famille de defaut de ce sprint, ici sur la definition d'une URL.
+
+**Ce que cela dit de la methode, et qui vaut au-dela de ce cas** : j'avais mesure `hx-on` sur la
+bibliotheque vendorisee plutot que de m'en remettre a mon souvenir, et j'ai laisse la clause voisine
+sur une normalisation que je n'ai pas mesuree. **Le meme `ADR` porte donc les deux gestes**, et
+c'est celui qui n'a pas ete mesure qui a cede.
+
+### A.3 Le remede, derive de la meme source que la regle
+
+La comparaison se fait desormais sur une valeur normalisee **par les etapes du parseur d'URL du
+WHATWG URL Standard**, dans son ordre, et non par une liste de caracteres relevee sur l'incident :
+
+1. **suppression de toute tabulation et de tout retour a la ligne ASCII** - U+0009, U+000A, U+000D -
+   **partout dans l'entree** ;
+2. **retrait des controles C0 et de l'espace** en tete et en queue, soit tout ce qui vaut U+0020 ou
+   moins. `stripLeading()` ne le faisait pas : il ignore U+0000 a U+0008 et U+000E a U+001F ;
+3. comparaison du schema **sans egard a la casse**.
+
+**Ce qui n'est deliberement pas fait, et c'est une borne, pas un oubli** : aucun decodage de
+pourcentage. Un navigateur ne pourcent-decode pas un schema, donc `%6Aavascript:` **n'est pas** une
+URL javascript. **Une normalisation qui va plus loin que celle du navigateur est aussi fausse
+qu'une qui va moins loin** ; le cas est epingle vert par `uneUrlPourcentEncodeeNEstPasUneUrlJavascript`.
+
+**Et ce qui n'a pas a etre fait ici parce que l'analyseur le fait deja** - mesure du 2026-09-01 sur
+jsoup, quatre cas : `ja&#9;vascript:` rend une tabulation reelle, `java&NewLine;script:` un U+000A,
+`java&#13;script:` un U+000D, `&#1;javascript:` un U+0001. **Les entites arrivent decodees**, donc
+l'etape 1 les couvre sans qu'aucune connaissance des entites HTML n'entre dans cette clause.
+
+### A.4 Les morsures - une famille, pas un incident
+
+`yanis-qa` n'avait mute qu'une ecriture. **Une famille mesuree sur un seul cas est un incident, pas
+un perimetre** : trois ecritures de plus sont mutees sur le gabarit reel, **chacune verifiee rouge
+separement**, sans quoi une seule d'entre elles pourrait porter les trois.
+
+| Ecriture | Etape de la normalisation qu'elle exerce | Verdict |
+|---|---|---|
+| `ja<TAB>vascript:` (de `yanis-qa`, conservee) | 1 - tabulation nue au milieu du schema | **rouge** |
+| `&#1;javascript:` | 2 - controle C0 en tete, que `stripLeading()` ignore | **rouge** |
+| `ja&#9;vascript:` | 1 - via le decodage d'entite de l'analyseur | **rouge** |
+| `java&NewLine;script:` | 1 - retour a la ligne nomme | **rouge** |
+| `%6Aavascript:` | **aucune** - ce n'est pas une URL javascript | **vert, et c'est la borne** |
+
+**Preuve par retrait** : la normalisation ramenee a `stripLeading()`, **2 des 13 tests de la classe
+rougissent** - celui de `yanis-qa` et le mien. *Mesure faite par mutation du fichier reel puis
+restauration.*
+
+**Le nom de la methode de `yanis-qa` est change et son corps ne l'est pas.** Elle s'appelait
+`...EchappeAuGardeFou`, ce qui decrivait exactement l'etat de `77e2385` et **serait faux ici** : le
+cas est desormais rouge sur le gabarit mute et vert sur le gabarit servi, donc c'est une morsure. Sa
+mutation, son motif et sa citation du standard sont intacts - **c'est lui qui a trouve le porteur**.
+
+### A.5 Les deux autres clauses, cherchees et non supposees
+
+`sofia-sm` demande si les clauses 1 et 2 font la meme hypothese de normalisation faible. **Mesure,
+pas raisonnement** - jsoup, le 2026-09-01 :
+
+| Cas | Ce que l'analyseur rend | Consequence |
+|---|---|---|
+| `on<TAB>click="x()"` | **deux** attributs : `on` (vide) et `click` | **aucun gestionnaire** - une tabulation *termine* un nom d'attribut, elle ne le deforme pas |
+| `ONCLICK="x()"` | `onclick` | la casse est repliee par l'analyseur avant la clause |
+| `hx-on:CLICK="y()"` | `hx-on:click` | idem |
+
+> **La clause 2 n'a pas la faiblesse de la clause 3, et c'est mesure plutot qu'affirme.** La
+> difference tient a la nature des deux objets : une **URL** est une chaine que le navigateur
+> normalise apres l'analyse, un **nom d'attribut** est produit par l'analyse elle-meme.
+
+**La clause 1 n'a pas d'objet normalisable** : elle lit la presence de `src` ou `th:src` - noms
+d'attributs, donc replies par l'analyseur, cas ci-dessus - et le texte de l'element.
+
+**Ces mesures sont epinglees par un test** (`unNomDAttributNeSeLaissePasDeformerCommeUneUrl`) plutot
+que laissees en prose : si un analyseur futur cessait de scinder ou de replier la casse, il rougirait
+au lieu d'ouvrir un porteur en silence. **C'est exactement la difference entre une clause verifiee
+et une clause supposee - celle qui a coute ce quatrieme porteur.**
+
+### A.6 Porte technique
+
+`bash outils/mvn-jdk21.sh -B -o clean verify` sur la racine, arbre `s26-theo-reco` : **BUILD
+SUCCESS**, **1 083 tests, 0 echec, 0 erreur** - domain 82, application 13, `adapter-web` **381**,
+`adapter-content` 451, `bootstrap` 150, plus 6 en failsafe. Les quatre tests de plus dans
+`adapter-web` sont ceux de cet amendement. **JDK 21.0.10**, rapporte par la machine virtuelle des
+tests. *Methode : somme de l'attribut `tests` de chaque rapport XML de surefire et de failsafe apres
+`clean`, les deux moteurs comptes.*
