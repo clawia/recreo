@@ -32,8 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * est une <b>lettre unique</b> (l'initiale du mot que l'adulte doit prononcer en entier, VOI-7) :
  * elle est donc mecaniquement une sous-chaine du mot lui-meme, par construction et non par defaut
  * d'ecriture - "papa" contient "p" quel que soit le mot choisi pour cette lettre. Le crochet
- * partage reste volontairement non branche sur le contenu de production ; le constat complet est
- * dans le rapport de ce lot, route a sofia-sm.</p>
+ * partage est branche sur le contenu de production et ce paquet y passe.</p>
  */
 class PaquetCpLettreDuSonTest {
 
