@@ -441,3 +441,386 @@ apres les quatre `non couvrable en l'etat`. *Perimetre : ce seul fichier.*
 - Il **n'efface rien** : mes refus du 2026-08-31 sur trois de ces lignes restent lisibles a leur
   place, avec leurs motifs - **qui portaient tous sur la forme ecrite, et qu'un adulte qui parle rend
   sans objet**. `SYL-1` a `SYL-4` restent valables pour un corpus enregistre.
+
+---
+
+# Addendum du 2026-09-01 (second du jour) - trois reponses demandees, et un trou trouve dans mes propres conditions
+
+- **Auteure** : `nadia-prof`.
+- **Demande** : `sofia-sm`, sur trois points - la question des graphemes routee par `camille-po`
+  (`DEC-0067`, B.4), ma borne, et la clause verifiable de `VOI-12` avant que l'objet d'`ines-design`
+  n'existe.
+- **Ce que cet addendum ne fait pas** : il n'efface rien du document ci-dessus, ne prononce aucun
+  Done, ne bouge aucune ligne de matrice, n'ecrit aucune story et ne decide rien de technique.
+- **Methode** : j'ai mesure sur le contenu reel, pas sur l'idee du contenu. Les trois paquets qui
+  portent mes mesures sont nommes en 11.1 avec leur arbre (`451ff2d`, identique a `96a80b4` sur
+  `adapters/` et `contenu-repris/`). Aucun module n'est compile : la question du `-am` ne se pose
+  pas.
+
+---
+
+## 11. La ligne des graphemes : **DEUX paquets**, et le motif est mesure
+
+`camille-po` demande : *"Un seul paquet neuf servant les deux clauses satisfait-il la barre du
+2026-08-10, ou en faut-il deux ?"*
+
+**Ma reponse : deux. Et je ne la fonde pas sur ma preference, je la fonde sur ce qui est arrive la
+seule fois ou ce depot a melange deux familles de graphemes dans un paquet.**
+
+### 11.1 Le materiel que j'ai mesure
+
+| Fichier | Ce qu'il est | Items |
+|---|---|---|
+| `contenu-repris/mots/cp-le-bon-son.yml` | la version d'origine, **6 sons melanges** : `an`, `on`, `in`, `ou`, `oi`, `ch`. **C'est le paquet que j'ai refuse le 2026-08-06** | 24 |
+| `adapters/adapter-content/src/main/resources/contenu/cp-le-bon-son.yaml` | la recomposition de s06 qui a paye ce refus : **3 nasales seules** | 15 |
+| `contenu-repris/mots/cp-premiere-lettre.yml` | le seul materiel existant qui ressemble a la clause 1 - **une lettre simple par item** | 24 |
+
+*Perimetre des comptes ci-dessous : ces trois fichiers, lus a `451ff2d`. Distracteurs explicites
+dans les trois cas - `round-two` n'a pas de mode `pool`, ce que le commentaire de tete de
+`cp-syllabes.yaml` affirme et que j'ai verifie : aucun `distractorMode` dans le code servi.*
+
+### 11.2 La mesure qui decide - une famille minoritaire devient une signature
+
+Je compte, pour chaque son, combien de fois il est **bonne reponse** et combien de fois il est
+**distracteur**. Le rapport dit ce que vaut la strategie *"si ce son est a l'ecran, c'est lui"*.
+
+**Version d'origine, 6 sons melanges - 24 items :**
+
+| Son | Bonne reponse | Distracteur | P(bonne / presente) |
+|---|---|---|---|
+| `an` | 3 | 9 | 25,0 % |
+| `in` | 4 | 7 | 36,4 % |
+| `oi` | 4 | 12 | 25,0 % |
+| `on` | 4 | 9 | 30,8 % |
+| `ou` | 5 | 11 | 31,2 % |
+| **`ch`** | **4** | **0** | **100,0 %** |
+
+**Recomposition servie, 3 nasales - 15 items :**
+
+| Son | Bonne reponse | Distracteur | P(bonne / presente) |
+|---|---|---|---|
+| `an` | 5 | 10 | 33,3 % |
+| `in` | 5 | 10 | 33,3 % |
+| `on` | 5 | 10 | 33,3 % |
+
+**Le contraste est le motif entier.** Dans le paquet melange, `ch` - la seule consonne parmi cinq
+voyelles, donc la famille minoritaire - **n'est jamais distracteur**. Quatre items sur vingt-quatre
+se gagnent sans rien entendre ni rien lire : la reponse est la seule proposition qui ne ressemble pas
+aux deux autres. Dans le paquet homogene, les trois sons sont a **33,3 % exactement**, et la
+strategie ne rend rien.
+
+**Personne n'a fait cela expres.** C'est ce qu'un auteur fait naturellement : il choisit des
+distracteurs *"du meme genre"* que la bonne reponse, et une famille minoritaire n'a personne du meme
+genre pour lui servir de distracteur. **Le melange produit la fuite tout seul**, et c'est ce qui rend
+le fait generalisable : il ne depend d'aucune negligence.
+
+### 11.3 Je corrige mon propre constat du 2026-08-06 avant de m'appuyer dessus
+
+Ma reserve 3 du 2026-08-06 disait : *"`ch` n'est pas de la meme nature que les cinq autres reponses
+[...] Les melanger dans le meme tirage sans que l'enfant sache jamais s'il cherche une voyelle ou une
+consonne **augmente la charge sans rien apprendre**."*
+
+**J'avais raison de refuser et faux sur le motif.** J'ai decrit une charge cognitive ; la mesure dit
+une **fuite de reponse**. Ce n'est pas la meme famille de defaut, ce n'est pas la meme gravite, et
+c'est la famille de `CON-5` et de `CON-6` - une reponse qui sort par un canal que personne
+n'inspecte. Le canal, ce jour-la, c'etait moi. **Je le dis parce que c'est le constat sur lequel
+`camille-po` me demande de trancher, et un motif faux qui donne le bon verdict reste un motif faux.**
+
+### 11.4 Le second motif, et celui-la est de ma main d'auditrice
+
+**Les conditions que je peux ecrire sur les deux moities ne sont pas les memes, et aucune formulation
+ne les reunit.**
+
+| | Clause 1 - voyelles et consonnes simples | Clause 2 - `ou`, `oi`, `ch` |
+|---|---|---|
+| Espace de reponse | **une vingtaine de lettres** (22 dans `cp-premiere-lettre`) | **exactement trois** |
+| Condition de distribution que je peux exiger | *"chaque lettre servie est distracteur au moins aussi souvent qu'elle est reponse"* - la seule qui ait un sens sur un espace ouvert | *"chacun des trois est reponse sur un tiers des items"*, la condition qui rend les 33,3 % ci-dessus |
+| Forme de l'exercice | l'adulte dit un mot, l'enfant choisit **une lettre** | l'adulte dit un mot, l'enfant choisit **un digraphe** parmi trois stables |
+| Ce que l'enfant apprend | le principe alphabetique : une lettre, un son | l'exception au principe : **deux lettres, un son** |
+
+**La condition de la colonne de droite est inapplicable a gauche** - un tiers de 22 lettres n'a aucun
+sens - **et celle de gauche ne mord rien a droite**. Un paquet unique devrait porter les deux jeux de
+conditions dans un seul fichier, chacun ne s'appliquant qu'a une part des items. **C'est exactement la
+forme de `CON-6` : une clause juste en intention, dont l'extension n'attrape pas le materiau qui l'a
+motivee.** Je ne vais pas fabriquer cette forme-la de mes propres mains le jour ou j'en ai trouve
+sept en deux sprints.
+
+**Et la derniere ligne du tableau est le motif de fond** : la clause 2 n'existe comme apprentissage
+que **par contraste avec la clause 1**. Un enfant qui apprend que `ch` fait un son apprend une
+exception ; noyer l'exception parmi les regles n'enseigne pas l'exception, cela l'efface.
+
+### 11.5 Ce que j'ai cherche et que je n'ai pas trouve, et je le dis
+
+**J'ai cherche la forme du paquet unique qui echapperait aux deux motifs.** Elle existe sur le
+papier : imposer que chaque digraphe soit distracteur aussi souvent qu'il est reponse, y compris sur
+des items dont la reponse est une lettre simple - l'adulte dit *"rat"*, l'enfant choisit entre `r`,
+`ch` et `a`. **Cet item est jouable.** Mais il porte la clause 2 a parite avec la clause 1 sur un
+espace de 22 lettres : il faudrait autant d'items a digraphe que d'items a lettre, et la clause 1
+n'aurait plus la place de couvrir ses voyelles et ses consonnes. **Le paquet unique existe et il ne
+tient pas dans un paquet.** Je ferme cette direction plutot que de la laisser ouverte, comme j'ai
+ferme celle des digraphes sans son le 2026-08-06.
+
+### 11.6 Ce que cela donne a `camille-po`
+
+**Cinq paquets, pas quatre.** Le tableau de `DEC-0067`, B.4, se lit desormais sans son *"1 ou 2"* :
+
+| Ligne | Paquets |
+|---|---|
+| Localiser une syllabe | 1 |
+| Identifier un son (phoneme) | 1 |
+| **Associer les graphemes aux phonemes** | **2** - clause 1 et clause 2, separees |
+| Ecrire de maniere autonome un mot simple | 1 |
+| **Total** | **5** |
+
+**Et une consequence d'arithmetique qui est de mon perimetre, parce qu'elle porte sur ma barre** : la
+ligne des graphemes ne passe a `couvert-valide` **que si les deux paquets sont livres**. Ma barre du
+2026-08-10 exige les clauses 1 **et** 2. **Livrer un seul des deux depense un paquet et ne ferme
+aucune ligne** - la ligne reste `en cours`, comme depuis s03. C'est un fait de composition, pas une
+priorisation : le rang reste a `camille-po`.
+
+---
+
+## 12. Ma borne - **confirmee a 5, sans marge**, et chiffree
+
+### 12.1 Ce que je ne bouge pas
+
+**Quatre a cinq paquets de contenu par sprint sur une mecanique existante.** Inchange depuis s22,
+reconfirme a s24 et a s25, **reconfirme ici**. Je ne la releve pas parce que le sprint en demande
+cinq, et je ne la baisse pas parce que la famille est neuve.
+
+**Le compte de `camille-po` est confirme, et il tombe au plafond, pas au milieu** : les cinq paquets
+de 11.6 consomment ma borne haute. **Il n'y a aucune marge.** Si un sixieme paquet apparait - une
+reprise de dette, un correctif de contenu, un paquet qu'on croit *"petit"* -, **je decline par ecrit**
+(`C3`) plutot que d'echantillonner. C'est la meme phrase qu'a s25 et elle vaut pareil ici.
+
+### 12.2 Ce que je m'engage a jouer, en nombres
+
+| Ce que je porte | Compte |
+|---|---|
+| Paquets neufs a voix | **5** |
+| Items par paquet, **plafond que j'oppose** | **20** |
+| Items neufs joues, **plafond** | **100** |
+| Items de `cp-le-bon-son.yaml` a rejouer | **0 si le fichier est inchange, 15 s'il est touche** |
+| **Plafond total d'items** | **115** |
+| Ecrans d'adulte a juger (`VOI-12`, contenu) | **au moins 5**, un par interdit distinct - sections 13 et 14.3 |
+
+**La ligne conditionnelle est verifiable par un tiers sans me demander ce que je voulais dire** : si
+`git diff 96a80b4 -- adapters/adapter-content/src/main/resources/contenu/cp-le-bon-son.yaml` est
+vide, la clause 3 de ma barre du 2026-08-10 est tenue par constat et je ne rejoue pas ses 15 items.
+**Un seul octet modifie, et ses 15 items rentrent dans mon compte** - parce que la clause 3 exige des
+proprietes que je verifie item par item, dont *"aucun item resoluble par appariement visuel"*, qu'aucun
+test ne tient a ma place.
+
+**Un plafond de 20 items par paquet est ce que le catalogue rend deja** : sur les 16 paquets CP
+servis, aucun ne depasse 24 items et la mediane est a 16. Je borne a 20 pour que ce nombre soit une
+borne et non une description.
+
+### 12.3 Pourquoi la famille a voix ne coute pas plus cher **par item** - et c'est contre-intuitif
+
+**Elle coute autant, et je donne la raison exacte plutot que de la faire supposer.**
+
+Ce que j'ajoute par item : lire a voix haute le texte de l'adulte, puis repondre. Ce que je retire :
+**rien**. Ce qui devrait couter et ne coute rien : **`VOI-3`, `VOI-5` et `VOI-8` ne me coutent aucune
+minute d'audit, parce que je ne peux pas les auditer du tout.** Je l'ai ecrit en 7.1 et je le tire ici
+jusqu'a sa consequence de planning, qui est desagreable : **trois conditions gratuites pour moi sont
+trois conditions que personne ne tient.** Ce n'est pas une economie, c'est un trou, et le seul
+paiement que le produit puisse faire est `VOI-12`.
+
+Et une chose que je fais deja sur `cp-le-bon-son` depuis le 2026-08-10, ecrite dans sa fiche section
+7 : *"Que le mot fasse reellement le son annonce [...] Aucun test ne sait prononcer."* **Je prononce
+deja les items pour les auditer.** La famille a voix ne m'apprend pas a le faire, elle rend visible ce
+que je faisais deja.
+
+### 12.4 Ce que la reponse de `theo-archi` changerait - **dit d'avance, comme demande**
+
+`camille-po` route a `theo-archi` : *"la famille a voix est-elle un champ d'item ou une mecanique ?"*,
+avec `ADR-0073` pour precedent. **Voici mes deux prix, ecrits avant de connaitre sa reponse.**
+
+| Sa conclusion | Ma borne | Ce que je dois faire en plus | Lignes que s26 peut fermer |
+|---|---|---|---|
+| **Champ d'item** (le cas d'`ADR-0073`) | **5 paquets, inchangee** | rien : l'ecran de l'adulte, je le juge de toute facon par `VOI-12` | **4 sur 4** - plafond 35 / 41 = **85,4 %** |
+| **Mecanique** | **4 paquets** | l'audit de mecanique, du type `SEUIL-1` a `SEUIL-5`, **plus un chemin qui n'existe sur aucune mecanique servie** : ce que l'ecran dit a l'adulte **apres une erreur et sur l'ecran de revelation** | **3 sur 4** - plafond 34 / 41 = **82,9 %** |
+
+**Pourquoi le cas *"champ d'item"* ne coute rien de plus, et ce n'est pas de la complaisance** : le
+seul objet neuf que la famille a voix ajoute a auditer est **l'ecran a deux destinataires**, et
+`VOI-12` m'oblige a le juger quelle que soit la reponse de `theo-archi`. **Le cout est deja dans mon
+assiette ; l'etiquette ne le double pas.** C'est le meme raisonnement qu'a s25 sur le palier 1
+visuel, et je l'applique dans le meme sens.
+
+**Pourquoi le cas *"mecanique"* coute un paquet** : parce qu'il ajoute un chemin que je n'ai jamais
+audite. **Sur l'ecran de revelation de `M5`, la mecanique servie affiche la bonne reponse.** Si un
+adulte a un texte a lire sur cet ecran-la - ou s'il lit celui de l'enfant faute d'en avoir un -, **il
+dira la reponse a voix haute**. Ce n'est plus `VOI-1`, qui gouverne le stimulus : c'est le moment de
+la correction, que `VOI-1` ne couvre pas. **Ce chemin doit etre audite ecran par ecran**, et c'est ce
+que je price a un paquet, comme la mecanique visuelle a s25.
+
+**Si sa conclusion est *"mecanique"*, une des quatre lignes ne tient pas dans s26.** Le choix est a
+`camille-po` et je ne le fais pas ; **le fait d'arithmetique que je lui dois, lui, est en 11.6** :
+sacrifier une moitie de la ligne des graphemes depense un paquet pour zero ligne. Les deux moities
+partent ensemble ou ne partent pas.
+
+---
+
+## 13. `VOI-12` - la clause verifiable, ecrite **avant** l'objet d'`ines-design`
+
+**Pourquoi je l'ecris maintenant** : `VOI-12` est ma seule exigence bloquante, et une exigence
+bloquante dont le critere se decouvre au moment du verdict est un caprice. La clause ci-dessous est
+datee du 2026-09-01, **anterieure a l'objet**, et je m'interdis de la durcir sur piece : si je vois
+plus loin en jouant, je l'ecrirai comme une reserve nouvelle et datee, pas comme une relecture de
+celle-ci.
+
+### 13.1 La clause
+
+> **`VOI-12` est TENUE si et seulement si les cinq points ci-dessous sont vrais. Un seul faux, et elle
+> est NON TENUE, et je refuse le paquet.**
+>
+> **1. Presence, sans geste.** Sur **chaque ecran ou un texte destine a l'adulte est affiche** - ecran
+> d'item, ecran d'erreur, ecran de revelation -, la phrase qui lui dit ce qu'il ne doit pas faire est
+> presente **en meme temps** que le texte qu'il lit, **immediatement contigue** a lui, **sans qu'aucune
+> interaction ne soit necessaire** : pas de clic, pas de survol, pas de depliement, pas d'onglet.
+> *Verifiable sur une capture de l'ecran, sans outil : les deux textes s'y lisent, et rien ne
+> s'intercale entre eux.*
+>
+> **2. Destinataire nomme.** La phrase, ou l'etiquette qui la porte, **nomme explicitement son
+> destinataire**. *Verifiable : un tiers qui n'a lu aucune documentation dit sans hesiter lequel des
+> deux textes est pour l'adulte et lequel est pour l'enfant. S'il doit le deduire, le point est faux.*
+>
+> **3. L'interdit est celui de CE paquet.** La phrase nomme **l'action precise** que l'adulte doit
+> eviter sur ce paquet-ci, et elle se rattache a **une et une seule** de mes conditions `VOI-3`,
+> `VOI-5`, `VOI-7`, `VOI-8`, `VOI-13`. *Verifiable : deux paquets dont les interdits different ne
+> portent pas la meme phrase. Une phrase identique sur deux paquets d'interdits differents rend le
+> point faux, meme si elle est juste.*
+>
+> **4. Lisible sans le depot.** **Une phrase**, un verbe d'action, des mots qu'un parent emploie.
+> **Aucun de ces mots n'y figure** : `grapheme`, `phoneme`, `digraphe`, `scansion`, `segmenter`,
+> `segmentation`, `item`, `paquet`, `mecanique`, ni aucun identifiant de condition (`VOI-`, `SEG-`,
+> `SAI-`...), ni aucun renvoi a un fichier. *Verifiable par recherche de chaine. Le mot `syllabe`
+> n'est pas interdit : un parent le connait.*
+>
+> **5. La phrase ne fuit pas.** Le texte destine a l'adulte **ne contient ni la bonne reponse, ni
+> aucune des propositions de l'item**. *Verifiable de la meme facon que `VOI-10`, et c'est le meme
+> calcul etendu a un cinquieme texte que `VOI-10` ne couvrait pas - section 14.*
+
+### 13.2 Je mesure ma clause sur le materiel qui la motive
+
+**C'est l'etape que `CON-6` m'a apprise a ne pas sauter.** Ce qui motive `VOI-12`, ce sont les
+interdits de la section 5.3. Je les prends un par un, j'ecris la phrase candidate, et je verifie que
+ma clause la trie.
+
+*Les phrases candidates ci-dessous sont accentuees : elles sont destinees a un ecran, pas a ce
+document. Leur orthographe et leur accentuation appartiennent au `relecteur-pedagogique`, pas a moi -
+je ne juge ici que le fond, le ton et le niveau.*
+
+| Paquet | Interdit | Phrase candidate | Ma clause la declare |
+|---|---|---|---|
+| Localiser une syllabe | `VOI-3` | *"Dites le mot normalement, sans le couper."* | **TENUE** - une phrase, un verbe d'action, aucun mot interdit, aucune proposition |
+| Identifier un son | `VOI-5` | *"Dites le mot normalement, sans appuyer sur aucun son."* | **TENUE** |
+| Graphemes, clause 2 | `VOI-7` | *"Dites le mot entier, jamais le son tout seul."* | **TENUE** |
+| Ecrire un mot | `VOI-8` | *"Dites le mot autant de fois qu'il le demande, mais ne l'épelez jamais."* | **TENUE** |
+| **Les cinq** | `VOI-13` | *"Ne montrez pas cette ligne à l'enfant."* | **TENUE** - section 14.3 |
+
+**Cinq interdits, cinq phrases distinctes.** Le point 3 est satisfait par construction, et c'est ce
+que je voulais verifier avant de rendre la clause.
+
+### 13.3 Les contre-tests - ce que ma clause doit **refuser**
+
+**Une clause qui ne refuse rien ne mesure rien.** Je lui soumets les cinq formes que je m'attends a
+recevoir.
+
+| Forme soumise | Ma clause rend | Par quel point |
+|---|---|---|
+| *"Lisez le texte a voix haute et ne donnez pas la reponse."*, **la meme sur les cinq paquets** | **NON TENUE** | **point 3** - elle ne se rattache a aucun de mes interdits, et elle est identique sur des interdits differents |
+| La phrase juste, mais **sous un bouton *"Conseils"*** ou en bas de page | **NON TENUE** | **point 1** - elle demande un geste, et l'adulte qui parle ne le fera pas |
+| *"Prononcez le mot sans scansion syllabique."* | **NON TENUE** | **point 4** - `scansion` ; et c'est le mot que j'emploierais moi, c'est bien pour cela que je l'ai interdit |
+| La phrase juste sur l'ecran d'item, **rien sur l'ecran de revelation** | **NON TENUE** | **point 1** - *"chaque ecran ou un texte destine a l'adulte est affiche"*. C'est le chemin de 12.4 |
+| Une phrase adressee a l'enfant : *"Demande a un grand de te lire le mot."* | **NON TENUE** | **point 2** - le destinataire est l'enfant ; l'interdit n'est dit a personne qui puisse le tenir |
+
+**Les cinq contre-tests tombent chacun par un point different.** Aucun point n'est decoratif, et aucun
+n'en rattrape un autre. **C'est ce que je voulais savoir avant de rendre la clause.**
+
+### 13.4 Ce qui reste dans ma seule main sur `VOI-12`, et je le nomme
+
+Les points 1, 4 et 5 sont calculables ; le point 3 l'est **partiellement** - qu'une phrase soit
+distincte d'une autre se calcule, qu'elle nomme le bon interdit non. **Le point 2 n'est calculable par
+personne** : qu'un tiers dise sans hesiter a qui s'adresse un texte est un jugement, et c'est le mien.
+**Je reste seule garde du point 2 et de la moitie du point 3, et l'equipe ne doit pas croire `VOI-12`
+couverte parce que des tests seront verts.**
+
+---
+
+## 14. **Le trou que j'ai trouve dans mes propres conditions** - `VOI-2` est insatisfaisable telle que je l'ai ecrite
+
+**Je l'ai trouve en mesurant `VOI-12` sur le materiel, pas en relisant ma prose.** C'est le point le
+plus important de cet addendum et il est contre moi.
+
+### 14.1 La contradiction, en trois lignes
+
+- **`VOI-2`, de ma main ce matin** : *"Le mot n'est pas ecrit a l'ecran, ni en entier ni en partie."*
+- **Le texte 1, de ma main dans le meme document** : *"Ce que l'adulte dit a voix haute - l'adulte le
+  lit."* **Pour qu'il le lise, il est ecrit.** Et il est ecrit sur un ecran, parce que ce produit n'en
+  a qu'un : pas de persistance, pas de second appareil, `DEC-0028`.
+- **Donc `VOI-2` interdit ce que le texte 1 exige.** Aucun paquet ne peut satisfaire les deux. **Ma
+  condition d'existence des deux premieres lignes est insatisfaisable telle qu'elle est ecrite.**
+
+### 14.2 Ce que ma condition visait vraiment, et la mesure qui le prouve
+
+Le motif de `VOI-2` est mon refus du 2026-08-31 : *"le mot ecrit porte la reponse"*. **Ce que je
+crains n'est pas que le mot existe quelque part, c'est que l'enfant le lise au lieu de l'entendre.**
+
+**La mesure qui le montre, sur du contenu reel** : dans `contenu-repris/mots/cp-premiere-lettre.yml`,
+la bonne reponse est la premiere lettre du mot affiche sur **24 items sur 24**. Le mot est ecrit,
+l'enfant lit, l'exercice n'existe plus - **100 %, sans exception.** **Sous voix et mot cache, ce
+paquet devient un exercice reel ; mot visible, il est ce qu'il est aujourd'hui**, et c'est pour cela
+qu'il n'est pas au catalogue.
+
+**Et cela vaut sur les cinq paquets, sans exception** : le mot lu donne la position de la syllabe, le
+son a trouver, le digraphe a choisir, la lettre a choisir, et l'orthographe a taper. **Il n'y a pas un
+seul des cinq ou l'enfant qui lit le mot ne gagne pas sans la competence.**
+
+### 14.3 `VOI-13` - la condition neuve et datee qui remplace `VOI-2`
+
+**Je ne durcis pas `VOI-2` et je ne l'efface pas** : elle reste lisible ci-dessus avec sa date, et
+elle est fausse. **J'ecris a cote une condition neuve, datee du 2026-09-01.**
+
+> **`VOI-13` - Le mot travaille est ecrit une seule fois a l'ecran, dans le texte de l'adulte, et
+> nulle part ailleurs.** Il n'apparait ni dans la consigne de l'enfant, ni dans un enonce, ni dans une
+> proposition, ni dans un indice, ni dans un texte alternatif, ni sur l'ecran d'erreur, ni sur l'ecran
+> de revelation. *Calculable, et c'est `VOI-11` etendu a tous les ecrans du tour.*
+>
+> **Et ce que je ne peux pas tenir, dit franchement : rien n'empeche l'enfant de lire le texte de
+> l'adulte par-dessus son epaule.** Un enfant de CP lit peu et lentement ; un mot de deux syllabes, il
+> le lit. **C'est une quatrieme condition sans garde**, de la meme famille que `VOI-3`, `VOI-5` et
+> `VOI-8`, et le produit n'a qu'un levier : le dire a l'adulte. **`VOI-12` gagne donc un cinquieme
+> interdit**, qui vaut sur les cinq paquets - *"Ne montrez pas cette ligne à l'enfant."* ou une phrase
+> qui dise la meme chose. Elle est soumise aux cinq points de 13.1 comme les quatre autres, et elle
+> porte les *"au moins 4"* de mon premier compte a **au moins 5**.
+
+### 14.4 Ce que je route a `theo-archi` et a `ines-design`, sans decider a leur place
+
+**Je decris le symptome ; la cause est technique et n'est pas de moi.** Le texte de l'adulte doit etre
+lisible par lui, disponible autant de fois que l'enfant le demande (`VOI-8`), et **pas sous les yeux
+de l'enfant**. Ces trois exigences se contrarient sur un ecran unique. **Je ne dis pas comment on les
+concilie** - un placement, un geste d'adulte, une orientation d'appareil, autre chose. **Je dis
+qu'aucun paquet a voix n'est jouable tant que les trois ne tiennent pas ensemble**, et je le
+verifierai en jouant, avec quelqu'un qui regarde l'ecran comme un enfant le regarde, c'est-a-dire tout
+le temps.
+
+**Ce que je ne demanderai jamais, et je le reconduis ici** : aucun dispositif qui verifie ou qui capte
+ce qui se passe dans la piece. Section 7.4, inchangee.
+
+---
+
+## 15. Ce que je route, en plus des routages de la section 9
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **La ligne des graphemes se sert en DEUX paquets**, motif mesure (11) | `camille-po` | Le *"1 ou 2"* de `DEC-0067` B.4 se lit **2**. Total **5 paquets**, ma borne haute |
+| **Une seule moitie de la ligne des graphemes ferme zero ligne** (11.6) | `camille-po` | Fait de composition, pas une priorisation : les deux moities partent ensemble ou ne partent pas |
+| **Ma reserve 3 du 2026-08-06 avait un motif faux** - charge cognitive, la ou la mesure dit fuite de reponse (11.3) | `camille-po`, `sofia-sm` | Que le motif corrige soit celui qui circule. Le verdict d'alors ne change pas |
+| **Aucun garde-fou ne mesure `P(bonne / presente)`** - `ch` a 100 % sur le paquet d'origine (11.2) | `yanis-qa`, `theo-archi` | Une proposition qui n'est jamais distracteur est une signature. **Rien dans `adapter-content` ne l'epingle aujourd'hui**, je l'ai verifie test par test |
+| **Borne confirmee a 5 paquets, 100 items neufs, plafond 115** (12.2) | `camille-po`, `sofia-sm` | Aucune marge. Un sixieme paquet, je decline par ecrit (`C3`) |
+| **Mes deux prix, ecrits avant la reponse de `theo-archi`** (12.4) | `theo-archi`, `camille-po` | Champ d'item : 5 paquets, 4 lignes, 85,4 %. Mecanique : 4 paquets, 3 lignes, **82,9 %**. Le perimetre ne se decouvrira pas trop tard |
+| **L'ecran de revelation de `M5` est le chemin non audite** (12.4) | `theo-archi`, `ines-design` | Un adulte qui lit l'ecran de correction dit la reponse a voix haute. Ce n'est pas `VOI-1` : c'est un moment que `VOI-1` ne couvre pas |
+| **`VOI-12` a sa clause verifiable, ecrite avant l'objet** (13) | `ines-design`, `camille-po` | Cinq points, cinq phrases candidates qui passent, cinq contre-tests qui tombent. **Je ne la durcirai pas sur piece** |
+| **`VOI-2` est insatisfaisable, `VOI-13` la remplace** (14) | `theo-archi`, `camille-po`, `ines-design` | Le trou est de moi, trouve par moi, avant l'objet. **Aucun paquet a voix n'est jouable tant que les trois exigences de 14.4 ne tiennent pas ensemble** |
+| **Une quatrieme condition sans garde** - l'enfant peut lire le texte de l'adulte (14.3) | `sofia-sm` | Qu'elle rejoigne les trois de la section 7.1 dans le rapport de sprint. **Elles sont quatre maintenant, et la liste ne doit pas rester a trois** |
