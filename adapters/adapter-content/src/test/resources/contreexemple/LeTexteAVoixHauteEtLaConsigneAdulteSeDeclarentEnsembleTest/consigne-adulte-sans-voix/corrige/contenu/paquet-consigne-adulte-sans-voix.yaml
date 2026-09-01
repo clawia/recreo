@@ -1,0 +1,13 @@
+schema: 1
+id: paquet-consigne-adulte-sans-voix
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet corrige d'ADR-0075, jamais servi a un enfant"
+items:
+  - enonce: "Combien font deux et deux."
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Indice de fixture"

@@ -1,0 +1,9 @@
+schema: 1
+jeux:
+  - id: bandit-manchot-voix-sans-consigne-adulte
+    titre: "Jeu corrige"
+    consigne: "Ecoute bien"
+    consigneAdulte: "Dites le mot normalement, sans le couper."
+    mecanique: bandit-manchot
+    paquet: paquet-voix-sans-consigne-adulte
+    nombreDeManches: 2

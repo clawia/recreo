@@ -1,0 +1,15 @@
+schema: 1
+jeux:
+  - id: bandit-manchot-sain
+    titre: "Jeu sain"
+    consigne: "Ecoute bien"
+    consigneAdulte: "Dites le mot normalement, sans le couper."
+    mecanique: bandit-manchot
+    paquet: paquet-sain
+    nombreDeManches: 2
+  - id: bandit-manchot-sain-sans-voix
+    titre: "Jeu sain sans voix"
+    consigne: "Choisis la bonne reponse"
+    mecanique: bandit-manchot
+    paquet: paquet-sain-sans-voix
+    nombreDeManches: 2

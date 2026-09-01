@@ -210,3 +210,38 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-semaine
     nombreDeManches: 10
+  - id: bandit-manchot-position-syllabe-cp
+    titre: "La position du son"
+    consigne: "Écoute l'adulte lire le mot, puis dis si le son cherché est au début, au milieu ou à la fin."
+    mecanique: bandit-manchot
+    paquet: cp-position-syllabe
+    nombreDeManches: 10
+    consigneAdulte: "Dites le mot normalement, sans le couper."
+  - id: bandit-manchot-son-dans-mot-cp
+    titre: "Le son caché"
+    consigne: "Écoute le mot que l'adulte va dire, puis réponds oui ou non."
+    mecanique: bandit-manchot
+    paquet: cp-son-dans-mot
+    nombreDeManches: 10
+    consigneAdulte: "Dites le mot normalement, sans appuyer sur aucun son."
+  - id: bandit-manchot-lettre-du-son-cp
+    titre: "La bonne lettre"
+    consigne: "Écoute l'adulte lire le mot, puis choisis la lettre qui fait ce son."
+    mecanique: bandit-manchot
+    paquet: cp-lettre-du-son
+    nombreDeManches: 10
+    consigneAdulte: "Dites le mot entier, jamais le son tout seul."
+  - id: bandit-manchot-digraphe-du-son-cp
+    titre: "Le bon groupe de lettres"
+    consigne: "Écoute l'adulte lire le mot, puis choisis le groupe de lettres qui fait ce son."
+    mecanique: bandit-manchot
+    paquet: cp-digraphe-du-son
+    nombreDeManches: 10
+    consigneAdulte: "Dites le mot entier, jamais le son tout seul."
+  - id: saisie-mot-dicte-cp
+    titre: "Écris le mot dicté"
+    consigne: "Écoute le mot que l'adulte va dire, puis écris-le."
+    mecanique: saisie
+    paquet: cp-mot-dicte
+    nombreDeManches: 7
+    consigneAdulte: "Dites le mot autant de fois qu'il le demande, mais ne l'épelez jamais."

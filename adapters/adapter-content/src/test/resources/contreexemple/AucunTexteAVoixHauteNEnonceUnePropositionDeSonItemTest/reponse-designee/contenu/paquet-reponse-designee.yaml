@@ -1,0 +1,14 @@
+schema: 1
+id: paquet-reponse-designee
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet fautif de VOI-14, jamais servi a un enfant"
+items:
+  - enonce: "Choisis ce que tu entends."
+    bonneReponse: "au milieu"
+    distracteurs: ["au debut", "a la fin"]
+    indice: "Indice de fixture"
+    texteAVoixHaute: "Le mot est domino. Le son mi est au milieu."

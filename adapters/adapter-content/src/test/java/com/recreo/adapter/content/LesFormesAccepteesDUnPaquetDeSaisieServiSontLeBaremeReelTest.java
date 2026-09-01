@@ -112,7 +112,11 @@ class LesFormesAccepteesDUnPaquetDeSaisieServiSontLeBaremeReelTest {
      * meme diff.
      */
     private static final List<String> PAQUETS_DE_SAISIE_SERVIS_AU_2026_08_31 =
-            List.of("cp-complements-10-saisie");
+            // S26-L5 : cp-mot-dicte ajoute le 2026-09-01 (DEC-0068, premier paquet a reponse
+            // alphabetique sur cette mecanique). formesAcceptees y est vide sur chaque item - SAI-1,
+            // SAI-3 et SAI-4 sont tenues par NormalisationDeSaisie sans forme alternative a enumerer -
+            // et cette clause traverse alors formeDeReference seul, ce que le code ci-dessus fait deja.
+            List.of("cp-complements-10-saisie", "cp-mot-dicte");
 
     /**
      * Les formes qu'un item <b>ecrit dans le YAML</b>, lues independamment de la fabrique.

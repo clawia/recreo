@@ -1,0 +1,15 @@
+schema: 1
+id: paquet-epelle-un-autre-mot
+type: saisie
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet licite de VOI-14, jamais servi a un enfant"
+exigenceDeForme: libre
+items:
+  - enonce: "Ecris le mot que tu entends."
+    formeDeReference: "velo"
+    formesAcceptees: []
+    indice: "Indice de fixture"
+    texteAVoixHaute: "Le mot est c, h, a, t."

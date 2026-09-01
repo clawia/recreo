@@ -154,14 +154,22 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
     private static final int BUDGET_DE_TIRAGES = 500;
 
     /**
-     * Ce que l'enfant voit d'un item sur l'ecran de manche : son enonce, ses propositions, la
-     * part que le contenu a designee (ADR-0062), le texte-support qu'il porte (ADR-0050) et
-     * l'illustration qu'il montre (ADR-0073). Deux items de meme enonce et de memes propositions qui
-     * designent deux mots differents, qui portent deux textes-support differents, ou qui montrent
-     * deux dessins differents, sont deux ecrans differents.
+     * Ce que l'enfant voit ou entend d'un item sur l'ecran de manche : son enonce, ses
+     * propositions, la part que le contenu a designee (ADR-0062), le texte-support qu'il porte
+     * (ADR-0050), l'illustration qu'il montre (ADR-0073) et le texte que l'adulte lui lit a voix
+     * haute (ADR-0075). Deux items de meme enonce et de memes propositions qui designent deux mots
+     * differents, qui portent deux textes-support differents, qui montrent deux dessins differents,
+     * ou dont l'adulte lit deux textes differents, sont deux ecrans differents.
+     *
+     * <p>ADR-0075, decision 3 : l'identite d'un tour est ce qui le distingue <b>pour l'enfant</b> -
+     * vu ou entendu. {@code texteAVoixHaute} n'est jamais montre a l'ecran, mais l'enfant l'entend,
+     * et c'est ce qui distingue deux tours sur les lignes de la famille a voix : leur enonce et
+     * leurs propositions y sont invariants par construction (VOI-13 chasse le mot travaille de ce
+     * que l'enfant lit), donc seul ce texte separe deux manches.</p>
      */
     private record Ecran(String enonce, Set<String> propositions, Optional<String> partDesignee,
-                          Optional<String> texteSupport, Optional<String> illustration) {
+                          Optional<String> texteSupport, Optional<String> illustration,
+                          Optional<String> texteAVoixHaute) {
     }
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
@@ -227,10 +235,10 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                 propositions.add(question.bonneReponse());
                 propositions.addAll(question.distracteurs());
                 yield new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee(),
-                        question.texteSupport(), question.illustration());
+                        question.texteSupport(), question.illustration(), question.texteAVoixHaute());
             }
             case ReponseAEcrire reponse -> new Ecran(reponse.enonce(), Set.of(), Optional.empty(),
-                    Optional.empty(), Optional.empty());
+                    Optional.empty(), Optional.empty(), reponse.texteAVoixHaute());
         };
     }
 
@@ -255,10 +263,18 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * comme des copies, alors que l'enfant voit un ecran different a chaque fois. C'est exactement le
      * faux rouge que la clause de classement decrit pour le texte-support, et il serait ici la regle
      * et non le cas limite.</p>
+     *
+     * <p>ADR-0075, decision 3 : {@code texteAVoixHaute} y entre, et le motif elargit celui du texte-
+     * support et de l'illustration a ce que l'enfant <b>entend</b>. Deux items de meme enonce et de
+     * memes propositions dont l'adulte lit deux textes differents sont deux ecrans differents - c'est
+     * la forme ordinaire des cinq paquets de la famille a voix, ou l'enonce et les propositions sont
+     * invariants par construction (VOI-13 chasse le mot travaille de ce que l'enfant lit) : les
+     * classer hors de l'identite refuserait tous les items d'un tel paquet sauf le premier comme des
+     * copies.</p>
      */
     private static final Set<String> COMPOSANTES_DANS_L_IDENTITE_D_ECRAN =
             Set.of("enonce", "bonneReponse", "distracteurs", "partDesignee", "texteSupport",
-                    "illustration");
+                    "illustration", "texteAVoixHaute");
 
     /**
      * ADR-0050, clause 2 : les composantes d'un item qui n'entrent pas dans son identite d'ecran, et
@@ -637,6 +653,35 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
         verifierQuAucunItemNeRepeteLEcranDUnAutre(
                 CONTRE_EXEMPLE.resolve("meme-enonce-et-propositions-textes-support-differents"),
                 CONTRE_EXEMPLE_CLASSPATH + "/meme-enonce-et-propositions-textes-support-differents");
+    }
+
+    /**
+     * ADR-0075, decision 3 : le meme enonce et le meme jeu de propositions, deux textes que l'adulte
+     * lit a voix haute - la forme ordinaire d'un paquet de la famille a voix, ou VOI-13 chasse le mot
+     * travaille de ce que l'enfant lit et laisse l'enonce et les propositions invariants. Sans
+     * {@code texteAVoixHaute} dans l'identite d'ecran, ce paquet serait refuse comme une copie apres
+     * son premier item ; ce sont deux ecrans differents pour l'enfant, qui les entend l'un apres
+     * l'autre, et ce test doit rester vert.
+     */
+    @Test
+    void leMemeEnonceEtLesMemesPropositionsAvecDesTextesAVoixHauteDifferentsRestentVert() {
+        verifierQuAucunItemNeRepeteLEcranDUnAutre(
+                CONTRE_EXEMPLE.resolve("meme-enonce-et-propositions-textes-a-voix-haute-differents"),
+                CONTRE_EXEMPLE_CLASSPATH + "/meme-enonce-et-propositions-textes-a-voix-haute-differents");
+    }
+
+    /**
+     * ADR-0075, decision 5 : le meme enonce de saisie, deux textes que l'adulte lit a voix haute -
+     * la forme ordinaire de la ligne "ecrire un mot en autonomie", ou l'enonce d'un item de saisie
+     * est deja son identite d'ecran a lui seul (lot 5a de s24) et resterait invariant sur tout le
+     * paquet. Sans {@code texteAVoixHaute} dans cette identite, ce paquet serait refuse comme une
+     * copie apres son premier item ; ce sont deux ecrans differents, et ce test doit rester vert.
+     */
+    @Test
+    void leMemeEnonceDeSaisieAvecDesTextesAVoixHauteDifferentsResteVert() {
+        verifierQuAucunItemNeRepeteLEcranDUnAutre(
+                CONTRE_EXEMPLE.resolve("saisie-textes-a-voix-haute-differents"),
+                CONTRE_EXEMPLE_CLASSPATH + "/saisie-textes-a-voix-haute-differents");
     }
 
     /**

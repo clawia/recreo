@@ -53,6 +53,11 @@ import java.util.Optional;
  * {@link Question} (clause 5), et qu'un identifiant declare resolve vers un fichier reellement servi
  * est verifie par {@code LIllustrationDeContenuResoutEtAucuneNeDortTest}, sur la donnee et non sur
  * le gabarit.</p>
+ *
+ * <p>ADR-0075 : la cle facultative 'texteAVoixHaute', meme patron. Elle porte le texte que l'adulte
+ * lit a voix haute a l'enfant (DEC-0068), distinct de 'enonce' et jamais interprete ici : cette
+ * fabrique le transmet tel qu'il est ecrit, exactement comme 'texteSupport'. Absente, elle vaut
+ * "cet item ne s'appuie sur aucune voix" - le cas ordinaire.</p>
  */
 final class QuestionContentSourceFactory implements ContentSourceFactory {
 
@@ -89,6 +94,7 @@ final class QuestionContentSourceFactory implements ContentSourceFactory {
         Object texteSupport = item.get("texteSupport");
         Object illustration = item.get("illustration");
         Object illustrationTexteAlternatif = item.get("illustrationTexteAlternatif");
+        Object texteAVoixHaute = item.get("texteAVoixHaute");
         return new Question(new ItemId("item-" + position), enonce, bonneReponse, distracteursTexte,
                 indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)),
                 explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)),
@@ -96,7 +102,8 @@ final class QuestionContentSourceFactory implements ContentSourceFactory {
                 texteSupport == null ? Optional.empty() : Optional.of(String.valueOf(texteSupport)),
                 illustration == null ? Optional.empty() : Optional.of(String.valueOf(illustration)),
                 illustrationTexteAlternatif == null
-                        ? Optional.empty() : Optional.of(String.valueOf(illustrationTexteAlternatif)));
+                        ? Optional.empty() : Optional.of(String.valueOf(illustrationTexteAlternatif)),
+                texteAVoixHaute == null ? Optional.empty() : Optional.of(String.valueOf(texteAVoixHaute)));
     }
 
     private String texte(Map<?, ?> item, String champ, int position) {

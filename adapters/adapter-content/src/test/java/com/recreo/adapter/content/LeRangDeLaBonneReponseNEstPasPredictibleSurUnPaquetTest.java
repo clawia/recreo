@@ -429,7 +429,41 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " saisons et de moments de la journee (\"mercredi\", \"decembre\","
                     + " \"l'hiver\", \"le matin\"), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-08-31 sur le paquet servi :"
-                    + " aucune des 69 propositions ne commence par un chiffre"));
+                    + " aucune des 69 propositions ne commence par un chiffre"),
+            // S26-L1 : entree neuve, localiser une syllabe dans un mot par la voix d'un adulte, CP.
+            Map.entry("cp-position-syllabe",
+            "18 items sur 18 portent deux distracteurs (trois propositions), mais aucune des 54"
+                    + " propositions n'est numerique : ce sont les trois positions (\"début\","
+                    + " \"milieu\", \"fin\"), valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-09-01 sur le paquet servi : aucune des 54"
+                    + " propositions ne commence par un chiffre"),
+            // S26-L2 : entree neuve, identifier un son dans un mot par la voix d'un adulte, CP.
+            Map.entry("cp-son-dans-mot",
+            "12 items sur 12 portent un seul distracteur, donc deux propositions - hors du domaine"
+                    + " au meme titre que cm1-homophones - et les deux propositions sont toujours"
+                    + " les memes deux mots (\"oui\", \"non\"), jamais une valeur numerique."
+                    + " Mesure du 2026-09-01 sur le paquet servi"),
+            // S26-L3 : entree neuve, associer une lettre simple au son entendu, CP.
+            Map.entry("cp-lettre-du-son",
+            "18 items sur 18 portent deux distracteurs (trois propositions), mais aucune des 54"
+                    + " propositions n'est numerique : ce sont des lettres simples (\"p\", \"m\","
+                    + " \"t\", \"r\", \"l\", \"s\"), valeurDe rend null sur les trois propositions"
+                    + " de chaque item. Mesure du 2026-09-01 sur le paquet servi : aucune des 54"
+                    + " propositions ne commence par un chiffre"),
+            // S26-L4 : entree neuve, associer un digraphe au son entendu, CP.
+            Map.entry("cp-digraphe-du-son",
+            "15 items sur 15 portent deux distracteurs (trois propositions), mais aucune des 45"
+                    + " propositions n'est numerique : ce sont les trois digraphes stables (\"ou\","
+                    + " \"oi\", \"ch\"), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-09-01 sur le paquet servi : aucune des 45 propositions"
+                    + " ne commence par un chiffre"),
+            // S26-L5 : entree neuve, ecrire un mot dicte par la voix d'un adulte, CP.
+            Map.entry("cp-mot-dicte",
+            "12 items sur 12 sont des items de saisie : ils ne presentent aucune proposition, donc"
+                    + " aucun rang. Meme motif que cp-complements-10-saisie (lot 5a de s24, decision"
+                    + " 10) - la propriete decrit une strategie de pression sur des propositions, et"
+                    + " en saisie il n'y a ni bouton ni ordre a exploiter. Mesure du 2026-09-01 sur"
+                    + " le paquet servi : 12 items, aucun distracteur"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

@@ -1,0 +1,136 @@
+schema: 1
+id: cp-position-syllabe
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Langage oral et conscience phonologique"
+  competence: "Localiser une syllabe dans un mot (début / milieu / fin)"
+# S26-L1 (DEC-0068 ; squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 4.1).
+# ADR-0075 : texteAVoixHaute porte le mot entier et la syllabe cherchée (VOI-1). L'enfant ne voit ni
+# le mot ni la syllabe : enonce, indice et propositions sont invariants sur tout le paquet (VOI-13) ;
+# c'est texteAVoixHaute qui distingue les dix-huit tours (ADR-0075, décision 3).
+#
+# Correction du 2026-09-01 (nadia-prof, lecture du paquet) : les dix-huit items sont revus sur le
+# découpage ORAL et non plus graphique - cinq mots corrigés, chacun avec son motif :
+# - PAPA (début="pa") avait deux réponses justes : "pa" est aussi la syllabe finale. Remplacé par
+#   TAPIS (ta-pis à l'oral), dont aucune autre syllabe ne porte le son "ta".
+# - BANANE (milieu="na") n'a que deux syllabes orales (ba-nane), contredisant le commentaire de ce
+#   paquet lui-même, qui exige trois syllabes pour la position "milieu". Remplacé par PARASOL
+#   (pa-ra-sol, trois syllabes orales pleines).
+# - TOMATE (fin="te") : la finale orale est "mate", pas "te" ("tomate" se dit "to-mate" à l'oral,
+#   deux syllabes). Le mot sort du paquet plutôt que d'en forcer la syllabe ; remplacé par CANAPÉ
+#   (ca-na-pé, fin="pé", trois syllabes orales, aucune lettre muette).
+# - ANANAS (fin="nas") : le "s" final est muet à l'oral, la syllabe réellement entendue est "na",
+#   déjà prise par PARASOL (milieu). Remplacé par MACARON (ma-ca-ron, fin="ron", trois syllabes
+#   orales).
+# - MAISON (fin="son") faisait lire "Cherche le son son." à l'adulte, une répétition du mot "son"
+#   qui le ferait buter. Remplacé par COUSSIN (cou-ssin à l'oral, fin="sin").
+# Les treize autres items ont été revérifiés syllabe par syllabe sur l'oral (et non l'écrit) : aucun
+# ne porte de lettre finale muette sur la syllabe qu'il cible, et aucune paire mot/position ne rend
+# une phrase du type "Cherche le son X" où X est un mot qui se répéterait dans la phrase elle-même.
+#
+# VOI-4 : position comptée par item, aucune majoritaire. Compte réel sur les 18 items après
+# correction : début = 6, milieu = 6, fin = 6 - la répartition ne bouge pas, mais elle est
+# recalculée sur le découpage oral et non affirmée par continuité avec l'ancienne version. Les mots
+# comptent deux (8 items : tapis, lapin, bateau, cadeau, coussin, sapin, vélo, jardin) ou trois
+# syllabes orales pleines (10 items : chocolat, domino, escargot, kangourou, cheminée, parasol,
+# crocodile, téléphone, canapé, macaron) ; la position "milieu" n'existe que sur un mot de trois
+# syllabes, les six items "milieu" en portent donc chacun un.
+#
+# VOI-3 (non gardée par aucun test) : l'adulte dit le mot d'un seul tenant, sans le découper. La
+# seule contrepartie est VOI-12, câblée sur consigneAdulte au niveau du catalogue.
+#
+# Indice générique et invariant, à dessein : un indice qui nommerait la syllabe ou une partie du
+# mot romprait VOI-13 (le mot ne doit apparaître nulle part ailleurs que dans texteAVoixHaute).
+items:
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "milieu"
+    distracteurs: ["début", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est chocolat. Cherche le son co."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "milieu"
+    distracteurs: ["début", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est domino. Cherche le son mi."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "milieu"
+    distracteurs: ["début", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est escargot. Cherche le son car."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "milieu"
+    distracteurs: ["début", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est kangourou. Cherche le son gou."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "milieu"
+    distracteurs: ["début", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est cheminée. Cherche le son mi."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "milieu"
+    distracteurs: ["début", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est parasol. Cherche le son ra."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "début"
+    distracteurs: ["milieu", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est tapis. Cherche le son ta."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "début"
+    distracteurs: ["milieu", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est lapin. Cherche le son la."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "début"
+    distracteurs: ["milieu", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est bateau. Cherche le son ba."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "début"
+    distracteurs: ["milieu", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est crocodile. Cherche le son cro."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "début"
+    distracteurs: ["milieu", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est téléphone. Cherche le son té."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "début"
+    distracteurs: ["milieu", "fin"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est cadeau. Cherche le son ca."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "fin"
+    distracteurs: ["début", "milieu"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est coussin. Cherche le son sin."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "fin"
+    distracteurs: ["début", "milieu"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est sapin. Cherche le son pin."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "fin"
+    distracteurs: ["début", "milieu"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est vélo. Cherche le son lo."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "fin"
+    distracteurs: ["début", "milieu"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est jardin. Cherche le son din."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "fin"
+    distracteurs: ["début", "milieu"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est canapé. Cherche le son pé."
+  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+    bonneReponse: "fin"
+    distracteurs: ["début", "milieu"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    texteAVoixHaute: "Le mot est macaron. Cherche le son ron."

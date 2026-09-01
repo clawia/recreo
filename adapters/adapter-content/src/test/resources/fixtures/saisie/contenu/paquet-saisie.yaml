@@ -26,6 +26,7 @@ items:
     formesAcceptees: []
     exigenceDeForme: exacte
     explication: "La sonde n'explique rien a personne."
+    texteAVoixHaute: "Le mot est eleve."
   - enonce: "5 + ? = 10"
     formeDeReference: "5"
     formesAcceptees: ["cinq"]

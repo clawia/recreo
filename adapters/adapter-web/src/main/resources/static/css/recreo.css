@@ -35,6 +35,19 @@
        qu'elle croise reellement - 2,82:1 contre la bordure, 3,05:1 contre le fond de page (v4,
        proposition-ines-v4-correction-arbitrage-2026-08-13.md, section 1). */
     --recreo-levier-teinte: #8e8e8e;
+    /* ADR-0075 (s26), section 7 : cinquieme couleur de sens, reservee au seul bloc ou l'adulte lit
+       son texte - VOI-12 (nadia-prof, ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section
+       13), l'exigence bloquante de son arbitrage sur la famille de contenu a voix. Distincte des
+       quatre couleurs de sens deja prises (--recreo-accent de l'action, --recreo-attention-* de
+       l'indice/attention, --recreo-explication-* de l'explication, vert/rouge du verdict) :
+       reprendre l'une d'elles aurait fait lire ce bloc comme un sens deja charge - l'ambre de
+       .indice en particulier, qui l'aurait fait lire comme une aide destinee a l'enfant plutot
+       qu'un texte pour l'adulte (proposition-ines-s26-ecran-voix.md, section 3). Contraste mesure
+       par ines-design (methode : luminance relative WCAG) : texte/fond 12,84:1 ; bordure/fond de
+       page 7,92:1 ; bordure/fond du bloc 7,22:1 - tous au-dessus des planchers de 4,5:1 (texte) et
+       3:1 (composant non textuel) appliques partout ailleurs dans cette application. */
+    --recreo-adulte-fond: #f0eaf7;
+    --recreo-adulte-bordure: #5a3d8a;
 }
 
 /* Base fiable pour les cibles tactiles : min-height/min-width incluent le rembourrage,
@@ -284,6 +297,70 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
    verbe" tiennent au-dessus du pli de M4 (nadia-prof reste seule a juger si ce resserrement reste
    assez respirant). Ne ferme pas M4 a lui seul : "Le bon petit mot" ne peut pas etre rachete par un
    geste de forme (meme mesure, section 3, cause nommee sous DEC-0016). */
+/* ADR-0075 (s26), section 7 : ce que le gabarit doit porter pour que VOI-12 soit possible
+   (nadia-prof, ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 13) - l'exigence
+   bloquante de son arbitrage sur la famille de contenu a voix : "sans elle je refuserai les
+   paquets a voix". .bloc-adulte est le seul objet visuel qui porte a la fois le stimulus que
+   l'adulte prononce et la phrase qui lui dit ce qu'il ne doit pas faire, jamais deux blocs
+   separes (proposition-ines-s26-ecran-voix.md, section 1). Premier bloc de la manche, avant
+   .consigne : la position est un des trois canaux non colores qui le distinguent, avec le cadre
+   complet ci-dessous et l'etiquette en toutes lettres - jamais la seule couleur. Couleurs :
+   --recreo-adulte-fond/--recreo-adulte-bordure, section palette en tete de fichier. */
+.bloc-adulte {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    background-color: var(--recreo-adulte-fond);
+    border: 0.125rem solid var(--recreo-adulte-bordure);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin: 0 0 0.75rem;
+}
+
+/* L'etiquette qui nomme le bloc pour ce qu'il est, avant tout signe visuel (VOI-12 point 2,
+   "destinataire nomme") : un adulte qui ne distingue pas les couleurs lit "Adulte, a voix haute"
+   avant de lire un seul mot du stimulus. Volontairement plus petite que le stimulus lui-meme
+   (1,25rem contre 2rem) : elle n'est pas ce que l'adulte doit dire, elle dit seulement ce qui suit.
+   1,25rem et non le 1rem du prototype d'ines-design (proposition-ines-s26-ecran-voix.md, section
+   2) : ADR-0050 clause 1 tient ce plancher pour non negociable par une ligne de feuille, quel que
+   soit le destinataire du texte - "une police plus petite se gagne par un arbitrage [...] jamais
+   par une ligne de feuille" (verifierQuAucuneTailleDeclareeNePasseSousLePlancher,
+   TailleDesTextesEtBoutonsTest). Ecart signale a ines-design et sofia-sm plutot que tranche ici. */
+.etiquette-adulte {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--recreo-adulte-bordure);
+    margin: 0;
+}
+
+/* Le stimulus - ce que l'adulte prononce (VOI-1), porte par le modele sous le nom texteAVoixHaute
+   (ADR-0075). Meme taille et meme graisse que .enonce (2rem, gras) : c'est le texte qu'un adulte
+   doit reperer et lire en un coup d'oeil, pas un texte secondaire. */
+.stimulus-a-lire {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--recreo-texte);
+    margin: 0;
+}
+
+/* Le texte que VOI-12 exige : ce que l'adulte ne doit pas faire, porte par le modele sous le nom
+   consigneAdulte. Toujours en dernier dans le bloc, separe du stimulus par un filet complet -
+   jamais un simple espacement, qui se lit trop facilement comme une continuite -, le meme
+   principe de cadre que .indice et .explication pour rester visible sans distinguer les couleurs.
+   Taille et graisse distinctes du stimulus (1,25rem, normal, contre 2rem gras) : ce que l'adulte
+   doit DIRE se lit en un coup d'oeil, ce qu'il ne doit PAS faire se lit ensuite, une fois qu'il
+   sait quoi dire. */
+.consigne-adulte {
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: var(--recreo-texte);
+    margin: 0.25rem 0 0;
+    padding-top: 0.5rem;
+    border-top: 0.0625rem solid var(--recreo-adulte-bordure);
+}
+
 .consigne {
     font-size: 1.25rem;
     margin-bottom: 0.25rem;

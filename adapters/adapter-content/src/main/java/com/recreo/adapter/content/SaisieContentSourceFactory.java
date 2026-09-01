@@ -44,6 +44,11 @@ import java.util.Optional;
  * <p>Une cle que cette fabrique ne connait pas est ignoree sans un mot, comme dans sa soeur ; ce
  * qui a change depuis ADR-0070, c'est qu'une telle cle fait desormais echouer le build tant
  * qu'aucune source du depot ne la nomme.</p>
+ *
+ * <p>ADR-0075 : la cle facultative 'texteAVoixHaute', meme patron que sur
+ * {@link QuestionContentSourceFactory} - la ligne "ecrire un mot en autonomie" (`DEC-0068`) est un
+ * item de saisie, et ce champ vit donc sur les deux formes. Absente, elle vaut "cet item ne
+ * s'appuie sur aucune voix".</p>
  */
 final class SaisieContentSourceFactory implements ContentSourceFactory {
 
@@ -84,13 +89,15 @@ final class SaisieContentSourceFactory implements ContentSourceFactory {
         List<String> formesAcceptees = formes.stream().map(String::valueOf).toList();
         Object indice = item.get("indice");
         Object explication = item.get("explication");
+        Object texteAVoixHaute = item.get("texteAVoixHaute");
         ExigenceDeForme exigence = exigenceDe(item.get(CLE_EXIGENCE_DE_FORME), exigenceDuPaquet,
                 "items[" + position + "]");
         return new ReponseAEcrire(new ItemId("item-" + position), enonce, formeDeReference,
                 formesAcceptees,
                 indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)),
                 explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)),
-                exigence);
+                exigence,
+                texteAVoixHaute == null ? Optional.empty() : Optional.of(String.valueOf(texteAVoixHaute)));
     }
 
     private ExigenceDeForme exigenceDe(Object declaree, ExigenceDeForme defaut, String ou) {

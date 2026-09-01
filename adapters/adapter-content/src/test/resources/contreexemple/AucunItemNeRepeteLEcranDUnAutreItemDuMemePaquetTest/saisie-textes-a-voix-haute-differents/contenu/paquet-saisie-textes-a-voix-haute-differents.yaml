@@ -1,0 +1,20 @@
+schema: 1
+id: paquet-saisie-textes-a-voix-haute-differents
+type: saisie
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet licite d'ADR-0075, jamais servi a un enfant"
+exigenceDeForme: libre
+items:
+  - enonce: "Ecris le mot."
+    formeDeReference: "velo"
+    formesAcceptees: []
+    indice: "Indice de fixture 1"
+    texteAVoixHaute: "Le mot est velo."
+  - enonce: "Ecris le mot."
+    formeDeReference: "domino"
+    formesAcceptees: []
+    indice: "Indice de fixture 2"
+    texteAVoixHaute: "Le mot est domino."

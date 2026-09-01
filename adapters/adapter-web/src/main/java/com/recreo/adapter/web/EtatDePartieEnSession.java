@@ -27,6 +27,7 @@ final class EtatDePartieEnSession {
 
     private static final String ATTRIBUT_JEU_ID = "recreo.jeuId";
     private static final String ATTRIBUT_CONSIGNE = "recreo.consigne";
+    private static final String ATTRIBUT_CONSIGNE_ADULTE = "recreo.consigneAdulte";
     private static final String ATTRIBUT_SESSION = "recreo.session";
 
     private final HttpSession httpSession;
@@ -52,10 +53,11 @@ final class EtatDePartieEnSession {
         }
     }
 
-    void demarrer(String jeuId, String consigne, GameSession session) {
+    void demarrer(String jeuId, String consigne, String consigneAdulte, GameSession session) {
         synchronized (verrou()) {
             httpSession.setAttribute(ATTRIBUT_JEU_ID, jeuId);
             httpSession.setAttribute(ATTRIBUT_CONSIGNE, consigne);
+            httpSession.setAttribute(ATTRIBUT_CONSIGNE_ADULTE, consigneAdulte);
             httpSession.setAttribute(ATTRIBUT_SESSION, session);
         }
     }
@@ -64,6 +66,7 @@ final class EtatDePartieEnSession {
         synchronized (verrou()) {
             httpSession.removeAttribute(ATTRIBUT_JEU_ID);
             httpSession.removeAttribute(ATTRIBUT_CONSIGNE);
+            httpSession.removeAttribute(ATTRIBUT_CONSIGNE_ADULTE);
             httpSession.removeAttribute(ATTRIBUT_SESSION);
         }
     }
@@ -95,7 +98,7 @@ final class EtatDePartieEnSession {
             }
             GameSession suivante = coup.apply(actuelle);
             httpSession.setAttribute(ATTRIBUT_SESSION, suivante);
-            return new EtatDePartie(etat.jeuId(), etat.consigne(), suivante);
+            return new EtatDePartie(etat.jeuId(), etat.consigne(), etat.consigneAdulte(), suivante);
         }
     }
 
@@ -103,6 +106,7 @@ final class EtatDePartieEnSession {
         return new EtatDePartie(
                 (String) httpSession.getAttribute(ATTRIBUT_JEU_ID),
                 (String) httpSession.getAttribute(ATTRIBUT_CONSIGNE),
+                (String) httpSession.getAttribute(ATTRIBUT_CONSIGNE_ADULTE),
                 (GameSession) httpSession.getAttribute(ATTRIBUT_SESSION));
     }
 
