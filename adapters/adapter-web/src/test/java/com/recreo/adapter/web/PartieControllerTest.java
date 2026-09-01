@@ -57,6 +57,9 @@ class PartieControllerTest {
     /** S24 : le jeu de la seconde mecanique du catalogue de test (voir JeuDeTestConfiguration). */
     static final String JEU_SAISIE_ID = "jeu-saisie";
 
+    /** ADR-0075 : le jeu dont l'item et l'entree de catalogue declarent la famille a voix. */
+    private static final String JEU_A_VOIX_ID = "jeu-a-voix";
+
     /** Le seul niveau du catalogue de test (JeuDeTestConfiguration). */
     private static final String NIVEAU = "CP";
 
@@ -742,6 +745,84 @@ class PartieControllerTest {
         assertThat(fragment.select(".score").text()).as("M14 : aucun essai compte").isEqualTo("Score : 0");
     }
 
+    /**
+     * ADR-0075 section 7, VOI-12 : cable jusqu'a l'ecran reel, par le controleur de production et
+     * non par un double de test (a la difference de
+     * {@code LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest}, qui ne verifie que le gabarit).
+     * Point de vigilance 1 du raccord (sofia-sm) : {@code texteAVoixHaute} vient de l'item joue,
+     * {@code consigneAdulte} vient de l'entree de catalogue fixee au demarrage - les deux doivent
+     * apparaitre ensemble dans le meme document des que le controleur les recoit ensemble.
+     */
+    @Test
+    void leBlocAdulteAtteintLEcranReelQuandLItemEtLeCatalogueDeclarentLaVoix() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        String html = mockMvc.perform(post("/parties/{jeuId}", JEU_A_VOIX_ID).session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document ecran = Jsoup.parse(html);
+
+        Elements bloc = ecran.select(".bloc-adulte");
+        assertThat(bloc).hasSize(1);
+        assertThat(bloc.select(".stimulus-a-lire").text()).isEqualTo("Le mot est chapeau.");
+        assertThat(bloc.select(".consigne-adulte").text())
+                .isEqualTo("Dites le mot normalement, sans le couper.");
+    }
+
+    /**
+     * Point de vigilance 2 du raccord (sofia-sm) : le bloc reste affiche, avec le meme stimulus,
+     * apres un echec et sur l'etat de revelation de {@code manche.html} - le chemin que
+     * {@code theo-archi} a mesure comme n'etant jamais {@code retour.html}. Le cablage ne doit pas
+     * vider le modele au changement d'etat.
+     */
+    @Test
+    void leBlocAdulteResteAfficheApresUnEchecEtSurLaRevelationEcranReel() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_A_VOIX_ID).session(session));
+
+        String htmlEchec = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_A_VOIX_ID)
+                        .session(session).param("propositionChoisie", "au milieu"))
+                .andReturn().getResponse().getContentAsString();
+        Document ecranEchec = Jsoup.parse(htmlEchec);
+        assertThat(ecranEchec.select(".bloc-adulte")).hasSize(1);
+        assertThat(ecranEchec.select(".bloc-adulte .stimulus-a-lire").text())
+                .isEqualTo("Le mot est chapeau.");
+
+        // M5 : deuxieme echec, la manche entre en revelation au troisieme.
+        mockMvc.perform(post("/parties/{jeuId}/coups", JEU_A_VOIX_ID)
+                .session(session).param("propositionChoisie", "au milieu"));
+        String htmlRevelation = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_A_VOIX_ID)
+                        .session(session).param("propositionChoisie", "au milieu"))
+                .andReturn().getResponse().getContentAsString();
+        Document ecranRevelation = Jsoup.parse(htmlRevelation);
+        assertThat(ecranRevelation.select(".verdict").text())
+                .as("la manche doit etre entree en revelation pour que ce test prouve quelque chose")
+                .isEqualTo("C'est au debut. Appuie sur au debut.");
+        assertThat(ecranRevelation.select(".bloc-adulte"))
+                .as("VOI-8 : le bloc-adulte reste affiche sur l'etat de revelation de manche.html")
+                .hasSize(1);
+        assertThat(ecranRevelation.select(".bloc-adulte .stimulus-a-lire").text())
+                .isEqualTo("Le mot est chapeau.");
+        assertThat(ecranRevelation.select(".bloc-adulte .consigne-adulte").text())
+                .isEqualTo("Dites le mot normalement, sans le couper.");
+    }
+
+    /**
+     * Regression, sur le controleur reel cette fois (lea-dev l'a deja prouvee sur le gabarit seul,
+     * {@code sansTexteAVoixHauteAucunBlocAdulteNApparaitSurAucunFragment}) : un jeu qui ne declare
+     * aucune voix ne rend aucun {@code .bloc-adulte}, sur les deux mecaniques du catalogue de test.
+     */
+    @Test
+    void aucunBlocAdulteNApparaitSurUnJeuSansVoixEcranReel() throws Exception {
+        MockHttpSession sessionChoix = new MockHttpSession();
+        String htmlChoix = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(sessionChoix))
+                .andReturn().getResponse().getContentAsString();
+        assertThat(Jsoup.parse(htmlChoix).select(".bloc-adulte")).isEmpty();
+
+        MockHttpSession sessionSaisie = new MockHttpSession();
+        String htmlSaisie = mockMvc.perform(post("/parties/{jeuId}", JEU_SAISIE_ID).session(sessionSaisie))
+                .andReturn().getResponse().getContentAsString();
+        assertThat(Jsoup.parse(htmlSaisie).select(".bloc-adulte")).isEmpty();
+    }
+
     @TestConfiguration
     static class JeuDeTestConfiguration {
 
@@ -821,7 +902,20 @@ class PartieControllerTest {
                                     new ReponseAEcrire(new ItemId("s3"), "5 + ? = 10", "5",
                                             List.of(), Optional.of("Autant qu'il y en a deja."),
                                             Optional.empty(), ExigenceDeForme.FORME_LIBRE))),
-                            10));
+                            10),
+                    // ADR-0075 : un item declare texteAVoixHaute, l'entree de catalogue declare
+                    // consigneAdulte - le couple que LeTexteAVoixHauteEtLaConsigneAdulteSeDeclarent-
+                    // EnsembleTest garde cote contenu. Une seule manche : les tests de ce jeu
+                    // exercent la persistance du bloc-adulte a travers l'echec et la revelation.
+                    new GameDefinition(JEU_A_VOIX_ID, "Jeu a voix", "Choisis ce que tu entends.",
+                            BanditManchot.ID, DESCRIPTEUR,
+                            new ListContentSource(DESCRIPTEUR, List.of(
+                                    new Question(new ItemId("qv-1"), "Choisis ce que tu entends.",
+                                            "au debut", List.of("au milieu", "a la fin"),
+                                            Optional.empty(), Optional.empty(), Optional.empty(),
+                                            Optional.empty(), Optional.empty(), Optional.empty(),
+                                            Optional.of("Le mot est chapeau.")))),
+                            1, Optional.of("Dites le mot normalement, sans le couper.")));
             MechanicRegistryPort mecaniques =
                     id -> Saisie.ID.equals(id) ? new Saisie() : new BanditManchot();
             RandomSource hasard = bound -> 0;

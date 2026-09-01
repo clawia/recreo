@@ -512,6 +512,33 @@ class SaisieTest {
                 .contains("Sept, parce que trois et sept font dix.");
     }
 
+    /**
+     * ADR-0075 : le texte a voix haute de la manche courante suit l'item joue, vide quand il n'en
+     * declare aucun - le cas ordinaire. VOI-8 : un refus sur la manche ne le fait pas disparaitre,
+     * puisqu'il ne depend que de {@code mancheCourante}, jamais du nombre de tentatives.
+     */
+    @Test
+    void leTexteAVoixHauteDeLaMancheSuitLItemJoueEtSurvitAUnRefus() {
+        ReponseAEcrire avecVoix = new ReponseAEcrire(new ItemId("item-0"), "Ecris le mot.", "velo",
+                List.of(), Optional.empty(), Optional.empty(), ExigenceDeForme.FORME_LIBRE,
+                Optional.of("Le mot est velo."));
+        SaisieSession session = partieDe(2, avecVoix, libre("item-1", "7"));
+
+        assertThat(session.texteAVoixHauteManche())
+                .as("le premier item declare son texte a voix haute")
+                .contains("Le mot est velo.");
+
+        SaisieSession apresRefus = ecrire(session, "xyz");
+        assertThat(apresRefus.texteAVoixHauteManche())
+                .as("VOI-8 : un refus sur la meme manche ne fait pas disparaitre le texte a voix haute")
+                .contains("Le mot est velo.");
+
+        SaisieSession suivante = ecrire(apresRefus, "velo");
+        assertThat(suivante.texteAVoixHauteManche())
+                .as("le second item ne s'appuie sur aucune voix : le cas ordinaire")
+                .isEmpty();
+    }
+
     private static SaisieSession revelerLaPremiereManche() {
         SaisieSession session = partieDe(2, libre("item-0", "7"), libre("item-1", "5"));
         return ecrire(ecrire(ecrire(session, "1"), "2"), "3");

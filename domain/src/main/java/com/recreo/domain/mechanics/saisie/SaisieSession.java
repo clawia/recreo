@@ -210,6 +210,17 @@ public final class SaisieSession implements GameSession {
     }
 
     /**
+     * ADR-0075 : le texte que l'adulte lit a voix haute pour la manche courante, vide quand l'item
+     * n'en declare pas - le cas ordinaire. Meme motif que sur {@code BanditManchotSession} : cette
+     * mecanique transporte le champ sans le lire, et {@code mancheCourante} reste le meme tant que
+     * la manche n'est pas resolue, donc cette valeur ne varie pas entre un item frais, un refus et
+     * une revelation (VOI-8).
+     */
+    public Optional<String> texteAVoixHauteManche() {
+        return Optional.ofNullable(mancheCourante).flatMap(ReponseAEcrire::texteAVoixHaute);
+    }
+
+    /**
      * SAI-12 : tout ce que l'enfant a ecrit sur la manche courante, dans l'ordre ou il l'a ecrit.
      * Une chaine retapee a l'identique y figure deux fois, et c'est voulu : si sa correction n'a
      * rien corrige, il doit le voir.
