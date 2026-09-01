@@ -1,6 +1,6 @@
 # DEC-0068 - La voix est celle d'un adulte present : le produit ne fournit que la distinction entre ce que l'adulte lit et ce que l'enfant lit
 
-- **Statut** : Acceptee
+- **Statut** : Acceptee, **amendee le 2026-09-01** (meme jour) : la portee est bornee par l'utilisatrice aux seules lignes ou la voix est la competence - aucun paquet CP deja valide ne change - et `nadia-prof` ouvre quatre des cinq lignes, une seule refusee. Voir l'amendement en fin de document.
 - **Date** : 2026-09-01
 - **Auteur** : `camille-po`
 - **Sprint** : s26 (ouverture)
@@ -243,3 +243,197 @@ observations sont de forme, pas de fond, et elles ne valent pas verdict.**
   le garde-fou *"un rang suffit"* et les trois identifiants que rien n'execute gardent le rang que
   `DEC-0067` leur a donne. **Aucun ne rapporte de ligne, l'objectif de l'utilisatrice est toujours la
   couverture, et ce conflit reste ecrit et non arbitre** - `DEC-0067`, section 5.
+
+---
+
+## Amendement du 2026-09-01 (meme jour) - la portee est bornee par l'utilisatrice, et `nadia-prof` ouvre quatre lignes sur cinq
+
+**Statut de la decision apres cet amendement : Acceptee, amendee le 2026-09-01.**
+
+**Les deux questions que la section 7 routait sont rendues.** Le texte d'origine n'est pas efface :
+il posait les deux lectures sans en retenir aucune, et c'etait son objet.
+
+### A.1 La portee - l'utilisatrice borne, et c'est la borne que je demandais
+
+Je posais en section 5.2 : les cinq lignes seulement, ou tout contenu de CP ? La question a ete
+transmise avec le fait de `nadia-prof` a cote - *"une application qui peut parler peut rendre lisible
+tout le catalogue CP"* - et avec ce que j'en tirais : *"si cela valait sur tout le CP, ce ne serait
+pas une ligne de plus, ce serait une propriete de chaque paquet existant"*.
+
+> **De l'utilisatrice, 2026-09-01**, ses mots cites entre guillemets :
+>
+> **"Les cinq lignes seulement"**
+
+**Ce que cette borne dit, et je l'ecris comme une regle opposable parce que c'est a cela qu'elle
+sert :**
+
+> **L'adulte lecteur est un moyen de jeu reserve aux exercices ou la voix est la competence
+> elle-meme. Il n'est pas un moyen de lisibilite generale, et il ne s'etend a aucun paquet dont la
+> competence visee n'est pas la voix.**
+
+**Trois consequences, et la troisieme est celle qui compte :**
+
+- **Aucun paquet de CP deja valide ne change. Aucun Done n'est rouvert.** Les onze lignes vertes du
+  produit ne recoivent ni champ neuf ni obligation neuve de ce fait.
+- **La lisibilite reste une exigence de contenu, entiere.** L'adulte ne dispense d'aucune des barres
+  que `nadia-prof` tient depuis le sprint 0 - *"chaque mot de consigne se paie au CP"*. **Un paquet
+  illisible ne devient pas acceptable parce qu'un adulte est dans la piece.**
+- **C'est cette borne qui empeche l'elargissement silencieux que je craignais en section 5.2.** Un
+  moyen qui aurait pu, de proche en proche, devenir la reponse a toute difficulte de lecture au CP
+  est arrete par une phrase de quatre mots. **Elle a choisi en connaissance des deux autres options**
+  - l'extension a tout le CP, et une instruction prealable du cout.
+
+*Cette borne est desormais aussi dans `CLAUDE.md`, section "L'enfant de CP n'est jamais seul", ecrite
+par le fil d'animation apres reponse de l'utilisatrice a la question que la section 7 routait. **Enonce
+recu par le fil d'animation, sans source dans le depot au moment ou je l'ecris** (forme 3 de
+`DEC-0062`) : "c'est ecrit par le fil d'animation, pas par un agent". Je le note comme tel, et le
+fichier, lui, se lit directement.*
+
+### A.2 Le verdict de `nadia-prof` - quatre lignes ouvertes, une refusee
+
+`squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, sections 3 et 4. **Une seule
+regle trie les cinq lignes, et elle n'a pas ete taillee ligne par ligne :**
+
+> **`VOI-1` - L'adulte prononce le stimulus ; il ne prononce jamais une proposition.**
+
+| Ligne | Ce que l'adulte dirait | Verdict |
+|---|---|---|
+| Localiser une syllabe dans un mot | le mot, et la syllabe cherchee | **SERVIE** |
+| Identifier un son (phoneme) dans un mot | le mot | **SERVIE** |
+| Associer les graphemes aux phonemes (`en cours` depuis s03) | le mot ou le son | **SERVIE - la ligne peut se fermer** |
+| Decoder un mot regulier par assemblage syllabique | **les trois propositions** | **REFUSEE** |
+| Ecrire de maniere autonome un mot simple | le mot a ecrire | **SERVIE** |
+
+**Le motif du refus, dans ses mots, et il est actionnable** : *"Trois propositions entendues.
+Prononcees par qui ? Par l'adulte, qui lit l'ecran, **donc qui sait laquelle est la bonne**. [...]
+Ce n'est pas un soupcon sur les adultes : c'est ce que fait n'importe qui qui connait la reponse."*
+C'est la seule des cinq **dont les propositions sont des sons**.
+
+**Elle ne ferme pas la porte et je reprends sa phrase telle quelle** : *"Si quelqu'un trouve une
+forme sans proposition sonore, qu'il me la soumette : **je n'oppose pas un principe, je constate une
+impasse.**"* Les deux voies qu'elle nomme sont un corpus enregistre - la voie de `DEC-0042`, toujours
+fermee - ou une captation de la voix de l'enfant, *"que je n'ai jamais reclamee et que je ne reclame
+pas"*.
+
+### A.3 Le fait qui domine son arbitrage, et il est de nous tous
+
+> **`DEC-0042` ne bloquait pas l'audio comme famille. Il bloquait les deux seules sources que la
+> squad savait envisager - un corpus embarque, ou la synthese vocale. Un adulte n'est ni l'un ni
+> l'autre.**
+
+**Ces cinq lignes ont attendu six sprints derriere un obstacle qui n'a jamais ete pedagogique.**
+
+**J'ecris ce fait dans ma decision plutot que de le laisser dans la sienne**, parce qu'il porte sur
+la maniere dont j'instruis : ma section 2 disait deja *"la reponse n'est aucune des deux"*, mais
+`DEC-0042`, que j'ai ecrite, presentait ces deux voies comme **l'espace des possibles** sans jamais
+dire qu'il n'etait pas exhaustif. **Une enumeration qui ne se declare pas partielle se lit comme
+complete**, et c'est ce qui a tenu cinq lignes fermees pendant six sprints.
+
+**Ce que `nadia-prof` ajoute et que je verse sans l'attenuer** : *"le tort n'est de personne - la
+question etait posee, ecrite et routee"*. Elle l'etait, a chaque sprint. **Ce n'est pas un defaut de
+gouvernance, c'est un defaut d'imagination collective, et il n'a coute aucune ligne definitivement.**
+
+### A.4 Ses deux barres tombent par leur motif, et elle invite a verifier sa constance
+
+Je posais en section 3 que son seuil du 2026-08-15 - *"net, **identique a chaque ecoute**,
+reecoutable a la demande"* - n'etait pas touche par l'arbitrage et restait a elle. **Elle l'a
+tranche, et dans le sens que je n'avais pas presume.**
+
+| Clause | Un adulte qui lit |
+|---|---|
+| net | **tenue, et mieux qu'un enregistrement** |
+| reecoutable a la demande | **tenue, et mieux** - *"l'enfant demande, l'adulte redit. Aucun bouton n'obeit aussi bien"* |
+| identique a chaque ecoute | **NON TENUE**, et **elle ne la maintient pas** |
+
+**Son motif, et c'est la lecture par le motif et non par la lettre** : *"Ce que je craignais, c'est
+l'enfant bloque - pas la variation en soi. [...] Un adulte est variable mais **repondant**, et c'est
+exactement l'inverse du defaut vise."* Meme geste sur sa barre du 2026-08-10 sur les digraphes :
+*"ce que j'exigeais, c'est qu'un son existe dans la piece - pas qu'un haut-parleur le produise"*.
+
+**Elle demande qu'on verifie sa constance plutot que de la croire, et elle compte elle-meme** :
+*"c'est la quatrieme fois que je tranche ainsi - `MON-1`, `FIG-2`, la prose de `CON-6` contre sa
+clause, et ici. Un tiers peut verifier que je suis constante."* **Je le note pour que le controle
+soit possible ; je ne le fais pas a sa place, ce n'est pas mon perimetre.**
+
+**Et une de ses conditions prevoyait sa propre levee** : `SAI-11` interdisait la saisie alphabetique
+au CP *"tant qu'aucun arbitrage de l'utilisatrice n'a repondu"*, et sa barre disait *"un enfant
+accompagne peut taper un mot, un enfant seul devant une tablette non"*. **La condition etait
+conditionnelle et sa condition est remplie.** Elle demande que ce ne soit pas lu comme un
+assouplissement de sa part, et elle a raison de le demander.
+
+### A.5 Ce que l'obligation opposable de la section 4 devient, maintenant qu'elle est instruite
+
+Ma section 4 posait *"le produit distingue ce qui doit etre lu par l'adulte de ce que l'enfant lit"*
+et disait que la forme etait a `theo-archi`. **`nadia-prof` la precise sans la concevoir : il faut
+quatre textes, pas deux.**
+
+| # | Texte | Ce qui arrive s'il se melange |
+|---|---|---|
+| 1 | ce que l'adulte dit a voix haute | rien : c'est le texte que l'utilisatrice nomme |
+| 2 | ce que l'enfant lit ou voit | rien : c'est l'autre texte qu'elle nomme |
+| 3 | **ce que l'adulte ne doit pas dire** | **la reponse fuit par la voix** |
+| 4 | **ce que l'enfant ne doit pas voir** | le mot ecrit reapparait, et son refus du 2026-08-31 redevient valable |
+
+**Et elle refuse la forme naive du troisieme, ce qui est le geste le plus utile de son document** :
+pas de champ *"ce que l'adulte ne doit pas dire"* - *"une liste d'interdits est une liste qu'on
+oublie de tenir a jour"* - mais **un champ clos** :
+
+> **`VOI-10` - Le texte que l'adulte prononce est un champ distinct, et il ne contient jamais une
+> proposition ni la reponse.** *Calculable : aucune chaine du champ 1 ne contient une chaine du jeu
+> de propositions de son item.*
+
+**Si le champ 1 ne peut pas contenir de proposition, il n'y a rien a interdire.** C'est le meme geste
+qu'`ADR-0073` a fait sur l'illustration : fermer par construction plutot que par vigilance.
+
+**Une exigence bloquante, et c'est la seule du document** :
+
+> **`VOI-12` - L'ecran dit a l'adulte ce qu'il ne doit pas faire, en une phrase, a l'endroit ou il lit
+> son texte.** Pas dans une documentation, pas dans un `ADR`, pas dans un README.
+>
+> *"Sans `VOI-12`, je refuserai les paquets a voix. Non pas parce que le contenu serait mauvais, mais
+> parce qu'un produit qui confie une condition a quelqu'un **sans la lui dire** ne l'a pas confiee :
+> il l'a abandonnee."*
+
+**Elle explique pourquoi elle y tient, et cela vaut d'etre lu par quiconque ecrira ces paquets** :
+`VOI-3`, `VOI-5` et `VOI-8` interdisent des gestes qu'un adulte fait **naturellement** en aidant un
+enfant de six ans - detacher les syllabes, appuyer le son cherche, epeler. *"Ce ne sont pas des
+fautes d'inattention, c'est le reflexe d'un parent bienveillant."*
+
+**Et le texte de `VOI-12` est du contenu, pas de l'interface** : elle le juge a sa porte comme le
+reste. Il ne suit pas le registre de `DEC-0002` - il n'est pas destine a l'enfant - mais les
+conventions de redaction du depot, ce qui est au `relecteur-pedagogique` de confirmer.
+
+### A.6 Trois conditions que personne ne garde - une premiere sur ce depot, et je la porte
+
+**`VOI-3`, `VOI-5` et `VOI-8` sont les premieres conditions de ce depot dont `nadia-prof` n'est pas
+la garde.** Ses mots : *"Le manquement se produit dans la bouche d'un adulte, dans une cuisine, et il
+ne laisse **aucune trace** - ni test, ni capture, ni journal, ni fichier. Je ne peux pas l'auditer,
+meme en jouant."*
+
+**Elle l'accepte, et son critere n'est pas le confort** : *"un adulte qui aide trop degrade
+l'exercice. **Il n'enseigne rien de faux.** [...] Le pire cas est un exercice sans valeur, pas un
+exercice nuisible"* - a comparer avec `cm1-substituts` a 94,8 pour cent, qui *"enseignait une
+strategie fausse et renforcait l'enfant dedans"*. **Ce n'est pas la meme famille de degat.**
+
+**Ce que j'en fais, et c'est de mon perimetre** : ces trois conditions doivent etre **ecrites comme
+non gardees** partout ou elles apparaissent - dans la story, dans la fiche de conformite, dans le
+rapport de sprint. **Une condition dont personne ne sait si elle est tenue et qu'on ecrit comme les
+autres est exactement la promesse plus large que ce qu'elle verifie que ce depot a sanctionnee sept
+fois en deux sprints.** Elle demande que `sofia-sm` le porte au rapport de sprint ; **je le porte
+aussi dans les stories, ce qui est ma part.**
+
+**Et ce qu'elle refuse d'avance, que je reprends sans le discuter** : *"Je ne demanderai jamais un
+dispositif qui verifie ce que l'adulte a dit [...] Ce serait mettre un micro dans une cuisine pour
+surveiller un parent qui aide son enfant, et **aucune ligne de couverture ne vaut cela.**"* **Cette
+phrase vaut pour moi comme pour les autres**, y compris le jour ou un compteur de couverture y
+gagnerait.
+
+### A.7 Ce que cet amendement ne fait pas
+
+- Il **ne fait bouger aucune ligne de la matrice** : aucun jeu n'existe, aucun Done n'est prononce.
+- Il **ne fixe pas le perimetre de s26** : le rang et le plafond sont a `DEC-0067`, ou ils vivent.
+- Il **n'etend la portee a rien** : la borne de A.1 est la seule lecture que ce document autorise.
+- Il **ne reclasse pas la ligne refusee** : *"decoder un mot regulier par assemblage syllabique"*
+  reste **`non couvert`**, pas `non couvrable en l'etat` - `nadia-prof` constate une impasse et non
+  un principe, et deux voies sont nommees. **Le critere de la matrice n'est pas rempli.**
+- Il **ne touche pas** au statut de la reconnaissance vocale, pour les motifs de la section 5.3.

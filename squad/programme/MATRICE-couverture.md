@@ -3188,3 +3188,36 @@ ni du code ni du contenu YAML : c'est un enregistrement"* - **disparait.**
 `couvert-valide`, 9 `non couvert`, 1 `en cours`, 6 `non couvrable en l'etat`, total 47, denominateur
 41, **31 / 41 = 75,6 %**. *Meme methode que la synthese de s25 : comptage automatise des quatre
 tableaux de matiere de ce fichier, colonne `Statut`, sur ce seul fichier, aucun module compile.*
+
+### Complement du 2026-09-01 (meme jour) - le verdict de `nadia-prof` sur les cinq lignes. **Aucune ligne ne bouge encore.**
+
+La note ci-dessus disait que `nadia-prof` instruisait ce que ce moyen ouvre et que son verdict
+deciderait. **Il est rendu** (`ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, sections 3 et 4).
+
+**Une seule regle trie les cinq lignes** : *"l'adulte prononce le stimulus ; il ne prononce jamais
+une proposition"* (`VOI-1`).
+
+| Ligne | Verdict | Statut aujourd'hui |
+|---|---|---|
+| Localiser une syllabe dans un mot (fr. CP) | **SERVIE** | `non couvert`, **inchange** |
+| Identifier un son (phoneme) dans un mot (fr. CP) | **SERVIE** | `non couvert`, **inchange** |
+| Associer les graphemes aux phonemes (fr. CP) | **SERVIE - la ligne peut se fermer** | `en cours`, **inchange** |
+| Decoder un mot regulier par assemblage syllabique (fr. CP) | **REFUSEE** - seule ligne dont les propositions sont des **sons** | `non couvert`, **inchange** |
+| Ecrire de maniere autonome un mot simple (fr. CP) | **SERVIE** - `SAI-11` se leve, sa condition etant remplie | `non couvert`, **inchange** |
+
+**Aucun statut ne bouge, et c'est normal : aucun paquet n'existe.** Une ligne passe au vert par un
+verdict sur un increment joue, jamais par un arbitrage prealable.
+
+**Ce que ce verdict rend au pilotage** : la reserve de lignes arbitrees passe de **une** a **cinq** -
+`LIS` plus les quatre - et le plafond, si les quatre sont servies **et validees**, est **35 / 41 =
+85,4 %**. *Meme methode de comptage que la synthese de s25. Detail, reserves et compte de paquets :
+`DEC-0067`, amendement, sections B.2 a B.5.*
+
+**Un fait de repartition que ce tableau rend visible et que le taux global masque** : **les quatre
+lignes acceptees sont toutes en francais CP**, qui passerait de **5 / 10 (50,0 %)** a **9 / 10
+(90,0 %)**, et le domaine *"Langage oral et conscience phonologique"* - **1 sur 3 depuis le sprint
+0** - se fermerait entierement.
+
+**La ligne refusee reste `non couvert` et n'est pas reclassee** : `nadia-prof` ecrit *"je n'oppose pas
+un principe, je constate une impasse"* et nomme deux voies qui la debloqueraient. **Le critere de
+`non couvrable en l'etat` n'est pas rempli.**
