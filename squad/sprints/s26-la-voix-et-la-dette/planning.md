@@ -355,3 +355,72 @@ des s12. A ranger dans une dette de redaction future, pas a traiter dans ce spri
 La clause 4 de traversee de `marc-dev` est tenue (l'arbre de livraison la porte). Restent : les
 deux trous ci-dessus (`marc-dev`, `theo-archi`), puis, une fois l'arbre complet monte, la porte
 pedagogique de `nadia-prof` - qui doit jouer sur un arbre ou ces deux trous sont fermes, pas avant.
+
+---
+
+## Addendum du 2026-09-01 (sofia-sm) - les deux trous fermes, arbre monte et joue, l'arbre est pret pour nadia-prof
+
+- **Auteure de l'addendum** : `sofia-sm`, casquette dev pour la fusion, la verification et le jeu
+  du jar ; casquette Scrum Master pour cette ecriture.
+- **Ce qu'il ne fait pas** : rien du texte ci-dessus n'est modifie ni retire.
+
+### Les deux trous, fermes
+
+**`theo-archi` requalifie le defaut plutot que de l'accepter tel qu'on le lui a route** : *"le
+quatrieme porteur n'en est pas un quatrieme, c'est le troisieme, mal reconnu."* La clause 3
+d'`ADR-0074` normalisait moins que le navigateur dont elle se reclame - `stripLeading()` ne retire
+l'espace qu'en tete de chaine, la ou un navigateur retire tabulations et retours-ligne partout dans
+l'URL avant d'en lire le schema. Le remede derive du parseur d'URL du standard, dans son ordre, et
+il est **borne dans les deux sens** : aucun decodage de pourcentage, `%6Aavascript:` n'est pas une
+URL javascript, cas epingle vert. Quatre ecritures mordues separement. **Sa lecon, contre lui** :
+*"j'avais mesure `hx-on` sur la bibliotheque vendorisee plutot que de m'en remettre a mon souvenir,
+et j'ai laisse la clause voisine sur une normalisation que je n'ai pas mesuree. C'est celle qui n'a
+pas ete mesuree qui a cede."*
+
+**`marc-dev` a choisi la porte fermee plutot que la porte surveillee** : un type `BlocAdulte`
+appariant stimulus et mise en garde en un seul objet, qui **leve** quand exactement un des deux est
+present, remonte par `GestionnaireDesErreurs`. Motif : *"un masquage silencieux ferait disparaitre
+la voix d'un paquet sans que personne ne s'en apercoive."* Le test de `yanis-qa` repris mot pour
+mot est vert *"parce que le document rendu ne porte plus aucun `.bloc-adulte` dans le cas
+depareille, pas parce que l'assertion a cesse de tirer."*
+
+**Un fait verse par `marc-dev` contre lui-meme** : la reconciliation de `theo-archi` a comble un
+trou qu'il avait laisse - sa fonction de jetons ne traitait que les lettres, donc toute proposition
+entierement numerique produisait une liste vide et ne pouvait jamais etre signalee, **41,5 % du
+catalogue servi**.
+
+### L'arbre monte
+
+`s26-theo-reco` (`f671649`) et `s26-marc` (`87e6b4e`) partent tous deux de `s26-theo-reco` a
+`87963a2` et ne se touchent pas (l'un dans `FrontieresDuJavaScriptTest`/`ADR-0074`, l'autre dans le
+controleur, les gabarits et le type `BlocAdulte`) : **les deux fusions sont passees proprement,
+sans conflit**, sur `round-two` a `d9b459c`.
+
+`mvn -B clean verify` sur le reacteur complet : **1084 tests** (82 domain + 13 application + 382
+adapter-web + 451 adapter-content + 150 bootstrap unitaires + 6 bootstrap integration), 0 echec, 0
+erreur, BUILD SUCCESS. Coherent avec l'arithmetique annoncee : 1079 (`round-two` avant) + 4
+(`s26-theo-reco`, 1083 - 1079) + 1 (`s26-marc`, 1080 - 1079) = 1084.
+
+**Non fusionne, toujours delibere** : `s26-yanis` reste hors de `round-two`. Ses commits restent
+rouges par construction ; leurs correctifs sont entres par les branches de `theo-archi` et
+`marc-dev`.
+
+### Le jar reconstruit et joue avant de rendre
+
+Jar reconstruit par le `mvn -B clean verify` ci-dessus, lance sous le JDK de la toolchain 21 (le
+meme que celui qui a compile et teste), joue en local :
+
+- **Page d'accueil** : les cinq jeux a voix apparaissent (`bandit-manchot-position-syllabe-cp`,
+  `bandit-manchot-son-dans-mot-cp`, `bandit-manchot-lettre-du-son-cp`,
+  `bandit-manchot-digraphe-du-son-cp`, `saisie-mot-dicte-cp`).
+- **Les cinq se jouent** : une manche demarree sur chacun, le bloc adulte s'affiche a chaque fois
+  avec ses deux parties contigues (`.stimulus-a-lire` et `.consigne-adulte`, dans le meme
+  `.bloc-adulte`) ; une reponse soumise sur `bandit-manchot-position-syllabe-cp` (boutons) et sur
+  `saisie-mot-dicte-cp` (champ texte) fait avancer le score de 0 a 1 dans les deux cas, et le bloc
+  adulte reste complet sur l'ecran qui suit la reponse.
+- Aucun cas depareille (bloc a moitie rempli) rencontre en jouant, conformement au garde-fou de
+  `marc-dev`.
+
+**L'arbre est pret pour `nadia-prof`** : les deux trous qui empechaient de le lui donner a jouer
+sont fermes, verifies par la CI et par le jeu reel du jar, pas seulement par la lecture des deux
+commits.
