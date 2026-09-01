@@ -1,10 +1,10 @@
 # Fiche de conformite - bandit-manchot-position-syllabe-cp
 
-- **Mecanique** : bandit manchot ; champ vocal (nature technique en attente de `theo-archi` -
-  champ d'item selon `ADR-0073`, ou mecanique neuve ; `DEC-0067`, amendement, sections B.5 et
-  B.7).
+- **Mecanique** : bandit manchot ; champ vocal (champ d'item, tranche par `theo-archi` -
+  `ADR-0075`, qui amende `ADR-0032` sur son critere ; la branche mecanique de `DEC-0067`,
+  amendement, sections B.5 et B.7, ne s'est pas realisee).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-position-syllabe.yaml`
-  (a creer), story `S26-VOI-1` (`docs/backlog/backlog.md`). Aucun fichier de `contenu-repris/` ne
+  (a creer), story `S26-L1` (`docs/backlog/backlog.md`). Aucun fichier de `contenu-repris/` ne
   porte cette forme (voix, sans mot ecrit) ; ecriture neuve.
 - **Entree de catalogue** : `bandit-manchot-position-syllabe-cp` (identifiant propose, a confirmer
   par le developpeur).

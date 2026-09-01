@@ -1,10 +1,10 @@
 # Fiche de conformite - bandit-manchot-lettre-du-son-cp
 
-- **Mecanique** : bandit manchot ; champ vocal (nature technique en attente de `theo-archi` -
-  champ d'item selon `ADR-0073`, ou mecanique neuve ; `DEC-0067`, amendement, sections B.5 et
-  B.7).
+- **Mecanique** : bandit manchot ; champ vocal (champ d'item, tranche par `theo-archi` -
+  `ADR-0075`, qui amende `ADR-0032` sur son critere ; la branche mecanique de `DEC-0067`,
+  amendement, sections B.5 et B.7, ne s'est pas realisee).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-lettre-du-son.yaml`
-  (a creer), story `S26-VOI-3` (`docs/backlog/backlog.md`). Matiere premiere de forme uniquement,
+  (a creer), story `S26-L3` (`docs/backlog/backlog.md`). Matiere premiere de forme uniquement,
   refusee comme contenu : `contenu-repris/mots/cp-premiere-lettre.yml` (la bonne reponse y est la
   premiere lettre du mot affiche sur 24 items sur 24 - inutilisable tel quel, ecriture neuve
   requise).
@@ -14,7 +14,7 @@
 - **Ce que cette fiche est, et ce qu'elle n'est pas seule a fermer** : cette story couvre **la
   clause 1** (voyelles et consonnes simples) de la ligne "Associer les graphemes aux phonemes".
   **La ligne ne passe `couvert-valide` que si cette fiche ET `FICHE-bandit-manchot-digraphe-du-
-  son-cp.md` (clause 2, `S26-VOI-4`) recoivent toutes deux un verdict `VALIDE`** (`nadia-prof`,
+  son-cp.md` (clause 2, `S26-L4`) recoivent toutes deux un verdict `VALIDE`** (`nadia-prof`,
   addendum, section 11.6) - livrer l'une sans l'autre ne fait bouger aucune ligne de matrice.
 - **Arbitrage prealable de `nadia-prof` rendu** : `squad/conformite/ARBITRAGE-PREALABLE-s26-la-
   voix-est-un-adulte.md`, section 4.3 (acceptation, "la ligne peut se fermer"), sa barre du

@@ -1,11 +1,12 @@
 # Fiche de conformite - saisie-mot-dicte-cp
 
-- **Mecanique** : saisie ; champ vocal (nature technique en attente de `theo-archi` - champ d'item
-  selon `ADR-0073`, ou mecanique neuve ; `DEC-0067`, amendement, sections B.5 et B.7). **Premier
-  paquet a reponse alphabetique sur la mecanique de saisie** - jusqu'ici seule la reponse numerique
-  a ete jouee (`saisie-complements-10-cp`).
+- **Mecanique** : saisie ; champ vocal (champ d'item, tranche par `theo-archi` - `ADR-0075`,
+  qui amende `ADR-0032` sur son critere ; la branche mecanique de `DEC-0067`, amendement,
+  sections B.5 et B.7, ne s'est pas realisee). **Premier paquet a reponse alphabetique sur la
+  mecanique de saisie** - jusqu'ici seule la reponse numerique a ete jouee
+  (`saisie-complements-10-cp`).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-mot-dicte.yaml`
-  (a creer), story `S26-VOI-5` (`docs/backlog/backlog.md`). Ecriture neuve ; aucun fichier de
+  (a creer), story `S26-L5` (`docs/backlog/backlog.md`). Ecriture neuve ; aucun fichier de
   `contenu-repris/` ne porte cette forme.
 - **Entree de catalogue** : `saisie-mot-dicte-cp` (identifiant propose, a confirmer par le
   developpeur).

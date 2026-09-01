@@ -504,14 +504,14 @@ Source : `squad/programme/francais/competences-cp.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | francais | CP | Langage oral et conscience phonologique | Denombrer les syllabes orales d'un mot (segmentation syllabique) | bandit-manchot-syllabes-cp | bandit manchot | couvert-valide |
-| francais | CP | Langage oral et conscience phonologique | Localiser une syllabe dans un mot (debut / milieu / fin) | bandit-manchot-position-syllabe-cp (`S26-VOI-1`, en construction) | bandit manchot ; champ vocal (nature technique en attente, `theo-archi`) | en cours |
-| francais | CP | Langage oral et conscience phonologique | Identifier un son (phoneme) dans un mot | bandit-manchot-son-dans-mot-cp (`S26-VOI-2`, en construction) | bandit manchot ; champ vocal (nature technique en attente, `theo-archi`) | en cours |
-| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp ; bandit-manchot-lettre-du-son-cp (`S26-VOI-3`, en construction) ; bandit-manchot-digraphe-du-son-cp (`S26-VOI-4`, en construction) | bandit manchot ; champ vocal (nature technique en attente, `theo-archi`) | en cours - **ferme seulement si `S26-VOI-3` et `S26-VOI-4` sont livrees et validees ensemble** |
+| francais | CP | Langage oral et conscience phonologique | Localiser une syllabe dans un mot (debut / milieu / fin) | bandit-manchot-position-syllabe-cp (`S26-L1`, en construction) | bandit manchot ; champ vocal (champ d'item, `ADR-0075`) | en cours |
+| francais | CP | Langage oral et conscience phonologique | Identifier un son (phoneme) dans un mot | bandit-manchot-son-dans-mot-cp (`S26-L2`, en construction) | bandit manchot ; champ vocal (champ d'item, `ADR-0075`) | en cours |
+| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp ; bandit-manchot-lettre-du-son-cp (`S26-L3`, en construction) ; bandit-manchot-digraphe-du-son-cp (`S26-L4`, en construction) | bandit manchot ; champ vocal (champ d'item, `ADR-0075`) | en cours - **ferme seulement si `S26-L3` et `S26-L4` sont livrees et validees ensemble** |
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvrable en l'etat |
 | francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp | bandit manchot | **couvert-valide** (2026-08-31, s24, second passage - reserve levee) |
 | francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | **non couvrable en l'etat** (2026-08-31, s25, DEC-0066) - **contrainte fondatrice, nature reversible** : la competence est graphomotrice, et DEC-0046 a ecarte tout geste de trace pour ce produit. nadia-prof, 2026-08-31 : *"ni un clavier ni un choix ne produisent un geste d'ecriture ; former des lettres est un geste de trace"* |
-| francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | saisie-mot-dicte-cp (`S26-VOI-5`, en construction) | saisie ; champ vocal (nature technique en attente, `theo-archi`) | en cours |
+| francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | saisie-mot-dicte-cp (`S26-L5`, en construction) | saisie ; champ vocal (champ d'item, `ADR-0075`) | en cours |
 | francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | bandit-manchot-pluriel-cp | bandit manchot | **couvert-valide** (2026-08-31, s24) |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
 | francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | bandit-manchot-mot-manquant-cp | bandit manchot | couvert-valide |
@@ -524,30 +524,29 @@ addendum, sections 11 a 15) ouvrent cinq paquets sur quatre lignes du domaine le
 produit. Stories, criteres et routages complets : `docs/backlog/backlog.md`, section "Backlog -
 perimetre s26" ; planning du sprint : `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
 
-- **"Localiser une syllabe..."** (`S26-VOI-1`, `marc-dev`) et **"Identifier un son..."**
-  (`S26-VOI-2`, `marc-dev`) : `non couvert` -> `en cours`, chacune sur un paquet neuf et entier.
+- **"Localiser une syllabe..."** (`S26-L1`, `marc-dev`) et **"Identifier un son..."**
+  (`S26-L2`, `marc-dev`) : `non couvert` -> `en cours`, chacune sur un paquet neuf et entier.
 - **"Associer les graphemes aux phonemes..."** : reste `en cours` (elle l'est depuis s03), mais
-  gagne deux paquets neufs, `S26-VOI-3` et `S26-VOI-4` (`lea-dev`), un par clause. **Fait de
+  gagne deux paquets neufs, `S26-L3` et `S26-L4` (`lea-dev`), un par clause. **Fait de
   composition, pas de priorisation** : `nadia-prof` a mesure que les deux clauses ne tiennent pas
   dans un paquet unique (melange qui reproduit `CON-6` - `ch`, seule consonne parmi cinq voyelles,
   n'est jamais distracteur sur le materiel refuse, `P(bonne / presente) = 100 %`) ; **la ligne ne
   passe `couvert-valide` que si les deux paquets sont livres et valides ensemble**, sans quoi elle
   reste `en cours` comme aujourd'hui. Le fichier existant `cp-le-bon-son.yaml` (clause 3, trois
   nasales, deja acquise) n'est pas touche par ces deux stories.
-- **"Ecrire de maniere autonome un mot simple..."** (`S26-VOI-5`, `sofia-sm`) : `non couvert` ->
+- **"Ecrire de maniere autonome un mot simple..."** (`S26-L5`, `sofia-sm`) : `non couvert` ->
   `en cours`, sur un paquet neuf et entier - premier paquet a reponse alphabetique sur la mecanique
   de saisie, `SAI-11` se levant sur sa condition remplie.
 - **"Decoder un mot regulier inconnu par assemblage syllabique"** : **ne bouge pas**, `nadia-prof`
   la refuse pour ce moyen (*"la seule des cinq dont les propositions sont des sons"*) et nomme deux
   voies qui ne sont pas prises ce sprint. Reste `non couvert`.
 
-**Ce que ces cinq stories ne garantissent pas** : elles sont **conditionnelles a une reponse de
-`theo-archi`** sur `ADR-0073` (la famille a voix est-elle un champ d'item ou une mecanique neuve ?
-`DEC-0067`, amendement, sections B.5 et B.7). Si "champ d'item", les quatre lignes ferment
-entierement (**35/41 = 85,4 %**) ; si "mecanique", la borne de `nadia-prof` tombe a quatre
-paquets et une des quatre lignes ne tient pas dans s26 (**34/41 = 82,9 %**) - laquelle n'est pas
-decidee ici, et **la regle de composition ci-dessus fait de la ligne des graphemes, entiere, la
-candidate naturelle a un report** plutot qu'un sacrifice d'une seule de ses deux moities.
+**Correction du 2026-09-01 (`sofia-sm`) : ces cinq stories etaient conditionnelles a une
+reponse de `theo-archi` a l'ecriture de ce paragraphe, elles ne le sont plus.** Il a tranche
+(`ADR-0075`) : la famille a voix est un champ d'item, pas une mecanique neuve. **Les quatre lignes
+ferment donc entierement : 35/41 = 85,4 %.** La branche "mecanique" (borne a quatre paquets, une
+ligne sacrifiee, 34/41 = 82,9 %) ne s'est pas realisee et n'est plus ouverte nulle part dans ce
+depot.
 
 **Quatre conditions de `nadia-prof` sont ecrites comme non gardees sur les cinq paquets** -
 `VOI-3`, `VOI-5`, `VOI-8` et `VOI-13` - premiere fois sur ce depot qu'une condition pedagogique
@@ -3273,11 +3272,11 @@ mesurees par `nadia-prof` le meme jour sur le materiel reel plutot que sur l'ide
 
 **La ligne des graphemes exige deux paquets, pas un** : le total du sprint est **cinq paquets pour
 quatre lignes**, exactement la borne haute de `nadia-prof`, sans marge. Le pilotage complet - les
-cinq stories, les criteres, les quatre conditions non gardees, et le tableau conditionnel a la
-reponse de `theo-archi` sur `ADR-0073` (champ d'item : 5 paquets, 4 lignes, 85,4 % ; mecanique : 4
-paquets, 3 lignes, 82,9 %) - vit dans `docs/backlog/backlog.md`, section "Backlog - perimetre
-s26", et dans la note ajoutee ce jour sous le tableau "Francais - CP" ci-dessus. Je ne le duplique
-pas ici une troisieme fois.
+cinq stories, les criteres, les quatre conditions non gardees, et la reponse desormais tranchee de
+`theo-archi` (`ADR-0075` : champ d'item, 5 paquets, 4 lignes, **85,4 %** ; la branche mecanique ne
+s'est pas realisee) - vit dans `docs/backlog/backlog.md`, section "Backlog - perimetre s26", et
+dans la note ajoutee ce jour sous le tableau "Francais - CP" ci-dessus. Je ne le duplique pas ici
+une troisieme fois.
 
 **Aucun statut ne bouge par cette mesure** : les quatre lignes passent `en cours` par les cinq
 stories ouvertes (note ci-dessus, sous le tableau), pas par ce complement. Le denominateur reste

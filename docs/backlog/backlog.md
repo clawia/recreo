@@ -8864,12 +8864,18 @@ lui-meme, sur les cinq identifiants qu'il a deja fixes. Le verdict pedagogique q
 actionnables : `squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, sections 3 et
 4, et son addendum du meme jour, sections 11 a 15.
 
-**Attention de lecture, parce que la collision est reelle et volontairement non evitee par le
-planning** : les identifiants de story `S26-VOI-1` a `S26-VOI-5` ne correspondent **pas** aux
-memes numeros que les conditions `VOI-1` a `VOI-13` de `nadia-prof`. `S26-VOI-3` est la story du
-paquet "graphemes, clause 1" ; `VOI-3` est la condition "pas de scansion syllabique". Je nomme
-toujours une story avec le mot "story" ou son prefixe complet, et une condition par son seul
-identifiant, pour ne jamais laisser les deux se confondre sous la plume de qui relit vite.
+**Correction du 2026-09-01 (`sofia-sm`) : les stories s'appelaient `S26-VOI-1` a `S26-VOI-5`
+a l'ecriture de cette section, et j'ecrivais ici une simple convention de lecture** - nommer
+toujours une story avec le mot "story" ou son prefixe complet, une condition par son seul
+identifiant - **pour vivre avec une collision plutot que de la lever.** `camille-po` avait
+signale la collision sans trancher a ma place : `S26-VOI-3` designait la story "graphemes, clause
+1", homographe de la condition `VOI-3` de `nadia-prof`, "pas de scansion syllabique", dans un
+sprint ou elle audite condition par condition. **Ce n'est pas une convention de lecture qui tient
+sous un audit condition par condition ; c'est un garde-fou qui manque.** Je renomme : les
+identifiants de story sont desormais `S26-L1` a `S26-L5`, propages dans ce fichier, dans
+`squad/sprints/s26-la-voix-et-la-dette/planning.md`, dans `squad/programme/MATRICE-couverture.md`
+et dans les cinq fiches de conformite. Ils ne partagent plus aucune sous-chaine avec les
+identifiants `VOI-1` a `VOI-13` de `nadia-prof`.
 
 **Cinq paquets, pas quatre.** `nadia-prof` a mesure que la ligne "Associer les graphemes aux
 phonemes" exige deux paquets distincts et non un seul (addendum, section 11) : la clause 1
@@ -8886,22 +8892,23 @@ apparait - une reprise de dette, un correctif de contenu, un paquet qu'on croit 
 decline par ecrit."* (addendum, section 12.1). **Aucun sixieme paquet n'est donc a affecter ce
 sprint, quel qu'en soit le motif.**
 
-**Une question technique reste ouverte a la date d'ecriture de ces stories et conditionne la
-moitie du perimetre** - routee a `theo-archi` par `DEC-0067` (sections B.5 et B.7) et reprise dans
-le planning (section "Avis de faisabilite") : la voix est-elle un champ d'item (le cas d'`ADR-0073`)
-ou une mecanique neuve ?
+**Correction du 2026-09-01 (`sofia-sm`), sur le paragraphe de `camille-po` ci-dessous.**
+Elle ecrivait, avant de connaitre la reponse de `theo-archi` : *"une question technique reste
+ouverte [...] et conditionne la moitie du perimetre [...] : la voix est-elle un champ d'item [...]
+ou une mecanique neuve ?"* Il a repondu (`ADR-0075`) : **champ d'item**, sur le critere d'`ADR-0058`
+deja applique au visuel par `ADR-0073`. La branche "mecanique" du tableau ci-dessous ne s'est pas
+realisee et n'est plus ouverte nulle part dans ce depot ; elle reste lisible pour memoire, jamais
+comme un etat actuel.
 
 | Sa conclusion | Borne de `nadia-prof` | Lignes que s26 ferme | Plafond |
 |---|---|---|---|
-| **Champ d'item** | 5 paquets, inchangee | **4 sur 4** | 35/41 = **85,4 %** |
-| **Mecanique** | **4 paquets** | **3 sur 4** | 34/41 = **82,9 %** |
+| **Champ d'item - realisee** | 5 paquets, inchangee | **4 sur 4** | 35/41 = **85,4 %** |
+| ~~Mecanique~~ - ne s'est pas realisee | ~~4 paquets~~ | ~~3 sur 4~~ | ~~34/41 = 82,9 %~~ |
 
-**Je ne tranche pas laquelle des quatre lignes ne tiendrait pas sous la seconde conclusion**, et le
-planning ecrit la meme chose : *"le choix de laquelle reste a `camille-po`, jamais [a `sofia-sm`]."*
-Les cinq stories ci-dessous sont ecrites pour les deux cas ; si la reponse est "mecanique", je
-rearbitrerai laquelle des cinq ne rentre pas - **et la regle de composition ci-dessus interdit de
-sacrifier une seule des deux moities de la ligne des graphemes**, ce qui fait de cette ligne
-entiere, et non d'un paquet isole, la candidate naturelle a un report si la borne se resserre.
+**Les cinq stories ci-dessous tiennent donc integralement, sans arbitrage de repli.** Je n'ai pas eu
+a choisir laquelle des quatre lignes sacrifier, et la regle de composition qui l'aurait gouvernee
+(ne jamais sacrifier une seule des deux moities de la ligne des graphemes) reste vraie mais sans
+objet ce sprint.
 
 **Une cinquieme ligne de la famille existe et ne recoit aucune story.** *"Decoder un mot regulier
 inconnu par assemblage syllabique"* reste `non couvert`. `nadia-prof` la refuse pour ce moyen -
@@ -8962,7 +8969,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   Aucune mecanique n'y est tranchee. Le contenu qu'elle y met (les mots, les phrases) est un exemple
   et non un acquis ; elle le dit elle-meme.
 
-### `S26-VOI-1` - Paquet "localiser une syllabe" (francais CP)
+### `S26-L1` - Paquet "localiser une syllabe" (francais CP)
 
 - **Besoin** : en tant qu'eleve de CP, je veux ecouter un adulte dire un mot et une syllabe a
   chercher, et dire si je l'entends au debut, au milieu ou a la fin, afin d'apprendre a reperer la
@@ -9001,7 +9008,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   B.7 ; `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
 - **Agent affecte** : `marc-dev` (planning du sprint).
 
-### `S26-VOI-2` - Paquet "identifier un son" (francais CP)
+### `S26-L2` - Paquet "identifier un son" (francais CP)
 
 - **Besoin** : en tant qu'eleve de CP, je veux ecouter un adulte dire un mot et dire si j'entends
   dedans le son qu'on me demande d'ecouter, afin d'apprendre a reperer un son sans avoir besoin de
@@ -9043,7 +9050,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
 - **Agent affecte** : `marc-dev` (planning du sprint).
 
-### `S26-VOI-3` et `S26-VOI-4` - Associer les graphemes aux phonemes, les deux moities neuves (francais CP)
+### `S26-L3` et `S26-L4` - Associer les graphemes aux phonemes, les deux moities neuves (francais CP)
 
 - **Ce que ces deux stories sont** : **les deux moities d'une seule ligne**, qui ne se ferme
   qu'ensemble (`nadia-prof`, addendum, section 11.6). Elles sont ecrites separement parce qu'elles
@@ -9056,7 +9063,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   l'ecrit", "Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes
   `ch`, `ou`, `on`...)" (`squad/programme/francais/competences-cp.md`). Ligne `en cours` depuis
   s03 (clause 3, les trois nasales, deja acquise par `bandit-manchot-le-bon-son-cp`) ; **elle ne
-  passe a `couvert-valide` que si `S26-VOI-3` et `S26-VOI-4` sont toutes deux livrees et
+  passe a `couvert-valide` que si `S26-L3` et `S26-L4` sont toutes deux livrees et
   validees**, la clause 3 restant entiere et son fichier `cp-le-bon-son.yaml` intact.
 - **Statut** : deux paquets neufs, sur les cinq paquets de la famille "la voix est un adulte", au
   plafond de la borne de `nadia-prof`. Conditionnel a la reponse de `theo-archi` sur `ADR-0073` -
@@ -9076,7 +9083,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   ce fichier est touche, les 15 items des trois nasales rentrent dans l'audit de `nadia-prof`
   (addendum, section 12.2) ; **ces deux stories ne le touchent pas.**
 
-#### `S26-VOI-3` - Clause 1 : voyelles et consonnes simples
+#### `S26-L3` - Clause 1 : voyelles et consonnes simples
 
 - **Criteres d'acceptation** :
   - Etant donne le paquet complet, quand on releve les lettres servies en proposition, alors
@@ -9099,7 +9106,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   `paquet: cp-lettre-du-son`.
 - **Agent affecte** : `lea-dev` (planning du sprint).
 
-#### `S26-VOI-4` - Clause 2 : les digraphes `ou`, `oi`, `ch`
+#### `S26-L4` - Clause 2 : les digraphes `ou`, `oi`, `ch`
 
 - **Criteres d'acceptation** :
   - Etant donne le paquet complet, quand on releve les groupes de lettres servis en proposition,
@@ -9112,7 +9119,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   - **Condition `VOI-7` (testable)** - **L'adulte dit le mot entier, jamais le grapheme isole.**
     *"L'adulte dit 'chat' ; l'enfant en extrait le son et choisit sa graphie."*
   - Conditions `VOI-1`, `VOI-10`, `VOI-12`, `VOI-13` - communes, section ci-dessus. Phrase candidate
-    de la condition `VOI-12` pour ce paquet, identique a celle de `S26-VOI-3` (meme interdit,
+    de la condition `VOI-12` pour ce paquet, identique a celle de `S26-L3` (meme interdit,
     `VOI-7`) : *"Dites le mot entier, jamais le son tout seul."*
 - **Identifiants proposes, a confirmer par le developpeur** : `id:
   bandit-manchot-digraphe-du-son-cp`, `paquet: cp-digraphe-du-son`.
@@ -9124,7 +9131,7 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   (`squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`, verdict du 2026-08-10, section 6),
   reconduite mot pour mot sur sa clause 3 ; `squad/sprints/s26-la-voix-et-la-dette/planning.md`.
 
-### `S26-VOI-5` - Paquet "ecrire un mot en autonomie" (francais CP, saisie alphabetique)
+### `S26-L5` - Paquet "ecrire un mot en autonomie" (francais CP, saisie alphabetique)
 
 - **Besoin** : en tant qu'eleve de CP, je veux ecouter un adulte me dire un mot autant de fois que
   j'en ai besoin et le taper moi-meme au clavier, afin d'apprendre a ecrire un mot que je sais dire

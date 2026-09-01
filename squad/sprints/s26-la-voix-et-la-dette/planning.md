@@ -29,11 +29,11 @@ CI sont de ma propre execution).
 
 | Story | Titre | Competence programme visee | Decision liee | Affectee a |
 |---|---|---|---|---|
-| `S26-VOI-1` | Paquet "localiser une syllabe" (voix d'un adulte present) | Francais CP - Langage oral et conscience phonologique | `DEC-0068` ; `ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md` | `marc-dev` |
-| `S26-VOI-2` | Paquet "identifier un son" (voix d'un adulte present) | Francais CP - idem | `DEC-0068` ; idem | `marc-dev` |
-| `S26-VOI-3` | Paquet "graphemes, clause 1" - voyelles et consonnes simples | Francais CP - idem | `DEC-0068` ; idem, section 11 | `lea-dev` |
-| `S26-VOI-4` | Paquet "graphemes, clause 2" - `ou`, `oi`, `ch` | Francais CP - idem | `DEC-0068` ; idem, section 11 | `lea-dev` |
-| `S26-VOI-5` | Paquet "ecrire un mot en autonomie" (saisie alphabetique + voix d'un adulte) | Francais CP - idem | `DEC-0068` ; idem | `sofia-sm` (casquette dev) |
+| `S26-L1` | Paquet "localiser une syllabe" (voix d'un adulte present) | Francais CP - Langage oral et conscience phonologique | `DEC-0068` ; `ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md` | `marc-dev` |
+| `S26-L2` | Paquet "identifier un son" (voix d'un adulte present) | Francais CP - idem | `DEC-0068` ; idem | `marc-dev` |
+| `S26-L3` | Paquet "graphemes, clause 1" - voyelles et consonnes simples | Francais CP - idem | `DEC-0068` ; idem, section 11 | `lea-dev` |
+| `S26-L4` | Paquet "graphemes, clause 2" - `ou`, `oi`, `ch` | Francais CP - idem | `DEC-0068` ; idem, section 11 | `lea-dev` |
+| `S26-L5` | Paquet "ecrire un mot en autonomie" (saisie alphabetique + voix d'un adulte) | Francais CP - idem | `DEC-0068` ; idem | `sofia-sm` (casquette dev) |
 | `S26-DETTE-1` | Fermer le trou d'`ADR-0008` : un element `<script>` neuf porte du vocabulaire interdit sans faire rougir un test | transverse | `ADR-0008` ; `DEC-0067` rang 3 | `theo-archi` |
 | `S26-DETTE-2` | Garde-fou "un rang suffit" + clause de non-vacuite par paquet (domaine derive vide sur `cm1-comprehension`) | transverse | `DEC-0067` rang 4 ; `ADR` a ouvrir | `theo-archi`, puis dev a affecter une fois l'`ADR` ecrit |
 | `S26-DETTE-3` | `SUB-8` - encoder la moitie calculable manquante (precedent `PaquetCpTexteNarratifTest`, meme module) | transverse | `DEC-0067` rang 5 | `marc-dev` |
@@ -46,7 +46,7 @@ avant le prochain paquet de composition. `S26-NAR-1` (rang 6) - backlog, non urg
 
 | Story | Avis | ADR requis |
 |---|---|---|
-| `S26-VOI-1` a `S26-VOI-5` | **En cours d'instruction a l'heure ou ce planning est ecrit.** `theo-archi` repond a la question que `camille-po` lui route (`DEC-0067` B.5/B.7) : la famille a voix est-elle un champ d'item (le precedent d'`ADR-0073`) ou une mecanique neuve ? Voir la borne conditionnelle ci-dessous, ecrite d'avance par `nadia-prof` pour les deux reponses possibles. Ce planning ne fabrique pas sa reponse et ne bloque pas dessus. | a determiner par sa reponse |
+| `S26-L1` a `S26-L5` | **En cours d'instruction a l'heure ou ce planning est ecrit.** `theo-archi` repond a la question que `camille-po` lui route (`DEC-0067` B.5/B.7) : la famille a voix est-elle un champ d'item (le precedent d'`ADR-0073`) ou une mecanique neuve ? Voir la borne conditionnelle ci-dessous, ecrite d'avance par `nadia-prof` pour les deux reponses possibles. Ce planning ne fabrique pas sa reponse et ne bloque pas dessus. | a determiner par sa reponse |
 | `S26-DETTE-1` | A instruire par `theo-archi` (rang 3 de `DEC-0067`, routee par `yanis-qa` a s25) | probable |
 | `S26-DETTE-2` | A instruire par `theo-archi` (rang 4 de `DEC-0067`) | requis |
 | `S26-DETTE-3` | Faisable en l'etat, precedent deja ecrit dans le meme module | non |
@@ -116,13 +116,13 @@ addendum) ; elles ne creent aucune decision nouvelle.
 
 ## Prochaines etapes
 
-- `marc-dev` et `lea-dev` demarrent respectivement `S26-VOI-1`/`S26-VOI-2` et `S26-VOI-3`/
-  `S26-VOI-4` des que `theo-archi` a rendu sa reponse sur le calibrage (champ d'item ou mecanique) :
+- `marc-dev` et `lea-dev` demarrent respectivement `S26-L1`/`S26-L2` et `S26-L3`/
+  `S26-L4` des que `theo-archi` a rendu sa reponse sur le calibrage (champ d'item ou mecanique) :
   elle decide si les quatre lignes tiennent entierement dans ce sprint ou si l'une d'elles bascule
   hors borne, question que je ne tranche pas a leur place.
-- `sofia-sm`, casquette dev, prend `S26-VOI-5` (ecriture autonome d'un mot, saisie deja ouverte par
+- `sofia-sm`, casquette dev, prend `S26-L5` (ecriture autonome d'un mot, saisie deja ouverte par
   `SAI-11`).
-- `theo-archi` rend son avis de faisabilite sur `S26-VOI-1` a `S26-VOI-5` et instruit `S26-DETTE-1`
+- `theo-archi` rend son avis de faisabilite sur `S26-L1` a `S26-L5` et instruit `S26-DETTE-1`
   et `S26-DETTE-2` (`ADR` a ouvrir pour chacune).
 - `marc-dev` prend `S26-DETTE-3` (`SUB-8`) en parallele des paquets a voix : cout d'un test, precedent
   deja ecrit.
@@ -171,7 +171,7 @@ addendum) ; elles ne creent aucune decision nouvelle.
   jugement pedagogique, pas le sien.
 - **Verdict de `theo-archi`, cite mot pour mot** : *"le perimetre complet tient, et il ne tient que
   parce que la dette en est sortie - payee au planning plutot que reportee une quatrieme fois."*
-- **Contrainte a porter aux stories de graphemes (`S26-VOI-3`, `S26-VOI-4`)** :
+- **Contrainte a porter aux stories de graphemes (`S26-L3`, `S26-L4`)** :
   `cp-le-bon-son.yaml` ne doit pas etre touche par ce lot - un geste de forme y coute 15 items sur
   les 115 de la borne de `nadia-prof`, pour rien, en reactivant sa clause 3 (rejeu des nasales).
 - **Sa mesure, distincte de la mienne et nommee comme telle** : `theo-archi` rapporte 1 022 tests,
@@ -205,5 +205,5 @@ d'agent, et je le porterai a `retro.md` a la cloture.
 d'identite d'`ADR-0075`, et la clause 4 de traversee. `lea-dev` (`s26-lea`) cable l'ecran
 d'`ines-design`, sous les cinq points de `VOI-12` et la contrainte d'`ADR-0074`. `camille-po`
 (`s26-camille`) ecrit les cinq stories de contenu. Ce planning n'affecte donc plus les
-`S26-VOI-1` a `S26-VOI-5` a `marc-dev`/`lea-dev`/`sofia-sm` comme table ci-dessus le disait a
+`S26-L1` a `S26-L5` a `marc-dev`/`lea-dev`/`sofia-sm` comme table ci-dessus le disait a
 l'ouverture : l'affectation reelle, au moment de cet addendum, est celle de ce paragraphe.
