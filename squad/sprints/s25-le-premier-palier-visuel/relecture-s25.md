@@ -298,3 +298,188 @@ route sans etre comble, sur la dette que `CLAUDE.md` nomme en tete.
 - **Elle ne tranche rien de produit ni d'architecture**, et n'a modifie aucune logique de code : le
   seul diff de code est le remplacement de deux mots dans des commentaires et des messages.
 - **Elle ne modifie la charte d'aucun agent**, y compris la mienne.
+
+---
+
+# Amendement du 2026-09-01 - seconde passe sur l'arbre de cloture
+
+- **Arbre relu** : `s25-sofia-review` a `834c6bc`. Lignee verifiee : il descend de `16b80f6`, que
+  j'avais relu, et mon commit `5e411ea` y est integre.
+- **Perimetre** : le delta seul - 46 fichiers. La passe complete du 2026-08-31 n'est pas refaite, et
+  les sections 1 a 7 ci-dessus restent valables **sauf ce que le point A.3 corrige**.
+
+## A.1 La mesure - l'enveloppe du depot rend un chiffre
+
+> **BUILD SUCCESS**, cinq modules, **1 018 tests, 0 echec, 0 erreur, 0 ignore**, sur un JDK qui
+> **rapporte 21.0.10**.
+
+**Perimetre** : `bash outils/mvn-jdk21.sh -B clean verify`, reacteur complet a la racine, donc aucun
+`-pl` et aucune question de `-am`. Repartition : 80 + 13 + 364 + 410 + 145 + 6.
+
+**Le faux rouge de ma section 1.1 est ferme**, et l'enveloppe corrigee imprime desormais en tete le
+fait exact que j'avais mesure : *"Verdict rendu sur le fichier de toolchains que Maven lit, qui n'est
+pas celui de ce shell."* Puis : *"Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10"*. Elle
+mesure au lieu de refuser, et la version qu'elle annonce est celle que la machine virtuelle rapporte.
+**Point clos pour `theo-archi`.**
+
+## A.2 Les indices redistribues - les deux paquets illustres tiennent `CON-6`
+
+`nadia-prof` a porte ma mesure de 6 a 8 items sur 12 et pose `CON-6`. **J'ai refait le compte avec sa
+methode**, celle de sa section 10 : pour chaque item, l'intersection de ses trois propositions avec
+l'ensemble des bonnes reponses que son indice couvre ; designation quand elle vaut 1.
+
+| Paquet | Designation | `CON-6` (exige la moitie) |
+|---|---|---|
+| `cp-figures-planes` apres `lea-dev` | **0 sur 12** | **12 sur 12** |
+| `cp-monnaie` apres `sofia-sm` | voir A.2.1 | **12 sur 12** |
+
+Sur les figures, les trois indices couvrent desormais 3, 3 et 4 reponses distinctes ; aucun n'est
+plus l'apanage d'une seule forme. **Aucun texte d'indice n'a change** - c'est bien une
+redistribution, et il n'y a donc rien de neuf a relire en langue sur ce paquet.
+
+### A.2.1 La mesure de designation ne se transpose pas a un paquet numerique, et il faut le dire avant qu'elle devienne un garde-fou
+
+Appliquee telle quelle a `cp-monnaie`, la mesure rend **10 sur 12**. **Ce chiffre ne veut rien
+dire**, et le verifier prend une ligne : le paquet porte **11 bonnes reponses distinctes pour 12
+items**. Les distracteurs d'un item n'etant la bonne reponse d'aucun autre item du meme indice,
+l'intersection vaut 1 **par construction**, sans qu'aucune fuite existe - un enfant ne devine pas
+*"14 euros"* a partir de *"Commence par le plus grand nombre, puis ajoute les autres"*.
+
+**La mesure suppose un paquet a petit nombre de reponses repetees**, ce qu'est `cp-figures-planes`
+(4 formes pour 12 items) et ce que n'est pas `cp-monnaie`. **`CON-6`, elle, se transpose sans
+dommage** parce qu'elle est ecrite autrement : *"l'indice de l'item est aussi porte par un item dont
+la bonne reponse est differente"*. Elle rend 12 sur 12 sur les deux paquets.
+
+> **Route a `theo-archi` et `yanis-qa`**, a qui `nadia-prof` a pose la question du garde-fou : **si
+> l'un est ecrit, c'est `CON-6` qu'il faut encoder, pas la mesure de designation qui l'a fait
+> naitre.** Encoder la seconde ferait rougir un paquet numerique sain des le premier essai.
+
+### A.2.2 Les trois indices neufs de `cp-monnaie` - langue conforme
+
+> *"Commence par le plus grand nombre, puis ajoute les autres."*
+> *"Tout est pareil ici. Ajoute plusieurs fois le meme nombre."*
+> *"Ajoute ce qui est a droite du trait pour retrouver le nombre de gauche."*
+
+Accentuation, orthographe, ponctuation : **rien a corriger**. Majuscule initiale, point final,
+virgule juste, accents presents. Appariement verifie contre le contenu servi : l'indice a deux
+phrases ne va qu'aux deux items de pieces identiques, ce que leur commentaire annonce.
+
+## A.3 `cm1-substituts` - la garantie qui m'a ete donnee est fausse, et je l'ai mesuree
+
+**C'est le point de cet amendement.**
+
+Le message de commit `c32030e` de `marc-dev` porte :
+
+> *"Les mots que le relecteur a relus un par un sont conserves ; seuls deux liens de sens ont ete
+> renforces, sur les items du libraire et de la tente."*
+
+**J'ai verifie plutot que de croire, et l'enonce est faux sous ses deux lectures possibles.**
+
+| Ce que j'ai mesure | Resultat |
+|---|---|
+| Textes support **inchanges** | **5** sur 20 |
+| Reordonnes a **mots exactement identiques** | **1** sur 20 |
+| **Dont les mots ont change** | **14** sur 20 |
+| **Indices** modifies | **10** sur 20 |
+| Lecture large - le **lexique du paquet entier** est-il conserve ? | **non** : **28 mots neufs** entrent, 26 disparaissent |
+
+*Methode : `git show` des deux revisions du fichier, extraction des champs par expression reguliere,
+comparaison des multi-ensembles de mots item par item, puis des unions sur le paquet.*
+
+Ce ne sont pas des retouches de liaison. Des personnages changent (les *jardiniers* de l'item 4
+deviennent *Lila et Jade*), des scenes changent (le *club sciences* de l'item 11, la *chorale* de
+l'item 20), et **28 mots que je n'avais jamais lus entrent dans un texte destine a un enfant** -
+`praticables`, `bassine`, `legumes`, `ratissent`, `lavent`, `vitres`, `partitions`, `l'interieur`.
+
+**Pourquoi c'est un ecart et pas une imprecision** : cette phrase est exactement celle qui dispense
+de refaire un controle. Crue, elle faisait entrer 28 mots neufs dans du contenu enfant sans
+relecture. **Le fond du lot est bon** - le raccourci d'anteriorite tombe, la mesure est serieuse, les
+trois positions sont chiffrees - **et c'est ce qui rend la phrase couteuse** : elle etait inutile a
+la demonstration et elle seule pouvait faire sauter une porte.
+
+> **Route a `marc-dev`**, qui a ecrit la phrase, pour qu'il la corrige sous sa propre forme.
+> Je ne reecris pas le message de commit d'un autre agent, et un message deja pousse se corrige par
+> une note datee, pas par une reecriture d'historique.
+
+### A.3.1 Ce que j'ai donc refait : les 20 textes support, integralement
+
+**Aucune faute.** Relus un par un sur ce que l'automate ne juge pas :
+
+- **Accentuation integrale**, y compris sur les 28 mots neufs.
+- **Ponctuation** : majuscule initiale et point final sur les 60 phrases ; **60 espaces
+  insecables**, le compte exact attendu pour 20 enonces a trois emplacements chacun. Verifie aussi
+  sur les trois autres paquets : 12, 12 et 23, tous au compte.
+- **Accords des verbes aux sujets deplaces** - le risque propre a un reordonnancement : `ratissent`,
+  `lavent`, `rapportent`, `distribuent`, `trient`, `notent`, tous justes apres le deplacement.
+- **Elisions** : `qu'Enzo`, `l'interieur`, `l'entree`, `l'allee`, correctes.
+- **Commentaires YAML** toujours en ASCII, quand les champs servis restent accentues.
+- **Indices** : les deux formulations neuves - *"Relis les deux premieres phrases."* et *"Relis les
+  deux dernieres phrases."* - sont correctes, et **les 20 designent bien une phrase qui contient le
+  referent**, verifie item par item contre le texte.
+
+*Le niveau de langue de `praticables` pour un CM1 n'est pas mon jugement : il est a `nadia-prof`, et
+je le nomme sans le trancher.*
+
+## A.4 La charte - elle est ecrite, elle tient sur l'essentiel, et elle diverge sur un point
+
+**La dette n° 7 est fermee** : `.claude/agents/relecteur-pedagogique.md` porte la convention depuis
+`b7763b6`. Je ne l'ai pas ecrite et je n'y touche pas - c'est le motif meme pour lequel je l'avais
+routee.
+
+**Ce qui tient**, et c'est ce que j'emploie le plus : la forme 3 complete avec ses deux bornes, le
+gel de la citation a la reception, la regle des capitales, et la conduite - *ne pas choisir entre
+deux citations divergentes, nommer l'ecart et le router*. La charte renvoie a `DEC-0062` comme source
+et ecrit *"en cas d'ecart, `DEC-0062` fait foi"*. **C'est cette phrase-la qui m'oblige a signaler ce
+qui suit.**
+
+### A.4.1 La forme 2 transcrite n'est pas la forme 2 decidee
+
+| Source | Forme 2 |
+|---|---|
+| **`DEC-0062` section 3.1**, qui fait foi | **`de l'utilisatrice`** - avec ses mots cites, entre guillemets, et la date |
+| `squad/README.md` section 2 bis, **et ma charte qui la transcrit** | **une mesure faite par l'auteur** - la commande, son perimetre nomme, sa date, et `-am` sur toute mesure partielle |
+
+**Ce sont deux regles sans rapport, et l'echange a deux effets :**
+
+1. **L'attribution d'un arbitrage de l'utilisatrice n'a plus de forme.** Le depot en porte des
+   dizaines - *"Instruire dans s25"* en est un, cite trois fois dans s25. Selon la transcription, il
+   ne releve d'aucune des trois formes. **C'est la moitie du trou que `DEC-0062` a ete ecrite pour
+   fermer, rouvert dans le document qui la transcrit.**
+2. **Une exigence etrangere a la convention en a pris la place.** *"Toute mesure partielle porte
+   `-am`"* est une vraie regle du depot, mais elle vient de `CLAUDE.md` et de `squad/README.md`
+   section 4. La transcription a fondu deux regles distinctes en une.
+
+**Sans effet mesure a ce jour** : j'ai verifie que les documents de s25 attribuent les arbitrages de
+l'utilisatrice selon `DEC-0062` - avec ses mots, entre guillemets, dates - et non selon la
+transcription. **Les agents appliquent la decision ; c'est sa copie qui a derive.** L'ecart n'a pas
+encore mordu, et c'est le bon moment pour le fermer.
+
+### A.4.2 Un second manque, mineur et nomme pour memoire
+
+La regle `3.6` de `DEC-0062` - **le depart d'egalite par anteriorite**, l'occurrence commitee la plus
+ancienne gouvernant un ecart deja cree - n'est pas dans ma charte. Elle n'est pas contredite : la
+charte dit de ne pas choisir, et `3.6` fait trancher par `git log`, donc par un tiers et non par mon
+gout. Mais **telle qu'elle est ecrite, ma charte ne me dit pas d'aller chercher l'anteriorite** ;
+elle s'arrete a nommer et router. C'est ce que j'ai fait a s24, et c'est ce qui avait rendu la regle
+necessaire.
+
+> **Les deux points sont routes a `sofia-sm`**, qui tient `squad/README.md` et a ecrit la charte.
+> `DEC-0062` fait foi et n'a pas a bouger ; c'est la transcription qui est a aligner, aux deux
+> endroits ou elle vit. **Je ne modifie ni le fichier de process ni ma propre charte.**
+
+## A.5 Ce que j'ai verifie sur le delta et qui est conforme
+
+- **46 fichiers** touches depuis ma passe : aucun emoji, aucun tiret cadratin, aucun guillemet
+  typographique, aucune apostrophe courbe.
+- **`verifier-chemins.sh` en code 0** sur l'arbre de cloture.
+- **Toutes les references `ADR`/`DEC` du delta resolvent**, y compris celles des quatre fiches de
+  conformite neuves.
+- **Les enonces et les bonnes reponses de `cm1-substituts` sont inchanges** : 0 sur 20 pour chacun.
+  Seuls les textes support et les indices ont bouge.
+
+## A.6 Ce que cet amendement ne fait pas
+
+Il ne prononce aucun Done. Il ne juge le niveau scolaire d'aucun contenu. Il ne tranche ni la forme
+d'un garde-fou (A.2.1) ni la redaction d'une charte (A.4). **Il ne corrige aucun texte** : cette
+passe n'a trouve aucune faute de langue a corriger, et les trois points qu'elle leve sont routes a
+leurs auteurs.
