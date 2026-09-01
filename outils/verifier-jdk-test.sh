@@ -265,6 +265,28 @@ verifier_egal "aucun fichier sous le user.home de la machine virtuelle rend un m
   "non (aucun sous le repertoire utilisateur de la machine virtuelle)" \
   "$(etat_fichier_de_toolchains_de_maven 0 0)"
 
+# --- fichier_de_toolchains_gouvernant et mention_du_fichier_gouvernant (2026-08-31, theo-archi) ---
+
+verifier_egal "quand Maven a un fichier lisible, c'est le sien qui gouverne" \
+  "celui-de-maven" \
+  "$(fichier_de_toolchains_gouvernant "celui-du-shell" "celui-de-maven" 1)"
+
+verifier_egal "quand il n'y en a pas, le repli est le fichier du shell" \
+  "celui-du-shell" \
+  "$(fichier_de_toolchains_gouvernant "celui-du-shell" "" 0)"
+
+verifier_egal "le verdict dit quand il porte sur un fichier distinct de celui du shell" \
+  "sur le fichier de toolchains que Maven lit, qui n'est pas celui de ce shell" \
+  "$(mention_du_fichier_gouvernant 1 0)"
+
+verifier_egal "et quand les deux ecritures designent le meme fichier" \
+  "sur le fichier de toolchains que Maven lit, qui est aussi celui de ce shell" \
+  "$(mention_du_fichier_gouvernant 1 1)"
+
+verifier_egal "le repli est annonce comme un etat degrade, jamais confondu avec le cas normal" \
+  "sur le fichier de toolchains de ce shell, faute d'avoir pu demander son repertoire utilisateur a une machine virtuelle - ce fichier n'est peut-etre pas celui que Maven lit" \
+  "$(mention_du_fichier_gouvernant 0 0)"
+
 # --- test negatif global : aucune sortie collectee, quel que soit le cas, ne contient de chemin ---
 
 ctx='(^|[^0-9A-Za-z/])'

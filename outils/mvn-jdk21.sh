@@ -38,7 +38,29 @@ repertoire_outils="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=outils/verifier-jdk.sh
 . "${repertoire_outils}/verifier-jdk.sh"
 
-fichier_toolchains="${HOME}/.m2/toolchains.xml"
+# Le fichier que Maven lit, et non celui que ce shell lit. Maven resout son fichier de toolchains
+# sur le user.home de sa machine virtuelle ; HOME est une variable du shell, et rien ne garantit
+# que les deux designent le meme repertoire. Le lot F du 2026-08-31 l'a appris au diagnostic et
+# l'a laisse ignorer du verdict ; la mesure du meme jour montre que cela coute dans les deux sens,
+# un faux rouge et un faux vert. Le detail est dans fichier_de_toolchains_gouvernant.
+fichier_du_shell="${HOME}/.m2/toolchains.xml"
+proprietes_vm="$(java -XshowSettings:properties -version 2>&1)"
+user_home_vm="$(repertoire_utilisateur_de_la_machine_virtuelle "${proprietes_vm}")"
+
+fichier_de_maven=""
+maven_lisible=0
+meme_fichier=0
+if [ -n "${user_home_vm}" ] && [ -f "${user_home_vm}/.m2/toolchains.xml" ]; then
+  fichier_de_maven="${user_home_vm}/.m2/toolchains.xml"
+  maven_lisible=1
+  if [ "${fichier_de_maven}" -ef "${fichier_du_shell}" ]; then
+    meme_fichier=1
+  fi
+fi
+
+fichier_toolchains="$(fichier_de_toolchains_gouvernant   "${fichier_du_shell}" "${fichier_de_maven}" "${maven_lisible}")"
+echo "Verdict rendu $(mention_du_fichier_gouvernant "${maven_lisible}" "${meme_fichier}")." >&2
+
 jdk_home="$(extraire_jdkhome_pour_version "${fichier_toolchains}" "21")"
 
 if [ -z "${jdk_home}" ]; then

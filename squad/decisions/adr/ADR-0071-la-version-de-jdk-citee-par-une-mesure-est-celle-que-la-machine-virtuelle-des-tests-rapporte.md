@@ -198,3 +198,94 @@ racine du reacteur - **BUILD SUCCESS, 811 tests, 0 echec** (49 `domain` + 13 `ap
 **21.0.10** - version rapportee par la machine virtuelle des tests elle-meme, ce que cet `ADR`
 verifie desormais a chaque build. Pas de `-am` a citer : le reacteur est complet par construction.
 Les quatre tests de plus par rapport aux 807 du lot precedent sont ceux de ce garde-fou.
+
+---
+
+## Amendement du 2026-08-31 (s25, apres le lot F) - le verdict changeait de sujet, et cela coutait dans les deux sens
+
+**Route par `sofia-sm` sur un constat de `relecteur-pedagogique`.** Le lot F a paye la dette que cet
+`ADR` avait nommee et laissee ouverte : `outils/mvn-jdk21.sh` refuse desormais au lieu d'imprimer.
+**Il a mordu des sa premiere utilisation reelle, et ce qu'il a attrape etait vrai.** Le
+`relecteur-pedagogique` etablit pourtant que ce refus-la est un **faux rouge**, et il en donne la
+cause en la lisant dans le diagnostic lui-meme : `HOME` et le repertoire utilisateur que rapporte la
+machine virtuelle designent des repertoires differents sur ce poste, donc `~/.m2/toolchains.xml`
+n'est pas le meme fichier pour l'enveloppe et pour Maven.
+
+**Le lot F a appris cette distinction au diagnostic et l'a laissee ignorer du verdict.** Le
+diagnostic savait ce que le verdict ne savait pas.
+
+### 1. Ce que cela coutait, mesure dans les deux sens et avec le meme instrument
+
+**Methode.** Une sonde non commitee, un `HOME` jetable, un fichier de toolchains par cote, une
+racine de JDK dont le `bin/java` rend la version voulue, un `mvn` temoin et un `java` temoin en tete
+de `PATH` - c'est ce dernier que l'enveloppe interroge pour connaitre le repertoire utilisateur de
+la machine virtuelle. **Les deux etats sont joues par la meme sonde** : comparer deux etats avec
+deux instruments ne prouverait rien.
+
+| Cas | Avant | Apres |
+|---|---|---|
+| Le fichier du shell declare 21 sur un JDK 25, celui que Maven lit declare 21 sur un 21.0.10 | **`1` / Maven non lance** - faux rouge | `0` / Maven lance |
+| Le fichier du shell declare 21 sur un 21.0.10, celui que Maven lit declare 21 sur un JDK 25 | **`0` / Maven lance** - faux vert | `1` / Maven non lance |
+
+**Le second cas n'avait ete signale par personne, et c'est le grave.** Le refus se contournait, le
+faux vert non : la compilation se fait sur 25, le rapport cite 21, et rien ne le dit. **C'est
+exactement le defaut que cet `ADR` existe pour fermer, revenu par la porte de son propre outillage.**
+
+### 2. La distinction est tenable, et ce n'est pas une exemption
+
+**Le cas benin ne recoit aucun traitement particulier, et aucune liste n'est ecrite nulle part.** Le
+verdict cesse simplement de juger un fichier que personne n'utilise : il porte desormais sur **le
+fichier que Maven lit**, resolu sur le repertoire utilisateur que rapporte la machine virtuelle, avec
+une comparaison par identite de fichier et jamais par chaine - la meme que le lot F a posee pour le
+diagnostic.
+
+**C'est le contraire d'un affaiblissement, et le tableau ci-dessus le montre** : le refus disparait
+la ou la mesure etait juste, et il **apparait** la ou elle etait fausse. Le compte des cas mis a
+l'epreuve monte de 7 a 11 dans l'enveloppe, et 5 juges purs s'ajoutent a cote.
+
+**Quand la machine virtuelle ne rapporte rien**, le repli est le fichier du shell, et l'enveloppe
+**le dit** : *"ce fichier n'est peut-etre pas celui que Maven lit"*. C'est un etat degrade, nomme
+comme tel, jamais confondu avec le cas normal - et il porte son propre cas de test.
+
+### 3. Le meme defaut, un champ plus loin, dans le constat que les rapports recopient
+
+Trouve en verifiant le correctif sur le poste, pas devine. `outils/verifier-jdk.sh` lisait le champ
+**JDK de compilation** sur le fichier du shell. Sur ce poste il annoncait **25.0.2** ; le JDK qui
+compile reellement rapporte **21.0.10**. Le champ est desormais lu sur le fichier gouvernant, par le
+meme juge que l'enveloppe pour que les deux ne puissent pas diverger.
+
+**Le fait de cloture, et c'est celui qui compte** : le constat citable de l'outillage et le garde-fou
+en machine de cet `ADR` rendent maintenant **la meme version, 21.0.10**. Avant ce correctif ils se
+contredisaient - 25.0.2 d'un cote, 21.0.10 de l'autre - **et personne ne les avait mis cote a
+cote.** Deux instruments qui mesurent la meme grandeur et qui ne sont jamais compares ne sont pas
+deux preuves, c'est une preuve et un decor.
+
+### 4. Un defaut d'integration attrape avant la fusion, et non apres
+
+Le recablage du verdict rend **5 des 7 cas** du harnais du lot F rouges, et les **2 restants verts
+pour une raison etrangere a leur objet** : sans `java` temoin sur le `PATH`, chaque cas lisait le
+fichier de toolchains **reel du poste** au lieu de sa propre fixture. **Mesure faite avant d'ecrire
+le correctif du harnais, pas apres.**
+
+C'est la famille de defaut de s24 - vert sur une branche, vert sur l'autre, rouge une fois ensemble -
+et elle est attrapee ici parce que le lot F et ce correctif ont ete joues sur le meme arbre avant
+d'etre pousses. Le harnais fabrique donc un `java` temoin qui rapporte le repertoire utilisateur
+voulu ; les sept cas historiques retrouvent leur sens (shell et machine virtuelle d'accord, le cas
+ordinaire) et quatre cas neufs decrivent le desaccord.
+
+### 5. Ce que cet amendement ne fait pas
+
+- **Il ne touche pas la configuration du poste.** Deux fichiers de toolchains y coexistent et l'un
+  declare `21` sur un JDK 25 : c'est un fait de poste, il n'est pas dans le depot, et cet `ADR` le
+  garde du cote du depot. L'outillage doit dire la verite sur cette configuration, pas la corriger.
+- **Il n'ouvre aucune exemption, aucune dette, aucun plafond.**
+- **Il n'ajoute aucune regle ArchUnit** ; compte du depot inchange.
+
+### 6. Ce qu'aucun automate ne gardera, ecrit avant qu'on me le reproche
+
+Rien n'oblige un agent a lancer le build **par l'enveloppe**. `mvn -B clean verify` lance a la main,
+sur un `JAVA_HOME` quelconque, ne passe par aucun de ces juges - `maven-toolchains-plugin` apparie
+alors sur la version **declaree**, et cet `ADR` a deja mesure qu'une entree mensongere le fait
+apparier sans broncher. **Ce qui rattrape ce chemin-la est le garde-fou en machine de cet `ADR`, pas
+l'outillage.** Les deux sont necessaires et aucun ne remplace l'autre ; c'est la raison pour laquelle
+leur accord, section 3, est un fait de cloture et non une redondance.
