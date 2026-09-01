@@ -504,14 +504,14 @@ Source : `squad/programme/francais/competences-cp.md`.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | francais | CP | Langage oral et conscience phonologique | Denombrer les syllabes orales d'un mot (segmentation syllabique) | bandit-manchot-syllabes-cp | bandit manchot | couvert-valide |
-| francais | CP | Langage oral et conscience phonologique | Localiser une syllabe dans un mot (debut / milieu / fin) | bandit-manchot-position-syllabe-cp (`S26-L1`, en construction) | bandit manchot ; champ vocal (champ d'item, `ADR-0075`) | en cours |
-| francais | CP | Langage oral et conscience phonologique | Identifier un son (phoneme) dans un mot | bandit-manchot-son-dans-mot-cp (`S26-L2`, en construction) | bandit manchot ; champ vocal (champ d'item, `ADR-0075`) | en cours |
-| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp ; bandit-manchot-lettre-du-son-cp (`S26-L3`, en construction) ; bandit-manchot-digraphe-du-son-cp (`S26-L4`, en construction) | bandit manchot ; champ vocal (champ d'item, `ADR-0075`) | en cours - **ferme seulement si `S26-L3` et `S26-L4` sont livrees et validees ensemble** |
+| francais | CP | Langage oral et conscience phonologique | Localiser une syllabe dans un mot (debut / milieu / fin) | bandit-manchot-position-syllabe-cp | bandit manchot ; champ d'item (`ADR-0075`) | **couvert-valide** (2026-09-01, s26) - `VOI-12` tenue |
+| francais | CP | Langage oral et conscience phonologique | Identifier un son (phoneme) dans un mot | bandit-manchot-son-dans-mot-cp | bandit manchot ; champ d'item (`ADR-0075`) | **couvert-valide** (2026-09-01, s26) - `VOI-12` tenue |
+| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp ; bandit-manchot-lettre-du-son-cp ; bandit-manchot-digraphe-du-son-cp | bandit manchot ; champ d'item (`ADR-0075`) | en cours - **`bandit-manchot-lettre-du-son-cp` et `bandit-manchot-digraphe-du-son-cp` sont livres et tous deux VALIDE (2026-09-01, s26), la ligne ne se ferme pourtant pas** : `nadia-prof`, barre du 2026-08-10, clause 1, exige les voyelles simples **et** les consonnes simples ; `bandit-manchot-lettre-du-son-cp` sert six consonnes (`p, m, t, r, l, s`) et aucun paquet servi n'a de voyelle simple en bonne reponse. **Un paquet de voyelles simples ferme cette ligne** - `nadia-prof` le dit d'avance, ses clauses 2, 3 et 4 etant deja remplies |
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvrable en l'etat |
 | francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp | bandit manchot | **couvert-valide** (2026-08-31, s24, second passage - reserve levee) |
 | francais | CP | Ecriture | Copier un mot, une phrase courte sans erreur, en respectant l'espacement | - | - | **non couvrable en l'etat** (2026-08-31, s25, DEC-0066) - **contrainte fondatrice, nature reversible** : la competence est graphomotrice, et DEC-0046 a ecarte tout geste de trace pour ce produit. nadia-prof, 2026-08-31 : *"ni un clavier ni un choix ne produisent un geste d'ecriture ; former des lettres est un geste de trace"* |
-| francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | saisie-mot-dicte-cp (`S26-L5`, en construction) | saisie ; champ vocal (champ d'item, `ADR-0075`) | en cours |
+| francais | CP | Ecriture | Ecrire de maniere autonome un mot simple en respectant les correspondances grapheme/phoneme connues | saisie-mot-dicte-cp | saisie ; champ d'item (`ADR-0075`) | **couvert-valide** (2026-09-01, s26) - `VOI-12` tenue, reserve levee sans condition |
 | francais | CP | Orthographe et grammaire | Reconnaitre et utiliser les marques du pluriel les plus frequentes (-s) | bandit-manchot-pluriel-cp | bandit manchot | **couvert-valide** (2026-08-31, s24) |
 | francais | CP | Orthographe et grammaire | Distinguer les principaux types de mots (nom, verbe) dans une phrase tres simple | bandit-manchot-nature-mot-cp | bandit manchot | couvert-valide |
 | francais | CP | Vocabulaire | Utiliser des mots precis pour designer des objets, actions, sensations du quotidien | bandit-manchot-mot-manquant-cp | bandit manchot | couvert-valide |
@@ -556,6 +556,54 @@ bouche d'un adulte, sans trace. Detail et contrepartie (`VOI-12`, exigence bloqu
 
 **Le denominateur ne bouge pas : 41.** Aucun statut ne passe `couvert-valide` par ce planning ;
 ce statut n'est prononce que par `nadia-prof`, apres audit reel de chaque increment.
+
+**Note de cloture du 2026-09-01 (s26, `camille-po`) - VALIDE sur les cinq paquets, trois lignes se
+ferment, pas quatre. Le plafond que j'avais annonce ci-dessus n'est pas atteint.**
+`nadia-prof` a rejoue sur `round-two` (`squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-
+adulte.md`, section 18) et prononce le Done pedagogique : **VALIDE sur les cinq paquets**
+(`bandit-manchot-position-syllabe-cp`, `bandit-manchot-son-dans-mot-cp`,
+`bandit-manchot-lettre-du-son-cp`, `bandit-manchot-digraphe-du-son-cp`, `saisie-mot-dicte-cp`).
+Trois lignes passent `couvert-valide` (localiser une syllabe, identifier un son, ecrire un mot
+simple en autonomie) ; la ligne des graphemes reste `en cours`, motif ecrit sur sa ligne dans le
+tableau ci-dessus.
+
+Ses mots, a citer tels quels : *"Les deux moities sont VALIDE ; la ligne n'est pas couverte. Le
+Done porte sur l'increment, la matrice sur la couverture d'une competence. Me taire ferait passer
+la ligne a `couvert-valide` contre une barre non atteinte - et ma barre existe pour empecher
+exactement cela."* Sa barre du 2026-08-10, clause 1, exige les voyelles simples **et** les
+consonnes simples ; `bandit-manchot-lettre-du-son-cp` sert six consonnes (`p, m, t, r, l, s`) et
+aucun paquet servi n'a de voyelle simple en bonne reponse.
+
+**Ecart contre mon propre compte, a porter en toutes lettres plutot qu'a laisser filer.** J'avais
+ecrit ci-dessus *"les quatre lignes ferment entierement, plafond 35/41 = 85,4 %"*. Ce plafond
+n'est pas atteint : **34/41 = 82,9 %.** Le motif n'est ni un echec technique (1 090 tests verts,
+non-regression verifiee sur 188 ecrans) ni un refus pedagogique (les cinq paquets sont VALIDE) :
+c'est une **barre pedagogique que mon compte n'integrait pas** - je comptais des paquets et des
+lignes de referentiel, `nadia-prof` comptait aussi ce que chaque paquet sert reellement contre sa
+propre clause. Un plafond de couverture ne peut pas se calculer sur le seul denombrement des
+lignes et des paquets livres ; il depend d'un jugement de contenu qui n'est jamais acquis avant
+d'etre rendu. Je l'ecris ici pour la meme raison que je l'ai ecrite contre moi a la cloture de s25 :
+une enumeration qui ne se declare pas partielle se lit comme complete, et mon "35/41" ne se
+declarait pas conditionnel a un jugement de contenu qui restait a rendre.
+
+**Precision de `nadia-prof`, a ne pas perdre** : ce 82,9 % **n'a rien a voir** avec celui qu'elle
+avait price pour la branche *mecanique* de `theo-archi` (voir le complement ci-dessous, "champ
+d'item : 5 paquets, 4 lignes, 85,4 % ; mecanique : 4 paquets, 3 lignes, 82,9 %") - **meme nombre,
+autre cause**. Le premier decrivait une branche d'architecture qui n'a pas ete prise ; celui-ci
+decrit une ligne de matrice qui reste `en cours` faute de voyelles simples servies. Les deux
+figurent dans ce depot ; je le dis pour que personne ne recopie l'un a la place de l'autre.
+
+**Ce qui est acquis, et qui n'a rien de conditionnel** : `nadia-prof` ecrit que ses clauses 2, 3
+et 4 sont desormais toutes remplies, et qu'**un seul paquet de voyelles simples ferme la derniere
+ligne**. Le domaine *"Langage oral et conscience phonologique"* passe de **1/3 a 3/3 et se ferme**
+- premier domaine ferme du produit.
+
+**Ce que ce Done ne couvre pas, et qui reste vrai apres la cloture** : la liste des conditions
+pedagogiques sans garde executable ne diminue pas d'une unite - `VOI-3`, `VOI-5`, `VOI-8`, et la
+moitie non calculable de `VOI-13`. `nadia-prof` : *"la cinquieme phrase ne fait pas respecter
+VOI-13 : elle la dit. Un adulte qui laisse l'enfant lire la ligne fait echouer les cinq jeux, et
+rien ne le saura."* Aucune de ces quatre conditions n'est fermee par ce sprint, et rien dans ce
+fichier ne doit laisser croire le contraire.
 
 **Note du 2026-08-30 (ouverture s24, `camille-po`) - deux lignes passent `non couvert` ->
 `en cours`, sur le niveau le plus creux du produit.** `DEC-0059` ouvre `S24-NAR` sur "Comprendre un
@@ -3281,3 +3329,146 @@ une troisieme fois.
 **Aucun statut ne bouge par cette mesure** : les quatre lignes passent `en cours` par les cinq
 stories ouvertes (note ci-dessus, sous le tableau), pas par ce complement. Le denominateur reste
 **41**.
+
+### Complement du 2026-09-01 (meme jour, troisieme passage) - `theo-archi` tranche : champ d'item, plus deux faits sur `ADR-0032` et sur `cp-le-bon-son.yaml`
+
+Le complement ci-dessus portait un tableau conditionnel a la reponse de `theo-archi` sur `ADR-0073`
+(champ d'item ou mecanique neuve). **Sa reponse est rendue : c'est un champ d'item** (`ADR-0075`,
+sonde de quatre paquets reels). **La branche haute se realise : cinq paquets, quatre lignes sur
+quatre, plafond 35/41 = 85,4 %. La branche "mecanique" (34/41 = 82,9 %) est morte** et n'est plus
+une lecture possible de ce sprint - je la retire de ce fichier partout ou elle figurait comme un
+cas encore ouvert.
+
+**Deux faits que sa sonde a trouves, sans faire bouger le plafond ni aucun statut** :
+
+- `ADR-0032` (identite d'un tour) est amendee sur son critere par `ADR-0075` : la condition
+  `VOI-13` retire de l'ecran de l'enfant la matiere qui distinguait deux tours, et c'est une
+  garantie technique, pas un critere de contenu. **Aucun critere pedagogique de ce fichier ni de
+  `docs/backlog/backlog.md` n'en dependait.**
+- Le fichier `adapters/adapter-content/src/main/resources/contenu/cp-le-bon-son.yaml` **ne doit
+  pas etre touche** par les deux paquets de graphemes : `theo-archi` chiffre le cout d'un geste de
+  forme sur ce fichier a **15 items sur la borne de 115** de `nadia-prof`, pour rien - la borne
+  etant deja au plafond, sans marge.
+
+**Aucun statut ne bouge par ce complement.** Detail complet, criteres corriges :
+`docs/backlog/backlog.md`, section "Backlog - perimetre s26".
+
+---
+
+## Synthese apres les verdicts du sprint 26 (2026-09-01, cloture) - trois lignes, un domaine ferme, un plafond manque
+
+**Le Done pedagogique est prononce sur les cinq paquets** (`squad/conformite/ARBITRAGE-PREALABLE-
+s26-la-voix-est-un-adulte.md`, section 18 ; les cinq fiches `FICHE-*.md` portent leur second
+verdict). **VALIDE sur les cinq. Trois lignes se ferment, pas quatre** - detail et motif ecrit sur
+la ligne des graphemes dans le tableau "Francais - CP" ci-dessus, et dans la note de cloture qui
+suit ce tableau.
+
+| Ligne | Jeu | Verdict de `nadia-prof` | Statut de matrice |
+|---|---|---|---|
+| Localiser une syllabe dans un mot | `bandit-manchot-position-syllabe-cp` | **VALIDE** | **couvert-valide** |
+| Identifier un son (phoneme) dans un mot | `bandit-manchot-son-dans-mot-cp` | **VALIDE** | **couvert-valide** |
+| Associer les graphemes aux phonemes | `bandit-manchot-lettre-du-son-cp`, `bandit-manchot-digraphe-du-son-cp` | **VALIDE sur les deux** | **reste `en cours`** - il manque un paquet de voyelles simples (clause 1 de la barre du 2026-08-10) |
+| Ecrire de maniere autonome un mot simple | `saisie-mot-dicte-cp` | **VALIDE, sans reserve** | **couvert-valide** |
+
+### Le compte, avec sa methode
+
+*Methode : comptage automatise des quatre tableaux de matiere de ce fichier, colonne `Statut`,
+sur ce seul fichier, apres report des trois verdicts qui bougent un statut. Aucun module compile -
+la question du `-am` ne se pose pas pour cette mesure.*
+
+| Statut | Avant s26 (cloture s25) | Apres s26 |
+|---|---|---|
+| `couvert-valide` | 31 | **34** |
+| `non couvert` | 9 | **6** |
+| `en cours` | 1 | 1 (inchangee - ligne des graphemes) |
+| `non couvrable en l'etat` | 6 | 6 |
+| **Total** | **47** | **47** |
+
+**Denominateur atteignable : 47 - 6 = 41, inchange. Ratio : 34 / 41 = 82,9 %** (contre 75,6 % a
+la cloture de s25, soit **+7,3 points, entierement des trois lignes livrees et validees** - aucun
+mouvement de denominateur cette fois).
+
+### Le plafond que j'avais annonce n'est pas atteint - et pourquoi
+
+**Ouverture de s26, j'avais ecrit : "les quatre lignes ferment entierement, plafond 35/41 =
+85,4 %."** Ce n'est pas ce qui s'est produit. Le motif n'est ni un echec technique, ni un refus
+pedagogique - c'est une **barre pedagogique que mon compte n'integrait pas**. `nadia-prof` a rendu
+`bandit-manchot-lettre-du-son-cp` et `bandit-manchot-digraphe-du-son-cp` chacun VALIDE, et pourtant
+la ligne des graphemes reste `en cours` : sa clause 1 du 2026-08-10 exige les voyelles simples **et**
+les consonnes simples, et le contenu servi ne sert que six consonnes. Le Done porte sur
+l'increment ; la matrice porte sur la couverture d'une competence. J'avais compte des paquets
+livres contre des lignes de referentiel sans reserver la place d'un jugement de contenu qui restait
+a rendre - c'est le meme defaut que j'ai verse contre moi a la cloture de s25 : une enumeration qui
+ne se declare pas partielle se lit comme complete. **34/41 = 82,9 %, pas 35/41 = 85,4 %.**
+
+**Precision de `nadia-prof` a porter explicitement** : ce 82,9 % n'a **aucun rapport** avec celui
+qu'elle avait price plus haut dans ce fichier pour la branche "mecanique" de `theo-archi` (5
+paquets/4 lignes/85,4 % contre 4 paquets/3 lignes/82,9 %, complement du 2026-09-01, troisieme
+passage). Cette branche-la decrivait un choix d'architecture qui n'a pas ete pris (`ADR-0075`
+tranche "champ d'item"). Celle-ci decrit une ligne de matrice qui reste `en cours` faute de
+voyelles simples servies dans le contenu livre. **Meme nombre, autre cause** - je le nomme pour
+qu'aucun des deux ne soit recopie a la place de l'autre.
+
+### Un domaine se ferme - le premier du produit
+
+Le domaine **"Langage oral et conscience phonologique"** (francais CP) passe de **1/3 a 3/3** et
+se ferme entierement : denombrer les syllabes (deja acquis), localiser une syllabe et identifier
+un son (les deux lignes de ce sprint). C'est le premier domaine ferme du produit.
+
+### Francais CP, recompte
+
+| Matiere / niveau | `couvert-valide` | atteignable | Part | Avant s26 |
+|---|---|---|---|---|
+| **francais CP** | **8** | 10 | **80,0 %** | 50,0 % |
+
+Le francais CP reste le domaine le moins couvert des quatre (mathematiques CP 81,8 %,
+mathematiques CM1 80,0 %, francais CM1 90,0 %), mais c'est le seul a avoir gagne des lignes
+reelles ce sprint, contre un gain de seul denominateur au sprint precedent.
+
+### Un paquet ferme la derniere ligne, `nadia-prof` le dit d'avance
+
+Ses clauses 2, 3 et 4 (digraphes `ou`/`oi`/`ch`, nasales inchangees, increment joue) sont
+desormais toutes remplies. **Un seul paquet de voyelles simples couvrant les voyelles simples en
+bonne reponse ferme la ligne des graphemes** - candidat direct pour s27, motif arithmetique plutot
+que priorisation, voir la section "Rang recommande pour s27" ci-dessous.
+
+### Ce que ce Done ne referme pas
+
+**La dette du JavaScript est fermee ce sprint** (`ADR-0074`, trois porteurs), mais elle ne touche
+aucune ligne de cette matrice - c'est un chantier de qualite technique, pas de couverture
+pedagogique, et je ne la compte dans aucun des chiffres ci-dessus.
+
+**La liste des conditions pedagogiques sans garde executable ne diminue pas d'une unite** :
+`VOI-3`, `VOI-5`, `VOI-8`, et la moitie non calculable de `VOI-13` restent verifiables par
+`nadia-prof` en jouant, jamais par un test. Aucun des cinq jeux VALIDE de ce sprint n'en est
+dispense.
+
+### Ce que cette synthese ne fait pas
+
+- Elle **ne prononce aucun Done** : les cinq verdicts sont de `nadia-prof`.
+- Elle **n'additionne pas** la fermeture de domaine et le gain de lignes : ce sont deux lectures
+  du meme fait, pas deux gains distincts.
+- Elle **ne compte pas** la fermeture de la dette JavaScript dans le taux de couverture : cette
+  dette ne portait sur aucune ligne de cette matrice.
+
+## Rang recommande pour s27
+
+**Fait arithmetique, pas priorisation** : la ligne "Associer les graphemes aux phonemes" est a un
+seul paquet de se fermer, sur un motif que `nadia-prof` a ecrit d'avance et non a decouvrir - un
+paquet de voyelles simples (`a, e, i, o, u`, ou un sous-ensemble couvrant au moins une voyelle
+simple en bonne reponse sur chaque item), construit sur le meme champ d'item que les quatre
+paquets deja livres (`ADR-0075`), sans toucher `cp-le-bon-son.yaml` (cout chiffre a 15 items pour
+rien par `theo-archi`, motif deja acquis ce sprint).
+
+**Ce que je recommande** : ouvrir ce sixieme paquet en tete de s27. Le cout de composition est
+connu (meme mecanique, meme champ d'item, un seul paquet), le motif de fermeture est ecrit
+d'avance par `nadia-prof`, et c'est la seule ligne du domaine phonologique encore ouverte - la
+fermer clot un second domaine consecutif.
+
+**Ce que je ne tranche pas, et qui reste a l'utilisatrice** : combien de sprints le francais CP et
+les deux lignes `non couvert` restantes de ce domaine (decoder un mot par assemblage syllabique,
+refusee ce sprint pour ce moyen ; les deux voies que `nadia-prof` nomme dans son arbitrage
+prealable, section 4) doivent attendre derriere ce sixieme paquet, et si la dette residuelle de
+`VOI-3`, `VOI-5`, `VOI-8` et `VOI-13` (aucune garde executable, section 18.5 de l'arbitrage) appelle
+un chantier propre plutot que de rester une reserve permanente. Ce sont des arbitrages de
+priorisation et d'acceptation de risque, pas un calcul de couverture.

@@ -9194,3 +9194,21 @@ quelqu'un sans la lui dire ne l'a pas confiee : il l'a abandonnee."*
   ne consomme aucun paquet de contenu, mais elle ne fait pas non plus bouger de ligne ce sprint -
   `LIS` ne tient pas dans une borne entierement consommee par les cinq paquets a voix (`DEC-0067`,
   amendement, section B.6). Elle reste un arbitrage a poser, pas une story de developpement.
+
+### Note de cloture du 2026-09-01 - VALIDE sur les cinq, mais mon "35/41 = 85,4 %" plus haut ne s'est pas realise
+
+`nadia-prof` a rejoue sur `round-two` et prononce le Done pedagogique : **VALIDE sur les cinq
+paquets** (`squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, section 18). Trois
+lignes passent `couvert-valide` (localiser une syllabe, identifier un son, ecrire un mot simple en
+autonomie). **La ligne des graphemes reste `en cours`** malgre `S26-VOI-3` et `S26-VOI-4` livrees et
+toutes deux VALIDE : sa barre du 2026-08-10, clause 1, exige les voyelles simples **et** les
+consonnes simples, et `bandit-manchot-lettre-du-son-cp` ne sert que six consonnes (`p, m, t, r, l,
+s`), aucune voyelle simple en bonne reponse sur aucun paquet servi.
+
+**Le plafond ecrit plus haut dans cette section - "5 paquets, 4 lignes sur 4, plafond 35/41 =
+85,4 %" - n'est pas atteint : 34/41 = 82,9 %.** Ce n'etait ni un echec technique ni un refus : la
+reponse de `theo-archi` sur `ADR-0075` (champ d'item, pas mecanique) etait juste, et les cinq
+paquets sont VALIDE. Ce que ce compte n'integrait pas, c'est une barre pedagogique sur le *contenu*
+d'un paquet VALIDE, distincte de son Done. Detail complet, methode de comptage et rang recommande
+pour s27 : `squad/programme/MATRICE-couverture.md`, section "Synthese apres les verdicts du sprint
+26".
