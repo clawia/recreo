@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototype - ecran de la voix adulte (ines-design, s26)</title>
+    <!--
+      VEHICULE DE MESURE, JAMAIS DU CODE SERVI.
+
+      Ce fichier n'est pas un gabarit Thymeleaf et n'est charge par aucun controleur. Aucune des
+      quatre lignes que squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md accepte
+      n'est encore servie : aucune route, aucun controleur, aucune mecanique de voix n'existe. C'est
+      un arbitrage prealable, une proposition prealable. Meme motif que
+      squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/prototype-ines-ecran-de-saisie.html :
+      un CSS qui compile n'est pas un CSS qui se voit, et il n'y a rien a jouer.
+
+      Il charge les DEUX feuilles reelles de l'application, par chemin relatif, dans l'ordre
+      qu'ADR-0014 impose (tierce d'abord, maison ensuite). Les regles candidates de cette
+      proposition sont ecrites plus bas dans un <style> unique, apres la feuille maison, exactement
+      comme elles s'appliqueraient si elles y etaient ajoutees.
+
+      L'en-tete et la coquille (#jeu.container.zone-jeu) sont recopies de templates/accueil.html.
+
+      Les six etats de l'ecran vivent cote a cote dans ce document, chacun sous [data-etat],
+      masques par defaut ; squad/outils/ines-design/mesurer-ecran-voix.py en affiche un seul a la
+      fois pour que la mesure du pli reste honnete.
+
+      CE QUE CE PROTOTYPE MONTRE, ET CE QU'IL NE MONTRE PAS. Il montre le patron generique d'un
+      ecran ou une voix humaine porte le stimulus - un bloc distinct, .bloc-adulte, place au meme
+      endroit et sous la meme forme quelle que soit la ligne (choix par boutons ou saisie tapee). Il
+      ne montre PAS une mecanique arretee : le choix entre boutons nus et le futur meuble d'une
+      mecanique a voix n'est pas tranche (voir la note en tete de la proposition). Le cabinet du
+      bandit-manchot n'est delibrement PAS repris ici, ADR-0030 le scope au seul bandit-manchot.
+
+      LES TEXTES SONT DES CANDIDATS DE FORME, PAS DES ACQUIS. Les mots, les consignes et les
+      phrases adressees a l'adulte sont des exemples pour verifier que le patron generalise aux
+      quatre lignes de l'arbitrage prealable de nadia-prof - jamais un contenu arrete. Une seule
+      phrase reprend exactement l'exemple qu'elle a ecrit elle-meme (VOI-12, section 7.3 de son
+      arbitrage) : "Dites le mot normalement, sans le couper." Les autres sont composees en
+      parallele, dans le meme registre, pour l'exercice de forme - a elle et a camille-po de les
+      arreter.
+    -->
+    <link rel="stylesheet" href="../../adapters/adapter-web/src/main/resources/static/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../../adapters/adapter-web/src/main/resources/static/css/recreo.css">
+    <style>
+        /* ------------------------------------------------------------------
+           Regles candidates - proposition-ines-s26-ecran-voix.md, section 4.
+           Aucune n'est aujourd'hui dans recreo.css : versees seulement si sofia-sm ouvre un lot
+           pour la ligne qui les consomme, et jamais avant que nadia-prof les ait vues sur ce rendu.
+           ------------------------------------------------------------------ */
+
+        /* Une cinquieme couleur nommee, reservee au seul bloc ou l'adulte lit son texte - distincte
+           des cinq couleurs de sens deja prises (bleu de l'action, ambre de l'indice/attention,
+           bleu-gris de l'explication, vert/rouge du verdict). Contraste mesure (methode : luminance
+           relative WCAG) : texte/fond 12,84:1 ; bordure/fond de page 7,92:1 ; bordure/fond du bloc
+           7,22:1. Tous largement au-dessus des planchers de 4,5:1 (texte) et 3:1 (composant non
+           textuel) que cette application applique partout ailleurs. */
+        :root {
+            --recreo-adulte-fond: #f0eaf7;
+            --recreo-adulte-bordure: #5a3d8a;
+        }
+
+        /* Le bloc entier ou vit tout ce qu'un adulte doit lire pour cette manche - le stimulus et
+           la mise en garde. Un seul objet visuel, jamais deux blocs separes : c'est la condition
+           que VOI-12 pose ("a l'endroit ou il lit son texte", pas ailleurs). Bordure et fond
+           suffisent a le distinguer sans dependre de la couleur seule : sa position (avant la
+           consigne de l'enfant, premier bloc de la manche), son cadre complet (comme .indice et
+           .explication, jamais un simple liseret) et son etiquette en toutes lettres sont les
+           canaux non colores. */
+        .bloc-adulte {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+            background-color: var(--recreo-adulte-fond);
+            border: 0.125rem solid var(--recreo-adulte-bordure);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin: 0 0 0.75rem;
+        }
+
+        /* L'etiquette qui nomme le bloc pour ce qu'il est, avant tout signe visuel : un adulte qui
+           ne distingue pas les couleurs lit "Adulte, a voix haute" avant de lire un seul mot du
+           stimulus. Volontairement plus petite que le stimulus lui-meme (1rem contre 2rem) : elle
+           n'est pas ce que l'adulte doit dire, elle dit seulement ce qui suit. */
+        .etiquette-adulte {
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--recreo-adulte-bordure);
+            margin: 0;
+        }
+
+        /* Le stimulus - ce que l'adulte prononce (VOI-1). Meme taille et meme graisse que .enonce
+           (2rem, gras) : c'est le texte qu'un adulte doit reperer et lire en un coup d'oeil, pas un
+           texte secondaire. Un paquet peut en rendre plusieurs a la suite (un mot, puis une unite
+           cherchee en plus - localiser une syllabe demande les deux, VOI-1 section 4 de l'arbitrage
+           prealable) : la regle est ecrite sur la classe, jamais sur son rang, pour rester valable
+           qu'il y en ait un ou deux. */
+        .stimulus-a-lire {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--recreo-texte);
+            margin: 0;
+        }
+
+        /* Etiquette en ligne, a l'interieur d'un second stimulus (l'unite cherchee, distincte du mot
+           lui-meme) - jamais un second .etiquette-adulte redondant. Plus petite que le mot qu'elle
+           annonce, dans la teinte du cadre plutot que dans le texte courant, pour rester lisible
+           sans etre confondue avec le mot a dire. */
+        .etiquette-stimulus {
+            font-size: 1.25rem;
+            font-weight: normal;
+            color: var(--recreo-adulte-bordure);
+        }
+
+        /* Le texte que VOI-12 exige : ce que l'adulte ne doit pas faire. Toujours en dernier dans le
+           bloc, separe du stimulus par un filet complet (jamais un simple espacement, qui se lit
+           trop facilement comme une continuite) - le meme principe de cadre que .indice et
+           .explication, pour rester visible sans distinguer les couleurs. Taille et graisse
+           distinctes du stimulus (1,25rem, normal, contre 2rem gras) : ce que l'adulte doit DIRE se
+           lit en un coup d'oeil, ce qu'il ne doit PAS faire se lit ensuite, une fois qu'il sait quoi
+           dire. */
+        .consigne-adulte {
+            font-size: 1.25rem;
+            font-weight: normal;
+            color: var(--recreo-texte);
+            margin: 0.25rem 0 0;
+            padding-top: 0.5rem;
+            border-top: 0.0625rem solid var(--recreo-adulte-bordure);
+        }
+
+        /* Boutons de choix pour une ligne a voix, SANS le cabinet du bandit-manchot (ADR-0030 le
+           scope au seul bandit-manchot ; une mecanique a voix est neuve, nadia-prof le dit
+           elle-meme dans son arbitrage prealable, section 8). .propositions et .proposition restent
+           les classes reelles de l'application - rien de nouveau ici, ce commentaire documente
+           seulement une absence deliberee, pas une regle. */
+
+        /* --- hors proposition : uniquement le commutateur d'etat du vehicule de mesure --- */
+        [data-etat] { display: none; }
+    </style>
+</head>
+<body>
+<header class="entete">
+    <nav class="container entete-contenu">
+        <img src="../../adapters/adapter-web/src/main/resources/static/favicon.ico" alt="" class="icone-entete">
+        <h1 class="nom-site">Recreo</h1>
+        <a class="btn chip-niveau" data-role="entree" href="#">CP</a>
+        <a class="btn chip-niveau" data-role="entree" href="#">CM1</a>
+        <a class="btn lien-accueil" data-role="sortie" href="#">Les jeux</a>
+    </nav>
+</header>
+<main id="jeu" class="container zone-jeu">
+
+    <!-- ETAT 1 - localiser une syllabe (debut / milieu / fin). Deux stimulus dans le bloc adulte :
+         le mot, puis l'unite cherchee (VOI-1 section 4.1). Choix a trois colonnes, sans cabinet. -->
+    <div data-etat="localiser" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <div class="bloc-adulte" tabindex="-1">
+            <p class="etiquette-adulte">Adulte, à voix haute :</p>
+            <p class="stimulus-a-lire">château</p>
+            <p class="stimulus-a-lire"><span class="etiquette-stimulus">Cherchez :</span> cha</p>
+            <p class="consigne-adulte">Dites le mot normalement, sans le couper.</p>
+        </div>
+        <p class="consigne">Où entends-tu « cha » dans le mot ?</p>
+        <form class="propositions">
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="debut">Au début</button>
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="milieu">Au milieu</button>
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="fin">À la fin</button>
+        </form>
+    </div>
+
+    <!-- ETAT 2 - identifier un son dans un mot (oui / non). Un seul stimulus : le mot. Le son
+         cherche est une constante du paquet, nommee dans la consigne de l'enfant, jamais dans le
+         bloc adulte (sinon l'adulte le prononcerait comme une proposition, VOI-1). -->
+    <div data-etat="identifier" class="ecran-de-jeu">
+        <p class="score">Score : 4</p>
+        <div class="bloc-adulte" tabindex="-1">
+            <p class="etiquette-adulte">Adulte, à voix haute :</p>
+            <p class="stimulus-a-lire">chocolat</p>
+            <p class="consigne-adulte">Dites le mot normalement, sans appuyer sur aucun son.</p>
+        </div>
+        <p class="consigne">Entends-tu le son « ch » dans ce mot ?</p>
+        <form class="propositions">
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="oui">Oui</button>
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="non">Non</button>
+        </form>
+    </div>
+
+    <!-- ETAT 3 - associer un grapheme au phoneme entendu. Un seul stimulus : le mot entier, jamais
+         le grapheme isole (VOI-7). L'enfant choisit parmi des graphies, jamais parmi des sons. -->
+    <div data-etat="associer" class="ecran-de-jeu">
+        <p class="score">Score : 6</p>
+        <div class="bloc-adulte" tabindex="-1">
+            <p class="etiquette-adulte">Adulte, à voix haute :</p>
+            <p class="stimulus-a-lire">chat</p>
+            <p class="consigne-adulte">Dites le mot entier, jamais la lettre seule.</p>
+        </div>
+        <p class="consigne">Quelle écriture fait ce son, au début du mot ?</p>
+        <form class="propositions">
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="ch">ch</button>
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="j">j</button>
+            <button type="submit" class="btn proposition" data-role="action" name="propositionChoisie" value="s">s</button>
+        </form>
+    </div>
+
+    <!-- ETAT 4 - ecrire un mot en autonomie, manche fraiche. Meme bloc adulte, forme de reponse
+         tapee au lieu de boutons (SAI-* et le champ deja arbitre en s24, inchange). -->
+    <div data-etat="ecrire-fraiche" class="ecran-de-jeu">
+        <p class="score">Score : 3</p>
+        <div class="bloc-adulte" tabindex="-1">
+            <p class="etiquette-adulte">Adulte, à voix haute :</p>
+            <p class="stimulus-a-lire">vélo</p>
+            <p class="consigne-adulte">Redites le mot autant de fois qu'il le demande. Ne l'épelez pas.</p>
+        </div>
+        <label class="consigne" for="reponse-ecrite-1">Écris le mot que tu entends.</label>
+        <form class="saisie">
+            <input class="champ-reponse" id="reponse-ecrite-1" name="reponseEcrite" type="text"
+                   inputmode="text" autocomplete="off" data-role="action" data-focus-cible="true" value="">
+            <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+        </form>
+    </div>
+
+    <!-- ETAT 5 - meme ligne, apres un premier refus. Le bloc adulte reste affiche a l'identique :
+         VOI-8 exige que l'adulte puisse redire le mot autant de fois que l'enfant le demande, donc
+         le stimulus doit rester lisible tant que la manche n'est pas resolue - jamais un bloc qui
+         disparaitrait apres la premiere lecture. -->
+    <div data-etat="ecrire-echec" class="ecran-de-jeu">
+        <p class="score">Score : 3</p>
+        <div class="bloc-adulte" tabindex="-1">
+            <p class="etiquette-adulte">Adulte, à voix haute :</p>
+            <p class="stimulus-a-lire">vélo</p>
+            <p class="consigne-adulte">Redites le mot autant de fois qu'il le demande. Ne l'épelez pas.</p>
+        </div>
+        <label class="consigne" for="reponse-ecrite-2">Écris le mot que tu entends.</label>
+        <form class="saisie">
+            <input class="champ-reponse" id="reponse-ecrite-2" name="reponseEcrite" type="text"
+                   inputmode="text" autocomplete="off" data-role="action" data-focus-cible="true" value="velau">
+            <button type="submit" class="btn valider" data-role="action">Je réponds</button>
+        </form>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Ce n'est pas ça. Corrige et réessaie.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAT 6 - reussite sur la ligne "identifier un son". Le bloc adulte reste affiche : rien ne
+         le retire au verdict, ni sur une reussite ni sur un echec - c'est la meme regle qu'a l'etat
+         5, generalisee a la famille "choix". -->
+    <div data-etat="identifier-reussite" class="ecran-de-jeu">
+        <p class="score">Score : 5</p>
+        <div class="bloc-adulte" tabindex="-1">
+            <p class="etiquette-adulte">Adulte, à voix haute :</p>
+            <p class="stimulus-a-lire">chocolat</p>
+            <p class="consigne-adulte">Dites le mot normalement, sans appuyer sur aucun son.</p>
+        </div>
+        <p class="consigne">Entends-tu le son « ch » dans ce mot ?</p>
+        <button type="button" class="btn continuer-manche" data-role="action" data-focus-cible="true">Continuer</button>
+        <div class="message-jeu" role="status">
+            <div class="signal est-juste">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">Oui !</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
