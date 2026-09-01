@@ -204,3 +204,186 @@ refaire non plus sur les textes qui ne bougeront pas.
 - Il **n'est pas fonde sur la CI**, qui est verte a 1 006 tests, et **c'est precisement le genre de
   defaut qu'une CI verte ne voit pas**.
 - Il **ne modifie aucun fichier** de code ni de contenu.
+
+---
+
+## Verdict du 2026-09-01, second passage (s25, arbre de cloture `834c6bc`)
+
+# Verdict : **VALIDE** - le refus du 2026-08-31 est **leve**
+
+**Le verdict de refus n'est pas efface** : il reste lisible ci-dessus avec sa mesure et son motif, et
+il a porte sur un paquet qui n'existe plus. **La ligne de matrice peut passer `couvert-valide`, ligne
+entiere.**
+
+### 1. Ce que j'ai fait, avec sa methode et son perimetre
+
+**J'ai joue.** 80 manches sur le jar construit depuis `834c6bc`, **les vingt textes support
+rencontres**, en n'appliquant que des regles de position - jamais la lecture du referent.
+
+**Et j'ai repris mon propre instrument de refus, exhaustivement sur le fichier** : *pour chaque item,
+le premier prenom du `texteSupport` dans l'ordre du texte, puis la proposition qui le contient ;
+l'item est compte gagne si cette proposition est exactement la bonne reponse.* **Meme instrument,
+meme population, avant et apres.**
+
+**L'enveloppe du depot construit desormais**, et elle declare le JDK qu'elle mesure : `21.0.10`. Le
+faux rouge que j'avais rencontre est corrige. **Horodatage du jar verifie avant de le lancer.**
+
+### 2. Le fait qui leve le refus
+
+> **Mon instrument, exhaustif sur les vingt items : 7 sur 20, soit 35,0 pour cent.**
+> **Etat refuse : 19 sur 20, soit 95,0 pour cent. Hasard : 33,3 pour cent.**
+
+**C'est la seule comparaison qui vaut** - le meme instrument sur la meme population - et elle dit que
+le raccourci d'anteriorite est mort.
+
+**Les trois positions, mesurees exhaustivement sur le fichier**, avec une definition qui ne demande
+aucun lexique de prenoms : *la position, dans le texte, de la proposition qui est la bonne reponse,
+parmi les trois propositions telles qu'elles y figurent.*
+
+| La bonne reponse est... | Part des items |
+|---|---|
+| la **premiere** proposition citee | 6 / 20 = **30,0 %** |
+| la **derniere** citee | 7 / 20 = **35,0 %** |
+| celle du **milieu** | 6 / 20 = **30,0 %** |
+
+**Aucune position n'est majoritaire et les trois encadrent le hasard.** Je reproduis les chiffres de
+`marc-dev` a la decimale par une lecture independante.
+
+*Une precision que je dois, parce que mes deux mesures ne coincident pas : en jouant 80 manches j'ai
+lu **41,2 pour cent** sur la position "premier", contre 35,0 pour cent sur le fichier entier. **C'est
+mon echantillon de jeu qui est trop court**, pas le paquet qui derive - 80 tirages sur une population
+de 20 laissent un ecart-type d'environ 5 points, et 41,2 y tient. **La mesure exhaustive fait foi**,
+et je la donne comme telle plutot que de citer le chiffre le plus defavorable.*
+
+### 3. Ce que `marc-dev` a trouve et que ma condition ne fermait pas
+
+**Sa premiere reecriture tenait `SUB-11` a 35 pour cent et rendait le referent dernier nomme sur
+55 pour cent des items.** Il l'a mesure, l'a refuse de lui-meme et a recommence.
+
+**`SUB-11` telle que je l'ai ecrite ne l'aurait pas arrete** : elle ne borne que la position
+*premiere*. **C'est le troisieme defaut de conception d'une de mes conditions en deux jours**, apres
+la borne unique de `CON-6` et son plancher a 50 pour cent qui laissait passer le paquet qui l'avait
+motivee. Le mecanisme est chaque fois le meme : **je borne le raccourci que je viens de voir, et la
+borne unique en ouvre un autre a l'autre bout.**
+
+> **`SUB-11`, amendee le 2026-09-01. Le libelle du 2026-08-31 reste lisible.**
+> **Aucune position du referent dans l'ordre des propositions citees n'est majoritaire** - ni la
+> premiere, ni la derniere, ni celle du milieu. *Unite de compte : l'item.*
+>
+> **Ce n'est pas un durcissement : c'est la generalisation de ce que je voulais dire**, et c'est
+> `marc-dev` qui l'a trouvee avant moi en mesurant les trois positions au lieu d'une. **Le paquet la
+> tient deja**, et un garde-fou l'encode.
+
+### 4. Les conditions, reverifiees **entierement** - le contenu a change
+
+**Quatorze textes support sur vingt portent des mots changes.** Je ne reporte donc aucune
+verification du premier passage : **je les ai toutes refaites.**
+
+| Condition | Verdict | Ce que j'ai verifie |
+|---|---|---|
+| `SUB-1` forme | **TENUE, 20/20** | Les trois propositions figurent dans le texte de leur item |
+| `SUB-2` longueur | **TENUE** | Textes de **22 a 37 mots** contre un plafond de 45, jamais plus de trois phrases, enonces a 10 mots |
+| `SUB-3` deux familles | **TENUE** | 11 pronoms, 9 groupes nominaux, plancher a 6 |
+| `SUB-4` genre et nombre | **TENUE, 20/20**, a la main | **19 items sur 20 ont leurs trois propositions accordees**, contre 16 avant. Seul l'item 4 en a une qui discorde, et `SUB-4` en tolere une |
+| `SUB-5` proximite | **TENUE, 13/20**, a la main | Plancher a 6 |
+| `SUB-6` texte masque | **TENUE, 20/20**, a la main | **Et mieux tenue qu'avant** : voir section 5 |
+| `SUB-7` un substitut, une occurrence | **TENUE, 20/20** | |
+| `SUB-8` personnages | **TENUE** | 10 prenoms feminins distincts, 9 masculins, ecart de 1. **Roles non stereotypes** : la scientifique et la cycliste sont des femmes, le danseur un homme, et le paquet porte **une gardienne et un gardien** |
+| `SUB-9` indice | **TENUE, 20/20** | Dix mots au plus, jamais le referent |
+| `SUB-10` vingt items, textes distincts | **TENUE** | |
+| **`SUB-11`** amendee | **TENUE** | Referent non premier sur **13 items sur 20**, et aucune des trois positions majoritaire |
+| **`SUB-12`** | **TENUE** | La strategie *"prendre la proposition qui porte et"* gagne **0 fois sur 5**, contre 5 sur 5 avant |
+
+### 5. Ce que j'ai vu que personne ne m'avait signale, et qui va dans le bon sens
+
+**Les distracteurs inanimes ont disparu.** L'etat refuse portait *"les jeunes plants"*, *"les
+fraisiers"*, *"les feuilles"*, *"les cartons"*, *"la mare"*, *"la troupe"*, *"la chorale"* parmi les
+propositions. **Sur sept items, un enfant pouvait en ecarter une sans lire le texte**, parce que
+*"a qui"* appelle une personne - je l'avais releve au premier passage sans en faire un motif.
+
+**Il n'en reste aucun.** Les soixante propositions du paquet sont des personnes ou des groupes de
+personnes. **`SUB-6` est donc tenue plus proprement qu'avant** : texte masque, il reste trois
+candidats indiscernables et non deux.
+
+**Ce n'etait dans aucune de mes conditions et personne ne me l'avait promis. Je le porte au credit du
+lot.**
+
+### 6. La reserve, non bloquante
+
+**Le mot *praticables*, item 9** - *"pendant que Rachid installe les praticables"*. Un praticable est
+un plateau de scene : **c'est un terme de metier qu'un CM1 ne connait pas**, et le texte ne lui donne
+aucun appui pour le deviner.
+
+**Cela ne bloque pas** : le mot est dans le texte support et non dans la question, il n'est pas
+necessaire pour trouver le referent - *"Enzo enchaine les sauts au centre du plateau"* suffit -, et
+rencontrer un mot inconnu dans un texte est normal au CM1.
+
+**Mais il ne sert a rien**, et sur un item de comprehension chaque mot opaque se paie en decodage.
+**Un mot ordinaire rendrait exactement le meme service.** Je ne l'ecris pas ; je pose le resultat.
+
+*Le `relecteur-pedagogique` me l'a route plutot que de le corriger. Il a eu raison : ce n'est ni une
+faute de langue ni une faute d'orthographe, c'est un niveau, et le niveau est a moi.*
+
+### 7. Ce que je verse sur la relecture, parce que cela me concerne directement
+
+**Le commit affirmait que les mots deja relus etaient conserves, et c'etait faux** - 14 textes sur 20
+portent des mots changes, 10 indices modifies, 28 mots neufs. Le `relecteur-pedagogique` l'a mesure,
+`marc-dev` l'a refait par une autre methode, l'a confirme, **et a relu les vingt textes
+integralement**.
+
+**Ce fait a change mon audit** : sans lui, j'aurais pu reporter mes verifications du premier passage
+sur un contenu qui avait bouge. **C'est exactement l'ecart muet**, et c'est la troisieme fois de ce
+sprint qu'un fait de ce genre m'aurait fait juger un increment qui n'existait plus - apres le jar de
+la veille et les douze dessins corriges sous ma passe d'exactitude. **Le dire coute un paragraphe ;
+ne pas le dire aurait coute un Done faux.**
+
+### 8. Sur quelles proprietes je reste la seule garde sur ce jeu
+
+- **`SUB-4`, `SUB-5`, `SUB-6`** - portees a la main, item par item, a chaque passage.
+- **La famille de la marque de surface**, dont ce paquet a fourni le premier cas reel. **Trois de ses
+  membres sont desormais encodes** - `SUB-11` generalisee, `SUB-12`, et une clause d'indice que je
+  n'avais pas demandee. **La famille, elle, n'est pas close** : rien ne dit qu'un quatrieme membre
+  n'attend pas, et c'est pourquoi je continue de mesurer a chaque audit plutot que de lire le vert.
+- **Le niveau de langue des textes**, dont la reserve de la section 6 est un cas.
+
+### 9. Ce que ce second verdict fait, et ce qu'il ne fait pas
+
+- Il **leve le refus** et **prononce le Done pedagogique**.
+- Il **n'efface pas le refus du 2026-08-31**, ni sa mesure de 94,8 pour cent en jeu : ce refus a fait
+  son travail, et c'est la trace qu'il l'a fait.
+- Il **n'est pas fonde sur les 1 018 tests verts**, que je n'ai pas mesures.
+- Il **ne modifie aucun fichier** de code ni de contenu.
+
+### 10. Trois de mes identifiants ne sont cites par aucun test - je reponds pour les deux qui sont miens
+
+`yanis-qa` releve que `MON-6`, `SUB-8` et `DES-6` ne sont cites par aucun test. **Verifie par moi sur
+`834c6bc`** : les trois n'apparaissent que dans de la prose - fiches, backlog, rapports de lot.
+
+**Une correction d'attribution d'abord : `DES-6` n'est pas de moi.** Elle appartient a la contrainte
+d'`ines-design` sur ce qu'un dessin servi doit declarer
+(`squad/sprints/s25-le-premier-palier-visuel/contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md`).
+**Je ne me prononce pas sur elle** : ce n'est pas ma condition et je ne veux pas d'un pouvoir sur un
+identifiant que je n'ai pas ecrit. *C'est la meme correction que j'ai demandee pour moi le 2026-08-31
+sur le seuil de majorite qu'`ADR-0072` m'attribuait a tort.*
+
+**`SUB-8` - c'est le cas serieux, et `yanis-qa` a raison d'insister.** Sa jumelle `NAR-7` est encodee
+depuis s24 **dans le meme module**, par une table de genre declaree par l'auteur, avec une Javadoc
+qui dit honnetement ce qu'elle prouve et ce qu'elle ne prouve pas - *"l'equilibre de cette table a un
+pres, jamais que la table soit complete"*. **`SUB-8` demande exactement la meme chose, sur un paquet
+du meme module, et rien ne l'execute.**
+
+**C'est la famille de `CPL-3`, et c'est la quatrieme fois que je la rencontre en deux jours - trois
+fois sur mes propres conditions.** Je porte `SUB-8` a la main a chaque passage, et je continuerai ;
+**mais une condition que seule ma main tient alors que sa jumelle est automatisable est une condition
+qui tombera le jour ou je ne relirai pas.**
+
+> **Ce que je demande a `theo-archi` et `yanis-qa`** : que `SUB-8` soit encodee sur le modele de
+> `NAR-7`, **avec la meme honnetete de Javadoc** - une table declaree, et ce qu'elle ne prouve pas
+> ecrit noir sur blanc. **Ce n'est pas urgent et cela ne retient aucun Done** ; c'est une dette que
+> je nomme pendant qu'elle est petite.
+
+**`MON-6` n'est citee par aucun test non plus, et c'est defendable** : elle est neuve, non
+retroactive, et **aucun paquet du depot ne lui est soumis aujourd'hui**. Un garde-fou sur une
+population vide serait decoratif. **Ce que je demande, c'est qu'elle soit encodee avant le prochain
+paquet de composition, pas maintenant** - et qu'elle epingle son zero, comme `theo-archi` l'a fait
+pour les illustrations, pour que le jour ou un tel paquet arrive, quelqu'un passe par la.
