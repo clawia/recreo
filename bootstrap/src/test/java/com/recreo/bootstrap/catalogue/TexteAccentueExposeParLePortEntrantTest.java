@@ -303,7 +303,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S26-L1 a S26-L5 : cinq consignes neuves.
             "Écoute l'adulte lire le mot, puis dis si le son cherché est au début, au milieu ou à la fin.",
             "Écoute le mot que l'adulte va dire, puis réponds oui ou non.",
-            "Écoute l'adulte lire le mot, puis choisis la lettre qui fait ce son.",
+            // Correction du 2026-09-01 (nadia-prof, second motif de son refus, addendum
+            // section 17.3) : "choisis la lettre qui fait ce son" ne disait pas a l'enfant que le
+            // son cherche est le premier du mot.
+            "Écoute l'adulte lire le mot, puis choisis la lettre qui fait le tout premier son.",
             "Écoute l'adulte lire le mot, puis choisis le groupe de lettres qui fait ce son.",
             "Écoute le mot que l'adulte va dire, puis écris-le.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
