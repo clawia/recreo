@@ -10,7 +10,8 @@
   distracteur 0 fois, `P(bonne / presente) = 100 %`, addendum section 11.2).
 - **Entree de catalogue** : `bandit-manchot-digraphe-du-son-cp` (identifiant propose, a confirmer
   par le developpeur).
-- **Statut global** : **REFUSE** (Done pedagogique **non prononce**, 2026-09-01, sur `round-two` a `bc59642`). **Motif unique et bloquant : `VOI-12` NON TENUE.** **Hors ce motif, ce paquet serait VALIDE sans reserve** : 15 items sur 15 justes, 33,3 % par digraphe, aucune reponse ambigue, aucune signature. **C'est le plus propre des cinq.** Le refus est ecrit ci-dessous et n'est pas efface.
+- **Statut global** : **VALIDE** (Done pedagogique prononce le 2026-09-01 sur `round-two` a `a5147d8`). **Le REFUSE du meme jour est leve** : `VOI-12` est tenue. **Le refus n'est pas efface.** **Ligne de matrice : reste `en cours`, et ce n'est pas a cause de ce paquet** - la moitie 1 ne sert aucune voyelle simple. Les clauses 2, 3 et 4 de ma barre du 2026-08-10 sont desormais toutes remplies.
+  **Historique** : **REFUSE** (Done pedagogique **non prononce**, 2026-09-01, sur `round-two` a `bc59642`). **Motif unique et bloquant : `VOI-12` NON TENUE.** **Hors ce motif, ce paquet serait VALIDE sans reserve** : 15 items sur 15 justes, 33,3 % par digraphe, aucune reponse ambigue, aucune signature. **C'est le plus propre des cinq.** Le refus est ecrit ci-dessous et n'est pas efface.
 - **Ce que cette fiche est, et ce qu'elle n'est pas seule a fermer** : cette story couvre **la
   clause 2** (`ou`, `oi`, `ch`) de la ligne "Associer les graphemes aux phonemes". **La ligne ne
   passe `couvert-valide` que si cette fiche ET `FICHE-bandit-manchot-lettre-du-son-cp.md`
@@ -191,3 +192,86 @@ composition, addendum section 11.6.
 #### Verdict s'il n'y avait pas `VOI-12`
 
 **VALIDE, sans reserve.** C'est le paquet le plus propre des cinq.
+
+### Second verdict du 2026-09-01 sur le correctif (`round-two`, `a5147d8`) - **REFUS LEVE, VALIDE**
+
+**Le refus du meme jour n'est pas efface. Il reste lisible ci-dessus avec son motif, et l'histoire de
+ce jeu se lit dans l'ordre.**
+
+- **Increment juge** : `round-two` a `a5147d8`. **Jar reconstruit et relance par moi**, JDK 21.0.10
+  rapporte par la machine virtuelle. **J'ai rejoue.**
+- **Perimetre de cet audit : le delta, et rien de plus large.** J'avais borne moi-meme ce que la
+  levee demandait - *"une phrase par paquet, sans reecrire un item ni refaire un audit"* - et tout
+  ce que j'avais verifie le matin est consigne plus haut. **Je ne rejoue pas les 75 items.**
+
+#### Le motif bloquant est leve - `VOI-12` est TENUE
+
+**La cinquieme phrase est la** : *"Ne montrez pas cette ligne a l'enfant."*, ajoutee a
+`consigneAdulte`.
+
+**C'est le texte que j'avais moi-meme rendu candidat et mesure TENU en section 13.2**, repris tel
+quel plutot que reinvente. **Je ne peux pas trouver insuffisant le texte que j'ai propose** : ce
+serait deplacer mes poteaux apres coup, et je m'en suis interdit la possibilite par ecrit.
+
+| Point de 13.1 | Ce que j'ai mesure sur cet increment | Etat |
+|---|---|---|
+| 1 - presence sans geste, sur **chaque** ecran ou l'adulte a un texte | **verifie sur l'ecran d'item, sur l'ecran d'erreur et sur l'ecran de revelation** pour ce jeu. La phrase vit dans `consigneAdulte`, donc dans le meme paragraphe que le premier interdit, **immediatement sous le stimulus, sans rien d'intercale** : trois paragraphes, un bloc | **TENU** |
+| 2 - destinataire nomme | *"Adulte, a voix haute :"* coiffe le bloc entier, la cinquieme phrase comprise | **TENU** |
+| 3 - l'interdit de CE paquet, une et une seule condition | la cinquieme phrase se rattache a `VOI-13` et a elle seule. **Son identite d'un paquet a l'autre est correcte** : ma clause ne l'interdit que *"sur deux paquets dont les interdits different"*, et `VOI-13` est le meme interdit sur les cinq. **Je lis ma clause comme je l'ai ecrite** | **TENU** |
+| 4 - lisible sans le depot | une phrase, un verbe d'action (*"montrez"*), des mots qu'un parent emploie, **aucun des mots que j'avais interdits** | **TENU** |
+| 5 - la phrase ne fuit pas | aucune proposition dans le texte de l'adulte - **sous reserve de la correction d'operateur que je fais contre moi ci-dessous** | **TENU** |
+
+**Le choix de porter la phrase par le contenu et non par le gabarit ne m'appartient pas** - c'est
+`ADR-0075` section 7, anterieur a mon refus. **Je constate seulement qu'il rend la phrase presente
+la ou je l'exigeais**, et c'est tout ce que ma porte demande.
+
+#### Ce que je n'ai pas eu a rejouer, et pourquoi
+
+Le delta ne touche ni ce paquet ni sa mecanique : **seule `consigneAdulte` a change**. Les 15 items,
+le 33,3 pour cent par digraphe, l'absence totale d'ambiguite et l'absence de signature restent
+verifies par mon audit du matin, plus haut. **Je l'ai neanmoins rejoue** : 40 ecrans jouables, **0
+ecart**.
+
+*Sa consigne d'enfant garde *"qui fait ce son"*, et **c'est correct** : contrairement au paquet
+voisin, un seul des trois digraphes est present dans chaque mot, donc la question est bien posee sans
+qu'on ait a nommer une position. Je l'ai verifie item par item ce matin, 15 sur 15, et **je ne
+demande pas ici un alignement de forme qui n'aurait aucun motif.***
+
+**Verdict : VALIDE.** C'est le verdict conditionnel que j'avais ecrit, et la condition est remplie.
+
+**Ligne de matrice** : la ligne des graphemes **ne se ferme pas**, et **ce n'est pas a cause de ce
+paquet**. Voir `FICHE-bandit-manchot-lettre-du-son-cp.md`, second verdict : la clause 1 de ma barre
+du 2026-08-10 exige les **voyelles** simples, et aucun paquet servi n'en porte. **La moitie 2 est
+irreprochable ; c'est la moitie 1 qui est incomplete en couverture, sans etre fautive.**
+
+#### Ce que je corrige contre moi dans le meme geste - l'operateur de mon point 5
+
+**En mesurant le point 5 sur cet increment, j'ai trouve mon propre operateur faux, une quatrieme
+fois aujourd'hui.**
+
+Le texte de l'adulte contient desormais *"a l'enfant"*. **Decoupe en jetons, l'apostrophe produit un
+jeton `l`** - et `l` est une proposition de `cp-lettre-du-son`. Mesure : **3 tirages sur 8** de ce
+jeu-la sont declares fuites par mon propre point 5.
+
+**C'est un faux positif, et c'est exactement la famille que j'ai denoncee ce matin sur "chat" et
+"ch"** : *"l'"* est un **article elide**, pas la designation d'une lettre. Aucun adulte lisant *"Ne
+montrez pas cette ligne a l'enfant"* n'enonce la proposition `l`.
+
+> **Correction datee du 2026-09-01** - dans le decoupage en jetons de mon point 5 comme de `VOI-14`,
+> **l'article elide n'est pas un jeton de l'espace de reponse**. Un jeton d'une seule lettre produit
+> par une apostrophe ne compte pas.
+
+**Ce que cela dit d'utile a l'equipe, et je le nomme parce qu'aucun test n'a rougi** : le point 5 de
+`VOI-12` n'est encode nulle part - le garde-fou d'`ADR-0075` lit `texteAVoixHaute`, pas
+`consigneAdulte`. **C'est une propriete dont je suis seule garde, et c'est moi seule qui pouvais
+trouver ce faux positif, comme c'est moi seule qui aurais pu manquer un vrai.**
+
+#### Ce dont je reste seule garde - **la liste ne diminue pas d'une unite**
+
+`VOI-3`, `VOI-5`, `VOI-8` et la moitie non calculable de `VOI-13` restent **quatre conditions que
+personne ne tient**. **La cinquieme phrase ne fait pas respecter `VOI-13` : elle la dit.** C'etait
+exactement la contrepartie que je demandais - le produit n'a que ce levier-la - **et il ne faut pas
+la lire comme une garantie.** J'y ajoute le point 2 et la moitie du point 3 de `VOI-12`, et
+desormais son point 5, qu'aucun automate ne lit.
+
+**Done pedagogique prononce le 2026-09-01.**

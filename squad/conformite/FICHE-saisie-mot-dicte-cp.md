@@ -10,7 +10,8 @@
   `contenu-repris/` ne porte cette forme.
 - **Entree de catalogue** : `saisie-mot-dicte-cp` (identifiant propose, a confirmer par le
   developpeur).
-- **Statut global** : **REFUSE** (Done pedagogique **non prononce**, 2026-09-01, sur `round-two` a `bc59642`). **Motif bloquant : `VOI-12` NON TENUE**, plus **une reserve nommee qui ne bloque pas** - `gomme` et `bulle` ne se deduisent pas du son. **Hors `VOI-12`, ce paquet serait VALIDE SOUS RESERVE.** `SAI-1`, `SAI-3` et `SAI-4` sont verifiees en jeu. Le refus est ecrit ci-dessous et n'est pas efface.
+- **Statut global** : **VALIDE** (Done pedagogique prononce le 2026-09-01 sur `round-two` a `a5147d8`). **Le REFUSE du meme jour est leve, et ma reserve non bloquante aussi** : `VOI-12` est tenue, et `gomme` / `bulle` sont remplaces par `brosse` / `trousse`, dont le doublement se deduit du son. **Aucune reserve ne subsiste.** **Le refus n'est pas efface.** Ligne de matrice : peut passer a `couvert-valide`.
+  **Historique** : **REFUSE** (Done pedagogique **non prononce**, 2026-09-01, sur `round-two` a `bc59642`). **Motif bloquant : `VOI-12` NON TENUE**, plus **une reserve nommee qui ne bloque pas** - `gomme` et `bulle` ne se deduisent pas du son. **Hors `VOI-12`, ce paquet serait VALIDE SOUS RESERVE.** `SAI-1`, `SAI-3` et `SAI-4` sont verifiees en jeu. Le refus est ecrit ci-dessous et n'est pas efface.
 - **Arbitrage prealable de `nadia-prof` rendu** : `squad/conformite/ARBITRAGE-PREALABLE-s26-la-
   voix-est-un-adulte.md`, section 4.5 (acceptation - *"c'est ma propre condition qui se leve"*,
   `SAI-11` etant desormais levee sur sa condition remplie) et sections 5, 6, 7, 13 (conditions
@@ -198,3 +199,101 @@ l'exercice.
 #### Verdict s'il n'y avait pas `VOI-12`
 
 **VALIDE SOUS RESERVE**, la reserve etant `gomme` et `bulle`.
+
+### Second verdict du 2026-09-01 sur le correctif (`round-two`, `a5147d8`) - **REFUS LEVE, VALIDE**
+
+**Le refus du meme jour n'est pas efface. Il reste lisible ci-dessus avec son motif, et l'histoire de
+ce jeu se lit dans l'ordre.**
+
+- **Increment juge** : `round-two` a `a5147d8`. **Jar reconstruit et relance par moi**, JDK 21.0.10
+  rapporte par la machine virtuelle. **J'ai rejoue.**
+- **Perimetre de cet audit : le delta, et rien de plus large.** J'avais borne moi-meme ce que la
+  levee demandait - *"une phrase par paquet, sans reecrire un item ni refaire un audit"* - et tout
+  ce que j'avais verifie le matin est consigne plus haut. **Je ne rejoue pas les 75 items.**
+
+#### Le motif bloquant est leve - `VOI-12` est TENUE
+
+**La cinquieme phrase est la** : *"Ne montrez pas cette ligne a l'enfant."*, ajoutee a
+`consigneAdulte`.
+
+**C'est le texte que j'avais moi-meme rendu candidat et mesure TENU en section 13.2**, repris tel
+quel plutot que reinvente. **Je ne peux pas trouver insuffisant le texte que j'ai propose** : ce
+serait deplacer mes poteaux apres coup, et je m'en suis interdit la possibilite par ecrit.
+
+| Point de 13.1 | Ce que j'ai mesure sur cet increment | Etat |
+|---|---|---|
+| 1 - presence sans geste, sur **chaque** ecran ou l'adulte a un texte | **verifie sur l'ecran d'item, sur l'ecran d'erreur et sur l'ecran de revelation** pour ce jeu. La phrase vit dans `consigneAdulte`, donc dans le meme paragraphe que le premier interdit, **immediatement sous le stimulus, sans rien d'intercale** : trois paragraphes, un bloc | **TENU** |
+| 2 - destinataire nomme | *"Adulte, a voix haute :"* coiffe le bloc entier, la cinquieme phrase comprise | **TENU** |
+| 3 - l'interdit de CE paquet, une et une seule condition | la cinquieme phrase se rattache a `VOI-13` et a elle seule. **Son identite d'un paquet a l'autre est correcte** : ma clause ne l'interdit que *"sur deux paquets dont les interdits different"*, et `VOI-13` est le meme interdit sur les cinq. **Je lis ma clause comme je l'ai ecrite** | **TENU** |
+| 4 - lisible sans le depot | une phrase, un verbe d'action (*"montrez"*), des mots qu'un parent emploie, **aucun des mots que j'avais interdits** | **TENU** |
+| 5 - la phrase ne fuit pas | aucune proposition dans le texte de l'adulte - **sous reserve de la correction d'operateur que je fais contre moi ci-dessous** | **TENU** |
+
+**Le choix de porter la phrase par le contenu et non par le gabarit ne m'appartient pas** - c'est
+`ADR-0075` section 7, anterieur a mon refus. **Je constate seulement qu'il rend la phrase presente
+la ou je l'exigeais**, et c'est tout ce que ma porte demande.
+
+#### Ma reserve non bloquante est levee elle aussi, et le motif rendu est le mien
+
+**`gomme` et `bulle` sont remplaces par `brosse` et `trousse`.**
+
+**Je verifie l'argument plutot que de l'accepter** : le `s` simple entre deux voyelles se lit `[z]`,
+donc *"brose"* dirait `[broz]` et *"trouse"* dirait `[trouz]`. **Le doublement se deduit du son
+entendu.** C'est la regle du programme de CP, la meme qui forcait deja `tasse` dans ce paquet, et
+c'est exactement le motif de ma `VOI-9` : *"un mot dont l'ecriture ne se deduit pas du son n'evalue
+pas cette ligne, il evalue une memoire d'orthographe."*
+
+**La difference avec ce que j'avais refuse est nette** : un enfant qui ecrit `brose` et qui redit le
+mot **peut trouver son erreur**. Un enfant qui ecrivait `gome` ne le pouvait pas - `gome` et `gomme`
+se lisent identiquement, et l'indice offert (*"demande a l'adulte de redire le mot"*) ne pouvait
+jamais l'aider. **Le remede va precisement la ou etait le defaut.**
+
+**Verifie en jouant** : j'ai tape `brose`, refuse ; puis `brosse`, accepte. `trouse`, refuse ;
+`trousse`, accepte.
+
+#### Ce que j'ai regarde parce qu'on m'a demande si le remede rouvrait autre chose - **il ne rouvre rien**
+
+| Point regarde | Constat |
+|---|---|
+| **Nombre de syllabes** | `brosse` et `trousse` en comptent **une**. `VOI-9` en autorise deux au plus. **TENU** |
+| **Lettre muette finale** | le seul `e` final, celui que le CP a appris. Aucune consonne finale muette. **TENU** |
+| **Groupe consonantique initial** (`br`, `tr`) | **aucun autre mot du paquet n'en porte** : c'est une marche de difficulte reelle. **Mais elle se deduit du son** - l'enfant entend `[br]`, il ecrit `b` puis `r` -, donc elle reste dans la ligne, qui porte sur les correspondances grapheme/phoneme. **Je le nomme et je ne le compte pas contre** : fabriquer une reserve pour avoir l'air rigoureuse serait sa propre faute |
+| **Le `ou` de `trousse`** | deductible, et c'est le digraphe que `cp-digraphe-du-son` travaille au meme sprint. **Le paquet voisin le sert plutot qu'il ne le contrarie** |
+| **Le paquet est-il toujours entier ?** | 12 items ; `SAI-1`, `SAI-3` et `SAI-4` toujours verifiees en jeu ; 7 manches jusqu'a l'ecran de fin. **TENU** |
+
+**Verdict : VALIDE, sans reserve.** J'avais ecrit *"VALIDE SOUS RESERVE"* comme verdict conditionnel
+ce matin ; **la reserve ayant ete payee dans le meme sprint, il n'en reste aucune.**
+
+**Ligne de matrice** : *"Ecrire de maniere autonome un mot simple en respectant les correspondances
+grapheme/phoneme connues"* peut passer a `couvert-valide`.
+
+#### Ce que je corrige contre moi dans le meme geste - l'operateur de mon point 5
+
+**En mesurant le point 5 sur cet increment, j'ai trouve mon propre operateur faux, une quatrieme
+fois aujourd'hui.**
+
+Le texte de l'adulte contient desormais *"a l'enfant"*. **Decoupe en jetons, l'apostrophe produit un
+jeton `l`** - et `l` est une proposition de `cp-lettre-du-son`. Mesure : **3 tirages sur 8** de ce
+jeu-la sont declares fuites par mon propre point 5.
+
+**C'est un faux positif, et c'est exactement la famille que j'ai denoncee ce matin sur "chat" et
+"ch"** : *"l'"* est un **article elide**, pas la designation d'une lettre. Aucun adulte lisant *"Ne
+montrez pas cette ligne a l'enfant"* n'enonce la proposition `l`.
+
+> **Correction datee du 2026-09-01** - dans le decoupage en jetons de mon point 5 comme de `VOI-14`,
+> **l'article elide n'est pas un jeton de l'espace de reponse**. Un jeton d'une seule lettre produit
+> par une apostrophe ne compte pas.
+
+**Ce que cela dit d'utile a l'equipe, et je le nomme parce qu'aucun test n'a rougi** : le point 5 de
+`VOI-12` n'est encode nulle part - le garde-fou d'`ADR-0075` lit `texteAVoixHaute`, pas
+`consigneAdulte`. **C'est une propriete dont je suis seule garde, et c'est moi seule qui pouvais
+trouver ce faux positif, comme c'est moi seule qui aurais pu manquer un vrai.**
+
+#### Ce dont je reste seule garde - **la liste ne diminue pas d'une unite**
+
+`VOI-3`, `VOI-5`, `VOI-8` et la moitie non calculable de `VOI-13` restent **quatre conditions que
+personne ne tient**. **La cinquieme phrase ne fait pas respecter `VOI-13` : elle la dit.** C'etait
+exactement la contrepartie que je demandais - le produit n'a que ce levier-la - **et il ne faut pas
+la lire comme une garantie.** J'y ajoute le point 2 et la moitie du point 3 de `VOI-12`, et
+desormais son point 5, qu'aucun automate ne lit.
+
+**Done pedagogique prononce le 2026-09-01.**
