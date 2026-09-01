@@ -1,0 +1,83 @@
+schema: 1
+id: cp-mot-dicte
+type: saisie
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Écriture"
+  competence: "Écrire de manière autonome un mot simple en respectant les correspondances graphème/phonème connues"
+# S26-L5 (DEC-0068 ; ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 4.5). Premier
+# paquet à réponse alphabétique sur la mécanique de saisie.
+#
+# VOI-9 (partiellement testable ; la régularité réelle reste jugée par nadia-prof) : douze mots
+# réguliers, une ou deux syllabes, aucune lettre muette finale hors la finale en -e déjà apprise au
+# CP. Aucun mot ne porte de consonne finale muette (pas de -t, -d, -s, -x silencieux).
+#
+# exigenceDeForme: libre - même lecture que cp-complements-10-saisie : la compétence porte sur les
+# correspondances grapheme/phonème, pas sur une tolérance de forme à durcir sans motif.
+#
+# formesAcceptees vide sur chaque item : SAI-1 (accent), SAI-3 (casse) et SAI-4 (espaces) sont
+# tenues automatiquement par NormalisationDeSaisie, sans qu'aucune écriture alternative n'ait à
+# être énumérée ici.
+exigenceDeForme: libre
+items:
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "vélo"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est vélo."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "lune"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est lune."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "jupe"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est jupe."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "robe"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est robe."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "moto"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est moto."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "pile"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est pile."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "gomme"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est gomme."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "tasse"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est tasse."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "cape"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est cape."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "dune"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est dune."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "mule"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est mule."
+  - enonce: "Écris le mot que tu entends."
+    formeDeReference: "bulle"
+    formesAcceptees: []
+    indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
+    texteAVoixHaute: "Le mot est bulle."

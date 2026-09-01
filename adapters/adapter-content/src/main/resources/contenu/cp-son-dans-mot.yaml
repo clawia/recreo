@@ -1,0 +1,83 @@
+schema: 1
+id: cp-son-dans-mot
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Langage oral et conscience phonologique"
+  competence: "Identifier un son (phonème) dans un mot"
+# S26-L2 (DEC-0068 ; squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 4.2).
+# Point ouvert non tranché (routé par sofia-sm à nadia-prof, squad/design/proposition-ines-s26-
+# ecran-voix.md, section 6, point 4) : lecture prudente par défaut retenue ici, aucune lettre du
+# son cherché n'apparaît dans ce que l'enfant lit (enonce, indice) - seul texteAVoixHaute la porte,
+# et l'adulte la prononce en son, jamais en lettre isolée.
+#
+# VOI-6 : sur l'ensemble du paquet, le son cherché est présent dans le mot sur une part des items
+# et absent sur une autre, aucune des deux n'étant majoritaire, et sa position varie quand il est
+# présent. Compte réel sur les 12 items : oui = 6, non = 6 (exactement la moitié chacun).
+# Position du son quand il est présent (item "oui") : début = 3 (manteau, singe, toupie),
+# milieu = 1 (renard), fin = 2 (ballon, souris) - la position n'est jamais constante.
+#
+# VOI-5 (non gardée par aucun test) : l'adulte n'appuie pas le son cherché, ni accentuation ni
+# allongement. Contrepartie : VOI-12, câblée sur consigneAdulte au niveau du catalogue.
+items:
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est manteau. Entends-tu le son an ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est vélo. Entends-tu le son an ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est ballon. Entends-tu le son on ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est tapis. Entends-tu le son on ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est singe. Entends-tu le son in ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est chocolat. Entends-tu le son in ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est renard. Entends-tu le son a ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est souris. Entends-tu le son a ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est souris. Entends-tu le son i ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est chapeau. Entends-tu le son i ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est toupie. Entends-tu le son ou ?"
+  - enonce: "Écoute l'adulte, puis réponds oui ou non."
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Demande à l'adulte de redire le mot lentement, puis écoute bien le son qu'il te demande de chercher."
+    texteAVoixHaute: "Le mot est sapin. Entends-tu le son ou ?"
