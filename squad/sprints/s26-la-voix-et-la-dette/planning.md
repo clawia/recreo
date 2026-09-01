@@ -424,3 +424,77 @@ meme que celui qui a compile et teste), joue en local :
 **L'arbre est pret pour `nadia-prof`** : les deux trous qui empechaient de le lui donner a jouer
 sont fermes, verifies par la CI et par le jeu reel du jar, pas seulement par la lecture des deux
 commits.
+
+---
+
+## Addendum du 2026-09-01 (sofia-sm) - le refus pedagogique, le correctif fusionne, l'arbre rejoue
+
+- **Auteure de l'addendum** : `sofia-sm`, casquette dev pour la fusion, la verification et le jeu
+  du jar ; casquette Scrum Master pour cette ecriture.
+- **Ce qu'il ne fait pas** : rien du texte ci-dessus n'est modifie ni retire.
+
+### Le verdict de `nadia-prof`, journalise tel quel
+
+**`nadia-prof` (`s26-nadia`, `025058a`) : REFUSE sur les cinq paquets. Aucun Done pedagogique.
+31/41 reste 31/41.** Audit non degrade - jar reconstruit et lance par elle, erreurs volontaires,
+echecs jusqu'a la revelation, parties menees a l'ecran de fin, **75 items dits a voix haute** sur
+un plafond de 115, rien echantillonne, rien decline.
+
+**Motif bloquant sur les cinq** : la cinquieme phrase d'adulte manquait, celle que sa section 14.3
+exigeait **ecrite avant que ce contenu n'existe**. Mesure : *"un enfant qui lit la ligne de
+l'adulte gagne sans la competence - il voit `pin` a la fin de `sapin`, le `ch` de `chat`, et sur la
+dictee il recopie."* A decharge, ses cinq points sont **TENUS** sur les quatre phrases livrees, le
+point 3 n'echoue pas.
+
+**Second motif, propre a `cp-lettre-du-son`** : rien ne disait a l'enfant quel son il cherchait
+avant qu'il ait echoue - **5 items sur 18 (27,8 %)** ou un distracteur est aussi une lettre dont le
+son est dans le mot.
+
+**Elle corrige aussi contre elle** : `VOI-13` etait trop large, *"j'aurais refuse a tort sur ma
+propre lettre"* - troisieme de ses clauses fausse en extension dans la journee, et la premiere dont
+la lettre aurait produit un refus injuste. Corrigee, datee, l'ancienne reste lisible.
+
+**Ses quatre arbitrages rendus** : `.etiquette-adulte` a 1,25rem **confirme** ; *"Adulte, a voix
+haute :"* **valide** ; propositions numeriques - **cote strict confirme** (*"entre un faux vert et
+un blocage dur, je prends le blocage dur"*, aucun paquet a voix en mathematiques ne passera sa
+porte tant que la comparaison sur la forme ecrite en lettres n'existe pas) ; lecture prudente sur
+la graphie **confirmee**, *"c'est la condition d'existence de la ligne"*.
+
+### Le correctif, fusionne et verifie
+
+`s26-refus` (`lea-dev`, `c9f76b9`, bati sur `round-two` a `bc59642`) et `s26-nadia` (`025058a`,
+le verdict ci-dessus, pour qu'il ne reste pas sur une branche seule - meme famille de defaut que le
+rouge de ce matin) sont entres sur `round-two` a `88c4266`, sans conflit (aucun fichier en commun).
+
+`mvn -B clean verify` sur le reacteur complet : **1090 tests** (82 domain + 13 application + 382
+adapter-web + 457 adapter-content + 150 bootstrap unitaires + 6 bootstrap integration), 0 echec, 0
+erreur, BUILD SUCCESS.
+
+**Jar reconstruit et rejoue avant de rendre**, sur les cinq paquets :
+- La cinquieme phrase (*"Ne montrez pas cette ligne a l'enfant."*) verifiee presente sur l'ecran
+  item des cinq jeux, sur un echec (`bandit-manchot-position-syllabe-cp`) et sur une revelation
+  atteinte par trois reponses fausses consecutives (`bandit-manchot-lettre-du-son-cp`).
+- Le correctif de `cp-lettre-du-son` (*"le tout premier son"*) verifie sur la consigne, l'enonce et
+  l'indice de la revelation : aucune lettre supplementaire n'atteint l'ecran.
+- La reserve levee (`brosse`/`trousse` remplacant `gomme`/`bulle`) verifiee dans le contenu servi ;
+  les deux anciens mots ne subsistent que dans le commentaire de changelog du fichier, jamais dans
+  un item joue.
+
+*Incident sans consequence sur le verdict* : un premier `verify` a rendu un echec ferroviaire
+(BUILD FAILURE en cours de module bootstrap) cause par un processus `java` que j'avais lance pour
+un jeu anterieur du jar et mal arrete par nom au lieu du PID - identifie par son PID exact avant
+d'etre arrete, `verify` relance et vert. Aucun rapport avec le code fusionne.
+
+### L'arbre est monte, pret pour la decision de `nadia-prof`
+
+`round-two` a `88c4266` porte le correctif complet. `nadia-prof` prononce ensuite la levee du
+refus ou le maintient, sur cet arbre.
+
+### Un fait pour la retro, du sprint entier et non de `lea-dev`
+
+**L'exigence manquante etait ecrite d'avance dans le fichier que tous les agents ont lu**, et
+1084 tests verts ne pouvaient pas la voir puisqu'aucun test ne la portait. C'est le defaut
+dominant du sprint pris par l'autre bout : non pas une clause qui promet plus large que ce qu'elle
+verifie (la forme rencontree cinq fois ce sprint jusqu'ici), mais **une exigence ecrite que
+personne n'a executee**. Je le garde pour `retro.md` a la cloture reelle du sprint plutot que de le
+laisser vivre seulement dans cet addendum.
