@@ -27,16 +27,26 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * rendre pour que {@code .bloc-adulte} soit possible.
  *
  * <p><b>Ce que ce fichier n'a pas le droit de pretendre couvrir, et pourquoi un controleur de
- * test.</b> A ce commit, {@code texteAVoixHaute} n'existe sur aucun type du domaine (ADR-0075 le
- * pose comme un champ d'item, dans le lot qui livrera le champ - pas celui-ci, dont le perimetre
- * est le gabarit et la feuille de style). {@code PartieController} ne remplit donc ces deux
- * attributs de modele sur aucune route reelle, et aucun paquet de {@code contenu/} ne les porte.
- * Le controleur ci-dessous est un double de test, propre a ce fichier : il rend les deux memes
- * fragments que la production, avec le meme moteur Thymeleaf (autoconfigure par {@code
- * @WebMvcTest}), pour verifier que le balisage tient sa part du contrat des le jour ou un lot
- * futur cablera les deux attributs depuis un item reel. Il ne prouve donc rien du contenu d'un
+ * test.</b> Au commit d'origine de ce fichier, {@code texteAVoixHaute} n'existait sur aucun type du
+ * domaine (ADR-0075 le posait comme un champ d'item, dans un lot distinct de celui-ci, dont le
+ * perimetre etait le gabarit et la feuille de style). Le controleur ci-dessous est un double de
+ * test, propre a ce fichier : il rend les deux memes fragments que la production, avec le meme
+ * moteur Thymeleaf (autoconfigure par {@code @WebMvcTest}). Il ne prouve rien du contenu d'un
  * paquet (VOI-12 points 3, 4 et 5) : nadia-prof le nomme elle-meme comme sa propre garde
  * (section 13.4), et ce fichier ne pretend pas la remplacer.</p>
+ *
+ * <p><b>Amendement (marc-dev) : le trou trouve par yanis-qa en mutant ce meme controleur.</b>
+ * {@code fragments/manche.html} portait deux {@code th:if} independants sur
+ * {@code texteAVoixHaute} et {@code consigneAdulte} ; rendu avec le premier seul, le gabarit
+ * produisait un {@code .bloc-adulte} incomplet - le stimulus sans la mise en garde que VOI-12 exige
+ * toujours attachee. Seul un garde-fou cote contenu ({@code
+ * LeTexteAVoixHauteEtLaConsigneAdulteSeDeclarentEnsembleTest}, qui garde un fichier YAML) empechait
+ * cette combinaison, jamais le gabarit ni le controleur. {@link BlocAdulte} ferme ce chemin au
+ * niveau du modele : {@code PartieController} et le controleur de test ci-dessous ne posent plus
+ * qu'un seul attribut, {@code blocAdulte}, construit par {@link BlocAdulte#creerOuNull} qui leve
+ * plutot que de rendre l'un sans l'autre. {@link #unTexteAVoixHauteSansConsigneAdulteNAtteintJamaisLEcranEnEtatIncomplet()}
+ * est le test rouge de {@code yanis-qa} (branche {@code s26-yanis}, commit {@code 77e2385}), repris
+ * tel quel.</p>
  */
 @WebMvcTest(LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest.ControleurDeGabaritDeTest.class)
 @Import(LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest.ControleurDeGabaritDeTest.class)
@@ -44,9 +54,11 @@ class LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest {
 
     /**
      * Rend les deux fragments reels avec un modele construit a la main, sur le patron exact des
-     * attributs que {@code PartieController} pose deja (mancheDeBanditManchot, mancheDeSaisie) -
-     * plus les deux attributs neufs de cette proposition. Ne vit que dans ce fichier de test :
-     * aucune route de production n'est ajoutee, aucun type de domaine n'est touche.
+     * attributs que {@code PartieController} pose deja (mancheDeBanditManchot, mancheDeSaisie),
+     * {@code blocAdulte} compris - meme construction par {@link BlocAdulte#creerOuNull}, pour que
+     * ce double de test retombe dans la meme erreur que la production si les deux parametres HTTP
+     * ne sont pas fournis ensemble. Ne vit que dans ce fichier de test : aucune route de production
+     * n'est ajoutee, aucun type de domaine n'est touche.
      */
     @Controller
     static class ControleurDeGabaritDeTest {
@@ -72,8 +84,7 @@ class LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest {
             modele.addAttribute("explication", null);
             modele.addAttribute("focus", "enonce");
             modele.addAttribute("focusCibles", Set.of());
-            modele.addAttribute("texteAVoixHaute", texteAVoixHaute);
-            modele.addAttribute("consigneAdulte", consigneAdulte);
+            modele.addAttribute("blocAdulte", BlocAdulte.creerOuNull(texteAVoixHaute, consigneAdulte));
             return "fragments/manche :: manche";
         }
 
@@ -97,8 +108,7 @@ class LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest {
             modele.addAttribute("focus", "enonce");
             modele.addAttribute("focusSurLeChamp", false);
             modele.addAttribute("focusSurLaSuite", false);
-            modele.addAttribute("texteAVoixHaute", texteAVoixHaute);
-            modele.addAttribute("consigneAdulte", consigneAdulte);
+            modele.addAttribute("blocAdulte", BlocAdulte.creerOuNull(texteAVoixHaute, consigneAdulte));
             return "fragments/saisie :: saisie";
         }
     }
@@ -240,6 +250,54 @@ class LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest {
             assertThat(attribut.getKey().toLowerCase(java.util.Locale.ROOT))
                     .as("attribut %s sur .bloc-adulte", attribut.getKey())
                     .doesNotMatch("^(on[a-z]+|hx-on.*)$");
+        }
+    }
+
+    /**
+     * <b>yanis-qa, s26, obstacle qualite - la clause 4 de traversee ({@code
+     * LeBlocAdulteDUnItemReelAtteintLEcranDeMancheTest}, ADR-0075) prouve que le bloc-adulte
+     * atteint l'ecran sur le catalogue reel d'aujourd'hui ; elle ne prouve pas qu'il ne peut pas
+     * l'atteindre a moitie.</b>
+     *
+     * <p>{@code fragments/manche.html} porte deux {@code th:if} independants sur
+     * {@code .bloc-adulte} : {@code texteAVoixHaute != null} sur le conteneur,
+     * {@code consigneAdulte != null} sur la mise en garde qu'il contient. Rien au niveau du
+     * gabarit ou du controleur (qui ne fait que transmettre les deux valeurs, cf. le commentaire
+     * de {@code PartieController.mancheDeBanditManchot}) n'empeche l'un sans l'autre : c'est
+     * uniquement {@code LeTexteAVoixHauteEtLaConsigneAdulteSeDeclarentEnsembleTest}, cote contenu,
+     * qui garantit aujourd'hui que cette combinaison ne se produit jamais sur
+     * {@code catalogue.yaml}. Mute directement au niveau du modele, sur le meme patron que
+     * {@code leBlocAdultePrecedeImmediatementLaConsigneSurLEcranAChoix} ci-dessus (sans passer par
+     * le garde-fou de contenu, qui n'est pas dans le perimetre de ce gabarit) : le gabarit rend un
+     * {@code .bloc-adulte} incomplet - le stimulus, sans la mise en garde que VOI-12 exige d'y
+     * trouver toujours attachee.</p>
+     *
+     * <p><b>Rouge a ce commit</b> : ce test documente un chemin non ferme au niveau du gabarit /
+     * controleur, qui ne tient que par un garde-fou pose ailleurs, sur un objet different (un
+     * fichier YAML plutot qu'un document rendu). Route a sofia-sm : la fermeture (fusionner les
+     * deux conditions en une seule, ou faire echouer tot si l'un est present sans l'autre) est un
+     * choix de gabarit ou de controleur qui n'est pas a moi de trancher.</p>
+     *
+     * <p><b>Vert depuis {@link BlocAdulte}</b> (marc-dev) : le controleur de test construit
+     * desormais {@code blocAdulte} par {@link BlocAdulte#creerOuNull}, qui leve une
+     * {@code IllegalStateException} des que le stimulus est fourni sans la mise en garde -
+     * {@link GestionnaireDesErreurs} l'attrape et rend l'ecran d'erreur generique (ADR-0011,
+     * ADR-0018). Le document rendu ne porte alors aucun {@code .bloc-adulte} du tout : la garde
+     * {@code if (!blocs.isEmpty())} ci-dessous ne s'execute jamais dans ce cas, et c'est exactement
+     * l'etat incomplet que VOI-12 interdit qui a disparu, pas seulement l'assertion qui le
+     * detectait.</p>
+     */
+    @Test
+    void unTexteAVoixHauteSansConsigneAdulteNAtteintJamaisLEcranEnEtatIncomplet() throws Exception {
+        Document ecran = rendre("/test-voix/manche", "texteAVoixHaute", "chat");
+
+        Elements blocs = ecran.select(".bloc-adulte");
+        if (!blocs.isEmpty()) {
+            assertThat(blocs.first().select(".consigne-adulte").text())
+                    .as("VOI-12 : un .bloc-adulte qui porte un stimulus doit toujours porter, dans"
+                            + " le meme geste, la mise en garde de son jeu - un stimulus seul est"
+                            + " exactement l'etat incomplet que VOI-12 interdit")
+                    .isNotBlank();
         }
     }
 }

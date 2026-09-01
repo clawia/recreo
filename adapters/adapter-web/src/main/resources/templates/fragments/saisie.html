@@ -26,10 +26,10 @@
          formes d'item (ADR-0075 section 5) : la ligne "ecrire un mot en autonomie" est un item de
          saisie, la seule des cinq lignes ouvertes par nadia-prof a ne pas passer par des
          propositions en texte. -->
-    <div class="bloc-adulte" tabindex="-1" th:if="${texteAVoixHaute != null}">
+    <div class="bloc-adulte" tabindex="-1" th:if="${blocAdulte != null}">
         <p class="etiquette-adulte">Adulte, à voix haute :</p>
-        <p class="stimulus-a-lire" th:text="${texteAVoixHaute}"></p>
-        <p class="consigne-adulte" th:if="${consigneAdulte != null}" th:text="${consigneAdulte}"></p>
+        <p class="stimulus-a-lire" th:text="${blocAdulte.stimulus()}"></p>
+        <p class="consigne-adulte" th:text="${blocAdulte.miseEnGarde()}"></p>
     </div>
     <!-- proposition-ines-ecran-de-saisie.md section 3.1 point 1 : la consigne EST l'etiquette du
          champ. Un <input> sans nom accessible est un defaut ; une etiquette de plus serait un
