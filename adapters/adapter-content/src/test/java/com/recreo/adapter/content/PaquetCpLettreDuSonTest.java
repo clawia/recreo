@@ -25,9 +25,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <i>"chaque lettre servie est distracteur au moins aussi souvent qu'elle est reponse"</i>.
  *
  * <p><b>Ce que cette classe ne juge pas, et pourquoi c'est ecrit ici plutot que suppose</b> :
- * {@code VOI-10} tel qu'encode par
- * {@link AucunTexteAVoixHauteNePorteUnePropositionDeSonItemTest#ecartsDeFuite} compare
- * {@code texteAVoixHaute} aux propositions par sous-chaine repliee. Sur ce paquet, la proposition
+ * {@code VOI-10} comparait {@code texteAVoixHaute} aux propositions par sous-chaine repliee.
+ * <b>Amendement du 2026-09-01</b> : cet operateur est remplace par l'enonciation - une suite
+ * contigue de jetons - en {@code VOI-14} point 1, encodee par
+ * {@link AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest} et actee par ADR-0076. Sur ce paquet, la proposition
  * est une <b>lettre unique</b> (l'initiale du mot que l'adulte doit prononcer en entier, VOI-7) :
  * elle est donc mecaniquement une sous-chaine du mot lui-meme, par construction et non par defaut
  * d'ecriture - "papa" contient "p" quel que soit le mot choisi pour cette lettre. Le crochet

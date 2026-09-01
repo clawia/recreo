@@ -108,8 +108,17 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
     }
 
     /**
-     * VOI-14 : decoupe un texte replie en jetons - des suites maximales de lettres, tout ce qui
-     * n'est pas une lettre etant separateur.
+     * VOI-14 : decoupe un texte replie en jetons - des suites maximales de lettres <b>et de
+     * chiffres</b>, tout le reste etant separateur.
+     *
+     * <p><b>Completement d'ADR-0076, section 3, et il est mesure.</b> VOI-14 ecrit <i>"toute suite
+     * de lettres"</i> ; le materiau sur lequel nadia-prof l'a mesuree est en francais et ses
+     * propositions sont des mots ou des lettres. <b>Le catalogue servi, lui, est numerique a 41,5
+     * pour cent</b> : sur ses 2 544 propositions, 1 057 ne portent aucun jeton de lettres, sur 13
+     * paquets - et <b>313 d'entre elles sont des bonnes reponses</b>. Un chiffre est une unite
+     * autonome de parole exactement comme un mot : l'adulte qui dit <i>"Est-ce 7, 8 ou 9 ?"</i>
+     * enonce ses trois propositions. Les compter comme jetons est donc la generalisation fidele du
+     * critere, pas un autre critere - et elle ramene le cas indefini de 1 057 propositions a 93.</p>
      */
     private static List<String> jetons(String texte) {
         String replie = replier(texte);
@@ -117,7 +126,7 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
         StringBuilder courant = new StringBuilder();
         for (int rang = 0; rang < replie.length(); rang++) {
             char signe = replie.charAt(rang);
-            if (Character.isLetter(signe)) {
+            if (Character.isLetterOrDigit(signe)) {
                 courant.append(signe);
             } else if (!courant.isEmpty()) {
                 jetons.add(courant.toString());
@@ -146,8 +155,14 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
     /**
      * VOI-14 : {@code jetonsCibles} apparait comme suite contigue de {@code jetonsTexte} - une
      * comparaison de jetons entiers, jamais de sous-chaines a l'interieur d'un jeton plus long.
-     * Une liste de cibles vide ne peut jamais fuir : {@code Question.bonneReponse()} n'est jamais
-     * vide en pratique, et une forme de reference sans lettre ne serait pas un mot.
+     *
+     * <p><b>Une liste de cibles vide rend faux, et ce choix n'est sur que la ou il est employe.</b>
+     * Une suite vide est contigue partout : rendre vrai declarerait la proposition fuitee par
+     * n'importe quel texte, y compris vide. Le motif ecrit ici a l'origine - <i>"bonneReponse n'est
+     * jamais vide en pratique"</i> - est vrai de la chaine et <b>faux de sa liste de jetons</b> :
+     * 313 bonnes reponses servies n'en portent aucun (ADR-0076, section 3). Le cas est donc traite
+     * en amont pour le point 1, par {@link #enoncee}, et laisse a faux ici pour le point 2, ou une
+     * forme de reference sans lettre ni chiffre ne serait pas un mot a ecrire.</p>
      */
     private static boolean contientCommeJetonsContigus(List<String> jetonsCibles,
                                                          List<String> jetonsTexte) {
@@ -161,6 +176,28 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
             }
         }
         return false;
+    }
+
+    /**
+     * <b>VOI-14 point 1, avec le complement d'ADR-0076 section 3 : le texte de l'adulte enonce
+     * cette proposition.</b>
+     *
+     * <p>Le cas ou la proposition ne porte aucun jeton - ni lettre ni chiffre - reste reel apres le
+     * passage aux chiffres : <b>93 propositions du catalogue servi</b>, sur deux paquets, les
+     * {@code <}, {@code >} et {@code =} de {@code cm1-grands-nombres} et de
+     * {@code cp-comparer-nombres}. Une suite vide etant contigue partout, la comparaison de jetons
+     * n'y decide rien. <b>On retombe alors sur l'inclusion de sous-chaine, qui est le cote
+     * strict</b> : ce repli ne peut laisser passer aucune fuite, il rend seulement le cas defini.
+     * Aucun de ces deux paquets ne declare de voix aujourd'hui ; le premier paquet a voix qui en
+     * declarerait une rencontrerait ce chemin. <b>Route a nadia-prof</b> : le choix ne lui force la
+     * main que dans le sens du refus.</p>
+     */
+    private static boolean enoncee(String proposition, List<String> jetonsDuTexte, String texteReplie) {
+        List<String> jetonsDeLaProposition = jetons(proposition);
+        if (jetonsDeLaProposition.isEmpty()) {
+            return texteReplie.contains(replier(proposition));
+        }
+        return contientCommeJetonsContigus(jetonsDeLaProposition, jetonsDuTexte);
     }
 
     private static Optional<String> texteAVoixHauteDe(Item item) {
@@ -219,11 +256,12 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
             }
             avecVoix.add(item.id().value());
             List<String> jetonsDuTexte = jetons(voix.orElseThrow());
+            String texteReplie = replier(voix.orElseThrow());
 
             switch (item) {
                 case Question question -> {
                     for (String proposition : propositionsDe(question)) {
-                        if (contientCommeJetonsContigus(jetons(proposition), jetonsDuTexte)) {
+                        if (enoncee(proposition, jetonsDuTexte, texteReplie)) {
                             defauts.add("item " + item.id().value() + " : le texte a voix haute \""
                                     + voix.orElseThrow() + "\" enonce la proposition \"" + proposition
                                     + "\" comme suite contigue de jetons - VOI-14 point 1 (nadia-prof,"
@@ -368,5 +406,93 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
                 CONTRE_EXEMPLE.resolve("aucune-voix"), CONTRE_EXEMPLE_CLASSPATH + "/aucune-voix"))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ADR-0051");
+    }
+
+    /** Le premier item de choix d'un paquet reellement servi, tel que le chargeur le construit. */
+    private static Question premierItemDeChoixServi(String paquet) {
+        return itemsDuPaquet(new YamlContentPackLoader("").chargerPaquet(paquet)).stream()
+                .filter(Question.class::isInstance).map(Question.class::cast)
+                .findFirst()
+                .orElseThrow(() -> new AssertionError(
+                        "ADR-0013 : cette morsure mute un item reel, et " + paquet
+                                + " n'offre aucun item de choix"));
+    }
+
+    private static Question avecVoix(Question question, String voix) {
+        return new Question(question.id(), question.enonce(), question.bonneReponse(),
+                question.distracteurs(), question.indice(), question.explication(),
+                question.partDesignee(), question.texteSupport(), question.illustration(),
+                question.illustrationTexteAlternatif(), Optional.of(voix));
+    }
+
+    private static List<String> ecartsDUnItem(Question question) {
+        List<String> jetonsDuTexte = jetons(question.texteAVoixHaute().orElseThrow());
+        String texteReplie = replier(question.texteAVoixHaute().orElseThrow());
+        return propositionsDe(question).stream()
+                .filter(proposition -> enoncee(proposition, jetonsDuTexte, texteReplie))
+                .toList();
+    }
+
+    /**
+     * <b>ADR-0076 section 3, premiere moitie : une proposition numerique enoncee est une fuite, et
+     * elle ne l'etait pas.</b> Mutation en memoire d'un item <b>reel</b> de {@code cp-soustractions},
+     * dont les propositions sont des chiffres. Avec des jetons de lettres seules, sa liste de jetons
+     * est vide et la comparaison rendait faux : <b>l'adulte pouvait lire les trois propositions sans
+     * qu'aucun test ne rougisse</b>. C'est le mode de defaillance silencieux, sur 41,5 pour cent des
+     * propositions du catalogue.
+     */
+    @Test
+    void unAdulteQuiLitLesTroisPropositionsNumeriquesFaitEchouerLeGardeFou() {
+        Question reel = premierItemDeChoixServi("cp-soustractions");
+        assertThat(jetons(reel.bonneReponse()))
+                .as("cette morsure ne prouve rien si la proposition porte deja un jeton de lettres")
+                .isNotEmpty();
+
+        String lecture = "Combien reste-t-il ? Est-ce " + reel.bonneReponse() + " ?";
+        assertThat(ecartsDUnItem(avecVoix(reel, lecture)))
+                .as("VOI-14 point 1 : l'adulte enonce la proposition numerique")
+                .contains(reel.bonneReponse());
+    }
+
+    /**
+     * <b>ADR-0076 section 3 : le cote qui doit rester vert, et c'est lui qui distingue les jetons de
+     * l'inclusion de sous-chaine.</b> Un chiffre <b>a l'interieur</b> d'un nombre plus long n'est pas
+     * enonce : l'adulte qui dit <i>"dix-sept"</i> ne dit pas <i>"sept"</i>. Sans ce cas, le passage
+     * aux chiffres aurait reintroduit, pour les nombres, le defaut exact que VOI-14 corrige pour les
+     * lettres.
+     */
+    @Test
+    void unChiffreALInterieurDUnNombrePlusLongResteVert() {
+        Question reel = premierItemDeChoixServi("cp-soustractions");
+        String nombrePlusLong = "1" + reel.bonneReponse() + "7";
+        assertThat(nombrePlusLong).contains(reel.bonneReponse());
+
+        assertThat(ecartsDUnItem(avecVoix(reel, "Le nombre est " + nombrePlusLong + ".")))
+                .as("VOI-14 point 1 : contenir n'est pas enoncer, pour un nombre comme pour un mot")
+                .isEmpty();
+    }
+
+    /**
+     * <b>ADR-0076 section 3, seconde moitie : le repli strict sur les 93 propositions qui ne portent
+     * ni lettre ni chiffre.</b> Mutation en memoire d'un item <b>reel</b> de
+     * {@code cp-comparer-nombres}, dont les trois propositions sont {@code <}, {@code >} et
+     * {@code =}. Aucune ne porte de jeton : sans le repli, la comparaison rendrait faux et l'adulte
+     * pourrait lire les trois signes.
+     */
+    @Test
+    void unAdulteQuiLitLesTroisSignesDeComparaisonFaitEchouerLeGardeFou() {
+        Question reel = premierItemDeChoixServi("cp-comparer-nombres");
+        assertThat(jetons(reel.bonneReponse()))
+                .as("cette morsure ne prouve rien si la proposition porte un jeton : c'est le cas du"
+                        + " repli qu'elle exerce")
+                .isEmpty();
+
+        assertThat(ecartsDUnItem(avecVoix(reel, "Est-ce " + reel.bonneReponse() + " ?")))
+                .as("ADR-0076 : repli strict - une proposition sans jeton est jugee par inclusion")
+                .contains(reel.bonneReponse());
+
+        assertThat(ecartsDUnItem(avecVoix(reel, "Compare les deux nombres.")))
+                .as("et le repli ne rougit pas sur un texte qui ne porte aucun des trois signes")
+                .isEmpty();
     }
 }

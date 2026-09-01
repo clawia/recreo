@@ -34,10 +34,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  * est une dictee - {@code texteAVoixHaute} doit necessairement porter le mot que l'enfant doit
  * ecrire (VOI-8), qui est aussi {@code formeDeReference}. La fiche le dit elle-meme : le champ "ne
  * contient jamais la reponse ecrite attendue en toutes lettres <b>au-dela du mot lui-meme</b>" - le
- * mot lui-meme y est attendu. Le crochet
- * {@link AucunTexteAVoixHauteNePorteUnePropositionDeSonItemTest} compare par sous-chaine sans cette
- * nuance et reste volontairement non branche sur le contenu de production ; le constat complet est
- * dans le rapport de ce lot.</p>
+ * mot lui-meme y est attendu. <b>Amendement du 2026-09-01</b> : {@code VOI-14} point 2
+ * (nadia-prof, section 16.3) etablit que {@code VOI-1} n'a jamais eu d'objet sur un paquet de
+ * saisie - l'enfant n'y choisit pas, il produit - et lui substitue l'interdiction de l'<b>epellation</b>.
+ * {@link AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest} est branche sur le contenu de production et
+ * <b>ce paquet y passe</b> : dire le mot est l'exercice, l'epeler est le defaut (ADR-0076).</p>
  */
 class PaquetCpMotDicteTest {
 

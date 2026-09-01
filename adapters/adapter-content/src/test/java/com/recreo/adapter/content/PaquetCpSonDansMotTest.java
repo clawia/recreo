@@ -102,9 +102,10 @@ class PaquetCpSonDansMotTest {
 
     /**
      * VOI-10, verifie localement sur ce paquet : "oui" et "non" ne sont jamais recopies dans
-     * texteAVoixHaute. Le crochet partage
-     * ({@link AucunTexteAVoixHauteNePorteUnePropositionDeSonItemTest}) reste volontairement non
-     * branche sur le contenu de production - motif donne dans le rapport de ce lot.
+     * texteAVoixHaute. <b>Le crochet partage
+     * ({@link AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest}) est desormais branche sur le contenu
+     * de production</b>, sous l'operateur d'enonciation de VOI-14 point 1 (ADR-0076) ; cette
+     * verification locale le double sur ce paquet plutot que d'en tenir lieu.
      */
     @Test
     void texteAVoixHauteNeContientNiOuiNiNon() {

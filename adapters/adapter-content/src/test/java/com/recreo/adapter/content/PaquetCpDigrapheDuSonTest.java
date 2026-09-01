@@ -27,9 +27,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * <p><b>Ce que cette classe ne juge pas, et pourquoi</b> : meme motif que
  * {@link PaquetCpLettreDuSonTest} - le digraphe propose est mecaniquement une sous-chaine du mot
- * que l'adulte doit prononcer en entier (VOI-7). Le crochet
- * {@link AucunTexteAVoixHauteNePorteUnePropositionDeSonItemTest} reste volontairement non branche
- * sur le contenu de production ; le constat complet est dans le rapport de ce lot.</p>
+ * que l'adulte doit prononcer en entier (VOI-7). <b>Amendement du 2026-09-01</b> : ce n'est plus
+ * une raison de ne pas juger. {@link AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest} compare desormais par
+ * <b>enonciation</b> - une suite contigue de jetons - et non par sous-chaine (VOI-14 point 1,
+ * ADR-0076) ; il est branche sur le contenu de production et <b>ce paquet y passe</b>.</p>
  */
 class PaquetCpDigrapheDuSonTest {
 
