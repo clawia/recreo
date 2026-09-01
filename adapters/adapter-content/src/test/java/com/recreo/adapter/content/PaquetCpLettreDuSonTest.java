@@ -7,9 +7,11 @@ import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -107,5 +109,62 @@ class PaquetCpLettreDuSonTest {
                             lettre, commeReponseCompte, commeDistracteurCompte)
                     .isGreaterThanOrEqualTo(commeReponseCompte);
         }
+    }
+
+    /**
+     * Second motif du refus de nadia-prof (addendum, section 17.3), propre a ce paquet et non leve
+     * par VOI-12 : sur 5 items sur 18 (pomme/m, moto/t, table/l, tortue/r, lapin/p), un distracteur
+     * est aussi une lettre dont le son est present dans le mot entendu - 27,8 % du paquet. Rien ne
+     * disait a l'enfant, avant son premier essai, que le son cherche est le PREMIER du mot ; seul
+     * l'indice, affiche apres une erreur, le precisait. Correctif : l'enonce nomme la position
+     * avant toute reponse, sans qu'aucune lettre supplementaire n'atteigne l'ecran.
+     */
+    @Test
+    void lEnonceNommeLaPositionDuSonAvantLaPremiereReponse() {
+        for (Question item : items()) {
+            assertThat(item.enonce())
+                    .as("item %s : l'enonce doit nommer que le son cherche est le premier du mot,"
+                                    + " avant toute reponse (nadia-prof, addendum section 17.3)",
+                            item.id().value())
+                    .contains("premier son");
+        }
+    }
+
+    /**
+     * Verifie que le correctif ci-dessus est reellement vrai du materiel : la bonne reponse est
+     * bien le tout premier son du mot que l'adulte prononce, jamais un son present ailleurs dans le
+     * mot. Sans cette propriete, dire "le tout premier son" a l'enfant induirait en erreur au lieu
+     * de lever l'ambiguite que nadia-prof a mesuree.
+     */
+    @Test
+    void laBonneReponseEstBienLePremierSonDuMotEntendu() {
+        for (Question item : items()) {
+            String mot = motDe(replier(item.texteAVoixHaute().orElseThrow()));
+            assertThat(mot.substring(0, 1))
+                    .as("item %s : la bonne reponse (\"%s\") doit etre la premiere lettre du mot"
+                                    + " (\"%s\")", item.id().value(), item.bonneReponse(), mot)
+                    .isEqualTo(replier(item.bonneReponse()));
+        }
+    }
+
+    private static String motDe(String texteAVoixHauteReplie) {
+        // Le mot travaille est le premier mot apres "le mot est " dans le gabarit de ce paquet.
+        String prefixe = "le mot est ";
+        int debut = texteAVoixHauteReplie.indexOf(prefixe) + prefixe.length();
+        int fin = texteAVoixHauteReplie.indexOf('.', debut);
+        return texteAVoixHauteReplie.substring(debut, fin < 0 ? texteAVoixHauteReplie.length() : fin);
+    }
+
+    private static String replier(String texte) {
+        String decompose = Normalizer.normalize(texte, Normalizer.Form.NFD);
+        StringBuilder replie = new StringBuilder(decompose.length());
+        for (int rang = 0; rang < decompose.length(); rang++) {
+            char signe = decompose.charAt(rang);
+            if (Character.getType(signe) == Character.NON_SPACING_MARK) {
+                continue;
+            }
+            replie.append(signe);
+        }
+        return replie.toString().toLowerCase(Locale.ROOT);
     }
 }

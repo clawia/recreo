@@ -70,6 +70,25 @@ class PaquetCpMotDicteTest {
                 .isLessThanOrEqualTo(PLAFOND_ITEMS);
     }
 
+    /**
+     * Reserve nommee par nadia-prof, non bloquante (addendum, section 17.6 ; fiche de conformite) :
+     * "gomme" et "bulle" ne se deduisent pas du son - "gome" et "bule" se liraient exactement
+     * pareil, le doublement de la consonne y etant une memoire d'orthographe plutot qu'une
+     * correspondance grapheme/phoneme (motif de VOI-9). Remplaces par "brosse" et "trousse", ou le
+     * "s" simple entre deux voyelles se lirait [z] : le doublement s'y deduit du son, meme regle du
+     * programme de CP que "tasse", deja dans ce paquet.
+     */
+    @Test
+    void aucunMotNeReposeSurUneMemoireDOrthographeNonDeductibleDuSon() {
+        List<String> motsNonDeductibles = List.of("gomme", "bulle");
+        for (ReponseAEcrire item : items()) {
+            assertThat(motsNonDeductibles)
+                    .as("item %s : \"%s\" ne se deduit pas du son entendu (nadia-prof, reserve du"
+                                    + " 2026-09-01)", item.id().value(), item.formeDeReference())
+                    .doesNotContain(item.formeDeReference());
+        }
+    }
+
     /** VOI-13 : l'enonce que l'enfant lit est invariant et ne nomme jamais le mot a ecrire. */
     @Test
     void lEnonceEstInvariantEtNeNommeJamaisLeMotAEcrire() {

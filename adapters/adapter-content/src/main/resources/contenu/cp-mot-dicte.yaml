@@ -19,6 +19,13 @@ descripteur:
 # formesAcceptees vide sur chaque item : SAI-1 (accent), SAI-3 (casse) et SAI-4 (espaces) sont
 # tenues automatiquement par NormalisationDeSaisie, sans qu'aucune écriture alternative n'ait à
 # être énumérée ici.
+#
+# Correction du 2026-09-01 (nadia-prof, réserve non bloquante de son refus) : "gomme" et "bulle"
+# ne se déduisaient pas du son - "gome" et "bule" se liraient exactement pareil, le doublement de
+# la consonne y étant une mémoire d'orthographe plutôt qu'une correspondance grapheme/phonème
+# (motif de VOI-9). Remplacés par "brosse" et "trousse" : le "s" simple entre deux voyelles s'y
+# lirait [z] ("brose", "trouse"), donc le doublement s'y déduit du son entendu - même règle du
+# programme de CP que "tasse", déjà dans ce paquet.
 exigenceDeForme: libre
 items:
   - enonce: "Écris le mot que tu entends."
@@ -52,10 +59,10 @@ items:
     indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
     texteAVoixHaute: "Le mot est pile."
   - enonce: "Écris le mot que tu entends."
-    formeDeReference: "gomme"
+    formeDeReference: "brosse"
     formesAcceptees: []
     indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
-    texteAVoixHaute: "Le mot est gomme."
+    texteAVoixHaute: "Le mot est brosse."
   - enonce: "Écris le mot que tu entends."
     formeDeReference: "tasse"
     formesAcceptees: []
@@ -77,7 +84,7 @@ items:
     indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
     texteAVoixHaute: "Le mot est mule."
   - enonce: "Écris le mot que tu entends."
-    formeDeReference: "bulle"
+    formeDeReference: "trousse"
     formesAcceptees: []
     indice: "Demande à l'adulte de redire le mot autant de fois que tu en as besoin."
-    texteAVoixHaute: "Le mot est bulle."
+    texteAVoixHaute: "Le mot est trousse."
