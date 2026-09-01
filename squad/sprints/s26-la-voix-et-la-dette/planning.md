@@ -285,3 +285,73 @@ de quatre lignes a une. Je ne route qu'une seule fois chaque volet, sur son prop
 La clause 4 de traversee de `marc-dev` (elle attend le contenu reel, donc la jonction
 `s26-contenu`/`s26-marc` ci-dessus), la porte technique de `yanis-qa`, la relecture du
 `relecteur-pedagogique`, puis la porte pedagogique de `nadia-prof`.
+
+---
+
+## Addendum du 2026-09-01 (sofia-sm) - ADR-0076 rattrape (section 16 fusionnee), arbre de livraison integre, deux trous restants, troisieme ecart de l'orchestrateur
+
+- **Auteure de l'addendum** : `sofia-sm`.
+- **Ce qu'il ne fait pas** : rien du texte ci-dessus n'est modifie ni retire.
+
+### `ADR-0076` reposait sur un fichier reste sur une branche - fusionne
+
+Trouve et route par le `relecteur-pedagogique`, qui a refuse de trancher a ma place - a raison :
+`ADR-0076` (statut Accepte) et `ADR-index.md` citent mot pour mot la section 16 de
+`ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, qui ne vivait que sur `s26-nadia` a `3216f92`,
+jamais fusionnee ni dans `s26-theo-reco` ni dans `round-two`. **Meme famille de defaut que le rouge
+de ce matin** : une decision qui s'appuie sur un fichier reste sur une branche - la nuance etant
+que la reference elle-meme n'etait pas cassee, `ADR-0076` citant systematiquement le hash exact a
+cote de "section 16", ce qui est la discipline de ce depot pour du contenu non fusionne.
+
+**Resolu par fusion** : `s26-nadia` (`3216f92`), `s26-theo-reco` (`87963a2`, l'arbre de livraison)
+et `s26-relecteur` (`61e13ca`) sont entres sur `round-two` a `30a385d`. `mvn -B clean verify` sur le
+reacteur complet : **1079 tests** (82 domain + 13 application + 377 adapter-web + 451
+adapter-content + 150 bootstrap unitaires + 6 bootstrap integration), 0 echec, 0 erreur, BUILD
+SUCCESS - je reproduis le chiffre de `yanis-qa`, sur ma propre execution de cet arbre fusionne.
+`ToutesLesReferencesDeDecisionResolventTest` : 3/3, 0 echec.
+
+**Ce que la section 16 de `nadia-prof` tranche, pour memoire** : reponse "non" a la question
+`VOI-10` routee ce sprint - dire *"chat"* n'enonce pas la proposition *"ch"*. Elle identifie la
+clause fautive comme la sienne (l'operateur de sous-chaine de `VOI-10`, ecrit par elle le matin
+meme), la remplace par `VOI-14` (frontiere par jetons), retire la branche saisie du garde-fou
+(sans objet pedagogique - une dictee n'est pas un choix que `VOI-1` gouverne) et la remplace par
+une detection d'epelation. Mesure reproduite a l'item pres sur les cinq paquets de `lea-dev` :
+3 paquets sur 5, 45 items sur 45, **0 rouge sous `VOI-14`**. `ADR-0076` porte cette reponse.
+
+**Non fusionne, et delibere** : `s26-yanis` (`77e2385`, `0fbf7b0`) - ses deux commits sont rouges
+par construction, ils encodent les deux defauts ci-dessous. Ce n'est pas sa version qui entre.
+
+### Deux trous restants, routes sans attendre leur resolution
+
+| Defaut | Categorie | Route a | Statut |
+|---|---|---|---|
+| Le bloc adulte peut atteindre l'ecran a moitie (stimulus sans mise en garde) par le chemin modele - etat interdit par `VOI-12` - que le garde-fou d'appariement de `marc-dev` ne couvre pas parce qu'il regarde le YAML et non le document rendu | technique | `marc-dev` | ouvert |
+| Un quatrieme porteur de JavaScript echappe a `ADR-0074` : `stripLeading()` ne retire l'espace qu'en tete de chaine, un navigateur retire tabulations et retours-ligne partout dans l'URL avant d'en lire le schema - `href="ja<TAB>vascript:..."` passe vert | technique, architecture | `theo-archi` | ouvert |
+
+### Trois choses a journaliser
+
+1. **La forme redactionnelle du defaut dominant du sprint** : un des cinq `PaquetCpXxxTest` n'avait
+   recu que la moitie de sa correction (nom de classe a jour, affirmation fausse restante), alors
+   qu'`ADR-0076` annoncait les deux corrigees "dans le meme geste". Le `relecteur-pedagogique` a
+   verifie les cinq au lieu de croire l'annonce - **corrige dans la fusion de `s26-relecteur`
+   ci-dessus**.
+2. **Les quatre stories se contredisaient a deux paragraphes d'ecart** : leur champ Statut disait
+   "conditionnel a la reponse de `theo-archi`" alors que le preambule de la meme section disait que
+   la reponse etait venue - **corrige dans la meme fusion**.
+3. **Troisieme ecart de l'orchestrateur ce sprint, journalise comme les deux precedents** (`CLAUDE.md`
+   citant `DEC-0068` avant sa fusion ; l'affectation des cinq paquets a `lea-dev` sans relire la
+   table de ce planning) : ma consigne au `relecteur-pedagogique` citait `VOI-7` parmi les quatre
+   conditions sans garde, la ou le canon dit `VOI-13`. Il a verifie contre le depot plutot que de me
+   suivre, et a corrige ma consigne plutot que de la propager. Trois ecarts du meme auteur sur un
+   seul sprint, chacun trouve par un agent qui a verifie au lieu de faire confiance a l'ecrit de
+   l'orchestrateur.
+
+**Reference pre-existante, signalee et non corrigee ici, hors perimetre** :
+`LaBonneReponseNEstPasPredictibleSurUnPaquetTest` dans `docs/backlog/backlog.md:3780`, introduite
+des s12. A ranger dans une dette de redaction future, pas a traiter dans ce sprint.
+
+### Ce qui reste, dans l'ordre - mis a jour
+
+La clause 4 de traversee de `marc-dev` est tenue (l'arbre de livraison la porte). Restent : les
+deux trous ci-dessus (`marc-dev`, `theo-archi`), puis, une fois l'arbre complet monte, la porte
+pedagogique de `nadia-prof` - qui doit jouer sur un arbre ou ces deux trous sont fermes, pas avant.
