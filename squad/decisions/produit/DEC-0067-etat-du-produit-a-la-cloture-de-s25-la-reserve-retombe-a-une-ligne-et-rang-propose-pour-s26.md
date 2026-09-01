@@ -1,6 +1,6 @@
 # DEC-0067 - Etat du produit a la cloture de s25 : la reserve retombe a une seule ligne, et rang propose pour s26
 
-- **Statut** : Proposee
+- **Statut** : Acceptee, **amendee le 2026-09-01** : la reserve passe d'une ligne a cinq apres l'arbitrage de l'utilisatrice sur la voix et le verdict de `nadia-prof` sur les cinq lignes ; plafond recompte a 35/41 = 85,4 %, rang de s26 revise. Voir l'amendement en fin de document.
 - **Date** : 2026-09-01
 - **Auteur** : `camille-po`
 - **Sprint** : s25 (cloture)
@@ -315,3 +315,167 @@ tombe pas entre les deux, et je ne lui donne pas de rang.
 - Elle **ne reprend aucun chiffre de la porte technique** a son compte : `1 018` tests est la mesure
   de quatre autres agents, je ne l'ai pas reproduite, et rien ici n'en depend - `nadia-prof` ecrit
   elle-meme *"aucun verdict fonde sur les 1 018 tests verts"*.
+
+---
+
+## Amendement du 2026-09-01 - la reserve passe d'une ligne a cinq, et c'est le renversement exact de la section 2
+
+**Statut de la decision apres cet amendement : Acceptee, amendee le 2026-09-01.**
+
+**La section 2 de ce document est fausse depuis le jour ou elle a ete ecrite, et pas par ma faute
+d'instruction** : elle rangeait cinq lignes derriere *"la source de la voix"* en les comptant comme
+fermees. **Elles ne l'etaient pas ; elles attendaient une reponse qui est arrivee le meme jour.**
+Le texte reste lisible a sa place ; cet amendement le corrige ici.
+
+### B.1 Ce qui a change, et les deux sources
+
+- **L'utilisatrice, 2026-09-01** : la voix est celle d'un adulte present, et la portee est bornee aux
+  seules lignes ou la voix est la competence - `DEC-0068` et son amendement.
+- **`nadia-prof`, 2026-09-01** : **quatre des cinq lignes sont servies par ce moyen, une est
+  refusee** - `ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, sections 3 et 4.
+
+### B.2 Le plafond, recompte par moi
+
+*Methode : comptage automatise des quatre tableaux de matiere de
+`squad/programme/MATRICE-couverture.md`, colonne `Statut`, sur ce seul fichier, a
+`96a80b4`. Denominateur 41 apres les six `non couvrable en l'etat`. Aucun module compile - la
+question du `-am` ne se pose pas.*
+
+| Etat | Compte | Taux |
+|---|---|---|
+| Aujourd'hui | 31 / 41 | **75,6 %** |
+| Si les **quatre lignes acceptees** sont servies **et validees** | **35 / 41** | **85,4 %** |
+| Si `LIS` s'y ajoute | 36 / 41 | 87,8 % |
+
+**Je reproduis le 85,4 pour cent de `nadia-prof` a la decimale par une lecture independante**, et
+j'ajoute les deux reserves qu'elle attache elle-meme a ce chiffre : la cinquieme ligne y est **deja
+comptee comme fermee**, et **quatre lignes ne font pas quatre paquets**.
+
+### B.3 Un fait que son compte ne fait pas apparaitre, et qui est de mon perimetre
+
+**Les quatre lignes acceptees sont toutes les quatre en francais CP.**
+
+| Matiere / niveau | Aujourd'hui | Si les quatre sont validees |
+|---|---|---|
+| mathematiques CP | 9 / 11 = 81,8 % | inchange |
+| mathematiques CM1 | 8 / 10 = 80,0 % | inchange |
+| **francais CP** | **5 / 10 = 50,0 %** | **9 / 10 = 90,0 %** |
+| francais CM1 | 9 / 10 = 90,0 % | inchange |
+
+**Le point le plus faible du produit deviendrait son mieux servi**, et le domaine *"Langage oral et
+conscience phonologique"* - **1 sur 3 depuis le sprint 0** - se fermerait entierement.
+
+**Je le signale parce que j'ai signale l'inverse a la cloture de s25 contre mon propre chiffre** :
+les quatre lignes de s25 etaient allees dans les deux zones deja les mieux servies, et j'avais ecrit
+que le francais CP *"n'a rien gagne a s25"*. **Un sprint dont l'objectif est la couverture et qui
+corrige en meme temps le desequilibre est une coincidence, pas une methode** - mais elle merite
+d'etre lue, et elle rejoint l'ordre que `nadia-prof` avait pose le 2026-08-15 et que ce produit n'a
+jamais suivi : **audio d'abord, parce que c'est du CP et que l'annee ne recommence pas.**
+
+### B.4 Combien de paquets - c'est a moi, et je reponds avec la question que je ne tranche pas
+
+`nadia-prof` ecrit : *"Quatre lignes, ce n'est pas quatre paquets. Celle des graphemes et des
+phonemes demande **deux moities** [...] Je ne prejuge pas du nombre de paquets : c'est
+`camille-po`."*
+
+**Mon compte, et il porte une question ouverte :**
+
+| Ligne | Paquets | Motif |
+|---|---|---|
+| Localiser une syllabe | **1** | `VOI-2`, `VOI-3`, `VOI-4` |
+| Identifier un son (phoneme) | **1** | `VOI-2`, `VOI-3`, `VOI-5`, `VOI-6` |
+| Associer les graphemes aux phonemes | **1 ou 2** | Deux moities, `VOI-7`. **Question ouverte ci-dessous** |
+| Ecrire de maniere autonome un mot simple | **1** | Saisie alphabetique, ouverte par la levee de `SAI-11` |
+| **Total** | **4 ou 5** | |
+
+**La question que je ne tranche pas, et elle est a `nadia-prof`** : la ligne des graphemes exige la
+clause 1 (voyelles et consonnes simples) **et** la clause 2 (`ou`, `oi`, `ch`), la clause 3
+conservant les trois nasales du jeu existant. **Un seul paquet neuf servant les deux clauses
+satisfait-il la barre du 2026-08-10, ou en faut-il deux ?** C'est un jugement sur le niveau et sur la
+distribution des items, pas sur un decoupage technique. **Je le pose plutot que de le decider, et
+c'est ce chiffre qui fait la difference entre 4 et 5 paquets.**
+
+### B.5 Ce que la capacite rend, et le fait de composition qui en decoule
+
+**La borne de `nadia-prof` est inchangee - quatre a cinq paquets sur une mecanique existante - et
+elle refuse de la reviser ici** : *"Une mecanique a voix est neuve, et je la pricerai quand je saurai
+ce qu'elle est - pas avant, et pas pour arranger un compte."*
+
+> **Fait de composition, et c'est de l'arithmetique, pas un arbitrage : les quatre lignes a voix
+> consomment 4 a 5 paquets, c'est-a-dire la borne entiere. `LIS` ne tient pas a cote.**
+
+**Ce qui decide si cette borne tient reellement, et ce n'est pas de moi** : `nadia-prof` price un
+**audit de mecanique neuve** en plus de sa borne. **Or `ADR-0073` a etabli a s25 qu'une famille
+d'items neuve n'est ni une forme d'item neuve ni une mecanique neuve** - le palier 1 visuel n'a rien
+coute a sa borne pour ce motif, et *"la ligne de plus n'est pas de moi, elle est de `theo-archi`"*.
+
+**Si la famille a voix est un champ d'item et non une mecanique, le meme raisonnement s'applique et
+sa borne tient telle quelle. Si c'en est une, son audit s'ajoute et elle le pricera.** **C'est une
+mesure de `theo-archi`, elle n'a pas ete demandee, et elle decide le nombre de lignes que s26 peut
+porter.** Je la route en section B.7.
+
+### B.6 Le rang de s26, revise - la section 5 est amendee sur ses deux premiers rangs
+
+**Ce que je change** : les quatre lignes a voix entrent au rang 1, `DV-4` descend au rang 2 en
+gardant son motif, et le reste de la section 5 est inchange.
+
+| Rang | Poste | Lignes |
+|---|---|---|
+| **1** | **Les quatre lignes a voix** - localiser une syllabe, identifier un son, les graphemes, ecrire un mot en autonomie | **+4**, jusqu'a 35 / 41 = 85,4 % |
+| 2 | **`DV-4`**, la borne de longueur des propositions - **de moi, et sans cout de developpeur** | 0, mais elle debloque `LIS` |
+| 3 | `S25-SCO-1`, le score parfait par elimination - **troisieme report s'il n'est pas engage** | 0 |
+| 4 | Le trou d'`ADR-0008` - **deuxieme sprint, elargi** | 0 |
+| 5 | Le garde-fou *"un rang suffit"*, avec sa clause de non-vacuite | 0 |
+| 6 | Les trois identifiants que rien n'execute - `MON-6`, `SUB-8`, `DES-6` | 0 |
+| 7 | `S26-NAR-1`, la reprise de `cp-texte-narratif` - **non urgente, ses mots** | 0 |
+
+**Le motif du rang 1, et il n'est pas seulement arithmetique** : quatre lignes pour la borne entiere,
+sur le niveau le plus creux du produit, en fermant un domaine reste a 1 sur 3 depuis le sprint 0.
+**Et c'est l'ordre que `nadia-prof` avait pose le 2026-08-15 - "audio, puis visuel, puis saisie" -
+que ce produit a inverse deux fois, la premiere sur arbitrage de l'utilisatrice, la seconde faute
+d'une source.** Il n'y a plus de motif de l'inverser une troisieme fois.
+
+**Pourquoi `DV-4` reste au rang 2 et n'est pas repoussee** : elle ne coute aucune tete de developpeur
+et je l'ai annoncee comme mienne. **Je la pose a s26 quoi qu'il arrive du reste.** Ce qui change est
+ce qu'elle achete : `LIS` ne tient plus dans la borne de ce sprint, donc `DV-4` prepare s27 au lieu
+d'ouvrir s26.
+
+> **`S25-LIS-1` sera donc un second report a s26, et son motif est neuf et ecrit d'avance : la borne
+> d'audit de `nadia-prof` est entierement consommee par les quatre lignes a voix.** Ce n'est plus
+> *"`DV-4` n'est pas rendue"* - je la rends - **c'est une contrainte de composition, et elle
+> n'appartient pas a ma diligence.** Un troisieme report a s27 devra porter autre chose.
+
+**Ce que ce rang ne resout pas, et je le garde lisible pour la troisieme fois** : les rangs 3 a 6
+**ne rapportent aucune ligne**, l'objectif de l'utilisatrice est toujours la couverture, et **s26
+ouvrirait une famille de plus.** Le trou d'`ADR-0008` en est a son deuxieme sprint de routage et il
+s'est elargi ; le score par elimination en serait a son **troisieme report**, ce que `DEC-0007` a
+sanctionne ; et **une famille neuve, c'est encore des gabarits neufs et un champ de contenu neuf**,
+c'est-a-dire le terrain exact des deux dettes que je range depuis deux sprints. **Je n'arbitre pas ce
+conflit - la capacite est a `sofia-sm` et deux des postes sont a `theo-archi` - et je refuse qu'il
+disparaisse sous un plafond de 85,4 pour cent.**
+
+### B.7 Ce que cet amendement route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **La ligne des graphemes : un paquet neuf ou deux ?** (B.4) | `nadia-prof` | C'est ce qui fait la difference entre 4 et 5 paquets, donc entre une borne tenue et une borne au maximum |
+| **La famille a voix est-elle un champ d'item ou une mecanique ?** (B.5) | `theo-archi`, par `sofia-sm` | **Le precedent d'`ADR-0073` est exact et il n'a jamais ete applique a ce cas.** Sa reponse decide si un audit de mecanique s'ajoute a la borne de `nadia-prof` |
+| **`VOI-12` est bloquante** - l'ecran dit a l'adulte ce qu'il ne doit pas faire, la ou il lit | `theo-archi` et `ines-design` pour la forme, `nadia-prof` pour le texte | *"Sans `VOI-12`, je refuserai les paquets a voix."* Ce n'est pas un ornement et cela ne se decouvre pas a la porte |
+| **`VOI-10` avant toutes les autres en test** | `theo-archi`, `yanis-qa` | Elle referme le canal de fuite **par construction** - meme geste qu'`ADR-0073` sur l'illustration - au lieu d'une liste d'interdits |
+| **`VOI-3`, `VOI-5`, `VOI-8` ne sont gardees par personne** | `sofia-sm` pour le rapport de sprint ; **moi pour les stories et les fiches** | **Une premiere sur ce depot.** Elles doivent etre ecrites comme non gardees partout ou elles apparaissent, faute de quoi elles seront lues comme les autres |
+| **La lettre accentuee sur tablette, toujours sans reponse** | l'utilisatrice, par `sofia-sm` | **Elle ne bloque plus** - `SAI-1` la couvre - et `nadia-prof` la signale pour qu'elle ne soit pas oubliee, pas pour qu'elle soit traitee maintenant |
+| **La ligne refusee reste `non couvert`**, pas `non couvrable en l'etat` | moi-meme | `nadia-prof` *"constate une impasse"* et nomme deux voies. **Le critere de la matrice n'est pas rempli et je ne bouge rien** |
+| **Le conflit couverture contre dette, troisieme sprint** | `sofia-sm`, puis l'utilisatrice | Un choix, pas un defaut de planning. **Il s'aggrave d'une famille de mecanique** |
+
+### B.8 Ce que cet amendement ne fait pas
+
+- Il **ne fait bouger aucune ligne de la matrice** : aucun paquet n'existe, aucun Done n'est
+  prononce, et le plafond de B.2 est un plafond - il suppose que quatre paquets neufs passent la
+  porte du premier coup, ce qui n'est arrive qu'une fois sur ce produit.
+- Il **ne revise pas la borne de `nadia-prof`** et ne lui demande rien au-dela de ce qu'elle a ecrit.
+- Il **ne decide pas le nombre de paquets de la ligne des graphemes** : la question est a elle.
+- Il **ne tranche rien de technique** : ni la nature de la famille a voix, ni la forme des quatre
+  textes, ni le garde-fou de `VOI-10`.
+- Il **ne reclasse aucune ligne**, ni celle qui est refusee, ni celle de la reconnaissance vocale.
+- Il **n'efface pas la section 2**, qui rangeait cinq lignes derriere un obstacle qui n'en etait pas
+  un. **Elle reste lisible avec sa date, et B.1 dit pourquoi elle est fausse.**
