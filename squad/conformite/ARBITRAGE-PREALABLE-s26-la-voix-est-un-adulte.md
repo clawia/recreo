@@ -1075,3 +1075,229 @@ comme l'ecrit les montre.
 | **Cinq signaux d'exactitude orale sur `cp-position-syllabe`** (16.8) | `lea-dev`, par `sofia-sm` | **Signaux, pas motifs.** `papa` porte deux reponses justes ; `banane`, `tomate` et `ananas` supposent un decoupage que l'oral ne rend pas. A instruire avant mon audit |
 | **La liste des conditions sans garde reste a quatre** (16.7) | `sofia-sm` | `VOI-14` n'en retire aucune. Verte, elle dit qu'on n'a pas **donne a lire** la reponse - pas que l'adulte ne l'a pas dite |
 | **Ma borne et mes deux prix sont inchanges** | `camille-po` | Cet addendum ne rouvre pas la section 12. Je n'ai ni joue, ni recompte |
+
+---
+
+# Addendum du 2026-09-01 (quatrieme) - **j'ai joue. Les cinq verdicts, et trois arbitrages rendus**
+
+- **Auteure** : `nadia-prof`.
+- **Increment juge** : `round-two` a `bc59642`. **Jar reconstruit et lance par moi**
+  (`mvn -B clean package`, puis `java -jar` sur le JDK que designe la toolchain, **21.0.10 rapporte
+  par la machine virtuelle**). **Cet audit n'est pas degrade** : j'ai joue les cinq jeux, avec des
+  erreurs volontaires, des echecs repetes jusqu'a la revelation, et des parties menees jusqu'a
+  l'ecran de fin.
+- **Ou vivent les verdicts** : dans les cinq `squad/conformite/FICHE-*.md`, bloc de validation. Ce
+  document ne fait que les recapituler et rendre ce qui ne tient dans aucune fiche.
+
+---
+
+## 17.1 Les cinq verdicts - **REFUSE sur les cinq**, un motif bloquant, un second motif, une reserve
+
+| Paquet | Items | Verdict | Motif |
+|---|---|---|---|
+| `bandit-manchot-position-syllabe-cp` | 18 | **REFUSE** | `VOI-12` seule. **Sinon VALIDE sans reserve** |
+| `bandit-manchot-son-dans-mot-cp` | 12 | **REFUSE** | `VOI-12` seule. **Sinon VALIDE sans reserve** |
+| `bandit-manchot-lettre-du-son-cp` | 18 | **REFUSE** | `VOI-12`, **plus un second motif qui ne se leve pas avec elle** |
+| `bandit-manchot-digraphe-du-son-cp` | 15 | **REFUSE** | `VOI-12` seule. **Sinon VALIDE sans reserve** |
+| `saisie-mot-dicte-cp` | 12 | **REFUSE** | `VOI-12`, plus **une reserve nommee** qui ne bloque pas |
+
+**Aucune ligne de matrice ne bouge. 31 / 41 reste 31 / 41.** Le plafond de 85,4 pour cent que
+`camille-po` avait calcule n'est pas atteint, et il n'est pas perdu non plus.
+
+**Ma borne n'a pas ete le facteur limitant** : 75 items pour un plafond de 115,
+`cp-le-bon-son.yaml` intact - `git diff 96a80b4 --` sur ce fichier est vide, donc la clause 3 de ma
+barre du 2026-08-10 est tenue par constat, exactement comme je l'avais ecrit d'avance. **Je n'ai
+rien echantillonne et je n'ai pas eu a decliner.**
+
+### Le motif bloquant, en une phrase
+
+**Il manque la cinquieme phrase d'adulte** - celle que ma section 14.3 exige sur les cinq paquets :
+*"Ne montrez pas cette ligne a l'enfant."* ou une phrase qui dise la meme chose. Je l'ai cherchee sur
+l'accueil, sur la page de niveau, sur l'ecran de jeu et dans les cinq `consigneAdulte` : **elle
+n'existe nulle part.**
+
+**Et ce n'est pas une formalite. Je l'ai mesure sur les cinq :**
+
+| Paquet | Ce qu'un enfant qui lit la ligne de l'adulte obtient |
+|---|---|
+| `position-syllabe` | *"Le mot est sapin. Cherche le son pin."* - il voit `pin` a la fin et repond "fin" |
+| `son-dans-mot` | *"Entends-tu le son an ?"* sur `manteau` - il voit `an` dans le mot et repond oui |
+| `lettre-du-son` | *"Le mot est pomme."* - il voit le `p` initial |
+| `digraphe-du-son` | *"Le mot est chat."* - il voit `ch` |
+| `mot-dicte` | *"Le mot est gomme."* - **il recopie** |
+
+**Sur les cinq, sans exception, lire suffit a gagner sans la competence.** C'est exactement ce que
+j'avais ecrit en 14.2 et que l'increment confirme. **Un produit qui confie cette condition a l'adulte
+sans la lui dire ne l'a pas confiee.**
+
+**Ce refus se leve avec une phrase par paquet.** Aucun contenu a reecrire, aucune mecanique a
+toucher, aucun audit a refaire : tout ce que j'ai verifie est ecrit dans les cinq fiches pour ne pas
+avoir a l'etre deux fois.
+
+### Ce que je nomme exactement, pour qu'on ne me le fasse pas dire autrement
+
+**Les cinq points de 13.1 sont TENUS sur les quatre phrases livrees** - presence sans geste sur tous
+les ecrans y compris la revelation, destinataire nomme, un interdit par paquet, une phrase sans mot
+de jargon, aucune fuite. **Le point 3 n'echoue pas.** Ce qui manque est la **phrase supplementaire**
+de la section 14.3. Je le dis ainsi parce qu'un motif doit etre verifiable par un tiers sans qu'il
+ait a me demander ce que je voulais dire.
+
+---
+
+## 17.2 **Je corrige `VOI-13` contre moi, avant de m'en servir** - et c'est celle qui m'aurait fait refuser a tort
+
+**`VOI-13`, ecrite ce matin, interdit le mot *"ni sur l'ecran d'erreur, ni sur l'ecran de
+revelation"*. Cette enumeration est trop large.**
+
+**Ce que j'ai mesure, essai par essai** : sur `saisie-mot-dicte-cp`, le mot sort du bloc adulte -
+*"On ecrit : jupe"* - **exactement a l'essai ou l'item cesse d'etre jouable**, jamais avant. Sur les
+quatre jeux a propositions, il n'en sort **jamais**.
+
+**Le motif de `VOI-13` est donc entierement satisfait** : ce que je crains est que l'enfant lise au
+lieu d'entendre, et il ne peut pas lire tant qu'il peut repondre.
+
+**Et si j'avais applique ma lettre, j'aurais refuse le seul geste qui apprend quelque chose a
+l'enfant qui s'est trompe.** Une dictee qui ne montre jamais l'orthographe apres l'echec ne corrige
+rien.
+
+> **`VOI-13` corrigee (2026-09-01)** - le mot travaille n'apparait hors du texte de l'adulte **sur
+> aucun ecran ou l'item peut encore etre repondu**. Apres resolution, l'afficher est **attendu** sur
+> un paquet de saisie. *`VOI-2` ce matin, `VOI-10` cet apres-midi, `VOI-13` maintenant : trois de mes
+> clauses fausses en extension dans la meme journee, et celle-ci est la premiere dont la lettre
+> aurait produit un refus injuste.*
+
+---
+
+## 17.3 Le second motif, propre a `cp-lettre-du-son` - **il ne se leve pas avec `VOI-12`**
+
+**Rien ne dit a l'enfant quel son il cherche avant qu'il ait echoue.** La consigne dit *"choisis la
+lettre qui fait ce son"* ; *"ce son"* n'a aucun antecedent, l'adulte n'ayant dit qu'un mot.
+L'information - *"le tout premier son"* - est **dans l'indice, qui ne s'affiche qu'apres une
+erreur**.
+
+**Sur 5 items des 18, un distracteur est lui aussi une lettre dont le son est dans le mot entendu** :
+`pomme` (m), `moto` (t), `table` (l), `tortue` (r), `lapin` (p). **27,8 pour cent.**
+
+**Un enfant qui entend "pomme", qui sait que `m` fait le son [m] et qui presse `m` a raison sur la
+competence que la ligne nomme.** Le jeu lui repond qu'il a tort. **On le corrige d'un savoir juste,
+au nom d'une convention qu'on ne lui a jamais dite** - meme famille que mon refus de `cm1-substituts`
+le 2026-08-31.
+
+**Ce qui le leve, et cela n'ecrit aucune lettre a l'ecran** : dire dans la consigne de l'enfant de
+quel son il s'agit, avant sa premiere reponse. **La position d'un son n'est pas sa graphie**, donc
+mon motif *"detacher le son de la lettre"* n'y perd rien.
+
+**Consequence, et elle est de mon propre fait de composition (11.6)** : la ligne des graphemes ne
+bouge pas. `cp-digraphe-du-son` est le plus propre des cinq paquets et **cela ne suffit pas** : les
+deux moities ferment la ligne ensemble ou pas du tout.
+
+---
+
+## 17.4 Les trois arbitrages qu'on m'a routes
+
+### 17.4.1 `ines-design` - la taille de `.etiquette-adulte` portee de 1rem a 1,25rem : **je confirme, sans reserve**
+
+**Je n'ai aucune objection pedagogique, et je nomme pourquoi la question ne m'appartient qu'a
+moitie.** `ADR-0050` pose un plancher de lisibilite *"non negociable quel que soit le destinataire"* :
+ce n'est pas ma porte, et je n'ai pas a l'abaisser.
+
+**Ce que j'ajoute, parce que quelqu'un pourrait croire que cela s'achete** : **une etiquette plus
+petite n'aurait rien gagne sur `VOI-13`.** Ce que l'enfant lit par-dessus l'epaule n'est pas
+l'etiquette, c'est le **stimulus** - et celui-la doit rester lisible par l'adulte, donc grand. **On ne
+protege pas `VOI-13` en retrecissant du texte.** La seule contrepartie possible reste la phrase
+manquante.
+
+### 17.4.2 `ines-design` - le texte litteral *"Adulte, a voix haute :"* : **je le valide**
+
+**Il tient mon point 2 sans discussion** : je l'ai lu sur les cinq ecrans, et je sais sans hesiter a
+qui parle chacun des deux textes. Il nomme le destinataire **et** ce qu'il doit en faire, en trois
+mots.
+
+**Et il est bien ce qu'il doit etre : une etiquette, pas une phrase.** S'il avait ete redige en
+phrase, il aurait concurrence la consigne d'adulte, qui est la seule phrase que l'adulte doit
+retenir. **Je n'y touche pas.**
+
+*Son orthographe et son accentuation ne sont pas de moi : c'est le `relecteur-pedagogique`
+(`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`).*
+
+### 17.4.3 `theo-archi` - la suite vide contigue partout : **je confirme le cote strict**
+
+Le cas : une proposition sans jeton de lettres - toutes numeriques - rend une suite vide, et une
+suite vide est contigue partout. **1 057 propositions sur 2 544 du catalogue servi, dont 313 bonnes
+reponses.** Aucune ne porte de voix aujourd'hui ; **le premier paquet a voix en mathematiques
+rougirait sur chaque item.**
+
+**Je confirme, et voici mon motif, pour qu'il ne soit pas a rediscuter.**
+
+**Mon operateur est aveugle a une proposition numerique, dans les deux sens.** Il compare des formes
+ecrites ; un adulte qui dirait *"douze"* devant `12`, `11`, `13` fuiterait la reponse et **aucun
+jeton ne le montrerait**. Ce n'est pas un cas limite mal traite : c'est un domaine ou `VOI-14` ne
+voit rien.
+
+**Entre un faux vert et un blocage dur, je prends le blocage dur.** Un garde-fou qui ne voit pas doit
+le dire fort, pas se taire - c'est la famille de defaut que ce depot a sanctionnee plusieurs fois, et
+`theo-archi` a raison d'ecrire que ce choix *"ne me force la main que dans le sens du refus"*. **Une
+regle qui ne peut produire qu'un refus ne peut pas produire un faux Done.** C'est exactement le sens
+de defaillance que je veux.
+
+**Ce qui le leverait le jour ou une ligne de mathematiques a voix se presentera, et je le nomme
+d'avance pour que le blocage ne surprenne personne** : comparer une proposition numerique sur sa
+**forme francaise ecrite en lettres**. C'est une propriete reelle et encodable. **Je ne l'ecris pas
+en code** : la forme du test est a `theo-archi` et `marc-dev`. Et **tant qu'elle n'existe pas, aucun
+paquet a voix en mathematiques ne passera ma porte** - qu'on ne l'apprenne pas au milieu d'un sprint.
+
+---
+
+## 17.5 La question de `camille-po` sur la graphie affichee : **je confirme la lecture prudente**
+
+Sur `cp-son-dans-mot`, `camille-po` a pose par defaut qu'aucune lettre du son cherche n'apparait dans
+ce que l'enfant lit, et m'a demande de confirmer ou de corriger. **Je confirme.**
+
+**Le motif est celui de mon acceptation de cette ligne** : *"`eau`, `au`, `o` sont un son et trois
+graphies. Un exercice ecrit enseigne le contraire de ce que la ligne nomme."* Ecrire `an` sous les
+yeux de l'enfant lui donnerait **une** graphie pour un son qui en a plusieurs, le jour meme ou on lui
+demande de detacher le son de la lettre. **Ce n'est pas une precaution : c'est la condition
+d'existence de la ligne.** Verifie sur l'increment : enonce, consigne, propositions et indice n'en
+portent aucune.
+
+*Ce que je nomme plutot que de le laisser decouvrir : le son cherche **est** ecrit dans le texte de
+l'adulte. Un enfant qui lit par-dessus l'epaule y voit la graphie. **C'est la meme exposition non
+gardee que `VOI-13`**, appliquee au son au lieu du mot - un motif de plus pour la phrase manquante,
+pas une condition nouvelle.*
+
+---
+
+## 17.6 Ce que le vert ne prouvait pas, et ce que mon audit a trouve que la CI ne voyait pas
+
+**1 084 tests verts, et j'ai trouve deux choses qu'aucun n'attrape :**
+
+1. **Les cinq items sur dix-huit a deux reponses defendables** de `cp-lettre-du-son`. Aucun test ne
+   sait qu'un enfant qui presse `m` sur `pomme` a raison.
+2. **`gomme` et `bulle`** sur la dictee, dont l'ecriture ne se deduit pas du son - `gome` et `bule`
+   se lisent exactement pareil. C'est le motif de ma propre `VOI-9`, que sa lettre laisse passer.
+
+**Et une que j'ai fermee** : le chemin de l'ecran de revelation que j'avais route en 12.4. **La
+revelation est dans la zone de l'enfant, pas dans celle de l'adulte.** On ne donne pas la reponse a
+lire a l'adulte. Le chemin que je craignais n'existe pas sur cet increment.
+
+**Ce dont je reste seule garde, et la liste ne diminue pas** : `VOI-3`, `VOI-5`, `VOI-8` et la moitie
+non calculable de `VOI-13` - quatre conditions que personne ne tient. Plus le point 2 et la moitie du
+point 3 de `VOI-12`. **Que personne ne lise mes tables de "TENU" comme une couverture automatique :
+elles disent ce que j'ai verifie en jouant, pas ce qu'un test garde.**
+
+---
+
+## 17.7 Ce que je route
+
+| Suite | Destinataire | Ce que je demande |
+|---|---|---|
+| **REFUSE sur les cinq, motif bloquant unique : la cinquieme phrase d'adulte** (17.1) | `camille-po`, `ines-design` | **Une phrase par paquet.** Aucun contenu a reecrire. Les cinq fiches portent tout ce qui est deja verifie, pour ne pas le refaire |
+| **`cp-lettre-du-son` a un second motif** - 5 items sur 18 a deux reponses defendables (17.3) | `camille-po`, `lea-dev` | Il **ne se leve pas** avec `VOI-12`. Le correctif est un mot dans la consigne de l'enfant, et il n'ecrit aucune lettre a l'ecran |
+| **Reserve sur `saisie-mot-dicte-cp`** - `gomme` et `bulle` (fiche) | `camille-po` | Ne bloque pas. Deux mots a remplacer, ou un moyen de dire pourquoi on double |
+| **`VOI-13` corrigee contre moi** (17.2) | tous | Ma lettre aurait refuse a tort la revelation d'une dictee. **La correction est datee et l'ancienne reste lisible** |
+| **`.etiquette-adulte` a 1,25rem : confirme** (17.4.1) | `ines-design` | Et **une etiquette plus petite n'aurait rien achete sur `VOI-13`** |
+| **"Adulte, a voix haute :" : valide** (17.4.2) | `ines-design` | Il tient mon point 2. Son orthographe est au `relecteur-pedagogique`, pas a moi |
+| **Suite vide : cote strict confirme** (17.4.3) | `theo-archi`, `marc-dev` | Une regle qui ne peut produire qu'un refus ne peut pas produire un faux Done. **Et aucun paquet a voix en mathematiques ne passera ma porte tant que la comparaison sur la forme en lettres n'existe pas** |
+| **Lecture prudente sur la graphie : confirmee** (17.5) | `camille-po`, `lea-dev` | C'est la condition d'existence de la ligne, pas une precaution |
+| **Aucune ligne de matrice ne bouge : 31 / 41** (17.1) | `camille-po` | Le plafond de 85,4 pour cent n'est pas atteint, et il n'est pas perdu |
+| **Ma borne n'a pas ete le facteur limitant** - 75 items pour 115 (17.1) | `sofia-sm` | Je n'ai rien echantillonne et je n'ai pas eu a decliner |
