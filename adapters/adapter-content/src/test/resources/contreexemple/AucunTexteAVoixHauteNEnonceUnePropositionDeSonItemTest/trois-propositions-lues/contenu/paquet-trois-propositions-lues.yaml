@@ -1,0 +1,14 @@
+schema: 1
+id: paquet-trois-propositions-lues
+type: question
+descripteur:
+  matiere: "Matiere de fixture"
+  niveau: "Niveau de fixture"
+  domaine: "Domaine de fixture"
+  competence: "Paquet fautif de VOI-14, jamais servi a un enfant"
+items:
+  - enonce: "Choisis le groupe de lettres qui fait ce son."
+    bonneReponse: "ch"
+    distracteurs: ["ou", "oi"]
+    indice: "Indice de fixture"
+    texteAVoixHaute: "Le mot est chat. Est-ce ch, ou ou oi ?"

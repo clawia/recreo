@@ -17,3 +17,13 @@ items:
     distracteurs: ["au debut", "a la fin"]
     indice: "Indice de fixture 2"
     texteAVoixHaute: "Le mot est domino."
+  - enonce: "Choisis le groupe de lettres qui fait ce son."
+    bonneReponse: "ch"
+    distracteurs: ["ou", "oi"]
+    indice: "Indice de fixture 3"
+    texteAVoixHaute: "Le mot est chat."
+  - enonce: "Choisis la lettre qui fait ce son."
+    bonneReponse: "p"
+    distracteurs: ["m", "t"]
+    indice: "Indice de fixture 4"
+    texteAVoixHaute: "Le mot est papa."
