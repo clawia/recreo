@@ -1,6 +1,6 @@
 # [Sprint s25] Consommation de tokens
 
-- **Fenetre** : 2026-08-31 16:24 a 2026-08-31 20:35 UTC (sprint en cours, fenetre ouverte jusqu'a maintenant)
+- **Fenetre** : 2026-08-31 16:24 a 2026-09-01 05:54 UTC (sprint en cours, fenetre ouverte jusqu'a maintenant)
 - **Genere par** : `outils/rapport-tokens.py`
 
 > Les quatre compteurs sont volontairement separes. Les additionner donnerait un
@@ -10,13 +10,14 @@
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
 | `camille-po` | claude-opus-5 | 48 | 96 | 29 537 | 678 272 | 15 216 732 |
-| `sofia-sm` | claude-opus-5 | 641 | 1 282 | 403 458 | 3 324 505 | 176 684 105 |
-| `marc-dev` | claude-opus-5 | 258 | 516 | 133 960 | 574 283 | 56 614 079 |
-| `lea-dev` | claude-opus-5 | 343 | 686 | 184 549 | 2 402 080 | 92 101 501 |
-| `relecteur-pedagogique` | claude-opus-5 | 129 | 258 | 50 198 | 294 494 | 9 632 746 |
-| `nadia-prof` | claude-opus-5 | 85 | 170 | 65 511 | 1 438 017 | 29 086 135 |
+| `sofia-sm` | claude-opus-5 | 773 | 1 546 | 471 808 | 7 225 581 | 234 417 725 |
+| `theo-archi` | claude-opus-5 | 78 | 156 | 37 335 | 642 922 | 23 533 310 |
+| `marc-dev` | claude-opus-5 | 327 | 654 | 208 067 | 1 432 211 | 85 219 649 |
+| `lea-dev` | claude-opus-5 | 425 | 850 | 242 958 | 4 458 019 | 130 776 650 |
+| `relecteur-pedagogique` | claude-opus-5 | 136 | 272 | 53 899 | 300 677 | 10 674 612 |
+| `nadia-prof` | claude-opus-5 | 144 | 288 | 127 059 | 2 460 897 | 54 250 291 |
 | `ines-design` | claude-opus-5 | 30 | 60 | 31 096 | 880 419 | 12 180 588 |
-| orchestrateur (fil principal) | claude-opus-5 | 42 | 84 | 112 549 | 1 320 006 | 15 445 332 |
-| **Total** | | **1576** | **3 152** | **1 010 858** | **10 912 076** | **406 961 218** |
+| orchestrateur (fil principal) | claude-opus-5 | 90 | 180 | 219 108 | 2 937 032 | 36 321 189 |
+| **Total** | | **2051** | **4 102** | **1 420 867** | **21 016 030** | **602 590 746** |
 
-Aucune invocation mesuree sur cette fenetre pour : `theo-archi`, `yanis-qa`.
+Aucune invocation mesuree sur cette fenetre pour : `yanis-qa`.

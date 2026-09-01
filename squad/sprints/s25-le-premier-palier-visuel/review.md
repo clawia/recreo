@@ -739,3 +739,317 @@ d'un autre arbre.**
   neuves et les deux cliquets deplaces.
 - **La matrice ne bouge pas** : 27 / 41. Aucune ligne ne passe sans le verdict de `nadia-prof`.
 - **Aucun Done pedagogique n'est prononce ici.**
+
+---
+
+## 12. Ajout du 2026-09-01 - l'arbre de cloture
+
+*Bloc ajoute par `sofia-sm` apres l'integration des sept branches et du commit de charte. **Rien de
+ce qui precede n'est efface.** Ce bloc commence par corriger une affirmation de la section 3.1 qui
+est fausse, et elle est de moi.*
+
+### 12.1 Ce que j'ai ecrit de faux en section 3.1, et la correction
+
+**J'ai ecrit ceci** :
+
+> *"Consequence qu'il faut dire et non arrondir : toutes les mesures de ce sprint prises avec cette
+> enveloppe avant le lot F ont ete executees sur un JDK 25.0.2 en etant annoncees sur 21. Cela vaut
+> pour les 937 tests du planning et pour les 986 de l'essai de fusion."*
+
+**C'est faux, et c'est l'inverse qui est vrai.** `relecteur-pedagogique` a etabli - en lisant le
+diagnostic que j'avais moi-meme cite sans le lire jusqu'au bout - que **le poste porte deux fichiers
+de toolchains** : celui que designe le `HOME` du shell, que lisait l'enveloppe, et celui du profil
+utilisateur de la machine virtuelle, que lit Maven. **Ils ne declarent pas le meme JDK.** Le refus
+que j'ai rapporte comme *"le lot F qui attrape un defaut reel"* est un **faux rouge** : il portait
+sur un fichier que Maven n'utilise pas.
+
+**Ce que cela change, point par point :**
+
+- **Les 937 du planning, les 986 de l'essai et les 1 001 de la section 3.2 ont bien ete executes sur
+  un JDK 21.** Le chiffre etait juste ; c'est mon explication qui ne l'etait pas.
+- **Le lot F reste une bonne correction** - une enveloppe qui imprime au lieu de refuser ne garde
+  rien - **mais il a appris la distinction des deux fichiers a son diagnostic et l'a laissee ignorer
+  de son verdict.** `theo-archi` : *"le diagnostic savait ce que le verdict ne savait pas."* **Le lot
+  F est de ma casquette dev ; le defaut est donc a moi des deux cotes.**
+- **L'obstacle 11 tombe** : le poste ne declare pas 21 sur un JDK 25 pour Maven. Il portait sur le
+  mauvais fichier.
+
+**Pourquoi je l'ai ecrit** : j'ai lu le refus comme une preuve parce qu'il confirmait un defaut deja
+connu, constate par `nadia-prof` a s24. **Un garde-fou qui rougit sur ce qu'on attendait est le
+moment ou l'on verifie le moins.** C'est la lecon que je verse a la retro, et elle est de moi.
+
+### 12.2 Le correctif de `theo-archi` - et le faux vert que personne n'avait vu
+
+Le refus se corrigeait ; **il a trouve le symetrique, et c'est le grave.** `ADR-0071`, amendement du
+2026-08-31, avec sa methode - une sonde unique jouant les deux etats, *"comparer deux etats avec deux
+instruments ne prouverait rien"* :
+
+| Cas | Avant | Apres |
+|---|---|---|
+| Shell declare 21 sur un JDK 25, Maven lit 21 sur un 21.0.10 | **refus** - faux rouge | Maven lance |
+| Shell declare 21 sur un 21.0.10, Maven lit 21 sur un JDK 25 | **Maven lance** - **faux vert** | refus |
+
+> *"Le refus se contournait, le faux vert non : la compilation se fait sur 25, le rapport cite 21, et
+> rien ne le dit."*
+
+**Ce n'est pas un affaiblissement** : le refus disparait la ou la mesure etait juste et **apparait**
+la ou elle etait fausse. Le harnais passe de 7 a 11 cas, plus 5 juges purs.
+
+**Et un troisieme point qu'il trouve en verifiant sur le poste plutot qu'en le devinant** :
+`outils/verifier-jdk.sh` lisait le champ *JDK de compilation* sur le fichier du shell et annoncait
+25.0.2 quand le JDK qui compile rapporte 21.0.10. **Le constat citable de l'outillage et le garde-fou
+en machine d'`ADR-0071` rendaient deux versions differentes, et personne ne les avait mis cote a
+cote.** Ils rendent maintenant la meme.
+
+### 12.3 L'etat de l'enveloppe - verifie par moi, et c'est la premiere fois du sprint
+
+```
+bash outils/mvn-jdk21.sh -B clean verify
+```
+
+**Elle me laisse mesurer.** Ses deux premieres lignes, sur la sortie d'erreur :
+
+> *"Verdict rendu sur le fichier de toolchains que Maven lit, qui n'est pas celui de ce shell."*
+> *"Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10"*
+
+**C'est la premiere mesure de tout ce sprint prise avec la commande du depot.** Les trois
+precedentes - 937, 1 001, 1 006 - ont ete prises en designant un fichier de toolchains hors depot,
+parce que l'enveloppe refusait. **Elle ne refuse plus, et le journal de Maven confirme de son cote :
+`Found matching toolchain for type jdk` sur un JDK 21.0.10.**
+
+**Je n'ai touche a aucune configuration du poste**, ni pour cette mesure ni pour les precedentes.
+
+### 12.4 Ce qui est integre - lignees verifiees, huit fusions
+
+| # | Fusion | `round-two` ancetre | Planning ancetre | Conflits |
+|---|---|---|---|---|
+| 1 | `b7763b6` - la charte du `relecteur-pedagogique` | oui | hors branche d'agent | aucun |
+| 2 | `s25-theo` (`ef0f919`) - `ADR-0071` amende | oui | oui | aucun |
+| 3 | `s25-nadia` (`ca2c342`) - les quatre fiches, `CON-6` seconde revision | oui | oui | aucun |
+| 4 | `s25-marc` (`c32030e`) - le raccourci d'anteriorite | oui | oui | aucun |
+| 5 | `s25-lea` (`564ff40`) - indices redistribues, bornes encodees | oui | oui | aucun |
+| 6 | `s25-sofia-dev` (`662c784`) - indices de monnaie, bornes encodees | oui | oui | aucun |
+| 7 | `s25-relecteur` (`5e411ea`) - la relecture et ses corrections | oui | oui | aucun |
+| - | `s25-ines` (`f15bcf6`) | oui | - | **deja dans l'arbre** |
+
+**L'ordre n'est pas alphabetique et il a un motif** : `theo-archi` d'abord, **parce qu'il repare
+l'instrument de mesure** - c'est le motif du lot F applique a lui-meme ; puis les conditions de
+`nadia-prof`, avant les lots qui les encodent ; puis les trois lots de contenu ; **puis la relecture
+en dernier**, ses corrections portant sur des fichiers que les trois lots reecrivent.
+
+**Zero conflit sur les huit fusions**, ce qui n'est jamais arrive de ce sprint - et c'est
+precisement le cas ou une valeur juste sur une branche devient fausse sans qu'aucun test rougisse.
+**J'ai donc verifie les populations declarees contre les populations reelles, plutot que de conclure
+du silence de la commande :**
+
+| Controle | Declare | Mesure | Verdict |
+|---|---|---|---|
+| Items qui declarent une illustration | 24 | 24 | coherent |
+| Fichiers sous le repertoire d'illustrations | 24 | 24 | coherent |
+| Entrees de catalogue / `nombreDeManches` | 35 | 35 | coherent, aucune entree incomplete |
+| Cliquet de poids, plus gros dessin | 2 685 | 2 685 | coherent |
+| Cliquet de poids, repertoire | 30 070 | 30 070 | coherent |
+
+**Le cliquet a bouge une troisieme fois, et cette fois c'est `lea-dev` qui l'a deplace** - dans le
+commit qui apporte le changement, **et sur la valeur de l'arbre fusionne et non sur celle de sa
+chaine**. C'est le critere 11 execute par un lot au lieu de la fusion, et c'est mieux ainsi. *Ma
+mesure independante : 7 158 octets pour les douze figures, 22 912 pour les douze de monnaie, 30 070
+au total. Meme methode et meme perimetre - le fichier commite, commentaires compris, fins de ligne
+normalisees en LF.*
+
+### 12.5 Porte technique de l'arbre de cloture
+
+> **BUILD SUCCESS**, cinq modules, **1 018 tests, 0 echec, 0 erreur, 0 ignore.**
+
+**Methode** : somme des lignes de resultat **de module** (`surefire` et `failsafe`), jamais des
+lignes par classe. **Perimetre : le reacteur complet a la racine, donc aucun `-pl` et aucune question
+de `-am`.** JDK d'execution des tests : **21.0.10**, rapporte par la toolchain que Maven lit et
+confirme par le journal du build.
+
+| Module | Tests |
+|---|---|
+| `recreo-domain` | 80 |
+| `recreo-application` | 13 |
+| `recreo-adapter-web` | 364 |
+| `recreo-adapter-content` | **410** |
+| `recreo-bootstrap` (surefire) | 145 |
+| `recreo-bootstrap` (failsafe) | 6 |
+| **Total** | **1 018** |
+
+**Ecart 1 006 -> 1 018 : +12, etabli classe par classe.** `PaquetCm1SubstitutsTest` +5,
+`PaquetCpFiguresPlanesTest` +5, `PaquetCpMonnaieTest` +2. **Aucune autre classe ne bouge, aucune ne
+disparait.**
+
+### 12.6 Le chiffre de 1 011, annonce par trois agents - et il faut le regarder
+
+**Trois agents annoncent 1 011 sur leur propre arbre. Mon arbre de cloture rend 1 018.** L'ecart de 7
+serait ordinaire - chacun mesure sa branche - **si trois arbres differents ne rendaient pas le meme
+nombre.**
+
+**Le fait, mesure par moi** : la somme des lignes **par classe** de mon arbre de cloture vaut
+**exactement 1 011**, contre 1 018 pour la somme **par module**. **L'ecart de 7 est le meme aux
+quatre mesures de ce sprint** : 930/937, 994/1 001, 999/1 006, **1 011/1 018**.
+
+**Deux causes possibles, et je ne peux pas dire laquelle joue sans leurs journaux** :
+
+1. les trois arbres portaient effectivement 1 011 tests par la somme de module - ce qui demanderait
+   que les trois soient equivalents entre eux et a sept tests du mien ;
+2. les trois ont somme **par classe**, methode qui sous-compte de 7 sur ce depot.
+
+**La seconde explique la coincidence sans rien supposer d'autre ; la premiere demande que trois
+arbres distincts coincident.** Je ne tranche pas, **et je verse le fait a l'obstacle 12** -
+la regle de mesure qui sous-compte de 7, routee a `theo-archi` depuis s23. **C'est la premiere fois
+que cet ecart produit un chiffre qui circule dans trois documents**, et cela le fait passer d'une
+curiosite de comptage a une cause d'erreur.
+
+### 12.7 Les quatre verdicts de `nadia-prof` - et la matrice qui ne bouge pas
+
+**Je ne prononce aucun Done pedagogique. Je rapporte les siens, et j'ecris pourquoi la matrice reste
+a 27 / 41.**
+
+| Paquet | Verdict | Ligne visee |
+|---|---|---|
+| `bandit-manchot-figures-planes-cp` | **VALIDE SOUS RESERVE** - Done pedagogique **accorde**, une reserve non bloquante | figures planes CP |
+| `bandit-manchot-monnaie-cp` | **VALIDE SOUS RESERVE** - Done pedagogique **accorde**, deux reserves non bloquantes | monnaie CP |
+| `bandit-manchot-semaine-cp` | **VALIDE** - Done pedagogique prononce | la ligne de l'heure, moitie *se reperer* |
+| `bandit-manchot-substituts-cm1` | **REFUSE** | substituts CM1 |
+
+**La matrice n'est pas a moi.** `squad/programme/MATRICE-couverture.md` le dit : **`camille-po` la met
+a jour a la review**, en fonction de la confirmation technique de `yanis-qa` et `theo-archi` **et**
+d'un verdict de `nadia-prof`. **Deux des trois conditions manquent** : `yanis-qa` n'a pas rendu.
+**Je ne deplace donc aucune ligne, et le taux reste 27 / 41 = 65,9 % dans ce document.** *Methode :
+comptage de la colonne `Statut` des quatre tableaux de matiere, sur l'arbre de cloture.*
+
+**Le motif du refus de `SUB`, dans ses mots** : *"199 manches sur 210 reellement jouees se gagnent du
+premier coup en appliquant une seule regle de surface - choisir la proposition qui contient le
+premier prenom du texte - sans jamais lire la phrase ou vit le substitut."*
+
+> **Un fait de sequencement que personne ne doit lire de travers** : son refus est de **22:46**, le
+> correctif de `marc-dev` qui fait tomber le raccourci de 94,8 % a 35,0 % est de **23:16**. **Le
+> paquet qu'elle a refuse n'est pas celui qui est dans l'arbre de cloture.** Elle n'a pas rejoue
+> depuis. **Le refus tient tant qu'elle n'a pas rejoue** - je ne le leve pas, je ne l'anticipe pas,
+> et c'est la premiere raison de la relancer.
+
+### 12.8 `CON-6` : quatre clauses, deux encodees - et c'est exactement ce dont elle s'inquietait
+
+`nadia-prof` a revise `CON-6` **deux fois le meme jour**. La seconde revision porte **quatre
+clauses** - (a), (b), (b'), (c) - plus (d) non calculable et dans sa seule main. **Elle a insiste sur
+un point** : *"un garde-fou qui n'encoderait qu'une de ses quatre clauses serait vert et vide sur le
+paquet de monnaie, dont les jeux de propositions sont tous distincts. C'est le defaut que ce sprint a
+poursuivi trois fois."*
+
+**Etat mesure par moi sur l'arbre de cloture, clause par clause et paquet par paquet** :
+
+| Clause | Encodee sur `cp-figures-planes` | Encodee sur `cp-monnaie` |
+|---|---|---|
+| **(a)** aucun indice ne va avec une seule reponse | **oui**, avec sa morsure | **oui** |
+| **(b)** l'indice est fonction du jeu de propositions | **non** | **non** |
+| **(b')** chaque reponse portee par au moins deux indices | **non** | **non** |
+| **(c)** aucun indice au-dela de la moitie des items | **oui**, avec sa morsure | **oui** |
+| (d) l'indice apporte ce que la consigne ne dit pas | non calculable, sa main | idem |
+
+**Les deux lots encodent les deux bornes de la *premiere* revision** - leurs Javadoc citent
+nommement *"la clause amendee du 2026-08-31, section 13.4 de la fiche"*. **La seconde revision est de
+23:12 ; les deux encodages sont de 23:13 et 23:15.** Ils ne pouvaient pas l'avoir lue.
+
+**Ce que je mesure moi-meme sur les deux paquets servis, pour que la suite se decide sur un chiffre :**
+
+| | `cp-figures-planes` | `cp-monnaie` |
+|---|---|---|
+| Jeux de propositions distincts | 4 pour 12 items | **11 pour 12 items** |
+| (a) satisfaite ? | oui, minimum 3 | oui, minimum 2 |
+| **(b') satisfaite ?** | **oui**, minimum 2 | **non**, minimum 1 |
+| (c) indice le plus repandu | 6 / 12 | 5 / 12 |
+
+**Sa crainte est exacte et elle est deja verifiable** : `cp-monnaie` ayant onze jeux distincts pour
+douze items, la clause (b) y serait **vraie sans rien examiner**. Et **(b') - celle dont elle ecrit
+qu'elle *"mordait le plus fort sur l'etat fautif"* - n'est encodee nulle part et n'est pas satisfaite
+par le paquet de monnaie servi.**
+
+**Ce dernier point ne rouvre aucun verdict** : elle l'avait deja mesure elle-meme et porte dans sa
+fiche, et **`CON-6` est non retroactive**, elle l'ecrit deux fois. **Le risque n'est pas sur les
+paquets servis, il est sur les suivants : rien n'executera (b) ni (b').** C'est la forme exacte de
+`CPL-3` - une condition ecrite, datee, precise, et rien qui l'execute - **et c'est la troisieme fois
+de ce sprint.**
+
+**Je ne l'encode pas moi-meme** : quelles clauses sont calculables et laquelle merite un garde-fou
+malgre sa vacuite sur un paquet est un jugement partage entre `nadia-prof` et `theo-archi`, pas une
+correction de fusion. **Obstacle 20.**
+
+### 12.9 Deux faits que `marc-dev` verse et qui ne doivent pas se perdre
+
+**Ils sont contre son propre lot, et c'est ce qui leur donne du poids.**
+
+- **`cp-texte-narratif`, valide a s24, est a 45,0 %** sur la strategie de surface qui a fait refuser
+  les substituts. *Perimetre : la meme mesure, sur trois paquets.* **Aucune condition ne porte cette
+  propriete, et le paquet est sous la majorite** - donc sous le seuil qui a fait tomber `SUB`. **Il
+  n'est pas en faute au regard de ce qui lui a ete demande.** Ses mots : *"je prefere le dire que le
+  garder."* **A `nadia-prof`** pour dire ce que cela vaut, **et a `camille-po`** pour le rang. **Je
+  ne rouvre aucun Done et je n'en anticipe aucun.**
+- **Le garde-fou "un rang suffit" est formulable**, et il a mesure ce qui le fonde : au seuil
+  existant, il serait **vert sur les deux paquets servis et rouge sur l'etat refuse** - *"il aurait
+  donc attrape ce defaut avant les 210 manches"*. **Il refuse de l'ecrire** - *"c'est un `ADR`, donc
+  pas mon lot"* - **et il a grave domaine, seuil et chiffres dans la Javadoc du test** plutot que
+  dans un rapport qui se perd. **A `theo-archi`** pour l'`ADR`, **rang a `camille-po`**.
+
+*Le second point est le plus utile du sprint pour la suite : c'est un defaut qui a coute un refus, et
+dont la detection automatique est deja chiffree sur trois paquets par celui qui l'a subi.*
+
+### 12.10 La marge nulle que `lea-dev` remonte, et son analyse
+
+Sur la borne haute de `CON-6`, son paquet est a **6 indices sur 12** - exactement la moitie, donc
+**marge nulle**, et **structurelle** : descendre demanderait un quatrieme texte d'indice, et *"les
+seuls candidats vrais coupent au meme endroit qu'un existant"* - ce serait *"un texte de plus pour
+ecarter un chiffre, pas une aide de plus pour l'enfant"*.
+
+**Je le porte tel quel et je n'en tire aucune conclusion** : ce que la borne haute doit valoir est a
+`nadia-prof`, qui l'a d'ailleurs conservee *"comme filet"* en revisant. **Obstacle 21.**
+
+### 12.11 La dette n. 7 est fermee, et son enonce porte sa provenance
+
+`.claude/agents/relecteur-pedagogique.md` porte desormais la convention `MASTER`. **C'est la dette
+n. 7 de `CLAUDE.md`** - *"un garde-fou annonce mais absent"* - **reproduite dans le sprint qui l'a
+creee** : `DEC-0062` etablissait une convention, `squad/README.md` la portait, et **la charte de
+l'agent qui doit la faire respecter ne la contenait pas.**
+
+**Il l'avait signalee a s24 puis a s25 sans pouvoir la combler lui-meme** - *"une charte qui se donne
+ses criteres ne verifie plus rien"* - **et `camille-po` comme moi l'avions refuse, chacune sur un
+motif juste** : ce n'est ni du perimetre produit ni de la conduite de ceremonie. **Personne n'avait
+tort et la dette restait.**
+
+> **Recu de MASTER, sans source dans le depot**, 2026-09-01, cite mot pour mot et fige a la
+> reception : **"La dette n° 7 est fermée"**.
+
+*Forme 3 de `DEC-0062`, et ses deux bornes s'appliquent : cet enonce **ne vaut pas motif**, il ne
+fonde aucune decision. **Ce qui fonde la fermeture est le fichier** - `b7763b6`, dans l'arbre, que
+j'ai lu. La convention y est transcrite depuis `squad/README.md` section 2 bis, **`DEC-0062` restant
+la source**, ce qui est la bonne dependance : la charte cite, elle ne redefinit pas.*
+
+### 12.12 Etat des obstacles a la cloture
+
+| # | Obstacle | Etat |
+|---|---|---|
+| 1, 14 | La hauteur declaree | **CLOS** (section 11) |
+| **8, 9** | Le juge jamais lance ; l'horodatage du planning | **CLOS** |
+| **11** | *"La toolchain du poste declare 21 et designe un JDK 25.0.2"* | **CLOS, et il etait faux** : il portait sur un fichier que Maven ne lit pas. Section 12.1 |
+| **12** | La somme par classe sous-compte de 7 | **OUVERT, et aggrave** : il a produit un chiffre qui circule dans trois documents. `theo-archi` |
+| **20** | *Neuf* : `CON-6` a quatre clauses, **deux seulement sont encodees** ; (b) serait vide sur la monnaie et (b') n'est executee par rien | **OUVERT** - `nadia-prof` et `theo-archi` |
+| **21** | *Neuf* : marge nulle structurelle sur la borne haute de `CON-6` | **OUVERT** - `nadia-prof` |
+| **22** | *Neuf* : `cp-texte-narratif`, valide a s24, a 45,0 % sur la strategie de surface | **OUVERT** - `nadia-prof`, puis `camille-po` |
+| **23** | *Neuf* : le garde-fou *"un rang suffit"*, formulable et deja chiffre sur trois paquets | **OUVERT** - `theo-archi`, rang a `camille-po` |
+| **24** | *Neuf* : `SUB` a ete refuse sur un paquet que le correctif a remplace **apres** le verdict | **OUVERT** - `nadia-prof`, premiere raison de la relancer |
+| 2 a 7, 10, 13, 15 a 19 | inchanges | **OUVERTS** |
+
+**Deux obstacles se ferment parce qu'un fichier existe et que je l'ai lu. Un se ferme parce qu'il
+etait faux, et l'erreur etait de moi.**
+
+### 12.13 Ce que cet ajout ne fait pas
+
+- **La review reste ouverte** : pas d'horodatage de fin, pas de duree effective. **`yanis-qa` n'a pas
+  rendu**, et son rapport doit vivre ici.
+- **Aucune ligne de matrice n'est deplacee** : elle est a `camille-po`, et deux de ses trois
+  conditions manquent.
+- **Aucun Done pedagogique n'est prononce ici**, ni confirme, ni leve. Les quatre verdicts sont
+  rapportes, pas repris.
+- **Aucune des quatre clauses de `CON-6` n'est encodee par moi**, et aucun contenu n'est retouche.
+- **Aucune configuration de poste n'a ete modifiee**, a aucun moment du sprint.
