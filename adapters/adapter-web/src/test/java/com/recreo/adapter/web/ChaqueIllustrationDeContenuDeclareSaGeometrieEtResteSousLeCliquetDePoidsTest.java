@@ -140,8 +140,28 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * {@code width="176"} n'a coute aucun octet, ce qui verifie sur ce corpus ce qu'ines-design pose
      * - <i>"les dimensions declarees : effet nul"</i>. Ce sont les commentaires qui pesent,
      * <i>"a la hausse, et je l'assume"</i>.
+     *
+     * <p><b>Amendement du 2026-08-31 : ce cliquet a bouge trois fois, et le paragraphe ci-dessus,
+     * qui dit "une fois", ne le disait plus.</b> Il n'est pas reecrit - il etait exact quand il a
+     * ete ecrit - mais il est complete, parce qu'un compte perime dans le fichier que tout le monde
+     * lit est de la meme famille qu'un chiffre sans methode. Les trois mouvements, chacun avec la
+     * main qui l'a fait :</p>
+     * <ol>
+     *   <li><b>1 112 / 6 206 vers 1 430 / 6 524</b>, lea-dev, commentaire de DES-1 a DES-3 ;</li>
+     *   <li><b>1 430 / 6 524 vers 2 685 / 29 436</b>, sofia-sm, entree de la chaine de la monnaie -
+     *       critere 11 du planning execute, motif ecrit dans son commit : <i>"une scene de monnaie
+     *       porte jusqu'a six objets contre un trace unique pour une figure, donc le trace est plus
+     *       gros par construction"</i>, en-tetes ramenes de neuf a six lignes pour le contenir ;</li>
+     *   <li><b>29 436 vers 30 070</b>, lea-dev, le seul mouvement du present commit. <b>Le plus
+     *       gros dessin ne bouge pas</b> - il reste celui de la monnaie a 2 685 octets. La cause est
+     *       la correction de commentaire que nadia-prof route en section 7 de sa fiche :
+     *       {@code figure-triangle-pose.svg} annoncait "trois cotes egaux" pour un triangle dont ses
+     *       sommets declares donnent une base de 78 et deux cotes de 83,65. <b>Le dessin n'est pas
+     *       touche</b>, elle le route comme une correction de commentaire ; c'est donc, une
+     *       troisieme fois, du commentaire et rien d'autre qui pese.</li>
+     * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 29436;
+    private static final int POIDS_TOTAL_MAXIMUM = 30070;
 
     private static final String VUE = "viewBox";
 

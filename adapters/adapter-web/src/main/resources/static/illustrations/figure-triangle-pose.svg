@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- FIG, item illustre du palier 1. Triangle a trois cotes egaux, pose sur un cote, grande taille.
-     Trace en polygone : trois sommets declares, aucune police, aucun glyphe. -->
+<!-- FIG, item illustre du palier 1. Triangle ISOCELE, pose sur un cote, grande taille.
+     Trace en polygone : trois sommets declares, aucune police, aucun glyphe.
+
+     Ce commentaire annoncait "trois cotes egaux". C'etait faux, et c'est nadia-prof qui l'a mesure
+     en verifiant les douze dessins un par un (FICHE-bandit-manchot-figures-planes-cp.md,
+     section 7) : les sommets declares ci-dessous donnent une base de 78 et deux cotes de 83,65.
+     Elle route la correction comme une correction de COMMENTAIRE et non comme un defaut de
+     contenu, et le dessin n'est donc pas touche - l'enfant voit un triangle, repond "un triangle",
+     et a raison. Le motif qu'elle attache et qui vaut d'etre garde : "le prochain qui ecrira un
+     triangle equilateral en recopiant celui-ci croira en avoir un". -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
   <polygon points="50,10 89,84 11,84" fill="none" stroke="#1c2733" stroke-width="6"
            stroke-linejoin="round"/>
