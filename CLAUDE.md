@@ -14,6 +14,27 @@ programme.
 > sur `main` et reste consultable, mais elle n'est pas une reference a suivre : ses dettes sont
 > listees plus bas et sont a ne pas reproduire.
 
+## L'enfant de CP n'est jamais seul
+
+**Un eleve de CP est toujours accompagne par un adulte.** C'est une premisse du produit, arbitree
+par l'utilisatrice le 2026-08-25 (`DEC-0046`) et confirmee le 2026-09-01 (`DEC-0068`). Elle est
+ecrite ici parce qu'elle gouverne des decisions de conception que rien d'autre n'explique.
+
+Ce qu'elle autorise : une saisie alphabetique au CP, qu'une condition pedagogique interdisait tant
+que l'enfant etait suppose seul devant une tablette.
+
+Ce qu'elle rend possible sans un octet de son : **les exercices ou la voix est la competence
+elle-meme se jouent avec un adulte qui lit a voix haute**, la ou le produit avait renonce a un
+corpus enregistre et a la synthese vocale. Le produit ne fournit alors aucune voix - il fournit la
+**distinction entre ce que l'adulte prononce et ce que l'enfant lit ou voit**, et il dit a l'adulte
+ce qu'il ne doit pas dire, la ou celui-ci lit son texte.
+
+**Ce qu'elle n'autorise pas.** Elle ne dispense d'aucune exigence de lisibilite : le contenu reste
+ecrit pour un enfant qui lit encore peu. Elle ne vaut, comme moyen de jeu, que sur les lignes ou la
+voix est la competence visee - arbitrage de l'utilisatrice du 2026-09-01, qui a explicitement
+ecarte l'extension a tout le contenu de CP. Et elle n'ouvre aucun dispositif qui verifierait ce que
+l'adulte a dit : `nadia-prof` l'a refuse d'avance, et son motif est ecrit.
+
 ## Stack
 
 - **Back** : Java 21 (LTS), Clean Architecture (`domain` -> `application` -> `adapters` ->
