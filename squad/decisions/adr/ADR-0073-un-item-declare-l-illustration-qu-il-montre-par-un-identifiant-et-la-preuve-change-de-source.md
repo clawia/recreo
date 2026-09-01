@@ -193,7 +193,7 @@ deux cles se gardent l'une l'autre.
 
 **Pourquoi sur l'item et pas sur le gabarit** : un `alt` ecrit dans le gabarit serait le meme pour
 les onze figures d'un paquet, donc ne decrirait aucune. **Pourquoi obligatoire** : une image qui
-porte la question de la manche ne parvient pas a une lecture d'ecran sans lui, et un `alt=""` sur une
+porte la question de la manche ne parvient pas a un lecteur d'ecran sans lui, et un `alt=""` sur une
 image de contenu est une declaration fausse - il annonce une image decorative.
 
 **Ce que cette clause ne decide pas, et je le route explicitement** : **ce que ce texte dit.** Un

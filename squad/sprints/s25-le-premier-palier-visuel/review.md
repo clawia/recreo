@@ -429,7 +429,7 @@ demontre**, et `lea-dev` l'a ecrit.
 **Les douze textes alternatifs des figures planes sont identiques, et ce n'est pas une economie
 d'ecriture** : la reponse attendue **est le nom de la figure**. Tout texte alternatif qui
 distinguerait deux items livrerait la reponse - c'est `CON-5` appliquee, pas contournee. **Un enfant
-qui utilise une lecture d'ecran recoit douze fois la meme phrase et ne peut repondre a aucun des
+qui utilise un lecteur d'ecran recoit douze fois la meme phrase et ne peut repondre a aucun des
 douze items.**
 
 **Le contraste avec la monnaie est instructif et je le verse tel quel** : la meme condition y produit

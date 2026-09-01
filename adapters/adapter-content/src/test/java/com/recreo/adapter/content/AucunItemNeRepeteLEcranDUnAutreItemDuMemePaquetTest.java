@@ -283,7 +283,7 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
             "exigenceDeForme", "elle gouverne la comparaison, jamais l'affichage : rien a l'ecran ne"
                     + " dit a l'enfant si son accent comptera. Ce fait est lui-meme une propriete que"
                     + " nadia-prof juge en jouant (SAI-2), pas une composante d'ecran",
-            "illustrationTexteAlternatif", "il n'est jamais montre : c'est ce qu'une lecture d'ecran"
+            "illustrationTexteAlternatif", "il n'est jamais montre : c'est ce qu'un lecteur d'ecran"
                     + " annonce de l'image, et l'image, elle, est deja dans l'identite par son"
                     + " identifiant (ADR-0073 clause 5). Deux items de meme enonce, de memes"
                     + " propositions et de meme dessin presentent le meme ecran quel que soit le"

@@ -224,7 +224,7 @@ public final class BanditManchotSession implements GameSession {
     }
 
     /**
-     * ADR-0073 clause 5 : ce qu'une lecture d'ecran annonce de l'image de la manche courante. Vide
+     * ADR-0073 clause 5 : ce qu'un lecteur d'ecran annonce de l'image de la manche courante. Vide
      * exactement quand {@link #illustrationManche()} l'est - les deux cles se gardent l'une l'autre
      * des la construction de l'item.
      */

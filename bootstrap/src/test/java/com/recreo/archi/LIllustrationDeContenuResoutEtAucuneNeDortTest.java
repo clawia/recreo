@@ -91,7 +91,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     /** La cle par laquelle un item declare l'illustration qu'il montre (ADR-0073 clause 1). */
     private static final String CLE_ILLUSTRATION = "illustration";
 
-    /** La cle par laquelle le meme item declare ce qu'une lecture d'ecran annonce (clause 5). */
+    /** La cle par laquelle le meme item declare ce qu'un lecteur d'ecran annonce (clause 5). */
     private static final String CLE_TEXTE_ALTERNATIF = "illustrationTexteAlternatif";
 
     private static final String EXTENSION = ".svg";
@@ -255,7 +255,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
             }
             if (declaree.texteAlternatif() == null || declaree.texteAlternatif().isBlank()) {
                 fautes.add(ou + " : aucun " + CLE_TEXTE_ALTERNATIF + ". Une image qui porte la"
-                        + " question ne parvient pas a une lecture d'ecran sans lui (ADR-0073"
+                        + " question ne parvient pas a un lecteur d'ecran sans lui (ADR-0073"
                         + " clause 5)");
             }
         }
@@ -429,7 +429,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         }
     }
 
-    /** Morsure 4 : une image qui porte la question et qu'aucune lecture d'ecran n'annonce. */
+    /** Morsure 4 : une image qui porte la question et qu'aucun lecteur d'ecran n'annonce. */
     @Test
     void uneIllustrationSansTexteAlternatifFaitEchouerLeGardeFou() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
