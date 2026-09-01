@@ -188,3 +188,116 @@ Plus le point 2, la moitie du point 3 et desormais le point 5 de `VOI-12`.
 
 `squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, section 18, et le **second
 verdict** dans le bloc de validation des cinq `squad/conformite/FICHE-*.md`.
+
+---
+
+## Addendum du 2026-09-01 (sofia-sm) - cloture de la ceremonie : horodatage, rapport qualite, confirmation, obstacles, decisions
+
+- **Auteure de cet addendum** : `sofia-sm`. Rien du texte precedent (les deux passages de
+  `nadia-prof`) n'est modifie ni retire.
+- **Horodatage de debut** : 2026-09-01 14:32 (`planning.md`). **Horodatage de fin** : 2026-09-01
+  21:33. **Duree effective** : environ 7h.
+- **Increment livre, en une phrase** : les quatre lignes du domaine *Langage oral et conscience
+  phonologique* sont servies par cinq paquets a voix (un adulte present lit le texte que l'enfant
+  n'a pas a lire), et la dette du JavaScript porteur non file (`ADR-0008`) est fermee.
+
+### Rapport qualite - `yanis-qa`
+
+Repris depuis `squad/sprints/s26-la-voix-et-la-dette/rapport-qualite.md`, extrait de `s26-yanis`
+(`0fbf7b0`) sans fusionner cette branche - voir la note en tete de ce fichier pour le motif.
+
+- **Commande** : `bash outils/mvn-jdk21.sh -B clean verify`, sur `s26-theo-reco` a `87963a2`.
+- **Resultat a cette date** : vert, **1079 tests**, 0 echec, JDK 21.0.10 confirme par la JVM des
+  tests.
+- **Couvert** : `VOI-14` (ses deux points), l'appariement `texteAVoixHaute`/`consigneAdulte` cote
+  contenu YAML, l'amendement d'identite d'`ADR-0032`.
+- **Non couvert a cette date, trouve par mutation sur materiau reel** : la clause 4 de traversee
+  d'`ADR-0075` ne tenait qu'au niveau du contenu, pas du gabarit ; la clause 3 d'`ADR-0074` ne
+  normalisait pas les tabulations et retours-ligne comme un navigateur. **Les deux trous sont
+  fermes depuis** par `theo-archi` (`ADR-0074` amende) et `marc-dev` (type `BlocAdulte`), fusionnes
+  sur `round-two` avant ce passage de cloture (voir `planning.md`, addendum "les deux trous
+  fermes").
+- **Tests instables** : aucun.
+
+### Confirmation ArchUnit - `sofia-sm`
+
+Aucun fichier `confirmation-archunit.md` dedie n'a ete produit par `theo-archi` pour ce sprint :
+cette section est donc la mienne, sur ma propre execution, et non une reprise de la sienne.
+
+- **Commande** : `bash outils/mvn-jdk21.sh -B clean verify`, sur `round-two` a `05dcc60`.
+- **Resultat** : BUILD SUCCESS, **1090 tests** (82 domain + 13 application + 382 adapter-web + 457
+  adapter-content + 150 bootstrap unitaires + 6 bootstrap integration), 0 echec, 0 erreur.
+- **Regles ArchUnit (paquet `com.recreo.archi`) ajoutees ce sprint** : **aucune**. Verifie par
+  liste du repertoire `bootstrap/src/test/java/com/recreo/archi/` : 18 fichiers, la meme liste
+  qu'a l'ouverture du sprint. Le sprint a modifie des tests de garde-fou de contenu et de rendu
+  (`FrontieresDuJavaScriptTest`, `LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest`,
+  `AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest`,
+  `LeTexteAVoixHauteEtLaConsigneAdulteSeDeclarentEnsembleTest`,
+  `LaConsigneAdulteInterditDeMontrerLaLigneALEnfantTest`), pas la suite ArchUnit du paquet `archi`.
+- **`ToutesLesReferencesDeDecisionResolventTest`** : vert a chaque fusion de ce sprint, verifie
+  individuellement a trois reprises - c'est le garde-fou qui a trouve les deux premiers des trois
+  incidents de "fichier reste sur une branche" de ce sprint.
+
+### Relecture - `relecteur-pedagogique`
+
+- **Corrections appliquees** (`s26-relecteur`, `61e13ca`) : la moitie manquante de la correction
+  d'un des cinq `PaquetCpXxxTest` ; la contradiction entre le champ Statut des quatre stories et
+  leur preambule ; ma consigne fautive citant `VOI-7` au lieu de `VOI-13`.
+- **Points a trancher** : aucun restant a sa charge a la cloture.
+
+### Obstacles du sprint
+
+| Description | Categorie | Agent route | Decision liee | Statut |
+|---|---|---|---|---|
+| `round-two` rouge : `CLAUDE.md` citait `DEC-0068` avant sa fusion | technique, gouvernance | `sofia-sm` (auteur : l'orchestrateur) | `DEC-0068` | clos |
+| `P(bonne / presente)` non garde par `adapter-content` | qualite, technique | `yanis-qa`, `theo-archi` | - | route, hors perimetre de s26 |
+| Doute d'`ines-design` sur la consigne de `bandit-manchot-son-dans-mot-cp` | pedagogie | `nadia-prof` | - | la fiche le marque encore "point ouvert", incoherence a confirmer par `nadia-prof` |
+| Ecart d'affectation : les cinq paquets a `lea-dev` sans relire la table du planning | capacite | `sofia-sm` (auteur : l'orchestrateur) | - | clos, table corrigee avec sa date |
+| `VOI-10` rougirait par construction sur 3 paquets sur 5 | technique puis pedagogie | `theo-archi`, `nadia-prof` | `ADR-0076` | clos |
+| `ADR-0076` reposait sur la section 16 de l'arbitrage, restee sur `s26-nadia` | technique, gouvernance | `sofia-sm` | `ADR-0076` | clos |
+| `s26-theo-reco` en retard sur `round-two` | gouvernance | `sofia-sm` | - | clos |
+| Bloc adulte atteignable a moitie sur l'ecran | technique | `marc-dev` | - | clos (type `BlocAdulte`) |
+| Troisieme porteur JavaScript, mal reconnu comme quatrieme, echappant a `ADR-0074` | technique, architecture | `theo-archi` | `ADR-0074` | clos |
+| `PaquetCpXxxTest` a moitie corrige ; stories contradictoires ; ma consigne fautive | redaction | `relecteur-pedagogique` | - | clos |
+| Refus pedagogique initial : cinquieme phrase manquante, second motif sur `cp-lettre-du-son` | pedagogie | `lea-dev` | - | clos (leve) |
+| Trois lignes fermees et non quatre : `cp-lettre-du-son` ne sert aucune voyelle simple | produit, matrice | `camille-po` | - | ouvert - rang de s27 non rendu a cette cloture |
+| `s26-camille` stale : conflit sur six fichiers deja corriges autrement | gouvernance | `camille-po` | - | non fusionne, signale plutot que force |
+| Trois incidents "fichier reste sur une branche" en un sprint | technique, architecture | `theo-archi` | - | ouvert - dette a instruire |
+| Quatrieme ecart de l'orchestrateur : correction de contenu lancee en parallele d'une fusion qui allait la doubler | gouvernance | `sofia-sm` | - | clos |
+
+Rappel de `squad/README.md` section 4 : un obstacle n'est `clos` que si le fichier de decision
+existe physiquement, ou si sa resolution est verifiee sur le disque.
+
+### Porte pedagogique - `nadia-prof`
+
+- **Verdict** : **VALIDE** (leve depuis REFUSE, ci-dessus, sans effacer le motif du refus).
+- **Fiches** : les cinq `squad/conformite/FICHE-*.md` des paquets a voix.
+- **Motif** : voir les deux passages ci-dessus, in extenso.
+- **Reserves** : aucune ligne de matrice `couvert-valide` sur "Associer les graphemes aux
+  phonemes" - trois lignes se ferment, pas quatre.
+
+### `s26-camille` - non fusionne, signale
+
+Tentative de fusion faite, en conflit sur six fichiers. Ce commit de `camille-po`, date d'avant le
+renommage `S26-VOI` vers `S26-L` et avant la fermeture de la branche "mecanique", refait le meme
+travail avec une redaction differente sur les memes fichiers. Je ne force pas la fusion : le
+contenu est deja couvert, sous une autre plume, par ce qui est fusionne sur `round-two`. Fusion
+abandonnee proprement, branche laissee intacte.
+
+### `s26-yanis` - non fusionne, garde
+
+Ses deux commits restent rouges par construction : ce n'est pas leur version qui entre, leurs
+correctifs sont entres par `s26-theo-reco` et `s26-marc`. Je garde la branche plutot que de la
+supprimer en silence : son rapport qualite est extrait dans `rapport-qualite.md`, mais ses commits
+de test restent la source primaire de ce que `yanis-qa` a mesure.
+
+## Decisions prises (creees ou modifiees ce sprint)
+
+| Reference | Titre | Type | Statut |
+|---|---|---|---|
+| `DEC-0068` | La voix est celle d'un adulte present | Produit | Acceptee, amendee |
+| `DEC-0067` | Etat du produit a la cloture de s25, rang de s26 | Produit | Acceptee, amendee |
+| `ADR-0032` | Identite d'un tour (item) | Architecture | Accepte, amende |
+| `ADR-0074` | Tout JavaScript servi vit dans un fichier | Architecture | Accepte, amende |
+| `ADR-0075` | La famille a voix est un champ d'item | Architecture | Accepte |
+| `ADR-0076` | `VOI-14` remplace l'operateur de `VOI-10` | Architecture | Accepte |
