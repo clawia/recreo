@@ -1,13 +1,13 @@
 # [Sprint s25] Review - 2026-08-31
 
 - **Horodatage de debut** (rappel du planning) : 2026-08-31 18:24 +0200.
-- **Horodatage de fin** : **du, non pose.** Cette review est **ouverte et non close** : les trois
+- **Horodatage de fin** : **2026-09-01 09:45 +0200.** *La ligne ci-dessous, qui disait cet
+  horodatage "du, non pose", reste lisible : elle etait vraie tant que les trois ceremonies
+  n'avaient pas rendu.*
+- **Duree effective** : **15 h 21 min.**
+- ~~**Horodatage de fin** : du, non pose. Cette review est ouverte et non close : les trois
   ceremonies que le planning place **avant** elle - `nadia-prof`, `relecteur-pedagogique`,
-  `yanis-qa` - n'ont pas encore eu lieu. **Je ne pose pas un horodatage de fin sur un sprint qui
-  n'est pas fini, et je n'ecris a la place de personne les trois sections qui les attendent.**
-  Section 9 : ce que chacune doit rendre, et le point exact ou je demande son lancement.
-- **Duree effective** : **non calculable tant que la fin n'est pas posee.** Duree ecoulee a
-  l'ecriture de ce document : 3 h 42 min.
+  `yanis-qa` - n'ont pas encore eu lieu.~~ **Elles ont rendu. Section 13.**
 - **Animee par** : `sofia-sm`, **casquette Scrum Master**.
 - **Arbre de reference** : worktree dedie `s25-sofia-review`, ouvert sur `s25-sofia`, puis neuf
   fusions (section 1).
@@ -1053,3 +1053,176 @@ etait faux, et l'erreur etait de moi.**
   rapportes, pas repris.
 - **Aucune des quatre clauses de `CON-6` n'est encodee par moi**, et aucun contenu n'est retouche.
 - **Aucune configuration de poste n'a ete modifiee**, a aucun moment du sprint.
+
+---
+
+## 13. Cloture du 2026-09-01 - les quatre sections dues sont rendues
+
+*Bloc de cloture. **Rien de ce qui precede n'est efface**, y compris les deux endroits ou j'ai ecrit
+faux et ou la correction est marquee a sa place.*
+
+### 13.1 Ce qui a ete integre a la cloture - lignees verifiees
+
+| Fusion | Ancetre `round-two` | Ancetre du planning | Conflits |
+|---|---|---|---|
+| `f4e26e5` - la forme 2 de la charte, hors branche d'agent | oui | - | aucun |
+| `s25-yanis` (`0a88bfc`) - rapport qualite | oui | oui | aucun |
+| `s25-nadia` (`20e06e0`) - les quatre verdicts finaux | oui | oui | aucun |
+| `s25-camille` (`e7de81b`) - matrice, `DEC-0067`, `DEC-index` | oui | oui | aucun |
+| `9f991f5` - la note datee de `marc-dev` | oui | oui | aucun |
+| `s25-relecteur` (`7eecc3c`) - seconde passe | oui | oui | aucun |
+| `b7763b6` | oui | - | **deja dans l'arbre** |
+
+*`origin/s25-marc` pointe sur `b4dec30`, qui est une **fusion de ma propre branche de review dans la
+sienne**. J'ai donc fusionne son commit de contenu `9f991f5` plutot que sa pointe : le resultat est
+le meme arbre, sans reimporter ma branche par un detour.*
+
+### 13.2 Porte technique de l'arbre de cloture - Done technique
+
+**Les six fusions sont documentaires. Je l'ai mesure au lieu de le supposer**, parce que c'est
+exactement la situation ou l'on ne mesure pas.
+
+```
+bash outils/mvn-jdk21.sh -B clean verify
+```
+
+> **BUILD SUCCESS**, cinq modules, **1 018 tests, 0 echec, 0 erreur, 0 ignore.**
+
+**Methode** : somme des lignes de resultat **de module**, jamais des lignes par classe. **Perimetre :
+le reacteur complet a la racine, donc aucun `-pl` et aucune question de `-am`.** JDK d'execution
+**21.0.10**, rendu par l'enveloppe et confirme par le journal du build. **Delta avec l'arbre de la
+section 12.5 : zero**, comme attendu.
+
+**Le Done technique est acquis.** Il est juge par la CI ; je le mesure et je le rapporte.
+
+### 13.3 Rapport qualite de `yanis-qa` - rendu
+
+`squad/sprints/s25-le-premier-palier-visuel/rapport-qualite.md`, mesure sur `834c6bc`, lignee
+verifiee avant toute mesure.
+
+- **Il reproduit la porte a 1 018** sans la reprendre de moi. **Trois mesures independantes, meme
+  commit, meme chiffre** - la sienne, celle du `relecteur-pedagogique`, la mienne. **C'est la
+  premiere fois de ce sprint qu'un chiffre est confirme par un tiers plutot que recopie.**
+- **Aucun test ignore ni desactive** : `skipped` vaut 0 sur les 140 rapports, sur trois executions.
+  **Aucun test instable.** Aucune execution relancee pour obtenir un vert.
+- **Il resout l'obstacle 12**, et sa cause n'est pas celle que je soupconnais : **quatre classes
+  portent deux annotations de test**, donc deux moteurs et deux lignes de journal. Une agregation par
+  nom de classe en perd exactement 7. **Artefact de methode d'agregation, pas defaut de build**, et
+  la population est close.
+- **Dix constats routes, dont trois en severite haute**, tous sur `CON-6` et sur la porte de la
+  dette n. 4. **Il ne corrige aucun garde-fou qui ne lui appartient pas**, et il l'ecrit.
+
+### 13.4 Corrections du `relecteur-pedagogique` - rendues
+
+`squad/sprints/s25-le-premier-palier-visuel/relecture-s25.md`, deux passes.
+
+**Ce que sa premiere passe a declenche, et c'est le fait le plus productif du sprint** : son constat
+sur l'indice de `cp-figures-planes` a fait naitre `CON-6` ; son constat sur le refus de l'enveloppe a
+fait naitre l'amendement d'`ADR-0071`. **Deux des quatre defauts de ce sprint ont ete ouverts par une
+relecture, pas par un test.**
+
+**Et un troisieme, qui est chez moi** : la table des trois formes de `squad/README.md` section 2 bis
+decrivait en forme 2 *"une mesure faite par l'auteur"* la ou `DEC-0062` ecrit **`de l'utilisatrice`,
+ses mots cites, la date**. **Un arbitrage de l'utilisatrice n'avait donc plus de forme du tout** - la
+moitie du trou que la convention existe pour fermer, rouverte dans le fichier cense la diffuser.
+**Il l'a trouve en verifiant la charte qu'il applique. Le fichier de process est a moi et je l'ai
+corrige a cette cloture**, en notant que l'exigence de mesure que j'y avais logee n'est pas fausse -
+elle est ailleurs, section 4 - et que la loger la en chassait une.
+
+### 13.5 Confirmation d'architecture de `theo-archi` - rendue
+
+`ADR-0071`, amendement du 2026-08-31, avec son garde-fou et son harnais porte de 7 a 11 cas, plus 5
+juges purs. **Le compte de regles ArchUnit reste a lui et je ne fabrique aucun chiffre a sa place.**
+
+### 13.6 Avis de `nadia-prof` et Done pedagogique
+
+> **Quatre `VALIDE`.** Le refus de `bandit-manchot-substituts-cm1` est **leve**, les deux reserves
+> visuelles sont **levees**. **Ce Done est le sien et lui seul. Je le rapporte, je ne le prononce
+> pas, et rien de ce document ne le fonde.**
+
+Fiches : `FICHE-bandit-manchot-figures-planes-cp.md`, `FICHE-bandit-manchot-monnaie-cp.md`,
+`FICHE-bandit-manchot-semaine-cp.md`, `FICHE-bandit-manchot-substituts-cm1.md`, plus
+`FICHE-bandit-manchot-texte-narratif-cp.md` sur le paquet de s24 que `marc-dev` avait signale.
+
+**Trois ecarts muets qu'elle a nommes et qui ont failli fausser son audit** : un jar de la veille qui
+attendait, douze dessins corriges pendant sa passe, et une garantie fausse qui l'aurait fait reporter
+des verifications. **Aucun des trois n'etait visible depuis sa position** - ils entrent en retro.
+
+### 13.7 L'etat de la matrice, recompte par moi
+
+`camille-po` l'a ecrite ; **je la recompte, comme je recompte tout chiffre qui entre dans un rapport
+de cloture.**
+
+| Statut | Compte |
+|---|---|
+| `couvert-valide` | **31** |
+| `non couvert` | 9 |
+| `en cours` | 1 |
+| `non couvrable en l'etat` | 6 |
+| **Total** | **47** |
+
+> **31 / 41 = 75,6 %.** *Methode : comptage de la colonne `Statut` des quatre tableaux de matiere,
+> sur l'arbre de cloture. Aucun module compile, donc aucune question de `-am`.*
+
+**Quatre lignes distinctes passent au vert** - figures planes CP, monnaie CP, la ligne de l'heure par
+sa moitie *se reperer*, les substituts CM1. **Mon compte concorde avec le sien**, et c'est
+**exactement le plafond que `DEC-0065` avait pose a l'ouverture**. Un plafond atteint n'est pas
+frequent sur ce produit et vaut d'etre note comme tel.
+
+### 13.8 Une correction de perimetre que `yanis-qa` me route, et il a raison
+
+Ma section 12.9 presentait **45,0 %** pour `cp-texte-narratif` et **95,0 %** pour l'etat refuse de
+`SUB` comme relevant de la meme mesure. **Ils viennent de deux instruments differents** : 35,0 % et
+45,0 % sont la **strategie positionnelle** de `marc-dev`, 95,0 % la **strategie lexicale** de
+`nadia-prof`. **Avec l'instrument positionnel, l'etat refuse rend 80,0 %.**
+
+**La conclusion de `marc-dev` ne bouge pas** - `cp-texte-narratif` reste sous la majorite et son
+signalement reste juste - **mais la comparaison telle que je l'avais ecrite mettait deux instruments
+sur la meme ligne.** C'est la faute que ce depot sanctionne depuis s21, commise par moi dans le
+document qui la rapporte.
+
+### 13.9 Tableau des obstacles a la cloture
+
+| # | Obstacle | Proprietaire | Etat |
+|---|---|---|---|
+| 1, 14 | La hauteur declaree d'un dessin | `lea-dev` | **CLOS** |
+| 2 | `MON-1`, lettre ou motif | `nadia-prof` | **CLOS** - tranche dans sa fiche |
+| 3 | `ADR-0041` contre la forme forte de `MON-3` | `nadia-prof` | **CLOS** - `MON-6` ecrite |
+| 4 | Le trait vertical de la bourse | `nadia-prof` | **CLOS** - joue et juge |
+| 5 | `Question` : six composantes optionnelles sur dix, cinq constructeurs en chaine | `theo-archi` | **OUVERT** - dette n. 6 |
+| 6 | L'URL d'illustration porte l'identifiant de session | `theo-archi` | **OUVERT** |
+| 7 | Une ligne du programme injouable sans la vue | `camille-po`, puis l'utilisatrice | **OUVERT** - **remonte** |
+| 8, 9 | Le juge jamais lance ; l'horodatage du planning | `sofia-sm` | **CLOS** |
+| 10 | La formule de JDK disqualifiee, 31 occurrences chez six auteurs | six auteurs | **OUVERT, trie** |
+| 11 | *"La toolchain declare 21 et designe un JDK 25.0.2"* | - | **CLOS, et il etait faux.** Section 12.1 |
+| **12** | La somme par classe sous-compte de 7 | `yanis-qa` | **CLOS** - cause etablie, artefact d'agregation |
+| 13 | `DV-3`, le contraste du trait | `nadia-prof` | **CLOS** - `DES-5` fixe la teinte |
+| 15 | Quatre dossiers de sprint invisibles a l'outil de tokens | `sofia-sm` | **OUVERT** |
+| 16 | `CON-4` et `CON-5` non automatisables | `nadia-prof` | **OUVERT par construction** |
+| 17 | Le rang des trois lots de dette | `camille-po` | **CLOS** - `DEC-0067` pose le rang |
+| 18 | `S25-SCO-1`, second report | `camille-po` | **CLOS** - `DEC-0067`, rang 2 |
+| 19 | Le second plancher de `DES-3` et `DES-6` non executes | `ines-design`, `nadia-prof`, `theo-archi` | **OUVERT** |
+| 20 | `CON-6` : quatre clauses, deux encodees | `nadia-prof`, `theo-archi` | **OUVERT, precise** - voir 21 a 23 |
+| 21 | Marge nulle structurelle sur la borne haute | `nadia-prof` | **OUVERT** |
+| 22 | `cp-texte-narratif` sous la majorite | `nadia-prof` | **CLOS** - fiche rendue |
+| 23 | Le garde-fou *"un rang suffit"* | `theo-archi`, rang `camille-po` | **OUVERT** - `DEC-0067` rang 4 |
+| 24 | `SUB` refuse sur un paquet remplace apres le verdict | `nadia-prof` | **CLOS** - elle a rejoue, refus leve |
+| **25** | *Neuf* : `CON-6` **(b)** est **rouge sur `cp-monnaie`**, pas vide - une clause non retroactive rendue opposable a un increment deja valide | `nadia-prof` (clause), `theo-archi` (perimetre) | **OUVERT, severite haute** |
+| **26** | *Neuf* : `CON-6` **(b')** est **insatisfaisable** telle qu'ecrite - 10 reponses sur 11 servies une seule fois sur `cp-monnaie`. Restreinte aux reponses servies au moins deux fois, elle est verte, non vide, et rouge sur l'etat fautif | `nadia-prof` (domaine), `theo-archi` | **OUVERT, severite haute** |
+| **27** | *Neuf* : tout encodage de (b) ou (b') doit **declarer la taille du domaine examine et echouer si elle est nulle** | `theo-archi` | **OUVERT** |
+| **28** | *Neuf* : `ADR-0008` ne voit **ni un attribut d'evenement ni un element `<script>`** dans un gabarit servi - 0 classe rouge sur 1 018 tests, **deuxieme sprint** | `theo-archi` | **OUVERT, severite haute** |
+| **29** | *Neuf* : `SUB-8` n'est nommee par aucun test, quand sa jumelle `NAR-7` l'est depuis s24 | `marc-dev` | **OUVERT** |
+| **30** | *Neuf* : `MON-6`, non retroactive, n'est executee par rien | `nadia-prof`, puis `theo-archi` | **OUVERT a l'echeance** |
+| **31** | *Neuf* : la forme 2 de `squad/README.md` chassait l'attribution a l'utilisatrice | `sofia-sm` | **CLOS a cette cloture** |
+
+**Onze obstacles fermes par un fichier lu ; un ferme parce qu'il etait faux et l'erreur etait de
+moi ; sept obstacles neufs, dont trois en severite haute.**
+
+### 13.10 Ce que cette cloture ne fait pas
+
+- Elle **ne prononce aucun Done pedagogique** et n'en confirme aucun. Les quatre `VALIDE` sont de
+  `nadia-prof`.
+- Elle **ne deplace aucune ligne de matrice** : `camille-po` l'a fait, je l'ai recomptee.
+- Elle **n'encode aucune clause de `CON-6`** et ne retouche aucun contenu.
+- Elle **ne fusionne rien sur `round-two`** : voir `RAPPORT.md`, derniere section.
+- Elle **n'a modifie aucune configuration de poste**, a aucun moment du sprint.
