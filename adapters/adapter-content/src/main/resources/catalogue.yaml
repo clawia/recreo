@@ -245,3 +245,9 @@ jeux:
     paquet: cp-mot-dicte
     nombreDeManches: 7
     consigneAdulte: "Dites le mot autant de fois qu'il le demande, mais ne l'épelez jamais. Ne montrez pas cette ligne à l'enfant."
+  - id: bandit-manchot-histoire-geographie-cm1
+    titre: "Histoire et géographie"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-histoire-geographie
+    nombreDeManches: 10

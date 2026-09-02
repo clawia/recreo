@@ -171,6 +171,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-lettre-du-son-cp",
             "bandit-manchot-digraphe-du-son-cp",
             "saisie-mot-dicte-cp",
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
+            "bandit-manchot-histoire-geographie-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -239,6 +241,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La bonne lettre",
             "Le bon groupe de lettres",
             "Écris le mot dicté",
+            // S27-3 : titre neuf.
+            "Histoire et géographie",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -309,6 +313,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Écoute l'adulte lire le mot, puis choisis la lettre qui fait le tout premier son.",
             "Écoute l'adulte lire le mot, puis choisis le groupe de lettres qui fait ce son.",
             "Écoute le mot que l'adulte va dire, puis écris-le.",
+            // S27-3 : consigne neuve.
+            "Lis bien la question, puis choisis la bonne réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -318,6 +324,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
             "Mathématiques",
             "Français",
+            // S27-3 : matiere neuve, premiere matiere neuve du produit sur ce referentiel.
+            "Histoire-géographie",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -332,6 +340,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Espace et géométrie",
             // S26-L5 : domaine neuf, premier paquet de ce domaine.
             "Écriture",
+            // S27-3 : domaine neuf, premier paquet d'histoire-geographie.
+            "Repères historiques et géographiques",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -413,7 +423,16 @@ class TexteAccentueExposeParLePortEntrantTest {
             // deja presente ci-dessus (paquet cp-le-bon-son, S19-5) : aucune entree neuve.
             // S26-L5 : competence neuve, premier paquet du domaine "Écriture".
             "Écrire de manière autonome un mot simple en respectant les correspondances "
-                    + "graphème/phonème connues");
+                    + "graphème/phonème connues",
+            // S27-3 : competence neuve, premier paquet de la matiere. Touche plusieurs lignes du
+            // referentiel (S27-3 ne pretend fermer aucune ligne) - libelle du descripteur du
+            // paquet, mot pour mot.
+            "Ouvre plusieurs compétences du référentiel : se repérer dans le temps (grandes "
+                    + "périodes, siècles), identifier des traces d'une occupation ancienne, nommer "
+                    + "des rois et leur réalisation, situer les événements de la Révolution et de "
+                    + "l'Empire, distinguer des types d'espaces et leurs activités, comprendre un "
+                    + "document historique (lignes 1, 2, 3, 4, 6, 7, 8, 11, 12, 13, 14 du "
+                    + "référentiel CM1)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

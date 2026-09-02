@@ -463,7 +463,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " aucun rang. Meme motif que cp-complements-10-saisie (lot 5a de s24, decision"
                     + " 10) - la propriete decrit une strategie de pression sur des propositions, et"
                     + " en saisie il n'y a ni bouton ni ordre a exploiter. Mesure du 2026-09-01 sur"
-                    + " le paquet servi : 12 items, aucun distracteur"));
+                    + " le paquet servi : 12 items, aucun distracteur"),
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
+            Map.entry("cm1-histoire-geographie",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des noms de periodes, de peuples, de"
+                    + " rois, d'evenements ou de lieux, et des dates toujours ecrites en toutes"
+                    + " lettres ou precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe"
+                    + " rend null sur les trois propositions de chaque item. Mesure du 2026-09-02 sur"
+                    + " le paquet servi : aucune des 60 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
