@@ -39,7 +39,7 @@ Le programme n'est pas ecrit par niveau mais par **cycle**. Le CP est la premier
 2** (CP, CE1, CE2). Le CM1 est la premiere annee du **cycle 3** (CM1, CM2, sixieme). La matrice dit
 "CP" et "CM1" et c'est sa convention ; le referentiel derriere est un texte de cycle.
 
-### 2.1 Cycle 2 - sept enseignements
+### 2.1 Cycle 2 - huit enseignements
 
 | # | Enseignement | Dans la matrice ? |
 |---|---|---|
@@ -47,11 +47,12 @@ Le programme n'est pas ecrit par niveau mais par **cycle**. Le CP est la premier
 | 2 | Mathematiques | oui, 11 lignes |
 | 3 | **Langues vivantes (etrangeres ou regionales)** | **non** |
 | 4 | **Questionner le monde** | **non** |
-| 5 | **Enseignements artistiques** : arts plastiques **et** education musicale (deux enseignements distincts) | **non** |
-| 6 | **Education physique et sportive** | **non** |
-| 7 | **Enseignement moral et civique** | **non** |
+| 5 | **Arts plastiques** | **non** |
+| 6 | **Education musicale** | **non** |
+| 7 | **Education physique et sportive** | **non** |
+| 8 | **Enseignement moral et civique** | **non** |
 
-### 2.2 Cycle 3 - neuf enseignements
+### 2.2 Cycle 3 - dix enseignements
 
 | # | Enseignement | Dans la matrice ? |
 |---|---|---|
@@ -66,8 +67,62 @@ Le programme n'est pas ecrit par niveau mais par **cycle**. Le CP est la premier
 | 9 | **Education physique et sportive** | **non** |
 | 10 | **Enseignement moral et civique** | **non** |
 
-Neuf enseignements annonces, dix lignes de tableau : c'est que l'histoire et la geographie comptent
-pour **un seul** enseignement, meme si l'usage les nomme separement. Je garde la forme du programme.
+**Histoire et geographie comptent pour un seul enseignement** - un seul chapitre de programme, un
+seul horaire - meme si l'usage les nomme separement. Le compte de dix le prend deja en compte.
+
+### 2.2 bis Amendement du 2026-09-02 - mes deux titres etaient faux, et le second est de moi seule
+
+**Ecart trouve par `camille-po`, et il est reel.** Cette section titrait *"Cycle 3 - neuf
+enseignements"* et en listait **dix**. Ma phrase de reconciliation - *"dix lignes de tableau : c'est
+que l'histoire et la geographie comptent pour un seul enseignement"* - **n'expliquait rien** : la
+fusion etait deja faite dans le tableau, au-dessus de la phrase. Une phrase qui a la forme d'une
+reconciliation sans en etre une est pire qu'un ecart nu, parce qu'elle arrete la verification de
+celui qui la lit. C'est ce qui s'est passe : l'orchestrateur a repris mon *"neuf"* sans compter ma
+liste.
+
+**Et en verifiant le sien, j'ai trouve le mien.** La section 2.1 portait exactement le meme defaut,
+que personne n'avait vu : elle titrait *"sept enseignements"* et sa cinquieme ligne declarait
+elle-meme *"arts plastiques **et** education musicale (deux enseignements distincts)"*. **Sept
+lignes de tableau, huit enseignements.** Le defaut est identique dans les deux sections - **j'ai
+compte des lignes de mon tableau au lieu de compter des enseignements** - et il n'a ete visible au
+cycle 3 que parce que j'y avais fusionne en le disant. Au cycle 2, je l'ai fusionne en silence, et
+le silence l'a cache.
+
+**Ce que je tranche : dix au cycle 3, huit au cycle 2.** Les deux titres sont corriges ci-dessus,
+les tableaux sont deplies, et cette note reste pour qu'on lise ce qui s'y trouvait.
+
+**Le critere de comptage, que je dois enoncer parce que le nombre en depend.** Je compte un
+enseignement **par chapitre de programme portant ses propres attendus de fin de cycle**. C'est le
+seul critere qui produise des competences, donc des lignes de matrice - et la matrice compte des
+competences, pas des heures.
+
+L'autre critere possible donne un autre nombre, et je le nomme pour qu'il ne soit pas decouvert
+plus tard comme une contradiction : **l'arrete des horaires groupe autrement**. Il reunit les arts
+plastiques et l'education musicale sous *"enseignements artistiques"*, il adosse l'EMC a
+*questionner le monde* au cycle 2 et a l'histoire-geographie au cycle 3, et **il ne donne aucun
+volume propre a l'histoire des arts**. Un compte fait par les horaires rend donc **six** au cycle 2
+et **sept** au cycle 3. Aucun des deux comptes n'est faux ; ils ne comptent pas la meme chose. **La
+matrice doit ecrire lequel elle emploie**, faute de quoi le denominateur du produit sera un nombre
+dont personne ne saura de quoi il est le compte.
+
+**Histoire des arts reste dans mon compte, et voici ce qui me le fait dire** - c'est le candidat
+que `camille-po` designe, et je ne l'ecarte pas par confort : au cycle 3, l'histoire des arts est un
+**chapitre de programme distinct, avec ses propres attendus de fin de cycle**, separe des arts
+plastiques et de l'education musicale. Il produira donc des lignes de competence, ce qui est le seul
+critere qui compte ici. **Ce qu'il n'a pas, c'est un horaire propre** : il se prend sur les heures
+d'arts, d'histoire-geographie et de francais. C'est cette absence d'horaire qui le fait paraitre
+douteux, et c'est precisement pourquoi le critere devait etre enonce avant de trancher.
+
+**Ce que cet ecart n'a pas contamine, verifie et non suppose** : la section 3 enumere deja *"arts
+plastiques, education musicale, histoire des arts"* separement dans son estimation d'ordre de
+grandeur. **L'estimation de cent lignes et d'un taux vers un tiers n'est pas affectee.** Le defaut
+etait confine aux deux titres et a la fausse phrase de reconciliation.
+
+**Pour mon dossier de methode** : ce sont mes cinquieme et sixieme clauses fausses en extension en
+trois jours. Les quatre premieres, je les avais trouvees par la mesure. **Celle-ci, c'est un tiers
+qui l'a trouvee en comptant l'objet que ma phrase decrivait** - et j'ai trouve la sixieme en portant
+sa methode sur la section qu'elle n'avait pas lue. La lecon vaut dans les deux sens : je ne me
+verifie pas assez, et on me croit trop.
 
 ### 2.3 Le piege est reel, et il y en a un second
 
@@ -93,7 +148,9 @@ le genre d'entree qu'on ajoute de bonne foi et qui gonfle un denominateur sans r
 
 ### 2.5 Le compte juste
 
-**Deux matieres couvertes sur sept au cycle 2, deux sur neuf au cycle 3.** Pas "deux sur huit".
+**Deux matieres couvertes sur huit au cycle 2, deux sur dix au cycle 3.** Pas "deux sur huit" matieres au total.
+
+*Chiffres corriges le 2026-09-02 ; ils disaient sept et neuf. Motif en 2.2 bis.*
 
 ---
 
@@ -690,7 +747,7 @@ decision d'architecture, pas la mienne.
 
 | Fait | A qui | Ce qu'il en fait |
 |---|---|---|
-| Sept enseignements au cycle 2, neuf au cycle 3. *Questionner le monde* est cycle 2, *histoire-geographie* et *sciences et technologie* cycle 3, sans equivalence entre eux (2.3) | `camille-po` | Aucune ligne "QLM / CM1", aucune ligne "HG / CP". *Histoire des arts* est un enseignement de plus, cycle 3 seul |
+| **Huit** enseignements au cycle 2, **dix** au cycle 3 (compte par chapitre de programme ; l'arrete des horaires en rend six et sept - 2.2 bis). *Questionner le monde* est cycle 2, *histoire-geographie* et *sciences et technologie* cycle 3, sans equivalence entre eux (2.3) | `camille-po` | Aucune ligne "QLM / CM1", aucune ligne "HG / CP". *Histoire des arts* est un enseignement de plus, cycle 3 seul |
 | Les 43 competences des trois matieres, copiables telles quelles (4, 5, 6) | `camille-po` | Referentiels et matrice. **Un mot change, la ligne n'est plus la mienne** |
 | Deux recouvrements a ne pas double-compter (4.1) | `camille-po` | Le temps et l'espace existent deja en mathematiques CP |
 | **Le taux passe de 82,9 % a environ 45 % sans aucune regression** (3) | `sofia-sm`, `camille-po`, l'utilisatrice | A dire avant le sprint, pas apres |
