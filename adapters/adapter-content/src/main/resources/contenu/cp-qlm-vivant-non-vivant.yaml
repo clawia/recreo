@@ -1,0 +1,67 @@
+schema: 1
+id: cp-qlm-vivant-non-vivant
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Distinguer les êtres vivants des objets et de la matière inerte sur des exemples du quotidien."
+#
+# S27-2 (backlog S27-2). Premier paquet de la matiere "Questionner le monde" (CP),
+# matiere neuve du produit. Referentiel copie conforme depuis l'arbitrage de nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md, section 4,
+# ligne 1) : "un mot change, la ligne n'est plus la mienne" - le libelle de competence ci-dessus est
+# recopie a l'identique.
+#
+# Ce paquet OUVRE cette ligne, il ne la FERME pas : nadia-prof l'ecrit d'avance (section 8.4 de son
+# arbitrage) - un premier paquet de matiere neuve passe la ligne a `en cours`, jamais a
+# `couvert-valide`, pour le meme motif qui a exige un second passage sur la saisie, l'illustre et
+# la voix a leurs premiers paquets respectifs.
+#
+# Ligne 1 seule (vivant / non vivant) ; ni la ligne 4 (hygiene, BIA-4) ni la ligne 16 (ici/ailleurs,
+# BIA-1, BIA-2) ne sont servies par ce paquet - aucune condition de biais ne s'applique ici.
+#
+# Aucun recouvrement avec une ligne existante : les lignes "temps" (mois/saisons) et "espace"
+# (vocabulaire de position) de questionner le monde, qui recoupent des lignes de mathematiques CP
+# deja en matrice (cp-semaine ; quadrillage non couvert), ne sont pas servies par ce paquet.
+#
+# Forme : classification binaire (etre vivant / objet), meme forme que cp-nature-mot (nom / verbe,
+# deux propositions par item). Huit items, quatre par categorie - compte reel :
+#   un être vivant : réponse 4 (50,0 %)   un objet : réponse 4 (50,0 %)
+#
+# Les quatre exemples d'objets sont des objets fabriques (chaise, ballon, voiture, stylo), jamais
+# de la matiere inerte naturelle (caillou, sable, eau) : le referentiel distingue les deux, et
+# melanger les categories aurait ouvert un item a deux lectures.
+items:
+  - enonce: "Un chat, qu'est-ce que c'est ?"
+    bonneReponse: "un être vivant"
+    distracteurs: ["un objet"]
+    indice: "Un chat naît, se nourrit, grandit et a des petits."
+  - enonce: "Un arbre, qu'est-ce que c'est ?"
+    bonneReponse: "un être vivant"
+    distracteurs: ["un objet"]
+    indice: "Un arbre naît, grandit et a des petits (ses graines)."
+  - enonce: "Un poisson, qu'est-ce que c'est ?"
+    bonneReponse: "un être vivant"
+    distracteurs: ["un objet"]
+    indice: "Un poisson naît, se nourrit et grandit."
+  - enonce: "Un oiseau, qu'est-ce que c'est ?"
+    bonneReponse: "un être vivant"
+    distracteurs: ["un objet"]
+    indice: "Un oiseau naît, se nourrit, grandit et a des petits."
+  - enonce: "Une chaise, qu'est-ce que c'est ?"
+    bonneReponse: "un objet"
+    distracteurs: ["un être vivant"]
+    indice: "Une chaise ne naît pas, ne grandit pas et ne se nourrit pas."
+  - enonce: "Un ballon, qu'est-ce que c'est ?"
+    bonneReponse: "un objet"
+    distracteurs: ["un être vivant"]
+    indice: "Un ballon ne naît pas, ne grandit pas et ne se nourrit pas."
+  - enonce: "Une voiture, qu'est-ce que c'est ?"
+    bonneReponse: "un objet"
+    distracteurs: ["un être vivant"]
+    indice: "Une voiture ne naît pas, ne grandit pas et ne se nourrit pas."
+  - enonce: "Un stylo, qu'est-ce que c'est ?"
+    bonneReponse: "un objet"
+    distracteurs: ["un être vivant"]
+    indice: "Un stylo ne naît pas, ne grandit pas et ne se nourrit pas."
