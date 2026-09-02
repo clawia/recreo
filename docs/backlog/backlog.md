@@ -9212,3 +9212,61 @@ paquets sont VALIDE. Ce que ce compte n'integrait pas, c'est une barre pedagogiq
 d'un paquet VALIDE, distincte de son Done. Detail complet, methode de comptage et rang recommande
 pour s27 : `squad/programme/MATRICE-couverture.md`, section "Synthese apres les verdicts du sprint
 26".
+
+## Retour de l'utilisatrice - le titre "Calcul CP" est seul a porter son niveau (DEC-0070)
+
+Retour de l'utilisatrice, recu en jouant l'application le 2026-09-02, verbatim : *"le premier
+exercice s'appelle calcul CP alors que les autres jeux n'ont pas le niveau dans le titre, il faut
+l'adapter"*. Verifie sur les 40 titres de `catalogue.yaml` : un seul contient `CP` ou `CM1`,
+celui du jeu `bandit-manchot-additions-cp`. Detail, deux titres de remplacement proposes sans
+arbitrage et recommandation d'une regle generale : `DEC-0070-le-titre-calcul-cp-est-seul-a-porter-
+son-niveau-deux-titres-proposes-regle-generale-recommandee.md`.
+
+### Story - Le jeu d'additions CP porte un titre du meme registre que les autres jeux du catalogue
+
+**Non affectee a un sprint. Ne peut pas etre developpee avant que `nadia-prof` ait choisi le
+titre de remplacement (`DEC-0070`, section 2) : c'est une condition prealable, pas une option.**
+
+- **Besoin** : en tant qu'eleve de CP qui parcourt la liste des jeux, je veux que le titre du jeu
+  d'additions se lise comme celui de n'importe quel autre jeu de la liste, afin de ne pas y trouver
+  une mention ("CP") qui ne figure sur aucun autre titre et qui ne m'apprend rien que l'ecran ne me
+  dise deja.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs" -
+  "Calcul mental - additions dans la limite de 10" (`squad/programme/mathematiques/competences-
+  cp.md`, ligne 11). Le contenu et la mecanique du jeu ne changent pas : seul son titre est
+  concerne.
+- **Criteres d'acceptation** :
+  - Etant donne le titre choisi par `nadia-prof` parmi les options de `DEC-0070` (ou tout autre
+    titre qu'elle arbitre), quand `catalogue.yaml` est modifie, alors le champ `titre` du jeu
+    `bandit-manchot-additions-cp` porte ce texte, integralement accentue et en francais correct
+    (`DEC-0002`, amendement du 2026-08-04).
+  - Etant donne le nouveau titre, quand on relit les 40 titres du catalogue, alors aucun ne
+    contient les jetons `CP` ou `CM1` (non-regression sur les 39 autres, qui ne les contenaient
+    deja pas).
+  - Etant donne le nouveau titre, quand on le compare aux six autres titres de mathematiques CP
+    du catalogue, alors il n'est identique a aucun d'eux.
+  - Etant donne les fichiers du depot qui citent le texte `"Calcul CP"` en dur (au moins
+    `bootstrap/src/test/java/com/recreo/bootstrap/catalogue/
+    TexteAccentueExposeParLePortEntrantTest.java`, verifie a l'ouverture de cette story), quand le
+    titre change dans `catalogue.yaml`, alors ces fichiers sont mis a jour dans le meme commit -
+    un titre change dans la donnee sans etre change dans son test associe laisserait une assertion
+    fausse en apparence verte.
+- **Ce que cette story ne fait pas** :
+  - Elle ne choisit pas le titre : `nadia-prof` le fait avant que cette story ne soit prete a
+    developper.
+  - Elle ne modifie ni la mecanique, ni le contenu, ni la consigne du jeu (`"Combien ça fait ?"`),
+    ni son identifiant (`bandit-manchot-additions-cp`) : seul le champ `titre` bouge.
+  - Elle n'ecrit pas le garde-fou de la regle generale recommandee en `DEC-0070` section 3
+    (aucun titre de jeu ne porte son niveau) : cette regle est routee separement a `theo-archi`.
+- **Lien decision** : `DEC-0070-le-titre-calcul-cp-est-seul-a-porter-son-niveau-deux-titres-
+  proposes-regle-generale-recommandee.md`.
+- **Agent pressenti** : `nadia-prof` pour le choix du titre, puis `sofia-sm` pour l'affectation au
+  planning, `marc-dev`/`lea-dev`/`sofia-sm` pour le developpement.
+
+### Ce que ce retour ouvre au-dela de cette story, route et non tranche ici
+
+`DEC-0070` recommande une regle generale executable - aucun titre de jeu ne porte son niveau
+scolaire - au motif que rien ne l'empeche aujourd'hui et que ce defaut a survecu 26 sprints sans
+etre vu. La forme technique du garde-fou (test de contenu sur le module `adapter-content`, script
+au meme titre que `verifier-chemins.sh`, ou autre) est routee a `sofia-sm` puis `theo-archi` ; elle
+n'est pas une story de ce depot tant que sa forme n'est pas choisie.
