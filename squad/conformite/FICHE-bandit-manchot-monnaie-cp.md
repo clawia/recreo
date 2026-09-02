@@ -288,3 +288,28 @@ information pour la suite**, pas comme une demande.
 **Ce que cela laisse** : sur un paquet de cette forme - reponses uniques, distracteurs hors du pool
 des reponses - **la seule borne calculable qui morde vraiment est le plafond**, et il est passe de 7
 a 5 sur 12 sans que je l'aie demande. **Le reste est mon jugement, et il est favorable.**
+
+
+---
+
+## Note du 2026-09-02 (`nadia-prof`) - le Done de ce paquet est suspendu a un rejeu
+
+**Mon verdict VALIDE du 2026-09-01 n'est pas efface et il disait vrai a sa date** : il portait sur
+**les dessins que j'ai vus**. `ines-design` propose de remplir la piece et le billet pour qu'ils se
+lisent comme de la monnaie, defaut releve par l'utilisatrice. **Changer les dessins change ce sur
+quoi j'ai prononce : ce paquet cesse d'etre Done le jour ou ses illustrations bougent, et il le
+redevient quand je l'ai rejoue.**
+
+**Ma clause sur la couleur ne bloque pas ce correctif.** `FIG-3` est une clause de discrimination -
+*"la couleur ne distingue jamais deux formes entre elles"* - et son test operatoire est *"une image
+lue en niveaux de gris donne la meme reponse"*. Un remplissage uniforme par type d'objet ne decide
+aucune des douze reponses, qui sont toutes des sommes lues sur les chiffres graves.
+
+**Conditions `COU-1` a `COU-4`, perimetre exact du rejeu (12 items, 12 illustrations) et prix
+(0,5 contre ma borne) :**
+`squad/conformite/ARBITRAGE-s27-titre-du-jeu-d-additions-et-portee-de-ma-clause-sur-la-couleur.md`,
+section 2.
+
+**La condition qui est de moi seule et qu'aucun automate ne verra** : `COU-3` - si le chiffre grave
+se lit mal sur la surface remplie, **l'item devient irrepondable**, parce que `MON-1` pose que la
+valeur ne se lit que sur l'image. Je refuse a l'oeil, item par item.
