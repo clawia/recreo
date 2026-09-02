@@ -1,10 +1,20 @@
 # Matrice de couverture - recreo
 
 Cette matrice est l'outil de pilotage le plus important de `camille-po`. Elle liste, une ligne
-par competence, l'integralite des quatre referentiels actuellement disponibles
+par competence, l'integralite des huit referentiels actuellement disponibles
 (`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`,
-`squad/programme/francais/competences-cp.md`, `competences-cm1.md`), et l'etat reel du produit
-face a chacune d'entre elles sur la branche `round-two`.
+`squad/programme/francais/competences-cp.md`, `competences-cm1.md`,
+`squad/programme/questionner-le-monde/competences-cp.md`,
+`squad/programme/histoire-geographie/competences-cm1.md`,
+`squad/programme/langues-vivantes/competences-cp.md`, `competences-cm1.md`), et l'etat reel du
+produit face a chacune d'entre elles sur la branche `round-two`.
+
+**Note du 2026-09-02** : jusqu'a cette date, cette matrice ne portait que les deux premiers
+referentiels (mathematiques, francais), sur les sept enseignements du cycle 2 et sur un cycle 3
+dont le compte exact reste discute (`DEC-0072` releve un ecart interne au comptage de
+`nadia-prof` - neuf annonces, dix enseignements distincts nommes - non tranche a ce jour). Voir la
+synthese en fin de fichier, section "Integration des matieres absentes du 2026-09-02". Un taux de
+couverture cite avant cette date decrit ce perimetre reduit, pas le programme entier.
 
 ## Comment la lire
 
@@ -1224,6 +1234,119 @@ s17"). Aucun code de production n'existait pour cette ligne a la date de cet ame
 aucune entree de catalogue, aucun fichier de contenu, aucun champ de texte-support dans le code) ;
 la sortie de perimetre ne defait donc rien. Les cinq conditions `COMP-1` a `COMP-7`, le tableau
 chiffre de `nadia-prof` et `ADR-0050` restent la matiere de travail du jour ou cette ligne rouvre.
+
+## Questionner le monde - CP (cycle 2)
+
+Source : `squad/programme/questionner-le-monde/competences-cp.md`. Referentiel ecrit par
+`nadia-prof` le 2026-09-02 (`squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-
+programme.md`, section 4), sur demande de l'utilisatrice du meme jour, verbatim : *"il n'y a pas
+de jeux d'anglais (vocabulaire), histoire / geographie, questionner le monde ajoute les au
+prochain sprint"*. Les 16 lignes sont copiees telles quelles, aucun mot change. Aucune ligne
+n'a encore de jeu : toutes demarrent a `non couvert` ou `non couvrable en l'etat`, comme prescrit
+par cette matrice pour toute competence sans increment (voir "Comment la lire" en tete de fichier).
+
+*Questionner le monde* est une matiere de cycle 2 uniquement : elle se scinde en
+histoire-geographie et en sciences et technologie au passage au cycle 3. Il n'y aura jamais de
+ligne "questionner le monde / CM1".
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| questionner le monde | CP | Le vivant, la matiere et les objets | Distinguer les êtres vivants des objets et de la matière inerte sur des exemples du quotidien. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Identifier ce qui caractérise un être vivant : il naît, se nourrit, grandit, a des petits, meurt. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Nommer les principales parties du corps humain et les cinq sens. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Connaître quelques règles d'hygiène de vie (sommeil, alimentation, hygiène du corps) et leur effet sur la santé. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les états de l'eau (solide, liquide) et les changements d'état observables. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Identifier de quelle matière un objet est fait et trier des matériaux selon une propriété simple. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Identifier la fonction d'un objet technique du quotidien et nommer ses parties. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les objets numériques du quotidien et quelques règles simples de leur usage. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Mener une démarche d'investigation simple : observer, questionner, expérimenter, dire ce qu'on a trouvé. | - | - | **non couvrable en l'etat** (2026-09-02, `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.1) - jugement humain sur une production libre (`ADR-0008`), meme famille que *rediger* (`ADR-0008`) et *copier* (`DEC-0066`), nature irreversible. `nadia-prof` : "Geste pratique et compte rendu libre. Observer, experimenter et dire ce qu'on a trouve ne se produisent ni par un choix ni par une saisie." |
+| questionner le monde | CP | Se situer dans l'espace | Utiliser le vocabulaire de position pour décrire l'espace proche (devant/derrière, gauche/droite, au-dessus/au-dessous, près/loin). | - | - | non couvert |
+| questionner le monde | CP | Se situer dans l'espace | Situer un lieu ou un objet sur un plan simple de la classe, de l'école ou du quartier. | - | - | non couvert - palier 2 requis (designer un lieu sur un plan), refuse au palier 1 par `V1` (2026-08-24) - **non** `non couvrable en l'etat` : `nadia-prof` le distingue explicitement, "le palier 2 est constructible, il n'existe pas". |
+| questionner le monde | CP | Se situer dans l'espace | Situer la France et quelques espaces étudiés sur une carte ou sur un globe. | - | - | non couvert - meme motif que la ligne precedente - palier 2 requis, non construit a ce jour. |
+| questionner le monde | CP | Se situer dans le temps | Nommer et ordonner les mois de l'année et les saisons. | - | - | non couvert |
+| questionner le monde | CP | Se situer dans le temps | Situer des événements les uns par rapport aux autres sur une frise chronologique simple (avant, après, en même temps). | - | - | non couvert - jouable sur la seule moitie textuelle (anteriorite/posteriorite) ; le placement sur une frise reste du palier 2. Mention exigee d'avance si la ligne bouge (`nadia-prof`, section 7.1) : "moitie anteriorite/posteriorite entre evenements seule ; le placement sur une frise reste non couvert". |
+| questionner le monde | CP | Se situer dans le temps | Comparer des modes de vie d'autrefois et d'aujourd'hui à partir d'objets et d'images du quotidien. | - | - | non couvert |
+| questionner le monde | CP | Explorer les organisations du monde | Comparer des modes de vie ici et ailleurs (habitat, alimentation, école, déplacements). | - | - | non couvert - ligne signalee comme la plus a risque de biais du lot ; `BIA-1` et `BIA-2` (section 7.4 de l'arbitrage) sont opposables a tout paquet qui la sert. |
+
+**Bilan** : 16 lignes, 15 `non couvert`, 1 `non couvrable en l'etat`. 15 lignes entrent au
+denominateur atteignable.
+
+## Histoire-Geographie - CM1 (cycle 3)
+
+Source : `squad/programme/histoire-geographie/competences-cm1.md`. Meme origine, meme date, meme
+regle de copie conforme que la section precedente. *Histoire-geographie* est une matiere de cycle
+3, issue de la scission de *questionner le monde* : il n'y aura jamais de ligne
+"histoire-geographie / CP".
+
+**Conditions bloquantes opposables a tout paquet de contenu sur ces lignes** (`nadia-prof`,
+section 7.5 de son arbitrage) : `HIS-1` (au plus un tiers d'items de restitution), `HIS-2` (aucun
+item a deux reponses defendables), `HIS-3` (chaque fait porte sa source dans le commentaire du
+paquet), `BIA-5` sur les lignes 5 a 8 (aucun jugement de valeur sur un personnage).
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer et ordonner les grandes périodes historiques sur une frise (Préhistoire, Antiquité, Moyen Âge, Temps modernes, époque contemporaine). | - | - | non couvert |
+| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer un fait dans un siècle ou un millénaire et ordonner des faits les uns par rapport aux autres. | - | - | non couvert |
+| histoire-geographie | CM1 | Et avant la France ? | Identifier les traces d'une occupation ancienne du territoire et ce que les Gaulois, les Grecs et les Romains y ont laissé. | - | - | non couvert |
+| histoire-geographie | CM1 | Et avant la France ? | Identifier les grands mouvements et déplacements de populations du IVe au Xe siècle et leurs effets sur le territoire. | - | - | non couvert |
+| histoire-geographie | CM1 | Le temps des rois | Nommer et situer dans le temps quelques rois qui ont marqué la construction du royaume (Louis IX, François Ier, Henri IV, Louis XIV). | - | - | non couvert |
+| histoire-geographie | CM1 | Le temps des rois | Associer chacun de ces rois à un fait ou à une réalisation qui le caractérise (la croisade, la Renaissance, l'édit de Nantes, Versailles). | - | - | non couvert |
+| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Situer les événements majeurs de la Révolution française (1789, l'abolition des privilèges, la Déclaration des droits de l'homme et du citoyen, la fin de la monarchie). | - | - | non couvert |
+| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Identifier le passage de la Révolution à l'Empire et ce que Napoléon Bonaparte y change. | - | - | non couvert |
+| histoire-geographie | CM1 | Se reperer dans l'espace : construire des reperes geographiques | Se repérer sur une carte de France et sur un planisphère (océans, continents, quelques repères physiques, quelques grandes villes). | - | - | non couvert - palier 2 requis (se reperer sur une carte) ; un quiz de noms ne sert pas la competence, `nadia-prof` le nomme explicitement. |
+| histoire-geographie | CM1 | Se reperer dans l'espace : construire des reperes geographiques | Situer son lieu de vie à différentes échelles (commune, département, région, France, Europe, monde). | - | - | non couvert - meme motif : palier 2 requis, non construit a ce jour ; le lieu de vie de l'enfant n'est pas connu du produit (`DEC-0028`, aucune persistance). |
+| histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Identifier les caractéristiques d'un lieu de vie et le distinguer d'un autre (espace urbain, espace périurbain, espace rural). | - | - | non couvert |
+| histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Décrire comment on se loge, on travaille, on se cultive et on se déplace dans un espace urbain et dans un espace touristique. | - | - | non couvert |
+| histoire-geographie | CM1 | Consommer en France | Identifier d'où viennent l'eau, l'énergie et les aliments consommés, et les étapes de leur acheminement. | - | - | non couvert |
+| histoire-geographie | CM1 | Comprendre un document | Comprendre un document (texte, carte, image) : identifier sa nature, sa date et son auteur, et en extraire une information. | - | - | non couvert - jouable sur le seul document textuel ; document image ou carte hors de portee. Mention exigee d'avance : "document textuel seul ; carte et image restent non couvertes". |
+
+**Bilan** : 14 lignes, 14 `non couvert`, 0 `non couvrable en l'etat`. Les 14 lignes entrent au
+denominateur atteignable.
+
+## Langues vivantes (anglais) - CP (cycle 2)
+
+Source : `squad/programme/langues-vivantes/competences-cp.md`. **Nommage de colonne `Matiere`
+non tranche** : la matiere du programme est *langues vivantes*, l'anglais est la langue que le
+produit choisit d'illustrer ; acter ce choix en silence serait une decision de produit non prise.
+Le libelle `langues vivantes (anglais)` est retenu en attendant que l'utilisatrice confirme ou
+change ce nom (`nadia-prof`, section 6 de son arbitrage ; routage complet en `DEC-0072`).
+
+**Anglais CP refuse d'avance par `nadia-prof`, deux motifs autonomes, chacun suffisant** :
+interference avec la ligne "Associer les graphemes aux phonemes" (francais CP, `en cours`), et
+absence d'introduction orale prealable sur un programme de langue vivante oral d'abord. Consequence
+: 5 des 6 lignes sont `non couvrable en l'etat`.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| langues vivantes (anglais) | CP | Ecouter et comprendre | Comprendre à l'oral les consignes de classe et des expressions très courantes. | - | - | **non couvrable en l'etat** (2026-09-02) - contrainte fondatrice : aucun son fourni par le produit (reconduit sans changement). `nadia-prof` : "Pas de son. Contrainte fondatrice, nature reversible." |
+| langues vivantes (anglais) | CP | Parler en continu | Reproduire un modèle oral : un mot, une formule de politesse, une comptine. | - | - | **non couvrable en l'etat** (2026-09-02) - deux motifs independants, chacun suffisant : aucun son fourni, et jugement humain sur une production libre (`ADR-0008`). |
+| langues vivantes (anglais) | CP | Prendre part a une conversation | Se présenter oralement et répondre à une question simple sur soi. | - | - | **non couvrable en l'etat** (2026-09-02) - memes deux motifs que la ligne precedente. |
+| langues vivantes (anglais) | CP | Lire et comprendre | Reconnaître à l'écrit des mots familiers déjà rencontrés à l'oral, dans les champs lexicaux du cycle 2 (nombres, couleurs, animaux, corps, école, famille). | - | - | **non couvrable en l'etat** (2026-09-02) - refuse d'avance pour le CP specifiquement, deux motifs autonomes : interference avec la ligne "Associer les graphemes aux phonemes" (francais CP, en cours), et absence d'introduction orale prealable sur un programme oral d'abord. Nature reversible : une decision future sur le son la rouvrirait. `nadia-prof` : "le produit fait passer un examen qu'il n'a pas enseigne". |
+| langues vivantes (anglais) | CP | Ecrire | Copier des mots isolés et des expressions courtes. | - | - | **non couvrable en l'etat** (2026-09-02, au titre de `DEC-0066`) - contrainte fondatrice, nature reversible : competence graphomotrice, aucun geste de trace pour ce produit (`DEC-0046`). |
+| langues vivantes (anglais) | CP | Decouverte culturelle | Découvrir quelques aspects culturels des pays de la langue étudiée (fêtes, lieux, vie quotidienne). | - | - | non couvert - jouable en francais seulement (decouverte culturelle, aucune competence linguistique). Mention exigee d'avance : "decouverte culturelle seule, en francais ; aucune competence linguistique n'est servie". Conditions `BIA-1`, `BIA-2` opposables. |
+
+**Bilan** : 6 lignes, 1 `non couvert`, 5 `non couvrable en l'etat`. 1 ligne entre au denominateur
+atteignable.
+
+## Langues vivantes (anglais) - CM1 (cycle 3)
+
+Source : `squad/programme/langues-vivantes/competences-cm1.md`. Meme reserve de nommage que la
+section precedente. **Reporte a s28** (voir `DEC-0072`) : aucun paquet n'est affecte a s27 sur ces
+lignes, l'arithmetique de capacite de `nadia-prof` ne laissant tenir que deux matieres neuves sur
+les trois demandees.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| langues vivantes (anglais) | CM1 | Ecouter et comprendre | Écouter et comprendre un message oral simple ou un court récit. | - | - | **non couvrable en l'etat** (2026-09-02) - contrainte fondatrice, aucun son fourni, nature reversible. |
+| langues vivantes (anglais) | CM1 | Prendre part a une conversation | Prendre part à une conversation simple : saluer, se présenter, demander et donner une information. | - | - | **non couvrable en l'etat** (2026-09-02) - deux motifs independants : aucun son fourni, et jugement humain sur une production libre (`ADR-0008`). |
+| langues vivantes (anglais) | CM1 | Parler en continu | Parler en continu : décrire, raconter ou présenter en quelques phrases. | - | - | **non couvrable en l'etat** (2026-09-02) - memes deux motifs que la ligne precedente. |
+| langues vivantes (anglais) | CM1 | Lire et comprendre | Lire et comprendre des mots et des expressions familiers dans les champs lexicaux du cycle 3. | - | - | non couvert |
+| langues vivantes (anglais) | CM1 | Lire et comprendre | Lire et comprendre un texte court et simple (consigne, message, courte description). | - | - | non couvert - jouable, sous condition que le lexique de la ligne 4 soit deja servi en choix. |
+| langues vivantes (anglais) | CM1 | Ecrire | Écrire des mots et des expressions mémorisés (légender une image, renseigner une fiche). | - | - | non couvert - jouable par saisie, sous conditions `ANG-S1` et `ANG-S2` (lexique ferme deja servi en choix, indice sans jamais montrer le mot). |
+| langues vivantes (anglais) | CM1 | Decouverte culturelle | Découvrir quelques aspects culturels des pays de la langue étudiée. | - | - | non couvert - jouable, sous conditions de biais `BIA-1` et `BIA-2`. |
+
+**Bilan** : 7 lignes, 4 `non couvert`, 3 `non couvrable en l'etat`. 4 lignes entrent au
+denominateur atteignable.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -3472,3 +3595,73 @@ prealable, section 4) doivent attendre derriere ce sixieme paquet, et si la dett
 `VOI-3`, `VOI-5`, `VOI-8` et `VOI-13` (aucune garde executable, section 18.5 de l'arbitrage) appelle
 un chantier propre plutot que de rester une reserve permanente. Ce sont des arbitrages de
 priorisation et d'acceptation de risque, pas un calcul de couverture.
+
+## Integration des matieres absentes du 2026-09-02 - le denominateur devient honnete, avant s27
+
+**Sur arbitrage de l'utilisatrice** (2026-09-02, `DEC-0072`) : les 43 lignes de trois matieres
+absentes (questionner le monde CP, histoire-geographie CM1, langues vivantes/anglais CP et CM1),
+ecrites par `nadia-prof` dans `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-
+programme.md`, entrent dans cette matrice **maintenant**, avant l'ouverture de s27, pour que la
+baisse du taux affiche se lise comme une correction de mesure et non comme la consequence d'un
+sprint qui n'a encore rien livre. C'est la forme deja appliquee au sprint 19 de ce depot (section
+"Synthese a l'ouverture de s19" ci-dessus), reprise ici a une echelle vingt fois plus grande.
+
+### Le fait qui precede le chiffre
+
+Jusqu'a cette date, cette matrice ne portait que deux matieres (mathematiques, francais) sur les
+sept enseignements du cycle 2 et sur un cycle 3 dont le compte exact reste discute (`DEC-0072`).
+Le 82,9 % cite a la cloture de s26 (`DEC-0069`) etait vrai sur ce perimetre reduit et ne disait
+rien des cinq autres enseignements de cycle 2 ni des sept a huit autres de cycle 3, faute d'y
+avoir jamais eu une seule ligne de referentiel.
+
+### Methode de recompte, independante de tout chiffre annonce ailleurs
+
+Comptage ligne a ligne des huit tableaux de matiere desormais presents dans ce fichier, colonne
+`Statut`, sans reprendre aucun total d'un autre document. Chaque ligne des 43 nouvelles est
+classee `non couvert` ou `non couvrable en l'etat` selon le critere de cette matrice (section
+"Comment la lire") applique au jugement de faisabilite ecrit par `nadia-prof` pour cette ligne -
+jamais selon un statut `en cours` ou `couvert-valide`, puisqu'aucun jeu n'existe encore pour
+aucune des 43.
+
+| Matiere / niveau | Total | `couvert-valide` | `non couvert` | `en cours` | `non couvrable en l'etat` |
+|---|---|---|---|---|---|
+| mathematiques CP | 11 | 9 | 2 | 0 | 0 |
+| mathematiques CM1 | 12 | 8 | 2 | 0 | 2 |
+| francais CP | 12 | 8 | 1 | 1 | 2 |
+| francais CM1 | 12 | 9 | 1 | 0 | 2 |
+| **questionner le monde CP (neuf)** | **16** | **0** | **15** | **0** | **1** |
+| **histoire-geographie CM1 (neuf)** | **14** | **0** | **14** | **0** | **0** |
+| **langues vivantes (anglais) CP (neuf)** | **6** | **0** | **1** | **0** | **5** |
+| **langues vivantes (anglais) CM1 (neuf)** | **7** | **0** | **4** | **0** | **3** |
+| **Total** | **90** | **34** | **40** | **1** | **15** |
+
+**Avant** (quatre tableaux) : total 47, non couvrable 6, denominateur atteignable 41, `couvert-
+valide` 34. **34 / 41 = 82,9 %.**
+
+**Apres** (huit tableaux) : total 90, non couvrable 15, denominateur atteignable **90 - 15 = 75**,
+`couvert-valide` **34, inchange**. **34 / 75 = 45,3 %.**
+
+> **Denominateur : 41 -> 75. Numerateur : 34, inchange. Taux : 82,9 % -> 45,3 %.**
+>
+> Ce recompte est independant de celui de `nadia-prof` (section 3 de son arbitrage, qui annoncait
+> le meme mouvement en ordre de grandeur avant l'ecriture des lignes dans cette matrice) : les
+> deux methodes aboutissent au meme denominateur (75) et au meme taux (45,3 %), par deux chemins
+> distincts - la sienne en amont sur son propre decompte des 43 lignes, celle-ci en aval sur les
+> lignes telles qu'elles sont desormais ecrites dans ce fichier.
+
+**Aucune regression du produit n'est en cause. Aucun jeu ne se casse, aucune ligne verte ne
+retombe : les 34 lignes `couvert-valide` d'hier le restent toutes.** Le chiffre baisse parce qu'il
+devient vrai, exactement comme au sprint 19, a une echelle differente.
+
+### Ce que ce recompte ne fait pas
+
+- Il ne prononce aucun Done pedagogique sur aucune des 43 lignes neuves : aucun increment
+  n'existe.
+- Il ne fixe aucune priorite pour s27 : le perimetre du sprint (voyelles simples, questionner le
+  monde, histoire-geographie ; anglais CM1 reporte a s28) est un arbitrage separe de l'utilisatrice,
+  trace dans `DEC-0072`.
+- Il ne resout pas l'ecart releve dans `DEC-0072` sur le compte total des enseignements de cycle 3
+  (neuf annonces par `nadia-prof`, dix enseignements distincts nommes dans son propre tableau) :
+  cet ecart ne change rien au denominateur de ce recompte, puisqu'aucune ligne d'arts, d'EPS,
+  d'EMC, de sciences et technologie ou d'histoire des arts n'entre dans cette matrice a cette
+  date.

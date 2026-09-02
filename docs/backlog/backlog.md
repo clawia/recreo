@@ -9299,3 +9299,122 @@ l'utilisatrice pour la priorite entre le rang 1 de `DEC-0069` (voyelles simples)
 ces trois matieres, et pour le sens de traduction de l'anglais une fois l'avis de `nadia-prof`
 rendu.
 - **Lien decision** : `DEC-0071`.
+
+## Sprint 27 - Voyelles simples, questionner le monde, histoire-geographie (`DEC-0072`)
+
+Perimetre arbitre par l'utilisatrice le 2026-09-02, verbatim : *"Voyelles simples + Questionner le
+monde + Histoire-geographie. L'anglais CM1 est reporte a s28."* Trois stories, verifiees contre le
+tarif de `nadia-prof` (1 + 1,5 + 1,5 = 4,0 sur une borne de 5) et contre son avertissement explicite
+: *"un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"*. **Plafond honnete du
+sprint : une seule fermeture de ligne, celle des graphemes.** Aucune de ces trois stories n'annonce
+un gain de couverture au-dela de ce que `nadia-prof` a ecrit d'avance.
+
+### S27-1 - Le paquet de voyelles simples ferme la ligne des graphemes
+
+- **Besoin** : en tant qu'eleve de CP qui apprend a lire, je veux m'entrainer sur les voyelles
+  simples (`a, e, i, o, u`) en jouant au bandit manchot, sur le meme champ d'item que les paquets
+  de consonnes et de digraphes deja joues, afin de completer ce que je sais deja des lettres qui se
+  prononcent.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Etude de la langue" (grapho-
+  phonologie) - "Associer les graphemes aux phonemes" (`squad/programme/francais/competences-
+  cp.md`). Ligne `en cours` depuis s26 : ses clauses 2, 3 et 4 (digraphes `ou`/`oi`/`ch`, nasales
+  inchangees, increment joue) sont deja remplies (`nadia-prof`, barre du 2026-08-10 ;
+  `squad/conformite/FICHE-bandit-manchot-le-bon-son-cp.md`) ; seule la clause 1 (voyelles simples
+  et consonnes simples en bonne reponse) manque.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet, quand une manche est generee, alors l'item porte une voyelle simple
+    (`a, e, i, o, u`) en bonne reponse sur chaque item, ou un sous-ensemble qui couvre au moins une
+    voyelle simple en bonne reponse par item (motif ecrit d'avance,
+    `squad/programme/MATRICE-couverture.md`, section "Rang recommande pour s27").
+  - Etant donne le paquet, quand on le compare a `cp-le-bon-son.yaml`, alors ce fichier n'est pas
+    modifie : le cout de quinze items sans gain a ete chiffre par `theo-archi` a s26 et le motif
+    reste acquis.
+  - Etant donne le paquet, quand `nadia-prof` verifie la clause 1 de sa barre du 2026-08-10, alors
+    les clauses 2, 3 et 4 restent inchangees (elle les a deja verifiees VALIDE sur les paquets
+    livres a s26) et seule la clause 1 est reevaluee sur ce nouveau contenu.
+- **Ce que cette story fait, dit explicitement** : si elle recoit le Done pedagogique, elle ferme
+  la ligne "Associer les graphemes aux phonemes" (statut `couvert-valide`) - **seule fermeture
+  attendue de s27**, fait arithmetique ecrit d'avance par `nadia-prof` et non une priorisation.
+- **Lien decision** : `DEC-0069` (rang 1), `DEC-0072`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` sur le champ d'item existant (`ADR-0075`).
+
+### S27-2 - Premier paquet de questionner le monde (CP)
+
+- **Besoin** : en tant qu'eleve de CP, je veux repondre a des questions sur le monde qui
+  m'entoure (le vivant, mon corps, les objets, le temps qui passe) en jouant au bandit manchot,
+  afin de decouvrir une matiere que je n'ai encore jamais rencontree dans l'application.
+- **Competence programme visee** : questionner le monde, CP (cycle 2) -
+  `squad/programme/questionner-le-monde/competences-cp.md`. Premiere matiere neuve du produit sur
+  ce referentiel : cette story n'en couvre qu'une partie, le choix des lignes precises servies
+  dans ce premier paquet revenant a qui l'ecrit, sous les conditions ci-dessous.
+- **Criteres d'acceptation** :
+  - Etant donne les lignes retenues pour ce paquet, quand elles sont choisies, alors elles sont
+    prises parmi les treize lignes que `nadia-prof` designe comme jouables en choix textuel des
+    aujourd'hui (`ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.1) -
+    jamais parmi la ligne 9 (`non couvrable en l'etat`) ni parmi les lignes 11 et 12 (palier 2 non
+    construit).
+  - Etant donne un item sur "ici et ailleurs" (ligne 16) ou sur "regles d'hygiene" (ligne 4), si
+    l'une ou l'autre est servie, alors aucun item ne compare un ailleurs a un ici en position de
+    norme (`BIA-1`), aucun paquet ne represente un pays par un seul trait (`BIA-2`), et aucun item
+    n'interroge l'enfant sur sa propre vie (`BIA-4`).
+  - Etant donne un item sur "autrefois et aujourd'hui" (ligne 15), si elle est servie, alors aucun
+    item ne qualifie l'ancien de difficile, dur, pauvre ou pas pratique (`BIA-3`).
+  - Etant donne le Done pedagogique de ce paquet, quand il est rendu, alors le statut de matrice
+    des lignes touchees passe au plus a `en cours` : aucune de ces lignes ne passe a
+    `couvert-valide` par ce seul paquet - `nadia-prof` l'ecrit d'avance, section 8.4 de son
+    arbitrage, pour les memes motifs qui ont exige un second passage sur la saisie, l'illustre et
+    la voix.
+- **Ce que cette story ne fait pas** : elle ne pretend fermer aucune ligne de matrice ; elle ne
+  sert aucune ligne a palier 2 (11, 12) ni la ligne 9.
+- **Lien decision** : `DEC-0072`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev`, `nadia-prof` pour l'audit (premiere matiere ou elle n'est pas la source du calcul
+  mais de la connaissance factuelle, cout nomme en section 8.2 de son arbitrage).
+
+### S27-3 - Premier paquet d'histoire-geographie (CM1)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux repondre a des questions sur les grandes periodes
+  de l'histoire de France et sur les reperes de la geographie en jouant au bandit manchot, afin de
+  decouvrir une matiere que je n'ai encore jamais rencontree dans l'application.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3) -
+  `squad/programme/histoire-geographie/competences-cm1.md`. Comme pour `S27-2`, cette story ne
+  couvre qu'une partie du referentiel ; le choix des lignes precises revient a qui l'ecrit, sous
+  les conditions ci-dessous.
+- **Criteres d'acceptation** :
+  - Etant donne les lignes retenues, quand elles sont choisies, alors elles sont prises parmi les
+    douze lignes que `nadia-prof` designe comme jouables en choix textuel des aujourd'hui
+    (`ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.2) - jamais parmi
+    les lignes 9 et 10 (palier 2 non construit).
+  - Etant donne la totalite du paquet, quand on compte les items par type, alors au plus un tiers
+    demande une date, un nom ou un chiffre a restituer ; les deux autres tiers demandent d'ordonner
+    deux faits, d'associer un fait a un personnage, ou d'extraire une information d'un document
+    (`HIS-1`).
+  - Etant donne chaque item du paquet, alors aucun n'a deux reponses defendables (`HIS-2`).
+  - Etant donne le paquet livre, alors chaque fait qu'il porte est accompagne de sa source dans le
+    commentaire du paquet (`HIS-3`).
+  - Etant donne un item sur les rois ou sur la Revolution (lignes 5 a 8), si l'une ou l'autre est
+    servie, alors aucun item ne fait porter un jugement de valeur sur un personnage (`BIA-5`).
+  - Etant donne le Done pedagogique de ce paquet, quand il est rendu, alors le statut de matrice
+    des lignes touchees passe au plus a `en cours`, pour le meme motif que `S27-2`.
+- **Ce que cette story ne fait pas** : elle ne pretend fermer aucune ligne de matrice ; elle ne
+  sert pas les lignes 9 et 10 (palier 2).
+- **Lien decision** : `DEC-0072`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev`, `nadia-prof` pour l'audit factuel (cout le plus eleve des trois paquets du sprint,
+  section 8.2 de son arbitrage : elle n'est la source d'aucune date ni d'aucun nom sur cette
+  matiere).
+
+### Reserve, hors perimetre de s27 - anglais CM1 (`DEC-0072`)
+
+**Reportee a s28, sur arbitrage explicite de l'utilisatrice.** Forme d'exercice deja fixee (image
+ou mot francais en stimulus, choix de l'equivalent dans l'autre langue, aucun son) ; deux points
+non tranches avant toute composition de contenu (`squad/programme/langues-vivantes/competences-
+cm1.md`) : le sens de traduction exact (recommandation de `nadia-prof` - image vers anglais en
+priorite, mot francais vers anglais en second, jamais un paquet uniquement anglais vers francais)
+et le nommage de la colonne `Matiere` (`anglais` ou `langues vivantes (anglais)`), tous deux
+routes a l'utilisatrice via `nadia-prof`. Conditions deja posees pour le jour ou ce paquet
+s'ecrira : `REC-1` a `REC-6` (si illustre), `BIA-1`, `BIA-2`, `ANG-S1`, `ANG-S2` (si saisie).
+**Aucune story de developpement n'est ecrite ici** : les deux points non tranches doivent l'etre
+avant, meme regle que pour les candidats de niveau 2 de `DEC-0051`.
+- **Lien decision** : `DEC-0072`.
