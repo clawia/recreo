@@ -1,0 +1,18 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, ADR-0078).
+# Deux entrees, une seule fautive : le jeu fautif doit prouver que la regle DISCRIMINE, pas
+# seulement qu elle sait dire non. La premiere accole son niveau a son titre, comme "Calcul CP" le
+# faisait ; la seconde sert le meme niveau et ne le nomme pas.
+schema: 1
+jeux:
+  - id: bandit-manchot-fautif-cp
+    titre: "Additions CP"
+    consigne: "Combien ça fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-fautif-cp
+    nombreDeManches: 10
+  - id: bandit-manchot-correct-cp
+    titre: "Les petites additions"
+    consigne: "Combien ça fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-correct-cp
+    nombreDeManches: 10
