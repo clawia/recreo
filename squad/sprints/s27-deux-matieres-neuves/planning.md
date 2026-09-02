@@ -140,3 +140,75 @@ d'organisation (affectations, ordre de traitement) et n'entrent pas dans la tabl
   l'avis de `theo-archi` est rendu, chacun dans un worktree dedie (`git worktree add
   ../recreo-s27-<agent> -b s27-<agent> round-two`), verifie par `outils/verifier-lignee.sh` avant
   le premier commit.
+
+---
+
+## Addendum du 2026-09-02 (sofia-sm) - ecart d'affectation journalise, jugement rendu, deux points routes
+
+- **Auteure de l'addendum** : `sofia-sm`.
+- **Ce qu'il ne fait pas** : rien du texte ci-dessus n'est modifie ni retire.
+
+### L'ecart d'affectation, et son auteur
+
+**L'auteur de l'ecart est l'orchestrateur**, meme motif qu'a s26 avec une circonstance differente :
+la, il n'avait pas lu la table ; ici, elle n'etait pas encore ecrite quand `lea-dev` et `marc-dev`
+ont ete lances. La table "Stories retenues" ci-dessus affecte `S27-2` a `marc-dev`. Dans les faits,
+**`S27-2` tourne sous `lea-dev`**.
+
+| Story | Ecrit a l'ouverture | Ce qui tourne reellement |
+|---|---|---|
+| `S27-1` voyelles simples | `lea-dev` | `lea-dev` - concorde |
+| `S27-2` questionner le monde CP | `marc-dev` | **`lea-dev`** |
+| `S27-3` histoire-geographie CM1 | `marc-dev` | `marc-dev` - concorde |
+
+**Table d'affectation, mise en accord avec ce qui tourne reellement, a la date de cet addendum** :
+
+| Story | Titre | Competence programme visee | Decision liee | Affectee a |
+|---|---|---|---|---|
+| `S27-1` | Le paquet de voyelles simples ferme la ligne des graphemes | Francais CP - "Associer les graphemes aux phonemes" (clause 1 restante) | `DEC-0069` (rang 1), `DEC-0072` | `lea-dev` |
+| `S27-2` | Premier paquet de questionner le monde (CP) | Questionner le monde CP, matiere neuve | `DEC-0072` | **`lea-dev`**, et non `marc-dev` comme ecrit a l'ouverture |
+| `S27-3` | Premier paquet d'histoire-geographie (CM1) | Histoire-geographie CM1, matiere neuve | `DEC-0072` | `marc-dev` |
+| `S27-4` | Titre "Les petites additions" | Mathematiques CP - titre seul | `DEC-0070` | `sofia-sm` |
+
+### Jugement sur la reaffectation - c'est mon role de le rendre, pas de la subir
+
+**Motif transmis** : `lea-dev` a ecrit les deux paquets de graphemes de s26 et connait de premiere
+main les conditions de distribution de `nadia-prof` - les voyelles lui reviennent naturellement.
+`histoire-geographie` seule est un lot lourd (`HIS-3` oblige a verifier chaque fait contre une
+source, cout que `nadia-prof` facture explicitement - `DEC-0072`, section 5, citant sa propre
+section 8.2 : *"le cout de verification factuelle est [...] le plus eleve"* sur l'histoire des
+trois paquets du sprint). Deux paquets a `marc-dev`, dont celui-la, auraient ete desequilibres.
+
+**Je retiens cette repartition.** Elle est verifiable sur deux faits ecrits ailleurs dans ce depot,
+pas seulement sur l'intuition qui la motive : `S27-3` porte a elle seule le cout d'audit le plus
+eleve des trois paquets (`DEC-0072` section 5, chiffre non invente ici), et `lea-dev` porte deja le
+contexte de premiere main sur les conditions de `nadia-prof` pour un paquet de graphemes (source :
+son propre travail livre a s26, `s26-contenu`, `ab574e2`). Charger `marc-dev` de `S27-3` seul et
+`lea-dev` de `S27-1` + `S27-2` repartit le poids reel (audit + connaissance acquise), pas seulement
+le compte de paquets par tete. **Je ne redistribue pas.**
+
+### Deux points routes
+
+1. **`ines-design` et les douze SVG** : toujours rien dans le depot a la date de cet addendum, lot
+   bloque par (a) (`theo-archi`, garde-fou de couleur) - inchange depuis l'ouverture de ce planning.
+   **Je demande a l'orchestrateur de la relancer des que le lot (a) de `theo-archi` est fusionne sur
+   `round-two`** : je n'ai moi-meme aucun moyen d'invoquer un autre agent de la squad dans cette
+   session.
+2. **`DEC-0070`** reste au conditionnel dans son propre fichier (statut "Proposee", choix du titre
+   au conditionnel) alors que `nadia-prof` a tranche ("Les petites additions", arbitrage du
+   2026-09-02, quatre motifs dont la sous-specification de "Calcul CP" que personne n'avait vue
+   avant elle). Je n'ai pas amende cette `DEC` a la place de `camille-po` - c'est bien son fichier -
+   et l'orchestrateur confirme la relancer dessus. Sans consequence sur `S27-4`, dont les criteres
+   d'acceptation citent deja le titre choisi independamment du statut de la `DEC`.
+
+### Etat des lots en vol a la date de cet addendum
+
+| Agent | Lot | Etat |
+|---|---|---|
+| `theo-archi` | Garde-fou de couleur (a) + cliquet de poids (b) | En cours, worktree `s27-theo` |
+| `lea-dev` | `S27-1` (voyelles), puis `S27-2` (questionner le monde) | En cours |
+| `marc-dev` | `S27-3` (histoire-geographie) | En cours |
+| `ines-design` | Commit des douze SVG | Bloque par (a), pas encore lance |
+| `sofia-sm` | `S27-4` (titre) | Pas encore commencee |
+
+Rien d'autre n'est lance a cette date.
