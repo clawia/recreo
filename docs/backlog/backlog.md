@@ -9270,3 +9270,32 @@ scolaire - au motif que rien ne l'empeche aujourd'hui et que ce defaut a survecu
 etre vu. La forme technique du garde-fou (test de contenu sur le module `adapter-content`, script
 au meme titre que `verifier-chemins.sh`, ou autre) est routee a `sofia-sm` puis `theo-archi` ; elle
 n'est pas une story de ce depot tant que sa forme n'est pas choisie.
+
+## Retour de l'utilisatrice - trois matieres neuves nommees, aucune story prete a developper (DEC-0071)
+
+Retour de l'utilisatrice, 2026-09-02, verbatim : *"il n'y a pas de jeux d'anglais (vocabulaire),
+histoire / geographie, questionner le monde ajoute les au prochain sprint"*. Ecart etabli entre
+les deux matieres de la matrice (mathematiques, francais) et le programme officiel des cycles 2 et
+3 (sept a huit domaines), effet mecanique attendu sur le taux affiche, perimetre range par niveau
+(questionner le monde CP, histoire-geographie CM1, anglais niveau non precise) et arithmetique de
+capacite face au rang 1 de `DEC-0069` : `DEC-0071-la-matrice-ne-couvre-que-deux-matieres-sur-le-
+programme-des-cycles-2-et-3-perimetre-de-s27-instruit-sur-trois-matieres-neuves.md`.
+
+**Aucune story de developpement n'est ecrite ici**, meme regle que pour les candidats de niveau 2
+de `DEC-0051` : rien n'est pret a developper avant qu'un referentiel de competences existe pour au
+moins une des trois matieres. Une story ecrite sur une competence inventee par `camille-po` serait
+le meme defaut que celui deja sanctionne sur `NAT-5` et `DEN-1` a `DEN-8` - perdre un sprint a
+refaire un arbitrage qui aurait du etre pose avant le developpement.
+
+Pour l'anglais, la forme de l'exercice est deja fixee par l'utilisatrice (image ou mot francais en
+stimulus, choix de l'equivalent dans l'autre langue, aucun son) et correspond, sous reserve de
+verification par `nadia-prof`, a des mecaniques et formes d'item deja existantes (`bandit-manchot`,
+item illustre du palier 1, `ADR-0073`). Deux points restent ouverts avant tout arbitrage de
+contenu : le sens de traduction et le niveau (`DEC-0071`, section 5).
+
+**Agent pressenti** : `nadia-prof` pour les trois referentiels de competences et les arbitrages de
+forme d'item ; `camille-po` pour l'ajout des sections de matrice des qu'un referentiel existe ;
+l'utilisatrice pour la priorite entre le rang 1 de `DEC-0069` (voyelles simples) et l'ouverture de
+ces trois matieres, et pour le sens de traduction de l'anglais une fois l'avis de `nadia-prof`
+rendu.
+- **Lien decision** : `DEC-0071`.
