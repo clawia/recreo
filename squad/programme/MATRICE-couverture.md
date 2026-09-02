@@ -10,11 +10,29 @@ par competence, l'integralite des huit referentiels actuellement disponibles
 produit face a chacune d'entre elles sur la branche `round-two`.
 
 **Note du 2026-09-02** : jusqu'a cette date, cette matrice ne portait que les deux premiers
-referentiels (mathematiques, francais), sur les sept enseignements du cycle 2 et sur un cycle 3
-dont le compte exact reste discute (`DEC-0072` releve un ecart interne au comptage de
-`nadia-prof` - neuf annonces, dix enseignements distincts nommes - non tranche a ce jour). Voir la
-synthese en fin de fichier, section "Integration des matieres absentes du 2026-09-02". Un taux de
-couverture cite avant cette date decrit ce perimetre reduit, pas le programme entier.
+referentiels (mathematiques, francais). Le programme complet compte **huit enseignements au cycle
+2, dix au cycle 3** (`nadia-prof`, `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-
+absentes-du-programme.md`, section 2, corrigee le 2026-09-02 apres un ecart trouve par
+`camille-po` puis retrouve par `nadia-prof` elle-meme sur sa propre section 2.1 - voir `DEC-0072`).
+
+**Le critere de comptage que cette matrice emploie, et pourquoi un autre existe** :
+un enseignement compte pour un **chapitre de programme portant ses propres attendus de fin de
+cycle** - c'est le seul critere qui produise des competences, donc des lignes de cette matrice.
+Sur ce critere, *histoire des arts* est un enseignement a part entiere du cycle 3 (attendus
+propres), sans avoir d'horaire propre. **Un autre critere existe et donne un autre nombre** :
+compter par regroupement de l'arrete des horaires (qui fusionne les deux arts au cycle 2, adosse
+l'EMC a *questionner le monde*/l'histoire-geographie, et ne donne aucun volume propre a l'histoire
+des arts) rend **six enseignements au cycle 2, sept au cycle 3**. **Aucun des deux comptes n'est
+faux ; ils ne comptent pas la meme chose.** Cette matrice emploie et continuera d'employer le
+premier (par attendus de programme), parce que c'est celui qui correspond a une ligne de
+competence - l'unite que cette matrice compte. Le denominateur final du produit, le jour ou les
+six matieres restantes y entreront toutes, depend entierement de ce choix ; il n'affecte pas le
+denominateur actuel de 75 (section "Integration des matieres absentes du 2026-09-02" ci-dessous),
+puisqu'aucune ligne d'arts, d'EPS, d'EMC, de sciences et technologie ou d'histoire des arts n'y est
+encore entree.
+
+Un taux de couverture cite avant le 2026-09-02 decrit un perimetre de deux matieres sur huit
+(cycle 2) ou sur dix (cycle 3), pas le programme entier.
 
 ## Comment la lire
 
@@ -95,7 +113,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp ; **saisie-complements-10-cp** (2026-08-31, s24) | bandit manchot ; **saisie** | couvert-valide - **statut inchange par le second jeu.** `CPL-1` : *"deux entrees sur une meme ligne ne sont pas une double couverture"*. La ligne etait deja verte avant s24 et le lot de saisie **n'ajoute aucune ligne** |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | bandit-manchot-monnaie-cp | bandit manchot ; **item illustre (palier 1)** | **couvert-valide** (2026-09-01, s25) - **ligne entiere.** `nadia-prof` : *"les deux verbes de la ligne - reconnaitre et utiliser - sont servis par le meme paquet"*. **Aucune mention de couverture partielle n'est due** |
+| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | bandit-manchot-monnaie-cp | bandit manchot ; **item illustre (palier 1)** | **couvert-valide** (2026-09-01, s25) - **ligne entiere.** `nadia-prof` : *"les deux verbes de la ligne - reconnaitre et utiliser - sont servis par le meme paquet"*. **Aucune mention de couverture partielle n'est due**. **Suspension conditionnelle notee le 2026-09-02** (`DEC-0072`, section 8) : un correctif de remplissage des illustrations est en cours (`ines-design`, conditions `COU-1` a `COU-4` de `nadia-prof`, `squad/conformite/ARBITRAGE-s27-titre-du-jeu-d-additions-et-portee-de-ma-clause-sur-la-couleur.md`). `nadia-prof` : *"ce paquet cesse d'etre Done le jour ou ses illustrations bougent, et il le redevient quand je l'ai rejoue"* (rejeu price a 0,5). **Statut inchange a ce jour** : aucun fichier SVG de monnaie n'a bouge depuis s25 (verifie). **Des que le correctif est merge, ce statut doit repasser a `en cours` avant tout nouveau verdict** |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | bandit-manchot-comparer-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | bandit-manchot-semaine-cp | bandit manchot | **couvert-valide** (2026-09-01, s25) - **couverture partielle, mention exigee par `SEM` et reprise mot pour mot** : *"moitie 'se reperer dans la journee, la semaine' seule ; la moitie 'lire l'heure pleine sur une horloge' reste non couverte"*. **Sans cette mention, la ligne dirait plus que ce que le jeu sert** |
 | mathematiques | CP | Espace et geometrie | Se reperer et decrire des deplacements sur un quadrillage simple | - | - | non couvert |
@@ -3660,8 +3678,9 @@ devient vrai, exactement comme au sprint 19, a une echelle differente.
 - Il ne fixe aucune priorite pour s27 : le perimetre du sprint (voyelles simples, questionner le
   monde, histoire-geographie ; anglais CM1 reporte a s28) est un arbitrage separe de l'utilisatrice,
   trace dans `DEC-0072`.
-- Il ne resout pas l'ecart releve dans `DEC-0072` sur le compte total des enseignements de cycle 3
-  (neuf annonces par `nadia-prof`, dix enseignements distincts nommes dans son propre tableau) :
-  cet ecart ne change rien au denominateur de ce recompte, puisqu'aucune ligne d'arts, d'EPS,
-  d'EMC, de sciences et technologie ou d'histoire des arts n'entre dans cette matrice a cette
-  date.
+- Il ne depend pas du compte total des enseignements de cycle 2 et de cycle 3 (huit et dix,
+  corrige par `nadia-prof` le 2026-09-02, `DEC-0072` ; voir la note en tete de ce fichier pour le
+  critere retenu) : aucune ligne d'arts, d'EPS, d'EMC, de sciences et technologie ou d'histoire
+  des arts n'entre dans cette matrice a cette date, donc ce compte ne change rien au denominateur
+  de 75. **Il changera entierement le denominateur final du produit**, le jour ou ces matieres y
+  entreront.

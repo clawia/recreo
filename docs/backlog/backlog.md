@@ -9224,8 +9224,8 @@ son-niveau-deux-titres-proposes-regle-generale-recommandee.md`.
 
 ### Story - Le jeu d'additions CP porte un titre du meme registre que les autres jeux du catalogue
 
-**Non affectee a un sprint. Ne peut pas etre developpee avant que `nadia-prof` ait choisi le
-titre de remplacement (`DEC-0070`, section 2) : c'est une condition prealable, pas une option.**
+**Titre tranche par `nadia-prof` le 2026-09-02 (`DEC-0070`, amendement du meme jour) :
+`"Les petites additions"`. Prete a developper, non encore affectee a un sprint par `sofia-sm`.**
 
 - **Besoin** : en tant qu'eleve de CP qui parcourt la liste des jeux, je veux que le titre du jeu
   d'additions se lise comme celui de n'importe quel autre jeu de la liste, afin de ne pas y trouver
@@ -9236,10 +9236,9 @@ titre de remplacement (`DEC-0070`, section 2) : c'est une condition prealable, p
   cp.md`, ligne 11). Le contenu et la mecanique du jeu ne changent pas : seul son titre est
   concerne.
 - **Criteres d'acceptation** :
-  - Etant donne le titre choisi par `nadia-prof` parmi les options de `DEC-0070` (ou tout autre
-    titre qu'elle arbitre), quand `catalogue.yaml` est modifie, alors le champ `titre` du jeu
-    `bandit-manchot-additions-cp` porte ce texte, integralement accentue et en francais correct
-    (`DEC-0002`, amendement du 2026-08-04).
+  - Etant donne le titre `"Les petites additions"`, quand `catalogue.yaml` est modifie, alors le
+    champ `titre` du jeu `bandit-manchot-additions-cp` porte exactement ce texte, integralement
+    accentue et en francais correct (`DEC-0002`, amendement du 2026-08-04).
   - Etant donne le nouveau titre, quand on relit les 40 titres du catalogue, alors aucun ne
     contient les jetons `CP` ou `CM1` (non-regression sur les 39 autres, qui ne les contenaient
     deja pas).
@@ -9252,12 +9251,13 @@ titre de remplacement (`DEC-0070`, section 2) : c'est une condition prealable, p
     un titre change dans la donnee sans etre change dans son test associe laisserait une assertion
     fausse en apparence verte.
 - **Ce que cette story ne fait pas** :
-  - Elle ne choisit pas le titre : `nadia-prof` le fait avant que cette story ne soit prete a
-    developper.
   - Elle ne modifie ni la mecanique, ni le contenu, ni la consigne du jeu (`"Combien ça fait ?"`),
-    ni son identifiant (`bandit-manchot-additions-cp`) : seul le champ `titre` bouge.
-  - Elle n'ecrit pas le garde-fou de la regle generale recommandee en `DEC-0070` section 3
-    (aucun titre de jeu ne porte son niveau) : cette regle est routee separement a `theo-archi`.
+    ni son identifiant (`bandit-manchot-additions-cp`) : seul le champ `titre` bouge. Aucun rejeu
+    n'est du : le Done pedagogique du 2026-08-06 porte sur les items, pas sur le titre
+    (`nadia-prof`, `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, note du 2026-09-02).
+  - Elle n'ecrit pas le garde-fou de la premiere regle generale recommandee en `DEC-0070` (aucun
+    titre de jeu ne porte son niveau), ni la question de proxy pour la seconde propriete (titre pas
+    plus large que le contenu servi) : les deux sont routees a `theo-archi`.
 - **Lien decision** : `DEC-0070-le-titre-calcul-cp-est-seul-a-porter-son-niveau-deux-titres-
   proposes-regle-generale-recommandee.md`.
 - **Agent pressenti** : `nadia-prof` pour le choix du titre, puis `sofia-sm` pour l'affectation au

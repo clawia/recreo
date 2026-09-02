@@ -214,3 +214,47 @@ annonce en section 8.3 un plafond de "35/75 = 46,7 %" pour la cloture de s27. Ve
 - Il n'ecrit aucune competence de sa propre main : les 43 lignes sont recopiees telles quelles
   depuis le referentiel de `nadia-prof`.
 - Il ne fixe le perimetre d'aucun sprint au-dela de ce que l'utilisatrice a arbitre en section 3.
+
+---
+
+## 8. Amendement du 2026-09-02 (meme jour) - le rejeu de la monnaie coute 0,5, s27 passe a 4,5 sur 5
+
+### 8.1 Ce qui change, et pourquoi ce n'est pas de mon fait
+
+`ines-design` a propose un correctif de remplissage sur les illustrations de `cp-monnaie`, pour
+repondre au second retour de l'utilisatrice ("pourquoi les images n'ont pas ete utilisees ?",
+instruit separement, non porte par ce document). `nadia-prof` a juge le correctif compatible avec
+sa clause de couleur (`FIG-3`, `HOR-3` : une clause de discrimination, pas de remplissage) et pose
+quatre conditions (`COU-1` a `COU-4`), dans
+`squad/conformite/ARBITRAGE-s27-titre-du-jeu-d-additions-et-portee-de-ma-clause-sur-la-couleur.md`,
+section 2.
+
+**Ce qui m'engage directement** : *"Changer les dessins change ce sur quoi j'ai prononce : ce
+paquet cesse d'etre Done le jour ou ses illustrations bougent, et il le redevient quand je l'ai
+rejoue."* Le rejeu porte sur les douze items et leurs illustrations, sur trois proprietes
+seulement (`COU-2`, `COU-3`, et la lisibilite de la monnaie) - rien de l'arithmetique, des
+distracteurs ou des enonces ne bouge. **Prix : 0,5 contre sa borne de 5**, meme unite que la
+demi-passe de `CON-4` a s25.
+
+### 8.2 Consequence sur l'arithmetique de s27
+
+**Le sprint etait a 4,0** (section 3 : voyelles simples 1 + questionner le monde 1,5 +
+histoire-geographie 1,5). **Avec le rejeu, il est a 4,5 sur une borne de 5.** Dans les mots de
+`nadia-prof` : *"il tient, et c'est la derniere chose qui tient."* **Aucune marge ne reste** : tout
+ajout supplementaire au sprint devra etre decline par ecrit, au meme titre qu'a s25 et a s26.
+
+### 8.3 Ce que cela ne change pas dans la matrice, et pourquoi je ne bouge aucun statut aujourd'hui
+
+**La ligne "Reconnaitre et utiliser la monnaie" (mathematiques CP) reste `couvert-valide`
+aujourd'hui.** Le verdict `VALIDE` du 2026-09-01 tient tant que les illustrations qu'il couvre
+n'ont pas change - verifie : aucun fichier sous
+`adapters/adapter-web/src/main/resources/static/illustrations/` portant "monnaie" n'a bouge depuis
+le commit `115ac28` (s25). La suspension que `nadia-prof` annonce est **conditionnelle et future**
+("le jour ou ses illustrations bougent"), pas un `REFUSE` ni un `VALIDE SOUS RESERVE` prononce
+aujourd'hui : la regle de la matrice qui ferait repasser une ligne a `en cours`
+(`squad/programme/MATRICE-couverture.md`, "Comment la lire") ne s'applique pas encore.
+
+**Note ajoutee a la ligne de matrice** (voir le fichier lui-meme) pour que quiconque merge le
+correctif de couleur sache faire passer aussitot le statut a `en cours`, sans attendre que
+quelqu'un s'en aperçoive plus tard : c'est le meme reflexe que ce document applique partout
+ailleurs - un fait qui va se produire est ecrit avant qu'il ne se produise, jamais decouvert apres.
