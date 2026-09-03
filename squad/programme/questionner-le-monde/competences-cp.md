@@ -1,18 +1,18 @@
-# Referentiel de competences - Questionner le monde - CP (cycle 2)
+# Référentiel de compétences - Questionner le monde - CP (cycle 2)
 
-> Ecrit par `nadia-prof` le 2026-09-02
+> Écrit par `nadia-prof` le 2026-09-02
 > (`squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 4),
-> au meme grain que les referentiels de mathematiques et de francais deja presents dans ce dossier
-> - une competence par ligne, un verbe en tete, bornee par sa parenthese. **Socle realiste, non
-> exhaustif et non officiel** : a completer et a faire valider par l'utilisatrice au fil des
+> au même grain que les référentiels de mathématiques et de français déjà présents dans ce dossier
+> - une compétence par ligne, un verbe en tête, bornée par sa parenthèse. **Socle réaliste, non
+> exhaustif et non officiel** : à compléter et à faire valider par l'utilisatrice au fil des
 > sprints, en lien avec `squad/programme/MATRICE-couverture.md`. Ne remplace pas une lecture des
-> programmes officiels de l'Education nationale.
+> programmes officiels de l'Éducation nationale.
 >
-> *Questionner le monde* est une matiere de cycle 2 : elle se scinde en histoire-geographie et en
+> *Questionner le monde* est une matière de cycle 2 : elle se scinde en histoire-géographie et en
 > sciences et technologie au passage au cycle 3. Il n'existe et n'existera aucune ligne
 > "questionner le monde / CM1".
 
-## Le vivant, la matiere et les objets
+## Le vivant, la matière et les objets
 
 - Distinguer les êtres vivants des objets et de la matière inerte sur des exemples du quotidien.
 - Identifier ce qui caractérise un être vivant : il naît, se nourrit, grandit, a des petits, meurt.
@@ -40,15 +40,15 @@
 
 - Comparer des modes de vie ici et ailleurs (habitat, alimentation, école, déplacements).
 
-## Recouvrements a ne pas double-compter
+## Recouvrements à ne pas double-compter
 
-Deux competences existent deja ailleurs dans le referentiel du produit et ne sont pas reprises
+Deux compétences existent déjà ailleurs dans le référentiel du produit et ne sont pas reprises
 ici sous une autre forme (`nadia-prof`, section 4.1 de son arbitrage) :
 
-- **Le temps** : mathematiques CP / Grandeurs et mesures porte deja "se reperer dans la journee,
+- **Le temps** : mathématiques CP / Grandeurs et mesures porte déjà "se repérer dans la journée,
   la semaine ; lire l'heure pleine sur une horloge". Les lignes ci-dessus portent sur les mois,
-  les saisons et l'anteriorite entre evenements, pas sur la journee ni la semaine.
-- **L'espace** : mathematiques CP / Espace et geometrie porte deja "se reperer et decrire des
-  deplacements sur un quadrillage simple" (reperage par coordonnees). Les lignes ci-dessus portent
-  sur le vocabulaire de position et la lecture d'un plan, deux competences distinctes qui
+  les saisons et l'antériorité entre événements, pas sur la journée ni la semaine.
+- **L'espace** : mathématiques CP / Espace et géométrie porte déjà "se repérer et décrire des
+  déplacements sur un quadrillage simple" (repérage par coordonnées). Les lignes ci-dessus portent
+  sur le vocabulaire de position et la lecture d'un plan, deux compétences distinctes qui
   coexistent avec elle sans la refaire.

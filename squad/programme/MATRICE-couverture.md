@@ -3627,10 +3627,10 @@ sprint qui n'a encore rien livre. C'est la forme deja appliquee au sprint 19 de 
 ### Le fait qui precede le chiffre
 
 Jusqu'a cette date, cette matrice ne portait que deux matieres (mathematiques, francais) sur les
-sept enseignements du cycle 2 et sur un cycle 3 dont le compte exact reste discute (`DEC-0072`).
-Le 82,9 % cite a la cloture de s26 (`DEC-0069`) etait vrai sur ce perimetre reduit et ne disait
-rien des cinq autres enseignements de cycle 2 ni des sept a huit autres de cycle 3, faute d'y
-avoir jamais eu une seule ligne de referentiel.
+huit enseignements du cycle 2 et les dix du cycle 3 (compte etabli apres coup, voir la note en
+tete de ce fichier ; `DEC-0072`). Le 82,9 % cite a la cloture de s26 (`DEC-0069`) etait vrai sur ce
+perimetre reduit et ne disait rien des six autres enseignements de cycle 2 ni des huit autres de
+cycle 3, faute d'y avoir jamais eu une seule ligne de referentiel.
 
 ### Methode de recompte, independante de tout chiffre annonce ailleurs
 
