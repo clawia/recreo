@@ -13,10 +13,10 @@
   <defs>
     <path id="g5" d="M34 2 L10 2 L7 26 A16 16 0 1 1 5 47"/>
   </defs>
-    <rect x="12" y="32" width="210" height="112" rx="10"/>
+    <rect x="12" y="32" width="210" height="112" rx="10" fill="#cfe3ef"/>
     <rect x="24" y="44" width="186" height="88" rx="6" stroke-width="4"/>
     <use xlink:href="#g5" transform="translate(117 88) scale(1) translate(-20 -30)"/>
-    <rect x="244" y="32" width="210" height="112" rx="10"/>
+    <rect x="244" y="32" width="210" height="112" rx="10" fill="#cfe3ef"/>
     <rect x="256" y="44" width="186" height="88" rx="6" stroke-width="4"/>
     <use xlink:href="#g5" transform="translate(349 88) scale(1) translate(-20 -30)"/>
 </svg>
