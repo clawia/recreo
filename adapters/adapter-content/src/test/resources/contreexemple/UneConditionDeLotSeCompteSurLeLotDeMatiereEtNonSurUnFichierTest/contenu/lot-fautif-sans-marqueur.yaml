@@ -1,0 +1,20 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, ADR-0079).
+# LE DEFAUT EST ICI, et il est invisible a un garde-fou dont la population est un chemin ecrit en
+# dur : ce fichier declare la MEME matiere et le MEME niveau que son voisin, donc il rejoint son lot
+# et tombe sous HIS-1 - et aucun de ses items ne porte de marqueur. Il n est ni refuse, ni compte,
+# simplement non juge, tant que la population est le fichier plutot que le lot.
+schema: 1
+id: lot-fautif-sans-marqueur
+type: question
+descripteur:
+  matiere: "Matière du jeu fautif"
+  niveau: "CM1"
+  domaine: "Domaine du jeu fautif"
+  competence: "Aucune : ce paquet n est jamais servi"
+items:
+  - enonce: "Question D ?"
+    bonneReponse: "A"
+    distracteurs: ["B", "C"]
+  - enonce: "Question E ?"
+    bonneReponse: "A"
+    distracteurs: ["B", "C"]
