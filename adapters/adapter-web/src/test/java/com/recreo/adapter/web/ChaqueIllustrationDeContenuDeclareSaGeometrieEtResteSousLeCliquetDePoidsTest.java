@@ -99,6 +99,27 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * qui s'efface sur son fond rend l'item <b>irrepondable</b>, elle le verifie a l'oeil item par item.
  * Rien dans ce fichier ne pretend la couvrir.
  *
+ * <p><b>Un test de prediction a vecu ici le 2026-09-02 et il est retire le 2026-09-03 ; le motif est
+ * ecrit plutot que le retrait laisse nu.</b> {@code lesDouzeDessinsRevisesNeSontRefusesQueParLeCliquetDePoids}
+ * reproduisait la revision d'ines-design sur les vingt-quatre dessins servis, d'apres sa regle et
+ * non d'apres ses fichiers, pour prouver que le retrecissement laissait passer le correctif
+ * <b>avant que le correctif existe</b>. <b>Sa prediction s'est realisee, donc son objet a
+ * disparu</b> : les douze dessins revises sont commites, et le corpus reel est juge par
+ * {@link #chaqueDessinServiDeclareSaGeometrieEtLeCorpusResteSousLeCliquet()}, qui n'a besoin
+ * d'aucune reproduction pour cela. Le fait qu'il epinglait - les 660 octets des 44 attributs - est
+ * desormais porte par le cliquet lui-meme, epingle a l'octet pres par
+ * {@link #leCliquetVautExactementCeQueCeLotInstalle()}.
+ *
+ * <p><b>Et il fallait le retirer plutot que le laisser vert</b>, sur deux motifs qu'ines-design a
+ * trouves et routes sans les corriger, parce que ce fichier n'est pas son lot. <b>Son recit etait
+ * devenu faux</b> - il disait <i>"elle ne les a pas commis"</i> d'un lot commite. Et <b>son
+ * mecanisme ne mordait plus rien</b> : applique a des dessins deja remplis, il reecrivait
+ * {@code fill=} en double sur la meme balise <b>sans une erreur</b>. Un test dont la narration ment
+ * et dont le mecanisme s'applique deux fois en silence est pire qu'un test absent : il occupe la
+ * place de la preuve qu'il ne fait plus. Ce que ce retrait garde, en revanche, est le mecanisme
+ * lui-meme, corrige : {@link #sceneRemplieAvec(String, String)} <b>pose</b> desormais le remplissage au lieu de
+ * l'ajouter, ce qui rend la double application impossible plutot que detectable.
+ *
  * <p><b>La couleur de trait n'est pas ecrite ici</b>, elle est lue dans la feuille maison, a
  * {@code --recreo-texte} : une valeur recopiee dans un test est une seconde source qui derive un
  * jour de la premiere (ADR-0015). Ce que ce garde-fou tient est donc que les dessins n'emploient
@@ -231,21 +252,14 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
     private static final int POIDS_TOTAL_MAXIMUM = 30730;
 
     /**
-     * Ce que le remplissage de couleur d'ines-design coute au corpus servi, <b>mesure et non
-     * annonce</b> : <b>44 attributs</b> - la forme exterieure de chacun des 44 objets de monnaie -
-     * a <b>15 octets</b> l'un, {@code fill="#e8a33d"} pour une piece et {@code fill="#cfe3ef"} pour
-     * un billet pesant exactement autant, espace de separation compris.
-     *
-     * <p><b>Ce nombre ne deplace pas le cliquet ici, et le motif est le point</b> : les octets ne
-     * sont pas dans cet arbre. Les douze fichiers revises sont chez ines-design, verifies par elle
-     * dans un navigateur et pas encore commis ; un cliquet porte a 30 730 sur un arbre qui en pese
-     * 30 070 serait un plafond au-dessus de sa dette, exactement ce que
-     * {@link #leCliquetVautExactementCeQueCeLotInstalle()} refuse. <b>Le cliquet se deplace dans le
-     * commit qui installe ces octets</b>, sur la valeur mesuree sur l'arbre fusionne de ce
-     * commit - jamais recopiee d'ici, la lecon des "12 et 12" exacts par branche et faux apres
-     * fusion valant aussi pour un poids (ADR-0036 clause 5, ADR-0077).
+     * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour
+     * aucune autre raison : une piece et un billet, deux valeurs litterales dont la seule propriete
+     * utile aux morsures est qu'elles different l'une de l'autre. Aucune clause de ce fichier ne
+     * les juge - COU-1 n'est pas encodable et COU-3 est l'oeil de nadia-prof (ADR-0077).
      */
-    private static final int OCTETS_DES_ATTRIBUTS_DE_REMPLISSAGE = 660;
+    private static final String TEINTE_DE_PIECE = "#e8a33d";
+
+    private static final String TEINTE_DE_BILLET = "#cfe3ef";
 
     private static final String VUE = "viewBox";
 
@@ -369,12 +383,13 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
     }
 
     /**
-     * Le meme juge, cliquets passes en parametres. Ils ne sont parametres que pour une raison, et
-     * elle est nommee ici : {@link #lesDouzeDessinsRevisesNeSontRefusesQueParLeCliquetDePoids()}
-     * doit pouvoir juger un corpus <b>plus lourd que le cliquet du jour</b> sur toutes les autres
-     * clauses, sans quoi la seule chose qu'il prouverait serait le poids. Le cliquet ne perd rien a
-     * etre parametre : {@link #leCliquetVautExactementCeQueCeLotInstalle()} continue de l'epingler
-     * a la taille exacte de ce qui est commite, et aucun plafond de confort ne peut donc entrer.
+     * Le meme juge, cliquets passes en parametres. Ils le sont pour qu'une morsure qui <b>ajoute</b>
+     * un dessin ou des octets a un corpus reel puisse etre jugee sur <b>toutes les autres
+     * clauses</b> : sans cela, la seule chose qu'elle prouverait serait le poids.
+     *
+     * <p>Le cliquet ne perd rien a etre parametre : {@link #leCliquetVautExactementCeQueCeLotInstalle()}
+     * continue de l'epingler a la taille exacte de ce qui est commite, et aucun plafond de confort
+     * ne peut donc entrer par ici.
      */
     static void verifier(Map<String, String> dessins, String couleurDuTexte,
                          int poidsDUnDessinMaximum, int poidsTotalMaximum) {
@@ -708,6 +723,70 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
                 .isEqualTo(POIDS_D_UN_DESSIN_MAXIMUM);
     }
 
+    /**
+     * Une scene servie <b>rendue dans une teinte</b> : chaque forme du dessin - hors definitions -
+     * porte, apres cet appel, <b>exactement un</b> remplissage, et c'est celui qu'on demande.
+     *
+     * <p><b>La forme de cette fonction est le correctif d'un defaut reel, et elle merite d'etre
+     * lue.</b> Sa premiere ecriture, le 2026-09-02, <b>ajoutait</b> l'attribut sans regarder s'il
+     * etait deja la. C'etait exact tant que les dessins servis n'avaient aucun remplissage ; le
+     * 2026-09-03, ines-design a commite les douze dessins remplis, et le meme mecanisme s'est mis a
+     * produire {@code fill=} <b>en double sur la meme balise, sans une erreur</b>. Elle l'a trouve
+     * et route sans le corriger, ce fichier n'etant pas son lot.
+     *
+     * <p><b>Le remede n'est pas de detecter la double application, c'est de la rendre impossible</b>
+     * - une detection aurait ete une branche de plus a ne jamais exercer, et un garde-fou dont la
+     * moitie ne s'execute jamais est ce que ce depot appelle decoratif. Cette fonction <b>pose</b>
+     * une valeur au lieu de l'ajouter : elle remplace le remplissage present, ou l'ecrit s'il est
+     * absent. Elle est donc <b>totale et idempotente</b> - le meme appel deux fois de suite rend le
+     * meme texte, sur un dessin nu comme sur un dessin deja rempli - et les morsures qui s'en
+     * servent disent la meme chose avant et apres l'arrivee des dessins remplis, au lieu de devenir
+     * vraies pour une autre raison que celle qu'elles annoncent.
+     */
+    static String sceneRemplieAvec(String source, String teinte) {
+        int definitions = source.indexOf(FIN_DE_DEFINITIONS);
+        int depart = definitions < 0 ? 0 : definitions + FIN_DE_DEFINITIONS.length();
+        StringBuilder remplie = new StringBuilder(source.substring(0, depart));
+        int position = depart;
+        while (position < source.length()) {
+            int ouverture = source.indexOf('<', position);
+            int fermeture = ouverture < 0 ? -1 : source.indexOf('>', ouverture);
+            if (fermeture < 0) {
+                remplie.append(source, position, source.length());
+                break;
+            }
+            remplie.append(source, position, ouverture);
+            String balise = source.substring(ouverture, fermeture);
+            boolean fermetureAuto = balise.endsWith("/");
+            String corps = fermetureAuto ? balise.substring(0, balise.length() - 1) : balise;
+            remplie.append(estUneForme(corps) ? avecLeRemplissage(corps, teinte) : corps)
+                    .append(fermetureAuto ? "/" : "").append('>');
+            position = fermeture + 1;
+        }
+        return remplie.toString();
+    }
+
+    /** Une balise de forme au sens du langage, jamais la racine du document ni une instanciation. */
+    private static boolean estUneForme(String balise) {
+        for (String forme : FORMES_SVG) {
+            if (!"use".equals(forme) && balise.startsWith("<" + forme)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Le remplissage <b>pose</b> : la valeur presente est remplacee, l'absente est ecrite. */
+    private static String avecLeRemplissage(String balise, String teinte) {
+        String marque = REMPLISSAGE + "=\"";
+        int declaration = balise.indexOf(marque);
+        if (declaration < 0) {
+            return balise + " " + marque + teinte + "\"";
+        }
+        int debut = declaration + marque.length();
+        return balise.substring(0, debut) + teinte + balise.substring(balise.indexOf('"', debut));
+    }
+
     /** Morsure 1, sur materiau reel mute en memoire : les proportions ne sont plus declarees. */
     @Test
     void unDessinSansViewBoxFaitEchouerLeGardeFou() {
@@ -912,10 +991,39 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
     void uneSceneDePlusieursObjetsQuOnRemplitResteAcceptee() {
         Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
         Map.Entry<String, String> scene = premierDessinA(dessins, false);
-        dessins.put(scene.getKey(), scene.getValue().replace("<circle", "<circle fill=\"#e8a33d\""));
+        dessins.put(scene.getKey(), sceneRemplieAvec(scene.getValue(), TEINTE_DE_PIECE));
 
         verifier(dessins, couleurDuTexte(FEUILLE_MAISON), poidsDuPlusGros(dessins),
                 poidsTotal(dessins));
+    }
+
+    /**
+     * <b>Le mecanisme de mutation est mordu comme le reste, et pas seulement decrit.</b> Une
+     * fonction de mutation qu'aucun test n'exerce est un endroit ou un defaut vit sans temoin :
+     * celui du 2026-09-02 - l'attribut ajoute au lieu d'etre pose - a survecu parce que les trois
+     * morsures qui s'en servaient regardaient le verdict du juge et jamais le texte produit.
+     *
+     * <p>Ce que ce test tient, sur un dessin servi reel : appliquer la mutation a un dessin
+     * <b>deja mute</b> rend <b>exactement le meme texte</b> que l'appliquer une fois. C'est la
+     * preuve complete de la propriete et non un indice - une fonction qui ajouterait un second
+     * attribut rendrait un texte plus long, donc different. Et la seconde egalite dit l'autre
+     * moitie : une autre teinte <b>remplace</b> la premiere au lieu de s'y ajouter, donc la
+     * mutation ne depend pas de l'etat dans lequel elle trouve le dessin.
+     */
+    @Test
+    void laMutationDeRemplissagePoseLaTeinteAuLieuDeLAjouter() {
+        Map.Entry<String, String> scene = premierDessinA(dessinsDe(ILLUSTRATIONS), false);
+        String uneFois = sceneRemplieAvec(scene.getValue(), TEINTE_DE_PIECE);
+        String deuxFois = sceneRemplieAvec(uneFois, TEINTE_DE_PIECE);
+
+        assertThat(deuxFois)
+                .as("la mutation est idempotente : sur un dessin deja rempli, elle rend le meme"
+                        + " texte au lieu d'ajouter un second attribut")
+                .isEqualTo(uneFois);
+        assertThat(sceneRemplieAvec(uneFois, TEINTE_DE_BILLET))
+                .as("et elle reste totale : une seconde teinte remplace la premiere, elle ne s'y"
+                        + " ajoute pas")
+                .isEqualTo(sceneRemplieAvec(scene.getValue(), TEINTE_DE_BILLET));
     }
 
     /**
@@ -939,88 +1047,15 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
     void deuxDessinsQueSeuleLaCouleurDistingueFontEchouerLeGardeFou() {
         Map<String, String> dessins = new LinkedHashMap<>(dessinsDe(ILLUSTRATIONS));
         Map.Entry<String, String> scene = premierDessinA(dessins, false);
-        String remplie = revisionDInesDesign(scene.getValue());
-        dessins.put(scene.getKey(), remplie);
-        dessins.put("monnaie-meme-scene-autre-teinte.svg", remplie.replace("#e8a33d", "#cfe3ef"));
+        dessins.put(scene.getKey(), sceneRemplieAvec(scene.getValue(), TEINTE_DE_PIECE));
+        dessins.put("monnaie-meme-scene-autre-teinte.svg",
+                sceneRemplieAvec(scene.getValue(), TEINTE_DE_BILLET));
 
         assertThatThrownBy(() -> verifier(dessins, couleurDuTexte(FEUILLE_MAISON),
                 poidsDuPlusGros(dessins), poidsTotal(dessins)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("COU-2")
                 .hasMessageContaining("niveaux de gris");
-    }
-
-    /**
-     * <b>La revision d'ines-design, reproduite sur les fichiers reels et non sur une fixture.</b>
-     * Elle a revise douze dessins et ne les a pas commis parce que le garde-fou d'alors les
-     * refusait ; ce test applique sa regle - <i>"fill='#e8a33d' sur le cercle exterieur des pieces,
-     * fill='#cfe3ef' sur le rectangle exterieur des billets, le lisere, le cadre et tous les
-     * chiffres restent en contour pur"</i> - aux vingt-quatre dessins servis.
-     *
-     * <p><b>Le point fixe qui prouve que la reproduction est bien la sienne</b> : elle a mesure
-     * <i>44</i> refus de remplissage et un total de <i>30 730</i> octets contre un cliquet a
-     * <i>30 070</i>. La reproduction ci-dessous ajoute exactement 44 attributs de 15 octets, soit
-     * les 660 octets d'ecart, et l'assertion l'epingle. Un chiffre annonce par un tiers et retrouve
-     * par le calcul sur le materiau vaut mieux qu'un chiffre recopie.
-     *
-     * <p><b>Et le verdict</b> : sous les deux clauses retrecies, ces vingt-quatre dessins ne portent
-     * <b>aucune</b> faute. La seule chose qui les separe encore du depot est le cliquet de poids,
-     * qui n'est pas une clause de couleur et que le commit qui installera ces octets deplace avec
-     * son motif et sa valeur mesuree sur son propre arbre (ADR-0036 clause 5, ADR-0077).
-     */
-    @Test
-    void lesDouzeDessinsRevisesNeSontRefusesQueParLeCliquetDePoids() {
-        Map<String, String> servis = dessinsDe(ILLUSTRATIONS);
-        Map<String, String> dessins = new LinkedHashMap<>();
-        servis.forEach((nom, source) -> dessins.put(nom, revisionDInesDesign(source)));
-
-        assertThat(poidsTotal(dessins) - poidsTotal(servis))
-                .as("les 660 octets annonces par ines-design : 44 attributs de remplissage de 15"
-                        + " octets, et rien d'autre - aucun element de texte, aucune forme de plus")
-                .isEqualTo(OCTETS_DES_ATTRIBUTS_DE_REMPLISSAGE);
-
-        assertThatThrownBy(() -> verifier(dessins, couleurDuTexte(FEUILLE_MAISON)))
-                .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("ADR-0036 clause 5");
-
-        verifier(dessins, couleurDuTexte(FEUILLE_MAISON), poidsDuPlusGros(dessins),
-                poidsTotal(dessins));
-    }
-
-    /**
-     * La revision d'ines-design appliquee a un dessin : le remplissage va sur la forme exterieure de
-     * chaque objet, jamais sur le lisere ni sur le chiffre grave. <b>Le lisere se reconnait a son
-     * epaisseur de trait propre</b> et le chiffre a ce qu'il est une instanciation, jamais un cercle
-     * ni un rectangle ; les definitions sont laissees intactes pour la meme raison.
-     */
-    private static String revisionDInesDesign(String source) {
-        int definitions = source.indexOf(FIN_DE_DEFINITIONS);
-        int depart = definitions < 0 ? 0 : definitions + FIN_DE_DEFINITIONS.length();
-        StringBuilder revise = new StringBuilder(source.substring(0, depart));
-        int position = depart;
-        while (position < source.length()) {
-            int ouverture = source.indexOf('<', position);
-            int fermeture = ouverture < 0 ? -1 : source.indexOf('>', ouverture);
-            if (fermeture < 0) {
-                revise.append(source, position, source.length());
-                break;
-            }
-            revise.append(source, position, ouverture);
-            String balise = source.substring(ouverture, fermeture);
-            String teinte = balise.contains(EPAISSEUR_DE_TRAIT) ? "" : teinteDe(balise);
-            boolean fermetureAuto = balise.endsWith("/");
-            revise.append(fermetureAuto ? balise.substring(0, balise.length() - 1) : balise)
-                    .append(teinte).append(fermetureAuto ? "/" : "").append('>');
-            position = fermeture + 1;
-        }
-        return revise.toString();
-    }
-
-    private static String teinteDe(String balise) {
-        if (balise.startsWith("<circle")) {
-            return " fill=\"#e8a33d\"";
-        }
-        return balise.startsWith("<rect") ? " fill=\"#cfe3ef\"" : "";
     }
 
     /**
