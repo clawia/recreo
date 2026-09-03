@@ -487,7 +487,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "8 items sur 8 portent un seul distracteur, donc deux propositions - meme motif que"
                     + " cp-qlm-vivant-non-vivant - et les deux propositions sont toujours les memes"
                     + " deux etats (\"solide\", \"liquide\"), jamais une valeur numerique. Mesure du"
-                    + " 2026-09-02 sur le paquet servi"));
+                    + " 2026-09-02 sur le paquet servi"),
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
+            Map.entry("cm1-histoire-geographie",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des noms de periodes, de peuples, de"
+                    + " rois, d'evenements ou de lieux, et des dates toujours ecrites en toutes"
+                    + " lettres ou precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe"
+                    + " rend null sur les trois propositions de chaque item. Mesure du 2026-09-02 sur"
+                    + " le paquet servi : aucune des 60 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

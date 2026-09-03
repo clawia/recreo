@@ -270,3 +270,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-qlm-etats-eau
     nombreDeManches: 7
+  - id: bandit-manchot-histoire-geographie-cm1
+    titre: "Histoire et géographie"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-histoire-geographie
+    nombreDeManches: 10

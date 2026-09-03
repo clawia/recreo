@@ -179,6 +179,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-vivant-non-vivant-cp",
             "bandit-manchot-corps-sens-cp",
             "bandit-manchot-etats-eau-cp",
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
+            "bandit-manchot-histoire-geographie-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -253,6 +255,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Vivant ou objet",
             "Le corps et les sens",
             "L'eau solide ou liquide",
+            // S27-3 : titre neuf.
+            "Histoire et géographie",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -326,6 +330,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S27-2 : trois consignes neuves. La consigne de cp-voyelle-du-son (S27-1) est reprise
             // a l'identique de "bandit-manchot-lettre-du-son-cp" ci-dessus, aucune entree neuve.
             "Lis bien, puis dis si c'est un être vivant ou un objet.",
+            // S27-2 et S27-3 partagent "Lis bien la question, puis choisis la bonne
+            // réponse." : aucune entree neuve pour S27-3.
             "Lis bien la question, puis choisis la bonne réponse.",
             "Lis bien, puis dis si c'est solide ou liquide.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
@@ -339,6 +345,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Français",
             // S27-2 : matiere neuve du produit.
             "Questionner le monde",
+            // S27-3 : matiere neuve, premiere matiere neuve du produit sur ce referentiel.
+            "Histoire-géographie",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -356,6 +364,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S27-2 : domaine neuf, premier paquet de "Questionner le monde" (les trois paquets
             // de ce lot partagent ce meme domaine, ligne 1, 3 et 5 du referentiel).
             "Le vivant, la matière et les objets",
+            // S27-3 : domaine neuf, premier paquet d'histoire-geographie.
+            "Repères historiques et géographiques",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -448,7 +458,16 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "du quotidien.",
             "Nommer les principales parties du corps humain et les cinq sens.",
             "Reconnaître les états de l'eau (solide, liquide) et les changements d'état "
-                    + "observables.");
+                    + "observables.",
+            // S27-3 : competence neuve, premier paquet de la matiere. Touche plusieurs lignes du
+            // referentiel (S27-3 ne pretend fermer aucune ligne) - libelle du descripteur du
+            // paquet, mot pour mot.
+            "Ouvre plusieurs compétences du référentiel : se repérer dans le temps (grandes "
+                    + "périodes, siècles), identifier des traces d'une occupation ancienne, nommer "
+                    + "des rois et leur réalisation, situer les événements de la Révolution et de "
+                    + "l'Empire, distinguer des types d'espaces et leurs activités, comprendre un "
+                    + "document historique (lignes 1, 2, 3, 4, 6, 7, 8, 11, 12, 13, 14 du "
+                    + "référentiel CM1)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
