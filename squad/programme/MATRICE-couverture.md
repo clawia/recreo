@@ -113,7 +113,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp ; **saisie-complements-10-cp** (2026-08-31, s24) | bandit manchot ; **saisie** | couvert-valide - **statut inchange par le second jeu.** `CPL-1` : *"deux entrees sur une meme ligne ne sont pas une double couverture"*. La ligne etait deja verte avant s24 et le lot de saisie **n'ajoute aucune ligne** |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | bandit-manchot-monnaie-cp | bandit manchot ; **item illustre (palier 1)** | **en cours** (bascule du 2026-09-03, `DEC-0072`, section 9) - **le correctif de couleur est entre dans l'arbre** (`d7fab95`, commit `1e6e85d` d'`ines-design` : les douze `monnaie-*.svg` portent desormais un `fill`, verifie sur `monnaie-en-tout-a.svg`). Le verdict `VALIDE` du 2026-09-01 portait sur les dessins d'avant ce commit ; `nadia-prof`, 2026-09-02 : *"ce paquet cesse d'etre Done le jour ou ses illustrations bougent, et il le redevient quand je l'ai rejoue"*. **Mecanisme normal de ce depot, pas une regression** : aucun item, aucune reponse, aucun distracteur ne change. **Rejeu du a `nadia-prof`** sur trois proprietes seulement (`COU-2`, `COU-3`, lisibilite en tant que monnaie), price a 0,5, deja compte dans sa borne de s27 (4,8/5) |
+| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | bandit-manchot-monnaie-cp | bandit manchot ; **item illustre (palier 1)** | **couvert-valide** (rejoue et reconfirme le 2026-09-03, s27, `DEC-0072` section 9) - **ligne entiere, restauree a son etat d'avant le correctif de couleur, pas une fermeture neuve de s27.** `nadia-prof` a rejoue les douze items sur les trois proprietes annoncees (`COU-2`, `COU-3`, lisibilite en tant que monnaie) et confirme VALIDE. `COU-2` et `COU-3` restent sans garde executable |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | bandit-manchot-comparer-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | bandit-manchot-semaine-cp | bandit manchot | **couvert-valide** (2026-09-01, s25) - **couverture partielle, mention exigee par `SEM` et reprise mot pour mot** : *"moitie 'se reperer dans la journee, la semaine' seule ; la moitie 'lire l'heure pleine sur une horloge' reste non couverte"*. **Sans cette mention, la ligne dirait plus que ce que le jeu sert** |
 | mathematiques | CP | Espace et geometrie | Se reperer et decrire des deplacements sur un quadrillage simple | - | - | non couvert |
@@ -534,7 +534,7 @@ Source : `squad/programme/francais/competences-cp.md`.
 | francais | CP | Langage oral et conscience phonologique | Denombrer les syllabes orales d'un mot (segmentation syllabique) | bandit-manchot-syllabes-cp | bandit manchot | couvert-valide |
 | francais | CP | Langage oral et conscience phonologique | Localiser une syllabe dans un mot (debut / milieu / fin) | bandit-manchot-position-syllabe-cp | bandit manchot ; champ d'item (`ADR-0075`) | **couvert-valide** (2026-09-01, s26) - `VOI-12` tenue |
 | francais | CP | Langage oral et conscience phonologique | Identifier un son (phoneme) dans un mot | bandit-manchot-son-dans-mot-cp | bandit manchot ; champ d'item (`ADR-0075`) | **couvert-valide** (2026-09-01, s26) - `VOI-12` tenue |
-| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp ; bandit-manchot-lettre-du-son-cp ; bandit-manchot-digraphe-du-son-cp | bandit manchot ; champ d'item (`ADR-0075`) | en cours - **`bandit-manchot-lettre-du-son-cp` et `bandit-manchot-digraphe-du-son-cp` sont livres et tous deux VALIDE (2026-09-01, s26), la ligne ne se ferme pourtant pas** : `nadia-prof`, barre du 2026-08-10, clause 1, exige les voyelles simples **et** les consonnes simples ; `bandit-manchot-lettre-du-son-cp` sert six consonnes (`p, m, t, r, l, s`) et aucun paquet servi n'a de voyelle simple en bonne reponse. **Un paquet de voyelles simples ferme cette ligne** - `nadia-prof` le dit d'avance, ses clauses 2, 3 et 4 etant deja remplies |
+| francais | CP | Lecture et comprehension de l'ecrit | Associer les graphemes aux phonemes (voyelles, consonnes simples, puis digraphes ch, ou, on...) | bandit-manchot-le-bon-son-cp ; bandit-manchot-lettre-du-son-cp ; bandit-manchot-digraphe-du-son-cp ; bandit-manchot-voyelle-du-son-cp | bandit manchot ; champ d'item a voix haute (`ADR-0075`) | **couvert-valide** (2026-09-03, s27) - **ligne fermee, seule fermeture du sprint.** `bandit-manchot-voyelle-du-son-cp` sert les quatre voyelles simples (`a, i, o, u`) en bonne reponse, seize sons verifies un par un par `nadia-prof` ; clauses 2, 3 et 4 de sa barre du 2026-08-10 deja remplies depuis s26. `VOI-9` (deux syllabes au plus) ne gouverne pas ce paquet - `nadia-prof` le dit d'avance dans `squad/conformite/FICHE-bandit-manchot-voyelle-du-son-cp.md`, section 6 : cette clause vise la ligne ou l'enfant ECRIT le mot, pas celle ou il designe la lettre du premier son |
 | francais | CP | Lecture et comprehension de l'ecrit | Decoder un mot regulier inconnu par assemblage syllabique | - | - | non couvert |
 | francais | CP | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court et simple avec fluidite croissante | - | - | non couvrable en l'etat |
 | francais | CP | Lecture et comprehension de l'ecrit | Comprendre un texte narratif tres court (questions explicites : qui, ou, quoi) | bandit-manchot-texte-narratif-cp | bandit manchot | **couvert-valide** (2026-08-31, s24, second passage - reserve levee) |
@@ -1269,11 +1269,11 @@ ligne "questionner le monde / CM1".
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| questionner le monde | CP | Le vivant, la matiere et les objets | Distinguer les êtres vivants des objets et de la matière inerte sur des exemples du quotidien. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Distinguer les êtres vivants des objets et de la matière inerte sur des exemples du quotidien. | bandit-manchot-vivant-non-vivant-cp | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, premier paquet de la matiere, ligne ouverte et non fermee (`nadia-prof` : *"un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"*). Huit items, quatre et quatre, deux propositions (precedent mesure sur trois autres paquets binaires deja valides). `VIV-R1`, non bloquante : `nombreDeManches: 7` sans decision produit ecrite - ratifie par DEC-0073 |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Identifier ce qui caractérise un être vivant : il naît, se nourrit, grandit, a des petits, meurt. | - | - | non couvert |
-| questionner le monde | CP | Le vivant, la matiere et les objets | Nommer les principales parties du corps humain et les cinq sens. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Nommer les principales parties du corps humain et les cinq sens. | bandit-manchot-corps-sens-cp | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE SOUS RESERVE**, premier paquet de la matiere, ligne ouverte et non fermee. `COR-R1` (reserve nommee, non bloquante) : un item sur huit fait douze mots contre une mediane de cinq et emploie *rugueux*, hors vocabulaire de CP ; non bloquant car le mot dur ne porte pas la reponse - `nadia-prof` applique le meme test que sur *ceremonial* en histoire CM1, *"je dois le tenir dans les deux sens"*. Correction proposee par elle, a appliquer par `lea-dev`. Meme reserve `nombreDeManches: 7` que les deux autres paquets, ratifie par DEC-0073 |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Connaître quelques règles d'hygiène de vie (sommeil, alimentation, hygiène du corps) et leur effet sur la santé. | - | - | non couvert |
-| questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les états de l'eau (solide, liquide) et les changements d'état observables. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les états de l'eau (solide, liquide) et les changements d'état observables. | bandit-manchot-etats-eau-cp | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, premier paquet de la matiere, ligne ouverte et non fermee. Meme reserve non bloquante que les deux autres paquets de la matiere : `nombreDeManches: 7` sans decision produit ecrite - ratifie par DEC-0073 |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Identifier de quelle matière un objet est fait et trier des matériaux selon une propriété simple. | - | - | non couvert |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Identifier la fonction d'un objet technique du quotidien et nommer ses parties. | - | - | non couvert |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les objets numériques du quotidien et quelques règles simples de leur usage. | - | - | non couvert |
@@ -1303,23 +1303,26 @@ paquet), `BIA-5` sur les lignes 5 a 8 (aucun jugement de valeur sur un personnag
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer et ordonner les grandes périodes historiques sur une frise (Préhistoire, Antiquité, Moyen Âge, Temps modernes, époque contemporaine). | - | - | non couvert |
-| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer un fait dans un siècle ou un millénaire et ordonner des faits les uns par rapport aux autres. | - | - | non couvert |
-| histoire-geographie | CM1 | Et avant la France ? | Identifier les traces d'une occupation ancienne du territoire et ce que les Gaulois, les Grecs et les Romains y ont laissé. | - | - | non couvert |
-| histoire-geographie | CM1 | Et avant la France ? | Identifier les grands mouvements et déplacements de populations du IVe au Xe siècle et leurs effets sur le territoire. | - | - | non couvert |
-| histoire-geographie | CM1 | Le temps des rois | Nommer et situer dans le temps quelques rois qui ont marqué la construction du royaume (Louis IX, François Ier, Henri IV, Louis XIV). | - | - | non couvert |
-| histoire-geographie | CM1 | Le temps des rois | Associer chacun de ces rois à un fait ou à une réalisation qui le caractérise (la croisade, la Renaissance, l'édit de Nantes, Versailles). | - | - | non couvert |
-| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Situer les événements majeurs de la Révolution française (1789, l'abolition des privilèges, la Déclaration des droits de l'homme et du citoyen, la fin de la monarchie). | - | - | non couvert |
-| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Identifier le passage de la Révolution à l'Empire et ce que Napoléon Bonaparte y change. | - | - | non couvert |
+| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer et ordonner les grandes périodes historiques sur une frise (Préhistoire, Antiquité, Moyen Âge, Temps modernes, époque contemporaine). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer un fait dans un siècle ou un millénaire et ordonner des faits les uns par rapport aux autres. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Et avant la France ? | Identifier les traces d'une occupation ancienne du territoire et ce que les Gaulois, les Grecs et les Romains y ont laissé. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Et avant la France ? | Identifier les grands mouvements et déplacements de populations du IVe au Xe siècle et leurs effets sur le territoire. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Le temps des rois | Nommer et situer dans le temps quelques rois qui ont marqué la construction du royaume (Louis IX, François Ier, Henri IV, Louis XIV). | - | - | non couvert - ligne 5, laissee de cote par ce premier paquet (`nadia-prof`, `cm1-histoire-geographie.yaml`) ; a servir dans un paquet ulterieur. |
+| histoire-geographie | CM1 | Le temps des rois | Associer chacun de ces rois à un fait ou à une réalisation qui le caractérise (la croisade, la Renaissance, l'édit de Nantes, Versailles). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Situer les événements majeurs de la Révolution française (1789, l'abolition des privilèges, la Déclaration des droits de l'homme et du citoyen, la fin de la monarchie). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Identifier le passage de la Révolution à l'Empire et ce que Napoléon Bonaparte y change. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
 | histoire-geographie | CM1 | Se reperer dans l'espace : construire des reperes geographiques | Se repérer sur une carte de France et sur un planisphère (océans, continents, quelques repères physiques, quelques grandes villes). | - | - | non couvert - palier 2 requis (se reperer sur une carte) ; un quiz de noms ne sert pas la competence, `nadia-prof` le nomme explicitement. |
 | histoire-geographie | CM1 | Se reperer dans l'espace : construire des reperes geographiques | Situer son lieu de vie à différentes échelles (commune, département, région, France, Europe, monde). | - | - | non couvert - meme motif : palier 2 requis, non construit a ce jour ; le lieu de vie de l'enfant n'est pas connu du produit (`DEC-0028`, aucune persistance). |
-| histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Identifier les caractéristiques d'un lieu de vie et le distinguer d'un autre (espace urbain, espace périurbain, espace rural). | - | - | non couvert |
-| histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Décrire comment on se loge, on travaille, on se cultive et on se déplace dans un espace urbain et dans un espace touristique. | - | - | non couvert |
-| histoire-geographie | CM1 | Consommer en France | Identifier d'où viennent l'eau, l'énergie et les aliments consommés, et les étapes de leur acheminement. | - | - | non couvert |
-| histoire-geographie | CM1 | Comprendre un document | Comprendre un document (texte, carte, image) : identifier sa nature, sa date et son auteur, et en extraire une information. | - | - | non couvert - jouable sur le seul document textuel ; document image ou carte hors de portee. Mention exigee d'avance : "document textuel seul ; carte et image restent non couvertes". |
+| histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Identifier les caractéristiques d'un lieu de vie et le distinguer d'un autre (espace urbain, espace périurbain, espace rural). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Décrire comment on se loge, on travaille, on se cultive et on se déplace dans un espace urbain et dans un espace touristique. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Consommer en France | Identifier d'où viennent l'eau, l'énergie et les aliments consommés, et les étapes de leur acheminement. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
+| histoire-geographie | CM1 | Comprendre un document | Comprendre un document (texte, carte, image) : identifier sa nature, sa date et son auteur, et en extraire une information. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. |
 
-**Bilan** : 14 lignes, 14 `non couvert`, 0 `non couvrable en l'etat`. Les 14 lignes entrent au
-denominateur atteignable.
+**Bilan du 2026-09-03 (s27)** : 14 lignes. Onze passent `non couvert` -> `en cours` (premier
+paquet de la matiere, `bandit-manchot-histoire-geographie-cm1`, VALIDE). Trois restent `non
+couvert` : la ligne 5 (les rois), volontairement laissee de cote par ce premier paquet, et les
+lignes 9 et 10 (carte, planisphere, echelles), hors de portee du palier 1. Aucune ligne ne passe
+`couvert-valide` : premier paquet de matiere neuve, il ouvre, il ne ferme pas.
 
 ## Langues vivantes (anglais) - CP (cycle 2)
 
@@ -3758,3 +3761,87 @@ lot en plusieurs fichiers (un fichier par competence, pour les besoins de cette 
 fichiers : verification faite sur les stories `S27-1` a `S27-3` de `docs/backlog/backlog.md` et
 sur `DEC-0072`, aucune des deux ne suppose qu'un lot tienne dans un seul fichier. Rien n'y est donc
 corrige par cette mise a jour.
+
+## Synthese apres les verdicts du sprint 27 (2026-09-03) - six verdicts, aucun refus, une seule fermeture
+
+`nadia-prof` a joue les six lots (branche `matieres-absentes`, commit `430648e`, arbre `round-two`
+a `d259b5f`) et prononce six Done pedagogiques, aucun refus.
+
+| Lot | Verdict | Mouvement de ligne |
+|---|---|---|
+| Voyelles (`bandit-manchot-voyelle-du-son-cp`) | **VALIDE** | `en cours` -> **`couvert-valide`** |
+| Vivant ou objet (`bandit-manchot-vivant-non-vivant-cp`) | **VALIDE** | `non couvert` -> `en cours` |
+| L'eau solide ou liquide (`bandit-manchot-etats-eau-cp`) | **VALIDE** | `non couvert` -> `en cours` |
+| Le corps et les sens (`bandit-manchot-corps-sens-cp`) | **VALIDE SOUS RESERVE** (`COR-R1`, non bloquante) | `non couvert` -> `en cours` |
+| Histoire et geographie (`bandit-manchot-histoire-geographie-cm1`) | **VALIDE** | onze lignes `non couvert` -> `en cours` |
+| Rejeu de la monnaie (`bandit-manchot-monnaie-cp`) | **VALIDE**, Done rendu | `en cours` -> **`couvert-valide`** |
+
+**La ligne des graphemes se ferme - la seule fermeture du sprint**, comme `nadia-prof` l'avait
+annonce d'avance (`squad/programme/MATRICE-couverture.md`, section "Rang recommande pour s27"). Le
+rejeu de la monnaie **restaure** une ligne deja fermee avant le sprint, suspendue en cours de route
+par le correctif de couleur : ce n'est pas une seconde fermeture de s27.
+
+**Discipline tenue, explicitement** : les deux matieres neuves (questionner le monde, histoire-
+geographie) **ouvrent** leurs lignes, elles n'en **ferment** aucune. Quatorze lignes passent `non
+couvert` -> `en cours` (trois de questionner le monde, onze d'histoire-geographie) ; **zero** passe
+`couvert-valide`. Rien dans cette synthese ne doit suggerer que s27 a couvert deux matieres :
+il les a ouvertes.
+
+### Le recompte, par ma methode, independant de tout chiffre transmis
+
+Comptage ligne a ligne des huit tableaux de cette matrice apres application des six verdicts.
+
+| | Avant les verdicts (2026-09-03, matin) | Apres les six verdicts |
+|---|---|---|
+| `couvert-valide` | 33 | **35** |
+| `en cours` | 2 | **14** |
+| `non couvert` | 40 | **26** |
+| `non couvrable en l'etat` | 15 | 15 |
+| Total | 90 | 90 |
+| Denominateur atteignable | 75 | 75 |
+| **Taux** | **33 / 75 = 44,0 %** | **35 / 75 = 46,7 %** |
+
+**35 / 75 = 0,4666... : 46,7 % arrondi.**
+
+### Ce que le vert ne prouve pas, et qui doit rester ecrit
+
+`nadia-prof` maintient **sept conditions sans garde executable**, sur les six lots de ce sprint :
+`VOI-3`, `VOI-5`, `VOI-8` (ce que l'adulte fait reellement de sa voix, paquet des voyelles),
+`COU-2`, `COU-3` (rendu en niveaux de gris et lisibilite du chiffre grave, paquet de la monnaie),
+`HIS-2` (aucun item a deux reponses defendables, paquet d'histoire-geographie), et **l'exactitude
+factuelle** sur les deux matieres ou elle n'est pas la source (histoire-geographie, et dans une
+moindre mesure questionner le monde). **Rien dans cette matrice ne doit suggerer le contraire** :
+un statut `couvert-valide` ou `en cours` obtenu ici ne signifie jamais que ces sept proprietes sont
+gardees par un test.
+
+### La borne de `nadia-prof`
+
+**4,8 sur une borne de 5, tenue en pratique. Rien decline, rien echantillonne** - `cp-voyelle-du-
+son` (1,0) + questionner le monde (1,8, prorata sur 24 items en trois fichiers) +
+`cm1-histoire-geographie` (1,5) + rejeu de `cp-monnaie` (0,5), section precedente.
+
+### Deux points portes dans les fiches de conformite, pas ici
+
+- **`VOI-9` ne gouverne pas le paquet des voyelles** : ecrit d'avance par `nadia-prof` dans
+  `squad/conformite/FICHE-bandit-manchot-voyelle-du-son-cp.md`, section 6, et repris dans la ligne
+  des graphemes ci-dessus.
+- **`COR-R1`** (item de douze mots, mot hors niveau *rugueux*, non bloquant) : ecrit dans
+  `squad/conformite/FICHE-bandit-manchot-corps-sens-cp.md`, section 4, et repris dans la ligne
+  "corps et sens" ci-dessus.
+
+### Une reserve neuve, datee, qui n'est pas une dette de s27
+
+`nadia-prof` signale que la consigne et l'enonce se repetent sur les trois paquets a voix
+(`bandit-manchot-lettre-du-son-cp`, `bandit-manchot-digraphe-du-son-cp`,
+`bandit-manchot-voyelle-du-son-cp`), et que l'indice d'un des trois frole une condition sur ce que
+l'adulte doit dire. Ses mots : *"les deux textes sont identiques dans les paquets que j'ai valides
+a s26 sans les voir. Je vois plus loin ; je l'ecris comme neuf, pas comme un durcissement de
+l'ancien."* **C'est de la matiere pour s28**, tracee dans `docs/backlog/backlog.md`, pas une dette
+de s27 : aucune des trois lignes concernees n'est remise en cause par cette reserve.
+
+### Ce que cette synthese ne fait pas
+
+- Elle ne prononce aucun Done : les six verdicts sont de `nadia-prof`.
+- Elle ne ratifie pas elle-meme `nombreDeManches: 7` : c'est `DEC-0073`, deja rendue.
+- Elle ne fixe aucun perimetre pour s28.
+
