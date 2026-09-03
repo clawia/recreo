@@ -1,0 +1,16 @@
+schema: 1
+id: paquet-sain
+type: question
+descripteur:
+  matiere: "Matiere de contre-exemple"
+  niveau: "CE2"
+  domaine: "Un domaine de contre-exemple"
+  competence: "Une premiere competence de contre-exemple."
+lignesDeReferentiel: ["FAU-CE2-01"]
+items:
+  - enonce: "Un enonce de contre-exemple ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+  - enonce: "Un autre enonce de contre-exemple ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]

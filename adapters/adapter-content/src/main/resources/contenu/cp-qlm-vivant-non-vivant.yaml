@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Le vivant, la matière et les objets"
   competence: "Distinguer les êtres vivants des objets et de la matière inerte sur des exemples du quotidien."
+lignesDeReferentiel: ["QLM-CP-01"]
 #
 # S27-2 (backlog S27-2). Premier paquet de la matiere "Questionner le monde" (CP),
 # matiere neuve du produit. Referentiel copie conforme depuis l'arbitrage de nadia-prof

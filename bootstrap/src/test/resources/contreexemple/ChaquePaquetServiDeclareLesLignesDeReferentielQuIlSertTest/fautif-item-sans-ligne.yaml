@@ -1,0 +1,16 @@
+schema: 1
+id: fautif-item-sans-ligne
+type: question
+descripteur:
+  matiere: "Matiere de contre-exemple"
+  niveau: "CE2"
+  domaine: "Un domaine de contre-exemple"
+  competence: "Deux competences enumerees dans une seule chaine."
+lignesDeReferentiel: ["FAU-CE2-01", "FAU-CE2-02"]
+items:
+  - enonce: "Un enonce d'un paquet qui sert deux lignes sans dire laquelle ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+  - enonce: "Un second enonce du meme paquet ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]

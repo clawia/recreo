@@ -1,0 +1,13 @@
+schema: 1
+id: fautif-ligne-inconnue
+type: question
+descripteur:
+  matiere: "Matiere de contre-exemple"
+  niveau: "CE2"
+  domaine: "Un domaine de contre-exemple"
+  competence: "Une premiere competence de contre-exemple."
+lignesDeReferentiel: ["FAU-CE2-09"]
+items:
+  - enonce: "Un enonce rattache a une ligne que rien ne declare ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]

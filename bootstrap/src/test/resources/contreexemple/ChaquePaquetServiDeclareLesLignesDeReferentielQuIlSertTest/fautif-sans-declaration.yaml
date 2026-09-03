@@ -1,0 +1,12 @@
+schema: 1
+id: fautif-sans-declaration
+type: question
+descripteur:
+  matiere: "Matiere de contre-exemple"
+  niveau: "CE2"
+  domaine: "Un domaine de contre-exemple"
+  competence: "Une premiere competence de contre-exemple."
+items:
+  - enonce: "Un enonce que rien ne rattache a une ligne ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]

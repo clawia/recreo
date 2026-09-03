@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Le vivant, la matière et les objets"
   competence: "Reconnaître les états de l'eau (solide, liquide) et les changements d'état observables."
+lignesDeReferentiel: ["QLM-CP-05"]
 #
 # S27-2 (backlog S27-2). Troisieme paquet de la matiere "Questionner le monde" (CP).
 # Referentiel copie conforme depuis l'arbitrage de nadia-prof
