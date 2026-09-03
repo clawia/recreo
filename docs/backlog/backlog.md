@@ -9418,3 +9418,36 @@ s'ecrira : `REC-1` a `REC-6` (si illustre), `BIA-1`, `BIA-2`, `ANG-S1`, `ANG-S2`
 **Aucune story de developpement n'est ecrite ici** : les deux points non tranches doivent l'etre
 avant, meme regle que pour les candidats de niveau 2 de `DEC-0051`.
 - **Lien decision** : `DEC-0072`.
+
+## Reserve pour s28 - la consigne et l'enonce se repetent sur les trois paquets a voix (`nadia-prof`, s27)
+
+En rendant son Done pedagogique sur `bandit-manchot-voyelle-du-son-cp` (s27),
+`nadia-prof` a trouve une reserve qui touche aussi les deux paquets a voix deja valides a s26
+(`bandit-manchot-lettre-du-son-cp`, `bandit-manchot-digraphe-du-son-cp`). Ses mots, a citer tels
+quels : *"les deux textes sont identiques dans les paquets que j'ai valides a s26 sans les voir. Je
+vois plus loin ; je l'ecris comme neuf, pas comme un durcissement de l'ancien."*
+
+**Ce n'est pas une dette de s27** : aucune des trois lignes de matrice concernees (graphemes,
+deja `couvert-valide`) n'est remise en cause. C'est de la matiere posee pour s28.
+
+**Deux reserves non bloquantes, ecrites par `nadia-prof` dans
+`squad/conformite/FICHE-bandit-manchot-voyelle-du-son-cp.md`, section 7, valables sur les trois
+paquets** :
+
+- **`VOY-R1`** - la consigne et l'enonce disent deux fois la meme chose a l'ecran (*"Ecoute
+  l'adulte lire le mot, puis choisis..."* puis *"Ecoute l'adulte, puis choisis..."*), pour un
+  enfant qui lit peu et lentement.
+- **`VOY-R2`** - l'indice invite l'adulte a un geste que `VOI-3` interdit (*"redire le mot
+  doucement"*, a un pas du decoupage syllabique). Piste fournie par `nadia-prof` : *"Demande a
+  l'adulte de redire le mot en entier."*
+
+**Aucune story de developpement n'est ecrite ici** : le perimetre de s28 n'est pas ouvert. Cette
+matiere est posee pour qu'elle ne soit pas perdue, meme regle que pour les autres reserves de ce
+fichier qui attendent l'ouverture d'un sprint.
+
+**Agent pressenti** : `camille-po` pour la story, une fois s28 ouvert ; `lea-dev` ou `marc-dev`
+pour la correction (trois fichiers de contenu a voix) ; `nadia-prof` pour la reverification.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-voyelle-du-son-cp.md`, section 7 (`VOY-R1`,
+  `VOY-R2`) ; `squad/programme/MATRICE-couverture.md`, section "Synthese apres les verdicts du
+  sprint 27".
+
