@@ -10987,3 +10987,28 @@ l'ecran d'accueil, ce qui est un regard et non un audit.
 toujours - la borne *"(puis 20)"* de la competence reste hors du perimetre de ce jeu. **C'est une
 des raisons pour lesquelles j'ai ecarte `"Additionne jusqu'a 10"`** : un titre qui grave la borne
 devient faux le jour ou elle bouge.
+
+## Amendement du 2026-09-03 (`nadia-prof`) - `S1-8` retrecie, ma reserve 6 corrigee sur un point
+
+**Le titre « Les petites additions » a fait rougir `CatalogueChargeableIT` sur `S1-8`**, l'assertion
+nee de la reserve 6 de cette fiche. Trois faits mesures par `theo-archi`, verifies et etendus par
+moi : l'assertion refuse la sous-chaine `"ti"` **quelle que soit sa prononciation**, sa population
+est un identifiant de jeu ecrit en dur, et **quatre titres servis et valides par moi portent le meme
+grapheme /sj/** - *Les petites soustractions*, *Les tables de multiplication*, *Les fractions
+simples*, *La position du son*.
+
+**Ce que ma reserve 6 disait reste exact** : le grapheme *ti* prononce /sj/ n'est pas une
+acquisition de CP. **Ce que j'en concluais est faux** : retirer ce grapheme ne rend pas un titre
+decodable par un CP - *soustractions* ne l'est pas davantage sans lui -, et un libelle de menu n'est
+pas un exercice de dechiffrage. **Je ne peux pas opposer a un cinquieme titre une barre que j'ai
+levee quatre fois sans la voir.**
+
+**Le grapheme cesse d'etre un critere de titre. Les quatre titres servis sont reconduits.** La
+propriete que je propose de garder a la place - **aucun titre ne porte le niveau de l'enfant**,
+population de quarante, une seule violation - et le detail complet :
+`squad/conformite/ARBITRAGE-s27-s1-8-retrecie-unite-de-ma-borne-et-trois-faits-d-histoire.md`,
+section 1.
+
+**Le reste de la reserve 6 n'est pas touche** : *"Manche suivante"*, *"Score : 1 / 2"* et les
+registres d'adulte restaient et restent des defauts, et ils ont ete corriges a s01 pour ce motif.
+Seul le critere de grapheme tombe.
