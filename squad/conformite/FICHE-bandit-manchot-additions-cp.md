@@ -10963,3 +10963,27 @@ tenu.
 Le texte complet, avec les commandes de mesure, les releves et les conditions numerotees, est dans
 `FICHE-bandit-manchot-reperes-cm1.md`, section "Arbitrage du 2026-08-27 (s21) - `S21-3`". Il n'est
 pas recopie ici pour qu'il ne puisse pas y pourrir a moitie.
+
+
+---
+
+## Note du 2026-09-02 (`nadia-prof`) - le titre change, mon Done ne bouge pas
+
+**Le titre `"Calcul CP"` devient `"Les petites additions"`** - arbitrage rendu ce jour,
+`squad/conformite/ARBITRAGE-s27-titre-du-jeu-d-additions-et-portee-de-ma-clause-sur-la-couleur.md`,
+section 1.
+
+Deux motifs, et le second n'avait pas ete nomme : le **niveau**, que ce titre est le seul des
+quarante a porter et qu'un enfant n'a pas besoin qu'on lui rappelle ; et la
+**sous-specification** - *calcul* couvre l'addition et la soustraction, alors que ce jeu ne sert
+que des additions et que le jeu frere s'appelle *"Les petites soustractions"*. **Retirer le seul
+`"CP"` aurait laisse le second defaut en place.**
+
+**Mon Done du 2026-08-06 sur ce paquet n'est pas touche** : il porte sur les items, et aucun item,
+aucune reponse, aucun distracteur ne bouge. **Aucun rejeu n'est du** ; je regarde le titre a
+l'ecran d'accueil, ce qui est un regard et non un audit.
+
+**Ce que ce titre ne doit pas devenir** : la reserve attachee a mon verdict du 2026-08-06 tient
+toujours - la borne *"(puis 20)"* de la competence reste hors du perimetre de ce jeu. **C'est une
+des raisons pour lesquelles j'ai ecarte `"Additionne jusqu'a 10"`** : un titre qui grave la borne
+devient faux le jour ou elle bouge.

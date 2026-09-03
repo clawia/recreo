@@ -1,0 +1,125 @@
+schema: 1
+id: cp-voyelle-du-son
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Associer les graphèmes aux phonèmes (voyelles, consonnes simples, puis digraphes ch, ou, on...)"
+#
+# S27-1 (DEC-0069, rang 1 ; backlog S27-1). Clause 1 de la ligne "associer les graphemes aux
+# phonemes" (voyelles simples et consonnes simples) - la seule clause qui manquait apres s26, les
+# clauses 2, 3 et 4 etant deja remplies (nadia-prof, barre du 2026-08-10 ; DEC-0069, section 4).
+# cp-le-bon-son.yaml n'est pas touche par ce lot (clause 3, intacte, cout de 15 items pour rien
+# deja chiffre par theo-archi a s26).
+#
+# Lecture retenue sur le jeu de lettres (choix entre deux lectures de la clause 1, S27-1 critere 1
+# : "a, e, i, o, u, ou un sous-ensemble couvrant au moins une voyelle simple en bonne reponse par
+# item") : quatre voyelles (a, i, o, u), pas cinq. "e" est ecarte deliberement - au debut d'un mot
+# francais courant, la lettre "e" seule ne porte quasiment jamais le son qu'un enfant de CP associe
+# a son nom (école, éléphant s'ecrivent avec un accent qui change le grapheme ; "e" initial non
+# accentue ne se rencontre en pratique que sur des mots rares ou abstraits). Enseigner "e" -> [e]
+# sur un mot qui ne le prononce pas ainsi serait une erreur de fait, pas une simplification : le
+# meme risque qui a coute cinq refus a s26 sur une clause juste en intention et fausse en extension.
+# Le critere d'acceptation autorise explicitement un sous-ensemble ; quatre voyelles couvrent la
+# clause 1 sans ce risque.
+#
+# VOI-7 : l'adulte dit le mot entier, jamais le grapheme isole - texteAVoixHaute porte toujours le
+# mot complet, jamais la lettre seule.
+#
+# L'enonce nomme "le tout premier son" avant toute reponse, formulation validee par nadia-prof a
+# s26 (correctif du second motif de son refus sur cp-lettre-du-son) et reprise ici a l'identique.
+#
+# Condition de distribution (meme forme que cp-lettre-du-son) : chaque lettre servie est
+# distracteur au moins aussi souvent qu'elle est reponse. Quatre voyelles, quatre items chacune
+# (16 items). Compte reel, reponse / distracteur :
+#   a : réponse 4, distracteur 8   i : réponse 4, distracteur 8
+#   o : réponse 4, distracteur 8   u : réponse 4, distracteur 8
+# Chaque voyelle est distracteur deux fois plus souvent qu'elle n'est réponse - même ratio que
+# cp-lettre-du-son.
+#
+# Verifie contre le contenu servi (S27-1, critere 2) : aucun mot choisi ne commence par une voyelle
+# nasale ("an", "on", "en", "in", "un") ni par un digraphe ("ou", "oi") - ces sons appartiennent a
+# d'autres lignes (cp-le-bon-son, cp-digraphe-du-son) et ne doivent pas etre confondus avec une
+# voyelle simple.
+items:
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "a"
+    distracteurs: ["i", "o"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est ami."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "a"
+    distracteurs: ["i", "o"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est arbre."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "a"
+    distracteurs: ["i", "o"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est avion."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "a"
+    distracteurs: ["i", "o"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est abricot."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "i"
+    distracteurs: ["o", "u"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est igloo."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "i"
+    distracteurs: ["o", "u"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est image."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "i"
+    distracteurs: ["o", "u"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est iguane."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "i"
+    distracteurs: ["o", "u"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est ici."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "o"
+    distracteurs: ["u", "a"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est orange."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "o"
+    distracteurs: ["u", "a"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est os."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "o"
+    distracteurs: ["u", "a"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est olive."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "o"
+    distracteurs: ["u", "a"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est ogre."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "u"
+    distracteurs: ["a", "i"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est usine."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "u"
+    distracteurs: ["a", "i"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est uniforme."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "u"
+    distracteurs: ["a", "i"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est ustensile."
+  - enonce: "Écoute l'adulte, puis choisis la lettre qui fait le tout premier son."
+    bonneReponse: "u"
+    distracteurs: ["a", "i"]
+    indice: "Demande à l'adulte de redire le mot doucement, puis écoute le tout premier son."
+    texteAVoixHaute: "Le mot est utile."

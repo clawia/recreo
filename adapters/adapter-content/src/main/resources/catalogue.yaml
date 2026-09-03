@@ -245,3 +245,34 @@ jeux:
     paquet: cp-mot-dicte
     nombreDeManches: 7
     consigneAdulte: "Dites le mot autant de fois qu'il le demande, mais ne l'épelez jamais. Ne montrez pas cette ligne à l'enfant."
+  - id: bandit-manchot-voyelle-du-son-cp
+    titre: "La bonne voyelle"
+    consigne: "Écoute l'adulte lire le mot, puis choisis la lettre qui fait le tout premier son."
+    mecanique: bandit-manchot
+    paquet: cp-voyelle-du-son
+    nombreDeManches: 10
+    consigneAdulte: "Dites le mot entier, jamais le son tout seul. Ne montrez pas cette ligne à l'enfant."
+  - id: bandit-manchot-vivant-non-vivant-cp
+    titre: "Vivant ou objet"
+    consigne: "Lis bien, puis dis si c'est un être vivant ou un objet."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-vivant-non-vivant
+    nombreDeManches: 7
+  - id: bandit-manchot-corps-sens-cp
+    titre: "Le corps et les sens"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-corps-sens
+    nombreDeManches: 7
+  - id: bandit-manchot-etats-eau-cp
+    titre: "L'eau solide ou liquide"
+    consigne: "Lis bien, puis dis si c'est solide ou liquide."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-etats-eau
+    nombreDeManches: 7
+  - id: bandit-manchot-histoire-geographie-cm1
+    titre: "Histoire et géographie"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-histoire-geographie
+    nombreDeManches: 10

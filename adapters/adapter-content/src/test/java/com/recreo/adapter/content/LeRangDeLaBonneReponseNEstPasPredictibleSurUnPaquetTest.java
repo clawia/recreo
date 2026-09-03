@@ -463,7 +463,39 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " aucun rang. Meme motif que cp-complements-10-saisie (lot 5a de s24, decision"
                     + " 10) - la propriete decrit une strategie de pression sur des propositions, et"
                     + " en saisie il n'y a ni bouton ni ordre a exploiter. Mesure du 2026-09-01 sur"
-                    + " le paquet servi : 12 items, aucun distracteur"));
+                    + " le paquet servi : 12 items, aucun distracteur"),
+            // S27-1 : entree neuve, associer une voyelle simple au son entendu, CP (DEC-0069, rang 1).
+            Map.entry("cp-voyelle-du-son",
+            "16 items sur 16 portent deux distracteurs (trois propositions), mais aucune des 48"
+                    + " propositions n'est numerique : ce sont des voyelles simples (\"a\", \"i\","
+                    + " \"o\", \"u\"), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-02 sur le paquet servi : aucune des 48 propositions ne"
+                    + " commence par un chiffre"),
+            // S27-2 : premier paquet de "Questionner le monde" (CP), matiere neuve du produit.
+            Map.entry("cp-qlm-vivant-non-vivant",
+            "8 items sur 8 portent un seul distracteur, donc deux propositions - hors du domaine au"
+                    + " meme titre que cp-son-dans-mot - et les deux propositions sont toujours les"
+                    + " memes deux categories (\"un être vivant\", \"un objet\"), jamais une valeur"
+                    + " numerique. Mesure du 2026-09-02 sur le paquet servi"),
+            Map.entry("cp-qlm-corps-sens",
+            "8 items sur 8 portent deux distracteurs (trois propositions), mais aucune des 24"
+                    + " propositions n'est numerique : ce sont des noms de parties du corps (\"les"
+                    + " oreilles\", \"les yeux\", \"le nez\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-02 sur le paquet servi :"
+                    + " aucune des 24 propositions ne commence par un chiffre"),
+            Map.entry("cp-qlm-etats-eau",
+            "8 items sur 8 portent un seul distracteur, donc deux propositions - meme motif que"
+                    + " cp-qlm-vivant-non-vivant - et les deux propositions sont toujours les memes"
+                    + " deux etats (\"solide\", \"liquide\"), jamais une valeur numerique. Mesure du"
+                    + " 2026-09-02 sur le paquet servi"),
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
+            Map.entry("cm1-histoire-geographie",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des noms de periodes, de peuples, de"
+                    + " rois, d'evenements ou de lieux, et des dates toujours ecrites en toutes"
+                    + " lettres ou precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe"
+                    + " rend null sur les trois propositions de chaque item. Mesure du 2026-09-02 sur"
+                    + " le paquet servi : aucune des 60 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
