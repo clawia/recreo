@@ -171,6 +171,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-lettre-du-son-cp",
             "bandit-manchot-digraphe-du-son-cp",
             "saisie-mot-dicte-cp",
+            // S27-1 (DEC-0069, rang 1) : entree neuve, derniere clause de la ligne "associer les
+            // graphemes aux phonemes" (voyelles simples).
+            "bandit-manchot-voyelle-du-son-cp",
+            // S27-2 (backlog S27-2) : trois entrees neuves, premier paquet de "Questionner le monde"
+            // (CP), matiere neuve du produit.
+            "bandit-manchot-vivant-non-vivant-cp",
+            "bandit-manchot-corps-sens-cp",
+            "bandit-manchot-etats-eau-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -239,6 +247,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La bonne lettre",
             "Le bon groupe de lettres",
             "Écris le mot dicté",
+            // S27-1 : titre neuf.
+            "La bonne voyelle",
+            // S27-2 : trois titres neufs.
+            "Vivant ou objet",
+            "Le corps et les sens",
+            "L'eau solide ou liquide",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -309,6 +323,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Écoute l'adulte lire le mot, puis choisis la lettre qui fait le tout premier son.",
             "Écoute l'adulte lire le mot, puis choisis le groupe de lettres qui fait ce son.",
             "Écoute le mot que l'adulte va dire, puis écris-le.",
+            // S27-2 : trois consignes neuves. La consigne de cp-voyelle-du-son (S27-1) est reprise
+            // a l'identique de "bandit-manchot-lettre-du-son-cp" ci-dessus, aucune entree neuve.
+            "Lis bien, puis dis si c'est un être vivant ou un objet.",
+            "Lis bien la question, puis choisis la bonne réponse.",
+            "Lis bien, puis dis si c'est solide ou liquide.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -318,6 +337,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
             "Mathématiques",
             "Français",
+            // S27-2 : matiere neuve du produit.
+            "Questionner le monde",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -332,6 +353,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Espace et géométrie",
             // S26-L5 : domaine neuf, premier paquet de ce domaine.
             "Écriture",
+            // S27-2 : domaine neuf, premier paquet de "Questionner le monde" (les trois paquets
+            // de ce lot partagent ce meme domaine, ligne 1, 3 et 5 du referentiel).
+            "Le vivant, la matière et les objets",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -413,7 +437,18 @@ class TexteAccentueExposeParLePortEntrantTest {
             // deja presente ci-dessus (paquet cp-le-bon-son, S19-5) : aucune entree neuve.
             // S26-L5 : competence neuve, premier paquet du domaine "Écriture".
             "Écrire de manière autonome un mot simple en respectant les correspondances "
-                    + "graphème/phonème connues");
+                    + "graphème/phonème connues",
+            // S27-1 : cp-voyelle-du-son partage la competence "Associer les graphèmes aux
+            // phonèmes..." deja presente ci-dessus (paquet cp-le-bon-son, S19-5) : aucune entree
+            // neuve.
+            // S27-2 : trois competences neuves, copiees conformes du referentiel de nadia-prof
+            // (ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md, section 4, lignes
+            // 1, 3 et 5).
+            "Distinguer les êtres vivants des objets et de la matière inerte sur des exemples "
+                    + "du quotidien.",
+            "Nommer les principales parties du corps humain et les cinq sens.",
+            "Reconnaître les états de l'eau (solide, liquide) et les changements d'état "
+                    + "observables.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

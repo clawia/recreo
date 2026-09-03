@@ -1,0 +1,58 @@
+schema: 1
+id: cp-qlm-etats-eau
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Reconnaître les états de l'eau (solide, liquide) et les changements d'état observables."
+#
+# S27-2 (backlog S27-2). Troisieme paquet de la matiere "Questionner le monde" (CP).
+# Referentiel copie conforme depuis l'arbitrage de nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md, section 4,
+# ligne 5) : "un mot change, la ligne n'est plus la mienne" - le libelle de competence ci-dessus est
+# recopie a l'identique.
+#
+# Ce paquet OUVRE cette ligne, il ne la FERME pas (nadia-prof, section 8.4 de son arbitrage) - meme
+# mention que cp-qlm-vivant-non-vivant et cp-qlm-corps-sens.
+#
+# Perimetre tenu au mot pres du referentiel : la competence nomme deux etats, "solide" et
+# "liquide" - pas "gazeux". Aucun distracteur, aucun item n'introduit un troisieme etat.
+#
+# Forme : classification binaire (solide / liquide), six items de reconnaissance directe et deux
+# items de changement d'etat observable (fonte, gel). Huit items, quatre par categorie - compte
+# reel :
+#   solide : réponse 4 (50,0 %)   liquide : réponse 4 (50,0 %)
+items:
+  - enonce: "La glace, est-ce solide ou liquide ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide"]
+    indice: "On peut la tenir dans la main sans qu'elle coule."
+  - enonce: "Un glaçon, est-ce solide ou liquide ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide"]
+    indice: "Il garde sa forme dans le verre."
+  - enonce: "La neige, est-ce solide ou liquide ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide"]
+    indice: "On peut en faire une boule qui garde sa forme."
+  - enonce: "Le jus dans un verre, est-ce solide ou liquide ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide"]
+    indice: "Il coule et prend la forme du verre."
+  - enonce: "L'eau du robinet, est-ce solide ou liquide ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide"]
+    indice: "Elle coule et prend la forme du verre."
+  - enonce: "La pluie, est-ce solide ou liquide ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide"]
+    indice: "Elle coule le long des vitres."
+  - enonce: "Quand la glace fond, l'eau est-elle solide ou liquide ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide"]
+    indice: "Fondre, c'est passer du solide à ce deuxième état."
+  - enonce: "Quand l'eau liquide gèle, l'eau est-elle solide ou liquide ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide"]
+    indice: "Geler, c'est le contraire de fondre."

@@ -1,0 +1,61 @@
+schema: 1
+id: cp-qlm-corps-sens
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Nommer les principales parties du corps humain et les cinq sens."
+#
+# S27-2 (backlog S27-2). Deuxieme paquet de la matiere "Questionner le monde" (CP).
+# Referentiel copie conforme depuis l'arbitrage de nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md, section 4,
+# ligne 3) : "un mot change, la ligne n'est plus la mienne" - le libelle de competence ci-dessus est
+# recopie a l'identique.
+#
+# Ce paquet OUVRE cette ligne, il ne la FERME pas (nadia-prof, section 8.4 de son arbitrage) - meme
+# mention que cp-qlm-vivant-non-vivant.
+#
+# Aucune condition de biais ne s'applique a cette ligne (ni BIA-1 a BIA-5, propres aux lignes 4,
+# 15, 16 et a l'histoire-geographie).
+#
+# Forme : cinq items sur les cinq sens (un organe par sens), trois items sur des parties du corps
+# hors des cinq sens - le motif tenu par nadia-prof elle-meme comme exemple recevable ("Avec quoi
+# entend-on ?"). Huit items au total, aucune reponse ne se repete a l'identique.
+#
+# NAT-1 (meme prudence que cp-nature-mot, S19-4) : chaque question porte sur un organe different,
+# aucun signal de forme (longueur de phrase, presence d'un determinant) ne separe les deux groupes
+# de questions.
+items:
+  - enonce: "Avec quoi entend-on ?"
+    bonneReponse: "les oreilles"
+    distracteurs: ["les yeux", "le nez"]
+    indice: "C'est ce qui dépasse de chaque côté de la tête."
+  - enonce: "Avec quoi voit-on ?"
+    bonneReponse: "les yeux"
+    distracteurs: ["les oreilles", "la bouche"]
+    indice: "On les ferme la nuit pour dormir."
+  - enonce: "Avec quoi sent-on les odeurs ?"
+    bonneReponse: "le nez"
+    distracteurs: ["les mains", "les oreilles"]
+    indice: "Il est au milieu du visage."
+  - enonce: "Avec quoi goûte-t-on les aliments ?"
+    bonneReponse: "la bouche"
+    distracteurs: ["le nez", "les yeux"]
+    indice: "C'est ce qu'on ouvre pour manger."
+  - enonce: "Avec quoi touche-t-on pour savoir si un objet est doux ou rugueux ?"
+    bonneReponse: "les mains"
+    distracteurs: ["les pieds", "les yeux"]
+    indice: "Ce sont elles qui tiennent les objets."
+  - enonce: "Quelle partie du corps sert à marcher ?"
+    bonneReponse: "les jambes"
+    distracteurs: ["les bras", "la tête"]
+    indice: "Elles se terminent par les pieds."
+  - enonce: "Quelle partie du corps est au bout du bras ?"
+    bonneReponse: "la main"
+    distracteurs: ["le pied", "le genou"]
+    indice: "Elle a cinq doigts."
+  - enonce: "Quelle partie du corps protège le cerveau ?"
+    bonneReponse: "la tête"
+    distracteurs: ["le ventre", "le dos"]
+    indice: "Elle est en haut du corps."
