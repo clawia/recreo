@@ -1,8 +1,10 @@
-# DEC-0070 - Le titre "Calcul CP" est seul, sur les 40 jeux du catalogue, a porter son niveau : retour de l'utilisatrice, deux titres proposes, regle generale recommandee
+# DEC-0070 - Le titre "Calcul CP" devient "Les petites additions" : retour de l'utilisatrice, choix tranche par nadia-prof, recommandation de regle generale revisee sur deux points distincts
 
-- **Statut** : **Proposee.** Le choix du titre de remplacement appartient a `nadia-prof` ; la
-  regle generale est recommandee ici mais son garde-fou n'est pas ecrit.
-- **Date** : 2026-09-02
+- **Statut** : **Acceptee.** Titre tranche par `nadia-prof` le 2026-09-02 (amendement ci-dessous) :
+  `"Les petites additions"`, l'option A. La partie "regle generale" reste **recommandee, forme
+  technique non ecrite** - routee a `theo-archi`, instruite apres le garde-fou de couleur (voir
+  amendement).
+- **Date** : 2026-09-02 (amendee le 2026-09-02, meme jour)
 - **Auteur** : `camille-po`
 - **Sprint** : hors-sprint (branche `retours-utilisatrice`, avant ouverture de s27)
 - **Retour qui la fonde** : l'utilisatrice, 2026-09-02, en jouant l'application, verbatim :
@@ -114,3 +116,82 @@ pas la forme technique (test JUnit sur le module `adapter-content`, script au me
   deja `couvert-valide` et rien dans ce retour ne remet en cause le jugement pedagogique deja
   rendu sur le contenu du jeu, seulement sur son titre.
 - Il ne touche pas au second retour de l'utilisatrice sur la monnaie, instruit separement.
+
+
+---
+
+## Amendement du 2026-09-02 (meme jour) - le titre est tranche, deux motifs que je n'avais pas, et ma recommandation de regle generale se revise
+
+`nadia-prof` a rendu son arbitrage :
+`squad/conformite/ARBITRAGE-s27-titre-du-jeu-d-additions-et-portee-de-ma-clause-sur-la-couleur.md`,
+section 1 (branche `matieres-absentes`, commit `fcdc365`, fusionnee dans `round-two`).
+
+### A.1 Le titre retenu, et ce qu'elle a verifie que je n'avais pas fait
+
+**"Les petites additions" - l'option A, ma recommandation, suivie.** Mais `nadia-prof` a fait un
+geste que je n'avais pas fait : elle a releve **les quarante titres**, pas les six voisins de
+mathematiques CP, et le releve complet lui a appris un fait que ma proposition n'avait pas vu :
+
+**L'imperatif n'est pas un registre libre dans ce catalogue : il fait deja un travail.** Le paquet
+de saisie des complements s'appelle `"Ecris le complement a 10"`, son jumeau en choix
+`"Les complements a 10"` ; le second jeu de saisie s'appelle `"Ecris le mot dicte"`. **Le verbe a
+l'imperatif est ce qui distingue, a l'ecran d'accueil, le jumeau de saisie de son jumeau de choix.**
+C'est le motif principal de l'ecartement de mon option B (`"Additionne jusqu'a 10"`) : poser un
+imperatif sur un jeu de choix affaiblirait un signal qui fonctionne deja pour l'enfant.
+
+**Un second motif, que je n'avais pas non plus, ecarte l'option B** : elle grave une borne que la
+competence annonce comme provisoire - *"additions dans la limite de 10 **(puis 20)**"*. Le jour ou
+la borne 20 entre au perimetre de ce jeu, `"Additionne jusqu'a 10"` devient faux. `"Les petites
+soustractions"` avait deja evite ce piege en disant *petites* plutot qu'un nombre ; `nadia-prof`
+applique la meme regle au jeu frere.
+
+**Aucun rejeu n'est du.** Le Done pedagogique du 2026-08-06 sur `bandit-manchot-additions-cp`
+porte sur les items ; aucun item, aucune reponse, aucun distracteur ne bouge. C'est un changement
+de titre, pas de contenu.
+
+### A.2 Le second defaut de "Calcul CP", que ni l'utilisatrice ni moi n'avions nomme
+
+**"Calcul CP" echouait sur deux points independants, pas un seul, et retirer le seul "CP" aurait
+laisse le second en place.**
+
+1. **Le niveau** - le seul defaut que l'utilisatrice a releve, et le seul que j'avais instruit.
+2. **La sous-specification** - *calcul* couvre l'addition **et** la soustraction, alors que ce jeu
+   ne sert que des additions et que son jeu frere est nomme par son operation
+   (`"Les petites soustractions"`). Le titre promettait plus large que le contenu ne tenait.
+   `"Les petites additions"` corrige les deux points a la fois : il ne porte plus le niveau, et il
+   nomme l'operation exacte, comme son jumeau.
+
+### A.3 Ma recommandation de regle generale change : une regle en attrape la moitie
+
+**Ma section 3 ne tient plus telle quelle.** J'y recommandais une seule regle - *aucun titre de
+jeu ne porte son niveau scolaire* - au motif que c'etait le defaut trouve. **Ce defaut avait une
+seconde moitie que cette regle n'aurait jamais attrapee** : un titre qui ne porte aucun niveau mais
+qui reste plus large que le contenu servi (par exemple un "Calcul CM1" renomme "Calcul" resterait
+sous-specifie) passerait cette regle sans probleme.
+
+**Je maintiens la premiere regle, executable au meme cout que decrit en section 3** : aucun titre
+de jeu ne porte les jetons `CP` ou `CM1`. Verification de donnee, cout bas, routee a `theo-archi`.
+
+**J'ajoute une seconde propriete, et je suis honnete sur sa nature : elle n'est pas mecanisable au
+meme titre.** *Un titre ne nomme jamais une categorie plus large que ce que le contenu sert
+reellement* (l'operation, le champ lexical, la competence precise). Verifier cette propriete
+suppose de comparer le sens d'un titre au contenu reel d'un paquet - un jugement, pas une
+correspondance de jetons. Je ne sais pas si un proxy mecanique existe (par exemple, confronter un
+mot d'operation dans le titre au champ `type` ou `competence` d'un contenu structure comme
+`additions-bornees`) : **je pose la question a `theo-archi` plutot que d'en presumer la reponse**,
+sans exiger qu'elle recoive un garde-fou si aucun proxy fiable n'existe. A defaut d'un garde-fou
+executable, cette propriete devient un point de controle explicite pour `nadia-prof` (et pour
+`relecteur-pedagogique` sous ses criteres) au moment ou tout titre est propose ou modifie - une
+regle non executable est un souhait, mais un souhait ecrit et verifie a la main a chaque decision
+reste superieur a un souhait qui ne l'est meme pas.
+
+**Routage** : forme technique de la premiere regle a `theo-archi`, deja saisi par `sofia-sm`,
+instruite apres le garde-fou de couleur. Faisabilite d'un proxy pour la seconde propriete posee a
+`theo-archi` comme question ouverte, pas comme une demande.
+
+### A.4 Ce que cet amendement ne fait pas
+
+- Il ne redecide pas le titre : `nadia-prof` l'a fait, section A.1.
+- Il ne fixe aucune forme technique de garde-fou.
+- Il ne touche a aucune ligne de la matrice de couverture : la ligne "Calcul mental - additions
+  dans la limite de 10" reste `couvert-valide`, le titre n'etant pas une propriete de statut.
