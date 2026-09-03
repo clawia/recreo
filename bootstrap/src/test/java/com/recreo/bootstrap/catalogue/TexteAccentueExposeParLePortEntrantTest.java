@@ -174,7 +174,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
-            "Calcul CP",
+            // Arbitre par nadia-prof le 2026-09-02 et confirme le 2026-09-03 apres le
+            // retrecissement de S1-8 : "Calcul CP" etait le seul des quarante titres a porter
+            // son niveau, et il promettait plus large que son contenu ("calcul" couvre aussi
+            // la soustraction). ADR-0078 garde la propriete sur les quarante, sans exemption.
+            "Les petites additions",
             "Le bon verbe",
             "Le bon son",
             "Les petites soustractions",

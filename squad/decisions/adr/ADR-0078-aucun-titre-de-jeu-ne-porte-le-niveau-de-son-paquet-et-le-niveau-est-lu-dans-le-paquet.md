@@ -2,9 +2,11 @@
 
 - **Statut** : Accepte. **Sa regle est ecrite, verte et mise a l'epreuve dans le meme commit** -
   `adapters/adapter-content/src/test/java/com/recreo/adapter/content/AucunTitreDeJeuNePorteSonNiveauTest.java`,
-  **7 tests** : une clause sur les quarante entrees du catalogue servi, le cliquet de la dette,
-  quatre morsures dont trois mutent le catalogue reel en memoire, et une morsure sur le jeu fautif
-  commite.
+  **6 tests** : une clause sur les quarante entrees du catalogue servi, quatre morsures dont trois
+  mutent le catalogue reel en memoire, et une morsure sur le jeu fautif commite.
+- **Amende le 2026-09-03, meme sprint, meme auteur** : `S1-8` a ete rouverte et retrecie par
+  `nadia-prof`, le titre est applique, **l'exemption est supprimee** et le cliquet qui la gardait
+  avec elle. Section *Amendement du 2026-09-03*.
 - **Sprint** : s27 (planning). **Date** : 2026-09-02. **Auteur** : `theo-archi`.
 - **Arbre mesure** : worktree `s27-theo`, branche partie de `round-two` a `9294632`. **JDK
   21.0.10**, celui que la machine virtuelle des tests rapporte d'elle-meme (`ADR-0071`). Enveloppe :
@@ -55,13 +57,11 @@ de production.
 3. **Un paquet qui ne declare aucun niveau est rouge.** C'est le seul mode de defaillance qui
    rendrait la regle verte sur les quarante entrees a la fois - une cle de descripteur renommee - et
    un garde-fou qui ne trouve plus ce qu'il compare le dit au lieu de passer.
-4. **Le titre du jeu d'additions n'est pas corrige dans ce commit**, et la regle entre avec une
-   **exemption nommee, plafonnee a exactement une entree**. Le motif est en section suivante : la
-   correction arbitree est bloquee par une seconde clause pedagogique, et resoudre cette
-   contradiction n'est pas a moi.
-5. **L'exemption ne peut ni grandir, ni pourrir.** Le plafond vaut exactement sa taille, et chaque
-   nom exempte doit designer une entree qui existe **et qui est encore fautive** : le jour ou le
-   titre est corrige, le garde-fou rougit et force la sortie de l'exemption dans le meme commit.
+4. **Le titre du jeu d'additions devient *"Les petites additions"***, valeur de `nadia-prof` au
+   caractere pres. *Ecrit le 2026-09-02 comme non applique, applique le 2026-09-03 ; voir
+   l'amendement.*
+5. **Cette regle n'a aucune exemption.** Elle en a eu une, d'exactement une entree, pendant un
+   commit ; l'amendement dit comment elle est morte.
 
 ---
 
@@ -107,6 +107,9 @@ relue et retrecie, ou `S1-8` est reconduite telle quelle et l'arbitrage du titre
 entree, de sorte que **toute entree neuve est gardee des aujourd'hui**, et que le jour ou le titre
 est corrige, l'exemption devenue fausse fait rougir le depot au lieu de survivre a sa cause.
 
+> **Ce jour est arrive le lendemain. Tout ce qui precede est conserve tel qu'ecrit - il etait exact
+> quand il a ete ecrit - et l'amendement ci-dessous dit ce qui a change.**
+
 ---
 
 ## Regle executable
@@ -135,7 +138,6 @@ if (entree.titre().toLowerCase(Locale.ROOT)
 | `unPaquetQuiNeDeclarePlusSonNiveauFaitEchouerLeGardeFou` | le niveau disparait du paquet | rouge |
 | `unCatalogueSansAucuneEntreeFaitEchouerLeGardeFou` | population vide | rouge, `ADR-0051` |
 | `leJeuFautifCommiteEstRefuseSurSaSeuleEntreeFautive` | le jeu fautif commite, **deux entrees du meme niveau et une seule faute** | rouge sur la fautive, et le message **ne nomme pas** la saine |
-| `laDetteDeTitreNeGrandditPasEtChaqueNomExempteDesigneEncoreUneEntreeFautive` | le cliquet de l'exemption | vert tant que la dette vaut 1 et que le nom exempte designe une entree **encore fautive** |
 
 ---
 
@@ -184,3 +186,56 @@ convention de nommage que rien ne tient, et un jeu nomme autrement sortirait de 
 **Etendre la regle a la sous-specification d'un titre.** Ecartee : elle demande de lire le contenu et
 de juger. Ce serait une regle qui pretend garder ce qu'elle ne peut pas voir, la famille de defaut
 que ce depot sanctionne.
+
+---
+
+## Amendement du 2026-09-03 - `S1-8` est rouverte, le titre est applique, l'exemption est supprimee
+
+**`nadia-prof` a tranche les trois issues posees la veille, et elle en a pris une quatrieme main :
+elle est allee compter la population plutot que de me croire.**
+
+**Mon deuxieme fait etait juste et sous-estime.** J'avais releve **deux** titres servis portant le
+grapheme /sj/ ; elle en compte **quatre** - *Les petites soustractions*, *Les tables de
+multiplication*, *Les fractions simples*, *La position du son*. *"Cela ne change pas la conclusion
+de `theo-archi`, cela la renforce."* **Je note l'ecart contre moi** : j'avais parcouru les titres a
+l'oeil sur la forme *"tion"*, ce qui rate *La position du son*, et je n'avais pas nomme ma methode a
+cote de mon chiffre. **Un chiffre sans methode, dans un rapport ou j'exige la methode des autres.**
+
+**Elle separe deux defauts que j'avais reunis en un**, et la separation est le coeur de l'arbitrage :
+
+- **Le codage** - sa clause dit *"le grapheme 'ti' **prononce /si/**"*, et l'assertion avait laisse
+  tomber la prononciation. C'est ce que j'avais vu.
+- **Le sien** - *"le fait que ma clause enonce est exact ; la consequence que j'en tirais est
+  fausse."* Ce que je n'avais pas vu, et que je n'aurais pas pu trancher : le grapheme /sj/ n'est
+  effectivement pas une acquisition de CP, mais **en tirer qu'un titre de menu qui le porte est un
+  defaut ne tient pas**. Son motif principal : *"retirer le grapheme ne rend pas le titre decodable,
+  donc la clause ne repare rien. On ne peut pas nommer un jeu d'additions sans le mot addition."*
+  Et *"un libelle de menu n'est pas un exercice de dechiffrage"* : choisir un jeu dans une liste
+  n'est aucune ligne de referentiel.
+
+**Verdict : le grapheme cesse d'etre un critere de titre. Les quatre titres servis sont reconduits**,
+motif ecrit - ils n'ont jamais ete en faute, la clause qui les aurait mis en faute etant celle
+qu'elle declare trop large -, **aucun rejeu, aucune story**.
+
+### Ce qui change dans le depot
+
+1. **L'assertion `S1-8` de `CatalogueChargeableIT` est retiree**, avec son motif ecrit a la place -
+   un retrait nu se relit comme un oubli.
+2. **`catalogue.yaml` porte *"Les petites additions"***, et `TexteAccentueExposeParLePortEntrantTest`
+   suit.
+3. **L'exemption d'une entree est supprimee, et son cliquet avec elle.** La regle porte desormais sur
+   **quarante titres, zero exemption**, et il n'y a plus de liste ou un nom pourrait entrer.
+
+### Ce que cet echange coute et rapporte, dit franchement
+
+Je ne rends pas de terrain : j'echange une assertion sur **un identifiant ecrit en dur**, qui gardait
+un jeu sur quarante, contre une regle qui porte sur **les quarante et sur toutes les entrees
+suivantes**. C'est `nadia-prof` qui a pose la contrepartie avant que je la demande - *"je ne retire
+pas un garde-fou sans dire quelle propriete merite d'etre gardee, sinon je rends du terrain sans
+contrepartie"* - et la propriete qu'elle nomme est celle que l'utilisatrice avait trouvee.
+
+**Ce que l'episode m'apprend sur mes propres exemptions**, et c'est la raison de l'ecrire ici plutot
+que de le passer : l'exemption a vecu **un commit**. Elle n'a jamais eu a etre defendue, elle n'a
+jamais servi d'argument pour ne pas corriger, et elle est morte de sa cause. **C'est la duree de vie
+qu'une exemption doit avoir** - et c'est la seule chose qui distingue une dette plafonnee d'un
+plafond qui s'installe.
