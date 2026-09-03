@@ -174,8 +174,19 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * figure plane nue pese <b>275 octets de trace pour 1 084 octets commites</b> une fois commentee
      * comme ce depot commente ses fichiers, et <i>"un seuil pose sur l'un ne veut rien dire sur
      * l'autre"</i>. C'est donc le fichier ; qui deplacera ce cliquet deplacera la meme chose.
+     *
+     * <p><b>2 685 vers 2 775</b>, ines-design, commit qui installe le remplissage de
+     * {@code monnaie-meme-somme-e.svg} : six objets de monnaie sur ce dessin, six attributs de
+     * remplissage de 15 octets, 90 octets de plus - <b>mesure sur cet arbre, pas recopiee</b>. ADR-0077
+     * annoncait que ce cliquet ne bougerait pas et que le plus gros dessin resterait sous 2 685 ;
+     * mesure sur le materiau reel, ce n'est pas le cas - <i>"90 octets au plus"</i> etait juste sur le
+     * gain, faux sur la conclusion qu'il en tirait, parce que le dessin le plus lourd du corpus est
+     * deja a la borne exacte du cliquet avant remplissage. Le fait n'a pas de consequence sur la
+     * decision d'ADR-0077 - `theo-archi` a laisse le cliquet ou il etait faute des octets a mesurer
+     * dans son propre arbre - mais la valeur qu'il annoncait pour la suite ne tenait pas, et c'est ce
+     * commit qui la mesure.
      */
-    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 2685;
+    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 2775;
 
     /**
      * Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, meme perimetre et meme methode que
@@ -206,10 +217,18 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       {@code figure-triangle-pose.svg} annoncait "trois cotes egaux" pour un triangle dont ses
      *       sommets declares donnent une base de 78 et deux cotes de 83,65. <b>Le dessin n'est pas
      *       touche</b>, elle le route comme une correction de commentaire ; c'est donc, une
-     *       troisieme fois, du commentaire et rien d'autre qui pese.</li>
+     *       troisieme fois, du commentaire et rien d'autre qui pese ;</li>
+     *   <li><b>30 070 vers 30 730</b>, ines-design, le commit qui installe le remplissage retreci par
+     *       ADR-0077 (COU-2, FIG-4) sur les douze dessins de {@code cp-monnaie} : 44 attributs de
+     *       remplissage de 15 octets sur les 44 objets de monnaie, 660 octets, {@code fill="#e8a33d"}
+     *       sur le cercle exterieur nu d'une piece et {@code fill="#cfe3ef"} sur le rectangle
+     *       exterieur nu d'un billet, lisere et chiffres graves restant en contour pur. <b>Mesure sur
+     *       cet arbre, jamais recopiee de l'annonce qui l'a precedee</b> - ADR-0077 annoncait 30 730,
+     *       et cette annonce se confirme au chiffre pres ici, ce qui n'etait pas garanti d'avance et
+     *       s'est verifie faux sur l'autre cliquet, ci-dessus.</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 30070;
+    private static final int POIDS_TOTAL_MAXIMUM = 30730;
 
     /**
      * Ce que le remplissage de couleur d'ines-design coute au corpus servi, <b>mesure et non
