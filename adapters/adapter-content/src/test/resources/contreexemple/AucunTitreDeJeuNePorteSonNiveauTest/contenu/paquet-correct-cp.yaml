@@ -1,0 +1,14 @@
+# JEU FAUTIF, JAMAIS SERVI. Ce paquet n a pas de defaut : c est le titre qui le nomme qui en a un.
+# Il est ici parce que le niveau se lit dans le paquet et nulle part ailleurs (ADR-0078 clause 2).
+schema: 1
+id: paquet-correct-cp
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Calculer des sommes"
+items:
+  - enonce: "Combien font 1 et 1 ?"
+    bonneReponse: "2"
+    distracteurs: ["3", "4"]
