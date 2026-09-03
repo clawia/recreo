@@ -7,10 +7,14 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -98,9 +102,57 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
     record Paquet(String fichier, String matiere, String niveau, int items, long marques,
                   long restitutions) {
 
+        /**
+         * La cle de regroupement, <b>normalisee</b>. Elle ne sert qu'a decider quels fichiers
+         * forment un meme lot ; ce qui s'affiche dans un message est {@link #lotDeclare()}.
+         */
         String lot() {
+            return normalise(matiere) + " / " + normalise(niveau);
+        }
+
+        /** Le couple tel que le descripteur l'ecrit, a l'espace et a l'accent pres. */
+        String lotDeclare() {
             return matiere + " / " + niveau;
         }
+    }
+
+    /**
+     * La forme sur laquelle deux descripteurs sont <b>le meme lot</b> : accents deposes, blancs
+     * ramenes a un seul et rognes aux extremites, casse repliee.
+     *
+     * <p><b>Le motif est un defaut vivant, trouve par yanis-qa le 2026-09-03 et reproduit sur une
+     * machine virtuelle.</b> La cle etait la concatenation brute des deux champs. Un descripteur
+     * portant {@code "CM1 "} - un espace final, dans du YAML ecrit a la main - produisait
+     * <b>deux</b> lots la ou il n'y en a qu'un, et la moitie sans marqueur retombait dans la
+     * branche non soumise : <b>ni refusee, ni comptee, invisible</b>. C'est mot pour mot le vert a
+     * tort que cet ADR ferme, <b>rouvert par la cle qui calcule sa population</b> - le remede avait
+     * change la population et laisse la porte a cote.
+     *
+     * <p><b>La normalisation traite une famille et non le cas mesure</b> : l'espace final est celui
+     * qu'il a reproduit, mais l'espace initial, l'espace double interne, la casse et l'accent
+     * cassent la cle exactement pareil, et une famille mesuree sur un seul cas est un incident, pas
+     * un perimetre.
+     */
+    static String normalise(String declare) {
+        String sansAccent = Normalizer.normalize(declare, Normalizer.Form.NFD);
+        StringBuilder serre = new StringBuilder(sansAccent.length());
+        boolean blancPrecedent = false;
+        for (int rang = 0; rang < sansAccent.length(); rang++) {
+            char lettre = sansAccent.charAt(rang);
+            if (Character.getType(lettre) == Character.NON_SPACING_MARK) {
+                continue;
+            }
+            if (Character.isWhitespace(lettre)) {
+                blancPrecedent = true;
+                continue;
+            }
+            if (blancPrecedent && serre.length() > 0) {
+                serre.append(' ');
+            }
+            blancPrecedent = false;
+            serre.append(Character.toLowerCase(lettre));
+        }
+        return serre.toString();
     }
 
     private static String lire(Path fichier) {
@@ -169,6 +221,20 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
         int lotsSoumis = 0;
 
         for (Map.Entry<String, List<Paquet>> lot : lotsDeMatiere(paquets).entrySet()) {
+            String nomDuLot = lot.getValue().get(0).lotDeclare();
+
+            Set<String> ecritures = new LinkedHashSet<>();
+            lot.getValue().forEach(paquet -> ecritures.add(paquet.lotDeclare()));
+            if (ecritures.size() > 1) {
+                fautes.add(nomDuLot + " : un seul lot de matiere, ecrit de " + ecritures.size()
+                        + " facons dans les descripteurs servis - " + ecritures + ". La cle de"
+                        + " regroupement les reunit, mais deux ecritures d'un meme lot sont un"
+                        + " defaut de donnee et non une variante : c'est par la qu'un lot se coupe"
+                        + " en silence des qu'un garde-fou compare des chaines brutes (ADR-0079,"
+                        + " amendement du 2026-09-03). Fichiers : "
+                        + lot.getValue().stream().map(Paquet::fichier).toList());
+            }
+
             long marques = lot.getValue().stream().mapToLong(Paquet::marques).sum();
             if (marques == 0) {
                 continue;
@@ -181,7 +247,7 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                 if (paquet.marques() < paquet.items()) {
                     fautes.add(paquet.fichier() + " : " + (paquet.items() - paquet.marques())
                             + " item(s) sur " + paquet.items() + " ne portent pas de marqueur '"
-                            + MARQUE_HIS_1 + " <type>', alors que leur lot de matiere (" + lot.getKey()
+                            + MARQUE_HIS_1 + " <type>', alors que leur lot de matiere (" + nomDuLot
                             + ") est soumis a HIS-1. Un fichier entier qui rejoint un lot sans"
                             + " marqueur n'est refuse par rien tant que la population est un chemin"
                             + " ecrit en dur : c'est le vert a tort que cette regle ferme"
@@ -191,7 +257,7 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
 
             long plafond = itemsDuLot / PART_DE_RESTITUTION;
             if (restitutions > plafond) {
-                fautes.add(lot.getKey() + " : " + restitutions + " items de restitution sur "
+                fautes.add(nomDuLot + " : " + restitutions + " items de restitution sur "
                         + itemsDuLot + " (" + lot.getValue().size() + " fichier(s)), au-dessus du"
                         + " tiers du LOT, soit " + plafond + ". HIS-1 (nadia-prof) : au plus un"
                         + " tiers des items demande une date, un nom ou un chiffre a restituer, et"
@@ -223,16 +289,16 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
     void lesLotsDeMatiereServisSontCeuxQueNadiaProfACompte() {
         Map<String, List<Paquet>> lots = lotsDeMatiere(paquetsDe(CONTENU_SERVI));
 
-        assertThat(lots.get("Questionner le monde / CP"))
+        assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")))
                 .as("nadia-prof, 2026-09-03, section 2.3 : questionner le monde, 3 fichiers")
                 .hasSize(3);
-        assertThat(lots.get("Questionner le monde / CP").stream().mapToInt(Paquet::items).sum())
+        assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")).stream().mapToInt(Paquet::items).sum())
                 .as("nadia-prof, 2026-09-03, section 2.3 : questionner le monde, 24 items")
                 .isEqualTo(24);
-        assertThat(lots.get("Histoire-géographie / CM1"))
+        assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("nadia-prof, 2026-09-03, section 2.3 : histoire-geographie, 1 fichier")
                 .hasSize(1);
-        assertThat(lots.get("Histoire-géographie / CM1").stream().mapToInt(Paquet::items).sum())
+        assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")).stream().mapToInt(Paquet::items).sum())
                 .as("nadia-prof, 2026-09-03, section 2.3 : histoire-geographie, 20 items")
                 .isEqualTo(20);
     }
@@ -242,6 +308,91 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
         return paquets.stream().filter(paquet -> paquet.marques() > 0).findFirst()
                 .orElseThrow(() -> new AssertionError("aucun paquet servi ne porte de marqueur de"
                         + " condition de lot : la morsure ne prouverait rien (ADR-0051)"));
+    }
+
+    /**
+     * <b>Le defaut de yanis-qa, ferme comme une famille et non comme un cas.</b> Il a reproduit
+     * l'espace final ; l'espace initial, l'espace double interne, la casse et l'accent cassaient la
+     * cle exactement pareil. Une famille mesuree sur un seul cas est un incident, pas un perimetre.
+     *
+     * <p>Chaque ecriture fautive du descripteur est appliquee <b>a un second fichier du lot reel</b>
+     * et doit tenir deux choses a la fois : le lot reste <b>un seul lot</b> - donc le fichier ne
+     * s'echappe pas dans une branche non soumise -, et le garde-fou <b>refuse</b> en nommant les
+     * deux ecritures. La premiere moitie est celle qui manquait et qui rendait le defaut muet ; la
+     * seconde est ce qui empeche la normalisation d'absorber en silence un defaut de donnee.
+     */
+    @Test
+    void aucuneDivergenceDeCasseDAccentOuDEspaceNeScindeUnLot() {
+        List<Paquet> servis = paquetsDe(CONTENU_SERVI);
+        Paquet soumis = paquetSoumis(servis);
+        int lotsAvant = lotsDeMatiere(servis).size();
+
+        List<Paquet> ecrituresFautives = new ArrayList<>();
+        for (String matiere : List.of(soumis.matiere(), soumis.matiere() + " ",
+                " " + soumis.matiere(), soumis.matiere().toUpperCase(Locale.ROOT),
+                soumis.matiere().toLowerCase(Locale.ROOT), normalise(soumis.matiere()))) {
+            for (String niveau : List.of(soumis.niveau(), soumis.niveau() + " ",
+                    " " + soumis.niveau(), soumis.niveau().toLowerCase(Locale.ROOT))) {
+                Paquet variante = new Paquet("second-fichier-du-lot.yaml", matiere, niveau,
+                        3, 3, 0);
+                if (!variante.lotDeclare().equals(soumis.lotDeclare())) {
+                    ecrituresFautives.add(variante);
+                }
+            }
+        }
+
+        assertThat(ecrituresFautives)
+                .as("une famille mesuree sur un seul cas est un incident, pas un perimetre : ce"
+                        + " test ne prouve rien s'il n'exerce pas plusieurs ecritures REELLEMENT"
+                        + " distinctes de celle du descripteur servi")
+                .hasSizeGreaterThanOrEqualTo(4);
+
+        for (Paquet variante : ecrituresFautives) {
+            List<Paquet> paquets = new ArrayList<>(servis);
+            paquets.add(variante);
+
+            assertThat(lotsDeMatiere(paquets))
+                    .as("'%s' : le lot ne se scinde pas, sans quoi la moitie sans marqueur"
+                            + " retomberait dans la branche non soumise et ne serait jugee par"
+                            + " rien", variante.lotDeclare())
+                    .hasSize(lotsAvant);
+            assertThatThrownBy(() -> verifier(paquets))
+                    .as("'%s' : et la divergence est nommee plutot qu'absorbee",
+                            variante.lotDeclare())
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("ecrit de 2 facons")
+                    .hasMessageContaining("second-fichier-du-lot.yaml");
+        }
+    }
+
+    /**
+     * <b>L'autre moitie du constat de yanis-qa, et la reponse est : oui, c'est voulu.</b> Un lot
+     * dont <b>aucun</b> item ne porte de marqueur n'est pas juge, et ce test l'epingle comme une
+     * propriete plutot que de le laisser vivre dans un {@code continue} muet.
+     *
+     * <p><b>Pourquoi c'est correct</b> : la clause 3 d'ADR-0079 pose que la soumission a une
+     * condition de lot est <b>derivee du marqueur</b>. {@code Questionner le monde / CP} n'a rien a
+     * voir avec HIS-1 et ne doit pas etre compte contre un tiers de restitution ; l'exiger
+     * reviendrait a nommer les matieres soumises, c'est-a-dire a enumerer ce que la regle derive.
+     *
+     * <p><b>Ce qui rend cette branche sure, et c'est la seule chose qui la rendait dangereuse</b> :
+     * le cas redoutable n'est pas <i>un lot sans marqueur</i>, c'est <i>un fichier qui aurait du
+     * rejoindre un lot soumis et qui ne l'a pas fait</i>. La cle normalisee ferme toutes les
+     * versions ou le descripteur ecrit le meme lot autrement. <b>Reste une version qu'aucune chaine
+     * ne peut attraper</b> : un paquet qui declare une matiere franchement differente forme son
+     * propre lot, et aucun automate ne sait que {@code "Histoire"} aurait du s'ecrire
+     * {@code "Histoire-géographie"} sans un vocabulaire ecrit a la main - ce qui serait un critere
+     * enumere sous une promesse universelle. <b>Celui-la est vu par nadia-prof et par la matrice</b>,
+     * qui comptent des lignes de referentiel et non des chaines, et il est nomme ici plutot que
+     * laisse a trouver.
+     */
+    @Test
+    void unLotDontAucunItemNePorteDeMarqueurNEstPasSoumisEtCEstVoulu() {
+        List<Paquet> paquets = new ArrayList<>(paquetsDe(CONTENU_SERVI));
+        paquets.add(new Paquet("matiere-neuve-sans-condition-de-lot.yaml", "Matière neuve", "CE2",
+                3, 0, 0));
+
+        verifier(paquets);
     }
 
     /**

@@ -1,8 +1,11 @@
 # ADR-0079 - Une condition de lot se compte sur le lot de matiere, et le lot se derive des descripteurs servis
 
-- **Statut** : Accepte. **Sa regle est ecrite, verte et mise a l'epreuve dans le meme commit** -
+- **Statut** : Accepte. **Amende le 2026-09-03, meme jour, sur un defaut vivant trouve par
+  `yanis-qa`** : la cle de regroupement etait une chaine brute et **reintroduisait par elle-meme le
+  vert a tort que cet `ADR` ferme**. Section *Amendement du 2026-09-03*.
+- **Sa regle est ecrite, verte et mise a l'epreuve dans le meme commit** -
   `adapters/adapter-content/src/test/java/com/recreo/adapter/content/UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest.java`,
-  **7 tests** : la clause sur les lots servis, un rapprochement de comptes avec `nadia-prof`, deux
+  **9 tests** : la clause sur les lots servis, un rapprochement de comptes avec `nadia-prof`, deux
   morsures mutees en memoire sur du materiau reel, **une borne qui exige un vert**, la non-vacuite,
   et une morsure sur le jeu fautif commite.
 - **Sprint** : s27 (planning). **Date** : 2026-09-03. **Auteur** : `theo-archi`.
@@ -200,3 +203,95 @@ famille de tests.
 une cle de plus dans le schema, donc une chose de plus a oublier, et elle rendrait possible qu'un
 paquet d'histoire se declare non soumis a `HIS-1`. Le marqueur porte deja l'information, et un lot
 soumis se reconnait a ce que ses items sont classes.
+
+---
+
+## Amendement du 2026-09-03 - la cle qui calcule la population rouvrait la porte a cote
+
+**`yanis-qa` a trouve un defaut vivant dans cette regle, reproduit sur une machine virtuelle puis
+entierement defait**, et il l'a route hors de son mandat parce que c'est une decision
+d'architecture. Il a raison sur les deux moities, et la seconde est la plus grave.
+
+> *"La cle de regroupement est `matiere + " / " + niveau`, chaine brute, sans normalisation de casse,
+> d'accent ni d'espace. Elle scinde un lot reel en deux groupes des qu'un descripteur differe d'un
+> espace final."*
+
+Sa preuve : un paquet en memoire avec `niveau = "CM1 "` produit **deux** cles distinctes, et
+`verifier(paquets)` **ne leve rien**.
+
+> *"Le lot du fichier synthetique a `marques == 0`, donc la boucle `continue` **avant de l'avoir
+> jamais verifie**."*
+
+**C'est mot pour mot le defaut que cet `ADR` pretend fermer** - *"un second fichier du meme lot
+n'aurait ete juge par rien"* - **reintroduit par la cle qui calcule la population**. J'avais change
+la population et laisse la porte a cote. Le mode de defaillance n'est pas l'echec, c'est le silence :
+un lot scinde dont la moitie ne porte aucun marqueur n'est ni refuse, ni compte, invisible.
+
+**Latent aujourd'hui, vivant demain** : les quatre fichiers reels declarent des descripteurs
+identiques, donc rien ne rougissait. Ces descripteurs sont du YAML ecrit a la main.
+
+### Ce qui change
+
+1. **La cle est normalisee** : accents deposes, blancs ramenes a un seul et rognes, casse repliee.
+   **La famille est traitee, pas le cas mesure** - l'espace final est celui qu'il a reproduit,
+   l'espace initial, l'espace double, la casse et l'accent cassaient la cle exactement pareil, et
+   *une famille mesuree sur un seul cas est un incident, pas un perimetre* est ma propre phrase
+   d'`ADR-0077`.
+2. **Une clause de plus : deux ecritures d'un meme lot sont une faute nommee.** La normalisation
+   reunit les fichiers, mais elle ne doit pas **absorber en silence** un defaut de donnee. Le message
+   nomme les deux ecritures et les fichiers.
+3. **La forme declaree est ce qui s'affiche dans les messages**, la forme normalisee ne sert qu'a
+   grouper : personne n'a a lire `histoire-geographie / cm1` dans un rapport d'echec.
+
+### La question posee, et la reponse : oui, le saut est voulu, et voici ce qui le rend sur
+
+`ADR-0079` clause 3 pose que la soumission a une condition de lot est **derivee du marqueur**. Un lot
+dont **aucun** item ne porte de marqueur n'est donc pas soumis. **C'est correct, et
+`Questionner le monde / CP` en est la preuve** : le compter contre un tiers de restitution n'aurait
+aucun sens, et l'exiger reviendrait a **nommer les matieres soumises**, c'est-a-dire a enumerer ce
+que la regle derive.
+
+**Ce qui rendait cette branche dangereuse n'etait pas sa definition, c'etait ce qui pouvait y
+tomber.** Le cas redoutable n'est pas *un lot sans marqueur*, c'est *un fichier qui aurait du
+rejoindre un lot soumis et qui ne l'a pas fait*. La cle normalisee ferme **toutes** les versions ou
+le descripteur ecrit le meme lot autrement. Et le saut cesse d'etre un `continue` muet : il est
+epingle par `unLotDontAucunItemNePorteDeMarqueurNEstPasSoumisEtCEstVoulu`, un test vert qui **enonce
+la decision** au lieu de la laisser vivre dans une ligne de code.
+
+**Reste une version qu'aucune comparaison de chaines ne peut attraper, et je la nomme plutot que de
+la laisser trouver** : un paquet qui declare une matiere franchement differente - `"Histoire"` la ou
+les autres disent `"Histoire-géographie"` - forme son propre lot. Aucun automate ne sait que la
+premiere aurait du s'ecrire comme la seconde sans un vocabulaire ecrit a la main, ce qui serait un
+critere enumere sous une promesse universelle. **Celui-la est vu par `nadia-prof` et par la matrice**,
+qui comptent des lignes de referentiel et non des chaines.
+
+### Les morsures, et la preuve par retrait
+
+- `aucuneDivergenceDeCasseDAccentOuDEspaceNeScindeUnLot` construit **toutes** les ecritures fautives
+  d'un descripteur reel, **ecarte celles qui ne different pas reellement** de la forme servie, et
+  **refuse de prouver quoi que ce soit s'il en reste moins de quatre** - une precaution qui vient de
+  s'averer utile : ma premiere ecriture comparait `toUpperCase("CM1")` a `"CM1"`, c'est-a-dire une
+  iteration qui ne mutait rien. Chaque ecriture doit tenir **deux** choses : le lot **reste un seul
+  lot**, et la divergence **est nommee**.
+- *Preuve par retrait, mesuree et non affirmee : la cle remise en concatenation brute, la suite rend
+  **2 echecs sur 9** ; normalisee, **9 / 0**.*
+
+### La meme famille, balayee chez le voisin plutot qu'attendue
+
+`AucunTitreDeJeuNePorteSonNiveauTest` (`ADR-0078`) lisait le meme champ et le comparait au titre
+**sans le rogner**. Le meme `"CM1 "` y aurait fait chercher `"cm1 "` dans un titre, ne l'aurait pas
+trouve, et **un titre fautif serait passe** - le meme silence, dans l'autre garde-fou, non mesure par
+personne. Le niveau y est desormais rogne, avec sa morsure
+(`unEspaceFinalDansLeNiveauDeclareNEmpechePasLaDetection`) et *sa preuve par retrait : sans le
+rognage, **1 echec sur 7** ; avec, **7 / 0**.* **Une normalisation posee a un seul endroit laisse le
+meme YAML casser le second garde-fou** ; c'est pour cela qu'elle est posee aux deux.
+
+### Ce que je retiens contre moi
+
+Ce defaut n'est pas le meme que celui d'`ADR-0077` - la je predisais un chiffre sans le mesurer, ici
+j'ai ecrit une regle correcte sur une cle qui ne l'etait pas. **Le point commun est ailleurs** : dans
+les deux cas j'ai verifie **le verdict** de la regle sur le materiau du jour, et jamais **l'objet
+intermediaire** par lequel elle passe - le texte produit par une mutation la, la cle de regroupement
+ici. Les quatre descripteurs reels etant identiques, aucune de mes six morsures ne pouvait voir la
+cle. **Une regle qui derive sa population derive aussi ses erreurs de la fonction qui la calcule, et
+cette fonction merite le meme traitement que la regle elle-meme.**
