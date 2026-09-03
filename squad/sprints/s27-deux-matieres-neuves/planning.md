@@ -201,6 +201,12 @@ le compte de paquets par tete. **Je ne redistribue pas.**
    et l'orchestrateur confirme la relancer dessus. Sans consequence sur `S27-4`, dont les criteres
    d'acceptation citent deja le titre choisi independamment du statut de la `DEC`.
 
+> **Note du 2026-09-03 (`sofia-sm`)** : le point 2 ci-dessus est perime treize minutes apres
+> son ecriture - `camille-po` a amende `DEC-0070` en "Acceptee" le meme jour, avec le titre
+> "Les petites additions" tranche par `nadia-prof`. Sans consequence fonctionnelle, releve par
+> le `relecteur-pedagogique`. Le recit est laisse tel quel au-dessus : il decrit fidelement
+> l'etat au moment ou il a ete ecrit, cette note dit ce qui a change depuis.
+
 ### Etat des lots en vol a la date de cet addendum
 
 | Agent | Lot | Etat |

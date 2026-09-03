@@ -74,6 +74,26 @@ question 1 ci-dessus.
 
 ## Statut
 
-**Ouvert, en attente de la reponse de `nadia-prof` sur la question 1.** Aucune action de
-`theo-archi`, `ines-design` ou tout autre agent n'est engagee sur les points 2 a 4 avant cette
-reponse.
+**Ferme le 2026-09-03 (`sofia-sm`), resolu de fait avant d'etre ferme formellement -
+releve par le `relecteur-pedagogique`, qui ne l'a pas corrige lui-meme parce que c'est
+mon fichier.**
+
+Les quatre points du sequencement, dans l'ordre ou ils sont ecrits ci-dessus :
+
+1. `nadia-prof` a confirme le meme jour que sa clause lit "la couleur ne decide jamais",
+pas "aucun remplissage" (arbitrage du 2026-09-02, cite par `ADR-0077`).
+
+2. `theo-archi` a retreci le garde-fou a la population qu'il juge reellement, en
+derivant sa population plutot qu'en l'enumerant (`ADR-0077`, amende le 2026-09-03 apres
+qu'un de ses deux chiffres annonces s'est revele faux a la mesure).
+
+3. Le cliquet de poids a ete releve dans le commit qui installe le remplissage, avec sa
+valeur mesuree sur l'arbre reel plutot que recopiee d'une annonce :
+`POIDS_D_UN_DESSIN_MAXIMUM` a 2775 (et non 2685, l'ecart qu'`ADR-0077` documente contre
+lui-meme), `POIDS_TOTAL_MAXIMUM` a 30730.
+
+4. `ines-design` a commite les douze SVG revises (`monnaie-*.svg`) et verifie `COU-3` en
+deux passes, fichiers isoles puis items reels dans le jar servi : aucune perte de
+contraste du contour sur les douze, a toutes les tailles. `nadia-prof` rejoue
+l'increment pour reprononcer le Done du paquet ; `camille-po` a deja bascule la ligne de
+la matrice a `en cours` en consequence.
