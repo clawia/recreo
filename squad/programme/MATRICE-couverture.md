@@ -1,13 +1,29 @@
 # Matrice de couverture - recreo
 
 Cette matrice est l'outil de pilotage le plus important de `camille-po`. Elle liste, une ligne
-par competence, l'integralite des huit referentiels actuellement disponibles
+par competence, l'integralite des dix-huit referentiels desormais disponibles
 (`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`,
 `squad/programme/francais/competences-cp.md`, `competences-cm1.md`,
 `squad/programme/questionner-le-monde/competences-cp.md`,
 `squad/programme/histoire-geographie/competences-cm1.md`,
-`squad/programme/langues-vivantes/competences-cp.md`, `competences-cm1.md`), et l'etat reel du
-produit face a chacune d'entre elles sur la branche `round-two`.
+`squad/programme/langues-vivantes/competences-cp.md`, `competences-cm1.md`,
+`squad/programme/arts-plastiques/competences-cp.md`, `competences-cm1.md`,
+`squad/programme/education-musicale/competences-cp.md`, `competences-cm1.md`,
+`squad/programme/education-physique-et-sportive/competences-cp.md`, `competences-cm1.md`,
+`squad/programme/enseignement-moral-et-civique/competences-cp.md`, `competences-cm1.md`,
+`squad/programme/histoire-des-arts/competences-cm1.md`,
+`squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
+chacune d'entre elles sur la branche `round-two`.
+
+**Note du 2026-09-03** : le denominateur final du produit, que la note du 2026-09-02 (ci-dessous,
+conservee pour l'historique) annoncait comme un evenement futur, **est atteint a cette date**. Les
+dix referentiels des enseignements jusque-la absents (arts plastiques, education musicale,
+education physique et sportive et enseignement moral et civique aux deux cycles, histoire des arts
+et sciences et technologie au cycle 3 seul), ecrits par `nadia-prof` le 2026-09-03 (`DEC-0074`),
+sont integres ci-dessous (section "Integration des dix referentiels absents du 2026-09-03"). **Les
+huit enseignements du cycle 2 et les dix du cycle 3 sont desormais tous representes par au moins
+une ligne de cette matrice.** Ce qui reste a faire n'est plus d'ouvrir des matieres : c'est de
+servir les competences que ces dix-huit referentiels portent.
 
 **Note du 2026-09-02** : jusqu'a cette date, cette matrice ne portait que les deux premiers
 referentiels (mathematiques, francais). Le programme complet compte **huit enseignements au cycle
@@ -25,14 +41,14 @@ l'EMC a *questionner le monde*/l'histoire-geographie, et ne donne aucun volume p
 des arts) rend **six enseignements au cycle 2, sept au cycle 3**. **Aucun des deux comptes n'est
 faux ; ils ne comptent pas la meme chose.** Cette matrice emploie et continuera d'employer le
 premier (par attendus de programme), parce que c'est celui qui correspond a une ligne de
-competence - l'unite que cette matrice compte. Le denominateur final du produit, le jour ou les
-six matieres restantes y entreront toutes, depend entierement de ce choix ; il n'affecte pas le
-denominateur actuel de 75 (section "Integration des matieres absentes du 2026-09-02" ci-dessous),
-puisqu'aucune ligne d'arts, d'EPS, d'EMC, de sciences et technologie ou d'histoire des arts n'y est
-encore entree.
+competence - l'unite que cette matrice compte. **Ce choix a desormais un effet mesure sur le
+denominateur** (section "Integration des dix referentiels absents du 2026-09-03" ci-dessous),
+la ou il n'en avait aucun le 2026-09-02 puisqu'aucune ligne d'arts, d'EPS, d'EMC, de sciences et
+technologie ou d'histoire des arts n'y etait encore entree.
 
-Un taux de couverture cite avant le 2026-09-02 decrit un perimetre de deux matieres sur huit
-(cycle 2) ou sur dix (cycle 3), pas le programme entier.
+Un taux de couverture cite avant le 2026-09-03 decrit un perimetre incomplet du programme : deux
+matieres sur huit ou dix avant le 2026-09-02, quatre matieres sur huit ou dix entre le 2026-09-02
+et le 2026-09-03.
 
 ## Comment la lire
 
@@ -1367,6 +1383,361 @@ les trois demandees.
 | langues vivantes (anglais) | CM1 | Decouverte culturelle | Découvrir quelques aspects culturels des pays de la langue étudiée. | - | - | non couvert - jouable, sous conditions de biais `BIA-1` et `BIA-2`. |
 
 **Bilan** : 7 lignes, 4 `non couvert`, 3 `non couvrable en l'etat`. 4 lignes entrent au
+denominateur atteignable.
+
+## Arts plastiques - CP (cycle 2)
+
+Source : `squad/programme/arts-plastiques/competences-cp.md`, ecrit par `nadia-prof` le 2026-09-03
+(`DEC-0074`). Moyens du produit : mecanique de choix (`bandit-manchot`), mecanique de saisie,
+palier 1 visuel - une image fixe, des propositions en texte (`ADR-0073`). Aucun son, aucun geste de
+trace, aucune persistance (`DEC-0028`, `DEC-0046`, `DEC-0066`). Le palier 2 (designer un lieu ou un
+objet sur une image) n'existe pas encore : il est constructible (ADR de `theo-archi` en s28), une
+ligne qui l'attend est `non couvert`, jamais `non couvrable en l'etat`.
+
+**Sept lignes sur onze sont hors de portee definitive du produit** : une production plastique ne se
+produit ni par un choix ni par une saisie. Les deux lignes jouables des aujourd'hui (5, 11) portent
+sur le vocabulaire et les connaissances de la pratique, jamais sur la pratique elle-meme. Les deux
+lignes restantes (9, 10) exigent une image d'oeuvre que le depot ne sert pas - **question de droits
+d'usage non instruite, ouverte formellement en `DEC-0075`, non tranchee.**
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| arts plastiques | CP | La representation du monde | Représenter le monde environnant ou donner forme à son imaginaire en explorant plusieurs domaines (dessin, peinture, collage, modelage). | - | - | **non couvrable en l'etat**, nature irreversible - production plastique ; aucun geste de trace fourni par ce produit (`DEC-0046`, `DEC-0066`) et jugement humain sur une production libre (`ADR-0008`). |
+| arts plastiques | CP | La representation du monde | Employer divers outils, supports et matériaux pour représenter un objet, un paysage ou un personnage. | - | - | **non couvrable en l'etat**, nature irreversible - geste materiel sur une matiere physique, aucune mecanique de ce produit ne l'ouvre. |
+| arts plastiques | CP | La representation du monde | Observer les effets produits par les gestes et les outils sur la matière et les nommer (frotter, gratter, tracer, superposer). | - | - | **non couvrable en l'etat**, nature irreversible - l'objet observe est la production de l'enfant lui-meme, sans production rien a observer. Recouvrement a ne pas double-compter avec la ligne 11 (part lexicale deja portee). |
+| arts plastiques | CP | L'expression des emotions | Exprimer une émotion ou une sensation par le choix des couleurs, des formes et des matières. | - | - | **non couvrable en l'etat**, nature irreversible - production libre, jugement humain (`ADR-0008`). |
+| arts plastiques | CP | L'expression des emotions | Reconnaître et nommer les couleurs, distinguer les couleurs primaires de celles obtenues par mélange. | - | - | non couvert - jouable au choix textuel, sous `ART-1`. Le melange des couleurs est une connaissance qui se pose en trois propositions ecrites et se verifie, sans demander a l'enfant de percevoir une couleur. |
+| arts plastiques | CP | L'expression des emotions | Dire ce que l'on ressent devant une image ou une œuvre et écouter ce que d'autres en disent. | - | - | **non couvrable en l'etat**, nature irreversible - aucune bonne reponse : une mecanique dont le contrat est une bonne reponse parmi trois sanctionnerait le ressenti d'un enfant. |
+| arts plastiques | CP | La narration et le temoignage par les images | Raconter une histoire ou un événement par une suite d'images. | - | - | **non couvrable en l'etat**, nature irreversible - production plastique et narrative ; ordonner des images deja faites demanderait une manipulation de collection (palier 3), refusee par `V3`. |
+| arts plastiques | CP | La narration et le temoignage par les images | Transformer une image existante (découpage, ajout, association) pour en modifier le sens. | - | - | **non couvrable en l'etat**, nature irreversible - production plastique, memes deux motifs que la ligne 1. |
+| arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Décrire une œuvre : dire ce qu'on y voit (sujet, couleurs, formes, matériaux). | - | - | non couvert - palier 1 illustre, image d'oeuvre requise. La forme existe (image fixe, propositions en texte, `ADR-0073`), mais aucune reproduction d'oeuvre n'est servie par le depot ; un item textuel qui decrirait l'oeuvre serait une contrefacon (`CON-1`). Question de droits d'usage ouverte en `DEC-0075`, non tranchee. |
+| arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres. | - | - | non couvert - meme motif que la ligne precedente (image d'oeuvre requise, `DEC-0075`). Un quiz de noms ("qui a peint la Joconde ?") servirait la culture generale, pas la reconnaissance d'une oeuvre. |
+| arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, argile, esquisse). | - | - | non couvert - jouable au choix textuel. Vocabulaire concret, court, du niveau du CP, exact et verifiable. |
+
+**Conditions opposables, posees le 2026-09-03** : `ART-1` (aucun item ne fait porter la reponse par
+une couleur percue - la ligne 5 se sert par le nom ecrit des couleurs et par la regle de melange,
+pour ne pas exclure un enfant daltonien) ; `ART-2` (aucun item ne demande a l'enfant ce qu'il
+ressent, ni ne qualifie une oeuvre de belle, reussie ou ratee).
+
+**Mention exigee d'avance si une ligne bouge** : si les lignes 5 et 11 passent a `couvert-valide`,
+la matrice porte la mention "vocabulaire et connaissances de la pratique plastique seuls ; aucune
+production plastique n'est servie par ce produit".
+
+**Bilan** : 11 lignes, 4 `non couvert`, 7 `non couvrable en l'etat`. 4 lignes entrent au
+denominateur atteignable.
+
+## Arts plastiques - CM1 (cycle 3)
+
+Source : `squad/programme/arts-plastiques/competences-cm1.md`, ecrit par `nadia-prof` le
+2026-09-03 (`DEC-0074`). Memes moyens du produit que la section precedente. **Regle de nature
+posee ici et qui gouverne huit lignes** : quand une ligne cumule un motif reversible (le geste que
+le produit ne fournit pas) et un motif irreversible (le jugement humain sur ce que l'enfant a
+produit), c'est le motif irreversible qui donne la nature de la ligne.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| arts plastiques | CM1 | La representation plastique et les dispositifs de presentation | Représenter le monde environnant ou donner forme à son imaginaire en explorant plusieurs domaines (dessin, collage, modelage, sculpture, photographie). | - | - | **non couvrable en l'etat**, nature irreversible - production plastique ; aucun geste de trace fourni (`DEC-0046`) et jugement humain sur une production libre (`ADR-0008`). |
+| arts plastiques | CM1 | La representation plastique et les dispositifs de presentation | Utiliser un procédé de représentation (ressemblance, écart, transformation) pour rendre compte d'un sujet. | - | - | **non couvrable en l'etat**, nature irreversible - la ligne dit utiliser, pas reconnaitre ; reconnaitre un procede est une autre competence, deja portee par la ligne 7. |
+| arts plastiques | CM1 | La representation plastique et les dispositifs de presentation | Expérimenter l'effet des couleurs, des supports, des outils et des gestes sur une représentation. | - | - | **non couvrable en l'etat**, nature irreversible - experimenter est un geste sur une matiere ; la contrefacon par question de sensibilite tombe sous `ART-2`. |
+| arts plastiques | CM1 | Les fabrications et la relation entre l'objet et l'espace | Fabriquer un objet ou une construction en volume et adapter sa réalisation à l'espace où elle sera vue. | - | - | **non couvrable en l'etat**, nature irreversible - geste materiel hors de tout ecran, juge par un adulte qui regarde l'objet. |
+| arts plastiques | CM1 | Les fabrications et la relation entre l'objet et l'espace | Prendre en compte le lieu et le spectateur dans la présentation d'une production (accrochage, mise en espace). | - | - | **non couvrable en l'etat**, nature irreversible - suppose une production et un lieu reels (`ADR-0008`). |
+| arts plastiques | CM1 | La materialite de la production plastique | Choisir et employer une matière, un outil ou un geste en fonction de l'effet plastique recherché. | - | - | **non couvrable en l'etat**, nature irreversible - l'effet recherche est celui de l'enfant, personne d'autre ne peut dire si le choix le sert. |
+| arts plastiques | CM1 | La materialite de la production plastique | Repérer, dans une œuvre observée, les effets produits par la matière, la couleur, le geste et le support. | - | - | non couvert - palier 1 illustre, image d'oeuvre requise. Conditions `ART-1` a `ART-5` ; `ART-1` mord en premier (la couleur ne porte jamais seule la reponse). Question de droits d'usage ouverte en `DEC-0075`, non tranchee. |
+| arts plastiques | CM1 | S'exprimer, analyser sa pratique et celle des artistes | Décrire une œuvre d'art avec un lexique élémentaire (support, format, matière, couleur, sujet, composition). | - | - | non couvert - meme motif que la ligne precedente (`DEC-0075`). Mention exigee d'avance si la ligne bouge : "support, format, matiere, couleur et sujet seuls ; la composition et le cadrage restent non couverts" - les decrire suppose de designer une zone de l'image (palier 2). |
+| arts plastiques | CM1 | S'exprimer, analyser sa pratique et celle des artistes | Exprimer ce qu'on perçoit d'une œuvre, formuler un avis et écouter celui des autres. | - | - | **non couvrable en l'etat**, nature irreversible - jugement humain sur une production libre (`ADR-0008`), aucune bonne reponse unique (`ART-2`). |
+| arts plastiques | CM1 | S'exprimer, analyser sa pratique et celle des artistes | Établir un lien entre sa propre production et des œuvres d'artistes rencontrées. | - | - | **non couvrable en l'etat**, nature irreversible - suppose une production de l'enfant, que le produit ne recueille ni ne conserve (`DEC-0028`). Recouvrement a ne pas double-compter avec histoire des arts (reconnaissance et situation d'oeuvres sans lien a une pratique personnelle). |
+
+**Conditions opposables, posees le 2026-09-03** (numerotation continuee depuis les arts plastiques
+CP, `ART-1` et `ART-2` s'appliquant a l'identique) : `ART-3` (toute oeuvre servie en image est
+identifiee dans le commentaire du paquet - titre, auteur, date, lieu de conservation ; question des
+droits d'usage signalee et non tranchee, `DEC-0075`) ; `ART-4` (`CON-1` applique au corpus
+d'oeuvres - l'item ne se repond pas sans regarder l'image) ; `ART-5` (le corpus d'un paquet ne se
+compose ni d'une seule epoque, ni d'une seule aire culturelle, ni d'artistes d'un seul genre).
+
+**Mention exigee d'avance si une ligne bouge** : si les lignes 7 et 8 passent a `couvert-valide`,
+la matrice porte la mention "reception d'oeuvres seule ; aucune pratique plastique n'est servie par
+ce produit".
+
+**Bilan** : 10 lignes, 2 `non couvert`, 8 `non couvrable en l'etat`. 2 lignes entrent au
+denominateur atteignable.
+
+## Education musicale - CP (cycle 2)
+
+Source : `squad/programme/education-musicale/competences-cp.md`, ecrit par `nadia-prof` le
+2026-09-03 (`DEC-0074`). Memes moyens du produit. **C'est la matiere la plus lourdement touchee par
+la contrainte fondatrice** : le programme est ecrit autour de deux gestes, chanter et ecouter, et le
+produit ne fournit ni l'un ni l'autre. La premisse de l'adulte accompagnant (`DEC-0068`) ne sauve
+pas cette matiere : elle vaut sur les lignes ou la voix est la competence et ou l'adulte lit un
+texte, jamais sur une hauteur, un timbre ou une pulsation a produire.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| education musicale | CP | Chanter et interpreter | Chanter une comptine ou une chanson par cœur en respectant la hauteur et le rythme. | - | - | **non couvrable en l'etat**, nature irreversible - deux motifs de nature differente : aucun son fourni (reversible seul) et jugement humain sur une production vocale libre (`ADR-0008`, irreversible) ; le second survit au premier. |
+| education musicale | CP | Chanter et interpreter | Interpréter un chant avec d'autres en tenant sa place dans le groupe. | - | - | **non couvrable en l'etat**, nature irreversible - production collective en situation ; le produit est joue par un enfant seul, accompagne d'un adulte, il n'y a pas de groupe. |
+| education musicale | CP | Chanter et interpreter | Mobiliser son corps pour interpréter : frapper une pulsation, marquer un rythme simple. | - | - | **non couvrable en l'etat**, nature irreversible - geste corporel dans le temps, aucun capteur ne mesure une pulsation frappee. |
+| education musicale | CP | Ecouter, comparer et commenter | Repérer et nommer quelques caractéristiques d'un son entendu (fort/doux, aigu/grave, court/long, lent/rapide). | - | - | **non couvrable en l'etat**, nature reversible - contrainte fondatrice, aucun son ; seule une decision de l'utilisatrice sur le son rouvrirait la ligne. Une version textuelle serait une contrefacon (`CON-1`). |
+| education musicale | CP | Ecouter, comparer et commenter | Identifier quelques instruments de musique et les familles auxquelles ils appartiennent (cordes, vents, percussions). | - | - | non couvert - jouable sur la seule moitie connaissance (nom des familles d'instruments) ; la reconnaissance a l'oreille reste hors de portee. Mention exigee d'avance si la ligne bouge : "familles d'instruments sur le nom ecrit seul ; la reconnaissance auditive reste non couverte". |
+| education musicale | CP | Ecouter, comparer et commenter | Comparer deux extraits musicaux et dire ce qui les distingue. | - | - | **non couvrable en l'etat**, nature reversible - contrainte fondatrice, aucun son ; deux extraits ne se comparent pas par ecrit. |
+| education musicale | CP | Ecouter, comparer et commenter | Dire ce que l'on ressent en écoutant une musique et écouter ce que d'autres en disent. | - | - | **non couvrable en l'etat**, nature irreversible - deux motifs autonomes chacun suffisant : aucun son fourni, et aucune bonne reponse (le ressenti n'en a pas). |
+| education musicale | CP | Explorer et imaginer | Explorer des sons avec sa voix, son corps ou des objets et les organiser en une production sonore courte. | - | - | **non couvrable en l'etat**, nature irreversible - production sonore libre, jugement humain (`ADR-0008`). |
+| education musicale | CP | Explorer et imaginer | Imaginer et coder une organisation simple de sons (plus fort, plus vite, silence). | - | - | **non couvrable en l'etat**, nature irreversible - production libre ; un codage donne a lire serait une autre competence, et il ne se lit pas sans son. |
+| education musicale | CP | Echanger, partager et argumenter | Respecter les règles de l'écoute et de la production collective (silence, tour de parole, entrée à un signal). | - | - | **non couvrable en l'etat**, nature irreversible - comportement en situation, observe par un adulte. Recouvrement a ne pas double-compter avec les regles de vie de l'EMC. |
+| education musicale | CP | Echanger, partager et argumenter | Nommer quelques repères du vocabulaire musical rencontré (refrain, couplet, pulsation, silence). | - | - | non couvert - jouable au choix textuel, sous `MUS-1`. Connaissance lexicale exacte, courte, du niveau du CP. |
+
+**Conditions opposables, posees le 2026-09-03** : `MUS-1` (aucun item d'education musicale ne
+suppose que l'enfant a entendu quoi que ce soit - `CON-1` transpose) ; `MUS-2` (aucun dispositif ou
+un adulte chanterait, fredonnerait ou frapperait un rythme - la premisse de l'adulte accompagnant
+couvre la lecture d'un texte, pas la production d'une hauteur ou d'une pulsation).
+
+**Mention exigee d'avance si une ligne bouge** : si les lignes 5 et 11 passent a `couvert-valide`,
+la matrice porte la mention "vocabulaire musical et familles d'instruments seuls, sur le nom ecrit ;
+aucune competence auditive ni vocale n'est servie".
+
+**Bilan** : 11 lignes, 2 `non couvert`, 9 `non couvrable en l'etat`. 2 lignes entrent au
+denominateur atteignable.
+
+## Education musicale - CM1 (cycle 3)
+
+Source : `squad/programme/education-musicale/competences-cm1.md`, ecrit par `nadia-prof` le
+2026-09-03 (`DEC-0074`). Memes moyens du produit ; `MUS-1` et `MUS-2` s'appliquent a l'identique.
+**Le fait qui gouverne ce fichier tient en trois mots : aucun son.** Zero ligne sur dix entre au
+denominateur atteignable, et `nadia-prof` a refuse par ecrit deux contrefacons qui l'auraient
+maquille (reconnaitre un instrument a l'image, apparier des codages muets).
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| education musicale | CM1 | Chanter et interpreter | Chanter un chant mémorisé en respectant la justesse, le rythme et les nuances. | - | - | **non couvrable en l'etat**, nature irreversible - deux motifs : aucun son (contrainte fondatrice) et jugement humain sur une production libre (`ADR-0008`) ; le second donne la nature. |
+| education musicale | CM1 | Chanter et interpreter | Interpréter un chant à plusieurs voix ou en canon, en tenant sa partie dans un ensemble. | - | - | **non couvrable en l'etat**, nature irreversible - memes motifs, plus un ensemble d'autres enfants que rien de ce produit ne fournit. |
+| education musicale | CM1 | Chanter et interpreter | Mobiliser son corps et sa voix pour interpréter (posture, respiration, articulation). | - | - | **non couvrable en l'etat**, nature irreversible - geste corporel, juge par un adulte qui regarde et ecoute. |
+| education musicale | CM1 | Ecouter, comparer et commenter | Décrire et comparer des éléments sonores d'une œuvre écoutée (timbre, hauteur, durée, intensité, tempo). | - | - | **non couvrable en l'etat**, nature reversible - contrainte fondatrice, aucun son ; se rouvrirait si le produit diffusait un son. |
+| education musicale | CM1 | Ecouter, comparer et commenter | Repérer l'organisation d'une œuvre écoutée (thème, couplet et refrain, répétition, contraste). | - | - | **non couvrable en l'etat**, nature reversible - meme motif et meme condition de reouverture. |
+| education musicale | CM1 | Ecouter, comparer et commenter | Identifier la famille et le timbre d'un instrument entendu. | - | - | **non couvrable en l'etat**, nature reversible - contrainte fondatrice, aucun son ; identifier un instrument a l'image serait une contrefacon (`CON-1`), refusee d'avance. |
+| education musicale | CM1 | Ecouter, comparer et commenter | Situer une œuvre écoutée dans le temps, dans une aire géographique ou dans un genre musical. | - | - | **non couvrable en l'etat**, nature reversible - meme motif. Recouvrement a ne pas double-compter avec histoire des arts (situer une oeuvre connue par son titre, sans ecoute). |
+| education musicale | CM1 | Explorer, imaginer et creer | Imaginer et réaliser une production sonore avec sa voix, son corps ou des objets sonores. | - | - | **non couvrable en l'etat**, nature irreversible - production libre jugee par un humain (`ADR-0008`), le produit ne recueille aucun son. |
+| education musicale | CM1 | Explorer, imaginer et creer | Utiliser un codage simple pour représenter une organisation sonore, et la réaliser. | - | - | **non couvrable en l'etat**, nature reversible - le codage est une representation d'un son ; apparier des motifs graphiques sans jamais les entendre n'enseigne rien de musical. |
+| education musicale | CM1 | Echanger, partager, argumenter et debattre | Exprimer et justifier un avis sur une musique écoutée, et écouter celui des autres. | - | - | **non couvrable en l'etat**, nature irreversible - jugement humain sur une production libre (`ADR-0008`), aucune bonne reponse (`ART-2`). |
+
+**Bilan** : 10 lignes, 0 `non couvert`, 10 `non couvrable en l'etat`. 0 ligne entre au denominateur
+atteignable.
+
+## Education physique et sportive - CP (cycle 2)
+
+Source : `squad/programme/education-physique-et-sportive/competences-cp.md`, ecrit par
+`nadia-prof` le 2026-09-03 (`DEC-0074`). Memes moyens du produit. **La contrainte decisive n'est
+meme pas dans la liste des moyens** : le produit ne recoit aucun mouvement du corps de l'enfant, et
+rien dans son architecture ne s'y prete. Aucune des sept lignes hors de portee n'est reversible :
+il faudrait un autre produit.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| education physique et sportive | CP | Produire une performance mesurable | Courir, sauter et lancer pour réaliser une performance et la mesurer (temps, distance). | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur mesure, aucun capteur ne mesure une mecanique de ce produit n'observe un corps. |
+| education physique et sportive | CP | Produire une performance mesurable | Comparer sa performance à la précédente et dire si elle progresse. | - | - | **non couvrable en l'etat**, nature irreversible - la performance elle-meme n'est pas mesurable (ligne 1, motif suffisant et irreversible) ; le produit ne conserve rien d'une session a l'autre (`DEC-0028`) n'ajoute rien. |
+| education physique et sportive | CP | Adapter ses deplacements a des environnements varies | Se déplacer en s'adaptant au milieu (dans l'eau, sur un engin roulant, sur un parcours d'équilibre). | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur dans un milieu physique ; une simulation a l'ecran serait une contrefacon (`CON-1`), pas une couverture. |
+| education physique et sportive | CP | Adapter ses deplacements a des environnements varies | Connaître et respecter les règles de sécurité propres à l'activité et au lieu de pratique. | - | - | non couvert - jouable sur la seule moitie connaissance ; la mise en oeuvre en situation reste hors de portee. Mention exigee d'avance : "connaissance de la regle de securite seule ; son respect en situation n'est pas servi". |
+| education physique et sportive | CP | S'exprimer devant les autres par une prestation artistique ou acrobatique | Mobiliser son corps pour exprimer une intention devant des spectateurs (danse, ronde, acrobatie). | - | - | **non couvrable en l'etat**, nature irreversible - production corporelle libre devant des spectateurs, jugement humain (`ADR-0008`). |
+| education physique et sportive | CP | S'exprimer devant les autres par une prestation artistique ou acrobatique | Regarder la prestation des autres et en dire quelque chose avec des mots respectueux. | - | - | **non couvrable en l'etat**, nature irreversible - production orale libre, aucune bonne reponse, pas d'autre enfant devant l'ecran. |
+| education physique et sportive | CP | Conduire et maitriser un affrontement individuel ou collectif | Tenir un rôle dans un jeu collectif (attaquant, défenseur, arbitre). | - | - | **non couvrable en l'etat**, nature irreversible - role tenu en situation, dans un groupe qui n'existe pas ici. |
+| education physique et sportive | CP | Conduire et maitriser un affrontement individuel ou collectif | Connaître et respecter les règles d'un jeu collectif simple. | - | - | non couvert - jouable sur la seule moitie connaissance, sous `EPS-1` ; la tenue du role en situation ne l'est pas. Mention exigee d'avance : "connaissance de la regle seule ; la tenue du role en situation reste non couverte". |
+| education physique et sportive | CP | Conduire et maitriser un affrontement individuel ou collectif | Accepter le résultat d'une rencontre, gagner et perdre sans agressivité. | - | - | **non couvrable en l'etat**, nature irreversible - un item de choix sur une attitude mesure la reponse attendue, pas la conduite ; contrefacon refusee (`EPS-3`). |
+| education physique et sportive | CP | Entretenir sa sante par la pratique | Reconnaître les effets de l'effort sur son corps (essoufflement, cœur qui bat vite, chaleur, soif). | - | - | non couvert - jouable au choix textuel, sous `BIA-4`. Frontiere a tenir avec questionner le monde (effets de l'effort, jamais l'hygiene de vie en general). |
+| education physique et sportive | CP | Entretenir sa sante par la pratique | Connaître quelques règles d'échauffement, d'hydratation et de récupération autour de l'effort. | - | - | non couvert - jouable au choix textuel, sous `EPS-2`. Meme frontiere a tenir avec questionner le monde. |
+
+**Conditions opposables, posees le 2026-09-03** : `EPS-1` (un item sur la regle d'un jeu ne porte
+que sur un jeu dont la regle est rappelee dans l'enonce ou universellement scolaire) ; `EPS-2`
+(aucun item ne compare des corps, des performances ou des capacites entre enfants, et aucun ne
+presente une performance chiffree comme une norme) ; `EPS-3` (aucun item ne fait porter une
+attitude, une emotion ou une conduite morale par une bonne reponse).
+
+**Mention exigee d'avance si une ligne bouge** : si les lignes 4, 8, 10 ou 11 passent a
+`couvert-valide`, la matrice porte la mention "connaissances qui entourent la pratique physique
+seules ; aucune activite physique, aucun geste et aucune performance ne sont servis par ce
+produit".
+
+**Bilan** : 11 lignes, 4 `non couvert`, 7 `non couvrable en l'etat`. 4 lignes entrent au
+denominateur atteignable.
+
+## Education physique et sportive - CM1 (cycle 3)
+
+Source : `squad/programme/education-physique-et-sportive/competences-cm1.md`, ecrit par
+`nadia-prof` le 2026-09-03 (`DEC-0074`). `EPS-1` a `EPS-3` et `BIA-4` s'appliquent a l'identique.
+Meme constat que le CP : la contrainte decisive est l'absence de tout mouvement recu par le
+produit, huit lignes sur dix sont hors de portee definitive, toutes de nature irreversible.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| education physique et sportive | CM1 | Produire une performance optimale, mesurable a une echeance donnee | Réaliser une performance mesurée en course, en saut ou en lancer, et la comparer à ses résultats précédents. | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur mesure, aucun capteur n'observe un corps ; la performance se juge par un adulte qui regarde et chronometre (`ADR-0008`). |
+| education physique et sportive | CM1 | Produire une performance optimale, mesurable a une echeance donnee | Se déplacer dans l'eau sur une distance donnée en assurant sa propre sécurité. | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur dans un milieu physique. |
+| education physique et sportive | CM1 | Adapter ses deplacements a des environnements varies | Adapter ses déplacements à un milieu inhabituel (grimper, s'équilibrer, se déplacer en milieu naturel) en respectant les règles de sécurité. | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur ; une simulation a l'ecran d'un parcours d'equilibre serait une contrefacon (`CON-1`), pas une couverture. |
+| education physique et sportive | CM1 | Adapter ses deplacements a des environnements varies | Suivre un itinéraire à l'aide d'un plan ou d'une carte et y retrouver des repères. | - | - | **non couvrable en l'etat**, nature irreversible - le geste de la ligne est le deplacement, pas la lecture. Recouvrement a ne pas double-compter avec histoire-geographie CM1 (ligne 9, en attente du palier 2). |
+| education physique et sportive | CM1 | S'exprimer devant les autres par une prestation artistique ou acrobatique | Composer et présenter devant les autres une courte chorégraphie ou un enchaînement acrobatique. | - | - | **non couvrable en l'etat**, nature irreversible - production corporelle libre devant des spectateurs, jugement humain (`ADR-0008`). |
+| education physique et sportive | CM1 | S'exprimer devant les autres par une prestation artistique ou acrobatique | Observer la prestation d'un camarade et lui formuler un retour simple et respectueux. | - | - | **non couvrable en l'etat**, nature irreversible - production orale libre, aucune bonne reponse unique, pas d'autre enfant devant l'ecran (`EPS-3`). |
+| education physique et sportive | CM1 | Conduire et maitriser un affrontement collectif ou interindividuel | Conduire un affrontement collectif : se placer, coopérer avec ses partenaires et atteindre un but commun. | - | - | **non couvrable en l'etat**, nature irreversible - se placer et cooperer se font en situation, dans une equipe qui n'existe pas ici ; contrefacon tactique refusee d'avance. |
+| education physique et sportive | CM1 | Conduire et maitriser un affrontement collectif ou interindividuel | Conduire un affrontement interindividuel : adapter ses actions à celles de l'adversaire. | - | - | **non couvrable en l'etat**, nature irreversible - adapter ses actions a l'adversaire suppose un adversaire. |
+| education physique et sportive | CM1 | Conduire et maitriser un affrontement collectif ou interindividuel | Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer les règles. | - | - | non couvert - jouable sur la seule moitie connaissance, sous `EPS-1` ; la tenue du role en situation ne l'est pas. Mention exigee d'avance : "connaissance et application de la regle seules ; la tenue du role en situation reste non couverte". |
+| education physique et sportive | CM1 | Apprendre a entretenir sa sante | Connaître les effets de l'activité physique sur le corps (échauffement, essoufflement, récupération, hydratation) et les règles de sécurité qui l'entourent. | - | - | non couvert - jouable au choix textuel, sous `EPS-2` et `BIA-4`. Frontiere a tenir avec les sciences (effets de l'effort, jamais l'hygiene de vie en general). |
+
+**Mention exigee d'avance si une ligne bouge** : si les lignes 9 ou 10 passent a `couvert-valide`,
+la matrice porte la mention "connaissances qui entourent la pratique physique seules ; aucune
+activite physique, aucun geste et aucune performance ne sont servis par ce produit".
+
+**Bilan** : 10 lignes, 2 `non couvert`, 8 `non couvrable en l'etat`. 2 lignes entrent au
+denominateur atteignable.
+
+## Enseignement moral et civique - CP (cycle 2)
+
+Source : `squad/programme/enseignement-moral-et-civique/competences-cp.md`, ecrit par
+`nadia-prof` le 2026-09-03 (`DEC-0074`). Memes moyens du produit. **C'est la matiere la plus
+jouable des quatre matieres transverses, et c'est un risque, pas un confort** : une mecanique de
+choix appliquee a l'EMC produit spontanement du catechisme civique - un item ou l'enfant coche la
+reponse gentille sans que rien n'ait ete travaille. Les conditions ci-dessous sont la barre posee
+avant qu'un lot ne soit ecrit.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| enseignement moral et civique | CP | Respecter autrui | Identifier et nommer les émotions d'autrui dans une situation simple (joie, tristesse, colère, peur). | - | - | non couvert - jouable au choix, sous `EMC-1` et `EMC-2`. Risque propre : beaucoup de situations admettent deux emotions defendables (`HIS-2` transpose). |
+| enseignement moral et civique | CP | Respecter autrui | Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves (moquerie, insulte, violence). | - | - | non couvert - jouable au choix. Ce n'est pas une opinion : la moquerie et la violence sont interdites, reponse unique et exacte. |
+| enseignement moral et civique | CP | Respecter autrui | Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte en parler. | - | - | non couvert - jouable au choix, sous `EMC-3`. Ligne delicate : mal ecrite, elle mettrait l'enfant en position de victime nommee ou lui suggererait de se debrouiller seul. |
+| enseignement moral et civique | CP | Respecter autrui | Reconnaître que les personnes sont différentes et qu'aucune différence ne justifie de traiter quelqu'un moins bien. | - | - | non couvert - jouable au choix, sous `EMC-4`, `BIA-1` et `BIA-2`, seulement sous la forme de l'interdit, jamais sous celle de l'enumeration des differences (contrefacon a stereotype). |
+| enseignement moral et civique | CP | Respecter autrui | Employer les formules de politesse et de respect dans les échanges (saluer, remercier, demander, écouter sans couper). | - | - | non couvert - jouable sur la seule moitie connaissance ; l'emploi effectif en situation n'est pas servi. Mention exigee d'avance : "connaissance des formules seule ; leur emploi en situation n'est pas servi". |
+| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent. | - | - | non couvert - jouable au choix. Ligne la plus franchement jouable : la regle et sa raison se posent toutes deux en trois propositions. |
+| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous. | - | - | non couvert - jouable au choix, sous reserve de lisibilite : le mot loi ne doit pas etre defini juridiquement dans l'enonce. |
+| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Reconnaître et nommer les symboles de la République française (drapeau tricolore, Marianne, La Marseillaise, la fête nationale). | - | - | non couvert - jouable au choix textuel, sous `ART-1`. La reponse ne se porte jamais par une couleur percue ; on demande le nom, l'hymne, la devise, la date. |
+| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Connaître la devise de la République et donner un exemple concret de liberté, d'égalité et de fraternité. | - | - | non couvert - jouable au choix, sous `EMC-5`. La devise est une restitution exacte ; l'exemple demande que les deux autres propositions soient nettement hors sujet, sinon deux reponses defendables. |
+| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à l'école, jouer). | - | - | non couvert - jouable au choix. Connaissance exacte, terrain sur ; `BIA-4` s'applique (aucun item n'interroge l'enfant sur sa propre situation). |
+| enseignement moral et civique | CP | Construire une culture civique | Participer à une décision collective par un vote et accepter le résultat du vote. | - | - | **non couvrable en l'etat**, nature irreversible - un vote sans collectif n'est pas un vote ; faire passer un clic pour un vote serait une contrefacon (`CON-1`). |
+| enseignement moral et civique | CP | Construire une culture civique | Prendre part à un échange réglé sur une question simple : donner son avis, écouter celui des autres, en changer si on est convaincu. | - | - | **non couvrable en l'etat**, nature irreversible - production libre argumentee, jugement humain (`ADR-0008`) ; un debat suppose un interlocuteur et une parole tenue. |
+| enseignement moral et civique | CP | Construire une culture civique | Identifier quelques rôles et services de l'école et de la commune (directeur, mairie, pompiers, médecin). | - | - | non couvert - jouable au choix, sous `EMC-6`. Aucun item ne suppose la commune de l'enfant (le produit ne la connait pas et ne peut pas la connaitre, `DEC-0028`). |
+| enseignement moral et civique | CP | Construire une culture civique | Connaître les gestes d'alerte les plus simples et savoir donner l'alerte (prévenir un adulte, numéro d'urgence). | - | - | non couvert - jouable au choix, sous `EMC-7`. Piege d'exactitude pose d'avance : le numero d'urgence en cas d'incendie admet deux reponses defendables (18, 112). |
+
+**Conditions opposables, posees le 2026-09-03** : `EMC-1` (aucun item n'interroge l'enfant sur ce
+que lui ressent, vit, croit ou fait chez lui - extension de `BIA-4`) ; `EMC-2` (un item sur une
+emotion ne retient que les situations a emotion unique et evidente) ; `EMC-3` (sur la ligne 3, la
+bonne reponse est toujours "en parler a un adulte", jamais une solution que l'enfant appliquerait
+seul, et aucun item ne detaille une violence) ; `EMC-4` (sur la ligne 4, les items portent sur
+l'interdit de traiter quelqu'un moins bien, jamais sur la description des groupes de personnes) ;
+`EMC-5` (aucun item n'a deux reponses defendables, extension de `HIS-2`) ; `EMC-6` (aucun item ne
+presuppose un lieu de vie, une commune, un type d'ecole ou une configuration familiale) ; `EMC-7`
+(les items sur les numeros d'urgence sont exacts et sans ambiguite, source dans le commentaire du
+paquet).
+
+**Mention exigee d'avance si une ligne bouge** : les lignes 5 et 6 sont des moities de competence ;
+si elles passent a `couvert-valide`, la matrice porte la mention "connaissance de la regle et de la
+formule seule ; leur mise en oeuvre en situation n'est pas servie". Aucune ligne d'EMC ne doit etre
+presentee comme attestant une conduite.
+
+**Bilan** : 14 lignes, 12 `non couvert`, 2 `non couvrable en l'etat`. 12 lignes entrent au
+denominateur atteignable.
+
+## Enseignement moral et civique - CM1 (cycle 3)
+
+Source : `squad/programme/enseignement-moral-et-civique/competences-cm1.md`, ecrit par
+`nadia-prof` le 2026-09-03 (`DEC-0074`). `EMC-1` a `EMC-7` s'appliquent a l'identique, `EMC-8` et
+`EMC-9` s'y ajoutent. `ART-1` s'applique a la ligne des symboles ; `HIS-2` et `HIS-3` s'appliquent
+(faits institutionnels dont `nadia-prof` n'est pas la source). **Onze lignes sur douze sont
+jouables, et c'est precisement ce qui est dangereux** : le `bandit-manchot` produit spontanement
+l'item dont la bonne reponse se devine par la seule politesse, que `EMC-8` refuse.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| enseignement moral et civique | CM1 | Respecter autrui | Identifier et nommer l'émotion d'une personne dans une situation donnée, et distinguer ce que l'on ressent de ce que l'on fait. | - | - | non couvert - jouable au choix, sous `EMC-1` et `EMC-2`. Risque propre : deux emotions souvent defendables (`HIS-2` transpose) ; la seconde moitie (ressentir / agir) se pose tres bien en trois propositions. |
+| enseignement moral et civique | CM1 | Respecter autrui | Reconnaître ce qui porte atteinte à la personne d'autrui (moquerie, insulte, mise à l'écart, harcèlement) et savoir à qui s'adresser. | - | - | non couvert - jouable au choix, sous `EMC-3` et `EMC-9`. Ligne delicate : `EMC-9` interdit de laisser croire a l'enfant qu'il vient d'alerter quelqu'un. |
+| enseignement moral et civique | CM1 | Respecter autrui | Identifier ce qu'interdit le respect d'autrui dans ses différences (apparence, origine, convictions, situation de handicap). | - | - | non couvert - jouable au choix, sous `EMC-4`, `BIA-1` et `BIA-2`, seulement sous la forme de l'interdit, jamais sous celle de l'enumeration des differences. |
+| enseignement moral et civique | CM1 | Respecter autrui | Connaître les règles de la vie collective à l'école et dire à quoi elles servent. | - | - | non couvert - jouable au choix. La moitie "a quoi elles servent" distingue la ligne d'un reglement recite. |
+| enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Reconnaître les symboles de la République française et dire ce qu'ils représentent (drapeau, devise, Marianne, hymne, fête nationale). | - | - | non couvert - jouable au choix textuel, sous `ART-1`. La reponse ne se porte jamais par une couleur percue. |
+| enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Comprendre le sens des principes de la République : liberté, égalité, fraternité, laïcité, refus des discriminations. | - | - | non couvert - jouable au choix, ligne la plus dangereuse de la matiere. `EMC-4`, `EMC-5` et `BIA-5` mordent tous les trois ; la laicite se definit comme ce que l'ecole garantit, jamais comme un interdit visant un groupe. |
+| enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Distinguer un droit d'un devoir, et connaître quelques droits et devoirs de l'élève et de l'enfant. | - | - | non couvert - jouable au choix. Excellente forme d'item, distracteurs naturels et plausibles ; `BIA-4` s'applique. |
+| enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Distinguer une règle d'une loi, et identifier ce que la loi autorise, interdit et protège. | - | - | non couvert - jouable au choix. Le mot loi est accessible sur des exemples concrets, jamais defini juridiquement dans l'enonce. |
+| enseignement moral et civique | CM1 | Construire une culture civique | Identifier le rôle de quelques institutions proches (mairie, conseil municipal, école) et à qui s'adresser selon la situation. | - | - | non couvert - jouable au choix, sous `EMC-6`. Aucun item ne suppose la commune de l'enfant. |
+| enseignement moral et civique | CM1 | Construire une culture civique | Comprendre le sens du vote et de la représentation (délégué de classe, élection, suffrage universel). | - | - | non couvert - jouable au choix, sur la connaissance seule. Point de coherence avec le CP : la ligne 11 de CP reste `non couvrable en l'etat` (participer a une decision collective), celle-ci porte la connaissance que le programme du cycle 3 rend attendu propre. Mention exigee d'avance : "connaissance du vote et de la representation seule ; participer a une decision collective reste non couvrable". |
+| enseignement moral et civique | CM1 | Construire une culture civique | Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la partager. | - | - | non couvert - jouable au choix, meilleure ligne de la matiere. Forme deja validee deux fois (`bandit-manchot-comprehension-cm1`) ; condition : exemples sans enjeu polemique. |
+| enseignement moral et civique | CM1 | Construire une culture civique | S'engager dans un projet collectif de la classe ou de l'école et y tenir son rôle. | - | - | **non couvrable en l'etat**, nature irreversible - engagement reel dans un collectif reel, juge par un adulte qui l'observe dans la duree (`ADR-0008`) ; `EMC-8` interdit par ailleurs la contrefacon evidente ("acceptes-tu d'aider ton groupe ?"). |
+
+**Conditions opposables, posees le 2026-09-03** : `EMC-8` (aucun item ne demande a l'enfant de
+declarer un comportement - la forme "que fais-tu si...", "acceptes-tu de..." est refusee) ; `EMC-9`
+(sur la ligne 2, aucun item ne laisse croire a l'enfant qu'il vient d'alerter quelqu'un - le produit
+ne recueille rien, ne transmet rien, ne conserve rien, `DEC-0028`).
+
+**Mention exigee d'avance si une ligne bouge** : "connaissances civiques et reconnaissance de
+situations seules ; aucun comportement, aucun engagement et aucune participation a une decision
+collective ne sont servis par ce produit".
+
+**Bilan** : 12 lignes, 11 `non couvert`, 1 `non couvrable en l'etat`. 11 lignes entrent au
+denominateur atteignable.
+
+## Histoire des arts - CM1 (cycle 3)
+
+Source : `squad/programme/histoire-des-arts/competences-cm1.md`, ecrit par `nadia-prof` le
+2026-09-03 (`DEC-0074`). **L'histoire des arts est un enseignement a part entiere du cycle 3,
+distinct des arts plastiques et de l'education musicale : c'est un chapitre de programme portant
+ses propres attendus de fin de cycle**, sans avoir d'horaire propre (critere de comptage arrete par
+`nadia-prof` le 2026-09-02, voir la note en tete de ce fichier). **Elle n'existe pas au cycle 2** :
+aucune ligne CP. `ART-1` a `ART-5` (poses sur les arts plastiques le meme jour) s'appliquent a
+l'identique ; `HIS-2` et `HIS-3` s'appliquent (`nadia-prof` n'est pas la source des faits
+d'histoire de l'art).
+
+**Sept lignes sur dix entrent au denominateur, mais six d'entre elles exigent une image d'oeuvre
+que le depot ne sert pas - meme question de droits d'usage, non tranchee, ouverte en `DEC-0075`.**
+Une seule (ligne 5) est jouable des aujourd'hui, sans rien construire de neuf.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| histoire des arts | CM1 | Decrire une oeuvre et en degager les caracteristiques | Décrire une œuvre d'art en employant un lexique simple et adapté (support, format, matière, couleur, sujet). | - | - | non couvert - palier 1 illustre, image d'oeuvre requise (`DEC-0075`). Un item textuel qui decrirait l'oeuvre dans son enonce serait une contrefacon (`ART-4`, `CON-1`). |
+| histoire des arts | CM1 | Decrire une oeuvre et en degager les caracteristiques | Dégager d'une œuvre observée ses principales caractéristiques techniques et formelles. | - | - | non couvert - meme motif que la ligne precedente (`DEC-0075`). Mention exigee d'avance si la ligne bouge : "oeuvres visuelles seules ; l'oeuvre ecoutee reste non couvrable, faute de son". |
+| histoire des arts | CM1 | Decrire une oeuvre et en degager les caracteristiques | Identifier les matériaux d'une œuvre et la manière dont l'artiste leur a donné forme. | - | - | non couvert - meme motif (`DEC-0075`). Risque propre : le nom de l'oeuvre porte souvent le materiau ("la statue de bronze") ; `ART-4` mord exactement la (propositions masquees). |
+| histoire des arts | CM1 | Situer une oeuvre dans le temps et dans son contexte | Associer une œuvre à une époque et à une civilisation à partir d'éléments observés. | - | - | non couvert - meme motif (`DEC-0075`). Meilleure forme d'item de la matiere : l'association a des distracteurs naturels et plausibles. Sans image, l'item deviendrait un quiz de titres. |
+| histoire des arts | CM1 | Situer une oeuvre dans le temps et dans son contexte | Relier les caractéristiques d'une œuvre d'art à des usages et au contexte historique et culturel de sa création. | - | - | non couvert - jouable des aujourd'hui au choix textuel, seule ligne de la matiere sans image requise (l'enonce nomme la caracteristique). `HIS-2` est ici la barre critique : le contexte d'une oeuvre a souvent plusieurs lectures defendables. |
+| histoire des arts | CM1 | Situer une oeuvre dans le temps et dans son contexte | Identifier quelques œuvres et quelques repères majeurs du patrimoine, et les situer sur une frise. | - | - | non couvert - palier 1 illustre, sur la moitie identification seulement (`DEC-0075`). Mention exigee d'avance : "identification et ordre entre deux oeuvres seuls ; le placement sur une frise reste non couvert" - placer sur une frise est du palier 2. |
+| histoire des arts | CM1 | Donner un avis argumente | Donner un avis argumenté sur ce qu'une œuvre représente ou exprime. | - | - | **non couvrable en l'etat**, nature irreversible - jugement humain sur une production libre (`ADR-0008`) ; argumenter est une production, et la question n'a pas de bonne reponse unique (`ART-2`). |
+| histoire des arts | CM1 | Donner un avis argumente | Proposer une interprétation simple d'une œuvre et en discuter avec d'autres. | - | - | **non couvrable en l'etat**, nature irreversible - memes deux motifs, plus l'echange oral avec d'autres que rien de ce produit ne fournit. |
+| histoire des arts | CM1 | Frequenter les lieux d'art et le patrimoine | Se repérer dans un musée, un lieu d'art ou un site patrimonial, et en respecter les règles. | - | - | non couvert - palier 2 (designer un lieu sur un plan), refuse au palier 1 par `V1`, constructible (ADR de `theo-archi` en s28) ; jamais `non couvrable en l'etat`. Contrefacon refusee d'avance : un quiz "que fait-on dans un musee ?" ne sert pas le reperage. |
+| histoire des arts | CM1 | Frequenter les lieux d'art et le patrimoine | Rendre compte de la visite d'un lieu de conservation ou de la rencontre avec un métier du patrimoine. | - | - | **non couvrable en l'etat**, nature irreversible - compte rendu libre (`ADR-0008`), et la ligne suppose une visite reelle que ce produit ne fournit pas et ne remplace pas. |
+
+**Mention exigee d'avance si une ligne bouge** : "reconnaissance et situation d'oeuvres seules ;
+aucun avis argumente ni aucune frequentation d'un lieu d'art n'est servi par ce produit".
+
+**Bilan** : 10 lignes, 7 `non couvert`, 3 `non couvrable en l'etat`. 7 lignes entrent au
+denominateur atteignable.
+
+## Sciences et technologie - CM1 (cycle 3)
+
+Source : `squad/programme/sciences-et-technologie/competences-cm1.md`, ecrit par `nadia-prof` le
+2026-09-03 (`DEC-0074`). *Sciences et technologie* est une matiere de cycle 3 issue de la scission
+de *questionner le monde* avec l'histoire-geographie a la sortie du cycle 2 : aucune ligne CP
+n'existe ni n'existera pour cette matiere, et reciproquement aucune ligne CM1 n'existe pour
+*questionner le monde*. `BIA-2`, `BIA-3`, `BIA-4`, `HIS-3` et `CON-1` s'appliquent a l'identique.
+**C'est la matiere la plus immediatement servable des dix, et de tres loin** : dix-neuf lignes sur
+vingt sont des connaissances ou des raisonnements courts, jouables par le `bandit-manchot` sans
+aucun mecanisme neuf. Une seule tombe, la demarche d'investigation elle-meme.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation). | - | - | non couvert - jouable au choix textuel. Terrain le plus sur du lot. |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange. | - | - | non couvert - jouable au choix textuel. Vocabulaire du programme, se laisse definir dans l'item lui-meme. |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à un point de repère donné. | - | - | non couvert - jouable au choix textuel, sur la description seule (le produit ne montre aucun mouvement). Recouvrement a ne pas double-compter avec mathematiques CM1 / Grandeurs et mesures (le calcul d'une vitesse). |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre. | - | - | non couvert - jouable au choix textuel. Distracteurs naturels et plausibles, ce qui est rare. |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran). | - | - | non couvert - jouable au choix textuel. Objets du quotidien, vocabulaire accessible au CM1. |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu. | - | - | non couvert - jouable au choix textuel, item par item. Mention exigee d'avance : "raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non couvert" (refuse au palier 1 par `V3`). |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (végétarien, carnivore, omnivore). | - | - | non couvert - jouable au choix textuel. |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort). | - | - | non couvert - jouable au choix textuel. Ordonner deux etapes se pose en texte, sans frise ni manipulation. |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Nommer les grandes fonctions du corps humain (nutrition, digestion, respiration, circulation) et l'organe principal de chacune. | - | - | non couvert - jouable au choix textuel. L'association fonction / organe se fait en texte ; designer un organe sur un schema serait du palier 2, non exige. |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps. | - | - | non couvert - jouable au choix textuel, sous `BIA-4`. Aucun item n'interroge l'enfant sur sa propre vie. |
+| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité). | - | - | non couvert - jouable au choix textuel. Une propriete par item, jamais deux. |
+| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement. | - | - | non couvert - jouable au choix textuel. Nommer un composant se fait en texte ; le designer sur un schema serait du palier 2, non exige. |
+| sciences et technologie | CM1 | Materiaux et objets techniques | Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa fabrication ou dans son usage. | - | - | non couvert - jouable au choix textuel, sous `BIA-3`. On decrit un changement, aucun item ne dit que l'objet ancien etait moins bien. |
+| sciences et technologie | CM1 | Materiaux et objets techniques | Connaître quelques règles d'usage d'un environnement numérique (identification, courriel, recherche d'une information, protection de ses données). | - | - | non couvert - jouable au choix textuel, sur les connaissances seules. Mention exigee d'avance : "regles et connaissances d'usage seules ; la pratique d'un environnement numerique reste non couverte". |
+| sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Situer la Terre dans le système solaire et relier les mouvements de la Terre au jour, à la nuit et aux saisons. | - | - | non couvert - jouable au choix textuel, sous `SCI-1`. Exigence d'exactitude : la cause des saisons est l'inclinaison de l'axe terrestre, pas la distance au Soleil. |
+| sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Identifier quelques phénomènes géologiques et météorologiques (séisme, éruption, tempête, inondation) et les risques associés. | - | - | non couvert - jouable au choix textuel, sous `BIA-2`. Un paquet ne doit pas situer tous les risques ailleurs. |
+| sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Décrire un milieu proche : les êtres vivants qui le peuplent et les relations alimentaires qui les relient (chaîne alimentaire). | - | - | non couvert - jouable au choix textuel. "Qui mange qui ?" a deux maillons sert bien la relation alimentaire ; construire une chaine entiere serait refuse par `V3`. |
+| sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Identifier un effet de l'activité humaine sur l'environnement et un geste de préservation des ressources. | - | - | non couvert - jouable au choix textuel, sous `SCI-2`, ligne la plus dangereuse du lot. Aucun item ne met en cause le foyer de l'enfant. |
+| sciences et technologie | CM1 | Demarches et langages scientifiques | Mener une démarche d'investigation : formuler une hypothèse, proposer une expérience pour la tester, interpréter le résultat et communiquer sa démarche. | - | - | **non couvrable en l'etat**, nature irreversible - geste pratique et compte rendu libre, jugement humain (`ADR-0008`) ; la decoupe qui la sauverait ("choisir l'experience qui teste cette hypothese") est une autre competence, plus etroite, et son emploi ici serait une contrefacon par reduction. |
+| sciences et technologie | CM1 | Demarches et langages scientifiques | Extraire une information d'un document scientifique (texte, tableau, schéma, graphique) et la restituer. | - | - | non couvert - jouable au choix textuel, sur le texte et le tableau. Mention exigee d'avance : "document textuel et tableau seuls ; le schema et le graphique restent non couverts" (palier 2). |
+
+**Conditions opposables, posees le 2026-09-03** : `SCI-1` (apres une reponse fausse, le retour dit
+pourquoi elle est fausse, en une phrase) ; `SCI-2` (sur les risques naturels et l'impact humain,
+aucun item ne fait porter une responsabilite a l'enfant ni a son foyer) ; `SCI-3` (aucun item ne
+demande une valeur numerique a restituer au-dela d'un item sur six, transposition de `HIS-1`).
+
+**Bilan** : 20 lignes, 19 `non couvert`, 1 `non couvrable en l'etat`. 19 lignes entrent au
 denominateur atteignable.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
@@ -3844,4 +4215,123 @@ de s27 : aucune des trois lignes concernees n'est remise en cause par cette rese
 - Elle ne prononce aucun Done : les six verdicts sont de `nadia-prof`.
 - Elle ne ratifie pas elle-meme `nombreDeManches: 7` : c'est `DEC-0073`, deja rendue.
 - Elle ne fixe aucun perimetre pour s28.
+
+## Integration des dix referentiels absents du 2026-09-03 - le denominateur final est atteint
+
+**Sur mandat de l'utilisatrice** (`DEC-0074`, section 3, amendee le meme jour) : les dix
+referentiels des enseignements jusque-la absents (arts plastiques, education musicale, education
+physique et sportive et enseignement moral et civique aux deux cycles ; histoire des arts et
+sciences et technologie au cycle 3 seul), ecrits par `nadia-prof` le 2026-09-03 et commites en
+`1cf80f4`, entrent dans cette matrice **maintenant**, avant l'ouverture de s28, pour que la baisse
+du taux affiche se lise comme une correction de mesure et non comme la consequence d'un sprint qui
+n'a encore rien livre. C'est la forme deja appliquee au sprint 19 de ce depot, puis au 2026-09-02
+pour les 43 premieres lignes des matieres absentes (section "Integration des matieres absentes du
+2026-09-02" ci-dessus) ; elle est reprise ici a l'identique.
+
+### Le fait qui precede le chiffre
+
+Jusqu'a cette date, cette matrice portait quatre matieres (mathematiques, francais, questionner le
+monde, histoire-geographie, langues vivantes - cinq en comptant les deux niveaux de chaque
+enseignement) sur les huit enseignements du cycle 2 et les dix du cycle 3. Le 46,7 % cite a la
+cloture de s27 (35/75) etait vrai sur ce perimetre reduit et ne disait rien des six autres
+enseignements de cycle 2 ni des cinq autres de cycle 3, faute d'y avoir jamais eu une seule ligne de
+referentiel.
+
+### Methode de recompte, independante de tout chiffre annonce ailleurs
+
+Comptage ligne a ligne des dix tableaux neufs de ce fichier (sections "Arts plastiques - CP" a
+"Sciences et technologie - CM1" ci-dessus), colonne `Statut`, tels qu'ils sont ecrits apres cette
+integration - **je n'ai repris aucun total d'un autre document, j'ai transcrit chaque ligne du
+referentiel avec la situation que `nadia-prof` lui attribue, puis compte les statuts obtenus.**
+Chaque ligne neuve est classee `non couvert` ou `non couvrable en l'etat`, jamais `en cours` ni
+`couvert-valide`, puisqu'aucun jeu n'existe encore sur aucune des dix matieres.
+
+| Matiere / niveau | Total | `couvert-valide` | `non couvert` | `en cours` | `non couvrable en l'etat` |
+|---|---|---|---|---|---|
+| **arts plastiques CP (neuf)** | **11** | **0** | **4** | **0** | **7** |
+| **arts plastiques CM1 (neuf)** | **10** | **0** | **2** | **0** | **8** |
+| **education musicale CP (neuf)** | **11** | **0** | **2** | **0** | **9** |
+| **education musicale CM1 (neuf)** | **10** | **0** | **0** | **0** | **10** |
+| **education physique et sportive CP (neuf)** | **11** | **0** | **4** | **0** | **7** |
+| **education physique et sportive CM1 (neuf)** | **10** | **0** | **2** | **0** | **8** |
+| **enseignement moral et civique CP (neuf)** | **14** | **0** | **12** | **0** | **2** |
+| **enseignement moral et civique CM1 (neuf)** | **12** | **0** | **11** | **0** | **1** |
+| **histoire des arts CM1 (neuf)** | **10** | **0** | **7** | **0** | **3** |
+| **sciences et technologie CM1 (neuf)** | **20** | **0** | **19** | **0** | **1** |
+| **Total des dix referentiels neufs** | **119** | **0** | **63** | **0** | **56** |
+
+**Verification contre l'ordre de grandeur transmis avant l'integration** (119 lignes neuves, 63
+atteignables, 56 `non couvrable en l'etat`) : **mon compte converge exactement, aucun ecart**.
+119 = 11+10+11+10+11+10+14+12+10+20 ; 63 = 4+2+2+0+4+2+12+11+7+19 ; 56 = 7+8+9+10+7+8+2+1+3+1.
+
+**Avant** (huit tableaux, cloture de s27) : total 90, `couvert-valide` 35, `en cours` 14, `non
+couvert` 26, `non couvrable en l'etat` 15, denominateur atteignable 90 - 15 = **75**. **35 / 75 =
+46,7 %.**
+
+**Apres** (dix-huit tableaux) : total 90 + 119 = **209**. `couvert-valide` **35, inchange**. `en
+cours` **14, inchange**. `non couvert` 26 + 63 = **89**. `non couvrable en l'etat` 15 + 56 = **71**.
+Denominateur atteignable **209 - 71 = 138**. **35 / 138 = 0,25362... = 25,4 % arrondi.**
+
+> **Denominateur : 75 -> 138. Numerateur : 35, inchange. Taux : 46,7 % -> 25,4 %.**
+>
+> Ce recompte converge avec l'ordre de grandeur transmis avant l'integration (denominateur 75 + 63
+> = 138, taux 35 / 138 = 25,4 %), par deux chemins distincts - celui-la sur une estimation prealable
+> a l'ecriture des dix-huit tableaux, celui-ci sur les lignes telles qu'elles sont desormais
+> ecrites dans ce fichier.
+
+**Aucune regression du produit n'est en cause. Aucun jeu ne se casse, aucune ligne verte ne
+retombe : les 35 lignes `couvert-valide` d'hier le restent toutes**, et les 14 lignes `en cours`
+aussi. Le chiffre baisse parce qu'il devient vrai, exactement comme au sprint 19 et au 2026-09-02,
+a une echelle differente.
+
+### Le denominateur final du produit est desormais atteint
+
+**Les huit enseignements du cycle 2 et les dix du cycle 3 sont tous representes par au moins une
+ligne de cette matrice.** Ce fait est nouveau a cette date et il est ecrit dans la note de tete de
+ce fichier, qui annoncait depuis le 2026-09-02 : *"il changera entierement le denominateur final du
+produit, le jour ou ces matieres y entreront"*. **Ce jour est arrive.** Le denominateur atteignable
+de 138 n'est plus un plafond partiel : c'est, sur le critere de comptage que cette matrice emploie
+(un enseignement par chapitre de programme a attendus propres), le denominateur final du produit
+tel qu'il est connu a ce jour - sous reserve, comme toujours, que chaque referentiel reste "un
+socle realiste, non exhaustif et non officiel" (mention portee par les dix-huit fichiers sources) et
+puisse etre complete plus tard par l'utilisatrice.
+
+### Deux points routes par `nadia-prof`, traites ici
+
+**1. La collision d'identifiant `ART-1`, deja trouvee et corrigee par `nadia-prof` elle-meme.**
+Elle avait pose `ART-1` deux fois le meme jour, avec deux sens differents (arts plastiques CP puis
+un premier jet d'arts plastiques CM1), l'a trouve et renumerote en `ART-3` a `ART-5` sur les arts
+plastiques CM1 avant de me transmettre le fichier - verifie en lisant les deux fichiers tels
+qu'ils sont commites : `ART-1` et `ART-2` n'existent que sur `competences-cp.md`, `ART-3` a `ART-5`
+n'existent que sur `competences-cm1.md`, et `histoire-des-arts/competences-cm1.md` reutilise les
+cinq a l'identique sans en redefinir aucun. **Verification faite qu'aucune autre collision n'existe** :
+recherche de `ART-`, `MUS-`, `EPS-`, `EMC-` et `SCI-` suivis d'un chiffre dans l'integralite du
+depot (hors les dix referentiels sources eux-memes) - zero occurrence. Ces cinq prefixes sont
+neufs au depot, aucun ne recouvre un identifiant deja pose sur les matieres existantes (`BIA-*`,
+`HIS-*`, `REC-*`, `CON-*`, `VOI-*`, `COR-*`, `FER-*`, `POS-*`, `ANG-*`, `RAN-*`, `FRA-*`, etc.).
+
+**2. Le corpus de reproductions d'oeuvres et ses droits d'usage, non instrutis - ouvert
+formellement, non tranche.** `nadia-prof` l'a route trois fois, dans ses propres mots :
+*"reproduire une oeuvre existante pose une question de droits qui n'est pas de ma competence"*
+(arts plastiques CP, ligne 9), *"la question des droits d'usage des reproductions n'est pas de ma
+competence : je la signale a `camille-po` et a `theo-archi`, je ne la tranche pas"* (`ART-3`, arts
+plastiques CM1), et sur l'histoire des arts : *"ce n'est pas un cout de mecanique, c'est un cout de
+contenu"*. **Neuf lignes atteignables sont concernees** (2 en arts plastiques CP, 2 en arts
+plastiques CM1, 5 en histoire des arts CM1), toutes marquees `non couvert` ci-dessus et non `non
+couvrable en l'etat` : ce n'est pas une contrainte fondatrice du produit, c'est un contenu qui
+n'existe pas encore et un risque juridique non instruit. **Cette question est ouverte formellement
+en `DEC-0075`** (statut `Proposee`), avec trois options ecrites sans recommandation ; elle n'est
+tranchee dans aucun sens par cette matrice, et les neuf lignes restent `non couvert` tant que
+l'utilisatrice n'a pas arbitre.
+
+### Ce que cette integration ne fait pas
+
+- Elle ne prononce aucun Done pedagogique sur aucune des 119 lignes neuves : aucun increment
+  n'existe.
+- Elle ne fixe aucune priorite pour s28 : le perimetre du sprint est un arbitrage separe de
+  l'utilisatrice, trace dans `DEC-0074`.
+- Elle ne tranche pas la question du corpus de reproductions d'oeuvres et de ses droits d'usage :
+  `DEC-0075` reste `Proposee`.
+- Elle ne prejuge d'aucun sprint au-dela de s28 : rien ici ne dit combien de sprints il faudra pour
+  faire bouger 138 lignes.
 
