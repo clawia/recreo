@@ -22,7 +22,7 @@ entrer avant l'ouverture, dans ce worktree dedie (`s27-sofia`, ancetre verifie d
 
 **Fusionnees sans conflit** (aucun fichier commun entre les deux lots). Poussees sur `origin/round-two`
 en fast-forward (`9294632..efa5c95`) depuis le worktree `s27-sofia`, puis rapatriees en fast-forward
-dans le worktree `C:\perso\recreo` par un `git fetch` + `git merge --ff-only` (aucune ecriture de
+dans le worktree principal par un `git fetch` + `git merge --ff-only` (aucune ecriture de
 fichier dans ce worktree - seule une synchronisation de reference).
 
 **Verification technique sur l'arbre fusionne**, `round-two` a `efa5c95` : `mvn -B clean verify`

@@ -12,7 +12,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,6 +53,27 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * preparatoire"</i>, <i>"niveau 1"</i> - passerait. C'est la forme sous laquelle le defaut s'est
  * produit qui est gardee, et c'est la seule forme que le materiau offre ; l'autre serait un
  * vocabulaire ecrit a la main, donc la chose meme que cette Javadoc reproche a l'exemption voisine.
+ *
+ * <p><b>Cette regle n'a aucune exemption, et elle en a eu une pendant un commit.</b> Le fait est
+ * ecrit parce qu'une exemption qui disparait sans laisser de trace laisse croire qu'il n'y en a
+ * jamais eu, et parce que la facon dont celle-ci est morte est la seule bonne.
+ *
+ * <p>Le 2026-09-02, <i>"Calcul CP"</i> etait fautif et sa correction arbitree etait bloquee : <i>"Les
+ * petites additions"</i> rendait {@code CatalogueChargeableIT} rouge sur {@code S1-8}, une clause de
+ * nadia-prof de s01 qui refusait a ce titre le grapheme <i>ti</i> prononce /si/. J'ai refuse de
+ * retrecir {@code S1-8} seul - c'etait du pedagogique - et fait entrer la regle avec une exemption
+ * nommee d'exactement une entree, plafonnee et incapable de pourrir.
+ *
+ * <p>Le 2026-09-03, nadia-prof a rouvert sa clause, compte la population elle-meme - <b>quatre</b>
+ * titres servis portent ce grapheme, pas deux - et l'a retrecie : <i>"retirer le grapheme ne rend
+ * pas le titre decodable, donc la clause ne repare rien. On ne peut pas nommer un jeu d'additions
+ * sans le mot addition."</i> Le titre est corrige dans le meme commit que ce paragraphe, et
+ * <b>l'exemption est morte de sa cause, en un commit, sans avoir jamais eu a etre defendue</b>.
+ * C'est la duree de vie qu'une exemption doit avoir.
+ *
+ * <p><b>Ce que cela laisse</b>, et c'est nadia-prof qui l'a demande sous cette forme : une
+ * population de <b>quarante</b> titres, <b>zero</b> exemption, et aucune place ou en loger une - il
+ * n'y a plus de liste ou un nom pourrait entrer.
  */
 class AucunTitreDeJeuNePorteSonNiveauTest {
 
@@ -65,32 +85,6 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
     /** ADR-0013 obligation 3 : le jeu fautif de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE =
             Path.of("src/test/resources/contreexemple/AucunTitreDeJeuNePorteSonNiveauTest");
-
-    /**
-     * <b>La seule entree que ce commit ne peut pas rendre verte, et le motif est ecrit plutot que
-     * tu.</b> Le titre <i>"Calcul CP"</i> est fautif, la correction est arbitree - <i>"Les petites
-     * additions"</i>, nadia-prof, 2026-09-02 - et elle a ete appliquee ici puis <b>retiree</b> :
-     * elle rend {@code CatalogueChargeableIT} rouge sur {@code S1-8}, une clause de nadia-prof de
-     * s01 qui refuse au titre de ce jeu le grapheme <i>"ti"</i> prononce /si/, et <i>additions</i>
-     * le porte. <b>Resoudre cette contradiction est pedagogique et n'est pas a moi</b> : elle est
-     * routee a nadia-prof par sofia-sm.
-     *
-     * <p><b>Ce que cette exemption est, et ce qu'elle n'est pas.</b> C'est une <b>liste de refus
-     * nommes</b>, sur le patron de {@code DETTE_DE_BALAYAGE} : elle ne peut pas grandir (le plafond
-     * vaut exactement sa taille), elle ne peut pas <b>pourrir</b> (chaque nom doit designer une
-     * entree qui existe <i>et</i> qui est encore fautive - le jour ou le titre est corrige, ce
-     * fichier rougit et l'exemption doit sortir), et une entree fautive de plus est <b>rouge</b> au
-     * lieu d'entrer en silence. Ce n'est pas un perimetre : un oubli y produit un rouge, jamais un
-     * vert.
-     */
-    private static final Set<String> DETTE_DE_TITRE = Set.of("bandit-manchot-additions-cp");
-
-    /**
-     * Etat au 2026-09-02, s27, a la creation de cette regle. Ce nombre ne remonte jamais ; le
-     * baisser demande un diff visible. Il vaut <b>exactement</b> la taille de la dette, et pas une
-     * place de libre - un plafond au-dessus de sa dette n'est pas un plafond.
-     */
-    private static final int PLAFOND_DE_DETTE = 1;
 
     /** Une entree de catalogue, reduite a ce que cette regle juge. */
     record Entree(String id, String titre, String niveau) {
@@ -151,10 +145,6 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
      * plutot que sur une fixture qui ressemblerait a ce que j'imagine.
      */
     static void verifier(List<Entree> entrees) {
-        verifier(entrees, DETTE_DE_TITRE);
-    }
-
-    static void verifier(List<Entree> entrees, Set<String> exemptees) {
         if (entrees.isEmpty()) {
             throw new AssertionError("ADR-0051 : aucune entree de catalogue, cette regle ne porte"
                     + " alors sur rien");
@@ -165,9 +155,6 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
                 fautes.add(entree.id() + " : le paquet que cette entree designe ne declare aucun"
                         + " niveau. La regle n'a alors rien a comparer au titre, et un garde-fou qui"
                         + " ne trouve plus ce qu'il compare le dit au lieu de passer (ADR-0051)");
-                continue;
-            }
-            if (exemptees.contains(entree.id())) {
                 continue;
             }
             if (entree.titre().toLowerCase(Locale.ROOT)
@@ -190,34 +177,6 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
     }
 
     /**
-     * Le cliquet de la dette : elle ne grandit pas, et surtout <b>elle ne pourrit pas</b>. Chaque
-     * nom exempte doit designer une entree qui existe encore et qui est <b>encore fautive</b> - sans
-     * cette seconde moitie, une exemption survivrait a sa cause et dispenserait de preuve une entree
-     * saine, ce qui est la forme la plus courante d'un garde-fou qui ne garde plus rien.
-     */
-    @Test
-    void laDetteDeTitreNeGrandditPasEtChaqueNomExempteDesigneEncoreUneEntreeFautive() {
-        List<Entree> entrees = entreesServies(CATALOGUE_SERVI, CONTENU_SERVI);
-
-        assertThat(DETTE_DE_TITRE)
-                .as("le plafond vaut exactement la taille de la dette, et pas une place de libre")
-                .hasSize(PLAFOND_DE_DETTE);
-
-        for (String exemptee : DETTE_DE_TITRE) {
-            Entree nommee = entrees.stream().filter(entree -> entree.id().equals(exemptee))
-                    .findFirst().orElse(null);
-            assertThat(nommee)
-                    .as("l'exemption nomme %s, qui n'est plus une entree du catalogue : une"
-                            + " exemption qui ne designe plus rien de reel doit sortir", exemptee)
-                    .isNotNull();
-            assertThatThrownBy(() -> verifier(List.of(nommee), Set.of()))
-                    .as("l'exemption nomme %s, dont le titre n'est plus fautif : la dette est payee"
-                            + " et l'exemption doit sortir dans le meme commit", exemptee)
-                    .isInstanceOf(AssertionError.class);
-        }
-    }
-
-    /**
      * Morsure 1, sur materiau reel mute en memoire : le geste exact qui a produit <i>"Calcul CP"</i>
      * et qui a traverse 26 sprints - un titre auquel on accole la classe.
      */
@@ -228,7 +187,7 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
         entrees.set(0, new Entree(premiere.id(), premiere.titre() + " " + premiere.niveau(),
                 premiere.niveau()));
 
-        assertThatThrownBy(() -> verifier(entrees, Set.of()))
+        assertThatThrownBy(() -> verifier(entrees))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining(premiere.id())
                 .hasMessageContaining(premiere.niveau());
@@ -243,7 +202,7 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
                 premiere.titre() + " " + premiere.niveau().toLowerCase(Locale.ROOT),
                 premiere.niveau()));
 
-        assertThatThrownBy(() -> verifier(entrees, Set.of()))
+        assertThatThrownBy(() -> verifier(entrees))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining(premiere.id());
     }
@@ -258,7 +217,7 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
         Entree premiere = entrees.get(0);
         entrees.set(0, new Entree(premiere.id(), premiere.titre(), null));
 
-        assertThatThrownBy(() -> verifier(entrees, Set.of()))
+        assertThatThrownBy(() -> verifier(entrees))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ne declare aucun niveau");
     }
@@ -285,7 +244,7 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
                 .extracting(Entree::niveau)
                 .containsExactly("CP", "CP");
 
-        assertThatThrownBy(() -> verifier(fautives, Set.of()))
+        assertThatThrownBy(() -> verifier(fautives))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("bandit-manchot-fautif-cp")
                 .hasMessageContaining("Additions CP")
@@ -295,7 +254,7 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
     /** Morsure 4 : la clause de non-vacuite mord elle aussi (ADR-0051). */
     @Test
     void unCatalogueSansAucuneEntreeFaitEchouerLeGardeFou() {
-        assertThatThrownBy(() -> verifier(List.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(List.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ADR-0051");
     }

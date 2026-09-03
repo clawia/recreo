@@ -1,0 +1,23 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, ADR-0079).
+# Ce fichier-ci n a aucun defaut : ses trois items portent leur marqueur de condition de lot, et
+# aucun n est de la restitution. Il est la pour que le jeu fautif prouve que la regle DISCRIMINE,
+# et pour que le lot existe - c est SON marqueur qui rend le lot soumis a HIS-1, donc qui rend son
+# voisin non marque visible. Fichier par fichier, ce voisin n aurait ete juge par rien.
+schema: 1
+id: lot-fautif-marque
+type: question
+descripteur:
+  matiere: "Matière du jeu fautif"
+  niveau: "CM1"
+  domaine: "Domaine du jeu fautif"
+  competence: "Aucune : ce paquet n est jamais servi"
+items:
+  - enonce: "Question A ?"  # HIS-1: comprehension
+    bonneReponse: "A"
+    distracteurs: ["B", "C"]
+  - enonce: "Question B ?"  # HIS-1: comprehension
+    bonneReponse: "A"
+    distracteurs: ["B", "C"]
+  - enonce: "Question C ?"  # HIS-1: comprehension
+    bonneReponse: "A"
+    distracteurs: ["B", "C"]

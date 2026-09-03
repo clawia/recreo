@@ -7,10 +7,6 @@ import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,25 +29,30 @@ import static org.assertj.core.api.Assertions.assertThat;
  * `nadia-prof`, en jouant - aucun automate ne les porte, meme limite ecrite pour `COMP-2` sur
  * `PaquetCm1ComprehensionTest`.</p>
  *
- * <p><b>HIS-1 (bloquante).</b> "Au plus un tiers des items demande une date, un nom ou un chiffre a
- * restituer." Le marqueur "# HIS-1: restitution" est pose dans le YAML servi, a cote de l'enonce de
- * chaque item concu pour cette categorie - jamais lu par {@code QuestionContentSourceFactory}, qui
- * ignore les commentaires YAML comme toute cle qu'elle ne connait pas. Meme patron que le marqueur
- * "# COMP-3" de {@code PaquetCm1ComprehensionTest}. Ce garde-fou verifie que le paquet servi marque
- * au plus six items sur vingt (arrondi inferieur d'un tiers) et que chaque item porte exactement un
- * marqueur "# HIS-1: &lt;type&gt;", pour que le compte ne puisse pas dater d'avant la derniere
- * modification du paquet et qu'aucun item ne reste hors classement.</p>
+ * <p><b>HIS-1 a vecu ici du 2026-09-02 au 2026-09-03, et vit desormais dans
+ * {@code UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest} (ADR-0079). Le motif est
+ * ecrit plutot que le deplacement laisse nu.</b> Le marqueur "# HIS-1: &lt;type&gt;" pose dans le
+ * YAML servi ne change pas d'un caractere, et le mecanisme reste celui que marc-dev a ecrit - meme
+ * patron que le marqueur "# COMP-3" de {@code PaquetCm1ComprehensionTest}, invisible a
+ * {@code QuestionContentSourceFactory} qui ignore les commentaires.</p>
+ *
+ * <p><b>Ce qui change est la population, et c'est nadia-prof qui l'a demande</b> le 2026-09-03 :
+ * son unite d'audit est le <b>lot de matiere</b> - jusqu'a vingt items d'une matiere et d'un niveau -
+ * et non le fichier, parce qu'<i>"un ratio calcule sur huit items ne veut rien dire"</i>. La clause
+ * qui vivait ici designait sa population par <b>un chemin de ressource ecrit en dur</b> et son
+ * plafond par <b>une constante egale au tiers de vingt</b> : elle etait juste tant que l'histoire
+ * tenait en un seul fichier, et <b>un second fichier du meme lot n'aurait ete juge par rien</b>.
+ * Le tiers se compte desormais sur le lot, sur une population derivee des descripteurs servis.
+ * <b>Ce n'est pas un defaut du travail de marc-dev</b> : c'est un perimetre enumere, juste tant que
+ * le monde ressemble a l'enumeration - la meme famille que {@code FIG-4} etendue hors de son paquet
+ * la veille (ADR-0077).</p>
  */
 class PaquetCm1HistoireGeographieTest {
 
     private static final String PAQUET = "cm1-histoire-geographie";
-    private static final String RESSOURCE_YAML = "/contenu/cm1-histoire-geographie.yaml";
 
     /** Le compte est garde exactement, comme sur tous les paquets de ce depot. */
     private static final int NOMBRE_D_ITEMS_ATTENDU = 20;
-
-    /** HIS-1 : arrondi inferieur d'un tiers de vingt items. */
-    private static final int HIS_1_PLAFOND_RESTITUTION = 6;
 
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
     private static List<Question> tousLesItems(ContentSource contenu) {
@@ -102,44 +103,5 @@ class PaquetCm1HistoireGeographieTest {
                     .as("'%s' : les trois propositions sont distinctes", item.enonce())
                     .hasSize(3);
         }
-    }
-
-    /**
-     * HIS-1 : le marqueur "# HIS-1: &lt;type&gt;" est pose dans le YAML servi, a cote de l'enonce de
-     * chaque item - jamais lu par {@code QuestionContentSourceFactory}. Cette clause lit le fichier
-     * reel, pas une copie, pour que le compte ne puisse pas dater d'avant la derniere modification du
-     * paquet.
-     */
-    @Test
-    void auPlusUnTiersDesItemsSontDeLaRestitution() throws IOException {
-        List<String> lignesEnonce = ligneDesEnonces();
-
-        long marquesRestitution = lignesEnonce.stream()
-                .filter(ligne -> ligne.contains("# HIS-1: restitution")).count();
-        long nonClasses = lignesEnonce.stream()
-                .filter(ligne -> !ligne.contains("# HIS-1:")).count();
-
-        assertThat(nonClasses)
-                .as("HIS-1 : chaque item du paquet servi doit porter un marqueur '# HIS-1: <type>'"
-                        + " pour que le compte reste verifiable")
-                .isZero();
-        assertThat(marquesRestitution)
-                .as("HIS-1 (nadia-prof) : au plus un tiers des items d'un paquet d'histoire peut"
-                        + " demander une date, un nom ou un chiffre a restituer - soit au plus %d sur"
-                        + " %d ici, marques '# HIS-1: restitution' dans le YAML servi",
-                        HIS_1_PLAFOND_RESTITUTION, NOMBRE_D_ITEMS_ATTENDU)
-                .isLessThanOrEqualTo(HIS_1_PLAFOND_RESTITUTION);
-    }
-
-    /** Les lignes du YAML servi qui declarent un enonce d'item, une par item. */
-    private static List<String> ligneDesEnonces() throws IOException {
-        String yaml;
-        try (InputStream flux = PaquetCm1HistoireGeographieTest.class.getResourceAsStream(RESSOURCE_YAML)) {
-            assertThat(flux).as("%s introuvable sur le classpath", RESSOURCE_YAML).isNotNull();
-            yaml = new String(flux.readAllBytes(), StandardCharsets.UTF_8);
-        } catch (UncheckedIOException echec) {
-            throw echec.getCause();
-        }
-        return yaml.lines().filter(ligne -> ligne.contains("- enonce:")).toList();
     }
 }
