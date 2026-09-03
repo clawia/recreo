@@ -48,6 +48,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * la cle du descripteur est renommee. Un garde-fou qui ne trouve plus ce qu'il compare doit le dire,
  * jamais l'ignorer.
  *
+ * <p><b>Le niveau est rogne avant d'etre cherche dans le titre, et le motif vient d'ailleurs.</b>
+ * yanis-qa a trouve le 2026-09-03 qu'un descripteur portant {@code "CM1 "} - un espace final, dans
+ * du YAML ecrit a la main - cassait la cle de regroupement d'un garde-fou voisin (ADR-0079). La
+ * meme donnee cassait ici la comparaison, plus discretement : ce garde-fou aurait cherche
+ * {@code "cm1 "} dans un titre, ne l'aurait pas trouve, et un titre fautif serait <b>passe</b>. Le
+ * defaut n'avait pas ete mesure sur ce fichier ; il a ete balaye avec sa famille plutot qu'attendu
+ * ici. C'est aussi pour cela que le blanc n'est pas seulement rogne chez le voisin : une
+ * normalisation posee a un seul endroit laisse le meme YAML casser le second.
+ *
  * <p><b>Ce que ce garde-fou ne voit pas, ecrit plutot que laisse trouver.</b> Il compare une chaine
  * a une chaine : un titre qui ecrirait le niveau autrement que le descripteur - <i>"cours
  * preparatoire"</i>, <i>"niveau 1"</i> - passerait. C'est la forme sous laquelle le defaut s'est
@@ -158,7 +167,7 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
                 continue;
             }
             if (entree.titre().toLowerCase(Locale.ROOT)
-                    .contains(entree.niveau().toLowerCase(Locale.ROOT))) {
+                    .contains(entree.niveau().strip().toLowerCase(Locale.ROOT))) {
                 fautes.add(entree.id() + " : le titre \"" + entree.titre() + "\" porte le niveau \""
                         + entree.niveau() + "\" que son paquet declare. Un enfant n'a pas besoin"
                         + " qu'on lui rappelle sa classe pour jouer, et ce titre est le seul de la"
@@ -201,6 +210,24 @@ class AucunTitreDeJeuNePorteSonNiveauTest {
         entrees.set(0, new Entree(premiere.id(),
                 premiere.titre() + " " + premiere.niveau().toLowerCase(Locale.ROOT),
                 premiere.niveau()));
+
+        assertThatThrownBy(() -> verifier(entrees))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(premiere.id());
+    }
+
+    /**
+     * Morsure 3 : le descripteur porte un espace final. <b>Sans le rognage, cette morsure est
+     * rouge</b> - le garde-fou chercherait {@code "cm1 "} dans le titre, ne le trouverait pas, et
+     * un titre fautif passerait. C'est la famille que yanis-qa a mesuree sur un garde-fou voisin le
+     * 2026-09-03, balayee ici plutot qu'attendue.
+     */
+    @Test
+    void unEspaceFinalDansLeNiveauDeclareNEmpechePasLaDetection() {
+        List<Entree> entrees = new ArrayList<>(entreesServies(CATALOGUE_SERVI, CONTENU_SERVI));
+        Entree premiere = entrees.get(0);
+        entrees.set(0, new Entree(premiere.id(), premiere.titre() + " " + premiere.niveau(),
+                premiere.niveau() + " "));
 
         assertThatThrownBy(() -> verifier(entrees))
                 .isInstanceOf(AssertionError.class)
