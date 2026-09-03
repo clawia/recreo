@@ -26,6 +26,13 @@ descripteur:
 # NAT-1 (meme prudence que cp-nature-mot, S19-4) : chaque question porte sur un organe different,
 # aucun signal de forme (longueur de phrase, presence d'un determinant) ne separe les deux groupes
 # de questions.
+#
+# Correction du 2026-09-03 (nadia-prof, COR-R1, Done pedagogique VALIDE SOUS RESERVE non bloquante,
+# matieres-absentes a 430648e) : l'item "toucher" faisait 12 mots contre une mediane mesuree de 5
+# sur ce paquet, et employait "rugueux", hors vocabulaire de CP. Non bloquant - le mot difficile ne
+# portait pas la reponse - mais la longueur etait reelle. Correction reprise mot pour mot telle que
+# nadia-prof l'a ecrite : six mots, alignee sur le reste du paquet, meme reponse et memes
+# distracteurs.
 items:
   - enonce: "Avec quoi entend-on ?"
     bonneReponse: "les oreilles"
@@ -43,7 +50,7 @@ items:
     bonneReponse: "la bouche"
     distracteurs: ["le nez", "les yeux"]
     indice: "C'est ce qu'on ouvre pour manger."
-  - enonce: "Avec quoi touche-t-on pour savoir si un objet est doux ou rugueux ?"
+  - enonce: "Avec quoi sait-on si c'est doux ?"
     bonneReponse: "les mains"
     distracteurs: ["les pieds", "les yeux"]
     indice: "Ce sont elles qui tiennent les objets."
