@@ -313,3 +313,84 @@ section 2.
 **La condition qui est de moi seule et qu'aucun automate ne verra** : `COU-3` - si le chiffre grave
 se lit mal sur la surface remplie, **l'item devient irrepondable**, parce que `MON-1` pose que la
 valeur ne se lit que sur l'image. Je refuse a l'oeil, item par item.
+
+
+---
+
+## Verdict de rejeu du 2026-09-03 (`nadia-prof`) - **VALIDE**, le Done est rendu
+
+**Statut : VALIDE.** Le Done pedagogique suspendu par ma note du 2026-09-02 est **rendu**. Ligne de
+matrice : **`en cours` -> `couvert-valide`**.
+
+**J'ai rejoue.** Arbre `round-two` a `d259b5f`, jar reconstruit, partie complete de dix manches par
+appels HTTP reels, plus **les douze dessins rendus et regardes** - en couleur et en niveaux de gris.
+Perimetre exactement celui que j'avais borne d'avance : 12 items, 12 illustrations, trois
+proprietes. Je n'ai rejoue ni l'arithmetique, ni les distracteurs, ni `MON-1` a `MON-5`, ni `CON-1`
+a `CON-4` - rien de tout cela n'a bouge.
+
+### Ce qui a change, mesure et non suppose
+
+`git show` sur le commit du correctif : **le diff n'ajoute que des attributs `fill`.** Pas une
+coordonnee, pas un rayon, pas une epaisseur de trait. Douze fichiers, aucun deplacement de
+geometrie.
+
+### `COU-1` - remplissage uniforme par type : **TENUE**, et c'est comptable
+
+Sur les douze fichiers, **exactement deux valeurs de remplissage** : `#e8a33d` sur toutes les
+pieces, `#cfe3ef` sur tous les billets, le reste en `fill="none"`. **Une piece de 1 et une piece de
+2 ont le meme remplissage ; un billet de 5, de 10 et de 20 aussi.** Le remplissage ne varie donc
+avec aucune valeur, exactement comme ma condition l'exige.
+
+### `COU-3` - le chiffre reste lisible : **TENUE**, verifiee a l'oeil **et** mesuree
+
+C'etait ma condition, celle dont je suis seule garde, et je l'avais posee *"a l'oeil, item par
+item"*. **Je les ai regardes.** Les douze dessins rendus : le chiffre grave, en contour pur sur le
+remplissage, se lit sans effort sur les deux teintes, **y compris sur la plus petite piece de 1
+euro**, la ou le risque etait le plus grand.
+
+Et j'ai double le regard par un calcul, parce qu'un oeil n'est pas un seuil opposable :
+
+| | Trait du chiffre sur son fond | Contraste |
+|---|---|---|
+| Piece | `#1c2733` sur `#e8a33d` | **7,02 : 1** |
+| Billet | `#1c2733` sur `#cfe3ef` | **11,45 : 1** |
+
+Seuil WCAG AA pour un texte normal : 4,50. **Les deux sont au-dessus, et la piece atteint meme le
+seuil AAA de 7,00.** Le releve d'`ines-design` disait vrai.
+
+### `COU-2` - meme reponse en niveaux de gris : **TENUE**, rendue et regardee
+
+J'ai fait rendre les dessins **avec un filtre de niveaux de gris**, et j'ai regarde. La piece reste
+un disque a liseré, le billet reste un rectangle arrondi a cadre interieur : **la forme distingue
+les deux, pas la couleur.** Les chiffres restent aussi lisibles qu'en couleur - le contraste WCAG
+se calcule sur la luminance, il est donc identique par construction. **Les douze reponses sont des
+sommes lues sur les chiffres : aucune ne change.**
+
+### `COU-4` - `cp-figures-planes` non touche : **TENUE**
+
+Aucun des douze fichiers de figures ne porte de remplissage. Le refus d'`ines-design` d'etendre son
+remede etait le bon, pour le motif exact de `FIG-4`.
+
+### Le defaut d'origine de l'utilisatrice est corrige
+
+Elle avait releve que les pieces *"ne se lisent pas comme de la monnaie"*. **En regardant les douze
+dessins, c'est regle** : le disque dore a liseré se lit immediatement comme une piece, le rectangle
+bleu pale a double cadre comme un billet. Ce n'etait pas le cas de cercles au trait nu.
+
+### Une correction que je dois a ma propre observation
+
+**En regardant la planche, j'ai cru voir que le billet de 20 etait dessine plus petit que celui de
+10**, ce qui aurait enseigne une relation de taille fausse. **J'ai verifie avant d'en faire une
+reserve : c'est faux.** Tous les billets sont declares `210 x 112`, identiques. Mon impression
+venait de la mise a l'echelle de ma propre planche de contact. **La geometrie corrige l'oeil, et je
+le consigne plutot que de retirer une reserve en silence.**
+
+Ce qui est vrai, en revanche, et qui est juste : **les pieces, elles, different de taille** - rayon
+64 pour la piece de 2, rayon 52 pour celle de 1. C'est la relation reelle, et elle est du bon cote.
+
+### Ce que ce Done ne couvre pas
+
+**Aucun test ne sait si une piece ressemble a une piece, ni si un chiffre se lit sur son fond.**
+`COU-2` et `COU-3` restent dans ma seule main, comme `CON-1`, `CON-3` et `CON-4` avant elles. Ce
+verdict porte sur les douze dessins que j'ai vus le 2026-09-03 ; **tout nouveau changement de
+dessin redemande mon oeil**, par le meme motif qui a suspendu ce Done hier.
