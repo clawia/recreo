@@ -41,6 +41,18 @@ import static org.assertj.core.api.Assertions.assertThat;
  * au plus six items sur vingt (arrondi inferieur d'un tiers) et que chaque item porte exactement un
  * marqueur "# HIS-1: &lt;type&gt;", pour que le compte ne puisse pas dater d'avant la derniere
  * modification du paquet et qu'aucun item ne reste hors classement.</p>
+ *
+ * <p><b>Ce que ce test suppose, et que sa justesse ne generalise pas</b> (nadia-prof, arbitrage du
+ * 2026-09-03, "l'unite de ma borne - c'est l'item groupe par matiere, jamais le fichier") :
+ * `HIS-1`, comme `BIA-2`, se compte sur le <b>lot de matiere</b> - une matiere et un niveau, jusqu'a
+ * vingt items - jamais sur un fichier. Ce test compte sur le seul fichier
+ * {@code cm1-histoire-geographie.yaml} et c'est juste <b>ici</b> uniquement parce que ce lot
+ * d'histoire-geographie CM1 tient integralement dans ce fichier unique. Le jour ou un lot de
+ * matiere s'etale sur plusieurs fichiers - {@code questionner-le-monde}, deja trois fichiers par
+ * ligne de referentiel - un test ecrit sur ce meme patron, fichier par fichier, serait vert a tort.
+ * Cette generalisation (deriver le lot de matiere plutot que le fichier, pour tout garde-fou de ce
+ * type) est une decision d'architecture qui revient a `theo-archi`, pas a ce test : je nomme
+ * l'hypothese pour qu'il n'ait pas a la deduire.</p>
  */
 class PaquetCm1HistoireGeographieTest {
 

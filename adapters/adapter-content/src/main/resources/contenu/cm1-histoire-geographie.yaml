@@ -31,12 +31,28 @@ descripteur:
 # HIS-3 (bloquante, chaque fait porte sa source) : chaque item porte, dans son marqueur, la source du
 # fait qu'il énonce - soit le référentiel de nadia-prof lui-même (les associations roi/réalisation et
 # l'ordre des grandes périodes, qu'elle a déjà écrits et validés), soit un fait consensuel du
-# programme scolaire français (dates de la Révolution, vocabulaire de géographie). Limite à dire
-# franchement : je n'ai eu accès à aucun outil de recherche en ligne pendant la rédaction de ce
-# paquet ; les faits que je n'ai pas pu vérifier contre une source externe pendant cette session sont
-# marqués "à confirmer par nadia-prof" - patrimoine romain en Gaule (item 4), terminologie des
-# mouvements de population du IVe au Xe siècle (item 5), caractérisation de la vie de cour de Louis
-# XIV à Versailles (item 19).
+# programme scolaire français (dates de la Révolution, vocabulaire de géographie). Limite dite
+# franchement au premier jet : je n'ai eu accès à aucun outil de recherche en ligne pendant la
+# rédaction de ce paquet, et trois faits en ont porté la marque "à confirmer par nadia-prof" -
+# patrimoine romain en Gaule (item 4), terminologie des mouvements de population du IVe au Xe siècle
+# (item 5), caractérisation de la vie de cour de Louis XIV à Versailles (item 19).
+#
+# Traités par nadia-prof le 2026-09-03, sans outil de recherche non plus de son côté, et sa précision
+# de HIS-3 en distingue deux familles : (a) fait de manuel sans variante - elle en est une source
+# recevable et signe ; (b) fait daté, disputé, ou dont la formulation engage une couverture - elle ne
+# signe pas, il faut une source ou une reformulation qui retire le besoin de source.
+#
+# Item 4 (patrimoine romain) : CONFIRMÉ, famille (a). Item 19 (cérémonial de Louis XIV) : CONFIRMÉ,
+# famille (a), réserve non bloquante - "cérémonial" est au-dessus du CM1 mais vit dans le
+# texte-support, jamais dans la question ni dans la réponse ; s'il passait un jour dans une question,
+# il deviendrait bloquant.
+#
+# Item 5 (peuples germaniques) : RÉSERVE BLOQUANTE levée par reformulation de l'énoncé, famille (b) -
+# "l'ensemble" engageait une couverture que la réponse ne tient pas (les Huns, entrés dans l'Empire au
+# IVe siècle, ne sont pas germaniques) et l'énoncé était le plus long du paquet (30 mots contre une
+# médiane de 13, avec "venus de l'extérieur de l'Empire romain" répété deux fois). Reformulation
+# fournie par nadia-prof, reprise mot pour mot et accentuée pour le canal enfant ; bonne réponse et
+# distracteurs inchangés.
 #
 # BIA-5 (aucun jugement de valeur sur un personnage, rois ou Révolution) : aucun item ne qualifie un
 # roi ou un acteur de la Révolution de bon, mauvais, juste ou injuste - vérifié item par item, même
@@ -60,7 +76,7 @@ items:
     bonneReponse: "les Romains"
     distracteurs: ["les Vikings", "les Égyptiens"]
     indice: "Pense au peuple de l'Antiquité qui a laissé le plus de traces de pierre en Gaule."
-  - enonce: "À partir du IVe siècle, des peuples venus de l'extérieur de l'Empire romain, dont les Francs, s'installent progressivement sur son territoire. Comment appelle-t-on l'ensemble de ces peuples venus de l'extérieur ?"  # HIS-1: restitution ; HIS-3: terminologie du programme cycle 3 (référentiel ligne 4) - aucune date précise avancée pour éviter les dates disputées entre historiens (ex. baptême de Clovis), à confirmer par nadia-prof
+  - enonce: "À partir du IVe siècle, des peuples venus du nord et de l'est s'installent dans l'Empire romain. Les Francs sont l'un d'eux. Comment appelle-t-on ces peuples ?"  # HIS-1: restitution ; HIS-3: reformulation de nadia-prof qui retire le besoin de source (arbitrage du 2026-09-03, section 3.4) - "l'ensemble" retire, la réponse ne prétend plus à une couverture totale (les Huns, par exemple, n'entrent pas dans "peuples germaniques")
     bonneReponse: "les peuples germaniques"
     distracteurs: ["les peuples grecs", "les peuples gaulois"]
     indice: "Ce ne sont ni les Grecs ni les Gaulois, déjà installés bien avant."
