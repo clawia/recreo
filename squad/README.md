@@ -776,6 +776,18 @@ processus (PID), jamais par nom d'image, et son identite est verifiee avant l'ar
   reprise de lots deja livres ; arbitrer paquet par paquet aurait laisse la frontiere non ecrite,
   donc rediscutable a chaque fois. Les chartes `.claude/agents/marc-dev.md` et
   `.claude/agents/lea-dev.md` sont corrigees dans le meme geste que cet amendement.
+- **Aucun agent ne touche au worktree ni a la branche d'un autre agent - ni `reset`, ni
+  `checkout`, ni `merge`, ni rien** (amendement s27, retro de s27, pose par l'orchestrateur apres
+  un incident de coordination). Sur `round-two`, plusieurs sessions d'agents travaillent en
+  parallele sur le meme clone local ; une branche qui bouge sans qu'on l'ait soi-meme fait n'est
+  pas necessairement une corruption, elle peut etre une autre session en cours. Integrer le
+  travail d'un autre agent se fait **en tirant** sa branche dans la sienne (`git merge
+  <sa-branche>`), jamais en agissant dans son worktree. Si une branche parait incoherente, elle
+  est signalee a l'orchestrateur, seul a savoir qui travaille encore - elle n'est pas corrigee
+  unilateralement. Motif : `sofia-sm` a execute un `git reset --hard` sur la branche de
+  `theo-archi` en la croyant corrompue alors qu'il s'agissait de sa propre session concurrente ;
+  aucun commit n'a ete perdu, mais `theo-archi` a du refaire des modifications non commitees. Le
+  cout vient de l'absence de cette regle, pas d'une faute d'agent.
 
 ## 11. Arborescence
 
