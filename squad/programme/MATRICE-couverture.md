@@ -113,7 +113,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Complements a 10 | bandit-manchot-complements-10-cp ; **saisie-complements-10-cp** (2026-08-31, s24) | bandit manchot ; **saisie** | couvert-valide - **statut inchange par le second jeu.** `CPL-1` : *"deux entrees sur une meme ligne ne sont pas une double couverture"*. La ligne etait deja verte avant s24 et le lot de saisie **n'ajoute aucune ligne** |
 | mathematiques | CP | Nombres et calculs | Resoudre des problemes simples d'addition/soustraction en situation (1 etape) | bandit-manchot-problemes-additifs-cp | bandit manchot | couvert-valide |
-| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | bandit-manchot-monnaie-cp | bandit manchot ; **item illustre (palier 1)** | **couvert-valide** (2026-09-01, s25) - **ligne entiere.** `nadia-prof` : *"les deux verbes de la ligne - reconnaitre et utiliser - sont servis par le meme paquet"*. **Aucune mention de couverture partielle n'est due**. **Suspension conditionnelle notee le 2026-09-02** (`DEC-0072`, section 8) : un correctif de remplissage des illustrations est en cours (`ines-design`, conditions `COU-1` a `COU-4` de `nadia-prof`, `squad/conformite/ARBITRAGE-s27-titre-du-jeu-d-additions-et-portee-de-ma-clause-sur-la-couleur.md`). `nadia-prof` : *"ce paquet cesse d'etre Done le jour ou ses illustrations bougent, et il le redevient quand je l'ai rejoue"* (rejeu price a 0,5). **Statut inchange a ce jour** : aucun fichier SVG de monnaie n'a bouge depuis s25 (verifie). **Des que le correctif est merge, ce statut doit repasser a `en cours` avant tout nouveau verdict** |
+| mathematiques | CP | Nombres et calculs | Reconnaitre et utiliser la monnaie (pieces/billets simples) dans des problemes concrets | bandit-manchot-monnaie-cp | bandit manchot ; **item illustre (palier 1)** | **en cours** (bascule du 2026-09-03, `DEC-0072`, section 9) - **le correctif de couleur est entre dans l'arbre** (`d7fab95`, commit `1e6e85d` d'`ines-design` : les douze `monnaie-*.svg` portent desormais un `fill`, verifie sur `monnaie-en-tout-a.svg`). Le verdict `VALIDE` du 2026-09-01 portait sur les dessins d'avant ce commit ; `nadia-prof`, 2026-09-02 : *"ce paquet cesse d'etre Done le jour ou ses illustrations bougent, et il le redevient quand je l'ai rejoue"*. **Mecanisme normal de ce depot, pas une regression** : aucun item, aucune reponse, aucun distracteur ne change. **Rejeu du a `nadia-prof`** sur trois proprietes seulement (`COU-2`, `COU-3`, lisibilite en tant que monnaie), price a 0,5, deja compte dans sa borne de s27 (4,8/5) |
 | mathematiques | CP | Grandeurs et mesures | Comparer des longueurs, des masses, des contenances (sans instrument gradue) | bandit-manchot-comparer-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Grandeurs et mesures | Se reperer dans la journee, la semaine ; lire l'heure pleine sur une horloge | bandit-manchot-semaine-cp | bandit manchot | **couvert-valide** (2026-09-01, s25) - **couverture partielle, mention exigee par `SEM` et reprise mot pour mot** : *"moitie 'se reperer dans la journee, la semaine' seule ; la moitie 'lire l'heure pleine sur une horloge' reste non couverte"*. **Sans cette mention, la ligne dirait plus que ce que le jeu sert** |
 | mathematiques | CP | Espace et geometrie | Se reperer et decrire des deplacements sur un quadrillage simple | - | - | non couvert |
@@ -3684,3 +3684,77 @@ devient vrai, exactement comme au sprint 19, a une echelle differente.
   des arts n'entre dans cette matrice a cette date, donc ce compte ne change rien au denominateur
   de 75. **Il changera entierement le denominateur final du produit**, le jour ou ces matieres y
   entreront.
+
+## Mise a jour du 2026-09-03 - la ligne de la monnaie repasse a `en cours`, 33/75 = 44,0 %
+
+### Le fait
+
+Le correctif de couleur des illustrations de `cp-monnaie` est entre dans `round-two`
+(`d7fab95`, qui integre `1e6e85d` d'`ines-design`) : les douze fichiers `monnaie-*.svg` portent
+desormais un `fill` sur les pieces et les billets - verifie directement sur
+`monnaie-en-tout-a.svg` (`fill="#e8a33d"` sur les deux cercles, absent avant ce commit).
+
+Ma note du 2026-09-02 sur la ligne "Reconnaitre et utiliser la monnaie"
+(`squad/decisions/produit/DEC-0072`, section 8) disait : *"Des que le correctif est merge, ce
+statut doit repasser a `en cours` avant tout nouveau verdict."* **Il l'est. La ligne bascule.**
+
+### Ce que ce n'est pas
+
+**Ce n'est pas une regression.** Aucun jeu ne se casse, aucun item ne change, aucune reponse ne
+bouge. C'est le mecanisme normal de cette matrice qui s'execute : un verdict `VALIDE` porte sur
+l'objet qu'il a vu, et l'objet a change - `nadia-prof` l'a ecrit d'avance, avant que le correctif
+n'existe, dans les mots memes de celle que ce rejeu va coter : *"ce paquet cesse d'etre Done le
+jour ou ses illustrations bougent, et il le redevient quand je l'ai rejoue."* Le rejeu est deja
+price (0,5 contre sa borne, `DEC-0072` section 8) et deja compte dans le total de s27 (section 9
+ci-dessous).
+
+### Le recompte, par ma methode, independant de tout chiffre transmis
+
+Un seul changement dans les huit tableaux de cette matrice : la ligne "Reconnaitre et utiliser la
+monnaie" (mathematiques CP) passe de `couvert-valide` a `en cours`. Aucune autre ligne ne bouge.
+
+| | Avant (2026-09-02) | Apres (2026-09-03) |
+|---|---|---|
+| `couvert-valide` | 34 | **33** |
+| `en cours` | 1 | **2** |
+| `non couvert` | 40 | 40 |
+| `non couvrable en l'etat` | 15 | 15 |
+| Total | 90 | 90 |
+| Denominateur atteignable (90 - 15) | 75 | 75 |
+| **Taux** | **34 / 75 = 45,3 %** | **33 / 75 = 44,0 %** |
+
+**33 / 75 = 0,44 exactement : 44,0 %.**
+
+### Ce que cette mise a jour ne fait pas
+
+- Elle ne prononce aucun verdict sur le paquet rejoue : c'est `nadia-prof`, quand elle aura pu
+  jouer l'arbre monte.
+- Elle ne touche aucune autre ligne de matiere : les 43 lignes des trois matieres neuves et les
+  46 lignes de mathematiques/francais restent inchangees par ailleurs.
+- Elle ne prejuge pas de l'issue du rejeu : si `nadia-prof` confirme `COU-2`, `COU-3` et la
+  lisibilite de la monnaie, la ligne repasse a `couvert-valide` ; sinon elle reste `en cours` et
+  redevient du backlog, comme toute ligne dans cet etat.
+
+## Mise a jour du 2026-09-03 - l'unite de la borne de `nadia-prof` est le lot de matiere, jamais le fichier (`ADR-0079`)
+
+`nadia-prof` a precise, dans
+`squad/conformite/ARBITRAGE-s27-s1-8-retrecie-unite-de-ma-borne-et-trois-faits-d-histoire.md`,
+section 2, que son unite de facturation n'a jamais ete le fichier de contenu mais **le lot d'une
+meme matiere et d'un meme niveau, jusqu'a 20 items, prix au prorata au-dela**. Le decoupage d'un
+lot en plusieurs fichiers (un fichier par competence, pour les besoins de cette matrice) est
+**juste pour la matrice et neutre pour sa borne** (`ADR-0079`).
+
+**Recompte de s27 avec cette unite, sa methode et sa source** :
+
+| Lot | Items | Fichiers | Prix |
+|---|---|---|---|
+| `cp-voyelle-du-son` (matiere connue) | 16 | 1 | 1,0 |
+| Questionner le monde (matiere neuve, 24 items sur 3 fichiers, prorata au-dela de 20) | 24 | 3 | 1,8 |
+| `cm1-histoire-geographie` (matiere neuve) | 20 | 1 | 1,5 |
+| Rejeu de `cp-monnaie` (trois proprietes seulement) | 12 | 1 | 0,5 |
+| **Total** | **72** | **6** | **4,8** |
+
+**s27 vaut 4,8 sur une borne de 5.** Aucune story ni aucune ligne de cette matrice ne comptait en
+fichiers : verification faite sur les stories `S27-1` a `S27-3` de `docs/backlog/backlog.md` et
+sur `DEC-0072`, aucune des deux ne suppose qu'un lot tienne dans un seul fichier. Rien n'y est donc
+corrige par cette mise a jour.

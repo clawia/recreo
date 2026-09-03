@@ -258,3 +258,47 @@ aujourd'hui : la regle de la matrice qui ferait repasser une ligne a `en cours`
 correctif de couleur sache faire passer aussitot le statut a `en cours`, sans attendre que
 quelqu'un s'en aperçoive plus tard : c'est le meme reflexe que ce document applique partout
 ailleurs - un fait qui va se produire est ecrit avant qu'il ne se produise, jamais decouvert apres.
+
+---
+
+## 9. Mise a jour du 2026-09-03 - le correctif est entre, la ligne bascule, s27 passe a 4,8
+
+### 9.1 La bascule annoncee se produit
+
+Le correctif de couleur est entre dans `round-two` (`d7fab95`, integrant `1e6e85d`
+d'`ines-design`) : les douze `monnaie-*.svg` portent desormais un `fill` - verifie sur
+`monnaie-en-tout-a.svg`. La condition posee en section 8.3 est remplie : **la ligne
+"Reconnaitre et utiliser la monnaie" (mathematiques CP) passe de `couvert-valide` a `en cours`**
+dans `squad/programme/MATRICE-couverture.md`.
+
+**Ce que ceci est** : le mecanisme normal de cette matrice - un verdict suspendu des que son objet
+change - pas une regression du produit. Aucun jeu ne se casse, aucun item ne bouge. Et il a ete
+ecrit d'avance par celle qu'il allait couter (`nadia-prof`, section 8.1).
+
+### 9.2 Le recompte, par ma methode
+
+Detail complet et methode dans `squad/programme/MATRICE-couverture.md`, section "Mise a jour du
+2026-09-03 - la ligne de la monnaie repasse a `en cours`". Resultat : **denominateur inchange a
+75, `couvert-valide` 34 -> 33, `en cours` 1 -> 2, taux 45,3 % -> 44,0 %** (33 / 75 = 0,44
+exactement).
+
+### 9.3 L'unite de la borne de `nadia-prof` est tranchee : le lot de matiere, jamais le fichier
+
+`nadia-prof` a precise son unite de facturation (`ARBITRAGE-s27-s1-8-retrecie-unite-de-ma-borne-
+et-trois-faits-d-histoire.md`, section 2) : **le lot d'une meme matiere et d'un meme niveau,
+jusqu'a 20 items, prix au prorata au-dela - jamais le fichier.** `ADR-0079` encode cette unite.
+Verifie : ni les stories `S27-1` a `S27-3` de `docs/backlog/backlog.md`, ni la section 3 de ce
+document ne comptaient en fichiers - rien n'y est corrige par cette mise a jour.
+
+**L'arithmetique finale de s27, avec cette unite** : voyelles simples (matiere connue, 1,0) +
+questionner le monde (matiere neuve, 24 items sur 3 fichiers, prorata au-dela de 20 : 1,8) +
+histoire-geographie (matiere neuve, 20 items, 1,5) + rejeu de la monnaie (0,5) = **4,8 sur une
+borne de 5**. Ce chiffre remplace le 4,5 de la section 8.2 : le 4,5 ne comptait pas encore le
+prorata de questionner le monde, qui n'etait pas connu a la date de redaction de cette section.
+
+### 9.4 Ce que cette mise a jour ne fait pas
+
+- Elle ne prononce aucun verdict sur le rejeu de la monnaie : `nadia-prof`, quand l'arbre sera
+  monte.
+- Elle ne modifie aucune des trois stories de s27 : leur redaction ne comptait pas en fichiers, la
+  precision de l'unite de borne ne change donc rien a ce qu'elles demandent.

@@ -1,10 +1,11 @@
 # DEC-0070 - Le titre "Calcul CP" devient "Les petites additions" : retour de l'utilisatrice, choix tranche par nadia-prof, recommandation de regle generale revisee sur deux points distincts
 
-- **Statut** : **Acceptee.** Titre tranche par `nadia-prof` le 2026-09-02 (amendement ci-dessous) :
-  `"Les petites additions"`, l'option A. La partie "regle generale" reste **recommandee, forme
-  technique non ecrite** - routee a `theo-archi`, instruite apres le garde-fou de couleur (voir
-  amendement).
-- **Date** : 2026-09-02 (amendee le 2026-09-02, meme jour)
+- **Statut** : **Acceptee et appliquee.** Titre tranche par `nadia-prof` le 2026-09-02 :
+  `"Les petites additions"`, l'option A - en production dans `catalogue.yaml` depuis le
+  2026-09-03. Garde-fou de la regle generale ecrit et vert (`ADR-0078`, version forte, zero
+  exemption). La seconde propriete (sous-specification) est **fermee**, pas gardee par un
+  garde-fou (amendement B).
+- **Date** : 2026-09-02 (amendee le 2026-09-02, puis le 2026-09-03)
 - **Auteur** : `camille-po`
 - **Sprint** : hors-sprint (branche `retours-utilisatrice`, avant ouverture de s27)
 - **Retour qui la fonde** : l'utilisatrice, 2026-09-02, en jouant l'application, verbatim :
@@ -195,3 +196,63 @@ instruite apres le garde-fou de couleur. Faisabilite d'un proxy pour la seconde 
 - Il ne fixe aucune forme technique de garde-fou.
 - Il ne touche a aucune ligne de la matrice de couverture : la ligne "Calcul mental - additions
   dans la limite de 10" reste `couvert-valide`, le titre n'etant pas une propriete de statut.
+
+---
+
+## Amendement du 2026-09-03 - le titre est applique, le garde-fou est ecrit, la seconde propriete est fermee
+
+### B.1 Le titre est en production
+
+`catalogue.yaml` porte desormais `titre: "Les petites additions"`
+(`bandit-manchot-additions-cp`). Le blocage technique nomme par `theo-archi` a l'ouverture de s27
+- une clause de s01 (`S1-8`) qui refusait le grapheme `ti` dans le libelle d'accueil - a ete leve
+par `nadia-prof` elle-meme, apres avoir mesure que **quatre titres deja servis et deja valides**
+portaient ce meme grapheme sans qu'elle l'ait jamais vu (`Les petites soustractions`, `Les tables
+de multiplication`, `Les fractions simples`, `La position du son`). Ses mots :
+*"retirer le grapheme ne rend pas le titre decodable, donc la clause ne repare rien. On ne peut
+pas nommer un jeu d'additions sans le mot addition"* ; et *"je ne peux pas opposer a un cinquieme
+titre une barre que j'ai levee quatre fois sans la voir."* `S1-8` est retrecie plutot
+qu'appliquee telle quelle ; les quatre titres deja servis sont reconduits sans rejeu ni reserve.
+**Aucune consequence pour cette DEC** : le titre qu'elle porte est inchange, seul le blocage
+technique qui l'empechait d'entrer en production est leve.
+
+### B.2 Le garde-fou de la premiere regle est ecrit, en version forte
+
+`nadia-prof` retient, pour seule propriete a garder, celle que j'avais recommandee et que
+l'utilisatrice avait trouvee : *"la propriete qui merite un garde-fou est celle que l'utilisatrice
+a trouvee - aucun titre ne porte le niveau de l'enfant."* `theo-archi` l'a encodee dans `ADR-0078`
+(`AucunTitreDeJeuNePorteSonNiveauTest`, six tests) sur **les quarante titres servis, zero
+exemption** - y compris l'exemption d'une entree que la clause `S1-8` retrecie avait rendue
+inutile. **Le niveau est lu dans `descripteur.niveau` du paquet, jamais ecrit dans la regle** :
+un niveau neuf entre sous ce garde-fou le jour ou il apparait, sans qu'une ligne de test ne
+bouge. C'est la forme la plus forte de ce que je recommandais en section 3.
+
+### B.3 La seconde propriete (sous-specification) - je la ferme, elle ne devient pas un garde-fou
+
+**Reponse a la question que je maintenais ouverte** (section 3 amendee, A.3) : **je la ferme.**
+Deux motifs convergents, l'un de moi, l'un de `theo-archi`.
+
+Le mien : verifier qu'un titre ne nomme pas une categorie plus large que le contenu servi suppose
+de comparer un mot du titre au contenu reel d'un paquet. Le schema de contenu de ce produit n'a
+pas de champ uniforme qui porte cette information sur toutes les matieres - `additions-bornees`
+declare un `type` net, mais un paquet de type `question` (la grande majorite du catalogue,
+toutes matieres confondues) ne declare rien d'equivalent. Un garde-fou qui ne mordrait que sur un
+seul type de contenu donnerait le sentiment d'une regle generale sans en etre une : c'est
+exactement la famille de defaut - une regle qui a l'air d'un garde-fou et n'en est pas un - que ce
+depot sanctionne partout ailleurs.
+
+Celui de `theo-archi`, independant du mien et qui arrive a la meme conclusion, `ADR-0078` :
+*"juger qu'un titre promet plus large que son contenu demande de lire le contenu et de juger.
+C'est le premier seul qui devient une regle."*
+
+**Ce que cette fermeture signifie concretement** : cette propriete reste un critere pedagogique
+reel - `nadia-prof` l'a appliquee une fois avec succes sur `"Calcul CP"` - mais elle vit desormais
+comme point de controle explicite a chaque choix ou changement de titre (`nadia-prof`,
+`relecteur-pedagogique` sous ses criteres), jamais comme test automatique. Elle n'est plus une
+question ouverte : elle est fermee, dans cette forme.
+
+### B.4 Ce que cet amendement ne fait pas
+
+- Il ne rouvre pas le choix du titre.
+- Il ne redecide pas `S1-8` : c'est `nadia-prof`, dans son arbitrage du 2026-09-03.
+- Il n'ecrit ni ne redecide `ADR-0078` ou `ADR-0079` : ce sont des decisions de `theo-archi`.
