@@ -1,6 +1,11 @@
 # ADR-0077 - Un garde-fou execute la clause qu'il cite, et la population d'une clause de paquet se calcule sur le dessin
 
-- **Statut** : Accepte. **Sa regle est ecrite, verte et mise a l'epreuve dans le meme commit** -
+- **Statut** : Accepte. **Amende le 2026-09-03, meme sprint, meme auteur** : un des deux chiffres que
+  cet `ADR` annoncait etait faux - `POIDS_D_UN_DESSIN_MAXIMUM` **bouge**, de 2 685 a 2 775 -, et le
+  test de prediction qu'il installait est retire, son objet ayant cesse d'exister. Section
+  *Amendement du 2026-09-03*, a lire avant la section sur le cliquet, qui est conservee telle
+  qu'ecrite parce qu'elle etait exacte sur les autres points.
+- **Statut d'origine** : Accepte. **Sa regle est ecrite, verte et mise a l'epreuve dans le meme commit** -
   `adapters/adapter-web/src/test/java/com/recreo/adapter/web/ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest.java`,
   **17 tests** (13 avant ce lot), dont **4 neufs** : une clause de FIG-4 mordue sur un dessin servi
   reel, une clause de COU-2 mordue sur deux teintes du meme dessin, une **preuve que le
@@ -209,7 +214,9 @@ arbre fusionne**. La valeur annoncee est 30 730 ; elle n'est pas a recopier. La 
 ce fichier sous une autre forme - *"chaque lot avait mesure 12 et 12 sur sa propre branche, ce qui
 etait exact chez lui et faux apres fusion"* - et elle vaut pour un poids comme pour un compte.
 **`POIDS_D_UN_DESSIN_MAXIMUM` ne bouge pas** : le plus gros dessin gagne 90 octets au plus et reste
-sous 2 685.
+sous 2 685. *(Faux. Cette phrase est conservee parce qu'elle a ete ecrite, et corrigee dans
+l'amendement du 2026-09-03 : le plus gros dessin etait **exactement** a la valeur du cliquet, donc
+tout octet de plus le deborde. Il est a 2 775.)*
 
 ---
 
@@ -302,3 +309,91 @@ regle encodee n'etait pas la clause.
 **Ne rien encoder du tout et retirer la clause de remplissage** - ecartee. `nadia-prof` confirme
 `FIG-4` sur `cp-figures-planes` en `COU-4` : *"son refus d'etendre son remede est correct et je le
 confirme."* La clause garde son perimetre ; c'est son perimetre qui devait etre calcule.
+
+---
+
+## Amendement du 2026-09-03 - un des deux chiffres que j'avais annonces etait faux, et c'etait le mien
+
+**Ce que j'avais ecrit**, en clair, dans la section sur le cliquet :
+
+> *"`POIDS_D_UN_DESSIN_MAXIMUM` ne bouge pas : le plus gros dessin gagne 90 octets au plus et reste
+> sous 2 685."*
+
+**Ce que `ines-design` a mesure sur les fichiers reels avant de les commiter** :
+
+> *"`monnaie-meme-somme-e.svg` (6 objets, +90 octets) tombe a **2 775**, au-dessus de l'ancien
+> plafond, **parce qu'il etait deja exactement a la valeur du cliquet avant l'ajout du
+> remplissage**."*
+
+Elle l'a porte de **2 685 a 2 775** et **documente l'ecart avec mon texte dans la Javadoc de la
+constante**, plutot que de suivre en silence le nombre que j'avais annonce. C'est exactement la
+conduite que je demandais, exercee contre moi. **Mon autre chiffre tient** : `POIDS_TOTAL_MAXIMUM`
+est bien a **30 730**, mesure par elle sur son arbre et non recopie de moi.
+
+### Pourquoi c'etait faux, et ce n'est pas une erreur de calcul
+
+**J'ai compare l'increment au plafond au lieu de l'ajouter au dessin qui definissait ce plafond.**
+Or un cliquet exact est, par construction, **colle a son plus gros objet** :
+`leCliquetVautExactementCeQueCeLotInstalle` l'y epingle a l'octet pres, c'est sa raison d'etre. Il
+s'ensuit que **toute croissance du plus gros dessin deborde le cliquet par dessin, quelle qu'en soit
+la taille** - 90 octets, ou un seul. La phrase *"gagne 90 octets et reste sous 2 685"* ne pouvait pas
+etre vraie ; elle aurait ete refutee par une soustraction que j'avais tout le materiau pour faire.
+
+**Et le reproche exact que je me fais n'est pas de m'etre trompe, c'est de n'avoir pas applique a ma
+propre phrase la regle que je venais d'ecrire deux lignes plus haut** : *"30 730 est annonce, pas a
+recopier - la lecon des « 12 et 12 » exacts par branche et faux apres fusion vaut pour un poids."*
+J'ai protege le nombre que je transmettais a autrui, et **affirme dans la phrase suivante une valeur
+que je n'avais pas mesuree**, sous la forme la plus dangereuse qui soit : une **negation**. *Ce
+cliquet ne bougera pas* se verifie moins spontanement que *ce cliquet vaudra tant*, et ne demande
+pourtant pas moins de mesure.
+
+### Ce qui a fonctionne, et qu'il faut noter avec l'erreur
+
+**Le garde-fou, lui, a fait son travail.** `leCliquetVautExactementCeQueCeLotInstalle` a rougi sur le
+dessin que ma prose declarait tranquille, et il a rougi avant que quiconque ait a relire ma prose.
+**La regle a rattrape son auteur** ; c'est l'ordre normal des choses dans ce depot, et c'est le seul
+motif pour lequel l'ecart s'arrete a une phrase fausse dans un `ADR` au lieu d'un cliquet mal pose.
+
+### La clause 6 est corrigee, pas seulement l'anecdote
+
+La clause 6 disait que le cliquet total se deplacerait dans le commit qui installe les octets. Elle
+vaut, et elle s'etend : **les deux cliquets se deplacent ensemble, et aucun des deux ne se predit.**
+Un cliquet exact touche son objet le plus gros ; il n'y a donc pas de cliquet *"qui ne bougera pas"*
+tant que l'objet le plus gros grossit, et la seule chose qu'un commit anterieur puisse dire est
+**quelle mesure faire**, jamais **quel resultat elle donnera**.
+
+### Le test de prediction est retire, et son objet avec
+
+`lesDouzeDessinsRevisesNeSontRefusesQueParLeCliquetDePoids` reproduisait la revision d'`ines-design`
+pour prouver que le retrecissement laissait passer le correctif **avant que le correctif existe**.
+**Sa prediction s'est realisee, donc son objet a disparu** : les douze dessins sont commites et le
+corpus reel est juge directement. Le fait qu'il epinglait - 660 octets, 44 attributs de 15 - est
+desormais porte par le cliquet lui-meme.
+
+**Il fallait le retirer plutot que le laisser vert**, sur deux motifs qu'`ines-design` a trouves et
+routes sans les corriger, ce fichier n'etant pas son lot. **Son recit etait devenu faux** - il disait
+*"elle ne les a pas commis"* d'un lot commite. Et **son mecanisme ne mordait plus rien** : applique a
+des dessins deja remplis, il reecrivait `fill=` **en double sur la meme balise, sans une erreur**.
+Un test dont la narration ment et dont le mecanisme s'applique deux fois en silence **occupe la place
+de la preuve qu'il ne fait plus**.
+
+### Le mecanisme de mutation est corrige, et le remede n'est pas celui qui vient d'abord
+
+La correction evidente etait de **detecter** la double application et d'echouer. **Je l'ai ecrite,
+puis jetee** : elle produisait une branche d'erreur que rien ne pouvait atteindre - le mecanisme
+sautant les balises deja remplies, il n'en produisait jamais deux -, c'est-a-dire **un garde-fou dont
+la moitie ne s'execute jamais**, ce que cet `ADR` appelle decoratif une section plus haut.
+
+`sceneRemplieAvec(source, teinte)` **pose** la valeur au lieu de l'ajouter : elle remplace le
+remplissage present, ou l'ecrit s'il est absent. La double application devient **impossible plutot
+que detectable**, et la fonction est totale - le meme appel rend le meme texte sur un dessin nu comme
+sur un dessin deja rempli. **Les deux morsures qui s'en servent disent donc la meme chose avant et
+apres l'arrivee des dessins remplis**, au lieu de devenir vraies pour une autre raison que celle
+qu'elles annoncent.
+
+**Et le mecanisme est mordu, ce qu'il n'etait pas** : `laMutationDeRemplissagePoseLaTeinteAuLieuDeLAjouter`
+verifie sur un dessin servi reel que muter un dessin **deja mute** rend exactement le meme texte.
+*Preuve par retrait, mesuree et non affirmee : le mecanisme d'origine remis en place, la suite rend
+**2 echecs sur 17** dont celui-ci ; remis en ordre, **17 / 0**.* C'est la lecon qui manquait : les
+trois morsures qui employaient ce mecanisme regardaient le verdict du juge et **jamais le texte
+produit**, et c'est par la qu'un defaut de mutation a pu vivre sans temoin.
