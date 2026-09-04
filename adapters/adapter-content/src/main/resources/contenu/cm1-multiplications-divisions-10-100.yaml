@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Nombres et calculs"
   competence: "Calcul mental - multiplications et divisions simples (multiples de 10, 100)"
+lignesDeReferentiel: ["MAT-CM1-03"]
 #
 # MD-6 (squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md,
 # section 2) : chaque distracteur correspond a une erreur reelle d'un CM1, nommee ici plutot que

@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Repères historiques et géographiques"
   competence: "Ouvre plusieurs compétences du référentiel : se repérer dans le temps (grandes périodes, siècles), identifier des traces d'une occupation ancienne, nommer des rois et leur réalisation, situer les événements de la Révolution et de l'Empire, distinguer des types d'espaces et leurs activités, comprendre un document historique (lignes 1, 2, 3, 4, 6, 7, 8, 11, 12, 13, 14 du référentiel CM1)"
+lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM1-06", "HG-CM1-07", "HG-CM1-08", "HG-CM1-11", "HG-CM1-12", "HG-CM1-13", "HG-CM1-14"]
 #
 # S27-3. Premier paquet d'histoire-géographie CM1, matière neuve du produit. Référentiel
 # et jouabilité : ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md (branche
@@ -64,82 +65,102 @@ items:
     bonneReponse: "l'Antiquité"
     distracteurs: ["le Moyen Âge", "l'époque contemporaine"]
     indice: "Repense à l'ordre des grandes périodes que tu as appris."
+    ligneDeReferentiel: "HG-CM1-01"
   - enonce: "Quelle grande période vient juste après le Moyen Âge ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
     bonneReponse: "les Temps modernes"
     distracteurs: ["l'Antiquité", "l'époque contemporaine"]
     indice: "Le Moyen Âge se termine, une nouvelle période commence avant l'époque contemporaine."
+    ligneDeReferentiel: "HG-CM1-01"
   - enonce: "La Révolution française commence en 1789. En quel siècle cela se passe-t-il ?"  # HIS-1: restitution ; HIS-3: date 1789 donnée par le référentiel (ligne 7), conversion en siècle par convention calendaire (XVIIIe siècle = 1701-1800)
     bonneReponse: "le XVIIIe siècle"
     distracteurs: ["le XVIIe siècle", "le XIXe siècle"]
     indice: "Compte les centaines d'années. 1789 se situe entre 1701 et 1800, donc au XVIIIe siècle."
+    ligneDeReferentiel: "HG-CM1-02"
   - enonce: "Des arènes et des aqueducs en pierre ont été construits en Gaule durant l'Antiquité. Quel peuple les a construits ?"  # HIS-1: association ; HIS-3: patrimoine romain en Gaule (arènes, aqueducs), fait consensuel du programme cycle 3 - je n'ai pas d'outil de recherche en ligne cette session, nadia-prof doit confirmer
     bonneReponse: "les Romains"
     distracteurs: ["les Vikings", "les Égyptiens"]
     indice: "Pense au peuple de l'Antiquité qui a laissé le plus de traces de pierre en Gaule."
+    ligneDeReferentiel: "HG-CM1-03"
   - enonce: "À partir du IVe siècle, des peuples venus du nord et de l'est s'installent dans l'Empire romain. Les Francs sont l'un d'eux. Comment appelle-t-on ces peuples ?"  # HIS-1: restitution ; HIS-3: reformulation de nadia-prof qui retire le besoin de source (arbitrage du 2026-09-03, section 3.4) - "l'ensemble" retire, la réponse ne prétend plus à une couverture totale (les Huns, par exemple, n'entrent pas dans "peuples germaniques")
     bonneReponse: "les peuples germaniques"
     distracteurs: ["les peuples grecs", "les peuples gaulois"]
     indice: "Ce ne sont ni les Grecs ni les Gaulois, déjà installés bien avant."
+    ligneDeReferentiel: "HG-CM1-04"
   - enonce: "Quel roi de France a fait construire le château de Versailles ?"  # HIS-1: association ; HIS-3: association donnée par le référentiel lui-même (ligne 6, Louis XIV et Versailles)
     bonneReponse: "Louis XIV"
     distracteurs: ["Henri IV", "François Ier"]
     indice: "C'est le roi au plus long règne de l'histoire de France."
+    ligneDeReferentiel: "HG-CM1-06"
   - enonce: "Quel roi de France a signé l'édit de Nantes ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle
     bonneReponse: "Henri IV"
     distracteurs: ["Louis IX", "Louis XIV"]
     indice: "Ce roi a mis fin à des années de guerres de religion en 1598."
+    ligneDeReferentiel: "HG-CM1-06"
   - enonce: "Quel roi de France a participé à une croisade ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Louis IX et la croisade)
     bonneReponse: "Louis IX"
     distracteurs: ["François Ier", "Henri IV"]
     indice: "Ce roi est aussi appelé Saint Louis."
+    ligneDeReferentiel: "HG-CM1-06"
   - enonce: "Sous quel roi de France le château de Chambord est-il construit, témoin de la Renaissance ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), château de Chambord
     bonneReponse: "François Ier"
     distracteurs: ["Louis IX", "Henri IV"]
     indice: "Ce roi a régné au début du XVIe siècle, en pleine Renaissance."
+    ligneDeReferentiel: "HG-CM1-06"
   - enonce: "En 1789, quel événement marque le début de la Révolution française à Paris ?"  # HIS-1: restitution ; HIS-3: date du 14 juillet 1789, fait consensuel enseigné nationalement
     bonneReponse: "la prise de la Bastille"
     distracteurs: ["le sacre de Napoléon", "la signature de l'édit de Nantes"]
     indice: "C'est une prison parisienne, symbole du pouvoir du roi."
+    ligneDeReferentiel: "HG-CM1-07"
   - enonce: "Parmi ces trois événements de la Révolution française, lequel a eu lieu le premier ?"  # HIS-1: ordre ; HIS-3: dates du 14 juillet 1789, du 26 août 1789 et de septembre 1792, faits consensuels
     bonneReponse: "la prise de la Bastille"
     distracteurs: ["la fin de la monarchie", "la Déclaration des droits de l'homme et du citoyen"]
     indice: "Repense à la date du 14 juillet 1789, la plus ancienne des trois."
+    ligneDeReferentiel: "HG-CM1-07"
   - enonce: "Quel événement a eu lieu juste après l'abolition des privilèges, la même année 1789 ?"  # HIS-1: ordre ; HIS-3: dates du 4 août et du 26 août 1789, faits consensuels
     bonneReponse: "la Déclaration des droits de l'homme et du citoyen"
     distracteurs: ["la prise de la Bastille", "la fin de la monarchie"]
     indice: "Ce texte est adopté le 26 août, quelques semaines après l'abolition des privilèges du 4 août."
+    ligneDeReferentiel: "HG-CM1-07"
   - enonce: "En 1804, Napoléon Bonaparte se fait sacrer empereur, alors que la Révolution avait aboli la monarchie en 1792. Quel nouveau régime politique commence donc en 1804 ?"  # HIS-1: ordre ; HIS-3: sacre de Napoléon en 1804 et fin de la monarchie en 1792, faits consensuels
     bonneReponse: "l'Empire"
     distracteurs: ["la monarchie absolue", "la République romaine"]
     indice: "Ce n'est pas un retour à la monarchie, puisqu'elle a déjà été abolie."
+    ligneDeReferentiel: "HG-CM1-08"
   - enonce: "Un centre-ville avec de nombreux immeubles et des commerces est appelé comment ?"  # HIS-1: restitution ; HIS-3: vocabulaire du programme de géographie cycle 3 (référentiel ligne 11)
     bonneReponse: "un espace urbain"
     distracteurs: ["un espace rural", "un espace périurbain"]
     indice: "Pense au mot qui désigne la ville, par opposition à la campagne."
+    ligneDeReferentiel: "HG-CM1-11"
   - enonce: "Dans un espace touristique de montagne, quelle activité se développe surtout en hiver ?"  # HIS-1: association ; HIS-3: fait géographique général, non daté (référentiel ligne 12)
     bonneReponse: "le tourisme lié au ski"
     distracteurs: ["la pêche en mer", "la culture de la vigne"]
     indice: "Pense à la neige et aux pistes."
+    ligneDeReferentiel: "HG-CM1-12"
   - enonce: "Dans un espace rural, quelle activité occupe le plus souvent les habitants qui y travaillent ?"  # HIS-1: association ; HIS-3: fait géographique général (référentiel ligne 12)
     bonneReponse: "l'agriculture"
     distracteurs: ["la banque et l'assurance", "le tourisme de croisière"]
     indice: "Pense aux champs et aux fermes."
+    ligneDeReferentiel: "HG-CM1-11"
   - enonce: "L'électricité qui alimente nos maisons est produite dans des lieux spécifiques avant d'être acheminée par des câbles. Comment appelle-t-on un de ces lieux de production ?"  # HIS-1: restitution ; HIS-3: vocabulaire technique standard (référentiel ligne 13)
     bonneReponse: "une centrale électrique"
     distracteurs: ["une usine de traitement de l'eau", "un entrepôt agricole"]
     indice: "Pense à l'endroit où l'on fabrique l'électricité."
+    ligneDeReferentiel: "HG-CM1-13"
   - enonce: "D'après ce texte, en quelle année ce document est-il adopté ?"  # HIS-1: document ; HIS-3: texte construit sur le fait du référentiel ligne 7 (1789, Déclaration des droits de l'homme et du citoyen)
     texteSupport: "Le 26 août 1789, l'Assemblée nationale adopte un texte majeur de la Révolution française. Il affirme que les hommes naissent et demeurent libres et égaux en droits."
     bonneReponse: "en 1789"
     distracteurs: ["en 1804", "en 1610"]
     indice: "Relis la première phrase du texte, elle donne la date."
+    ligneDeReferentiel: "HG-CM1-14"
   - enonce: "D'après ce texte, que peut-on dire de la vie quotidienne de Louis XIV à Versailles ?"  # HIS-1: document ; HIS-3: cérémonial du lever et du coucher du roi à Versailles, caractérisation historique documentée - je n'ai pas d'outil de recherche en ligne cette session, nadia-prof doit confirmer
     texteSupport: "Chaque matin, Louis XIV se lève devant des dizaines de nobles qui se disputent l'honneur de lui tendre sa chemise. Le soir, il ne peut ni manger ni se coucher sans qu'un cérémonial précis ne soit respecté devant toute la cour."
     bonneReponse: "elle suit des règles très strictes et se déroule en public"
     distracteurs: ["elle se déroule dans le calme et la solitude", "elle est identique à celle des paysans du royaume"]
     indice: "Repense au nombre de personnes présentes autour du roi, du matin au soir."
+    ligneDeReferentiel: "HG-CM1-14"
   - enonce: "D'après ce texte, que représentait cette prison pour les habitants de Paris avant sa prise ?"  # HIS-1: document ; HIS-3: symbole de la Bastille comme instrument du pouvoir royal, fait consensuel
     texteSupport: "En 1789, des habitants de Paris prennent d'assaut une vieille prison qui servait aussi à enfermer des opposants au roi. Sa chute est fêtée dans toute la ville et devient, dès l'année suivante, une fête nationale."
     bonneReponse: "le pouvoir absolu et l'autorité du roi"
     distracteurs: ["un simple lieu de commerce", "un monument touristique"]
     indice: "Repense à qui la prison enfermait, en plus des prisonniers ordinaires."
+    ligneDeReferentiel: "HG-CM1-14"

@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Comparer deux nombres entiers jusqu'à 100 (<, >, =)"
+lignesDeReferentiel: ["MAT-CP-02"]
 items:
   - enonce: "8 ___ 15"
     bonneReponse: "<"

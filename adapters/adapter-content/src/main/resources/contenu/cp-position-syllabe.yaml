@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Langage oral et conscience phonologique"
   competence: "Localiser une syllabe dans un mot (début / milieu / fin)"
+lignesDeReferentiel: ["FRA-CP-02"]
 # S26-L1 (DEC-0068 ; squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 4.1).
 # ADR-0075 : texteAVoixHaute porte le mot entier et la syllabe cherchée (VOI-1). L'enfant ne voit ni
 # le mot ni la syllabe : enonce, indice et propositions sont invariants sur tout le paquet (VOI-13) ;

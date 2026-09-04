@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Compléments à 10"
+lignesDeReferentiel: ["MAT-CP-05"]
 items:
   - enonce: "0 + ? = 10"
     bonneReponse: "10"

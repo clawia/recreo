@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Lecture et compréhension de l'écrit"
   competence: "Associer les graphèmes aux phonèmes (voyelles, consonnes simples, puis digraphes ch, ou, on...)"
+lignesDeReferentiel: ["FRA-CP-04"]
 items:
   - enonce: "MAMAN"
     bonneReponse: "an"

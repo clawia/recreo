@@ -114,61 +114,21 @@ class ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest {
 
     /**
      * Les paquets servis ecrits avant l'arbitrage du 2026-09-03, qui ne declarent pas encore leurs
-     * lignes. Ce sont les 42 paquets du depot au 2026-09-03 moins les trois de questionner le monde,
-     * repris ici parce que leur descripteur recopie deja l'intitule du referentiel a la lettre.
-     * Leur reprise est du <b>cout de developpement</b> de s28 - elle ne touche pas la borne d'audit
-     * de nadia-prof.
+     * lignes. Reprise faite en s28 (marc-dev) : les 42 paquets en dette au 2026-09-03 declarent
+     * desormais leur ligne, par transcription depuis {@code MATRICE-couverture.md} resolue via
+     * {@code catalogue.yaml} - sauf {@code cm1-histoire-geographie}, dont l'attribution item par
+     * ligne reprend celle de nadia-prof (section 3.2 de
+     * {@code ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md}). La
+     * dette est donc vide ; {@code PLAFOND_DE_DETTE} descend avec elle, dans le meme diff.
      */
-    private static final Set<String> DETTE_DE_DECLARATION = Set.of(
-            "cm1-accords-groupe-nominal",
-            "cm1-accord-sujet-verbe",
-            "cm1-antonymes",
-            "cm1-comprehension",
-            "cm1-conjugaison-present",
-            "cm1-fractions",
-            "cm1-grands-nombres",
-            "cm1-histoire-geographie",
-            "cm1-homophones",
-            "cm1-mesures",
-            "cm1-mots-de-liaison",
-            "cm1-multiplications-divisions-10-100",
-            "cm1-perimetre",
-            "cm1-problemes-durees",
-            "cm1-problemes-etapes",
-            "cm1-reperes",
-            "cm1-substituts",
-            "cm1-synonymes",
-            "cm1-tables-multiplication",
-            "cp-additions-jusqu-a-10",
-            "cp-comparer",
-            "cp-comparer-nombres",
-            "cp-complements-10",
-            "cp-complements-10-saisie",
-            "cp-digraphe-du-son",
-            "cp-figures-planes",
-            "cp-le-bon-son",
-            "cp-lettre-du-son",
-            "cp-monnaie",
-            "cp-mot-dicte",
-            "cp-mot-manquant",
-            "cp-nature-mot",
-            "cp-pluriel",
-            "cp-position-syllabe",
-            "cp-problemes-additifs",
-            "cp-ranger-nombres",
-            "cp-semaine",
-            "cp-son-dans-mot",
-            "cp-soustractions",
-            "cp-syllabes",
-            "cp-texte-narratif",
-            "cp-voyelle-du-son");
+    private static final Set<String> DETTE_DE_DECLARATION = Set.of();
 
     /**
-     * Etat au 2026-09-03, s28, a l'ouverture de la reprise arbitree par l'utilisatrice : 45 paquets
-     * servis, 3 declarants, 42 en dette. Ce nombre ne remonte jamais ; le baisser demande un diff
+     * Etat au 2026-09-04, s28, apres la reprise arbitree par l'utilisatrice : 45 paquets servis,
+     * 45 declarants, 0 en dette. Ce nombre ne remonte jamais ; le remonter demanderait un diff
      * visible, comme {@code PLAFOND_DE_DETTE} d'ADR-0013.
      */
-    private static final int PLAFOND_DE_DETTE = 42;
+    private static final int PLAFOND_DE_DETTE = 0;
 
     /** Une ligne de referentiel : son code, et le fichier qui la declare. */
     record Ligne(String code, String fichier) {

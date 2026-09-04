@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
   competence: "Accorder en genre et en nombre dans le groupe nominal (déterminant/nom/adjectif)"
+lignesDeReferentiel: ["FRA-CM1-07"]
 # S19-2 (DEC-0042) : le paquet couvre les trois composantes du groupe nominal, pas seulement
 # l'adjectif comme la matiere premiere reprise (contenu-repris/textes-trous/cm1-accords.yml, 5
 # items). Un item ne porte qu'un seul trou et sa composante n'est jamais melangee a une autre :

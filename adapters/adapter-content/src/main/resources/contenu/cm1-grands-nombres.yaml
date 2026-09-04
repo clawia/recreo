@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Nombres et calculs"
   competence: "Lire, écrire, décomposer et comparer les nombres entiers jusqu'au million"
+lignesDeReferentiel: ["MAT-CM1-01"]
 items:
   # Verbe "ecrire" (designation litterale donnee, ecriture chiffree a trouver)
   - enonce: "Écris en chiffres : quarante mille sept cent cinq."

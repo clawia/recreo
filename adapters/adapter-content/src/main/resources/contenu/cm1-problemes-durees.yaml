@@ -116,6 +116,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Grandeurs et mesures"
   competence: "Résoudre des problèmes de durées (calcul d'une durée, d'un horaire d'arrivée)"
+lignesDeReferentiel: ["MAT-CM1-10"]
 items:
   - enonce: "La récréation de Malo commence à 10 h 15 et se termine à 10 h 40. Combien de temps dure-t-elle ?"
     bonneReponse: "25 minutes"

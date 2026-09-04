@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Espace et géométrie"
   competence: "Reconnaître et nommer quelques figures planes (carré, rectangle, triangle, cercle)"
+lignesDeReferentiel: ["MAT-CP-11"]
 #
 # S25-FIG (DEC-0065, amendement, section A.3). Premier paquet illustre du palier 1 du visuel.
 #

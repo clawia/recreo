@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Lecture et compréhension de l'écrit"
   competence: "Repérer les substituts d'un personnage (pronoms, groupes nominaux) dans un texte"
+lignesDeReferentiel: ["FRA-CM1-03"]
 #
 # S25-SUB-1. Arbitrage prealable de nadia-prof du 2026-08-30, ACCEPTE sous conditions SUB-1 a
 # SUB-10 ; REFUSE le 2026-08-31 sur une marque de surface qu'aucune des dix ne portait, et

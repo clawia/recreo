@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Nombres et calculs"
   competence: "Résoudre des problèmes à deux étapes mobilisant les quatre opérations"
+lignesDeReferentiel: ["MAT-CM1-07"]
 #
 # S23-ETA (squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-
 # niveau-2.md, section 2, ETA-1 a ETA-10 ; section 12.1, amendement ETA-4b du 2026-08-30, ETA-7

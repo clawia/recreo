@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Grandeurs et mesures"
   competence: "Se repérer dans la journée, la semaine ; lire l'heure pleine sur une horloge"
+lignesDeReferentiel: ["MAT-CP-09"]
 #
 # S25-SEM (DEC-0065, amendement, sections A.2 et A.3). Arbitrage prealable de nadia-prof du
 # 2026-08-31

@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Vocabulaire"
   competence: "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos"
+lignesDeReferentiel: ["FRA-CM1-11"]
 # SYN-1 (arbitrage prealable de nadia-prof, s17) : le mot cible est toujours presente entre
 # guillemets a l'interieur d'une phrase complete, jamais isole - la question porte sur ce mot dans
 # ce contexte precis, jamais sur le mot seul. Reformulation obligatoire de la matiere premiere

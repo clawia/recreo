@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Grandeurs et mesures"
   competence: "Calculer un périmètre de figures usuelles (carré, rectangle)"
+lignesDeReferentiel: ["MAT-CM1-09"]
 items:
   - enonce: "Le périmètre d'une figure, c'est..."
     bonneReponse: "la longueur de son contour"

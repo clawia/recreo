@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Langage oral et conscience phonologique"
   competence: "Dénombrer les syllabes orales d'un mot (segmentation syllabique)"
+lignesDeReferentiel: ["FRA-CP-01"]
 # S21-9 (squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md, section 3,
 # conditions SEG-1 a SEG-9). Premiere ligne couverte du domaine "Langage oral et conscience
 # phonologique" (squad/programme/MATRICE-couverture.md, ligne 485) ; les deux autres lignes du

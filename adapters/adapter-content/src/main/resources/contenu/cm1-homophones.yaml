@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
   competence: "Distinguer et utiliser correctement les principaux homophones grammaticaux (et/est, son/sont, a/à...)"
+lignesDeReferentiel: ["FRA-CM1-08"]
 # S17-4 (DEC-0024, DEC-0039) : raccourcissement des enonces les plus longs (BPM-3, aucun item
 # supprime, toujours 24) et correction des indices qui nommaient la reponse au lieu de la
 # manipulation qui y mene (DEC-0024 point 5). Chaque phrase raccourcie garde la structure qui rend

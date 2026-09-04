@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Écriture"
   competence: "Écrire de manière autonome un mot simple en respectant les correspondances graphème/phonème connues"
+lignesDeReferentiel: ["FRA-CP-09"]
 # S26-L5 (DEC-0068 ; ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 4.5). Premier
 # paquet à réponse alphabétique sur la mécanique de saisie.
 #

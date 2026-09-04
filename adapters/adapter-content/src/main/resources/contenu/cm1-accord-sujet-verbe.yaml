@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
   competence: "Accorder le verbe avec son sujet (cas fréquents, temps simples : présent, futur, imparfait)"
+lignesDeReferentiel: ["FRA-CM1-06"]
 # S19-3 (FICHE-bandit-manchot-accord-sujet-verbe-cm1.md, docs/backlog/backlog.md) : paquet neuf,
 # aucune matiere premiere reutilisable (contenu-repris/textes-trous/cm1-conjugaison.yml teste la
 # conjugaison derriere un sujet pronominal colle au verbe, pas l'accord avec un sujet eloigne).

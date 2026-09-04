@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Reconnaître et utiliser la monnaie (pièces/billets simples) dans des problèmes concrets"
+lignesDeReferentiel: ["MAT-CP-07"]
 #
 # S25-MON-1, paquet illustre (ADR-0073). Arbitrage prealable de nadia-prof du 2026-08-31 :
 # conditions MON-1 a MON-5 (arbitrage des seize lignes, section 2.2) et CON-1 a CON-5 (arbitrage du

@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Lecture et compréhension de l'écrit"
   competence: "Associer les graphèmes aux phonèmes (voyelles, consonnes simples, puis digraphes ch, ou, on...)"
+lignesDeReferentiel: ["FRA-CP-04"]
 # S26-L4 (DEC-0068 ; ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, addendum, section 11).
 # Clause 2 de la ligne (digraphes ou, oi, ch). Cette ligne ne passe couvert-valide que si S26-L4
 # (ce paquet) ET S26-L3 (cp-lettre-du-son) reçoivent toutes deux un verdict VALIDE (addendum,

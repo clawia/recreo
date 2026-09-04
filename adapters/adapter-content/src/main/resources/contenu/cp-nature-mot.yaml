@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Orthographe et grammaire"
   competence: "Distinguer les principaux types de mots (nom, verbe) dans une phrase très simple"
+lignesDeReferentiel: ["FRA-CP-11"]
 # S19-4 (DEC-0042). Arbitrage prealable de nadia-prof rendu le 2026-08-24
 # (squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md, partie B) : la
 # forme (seize phrases, huit noms, huit verbes, mot cible entre guillemets francais avec espaces

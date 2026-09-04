@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Nombres et calculs"
   competence: "Calcul mental - tables de multiplication (jusqu'à ×10), rappel automatisé"
+lignesDeReferentiel: ["MAT-CM1-02"]
 items:
   - enonce: "1 × 1 = ?"
     bonneReponse: "1"

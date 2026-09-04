@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Lecture et compréhension de l'écrit"
   competence: "Comprendre un texte narratif ou documentaire (questions explicites et implicites, inférences simples)"
+lignesDeReferentiel: ["FRA-CM1-02"]
 #
 # S17-2 (DEC-0053, ADR-0050, ADR-0062 comme patron technique). Arbitrage prealable de
 # nadia-prof du 2026-08-19 (ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md) : principe

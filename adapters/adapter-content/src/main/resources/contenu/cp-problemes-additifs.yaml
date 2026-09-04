@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Résoudre des problèmes simples d'addition/soustraction en situation (1 étape)"
+lignesDeReferentiel: ["MAT-CP-06"]
 items:
   - enonce: "Léa a 3 billes et en gagne 2. Combien en a-t-elle ?"
     bonneReponse: "5"

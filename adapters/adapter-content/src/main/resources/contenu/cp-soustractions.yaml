@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Calcul mental - soustractions dans la limite de 10"
+lignesDeReferentiel: ["MAT-CP-04"]
 items:
   - enonce: "7 - 7 = ?"
     bonneReponse: "0"

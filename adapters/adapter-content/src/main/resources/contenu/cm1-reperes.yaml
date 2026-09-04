@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Orthographe et grammaire"
   competence: "Repérer et corriger la majuscule et la ponctuation dans une phrase donnée (majuscule initiale, point final, majuscule au nom propre, point d'interrogation d'une question)"
+lignesDeReferentiel: ["FRA-CM1-10"]
 # S20-2 (DEC-0046, section 2 ; DEC-0047). Competence detachee de "Relire et corriger son texte a
 # l'aide de reperes simples" par nadia-prof (ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-
 # depuis-s13.md, section B) : la ligne d'origine reste non couvrable, ce paquet couvre uniquement

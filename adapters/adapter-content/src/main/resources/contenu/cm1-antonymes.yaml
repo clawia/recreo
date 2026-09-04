@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Vocabulaire"
   competence: "Utiliser des synonymes et antonymes pour préciser ou nuancer un propos"
+lignesDeReferentiel: ["FRA-CM1-11"]
 # S19-1 (docs/backlog/backlog.md, FICHE-bandit-manchot-antonymes-cm1.md) : jeu et paquet neufs,
 # distincts de "Les synonymes" (ADR-0052, DEC-0039 section 3). Arbitrage prealable rendu par
 # nadia-prof (ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md, partie A) sur la

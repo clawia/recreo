@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Lecture et compréhension de l'écrit"
   competence: "Comprendre un texte narratif très court (questions explicites : qui, où, quoi)"
+lignesDeReferentiel: ["FRA-CP-07"]
 #
 # S24-NAR (DEC-0059). Arbitrage prealable de nadia-prof du 2026-08-30
 # (squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md,

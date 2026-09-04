@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Vocabulaire"
   competence: "Utiliser à bon escient des mots de liaison simples pour structurer un texte court"
+lignesDeReferentiel: ["FRA-CM1-12"]
 #
 # S23-LIA (DEC-0057 section 2, arbitrage prealable de nadia-prof du 2026-08-30,
 # ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md, section 6,

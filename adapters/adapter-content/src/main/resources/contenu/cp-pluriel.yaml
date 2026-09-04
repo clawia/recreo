@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Orthographe et grammaire"
   competence: "Reconnaître et utiliser les marques du pluriel les plus fréquentes (-s)"
+lignesDeReferentiel: ["FRA-CP-10"]
 #
 # S24-PLU (DEC-0059). Arbitrage prealable de nadia-prof du 2026-08-30
 # (squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md,

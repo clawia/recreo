@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Langage oral et conscience phonologique"
   competence: "Identifier un son (phonème) dans un mot"
+lignesDeReferentiel: ["FRA-CP-03"]
 # S26-L2 (DEC-0068 ; squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 4.2).
 # Point ouvert non tranché (routé par sofia-sm à nadia-prof, squad/design/proposition-ines-s26-
 # ecran-voix.md, section 6, point 4) : lecture prudente par défaut retenue ici, aucune lettre du

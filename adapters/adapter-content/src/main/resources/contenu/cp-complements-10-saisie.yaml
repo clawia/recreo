@@ -6,6 +6,7 @@ descripteur:
   niveau: "CP"
   domaine: "Nombres et calculs"
   competence: "Compléments à 10"
+lignesDeReferentiel: ["MAT-CP-05"]
 # S24-SAI-2, conditions CPL-1 a CPL-8 de nadia-prof (arbitrage prealable de s24, section 4.3).
 # CPL-4 : aucun item de ce paquet n'exige la forme exacte, la competence ne porte pas sur
 # l'orthographe. La declaration vaut pour le paquet entier.

@@ -6,6 +6,7 @@ descripteur:
   niveau: "CM1"
   domaine: "Grandeurs et mesures"
   competence: "Convertir des unités de longueur, masse, contenance dans le système métrique"
+lignesDeReferentiel: ["MAT-CM1-08"]
 items:
   - enonce: "7 cm, combien de mm ?"
     bonneReponse: "70 mm"
