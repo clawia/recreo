@@ -757,3 +757,74 @@ Dit explicitement, comme a chaque fois, pour que l'equipe ne croie pas couvert c
   de changement. **Les seules baisses de barre de ce document sont sur moi** : mon motif de s27 pour
   ne pas fermer, que je declare epuise (1.1), et le prix de questionner le monde, que je baisse
   (4.2).
+
+---
+
+## 13. Amendement du 2026-09-04 - deux ecarts remontes par les developpeurs, tranches a la porte
+
+**Ajoute apres la livraison des quatre lots, a la porte pedagogique de s28. Rien au-dessus n'est
+efface** : les sections 1 a 12 restent telles qu'elles ont ete ecrites le 2026-09-03, y compris la
+phrase que je corrige ci-dessous. **Une prescription fausse qu'on efface ne s'est jamais vue ; une
+prescription fausse qu'on date se lit.**
+
+### 13.1 Ma prescription du calcul pose etait impossible telle qu'ecrite - **je l'accepte et je la
+### corrige**
+
+**Ce que j'avais ecrit** (section 5.4, dernier paragraphe) : *"deux fichiers de dix items - un par
+ligne, selon le decoupage de `lea-dev` - portent `nombreDeManches: 10` sans derogation (`DEC-0064`),
+la partie epuisant exactement le vivier sans repetition."*
+
+**Ce que `marc-dev` a trouve, et il a raison** :
+`ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest` (`DEC-0064`) exige **strictement plus** d'items
+que de manches - `assertThat(items).isGreaterThan(jeu.nombreDeManches())`. **L'egalite est refusee
+par construction.** Ma phrase demandait donc, dans la meme parenthese, *"sans derogation"* et une
+egalite que le garde-fou interdit : **les deux moities de ma prescription ne pouvaient pas etre
+vraies ensemble.**
+
+**Mon arbitrage** :
+
+1. **J'accepte les onze items.** C'etait la seule issue compatible avec un garde-fou existant, et
+   `marc-dev` a eu raison de ne pas inventer une derogation hors de son mandat pour honorer une
+   phrase de moi.
+2. **Je ne demande aucun changement au test.** Il a raison et ma phrase avait tort.
+3. **Je retire l'exigence d'exhaustion.** *"La partie epuisant exactement le vivier sans
+   repetition"* n'est **atteignable par aucun paquet de ce produit**, et je n'aurais pas du l'ecrire
+   comme une condition de forme. La formule qui la remplace, a partir d'aujourd'hui : **un paquet qui
+   sert N manches sans derogation porte au moins N+1 items.**
+4. **Ce que cela coute, dit franchement, parce que c'est une propriete dont je reste la seule
+   garde** : sur onze items joues en dix manches, **un item n'est jamais vu dans une partie donnee**,
+   et lequel change a chaque partie. C'est exactement la propriete que j'ai enregistree a s27 apres
+   avoir manque un item en jouant. **Je l'ai payee ici en lisant les vingt-deux items et en
+   recalculant les vingt-deux resultats** - pas en jouant deux fois.
+
+**Ce que ce point n'est pas** : ce n'est pas un defaut du lot, ce n'est pas une reserve, et cela ne
+change aucun verdict. **C'est une erreur de ma part, trouvee par un developpeur, et corrigee ici.**
+
+### 13.2 `REC-5` gardee sur la seule identite de graphie, et trois tables figees - **les deux limites
+### me conviennent, et je dis ce qu'elles me laissent sur les bras**
+
+**Ce que `lea-dev` a declare** : le test de `REC-5` compare les quinze paires francais/anglais par
+**identite stricte de graphie** (`isNotEqualToIgnoringCase`) ; **la quasi-identite reste un jugement
+de sens**, donc le mien. Et trois tables de classification (les trois champs lexicaux, les paires,
+les pays) sont **figees par graphie** et doivent suivre tout changement de libelle.
+
+**Ma reponse, en trois points** :
+
+1. **La limite de `REC-5` est la bonne, et elle est correctement declaree.** Une heuristique de
+   proximite - distance d'edition, prefixe commun - **laisserait passer ce qu'elle ne mesure pas et
+   arreterait ce qui va bien** ; elle donnerait surtout a l'equipe le sentiment que `REC-5` est
+   gardee. **Une garde etroite et dite est meilleure qu'une garde large et fausse.** Je prefere
+   qu'un test dise *"je verifie l'identite de graphie"* et rien d'autre.
+2. **Et je viens d'exercer ce qui me reste** : `mountain` / *montagne* est passe sous ce test, et
+   c'est ma lecture qui l'a arrete (`ANG-R1`, fiche du jeu d'anglais). **La demonstration que la
+   limite est reelle est faite le jour meme ou elle est declaree.**
+3. **Les tables figees par graphie me conviennent, a une condition que je verifie et qui est
+   tenue** : elles doivent **echouer sur l'inconnu**, pas l'ignorer. J'ai lu le test de `BIA-2` :
+   un item dont la bonne reponse n'est pas dans la table **fait echouer le test par cle inconnue**.
+   **C'est la bonne forme** - la charge de maintenance devient un rouge bruyant et non un silence.
+   Une table qui aurait ignore l'inconnu aurait ete un faux vert, et je l'aurais refusee.
+
+**Ce qui manquerait pour me retirer `REC-5` des mains, et je ne le commande pas** : une **liste de
+mots transparents declaree dans le paquet**, que le test opposerait aux bonnes reponses. Je l'avais
+deja ecrit le 2026-09-03 (section 10 : *"partiellement, avec une liste declaree"*). **La propriete
+est de moi, la forme est a `theo-archi`, la priorite est a l'utilisatrice.**
