@@ -262,7 +262,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S27-1 : titre neuf.
             "La bonne voyelle",
             // S27-2 : trois titres neufs.
-            "Vivant ou objet",
+            // S28-1, correction (nadia-prof, 2026-09-04) : "Vivant ou objet" portait l'erreur
+            // que "un objet" repondait aussi a un item de matiere inerte (sable, neige).
+            "Vivant ou pas vivant",
             "Le corps et les sens",
             "L'eau solide ou liquide",
             // S27-3 : titre neuf.

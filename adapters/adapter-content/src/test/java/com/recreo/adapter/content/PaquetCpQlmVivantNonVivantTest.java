@@ -41,8 +41,15 @@ class PaquetCpQlmVivantNonVivantTest {
 
     private static final int PLAFOND_ITEMS = 20;
 
-    /** Espace de reponse de la tache de categorisation, seule tache que porte le premier paquet. */
-    private static final Set<String> CATEGORIES = Set.of("un être vivant", "un objet");
+    /**
+     * Espace de reponse de la tache de categorisation. L'opposition reste binaire (vivant / non
+     * vivant, nadia-prof, 2026-09-04) mais le libelle du pole non-vivant differe selon la nature de
+     * l'item : "un objet" pour les quatre objets fabriques (S27-2), "ce n'est pas un être vivant"
+     * pour les trois items de matiere inerte (S28-1, corrige le 2026-09-04 - ils repondaient a tort
+     * "un objet").
+     */
+    private static final Set<String> CATEGORIES =
+            Set.of("un être vivant", "un objet", "ce n'est pas un être vivant");
 
     /** FER-3 : au moins deux taches, la moins servie portant au moins trois items. */
     private static final int MINIMUM_PAR_TACHE = 3;
@@ -83,28 +90,32 @@ class PaquetCpQlmVivantNonVivantTest {
                 .isLessThanOrEqualTo(PLAFOND_ITEMS);
     }
 
-    /** Espace de reponse des items de categorisation : exactement les deux categories. */
+    /**
+     * Espace de reponse des items de categorisation : exactement les trois libelles connus (deux
+     * pour le pole non-vivant, depuis la correction du 2026-09-04).
+     */
     @Test
-    void lEspaceDeReponseDesItemsDeCategorisationEstExactementLesDeuxCategories() {
+    void lEspaceDeReponseDesItemsDeCategorisationEstExactementLesReponsesConnues() {
         for (Question item : itemsDeCategorisation()) {
             assertThat(CATEGORIES)
-                    .as("item %s : la bonne reponse doit etre l'une des deux categories",
+                    .as("item %s : la bonne reponse doit etre l'un des libelles connus",
                             item.id().value())
                     .contains(item.bonneReponse());
             assertThat(CATEGORIES)
-                    .as("item %s : chaque distracteur doit etre l'une des deux categories",
+                    .as("item %s : chaque distracteur doit etre l'un des libelles connus",
                             item.id().value())
                     .containsAll(item.distracteurs());
         }
     }
 
     /**
-     * Condition de distribution ecrite dans le commentaire du paquet : depuis S28-1, la moitie
-     * "objet" porte a la fois les objets fabriques et la matiere inerte, donc le compte n'est plus
-     * une moitie exacte. Compte reel, jamais affirme.
+     * Condition de distribution ecrite dans le commentaire du paquet : depuis la correction du
+     * 2026-09-04, les trois items de matiere inerte repondent "ce n'est pas un être vivant" et non
+     * plus "un objet" - la matiere inerte a son propre libelle de pole non-vivant, distinct de
+     * celui des objets fabriques. Compte reel, jamais affirme.
      */
     @Test
-    void chacuneDesDeuxCategoriesEstRepresenteeParmiLesItemsDeCategorisation() {
+    void chacuneDesTroisReponsesEstRepresenteeParmiLesItemsDeCategorisation() {
         List<Question> items = itemsDeCategorisation();
         assertThat(items).isNotEmpty();
 
@@ -114,15 +125,45 @@ class PaquetCpQlmVivantNonVivantTest {
         }
 
         assertThat(comptes.keySet())
-                .as("les deux categories doivent toutes etre representees comme reponse")
+                .as("les trois reponses de categorisation doivent toutes etre representees")
                 .containsExactlyInAnyOrderElementsOf(CATEGORIES);
         assertThat(comptes.get("un être vivant"))
                 .as("quatre etres vivants, compte inchange depuis S27-2")
                 .isEqualTo(4);
         assertThat(comptes.get("un objet"))
-                .as("sept objets depuis S28-1 : quatre fabriques (S27-2) et trois de matiere"
-                        + " inerte (S28-1)")
-                .isEqualTo(7);
+                .as("quatre objets fabriques, compte inchange depuis S27-2 (la matiere inerte ne"
+                        + " repond plus \"un objet\" depuis la correction du 2026-09-04)")
+                .isEqualTo(4);
+        assertThat(comptes.get("ce n'est pas un être vivant"))
+                .as("trois items de matiere inerte (caillou, sable, neige), S28-1 corrige le"
+                        + " 2026-09-04")
+                .isEqualTo(3);
+    }
+
+    /**
+     * Le defaut trouve par nadia-prof a l'audit de s28 (fiche de conformite, second passage) :
+     * "De la neige, qu'est-ce que c'est ?" -> "un objet" -> "Bravo !" est faux, la neige n'est pas
+     * un objet. Aucun item de matiere inerte ne doit repondre "un objet".
+     */
+    @Test
+    void aucunItemDeMatiereInerteNeReponditUnObjet() {
+        Set<String> enoncesDeMatiereInerte = Set.of(
+                "Un caillou, qu'est-ce que c'est ?",
+                "Du sable, qu'est-ce que c'est ?",
+                "De la neige, qu'est-ce que c'est ?");
+
+        List<Question> itemsDeMatiereInerte = itemsDeCategorisation().stream()
+                .filter(item -> enoncesDeMatiereInerte.contains(item.enonce()))
+                .toList();
+
+        assertThat(itemsDeMatiereInerte)
+                .as("les trois items de matiere inerte sont bien presents dans le paquet")
+                .hasSize(3);
+        for (Question item : itemsDeMatiereInerte) {
+            assertThat(item.bonneReponse())
+                    .as("item %s : la matiere inerte n'est pas un objet", item.id().value())
+                    .isEqualTo("ce n'est pas un être vivant");
+        }
     }
 
     /**

@@ -46,6 +46,12 @@ lignesDeReferentiel: ["QLM-CP-03"]
 # nombreDeManches revient au defaut de 10 (DEC-0064) dans le catalogue : DEC-0073 avait ratifie 7
 # sur le seul motif de huit items ("une partie de 10 en epuiserait le paquet") ; ce motif n'existe
 # plus a quatorze items.
+#
+# Correction du 2026-09-04 (nadia-prof, COR-R4, Done pedagogique VALIDE SOUS RESERVE, s28) : l'item
+# de "la peau" faisait 19 mots contre une mediane mesuree de 9 sur ce paquet. Non bloquant - aucun
+# mot difficile n'y portait la reponse - mais la longueur seule etait reelle. Correction reprise mot
+# pour mot telle que nadia-prof l'a ecrite : onze mots, meme reponse, memes distracteurs, meme
+# indice.
 items:
   - enonce: "Avec quoi entend-on ?"
     bonneReponse: "les oreilles"
@@ -99,7 +105,7 @@ items:
     bonneReponse: "le genou"
     distracteurs: ["le pied", "le bras"]
     indice: "Il se plie quand on s'assoit ou qu'on court."
-  - enonce: "Quelle partie du corps permet de sentir le chaud, le froid ou le doux, partout sur le corps ?"
+  - enonce: "Quelle partie du corps sent le chaud et le froid partout ?"
     bonneReponse: "la peau"
     distracteurs: ["les cheveux", "les ongles"]
     indice: "Elle recouvre tout le corps, pas seulement les mains."

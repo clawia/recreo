@@ -253,7 +253,7 @@ jeux:
     nombreDeManches: 10
     consigneAdulte: "Dites le mot entier, jamais le son tout seul. Ne montrez pas cette ligne à l'enfant."
   - id: bandit-manchot-vivant-non-vivant-cp
-    titre: "Vivant ou objet"
+    titre: "Vivant ou pas vivant"
     consigne: "Lis bien la question, puis choisis la bonne réponse."
     mecanique: bandit-manchot
     paquet: cp-qlm-vivant-non-vivant

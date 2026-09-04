@@ -38,15 +38,24 @@ lignesDeReferentiel: ["QLM-CP-01"]
 # "laquelle des trois choses est vivante ?" -> le nom de la chose). Ce n'est pas la meme operation
 # mentale : la premiere classe un element isole, la seconde repere l'element different parmi trois.
 #
-# Compte reel des items de categorisation (onze) : un être vivant : réponse 4 (36,4 %)
-# un objet : réponse 7 (63,6 %) - desequilibre attendu, la moitie "objet" portant maintenant a la
-# fois les objets fabriques et la matiere inerte. Compte reel des items de selection (trois) : un
-# être vivant different a chaque fois (chien, fleur, poisson), deux distracteurs non vivants pris
-# parmi les objets fabriques et la matiere inerte deja introduits.
+# Compte reel des items de categorisation (onze) : un être vivant : réponse 4 (36,4 %),
+# un objet : réponse 4 (36,4 %), ce n'est pas un être vivant : réponse 3 (27,3 %). Compte
+# reel des items de selection (trois) : un être vivant different a chaque fois (chien, fleur,
+# poisson), deux distracteurs non vivants pris parmi les objets fabriques et la matiere inerte deja
+# introduits.
 #
 # nombreDeManches revient au defaut de 10 (DEC-0064) dans le catalogue : DEC-0073 avait ratifie 7
 # sur le seul motif de huit items ("une partie de 10 en epuiserait le paquet") ; ce motif n'existe
 # plus a quatorze items.
+#
+# Correction du 2026-09-04 (nadia-prof, second passage s28, REFUSE puis corrige) : les trois items
+# de matiere inerte (caillou, sable, neige) repondaient "un objet", ce qui est faux - le libelle de
+# la ligne distingue "les objets" de "la matiere inerte", et le jeu felicitait l'enfant qui repondait
+# ainsi a "De la neige, qu'est-ce que c'est ?". L'opposition reste binaire (vivant / non-vivant),
+# comme nadia-prof le maintient ; seul le libelle du pole non-vivant change pour ces trois items,
+# qui repondent desormais "ce n'est pas un être vivant" au lieu de "un objet". Les quatre objets
+# fabriques (chaise, ballon, voiture, stylo) gardent "un objet", inchange. Titre du jeu corrige de
+# "Vivant ou objet" a "Vivant ou pas vivant" (catalogue.yaml).
 items:
   - enonce: "Un chat, qu'est-ce que c'est ?"
     bonneReponse: "un être vivant"
@@ -81,15 +90,15 @@ items:
     distracteurs: ["un être vivant"]
     indice: "Un stylo ne naît pas, ne grandit pas et ne se nourrit pas."
   - enonce: "Un caillou, qu'est-ce que c'est ?"
-    bonneReponse: "un objet"
+    bonneReponse: "ce n'est pas un être vivant"
     distracteurs: ["un être vivant"]
     indice: "Un caillou ne naît pas, ne grandit pas et ne se nourrit pas."
   - enonce: "Du sable, qu'est-ce que c'est ?"
-    bonneReponse: "un objet"
+    bonneReponse: "ce n'est pas un être vivant"
     distracteurs: ["un être vivant"]
     indice: "Le sable ne naît pas, ne grandit pas et ne se nourrit pas."
   - enonce: "De la neige, qu'est-ce que c'est ?"
-    bonneReponse: "un objet"
+    bonneReponse: "ce n'est pas un être vivant"
     distracteurs: ["un être vivant"]
     indice: "La neige ne naît pas, ne grandit pas et ne se nourrit pas."
   - enonce: "Parmi ces trois choses, laquelle est un être vivant : le chien, la chaise, le caillou ?"
