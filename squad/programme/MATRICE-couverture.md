@@ -1530,8 +1530,8 @@ il faudrait un autre produit.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| education physique et sportive | CP | Produire une performance mesurable | Courir, sauter et lancer pour réaliser une performance et la mesurer (temps, distance). | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur mesure, aucun capteur ne mesure une mecanique de ce produit n'observe un corps. |
-| education physique et sportive | CP | Produire une performance mesurable | Comparer sa performance à la précédente et dire si elle progresse. | - | - | **non couvrable en l'etat**, nature irreversible - la performance elle-meme n'est pas mesurable (ligne 1, motif suffisant et irreversible) ; le produit ne conserve rien d'une session a l'autre (`DEC-0028`) n'ajoute rien. |
+| education physique et sportive | CP | Produire une performance mesurable | Courir, sauter et lancer pour réaliser une performance et la mesurer (temps, distance). | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur mesure, aucun capteur, aucune mecanique de ce produit n'observe un corps. |
+| education physique et sportive | CP | Produire une performance mesurable | Comparer sa performance à la précédente et dire si elle progresse. | - | - | **non couvrable en l'etat**, nature irreversible - la performance elle-meme n'est pas mesurable (ligne 1, motif suffisant et irreversible) ; le fait que le produit ne conserve rien d'une session a l'autre (`DEC-0028`) n'ajoute rien. |
 | education physique et sportive | CP | Adapter ses deplacements a des environnements varies | Se déplacer en s'adaptant au milieu (dans l'eau, sur un engin roulant, sur un parcours d'équilibre). | - | - | **non couvrable en l'etat**, nature irreversible - geste moteur dans un milieu physique ; une simulation a l'ecran serait une contrefacon (`CON-1`), pas une couverture. |
 | education physique et sportive | CP | Adapter ses deplacements a des environnements varies | Connaître et respecter les règles de sécurité propres à l'activité et au lieu de pratique. | - | - | non couvert - jouable sur la seule moitie connaissance ; la mise en oeuvre en situation reste hors de portee. Mention exigee d'avance : "connaissance de la regle de securite seule ; son respect en situation n'est pas servi". |
 | education physique et sportive | CP | S'exprimer devant les autres par une prestation artistique ou acrobatique | Mobiliser son corps pour exprimer une intention devant des spectateurs (danse, ronde, acrobatie). | - | - | **non couvrable en l'etat**, nature irreversible - production corporelle libre devant des spectateurs, jugement humain (`ADR-0008`). |
@@ -4310,7 +4310,7 @@ depot (hors les dix referentiels sources eux-memes) - zero occurrence. Ces cinq 
 neufs au depot, aucun ne recouvre un identifiant deja pose sur les matieres existantes (`BIA-*`,
 `HIS-*`, `REC-*`, `CON-*`, `VOI-*`, `COR-*`, `FER-*`, `POS-*`, `ANG-*`, `RAN-*`, `FRA-*`, etc.).
 
-**2. Le corpus de reproductions d'oeuvres et ses droits d'usage, non instrutis - ouvert
+**2. Le corpus de reproductions d'oeuvres et ses droits d'usage, non instruits - ouvert
 formellement, non tranche.** `nadia-prof` l'a route trois fois, dans ses propres mots :
 *"reproduire une oeuvre existante pose une question de droits qui n'est pas de ma competence"*
 (arts plastiques CP, ligne 9), *"la question des droits d'usage des reproductions n'est pas de ma
