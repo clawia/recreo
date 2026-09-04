@@ -276,3 +276,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-histoire-geographie
     nombreDeManches: 10
+  - id: bandit-manchot-anglais-cm1
+    titre: "Anglais"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-anglais
+    nombreDeManches: 10

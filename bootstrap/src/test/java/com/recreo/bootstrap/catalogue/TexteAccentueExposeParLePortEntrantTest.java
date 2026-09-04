@@ -181,6 +181,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-etats-eau-cp",
             // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
             "bandit-manchot-histoire-geographie-cm1",
+            // S28-3 (backlog S28-3) : entree neuve, premier paquet d'anglais, CM1.
+            "bandit-manchot-anglais-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -261,6 +263,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "L'eau solide ou liquide",
             // S27-3 : titre neuf.
             "Histoire et géographie",
+            // S28-3 : titre neuf.
+            "Anglais",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -356,6 +360,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Questionner le monde",
             // S27-3 : matiere neuve, premiere matiere neuve du produit sur ce referentiel.
             "Histoire-géographie",
+            // S28-3 : matiere neuve, premier paquet d'anglais.
+            "Langues vivantes (anglais)",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -375,6 +381,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le vivant, la matière et les objets",
             // S27-3 : domaine neuf, premier paquet d'histoire-geographie.
             "Repères historiques et géographiques",
+            // S28-3 : domaine neuf, premier paquet d'anglais.
+            "Lire et comprendre ; découverte culturelle",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -476,7 +484,12 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "des rois et leur réalisation, situer les événements de la Révolution et de "
                     + "l'Empire, distinguer des types d'espaces et leurs activités, comprendre un "
                     + "document historique (lignes 1, 2, 3, 4, 6, 7, 8, 11, 12, 13, 14 du "
-                    + "référentiel CM1)");
+                    + "référentiel CM1)",
+            // S28-3 : competence neuve, premier paquet d'anglais. Libelle du descripteur du
+            // paquet, mot pour mot (cm1-anglais.yaml).
+            "Ouvre la ligne lire et comprendre des mots et expressions familiers du référentiel "
+                    + "Langues vivantes (anglais) CM1, et sert en français la ligne découverte "
+                    + "culturelle (lignes LVE-CM1-04 et LVE-CM1-07)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

@@ -1,0 +1,152 @@
+schema: 1
+id: cm1-anglais
+type: question
+descripteur:
+  matiere: "Langues vivantes (anglais)"
+  niveau: "CM1"
+  domaine: "Lire et comprendre ; découverte culturelle"
+  competence: "Ouvre la ligne lire et comprendre des mots et expressions familiers du référentiel Langues vivantes (anglais) CM1, et sert en français la ligne découverte culturelle (lignes LVE-CM1-04 et LVE-CM1-07)"
+lignesDeReferentiel: ["LVE-CM1-04", "LVE-CM1-07"]
+#
+# S28-3 (backlog S28-3 ; ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md,
+# sections 5.3 et 6). Premier paquet d'anglais CM1, matiere neuve du produit, reporte de s27 a s28 par
+# DEC-0072. Lot textuel (aucune illustration) : REC-1 a REC-4 ne s'appliquent donc pas (elles ne
+# valent que sur un lot illustre) ; un lot illustre aurait porte le sprint a 5,5, que nadia-prof
+# decline par ecrit.
+#
+# ANG-4 (nadia-prof, 2026-09-03) : le lot declare ses champs lexicaux et en couvre au moins trois,
+# cinq mots chacun au minimum. Trois champs sont couverts ici, cinq mots chacun :
+#   - la personne et la vie quotidienne : house, dog, friend, morning, bedroom (5 items)
+#   - l'environnement geographique et urbain : street, bridge, mountain, town, field (5 items)
+#   - l'imaginaire : witch, castle, fairy, king, ghost (5 items)
+# Total ligne LVE-CM1-04 : 15 items, au-dessus du plancher de dix de FER-2.
+#
+# ANG-5 (nadia-prof, 2026-09-03) : la reponse attendue est un mot seul, jamais une forme grammaticale
+# que le lot n'enseigne pas (pluriel, conjugaison, determinant variable). Tous les mots ci-dessous
+# sont des noms communs au singulier, sans article.
+#
+# REC-5 (aucun mot transparent en bonne reponse) : verifie mot par mot a la redaction. Aucun des
+# quinze mots anglais ni des cinq mots francais donnes en bonne reponse n'est identique ou quasi
+# identique a son equivalent dans l'autre langue (house/maison, chien/dog, friend/ami, morning/matin,
+# bedroom/chambre, street/rue, bridge/pont, mountain/montagne, town/ville, champ/field, witch/sorciere,
+# castle/chateau, fairy/fee, king/roi, fantome/ghost - aucune paire ne se ressemble).
+#
+# REC-6 (trois propositions du meme champ lexical et de longueur voisine) : chaque distracteur est
+# choisi dans le meme champ que la bonne reponse de son item, jamais dans un autre champ.
+#
+# Trois sens de traduction (reconduits) : aucune image dans ce lot textuel, donc aucun item
+# image -> anglais. Douze items mot francais -> anglais (le sens second, majoritaire ici) et trois
+# items anglais -> francais (dog, field, ghost - un par champ, jamais seul sur le paquet, 3/20 = 15 %,
+# sous le plafond d'un item sur quatre).
+#
+# Aucun dispositif ni aucun indice ne demande a un adulte de prononcer un mot d'anglais (reserve du
+# 2026-09-02, reconduite) : ce paquet se joue par lecture, sans aucune consigne a l'adulte.
+#
+# Ligne LVE-CM1-07 (decouverte culturelle, 5 items) : mention exigee d'avance par nadia-prof -
+# "découverte culturelle seule, en français ; aucune compétence linguistique n'est servie". BIA-1
+# (aucune comparaison d'un pays anglophone a la France en position de norme) et BIA-2 (aucun pays
+# represente par un seul trait) : le Royaume-Uni est servi par sa capitale et un monument, les
+# Etats-Unis par leur capitale, leur drapeau et une fete traditionnelle - deux et trois traits
+# distincts, jamais un seul.
+#
+items:
+  - enonce: "Comment dit-on « maison » en anglais ?"
+    bonneReponse: "house"
+    distracteurs: ["friend", "morning"]
+    indice: "Pense à l'endroit où on habite avec sa famille."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Que veut dire « dog » en français ?"
+    bonneReponse: "chien"
+    distracteurs: ["ami", "chambre"]
+    indice: "C'est un animal qui aboie et qu'on promène en laisse."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « ami » en anglais ?"
+    bonneReponse: "friend"
+    distracteurs: ["house", "morning"]
+    indice: "C'est une personne avec qui on aime jouer et partager."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « matin » en anglais ?"
+    bonneReponse: "morning"
+    distracteurs: ["friend", "bedroom"]
+    indice: "C'est le début de la journée, quand on se réveille."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « chambre » en anglais ?"
+    bonneReponse: "bedroom"
+    distracteurs: ["morning", "friend"]
+    indice: "C'est la pièce où l'on dort la nuit."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « rue » en anglais ?"
+    bonneReponse: "street"
+    distracteurs: ["bridge", "town"]
+    indice: "C'est la voie, bordée de maisons, où l'on marche en ville."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « pont » en anglais ?"
+    bonneReponse: "bridge"
+    distracteurs: ["street", "field"]
+    indice: "Cette construction permet de traverser une rivière."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « montagne » en anglais ?"
+    bonneReponse: "mountain"
+    distracteurs: ["town", "field"]
+    indice: "C'est un relief très haut, parfois couvert de neige."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « ville » en anglais ?"
+    bonneReponse: "town"
+    distracteurs: ["street", "field"]
+    indice: "C'est un lieu où vivent beaucoup d'habitants, avec des rues et des maisons."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Que veut dire « field » en français ?"
+    bonneReponse: "champ"
+    distracteurs: ["rue", "pont"]
+    indice: "C'est un grand terrain cultivé, à la campagne."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « sorcière » en anglais ?"
+    bonneReponse: "witch"
+    distracteurs: ["castle", "ghost"]
+    indice: "Dans les contes, ce personnage prépare des potions magiques."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « château » en anglais ?"
+    bonneReponse: "castle"
+    distracteurs: ["witch", "ghost"]
+    indice: "C'est une grande construction avec des tours, où vivait un roi."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « fée » en anglais ?"
+    bonneReponse: "fairy"
+    distracteurs: ["king", "ghost"]
+    indice: "Dans les contes, ce personnage exauce des vœux avec sa baguette magique."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Comment dit-on « roi » en anglais ?"
+    bonneReponse: "king"
+    distracteurs: ["fairy", "ghost"]
+    indice: "Dans les contes, ce personnage porte une couronne et gouverne un royaume."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Que veut dire « ghost » en français ?"
+    bonneReponse: "fantôme"
+    distracteurs: ["sorcière", "château"]
+    indice: "Dans les histoires, ce personnage traverse les murs et fait peur la nuit."
+    ligneDeReferentiel: "LVE-CM1-04"
+  - enonce: "Quelle est la capitale du Royaume-Uni ?"
+    bonneReponse: "Londres"
+    distracteurs: ["Berlin", "Madrid"]
+    indice: "C'est aussi le nom d'une grande roue célèbre au bord de la Tamise."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Quel monument célèbre, situé à Londres, sert aussi d'horloge ?"
+    bonneReponse: "Big Ben"
+    distracteurs: ["le Colisée", "la statue de la Liberté"]
+    indice: "C'est une tour, avec une cloche, près du Parlement britannique."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Quelle est la capitale des États-Unis ?"
+    bonneReponse: "Washington"
+    distracteurs: ["New York", "Los Angeles"]
+    indice: "Ce n'est pas la ville la plus peuplée du pays."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Quel drapeau porte des étoiles et des bandes rouges et blanches ?"
+    bonneReponse: "le drapeau des États-Unis"
+    distracteurs: ["le drapeau du Canada", "le drapeau de l'Australie"]
+    indice: "Il compte une étoile pour chacun des cinquante États."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Quelle fête traditionnelle, célébrée fin novembre aux États-Unis, réunit la famille autour d'un grand repas ?"
+    bonneReponse: "Thanksgiving"
+    distracteurs: ["Halloween", "Noël"]
+    indice: "Cette fête remercie pour les récoltes de l'année."
+    ligneDeReferentiel: "LVE-CM1-07"

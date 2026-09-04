@@ -495,7 +495,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " rois, d'evenements ou de lieux, et des dates toujours ecrites en toutes"
                     + " lettres ou precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe"
                     + " rend null sur les trois propositions de chaque item. Mesure du 2026-09-02 sur"
-                    + " le paquet servi : aucune des 60 propositions ne commence par un chiffre"));
+                    + " le paquet servi : aucune des 60 propositions ne commence par un chiffre"),
+            // S28-3 : premier paquet d'anglais, matiere neuve du produit, CM1.
+            Map.entry("cm1-anglais",
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des mots de vocabulaire anglais ou"
+                    + " francais (\"house\", \"chien\", \"castle\"...) et des faits de decouverte"
+                    + " culturelle (\"Londres\", \"Big Ben\", \"Thanksgiving\"...), valeurDe rend null"
+                    + " sur les trois propositions de chaque item. Mesure du 2026-09-04 sur le paquet"
+                    + " servi : aucune des 60 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
