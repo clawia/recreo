@@ -1,0 +1,5 @@
+enonce: "Combien font 2 + 2 ?"
+bonneReponse: "4"
+distracteurs:
+  - "3"
+  - "5"

@@ -299,6 +299,26 @@ class LesReglesMordentTest {
                 .hasMessageContaining("int");
     }
 
+    /**
+     * ADR-0006, amendement du 2026-09-04 : le plafond de l'exemption geometrique. L'exemption admet
+     * un {@code int} porte par un type dont les champs d'instance sont exactement {@code x},
+     * {@code y}, {@code largeur} et {@code hauteur} ; ce contre-exemple garde les quatre et en ajoute
+     * une cinquieme, qui est une borne d'arithmetique. C'est la seule route par laquelle la dette 2
+     * de CLAUDE.md pourrait rentrer par l'exemption, et elle est fermee.
+     *
+     * <p>Ce que cette morsure ne prouve pas, dit plutot que suppose : le contre-exemple aurait aussi
+     * ete refuse avant l'amendement. Ce qu'elle tient est le plafond - elle echoue le jour ou
+     * l'exemption est elargie a un record d'entiers.</p>
+     */
+    @Test
+    void unCadreEtenduDUneBorneArithmetiqueEstRefuse() {
+        assertThatThrownBy(() -> DifficulteTest.leContratDeContenuNePorteQueDuTexte
+                .check(contreExemples("com.recreo.domain.content")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("com.recreo.domain.content.CadreEtenduDUneBorneContreExemple.sommeMaximale")
+                .hasMessageContaining("int");
+    }
+
     /** ADR-0006 : la meme regle, sur la borne cachee dans un argument generique. */
     @Test
     void uneBorneArithmetiqueCacheeDansUneCollectionEstRefusee() {
@@ -355,6 +375,34 @@ class LesReglesMordentTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("com.recreo.bootstrap.contreexemple.ChargeurSauvageContreExemple")
                 .hasMessageContaining("java.nio.file");
+    }
+
+    /**
+     * ADR-0080, clause 10 : la conception par coordonnees se trahit par une dependance directe a
+     * {@code CadreDeZone}. Contre-exemple pris a sa forme la moins chere : le predicat de resolution
+     * d'un point en zone, ecrit dans une mecanique.
+     */
+    @Test
+    void uneMecaniqueQuiLitLeCadreDUneZoneEstRefusee() {
+        assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.uneMecaniqueIgnoreLaGeometrie
+                .check(contreExemples("com.recreo.domain.mechanics.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MecaniqueGeometriqueContreExemple")
+                .hasMessageContaining("CadreDeZone");
+    }
+
+    /**
+     * ADR-0080, clause 11 : un record du contrat de contenu qui ecrit a la main le predicat que la
+     * clause 10 existe pour interdire ailleurs.
+     */
+    @Test
+    void unRecordDuContratDeContenuQuiDeclareUneMethodeEstRefuse() {
+        assertThatThrownBy(() -> DecouplageMecaniqueContenuTest
+                .aucunRecordDuContratDeContenuNeDeclareDeMethode
+                .check(contreExemples("com.recreo.domain.content")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CadreAvecResolutionContreExemple")
+                .hasMessageContaining("contient");
     }
 
     /**

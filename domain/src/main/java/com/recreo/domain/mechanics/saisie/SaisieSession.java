@@ -7,6 +7,7 @@ import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.ReponseAEcrire;
+import com.recreo.domain.content.ZoneADesigner;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.Score;
 import com.recreo.domain.mechanic.SessionStatus;
@@ -202,6 +203,10 @@ public final class SaisieSession implements GameSession {
             case Question question -> throw new IllegalArgumentException(
                     "item inconnu de la mecanique de saisie : " + question.id().value()
                             + " offre des propositions, cette mecanique attend une reponse ecrite");
+            case ZoneADesigner zone -> throw new IllegalArgumentException(
+                    "item inconnu de la mecanique de saisie : " + zone.id().value()
+                            + " attend une designation sur image, cette mecanique attend une reponse"
+                            + " ecrite");
         };
     }
 

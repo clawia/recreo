@@ -1,0 +1,17 @@
+schema: 1
+id: faux-paquet-designation
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu fautif d'ADR-0080, jamais servi"
+items:
+  - enonce: "Montre le tableau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: tableau
+    zones:
+      - id: tableau
+        libelle: "le tableau"
+        cadre: { x: 8, y: 4, largeur: 30, hauteurr: 22 }

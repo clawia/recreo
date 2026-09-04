@@ -15,7 +15,9 @@
   d'`ADR-0058` est rempli, et une forme d'item ou une mecanique de plus se justifie sur un usage
   constate."* Et, sur l'alternative de la troisieme forme d'item : *"Elle redeviendra la bonne
   reponse au palier 2."* Cet `ADR` n'a donc pas a rouvrir la question ; il a a l'executer.
-- **Prolonge** : `ADR-0004` (deux contrats fermes, une mecanique par paquet), `ADR-0007` (un seul
+- **Prolonge** : `ADR-0004` (deux contrats fermes, une mecanique par paquet),
+  **`ADR-0006` (le contrat de contenu ne porte que du texte) - ajoute le 2026-09-04, voir
+  l'amendement ci-dessous**, `ADR-0007` (un seul
   chargeur pilote par un schema), `ADR-0008` (le verdict est calcule cote serveur),
   `ADR-0013` (un garde-fou derive son perimetre), `ADR-0051` (pas de regle a population vide),
   `ADR-0057` (la focalisabilite est declaree par le gabarit), `ADR-0058` (une forme d'item de plus
@@ -204,6 +206,24 @@ ecrit en decision 6, et c'est plus qu'on ne croit.
 d'ecran annonce. Il n'est pas decoratif : sans lui, le bouton n'a aucun nom, et un bouton sans nom
 est un defaut d'accessibilite dur, pas une finition. **Ce que ce libelle porte reellement est une
 question pedagogique, routee et non tranchee ici** (decision 7).
+
+**Amendement du 2026-09-04 (s28, `theo-archi`) - cette decision etait rouge le jour ou elle a ete
+ecrite, et elle ne le disait pas.** `sofia-sm` l'a decouvert en implementant `S28-5` :
+`CadreDeZone(int x, int y, int largeur, int hauteur)` est refuse par
+`DifficulteTest.leContratDeContenuNePorteQueDuTexte` (`ADR-0006`), quatre violations, une pour chaque
+composante. **La cause est ici et non chez elle** : cet `ADR` decide une forme sur le contrat de
+contenu sans citer `ADR-0006` parmi ceux qu'il prolonge, et sans avoir confronte cette forme aux
+regles vertes du depot - exactement le defaut qu'`ADR-0069` avait deja constate sur `ADR-0058`, et
+qui se reproduit ici quatre jours plus tard, par le meme auteur. Le declencheur d'`ADR-0069` -
+*"mesurer la forme decidee sur le contrat de contenu"* - existait, il n'a pas ete applique.
+
+**La decision 2 n'est pas revisee** : les quatre entiers, le pourcentage, la separation d'avec `Zone`
+et le motif de cette separation sont inchanges. C'est `ADR-0006` qui recoit un amendement, une
+exemption nommee, datee et plafonnee au rectangle en pourcentage ; son plafond est mordu par
+`LesReglesMordentTest.unCadreEtenduDUneBorneArithmetiqueEstRefuse`. Les trois autres voies - un type
+dedie sur le patron d'`ADR-0069`, la geometrie en texte, la geometrie hors du domaine - ont ete
+mesurees ou pesees et ecartees ; le detail est dans l'amendement d'`ADR-0006` et n'est pas recopie
+ici.
 
 **Pourquoi trois records et pas quatre champs sur `Zone`.** `CadreDeZone` est separe de `Zone` pour
 une raison unique et entierement architecturale : c'est ce qui permet a la clause 10 d'exister. Une
@@ -443,6 +463,30 @@ de script, une feuille de style, des cles de YAML et des items charges** - aucun
 | 4 | `LaBonneZoneNEstPasPredictibleSurUnPaquetTest` | `adapter-content` | Sur un paquet de designation : la bonne zone n'est pas le meme identifiant sur une majorite d'items, et n'est pas la plus grande zone de son item sur une majorite d'items. **Transposition d'un defaut mesure**, pas une precaution : `S12-3` a ete refuse parce qu'un enfant qui pressait toujours la plus grande proposition gagnait 64,6 % des manches sans lire un enonce | T5 |
 | 5 | `AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest` | `adapter-content` | L'enonce ne nomme pas le libelle de la bonne zone. **Avec l'operateur d'`ADR-0076`** - decoupage en mots, jamais sous-chaine - et **en reutilisant son tokeniseur**, pas un second ecrit a cote. Interdit la contrefacon par enonce : *"Montre le tableau"* avec une zone nommee *"le tableau"* se repond par le nom accessible seul, image effacee, ce qui est `CON-1` en echec | T5 |
 | 6 | `ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest` | `adapter-content` | Pour chaque paquet servi, chaque cle facultative d'item declaree dans le YAML se retrouve dans l'item **charge par la chaine reelle**. **Ferme le trou qu'`ADR-0070` nomme dans sa propre Javadoc** : une cle lue par deux fabriques sur trois est aujourd'hui verte partout et perdue a l'execution | T3 |
+
+**Amendement du 2026-09-04 (s28, `theo-archi`) - ce que les garde-fous 4, 5 et 6 gardent
+reellement a la fin de s28, et quand ils garderont ce que cette table promet.** Les trois sont
+livres, mordants, et leurs jeux fautifs sont dans l'arbre. Mais la colonne *"ce qu'il interdit"*
+ci-dessus dit *"sur un paquet de designation"* et *"pour chaque paquet servi"*, or **aucun paquet de
+designation n'existe dans `src/main/resources` a la fin de s28** : les trois mordent sur des paquets
+fabriques, pas sur la population qu'ils nomment. Ce n'est pas un defaut du lot - un balayage de
+production sur une population vide est ce qu'`ADR-0051` rend rouge, sa regle exigeant explicitement
+`assertThat(paquets).isNotEmpty()`. C'est une **dette datee**, et elle est ecrite ici plutot que dans
+un rapport de ceremonie : ce depot a deja documente quatre fois une dette dans des fichiers de
+sprint sans jamais la payer.
+
+**Ce qui la solde** : le premier paquet de designation servi, c'est-a-dire `T6`, s29 au plus tot
+(`DEC-0074`, section 4). Ce jour-la, les trois garde-fous derivent leur perimetre des paquets de
+type `designation` de `src/main/resources` - jamais d'une liste de noms - et la morsure sur fixture
+reste, elle ne se remplace pas.
+
+**Ce qui l'empeche d'etre oubliee, et c'est le seul mecanisme auquel ce depot ait vu payer une
+dette** : un cliquet dont le plafond vaut exactement la dette. Ici le plafond est disponible et il
+est gratuit : **zero paquet de type `designation` sous `src/main/resources` aujourd'hui**. Un
+garde-fou qui compte ces paquets et qui exige, des que le compte depasse zero, que les trois
+balayages les traversent, devient rouge le jour meme ou la dette est due - pas au sprint suivant, pas
+a la relecture. Sa forme est celle d'`ADR-0067` et son ecriture appartient au lot qui livrera `T6` ;
+ce qui est decide ici est qu'elle est due avec lui.
 
 **Sur le garde-fou 2 et la lecon de s05.** Une liste de mots interdits est exactement le genre de
 regle qui passe sa propre epreuve et echoue dans le monde. J'ai donc verifie les sept mots **sur le

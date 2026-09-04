@@ -1,0 +1,23 @@
+schema: 1
+id: vrai-paquet-designation
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu sain, jamais servi"
+items:
+  - enonce: "Montre ce qui est a cote de la porte."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: fenetre
+    zones:
+      - id: tableau
+        libelle: "le tableau"
+        cadre: { x: 8, y: 4, largeur: 30, hauteur: 22 }
+      - id: porte
+        libelle: "la porte"
+        cadre: { x: 40, y: 4, largeur: 20, hauteur: 22 }
+      - id: fenetre
+        libelle: "la fenetre"
+        cadre: { x: 62, y: 8, largeur: 30, hauteur: 26 }

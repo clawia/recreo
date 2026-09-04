@@ -6,6 +6,8 @@ import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.ReponseAEcrire;
+import com.recreo.domain.content.Zone;
+import com.recreo.domain.content.ZoneADesigner;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -156,20 +158,27 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
     /**
      * Ce que l'enfant voit ou entend d'un item sur l'ecran de manche : son enonce, ses
      * propositions, la part que le contenu a designee (ADR-0062), le texte-support qu'il porte
-     * (ADR-0050), l'illustration qu'il montre (ADR-0073) et le texte que l'adulte lui lit a voix
-     * haute (ADR-0075). Deux items de meme enonce et de memes propositions qui designent deux mots
-     * differents, qui portent deux textes-support differents, qui montrent deux dessins differents,
-     * ou dont l'adulte lit deux textes differents, sont deux ecrans differents.
+     * (ADR-0050), l'illustration qu'il montre (ADR-0073), l'ensemble de ses zones designables
+     * (ADR-0080) et le texte que l'adulte lui lit a voix haute (ADR-0075). Deux items de meme enonce
+     * et de memes propositions qui designent deux mots differents, qui portent deux textes-support
+     * differents, qui montrent deux dessins differents, dont les zones designables different, ou
+     * dont l'adulte lit deux textes differents, sont deux ecrans differents.
      *
      * <p>ADR-0075, decision 3 : l'identite d'un tour est ce qui le distingue <b>pour l'enfant</b> -
      * vu ou entendu. {@code texteAVoixHaute} n'est jamais montre a l'ecran, mais l'enfant l'entend,
      * et c'est ce qui distingue deux tours sur les lignes de la famille a voix : leur enonce et
      * leurs propositions y sont invariants par construction (VOI-13 chasse le mot travaille de ce
      * que l'enfant lit), donc seul ce texte separe deux manches.</p>
+     *
+     * <p>ADR-0080 : {@code zones} porte l'ensemble complet des {@link Zone} d'un item de designation
+     * - id, libelle et cadre compris, l'egalite de record etant deja profonde. Deux items qui
+     * montrent le meme plan et posent la meme question sont le meme ecran pour l'enfant, exactement
+     * comme deux items de choix de meme enonce et memes propositions le sont ; {@code propositions}
+     * reste vide sur un item de designation, comme il l'est deja sur un item de saisie.</p>
      */
     private record Ecran(String enonce, Set<String> propositions, Optional<String> partDesignee,
                           Optional<String> texteSupport, Optional<String> illustration,
-                          Optional<String> texteAVoixHaute) {
+                          Set<Zone> zones, Optional<String> texteAVoixHaute) {
     }
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
@@ -227,6 +236,13 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * <p>Le {@code switch} est exhaustif sur la scellure d'{@link Item} (ADR-0004) : une troisieme
      * forme d'item ne compilera pas tant que son ecran n'aura pas ete decrit ici. C'est le meme
      * refus du silence que la clause de classement, tenu cette fois par le compilateur.</p>
+     *
+     * <p><b>ADR-0080 : la troisieme forme, l'item de designation, a rejoint ce {@code switch}.</b>
+     * Son identite d'ecran est son enonce, son illustration et l'ensemble complet de ses zones - la
+     * demonstration exacte que la Javadoc de la classe et ADR-0080 lui-meme demandent : deux items
+     * qui montrent le meme plan et posent la meme question sont le meme ecran pour l'enfant. Le jeu
+     * de propositions reste vide, comme pour un item de saisie : ce n'est pas parmi des textes que
+     * l'enfant choisit ici.</p>
      */
     private static Ecran ecranDe(Item item) {
         return switch (item) {
@@ -235,10 +251,14 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                 propositions.add(question.bonneReponse());
                 propositions.addAll(question.distracteurs());
                 yield new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee(),
-                        question.texteSupport(), question.illustration(), question.texteAVoixHaute());
+                        question.texteSupport(), question.illustration(), Set.of(),
+                        question.texteAVoixHaute());
             }
             case ReponseAEcrire reponse -> new Ecran(reponse.enonce(), Set.of(), Optional.empty(),
-                    Optional.empty(), Optional.empty(), reponse.texteAVoixHaute());
+                    Optional.empty(), Optional.empty(), Set.of(), reponse.texteAVoixHaute());
+            case ZoneADesigner zone -> new Ecran(zone.enonce(), Set.of(), Optional.empty(),
+                    Optional.empty(), Optional.of(zone.illustration()), Set.copyOf(zone.zones()),
+                    zone.texteAVoixHaute());
         };
     }
 
@@ -271,10 +291,16 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * invariants par construction (VOI-13 chasse le mot travaille de ce que l'enfant lit) : les
      * classer hors de l'identite refuserait tous les items d'un tel paquet sauf le premier comme des
      * copies.</p>
+     *
+     * <p>ADR-0080 : {@code zones} y entre, meme motif structurel qu'{@code illustration}. Deux items
+     * de designation de meme enonce et de meme illustration mais de zones differentes montrent des
+     * boutons differents, a des endroits differents : les classer hors de l'identite refuserait tous
+     * les items sauf le premier comme des copies, alors que l'enfant voit un ecran different a chaque
+     * fois.</p>
      */
     private static final Set<String> COMPOSANTES_DANS_L_IDENTITE_D_ECRAN =
             Set.of("enonce", "bonneReponse", "distracteurs", "partDesignee", "texteSupport",
-                    "illustration", "texteAVoixHaute");
+                    "illustration", "zones", "texteAVoixHaute");
 
     /**
      * ADR-0050, clause 2 : les composantes d'un item qui n'entrent pas dans son identite d'ecran, et
@@ -304,7 +330,13 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                     + " identifiant (ADR-0073 clause 5). Deux items de meme enonce, de memes"
                     + " propositions et de meme dessin presentent le meme ecran quel que soit le"
                     + " libelle de ce texte - le classer dans l'identite laisserait un mot de plus"
-                    + " dans l'alternatif suffire a faire passer une repetition d'ecran");
+                    + " dans l'alternatif suffire a faire passer une repetition d'ecran",
+            "bonneZone", "elle n'ajoute aucune information visible : la zone qu'elle designe fait deja"
+                    + " partie de l'ensemble 'zones', montre integralement des que l'ecran se presente"
+                    + " (ADR-0080). Deux items de designation de meme enonce, meme illustration et"
+                    + " memes zones qui ne differeraient que par leur bonneZone montrent exactement les"
+                    + " memes boutons aux memes endroits - le meme ecran pour l'enfant, qui ne voit"
+                    + " laquelle est correcte qu'en jouant");
 
     /**
      * <b>ADR-0050, clause 2 : aucune composante d'un item n'echappe au classement de l'identite

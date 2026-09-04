@@ -6,6 +6,7 @@ import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.ReponseAEcrire;
+import com.recreo.domain.content.ZoneADesigner;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.Score;
 import com.recreo.domain.mechanic.SessionStatus;
@@ -176,6 +177,10 @@ public final class BanditManchotSession implements GameSession {
                     "item inconnu de la mecanique bandit manchot : " + reponse.id().value()
                             + " attend une reponse ecrite, cette mecanique ne presente que des"
                             + " propositions");
+            case ZoneADesigner zone -> throw new IllegalArgumentException(
+                    "item inconnu de la mecanique bandit manchot : " + zone.id().value()
+                            + " attend une designation sur image, cette mecanique ne presente que"
+                            + " des propositions");
         };
     }
 

@@ -134,9 +134,21 @@ class AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest {
     }
 
     /**
-     * Les cles de schema de chaque paquet trouve : les cles de la racine, celles de chaque item, et
-     * celles des deux blocs a sous-cles. La valeur est le nom du fichier, pour que le message
-     * nomme le paquet a corriger et pas seulement la cle.
+     * Les cles de schema de chaque paquet trouve : les cles de la racine, celles de chaque item -
+     * et, sous chaque item, celles de toute <b>liste de correspondances</b> qu'il porte, a n'importe
+     * quelle profondeur - et celles des deux blocs a sous-cles. La valeur est le nom du fichier, pour
+     * que le message nomme le paquet a corriger et pas seulement la cle.
+     *
+     * <p>ADR-0080, section 5 : un item de designation porte {@code zones}, une liste de
+     * correspondances, dont chacune porte a son tour {@code cadre}, une correspondance imbriquee -
+     * {@code id}, {@code libelle}, {@code x}, {@code y}, {@code largeur} et {@code hauteur} seraient
+     * restes invisibles a l'ancienne descente, et un {@code largeurr} mal orthographie serait passe
+     * sans un mot. {@link #collecterClesDeLaListeDeCorrespondances} ne descend que <b>depuis une
+     * liste de correspondances</b>, jamais depuis une correspondance simple posee directement sur un
+     * item : {@code cm1-mots-de-liaison} porte {@code relationsDistracteurs}, une correspondance dont
+     * les cles sont des mots de liaison ecrits par l'auteur - ce sont des valeurs de contenu, et
+     * descendre en elle les jugerait comme des cles de schema. La forme exacte que la descente suit
+     * est celle qu'ADR-0080 nomme, ni plus etroite ni plus large.</p>
      */
     static Map<String, String> clesDeSchema(List<Path> repertoiresDeContenu) {
         Map<String, String> cles = new LinkedHashMap<>();
@@ -152,6 +164,11 @@ class AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest {
                     for (Object item : items) {
                         if (item instanceof Map<?, ?> champs) {
                             champs.keySet().forEach(cle -> cles.putIfAbsent(String.valueOf(cle), nom));
+                            for (Object valeur : champs.values()) {
+                                if (valeur instanceof List<?> liste) {
+                                    collecterClesDeLaListeDeCorrespondances(liste, nom, cles);
+                                }
+                            }
                         }
                     }
                 }
@@ -163,6 +180,41 @@ class AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest {
             }
         }
         return cles;
+    }
+
+    /**
+     * ADR-0080, section 5, ADR-0013 obligation 1 : les cles d'une liste de correspondances portee
+     * par un item, a n'importe quelle profondeur sous elle. Une liste dont les elements ne sont pas
+     * des correspondances (une liste de chaines comme {@code distracteurs} ou
+     * {@code formesAcceptees}) n'ajoute rien : elle est du contenu d'auteur, pas du schema. Le point
+     * d'entree de cette descente est toujours une liste ; une correspondance simple posee directement
+     * sur un item ({@code relationsDistracteurs} de {@code cm1-mots-de-liaison}, dont les cles sont
+     * des mots de liaison ecrits par l'auteur) n'est jamais visitee.
+     */
+    private static void collecterClesDeLaListeDeCorrespondances(List<?> liste, String nom,
+                                                                  Map<String, String> cles) {
+        for (Object element : liste) {
+            if (element instanceof Map<?, ?> correspondance) {
+                collecterClesDeCorrespondance(correspondance, nom, cles);
+            }
+        }
+    }
+
+    /**
+     * Une fois entree dans une correspondance issue d'une liste, la descente suit toute valeur qui
+     * est elle-meme une correspondance ({@code cadre}, sous une zone) ou une nouvelle liste de
+     * correspondances, a n'importe quelle profondeur.
+     */
+    private static void collecterClesDeCorrespondance(Map<?, ?> correspondance, String nom,
+                                                        Map<String, String> cles) {
+        correspondance.keySet().forEach(cle -> cles.putIfAbsent(String.valueOf(cle), nom));
+        for (Object valeur : correspondance.values()) {
+            if (valeur instanceof Map<?, ?> sousCorrespondance) {
+                collecterClesDeCorrespondance(sousCorrespondance, nom, cles);
+            } else if (valeur instanceof List<?> sousListe) {
+                collecterClesDeLaListeDeCorrespondances(sousListe, nom, cles);
+            }
+        }
     }
 
     /**
@@ -292,6 +344,27 @@ class AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("modeDeComparaisonAnnonce")
                 .hasMessageNotContaining("bonneReponse");
+    }
+
+    /**
+     * ADR-0080, section 5, ADR-0013 obligation 3 : la faute de frappe imbriquee - "hauteurr" au lieu
+     * de "hauteur", dans le cadre d'une zone, sous une liste de zones, sous un item. Sans la
+     * descente derivee de {@link #collecterClesDeCorrespondance}, cette cle ne serait meme pas vue
+     * comme une cle de schema : l'ancienne descente s'arretait aux cles de premier niveau d'un item.
+     * Le jeu fautif nomme en litteraux toutes les autres cles, y compris "hauteur" - jamais ecrite
+     * dans son YAML - pour que le message ne designe que la faute de frappe.
+     */
+    @Test
+    void uneCleImbriqueeSousUneListeDeCorrespondancesNonLueFaitEchouerLeGardeFou() {
+        Path jeuFautif = CONTRE_EXEMPLE.resolve("zone-cle-imbriquee-non-lue");
+        Map<String, String> cles = clesDeSchema(List.of(jeuFautif.resolve("contenu")));
+        Set<String> litteraux = litterauxDeChaine(List.of(jeuFautif.resolve("src/main/java")));
+
+        assertThatThrownBy(() -> verifier(cles, litteraux))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("hauteurr")
+                .hasMessageNotContaining("bonneZone")
+                .hasMessageNotContaining("libelle");
     }
 
     /** ADR-0051 : la clause de non-vacuite mord, elle aussi. */

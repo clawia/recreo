@@ -6,6 +6,8 @@ import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.ReponseAEcrire;
+import com.recreo.domain.content.Zone;
+import com.recreo.domain.content.ZoneADesigner;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -94,7 +96,7 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
     private static final int BUDGET_DE_TIRAGES = 500;
 
     /** Repliage casse + signes diacritiques, sur le patron de NormalisationDeSaisie - inchange. */
-    private static String replier(String texte) {
+    static String replier(String texte) {
         String decompose = Normalizer.normalize(texte, Normalizer.Form.NFD);
         StringBuilder replie = new StringBuilder(decompose.length());
         for (int rang = 0; rang < decompose.length(); rang++) {
@@ -120,7 +122,7 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
      * enonce ses trois propositions. Les compter comme jetons est donc la generalisation fidele du
      * critere, pas un autre critere - et elle ramene le cas indefini de 1 057 propositions a 93.</p>
      */
-    private static List<String> jetons(String texte) {
+    static List<String> jetons(String texte) {
         String replie = replier(texte);
         List<String> jetons = new ArrayList<>();
         StringBuilder courant = new StringBuilder();
@@ -164,7 +166,7 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
      * en amont pour le point 1, par {@link #enoncee}, et laisse a faux ici pour le point 2, ou une
      * forme de reference sans lettre ni chiffre ne serait pas un mot a ecrire.</p>
      */
-    private static boolean contientCommeJetonsContigus(List<String> jetonsCibles,
+    static boolean contientCommeJetonsContigus(List<String> jetonsCibles,
                                                          List<String> jetonsTexte) {
         if (jetonsCibles.isEmpty()) {
             return false;
@@ -204,6 +206,7 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
         return switch (item) {
             case Question question -> question.texteAVoixHaute();
             case ReponseAEcrire reponse -> reponse.texteAVoixHaute();
+            case ZoneADesigner zone -> zone.texteAVoixHaute();
         };
     }
 
@@ -213,6 +216,21 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
         propositions.add(question.bonneReponse());
         propositions.addAll(question.distracteurs());
         return propositions;
+    }
+
+    /**
+     * ADR-0080 : extension de VOI-14 point 1 a un item de designation, decidee ici parce que le
+     * compilateur l'exige (troisieme permission d'{@link Item}) et non parce qu'un arbitrage de
+     * nadia-prof porte deja sur la voix et la designation ensemble - aucun paquet ne croise les deux
+     * a ce jour. Le libelle d'une zone est son seul texte propre, le nom accessible de son bouton :
+     * c'est donc lui qui joue, pour un item de designation, le role que {@code bonneReponse} et les
+     * {@code distracteurs} jouent sur un item de choix - ce que l'enfant voit comme candidats parmi
+     * lesquels choisir. Si un paquet de designation venait un jour a declarer une voix, cette
+     * extension refuserait deja qu'elle nomme le libelle d'une de ses zones comme une unite autonome
+     * de parole.
+     */
+    private static Set<String> libellesDe(ZoneADesigner zone) {
+        return zone.zones().stream().map(Zone::libelle).collect(java.util.stream.Collectors.toSet());
     }
 
     /** Tous les items que ce paquet sait rendre, tires par la chaine reelle - meme methode que ADR-0032. */
@@ -280,6 +298,19 @@ class AucunTexteAVoixHauteNEnonceUnePropositionDeSonItemTest {
                                 + " (nadia-prof, 2026-09-01, section 16.4) : dire le mot entier est"
                                 + " l'exercice d'une dictee, l'epeler fait l'exercice a la place de"
                                 + " l'enfant");
+                    }
+                }
+                case ZoneADesigner zone -> {
+                    for (String libelle : libellesDe(zone)) {
+                        if (enoncee(libelle, jetonsDuTexte, texteReplie)) {
+                            defauts.add("item " + item.id().value() + " : le texte a voix haute \""
+                                    + voix.orElseThrow() + "\" enonce le libelle de zone \"" + libelle
+                                    + "\" comme suite contigue de jetons - extension de VOI-14 point 1"
+                                    + " a la designation (ADR-0080) : un texte lu a voix haute ne doit"
+                                    + " pas nommer une zone designable comme une unite autonome de"
+                                    + " parole, exactement comme il ne doit pas enoncer une proposition"
+                                    + " de choix");
+                        }
                     }
                 }
             }

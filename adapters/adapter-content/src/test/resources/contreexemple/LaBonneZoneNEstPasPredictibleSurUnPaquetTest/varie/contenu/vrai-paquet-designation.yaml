@@ -1,0 +1,53 @@
+schema: 1
+id: vrai-paquet-designation
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu sain, jamais servi"
+items:
+  - enonce: "Montre le tableau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: tableau
+    zones:
+      - id: tableau
+        libelle: "le tableau"
+        cadre: { x: 5, y: 5, largeur: 10, hauteur: 10 }
+      - id: porte
+        libelle: "la porte"
+        cadre: { x: 60, y: 60, largeur: 40, hauteur: 40 }
+  - enonce: "Montre la fenetre."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: fenetre
+    zones:
+      - id: coin-lecture
+        libelle: "le coin lecture"
+        cadre: { x: 5, y: 5, largeur: 45, hauteur: 45 }
+      - id: fenetre
+        libelle: "la fenetre"
+        cadre: { x: 60, y: 60, largeur: 15, hauteur: 15 }
+  - enonce: "Montre le coin lecture."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: coin-lecture
+    zones:
+      - id: coin-lecture
+        libelle: "le coin lecture"
+        cadre: { x: 5, y: 5, largeur: 45, hauteur: 45 }
+      - id: armoire
+        libelle: "l'armoire"
+        cadre: { x: 60, y: 60, largeur: 12, hauteur: 12 }
+  - enonce: "Montre la porte."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: porte
+    zones:
+      - id: armoire
+        libelle: "l'armoire"
+        cadre: { x: 5, y: 5, largeur: 10, hauteur: 10 }
+      - id: porte
+        libelle: "la porte"
+        cadre: { x: 60, y: 60, largeur: 40, hauteur: 40 }

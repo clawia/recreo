@@ -1,0 +1,53 @@
+schema: 1
+id: faux-paquet-designation
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu fautif d'ADR-0080, jamais servi"
+items:
+  - enonce: "Montre le tableau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: tableau
+    zones:
+      - id: tableau
+        libelle: "un endroit"
+        cadre: { x: 5, y: 5, largeur: 40, hauteur: 40 }
+      - id: porte
+        libelle: "un autre endroit"
+        cadre: { x: 60, y: 60, largeur: 10, hauteur: 10 }
+  - enonce: "Montre la fenetre."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: fenetre
+    zones:
+      - id: coin-lecture
+        libelle: "un autre endroit"
+        cadre: { x: 5, y: 5, largeur: 10, hauteur: 10 }
+      - id: fenetre
+        libelle: "un endroit"
+        cadre: { x: 60, y: 60, largeur: 35, hauteur: 35 }
+  - enonce: "Montre le coin lecture."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: coin-lecture
+    zones:
+      - id: coin-lecture
+        libelle: "un endroit"
+        cadre: { x: 5, y: 5, largeur: 45, hauteur: 45 }
+      - id: armoire
+        libelle: "un autre endroit"
+        cadre: { x: 60, y: 60, largeur: 12, hauteur: 12 }
+  - enonce: "Montre la porte."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: armoire
+    zones:
+      - id: armoire
+        libelle: "un endroit"
+        cadre: { x: 5, y: 5, largeur: 10, hauteur: 10 }
+      - id: porte
+        libelle: "un autre endroit"
+        cadre: { x: 60, y: 60, largeur: 40, hauteur: 40 }

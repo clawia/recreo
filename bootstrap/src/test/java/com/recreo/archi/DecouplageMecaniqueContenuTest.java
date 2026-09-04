@@ -1,10 +1,18 @@
 package com.recreo.archi;
 
+import com.tngtech.archunit.core.domain.JavaField;
+import com.tngtech.archunit.core.domain.JavaMethod;
 import com.tngtech.archunit.core.domain.JavaModifier;
 import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
+import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
+import com.tngtech.archunit.lang.ConditionEvents;
+import com.tngtech.archunit.lang.SimpleConditionEvent;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.resideOutsideOfPackages;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
@@ -146,4 +154,85 @@ class DecouplageMecaniqueContenuTest {
             .matching("com.recreo.domain.mechanics.(*)..")
             .should().notDependOnEachOther()
             .as("ADR-0004 : deux mecaniques ne dependent pas l'une de l'autre");
+
+    /**
+     * (10) ADR-0080, decision 6 : la regle centrale de l'ADR de la mecanique de designation. Ce
+     * qu'elle interdit reellement : la conception par coordonnees - le client envoie {@code (x, y)},
+     * le serveur cherche quelle zone contient ce point - qui n'est pas jouable au clavier et qui
+     * ferait entrer la geometrie dans une mecanique. Pour l'ecrire, il faut lire un
+     * {@code CadreDeZone} dans la mecanique ; c'est le seul point du systeme ou cette conception se
+     * trahit sans ambiguite. Calquee sur la clause (4).
+     *
+     * <p>Elle ne garde pas l'adaptateur web - un {@code @RequestParam int x} sur un controleur est un
+     * entier pour ArchUnit, et aucun modele de types ne dira jamais qu'il porte une abscisse. Cette
+     * moitie-la est tenue hors d'ArchUnit, par un garde-fou de balayage sur le document servi et par
+     * la liste d'interdits du JavaScript maison (ADR-0080, garde-fous 1 et 2).</p>
+     *
+     * <p>Due avec la tache qui cree {@code CadreDeZone} : l'ecrire avant serait une regle a
+     * population vide (ADR-0051).</p>
+     */
+    @ArchTest
+    static final ArchRule uneMecaniqueIgnoreLaGeometrie = noClasses()
+            .that().resideInAnyPackage(CONTRAT_MECANIQUE + "..", MECANIQUES)
+            .should().dependOnClassesThat()
+            .haveFullyQualifiedName(CONTRAT_CONTENU + ".CadreDeZone")
+            .allowEmptyShould(false)
+            .as("ADR-0080 : une mecanique transporte une zone et ne lit jamais son cadre. Une mecanique"
+                    + " qui touche a la geometrie est une mecanique qui resout un point en zone, donc"
+                    + " un verdict qui depend d'une coordonnee envoyee par le navigateur");
+
+    /**
+     * (11) ADR-0080, decision 6 : ferme un trou de la clause (8). Celle-ci refuse a une
+     * <b>interface</b> des deux paquets de contrat toute methode statique, par defaut ou privee, et
+     * exclut explicitement les records - leurs accesseurs sont produits par le compilateur, et les
+     * refuser ferait rougir {@code Score} et {@code SessionStatus} sans qu'aucun comportement n'ait
+     * ete partage. Mais un <b>record</b> peut declarer une methode ecrite a la main -
+     * {@code CadreDeZone.contient(int x, int y)} en serait l'exemple exact, le predicat de
+     * resolution d'un point en zone pose dans le contrat de contenu, ou la clause (8) ne le regarde
+     * pas. Sans cette clause, la propriete de la clause (10) ne tiendrait plus que par un seul fil -
+     * le fait qu'une mecanique doive quand meme nommer le type pour appeler la methode.
+     *
+     * <p>Forme : sur chaque record des deux paquets de contrat, toute methode declaree porte le nom
+     * d'un de ses champs (l'accesseur genere par le compilateur, ou un accesseur ecrit a la main sous
+     * le meme nom), ou est {@code equals}, {@code hashCode} ou {@code toString}. Les constructeurs ne
+     * sont pas des methodes et ne sont pas juges ici.</p>
+     *
+     * <p>Population et etat au 2026-09-03, verifies par lecture et non supposes : les quatre records
+     * de {@code com.recreo.domain.content} ({@code Question}, {@code ReponseAEcrire},
+     * {@code ContentDescriptor}, {@code ItemId}) ne declarent aucune methode - cette clause est donc
+     * verte aujourd'hui sur une population non vide, et c'est la seule des deux regles de ce lot qui
+     * peut etre ecrite avant le reste : une regle ecrite le jour ou elle gene est une regle qu'on
+     * negocie.</p>
+     */
+    @ArchTest
+    static final ArchRule aucunRecordDuContratDeContenuNeDeclareDeMethode = methods()
+            .that().areDeclaredInClassesThat().resideInAnyPackage(CONTRAT_CONTENU, CONTRAT_MECANIQUE)
+            .and().areDeclaredInClassesThat().areRecords()
+            .should(nePorterQueLeNomDUnChampOuEtreDObjet())
+            .allowEmptyShould(false)
+            .as("ADR-0080 : un record du contrat de contenu ou de mecanique ne declare aucune methode"
+                    + " ecrite a la main hors de ses accesseurs et d'equals/hashCode/toString - un tel"
+                    + " record loge un comportement que la clause (8) ne voit pas");
+
+    private static ArchCondition<JavaMethod> nePorterQueLeNomDUnChampOuEtreDObjet() {
+        return new ArchCondition<>(
+                "porter le nom d'un champ de son record, ou etre equals, hashCode ou toString") {
+
+            @Override
+            public void check(JavaMethod methode, ConditionEvents evenements) {
+                Set<String> nomsDeChamps = methode.getOwner().getFields().stream()
+                        .map(JavaField::getName)
+                        .collect(Collectors.toSet());
+                String nom = methode.getName();
+                boolean autorisee = nomsDeChamps.contains(nom)
+                        || nom.equals("equals") || nom.equals("hashCode") || nom.equals("toString");
+                if (!autorisee) {
+                    evenements.add(SimpleConditionEvent.violated(methode,
+                            methode.getFullName() + " n'est ni l'accesseur d'un champ de "
+                                    + methode.getOwner().getSimpleName()
+                                    + ", ni equals, hashCode ou toString"));
+                }
+            }
+        };
+    }
 }

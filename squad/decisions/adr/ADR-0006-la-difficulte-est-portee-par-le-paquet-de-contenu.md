@@ -221,6 +221,136 @@ C'est la troisieme regle qui tient la propriete de fond.
 `fields().that().areDeclaredInClassesThat()`, `MembersThat.doNotHaveModifier(JavaModifier)` et
 `FieldsShould.haveRawType(DescribedPredicate)` sont verifies presents dans `archunit-1.5.0`.
 
+## Amendement du 2026-09-04 (s28, `theo-archi`) - une exemption nommee, datee et plafonnee pour le cadre en pourcentage
+
+**Ce qui a joue.** `ADR-0080`, decision 2, ecrit le 2026-09-03 par le meme auteur, impose verbatim
+`CadreDeZone(int x, int y, int largeur, int hauteur)` dans `com.recreo.domain.content`, et **ne cite
+pas cet `ADR` parmi ceux qu'il prolonge**. Le conflit a ete decouvert par `sofia-sm` en implementant
+`S28-5`, par le reacteur et non par une relecture : `bash outils/mvn-jdk21.sh -B clean verify`,
+**BUILD FAILURE, 1 echec sur 1166 tests**, quatre violations nommant `CadreDeZone.x`,
+`CadreDeZone.y`, `CadreDeZone.largeur` et `CadreDeZone.hauteur`. Mesure refaite ici avant de decider,
+sur le meme arbre : `bash outils/mvn-jdk21.sh -B -o -pl bootstrap -am test -Dtest=DifficulteTest`,
+**3 tests, 1 echec**, les memes quatre violations. Perimetre de cette mesure-la : le module
+`bootstrap` et ses amonts, `-am` porte, pas le depot.
+
+### Le critere applique avant de percer la regle
+
+Cet `ADR` existe contre un mecanisme precis, ecrit dans son contexte : **une composante qu'un paquet
+de contenu doit remplir sans qu'elle le concerne**, donc de valeurs factices - *"un paquet de
+vocabulaire anglais devait declarer qu'il pratiquait l'addition"*. `ADR-0069` a etendu la propriete
+au non chiffre avec le meme test : *"une composante qu'aucune autre forme d'item ne remplit autrement
+que par une valeur par defaut"*.
+
+Applique aux quatre entiers de `CadreDeZone`, ce test ne trouve rien a refuser. Aucun paquet ne les
+remplit de valeurs factices : un paquet qui n'a pas de zones ne construit ni `Zone`, ni
+`CadreDeZone`. Et ces entiers ne sont pas un **reglage** pose au-dessus du contenu, ils **sont** du
+contenu - la position d'une etiquette sur un dessin, au meme titre que l'enonce est du texte. Un
+pourcentage de la boite d'une image veut dire la meme chose en mathematiques CP et en
+histoire-geographie CM1, la ou `minOperand` ne veut rien dire hors de l'arithmetique.
+
+### Ce qui a ete essaye avant, et mesure
+
+**1. La transposition d'`ADR-0069` - un type dedie qui porte la grandeur - est impossible, et ce
+n'est pas une opinion.** Sonde du 2026-09-04, `record PourcentageSonde(int valeur)` pose dans
+`com.recreo.domain.content`, meme commande que ci-dessus : **rouge**, message
+`com.recreo.domain.content.PourcentageSonde.valeur cite le type int`. Le motif est structurel :
+l'enveloppe redeclare le `int` un cran plus bas, dans le paquet exact que cette regle garde. Sortir
+l'enveloppe du paquet ne sauve rien : `Zone.cadre` citerait alors un type hors liste blanche, et
+elargir la liste a un sous-paquet serait une exemption plus large que celle qu'on cherche a eviter.
+**`ADR-0069` n'a fonctionne que parce qu'un domaine de valeurs fini s'enumere et qu'un enum ne porte
+aucun champ d'instance.** Une grandeur ne s'enumere pas. L'affirmation de `sofia-sm` sur ce point est
+verifiee, pas reprise.
+
+**2. Aucun predicat sur le bytecode ne distingue la geometrie de la dette.**
+`CadreDeZone(int x, int y, int largeur, int hauteur)` et
+`ReglageArithmetiqueContreExemple(int sommeMaximale, int nombreDePropositions)` sont deux records du
+meme paquet dont toutes les composantes sont des `int` : **la seule chose qui les separe est le nom
+de leurs composantes et ce qu'un humain sait qu'elles veulent dire.** Toute condition structurelle
+qui admettrait le premier admettrait le second, et ferait passer au vert la morsure qui tient cet
+`ADR` depuis s00. C'est le test auquel toutes les formulations elegantes ont echoue - y compris la
+plus tentante, *"un type dont aucune mecanique ne depend"*, qui aurait admis `DifficultyConfig` le
+jour ou personne ne le lit encore.
+
+**3. Revenir sur la decision 2 d'`ADR-0080` est strictement pire, sur ses trois branches.** Porter
+les quatre pourcentages en `String` supprime les invariants du constructeur compact, deplace une
+analyse de texte dans le gabarit et **rend inecrivable la clause 10 d'`ADR-0080`**, qui est fondee
+sur l'existence du type ; c'est aussi l'alternative 3 d'`ADR-0069`, deja ecartee. Faire vivre la
+geometrie hors du domaine, dans un second chemin de contenu vers l'adaptateur web, cree une seconde
+source de verite pour un meme paquet, donc un ecart muet le jour ou les deux divergent - la famille
+de defaut que ce depot sanctionne. Un sous-paquet `content.geometrie` oblige a elargir la liste
+blanche a un paquet entier, un trou plus grand que celui qu'on ouvre ici.
+
+### Decision
+
+**La regle `leContratDeContenuNePorteQueDuTexte` admet le type `int`, et lui seul, quand il est porte
+par un type du contrat de contenu dont les champs d'instance sont exactement `x`, `y`, `largeur` et
+`hauteur`.** Rien d'autre n'est admis, sous aucune autre forme.
+
+- **Le plafond vaut exactement la taille de la dette** : quatre composantes, ces quatre noms-la. Une
+  cinquieme composante, une de moins ou un autre nom, et le type entier retombe sous la regle.
+- **Seul `int` est exempte.** `boolean`, `long`, `double`, `Integer`, `java.time.LocalDate` et tout
+  argument generique restent refuses, sur le cadre comme ailleurs.
+- **L'exemption ne s'applique jamais a une forme d'item ni au descripteur** : ajouter
+  `int x, int y, int largeur, int hauteur` a `Question` ne place pas `Question` sous l'exemption, ses
+  champs d'instance n'etant pas exactement ces quatre-la.
+- Cette exemption est **datee** et sa reouverture est un `ADR`, pas une ligne de code.
+
+### Ce qui l'encode, et la preuve qu'elle est plafonnee
+
+**Fichier** : `bootstrap/src/test/java/com/recreo/archi/DifficulteTest.java`,
+`estUneComposanteDeCadreEnPourcentage(JavaField, JavaClass)` et la constante
+`COMPOSANTES_DU_CADRE_EN_POURCENTAGE`. **Aucune `ArchRule` n'est ajoutee** : le compte de regles du
+depot est inchange.
+
+```java
+private static final Set<String> COMPOSANTES_DU_CADRE_EN_POURCENTAGE =
+        Set.of("x", "y", "largeur", "hauteur");
+
+private static boolean estUneComposanteDeCadreEnPourcentage(JavaField champ, JavaClass type) {
+    return type.getName().equals(int.class.getName())
+            && champ.getOwner().getFields().stream()
+                    .filter(autre -> !autre.getModifiers().contains(JavaModifier.STATIC))
+                    .map(JavaField::getName)
+                    .collect(Collectors.toSet())
+                    .equals(COMPOSANTES_DU_CADRE_EN_POURCENTAGE);
+}
+```
+
+**Jeu fautif du plafond** :
+`bootstrap/src/test/java/com/recreo/domain/content/CadreEtenduDUneBorneContreExemple.java`, un record
+`(int x, int y, int largeur, int hauteur, int sommeMaximale)` - la seule route par laquelle la dette
+n. 2 pourrait rentrer par cette exemption, en gardant les quatre composantes du rectangle pour se
+ranger sous elle. **Morsure** :
+`LesReglesMordentTest.unCadreEtenduDUneBorneArithmetiqueEstRefuse`.
+
+**Ce que cette morsure ne prouve pas**, ecrit plutot que laisse a decouvrir : ce jeu fautif aurait
+aussi ete refuse par la regle d'avant l'amendement. **Ce qu'elle prouve est le plafond, et c'est
+mesure par mutation** : `equals` remplace par `containsAll` dans la condition ci-dessus - c'est-a-dire
+l'exemption elargie a *"les quatre composantes, plus ce qu'on veut"* - rend `LesReglesMordentTest` a
+**34 tests, 1 echec, et cet echec est exactement
+`unCadreEtenduDUneBorneArithmetiqueEstRefuse`**. La mutation a ete annulee ; c'est la forme `equals`
+qui est commitee.
+
+**Les quatre morsures historiques de la regle restent rouges**, verifie sur le meme arbre :
+`ReglageArithmetiqueContreExemple`, `ReglageEnCollectionContreExemple`,
+`ReglageDeLongueurDePartieContreExemple` (`ADR-0012`) et `ModeDeSaisieEnBooleenContreExemple`
+(`ADR-0069`). C'est la preuve qui compte le plus, et elle porte sur du materiau qui n'a pas ete ecrit
+pour cet amendement : la dette de s00 est toujours refusee mot pour mot.
+
+### Consequences, y compris les mauvaises
+
+- **Le contrat de contenu porte desormais des entiers, et la phrase "que du texte" n'est plus vraie
+  a la lettre.** Le titre de la regle est conserve parce qu'il dit sa raison d'etre ; ce paragraphe
+  est ce qui empeche de le lire comme une garantie totale.
+- **Le plafond est un jeu de noms de composantes.** C'est une convention, et une convention se
+  contourne par un developpeur determine qui appellerait ses bornes d'arithmetique `x` et `largeur`.
+  C'est exactement le statut que cet `ADR` accorde deja a ses deux regles de nommage : elles
+  n'arretent pas la mauvaise foi, elles arretent la reintroduction distraite, qui est le mode de
+  defaillance reel.
+- **Ce qui me ferait revenir dessus** : une deuxieme demande d'exemption. Une seule exemption nommee
+  reste lisible ; deux signifient que le perimetre de la regle est le mauvais, et il faudra alors
+  reecrire la regle sur les types que tout paquet construit, pas sur un paquet Java entier.
+
 ## Consequences
 
 - Un paquet de contenu = un niveau = une competence. Il y aura plus de paquets qu'avant, chacun

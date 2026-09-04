@@ -3,6 +3,7 @@ package com.recreo.adapter.content;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.ReponseAEcrire;
+import com.recreo.domain.content.ZoneADesigner;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +13,9 @@ import java.util.stream.Stream;
  * <b>Le classement des formes d'item, ecrit une fois pour les garde-fous de contenu</b> (lot 5a de
  * s24, section 2).
  *
- * <p>Depuis qu'{@link Item} permet deux formes (ADR-0058, ADR-0069), chaque garde-fou de ce module
- * doit dire ce qu'il fait d'un item de saisie. Le tri a ete ecrit garde-fou par garde-fou, avec le
+ * <p>Depuis qu'{@link Item} permet trois formes (ADR-0058, ADR-0069, ADR-0080), chaque garde-fou de
+ * ce module doit dire ce qu'il fait d'un item de saisie et d'un item de designation. Le tri a ete
+ * ecrit garde-fou par garde-fou, avec le
  * motif de chacun, dans
  * {@code squad/sprints/s24-trois-paquets-et-ouverture-de-la-saisie/tri-des-garde-fous-de-contenu-face-a-un-item-de-saisie.md}.
  * Ce que ce fichier-ci porte est le <b>classement</b>, et rien d'autre.</p>
@@ -39,11 +41,16 @@ final class ClassementDesItems {
     private ClassementDesItems() {
     }
 
-    /** Les items qui presentent un choix parmi des propositions. */
+    /**
+     * Les items qui presentent un choix parmi des propositions. ADR-0080 : un item de designation
+     * ne presente pas de propositions textuelles - il presente des zones - et tombe donc du meme
+     * cote qu'un item de saisie.
+     */
     static List<Question> presentantDesPropositions(List<Item> items) {
         return items.stream().flatMap(item -> switch (item) {
             case Question question -> Stream.of(question);
             case ReponseAEcrire ignore -> Stream.<Question>empty();
+            case ZoneADesigner ignore -> Stream.<Question>empty();
         }).toList();
     }
 
@@ -53,9 +60,10 @@ final class ClassementDesItems {
      * etendus sans avoir a connaitre la forme de l'item - c'est ce qui distingue une extension d'une
      * exemption.
      *
-     * <p>La reponse juste est {@code bonneReponse} sur un item de choix et {@code formeDeReference}
-     * sur un item de saisie : deux noms pour la meme chose du point de vue d'un garde-fou qui
-     * demande "ce que l'indice annonce est-il ce que le paquet attend ?".</p>
+     * <p>La reponse juste est {@code bonneReponse} sur un item de choix, {@code formeDeReference} sur
+     * un item de saisie et {@code bonneZone} sur un item de designation (ADR-0080) : trois noms pour
+     * la meme chose du point de vue d'un garde-fou qui demande "ce que l'indice annonce est-il ce
+     * que le paquet attend ?".</p>
      */
     record ItemLu(String enonce, String reponseJuste, Optional<String> indice) {
     }
@@ -67,14 +75,19 @@ final class ClassementDesItems {
                     question.indice());
             case ReponseAEcrire reponse -> new ItemLu(reponse.enonce(), reponse.formeDeReference(),
                     reponse.indice());
+            case ZoneADesigner zone -> new ItemLu(zone.enonce(), zone.bonneZone(), zone.indice());
         }).toList();
     }
 
-    /** Les items auxquels l'enfant repond en ecrivant. */
+    /**
+     * Les items auxquels l'enfant repond en ecrivant. ADR-0080 : un item de designation ne demande
+     * pas de reponse ecrite - il demande une zone - et tombe donc du meme cote qu'un item de choix.
+     */
     static List<ReponseAEcrire> demandantUneReponseEcrite(List<Item> items) {
         return items.stream().flatMap(item -> switch (item) {
             case Question ignore -> Stream.<ReponseAEcrire>empty();
             case ReponseAEcrire reponse -> Stream.of(reponse);
+            case ZoneADesigner ignore -> Stream.<ReponseAEcrire>empty();
         }).toList();
     }
 }
