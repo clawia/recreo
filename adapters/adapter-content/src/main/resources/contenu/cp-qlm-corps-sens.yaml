@@ -14,19 +14,12 @@ lignesDeReferentiel: ["QLM-CP-03"]
 # ligne 3) : "un mot change, la ligne n'est plus la mienne" - le libelle de competence ci-dessus est
 # recopie a l'identique.
 #
-# Ce paquet OUVRE cette ligne, il ne la FERME pas (nadia-prof, section 8.4 de son arbitrage) - meme
-# mention que cp-qlm-vivant-non-vivant.
-#
 # Aucune condition de biais ne s'applique a cette ligne (ni BIA-1 a BIA-5, propres aux lignes 4,
 # 15, 16 et a l'histoire-geographie).
 #
-# Forme : cinq items sur les cinq sens (un organe par sens), trois items sur des parties du corps
-# hors des cinq sens - le motif tenu par nadia-prof elle-meme comme exemple recevable ("Avec quoi
-# entend-on ?"). Huit items au total, aucune reponse ne se repete a l'identique.
-#
-# NAT-1 (meme prudence que cp-nature-mot, S19-4) : chaque question porte sur un organe different,
-# aucun signal de forme (longueur de phrase, presence d'un determinant) ne separe les deux groupes
-# de questions.
+# NAT-1 (meme prudence que cp-nature-mot, S19-4) : chaque question porte sur un organe ou une
+# partie du corps different, aucun signal de forme (longueur de phrase, presence d'un determinant)
+# ne separe les deux groupes de questions.
 #
 # Correction du 2026-09-03 (nadia-prof, COR-R1, Done pedagogique VALIDE SOUS RESERVE non bloquante,
 # matieres-absentes a 430648e) : l'item "toucher" faisait 12 mots contre une mediane mesuree de 5
@@ -34,6 +27,25 @@ lignesDeReferentiel: ["QLM-CP-03"]
 # portait pas la reponse - mais la longueur etait reelle. Correction reprise mot pour mot telle que
 # nadia-prof l'a ecrite : six mots, alignee sur le reste du paquet, meme reponse et memes
 # distracteurs.
+#
+# S28-1 (squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md,
+# section 3.1). Second passage sur cette ligne, pour tenir ce que nadia-prof a ecrit d'avance le
+# 2026-09-03. La fermeture elle-meme n'est prononcee ni ici ni par ce commentaire.
+#
+# FER-1 (extension) : la moitie "cinq sens" (cinq items) etait deja tenue et validee par
+# nadia-prof. La moitie "parties du corps", qui ne tenait que sur trois items, en recoit cinq de
+# plus : bras, pieds, dos, ventre, genou - les cinq parties qui n'existaient jusqu'ici qu'en
+# distracteur, jamais en position de bonne reponse.
+#
+# Observation datee du 2026-09-03 (nadia-prof) : le toucher n'etait servi que par "les mains". Un
+# sixieme item neuf repare cela sans toucher a l'item existant : "la peau" devient la bonne reponse
+# d'un item distinct, qui dit que le toucher ne se limite pas aux mains.
+#
+# FER-2 (densite) : 14 items desormais (8 + 6), au-dessus du plancher de dix.
+#
+# nombreDeManches revient au defaut de 10 (DEC-0064) dans le catalogue : DEC-0073 avait ratifie 7
+# sur le seul motif de huit items ("une partie de 10 en epuiserait le paquet") ; ce motif n'existe
+# plus a quatorze items.
 items:
   - enonce: "Avec quoi entend-on ?"
     bonneReponse: "les oreilles"
@@ -67,3 +79,27 @@ items:
     bonneReponse: "la tête"
     distracteurs: ["le ventre", "le dos"]
     indice: "Elle est en haut du corps."
+  - enonce: "Quelle partie du corps est entre l'épaule et la main ?"
+    bonneReponse: "les bras"
+    distracteurs: ["les jambes", "le dos"]
+    indice: "Il y en a deux, un de chaque côté du corps."
+  - enonce: "Quelle partie du corps est au bout de la jambe ?"
+    bonneReponse: "les pieds"
+    distracteurs: ["les mains", "les bras"]
+    indice: "Ils portent tout le corps quand on est debout."
+  - enonce: "Quelle partie du corps est derrière, entre les épaules et les jambes ?"
+    bonneReponse: "le dos"
+    distracteurs: ["le ventre", "la tête"]
+    indice: "On ne le voit pas sans se retourner devant un miroir."
+  - enonce: "Quelle partie du corps est devant, entre la poitrine et les jambes ?"
+    bonneReponse: "le ventre"
+    distracteurs: ["le dos", "les bras"]
+    indice: "Il gargouille quand on a faim."
+  - enonce: "Quelle partie du corps plie au milieu de la jambe ?"
+    bonneReponse: "le genou"
+    distracteurs: ["le pied", "le bras"]
+    indice: "Il se plie quand on s'assoit ou qu'on court."
+  - enonce: "Quelle partie du corps permet de sentir le chaud, le froid ou le doux, partout sur le corps ?"
+    bonneReponse: "la peau"
+    distracteurs: ["les cheveux", "les ongles"]
+    indice: "Elle recouvre tout le corps, pas seulement les mains."

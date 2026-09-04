@@ -14,11 +14,6 @@ lignesDeReferentiel: ["QLM-CP-01"]
 # ligne 1) : "un mot change, la ligne n'est plus la mienne" - le libelle de competence ci-dessus est
 # recopie a l'identique.
 #
-# Ce paquet OUVRE cette ligne, il ne la FERME pas : nadia-prof l'ecrit d'avance (section 8.4 de son
-# arbitrage) - un premier paquet de matiere neuve passe la ligne a `en cours`, jamais a
-# `couvert-valide`, pour le meme motif qui a exige un second passage sur la saisie, l'illustre et
-# la voix a leurs premiers paquets respectifs.
-#
 # Ligne 1 seule (vivant / non vivant) ; ni la ligne 4 (hygiene, BIA-4) ni la ligne 16 (ici/ailleurs,
 # BIA-1, BIA-2) ne sont servies par ce paquet - aucune condition de biais ne s'applique ici.
 #
@@ -26,13 +21,32 @@ lignesDeReferentiel: ["QLM-CP-01"]
 # (vocabulaire de position) de questionner le monde, qui recoupent des lignes de mathematiques CP
 # deja en matrice (cp-semaine ; quadrillage non couvert), ne sont pas servies par ce paquet.
 #
-# Forme : classification binaire (etre vivant / objet), meme forme que cp-nature-mot (nom / verbe,
-# deux propositions par item). Huit items, quatre par categorie - compte reel :
-#   un être vivant : réponse 4 (50,0 %)   un objet : réponse 4 (50,0 %)
+# S28-1 (squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md,
+# section 3.1). Second passage sur cette ligne, pour tenir les trois conditions que nadia-prof a
+# ecrites d'avance le 2026-09-03 (section 2 du meme arbitrage). La fermeture elle-meme n'est
+# prononcee ni ici ni par ce commentaire : elle reste a nadia-prof, en jouant.
 #
-# Les quatre exemples d'objets sont des objets fabriques (chaise, ballon, voiture, stylo), jamais
-# de la matiere inerte naturelle (caillou, sable, eau) : le referentiel distingue les deux, et
-# melanger les categories aurait ouvert un item a deux lectures.
+# FER-1 (extension) : la matiere inerte, absente du premier paquet, est desormais servie par trois
+# items (caillou, sable, neige), toujours dans l'opposition binaire que nadia-prof a maintenue en
+# l'ecrivant elle-meme : "la matiere inerte est une famille d'exemples du non-vivant, pas une
+# troisieme etiquette." Aucun changement de mecanique, aucune troisieme categorie de reponse.
+#
+# FER-2 (densite) : 14 items desormais (8 + 6), au-dessus du plancher de dix.
+#
+# FER-3 (deux taches) : la categorisation d'origine reste la tache principale (onze items -
+# "X, qu'est-ce que c'est ?" -> une categorie) et une selection neuve la complete (trois items -
+# "laquelle des trois choses est vivante ?" -> le nom de la chose). Ce n'est pas la meme operation
+# mentale : la premiere classe un element isole, la seconde repere l'element different parmi trois.
+#
+# Compte reel des items de categorisation (onze) : un être vivant : réponse 4 (36,4 %)
+# un objet : réponse 7 (63,6 %) - desequilibre attendu, la moitie "objet" portant maintenant a la
+# fois les objets fabriques et la matiere inerte. Compte reel des items de selection (trois) : un
+# être vivant different a chaque fois (chien, fleur, poisson), deux distracteurs non vivants pris
+# parmi les objets fabriques et la matiere inerte deja introduits.
+#
+# nombreDeManches revient au defaut de 10 (DEC-0064) dans le catalogue : DEC-0073 avait ratifie 7
+# sur le seul motif de huit items ("une partie de 10 en epuiserait le paquet") ; ce motif n'existe
+# plus a quatorze items.
 items:
   - enonce: "Un chat, qu'est-ce que c'est ?"
     bonneReponse: "un être vivant"
@@ -66,3 +80,27 @@ items:
     bonneReponse: "un objet"
     distracteurs: ["un être vivant"]
     indice: "Un stylo ne naît pas, ne grandit pas et ne se nourrit pas."
+  - enonce: "Un caillou, qu'est-ce que c'est ?"
+    bonneReponse: "un objet"
+    distracteurs: ["un être vivant"]
+    indice: "Un caillou ne naît pas, ne grandit pas et ne se nourrit pas."
+  - enonce: "Du sable, qu'est-ce que c'est ?"
+    bonneReponse: "un objet"
+    distracteurs: ["un être vivant"]
+    indice: "Le sable ne naît pas, ne grandit pas et ne se nourrit pas."
+  - enonce: "De la neige, qu'est-ce que c'est ?"
+    bonneReponse: "un objet"
+    distracteurs: ["un être vivant"]
+    indice: "La neige ne naît pas, ne grandit pas et ne se nourrit pas."
+  - enonce: "Parmi ces trois choses, laquelle est un être vivant : le chien, la chaise, le caillou ?"
+    bonneReponse: "le chien"
+    distracteurs: ["la chaise", "le caillou"]
+    indice: "Un être vivant naît, grandit, se nourrit et peut avoir des petits."
+  - enonce: "Parmi ces trois choses, laquelle est un être vivant : la fleur, le ballon, le sable ?"
+    bonneReponse: "la fleur"
+    distracteurs: ["le ballon", "le sable"]
+    indice: "Un être vivant naît, grandit, se nourrit et peut avoir des petits."
+  - enonce: "Parmi ces trois choses, laquelle est un être vivant : le poisson, la voiture, la neige ?"
+    bonneReponse: "le poisson"
+    distracteurs: ["la voiture", "la neige"]
+    indice: "Un être vivant naît, grandit, se nourrit et peut avoir des petits."

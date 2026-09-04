@@ -254,22 +254,22 @@ jeux:
     consigneAdulte: "Dites le mot entier, jamais le son tout seul. Ne montrez pas cette ligne à l'enfant."
   - id: bandit-manchot-vivant-non-vivant-cp
     titre: "Vivant ou objet"
-    consigne: "Lis bien, puis dis si c'est un être vivant ou un objet."
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
     mecanique: bandit-manchot
     paquet: cp-qlm-vivant-non-vivant
-    nombreDeManches: 7
+    nombreDeManches: 10
   - id: bandit-manchot-corps-sens-cp
     titre: "Le corps et les sens"
     consigne: "Lis bien la question, puis choisis la bonne réponse."
     mecanique: bandit-manchot
     paquet: cp-qlm-corps-sens
-    nombreDeManches: 7
+    nombreDeManches: 10
   - id: bandit-manchot-etats-eau-cp
     titre: "L'eau solide ou liquide"
-    consigne: "Lis bien, puis dis si c'est solide ou liquide."
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
     mecanique: bandit-manchot
     paquet: cp-qlm-etats-eau
-    nombreDeManches: 7
+    nombreDeManches: 10
   - id: bandit-manchot-histoire-geographie-cm1
     titre: "Histoire et géographie"
     consigne: "Lis bien la question, puis choisis la bonne réponse."

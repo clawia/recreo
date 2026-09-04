@@ -290,11 +290,14 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
         Map<String, List<Paquet>> lots = lotsDeMatiere(paquetsDe(CONTENU_SERVI));
 
         assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")))
-                .as("nadia-prof, 2026-09-03, section 2.3 : questionner le monde, 3 fichiers")
+                .as("nadia-prof, 2026-09-03, section 2.3 : questionner le monde, 3 fichiers -"
+                        + " compte inchange a S28-1, qui etend les fichiers existants")
                 .hasSize(3);
         assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")).stream().mapToInt(Paquet::items).sum())
-                .as("nadia-prof, 2026-09-03, section 2.3 : questionner le monde, 24 items")
-                .isEqualTo(24);
+                .as("S28-1 (ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-"
+                        + "lots.md, section 3.1) : 24 items a la cloture de s27, +6 par ligne pour"
+                        + " fermer les lignes 1, 3 et 5, soit 42 items")
+                .isEqualTo(42);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("nadia-prof, 2026-09-03, section 2.3 : histoire-geographie, 1 fichier")
                 .hasSize(1);

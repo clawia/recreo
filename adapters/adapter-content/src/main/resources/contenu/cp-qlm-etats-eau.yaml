@@ -14,16 +14,31 @@ lignesDeReferentiel: ["QLM-CP-05"]
 # ligne 5) : "un mot change, la ligne n'est plus la mienne" - le libelle de competence ci-dessus est
 # recopie a l'identique.
 #
-# Ce paquet OUVRE cette ligne, il ne la FERME pas (nadia-prof, section 8.4 de son arbitrage) - meme
-# mention que cp-qlm-vivant-non-vivant et cp-qlm-corps-sens.
-#
 # Perimetre tenu au mot pres du referentiel : la competence nomme deux etats, "solide" et
-# "liquide" - pas "gazeux". Aucun distracteur, aucun item n'introduit un troisieme etat.
+# "liquide" - pas "gazeux". Aucun distracteur, aucun item n'introduit un troisieme etat, y compris
+# dans les items de nommage ajoutes a S28-1 : aucun ne cite la vapeur ni l'evaporation.
 #
-# Forme : classification binaire (solide / liquide), six items de reconnaissance directe et deux
-# items de changement d'etat observable (fonte, gel). Huit items, quatre par categorie - compte
-# reel :
-#   solide : réponse 4 (50,0 %)   liquide : réponse 4 (50,0 %)
+# S28-1 (squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md,
+# section 3.1). Second passage sur cette ligne, pour tenir ce que nadia-prof a ecrit d'avance le
+# 2026-09-03. La fermeture elle-meme n'est prononcee ni ici ni par ce commentaire.
+#
+# FER-1 (extension) : deja tenue au premier paquet - les deux etats et les deux changements d'etat
+# sont la - et rien n'y change ici.
+#
+# FER-3 (deux taches, le point qui bloquait) : la moitie "changements d'etat" ne tenait que sur
+# deux items, tous deux sous la meme forme (classer le resultat : "Quand X, l'eau est-elle solide
+# ou liquide ?"). Elle est portee a quatre items, sous deux formes distinctes : la forme de
+# classement d'origine (deux items) et une forme neuve qui nomme le changement plutot que son
+# resultat ("Comment appelle-t-on le passage de ... a ... ?", reponse "fondre" ou "geler").
+#
+# FER-2 (densite) : 14 items desormais (8 + 6), au-dessus du plancher de dix. Sur les six items
+# ajoutes : quatre de reconnaissance directe (deux solide, deux liquide, pour garder l'equilibre
+# des douze items de classement a exactement moitie-moitie) et deux de nommage du changement
+# d'etat.
+#
+# nombreDeManches revient au defaut de 10 (DEC-0064) dans le catalogue : DEC-0073 avait ratifie 7
+# sur le seul motif de huit items ("une partie de 10 en epuiserait le paquet") ; ce motif n'existe
+# plus a quatorze items.
 items:
   - enonce: "La glace, est-ce solide ou liquide ?"
     bonneReponse: "solide"
@@ -57,3 +72,27 @@ items:
     bonneReponse: "solide"
     distracteurs: ["liquide"]
     indice: "Geler, c'est le contraire de fondre."
+  - enonce: "Le verglas, est-ce solide ou liquide ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide"]
+    indice: "On peut glisser dessus sans qu'il coule."
+  - enonce: "La banquise, est-ce solide ou liquide ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide"]
+    indice: "On peut marcher dessus."
+  - enonce: "Une flaque d'eau, est-ce solide ou liquide ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide"]
+    indice: "Elle prend la forme du creux où elle se trouve."
+  - enonce: "Le lait dans un verre, est-ce solide ou liquide ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide"]
+    indice: "Il coule et prend la forme du verre."
+  - enonce: "Comment appelle-t-on le passage de la glace à l'eau liquide ?"
+    bonneReponse: "fondre"
+    distracteurs: ["geler", "couler"]
+    indice: "C'est ce qui arrive à un glaçon laissé dehors quand il fait chaud."
+  - enonce: "Comment appelle-t-on le passage de l'eau liquide à la glace ?"
+    bonneReponse: "geler"
+    distracteurs: ["fondre", "couler"]
+    indice: "C'est ce qui arrive à l'eau laissée dehors quand il fait très froid."

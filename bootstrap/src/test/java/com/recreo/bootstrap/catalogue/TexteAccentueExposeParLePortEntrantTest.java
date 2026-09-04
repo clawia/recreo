@@ -333,11 +333,16 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Écoute le mot que l'adulte va dire, puis écris-le.",
             // S27-2 : trois consignes neuves. La consigne de cp-voyelle-du-son (S27-1) est reprise
             // a l'identique de "bandit-manchot-lettre-du-son-cp" ci-dessus, aucune entree neuve.
-            "Lis bien, puis dis si c'est un être vivant ou un objet.",
             // S27-2 et S27-3 partagent "Lis bien la question, puis choisis la bonne
             // réponse." : aucune entree neuve pour S27-3.
+            //
+            // S28-1 : les deux consignes specifiques de S27-2 ("Lis bien, puis dis si c'est un
+            // être vivant ou un objet." et "Lis bien, puis dis si c'est solide ou liquide.")
+            // disparaissent de cette liste - le catalogue reel ne les produit plus. Les deux
+            // paquets portent chacun une seconde tache depuis S28-1 (FER-3) que ces consignes ne
+            // decrivaient plus ; ils partagent desormais la consigne generique ci-dessous, deja
+            // dans l'inventaire.
             "Lis bien la question, puis choisis la bonne réponse.",
-            "Lis bien, puis dis si c'est solide ou liquide.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
