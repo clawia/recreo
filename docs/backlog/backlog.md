@@ -9432,6 +9432,12 @@ fermeture de ligne. **Attente raisonnable de fermeture : six a sept lignes, pas 
 lot de fermeture (`S28-1`, `S28-2`) n'ouvre aucune ligne neuve dans sa matiere, les deux usages se
 disputant les memes vingt items.
 
+**Cloture (2026-09-04, `camille-po`)** : huit lignes ferment (attente haute de la fourchette
+annoncee), une s'ouvre. `S28-1` a `S28-4` recoivent chacune leur verdict, detaille sous chaque
+story ci-dessous. Recompte, reserves ouvertes pour s29 et fait de gestion sur le cout du sprint
+(5,25 sur la borne de 5) : `squad/programme/MATRICE-couverture.md`, section "Synthese apres les
+verdicts du sprint 28" ; `DEC-0076`.
+
 ### S28-1 - Second paquet de questionner le monde (CP) : fermer les lignes "etres vivants",
 ### "corps humain et cinq sens" et "etats de l'eau"
 
@@ -9474,6 +9480,21 @@ disputant les memes vingt items.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
   `lea-dev` sur les trois fichiers deja livres a s27 ; `nadia-prof` pour l'audit et le Done
   pedagogique par ligne.
+
+**Cloture (2026-09-04, `camille-po`).** Les trois lignes ferment, en deux temps sur la premiere
+d'entre elles. Livraison initiale (`ad522a2`) : `bandit-manchot-corps-sens-cp` et
+`bandit-manchot-etats-eau-cp` tiennent `FER-1` a `FER-3` du premier coup - **VALIDE SOUS RESERVE**
+(`COR-R4`, payee et levee le meme jour, `0c383b9`) et **VALIDE** respectivement.
+`bandit-manchot-vivant-non-vivant-cp` est **REFUSE** le 2026-09-04 : trois des six items neufs de
+matiere inerte (caillou, sable, neige) donnaient `un objet` en bonne reponse, ce qui est faux au
+regard du libelle de la ligne. Corrige dans le meme sprint (`0c383b9`, texte fourni mot pour mot
+par `nadia-prof`) sur arbitrage de l'utilisatrice du 2026-09-04 (`DEC-0076`) et reaudite le meme
+jour : **VALIDE SOUS RESERVE** (`VIV-R2`, non bloquante). Les trois lignes passent
+`couvert-valide` (`QLM-CP-01`, `QLM-CP-03`, `QLM-CP-05`). Aucun item ne sert les lignes 4, 15 ou
+16 : le lot reste integralement consacre a la fermeture, comme exige. Reserves non bloquantes
+ouvertes pour s29 : `COR-R2`, `EAU-R1`, `VIV-R2` - voir section "Backlog ouvert pour s29" plus bas.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-vivant-non-vivant-cp.md`,
+  `FICHE-bandit-manchot-corps-sens-cp.md`, `FICHE-bandit-manchot-etats-eau-cp.md` ; `DEC-0076`.
 
 ### S28-2 - Second paquet d'histoire-geographie (CM1) : fermer les lignes "types d'espaces" et
 ### "eau, energie, aliments" (composition B)
@@ -9536,6 +9557,17 @@ disputant les memes vingt items.
   (cout le plus eleve des quatre lots, elle n'est jamais la source de cette matiere) et le Done
   pedagogique.
 
+**Cloture (2026-09-04, `camille-po`).** **VALIDE SOUS RESERVE** (`ec73c51`). Les deux lignes
+ferment : `HG-CM1-11` (types d'espaces, deux items a dix, les trois types en bonne reponse,
+`HG-R3` levee - distracteurs absurdes remplaces, item de contre-exemple ajoute) et `HG-CM1-13`
+(eau, energie, aliments, quatre items a dix, les trois ressources et les deux moities du libelle
+servies). Les dix-sept items neufs sont verifies un par un, aucune erreur de fait. Les neuf autres
+lignes d'histoire-geographie restent `en cours`, non touchees par ce lot, exactement comme
+annonce d'avance. Deux reserves non bloquantes nouvelles : `HG-R4` (charge de lecture, mediane du
+fichier a 16 mots contre 13 a s27) et `HG-R5` (mot d'indice "recolte" a corriger sur l'item du
+village de pecheurs) - voir section "Backlog ouvert pour s29" plus bas.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md`.
+
 ### S28-3 - Premier paquet d'anglais (CM1) : lire et comprendre des mots familiers, decouverte
 ### culturelle en francais
 
@@ -9584,6 +9616,20 @@ disputant les memes vingt items.
   `lea-dev` ; `nadia-prof` pour l'audit factuel et culturel (elle n'est pas la source de cette
   matiere) et le Done pedagogique.
 
+**Cloture (2026-09-04, `camille-po`).** **VALIDE SOUS RESERVE** (`aac5d88`). `LVE-CM1-04` ferme :
+quinze items sur la ligne, trois champs lexicaux a cinq mots chacun (`ANG-4`), deux sens de
+traduction dont le moins servi exactement au plancher (`FER-3`), quinze traductions verifiees une
+par une, aucune erreur. `LVE-CM1-07` s'ouvre sans fermer (cinq items, sous le plancher de dix,
+attendu et non un defaut) - **mention exigee d'avance ecrite dans la matrice**, verbatim :
+*"decouverte culturelle seule, en francais ; aucune competence linguistique n'est servie"*.
+Reserve non bloquante nouvelle : `ANG-R1` - l'item `montagne` -> `mountain` viole `REC-5` (mot
+transparent) et `REC-6` (longueur non voisine) ; correction fournie mot pour mot par
+`nadia-prof`, voir section "Backlog ouvert pour s29" plus bas. **Point route, non tranche ici** :
+`nadia-prof` demande qu'une liste de mots transparents soit declaree dans chaque paquet
+(`REC-5`), propriete qu'elle revendique, forme routee a `theo-archi` via `sofia-sm`, priorite a
+l'utilisatrice - voir la note "Route a sofia-sm" plus bas.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md`.
+
 ### S28-4 - Un lot de calcul pose (CM1) : la multiplication posee et la division euclidienne
 
 - **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a poser une multiplication et une
@@ -9623,6 +9669,20 @@ disputant les memes vingt items.
   derogation de `nombreDeManches`).
 - **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
   `lea-dev` ; `nadia-prof` pour l'audit et le Done pedagogique (elle est la source de ce calcul).
+
+**Cloture (2026-09-04, `camille-po`).** Les deux lignes ferment. Multiplication posee : **VALIDE**
+sans reserve, onze items, les quatre combinaisons du libelle servies (`POS-4`), chaque
+distracteur une erreur classique verifiee (`POS-3`), onze produits recalcules un par un, aucune
+erreur. Division posee : **VALIDE SOUS RESERVE** (`POS-R1`, non bloquante) - neuf items sur onze
+portent un distracteur au meme quotient que la bonne reponse, deux items sur onze se repondent
+sans diviser ; onze divisions recalculees (quotient et reste), aucune erreur. **Sur les deux
+lignes, la mention exigee d'avance est ecrite dans la matrice au meme moment que la fermeture**,
+verbatim : *"le resultat atteste le calcul ; la technique posee elle-meme - disposition,
+retenues, produits partiels - n'est ni montree ni verifiee par le produit."* Reserve non
+bloquante nouvelle : `POS-R1`, voir section "Backlog ouvert pour s29" plus bas - `nadia-prof`
+attire specifiquement l'attention dessus, cette ligne venant de fermer.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-multiplication-posee-cm1.md`,
+  `FICHE-bandit-manchot-division-posee-cm1.md`.
 
 ### S28-5 - Le palier 2 existe comme mecanique testable, sans paquet ni ecran servi
 
@@ -9723,6 +9783,90 @@ avant l'arbitrage prealable du premier paquet de designation, pas avant.
 
 - **Lien** : `ADR-0080`, section 7.2. A reprendre au plus tard a l'ouverture de cet arbitrage
   prealable.
+
+## Backlog ouvert pour s29 - sept reserves non bloquantes issues des verdicts de s28
+
+Sept reserves, toutes non bloquantes (aucune ne remet en cause un Done pedagogique deja rendu),
+ecrites par `nadia-prof` en rendant ses verdicts de s28. **Aucune story de developpement n'est
+ecrite ici pour les cinq premieres** : le perimetre de s29 n'est pas ouvert, et l'ecriture
+complete des criteres d'acceptation attend le planning, meme regle que pour toute autre reserve de
+ce fichier. Ce qui est fixe des maintenant, pour qu'il ne se reformule pas au moment d'ecrire la
+story : le texte de correction, quand `nadia-prof` l'a fourni mot pour mot.
+
+- **`VIV-R2`** (`bandit-manchot-vivant-non-vivant-cp`, non bloquante, datee du 2026-09-04) - sur
+  les trois items de matiere inerte, les deux propositions (`un être vivant` / `ce n'est pas un
+  être vivant`) se terminent par les memes mots, et le seul mot qui les distingue (*"ce n'est
+  pas"*) est en tete de la plus longue. **Contrainte actionnable, mot pour mot** : *"les deux
+  propositions d'un item de categorisation ne doivent pas se terminer par les memes mots, et ce
+  qui les distingue ne doit pas etre en position initiale seulement."* Piste nommee sans etre
+  prescrite par `nadia-prof`, a verifier en jouant avant de l'ecrire : remplacer, sur ces trois
+  items seuls, `ce n'est pas un être vivant` par `de la matière`.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-vivant-non-vivant-cp.md`, section "Troisieme
+    passage", `VIV-R2`.
+- **`HG-R4`** (`bandit-manchot-histoire-geographie-cm1`, non bloquante, datee du 2026-09-04) - la
+  charge de lecture du fichier monte (mediane 13 mots a s27, 16 a s28, onze des dix-sept items
+  neufs depassent 18 mots). Non bloquant : l'enonce porte la donnee necessaire au raisonnement,
+  vocabulaire de cycle 3. **Ce que `nadia-prof` demande pour le prochain lot de cette matiere** :
+  aucun enonce ne depasse 25 mots, et la mediane du fichier ne monte plus. Deux simplifications
+  fournies mot pour mot pour les items existants : retirer la premiere occurrence de *"mer"* dans
+  l'item du village de pecheurs (*"au bord de la mer"*) ; retirer *"transportee par bateau ou par
+  avion"* de l'item de l'orange en hiver.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md`, section 5.
+- **`HG-R5`** (`bandit-manchot-histoire-geographie-cm1`, non bloquante, datee du 2026-09-04) -
+  l'indice de l'item du village de pecheurs dit *"reviennent avec leur recolte du jour"* ; une
+  recolte est agricole, ce que l'item veut precisement distinguer de la peche. **Correction
+  fournie mot pour mot** : *"Pense aux bateaux qui partent tot le matin et reviennent charges de
+  poissons."*
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md`, section 5.
+- **`ANG-R1`** (`bandit-manchot-anglais-cm1`, non bloquante, datee du 2026-09-04) - l'item qui
+  demande la traduction de *montagne* a pour bonne reponse `mountain`, un mot transparent
+  (`REC-5`) dont la longueur (huit lettres) tranche avec les deux distracteurs (`REC-6`).
+  **Correction fournie mot pour mot** : `enonce` *"Comment dit-on colline en anglais ?"*,
+  `bonneReponse` `hill`, `distracteurs` `["field", "town"]`, `indice` *"C'est une petite hauteur
+  de terrain, moins haute qu'une montagne."* Le commentaire du paquet (*"aucune paire ne se
+  ressemble"*) doit etre corrige dans le meme geste : `mountain`/`montagne` en est exclue.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md`, section 4.
+- **`POS-R1`** (`bandit-manchot-division-posee-cm1`, non bloquante, datee du 2026-09-04) - **a
+  regarder en priorite pour s29** (`nadia-prof` attire specifiquement l'attention dessus, sur une
+  ligne qui vient de fermer) : sur neuf items sur onze, un distracteur porte exactement le
+  quotient de la bonne reponse avec un reste a zero, ce qui le rend reperable sans diviser ; sur
+  deux items sur onze (234/9, 152/8), les deux distracteurs ont un reste superieur ou egal au
+  diviseur et s'eliminent par la seule regle "le reste est plus petit que le diviseur", sans poser
+  l'operation. **Ce que `nadia-prof` demande pour le prochain lot de cette ligne** : varier la
+  troisieme proposition plutot que de la fabriquer toujours de la meme facon - un distracteur au
+  quotient faux et au reste valide oblige a poser l'operation entiere. Elle donne la propriete,
+  pas la liste des valeurs : a `marc-dev` ou `lea-dev`.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md`, section 5.
+- **`COR-R2`** (`bandit-manchot-corps-sens-cp`, non bloquante, ouverte depuis s27, inchangee) -
+  *gouter -> la bouche* ; l'organe du gout est la langue, mot que les manuels de cycle 2 emploient
+  pour ce sens. Non retouchee a s28, ce qui est legitime : `nadia-prof` l'avait ecrite "a regarder
+  si l'item est retouche". A regarder si un troisieme paquet de cette ligne s'ouvre.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-corps-sens-cp.md`, section "Reserves
+    anterieures".
+- **`EAU-R1`** (`bandit-manchot-etats-eau-cp`, non bloquante, ouverte depuis s27, inchangee) -
+  l'indice de l'item "quand la glace fond" est abstrait (*"passer du solide a ce deuxieme
+  etat"*), charge de langage inutile pour un CP. Piste non prescrite : *"Quand la glace fond, elle
+  coule."*
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-etats-eau-cp.md`, section "Reserves
+    anterieures".
+
+**Agent pressenti pour les six corrections textuelles** (`VIV-R2`, `HG-R4`, `HG-R5`, `ANG-R1`,
+`POS-R1` une fois ses valeurs ecrites) : `marc-dev` ou `lea-dev`, au regime du mot pour mot
+(0,25 chacune si le texte fourni est repris tel quel, `nadia-prof`) ; `nadia-prof` pour la
+reverification. `camille-po` ecrit les criteres d'acceptation complets une fois s29 ouvert.
+
+### Route a `sofia-sm` - une liste de mots transparents declaree dans le paquet (`REC-5`)
+
+`nadia-prof` signale que ce qui lui retirerait `REC-5` des mains serait qu'un paquet d'anglais
+declare, dans son propre fichier, la liste des mots qu'il juge transparents (au sens de `REC-5`) -
+sur le modele de ce que `HIS-3` et `HIS-4` font deja pour l'histoire-geographie. **Elle revendique
+la propriete** (aucun mot transparent en bonne reponse) **; la forme de cette declaration est une
+question d'architecture**, routee a `theo-archi`. Ni elle ni moi ne tranchons la forme : **la
+priorite de l'ecrire est un arbitrage de l'utilisatrice**, au meme titre que tout chantier de
+mecanique qui n'est pas encore au perimetre d'un sprint.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md`, section 4, `ANG-R1` ;
+  `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`,
+  section 11.
 
 ## Reserve pour s29 - la consigne, l'enonce et l'indice se repetent sur six paquets a voix, pas
 ## trois (`nadia-prof`, s27 et s28)
