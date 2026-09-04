@@ -503,7 +503,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " francais (\"house\", \"chien\", \"castle\"...) et des faits de decouverte"
                     + " culturelle (\"Londres\", \"Big Ben\", \"Thanksgiving\"...), valeurDe rend null"
                     + " sur les trois propositions de chaque item. Mesure du 2026-09-04 sur le paquet"
-                    + " servi : aucune des 60 propositions ne commence par un chiffre"));
+                    + " servi : aucune des 60 propositions ne commence par un chiffre"),
+            // S28-4 : second paquet neuf du lot de calcul pose CM1, division euclidienne (quotient
+            // et reste), MAT-CM1-05. Le premier paquet du lot, cm1-multiplication-posee, ecrit lui
+            // un nombre nu par proposition et reste dans le domaine (aucune entree ici).
+            Map.entry("cm1-division-posee",
+            "11 items sur 11 ecrivent chaque proposition sous la forme \"quotient reste X\" : la"
+                    + " lecture de valeur s'arrete au quotient, et le second nombre qu'elle n'a pas"
+                    + " consomme laisse un chiffre dans le reste (ADR-0068, un chiffre reste pour"
+                    + " compte), si bien que valeurDe rend null sur les trois propositions de chaque"
+                    + " item, y compris quand ce second nombre vaut 0. Mesure du 2026-09-04 sur le"
+                    + " paquet servi"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

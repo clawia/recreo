@@ -282,3 +282,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-anglais
     nombreDeManches: 10
+  - id: bandit-manchot-multiplication-posee-cm1
+    titre: "La multiplication posée"
+    consigne: "Pose l'opération, puis choisis le bon résultat."
+    mecanique: bandit-manchot
+    paquet: cm1-multiplication-posee
+    nombreDeManches: 10
+  - id: bandit-manchot-division-posee-cm1
+    titre: "La division posée"
+    consigne: "Pose l'opération, puis choisis le bon quotient et le bon reste."
+    mecanique: bandit-manchot
+    paquet: cm1-division-posee
+    nombreDeManches: 10

@@ -183,6 +183,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-histoire-geographie-cm1",
             // S28-3 (backlog S28-3) : entree neuve, premier paquet d'anglais, CM1.
             "bandit-manchot-anglais-cm1",
+            // S28-4 : deux entrees neuves, calcul pose CM1 (multiplication et division
+            // euclidienne, MAT-CM1-04 et MAT-CM1-05).
+            "bandit-manchot-multiplication-posee-cm1",
+            "bandit-manchot-division-posee-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -265,6 +269,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Histoire et géographie",
             // S28-3 : titre neuf.
             "Anglais",
+            // S28-4 : deux titres neufs.
+            "La multiplication posée",
+            "La division posée",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -347,6 +354,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // decrivaient plus ; ils partagent desormais la consigne generique ci-dessous, deja
             // dans l'inventaire.
             "Lis bien la question, puis choisis la bonne réponse.",
+            // S28-4 : deux consignes neuves.
+            "Pose l'opération, puis choisis le bon résultat.",
+            "Pose l'opération, puis choisis le bon quotient et le bon reste.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -489,7 +499,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // paquet, mot pour mot (cm1-anglais.yaml).
             "Ouvre la ligne lire et comprendre des mots et expressions familiers du référentiel "
                     + "Langues vivantes (anglais) CM1, et sert en français la ligne découverte "
-                    + "culturelle (lignes LVE-CM1-04 et LVE-CM1-07)");
+                    + "culturelle (lignes LVE-CM1-04 et LVE-CM1-07)",
+            // S28-4 : deux competences neuves, calcul pose CM1. Libelle du referentiel, mot pour
+            // mot (MAT-CM1-04 et MAT-CM1-05).
+            "Effectuer une multiplication posée d'un nombre à 2-3 chiffres par un nombre à 1-2 "
+                    + "chiffres",
+            "Effectuer une division euclidienne simple (quotient et reste) par un diviseur à 1 "
+                    + "chiffre");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

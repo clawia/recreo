@@ -1,0 +1,80 @@
+schema: 1
+id: cm1-multiplication-posee
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Effectuer une multiplication posée d'un nombre à 2-3 chiffres par un nombre à 1-2 chiffres"
+lignesDeReferentiel: ["MAT-CM1-04"]
+#
+# POS-1 (squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md,
+# section 5.4), mention de couverture partielle exigee d'avance par nadia-prof, a reprendre telle
+# quelle dans la matrice par camille-po - sans elle, la ligne ne ferme pas :
+#   "le resultat atteste le calcul ; la technique posee elle-meme - disposition, retenues, produits
+#   partiels - n'est ni montree ni verifiee par le produit."
+#
+# POS-3 : chaque distracteur correspond a une erreur classique nommee ici plutot que par une liste
+# fermee :
+#   - RETENUE-OUBLIEE : une retenue d'une colonne n'est pas ajoutee a la colonne suivante.
+#   - CHIFFRE-DE-PRODUIT-ERRONE : un chiffre d'un produit partiel est errone d'une table de
+#     multiplication mal memorisee (seule erreur possible quand le multiplicateur a un chiffre,
+#     faute de second produit partiel a decaler).
+#   - PRODUIT-PARTIEL-NON-DECALE : le produit partiel du chiffre des dizaines du multiplicateur
+#     n'est pas decale d'un rang vers la gauche avant d'etre additionne au premier produit partiel
+#     (items dont le multiplicateur a deux chiffres).
+#
+# POS-2 : sur chaque item, les trois propositions ont le meme nombre de chiffres et le meme ordre de
+# grandeur, et au moins un distracteur partage le chiffre des unites avec la bonne reponse.
+#
+# POS-4 : les quatre combinaisons du libelle sont servies - 2 chiffres par 1 (items 1 a 3 et 11),
+# 3 chiffres par 1 (items 4 a 6), 2 chiffres par 2 (items 7 et 8), 3 chiffres par 2 (items 9 et 10).
+#
+# ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest (DEC-0064) : dix manches exigent au moins
+# onze items distincts sans derogation sur nombreDeManches. L'item 11 sert ce seul motif technique ;
+# les dix premiers items suffisent deja a POS-1 a POS-4.
+items:
+  - enonce: "47 × 6 = ?"
+    bonneReponse: "282"
+    distracteurs: ["242", "222"]
+    indice: "Pose la multiplication en colonnes, calcule chaque produit avec sa retenue, puis ajoute-la à la colonne suivante."
+  - enonce: "68 × 4 = ?"
+    bonneReponse: "272"
+    distracteurs: ["242", "312"]
+    indice: "Pose la multiplication en colonnes, calcule chaque produit avec sa retenue, puis ajoute-la à la colonne suivante."
+  - enonce: "52 × 6 = ?"
+    bonneReponse: "312"
+    distracteurs: ["372", "318"]
+    indice: "Pose la multiplication en colonnes, calcule chaque produit avec sa retenue, puis ajoute-la à la colonne suivante."
+  - enonce: "326 × 4 = ?"
+    bonneReponse: "1 304"
+    distracteurs: ["1 204", "1 264"]
+    indice: "Pose la multiplication en colonnes, calcule chaque produit avec sa retenue, puis ajoute-la à la colonne suivante."
+  - enonce: "428 × 3 = ?"
+    bonneReponse: "1 284"
+    distracteurs: ["1 264", "1 584"]
+    indice: "Pose la multiplication en colonnes, calcule chaque produit avec sa retenue, puis ajoute-la à la colonne suivante."
+  - enonce: "216 × 4 = ?"
+    bonneReponse: "864"
+    distracteurs: ["874", "964"]
+    indice: "Pose la multiplication en colonnes, calcule chaque produit avec sa retenue, puis ajoute-la à la colonne suivante."
+  - enonce: "27 × 14 = ?"
+    bonneReponse: "378"
+    distracteurs: ["358", "135"]
+    indice: "Pose la multiplication en colonnes : multiplie d'abord par le chiffre des unités, puis par celui des dizaines en décalant d'un rang vers la gauche, puis additionne les deux lignes."
+  - enonce: "34 × 18 = ?"
+    bonneReponse: "612"
+    distracteurs: ["306", "812"]
+    indice: "Pose la multiplication en colonnes : multiplie d'abord par le chiffre des unités, puis par celui des dizaines en décalant d'un rang vers la gauche, puis additionne les deux lignes."
+  - enonce: "213 × 18 = ?"
+    bonneReponse: "3 834"
+    distracteurs: ["3 814", "1 917"]
+    indice: "Pose la multiplication en colonnes : multiplie d'abord par le chiffre des unités, puis par celui des dizaines en décalant d'un rang vers la gauche, puis additionne les deux lignes."
+  - enonce: "132 × 13 = ?"
+    bonneReponse: "1 716"
+    distracteurs: ["1 916", "1 816"]
+    indice: "Pose la multiplication en colonnes : multiplie d'abord par le chiffre des unités, puis par celui des dizaines en décalant d'un rang vers la gauche, puis additionne les deux lignes."
+  - enonce: "63 × 7 = ?"
+    bonneReponse: "441"
+    distracteurs: ["451", "442"]
+    indice: "Pose la multiplication en colonnes, calcule chaque produit avec sa retenue, puis ajoute-la à la colonne suivante."
