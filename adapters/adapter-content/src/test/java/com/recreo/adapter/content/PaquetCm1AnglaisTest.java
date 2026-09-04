@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,11 +35,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  * cle ignoree par {@code QuestionContentSourceFactory} et absente du record {@link Question}.</p>
  *
  * <p>Ne couvre que les criteres d'acceptation automatisables (comptage, forme, FER-2, ANG-4,
- * REC-6, la proportion de sens de traduction, l'absence de consigne a l'adulte) : REC-5 (aucun mot
- * transparent) est verifie mot par mot a la redaction et documente dans le commentaire du paquet,
- * jugement de sens qu'aucun automate general de ce depot ne porte - meme limite que HIS-2 sur
- * {@code PaquetCm1HistoireGeographieTest}. Ce test verifie neanmoins, sur les quinze paires
- * francais/anglais reellement servies, qu'aucune des deux graphies d'une meme paire ne coincide.</p>
+ * ANG-5, REC-6, BIA-2, la proportion de sens de traduction, l'absence de consigne a l'adulte) :
+ * REC-5 (aucun mot transparent) est verifie mot par mot a la redaction et documente dans le
+ * commentaire du paquet, jugement de sens qu'aucun automate general de ce depot ne porte - meme
+ * limite que HIS-2 sur {@code PaquetCm1HistoireGeographieTest}. Ce test verifie neanmoins, sur les
+ * quinze paires francais/anglais reellement servies, qu'aucune des deux graphies d'une meme paire
+ * ne coincide.</p>
  */
 class PaquetCm1AnglaisTest {
 
@@ -80,6 +82,19 @@ class PaquetCm1AnglaisTest {
             Map.entry("champ", "field"), Map.entry("sorcière", "witch"),
             Map.entry("château", "castle"), Map.entry("fée", "fairy"), Map.entry("roi", "king"),
             Map.entry("fantôme", "ghost"));
+
+    /**
+     * BIA-2, pays servi par chaque bonne reponse des cinq items de {@code LVE-CM1-07}, lu sur le
+     * materiau reel. Sert a compter les faits par pays, pas a les affirmer distincts : un item
+     * ajoute sans mise a jour de cette table fait echouer le test au lieu de passer a tort.
+     */
+    private static final Map<String, String> PAYS_PAR_BONNE_REPONSE_DE_DECOUVERTE_CULTURELLE =
+            Map.of(
+                    "Londres", "Royaume-Uni",
+                    "Big Ben", "Royaume-Uni",
+                    "Washington", "États-Unis",
+                    "le drapeau des États-Unis", "États-Unis",
+                    "Thanksgiving", "États-Unis");
 
     private static List<Question> tousLesItems(ContentSource contenu) {
         RandomSource hasard = new Random(1)::nextInt;
@@ -183,6 +198,28 @@ class PaquetCm1AnglaisTest {
                 .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2,
                         LIGNE_LIRE_ET_COMPRENDRE)
                 .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+    }
+
+    /**
+     * ANG-5 : la reponse attendue sur {@code LVE-CM1-04} est un mot seul, jamais une forme
+     * grammaticale non enseignee (pluriel, conjugaison, determinant variable). Garde de forme,
+     * calculable sur le lexique reellement servi : aucune bonne reponse ne contient d'espace (donc
+     * aucun article ni aucune expression a plusieurs mots), et aucune ne se termine par "s" (donc
+     * aucune marque de pluriel sur les quinze mots de ce lot, dont aucun n'est legitimement
+     * singulier en "s").
+     */
+    @Test
+    void ang5ChaqueReponseDeLaLigneLireEtComprendreEstUnMotSeulSansArticleNiPluriel() {
+        for (Map<String, Object> item : itemsDeLaLigne(LIGNE_LIRE_ET_COMPRENDRE)) {
+            String bonneReponse = String.valueOf(item.get("bonneReponse"));
+            assertThat(bonneReponse)
+                    .as("ANG-5 : '%s' n'est pas un mot seul (espace = article ou expression)",
+                            item.get("enonce"))
+                    .doesNotContain(" ");
+            assertThat(bonneReponse)
+                    .as("ANG-5 : '%s' porte une marque de pluriel", item.get("enonce"))
+                    .doesNotEndWith("s");
+        }
     }
 
     /**
@@ -325,17 +362,50 @@ class PaquetCm1AnglaisTest {
     }
 
     /**
-     * BIA-2 : aucun pays represente par un seul trait. Garde de forme : les cinq bonnes reponses de
-     * {@code LVE-CM1-07} sont toutes distinctes, donc chaque pays cite l'est par plus d'un fait au
-     * fil du paquet des que plusieurs items le concernent.
+     * Propriete generique, distincte de BIA-2 : aucune bonne reponse de decouverte culturelle ne se
+     * repete. Ne garantit pas BIA-2 (un pays pourrait n'avoir qu'un seul fait, jamais repete, et
+     * passerait ce test) - voir {@link #bia2AucunPaysNEstReduitAUnSeulTrait()} pour BIA-2
+     * elle-meme.
      */
     @Test
-    void bia2LesBonnesReponsesDeDecouverteCulturelleSontToutesDistinctes() {
+    void chaqueBonneReponseDeDecouverteCulturelleEstDistincte() {
         List<Map<String, Object>> ligne7 = itemsDeLaLigne(LIGNE_DECOUVERTE_CULTURELLE);
         Set<Object> reponses = new HashSet<>();
         for (Map<String, Object> item : ligne7) {
             reponses.add(item.get("bonneReponse"));
         }
         assertThat(reponses).hasSize(ligne7.size());
+    }
+
+    /**
+     * BIA-2 : aucun pays represente par un seul trait. Compte les faits par pays sur
+     * {@link #PAYS_PAR_BONNE_REPONSE_DE_DECOUVERTE_CULTURELLE} : un item ajoute a un pays deja
+     * present fait monter son compte, un item ajoute a un pays absent de la table fait echouer ce
+     * test (cle inconnue) plutot que de passer a tort.
+     */
+    @Test
+    void bia2AucunPaysNEstReduitAUnSeulTrait() {
+        List<Map<String, Object>> ligne7 = itemsDeLaLigne(LIGNE_DECOUVERTE_CULTURELLE);
+
+        Map<String, Long> comptesParPays = ligne7.stream()
+                .map(item -> String.valueOf(item.get("bonneReponse")))
+                .collect(Collectors.groupingBy(
+                        bonneReponse -> {
+                            String pays = PAYS_PAR_BONNE_REPONSE_DE_DECOUVERTE_CULTURELLE
+                                    .get(bonneReponse);
+                            assertThat(pays)
+                                    .as("'%s' n'est pas declaree dans la table des pays",
+                                            bonneReponse)
+                                    .isNotNull();
+                            return pays;
+                        },
+                        Collectors.counting()));
+
+        assertThat(comptesParPays.keySet())
+                .as("les pays declares dans la table sont bien ceux servis")
+                .containsExactlyInAnyOrder("Royaume-Uni", "États-Unis");
+        comptesParPays.forEach((pays, compte) -> assertThat(compte)
+                .as("BIA-2 : '%s' n'est pas reduit a un seul trait", pays)
+                .isGreaterThanOrEqualTo(2));
     }
 }
