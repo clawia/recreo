@@ -3,7 +3,7 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-qlm-corps-sens.yaml`.
 - **Entree de catalogue** : `bandit-manchot-corps-sens-cp`, titre servi *"Le corps et les sens"*, `nombreDeManches: 10` depuis s28 (`7` a s27).
-- **Statut global s28** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-04** sur l'increment de s28). **La ligne `QLM-CP-03` ferme** : elle passe a `couvert-valide`. Une reserve nommee et datee, `COR-R4`, a corriger dans un sprint suivant (section 4 du second passage).
+- **Statut global s28** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-04** sur l'increment de s28). **La ligne `QLM-CP-03` ferme** : elle passe a `couvert-valide`. La reserve `COR-R4` a ete **payee dans `0c383b9` et levee le 2026-09-04** (addendum en bas de fiche) ; `COR-R2` reste ouverte et non bloquante. **Le verdict lui-meme n'est pas rejuge : la ligne etait deja fermee, elle le reste.**
 - **Statut s27, conserve tel quel** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce**, 2026-09-03). **Une reserve nommee, a corriger dans un sprint suivant** : un item sur huit est trop long pour un CP et emploie un mot hors niveau (section 4). Ligne de matrice `non couvert` -> **`en cours`** - premier paquet d'une matiere neuve, la ligne ne se ferme pas.
 - **Arbitrage prealable de `nadia-prof`** : `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, sections 4 (ligne 3) et 7.1.
 - **Derniere mise a jour** : 2026-09-04 (**second verdict de `nadia-prof` apres avoir rejoue**, s28).
@@ -186,3 +186,61 @@ avec un test qui mord specifiquement l'item de la peau.
 sur l'existence d'un test. **Ce que cela change pour l'equipe : tout** - sans ce rattrapage, la
 seule chose qui aurait tenu ces trois conditions sur cette ligne aurait ete **ma lecture**, et je
 ne suis pas dans la piece au sprint suivant.
+
+---
+
+## Addendum du 2026-09-04 - `COR-R4` payee dans `0c383b9`, **levee**
+
+- **Ce bloc ne rejuge pas le paquet** et ne rouvre pas la ligne : `QLM-CP-03` etait deja fermee par
+  le verdict **VALIDE SOUS RESERVE** ci-dessus, et elle le reste. Il ne porte que sur **une
+  substitution de texte servi a l'enfant, intervenue apres mon verdict**, que je dois donc regarder.
+- **Ce que je verifie ici** : le fond, le niveau et le ton. L'orthographe, l'accentuation et la
+  ponctuation appartiennent au `relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ;
+  `DEC-0056`), y compris sur un texte lu par l'enfant.
+
+### La substitution me convient, et voici a quoi je l'ai mesuree
+
+| | Enonce servi | Mesure |
+|---|---|---|
+| Avant | *"Quelle partie du corps permet de sentir le chaud, le froid ou le doux, partout sur le corps ?"* | 19 |
+| Apres | *"Quelle partie du corps sent le chaud et le froid partout ?"* | 12 |
+
+**C'est mon texte, mot pour mot, sans ajout ni retrait.** `bonneReponse` (*"la peau"*), les deux
+distracteurs (*"les cheveux"*, *"les ongles"*) et l'indice (*"Elle recouvre tout le corps, pas
+seulement les mains."*) sont **inchanges**, comme je l'avais exige.
+
+**Je corrige d'abord un chiffre a moi.** J'avais annonce *"onze mots"* en dictant la correction, et
+`lea-dev` a repris le chiffre. **Sous la convention de comptage que j'ai employee pour la mesure de
+`COR-R4` elle-meme** - celle qui donne 19 a l'ancien enonce et une mediane de 9 au paquet, et qui
+compte donc le point d'interrogation comme un jeton - **la nouvelle formule en fait 12, pas 11**.
+Onze est le compte des mots seuls. Les deux chiffres sont vrais sous deux conventions differentes ;
+**ce qui ne serait pas vrai, c'est de comparer 11 a une mediane de 9 obtenue autrement.** Le chiffre
+comparable est **12**.
+
+- **Longueur** : **de 19 a 12, sur la meme convention**, pour une mediane de 9 inchangee. **L'item
+  n'est plus le plus long du paquet** - deux autres enonces sont a 13, et je ne les avais pas
+  reserves a s28 ; je ne les reserve pas davantage aujourd'hui. **L'outlier a disparu**, et c'etait
+  le motif entier de `COR-R4`.
+- **Repetition** : *"corps"* n'apparait plus qu'une fois dans l'enonce. Il reparait dans l'indice,
+  ce qui est normal - l'indice n'est lu que par l'enfant bloque.
+- **Vocabulaire** : *chaud*, *froid*, *partout* sont tous du CP, comme *doux* l'etait. **Aucun mot
+  difficile n'a ete introduit.**
+- **Ce que la formule perd**, et je le reverifie plutot que de me citer : la mention du *doux*.
+  Elle est **bien servie ailleurs, par l'item *"Avec quoi sait-on si c'est doux ?"***, seul autre
+  enonce du paquet a `0c383b9` qui porte ce mot. La competence ne perd rien. **Je le verifie au
+  fichier parce que je l'avais affirme de memoire en dictant la correction.**
+- **L'item vise toujours la peau et rien d'autre** : ni les cheveux ni les ongles ne sentent le
+  chaud et le froid, les deux distracteurs restent plausibles sans etre vrais, et le *"partout"*
+  final reste le mot qui porte la reponse.
+
+**`COR-R4` est donc levee**, comme `COR-R1` l'avait ete a s27 dans les memes conditions. **Je ne la
+remplace par aucune reserve nouvelle sur cet item.**
+
+### Etat des reserves de cette ligne au 2026-09-04, apres cet addendum
+
+- **`COR-R1`** (item du toucher trop long) : **levee le 2026-09-03**. Inchangee.
+- **`COR-R2`** (*gouter -> la bouche*, quand l'organe du gout est la langue) : **toujours ouverte,
+  inchangee, toujours non bloquante**. L'item n'a pas ete retouche par `0c383b9`, ce qui reste
+  legitime. **Je ne la durcis pas.**
+- **`COR-R3`** (`nombreDeManches: 7`) : **levee**. Inchangee.
+- **`COR-R4`** (item de la peau, 19 mots) : **levee le 2026-09-04**, ci-dessus.

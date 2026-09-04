@@ -2,10 +2,11 @@
 
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-qlm-vivant-non-vivant.yaml`.
-- **Entree de catalogue** : `bandit-manchot-vivant-non-vivant-cp`, titre servi *"Vivant ou objet"*, `nombreDeManches: 10` depuis s28 (`7` a s27).
-- **Statut global** : **le premier paquet (s27, huit items) reste VALIDE** - je ne revoque rien. **L'increment de s28 (six items neufs) est REFUSE** (2026-09-04, section 7 ci-dessous) : **la ligne `QLM-CP-01` ne ferme pas** et reste `en cours`. Motif en une phrase : *"De la neige, qu'est-ce que c'est ? - un objet"* est faux, et le jeu felicite l'enfant qui le repond.
+- **Entree de catalogue** : `bandit-manchot-vivant-non-vivant-cp`, titre servi *"Vivant ou pas vivant"* depuis la correction du 2026-09-04 (*"Vivant ou objet"* avant), `nombreDeManches: 10` depuis s28 (`7` a s27).
+- **Statut global** : **VALIDE SOUS RESERVE** (2026-09-04, troisieme passage, bloc en bas de fiche). **La ligne `QLM-CP-01` ferme** : elle passe a `couvert-valide`. Une reserve nommee et datee, `VIV-R2`, non bloquante, a corriger dans un sprint suivant.
+- **Histoire des verdicts, aucun efface** : s27, premier paquet (huit items) **VALIDE**. s28, second passage (six items neufs) **REFUSE** le 2026-09-04 - *"De la neige, qu'est-ce que c'est ? - un objet"* est faux, et le jeu felicitait l'enfant qui le repondait. s28, troisieme passage apres correction (`0c383b9`) **VALIDE SOUS RESERVE** le meme jour. **Les trois blocs restent lisibles, dans l'ordre ; un refus efface ne prouve rien.**
 - **Arbitrage prealable de `nadia-prof`** : `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, sections 4 (ligne 1) et 7.1.
-- **Derniere mise a jour** : 2026-09-04 (**second verdict de `nadia-prof` apres avoir rejoue**, s28).
+- **Derniere mise a jour** : 2026-09-04 (**troisieme verdict de `nadia-prof` apres avoir rejoue et relu les quatorze items**, s28).
 
 ## Competence visee
 
@@ -203,3 +204,161 @@ Le sprint est au plafond de ma borne (5,0 sur 5) et **il n'y a aucune marge de r
 regime du mot pour mot puisque je viens de fournir le texte, et **les trois items faux restent
 servis en production jusque-la** - c'est un fait que je ne minimise pas et que `camille-po` doit
 peser en priorisant.
+
+---
+
+## Troisieme passage - reaudit apres correction (`0c383b9`) - **VALIDE SOUS RESERVE**
+
+- **Verdict** : **VALIDE SOUS RESERVE**, prononce le **2026-09-04** par `nadia-prof`, apres avoir
+  rejoue et relu les quatorze items. **Done pedagogique ouvert.**
+- **Ce que ce verdict ne fait pas** : il **n'efface pas** le refus du second passage, qui reste
+  au-dessus, date, avec son motif entier. Un refus efface ne prouve rien. Ce bloc s'ajoute, il ne
+  remplace pas.
+- **Consequence de matrice** : **`QLM-CP-01` ferme.** `camille-po` peut passer la ligne a
+  `couvert-valide`. **Aucune mention de couverture partielle n'est due sur cette ligne.**
+- **Reserve nommee, non bloquante, nouvelle et datee du 2026-09-04** : `VIV-R2`, section 4.
+  **Elle ne durcit pas le motif du refus** - celui-ci est paye entierement, et je le dis avant de
+  dire ce qui reste.
+- **Prix** : **0,25**, regime du mot pour mot, puisque j'avais fourni le texte. Total du sprint
+  porte a **5,25**, au-dela de ma borne de 5, **par arbitrage de l'utilisatrice du 2026-09-04**
+  rendu avec mon refus ecrit sous les yeux. J'execute cet arbitrage, je ne le rediscute pas.
+
+### Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `0c383b9`, jar reconstruit et lance sur une machine virtuelle
+rapportant 21.0.10, **partie complete de dix manches par appels HTTP reels**, dont les trois items
+de matiere inerte tires, **avec erreur volontaire sur l'item de la neige**. **Et j'ai relu les
+quatorze items un par un** avec leurs distracteurs, parce que j'ai ecrit a s27 qu'un item rare peut
+n'etre jamais tire. **Ce n'est pas un audit degrade.**
+
+**Done technique acquis** : `mvn -B clean verify` sur le reacteur complet, **BUILD SUCCESS** sur les
+six modules. Un jeu qui plante n'est pas evaluable ; celui-ci ne plante pas.
+
+### 1. **Le motif du refus est paye, integralement**
+
+Lu a l'ecran pendant la partie, sur les deux items que j'avais cites nommement :
+
+> *"De la neige, qu'est-ce que c'est ?"* -> propositions **`un être vivant`** et
+> **`ce n'est pas un être vivant`** -> la bonne reponse est la seconde.
+> *"Un caillou, qu'est-ce que c'est ?"* -> meme couple, meme bonne reponse.
+
+**Le jeu ne felicite plus l'enfant qui repond qu'une chose de matiere inerte est un objet** : cette
+reponse n'existe plus sur ces trois items. Les quatre objets fabriques (chaise, ballon, voiture,
+stylo) gardent `un objet` - je l'ai verifie item par item et j'en ai vu servir trois en jouant.
+**Le titre est corrige** : le catalogue sert *"Vivant ou pas vivant"*. La correction est mon texte,
+mot pour mot, sans ajout ni retrait.
+
+**L'opposition est restee binaire, comme je l'avais maintenu** : deux propositions par item, jamais
+plus. Et **l'enfant ne voit jamais `un objet` et `ce n'est pas un être vivant` cote a cote** - j'ai
+verifie dans la mecanique que les propositions d'une manche sont la bonne reponse et les
+distracteurs **de cet item-la**, melanges, jamais tires d'un vivier commun au paquet. Le risque
+symetrique de ma propre correction - offrir a l'enfant deux reponses toutes deux vraies, dont une
+comptee fausse - **n'existe donc pas**. C'etait le point que je devais verifier et il est verifie.
+
+### 2. **Ce que j'ai verifie au-dela des trois items corriges**
+
+J'avais ecrit que le defaut venait de ma prescription incomplete. Une correction ciblee sur trois
+items peut laisser la meme confusion ailleurs ; j'ai donc repris le paquet entier.
+
+- **Les quatre etres vivants** (chat, arbre, poisson, oiseau) : bonne reponse `un être vivant`,
+  distracteur `un objet`. **`un objet` y est faux**, donc c'est un distracteur legitime. Rien a
+  reprendre. L'arbre reste du bon cote, ce qui est le seul vrai piege de la ligne.
+- **Les quatre objets fabriques** : bonne reponse `un objet`, distracteur `un être vivant`. **Une
+  chaise, un ballon, une voiture, un stylo sont des objets fabriques** ; le mot est exact pour eux
+  et pour eux seuls. **L'element *"les objets"* du libelle de la ligne reste servi en position de
+  bonne reponse**, ce que je demandais.
+- **Les trois items de selection** (chien / chaise / caillou, fleur / ballon / sable, poisson /
+  voiture / neige) : bonnes reponses justes, **six distracteurs verifies un par un**, tous non
+  vivants, tous pris dans le materiau deja introduit. **Aucun distracteur absurde, aucun distracteur
+  vrai.** Ils ne nomment jamais une categorie, seulement une chose : la tache reste distincte de la
+  categorisation.
+- **La confusion que je cherchais n'est nulle part ailleurs** : aucun item ne demande a l'enfant de
+  distinguer un objet fabrique d'une chose de matiere inerte, et c'est la bonne conduite - **le
+  libelle de la ligne demande de distinguer le vivant *des objets et de la matiere inerte*, pas les
+  objets de la matiere inerte.** Le paquet couvre la ligne telle qu'elle est ecrite.
+- **Les indices** : inchanges, et ils portent toujours le critere sans donner la reponse (*"La neige
+  ne nait pas, ne grandit pas et ne se nourrit pas"*). Ce sont toujours les meilleurs du produit sur
+  cette matiere.
+- **Traitement de l'erreur, joue** : sur ma faute volontaire, l'enfant reste sur l'item, recoit
+  *"Ce n'est pas ca. Essaie encore !"* et l'indice. J'ai aussi echoue trois fois de suite sur un
+  item de selection : **le jeu revele alors la reponse et demande a l'enfant de l'appuyer**
+  (*"C'est le poisson. Appuie sur le poisson."*). **Un enfant bloque peut toujours avancer**, et il
+  ne recoit jamais un simple *"faux"*.
+- **Joue jusqu'au bout** : dix manches, ecran de fin atteint (*"C'est fini !"*), retour au
+  catalogue disponible.
+- **Biais** : inchange depuis s27. **`BIA-4` respectee** - caillou, sable et neige n'interrogent
+  l'enfant ni sur son foyer, ni sur son lieu, ni sur ses moyens. **La neige merite d'etre nommee**
+  parce qu'un enfant peut ne jamais en avoir vu : elle n'est ici ni un vecu presuppose ni la
+  reponse, seulement un exemple nomme, et l'indice suffit a repondre sans l'avoir touchee. **Ce
+  n'est pas un biais.**
+
+### 3. Je corrige un de mes propres constats avant de m'en servir
+
+Ma section 5 du refus disait que le test
+`chacuneDesDeuxCategoriesEstRepresenteeParmiLesItemsDeCategorisation` **figeait** *"4 vivants /
+7 objets dont 3 de matiere inerte"*. **Le nom que j'ai cite n'existe plus** : le test s'appelle
+desormais `chacuneDesTroisReponsesEstRepresenteeParmiLesItemsDeCategorisation` et compte **4 / 4 /
+3**. Ma phrase decrivait exactement l'etat d'alors et elle est perimee de la bonne facon - c'est ma
+correction qui l'a perimee. **Je l'ecris plutot que de la laisser lire comme un reproche encore
+vivant.**
+
+### 4. **`VIV-R2` - reserve nouvelle, datee du 2026-09-04, non bloquante, et le defaut est dans mon texte**
+
+**Ce que j'ai vu en jouant et que je ne pouvais pas voir en dictant sur le papier** : sur les trois
+items de matiere inerte, les deux boutons cote a cote portent
+
+> `un être vivant`   et   `ce n'est pas un être vivant`
+
+**Trois mots contre six, et les trois mots courts sont contenus entiers a la fin des six.** Le seul
+element qui distingue les deux propositions - *ce n'est pas* - est **en tete de la plus longue**,
+alors qu'un enfant de CP qui decode lentement s'accroche aux mots qu'il reconnait, et il reconnait
+*vivant* dans les deux. Sur les onze autres items, les deux propositions sont **lexicalement
+disjointes** (*un objet* contre *un être vivant*, ou trois noms de choses) : l'enfant discrimine
+d'un coup d'oeil. **Sur ces trois-la, il doit lire jusqu'au bout pour distinguer.**
+
+**S'y ajoute un point de registre** : *"De la neige, qu'est-ce que c'est ?"* est une question
+d'identification, et *"ce n'est pas un être vivant"* y repond par une negation plutot que par un
+nom. C'est vrai, mais ce n'est pas la forme d'une reponse a *"qu'est-ce que c'est ?"*.
+
+**Pourquoi c'est une reserve et non un refus, et je tiens mon precedent dans les deux sens.**
+Le motif de mon refus etait **l'exactitude**, et l'exactitude est retablie. Ce qui reste est de la
+**lisibilite et du registre**, famille que j'ai declaree non bloquante sur `COR-R1` (2026-09-03) et
+sur `COR-R4` (2026-09-04), toutes deux sur du texte plus penalisant que celui-ci. **Refuser
+aujourd'hui mon propre texte, applique mot pour mot, serait deplacer mon poteau apres coup et faire
+de ma porte un caprice.** Je ne le fais pas. `VIV-R2` est **une reserve neuve et datee, pas un
+durcissement de l'ancienne** : elle nait d'un fait que seul le jeu montre - **deux boutons cote a
+cote**, que le fichier de contenu ne montre pas.
+
+**Ce qu'une correction devra tenir, pour que `camille-po` en fasse une story actionnable** : sur un
+item de categorisation, **les deux propositions ne doivent pas se terminer par les memes mots**, et
+ce qui les distingue ne doit pas se trouver en position initiale seulement.
+
+**Piste que je nomme sans la prescrire, parce que je ne l'ai pas jouee** : remplacer, sur ces trois
+items seuls, `ce n'est pas un être vivant` par **`de la matière`**. Cela rend les deux propositions
+disjointes, cela repond a *"qu'est-ce que c'est ?"* par un nom, cela n'ajoute **aucune** etiquette
+au paquet (il en porte deja trois) et **cela recopie le troisieme terme du libelle de la ligne**.
+Ce qu'il faudra verifier avant de l'ecrire, et que je verifierai en jouant : *matiere* comme
+categorie est un mot abstrait pour un enfant de six ans, et il faudra que les indices le portent.
+**Tant que ce n'est pas verifie, la formule actuelle reste servie et elle est juste.**
+
+### 5. Sur quelles proprietes je reste la seule garde - dit explicitement
+
+Le test neuf de `lea-dev` mord bien le defaut que j'ai trouve : il nomme les trois enonces de
+matiere inerte et exige leur bonne reponse. **Ce qu'il garde reellement, ce sont les chaines de
+caracteres que j'ai dictees, et les comptes 4 / 4 / 3.** Il ne sait pas que *"un objet"* est faux
+pour du sable ; il sait que j'ai ecrit autre chose. **La verite d'un enonce scolaire n'est gardee
+par aucun test de ce depot, et elle ne peut pas l'etre** : c'est moi, en jouant et en lisant. Que
+`VIV-R2` porte sur du texte que j'avais moi-meme dicte, et qu'aucun garde-fou n'ait rien dit, en est
+la demonstration du jour.
+
+Restent egalement sans garde-fou sur cette ligne : la plausibilite des distracteurs, la
+discriminabilite de deux propositions affichees cote a cote, l'accessibilite du vocabulaire au
+niveau vise, et le fait qu'un item de selection serve vraiment sa ligne. **L'equipe ne doit pas
+croire couvert ce qui ne l'est pas.**
+
+### 6. Etat des reserves de cette ligne au 2026-09-04
+
+- **`VIV-R1`** (`nombreDeManches: 7` sans decision ecrite) : **levee au second passage**, la valeur
+  est repassee a `10`. Inchange, rien a rouvrir.
+- **`VIV-R2`** (les deux propositions des items de matiere inerte se terminent par les memes mots) :
+  **ouverte, non bloquante**, section 4. A traiter a un sprint suivant.
