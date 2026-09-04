@@ -488,6 +488,22 @@ balayages les traversent, devient rouge le jour meme ou la dette est due - pas a
 a la relecture. Sa forme est celle d'`ADR-0067` et son ecriture appartient au lot qui livrera `T6` ;
 ce qui est decide ici est qu'elle est due avec lui.
 
+**Amendement du 2026-09-04 (sofia-sm) - ce cliquet est ecrit, pas seulement du.** `yanis-qa` a
+releve dans son rapport qualite de s28 qu'aucun cliquet executable ne portait cette dette a la
+fin du sprint - une ligne d'`ADR` promettant un mecanisme n'est pas le mecanisme. Motif de ne pas
+attendre `T6` : le plafond etait deja disponible et gratuit, et ce depot a documente quatre fois
+sans jamais la payer une dette du meme genre (`CLAUDE.md`, section "Prerequis de build", le refus
+de `mvn-jdk21.sh`). `AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest`
+(`bootstrap/src/test/java/com/recreo/archi/`) compte les paquets de type `designation` sous
+`src/main/resources` de chaque module de contenu (perimetre derive, jamais enumere), vert tant que
+ce compte vaut `PLAFOND_DE_DESIGNATION_EN_PRODUCTION` (0 aujourd'hui), rouge des qu'il le depasse -
+le message nomme alors les trois balayages a etendre (garde-fous 4, 5 et 6 ci-dessus) et `T6`. Mis
+a l'epreuve par un jeu fautif commite et par mutation en memoire, dans les deux sens (compte qui
+monte, plafond qu'aucun compte reel ne justifie plus). Ceci ne change rien a ce qui est decide :
+`T6` reste le lot qui livre le premier paquet reel et qui etend les trois balayages ; ce qui est
+constate est que le cliquet qui l'empeche d'etre oublie existe desormais, plutot que d'attendre ce
+lot pour exister.
+
 **Sur le garde-fou 2 et la lecon de s05.** Une liste de mots interdits est exactement le genre de
 regle qui passe sa propre epreuve et echoue dans le monde. J'ai donc verifie les sept mots **sur le
 materiau reel et non sur une fixture** : `adapters/adapter-web/src/main/resources/static/js/recreo.js`,

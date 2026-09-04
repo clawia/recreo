@@ -1,0 +1,9 @@
+schema: 1
+id: paquet-designation
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu fautif de mise a l'epreuve, jamais servi"
+items: []

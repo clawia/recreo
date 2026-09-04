@@ -1,0 +1,9 @@
+schema: 1
+id: paquet-sain
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu sain de mise a l'epreuve, jamais servi"
+items: []
