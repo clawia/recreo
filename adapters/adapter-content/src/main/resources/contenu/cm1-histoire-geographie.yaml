@@ -60,6 +60,77 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 # limite que HIS-2.
 #
 # Vingt items, plafond de nadia-prof pour un premier paquet de matière neuve, atteint et non dépassé.
+#
+# S28-2. Second paquet d'histoire-géographie CM1, composition B (arbitrage préalable de s28,
+# ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md, sections 3.2 et 5.1 ;
+# DEC-0074, amendement du 2026-09-03 ; docs/backlog/backlog.md, story S28-2). Ferme les lignes
+# HG-CM1-11 (types d'espaces) et HG-CM1-13 (eau, énergie, aliments) si nadia-prof vérifie FER-1,
+# FER-2 et FER-3 tenues sur chacune, indépendamment l'une de l'autre. Les neuf autres lignes du
+# paquet ne sont pas touchées et restent en cours - ce lot est intégralement consacré à la
+# fermeture de ces deux lignes, il n'en ouvre aucune de plus dans la matière.
+#
+# HG-CM1-11 passe de 2 à 10 items (+8, exactement le minimum chiffré par nadia-prof) :
+# - FER-1 (extension) : les trois éléments du libellé sont désormais servis en bonne réponse -
+#   "un espace urbain" (item existant + 1 item neuf, comparaison de densité), "un espace périurbain"
+#   (1 item neuf, absent jusqu'ici et servi seulement en distracteur), "un espace rural" (1 item
+#   neuf, en plus de l'item corrigé qui reste sur une caractéristique et non sur le nom de l'espace).
+# - FER-2 (densité) : 10 items, exactement le plancher de nadia-prof.
+# - FER-3 (deux tâches) : "identification" (décrire une scène ou comparer un fait, nommer le type
+#   d'espace - item existant + 3 items neufs = 4) et "association-caractéristique" (le type d'espace
+#   est donné, une caractéristique - logement, transport, commerces, activité - est demandée - item
+#   corrigé + 6 items neufs = 7). Minorité à 4, au-dessus du plancher de trois.
+# - BIA-2 (étendue par nadia-prof aux types d'espace, motif : "l'item de 1.3 la viole déjà") : aucun
+#   des trois types n'est plus réduit à un seul trait. L'espace urbain porte désormais le logement
+#   collectif et la densité ; l'espace périurbain le logement individuel, le trajet en voiture et les
+#   zones commerciales ; l'espace rural l'agriculture (nuancée par HG-R3 ci-dessous), le paysage et,
+#   avec le village de pêcheurs, une activité dominante qui n'est pas agricole - exactement la
+#   réparation que nadia-prof demande.
+#
+# HG-R3 (nadia-prof, 2026-09-03, corrigé ici) : l'item sur l'espace rural portait deux distracteurs
+# absurdes ("la banque et l'assurance", "le tourisme de croisière") et une réponse qui réduisait
+# l'espace rural à l'agriculture seule. Les distracteurs sont remplacés par deux activités
+# effectivement rencontrées en espace rural (artisanat local, tourisme vert), l'énoncé est nuancé
+# ("de nombreux espaces ruraux", "traditionnellement"), et un item neuf (le village de pêcheurs)
+# montre qu'un espace rural dont l'activité dominante n'est pas agricole existe bel et bien -
+# réparation demandée mot pour mot par nadia-prof.
+#
+# HG-CM1-13 passe de 1 à 10 items (+9, exactement le minimum chiffré par nadia-prof) :
+# - FER-1 (extension) : les trois besoins du libellé sont désormais servis - l'eau (3 items neufs,
+#   absente jusqu'ici), l'énergie (item existant + 3 items neufs), les aliments (3 items neufs,
+#   absents jusqu'ici).
+# - FER-2 (densité) : 10 items, exactement le plancher de nadia-prof.
+# - FER-3 (deux tâches) : "origine" (d'où vient la ressource, ou comment se nomme son lieu ou son
+#   type de production - item existant + 5 items neufs = 6) et "acheminement" (l'étape ou le moyen
+#   qui achemine la ressource jusqu'à nous - château d'eau, traitement, circuit court, lignes à haute
+#   tension - 4 items neufs). Minorité à 4, au-dessus du plancher de trois.
+#
+# HIS-1 (bloquante, au plus un tiers de restitution, calculée sur le LOT - ADR-0079 - et, en plus,
+# sur ce fichier puisqu'il porte désormais plus de dix items, précision de nadia-prof du
+# 2026-09-03) : chaque item neuf porte son marqueur. Compte sur le fichier entier, seul fichier du
+# lot : 8 restitution sur 37 items, 21,6 %, sous le tiers (plafond entier(37 / 3) = 12). Vérifié par
+# UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest.
+#
+# HIS-3 (chaque fait porte sa source) : tous les faits neufs sont des faits généraux de géographie ou
+# du vocabulaire standard du programme de cycle 3 (types d'espace, circuits courts, énergies
+# fossiles, transport de l'eau et de l'électricité) - famille (a) au sens de la précision de
+# nadia-prof du 2026-09-03 : aucun ne date, aucun ne dispute, aucun n'engage une couverture
+# statistique qui demanderait vérification.
+#
+# HIS-4 (chaque item déclare la ligne de référentiel qu'il sert, ADR-0081) : les items neufs portent
+# 'ligneDeReferentiel', comme tous les items de ce paquet depuis sa reprise en s28.
+#
+# Décision de découpage (routée par sofia-sm, motif dû) : ce second paquet reste dans le même fichier
+# que le premier plutôt que d'en ouvrir un par ligne de référentiel. Chaque entrée de catalogue.yaml
+# résout vers exactement un fichier de contenu (YamlContentPackLoader.chargerPaquet) : un fichier par
+# ligne transformerait donc "histoire et géographie", un jeu aujourd'hui unique, en onze jeux
+# distincts - une décision sur le nombre et le grain des jeux proposés à l'enfant, que ADR-0081
+# réserve explicitement à nadia-prof et camille-po (alternative E, "ce serait une décision de contenu
+# prise par un architecte") et non à un développeur en cours de lot de fermeture. ADR-0081 est conçu
+# pour ce cas précis - la clause 4 (déclaration par item) existe pour qu'un paquet multi-lignes reste
+# entièrement calculable - et FER-1/FER-2 sont ici mécaniquement vérifiables sans qu'un seul jeu de
+# plus n'ait à être créé. Le coût de lisibilité "sans outil" que nadia-prof signale est réel ; il est
+# routé à sofia-sm et camille-po plutôt que tranché ici.
+#
 items:
   - enonce: "Quelle grande période vient juste après la Préhistoire ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
     bonneReponse: "l'Antiquité"
@@ -136,10 +207,10 @@ items:
     distracteurs: ["la pêche en mer", "la culture de la vigne"]
     indice: "Pense à la neige et aux pistes."
     ligneDeReferentiel: "HG-CM1-12"
-  - enonce: "Dans un espace rural, quelle activité occupe le plus souvent les habitants qui y travaillent ?"  # HIS-1: association ; HIS-3: fait géographique général (référentiel ligne 12)
+  - enonce: "Dans de nombreux espaces ruraux, quelle activité occupe traditionnellement le plus grand nombre d'habitants qui y travaillent ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 11) ; HG-R3 (nadia-prof, 2026-09-03) : les deux distracteurs absurdes sont remplacés par deux activités réellement présentes en espace rural, et l'énoncé est nuancé ("de nombreux", "traditionnellement") pour ne plus réduire l'espace rural à un seul trait (BIA-2 étendue) - voir aussi, plus bas, l'item sur le village de pêcheurs, où l'activité dominante n'est pas agricole
     bonneReponse: "l'agriculture"
-    distracteurs: ["la banque et l'assurance", "le tourisme de croisière"]
-    indice: "Pense aux champs et aux fermes."
+    distracteurs: ["l'artisanat local", "le tourisme vert"]
+    indice: "Pense aux champs cultivés, tout en sachant que d'autres métiers existent aussi à la campagne."
     ligneDeReferentiel: "HG-CM1-11"
   - enonce: "L'électricité qui alimente nos maisons est produite dans des lieux spécifiques avant d'être acheminée par des câbles. Comment appelle-t-on un de ces lieux de production ?"  # HIS-1: restitution ; HIS-3: vocabulaire technique standard (référentiel ligne 13)
     bonneReponse: "une centrale électrique"
@@ -164,3 +235,88 @@ items:
     distracteurs: ["un simple lieu de commerce", "un monument touristique"]
     indice: "Repense à qui la prison enfermait, en plus des prisonniers ordinaires."
     ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "Une zone d'habitations pavillonnaires et de zones commerciales, construite en bordure d'une grande ville et reliée à elle par des transports, comment appelle-t-on cet espace ?"  # HIS-1: restitution ; HIS-3: vocabulaire du programme de géographie cycle 3, famille (a) (référentiel ligne 11) ; FER-1 (nadia-prof) : l'espace périurbain, absent jusqu'ici et servi seulement en distracteur, est ici en bonne réponse
+    bonneReponse: "un espace périurbain"
+    distracteurs: ["un espace urbain", "un espace rural"]
+    indice: "Ce n'est ni le centre-ville ni la campagne : c'est tout autour de la ville."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "De grandes parcelles cultivées, peu d'habitations et de longues distances entre les fermes : de quel type d'espace s'agit-il ?"  # HIS-1: restitution ; HIS-3: vocabulaire du programme de géographie cycle 3, famille (a) (référentiel ligne 11)
+    bonneReponse: "un espace rural"
+    distracteurs: ["un espace urbain", "un espace périurbain"]
+    indice: "Pense à la campagne, avec ses champs et ses fermes espacées."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "Dans un espace périurbain, comment la plupart des habitants se déplacent-ils le plus souvent pour aller travailler en ville ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 11)
+    bonneReponse: "en voiture"
+    distracteurs: ["en tramway", "à pied"]
+    indice: "Les distances entre les maisons et la ville sont assez grandes, et les transports en commun y sont souvent rares."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "Dans un espace périurbain, quel type de logement est le plus fréquent ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 11)
+    bonneReponse: "des maisons individuelles avec un jardin"
+    distracteurs: ["des immeubles de plus de dix étages", "des fermes isolées"]
+    indice: "Ce sont des maisons avec un peu de terrain, ni en plein centre-ville ni loin de tout."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "Dans un espace urbain, quel type de logement est le plus fréquent ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 11)
+    bonneReponse: "des immeubles collectifs"
+    distracteurs: ["des maisons individuelles avec un grand jardin", "des fermes isolées"]
+    indice: "Pense à la place qui manque en ville pour construire des maisons avec un grand jardin."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "Dans un espace urbain, la densité de population - le nombre d'habitants au kilomètre carré - est-elle en général plus élevée ou plus faible que dans un espace rural ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 11)
+    bonneReponse: "plus élevée"
+    distracteurs: ["plus faible", "exactement la même"]
+    indice: "Pense à la ville, où les logements sont serrés les uns contre les autres."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "Dans un petit village situé au bord de la mer, loin de toute grande ville, où de nombreux bateaux partent chaque matin en mer, quelle activité fait vivre le plus souvent les habitants ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 11) ; HG-R3 (nadia-prof, 2026-09-03) : un espace rural où l'activité dominante n'est pas agricole, exactement la réparation demandée
+    bonneReponse: "la pêche"
+    distracteurs: ["l'agriculture", "la construction navale"]
+    indice: "Pense aux bateaux qui partent tôt le matin et reviennent avec leur récolte du jour."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "Dans un espace périurbain, les grandes surfaces commerciales (supermarchés, magasins de bricolage) sont le plus souvent installées où ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 11)
+    bonneReponse: "en périphérie de la ville, près des grands axes routiers"
+    distracteurs: ["au centre historique de la ville", "au milieu des champs, loin de toute route"]
+    indice: "Pense aux grands panneaux publicitaires que l'on voit en bordure des routes qui mènent à la ville."
+    ligneDeReferentiel: "HG-CM1-11"
+  - enonce: "Avant d'être distribuée dans les maisons, l'eau est souvent stockée en hauteur dans une grande construction en forme de tour. Comment appelle-t-on cette construction ?"  # HIS-1: restitution ; HIS-3: vocabulaire du programme de géographie cycle 3, famille (a) (référentiel ligne 13) ; FER-1 (nadia-prof) : l'eau, absente jusqu'ici de la ligne 13, est ici servie
+    bonneReponse: "un château d'eau"
+    distracteurs: ["une centrale électrique", "un silo à grains"]
+    indice: "Elle sert à garder l'eau avant qu'elle ne descende ensuite vers les maisons."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "D'où vient le plus souvent l'eau qui arrive ensuite dans les canalisations des maisons ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 13)
+    bonneReponse: "d'une rivière ou d'une nappe souterraine"
+    distracteurs: ["de la mer, sans aucun traitement", "de la pluie recueillie dans chaque maison"]
+    indice: "Pense à l'eau qui coule ou qui est présente naturellement, avant tout traitement."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Avant d'être distribuée dans les maisons, l'eau doit d'abord être rendue propre à la consommation. Comment appelle-t-on cette étape ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 13)
+    bonneReponse: "le traitement de l'eau"
+    distracteurs: ["le transport par camion-citerne", "le recyclage des eaux de pluie"]
+    indice: "C'est l'étape qui rend l'eau potable, juste avant qu'elle ne soit distribuée."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Un aliment acheté directement à un producteur près de chez soi, avec peu d'intermédiaires, appartient à quel type de circuit ?"  # HIS-1: association ; HIS-3: vocabulaire du programme de géographie cycle 3, domaine « consommer en France », famille (a) (référentiel ligne 13) ; FER-1 (nadia-prof) : les aliments, absents jusqu'ici de la ligne 13, sont ici servis
+    bonneReponse: "un circuit court"
+    distracteurs: ["un circuit d'importation", "un circuit industriel"]
+    indice: "C'est un circuit avec peu d'étapes entre le producteur et l'acheteur."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Une orange achetée en hiver en France vient souvent d'un pays plus chaud, transportée par bateau ou par avion. Comment appelle-t-on un aliment qui vient ainsi de loin ?"  # HIS-1: association ; HIS-3: vocabulaire du programme de géographie cycle 3, famille (a) (référentiel ligne 13)
+    bonneReponse: "un aliment importé"
+    distracteurs: ["un aliment local", "un aliment de saison"]
+    indice: "Pense au contraire d'un aliment produit tout près de chez toi."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Quel type d'aliment est récolté et vendu au moment où il pousse naturellement dans sa région, sans transport de loin ni longue conservation ?"  # HIS-1: association ; HIS-3: vocabulaire du programme de géographie cycle 3, famille (a) (référentiel ligne 13)
+    bonneReponse: "un aliment de saison"
+    distracteurs: ["un aliment importé", "un aliment surgelé"]
+    indice: "Pense à un fruit ou un légume que l'on trouve seulement à une période de l'année, près de chez soi."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Le vent fait tourner de grandes hélices qui produisent de l'électricité. Comment appelle-t-on ces installations ?"  # HIS-1: association ; HIS-3: vocabulaire du programme de géographie cycle 3, famille (a) (référentiel ligne 13)
+    bonneReponse: "des éoliennes"
+    distracteurs: ["des châteaux d'eau", "des serres agricoles"]
+    indice: "Elles ont de longues pales qui tournent avec le vent."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Le charbon, le pétrole et le gaz naturel sont extraits du sous-sol et s'épuisent avec le temps. Comment appelle-t-on ce type d'énergie ?"  # HIS-1: association ; HIS-3: vocabulaire du programme de géographie cycle 3, famille (a) (référentiel ligne 13)
+    bonneReponse: "une énergie fossile"
+    distracteurs: ["une énergie renouvelable", "une énergie nucléaire"]
+    indice: "Ce sont les mêmes énergies que celles utilisées dans les voitures à essence ou dans certains chauffages."
+    ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Une fois produite dans une centrale, l'électricité doit parcourir de longues distances avant d'arriver dans les maisons. Par quoi est-elle transportée ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 13)
+    bonneReponse: "des lignes à haute tension"
+    distracteurs: ["des canalisations souterraines", "des routes nationales"]
+    indice: "Ce sont de grands câbles soutenus par des pylônes métalliques que l'on voit dans la campagne."
+    ligneDeReferentiel: "HG-CM1-13"
