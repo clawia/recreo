@@ -23,7 +23,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * pose CM1, ligne {@code MAT-CM1-05}. Les proprietes generiques (indice non vide, au plus trois
  * propositions, aucune proposition egale a une autre, dix manches contre au moins onze items du
  * chargeur) sont deja gardees par les garde-fous derives du repertoire de contenu ; ce fichier
- * verifie les conditions {@code POS-1} a {@code POS-4} de l'arbitrage.
+ * verifie les conditions {@code POS-1} a {@code POS-4} de l'arbitrage, et depuis S29-6 la reserve
+ * {@code POS-R1} (squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-
+ * le-plafond-a-huit-lignes.md, sections 1.4 et 7.1).
  *
  * <p>{@code cm1-division-posee} est exempte du garde-fou de rang ({@code
  * LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest}, table {@code
@@ -110,6 +112,27 @@ class PaquetCm1DivisionPoseeTest {
         long resteNonNul = analyses.stream().filter(analyse -> analyse.bonne().reste() != 0).count();
         assertThat(resteNul).as("POS-4 : au moins un item a reste nul").isGreaterThanOrEqualTo(1);
         assertThat(resteNonNul).as("POS-4 : plusieurs items a reste non nul").isGreaterThanOrEqualTo(2);
+    }
+
+    /**
+     * POS-R1 (squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-
+     * plafond-a-huit-lignes.md, sections 1.4 et 7.1) : le reste d'un distracteur est toujours
+     * strictement inferieur au diviseur, exactement comme celui de la bonne reponse. Un
+     * distracteur dont le reste depasse ou egale le diviseur s'elimine sans poser l'operation, par
+     * la seule regle que l'indice enonce lui-meme ; c'est le defaut que la forme "quotient - 1,
+     * reste + diviseur" produisait sur les onze items avant cette correction.
+     */
+    @Test
+    void leResteDeChaqueDistracteurEstInferieurAuDiviseur() {
+        for (ItemAnalyse analyse : itemsAnalyses()) {
+            for (String distracteur : analyse.question().distracteurs()) {
+                Reponse reponse = reponseDe(distracteur, analyse.question().enonce());
+                assertThat(reponse.reste()).as("POS-R1 : reste du distracteur '%s' (item '%s')"
+                                + " doit etre strictement inferieur au diviseur %d", distracteur,
+                        analyse.question().enonce(), analyse.diviseur())
+                        .isLessThan(analyse.diviseur());
+            }
+        }
     }
 
     /**

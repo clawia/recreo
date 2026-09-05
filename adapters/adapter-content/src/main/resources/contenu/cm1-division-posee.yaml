@@ -16,14 +16,22 @@ lignesDeReferentiel: ["MAT-CM1-05"]
 #
 # POS-3 : chaque distracteur correspond a une erreur classique nommee ici plutot que par une liste
 # fermee :
-#   - RESTE-SUPERIEUR-AU-DIVISEUR : le quotient est diminue d'une ou deux unites et le reste
-#     augmente d'autant de fois le diviseur, si bien qu'il devient superieur ou egal a lui - la
-#     division s'est arretee un cran trop tot.
-#   - QUOTIENT-SANS-RESTE : le quotient correct est donne mais le reste, non nul, est ignore et
-#     annonce a 0 - l'erreur qui fait croire a une division exacte qui ne l'est pas.
+#   - RETENUE-DIZAINE-OUBLIEE : une retenue oubliee majore le chiffre des dizaines du quotient
+#     d'une unite (quotient correct + 10) ; le chiffre des unites du quotient et le reste de la
+#     derniere soustraction sont recopies sans etre recalcules.
+#   - PRODUIT-PARTIEL-MAL-DECALE : un produit partiel non decale d'un rang fait sous-estimer le
+#     quotient de deux unites (quotient correct - 2) ; le reste qui en decoule est un autre reste
+#     valide (strictement inferieur au diviseur), distinct du reste correct.
+# Les deux erreurs donnent, par construction, un reste strictement inferieur au diviseur : aucun
+# distracteur ne s'elimine par la seule regle "le reste est plus petit que le diviseur" - correction
+# du 2026-09-05 (S29-6, POS-R1). Avant cette correction, la forme "quotient - 1, reste + diviseur"
+# produisait sur les onze items un reste superieur ou egal au diviseur, reperable sans poser
+# l'operation (squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-
+# plafond-a-huit-lignes.md, sections 1.4 et 7.1). Cette forme est desormais interdite sur ce paquet.
 #
 # POS-2 : sur chaque item, le quotient de chaque distracteur a le meme nombre de chiffres que la
-# bonne reponse.
+# bonne reponse, et le distracteur RETENUE-DIZAINE-OUBLIEE partage toujours le chiffre des unites du
+# quotient avec la bonne reponse.
 #
 # POS-4 : le diviseur a un seul chiffre sur les onze items, sans exception, et le reste est
 # demande a chaque fois. Reste nul sur les items 4 et 6 ; reste non nul sur les neuf autres.
@@ -34,45 +42,45 @@ lignesDeReferentiel: ["MAT-CM1-05"]
 items:
   - enonce: "224 ÷ 6 = ?"
     bonneReponse: "37 reste 2"
-    distracteurs: ["36 reste 8", "37 reste 0"]
+    distracteurs: ["47 reste 2", "35 reste 3"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "299 ÷ 7 = ?"
     bonneReponse: "42 reste 5"
-    distracteurs: ["41 reste 12", "42 reste 0"]
+    distracteurs: ["52 reste 5", "40 reste 6"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "213 ÷ 4 = ?"
     bonneReponse: "53 reste 1"
-    distracteurs: ["52 reste 5", "53 reste 0"]
+    distracteurs: ["63 reste 1", "51 reste 2"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "234 ÷ 9 = ?"
     bonneReponse: "26 reste 0"
-    distracteurs: ["25 reste 9", "24 reste 18"]
+    distracteurs: ["36 reste 0", "24 reste 1"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende. Ici, la division tombe juste : le reste est 0."
   - enonce: "323 ÷ 5 = ?"
     bonneReponse: "64 reste 3"
-    distracteurs: ["63 reste 8", "64 reste 0"]
+    distracteurs: ["74 reste 3", "62 reste 4"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "152 ÷ 8 = ?"
     bonneReponse: "19 reste 0"
-    distracteurs: ["18 reste 8", "17 reste 16"]
+    distracteurs: ["29 reste 0", "17 reste 1"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende. Ici, la division tombe juste : le reste est 0."
   - enonce: "215 ÷ 3 = ?"
     bonneReponse: "71 reste 2"
-    distracteurs: ["70 reste 5", "71 reste 0"]
+    distracteurs: ["81 reste 2", "69 reste 0"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "177 ÷ 2 = ?"
     bonneReponse: "88 reste 1"
-    distracteurs: ["87 reste 3", "88 reste 0"]
+    distracteurs: ["98 reste 1", "86 reste 0"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "312 ÷ 9 = ?"
     bonneReponse: "34 reste 6"
-    distracteurs: ["33 reste 15", "34 reste 0"]
+    distracteurs: ["44 reste 6", "32 reste 7"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "879 ÷ 7 = ?"
     bonneReponse: "125 reste 4"
-    distracteurs: ["124 reste 11", "125 reste 0"]
+    distracteurs: ["135 reste 4", "123 reste 5"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "351 ÷ 6 = ?"
     bonneReponse: "58 reste 3"
-    distracteurs: ["57 reste 9", "58 reste 0"]
+    distracteurs: ["68 reste 3", "56 reste 4"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
