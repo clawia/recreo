@@ -131,6 +131,73 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 # plus n'ait à être créé. Le coût de lisibilité "sans outil" que nadia-prof signale est réel ; il est
 # routé à sofia-sm et camille-po plutôt que tranché ici.
 #
+#
+# S29-2. Troisième paquet d'histoire-géographie CM1, composition A (arbitrage préalable de s29,
+# ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md,
+# sections 3.3, 4 et 5.1 ; DEC-0077, section 8 ; docs/backlog/backlog.md, story S29-2). Ferme les
+# lignes HG-CM1-06 (rois et réalisations), HG-CM1-07 (Révolution et Empire) et HG-CM1-14
+# (comprendre un document) si nadia-prof vérifie FER-1, FER-2 et FER-3 tenues sur chacune,
+# indépendamment des deux autres. Les huit autres lignes du paquet ne sont pas touchées.
+#
+# HG-CM1-06 passe de 4 à 10 items (+6, exactement le minimum chiffré par nadia-prof, section 3.3) :
+# - FER-1 : les quatre réalisations du libellé sont désormais chacune servies en bonne réponse -
+#   "la croisade" (Louis IX), "la Renaissance" (François Ier), "l'édit de Nantes" (Henri IV),
+#   "Versailles" (Louis XIV). Les quatre items de s27 associaient déjà chaque roi à sa réalisation,
+#   mais avec le roi en bonne réponse, jamais la réalisation elle-même : FER-1, lu au pied de la
+#   lettre (précision de nadia-prof du 2026-09-05, section 4 de l'arbitrage de s29), n'était donc
+#   pas encore tenue avant ce lot.
+# - Deux items neufs approfondissent la même ligne sans répéter les quatre réalisations (le château
+#   de Chambord nommé, la galerie des Glaces nommée).
+# - Aucune des deux traditions refusées d'avance par nadia-prof (le chêne de Saint Louis, la poule
+#   au pot d'Henri IV - HIS-3, avertissement de la section 5.1 de l'arbitrage de s28) n'est utilisée
+#   ici : les six items neufs portent des faits attestés (surnoms royaux, invitation de Léonard de
+#   Vinci par François Ier, escalier de Chambord, galerie des Glaces), tous famille (a).
+# - BIA-5 (aucun jugement de valeur sur un personnage) : aucun item neuf ne qualifie un roi de bon,
+#   mauvais, juste ou injuste, vérifié item par item, même limite que HIS-2.
+#
+# HG-CM1-07 passe de 3 à 10 items (+7, exactement le minimum chiffré par nadia-prof, section 3.3) :
+# - FER-1 : les quatre événements du libellé sont désormais chacun servis en bonne réponse -
+#   "en 1789", "l'abolition des privilèges", "la Déclaration des droits de l'homme et du citoyen"
+#   (déjà tenue par un item de s27, renforcée ici) et "la fin de la monarchie".
+# - Deux tâches sont servies : nommer l'événement à partir d'une description ou d'une date
+#   (association), et situer un événement par rapport aux autres (ordre).
+#
+# HG-CM1-14 passe de 3 à 10 items (+7, exactement le minimum chiffré par nadia-prof, section 3.3) :
+# - Les trois items de s27 ne servaient que la date et l'extraction d'une information, jamais la
+#   nature ni l'auteur du document - écart nommé d'avance à l'ouverture de ce lot. Les sept items
+#   neufs servent chacune des trois composantes manquantes du libellé : nature ("un journal intime",
+#   "une déclaration de droits"), auteur ("Henri IV", "les députés de l'Assemblée nationale"), plus
+#   une deuxième date et deux extractions supplémentaires.
+# - Document textuel seul ; carte et image restent non couvertes. Les sept items neufs, comme les
+#   trois de s27, portent tous un texteSupport écrit - aucune carte ni aucune image ne fait partie de
+#   ce lot. Le critère d'acceptation de la story demandait deux formes de document distinctes (texte,
+#   carte ou image) ; construire une compréhension de carte ou d'image aurait demandé un champ de
+#   schéma neuf, hors du périmètre confié ici ("n'écris aucune mécanique, aucun gabarit"). À router à
+#   camille-po et théo-archi si la couverture de la ligne doit aller au-delà du texte.
+# - Les textes-supports sont des reconstitutions pédagogiques (style journal intime, style édit
+#   royal, style déclaration) construites sur des faits déjà vérifiés plus haut dans ce fichier
+#   (édit de Nantes, prise de la Bastille, Déclaration des droits de l'homme et du citoyen, château
+#   de Chambord, nuit du 4 août 1789) : aucun fait neuf non sourcé n'est introduit, HIS-3 famille (a)
+#   sur les sept items.
+#
+# CYC-1 (continuité cycle 2 / cycle 3) : sans objet sur ce lot - aucune des trois lignes ne recoupe
+# un objet déjà enseigné en questionner le monde CP.
+#
+# HIS-1 (bloquante, au plus un tiers de restitution, calculée sur le LOT - ADR-0079 - et, en plus,
+# sur ce fichier puisqu'il porte désormais plus de dix items) : chaque item neuf porte son marqueur.
+# Compte sur le fichier entier, seul fichier du lot : 13 restitution sur 57 items, 22,8 %, sous le
+# tiers (plafond entier(57 / 3) = 19). Vérifié par
+# UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest, mis à jour dans ce commit.
+#
+# HG-R4 (nadia-prof, demande explicite pour ce lot : aucun énoncé du fichier ne dépasse vingt-cinq
+# mots, médiane du fichier au plus seize mots) : les vingt énoncés neufs comptent chacun entre 6 et
+# 21 mots, et la médiane du fichier entier reste à 16 après ajout. Le maximum du fichier reste
+# toutefois à 34 mots (item de HG-CM1-11, hérité de s28, hors périmètre de ce lot qui ne touche pas
+# aux huit autres lignes) : HG-R4 lue au pied de la lettre sur "le fichier" n'est donc pas
+# entièrement tenue par ce dépôt à l'issue de ce lot. À router à sofia-sm et camille-po : soit HG-R4
+# vise le lot livré plutôt que le fichier entier, soit les items hérités de s28 qui dépassent
+# vingt-cinq mots doivent être réécrits, ce qui sortirait du périmètre de S29-2.
+#
 items:
   - enonce: "Quelle grande période vient juste après la Préhistoire ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
     bonneReponse: "l'Antiquité"
@@ -320,3 +387,110 @@ items:
     distracteurs: ["des canalisations souterraines", "des routes nationales"]
     indice: "Ce sont de grands câbles soutenus par des pylônes métalliques que l'on voit dans la campagne."
     ligneDeReferentiel: "HG-CM1-13"
+  - enonce: "Quel fait caractérise le règne de Louis IX, aussi appelé Saint Louis ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Louis IX et la croisade), fait consensuel, famille (a)
+    bonneReponse: "la croisade"
+    distracteurs: ["la Renaissance", "l'édit de Nantes"]
+    indice: "Ce roi part combattre en Terre sainte."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel fait caractérise le règne de François Ier, qui invite en France le peintre Léonard de Vinci ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), Léonard de Vinci invité par François Ier, fait consensuel, famille (a)
+    bonneReponse: "la Renaissance"
+    distracteurs: ["la croisade", "Versailles"]
+    indice: "Ce roi encourage les arts et les lettres, comme la peinture italienne."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel fait caractérise le règne de Henri IV, qui met fin aux guerres de religion en 1598 ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle, famille (a)
+    bonneReponse: "l'édit de Nantes"
+    distracteurs: ["la Renaissance", "Versailles"]
+    indice: "Ce texte accorde la liberté de culte aux protestants."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel fait caractérise le règne de Louis XIV, surnommé le Roi-Soleil ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Louis XIV et Versailles), surnom consensuel, famille (a)
+    bonneReponse: "Versailles"
+    distracteurs: ["la croisade", "l'édit de Nantes"]
+    indice: "Ce roi fait construire un immense château non loin de Paris."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel château de la Renaissance, avec son escalier à double révolution, est construit sous François Ier ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), château de Chambord, fait consensuel, famille (a)
+    bonneReponse: "Chambord"
+    distracteurs: ["Versailles", "le Louvre"]
+    indice: "Son escalier permet à deux personnes de monter sans se croiser."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Comment appelle-t-on la grande salle du château de Versailles décorée de miroirs, sous le règne de Louis XIV ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 6 (Louis XIV et Versailles), galerie des Glaces, fait consensuel, famille (a)
+    bonneReponse: "la galerie des Glaces"
+    distracteurs: ["la salle du Jeu de paume", "la cour Carrée"]
+    indice: "Son nom rappelle les nombreux miroirs qui ornent ses murs."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "En quelle année commence la Révolution française ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 7, date 1789 consensuelle, famille (a)
+    bonneReponse: "en 1789"
+    distracteurs: ["en 1804", "en 1598"]
+    indice: "C'est aussi l'année de la prise de la Bastille."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Le 4 août 1789, l'Assemblée nationale supprime les droits particuliers de la noblesse et du clergé. Comment appelle-t-on cet événement ?"  # HIS-1: association ; HIS-3: référentiel ligne 7, nuit du 4 août 1789 consensuelle, famille (a)
+    bonneReponse: "l'abolition des privilèges"
+    distracteurs: ["la prise de la Bastille", "la Déclaration des droits de l'homme et du citoyen"]
+    indice: "Cet événement porte le nom de ce que perdent la noblesse et le clergé cette nuit-là."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "En 1792, les rois cessent de gouverner la France et un nouveau régime politique commence. Comment appelle-t-on cet événement ?"  # HIS-1: association ; HIS-3: référentiel ligne 7, année 1792 consensuelle, famille (a)
+    bonneReponse: "la fin de la monarchie"
+    distracteurs: ["la prise de la Bastille", "l'abolition des privilèges"]
+    indice: "Cet événement porte le nom du régime politique qui s'arrête cette année-là."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Parmi ces trois événements de la Révolution française, lequel a eu lieu le plus tard ?"  # HIS-1: ordre ; HIS-3: référentiel ligne 7, dates 1789 et 1792 consensuelles, famille (a)
+    bonneReponse: "la fin de la monarchie"
+    distracteurs: ["la prise de la Bastille", "l'abolition des privilèges"]
+    indice: "Repense à l'événement de 1792, le plus récent des trois."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Quelle est la date précise de la prise de la Bastille, qui marque le début de la Révolution française ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 7, 14 juillet 1789 consensuelle, famille (a)
+    bonneReponse: "le 14 juillet 1789"
+    distracteurs: ["le 26 août 1789", "le 4 août 1789"]
+    indice: "C'est la date que la France célèbre chaque année comme fête nationale."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Quel texte est adopté le 26 août 1789, affirmant que les hommes naissent et demeurent libres et égaux en droits ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
+    bonneReponse: "la Déclaration des droits de l'homme et du citoyen"
+    distracteurs: ["l'édit de Nantes", "l'abolition des privilèges"]
+    indice: "Ce texte proclame la liberté et l'égalité des hommes en droits."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Dans la nuit du 4 août 1789, qui perd ses droits particuliers en France ?"  # HIS-1: association ; HIS-3: référentiel ligne 7, nuit du 4 août 1789 consensuelle, famille (a)
+    bonneReponse: "la noblesse et le clergé"
+    distracteurs: ["le roi et sa famille", "les paysans"]
+    indice: "Ce sont les deux ordres qui profitaient jusque-là de privilèges particuliers."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Quel type de document est ce texte ?"  # HIS-1: document ; HIS-3: texte fictif à but pédagogique illustrant le journal intime ; date de la prise de la Bastille consensuelle, famille (a)
+    texteSupport: "Cher journal, nous sommes le 15 juillet 1789 . Hier, j'ai vu la foule envahir la prison de la Bastille. Tout Paris est en effervescence."
+    bonneReponse: "un journal intime"
+    distracteurs: ["un édit royal", "une carte de France"]
+    indice: "Repense à la façon dont ce texte commence."
+    ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "Qui est l'auteur de ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle, famille (a)
+    texteSupport: "Moi, Henri IV, roi de France et de Navarre, je décide par cet édit que mes sujets protestants pourront pratiquer librement leur religion. Fait à Nantes, en 1598."
+    bonneReponse: "Henri IV"
+    distracteurs: ["Louis XIV", "François Ier"]
+    indice: "Ce roi se présente lui-même au tout début du texte."
+    ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "Quel type de document est évoqué dans ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
+    texteSupport: "Le 26 août 1789, l'Assemblée nationale vote une déclaration qui proclame que les hommes naissent et demeurent libres et égaux en droits."
+    bonneReponse: "une déclaration de droits"
+    distracteurs: ["un journal intime", "une carte de France"]
+    indice: "Le mot qui nomme ce document se trouve dans la phrase."
+    ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "Qui a écrit ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
+    texteSupport: "Nous, députés de l'Assemblée nationale, réunis le 26 août 1789, déclarons que tous les hommes naissent et demeurent libres et égaux en droits."
+    bonneReponse: "les députés de l'Assemblée nationale"
+    distracteurs: ["le roi Louis XVI", "le pape"]
+    indice: "Ce texte commence par se désigner lui-même, avec le mot Nous."
+    ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "D'après ce texte, de quelle période le château de Chambord devient-il le symbole ?"  # HIS-1: document ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), château de Chambord, fait consensuel, famille (a)
+    texteSupport: "François Ier fait construire un immense château à Chambord, avec un escalier si large que deux personnes peuvent y monter sans se croiser. Ce château devient un symbole de la Renaissance française."
+    bonneReponse: "la Renaissance française"
+    distracteurs: ["la Révolution française", "les croisades"]
+    indice: "Relis la dernière phrase du texte."
+    ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "D'après ce texte, qui perd ses privilèges dans la nuit du 4 août 1789 ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, nuit du 4 août 1789 consensuelle, famille (a)
+    texteSupport: "Dans la nuit du 4 août 1789, les députés de l'Assemblée nationale votent la suppression des privilèges de la noblesse et du clergé."
+    bonneReponse: "la noblesse et le clergé"
+    distracteurs: ["le peuple de Paris", "les députés de l'Assemblée nationale"]
+    indice: "Relis qui vote ce texte et qui en subit les conséquences."
+    ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "D'après ce texte, en quelle année ce document est-il signé ?"  # HIS-1: document ; HIS-3: référentiel ligne 6, date 1598 consensuelle, famille (a)
+    texteSupport: "Moi, Henri IV, roi de France et de Navarre, je décide par cet édit que mes sujets protestants pourront pratiquer librement leur religion. Fait à Nantes, en 1598."
+    bonneReponse: "en 1598"
+    distracteurs: ["en 1789", "en 1610"]
+    indice: "La date est donnée à la toute fin du texte."
+    ligneDeReferentiel: "HG-CM1-14"

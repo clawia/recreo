@@ -300,14 +300,16 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                 .isEqualTo(42);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("1 fichier a la cloture de s27, inchange a S28-1 qui n'a touche que la matiere"
-                        + " questionner le monde ; S28-2 etend ce meme fichier, motif dans son"
-                        + " commentaire (ADR-0081 reserve le decoupage a nadia-prof et camille-po)")
+                        + " questionner le monde ; S28-2 et S29-2 etendent ce meme fichier, motif"
+                        + " dans son commentaire (ADR-0081 reserve le decoupage a nadia-prof et"
+                        + " camille-po)")
                 .hasSize(1);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")).stream().mapToInt(Paquet::items).sum())
-                .as("S28-2 (ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-"
-                        + "lots.md, section 3.2) : 20 items a la cloture de s27, +8 sur HG-CM1-11 et"
-                        + " +9 sur HG-CM1-13 pour fermer la composition B, soit 37 items")
-                .isEqualTo(37);
+                .as("S29-2 (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-"
+                        + "a-huit-lignes.md, section 3.3) : 37 items a la cloture de s28, +6 sur"
+                        + " HG-CM1-06, +7 sur HG-CM1-07 et +7 sur HG-CM1-14 pour fermer la"
+                        + " composition A, soit 57 items")
+                .isEqualTo(57);
     }
 
     /** Le paquet servi qui porte les marqueurs de HIS-1, choisi par le calcul et non par son nom. */

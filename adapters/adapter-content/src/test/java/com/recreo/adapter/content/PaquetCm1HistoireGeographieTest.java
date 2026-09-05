@@ -63,16 +63,35 @@ import static org.assertj.core.api.Assertions.assertThat;
  * YAML brut plutot que sur {@link Question} parce que {@code ligneDeReferentiel} n'entre pas dans ce
  * record - {@code ADR-0081} clause 6 : la cle est ignoree par {@code QuestionContentSourceFactory},
  * jamais par un chargeur de plus.</p>
+ *
+ * <p><b>S29-2 (arbitrage prealable de s29, sections 3.3, 4 et 5.1 ; DEC-0077 section 8 ;
+ * docs/backlog/backlog.md, story S29-2) : troisieme paquet, composition A.</b> Le fichier passe de
+ * trente-sept a cinquante-sept items, motif dans le commentaire du paquet. Les tests ajoutes ici
+ * verifient {@code FER-1} et {@code FER-2} sur les lignes {@code HG-CM1-06} (rois et realisations),
+ * {@code HG-CM1-07} (Revolution) et {@code HG-CM1-14} (comprendre un document), sur le meme patron
+ * que la composition B.</p>
  */
 class PaquetCm1HistoireGeographieTest {
 
     private static final String PAQUET = "cm1-histoire-geographie";
 
     /** Le compte est garde exactement, comme sur tous les paquets de ce depot. */
-    private static final int NOMBRE_D_ITEMS_ATTENDU = 37;
+    private static final int NOMBRE_D_ITEMS_ATTENDU = 57;
 
     private static final String LIGNE_TYPES_D_ESPACES = "HG-CM1-11";
     private static final String LIGNE_EAU_ENERGIE_ALIMENTS = "HG-CM1-13";
+    private static final String LIGNE_ROIS_ET_REALISATIONS = "HG-CM1-06";
+    private static final String LIGNE_REVOLUTION = "HG-CM1-07";
+    private static final String LIGNE_COMPRENDRE_UN_DOCUMENT = "HG-CM1-14";
+
+    /** FER-1 sur HG-CM1-06 : les quatre realisations du libelle, chacune en bonne reponse. */
+    private static final Set<String> REALISATIONS_ROYALES =
+            Set.of("la croisade", "la Renaissance", "l'édit de Nantes", "Versailles");
+
+    /** FER-1 sur HG-CM1-07 : les quatre evenements du libelle, chacun en bonne reponse. */
+    private static final Set<String> EVENEMENTS_REVOLUTION = Set.of(
+            "en 1789", "l'abolition des privilèges",
+            "la Déclaration des droits de l'homme et du citoyen", "la fin de la monarchie");
 
     /** FER-2 : au moins dix items servent une ligne fermee, tous paquets confondus. */
     private static final int PLANCHER_FER_2 = 10;
@@ -163,10 +182,11 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     @Test
-    void lePaquetCompteExactementTrenteSeptItems() {
+    void lePaquetCompteExactementCinquanteSeptItems() {
         assertThat(tousLesItems(paquet()))
-                .as("S28-2 : vingt items de s27 plus dix-sept items neufs (huit sur %s, neuf sur %s)",
-                        LIGNE_TYPES_D_ESPACES, LIGNE_EAU_ENERGIE_ALIMENTS)
+                .as("S29-2 : trente-sept items apres s28 plus vingt items neufs (six sur %s, sept sur"
+                        + " %s, sept sur %s)",
+                        LIGNE_ROIS_ET_REALISATIONS, LIGNE_REVOLUTION, LIGNE_COMPRENDRE_UN_DOCUMENT)
                 .hasSize(NOMBRE_D_ITEMS_ATTENDU);
     }
 
@@ -196,13 +216,13 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     /**
-     * La distribution exacte par ligne, avant et apres S28-2 : les neuf lignes que ce lot ne touche
-     * pas restent a leur compte de s27, et les deux lignes de la composition B atteignent exactement
-     * le plancher de dix de {@code FER-2}. Une seule assertion prouve a la fois que le lot ferme sur
-     * son perimetre et qu'il n'ouvre aucune ligne neuve de la matiere.
+     * La distribution exacte par ligne, apres S28-2 et S29-2 : les six lignes que ces deux lots ne
+     * touchent pas restent a leur compte de s27, et les cinq lignes des compositions B et A
+     * atteignent exactement le plancher de dix de {@code FER-2}. Une seule assertion prouve a la
+     * fois que le lot ferme sur son perimetre et qu'il n'ouvre aucune ligne neuve de la matiere.
      */
     @Test
-    void laDistributionParLigneEstExactementCelleDeLaCompositionB() {
+    void laDistributionParLigneEstExactementCelleDesCompositionsBEtA() {
         Map<String, Long> comptes = itemsBruts().stream()
                 .collect(Collectors.groupingBy(
                         item -> String.valueOf(item.get("ligneDeReferentiel")),
@@ -210,10 +230,11 @@ class PaquetCm1HistoireGeographieTest {
 
         assertThat(comptes).containsOnly(
                 Map.entry("HG-CM1-01", 2L), Map.entry("HG-CM1-02", 1L), Map.entry("HG-CM1-03", 1L),
-                Map.entry("HG-CM1-04", 1L), Map.entry("HG-CM1-06", 4L), Map.entry("HG-CM1-07", 3L),
+                Map.entry("HG-CM1-04", 1L), Map.entry(LIGNE_ROIS_ET_REALISATIONS, 10L),
+                Map.entry(LIGNE_REVOLUTION, 10L),
                 Map.entry("HG-CM1-08", 1L), Map.entry(LIGNE_TYPES_D_ESPACES, 10L),
                 Map.entry("HG-CM1-12", 1L), Map.entry(LIGNE_EAU_ENERGIE_ALIMENTS, 10L),
-                Map.entry("HG-CM1-14", 3L));
+                Map.entry(LIGNE_COMPRENDRE_UN_DOCUMENT, 10L));
     }
 
     @Test
@@ -224,6 +245,67 @@ class PaquetCm1HistoireGeographieTest {
         assertThat(itemsDeLaLigne(LIGNE_EAU_ENERGIE_ALIMENTS))
                 .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2, LIGNE_EAU_ENERGIE_ALIMENTS)
                 .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+    }
+
+    @Test
+    void fer2EstTenueSurLesTroisLignesDeLaCompositionA() {
+        assertThat(itemsDeLaLigne(LIGNE_ROIS_ET_REALISATIONS))
+                .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2, LIGNE_ROIS_ET_REALISATIONS)
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+        assertThat(itemsDeLaLigne(LIGNE_REVOLUTION))
+                .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2, LIGNE_REVOLUTION)
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+        assertThat(itemsDeLaLigne(LIGNE_COMPRENDRE_UN_DOCUMENT))
+                .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2, LIGNE_COMPRENDRE_UN_DOCUMENT)
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+    }
+
+    /** FER-1 sur HG-CM1-06 : les quatre realisations de la parenthese sont chacune servies. */
+    @Test
+    void fer1LesQuatreRealisationsRoyalesSontServiesEnBonneReponse() {
+        Set<Object> reponses = itemsDeLaLigne(LIGNE_ROIS_ET_REALISATIONS).stream()
+                .map(item -> item.get("bonneReponse"))
+                .collect(Collectors.toSet());
+
+        assertThat(reponses)
+                .as("FER-1 : la croisade, la Renaissance, l'édit de Nantes et Versailles sont chacun"
+                        + " servis en bonne réponse")
+                .containsAll(REALISATIONS_ROYALES);
+    }
+
+    /** FER-1 sur HG-CM1-07 : les quatre evenements de la parenthese sont chacun servis. */
+    @Test
+    void fer1LesQuatreEvenementsDeLaRevolutionSontServisEnBonneReponse() {
+        Set<Object> reponses = itemsDeLaLigne(LIGNE_REVOLUTION).stream()
+                .map(item -> item.get("bonneReponse"))
+                .collect(Collectors.toSet());
+
+        assertThat(reponses)
+                .as("FER-1 : 1789, l'abolition des privilèges, la Déclaration des droits de l'homme"
+                        + " et du citoyen et la fin de la monarchie sont chacun servis en bonne"
+                        + " réponse")
+                .containsAll(EVENEMENTS_REVOLUTION);
+    }
+
+    /**
+     * HG-CM1-14 (comprendre un document) : chaque item de la ligne s'appuie sur un texte-support,
+     * et la ligne sert bien la nature et l'auteur du document, pas seulement sa date et une
+     * information extraite (écart nommé d'avance a l'ouverture de S29-2).
+     */
+    @Test
+    void hgCm114SertLaNatureEtLAuteurDuDocumentEnPlusDeLaDateEtDeLExtraction() {
+        List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_COMPRENDRE_UN_DOCUMENT);
+
+        assertThat(items).as("chaque item de %s s'appuie sur un texte-support",
+                        LIGNE_COMPRENDRE_UN_DOCUMENT)
+                .allMatch(item -> item.get("texteSupport") != null);
+
+        List<String> enonces = items.stream().map(item -> String.valueOf(item.get("enonce")))
+                .toList();
+        assertThat(enonces).as("au moins un item interroge la nature du document")
+                .anyMatch(enonce -> enonce.contains("type de document"));
+        assertThat(enonces).as("au moins un item interroge l'auteur du document")
+                .anyMatch(enonce -> enonce.contains("auteur") || enonce.contains("écrit ce texte"));
     }
 
     /** FER-1 sur HG-CM1-11 : les trois elements de la parenthese sont chacun en bonne reponse. */
