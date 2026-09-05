@@ -513,7 +513,23 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " consomme laisse un chiffre dans le reste (ADR-0068, un chiffre reste pour"
                     + " compte), si bien que valeurDe rend null sur les trois propositions de chaque"
                     + " item, y compris quand ce second nombre vaut 0. Mesure du 2026-09-04 sur le"
-                    + " paquet servi"));
+                    + " paquet servi"),
+            // S29-4 : premier lot d'enseignement moral et civique (CP), matiere neuve du produit,
+            // restreint aux lignes 1 a 7 du referentiel (arbitrage prealable de nadia-prof).
+            Map.entry("cp-emc-regles-de-vie",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des regles de vie de classe et leurs"
+                    + " justifications (\"lever la main\", \"pour que chacun parle a son tour\"...),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-05 sur le paquet servi : aucune des 33 propositions ne commence par"
+                    + " un chiffre"),
+            Map.entry("cp-emc-permis-interdit",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des qualifications de comportements"
+                    + " entre eleves (\"une moquerie\", \"une insulte\", \"de la violence\","
+                    + " \"permis\"...), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-05 sur le paquet servi : aucune des 33 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

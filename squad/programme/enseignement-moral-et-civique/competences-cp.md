@@ -25,29 +25,35 @@
 > règles, les symboles, les droits - qui se posent en trois propositions et se vérifient. Mais son
 > cœur - le débat réglé, l'engagement, la conduite tenue envers autrui - ne se produit ni par un
 > choix ni par une saisie, et il ne se mesure pas par un score.
+>
+> **Codes de ligne ajoutés le 2026-09-05 (`lea-dev`, `S29-4`), conformément à `ADR-0081`.** Ce
+> référentiel n'était pas encore codé : aucun paquet ne le citait avant ce sprint. La transcription
+> reprend, sans jugement, la numérotation déjà utilisée par `nadia-prof` dans la colonne `#` du
+> tableau de faisabilité ci-dessous - `EMC-CP-01` à `EMC-CP-14`, dans l'ordre de lecture des trois
+> domaines. Aucun intitulé n'est modifié.
 
 ## Respecter autrui
 
-- Identifier et nommer les émotions d'autrui dans une situation simple (joie, tristesse, colère, peur).
-- Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves (moquerie, insulte, violence).
-- Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte en parler.
-- Reconnaître que les personnes sont différentes et qu'aucune différence ne justifie de traiter quelqu'un moins bien.
-- Employer les formules de politesse et de respect dans les échanges (saluer, remercier, demander, écouter sans couper).
+- [EMC-CP-01] Identifier et nommer les émotions d'autrui dans une situation simple (joie, tristesse, colère, peur).
+- [EMC-CP-02] Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves (moquerie, insulte, violence).
+- [EMC-CP-03] Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte en parler.
+- [EMC-CP-04] Reconnaître que les personnes sont différentes et qu'aucune différence ne justifie de traiter quelqu'un moins bien.
+- [EMC-CP-05] Employer les formules de politesse et de respect dans les échanges (saluer, remercier, demander, écouter sans couper).
 
 ## Acquérir et partager les valeurs de la République
 
-- Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent.
-- Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous.
-- Reconnaître et nommer les symboles de la République française (drapeau tricolore, Marianne, La Marseillaise, la fête nationale).
-- Connaître la devise de la République et donner un exemple concret de liberté, d'égalité et de fraternité.
-- Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à l'école, jouer).
+- [EMC-CP-06] Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent.
+- [EMC-CP-07] Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous.
+- [EMC-CP-08] Reconnaître et nommer les symboles de la République française (drapeau tricolore, Marianne, La Marseillaise, la fête nationale).
+- [EMC-CP-09] Connaître la devise de la République et donner un exemple concret de liberté, d'égalité et de fraternité.
+- [EMC-CP-10] Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à l'école, jouer).
 
 ## Construire une culture civique
 
-- Participer à une décision collective par un vote et accepter le résultat du vote.
-- Prendre part à un échange réglé sur une question simple : donner son avis, écouter celui des autres, en changer si on est convaincu.
-- Identifier quelques rôles et services de l'école et de la commune (directeur, mairie, pompiers, médecin).
-- Connaître les gestes d'alerte les plus simples et savoir donner l'alerte (prévenir un adulte, numéro d'urgence).
+- [EMC-CP-11] Participer à une décision collective par un vote et accepter le résultat du vote.
+- [EMC-CP-12] Prendre part à un échange réglé sur une question simple : donner son avis, écouter celui des autres, en changer si on est convaincu.
+- [EMC-CP-13] Identifier quelques rôles et services de l'école et de la commune (directeur, mairie, pompiers, médecin).
+- [EMC-CP-14] Connaître les gestes d'alerte les plus simples et savoir donner l'alerte (prévenir un adulte, numéro d'urgence).
 
 ---
 

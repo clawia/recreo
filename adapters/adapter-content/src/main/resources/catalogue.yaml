@@ -294,3 +294,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-division-posee
     nombreDeManches: 10
+  - id: bandit-manchot-regles-de-vie-cp
+    titre: "Les règles de l'école"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cp-emc-regles-de-vie
+    nombreDeManches: 10
+  - id: bandit-manchot-permis-interdit-cp
+    titre: "Permis ou interdit"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cp-emc-permis-interdit
+    nombreDeManches: 10

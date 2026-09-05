@@ -187,6 +187,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // euclidienne, MAT-CM1-04 et MAT-CM1-05).
             "bandit-manchot-multiplication-posee-cm1",
             "bandit-manchot-division-posee-cm1",
+            // S29-4 (backlog S29-4) : deux entrees neuves, premier lot d'enseignement moral et
+            // civique, CP, restreint aux lignes 1 a 7 du referentiel.
+            "bandit-manchot-regles-de-vie-cp",
+            "bandit-manchot-permis-interdit-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -274,6 +278,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S28-4 : deux titres neufs.
             "La multiplication posée",
             "La division posée",
+            // S29-4 : deux titres neufs. Sans point d'interrogation pour "Permis ou interdit" :
+            // un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "Les règles de l'école",
+            "Permis ou interdit",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -374,6 +382,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Histoire-géographie",
             // S28-3 : matiere neuve, premier paquet d'anglais.
             "Langues vivantes (anglais)",
+            // S29-4 : matiere neuve, premier lot d'enseignement moral et civique.
+            "Enseignement moral et civique",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -395,6 +405,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Repères historiques et géographiques",
             // S28-3 : domaine neuf, premier paquet d'anglais.
             "Lire et comprendre ; découverte culturelle",
+            // S29-4 : deux domaines neufs, premier lot d'enseignement moral et civique (les deux
+            // paquets du lot servent chacun une des trois finalites du referentiel).
+            "Respecter autrui",
+            "Acquérir et partager les valeurs de la République",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -507,7 +521,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Effectuer une multiplication posée d'un nombre à 2-3 chiffres par un nombre à 1-2 "
                     + "chiffres",
             "Effectuer une division euclidienne simple (quotient et reste) par un diviseur à 1 "
-                    + "chiffre");
+                    + "chiffre",
+            // S29-4 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/enseignement-moral-et-civique/competences-cp.md, lignes EMC-CP-06
+            // et EMC-CP-02).
+            "Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent.",
+            "Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves "
+                    + "(moquerie, insulte, violence).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

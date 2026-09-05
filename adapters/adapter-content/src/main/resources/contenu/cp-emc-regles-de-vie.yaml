@@ -1,0 +1,88 @@
+schema: 1
+id: cp-emc-regles-de-vie
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent."
+lignesDeReferentiel: ["EMC-CP-06"]
+#
+# S29-4 (docs/backlog/backlog.md, sprint 29). Premier des deux paquets du lot d'EMC CP restreint
+# aux lignes 1 a 7 du referentiel (squad/programme/enseignement-moral-et-civique/competences-cp.md),
+# arbitrage prealable de nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md,
+# sections 4.3 et 5). Referentiel copie conforme : "un mot change, la ligne n'est plus la mienne"
+# (meme regle qu'aux paquets de questionner le monde CP, S27).
+#
+# FER-1 : les deux moities du libelle sont chacune en position de bonne reponse - la regle elle-meme
+# (items 1, 3, 5, 7, 9, 11) et ce a quoi elle sert (items 2, 4, 6, 8, 10). Aucun item ne se contente
+# d'enoncer une regle sans jamais dire ce qu'elle protege.
+#
+# FER-3 : deux taches distinctes - nommer la regle a partir d'une situation decrite (items impairs),
+# dire ce qu'elle protege (items pairs).
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ("que fais-tu si...",
+# "acceptes-tu de..."). Chaque item porte sur ce qu'une personne decrite fait ou doit faire, ou sur
+# la raison d'etre d'une regle enoncee de facon impersonnelle - meme forme que l'exemple que
+# nadia-prof donne elle-meme dans son referentiel ("pourquoi range-t-on le materiel...").
+#
+# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit, croit ou fait chez lui - les
+# situations mettent en scene un personnage nomme, exterieur a l'enfant.
+#
+# EMC-5 : chaque distracteur est nettement hors sujet, aucun item n'a deux reponses defendables.
+#
+# EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
+# organisation. Les personnages (Lea, Hugo, Aya, Malo) sont fictifs, dans des situations de classe,
+# de couloir ou de cantine.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
+# strictement plus d'items que de manches).
+items:
+  - enonce: "Avant de parler en classe, que doit faire un élève ?"
+    bonneReponse: "lever la main"
+    distracteurs: ["parler plus fort", "taper sur la table"]
+    indice: "Un seul bras se lève, pour demander la parole."
+  - enonce: "Pourquoi lève-t-on la main avant de parler en classe ?"
+    bonneReponse: "pour que chacun parle à son tour"
+    distracteurs: ["pour montrer qu'on a chaud", "pour appeler la maîtresse de loin"]
+    indice: "Sans cette règle, tout le monde parlerait en même temps."
+  - enonce: "Léa a fini de peindre. Que doit-elle faire de son matériel ?"
+    bonneReponse: "le ranger"
+    distracteurs: ["le laisser sur la table", "le jeter à la poubelle"]
+    indice: "La classe doit rester en ordre pour la leçon suivante."
+  - enonce: "Pourquoi range-t-on le matériel après l'avoir utilisé ?"
+    bonneReponse: "pour que chacun retrouve ses affaires"
+    distracteurs: ["pour empêcher les autres d'y toucher", "pour gagner un jeu"]
+    indice: "Un matériel bien rangé se retrouve facilement le lendemain."
+  - enonce: "Dans les couloirs de l'école, comment doit-on se déplacer ?"
+    bonneReponse: "en marchant"
+    distracteurs: ["en courant", "en criant"]
+    indice: "On ne veut bousculer personne."
+  - enonce: "Pourquoi marche-t-on dans les couloirs au lieu de courir ?"
+    bonneReponse: "pour que personne ne se blesse"
+    distracteurs: ["pour arriver en retard", "pour arriver le premier en classe"]
+    indice: "Courir dans un couloir étroit fait facilement tomber quelqu'un."
+  - enonce: "Hugo veut parler alors qu'un camarade parle déjà. Que doit-il faire ?"
+    bonneReponse: "attendre son tour"
+    distracteurs: ["parler plus fort que lui", "le couper aussitôt"]
+    indice: "Une seule personne parle à la fois."
+  - enonce: "Pourquoi écoute-t-on un camarade quand il parle ?"
+    bonneReponse: "pour comprendre ce qu'il dit"
+    distracteurs: ["pour connaître l'heure", "pour gagner une récompense"]
+    indice: "Si tout le monde parle en même temps, personne ne comprend rien."
+  - enonce: "À la cantine, plusieurs élèves veulent se servir en même temps. Que doivent-ils faire ?"
+    bonneReponse: "faire la queue"
+    distracteurs: ["se bousculer", "se servir tous ensemble"]
+    indice: "Chacun passe l'un après l'autre."
+  - enonce: "Pourquoi fait-on la queue à la cantine ?"
+    bonneReponse: "pour que tout le monde passe sans se bousculer"
+    distracteurs: ["pour manger plus vite", "pour être servi en premier"]
+    indice: "Une file évite que plusieurs élèves arrivent en même temps au même endroit."
+  - enonce: "Aya a emprunté des crayons de la classe. Que doit-elle faire en repartant ?"
+    bonneReponse: "les remettre à leur place"
+    distracteurs: ["les garder pour elle", "les laisser tomber par terre"]
+    indice: "Le matériel de la classe sert à tous les élèves."
