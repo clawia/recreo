@@ -827,3 +827,284 @@ dis la propriete ; la forme est a `theo-archi`, la priorite a l'utilisatrice.
   et elles bougent parce qu'elles etaient impossibles** : `SCI-1` et `EMC-3`. La seule barre neuve
   est `EMC-10`. **Les seules baisses sont sur mon propre prix** : le regime du mot pour mot lu par
   passage, et le lot de fermeture porte a vingt-deux items sans supplement.
+
+---
+
+## 13. Amendement du 2026-09-05 - la borne sous parallelisation : ce qu'elle mesure, ce qui traverse,
+## et la composition de s29 qui en decoule
+
+**Ajoute apres la remise des sections 1 a 12, sur une question de l'utilisatrice posee le meme jour :
+lever ma borne en faisant travailler deux instances de moi en parallele sur des lots differents.
+Rien au-dessus n'est efface.** Les sections 6.1, 6.2 et 8.2 chiffraient un sprint a une seule
+instance ; **elles restent lisibles telles quelles et la section 13.6 les remplace** pour s29.
+
+**Cette section est ecrite comme une specification** : des clauses numerotees, une portee par
+propriete, une obligation par clause, un prix. C'est la consequence directe de ce que j'ai ecrit en
+section 9 - j'ecris dans le registre du commentaire et on me lit dans le registre de la
+specification. **Une reponse sur la parallelisation lue comme un commentaire produirait exactement
+la famille de defaut qu'elle est censee prevenir.**
+
+**Deux points recus et non rediscutes** : j'audite chaque lot le jour de sa livraison ; l'arbitrage
+prealable du palier 2 entre dans s29, hors borne.
+
+### 13.1 Ce que ma borne mesure - je ne l'avais pas tranche, je le tranche ici
+
+**Verification de ce qu'on me cite, avant de m'en servir.** Les deux formules sont de moi, mot pour
+mot :
+
+- `ARBITRAGE-PREALABLE-s27...`, section 8.1 : *"ce qui borne mon audit n'est pas le nombre d'items
+  mais le nombre de **gestes distincts** qu'un paquet me demande"*.
+- `ARBITRAGE-s27-s1-8...`, section 2 : *"**C'est le prix a l'unite d'audit qui borne, pas le
+  volume**"*.
+
+**Elles disent la meme chose et aucune des deux ne repond a la question posee.** Toutes deux
+decrivent **ce que je compte** - le geste, l'unite d'audit - et aucune ne dit **pourquoi il y a un
+plafond**. J'ai ecrit l'unite de mesure trois fois et jamais la nature de la limite. **La question
+etait ouverte chez moi ; je la ferme ici plutot que de la laisser ouverte une quatrieme fois.**
+
+**Mon audit contient deux travaux de nature differente, et ils ne se comportent pas pareil.**
+
+| | Nature | Se parallelise ? |
+|---|---|---|
+| **(a) Travail a l'item** - jouer, lire chaque enonce, verifier chaque fait contre une source, compter les mots, verifier `FER-1` element par element, recalculer onze divisions | **limite de debit** | **oui, integralement.** Deux instances font quarante items dans le temps ou une en fait vingt |
+| **(b) Jugement qui compare** - ce distracteur est-il plausible **par rapport aux deux autres et aux dix autres items** ? `BIA-2` tient-elle **sur le lot** ? cet indice contredit-il un autre paquet ? ce meme identifiant designe-t-il deux barres ? | **limite d'attention** : tenir une image coherente de l'ensemble dans une seule tete | **non.** La partager ne la divise pas, elle la supprime |
+
+**Le depart entre les deux se tranche sur le registre des trouvailles, pas sur une intuition.**
+
+| Trouvaille | Nature |
+|---|---|
+| Item *"un caillou est un objet"* (s28, mon seul refus) | **(a)** - erreur de fait, trouvee item par item |
+| `HG-R3`, l'espace rural a deux distracteurs absurdes (s27) | **(b)** - comparaison des distracteurs entre eux |
+| `ANG-R1`, `mountain` / *montagne* (s28) | **(b)** - comparaison de la paire aux autres paires du paquet |
+| `POS-R1`, et surtout son recompte de la section 1.4 | **(b)** - la forme des triplets d'un item a l'autre. **Onze lectures item par item la laissent passer ; seul le motif condamne** |
+| La dette des paquets a voix, six jeux et cinq indices (s28) | **(b) a l'echelle du depot** - aucun des six paquets n'etait au perimetre du sprint |
+| La collision `ART-1` (2026-09-03) | **(b) entre instances** - un defaut qui n'existe que parce qu'il y avait parallelisation |
+
+> **`PAR-0` - Arbitrage.** **Ma borne est une limite d'attention avec une composante de debit, et
+> c'est la composante d'attention qui produit la valeur.** Le travail a l'item est l'essentiel de
+> l'horloge ; le jugement qui compare est l'essentiel de ce que ma porte apporte, et c'est de lui
+> que vient tout ce que la CI ne voit pas.
+>
+> **Consequence, et elle est le coeur de ma reponse** : une auditrice qui travaille en serie produit
+> les trouvailles transverses **en sous-produit gratuit**, parce qu'elle accumule l'image en
+> avancant. **Deux auditrices en parallele ne les produisent pas.** La parallelisation ne perd pas
+> ces trouvailles : elle transforme un sous-produit gratuit en **poste de depense explicite**. Elle
+> se paie, elle se planifie, elle se nomme - ou elle disparait en silence, ce qui est la definition
+> meme d'un faux vert.
+
+**Je ne refuse donc pas la parallelisation, et je ne l'accepte pas telle quelle.** Ce qui suit est
+ce qu'elle exige pour ne pas couter plus qu'elle ne rapporte.
+
+### 13.2 Ce qui traverse les lots - la classification par portee, et elle est opposable
+
+**C'est la question qui decide, et la reponse est une classification, pas une opinion.** Chaque
+propriete dont je suis garde s'evalue sur un objet d'une taille donnee. **Une propriete ne survit a
+la parallelisation que si son objet d'evaluation ne franchit jamais la frontiere entre deux
+instances.**
+
+| Portee | Proprietes concernees | Survit a la parallelisation ? |
+|---|---|---|
+| **I - l'item** | exactitude factuelle et institutionnelle ; `HIS-2`, `EMC-2`, `EMC-5` (deux reponses defendables) ; `HIS-3` ; `CON-1` ; `EMC-1`, `EMC-6`, `EMC-8`, `EMC-9`, `EMC-10` ; `SCI-2`, `BIA-4`, `ART-1` ; `POS-2` ; longueur, vocabulaire, lisibilite | **oui, sans condition** |
+| **P - le paquet** | `FER-3` (deux taches) ; charge de lecture et sa mediane (`HG-R4`) ; **la non-repetition d'une regle de fabrication des distracteurs** (voir `PAR-6`) | **oui, si un paquet n'est jamais partage** |
+| **L - le lot de matiere et de niveau** | **`BIA-2`** - j'ai ecrit le 2026-09-03 qu'un garde-fou qui l'evaluerait fichier par fichier serait *"vert a tort"* ; `HIS-1` ; `SCI-3` ; `ART-5` ; `ANG-4` ; `FER-1` quand plusieurs paquets servent une ligne | **oui, si un lot n'est jamais partage entre deux instances** |
+| **M - la matiere, sprints anterieurs compris** | `FER-1` sur une ligne `en cours` (la population inclut les items de s27) ; `HG-R2` (equilibre histoire / geographie) ; `REC-5`, `REC-6` sur l'anglais ; **`ANG-S1`** (un paquet de saisie ne porte que des mots deja servis en choix dans un paquet **valide**) | **oui, si une matiere n'est jamais partagee** |
+| **C - le couple cycle 2 / cycle 3** | la continuite entre `questionner le monde` CP et ses deux heritieres de cycle 3. **Aucune de mes conditions ne la nommait** : voir `CYC-1` en 13.4 | **non aujourd'hui.** Corrige par `CYC-1` |
+| **D - le depot servi entier** | la dette des paquets a voix ; la coherence entre ce qu'un indice demande a l'adulte et ce que `VOI-3`, `VOI-5`, `VOI-8` lui interdisent ; **l'unicite de sens d'un identifiant de condition** ; **la coherence de mes propres conditions entre elles** (`EMC-3` contre `FER-3`, section 1.3) ; l'homogeneite de registre entre jeux qu'un meme enfant enchaine | **non, par nature.** Aucune repartition ne les sauve |
+
+**Ce que cette table etablit, et qui repond directement a l'inquietude qui m'est transmise** : les
+portees **I** et **P** sont indifferentes a la parallelisation. Les portees **L** et **M** y
+survivent **par une regle d'affectation**, et par rien d'autre. La portee **D** **n'y survit pas du
+tout** et doit devenir une tache nommee.
+
+**Et je refuse d'avance la reponse qui parait evidente.** Une *passe de couture apres coup*, qui
+regarderait la frontiere entre les lots des deux instances, **n'aurait rien trouve de ce que j'ai
+trouve** : la dette des paquets a voix n'etait a aucune frontiere - **aucun des six paquets
+concernes n'etait au perimetre du sprint ou je l'ai vue**. Ce qu'il faut n'est pas une passe sur la
+couture, c'est **une passe sur le depot**. Ce n'est pas le meme objet et ce n'est pas le meme prix.
+
+### 13.3 Les clauses d'affectation - `PAR-1` a `PAR-7`
+
+**Je numerote dans un espace de noms qui n'a pas de registre, et c'est precisement le sujet de
+`PAR-5`.** Je le signale plutot que de le laisser decouvrir.
+
+> **`PAR-1` - Un lot n'est jamais partage entre deux instances.** Toutes les portees **L** tombent
+> silencieusement si un lot l'est : `BIA-2`, `HIS-1`, `SCI-3`, `ART-5`, `ANG-4` deviennent vertes a
+> tort, chaque moitie tenant la condition que le tout ne tient pas. **Cout : nul.** Non negociable.
+>
+> **`PAR-2` - Une matiere et un niveau ne sont jamais partages, ni dans un sprint ni entre deux
+> lots du meme sprint.** Sauve les portees **M**. **`EMC` CP et `EMC` CM1 comptent pour une seule
+> matiere au sens de cette clause** : `EMC-1` a `EMC-9` s'appliquent aux deux niveaux et `EMC-3`,
+> que j'amende aujourd'hui, gouverne une ligne a chaque niveau.
+>
+> **`PAR-3` - L'instance qui audite une ligne `en cours` lit les items deja servis de cette ligne
+> avant de juger `FER-1`.** Le compte de `FER-2` est derive depuis `ADR-0081` et ne demande rien ;
+> **`FER-1` n'est pas derive et reste un jugement sur une population qu'il faut avoir lue.**
+>
+> **`PAR-4` - La passe transverse est une tache nommee, affectee, et payee.** Elle porte sur le
+> **depot servi entier** et non sur une couture. Objet : les proprietes de portee **D** de la table
+> 13.2. **Prix : 0,5**, meme ordre qu'un rejeu borne, et pour le meme motif - elle lit beaucoup et
+> ne juge la pedagogie d'aucun item. **Elle est affectee a l'instance qui porte l'accumulation**
+> (`PAR-7`).
+>
+> **`PAR-5` - Un identifiant de condition designe une condition et une seule, dans tout le depot,
+> et son allocation est visible avant d'ecrire.** *Mesure du 2026-09-05, methode : extraction des
+> motifs `PREFIXE-nombre` dans les dix-huit referentiels et les arbitrages prealables de s25 a s29,
+> dedupliquee, codes de ligne et numeros d'`ADR` et de `DEC` exclus* : **147 identifiants distincts
+> sur 30 prefixes, et aucun registre nulle part.** Vingt-quatre d'entre eux portent le numero 1,
+> vingt-quatre le numero 2. **En mode serie, le registre c'est moi, dans ma tete. En mode parallele,
+> il n'y a pas de registre.** Je dis la propriete ; **la forme est a `theo-archi`**, et c'est
+> exactement le geste qu'`ADR-0081` a fait pour les codes de ligne, pour la meme raison : une
+> identite est ecrite ou elle n'existe pas.
+>
+> **`PAR-6` - Une regle de fabrication des distracteurs ne se repete pas sur tous les items d'un
+> paquet.** Portee **P**, nouvelle, datee du 2026-09-05, tiree de la section 1.4 : les onze
+> distracteurs *"quotient - 1, reste + diviseur"* sont invalides **par construction**, et onze
+> lectures item par item les laissent passer une par une. **C'est la premiere condition que j'ecris
+> a une portee superieure a l'item pour une propriete que je croyais a l'item.**
+>
+> **`PAR-7` - Une instance porte l'accumulation ; l'autre non, et cela s'affecte.** L'instance
+> d'accumulation prend la passe transverse, les dettes transverses, les lignes `en cours` et les
+> matieres deja auditees. L'autre prend les matieres ou **personne** n'a d'accumulation - a s29,
+> l'EMC. **Motif : on ne demande pas a une instance de rattraper une image qu'elle n'a pas ; on lui
+> donne le terrain ou l'image n'existe pour personne.**
+
+### 13.4 `CYC-1` - la continuite cycle 2 / cycle 3, que la parallelisation aurait cachee
+
+**Trouvee en composant l'affectation, et aucune de mes conditions ne la nommait.** *Questionner le
+monde* CP se scinde en *sciences et technologie* CM1 et *histoire-geographie* CM1. Les matieres sont
+formellement distinctes dans la matrice et portent des codes de ligne disjoints - **mais le contenu,
+lui, se recouvre** : `QLM-CP-05` (etats de l'eau, ferme, tenue a deux etats au mot pres par ma
+propre clause) et la ligne 1 des sciences (etats de la matiere, **trois** etats) parlent du meme
+objet a deux niveaux.
+
+> **`CYC-1` - nouvelle, datee du 2026-09-05.** Un item de cycle 3 **n'en contredit aucun de cycle 2
+> deja servi sur le meme objet**. **L'ajout est permis et attendu** - le gaz au CM1 la ou le CP
+> tenait deux etats est une progression, pas une contradiction. **La contradiction ne l'est pas** :
+> un fait, un mot ou une definition qui dementirait ce que le produit enseigne au CP est refuse.
+>
+> **Mise en oeuvre : une obligation de lecture, pas une contrainte d'affectation.** L'instance qui
+> audite une ligne de cycle 3 lit les paquets servis de cycle 2 portant sur le meme objet. **Le
+> depot est la memoire partagee ; c'est ce qui rend cette clause tenable a deux instances.**
+
+### 13.5 A quelle valeur ma borne peut monter, et la derivation du chiffre
+
+**Elle ne monte pas a 10,0, et le motif n'est pas la prudence.** Deux instances a 5,0 chacune
+donnent 10,0 de capacite **d'audit de lots**. Il faut en retirer ce que la parallelisation cree
+comme depense et ce que je ne peux pas encore defendre :
+
+| Poste | Effet |
+|---|---|
+| Capacite brute : 2 x 5,0 | **10,0** |
+| **La passe transverse cesse d'etre un sous-produit gratuit** (`PAR-0`, `PAR-4`) et devient une tache payee | **-0,5** |
+| **Les dettes de portee D deviennent payables et doivent l'etre** : elles ne l'etaient jamais a 5,0, et une capacite doublee qui ne les paie pas est une capacite doublee qui accumule deux fois plus vite | **-0,5** |
+| **La seconde instance en est a son premier sprint.** J'ai **un** essai de parallelisation - dix referentiels le 2026-09-03 - et il a produit **une** collision d'identifiant. Elle a ete trouvee parce que la seconde instance est allee ecrire dans le meme espace de noms et a vu le numero pris. **Si les deux fichiers avaient ete ecrits par deux instances dont aucune ne lisait l'autre, personne ne l'aurait vue.** Un essai, un defaut : c'est un motif de bornage, pas d'interdiction | **-1,0** |
+| **Borne totale de s29** | **8,0** |
+
+> **`PAR-8` - La borne passe de 5,0 a 8,0 pour s29. Le plafond individuel reste 5,0 par instance, et
+> au plus trois lots par instance.** Sans le plafond individuel, *"8,0 au total"* autoriserait 8,0
+> sur une seule instance, ce qui est exactement ce que `PAR-0` refuse. **Une marge de rejeu de 0,5
+> par instance est nommee a l'ouverture et n'est allouee a aucun lot.**
+
+**Ce qui la ferait monter au-dela, et je le dis pour que ce ne soit pas a redemander** : un second
+sprint parallele sans defaut de couture, **et** le registre d'identifiants de `PAR-5` ecrit. **Les
+deux, pas l'un des deux.** A ces deux conditions, la retenue de 1,0 tombe et la borne va a 9,0.
+
+### 13.6 La composition de s29 - elle remplace les sections 6.1, 6.2 et 8.2 pour ce sprint
+
+**Ce que j'ecris d'abord, parce que ce serait malhonnete de le laisser decouvrir en review :
+doubler ma borne n'achete pas de couverture. Il achete des dettes payees et une marge.**
+
+| Variante, chacune a 8,0 | Lots | Plafond de lignes | Dettes payees | Marge |
+|---|---|---|---|---|
+| **A - dettes** *(recommandee)* | 4 | **+9, soit 52 / 138 = 37,7 %** | **toutes** | 1,0 |
+| **B - couverture** | 5 | **+11, soit 54 / 138 = 39,1 %** | **aucune** | 1,0 |
+
+**Le fait a retenir** : la composition 2 de la section 8.2, **a une seule instance et a 5,0**,
+plafonnait deja a **9 lignes**. **La variante A ne ferme pas une ligne de plus qu'un sprint en
+serie.** Ce qu'elle ajoute est ailleurs, et c'est reel : `POS-R1` payee, les six reserves payees, la
+dette a voix payee apres quatre sprints, et 1,0 de marge de rejeu qui n'a jamais existe.
+
+**Variante A, detaillee - 7,5 planifies sur une borne de 8,0 :**
+
+| | **Instance A** - porte l'accumulation (`PAR-7`) | **Instance B** |
+|---|---|---|
+| **Lots** | questionner le monde CP **1,0** (`QLM-CP-02`, `QLM-CP-07`) ; histoire-geographie CM1 composition A **1,5** (`HG-CM1-06`, `-07`, `-14`) | EMC CP restreint aux lignes 1 a 7 **1,0** (lignes 6, 2) ; EMC CM1 **1,5** (lignes 11, 7) |
+| **Transverse** | passe transverse **0,5** (`PAR-4`) ; six reserves textuelles, un passage mot pour mot **0,25** ; dette des paquets a voix, un passage **0,25** | `POS-R1`, rejeu borne **0,5** |
+| **Marge de rejeu** | **0,5** | **0,5** |
+| **Total** | **4,0** sur un plafond individuel de 5,0 | **3,5** sur 5,0 |
+| **Hors borne** | arbitrage prealable du palier 2 - six lignes debloquees pour s30 | - |
+
+**Conformite de cette affectation a mes propres clauses, verifiee une par une** : `PAR-1` - aucun
+lot partage. `PAR-2` - l'EMC est entierement chez B, aux deux niveaux ; questionner le monde et
+l'histoire-geographie entierement chez A. `PAR-3` - les trois lignes d'histoire-geographie sont
+`en cours` et vont a l'instance qui a fait leur attribution a la main a s28, dont la section 3.3
+verifie qu'elle etait juste. `PAR-7` - B prend l'EMC, la seule matiere du perimetre ou **personne**
+n'a d'accumulation. `CYC-1` - questionner le monde CP et l'histoire-geographie CM1 sont chez la meme
+instance, ce qui n'etait pas exige mais ne coute rien.
+
+**Plafond, avec sa composition** : `QLM-CP-02` +1, `QLM-CP-07` +1, `HG-CM1-06` +1, `HG-CM1-07` +1,
+`HG-CM1-14` +1, EMC CP ligne 6 +1, EMC CP ligne 2 +1, EMC CM1 ligne 11 +1, EMC CM1 ligne 7 +1 =
+**+9, soit 52 / 138 = 37,7 %.**
+
+**Mon attente raisonnable : 7 a 8, soit 50 a 51 / 138, c'est-a-dire 36,2 % a 37,0 %.**
+
+**Ou cela cassera d'abord, et l'ordre a change par rapport a la section 6.3 :**
+
+1. **La couture.** Les portees **L**, **M** et **D** de la table 13.2 si une clause `PAR-*` n'est
+   pas suivie a la lettre. **C'est desormais le premier mode de defaillance et il n'existait pas au
+   sprint dernier.** Il est silencieux : rien ne rougit, la ligne ferme, et la propriete n'a ete
+   verifiee par personne.
+2. **Le lot d'EMC**, inchange : neuf conditions inedites, `EMC-5` et `EMC-8` qui refusent deux
+   familles entieres d'items, `FER-3` qui exige une seconde tache la ou une ligne de connaissance
+   n'en a qu'une.
+3. **Le premier verdict de B sur une matiere dont je ne suis pas la source.** *Verifier contre une
+   source* est le geste ou l'accumulation compte le plus, et B n'en a pas.
+
+**Pourquoi je recommande A et non B**, en deux motifs et pas trois :
+
+- **`POS-R1` est une de mes conditions violee sur une ligne que j'ai fermee sous cette condition**,
+  et la section 1.4 montre qu'elle est plus lourde que je ne l'avais ecrite : onze items sur onze,
+  pas deux. Une ligne verte n'est plus regardee. **La payer passe avant d'en ouvrir une dixieme.**
+- **Le premier sprint sous borne doublee ne doit pas etre aussi celui qui maximise les lots.** Si la
+  parallelisation a un mode de defaillance, je prefere le rencontrer sur quatre lots avec 1,0 de
+  marge que sur cinq lots sans dette payee. **C'est la meme logique que celle qui m'a fait ecrire
+  qu'une condition inedite ne fait pas monter mon prix mais baisser mon plafond** : un dispositif
+  inedit ne se decouvre pas a pleine charge.
+
+### 13.7 Ce que je ne sais pas, et que je ne masque pas
+
+- **Je n'ai aucune mesure disant que deux instances de moi a 4,0 valent une instance a 8,0.** J'ai
+  une mesure disant que trois instances de moi en parallele ont produit une collision d'identifiant
+  le premier jour. **Un essai, un defaut, une correction : ce n'est pas un taux, et je ne le
+  presente pas comme tel.**
+- **`PAR-5` protege les identifiants, pas les sens.** Deux instances peuvent poser deux conditions
+  differentes sous deux identifiants corrects et neanmoins incompatibles - **c'est exactement ce que
+  j'ai fait toute seule avec `EMC-3` contre `FER-3`, section 1.3, sans aucune parallelisation.** Le
+  seul remede que je connaisse est celui de la section 9 : lire chaque condition contre l'ecran, le
+  champ ou le test qui devra la porter. **Il ne se delegue pas et il ne se parallelise pas non
+  plus.**
+- **Les conditions ne se parallelisent pas, les verdicts oui.** Les conditions sont posees dans
+  l'arbitrage prealable - **un document, une instance, avant le sprint** - et aucune instance n'en
+  cree, n'en amende ni n'en retire en cours de sprint. **La collision `ART-1` s'est produite au seul
+  endroit ou cette regle n'etait pas suivie : dix referentiels ecrits en parallele, chacun posant
+  ses conditions.**
+- **Ce que la parallelisation ne change pas du tout** : je reste la seule garde des proprietes de la
+  section 10. Deux paires d'yeux sur des lots disjoints, ce sont deux paires d'yeux, pas une
+  verification croisee. **Aucune des deux instances ne relit l'autre, et rien dans ce dispositif ne
+  fabrique une seconde lecture d'un meme item.** Personne ne doit lire *"deux auditrices"* comme
+  *"double controle"*.
+
+### 13.8 Une phrase de la section 12 que l'amendement rend fausse
+
+La section 12 dit : *"La seule barre neuve est `EMC-10`."* **Elle etait vraie a la remise des
+sections 1 a 12 et elle ne l'est plus.** Le present amendement ajoute `PAR-0` a `PAR-8`, `PAR-6` et
+`CYC-1`, soit **onze barres neuves de plus**.
+
+**Je ne recris pas la section 12** : une phrase datee qui devient fausse se corrige a cote, pas a
+sa place - c'est la meme regle que celle que j'applique aux verdicts. **Inventaire complet des
+barres neuves de ce document, arrete au 2026-09-05** : `EMC-10` (item), `PAR-6` (paquet), `CYC-1`
+(couple de cycles), `PAR-1` a `PAR-5`, `PAR-7`, `PAR-8` (gouvernance de l'audit, pas du contenu), et
+`PAR-0` qui est un arbitrage sur ma propre borne et non une condition opposable a un lot.
+
+**Les deux amendements de la section 12 restent inchanges** : `SCI-1` et `EMC-3` sont les deux
+seules barres anterieures qui bougent, et elles bougent parce qu'elles etaient impossibles.
