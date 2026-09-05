@@ -1,0 +1,80 @@
+schema: 1
+id: cp-qlm-objet-technique
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Identifier la fonction d'un objet technique du quotidien et nommer ses parties."
+lignesDeReferentiel: ["QLM-CP-07"]
+#
+# S29-1 (backlog S29-1). Cinquieme paquet de la matiere "Questionner le monde" (CP), second des
+# deux lots de ce sprint. Referentiel copie conforme depuis le referentiel de nadia-prof
+# (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-07) : le libelle de
+# competence ci-dessus est recopie a l'identique.
+#
+# Arbitrage prealable : squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-
+# neuves-et-le-plafond-a-huit-lignes.md, section 4.1.
+#
+# FER-1 (les deux moities du libelle) : la moitie "fonction" est servie par la tache A (items 1 a
+# 5, un objet different a chaque fois : parapluie, ciseaux, stylo, balai, brosse a dents) ; la
+# moitie "parties" est servie par la tache B (items 6 a 11, des parties de velo, de parapluie et
+# de ciseaux).
+#
+# FER-3 (deux taches distinctes par construction) : tache A, nommer la fonction d'un objet decrit
+# ("À quoi sert un parapluie ?" -> "à se protéger de la pluie") ; tache B, nommer une de ses
+# parties ("Quelle partie du vélo sert à s'asseoir ?" -> "la selle").
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# CYC-1 : la ligne CM1 de sciences et technologie ("Identifier la fonction d'un objet technique,
+# nommer ses composants et decrire son fonctionnement") est plus exigeante (composants, fonction-
+# nement) mais ne contredit rien ici - ce paquet reste au grain du CP, "nommer ses parties", fixe
+# par son propre referentiel.
+#
+# Aucune condition de biais ne s'applique a cette ligne.
+items:
+  - enonce: "À quoi sert un parapluie ?"
+    bonneReponse: "à se protéger de la pluie"
+    distracteurs: ["à couper", "à écrire"]
+    indice: "On l'ouvre quand il pleut."
+  - enonce: "À quoi sert une paire de ciseaux ?"
+    bonneReponse: "à couper"
+    distracteurs: ["à écrire", "à balayer"]
+    indice: "On l'utilise pour découper du papier."
+  - enonce: "À quoi sert un stylo ?"
+    bonneReponse: "à écrire"
+    distracteurs: ["à couper", "à balayer"]
+    indice: "On s'en sert pour tracer des lettres."
+  - enonce: "À quoi sert un balai ?"
+    bonneReponse: "à balayer"
+    distracteurs: ["à écrire", "à se protéger de la pluie"]
+    indice: "On l'utilise pour nettoyer le sol."
+  - enonce: "À quoi sert une brosse à dents ?"
+    bonneReponse: "à se laver les dents"
+    distracteurs: ["à couper", "à écrire"]
+    indice: "On s'en sert matin et soir."
+  - enonce: "Quelle partie du vélo sert à s'asseoir ?"
+    bonneReponse: "la selle"
+    distracteurs: ["le guidon", "la pédale"]
+    indice: "Elle est en hauteur, au milieu du vélo."
+  - enonce: "Quelle partie du vélo sert à tourner ?"
+    bonneReponse: "le guidon"
+    distracteurs: ["la selle", "la pédale"]
+    indice: "On le tient avec les deux mains, à l'avant."
+  - enonce: "Sur quelle partie du vélo pose-t-on les pieds ?"
+    bonneReponse: "la pédale"
+    distracteurs: ["le guidon", "la selle"]
+    indice: "On appuie dessus pour faire avancer le vélo."
+  - enonce: "Quelle partie du parapluie tient-on dans la main ?"
+    bonneReponse: "le manche"
+    distracteurs: ["la toile", "la pointe"]
+    indice: "C'est la partie la plus basse du parapluie."
+  - enonce: "Quelle partie du parapluie arrête la pluie ?"
+    bonneReponse: "la toile"
+    distracteurs: ["le manche", "la pointe"]
+    indice: "Elle s'ouvre comme un grand cercle au-dessus de la tête."
+  - enonce: "Quelle partie des ciseaux coupe le papier ?"
+    bonneReponse: "la lame"
+    distracteurs: ["le manche", "la pointe"]
+    indice: "Il y en a deux, elles se croisent pour couper."

@@ -514,6 +514,24 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " compte), si bien que valeurDe rend null sur les trois propositions de chaque"
                     + " item, y compris quand ce second nombre vaut 0. Mesure du 2026-09-04 sur le"
                     + " paquet servi"),
+            // S29-1 : quatrieme et cinquieme paquets de "Questionner le monde" (CP), fermant
+            // QLM-CP-02 et QLM-CP-07.
+            Map.entry("cp-qlm-cycle-de-vie",
+            "11 items sur 11 : cinq items (tache de reconnaissance) portent deux distracteurs"
+                    + " (trois propositions) et six items (tache de possession) portent un seul"
+                    + " distracteur (deux propositions) - meme motif que cp-qlm-corps-sens et"
+                    + " cp-qlm-vivant-non-vivant, additionnes sur un seul paquet. Aucune proposition"
+                    + " n'est numerique dans les deux cas : ce sont des expressions du cycle de vie"
+                    + " (\"il naît\", \"il se nourrit\", \"il grandit\", \"elle a des petits\", \"elle"
+                    + " meurt\") ou une reponse binaire (\"oui\", \"non\"), valeurDe rend null sur"
+                    + " toutes les propositions. Mesure du 2026-09-05 sur le paquet servi"),
+            Map.entry("cp-qlm-objet-technique",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des fonctions d'objets techniques"
+                    + " (\"à couper\", \"à écrire\", \"à balayer\"...) ou des noms de parties (\"la"
+                    + " selle\", \"le guidon\", \"la pédale\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-05 sur le paquet servi :"
+                    + " aucune des 33 propositions ne commence par un chiffre"),
             // S29-4 : premier lot d'enseignement moral et civique (CP), matiere neuve du produit,
             // restreint aux lignes 1 a 7 du referentiel (arbitrage prealable de nadia-prof).
             Map.entry("cp-emc-regles-de-vie",

@@ -270,6 +270,18 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-qlm-etats-eau
     nombreDeManches: 10
+  - id: bandit-manchot-cycle-de-vie-cp
+    titre: "Le cycle de la vie"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-cycle-de-vie
+    nombreDeManches: 10
+  - id: bandit-manchot-objet-technique-cp
+    titre: "Fonction d'un objet"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-objet-technique
+    nombreDeManches: 10
   - id: bandit-manchot-histoire-geographie-cm1
     titre: "Histoire et géographie"
     consigne: "Lis bien la question, puis choisis la bonne réponse."

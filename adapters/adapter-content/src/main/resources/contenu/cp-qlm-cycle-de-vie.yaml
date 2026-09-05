@@ -1,0 +1,82 @@
+schema: 1
+id: cp-qlm-cycle-de-vie
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Identifier ce qui caractérise un être vivant : il naît, se nourrit, grandit, a des petits, meurt."
+lignesDeReferentiel: ["QLM-CP-02"]
+#
+# S29-1 (backlog S29-1). Quatrieme paquet de la matiere "Questionner le monde" (CP), premier des
+# deux lots de ce sprint. Referentiel copie conforme depuis le referentiel de nadia-prof
+# (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-02) : le libelle de
+# competence ci-dessus est recopie a l'identique.
+#
+# Arbitrage prealable : squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-
+# neuves-et-le-plafond-a-huit-lignes.md, section 4.1. nadia-prof est la source de cette matiere
+# ("le vivant, le corps, les objets, je les enseigne") : pas de source externe a verifier, mais
+# exigence de niveau CP.
+#
+# FER-1 : les cinq caracteres du libelle (naitre, se nourrir, grandir, avoir des petits, mourir)
+# sont chacun en bonne reponse au moins une fois, tous servis par la tache A (items 1 a 5).
+#
+# FER-3 (deux taches distinctes) : tache A, reconnaitre le caractere decrit dans une situation
+# ("Un poussin sort de l'oeuf, que fait-il ?" -> "il nait", cinq items, un par caractere) ; tache
+# B, dire si un etre donne possede ce caractere ("Un caillou peut-il naitre ?" -> "non", six items,
+# sur des etres varies : caillou, enfant, chaise, plante, pierre, poisson - reprend les trois
+# exemples de l'AC (une plante, un caillou, un enfant)).
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# CYC-1 : la ligne CM1 de sciences et technologie ("Ordonner les etapes du developpement d'un etre
+# vivant : naissance, croissance, reproduction, vieillissement, mort") est plus fine mais ne
+# contredit rien ici - ce paquet reste au grain du CP fixe par son propre referentiel, sans nommer
+# le "vieillissement", absent du libelle CP.
+#
+# Aucune condition de biais ne s'applique a cette ligne (ni BIA-1 a BIA-5).
+items:
+  - enonce: "Un poussin sort de l'oeuf, que fait-il ?"
+    bonneReponse: "il naît"
+    distracteurs: ["il grandit", "il meurt"]
+    indice: "C'est le tout début de sa vie."
+  - enonce: "Un chien mange sa gamelle tous les jours, que fait-il ?"
+    bonneReponse: "il se nourrit"
+    distracteurs: ["il naît", "il a des petits"]
+    indice: "Il a besoin de manger pour vivre."
+  - enonce: "Un bébé devient peu à peu un enfant, que fait-il ?"
+    bonneReponse: "il grandit"
+    distracteurs: ["il naît", "il meurt"]
+    indice: "Il change de taille peu à peu."
+  - enonce: "Une chatte a des chatons, que fait-elle ?"
+    bonneReponse: "elle a des petits"
+    distracteurs: ["elle naît", "elle meurt"]
+    indice: "Ses chatons sont ses bébés."
+  - enonce: "Une vieille plante se dessèche et ne vit plus, que fait-elle ?"
+    bonneReponse: "elle meurt"
+    distracteurs: ["elle naît", "elle grandit"]
+    indice: "C'est la fin de sa vie."
+  - enonce: "Un caillou peut-il naître ?"
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Un caillou n'a jamais été un bébé."
+  - enonce: "Un enfant peut-il se nourrir ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Il mange pour grandir."
+  - enonce: "Une chaise peut-elle grandir ?"
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Elle garde toujours la même taille."
+  - enonce: "Une plante peut-elle avoir des petits ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Ses graines donneront de nouvelles plantes."
+  - enonce: "Une pierre peut-elle mourir ?"
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Elle n'a jamais été vivante."
+  - enonce: "Un poisson peut-il grandir ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Il est tout petit en sortant de l'oeuf."

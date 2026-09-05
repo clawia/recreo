@@ -187,6 +187,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // euclidienne, MAT-CM1-04 et MAT-CM1-05).
             "bandit-manchot-multiplication-posee-cm1",
             "bandit-manchot-division-posee-cm1",
+            // S29-1 (backlog S29-1) : deux entrees neuves, quatrieme et cinquieme paquets de
+            // "Questionner le monde" (CP), fermant QLM-CP-02 et QLM-CP-07.
+            "bandit-manchot-cycle-de-vie-cp",
+            "bandit-manchot-objet-technique-cp",
             // S29-4 (backlog S29-4) : deux entrees neuves, premier lot d'enseignement moral et
             // civique, CP, restreint aux lignes 1 a 7 du referentiel.
             "bandit-manchot-regles-de-vie-cp",
@@ -282,6 +286,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S28-4 : deux titres neufs.
             "La multiplication posée",
             "La division posée",
+            // S29-1 : deux titres neufs. Sans point d'interrogation, comme les titres des lots
+            // S29-4 et S29-5 : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "Le cycle de la vie",
+            "Fonction d'un objet",
             // S29-4 : deux titres neufs. Sans point d'interrogation pour "Permis ou interdit" :
             // un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
             "Les règles de l'école",
@@ -534,6 +542,12 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "chiffres",
             "Effectuer une division euclidienne simple (quotient et reste) par un diviseur à 1 "
                     + "chiffre",
+            // S29-1 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/questionner-le-monde/competences-cp.md, lignes QLM-CP-02 et
+            // QLM-CP-07).
+            "Identifier ce qui caractérise un être vivant : il naît, se nourrit, grandit, a des "
+                    + "petits, meurt.",
+            "Identifier la fonction d'un objet technique du quotidien et nommer ses parties.",
             // S29-4 : deux competences neuves, copiees conformes du referentiel de nadia-prof
             // (squad/programme/enseignement-moral-et-civique/competences-cp.md, lignes EMC-CP-06
             // et EMC-CP-02).
