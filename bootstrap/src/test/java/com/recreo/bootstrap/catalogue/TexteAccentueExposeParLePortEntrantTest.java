@@ -191,6 +191,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // civique, CP, restreint aux lignes 1 a 7 du referentiel.
             "bandit-manchot-regles-de-vie-cp",
             "bandit-manchot-permis-interdit-cp",
+            // S29-5 (backlog S29-5) : deux entrees neuves, second lot d'enseignement moral et
+            // civique, CM1 (fait/opinion, droit/devoir).
+            "bandit-manchot-fait-opinion-cm1",
+            "bandit-manchot-droit-devoir-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -282,6 +286,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
             "Les règles de l'école",
             "Permis ou interdit",
+            // S29-5 : deux titres neufs. Sans point d'interrogation, comme les titres du lot S29-4 :
+            // un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "Fait ou opinion",
+            "Droits et devoirs",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -409,6 +417,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // paquets du lot servent chacun une des trois finalites du referentiel).
             "Respecter autrui",
             "Acquérir et partager les valeurs de la République",
+            // S29-5 : domaine neuf, second lot d'enseignement moral et civique (ligne fait/opinion,
+            // la ligne droit/devoir partage le domaine "Acquérir et partager les valeurs de la
+            // République" deja liste ci-dessus).
+            "Construire une culture civique",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -527,7 +539,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // et EMC-CP-02).
             "Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent.",
             "Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves "
-                    + "(moquerie, insulte, violence).");
+                    + "(moquerie, insulte, violence).",
+            // S29-5 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/enseignement-moral-et-civique/competences-cm1.md, lignes EMC-CM1-11
+            // et EMC-CM1-07).
+            "Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la "
+                    + "partager.",
+            "Distinguer un droit d'un devoir, et connaître quelques droits et devoirs de l'élève et "
+                    + "de l'enfant.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

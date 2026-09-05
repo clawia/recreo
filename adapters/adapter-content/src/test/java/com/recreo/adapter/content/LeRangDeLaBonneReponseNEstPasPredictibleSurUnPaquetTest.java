@@ -529,7 +529,22 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " entre eleves (\"une moquerie\", \"une insulte\", \"de la violence\","
                     + " \"permis\"...), valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-09-05 sur le paquet servi : aucune des 33 propositions ne"
-                    + " commence par un chiffre"));
+                    + " commence par un chiffre"),
+            // S29-5 : deux paquets neufs d'enseignement moral et civique (CM1), matiere connue depuis
+            // S29-4 mais lignes de referentiel neuves.
+            Map.entry("cm1-emc-fait-opinion",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des classifications (\"un fait\", \"une"
+                    + " opinion\", \"un mensonge\") ou des methodes de verification en texte libre,"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-05 sur le paquet servi : aucune des 33 propositions ne commence par"
+                    + " un chiffre"),
+            Map.entry("cm1-emc-droit-devoir",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des qualifications (\"un droit\", \"un"
+                    + " devoir\", \"une interdiction\") ou des buts en texte libre, valeurDe rend null"
+                    + " sur les trois propositions de chaque item. Mesure du 2026-09-05 sur le paquet"
+                    + " servi : aucune des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

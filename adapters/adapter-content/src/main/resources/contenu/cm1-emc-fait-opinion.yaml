@@ -1,0 +1,95 @@
+schema: 1
+id: cm1-emc-fait-opinion
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Construire une culture civique"
+  competence: "Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la partager."
+lignesDeReferentiel: ["EMC-CM1-11"]
+#
+# S29-5 (docs/backlog/backlog.md, sprint 29). Premier des deux paquets du lot d'EMC CM1, arbitrage
+# prealable de nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-
+# lignes.md, sections 4.4 et 5). Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-11).
+#
+# FER-1 : les deux notions du libelle sont chacune en position de bonne reponse - "un fait" (items 1,
+# 5, 9) et "une opinion" (items 3, 7, 11).
+#
+# FER-3 : deux taches distinctes - classer un enonce comme un fait ou une opinion (items impairs),
+# dire comment on verifie l'origine d'une information avant de la partager (items pairs).
+#
+# Forme reprise de bandit-manchot-comprehension-cm1 (cm1-comprehension.yaml), deja validee deux fois
+# par nadia-prof : un enonce court, trois propositions, une seule defendable.
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ("que fais-tu si..."). Les
+# items de verification d'origine mettent en scene un personnage nomme, a la troisieme personne (Aya,
+# Malo, Hugo, Lea), jamais l'enfant lui-meme.
+#
+# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit, croit ou fait chez lui.
+#
+# EMC-5 : chaque distracteur est nettement hors sujet, aucun item n'a deux reponses defendables.
+#
+# EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
+# organisation. Tous les sujets sont sans enjeu polemique : la meteo, un match de recreation, une
+# rumeur de cour de recreation. Les personnages (Lea, Hugo, Aya, Malo) sont fictifs.
+#
+# Cette ligne ne porte aucun fait institutionnel (HIS-3 sans objet ici) : les enonces sont des
+# scenarios fictifs construits pour illustrer la distinction fait/opinion, pas des faits du monde reel
+# a sourcer.
+#
+# CYC-1 : verifie contre le lot de CP livre le meme jour (S29-4, cp-emc-regles-de-vie.yaml et
+# cp-emc-permis-interdit.yaml) - aucun objet commun entre les deux lots, donc aucune contradiction
+# possible.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
+# strictement plus d'items que de manches).
+items:
+  - enonce: "Il a plu toute la matinée sur la cour de récréation aujourd'hui ?"
+    bonneReponse: "un fait"
+    distracteurs: ["une opinion", "un mensonge"]
+    indice: "On peut vérifier ce genre d'information en regardant dehors ou en demandant à quelqu'un qui était présent."
+  - enonce: "Aya entend dire qu'il va neiger pendant les vacances. Comment peut-elle vérifier si c'est vrai avant de le répéter ?"
+    bonneReponse: "en regardant plusieurs prévisions météo ou en demandant à un adulte"
+    distracteurs: ["en le répétant à toute la classe sans rien vérifier", "en le croyant parce qu'un seul camarade l'a dit"]
+    indice: "Une information se vérifie avant d'être partagée, pas après."
+  - enonce: "Le foot est le sport le plus intéressant du monde ?"
+    bonneReponse: "une opinion"
+    distracteurs: ["un fait", "un mensonge"]
+    indice: "Chacun peut préférer un sport différent, sans que personne n'ait tort."
+  - enonce: "Malo raconte qu'une équipe a gagné le tournoi de la récréation par un score énorme. Comment Léa peut-elle vérifier cette information avant de la répéter ?"
+    bonneReponse: "en demandant à plusieurs élèves qui ont vu le match"
+    distracteurs: ["en la répétant sans rien vérifier", "en la croyant parce que Malo l'a dit une seule fois"]
+    indice: "Plusieurs témoins qui racontent la même chose rendent une information plus sûre."
+  - enonce: "Hugo a marqué trois buts pendant le match de la récréation ?"
+    bonneReponse: "un fait"
+    distracteurs: ["une opinion", "un mensonge"]
+    indice: "On peut vérifier ce genre d'information en demandant à ceux qui ont joué ou regardé le match."
+  - enonce: "Hugo entend une rumeur selon laquelle l'école fermera demain. Que doit-il faire avant d'en parler à ses camarades ?"
+    bonneReponse: "vérifier l'information auprès d'un adulte de l'école"
+    distracteurs: ["la répéter immédiatement à tout le monde", "l'écrire sur un mot qu'il fait circuler sans rien vérifier"]
+    indice: "Un adulte de l'école connaît les informations vraies sur son fonctionnement."
+  - enonce: "Cette histoire racontée à la récréation est bien plus drôle que celle d'hier ?"
+    bonneReponse: "une opinion"
+    distracteurs: ["un fait", "un mensonge"]
+    indice: "Trouver une histoire plus drôle qu'une autre dépend du goût de chacun."
+  - enonce: "Aya a entendu un camarade dire que sa maîtresse était malade. Comment peut-elle savoir si c'est vrai ?"
+    bonneReponse: "en demandant directement à un adulte de l'école"
+    distracteurs: ["en le répétant à tout le monde sans vérifier", "en imaginant une explication supplémentaire"]
+    indice: "Une seule personne peut se tromper ; un adulte de l'école a l'information exacte."
+  - enonce: "Il a fait trois degrés ce matin, d'après le thermomètre de la classe ?"
+    bonneReponse: "un fait"
+    distracteurs: ["une opinion", "un mensonge"]
+    indice: "Un thermomètre donne une mesure que l'on peut vérifier."
+  - enonce: "Léa lit sur un petit mot affiché dans la cour que la récréation est annulée demain. Comment peut-elle vérifier que ce mot dit vrai ?"
+    bonneReponse: "en demandant confirmation à un adulte de l'école"
+    distracteurs: ["en croyant le mot sans le vérifier", "en le décrivant de mémoire sans le relire"]
+    indice: "Un mot affiché peut être vrai ou faux ; un adulte de l'école peut confirmer."
+  - enonce: "Les récréations du matin sont plus agréables que celles de l'après-midi ?"
+    bonneReponse: "une opinion"
+    distracteurs: ["un fait", "un mensonge"]
+    indice: "Préférer un moment de la journée à un autre est affaire de goût."

@@ -23,27 +23,33 @@
 > devine par la seule politesse - *"que fais-tu si un camarade tombe ?"*. Un tel item ne mesure
 > rien, il mesure la réponse attendue. `EMC-8` le refuse, et c'est la barre la plus importante de
 > ce référentiel.
+>
+> **Codes de ligne ajoutés le 2026-09-05 (`lea-dev`, `S29-5`), conformément à `ADR-0081`.** Ce
+> référentiel n'était pas encore codé : aucun paquet ne le citait avant ce sprint. La transcription
+> reprend, sans jugement, la numérotation déjà utilisée par `nadia-prof` dans la colonne `#` du
+> tableau de faisabilité ci-dessous - `EMC-CM1-01` à `EMC-CM1-12`, dans l'ordre de lecture des trois
+> domaines. Aucun intitulé n'est modifié.
 
 ## Respecter autrui
 
-- Identifier et nommer l'émotion d'une personne dans une situation donnée, et distinguer ce que l'on ressent de ce que l'on fait.
-- Reconnaître ce qui porte atteinte à la personne d'autrui (moquerie, insulte, mise à l'écart, harcèlement) et savoir à qui s'adresser.
-- Identifier ce qu'interdit le respect d'autrui dans ses différences (apparence, origine, convictions, situation de handicap).
-- Connaître les règles de la vie collective à l'école et dire à quoi elles servent.
+- [EMC-CM1-01] Identifier et nommer l'émotion d'une personne dans une situation donnée, et distinguer ce que l'on ressent de ce que l'on fait.
+- [EMC-CM1-02] Reconnaître ce qui porte atteinte à la personne d'autrui (moquerie, insulte, mise à l'écart, harcèlement) et savoir à qui s'adresser.
+- [EMC-CM1-03] Identifier ce qu'interdit le respect d'autrui dans ses différences (apparence, origine, convictions, situation de handicap).
+- [EMC-CM1-04] Connaître les règles de la vie collective à l'école et dire à quoi elles servent.
 
 ## Acquérir et partager les valeurs de la République
 
-- Reconnaître les symboles de la République française et dire ce qu'ils représentent (drapeau, devise, Marianne, hymne, fête nationale).
-- Comprendre le sens des principes de la République : liberté, égalité, fraternité, laïcité, refus des discriminations.
-- Distinguer un droit d'un devoir, et connaître quelques droits et devoirs de l'élève et de l'enfant.
-- Distinguer une règle d'une loi, et identifier ce que la loi autorise, interdit et protège.
+- [EMC-CM1-05] Reconnaître les symboles de la République française et dire ce qu'ils représentent (drapeau, devise, Marianne, hymne, fête nationale).
+- [EMC-CM1-06] Comprendre le sens des principes de la République : liberté, égalité, fraternité, laïcité, refus des discriminations.
+- [EMC-CM1-07] Distinguer un droit d'un devoir, et connaître quelques droits et devoirs de l'élève et de l'enfant.
+- [EMC-CM1-08] Distinguer une règle d'une loi, et identifier ce que la loi autorise, interdit et protège.
 
 ## Construire une culture civique
 
-- Identifier le rôle de quelques institutions proches (mairie, conseil municipal, école) et à qui s'adresser selon la situation.
-- Comprendre le sens du vote et de la représentation (délégué de classe, élection, suffrage universel).
-- Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la partager.
-- S'engager dans un projet collectif de la classe ou de l'école et y tenir son rôle.
+- [EMC-CM1-09] Identifier le rôle de quelques institutions proches (mairie, conseil municipal, école) et à qui s'adresser selon la situation.
+- [EMC-CM1-10] Comprendre le sens du vote et de la représentation (délégué de classe, élection, suffrage universel).
+- [EMC-CM1-11] Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la partager.
+- [EMC-CM1-12] S'engager dans un projet collectif de la classe ou de l'école et y tenir son rôle.
 
 ---
 

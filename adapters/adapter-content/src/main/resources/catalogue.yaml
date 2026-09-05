@@ -306,3 +306,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-emc-permis-interdit
     nombreDeManches: 10
+  - id: bandit-manchot-fait-opinion-cm1
+    titre: "Fait ou opinion"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-fait-opinion
+    nombreDeManches: 10
+  - id: bandit-manchot-droit-devoir-cm1
+    titre: "Droits et devoirs"
+    consigne: "Lis bien la question, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-droit-devoir
+    nombreDeManches: 10
