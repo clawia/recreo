@@ -1302,8 +1302,11 @@ ligne "questionner le monde / CM1".
 | questionner le monde | CP | Se situer dans le temps | Comparer des modes de vie d'autrefois et d'aujourd'hui à partir d'objets et d'images du quotidien. | - | - | non couvert |
 | questionner le monde | CP | Explorer les organisations du monde | Comparer des modes de vie ici et ailleurs (habitat, alimentation, école, déplacements). | - | - | non couvert - ligne signalee comme la plus a risque de biais du lot ; `BIA-1` et `BIA-2` (section 7.4 de l'arbitrage) sont opposables a tout paquet qui la sert. |
 
-**Bilan** : 16 lignes, 15 `non couvert`, 1 `non couvrable en l'etat`. 15 lignes entrent au
-denominateur atteignable.
+**Bilan, corrige le 2026-09-05 (`camille-po`) - le bilan precedent (15 `non couvert`) datait
+d'avant les trois fermetures de s28 et n'avait pas ete mis a jour** : 16 lignes, 12 `non
+couvert`, 3 `couvert-valide` (`QLM-CP-01`, `QLM-CP-03`, `QLM-CP-05`), 1 `non couvrable en
+l'etat`. 15 lignes entrent au denominateur atteignable (inchange : le nombre de lignes non
+couvrables en l'etat n'a pas bouge).
 
 ## Histoire-Geographie - CM1 (cycle 3)
 
@@ -1389,8 +1392,10 @@ les trois demandees.
 | langues vivantes (anglais) | CM1 | Ecrire | Écrire des mots et des expressions mémorisés (légender une image, renseigner une fiche). | - | - | non couvert - jouable par saisie, sous conditions `ANG-S1` et `ANG-S2` (lexique ferme deja servi en choix, indice sans jamais montrer le mot). |
 | langues vivantes (anglais) | CM1 | Decouverte culturelle | Découvrir quelques aspects culturels des pays de la langue étudiée. | bandit-manchot-anglais-cm1 | bandit manchot | **en cours** (2026-09-04, s28) - **`LVE-CM1-07` s'ouvre, ne ferme pas.** Cinq items sur cette ligne, sous le plancher de dix (`FER-2` non tenue et n'avait pas a l'etre : `nadia-prof` avait ecrit d'avance que ce lot "ferme la ligne 4 et ouvre la ligne 7"). `BIA-1` et `BIA-2` tenues. **Mention exigee d'avance par `nadia-prof`, a reprendre mot pour mot, sans laquelle elle n'aurait pas laisse cette ligne bouger** : "decouverte culturelle seule, en francais ; aucune competence linguistique n'est servie". |
 
-**Bilan** : 7 lignes, 4 `non couvert`, 3 `non couvrable en l'etat`. 4 lignes entrent au
-denominateur atteignable.
+**Bilan, corrige le 2026-09-05 (`camille-po`) - le bilan precedent (4 `non couvert`) datait
+d'avant le lot de s28 et n'avait pas ete mis a jour** : 7 lignes, 2 `non couvert`, 1 `en
+cours` (`LVE-CM1-07`), 1 `couvert-valide` (`LVE-CM1-04`), 3 `non couvrable en l'etat`. 4
+lignes entrent au denominateur atteignable (inchange).
 
 ## Arts plastiques - CP (cycle 2)
 

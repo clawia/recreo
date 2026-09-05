@@ -1,11 +1,19 @@
 # DEC-0075 - Corpus de reproductions d'oeuvres et droits d'usage : question ouverte, non tranchee
 
+> **Tranchee le 2026-09-05 par `DEC-0077-strategie-de-s29-couverture-maximale-marge-de-rejeu-posee-
+> corpus-du-domaine-public-tranche.md`** : l'utilisatrice retient l'**option B** ci-dessous - un
+> corpus de reproductions d'oeuvres du **domaine public**. `theo-archi` instruit la source et la
+> forme, `nadia-prof` valide le choix des oeuvres. Les sections qui suivent restent telles
+> qu'ecrites le 2026-09-03 : elles documentent le constat et les trois options posees a
+> l'utilisatrice, avant son arbitrage. Voir `DEC-0077` pour le detail et les implications - jusqu'a
+> neuf lignes debloquees pour les sprints suivants, aucune fermeture de ligne dans s29.
+
 - **Type** : question produit ouverte (sourcing de contenu, risque juridique), routee par `nadia-prof`.
 - **Date** : 2026-09-03
 - **Auteur** : `camille-po`
 - **Sprint** : hors-sprint (ouverte a l'integration des dix referentiels absents, avant s28)
 - **Competence programme visee** : transverse - pas de contenu pedagogique.
-- **Statut** : Proposee
+- **Statut** : Acceptee (option B retenue par l'utilisatrice le 2026-09-05, `DEC-0077`)
 - **Lien** : `squad/programme/arts-plastiques/competences-cp.md` (lignes 9, 10),
   `squad/programme/arts-plastiques/competences-cm1.md` (lignes 7, 8, condition `ART-3`),
   `squad/programme/histoire-des-arts/competences-cm1.md` (lignes 1, 2, 3, 4, 6),
