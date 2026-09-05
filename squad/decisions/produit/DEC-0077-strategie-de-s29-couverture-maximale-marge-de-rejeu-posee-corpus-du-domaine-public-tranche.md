@@ -1,23 +1,33 @@
 # DEC-0077 - Strategie de s29 : couverture maximale sur trois matieres bon marche ; la marge de rejeu est posee comme question ouverte ; DEC-0075 est tranchee (corpus du domaine public)
 
-- **Type** : deux arbitrages de l'utilisatrice, plus une question ouverte posee a l'ouverture de s29
-  sans etre tranchee ici.
+- **Type** : deux arbitrages de l'utilisatrice, plus une question ouverte posee a l'ouverture de s29.
+  **Amendee le 2026-09-05 (meme jour, section 8)** : la question est tranchee - un troisieme
+  arbitrage de l'utilisatrice retient la parallelisation de `nadia-prof` (deux instances, borne
+  portee a 8,0) et la composition reelle de s29, apres que `nadia-prof` a decline par ecrit le
+  perimetre annonce en section 2 (il valait 6,0 a 7,0, pas 5,0).
 - **Date** : 2026-09-05
 - **Auteur** : `camille-po`
 - **Sprint** : s29 (ouverture)
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Cette decision arbitre
   un perimetre et une question de gouvernance de sprint ; elle ne fixe aucune competence ligne a
-  ligne - ce chiffrage est celui de l'arbitrage prealable de `nadia-prof`, en cours d'ecriture en
-  parallele de ce document, et son chiffre remplace celui donne ici a titre d'estimation.
-- **Statut** : Acceptee.
+  ligne - ce chiffrage est celui de l'arbitrage prealable de `nadia-prof`, dont la section 13
+  (amendement du 2026-09-05) remplace le chiffrage des sections 2 et 8.2 du present document pour
+  s29.
+- **Statut** : Acceptee ; amendee le 2026-09-05 (meme jour, section 8).
 - **Lien** : `DEC-0074` (perimetre de s28, tarif "suis-je la source ?"), `DEC-0075` (tranchee par la
   presente decision), `DEC-0076` (arbitrage de cloture de s28), `ADR-0079` (l'unite de la borne de
-  `nadia-prof` est le lot de matiere), `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-
+  `nadia-prof` est le lot de matiere), `ADR-0081` (clause 5, un item ne sert qu'une ligne),
+  `DEC-0064` (regle de derogation de `nombreDeManches`),
+  `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-
   ligne-et-le-prix-des-quatre-lots.md` (regles `FER-1` a `FER-3`, tarif 1,0/1,5),
+  `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-
+  lignes.md` (sections 1 a 13 - le prix reel, le plafond, la parallelisation, `PAR-0` a `PAR-8`,
+  `CYC-1`, `EMC-10`),
   `squad/sprints/s28-second-passage-et-chantier-palier-2/retro.md`,
   `squad/programme/MATRICE-couverture.md`, `squad/programme/sciences-et-technologie/competences-
   cm1.md`, `squad/programme/enseignement-moral-et-civique/competences-cp.md` et `competences-
-  cm1.md`, `squad/programme/questionner-le-monde/competences-cp.md`.
+  cm1.md`, `squad/programme/questionner-le-monde/competences-cp.md`,
+  `squad/programme/histoire-geographie/competences-cm1.md`.
 
 ---
 
@@ -195,3 +205,143 @@ tableau qu'il resume (calcul, script, ou autre forme que `theo-archi` jugera), o
 imposer sur le moyen : c'est une question d'outillage, pas de produit. **Route a `sofia-sm`, pour
 instruction par `theo-archi` si elle le juge necessaire**, a poser maintenant plutot qu'apres une
 troisieme derive.
+
+## 8. Amendement du 2026-09-05 (meme jour) - `nadia-prof` decline le perimetre annonce, l'utilisatrice
+## arbitre la parallelisation, la borne de s29 passe a 8,0, et quatre points sont routes a moi
+
+### 8.1 Le perimetre de la section 2 ne tient pas - `nadia-prof` le decline par ecrit
+
+`squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-
+lignes.md` (`11265c1`) recompte le tarif des quatre matieres que la section 2 annoncait a 1,0
+chacune, cinq lots, 5,0 sur sa borne. **Le prix reel vaut 6,0 a 7,0, pas 5,0** : `nadia-prof` n'est
+pas la source en sciences et technologie CM1 ni en enseignement moral et civique CM1 (1,5 chacune,
+ecrit de sa main le 2026-09-03 dans les referentiels eux-memes), et l'EMC CP est mixte - 1,0 tant
+qu'un lot reste restreint a ses sept premieres lignes, 1,5 des qu'il touche les symboles, la
+devise, les droits de l'enfant, la commune ou les numeros d'urgence. **Le perimetre annonce est
+decline. Ce qui tient dans 5,0 est quatre lots, pas cinq**, et son plafond de fermeture est de huit
+lignes, pas dix (section 6 de son document).
+
+### 8.2 L'utilisatrice arbitre la parallelisation - la borne de s29 passe a 8,0
+
+Sur une question posee le meme jour - lever la borne en faisant travailler deux instances de
+`nadia-prof` en parallele sur des lots disjoints - `nadia-prof` repond en section 13 de son
+arbitrage (`2956c7b`), sous forme de clauses opposables (`PAR-0` a `PAR-8`) plutot que de
+commentaire, motif qu'elle donne elle-meme en section 9 de son document.
+
+**Ce que l'utilisatrice retient, integralement** :
+
+- **La borne de s29 est de 8,0, pas 10,0.** Deux instances a 5,0 donnent une capacite brute de 10,0
+  d'audit de lots ; `nadia-prof` en retire 0,5 parce que la passe transverse cesse d'etre un
+  sous-produit gratuit du mode serie et devient une tache payee (`PAR-4`), 0,5 parce que les dettes
+  de portee "depot entier" deviennent payables et doivent l'etre, et 1,0 parce que la seconde
+  instance en est a son premier sprint de parallelisation et qu'un essai a deja produit une
+  collision d'identifiant (la collision `ART-1` du 2026-09-03).
+- **Plafond individuel : 5,0 par instance, au plus trois lots par instance** (`PAR-8`). Sans ce
+  plafond, les 8,0 pourraient se concentrer sur une seule instance, ce que `PAR-0` refuse
+  explicitement : la borne protege un jugement qui ne se divise pas, pas seulement un debit de
+  lecture.
+- **Une marge de rejeu de 0,5 par instance est nommee a l'ouverture et n'est allouee a aucun lot.**
+  Elle ne descend dans aucune story de ce document.
+
+### 8.3 Variante A retenue, et ce qu'elle achete est ecrit sans l'adoucir
+
+`nadia-prof` chiffre deux variantes a 8,0 (section 13.6 de son arbitrage) : **A - dettes**, quatre
+lots, +9 lignes (52/138 = 37,7 %), toutes les dettes payees, 1,0 de marge de rejeu ; **B -
+couverture**, cinq lots, +11 lignes (54/138 = 39,1 %), aucune dette payee. **L'utilisatrice retient
+A**, en connaissance du fait que `nadia-prof` ecrit elle-meme en tete de sa section 13.6, avant
+qu'il ne soit decouvert en review : **la variante A ne ferme pas une ligne de plus qu'un sprint en
+serie a 5,0** - la composition 2 de sa section 8.2, a une seule instance, plafonnait deja a neuf
+lignes. **Le doublement de la borne n'achete donc aucune couverture.** Ce qu'il achete, et c'est
+reel : `POS-R1` payee (une condition de `nadia-prof` violee sur une ligne qu'elle a fermee sous
+cette condition), les six reserves textuelles payees, la dette des paquets a voix payee apres
+quatre sprints d'attente, et 1,0 de marge de rejeu qui n'a jamais existe dans ce depot. **Elle a vu
+la variante B, qui fermait deux lignes de plus sans payer aucune dette, et elle a choisi A quand
+meme.**
+
+### 8.4 Composition retenue - 7,5 planifies sur une borne de 8,0
+
+| | **Instance A** - porte l'accumulation (`PAR-7`) | **Instance B** |
+|---|---|---|
+| **Lots** | Questionner le monde CP, **1,0** (`QLM-CP-02`, `QLM-CP-07`) ; histoire-geographie CM1 composition A, **1,5** (`HG-CM1-06`, `HG-CM1-07`, `HG-CM1-14`) | EMC CP restreint aux lignes 1 a 7, **1,0** (lignes 6 et 2) ; EMC CM1, **1,5** (lignes 11 et 7) |
+| **Transverse** | passe transverse **0,5** (`PAR-4`) ; six reserves textuelles, un passage mot pour mot **0,25** ; dette des paquets a voix, un passage **0,25** | `POS-R1`, rejeu borne **0,5** |
+| **Marge de rejeu** | **0,5**, non allouee | **0,5**, non allouee |
+| **Total** | **4,0** sur un plafond individuel de 5,0 | **3,5** sur un plafond individuel de 5,0 |
+| **Hors borne** | l'arbitrage prealable du palier 2 - six lignes debloquees pour s30, cout nul contre la borne | - |
+
+Instance B porte l'EMC aux deux niveaux **parce que c'est la seule matiere du perimetre ou
+personne n'a d'accumulation** (`PAR-7`) : on ne demande pas a une instance de rattraper une image
+qu'elle n'a pas, on lui donne le terrain ou l'image n'existe pour personne.
+
+**Plafond de fermeture, avec sa composition** : `QLM-CP-02` +1, `QLM-CP-07` +1, `HG-CM1-06` +1,
+`HG-CM1-07` +1, `HG-CM1-14` +1, EMC CP ligne 6 +1, EMC CP ligne 2 +1, EMC CM1 ligne 11 +1, EMC CM1
+ligne 7 +1 = **+9, soit 52 / 138 = 37,7 %.** **Attente raisonnable de `nadia-prof` : 7 a 8 lignes,
+soit 50 a 51 / 138, c'est-a-dire 36,2 % a 37,0 %.**
+
+### 8.5 Le mode de defaillance neuf - repris mot pour mot, pas traduit
+
+`nadia-prof` ecrit deux phrases que cette decision reprend telles quelles, parce que les reformuler
+serait exactement le defaut qu'elle nomme en section 9 de son document - un texte qui redevient
+faux des qu'on le lit dans un autre registre que celui ou il a ete ecrit :
+
+> *"Ca casse d'abord sur la couture, et ce mode de defaillance n'existait pas au sprint dernier. Il
+> est silencieux : rien ne rougit, la ligne ferme, la propriete n'a ete verifiee par personne."*
+
+> *"Deux paires d'yeux sur des lots disjoints, ce sont deux paires d'yeux, pas un double controle.
+> Aucune des deux instances ne relit l'autre."*
+
+Ce que cela signifie pour la squad, sans l'attenuer : la parallelisation ne fabrique aucune seconde
+lecture d'un meme item, et elle ne remplace aucune des proprietes dont `nadia-prof` reste, seule,
+la garde (section 10 de son arbitrage). Ce que le refus tardif de s28 avait deja montre sur le
+calendrier reste vrai a deux instances : un defaut qui casse a la couture ne se voit qu'a la
+clause `PAR-*` qui aurait du le prevenir, jamais a la CI.
+
+### 8.6 Deux points deja adoptes, recus sans etre rediscutes
+
+- **`nadia-prof` audite chaque lot le jour de sa livraison**, plus en bloc a la cloture (section
+  8.4 de son arbitrage). C'est sa reponse au refus tardif de s28, mesuree comme le vrai probleme de
+  calendrier plutot que de marge, et elle ne coute rien contre sa borne.
+- **L'arbitrage prealable du palier 2 entre dans le perimetre de s29**, ecrit par `nadia-prof`
+  avant que le premier paquet de designation ne soit construit (`ADR-0080`, `DEC-0074` section 4).
+  Il bloque six lignes aujourd'hui et ne coute rien contre sa borne : ce n'est pas un lot de
+  contenu.
+
+### 8.7 Quatre points routes par `nadia-prof`, et ce que j'en fais
+
+- **Deux libelles faux dans le referentiel de sciences qu'elle a ecrit elle-meme** (*vegetarien*
+  pour *herbivore* ; *nutrition* rangee parmi ses propres composantes) - section 1.2 de son
+  arbitrage. **Le lot de sciences n'entre pas dans la composition retenue en section 8.4** : aucune
+  instance n'ecrit d'item de sciences a s29. **La correction n'attend pas pour autant** : je la
+  fais dans le meme geste que le present amendement, directement dans
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, parce que `nadia-prof` ecrit
+  qu'elle est due "avant qu'un item ne soit ecrit" et qu'un referentiel faux qui reste faux entre
+  deux sprints est exactement le risque qu'elle vient de payer une fois avec `SCI-1`.
+- **Le lot de fermeture porte vingt-deux items en deux paquets de onze, impose par `DEC-0064`, sans
+  changement de prix** (section 3.2 de son arbitrage). Ecrit dans les criteres d'acceptation de
+  chaque story qui ouvre une matiere neuve a deux lignes (`S29-1`, `S29-4`, `S29-5` ci-dessous) ;
+  sans objet sur le lot d'histoire-geographie, qui complete un fichier existant a onze lignes
+  declarees plutot que d'en ouvrir un neuf.
+- **`CYC-1`, portee neuve** - la continuite entre le cycle 2 et le cycle 3 sur un meme objet,
+  qu'aucune de ses conditions ne nommait avant ce jour. **L'ajout est permis, la contradiction ne
+  l'est pas.** Ecrite comme obligation de lecture dans les criteres d'acceptation des lots de
+  cycle 3 de s29 ; elle ne mord aucun des trois lots d'histoire-geographie retenus en composition
+  A (rois, Revolution, comprendre un document n'ont pas d'equivalent en questionner le monde CP),
+  mais elle reste opposable a tout lot futur qui recouvrirait un objet deja enseigne au CP - au
+  premier chef le futur lot de sciences (`QLM-CP-05`, etats de l'eau, et la ligne 1 des sciences,
+  etats de la matiere).
+- **Cent quarante-sept identifiants de conditions distincts sur trente prefixes, aucun registre
+  nulle part, vingt-quatre portant le numero 1** (`PAR-5`). C'est un probleme de gouvernance des
+  conditions que `nadia-prof` route explicitement sans en decider la forme. Je ne tranche ni la
+  forme ni la priorite : je le signale a `sofia-sm`, pour instruction par `theo-archi` s'il le juge
+  necessaire, au meme titre que la question du garde-fou de bilan de matiere posee en section 7.
+  Aucune story de ce document ne construit ce registre.
+
+### 8.8 Ce que cet amendement ne fait pas
+
+- Il ne remplace pas les sections 1 a 7 : la decision sur `DEC-0075` (section 4) et les deux
+  bilans de matiere corriges (section 7) restent tels qu'ecrits.
+- Il ne prononce aucun Done pedagogique et ne fait bouger aucune ligne de
+  `squad/programme/MATRICE-couverture.md` : les lots de la composition retenue en section 8.4 ne
+  sont pas encore construits.
+- Il ne tranche pas la forme d'un registre d'identifiants de conditions (`PAR-5`) ni celle d'un
+  garde-fou de bilan de matiere (section 7) : les deux restent routees a `sofia-sm` et
+  `theo-archi`.

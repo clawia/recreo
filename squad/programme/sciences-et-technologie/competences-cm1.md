@@ -25,6 +25,16 @@
 > (`nadia-prof`, section *Conditions opposables* ci-dessous) : `SCI-1`, `SCI-2`, `SCI-3` ;
 > `BIA-2`, `BIA-3` et `BIA-4` s'appliquent à l'identique ; `HIS-3` et `CON-1` s'appliquent à
 > l'identique.
+>
+> **Correction du 2026-09-05 (`camille-po`, sur signalement de `nadia-prof`,
+> `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
+> section 1.2), avant qu'aucun item ne soit écrit sur ces deux lignes.** Deux erreurs de fond dans
+> ce référentiel : la ligne des régimes alimentaires portait *"végétarien"* à la place d'*"herbivore"*
+> (*végétarien* est un choix alimentaire humain, pas le régime d'un animal qui mange des végétaux) ;
+> la ligne des grandes fonctions du corps rangeait *"nutrition"* parmi ses propres composantes, alors
+> que la nutrition est la famille qui contient la digestion, la respiration et la circulation, pas une
+> quatrième fonction à leur côté. Les deux lignes ci-dessous sont corrigées ; `DEC-0077`, section 8.7,
+> trace la correction et précise qu'elle n'attend pas l'ouverture d'un lot de sciences.
 
 ## Matière, mouvement, énergie, information
 
@@ -37,9 +47,9 @@
 ## Le vivant, sa diversité et les fonctions qui le caractérisent
 
 - Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu.
-- Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (végétarien, carnivore, omnivore).
+- Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore).
 - Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort).
-- Nommer les grandes fonctions du corps humain (nutrition, digestion, respiration, circulation) et l'organe principal de chacune.
+- Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, circulation) et l'organe principal de chacune.
 - Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps.
 
 ## Matériaux et objets techniques

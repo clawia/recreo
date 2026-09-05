@@ -9941,3 +9941,435 @@ piece quand l'enfant joue.
 - **Lien** : `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-
   quatre-lots.md`, sections 1.2, 7.1 a 7.3 ; `DEC-0074`, amendement du 2026-09-03.
 
+## Sprint 29 - Questionner le monde et histoire-geographie (Instance A), enseignement moral et
+## civique aux deux cycles (Instance B), quatre dettes payees, arbitrage prealable du palier 2
+## (`DEC-0077`, amende le 2026-09-05)
+
+Perimetre arbitre par l'utilisatrice le 2026-09-05 (`DEC-0077`, section 8), sur l'arbitrage
+prealable de `nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-
+lignes.md`) : `nadia-prof` decline le perimetre de cinq lots initialement annonce (il valait 6,0 a
+7,0 sur sa borne de 5, pas 5,0) et l'utilisatrice retient sa proposition de parallelisation - deux
+instances de `nadia-prof` auditent des lots disjoints, **borne de s29 portee a 8,0**, plafond
+individuel de **5,0 par instance, au plus trois lots chacune**. **Variante A (dettes) retenue** sur
+variante B (couverture) : quatre lots de contenu, **7,5 planifies sur 8,0**, **toutes les dettes de
+s28 payees**, **1,0 de marge de rejeu** (0,5 par instance, nommee et non allouee a un lot). **Ce
+choix ne ferme pas une ligne de plus qu'un sprint en serie a 5,0** (`DEC-0077`, section 8.3) : le
+gain reel de la parallelisation n'est pas la couverture mais les dettes payees et la marge.
+
+**Attente raisonnable de fermeture : 7 a 8 lignes, soit 50 a 51 / 138 (36,2 % a 37,0 %)**, plafond
+arithmetique a **+9, soit 52 / 138 = 37,7 %**. Composition et repartition entre les deux instances :
+`DEC-0077`, section 8.4.
+
+**Mode de defaillance neuf, a garder present tout le sprint** (`nadia-prof`, section 13 de son
+arbitrage, reprise mot pour mot dans `DEC-0077` section 8.5) : *"ca casse d'abord sur la couture,
+et ce mode de defaillance n'existait pas au sprint dernier. Il est silencieux : rien ne rougit, la
+ligne ferme, la propriete n'a ete verifiee par personne."* Et : *"deux paires d'yeux sur des lots
+disjoints, ce sont deux paires d'yeux, pas un double controle. Aucune des deux instances ne relit
+l'autre."* Aucune des stories ci-dessous ne doit etre lue comme un double controle du travail
+d'une autre instance.
+
+**Deux points deja adoptes, non rediscutes** : `nadia-prof` audite chaque lot le jour de sa
+livraison, plus en bloc a la cloture ; l'arbitrage prealable du palier 2 entre dans s29 hors borne
+(`S29-9`).
+
+### S29-1 - Deux nouveaux paquets de questionner le monde (CP) : ce qui caracterise un etre vivant,
+### fonction d'un objet technique
+
+- **Besoin** : en tant qu'eleve de CP, je veux repondre a des questions sur ce qui fait qu'un etre
+  est vivant et sur a quoi sert un objet technique du quotidien en jouant au bandit manchot, afin
+  de decouvrir deux competences que les premiers paquets de questionner le monde n'ont pas encore
+  servies.
+- **Competence programme visee** : questionner le monde, CP (cycle 2) -
+  `squad/programme/questionner-le-monde/competences-cp.md`, deux lignes `non couvert` : "Identifier
+  ce qui caracterise un etre vivant : il nait, se nourrit, grandit, a des petits, meurt"
+  (`QLM-CP-02`) et "Identifier la fonction d'un objet technique du quotidien et nommer ses parties"
+  (`QLM-CP-07`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `QLM-CP-02`, quand on compte ses items, alors il en porte au moins
+    onze, et les cinq caracteres du libelle (nait, se nourrit, grandit, a des petits, meurt) sont
+    chacun en bonne reponse au moins une fois (`FER-1`).
+  - Etant donne ce paquet, quand on regarde les taches posees, alors deux taches distinctes
+    existent : reconnaitre le caractere decrit dans une situation, et dire si un etre donne (une
+    plante, un caillou, un enfant) possede ce caractere (`FER-3`).
+  - Etant donne le paquet de `QLM-CP-07`, quand on compte ses items, alors il en porte au moins
+    onze, et les deux moities du libelle - fonction de l'objet, parties de l'objet - sont chacune
+    en bonne reponse (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent : nommer la fonction d'un objet
+    decrit, nommer une de ses parties (`FER-3`).
+  - Etant donne les deux lignes, alors chacune est servie par **un paquet distinct** (une ligne, un
+    paquet, `nadia-prof`) plutot que par un paquet unique melangeant les deux competences dans une
+    meme partie ; chaque item declare la ligne de referentiel qu'il sert (`HIS-4`, `ADR-0081`).
+  - Etant donne chaque paquet, alors il porte onze items exactement et `nombreDeManches: 10` sans
+    derogation (`DEC-0064`) - onze items restant strictement superieur a dix manches sans qu'un
+    ecart au defaut soit necessaire.
+  - Etant donne le lot livre dans son ensemble, quand on compte les lignes de referentiel qu'il
+    sert, alors aucun item n'est en bonne reponse sur une ligne de questionner le monde autre que
+    `QLM-CP-02` ou `QLM-CP-07` - en particulier aucun sur les lignes 10, 15 ou 16, que `nadia-prof`
+    a nommees d'avance comme ne devant pas fermer sur un premier lot.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui porte l'accumulation sur cette matiere
+    (Instance A, `PAR-7`) verifie `FER-1`, `FER-2` et `FER-3` tenues - une ligne peut fermer
+    independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert aucun item des lignes 10, 15 ou 16 ; elle ne
+  modifie aucun des trois paquets deja livres a s27/s28 (`cp-qlm-vivant-non-vivant`,
+  `cp-qlm-etats-eau`, `cp-qlm-corps-sens`).
+- **Lien decision** : `DEC-0072` (ouverture de la matiere), `DEC-0077` (section 8, perimetre de
+  s29, composition Instance A).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance A, pour l'audit et le Done pedagogique.
+
+### S29-2 - Second paquet d'histoire-geographie (CM1), composition A : fermer "le temps des rois",
+### "la Revolution et l'Empire" et "comprendre un document"
+
+- **Besoin** : en tant qu'eleve de CM1, je veux repondre a plus de questions sur les rois de
+  France, sur la Revolution francaise et sur la maniere de lire un document historique en jouant
+  au bandit manchot, afin de completer trois lignes que le premier paquet n'a fait qu'ouvrir.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3) -
+  `squad/programme/histoire-geographie/competences-cm1.md`, trois des neuf lignes `en cours`
+  depuis s27/s28 : "Associer chacun de ces rois a un fait ou a une realisation qui le caracterise
+  (la croisade, la Renaissance, l'edit de Nantes, Versailles)" (`HG-CM1-06`, 4 items aujourd'hui),
+  "Situer les evenements majeurs de la Revolution francaise (1789, l'abolition des privileges, la
+  Declaration des droits de l'homme et du citoyen, la fin de la monarchie)" (`HG-CM1-07`, 3 items),
+  "Comprendre un document (texte, carte, image) : identifier sa nature, sa date et son auteur, et
+  en extraire une information" (`HG-CM1-14`, 3 items).
+- **Arbitrage produit - composition A, retenue par l'utilisatrice** (`DEC-0077`, section 8.3) :
+  ces trois lignes portent deja 4, 3 et 3 items dans `cm1-histoire-geographie.yaml`, un fichier qui
+  declare deja onze lignes dans un seul paquet (exception legitime a la regle "une ligne, un
+  paquet", `nadia-prof`, section 3.2 de son arbitrage). Completer ce fichier ferme trois lignes
+  pour le prix d'un seul lot (1,5), au lieu de deux pour un lot vierge.
+- **Criteres d'acceptation** :
+  - Etant donne `HG-CM1-06`, quand on compte ses items apres livraison, alors il en porte au moins
+    dix (`FER-2`), et les quatre realisations nommees par le libelle (croisade, Renaissance, edit
+    de Nantes, Versailles) sont chacune en bonne reponse au moins une fois (`FER-1`).
+  - Etant donne les nouveaux items de `HG-CM1-06`, alors aucun ne porte une realisation royale qui
+    est une tradition non datee et non sourcee plutot qu'un fait historique verifiable - le chene
+    de Saint Louis et la poule au pot d'Henri IV en sont explicitement exclus (`nadia-prof`,
+    section "composition A" de sa note a `S28-2`, reprise ici).
+  - Etant donne `HG-CM1-07`, quand on compte ses items apres livraison, alors il en porte au moins
+    dix, et les quatre evenements nommes (1789, abolition des privileges, Declaration des droits
+    de l'homme et du citoyen, fin de la monarchie) sont chacun en bonne reponse.
+  - Etant donne `HG-CM1-14`, quand on compte ses items apres livraison, alors il en porte au moins
+    dix, sert les trois composantes du libelle (nature, date, auteur du document) et pose la tache
+    d'en extraire une information, sur au moins deux formes de document distinctes (texte, carte
+    ou image).
+  - Etant donne chaque nouvel item, alors il declare la ligne de referentiel qu'il sert (`HIS-4`),
+    et chaque fait qu'il porte est accompagne de sa source dans le commentaire du paquet (`HIS-3`).
+  - Etant donne une ligne de cycle 3 servie par ce lot, quand elle touche un objet deja enseigne en
+    questionner le monde CP, alors aucun nouvel item ne contredit ce qui a deja ete servi au CP sur
+    le meme objet (`CYC-1`) - **sans objet concret sur ce lot** : aucune des trois lignes ne
+    recouvre un objet deja servi en questionner le monde CP, ce qui est note ici pour la
+    tracabilite plutot que laisse a decouvrir plus tard.
+  - Etant donne le lot livre, quand on regarde la charge de lecture du fichier, alors aucun enonce
+    ne depasse vingt-cinq mots et la mediane du fichier ne remonte pas au-dela de seize mots
+    (`HG-R4`, demande explicite de `nadia-prof` pour le prochain lot de cette matiere).
+  - Etant donne le lot livre dans son ensemble, alors aucun item n'est en bonne reponse sur une
+    ligne d'histoire-geographie autre que `HG-CM1-06`, `HG-CM1-07` ou `HG-CM1-14` : les huit autres
+    lignes `en cours` restent inchangees.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance qui porte l'accumulation sur cette matiere (Instance A)
+    verifie `FER-1`, `FER-2` et `FER-3` tenues - une ligne peut fermer independamment des deux
+    autres.
+- **Ce que cette story ne fait pas** : elle ne touche a aucune des huit autres lignes
+  d'histoire-geographie ; elle n'ouvre aucun paquet neuf (le fichier existant est complete, pas
+  duplique) et la regle des vingt-deux items en deux paquets de onze (`DEC-0064`, section 3.2 de
+  l'arbitrage de `nadia-prof`) ne s'applique donc pas ici.
+- **Lien decision** : `DEC-0072` (ouverture de la matiere), `DEC-0074` (composition A ecrite mais
+  non retenue a s28), `DEC-0077` (section 8, perimetre de s29, composition Instance A).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance A, pour l'audit factuel (elle n'est pas la source de cette
+  matiere) et le Done pedagogique.
+
+### S29-3 - Passe transverse d'Instance A sur les proprietes de portee "depot servi entier"
+
+- **Besoin** : transverse - pas de contenu pedagogique. Cette story ne met aucun jeu neuf entre les
+  mains d'un enfant : c'est la tache d'audit que `nadia-prof` nomme elle-meme comme necessaire des
+  qu'elle audite en parallele d'une autre instance d'elle-meme (`PAR-4`) - certaines proprietes
+  qu'elle tenait gratuitement en travaillant seule et en serie ne survivent pas au partage du
+  depot entre deux instances si personne ne les verifie explicitement.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne le depot de contenu servi a l'ouverture de s29, quand l'instance qui porte
+    l'accumulation (Instance A) conduit sa passe transverse, alors elle verifie au moins les
+    proprietes de portee "depot entier" nommees par `nadia-prof` (table de la section 13.2 de son
+    arbitrage) : la coherence entre ce que chaque indice demande a l'adulte et ce que `VOI-3`,
+    `VOI-5` et `VOI-8` lui interdisent (au-dela des cinq paquets de `S29-8`) ; la coherence des
+    conditions de `nadia-prof` entre elles (la famille de defaut illustree par `EMC-3` contre
+    `FER-3`) ; l'homogeneite de registre entre jeux qu'un meme enfant est susceptible d'enchainer.
+  - Etant donne cette passe, alors son resultat est ecrit - motif, portee, verdict - dans un
+    document consultable (arbitrage ou fiche), et non seulement rendu oralement ou implicitement.
+  - Etant donne cette passe, alors elle ne prononce aucun Done pedagogique sur un increment neuf de
+    s29 : elle produit des reserves ou des alertes sur le depot existant, jamais une fermeture de
+    ligne.
+- **Ce que cette story ne fait pas** : elle ne remplace pas l'audit que `nadia-prof` doit par
+  ailleurs a chaque lot livre de s29 (`S29-1`, `S29-2`) ; elle ne construit pas le registre
+  d'identifiants de conditions (`PAR-5`), route separement (voir plus bas).
+- **Lien decision** : `DEC-0077` (section 8.2 et 8.4, `PAR-4`) ;
+  `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-
+  huit-lignes.md`, sections 13.2 a 13.4.
+- **Agent pressenti** : `nadia-prof`, Instance A, seule.
+
+### S29-4 - Deux nouveaux paquets d'enseignement moral et civique (CP), restreints aux lignes 1 a
+### 7 : regles de vie de la classe, permis et interdit entre eleves
+
+- **Besoin** : en tant qu'eleve de CP, je veux repondre a des questions sur les regles de vie de ma
+  classe et sur ce qui est permis ou interdit entre eleves en jouant au bandit manchot, afin de
+  commencer l'enseignement moral et civique dans l'application.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, deux lignes `non couvert` :
+  "Connaitre les regles de vie de la classe et de l'ecole et dire a quoi elles servent" (ligne 6),
+  "Distinguer ce qui est permis de ce qui est interdit dans les relations entre eleves (moquerie,
+  insulte, violence)" (ligne 2).
+- **Restriction de perimetre, opposable** : le lot reste strictement dans les lignes 1 a 7 du
+  referentiel, au tarif de 1,0 (`nadia-prof`, section 2.3 de son arbitrage) - aucun item ne touche
+  aux lignes 8, 9, 10, 13 ou 14 (symboles, devise, droits de l'enfant, commune, numeros d'urgence),
+  qui feraient passer le tarif du lot a 1,5.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de la ligne 6, quand on compte ses items, alors il en porte au moins
+    onze, et ses deux moities - la regle, ce a quoi elle sert - sont chacune en bonne reponse
+    (`FER-1`) ; aucun item ne se contente d'enoncer une regle sans jamais dire ce qu'elle protege.
+  - Etant donne le paquet de la ligne 2, quand on compte ses items, alors il en porte au moins
+    onze, et les trois termes de la parenthese (moquerie, insulte, violence) sont chacun en bonne
+    reponse (`FER-1`).
+  - Etant donne chaque paquet, alors deux taches distinctes existent (`FER-3`) : ligne 6, nommer la
+    regle et dire ce qu'elle protege ; ligne 2, reconnaitre l'interdit et dire ce que la regle
+    protege.
+  - Etant donne chaque item des deux paquets, alors aucun ne demande a l'enfant de declarer un
+    comportement - la forme "que fais-tu si...", "acceptes-tu de..." est refusee ; les items
+    portent sur ce qui est permis, interdit, prevu par la regle, ou sur ce qu'une personne decrite
+    fait ou peut faire (`EMC-8`).
+  - Etant donne chaque item, alors il n'a jamais deux reponses defendables (`EMC-5`) et n'interroge
+    jamais l'enfant sur ce qu'il ressent, vit, croit ou fait chez lui (`EMC-1`).
+  - Etant donne chaque item, alors il ne nomme aucune personne reelle vivante, aucun parti, aucun
+    syndicat, aucune organisation engagee dans un debat en cours (`EMC-10`) ; les exemples sont
+    pris dans la vie de l'ecole, la meteo, un match, une rumeur de cour de recreation.
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct, onze items
+    chacun, vingt-deux items pour le lot (`DEC-0064`, section 3.2 de l'arbitrage de `nadia-prof`) ;
+    chaque item declare la ligne de referentiel qu'il sert (`HIS-4`, `ADR-0081`).
+  - Etant donne le lot livre dans son ensemble, alors aucun item n'est en bonne reponse sur une
+    ligne d'EMC CP autre que 6 ou 2 - en particulier aucun sur les lignes 8, 9, 10, 13 ou 14, ce qui
+    changerait le tarif du lot deja arbitre.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui audite l'EMC (Instance B, `PAR-7`)
+    verifie `FER-1`, `FER-2`, `FER-3`, `EMC-1`, `EMC-5`, `EMC-8` et `EMC-10` tenues - une ligne
+    peut fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert pas la ligne 3 (exclusion, la plus delicate de
+  la matiere, que `nadia-prof` prevoit de traiter en dernier) ; elle ne touche pas aux lignes 1, 4,
+  5 et 7 restantes.
+- **Lien decision** : `DEC-0074` (referentiel EMC CP ecrit et arbitre), `DEC-0077` (section 8,
+  perimetre de s29, composition Instance B).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance B, pour l'audit et le Done pedagogique.
+
+### S29-5 - Deux nouveaux paquets d'enseignement moral et civique (CM1) : distinguer un fait d'une
+### opinion, distinguer un droit d'un devoir
+
+- **Besoin** : en tant qu'eleve de CM1, je veux repondre a des questions pour distinguer un fait
+  d'une opinion et pour distinguer un droit d'un devoir en jouant au bandit manchot, afin de
+  commencer l'enseignement moral et civique de cycle 3 dans l'application.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3) -
+  `squad/programme/enseignement-moral-et-civique/competences-cm1.md`, deux lignes `non couvert` :
+  "Distinguer un fait d'une opinion, et verifier l'origine d'une information avant de la partager"
+  (ligne 11), "Distinguer un droit d'un devoir, et connaitre quelques droits et devoirs de l'eleve
+  et de l'enfant" (ligne 7).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de la ligne 11, quand on regarde la forme de ses items, alors elle
+    reprend celle de `bandit-manchot-comprehension-cm1` (deja validee deux fois) : un enonce court,
+    une seule proposition defendable ; chaque item porte deux taches - classer l'enonce comme fait
+    ou comme opinion, et dire comment on verifie son origine (`FER-3`).
+  - Etant donne ce paquet, alors tous ses sujets sont sans enjeu polemique - la meteo, un match,
+    une rumeur de cour de recreation - et aucun item ne nomme une personne reelle vivante, un
+    parti, un syndicat ni une organisation engagee dans un debat en cours (`EMC-10`).
+  - Etant donne le paquet de la ligne 7, quand on compte ses items, alors les deux notions du
+    libelle (droit, devoir) sont chacune en bonne reponse (`FER-1`), et deux taches distinctes
+    existent : classer une situation comme un droit ou un devoir, associer un droit a ce qu'il
+    protege (`FER-3`).
+  - Etant donne ce paquet, alors aucun item n'interroge l'enfant sur sa propre situation (`BIA-4`).
+  - Etant donne les deux paquets, alors aucun item ne demande a l'enfant de declarer un
+    comportement (`EMC-8`), n'a deux reponses defendables (`EMC-5`, `HIS-2`), et chaque fait
+    institutionnel qu'il porte est accompagne de sa source dans le commentaire du paquet (`HIS-3`).
+  - Etant donne une ligne de cycle 3 servie par ce lot, quand elle touche un objet deja enseigne en
+    questionner le monde CP, alors aucun item ne contredit ce qui a deja ete servi au CP sur le
+    meme objet (`CYC-1`) - **sans objet concret sur ce lot**, note pour la tracabilite.
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct, onze items
+    chacun, vingt-deux items pour le lot (`DEC-0064`) ; chaque item declare la ligne de referentiel
+    qu'il sert (`HIS-4`, `ADR-0081`).
+  - Etant donne le lot livre dans son ensemble, alors aucun item n'est en bonne reponse sur une
+    ligne d'EMC CM1 autre que 11 ou 7 - en particulier aucun sur la ligne 6 (laicite), que
+    `nadia-prof` nomme d'avance comme la plus dangereuse de la matiere et exclut explicitement d'un
+    premier lot.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance qui audite l'EMC (Instance B) verifie `FER-1` a `FER-3`,
+    `EMC-5`, `EMC-8`, `EMC-10`, `HIS-2` et `HIS-3` tenues - une ligne peut fermer independamment de
+    l'autre.
+- **Ce que cette story ne fait pas** : elle ne touche a aucune des dix autres lignes d'EMC CM1,
+  dont la ligne 6.
+- **Lien decision** : `DEC-0074` (referentiel EMC CM1 ecrit et arbitre), `DEC-0077` (section 8,
+  perimetre de s29, composition Instance B).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance B, pour l'audit factuel (elle n'est pas la source de cette
+  matiere) et le Done pedagogique.
+
+### S29-6 - `POS-R1` : le distracteur de division posee (CM1) oblige a diviser
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que les deux propositions fausses du jeu de
+  division posee m'obligent vraiment a poser l'operation, afin de ne plus pouvoir eliminer un
+  distracteur en regardant seulement si son reste est plus petit que le diviseur.
+- **Competence programme visee** : mathematiques, CM1 (cycle 3), "Effectuer une division euclidienne
+  simple (quotient et reste)" - ligne deja `couvert-valide` depuis s28 ; cette story leve une
+  reserve sur une condition deja posee (`POS-2`), elle ne vise aucune competence neuve.
+- **Contexte** : `POS-R1` (`squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-
+  neuves-et-le-plafond-a-huit-lignes.md`, section 1.4) - sur les onze items de
+  `cm1-division-posee.yaml`, les deux distracteurs sont systematiquement construits sous la forme
+  "quotient - 1, reste + diviseur", ce qui leur donne toujours un reste superieur ou egal au
+  diviseur : neuf items sur onze s'eliminent un distracteur sans diviser, deux items sur onze
+  s'eliminent les deux.
+- **Criteres d'acceptation** :
+  - Etant donne chaque item du paquet, quand on regarde ses deux distracteurs, alors chacun porte
+    un reste strictement inferieur a son diviseur (un reste valide) et un quotient faux - jamais un
+    reste superieur ou egal au diviseur.
+  - Etant donne le paquet dans son ensemble, alors la regle de fabrication des distracteurs n'est
+    plus repetee a l'identique sur les onze items (`PAR-6`) : au moins deux facons distinctes de
+    construire un quotient faux a reste valide apparaissent.
+  - Etant donne le paquet corrige, alors `nombreDeManches: 10`, le nombre d'items (onze) et les
+    autres conditions deja tenues (`POS-1`, `POS-3`, `POS-4`) restent inchanges.
+  - Etant donne la reserve `POS-R1`, alors elle n'est levee par `nadia-prof` que si elle rejoue le
+    paquet corrige et confirme qu'aucun item ne se resout par la seule regle "le reste est plus
+    petit que le diviseur".
+- **Ce que cette story ne fait pas** : elle ne rouvre pas le Done pedagogique de la ligne, deja
+  `couvert-valide` depuis s28 ; elle ne prescrit aucune valeur precise de distracteur, seulement la
+  propriete a tenir (`nadia-prof` donne la propriete, pas la liste des valeurs).
+- **Lien decision** : `DEC-0077` (section 8.4, `POS-R1` a Instance B) ; `DEC-0064` (regle de
+  derogation de `nombreDeManches`, inchangee ici).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance B, pour le rejeu borne et la levee de la reserve.
+
+### S29-7 - Six reserves textuelles : un passage de reverification mot pour mot
+
+- **Besoin** : transverse - pas de contenu pedagogique. Ces six corrections portent sur des lignes
+  deja `couvert-valide` ; elles ne visent aucune competence neuve, seulement la justesse d'un texte
+  deja servi a un enfant.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** - chaque correction est reprise **mot pour mot**, sans reformulation
+  (orthographe, accentuation et ponctuation par `relecteur-pedagogique`, `DEC-0002` amende le
+  2026-08-04) :
+  - Etant donne `VIV-R2` (`cp-qlm-vivant-non-vivant.yaml`), quand les trois items de matiere
+    inerte sont corriges, alors leurs deux propositions ne se terminent plus par les memes mots -
+    piste non prescrite, a verifier en jouant avant de l'ecrire : remplacer "ce n'est pas un etre
+    vivant" par "de la matiere".
+  - Etant donne `HG-R4` (`cm1-histoire-geographie.yaml`), quand les deux items existants sont
+    corriges, alors la premiere occurrence de "mer" est retiree de l'item du village de pecheurs
+    ("au bord de la mer"), et "transportee par bateau ou par avion" est retiree de l'item de
+    l'orange en hiver.
+  - Etant donne `HG-R5` (meme fichier), quand l'indice de l'item du village de pecheurs est
+    corrige, alors il devient "Pense aux bateaux qui partent tot le matin et reviennent charges de
+    poissons."
+  - Etant donne `ANG-R1` (`cm1-anglais.yaml`), quand l'item "montagne" est remplace, alors son
+    enonce devient "Comment dit-on colline en anglais ?", sa bonne reponse "hill", ses distracteurs
+    "field" et "town", son indice "C'est une petite hauteur de terrain, moins haute qu'une
+    montagne.", et le commentaire du paquet ("aucune paire ne se ressemble") est corrige dans le
+    meme geste pour exclure ce cas.
+  - Etant donne `COR-R2` (`cp-qlm-corps-sens.yaml`), quand l'item du gout est corrige, alors sa
+    bonne reponse devient "la langue" et son indice "C'est elle qui reconnait le sucre et le
+    sale.", ses distracteurs (le nez, les yeux) restant inchanges.
+  - Etant donne `EAU-R1` (`cp-qlm-etats-eau.yaml`), quand l'indice de l'item "la glace qui fond"
+    est corrige, alors il devient "La glace qui fond se met a couler."
+  - Etant donne les six corrections livrees, alors chaque paquet touche est rejoue par
+    `nadia-prof`, qui leve chaque reserve individuellement.
+  - Etant donne les six corrections, alors aucune autre partie de ces cinq paquets n'est modifiee.
+- **Ce que cette story ne fait pas** : elle ne touche a aucun autre item de ces cinq fichiers ; elle
+  ne fait bouger aucune ligne de matrice (les six lignes concernees sont deja `couvert-valide`).
+- **Lien decision** : `squad/conformite/FICHE-bandit-manchot-vivant-non-vivant-cp.md`,
+  `FICHE-bandit-manchot-histoire-geographie-cm1.md`, `FICHE-bandit-manchot-anglais-cm1.md`,
+  `FICHE-bandit-manchot-corps-sens-cp.md`, `FICHE-bandit-manchot-etats-eau-cp.md` ;
+  `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
+  sections 1.5 et 7.2 ; `DEC-0077` (section 8.4, ce passage a Instance A).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; corrections par `marc-dev` ou
+  `lea-dev`, au regime du mot pour mot (0,25 pour l'ensemble des six) ; `nadia-prof`, Instance A,
+  pour la reverification.
+
+### S29-8 - La dette des paquets a voix : six jeux, cinq indices corriges contre `VOI-3`
+
+- **Besoin** : en tant qu'eleve de CP, je veux que l'adulte qui m'accompagne recoive une consigne
+  qui ne lui demande jamais de ralentir un mot, afin que les jeux qui testent ce que j'entends dans
+  un mot restent justes sur la maniere dont ce mot sonne normalement.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Les six lignes servies
+  sont deja `couvert-valide` ; cette story corrige une non-conformite a `VOI-3`, elle n'ouvre ni ne
+  ferme aucune ligne.
+- **Criteres d'acceptation** - chaque texte est repris **mot pour mot**, fourni par `nadia-prof`
+  (`squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`,
+  section 7.2 ; orthographe, accentuation et ponctuation par `relecteur-pedagogique`) :
+  - Etant donne `cp-lettre-du-son.yaml` et `cp-voyelle-du-son.yaml`, quand leurs items sont
+    corriges, alors leur enonce devient "Quelle lettre fait le premier son ?" et leur indice
+    "Demande a l'adulte de redire le mot en entier, puis ecoute le tout premier son."
+  - Etant donne `cp-digraphe-du-son.yaml`, quand ses items sont corriges, alors son enonce devient
+    "Quel groupe de lettres fait ce son ?" et son indice "Demande a l'adulte de redire le mot en
+    entier, puis pense au son que tu entends."
+  - Etant donne `cp-position-syllabe.yaml`, quand ses items sont corriges, alors son enonce devient
+    "Ou entends-tu ce son ?" et son indice "Demande a l'adulte de redire le mot en entier, puis
+    ecoute si le son est au debut, au milieu ou a la fin."
+  - Etant donne `cp-son-dans-mot.yaml`, quand ses items sont corriges, alors son enonce devient
+    "Entends-tu ce son ?" et son indice "Demande a l'adulte de redire le mot en entier, puis ecoute
+    bien le son qu'il te demande de chercher."
+  - Etant donne `cp-mot-dicte.yaml`, alors son enonce et son indice restent inchanges (deja
+    conformes a `VOI-8`).
+  - Etant donne les cinq paquets corriges, alors aucun des textes livres ne nomme le mot cible de
+    l'item (`VOI-13` reste tenue).
+  - Etant donne ces cinq paquets, alors seuls l'enonce et l'indice de chaque item changent ; la
+    consigne de catalogue (entree du jeu) de chacun des cinq jeux reste inchangee.
+  - Etant donne les cinq paquets livres, alors `nadia-prof` les rejoue et confirme qu'aucun n'invite
+    plus l'adulte a un geste que `VOI-3` interdit (redire un mot doucement, lentement, ou d'une
+    autre maniere qu'a vitesse normale et d'un seul tenant).
+- **Ce que cette story ne fait pas** : elle ne modifie aucun autre champ de ces cinq paquets (les
+  enonces et indices specifiques a chaque item, quand ils different de la phrase repetee, ne sont
+  pas concernes) ; elle ne touche pas `cp-mot-dicte.yaml`.
+- **Lien decision** : `ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-
+  lots.md`, section 7 ; `squad/conformite/FICHE-bandit-manchot-voyelle-du-son-cp.md`, section 7
+  (`VOY-R1`, `VOY-R2`) ; `DEC-0077` (section 8.4, cette dette a Instance A).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; corrections par `marc-dev` ou
+  `lea-dev`, au regime du mot pour mot (0,25 pour l'ensemble) ; `nadia-prof`, Instance A, pour la
+  reverification.
+
+### S29-9 - L'arbitrage prealable du palier 2 est ecrit, sans construire aucun paquet
+
+- **Besoin** : transverse - pas de contenu pedagogique. Cette story ne met aucun jeu neuf entre les
+  mains d'un enfant : elle produit le document que `nadia-prof` doit ecrire avant qu'un premier
+  paquet de designation (palier 2, `ADR-0080`) ne puisse etre construit, condition posee par
+  `DEC-0074` et non encore levee depuis s28.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Debloque, sans les
+  fermer, six lignes actuellement en attente du palier 2 : mathematiques CP (quadrillage),
+  questionner le monde CP (plan, carte ou globe ; frise), histoire-geographie CM1 (carte et
+  planisphere ; lieu de vie).
+- **Criteres d'acceptation** :
+  - Etant donne les six lignes en attente du palier 2, quand `nadia-prof` ecrit son arbitrage
+    prealable, alors il nomme, pour chacune, les conditions pedagogiques opposables a un futur
+    paquet de designation, sur le meme format que les arbitrages prealables precedents.
+  - Etant donne ce document, alors il ne prononce aucun Done pedagogique et ne construit aucun
+    paquet de contenu.
+  - Etant donne cette story livree, alors aucune ligne de `squad/programme/MATRICE-couverture.md`
+    ne change de statut.
+- **Ce que cette story ne fait pas** : elle ne construit aucun ecran, aucun style de zone
+  positionnee (T4 d'`ADR-0080`) ni aucun paquet de contenu de palier 2 (T6) - les deux restent hors
+  perimetre de s29, comme a s28.
+- **Cout contre la borne de `nadia-prof`** : nul (section 7.5 de son arbitrage prealable de s29 -
+  un arbitrage prealable n'a jamais ete compte contre sa borne).
+- **Lien decision** : `ADR-0080`, `DEC-0074` (section 4), `DEC-0077` (section 8.6).
+- **Agent pressenti** : `nadia-prof`, l'une ou l'autre instance a sa discretion (cout nul, hors
+  composition A/B de `DEC-0077` section 8.4).
+
+### Route a `sofia-sm` - un registre des cent quarante-sept identifiants de conditions (`PAR-5`)
+
+`nadia-prof` mesure, dans son arbitrage prealable de s29 (section 13.3), **cent quarante-sept
+identifiants de conditions distincts sur trente prefixes, sans registre nulle part**, dont
+vingt-quatre portent le numero 1. Elle pose la propriete - *"un identifiant de condition designe
+une condition et une seule, dans tout le depot, et son allocation est visible avant d'ecrire"* -
+et route explicitement la forme d'un eventuel registre a `theo-archi`, sans en decider la
+necessite ni la priorite. **Ce n'est pas une story de contenu pedagogique** : aucune ligne de
+matrice n'en depend, et aucune des neuf stories ci-dessus n'est bloquee par son absence. Je ne
+tranche ni la forme ni la priorite ; je la signale pour que `sofia-sm` la fasse instruire par
+`theo-archi` si elle le juge necessaire, et la priorite reste a l'utilisatrice.
+
+- **Lien** : `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-
+  plafond-a-huit-lignes.md`, section 13.3 (`PAR-5`) ; `DEC-0077`, section 8.7.
+
