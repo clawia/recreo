@@ -429,6 +429,46 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     object-fit: contain;
 }
 
+/* Palier 2, mecanique de designation (ADR-0080) : arbitrage d'ines-design sur la taille d'image,
+   route par ADR-0080 section 8 et par l'arbitrage prealable de nadia-prof du 2026-09-05
+   (ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md, sections
+   4.5, 7.3, 8.2). Ce n'est pas une regle de contenu - elle ne connait ni carte, ni quadrillage,
+   ni musee - c'est une regle de mecanique : la designation est la seule des trois mecaniques ou
+   l'enfant doit atteindre, au doigt ou a la tabulation, une zone que le CONTENU place sur le
+   dessin (CadreDeZone), chacune tenue au plancher de cible tactile de 2,75rem (44px,
+   TailleDesTextesEtBoutonsTest.CIBLE_TACTILE_REM). Les deux autres mecaniques (bandit manchot,
+   saisie) ne posent jamais de zone sur un dessin : leurs boutons sont poses par le meuble, pas
+   par le contenu, et .image-item leur reste inchange.
+   A 11rem, une zone carree ne peut pas descendre sous le quart de la hauteur de l'image
+   (44 / 176 = 25%) : un quadrillage plafonne a 4x4, et une bonne part d'un planisphere (continents,
+   grandes villes) reste sous le plancher (nadia-prof, section 4.5 : "l'Europe n'atteint pas le
+   quart de la hauteur du monde"). .image-designation double le plafond : 22rem, 352px.
+   Mesure, methode : mockup HTML statique charge dans le meme moteur de rendu que
+   outils/mesurer-rendu.sh, aucun paquet de designation n'existant encore pour en mesurer un reel
+   (ZON-7, l'ecran de manche n'est pas servi). Une zone occupant 19% de la hauteur d'un rapport
+   2:1 (grandeur indicative d'un continent sur un planisphere, pas une donnee d'un dessin reel)
+   passe de 33px a 67px, au-dessus du plancher ; un quadrillage carre garde une marge confortable
+   jusqu'a 6x6 (58,6px la cellule) et n'atteint le plancher qu'a 8x8, sans marge - hors de portee
+   confortable, ce que ZON-8 et QUA-4 ne demandent pas. Verifie aux deux largeurs de container
+   reellement servies par ce depot (720px et 992px, ADR-0054, ADR-0056) : le rapport 2:1 le plus
+   large de la famille reste dans la largeur offerte, avec une reduction proportionnelle
+   negligeable (moins de 2%) au palier de container le plus etroit.
+   Modificateur, jamais un remplacement : a poser EN PLUS de .image-item sur le meme <img>
+   (class="image-item image-designation"), qui reste seul a fixer display, max-width, height,
+   width et object-fit - une mecanique de plus qui affiche une image n'a jamais que ce plafond a
+   choisir, jamais les quatre autres declarations a recopier.
+   Ce que cette regle ne fait pas : elle ne rend aucune ligne fermable a elle seule, elle ne
+   dessine rien et elle ne garantit aucun contenu. C'est un plafond, pas une taille (meme lecture
+   qu'au palier 1, section 1.1 de contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md) : ce que
+   chaque dessin declare (DES-1 a DES-3) et son exactitude (nadia-prof, ZON-9, ZON-12) restent
+   entiers a verifier, item par item, une fois l'ecran servi.
+   Due pour le garde-fou 3 d'ADR-0080 (AucuneZoneDesignableNeDescendSousLaCibleTactileTest, avec
+   T4) : ce garde-fou doit lire le max-height de .image-designation, jamais celui de .image-item -
+   la designation ne partage plus le plafond des deux autres mecaniques a compter de cette regle. */
+.image-designation {
+    max-height: 22rem;
+}
+
 /* ADR-0062, NAT-5 : marque le segment de .enonce que le contenu declare designer, sur un jeu marque
    seulement (cp-nature-mot) - un jeu non marque ne rend jamais cette classe. Regle reprise de la
    proposition mesuree d'ines-design (hors-sprint, squad/sprints/s19-contenu-seul-et-conception-de-
