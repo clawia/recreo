@@ -1,0 +1,3 @@
+Ce fichier porte l'extension d'une image JPEG et n'en est pas une : ses premiers octets sont du
+texte. C'est la seconde faute du jeu fautif d'ADR-0082. Un fichier reste du texte pour que ce depot
+n'ait aucun binaire a commiter pour prouver une regle.

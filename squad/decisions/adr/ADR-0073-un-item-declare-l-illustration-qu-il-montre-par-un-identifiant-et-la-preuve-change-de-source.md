@@ -8,6 +8,19 @@
 - **Arbre mesure** : worktree `s25-theo`, branche partie de `round-two` a `130ba64`. **JDK
   21.0.10**, celui que la machine virtuelle des tests rapporte d'elle-meme et non celui qu'une
   toolchain declare (`ADR-0071`). Enveloppe : `bash outils/mvn-jdk21.sh`.
+- **Amende le 2026-09-05 par `ADR-0082`, hors-sprint** : sa clause 2 decrivait deux
+  populations d'images, il y en a trois - `static/oeuvres/` porte les reproductions d'oeuvres du
+  domaine public, en JPEG. La propriete de la clause est reconduite sans une virgule : aucune
+  population n'est une liste de noms, chacune est un repertoire. **Deux dettes datees en
+  decoulent, et elles sont dues au lot qui livre la premiere reproduction** : la clause 3 doit
+  resoudre un identifiant dans l'une **ou** l'autre population, et la clause 5 - le texte
+  alternatif obligatoire - vaut sur les deux sans changer d'un mot. **L'alarme est deja armee** :
+  le garde-fou ci-dessous rougit de lui-meme le jour ou un paquet declare un identifiant
+  `oeuvre-`, puisqu'il ne resoudra pas. **La clause 4 - aucun texte dans un dessin - ne s'etend
+  pas** : elle est inverifiable sur un JPEG, et une oeuvre reproduite porte souvent une
+  inscription ; son motif n'est pas defait pour autant, le produit n'ecrit rien dans une
+  reproduction, mais ce que l'enfant y lit sort du controle et la question est routee a
+  `nadia-prof`.
 - **Amende `ADR-0036`** (clause 1 : une image est designee par un chemin litteral) et **`ADR-0014`**
   (une reference de ressource d'un gabarit s'ecrit en chemin litteral). Ne remplace rien.
 - **Prolonge** : `ADR-0004` (mecanique decouplee du contenu), `ADR-0006` (le contenu ne porte pas de

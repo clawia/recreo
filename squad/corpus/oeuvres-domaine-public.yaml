@@ -1,0 +1,58 @@
+# Registre des reproductions d'oeuvres servies par recreo, et la preuve que chacune est libre
+# d'usage. ADR-0082.
+#
+# CE FICHIER EST LA PREUVE, PAS UN INVENTAIRE DE CONFORT. Toute reproduction posee sous
+# adapters/adapter-web/src/main/resources/static/oeuvres/ y a son entree, et toute entree designe
+# un fichier qui existe. Le garde-fou
+# bootstrap/src/test/java/com/recreo/archi/ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest.java
+# rend la CI rouge des qu'une des deux moities manque.
+#
+# LA PREUVE EST DOUBLE, PARCE QUE LES OBJETS SONT DEUX. Une oeuvre peut etre dans le domaine public
+# sans que la photographie qui la reproduit le soit, et une institution peut renoncer a ses droits
+# sur sa photographie d'une oeuvre encore protegee. Les deux moities sont donc verifiees
+# separement :
+#
+#   1. L'OEUVRE. Auteur decede avant 1900 (anneeDeMortDeLAuteur), ou oeuvre anonyme anterieure a
+#      1900 (auteur: "anonyme", anneeDeLOeuvre). Le pivot de 1900 n'est pas la duree legale : c'est
+#      une marge qui rend tout calcul de duree inutile - prorogations de guerre francaises, mention
+#      "mort pour la France", durees etrangeres plus longues comprises. Voir ADR-0082, decision 3.
+#   2. LA REPRODUCTION. L'institution qui l'a publiee y a renonce par CC0 1.0, et le registre porte
+#      de quoi le REFAIRE : lieu de conservation, identifiant d'objet dans la collection, adresse
+#      de la fiche. Une entree dont personne ne peut refaire la verification ne prouve rien.
+#
+# Champs obligatoires, tous non vides :
+#   identifiant                 identifiant de l'illustration, alphabet "oeuvre-[a-z0-9-]+", et nom
+#                               de base du fichier servi (<identifiant>.jpg)
+#   titre                       titre de l'oeuvre
+#   auteur                      nom de l'auteur, ou exactement "anonyme"
+#   anneeDeLOeuvre              entier ; pour une fourchette, l'annee la plus tardive
+#   anneeDeMortDeLAuteur        entier ; obligatoire si l'auteur est nomme, interdit s'il est anonyme
+#   lieuDeConservation          institution qui conserve l'oeuvre
+#   identifiantDObjet           identifiant de l'oeuvre dans la collection, qui survit a l'adresse
+#   urlDeLaSource               fiche publiee par l'institution
+#   licenceDeLaReproduction     exactement "CC0-1.0" ; aucune autre valeur n'est admise aujourd'hui
+#
+# Les quatre premiers champs et le lieu de conservation portent ART-3 de nadia-prof (2026-09-03) :
+# "toute oeuvre servie en image est identifiee : titre, auteur, date, lieu de conservation". Elle
+# l'ecrivait dans le commentaire du paquet ; ADR-0082 tient sa propriete ici, parce qu'un
+# commentaire n'est verifiable par personne. Le changement de lieu lui est route.
+#
+# CE QUE CE REGISTRE NE PROUVE PAS. Que l'attribution soit exacte - qu'un tableau soit bien de qui
+# on le dit - et que le corpus tienne ART-5 (ni une seule epoque, ni une seule aire culturelle, ni
+# des artistes d'un seul genre). Ces deux-la restent la main de nadia-prof, elle l'a ecrit, et
+# aucun automate ne les verifie a sa place.
+#
+# EXEMPLE DE LA FORME ATTENDUE, en commentaire parce qu'aucune oeuvre n'est encore servie :
+#
+#   - identifiant: oeuvre-<nom-court>
+#     titre: "<titre de l'oeuvre>"
+#     auteur: "<nom de l'auteur>"
+#     anneeDeLOeuvre: 1831
+#     anneeDeMortDeLAuteur: 1849
+#     lieuDeConservation: "<institution, ville>"
+#     identifiantDObjet: "<identifiant dans la collection>"
+#     urlDeLaSource: "https://<fiche publiee par l'institution>"
+#     licenceDeLaReproduction: CC0-1.0
+
+schema: 1
+oeuvres: []

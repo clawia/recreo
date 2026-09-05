@@ -1,0 +1,25 @@
+# ADR-0013 : le jeu fautif de
+# ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest.
+#
+# Il porte DEUX fautes independantes, et c'est voulu : chacune est atteinte par un test distinct.
+#
+#   1. L'auteur est mort en 1954, apres le pivot de 1900. L'oeuvre serait peut-etre libre en France
+#      aujourd'hui ; le depot ne le calcule pas, et c'est exactement ce que la decision 3 d'ADR-0082
+#      refuse de faire. Le test leJeuFautifCommiteEstRefuse s'arrete la.
+#   2. Le fichier oeuvres/oeuvre-faux-format.jpg porte l'extension d'une image et n'est pas une
+#      image : ses premiers octets sont du texte. Le test leFichierDuJeuFautifQuiNEstPasUnJpegEstRefuse
+#      corrige la premiere faute en memoire pour atteindre la seconde.
+#
+# Ce fichier n'est servi par rien : il n'est lu que par le garde-fou qu'il met a l'epreuve.
+
+schema: 1
+oeuvres:
+  - identifiant: oeuvre-faux-format
+    titre: "Titre du jeu fautif"
+    auteur: "Auteur Du Jeu Fautif"
+    anneeDeLOeuvre: 1912
+    anneeDeMortDeLAuteur: 1954
+    lieuDeConservation: "Institution du jeu fautif"
+    identifiantDObjet: "FAUTIF-1"
+    urlDeLaSource: "https://exemple.invalid/collection/jeu-fautif"
+    licenceDeLaReproduction: CC0-1.0
