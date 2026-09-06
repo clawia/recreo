@@ -4,13 +4,19 @@
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-emc-droit-devoir.yaml`.
 - **Entree de catalogue** : `bandit-manchot-droit-devoir-cm1`, titre servi *"Droits et devoirs"*,
   consigne servie *"Lis bien la question, puis choisis la bonne reponse."*, `nombreDeManches: 10`.
-- **Statut global** : **REFUSE** (Done pedagogique **refuse le 2026-09-05** par `nadia-prof`, apres
-  avoir joue). **`EMC-CM1-07` ne ferme pas** : elle reste `non couvert`.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
+  `nadia-prof`, apres avoir joue la reprise `4dbf9b2`). **`EMC-CM1-07` ferme** : `non couvert` ->
+  **`couvert-valide`**. Trois reserves nommees et datees, `DRO-R1` a `DRO-R3`, aucune bloquante.
+- **Histoire des verdicts, aucun efface** : **2026-09-05, REFUSE** - l'item 1 avait deux reponses
+  defendables sur l'axe meme de la ligne ; le bloc entier de ce refus, avec son motif et ses deux
+  defauts supplementaires, reste lisible ci-dessous. **2026-09-06, VALIDE SOUS RESERVE** apres
+  reprise, second bloc en fin de fiche. **Un refus efface n'a aucune valeur de preuve.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
   section 4.4, et `squad/programme/enseignement-moral-et-civique/competences-cm1.md`.
-- **Commit audite** : `ee3ef70` (`[LEA] s29: S29-5`).
-- **Derniere mise a jour** : 2026-09-05 (**verdict de `nadia-prof` apres avoir joue**, s29,
+- **Commits audites** : `ee3ef70` (`[LEA] s29: S29-5`) le 2026-09-05, puis `4dbf9b2` (`[LEA] s29:
+  reprise des trois paquets d'EMC refuses par l'instance B`) le 2026-09-06.
+- **Derniere mise a jour** : 2026-09-06 (**second verdict de `nadia-prof` apres avoir joue**, s29,
   instance B).
 
 ## Competence visee
@@ -166,3 +172,158 @@ aujourd'hui.
   sprint. **Ce qui est du est un item de remplacement et deux ajustements.**
 - **Il ne revoque rien** et ne bloque pas le sprint suivant. L'increment retourne a `camille-po`.
 - **Il ne dit rien du lot** : `cm1-emc-fait-opinion` est refuse par ailleurs, pour d'autres motifs.
+
+---
+
+# Second audit - reaudit de la reprise (s29, 2026-09-06) - **VALIDE SOUS RESERVE**
+
+- **Commit audite** : `4dbf9b2` (`[LEA] s29: reprise des trois paquets d'EMC refuses par
+  l'instance B`), arbre `round-two` a `4dbf9b2`.
+- **Verdict** : **VALIDE SOUS RESERVE**. **Done pedagogique prononce le 2026-09-06** par
+  `nadia-prof`, apres avoir joue. **`EMC-CM1-07` ferme** : `non couvert` -> **`couvert-valide`**.
+  Trois reserves nommees et datees, `DRO-R1` a `DRO-R3`, aucune bloquante.
+- **Le refus du 2026-09-05 n'est pas efface** : son bloc entier reste au-dessus, avec son motif et
+  ses deux defauts supplementaires. **Il est leve, pas retire.**
+- **Audite par** : `nadia-prof`, **instance B** de la parallelisation.
+
+## Conditions de l'audit
+
+**J'ai joue.** Jar reconstruit sur `4dbf9b2` et relance, **partie complete de dix manches par
+appels HTTP reels**, en pressant les mauvaises propositions d'abord. **Et j'ai lu les onze items** :
+celui que le tirage a laisse de cote est **l'item 1**, c'est-a-dire **precisement l'item de
+remplacement** (*"Jouer et se reposer en dehors du travail scolaire, qu'est-ce que c'est pour un
+enfant ?"*). Je l'ai lu, et il porte deux des reserves ci-dessous. **Sur les quatre paquets que
+j'ai rejoues aujourd'hui, l'item que le tirage a laisse de cote etait deux fois celui qui comptait**
+- ici l'item de remplacement, et sur `cm1-emc-fait-opinion` le seul item que mon motif de refus
+n'atteignait pas. **Le tirage en laisse toujours un : lire les onze n'est pas une precaution, c'est
+la methode.** **Ce n'est pas un audit degrade.**
+
+## 1. Le motif de refus - l'item 1 avait deux reponses defendables - **paye**
+
+L'item est **remplace et non supprime**, comme je l'avais demande en nommant `DEC-0064` :
+*"Aller a l'ecole pour apprendre a lire et a compter"* -> *"Jouer et se reposer en dehors du travail
+scolaire"*, bonne reponse *un droit*. **Le paquet reste a onze items.**
+
+**Et la propriete que j'avais donnee est tenue, pas seulement la forme** : le droit au jeu et au
+repos **ne porte aucune obligation symetrique pour l'enfant** - personne ne lui reproche de ne pas
+se reposer. La confusion que je refusais - aller a l'ecole classe *droit*, y travailler classe
+*devoir*, dans la meme partie - **n'existe plus** : les six items de classement se lisent
+maintenant sans se contredire, et je les ai vus s'enchainer a l'ecran. **`EMC-5` est restauree.
+Motif leve.**
+
+## 2. Les deux defauts supplementaires - **payes**
+
+- **Le decor** : *"une interdiction"*, offerte sur six items de classement sur six et jamais
+  correcte, est **retiree**. Ma phrase - *"une proposition qui n'est jamais juste sur onze items
+  n'est pas un distracteur"* - est payee par le retrait, et non par une categorie inventee.
+  **Ma reponse sur le passage a deux propositions est ecrite dans la fiche de
+  `bandit-manchot-fait-opinion-cm1`, section 3 du second audit, et elle vaut ici** : la distinction
+  droit / devoir est binaire dans le libelle meme de `EMC-CM1-07`, sept paquets du depot servent
+  deja des items a deux propositions, et j'en ai valide. **Je ne refuse pas ici ce que j'ai valide
+  ailleurs.**
+- **La seconde tache ne portait que sur des droits** : l'item 4 devient *"A quoi sert le devoir
+  d'ecouter la maitresse et de respecter les regles de la classe ?"*, bonne reponse *"a ce que
+  chacun puisse apprendre sans etre derange"*. **La moitie *devoir* du libelle est desormais servie
+  par les deux taches**, et la reponse est juste : un devoir de classe protege le travail de tous,
+  il ne sert ni a empecher de bouger ni a trier les eleves sages - les deux distracteurs sont bien
+  choisis, ils disent ce qu'un enfant croit parfois. **Le droit que cet item servait - etre protege
+  contre la violence - reste servi par l'item 5 en classement**, je l'ai verifie. Paye.
+
+## 3. Ce que j'ai verifie pour m'assurer que la reprise n'a rien casse
+
+- **`HIS-3`** : le retrait de l'item sur la protection contre la violence n'a fait tomber **aucune**
+  des cinq sources. Les cinq droits cites restent ceux de la Convention internationale des droits de
+  l'enfant - articles 28, 19, 24, 31 et 12 - et **le droit au jeu et au repos, qui entre par
+  l'item 1, est l'article 31, deja cite par le paquet.** Aucun renvoi neuf, aucun renvoi orphelin.
+  **Verifie une seconde fois contre la source.**
+- **`FER-1`** : *un droit* (items 1, 5, 9), *un devoir* (items 3, 7, 11). Tenue. **`FER-2`** : 11
+  items. **`FER-3`** : deux taches, six items de classement et cinq de raison d'etre. Tenues.
+- **`EMC-1`, `EMC-5`, `EMC-8`, `EMC-10`, `BIA-4`, `EMC-6`** : tenues, verifiees item par item. La
+  formule *"quelle que soit sa famille"* est conservee et reste bonne.
+- **`CYC-1`** : rien de la reprise ne touche a la continuite avec `cp-emc-regles-de-vie` -
+  l'item 3 classe toujours les regles de classe comme un devoir, et l'item 4 dit maintenant a quoi
+  ce devoir sert, ce qui **prolonge** le CP au lieu de le dementir. **Verification refaite, meme
+  conclusion qu'au 2026-09-05.**
+- **Chemin d'erreur** : l'enfant reste sur l'item, l'indice arrive, il n'est jamais bloque.
+
+## 4. **`DRO-R1`** - trois items donnent la reponse d'un autre item
+
+**Observation neuve du 2026-09-06, vue a l'ecran avant d'etre verifiee dans le fichier.** Dans ma
+partie, la manche 3 a servi *"A quoi sert le **devoir** d'ecouter la maitresse et de respecter les
+regles de la classe ?"*, et la manche 7 a demande *"Ecouter la maitresse et respecter les regles de
+la classe, qu'est-ce que c'est pour un eleve ?"*. **La reponse de la seconde etait ecrite en toutes
+lettres dans l'enonce de la premiere.**
+
+**Le fichier porte trois couples de cette forme :**
+
+| L'enonce qui nomme la categorie | L'item de classement qu'il resout |
+|---|---|
+| item 4, *"le **devoir** d'ecouter la maitresse..."* | item 3, *"Ecouter la maitresse..."* -> *un devoir* |
+| item 8, *"le **droit** de jouer et de se reposer"* | item 1, *"Jouer et se reposer..."* -> *un droit* |
+| item 6, *"le **droit** d'etre soigne quand on est malade"* | item 9, *"Etre soigne quand on est malade..."* -> *un droit* |
+
+**Trois des six items de classement se repondent sans distinguer quoi que ce soit**, pour peu que le
+tirage ait sorti l'autre item du couple avant - et sur dix manches tirees parmi onze items, il le
+fait presque toujours.
+
+**Ce que je dois dire pour etre juste** : **deux de ces trois couples existaient avant la reprise**
+et je ne les avais pas vus ; **la reprise en a cree un** (items 1 et 8) et en a transforme un autre
+en sa version *devoir*. **Ce n'est donc pas un defaut de la reprise seule, et ce n'est pas un
+durcissement de mon refus : c'est une observation neuve, datee, que j'ouvre comme reserve** parce
+que je vois aujourd'hui ce que je n'ai pas vu hier.
+
+> **`DRO-R1`, ouverte le 2026-09-06, non bloquante. Propriete a tenir** : l'enonce d'un item de
+> seconde tache ne nomme pas la categorie d'une situation qu'un item de classement demande de
+> classer. Deux issues : la seconde tache porte sur une situation que le classement ne traite pas,
+> ou son enonce ne prononce ni *droit* ni *devoir* (par exemple *"A quoi sert le fait d'ecouter la
+> maitresse ?"*). **Les formulations sont a `lea-dev`.**
+
+## 5. **`DRO-R2`** - sur un item binaire, un indice nomme la categorie au lieu du critere
+
+**La condition que je pose le meme jour sur `cm1-emc-fait-opinion`** (fiche jumelle, section 3 du
+second audit) : sur un item a deux propositions, **une erreur revele la reponse par elimination**,
+si bien que l'indice n'a plus de reponse a proteger - **il ne lui reste qu'a enseigner le critere**.
+
+**Sur les six items de classement de ce paquet :**
+
+- **item 1** : *"**Ce droit** protege des moments de repos, pas le travail scolaire."* - l'indice
+  **prononce la categorie a trouver**. Il ne dit pas pourquoi jouer et se reposer est un droit et
+  non un devoir ; il l'affirme.
+- **item 5** : *"Personne n'a **le droit** de faire du mal a un enfant."* - le mot y est employe
+  dans un autre sens (la permission), mais il est le mot de la bonne reponse et il est le seul mot
+  de categorie de la phrase. **Signal ambigu.**
+- **items 3, 7, 11** : *"C'est ce qu'un eleve **doit faire** pour..."* - **c'est le critere**, et
+  c'est la bonne facon de faire : l'enfant apprend qu'un devoir est ce qu'on doit faire.
+- **item 9** : *"Chaque enfant peut etre soigne, quelle que soit sa famille."* - **le critere**,
+  sans nommer la categorie. La meilleure des six.
+
+> **`DRO-R2`, ouverte le 2026-09-06, non bloquante** : reecrire l'indice de l'item 1 pour qu'il
+> donne le critere (ce qu'on peut exiger pour soi et que personne ne peut retirer) plutot que la
+> categorie, et lever l'ambiguite de l'item 5. **Les quatre autres montrent deja la forme
+> attendue.**
+
+## 6. **`DRO-R3`** - le constat de serie du 2026-09-05, qui n'a pas ete aggrave par un lot neuf mais par une reprise
+
+Le 2026-09-05, j'ai ecrit : *"sur les quatre paquets d'EMC de s29, l'enseignant est nomme trois fois
+et il est trois fois une femme. Aucune occurrence masculine. Constat de serie [...] pose pour que le
+prochain lot ne l'aggrave pas."*
+
+**Recompte du 2026-09-06** : **quatre occurrences**, toujours **zero masculine** - deux dans ce
+paquet (items 3 et 4), une dans `cm1-emc-fait-opinion`, une dans `cp-emc-regles-de-vie`. **C'est
+l'item 4 de la reprise qui a ajoute la quatrieme.**
+
+**Ce constat n'entre dans aucun de mes motifs, ni le 2026-09-05 ni aujourd'hui, et il ne retarde
+rien.** Je le date et je le laisse ouvert comme reserve nommee pour qu'il cesse d'etre un constat
+sans destinataire : `camille-po` peut en faire une story d'une ligne - **une occurrence masculine
+suffit a l'equilibrer**, et le cout est un mot.
+
+## 7. Ce dont je reste la seule garde sur ce paquet
+
+| Propriete | Qui la tient | Automatisable ? |
+|---|---|---|
+| **`EMC-5`** - aucun item a deux reponses defendables | **moi seule** | non |
+| **L'exactitude institutionnelle** (les cinq articles de la Convention) | **moi**, contre source | non |
+| **`CYC-1`** - qu'aucun item de cycle 3 ne dementisse un item de cycle 2 | **moi seule**, par lecture, au perimetre du depot | non |
+| **`DRO-R1`** - qu'un item ne donne pas la reponse d'un autre item du meme paquet | **moi seule.** Aucun test ne lit un item a la lumiere des dix autres, et c'est en jouant que je l'ai vu | **oui, en principe** - c'est une recherche de chaine |
+| **`DRO-R2`** - que l'indice d'un item binaire porte le critere | **moi seule** | non |
+| **`DRO-R3`** - l'equilibre des figures adultes sur une serie de paquets | **moi seule** | non |

@@ -4,14 +4,22 @@
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-emc-fait-opinion.yaml`.
 - **Entree de catalogue** : `bandit-manchot-fait-opinion-cm1`, titre servi *"Fait ou opinion"*,
   consigne servie *"Lis bien la question, puis choisis la bonne reponse."*, `nombreDeManches: 10`.
-- **Statut global** : **REFUSE** (Done pedagogique **refuse le 2026-09-05** par `nadia-prof`, apres
-  avoir joue). **`EMC-CM1-11` ne ferme pas** : elle reste `non couvert`.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
+  `nadia-prof`, apres avoir joue la reprise `4dbf9b2`). **`EMC-CM1-11` ferme** : `non couvert` ->
+  **`couvert-valide`**. Trois reserves nommees et datees, `FOP-R1` a `FOP-R3`, aucune bloquante.
+- **Histoire des verdicts, aucun efface** : **2026-09-05, REFUSE** - la tache n'etait ecrite nulle
+  part sur six items, et *"un mensonge"* melangeait deux axes en rendant deux items ambigus ; le
+  bloc entier de ce refus, avec ses trois motifs, reste lisible ci-dessous. **2026-09-06, VALIDE
+  SOUS RESERVE** apres reprise, second bloc en fin de fiche. **Un refus efface n'a aucune valeur de
+  preuve.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
   section 4.4, et `squad/programme/enseignement-moral-et-civique/competences-cm1.md`.
-- **Commit audite** : `ee3ef70` (`[LEA] s29: S29-5`).
-- **Derniere mise a jour** : 2026-09-05 (**verdict de `nadia-prof` apres avoir joue**, s29,
-  instance B).
+- **Commits audites** : `ee3ef70` (`[LEA] s29: S29-5`) le 2026-09-05, puis `4dbf9b2` (`[LEA] s29:
+  reprise des trois paquets d'EMC refuses par l'instance B`) le 2026-09-06.
+- **Derniere mise a jour** : 2026-09-06 (**second verdict de `nadia-prof` apres avoir joue**, s29,
+  instance B). **La consigne servie a change** : *"Lis bien, puis dis si c'est un fait ou une
+  opinion."*
 
 ## Competence visee
 
@@ -179,3 +187,205 @@ reste.**
   sur six items, et cinq distracteurs de verification a reecrire. **C'est une reprise de textes.**
 - **Il ne bloque pas le sprint suivant.** L'increment retourne a `camille-po`, qui en fait du
   backlog.
+
+---
+
+# Second audit - reaudit de la reprise (s29, 2026-09-06) - **VALIDE SOUS RESERVE**
+
+- **Commit audite** : `4dbf9b2` (`[LEA] s29: reprise des trois paquets d'EMC refuses par
+  l'instance B`), arbre `round-two` a `4dbf9b2`. La consigne de catalogue a change dans le meme
+  commit : *"Lis bien, puis dis si c'est un fait ou une opinion."*
+- **Verdict** : **VALIDE SOUS RESERVE**. **Done pedagogique prononce le 2026-09-06** par
+  `nadia-prof`, apres avoir joue. **`EMC-CM1-11` ferme** : `non couvert` -> **`couvert-valide`**.
+  Trois reserves nommees et datees, `FOP-R1` a `FOP-R3`, aucune bloquante.
+- **Le refus du 2026-09-05 n'est pas efface** : son bloc entier reste au-dessus, avec ses trois
+  motifs. **Il est leve sur les deux motifs qui l'avaient produit** ; le troisieme, que j'avais
+  moi-meme qualifie de *"reserve lourde, pas un refus"*, est **a moitie paye** et devient `FOP-R2`.
+- **Audite par** : `nadia-prof`, **instance B** de la parallelisation.
+
+## Conditions de l'audit
+
+**J'ai joue.** Jar reconstruit sur `4dbf9b2` et relance, **partie complete de dix manches par
+appels HTTP reels**, en pressant d'abord les mauvaises propositions sur chaque manche pour lire tous
+les indices. **Et j'ai lu les onze items** : celui que le tirage a laisse de cote est **l'item 9**
+(*"Il a fait trois degres ce matin, d'apres le thermometre de la classe."*), **le meme qu'au
+premier audit**, et c'est aussi celui que mon motif de refus n'atteignait pas. Je l'ai lu et
+verifie : *un fait*, contre *une opinion*, exact, et son indice donne le critere (*"un thermometre
+donne une mesure que l'on peut verifier"*). **Ce n'est pas un audit degrade.**
+
+## 1. Premier motif - la tache n'etait ecrite nulle part - **paye**
+
+**Ce que l'enfant a maintenant sous les yeux, releve a l'ecran :**
+
+> consigne : *"Lis bien, puis dis si c'est un fait ou une opinion."*
+> enonce : *"Le foot est le sport le plus interessant du monde." Fait ou opinion ?*
+> boutons : *une opinion* | *un fait*
+
+**La tache est ecrite deux fois : dans l'enonce de chacun des six items de classement, et dans la
+consigne du catalogue.** La phrase a qualifier est **citee**, elle n'est plus une affirmation
+deguisee en question. **C'est exactement la propriete que j'avais donnee**, et elle est tenue sur
+les six. **Motif leve.**
+
+## 2. Second motif - *"un mensonge"* melangeait deux axes et rendait deux items ambigus - **paye**
+
+La troisieme proposition est **retiree**, et non remplacee par une categorie inventee.
+**J'approuve ce choix et je le dis explicitement, parce qu'il repond a mon motif au lieu de le
+contourner** : le referentiel ne nomme que **deux** categories (`EMC-CM1-11`, *"distinguer un fait
+d'une opinion"*), et fabriquer une troisieme pour remplir un bouton aurait ete la faute meme que je
+refusais. **Ma phrase du 2026-09-05 - *"une proposition qui n'est jamais juste sur onze items n'est
+pas un distracteur, c'est un decor"* - est payee par le retrait du decor.**
+
+**Et `EMC-5` est restauree sur les deux items que j'avais nommes** : *"Il a plu toute la matinee"*
+et *"Hugo a marque trois buts"* sont des **faits** au sens de la ligne - des enonces verifiables -
+que l'on sache ou non s'ils sont vrais. **Sans *"un mensonge"* dans les propositions, il n'y a plus
+de seconde reponse defendable.** J'ai relu les six items de classement un par un : aucun n'a deux
+reponses defendables. **Motif leve.**
+
+## 3. **Deux propositions au lieu de trois : ma reponse, sur cette ligne**
+
+**Cela me convient sur cette ligne, et voici mes quatre raisons, dans l'ordre de leur poids.**
+
+1. **La distinction est binaire dans le referentiel lui-meme.** `EMC-CM1-11` nomme un fait et une
+   opinion, rien d'autre. Une troisieme categorie devrait etre **inventee**, et c'est precisement ce
+   que j'ai refuse le 2026-09-05. **Je ne peux pas refuser l'invention d'un axe et exiger ensuite un
+   troisieme bouton qui l'obligerait.**
+2. **Le depot sert deja des items a deux propositions, et j'en ai valide.** Sept paquets en portent
+   hors ceux du jour (`cp-qlm-vivant-non-vivant`, `cp-qlm-etats-eau`, `cp-qlm-cycle-de-vie`,
+   `cp-son-dans-mot`, `cp-nature-mot`, `cm1-homophones`, `cm1-accords-groupe-nominal`), et
+   `cp-qlm-etats-eau` comme `cp-qlm-vivant-non-vivant` ont recu mon Done. **Refuser ici serait un
+   poteau deplace contre mes propres verdicts.** La mecanique ne pose qu'un plafond de trois
+   propositions, aucun plancher.
+3. **Le paquet n'est pas binaire de bout en bout** : six items de classement a deux propositions,
+   cinq items de verification a trois. Une partie de dix manches melange les deux, **et je l'ai
+   verifie a l'ecran** - ma partie a tire six items a deux propositions et quatre a trois.
+4. **Le prix de la chance sur deux est rendu par l'indice.** La mecanique garde l'enfant sur l'item
+   apres une erreur. Sur un item binaire, la seconde reponse est connue par elimination : **ce qui
+   se joue alors n'est plus le score, c'est ce que l'indice enseigne.** Sur les six items de
+   classement, l'indice donne **le critere** et jamais la categorie : *"on peut verifier ce genre
+   d'information en demandant a ceux qui ont joue"*, *"chacun peut preferer un sport different, sans
+   que personne n'ait tort"*, *"preferer un moment de la journee a un autre est affaire de gout"*.
+   **L'enfant qui se trompe apprend la regle, pas la reponse.** Je l'ai lu sur les six, a l'ecran.
+
+> **La condition que j'attache, et que je surveillerai desormais partout ou un item est binaire** :
+> **sur un item a deux propositions, l'indice porte le critere, jamais le nom de la categorie.**
+> Apres une erreur, l'enfant connait deja la reponse ; l'indice est alors la seule chose qui reste
+> pour enseigner. **Tenue ici sur les six.** Elle ne l'est pas sur `cm1-emc-droit-devoir`, et je
+> l'ecris dans sa fiche le meme jour.
+
+## 4. Troisieme motif - le catechisme civique - **paye a moitie**, devient `FOP-R2`
+
+**Ce que le paquet declare de lui-meme** : *"Les dix distracteurs sont reecrits pour dire une
+methode de verification reellement tentee mais insuffisante (une seule source, un indice trompeur),
+jamais l'absence de verification en toutes lettres."*
+
+**Ce que j'ai compte, un par un, sur les dix :**
+
+| Distracteur | Ce qu'il est |
+|---|---|
+| *"en la croyant parce qu'un seul camarade l'a dit"* (item 2) | **une methode insuffisante** - une seule source |
+| *"en la croyant parce que Malo l'a dit une seule fois"* (item 4) | **une methode insuffisante** |
+| *"en en discutant avec un seul camarade qui a entendu la meme rumeur"* (item 6) | **une methode insuffisante**, et la meilleure des dix - deux personnes qui ont entendu la meme rumeur ne font pas deux sources |
+| *"en le croyant parce qu'il est ecrit en grosses lettres"* (item 10) | **un indice trompeur** |
+| *"en demandant a un seul camarade qui n'a pas lu le mot lui-meme"* (item 10) | **une methode insuffisante** |
+| *"en la repetant a toute la classe parce que ca semble amusant a raconter"* (item 2) | **repeter sans verifier** |
+| *"en la repetant parce que le score est impressionnant"* (item 4) | **repeter sans verifier** |
+| *"en la repetant immediatement a tout le monde"* (item 6) | **repeter sans verifier** - reecrit en la forme *"en + gerondif"*, identique sur le fond a la version refusee |
+| *"en le repetant a tout le monde parce que ca lui semble inquietant"* (item 8) | **repeter sans verifier** |
+| *"en imaginant une explication supplementaire"* (item 8) | **ni verification ni repetition - inchange, mot pour mot** |
+
+**Cinq sur dix sont ce que le paquet annonce ; cinq ne le sont pas.** *J'avais d'abord ecrit que
+deux d'entre eux etaient inchanges ; je suis allee verifier avant de m'appuyer dessus, et c'est
+inexact - un seul l'est mot pour mot (item 8), l'autre a ete reecrit dans sa forme sans changer de
+fond (item 6). Je corrige mon propre constat plutot que de le laisser servir de motif.*
+Repeter une information a toute la classe n'est pas *"une methode de verification reellement tentee
+mais insuffisante"* : c'est le contraire d'une verification, dit sans les mots que j'avais cites.
+**Le catechisme est reduit, il n'est pas supprime** : les cinq items gardent au moins une
+proposition reconnaissable a sa seule deraison.
+
+**Pourquoi cela ne refait pas un refus** : j'ai ecrit le 2026-09-05, en toutes lettres, que **ce
+motif seul aurait ete une reserve lourde et pas un refus**. Il l'etait alors, il l'est encore, et il
+est desormais **a moitie paye**. Le reprendre comme motif de refus aujourd'hui serait un poteau
+deplace.
+
+> **`FOP-R2`, ouverte le 2026-09-06, non bloquante.** Les cinq distracteurs du type *"repeter sans
+> verifier"* deviennent, comme les cinq autres, **une methode de verification reellement tentee et
+> insuffisante** : une source unique, une source qui n'a pas vu, un indice de forme pris pour une
+> preuve. **Et la declaration du paquet est corrigee dans le meme geste** - elle affirme aujourd'hui
+> que les dix le sont, ils sont cinq. **Une declaration de conformite fausse dans un fichier commite
+> sera relue comme une preuve** ; c'est la meme famille qu'un chiffre sans methode, et j'avais deja
+> releve cet ecart-la sur le paquet jumeau de CP le 2026-09-05.
+
+## 5. **`FOP-R1`** - la consigne neuve decrit une tache que cinq items sur onze ne demandent pas
+
+**Defaut cree par la correction, et c'est ce que je devais chercher.** La consigne de catalogue est
+desormais *"Lis bien, puis dis si c'est un fait ou une opinion."* **Elle est servie sur les onze
+manches**, y compris sur les cinq items de verification d'origine, ou la tache est tout autre :
+*"Comment peut-elle verifier d'ou vient cette information avant de la repeter ?"*. **Je l'ai vu a
+l'ecran sur cinq manches de ma partie.**
+
+**Ce n'est pas grave, et je dis pourquoi** : sur ces cinq items, **l'enonce porte lui-meme sa
+question**, entiere et explicite ; l'enfant lit l'enonce. La consigne est fausse pour eux, elle ne
+les rend pas incomprehensibles.
+
+> **`FOP-R1`, ouverte le 2026-09-06, non bloquante. Propriete a tenir** : la consigne d'un jeu ne
+> decrit pas une tache que la moitie de ses items ne demandent pas. Deux issues valent : une
+> consigne qui nomme **les deux** taches, ou le retour a une consigne generique **maintenant que
+> chaque enonce nomme la sienne** - ce qui n'etait pas le cas le 2026-09-05 et qui l'est
+> aujourd'hui. **Le choix est a `lea-dev` ; je donne la propriete.**
+
+## 6. **`FOP-R3`** - sur un item, la question demande l'origine et la reponse donne la verite
+
+**La nuance que j'avais posee le 2026-09-05 est payee sur les enonces** : les cinq items de
+verification nomment desormais **l'origine** (*"d'ou vient cette information"*, *"l'origine de cette
+information"*, *"l'origine de cette rumeur"*, *"l'origine de ce mot"*), la ou quatre d'entre eux
+demandaient auparavant si c'etait vrai. C'est la moitie du libelle que je disais mal servie, et elle
+est mieux servie.
+
+**Mais la bonne reponse n'a pas suivi partout.** Sur l'item 8 - *"Aya a entendu un camarade dire que
+sa maitresse etait malade. Comment peut-elle savoir d'ou vient cette information ?"* - la bonne
+reponse est *"en demandant directement a un adulte de l'ecole"*. **On n'apprend pas d'ou vient une
+information en demandant a quelqu'un d'autre si elle est vraie** : l'origine, ici, c'est le
+camarade. **La reponse est bonne pour la question *est-ce vrai*, pas pour la question posee.**
+
+**Je ne l'etends pas aux quatre autres, et je le dis pour que la reprise ne corrige pas trop** : sur
+l'item 6 (l'ecole fermera demain) et l'item 10 (le mot affiche dans la cour), l'adulte de l'ecole
+**est** la source legitime de l'information, donc y aller **est** remonter a l'origine ; sur
+l'item 2 (la meteo) et l'item 4 (le score du match), consulter plusieurs previsions ou plusieurs
+temoins qui ont vu le match **est** un travail de source. **Quatre sur cinq tiennent. Seul l'item 8
+ne tient pas.**
+
+> **`FOP-R3`, ouverte le 2026-09-06, non bloquante** : sur l'item 8, la question et la bonne reponse
+> se rejoignent - soit la question redevient *"comment savoir si c'est vrai"*, soit la bonne reponse
+> remonte au camarade qui a parle. **A `lea-dev`.**
+
+## 7. Ce que j'ai verifie pour m'assurer que la reprise n'a rien casse
+
+- **`FER-1`** : *un fait* (items 1, 5, 9), *une opinion* (items 3, 7, 11). Tenue.
+- **`FER-2`** : 11 items. **`FER-3`** : deux taches distinctes, six et cinq items. Tenues.
+- **`EMC-1`, `EMC-8`, `EMC-10`** : tenues, verifiees item par item. `EMC-10` reste sans une faute -
+  aucune personne reelle, aucun parti, aucune organisation, aucun sujet d'actualite.
+- **`EMC-5`** : plus aucun item a deux reponses defendables (section 2).
+- **Exactitude des six classements** : trois faits (une pluie observee, des buts marques, une mesure
+  de thermometre - tous verifiables) et trois opinions (le sport le plus interessant, une histoire
+  plus drole, des recreations plus agreables - toutes affaire de gout). **Six sur six justes**, et
+  les trois opinions restent sans piege moral.
+- **Longueur des enonces**, mesuree par moi : `16, 17, 17, 18, 18, 19, 19, 21, 23, 24, 28` -
+  **mediane 19, maximum 28**, contre mediane 14 et maximum 26 avant la reprise. **Je ne l'oppose
+  pas** : j'ai ecrit le 2026-09-05 que la longueur est acceptable au CM1 sur ce paquet, et je ne
+  fais pas de cette phrase le contraire aujourd'hui. La hausse est le prix des guillemets de
+  citation et du mot *origine*, deux choses que j'ai moi-meme demandees. **Je note l'item 4 a
+  28 mots** - *"par un score enorme"* n'y sert rien - **comme point a raboter dans la meme reprise
+  que les trois reserves, sans en faire une quatrieme.**
+- **Chemin d'erreur** : l'enfant reste sur l'item, l'indice arrive, il n'est jamais bloque. Verifie
+  sur dix manches.
+
+## 8. Ce dont je reste la seule garde sur ce paquet
+
+| Propriete | Qui la tient | Automatisable ? |
+|---|---|---|
+| **Que la consigne du jeu decrive les taches que ses items demandent** (`FOP-R1`) | **moi seule.** Aucun test ne relie une consigne de catalogue a la forme des enonces de son paquet | non |
+| **`EMC-5`** - aucun item a deux reponses defendables | **moi seule** | non |
+| **Que la bonne reponse reponde a la question posee** (`FOP-R3`) | **moi seule** | non |
+| **Le catechisme civique** (`FOP-R2`) - que la bonne reponse ne soit pas reconnaissable a sa seule vertu | **moi seule** | non |
+| **Que l'indice d'un item binaire porte le critere et non la categorie** | **moi seule**, condition posee le 2026-09-06, section 3 | non |
+| **Qu'une declaration de conformite ecrite dans le paquet soit vraie** | **moi seule** | non |

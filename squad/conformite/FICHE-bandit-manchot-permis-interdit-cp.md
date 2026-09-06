@@ -5,13 +5,20 @@
 - **Entree de catalogue** : `bandit-manchot-permis-interdit-cp`, titre servi *"Permis ou
   interdit"*, consigne servie *"Lis bien la question, puis choisis la bonne reponse."*,
   `nombreDeManches: 10`.
-- **Statut global** : **REFUSE** (Done pedagogique **refuse le 2026-09-05** par `nadia-prof`, apres
-  avoir joue). **`EMC-CP-02` ne ferme pas** : elle reste `non couvert`.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
+  `nadia-prof`, apres avoir joue la reprise `4dbf9b2`). **`EMC-CP-02` ferme** : `non couvert` ->
+  **`couvert-valide`**. Une reserve nommee et datee, `PER-R1`, non bloquante.
+- **Histoire des verdicts, aucun efface** : **2026-09-05, REFUSE** - charge de lecture d'un autre
+  niveau (mediane 15 mots, maximum 20) et item 9 portant sa reponse dans son enonce ; le bloc entier
+  de ce refus, avec ses deux motifs et ses trois defauts nommes, reste lisible ci-dessous.
+  **2026-09-06, VALIDE SOUS RESERVE** apres reprise, second bloc en fin de fiche. **Un refus efface
+  n'a aucune valeur de preuve.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
   section 4.3, et `squad/programme/enseignement-moral-et-civique/competences-cp.md` (2026-09-03).
-- **Commit audite** : `5526932` (`[LEA] s29: S29-4`).
-- **Derniere mise a jour** : 2026-09-05 (**verdict de `nadia-prof` apres avoir joue**, s29,
+- **Commits audites** : `5526932` (`[LEA] s29: S29-4`) le 2026-09-05, puis `4dbf9b2` (`[LEA] s29:
+  reprise des trois paquets d'EMC refuses par l'instance B`) le 2026-09-06.
+- **Derniere mise a jour** : 2026-09-06 (**second verdict de `nadia-prof` apres avoir joue**, s29,
   instance B).
 
 ## Competence visee
@@ -172,3 +179,123 @@ comme une preuve.
   backlog.
 - **Il ne dit rien du paquet jumeau**, que je valide sous reserve par ailleurs. Un paquet est une
   unite de verdict ; un lot n'en est pas une.
+
+---
+
+# Second audit - reaudit de la reprise (s29, 2026-09-06) - **VALIDE SOUS RESERVE**
+
+- **Commit audite** : `4dbf9b2` (`[LEA] s29: reprise des trois paquets d'EMC refuses par
+  l'instance B`), arbre `round-two` a `4dbf9b2`.
+- **Verdict** : **VALIDE SOUS RESERVE**. **Done pedagogique prononce le 2026-09-06** par
+  `nadia-prof`, apres avoir joue. **`EMC-CP-02` ferme** : `non couvert` -> **`couvert-valide`**.
+  Aucune mention de couverture partielle n'est exigee sur cette ligne. Une reserve neuve et datee,
+  `PER-R1`, non bloquante.
+- **Le refus du 2026-09-05 n'est pas efface** : son bloc entier reste au-dessus, avec ses deux
+  motifs et ses trois defauts nommes. **Il est leve, pas retire** - un refus efface ne prouve rien.
+- **Audite par** : `nadia-prof`, **instance B** de la parallelisation.
+
+## Conditions de l'audit
+
+**J'ai joue.** Jar reconstruit sur `4dbf9b2` et relance, **partie complete de dix manches par
+appels HTTP reels**, en me trompant volontairement sur chaque manche avant de repondre juste, pour
+voir tous les indices. **Et j'ai lu les onze items** : celui que le tirage a laisse de cote est
+l'item 2 (*"Pourquoi est-il interdit de se moquer d'un camarade ?"*), je l'ai lu.
+**Ce n'est pas un audit degrade.**
+
+## 1. Les deux motifs de refus, payes, et mesures
+
+**Premier motif - la charge de lecture.** Ma barre du 2026-09-05, citee telle quelle : *"mediane des
+enonces a 10 mots, aucun enonce au-dessus de 15"*.
+
+**Mesure, faite par moi sur les onze enonces du fichier** : `7, 9, 9, 10, 10, 10, 11, 12, 12, 13,
+14` - **mediane 10, maximum 14**. Le paquet etait a **mediane 15, maximum 20**. **La barre est
+atteinte**, et le maximum est **sous** celui du paquet jumeau que je donnais comme cible (15). Les
+onze enonces sont une phrase de situation suivie d'une question courte. L'incise *"sans meme la
+toucher"*, que j'avais nommee comme du cout de lecture sans discrimination, a disparu.
+**Motif leve.**
+
+**Second motif - l'item 9 portait sa reponse.** Il est reecrit : *"Malo imite Lea devant la classe
+pour rire d'elle. Qu'est-ce que Malo fait ?"* -> *"une moquerie"*. **Le mot a trouver ne figure plus
+dans l'enonce.** Et la seconde moitie du motif est payee aussi, celle qui portait sur le fond : la
+situation decrite est **bien une moquerie** - imiter quelqu'un pour faire rire a ses depens - et non
+une rumeur ; le distracteur *"une information vraie"*, qui posait l'axe du vrai et du faux la ou la
+ligne porte sur le permis et l'interdit, est remplace par *"une insulte"*, qui est sur l'axe de la
+ligne. **Les deux moities sont payees. Motif leve.**
+
+## 2. Les trois defauts supplementaires, payes aussi
+
+- **Le doublon des items 7 et 8** : deux items desormais distincts - *"Lea prete son crayon a
+  Malo"* -> *"un service"*, et *"Hugo explique calmement pourquoi il n'est pas d'accord"* -> *"une
+  discussion"* - chacun oppose a **deux des trois qualifications de l'interdit** plutot qu'a un
+  troisieme bouton *"dangereux"* qui n'etait jamais correct. **Je les ai vus tous les deux dans ma
+  partie** (manches 4 et 5) : le second ne se repond plus par le premier. Paye.
+- **Le distracteur qui enoncait une regle d'ecole fausse** : *"parce que c'est interdit de rire en
+  classe"* -> *"parce que ca fait beaucoup de bruit"*. **Aucun interdit inexistant n'est plus pose
+  en proposition** sur un paquet dont l'objet est de dire ce qui est interdit. Paye.
+- **Le role de victime genre** : recompte par moi sur les cinq situations d'atteinte - la victime
+  est **une fille deux fois sur cinq** (etait quatre fois sur cinq), l'agresseur **une fille deux
+  fois sur cinq**, et **Lea n'est plus seulement une victime**. Paye, et pour le cout que j'avais
+  annonce : deux prenoms echanges.
+
+## 3. Un ecart que j'avais signale sans refuser, et qui se ferme
+
+Le commentaire du paquet declarait *"aucun item ne porte sur une moquerie repetee"* alors que
+l'item 1 disait *"Hugo repete sans arret"*. L'item 1 est desormais *"Hugo rit de la voix d'Aya"* :
+**la declaration est devenue vraie.** Je le note parce que j'avais ecrit l'ecart, et qu'un ecart
+signale se suit jusqu'a sa fermeture, meme quand il n'a jamais ete un motif.
+
+## 4. Ce que j'ai verifie pour m'assurer que la reprise n'a rien casse
+
+- **Exactitude** : les onze qualifications sont justes. Le raccourcissement n'en a abime aucune.
+  **Le point que je regardais en priorite** : *"Malo dit des mots mechants a Hugo"* reste bien une
+  insulte apres avoir perdu son incise, et *"une moquerie"* **n'est pas offerte sur cet item** (les
+  distracteurs sont *un service* et *un cadeau*) - le raccourcissement n'a donc pas cree
+  d'ambiguite la ou il enlevait la precision qui l'ecartait.
+- **`FER-1`** : les trois termes de la parenthese sont chacun en bonne reponse - *une moquerie*
+  (items 1, 9), *une insulte* (item 3), *de la violence* (items 5, 11). Tenue.
+- **`FER-2`** : 11 items. **`FER-3`** : deux taches, sept items de qualification et quatre de
+  raison d'etre. Tenues.
+- **`EMC-1`, `EMC-5`, `EMC-8`, `EMC-10`, `EMC-3` (amendee)** : tenues, verifiees sur le contenu et
+  non sur la declaration.
+- **Chemin d'erreur** : l'enfant reste sur l'item, recoit un indice qui **decrit sans nommer**, et
+  n'est jamais bloque. Verifie sur les dix manches, y compris sur les items a trois propositions ou
+  je me suis trompee deux fois de suite.
+
+## 5. **`PER-R1`** - reserve neuve, datee du 2026-09-06, non bloquante
+
+**La question et la bonne reponse ne s'enchainent pas toujours en francais correct.** Sur les items
+de qualification, la question est *"Qu'est-ce que X fait ?"* et la reponse se lit avec le verbe
+*faire* : *"elle fait un service"* (on **rend** un service), *"il fait une discussion"* (on **a** une
+discussion, ou on **discute**), *"elle fait de la violence"* (on **est** violent). L'item 8 est le
+plus visible : *"Hugo explique calmement pourquoi il n'est pas d'accord"* -> *"une discussion"*.
+
+**Ce n'est ni l'orthographe, ni l'accentuation, ni la ponctuation** - ce controle-la appartient au
+`relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`) et je ne m'en mele pas.
+**C'est la formulation de ce que l'enfant lit et le niveau scolaire vise** : le CP est precisement
+l'annee ou l'on construit ces tournures, et une question qui ne se recolle pas a sa reponse est un
+modele bancal donne a lire.
+
+> **Propriete a tenir** : sur un item de qualification, la question et la bonne reponse forment une
+> phrase correcte lorsqu'on les lit ensemble. Une question du type *"Qu'est-ce que X fait ?"* n'est
+> pas la seule forme possible ; *"Comment appelle-t-on ca ?"*, deja employee par l'item 1 de ce
+> paquet, accepte les trois qualifications sans forcer le verbe. **Les formulations sont a
+> `lea-dev`.**
+
+**Pourquoi une reserve et non un refus** : aucune reponse n'en devient fausse, aucune ambiguite
+n'est creee, et un enfant de CP accompagne comprend ce qui lui est demande - je l'ai verifie a
+l'ecran. **La ligne ferme sans attendre cette correction.**
+
+## 6. Ce dont je reste la seule garde sur ce paquet
+
+| Propriete | Qui la tient | Automatisable ? |
+|---|---|---|
+| **La longueur des enonces rapportee au niveau** | **moi seule.** Rien n'a change de ce cote depuis le 2026-09-05 : le profil est bon aujourd'hui, aucun garde-fou ne l'empechera de deriver demain | **oui, si l'equipe le veut** |
+| **Qu'un enonce ne contienne pas sa propre reponse** | **moi seule** | **oui, en principe** |
+| **Que deux items d'un paquet ne soient pas le meme item** | **moi seule** | non en l'etat |
+| **Qu'aucun distracteur n'enonce une regle fausse** (`EMC-4` etendue) | **moi seule** | non |
+| **L'equilibre des roles entre personnages sur une serie** | **moi seule** | non |
+| **`PER-R1`** - que question et reponse forment une phrase correcte | **moi seule** | non |
+
+**Ces six proprietes sont exactement celles sur lesquelles la CI verte ne dit rien**, et les cinq
+premieres sont celles qui ont produit mon refus du 2026-09-05 sur un paquet dont le Done technique
+etait acquis.

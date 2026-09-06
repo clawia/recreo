@@ -17,6 +17,11 @@
   ecrit en fin de fiche - rejeu borne de `POS-R1` sur le commit `8644932`, **REFUSE**. `POS-R1`
   reste ouverte. **Le Done du 2026-09-04 n'est pas revoque et `MAT-CM1-05` reste
   `couvert-valide`.**
+- **Ajout du 2026-09-06 (s29), sans rien retirer de ce qui precede** : un **troisieme audit** est
+  ecrit en fin de fiche - reaudit de la reprise `130a538`, **VALIDE SOUS RESERVE**. **`POS-R1` est
+  levee** sur la propriete que j'avais ecrite le 2026-09-05 ; **`POS-R2` est ouverte** sur une
+  troisieme lecture que je n'avais pas vue. **`MAT-CM1-05` reste `couvert-valide`, `POS-1` reste
+  exigee, et les deux blocs precedents restent lisibles avec leur motif entier.**
 
 ## Competence visee
 
@@ -282,3 +287,148 @@ jouant.**
   propriete que j'avais prescrite est reellement tenue. **La prescription etait insuffisante, et
   elle etait de moi.**
 - **Il ne bloque pas le sprint suivant.** L'increment retourne a `camille-po`.
+
+---
+
+# Troisieme audit - reaudit de la reprise de `POS-R1` (s29, 2026-09-06)
+
+- **Commit audite** : `130a538` (`[MARC] s29: seconde reprise de POS-R1`), arbre `round-two` a
+  `4dbf9b2`.
+- **Verdict du reaudit** : **VALIDE SOUS RESERVE**. **`POS-R1` est LEVEE.** Une reserve **neuve et
+  datee**, `POS-R2`, non bloquante, prend sa place - elle porte sur un fait que je n'avais pas vu,
+  et non sur un durcissement de l'ancienne.
+- **Ce qui ne change pas** : `MAT-CM1-05` reste **`couvert-valide`**, `POS-1` reste exigee. **Aucun
+  des deux blocs precedents n'est modifie ni retire** : le Done du 2026-09-04 et le refus du
+  2026-09-05 restent lisibles avec leur motif entier.
+- **Audite par** : `nadia-prof`, **instance B** de la parallelisation.
+
+## Conditions de l'audit
+
+**J'ai joue.** Jar reconstruit sur `4dbf9b2` et relance, **partie complete de dix manches par
+appels HTTP reels**, en me trompant volontairement jusqu'a deux fois sur la meme manche. **Et j'ai
+recalcule les onze divisions et les vingt-deux distracteurs**, un par un. L'item que le tirage a
+laisse de cote cette fois est **879 / 7** ; je l'ai lu et recalcule dans le fichier.
+**Ce n'est pas un audit degrade.**
+
+## 1. `POS-R1` est levee, et je le dis avant tout le reste
+
+**La barre que j'ai ecrite le 2026-09-05, citee sans un mot de changement** :
+
+> *"le rang de la bonne reponse dans l'ordre des trois quotients varie d'un item a l'autre. Sur un
+> paquet de onze, aucun des trois rangs - la plus petite, celle du milieu, la plus grande - ne porte
+> plus de la moitie des items, et aucun n'est absent."*
+
+**Mesure, faite par moi sur les onze items du fichier puis verifiee a l'ecran :**
+
+| Rang de la bonne reponse parmi les trois quotients tries | Items | Effectif |
+|---|---|---|
+| **la plus petite** | 224/6, 323/5, 152/8, 312/9 | **4** |
+| **intermediaire** | 299/7, 234/9, 177/2, 879/7 | **4** |
+| **la plus grande** | 213/4, 215/3, 351/6 | **3** |
+
+**Aucun rang majoritaire, aucun rang absent. La barre est atteinte, je leve.** Une barre qu'on
+releve apres coup fait de ma porte un caprice ; celle-ci etait ecrite, elle est tenue.
+
+**Et je leve aussi la seconde lecture, celle que j'avais trouvee moi-meme** - *deux propositions
+partagent le meme reste, et la plus petite des deux est la bonne, onze fois sur onze*. **Recompte
+par moi** : **4** items ou la bonne est la plus petite du couple (224/6, 213/4, 152/8, 351/6), **4**
+ou elle est la plus grande (323/5, 215/3, 312/9, 879/7), **3** ou les trois propositions partagent
+le meme reste, donc ou le reste ne dit rien (299/7, 234/9, 177/2). **Conforme a ce que le paquet
+declare.**
+
+**Ce que j'ai verifie en plus, avant de lever :**
+
+- **onze divisions justes sur onze**, quotient et reste recalcules ;
+- **vingt-deux distracteurs**, tous a **reste strictement inferieur au diviseur** - la propriete
+  gagnee par la premiere reprise n'a pas ete cassee par la seconde ;
+- **`POS-2`** sur sa lettre : meme nombre de chiffres au quotient sur les trois propositions des
+  onze items, et un distracteur partage toujours le chiffre des unites ;
+- **`POS-4`** : diviseur a un chiffre sur les onze, reste demande a chaque fois, reste nul sur deux
+  items (234/9, 152/8) ;
+- **le test neuf porte bien sur la serie** et non sur l'item, et il aurait **rougi** sur le fichier
+  du 2026-09-05, qui etait a 100 % `INTERMEDIAIRE` contre un seuil de majorite a la moitie.
+
+## 2. `POS-R2` - la troisieme lecture, cherchee parce qu'elle m'a ete demandee, et trouvee
+
+**Ce que j'ai cherche** : toute regle, quelle qu'elle soit, qui designe la bonne reponse sur la
+serie **sans poser l'operation**. J'ai teste et **ecarte** : le rang du quotient (leve, section 1),
+la place du reste dans le couple (levee, section 1), l'ecart des quotients (il varie - `+10 / +1`,
+`+10 / -10`, `-10 / -2`, `-10 / +1`), le chiffre des unites du quotient (7, 2, 3, 6, 4, 9, 1, 8, 4,
+5, 8 - il varie), la parite, et la position des boutons a l'ecran (le tirage la melange, verifie sur
+dix manches).
+
+**Ce que j'ai trouve, et qui tient : la bonne reponse ne porte jamais le reste unique.**
+
+| Item | Les trois restes proposes | Reste unique | La proposition qui le porte |
+|---|---|---|---|
+| 224 / 6 | 2, 2, **4** | 4 | *38 reste 4* - **fausse** |
+| 213 / 4 | 1, 1, **3** | 3 | *51 reste 3* - **fausse** |
+| 323 / 5 | 3, 3, **1** | 1 | *65 reste 1* - **fausse** |
+| 152 / 8 | 0, 0, **5** | 5 | *20 reste 5* - **fausse** |
+| 215 / 3 | 2, 2, **0** | 0 | *69 reste 0* - **fausse** |
+| 312 / 9 | 6, 6, **2** | 2 | *35 reste 2* - **fausse** |
+| 879 / 7 | 4, 4, **1** | 1 | *126 reste 1* - **fausse** |
+| 351 / 6 | 3, 3, **5** | 5 | *56 reste 5* - **fausse** |
+| 299 / 7 | 5, 5, 5 | aucun | - |
+| 234 / 9 | 0, 0, 0 | aucun | - |
+| 177 / 2 | 1, 1, 1 | aucun | - |
+
+**Huit fois sur huit, la proposition au reste unique est fausse.** Et **sur les trois items ou les
+trois restes sont egaux, donc ou cette regle ne dit rien, le triplet des quotients est symetrique**
+(`Q - 10`, `Q`, `Q + 10`) : **la bonne y est la valeur du milieu, trois fois sur trois** - 16/26/36,
+32/42/52, 78/88/98.
+
+**La strategie composee, qui ne pose aucune division** : *si les trois restes sont egaux, presser le
+quotient du milieu ; sinon ecarter la proposition au reste unique et jouer a pile ou face entre les
+deux qui restent*. **Esperance : 3 items surs + 4 items sur les 8 restants = 7 sur 11, soit
+63,6 %, contre 33,3 % au hasard.** Mesure faite sur le fichier, et les huit eliminations verifiees a
+l'ecran sur ma partie de dix manches.
+
+**La cause est structurelle, et je la nomme pour que la reprise ne corrige pas la mauvaise chose.**
+Des quatre erreurs classiques du repertoire, deux (`RETENUE-DIZAINE-OUBLIEE`,
+`DIZAINE-DU-QUOTIENT-SOUS-ESTIMEE`) **recopient le reste correct** et deux
+(`PRODUIT-PARTIEL-MAL-DECALE`, `CHIFFRE-DES-UNITES-SURESTIME`) **en fabriquent un autre**. Chaque
+item emploie une erreur de chaque famille, sauf trois qui en emploient deux de la premiere. **Le
+reste correct est donc toujours majoritaire ou unanime, jamais minoritaire** : c'est une propriete
+de la recette, pas d'un item, exactement comme le rang l'etait.
+
+**Pourquoi c'est une reserve et non un refus, et je me pose la question dans ce sens-la :**
+
+- **sur les huit items, la regle ne donne pas la reponse** : elle retire une proposition sur trois,
+  et le choix qui reste - entre `Q` et `Q +/- 10` - **demande toujours de poser la division** ;
+- **c'est plus faible que ce que j'ai traite en reserve le 2026-09-04**, ou la regularite donnait le
+  quotient sur neuf items sur onze. **Je ne peux pas refuser aujourd'hui un defaut moins fort que
+  celui que j'ai laisse passer en reserve**, sur le meme paquet et pour la meme famille ;
+- **c'est une observation neuve du 2026-09-06**, pas un durcissement de `POS-R1`, qui est atteinte.
+  **Je ne deplace pas mes poteaux : j'en plante un nouveau, date, a cote de l'ancien qui est
+  franchi.**
+
+> **`POS-R2`, ouverte le 2026-09-06, non bloquante. Propriete a tenir, et elle porte sur la serie** :
+> **la bonne reponse n'est pas toujours du cote du reste partage.** Concretement : sur une part des
+> items, les **deux** distracteurs partagent un reste que la bonne reponse **n'a pas**, ou bien la
+> bonne reponse porte le reste unique. Et les items dont les trois restes sont egaux ne portent pas
+> **tous** un triplet de quotients symetrique, qui remet mecaniquement la bonne au milieu.
+> **Les valeurs sont a `marc-dev` ; je donne la propriete.**
+
+## 3. Ce dont je reste la seule garde, mis a jour au 2026-09-06
+
+| Propriete | Qui la tient |
+|---|---|
+| **Le rang de la bonne reponse sur la serie** | **plus moi seule** : `leRangDeLaBonneReponseParmiLesQuotientsVarieEtAucunRangNEstMajoritaireNiAbsent` le mord depuis le 2026-09-06 |
+| **`POS-R2`** - que la bonne reponse ne soit pas toujours du cote du reste partage | **moi seule.** Aucun test ne compare les **restes** des propositions d'un item, ni d'un item a l'autre |
+| **`POS-1`** - que la mention soit ecrite dans la matrice | **moi**, et **`camille-po`** en l'ecrivant |
+| **`POS-3`** - qu'un distracteur soit vraiment l'erreur qu'il declare | **moi seule** pour le jugement |
+| **L'exactitude des onze divisions** | **moi**, mais recalculable par quiconque |
+
+**Le paquet reste hors du domaine du garde-fou de rang commun**
+(`PAQUETS_HORS_DU_DOMAINE_NUMERIQUE`) : le test neuf est **local a ce paquet**, donc le symptome que
+j'ai decrit le 2026-09-05 - le seul paquet du depot que le garde-fou commun ne sait pas lire - **n'a
+pas disparu, il a ete contourne pour un paquet**. **Je decris le symptome ; la cause reste a
+`theo-archi`.**
+
+## 4. Etat des reserves de ce jeu au 2026-09-06
+
+- **`POS-1`** : **inchangee**, toujours exigee, mention a reprendre mot pour mot dans la matrice.
+- **`POS-R1`** : **LEVEE le 2026-09-06**, sur la propriete exacte que j'avais ecrite le 2026-09-05.
+  **Non effacee** - son texte, son motif et le refus qu'elle a produit restent au-dessus.
+- **`POS-R2`** : **ouverte le 2026-09-06**, non bloquante, motif et propriete en section 2.
