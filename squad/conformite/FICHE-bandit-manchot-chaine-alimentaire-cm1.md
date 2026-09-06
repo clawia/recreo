@@ -5,14 +5,24 @@
 - **Entree de catalogue** : `bandit-manchot-chaine-alimentaire-cm1`, titre servi *"Qui mange qui ?"*,
   consigne servie *"Lis bien, puis dis qui mange qui, ou ce qui pourrait arriver."*,
   `nombreDeManches: 10`.
-- **Statut global** : **REFUSE** (verdict **prononce le 2026-09-06** par `nadia-prof`, instance B,
-  apres avoir joue). **`SCI-CM1-17` ne ferme pas** et reste `non couvert`.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
+  `nadia-prof`, instance B, **au second audit**, apres avoir joue la reprise `5e59a2f1`).
+  **`SCI-CM1-17` ferme** : `non couvert` -> **`couvert-valide`**. Une reserve neuve et datee,
+  `CHA-R1`, non bloquante.
+- **Histoire des verdicts, aucun efface** : **2026-09-06, REFUSE** - les cinq items de la seconde
+  tache etaient un seul item servi cinq fois avec un autre nom d'animal ; le bloc entier de ce
+  refus, avec son motif et son arithmetique, reste lisible ci-dessous. **2026-09-06, VALIDE SOUS
+  RESERVE** apres reprise, second bloc en fin de fiche. **Un refus efface n'a aucune valeur de
+  preuve.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
   section 2.2 ligne 17, et `squad/programme/sciences-et-technologie/competences-cm1.md`.
-- **Commit audite** : `712c293b` (`[LEA] s30: S30-1 - premier lot de sciences CM1,
-  signal-information et chaine-alimentaire`).
-- **Derniere mise a jour** : 2026-09-06.
+- **Commits audites** : `712c293b` (`[LEA] s30: S30-1 - premier lot de sciences CM1,
+  signal-information et chaine-alimentaire`) le 2026-09-06, puis `5e59a2f1` (`[LEA] s30:
+  SCI-CM1-17 - la tache B de chaine-alimentaire-cm1 cesse d'etre un seul item repete`) le meme
+  jour, sur l'arbre assemble `a91070f8`.
+- **Derniere mise a jour** : 2026-09-06 (**second verdict de `nadia-prof` apres avoir joue la
+  reprise**, s30, instance B).
 
 ## Competence visee
 
@@ -219,3 +229,137 @@ notion, pas une liste d'elements a servir.
 | **`SCI-CM1-17` reste `non couvert`** | `camille-po` | Le compte de la matrice lui appartient ; je ne la touche pas |
 | **Cinq bonnes reponses identiques dans un paquet est une propriete structurelle du YAML** | `theo-archi` | Un garde-fou est possible ici, contrairement a la plupart de mes conditions. Je dis la propriete, pas la forme |
 | **Le cout de mon reaudit** | `sofia-sm`, `camille-po` | **Rejeu borne, 0,5.** Ma marge de s30 est de **0,5 pour une instance** : je peux reauditer **une** des deux corrections de sciences dans ce sprint, pas les deux. Voir `verdicts-nadia-instance-B.md`, section sur le cout |
+
+---
+
+# Done pedagogique - 2026-09-06, second audit apres reprise (s30, instance B) - VALIDE SOUS RESERVE
+
+**Ce bloc s'ajoute. Il n'efface rien.** Le refus du 2026-09-06 reste lisible en entier au-dessus,
+avec son motif, sa mesure et son arithmetique. **Un refus efface n'a aucune valeur de preuve**, et
+celui-ci a produit la reprise qui suit.
+
+- **Verdict** : **VALIDE SOUS RESERVE**
+- **Date** : 2026-09-06
+- **Audit joue** : **oui**
+- **Commit audite** : `5e59a2f1` (`[LEA] s30: SCI-CM1-17 - la tache B de chaine-alimentaire-cm1
+  cesse d'etre un seul item repete`), sur l'arbre assemble `a91070f8`.
+- **`SCI-CM1-17` ferme** : `non couvert` -> **`couvert-valide`**. Une reserve neuve et datee,
+  `CHA-R1`, non bloquante.
+- **Le motif du refus du 2026-09-06 est leve**, sur la propriete exacte que j'avais ecrite.
+
+## 1. Conditions du second audit
+
+**J'ai joue.** Arbre `round-two` a `a91070f8`, worktree dedie, jar reconstruit depuis ce worktree,
+port 8081. **Partie complete de dix manches par appels HTTP reels, avec une erreur volontaire sur
+chacune des dix manches.** Le tirage m'a servi **les cinq items reecrits** - manches 2, 4, 7, 8 et
+9. **Et j'ai relu les onze items.**
+
+**Ce que l'audit ne couvre pas** : HTML servi, pas rendu navigateur. Aucun jugement visuel ici.
+
+## 2. Les quatre proprietes que j'avais ecrites, verifiees une par une
+
+Je les reprends **mot pour mot** de mon refus, parce qu'une reserve se leve contre son texte et
+contre rien d'autre.
+
+| Propriete a tenir, ecrite le 2026-09-06 | Etat verifie le 2026-09-06 |
+|---|---|
+| *"Sur la tache B, **au moins trois items** portent une bonne reponse dont le **contenu** differe - pas seulement le nom de l'animal."* | **tenue.** Trois contenus distincts : *manquer de nourriture* (items 7, 8), *devenir plus nombreux* (items 9, 10), *devoir chercher d'autres petites proies* (item 11) |
+| *"au moins un item porte sur ce qui arrive quand un **predateur** disparait, et non une proie"* | **tenue, et c'est la correction la plus importante.** Deux items : le renard qui disparait et les lapins qui se multiplient, la chouette qui disparait et les mulots qui se multiplient. **Cette direction manquait entierement au paquet refuse** |
+| *"Le distracteur *"il n'aurait plus besoin de manger"* disparait de tous les items ou il figure."* | **tenue.** Verifie sur les cinq items : il n'y figure plus nulle part |
+| *"Aucun item de cette ligne ne se gagne par la seule connaissance du regime alimentaire."* | **tenue.** Verifie sur les dix distracteurs neufs : aucun ne porte un aliment ni un regime. Le recouvrement avec `SCI-CM1-07` est ferme |
+
+**Les quatre sont atteintes. Je leve le motif du refus**, et je ne redemande rien de plus sur ces
+quatre points : une barre que j'ai ecrite et que l'equipe franchit se leve, meme quand je vois
+desormais mieux.
+
+## 3. Ce que la reprise fait au-dela de ce que j'avais demande, et qui vaut d'etre dit
+
+**Le fait de partie qui emporte mon verdict, et je ne l'avais pas demande.** Manche 8 : *"Si le
+renard disparaissait de la foret, que risquerait-il d'arriver aux lapins ?"* - et parmi les trois
+propositions, ***"ils risqueraient de manquer de nourriture"***, qui est **la bonne reponse des items
+7 et 8**. L'enfant qui a memorise cette phrase deux manches plus tot et la presse **se trompe**.
+
+C'est le contraire exact du paquet refuse. **Auparavant, la serie recompensait la memorisation ;
+maintenant elle la punit.** Ce n'est pas un adoucissement de mon jugement : c'est la mesure du test
+que j'avais applique et qui avait fait tomber le paquet - *un enfant sans la competence gagne-t-il
+l'item ?* Sur la tache B corrigee, **non**, et le paquet le lui fait sentir.
+
+**Deux items partagent encore une bonne reponse deux a deux** (7 et 8 ; 9 et 10), avec des
+distracteurs differents a chaque fois. **Je n'en fais pas une reserve, et je dis pourquoi** : ma
+propriete disait *"au moins trois items"* sur cinq, en connaissance du fait qu'il y en avait cinq.
+Deux paires et un item isole sont exactement ce que cette formule autorise. **Exiger cinq contenus
+distincts aujourd'hui serait relever apres coup une barre que j'ai ecrite avant.** Et la
+recognition ne gagne plus, puisque trois items sur cinq la dementent.
+
+## 4. Le compte, refait
+
+| Condition | Compte reel | Verdict |
+|---|---|---|
+| `FER-3` - la tache la moins servie porte au moins **3** items | tache B : **5** items, dont 3 contenus distincts | **tenue** |
+| `FER-2` - au moins **10** items servent la ligne | 6 (tache A) + 5 (tache B) = **11**, et **10 meme en ecartant l'item que `CHA-R1` conteste** | **tenue** |
+| `FER-1` - deux elements en position de bonne reponse | *"les etres vivants du milieu"* par la tache A ; *"la relation alimentaire"* par la tache B, **desormais dans les deux directions de la chaine** | **tenue, et plus solidement qu'au mapping que j'avais accepte** |
+
+**Je verifie explicitement que la fermeture ne repose pas sur l'item defectueux**, comme je l'ai fait
+sur `cm1-sciences-melanges` : en ecartant l'item 6 que `CHA-R1` conteste, **dix items servent encore
+la ligne**, ce qui est exactement le plancher de `FER-2`. **La ligne fermerait sans lui.**
+
+## 5. `CHA-R1` - deux distracteurs de la tache A sont indefendables, et l'item 6 se donne entierement
+
+**Ouverte le 2026-09-06, non bloquante. Reserve neuve et datee.**
+
+**Ce n'est pas un reproche a la reprise, et je l'ecris pour que personne ne le lise ainsi.** J'avais
+nomme ces deux distracteurs dans mon refus comme *"deux observations qui ne le bloquent pas"*, et
+j'avais ecrit noir sur blanc : *"La tache A n'est pas concernee par ce refus et n'est pas a
+refaire."* **`lea-dev` a fait exactement ce que je lui ai dit.** Si je ne nommais pas ce point
+maintenant, il serait perdu ; je le nomme donc comme une reserve datee, **et il ne pese pas sur le
+verdict d'aujourd'hui.**
+
+**Ce que j'ai vu a l'ecran, manche 5 de ma partie.** *"Dans la foret, que mange la mesange ?"* - **la
+chenille / le lapin / le mulot**. Une mesange qui mange un lapin, une mesange qui mange un mulot :
+**aucun enfant de CM1 ne choisira l'une ou l'autre.** L'item ne laisse qu'une proposition debout et
+**se repond sans rien savoir de la mesange**.
+
+Deux autres items sont reduits a un choix entre deux par le meme mecanisme :
+
+- item 3, *"que mange le lapin ?"* - *"des chenilles"* pour un herbivore ;
+- item 5, *"que mange la chouette ?"* - *"le renard"* pour un rapace nocturne.
+
+> **Propriete a tenir** : sur la tache A, **chaque distracteur est un etre vivant que l'animal
+> nomme pourrait plausiblement manger, ou qui pourrait plausiblement le manger** - une erreur qu'un
+> enfant peut faire, jamais une impossibilite de taille ou de regime. **L'item 6 est le cas a
+> traiter en premier** : il est le seul des six ou les deux distracteurs sont indefendables a la
+> fois. Les formulations sont a `lea-dev` ; je donne la propriete.
+
+**Regime : rejeu borne, 0,5**, et **elle ne ferme aucune ligne** - `SCI-CM1-17` est desormais
+`couvert-valide`. C'est a `camille-po` de decider ce que cela vaut.
+
+## 6. Mentions de couverture partielle
+
+**Aucune n'est due sur cette ligne.** Mon arbitrage prealable (section 2.4) enumere les **trois**
+lignes de sciences qui en exigent une - les lignes 6, 14 et 20 - et `SCI-CM1-17` n'en fait pas
+partie. La parenthese *(chaine alimentaire)* est un rappel du nom de la notion, pas une liste
+d'elements a servir. **La ligne ferme sans reserve de perimetre, et je n'en ajoute pas apres coup.**
+
+## 7. Mentions de non-couverture opposables
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+## 8. Ce dont je reste la seule garde, mis a jour au second audit
+
+| Propriete | Garde executable ? |
+|---|---|
+| **L'exactitude des relations alimentaires et des effets decrits** | **aucun.** Les trois effets neufs - manquer de nourriture, se multiplier faute de predateur, changer de proie - sont exacts, et c'est moi qui le dis |
+| **Qu'une seconde tache ne soit pas le meme item repete** | **aucun.** La reprise a **documente** l'exclusion de ce paquet dans `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, elle n'y a **ajoute aucun garde-fou** : la propriete que mon refus a fait payer reste gardee par moi seule. **Je le dis pour que l'equipe ne croie pas couvert ce qui ne l'est pas** |
+| **`CHA-R1`** - la plausibilite d'un distracteur | **aucun** |
+| **`CYC-1`** | **aucun** |
+
+## 9. Etat des verdicts et des reserves de ce jeu au 2026-09-06
+
+- **Verdict du 2026-09-06, REFUSE** : **non efface**, motif et arithmetique lisibles au-dessus. **La
+  propriete qu'il exigeait est atteinte et son motif est leve.**
+- **Verdict du 2026-09-06, second audit : VALIDE SOUS RESERVE.** `SCI-CM1-17` ferme.
+- **`CHA-R1`** : **ouverte le 2026-09-06**, non bloquante, motif et propriete en section 5.

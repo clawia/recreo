@@ -21,14 +21,21 @@
 | Ligne | Jeu | Verdict | La ligne ferme ? |
 |---|---|---|---|
 | **`SCI-CM1-05`** - signal et information | `bandit-manchot-signal-information-cm1` | **VALIDE SOUS RESERVE** | **oui** : `non couvert` -> `couvert-valide` |
-| **`SCI-CM1-17`** - milieu proche et chaine alimentaire | `bandit-manchot-chaine-alimentaire-cm1` | **REFUSE** | **non**, reste `non couvert` |
+| **`SCI-CM1-17`** - milieu proche et chaine alimentaire | `bandit-manchot-chaine-alimentaire-cm1` | **REFUSE** au premier audit, **VALIDE SOUS RESERVE** au second (complement en fin de document) | **oui**, apres reprise |
 | **`SCI-CM1-02`** - melanges et separation | `bandit-manchot-melanges-cm1` | **VALIDE SOUS RESERVE** | **oui** : `non couvert` -> `couvert-valide` |
-| **`SCI-CM1-12`** - objet technique | `bandit-manchot-objet-technique-cm1` | **REFUSE** | **non**, reste `non couvert` |
+| **`SCI-CM1-12`** - objet technique | `bandit-manchot-objet-technique-cm1` | **REFUSE** au premier audit, **VALIDE SOUS RESERVE** au second (complement en fin de document) | **oui**, apres reprise |
 | **`MAT-CM1-05`** - division posee (bloc D, `POS-R2`) | `bandit-manchot-division-posee-cm1` | **VALIDE SOUS RESERVE** (quatrieme audit) | deja `couvert-valide`, **inchangee** |
 
 **Deux lignes ferment sur les quatre soumises**, toutes deux sur la partie de mon perimetre que
 j'avais moi-meme designee comme la moins couteuse. **Mon attente ecrite le 2026-09-06 etait de 3 a 4
 lignes pour le sprint entier, deux instances confondues** ; ma moitie en apporte deux.
+
+> **Note datee du 2026-09-06, ajoutee apres le reaudit et sans rien retirer du paragraphe
+> ci-dessus.** Les deux refus ont ete repris **dans le sprint** sur arbitrage de l'utilisatrice
+> (`DEC-0080`) et **les deux motifs sont leves** : **ma moitie ferme finalement quatre lignes, pas
+> deux.** Le paragraphe ci-dessus est le constat du premier audit et il reste lisible tel quel ;
+> **le complement en fin de document porte les deux verdicts du second audit, mon cout final de
+> 4,50 sur 4,00 et la consequence que j'en tire sur ma propre marge (`PAR-11`).**
 
 **Aucune mention de couverture partielle n'est due sur les deux lignes qui ferment.** Mon arbitrage
 prealable (section 2.4) enumerait les **trois** lignes de sciences qui en exigent une - les lignes 6
@@ -356,3 +363,193 @@ route sans prescrire de forme :
 **Aucun verdict anterieur n'est efface par ce document.** Les quatre blocs successifs de
 `FICHE-bandit-manchot-division-posee-cm1.md` restent lisibles avec leurs motifs entiers, y compris
 le refus du 2026-09-05 et les deux reserves levees depuis.
+
+---
+
+# Complement du 2026-09-06 - reaudit des deux refus, et mon cout final
+
+**Ce complement s'ajoute. Il ne modifie rien de ce qui precede** : les deux refus du 2026-09-06,
+leurs motifs, leur arithmetique et leur mesure restent lisibles en entier ci-dessus. **C'est de la
+levee d'un refus qu'il s'agit, pas de son effacement.**
+
+- **Arbre audite** : `round-two` a **`a91070f8`**, arbre assemble, porte technique verte (1321
+  tests, 0 echec, remesuree par `sofia-sm`). Worktree dedie `s30-nadia-B2`, jar reconstruit **depuis
+  ce worktree**, port 8081.
+- **Perimetre** : **exactement les deux paquets refuses, rien d'autre.** Les six reserves que j'ai
+  ouvertes au premier audit (`SIG-R1`, `SIG-R2`, `MEL-R1`, `MEL-R2`, `MEL-R3`, `POS-R3`) sont au
+  backlog de s31 et **n'ont pas ete rejouees**.
+- **Arbitrage de l'utilisatrice** : les deux reprises sont reauditees dans le sprint plutot que
+  reportees, `DEC-0080`. **Ce depassement a ete ecrit avant d'etre consomme**, ce qui est exactement
+  ce que je reclamais de s29, ou il avait ete decouvert au comptage de cloture.
+
+## 1. Les deux verdicts
+
+| Ligne | Jeu | Verdict au 1er audit | **Verdict au 2e audit** | Ferme ? |
+|---|---|---|---|---|
+| **`SCI-CM1-17`** chaine alimentaire | `bandit-manchot-chaine-alimentaire-cm1` | REFUSE | **VALIDE SOUS RESERVE** | **oui** : `non couvert` -> `couvert-valide` |
+| **`SCI-CM1-12`** objet technique | `bandit-manchot-objet-technique-cm1` | REFUSE | **VALIDE SOUS RESERVE** | **oui** : `non couvert` -> `couvert-valide` |
+
+**Les deux motifs de refus sont leves, sur les proprietes exactes que j'avais ecrites.** Le detail
+propriete par propriete est dans chaque fiche, en tableau, contre le texte de mon refus.
+
+**Ma moitie de s30 ferme donc quatre lignes de sciences et technologie CM1** - `SCI-CM1-05`,
+`SCI-CM1-17`, `SCI-CM1-02`, `SCI-CM1-12` - **sur une matiere qui n'avait jamais recu un seul item
+avant ce sprint.** C'est le plafond arithmetique que j'avais calcule pour le sprint entier
+(arbitrage prealable, section 3.5), et il est atteint sur ma seule moitie.
+
+**Aucune mention de couverture partielle n'est due sur aucune des quatre lignes.** Mon arbitrage
+(section 2.4) enumere les trois lignes de sciences qui en exigent une - 6, 14 et 20 - et aucune des
+quatre n'en fait partie. **Je n'en ajoute pas apres coup.**
+
+**Je ne touche pas a `squad/programme/MATRICE-couverture.md`** : les quatre changements de statut
+sont routes a `camille-po`, son compte lui appartient.
+
+## 2. Ce que j'ai joue au reaudit
+
+| Jeu | Ce que j'ai joue |
+|---|---|
+| chaine-alimentaire | partie complete de dix manches, une erreur volontaire par manche ; **le tirage m'a servi les cinq items reecrits** (manches 2, 4, 7, 8, 9) ; les onze items relus |
+| objet-technique | **trois** parties completes de dix manches, une puis deux erreurs par manche - trois parce que la tache A ne compte que quatre items sur onze et que je voulais voir **les quatre a l'ecran**, ce que j'ai obtenu ; les onze items relus |
+
+**Audit degrade sur un point, declare comme au premier** : HTML servi, pas rendu navigateur. **Aucun
+des deux verdicts ne repose sur un jugement visuel.**
+
+**Le fait de partie qui emporte le verdict sur la chaine alimentaire, et que la lecture du fichier
+ne donnait pas seule.** Manche 8 : *"Si le renard disparaissait de la foret, que risquerait-il
+d'arriver aux lapins ?"*, avec ***"ils risqueraient de manquer de nourriture"*** parmi les
+propositions - **la bonne reponse des deux autres items de la meme tache**. L'enfant qui a memorise
+cette phrase et la presse **se trompe**. Le paquet refuse recompensait la memorisation ; celui-ci la
+punit. C'est le test que j'avais applique pour refuser, reapplique et passe.
+
+**Et sur l'objet technique** : pour ecarter *"a rechauffer les mains"* il faut savoir ce que fait une
+lampe de poche, pour ecarter *"a refroidir reellement l'air"* il faut savoir ce que fait un
+ventilateur - **et c'est precisement ce que la plupart des enfants ne savent pas**. Un enfant
+ignorant l'objet ne gagne plus aucun des quatre items, ce qui etait la moitie de mon motif.
+
+## 3. La question qui m'etait posee directement - l'item 6 (le guidon)
+
+**Il n'est plus en cause, et je fonde la reponse plutot que de la donner.**
+
+Ce que j'avais ecrit n'etait pas *"il est faux"* mais *"il ne peut pas etre l'un des items sur
+lesquels la progression du CM1 repose"* - **une condition sur le paquet, pas sur l'item**. Quatre
+items portent desormais cette progression sans lui : le velo compare a la marche (raisonnement
+comparatif), le ventilateur qui ne refroidit pas (conception fausse a defaire), la chaine qui relie
+les pedales a la roue (une **transmission**, la ou le CP ne nomme que des parties isolees), et
+l'item 11 (une chaine causale entiere).
+
+**L'item 6 est desormais porte par le paquet, il ne le porte plus.** Il reste, et il est bon qu'il
+reste. **Je ne durcis pas apres coup une formulation qui l'autorisait explicitement.**
+
+## 4. Reserves neuves du reaudit, avec leur regime
+
+| Reserve | Paquet | Ce qu'elle porte | Regime | Ferme une ligne ? |
+|---|---|---|---|---|
+| **`CHA-R1`** | `cm1-sciences-chaine-alimentaire` | deux distracteurs indefendables sur la tache A ; **l'item 6 (*"que mange la mesange ?"*) se donne entierement**, ses deux distracteurs etant impossibles pour un petit oiseau | **rejeu borne 0,5** | non |
+| **`OBT-R1`** | `cm1-sciences-objet-technique` | l'indice de l'item du velo **dement la bonne reponse de son propre item** - deux cadres vrais mis cote a cote, celui de l'indice poussant hors de la reponse | **rejeu borne 0,5 pour le paquet entier** (`PAR-10`) | non |
+| **`OBT-R2`** | idem | deux indices neufs ecartent **les deux** distracteurs a la fois, donc revelent la reponse des la premiere erreur (`M21`) | voyage avec `OBT-R1` | non |
+
+**Deux choses que je dis explicitement sur ces trois reserves :**
+
+- **`CHA-R1` n'est pas un reproche a la reprise.** J'avais nomme ces distracteurs au premier audit
+  comme *"deux observations qui ne le bloquent pas"* et j'avais ecrit *"la tache A n'est pas
+  concernee par ce refus et n'est pas a refaire"*. **`lea-dev` a fait exactement ce que je lui ai
+  dit.** Je nomme le point pour qu'il ne soit pas perdu, **et il ne pese pas sur le verdict.**
+- **`OBT-R2` est un defaut fabrique par la correction d'un autre defaut** : en rendant les
+  distracteurs plausibles - ce que j'avais demande - deux indices ont pris l'habitude de les nommer
+  pour les exclure. **C'est exactement ce que le rejeu existe pour trouver**, et c'est le troisieme
+  cas de cette famille que je rencontre en deux jours, apres `REV-2` et `REV-3`.
+
+**Ce que la reprise a corrige sans que j'aie a le redemander** : le double sens du mot *"piece"*
+(composant / salle) dans l'indice du ventilateur. C'etait la correction a cout nul que j'avais
+nommee ; elle est faite, verifiee dans le rejeu deja paye, **et elle n'a rien coute de plus**.
+
+## 5. Mon cout final, poste par poste
+
+| Poste | Prix | Consomme |
+|---|---|---|
+| Lot 1 de sciences - `signal-information` + `chaine-alimentaire` | 1,5 | **1,5** |
+| Lot 2 de sciences - `melanges` + `objet-technique` | 1,5 | **1,5** |
+| Bloc D - rejeu borne de `POS-R2` | 0,5 | **0,5** |
+| **Reaudit de `chaine-alimentaire`** | 0,5 | **0,5** |
+| **Reaudit de `objet-technique`** | 0,5 | **0,5** |
+| **Total** | | **4,50** |
+| **Budget opposable (`PAR-9`)** | | **4,00** |
+| **Depassement** | | **+0,50** |
+| **Plafond dur individuel (`PAR-8`)** | | **5,00 - non franchi** |
+
+**Je consomme 4,50 sur un budget opposable de 4,0 que j'ai pose moi-meme contre moi-meme.** Je le
+dis sans l'adoucir : **c'est mon budget, c'est ma clause, et c'est moi qui la depasse.** Ce que je
+ne fais pas, c'est invoquer le plafond dur de 5,0 pour dire que tout va bien : `PAR-9` existe
+precisement parce que planifier contre le plafond individuel est ce qui a fait sauter s29.
+
+## 6. La consequence sur ma propre borne, puisque c'est mon domaine
+
+**Le defaut n'est pas dans `PAR-9`, et je le montre avant de proposer quoi que ce soit.** `PAR-9` a
+fonctionne comme elle devait : elle a rendu le depassement **visible et attribuable a une instance
+avant qu'il soit depense**, au lieu d'apparaitre au comptage de cloture comme les 9,50 de s29.
+`DEC-0080` en est la preuve. **Je ne modifie donc pas `PAR-9`.**
+
+**Le defaut est dans ma marge, et il est arithmetique.** J'avais ecrit dans mon arbitrage
+(section 4) :
+
+> *"Si s30 connait le meme taux sur deux lots de sciences, cela fait deux reaudits : [...] 0,5 chacun
+> s'ils sont des rejeux bornes. **La marge de 1,0 couvre exactement ce cas et rien de plus.**"*
+
+**Le raisonnement etait juste et le dimensionnement etait faux.** Cette marge de 1,0 est celle du
+**sprint**, repartie en 0,5 par instance. Or **c'est une autre de mes propres clauses, `PAR-2`, qui a
+mis les deux lots de sciences sur la meme instance** - donc **les deux reaudits que j'avais prevus
+tombaient entierement sur ma moitie, contre 0,5 de marge**. J'ai calcule le risque au niveau du
+sprint et je l'ai finance au niveau de l'instance, alors que ma propre clause le concentrait sur
+une seule.
+
+**C'est exactement le defaut de forme de `PAR-8`, que j'ai corrige il y a un jour, dans l'autre
+sens** : la, deux plafonds individuels sommaient au-dela de la borne ; ici, une marge de sprint se
+divise en deux la ou le risque ne se divise pas.
+
+> **`PAR-11` - nouvelle, datee du 2026-09-06.** **La marge de rejeu se dimensionne par instance sur
+> l'exposition reelle de cette instance, jamais par part egale de la marge du sprint.** Une instance
+> qui porte *n* lots de contenu neuf porte *n* reaudits possibles : **sa marge est de 0,5 par lot
+> neuf qu'elle audite**, et la marge du sprint est la **somme** de ces marges, non un total reparti.
+>
+> **Consequence pour une composition comme celle de s30** : deux lots neufs chez une instance ->
+> marge de **1,0** pour elle seule, et son budget opposable est **le prix de ses lots plus cette
+> marge**. **`PAR-11` ne releve aucune borne** : elle deplace la marge la ou le risque est, et rend
+> exigible ce que mon propre calcul annoncait deja.
+
+**Ce que je ne fais pas, et je le dis parce que ce serait la reaction facile** : je **n'abaisse pas
+ma borne** pour me menager de la marge. Je l'ai ecrit le 2026-09-06 et je m'y tiens - *"une borne
+avec de la marge cesse d'etre une borne, et le sprint suivant gonflerait pour la remplir"*.
+
+**Et la retenue de defiance de 1,0 sur la parallelisation reste, mecaniquement.** La barre de levee
+que j'ai ecrite exige **deux** conditions, *"les deux, pas l'une des deux"* : un second sprint
+parallele sans defaut de couture, **et** le registre d'identifiants de `PAR-5` ecrit. **La seconde
+n'est pas remplie** - je l'ai routee une troisieme fois, et ma moitie de s30 y ajoute neuf
+identifiants (`SIG-R1`, `SIG-R2`, `MEL-R1`, `MEL-R2`, `MEL-R3`, `POS-R3`, `CHA-R1`, `OBT-R1`,
+`OBT-R2`), plus `PAR-11`. **La premiere ne m'appartient pas** : je n'ai pas lu l'instance A et je
+n'affirme rien sur elle. **Je ne leve donc pas la retenue**, et ce n'est pas de la prudence : c'est
+la barre que j'ai ecrite, appliquee telle quelle.
+
+## 7. Ce que je route, en complement
+
+| Fait | A qui | Ce qu'il en fait |
+|---|---|---|
+| **`SCI-CM1-17` et `SCI-CM1-12` : `non couvert` -> `couvert-valide`**, sans mention de couverture partielle. **Avec `SCI-CM1-05` et `SCI-CM1-02`, quatre lignes de sciences ferment sur ma moitie** | `camille-po` | Le compte de la matrice lui appartient. **Je n'y touche pas** |
+| **`CHA-R1`, `OBT-R1`, `OBT-R2`** | `camille-po`, via `sofia-sm` | En faire des stories. **Prix total 1,0** en deux rejeux bornes de 0,5. **Aucune ne ferme de ligne** ; avec les six du premier audit, **neuf reserves ouvertes par l'instance B partent a s31 pour 2,5** |
+| **`PAR-11`**, et le motif arithmetique qui la produit | `sofia-sm`, `camille-po` | A porter partout ou `PAR-8`, `PAR-9` et `PAR-10` sont cites. **C'est la correction d'un defaut de ma propre composition, pas une exigence neuve envers l'equipe** |
+| **`OBT-R2` est un defaut fabrique par la correction d'un autre defaut**, troisieme cas de cette famille en deux jours apres `REV-2` et `REV-3` | `sofia-sm` | Fait de retrospective. **Il justifie a lui seul ma regle de ne valider aucune correction sans rejouer** |
+| **La reprise n'a ajoute aucun garde-fou** sur les proprietes que mes deux refus ont fait payer : elle a corrige le contenu et mis a jour un commentaire d'exclusion dans un test existant | `theo-archi`, `yanis-qa` | **Je le dis pour que l'equipe ne croie pas couvert ce qui ne l'est pas.** Les proprietes restent gardees par moi seule |
+| **Le registre de `PAR-5`**, troisieme routage, desormais dix identifiants de plus pour ma seule moitie | `theo-archi` | **C'est l'une des deux conditions qui bloquent la levee de ma retenue de 1,0**, et elle n'est toujours pas remplie |
+
+## 8. Ce que ce complement ne fait pas
+
+- **Il ne touche pas a `squad/programme/MATRICE-couverture.md`.**
+- **Il n'ecrit aucune correction de contenu a la place d'un developpeur** : les trois reserves
+  neuves donnent la propriete a tenir, jamais le texte.
+- **Il ne modifie aucun fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/`.** J'ai
+  lu les deux paquets YAML corriges et le diff du test touche par la reprise, pour verifier
+  qu'aucun garde-fou neuf n'y etait ajoute ; je n'y ai rien ecrit.
+- **Il ne rejoue aucune des six reserves du premier audit**, qui sont au backlog de s31.
+- **Il n'efface aucun verdict.** Les deux refus du 2026-09-06 restent lisibles en entier dans leurs
+  fiches, avec leurs motifs et leur arithmetique. **Ce sont eux qui ont produit les deux paquets que
+  je valide aujourd'hui**, et c'est la seule chose qui rend un refus utile.
+- **Il ne juge rien du perimetre de l'instance A.**

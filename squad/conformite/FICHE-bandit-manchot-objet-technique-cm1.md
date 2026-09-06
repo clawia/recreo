@@ -5,17 +5,25 @@
 - **Entree de catalogue** : `bandit-manchot-objet-technique-cm1`, titre servi *"Comment ca marche ?"*,
   consigne servie *"Lis bien, puis dis a quoi sert l'objet, ou nomme sa piece."*,
   `nombreDeManches: 10`.
-- **Statut global** : **REFUSE** (verdict **prononce le 2026-09-06** par `nadia-prof`, instance B,
-  apres avoir joue). **`SCI-CM1-12` ne ferme pas** et reste `non couvert`.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
+  `nadia-prof`, instance B, **au second audit**, apres avoir joue la reprise `a682cb52`).
+  **`SCI-CM1-12` ferme** : `non couvert` -> **`couvert-valide`**. Deux reserves neuves et datees,
+  `OBT-R1` et `OBT-R2`, aucune bloquante.
+- **Histoire des verdicts, aucun efface** : **2026-09-06, REFUSE** - les quatre items de fonction
+  reproduisaient `OBJ-R2` et demandaient moins que le niveau du CP ; le bloc entier de ce refus,
+  avec son tableau des quatre items, reste lisible ci-dessous. **2026-09-06, VALIDE SOUS RESERVE**
+  apres reprise, second bloc en fin de fiche. **Un refus efface n'a aucune valeur de preuve.**
 - **Ne pas confondre avec `FICHE-bandit-manchot-objet-technique-cp.md`**, qui porte sur `QLM-CP-07`,
   une autre ligne, un autre niveau, un autre paquet. Les deux fiches se citent l'une l'autre.
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
   section 2.2 ligne 12 - dont la colonne *conditions particulieres* porte, mot pour mot,
   **"Attention a `OBJ-R2`"**.
-- **Commit audite** : `5824e752` (`[LEA] s30: S30-2 - second lot de sciences CM1, melanges et objet
-  technique`).
-- **Derniere mise a jour** : 2026-09-06.
+- **Commits audites** : `5824e752` (`[LEA] s30: S30-2 - second lot de sciences CM1, melanges et
+  objet technique`) le 2026-09-06, puis `a682cb52` (`[LEA] s30: SCI-CM1-12 - la tache A de
+  objet-technique-cm1 cesse de reproduire OBJ-R2`) le meme jour, sur l'arbre assemble `a91070f8`.
+- **Derniere mise a jour** : 2026-09-06 (**second verdict de `nadia-prof` apres avoir joue la
+  reprise**, s30, instance B).
 
 ## Competence visee
 
@@ -202,3 +210,179 @@ aucune mention sur `SCI-CM1-12`.
 | **`OBJ-R2` a produit le meme defaut deux fois en deux jours, sur deux niveaux** | `camille-po`, `sofia-sm` | Ce n'est plus une reserve de paquet, c'est un reflexe de fabrication. A traiter comme tel dans la reprise, pas item par item |
 | **La redite d'un item de cycle 2 dans un paquet de cycle 3 est une propriete textuelle** | `theo-archi` | Je dis la propriete, jamais la forme |
 | **Le cout de mon reaudit** | `sofia-sm`, `camille-po` | **Rejeu borne, 0,5.** Ma marge de s30 est de **0,5 pour une instance** : je peux reauditer **une** des deux corrections de sciences dans ce sprint, pas les deux |
+
+---
+
+# Done pedagogique - 2026-09-06, second audit apres reprise (s30, instance B) - VALIDE SOUS RESERVE
+
+**Ce bloc s'ajoute. Il n'efface rien.** Le refus du 2026-09-06 reste lisible en entier au-dessus,
+avec son tableau des quatre items et son arithmetique. **Un refus efface n'a aucune valeur de
+preuve.**
+
+- **Verdict** : **VALIDE SOUS RESERVE**
+- **Date** : 2026-09-06
+- **Audit joue** : **oui**
+- **Commit audite** : `a682cb52` (`[LEA] s30: SCI-CM1-12 - la tache A de objet-technique-cm1 cesse
+  de reproduire OBJ-R2`), sur l'arbre assemble `a91070f8`.
+- **`SCI-CM1-12` ferme** : `non couvert` -> **`couvert-valide`**. Deux reserves neuves et datees,
+  `OBT-R1` et `OBT-R2`, aucune bloquante.
+- **Le motif du refus du 2026-09-06 est leve**, sur les proprietes exactes que j'avais ecrites.
+
+## 1. Conditions du second audit
+
+**J'ai joue.** Arbre `round-two` a `a91070f8`, worktree dedie, jar reconstruit depuis ce worktree,
+port 8081. **Trois parties completes de dix manches par appels HTTP reels**, avec une puis deux
+erreurs volontaires par manche - trois parties parce que la tache A ne compte que quatre items sur
+onze et que je voulais voir **les quatre a l'ecran**, ce que j'ai obtenu. **Et j'ai relu les onze
+items.**
+
+## 2. Les trois proprietes que j'avais ecrites, verifiees une par une
+
+| Propriete a tenir, ecrite le 2026-09-06 | Etat verifie le 2026-09-06 |
+|---|---|
+| *"Sur les quatre items de fonction, **au moins deux** portent un distracteur qui est une fonction **plausible pour l'objet nomme**, et non la fonction d'un autre objet du paquet."* | **tenue, et depassee : les quatre le font.** Le velo compare a la marche et a la voiture ; la lampe qui rechaufferait les mains ou rechargerait un telephone ; le taille-crayon qui effacerait ou rangerait ; le ventilateur qui refroidirait ou purifierait. **Aucun distracteur n'est plus emprunte a un autre objet du paquet** |
+| *"**au moins deux** des quatre items portent sur un objet dont la fonction n'est pas evidente pour un enfant de neuf ans, ou sur une fonction que l'objet remplit sans qu'on y pense"* | **tenue.** Item 1 : *"A quoi sert un velo, **plutot qu'a marcher**, pour un long trajet ?"* - c'est un comparatif, pas une devinette. Item 4 : *"A quoi sert un ventilateur, **alors qu'il donne une impression de fraicheur** ?"* - c'est la conception fausse la plus repandue sur cet objet, et la bonne reponse la nomme |
+| *"L'item 6 (le guidon du velo) [...] **peut rester** ; mais il ne peut pas etre l'un des items sur lesquels la progression du CM1 repose."* | **tenue, et je reponds a la question qui m'est posee : l'item 6 n'est plus en cause.** Voir section 3 |
+
+**Les trois sont atteintes. Je leve le motif du refus.** `OBJ-R2`, qui etait la moitie de ce motif,
+n'est plus reproduite sur ce paquet.
+
+## 3. L'item 6 n'est plus en cause, et voici sur quoi je le fonde
+
+**La question m'est posee directement, et c'est la bonne question a poser.** L'item 6 - *"Dans un
+velo, quelle piece sert a diriger la roue avant ? - le guidon"* - est inchange, et il reste ce qu'il
+etait : le meme objet, la meme piece et la meme reponse qu'au CP (*"Quelle partie du velo sert a
+tourner ?"*, `cp-qlm-objet-technique.yaml`).
+
+**Ce que j'avais ecrit n'etait pas *"il est faux"*, c'etait *"il ne peut pas etre l'un des items sur
+lesquels la progression du CM1 repose"*.** C'etait une condition **sur le paquet**, pas sur l'item.
+Elle est desormais satisfaite, et je le verifie plutot que je ne le suppose : **quatre items portent
+la progression de cycle 3 sans lui** -
+
+- **item 1**, le velo compare a la marche : un raisonnement comparatif, absent du CP ;
+- **item 4**, le ventilateur qui ne refroidit pas : une conception fausse a defaire, absente du CP ;
+- **item 5**, la chaine qui relie les pedales a la roue arriere : une **transmission**, c'est-a-dire
+  une relation entre deux pieces, la ou le CP ne nomme que des parties isolees ;
+- **item 11**, le fonctionnement de la lampe de poche : une chaine causale entiere.
+
+**L'item 6 est desormais porte par le paquet, il ne le porte plus.** C'est exactement la situation
+que ma formulation autorisait, et je ne la durcis pas apres coup. **Il reste, et il est bon qu'il
+reste** : une piece nommee au CP et reprise au CM1 dans un paquet ou la chaine et le mecanisme
+l'entourent n'est pas une redite, c'est un point d'appui.
+
+## 4. Le compte, refait
+
+| Condition | Compte reel | Verdict |
+|---|---|---|
+| `FER-1` - trois elements en position de bonne reponse | *"la fonction"* par les 4 items de la tache A, **qui demandent desormais la competence** ; *"un composant"* par les 6 items de la tache B ; *"le fonctionnement"* par l'item 11 | **tenue** |
+| `FER-2` - au moins **10** items servent la ligne | **11** | **tenue** |
+| `FER-3` - deux taches, la moins servie a **3** items | 4 et 6 | **tenue** |
+
+**Et le test qui avait fait tomber le paquet, reapplique** : *un enfant qui ignore totalement l'objet
+nomme gagne-t-il l'item ?* **Non, sur les quatre.** Pour ecarter *"a rechauffer les mains"* il faut
+savoir ce que fait une lampe de poche ; pour ecarter *"a refroidir reellement l'air"* il faut savoir
+ce que fait un ventilateur - et c'est precisement ce que la plupart des enfants **ne** savent pas.
+
+## 5. `OBT-R1` - l'indice de l'item du velo dement la bonne reponse de son propre item
+
+**Ouverte le 2026-09-06, non bloquante.**
+
+**Je commence par corriger ma propre premiere lecture, avant de m'en servir.** En lisant le fichier,
+j'ai d'abord pris cet indice pour une **erreur de fait**, et je m'appretais a l'instruire comme
+telle. **Verification faite, il n'en est pas une**, et je le dis parce qu'un motif faux est pire
+qu'un motif absent.
+
+Item 1 : *"A quoi sert un velo, plutot qu'a marcher, pour un long trajet ?"* - bonne reponse **"a se
+deplacer plus vite et avec moins d'effort"**, indice **"En pedalant, on avance plus vite qu'a pied,
+pour une fatigue proche."**
+
+**Les deux enonces sont vrais, mais dans deux cadres differents, et le paquet les met cote a cote :**
+
+- **a distance egale** - le cadre que l'enonce fixe lui-meme avec *"pour un long trajet"* - le velo
+  demande **moins** d'effort que la marche. **C'est la bonne reponse, et elle est juste.**
+- **a effort egal**, le velo va plus loin et plus vite pour une fatigue comparable. **C'est
+  l'indice, et il est juste aussi.**
+
+**Le defaut n'est donc pas une erreur, c'est une incoherence** : l'enfant qui se trompe une fois lit
+*"pour une fatigue proche"* et en conclut raisonnablement que *"avec moins d'effort"* n'est pas la
+reponse. **L'indice pousse hors de la bonne reponse**, et il rapproche le distracteur *"a se
+deplacer sans aucun effort"*. C'est le seul indice du depot que j'aie vu argumenter contre la reponse
+de son propre item.
+
+> **Propriete a tenir** : l'indice de cet item se place dans **le meme cadre que l'enonce** - le
+> trajet, donc la distance - et n'introduit pas la comparaison a effort egal, qui est une autre
+> facon vraie de dire la meme chose et qui, ici, dement la bonne reponse. La formulation est a
+> `lea-dev`.
+
+**Pourquoi ce n'est pas bloquant** : l'enonce est juste, la bonne reponse est juste, et l'indice ne
+s'affiche qu'apres une erreur. **J'ai envisage le refus et je ne le prononce pas**, pour la meme
+raison exactement que sur `MEL-R1` le meme jour : le defaut est dans un indice, pas dans ce que
+l'enfant apprend comme vrai quand il repond juste. **Si je refusais ici et pas la, ma porte
+dependrait de mon humeur.**
+
+## 6. `OBT-R2` - deux indices neufs eliminent les deux distracteurs a la fois, donc revelent la reponse
+
+**Ouverte le 2026-09-06, non bloquante. Defaut **introduit par la reprise**, et c'est ce que le
+rejeu existe pour trouver.**
+
+En rendant les distracteurs plausibles - ce que j'avais demande - deux indices ont pris l'habitude de
+les nommer pour les exclure :
+
+- item 2 : *"On l'allume quand il n'y a pas assez de lumiere, **jamais pour se rechauffer ni
+  recharger un appareil**."*
+- item 3 : *"On l'utilise quand la pointe d'un crayon est devenue trop usee, **jamais pour effacer ni
+  pour ranger**."*
+
+**Sur un item a trois propositions, ecarter nommement les deux distracteurs ne laisse que la bonne.**
+C'est une revelation deguisee, que `M21` refuse, et elle tombe **des la premiere erreur** - deux
+tentatives avant l'ecran de revelation, qui est le moment ou le produit a decide de donner la
+reponse.
+
+**L'item 4 montre la bonne mesure et sert de modele** : *"Il deplace l'air d'une salle ; il ne le rend
+jamais plus froid."* Il tue **une** conception fausse, laisse *"purifier l'air"* debout, et l'enfant
+choisit encore.
+
+> **Propriete a tenir** : un indice ecarte **au plus un** distracteur nomme. Il donne le critere ou
+> tue la conception fausse ; il ne fait pas le tour de la liste. Les formulations sont a `lea-dev`.
+
+## 7. Ce que la reprise corrige et que je n'ai pas eu a redemander
+
+**Le double sens du mot *"piece"* est reglé.** L'indice de l'item 4 disait *"l'air d'une piece"* -
+une salle - juste apres six items ou *"quelle piece"* designe un composant, et apres une consigne
+qui dit *"nomme sa piece"*. Il dit desormais **"salle"**, aux trois endroits de l'item. **C'etait la
+correction a cout nul que j'avais nommee dans mon refus ; elle est faite, et je la verifie ici dans
+le rejeu deja paye, comme annonce.**
+
+## 8. Mentions de couverture partielle
+
+**Aucune n'est due sur cette ligne.** Mon arbitrage prealable (section 2.4) enumere les trois lignes
+de sciences qui en exigent une - 6, 14 et 20 - et `SCI-CM1-12` n'en fait pas partie. Les trois
+elements du libelle sont servis en position de bonne reponse. **La ligne ferme sans reserve de
+perimetre.**
+
+## 9. Mentions de non-couverture opposables
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+## 10. Ce dont je reste la seule garde, mis a jour au second audit
+
+| Propriete | Garde executable ? |
+|---|---|
+| **L'exactitude de chaque piece, de chaque fonction et des deux comparatifs neufs** | **aucun.** Que le velo demande moins d'effort que la marche a distance egale, et qu'un ventilateur ne refroidisse pas l'air, c'est moi qui le dis |
+| **`OBJ-R2`** - qu'un distracteur soit plausible **pour l'objet nomme** | **aucun**, toujours. La reprise n'a ajoute aucun garde-fou sur cette propriete : elle a corrige le contenu et mis a jour un commentaire d'exclusion dans un test existant. **Je le dis pour que l'equipe ne croie pas couvert ce qui ne l'est pas** |
+| **`OBT-R1`** - qu'un indice ne dise pas le contraire de sa bonne reponse | **aucun** |
+| **`OBT-R2`** - qu'un indice n'ecarte pas tous les distracteurs a la fois | **aucun**, et c'est un defaut que la correction d'un autre defaut a fabrique. C'est le motif meme du rejeu |
+| **Le niveau reel d'un item** | **aucun.** Aucun test ne compare la difficulte de deux paquets de deux niveaux |
+
+## 11. Etat des verdicts et des reserves de ce jeu au 2026-09-06
+
+- **Verdict du 2026-09-06, REFUSE** : **non efface**, motif et tableau lisibles au-dessus. **Les
+  proprietes qu'il exigeait sont atteintes et son motif est leve.**
+- **Verdict du 2026-09-06, second audit : VALIDE SOUS RESERVE.** `SCI-CM1-12` ferme.
+- **`OBT-R1`** et **`OBT-R2`** : **ouvertes le 2026-09-06**, non bloquantes, motifs et proprietes en
+  sections 5 et 6. **Regime commun : rejeu borne, 0,5 pour le paquet entier** (`PAR-10`). **Aucune
+  ne ferme de ligne.**
