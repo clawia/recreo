@@ -41,19 +41,46 @@ lignesDeReferentiel: ["MAT-CM1-05"]
 # n'est utilisee ici.
 #
 # POS-2 : sur chaque item, le quotient de chaque distracteur a le meme nombre de chiffres que la
-# bonne reponse, et au moins un distracteur (RETENUE-DIZAINE-OUBLIEE ou DIZAINE-DU-QUOTIENT-SOUS-
-# ESTIMEE, selon l'item) partage toujours le chiffre des unites du quotient avec la bonne reponse.
+# bonne reponse.
 #
 # POS-R1 (squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md, second audit s29, section 3) :
 # correction du 2026-09-06. Le refus portait sur la serie, pas sur un item : les onze items
 # fabriquaient toujours le meme couple de distracteurs (quotient + 10, quotient - 2), si bien que la
 # bonne reponse etait toujours la valeur du milieu parmi les trois quotients tries, onze fois sur
 # onze - un enfant qui presse systematiquement le milieu gagnait sans poser une seule division. Le
-# couple de distracteurs varie desormais d'item en item entre les quatre erreurs listees ci-dessus,
+# couple de distracteurs a d'abord varie d'item en item entre les quatre erreurs listees ci-dessus,
 # de sorte que le rang de la bonne reponse (la plus petite, intermediaire, la plus grande) change
-# sur la serie : 4 items ou elle est la plus petite, 4 ou elle est intermediaire, 3 ou elle est la
-# plus grande - aucun rang majoritaire, aucun absent. Mordu par
-# leRangDeLaBonneReponseParmiLesQuotientsVarieEtAucunRangNEstMajoritaireNiAbsent.
+# sur la serie. **Levee le 2026-09-06** (troisieme audit) sur cette forme-la, remplacee ci-dessous
+# par POS-R2.
+#
+# POS-R2 (squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md, troisieme audit s29,
+# section 2 ; docs/backlog/backlog.md, story S30-6) : correction du 2026-09-06 (s30). La forme qui
+# a leve POS-R1 laissait une regularite plus exploitable que la premiere : sur huit items, le
+# distracteur RETENUE-DIZAINE-OUBLIEE ou DIZAINE-DU-QUOTIENT-SOUS-ESTIMEE recopiait toujours le
+# reste de la bonne reponse, si bien que la bonne reponse partageait toujours son reste avec un
+# distracteur et que le distracteur au reste unique etait toujours faux ; sur les trois items a
+# restes egaux, le triplet de quotients etait toujours symetrique (quotient - 10, quotient,
+# quotient + 10), si bien que la bonne reponse y etait toujours la valeur du milieu. Un enfant qui
+# ecartait systematiquement la proposition au reste unique, ou pressait le milieu quand les trois
+# restes se valaient, gagnait 63,6 % des items sans poser une seule division.
+#
+# Corrige par deux changements de forme, les onze divisions et le reste de la bonne reponse
+# inchanges :
+#   - sur quatre items (224/6, 213/4, 323/5, 351/6), les deux distracteurs partagent desormais un
+#     reste recalcule qui n'est PAS celui de la bonne reponse - c'est elle qui porte alors le reste
+#     unique du triplet, l'inverse exact de la regularite refusee. Le couple de distracteurs reste
+#     une erreur classique (quotient +/-1 ou +/-2, chiffre des unites ou produit partiel mal poses),
+#     seule la valeur du reste recalcule est partagee entre les deux plutot que choisie distincte.
+#   - sur un des trois items a restes egaux (234/9), les deux distracteurs recopient toujours le
+#     reste (0) mais ne sont plus disposes de part et d'autre de la bonne reponse : les deux
+#     quotients (36, 46) sont superieurs a 26, si bien que la bonne reponse y est la plus petite du
+#     triplet et non plus la valeur du milieu. Les deux autres items a restes egaux (299/7, 177/2)
+#     gardent leur triplet symetrique.
+# Sur les quatre items restants a restes distincts (152/8, 215/3, 312/9, 879/7), la forme qui
+# partage le reste de la bonne reponse avec un distracteur est conservee inchangee : la propriete
+# demandee est que la bonne reponse ne soit pas TOUJOURS du meme cote, pas qu'elle ne le soit
+# jamais. Mordu par posR2LaBonneReponseNEstPasToujoursDuCoteDuResteQuiSePartage et
+# posR2LesItemsARestesEgauxNeSontPasTousSymetriques.
 #
 # POS-4 : le diviseur a un seul chiffre sur les onze items, sans exception, et le reste est
 # demande a chaque fois. Reste nul sur les items 4 et 6 ; reste non nul sur les neuf autres.
@@ -64,7 +91,7 @@ lignesDeReferentiel: ["MAT-CM1-05"]
 items:
   - enonce: "224 ÷ 6 = ?"
     bonneReponse: "37 reste 2"
-    distracteurs: ["47 reste 2", "38 reste 4"]
+    distracteurs: ["38 reste 4", "39 reste 4"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "299 ÷ 7 = ?"
     bonneReponse: "42 reste 5"
@@ -72,15 +99,15 @@ items:
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "213 ÷ 4 = ?"
     bonneReponse: "53 reste 1"
-    distracteurs: ["43 reste 1", "51 reste 3"]
+    distracteurs: ["52 reste 3", "55 reste 3"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "234 ÷ 9 = ?"
     bonneReponse: "26 reste 0"
-    distracteurs: ["36 reste 0", "16 reste 0"]
+    distracteurs: ["36 reste 0", "46 reste 0"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende. Ici, la division tombe juste : le reste est 0."
   - enonce: "323 ÷ 5 = ?"
     bonneReponse: "64 reste 3"
-    distracteurs: ["74 reste 3", "65 reste 1"]
+    distracteurs: ["63 reste 1", "62 reste 1"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "152 ÷ 8 = ?"
     bonneReponse: "19 reste 0"
@@ -104,5 +131,5 @@ items:
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."
   - enonce: "351 ÷ 6 = ?"
     bonneReponse: "58 reste 3"
-    distracteurs: ["48 reste 3", "56 reste 5"]
+    distracteurs: ["57 reste 5", "56 reste 5"]
     indice: "Pose la division en colonnes : cherche combien de fois le diviseur entre dans chaque tranche du dividende, et n'oublie pas le reste, toujours plus petit que le diviseur."

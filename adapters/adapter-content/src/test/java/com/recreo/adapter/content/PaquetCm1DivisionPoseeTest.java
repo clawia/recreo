@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,6 +49,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * onze items. {@link #leRangDeLaBonneReponseParmiLesQuotientsVarieEtAucunRangNEstMajoritaireNiAbsent}
  * mord cette regularite-la, que {@code leQuotientDesTroisPropositionsALeMemeNombreDeChiffres} ne
  * pouvait pas voir : un nombre de chiffres identique n'empeche aucunement un rang constant.</p>
+ *
+ * <p><b>Correction du 2026-09-06 (s30), troisieme audit, {@code POS-R2}</b> ({@code
+ * squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md}, troisieme audit s29, section 2 ;
+ * story {@code S30-6}) : la forme qui a leve {@code POS-R1} laissait une regularite plus fine -
+ * sur les items a restes distincts, la bonne reponse partageait toujours son reste avec un
+ * distracteur, si bien que le distracteur au reste unique etait toujours faux ; sur les items a
+ * restes egaux, le triplet de quotients etait toujours symetrique, la bonne reponse toujours au
+ * milieu. {@link #posR2LaBonneReponseNEstPasToujoursDuCoteDuResteQuiSePartage} et
+ * {@link #posR2LesItemsARestesEgauxNeSontPasTousSymetriques} mordent ces deux regularites.</p>
  */
 class PaquetCm1DivisionPoseeTest {
 
@@ -211,6 +221,94 @@ class PaquetCm1DivisionPoseeTest {
                             rang, effectif, total)
                     .isLessThanOrEqualTo(total / 2);
         }
+    }
+
+    /**
+     * POS-R2 (squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md, troisieme audit s29,
+     * section 2 ; docs/backlog/backlog.md, story S30-6). Sur un item a restes distincts, un des
+     * trois restes peut etre partage par deux propositions et le troisieme rester seul ({@code
+     * BONNE_PARTAGE} si la bonne reponse est du cote du reste partage, {@code BONNE_SEULE} si elle
+     * porte le reste seul). Avant cette correction, les huit items a restes distincts etaient tous
+     * {@code BONNE_PARTAGE} : la bonne reponse partageait toujours son reste avec un distracteur, et
+     * le distracteur au reste unique etait toujours faux - un enfant pouvait l'ecarter sans diviser.
+     */
+    private enum PartageDuReste {
+        BONNE_PARTAGE, BONNE_SEULE, TOUS_EGAUX, TOUS_DIFFERENTS
+    }
+
+    private static PartageDuReste partageDuReste(ItemAnalyse analyse) {
+        List<String> distracteurs = analyse.question().distracteurs();
+        int resteBonne = analyse.bonne().reste();
+        int resteD1 = reponseDe(distracteurs.get(0), analyse.question().enonce()).reste();
+        int resteD2 = reponseDe(distracteurs.get(1), analyse.question().enonce()).reste();
+
+        if (resteBonne == resteD1 && resteBonne == resteD2) {
+            return PartageDuReste.TOUS_EGAUX;
+        }
+        if (resteD1 == resteD2) {
+            return PartageDuReste.BONNE_SEULE;
+        }
+        if (resteBonne == resteD1 || resteBonne == resteD2) {
+            return PartageDuReste.BONNE_PARTAGE;
+        }
+        return PartageDuReste.TOUS_DIFFERENTS;
+    }
+
+    /**
+     * POS-R2, premiere moitie : sur les items ou un reste est partage par deux des trois
+     * propositions et le troisieme reste seul, la bonne reponse n'est pas toujours du cote du reste
+     * partage - ni, symetriquement, toujours seule a porter le reste unique. Ni l'un ni l'autre cas
+     * ne doit etre majoritaire sur ces items.
+     */
+    @Test
+    void posR2LaBonneReponseNEstPasToujoursDuCoteDuResteQuiSePartage() {
+        Map<PartageDuReste, Long> comptes = itemsAnalyses().stream()
+                .map(PaquetCm1DivisionPoseeTest::partageDuReste)
+                .filter(partage -> partage == PartageDuReste.BONNE_PARTAGE
+                        || partage == PartageDuReste.BONNE_SEULE)
+                .collect(Collectors.groupingBy(p -> p, Collectors.counting()));
+
+        long partagee = comptes.getOrDefault(PartageDuReste.BONNE_PARTAGE, 0L);
+        long seule = comptes.getOrDefault(PartageDuReste.BONNE_SEULE, 0L);
+        long total = partagee + seule;
+
+        assertThat(partagee).as("POS-R2 : la bonne reponse n'est pas toujours du cote du reste"
+                        + " partage (%d/%d items)", partagee, total)
+                .isGreaterThanOrEqualTo(1)
+                .isLessThanOrEqualTo(total / 2);
+        assertThat(seule).as("POS-R2 : la bonne reponse ne porte pas toujours seule le reste"
+                        + " unique non plus (%d/%d items)", seule, total)
+                .isGreaterThanOrEqualTo(1)
+                .isLessThanOrEqualTo(total / 2);
+    }
+
+    /**
+     * POS-R2, seconde moitie : sur les items ou les trois propositions partagent le meme reste, le
+     * triplet de quotients n'est pas toujours symetrique (bonne reponse au milieu) - sinon la bonne
+     * reponse s'y devine sans diviser des que le reste ne distingue rien.
+     */
+    @Test
+    void posR2LesItemsARestesEgauxNeSontPasTousSymetriques() {
+        List<ItemAnalyse> itemsARestesEgaux = itemsAnalyses().stream()
+                .filter(analyse -> partageDuReste(analyse) == PartageDuReste.TOUS_EGAUX)
+                .toList();
+
+        assertThat(itemsARestesEgaux).as("au moins un item a ses trois restes egaux")
+                .isNotEmpty();
+
+        long symetriques = itemsARestesEgaux.stream().filter(analyse -> {
+            List<String> distracteurs = analyse.question().distracteurs();
+            int bonne = analyse.bonne().quotient();
+            int d1 = reponseDe(distracteurs.get(0), analyse.question().enonce()).quotient();
+            int d2 = reponseDe(distracteurs.get(1), analyse.question().enonce()).quotient();
+            boolean unDeChaqueCote = (d1 < bonne) != (d2 < bonne);
+            return unDeChaqueCote;
+        }).count();
+
+        assertThat(symetriques)
+                .as("POS-R2 : les items a restes egaux ne sont pas tous symetriques (%d/%d le sont)",
+                        symetriques, itemsARestesEgaux.size())
+                .isLessThan(itemsARestesEgaux.size());
     }
 
     /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
