@@ -356,3 +356,34 @@ quatorze items sont justes. L'enfant lit l'enonce, pas seulement la consigne. **
 
 *Rappel, sans rapport avec ce qui precede : `COR-R2` - l'organe du gout - a ete payee, et l'item
 attend bien `la langue`. Verifie a nouveau aujourd'hui.*
+
+
+---
+
+# s30 - reaudit de `CONS-1` par `nadia-prof`, **instance A**, 2026-09-06 (`DEC-0080`)
+
+- **Complement de verdicts** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`, section
+  *Complement du 2026-09-06*.
+- **Arbre audite** : `round-two` a `a91070f8`, **arbre assemble**, worktree `s30-nadia-A2`, port 8082.
+- **J'ai rejoue ce jeu** : partie jouee volontairement mal, **la consigne lue a l'ecran au-dessus des
+  enonces reellement tires**. **Audit degrade sur le seul point visuel**, et rien ici n'en depend.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## `CONS-1` - **levee sur cette entree**
+
+Consigne servie : *"Lis bien, puis nomme la partie du corps."* - **8 mots**.
+
+*"ou le sens"* est retire, et c'etait le fond de mon motif. **La tache annoncee est celle des quatorze
+items, sans exception** : les quatorze ont une partie du corps en position de bonne reponse, y compris
+les cinq qui partent d'un sens (*"Avec quoi entend-on ?"* -> `les oreilles`). **La consigne n'annonce
+plus aucun espace de reponse absent du paquet.**
+
+Le second defaut tombe avec le premier : le mot *sens*, employe comme nom de categorie et inaccessible
+au CP, ne figure plus dans la consigne. **Il reste dans le titre du jeu (*Le corps et les sens*), et
+c'est sa place** - un titre nomme le domaine, une consigne dit ce qu'il faut faire.
+
+**Huit mots**, la plus courte des cinq consignes rejouees et bien sous le plafond que j'ai ouvert par
+ailleurs sous `CONS-2`.
+
+**`QLM-CP-03` reste `couvert-valide`. Aucune ligne ne bouge. Aucune reserve neuve.**

@@ -566,3 +566,56 @@ de defaillance que j'avais annonce en premier pour ce sprint.
 
 **Pourquoi ce n'est pas bloquant** : chaque enonce porte sa propre question, entiere et explicite ;
 l'enfant lit l'enonce. **`QLM-CP-01` reste `couvert-valide`, aucune ligne ne bouge.**
+
+
+---
+
+# s30 - reaudit de `CONS-1` par `nadia-prof`, **instance A**, 2026-09-06 (`DEC-0080`)
+
+- **Complement de verdicts** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`, section
+  *Complement du 2026-09-06*.
+- **Arbre audite** : `round-two` a `a91070f8`, **arbre assemble**, worktree `s30-nadia-A2`, port 8082.
+- **J'ai rejoue ce jeu** : partie jouee volontairement mal, **la consigne lue a l'ecran au-dessus des
+  enonces reellement tires**. **Audit degrade sur le seul point visuel**, et rien ici n'en depend.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## `CONS-1` - **levee sur cette entree** ; deux motifs ajoutes a `CONS-2`
+
+Consigne servie : *"Lis bien, puis dis si c'est un etre vivant, ou lequel des trois l'est."* -
+**14 mots**.
+
+### La levee
+
+**Les trois taches du paquet sont desormais annoncees**, et je les ai recomptees a l'ecran :
+
+| Ce que la consigne annonce | Tache | Items |
+|---|---|---|
+| *dis si c'est un etre vivant* | categorisation (*"Un chat, qu'est-ce que c'est ?"*) | 8 |
+| *dis si c'est un etre vivant* | verification (*"Un caillou est-il un etre vivant ?"*) | 3 |
+| *ou lequel des trois l'est* | **selection** (*"Parmi ces trois choses, laquelle est un etre vivant ?"*) | **3** |
+
+**La tache orpheline est couverte. La couture est refermee** - et je rappelle que **c'est moi qui
+l'avais ouverte**, en prescrivant `VIV-R2` mot pour mot le jour meme ou la consigne s'ecrivait, dans
+deux stories separees. **`CONS-1` est levee sur cette entree.**
+
+### Deux motifs verses a `CONS-2`, deja ouverte et non payee
+
+**Je n'ouvre aucun code neuf.** C'est le meme objet - la lisibilite au CP d'une consigne que l'enfant
+lit seul - et j'ajoute un motif a une reserve **non payee**, comme je l'ai fait sur `VIV-R2`
+elle-meme le 2026-09-06.
+
+1. **La population de `CONS-2` passe de deux entrees a trois.** Elle visait `cycle-de-vie-cp` (16
+   mots) et `etats-eau-cp` (15). **Celle-ci en fait 14**, au-dessus du plafond de douze que j'ai
+   ecrit. **`camille-po` doit dimensionner la story de s31 sur trois entrees, pas deux.**
+2. **Second motif, neuf et date du 2026-09-06** : *"lequel des trois **l'est**"* fait porter la fin de
+   la consigne par un **pronom neutre attribut**, dont l'enfant doit retrouver l'antecedent - *un etre
+   vivant* - par-dessus une virgule. **Ce n'est pas au programme de lecture du CP**, et c'est **le
+   seul pronom de ce genre dans les 58 consignes du catalogue**. La forme pleine coute un caractere de
+   plus. **Je donne la propriete, pas le texte.**
+
+**Pourquoi cela ne retient pas la levee** : ma barre pour `CONS-1` etait *nommer la tache*, et les
+trois taches sont nommees. **Retenir une levee sur un critere que je n'avais pas ecrit ferait de ma
+porte un caprice** ; `CONS-2` porte celui-la et elle est deja au backlog de s31.
+
+**`QLM-CP-01` reste `couvert-valide`. Aucune ligne ne bouge.**

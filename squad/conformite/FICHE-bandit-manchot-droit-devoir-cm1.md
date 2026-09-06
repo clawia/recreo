@@ -462,3 +462,48 @@ deja ecrite, deja jugee, deja payee a cote.**
 
 **Pourquoi ce n'est pas bloquant** : sur les cinq items de la seconde tache, l'enonce porte lui-meme
 sa question, entiere et explicite. **`EMC-CM1-07` reste `couvert-valide`. Aucune ligne ne bouge.**
+
+
+---
+
+# s30 - reaudit de `CONS-1` par `nadia-prof`, **instance A**, 2026-09-06 (`DEC-0080`)
+
+- **Complement de verdicts** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`, section
+  *Complement du 2026-09-06*.
+- **Arbre audite** : `round-two` a `a91070f8`, **arbre assemble**, worktree `s30-nadia-A2`, port 8082.
+- **J'ai rejoue ce jeu** : partie jouee volontairement mal, **la consigne lue a l'ecran au-dessus des
+  enonces reellement tires**. **Audit degrade sur le seul point visuel**, et rien ici n'en depend.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## `CONS-1` - **levee sur cette entree**
+
+Consigne servie : *"Lis bien, puis dis si c'est un droit ou un devoir, ou a quoi ca sert."* -
+**16 mots**.
+
+**Les deux taches du paquet sont annoncees**, et je les ai recomptees a l'ecran :
+
+| Ce que la consigne annonce | Tache | Items |
+|---|---|---|
+| *dis si c'est un droit ou un devoir* | classement | 1, 3, 5, 7, 9, 11 - **six** |
+| *ou a quoi ca sert* | utilite | 2, 4, 6, 8, 10 - **cinq** |
+
+*"A quoi ca sert"* reprend **litteralement** la question des cinq items de la seconde tache
+(*"A quoi sert, pour un eleve, le fait d'ecouter le maitre et de respecter les regles de la
+classe ?"*). **La consigne est vraie sur les onze items**, et plus aucune manche ne porte une consigne
+qui decrit une tache qu'elle ne demande pas.
+
+**Le defaut jumeau de `FOP-R1` est paye.** Les deux paquets d'EMC CM1 - meme lot, meme structure a
+deux taches - **ressortent enfin du sprint avec le meme traitement**, ce qui n'etait pas le cas hier
+et ce qui etait le fond de mon motif.
+
+**Deux points peses et ecartes**, pour qu'on ne me les redemande pas :
+
+- **Seize mots**, mais au **CM1** : c'est la longueur de la consigne de `fait-opinion-cm1` que j'ai
+  creditee le 2026-09-06, et **`CONS-2` ne porte que sur le CP**, ou l'enfant lit peu et lentement.
+- ***"Ca"* est familier**, mais c'est le registre de la maison, deja servi par *"Combien ca fait ?"*
+  sur les additions de CP, que j'ai validee. **Je ne sanctionne pas ici ce que j'ai valide
+  ailleurs.**
+
+**`EMC-CM1-07` reste `couvert-valide`. Aucune ligne ne bouge. Aucune reserve neuve. `DRO-R4`, ouverte
+hier, n'est pas rejouee ici** : elle est au backlog de s31.

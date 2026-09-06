@@ -700,3 +700,87 @@ L'item dont la bonne reponse est *"elle suit des regles tres strictes et se dero
 mes huit parties. **Il se lit correctement** : *"Tu n'as pas trouve."*, puis l'enonce entier, puis
 *"La bonne reponse :"*, puis la proposition seule dans son element. **`REV-3` est levee**, et le
 detail est en section 8 de mes verdicts de s30.
+
+
+---
+
+# s30 - reaudit de `CONS-1` par `nadia-prof`, **instance A**, 2026-09-06 (`DEC-0080`)
+
+- **Complement de verdicts** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`, section
+  *Complement du 2026-09-06*.
+- **Arbre audite** : `round-two` a `a91070f8`, **arbre assemble**, worktree `s30-nadia-A2`, port 8082.
+- **J'ai rejoue ce jeu** : partie jouee volontairement mal, **la consigne lue a l'ecran au-dessus des
+  enonces reellement tires**. **Audit degrade sur le seul point visuel**, et rien ici n'en depend.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## `CONS-1` - **non levee sur cette entree**, et c'est la seule des dix qui reste ouverte
+
+Consigne servie : *"Lis bien, puis situe dans le temps, ou associe un roi a son fait."* - **14 mots**.
+
+### Le comptage, fait par moi sur les 57 items repartis par `ligneDeReferentiel`
+
+| Ce que la consigne annonce | Lignes servies | Items |
+|---|---|---|
+| *situe dans le temps* | `HG-CM1-01`, `-02`, `-03`, `-04`, `-07`, `-08` | **16** |
+| *associe un roi a son fait* | `HG-CM1-06` | **10** |
+| **rien** | `HG-CM1-11` (types d'espaces), `-12` (tourisme), `-13` (eau, energie, alimentation) | **21 - toute la geographie** |
+| **rien** | `HG-CM1-14` (lire un document et en extraire une information) | **10** |
+
+> **31 items sur 57 ne demandent ni l'une ni l'autre des deux taches annoncees.**
+
+### Vu a l'ecran, en trois parties courtes
+
+La consigne *"situe dans le temps, ou associe un roi a son fait"* s'est affichee au-dessus de :
+
+- *"Dans un espace urbain, quel type de logement est le plus frequent ?"*
+- *"Dans de nombreux espaces ruraux, quelle activite occupe traditionnellement le plus grand nombre
+  d'habitants qui y travaillent ?"*
+- *"Une zone d'habitations pavillonnaires et de zones commerciales [...], comment appelle-t-on cet
+  espace ?"*
+- *"Un aliment achete directement a un producteur pres de chez soi [...] appartient a quel type de
+  circuit ?"*
+- *"Qui est l'auteur de ce texte ?"*
+- *"D'apres ce texte, en quelle annee ce document est-il signe ?"*
+
+**Aucune n'est un reperage dans le temps ni une association roi-realisation.**
+
+### Le motif
+
+**C'est la propriete de `FOP-R1`**, que j'ai ecrite le 2026-09-06 et appliquee deux fois depuis :
+*"la consigne d'un jeu ne decrit pas une tache que la moitie de ses items ne demandent pas."* **Ici
+c'est plus de la moitie.** Et le jeu s'appelle *Histoire et geographie* : **la consigne a fait
+disparaitre la geographie**, vingt-et-un items, du seul endroit ou l'enfant lisait qu'elle etait
+servie.
+
+**La correction a echange un defaut contre un autre, et le second est plus grave.** L'ancienne
+consigne ne nommait aucune tache mais **etait vraie sur les 57 items** ; la neuve nomme deux taches et
+**est fausse sur 31**.
+
+### Ce que je porte, et il faut que ce soit ecrit
+
+**Ma propre suggestion du 2026-09-06 disait** : *"les taches reelles sont identifiables (situer dans
+le temps, associer un roi a son fait, lire un document et en extraire une information)"*. **Elle en
+listait trois, dont aucune n'etait la geographie**, alors que le paquet y consacre vingt-et-un items.
+`lea-dev` en a repris deux des trois. **Mon exemple etait court, et c'est en partie sur lui que la
+consigne a ete ecrite.**
+
+**Cela ne change pas le verdict** - ce n'est pas mon exemple que l'enfant lit, c'est la consigne
+servie - **mais cela change la charge** : ce n'est pas une inattention de la developpeuse, c'est un
+enonce de barre trop court de ma part, repris de bonne foi.
+
+> **`CONS-1`, non levee sur cette entree. Propriete a tenir, ecrite cette fois avec son comptage** :
+> la consigne couvre les **quatre** familles de taches du paquet - se reperer dans le temps (16
+> items), associer un roi a son fait (10), decrire un espace ou une ressource (21), lire un document
+> (10) - **ou bien elle ne nomme aucune tache plutot que d'en nommer deux qui excluent les
+> trente-et-une autres.**
+>
+> **Une consigne vraie et vague vaut mieux qu'une consigne precise et fausse**, et c'est le seul
+> endroit du catalogue ou j'ecris cela : il est le seul paquet a servir onze lignes de referentiel.
+>
+> **Je ne fournis pas le texte** - quatre familles en une consigne lisible au CM1 est le jugement meme
+> qu'il faut faire, et mon dernier essai a coute ce reaudit. **Regime : rejeu borne, 0,5, a s31.**
+
+**`HG-CM1-06`, `-07` et `-14` restent `couvert-valide`**, la ligne 14 avec sa mention de couverture
+partielle. **Aucune ligne ne bouge. `HG-R8`, ouverte hier, n'est pas rejouee ici** : elle est au
+backlog de s31.

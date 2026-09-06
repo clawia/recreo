@@ -720,3 +720,270 @@ et elle n'a relu aucun des miens.
 - **Il ne corrige ni l'orthographe, ni l'accentuation, ni la ponctuation** de quoi que ce soit :
   ce controle appartient au `relecteur-pedagogique` (`DEC-0002` amende le 2026-08-04 ; `DEC-0056`),
   y compris sur le texte destine a l'enfant.
+
+---
+
+# Complement du 2026-09-06 - reaudit de `CONS-1` dans le sprint (`DEC-0080`)
+
+**Arbre audite** : `round-two` a `a91070f8`, worktree `s30-nadia-A2`, port 8082, **arbre assemble** -
+les deux instances et les lots de sciences y sont fusionnes.
+**Perimetre** : **exactement les cinq consignes** que je n'avais pas creditees. Les cinq entrees deja
+creditees ne sont pas rejouees, et les reserves neuves versees au backlog de s31 (`HG-R8`, `FOP-R4`,
+`DRO-R4`, `CONS-2`, `ANG-R2`, `SAI-R1`, `ERR-R1`) ne sont pas rejouees non plus.
+**Prix** : **0,50**, sur la marge restee intacte. **Total final : 4,00 / 4,00.**
+
+## 1. Conditions - j'ai rejoue les cinq
+
+Jar reconstruit depuis mon worktree, lance sur le port 8082. **Parties jouees volontairement mal** sur
+`vivant-non-vivant-cp`, `corps-sens-cp`, `droit-devoir-cm1`, `anglais-cm1`, et **trois parties** sur
+`histoire-geographie-cm1`. **La consigne a ete lue a l'ecran, au-dessus des enonces reellement
+tires**, sur les cinq. **Audit degrade sur le seul point visuel**, comme toujours, et rien ici n'en
+depend.
+
+**Et j'ai fait le comptage que la cinquieme exigeait** : les 57 items d'`histoire-geographie-cm1`
+repartis par `ligneDeReferentiel`. Une consigne qui annonce des taches se juge contre le nombre
+d'items qui les demandent, et ce nombre ne se devine pas.
+
+## 2. Une correction de ma propre barre, avant de m'en servir - et elle retourne un verdict
+
+**Ce que j'ai ecrit le 2026-09-06 en ouvrant `CONS-1`** :
+
+> *"que chaque entree de catalogue porte une consigne qui nomme la tache de son jeu, **comme le font
+> 44 des 54 entrees**."*
+
+**Cette phrase dit deux choses et une seule est vraie.** Mon chiffre de 44 est un comptage des entrees
+qui **ne portaient pas une chaine exacte** - *"Lis bien la question, puis choisis la bonne
+reponse."* - **et non un comptage des entrees qui nomment leur tache.** Verifie aujourd'hui, entree
+par entree, sur les 58 :
+
+| Entree que j'avais comptee comme conforme | Sa consigne |
+|---|---|
+| `bandit-manchot-semaine-cp` | ***"Choisis la bonne reponse."*** - purement generique, et je l'ai creditee sans la voir |
+| `bandit-manchot-comprehension-cm1` | *"Lis le texte, puis **reponds a la question**."* |
+| `bandit-manchot-texte-narratif-cp` | *"Lis le petit texte, puis **reponds a la question**."* |
+| `bandit-manchot-fractions-cm1` | *"Lis bien la fraction, puis **choisis la reponse**."* |
+| `bandit-manchot-problemes-etapes-cm1` | *"Lis bien, resous les deux etapes, puis **choisis la reponse**."* |
+| `bandit-manchot-problemes-additifs-cp` | *"Lis bien, puis **trouve la reponse** !"* |
+
+**Six entrees de ma classe de reference portent un verbe de reponse generique**, dont cinq le
+combinent avec une tache reelle nommee en tete. **C'est exactement la forme de la consigne d'anglais
+que j'allais refuser.**
+
+**Consequence, et elle joue contre mon inclination** : refuser *"Traduis le mot, ou reponds a la
+question sur les pays anglophones."* aurait applique a une entree une barre que je n'ai appliquee a
+aucune des quarante-quatre. **Je la credite, section 3.4.**
+
+**Ce que cette correction ne change pas** : les dix verdicts du 2026-09-06 ont ete rendus **un par un
+contre le paquet de chaque entree**, jamais par comparaison a la classe de reference. Aucun ne bouge.
+**Ce qui bouge, c'est une phrase de moi qui ne doit pas etre recopiee** comme si elle signifiait
+*"44 entrees nomment leur tache"*.
+
+**Et elle ouvre un fait que je consigne sans le faire payer a ce sprint** :
+`bandit-manchot-semaine-cp` porte *"Choisis la bonne reponse."*, qui est le defaut meme de `CONS-1`
+sous une autre chaine. **`DEC-0078` vise la chaine ; le defaut n'est pas la chaine.** Observation
+datee du 2026-09-06, **hors perimetre de ce reaudit**, routee a `camille-po` pour s31.
+
+## 3. Les cinq, jugees une par une contre leur paquet
+
+### 3.1 `corps-sens-cp` - **tient**
+
+> *"Lis bien, puis nomme la partie du corps."* - **8 mots**
+
+*"ou le sens"* est retire. **La tache annoncee est celle des quatorze items, sans exception** : les
+quatorze ont une partie du corps en position de bonne reponse, y compris les cinq qui partent d'un
+sens (*"Avec quoi entend-on ?"* -> `les oreilles`). **La consigne n'annonce plus aucun espace de
+reponse absent du paquet**, et le mot de categorie inaccessible au CP a disparu.
+
+**Huit mots**, la plus courte des cinq et bien sous le plafond que j'ai ouvert par ailleurs sous
+`CONS-2`. **Levee.**
+
+### 3.2 `vivant-non-vivant-cp` - **tient sur `CONS-1`**
+
+> *"Lis bien, puis dis si c'est un etre vivant, ou lequel des trois l'est."* - **14 mots**
+
+**Les trois taches du paquet sont desormais annoncees**, et je les recompte a l'ecran : *"dis si c'est
+un etre vivant"* couvre la categorisation (8 items) et la verification (3) ; *"ou lequel des trois
+l'est"* couvre la selection (3), qui etait la tache orpheline. **La couture que `VIV-R2` avait
+ouverte est refermee**, et je rappelle que **c'est moi qui l'avais ouverte** en prescrivant une
+troisieme tache le jour meme ou la consigne s'ecrivait. **Levee sur `CONS-1`.**
+
+**Deux faits que je verse a `CONS-2`, deja ouverte et deja au backlog de s31.** Je n'ouvre aucun code
+neuf : c'est le meme objet - la lisibilite au CP d'une consigne que l'enfant lit seul - et j'ajoute un
+motif a une reserve **non payee**, comme je l'avais fait sur `VIV-R2` le 2026-09-06.
+
+1. **La population de `CONS-2` passe de deux entrees a trois.** Elle visait `cycle-de-vie-cp` (16
+   mots) et `etats-eau-cp` (15) ; **celle-ci en fait 14**, au-dessus du plafond de douze que j'ai
+   ecrit. `camille-po` doit dimensionner la story sur **trois** entrees.
+2. **Second motif, neuf et date du 2026-09-06** : *"lequel des trois **l'est**"* fait porter la fin de
+   la consigne par un **pronom neutre attribut**, dont l'enfant doit retrouver l'antecedent - *un etre
+   vivant* - par-dessus une virgule. **Ce n'est pas au programme de lecture du CP**, et c'est le seul
+   pronom de ce genre dans les 58 consignes du catalogue. La forme pleine coute un caractere de plus.
+   **Je donne la propriete, pas le texte.**
+
+**Pourquoi cela ne retient pas la levee** : ma barre pour `CONS-1` etait *nommer la tache*, et les
+trois taches sont nommees. **Retenir une levee sur un critere que je n'avais pas ecrit ferait de ma
+porte un caprice** ; `CONS-2` existe precisement pour porter celui-la, et elle est deja ouverte.
+
+### 3.3 `histoire-geographie-cm1` - **ne tient pas**
+
+> *"Lis bien, puis situe dans le temps, ou associe un roi a son fait."* - **14 mots**
+
+**Le comptage, fait par moi sur les 57 items du paquet, repartis par `ligneDeReferentiel` :**
+
+| Ce que la consigne annonce | Lignes servies | Items |
+|---|---|---|
+| *situe dans le temps* | `HG-CM1-01`, `-02`, `-03`, `-04`, `-07`, `-08` | **16** |
+| *associe un roi a son fait* | `HG-CM1-06` | **10** |
+| **rien** | `HG-CM1-11` (types d'espaces), `-12` (tourisme), `-13` (eau, energie, alimentation) | **21, toute la geographie** |
+| **rien** | `HG-CM1-14` (lire un document, en extraire une information) | **10** |
+
+> **31 items sur 57 ne demandent ni l'une ni l'autre des deux taches annoncees.**
+
+**Lu a l'ecran, en trois parties courtes**, la consigne *"situe dans le temps, ou associe un roi a son
+fait"* s'est affichee au-dessus de :
+
+- *"Dans un espace urbain, quel type de logement est le plus frequent ?"*
+- *"Dans de nombreux espaces ruraux, quelle activite occupe traditionnellement le plus grand nombre
+  d'habitants ?"*
+- *"Une zone d'habitations pavillonnaires [...], comment appelle-t-on cet espace ?"*
+- *"Un aliment achete directement a un producteur pres de chez soi [...] appartient a quel type de
+  circuit ?"*
+- *"Qui est l'auteur de ce texte ?"*
+- *"D'apres ce texte, en quelle annee ce document est-il signe ?"*
+
+**Aucune n'est un reperage dans le temps ni une association roi-realisation.**
+
+**C'est la propriete de `FOP-R1`**, que j'ai ecrite le 2026-09-06 et appliquee deux fois depuis :
+*"la consigne d'un jeu ne decrit pas une tache que la moitie de ses items ne demandent pas."* **Ici
+c'est plus de la moitie.** Et le jeu s'appelle *Histoire et geographie* : **la consigne a fait
+disparaitre la geographie**, vingt-et-un items, du seul endroit ou l'enfant lisait qu'elle etait
+servie.
+
+**La correction a echange un defaut contre un autre, et le second est plus grave que le premier.**
+L'ancienne consigne ne nommait aucune tache mais **etait vraie sur les 57 items** ; la neuve nomme
+deux taches et **est fausse sur 31**.
+
+**Et je porte ma part, parce qu'elle est reelle.** Ma propre suggestion du 2026-09-06 disait : *"les
+taches reelles sont identifiables (situer dans le temps, associer un roi a son fait, lire un document
+et en extraire une information)"*. **Elle en listait trois, dont aucune n'etait la geographie**, alors
+que le paquet y consacre vingt-et-un items. `lea-dev` en a repris deux des trois. **Mon exemple etait
+court, et c'est en partie sur mon exemple que la consigne a ete ecrite** : je le dis avant qu'on me le
+demande.
+
+**Cela ne change pas le verdict**, parce que ce n'est pas mon exemple que l'enfant lit, c'est la
+consigne servie. Mais cela change la charge : **ce n'est pas une inattention de la developpeuse, c'est
+un enonce de barre trop court de ma part, repris de bonne foi.**
+
+> **`CONS-1`, non levee sur cette entree. Propriete a tenir, et je l'ecris cette fois avec le
+> comptage** : la consigne d'`histoire-geographie-cm1` couvre les quatre familles de taches du
+> paquet - **se reperer dans le temps** (16 items), **associer un roi a son fait** (10), **decrire un
+> espace ou une ressource** (21), **lire un document** (10) -, ou bien elle ne nomme aucune tache
+> plutot que d'en nommer deux qui excluent les trente-et-une autres. **Une consigne vraie et vague
+> vaut mieux qu'une consigne precise et fausse**, et c'est le seul endroit du catalogue ou j'ecris
+> cela.
+>
+> **Je ne fournis pas le texte** - quatre familles en une consigne lisible est le jugement meme qu'il
+> faut faire, et mon dernier essai a coute ce reaudit. **Regime : rejeu borne, 0,5, a s31.**
+
+### 3.4 `anglais-cm1` - **tient**, et `ANG-R2` est **levee**
+
+> *"Traduis le mot, ou reponds a la question sur les pays anglophones."* - **12 mots**
+
+**`ANG-R2` - levee. L'inexactitude de fait est corrigee.** *"Les pays anglophones"* est vrai des cinq
+items de culture - deux sur le Royaume-Uni (Londres, Big Ben), trois sur les Etats-Unis (Washington,
+le drapeau, Thanksgiving) - et **c'est le mot du referentiel lui-meme**, `LVE-CM1-07` portant sur
+*"quelques aspects culturels des **pays** de la langue etudiee"*. Le produit n'enseigne plus en
+passant que Thanksgiving est une fete anglaise.
+
+**`CONS-1` - tenue, et c'est le verdict que ma correction de la section 2 a retourne.** J'avais ecrit
+le 2026-09-06 un **second motif distinct** : *"la seconde moitie ne nomme aucune tache."* **Ce motif
+n'est pas paye**, et j'etais partie pour le maintenir.
+
+**Je ne le maintiens pas, et le motif est une mesure, pas une indulgence.** *"Une tache reelle nommee
+en tete, plus un verbe de reponse generique avec un complement vrai"* est la forme de **cinq entrees
+que j'ai moi-meme comptees parmi les quarante-quatre conformes** - dont *"Lis le texte, puis reponds a
+la question."* et *"Lis bien la fraction, puis choisis la reponse."*. **Tenir anglais a une barre plus
+haute que celle que j'ai appliquee a ces cinq-la serait deplacer mon poteau sur la seule entree qui me
+restait sous les yeux.**
+
+Et le complement fait desormais un travail : *"sur les pays anglophones"* **n'est pas le titre du
+jeu** (*Anglais*) ; il ajoute au contraire l'information que la culture servie n'est pas celle d'un
+seul pays, ce qui est la ligne du referentiel. **C'est ce qui le distingue de *"d'histoire ou de
+geographie"*, qui recopiait le titre.**
+
+**Observation, sans code et sans demande** : l'operation des cinq items de culture - reconnaitre un
+lieu, un monument, un embleme, une fete - n'est toujours pas nommee. **Je ne l'ouvre pas**, pour le
+motif ci-dessus.
+
+### 3.5 `droit-devoir-cm1` - **tient**
+
+> *"Lis bien, puis dis si c'est un droit ou un devoir, ou a quoi ca sert."* - **16 mots**
+
+**Les deux taches du paquet sont annoncees** : le classement (items 1, 3, 5, 7, 9, 11) et l'utilite
+(items 2, 4, 6, 8, 10), et *"a quoi ca sert"* reprend litteralement la question des cinq items de la
+seconde tache (*"A quoi sert, pour un eleve, le fait d'ecouter le maitre... ?"*). **Vrai sur les onze
+items, verifie a l'ecran sur les deux taches.**
+
+**Le defaut jumeau de `FOP-R1` est paye**, et les deux paquets d'EMC CM1 ressortent du sprint avec le
+meme traitement, ce qui n'etait pas le cas hier.
+
+**Deux points peses et ecartes** : seize mots, mais au **CM1** - c'est la longueur de la consigne de
+`fait-opinion-cm1` que j'ai creditee le 2026-09-06, et `CONS-2` ne porte que sur le CP. Et *"ca"* est
+familier, mais c'est le registre de la maison, deja servi par *"Combien ca fait ?"* que j'ai validee.
+**Aucune reserve. Levee.**
+
+## 4. Verdict sur `CONS-1`
+
+> **`CONS-1` n'est pas levee.** Elle tient desormais sur **neuf entrees de dix** ; elle reste ouverte
+> sur **une seule** : `bandit-manchot-histoire-geographie-cm1`, avec le comptage et la propriete
+> ecrits en 3.3. **Regime : rejeu borne, 0,5, a s31.**
+>
+> **Ce que le reaudit a fait bouger, et je le dis parce que c'est ce qui compte pour l'equipe** : de
+> **cinq entrees sur dix a neuf sur dix**, dans le sprint. Trois defauts de designation de tache et
+> **une inexactitude de fait** (`ANG-R2`) sont payes. **`ANG-R2` est levee.**
+>
+> **La derniere entree n'est pas un oubli de l'equipe** : c'est la plus difficile des dix - 57 items,
+> onze lignes de referentiel, quatre familles de taches - et **mon propre exemple de correction en
+> omettait vingt-et-un items**. Elle merite d'etre traitee avec le comptage sous les yeux, pas dans un
+> reste de sprint.
+
+**Aucune reserve neuve n'est ouverte par ce reaudit.** Deux motifs sont **ajoutes a `CONS-2`**, deja
+ouverte et non payee (section 3.2), et une observation est routee hors perimetre (`semaine-cp`,
+section 2). **Rien de ce que j'ecris ici ne cree une barre.**
+
+## 5. Les deux corrections de redaction - **deja faites, et je le verifie plutot que de les refaire**
+
+Il m'est demande de corriger deux ecarts de comptage dans mes propres fichiers, *"pas encore corriges
+sur `round-two`"*. **Ils le sont** : mon commit `5c39cfd4` est dans la lignee de `a91070f8`, et les
+deux corrections y sont, verifiees ligne par ligne aujourd'hui :
+
+- `squad/programme/sciences-et-technologie/competences-cm1.md`, ligne 153 : *"la matiere la plus
+  immediatement servable **des dix referentiels ecrits le 2026-09-03**"*, avec la note qui dit
+  l'ecart, sa population et son origine ;
+- `ARBITRAGE-PREALABLE-s29-le-palier-2-...md`, section 8.1 : *"**Les six dessins** dont ces six lignes
+  ont besoin"*, avec la note datee.
+
+**Cout : 0.** **Je consigne la verification plutot que de rejouer un travail fait** : refaire une
+correction deja portee, c'est risquer de la porter deux fois et de rendre l'historique illisible.
+
+## 6. Mon total final
+
+| Poste | Prix |
+|---|---|
+| Blocs A, B, C, E, F - quinze reserves sur cinq paquets | **2,25** |
+| `CONS-1`, premier passage - dix consignes jugees une par une | **0,50** |
+| `REV-3` | **0,25** |
+| Passe transverse `S30-11` | **0,50** |
+| **`CONS-1`, reaudit - cinq consignes rejouees, un comptage de 57 items** | **0,50** |
+| Corrections de redaction (deja portees, verifiees) | **0,00** |
+| **Total** | **4,00** |
+| **Budget opposable (`PAR-9`)** | **4,00** |
+
+**4,00 sur 4,00, marge comprise et entierement consommee. Aucun depassement.**
+
+**Ce que je note pour la retrospective, parce que c'est un fait de gouvernance et pas un grief** :
+`PAR-9` a tenu son objet. Je l'ai ecrite le 2026-09-06 parce que s29 avait coute 9,50 sur une borne de
+8,0, deux plafonds individuels de 5,0 sommant a 10,0 sans que rien ne tienne le total. **Ce sprint
+finit a 4,00 sur 4,00 pour cette instance, et la marge a servi a ce pour quoi elle etait nommee : un
+rejeu.** Une marge nommee a l'ouverture, non allouee, et depensee dans le sprint sur un rejeu reel,
+c'est le comportement que je decrivais - **et c'est la premiere fois qu'il se produit.**

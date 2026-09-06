@@ -344,3 +344,66 @@ dit deja, et le complement qui la suit est en plus faux. Ce que les cinq items d
 **Aucune ligne ne bouge**, et `ANG-R1` (l'item de *colline* / `hill`) reste levee comme le
 2026-09-06 : verifie a nouveau aujourd'hui, l'item sert bien `hill` avec l'indice qui le distingue
 d'une montagne.
+
+
+---
+
+# s30 - reaudit de `CONS-1` par `nadia-prof`, **instance A**, 2026-09-06 (`DEC-0080`)
+
+- **Complement de verdicts** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`, section
+  *Complement du 2026-09-06*.
+- **Arbre audite** : `round-two` a `a91070f8`, **arbre assemble**, worktree `s30-nadia-A2`, port 8082.
+- **J'ai rejoue ce jeu** : partie jouee volontairement mal, **la consigne lue a l'ecran au-dessus des
+  enonces reellement tires**. **Audit degrade sur le seul point visuel**, et rien ici n'en depend.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## `ANG-R2` **levee**, et `CONS-1` **levee sur cette entree**
+
+Consigne servie : *"Traduis le mot, ou reponds a la question sur les pays anglophones."* - **12
+mots**.
+
+### `ANG-R2` - **LEVEE**. L'inexactitude de fait est corrigee
+
+*"Les pays anglophones"* est **vrai des cinq items de culture** : deux portent sur le Royaume-Uni
+(Londres, Big Ben), **trois sur les Etats-Unis** (la capitale, le drapeau, Thanksgiving). Et c'est
+**le mot du referentiel lui-meme** : `LVE-CM1-07` porte sur *"quelques aspects culturels des **pays**
+de la langue etudiee"*, au pluriel.
+
+**Le produit n'enseigne plus en passant que Thanksgiving et Washington relevent d'une *culture
+anglaise*.** C'etait le motif de fond de la reserve, et il est paye.
+
+### `CONS-1` - **levee**, et c'est le verdict que ma propre correction a retourne
+
+**J'avais ecrit le 2026-09-06 un second motif distinct** : *"la seconde moitie ne nomme aucune
+tache."* **Ce motif n'est pas paye** - *"reponds a la question"* reste un verbe generique - **et
+j'etais partie pour le maintenir.**
+
+**Je ne le maintiens pas, et le motif est une mesure, pas une indulgence.** J'ai verifie ma propre
+classe de reference, celle que j'avais citee comme barre (*"comme le font 44 des 54 entrees"*), et
+**six de ces entrees portent un verbe de reponse generique**, dont **cinq** dans exactement la forme
+d'aujourd'hui - une tache reelle nommee en tete, plus un verbe generique :
+
+| Entree que j'avais creditee | Sa consigne |
+|---|---|
+| `bandit-manchot-comprehension-cm1` | *"Lis le texte, puis **reponds a la question**."* |
+| `bandit-manchot-texte-narratif-cp` | *"Lis le petit texte, puis **reponds a la question**."* |
+| `bandit-manchot-fractions-cm1` | *"Lis bien la fraction, puis **choisis la reponse**."* |
+| `bandit-manchot-problemes-etapes-cm1` | *"Lis bien, resous les deux etapes, puis **choisis la reponse**."* |
+| `bandit-manchot-problemes-additifs-cp` | *"Lis bien, puis **trouve la reponse** !"* |
+
+**Tenir cette entree a une barre plus haute que celle que j'ai appliquee a ces cinq-la serait deplacer
+mon poteau sur la seule entree qui me restait sous les yeux.** Mon chiffre de 44 comptait les entrees
+qui ne portaient pas une **chaine exacte**, pas celles qui nomment leur tache : c'est une correction
+que je fais a ma propre barre, et elle joue contre mon inclination.
+
+**Et le complement fait desormais un travail reel** : *"sur les pays anglophones"* **n'est pas le
+titre du jeu** (*Anglais*) ; il ajoute l'information que la culture servie n'est pas celle d'un seul
+pays, ce qui est precisement la ligne du referentiel. **C'est ce qui le distingue de *"d'histoire ou
+de geographie"***, qui recopiait son titre et n'ajoutait rien.
+
+**Observation, sans code et sans demande** : l'operation des cinq items de culture - reconnaitre un
+lieu, un monument, un embleme, une fete - n'est toujours pas nommee. **Je ne l'ouvre pas**, pour le
+motif ci-dessus.
+
+**Aucune ligne ne bouge. `ANG-R1` reste levee.**
