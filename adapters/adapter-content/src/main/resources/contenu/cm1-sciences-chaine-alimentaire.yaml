@@ -24,6 +24,20 @@ lignesDeReferentiel: ["SCI-CM1-17"]
 # tache A, dire qui mange qui dans une situation decrite (six items) ; tache B, dire ce qui risque
 # d'arriver a un etre vivant si l'autre maillon de sa relation venait a manquer (cinq items).
 #
+# Correction du 2026-09-06 (lea-dev, audit de l'instance B,
+# squad/conformite/FICHE-bandit-manchot-chaine-alimentaire-cm1.md, commit audite 712c293b, Done
+# pedagogique REFUSE le 2026-09-06 par nadia-prof) : la tache B (items 7 a 11) etait un seul item
+# servi cinq fois avec un autre nom d'animal - meme question, meme bonne reponse ("il/elle
+# risquerait de manquer de nourriture"), memes deux distracteurs. Reconstruite pour porter trois
+# effets distincts sur la relation, pas seulement le nom de l'animal qui varie : manquer de
+# nourriture quand la source de nourriture disparait (items 7, 9), devenir plus nombreux quand le
+# predateur disparait (items 8, 10 - la direction inverse de la relation, qui manquait entierement),
+# devoir chercher une autre proie quand une proie habituelle disparait (item 11). Le distracteur
+# "il n'aurait plus besoin de manger", indefendable pour un etre vivant, est retire de tous les
+# items ou il figurait ; les distracteurs restants ne se gagnent plus par la seule connaissance du
+# regime alimentaire (SCI-CM1-07), ils portent sur l'effet de la relation elle-meme (absence
+# d'effet, depart de la foret).
+#
 # V3 : aucun item ne demande de construire une chaine alimentaire entiere - chaque item porte sur
 # une seule relation a deux maillons.
 #
@@ -66,23 +80,23 @@ items:
     bonneReponse: "la chenille"
     distracteurs: ["le mulot", "le lapin"]
     indice: "Ce petit oiseau attrape de petites proies sur les feuilles des arbres."
-  - enonce: "S'il n'y avait plus de glands dans la forêt, que risquerait-il d'arriver à l'écureuil ?"
+  - enonce: "S'il n'y avait plus de glands dans la forêt, que risquerait-il d'arriver à l'écureuil ?"
     bonneReponse: "il risquerait de manquer de nourriture"
-    distracteurs: ["il n'aurait plus besoin de manger", "il se mettrait à manger de l'herbe"]
-    indice: "Sans ce qu'il mange d'habitude, un être vivant ne peut pas se nourrir normalement."
-  - enonce: "Si l'herbe venait à manquer dans la forêt, que risquerait-il d'arriver au lapin ?"
+    distracteurs: ["cela ne changerait rien pour lui", "il quitterait aussitôt la forêt"]
+    indice: "Sans ce qu'il mange d'habitude, un être vivant a du mal à se nourrir normalement."
+  - enonce: "Si l'herbe venait à manquer dans la forêt, que risquerait-il d'arriver au lapin ?"
     bonneReponse: "il risquerait de manquer de nourriture"
-    distracteurs: ["il se mettrait à manger de la viande", "il n'aurait plus besoin de manger"]
-    indice: "Un être vivant ne peut pas remplacer facilement ce qu'il mange d'habitude."
-  - enonce: "Si tous les lapins disparaissaient de la forêt, que risquerait-il d'arriver au renard ?"
-    bonneReponse: "il risquerait de manquer de nourriture"
-    distracteurs: ["il se mettrait à manger de l'herbe", "il n'aurait plus besoin de manger"]
-    indice: "Le renard perdrait une partie de ce qu'il mange d'habitude dans la forêt."
-  - enonce: "S'il n'y avait plus de mulots dans la forêt, que risquerait-il d'arriver à la chouette ?"
-    bonneReponse: "elle risquerait de manquer de nourriture"
-    distracteurs: ["elle se mettrait à manger des glands", "elle n'aurait plus besoin de manger"]
-    indice: "La chouette perdrait une proie qu'elle chasse habituellement la nuit."
-  - enonce: "Si toutes les chenilles disparaissaient de la forêt, que risquerait-il d'arriver à la mésange ?"
-    bonneReponse: "elle risquerait de manquer de nourriture"
-    distracteurs: ["elle se mettrait à manger de l'herbe", "elle n'aurait plus besoin de manger"]
-    indice: "La mésange perdrait une proie qu'elle attrape habituellement sur les feuilles."
+    distracteurs: ["il ne serait pas gêné de rester dans la forêt", "il irait vivre ailleurs sans difficulté"]
+    indice: "Un être vivant ne peut pas se nourrir facilement d'autre chose que ce qu'il mange d'habitude."
+  - enonce: "Si le renard disparaissait de la forêt, que risquerait-il d'arriver aux lapins ?"
+    bonneReponse: "ils risqueraient de devenir plus nombreux"
+    distracteurs: ["ils risqueraient de manquer de nourriture", "ils disparaîtraient à leur tour"]
+    indice: "Sans ce qui les chasse, des animaux peuvent se multiplier davantage."
+  - enonce: "Si la chouette disparaissait de la forêt, que risquerait-il d'arriver aux mulots ?"
+    bonneReponse: "ils risqueraient de devenir plus nombreux"
+    distracteurs: ["ils resteraient aussi peu nombreux qu'avant", "ils quitteraient la forêt à leur tour"]
+    indice: "Sans ce qui les chasse la nuit, des animaux peuvent se multiplier davantage."
+  - enonce: "Si toutes les chenilles disparaissaient de la forêt, que risquerait-il d'arriver à la mésange ?"
+    bonneReponse: "elle risquerait de devoir chercher d'autres petites proies pour se nourrir"
+    distracteurs: ["elle resterait aussi nombreuse sans que rien ne change pour elle", "elle disparaîtrait aussitôt de la forêt"]
+    indice: "Un oiseau qui perd une proie habituelle doit trouver une autre source de nourriture pour survivre."

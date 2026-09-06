@@ -585,9 +585,11 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
                     + " propositions n'est numerique : ce sont des noms d'êtres vivants (\"l'écureuil\","
                     + " \"le renard\", \"la chouette\"...) ou des consequences en texte libre (\"il"
-                    + " risquerait de manquer de nourriture\"...), valeurDe rend null sur les trois"
-                    + " propositions de chaque item. Mesure du 2026-09-06 sur le paquet servi : aucune"
-                    + " des 33 propositions ne commence par un chiffre"),
+                    + " risquerait de manquer de nourriture\", \"ils risqueraient de devenir plus"
+                    + " nombreux\"...), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-06 sur le paquet servi, apres la reprise du 2026-09-06"
+                    + " (squad/conformite/FICHE-bandit-manchot-chaine-alimentaire-cm1.md) : aucune des"
+                    + " 33 propositions ne commence par un chiffre"),
             // S30-2 : deux paquets neufs de sciences et technologie CM1, second lot (SCI-CM1-02,
             // SCI-CM1-12).
             Map.entry("cm1-sciences-melanges",
