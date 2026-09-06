@@ -22,6 +22,13 @@
   levee** sur la propriete que j'avais ecrite le 2026-09-05 ; **`POS-R2` est ouverte** sur une
   troisieme lecture que je n'avais pas vue. **`MAT-CM1-05` reste `couvert-valide`, `POS-1` reste
   exigee, et les deux blocs precedents restent lisibles avec leur motif entier.**
+- **Ajout du 2026-09-06 (s30, instance B), sans rien retirer de ce qui precede** : un **quatrieme
+  audit** est ecrit en fin de fiche - rejeu borne de `POS-R2` sur le commit `58169bcc`, **VALIDE
+  SOUS RESERVE**. **`POS-R2` est levee** sur la propriete exacte que j'avais ecrite le 2026-09-06,
+  et **je corrige au passage ma propre formulation**, qui nommait la symetrie du triplet la ou la
+  propriete qui compte est la position de la bonne reponse. **`POS-R3` est ouverte** sur une lecture
+  residuelle que la correction laisse en place. **`MAT-CM1-05` reste `couvert-valide`, `POS-1` reste
+  exigee, et les trois blocs precedents restent lisibles avec leur motif entier.**
 
 ## Competence visee
 
@@ -432,3 +439,141 @@ pas disparu, il a ete contourne pour un paquet**. **Je decris le symptome ; la c
 - **`POS-R1`** : **LEVEE le 2026-09-06**, sur la propriete exacte que j'avais ecrite le 2026-09-05.
   **Non effacee** - son texte, son motif et le refus qu'elle a produit restent au-dessus.
 - **`POS-R2`** : **ouverte le 2026-09-06**, non bloquante, motif et propriete en section 2.
+
+---
+
+# Done pedagogique - 2026-09-06, quatrieme audit : rejeu borne de `POS-R2` (s30, instance B) - VALIDE SOUS RESERVE
+
+**Ce bloc s'ajoute. Il n'efface rien.** Les trois blocs precedents - le Done du 2026-09-04, le refus
+du 2026-09-05, la levee de `POS-R1` et l'ouverture de `POS-R2` du 2026-09-06 - restent lisibles en
+entier avec leurs motifs. **Un refus efface n'a aucune valeur de preuve, et une levee non plus.**
+
+- **Verdict** : **VALIDE SOUS RESERVE**
+- **Date** : 2026-09-06
+- **Audit joue** : **oui**
+- **Commit audite** : `58169bcc` (`[MARC] s30: S30-6 - bloc D, rejeu borne POS-R2 sur la division
+  posee CM1`).
+- **`POS-R2` est LEVEE. `POS-R3` est ouverte**, sur une lecture residuelle que la correction laisse
+  en place. **`MAT-CM1-05` reste `couvert-valide`, `POS-1` reste exigee.**
+
+## 1. Conditions du rejeu
+
+**J'ai joue**, et c'est ma propre regle : *"Je ne valide aucune correction de reserve sans rejouer le
+paquet corrige"* (arbitrage prealable de s30, refus 15). Arbre `round-two` a `dbbfe129`, jar
+reconstruit depuis mon propre worktree, port 8081. **Deux parties completes de dix manches par
+appels HTTP reels** : l'une avec une erreur volontaire par manche, l'autre avec **trois** erreurs par
+manche pour atteindre la revelation et verifier que l'ecran nomme bien le couple quotient-reste
+attendu. **Et j'ai recalcule les onze divisions**, dividende par dividende.
+
+**Les onze quotients et les onze restes sont exacts**, et chaque reste est strictement inferieur a
+son diviseur. Aucun distracteur ne porte un reste superieur ou egal au diviseur : la regle *"le reste
+est plus petit que le diviseur"*, que l'indice rappelle, **n'elimine aucune proposition** - c'etait
+deja vrai et ca l'est encore.
+
+## 2. La mesure, item par item
+
+Methode : lecture du fichier, calcul, et verification a l'ecran sur les manches servies.
+
+| Item | Bonne reponse | Les trois restes | Situation | Rang de la bonne parmi les quotients tries |
+|---|---|---|---|---|
+| 224 / 6 | 37 reste 2 | **2**, 4, 4 | **bonne au reste unique** | 1 |
+| 299 / 7 | 42 reste 5 | 5, 5, 5 | restes egaux, triplet 32/42/52 | **2 - au milieu** |
+| 213 / 4 | 53 reste 1 | **1**, 3, 3 | **bonne au reste unique** | 2 |
+| 234 / 9 | 26 reste 0 | 0, 0, 0 | restes egaux, triplet 26/36/46 | **1 - pas au milieu** |
+| 323 / 5 | 64 reste 3 | **3**, 1, 1 | **bonne au reste unique** | 3 |
+| 152 / 8 | 19 reste 0 | 0, 0, 5 | reste unique sur une fausse | 1 |
+| 215 / 3 | 71 reste 2 | 2, 2, 0 | reste unique sur une fausse | 3 |
+| 177 / 2 | 88 reste 1 | 1, 1, 1 | restes egaux, triplet 78/88/98 | **2 - au milieu** |
+| 312 / 9 | 34 reste 6 | 6, 6, 2 | reste unique sur une fausse | 1 |
+| 879 / 7 | 125 reste 4 | 4, 4, 1 | reste unique sur une fausse | 2 |
+| 351 / 6 | 58 reste 3 | **3**, 5, 5 | **bonne au reste unique** | 3 |
+
+**Trois familles, et les comptes** : **4** items ou la bonne porte le reste unique (1, 3, 5, 11),
+**4** items ou le reste unique est sur une proposition fausse (6, 7, 9, 10), **3** items a restes
+egaux (2, 4, 8). Rangs de la bonne : quatre fois 1, quatre fois 2, trois fois 3 - **aucun rang
+majoritaire, aucun absent.**
+
+## 3. `POS-R2` est levee, et je le motive contre le texte que j'avais ecrit
+
+Ma reserve du 2026-09-06 disait, mot pour mot :
+
+> *"**la bonne reponse n'est pas toujours du cote du reste partage.** Concretement : sur une part des
+> items, les **deux** distracteurs partagent un reste que la bonne reponse **n'a pas**, ou bien la
+> bonne reponse porte le reste unique. Et les items dont les trois restes sont egaux ne portent pas
+> **tous** un triplet de quotients symetrique, qui remet mecaniquement la bonne au milieu."*
+
+**Premiere partie : tenue.** Sur les huit items a reste unique, la bonne le porte **quatre fois**.
+Avant la correction, c'etait **zero fois sur huit**.
+
+**Seconde partie : tenue dans ce qu'elle demandait, et je corrige ma propre formulation avant de
+m'appuyer dessus.** Les trois triplets de quotients restent arithmetiquement symetriques - 32/42/52,
+26/36/46, 78/88/98, tous a pas constant de 10. **Mon texte nommait la mauvaise propriete** : ce qui
+donne la reponse sans diviser n'est pas la symetrie du triplet, c'est **la position de la bonne au
+milieu**. C'est d'ailleurs ce que ma propre phrase disait juste apres - *"qui remet mecaniquement la
+bonne au milieu"*. `marc-dev` a casse cela sur l'item 234 / 9, ou la bonne est la plus petite des
+trois valeurs. **La chose que je demandais de casser est cassee ; c'est le nom que je lui avais donne
+qui etait imprecis.** La correction est de moi, elle porte sur mon texte, et elle ne change pas le
+verdict.
+
+**L'effet mesure sur la strategie qui ne pose aucune division.** Ma strategie composee du 2026-09-06
+- *"si les trois restes sont egaux, presser le quotient du milieu ; sinon ecarter la proposition au
+reste unique et jouer a pile ou face entre les deux qui restent"* - donnait **7 items sur 11
+(63,6 %)**. Elle en donne desormais **4 sur 11 (36,4 %)**, contre 33,3 % au hasard. **Elle est
+morte.**
+
+> **`POS-R2` : LEVEE le 2026-09-06.** La propriete que j'avais ecrite est atteinte. **Elle n'est pas
+> effacee** : son texte, sa mesure et le tableau qui l'a produite restent lisibles plus haut dans
+> cette fiche. **Une equipe qui atteint la barre que j'ai ecrite moi-meme voit sa reserve levee, meme
+> quand je vois desormais mieux.**
+
+## 4. `POS-R3` - ce que je vois desormais mieux, ecrit comme une reserve neuve et non comme un durcissement
+
+**Ouverte le 2026-09-06, non bloquante. Ce n'est pas `POS-R2` relevee d'un cran** : `POS-R2` est
+atteinte et levee ci-dessus, et je ne rouvre pas une barre franchie. **C'est un poteau neuf, plante a
+cote de l'ancien.** J'ai fait exactement cela le 2026-09-06 entre `POS-R1` et `POS-R2`, et le motif
+est le meme.
+
+**Ce que la correction laisse en place, mesure sur la serie corrigee :**
+
+1. **La proposition qui porte le reste unique est la bonne 4 fois sur les 8 items qui en ont une,
+   soit 50 %.** Une proposition designee au hasard serait bonne 33 % du temps. **La strategie
+   *"presser la proposition dont le reste differe des deux autres"* rapporte donc 4 items sur 8**, la
+   ou le hasard en rapporte 2,7. Le signal a change de sens - il etait *"toujours faux"*, il est
+   maintenant *"vrai une fois sur deux"* - mais il reste informatif.
+2. **Deux des trois items a restes egaux mettent encore la bonne au milieu** (299 / 7 et 177 / 2).
+
+**La meilleure strategie sans division sur la serie corrigee** - *"si les trois restes sont egaux,
+presser le quotient du milieu ; sinon presser la proposition au reste unique"* - **rapporte 6 items
+sur 11, soit 54,5 %, contre 33,3 % au hasard.** Avant la correction, la meilleure strategie
+rapportait 63,6 %. **La correction a fait gagner un item sur onze a l'enfant qui pose reellement la
+division.**
+
+> **`POS-R3`, ouverte le 2026-09-06, non bloquante. Propriete a tenir, et elle porte sur la serie** :
+> **sur les items dont un seul reste differe des deux autres, la bonne reponse porte ce reste unique
+> environ une fois sur trois, jamais une fois sur deux.** Concretement, sur huit items de cette
+> famille : **deux ou trois**, pas quatre. **Et sur les items a restes egaux, la bonne n'est au milieu
+> du triplet de quotients que sur une minorite d'entre eux.**
+> **Les valeurs sont a `marc-dev` ; je donne la propriete.**
+
+**Ce que `POS-R3` coute et ce qu'elle ne ferme pas, dit sans adoucissement** : **regime rejeu borne,
+0,5**, et elle **ne ferme aucune ligne** - `MAT-CM1-05` est deja `couvert-valide`. Le correctif porte
+sur quelques nombres. **`camille-po` decide si un item sur onze vaut 0,5 de ma borne** ; c'est son
+arbitrage, pas le mien, et je l'ecris pour qu'il puisse etre pris en connaissance de cause.
+
+## 5. Ce dont je reste la seule garde, mis a jour au 2026-09-06 (quatrieme audit)
+
+| Propriete | Qui la tient |
+|---|---|
+| **Le rang de la bonne reponse parmi les quotients** | **plus moi seule** : le test local le mord depuis le 2026-09-06, et je l'ai revalide sur la serie corrigee - quatre rangs 1, quatre rangs 2, trois rangs 3 |
+| **`POS-R3`** - la frequence a laquelle la bonne porte le reste unique | **moi seule.** Aucun test ne compare les **restes** des propositions d'un item, ni d'un item a l'autre. **C'est pourtant une propriete arithmetique du YAML, donc mordable** : je dis la propriete, jamais la forme - route a `theo-archi` pour la troisieme fois sur ce paquet |
+| **`POS-1`** - que la mention soit ecrite dans la matrice | **moi**, et **`camille-po`** en l'ecrivant |
+| **`POS-3`** - qu'un distracteur soit vraiment l'erreur qu'il declare | **moi seule** pour le jugement. **Non rejouee dans ce quatrieme audit** : le correctif a change des valeurs, et je n'ai pas reverifie que chaque distracteur neuf incarne toujours l'erreur classique qu'il declare. **Je le dis plutot que de laisser croire que c'est couvert** |
+| **L'exactitude des onze divisions** | **moi**, mais recalculable par quiconque - et recalculee ce jour |
+
+## 6. Etat des reserves de ce jeu au 2026-09-06, apres le quatrieme audit
+
+- **`POS-1`** : **inchangee**, toujours exigee, mention a reprendre mot pour mot dans la matrice.
+- **`POS-R1`** : **levee le 2026-09-06** (troisieme audit). Non effacee.
+- **`POS-R2`** : **LEVEE le 2026-09-06** (quatrieme audit), sur la propriete exacte que j'avais
+  ecrite. **Non effacee** - son texte et sa mesure restent lisibles plus haut.
+- **`POS-R3`** : **ouverte le 2026-09-06**, non bloquante, motif et propriete en section 4.
