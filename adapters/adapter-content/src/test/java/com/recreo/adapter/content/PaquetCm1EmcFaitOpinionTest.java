@@ -43,6 +43,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * demande une comparaison semantique entre deux referentiels) ne sont pas automatisables ici et
  * restent non gardees. {@code HIS-3} est sans objet sur ce paquet : les scenarios sont fictifs, le
  * commentaire du paquet le dit deja.</p>
+ *
+ * <p><b>Correction du 2026-09-06 (s30, reprise bloc E, S30-7, squad/conformite/FICHE-bandit-
+ * manchot-fait-opinion-cm1.md, second audit s29, sections 4 a 6)</b> : deux reserves neuves,
+ * {@code FOP-R2} et {@code FOP-R3}. {@code FOP-R1} (la consigne de catalogue decrit une tache que
+ * les items de verification ne demandent pas) n'est pas traitee ici : sa correction porte sur
+ * {@code catalogue.yaml}, dont {@code lea-dev} est la seule ecrivaine de s30 (planning s30, section
+ * 5.1) - routee a {@code sofia-sm}, pas tranchee par ce commit.</p>
  */
 class PaquetCm1EmcFaitOpinionTest {
 
@@ -163,5 +170,56 @@ class PaquetCm1EmcFaitOpinionTest {
                     .as("item %s : deux distracteurs attendus", item.id().value())
                     .hasSize(2);
         }
+    }
+
+    /**
+     * Les cinq expressions d'absence de verification que {@code FOP-R2} retire. Un distracteur qui
+     * declare litteralement qu'on ne verifie rien se repere sans comprendre la competence.
+     */
+    private static final List<String> EXPRESSIONS_D_ABSENCE_DE_VERIFICATION = List.of(
+            "à toute la classe parce que ça semble amusant à raconter",
+            "parce que le score est impressionnant",
+            "immédiatement à tout le monde",
+            "parce que ça lui semble inquiétant",
+            "en imaginant une explication supplémentaire");
+
+    /**
+     * {@code FOP-R2} (nadia-prof, 2026-09-06, S30-7) : les cinq distracteurs qui disaient encore une
+     * absence de verification en toutes lettres ont disparu ; les dix distracteurs de verification
+     * disent chacun une methode reellement tentee mais insuffisante.
+     */
+    @Test
+    void fopR2AucunDistracteurDeVerificationNeDeclarePlusUneAbsenceDeVerification() {
+        List<String> distracteurs = itemsDeVerification().stream()
+                .flatMap(item -> item.distracteurs().stream())
+                .toList();
+
+        assertThat(distracteurs).as("dix distracteurs de verification").hasSize(10);
+
+        for (String expression : EXPRESSIONS_D_ABSENCE_DE_VERIFICATION) {
+            assertThat(distracteurs)
+                    .as("FOP-R2 : aucun distracteur ne doit plus contenir '%s'", expression)
+                    .noneMatch(distracteur -> distracteur.contains(expression));
+        }
+    }
+
+    /**
+     * {@code FOP-R3} (nadia-prof, 2026-09-06, S30-7) : sur l'item dont la bonne reponse est "en
+     * demandant directement à un adulte de l'école", la question porte desormais sur la verite de
+     * l'information, pas sur son origine - l'adulte de l'ecole n'etant pas la source du camarade qui
+     * a parle.
+     */
+    @Test
+    void fopR3LItemSurLAdulteDeLEcoleInterrogeLaVeriteEtNonLOrigine() {
+        Question item = itemsDeVerification().stream()
+                .filter(candidat -> "en demandant directement à un adulte de l'école"
+                        .equals(candidat.bonneReponse()))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(item.enonce())
+                .as("FOP-R3 : la question porte sur la verite, pas sur l'origine")
+                .contains("Comment peut-elle savoir si c'est vrai")
+                .doesNotContain("d'où vient cette information");
     }
 }

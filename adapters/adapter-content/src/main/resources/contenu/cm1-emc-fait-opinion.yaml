@@ -36,6 +36,10 @@ lignesDeReferentiel: ["EMC-CM1-11"]
 #    (squad/sprints/s29-parallelisation-et-dettes-payees/rapport-qualite.md, section 4.1). Les enonces
 #    sont aussi recentres sur l'origine de l'information (a qui elle revient, pas seulement si elle
 #    est vraie), plus proche du libelle "verifier l'origine d'une information".
+#    Amendement du 2026-09-06 (s30, FOP-R2) : ce chiffre de "huit" etait faux, trouve par nadia-prof
+#    en comptant un par un - cinq distracteurs seulement disaient une methode insuffisante, cinq
+#    disaient encore "repeter sans verifier" ou une absence de verification (dont l'un des deux
+#    "inchanges" cites ci-dessus, "en imaginant une explication supplementaire"). Corrige plus bas.
 #
 # FER-1 : les deux notions du libelle sont chacune en position de bonne reponse - "un fait" (items 1,
 # 5, 9) et "une opinion" (items 3, 7, 11).
@@ -68,6 +72,27 @@ lignesDeReferentiel: ["EMC-CM1-11"]
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
+#
+# Correction du 2026-09-06 (s30, reprise bloc E, S30-7, squad/conformite/FICHE-bandit-manchot-fait-
+# opinion-cm1.md, second audit s29, sections 4 a 6) : deux des trois reserves de ce paquet sont
+# corrigees dans ce geste.
+# - FOP-R2 : sur les dix distracteurs de verification, cinq disaient encore litteralement "sans
+#   rien verifier" ou "repeter sans verifier", reconnaissables a leur seule absence de verification
+#   plutot qu'a une methode reellement tentee mais insuffisante, contrairement a ce que ce
+#   commentaire affirmait deja avant cette correction. Les cinq sont reecrits (items 2, 4, 6, 8 -
+#   premier distracteur - et 8 - second distracteur) pour dire chacun une methode de verification
+#   reellement tentee mais insuffisante (une corroboration secondaire non verifiee, la frequence
+#   d'une rumeur, l'assurance apparente de qui la raconte, l'age de qui la raconte, l'absence de
+#   dementi) ; les cinq autres, deja conformes, restent inchanges.
+# - FOP-R3 : sur l'item 8, la question demandait l'origine d'une information ("d'ou vient cette
+#   information") alors que la bonne reponse ("en demandant directement a un adulte de l'ecole")
+#   repond a la question de la verite, l'adulte de l'ecole n'etant pas la source du camarade qui a
+#   parle. La question redevient "comment savoir si c'est vrai", bonne reponse et distracteurs
+#   inchanges.
+# FOP-R1 (la consigne de catalogue, "Lis bien, puis dis si c'est un fait ou une opinion.", decrit une
+# tache que les cinq items de verification ne demandent pas) reste ouverte : sa correction porte sur
+# catalogue.yaml, dont lea-dev est la seule ecrivaine de ce sprint (planning s30, section 5.1) - route
+# a sofia-sm plutot que traitee ici.
 items:
   - enonce: "« Il a plu toute la matinée sur la cour de récréation aujourd'hui. » Fait ou opinion ?"
     bonneReponse: "un fait"
@@ -75,7 +100,7 @@ items:
     indice: "On peut vérifier ce genre d'information en regardant dehors ou en demandant à quelqu'un qui était présent."
   - enonce: "Aya entend dire qu'il va neiger pendant les vacances. Comment peut-elle vérifier d'où vient cette information avant de la répéter ?"
     bonneReponse: "en regardant plusieurs prévisions météo ou en demandant à un adulte"
-    distracteurs: ["en la répétant à toute la classe parce que ça semble amusant à raconter", "en la croyant parce qu'un seul camarade l'a dit"]
+    distracteurs: ["en la croyant parce que plusieurs camarades en parlent aussi, sans savoir où eux-mêmes l'ont appris", "en la croyant parce qu'un seul camarade l'a dit"]
     indice: "Une information se vérifie avant d'être partagée, pas après."
   - enonce: "« Le foot est le sport le plus intéressant du monde. » Fait ou opinion ?"
     bonneReponse: "une opinion"
@@ -83,7 +108,7 @@ items:
     indice: "Chacun peut préférer un sport différent, sans que personne n'ait tort."
   - enonce: "Malo raconte qu'une équipe a gagné le tournoi de la récréation par un score énorme. Comment Léa peut-elle vérifier l'origine de cette information avant de la répéter ?"
     bonneReponse: "en demandant à plusieurs élèves qui ont vu le match"
-    distracteurs: ["en la répétant parce que le score est impressionnant", "en la croyant parce que Malo l'a dit une seule fois"]
+    distracteurs: ["en la croyant parce que Malo raconte la même histoire à chaque récréation", "en la croyant parce que Malo l'a dit une seule fois"]
     indice: "Plusieurs témoins qui racontent la même chose rendent une information plus sûre."
   - enonce: "« Hugo a marqué trois buts pendant le match de la récréation. » Fait ou opinion ?"
     bonneReponse: "un fait"
@@ -91,15 +116,15 @@ items:
     indice: "On peut vérifier ce genre d'information en demandant à ceux qui ont joué ou regardé le match."
   - enonce: "Hugo entend une rumeur selon laquelle l'école fermera demain. Comment peut-il connaître l'origine de cette rumeur avant d'en parler à ses camarades ?"
     bonneReponse: "en vérifiant l'information auprès d'un adulte de l'école"
-    distracteurs: ["en la répétant immédiatement à tout le monde", "en en discutant avec un seul camarade qui a entendu la même rumeur"]
+    distracteurs: ["en la croyant parce que le camarade qui la raconte a l'air très sûr de lui", "en en discutant avec un seul camarade qui a entendu la même rumeur"]
     indice: "Un adulte de l'école connaît les informations vraies sur son fonctionnement."
   - enonce: "« Cette histoire racontée à la récréation est plus drôle que celle d'hier. » Fait ou opinion ?"
     bonneReponse: "une opinion"
     distracteurs: ["un fait"]
     indice: "Trouver une histoire plus drôle qu'une autre dépend du goût de chacun."
-  - enonce: "Aya a entendu un camarade dire que sa maîtresse était malade. Comment peut-elle savoir d'où vient cette information ?"
+  - enonce: "Aya a entendu un camarade dire que sa maîtresse était malade. Comment peut-elle savoir si c'est vrai ?"
     bonneReponse: "en demandant directement à un adulte de l'école"
-    distracteurs: ["en le répétant à tout le monde parce que ça lui semble inquiétant", "en imaginant une explication supplémentaire"]
+    distracteurs: ["en le croyant parce qu'un grand de l'école l'a dit", "en le croyant parce que personne ne l'a démenti"]
     indice: "Une seule personne peut se tromper ; un adulte de l'école a l'information exacte."
   - enonce: "« Il a fait trois degrés ce matin, d'après le thermomètre de la classe. » Fait ou opinion ?"
     bonneReponse: "un fait"
