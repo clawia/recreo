@@ -587,7 +587,25 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"le renard\", \"la chouette\"...) ou des consequences en texte libre (\"il"
                     + " risquerait de manquer de nourriture\"...), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-09-06 sur le paquet servi : aucune"
-                    + " des 33 propositions ne commence par un chiffre"));
+                    + " des 33 propositions ne commence par un chiffre"),
+            // S30-2 : deux paquets neufs de sciences et technologie CM1, second lot (SCI-CM1-02,
+            // SCI-CM1-12).
+            Map.entry("cm1-sciences-melanges",
+            "11 items sur 11 : cinq items (tache de classement) portent un seul distracteur (deux"
+                    + " propositions) et six items (l'item eau/huile, meme tache, et les cinq items de"
+                    + " la tache de separation) portent deux distracteurs (trois propositions), mais"
+                    + " aucune des 28 propositions n'est numerique : ce sont des types de mélange"
+                    + " (\"un mélange homogène\", \"un mélange hétérogène\") ou des moyens de"
+                    + " séparation en texte libre (\"utiliser un filtre\"...), valeurDe rend null sur"
+                    + " toutes les propositions. Mesure du 2026-09-06 sur le paquet servi"),
+            Map.entry("cm1-sciences-objet-technique",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des fonctions d'objets techniques"
+                    + " (\"à se déplacer\", \"à éclairer dans le noir\"...), des noms de composants"
+                    + " (\"la chaîne\", \"la pile\"...) ou une description de fonctionnement en texte"
+                    + " libre, valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-06 sur le paquet servi : aucune des 33 propositions ne commence par un"
+                    + " chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

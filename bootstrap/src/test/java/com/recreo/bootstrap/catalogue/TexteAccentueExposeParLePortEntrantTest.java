@@ -203,6 +203,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // CM1, matiere neuve du produit (signal/information, chaine alimentaire).
             "bandit-manchot-signal-information-cm1",
             "bandit-manchot-chaine-alimentaire-cm1",
+            // S30-2 (backlog S30-2) : deux entrees neuves, second lot de sciences et technologie
+            // CM1 (mélanges, objet technique).
+            "bandit-manchot-melanges-cm1",
+            "bandit-manchot-objet-technique-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -305,6 +309,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S30-1 : deux titres neufs.
             "Signal et information",
             "Qui mange qui ?",
+            // S30-2 : deux titres neufs.
+            "Mélanges et séparations",
+            "Comment ça marche ?",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -400,6 +407,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S30-1 : deux consignes neuves.
             "Lis bien, puis dis quel est le signal, ou ce qu'il veut dire.",
             "Lis bien, puis dis qui mange qui, ou ce qui pourrait arriver.",
+            // S30-2 : deux consignes neuves.
+            "Lis bien, puis dis si le mélange est homogène ou hétérogène, ou choisis le bon moyen "
+                    + "de le séparer.",
+            "Lis bien, puis dis à quoi sert l'objet, ou nomme sa pièce.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -451,6 +462,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S30-1 : deux domaines neufs, premier lot de sciences et technologie CM1.
             "Matière, mouvement, énergie, information",
             "La planète Terre. Les êtres vivants dans leur environnement",
+            // S30-2 : domaine neuf, second lot de sciences et technologie CM1.
+            "Matériaux et objets techniques",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -589,7 +602,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Identifier un signal et une information dans quelques objets du quotidien (feu "
                     + "tricolore, panneau, alarme, écran).",
             "Décrire un milieu proche : les êtres vivants qui le peuplent et les relations "
-                    + "alimentaires qui les relient (chaîne alimentaire).");
+                    + "alimentaires qui les relient (chaîne alimentaire).",
+            // S30-2 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/sciences-et-technologie/competences-cm1.md, lignes SCI-CM1-02 et
+            // SCI-CM1-12).
+            "Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de "
+                    + "séparer les constituants d'un mélange.",
+            "Identifier la fonction d'un objet technique, nommer ses composants et décrire son "
+                    + "fonctionnement.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

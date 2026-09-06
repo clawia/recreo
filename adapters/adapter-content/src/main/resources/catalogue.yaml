@@ -342,3 +342,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-chaine-alimentaire
     nombreDeManches: 10
+  - id: bandit-manchot-melanges-cm1
+    titre: "Mélanges et séparations"
+    consigne: "Lis bien, puis dis si le mélange est homogène ou hétérogène, ou choisis le bon moyen de le séparer."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-melanges
+    nombreDeManches: 10
+  - id: bandit-manchot-objet-technique-cm1
+    titre: "Comment ça marche ?"
+    consigne: "Lis bien, puis dis à quoi sert l'objet, ou nomme sa pièce."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-objet-technique
+    nombreDeManches: 10
