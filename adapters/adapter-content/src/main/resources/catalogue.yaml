@@ -254,13 +254,13 @@ jeux:
     consigneAdulte: "Dites le mot entier, jamais le son tout seul. Ne montrez pas cette ligne à l'enfant."
   - id: bandit-manchot-vivant-non-vivant-cp
     titre: "Vivant ou pas vivant"
-    consigne: "Lis bien, puis dis si c'est un être vivant."
+    consigne: "Lis bien, puis dis si c'est un être vivant, ou lequel des trois l'est."
     mecanique: bandit-manchot
     paquet: cp-qlm-vivant-non-vivant
     nombreDeManches: 10
   - id: bandit-manchot-corps-sens-cp
     titre: "Le corps et les sens"
-    consigne: "Lis bien, puis nomme la partie du corps ou le sens."
+    consigne: "Lis bien, puis nomme la partie du corps."
     mecanique: bandit-manchot
     paquet: cp-qlm-corps-sens
     nombreDeManches: 10
@@ -284,13 +284,13 @@ jeux:
     nombreDeManches: 10
   - id: bandit-manchot-histoire-geographie-cm1
     titre: "Histoire et géographie"
-    consigne: "Lis bien, puis réponds à la question d'histoire ou de géographie."
+    consigne: "Lis bien, puis situe dans le temps, ou associe un roi à son fait."
     mecanique: bandit-manchot
     paquet: cm1-histoire-geographie
     nombreDeManches: 10
   - id: bandit-manchot-anglais-cm1
     titre: "Anglais"
-    consigne: "Traduis le mot, ou réponds à la question de culture anglaise."
+    consigne: "Traduis le mot, ou réponds à la question sur les pays anglophones."
     mecanique: bandit-manchot
     paquet: cm1-anglais
     nombreDeManches: 10
@@ -326,7 +326,7 @@ jeux:
     nombreDeManches: 10
   - id: bandit-manchot-droit-devoir-cm1
     titre: "Droits et devoirs"
-    consigne: "Lis bien, puis dis si c'est un droit ou un devoir."
+    consigne: "Lis bien, puis dis si c'est un droit ou un devoir, ou à quoi ça sert."
     mecanique: bandit-manchot
     paquet: cm1-emc-droit-devoir
     nombreDeManches: 10

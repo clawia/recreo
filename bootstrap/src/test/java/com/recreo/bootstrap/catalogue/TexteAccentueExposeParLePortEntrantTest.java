@@ -400,16 +400,20 @@ class TexteAccentueExposeParLePortEntrantTest {
             // entrees qui la partageaient encore (questionner le monde CP, histoire-geographie
             // CM1, anglais CM1, EMC CP, EMC CM1) portent chacune desormais une consigne propre,
             // listee ici meme si son paquet est ne a un sprint anterieur.
-            "Lis bien, puis dis si c'est un être vivant.",
-            "Lis bien, puis nomme la partie du corps ou le sens.",
             "Lis bien, puis dis si l'eau est solide ou liquide, ou nomme le changement d'état.",
             "Lis bien, puis dis ce que fait l'être vivant, ou réponds par oui ou par non.",
             "Lis bien, puis dis à quoi sert l'objet, ou nomme sa partie.",
-            "Lis bien, puis réponds à la question d'histoire ou de géographie.",
-            "Traduis le mot, ou réponds à la question de culture anglaise.",
             "Lis bien, puis dis ce qu'il faut faire, ou pourquoi.",
             "Lis bien, puis dis ce que fait la personne, ou pourquoi c'est interdit.",
-            "Lis bien, puis dis si c'est un droit ou un devoir.",
+            // Correction du 2026-09-06 (lea-dev, audit de l'instance A, CONS-1,
+            // squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md,
+            // section 7.3) : cinq des dix consignes reecrites a S30-9 ne tenaient pas contre le
+            // paquet qu'elles introduisent. Reecrites une seconde fois, chacune contre son paquet.
+            "Lis bien, puis dis si c'est un être vivant, ou lequel des trois l'est.",
+            "Lis bien, puis nomme la partie du corps.",
+            "Lis bien, puis situe dans le temps, ou associe un roi à son fait.",
+            "Traduis le mot, ou réponds à la question sur les pays anglophones.",
+            "Lis bien, puis dis si c'est un droit ou un devoir, ou à quoi ça sert.",
             // S28-4 : deux consignes neuves.
             "Pose l'opération, puis choisis le bon résultat.",
             "Pose l'opération, puis choisis le bon quotient et le bon reste.",
