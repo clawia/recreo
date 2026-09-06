@@ -28,11 +28,14 @@ lignesDeReferentiel: ["EMC-CM1-11"]
 #    (un fait contre une opinion), sans troisieme bouton qui melangerait les deux axes.
 # 3) Sur les cinq items de verification, au moins un distracteur declarait litteralement qu'on ne
 #    verifiait rien ("sans rien verifier", "sans le relire"...), ce qui se repere sans comprendre la
-#    competence. Les dix distracteurs sont reecrits pour dire une methode de verification reellement
-#    tentee mais insuffisante (une seule source, un indice trompeur), jamais l'absence de verification
-#    en toutes lettres. Les enonces sont aussi recentres sur l'origine de l'information (a qui elle
-#    revient, pas seulement si elle est vraie), plus proche du libelle "verifier l'origine d'une
-#    information".
+#    competence. Huit des dix distracteurs sont reecrits pour dire une methode de verification
+#    reellement tentee mais insuffisante (une seule source, un indice trompeur), jamais l'absence de
+#    verification en toutes lettres ; les deux autres (items 4 et 8, "en la croyant parce que Malo l'a
+#    dit une seule fois" et "en imaginant une explication supplementaire") disaient deja cela avant la
+#    reprise et sont inchanges - trouve par yanis-qa au diff direct
+#    (squad/sprints/s29-parallelisation-et-dettes-payees/rapport-qualite.md, section 4.1). Les enonces
+#    sont aussi recentres sur l'origine de l'information (a qui elle revient, pas seulement si elle
+#    est vraie), plus proche du libelle "verifier l'origine d'une information".
 #
 # FER-1 : les deux notions du libelle sont chacune en position de bonne reponse - "un fait" (items 1,
 # 5, 9) et "une opinion" (items 3, 7, 11).

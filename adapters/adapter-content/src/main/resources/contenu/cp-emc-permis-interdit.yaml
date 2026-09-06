@@ -19,8 +19,12 @@ lignesDeReferentiel: ["EMC-CP-02"]
 # dans le meme geste.
 # 1) Charge de lecture d'un autre niveau et systematique (mediane mesuree a 15 mots, maximum 20, deux
 #    enonces a 20 mots, contre une mediane de 10 et un maximum de 15 sur le paquet jumeau du meme jour).
-#    Tous les enonces sont reecrits en une seule phrase de situation plus une question courte ; profil
-#    mesure apres correction : mediane 10, maximum 14.
+#    Neuf des onze enonces sont reecrits en une seule phrase de situation plus une question courte ;
+#    les deux autres (items 2 et 4, "Pourquoi est-il interdit de se moquer d'un camarade ?" et
+#    "Pourquoi est-il interdit d'insulter un camarade ?") sont inchanges et restent des questions
+#    directes, sans phrase de situation - trouve par yanis-qa au diff direct
+#    (squad/sprints/s29-parallelisation-et-dettes-payees/rapport-qualite.md, section 4.2). Le profil
+#    de longueur (mediane 10, maximum 14), lui, est exact sur les onze enonces actuels.
 # 2) L'item 9 portait sa reponse dans son enonce ("une moquerie" au mot pres dans la question et dans
 #    la bonneReponse) : la situation est reecrite sans le mot a trouver, et sans la confusion avec l'axe
 #    vrai/faux que relevait aussi nadia-prof (l'ancienne situation - une histoire inventee racontee a
