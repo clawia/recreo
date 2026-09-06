@@ -43,8 +43,8 @@ class PaquetCm1SciencesObjetTechniqueTest {
 
     /** Bonne reponse des items qui servent l'element "la fonction" du libelle. */
     private static final Set<String> REPONSES_DE_FONCTION = Set.of(
-            "à se déplacer", "à éclairer dans le noir", "à tailler la pointe d'un crayon",
-            "à brasser l'air pour rafraîchir");
+            "à se déplacer plus vite et avec moins d'effort", "à éclairer dans le noir",
+            "à tailler la pointe d'un crayon", "à brasser l'air d'une salle, sans jamais le refroidir");
 
     /** Bonne reponse des items qui servent l'element "un composant" du libelle. */
     private static final Set<String> REPONSES_DE_COMPOSANT = Set.of(

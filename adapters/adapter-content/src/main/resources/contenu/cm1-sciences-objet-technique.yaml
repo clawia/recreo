@@ -24,6 +24,21 @@ lignesDeReferentiel: ["SCI-CM1-12"]
 # donnee. L'item de fonctionnement s'ajoute aux deux sans en former une troisieme au sens de FER-3
 # (deux taches suffisent, chacune au-dessus du plancher de trois items).
 #
+# Correction du 2026-09-06 (lea-dev, audit de l'instance B,
+# squad/conformite/FICHE-bandit-manchot-objet-technique-cm1.md, commit audite 5824e752, Done
+# pedagogique REFUSE le 2026-09-06 par nadia-prof) : les quatre items de la tache A (fonction)
+# reproduisaient le defaut nomme OBJ-R2 - les deux distracteurs de chaque item etaient toujours les
+# fonctions des trois autres objets du paquet, si bien qu'un enfant ignorant tout de l'objet nomme
+# les eliminait quand meme ; et la tache demandait moins que le niveau du CP ("A quoi sert un velo ?"
+# quand le CP sert deja parapluie, ciseaux, stylo). Les quatre items sont reecrits : chaque
+# distracteur est desormais une fonction plausible pour l'objet nomme et pour lui seul, et l'angle
+# de la question porte sur un aspect de la fonction qui n'est pas evident a neuf ans (le velo compare
+# a la marche, le ventilateur qui deplace l'air sans le refroidir - une conception fausse repandue,
+# comme pour l'item 11). La tache B et l'item 11, non concernes par le refus, sont inchanges.
+# Corrige dans le meme geste, sans rejeu supplementaire selon nadia-prof : l'indice de l'item du
+# ventilateur employait "piece" au sens de salle juste apres six items qui l'emploient au sens de
+# composant ; il dit desormais "salle".
+#
 # CON-1 : aucun item ne se resout sans connaitre l'objet et la piece ou le mecanisme qu'il decrit.
 #
 # HIS-3 (chaque fait porte sa source) : le fonctionnement d'un vélo (pédalier, chaîne, roue), d'une
@@ -39,22 +54,22 @@ lignesDeReferentiel: ["SCI-CM1-12"]
 #
 # FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
 items:
-  - enonce: "À quoi sert un vélo ?"
-    bonneReponse: "à se déplacer"
-    distracteurs: ["à éclairer dans le noir", "à tailler un crayon"]
-    indice: "On l'utilise pour aller d'un endroit à un autre, en pédalant."
+  - enonce: "À quoi sert un vélo, plutôt qu'à marcher, pour un long trajet ?"
+    bonneReponse: "à se déplacer plus vite et avec moins d'effort"
+    distracteurs: ["à se déplacer aussi vite qu'une voiture", "à se déplacer sans aucun effort"]
+    indice: "En pédalant, on avance plus vite qu'à pied, pour une fatigue proche."
   - enonce: "À quoi sert une lampe de poche ?"
     bonneReponse: "à éclairer dans le noir"
-    distracteurs: ["à se déplacer", "à brasser l'air"]
-    indice: "On l'allume quand il n'y a pas assez de lumière."
+    distracteurs: ["à réchauffer les mains", "à recharger un téléphone"]
+    indice: "On l'allume quand il n'y a pas assez de lumière, jamais pour se réchauffer ni recharger un appareil."
   - enonce: "À quoi sert un taille-crayon ?"
     bonneReponse: "à tailler la pointe d'un crayon"
-    distracteurs: ["à éclairer dans le noir", "à se déplacer"]
-    indice: "On l'utilise quand la pointe d'un crayon est devenue trop usée."
-  - enonce: "À quoi sert un ventilateur ?"
-    bonneReponse: "à brasser l'air pour rafraîchir"
-    distracteurs: ["à tailler un crayon", "à éclairer dans le noir"]
-    indice: "Il déplace l'air d'une pièce sans jamais le refroidir vraiment."
+    distracteurs: ["à effacer ce qu'on a écrit au crayon", "à ranger les crayons dans une trousse"]
+    indice: "On l'utilise quand la pointe d'un crayon est devenue trop usée, jamais pour effacer ni pour ranger."
+  - enonce: "À quoi sert un ventilateur, alors qu'il donne une impression de fraîcheur ?"
+    bonneReponse: "à brasser l'air d'une salle, sans jamais le refroidir"
+    distracteurs: ["à refroidir réellement l'air d'une salle", "à purifier l'air d'une salle"]
+    indice: "Il déplace l'air d'une salle ; il ne le rend jamais plus froid."
   - enonce: "Dans un vélo, quelle pièce fait tourner la roue arrière quand on pédale ?"
     bonneReponse: "la chaîne"
     distracteurs: ["le guidon", "la sonnette"]

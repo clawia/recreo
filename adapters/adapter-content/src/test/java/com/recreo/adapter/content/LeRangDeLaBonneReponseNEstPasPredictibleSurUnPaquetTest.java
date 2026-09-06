@@ -603,11 +603,12 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             Map.entry("cm1-sciences-objet-technique",
             "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
                     + " propositions n'est numerique : ce sont des fonctions d'objets techniques"
-                    + " (\"à se déplacer\", \"à éclairer dans le noir\"...), des noms de composants"
-                    + " (\"la chaîne\", \"la pile\"...) ou une description de fonctionnement en texte"
-                    + " libre, valeurDe rend null sur les trois propositions de chaque item. Mesure du"
-                    + " 2026-09-06 sur le paquet servi : aucune des 33 propositions ne commence par un"
-                    + " chiffre"));
+                    + " (\"à se déplacer plus vite et avec moins d'effort\", \"à éclairer dans le"
+                    + " noir\"...), des noms de composants (\"la chaîne\", \"la pile\"...) ou une"
+                    + " description de fonctionnement en texte libre, valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-06 sur le paquet servi, apres la"
+                    + " reprise du 2026-09-06 (squad/conformite/FICHE-bandit-manchot-objet-technique-"
+                    + "cm1.md) : aucune des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
