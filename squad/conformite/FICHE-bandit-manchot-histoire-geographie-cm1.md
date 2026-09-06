@@ -3,10 +3,11 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-histoire-geographie.yaml`.
 - **Entree de catalogue** : `bandit-manchot-histoire-geographie-cm1`, titre servi *"Histoire et géographie"*, `nombreDeManches: 10`.
+- **Statut global s29** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** sur l'increment de s29, composition A, stories `S29-2` et `S29-7`). **Trois lignes de plus ferment** : `HG-CM1-06`, `HG-CM1-07` et `HG-CM1-14` passent a `couvert-valide`, avec une **mention exigee d'avance sur la ligne 14**. **Six lignes du paquet restent `en cours`** (section 8 du bloc de s29). `HG-R4` et `HG-R5` sont **levees** ; deux reserves nouvelles, non bloquantes : `HG-R6` et `HG-R7`.
 - **Statut global s28** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-04** sur l'increment de s28, composition B). **Deux lignes ferment** : `HG-CM1-11` et `HG-CM1-13` passent a `couvert-valide`. **Les neuf autres lignes du paquet restent `en cours`** et personne ne doit s'en etonner : je l'avais ecrit d'avance. Deux reserves nommees, non bloquantes, `HG-R4` et `HG-R5`.
 - **Statut s27, conserve tel quel** : **VALIDE** (Done pedagogique prononce le 2026-09-03). **Ma reserve bloquante du 2026-09-03 sur l'item 5 est levee** : la reformulation est reprise mot pour mot. Lignes de matrice `non couvert` -> **`en cours`** - premier paquet d'une matiere neuve, aucune ligne ne se ferme.
 - **Arbitrage prealable de `nadia-prof`** : `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` sections 5, 7.2, 7.4 et 7.5 (`HIS-1` a `HIS-3`, `BIA-5`) ; `ARBITRAGE-s27-s1-8-retrecie-unite-de-ma-borne-et-trois-faits-d-histoire.md` section 3.
-- **Derniere mise a jour** : 2026-09-04 (**second verdict de `nadia-prof` apres avoir rejoue**, s28).
+- **Derniere mise a jour** : 2026-09-06 (**troisieme verdict de `nadia-prof` apres avoir rejoue et lu les cinquante-sept items**, s29).
 
 ## Competence visee
 
@@ -289,3 +290,290 @@ rapport de `yanis-qa` a trouve qu'un test **portait le nom de `BIA-2` sans garde
 il a ete corrige pour l'anglais, mais **sur cette matiere-ci il n'existe pas** - aucun test ne
 compte les traits par type d'espace. **Les dix-sept faits neufs de ce lot ne sont tenus que par ma
 lecture**, item par item, et cette lecture ne se rejoue pas toute seule au sprint suivant.
+
+---
+
+## Troisieme passage - increment de s29 (`S29-2`, `63882e0` ; `S29-7`, `6b2edf1`) - **VALIDE SOUS RESERVE**
+
+- **Verdict** : **VALIDE SOUS RESERVE**, prononce le **2026-09-06** par `nadia-prof`, **Instance A**,
+  apres avoir joue. **Done pedagogique prononce.**
+- **Consequence de matrice** : **`HG-CM1-06`, `HG-CM1-07` et `HG-CM1-14` ferment.** `camille-po` peut
+  passer les trois lignes a `couvert-valide`.
+- **Reserves** : `HG-R4` et `HG-R5` **levees**, section 6. Deux nouvelles, datees, non bloquantes :
+  `HG-R6` et `HG-R7`, section 7.
+
+## **Mention exigee d'avance, a reprendre mot pour mot dans la matrice par `camille-po`**
+
+Sur la ligne **`HG-CM1-14`**, exigee des s27 et rappelee a s28 en composant la variante A :
+
+> *"document textuel seul ; carte et image restent non couvertes"*
+
+**Elle est deja ecrite mot pour mot dans le commentaire du paquet par `marc-dev`**, ce que je
+constate et ce dont je le credite : les dix items de la ligne portent tous un `texteSupport` ecrit,
+aucune carte, aucune image. **La ligne ferme sur sa part servie**, regime de couverture partielle
+deja applique aux fractions (`FRA-9`) et exige d'avance ici.
+
+**Ce que la mention protege** : le libelle de ma ligne dit *"un document (texte, carte, image)"*. Une
+ligne verte sans cette mention laisserait croire que le produit apprend a lire une carte. Il ne le
+fait pas, et il ne le fera pas avant le palier 2.
+
+### Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `6b2edf1`, jar reconstruit et lance, **parties completes de dix
+manches par appels HTTP reels**, **avec erreur volontaire, dont plusieurs poussees jusqu'a la
+revelation**. **Et j'ai lu les cinquante-sept items un par un** - les trente des trois lignes que je
+ferme, et les vingt-sept autres -, enonces, textes-supports, bonnes reponses, distracteurs et
+indices. **C'etait indispensable et c'est le motif que j'avais ecrit** : une partie de dix manches
+sur cinquante-sept items en laisse **quarante-sept** que l'enfant ne voit jamais, et c'est comme cela
+que j'ai manque un item a s27. **Ce n'est pas un audit degrade.**
+
+**Done technique acquis, mesure par moi et non reconduit** : `bash outils/mvn-jdk21.sh -B clean
+verify` sur le **reacteur complet**, **BUILD SUCCESS** ; comptage independant des rapports XML de
+tous les modules : **169 rapports, 1259 tests, 0 echec, 0 erreur, 0 ignore**, machine virtuelle
+rapportant **21.0.10**.
+
+### 1. `FER-1` - les trois lignes, element par element
+
+**`HG-CM1-06`** - le libelle enumere *(la croisade, la Renaissance, l'edit de Nantes, Versailles)*,
+donc **la parenthese fait contrat** :
+
+| Element | Item qui le sert en **bonne reponse** |
+|---|---|
+| la croisade | *"Quel fait caracterise le regne de Louis IX, aussi appele Saint Louis ?"* |
+| la Renaissance | *"Quel fait caracterise le regne de Francois Ier, qui invite en France le peintre Leonard de Vinci ?"* |
+| l'edit de Nantes | *"Quel fait caracterise le regne de Henri IV, qui met fin aux guerres de religion en 1598 ?"* |
+| Versailles | *"Quel fait caracterise le regne de Louis XIV, surnomme le Roi-Soleil ?"* |
+
+**Quatre sur quatre.** Et `marc-dev` a raison sur un point que je n'avais pas demande et qu'il a
+trouve en servant la ligne : les quatre items de s27 associaient bien chaque roi a sa realisation,
+mais **avec le roi en bonne reponse**, jamais la realisation. `FER-1`, lue au pied de la lettre,
+n'etait donc pas tenue avant ce lot. **Il a lu ma clause mieux que je ne l'avais appliquee, et je
+l'ecris.**
+
+**`HG-CM1-07`** - le libelle enumere *(1789, l'abolition des privileges, la Declaration des droits de
+l'homme et du citoyen, la fin de la monarchie)* :
+
+| Element | Item qui le sert en **bonne reponse** |
+|---|---|
+| 1789 | *"En quelle annee commence la Revolution francaise ?"* -> `en 1789` |
+| l'abolition des privileges | *"Le 4 aout 1789, l'Assemblee nationale supprime les droits particuliers de la noblesse et du clerge..."* |
+| la Declaration des droits de l'homme et du citoyen | deux items, celui de s27 et *"Quel texte est adopte le 26 aout 1789..."* |
+| la fin de la monarchie | *"En 1792, les rois cessent de gouverner la France..."* |
+
+**Quatre sur quatre.** *Je le note parce que quelqu'un le demandera : l'Empire n'appartient pas a
+cette ligne - c'est `HG-CM1-08`, qui reste `en cours`. Que le sacre de Napoleon n'apparaisse ici
+qu'en distracteur est correct.*
+
+**`HG-CM1-14`** - le libelle porte quatre composantes apres son deux-points *(nature, date, auteur,
+extraire une information)* :
+
+| Composante | Items |
+|---|---|
+| nature | 2 (*"Quel type de document est ce texte ?"* -> `un journal intime` ; -> `une declaration de droits`) |
+| date | 2 (`en 1789`, `en 1598`) |
+| auteur | 2 (`Henri IV`, `les deputes de l'Assemblee nationale`) |
+| extraire une information | 4 |
+
+**Les quatre composantes sont servies**, et **la nature et l'auteur sont exactement ce que j'avais
+nomme comme manquant a s28**. **`FER-1` tenue sur les trois lignes.**
+
+**Une lecture que je tranche ici plutot que de la laisser trainer** : la parenthese de `HG-CM1-14`
+enumere *(texte, carte, image)*, et ma precision du 2026-09-05 dit qu'une parenthese qui enumere fait
+contrat. **Je ne l'applique pas ici, et le motif n'est pas la commodite** : cette parenthese-la
+enumere des **supports**, pas des reponses, et j'avais moi-meme ecrit a s28, en composant la variante
+A, que la ligne fermerait sur *nature* et *auteur* **avec la mention de couverture partielle**. La
+barre que j'ai donnee est atteinte ; **la relire plus finement aujourd'hui serait deplacer mon
+poteau.**
+
+### 2. `FER-2` - densite, comptee et non estimee
+
+Compte derive des declarations `ligneDeReferentiel` de chaque item (`ADR-0081`, clause 4), sur les
+cinquante-sept items du fichier :
+
+| Ligne | Items | Plancher |
+|---|---|---|
+| `HG-CM1-06` | **10** | 10 |
+| `HG-CM1-07` | **10** | 10 |
+| `HG-CM1-14` | **10** | 10 |
+
+**Exactement le plancher sur les trois. Tenue.** *Et j'ai verifie que la somme des declarations
+retombe sur 57 : 2 + 1 + 1 + 1 + 10 + 10 + 1 + 10 + 1 + 10 + 10.*
+
+### 3. `FER-3` - deux taches par ligne
+
+- **`HG-CM1-06`** : *donner la realisation, nommer le roi* (4 items, herites de s27) contre *donner
+  le roi, nommer la realisation* (4 items neufs). **Ce sont bien deux taches** : un enfant restitue
+  beaucoup plus facilement le nom d'un roi celebre que la realisation qui le caracterise, et c'est
+  precisement le sens que `FER-1` m'a fait demander. Deux items de plus servent une troisieme tache,
+  identifier un monument a partir d'une description architecturale (Chambord, la galerie des Glaces).
+  **La condition demande deux taches portant chacune au moins trois items : deux en portent quatre.**
+  Le troisieme groupe, a deux items, est un **ajout**, pas un manque - lire la clause autrement
+  ferait qu'ajouter une tache casserait une condition que huit items en deux taches satisfont, ce qui
+  est absurde. **Tenue.**
+- **`HG-CM1-07`** : *nommer l'evenement a partir d'une description ou d'une date* (7 items) contre
+  *situer l'evenement par rapport aux autres* (3 items : le premier, le dernier, celui qui suit
+  l'abolition des privileges). **La minorite est a trois, exactement au plancher.** Je le dis tel
+  quel : c'est atteint, pas depasse. **Tenue.**
+- **`HG-CM1-14`** : *identifier une propriete du document* - nature, date, auteur - (6 items) contre
+  *extraire une information de son contenu* (4 items). **C'est le decoupage que le libelle propose
+  lui-meme**, qui groupe les trois premieres et separe la quatrieme par un *et*. **Tenue.**
+
+### 4. Exactitude - les trente items des trois lignes, lus un par un
+
+**Aucune erreur de fait.** Les associations roi/realisation sont justes (Louis IX et la croisade,
+Francois Ier et la Renaissance, Henri IV et l'edit de Nantes en 1598, Louis XIV et Versailles) ; la
+chronologie revolutionnaire est juste (Bastille le 14 juillet 1789, abolition des privileges le 4
+aout, Declaration le 26 aout, fin de la monarchie en 1792) ; l'escalier a double revolution de
+Chambord et la galerie des Glaces sont justes et bien attribues.
+
+**Le refus que j'avais pose d'avance est respecte** : ni le chene de Saint Louis ni la poule au pot
+d'Henri IV n'apparaissent nulle part - ce sont des traditions, pas des faits, famille (b) de `HIS-3`.
+**Verifie par lecture des cinquante-sept items, pas par confiance.**
+
+**`HIS-1`** (au plus un tiers de restitution, sur le lot **et** sur le fichier) : **13 restitutions
+sur 57 items, 22,8 %**, plafond a 19. Recompte par moi sur les marqueurs, et j'ai relu la
+qualification de chaque item neuf : deux ou trois pourraient etre argumentes en *restitution* plutot
+qu'en *association* - *"qui perd ses droits particuliers ?"* -, ce qui porterait le compte a 15 au
+pire. **Toujours tres loin du plafond. Tenue.**
+
+**`BIA-5`** : aucun item ne qualifie un roi ni un acteur de la Revolution de bon, mauvais, juste ou
+injuste. **Verifie item par item.** Le texte-support sur le lever de Louis XIV decrit un ceremonial
+sans le juger : c'est exactement la ligne a tenir, et elle est tenue.
+
+**`CYC-1`** : **vacante** sur ce lot, et non *tenue* - les deux mots ne disent pas la meme chose.
+Aucun paquet de questionner le monde CP ne sert un objet d'histoire ou de geographie (`QLM-CP-14` et
+`QLM-CP-15` ne sont pas servies). Le constat de `marc-dev` - *"sans objet"* - est correct.
+
+### 5. Lisibilite - mesuree sur les cinquante-sept enonces
+
+**Mediane 16 mots, inchangee depuis s28. Les vingt enonces neufs vont de 6 a 21 mots.** Le vocabulaire
+est celui du programme de cycle 3. Les dix textes-supports de la ligne 14 vont de 22 a 41 mots :
+c'est long, mais **la longueur y est la matiere de l'exercice** - on ne fait pas comprendre un
+document en trois mots.
+
+### 6. `HG-R4` et `HG-R5` - **levees toutes les deux**, et je corrige une lecture qui m'est attribuee
+
+- **`HG-R5`** : l'indice du village de pecheurs disait *"reviennent avec leur recolte du jour"* - une
+  recolte est agricole, ce qui brouille la distinction meme que l'item enseigne. Il dit desormais
+  *"Pense aux bateaux qui partent tot le matin et reviennent charges de poissons."* **C'est mon texte,
+  mot pour mot. Levee.**
+
+- **`HG-R4`** : **levee**, et le motif demande d'etre ecrit sans ambiguite.
+
+  **Ce que ma reserve demandait, mot pour mot** : *"que le prochain lot de cette matiere ne depasse
+  pas 25 mots sur un enonce, et que la mediane du fichier ne monte plus"*, plus deux simplifications
+  que je fournissais.
+
+  **Ce que je mesure** : les vingt enonces du lot vont de **6 a 21 mots**, aucun au-dessus de 25 ; la
+  mediane du fichier est a **16**, identique a s28, elle n'est pas montee ; les deux simplifications
+  sont faites, exactement comme je les avais dictees - le village de pecheurs perd son premier
+  *"mer"*, l'orange perd *"transportee par bateau ou par avion"*. **Les trois exigences sont tenues.
+  Je leve.**
+
+  **`marc-dev` a declare un ecart, et cet ecart n'existe pas contre mon texte.** Il a lu `HG-R4` comme
+  *"aucun enonce du fichier ne depasse vingt-cinq mots"* et a signale honnetement que six enonces
+  herites y contreviennent, dont un a 30. **Sa lecture est plus severe que la mienne**, et la preuve
+  en est dans ma propre prescription : la simplification que j'ai dictee moi-meme pour le village de
+  pecheurs laisse l'enonce a **28 mots**. Une barre que ma propre correction ne franchit pas n'est pas
+  la barre que j'ai posee. **Je ne convertis pas sa prudence en dette**, et je ne lui compte aucun
+  ecart.
+
+  **Constat nouveau et date du 2026-09-06, qui n'ouvre pas de reserve** : le fichier porte encore six
+  enonces au-dessus de 25 mots, tous herites, maximum 30, tous sur des lignes deja fermees. Mon motif
+  de s28 tient toujours sur eux - *"l'enonce porte la donnee necessaire au raisonnement, aucune phrase
+  longue ne cache la reponse, un CM1 lit cela"*. **Rouvrir une reserve sur les memes items, avec la
+  meme mesure, apres les avoir juges non bloquants, serait relire mon poteau au lieu de le tenir.** Je
+  le constate, je ne le facture pas.
+
+### 7. Reserves nouvelles, datees du 2026-09-06, non bloquantes
+
+- **`HG-R6` - deux items de la ligne 14 offrent une proposition qui s'elimine sans rien savoir.**
+
+  *"Quel type de document est ce texte ?"* propose, dans les **deux** items de nature, la reponse
+  **`une carte de France`** - alors que l'enfant a un **texte** sous les yeux, affiche juste au-dessus
+  de la question. La proposition ne demande aucune connaissance pour etre ecartee : elle ramene un
+  item a trois choix a un item a deux. Ce n'est pas le distracteur absurde de `HG-R3`, qui decrivait
+  une activite impossible dans le monde : c'est un distracteur **incoherent avec le support**, ce qui
+  est une autre facon de ne rien mesurer.
+
+  S'y ajoute que les deux items de nature se repondent en **recopiant un mot du support** : *"Cher
+  journal"* pour `un journal intime`, *"vote une declaration"* pour `une declaration de droits` - et
+  l'indice du second le dit lui-meme, *"Le mot qui nomme ce document se trouve dans la phrase"*.
+  **La composante *nature*, celle-la meme que j'avais demandee, est donc servie sans que l'enfant ait
+  a reconnaitre un genre.**
+
+  **Ce que je demande, sans fournir de texte** : sur les deux items de nature, remplacer `une carte de
+  France` par une **forme de document ecrit** que l'enfant doive ecarter en lisant, et faire porter au
+  moins un des deux items sur un support **ou le mot de la reponse n'apparait pas**. Je ne dicte pas
+  les textes parce qu'il faut ecrire un support neuf, et un support neuf se juge. **Regime : rejeu
+  borne, 0,5**, dit d'avance plutot que decouvert en facturant.
+
+  **Pourquoi ce n'est pas bloquant** : les deux bonnes reponses sont **justes**, la ligne porte huit
+  autres items qui tiennent, et un item trop facile n'est pas un item faux.
+
+- **`HG-R7` - une inexactitude dans un texte-support de la ligne 14.**
+
+  Le support de l'item sur la Bastille dit : *"Sa chute est fetee dans toute la ville et devient, des
+  l'annee suivante, une fete nationale."* **La Fete de la Federation du 14 juillet 1790 a bien eu
+  lieu, mais le 14 juillet n'est fete nationale que depuis 1880.** Ecrit tel quel, le produit
+  enseigne en passant une date fausse a un enfant de CM1.
+
+  **Ce que je prescris, et je le fournis mot pour mot** (regime du mot pour mot, **0,25**) :
+
+  > `texteSupport` : *"En 1789, des habitants de Paris prennent d'assaut une vieille prison qui
+  > servait aussi a enfermer des opposants au roi. Sa chute est fetee dans toute la ville et, l'annee
+  > suivante, une grande fete reunit la France entiere pour son anniversaire."*
+
+  **Enonce, bonne reponse, distracteurs et indice inchanges** : la question porte sur ce que
+  representait la prison, pas sur la fete. L'orthographe, l'accentuation et la ponctuation
+  appartiennent au `relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`).
+
+  **Pourquoi ce n'est pas bloquant, et pourquoi c'est neuf** : le fait faux ne porte **aucune reponse
+  attendue** - aucun item ne demande depuis quand le 14 juillet est fete nationale - et il vit dans un
+  support, pas dans une question. **Cet item date de s27 et je l'avais valide** : je ne l'avais pas vu,
+  la phrase n'engageant pas la reponse. **Je l'ecris comme une reserve neuve et datee, pas comme un
+  durcissement**, et je porte le fait que c'est ma lecture de s27 qui l'a laissee passer.
+
+- **`REV-1`** - la phrase de revelation, lue a l'ecran, est agrammaticale sur **un** item du fichier :
+  la bonne reponse *"elle suit des regles tres strictes et se deroule en public"* donne *"C'est elle
+  suit des regles tres strictes..."*. Cause de portee depot, traitee dans
+  `PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 1. Sur les cinquante-six autres
+  items du fichier, la phrase se lit correctement.
+
+### 8. Une correction de mon propre compte, avant que quiconque s'en serve
+
+Mon arbitrage de s28, section 3.2, et celui de s29 parlent de **neuf lignes `en cours`** dans cette
+matiere. **Apres ce lot, il en reste six** : `HG-CM1-01`, `-02`, `-03`, `-04`, `-08`, `-12`. Les
+lignes `-09` et `-10` (carte, planisphere, echelles, lieu de vie) ne sont pas `en cours` du tout :
+elles sont **hors de portee du palier 1** et n'ont jamais recu un item ; la ligne `-05` n'a jamais ete
+servie non plus. **Le compte a jour appartient a `camille-po`** - je ne touche pas la matrice - mais
+je signale que *"neuf lignes en cours"* n'est plus le bon chiffre et qu'il ne doit pas etre recopie.
+
+**Et je maintiens ce que j'avais ecrit sur le mot lui-meme** : cinq de ces lignes portent **exactement
+un item**. *En cours* reste le mot le plus optimiste qui soit exact.
+
+### 9. Etat des reserves de cette matiere au 2026-09-06
+
+| Reserve | Etat |
+|---|---|
+| `HG-R1` (deux enonces a 26 mots, s27) | absorbee par `HG-R4`, **close avec elle** |
+| `HG-R2` (matiere penchee vers l'histoire) | levee a s28 |
+| `HG-R3` (distracteurs absurdes de l'item rural) | levee a s28 |
+| `HG-R4` (charge de lecture) | **levee le 2026-09-06**, section 6 |
+| `HG-R5` (mot d'indice qui brouille la distinction) | **levee le 2026-09-06**, section 6 |
+| `HG-R6` (distracteur incoherent avec le support, ligne 14) | **ouverte le 2026-09-06** |
+| `HG-R7` (inexactitude du support sur le 14 juillet) | **ouverte le 2026-09-06** |
+| `REV-1` (phrase de revelation, portee depot) | **ouverte le 2026-09-06**, hors de cette matiere |
+
+### 10. Ce dont je reste la seule garde sur cette matiere
+
+**Inchange, et je le repete parce que rien ne l'a couvert entre-temps.** L'exactitude factuelle des
+**cinquante-sept** faits n'est mordue par aucun test et ne le sera pas. `HIS-2` non plus. `BIA-2` non
+plus : aucun test ne compte les traits par type d'espace. `FER-1` et `FER-3` non plus - le **compte**
+de `FER-2` est derive depuis `ADR-0081`, mais *"quel element du libelle est en position de bonne
+reponse"* et *"est-ce la meme operation mentale"* restent des jugements.
+
+**Et j'ajoute une propriete a cette liste, decouverte ce jour** : la **phrase que la mecanique compose
+autour d'une bonne reponse** (`REV-1`). Elle n'apparait ni dans le fichier de contenu, ni dans aucun
+test, ni dans aucun audit qui ne pousse pas un item jusqu'a la troisieme erreur. **Je ne l'avais
+jamais nommee ; elle a traverse tous les sprints de contenu du depot.**

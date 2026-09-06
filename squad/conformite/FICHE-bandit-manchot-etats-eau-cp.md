@@ -157,3 +157,48 @@ chaud."* **C'est la bonne facon d'aider un enfant de six ans.**
   (*"Quand la glace fond, elle coule."*) reste valable si l'item est retouche. Je ne la durcis pas.
 - **`EAU-R2`** (`nombreDeManches: 7` sans decision ecrite) : **levee**. La valeur repasse a `10`,
   defaut de `DEC-0064` ; le motif de `DEC-0073` ne s'applique plus a quatorze items.
+
+---
+
+## Reverification de s29 (`S29-7`, `6b2edf1`) - **`EAU-R1` levee**
+
+- **Verdict** : **`EAU-R1` levee**, prononce le **2026-09-06** par `nadia-prof`, **Instance A**.
+  `QLM-CP-05` reste `couvert-valide`. **Aucune ligne de matrice ne bouge.**
+- **Regime et prix** : mot pour mot, compris dans les **0,25** de `S29-7`.
+
+### Ce que j'ai verifie
+
+**Sur le contenu servi**, item de la glace qui fond :
+
+> `indice` : *"La glace qui fond se met a couler."* *(mon texte du 2026-09-05, mot pour mot)*
+> `enonce`, `bonneReponse` et `distracteurs` : **inchanges**, comme je l'avais demande.
+
+L'indice cesse de demander a l'enfant de tenir *"ce deuxieme etat"* comme un renvoi et lui donne le
+**critere observable**, exactement comme les autres indices de ce paquet - qui sont, je l'ai ecrit a
+s27, la meilleure serie d'indices de la matiere. **`EAU-R1` levee.**
+
+### Ce que j'ai verifie **en plus**, parce que la ligne est verte
+
+- **Les quatorze items relus un par un.** Le perimetre du paquet reste ferme a *solide*, *liquide*,
+  *fondre*, *geler*, *couler* : **aucune occurrence de vapeur, d'etat gazeux ni d'evaporation**, ce
+  que j'avais refuse d'avance et verifie deja deux fois. Un lot de correction est exactement le moment
+  ou un perimetre se relache sans que personne ne regarde. **Il ne s'est pas relache.**
+- **Le point que j'ai instruit le plus longuement, parce qu'une correction verbatim est
+  exactement la ou l'on casse une propriete voisine sans le vouloir** : mon indice emploie le mot
+  *couler*, et `couler` est **distracteur** des deux items de nommage (*"Comment appelle-t-on le
+  passage de la glace a l'eau liquide ?"* -> `fondre`, distracteurs `geler` et `couler`). **Je le
+  retiens.** L'indice de l'item 7 ne dit pas que le changement s'appelle *couler* : il dit ce que
+  l'enfant **observe**, et c'est le registre de tous les autres indices du paquet. La confusion entre
+  *fondre* et *couler* est l'erreur reelle de cet age, je l'ai ecrite a s28, et le paquet la traite
+  correctement : il la donne a observer d'un cote, il la fait nommer de l'autre. **Rien n'est casse,
+  et je le dis apres verification, pas par presomption.**
+- **`FER-1`, `FER-2`, `FER-3` intactes.**
+
+### Etat des reserves de cette ligne au 2026-09-06
+
+| Reserve | Etat |
+|---|---|
+| `EAU-R1` (indice abstrait sur *fondre*) | **levee le 2026-09-06** |
+| `EAU-R2` (`nombreDeManches: 7` sans decision ecrite) | levee a s28 |
+
+**Aucune reserve ouverte sur cette ligne.**

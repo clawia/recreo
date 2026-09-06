@@ -263,3 +263,63 @@ la lire comme une garantie.** J'y ajoute le point 2 et la moitie du point 3 de `
 desormais son point 5, qu'aucun automate ne lit.
 
 **Done pedagogique prononce le 2026-09-01.**
+
+---
+
+## Reverification de s29 (`S29-8`, `6b2edf1`) - **la dette des paquets a voix est payee**
+
+- **Verdict** : **la dette est payee sur ce jeu**, constate le **2026-09-06** par `nadia-prof`,
+  **Instance A**, sur le contenu servi. **Aucun Done n'est rouvert, aucune ligne de matrice ne
+  bouge** : la reserve etait non bloquante des son ouverture et le reste.
+- **Origine** : reserve ouverte a s26, **elargie par ma propre mesure a s27** (six jeux et non trois),
+  **chiffree a s28** (0,25, un passage), **non payee a s28**. Elle aurait eu quatre sprints si s29 ne
+  l'avait pas payee. **Elle est payee.**
+- **Regime et prix** : mot pour mot, **0,25 pour les six jeux ensemble** - une reverification
+  d'identite, pas une pedagogie.
+
+### Ce que j'ai verifie sur le contenu servi
+
+| Cle | Servi le 2026-09-06 | Conforme au texte que j'ai fourni ? |
+|---|---|---|
+| `enonce` (12 items) | *"Entends-tu ce son ?"* | **oui, mot pour mot** |
+| `indice` (12 items) | *"Demande a l'adulte de redire le mot en entier, puis ecoute bien le son qu'il te demande de chercher."* | **oui, mot pour mot** |
+| consigne de catalogue | inchangee | **oui** |
+
+**J'ai joue.** Arbre `round-two` a `6b2edf1`, jar reconstruit et lance, manches reelles par appels
+HTTP, **avec erreur volontaire**. Lu a l'ecran, le bloc adulte et l'indice disent desormais la meme
+chose :
+
+> bloc adulte : *"Le mot est chapeau. Entends-tu le son i ?"* puis *"Dites le mot normalement, sans
+> appuyer sur aucun son. Ne montrez pas cette ligne a l'enfant."*
+>
+> indice servi a l'enfant : *"Demande a l'adulte de redire le mot **en entier**..."*
+
+**C'etait le pire des cinq, et c'est celui-la qui est le plus clairement paye.** Le produit disait a
+l'enfant, par ecrit, de faire redire le mot *"lentement"*, quand `VOI-3` exige de l'adulte un mot dit
+*"d'un seul tenant, a vitesse normale"* - **et sur ce paquet precisement, ou la competence est
+d'entendre un son dans un mot, un mot ralenti donne la reponse**. Le produit demandait donc a l'enfant
+d'obtenir de l'adulte la reponse a la question posee. **Ce n'est plus le cas.**
+
+La redondance de l'enonce est levee du bon cote : la consigne du catalogue porte la tache, l'enonce
+porte ce qui est propre a l'item.
+
+### Ce que ce constat ne prouve pas
+
+**Je n'ai verifie que le texte ecrit.** `VOI-3`, `VOI-5` et `VOI-8` portent sur ce que l'adulte **fait
+de sa voix**, et **personne ne le garde, pas meme moi** : je ne suis pas dans la piece quand l'enfant
+joue. Ce que ce lot repare, c'est que **le produit cessait de demander par ecrit le contraire de ce
+qu'il demande par ailleurs a l'adulte**. Un adulte qui ralentit quand meme n'est arrete par rien, et
+ne le sera jamais. **`VOI-3` n'a aucun garde-fou et n'en aura pas.**
+
+**Un ecart de forme que je constate et que je ne compte pas comme un ecart** : les enonces servis
+portent une espace insecable devant le point d'interrogation, la ou mes textes portaient une espace
+ordinaire. C'est la typographie du canal enfant ; elle appartient au `relecteur-pedagogique`
+(`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`), et j'avais moi-meme ecrit que l'orthographe,
+l'accentuation et la ponctuation de ces textes ne m'appartiennent pas. **Le mot pour mot est tenu.**
+
+**Un jeu voisin que j'ai verifie et que j'ecarte, pour qu'on ne le rouvre pas** :
+`bandit-manchot-syllabes-cp` sert trois indices qui disent *"tout doucement"*, *"tres lentement"*,
+*"Chante le mot tres lentement"*. **Ce n'est pas un defaut `VOI-3`** : ce jeu **ecrit le mot a
+l'ecran** et c'est **l'enfant** qui le prononce, pas l'adulte ; ralentir pour frapper les syllabes est
+le geste de classe correct. `VOI-3` gouverne la voix de l'adulte, et ce jeu n'en a pas. **Verifie sur
+le catalogue et sur le contenu, pas suppose.**

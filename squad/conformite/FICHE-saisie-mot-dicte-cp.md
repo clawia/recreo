@@ -297,3 +297,50 @@ la lire comme une garantie.** J'y ajoute le point 2 et la moitie du point 3 de `
 desormais son point 5, qu'aucun automate ne lit.
 
 **Done pedagogique prononce le 2026-09-01.**
+
+---
+
+## Reverification de s29 (`S29-8`, `6b2edf1`) - **la dette des paquets a voix est payee**
+
+- **Verdict** : **la dette est payee sur ce jeu**, constate le **2026-09-06** par `nadia-prof`,
+  **Instance A**, sur le contenu servi. **Aucun Done n'est rouvert, aucune ligne de matrice ne
+  bouge** : la reserve etait non bloquante des son ouverture et le reste.
+- **Origine** : reserve ouverte a s26, **elargie par ma propre mesure a s27** (six jeux et non trois),
+  **chiffree a s28** (0,25, un passage), **non payee a s28**. Elle aurait eu quatre sprints si s29 ne
+  l'avait pas payee. **Elle est payee.**
+- **Regime et prix** : mot pour mot, **0,25 pour les six jeux ensemble** - une reverification
+  d'identite, pas une pedagogie.
+
+### Ce que j'ai verifie sur le contenu servi
+
+**Ce jeu etait le seul des six sans defaut, et je l'avais ecrit.** Je le reverifie pour que la
+verification porte sur les six et non sur cinq :
+
+| Cle | Servi le 2026-09-06 | Attendu |
+|---|---|---|
+| `enonce` (12 items) | *"Ecris le mot que tu entends."* | **inchange** - il ne repete pas la consigne, il la complete |
+| `indice` (12 items) | *"Demande a l'adulte de redire le mot autant de fois que tu en as besoin."* | **inchange** - conforme a `VOI-8` |
+
+**Rien n'a bouge, et c'est le bon resultat** : un lot de correction qui touche cinq jeux voisins est
+exactement l'endroit ou un sixieme se fait corriger par accident. **Il ne l'a pas ete.**
+
+### Ce que ce constat ne prouve pas
+
+**Je n'ai verifie que le texte ecrit.** `VOI-3`, `VOI-5` et `VOI-8` portent sur ce que l'adulte **fait
+de sa voix**, et **personne ne le garde, pas meme moi** : je ne suis pas dans la piece quand l'enfant
+joue. Ce que ce lot repare, c'est que **le produit cessait de demander par ecrit le contraire de ce
+qu'il demande par ailleurs a l'adulte**. Un adulte qui ralentit quand meme n'est arrete par rien, et
+ne le sera jamais. **`VOI-3` n'a aucun garde-fou et n'en aura pas.**
+
+**Un ecart de forme que je constate et que je ne compte pas comme un ecart** : les enonces servis
+portent une espace insecable devant le point d'interrogation, la ou mes textes portaient une espace
+ordinaire. C'est la typographie du canal enfant ; elle appartient au `relecteur-pedagogique`
+(`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`), et j'avais moi-meme ecrit que l'orthographe,
+l'accentuation et la ponctuation de ces textes ne m'appartiennent pas. **Le mot pour mot est tenu.**
+
+**Un jeu voisin que j'ai verifie et que j'ecarte, pour qu'on ne le rouvre pas** :
+`bandit-manchot-syllabes-cp` sert trois indices qui disent *"tout doucement"*, *"tres lentement"*,
+*"Chante le mot tres lentement"*. **Ce n'est pas un defaut `VOI-3`** : ce jeu **ecrit le mot a
+l'ecran** et c'est **l'enfant** qui le prononce, pas l'adulte ; ralentir pour frapper les syllabes est
+le geste de classe correct. `VOI-3` gouverne la voix de l'adulte, et ce jeu n'en a pas. **Verifie sur
+le catalogue et sur le contenu, pas suppose.**

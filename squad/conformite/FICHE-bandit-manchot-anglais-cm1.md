@@ -186,3 +186,82 @@ repondent.**
 - **Ligne 6** (ecrire des mots memorises) : **s'ouvre a s29 au plus tot**, par l'ordre qu'impose
   `ANG-S1` - un paquet de saisie ne porte que des mots deja servis en choix **dans un paquet
   valide**, et ce paquet ne l'est que d'aujourd'hui. **Ce n'est pas un jugement sur le lot.**
+
+---
+
+## Reverification de s29 (`S29-7`, `6b2edf1`) - **`ANG-R1` levee**, et une correction de mon propre tarif
+
+- **Verdict** : **`ANG-R1` levee**, prononce le **2026-09-06** par `nadia-prof`, **Instance A**.
+  `LVE-CM1-04` et `LVE-CM1-07` restent `couvert-valide`. **Aucune ligne de matrice ne bouge.** La
+  mention exigee d'avance sur `LVE-CM1-07` reste due et inchangee.
+
+### 1. Ce que j'ai verifie sur le contenu servi
+
+L'item de *montagne* a disparu. A sa place :
+
+> `enonce` : *"Comment dit-on << colline >> en anglais ?"*
+> `bonneReponse` : `hill` - `distracteurs` : `field`, `town`
+> `indice` : *"C'est une petite hauteur de terrain, moins haute qu'une montagne."*
+
+- **`REC-5` tenue** : `hill` et *colline* n'ont ni racine, ni silhouette, ni debut communs. Un enfant
+  qui n'a jamais appris un mot d'anglais ne peut plus repondre par ressemblance.
+- **`REC-6` tenue, et mieux qu'avant** : `hill` (4), `field` (5), `town` (4) - trois longueurs
+  voisines, la ou `mountain` (8) etait la plus longue des trois de trois lettres. **C'etait le second
+  defaut du meme item et il est paye aussi.**
+- **Exactitude** : `hill` = colline. L'indice est juste et au niveau du CM1.
+- **Le champ lexical reste a cinq mots** (*street, bridge, hill, town, field*) et le triplet reste
+  homogene. **`FER-2` intacte : quinze items sur `LVE-CM1-04`.**
+- **L'affirmation fausse du commentaire est corrigee** : le paquet ne dit plus *"aucune paire ne se
+  ressemble"* sans exception. **Une affirmation fausse ecrite dans le depot doit etre corrigee comme
+  le reste** - je l'avais demande, c'est fait.
+
+**Une position que l'equipe a prise a ma place et que je ratifie ici plutot que de la laisser en
+suspens** : le commentaire retient desormais que `castle`/*chateau* et `fairy`/*fee* ont une parente
+**etymologique et non graphique**, et les accepte. **Je confirme.** Un eleve de CM1 ne derive pas
+`castle` de *chateau* : la ressemblance est invisible sans l'histoire de la langue. `REC-5` vise le
+mot qui se devine, pas le mot qui partage un ancetre. **Ratifie, et ecrit ici pour que ce ne soit plus
+a redemander.**
+
+### 2. Une correction de mon propre tarif, que `marc-dev` a rendue visible
+
+**Ma section 7.2 de l'arbitrage de s29 dit que les six reserves textuelles *"avaient deja leur
+texte"* et les price 0,25 ensemble, au regime du mot pour mot.** **C'est inexact sur deux des six.**
+
+| Reserve | Avais-je fourni un texte ? |
+|---|---|
+| `COR-R2` | **oui**, le 2026-09-05 |
+| `EAU-R1` | **oui**, le 2026-09-05 |
+| `HG-R4` | **oui** - deux suppressions nommees, deterministes |
+| `HG-R5` | **oui**, mot pour mot |
+| `ANG-R1` | **non** - j'ai nomme le defaut et cite `REC-5` et `REC-6`, je n'ai jamais ecrit `hill` |
+| `VIV-R2` | **non** - je l'ai explicitement qualifie de *"piste que je nomme sans la prescrire"* |
+
+`marc-dev` a signale la contradiction sur `VIV-R2` ; **elle vaut aussi pour `ANG-R1`, et c'est moi qui
+l'etends**. Consequence, selon ma propre precision de tarif du 2026-09-05 : *"un passage de textes que
+l'equipe a reformules vaut 0,5 - c'est un texte neuf, et un texte neuf se juge."* **Le choix de
+`colline`/`hill` est de `marc-dev`, pas de moi : je viens de le juger ci-dessus, je ne l'ai pas
+reverifie.** Le prix reel de `S29-7` est donc **0,25 (quatre reserves verbatim) + le jugement d'un
+texte neuf**, et non 0,25 sec.
+
+Le commentaire du paquet ecrit *"texte fourni dans FICHE-bandit-manchot-anglais-cm1.md, section 4,
+repris mot pour mot"*. **Cette phrase est fausse** : la section 4 ne contient aucun texte de
+remplacement. Elle est de la meme famille que l'affirmation *"aucune paire ne se ressemble"* que ce
+meme lot vient de corriger. **A corriger dans le commentaire ; je ne modifie aucun fichier de
+contenu.**
+
+### 3. Etat des reserves de cette matiere au 2026-09-06
+
+| Reserve | Etat |
+|---|---|
+| `ANG-R1` (mot transparent en bonne reponse) | **levee le 2026-09-06** |
+
+**Aucune reserve ouverte sur cette matiere.** La **mention exigee d'avance** sur `LVE-CM1-07`
+(*"decouverte culturelle seule, en francais ; aucune competence linguistique n'est servie"*) reste
+due dans la matrice et n'est pas une reserve : c'est une condition de la fermeture.
+
+### 4. Ce dont je reste la seule garde
+
+`REC-5` - *un mot transparent en bonne reponse* - **n'est mordue par aucun test** et ne peut pas
+l'etre : la transparence d'un mot pour un enfant de dix ans est un jugement. `PaquetCm1AnglaisTest`
+(15 tests) garde des chaines et des comptes ; il aurait garde `mountain` aussi fidelement que `hill`,
+et il l'a fait pendant un sprint.

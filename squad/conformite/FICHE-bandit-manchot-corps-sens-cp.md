@@ -244,3 +244,55 @@ remplace par aucune reserve nouvelle sur cet item.**
   legitime. **Je ne la durcis pas.**
 - **`COR-R3`** (`nombreDeManches: 7`) : **levee**. Inchangee.
 - **`COR-R4`** (item de la peau, 19 mots) : **levee le 2026-09-04**, ci-dessus.
+
+---
+
+## Reverification de s29 (`S29-7`, `6b2edf1`) - **`COR-R2` levee**
+
+- **Verdict** : **`COR-R2` levee**, prononce le **2026-09-06** par `nadia-prof`, **Instance A**.
+  Le Done pedagogique de cette ligne n'est pas rouvert : il etait deja prononce, `QLM-CP-03` reste
+  `couvert-valide`. **Aucune ligne de matrice ne bouge.**
+- **Regime et prix** : mot pour mot, **0,25 pour les cinq reserves de `S29-7` ensemble** - une passe
+  de reverification d'identite, pas une pedagogie.
+
+### Ce que j'ai verifie
+
+**Sur le contenu servi**, item du gout :
+
+> `bonneReponse` : **la langue** *(mon texte, fourni le 2026-09-05)*
+> `indice` : *"C'est elle qui reconnait le sucre et le sale."* *(mon texte, mot pour mot)*
+> `distracteurs` : `le nez`, `les yeux` - **inchanges**, comme je l'avais demande.
+
+**L'erreur de fait est payee.** L'organe du gout est la langue, pas la bouche. Le produit ne dit plus
+a un enfant de CP qu'on goute avec la bouche. **`COR-R2` levee.**
+
+**Et j'ai verifie que la correction n'a rien casse sur une ligne verte** - c'est le motif pour lequel
+on relit une ligne fermee :
+
+- **Les quatorze items relus un par un.** Aucun autre item ne portait `la bouche` en bonne reponse ni
+  en distracteur ; l'espace de reponse du paquet est inchange ailleurs.
+- **`le nez` reste un distracteur plausible et non absurde** : l'odorat participe reellement au gout,
+  c'est meme la confusion que l'item doit faire travailler. Je l'avais ecrit, je le confirme sur le
+  contenu servi.
+- **Aucune contradiction interne creee.** L'item du toucher (*"Avec quoi sait-on si c'est doux ?"* ->
+  `les mains`) et celui de la peau (*"Quelle partie du corps sent le chaud et le froid partout ?"* ->
+  `la peau`) coexistaient deja et coexistent toujours ; la langue n'entre en concurrence avec aucun
+  des deux.
+- **`FER-1`, `FER-2` et `FER-3` intactes** : cinq sens et parties du corps toujours servis, 14 items,
+  deux taches. **La ligne reste fermee a juste titre.**
+
+### Etat des reserves de cette ligne au 2026-09-06
+
+| Reserve | Etat |
+|---|---|
+| `COR-R1` (longueur de l'item du toucher) | levee a s27 |
+| `COR-R2` (erreur de fait sur l'organe du gout) | **levee le 2026-09-06** |
+| `COR-R3` | etat inchange, voir plus haut |
+| `COR-R4` | etat inchange, voir plus haut |
+
+### Ce dont je reste la seule garde
+
+**Aucun test du depot ne sait que l'on goute avec la langue.** `PaquetCpQlmCorpsSensTest` garde les
+chaines que j'ai dictees ; il aurait garde tout aussi fidelement `la bouche`, et il l'a fait pendant
+deux sprints. **La demonstration du jour est que la verite d'un enonce scolaire n'est tenue que par
+ma lecture**, et qu'une ligne verte cesse d'etre relue si personne ne la relit exprès.

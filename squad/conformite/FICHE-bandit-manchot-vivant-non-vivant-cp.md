@@ -3,7 +3,7 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-qlm-vivant-non-vivant.yaml`.
 - **Entree de catalogue** : `bandit-manchot-vivant-non-vivant-cp`, titre servi *"Vivant ou pas vivant"* depuis la correction du 2026-09-04 (*"Vivant ou objet"* avant), `nombreDeManches: 10` depuis s28 (`7` a s27).
-- **Statut global** : **VALIDE SOUS RESERVE** (2026-09-04, troisieme passage, bloc en bas de fiche). **La ligne `QLM-CP-01` ferme** : elle passe a `couvert-valide`. Une reserve nommee et datee, `VIV-R2`, non bloquante, a corriger dans un sprint suivant.
+- **Statut global** : **VALIDE SOUS RESERVE** (2026-09-04, troisieme passage, bloc en bas de fiche). **`VIV-R2` tranchee le 2026-09-06** : ma piste est abandonnee et remplacee par une prescription mot pour mot ; la reserve reste **ouverte et non payee**, et `QLM-CP-01` reste `couvert-valide` (dernier bloc de cette fiche). **La ligne `QLM-CP-01` ferme** : elle passe a `couvert-valide`. Une reserve nommee et datee, `VIV-R2`, non bloquante, a corriger dans un sprint suivant.
 - **Histoire des verdicts, aucun efface** : s27, premier paquet (huit items) **VALIDE**. s28, second passage (six items neufs) **REFUSE** le 2026-09-04 - *"De la neige, qu'est-ce que c'est ? - un objet"* est faux, et le jeu felicitait l'enfant qui le repondait. s28, troisieme passage apres correction (`0c383b9`) **VALIDE SOUS RESERVE** le meme jour. **Les trois blocs restent lisibles, dans l'ordre ; un refus efface ne prouve rien.**
 - **Arbitrage prealable de `nadia-prof`** : `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, sections 4 (ligne 1) et 7.1.
 - **Derniere mise a jour** : 2026-09-04 (**troisieme verdict de `nadia-prof` apres avoir rejoue et relu les quatorze items**, s28).
@@ -362,3 +362,122 @@ croire couvert ce qui ne l'est pas.**
   est repassee a `10`. Inchange, rien a rouvrir.
 - **`VIV-R2`** (les deux propositions des items de matiere inerte se terminent par les memes mots) :
   **ouverte, non bloquante**, section 4. A traiter a un sprint suivant.
+
+---
+
+## s29 - **`VIV-R2` tranchee** : ma piste est abandonnee, une prescription la remplace, et un fait nouveau la renforce
+
+- **Date** : **2026-09-06**, `nadia-prof`, **Instance A**, apres avoir rejoue le paquet.
+- **Etat de la reserve** : **`VIV-R2` reste ouverte** - elle n'est pas payee, aucune ligne ne bouge,
+  `QLM-CP-01` reste `couvert-valide`. **Ce qui change est qu'elle est desormais prescrite** : elle
+  cesse d'etre une piste que personne ne peut executer sans trancher a ma place.
+- **Verdict de s28, non efface** : le refus du 2026-09-04 et sa levee du meme jour restent lisibles
+  plus haut, dans l'ordre. **Un refus efface ne prouve rien.**
+
+### 1. Pourquoi cette reserve n'a pas ete payee a s29, et qui a eu raison
+
+`marc-dev` ne l'a **pas** implementee, deliberement, et il l'ecrit dans son commit : j'avais qualifie
+mon remplacement de *"piste que je nomme sans la prescrire, parce que je ne l'ai pas jouee"*, et
+ajoute *"tant que ce n'est pas verifie, la formule actuelle reste servie et elle est juste"*.
+**Il a eu raison de ne pas trancher a ma place**, et le defaut est de moi : **une reserve que je
+n'assortis pas d'un texte est une reserve que personne ne peut payer.** Elle a coute un sprint.
+
+**Et elle a fausse mon propre chiffrage** : ma section 7.2 de l'arbitrage de s29 range `VIV-R2` parmi
+six reserves qui *"avaient deja leur texte"* et les price 0,25 ensemble, au regime du mot pour mot.
+**C'est faux sur `VIV-R2`, et aussi sur `ANG-R1`** - le detail de cette correction est dans
+`FICHE-bandit-manchot-anglais-cm1.md`, section 2 du bloc de s29. `marc-dev` a signale la
+contradiction ; **elle est reelle, et je l'etends a une seconde reserve qu'il n'avait pas citee.**
+
+### 2. J'ai rejoue, et j'abandonne ma piste
+
+**Conditions** : arbre `round-two` a `6b2edf1`, jar reconstruit et lance, parties completes par appels
+HTTP reels, **avec erreur volontaire poussee jusqu'a la revelation sur les trois items de matiere
+inerte**.
+
+**Ma piste etait de remplacer, sur ces trois items seuls, `ce n'est pas un etre vivant` par `de la
+matiere`.** J'avais ecrit ce qu'il faudrait verifier avant de l'ecrire : *"matiere comme categorie est
+un mot abstrait pour un enfant de six ans, et il faudra que les indices le portent."*
+
+**Je l'ai instruit et je l'abandonne.** *Matiere*, au sens de categorie du monde physique, est une
+abstraction de cycle 3 : elle n'appartient au CP que dans le titre du domaine, que l'enfant ne voit
+jamais. Un enfant de six ans a qui l'on demande *"Du sable, qu'est-ce que c'est ?"* et qui lit
+*"de la matiere"* ne reconnait rien ; et faire porter la notion par les indices reviendrait a
+enseigner un mot de plus a l'occasion d'un item qui n'est pas fait pour cela. **Ma piste aurait
+remplace un probleme de lisibilite par un probleme de niveau.** Je la retire.
+
+### 3. Un fait nouveau, trouve en jouant, qui renforce la reserve et corrige une phrase de moi
+
+**J'avais ecrit le 2026-09-04 : *"tant que ce n'est pas verifie, la formule actuelle reste servie et
+elle est juste."* Je corrige.** La formule actuelle est juste **dans le fichier de contenu** ; elle ne
+l'est pas **a l'ecran**. Apres trois erreurs sur l'un des trois items, l'enfant lit :
+
+> *"C'est ce n'est pas un etre vivant. Appuie sur ce n'est pas un etre vivant."*
+
+**Une double copule, servie a un enfant de six ans qui apprend a lire, au moment precis ou il a
+echoue trois fois et ou le produit est cense l'aider.** Je ne pouvais pas le voir sur le papier :
+cette phrase n'existe dans aucun fichier de contenu, elle est composee par la mecanique autour de la
+bonne reponse. **Je l'ai lue a l'ecran, en poussant l'item jusqu'a la revelation.**
+
+Sa cause depasse ce paquet et je la traite comme propriete de portee depot sous le code **`REV-1`**,
+dans `PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 1. **Ici elle sert de second
+motif a `VIV-R2` : les trois items concernes sont exactement les trois memes.**
+
+### 4. Ce que je prescris, et je le fournis mot pour mot
+
+**Sur les trois items de matiere inerte seulement** - caillou, sable, neige - remplacer la forme
+d'identification par une forme de verification :
+
+> `enonce` : *"Un caillou est-il un etre vivant ?"* - `bonneReponse` : *"non"* - `distracteurs` :
+> *["oui"]*
+> `enonce` : *"Le sable est-il un etre vivant ?"* - `bonneReponse` : *"non"* - `distracteurs` :
+> *["oui"]*
+> `enonce` : *"La neige est-elle un etre vivant ?"* - `bonneReponse` : *"non"* - `distracteurs` :
+> *["oui"]*
+
+**Les indices restent inchanges** : *"Un caillou ne nait pas, ne grandit pas et ne se nourrit pas."*
+et ses deux jumeaux. L'orthographe, l'accentuation et la ponctuation de ces textes appartiennent au
+`relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`).
+
+**Ce que cette forme repare, point par point, contre le critere que j'avais moi-meme ecrit** - *"les
+deux propositions ne doivent pas se terminer par les memes mots, et ce qui les distingue ne doit pas
+se trouver en position initiale seulement"* :
+
+- `oui` et `non` sont **lexicalement disjoints**, de deux et trois lettres. L'enfant discrimine d'un
+  coup d'oeil, comme il le fait deja sur les onze autres items du paquet.
+- La question *"est-il un etre vivant ?"* appelle **oui ou non** : la reponse est dans le registre de
+  la question, ce que *"ce n'est pas un etre vivant"* n'etait pas.
+- La revelation devient *"C'est non. Appuie sur non."* - maladroit, mais **lisible**, et c'est la
+  variante benigne de `REV-1` plutot que sa variante fautive.
+
+**Ce que cette forme ne casse pas, et je l'ai verifie avant de la prescrire** :
+
+- **`FER-1` intacte.** J'ai statue a s28 que l'opposition de cette ligne est **binaire** et que la
+  matiere inerte est une **famille d'exemples** du non-vivant, pas une troisieme etiquette a servir
+  en bonne reponse. `non` reste du cote non-vivant. **La fermeture de `QLM-CP-01` n'est pas remise
+  en cause.**
+- **`FER-2` intacte** : quatorze items, aucun retire.
+- **`FER-3` intacte** : la categorisation garde huit items, la selection trois, et la verification
+  binaire en devient une troisieme a trois. La condition demande deux taches portant chacune au moins
+  trois items ; elles sont trois a en porter au moins trois.
+- **Le precedent de la forme est joue, pas suppose** : `cp-qlm-cycle-de-vie`, que je valide le meme
+  jour, sert six items exactement de cette forme (*"Un caillou peut-il naitre ?"*, *"Une chaise
+  peut-elle grandir ?"*) et je les ai joues. Ils se lisent bien a six ans.
+
+**Ce que cette forme coute, et je le dis plutot que de le taire** : le paquet portera deux formes de
+question au lieu d'une, alors que j'avais loue a s27 la **regularite de la phrase** de ce paquet.
+C'est un cout reel. **Il est plus petit que celui de deux boutons qu'un enfant de CP ne distingue
+pas**, parce que le second se paie a chaque tirage des trois items, et parce que la forme de
+remplacement est elle-meme reguliere sur les trois.
+
+**Regime et prix** : **mot pour mot, 0,25**, puisque je fournis les trois enonces. Le test
+`PaquetCpQlmVivantNonVivantTest`, qui nomme les trois enonces de matiere inerte, devra suivre - c'est
+une consequence technique, elle appartient au developpeur qui prendra la story.
+
+### 5. Etat de la reserve
+
+| Reserve | Etat au 2026-09-06 |
+|---|---|
+| `VIV-R1` (`nombreDeManches: 7` sans decision ecrite) | levee, `DEC-0073` |
+| `VIV-R2` (deux propositions non discriminables sur trois items) | **ouverte, non payee, et desormais PRESCRITE** - texte fourni mot pour mot, section 4. Second motif ajoute le 2026-09-06 : la phrase de revelation (`REV-1`) |
+
+**Aucune ligne de matrice ne bouge de ce fait.**
