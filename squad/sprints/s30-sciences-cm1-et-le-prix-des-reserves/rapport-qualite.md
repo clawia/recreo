@@ -1,9 +1,9 @@
 # Rapport qualite - Sprint 30
 
-**Auteur** : `yanis-qa`. **Depot mesure** : `C:/perso/recreo-s30-yanis` (worktree dedie, `git worktree
-add ../recreo-s30-yanis -b s30-yanis dbbfe129`, lignee verifiee - `git log` de ce worktree pointe sur
+**Auteur** : `yanis-qa`. **Depot mesure** : mon worktree dedie (`git worktree add
+../recreo-s30-yanis -b s30-yanis dbbfe129`), lignee verifiee - `git log` de ce worktree pointe sur
 `dbbfe129`, meme commit que la branche `round-two` fournie, arbre propre confirme par `git status`
-avant toute mesure). Toute mesure de ce rapport est lancee depuis ce worktree, jamais depuis le
+avant toute mesure. Toute mesure de ce rapport est lancee depuis ce worktree, jamais depuis le
 worktree principal ni celui d'un autre agent (regle generalisee au planning de s30, section 6).
 
 **JDK mesure** : 21.0.10, rapporte par la JVM des tests elle-meme (log Spring Boot des tests
@@ -27,8 +27,11 @@ fixtures de test recopiees) :
 - **1321 tests, 0 echec, 0 erreur, 0 ignore** (script Python sommant les attributs, executé sur ce
   worktree apres le build ci-dessus).
 
-Ce chiffre **confirme exactement** celui annonce par `sofia-sm` (179 rapports, 1321 tests, 0/0/0) -
-mesure de nouveau par moi sur ma propre copie de l'arbre plutot que relayee.
+Ce chiffre **confirme exactement** celui de `theo-archi` (`squad/sprints/s30-sciences-cm1-et-le-
+prix-des-reserves/confirmation-archunit.md`, branche `s30-theo-verif`, non fusionnee au moment de
+cette mesure : 179 rapports, 1321 tests, 0/0/0) - mesure de nouveau par moi sur ma propre copie de
+l'arbre plutot que relayee. C'est ma propre mesure ci-dessus qui fait foi de ce rapport, quel que
+soit le document auquel elle converge.
 
 **Tous les modules portent des tests** (`find <module>/src/test -iname "*.java" | wc -l`) : `domain`
 14, `application` 3, `adapters/adapter-web` 49, `adapters/adapter-content` 88, `bootstrap` 78. Aucun
