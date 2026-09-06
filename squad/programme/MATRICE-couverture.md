@@ -1733,6 +1733,24 @@ n'existe ni n'existera pour cette matiere, et reciproquement aucune ligne CM1 n'
 vingt sont des connaissances ou des raisonnements courts, jouables par le `bandit-manchot` sans
 aucun mecanisme neuf. Une seule tombe, la demarche d'investigation elle-meme.
 
+**Correction du 2026-09-06 (`camille-po`), avant l'ouverture de s30, sur signalement de
+`nadia-prof`** (`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-
+prix-des-quinze-reserves.md`, section 1.6). Cette matrice portait encore, sur les deux lignes
+"regimes alimentaires" et "grandes fonctions" ci-dessous, les deux libelles faux que le referentiel
+avait corriges depuis le 2026-09-05 (`DEC-0077`, section 8.7) sans qu'elle le soit elle-meme :
+*"vegetarien"* a la place d'*"herbivore"*, et *"nutrition"* rangee a tort parmi ses propres
+composantes. Corrige ici au mot pres sur le referentiel : `FER-1` fait de chaque parenthese une
+liste contractuelle, et un lot ecrit sur les anciens libelles aurait ete faux en obeissant au
+document de pilotage.
+
+**Codes de ligne alloues le 2026-09-06 (`camille-po`, `DEC-0079`), conformement a `ADR-0081`.** Ce
+referentiel n'etait pas encore code : aucun paquet ne le citait avant s30. `SCI-CM1-01` a
+`SCI-CM1-20` sont desormais ecrits en tete de chaque puce de
+`squad/programme/sciences-et-technologie/competences-cm1.md`, dans l'ordre de lecture des vingt
+lignes ci-dessous - memes rangs qu'au referentiel et qu'au jugement de faisabilite de `nadia-prof`.
+Aucun intitule n'est modifie par cette allocation. `nadia-prof` ne prononce aucun Done pedagogique
+sur une ligne de ce lot dont le code n'est pas cite par le paquet qui la sert.
+
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation). | - | - | non couvert - jouable au choix textuel. Terrain le plus sur du lot. |
@@ -1741,9 +1759,9 @@ aucun mecanisme neuf. Une seule tombe, la demarche d'investigation elle-meme.
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre. | - | - | non couvert - jouable au choix textuel. Distracteurs naturels et plausibles, ce qui est rare. |
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran). | - | - | non couvert - jouable au choix textuel. Objets du quotidien, vocabulaire accessible au CM1. |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu. | - | - | non couvert - jouable au choix textuel, item par item. Mention exigee d'avance : "raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non couvert" (refuse au palier 1 par `V3`). |
-| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (végétarien, carnivore, omnivore). | - | - | non couvert - jouable au choix textuel. |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore). | - | - | non couvert - jouable au choix textuel. |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort). | - | - | non couvert - jouable au choix textuel. Ordonner deux etapes se pose en texte, sans frise ni manipulation. |
-| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Nommer les grandes fonctions du corps humain (nutrition, digestion, respiration, circulation) et l'organe principal de chacune. | - | - | non couvert - jouable au choix textuel. L'association fonction / organe se fait en texte ; designer un organe sur un schema serait du palier 2, non exige. |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, circulation) et l'organe principal de chacune. | - | - | non couvert - jouable au choix textuel. L'association fonction / organe se fait en texte ; designer un organe sur un schema serait du palier 2, non exige. |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps. | - | - | non couvert - jouable au choix textuel, sous `BIA-4`. Aucun item n'interroge l'enfant sur sa propre vie. |
 | sciences et technologie | CM1 | Materiaux et objets techniques | Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité). | - | - | non couvert - jouable au choix textuel. Une propriete par item, jamais deux. |
 | sciences et technologie | CM1 | Materiaux et objets techniques | Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement. | - | - | non couvert - jouable au choix textuel. Nommer un composant se fait en texte ; le designer sur un schema serait du palier 2, non exige. |
@@ -4649,4 +4667,52 @@ individuel de l'Instance A, pas dans la marge du sprint. Corrige dans le meme ge
 
 **Aucune ligne de cette matrice ne bouge par cette reverification** : les neuf fermetures de s29
 restent telles qu'ecrites ci-dessus, le compte de 52/138 = 37,7 % est inchange.
+
+## Perimetre de s30 (2026-09-06) - sciences et technologie CM1 entre en bloc, deux libelles corriges,
+## les codes SCI-CM1 sont alloues
+
+`DEC-0079` ouvre s30 sur quatre arbitrages de l'utilisatrice : sciences et technologie CM1 comme
+perimetre principal, deux instances de `nadia-prof` en parallele, les quinze reserves de s29 dans
+s30, `CONS-1` et `REV-3` tous deux dans s30. Cette section dit ce que cette matrice peut en attendre
+et enregistre les deux ecritures faites avant l'ouverture. **Elle ne deplace aucune ligne.**
+
+### Le fait, avec sa methode
+
+**Etat de depart, recompte ligne a ligne des dix-huit tableaux, colonne `Statut`** : inchange depuis
+la cloture de s29 - 52 `couvert-valide`, 7 `en cours`, 79 `non couvert`, 71 `non couvrable en
+l'etat`, 209 lignes, 138 au denominateur atteignable. **52 / 138 = 37,7 %.**
+
+**Ce que s30 peut faire bouger, derive et non suppose** (`nadia-prof`, section 3.5 de son arbitrage
+prealable) : la borne de 8,0 se decoupe en 5,00 de travail qui ne ferme aucune ligne (les treize
+reprises retenues, `CONS-1`, `REV-3`, la passe transverse) et 3,00 pour les lignes de sciences, soit
+deux lots a 1,5 fermant chacun deux lignes au plus (`FER-2`, `ADR-0081` clause 5, `DEC-0064`).
+**Plafond arithmetique : 4 lignes. 52 + 4 = 56 / 138 = 40,6 %. Attente raisonnable : 3 a 4 lignes,
+55 a 56 / 138, soit 39,9 % a 40,6 %.**
+
+**Le chiffre a ne pas laisser dans l'ombre** : sur les 8,0 de la borne, **5,00 - 62,5 % - sont
+engages sur du travail qui ne fait bouger aucun statut de cette matrice.** Ce n'est pas un
+gaspillage : ce sont treize reserves qui portent toutes sur des paquets deja `couvert-valide`, une
+dette transverse (`CONS-1`), un correctif de mecanique deja livre par `theo-archi` (`REV-3`,
+`ADR-0084`) et une passe d'audit sans laquelle la parallelisation degraderait silencieusement des
+proprietes deja tenues. Le detail chiffre est dans `DEC-0079`.
+
+### Les deux ecritures faites avant l'ouverture, hors de toute story
+
+1. **Deux libelles faux corriges au mot pres sur le referentiel** (`squad/programme/sciences-et-
+   technologie/competences-cm1.md`, corrige le 2026-09-05, `DEC-0077` section 8.7) : la ligne des
+   regimes alimentaires (*"vegetarien"* -> *"herbivore"*) et la ligne des grandes fonctions
+   (*"nutrition"* retiree de sa propre liste de composantes). Les deux tables de ce fichier portaient
+   encore les anciens libelles ; elles sont corrigees dans la section "Sciences et technologie -
+   CM1" ci-dessus.
+2. **Les vingt codes `SCI-CM1-01` a `SCI-CM1-20` alloues** dans le referentiel, conformement a
+   `ADR-0081` : ce referentiel n'en portait aucun avant s30, et `nadia-prof` ne prononce aucun Done
+   pedagogique sur une ligne de sciences dont le code n'est pas cite par le paquet qui la sert.
+
+### Ce que cette section ne fait pas
+
+- Elle **ne deplace aucune ligne**, n'en ajoute aucune, n'en retire aucune.
+- Elle **ne prononce aucun Done** et n'en anticipe aucun. Le plafond ci-dessus suppose que chaque
+  lot de sciences passe la porte du premier coup, ce qui n'est jamais arrive sur ce produit.
+- Elle **ne differe pas elle-meme** `PER-R1` et `REG-R1` : c'est `nadia-prof` qui les differe a s31,
+  avec son propre motif, repris dans `DEC-0079` et dans `docs/backlog/backlog.md`.
 

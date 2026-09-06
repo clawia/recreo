@@ -35,41 +35,47 @@
 > que la nutrition est la famille qui contient la digestion, la respiration et la circulation, pas une
 > quatrième fonction à leur côté. Les deux lignes ci-dessous sont corrigées ; `DEC-0077`, section 8.7,
 > trace la correction et précise qu'elle n'attend pas l'ouverture d'un lot de sciences.
+>
+> **Codes de ligne ajoutés le 2026-09-06 (`camille-po`, `DEC-0079`), conformément à `ADR-0081`.** Ce
+> référentiel n'était pas encore codé : aucun paquet ne le citait avant s30, et sciences et
+> technologie CM1 entre en bloc à ce sprint. La numérotation reprend, sans jugement, l'ordre de
+> lecture des vingt lignes ci-dessous, identique aux rangs `#` du tableau de faisabilité de
+> `nadia-prof` (2026-09-03) - `SCI-CM1-01` à `SCI-CM1-20`. Aucun intitulé n'est modifié.
 
 ## Matière, mouvement, énergie, information
 
-- Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation).
-- Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange.
-- Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à un point de repère donné.
-- Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre.
-- Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran).
+- [SCI-CM1-01] Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation).
+- [SCI-CM1-02] Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange.
+- [SCI-CM1-03] Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à un point de repère donné.
+- [SCI-CM1-04] Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre.
+- [SCI-CM1-05] Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran).
 
 ## Le vivant, sa diversité et les fonctions qui le caractérisent
 
-- Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu.
-- Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore).
-- Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort).
-- Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, circulation) et l'organe principal de chacune.
-- Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps.
+- [SCI-CM1-06] Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu.
+- [SCI-CM1-07] Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore).
+- [SCI-CM1-08] Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort).
+- [SCI-CM1-09] Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, circulation) et l'organe principal de chacune.
+- [SCI-CM1-10] Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps.
 
 ## Matériaux et objets techniques
 
-- Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité).
-- Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement.
-- Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa fabrication ou dans son usage.
-- Connaître quelques règles d'usage d'un environnement numérique (identification, courriel, recherche d'une information, protection de ses données).
+- [SCI-CM1-11] Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité).
+- [SCI-CM1-12] Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement.
+- [SCI-CM1-13] Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa fabrication ou dans son usage.
+- [SCI-CM1-14] Connaître quelques règles d'usage d'un environnement numérique (identification, courriel, recherche d'une information, protection de ses données).
 
 ## La planète Terre. Les êtres vivants dans leur environnement
 
-- Situer la Terre dans le système solaire et relier les mouvements de la Terre au jour, à la nuit et aux saisons.
-- Identifier quelques phénomènes géologiques et météorologiques (séisme, éruption, tempête, inondation) et les risques associés.
-- Décrire un milieu proche : les êtres vivants qui le peuplent et les relations alimentaires qui les relient (chaîne alimentaire).
-- Identifier un effet de l'activité humaine sur l'environnement et un geste de préservation des ressources.
+- [SCI-CM1-15] Situer la Terre dans le système solaire et relier les mouvements de la Terre au jour, à la nuit et aux saisons.
+- [SCI-CM1-16] Identifier quelques phénomènes géologiques et météorologiques (séisme, éruption, tempête, inondation) et les risques associés.
+- [SCI-CM1-17] Décrire un milieu proche : les êtres vivants qui le peuplent et les relations alimentaires qui les relient (chaîne alimentaire).
+- [SCI-CM1-18] Identifier un effet de l'activité humaine sur l'environnement et un geste de préservation des ressources.
 
 ## Démarches et langages scientifiques
 
-- Mener une démarche d'investigation : formuler une hypothèse, proposer une expérience pour la tester, interpréter le résultat et communiquer sa démarche.
-- Extraire une information d'un document scientifique (texte, tableau, schéma, graphique) et la restituer.
+- [SCI-CM1-19] Mener une démarche d'investigation : formuler une hypothèse, proposer une expérience pour la tester, interpréter le résultat et communiquer sa démarche.
+- [SCI-CM1-20] Extraire une information d'un document scientifique (texte, tableau, schéma, graphique) et la restituer.
 
 ---
 

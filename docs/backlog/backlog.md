@@ -10591,3 +10591,487 @@ produit posee pour toute entree neuve a partir de s30.
   `DEC-0078`.
 - **Agent pressenti** : `lea-dev` ou `marc-dev` pour les dix textes, `nadia-prof` pour le rejeu.
 
+## Sprint 30 - Sciences et technologie CM1 en bloc (deux lots), treize reprises de reserves,
+## `CONS-1`, `REV-3` promue, `PER-R1` et `REG-R1` differees a s31 (`DEC-0079`)
+
+Perimetre arbitre par l'utilisatrice le 2026-09-06 (`DEC-0079`), sur l'arbitrage prealable de
+`nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
+reserves.md`) : sciences et technologie CM1 entre en bloc comme perimetre principal, deux instances
+de `nadia-prof` continuent en parallele, les quinze reserves ouvertes de s29 entrent dans s30, et
+`CONS-1` et `REV-3` y entrent tous les deux.
+
+**Borne du sprint : 8,0** (decote de 1,0 maintenue contre elle-meme, la barre de levee de
+`nadia-prof` n'etant pas remplie). **Budget opposable par instance : 4,0** (`PAR-9`), marge de
+rejeu comprise. **Composition retenue** (`nadia-prof`, section 5.2 de son arbitrage) : une instance
+prend les deux lots de sciences (3,0) plus le bloc D de reprise (0,5), l'autre prend les cinq
+autres blocs de reprise (2,25), la passe transverse (0,5), `CONS-1` (0,5) et `REV-3` (0,25) - 3,5
+planifies de chaque cote, 0,5 de marge de rejeu chacune, **7,0 planifies sur 8,0**, **1,0 de marge
+nommee**. `sofia-sm` affecte les deux instances au planning ; cette section ne fait que reprendre la
+repartition par objet de travail que la borne de `nadia-prof` impose.
+
+**Le chiffre honnete, a garder present tout le sprint** (`DEC-0079`) : **62,5 % de la borne d'audit
+(5,00 sur 8,00 : les treize reprises, `CONS-1`, `REV-3` et la passe transverse) ne ferment aucune
+ligne neuve.** Les deux lots de sciences sont le seul poste qui fait bouger la matrice. **Plafond
+arithmetique : 4 lignes, 56 / 138 = 40,6 %. Attente raisonnable : 3 a 4 lignes, 55 a 56 / 138, soit
+39,9 % a 40,6 %.**
+
+**Deux blocs de reserve differes a s31, avec motif ecrit par `nadia-prof`** (section 5.3 de son
+arbitrage) : `PER-R1` (`bandit-manchot-permis-interdit-cp`, ligne `EMC-CP-02`) - *"la question et la
+bonne reponse ne s'enchainent pas toujours en francais correct ; aucun apprentissage faux, l'enfant
+apprend la bonne qualification, il lit une phrase maladroite"* - et `REG-R1`
+(`bandit-manchot-regles-de-vie-cp`, ligne `EMC-CP-06`) - *"trois distracteurs hors registre reduisent
+trois items a un choix entre deux ; aucun apprentissage faux, l'item est plus facile qu'il ne
+devrait, il n'est pas trompeur"*. **Ce sont les deux seules des quinze ou rien de faux n'est
+enseigne et ou aucun item ne se gagne sans la competence** - contrairement aux blocs B, D, E et F,
+qui portent des items gagnables sans la competence visee (`CON-1`) et ne se different pas. Aucune de
+ces deux reserves n'est bloquante : les lignes `EMC-CP-02` et `EMC-CP-06` restent `couvert-valide`,
+inchangees.
+
+**Corrections de gouvernance faites avant l'ouverture, hors story** (`DEC-0079`) : les deux libelles
+faux de la matrice (regimes alimentaires, grandes fonctions) sont corriges au mot pres sur le
+referentiel, et les vingt codes `SCI-CM1-01` a `SCI-CM1-20` sont alloues dans
+`squad/programme/sciences-et-technologie/competences-cm1.md`. Aucune des deux n'est une story : ce
+sont des ecritures de `camille-po` dans le referentiel et la matrice, faites dans le meme geste que
+la presente ouverture.
+
+### S30-1 - Premier lot de sciences et technologie CM1 : signal et information du quotidien, chaine
+### alimentaire dans un milieu proche
+
+- **Besoin** : en tant qu'eleve de CM1, je veux repondre a des questions sur les signaux et les
+  informations que je croise dans les objets du quotidien, et sur qui mange qui dans un milieu
+  proche, en jouant au bandit manchot, afin de decouvrir deux competences de sciences que le
+  produit ne sert encore d'aucune facon.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3) -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, deux lignes `non couvert` :
+  "Identifier un signal et une information dans quelques objets du quotidien (feu tricolore,
+  panneau, alarme, écran)" (`SCI-CM1-05`) et "Décrire un milieu proche : les êtres vivants qui le
+  peuplent et les relations alimentaires qui les relient (chaîne alimentaire)" (`SCI-CM1-17`).
+  Choisies par `camille-po` parmi les quatre lignes que `nadia-prof` juge les plus sures du lot
+  (section 2.8 de son arbitrage : 2, 5, 12, 17 - aucune condition de biais, aucun fait qui demande
+  une source exterieure, distracteurs naturels).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `SCI-CM1-05`, quand on compte ses items, alors il en porte au moins
+    onze, et les deux elements du libelle (le signal, l'information) sont chacun en bonne reponse
+    au moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent : reconnaitre le signal emis par
+    un objet decrit, et dire quelle information ce signal porte - la moins servie a trois items au
+    moins (`FER-3`).
+  - Etant donne le paquet de `SCI-CM1-17`, quand on compte ses items, alors il en porte au moins
+    onze, et les deux elements du libelle (les etres vivants du milieu, la relation alimentaire)
+    sont chacun en bonne reponse au moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent : dire qui mange qui dans une
+    situation decrite, et dire ce qui arrive a un etre vivant si un autre de la meme relation
+    disparait - la moins servie a trois items au moins (`FER-3`). Aucun item ne demande de
+    construire une chaine alimentaire entiere (`V3`).
+  - Etant donne les items de `SCI-CM1-17`, alors aucun ne range comme vivant ou non vivant un
+    element que `cp-qlm-vivant-non-vivant.yaml` range dans l'autre sens (`CYC-1`) - l'ajout
+    d'especes et de relations nouvelles au CM1 est permis, la contradiction d'un classement deja
+    servi au CP ne l'est pas.
+  - Etant donne chaque item des deux paquets dont un distracteur porte une conception fausse
+    courante, alors son `indice` dit pourquoi cette conception est fausse, en une phrase, sans
+    nommer la bonne reponse (`SCI-1`, `M21`), et l'item porte alors au moins trois propositions
+    (`SCI-4`).
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
+    ligne sous `lignesDeReferentiel` (`ADR-0081`) ; chaque paquet porte onze items exactement et
+    `nombreDeManches: 10` sans derogation (`DEC-0064`).
+  - Etant donne chaque fait porte par un item, alors sa source est ecrite dans le commentaire du
+    paquet (`HIS-3`), et aucun item ne se resout sans connaitre l'objet ou la relation qu'il
+    designe (`CON-1`).
+  - Etant donne l'entree de catalogue de chaque paquet, alors sa consigne nomme la tache reelle du
+    jeu et ne reprend pas la formule generique que `DEC-0078` interdit desormais aux entrees
+    neuves.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui audite ce lot verifie `FER-1`, `FER-2`,
+    `FER-3`, `SCI-1`, `SCI-4` et `CYC-1` tenues - une ligne peut fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert aucune autre ligne de sciences (en particulier
+  ni la ligne 1, ni la ligne 9, ni la ligne 15, que `nadia-prof` nomme comme les plus couteuses du
+  lot) ; elle ne mesure pas seule `SCI-3` (restitution d'une valeur numerique), qui se verifie sur
+  l'ensemble des items de sciences livres a s30 (`S30-1` et `S30-2` ensemble, voir `S30-2`) et
+  jamais paquet par paquet.
+- **Lien decision** : `DEC-0074` (`nadia-prof` ecrit le referentiel), `DEC-0079` (perimetre de s30,
+  composition), `ADR-0081` (codes de ligne).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof` pour l'audit et le Done pedagogique - elle n'est pas la source de cette
+  matiere, chaque fait se verifie contre une source externe.
+
+### S30-2 - Second lot de sciences et technologie CM1 : melanges homogenes et heterogenes, fonction
+### d'un objet technique
+
+- **Besoin** : en tant qu'eleve de CM1, je veux repondre a des questions sur les melanges qui se
+  separent et qui ne se separent pas, et sur la fonction et les composants d'un objet technique du
+  quotidien, en jouant au bandit manchot, afin de decouvrir deux competences de sciences de plus.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3) -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, deux lignes `non couvert` :
+  "Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les
+  constituants d'un mélange" (`SCI-CM1-02`) et "Identifier la fonction d'un objet technique, nommer
+  ses composants et décrire son fonctionnement" (`SCI-CM1-12`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `SCI-CM1-02`, quand on compte ses items, alors il en porte au moins
+    onze, et les trois elements du libelle (homogene, heterogene, un moyen de separation) sont
+    chacun en bonne reponse au moins une fois (`FER-1`) - un seul moyen de separation suffit, le
+    libelle etant au singulier sur ce point.
+  - Etant donne ce paquet, alors deux taches distinctes existent : classer un melange decrit comme
+    homogene ou heterogene, et choisir le moyen qui separe un melange donne - la moins servie a
+    trois items au moins (`FER-3`).
+  - Etant donne le paquet de `SCI-CM1-12`, quand on compte ses items, alors il en porte au moins
+    onze, et les trois elements du libelle (la fonction, un composant, le fonctionnement) sont
+    chacun en bonne reponse au moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent : dire a quoi sert un objet
+    decrit, et nommer la piece qui remplit une fonction donnee - la moins servie a trois items au
+    moins (`FER-3`).
+  - Etant donne chaque item des deux paquets, alors une seule propriete ou un seul critere est
+    demande a la fois, jamais deux dans le meme item.
+  - Etant donne chaque item des deux paquets dont un distracteur porte une conception fausse
+    courante, alors son `indice` dit pourquoi cette conception est fausse, en une phrase, sans
+    nommer la bonne reponse (`SCI-1`, `M21`), et l'item porte alors au moins trois propositions
+    (`SCI-4`).
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
+    ligne sous `lignesDeReferentiel` (`ADR-0081`) ; chaque paquet porte onze items exactement et
+    `nombreDeManches: 10` sans derogation (`DEC-0064`).
+  - Etant donne chaque fait porte par un item, alors sa source est ecrite dans le commentaire du
+    paquet (`HIS-3`), et aucun item ne se resout sans connaitre le melange ou l'objet qu'il
+    designe (`CON-1`).
+  - Etant donne l'entree de catalogue de chaque paquet, alors sa consigne nomme la tache reelle du
+    jeu et ne reprend pas la formule generique que `DEC-0078` interdit desormais aux entrees
+    neuves.
+  - Etant donne l'ensemble des items de sciences livres a s30 (`S30-1` et `S30-2` ensemble, 44
+    items au total), alors au plus un item sur six demande une valeur numerique a restituer, soit
+    sept items au maximum sur les quarante-quatre (`SCI-3`) - mesure sur le lot entier de la
+    matiere, jamais paquet par paquet, par le meme auditeur des deux stories.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui audite ce lot verifie `FER-1`, `FER-2`,
+    `FER-3`, `SCI-1`, `SCI-3` et `SCI-4` tenues - une ligne peut fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert aucune autre ligne de sciences ; elle ne sert
+  pas la ligne "extraire une information d'un document scientifique" - `theo-archi` signale que le
+  rendu du `texteSupport` ne porte aucune regle `white-space: pre-line` et collabe un tableau en une
+  seule ligne (`squad/sprints/s30/avis-faisabilite-theo.md`, section 2.1) : servir cette ligne est
+  un arbitrage distinct, non retenu dans le perimetre de s30.
+- **Lien decision** : `DEC-0074`, `DEC-0079`, `ADR-0081`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof` pour l'audit et le Done pedagogique.
+
+### S30-3 - Reprise, bloc A : deux corrections mot pour mot sur questionner le monde CP (`CYV-R1`,
+### `VIV-R2`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que l'item de la plante qui ne repousse plus soit
+  ecrit avec des mots que je comprends et sans repeter la reponse dans la question, et que les
+  trois items sur les cailloux, le sable et la neige ne se ressemblent pas au point de me faire
+  deviner la reponse au premier mot lu, afin d'apprendre vraiment ce qui distingue le vivant du
+  non-vivant.
+- **Competence programme visee** : questionner le monde, CP - lignes deja `couvert-valide`
+  `QLM-CP-02` (cycle de vie d'un etre vivant) et `QLM-CP-01` (distinguer vivant, objet et matiere
+  inerte). Correction non bloquante, aucune des deux lignes ne bouge de statut.
+- **Criteres d'acceptation** :
+  - Etant donne l'item de la plante de `bandit-manchot-cycle-de-vie-cp`, quand il est corrige,
+    alors son `enonce` devient exactement *"Une plante tres vieille perd ses feuilles et ne
+    repousse plus, que fait-elle ?"*, bonne reponse, distracteurs et indice inchanges (`CYV-R1`,
+    texte fourni mot pour mot par `nadia-prof`).
+  - Etant donne les trois enonces de matiere inerte de `bandit-manchot-vivant-non-vivant-cp`
+    (caillou, sable, neige), quand ils sont remplaces, alors ils prennent la forme *"Un caillou
+    est-il un etre vivant ?"* -> `non` / `oui`, sur les trois enonces de remplacement fournis mot
+    pour mot par `nadia-prof` (`VIV-R2`).
+  - Etant donne ces deux corrections, quand on recompte les items de chaque paquet, alors `FER-1`,
+    `FER-2` et `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture de
+    `QLM-CP-01` et de `QLM-CP-02`.
+  - Etant donne les deux paquets corriges, quand `nadia-prof` les rejoue a l'ecran, alors elle
+    confirme qu'aucun des deux textes ne differe du texte qu'elle a fourni. **Regime : mot pour
+    mot, un passage pour les deux paquets (0,25).**
+  - Etant donne ces corrections, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut : `QLM-CP-01` et `QLM-CP-02` restent `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne touche aucun autre item des deux paquets ; elle ne
+  rouvre pas la reserve `COR-R2` (`bandit-manchot-corps-sens-cp`), sans rapport avec ces deux
+  paquets.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-cycle-de-vie-cp.md`, section 9 ;
+  `squad/sprints/s29-parallelisation-et-dettes-payees/verdicts-nadia-instance-A.md`, section
+  "`VIV-R2` - ma decision" ; `squad/conformite/FICHE-bandit-manchot-vivant-non-vivant-cp.md`.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour la transcription mot pour mot ; `nadia-prof`
+  pour la reverification.
+
+### S30-4 - Reprise, bloc B : un titre et un rejeu borne sur l'objet technique CP (`OBJ-R1`,
+### `OBJ-R2`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux lire un titre de jeu que je comprends sans connaitre
+  le mot "fonction", et repondre a des questions ou je dois vraiment savoir a quoi sert un objet
+  plutot que d'eliminer les deux autres propositions parce qu'elles servent un objet different,
+  afin de vraiment apprendre a quoi servent les objets du quotidien.
+- **Competence programme visee** : questionner le monde, CP - ligne deja `couvert-valide`
+  `QLM-CP-07` (fonction d'un objet technique et ses parties). Correction non bloquante, la ligne ne
+  bouge pas de statut.
+- **Criteres d'acceptation** :
+  - Etant donne le titre servi de `bandit-manchot-objet-technique-cp`, quand il est corrige, alors
+    il devient exactement *"Les objets de tous les jours"* (`OBJ-R1`, titre fourni mot pour mot par
+    `nadia-prof`), remplacant *"Fonction d'un objet"*.
+  - Etant donne les cinq items de la tache *fonction* du meme paquet, quand ils sont revus, alors
+    au moins deux des cinq portent, parmi leurs distracteurs, une fonction plausible pour l'objet
+    nomme dans l'enonce et non la fonction d'un autre objet du paquet (`OBJ-R2`) - propriete a
+    tenir, sans texte impose.
+  - Etant donne ces corrections, quand on recompte les items du paquet, alors `FER-1`, `FER-2` et
+    `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture de `QLM-CP-07`.
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran, alors elle confirme que
+    le titre correspond au contenu servi et que la propriete de `OBJ-R2` est tenue sur au moins
+    deux des cinq items de fonction. **Regime : rejeu borne (0,5).**
+  - Etant donne ces corrections, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut : `QLM-CP-07` reste `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne touche pas la reserve `REV-1` sur ce meme paquet,
+  routee a `theo-archi` et deja traitee par `ADR-0084` (voir `S30-10`).
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-objet-technique-cp.md`, section 7.
+- **Agent pressenti** : `lea-dev` pour le titre et les distracteurs ; `nadia-prof` pour la
+  reverification.
+
+### S30-5 - Reprise, bloc C : un rejeu borne et une erreur de fait sur l'histoire-geographie CM1
+### (`HG-R6`, `HG-R7`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que les questions sur la nature d'un document ne se
+  repondent pas en eliminant une proposition qui n'a rien a voir avec un texte, et que le texte sur
+  la prise de la Bastille me donne la bonne date de la fete nationale, afin de ne rien apprendre de
+  faux sur l'histoire de France.
+- **Competence programme visee** : histoire-geographie, CM1 - lignes deja `couvert-valide`
+  `HG-CM1-14` (comprendre un document, sur sa part servie) et `HG-CM1-07` (evenements majeurs de la
+  Revolution francaise). Correction non bloquante, aucune des deux lignes ne bouge de statut.
+- **Criteres d'acceptation** :
+  - Etant donne les deux items de nature de la ligne 14 dans `cm1-histoire-geographie.yaml`, quand
+    ils sont revus, alors la proposition *"une carte de France"* est remplacee par une forme de
+    document ecrit a ecarter en lisant, et au moins un des deux items porte sur un support ou le mot
+    de la reponse n'apparait pas dans le texte-support (`HG-R6`) - propriete a tenir, sans texte
+    impose.
+  - Etant donne le texte-support de l'item sur la prise de la Bastille, quand il est corrige, alors
+    il devient exactement *"En 1789, des habitants de Paris prennent d'assaut une vieille prison qui
+    servait aussi a enfermer des opposants au roi. Sa chute est fetee dans toute la ville et,
+    l'annee suivante, une grande fete reunit la France entiere pour son anniversaire."*, enonce,
+    bonne reponse, distracteurs et indice inchanges (`HG-R7`, texte fourni mot pour mot par
+    `nadia-prof`).
+  - Etant donne ces corrections, quand on recompte les items du paquet, alors `FER-1`, `FER-2` et
+    `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture de `HG-CM1-14` et de
+    `HG-CM1-07`, et chaque fait garde sa source dans le commentaire du paquet (`HIS-3`).
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran, alors elle confirme que
+    les deux items de nature de la ligne 14 exigent une lecture reelle et que le texte-support de la
+    Bastille est desormais exact. **Regime : rejeu borne (0,5).**
+  - Etant donne ces corrections, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut.
+- **Ce que cette story ne fait pas** : elle ne touche a aucune des lignes `en cours` du meme paquet ;
+  elle ne rouvre pas les reserves `HG-R4` et `HG-R5`, levees a s29.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md`, section 7.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte de `HG-R7` et la reecriture de
+  `HG-R6` ; `nadia-prof` pour la reverification.
+
+### S30-6 - Reprise, bloc D : un rejeu borne sur la division posee CM1 (`POS-R2`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux ne pas pouvoir deviner le reste d'une division rien
+  qu'en regardant la position des trois propositions, afin d'etre force de poser vraiment la
+  division pour trouver la bonne reponse.
+- **Competence programme visee** : mathematiques, CM1 - ligne deja `couvert-valide` `MAT-CM1-05`
+  (effectuer une division euclidienne simple, quotient et reste, par un diviseur a un chiffre).
+  Correction non bloquante, la ligne ne bouge pas de statut.
+- **Criteres d'acceptation** :
+  - Etant donne les onze items de `bandit-manchot-division-posee-cm1`, quand leurs series de
+    propositions sont revues, alors la bonne reponse n'est plus toujours du cote du reste partage
+    entre les deux distracteurs quand les restes different, et le triplet n'est plus
+    systematiquement symetrique (bonne reponse au milieu) quand les restes sont egaux (`POS-R2`) -
+    propriete a tenir, sans texte impose.
+  - Etant donne le paquet corrige, quand on recalcule chaque division (quotient et reste), alors
+    aucune erreur arithmetique n'est introduite par la correction, et `POS-1` (le resultat atteste
+    le calcul, la technique posee elle-meme n'est ni montree ni verifiee) reste tenue a l'identique.
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran en tirant la troisieme
+    lecture qui avait revele le defaut, alors elle confirme que la bonne reponse ne se devine plus
+    sans poser la division sur une majorite d'items. **Regime : rejeu borne (0,5).**
+  - Etant donne cette correction, alors `MAT-CM1-05` reste `couvert-valide` sans mouvement, et la
+    mention de couverture partielle deja due sur cette ligne (*"le resultat atteste le calcul ; la
+    technique posee elle-meme [...] n'est ni montree ni verifiee par le produit"*) est inchangee.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas `POS-1`, deja actee comme due et
+  inchangee ; elle ne touche pas `POS-3` (chaque distracteur une erreur classique arithmetiquement
+  coherente), deja tenue.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md`, section 2 (troisieme
+  audit).
+- **Agent pressenti** : `lea-dev` pour la reecriture des series ; `nadia-prof` pour la
+  reverification.
+
+### S30-7 - Reprise, bloc E : trois corrections sur "fait ou opinion" CM1 (`FOP-R1`, `FOP-R2`,
+### `FOP-R3`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux une consigne qui dise ce qu'on me demande vraiment
+  de faire sur chaque manche, des distracteurs de verification qui ne se reconnaissent plus a leur
+  seule absurdite, et une question sur l'origine d'une information qui n'attend pas une reponse sur
+  sa verite, afin de vraiment apprendre a distinguer un fait d'une opinion et a verifier une
+  information.
+- **Competence programme visee** : enseignement moral et civique, CM1 - ligne deja `couvert-valide`
+  `EMC-CM1-11` (distinguer un fait d'une opinion, verifier l'origine d'une information). Correction
+  non bloquante, la ligne ne bouge pas de statut.
+- **Criteres d'acceptation** :
+  - Etant donne la consigne neuve du paquet, quand elle est revue, alors elle nomme les deux taches
+    reellement posees par les onze manches (distinguer un fait d'une opinion ; verifier l'origine
+    d'une information), ou le paquet revient a une consigne generique maintenant que chaque enonce
+    nomme la sienne - au choix de l'equipe (`FOP-R1`).
+  - Etant donne les dix distracteurs de verification, quand ils sont revus, alors les cinq qui
+    disaient encore *"repeter sans verifier"* deviennent, comme les cinq autres, une methode de
+    verification reellement tentee mais insuffisante ; la declaration du paquet est corrigee dans
+    le meme geste pour ne plus affirmer que les dix le sont deja (`FOP-R2`).
+  - Etant donne l'item 8, quand il est revu, alors soit la question redevient *"comment savoir si
+    c'est vrai"*, soit la bonne reponse remonte au camarade qui a parle - au choix de l'equipe
+    (`FOP-R3`).
+  - Etant donne le paquet corrige, quand on recompte ses items, alors `FER-1`, `FER-2` et `FER-3`
+    restent tenues a l'identique de ce qu'elles etaient a la fermeture de `EMC-CM1-11`, et la
+    mention de couverture partielle deja due sur toute ligne d'EMC CM1 qui bouge reste inchangee.
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran, alors elle confirme que
+    la consigne, les distracteurs et l'item 8 tiennent les trois proprietes ci-dessus. **Regime :
+    rejeu borne (0,5).**
+  - Etant donne ces corrections, alors `EMC-CM1-11` reste `couvert-valide` sans mouvement.
+- **Ce que cette story ne fait pas** : elle ne touche pas les six autres items de verification deja
+  conformes ; elle ne prescrit pas laquelle des deux issues alternatives choisir sur `FOP-R1` et
+  `FOP-R3` - au choix de l'equipe, juge par `nadia-prof`.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md`, section 4, 5 et 6 (second
+  audit).
+- **Agent pressenti** : `lea-dev` pour les trois corrections ; `nadia-prof` pour la reverification.
+
+### S30-8 - Reprise, bloc F : trois corrections sur "droit ou devoir" CM1 (`DRO-R1`, `DRO-R2`,
+### `DRO-R3`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que je ne puisse pas trouver la reponse d'un item de
+  classement en me souvenant d'un autre item du meme jeu, que l'indice d'un item me fasse chercher
+  un critere plutot que de me donner la categorie, et que l'adulte cite dans les exemples ne soit
+  pas toujours une femme, afin de vraiment apprendre a distinguer un droit d'un devoir.
+- **Competence programme visee** : enseignement moral et civique, CM1 - ligne deja `couvert-valide`
+  `EMC-CM1-07` (distinguer un droit d'un devoir, connaitre quelques droits et devoirs de l'eleve et
+  de l'enfant). Correction non bloquante, la ligne ne bouge pas de statut.
+- **Criteres d'acceptation** :
+  - Etant donne les trois items de la seconde tache qui nomment la categorie (*droit* ou *devoir*)
+    d'une situation qu'un item de classement demande par ailleurs de classer, quand ils sont revus,
+    alors soit la seconde tache porte sur une situation que le classement ne traite pas, soit son
+    enonce ne prononce plus ni *droit* ni *devoir* - au choix de l'equipe (`DRO-R1`).
+  - Etant donne l'indice de l'item 1, quand il est corrige, alors il porte le critere et non la
+    categorie a trouver ; etant donne l'item 5, quand il est revu, alors le mot de la bonne reponse
+    n'y est plus employe dans un autre sens (`DRO-R2`) - regle etendue par `nadia-prof` a tout item
+    binaire du depot : sur un item a deux propositions, l'indice porte toujours le critere, jamais
+    la categorie.
+  - Etant donne les quatre paquets d'EMC de s29 (deux occurrences dans ce paquet, une dans
+    `cm1-emc-fait-opinion`, une dans `cp-emc-regles-de-vie`) ou l'adulte nomme est une femme dans
+    les quatre occurrences, quand une occurrence est corrigee, alors au moins une devient un
+    prenom masculin (`DRO-R3`, cout nul).
+  - Etant donne le paquet corrige, quand on recompte ses items, alors `FER-1`, `FER-2` et `FER-3`
+    restent tenues a l'identique de ce qu'elles etaient a la fermeture de `EMC-CM1-07`, et la
+    mention de couverture partielle deja due sur toute ligne d'EMC CM1 qui bouge reste inchangee.
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran, alors elle confirme que
+    les trois proprietes ci-dessus sont tenues. **Regime : rejeu borne (0,5, `DRO-R3` a cout nul
+    inclus).**
+  - Etant donne ces corrections, alors `EMC-CM1-07` reste `couvert-valide` sans mouvement.
+- **Ce que cette story ne fait pas** : elle n'etend pas elle-meme la regle de `DRO-R2` a d'autres
+  paquets binaires deja fermes - `nadia-prof` la fait valoir au cas par cas, a son prochain audit de
+  chacun.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-droit-devoir-cm1.md`, section 4, 5 et 6 (second
+  audit).
+- **Agent pressenti** : `lea-dev` pour les trois corrections ; `nadia-prof` pour la reverification.
+
+### S30-9 - `CONS-1`, la consigne generique n'a plus a etre reprise par une entree neuve de
+### catalogue (`DEC-0078`)
+
+Reprise telle qu'ouverte pour s30, promue en story de sprint.
+
+- **Besoin, du point de vue de l'enfant** : en tant qu'eleve qui enchaine plusieurs jeux d'une meme
+  matiere, je veux que la phrase d'instruction de chaque jeu me dise ce que ce jeu me demande de
+  faire, afin de ne pas lire trois fois la meme phrase qui ne m'apprend rien avant de commencer.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne les dix entrees de catalogue qui portent aujourd'hui la consigne generique
+    (questionner le monde CP, histoire-geographie CM1, anglais CM1, EMC CP, EMC CM1), quand
+    `lea-dev` ou `marc-dev` les reecrit une par une, alors chaque consigne nomme la tache reelle de
+    son jeu, sur le modele des 44 entrees deja conformes du catalogue.
+  - Etant donne une consigne reecrite, quand `nadia-prof` la rejoue contre le paquet qu'elle
+    introduit, alors elle confirme que la consigne correspond a la forme des enonces. **Regime :
+    rejeu borne (0,5), dit d'avance.**
+  - Etant donne ce correctif, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut.
+- **Ce que cette story ne fait pas** : elle ne rouvre aucune ligne fermee et ne dicte pas les dix
+  textes - une consigne se juge contre le paquet qu'elle introduit, `nadia-prof` les rejouera une
+  par une. Elle n'ecrit aucun garde-fou de comptage : `theo-archi` recommande, si un cliquet est
+  voulu, de l'ecrire **apres** ce correctif et de lui donner le compte mesure a ce moment-la, jamais
+  10 (`squad/sprints/s30/avis-faisabilite-theo.md`, section 2.3) - ce n'est pas tranche par la
+  presente story.
+- **Lien** : `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 2 ;
+  `DEC-0078`.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour les dix textes, `nadia-prof` pour le rejeu.
+
+### S30-10 - `REV-3`, l'ecran de fin de partie nomme une reponse sans porter sa question -
+### deja tranchee et livree par `ADR-0084`
+
+`nadia-prof` decrivait le symptome dans sa reverification du 2026-09-06 sans prescrire la solution.
+**Ce n'est plus une story ouverte sur sa forme technique** : `theo-archi` a tranche et livre le
+correctif avant l'ouverture du sprint (`ADR-0084`, commit `c2c82ac`, `squad/sprints/s30/avis-
+faisabilite-theo.md`, section 1) - le verdict d'une mecanique servie porte desormais l'`enonce` de
+la manche qu'il ferme comme composante obligatoire, et l'ecran de fin de partie le rend entier dans
+un element `question-rappelee`, a cote de la reponse et dans le meme bloc qu'elle, jamais dedans.
+Ce qui reste du a s30 est le rejeu de `nadia-prof` sur cette forme livree, pas un choix a faire.
+
+- **Besoin, du point de vue de l'enfant** : en tant qu'eleve qui vient de terminer une partie de
+  plusieurs questions, je veux voir, a cote de chaque bonne reponse affichee en fin de partie, la
+  question a laquelle elle repond, afin de comprendre ce qu'elle veut dire meme si j'ai deja
+  enchaine d'autres questions depuis.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la mecanique,
+  sur l'ecran de fin de partie des deux mecaniques (boutons et saisie).
+- **Criteres d'acceptation** :
+  - Etant donne une manche resolue par revelation, quand l'ecran de fin de partie affiche la
+    reponse revelee, alors il affiche aussi, dans le meme bloc et sous le meme parent, l'enonce
+    entier de cette manche, porte par le champ `enonce` du verdict (`ADR-0084`, clauses 1 a 3).
+  - Etant donne plusieurs manches revelees dans la meme partie, quand l'ecran de fin de partie les
+    liste, alors chaque reponse reste appariee a sa propre question et jamais a celle d'une autre
+    manche de la meme partie - propriete verifiee par
+    `AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest` (population : 54 ecrans, un par
+    paquet servi, 108 items joues, deux morsures).
+  - Etant donne le correctif livre, quand `nadia-prof` le rejoue a l'ecran sur les six paquets deja
+    couverts par sa reverification de `REV-1` (CP et CM1, cinq formes de bonne reponse), alors elle
+    confirme qu'aucune reponse n'y reste orpheline de sa question. **Prix attendu : 0,25, comme
+    annonce d'avance - sauf si elle constate qu'une liste de plusieurs reponses revelees constitue
+    un ecran neuf au sens de sa propre clause du 2026-09-06, auquel cas le prix double.**
+  - Etant donne ce correctif, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut : `REV-3` ne remet en cause aucun Done pedagogique deja rendu.
+- **Ce que cette story ne fait pas** :
+  - Elle ne choisit plus la forme technique : `ADR-0084` l'a tranchee avant l'ouverture du sprint.
+  - Elle ne decide pas si un intitule (par exemple *"La question :"*) doit accompagner l'enonce
+    rappele - routee a `nadia-prof` au titre de `M12` (`squad/sprints/s30/avis-faisabilite-theo.md`,
+    section 1, point 1). Sans intitule, aucun mot neuf n'est aujourd'hui lu par l'enfant au-dela du
+    champ `enonce` lui-meme.
+  - Elle ne rappelle pas le texte-support d'un item de comprehension sur cet ecran - a instruire
+    seulement si un usage reel le demande (meme source, point 2).
+  - Elle ne tranche pas le poids visuel de la question rappelee, qui reprend aujourd'hui a
+    l'identique les valeurs de `.reponse-revelee` - routee a `ines-design`, qui propose sans
+    trancher (meme source, point 3).
+  - Elle ne modifie pas `DesignationVerdict`, qui n'a aujourd'hui aucun ecran servi (meme source,
+    point 4).
+- **Lien** : `squad/decisions/adr/ADR-0084-la-reponse-d-une-fin-de-partie-voyage-avec-la-question-
+  qu-elle-commente.md` ; `squad/sprints/s30/avis-faisabilite-theo.md`, section 1 ;
+  `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Reverification du 2026-09-06",
+  point 3 ; `DEC-0077`, section 9.4 ; `DEC-0079`.
+- **Agent pressenti** : `nadia-prof` pour le rejeu ; `nadia-prof` pour l'arbitrage de l'intitule
+  (`M12`) ; `ines-design` pour un avis sur le poids visuel, sans trancher.
+
+### S30-11 - Passe transverse de l'instance d'accumulation sur les proprietes de portee "depot
+### servi entier"
+
+- **Besoin** : transverse - pas de contenu pedagogique. Cette story ne met aucun jeu neuf entre les
+  mains d'un enfant : c'est la tache d'audit que `nadia-prof` nomme elle-meme comme necessaire
+  chaque sprint ou elle audite en parallele d'une autre instance d'elle-meme (`PAR-0`, `PAR-4`).
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne le depot de contenu servi a l'ouverture de s30, quand l'instance qui porte
+    l'accumulation conduit sa passe transverse, alors elle cherche les autres endroits ou un
+    gabarit compose une phrase autour d'un champ de contenu - la famille du defaut de `REV-1`,
+    qu'elle a elle-meme nommee comme non recherchee au-dela de ce seul cas a s29.
+  - Etant donne cette passe, alors elle verifie aussi l'homogeneite de registre au-dela de la
+    consigne - titres, messages de reussite, ecrans de fin - explicitement hors du perimetre de
+    `CONS-1`.
+  - Etant donne les identifiants mintes par s30 (`SCI-4`, `PAR-9`, `PAR-10`, les vingt codes
+    `SCI-CM1-nn`), alors elle verifie qu'aucune collision n'est creee avec un identifiant deja
+    existant du depot.
+  - Etant donne cette passe, alors son resultat est ecrit - motif, portee, verdict - dans un
+    document consultable, et non seulement rendu oralement ou implicitement.
+  - Etant donne cette passe, alors elle ne prononce aucun Done pedagogique sur un increment neuf de
+    s30 : elle produit des reserves ou des alertes sur le depot existant, jamais une fermeture de
+    ligne.
+- **Ce que cette story ne fait pas** : elle ne relit pas les lots de l'autre instance comme un
+  double controle - `nadia-prof` l'ecrit elle-meme, deux paires d'yeux sur des lots disjoints ne
+  sont pas une verification croisee.
+- **Lien decision** :
+  `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
+  reserves.md`, section 3.3 ; `DEC-0079`.
+- **Agent pressenti** : `nadia-prof`, l'instance qui porte l'accumulation ce sprint.
+
