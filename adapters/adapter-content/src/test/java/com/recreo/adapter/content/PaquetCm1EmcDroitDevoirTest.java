@@ -43,6 +43,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  * automatisables ici et restent non gardees. {@code HIS-3} (chaque fait institutionnel porte sa
  * source) est une obligation de commentaire verifiee par {@code nadia-prof} a la lecture, pas une
  * propriete des items eux-memes : non gardee par ce fichier.</p>
+ *
+ * <p><b>Correction du 2026-09-06 (s30, reprise bloc F, S30-8, squad/conformite/FICHE-bandit-
+ * manchot-droit-devoir-cm1.md, second audit s29, sections 4 a 6)</b> : trois reserves neuves,
+ * {@code DRO-R1} a {@code DRO-R3}. Cette reprise change la forme du defaut 3 corrige plus haut - la
+ * seconde tache continue de porter un devoir (item 4), mais son enonce ne le nomme plus, ce qui a
+ * rendu obsolete {@code laSecondeTacheNommeAuMoinsUnDevoirEtLeResteDesDroits} : elle est remplacee
+ * par {@code laSecondeTachePorteToujoursAuMoinsUnDevoir}, qui verifie la meme propriete via
+ * l'indice plutot que l'enonce, laisse inchange par {@code DRO-R1}.</p>
  */
 class PaquetCm1EmcDroitDevoirTest {
 
@@ -147,28 +155,98 @@ class PaquetCm1EmcDroitDevoirTest {
     }
 
     /**
-     * Correction du 2026-09-06, defaut 3 : la seconde tache (dire a quoi sert un droit ou un devoir)
-     * porte desormais au moins un devoir, pas seulement des droits comme avant la correction. Chaque
-     * item d'utilite nomme explicitement "le droit" ou "le devoir" dont il parle, ce qui rend la
-     * verification directe sur l'enonce.
+     * Correction du 2026-09-06 (s29), defaut 3, forme mise a jour le 2026-09-06 (s30, {@code
+     * DRO-R1}) : la seconde tache porte toujours au moins un devoir (item 4), mais son enonce ne le
+     * nomme plus depuis {@code DRO-R1} - il nommait la categorie d'une situation qu'un item de
+     * classement traite par ailleurs (item 3). La marque de la propriete vit desormais dans
+     * l'indice de l'item, laisse inchange par cette correction.
      */
     @Test
-    void laSecondeTacheNommeAuMoinsUnDevoirEtLeResteDesDroits() {
+    void laSecondeTachePorteToujoursAuMoinsUnDevoir() {
         List<Question> utilite = itemsDUtilite();
         assertThat(utilite).isNotEmpty();
 
-        long nommantUnDevoir = utilite.stream()
-                .filter(item -> item.enonce().contains("devoir"))
-                .count();
-        long nommantUnDroit = utilite.stream()
-                .filter(item -> item.enonce().contains("droit"))
+        long portantUnDevoir = utilite.stream()
+                .filter(item -> item.indice().orElse("").contains("devoir"))
                 .count();
 
-        assertThat(nommantUnDevoir)
-                .as("FER-1/FER-3 : au moins un item d'utilite porte sur un devoir")
+        assertThat(portantUnDevoir)
+                .as("FER-1/FER-3 : au moins un item d'utilite reste associe a un devoir")
                 .isGreaterThanOrEqualTo(1);
-        assertThat(nommantUnDevoir + nommantUnDroit)
-                .as("chaque item d'utilite nomme explicitement le droit ou le devoir concerne")
-                .isEqualTo(utilite.size());
+    }
+
+    /** Les trois bonnes reponses d'utilite dont la situation est aussi traitee par un item de classement. */
+    private static final Set<String> BONNES_REPONSES_UTILITE_PARTAGEANT_UNE_SITUATION = Set.of(
+            "à ce que chacun puisse apprendre sans être dérangé",
+            "à permettre à chaque enfant d'être soigné, quelle que soit sa famille",
+            "à lui laisser du temps pour grandir en dehors du travail scolaire");
+
+    /**
+     * {@code DRO-R1} (nadia-prof, 2026-09-06, S30-8) : les trois items d'utilite dont la situation
+     * est aussi traitee par un item de classement (ecouter le maitre et respecter les regles, etre
+     * soigne, jouer et se reposer) ne nomment plus la categorie a trouver dans leur enonce - sans
+     * quoi un tirage qui sert les deux items du couple resout le second sans distinction des qu'il a
+     * deja servi le premier.
+     */
+    @Test
+    void droR1LesItemsDUtiliteQuiPartagentLeurSituationAvecUnItemDeClassementNeNommentPlusLaCategorie() {
+        List<Question> items = itemsDUtilite().stream()
+                .filter(item -> BONNES_REPONSES_UTILITE_PARTAGEANT_UNE_SITUATION
+                        .contains(item.bonneReponse()))
+                .toList();
+
+        assertThat(items).as("les trois items d'utilite concernes par DRO-R1").hasSize(3);
+        for (Question item : items) {
+            assertThat(item.enonce())
+                    .as("item '%s' : DRO-R1, l'enonce ne nomme plus la categorie d'une situation"
+                            + " deja traitee par un item de classement", item.enonce())
+                    .doesNotContain("droit")
+                    .doesNotContain("devoir");
+        }
+    }
+
+    private static Question itemDontLEnonceContient(List<Question> items, String fragment) {
+        return items.stream().filter(item -> item.enonce().contains(fragment)).findFirst()
+                .orElseThrow(() -> new AssertionError("aucun item ne contient : " + fragment));
+    }
+
+    /**
+     * {@code DRO-R2} (nadia-prof, 2026-09-06, S30-8, regle etendue a tout item binaire du depot) :
+     * sur un item a deux propositions, l'indice porte le critere et jamais la categorie. L'indice
+     * de l'item 1 nommait la categorie ("Ce droit protege...") ; celui de l'item 5 employait le mot
+     * "droit" dans un autre sens (la permission), signal ambigu. Les quatre autres items binaires
+     * (3, 7, 9, 11) portaient deja le critere sans nommer la categorie et ne sont pas concernes.
+     */
+    @Test
+    void droR2LIndiceDesItemsUnEtCinqPortePlusLeCritereQueLaCategorie() {
+        List<Question> items = items();
+        Question item1 = itemDontLEnonceContient(items, "Jouer et se reposer en dehors du travail scolaire");
+        Question item5 = itemDontLEnonceContient(items, "protégé contre la violence");
+
+        assertThat(item1.indice().orElseThrow())
+                .as("DRO-R2, item 1 : l'indice ne nomme plus la categorie")
+                .doesNotContain("Ce droit")
+                .doesNotContain("Ce devoir");
+        assertThat(item5.indice().orElseThrow())
+                .as("DRO-R2, item 5 : le mot 'droit' n'est plus employe, meme dans un autre sens")
+                .doesNotContain("droit");
+    }
+
+    /**
+     * {@code DRO-R3} (constat de serie, cout nul, S30-8) : l'adulte de classe nomme par ce paquet
+     * ("la maitresse") devient masculin ("le maitre"), une occurrence suffisant a equilibrer la
+     * serie de quatre paquets d'EMC ou l'adulte nomme etait une femme dans les quatre occurrences.
+     */
+    @Test
+    void droR3LAdulteDeClasseDevientMasculinDansCePaquet() {
+        List<Question> items = items();
+        for (Question item : items) {
+            assertThat(item.enonce())
+                    .as("DRO-R3 : l'ancienne figure feminine unique ne doit plus apparaitre")
+                    .doesNotContain("la maîtresse");
+        }
+        assertThat(items.stream().anyMatch(item -> item.enonce().contains("le maître")))
+                .as("DRO-R3 : une occurrence masculine ('le maître') est desormais presente")
+                .isTrue();
     }
 }

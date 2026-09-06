@@ -71,28 +71,47 @@ lignesDeReferentiel: ["EMC-CM1-07"]
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
+#
+# Correction du 2026-09-06 (s30, reprise bloc F, S30-8, squad/conformite/FICHE-bandit-manchot-
+# droit-devoir-cm1.md, second audit s29, sections 4 a 6) : trois reserves corrigees dans le meme
+# geste.
+# - DRO-R1 : trois items d'utilite (ceux qui portaient sur la meme situation qu'un item de
+#   classement - ecouter le maitre et respecter les regles, etre soigne, jouer et se reposer)
+#   nommaient la categorie a trouver (un devoir, un droit), resolvant l'item de classement associe
+#   des qu'un tirage avait deja servi l'autre. Leur enonce ne prononce plus ni "droit" ni "devoir" -
+#   la situation qu'ils traitent reste inchangee, seule la formulation de la question change.
+# - DRO-R2 (regle etendue par nadia-prof a tout item binaire du depot : sur un item a deux
+#   propositions, l'indice porte le critere et jamais la categorie) : l'indice de l'item 1
+#   prononcait la categorie ("Ce droit protege...") au lieu du critere ; l'indice de l'item 5
+#   employait le mot "droit" dans un autre sens (la permission), signal ambigu. Les deux indices
+#   sont reecrits pour ne plus nommer ni employer le mot "droit". Verifie sur les six items
+#   binaires du paquet, pas seulement l'item 1 : les items 3, 7, 9 et 11 portaient deja le critere
+#   sans nommer la categorie et restent inchanges.
+# - DRO-R3 (constat de serie, cout nul) : l'adulte de classe nomme par ce paquet ("la maitresse",
+#   items 3 et 4) devient masculin ("le maitre"), une occurrence suffisant a equilibrer la serie de
+#   quatre paquets d'EMC ou l'adulte nomme etait une femme dans les quatre occurrences.
 items:
   - enonce: "Jouer et se reposer en dehors du travail scolaire, qu'est-ce que c'est pour un enfant ?"
     bonneReponse: "un droit"
     distracteurs: ["un devoir"]
-    indice: "Ce droit protège des moments de repos, pas le travail scolaire."
+    indice: "C'est quelque chose que chaque enfant peut réclamer pour lui-même, sans que personne ne puisse le lui retirer."
   - enonce: "À quoi sert le droit à l'éducation pour un enfant ?"
     bonneReponse: "à lui permettre d'apprendre et de grandir"
     distracteurs: ["à le récompenser quand il est sage", "à le préparer à un seul métier précis"]
     indice: "L'école sert à apprendre, pas à récompenser un comportement."
-  - enonce: "Écouter la maîtresse et respecter les règles de la classe, qu'est-ce que c'est pour un élève ?"
+  - enonce: "Écouter le maître et respecter les règles de la classe, qu'est-ce que c'est pour un élève ?"
     bonneReponse: "un devoir"
     distracteurs: ["un droit"]
     indice: "C'est ce qu'un élève doit faire pour que la classe fonctionne bien."
-  - enonce: "À quoi sert le devoir d'écouter la maîtresse et de respecter les règles de la classe ?"
+  - enonce: "À quoi sert, pour un élève, le fait d'écouter le maître et de respecter les règles de la classe ?"
     bonneReponse: "à ce que chacun puisse apprendre sans être dérangé"
     distracteurs: ["à empêcher les élèves de bouger", "à choisir les élèves les plus sages"]
     indice: "Ce devoir permet à tout le monde de travailler dans le calme."
   - enonce: "Être protégé contre la violence et la maltraitance, qu'est-ce que c'est pour un enfant ?"
     bonneReponse: "un droit"
     distracteurs: ["un devoir"]
-    indice: "Personne n'a le droit de faire du mal à un enfant."
-  - enonce: "À quoi sert le droit d'être soigné quand on est malade ?"
+    indice: "Aucun adulte, ni personne d'autre, n'est autorisé à faire du mal à un enfant."
+  - enonce: "À quoi sert, pour un enfant, le fait d'être soigné quand il est malade ?"
     bonneReponse: "à permettre à chaque enfant d'être soigné, quelle que soit sa famille"
     distracteurs: ["à obliger un enfant à rester à la maison", "à décider de l'école qu'il fréquente"]
     indice: "Ce droit concerne la santé de l'enfant, pas son école."
@@ -100,7 +119,7 @@ items:
     bonneReponse: "un devoir"
     distracteurs: ["un droit"]
     indice: "C'est ce qu'un élève doit faire pour progresser à l'école."
-  - enonce: "À quoi sert le droit de jouer et de se reposer pour un enfant ?"
+  - enonce: "À quoi sert, pour un enfant, le fait de jouer et de se reposer ?"
     bonneReponse: "à lui laisser du temps pour grandir en dehors du travail scolaire"
     distracteurs: ["à le dispenser de toute règle", "à remplacer le droit à l'éducation"]
     indice: "Ce droit protège des moments de repos, pas l'absence de toute règle."
