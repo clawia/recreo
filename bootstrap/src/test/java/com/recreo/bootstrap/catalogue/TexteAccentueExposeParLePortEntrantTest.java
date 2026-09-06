@@ -388,16 +388,28 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Écoute le mot que l'adulte va dire, puis écris-le.",
             // S27-2 : trois consignes neuves. La consigne de cp-voyelle-du-son (S27-1) est reprise
             // a l'identique de "bandit-manchot-lettre-du-son-cp" ci-dessus, aucune entree neuve.
-            // S27-2 et S27-3 partagent "Lis bien la question, puis choisis la bonne
-            // réponse." : aucune entree neuve pour S27-3.
             //
             // S28-1 : les deux consignes specifiques de S27-2 ("Lis bien, puis dis si c'est un
             // être vivant ou un objet." et "Lis bien, puis dis si c'est solide ou liquide.")
-            // disparaissent de cette liste - le catalogue reel ne les produit plus. Les deux
-            // paquets portent chacun une seconde tache depuis S28-1 (FER-3) que ces consignes ne
-            // decrivaient plus ; ils partagent desormais la consigne generique ci-dessous, deja
-            // dans l'inventaire.
-            "Lis bien la question, puis choisis la bonne réponse.",
+            // avaient deja disparu de cette liste - le catalogue reel ne les produisait plus. Les
+            // deux paquets portaient chacun une seconde tache depuis S28-1 (FER-3) que ces
+            // consignes ne decrivaient plus ; ils partageaient alors la consigne generique.
+            //
+            // S30-9 (CONS-1, DEC-0078) : "Lis bien la question, puis choisis la bonne réponse."
+            // disparaît a son tour de cette liste - le catalogue reel ne la produit plus. Les dix
+            // entrees qui la partageaient encore (questionner le monde CP, histoire-geographie
+            // CM1, anglais CM1, EMC CP, EMC CM1) portent chacune desormais une consigne propre,
+            // listee ici meme si son paquet est ne a un sprint anterieur.
+            "Lis bien, puis dis si c'est un être vivant.",
+            "Lis bien, puis nomme la partie du corps ou le sens.",
+            "Lis bien, puis dis si l'eau est solide ou liquide, ou nomme le changement d'état.",
+            "Lis bien, puis dis ce que fait l'être vivant, ou réponds par oui ou par non.",
+            "Lis bien, puis dis à quoi sert l'objet, ou nomme sa partie.",
+            "Lis bien, puis réponds à la question d'histoire ou de géographie.",
+            "Traduis le mot, ou réponds à la question de culture anglaise.",
+            "Lis bien, puis dis ce qu'il faut faire, ou pourquoi.",
+            "Lis bien, puis dis ce que fait la personne, ou pourquoi c'est interdit.",
+            "Lis bien, puis dis si c'est un droit ou un devoir.",
             // S28-4 : deux consignes neuves.
             "Pose l'opération, puis choisis le bon résultat.",
             "Pose l'opération, puis choisis le bon quotient et le bon reste.",
