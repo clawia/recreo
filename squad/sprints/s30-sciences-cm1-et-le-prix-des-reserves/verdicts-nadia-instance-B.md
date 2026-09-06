@@ -147,6 +147,32 @@ Consequence : `FER-2` echoue (7 < 10), `FER-1` perd le seul support de l'element
 **Ce qui tient et n'est pas a refaire** : la tache B entiere (six pieces reelles, distracteurs pris
 sur le meme objet) et **l'item 11, qui est le meilleur item des quatre paquets de sciences de s30**.
 
+### Les deux jugements de contenu que `lea-dev` m'a laisses au lieu de les trancher
+
+**Elle a eu raison dans les deux cas**, et les deux sont tranches en toutes lettres dans les fiches
+concernees, avec leur motif. Repris ici parce qu'ils gouvernent la reprise.
+
+1. **Le mapping des elements de `FER-1` sur la chaine alimentaire** - *"les etres vivants"* par la
+   tache *qui mange qui*, *"la relation alimentaire"* par la tache de consequence.
+   **J'accepte le mapping propose.** Les bonnes reponses de la tache A **sont** des etres vivants du
+   milieu ; celles de la tache B enoncent ce que la relation fait, ce qui est la seule facon de
+   mettre une relation en position de bonne reponse dans un bandit manchot. **Je refuse d'exiger en
+   plus un item d'inventaire** : mon propre arbitrage donnait ce couple de taches trois jours avant
+   le lot, et l'exiger aujourd'hui serait deplacer un poteau que j'ai plante moi-meme.
+   **Consequence pour la reprise** : *"la relation alimentaire"* n'ayant d'autre support que la
+   tache B, **le refus prive `FER-1` de la moitie de ses elements** - la tache B est a reconstruire,
+   pas a supprimer ni a remplacer par des items de la tache A.
+   (`FICHE-bandit-manchot-chaine-alimentaire-cm1.md`, section du meme nom.)
+2. **L'item 11 de l'objet technique, qui n'entre dans aucune des deux taches de `FER-3`.**
+   **`FER-1` et `FER-3` sont independantes et ne se comptent pas ensemble** : la premiere compte des
+   elements du libelle en position de bonne reponse, la seconde des taches mentales. Un item peut
+   servir `FER-1` sans appartenir a l'une des deux taches, du moment que `FER-3` est satisfaite par
+   ailleurs. **L'item 11 est donc legitime et meme obligatoire** - *"le fonctionnement"* est le
+   troisieme element du libelle et rien d'autre ne le porte. Ma table de l'arbitrage donnait un
+   couple de taches en precisant que c'etait *"un exemple qui ferme, pas une prescription"*.
+   **Ne le supprimez pas dans la reprise** : il est ce qui rend la ligne complete.
+   (`FICHE-bandit-manchot-objet-technique-cm1.md`, section du meme nom.)
+
 ### `MAT-CM1-05` - bloc D, `POS-R2` : levee, `POS-R3` ouverte
 
 **`POS-R2` est levee.** Sur les huit items a reste unique, la bonne le porte desormais **quatre
