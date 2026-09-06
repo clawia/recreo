@@ -465,7 +465,7 @@ items:
     indice: "Ce sont les deux ordres qui profitaient jusque-là de privilèges particuliers."
     ligneDeReferentiel: "HG-CM1-07"
   - enonce: "Quel type de document est ce texte ?"  # HIS-1: document ; HIS-3: texte fictif à but pédagogique illustrant le journal intime ; date de la prise de la Bastille consensuelle, famille (a)
-    texteSupport: "Cher journal, nous sommes le 15 juillet 1789 . Hier, j'ai vu la foule envahir la prison de la Bastille. Tout Paris est en effervescence."
+    texteSupport: "Cher journal, nous sommes le 15 juillet 1789. Hier, j'ai vu la foule envahir la prison de la Bastille. Tout Paris est en effervescence."
     bonneReponse: "un journal intime"
     distracteurs: ["un édit royal", "une carte de France"]
     indice: "Repense à la façon dont ce texte commence."

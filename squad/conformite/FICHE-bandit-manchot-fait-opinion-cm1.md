@@ -3,7 +3,7 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-emc-fait-opinion.yaml`.
 - **Entree de catalogue** : `bandit-manchot-fait-opinion-cm1`, titre servi *"Fait ou opinion"*,
-  consigne servie *"Lis bien la question, puis choisis la bonne reponse."*, `nombreDeManches: 10`.
+  consigne servie *"Lis bien, puis dis si c'est un fait ou une opinion."*, `nombreDeManches: 10`.
 - **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
   `nadia-prof`, apres avoir joue la reprise `4dbf9b2`). **`EMC-CM1-11` ferme** : `non couvert` ->
   **`couvert-valide`**. Trois reserves nommees et datees, `FOP-R1` a `FOP-R3`, aucune bloquante.

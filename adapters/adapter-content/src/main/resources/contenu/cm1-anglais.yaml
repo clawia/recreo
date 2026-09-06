@@ -33,9 +33,11 @@ lignesDeReferentiel: ["LVE-CM1-04", "LVE-CM1-07"]
 # examen, parente etymologique et non graphique, et sont acceptees ; aucune autre paire ne se
 # ressemble).
 #
-# S29-7 (nadia-prof, ANG-R1, ouverte a s28, texte fourni dans FICHE-bandit-manchot-anglais-cm1.md,
-# section 4, repris mot pour mot) : l'item "montagne" donnait "mountain" en bonne reponse, un mot
-# transparent (meme racine, meme silhouette que son equivalent francais) qui se devine sans avoir
+# S29-7 (nadia-prof, ANG-R1, ouverte a s28, defaut nomme et REC-5/REC-6 cites dans FICHE-bandit-
+# manchot-anglais-cm1.md, section 4 - aucun texte de remplacement n'y etait fourni, correction
+# apportee par marc-dev et jugee par nadia-prof en reverification, S29-7 bis) : l'item "montagne"
+# donnait "mountain" en bonne reponse, un mot transparent (meme racine, meme silhouette que son
+# equivalent francais) qui se devine sans avoir
 # jamais appris un mot d'anglais - contrefacon de mesure que REC-5 interdit. Il violait aussi REC-6
 # (mountain, huit lettres, etait la plus longue des trois propositions face a des distracteurs de
 # quatre et cinq lettres). Remplace par l'item "colline"/"hill", qui garde le champ lexical a cinq

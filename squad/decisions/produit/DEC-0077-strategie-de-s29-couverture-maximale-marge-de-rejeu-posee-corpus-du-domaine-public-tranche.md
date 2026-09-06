@@ -22,15 +22,16 @@
   presente decision), `DEC-0076` (arbitrage de cloture de s28), `ADR-0079` (l'unite de la borne de
   `nadia-prof` est le lot de matiere), `ADR-0081` (clause 5, un item ne sert qu'une ligne),
   `DEC-0064` (regle de derogation de `nombreDeManches`),
-  `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-
-  ligne-et-le-prix-des-quatre-lots.md` (regles `FER-1` a `FER-3`, tarif 1,0/1,5),
-  `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-
-  lignes.md` (sections 1 a 13 - le prix reel, le plafond, la parallelisation, `PAR-0` a `PAR-8`,
+  `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`
+  (regles `FER-1` a `FER-3`, tarif 1,0/1,5),
+  `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`
+  (sections 1 a 13 - le prix reel, le plafond, la parallelisation, `PAR-0` a `PAR-8`,
   `CYC-1`, `EMC-10`),
   `squad/sprints/s28-second-passage-et-chantier-palier-2/retro.md`,
-  `squad/programme/MATRICE-couverture.md`, `squad/programme/sciences-et-technologie/competences-
-  cm1.md`, `squad/programme/enseignement-moral-et-civique/competences-cp.md` et `competences-
-  cm1.md`, `squad/programme/questionner-le-monde/competences-cp.md`,
+  `squad/programme/MATRICE-couverture.md`,
+  `squad/programme/sciences-et-technologie/competences-cm1.md`,
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md` et `competences-cm1.md`,
+  `squad/programme/questionner-le-monde/competences-cp.md`,
   `squad/programme/histoire-geographie/competences-cm1.md`.
 
 ---
@@ -154,8 +155,8 @@ dans le fichier lui-meme). Ce que cette decision implique :
 
 - `squad/decisions/produit/DEC-index.md` : ligne `DEC-0077` ajoutee ; ligne `DEC-0075` mise a jour
   (statut `Acceptee`, option B, renvoi a `DEC-0077`).
-- `squad/decisions/produit/DEC-0075-corpus-de-reproductions-d-oeuvres-et-droits-d-usage-question-
-  ouverte.md` : note ajoutee en tete, champ `Statut` mis a jour ; le corps du document (constat,
+- `squad/decisions/produit/DEC-0075-corpus-de-reproductions-d-oeuvres-et-droits-d-usage-question-ouverte.md`
+  : note ajoutee en tete, champ `Statut` mis a jour ; le corps du document (constat,
   perimetre des neuf lignes, trois options) reste tel qu'ecrit le 2026-09-03, non efface.
 - Signale a `sofia-sm`, hors de ce fichier : routage vers `theo-archi` des questions de source, de
   preuve de domaine public, de format et de verification du corpus d'oeuvres (section 4) ; routage
@@ -215,8 +216,8 @@ troisieme derive.
 
 ### 8.1 Le perimetre de la section 2 ne tient pas - `nadia-prof` le decline par ecrit
 
-`squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-
-lignes.md` (`11265c1`) recompte le tarif des quatre matieres que la section 2 annoncait a 1,0
+`squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`
+(`11265c1`) recompte le tarif des quatre matieres que la section 2 annoncait a 1,0
 chacune, cinq lots, 5,0 sur sa borne. **Le prix reel vaut 6,0 a 7,0, pas 5,0** : `nadia-prof` n'est
 pas la source en sciences et technologie CM1 ni en enseignement moral et civique CM1 (1,5 chacune,
 ecrit de sa main le 2026-09-03 dans les referentiels eux-memes), et l'EMC CP est mixte - 1,0 tant

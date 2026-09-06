@@ -1,7 +1,6 @@
 # DEC-0075 - Corpus de reproductions d'oeuvres et droits d'usage : question ouverte, non tranchee
 
-> **Tranchee le 2026-09-05 par `DEC-0077-strategie-de-s29-couverture-maximale-marge-de-rejeu-posee-
-> corpus-du-domaine-public-tranche.md`** : l'utilisatrice retient l'**option B** ci-dessous - un
+> **Tranchee le 2026-09-05 par `DEC-0077`** : l'utilisatrice retient l'**option B** ci-dessous - un
 > corpus de reproductions d'oeuvres du **domaine public**. `theo-archi` instruit la source et la
 > forme, `nadia-prof` valide le choix des oeuvres. Les sections qui suivent restent telles
 > qu'ecrites le 2026-09-03 : elles documentent le constat et les trois options posees a
