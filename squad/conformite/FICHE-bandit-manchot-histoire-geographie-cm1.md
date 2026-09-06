@@ -577,3 +577,126 @@ reponse"* et *"est-ce la meme operation mentale"* restent des jugements.
 autour d'une bonne reponse** (`REV-1`). Elle n'apparait ni dans le fichier de contenu, ni dans aucun
 test, ni dans aucun audit qui ne pousse pas un item jusqu'a la troisieme erreur. **Je ne l'avais
 jamais nommee ; elle a traverse tous les sprints de contenu du depot.**
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict : **VALIDE SOUS RESERVE** - `HG-R6` et `HG-R7` levees, `HG-R8` ouverte
+
+**J'ai joue** `bandit-manchot-histoire-geographie-cm1`, **huit parties completes** jusqu'a l'ecran de
+fin, en pressant systematiquement la premiere proposition pour declencher la revelation. **Et j'ai
+relu dans le fichier les deux items de nature et l'item de la Bastille**, puisqu'une partie de dix
+manches sur cinquante-sept items en laisse quarante-sept que l'enfant ne voit pas - c'est ainsi que
+j'ai manque un item a s27.
+
+### `HG-R7` - **LEVEE**, et c'etait l'erreur de fait de mon perimetre
+
+Texte livre :
+
+> *"En 1789, des habitants de Paris prennent d'assaut une vieille prison qui servait aussi a enfermer
+> des opposants au roi. Sa chute est fetee dans toute la ville et, l'annee suivante, une grande fete
+> reunit la France entiere pour son anniversaire."*
+
+**C'est mon texte, mot pour mot.** Enonce, bonne reponse, distracteurs et indice inchanges, comme je
+l'avais exige. **Le produit n'enseigne plus que le 14 juillet est fete nationale depuis 1790** : la
+phrase decrit la Fete de la Federation du 14 juillet 1790 sans lui donner un statut qu'elle n'avait
+pas, la fete nationale datant de 1880.
+
+**Et j'ai verifie ce que la correction pouvait casser ailleurs**, parce qu'un fait corrige a un
+endroit peut en contredire un autre. L'item *"Quelle est la date precise de la prise de la
+Bastille ?"* porte l'indice *"C'est la date que la France celebre chaque annee comme fete
+nationale."* : **vrai, et desormais non contredit par le support**. Aucun autre item du paquet ne
+parle de la fete nationale. **Coherence retablie sur les deux items.**
+
+### `HG-R6` - **LEVEE**, sur les deux moities de ma barre
+
+1. *"Sur les deux items de nature, remplacer `une carte de France` par une forme de document ecrit que
+   l'enfant doive ecarter en lisant."* **Fait sur les deux** : *un poeme* face au journal intime,
+   *une recette de cuisine* face a la declaration de droits. Deux formes de document ecrit, dont
+   aucune ne s'ecarte sans lire le support - a la difference d'une carte, que la seule presence d'un
+   texte suffisait a exclure.
+2. *"Faire porter au moins un des deux items sur un support ou le mot de la reponse n'apparait pas."*
+   **Fait sur l'item de la declaration** : le support ne dit plus *"vote une declaration"* mais
+   *"votent un texte solennel qui affirme que tous les hommes naissent et demeurent libres et egaux
+   en droits"*. **Le mot qui nomme le genre a disparu** ; l'enfant doit reconnaitre un genre au lieu
+   de recopier un mot, ce qui etait le fond de la reserve.
+
+**Deux precisions pour etre exacte, dont aucune n'entraine de demande** :
+
+- Le mot *droits* reste dans le support et dans la reponse. **Je ne l'exige pas parti** : une
+  declaration de droits qui ne mentionnerait jamais les droits ne serait plus reconnaissable, et
+  j'aurais alors demande l'impossible.
+- Sur l'item du journal intime, le support commence toujours par *"Cher journal"*. **Ma barre disait
+  *au moins un des deux*, elle est atteinte, et je ne recharge pas l'autre.**
+
+### `HG-R8` - **reserve nouvelle, datee du 2026-09-06, non bloquante**
+
+**Defaut cree par la correction, et c'est exactement ce que je devais chercher en rejouant.** Les deux
+indices ont ete reecrits en meme temps que les supports, et **tous deux remettent l'enfant sur le mot
+plutot que sur le genre** - c'est-a-dire retablissent, dans l'indice, la facilite que `HG-R6` venait
+de retirer du support.
+
+| Item | Indice livre | Ce qu'il fait |
+|---|---|---|
+| journal intime | *"Repense a la facon dont ce texte commence."* | **designe *"Cher journal"***, la recopie meme que `HG-R6` reprochait |
+| declaration de droits | *"Repense a ce que ce texte affirme au sujet des **droits** de chaque etre humain."* | **prononce *droits***, moitie de la bonne reponse, quand **aucun** des deux distracteurs ne contient ce mot |
+
+**C'est `M21`** : un indice qui nomme la reponse est une revelation deguisee.
+
+**Pourquoi ce n'est pas bloquant** : les deux bonnes reponses sont justes, l'indice n'est lu qu'apres
+une erreur, et il reste alors deux candidates sur trois. La ligne porte huit autres items qui
+tiennent. **Un item trop facile n'est pas un item faux.**
+
+> **`HG-R8`. Propriete a tenir** : sur les deux items de nature de `HG-CM1-14`, l'indice porte **ce
+> qui caracterise le genre du document** - a qui il s'adresse, dans quel but il est ecrit, qui
+> l'ecrit - et **jamais** le mot que l'enfant a a trouver, ni l'endroit du support ou le copier.
+> **Je ne fournis pas les textes** : ecrire un indice de genre est le jugement qu'il faut faire ici.
+> **Regime : rejeu borne, 0,5**, dit d'avance plutot que decouvert en facturant.
+
+### `CONS-1` - **non levee sur ce jeu**
+
+Consigne servie : *"Lis bien, puis reponds a la question d'histoire ou de geographie."*
+
+**Elle ne nomme aucune tache.** *Reponds a la question* est ce que la forme de l'ecran dit deja, et
+*d'histoire ou de geographie* est le titre du jeu (*Histoire et geographie*), que l'enfant vient de
+lire pour arriver la. **C'est la consigne generique dans un autre costume**, et c'est exactement ce
+que `CONS-1` existe pour supprimer - ma phrase du 2026-09-06 : *"sur ces dix jeux, la consigne ne
+porte aucune tache : elle dit a l'enfant de lire et de choisir, ce que la forme de l'ecran lui dit
+deja."*
+
+**Je reconnais que c'est le paquet le plus difficile des dix** - cinquante-sept items, onze lignes de
+referentiel, plusieurs taches. **Ce n'est pas une raison de ne rien nommer** : les taches reelles sont
+identifiables (situer dans le temps, associer un roi a son fait, lire un document et en extraire une
+information), et une consigne peut en nommer deux, comme le font *"Lis, ecris, decompose ou
+compare !"* sur les grands nombres et *"Trouve la duree ou l'heure qui manque !"* sur les durees.
+
+> **`CONS-1`, non levee sur cette entree. Regime : rejeu borne, compte dans le reliquat (0,5 pour les
+> cinq entrees restantes).**
+
+### Etat des lignes
+
+**`HG-CM1-06`, `HG-CM1-07` et `HG-CM1-14` restent `couvert-valide`**, la ligne 14 avec sa mention de
+couverture partielle deja ecrite (*"document textuel seul ; carte et image restent non couvertes"*).
+**Aucune ligne ne bouge, ni dans un sens ni dans l'autre.**
+
+### `REV-1` et `REV-3` sur ce paquet
+
+L'item dont la bonne reponse est *"elle suit des regles tres strictes et se deroule en public"* -
+**la seule occurrence agrammaticale de ce fichier a s29** - a ete atteint en fin de partie lors de
+mes huit parties. **Il se lit correctement** : *"Tu n'as pas trouve."*, puis l'enonce entier, puis
+*"La bonne reponse :"*, puis la proposition seule dans son element. **`REV-3` est levee**, et le
+detail est en section 8 de mes verdicts de s30.

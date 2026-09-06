@@ -211,3 +211,43 @@ Dit explicitement pour que l'equipe ne croie pas couvert ce qui ne l'est pas :
   n'est pas evaluee.
 - Il ne prouve **rien du paquet voisin du meme lot**, que je refuse par ailleurs. Un lot n'est pas
   une unite de verdict ; un paquet l'est.
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict sur `CONS-1` - **tenue sur ce jeu**
+
+**J'ai relu les onze items** de `cp-emc-regles-de-vie` avec leur bonne reponse. **Ce bloc ne rouvre
+aucune ligne** et ne touche pas a `REG-R1`, dont le bloc reste ouvert et differe a s31 par le
+planning du sprint.
+
+Consigne servie : *"Lis bien, puis dis ce qu'il faut faire, ou pourquoi."*
+
+**Elle nomme les deux taches du paquet, et je les ai comptees** : six items de conduite (*"Avant de
+parler en classe, que doit faire un eleve ?"* -> `lever la main`) et cinq items de raison d'etre
+(*"Pourquoi leve-t-on la main avant de parler en classe ?"* -> `pour que chacun parle a son tour`).
+**Aucune tache n'est laissee sans consigne, aucune consigne ne decrit une tache absente.**
+
+**Onze mots**, sous le plafond de douze que j'ouvre par ailleurs sous `CONS-2` pour les consignes de
+CP que l'enfant lit lui-meme. **L'ellipse *"ou pourquoi"* est le seul point que j'ai pese** : elle
+oblige l'enfant a reconstruire *"ou dis pourquoi il faut le faire"*. **Je ne la retiens pas comme
+defaut** - la phrase est courte, le mot *pourquoi* ouvre litteralement les cinq items concernes, et
+les onze enonces portent chacun leur question entiere.
+
+**`CONS-1` est tenue sur cette entree.** C'est une des cinq reussites de `S30-9`, et un net progres
+sur la consigne generique qu'elle remplace. **`EMC-CP-05` reste `couvert-valide`, aucune ligne ne
+bouge.**

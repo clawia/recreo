@@ -150,7 +150,15 @@ source, et c'est le coût principal de cette matière pour moi.
 | dont jouables **dès aujourd'hui** par une mécanique existante | **19** |
 | dont en attente du **palier 2** | **0** |
 
-**C'est la matière la plus immédiatement servable des six, et de très loin.** La mise en garde qui
+**C'est la matière la plus immédiatement servable des dix référentiels écrits le 2026-09-03, et
+de très loin.**
+*Correction du 2026-09-06 (`nadia-prof`) : cette phrase disait « des six » et n'écrivait pas sa
+population, quand la même phrase recopiée dans `squad/programme/MATRICE-couverture.md` disait
+« des dix ». Les deux sont de moi ; c'est « des dix » qui est juste, et la population est celle des
+dix référentiels écrits le même jour dans le même commit (`1cf80f4`). Écart identifié dans mon
+arbitrage préalable de s30, section 1.5, et corrigé ici. La conclusion ne bouge pas d'un mot :
+dix-neuf lignes sur vingt sont jouables par une mécanique existante, et aucune autre des dix
+matières n'approche ce chiffre.* La mise en garde qui
 m'a été adressée - ne pas traiter cette matière comme de la production libre au motif qu'elle
 comporte une démarche d'investigation - **est juste, et mon comptage la confirme** : dix-neuf
 lignes sur vingt sont des connaissances ou des raisonnements courts, jouables par le

@@ -389,3 +389,124 @@ ne tient pas.**
 | **Le catechisme civique** (`FOP-R2`) - que la bonne reponse ne soit pas reconnaissable a sa seule vertu | **moi seule** | non |
 | **Que l'indice d'un item binaire porte le critere et non la categorie** | **moi seule**, condition posee le 2026-09-06, section 3 | non |
 | **Qu'une declaration de conformite ecrite dans le paquet soit vraie** | **moi seule** | non |
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict : **VALIDE SOUS RESERVE** - `FOP-R1`, `FOP-R2`, `FOP-R3` levees, `FOP-R4` ouverte
+
+**J'ai joue** `bandit-manchot-fait-opinion-cm1`, partie jouee volontairement mal jusqu'aux
+revelations, **et j'ai relu les onze items** - en particulier les dix distracteurs de la tache de
+verification, un par un, comme je l'avais fait pour ouvrir `FOP-R2`.
+
+**Le refus du 2026-09-05 et la validation sous reserve du 2026-09-06 restent lisibles au-dessus.
+Aucun n'est efface.**
+
+### `FOP-R2` - **LEVEE**, sur les deux moities de la reserve
+
+**Premiere moitie - les cinq distracteurs du type *repeter sans verifier*.** Je les avais comptes un
+par un ; **les cinq sont reecrits, et je les rejuge un par un :**
+
+| Item | Ce qu'il disait | Ce qu'il dit | Ce que c'est |
+|---|---|---|---|
+| 2 | *"en la repetant a toute la classe parce que ca semble amusant a raconter"* | *"en la croyant parce que plusieurs camarades en parlent aussi, sans savoir ou eux-memes l'ont appris"* | **une corroboration reelle mais sans source** - le meilleur des cinq |
+| 4 | *"en la repetant parce que le score est impressionnant"* | *"en la croyant parce que Malo raconte la meme histoire a chaque recreation"* | **la repetition prise pour une preuve** |
+| 6 | *"en la repetant immediatement a tout le monde"* | *"en la croyant parce que le camarade qui la raconte a l'air tres sur de lui"* | **l'assurance prise pour une preuve** |
+| 8 | *"en le repetant a tout le monde parce que ca lui semble inquietant"* | *"en le croyant parce qu'un grand de l'ecole l'a dit"* | **l'age pris pour une autorite** |
+| 8 | *"en imaginant une explication supplementaire"* | *"en le croyant parce que personne ne l'a dementi"* | **l'absence de dementi prise pour une confirmation** |
+
+**Les cinq sont desormais du meme registre que les cinq que j'avais moi-meme credites** - une raison
+de croire, mauvaise, et non l'absence de verification en toutes lettres. **Aucun des dix ne se repere
+plus a sa seule deraison.** C'est la barre que j'avais ecrite, et je la juge contre les exemples que
+j'avais moi-meme declares conformes plutot que contre une exigence neuve.
+
+**Seconde moitie - la declaration du paquet.** J'avais exige : *"la declaration du paquet est corrigee
+dans le meme geste ; elle affirme aujourd'hui que les dix le sont, ils sont cinq."* **Fait** : le
+commentaire porte l'amendement, il dit que le chiffre de *huit* etait faux, il dit qui l'a trouve et
+comment, et il ne laisse pas la declaration d'origine passer pour vraie. **Une declaration de
+conformite fausse dans un fichier commite se lit comme une preuve ; celle-ci ne l'est plus.**
+
+### `FOP-R3` - **LEVEE**, et le choix de l'equipe **tient**
+
+**Ma reserve laissait deux issues** : soit la question redevient *"comment savoir si c'est vrai"*,
+soit la bonne reponse remonte au camarade qui a parle. **`marc-dev` a pris la premiere, et son motif
+est ecrit.**
+
+Item 8 livre : *"Aya a entendu un camarade dire que sa maitresse etait malade. **Comment peut-elle
+savoir si c'est vrai ?**"* -> *"en demandant directement a un adulte de l'ecole"*. **La question et
+la reponse se rejoignent.**
+
+**Le choix tient, et pour une raison plus forte que le diff minimal.** L'autre issue aurait fait de
+*"le camarade"* la bonne reponse : le produit aurait alors enseigne a un enfant de CM1 que, pour
+verifier une rumeur sur la sante d'une maitresse, **on retourne interroger le camarade qui l'a
+lancee**. C'est la moins bonne des deux reponses pedagogiques, et l'equipe a eu raison de ne pas
+l'ecrire pour satisfaire la lettre de ma reserve.
+
+**Ce que ce choix coute, chiffre plutot que taire** : l'item 8 ne sert plus la moitie *origine* du
+libelle `EMC-CM1-11`. **Quatre des cinq items de verification la servent encore** - *"d'ou vient cette
+information"*, *"l'origine de cette information"*, *"l'origine de cette rumeur"*, *"l'origine de ce
+mot"* - et c'est le compte que j'avais moi-meme declare suffisant. **`FER-1` et `FER-3` restent
+tenues, verifiees item par item.**
+
+### `FOP-R1` - **LEVEE**, et le choix de l'equipe **tient**
+
+Consigne livree : *"Lis bien, puis dis si c'est un fait ou une opinion, ou comment verifier une
+information."*
+
+**Ma reserve laissait deux issues** : nommer les deux taches, ou revenir a une consigne generique
+maintenant que chaque enonce nomme la sienne. **La seconde a ete fermee entre-temps** - par
+`DEC-0078`, et par `CONS-1` que le sprint payait le meme jour, qui venait d'eliminer la consigne
+generique de tout le catalogue. **`lea-dev` a pris la seule issue restante, et elle l'a prise
+correctement.**
+
+**Verifie a l'ecran sur les deux taches** : la consigne annonce le classement (six items) **et** la
+verification (cinq items) ; l'ellipse *"ou [dis] comment verifier"* se lit sans effort au CM1 ; seize
+mots restent dans les moyens d'un enfant de CM1. **Aucune manche ne porte plus une consigne qui decrit
+une tache qu'elle ne demande pas** - ce qui etait exactement le defaut.
+
+### `FOP-R4` - **reserve nouvelle, datee du 2026-09-06, non bloquante**
+
+**Defaut cree par la correction de `FOP-R2`, et il est la contrepartie exacte de sa reussite** : en
+homogeneisant les dix distracteurs, la reprise a rendu leur amorce uniforme.
+
+| Fait, mesure sur les cinq items de verification | Compte |
+|---|---|
+| Distracteurs commencant par *"en (la/le) croyant parce que"* | **8 sur 10** |
+| **Bonnes reponses** commencant ainsi | **0 sur 5** - elles commencent toutes par *en regardant*, *en demandant* ou *en verifiant* |
+| Items dont **les deux** distracteurs commencent ainsi | **3 sur 5** (items 2, 4, 8) |
+
+**Consequence** : sur ces trois items, un enfant qui n'a rien compris a la verification de l'origine
+d'une information trouve la bonne reponse **en lisant les deux premiers mots de chaque bouton** -
+*croire* est faux, *demander* est juste. Ce n'est plus la deraison que `FOP-R2` visait ; c'est un
+indice de forme, et il ne mesure pas davantage la competence.
+
+**Ce n'est pas un durcissement de `FOP-R2`, et je tiens a le dire nettement.** `FOP-R2` demandait que
+les distracteurs cessent d'etre des non-verifications ; ils l'ont cesse, et **elle est levee sans
+reserve**. Ce que je vois aujourd'hui **n'existe que depuis la reprise** : avant elle, les amorces
+etaient melangees.
+
+**Pourquoi ce n'est pas bloquant** : les cinq bonnes reponses sont justes, elles enseignent la bonne
+methode, et la ligne est servie. **Un item trop facile n'est pas un item faux.**
+
+> **`FOP-R4`. Propriete a tenir** : sur **au moins deux** des cinq items de verification, l'un des deux
+> distracteurs commence par un **verbe de verification** et decrit une verification qui **porte a
+> cote** - demander a quelqu'un qui n'y etait pas, verifier une chose que personne ne conteste,
+> chercher confirmation aupres de qui tient l'information du meme endroit. **L'amorce du bouton cesse
+> alors de departager.** **Je ne fournis pas les textes** : le choix d'une verification mal dirigee
+> est le jugement qu'il faut faire item par item, et je le rejugerai. **Regime : rejeu borne, 0,5.**
+
+**`EMC-CM1-11` reste `couvert-valide`. Aucune ligne ne bouge.**

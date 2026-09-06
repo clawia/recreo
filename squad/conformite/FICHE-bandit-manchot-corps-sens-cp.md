@@ -296,3 +296,63 @@ on relit une ligne fermee :
 chaines que j'ai dictees ; il aurait garde tout aussi fidelement `la bouche`, et il l'a fait pendant
 deux sprints. **La demonstration du jour est que la verite d'un enonce scolaire n'est tenue que par
 ma lecture**, et qu'une ligne verte cesse d'etre relue si personne ne la relit exprès.
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict sur `CONS-1` - **non levee sur ce jeu**
+
+**J'ai joue** `bandit-manchot-corps-sens-cp`, partie jouee volontairement mal, **et j'ai relu les
+quatorze items** avec leur bonne reponse.
+
+**Ce bloc ne rouvre aucune ligne** : `QLM-CP-03` reste `couvert-valide`, et rien du contenu de ce
+paquet n'est en cause. Il porte sur la **consigne de catalogue** reecrite par `S30-9`.
+
+### Le fait, mesure item par item
+
+Consigne servie : *"Lis bien, puis nomme la partie du corps **ou le sens**."*
+
+**Les quatorze items de `cp-qlm-corps-sens` ont tous une partie du corps en bonne reponse** :
+oreilles, yeux, nez, langue, mains, jambes, main, tete, bras, pieds, dos, ventre, genou, peau.
+**Aucun item n'a un sens en position de bonne reponse**, y compris les cinq qui partent d'un sens :
+*"Avec quoi entend-on ?"* attend *les oreilles*, pas *l'ouie*.
+
+### Deux defauts sur la meme moitie de phrase
+
+1. **La consigne annonce un espace de reponse qui n'existe nulle part dans le paquet.** C'est le
+   symetrique du defaut que j'ai nomme sous `FOP-R1` : la consigne decrit une tache que le paquet ne
+   demande pas. Ici elle ne la demande sur **aucun** item, et non sur la moitie.
+2. **Employe comme nom de categorie, *le sens* n'est pas au programme de lecture du CP.** L'enfant
+   qui le decode rencontre d'abord *sens* comme direction ou comme signification ; il ne sait pas ce
+   qu'on lui demande de nommer. **Le titre du jeu, *Le corps et les sens*, peut porter le mot - un
+   titre nomme le domaine. Une consigne dit ce qu'il faut faire**, et celle-ci demande de nommer une
+   chose que le paquet ne fait jamais nommer.
+
+**Le reste de la consigne est bon** : *"nomme la partie du corps"* est exactement la tache des
+quatorze items, et c'est un net progres sur la consigne generique qu'elle remplace.
+
+> **`CONS-1`, non levee sur cette entree. Propriete a tenir** : la consigne nomme la tache que les
+> items demandent, et rien d'autre. **Je ne fournis pas le texte** - une consigne se juge contre le
+> paquet qu'elle introduit, et je la rejugerai. **Regime : rejeu borne, compte dans le reliquat de
+> `CONS-1` (0,5 pour les cinq entrees restantes).**
+
+**Pourquoi ce n'est pas bloquant** : chaque enonce porte sa question, entiere et explicite, et les
+quatorze items sont justes. L'enfant lit l'enonce, pas seulement la consigne. **`QLM-CP-03` reste
+`couvert-valide`, aucune ligne ne bouge.**
+
+*Rappel, sans rapport avec ce qui precede : `COR-R2` - l'organe du gout - a ete payee, et l'item
+attend bien `la langue`. Verifie a nouveau aujourd'hui.*

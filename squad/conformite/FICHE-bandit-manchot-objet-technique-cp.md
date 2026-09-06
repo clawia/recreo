@@ -149,3 +149,76 @@ personne.**
 Le prefixe `OBJ` est **alloue par ce document** au paquet `cp-qlm-objet-technique` ; il n'existait
 nulle part dans le depot avant le 2026-09-06 (verifie par extraction sur `squad/`, `docs/`,
 `*.java`, `*.yaml`).
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict : **VALIDE** - `OBJ-R1` et `OBJ-R2` levees
+
+**J'ai joue** `bandit-manchot-objet-technique-cp`, partie jouee volontairement mal jusqu'aux
+revelations, **et j'ai relu les onze items**.
+
+### `OBJ-R1` - **LEVEE**
+
+Titre servi : **"Les objets de tous les jours"**. **C'est mon texte, mot pour mot.**
+
+Nominal avec article, chaque mot lisible au CP, et il recouvre exactement le domaine du paquet - la
+fonction **et** les parties - sans promettre davantage.
+
+**Une correction que je fais a mon propre motif, avant que quiconque s'en serve.** J'avais ecrit en
+troisieme argument : *"le titre est le seul du catalogue a etre nominal sans article"*. **C'est
+faux.** Verifie titre par titre sur les 58 entrees d'aujourd'hui, ils sont **six** dans ce
+registre : *Petits problemes*, *Histoire et geographie*, *Anglais*, *Droits et devoirs*, *Signal et
+information*, *Melanges et separations* - et les quatre premiers existaient deja quand je l'ai ecrit.
+
+**Ce que cela change et ce que cela ne change pas** : mes deux autres motifs tenaient seuls -
+*fonction* n'est pas au programme de lecture du CP, et le titre promettait plus etroit que le
+contenu -, et le titre livre repare les deux. **La levee tient.** Mais **je n'ouvre aucune reserve
+sur les six titres nominaux sans article** : un sous-registre de six entrees est un registre, pas une
+derive. **Une barre que j'ai posee sur un chiffre faux, je la retire, je ne la rehabille pas.**
+
+### `OBJ-R2` - **LEVEE**, exactement au plancher que j'avais fixe
+
+**Ma barre, ecrite le 2026-09-06** : *"sur les cinq items de fonction, **au moins deux** doivent
+porter un distracteur qui soit une fonction plausible pour l'objet nomme, et non la fonction d'un
+autre objet du paquet."*
+
+**Mesure sur les cinq items livres :**
+
+| Item | Distracteurs | Plausible pour l'objet nomme ? |
+|---|---|---|
+| parapluie | *a couper*, *a ecrire* | non |
+| **ciseaux** | ***a coudre***, *a balayer* | **oui** - les ciseaux appartiennent au necessaire de couture ; et *coudre* n'est la fonction d'aucun autre objet du paquet, ce que ma barre exigeait aussi |
+| stylo | *a couper*, *a balayer* | non |
+| balai | *a ecrire*, *a se proteger de la pluie* | non |
+| **brosse a dents** | ***a se laver les cheveux***, *a ecrire* | **oui** - une brosse qui nettoie, qui ne differe que par ce qu'elle nettoie ; le plus net des deux |
+
+**Deux sur cinq. Ma barre disait *au moins deux*. Elle est atteinte, et je la tiens telle que je l'ai
+ecrite.** L'equipe a choisi le minimum que j'autorisais : c'etait son droit, et **je ne releve pas une
+barre parce que je vois aujourd'hui qu'elle aurait pu etre plus haute.** Une barre relevee apres coup
+fait de ma porte un caprice.
+
+**Ce que je dis quand meme, et qui n'est pas une reserve** : les trois autres items de fonction
+restent gagnables sans connaitre l'objet nomme. Si `camille-po` veut un jour les renforcer, c'est un
+**enrichissement, pas une dette**, et je ne le compte nulle part.
+
+### `REV-1` - **levee sur cet ecran**, par `REV-3`
+
+La variante benigne que j'avais relevee ici (*"C'est a couper. Appuie sur a couper."*) n'existe plus :
+la revelation donne *"Appuie sur la bonne reponse :"* puis la reponse seule dans son element.
+
+**`QLM-CP-07` reste `couvert-valide`, aucune ligne ne bouge, aucune reserve neuve sur ce paquet.**

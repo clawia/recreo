@@ -327,3 +327,138 @@ suffit a l'equilibrer**, et le cout est un mot.
 | **`DRO-R1`** - qu'un item ne donne pas la reponse d'un autre item du meme paquet | **moi seule.** Aucun test ne lit un item a la lumiere des dix autres, et c'est en jouant que je l'ai vu | **oui, en principe** - c'est une recherche de chaine |
 | **`DRO-R2`** - que l'indice d'un item binaire porte le critere | **moi seule** | non |
 | **`DRO-R3`** - l'equilibre des figures adultes sur une serie de paquets | **moi seule** | non |
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict : **VALIDE SOUS RESERVE** - `DRO-R1`, `DRO-R2`, `DRO-R3` levees, `DRO-R4` ouverte
+
+**J'ai joue** `bandit-manchot-droit-devoir-cm1`, partie jouee volontairement mal, **revelations
+atteintes sur trois manches**, **et j'ai relu les onze items**, indices compris.
+
+**Le refus du 2026-09-05 et la validation sous reserve du 2026-09-06 restent lisibles au-dessus.
+Aucun n'est efface.**
+
+### `DRO-R1` - **LEVEE**, et le choix de l'equipe **tient**
+
+**Ma reserve laissait deux issues** : la seconde tache porte sur une situation que le classement ne
+traite pas, ou **son enonce ne prononce ni *droit* ni *devoir***. **`marc-dev` a pris la seconde**,
+qui est celle dont j'avais donne l'exemple mot pour mot (*"A quoi sert le fait d'ecouter la
+maitresse ?"*).
+
+| Item | Enonce livre |
+|---|---|
+| 4 | *"A quoi sert, pour un eleve, le fait d'ecouter le maitre et de respecter les regles de la classe ?"* |
+| 6 | *"A quoi sert, pour un enfant, le fait d'etre soigne quand il est malade ?"* |
+| 8 | *"A quoi sert, pour un enfant, le fait de jouer et de se reposer ?"* |
+
+**Aucun ne prononce plus *droit* ni *devoir*.** Les trois items de classement associes - 3, 9 et 1 -
+ne sont plus resolus par la lecture de l'enonce d'un autre item.
+
+**Le choix tient, et le motif du diff minimal est le bon.** L'autre issue obligeait a inventer trois
+situations neuves, donc trois faits institutionnels neufs a sourcer sous `HIS-3`, sur une ligne ou les
+cinq droits cites sont exactement ceux de la Convention internationale des droits de l'enfant.
+**Changer la formulation coutait trois lignes ; changer les situations rouvrait la verification de
+source sur une ligne deja fermee.** C'etait le mauvais echange, et l'equipe ne l'a pas fait.
+
+### `DRO-R2` - **LEVEE**, et verifiee au-dela de ce que la reserve demandait
+
+| Item | Indice avant | Indice livre |
+|---|---|---|
+| 1 | *"**Ce droit** protege des moments de repos, pas le travail scolaire."* | *"C'est quelque chose que chaque enfant peut reclamer pour lui-meme, sans que personne ne puisse le lui retirer."* |
+| 5 | *"Personne n'a **le droit** de faire du mal a un enfant."* | *"Aucun adulte, ni personne d'autre, n'est autorise a faire du mal a un enfant."* |
+
+**Les deux sont exactement ce que j'avais demande.** L'item 1 porte desormais **le critere** - *ce
+qu'on peut exiger pour soi et que personne ne peut retirer* -, au lieu d'affirmer la categorie ;
+l'item 5 n'emploie plus le mot *droit* dans son second sens (la permission), et le signal ambigu
+disparait. **Les items 3, 7, 9 et 11 ont ete verifies inchanges**, comme je l'avais constate moi-meme
+- ils portaient deja le critere.
+
+**Et j'ai mesure l'extension que j'avais posee moi-meme** le 2026-09-06 (*"regle etendue a tout item
+binaire du depot"*), parce qu'une regle de portee depot que personne ne mesure est un souhait :
+
+| Mesure sur les 58 paquets servis | Compte |
+|---|---|
+| Items binaires du depot | **111** |
+| Indices qui nomment la categorie plutot que le critere | **0** |
+
+Le detail et les trois faux positifs de ma recherche sont en section 4 de
+`PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`. **La regle est tenue partout ; je ne
+demande rien a personne sur cet axe.**
+
+### `DRO-R3` - **LEVEE**
+
+Ma barre : *"une occurrence masculine suffit a l'equilibrer."* **Deux sont livrees** - *le maitre*
+aux items 3 et 4. Recompte aujourd'hui sur les quatre paquets d'EMC : **quatre occurrences d'un adulte
+de classe, deux masculines** (ce paquet) **et deux feminines** (`cm1-emc-fait-opinion` item 8,
+`cp-emc-regles-de-vie` item 2). **La serie est equilibree.**
+
+### `DRO-R4` - **reserve nouvelle, datee du 2026-09-06, non bloquante**
+
+**Vue a l'ecran avant d'etre verifiee dans le fichier**, sur deux manches de ma partie. **Le defaut
+que `DRO-R1` nommait dans l'enonce survit une ligne plus bas, dans l'indice des trois memes items.**
+
+| Indice livre | L'item de classement qu'il resout |
+|---|---|
+| item 4 : *"**Ce devoir** permet a tout le monde de travailler dans le calme."* | item 3, *"Ecouter le maitre et respecter les regles de la classe"* -> *un devoir* |
+| item 6 : *"**Ce droit** concerne la sante de l'enfant, pas son ecole."* | item 9, *"Etre soigne quand on est malade ou blesse"* -> *un droit* |
+| item 8 : *"**Ce droit** protege des moments de repos, pas l'absence de toute regle."* | item 1, *"Jouer et se reposer en dehors du travail scolaire"* -> *un droit* |
+
+**Trois sur trois.** Un enfant qui se trompe une fois sur l'item 6 lit *"Ce droit"* et sait, pour tout
+le reste de la partie, comment classer *etre soigne*.
+
+**`DRO-R1` est levee et je ne la rouvre pas.** Ma reserve disait *"**l'enonce** d'un item de seconde
+tache ne nomme pas la categorie"*, et **l'enonce est corrige, exactement comme demande**. Ce que
+j'ouvre est une **observation neuve et datee, sur une autre partie de l'item**. **Je refuse de faire
+passer un durcissement pour une reserve impayee** : le poteau que j'avais plante est atteint.
+
+**Trois precisions pour que la story soit correctement dimensionnee** :
+
+- **La gravite est moindre que celle de `DRO-R1`** : l'enonce se lit a chaque tirage de l'item,
+  l'indice seulement apres une erreur.
+- **`DRO-R2` ne couvre pas ces trois-la** : elle porte sur les items **binaires**, et ces trois items
+  portent trois propositions.
+- **Rien de faux n'est enseigne** : les trois indices sont exacts. Ils resolvent un autre item, ce qui
+  est la contrefacon que `CON-1` decrit, pas une erreur.
+
+> **`DRO-R4`. Propriete a tenir** : sur les trois items de la seconde tache, l'indice ne prononce ni
+> *droit* ni *devoir* a propos d'une situation qu'un item de classement demande de classer. **Il dit
+> a quoi la chose sert**, ce qui est la tache de l'item. **Regime : mot pour mot une fois les trois
+> textes proposes, 0,25** - le geste est de la meme nature que celui qui vient d'etre fait sur les
+> enonces.
+
+### `CONS-1` - **non levee sur ce jeu**
+
+Consigne servie : *"Lis bien, puis dis si c'est un droit ou un devoir."* **Vu a l'ecran sur trois
+manches de ma partie**, au-dessus d'items dont la question est *"A quoi sert, pour un eleve, le fait
+d'ecouter le maitre... ?"*.
+
+**Elle nomme une des deux taches du paquet** - le classement, six items - **et laisse les cinq autres
+sans consigne**. C'est **mot pour mot la propriete de `FOP-R1`**, que j'ai ecrite le 2026-09-06 :
+*"la consigne d'un jeu ne decrit pas une tache que la moitie de ses items ne demandent pas."*
+
+**Et elle a ete payee sur le paquet jumeau le meme jour** (commit `dbbfe12`, `fait-opinion-cm1`, dont
+la consigne nomme desormais ses deux taches), **sans l'etre ici**. Les deux paquets d'EMC CM1 ont ete
+livres ensemble, ils portent la meme structure a deux taches, et ils ressortent du sprint avec deux
+traitements differents. **C'est la correction la moins chere des cinq restantes : la propriete est
+deja ecrite, deja jugee, deja payee a cote.**
+
+> **`CONS-1`, non levee sur cette entree. Regime : rejeu borne, compte dans le reliquat (0,5 pour les
+> cinq entrees restantes).**
+
+**Pourquoi ce n'est pas bloquant** : sur les cinq items de la seconde tache, l'enonce porte lui-meme
+sa question, entiere et explicite. **`EMC-CM1-07` reste `couvert-valide`. Aucune ligne ne bouge.**

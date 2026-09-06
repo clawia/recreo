@@ -620,8 +620,14 @@ probleme resolu.**
 | Qui peut la fabriquer | personne : elle se trouve | **quelqu'un du projet la dessine** |
 | Population du depot | `static/oeuvres/`, JPEG | vraisemblablement les dessins maison, SVG, `DES-1` a `DES-7` |
 
-**Les cinq dessins dont ces six lignes ont besoin - plan de classe, plan de musee, carte de France,
-planisphere, frise, quadrillage - n'existent nulle part dans le depot**, et le stock actuel est de
+**Les six dessins dont ces six lignes ont besoin - plan de classe, plan de musee, carte de France,
+planisphere, frise, quadrillage - n'existent nulle part dans le depot**
+*(Correction du 2026-09-06, `nadia-prof` : cette phrase annoncait « cinq dessins » et son
+enumeration en porte six ; la table de la section 4 en chiffre six, et c'est six qui est juste.
+Ecart trouve par `theo-archi`, route par le `relecteur-pedagogique`, corrige ici par moi qui
+l'avais ecrit. Un comptage a la main qui derive dans le meme document que sa propre enumeration
+est exactement la famille de defaut que ce depot sanctionne ; aucune conclusion de ce document
+ne change.)*, et le stock actuel est de
 24 fichiers, tous des figures planes ou des pieces de monnaie.
 
 ### 8.2 L'arithmetique de taille, reprise et non recalculee

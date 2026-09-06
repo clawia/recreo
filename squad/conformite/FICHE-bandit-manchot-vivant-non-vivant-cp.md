@@ -481,3 +481,88 @@ une consequence technique, elle appartient au developpeur qui prendra la story.
 | `VIV-R2` (deux propositions non discriminables sur trois items) | **ouverte, non payee, et desormais PRESCRITE** - texte fourni mot pour mot, section 4. Second motif ajoute le 2026-09-06 : la phrase de revelation (`REV-1`) |
 
 **Aucune ligne de matrice ne bouge de ce fait.**
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict : **VALIDE** sur `VIV-R2` - et **`CONS-1` reste ouverte sur ce jeu**
+
+**J'ai joue** `bandit-manchot-vivant-non-vivant-cp`, **partie complete jusqu'a l'ecran de fin**, avec
+erreurs volontaires poussees **jusqu'a la revelation** sur l'item du caillou et sur celui du sable.
+**Et j'ai relu les quatorze items.**
+
+### `VIV-R2` - **LEVEE**
+
+Les trois items de matiere inerte sont livres **mot pour mot** dans la forme prescrite :
+
+> *"Un caillou est-il un etre vivant ?"* - `non` / `oui`
+> *"Le sable est-il un etre vivant ?"* - `non` / `oui`
+> *"La neige est-elle un etre vivant ?"* - `non` / `oui`
+
+**Indices inchanges**, comme je l'avais exige.
+
+**Verifie a l'ecran et non au diff** : les deux boutons portent *oui* et *non*, deux et trois lettres,
+lexicalement disjoints. **L'enfant les discrimine d'un coup d'oeil**, ce qui etait tout l'objet de la
+reserve - le critere que j'avais moi-meme ecrit etant *"les deux propositions ne doivent pas se
+terminer par les memes mots"*.
+
+**Le second motif de la reserve tombe aussi.** La revelation ne donne plus *"C'est ce n'est pas un
+etre vivant. Appuie sur ce n'est pas un etre vivant."* ; elle donne, lu a l'ecran :
+
+> *Ce n'est pas ca.* / *Appuie sur la bonne reponse :* / *non*
+
+**Ce que j'avais exige de verifier avant de lever, et que j'ai verifie item par item :**
+
+- **`FER-1` intacte.** L'opposition de la ligne reste **binaire** et *non* reste du cote non-vivant.
+  Les deux poles du libelle sont chacun en position de bonne reponse - *un etre vivant* (4 items),
+  *un objet* (4 items). **La fermeture de `QLM-CP-01` n'est pas remise en cause.**
+- **`FER-2` intacte** : quatorze items, aucun retire.
+- **`FER-3` intacte** : trois taches au lieu de deux - categorisation (8 items), selection (3),
+  verification (3). La condition demande deux taches portant chacune au moins trois items ; elles
+  sont trois a en porter au moins trois.
+- **Le cout que j'avais annonce est reel** : le paquet porte deux formes de question la ou j'avais
+  loue sa regularite a s27. **Il reste plus petit que celui de deux boutons qu'un enfant de CP ne
+  distingue pas**, et la forme de remplacement est elle-meme reguliere sur les trois items.
+
+### `CONS-1` - **non levee sur ce jeu**, et le defaut est une couture que j'ai contribue a creer
+
+Consigne servie : *"Lis bien, puis dis si c'est un etre vivant."*
+
+**Le paquet porte trois taches depuis le geste ci-dessus. La consigne en nomme deux au plus**, et
+elle amorce la mauvaise :
+
+1. **La tache de selection n'est pas introduite** - *"Parmi ces trois choses, laquelle est un etre
+   vivant : le chien, la chaise, le caillou ?"*, **trois items sur quatorze**. On ne repond pas
+   *"si c'est un etre vivant"* a *"laquelle des trois"*.
+2. **La consigne amorce une reponse par oui ou par non**, alors que **onze items sur quatorze ne se
+   repondent pas ainsi** : ils se repondent par *un etre vivant*, par *un objet*, ou par le nom d'une
+   chose. La consigne decrit exactement la tache des **trois** items que `VIV-R2` vient de creer, et
+   d'eux seuls.
+
+**Ce que je dois dire, et qui me coute** : cette troisieme tache, **c'est moi qui l'ai creee**, en
+prescrivant `VIV-R2` mot pour mot. Les deux stories - `S30-3` (le paquet) et `S30-9` (la consigne) -
+ont ete livrees le meme jour par la meme developpeuse, et **la consigne a ete ecrite contre l'etat
+d'avant du paquet**. Ce n'est pas une faute individuelle : c'est une **couture**, exactement le mode
+de defaillance que j'avais annonce en premier pour ce sprint.
+
+> **`CONS-1`, non levee sur cette entree. Propriete a tenir** : la consigne nomme **les trois** taches
+> du paquet, ou celles que l'enfant ne peut pas deviner de la forme de l'enonce. **Je ne fournis pas
+> le texte** - une consigne se juge contre le paquet qu'elle introduit, et je la rejugerai. **Regime :
+> rejeu borne, compte dans le reliquat de `CONS-1` (0,5 pour les cinq entrees restantes).**
+
+**Pourquoi ce n'est pas bloquant** : chaque enonce porte sa propre question, entiere et explicite ;
+l'enfant lit l'enonce. **`QLM-CP-01` reste `couvert-valide`, aucune ligne ne bouge.**

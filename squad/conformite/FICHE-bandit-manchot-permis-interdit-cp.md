@@ -299,3 +299,48 @@ l'ecran. **La ligne ferme sans attendre cette correction.**
 **Ces six proprietes sont exactement celles sur lesquelles la CI verte ne dit rien**, et les cinq
 premieres sont celles qui ont produit mon refus du 2026-09-05 sur un paquet dont le Done technique
 etait acquis.
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict sur `CONS-1` - **tenue sur ce jeu**
+
+**J'ai relu les onze items** de `cp-emc-permis-interdit` avec leur bonne reponse. **Ce bloc ne rouvre
+aucune ligne** et ne touche pas a `PER-R1`, dont le bloc reste ouvert et differe a s31 par le planning
+du sprint.
+
+Consigne servie : *"Lis bien, puis dis ce que fait la personne, ou pourquoi c'est interdit."*
+
+**Elle nomme les deux taches du paquet, et je les ai comptees** : sept items de qualification
+(*"Hugo rit de la voix d'Aya. Comment appelle-t-on ca ?"* -> `une moquerie` ; *"Lea prete son crayon
+a Malo. Qu'est-ce qu'elle fait ?"* -> `un service`) et quatre items de raison de l'interdit
+(*"Pourquoi est-il interdit de se moquer d'un camarade ?"* -> `pour ne pas le blesser`). **Aucune
+tache n'est laissee sans consigne, aucune consigne ne decrit une tache absente.**
+
+**Treize mots**, un de plus que le plafond de douze que j'ouvre par ailleurs sous `CONS-2`. **Je ne
+l'y range pas** : `CONS-2` vise les deux consignes a quinze et seize mots, qui sont d'un autre ordre,
+et je ne fais pas passer une barre neuve sur une entree qui l'approche a un mot pres. **Une barre
+appliquee au mot pres sur une population de deux est une barre qui cherche des coupables.**
+
+**Un point que j'ai verifie parce qu'il pouvait faire un defaut, et qui n'en fait pas** : deux des
+sept items de qualification portent sur une conduite **permise** (`un service`, `une discussion`),
+tandis que la seconde moitie de la consigne ne parle que de l'interdit. **Ce n'est pas une
+incoherence** : *"dis ce que fait la personne"* couvre les sept, permis compris, et *"ou pourquoi
+c'est interdit"* ne coiffe que les quatre items qui posent effectivement cette question.
+
+**`CONS-1` est tenue sur cette entree.** C'est une des cinq reussites de `S30-9`. **`EMC-CP-06` reste
+`couvert-valide`, aucune ligne ne bouge.**

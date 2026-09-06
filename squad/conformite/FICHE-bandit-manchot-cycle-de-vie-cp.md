@@ -188,3 +188,70 @@ part dans le depot avant le 2026-09-06 (verifie par extraction sur `squad/`, `do
 `*.yaml`). Le prefixe `REV` est alloue par la passe transverse `S29-3`. **Je l'ecris parce que
 `PAR-5` demande qu'une allocation soit visible avant d'ecrire, et qu'aucun registre n'existe encore
 pour le faire a ma place.**
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict : **VALIDE** - `CYV-R1` levee
+
+**J'ai joue** `bandit-manchot-cycle-de-vie-cp`, partie jouee volontairement mal jusqu'aux
+revelations, **et j'ai relu les onze items**.
+
+### `CYV-R1` - **LEVEE**
+
+Texte livre : *"Une plante tres vieille perd ses feuilles et ne repousse plus, que fait-elle ?"*
+**C'est mon texte, mot pour mot**, aux accents pres, qui appartiennent au `relecteur-pedagogique`.
+Bonne reponse (`elle meurt`), distracteurs et indice (*"C'est la fin de sa vie."*) inchanges, comme
+je l'avais exige.
+
+**Les deux defauts sont payes, et je les reverifie separement** :
+
+- *se dessecher*, qui n'est pas un verbe de CP, a disparu ;
+- **l'enonce ne contient plus le mot de la reponse** : *"ne repousse plus"* decrit une scene
+  observable sans dire *mourir*. L'enfant ne peut plus apparier deux formulations du meme mot.
+  **L'item mesure a nouveau ce qu'il pretend mesurer**, et la contrefacon que `CON-1` decrit est
+  supprimee.
+
+Les cinq items de la tache A gardent la meme forme de scene observable, ce qui etait le motif pour
+lequel j'avais choisi ce remplacement plutot qu'un autre.
+
+### `REV-1` - **levee sur cet ecran**, par `REV-3`
+
+L'autre reserve ouverte le 2026-09-06 sur cette fiche portait sur la phrase de revelation, *"C'est il
+se nourrit. Appuie sur il se nourrit."* **Verifie a l'ecran aujourd'hui** : la revelation donne
+desormais *"Ce n'est pas ca."*, puis *"Appuie sur la bonne reponse :"*, puis la reponse **seule dans
+son element**. **La cause de portee depot est traitee, et son traitement est juge dans mes verdicts
+de s30, section 8.**
+
+### `CONS-2` - reserve nouvelle, datee du 2026-09-06, non bloquante
+
+**Ce jeu porte la plus longue consigne de CP que l'enfant lit lui-meme** :
+
+> *"Lis bien, puis dis ce que fait l'etre vivant, ou reponds par oui ou par non."* - **16 mots**
+
+**Elle tient `CONS-1`** - elle nomme bien les deux taches du paquet, cinq items de scene et six items
+binaires -, et je l'ai comptee comme tenue. **Ce que j'ouvre est son cout** : l'enfant la decode
+seul, sur chacune des dix manches, avant l'enonce. Elle en faisait neuf avant la reecriture. Les
+seules consignes de CP plus longues appartiennent a des paquets a voix, ou l'adulte lit.
+
+> **`CONS-2`. Propriete a tenir** : une consigne de catalogue de CP que l'enfant lit lui-meme nomme
+> ses taches **sans depasser douze mots** - chiffre pris sur les consignes de CP qui y parviennent
+> deja, dont *"Lis bien, puis dis a quoi sert l'objet, ou nomme sa partie."* **Regime : rejeu borne
+> sur deux entrees (celle-ci et `etats-eau-cp`), 0,25.**
+
+**Pourquoi ce n'est pas bloquant** : la consigne est juste, elle nomme la tache, et l'enonce porte
+tout ce qu'il faut. **`QLM-CP-02` reste `couvert-valide`, aucune ligne ne bouge.**

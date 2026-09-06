@@ -443,3 +443,61 @@ paquet de saisie alphabetique.
   jeu sur trente et un.**
 - **`CPL-7` sur tablette reste hors de ma portee**, et la reserve du premier passage tient telle
   qu'elle est ecrite. Personne dans cette squad n'a l'appareil.
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Aucun jugement de ce bloc ne repose sur le rendu visuel.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## `REV-3` levee sur ce jeu, et `SAI-R1` ouverte
+
+**J'ai joue une partie complete** jusqu'a l'ecran de fin, **avec une saisie fausse a chaque manche**,
+poussee jusqu'a la revelation.
+
+### `REV-3` - **levee**, verifiee sur cette mecanique
+
+L'ecran de fin porte desormais **l'enonce de la manche que son verdict ferme**, avant la reponse :
+
+> *Tu n'as pas trouve.* / *4 + ? = 10* / *La bonne reponse :* / *6*
+
+C'etait le second critere de la reserve, et il est tenu **sur l'autre mecanique aussi** - je ne
+l'avais verifie qu'au bandit manchot a s29. La reponse occupe **son propre element**, seule et
+entiere, ce qui rend le cadre indifferent a sa forme grammaticale (ici une valeur numerique).
+
+**C'est le cas qui montre le mieux ce que `REV-3` reparait.** *"La bonne reponse : 6"* seule ne dit
+rien : un enfant qui vient d'enchainer dix manches ne sait plus de quel complement il s'agit.
+Avec l'enonce qui la precede, la phrase redevient lisible et l'ecran cesse de commenter une
+question invisible.
+
+### `SAI-R1` - **reserve nouvelle, datee du 2026-09-06, non bloquante**
+
+**Vue a l'ecran sur ce jeu**, en ecrivant volontairement une reponse fausse terminee par un point :
+
+> *"Tu as ecrit : zzz.."*
+
+Le gabarit de saisie ajoute un point a la chaine saisie **quelle qu'elle soit**. Quand l'enfant a
+lui-meme tape un point, l'ecran lui montre **deux points a la suite**, dans la phrase precise ou le
+produit lui renvoie son propre geste.
+
+**Pourquoi ce n'est pas bloquant** : l'incidence est faible - un enfant de CP qui ecrit un mot dicte
+ou un nombre ne tape pas de point final -, rien de faux n'est enseigne, l'enfant n'est pas bloque.
+
+**Pourquoi je l'ouvre quand meme** : c'est, apres `REV-3`, **le dernier endroit du depot ou un texte
+que le produit ne controle pas entre dans une phrase que le produit compose** - la mesure complete
+est en section 1.2 de ma passe transverse. C'est le mecanisme exact de `REV-1`, qui a mis trois
+sprints et trois codes a se resorber.
+
+> **`SAI-R1`. Propriete a tenir** : la ponctuation finale d'une phrase qui cite ce que l'enfant a
+> ecrit n'est pas ajoutee par le gabarit a une chaine dont le gabarit ignore la forme. **Je donne la
+> propriete, jamais la forme** : la cause est technique et son traitement appartient a `theo-archi`.
+> **Regime : mot pour mot une fois le correctif livre, 0,25.**
+
+**Aucune ligne ne bouge.**

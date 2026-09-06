@@ -265,3 +265,82 @@ due dans la matrice et n'est pas une reserve : c'est une condition de la fermetu
 l'etre : la transparence d'un mot pour un enfant de dix ans est un jugement. `PaquetCm1AnglaisTest`
 (15 tests) garde des chaines et des comptes ; il aurait garde `mountain` aussi fidelement que `hill`,
 et il l'a fait pendant un sprint.
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict : `CONS-1` **non levee sur ce jeu**, et `ANG-R2` ouverte - **une inexactitude de fait**
+
+**J'ai joue** `bandit-manchot-anglais-cm1`, partie jouee volontairement mal, **et j'ai relu les vingt
+items**. **Ce bloc ne rouvre aucune ligne** ; il porte sur la **consigne de catalogue** reecrite par
+`S30-9`.
+
+Consigne servie : *"Traduis le mot, ou reponds a la question de **culture anglaise**."*
+
+### `ANG-R2` - **reserve nouvelle, datee du 2026-09-06, non bloquante** - le fait est faux
+
+**Mesure sur les cinq items de culture de `cm1-anglais`** :
+
+| Item | Sur quel pays il porte |
+|---|---|
+| *"Quelle est la capitale du Royaume-Uni ?"* -> `Londres` | Royaume-Uni |
+| *"Quel monument celebre, situe a Londres, sert aussi d'horloge ?"* -> `Big Ben` | Royaume-Uni |
+| *"Quelle est la capitale des Etats-Unis ?"* -> `Washington` | **Etats-Unis** |
+| *"Quel drapeau porte des etoiles et des bandes rouges et blanches ?"* -> `le drapeau des Etats-Unis` | **Etats-Unis** |
+| *"Quelle fete traditionnelle, celebree fin novembre aux Etats-Unis..."* -> `Thanksgiving` | **Etats-Unis** |
+
+**Trois des cinq portent sur les Etats-Unis. Appeler *culture anglaise* la capitale des Etats-Unis, le
+drapeau americain et Thanksgiving est faux.**
+
+**Et le referentiel du produit dit lui-meme autre chose** : `LVE-CM1-07` porte sur *"quelques aspects
+culturels des **pays** de la langue etudiee"*, au pluriel.
+
+**Le paquet a raison et la consigne a tort.** Servir les Etats-Unis a cote du Royaume-Uni est
+exactement ce que la ligne demande, et le paquet le fait bien. **C'est la consigne neuve qui reduit a
+l'Angleterre ce que le paquet ouvre a plusieurs pays** - et elle le fait devant un enfant de CM1,
+c'est-a-dire a l'age precis ou l'on apprend que l'anglais n'est pas la langue d'un seul pays. Le mot
+juste est *anglophone*, ou la nomination directe de ce que l'item demande.
+
+**Pourquoi ce n'est pas un refus, alors qu'une erreur de fait est chez moi un motif de refus a elle
+seule.** **Aucune reponse attendue ne depend de cette phrase** : elle vit dans une consigne, pas dans
+une question. C'est exactement la situation de `HG-R7` - le 14 juillet fete nationale des 1790 - que
+j'ai traitee le 2026-09-06 en reserve non bloquante, pour ce motif precis. **Je m'applique mon propre
+precedent plutot que de durcir parce que c'est le meme sprint.**
+
+> **`ANG-R2`. Propriete a tenir** : la consigne ne restreint pas a un seul pays un contenu qui en sert
+> plusieurs. **Regime : mot pour mot une fois le texte propose, 0,25.**
+>
+> **Elle porte son propre code et n'est pas fondue dans `CONS-1`**, parce qu'elle n'est pas de la meme
+> nature : les autres entrees non levees portent un defaut de designation de tache, celle-ci porte une
+> inexactitude de fait, et `camille-po` doit pouvoir la prioriser seule.
+
+### `CONS-1` - **non levee sur cette entree**, pour un second motif distinct
+
+**La premiere moitie de la consigne est bonne** : *"Traduis le mot"* nomme exactement la tache des
+quinze items de vocabulaire, dans les deux sens (*"Comment dit-on ... en anglais ?"* et *"Que veut
+dire ... en francais ?"*).
+
+**La seconde moitie ne nomme aucune tache** : *"reponds a la question"* est ce que la forme de l'ecran
+dit deja, et le complement qui la suit est en plus faux. Ce que les cinq items demandent est de
+**reconnaitre un lieu, un monument, un embleme ou une fete** des pays anglophones.
+
+> **`CONS-1`, non levee sur cette entree. Regime : rejeu borne, compte dans le reliquat (0,5 pour les
+> cinq entrees restantes).** Les deux corrections se font dans le meme geste.
+
+**Aucune ligne ne bouge**, et `ANG-R1` (l'item de *colline* / `hill`) reste levee comme le
+2026-09-06 : verifie a nouveau aujourd'hui, l'item sert bien `hill` avec l'indice qui le distingue
+d'une montagne.

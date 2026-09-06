@@ -202,3 +202,66 @@ s27, la meilleure serie d'indices de la matiere. **`EAU-R1` levee.**
 | `EAU-R2` (`nombreDeManches: 7` sans decision ecrite) | levee a s28 |
 
 **Aucune reserve ouverte sur cette ligne.**
+
+
+---
+
+# s30 - audit de `nadia-prof`, **instance A**, 2026-09-06
+
+- **Verdicts complets du sprint** :
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`.
+- **Passe transverse** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`.
+- **Arbre audite** : `round-two`, HEAD `dbbfe129`, joue depuis le worktree `s30-nadia-A`, port 8082.
+- **Done technique, mesure par moi depuis mon worktree** : `bash outils/mvn-jdk21.sh -B clean verify`
+  sur le reacteur complet, **BUILD SUCCESS** ; **179 rapports, 1321 tests, 0 echec, 0 erreur,
+  0 ignore**, machine virtuelle rapportant **21.0.10**.
+- **Audit degrade sur un seul point, et je le nomme** : j'ai joue **par requetes HTTP**, donc j'ai lu
+  le HTML servi et non la page rendue. Cela ne couvre ni la couleur, ni le contraste, ni la taille,
+  ni la position ; **aucun jugement de ce bloc n'y repose**.
+- **Aucun verdict anterieur n'est efface par ce bloc.**
+
+## Verdict sur `CONS-1` - **tenue sur ce jeu** - et `CONS-2`, reserve nouvelle
+
+**J'ai relu les quatorze items** de `cp-qlm-etats-eau` avec leur bonne reponse. **Ce bloc ne rouvre
+aucune ligne** : `QLM-CP-05` reste `couvert-valide`, avec sa fermeture au mot pres sur deux etats.
+
+### `CONS-1` - **tenue**
+
+Consigne servie : *"Lis bien, puis dis si l'eau est solide ou liquide, ou nomme le changement
+d'etat."*
+
+**Elle nomme les deux taches du paquet, et je les ai comptees** : douze items de classement
+(*"La glace, est-ce solide ou liquide ?"* -> `solide`) et deux items de nommage (*"Comment
+appelle-t-on le passage de la glace a l'eau liquide ?"* -> `fondre`). **Aucune tache n'est laissee
+sans consigne, aucune consigne ne decrit une tache absente.** C'est ce que `CONS-1` demandait, et
+c'est un net progres sur la consigne generique qu'elle remplace.
+
+### `CONS-2` - reserve nouvelle, datee du 2026-09-06, non bloquante
+
+**Cette consigne fait quinze mots. C'est la deuxieme plus longue consigne de CP que l'enfant lit
+lui-meme** - la premiere etant celle de `bandit-manchot-cycle-de-vie-cp`, seize mots, ouverte sous le
+meme code. Elle en faisait neuf avant la reecriture.
+
+**Le comparatif, mesure et non estime** : les quatre consignes de CP plus longues ou aussi longues
+appartiennent toutes a des **paquets a voix** (*"Ecoute l'adulte lire le mot..."*), ou l'adulte lit et
+ou la premisse du produit protege la lisibilite. **Celle-ci, l'enfant la decode seul, sur chacune des
+dix manches, avant l'enonce.**
+
+**Ce n'est pas un durcissement de `CONS-1`** : la consigne **tient** son critere, je viens de le dire,
+et je l'ai comptee comme tenue. **C'est le cout que la reecriture a paye**, et il faut le nommer pour
+qu'il ne s'installe pas. *Nommer la tache* et *rester lisible a six ans* ne sont pas en contradiction :
+*"Lis bien, puis dis a quoi sert l'objet, ou nomme sa partie."* fait douze mots et nomme ses deux
+taches.
+
+**Un second motif, plus petit, que je consigne sans en faire une exigence separee** : *changement
+d'etat* est une denomination que **le paquet lui-meme n'emploie dans aucun de ses quatorze items** -
+ils disent *"le passage de la glace a l'eau liquide"*. La consigne introduit donc, au-dessus de
+l'enonce, un terme que l'enfant ne retrouvera nulle part.
+
+> **`CONS-2`. Propriete a tenir** : une consigne de catalogue de CP que l'enfant lit lui-meme nomme
+> ses taches **sans depasser douze mots** - chiffre pris sur les consignes de CP qui y parviennent
+> deja - et n'introduit pas un terme absent des items qu'elle coiffe. **Regime : rejeu borne sur deux
+> entrees (celle-ci et `cycle-de-vie-cp`), 0,25.**
+
+**Pourquoi ce n'est pas bloquant** : la consigne est juste et nomme la tache. **`QLM-CP-05` reste
+`couvert-valide`, aucune ligne ne bouge.**
