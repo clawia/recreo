@@ -1,0 +1,97 @@
+schema: 1
+id: cm1-sciences-signal-information
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Matière, mouvement, énergie, information"
+  competence: "Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran)."
+lignesDeReferentiel: ["SCI-CM1-05"]
+#
+# S30-1 (docs/backlog/backlog.md, sprint 30). Premier des deux paquets du premier lot de sciences et
+# technologie CM1, matiere neuve du produit (DEC-0079, arbitrage prealable de nadia-prof du
+# 2026-09-06, section 2.8 - ligne jugee la moins couteuse du lot avec la ligne 17). Referentiel copie
+# conforme (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-05).
+#
+# La parenthese du libelle est exemplative ("quelques objets [...] (feu tricolore, panneau, alarme,
+# écran)") : les quatre exemples ne sont pas une liste contractuelle (FER-1, precision du
+# 2026-09-05), mais ils sont repris ici parce qu'ils sont les objets du quotidien les plus lisibles
+# au CM1.
+#
+# Deux elements du libelle a servir en bonne reponse (FER-1) : "un signal" et "une information".
+# Deux taches distinctes (FER-3) : tache A, reconnaitre le type de signal emis par un objet decrit
+# (six items) ; tache B, dire quelle information ce signal porte (cinq items).
+#
+# Tache A : chaque item decrit un objet qui emet un signal et demande d'en nommer le type - "un
+# signal visuel" (percu par les yeux) ou "un signal sonore" (percu par les oreilles). Cette
+# categorisation sert l'element "un signal" du libelle. Repartition volontairement egale : trois
+# items visuels, trois items sonores.
+#
+# Tache B : chaque item donne un signal deja identifie et demande l'information qu'il porte pour
+# celui qui le percoit. Cette tache sert l'element "une information" du libelle.
+#
+# SCI-1 (l'indice dit pourquoi une conception fausse courante est fausse, sans nommer la bonne
+# reponse) et SCI-4 (l'item porte alors trois propositions au moins) : l'item de l'ambulance
+# (tache A) porte en distracteur la conception fausse qu'une ambulance ne serait signalee que par sa
+# lumiere, alors que l'enonce decrit son bruit - l'indice le corrige sans jamais ecrire "un signal
+# sonore" en toutes lettres.
+#
+# indicesNommentLaReponse n'est pas pose sur ce paquet (absent, vaut faux) : les indices sont donc
+# affiches par la mecanique des la premiere reponse fausse (M21, SCI-1).
+#
+# CON-1 : aucun item ne se resout sans connaitre l'objet et le signal qu'il decrit.
+#
+# HIS-3 (chaque fait porte sa source) : le code des couleurs du feu tricolore et le panneau "sens
+# interdit" sont ceux du code de la route francais ; la procedure d'evacuation sur alarme incendie
+# est la consigne generale enseignee a l'ecole ; les autres faits (four, réveil) relevent du sens
+# commun verifie a la redaction. Aucun ne fait debat scientifique.
+#
+# CYC-1 : cette ligne ne recoupe aucun paquet de cycle 2 deja servi (aucune ligne de questionner le
+# monde CP ne porte sur les signaux ou les objets techniques cites ici) - vacante, non tenue.
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Le feu tricolore passe au rouge : les voitures voient une lumière rouge s'allumer. Quel type de signal est-ce ?"
+    bonneReponse: "un signal visuel"
+    distracteurs: ["un signal sonore"]
+    indice: "C'est avec les yeux qu'on perçoit ce signal, pas avec les oreilles."
+  - enonce: "Une alarme incendie se met à sonner très fort dans le couloir de l'école. Quel type de signal est-ce ?"
+    bonneReponse: "un signal sonore"
+    distracteurs: ["un signal visuel"]
+    indice: "C'est avec les oreilles qu'on perçoit ce signal, pas avec les yeux."
+  - enonce: "Au bord de la route, un panneau rond et rouge indique qu'il est interdit de passer. Quel type de signal est-ce ?"
+    bonneReponse: "un signal visuel"
+    distracteurs: ["un signal sonore"]
+    indice: "Ce panneau ne fait aucun bruit, il faut le regarder pour le comprendre."
+  - enonce: "Une ambulance roule vite et fait retentir sa sirène pour que les voitures s'écartent. Quel type de signal est-ce ?"
+    bonneReponse: "un signal sonore"
+    distracteurs: ["un signal visuel", "un signal qui se sent"]
+    indice: "Ici, ce sont les oreilles des conducteurs qui sont prévenues avant même qu'ils regardent."
+  - enonce: "Sur un four, un petit écran affiche un symbole qui clignote pour dire que le plat est prêt. Quel type de signal est-ce ?"
+    bonneReponse: "un signal visuel"
+    distracteurs: ["un signal sonore"]
+    indice: "Il faut regarder l'écran pour voir ce symbole s'allumer."
+  - enonce: "Un réveil se met à sonner le matin pour réveiller quelqu'un. Quel type de signal est-ce ?"
+    bonneReponse: "un signal sonore"
+    distracteurs: ["un signal visuel"]
+    indice: "Le réveil ne s'allume pas, il fait du bruit."
+  - enonce: "Le feu tricolore est rouge. Qu'est-ce que ça veut dire pour les voitures ?"
+    bonneReponse: "il faut s'arrêter"
+    distracteurs: ["il faut accélérer", "il faut klaxonner"]
+    indice: "Le rouge protège ceux qui traversent la route à cet endroit."
+  - enonce: "Le feu tricolore est vert. Qu'est-ce que ça veut dire pour les voitures ?"
+    bonneReponse: "elles peuvent avancer"
+    distracteurs: ["elles doivent s'arrêter", "elles doivent reculer"]
+    indice: "Le vert et le rouge ne veulent jamais dire la même chose."
+  - enonce: "Une alarme incendie sonne dans l'école. Qu'est-ce que ça veut dire ?"
+    bonneReponse: "il faut sortir du bâtiment"
+    distracteurs: ["il faut aller se cacher", "il faut continuer le cours"]
+    indice: "Cette alarme prévient d'un danger, pas d'une pause."
+  - enonce: "Sur un panneau, une personne est dessinée en train de marcher, au-dessus de bandes blanches peintes sur la route. Que signifie ce panneau ?"
+    bonneReponse: "c'est un endroit pour traverser à pied"
+    distracteurs: ["c'est interdit de marcher ici", "c'est une école"]
+    indice: "Ce dessin montre ce que les piétons ont le droit de faire à cet endroit."
+  - enonce: "Sur l'écran d'un four, une icône en forme de flamme s'allume. Qu'est-ce que ça veut dire ?"
+    bonneReponse: "le four est en train de chauffer"
+    distracteurs: ["le four est éteint", "le four est cassé"]
+    indice: "Cette icône rappelle ce qui se passe à l'intérieur, même quand on ne le voit pas."

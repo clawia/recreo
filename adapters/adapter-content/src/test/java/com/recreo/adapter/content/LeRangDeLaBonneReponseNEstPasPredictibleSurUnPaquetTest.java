@@ -569,7 +569,25 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " libre, valeurDe rend null sur toutes les propositions. Mesure du 2026-09-06 sur"
                     + " le paquet servi, apres la reprise du 2026-09-06 (squad/conformite/FICHE-"
                     + "bandit-manchot-droit-devoir-cm1.md) qui retire le troisieme bouton \"une"
-                    + " interdiction\" : aucune des 27 propositions ne commence par un chiffre"));
+                    + " interdiction\" : aucune des 27 propositions ne commence par un chiffre"),
+            // S30-1 : deux paquets neufs de sciences et technologie CM1, matiere neuve du produit,
+            // premier lot (SCI-CM1-05, SCI-CM1-17).
+            Map.entry("cm1-sciences-signal-information",
+            "11 items sur 11 : cinq items (tache de reconnaissance du signal) portent un seul"
+                    + " distracteur (deux propositions) et six items (l'item de l'ambulance, meme"
+                    + " tache, et les cinq items de la tache d'information) portent deux distracteurs"
+                    + " (trois propositions), mais aucune des 28 propositions n'est numerique : ce sont"
+                    + " des types de signal (\"un signal visuel\", \"un signal sonore\") ou des"
+                    + " informations en texte libre (\"il faut s'arrêter\", \"le four est en train de"
+                    + " chauffer\"...), valeurDe rend null sur toutes les propositions. Mesure du"
+                    + " 2026-09-06 sur le paquet servi"),
+            Map.entry("cm1-sciences-chaine-alimentaire",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des noms d'êtres vivants (\"l'écureuil\","
+                    + " \"le renard\", \"la chouette\"...) ou des consequences en texte libre (\"il"
+                    + " risquerait de manquer de nourriture\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-06 sur le paquet servi : aucune"
+                    + " des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

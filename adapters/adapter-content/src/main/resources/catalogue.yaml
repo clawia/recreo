@@ -330,3 +330,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-emc-droit-devoir
     nombreDeManches: 10
+  - id: bandit-manchot-signal-information-cm1
+    titre: "Signal et information"
+    consigne: "Lis bien, puis dis quel est le signal, ou ce qu'il veut dire."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-signal-information
+    nombreDeManches: 10
+  - id: bandit-manchot-chaine-alimentaire-cm1
+    titre: "Qui mange qui ?"
+    consigne: "Lis bien, puis dis qui mange qui, ou ce qui pourrait arriver."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-chaine-alimentaire
+    nombreDeManches: 10

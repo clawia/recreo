@@ -199,6 +199,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // civique, CM1 (fait/opinion, droit/devoir).
             "bandit-manchot-fait-opinion-cm1",
             "bandit-manchot-droit-devoir-cm1",
+            // S30-1 (backlog S30-1) : deux entrees neuves, premier lot de sciences et technologie
+            // CM1, matiere neuve du produit (signal/information, chaine alimentaire).
+            "bandit-manchot-signal-information-cm1",
+            "bandit-manchot-chaine-alimentaire-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -298,6 +302,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
             "Fait ou opinion",
             "Droits et devoirs",
+            // S30-1 : deux titres neufs.
+            "Signal et information",
+            "Qui mange qui ?",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -390,6 +397,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // remplace la consigne generique partagee jusque-la avec les trois autres
             // paquets d'EMC.
             "Lis bien, puis dis si c'est un fait ou une opinion.",
+            // S30-1 : deux consignes neuves.
+            "Lis bien, puis dis quel est le signal, ou ce qu'il veut dire.",
+            "Lis bien, puis dis qui mange qui, ou ce qui pourrait arriver.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -407,6 +417,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Langues vivantes (anglais)",
             // S29-4 : matiere neuve, premier lot d'enseignement moral et civique.
             "Enseignement moral et civique",
+            // S30-1 : matiere neuve, sciences et technologie CM1.
+            "Sciences et technologie",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -436,6 +448,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // la ligne droit/devoir partage le domaine "Acquérir et partager les valeurs de la
             // République" deja liste ci-dessus).
             "Construire une culture civique",
+            // S30-1 : deux domaines neufs, premier lot de sciences et technologie CM1.
+            "Matière, mouvement, énergie, information",
+            "La planète Terre. Les êtres vivants dans leur environnement",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -567,7 +582,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la "
                     + "partager.",
             "Distinguer un droit d'un devoir, et connaître quelques droits et devoirs de l'élève et "
-                    + "de l'enfant.");
+                    + "de l'enfant.",
+            // S30-1 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/sciences-et-technologie/competences-cm1.md, lignes SCI-CM1-05 et
+            // SCI-CM1-17).
+            "Identifier un signal et une information dans quelques objets du quotidien (feu "
+                    + "tricolore, panneau, alarme, écran).",
+            "Décrire un milieu proche : les êtres vivants qui le peuplent et les relations "
+                    + "alimentaires qui les relient (chaîne alimentaire).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
