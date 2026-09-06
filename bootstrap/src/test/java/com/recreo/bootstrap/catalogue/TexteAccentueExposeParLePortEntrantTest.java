@@ -419,7 +419,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // classement) : consigne neuve, propre a bandit-manchot-fait-opinion-cm1,
             // remplace la consigne generique partagee jusque-la avec les trois autres
             // paquets d'EMC.
-            "Lis bien, puis dis si c'est un fait ou une opinion.",
+            //
+            // S30-7 (FOP-R1, reroutage de sofia-sm en cours de sprint) : cette consigne
+            // ne nommait que la tache de classement (six manches sur onze), en silence sur
+            // la tache de verification de l'origine d'une information (cinq manches). Elle
+            // nomme desormais les deux taches reellement posees, plutot que de revenir a la
+            // consigne generique que DEC-0078 interdit desormais aux entrees du catalogue.
+            "Lis bien, puis dis si c'est un fait ou une opinion, ou comment vérifier une "
+                    + "information.",
             // S30-1 : deux consignes neuves.
             "Lis bien, puis dis quel est le signal, ou ce qu'il veut dire.",
             "Lis bien, puis dis qui mange qui, ou ce qui pourrait arriver.",

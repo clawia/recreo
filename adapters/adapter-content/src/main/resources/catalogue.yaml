@@ -320,7 +320,7 @@ jeux:
     nombreDeManches: 10
   - id: bandit-manchot-fait-opinion-cm1
     titre: "Fait ou opinion"
-    consigne: "Lis bien, puis dis si c'est un fait ou une opinion."
+    consigne: "Lis bien, puis dis si c'est un fait ou une opinion, ou comment vérifier une information."
     mecanique: bandit-manchot
     paquet: cm1-emc-fait-opinion
     nombreDeManches: 10
