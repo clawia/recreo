@@ -162,6 +162,14 @@ s'est trompe.
 | **`VOI-13`** (corrigee) | **56 ecrans inspectes, 0 ecart** | **TENU** |
 | **L'enfant bloque peut avancer** | apres six erreurs sur `genou`, l'ecran affiche *"C'est ou. Appuie sur ou."* et l'enfant peut presser | **TENU** |
 
+**Amendement du 2026-09-06 (`nadia-prof`, s29, reverification de `REV-1`).** La derniere ligne de ce
+tableau cite un texte que le produit **ne sert plus**. Depuis `ADR-0083` (commit `8ef4fb2`), l'ecran
+de revelation sert *"Ce n'est pas ça."*, puis *"Appuie sur la bonne réponse :"*, puis la reponse
+seule dans son element. **Ce que la ligne constate reste vrai** - l'enfant bloque peut toujours
+avancer, et il presse toujours un bouton dont le libelle est exactement la reponse montree ; c'est
+la citation du texte qui est perimee, pas l'etat `TENU`. Rejoue sur cet ecran le 2026-09-06. Verdict
+complet : `FICHE-bandit-manchot-additions-cp.md`, reverification du 2026-09-06.
+
 #### Un point que j'avais route et que je ferme moi-meme
 
 En section 12.4 de mon addendum, j'avais nomme un chemin jamais audite : *"l'ecran de revelation de

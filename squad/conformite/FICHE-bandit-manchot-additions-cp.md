@@ -3262,6 +3262,13 @@ et non presume.**
 | M12 | **tenue** | les trois textes au mot : **"Bravo !"**, **"Ce n'est pas ça. Essaie encore !"**, **"C'est `<reponse>`. Appuie sur `<reponse>`."** Accentues, ponctuation juste. Aucun mot de la liste interdite |
 | **M13** | **NON TENUE - clause 1 bloquante** | section 2. Quatorze cas sur quatorze. Clauses 2, 4 et 5 non executees ; clause 3 tenue par la meme panne |
 
+**Amendement du 2026-09-06 (`nadia-prof`, s29, reverification de `REV-1`).** La ligne `M12` de ce
+tableau cite un texte que le produit **ne sert plus**. Depuis `ADR-0083` (commit `8ef4fb2`), l'ecran
+de revelation ne compose plus aucune phrase autour de la reponse : il sert *"Ce n'est pas ça."*,
+puis *"Appuie sur la bonne réponse :"*, puis la reponse **seule dans son element**. La ligne reste
+ecrite telle qu'elle a ete prononcee le jour de cet audit - je n'efface pas un constat date. Ce que
+`M12` couvre aujourd'hui est dit dans mon verdict du 2026-09-06, en fin de fiche.
+
 **Forme.**
 
 | # | etat | ce que la mesure a donne |
@@ -5168,6 +5175,19 @@ enfant : ils sont en francais integralement accentue, orthographe et ponctuation
 | Bonne reponse | **"Bravo !"** | 1 mot |
 | Premier et deuxieme echec, essais restants | **"Ce n'est pas ça. Essaie encore !"** | 6 mots |
 | Troisieme echec, revelation | **"C'est `<reponse>`. Appuie sur `<reponse>`."** | 5 mots et la reponse deux fois |
+
+**Amendement du 2026-09-06 (`nadia-prof`, s29, reverification de `REV-1`).** La troisieme ligne de
+ce tableau, et le motif de repetition qui la suit, portent sur un texte que le produit **ne sert
+plus** depuis `ADR-0083` (commit `8ef4fb2`). Le texte servi aujourd'hui est en trois elements
+distincts : *"Ce n'est pas ça."*, *"Appuie sur la bonne réponse :"*, puis la reponse seule.
+
+**Et je corrige ici mon propre motif, pas seulement le texte.** J'avais ecrit que la repetition de
+la reponse etait *"voulue"* et qu'elle valait *"une lecture de plus du mot juste"*. Ce motif a ete
+formule sur un jeu dont la reponse est un nombre d'un chiffre, puis enregistre comme s'il valait
+pour toute la mecanique. Il ne vaut pas : sur les paquets ou la bonne reponse est une proposition
+entiere, il faisait relire *"ce n'est pas un être vivant"* deux fois de suite a un enfant qui vient
+d'echouer trois fois. Une lecture de plus du mot juste est un gain ; deux lectures d'une phrase de
+six mots au pire moment de la manche est une charge. Le motif est retire, il n'est pas deplace.
 
 - **"Bravo !" et non "Bravo, c'est juste !"**, et le motif est precis : le texte de trois mots a ete
   valide par moi pour un ecran qui ne portait **que** ce verdict. Sur un ecran qui porte deja la
@@ -10298,6 +10318,14 @@ sous reserve de reformulation (j'ecris la reformulation), refuse.
 | "La partie est finie. Bravo, tu as bien joué !" | **REFUSE** | Motif : ce texte s'affiche a l'identique quel que soit le resultat. Je l'ai vu de mes yeux au bout d'une partie a 0 bonne reponse sur 10 : l'ecran montre une croix rouge, "Non, c'est 8.", "Score : 0", puis "Bravo, tu as bien joué !". Trois choses ne vont pas. Le jeu felicite un enfant qui n'a rien reussi, ce qui est faux et ce que l'enfant sait. Le mot "Bravo" est deja le signal de reussite du jeu ("Bravo, c'est juste !") : l'employer aussi quand il n'y a rien a feliciter use le seul mot de renforcement dont ce jeu dispose, et un renforcement qui tombe tout le temps ne renforce plus rien. Enfin, "Bravo" pose sous une croix rouge est simplement contradictoire pour un lecteur debutant. **Reformulation que j'ecris : la phrase de cloture inconditionnelle devient "C'est fini !"** - trois mots, entierement dechiffrables, aucune affirmation sur la performance, et la ligne "Score : N" juste au-dessus dit deja le resultat. Si l'equipe veut garder un mot chaleureux, il doit dependre du resultat ; c'est alors un choix produit a ecrire en DEC, pas un remplacement de chaine. |
 | "Compte avec tes doigts pour t'aider." (indice, `DEC-0005`) | **ACCEPTE SOUS RESERVE DE REFORMULATION** | Sur le fond, l'aide est **juste et je la valide** : le comptage sur les doigts est une strategie explicitement enseignee au CP pour l'addition dans la limite de 10, et dix doigts sont exactement le modele de cet intervalle. Ce n'est ni un raccourci ni une betise, c'est ce qu'un maitre dit. Sur la forme, non : six mots et trente-cinq caracteres pour l'enfant qui vient d'echouer trois fois, donc tres probablement le lecteur le plus fragile ; "compte" (p muet) et "doigts" (/dwa/, "gts" muet) sont deux mots irreguliers ; et la moitie de la phrase ("pour t'aider") ne dit rien que l'enfant ne comprenne deja. Une aide ne doit pas etre un second obstacle. **Reformulation que j'ecris : "Compte sur tes doigts."** - quatre mots, c'est la phrase que l'enfant entend en classe, donc reconnue globalement meme quand elle n'est pas dechiffree. |
 
+**Amendement du 2026-09-06 (`nadia-prof`, s29, reverification de `REV-1`).** La ligne *"Non, c'est
+X."* de ce tableau porte sur un texte que le produit **ne sert plus**. Depuis `ADR-0083` (commit
+`8ef4fb2`), l'ecran de fin de partie sert *"Ce n'est pas ça."*, puis *"La bonne réponse :"*, puis la
+reponse seule dans son element. Mon `ACCEPTE` du jour ne vaut donc plus pour aucun texte servi, et
+je le laisse ecrit : il dit ce que j'ai accepte ce jour-la, pas ce que l'application affiche.
+**Sur le texte qui l'a remplace, mon verdict du 2026-09-06 n'est pas un `ACCEPTE`** : voir la
+reverification en fin de fiche, reserve `REV-2`.
+
 Sur l'emplacement de l'indice, tranche par `DEC-0005` : je confirme que le rendu vu par l'enfant ne
 depend pas de l'endroit ou le texte vit, et que ce prealable ne bloquait donc pas mon audit.
 J'ajoute une raison pedagogique d'aller au bout de cette decision : je viens de demander une
@@ -11012,3 +11040,148 @@ section 1.
 **Le reste de la reserve 6 n'est pas touche** : *"Manche suivante"*, *"Score : 1 / 2"* et les
 registres d'adulte restaient et restent des defauts, et ils ont ete corriges a s01 pour ce motif.
 Seul le critere de grapheme tombe.
+
+## Reverification du 2026-09-06 (`nadia-prof`, s29) - les trois textes servis apres `ADR-0083` (`REV-1`)
+
+**Perimetre, et rien d'autre.** Les trois textes que `theo-archi` sert depuis `8ef4fb2` et qu'il
+donne pour des candidats, la disparition de *"Non, c'est"*, et l'etat des fiches qui enregistrent
+`M12` avec les anciens textes cites au mot. **Aucun lot, aucune ligne, aucun verdict de s29 n'est
+rejuge ici**, ni les miens ni ceux de l'instance B. **Aucune ligne de
+`squad/programme/MATRICE-couverture.md` ne bouge.**
+
+**Audit joue, non lu.** Application lancee depuis le jar livre, dont j'ai verifie qu'il porte bien le
+correctif avant de jouer. **Joue mal, jusqu'au bout** : trois erreurs consecutives sur chaque manche,
+puis la reponse revelee pressee pour atteindre la fin de partie. Trente-quatre ecrans de revelation
+et sept ecrans de fin de partie, sur six paquets choisis pour couvrir les quatre formes de bonne
+reponse, plus une cinquieme que ma fiche `grands-nombres` avait signalee.
+
+| Forme de la reponse | Paquet et item joues | Ecran de revelation | Ecran de fin de partie |
+|---|---|---|---|
+| **Proposition entiere** | `cp-qlm-vivant-non-vivant`, *"Un caillou, qu'est-ce que c'est ?"* | *"Ce n'est pas ça."* / *"Appuie sur la bonne réponse :"* / *"ce n'est pas un être vivant"* | *"La bonne réponse : un objet"* |
+| **Proposition entiere** | `cp-qlm-cycle-de-vie`, *"Un caillou peut-il naître ?"* | idem, puis *"non"* | *"La bonne réponse : non"* |
+| **Groupe nominal** | `cp-qlm-corps-sens`, *"Quelle partie du corps est au bout de la jambe ?"* | idem, puis *"les pieds"* | *"La bonne réponse : les pieds"* |
+| **Valeur numerique** | `cp-additions`, *"3 + 2"* | idem, puis *"5"* | *"La bonne réponse : 9"* (sur *"8 + 1"*) |
+| **Complement** | `cm1-histoire-geographie`, *"En quelle année commence la Révolution française ?"* | idem, puis *"en 1789"* | *"La bonne réponse : d'une rivière ou d'une nappe souterraine"* |
+| **Signe** (forme non nommee par `ADR-0083`) | `cp-comparer-nombres`, *"91 ___ 9"* | idem, puis le signe seul | atteint, verdict juste |
+
+**Les douze items fautifs et les vingt-neuf maladroits que j'avais mesures sont corriges.** Je l'ai
+verifie a l'ecran sur les quatre formes, et sur la cinquieme que je n'avais pas comptee : ma fiche
+`FICHE-bandit-manchot-grands-nombres-cm1.md` notait un cadre qui *"se lit mal"* sur les items de
+comparaison sans en faire un defaut ; il est corrige par le meme geste, et je le dis parce que la
+correction paie une remarque que j'avais laissee ouverte.
+
+### 1. Les trois textes, un par un
+
+**`"Ce n'est pas ça."` sur l'ecran de revelation d'une manche - VALIDE.** Ce n'est pas un texte neuf,
+c'est **mon** texte de l'ecran de saisie, pose sur la seconde mecanique. Quatre mots courts et tres
+frequents, tous dechiffrables au CP, sans *"faux"* ni *"erreur"*, sans jugement sur l'enfant. Il
+gagne meme une propriete que je n'avais pas cherchee : les deux premiers echecs disent *"Ce n'est pas
+ça. Essaie encore !"* et le troisieme dit *"Ce n'est pas ça."* La disparition de *"Essaie encore !"*
+est, a elle seule, le signal que les essais sont finis - un contraste que l'enfant lit sans qu'on le
+lui explique. Les deux mecaniques disent desormais la meme chose au meme moment.
+
+**`"Appuie sur la bonne réponse :"` - VALIDE.** Cinq mots, vingt-huit caracteres. Aucun mot n'est neuf
+pour l'enfant : *"la bonne réponse"* est litteralement dans la consigne que la moitie des jeux
+servent (*"Lis bien la question, puis choisis la bonne réponse."*), et *"Appuie"* etait deja le verbe
+de l'ancien cadre. La charge de lecture baisse : la reponse est lue **une fois** au lieu de deux, et
+sur les items de proposition c'est six mots de moins a relire au pire moment de la manche. Le geste
+reste nommable sans ambiguite parce que la reponse montree est **exactement** le libelle du bouton a
+presser - verifie sur les six paquets, chaine pour chaine, y compris sur les signes de comparaison et
+sur *"ce n'est pas un être vivant"*. `M5` reste tenue.
+
+**`"La bonne réponse :"` sur l'ecran de fin de partie - VALIDE.** Quatre mots, meme vocabulaire que le
+precedent, et la meme forme sur les deux ecrans : un enfant qui passe de l'un a l'autre n'a rien a
+reapprendre. Il remplace *"Non, c'est"*, qui etait mon texte et que je ne defends pas : il produisait
+*"Non, c'est non."* sur les items par oui/non de `cp-qlm-cycle-de-vie`, ce qui n'est pas maladroit
+mais absurde, et je ne l'avais jamais vu parce que je n'avais jamais joue mal jusqu'a la fin d'une
+partie sur ce paquet.
+
+### 2. Ce que je refuse, et qui n'est pas un des trois textes
+
+**`REV-2` - `"Ce n'est pas ça."` sur l'ecran de fin de partie : REFUSE, remplacement ecrit ci-dessous.**
+
+Le fait, mesure a l'ecran et verifie ensuite dans le code : cet ecran n'affiche un verdict negatif
+**que** lorsque la derniere manche a ete resolue par revelation, et une manche revelee ne se ferme que
+d'une seule facon - **l'enfant presse la bonne reponse**. Autrement dit, le dernier geste de l'enfant
+avant cet ecran est **toujours** un geste juste, et l'application lui repond *"Ce n'est pas ça."* Sur
+un item par oui/non, l'ecran entier se lit :
+
+> Score : 6 / (croix rouge) *"Ce n'est pas ça."* / *"La bonne réponse :"* / *"non"* / *"C'est fini !"*
+
+L'enfant vient de presser *"non"*, on lui montre une croix, on lui dit que ce n'est pas ça, et on lui
+donne comme bonne reponse le mot qu'il vient de presser. C'est contradictoire pour un lecteur
+debutant, et ca l'est encore pour un CM1.
+
+**Ce defaut n'est pas ne avec `ADR-0083`** : *"Non, c'est non."* etait pire. Je ne reproche donc rien
+a ce lot, et je ne durcis aucune barre existante - **c'est une reserve neuve, datee du 2026-09-06**,
+qui porte sur un texte que `M12` me renvoie parce qu'il a change d'ecran. La structure ne bouge pas :
+un seul litteral de gabarit change.
+
+**Le texte que j'ecris, et qu'un developpeur applique tel quel** : sur l'ecran de fin de partie,
+lorsque la derniere manche a ete resolue par revelation, le verdict devient
+
+> **`Tu n'as pas trouvé.`**
+
+Quatre mots, dix-huit caracteres, tous les graphemes sont du CP. Il est **vrai** : l'enfant n'a pas
+trouve cette question, et c'est bien ce que la revelation a constate. Il ne dement pas le dernier
+geste de l'enfant. Il ne dit ni *"faux"*, ni *"erreur"*, ni *"perdu"*, et il ne porte aucun jugement
+sur la partie entiere, que la ligne *"Score : N"* dit deja. Il vaut identiquement sur les deux
+mecaniques, qui partagent ce gabarit. *"Ce n'est pas ça."* reste inchange partout ailleurs.
+
+### 3. Ce que je route, et que je ne tranche pas
+
+**`REV-3` - l'ecran de fin de partie nomme une reponse sans sa question.** Cet ecran ne porte ni la
+consigne ni l'enonce de la manche qu'il commente. *"La bonne réponse : non"* et *"La bonne réponse :
+9"* ne disent rien a un enfant qui a joue dix questions. Ce n'est pas un defaut de formulation -
+aucun mot ne repare une reponse orpheline - et la cause est structurelle, donc hors de ma main. Je
+decris le symptome, `camille-po` en fait une story et `theo-archi` traite la cause. **Ce defaut est
+anterieur a `ADR-0083`** : il vivait derriere *"Non, c'est 8."* et ce lot ne l'a ni cree ni aggrave.
+Reserve neuve, datee du 2026-09-06.
+
+### 4. Sur quelles proprietes je reste la seule garde
+
+`AucunTexteServiNEnchasseLaReponseDansUnePhraseTest` garde desormais **la structure** : plus aucune
+phrase servie n'enchasse une valeur de contenu, et l'emplacement qui porte un mot de la mecanique dit
+toujours la meme chose. C'est reel et c'est nouveau, et je le dis pour que personne ne le croie plus
+large qu'il n'est. **Il ne juge aucun mot.** Restent sans aucun garde-fou, donc a moi seule :
+
+- **que ces mots-la soient les bons pour un enfant de six ans**, y compris quand le texte est
+  structurellement irreprochable - `REV-2` en est l'exemple du jour ;
+- **qu'un texte servi soit vrai du geste que l'enfant vient de faire**. Aucun test du depot ne compare
+  ce que l'enfant a fait a ce que l'ecran lui repond ; c'est exactement la faille par laquelle `REV-2`
+  a traverse tous les sprints ;
+- **qu'un ecran donne a l'enfant de quoi comprendre ce qu'il lit** - la question a cote de sa reponse
+  (`REV-3`).
+
+### 5. L'etat des fiches, et une correction du routage
+
+`ADR-0083` me route *"trois fiches"* ou `M12` est enregistree tenue avec les anciens textes cites au
+mot. **Je l'ai verifie fiche par fiche, et le compte exact est : quatre records, dans deux fiches.**
+Je le corrige parce qu'un tiers qui chercherait la troisieme fiche ne la trouverait pas.
+
+| Record | Ce qu'il dit | Traitement |
+|---|---|---|
+| Cette fiche, tableau des conditions `M1`-`M13` : `M12` **tenue**, les trois textes au mot | perime sur le troisieme texte | **amendement date insere sous le tableau**, ligne d'origine intacte |
+| Cette fiche, tableau *"les textes exacts"* de `M12` et son motif de repetition | perime, **et le motif etait faux** | **amendement date insere**, avec le retrait de mon propre motif de repetition |
+| Cette fiche, tableau des libelles : *"Non, c'est X."* **ACCEPTE** | porte sur un texte qui n'existe plus | **amendement date insere**, renvoi vers `REV-2` |
+| `FICHE-bandit-manchot-digraphe-du-son-cp.md`, ligne *"L'enfant bloque peut avancer"* **TENU** | citation perimee, **etat `TENU` toujours vrai** | **amendement date insere**, l'etat n'est pas touche |
+
+**Ce que je ne corrige pas, et le critere.** Une dizaine d'autres fiches citent les anciens cadres
+dans des **narrations datees** - *"j'ai joue, j'ai vu ceci ce jour-la"*. Un constat date reste vrai
+comme constat du jour ou il a ete fait, et je n'efface pas l'histoire d'un audit. Ce que je corrige,
+ce sont les records qui enoncent un **etat courant** (*tenue*, *TENU*, *ACCEPTE*) sur un texte :
+ceux-la, un tiers les lit comme une description du produit d'aujourd'hui.
+
+### 6. Verdict
+
+**VALIDE SOUS RESERVE.** Done pedagogique **prononce** sur le correctif de `REV-1`. Les trois textes
+candidats sont valides tels quels sur l'ecran de revelation d'une manche et pour *"La bonne réponse
+:"* de la fin de partie. Deux reserves nommees, toutes deux **neuves et datees du 2026-09-06**,
+aucune n'etant un durcissement d'une barre anterieure :
+
+- **`REV-2`** : sur l'ecran de fin de partie, *"Ce n'est pas ça."* dement un geste juste. Texte de
+  remplacement ecrit : **`Tu n'as pas trouvé.`** Un litteral de gabarit, la structure ne bouge pas.
+- **`REV-3`** : l'ecran de fin de partie nomme une reponse sans sa question. Symptome decrit, cause
+  structurelle, routee.
+
+Aucune ligne de la matrice ne bouge par cette reverification, et aucun verdict de s29 n'est rouvert.

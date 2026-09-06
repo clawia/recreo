@@ -182,3 +182,32 @@ pas.**
 **Aucun depassement.** Les 0,5 non planifies tiennent dans ma **marge de rejeu individuelle de 0,5**,
 nommee et non allouee a l'ouverture (`PAR-8`). **Je ne tire rien sur la marge de rejeu du sprint**,
 qui garde ses **0,75** apres le tirage de 0,25 de l'Instance B.
+
+## Reverification du 2026-09-06 - le correctif de `REV-1` joue a l'ecran (`ADR-0083`, `8ef4fb2`)
+
+**Verdict : VALIDE SOUS RESERVE.** Ecrit au long dans
+`squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section *"Reverification du 2026-09-06"*.
+
+- **Les trois textes candidats sont valides** sur l'ecran de revelation d'une manche - *"Ce n'est pas
+  ça."*, *"Appuie sur la bonne réponse :"*, la reponse seule - et *"La bonne réponse :"* l'est sur
+  l'ecran de fin de partie. Aucun mot n'est neuf pour l'enfant, la reponse est lue une fois au lieu
+  de deux, et le libelle montre est exactement celui du bouton a presser (`M5` tenue).
+- **Joue mal, jusqu'au bout**, sur les quatre formes de bonne reponse plus une cinquieme
+  (proposition entiere, groupe nominal, valeur, complement, signe de comparaison), six paquets, CP et
+  CM1. Les douze items fautifs et les vingt-neuf maladroits que j'avais mesures sont corriges.
+- **`REV-2`, reserve neuve** : sur l'ecran de fin de partie, *"Ce n'est pas ça."* dement le dernier
+  geste de l'enfant, qui est **toujours** un geste juste - une manche revelee ne se ferme qu'en
+  pressant la bonne reponse. Sur un item par oui/non, l'ecran dit *"Ce n'est pas ça. / La bonne
+  réponse : / non"* a un enfant qui vient de presser *"non"*. **Texte de remplacement que j'ecris :
+  `Tu n'as pas trouvé.`** Un litteral de gabarit ; la structure d'`ADR-0083` ne bouge pas.
+- **`REV-3`, reserve neuve, routee** : l'ecran de fin de partie nomme une reponse sans porter sa
+  question. Symptome decrit, cause structurelle, hors de ma main.
+- **Les deux reserves sont anterieures a `ADR-0083`** et vivaient derriere l'ancien texte. Ce lot ne
+  les a ni creees ni aggravees, et je ne durcis aucune barre existante.
+- **Fiches** : quatre records perimes, dans **deux** fiches et non trois - `ADR-0083` route *"trois
+  fiches"*, je corrige le compte. Amendes sur place, dates, aucune ligne d'origine effacee. Les
+  narrations datees des autres fiches ne sont pas touchees : un constat date reste vrai comme constat.
+- **Aucune ligne de la matrice ne bouge**, aucun verdict de s29 n'est rouvert.
+
+**Prix : 0,25**, exactement le chiffre annonce d'avance. Total instance A : **4,25 / 5,0**. Rien de
+tire sur la marge de rejeu du sprint, qui garde ses **0,75**.
