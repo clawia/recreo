@@ -144,6 +144,19 @@
             <span class="icone-signal" aria-hidden="true"></span>
             <p class="verdict" th:text="${message}"></p>
         </div>
+        <!-- REV-1, ADR-0083 : la reponse revelee occupe seule son element, et les mots que la
+             mecanique adresse a l'enfant vivent ici, dans le gabarit. Ils ne se rencontrent nulle
+             part dans une concatenation : c'est ce qui rend le cadre indifferent a la forme
+             grammaticale de la reponse - groupe nominal ("la langue"), proposition ("ce n'est pas un
+             etre vivant"), complement ("en 1789") ou valeur ("5") se lisent tous apres le deux-
+             points. La phrase composee que ce bloc remplace donnait "C'est ce n'est pas un etre
+             vivant. Appuie sur ce n'est pas un etre vivant." sur douze items de quatre paquets
+             servis (nadia-prof, passe transverse de s29, verifie a l'ecran).
+             Meme forme que .forme-de-reference / .forme-attendue sur l'ecran de saisie (SAI-9b), et
+             pour le meme motif : une chaine noyee dans un texte de modele ne se verifie pas
+             structurellement, une chaine seule dans son element si. -->
+        <p class="reponse-revelee" th:if="${reponseRevelee != null}">Appuie sur la bonne réponse :</p>
+        <p class="reponse-attendue" th:if="${reponseRevelee != null}" th:text="${reponseRevelee}"></p>
         <p class="explication" th:if="${explication != null}" th:text="${explication}"></p>
         <p class="indice" th:if="${indice != null}" th:text="${indice}"></p>
     </div>

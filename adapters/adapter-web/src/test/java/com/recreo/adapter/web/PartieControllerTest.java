@@ -727,8 +727,11 @@ class PartieControllerTest {
         String htmlRevelation = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_QUATRE_PROPOSITIONS_ID)
                         .session(session).param("propositionChoisie", "faux1"))
                 .andReturn().getResponse().getContentAsString();
-        String messageDeRevelation = Jsoup.parse(htmlRevelation).select(".verdict").text();
-        assertThat(messageDeRevelation).isEqualTo("C'est bonne. Appuie sur bonne.");
+        Document ecranRevelation = Jsoup.parse(htmlRevelation);
+        String messageDeRevelation = ecranRevelation.select(".verdict").text();
+        // ADR-0083 : le verdict ne nomme plus la reponse, .reponse-attendue la porte seule.
+        assertThat(messageDeRevelation).isEqualTo("Ce n'est pas ça.");
+        assertThat(ecranRevelation.select(".reponse-attendue").text()).isEqualTo("bonne");
 
         String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_QUATRE_PROPOSITIONS_ID)
                         .session(session).param("propositionChoisie", "faux2"))
@@ -793,9 +796,9 @@ class PartieControllerTest {
                         .session(session).param("propositionChoisie", "au milieu"))
                 .andReturn().getResponse().getContentAsString();
         Document ecranRevelation = Jsoup.parse(htmlRevelation);
-        assertThat(ecranRevelation.select(".verdict").text())
+        assertThat(ecranRevelation.select(".reponse-attendue").text())
                 .as("la manche doit etre entree en revelation pour que ce test prouve quelque chose")
-                .isEqualTo("C'est au debut. Appuie sur au debut.");
+                .isEqualTo("au debut");
         assertThat(ecranRevelation.select(".bloc-adulte"))
                 .as("VOI-8 : le bloc-adulte reste affiche sur l'etat de revelation de manche.html")
                 .hasSize(1);

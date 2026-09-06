@@ -68,11 +68,12 @@ public class PartieController {
     private static final String MESSAGE_ECHEC = "Ce n'est pas ça. Essaie encore !";
 
     /**
-     * Le texte que l'enfant lit sur l'ecran de saisie quand ses trois essais sont depenses. Il ne
-     * nomme pas la reponse : c'est le bloc {@code .forme-de-reference} qui la porte, sous la chaine
-     * que l'enfant a ecrite (SAI-9b). <b>Candidat</b>, au sens ou ines-design l'emploie : la
-     * formulation de tout ce que l'enfant lit apres avoir repondu est une propriete dont nadia-prof
-     * reste la seule garde, et elle la jugera sur l'increment joue.
+     * Le texte que l'enfant lit quand ses trois essais sont depenses, sur <b>les deux</b> mecaniques
+     * depuis ADR-0083. Il ne nomme pas la reponse : c'est un bloc voisin qui la porte, seul dans son
+     * element - {@code .forme-de-reference} sur l'ecran de saisie (SAI-9b),
+     * {@code .reponse-attendue} sur l'ecran a boutons (REV-1). <b>Candidat</b>, au sens ou
+     * ines-design l'emploie : la formulation de tout ce que l'enfant lit apres avoir repondu est une
+     * propriete dont nadia-prof reste la seule garde, et elle la jugera sur l'increment joue.
      */
     private static final String MESSAGE_REVELATION = "Ce n'est pas ça.";
 
@@ -417,13 +418,22 @@ public class PartieController {
 
         String message = null;
         boolean signalJuste = false;
+        String reponseRevelee = null;
         String explication = null;
         String focus = FOCUS_ENONCE;
         Set<String> focusCibles = Set.of();
 
+        // ADR-0083, REV-1 : la reponse voyage seule vers le gabarit, jamais enchassee dans une
+        // phrase composee ici. L'expression que cette branche portait jusqu'a s29 -
+        // "C'est " + reponse + ". Appuie sur " + reponse + "." - supposait que toute bonne reponse
+        // fut un groupe nominal ; sur douze items de quatre paquets servis, elle donnait "C'est ce
+        // n'est pas un etre vivant." (nadia-prof, passe transverse de s29, verifie a l'ecran). Les
+        // mots invariants vivent desormais dans manche.html, la valeur de contenu dans le modele, et
+        // rien ne les concatene.
         if (session.revelee()) {
             String reponse = session.reponseRevelee().orElseThrow();
-            message = "C'est " + reponse + ". Appuie sur " + reponse + ".";
+            message = MESSAGE_REVELATION;
+            reponseRevelee = reponse;
             explication = session.explicationRevelee().orElse(null);
             focus = FOCUS_BOUTON;
             focusCibles = Set.of(reponse);
@@ -438,6 +448,7 @@ public class PartieController {
 
         modele.addAttribute("message", message);
         modele.addAttribute("signalJuste", signalJuste);
+        modele.addAttribute("reponseRevelee", reponseRevelee);
         modele.addAttribute("explication", explication);
         modele.addAttribute("focus", focus);
         modele.addAttribute("focusCibles", focusCibles);

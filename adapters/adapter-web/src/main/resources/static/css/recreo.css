@@ -1594,3 +1594,21 @@ body:has(.ecran-exclusif) .chip-niveau {
     font-size: 2rem;
     font-weight: bold;
 }
+
+/* REV-1, ADR-0083 : le pendant des deux regles ci-dessus sur l'ecran a boutons. Meme partage des
+   roles - un texte d'introduction a la taille courante, la reponse seule dans son element et deux
+   fois plus grande - et memes valeurs, parce que les deux ecrans revelent la meme chose au meme
+   moment de la partie et qu'un enfant qui passe de l'un a l'autre n'a pas a reapprendre ou regarder.
+   La reponse est ici un <p> et non un <span> : sur cet ecran elle n'est precedee d'aucune chaine de
+   l'enfant, donc rien ne la met en regard sur la meme ligne. */
+.reponse-revelee {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.25rem 0 0;
+}
+
+.reponse-attendue {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.25rem 0 0;
+}

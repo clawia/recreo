@@ -29,10 +29,19 @@
     <div class="signal" tabindex="-1" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
         <span class="icone-signal" aria-hidden="true"></span>
         <p th:if="${juste}" class="verdict">Bravo, c'est juste !</p>
-        <p th:unless="${juste}" class="verdict">
-            Non, c'est <span th:text="${bonneReponse}"></span>.
-        </p>
+        <p th:unless="${juste}" class="verdict">Ce n'est pas ça.</p>
     </div>
+    <!-- REV-1, ADR-0083 : cet ecran portait la seconde occurrence du meme defaut - "Non, c'est
+         <span>${bonneReponse}</span>." donnait "Non, c'est ce n'est pas un etre vivant." sur les
+         douze items exacts que nadia-prof a mesures sur l'ecran de revelation. Elle ne l'avait pas
+         cherchee ici (passe transverse de s29, section 7 : "il en existe peut-etre d'autres du meme
+         genre"). Trouvee en corrigeant l'autre, par l'inventaire de TexteAccentueDesGabaritsTest, ou
+         "Non, c'est" etait inscrit avec le commentaire "la reponse suit, posee par le modele" - le
+         defaut y etait ecrit en toutes lettres depuis des sprints. Meme forme que sur l'ecran de
+         manche : les mots invariants dans le gabarit, la reponse seule dans son element, aucune
+         concatenation. -->
+    <p class="reponse-revelee" th:unless="${juste}">La bonne réponse :</p>
+    <p class="reponse-attendue" th:unless="${juste}" th:text="${bonneReponse}"></p>
     <!-- ADR-0024, S6-7 : l'explication de l'item joue, posee au modele sous "explication" par
          PartieController, vide quand le contenu n'en porte pas (ecrite par ChaquePaquetExpliqueSesItemsAVariationTest
          sur les seuls items dont la graphie differe de la reponse attendue). Affichee systematiquement,

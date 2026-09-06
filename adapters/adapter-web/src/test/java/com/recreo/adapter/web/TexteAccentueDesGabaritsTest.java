@@ -122,7 +122,19 @@ class TexteAccentueDesGabaritsTest {
             "Si tu pars, ta partie s'arrête.",     // arbitrage du 2026-08-14, CONF-3
             "Continuer la partie",                 // arbitrage du 2026-08-14, CONF-3
             "Bravo, c'est juste !",                // FICHE-bandit-manchot-additions-cp.md
-            "Non, c'est",                          // idem ; la reponse suit, posee par le modele
+            // S29, REV-1 et ADR-0083. "Non, c'est" sort de cet inventaire : c'etait la seconde
+            // occurrence du defaut que nadia-prof a mesure sur l'ecran de revelation - la reponse
+            // suivait, posee par le modele, et "Non, c'est ce n'est pas un etre vivant." se lisait
+            // sur les douze memes items. Les trois textes ci-dessous sont des CANDIDATS, au sens
+            // exact ou les quatre entrees de l'ecran de saisie le sont : nadia-prof demande qu'un
+            // enfant qui echoue trois fois lise "une phrase francaise correcte qui lui designe la
+            // reponse, quelle que soit la forme grammaticale de cette reponse" et se reserve de la
+            // juger a l'ecran (PASSE-TRANSVERSE-s29, section 1.4, reverification chiffree a 0,25).
+            // Elle ne les a pas encore lus ; ils entrent ici pour que le prochain qui les change le
+            // fasse en clair. Ce garde-fou ne les valide pas.
+            "Ce n'est pas ça.",                    // candidat, PASSE-TRANSVERSE-s29 section 1.4
+            "La bonne réponse :",                  // candidat, idem ; la reponse suit, seule
+            "Appuie sur la bonne réponse :",       // candidat, idem ; M5 : le geste reste demande
             "C'est fini !",                        // S10 : remplace le message refuse a S02
             "Oups ! Le jeu a un souci.",           // aucun arbitrage nomme dans le depot
             "Recommencer",                         // arbitrage du 2026-08-07 : seule chose pressable

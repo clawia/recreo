@@ -223,7 +223,7 @@ class LeBlocAdulteEstUnSeulObjetContiguATousLesEtatsTest {
                 "message", "Ce n'est pas ça. Essaie encore.");
         Document revelation = rendre("/test-voix/manche",
                 "texteAVoixHaute", stimulus, "consigneAdulte", consigneAdulte,
-                "message", "C'est ch. Appuie sur ch.");
+                "message", "Ce n'est pas ça.", "reponseRevelee", "ch");
 
         for (Document ecran : List.of(itemFrais, echec, revelation)) {
             assertThat(ecran.select(".bloc-adulte")).hasSize(1);
