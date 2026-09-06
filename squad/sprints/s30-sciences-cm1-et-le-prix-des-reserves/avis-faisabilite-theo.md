@@ -92,6 +92,17 @@ ligne ajoutee supprimee, rien d'autre), le garde-fou seul relance sur `-pl boots
 `bandit-manchot-additions-cp--deux-manches : l'ecran de fin de partie nomme la reponse "1" sans
 porter la question de la manche qu'elle commente ("0 + 1")`.
 
+> **Note de perimetre du 2026-09-06 (`theo-archi`, s30), ajoutee a la confirmation ArchUnit - aucun
+> chiffre ci-dessus n'est corrige.** Les **54** de ce paragraphe sont mesures sur l'arbre de cet
+> avis, `89ff207e`, ou le catalogue sert 54 paquets. **La population du garde-fou n'est pas ecrite
+> dans le test** : elle est derivee de `new YamlContentPackLoader().games()`, donc du catalogue de
+> production. Apres les deux lots de developpement, le catalogue en sert **58** (`dbbfe129`, verifie
+> a la confirmation), et la population du garde-fou suit ce chiffre sans qu'une ligne de test ait ete
+> ecrite pour cela. **Ce que je mesure ici est le catalogue - 58 entrees - et rien d'autre ; le
+> nombre de griefs d'une morsure refaite sur `dbbfe129` est une mesure que je ne fais pas**, elle
+> revient a `yanis-qa` ce sprint. Un denombrement de griefs superieur a 54 chez lui n'est donc pas
+> un desaccord avec ce paragraphe : c'est la population qui a suivi le catalogue.
+
 ### Ce qu'un garde-fou existant a change a ce correctif, et je l'ecris plutot que de le taire
 
 Le premier jet donnait a l'element la classe `.enonce`, celle que la question porte deja sur l'ecran
@@ -182,10 +193,45 @@ constate. Le choix est a `camille-po` et `nadia-prof`.
 **Les vingt lignes du referentiel de sciences et technologie CM1 n'ont aucun code alloue.**
 
 Methode : `grep -c "^- \["` sur les dix-huit fichiers `squad/programme/*/competences-*.md`.
-Resultat - sept referentiels portent des codes (questionner le monde CP 16, histoire-geographie CM1
-14, EMC CP 14, EMC CM1 12, francais CP 12, francais CM1 12, mathematiques CM1 12, mathematiques CP
-11, langues vivantes CM1 7), **onze n'en portent aucun**, dont
+Resultat - **neuf** referentiels portent des codes (questionner le monde CP 16, histoire-geographie
+CM1 14, EMC CP 14, EMC CM1 12, francais CP 12, francais CM1 12, mathematiques CM1 12, mathematiques
+CP 11, langues vivantes CM1 7), **neuf n'en portent aucun**, dont
 `squad/programme/sciences-et-technologie/competences-cm1.md`.
+
+> **Correction du 2026-09-06 (`theo-archi`, s30), sur un ecart trouve par `sofia-sm` au planning
+> (section 0) en verifiant plutot qu'en relayant.** Ce paragraphe annoncait *"sept referentiels
+> portent des codes (...), onze n'en portent aucun"*. Les deux chiffres etaient faux, et
+> l'enumeration entre parentheses - inchangee ici - etait juste : elle liste neuf referentiels, pas
+> sept. **Ce qui a rendu la paire credible, c'est qu'elle totalise 18**, le nombre reel de fichiers
+> de referentiel ; un total exact sur une paire fausse ne prouve rien, et c'est precisement le
+> controle que je n'avais pas fait.
+>
+> **Methode de mon recompte, ici et pas ailleurs.** Perimetre : les dix-huit fichiers que designe
+> `squad/programme/*/competences-*.md` dans un worktree dedie, jamais dans le depot principal ni
+> dans celui d'un autre agent (regle de mesure du planning de s30, section 6) ; les worktrees des
+> autres agents sont des repertoires freres et ne sont pas balayes. Source : `grep -c '^- \['` sur
+> chacun des dix-huit fichiers, un fichier a la fois, le compte imprime a cote de son nom - pas une
+> somme globale, pour que chaque terme soit lisible. Exclusions : aucune ; les dix-huit fichiers
+> sont comptes, y compris ceux a zero. Deux etats mesures :
+>
+> - **au commit `89ff207e`, celui de cet avis, avant l'ouverture de s30** : neuf referentiels
+>   portent des codes, **neuf n'en portent aucun** (`grep` sur les fichiers relus par
+>   `git show 89ff207e:<fichier>`, donc sur l'arbre de l'avis lui-meme, pas sur l'arbre courant) ;
+> - **au commit `dbbfe129`, arbre assemble de s30, apres l'allocation des vingt codes `SCI-CM1-01` a
+>   `SCI-CM1-20` par `DEC-0079`** : **dix** referentiels portent des codes, **huit n'en portent
+>   aucun** - `arts-plastiques` CP et CM1, `education-musicale` CP et CM1,
+>   `education-physique-et-sportive` CP et CM1, `histoire-des-arts` CM1, `langues-vivantes` CP.
+>
+> **La dette de depot a retenir est donc huit referentiels sans codes sur dix-huit, pas onze.** Le
+> recompte de `sofia-sm` et le mien concordent terme a terme sur les deux etats.
+>
+> **Ce que cet ecart me coute comme argument, et je l'ecris parce qu'il porte contre moi.** C'est le
+> quatrieme comptage a la main qui derive dans ce depot en trois sprints. Un chiffre de coherence de
+> referentiel obtenu a la main, meme par l'auteur du garde-fou qui juge ces memes referentiels, n'a
+> pas de temoin : il ne devient verifiable que le jour ou un autre le refait. Ici c'est arrive
+> parce que `sofia-sm` a recompte au lieu de recopier - pas parce que le depot l'avait attrape.
+> C'est l'argument meme du garde-fou de coherence que j'ai juge encodable dans cet avis, et il vaut
+> desormais sur une occurrence reelle plutot que sur une hypothese de ma main.
 
 **Consequence executable** : `ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest`
 (`ADR-0081`) refuse un paquet servi qui ne declare aucune ligne, et refuse un code qu'aucun
