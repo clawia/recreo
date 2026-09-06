@@ -250,3 +250,46 @@ restauration) :
   (section 5).
 
 Aucune autre modification n'est laissee dans l'arbre par cette review.
+
+---
+
+## 9. Trois chiffres de `theo-archi` confirmes par ma propre mesure, pas relayes
+
+`theo-archi` a signale que le 54/54 de son avis de faisabilite n'est plus le bon point de comparaison
+(le catalogue a grandi depuis sa date de mesure) et a cite trois autres chiffres. Je les ai mesures
+moi-meme plutot que de les recopier :
+
+**Le 54 -> 58 est confirme, sur les deux bornes.** `git show 5914c36e:.../catalogue.yaml | grep -c
+"^  - id:"` rend **54** (etat au commit de planning, avant les deux lots de dev) ; la meme commande
+sur le fichier courant rend **58**. C'est exactement l'ecart que ma section 3 explique : le garde-fou
+de `REV-3` mord sur 58 ecrans parce que sa population est derivee du catalogue reel, pas d'un chiffre
+fige. Le 54 de `theo-archi` etait juste a sa date ; le 58 que je mesure est juste a la mienne. Aucun
+des deux chiffres n'est faux.
+
+**33 regles `ArchRule`, zero ajoutee ce sprint - compte refait, pas recopie.** `grep -rn "ArchRule "
+--include=*.java` sur les cinq arbres de test de production (hors `test-classes` et hors le faux
+depot de `LesGardeFousSontMisALEpreuveTest`, qui declare un type `ArchRule` factice pour sa propre
+mise a l'epreuve) rend 33 declarations `static final ArchRule <nom> = ...`. `grep -rn "@ArchTest"`
+sur le meme perimetre en rend **32**. La 33e est
+`ScanDeComposantsTest.aucuneClasseDeTestSurLeClasspathDeLApplicationNePorteDeStereotype` : declaree
+sans `@ArchTest`, verifiee par un appel explicite a `.check(...)` dans deux `@Test` (`aucuneClasseDe
+TestNeSeraEnregistreeParLeScanDeComposants` et sa mise a l'epreuve
+`unStereotypeSpringSurUneClasseDuPerimetreEstRefuse`). Un comptage qui ne chercherait que `@ArchTest`
+manquerait cette regle-la - c'est exactement le piege que `theo-archi` nomme, et je l'ai retrouve par
+ma propre lecture du fichier, pas par sa description. Confirme : **32 + 1 = 33, zero ajoutee** (aucun
+des 24 fichiers touches par les deux lots de dev, section 8 du present rapport, ne vit sous
+`bootstrap/src/test/java/com/recreo/archi` ni sous `adapters/adapter-web/src/test/java/com/recreo/
+adapter/web/archi`).
+
+**Zero fichier Java de production touche, 24 fichiers au total - confirme sans passer par un tube.**
+`git diff --name-only 5914c36e dbbfe129` ecrit dans un fichier puis relu (jamais compte au fil d'un
+`| wc -l` sur ce poste, pour le motif meme que `theo-archi` nomme : la decoration de l'enveloppe de
+shell fausserait un comptage en tube) : **24 fichiers**, 12 YAML (`catalogue.yaml` + 11 paquets de
+contenu), 12 fichiers de test, **zero fichier sous `src/main/java`**. Confirme le decouplage
+mecanique/contenu a l'echelle du sprint : les deux lots de dev n'ont ecrit que du contenu et des
+tests de contenu, jamais de code de production.
+
+**Consigne generique, avant/apres, sur le meme fichier.** `git show
+5914c36e:.../catalogue.yaml | grep -c "Lis bien la question, puis choisis la bonne"` rend **10** ;
+la meme commande sur le fichier courant rend **0**. C'est la preuve chiffree de `CONS-1`, sur les deux
+bornes du sprint et non sur une seule lecture du fichier final.
