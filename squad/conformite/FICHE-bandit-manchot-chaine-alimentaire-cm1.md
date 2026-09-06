@@ -106,6 +106,40 @@ qui suit n'a aucun degre de liberte :
 items qui servent reellement la ligne, tombe sous le plancher que j'avais fixe **sous mon propre
 minimum mesure**, pour qu'on ne puisse pas me reprocher de l'avoir releve.
 
+### Le jugement que `lea-dev` me laisse explicitement - le mapping des deux elements de `FER-1`
+
+Le commentaire du paquet pose la question et ne la tranche pas : *"les etres vivants"* servi par la
+tache *qui mange qui*, *"la relation alimentaire"* servie par la tache de consequence. **`lea-dev` a
+eu raison de ne pas la trancher a ma place, et je la tranche ici : le mapping propose est le bon, et
+je l'accepte.**
+
+**Motif, element par element.** `FER-1` demande que chaque element du libelle **occupe la position de
+bonne reponse dans au moins un item**, et rien d'autre.
+
+- ***"les etres vivants qui le peuplent"*** - **servi par la tache A.** *"l'ecureuil"*, *"le
+  renard"*, *"le mulot"*, *"la chenille"*, *"de l'herbe"* sont des etres vivants de la foret, et ce
+  sont litteralement les bonnes reponses des six items. **L'element est en position de bonne
+  reponse.**
+- ***"les relations alimentaires qui les relient"*** - **servi par la tache B.** La bonne reponse y
+  enonce ce que la relation **fait** : le maillon prive de ce qu'il mange manque de nourriture.
+  C'est un enonce **sur** la relation, et c'est la seule facon de mettre une relation en position de
+  bonne reponse dans un bandit manchot, ou la reponse est un texte et non un schema.
+
+**Ce que je refuse de faire de cette question, et je le dis pour qu'on ne me le redemande pas.** On
+pourrait lire *"les etres vivants qui le peuplent"* comme exigeant un item d'**inventaire** - *"lequel
+de ces animaux vit dans la foret ?"* -, independant de toute relation alimentaire. **Ce n'est pas ce
+que `FER-1` demande**, et surtout : ce n'est pas ce que j'avais ecrit. Mon arbitrage prealable donne
+pour cette ligne le couple *"dire qui mange qui / dire ce qui arrive a l'un si l'autre disparait"*,
+et `lea-dev` a implemente ce couple. **Exiger aujourd'hui un troisieme type d'item serait deplacer un
+poteau que j'ai plante moi-meme trois jours plus tot.** Je ne le fais pas, et **je n'ouvre pas non
+plus de mention de couverture partielle** : mon arbitrage (section 2.4) enumere les trois lignes de
+sciences qui en exigent une, et `SCI-CM1-17` n'en fait pas partie.
+
+**Consequence directe pour la reprise, et elle compte.** Le mapping etant accepte, ***"la relation
+alimentaire"* n'a d'autre support que la tache B**. Le refus prononce ci-dessus ne la fait donc pas
+seulement tomber sous `FER-3` : **il prive `FER-1` de la moitie de ses elements.** La reprise doit
+donc reconstruire la tache B, pas la supprimer ni la remplacer par des items de la tache A.
+
 ### Le second defaut, qui aggrave le premier - le distracteur absurde repete dix fois
 
 *"Il n'aurait plus besoin de manger"* est present sur **les cinq** items de la tache B. **Aucun
