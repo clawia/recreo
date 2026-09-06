@@ -167,7 +167,8 @@ public final class SaisieSession implements GameSession {
      */
     private SaisieSession resoudre(boolean juste, String chaineJugee) {
         SaisieVerdict verdict = new SaisieVerdict(juste, mancheCourante.formeDeReference(),
-                mancheCourante.explication(), chaineJugee, mancheCourante.exigenceDeForme());
+                mancheCourante.explication(), chaineJugee, mancheCourante.exigenceDeForme(),
+                mancheCourante.enonce());
         Score nouveauScore = new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
         if (nouveauScore.tentatives() >= nombreDeManches) {
             return new SaisieSession(contenu, hasard, nombreDeManches, dejaTirees, null, List.of(),

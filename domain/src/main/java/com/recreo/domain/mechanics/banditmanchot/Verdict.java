@@ -21,6 +21,17 @@ import java.util.Optional;
  * <p>{@code Optional.empty()} n'est pas un manque : c'est la reponse normale pour un item que le
  * contenu n'a pas juge digne d'explication. La mecanique ne fait aucune difference entre les deux
  * cas, elle transporte ce qu'elle recoit.</p>
+ *
+ * <p><b>ADR-0084, REV-3 : {@code enonce} voyage ici pour le meme motif exact qu'{@code explication},
+ * et il est obligatoire.</b> L'ecran de fin de partie nommait une reponse - <i>"La bonne reponse :
+ * non"</i> - sans porter la question qu'elle commente, parce qu'a cet instant la manche courante
+ * n'existe plus : {@code resoudre} a mis {@code mancheCourante} a {@code null} en terminant la
+ * partie, et ce verdict est la <b>seule trace</b> de l'item joue. Ce n'est donc pas un champ que
+ * l'ecran pourrait recomposer autrement ; il n'y a rien a recomposer. Composante obligatoire et
+ * non {@code Optional} : tout item du contrat de contenu porte un enonce, et aucun constructeur de
+ * commodite ne laisse ce champ tomber - la forme du defaut d'ADR-0016 est ainsi fermee au
+ * compilateur plutot qu'a la vigilance.</p>
  */
-public record Verdict(boolean juste, String bonneReponse, Optional<String> explication) {
+public record Verdict(boolean juste, String bonneReponse, Optional<String> explication,
+                       String enonce) {
 }

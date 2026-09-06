@@ -130,7 +130,7 @@ class BanditManchotTest {
 
         BanditManchotSession suivante = jouer(premiere, "1");
 
-        assertThat(suivante.dernierVerdict()).contains(new Verdict(true, "1", Optional.empty()));
+        assertThat(suivante.dernierVerdict()).contains(new Verdict(true, "1", Optional.empty(), "un"));
         assertThat(suivante.score()).isEqualTo(new Score(1, 1));
         assertThat(suivante.status()).isEqualTo(SessionStatus.EN_COURS);
         assertThat(suivante.enonceManche()).contains("deux");
@@ -307,7 +307,7 @@ class BanditManchotTest {
         session = jouer(session, "2");
 
         assertThat(session.score()).isEqualTo(new Score(2, 2));
-        assertThat(session.dernierVerdict()).contains(new Verdict(true, "2", Optional.empty()));
+        assertThat(session.dernierVerdict()).contains(new Verdict(true, "2", Optional.empty(), "deux"));
         assertThat(session.enonceManche()).contains("trois");
     }
 
@@ -404,7 +404,7 @@ class BanditManchotTest {
 
         BanditManchotSession suivanteAnglais =
                 (BanditManchotSession) mecanique.apply(sessionAnglais, new BanditManchotMove("rouge"));
-        assertThat(suivanteAnglais.dernierVerdict()).contains(new Verdict(true, "rouge", Optional.empty()));
+        assertThat(suivanteAnglais.dernierVerdict()).contains(new Verdict(true, "rouge", Optional.empty(), "red"));
         assertThat(suivanteAnglais.score()).isEqualTo(new Score(1, 1));
     }
 

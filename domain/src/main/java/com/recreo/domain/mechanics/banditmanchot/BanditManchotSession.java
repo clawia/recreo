@@ -137,7 +137,8 @@ public final class BanditManchotSession implements GameSession {
      * partie. M3 : c'est ce geste, et lui seul, qui fait avancer {@link Score#tentatives()}.
      */
     private BanditManchotSession resoudre(boolean juste) {
-        Verdict verdict = new Verdict(juste, mancheCourante.bonneReponse(), mancheCourante.explication());
+        Verdict verdict = new Verdict(juste, mancheCourante.bonneReponse(),
+                mancheCourante.explication(), mancheCourante.enonce());
         Score nouveauScore = new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
         if (nouveauScore.tentatives() >= nombreDeManches) {
             return new BanditManchotSession(contenu, hasard, nombreDeManches, dejaTirees, null,

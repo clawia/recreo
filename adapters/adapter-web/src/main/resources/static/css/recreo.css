@@ -1601,6 +1601,17 @@ body:has(.ecran-exclusif) .chip-niveau {
    moment de la partie et qu'un enfant qui passe de l'un a l'autre n'a pas a reapprendre ou regarder.
    La reponse est ici un <p> et non un <span> : sur cet ecran elle n'est precedee d'aucune chaine de
    l'enfant, donc rien ne la met en regard sur la meme ligne. */
+/* REV-3, ADR-0084 : la question que la reponse ci-dessous commente. Memes valeurs que
+   .reponse-revelee juste en dessous - 1,25rem, plancher de lisibilite de
+   TailleDesTextesEtBoutonsTest, graisse normale - parce que les deux lignes jouent le meme role sur
+   cet ecran : elles introduisent la reponse, qui est seule a etre deux fois plus grande. Aucune
+   valeur neuve n'est inventee ici. */
+.question-rappelee {
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    margin: 0.25rem 0 0;
+}
+
 .reponse-revelee {
     font-size: 1.25rem;
     color: var(--recreo-texte);

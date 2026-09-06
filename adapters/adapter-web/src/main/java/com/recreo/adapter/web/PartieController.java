@@ -578,6 +578,8 @@ public class PartieController {
         modele.addAttribute("score", session.score());
         modele.addAttribute("juste", verdict.juste());
         modele.addAttribute("bonneReponse", verdict.formeDeReference());
+        // ADR-0084, REV-3 : meme geste que sur l'autre mecanique, meme motif.
+        modele.addAttribute("enonceRevele", verdict.enonce());
         modele.addAttribute("explication", verdict.explication().orElse(null));
         return "fragments/retour :: retour";
     }
@@ -602,6 +604,11 @@ public class PartieController {
         modele.addAttribute("score", session.score());
         modele.addAttribute("juste", verdict.juste());
         modele.addAttribute("bonneReponse", verdict.bonneReponse());
+        // ADR-0084, REV-3 : l'enonce de la manche que ce verdict commente, appose au modele a cote
+        // de sa reponse et jamais dedans. Il vient du verdict et de nulle part ailleurs, parce qu'a
+        // cet instant la session n'a plus de manche courante - c'est exactement pourquoi la reponse
+        // etait orpheline.
+        modele.addAttribute("enonceRevele", verdict.enonce());
         modele.addAttribute("explication", verdict.explication().orElse(null));
         return "fragments/retour :: retour";
     }

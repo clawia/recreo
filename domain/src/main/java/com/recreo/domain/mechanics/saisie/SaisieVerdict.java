@@ -28,7 +28,13 @@ import java.util.Optional;
  *
  * <p>{@code juste} dit si la manche <b>compte comme une reussite</b>, comme chez la mecanique
  * voisine : une manche resolue par revelation porte {@code false} et ne fait pas monter le score.</p>
+ *
+ * <p><b>ADR-0084, REV-3 : {@code enonce} voyage ici, obligatoire, exactement comme chez la
+ * mecanique voisine.</b> Meme motif que celui deja ecrit ci-dessus pour la forme de reference et
+ * l'explication : une fois la partie terminee, ce verdict est la seule trace de l'item joue, et
+ * l'ecran de fin de partie nommait sa reponse sans porter sa question. Les deux mecaniques servies
+ * revelent de la meme facon depuis ADR-0083 ; elles apparient desormais de la meme facon.</p>
  */
 public record SaisieVerdict(boolean juste, String formeDeReference, Optional<String> explication,
-                             String chaineJugee, ExigenceDeForme exigenceDeForme) {
+                             String chaineJugee, ExigenceDeForme exigenceDeForme, String enonce) {
 }

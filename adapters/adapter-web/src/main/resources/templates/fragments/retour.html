@@ -48,6 +48,22 @@
          defaut y etait ecrit en toutes lettres depuis des sprints. Meme forme que sur l'ecran de
          manche : les mots invariants dans le gabarit, la reponse seule dans son element, aucune
          concatenation. -->
+    <!-- REV-3, ADR-0084 : la reponse nommee ci-dessous ne dit rien seule - "La bonne reponse : non"
+         ne commente aucune question visible, l'enfant ayant enchaine d'autres manches depuis. Cet
+         emplacement porte donc l'enonce de la manche que ce verdict commente, tel quel et entier,
+         pose au modele par le verdict : a cet instant la session n'a plus de manche courante, et le
+         verdict est la seule trace de l'item joue (meme motif qu'ADR-0024 pour l'explication).
+         Aucun mot neuf n'est ajoute ici - ADR-0083 clause 1 : la valeur de contenu occupe seule et
+         entiere le texte de son element. Un intitule ("La question :") est un texte lu par un
+         enfant, donc une decision de nadia-prof, et l'ajouter plus tard ne coute qu'une ligne ici.
+         La classe n'est pas .enonce, et le motif est mesure plutot que suppose : le premier jet de
+         ce correctif reutilisait .enonce et a ete arrete par ADR-0052 clause 1
+         (ToutEcranEchangeEstUnDocumentJouableTest), qui exige la consigne du jeu partout ou un
+         enonce est rendu. Cette clause a raison sur l'ecran de manche, ou l'enfant doit agir sur
+         l'enonce et ou la consigne peut porter la question invariante du paquet ; ici l'enfant n'a
+         plus rien a faire de cette phrase, la seule action de l'ecran etant d'en sortir. Ce n'est
+         donc pas un enonce a jouer mais une question rappelee, et la classe le dit. -->
+    <p class="question-rappelee" th:unless="${juste}" th:text="${enonceRevele}"></p>
     <p class="reponse-revelee" th:unless="${juste}">La bonne réponse :</p>
     <p class="reponse-attendue" th:unless="${juste}" th:text="${bonneReponse}"></p>
     <!-- ADR-0024, S6-7 : l'explication de l'item joue, posee au modele sous "explication" par
