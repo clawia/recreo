@@ -125,14 +125,23 @@ class TexteAccentueDesGabaritsTest {
             // S29, REV-1 et ADR-0083. "Non, c'est" sort de cet inventaire : c'etait la seconde
             // occurrence du defaut que nadia-prof a mesure sur l'ecran de revelation - la reponse
             // suivait, posee par le modele, et "Non, c'est ce n'est pas un etre vivant." se lisait
-            // sur les douze memes items. Les trois textes ci-dessous sont des CANDIDATS, au sens
+            // sur les douze memes items. Les deux textes ci-dessous sont des CANDIDATS, au sens
             // exact ou les quatre entrees de l'ecran de saisie le sont : nadia-prof demande qu'un
             // enfant qui echoue trois fois lise "une phrase francaise correcte qui lui designe la
             // reponse, quelle que soit la forme grammaticale de cette reponse" et se reserve de la
             // juger a l'ecran (PASSE-TRANSVERSE-s29, section 1.4, reverification chiffree a 0,25).
             // Elle ne les a pas encore lus ; ils entrent ici pour que le prochain qui les change le
-            // fasse en clair. Ce garde-fou ne les valide pas.
-            "Ce n'est pas ça.",                    // candidat, PASSE-TRANSVERSE-s29 section 1.4
+            // fasse en clair. Ce garde-fou ne les valide pas. "Ce n'est pas ça." sort a son tour de
+            // cet inventaire par le meme critere que "Non, c'est" ci-dessus : REV-2, nadia-prof,
+            // reverification du 2026-09-06 (FICHE-bandit-manchot-additions-cp.md) - ce texte
+            // dementait sur fragments/retour.html un geste toujours juste (une manche resolue par
+            // revelation ne se ferme que par l'appui sur la bonne reponse), et n'y est plus ecrit.
+            // Il reste litteralement present sur l'ecran de manche (constante MESSAGE_REVELATION de
+            // PartieController), mais y est pose par le modele (${message}), jamais par un noeud de
+            // texte du gabarit - donc absent de cet inventaire, comme "Non, c'est" l'etait deja.
+            // Son remplacement sur fragments/retour.html, ecrit par nadia-prof elle-meme et
+            // "applique tel quel", n'est pas un candidat : c'est un texte arbitre.
+            "Tu n'as pas trouvé.",
             "La bonne réponse :",                  // candidat, idem ; la reponse suit, seule
             "Appuie sur la bonne réponse :",       // candidat, idem ; M5 : le geste reste demande
             "C'est fini !",                        // S10 : remplace le message refuse a S02

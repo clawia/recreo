@@ -358,6 +358,78 @@ class PartieControllerTest {
     }
 
     /**
+     * REV-2 (nadia-prof, reverification du 2026-09-06, FICHE-bandit-manchot-additions-cp.md) :
+     * une manche revelee ne se ferme que d'une seule facon - l'enfant presse la bonne reponse
+     * (BanditManchotSession.jouer, branche {@code revelee}). Sur l'ecran de fin de partie qui
+     * suit, le dernier geste de l'enfant est donc toujours un geste juste, et le verdict ne doit
+     * pas le dementir. JEU_A_VOIX_ID n'a qu'une seule manche : la resoudre par revelation termine
+     * la partie dans le meme echange.
+     */
+    @Test
+    void lEcranDeFinDePartieAtteintParRevelationNeDementPasLeDernierGesteJuste() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_A_VOIX_ID).session(session));
+        for (int essai = 0; essai < 2; essai++) {
+            mockMvc.perform(post("/parties/{jeuId}/coups", JEU_A_VOIX_ID)
+                    .session(session).param("propositionChoisie", "au milieu"));
+        }
+        String htmlRevelation = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_A_VOIX_ID)
+                        .session(session).param("propositionChoisie", "au milieu"))
+                .andReturn().getResponse().getContentAsString();
+        assertThat(Jsoup.parse(htmlRevelation).select(".reponse-attendue").text())
+                .as("la manche doit etre entree en revelation pour que ce test prouve quelque chose")
+                .isEqualTo("au debut");
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/coups", JEU_A_VOIX_ID)
+                        .session(session).param("propositionChoisie", "au debut"))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".fin-de-partie").text())
+                .as("l'ecran atteint doit etre celui de fin de partie, pas un ecran de manche")
+                .isEqualTo("C'est fini !");
+        assertThat(fragment.select(".verdict").text())
+                .as("l'enfant vient de presser la bonne reponse : le verdict ne doit pas le dementir")
+                .isNotEqualTo("Ce n'est pas ça.")
+                .isEqualTo("Tu n'as pas trouvé.");
+        assertThat(fragment.select(".reponse-attendue").text()).isEqualTo("au debut");
+    }
+
+    /**
+     * Meme defaut, meme correctif, sur la seconde mecanique : {@code fragments/retour.html} est le
+     * meme gabarit pour les deux (PartieController, javadoc de {@code retourDeSaisie}). JEU_SAISIE_ID
+     * epuise son vivier de trois items des que les trois sont resolus (SaisieSession.poursuivre,
+     * branche {@code revelee}) ; resoudre le troisieme par revelation termine donc la partie.
+     */
+    @Test
+    void lEcranDeFinDePartieDeSaisieAtteintParRevelationNeDementPasLeDernierGesteJuste() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_SAISIE_ID).session(session));
+        mockMvc.perform(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID)
+                .session(session).param("reponseEcrite", "7"));
+        mockMvc.perform(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID)
+                .session(session).param("reponseEcrite", "elle"));
+        for (int essai = 0; essai < 3; essai++) {
+            mockMvc.perform(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID)
+                    .session(session).param("reponseEcrite", "0"));
+        }
+
+        String html = mockMvc.perform(post("/parties/{jeuId}/manche", JEU_SAISIE_ID)
+                        .session(session))
+                .andReturn().getResponse().getContentAsString();
+        Document fragment = Jsoup.parse(html);
+
+        assertThat(fragment.select(".fin-de-partie").text())
+                .as("l'ecran atteint doit etre celui de fin de partie, pas un ecran de manche")
+                .isEqualTo("C'est fini !");
+        assertThat(fragment.select(".verdict").text())
+                .as("la revelation ne se ferme que par le meme geste que l'ecran de manche : juste")
+                .isNotEqualTo("Ce n'est pas ça.")
+                .isEqualTo("Tu n'as pas trouvé.");
+        assertThat(fragment.select(".reponse-attendue").text()).isEqualTo("5");
+    }
+
+    /**
      * ADR-0038, DEC-0026 (story 2, s11) : le bouton de retour ne clot plus la partie d'un seul
      * geste. Sur une partie en cours, il rend l'ecran de confirmation, et la partie survit tant que
      * l'enfant n'a pas confirme.

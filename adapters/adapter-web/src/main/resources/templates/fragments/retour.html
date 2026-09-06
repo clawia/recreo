@@ -29,7 +29,15 @@
     <div class="signal" tabindex="-1" th:classappend="${juste} ? 'est-juste' : 'est-faux'">
         <span class="icone-signal" aria-hidden="true"></span>
         <p th:if="${juste}" class="verdict">Bravo, c'est juste !</p>
-        <p th:unless="${juste}" class="verdict">Ce n'est pas ça.</p>
+        <!-- REV-2, nadia-prof, reverification du 2026-09-06 (FICHE-bandit-manchot-additions-cp.md) :
+             sur cet ecran, juste=false ne peut survenir que si la derniere manche a ete resolue par
+             revelation (BanditManchotSession.jouer et SaisieSession.poursuivre n'appellent resoudre
+             avec juste=false que depuis la branche "revelee") - et une manche revelee ne se ferme
+             que d'un seul geste : l'enfant presse la bonne reponse. "Ce n'est pas ça." dementait donc
+             systematiquement le dernier geste de l'enfant, qui vient de reussir a designer la bonne
+             reponse. Le texte de nadia-prof ne nomme pas ce geste comme fautif : l'enfant n'a pas
+             trouve la question, ce que la revelation a deja constate. -->
+        <p th:unless="${juste}" class="verdict">Tu n'as pas trouvé.</p>
     </div>
     <!-- REV-1, ADR-0083 : cet ecran portait la seconde occurrence du meme defaut - "Non, c'est
          <span>${bonneReponse}</span>." donnait "Non, c'est ce n'est pas un etre vivant." sur les
