@@ -52,6 +52,12 @@ lignesDeReferentiel: ["QLM-CP-03"]
 # mot difficile n'y portait la reponse - mais la longueur seule etait reelle. Correction reprise mot
 # pour mot telle que nadia-prof l'a ecrite : onze mots, meme reponse, memes distracteurs, meme
 # indice.
+#
+# S29-7 (nadia-prof, COR-R2, erreur de fait ouverte depuis s27, texte fourni le 2026-09-05 dans
+# ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md, section
+# 1.5) : l'item du gout donnait "la bouche" en bonne reponse, ce qui est faux - l'organe du gout est
+# la langue. Bonne reponse et indice corriges, repris mot pour mot ; les distracteurs ("le nez", "les
+# yeux") restent inchanges, "le nez" etant un distracteur plausible (l'odorat participe au gout).
 items:
   - enonce: "Avec quoi entend-on ?"
     bonneReponse: "les oreilles"
@@ -66,9 +72,9 @@ items:
     distracteurs: ["les mains", "les oreilles"]
     indice: "Il est au milieu du visage."
   - enonce: "Avec quoi goûte-t-on les aliments ?"
-    bonneReponse: "la bouche"
+    bonneReponse: "la langue"
     distracteurs: ["le nez", "les yeux"]
-    indice: "C'est ce qu'on ouvre pour manger."
+    indice: "C'est elle qui reconnaît le sucré et le salé."
   - enonce: "Avec quoi sait-on si c'est doux ?"
     bonneReponse: "les mains"
     distracteurs: ["les pieds", "les yeux"]

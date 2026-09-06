@@ -67,7 +67,7 @@ class PaquetCm1AnglaisTest {
             "house", "maison", "chien", "dog", "friend", "ami", "morning", "matin", "bedroom",
             "chambre");
     private static final Set<String> CHAMP_ENVIRONNEMENT_GEOGRAPHIQUE_ET_URBAIN = Set.of(
-            "street", "rue", "bridge", "pont", "mountain", "montagne", "town", "ville", "champ",
+            "street", "rue", "bridge", "pont", "hill", "colline", "town", "ville", "champ",
             "field");
     private static final Set<String> CHAMP_IMAGINAIRE = Set.of(
             "witch", "sorcière", "castle", "château", "fairy", "fée", "king", "roi", "fantôme",
@@ -78,7 +78,7 @@ class PaquetCm1AnglaisTest {
             Map.entry("maison", "house"), Map.entry("chien", "dog"), Map.entry("ami", "friend"),
             Map.entry("matin", "morning"), Map.entry("chambre", "bedroom"),
             Map.entry("rue", "street"), Map.entry("pont", "bridge"),
-            Map.entry("montagne", "mountain"), Map.entry("ville", "town"),
+            Map.entry("colline", "hill"), Map.entry("ville", "town"),
             Map.entry("champ", "field"), Map.entry("sorcière", "witch"),
             Map.entry("château", "castle"), Map.entry("fée", "fairy"), Map.entry("roi", "king"),
             Map.entry("fantôme", "ghost"));

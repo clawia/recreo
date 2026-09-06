@@ -44,94 +44,104 @@ lignesDeReferentiel: ["FRA-CP-02"]
 #
 # Indice générique et invariant, à dessein : un indice qui nommerait la syllabe ou une partie du
 # mot romprait VOI-13 (le mot ne doit apparaître nulle part ailleurs que dans texteAVoixHaute).
+#
+# S29-8 (nadia-prof, ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md,
+# sections 1.2 et 7.2, dette des paquets à voix due depuis s27). Trois défauts corrigés, textes
+# repris mot pour mot : l'énoncé répétait la consigne du catalogue, remplacé par un énoncé propre à
+# l'item ("Où entends-tu ce son ?") ; l'indice demandait à l'adulte de redire le mot "doucement", ce
+# que VOI-3 interdit (l'adulte dit le mot d'un seul tenant, à vitesse normale) ; et l'indice
+# détournait vers une autre opération que celle de l'item ("compte les syllabes dans ta tête" sur un
+# item qui porte sur la position d'un son, pas sur un dénombrement). Les deux sont corrigés ensemble
+# par un seul indice, repris mot pour mot. Aucune ligne de matrice ne bouge, les items restent
+# couvert-valide.
 items:
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "milieu"
     distracteurs: ["début", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est chocolat. Cherche le son co."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "milieu"
     distracteurs: ["début", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est domino. Cherche le son mi."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "milieu"
     distracteurs: ["début", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est escargot. Cherche le son car."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "milieu"
     distracteurs: ["début", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est kangourou. Cherche le son gou."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "milieu"
     distracteurs: ["début", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est cheminée. Cherche le son mi."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "milieu"
     distracteurs: ["début", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est parasol. Cherche le son ra."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "début"
     distracteurs: ["milieu", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est tapis. Cherche le son ta."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "début"
     distracteurs: ["milieu", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est lapin. Cherche le son la."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "début"
     distracteurs: ["milieu", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est bateau. Cherche le son ba."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "début"
     distracteurs: ["milieu", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est crocodile. Cherche le son cro."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "début"
     distracteurs: ["milieu", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est téléphone. Cherche le son té."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "début"
     distracteurs: ["milieu", "fin"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est cadeau. Cherche le son ca."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "fin"
     distracteurs: ["début", "milieu"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est coussin. Cherche le son sin."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "fin"
     distracteurs: ["début", "milieu"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est sapin. Cherche le son pin."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "fin"
     distracteurs: ["début", "milieu"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est vélo. Cherche le son lo."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "fin"
     distracteurs: ["début", "milieu"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est jardin. Cherche le son din."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "fin"
     distracteurs: ["début", "milieu"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est canapé. Cherche le son pé."
-  - enonce: "Écoute l'adulte, puis choisis la bonne réponse."
+  - enonce: "Où entends-tu ce son ?"
     bonneReponse: "fin"
     distracteurs: ["début", "milieu"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis compte les syllabes dans ta tête."
+    indice: "Demande à l'adulte de redire le mot en entier, puis écoute si le son est au début, au milieu ou à la fin."
     texteAVoixHaute: "Le mot est macaron. Cherche le son ron."

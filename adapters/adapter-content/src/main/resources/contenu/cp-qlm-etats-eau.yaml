@@ -39,6 +39,12 @@ lignesDeReferentiel: ["QLM-CP-05"]
 # nombreDeManches revient au defaut de 10 (DEC-0064) dans le catalogue : DEC-0073 avait ratifie 7
 # sur le seul motif de huit items ("une partie de 10 en epuiserait le paquet") ; ce motif n'existe
 # plus a quatorze items.
+#
+# S29-7 (nadia-prof, EAU-R1, indice abstrait ouvert depuis s28, texte fourni le 2026-09-05 dans
+# ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md, section
+# 1.5) : l'indice de l'item "la glace fond" ("Fondre, c'est passer du solide a ce deuxieme etat.")
+# nommait un vocabulaire abstrait au lieu de decrire ce qui s'observe. Indice corrige, repris mot
+# pour mot ; enonce, bonne reponse et distracteurs inchanges.
 items:
   - enonce: "La glace, est-ce solide ou liquide ?"
     bonneReponse: "solide"
@@ -67,7 +73,7 @@ items:
   - enonce: "Quand la glace fond, l'eau est-elle solide ou liquide ?"
     bonneReponse: "liquide"
     distracteurs: ["solide"]
-    indice: "Fondre, c'est passer du solide à ce deuxième état."
+    indice: "La glace qui fond se met à couler."
   - enonce: "Quand l'eau liquide gèle, l'eau est-elle solide ou liquide ?"
     bonneReponse: "solide"
     distracteurs: ["liquide"]

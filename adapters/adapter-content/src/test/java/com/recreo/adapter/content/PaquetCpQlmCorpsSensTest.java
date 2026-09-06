@@ -45,7 +45,7 @@ class PaquetCpQlmCorpsSensTest {
 
     /** Bonne reponse des items qui servent la moitie "cinq sens" du libelle de competence. */
     private static final Set<String> REPONSES_DE_SENS = Set.of(
-            "les oreilles", "les yeux", "le nez", "la bouche", "les mains", "la peau");
+            "les oreilles", "les yeux", "le nez", "la langue", "les mains", "la peau");
 
     /**
      * Sens servi par chaque reponse de {@link #REPONSES_DE_SENS} : le toucher est servi par deux
@@ -55,7 +55,7 @@ class PaquetCpQlmCorpsSensTest {
             "les oreilles", "ouie",
             "les yeux", "vue",
             "le nez", "odorat",
-            "la bouche", "gout",
+            "la langue", "gout",
             "les mains", "toucher",
             "la peau", "toucher");
 

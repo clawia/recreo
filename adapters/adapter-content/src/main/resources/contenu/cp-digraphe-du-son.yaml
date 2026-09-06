@@ -20,79 +20,86 @@ lignesDeReferentiel: ["FRA-CP-04"]
 #
 # VOI-7 : l'adulte dit le mot entier, jamais le grapheme isolé - texteAVoixHaute porte toujours le
 # mot complet, jamais le digraphe seul.
+#
+# S29-8 (nadia-prof, ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md,
+# sections 1.2 et 7.2, dette des paquets à voix due depuis s27). Deux défauts corrigés, textes repris
+# mot pour mot : l'énoncé répétait la consigne du catalogue, remplacé par un énoncé propre à l'item
+# ("Quel groupe de lettres fait ce son ?") ; l'indice demandait à l'adulte de redire le mot
+# "doucement", ce que VOI-3 interdit (l'adulte dit le mot d'un seul tenant, à vitesse normale) -
+# remplacé par "en entier". Aucune ligne de matrice ne bouge, les items restent couvert-valide.
 items:
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ou"
     distracteurs: ["oi", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est loup."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ou"
     distracteurs: ["oi", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est bijou."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ou"
     distracteurs: ["oi", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est genou."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ou"
     distracteurs: ["oi", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est hibou."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ou"
     distracteurs: ["oi", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est toupie."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "oi"
     distracteurs: ["ou", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est roi."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "oi"
     distracteurs: ["ou", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est toit."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "oi"
     distracteurs: ["ou", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est noix."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "oi"
     distracteurs: ["ou", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est poisson."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "oi"
     distracteurs: ["ou", "ch"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est armoire."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ch"
     distracteurs: ["ou", "oi"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est chat."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ch"
     distracteurs: ["ou", "oi"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est chien."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ch"
     distracteurs: ["ou", "oi"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est cheval."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ch"
     distracteurs: ["ou", "oi"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est vache."
-  - enonce: "Écoute l'adulte, puis choisis le groupe de lettres qui fait ce son."
+  - enonce: "Quel groupe de lettres fait ce son ?"
     bonneReponse: "ch"
     distracteurs: ["ou", "oi"]
-    indice: "Demande à l'adulte de redire le mot doucement, puis pense au son que tu entends."
+    indice: "Demande à l'adulte de redire le mot en entier, puis pense au son que tu entends."
     texteAVoixHaute: "Le mot est chemise."

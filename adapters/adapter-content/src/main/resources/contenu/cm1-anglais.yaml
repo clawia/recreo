@@ -17,7 +17,7 @@ lignesDeReferentiel: ["LVE-CM1-04", "LVE-CM1-07"]
 # ANG-4 (nadia-prof, 2026-09-03) : le lot declare ses champs lexicaux et en couvre au moins trois,
 # cinq mots chacun au minimum. Trois champs sont couverts ici, cinq mots chacun :
 #   - la personne et la vie quotidienne : house, dog, friend, morning, bedroom (5 items)
-#   - l'environnement geographique et urbain : street, bridge, mountain, town, field (5 items)
+#   - l'environnement geographique et urbain : street, bridge, hill, town, field (5 items)
 #   - l'imaginaire : witch, castle, fairy, king, ghost (5 items)
 # Total ligne LVE-CM1-04 : 15 items, au-dessus du plancher de dix de FER-2.
 #
@@ -28,8 +28,18 @@ lignesDeReferentiel: ["LVE-CM1-04", "LVE-CM1-07"]
 # REC-5 (aucun mot transparent en bonne reponse) : verifie mot par mot a la redaction. Aucun des
 # quinze mots anglais ni des cinq mots francais donnes en bonne reponse n'est identique ou quasi
 # identique a son equivalent dans l'autre langue (house/maison, chien/dog, friend/ami, morning/matin,
-# bedroom/chambre, street/rue, bridge/pont, mountain/montagne, town/ville, champ/field, witch/sorciere,
-# castle/chateau, fairy/fee, king/roi, fantome/ghost - aucune paire ne se ressemble).
+# bedroom/chambre, street/rue, bridge/pont, hill/colline, town/ville, champ/field, witch/sorciere,
+# castle/chateau, fairy/fee, king/roi, fantome/ghost - castle/chateau et fairy/fee ont demande un
+# examen, parente etymologique et non graphique, et sont acceptees ; aucune autre paire ne se
+# ressemble).
+#
+# S29-7 (nadia-prof, ANG-R1, ouverte a s28, texte fourni dans FICHE-bandit-manchot-anglais-cm1.md,
+# section 4, repris mot pour mot) : l'item "montagne" donnait "mountain" en bonne reponse, un mot
+# transparent (meme racine, meme silhouette que son equivalent francais) qui se devine sans avoir
+# jamais appris un mot d'anglais - contrefacon de mesure que REC-5 interdit. Il violait aussi REC-6
+# (mountain, huit lettres, etait la plus longue des trois propositions face a des distracteurs de
+# quatre et cinq lettres). Remplace par l'item "colline"/"hill", qui garde le champ lexical a cinq
+# mots et le triplet homogene.
 #
 # REC-6 (trois propositions du meme champ lexical et de longueur voisine) : chaque distracteur est
 # choisi dans le meme champ que la bonne reponse de son item, jamais dans un autre champ.
@@ -85,10 +95,10 @@ items:
     distracteurs: ["street", "field"]
     indice: "Cette construction permet de traverser une rivière."
     ligneDeReferentiel: "LVE-CM1-04"
-  - enonce: "Comment dit-on « montagne » en anglais ?"
-    bonneReponse: "mountain"
-    distracteurs: ["town", "field"]
-    indice: "C'est un relief très haut, parfois couvert de neige."
+  - enonce: "Comment dit-on « colline » en anglais ?"
+    bonneReponse: "hill"
+    distracteurs: ["field", "town"]
+    indice: "C'est une petite hauteur de terrain, moins haute qu'une montagne."
     ligneDeReferentiel: "LVE-CM1-04"
   - enonce: "Comment dit-on « ville » en anglais ?"
     bonneReponse: "town"
