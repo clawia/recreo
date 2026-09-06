@@ -56,6 +56,19 @@ lignesDeReferentiel: ["QLM-CP-01"]
 # qui repondent desormais "ce n'est pas un être vivant" au lieu de "un objet". Les quatre objets
 # fabriques (chaise, ballon, voiture, stylo) gardent "un objet", inchange. Titre du jeu corrige de
 # "Vivant ou objet" a "Vivant ou pas vivant" (catalogue.yaml).
+#
+# S30-3, bloc A (VIV-R2, nadia-prof, squad/conformite/FICHE-bandit-manchot-vivant-non-vivant-cp.md,
+# section 2 a 4) : sur les trois items de matiere inerte, les deux propositions ("ce n'est pas un
+# être vivant" / "un être vivant") ne se terminaient pas par des mots differents (double copule a
+# la revelation - "C'est ce n'est pas un être vivant. Appuie sur ce n'est pas un être vivant.",
+# cause de portee depot traitee sous REV-1). La forme d'identification devient une forme de
+# verification, sur les trois items de matiere inerte seuls, prescrite mot pour mot par nadia-prof :
+# "oui" et "non" sont lexicalement disjoints et l'enfant discrimine d'un coup d'oeil, comme sur les
+# six autres items de possession de cp-qlm-cycle-de-vie. L'opposition reste binaire (nadia-prof,
+# 2026-09-04) : "non" reste du cote non-vivant, la fermeture de QLM-CP-01 n'est pas remise en cause.
+# Indices inchanges : ils continuent de porter le critere, pas la reponse. FER-1, FER-2 et FER-3
+# restent tenues a l'identique - la categorisation garde huit items, la selection trois, la
+# verification neuve en porte trois de plus.
 items:
   - enonce: "Un chat, qu'est-ce que c'est ?"
     bonneReponse: "un être vivant"
@@ -89,17 +102,17 @@ items:
     bonneReponse: "un objet"
     distracteurs: ["un être vivant"]
     indice: "Un stylo ne naît pas, ne grandit pas et ne se nourrit pas."
-  - enonce: "Un caillou, qu'est-ce que c'est ?"
-    bonneReponse: "ce n'est pas un être vivant"
-    distracteurs: ["un être vivant"]
+  - enonce: "Un caillou est-il un être vivant ?"
+    bonneReponse: "non"
+    distracteurs: ["oui"]
     indice: "Un caillou ne naît pas, ne grandit pas et ne se nourrit pas."
-  - enonce: "Du sable, qu'est-ce que c'est ?"
-    bonneReponse: "ce n'est pas un être vivant"
-    distracteurs: ["un être vivant"]
+  - enonce: "Le sable est-il un être vivant ?"
+    bonneReponse: "non"
+    distracteurs: ["oui"]
     indice: "Le sable ne naît pas, ne grandit pas et ne se nourrit pas."
-  - enonce: "De la neige, qu'est-ce que c'est ?"
-    bonneReponse: "ce n'est pas un être vivant"
-    distracteurs: ["un être vivant"]
+  - enonce: "La neige est-elle un être vivant ?"
+    bonneReponse: "non"
+    distracteurs: ["oui"]
     indice: "La neige ne naît pas, ne grandit pas et ne se nourrit pas."
   - enonce: "Parmi ces trois choses, laquelle est un être vivant : le chien, la chaise, le caillou ?"
     bonneReponse: "le chien"

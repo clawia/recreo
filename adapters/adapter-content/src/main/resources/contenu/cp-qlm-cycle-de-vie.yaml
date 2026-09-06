@@ -35,6 +35,12 @@ lignesDeReferentiel: ["QLM-CP-02"]
 # le "vieillissement", absent du libelle CP.
 #
 # Aucune condition de biais ne s'applique a cette ligne (ni BIA-1 a BIA-5).
+#
+# S30-3, bloc A (CYV-R1, nadia-prof, squad/conformite/FICHE-bandit-manchot-cycle-de-vie-cp.md,
+# section 9) : l'item 5 etait a la fois au-dessus du niveau ("se dessèche", absent du lexique de
+# CP) et auto-repondant ("ne vit plus" contient deja la reponse "elle meurt", contrefacon que
+# CON-1 decrit). Enonce remplace mot pour mot par le texte fourni par nadia-prof, bonne reponse,
+# distracteurs et indice inchanges.
 items:
   - enonce: "Un poussin sort de l'oeuf, que fait-il ?"
     bonneReponse: "il naît"
@@ -52,7 +58,7 @@ items:
     bonneReponse: "elle a des petits"
     distracteurs: ["elle naît", "elle meurt"]
     indice: "Ses chatons sont ses bébés."
-  - enonce: "Une vieille plante se dessèche et ne vit plus, que fait-elle ?"
+  - enonce: "Une plante très vieille perd ses feuilles et ne repousse plus, que fait-elle ?"
     bonneReponse: "elle meurt"
     distracteurs: ["elle naît", "elle grandit"]
     indice: "C'est la fin de sa vie."

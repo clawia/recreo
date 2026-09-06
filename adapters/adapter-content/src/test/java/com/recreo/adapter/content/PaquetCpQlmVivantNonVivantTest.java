@@ -18,16 +18,17 @@ import java.util.TreeMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * <b>S27-2 puis S28-1, le paquet {@code cp-qlm-vivant-non-vivant}, ligne 1 de "Questionner le
- * monde" (CP).</b> Referentiel : {@code squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-
- * ligne-et-le-prix-des-quatre-lots.md}, section 3.1. Encode ce qui est calculable sur ce paquet :
- * le plafond de vingt items, l'espace de reponse des deux taches qu'il porte depuis S28-1, et les
- * conditions de distribution ecrites dans son commentaire.
+ * <b>S27-2, S28-1 puis S30-3, le paquet {@code cp-qlm-vivant-non-vivant}, ligne 1 de "Questionner
+ * le monde" (CP).</b> Referentiel : {@code squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-
+ * une-ligne-et-le-prix-des-quatre-lots.md}, section 3.1. Encode ce qui est calculable sur ce
+ * paquet : le plafond de vingt items, l'espace de reponse des trois taches qu'il porte depuis
+ * S30-3, et les conditions de distribution ecrites dans son commentaire.
  *
- * <p><b>Deux taches distinctes depuis S28-1 (FER-3)</b>, distinguees par la forme de la bonne
- * reponse : la <b>categorisation</b> d'origine ("X, qu'est-ce que c'est ?" -&gt; une des deux
- * categories du referentiel) et la <b>selection</b> neuve ("laquelle des trois choses est
- * vivante ?" -&gt; le nom de la chose, jamais une categorie).</p>
+ * <p><b>Trois taches distinctes depuis S30-3 (FER-3)</b>, distinguees par la forme de la bonne
+ * reponse : la <b>categorisation</b> d'origine ("X, qu'est-ce que c'est ?" -&gt; "un être vivant"
+ * ou "un objet"), la <b>selection</b> ("laquelle des trois choses est vivante ?" -&gt; le nom de la
+ * chose, jamais une categorie) et la <b>verification</b> neuve sur les trois items de matiere
+ * inerte ("X est-il un être vivant ?" -&gt; "oui" ou "non", `VIV-R2`).</p>
  *
  * <p><b>Ce que ce test ne juge pas</b> : les conditions de biais ({@code BIA-*}) ne s'appliquent
  * pas a cette ligne (elles portent sur les lignes 4, 15 et 16 du referentiel, non servies ici),
@@ -43,13 +44,15 @@ class PaquetCpQlmVivantNonVivantTest {
 
     /**
      * Espace de reponse de la tache de categorisation. L'opposition reste binaire (vivant / non
-     * vivant, nadia-prof, 2026-09-04) mais le libelle du pole non-vivant differe selon la nature de
-     * l'item : "un objet" pour les quatre objets fabriques (S27-2), "ce n'est pas un être vivant"
-     * pour les trois items de matiere inerte (S28-1, corrige le 2026-09-04 - ils repondaient a tort
-     * "un objet").
+     * vivant, nadia-prof, 2026-09-04), servie par deux libelles : "un être vivant" et "un objet"
+     * pour les quatre etres vivants et les quatre objets fabriques. Depuis S30-3 (`VIV-R2`), les
+     * trois items de matiere inerte ne portent plus un troisieme libelle de categorisation : ils
+     * sont passes a la tache de verification, ci-dessous.
      */
-    private static final Set<String> CATEGORIES =
-            Set.of("un être vivant", "un objet", "ce n'est pas un être vivant");
+    private static final Set<String> CATEGORIES = Set.of("un être vivant", "un objet");
+
+    /** Espace de reponse de la tache de verification, neuve depuis S30-3 (`VIV-R2`). */
+    private static final Set<String> REPONSES_DE_VERIFICATION = Set.of("oui", "non");
 
     /** FER-3 : au moins deux taches, la moins servie portant au moins trois items. */
     private static final int MINIMUM_PAR_TACHE = 3;
@@ -69,18 +72,31 @@ class PaquetCpQlmVivantNonVivantTest {
 
     /**
      * Un item de categorisation se reconnait a sa bonne reponse : une des deux categories du
-     * referentiel. Tout le reste est un item de selection.
+     * referentiel.
      */
     private static boolean estDeCategorisation(Question item) {
         return CATEGORIES.contains(item.bonneReponse());
+    }
+
+    /**
+     * Un item de verification se reconnait a sa bonne reponse : "oui" ou "non" (S30-3, `VIV-R2`).
+     */
+    private static boolean estDeVerification(Question item) {
+        return REPONSES_DE_VERIFICATION.contains(item.bonneReponse());
     }
 
     private static List<Question> itemsDeCategorisation() {
         return items().stream().filter(PaquetCpQlmVivantNonVivantTest::estDeCategorisation).toList();
     }
 
+    private static List<Question> itemsDeVerification() {
+        return items().stream().filter(PaquetCpQlmVivantNonVivantTest::estDeVerification).toList();
+    }
+
     private static List<Question> itemsDeSelection() {
-        return items().stream().filter(item -> !estDeCategorisation(item)).toList();
+        return items().stream()
+                .filter(item -> !estDeCategorisation(item) && !estDeVerification(item))
+                .toList();
     }
 
     @Test
@@ -91,8 +107,8 @@ class PaquetCpQlmVivantNonVivantTest {
     }
 
     /**
-     * Espace de reponse des items de categorisation : exactement les trois libelles connus (deux
-     * pour le pole non-vivant, depuis la correction du 2026-09-04).
+     * Espace de reponse des items de categorisation : exactement les deux libelles connus depuis
+     * S30-3 (la matiere inerte n'y repond plus).
      */
     @Test
     void lEspaceDeReponseDesItemsDeCategorisationEstExactementLesReponsesConnues() {
@@ -109,13 +125,12 @@ class PaquetCpQlmVivantNonVivantTest {
     }
 
     /**
-     * Condition de distribution ecrite dans le commentaire du paquet : depuis la correction du
-     * 2026-09-04, les trois items de matiere inerte repondent "ce n'est pas un être vivant" et non
-     * plus "un objet" - la matiere inerte a son propre libelle de pole non-vivant, distinct de
-     * celui des objets fabriques. Compte reel, jamais affirme.
+     * Condition de distribution ecrite dans le commentaire du paquet : la categorisation garde
+     * quatre etres vivants et quatre objets fabriques, inchange depuis S27-2. Compte reel, jamais
+     * affirme.
      */
     @Test
-    void chacuneDesTroisReponsesEstRepresenteeParmiLesItemsDeCategorisation() {
+    void chacuneDesDeuxReponsesEstRepresenteeParmiLesItemsDeCategorisation() {
         List<Question> items = itemsDeCategorisation();
         assertThat(items).isNotEmpty();
 
@@ -125,34 +140,29 @@ class PaquetCpQlmVivantNonVivantTest {
         }
 
         assertThat(comptes.keySet())
-                .as("les trois reponses de categorisation doivent toutes etre representees")
+                .as("les deux reponses de categorisation doivent toutes etre representees")
                 .containsExactlyInAnyOrderElementsOf(CATEGORIES);
         assertThat(comptes.get("un être vivant"))
                 .as("quatre etres vivants, compte inchange depuis S27-2")
                 .isEqualTo(4);
         assertThat(comptes.get("un objet"))
-                .as("quatre objets fabriques, compte inchange depuis S27-2 (la matiere inerte ne"
-                        + " repond plus \"un objet\" depuis la correction du 2026-09-04)")
+                .as("quatre objets fabriques, compte inchange depuis S27-2")
                 .isEqualTo(4);
-        assertThat(comptes.get("ce n'est pas un être vivant"))
-                .as("trois items de matiere inerte (caillou, sable, neige), S28-1 corrige le"
-                        + " 2026-09-04")
-                .isEqualTo(3);
     }
 
     /**
-     * Le defaut trouve par nadia-prof a l'audit de s28 (fiche de conformite, second passage) :
-     * "De la neige, qu'est-ce que c'est ?" -> "un objet" -> "Bravo !" est faux, la neige n'est pas
-     * un objet. Aucun item de matiere inerte ne doit repondre "un objet".
+     * S30-3 (`VIV-R2`) : les trois items de matiere inerte (caillou, sable, neige) sont passes de
+     * la categorisation a la verification, et repondent desormais "non" - "est-il un être vivant ?"
+     * appelle oui ou non, jamais un libelle de categorie.
      */
     @Test
-    void aucunItemDeMatiereInerteNeReponditUnObjet() {
+    void lesTroisItemsDeMatiereInerteRepondentNonALaVerification() {
         Set<String> enoncesDeMatiereInerte = Set.of(
-                "Un caillou, qu'est-ce que c'est ?",
-                "Du sable, qu'est-ce que c'est ?",
-                "De la neige, qu'est-ce que c'est ?");
+                "Un caillou est-il un être vivant ?",
+                "Le sable est-il un être vivant ?",
+                "La neige est-elle un être vivant ?");
 
-        List<Question> itemsDeMatiereInerte = itemsDeCategorisation().stream()
+        List<Question> itemsDeMatiereInerte = itemsDeVerification().stream()
                 .filter(item -> enoncesDeMatiereInerte.contains(item.enonce()))
                 .toList();
 
@@ -161,17 +171,40 @@ class PaquetCpQlmVivantNonVivantTest {
                 .hasSize(3);
         for (Question item : itemsDeMatiereInerte) {
             assertThat(item.bonneReponse())
-                    .as("item %s : la matiere inerte n'est pas un objet", item.id().value())
-                    .isEqualTo("ce n'est pas un être vivant");
+                    .as("item %s : la matiere inerte n'est pas un être vivant", item.id().value())
+                    .isEqualTo("non");
+            assertThat(item.distracteurs())
+                    .as("item %s : un seul distracteur, \"oui\"", item.id().value())
+                    .containsExactly("oui");
         }
     }
 
     /**
-     * Les items de selection ne repondent jamais par une categorie : leur bonne reponse et leurs
-     * distracteurs nomment la chose elle-meme, jamais "un être vivant" ou "un objet".
+     * Les items de verification ne repondent que par oui ou par non, jamais par un libelle de
+     * categorie ni par le nom d'une chose.
      */
     @Test
-    void lesItemsDeSelectionNomentDesChosesEtJamaisUneCategorie() {
+    void lesItemsDeVerificationRepondentUniquementParOuiOuNon() {
+        List<Question> items = itemsDeVerification();
+        assertThat(items).isNotEmpty();
+
+        for (Question item : items) {
+            assertThat(REPONSES_DE_VERIFICATION)
+                    .as("item %s : une verification repond oui ou non", item.id().value())
+                    .contains(item.bonneReponse());
+            assertThat(REPONSES_DE_VERIFICATION)
+                    .as("item %s : le distracteur d'une verification est oui ou non",
+                            item.id().value())
+                    .containsAll(item.distracteurs());
+        }
+    }
+
+    /**
+     * Les items de selection ne repondent jamais par une categorie ni par oui/non : leur bonne
+     * reponse et leurs distracteurs nomment la chose elle-meme.
+     */
+    @Test
+    void lesItemsDeSelectionNomentDesChosesEtJamaisUneCategorieNiOuiOuNon() {
         List<Question> items = itemsDeSelection();
         assertThat(items).isNotEmpty();
 
@@ -179,6 +212,9 @@ class PaquetCpQlmVivantNonVivantTest {
             assertThat(CATEGORIES)
                     .as("item %s : une selection nomme une chose, pas une categorie",
                             item.id().value())
+                    .doesNotContain(item.bonneReponse());
+            assertThat(REPONSES_DE_VERIFICATION)
+                    .as("item %s : une selection ne repond pas oui ou non", item.id().value())
                     .doesNotContain(item.bonneReponse());
             assertThat(item.distracteurs())
                     .as("item %s : deux distracteurs attendus", item.id().value())
@@ -193,17 +229,21 @@ class PaquetCpQlmVivantNonVivantTest {
     }
 
     /**
-     * FER-3 (nadia-prof, 2026-09-03) : au moins deux taches distinctes, la moins servie portant au
-     * moins trois items. Encode la condition de fermeture, pas la fermeture elle-meme.
+     * FER-3 (nadia-prof, 2026-09-03, etendue le 2026-09-06 a une troisieme tache par `VIV-R2`) : au
+     * moins deux taches distinctes, la moins servie portant au moins trois items. Trois taches en
+     * portent desormais au moins trois : categorisation (huit), selection (trois), verification
+     * (trois). Encode la condition de fermeture, pas la fermeture elle-meme.
      */
     @Test
     void auMoinsDeuxTachesDistinctesEtLaMoinsServieAuMoinsTroisItems() {
         int categorisation = itemsDeCategorisation().size();
         int selection = itemsDeSelection().size();
+        int verification = itemsDeVerification().size();
 
         assertThat(categorisation).as("la tache de categorisation est servie").isGreaterThan(0);
         assertThat(selection).as("la tache de selection est servie").isGreaterThan(0);
-        assertThat(Math.min(categorisation, selection))
+        assertThat(verification).as("la tache de verification est servie").isGreaterThan(0);
+        assertThat(Math.min(categorisation, Math.min(selection, verification)))
                 .as("FER-3 : la tache la moins servie porte au moins %d items",
                         MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
