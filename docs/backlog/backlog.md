@@ -11076,3 +11076,171 @@ Ce qui reste du a s30 est le rejeu de `nadia-prof` sur cette forme livree, pas u
   reserves.md`, section 3.3 ; `DEC-0079`.
 - **Agent pressenti** : `nadia-prof`, l'instance qui porte l'accumulation ce sprint.
 
+## Backlog ouvert pour s31 - treize reserves non bloquantes issues des verdicts de s30, plus deux
+## defauts transverses routes par la passe `S30-11`
+
+Treize reserves, toutes non bloquantes (aucune ne remet en cause un Done pedagogique deja rendu),
+ecrites par `nadia-prof` (Instance A et Instance B) en rendant ses verdicts de s30. **Aucune story
+de developpement complete n'est ecrite ici** : le perimetre de s31 n'est pas ouvert, meme regle que
+pour toute autre reserve de ce fichier. `PER-R1` et `REG-R1`, differees de s29 vers s31 par
+`DEC-0079` sur motif propre de `nadia-prof`, restent ouvertes et ne sont pas reprises ici : elles ne
+sont pas des reserves neuves de s30.
+
+**Verifiees par `camille-po` directement dans les fiches et dans la passe transverse, au-dela des
+deux releves de verdicts transmis** : les treize reserves nommees ci-dessous concordent exactement
+entre les deux releves (`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-
+instance-A.md`, `verdicts-nadia-instance-B.md`) et les fiches de conformite qu'ils citent - aucun
+ecart trouve cette fois entre le releve transmis et la fiche elle-meme.
+
+- **`SIG-R1`** (`bandit-manchot-signal-information-cm1`, non bloquante, datee du 2026-09-06) - sur
+  les six items de la tache de classement du signal, cinq portent dans l'enonce un verbe ou un nom
+  qui nomme le canal de perception (l'enfant n'a pas a le deduire) ; en partie jouee, le tirage a
+  servi cinq de ces six items sur dix manches, soit la moitie de la partie a difficulte constante et
+  nulle. **Ce que `nadia-prof` demande, sans prescrire de texte** : sur la tache A, au moins deux
+  items ne portent aucun verbe ni aucun nom de perception dans leur enonce, et portent trois
+  propositions dont la troisieme est un candidat qu'un enfant de CM1 peut serieusement envisager.
+  **Regime : rejeu borne pour le paquet entier, voyage avec `SIG-R2` (0,5 pour les deux).**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-signal-information-cm1.md`, section
+    "Reserves".
+- **`SIG-R2`** (`bandit-manchot-signal-information-cm1`, non bloquante, datee du 2026-09-06) - la
+  troisieme proposition de l'item de l'ambulance, *"un signal qui se sent"*, n'appartient a aucune
+  categorie enseignee et n'est choisie par aucun enfant : l'item redevient binaire de fait bien que
+  `SCI-4` (au moins trois propositions) soit formellement tenue. **Propriete a tenir** : sur tout
+  item ou `SCI-4` impose une troisieme proposition, celle-ci est un candidat plausible - une
+  categorie que l'enfant connait, ou une reponse qu'il pourrait vraiment donner - non un bouton de
+  remplissage. **Meme defaut que `MEL-R3`, sur un autre paquet** ; `nadia-prof` n'en fait pas une
+  condition transverse elle-meme (ses clauses se posent avant le sprint, jamais pendant) et laisse a
+  `camille-po` le soin d'en decider une a s31. **Regime : voyage avec `SIG-R1`, meme rejeu.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-signal-information-cm1.md`, section
+    "Reserves".
+- **`MEL-R1`** (`bandit-manchot-melanges-cm1`, non bloquante, datee du 2026-09-06) - l'indice de
+  l'item du sel (recuperer le sel d'une eau salee) dit *"Il faut faire disparaitre l'eau"* : l'eau ne
+  disparait pas, elle se vaporise, et c'est precisement la conception fausse que la ligne de
+  sciences a venir sur les etats de la matiere (`SCI-CM1-01`) devra defaire ; la phrase nomme en
+  outre la reponse attendue (*evaporer*) en d'autres mots. **Propriete a tenir** : l'indice garde sa
+  premiere phrase, qui est exacte, et remplace la seconde par une phrase qui ne dit ni que l'eau
+  disparait, ni ce qu'il faut faire. **Correction a cout nul qui voyage dans le meme geste** :
+  l'indice d'un autre item du meme paquet parle d'une *carafe* quand son enonce parle d'un *bol*.
+  **Regime : rejeu borne pour le paquet entier, voyage avec `MEL-R2` et `MEL-R3` (0,5 pour les
+  trois).**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md`, section "Reserves".
+- **`MEL-R2`** (`bandit-manchot-melanges-cm1`, non bloquante, datee du 2026-09-06) - l'item de la
+  decantation ecrit sa reponse dans sa propre question (vu a l'ecran en jouant, pas dans le seul
+  fichier). **Propriete a tenir, sans texte impose** : l'enonce de cet item ne contient plus le mot
+  ou le geste qu'attend la bonne reponse. **Regime : voyage avec `MEL-R1`, meme rejeu.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md`, section "Reserves".
+- **`MEL-R3`** (`bandit-manchot-melanges-cm1`, non bloquante, datee du 2026-09-06) - meme defaut que
+  `SIG-R2` : la troisieme proposition d'un item n'est pas un candidat plausible. **Propriete a
+  tenir** : identique a celle de `SIG-R2`. **Regime : voyage avec `MEL-R1`, meme rejeu.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md`, section "Reserves".
+- **`POS-R3`** (`bandit-manchot-division-posee-cm1`, non bloquante, datee du 2026-09-06, quatrieme
+  audit du paquet) - une fois `POS-R2` corrigee, la proposition qui porte le reste unique reste la
+  bonne reponse quatre fois sur les huit items concernes (50 %, contre 33,3 % au hasard), et deux
+  des trois items a restes egaux mettent encore la bonne reponse au milieu du triplet de quotients :
+  la meilleure strategie sans poser aucune division rapporte encore 6 items sur 11 (54,5 %). **Ce
+  n'est pas un durcissement de `POS-R2`, qui est levee et non rouverte** : c'est un poteau neuf,
+  plante a cote d'une barre deja franchie. **Propriete a tenir, valeurs a `marc-dev`** : sur les
+  items dont un seul reste differe des deux autres, la bonne reponse ne porte ce reste unique
+  qu'environ une fois sur trois, jamais une fois sur deux ; sur les items a restes egaux, la bonne
+  n'est au milieu du triplet que sur une minorite d'entre eux. **Ne ferme aucune ligne** -
+  `MAT-CM1-05` est deja `couvert-valide`. **Regime : rejeu borne, 0,5.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md`, section 4.
+- **`HG-R8`** (`bandit-manchot-histoire-geographie-cm1`, non bloquante, datee du 2026-09-06, defaut
+  cree par la correction de `HG-R6` en decouvrant en rejouant) - les deux indices des items de
+  nature de la ligne 14 ont ete reecrits en meme temps que leurs supports, et tous deux mettent
+  desormais l'enfant sur le mot plutot que sur le genre du document (l'un pointe vers l'incipit
+  *"Cher journal"* que `HG-R6` reprochait au support, l'autre prononce *droits*, la moitie de la
+  bonne reponse). C'est `M21` : un indice qui nomme la reponse est une revelation deguisee. **Ce que
+  `nadia-prof` demande, sans prescrire de texte** : sur les deux items de nature, l'indice porte ce
+  qui caracterise le genre du document - a qui il s'adresse, dans quel but il est ecrit, qui l'ecrit
+  - et jamais le mot que l'enfant a a trouver ni l'endroit du support ou le copier. **Regime : rejeu
+  borne, 0,5.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md`, section `HG-R8`.
+- **`FOP-R4`** (`bandit-manchot-fait-opinion-cm1`, non bloquante, datee du 2026-09-06, defaut cree
+  par la correction de `FOP-R2`) - en homogeneisant les dix distracteurs de la tache de
+  verification, la reprise a rendu leur amorce uniforme : sur les cinq items de verification, huit
+  distracteurs sur dix commencent par *"en (la/le) croyant parce que"*, zero des cinq bonnes
+  reponses ne commencent ainsi, et trois items sur cinq ont leurs deux distracteurs qui commencent
+  ainsi. Un enfant qui n'a rien compris a la verification d'une origine trouve la bonne reponse en
+  lisant les deux premiers mots de chaque bouton - une contrefacon par tirage, pas un durcissement de
+  `FOP-R2` qui reste levee. **Ce que `nadia-prof` demande, sans prescrire de texte, et qu'elle
+  rejugera** : sur au moins deux des cinq items de verification, l'un des deux distracteurs commence
+  par un verbe de verification et decrit une verification qui porte a cote - demander a quelqu'un qui
+  n'y etait pas, verifier une chose que personne ne conteste, chercher confirmation aupres de qui
+  tient l'information du meme endroit. **`nadia-prof` route en outre la famille - un item resolu par
+  la seule forme d'un autre element du meme paquet - a `theo-archi` comme mordable en principe
+  (recherche de chaine), sans en prescrire la forme.** **Regime : rejeu borne, 0,5.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md`, section `FOP-R4`.
+- **`DRO-R4`** (`bandit-manchot-droit-devoir-cm1`, non bloquante, datee du 2026-09-06, defaut qui
+  survit une ligne plus bas apres la levee de `DRO-R1`) - `DRO-R1` avait fait corriger l'enonce de
+  trois items de la seconde tache pour qu'il ne nomme plus *droit* ni *devoir* ; l'indice de ces
+  memes trois items, lui, nomme encore la categorie a trouver et resout ainsi l'item de classement
+  correspondant des qu'un tirage sert les deux items du couple (3 sur 3). **Ce que `nadia-prof`
+  demande** : sur les trois items de la seconde tache, l'indice ne prononce ni *droit* ni *devoir* a
+  propos d'une situation qu'un item de classement demande de classer ; il dit a quoi la chose sert,
+  ce qui est la tache de l'item. **Regime : mot pour mot une fois les trois textes proposes, 0,25.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-droit-devoir-cm1.md`, section `DRO-R4`.
+- **`CONS-2`** (transverse, consignes de catalogue CP, non bloquante, datee du 2026-09-06) - la
+  reecriture de `CONS-1` a fait des deux consignes de CP les plus longues que l'enfant decode
+  lui-meme (`cycle-de-vie-cp`, seize mots ; `etats-eau-cp`, quinze mots) les deux plus longues du
+  catalogue lues sans un adulte ; les paquets a voix, ou l'adulte lit, portent des consignes aussi
+  longues ou plus mais la premisse du produit les protege. **Propriete a tenir** : une consigne de
+  catalogue de CP que l'enfant lit lui-meme nomme ses taches sans depasser douze mots, chiffre pris
+  sur les consignes de CP qui y parviennent deja. **Regime : rejeu borne sur deux entrees, 0,25.**
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
+    section 7.4.
+- **`ANG-R2`** (`bandit-manchot-anglais-cm1`, non bloquante, datee du 2026-09-06) - la consigne dit
+  *"reponds a la question de culture anglaise"* alors que, sur les cinq items de culture du paquet,
+  trois portent sur les Etats-Unis (capitale, drapeau, Thanksgiving) : c'est une inexactitude de
+  fait, pas seulement une tache mal designee, et le referentiel du produit dit lui-meme *"pays"* au
+  pluriel (`LVE-CM1-07`). **Extraite de `CONS-1` et portant son propre code** parce qu'elle n'est pas
+  de la meme nature que les quatre autres entrees non levees de `CONS-1` (celles-la sont des defauts
+  de designation de tache). **Propriete a tenir** : la consigne ne restreint pas a un seul pays un
+  contenu qui en sert plusieurs. **Regime : mot pour mot une fois le texte propose, 0,25.**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md`, section `ANG-R2`.
+- **`SAI-R1`** (transverse, gabarit `fragments/saisie.html`, non bloquante, datee du 2026-09-06,
+  issue de la passe transverse `S30-11`) - le gabarit ajoute un point final a la chaine que l'enfant
+  a saisie, quelle qu'elle soit ; quand l'enfant a lui-meme tape un point, l'ecran affiche deux
+  points a la suite, dans la phrase precise ou le produit lui renvoie son propre geste. **Derniere
+  instance vivante de la famille de `REV-1`** (une phrase composee par un gabarit autour d'un champ
+  de contenu que le produit ne controle pas), cherchee sur tout le depot par la passe transverse et
+  non trouvee ailleurs. **Propriete a tenir, cause technique** : la ponctuation finale d'une phrase
+  qui cite ce que l'enfant a ecrit n'est pas ajoutee par le gabarit a une chaine dont il ignore la
+  forme. **Regime : mot pour mot une fois le correctif livre, 0,25.**
+  - **Lien** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`,
+    section 1.3.
+  - **Agent pressenti** : `theo-archi` pour la cause et la forme technique ; `nadia-prof` reverifie.
+- **`ERR-R1`** (transverse, gabarit `fragments/erreur.html`, non bloquante, datee du 2026-09-06,
+  issue de la passe transverse `S30-11`) - l'ecran d'erreur technique dit *"Oups ! Le jeu a un
+  souci."*, seul texte du produit a employer un mot de registre familier (*souci* au sens de
+  *panne*, non lisible dans ce sens au CP) et une interjection que rien d'autre dans le produit
+  n'emploie ; la phrase ne prepare en outre pas l'enfant a l'action que l'ecran lui offre
+  (*Recommencer*). Ce texte n'est jamais passe devant `nadia-prof` avant ce jour. **Propriete a
+  tenir, sans texte impose** : dire, en mots de CP, que le jeu s'est arrete et qu'on peut
+  recommencer. **Regime : mot pour mot une fois propose, 0,25.**
+  - **Lien** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`,
+    section 2.3.
+
+**Prix total chiffre par `nadia-prof` pour les six reserves de l'Instance B** (`SIG-R1`, `SIG-R2`,
+`MEL-R1`, `MEL-R2`, `MEL-R3`, `POS-R3`) : **1,5**, en trois rejeux bornes de 0,5 chacun (un par
+paquet), dont aucun ne ferme de ligne. **Agent pressenti pour les formulations** : `lea-dev`
+(paquets de sciences et de division posee, formulations laissees a elle par `nadia-prof`) ;
+`marc-dev` pour les valeurs de `POS-R3` ; `nadia-prof` reverifie chaque rejeu. `camille-po` ecrit
+les criteres d'acceptation complets une fois s31 ouvert.
+
+**Deux faits de serie a porter au-dela des treize reserves, nommes par `nadia-prof` elle-meme :**
+
+- **`OBJ-R2` a produit le meme defaut de fabrication deux fois en deux jours, sur deux niveaux**
+  (`bandit-manchot-objet-technique-cp` le 2026-09-06, puis `bandit-manchot-objet-technique-cm1`
+  refuse le lendemain pour le meme motif). *"Ce n'est plus une reserve de paquet, c'est un reflexe de
+  fabrication"*, ecrit `nadia-prof` : a traiter comme tel plutot que comme deux incidents isoles.
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-B.md`,
+    section 8.
+- **`FOP-R4` est une contrefacon par tirage** (huit distracteurs sur dix commencent par *en croyant*,
+  quand aucune bonne reponse ne le fait, et trois items sur cinq se repondent sur leurs deux premiers
+  mots) : `nadia-prof` la route explicitement a `theo-archi` comme mordable en principe - une
+  recherche de chaine sur l'amorce des propositions d'un meme item - sans en prescrire la forme.
+  C'est la deuxieme reserve du sprint que cette meme famille produit (avec `DRO-R4`).
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
+    section 11.
+
