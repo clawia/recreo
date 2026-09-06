@@ -14,11 +14,28 @@ lignesDeReferentiel: ["EMC-CM1-07"]
 # lignes.md, sections 4.4 et 5). Referentiel copie conforme
 # (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-07).
 #
-# FER-1 : les deux notions du libelle sont chacune en position de bonne reponse - "un droit" (items
-# 1, 5, 9) et "un devoir" (items 3, 7, 11).
+# Correction du 2026-09-06 (lea-dev, audit de l'instance B, squad/conformite/FICHE-bandit-manchot-droit-devoir-cm1.md,
+# commit audite ee3ef70, Done pedagogique REFUSE le 2026-09-05 par nadia-prof) : trois defauts
+# corriges dans le meme geste.
+# 1) L'item 1 avait deux reponses defendables sur l'axe meme de la ligne ("aller a l'ecole pour
+#    apprendre a lire et a compter" keye un droit, un devoir en distracteur, alors que l'education est
+#    un droit et l'instruction une obligation, les deux enseignees ensemble au cycle 3). Remplace,
+#    sans faire descendre le paquet sous onze items (DEC-0064), par un droit qui ne porte aucune
+#    obligation symetrique : jouer et se reposer.
+# 2) La troisieme proposition ("une interdiction") etait un decor sur les six items de classement :
+#    jamais la bonne reponse, elle etait pressee ou ignoree sans avoir ete lue des le deuxieme item.
+#    Retiree : les six items de classement portent desormais deux propositions (un droit contre un
+#    devoir), sans troisieme bouton qui ne serait jamais correct.
+# 3) Les cinq items de la seconde tache portaient tous sur un droit, jamais sur un devoir, alors que
+#    le libelle dit "quelques droits et devoirs" : l'item 4 devient une question sur la raison d'etre
+#    du devoir d'ecouter la maitresse et de respecter les regles de la classe (le droit qu'il
+#    remplacait, etre protege contre la violence, reste servi par l'item 5 en classement).
 #
-# FER-3 : deux taches distinctes - classer une situation comme un droit ou un devoir (items impairs),
-# associer un droit a ce qu'il protege (items pairs).
+# FER-1 : les deux notions du libelle sont chacune en bonne reponse - "un droit" (items 1, 5, 9),
+# "un devoir" (items 3, 7, 11). Tenue.
+#
+# FER-3 : deux taches distinctes - classer une situation comme un droit ou un devoir (items 1, 3, 5,
+# 7, 9, 11), dire a quoi sert un droit ou un devoir (items 2, 4, 6, 8, 10 - dont un devoir, item 4).
 #
 # BIA-4 : aucun item n'interroge l'enfant sur sa propre situation - chaque situation porte sur "un
 # enfant" ou "un eleve" au general, jamais sur l'enfant qui joue.
@@ -31,7 +48,8 @@ lignesDeReferentiel: ["EMC-CM1-07"]
 # regles de la classe, faire ses devoirs et apprendre ses lecons, prendre soin du materiel collectif)
 # ne viennent pas d'un texte unique : ce sont les devoirs de l'eleve communement enseignes en
 # symetrie des droits, tels qu'ils figurent dans un reglement interieur d'ecole type. Ce point est
-# signale explicitement pour que nadia-prof le verifie contre sa propre lecture du programme.
+# signale explicitement pour que nadia-prof le verifie contre sa propre lecture du programme -
+# verifie et confirme le 2026-09-05.
 #
 # EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ("que fais-tu si..."). Chaque
 # item porte sur une action generale attribuee a "un enfant" ou "un eleve", jamais sur l'enfant qui
@@ -46,33 +64,33 @@ lignesDeReferentiel: ["EMC-CM1-07"]
 #
 # CYC-1 : verifie contre le lot de CP livre le meme jour (S29-4, cp-emc-regles-de-vie.yaml et
 # cp-emc-permis-interdit.yaml) - la ligne CP sur les regles de vie et cette ligne sur les devoirs de
-# l'eleve sont complementaires (les regles de classe sont un exemple de devoir), sans contradiction.
+# l'eleve sont complementaires (les regles de classe sont un exemple de devoir), sans contradiction -
+# verifie au perimetre du depot par nadia-prof le 2026-09-05, aucune contradiction.
 #
-# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
-# dette heritee.
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
 items:
-  - enonce: "Aller à l'école pour apprendre à lire et à compter, qu'est-ce que c'est pour un enfant ?"
+  - enonce: "Jouer et se reposer en dehors du travail scolaire, qu'est-ce que c'est pour un enfant ?"
     bonneReponse: "un droit"
-    distracteurs: ["un devoir", "une interdiction"]
-    indice: "Chaque enfant peut aller à l'école, personne ne peut l'en empêcher."
+    distracteurs: ["un devoir"]
+    indice: "Ce droit protège des moments de repos, pas le travail scolaire."
   - enonce: "À quoi sert le droit à l'éducation pour un enfant ?"
     bonneReponse: "à lui permettre d'apprendre et de grandir"
     distracteurs: ["à le récompenser quand il est sage", "à le préparer à un seul métier précis"]
     indice: "L'école sert à apprendre, pas à récompenser un comportement."
   - enonce: "Écouter la maîtresse et respecter les règles de la classe, qu'est-ce que c'est pour un élève ?"
     bonneReponse: "un devoir"
-    distracteurs: ["un droit", "une interdiction"]
+    distracteurs: ["un droit"]
     indice: "C'est ce qu'un élève doit faire pour que la classe fonctionne bien."
-  - enonce: "À quoi sert le droit d'être protégé contre la violence ?"
-    bonneReponse: "à garder chaque enfant en sécurité"
-    distracteurs: ["à choisir ses amis à sa place", "à décider seul de ses loisirs"]
-    indice: "Ce droit protège le corps et la sécurité de l'enfant."
+  - enonce: "À quoi sert le devoir d'écouter la maîtresse et de respecter les règles de la classe ?"
+    bonneReponse: "à ce que chacun puisse apprendre sans être dérangé"
+    distracteurs: ["à empêcher les élèves de bouger", "à choisir les élèves les plus sages"]
+    indice: "Ce devoir permet à tout le monde de travailler dans le calme."
   - enonce: "Être protégé contre la violence et la maltraitance, qu'est-ce que c'est pour un enfant ?"
     bonneReponse: "un droit"
-    distracteurs: ["un devoir", "une interdiction"]
+    distracteurs: ["un devoir"]
     indice: "Personne n'a le droit de faire du mal à un enfant."
   - enonce: "À quoi sert le droit d'être soigné quand on est malade ?"
     bonneReponse: "à permettre à chaque enfant d'être soigné, quelle que soit sa famille"
@@ -80,7 +98,7 @@ items:
     indice: "Ce droit concerne la santé de l'enfant, pas son école."
   - enonce: "Faire ses devoirs et apprendre ses leçons, qu'est-ce que c'est pour un élève ?"
     bonneReponse: "un devoir"
-    distracteurs: ["un droit", "une interdiction"]
+    distracteurs: ["un droit"]
     indice: "C'est ce qu'un élève doit faire pour progresser à l'école."
   - enonce: "À quoi sert le droit de jouer et de se reposer pour un enfant ?"
     bonneReponse: "à lui laisser du temps pour grandir en dehors du travail scolaire"
@@ -88,7 +106,7 @@ items:
     indice: "Ce droit protège des moments de repos, pas l'absence de toute règle."
   - enonce: "Être soigné quand on est malade ou blessé, qu'est-ce que c'est pour un enfant ?"
     bonneReponse: "un droit"
-    distracteurs: ["un devoir", "une interdiction"]
+    distracteurs: ["un devoir"]
     indice: "Chaque enfant peut être soigné, quelle que soit sa famille."
   - enonce: "À quoi sert le droit de donner son avis et d'être écouté ?"
     bonneReponse: "à permettre à l'enfant d'exprimer ce qu'il pense sur ce qui le concerne"
@@ -96,5 +114,5 @@ items:
     indice: "Être écouté ne veut pas dire décider seul."
   - enonce: "Prendre soin du matériel de la classe partagé avec les autres, qu'est-ce que c'est pour un élève ?"
     bonneReponse: "un devoir"
-    distracteurs: ["un droit", "une interdiction"]
+    distracteurs: ["un droit"]
     indice: "C'est ce qu'un élève doit faire pour que le matériel dure pour tous."

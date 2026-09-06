@@ -545,24 +545,31 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
                     + " propositions n'est numerique : ce sont des qualifications de comportements"
                     + " entre eleves (\"une moquerie\", \"une insulte\", \"de la violence\","
-                    + " \"permis\"...), valeurDe rend null sur les trois propositions de chaque item."
-                    + " Mesure du 2026-09-05 sur le paquet servi : aucune des 33 propositions ne"
-                    + " commence par un chiffre"),
+                    + " \"un service\", \"une discussion\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-06 sur le paquet servi, apres"
+                    + " la reprise du 2026-09-06 (squad/conformite/FICHE-bandit-manchot-permis-"
+                    + "interdit-cp.md) : aucune des 33 propositions ne commence par un chiffre"),
             // S29-5 : deux paquets neufs d'enseignement moral et civique (CM1), matiere connue depuis
             // S29-4 mais lignes de referentiel neuves.
             Map.entry("cm1-emc-fait-opinion",
-            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
-                    + " propositions n'est numerique : ce sont des classifications (\"un fait\", \"une"
-                    + " opinion\", \"un mensonge\") ou des methodes de verification en texte libre,"
-                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
-                    + " 2026-09-05 sur le paquet servi : aucune des 33 propositions ne commence par"
+            "11 items sur 11 : six items (tache de classement) portent un seul distracteur (deux"
+                    + " propositions) et cinq items (tache de verification) portent deux distracteurs"
+                    + " (trois propositions), mais aucune des 27 propositions n'est numerique : ce"
+                    + " sont des classifications (\"un fait\", \"une opinion\") ou des methodes de"
+                    + " verification en texte libre, valeurDe rend null sur toutes les propositions."
+                    + " Mesure du 2026-09-06 sur le paquet servi, apres la reprise du 2026-09-06"
+                    + " (squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md) qui retire le"
+                    + " troisieme bouton \"un mensonge\" : aucune des 27 propositions ne commence par"
                     + " un chiffre"),
             Map.entry("cm1-emc-droit-devoir",
-            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
-                    + " propositions n'est numerique : ce sont des qualifications (\"un droit\", \"un"
-                    + " devoir\", \"une interdiction\") ou des buts en texte libre, valeurDe rend null"
-                    + " sur les trois propositions de chaque item. Mesure du 2026-09-05 sur le paquet"
-                    + " servi : aucune des 33 propositions ne commence par un chiffre"));
+            "11 items sur 11 : six items (tache de classement) portent un seul distracteur (deux"
+                    + " propositions) et cinq items (tache de justification) portent deux distracteurs"
+                    + " (trois propositions), mais aucune des 27 propositions n'est numerique : ce"
+                    + " sont des qualifications (\"un droit\", \"un devoir\") ou des buts en texte"
+                    + " libre, valeurDe rend null sur toutes les propositions. Mesure du 2026-09-06 sur"
+                    + " le paquet servi, apres la reprise du 2026-09-06 (squad/conformite/FICHE-"
+                    + "bandit-manchot-droit-devoir-cm1.md) qui retire le troisieme bouton \"une"
+                    + " interdiction\" : aucune des 27 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

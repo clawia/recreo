@@ -14,14 +14,31 @@ lignesDeReferentiel: ["EMC-CM1-11"]
 # lignes.md, sections 4.4 et 5). Referentiel copie conforme
 # (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-11).
 #
+# Correction du 2026-09-06 (lea-dev, audit de l'instance B, squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md,
+# commit audite ee3ef70, Done pedagogique REFUSE le 2026-09-05 par nadia-prof) : trois defauts
+# corriges dans le meme geste.
+# 1) La tache n'etait ecrite nulle part sur les six items de classement (une phrase affirmative
+#    terminee par un point d'interrogation, sans consigne propre au jeu). Chaque enonce de classement
+#    cite desormais la phrase entre guillemets et pose explicitement la question "Fait ou opinion ?" ;
+#    et catalogue.yaml porte une consigne propre a ce jeu qui nomme la tache.
+# 2) "Un mensonge" n'etait pas une troisieme categorie mais un autre axe (vrai contre faux, quand la
+#    ligne porte sur la nature de l'enonce) : il rendait au moins deux items a deux reponses
+#    defendables ("Hugo a marque trois buts...", "il a plu toute la matinee...", rien dans l'enonce ne
+#    disant que c'est vrai). Retire : les six items de classement portent desormais deux propositions
+#    (un fait contre une opinion), sans troisieme bouton qui melangerait les deux axes.
+# 3) Sur les cinq items de verification, au moins un distracteur declarait litteralement qu'on ne
+#    verifiait rien ("sans rien verifier", "sans le relire"...), ce qui se repere sans comprendre la
+#    competence. Les dix distracteurs sont reecrits pour dire une methode de verification reellement
+#    tentee mais insuffisante (une seule source, un indice trompeur), jamais l'absence de verification
+#    en toutes lettres. Les enonces sont aussi recentres sur l'origine de l'information (a qui elle
+#    revient, pas seulement si elle est vraie), plus proche du libelle "verifier l'origine d'une
+#    information".
+#
 # FER-1 : les deux notions du libelle sont chacune en position de bonne reponse - "un fait" (items 1,
 # 5, 9) et "une opinion" (items 3, 7, 11).
 #
-# FER-3 : deux taches distinctes - classer un enonce comme un fait ou une opinion (items impairs),
-# dire comment on verifie l'origine d'une information avant de la partager (items pairs).
-#
-# Forme reprise de bandit-manchot-comprehension-cm1 (cm1-comprehension.yaml), deja validee deux fois
-# par nadia-prof : un enonce court, trois propositions, une seule defendable.
+# FER-3 : deux taches distinctes - classer un enonce cite comme un fait ou une opinion (items impairs),
+# dire comment verifier l'origine d'une information avant de la partager (items pairs).
 #
 # EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ("que fais-tu si..."). Les
 # items de verification d'origine mettent en scene un personnage nomme, a la troisieme personne (Aya,
@@ -43,53 +60,53 @@ lignesDeReferentiel: ["EMC-CM1-11"]
 # cp-emc-permis-interdit.yaml) - aucun objet commun entre les deux lots, donc aucune contradiction
 # possible.
 #
-# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
-# dette heritee.
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final, et l'espace insecable
+# de part et d'autre des guillemets qui citent la phrase a qualifier.
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
 items:
-  - enonce: "Il a plu toute la matinée sur la cour de récréation aujourd'hui ?"
+  - enonce: "« Il a plu toute la matinée sur la cour de récréation aujourd'hui. » Fait ou opinion ?"
     bonneReponse: "un fait"
-    distracteurs: ["une opinion", "un mensonge"]
+    distracteurs: ["une opinion"]
     indice: "On peut vérifier ce genre d'information en regardant dehors ou en demandant à quelqu'un qui était présent."
-  - enonce: "Aya entend dire qu'il va neiger pendant les vacances. Comment peut-elle vérifier si c'est vrai avant de le répéter ?"
+  - enonce: "Aya entend dire qu'il va neiger pendant les vacances. Comment peut-elle vérifier d'où vient cette information avant de la répéter ?"
     bonneReponse: "en regardant plusieurs prévisions météo ou en demandant à un adulte"
-    distracteurs: ["en le répétant à toute la classe sans rien vérifier", "en le croyant parce qu'un seul camarade l'a dit"]
+    distracteurs: ["en la répétant à toute la classe parce que ça semble amusant à raconter", "en la croyant parce qu'un seul camarade l'a dit"]
     indice: "Une information se vérifie avant d'être partagée, pas après."
-  - enonce: "Le foot est le sport le plus intéressant du monde ?"
+  - enonce: "« Le foot est le sport le plus intéressant du monde. » Fait ou opinion ?"
     bonneReponse: "une opinion"
-    distracteurs: ["un fait", "un mensonge"]
+    distracteurs: ["un fait"]
     indice: "Chacun peut préférer un sport différent, sans que personne n'ait tort."
-  - enonce: "Malo raconte qu'une équipe a gagné le tournoi de la récréation par un score énorme. Comment Léa peut-elle vérifier cette information avant de la répéter ?"
+  - enonce: "Malo raconte qu'une équipe a gagné le tournoi de la récréation par un score énorme. Comment Léa peut-elle vérifier l'origine de cette information avant de la répéter ?"
     bonneReponse: "en demandant à plusieurs élèves qui ont vu le match"
-    distracteurs: ["en la répétant sans rien vérifier", "en la croyant parce que Malo l'a dit une seule fois"]
+    distracteurs: ["en la répétant parce que le score est impressionnant", "en la croyant parce que Malo l'a dit une seule fois"]
     indice: "Plusieurs témoins qui racontent la même chose rendent une information plus sûre."
-  - enonce: "Hugo a marqué trois buts pendant le match de la récréation ?"
+  - enonce: "« Hugo a marqué trois buts pendant le match de la récréation. » Fait ou opinion ?"
     bonneReponse: "un fait"
-    distracteurs: ["une opinion", "un mensonge"]
+    distracteurs: ["une opinion"]
     indice: "On peut vérifier ce genre d'information en demandant à ceux qui ont joué ou regardé le match."
-  - enonce: "Hugo entend une rumeur selon laquelle l'école fermera demain. Que doit-il faire avant d'en parler à ses camarades ?"
-    bonneReponse: "vérifier l'information auprès d'un adulte de l'école"
-    distracteurs: ["la répéter immédiatement à tout le monde", "l'écrire sur un mot qu'il fait circuler sans rien vérifier"]
+  - enonce: "Hugo entend une rumeur selon laquelle l'école fermera demain. Comment peut-il connaître l'origine de cette rumeur avant d'en parler à ses camarades ?"
+    bonneReponse: "en vérifiant l'information auprès d'un adulte de l'école"
+    distracteurs: ["en la répétant immédiatement à tout le monde", "en en discutant avec un seul camarade qui a entendu la même rumeur"]
     indice: "Un adulte de l'école connaît les informations vraies sur son fonctionnement."
-  - enonce: "Cette histoire racontée à la récréation est bien plus drôle que celle d'hier ?"
+  - enonce: "« Cette histoire racontée à la récréation est plus drôle que celle d'hier. » Fait ou opinion ?"
     bonneReponse: "une opinion"
-    distracteurs: ["un fait", "un mensonge"]
+    distracteurs: ["un fait"]
     indice: "Trouver une histoire plus drôle qu'une autre dépend du goût de chacun."
-  - enonce: "Aya a entendu un camarade dire que sa maîtresse était malade. Comment peut-elle savoir si c'est vrai ?"
+  - enonce: "Aya a entendu un camarade dire que sa maîtresse était malade. Comment peut-elle savoir d'où vient cette information ?"
     bonneReponse: "en demandant directement à un adulte de l'école"
-    distracteurs: ["en le répétant à tout le monde sans vérifier", "en imaginant une explication supplémentaire"]
+    distracteurs: ["en le répétant à tout le monde parce que ça lui semble inquiétant", "en imaginant une explication supplémentaire"]
     indice: "Une seule personne peut se tromper ; un adulte de l'école a l'information exacte."
-  - enonce: "Il a fait trois degrés ce matin, d'après le thermomètre de la classe ?"
+  - enonce: "« Il a fait trois degrés ce matin, d'après le thermomètre de la classe. » Fait ou opinion ?"
     bonneReponse: "un fait"
-    distracteurs: ["une opinion", "un mensonge"]
+    distracteurs: ["une opinion"]
     indice: "Un thermomètre donne une mesure que l'on peut vérifier."
-  - enonce: "Léa lit sur un petit mot affiché dans la cour que la récréation est annulée demain. Comment peut-elle vérifier que ce mot dit vrai ?"
+  - enonce: "Léa lit sur un petit mot affiché dans la cour que la récréation est annulée demain. Comment peut-elle vérifier l'origine de ce mot ?"
     bonneReponse: "en demandant confirmation à un adulte de l'école"
-    distracteurs: ["en croyant le mot sans le vérifier", "en le décrivant de mémoire sans le relire"]
+    distracteurs: ["en le croyant parce qu'il est écrit en grosses lettres", "en demandant à un seul camarade qui n'a pas lu le mot lui-même"]
     indice: "Un mot affiché peut être vrai ou faux ; un adulte de l'école peut confirmer."
-  - enonce: "Les récréations du matin sont plus agréables que celles de l'après-midi ?"
+  - enonce: "« Les récréations du matin sont plus agréables que celles de l'après-midi. » Fait ou opinion ?"
     bonneReponse: "une opinion"
-    distracteurs: ["un fait", "un mensonge"]
+    distracteurs: ["un fait"]
     indice: "Préférer un moment de la journée à un autre est affaire de goût."

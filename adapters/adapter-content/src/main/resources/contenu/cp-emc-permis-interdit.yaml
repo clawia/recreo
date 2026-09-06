@@ -14,13 +14,37 @@ lignesDeReferentiel: ["EMC-CP-02"]
 # (squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md,
 # sections 4.3 et 5). Referentiel copie conforme.
 #
+# Correction du 2026-09-06 (lea-dev, audit de l'instance B, squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md,
+# commit audite 5526932, Done pedagogique REFUSE le 2026-09-05 par nadia-prof) : cinq defauts corriges
+# dans le meme geste.
+# 1) Charge de lecture d'un autre niveau et systematique (mediane mesuree a 15 mots, maximum 20, deux
+#    enonces a 20 mots, contre une mediane de 10 et un maximum de 15 sur le paquet jumeau du meme jour).
+#    Tous les enonces sont reecrits en une seule phrase de situation plus une question courte ; profil
+#    mesure apres correction : mediane 10, maximum 14.
+# 2) L'item 9 portait sa reponse dans son enonce ("une moquerie" au mot pres dans la question et dans
+#    la bonneReponse) : la situation est reecrite sans le mot a trouver, et sans la confusion avec l'axe
+#    vrai/faux que relevait aussi nadia-prof (l'ancienne situation - une histoire inventee racontee a
+#    toute la classe - etait plus proche d'une rumeur que d'une moquerie).
+# 3) Les items 7 et 8 etaient le meme item (memes trois propositions "permis"/"interdit"/"dangereux",
+#    meme bonne reponse, "dangereux" etant une troisieme option morte puisque l'enonce demandait deja
+#    "est-ce permis ou interdit ?"). Les deux items sont reecrits sous la meme forme que le reste du
+#    paquet ("Qu'est-ce que X fait ?") avec deux reponses distinctes et sur l'axe de la ligne (un
+#    service, une discussion), chacune opposee a deux des trois qualifications de l'interdit
+#    (moquerie, insulte, violence) : plus de doublon, plus d'option morte.
+# 4) L'item 10 portait un distracteur qui enoncait une regle d'ecole fausse ("c'est interdit de rire en
+#    classe" - il est interdit de se moquer, pas de rire) : remplace par un distracteur hors sujet qui
+#    n'affirme aucune regle inexistante.
+# 5) Le role de victime etait genre (une fille quatre fois sur cinq, Lea n'etant jamais autre chose
+#    qu'une victime hors le pret de crayon) : les prenoms des items 3 et 11 sont echanges, sans autre
+#    changement, pour rendre victimes et agresseurs equilibres entre les quatre personnages.
+#
 # FER-1 : les trois termes de la parenthese sont chacun en position de bonne reponse - "une
 # moquerie" (items 1, 9), "une insulte" (item 3), "de la violence" (items 5, 11). Deux items de
-# contraste ("permis", items 7 et 8) montrent que la ligne distingue bien le permis de l'interdit,
-# pas seulement l'interdit seul.
+# contraste (items 7, 8) montrent un comportement permis, chacun oppose a deux des trois
+# qualifications de l'interdit plutot qu'a un troisieme bouton qui ne serait jamais correct.
 #
-# FER-3 : deux taches distinctes - reconnaitre l'interdit a partir d'une situation decrite (items
-# 1, 3, 5, 7, 8, 9, 11), dire ce que la regle protege (items 2, 4, 6, 10).
+# FER-3 : deux taches distinctes - reconnaitre l'interdit ou le permis a partir d'une situation
+# decrite (items 1, 3, 5, 7, 8, 9, 11), dire ce que la regle protege (items 2, 4, 6, 10).
 #
 # EMC-8 : aucun item ne demande a l'enfant de declarer un comportement. Chaque item decrit ce qu'un
 # personnage fait, ou demande une qualification impersonnelle ("est-ce permis ou interdit ?").
@@ -38,13 +62,12 @@ lignesDeReferentiel: ["EMC-CP-02"]
 # matiere) : aucun item ne porte sur une moquerie repetee, une exclusion, ni sur l'identification
 # d'un adulte a qui parler - EMC-3 (amendee) ne s'applique pas a ce paquet.
 #
-# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf,
-# aucune dette heritee.
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
 items:
-  - enonce: "Hugo répète sans arrêt qu'Aya a une drôle de voix, pour la faire rire des autres. Comment appelle-t-on ça ?"
+  - enonce: "Hugo rit de la voix d'Aya. Comment appelle-t-on ça ?"
     bonneReponse: "une moquerie"
     distracteurs: ["un compliment", "une devinette"]
     indice: "On rit de quelqu'un plutôt qu'avec lui."
@@ -52,7 +75,7 @@ items:
     bonneReponse: "pour ne pas le blesser"
     distracteurs: ["pour gagner un jeu", "pour faire plus de bruit"]
     indice: "Une moquerie peut faire beaucoup de peine."
-  - enonce: "Malo dit à Léa des mots méchants pour la vexer, sans même la toucher. Qu'est-ce que Malo lui fait ?"
+  - enonce: "Malo dit des mots méchants à Hugo. Qu'est-ce qu'il lui fait ?"
     bonneReponse: "une insulte"
     distracteurs: ["un service", "un cadeau"]
     indice: "Ce sont des mots blessants, pas des gestes."
@@ -60,31 +83,31 @@ items:
     bonneReponse: "pour ne pas le faire souffrir"
     distracteurs: ["pour parler plus fort que lui", "pour gagner une récompense"]
     indice: "Les mots peuvent blesser autant que les gestes."
-  - enonce: "Aya pousse Hugo très fort dans la cour, sans raison. Qu'est-ce qu'Aya fait ?"
+  - enonce: "Aya pousse Hugo très fort, sans raison. Qu'est-ce qu'Aya fait ?"
     bonneReponse: "de la violence"
     distracteurs: ["un jeu", "un exercice"]
     indice: "Elle fait mal à Hugo avec son corps."
-  - enonce: "Pourquoi est-il interdit de pousser ou de frapper un camarade ?"
+  - enonce: "Pourquoi est-il interdit de pousser ou de frapper ?"
     bonneReponse: "pour ne pas lui faire mal"
     distracteurs: ["pour finir la récréation plus vite", "pour être le plus fort de la classe"]
     indice: "Le corps d'un camarade n'est pas un jouet."
-  - enonce: "Léa prête son crayon à Malo qui n'en a pas. Est-ce permis ou interdit ?"
-    bonneReponse: "permis"
-    distracteurs: ["interdit", "dangereux"]
+  - enonce: "Léa prête son crayon à Malo. Qu'est-ce qu'elle fait ?"
+    bonneReponse: "un service"
+    distracteurs: ["une moquerie", "de la violence"]
     indice: "Aider un camarade ne fait de mal à personne."
-  - enonce: "Hugo n'est pas d'accord avec Aya, alors il lui explique calmement pourquoi. Est-ce permis ou interdit ?"
-    bonneReponse: "permis"
-    distracteurs: ["interdit", "dangereux"]
+  - enonce: "Hugo explique calmement pourquoi il n'est pas d'accord. Qu'est-ce qu'Hugo fait ?"
+    bonneReponse: "une discussion"
+    distracteurs: ["une insulte", "de la violence"]
     indice: "Parler calmement ne fait de mal à personne."
-  - enonce: "Malo raconte à toute la classe une moquerie sur Léa qu'il a inventée. Qu'est-ce que Malo fait ?"
+  - enonce: "Malo imite Léa devant la classe pour rire d'elle. Qu'est-ce que Malo fait ?"
     bonneReponse: "une moquerie"
-    distracteurs: ["une information vraie", "un compliment"]
+    distracteurs: ["une insulte", "un compliment"]
     indice: "Il cherche à faire rire aux dépens de Léa."
-  - enonce: "Pourquoi est-il interdit de dire des mots insultants à un camarade, même pour rire ?"
+  - enonce: "Pourquoi est-il interdit d'insulter un camarade, même pour rire ?"
     bonneReponse: "parce que ça peut blesser malgré tout"
-    distracteurs: ["parce que c'est interdit de rire en classe", "parce que ça fait perdre du temps"]
+    distracteurs: ["parce que ça fait beaucoup de bruit", "parce que ça fait perdre du temps"]
     indice: "Une insulte fait mal, même dite en riant."
-  - enonce: "Aya tire les cheveux de Léa pendant la récréation. Qu'est-ce qu'Aya fait ?"
+  - enonce: "Aya tire les cheveux de Malo pendant la récréation. Qu'est-ce qu'Aya fait ?"
     bonneReponse: "de la violence"
     distracteurs: ["un jeu de récréation", "une blague sans conséquence"]
-    indice: "Elle fait mal à Léa avec son corps, ce n'est pas un jeu."
+    indice: "Elle fait mal à Malo avec son corps, ce n'est pas un jeu."

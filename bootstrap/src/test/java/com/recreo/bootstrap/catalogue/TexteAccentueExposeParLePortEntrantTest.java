@@ -383,6 +383,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S28-4 : deux consignes neuves.
             "Pose l'opération, puis choisis le bon résultat.",
             "Pose l'opération, puis choisis le bon quotient et le bon reste.",
+            // Correction du 2026-09-06 (lea-dev, audit de l'instance B, reprise de
+            // squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md, motif 1 de
+            // nadia-prof - la tache n'etait ecrite nulle part sur les six items de
+            // classement) : consigne neuve, propre a bandit-manchot-fait-opinion-cm1,
+            // remplace la consigne generique partagee jusque-la avec les trois autres
+            // paquets d'EMC.
+            "Lis bien, puis dis si c'est un fait ou une opinion.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
