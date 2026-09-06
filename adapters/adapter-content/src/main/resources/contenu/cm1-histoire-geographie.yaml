@@ -210,6 +210,24 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 # - HG-R5 (mot d'indice qui brouille la distinction que l'item enseigne) : l'indice du village de
 #   pêcheurs disait "reviennent avec leur récolte du jour" - une récolte est agricole, ce qui brouille
 #   exactement la distinction (pêche non agricole) que l'item veut faire tenir. Corrigé.
+#
+# S30-5 (reprise, bloc C ; nadia-prof, arbitrage prealable de s30 ; docs/backlog/backlog.md,
+# story S30-5). Deux reserves de la ligne HG-CM1-14, corrigees dans le meme geste :
+# - HG-R6 (rejeu borne, propriete a tenir, aucun texte impose) : sur les deux items de nature
+#   ("Quel type de document est ce texte ?", "Quel type de document est evoque dans ce texte ?"),
+#   le distracteur "une carte de France" s'eliminait sans rien savoir - l'enfant a un texte sous les
+#   yeux. Il est remplace, sur chacun des deux items, par une forme de document ecrit (un poeme, une
+#   recette de cuisine) qui ne s'ecarte qu'en lisant le support. Le texte-support du second item est
+#   en outre reecrit pour que le mot de la bonne reponse ("declaration") n'y apparaisse plus - il y
+#   apparaissait ("vote une declaration qui proclame...") et l'indice le disait lui-meme ; l'indice
+#   est reecrit en consequence, il ne pointe plus vers un mot a retrouver mais vers ce que le texte
+#   affirme. Le premier item garde son texte-support inchange (bonne reponse, indice, distracteur
+#   "un edit royal") : la reserve demande qu'au moins un des deux items porte sur un support ou le mot
+#   de la reponse n'apparait pas, ce que le second tient desormais.
+# - HG-R7 (mot pour mot) : le texte-support de l'item sur la prise de la Bastille disait que sa chute
+#   "devient, des l'annee suivante, une fete nationale" - le 14 juillet n'est fete nationale que
+#   depuis 1880. Remplace par le texte fourni par nadia-prof. Enonce, bonne reponse, distracteurs et
+#   indice inchanges.
 items:
   - enonce: "Quelle grande période vient juste après la Préhistoire ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
     bonneReponse: "l'Antiquité"
@@ -309,7 +327,7 @@ items:
     indice: "Repense au nombre de personnes présentes autour du roi, du matin au soir."
     ligneDeReferentiel: "HG-CM1-14"
   - enonce: "D'après ce texte, que représentait cette prison pour les habitants de Paris avant sa prise ?"  # HIS-1: document ; HIS-3: symbole de la Bastille comme instrument du pouvoir royal, fait consensuel
-    texteSupport: "En 1789, des habitants de Paris prennent d'assaut une vieille prison qui servait aussi à enfermer des opposants au roi. Sa chute est fêtée dans toute la ville et devient, dès l'année suivante, une fête nationale."
+    texteSupport: "En 1789, des habitants de Paris prennent d'assaut une vieille prison qui servait aussi à enfermer des opposants au roi. Sa chute est fêtée dans toute la ville et, l'année suivante, une grande fête réunit la France entière pour son anniversaire."
     bonneReponse: "le pouvoir absolu et l'autorité du roi"
     distracteurs: ["un simple lieu de commerce", "un monument touristique"]
     indice: "Repense à qui la prison enfermait, en plus des prisonniers ordinaires."
@@ -467,7 +485,7 @@ items:
   - enonce: "Quel type de document est ce texte ?"  # HIS-1: document ; HIS-3: texte fictif à but pédagogique illustrant le journal intime ; date de la prise de la Bastille consensuelle, famille (a)
     texteSupport: "Cher journal, nous sommes le 15 juillet 1789. Hier, j'ai vu la foule envahir la prison de la Bastille. Tout Paris est en effervescence."
     bonneReponse: "un journal intime"
-    distracteurs: ["un édit royal", "une carte de France"]
+    distracteurs: ["un édit royal", "un poème"]
     indice: "Repense à la façon dont ce texte commence."
     ligneDeReferentiel: "HG-CM1-14"
   - enonce: "Qui est l'auteur de ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle, famille (a)
@@ -477,10 +495,10 @@ items:
     indice: "Ce roi se présente lui-même au tout début du texte."
     ligneDeReferentiel: "HG-CM1-14"
   - enonce: "Quel type de document est évoqué dans ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
-    texteSupport: "Le 26 août 1789, l'Assemblée nationale vote une déclaration qui proclame que les hommes naissent et demeurent libres et égaux en droits."
+    texteSupport: "Le 26 août 1789, les députés de l'Assemblée nationale votent un texte solennel qui affirme que tous les hommes naissent et demeurent libres et égaux en droits."
     bonneReponse: "une déclaration de droits"
-    distracteurs: ["un journal intime", "une carte de France"]
-    indice: "Le mot qui nomme ce document se trouve dans la phrase."
+    distracteurs: ["un journal intime", "une recette de cuisine"]
+    indice: "Repense à ce que ce texte affirme au sujet des droits de chaque être humain."
     ligneDeReferentiel: "HG-CM1-14"
   - enonce: "Qui a écrit ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
     texteSupport: "Nous, députés de l'Assemblée nationale, réunis le 26 août 1789, déclarons que tous les hommes naissent et demeurent libres et égaux en droits."

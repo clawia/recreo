@@ -376,4 +376,62 @@ class PaquetCm1HistoireGeographieTest {
                     .doesNotContain("la banque et l'assurance", "le tourisme de croisière");
         }
     }
+
+    /**
+     * HG-R6 (nadia-prof, 2026-09-06, S30-5) : sur les deux items de nature de HG-CM1-14, le
+     * distracteur "une carte de France" s'éliminait sans rien savoir - l'enfant a un texte sous les
+     * yeux. Rejeu borné, propriété à tenir, aucun texte imposé : le distracteur a disparu sur les
+     * deux items, et au moins un des deux porte sur un support où le mot de la bonne réponse
+     * n'apparaît pas.
+     */
+    @Test
+    void hgR6LaCarteDeFranceADisparuEtUnItemNeRecopiePlusLeMotDeLaReponse() {
+        List<Map<String, Object>> itemsDeNature = itemsDeLaLigne(LIGNE_COMPRENDRE_UN_DOCUMENT)
+                .stream()
+                .filter(item -> String.valueOf(item.get("enonce")).contains("type de document"))
+                .toList();
+
+        assertThat(itemsDeNature)
+                .as("deux items de nature dans la ligne %s", LIGNE_COMPRENDRE_UN_DOCUMENT)
+                .hasSize(2);
+
+        for (Map<String, Object> item : itemsDeNature) {
+            @SuppressWarnings("unchecked")
+            List<String> distracteurs = (List<String>) item.get("distracteurs");
+            assertThat(distracteurs)
+                    .as("'%s' : la carte de France ne s'élimine plus sans lire le support",
+                            item.get("enonce"))
+                    .doesNotContain("une carte de France");
+        }
+
+        long itemsQuiRecopientLeMot = itemsDeNature.stream()
+                .filter(item -> String.valueOf(item.get("texteSupport"))
+                        .contains(String.valueOf(item.get("bonneReponse")).replace("un ", "")
+                                .replace("une ", "").split(" ")[0]))
+                .count();
+        assertThat(itemsQuiRecopientLeMot)
+                .as("au moins un des deux items ne se répond pas en recopiant un mot du support")
+                .isLessThan(itemsDeNature.size());
+    }
+
+    /**
+     * HG-R7 (nadia-prof, 2026-09-06, S30-5, texte fourni mot pour mot) : le texte-support de l'item
+     * sur la prise de la Bastille annonçait que sa chute devenait fête nationale dès l'année
+     * suivante - le 14 juillet n'est fête nationale que depuis 1880.
+     */
+    @Test
+    void hgR7LeTexteSupportDeLaBastilleNAffirmePlusUneDateFausse() {
+        Map<String, Object> item = itemsBruts().stream()
+                .filter(candidat -> "un journal intime".equals(candidat.get("bonneReponse")) == false
+                        && String.valueOf(candidat.get("texteSupport"))
+                                .contains("prison qui servait aussi"))
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(item.get("texteSupport")).isEqualTo("En 1789, des habitants de Paris prennent"
+                + " d'assaut une vieille prison qui servait aussi à enfermer des opposants au roi."
+                + " Sa chute est fêtée dans toute la ville et, l'année suivante, une grande fête"
+                + " réunit la France entière pour son anniversaire.");
+        assertThat(item.get("bonneReponse")).isEqualTo("le pouvoir absolu et l'autorité du roi");
+    }
 }
