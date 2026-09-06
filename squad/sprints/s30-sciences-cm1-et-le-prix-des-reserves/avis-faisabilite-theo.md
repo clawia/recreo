@@ -7,6 +7,9 @@
   rang, ne prononce aucun Done et ne touche pas a `squad/programme/MATRICE-couverture.md`.
 - **Repertoire** : `squad/sprints/s30/`, sans slug. Le slug du sprint appartient a `sofia-sm`, qui
   le fixe en gelant l'objectif ; si elle renomme ce repertoire, ce fichier la suit.
+  **Note de `sofia-sm`, au planning** : repertoire renomme
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/`, ce fichier deplace dans le meme geste,
+  comme annonce ci-dessus.
 - **Worktree** : branche dediee `s30-theo-faisabilite`, lignee verifiee par
   `bash outils/verifier-lignee.sh` avant la premiere ecriture. Aucune ecriture dans le depot
   principal, aucune dans l'arbre de `nadia-prof`.

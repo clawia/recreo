@@ -10745,7 +10745,7 @@ la presente ouverture.
 - **Ce que cette story ne fait pas** : elle ne sert aucune autre ligne de sciences ; elle ne sert
   pas la ligne "extraire une information d'un document scientifique" - `theo-archi` signale que le
   rendu du `texteSupport` ne porte aucune regle `white-space: pre-line` et collabe un tableau en une
-  seule ligne (`squad/sprints/s30/avis-faisabilite-theo.md`, section 2.1) : servir cette ligne est
+  seule ligne (`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`, section 2.1) : servir cette ligne est
   un arbitrage distinct, non retenu dans le perimetre de s30.
 - **Lien decision** : `DEC-0074`, `DEC-0079`, `ADR-0081`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
@@ -10984,7 +10984,7 @@ Reprise telle qu'ouverte pour s30, promue en story de sprint.
   textes - une consigne se juge contre le paquet qu'elle introduit, `nadia-prof` les rejouera une
   par une. Elle n'ecrit aucun garde-fou de comptage : `theo-archi` recommande, si un cliquet est
   voulu, de l'ecrire **apres** ce correctif et de lui donner le compte mesure a ce moment-la, jamais
-  10 (`squad/sprints/s30/avis-faisabilite-theo.md`, section 2.3) - ce n'est pas tranche par la
+  10 (`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`, section 2.3) - ce n'est pas tranche par la
   presente story.
 - **Lien** : `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 2 ;
   `DEC-0078`.
@@ -10995,9 +10995,10 @@ Reprise telle qu'ouverte pour s30, promue en story de sprint.
 
 `nadia-prof` decrivait le symptome dans sa reverification du 2026-09-06 sans prescrire la solution.
 **Ce n'est plus une story ouverte sur sa forme technique** : `theo-archi` a tranche et livre le
-correctif avant l'ouverture du sprint (`ADR-0084`, commit `c2c82ac`, `squad/sprints/s30/avis-
-faisabilite-theo.md`, section 1) - le verdict d'une mecanique servie porte desormais l'`enonce` de
-la manche qu'il ferme comme composante obligatoire, et l'ecran de fin de partie le rend entier dans
+correctif avant l'ouverture du sprint (`ADR-0084`, commit `c2c82ac`, `squad/sprints/
+s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`, section 1) - le verdict d'une
+mecanique servie porte desormais l'`enonce` de la manche qu'il ferme comme composante obligatoire,
+et l'ecran de fin de partie le rend entier dans
 un element `question-rappelee`, a cote de la reponse et dans le meme bloc qu'elle, jamais dedans.
 Ce qui reste du a s30 est le rejeu de `nadia-prof` sur cette forme livree, pas un choix a faire.
 
@@ -11026,7 +11027,7 @@ Ce qui reste du a s30 est le rejeu de `nadia-prof` sur cette forme livree, pas u
 - **Ce que cette story ne fait pas** :
   - Elle ne choisit plus la forme technique : `ADR-0084` l'a tranchee avant l'ouverture du sprint.
   - Elle ne decide pas si un intitule (par exemple *"La question :"*) doit accompagner l'enonce
-    rappele - routee a `nadia-prof` au titre de `M12` (`squad/sprints/s30/avis-faisabilite-theo.md`,
+    rappele - routee a `nadia-prof` au titre de `M12` (`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`,
     section 1, point 1). Sans intitule, aucun mot neuf n'est aujourd'hui lu par l'enfant au-dela du
     champ `enonce` lui-meme.
   - Elle ne rappelle pas le texte-support d'un item de comprehension sur cet ecran - a instruire
@@ -11037,7 +11038,7 @@ Ce qui reste du a s30 est le rejeu de `nadia-prof` sur cette forme livree, pas u
   - Elle ne modifie pas `DesignationVerdict`, qui n'a aujourd'hui aucun ecran servi (meme source,
     point 4).
 - **Lien** : `squad/decisions/adr/ADR-0084-la-reponse-d-une-fin-de-partie-voyage-avec-la-question-
-  qu-elle-commente.md` ; `squad/sprints/s30/avis-faisabilite-theo.md`, section 1 ;
+  qu-elle-commente.md` ; `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`, section 1 ;
   `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Reverification du 2026-09-06",
   point 3 ; `DEC-0077`, section 9.4 ; `DEC-0079`.
 - **Agent pressenti** : `nadia-prof` pour le rejeu ; `nadia-prof` pour l'arbitrage de l'intitule

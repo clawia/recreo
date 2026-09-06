@@ -17,7 +17,7 @@
   `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-
   quinze-reserves.md` (`nadia-prof`, arbitrage prealable complet - chiffres et conditions repris
   sans etre recalcules),
-  `squad/sprints/s30/avis-faisabilite-theo.md` (`theo-archi`, avis de faisabilite technique),
+  `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md` (`theo-archi`, avis de faisabilite technique),
   `squad/programme/MATRICE-couverture.md` (section "Perimetre de s30"),
   `squad/programme/sciences-et-technologie/competences-cm1.md`,
   `docs/backlog/backlog.md` (section "Sprint 30").
@@ -76,8 +76,8 @@ de codes, sciences et technologie CM1 en faisant partie. Ce jour est celui ou un
 va exister : `nadia-prof` ecrit qu'elle **ne prononcera aucun Done pedagogique sur une ligne de
 sciences dont le code n'est pas alloue et declare par le paquet qui la sert** (section 2.7 de son
 arbitrage), et `theo-archi` confirme que le garde-fou `ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest`
-refuse tout paquet servi tant que son referentiel ne porte aucun code (`squad/sprints/s30/avis-
-faisabilite-theo.md`, section 2.2).
+refuse tout paquet servi tant que son referentiel ne porte aucun code (`squad/sprints/
+s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`, section 2.2).
 
 **Alloue ici, dans le meme geste que la presente decision**, sur le precedent exact de `lea-dev`
 pour l'EMC CP (`ADR-0081`, commit `5526932`) : vingt codes `SCI-CM1-01` a `SCI-CM1-20`, ecrits en
@@ -108,7 +108,7 @@ cout nul, deja nommee dans la story qui la porte.
 
 **Non retenue : la ligne "extraire une information d'un document scientifique".** `theo-archi`
 mesure que `texteSupport` est rendu sans regle `white-space: pre-line` et collabe un tableau en une
-seule ligne (`squad/sprints/s30/avis-faisabilite-theo.md`, section 2.1) : servir cette ligne, meme
+seule ligne (`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`, section 2.1) : servir cette ligne, meme
 sur sa seule moitie textuelle, est un arbitrage distinct que je ne tranche pas dans cette decision.
 
 **Non retenues, a ne pas prendre au premier lot** (`nadia-prof`, section 2.8) : les lignes 9, 15,
@@ -227,7 +227,7 @@ prix, et non en le decouvrant a la cloture.
 |---|---|---|
 | L'intitule de la question rappelee en fin de partie (*"La question :"* ou rien) | `nadia-prof` (`M12`) | Arbitrage pedagogique sur un texte lu par l'enfant, pas une decision produit que je prends ici |
 | Le poids visuel de la question rappelee | `ines-design` | Propose sans trancher |
-| Le cliquet de comptage possible sur `CONS-1` | `sofia-sm`, `theo-archi` | A ecrire, si voulu, **apres** le correctif, avec le compte mesure a ce moment - jamais avec 10 (`squad/sprints/s30/avis-faisabilite-theo.md`, section 2.3) |
+| Le cliquet de comptage possible sur `CONS-1` | `sofia-sm`, `theo-archi` | A ecrire, si voulu, **apres** le correctif, avec le compte mesure a ce moment - jamais avec 10 (`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/avis-faisabilite-theo.md`, section 2.3) |
 | Le garde-fou de coherence entre un bilan de matiere et le compte reel de ses lignes (`DEC-0077`, section 7) | `camille-po` (normalisation prealable des quatorze bilans), puis `theo-archi` (garde-fou, ~170 lignes) | `theo-archi` le juge encodable mais pas avant que les bilans partagent une forme fixe, sans quoi le garde-fou devinerait une phrase (meme source, section 3). Non engage a s30, note pour ne pas rester une quatrieme fois sans reponse |
 | Le rang de declaration comme troisieme forme de contrefacon du garde-fou 4 du palier 2 (`ADR-0080`) | `theo-archi` | Gagne a etre tranche avant `T6`, hors perimetre du contenu de s30 - le palier 2 n'est pas ouvert |
 
