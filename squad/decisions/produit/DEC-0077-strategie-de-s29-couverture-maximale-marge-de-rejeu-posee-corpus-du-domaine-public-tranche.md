@@ -4,16 +4,20 @@
   **Amendee le 2026-09-05 (meme jour, section 8)** : la question est tranchee - un troisieme
   arbitrage de l'utilisatrice retient la parallelisation de `nadia-prof` (deux instances, borne
   portee a 8,0) et la composition reelle de s29, apres que `nadia-prof` a decline par ecrit le
-  perimetre annonce en section 2 (il valait 6,0 a 7,0, pas 5,0).
+  perimetre annonce en section 2 (il valait 6,0 a 7,0, pas 5,0). **Amendee une seconde fois le
+  2026-09-06 (section 9, cloture de s29)** : le cout reel du sprint (9,25 sur 8,0, marge de rejeu
+  ramenee a 0,75) et le recompte corrige de la matrice (neuf lignes ferment, 52/138 = 37,7 %, et
+  non huit comme l'annonce l'Instance A de `nadia-prof`) sont actes.
 - **Date** : 2026-09-05
 - **Auteur** : `camille-po`
-- **Sprint** : s29 (ouverture)
+- **Sprint** : s29 (ouverture ; amendement de cloture le 2026-09-06)
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Cette decision arbitre
   un perimetre et une question de gouvernance de sprint ; elle ne fixe aucune competence ligne a
   ligne - ce chiffrage est celui de l'arbitrage prealable de `nadia-prof`, dont la section 13
   (amendement du 2026-09-05) remplace le chiffrage des sections 2 et 8.2 du present document pour
   s29.
-- **Statut** : Acceptee ; amendee le 2026-09-05 (meme jour, section 8).
+- **Statut** : Acceptee ; amendee le 2026-09-05 (meme jour, section 8) et le 2026-09-06 (cloture de
+  s29, section 9).
 - **Lien** : `DEC-0074` (perimetre de s28, tarif "suis-je la source ?"), `DEC-0075` (tranchee par la
   presente decision), `DEC-0076` (arbitrage de cloture de s28), `ADR-0079` (l'unite de la borne de
   `nadia-prof` est le lot de matiere), `ADR-0081` (clause 5, un item ne sert qu'une ligne),
@@ -345,3 +349,76 @@ clause `PAR-*` qui aurait du le prevenir, jamais a la CI.
 - Il ne tranche pas la forme d'un registre d'identifiants de conditions (`PAR-5`) ni celle d'un
   garde-fou de bilan de matiere (section 7) : les deux restent routees a `sofia-sm` et
   `theo-archi`.
+
+## 9. Amendement du 2026-09-06 (cloture de s29) - le sprint ferme neuf lignes, pas huit ; le cout
+## reel et la marge de rejeu, actes
+
+### 9.1 Le recompte des lignes fermees, avec l'ecart trouve
+
+`nadia-prof` annonce, dans son releve d'Instance A (`verdicts-nadia-instance-A.md`) : *"Total
+Instance A : cinq lignes ferment. Avec les trois de l'Instance B, huit pour le sprint [...] 51 /
+138 = 37,0 %."* **Ce compte est le sien ; le compte de la matrice est le mien** (section 8.3 le
+disait deja, avant que le sprint ne soit joue), et il differe.
+
+**Mon recompte, ligne a ligne, colonne par colonne, sur les dix-huit tableaux de
+`squad/programme/MATRICE-couverture.md` apres application de tous les verdicts de s29** :
+`couvert-valide` 52, `en cours` 7, `non couvert` 79, `non couvrable en l'etat` 71, 209 lignes,
+138 au denominateur atteignable. **52 / 138 = 0,3768... = 37,7 %.**
+
+**L'ecart** : neuf lignes ferment, pas huit. `nadia-prof` compte cinq fermetures pour l'Instance A
+et trois pour l'Instance B (`EMC-CP-02`, `EMC-CM1-11`, `EMC-CM1-07`, toutes fermees a son reaudit
+du 2026-09-06). **Son compte omet `EMC-CP-06`** (`bandit-manchot-regles-de-vie-cp`), fermee des le
+premier passage de l'Instance B le 2026-09-05 (`5c35f6c`) : *"EMC-CP-06 ferme, sous reserve non
+bloquante"*, avec Done pedagogique prononce et mention exigee ecrite dans
+`squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md`. Cette ligne n'est ni un refus, ni un
+verdict retire : elle est fermee, datee, sourcee, et son statut n'a jamais bouge depuis. Le fait
+que `nadia-prof` la nomme separement dans son releve d'Instance A (*"EMC-CP-06 avait ferme au
+premier passage de l'Instance B"*), sans l'ajouter a son propre compte de huit, est la cause
+exacte de l'ecart.
+
+**Ce chiffre n'est pas surprenant : il est celui que la composition de la section 8.4 annoncait
+comme plafond arithmetique avant que le sprint ne soit joue** - "`QLM-CP-02` +1, `QLM-CP-07` +1,
+`HG-CM1-06` +1, `HG-CM1-07` +1, `HG-CM1-14` +1, EMC CP ligne 6 +1, EMC CP ligne 2 +1, EMC CM1 ligne
+11 +1, EMC CM1 ligne 7 +1 = +9, soit 52 / 138 = 37,7 %" (section 8.4 ci-dessus). **Les neuf lignes
+visees ferment toutes les neuf : le sprint atteint son plafond, pas seulement le haut de la
+fourchette attendue (36,2 % a 37,0 %).** `squad/programme/MATRICE-couverture.md` est mis a jour a
+52/138 = 37,7 % dans le meme geste que le present amendement ; le detail ligne a ligne, les
+mentions exigees et les reserves ouvertes y sont ecrits.
+
+**Ce que je ne fais pas de cet ecart** : il ne remet en cause aucun des neuf verdicts eux-memes,
+qui restent ceux de `nadia-prof` avec leurs motifs entiers. C'est une erreur d'addition sur un
+total qu'elle a elle-meme qualifie de n'etre pas le sien a tenir (*"le compte de la matrice
+appartient a `camille-po` ; je ne la touche pas"*) - exactement pourquoi ce compte est verifie ici
+plutot que recopie.
+
+### 9.2 Le cout reel du sprint, et la marge de rejeu qu'il consomme
+
+**Instance A** : 4,0 sur son plafond individuel de 5,0 (3,5 planifies + 0,5 non planifies -
+`VIV-R2` tranchee et le jugement du texte neuf `hill`/`colline` - absorbes par sa marge
+individuelle de 0,5, `PAR-8`). **Aucun tirage sur la marge de rejeu du sprint.**
+
+**Instance B** : 5,25 sur son plafond individuel de 5,0 (3,0 au premier passage + 2,25 au reaudit).
+Son plafond individuel absorbe 2,0 des 2,25 non planifies ; **les 0,25 restants sont tires sur la
+marge de rejeu du sprint**, qu'elle nomme elle-meme comme le geste pour lequel cette marge existe.
+
+**Total du sprint : 9,25 sur la borne de 8,0** (`PAR-8`, section 8.2 ci-dessus). La marge de rejeu
+nommee a l'ouverture (1,0, non allouee) est tiree a hauteur de 0,25 par l'Instance B ; **elle
+passe de 1,0 a 0,75 pour ce qu'il en reste apres s29** - la meme forme de gestion que celle que
+`DEC-0076` avait actee a la cloture de s28 (5,25 sur une borne de 5,0), reconduite ici sur une
+borne doublee et une marge nommee plutot que decouverte au refus.
+
+**Ce que ce depassement achete** : `nadia-prof` a trouve, au reaudit, une propriete qu'elle
+n'avait pas vue au premier passage (`POS-R2`, la troisieme lecture de la division posee, section 2
+de son releve d'Instance B) et a corrige deux de ses propres conditions incoherentes entre elles
+(`ANG-R1`, `VIV-R2`, section 5.1 de la passe transverse). **Elle n'a facture aucun supplement
+pour ces deux corrections** : le tirage de 0,25 ne vient que de la recherche de la troisieme
+lecture sur la division, qu'elle avait annoncee d'avance comme une question ouverte et non une
+liste a cocher.
+
+### 9.3 Ce que cet amendement ne fait pas
+
+- Il ne revoque aucun verdict de `nadia-prof` : les neuf fermetures, leurs motifs, leurs mentions
+  exigees et leurs reserves restent siens, dans les fiches ou elle les a ecrits.
+- Il ne prononce aucun Done pedagogique.
+- Il ne tranche pas `CONS-1` (traite par `DEC-0078`) ni la cause technique de `REV-1` (routee a
+  `theo-archi`, cf. `docs/backlog/backlog.md`).

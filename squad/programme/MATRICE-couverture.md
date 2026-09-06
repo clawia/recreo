@@ -278,7 +278,7 @@ Source : `squad/programme/mathematiques/competences-cm1.md`.
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - tables de multiplication (jusqu'a ×10), rappel automatise | bandit-manchot-tables-multiplication-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Calcul mental - multiplications et divisions simples (multiples de 10, 100) | bandit-manchot-multiplications-divisions-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Nombres et calculs | Effectuer une multiplication posee d'un nombre a 2-3 chiffres par un nombre a 1-2 chiffres | bandit-manchot-multiplication-posee-cm1 | bandit manchot | **couvert-valide** (2026-09-04, s28) - **`MAT-CM1-04` ferme.** Onze items, quatre combinaisons du libelle servies (2x1, 3x1, 2x2, 3x2, `POS-4`), chaque distracteur une erreur classique nommee et verifiee (retenue oubliee, produit partiel non decale, `POS-3`), item non resoluble sans poser l'operation (`POS-2`, mordue par un test). Onze produits recalcules un par un, aucune erreur. Aucune reserve. **Mention exigee d'avance par `nadia-prof`, a reprendre mot pour mot, sans laquelle elle ne ferme pas la ligne** : "le resultat atteste le calcul ; la technique posee elle-meme - disposition, retenues, produits partiels - n'est ni montree ni verifiee par le produit." |
-| mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | bandit-manchot-division-posee-cm1 | bandit manchot | **couvert-valide** (2026-09-04, s28) - **`MAT-CM1-05` ferme.** Onze items, diviseur a un chiffre sur tous, quotient et reste demandes a chaque fois, reste nul sur deux items et non nul sur les neuf autres (`POS-4`). Chaque distracteur une erreur classique arithmetiquement coherente (reste superieur au diviseur, quotient sans reste, `POS-3`). Onze divisions recalculees (quotient et reste) une par une, aucune erreur. **Mention exigee d'avance par `nadia-prof`, a reprendre mot pour mot, sans laquelle elle ne ferme pas la ligne** : "le resultat atteste le calcul ; la technique posee elle-meme - disposition, retenues, produits partiels - n'est ni montree ni verifiee par le produit." Reserve non bloquante **`POS-R1`** : sur neuf items sur onze, un distracteur porte exactement le quotient de la bonne reponse (reste a zero) ; sur deux items sur onze, l'item se repond sans diviser (les deux distracteurs ont un reste superieur ou egal au diviseur) - a varier sur le prochain lot de cette ligne |
+| mathematiques | CM1 | Nombres et calculs | Effectuer une division euclidienne simple (quotient et reste) par un diviseur a 1 chiffre | bandit-manchot-division-posee-cm1 | bandit manchot | **couvert-valide** (2026-09-04, s28) - **`MAT-CM1-05` ferme.** Onze items, diviseur a un chiffre sur tous, quotient et reste demandes a chaque fois, reste nul sur deux items et non nul sur les neuf autres (`POS-4`). Chaque distracteur une erreur classique arithmetiquement coherente (reste superieur au diviseur, quotient sans reste, `POS-3`). Onze divisions recalculees (quotient et reste) une par une, aucune erreur. **Mention exigee d'avance par `nadia-prof`, a reprendre mot pour mot, sans laquelle elle ne ferme pas la ligne** : "le resultat atteste le calcul ; la technique posee elle-meme - disposition, retenues, produits partiels - n'est ni montree ni verifiee par le produit." **`POS-1` reste due, inchangee.** `POS-R1` (structure des distracteurs donnant la reponse sans diviser) **levee le 2026-09-06, s29**, apres rejeu et correction (`8644932`, `130a538`). Reserve non bloquante nouvelle, datee du 2026-09-06 : **`POS-R2`** - une troisieme lecture donne la bonne reponse sans poser de division sur 7 des 11 items (63,6 % contre 33,3 % au hasard, le reste correct de la bonne reponse etant toujours majoritaire ou unanime parmi les distracteurs) |
 | mathematiques | CM1 | Nombres et calculs | Notion de fraction simple (unites fractionnaires, fractions inferieures a 1) et reperage sur une droite numerique | bandit-manchot-fractions-cm1 | bandit manchot | **couvert-valide** (2026-08-31, s24) - **couverture partielle, mention exigee par `FRA-9` et reprise telle quelle** : *"moitie 'notion de fraction simple' seule ; la moitie 'reperage sur une droite numerique' reste non couverte"* |
 | mathematiques | CM1 | Nombres et calculs | Resoudre des problemes a plusieurs etapes mobilisant les 4 operations | bandit-manchot-problemes-etapes-cm1 | bandit manchot | couvert-valide |
 | mathematiques | CM1 | Grandeurs et mesures | Convertir des unites de longueur, masse, contenance dans le systeme metrique | bandit-manchot-conversions-unites-cm1 | bandit manchot | couvert-valide |
@@ -1286,12 +1286,12 @@ ligne "questionner le monde / CM1".
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | questionner le monde | CP | Le vivant, la matiere et les objets | Distinguer les êtres vivants des objets et de la matière inerte sur des exemples du quotidien. | bandit-manchot-vivant-non-vivant-cp | bandit manchot | **couvert-valide** (2026-09-04, s28, troisieme passage) - **`QLM-CP-01` ferme.** Premier paquet (huit items, s27) `VALIDE` ; second paquet (six items neufs, s28) **REFUSE** le 2026-09-04 - trois items de matiere inerte (caillou, sable, neige) donnaient `un objet` en bonne reponse, ce qui est faux ; corrige dans le meme sprint (`0c383b9`, texte fourni mot pour mot par `nadia-prof`) et reaudite le meme jour : **VALIDE SOUS RESERVE**. Quatorze items au total, `nombreDeManches: 10` (le motif de `DEC-0073` a huit items ne s'applique plus, `VIV-R1` levee). Titre servi *"Vivant ou pas vivant"*. Reserve nouvelle non bloquante **`VIV-R2`** : sur les trois items de matiere inerte, les deux propositions (`un être vivant` / `ce n'est pas un être vivant`) se terminent par les memes mots et le seul mot distinctif est en tete de la plus longue - correction routee a s29 (`docs/backlog/backlog.md`). Aucun refus n'est efface : le motif du second passage reste ecrit dans `squad/conformite/FICHE-bandit-manchot-vivant-non-vivant-cp.md` |
-| questionner le monde | CP | Le vivant, la matiere et les objets | Identifier ce qui caractérise un être vivant : il naît, se nourrit, grandit, a des petits, meurt. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Identifier ce qui caractérise un être vivant : il naît, se nourrit, grandit, a des petits, meurt. | bandit-manchot-cycle-de-vie-cp | bandit manchot | **couvert-valide** (2026-09-06, s29) - **`QLM-CP-02` ferme.** `FER-1` : les cinq caracteres du libelle chacun en bonne reponse, verifies un par un. `FER-2` : onze items. `FER-3` : deux operations mentales distinctes. Exactitude 11 sur 11. Lisibilite : mediane 7 mots. Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement). Deux reserves non bloquantes, datees du 2026-09-06 : **`CYV-R1`** (item de la plante, au-dessus du niveau et auto-repondant, correction fournie mot pour mot) et **`REV-1`** (phrase de revelation agrammaticale sur 5 des 11 items, defaut de portee depot, route a `theo-archi`) |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Nommer les principales parties du corps humain et les cinq sens. | bandit-manchot-corps-sens-cp | bandit manchot | **couvert-valide** (2026-09-04, s28, second passage) - **`QLM-CP-03` ferme.** Premier paquet (huit items, s27) `VALIDE SOUS RESERVE` (`COR-R1`, item du toucher trop long et hors niveau, levee le 2026-09-03 sur correction reprise mot pour mot). Second paquet (six items neufs, s28) porte le compte des "parties du corps" a neuf (bras, pieds, dos, ventre, genou, la peau) : `VALIDE SOUS RESERVE` sur `COR-R4` (item de la peau, dix-neuf mots, plus du double de la mediane) - **payee et levee le meme jour** (`0c383b9`, texte fourni mot pour mot, enonce ramene a douze mots). Quatorze items au total, `nombreDeManches: 10` (`COR-R3` levee, meme motif que `VIV-R1`). Reserve non bloquante ouverte, inchangee depuis s27 : **`COR-R2`** - *gouter -> la bouche* quand l'organe du gout est la langue |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Connaître quelques règles d'hygiène de vie (sommeil, alimentation, hygiène du corps) et leur effet sur la santé. | - | - | non couvert |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les états de l'eau (solide, liquide) et les changements d'état observables. | bandit-manchot-etats-eau-cp | bandit manchot | **couvert-valide** (2026-09-04, s28, second passage) - **`QLM-CP-05` ferme.** Premier paquet (huit items, s27) `VALIDE`. Second paquet (six items neufs, s28) porte les "changements d'etat" a quatre items sous deux formes (classer, nommer) et tient le perimetre au mot pres - aucun item n'introduit l'etat gazeux, la vapeur ou l'evaporation : `VALIDE`, sans reserve nouvelle bloquante. Quatorze items au total, `nombreDeManches: 10` (`EAU-R2` levee, meme motif que `VIV-R1`). Reserve non bloquante ouverte, inchangee depuis s27 : **`EAU-R1`** - l'indice de l'item "quand la glace fond" est abstrait (renvoi a "ce deuxieme etat" plutot qu'un critere direct) |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Identifier de quelle matière un objet est fait et trier des matériaux selon une propriété simple. | - | - | non couvert |
-| questionner le monde | CP | Le vivant, la matiere et les objets | Identifier la fonction d'un objet technique du quotidien et nommer ses parties. | - | - | non couvert |
+| questionner le monde | CP | Le vivant, la matiere et les objets | Identifier la fonction d'un objet technique du quotidien et nommer ses parties. | bandit-manchot-objet-technique-cp | bandit manchot | **couvert-valide** (2026-09-06, s29) - **`QLM-CP-07` ferme.** `FER-1` : les deux moities du libelle servies (fonction, cinq items ; parties, six items). `FER-2` : onze items. `FER-3` : deux taches par construction. Exactitude 11 sur 11. Lisibilite : mediane 7 mots. Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement). Trois reserves non bloquantes, datees du 2026-09-06 : **`OBJ-R1`** (titre *"Fonction d'un objet"* illisible et trop etroit au CP, remplacement fourni mot pour mot), **`OBJ-R2`** (les cinq items de fonction se repondent sans connaitre l'objet, rejeu borne) et **`REV-1`** (phrase de revelation maladroite sur les cinq items de fonction, defaut de portee depot, route a `theo-archi`) |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les objets numériques du quotidien et quelques règles simples de leur usage. | - | - | non couvert |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Mener une démarche d'investigation simple : observer, questionner, expérimenter, dire ce qu'on a trouvé. | - | - | **non couvrable en l'etat** (2026-09-02, `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.1) - jugement humain sur une production libre (`ADR-0008`), meme famille que *rediger* (`ADR-0008`) et *copier* (`DEC-0066`), nature irreversible. `nadia-prof` : "Geste pratique et compte rendu libre. Observer, experimenter et dire ce qu'on a trouve ne se produisent ni par un choix ni par une saisie." |
 | questionner le monde | CP | Se situer dans l'espace | Utiliser le vocabulaire de position pour décrire l'espace proche (devant/derrière, gauche/droite, au-dessus/au-dessous, près/loin). | - | - | non couvert |
@@ -1302,11 +1302,10 @@ ligne "questionner le monde / CM1".
 | questionner le monde | CP | Se situer dans le temps | Comparer des modes de vie d'autrefois et d'aujourd'hui à partir d'objets et d'images du quotidien. | - | - | non couvert |
 | questionner le monde | CP | Explorer les organisations du monde | Comparer des modes de vie ici et ailleurs (habitat, alimentation, école, déplacements). | - | - | non couvert - ligne signalee comme la plus a risque de biais du lot ; `BIA-1` et `BIA-2` (section 7.4 de l'arbitrage) sont opposables a tout paquet qui la sert. |
 
-**Bilan, corrige le 2026-09-05 (`camille-po`) - le bilan precedent (15 `non couvert`) datait
-d'avant les trois fermetures de s28 et n'avait pas ete mis a jour** : 16 lignes, 12 `non
-couvert`, 3 `couvert-valide` (`QLM-CP-01`, `QLM-CP-03`, `QLM-CP-05`), 1 `non couvrable en
-l'etat`. 15 lignes entrent au denominateur atteignable (inchange : le nombre de lignes non
-couvrables en l'etat n'a pas bouge).
+**Bilan, corrige le 2026-09-06 (`camille-po`, s29) - deux lignes de plus ferment** : 16 lignes,
+10 `non couvert`, 5 `couvert-valide` (`QLM-CP-01`, `QLM-CP-02`, `QLM-CP-03`, `QLM-CP-05`,
+`QLM-CP-07`), 1 `non couvrable en l'etat`. 15 lignes entrent au denominateur atteignable
+(inchange : le nombre de lignes non couvrables en l'etat n'a pas bouge).
 
 ## Histoire-Geographie - CM1 (cycle 3)
 
@@ -1327,15 +1326,15 @@ paquet), `BIA-5` sur les lignes 5 a 8 (aucun jugement de valeur sur un personnag
 | histoire-geographie | CM1 | Et avant la France ? | Identifier les traces d'une occupation ancienne du territoire et ce que les Gaulois, les Grecs et les Romains y ont laissé. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 1 item, reste `en cours` |
 | histoire-geographie | CM1 | Et avant la France ? | Identifier les grands mouvements et déplacements de populations du IVe au Xe siècle et leurs effets sur le territoire. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 1 item, reste `en cours` |
 | histoire-geographie | CM1 | Le temps des rois | Nommer et situer dans le temps quelques rois qui ont marqué la construction du royaume (Louis IX, François Ier, Henri IV, Louis XIV). | - | - | non couvert - ligne 5, laissee de cote par ce premier paquet (`nadia-prof`, `cm1-histoire-geographie.yaml`) ; a servir dans un paquet ulterieur. |
-| histoire-geographie | CM1 | Le temps des rois | Associer chacun de ces rois à un fait ou à une réalisation qui le caractérise (la croisade, la Renaissance, l'édit de Nantes, Versailles). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 4 items, reste `en cours` |
-| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Situer les événements majeurs de la Révolution française (1789, l'abolition des privilèges, la Déclaration des droits de l'homme et du citoyen, la fin de la monarchie). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 3 items, reste `en cours` |
+| histoire-geographie | CM1 | Le temps des rois | Associer chacun de ces rois à un fait ou à une réalisation qui le caractérise (la croisade, la Renaissance, l'édit de Nantes, Versailles). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s29, composition A) - **`HG-CM1-06` ferme.** `FER-1` : les quatre realisations de la parenthese enfin servies en bonne reponse - elles ne l'etaient pas avant ce lot. `FER-2` : 10 items. `FER-3` : deux taches a 4 items. Aucune tradition parmi les faits. Aucune mention de couverture partielle n'est due |
+| histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Situer les événements majeurs de la Révolution française (1789, l'abolition des privilèges, la Déclaration des droits de l'homme et du citoyen, la fin de la monarchie). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s29, composition A) - **`HG-CM1-07` ferme.** `FER-1` : les quatre evenements de la parenthese. `FER-2` : 10 items. `FER-3` : 7 contre 3, exactement au plancher, `nadia-prof` le dit tel quel. Chronologie revolutionnaire juste sur les dix items. Aucune mention de couverture partielle n'est due |
 | histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Identifier le passage de la Révolution à l'Empire et ce que Napoléon Bonaparte y change. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 1 item, reste `en cours` |
 | histoire-geographie | CM1 | Se reperer dans l'espace : construire des reperes geographiques | Se repérer sur une carte de France et sur un planisphère (océans, continents, quelques repères physiques, quelques grandes villes). | - | - | non couvert - palier 2 requis (se reperer sur une carte) ; un quiz de noms ne sert pas la competence, `nadia-prof` le nomme explicitement. |
 | histoire-geographie | CM1 | Se reperer dans l'espace : construire des reperes geographiques | Situer son lieu de vie à différentes échelles (commune, département, région, France, Europe, monde). | - | - | non couvert - meme motif : palier 2 requis, non construit a ce jour ; le lieu de vie de l'enfant n'est pas connu du produit (`DEC-0028`, aucune persistance). |
 | histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Identifier les caractéristiques d'un lieu de vie et le distinguer d'un autre (espace urbain, espace périurbain, espace rural). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-04, s28, second passage, composition B) - **`HG-CM1-11` ferme.** Le paquet passe de deux items a dix, exactement le plancher (`FER-2`) : les trois types d'espace (urbain, periurbain, rural) sont tous en bonne reponse (`FER-1`), sur deux taches distinctes - nommer le type a partir d'une description, retrouver une caracteristique d'un type donne - la moins servie a quatre items (`FER-3`). `HG-R3` (distracteurs absurdes sur l'item rural, reduction a un seul trait) **levee** : distracteurs remplaces par des activites plausibles, enonce nuance, item de contre-exemple ajoute (village de pecheurs). `HIS-1`, `HIS-2`, `HIS-3` verifies sur les dix-sept items neufs du lot ; `HIS-2` et l'exactitude factuelle restent sans garde executable. Reserves non bloquantes, section synthese de s28 : **`HG-R4`** (charge de lecture, mediane du fichier a 16 mots), **`HG-R5`** (mot d'indice "recolte" a corriger sur l'item du village de pecheurs) |
 | histoire-geographie | CM1 | Decouvrir le(s) lieu(x) ou j'habite, se loger, travailler, se cultiver | Décrire comment on se loge, on travaille, on se cultive et on se déplace dans un espace urbain et dans un espace touristique. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 1 item, reste `en cours` |
 | histoire-geographie | CM1 | Consommer en France | Identifier d'où viennent l'eau, l'énergie et les aliments consommés, et les étapes de leur acheminement. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-04, s28, second passage, composition B) - **`HG-CM1-13` ferme.** Le paquet passe de quatre items (energie seule) a dix, exactement le plancher (`FER-2`) : eau, energie et aliments sont desormais tous les trois servis (`FER-1`), sur deux taches distinctes - origine de la ressource, acheminement jusqu'a nous - la seconde, absente a s27, porte quatre items (`FER-3`). `HIS-1`, `HIS-2`, `HIS-3` verifies sur les dix-sept items neufs du lot ; `HIS-2` et l'exactitude factuelle restent sans garde executable. Reserves non bloquantes, section synthese de s28 : **`HG-R4`** (charge de lecture), **`HG-R5`** (sans objet sur cette ligne, item concerne sur la ligne 11) |
-| histoire-geographie | CM1 | Comprendre un document | Comprendre un document (texte, carte, image) : identifier sa nature, sa date et son auteur, et en extraire une information. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 3 items, reste `en cours` |
+| histoire-geographie | CM1 | Comprendre un document | Comprendre un document (texte, carte, image) : identifier sa nature, sa date et son auteur, et en extraire une information. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s29, composition A) - **`HG-CM1-14` ferme sur sa part servie.** `FER-1` : les quatre composantes du libelle, dont nature et auteur, enfin servies. `FER-2` : 10 items. `FER-3` : 6 contre 4. **Mention de couverture partielle exigee d'avance et reprise mot pour mot (`marc-dev`, `nadia-prof`) : "document textuel seul ; carte et image restent non couvertes"**. Deux reserves non bloquantes, datees du 2026-09-06 : **`HG-R6`** (deux items de nature offrent une proposition qui s'elimine sans rien savoir, rejeu borne) et **`HG-R7`** (inexactitude du texte-support sur la date ou le 14 juillet devient fete nationale, correction fournie mot pour mot) |
 
 **Bilan du 2026-09-03 (s27)** : 14 lignes. Onze passent `non couvert` -> `en cours` (premier
 paquet de la matiere, `bandit-manchot-histoire-geographie-cm1`, VALIDE). Trois restent `non
@@ -1348,6 +1347,17 @@ ferment - `HG-CM1-11` (types d'espaces) et `HG-CM1-13` (eau, energie, aliments) 
 `couvert-valide`. Les neuf autres lignes `en cours` restent `en cours`, non touchees par ce lot
 (`nadia-prof` : *"le lot est integralement consacre a la fermeture"*), et les trois lignes `non
 couvert` restent inchangees. Bilan de la matiere apres s28 : 2 `couvert-valide`, 9 `en cours`,
+3 `non couvert`, 14 au total.
+
+**Bilan du 2026-09-06 (s29, composition A)** : trois des neuf lignes `en cours` ferment -
+`HG-CM1-06` (rois et realisations), `HG-CM1-07` (Revolution) et `HG-CM1-14` (comprendre un
+document, sur sa part servie) passent `couvert-valide`. **`nadia-prof` a ecrit deux fois "neuf
+lignes en cours" (arbitrages de s28 et de s29) - le chiffre etait exact avant ce lot, elle le
+corrige elle-meme apres l'avoir joue : il en reste six**, pas neuf : `HG-CM1-01`, `-02`, `-03`,
+`-04`, `-08` et `-12`, dont cinq portent exactement un item. Les lignes `-05`, `-09` et `-10` ne
+sont pas
+`en cours` : `-05` n'a jamais ete servie (laissee de cote par le premier paquet) et `-09`/`-10`
+sont hors de portee du palier 1. Bilan de la matiere apres s29 : 5 `couvert-valide`, 6 `en cours`,
 3 `non couvert`, 14 au total.
 
 ## Langues vivantes (anglais) - CP (cycle 2)
@@ -1607,11 +1617,11 @@ avant qu'un lot ne soit ecrit.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | enseignement moral et civique | CP | Respecter autrui | Identifier et nommer les émotions d'autrui dans une situation simple (joie, tristesse, colère, peur). | - | - | non couvert - jouable au choix, sous `EMC-1` et `EMC-2`. Risque propre : beaucoup de situations admettent deux emotions defendables (`HIS-2` transpose). |
-| enseignement moral et civique | CP | Respecter autrui | Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves (moquerie, insulte, violence). | - | - | non couvert - jouable au choix. Ce n'est pas une opinion : la moquerie et la violence sont interdites, reponse unique et exacte. |
+| enseignement moral et civique | CP | Respecter autrui | Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves (moquerie, insulte, violence). | bandit-manchot-permis-interdit-cp | bandit manchot | **couvert-valide** (2026-09-06, s29, instance B, apres reprise) - **`EMC-CP-02` ferme.** Refuse le 2026-09-05 (charge de lecture d'un autre niveau, item portant sa reponse dans son enonce), repris et valide sous reserve apres correction. Aucune mention de couverture partielle n'est due. Reserve non bloquante, datee du 2026-09-06 : **`PER-R1`** (question et bonne reponse ne s'enchainent pas toujours en francais correct sur les items de qualification) |
 | enseignement moral et civique | CP | Respecter autrui | Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte en parler. | - | - | non couvert - jouable au choix, sous `EMC-3`. Ligne delicate : mal ecrite, elle mettrait l'enfant en position de victime nommee ou lui suggererait de se debrouiller seul. |
 | enseignement moral et civique | CP | Respecter autrui | Reconnaître que les personnes sont différentes et qu'aucune différence ne justifie de traiter quelqu'un moins bien. | - | - | non couvert - jouable au choix, sous `EMC-4`, `BIA-1` et `BIA-2`, seulement sous la forme de l'interdit, jamais sous celle de l'enumeration des differences (contrefacon a stereotype). |
 | enseignement moral et civique | CP | Respecter autrui | Employer les formules de politesse et de respect dans les échanges (saluer, remercier, demander, écouter sans couper). | - | - | non couvert - jouable sur la seule moitie connaissance ; l'emploi effectif en situation n'est pas servi. Mention exigee d'avance : "connaissance des formules seule ; leur emploi en situation n'est pas servi". |
-| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent. | - | - | non couvert - jouable au choix. Ligne la plus franchement jouable : la regle et sa raison se posent toutes deux en trois propositions. |
+| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent. | bandit-manchot-regles-de-vie-cp | bandit manchot | **couvert-valide** (2026-09-05, s29, instance B) - **`EMC-CP-06` ferme.** `FER-1` : les deux moities du libelle (connaitre les regles, dire a quoi elles servent) chacune en bonne reponse. `FER-2` : 11 items. `FER-3` : deux operations mentales distinctes. Exactitude 11 sur 11. **Mention de couverture partielle exigee d'avance et reprise mot pour mot : "connaissance de la regle et de ce a quoi elle sert seule ; sa mise en oeuvre en situation n'est pas servie. Ce produit verifie ce qu'un enfant sait, jamais ce qu'il fait."** Reserve non bloquante, datee du 2026-09-05 : **`REG-R1`** (trois distracteurs hors registre, reduisant l'item a un choix entre deux) |
 | enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous. | - | - | non couvert - jouable au choix, sous reserve de lisibilite : le mot loi ne doit pas etre defini juridiquement dans l'enonce. |
 | enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Reconnaître et nommer les symboles de la République française (drapeau tricolore, Marianne, La Marseillaise, la fête nationale). | - | - | non couvert - jouable au choix textuel, sous `ART-1`. La reponse ne se porte jamais par une couleur percue ; on demande le nom, l'hymne, la devise, la date. |
 | enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Connaître la devise de la République et donner un exemple concret de liberté, d'égalité et de fraternité. | - | - | non couvert - jouable au choix, sous `EMC-5`. La devise est une restitution exacte ; l'exemple demande que les deux autres propositions soient nettement hors sujet, sinon deux reponses defendables. |
@@ -1637,8 +1647,9 @@ si elles passent a `couvert-valide`, la matrice porte la mention "connaissance d
 formule seule ; leur mise en oeuvre en situation n'est pas servie". Aucune ligne d'EMC ne doit etre
 presentee comme attestant une conduite.
 
-**Bilan** : 14 lignes, 12 `non couvert`, 2 `non couvrable en l'etat`. 12 lignes entrent au
-denominateur atteignable.
+**Bilan, corrige le 2026-09-06 (`camille-po`, s29)** : 14 lignes, 10 `non couvert`, 2
+`couvert-valide` (`EMC-CP-02`, `EMC-CP-06`), 2 `non couvrable en l'etat`. 12 lignes entrent au
+denominateur atteignable (inchange).
 
 ## Enseignement moral et civique - CM1 (cycle 3)
 
@@ -1657,11 +1668,11 @@ l'item dont la bonne reponse se devine par la seule politesse, que `EMC-8` refus
 | enseignement moral et civique | CM1 | Respecter autrui | Connaître les règles de la vie collective à l'école et dire à quoi elles servent. | - | - | non couvert - jouable au choix. La moitie "a quoi elles servent" distingue la ligne d'un reglement recite. |
 | enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Reconnaître les symboles de la République française et dire ce qu'ils représentent (drapeau, devise, Marianne, hymne, fête nationale). | - | - | non couvert - jouable au choix textuel, sous `ART-1`. La reponse ne se porte jamais par une couleur percue. |
 | enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Comprendre le sens des principes de la République : liberté, égalité, fraternité, laïcité, refus des discriminations. | - | - | non couvert - jouable au choix, ligne la plus dangereuse de la matiere. `EMC-4`, `EMC-5` et `BIA-5` mordent tous les trois ; la laicite se definit comme ce que l'ecole garantit, jamais comme un interdit visant un groupe. |
-| enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Distinguer un droit d'un devoir, et connaître quelques droits et devoirs de l'élève et de l'enfant. | - | - | non couvert - jouable au choix. Excellente forme d'item, distracteurs naturels et plausibles ; `BIA-4` s'applique. |
+| enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Distinguer un droit d'un devoir, et connaître quelques droits et devoirs de l'élève et de l'enfant. | bandit-manchot-droit-devoir-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s29, instance B, apres reprise) - **`EMC-CM1-07` ferme.** Refuse le 2026-09-05 (un item a deux reponses defendables sur l'axe meme de la ligne), repris et valide sous reserve apres remplacement de l'item. Sources verifiees une par une contre la Convention internationale des droits de l'enfant (`HIS-3`). **Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge (note posee le 2026-09-03, reprise mot pour mot faute de verdict specifique la levant) : "connaissances civiques et reconnaissance de situations seules ; aucun comportement, aucun engagement et aucune participation a une decision collective ne sont servis par ce produit."** Trois reserves non bloquantes, datees du 2026-09-06 : **`DRO-R1`** (trois items donnent la reponse d'un autre item du meme paquet), **`DRO-R2`** (un indice nomme la categorie au lieu du critere sur un item binaire) et **`DRO-R3`** (constat de serie : l'adulte nomme est une femme dans les quatre occurrences des paquets d'EMC de s29) |
 | enseignement moral et civique | CM1 | Acquerir et partager les valeurs de la Republique | Distinguer une règle d'une loi, et identifier ce que la loi autorise, interdit et protège. | - | - | non couvert - jouable au choix. Le mot loi est accessible sur des exemples concrets, jamais defini juridiquement dans l'enonce. |
 | enseignement moral et civique | CM1 | Construire une culture civique | Identifier le rôle de quelques institutions proches (mairie, conseil municipal, école) et à qui s'adresser selon la situation. | - | - | non couvert - jouable au choix, sous `EMC-6`. Aucun item ne suppose la commune de l'enfant. |
 | enseignement moral et civique | CM1 | Construire une culture civique | Comprendre le sens du vote et de la représentation (délégué de classe, élection, suffrage universel). | - | - | non couvert - jouable au choix, sur la connaissance seule. Point de coherence avec le CP : la ligne 11 de CP reste `non couvrable en l'etat` (participer a une decision collective), celle-ci porte la connaissance que le programme du cycle 3 rend attendu propre. Mention exigee d'avance : "connaissance du vote et de la representation seule ; participer a une decision collective reste non couvrable". |
-| enseignement moral et civique | CM1 | Construire une culture civique | Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la partager. | - | - | non couvert - jouable au choix, meilleure ligne de la matiere. Forme deja validee deux fois (`bandit-manchot-comprehension-cm1`) ; condition : exemples sans enjeu polemique. |
+| enseignement moral et civique | CM1 | Construire une culture civique | Distinguer un fait d'une opinion, et vérifier l'origine d'une information avant de la partager. | bandit-manchot-fait-opinion-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s29, instance B, apres reprise) - **`EMC-CM1-11` ferme.** Refuse le 2026-09-05 (tache non ecrite dans la consigne sur six items, une troisieme proposition melangeant deux axes), repris et valide sous reserve apres correction de la consigne et retrait de la troisieme proposition. **Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge (note posee le 2026-09-03, reprise mot pour mot faute de verdict specifique la levant) : "connaissances civiques et reconnaissance de situations seules ; aucun comportement, aucun engagement et aucune participation a une decision collective ne sont servis par ce produit."** Trois reserves non bloquantes, datees du 2026-09-06 : **`FOP-R1`** (la consigne neuve decrit une tache que cinq items sur onze ne demandent pas), **`FOP-R2`** (le catechisme civique est reduit, pas supprime : cinq distracteurs sur dix sont encore reconnaissables a leur seule deraison, quand le paquet en declare dix) et **`FOP-R3`** (sur un item, la question demande l'origine et la reponse donne la verite) |
 | enseignement moral et civique | CM1 | Construire une culture civique | S'engager dans un projet collectif de la classe ou de l'école et y tenir son rôle. | - | - | **non couvrable en l'etat**, nature irreversible - engagement reel dans un collectif reel, juge par un adulte qui l'observe dans la duree (`ADR-0008`) ; `EMC-8` interdit par ailleurs la contrefacon evidente ("acceptes-tu d'aider ton groupe ?"). |
 
 **Conditions opposables, posees le 2026-09-03** : `EMC-8` (aucun item ne demande a l'enfant de
@@ -1673,8 +1684,9 @@ ne recueille rien, ne transmet rien, ne conserve rien, `DEC-0028`).
 situations seules ; aucun comportement, aucun engagement et aucune participation a une decision
 collective ne sont servis par ce produit".
 
-**Bilan** : 12 lignes, 11 `non couvert`, 1 `non couvrable en l'etat`. 11 lignes entrent au
-denominateur atteignable.
+**Bilan, corrige le 2026-09-06 (`camille-po`, s29)** : 12 lignes, 9 `non couvert`, 2
+`couvert-valide` (`EMC-CM1-07`, `EMC-CM1-11`), 1 `non couvrable en l'etat`. 11 lignes entrent au
+denominateur atteignable (inchange).
 
 ## Histoire des arts - CM1 (cycle 3)
 
@@ -4479,4 +4491,141 @@ bloquantes issues des verdicts de s28".
 - Elle ne fixe aucun perimetre pour s29.
 - Elle n'acte pas elle-meme l'arbitrage de gestion sur le cout du sprint (5,25 sur une borne de
   5) : voir `DEC-0076`.
+
+## Synthese apres les verdicts du sprint 29 (2026-09-06) - neuf lignes ferment, deux instances de `nadia-prof` en parallele pour la premiere fois
+
+`nadia-prof` a joue en deux instances disjointes (`round-two` a `5c35f6c`, `56f8967` pour
+l'Instance B ; `ba3f603` pour l'Instance A, plus son releve
+`squad/sprints/s29-parallelisation-et-dettes-payees/verdicts-nadia-instance-A.md`).
+
+| Ligne | Instance | Mouvement |
+|---|---|---|
+| `QLM-CP-02` (cycle de vie) | A | `non couvert` -> `couvert-valide` |
+| `QLM-CP-07` (objet technique) | A | `non couvert` -> `couvert-valide` |
+| `HG-CM1-06` (rois et realisations) | A | `en cours` -> `couvert-valide` |
+| `HG-CM1-07` (Revolution) | A | `en cours` -> `couvert-valide` |
+| `HG-CM1-14` (comprendre un document) | A | `en cours` -> `couvert-valide`, sur sa part servie |
+| `EMC-CP-06` (regles de vie) | B, premier passage (2026-09-05) | `non couvert` -> `couvert-valide` |
+| `EMC-CP-02` (permis et interdit) | B, reaudit apres refus | `non couvert` -> `couvert-valide` |
+| `EMC-CM1-11` (fait ou opinion) | B, reaudit apres refus | `non couvert` -> `couvert-valide` |
+| `EMC-CM1-07` (droit ou devoir) | B, reaudit apres refus | `non couvert` -> `couvert-valide` |
+
+**Neuf lignes ferment**, pas huit.
+
+### Le recompte, par ma methode, et l'ecart trouve contre le chiffre transmis
+
+Comptage ligne a ligne des dix-huit tableaux de cette matrice, colonne `Statut`, apres application
+des neuf verdicts ci-dessus - je n'ai repris aucun total d'un autre document, j'ai reclasse chaque
+ligne telle qu'elle est ecrite dans ce fichier apres mise a jour, puis compte les statuts obtenus.
+
+| | Avant les verdicts (2026-09-05, ouverture de s29) | Apres les neuf verdicts de s29 |
+|---|---|---|
+| `couvert-valide` | 43 | **52** |
+| `en cours` | 10 | **7** |
+| `non couvert` | 85 | **79** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 209 | 209 |
+| Denominateur atteignable | 138 | 138 |
+| **Taux** | **43 / 138 = 31,2 %** | **52 / 138 = 37,7 %** |
+
+**52 / 138 = 0,37681... : 37,7 % arrondi.**
+
+**Ecart trouve contre le chiffre transmis** : l'Instance A de `nadia-prof` annonce *"51 / 138 =
+37,0 %"* (cinq lignes fermees par elle, "avec les trois de l'Instance B, huit pour le sprint").
+**Mon compte differe d'une ligne, et c'est le mien qui fait foi ici** (le sien porte explicitement
+sur son propre travail d'audit, pas sur la tenue de cette matrice - *"le compte de la matrice
+appartient a `camille-po` ; je ne la touche pas"*). La ligne manquante est `EMC-CP-06`
+(`bandit-manchot-regles-de-vie-cp`), fermee des le premier passage de l'Instance B le 2026-09-05
+(*"EMC-CP-06 ferme, sous reserve non bloquante"*, Done pedagogique prononce, mention exigee
+ecrite dans sa fiche) : elle n'est ni un refus, ni un verdict retire, et son statut n'a pas bouge
+depuis. L'Instance A la nomme dans son releve, separement de son propre total de huit, sans
+l'y ajouter - c'est la cause exacte de l'ecart. **Detaille et acte dans `DEC-0077`, section 9.**
+
+**Ce chiffre converge exactement avec le plafond arithmetique que la composition de `DEC-0077`
+(section 8.4) annoncait avant que le sprint ne soit joue** : les neuf lignes visees par les deux
+instances ferment toutes les neuf. Le sprint atteint son plafond, pas seulement le haut de
+l'attente raisonnable de `nadia-prof` (36,2 % a 37,0 %).
+
+### Les mentions de couverture partielle, verifiees fiche par fiche et non reprises d'un releve
+
+- **`HG-CM1-14`** : *"document textuel seul ; carte et image restent non couvertes"* - exigee
+  d'avance, deja ecrite mot pour mot dans le commentaire du paquet par `marc-dev`, reprise ici.
+- **`EMC-CP-06`** : *"connaissance de la regle et de ce a quoi elle sert seule ; sa mise en oeuvre
+  en situation n'est pas servie. Ce produit verifie ce qu'un enfant sait, jamais ce qu'il fait."* -
+  exigee d'avance dans la fiche, sans laquelle `nadia-prof` n'aurait pas ferme la ligne.
+- **`EMC-CM1-07` et `EMC-CM1-11`** : la note posee sur la table "Enseignement moral et civique -
+  CM1" exige une mention *"si une ligne bouge"*, sans la restreindre a des lignes nommees
+  (contrairement a la note de la table CP, restreinte aux lignes 5 et 6). **Aucune des deux fiches
+  de conformite de ces jeux ne mentionne, ni ne leve, cette exigence** : ni verdict qui la leve, ni
+  mention specifique qui la remplace. Faute d'un verdict qui la leve explicitement, je l'applique
+  par defaut, comme la note qui la pose le demande : *"connaissances civiques et reconnaissance de
+  situations seules ; aucun comportement, aucun engagement et aucune participation a une decision
+  collective ne sont servis par ce produit."*
+- **`QLM-CP-02`, `QLM-CP-07`, `HG-CM1-06`, `HG-CM1-07`, `EMC-CP-02`** : aucune mention n'est due,
+  `nadia-prof` le dit explicitement pour les quatre premieres ; la fiche de `EMC-CP-02` le dit tout
+  aussi explicitement (*"Aucune mention de couverture partielle n'est exigee sur cette ligne"*).
+- **`MAT-CM1-05`** : la mention *"le resultat atteste le calcul ; la technique posee elle-meme...
+  n'est ni montree ni verifiee par le produit"* reste due et inchangee ; `POS-R1` est levee,
+  `POS-R2` est ouverte, la ligne reste `couvert-valide` sans mouvement.
+
+### Un chiffre corrige, deja signale par `nadia-prof` elle-meme
+
+`nadia-prof` a ecrit deux fois *"neuf lignes en cours"* en histoire-geographie CM1 (arbitrages de
+s28 et de s29) et se corrige elle-meme apres avoir joue : **il en reste six**, pas neuf -
+`HG-CM1-01`, `-02`, `-03`, `-04`, `-08` et `-12`, dont cinq portent exactement un item. Verifie
+directement sur le tableau : le chiffre etait exact avant la fermeture de s29 et ne l'est plus
+apres ; la matrice porte desormais le compte a jour (section "Histoire-Geographie - CM1").
+
+### Les reserves, tracees sans en perdre une
+
+**Quatre reserves n'apparaissaient dans aucun releve qui m'a ete transmis pour ce sprint et sont
+pourtant ecrites, datees et non levees dans les fiches de conformite** : `CYV-R1`, `OBJ-R1`,
+`OBJ-R2` (toutes trois sur les paquets de questionner le monde de l'Instance A) et `HG-R7`
+(inexactitude du texte-support sur la Bastille, histoire-geographie). Elles sont ouvertes pour s30
+au meme titre que les autres, dans `docs/backlog/backlog.md`.
+
+**Ouvertes pour s30** (quinze au total) : `CYV-R1`, `OBJ-R1`, `OBJ-R2`, `HG-R6`, `HG-R7`, `REG-R1`,
+`PER-R1`, `FOP-R1`, `FOP-R2`, `FOP-R3`, `DRO-R1`, `DRO-R2`, `DRO-R3`, `POS-R2`, et `VIV-R2`
+(ouverte depuis s28, desormais executable - `nadia-prof` a tranche sa propre piste et prescrit
+trois enonces de remplacement mot pour mot). Detail complet, avec lien vers chaque fiche :
+`docs/backlog/backlog.md`, section "Backlog ouvert pour s30".
+
+**Levees a s29** : `COR-R2`, `EAU-R1`, `HG-R4`, `HG-R5`, `ANG-R1`, `POS-R1`, plus la dette des
+paquets a voix (payee apres quatre sprints d'attente, six jeux verifies un par un).
+
+### Ce que je fais des trois points routes par la passe transverse `S29-3`
+
+- **`CONS-1`** (la consigne generique passee de 5 a 10 jeux en un sprint) : **tranchee**, pas
+  seulement ouverte - `DEC-0078` pose une regle produit (toute entree neuve de catalogue nomme la
+  tache de son jeu, a partir de s30) et planifie un correctif non bloquant sur les dix entrees
+  existantes. Story dans `docs/backlog/backlog.md`.
+- **La contradiction de `nadia-prof` sur son propre arbitrage** (sa section 7.2 pricait six
+  reserves au regime du mot pour mot alors que deux, `VIV-R2` et `ANG-R1`, n'avaient pas de texte
+  fourni) : **tracee ici, deja corrigee par elle-meme** dans la passe transverse (section 5.1),
+  sans supplement facture. Rien a trancher de mon cote : c'est une coherence de ses propres
+  conditions, pas une decision produit.
+- **`REV-1`** (la phrase composee par la mecanique autour de la bonne reponse, fautive sur 12
+  items de 4 paquets dont deux fermes ce sprint, maladroite sur 29 items de 5 autres) : **routee a
+  `theo-archi` pour la cause technique, tracee ici et portee en story dans le backlog pour la
+  partie produit** (`docs/backlog/backlog.md`, "Story a ecrire pour s30 - `REV-1`"). Elle touche
+  des lignes deja fermees (`QLM-CP-02`, `cp-qlm-vivant-non-vivant`, `cm1-comprehension`,
+  `cm1-histoire-geographie`) sans en remettre aucune en cause : aucune n'a jamais garanti la forme
+  de cette phrase, et le defaut est anterieur a s29 sur les quatre. Je ne la traite pas
+  au-dela de cette trace : la cause est technique et n'est pas mienne a corriger.
+
+### Le fait de gestion, acte
+
+**Total du sprint : 9,25 sur la borne de 8,0** (Instance A 4,0/5,0, aucun tirage ; Instance B
+5,25/5,0, dont 2,0 absorbes par son plafond individuel et 0,25 tires sur la marge de rejeu du
+sprint). **La marge de rejeu nommee a l'ouverture passe de 1,0 a 0,75.** Acte dans `DEC-0077`,
+amendement de la section 9 (2026-09-06), plutot qu'en decision neuve : le fait decoule directement
+du perimetre et de la borne que `DEC-0077` avait deja poses pour ce sprint.
+
+### Ce que cette synthese ne fait pas
+
+- Elle ne prononce aucun Done : les neuf verdicts sont de `nadia-prof`, dans les fiches
+  correspondantes.
+- Elle ne fixe aucun perimetre pour s30.
+- Elle ne tranche pas la cause technique de `REV-1` ni la forme d'un eventuel garde-fou sur
+  `CONS-1` : routees a `theo-archi`.
 

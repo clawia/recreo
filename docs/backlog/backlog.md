@@ -10373,3 +10373,211 @@ tranche ni la forme ni la priorite ; je la signale pour que `sofia-sm` la fasse 
 - **Lien** : `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-
   plafond-a-huit-lignes.md`, section 13.3 (`PAR-5`) ; `DEC-0077`, section 8.7.
 
+## Backlog ouvert pour s30 - quinze reserves non bloquantes issues des verdicts de s29, plus deux
+## defauts transverses routes par la passe `S29-3`
+
+Quinze reserves, toutes non bloquantes (aucune ne remet en cause un Done pedagogique deja rendu),
+ecrites par `nadia-prof` (Instance A et Instance B) en rendant ses verdicts de s29. **Aucune story
+de developpement complete n'est ecrite ici** : le perimetre de s30 n'est pas ouvert, meme regle
+que pour toute autre reserve de ce fichier. Ce qui est fixe des maintenant, pour qu'il ne se
+reformule pas au moment d'ecrire la story : le texte de correction, quand `nadia-prof` l'a fourni
+mot pour mot, et la propriete a tenir quand elle a prescrit un rejeu borne plutot qu'un texte.
+
+**Verifiees par `camille-po` directement dans les fiches, au-dela du releve transmis** : `CYV-R1`,
+`OBJ-R1`, `OBJ-R2` et `HG-R7` n'apparaissaient dans aucune liste de reserves ouvertes qui m'a ete
+communiquee pour ce sprint ; elles sont pourtant ecrites, datees et non levees dans les fiches de
+conformite elles-memes. Une reserve qui n'est pas une ligne de ce fichier n'existe pas pour la
+squad, meme quand elle existe deja dans une fiche.
+
+- **`CYV-R1`** (`bandit-manchot-cycle-de-vie-cp`, non bloquante, datee du 2026-09-06) - l'item de
+  la plante (*"Une vieille plante se dessèche et ne vit plus, que fait-elle ?"* -> `elle meurt`)
+  est au-dessus du niveau de lecture du CP (*se dessecher*) et auto-repondant (*"ne vit plus"*
+  contient deja la reponse). **Correction fournie mot pour mot par `nadia-prof`** : `enonce` -
+  *"Une plante tres vieille perd ses feuilles et ne repousse plus, que fait-elle ?"* - bonne
+  reponse, distracteurs et indice inchanges.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-cycle-de-vie-cp.md`, section 9.
+- **`OBJ-R1`** (`bandit-manchot-objet-technique-cp`, non bloquante, datee du 2026-09-06) - le
+  titre servi, *"Fonction d'un objet"*, porte un mot hors du programme de lecture du CP
+  (*fonction*) et annonce plus etroit que le contenu reellement servi (fonction et parties).
+  **Correction fournie mot pour mot** : titre *"Les objets de tous les jours"*.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-objet-technique-cp.md`, section 7.
+- **`OBJ-R2`** (`bandit-manchot-objet-technique-cp`, non bloquante, datee du 2026-09-06) - sur les
+  cinq items de la tache *fonction*, les deux distracteurs sont toujours les fonctions des autres
+  objets du paquet : l'enfant elimine sans connaitre l'objet nomme. **Ce que `nadia-prof` demande,
+  sans prescrire de texte** : sur au moins deux des cinq items, un distracteur doit etre une
+  fonction plausible pour l'objet nomme, et non la fonction d'un autre objet du paquet. **Regime :
+  rejeu borne (0,5).**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-objet-technique-cp.md`, section 7.
+- **`HG-R6`** (`bandit-manchot-histoire-geographie-cm1`, non bloquante, datee du 2026-09-06) - sur
+  les deux items de nature de la ligne 14, la proposition `une carte de France` s'elimine sans
+  rien savoir (l'enfant a un texte sous les yeux) ; les deux items se repondent en outre en
+  recopiant un mot du texte-support. **Ce que `nadia-prof` demande, sans prescrire de texte** :
+  remplacer `une carte de France` par une forme de document ecrit a ecarter en lisant, et faire
+  porter au moins un des deux items sur un support ou le mot de la reponse n'apparait pas.
+  **Regime : rejeu borne (0,5).**
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md`, section 7.
+- **`HG-R7`** (`bandit-manchot-histoire-geographie-cm1`, non bloquante, datee du 2026-09-06) - le
+  texte-support de l'item sur la Bastille dit que sa chute devient fete nationale des l'annee
+  suivante ; le 14 juillet n'est fete nationale que depuis 1880. **Correction fournie mot pour
+  mot** : *"En 1789, des habitants de Paris prennent d'assaut une vieille prison qui servait aussi
+  a enfermer des opposants au roi. Sa chute est fetee dans toute la ville et, l'annee suivante,
+  une grande fete reunit la France entiere pour son anniversaire."* Enonce, bonne reponse,
+  distracteurs et indice inchanges.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md`, section 7.
+- **`REG-R1`** (`bandit-manchot-regles-de-vie-cp`, non bloquante, datee du 2026-09-05) - trois
+  distracteurs sont hors registre ou hors categorie (items 2, 5, 8) et reduisent l'item a un choix
+  entre deux. **Ce que `nadia-prof` demande, sans prescrire de texte** : remplacer les trois par
+  des raisons plausibles mais fausses, du meme registre que la bonne reponse ; sur l'item 5, les
+  trois propositions doivent etre des facons de se deplacer.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md`, section 8.
+- **`PER-R1`** (`bandit-manchot-permis-interdit-cp`, non bloquante, datee du 2026-09-06) - sur les
+  items de qualification, la question (*"Qu'est-ce que X fait ?"*) et la bonne reponse ne
+  s'enchainent pas toujours en francais correct (*"elle fait un service"* pour *rendre un
+  service*). **Propriete a tenir, sans texte impose** : question et bonne reponse forment une
+  phrase correcte lorsqu'on les lit ensemble ; une question du type *"Comment appelle-t-on ca ?"*
+  accepte les trois qualifications sans forcer le verbe.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md`, section 5 (second
+    audit).
+- **`FOP-R1`** (`bandit-manchot-fait-opinion-cm1`, non bloquante, datee du 2026-09-06) - la
+  consigne neuve (*"Lis bien, puis dis si c'est un fait ou une opinion."*) est servie sur les onze
+  manches, y compris sur les cinq items de verification d'origine ou la tache est autre. **Deux
+  issues, au choix de l'equipe** : une consigne qui nomme les deux taches, ou le retour a une
+  consigne generique maintenant que chaque enonce nomme la sienne.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md`, section 5 (second
+    audit).
+- **`FOP-R2`** (`bandit-manchot-fait-opinion-cm1`, non bloquante, datee du 2026-09-06) - le
+  catechisme civique est reduit, pas supprime : sur les dix distracteurs de verification, cinq
+  sont *"une methode de verification reellement tentee mais insuffisante"* comme le paquet le
+  declare, cinq disent encore *"repeter sans verifier"*, reconnaissables a leur seule deraison.
+  **Ce que `nadia-prof` demande, sans prescrire de texte** : les cinq distracteurs restants
+  deviennent, comme les cinq autres, une methode insuffisante plutot qu'une absence de
+  verification. **La declaration du paquet doit etre corrigee dans le meme geste** (elle affirme
+  aujourd'hui que les dix le sont).
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md`, section 4 (second
+    audit).
+- **`FOP-R3`** (`bandit-manchot-fait-opinion-cm1`, non bloquante, datee du 2026-09-06) - sur
+  l'item 8, la question demande l'origine d'une information et la bonne reponse porte sur sa
+  verite. **Deux issues, au choix de l'equipe** : la question redevient *"comment savoir si c'est
+  vrai"*, ou la bonne reponse remonte au camarade qui a parle.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-fait-opinion-cm1.md`, section 6 (second
+    audit).
+- **`DRO-R1`** (`bandit-manchot-droit-devoir-cm1`, non bloquante, datee du 2026-09-06) - trois
+  items de la seconde tache nomment la categorie (*droit* ou *devoir*) d'une situation qu'un item
+  de classement demande par ailleurs de classer, ce qui resout ce dernier sans distinction des
+  qu'un tirage a servi les deux items du couple. **Deux issues, au choix de l'equipe** : la
+  seconde tache porte sur une situation que le classement ne traite pas, ou son enonce ne
+  prononce ni *droit* ni *devoir*.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-droit-devoir-cm1.md`, section 4 (second
+    audit).
+- **`DRO-R2`** (`bandit-manchot-droit-devoir-cm1`, non bloquante, datee du 2026-09-06) - sur
+  l'item 1, l'indice prononce la categorie a trouver (*"ce droit protege..."*) au lieu du
+  critere ; l'item 5 emploie le mot de la bonne reponse dans un autre sens, signal ambigu.
+  **Propriete a tenir** : sur un item binaire, l'indice porte le critere et jamais la categorie -
+  regle que `nadia-prof` etend a tout item binaire du depot desormais.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-droit-devoir-cm1.md`, section 5 (second
+    audit).
+- **`DRO-R3`** (`bandit-manchot-droit-devoir-cm1`, non bloquante, datee du 2026-09-06, constat de
+  serie) - sur les quatre paquets d'EMC de s29, l'adulte nomme est une femme dans les quatre
+  occurrences (deux dans ce paquet, une dans `cm1-emc-fait-opinion`, une dans
+  `cp-emc-regles-de-vie`), aucune occurrence masculine. **Correctif a cout nul** : une occurrence
+  masculine suffit a equilibrer.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-droit-devoir-cm1.md`, section 6 (second
+    audit).
+- **`POS-R2`** (`bandit-manchot-division-posee-cm1`, non bloquante, datee du 2026-09-06) - une
+  troisieme lecture donne la bonne reponse sans poser de division sur 7 des 11 items (63,6 %
+  contre 33,3 % au hasard) : la bonne reponse ne porte jamais le reste unique quand les trois
+  restes different, et le triplet est symetrique (bonne reponse au milieu) quand ils sont egaux.
+  **Propriete a tenir** : sur une serie, la bonne reponse n'est pas toujours du cote du reste
+  partage entre les deux distracteurs.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md`, section 2 (troisieme
+    audit).
+- **`VIV-R2`** (`bandit-manchot-vivant-non-vivant-cp`, non bloquante, ouverte depuis s28,
+  **desormais executable**) - `nadia-prof` a rejoue et tranche : sa piste de remplacement de s28
+  (*"de la matiere"*) est abandonnee (abstraction de cycle 3), et un second motif s'ajoute au
+  premier - apres trois erreurs, l'ecran compose une phrase agrammaticale sur ces memes items
+  (voir `REV-1` ci-dessous). **Trois enonces de remplacement fournis mot pour mot** (forme *"Un
+  caillou est-il un etre vivant ?"* -> `non` / `oui`), sur les trois items de matiere inerte
+  seulement, avec verification que `FER-1`, `FER-2`, `FER-3` restent intactes et que la fermeture
+  de `QLM-CP-01` n'est pas remise en cause. **Regime : mot pour mot (0,25).**
+  - **Lien** : `squad/sprints/s29-parallelisation-et-dettes-payees/verdicts-nadia-instance-A.md`,
+    section "`VIV-R2` - ma decision" ; `squad/conformite/FICHE-bandit-manchot-vivant-non-vivant-
+    cp.md`.
+
+**Agent pressenti pour les corrections textuelles fournies mot pour mot** (`CYV-R1`, `HG-R7`,
+`VIV-R2`) : `marc-dev` ou `lea-dev`, au regime du mot pour mot (0,25 chacune) ; **pour les rejeux
+bornes** (`OBJ-R2`, `HG-R6`, `POS-R2`, 0,5 chacun) et **les proprietes sans texte impose**
+(`REG-R1`, `PER-R1`, `FOP-R1`, `FOP-R3`, `DRO-R1`), les formulations restent a `lea-dev` ; `DRO-R3`
+est un cout nul (un prenom masculin) ; `nadia-prof` reverifie tout. `camille-po` ecrit les criteres
+d'acceptation complets une fois s30 ouvert.
+
+### Story a ecrire pour s30 - `REV-1`, la phrase composee par la mecanique autour de la bonne
+### reponse est agrammaticale ou maladroite
+
+`nadia-prof` route ce defaut a la fois a `theo-archi` (la cause, dans `PartieController`, ou une
+seule expression compose `"C'est " + reponse + ". Appuie sur " + reponse + "."` sans egard a la
+forme grammaticale de `reponse`) et a `camille-po` pour la story
+(`squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 8). **Je
+l'ouvre ici plutot que de la laisser dormir.**
+
+- **Besoin, du point de vue de l'enfant** : en tant qu'eleve qui vient de se tromper trois fois de
+  suite sur une manche, je veux lire une phrase francaise correcte qui me designe la bonne
+  reponse, quelle que soit sa forme grammaticale, afin de comprendre ce que je dois faire sans
+  buter sur une phrase mal formee au moment ou j'ai le plus besoin d'aide.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la
+  mecanique, mesure sur le contenu servi entier (54 paquets, 1056 items) : 12 items de 4 paquets
+  fautifs (classe A, sujet conjugue en tete : *"C'est il se nourrit."*), 29 items de 5 autres
+  maladroits mais lisibles (classe B : *"C'est non."*, *"C'est a couper."*).
+- **Criteres d'acceptation** :
+  - Etant donne un item dont la bonne reponse est une proposition a sujet conjugue (ex. *"il se
+    nourrit"*), quand l'enfant echoue trois fois sur la manche, alors la phrase de revelation
+    affichee est une phrase francaise correcte qui designe cette reponse et le bouton
+    correspondant.
+  - Etant donne un item dont la bonne reponse est `oui`, `non`, ou une forme en `a` + infinitif,
+    quand l'enfant echoue trois fois, alors la phrase de revelation reste correcte (la classe B
+    n'est pas degradee par le correctif de la classe A).
+  - Etant donne le correctif livre, quand `nadia-prof` le rejoue a l'ecran sur les quatre paquets
+    de la classe A, alors elle confirme qu'aucune phrase agrammaticale ne subsiste. **Prix de sa
+    reverification : 0,25, une passe de lecture d'ecran.**
+  - Etant donne ce correctif, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut : `REV-1` ne remet en cause aucun Done pedagogique deja rendu, les quatre
+    lignes qu'elle touche (`QLM-CP-02`, `cp-qlm-vivant-non-vivant`, `cm1-comprehension`,
+    `cm1-histoire-geographie`) restent `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne choisit pas entre les deux chemins que `nadia-prof`
+  signale sans trancher (changer la phrase composee, ou contraindre la forme des bonnes reponses)
+  - `oui`, `non` et les infinitifs restent des reponses legitimes qu'elle refuse de retirer d'un
+  paquet de CP. Le choix du chemin est technique : route a `theo-archi`.
+- **Lien** : `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 1
+  et section 8 ; `DEC-0078` (le fait est trace, cette story en decoule).
+- **Agent pressenti** : `theo-archi` pour le choix technique et l'implementation, `nadia-prof` pour
+  la reverification.
+
+### Story a ecrire pour s30 - `CONS-1`, la consigne generique n'a plus a etre reprise par une
+### entree neuve de catalogue (`DEC-0078`)
+
+`nadia-prof` mesure que la consigne *"Lis bien la question, puis choisis la bonne reponse."*, qui
+ne nomme aucune tache, est passee de 5 jeux a 10 en un sprint - toutes les matieres ouvertes depuis
+s27. **Tranchee par `DEC-0078`** : correction non bloquante pour les dix jeux existants, et regle
+produit posee pour toute entree neuve a partir de s30.
+
+- **Besoin, du point de vue de l'enfant** : en tant qu'eleve qui enchaine plusieurs jeux d'une
+  meme matiere, je veux que la phrase d'instruction de chaque jeu me dise ce que ce jeu me demande
+  de faire, afin de ne pas lire trois fois la meme phrase qui ne m'apprend rien avant de
+  commencer.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne les dix entrees de catalogue qui portent aujourd'hui la consigne generique
+    (questionner le monde CP, histoire-geographie CM1, anglais CM1, EMC CP, EMC CM1), quand
+    `lea-dev` ou `marc-dev` les reecrit une par une, alors chaque consigne nomme la tache reelle de
+    son jeu, sur le modele des 44 entrees deja conformes du catalogue.
+  - Etant donne une consigne reecrite, quand `nadia-prof` la rejoue contre le paquet qu'elle
+    introduit, alors elle confirme que la consigne correspond a la forme des enonces. **Regime :
+    rejeu borne (0,5), dit d'avance.**
+  - Etant donne ce correctif, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut.
+- **Ce que cette story ne fait pas** : elle ne rouvre aucune ligne fermee et ne dicte pas les dix
+  textes - une consigne se juge contre le paquet qu'elle introduit, `nadia-prof` les rejouera une
+  par une.
+- **Lien** : `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 2 ;
+  `DEC-0078`.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour les dix textes, `nadia-prof` pour le rejeu.
+
