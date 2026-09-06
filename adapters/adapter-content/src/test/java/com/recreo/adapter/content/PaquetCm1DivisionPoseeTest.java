@@ -8,8 +8,10 @@ import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -37,6 +39,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * mot pour mot par camille-po dans la matrice ; elles ne sont pas des proprietes calculables sur
  * les items charges et ne sont donc pas mordues ici, meme limite que {@code HIS-2} sur
  * {@code PaquetCm1HistoireGeographieTest}.</p>
+ *
+ * <p><b>Correction du 2026-09-06, second refus de {@code POS-R1}</b>
+ * ({@code squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md}, second audit s29,
+ * section 3) : la propriete refusee portait sur la <b>serie</b>, pas sur un item pris seul - le
+ * couple de distracteurs etait toujours le meme (quotient + 10, quotient - 2), si bien que la
+ * bonne reponse etait toujours la valeur intermediaire parmi les trois quotients tries, sur les
+ * onze items. {@link #leRangDeLaBonneReponseParmiLesQuotientsVarieEtAucunRangNEstMajoritaireNiAbsent}
+ * mord cette regularite-la, que {@code leQuotientDesTroisPropositionsALeMemeNombreDeChiffres} ne
+ * pouvait pas voir : un nombre de chiffres identique n'empeche aucunement un rang constant.</p>
  */
 class PaquetCm1DivisionPoseeTest {
 
@@ -152,6 +163,53 @@ class PaquetCm1DivisionPoseeTest {
                                 item.enonce(), item.bonneReponse())
                         .isEqualTo(chiffresBonneReponse);
             }
+        }
+    }
+
+    private enum Rang {
+        LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
+    }
+
+    /**
+     * POS-R1, second etat (fiche de conformite, second audit s29, section 3) : la premiere
+     * correction (S29-6) garantissait un reste valide par item, mais laissait le couple de
+     * distracteurs identique sur toute la serie (quotient + 10, quotient - 2), ce qui rend le rang
+     * de la bonne reponse parmi les trois quotients tries constant - toujours intermediaire, sur
+     * les onze items. Une strategie qui presse toujours le meme rang, sans lire l'enonce, ne doit
+     * ni etre majoritaire sur le paquet, ni laisser un rang absent - le meme seuil de majorite que
+     * {@link LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest}, adapte a un paquet dont la
+     * lecture de valeur generique ne sait pas lire les propositions (voir la Javadoc de la
+     * classe).
+     */
+    @Test
+    void leRangDeLaBonneReponseParmiLesQuotientsVarieEtAucunRangNEstMajoritaireNiAbsent() {
+        Map<Rang, Integer> effectifs = new EnumMap<>(Rang.class);
+        for (Rang rang : Rang.values()) {
+            effectifs.put(rang, 0);
+        }
+        List<ItemAnalyse> analyses = itemsAnalyses();
+        for (ItemAnalyse analyse : analyses) {
+            List<String> distracteurs = analyse.question().distracteurs();
+            int bonne = analyse.bonne().quotient();
+            int d1 = reponseDe(distracteurs.get(0), analyse.question().enonce()).quotient();
+            int d2 = reponseDe(distracteurs.get(1), analyse.question().enonce()).quotient();
+            int rangNumerique = (d1 < bonne ? 1 : 0) + (d2 < bonne ? 1 : 0);
+            Rang rang = switch (rangNumerique) {
+                case 0 -> Rang.LA_PLUS_PETITE;
+                case 1 -> Rang.INTERMEDIAIRE;
+                default -> Rang.LA_PLUS_GRANDE;
+            };
+            effectifs.merge(rang, 1, Integer::sum);
+        }
+        int total = analyses.size();
+        for (Rang rang : Rang.values()) {
+            int effectif = effectifs.get(rang);
+            assertThat(effectif).as("POS-R1 : le rang %s ne doit pas etre absent de la serie", rang)
+                    .isGreaterThanOrEqualTo(1);
+            assertThat(effectif)
+                    .as("POS-R1 : le rang %s ne doit pas etre majoritaire sur la serie (%d/%d items)",
+                            rang, effectif, total)
+                    .isLessThanOrEqualTo(total / 2);
         }
     }
 
