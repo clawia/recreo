@@ -4629,3 +4629,24 @@ du perimetre et de la borne que `DEC-0077` avait deja poses pour ce sprint.
 - Elle ne tranche pas la cause technique de `REV-1` ni la forme d'un eventuel garde-fou sur
   `CONS-1` : routees a `theo-archi`.
 
+### Amendement du 2026-09-06 (meme jour) - la reverification de `REV-1` corrige le cout reel du
+### sprint a 9,50 ; la matrice ne bouge pas
+
+`nadia-prof` a rejoue apres la cloture ci-dessus, sur le correctif de `REV-1` livre entre-temps
+(`theo-archi`, `ADR-0083`, commit `8ef4fb2`) : **VALIDE SOUS RESERVE**, deux reserves neuves
+ouvertes (`REV-2`, refusee et remplacee par un texte prescrit mot pour mot ; `REV-3`, routee, cause
+structurelle). Ecrit au long dans
+`squad/sprints/s29-parallelisation-et-dettes-payees/verdicts-nadia-instance-A.md`, derniere
+section, et dans `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section
+"Reverification du 2026-09-06". **Prix : 0,25, annonce d'avance. L'Instance A passe de 4,0/5,0 a
+4,25/5,0.**
+
+**Le total du sprint passe de 9,25 a 9,50 sur la borne de 8,0** (4,25 + 5,25). **La marge de rejeu
+ne bouge pas** : elle reste a **0,75**, `nadia-prof` l'ecrivant elle-meme (*"Rien de tire sur la
+marge de rejeu du sprint, qui garde ses 0,75."*) - le supplement de 0,25 tient dans le plafond
+individuel de l'Instance A, pas dans la marge du sprint. Corrige dans le meme geste dans
+`DEC-0077` (section 9.4) et `DEC-index.md`.
+
+**Aucune ligne de cette matrice ne bouge par cette reverification** : les neuf fermetures de s29
+restent telles qu'ecrites ci-dessus, le compte de 52/138 = 37,7 % est inchange.
+

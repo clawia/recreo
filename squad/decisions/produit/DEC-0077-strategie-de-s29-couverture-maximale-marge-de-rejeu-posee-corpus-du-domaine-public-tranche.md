@@ -7,17 +7,21 @@
   perimetre annonce en section 2 (il valait 6,0 a 7,0, pas 5,0). **Amendee une seconde fois le
   2026-09-06 (section 9, cloture de s29)** : le cout reel du sprint (9,25 sur 8,0, marge de rejeu
   ramenee a 0,75) et le recompte corrige de la matrice (neuf lignes ferment, 52/138 = 37,7 %, et
-  non huit comme l'annonce l'Instance A de `nadia-prof`) sont actes.
+  non huit comme l'annonce l'Instance A de `nadia-prof`) sont actes. **Amendee une troisieme fois
+  le 2026-09-06 (meme jour, section 9.4)** : la reverification de `nadia-prof` sur le correctif de
+  `REV-1` (`8ef4fb2`) porte l'Instance A a 4,25/5,0 ; le cout reel du sprint passe de 9,25 a
+  **9,50 sur 8,0**. La marge de rejeu ne bouge pas, elle reste a **0,75** : le supplement tient
+  dans le plafond individuel de l'Instance A, `nadia-prof` l'ecrit elle-meme.
 - **Date** : 2026-09-05
 - **Auteur** : `camille-po`
-- **Sprint** : s29 (ouverture ; amendement de cloture le 2026-09-06)
+- **Sprint** : s29 (ouverture ; amendements de cloture le 2026-09-06)
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Cette decision arbitre
   un perimetre et une question de gouvernance de sprint ; elle ne fixe aucune competence ligne a
   ligne - ce chiffrage est celui de l'arbitrage prealable de `nadia-prof`, dont la section 13
   (amendement du 2026-09-05) remplace le chiffrage des sections 2 et 8.2 du present document pour
   s29.
-- **Statut** : Acceptee ; amendee le 2026-09-05 (meme jour, section 8) et le 2026-09-06 (cloture de
-  s29, section 9).
+- **Statut** : Acceptee ; amendee le 2026-09-05 (meme jour, section 8), le 2026-09-06 (cloture de
+  s29, section 9) et le 2026-09-06 (meme jour, section 9.4).
 - **Lien** : `DEC-0074` (perimetre de s28, tarif "suis-je la source ?"), `DEC-0075` (tranchee par la
   presente decision), `DEC-0076` (arbitrage de cloture de s28), `ADR-0079` (l'unite de la borne de
   `nadia-prof` est le lot de matiere), `ADR-0081` (clause 5, un item ne sert qu'une ligne),
@@ -423,3 +427,34 @@ liste a cocher.
 - Il ne prononce aucun Done pedagogique.
 - Il ne tranche pas `CONS-1` (traite par `DEC-0078`) ni la cause technique de `REV-1` (routee a
   `theo-archi`, cf. `docs/backlog/backlog.md`).
+
+### 9.4 Amendement du 2026-09-06 (meme jour) - la reverification de `REV-1` porte le cout reel a
+### 9,50 ; la marge de rejeu ne bouge pas
+
+`nadia-prof` a mene une reverification apres la cloture actee en section 9.1 et 9.2, sur le
+correctif de `REV-1` livre entre-temps (`theo-archi`, `ADR-0083`, commit `8ef4fb2`) : **VALIDE SOUS
+RESERVE**, deux reserves neuves ouvertes (`REV-2`, refusee et remplacee par un texte prescrit mot
+pour mot ; `REV-3`, routee, cause structurelle). Ecrit au long dans
+`squad/sprints/s29-parallelisation-et-dettes-payees/verdicts-nadia-instance-A.md`, derniere
+section, et dans `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section
+"Reverification du 2026-09-06". **Prix : 0,25, annonce d'avance.**
+
+**Mon recompte, poste par poste, sur les chiffres actes en section 9.2** : l'Instance A passe de
+**4,0/5,0 a 4,25/5,0** (3,5 planifies + 0,5 non planifies a la cloture + 0,25 de la
+reverification, toujours sous son plafond individuel de 5,0). L'Instance B ne bouge pas (5,25/5,0,
+inchangee). **Le total du sprint passe de 9,25 a 9,50 sur la borne de 8,0** (4,25 + 5,25).
+
+**La marge de rejeu ne bouge pas.** `nadia-prof` l'ecrit elle-meme, mot pour mot, en cloture de son
+releve : *"Rien de tire sur la marge de rejeu du sprint, qui garde ses 0,75."* Le supplement de
+0,25 tient dans le plafond individuel de l'Instance A (4,0 -> 4,25, toujours sous 5,0) ; il ne
+touche pas la marge de rejeu du sprint, qui reste a **0,75** apres le seul tirage de l'Instance B
+acte en section 9.2.
+
+**Ce que cet amendement corrige, et ce qu'il ne fait pas.** Le chiffre de 9,25 ecrit en section 9.2
+etait exact au moment ou il a ete ecrit (commit `b93ef31`), avant que cette reverification n'ait
+eu lieu ; il est perime depuis. Corrige dans le meme geste dans `DEC-index.md` (ligne `DEC-0077`)
+et dans `squad/programme/MATRICE-couverture.md` (synthese de cloture de s29). **Il ne revoque
+aucun des neuf verdicts de fermeture de ligne, ni le verdict de `REV-1` lui-meme** : aucune ligne
+de la matrice ne bouge par ce recompte. Il ne prononce aucun Done pedagogique et ne tranche ni
+`REV-2` ni `REV-3` - la premiere est deja tranchee par `nadia-prof` dans son releve (texte de
+remplacement prescrit), la seconde reste routee a `theo-archi`.

@@ -10504,50 +10504,60 @@ squad, meme quand elle existe deja dans une fiche.
     cp.md`.
 
 **Agent pressenti pour les corrections textuelles fournies mot pour mot** (`CYV-R1`, `HG-R7`,
-`VIV-R2`) : `marc-dev` ou `lea-dev`, au regime du mot pour mot (0,25 chacune) ; **pour les rejeux
-bornes** (`OBJ-R2`, `HG-R6`, `POS-R2`, 0,5 chacun) et **les proprietes sans texte impose**
-(`REG-R1`, `PER-R1`, `FOP-R1`, `FOP-R3`, `DRO-R1`), les formulations restent a `lea-dev` ; `DRO-R3`
-est un cout nul (un prenom masculin) ; `nadia-prof` reverifie tout. `camille-po` ecrit les criteres
-d'acceptation complets une fois s30 ouvert.
+`OBJ-R1`, `VIV-R2`) : `marc-dev` ou `lea-dev`, au regime du mot pour mot (0,25 chacune) ; **pour
+les rejeux bornes** (`OBJ-R2`, `HG-R6`, `POS-R2`, 0,5 chacun) et **les proprietes sans texte
+impose** (`REG-R1`, `PER-R1`, `FOP-R1`, `FOP-R2`, `FOP-R3`, `DRO-R1`, `DRO-R2`), les formulations
+restent a `lea-dev` ; `DRO-R3` est un cout nul (un prenom masculin) ; `nadia-prof` reverifie tout.
+`camille-po` ecrit les criteres d'acceptation complets une fois s30 ouvert.
 
-### Story a ecrire pour s30 - `REV-1`, la phrase composee par la mecanique autour de la bonne
-### reponse est agrammaticale ou maladroite
+### `REV-1` et `REV-2` sont livrees, ce n'est plus un travail restant pour s30
 
-`nadia-prof` route ce defaut a la fois a `theo-archi` (la cause, dans `PartieController`, ou une
-seule expression compose `"C'est " + reponse + ". Appuie sur " + reponse + "."` sans egard a la
-forme grammaticale de `reponse`) et a `camille-po` pour la story
-(`squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 8). **Je
-l'ouvre ici plutot que de la laisser dormir.**
+`REV-1` (la phrase composee par la mecanique autour de la bonne reponse, agrammaticale ou
+maladroite) est corrigee et validee : livree par `theo-archi` (`ADR-0083`, commit `8ef4fb2`),
+rejouee mal jusqu'au bout par `nadia-prof` le 2026-09-06 sur les quatre formes de bonne reponse
+plus une cinquieme, six paquets, CP et CM1 - **VALIDE SOUS RESERVE**
+(`squad/sprints/s29-parallelisation-et-dettes-payees/verdicts-nadia-instance-A.md`, derniere
+section ; `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Reverification du
+2026-09-06"). `REV-2` (ce meme ecran, une fois deplace en fin de partie, dementait le dernier
+geste juste de l'enfant) est egalement livree : `nadia-prof` a refuse le texte initial et prescrit
+son remplacement mot pour mot (*"Tu n'as pas trouvé."*), `marc-dev` l'a applique tel quel, avec
+deux tests neufs (commit `6c75f28`). **Ni l'une ni l'autre ne restent une story a ecrire.** Ce qui
+reste, decrit par `nadia-prof` et route sans qu'elle le tranche, est `REV-3`.
 
-- **Besoin, du point de vue de l'enfant** : en tant qu'eleve qui vient de se tromper trois fois de
-  suite sur une manche, je veux lire une phrase francaise correcte qui me designe la bonne
-  reponse, quelle que soit sa forme grammaticale, afin de comprendre ce que je dois faire sans
-  buter sur une phrase mal formee au moment ou j'ai le plus besoin d'aide.
+### Story a ecrire pour s30 - `REV-3`, l'ecran de fin de partie nomme une reponse sans porter sa
+### question
+
+`nadia-prof` decrit le symptome dans sa reverification du 2026-09-06 et route la cause a
+`theo-archi`, structurelle et hors de sa main : l'ecran de fin de partie nomme une reponse
+(*"La bonne réponse : non"*, *"La bonne réponse : 9"*) sans porter ni la question ni l'enonce de
+la manche qu'elle commente. Le defaut est anterieur a `ADR-0083` - il vivait derriere *"Non, c'est
+8."* - et ce lot ne l'a ni cree ni aggrave.
+
+- **Besoin, du point de vue de l'enfant** : en tant qu'eleve qui vient de terminer une partie de
+  plusieurs questions, je veux voir, a cote de chaque bonne reponse affichee en fin de partie, la
+  question a laquelle elle repond, afin de comprendre ce qu'elle veut dire meme si j'ai deja
+  enchaine d'autres questions depuis.
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la
-  mecanique, mesure sur le contenu servi entier (54 paquets, 1056 items) : 12 items de 4 paquets
-  fautifs (classe A, sujet conjugue en tete : *"C'est il se nourrit."*), 29 items de 5 autres
-  maladroits mais lisibles (classe B : *"C'est non."*, *"C'est a couper."*).
+  mecanique, sur l'ecran de fin de partie des deux mecaniques (boutons et saisie).
 - **Criteres d'acceptation** :
-  - Etant donne un item dont la bonne reponse est une proposition a sujet conjugue (ex. *"il se
-    nourrit"*), quand l'enfant echoue trois fois sur la manche, alors la phrase de revelation
-    affichee est une phrase francaise correcte qui designe cette reponse et le bouton
-    correspondant.
-  - Etant donne un item dont la bonne reponse est `oui`, `non`, ou une forme en `a` + infinitif,
-    quand l'enfant echoue trois fois, alors la phrase de revelation reste correcte (la classe B
-    n'est pas degradee par le correctif de la classe A).
-  - Etant donne le correctif livre, quand `nadia-prof` le rejoue a l'ecran sur les quatre paquets
-    de la classe A, alors elle confirme qu'aucune phrase agrammaticale ne subsiste. **Prix de sa
-    reverification : 0,25, une passe de lecture d'ecran.**
+  - Etant donne une manche resolue par revelation (l'enfant n'a pas trouve la bonne reponse en
+    trois essais), quand l'ecran de fin de partie affiche cette reponse, alors il affiche aussi,
+    dans le meme bloc, l'enonce ou la question de cette manche.
+  - Etant donne plusieurs manches revelees dans la meme partie, quand l'ecran de fin de partie les
+    liste, alors chaque reponse reste appariee a sa propre question, sans ambiguite sur laquelle
+    des manches jouees elle commente.
+  - Etant donne le correctif livre, quand `nadia-prof` le rejoue a l'ecran sur les six paquets deja
+    couverts par sa reverification de `REV-1` (CP et CM1, cinq formes de bonne reponse), alors elle
+    confirme qu'aucune reponse n'y reste orpheline de sa question. Prix a chiffrer par elle au
+    moment du rejeu.
   - Etant donne ce correctif, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
-    change de statut : `REV-1` ne remet en cause aucun Done pedagogique deja rendu, les quatre
-    lignes qu'elle touche (`QLM-CP-02`, `cp-qlm-vivant-non-vivant`, `cm1-comprehension`,
-    `cm1-histoire-geographie`) restent `couvert-valide`.
-- **Ce que cette story ne fait pas** : elle ne choisit pas entre les deux chemins que `nadia-prof`
-  signale sans trancher (changer la phrase composee, ou contraindre la forme des bonnes reponses)
-  - `oui`, `non` et les infinitifs restent des reponses legitimes qu'elle refuse de retirer d'un
-  paquet de CP. Le choix du chemin est technique : route a `theo-archi`.
-- **Lien** : `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 1
-  et section 8 ; `DEC-0078` (le fait est trace, cette story en decoule).
+    change de statut : `REV-3` ne remet en cause aucun Done pedagogique deja rendu.
+- **Ce que cette story ne fait pas** : elle ne choisit pas la forme technique (recomposer l'enonce
+  complet, n'en montrer qu'un extrait, ou changer le modele expose a la vue) : route a
+  `theo-archi`.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-additions-cp.md`, section "Reverification du
+  2026-09-06", point 3 ; `squad/sprints/s29-parallelisation-et-dettes-payees/verdicts-nadia-
+  instance-A.md` ; `DEC-0077`, section 9.4.
 - **Agent pressenti** : `theo-archi` pour le choix technique et l'implementation, `nadia-prof` pour
   la reverification.
 
