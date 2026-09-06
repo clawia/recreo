@@ -33,6 +33,15 @@ lignesDeReferentiel: ["QLM-CP-07"]
 # par son propre referentiel.
 #
 # Aucune condition de biais ne s'applique a cette ligne.
+#
+# S30-4, bloc B (OBJ-R2, nadia-prof, squad/conformite/FICHE-bandit-manchot-objet-technique-cp.md,
+# section 7) : sur les cinq items de fonction, les deux distracteurs etaient toujours les fonctions
+# des quatre autres objets du paquet, si bien qu'un enfant qui ne connaitrait pas l'objet nomme
+# eliminait quand meme les deux distracteurs sans lire l'enonce. Deux items sur cinq portent
+# desormais un distracteur specifique a l'objet nomme, plausible mais faux, et non la fonction d'un
+# autre objet du paquet : "a coudre" pour les ciseaux (confondus avec un outil de couture), "a se
+# laver les cheveux" pour la brosse a dents (confondue avec une brosse a cheveux). FER-1 et FER-3
+# restent tenues a l'identique de ce qu'elles etaient a la fermeture de QLM-CP-07.
 items:
   - enonce: "À quoi sert un parapluie ?"
     bonneReponse: "à se protéger de la pluie"
@@ -40,7 +49,7 @@ items:
     indice: "On l'ouvre quand il pleut."
   - enonce: "À quoi sert une paire de ciseaux ?"
     bonneReponse: "à couper"
-    distracteurs: ["à écrire", "à balayer"]
+    distracteurs: ["à coudre", "à balayer"]
     indice: "On l'utilise pour découper du papier."
   - enonce: "À quoi sert un stylo ?"
     bonneReponse: "à écrire"
@@ -52,7 +61,7 @@ items:
     indice: "On l'utilise pour nettoyer le sol."
   - enonce: "À quoi sert une brosse à dents ?"
     bonneReponse: "à se laver les dents"
-    distracteurs: ["à couper", "à écrire"]
+    distracteurs: ["à se laver les cheveux", "à écrire"]
     indice: "On s'en sert matin et soir."
   - enonce: "Quelle partie du vélo sert à s'asseoir ?"
     bonneReponse: "la selle"

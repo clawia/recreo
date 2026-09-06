@@ -297,7 +297,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S29-1 : deux titres neufs. Sans point d'interrogation, comme les titres des lots
             // S29-4 et S29-5 : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
             "Le cycle de la vie",
-            "Fonction d'un objet",
+            // S30-4 (bloc B, OBJ-R1) : titre corrige de "Fonction d'un objet" a
+            // "Les objets de tous les jours", mot pour mot fourni par nadia-prof - le mot
+            // "fonction" n'est pas au programme de lecture du CP et le titre promettait plus
+            // etroit que le contenu (fonction et parties).
+            "Les objets de tous les jours",
             // S29-4 : deux titres neufs. Sans point d'interrogation pour "Permis ou interdit" :
             // un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
             "Les règles de l'école",

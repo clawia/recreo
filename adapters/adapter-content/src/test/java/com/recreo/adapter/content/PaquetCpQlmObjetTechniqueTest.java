@@ -160,4 +160,26 @@ class PaquetCpQlmObjetTechniqueTest {
                 .as("FER-3 : la tache la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
     }
+
+    /**
+     * S30-4, bloc B (`OBJ-R2`) : au moins deux des cinq items de fonction portent un distracteur
+     * qui n'est la fonction d'aucun autre objet du paquet - donc plausible pour l'objet nomme et non
+     * un decor eliminable sans le lire. Propriete structurelle et proxy de celle que nadia-prof
+     * rejoue a l'ecran : un distracteur invente pour l'objet ne peut, par construction, etre la
+     * fonction reelle d'un autre objet du meme paquet.
+     */
+    @Test
+    void auMoinsDeuxItemsDeFonctionPortentUnDistracteurEtrangerAuxAutresObjetsDuPaquet() {
+        Set<String> reponsesConnues = new HashSet<>(REPONSES_DE_FONCTION);
+        reponsesConnues.addAll(REPONSES_DE_PARTIE);
+
+        long comptes = itemsDeFonction().stream()
+                .filter(item -> item.distracteurs().stream().anyMatch(d -> !reponsesConnues.contains(d)))
+                .count();
+
+        assertThat(comptes)
+                .as("OBJ-R2 : au moins deux items de fonction portent un distracteur specifique a"
+                        + " l'objet nomme, absent de toute autre bonne reponse du paquet")
+                .isGreaterThanOrEqualTo(2);
+    }
 }

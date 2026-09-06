@@ -277,7 +277,7 @@ jeux:
     paquet: cp-qlm-cycle-de-vie
     nombreDeManches: 10
   - id: bandit-manchot-objet-technique-cp
-    titre: "Fonction d'un objet"
+    titre: "Les objets de tous les jours"
     consigne: "Lis bien la question, puis choisis la bonne réponse."
     mecanique: bandit-manchot
     paquet: cp-qlm-objet-technique
