@@ -17,29 +17,34 @@
 > se fusionnent pas en une seule section "arts" (`nadia-prof`, arbitrage préalable de s27, section
 > 2.3). L'*histoire des arts* est un troisième enseignement, propre au **cycle 3** : il n'existe pas
 > au cycle 2 et ne doit recevoir aucune ligne CP.
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des quatre domaines - `ART-CP-01` à `ART-CP-11`. Aucun
+> intitulé n'est modifié.
 
 ## La représentation du monde
 
-- Représenter le monde environnant ou donner forme à son imaginaire en explorant plusieurs domaines (dessin, peinture, collage, modelage).
-- Employer divers outils, supports et matériaux pour représenter un objet, un paysage ou un personnage.
-- Observer les effets produits par les gestes et les outils sur la matière et les nommer (frotter, gratter, tracer, superposer).
+- [ART-CP-01] Représenter le monde environnant ou donner forme à son imaginaire en explorant plusieurs domaines (dessin, peinture, collage, modelage).
+- [ART-CP-02] Employer divers outils, supports et matériaux pour représenter un objet, un paysage ou un personnage.
+- [ART-CP-03] Observer les effets produits par les gestes et les outils sur la matière et les nommer (frotter, gratter, tracer, superposer).
 
 ## L'expression des émotions
 
-- Exprimer une émotion ou une sensation par le choix des couleurs, des formes et des matières.
-- Reconnaître et nommer les couleurs, distinguer les couleurs primaires de celles obtenues par mélange.
-- Dire ce que l'on ressent devant une image ou une œuvre et écouter ce que d'autres en disent.
+- [ART-CP-04] Exprimer une émotion ou une sensation par le choix des couleurs, des formes et des matières.
+- [ART-CP-05] Reconnaître et nommer les couleurs, distinguer les couleurs primaires de celles obtenues par mélange.
+- [ART-CP-06] Dire ce que l'on ressent devant une image ou une œuvre et écouter ce que d'autres en disent.
 
 ## La narration et le témoignage par les images
 
-- Raconter une histoire ou un événement par une suite d'images.
-- Transformer une image existante (découpage, ajout, association) pour en modifier le sens.
+- [ART-CP-07] Raconter une histoire ou un événement par une suite d'images.
+- [ART-CP-08] Transformer une image existante (découpage, ajout, association) pour en modifier le sens.
 
 ## Se repérer dans les domaines liés aux arts plastiques
 
-- Décrire une œuvre : dire ce qu'on y voit (sujet, couleurs, formes, matériaux).
-- Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres.
-- Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, argile, esquisse).
+- [ART-CP-09] Décrire une œuvre : dire ce qu'on y voit (sujet, couleurs, formes, matériaux).
+- [ART-CP-10] Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres.
+- [ART-CP-11] Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, argile, esquisse).
 
 ---
 

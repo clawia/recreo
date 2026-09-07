@@ -20,28 +20,33 @@
 > - doublées de compétences travaillées communes au cycle (expérimenter, produire, créer ; mettre
 > en œuvre un projet ; s'exprimer et analyser sa pratique et celle des artistes ; se repérer dans
 > les domaines liés aux arts plastiques).
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des quatre domaines - `ART-CM1-01` à `ART-CM1-10`. Aucun
+> intitulé n'est modifié.
 
 ## La représentation plastique et les dispositifs de présentation
 
-- Représenter le monde environnant ou donner forme à son imaginaire en explorant plusieurs domaines (dessin, collage, modelage, sculpture, photographie).
-- Utiliser un procédé de représentation (ressemblance, écart, transformation) pour rendre compte d'un sujet.
-- Expérimenter l'effet des couleurs, des supports, des outils et des gestes sur une représentation.
+- [ART-CM1-01] Représenter le monde environnant ou donner forme à son imaginaire en explorant plusieurs domaines (dessin, collage, modelage, sculpture, photographie).
+- [ART-CM1-02] Utiliser un procédé de représentation (ressemblance, écart, transformation) pour rendre compte d'un sujet.
+- [ART-CM1-03] Expérimenter l'effet des couleurs, des supports, des outils et des gestes sur une représentation.
 
 ## Les fabrications et la relation entre l'objet et l'espace
 
-- Fabriquer un objet ou une construction en volume et adapter sa réalisation à l'espace où elle sera vue.
-- Prendre en compte le lieu et le spectateur dans la présentation d'une production (accrochage, mise en espace).
+- [ART-CM1-04] Fabriquer un objet ou une construction en volume et adapter sa réalisation à l'espace où elle sera vue.
+- [ART-CM1-05] Prendre en compte le lieu et le spectateur dans la présentation d'une production (accrochage, mise en espace).
 
 ## La matérialité de la production plastique
 
-- Choisir et employer une matière, un outil ou un geste en fonction de l'effet plastique recherché.
-- Repérer, dans une œuvre observée, les effets produits par la matière, la couleur, le geste et le support.
+- [ART-CM1-06] Choisir et employer une matière, un outil ou un geste en fonction de l'effet plastique recherché.
+- [ART-CM1-07] Repérer, dans une œuvre observée, les effets produits par la matière, la couleur, le geste et le support.
 
 ## S'exprimer, analyser sa pratique et celle des artistes
 
-- Décrire une œuvre d'art avec un lexique élémentaire (support, format, matière, couleur, sujet, composition).
-- Exprimer ce qu'on perçoit d'une œuvre, formuler un avis et écouter celui des autres.
-- Établir un lien entre sa propre production et des œuvres d'artistes rencontrées.
+- [ART-CM1-08] Décrire une œuvre d'art avec un lexique élémentaire (support, format, matière, couleur, sujet, composition).
+- [ART-CM1-09] Exprimer ce qu'on perçoit d'une œuvre, formuler un avis et écouter celui des autres.
+- [ART-CM1-10] Établir un lien entre sa propre production et des œuvres d'artistes rencontrées.
 
 ---
 

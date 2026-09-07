@@ -26,27 +26,35 @@
 > 2026-09-02** : aucun dispositif où un adulte prononcerait de l'anglais n'est envisagé, y compris
 > sous la prémisse de l'adulte accompagnant du CP (`CLAUDE.md`) - un adulte qui prononce mal un
 > phonème anglais enseigne le mauvais phonème, sans que le produit ne le sache ni ne le corrige.
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des six activités langagières - `LVE-CP-01` à `LVE-CP-06` -,
+> par cohérence avec le préfixe déjà retenu pour `squad/programme/langues-vivantes/competences-cm1.md`
+> (`LVE-CM1-01` à `LVE-CM1-07`) plutôt qu'un préfixe `ANG` qui désignerait une autre langue vivante
+> si l'utilisatrice tranchait un jour la question de nommage ouverte plus haut. Aucun intitulé n'est
+> modifié.
 
 ## Écouter et comprendre
 
-- Comprendre à l'oral les consignes de classe et des expressions très courantes.
+- [LVE-CP-01] Comprendre à l'oral les consignes de classe et des expressions très courantes.
 
 ## Parler en continu
 
-- Reproduire un modèle oral : un mot, une formule de politesse, une comptine.
+- [LVE-CP-02] Reproduire un modèle oral : un mot, une formule de politesse, une comptine.
 
 ## Prendre part à une conversation
 
-- Se présenter oralement et répondre à une question simple sur soi.
+- [LVE-CP-03] Se présenter oralement et répondre à une question simple sur soi.
 
 ## Lire et comprendre
 
-- Reconnaître à l'écrit des mots familiers déjà rencontrés à l'oral, dans les champs lexicaux du cycle 2 (nombres, couleurs, animaux, corps, école, famille).
+- [LVE-CP-04] Reconnaître à l'écrit des mots familiers déjà rencontrés à l'oral, dans les champs lexicaux du cycle 2 (nombres, couleurs, animaux, corps, école, famille).
 
 ## Écrire
 
-- Copier des mots isolés et des expressions courtes.
+- [LVE-CP-05] Copier des mots isolés et des expressions courtes.
 
 ## Découverte culturelle
 
-- Découvrir quelques aspects culturels des pays de la langue étudiée (fêtes, lieux, vie quotidienne).
+- [LVE-CP-06] Découvrir quelques aspects culturels des pays de la langue étudiée (fêtes, lieux, vie quotidienne).

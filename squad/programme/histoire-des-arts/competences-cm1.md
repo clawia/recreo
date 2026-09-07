@@ -25,28 +25,33 @@
 > Le programme de cycle 3 s'organise en trois grandes compétences - décrire une œuvre et en
 > dégager les caractéristiques ; la relier à son contexte et la situer ; donner un avis argumenté -
 > auxquelles s'ajoute la fréquentation des lieux d'art et du patrimoine.
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des quatre domaines - `HDA-CM1-01` à `HDA-CM1-10`. Aucun
+> intitulé n'est modifié.
 
 ## Décrire une œuvre et en dégager les caractéristiques
 
-- Décrire une œuvre d'art en employant un lexique simple et adapté (support, format, matière, couleur, sujet).
-- Dégager d'une œuvre observée ses principales caractéristiques techniques et formelles.
-- Identifier les matériaux d'une œuvre et la manière dont l'artiste leur a donné forme.
+- [HDA-CM1-01] Décrire une œuvre d'art en employant un lexique simple et adapté (support, format, matière, couleur, sujet).
+- [HDA-CM1-02] Dégager d'une œuvre observée ses principales caractéristiques techniques et formelles.
+- [HDA-CM1-03] Identifier les matériaux d'une œuvre et la manière dont l'artiste leur a donné forme.
 
 ## Situer une œuvre dans le temps et dans son contexte
 
-- Associer une œuvre à une époque et à une civilisation à partir d'éléments observés.
-- Relier les caractéristiques d'une œuvre d'art à des usages et au contexte historique et culturel de sa création.
-- Identifier quelques œuvres et quelques repères majeurs du patrimoine, et les situer sur une frise.
+- [HDA-CM1-04] Associer une œuvre à une époque et à une civilisation à partir d'éléments observés.
+- [HDA-CM1-05] Relier les caractéristiques d'une œuvre d'art à des usages et au contexte historique et culturel de sa création.
+- [HDA-CM1-06] Identifier quelques œuvres et quelques repères majeurs du patrimoine, et les situer sur une frise.
 
 ## Donner un avis argumenté
 
-- Donner un avis argumenté sur ce qu'une œuvre représente ou exprime.
-- Proposer une interprétation simple d'une œuvre et en discuter avec d'autres.
+- [HDA-CM1-07] Donner un avis argumenté sur ce qu'une œuvre représente ou exprime.
+- [HDA-CM1-08] Proposer une interprétation simple d'une œuvre et en discuter avec d'autres.
 
 ## Fréquenter les lieux d'art et le patrimoine
 
-- Se repérer dans un musée, un lieu d'art ou un site patrimonial, et en respecter les règles.
-- Rendre compte de la visite d'un lieu de conservation ou de la rencontre avec un métier du patrimoine.
+- [HDA-CM1-09] Se repérer dans un musée, un lieu d'art ou un site patrimonial, et en respecter les règles.
+- [HDA-CM1-10] Rendre compte de la visite d'un lieu de conservation ou de la rencontre avec un métier du patrimoine.
 
 ---
 

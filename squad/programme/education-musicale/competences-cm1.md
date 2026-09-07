@@ -22,28 +22,35 @@
 > n'écrirait que les lignes jouables ferait disparaître un enseignement entier du programme sans
 > que rien ne le signale - c'est le même motif qui m'a fait écrire les six lignes d'anglais CP le
 > 2026-09-02, dont cinq tombaient.
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des quatre domaines - `MUS-CM1-01` à `MUS-CM1-10`. Elle ne
+> porte que sur les dix lignes de compétence : les deux puces qui distinguent plus bas les natures
+> réversible et irréversible ne sont pas des lignes de référentiel et ne reçoivent aucun code. Aucun
+> intitulé n'est modifié.
 
 ## Chanter et interpréter
 
-- Chanter un chant mémorisé en respectant la justesse, le rythme et les nuances.
-- Interpréter un chant à plusieurs voix ou en canon, en tenant sa partie dans un ensemble.
-- Mobiliser son corps et sa voix pour interpréter (posture, respiration, articulation).
+- [MUS-CM1-01] Chanter un chant mémorisé en respectant la justesse, le rythme et les nuances.
+- [MUS-CM1-02] Interpréter un chant à plusieurs voix ou en canon, en tenant sa partie dans un ensemble.
+- [MUS-CM1-03] Mobiliser son corps et sa voix pour interpréter (posture, respiration, articulation).
 
 ## Écouter, comparer et commenter
 
-- Décrire et comparer des éléments sonores d'une œuvre écoutée (timbre, hauteur, durée, intensité, tempo).
-- Repérer l'organisation d'une œuvre écoutée (thème, couplet et refrain, répétition, contraste).
-- Identifier la famille et le timbre d'un instrument entendu.
-- Situer une œuvre écoutée dans le temps, dans une aire géographique ou dans un genre musical.
+- [MUS-CM1-04] Décrire et comparer des éléments sonores d'une œuvre écoutée (timbre, hauteur, durée, intensité, tempo).
+- [MUS-CM1-05] Repérer l'organisation d'une œuvre écoutée (thème, couplet et refrain, répétition, contraste).
+- [MUS-CM1-06] Identifier la famille et le timbre d'un instrument entendu.
+- [MUS-CM1-07] Situer une œuvre écoutée dans le temps, dans une aire géographique ou dans un genre musical.
 
 ## Explorer, imaginer et créer
 
-- Imaginer et réaliser une production sonore avec sa voix, son corps ou des objets sonores.
-- Utiliser un codage simple pour représenter une organisation sonore, et la réaliser.
+- [MUS-CM1-08] Imaginer et réaliser une production sonore avec sa voix, son corps ou des objets sonores.
+- [MUS-CM1-09] Utiliser un codage simple pour représenter une organisation sonore, et la réaliser.
 
 ## Échanger, partager, argumenter et débattre
 
-- Exprimer et justifier un avis sur une musique écoutée, et écouter celui des autres.
+- [MUS-CM1-10] Exprimer et justifier un avis sur une musique écoutée, et écouter celui des autres.
 
 ---
 

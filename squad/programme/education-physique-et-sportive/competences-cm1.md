@@ -21,31 +21,36 @@
 > `non couvrable en l'etat`, toutes de nature irréversible.** Les dix lignes sont écrites quand
 > même, entièrement : une matrice qui n'écrirait que les deux lignes jouables ferait passer deux
 > connaissances pour un enseignement.
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des quatre domaines - `EPS-CM1-01` à `EPS-CM1-10`. Aucun
+> intitulé n'est modifié.
 
 ## Produire une performance optimale, mesurable à une échéance donnée
 
-- Réaliser une performance mesurée en course, en saut ou en lancer, et la comparer à ses résultats précédents.
-- Se déplacer dans l'eau sur une distance donnée en assurant sa propre sécurité.
+- [EPS-CM1-01] Réaliser une performance mesurée en course, en saut ou en lancer, et la comparer à ses résultats précédents.
+- [EPS-CM1-02] Se déplacer dans l'eau sur une distance donnée en assurant sa propre sécurité.
 
 ## Adapter ses déplacements à des environnements variés
 
-- Adapter ses déplacements à un milieu inhabituel (grimper, s'équilibrer, se déplacer en milieu naturel) en respectant les règles de sécurité.
-- Suivre un itinéraire à l'aide d'un plan ou d'une carte et y retrouver des repères.
+- [EPS-CM1-03] Adapter ses déplacements à un milieu inhabituel (grimper, s'équilibrer, se déplacer en milieu naturel) en respectant les règles de sécurité.
+- [EPS-CM1-04] Suivre un itinéraire à l'aide d'un plan ou d'une carte et y retrouver des repères.
 
 ## S'exprimer devant les autres par une prestation artistique ou acrobatique
 
-- Composer et présenter devant les autres une courte chorégraphie ou un enchaînement acrobatique.
-- Observer la prestation d'un camarade et lui formuler un retour simple et respectueux.
+- [EPS-CM1-05] Composer et présenter devant les autres une courte chorégraphie ou un enchaînement acrobatique.
+- [EPS-CM1-06] Observer la prestation d'un camarade et lui formuler un retour simple et respectueux.
 
 ## Conduire et maîtriser un affrontement collectif ou interindividuel
 
-- Conduire un affrontement collectif : se placer, coopérer avec ses partenaires et atteindre un but commun.
-- Conduire un affrontement interindividuel : adapter ses actions à celles de l'adversaire.
-- Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer les règles.
+- [EPS-CM1-07] Conduire un affrontement collectif : se placer, coopérer avec ses partenaires et atteindre un but commun.
+- [EPS-CM1-08] Conduire un affrontement interindividuel : adapter ses actions à celles de l'adversaire.
+- [EPS-CM1-09] Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer les règles.
 
 ## Apprendre à entretenir sa santé
 
-- Connaître les effets de l'activité physique sur le corps (échauffement, essoufflement, récupération, hydratation) et les règles de sécurité qui l'entourent.
+- [EPS-CM1-10] Connaître les effets de l'activité physique sur le corps (échauffement, essoufflement, récupération, hydratation) et les règles de sécurité qui l'entourent.
 
 ---
 

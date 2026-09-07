@@ -11352,3 +11352,445 @@ s31 ouvert.
   - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-B.md`,
     complement du 2026-09-06, section 7.
 
+## Sprint 31 - EMC CP restreint aux lignes 1 a 7 (deux lots), sciences et technologie CM1 en
+## second passage (deux lots), deux reprises de reserves qui enseignaient du faux (`DEC-0081`)
+
+Perimetre arbitre par l'utilisatrice le 2026-09-07 (`DEC-0081`), sur l'arbitrage prealable de
+`nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`)
+et l'avis de faisabilite de `theo-archi`
+(`squad/sprints/s31-second-passage-de-sciences-et-emc-cp/avis-faisabilite-theo.md`) : composition 1
+a quatre lots, deux instances de `nadia-prof` continuent en parallele.
+
+**Borne du sprint : 8,0**, empirique et non derivee (`DEC-0081`, section 1). **Budget opposable par
+instance : 4,0** (`PAR-9`), marge de rejeu comprise. **Composition retenue** : l'Instance A prend les
+deux lots d'EMC CP (2,0) plus les deux reprises `melanges` et `objet-technique` (1,0) plus la marge
+`PAR-11` (1,0) ; l'Instance B prend les deux lots de sciences CM1 (3,0) plus la marge `PAR-11` (1,0).
+**8,0 planifies sur 8,0, aucune marge residuelle** : voir `DEC-0081`, section 5, pour ce que cela
+ferme (`SAI-R1` n'entre pas dans ce perimetre).
+
+**Point de sequencement a l'interieur meme du sprint** : `nadia-prof` refuse d'avance (section 10,
+refus n°7 de son arbitrage) *"tout item disant que l'eau disparait"* sur la ligne 1 des sciences, et
+avertit que si cette ligne ouvre sans que `MEL-R1` soit paye, *"le produit se contredira sur deux
+paquets de la meme matiere et du meme niveau, dans le meme sprint"*. La composition retenue paye
+`MEL-R1` (`S31-5`) dans le meme sprint que l'ouverture de `SCI-CM1-01` (`S31-3`) : le risque qu'elle
+nomme est couvert, et ce sprint ne doit pas fermer la ligne 1 sans que `S31-5` soit egalement rendue.
+
+**Le chiffre honnete, a garder present tout le sprint** (`DEC-0081`, section 3) : la passe
+transverse, `REG-R1`, `PER-R1` et donc `CAT-1` restent impayees ; le groupe des dix reserves
+gagnables sans la competence sur des lignes deja `couvert-valide` (3,0, dont 1,5 solde par le
+paiement des deux reprises de ce sprint) est ecarte en connaissance de cause. **Plafond
+arithmetique : 8 lignes, 64/138 = 46,4 %. Attente raisonnable de `nadia-prof` : 5 a 7 lignes, 61 a
+63/138, soit 44,2 % a 45,7 %.**
+
+**Contrainte dure, opposable a l'affectation** (`nadia-prof`, section 3.2 de son arbitrage) : les
+quatre lignes d'EMC CP de ce sprint viennent **exclusivement** de `EMC-CP-01`, `EMC-CP-03`,
+`EMC-CP-05`, `EMC-CP-07`, sans aucun remplacant possible a ce tarif. `EMC-CP-04` est explicitement
+exclue de tout lot (`EMC-4` ne laisse qu'une seule tache possible, `FER-3` ne peut pas etre tenue) ;
+son annotation de matrice reste due, routee a `sofia-sm` (`DEC-0081`, section 7).
+
+**`CAT-1` - opposable des ce sprint** (`nadia-prof`, section 2 de son arbitrage, datee du
+2026-09-07) : sur toute ligne d'EMC, la bonne reponse ne se reconnait pas a son ton. Un item dont la
+bonne reponse est la seule proposition polie, prudente ou bienveillante, et dont les distracteurs
+sont les seules propositions grossieres, dangereuses ou egoistes, se gagne sans la competence.
+Opposable avec `FAB-1` (une regle de fabrication ne se repete pas a l'interieur d'une tache),
+`PLA-1` (une proposition est un candidat, jamais un remplissage) et `BIN-1` (une partie ne se joue
+pas majoritairement a pile ou face) - quatre clauses datees du 2026-09-07, reprises dans les
+criteres d'acceptation ci-dessous.
+
+**Corrections de gouvernance faites avant l'ouverture, hors story** (`DEC-0081`, section 6) : les
+codes de ligne des huit referentiels qui n'en portaient aucun (arts plastiques CP/CM1, education
+musicale CP/CM1, education physique et sportive CP/CM1, histoire des arts CM1, langues vivantes CP)
+sont alloues dans leurs fichiers respectifs sous `squad/programme/`, conformement a `ADR-0081`. Zero
+ligne de code, zero ligne de matrice, zero Done pedagogique attache. Le chiffre transmis (81 lignes
+sans code) est corrige a 79 en le faisant (deux puces d'une note de bas de page d'education
+musicale CM1 comptees a tort). Ce n'est pas une story : c'est une ecriture de `camille-po` dans les
+referentiels, faite dans le meme geste que la presente ouverture.
+
+### S31-1 - Premier lot d'enseignement moral et civique CP : reconnaitre les emotions d'autrui,
+### employer les formules de politesse
+
+- **Besoin** : en tant qu'eleve de CP, je veux reconnaitre ce que ressent une personne dans une
+  situation qu'on me decrit, et savoir quelle formule de politesse employer dans un echange, en
+  jouant au bandit manchot, afin de continuer l'enseignement moral et civique dans l'application.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, deux lignes `non couvert` :
+  "Identifier et nommer les emotions d'autrui dans une situation simple (joie, tristesse, colere,
+  peur)" (`EMC-CP-01`) et "Employer les formules de politesse et de respect dans les echanges
+  (saluer, remercier, demander, ecouter sans couper)" (`EMC-CP-05`).
+- **Restriction de perimetre, opposable** : le lot reste strictement dans les lignes 1 a 7 du
+  referentiel, au tarif de 1,0 (`nadia-prof`, section 7.2 de son arbitrage) - aucun item ne touche
+  aux lignes 8, 9, 10, 13 ou 14.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `EMC-CP-01`, quand on compte ses items, alors il en porte au moins
+    onze, et les quatre emotions de la parenthese (joie, tristesse, colere, peur) sont chacune en
+    bonne reponse au moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent (`FER-3`) : inferer l'emotion d'un
+    evenement decrit a un personnage nomme (*"Lea a perdu son doudou"*), et lire un signe corporel
+    decrit (*"Tom serre les poings et crie"*) - la moins servie a trois items au moins.
+  - Etant donne chaque item de ce paquet, alors la situation decrite n'admet qu'une seule emotion
+    evidente : si deux des trois propositions sont defendables devant la situation decrite, l'item
+    est refuse (`EMC-2`).
+  - Etant donne le paquet de `EMC-CP-05`, quand on compte ses items, alors il en porte au moins
+    onze, et les quatre elements de la parenthese (saluer, remercier, demander, ecouter sans couper)
+    sont chacun en bonne reponse au moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent (`FER-3`) : choisir la formule qui
+    convient a une situation decrite, et dire quelle regle d'echange un dialogue donne ne respecte
+    pas - la moins servie a trois items au moins.
+  - Etant donne le Done pedagogique de `EMC-CP-05`, alors la matrice porte la mention obligatoire
+    *"connaissance des formules seule ; leur emploi en situation n'est pas servi"* - le verbe du
+    libelle est *employer*, et ce produit ne verifie jamais ce qu'un enfant fait. Une fermeture sans
+    cette mention est refusee (`nadia-prof`, refus d'avance n°14).
+  - Etant donne chaque item des deux paquets, alors aucun n'interroge l'enfant sur ce qu'il
+    ressent, vit, croit ou fait chez lui (`EMC-1`), aucun ne demande a l'enfant de declarer un
+    comportement - la forme *"que fais-tu si..."* est refusee (`EMC-8`) -, et aucun ne nomme de
+    personne reelle vivante, parti, syndicat ou organisation engagee dans un debat en cours
+    (`EMC-10`).
+  - Etant donne chaque item des deux paquets, alors la bonne reponse ne se reconnait jamais a son
+    ton : les trois propositions sont du meme registre, et ce qui les distingue est ce qu'elles
+    disent, jamais comment elles sonnent (`CAT-1`). Un item dont la bonne reponse est la seule
+    proposition polie, prudente ou bienveillante, face a des distracteurs grossiers, dangereux ou
+    egoistes, est refuse.
+  - Etant donne chaque proposition de chaque item, alors elle est un candidat qu'un enfant de CP
+    peut serieusement envisager - une categorie enseignee, ou une reponse qu'il pourrait vraiment
+    donner - jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne les items d'une meme tache, dans un des deux paquets, alors deux items ne portent
+    jamais la meme bonne reponse mot pour mot, et les distracteurs ne sont pas pris systematiquement
+    dans le vivier des bonnes reponses des autres items de la meme tache (`FAB-1`).
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
+    ligne sous `lignesDeReferentiel` (`ADR-0081`) ; chaque paquet porte onze items exactement et
+    `nombreDeManches: 10` sans derogation (`DEC-0064`).
+  - Etant donne le lot livre dans son ensemble, alors aucun item n'est en bonne reponse sur une
+    ligne d'EMC CP autre que 1 ou 5 - en particulier aucun sur les lignes 8, 9, 10, 13 ou 14, ce qui
+    changerait le tarif du lot deja arbitre.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui audite l'EMC verifie `FER-1`, `FER-2`,
+    `FER-3`, `EMC-1`, `EMC-2`, `EMC-8`, `EMC-10`, `CAT-1`, `PLA-1` et `FAB-1` tenues - une ligne peut
+    fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert pas la ligne 3 (exclusion, la plus delicate de
+  la matiere, servie par `S31-2`) ; elle ne touche pas a la ligne 4, explicitement exclue de tout
+  lot ce sprint (`EMC-4`, aucune seconde tache possible) ; elle ne sert pas la ligne 7.
+- **Lien decision** : `DEC-0074` (referentiel EMC CP ecrit et arbitre), `DEC-0081` (perimetre de
+  s31, composition, `CAT-1`, `FAB-1`, `PLA-1`).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance A, pour l'audit et le Done pedagogique - c'est elle la source de
+  cette matiere pour les lignes 1 a 7.
+
+### S31-2 - Second lot d'enseignement moral et civique CP : reconnaitre l'exclusion et savoir en
+### parler a un adulte, distinguer une regle, un souhait et une loi
+
+- **Besoin** : en tant qu'eleve de CP, je veux reconnaitre une situation de moquerie repetee et
+  savoir a quel adulte en parler, et distinguer une regle qui vaut pour tous d'un simple souhait ou
+  d'une loi, en jouant au bandit manchot, afin de continuer l'enseignement moral et civique.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, deux lignes `non couvert` :
+  "Reconnaitre une situation de moquerie repetee ou d'exclusion et savoir a quel adulte en parler"
+  (`EMC-CP-03`) et "Distinguer une regle qui vaut pour tous d'un simple souhait, et reconnaitre
+  qu'une loi s'impose a tous" (`EMC-CP-07`).
+- **Restriction de perimetre, opposable** : le lot reste strictement dans les lignes 1 a 7 du
+  referentiel, au tarif de 1,0. Ligne delicate a ecrire en dernier dans ce paquet
+  (`nadia-prof`, section 3.1 de son arbitrage, ligne `EMC-CP-03`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `EMC-CP-03`, quand on compte ses items, alors il en porte au moins
+    onze, et deux taches distinctes existent (`FER-3`) : reconnaitre la situation decrite comme une
+    moquerie repetee ou un accident isole, et identifier l'adulte a qui en parler selon le lieu
+    decrit (la cour, la classe, la cantine) - la moins servie a trois items au moins.
+  - Etant donne chaque item de ce paquet, alors la bonne reponse est toujours *en parler a un
+    adulte*, jamais une solution que l'enfant appliquerait seul (`EMC-3`) ; aucun item ne met
+    l'enfant lui-meme en position de victime ou d'auteur ; aucun item ne detaille une violence.
+  - Etant donne le paquet de `EMC-CP-07`, quand on compte ses items, alors il en porte au moins
+    onze, et les trois termes du libelle (regle, souhait, loi) sont chacun en bonne reponse au moins
+    une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent (`FER-3`) : classer une situation
+    decrite comme une regle qui vaut pour tous ou un simple souhait, et reconnaitre qu'une loi
+    citee sur un exemple concret s'impose a tous, y compris aux adultes - la moins servie a trois
+    items au moins.
+  - Etant donne chaque item de ce paquet, alors le mot *loi* n'est jamais defini dans l'enonce : il
+    s'emploie uniquement sur des exemples concrets.
+  - Etant donne ce meme paquet, alors la tache de classement (regle contre souhait) ne sert pas
+    majoritairement des items a deux propositions : au plus la moitie des items de cette tache
+    portent deux propositions plutot que trois (`BIN-1`).
+  - Etant donne chaque item des deux paquets, alors aucun n'interroge l'enfant sur ce qu'il
+    ressent, vit, croit ou fait chez lui (`EMC-1`), aucun ne demande a l'enfant de declarer un
+    comportement (`EMC-8`), et aucun ne nomme de personne reelle vivante, parti, syndicat ou
+    organisation engagee dans un debat en cours (`EMC-10`).
+  - Etant donne chaque item des deux paquets, alors il n'a jamais deux reponses defendables
+    (`EMC-5`), et la bonne reponse ne se reconnait jamais a son ton : les trois propositions sont du
+    meme registre (`CAT-1`).
+  - Etant donne chaque proposition de chaque item, alors elle est un candidat qu'un enfant de CP
+    peut serieusement envisager, jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne les items d'une meme tache, alors deux items ne portent jamais la meme bonne
+    reponse mot pour mot, et les distracteurs ne sont pas pris systematiquement dans le vivier des
+    bonnes reponses des autres items de la meme tache (`FAB-1`).
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
+    ligne sous `lignesDeReferentiel` (`ADR-0081`) ; chaque paquet porte onze items exactement et
+    `nombreDeManches: 10` sans derogation (`DEC-0064`).
+  - Etant donne le lot livre dans son ensemble, alors aucun item n'est en bonne reponse sur une
+    ligne d'EMC CP autre que 3 ou 7.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui audite l'EMC verifie `FER-1`, `FER-2`,
+    `FER-3`, `EMC-1`, `EMC-3`, `EMC-5`, `EMC-8`, `EMC-10`, `CAT-1`, `PLA-1`, `FAB-1` et, pour
+    `EMC-CP-07`, `BIN-1` tenues - une ligne peut fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert ni la ligne 1 ni la ligne 5 (servies par
+  `S31-1`) ; elle ne touche pas a la ligne 4, explicitement exclue de tout lot ce sprint.
+- **Lien decision** : `DEC-0074`, `DEC-0081`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev`, en ecrivant les items de la ligne 3 en dernier dans le paquet (`nadia-prof`) ;
+  `nadia-prof`, Instance A, pour l'audit et le Done pedagogique.
+
+### S31-3 - Premier lot de sciences et technologie CM1, second passage : etats de la matiere et
+### changements d'etat, regimes alimentaires
+
+- **Besoin** : en tant qu'eleve de CM1, je veux repondre a des questions sur les etats de la matiere
+  et leurs changements, et sur ce que mangent les etres vivants selon leur regime alimentaire, en
+  jouant au bandit manchot, afin de decouvrir deux competences de sciences de plus.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3) -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, deux lignes `non couvert` :
+  "Decrire les etats de la matiere et les changements d'etat (solide, liquide, gaz ; fusion,
+  solidification, vaporisation, condensation)" (`SCI-CM1-01`) et "Identifier les besoins des etres
+  vivants pour se nourrir et distinguer les regimes alimentaires (herbivore, carnivore, omnivore)"
+  (`SCI-CM1-07`). Choisies par `camille-po` parmi les lignes que `nadia-prof` juge les plus sures du
+  second passage (section 4.3 de son arbitrage : 1, 7, 11 - faits certains, taches naturellement
+  distinctes, distracteurs plausibles sans effort).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `SCI-CM1-01`, quand on compte ses items, alors il en porte au moins
+    onze, et les trois etats (solide, liquide, gaz) ainsi que les quatre changements d'etat (fusion,
+    solidification, vaporisation, condensation) sont chacun en bonne reponse au moins une fois
+    (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent (`FER-3`) : identifier l'etat
+    d'une matiere decrite, et nommer le changement d'etat que decrit une situation - la moins
+    servie a trois items au moins.
+  - Etant donne chaque item de ce paquet, alors aucun ne dit que l'eau disparait, se perd ou s'en
+    va : un changement d'etat qui fait disparaitre l'eau visible la fait devenir vapeur, jamais
+    disparaitre (`nadia-prof`, refus d'avance n°7).
+  - Etant donne le paquet de `SCI-CM1-07`, quand on compte ses items, alors il en porte au moins
+    onze, et les trois regimes (herbivore, carnivore, omnivore) sont chacun en bonne reponse au
+    moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent (`FER-3`) : identifier le regime
+    d'un animal decrit par ce qu'il mange, et dire a quoi sert la nourriture pour un etre vivant -
+    la moins servie a trois items au moins.
+  - Etant donne les items de la tache de regime de ce paquet, alors les memes trois regimes peuvent
+    servir de propositions a chaque item (`FER-1` l'exige), mais le regime juste n'est jamais le
+    meme d'un item a l'autre : les distracteurs ne sont pas pris systematiquement dans le vivier des
+    bonnes reponses des autres items de la meme tache (`FAB-1b`).
+  - Etant donne chaque item des deux paquets, alors deux items d'une meme tache ne portent jamais
+    la meme bonne reponse mot pour mot (`FAB-1a`), et la bonne reponse ne se reconnait pas a la
+    forme de son texte sur plus d'un tiers des items de la tache (`FAB-1c`).
+  - Etant donne chaque proposition de chaque item, alors elle est un candidat qu'un enfant de CM1
+    peut serieusement envisager, jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne chaque item des deux paquets dont un distracteur porte une conception fausse
+    courante, alors son `indice` dit pourquoi cette conception est fausse, en une phrase, sans
+    nommer la bonne reponse (`SCI-1`, `M21`), et l'item porte alors au moins trois propositions
+    (`SCI-4`).
+  - Etant donne les items de `SCI-CM1-01`, alors aucun ne range comme vivant ou non vivant un
+    element que `cp-qlm-vivant-non-vivant.yaml` range dans l'autre sens (`CYC-1`).
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
+    ligne sous `lignesDeReferentiel` (`ADR-0081`) ; chaque paquet porte onze items exactement et
+    `nombreDeManches: 10` sans derogation (`DEC-0064`).
+  - Etant donne chaque fait porte par un item, alors sa source est ecrite dans le commentaire du
+    paquet (`HIS-3`), et aucun item ne se resout sans connaitre la matiere ou l'animal qu'il
+    designe (`CON-1`).
+  - Etant donne l'entree de catalogue de chaque paquet, alors sa consigne nomme la tache reelle du
+    jeu et ne reprend pas la formule generique que `DEC-0078` interdit desormais aux entrees
+    neuves.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui audite ce lot verifie `FER-1`, `FER-2`,
+    `FER-3`, `SCI-1`, `SCI-4`, `CYC-1`, `FAB-1` et `PLA-1` tenues - une ligne peut fermer
+    independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert aucune autre ligne de sciences ; elle ne mesure
+  pas seule `SCI-3` (restitution d'une valeur numerique), qui se verifie sur l'ensemble des items de
+  sciences livres a s31 (`S31-3` et `S31-4` ensemble, voir `S31-4`).
+- **Lien decision** : `DEC-0074`, `DEC-0081`, `ADR-0081` (codes de ligne).
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance B, pour l'audit et le Done pedagogique - elle n'est pas la
+  source de cette matiere, chaque fait se verifie contre une source externe.
+
+### S31-4 - Second lot de sciences et technologie CM1, second passage : familles de materiaux,
+### etapes du developpement d'un etre vivant
+
+- **Besoin** : en tant qu'eleve de CM1, je veux reconnaitre les familles de materiaux et choisir un
+  materiau selon une propriete, et remettre dans l'ordre les etapes du developpement d'un etre
+  vivant, en jouant au bandit manchot, afin de decouvrir deux competences de sciences de plus.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3) -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, deux lignes `non couvert` :
+  "Identifier les principales familles de materiaux et choisir un materiau d'apres une propriete
+  (resistance, isolation, souplesse, impermeabilite)" (`SCI-CM1-11`) et "Ordonner les etapes du
+  developpement d'un etre vivant (naissance, croissance, reproduction, vieillissement, mort)"
+  (`SCI-CM1-08`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `SCI-CM1-11`, quand on compte ses items, alors il en porte au moins
+    onze, et les quatre proprietes du libelle (resistance, isolation, souplesse, impermeabilite)
+    sont chacune en bonne reponse au moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent (`FER-3`) : nommer la famille de
+    materiau dont releve un objet decrit, et choisir le materiau adapte a un usage decrit d'apres
+    une propriete nommee - la moins servie a trois items au moins.
+  - Etant donne les items de ce paquet, alors les distracteurs ne sont pas pris systematiquement
+    dans le vivier des bonnes reponses des autres items de la meme tache (`FAB-1b`) : le materiau
+    juste n'est jamais le meme d'un item a l'autre de la tache de choix.
+  - Etant donne le paquet de `SCI-CM1-08`, quand on compte ses items, alors il en porte au moins
+    onze, et les cinq etapes du libelle (naissance, croissance, reproduction, vieillissement, mort)
+    sont chacune en bonne reponse au moins une fois (`FER-1`).
+  - Etant donne ce paquet, alors deux taches distinctes existent (`FER-3`) : dire quelle etape suit
+    une etape decrite, et dire ce qui caracterise une etape nommee - la moins servie a trois items
+    au moins. Aucun item ne demande de reconstituer la sequence entiere en un seul geste (`V3`).
+  - Etant donne chaque item des deux paquets, alors deux items d'une meme tache ne portent jamais
+    la meme bonne reponse mot pour mot (`FAB-1a`), et la bonne reponse ne se reconnait pas a la
+    forme de son texte sur plus d'un tiers des items de la tache (`FAB-1c`).
+  - Etant donne chaque proposition de chaque item, alors elle est un candidat qu'un enfant de CM1
+    peut serieusement envisager, jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne chaque item des deux paquets dont un distracteur porte une conception fausse
+    courante, alors son `indice` dit pourquoi cette conception est fausse, en une phrase, sans
+    nommer la bonne reponse (`SCI-1`, `M21`), et l'item porte alors au moins trois propositions
+    (`SCI-4`).
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
+    ligne sous `lignesDeReferentiel` (`ADR-0081`) ; chaque paquet porte onze items exactement et
+    `nombreDeManches: 10` sans derogation (`DEC-0064`).
+  - Etant donne chaque fait porte par un item, alors sa source est ecrite dans le commentaire du
+    paquet (`HIS-3`), et aucun item ne se resout sans connaitre le materiau ou l'etape qu'il
+    designe (`CON-1`).
+  - Etant donne l'entree de catalogue de chaque paquet, alors sa consigne nomme la tache reelle du
+    jeu et ne reprend pas la formule generique que `DEC-0078` interdit desormais aux entrees
+    neuves.
+  - Etant donne l'ensemble des items de sciences livres a s31 (`S31-3` et `S31-4` ensemble, 44
+    items au total), alors au plus un item sur six demande une valeur numerique a restituer, soit
+    sept items au maximum sur les quarante-quatre (`SCI-3`) - mesure sur le lot entier de la
+    matiere, jamais paquet par paquet, par le meme auditeur des deux stories.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance de `nadia-prof` qui audite ce lot verifie `FER-1`, `FER-2`,
+    `FER-3`, `SCI-1`, `SCI-3`, `SCI-4`, `FAB-1` et `PLA-1` tenues - une ligne peut fermer
+    independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert aucune autre ligne de sciences ; elle ne
+  construit aucune mecanique neuve pour la ligne 8 - `theo-archi` note que si `nadia-prof` exigeait
+  un vrai geste d'ordonnancement plutot qu'un enchainement servi par des items de choix, cela
+  demanderait une quatrieme mecanique, ce que cette story ne fait pas et que personne n'a demande
+  ce sprint (`squad/sprints/s31-second-passage-de-sciences-et-emc-cp/avis-faisabilite-theo.md`,
+  section 3.1).
+- **Lien decision** : `DEC-0074`, `DEC-0081`, `ADR-0081`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, Instance B, pour l'audit et le Done pedagogique.
+
+### S31-5 - Reprise : l'indice du sel ne fait plus disparaitre l'eau (`MEL-R1`, `MEL-R2`, `MEL-R3`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que l'indice qui m'aide sur l'item du sel dise que
+  l'eau s'evapore et non qu'elle disparait, que l'item de la decantation n'ecrive pas sa reponse
+  dans sa propre question, et que la troisieme proposition d'un item de melange soit une reponse
+  qu'on pourrait vraiment me donner, afin de ne rien apprendre de faux sur les melanges.
+- **Competence programme visee** : sciences et technologie, CM1 - ligne deja `couvert-valide`
+  `SCI-CM1-02` (distinguer un melange homogene d'un melange heterogene et identifier un moyen de
+  separation). Correction non bloquante, la ligne ne bouge pas de statut.
+- **Criteres d'acceptation** :
+  - Etant donne l'item du sel de `bandit-manchot-melanges-cm1`, quand son indice est corrige, alors
+    sa premiere phrase (exacte) est conservee et sa seconde phrase ne dit plus ni que l'eau
+    disparait, ni ce qu'il faut faire pour la faire disparaitre : elle ne nomme pas non plus la
+    bonne reponse en d'autres mots (`MEL-R1`) - propriete a tenir, sans texte impose.
+  - Etant donne le meme paquet, quand l'item ou l'indice parle d'une *carafe* alors que l'enonce
+    parle d'un *bol*, alors les deux textes sont mis en coherence dans le meme geste (correction a
+    cout nul nommee par `nadia-prof`, voyage avec `MEL-R1`).
+  - Etant donne l'item de decantation du meme paquet, quand il est revu, alors son enonce ne
+    contient plus le mot ni le geste qu'attend la bonne reponse (`MEL-R2`).
+  - Etant donne la troisieme proposition de l'item concerne par `MEL-R3`, quand elle est revue,
+    alors elle devient un candidat plausible - une categorie que l'enfant connait ou une reponse
+    qu'il pourrait vraiment donner - et non plus un bouton de remplissage (`MEL-R3`, meme propriete
+    que `PLA-1`).
+  - Etant donne ces corrections, quand on recompte les items du paquet, alors `FER-1`, `FER-2` et
+    `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture de `SCI-CM1-02`.
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran, alors elle confirme que
+    l'indice du sel n'enseigne plus qu'un liquide disparait, que l'item de decantation ne se
+    resout plus par lecture de l'enonce, et que la troisieme proposition corrigee est un candidat
+    plausible. **Regime : rejeu borne pour le paquet entier (0,5 pour les trois reserves)**
+    (`PAR-10`).
+  - Etant donne ces corrections, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut : `SCI-CM1-02` reste `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne touche a aucune autre ligne de sciences servie par ce
+  paquet ; elle ne rouvre pas le Done pedagogique de `SCI-CM1-02` au-dela de ces trois points.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md`, section "Reserves" ;
+  `DEC-0081`.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour les textes ; `nadia-prof` pour la
+  reverification.
+
+### S31-6 - Reprise : l'indice du velo ne dement plus sa propre bonne reponse (`OBT-R1`, `OBT-R2`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que l'indice qui m'aide sur l'item du velo confirme
+  la bonne reponse au lieu de la contredire, et qu'aucun indice de ce jeu ne me donne la reponse en
+  nommant les propositions fausses a ecarter, afin d'apprendre vraiment ce qu'un objet technique
+  permet de faire.
+- **Competence programme visee** : sciences et technologie, CM1 - ligne deja `couvert-valide`
+  `SCI-CM1-12` (identifier la fonction d'un objet technique, nommer ses composants et decrire son
+  fonctionnement). Correction non bloquante, la ligne ne bouge pas de statut.
+- **Criteres d'acceptation** :
+  - Etant donne l'item du velo de `bandit-manchot-objet-technique-cm1`, dont la bonne reponse dit
+    qu'il permet de se deplacer plus vite et avec moins d'effort, quand son indice est corrige,
+    alors il ne contredit plus cette bonne reponse : il n'affirme jamais qu'une fatigue reste
+    proche de celle de la marche (`OBT-R1`) - propriete a tenir, sans texte impose : un indice
+    d'item ne contredit jamais la bonne reponse de ce meme item.
+  - Etant donne les deux indices neufs introduits par la correction de `OBJ-R2` sur ce paquet
+    (manche 21), quand ils sont revus, alors aucun ne nomme l'un des deux distracteurs de son item
+    pour l'ecarter (`OBT-R2`) - propriete a tenir, sans texte impose : un indice ne nomme aucun des
+    distracteurs de son item, plausibles ou non.
+  - Etant donne ces corrections, quand on recompte les items du paquet, alors `FER-1`, `FER-2` et
+    `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture de `SCI-CM1-12`.
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran jusqu'a trois erreurs sur
+    l'item du velo et sur les deux items touches par `OBT-R2`, alors elle confirme qu'aucun des
+    trois indices ne revele ni ne dement plus rien. **Regime : rejeu borne pour le paquet entier
+    (0,5 pour les deux reserves)** (`PAR-10`).
+  - Etant donne ces corrections, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut : `SCI-CM1-12` reste `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas la correction de `OBJ-R2` elle-meme, deja
+  livree et validee sur ce paquet ; elle ne touche a aucune autre ligne de sciences servie par ce
+  paquet.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-objet-technique-cm1.md`, section "Reserves" ;
+  `DEC-0081`.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour les textes ; `nadia-prof` pour la
+  reverification.
+
+## Backlog ouvert pour s32 - `CAT-1`, trouvee en jouant a s31, non payee dans la composition
+## retenue (`DEC-0081`)
+
+### S32-CAT1 - Le catechisme civique sur les deux lignes d'EMC CP deja revendiquees
+
+- **Besoin** : en tant qu'eleve de CP, je veux que la bonne reponse d'un jeu sur les regles de vie
+  ou sur ce qui est permis et interdit se reconnaisse a ce qu'elle dit et non a ce qu'elle sonne,
+  afin de vraiment apprendre la regle plutot que de reconnaitre le ton de l'ecole.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) - deux lignes deja
+  `couvert-valide` : "Connaitre les regles de vie de la classe et de l'ecole et dire a quoi elles
+  servent" (`EMC-CP-06`, servie par `bandit-manchot-regles-de-vie-cp`) et "Distinguer ce qui est
+  permis de ce qui est interdit dans les relations entre eleves" (`EMC-CP-02`, servie par
+  `bandit-manchot-permis-interdit-cp`). Correction non bloquante : les deux lignes restent
+  `couvert-valide` pendant la reprise, elles ne se rouvrent qu'au verdict du reaudit.
+- **Ce qui motive cette story** : `nadia-prof` a trouve, en jouant le 2026-09-07, que sur les six
+  items releves a l'ecran des deux paquets, la bonne reponse est systematiquement la seule
+  proposition qui sonne comme l'ecole et les distracteurs les seules qui sonnent comme la faute -
+  `CAT-1` (`squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
+  section 2). `DEC-0081` route cette story a s32 plutot qu'a s31, la composition retenue pour s31 ne
+  finançant pas ce rejeu.
+- **Criteres d'acceptation** :
+  - Etant donne chaque item de `bandit-manchot-regles-de-vie-cp` et de `bandit-manchot-permis-
+    interdit-cp`, quand il est revu, alors la bonne reponse ne se reconnait plus a son ton : les
+    trois propositions sont du meme registre, et ce qui les distingue est ce qu'elles disent,
+    jamais comment elles sonnent (`CAT-1`).
+  - Etant donne les six items releves par `nadia-prof` le 2026-09-07 specifiquement (manches 2, 4,
+    6, 7 de `regles-de-vie-cp` ; manches 4, 6 de `permis-interdit-cp`), quand ils sont revus, alors
+    au moins un distracteur de chacun est une proposition serieuse et polie, mais fausse pour la
+    situation decrite (forme donnee par `nadia-prof` : *"pourquoi fait-on la queue a la cantine ?"*
+    avec deux raisons serieuses et fausses en distracteurs).
+  - Etant donne ces corrections, quand on recompte les items des deux paquets, alors `FER-1`,
+    `FER-2` et `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture initiale
+    des deux lignes, et les proprietes deja dues sur ces memes paquets (`REG-R1`, `PER-R1`) sont
+    tenues dans le meme geste, puisqu'elles portent sur les memes paquets et se paient dans le meme
+    rejeu (`PAR-10`).
+  - Etant donne les paquets corriges, quand `nadia-prof` les rejoue a l'ecran, alors elle confirme
+    que `CAT-1`, `REG-R1` et `PER-R1` sont tenues ensemble. **Regime : rejeu borne, prix a fixer par
+    `nadia-prof` au moment du rejeu** (`REG-R1` et `PER-R1` sont deja chiffrees a 0,5 chacune ;
+    `CAT-1` voyage avec elles sans cout supplementaire, `PAR-10`).
+  - Etant donne le verdict du reaudit, alors les deux lignes restent `couvert-valide` si `CAT-1`
+    est tenue, ou repassent a un statut que `nadia-prof` nomme explicitement si elle ne l'est pas -
+    cette story ne prejuge pas du verdict.
+- **Ce que cette story ne fait pas** : elle ne rouvre aucune autre ligne d'EMC CP ; elle ne modifie
+  pas les paquets neufs d'EMC CP de s31 (`S31-1`, `S31-2`), qui portent `CAT-1` comme critere
+  d'acceptation des leur premiere ecriture et n'ont donc pas ce defaut a corriger.
+- **Lien** : `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
+  section 2 ; `DEC-0081`, section 4 ; `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` et
+  `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md`.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour les textes ; `nadia-prof` pour l'audit et le
+  verdict, seule autorite sur le maintien ou non du statut `couvert-valide` des deux lignes.
+

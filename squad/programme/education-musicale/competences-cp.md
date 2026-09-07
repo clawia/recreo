@@ -23,29 +23,34 @@
 > compris celles qu'aucune mécanique de ce produit ne servira jamais : **un référentiel qui
 > n'écrirait que les lignes jouables mentirait par omission**, et ferait passer un lexique musical
 > pour l'éducation musicale.
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des quatre domaines - `MUS-CP-01` à `MUS-CP-11`. Aucun
+> intitulé n'est modifié.
 
 ## Chanter et interpréter
 
-- Chanter une comptine ou une chanson par cœur en respectant la hauteur et le rythme.
-- Interpréter un chant avec d'autres en tenant sa place dans le groupe.
-- Mobiliser son corps pour interpréter : frapper une pulsation, marquer un rythme simple.
+- [MUS-CP-01] Chanter une comptine ou une chanson par cœur en respectant la hauteur et le rythme.
+- [MUS-CP-02] Interpréter un chant avec d'autres en tenant sa place dans le groupe.
+- [MUS-CP-03] Mobiliser son corps pour interpréter : frapper une pulsation, marquer un rythme simple.
 
 ## Écouter, comparer et commenter
 
-- Repérer et nommer quelques caractéristiques d'un son entendu (fort/doux, aigu/grave, court/long, lent/rapide).
-- Identifier quelques instruments de musique et les familles auxquelles ils appartiennent (cordes, vents, percussions).
-- Comparer deux extraits musicaux et dire ce qui les distingue.
-- Dire ce que l'on ressent en écoutant une musique et écouter ce que d'autres en disent.
+- [MUS-CP-04] Repérer et nommer quelques caractéristiques d'un son entendu (fort/doux, aigu/grave, court/long, lent/rapide).
+- [MUS-CP-05] Identifier quelques instruments de musique et les familles auxquelles ils appartiennent (cordes, vents, percussions).
+- [MUS-CP-06] Comparer deux extraits musicaux et dire ce qui les distingue.
+- [MUS-CP-07] Dire ce que l'on ressent en écoutant une musique et écouter ce que d'autres en disent.
 
 ## Explorer et imaginer
 
-- Explorer des sons avec sa voix, son corps ou des objets et les organiser en une production sonore courte.
-- Imaginer et coder une organisation simple de sons (plus fort, plus vite, silence).
+- [MUS-CP-08] Explorer des sons avec sa voix, son corps ou des objets et les organiser en une production sonore courte.
+- [MUS-CP-09] Imaginer et coder une organisation simple de sons (plus fort, plus vite, silence).
 
 ## Échanger, partager et argumenter
 
-- Respecter les règles de l'écoute et de la production collective (silence, tour de parole, entrée à un signal).
-- Nommer quelques repères du vocabulaire musical rencontré (refrain, couplet, pulsation, silence).
+- [MUS-CP-10] Respecter les règles de l'écoute et de la production collective (silence, tour de parole, entrée à un signal).
+- [MUS-CP-11] Nommer quelques repères du vocabulaire musical rencontré (refrain, couplet, pulsation, silence).
 
 ---
 

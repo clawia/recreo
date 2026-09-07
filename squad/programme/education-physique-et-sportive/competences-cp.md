@@ -24,32 +24,37 @@
 > espace, et ce produit n'a ni l'un ni l'autre : il ne reçoit qu'un choix ou une saisie au clavier.
 > Toutes les lignes sont écrites quand même, y compris celles qu'aucune mécanique ne servira jamais.
 > **Un référentiel qui n'écrirait que les lignes jouables mentirait par omission.**
+>
+> **Codes de ligne ajoutés le 2026-09-07 (`camille-po`, `DEC-0081`), conformément à `ADR-0081`.** Ce
+> référentiel n'était codé par aucun préfixe : aucun paquet ne le citait avant ce jour. La
+> numérotation suit l'ordre de lecture des cinq domaines - `EPS-CP-01` à `EPS-CP-11`. Aucun intitulé
+> n'est modifié.
 
 ## Produire une performance mesurable
 
-- Courir, sauter et lancer pour réaliser une performance et la mesurer (temps, distance).
-- Comparer sa performance à la précédente et dire si elle progresse.
+- [EPS-CP-01] Courir, sauter et lancer pour réaliser une performance et la mesurer (temps, distance).
+- [EPS-CP-02] Comparer sa performance à la précédente et dire si elle progresse.
 
 ## Adapter ses déplacements à des environnements variés
 
-- Se déplacer en s'adaptant au milieu (dans l'eau, sur un engin roulant, sur un parcours d'équilibre).
-- Connaître et respecter les règles de sécurité propres à l'activité et au lieu de pratique.
+- [EPS-CP-03] Se déplacer en s'adaptant au milieu (dans l'eau, sur un engin roulant, sur un parcours d'équilibre).
+- [EPS-CP-04] Connaître et respecter les règles de sécurité propres à l'activité et au lieu de pratique.
 
 ## S'exprimer devant les autres par une prestation artistique ou acrobatique
 
-- Mobiliser son corps pour exprimer une intention devant des spectateurs (danse, ronde, acrobatie).
-- Regarder la prestation des autres et en dire quelque chose avec des mots respectueux.
+- [EPS-CP-05] Mobiliser son corps pour exprimer une intention devant des spectateurs (danse, ronde, acrobatie).
+- [EPS-CP-06] Regarder la prestation des autres et en dire quelque chose avec des mots respectueux.
 
 ## Conduire et maîtriser un affrontement individuel ou collectif
 
-- Tenir un rôle dans un jeu collectif (attaquant, défenseur, arbitre).
-- Connaître et respecter les règles d'un jeu collectif simple.
-- Accepter le résultat d'une rencontre, gagner et perdre sans agressivité.
+- [EPS-CP-07] Tenir un rôle dans un jeu collectif (attaquant, défenseur, arbitre).
+- [EPS-CP-08] Connaître et respecter les règles d'un jeu collectif simple.
+- [EPS-CP-09] Accepter le résultat d'une rencontre, gagner et perdre sans agressivité.
 
 ## Entretenir sa santé par la pratique
 
-- Reconnaître les effets de l'effort sur son corps (essoufflement, cœur qui bat vite, chaleur, soif).
-- Connaître quelques règles d'échauffement, d'hydratation et de récupération autour de l'effort.
+- [EPS-CP-10] Reconnaître les effets de l'effort sur son corps (essoufflement, cœur qui bat vite, chaleur, soif).
+- [EPS-CP-11] Connaître quelques règles d'échauffement, d'hydratation et de récupération autour de l'effort.
 
 ---
 
