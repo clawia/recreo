@@ -10694,6 +10694,11 @@ la presente ouverture.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
   `lea-dev` ; `nadia-prof` pour l'audit et le Done pedagogique - elle n'est pas la source de cette
   matiere, chaque fait se verifie contre une source externe.
+- **Cloture (2026-09-06, `nadia-prof`, instance B)** : `SCI-CM1-05` **VALIDE SOUS RESERVE** au
+  premier passage (`SIG-R1`, `SIG-R2`). `SCI-CM1-17` **REFUSE** au premier passage (les cinq items de
+  la tache de consequence etaient un seul item repete avec un autre nom d'animal), **VALIDE SOUS
+  RESERVE** au reaudit du meme jour apres reecriture des cinq items (`CHA-R1`). **Les deux lignes
+  ferment**, `couvert-valide` dans `squad/programme/MATRICE-couverture.md`.
 
 ### S30-2 - Second lot de sciences et technologie CM1 : melanges homogenes et heterogenes, fonction
 ### d'un objet technique
@@ -10750,6 +10755,13 @@ la presente ouverture.
 - **Lien decision** : `DEC-0074`, `DEC-0079`, `ADR-0081`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
   `lea-dev` ; `nadia-prof` pour l'audit et le Done pedagogique.
+- **Cloture (2026-09-06, `nadia-prof`, instance B)** : `SCI-CM1-02` **VALIDE SOUS RESERVE** au
+  premier passage (`MEL-R1`, `MEL-R2`, `MEL-R3`) - *"le meilleur des quatre paquets de sciences de
+  s30"*. `SCI-CM1-12` **REFUSE** au premier passage (les quatre items de fonction reproduisaient
+  `OBJ-R2`, deux distracteurs toujours pris chez un autre objet du paquet), **VALIDE SOUS RESERVE**
+  au reaudit du meme jour (`OBT-R1`, `OBT-R2`). **Les deux lignes ferment**, `couvert-valide` dans
+  `squad/programme/MATRICE-couverture.md`. Plafond arithmetique de `DEC-0079` atteint : les quatre
+  lignes visees par `S30-1` et `S30-2` ferment toutes les quatre.
 
 ### S30-3 - Reprise, bloc A : deux corrections mot pour mot sur questionner le monde CP (`CYV-R1`,
 ### `VIV-R2`)
@@ -10989,6 +11001,13 @@ Reprise telle qu'ouverte pour s30, promue en story de sprint.
 - **Lien** : `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md`, section 2 ;
   `DEC-0078`.
 - **Agent pressenti** : `lea-dev` ou `marc-dev` pour les dix textes, `nadia-prof` pour le rejeu.
+- **Cloture (2026-09-06, `nadia-prof`)** : rejugee une par une contre le paquet qu'elle introduit,
+  la consigne reecrite tient sur **neuf entrees de dix**, pas dix. Une seule ne tient toujours pas -
+  `histoire-geographie-cm1`, dont la consigne nomme deux taches qui excluent 31 des 57 items du
+  paquet. **`CONS-1` n'est pas levee** ; le reliquat sur cette seule entree est routee au backlog de
+  s31 (rejeu borne, 0,5, section "Backlog ouvert pour s31"). Un onzieme fait, distinct de `CONS-1` -
+  `bandit-manchot-semaine-cp` porte le meme defaut sous une autre chaine - est route sous `CONS-3`,
+  `DEC-0078` amendee en consequence le 2026-09-07. Aucune ligne de matrice ne bouge, comme prevu.
 
 ### S30-10 - `REV-3`, l'ecran de fin de partie nomme une reponse sans porter sa question -
 ### deja tranchee et livree par `ADR-0084`
@@ -11076,20 +11095,32 @@ Ce qui reste du a s30 est le rejeu de `nadia-prof` sur cette forme livree, pas u
   reserves.md`, section 3.3 ; `DEC-0079`.
 - **Agent pressenti** : `nadia-prof`, l'instance qui porte l'accumulation ce sprint.
 
-## Backlog ouvert pour s31 - treize reserves non bloquantes issues des verdicts de s30, plus deux
-## defauts transverses routes par la passe `S30-11`
+## Backlog ouvert pour s31 - dix-sept reserves ou correctifs non bloquants issus des verdicts et
+## reaudits de s30, dont deux defauts transverses routes par la passe `S30-11` et un correctif non
+## chiffre (`CONS-3`)
 
-Treize reserves, toutes non bloquantes (aucune ne remet en cause un Done pedagogique deja rendu),
-ecrites par `nadia-prof` (Instance A et Instance B) en rendant ses verdicts de s30. **Aucune story
-de developpement complete n'est ecrite ici** : le perimetre de s31 n'est pas ouvert, meme regle que
-pour toute autre reserve de ce fichier. `PER-R1` et `REG-R1`, differees de s29 vers s31 par
-`DEC-0079` sur motif propre de `nadia-prof`, restent ouvertes et ne sont pas reprises ici : elles ne
-sont pas des reserves neuves de s30.
+**Mis a jour le 2026-09-07, apres les deux reaudits du 2026-09-06** (Instance B : les deux refus
+sont leves, trois reserves neuves ; Instance A : `CONS-1` rejugee, une entree reste ouverte,
+`ANG-R2` levee). L'etat ci-dessous est l'etat **final** de la cloture de s30, pas l'etat du premier
+passage.
 
-**Verifiees par `camille-po` directement dans les fiches et dans la passe transverse, au-dela des
-deux releves de verdicts transmis** : les treize reserves nommees ci-dessous concordent exactement
-entre les deux releves (`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-
-instance-A.md`, `verdicts-nadia-instance-B.md`) et les fiches de conformite qu'ils citent - aucun
+**Dix-huit entrees listees, dix-sept ouvertes** - toutes non bloquantes (aucune ne remet en cause un
+Done pedagogique deja rendu). `ANG-R2` est la dix-huitieme : **levee** dans le reaudit, conservee ici
+pour l'historique et exclue du prix total. Seize des dix-sept ouvertes sont ecrites par `nadia-prof`
+(Instance A et Instance B) en rendant ses verdicts et reaudits de s30 ; `CONS-3` est ouverte par
+`camille-po` sur une observation datee de `nadia-prof` qu'elle a explicitement laissee hors du
+perimetre de son reaudit, sans lui donner de code ni de prix. **Aucune story de developpement
+complete n'est ecrite ici** : le perimetre de s31 n'est pas ouvert,
+meme regle que pour toute autre reserve de ce fichier. `PER-R1` et `REG-R1`, differees de s29 vers
+s31 par `DEC-0079` sur motif propre de `nadia-prof`, restent ouvertes et ne sont pas reprises ici :
+elles ne sont pas des reserves neuves de s30.
+
+**Verifiees par `camille-po` directement dans les fiches, dans la passe transverse et dans les deux
+complements de reaudit, au-dela des deux releves de verdicts transmis** : les entrees nommees
+ci-dessous concordent exactement entre les documents sources
+(`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-
+instance-A.md`, `verdicts-nadia-instance-B.md`, chacun avec son complement du 2026-09-06) et les
+fiches de conformite qu'ils citent - aucun
 ecart trouve cette fois entre le releve transmis et la fiche elle-meme.
 
 - **`SIG-R1`** (`bandit-manchot-signal-information-cm1`, non bloquante, datee du 2026-09-06) - sur
@@ -11145,6 +11176,34 @@ ecart trouve cette fois entre le releve transmis et la fiche elle-meme.
   n'est au milieu du triplet que sur une minorite d'entre eux. **Ne ferme aucune ligne** -
   `MAT-CM1-05` est deja `couvert-valide`. **Regime : rejeu borne, 0,5.**
   - **Lien** : `squad/conformite/FICHE-bandit-manchot-division-posee-cm1.md`, section 4.
+- **`CHA-R1`** (`bandit-manchot-chaine-alimentaire-cm1`, non bloquante, datee du 2026-09-06, trouvee
+  au reaudit qui leve le refus de `SCI-CM1-17`) - deux distracteurs indefendables sur la tache de
+  classement (tache A) ; l'item de la mesange (*"que mange la mesange ?"*) se donne entierement, ses
+  deux distracteurs etant impossibles pour un petit oiseau. **`nadia-prof` precise que ce n'est pas
+  un reproche a la reprise** : elle avait elle-meme ecrit au premier audit que la tache A n'etait pas
+  concernee par le refus et n'etait pas a refaire ; `lea-dev` a fait exactement ce qui etait demande.
+  **Propriete a tenir, sans texte impose** : sur la tache de classement, chaque distracteur reste un
+  candidat qu'un enfant de CM1 peut serieusement envisager pour l'animal nomme. **Regime : rejeu
+  borne, 0,5.**
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-B.md`,
+    complement du 2026-09-06, section 4.
+- **`OBT-R1`** (`bandit-manchot-objet-technique-cm1`, non bloquante, datee du 2026-09-06, trouvee au
+  reaudit qui leve le refus de `SCI-CM1-12`) - l'indice de l'item du velo dement la bonne reponse de
+  son propre item : deux cadres vrais mis cote a cote, celui de l'indice poussant hors de la reponse
+  attendue. **Propriete a tenir, sans texte impose** : l'indice d'un item ne contredit jamais la
+  bonne reponse de ce meme item. **Regime : rejeu borne pour le paquet entier, voyage avec `OBT-R2`
+  (0,5 pour les deux, `PAR-10`).**
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-B.md`,
+    complement du 2026-09-06, section 4.
+- **`OBT-R2`** (`bandit-manchot-objet-technique-cm1`, non bloquante, datee du 2026-09-06, defaut
+  fabrique par la correction de `OBJ-R2` sur ce meme paquet) - deux indices neufs ecartent nommement
+  les deux distracteurs a la fois, revelant la reponse des la premiere erreur (`M21`). **`nadia-prof`
+  la nomme comme le troisieme cas de cette famille en deux jours, apres `REV-2` et `REV-3`** : rendre
+  un distracteur plausible, puis le nommer dans l'indice pour l'exclure, defait ce que la correction
+  venait d'apporter. **Propriete a tenir, sans texte impose** : un indice ne nomme aucun des
+  distracteurs de son item, plausibles ou non. **Regime : voyage avec `OBT-R1`, meme rejeu.**
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-B.md`,
+    complement du 2026-09-06, section 4.
 - **`HG-R8`** (`bandit-manchot-histoire-geographie-cm1`, non bloquante, datee du 2026-09-06, defaut
   cree par la correction de `HG-R6` en decouvrant en rejouant) - les deux indices des items de
   nature de la ligne 14 ont ete reecrits en meme temps que leurs supports, et tous deux mettent
@@ -11180,24 +11239,57 @@ ecart trouve cette fois entre le releve transmis et la fiche elle-meme.
   propos d'une situation qu'un item de classement demande de classer ; il dit a quoi la chose sert,
   ce qui est la tache de l'item. **Regime : mot pour mot une fois les trois textes proposes, 0,25.**
   - **Lien** : `squad/conformite/FICHE-bandit-manchot-droit-devoir-cm1.md`, section `DRO-R4`.
-- **`CONS-2`** (transverse, consignes de catalogue CP, non bloquante, datee du 2026-09-06) - la
-  reecriture de `CONS-1` a fait des deux consignes de CP les plus longues que l'enfant decode
-  lui-meme (`cycle-de-vie-cp`, seize mots ; `etats-eau-cp`, quinze mots) les deux plus longues du
-  catalogue lues sans un adulte ; les paquets a voix, ou l'adulte lit, portent des consignes aussi
-  longues ou plus mais la premisse du produit les protege. **Propriete a tenir** : une consigne de
-  catalogue de CP que l'enfant lit lui-meme nomme ses taches sans depasser douze mots, chiffre pris
-  sur les consignes de CP qui y parviennent deja. **Regime : rejeu borne sur deux entrees, 0,25.**
+- **`CONS-2`** (transverse, consignes de catalogue CP, non bloquante, datee du 2026-09-06,
+  **population portee de deux a trois entrees et second motif ajoute par le reaudit du
+  2026-09-06**) - la reecriture de `CONS-1` a fait des trois consignes de CP les plus longues que
+  l'enfant decode lui-meme (`cycle-de-vie-cp`, seize mots ; `etats-eau-cp`, quinze mots ;
+  `vivant-non-vivant-cp`, quatorze mots, ajoutee au reaudit) les trois plus longues du catalogue
+  lues sans un adulte ; les paquets a voix, ou l'adulte lit, portent des consignes aussi longues ou
+  plus mais la premisse du produit les protege. **Second motif, sur `vivant-non-vivant-cp` seule** :
+  sa forme *"...ou lequel des trois **l'est**"* fait porter la fin de la consigne par un pronom
+  neutre attribut dont l'enfant doit retrouver l'antecedent (*un etre vivant*) par-dessus une
+  virgule - seul pronom de ce genre dans les 58 consignes du catalogue et hors du programme de
+  lecture du CP. **Propriete a tenir, sur les trois entrees** : une consigne de catalogue de CP que
+  l'enfant lit lui-meme nomme ses taches sans depasser douze mots, chiffre pris sur les consignes de
+  CP qui y parviennent deja, et sans pronom dont l'antecedent doit etre retrouve. **Regime : rejeu
+  borne sur trois entrees, 0,25** (prix inchange, `nadia-prof` n'ayant pas reprice le rejeu en
+  etendant sa population).
   - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
-    section 7.4.
-- **`ANG-R2`** (`bandit-manchot-anglais-cm1`, non bloquante, datee du 2026-09-06) - la consigne dit
-  *"reponds a la question de culture anglaise"* alors que, sur les cinq items de culture du paquet,
-  trois portent sur les Etats-Unis (capitale, drapeau, Thanksgiving) : c'est une inexactitude de
-  fait, pas seulement une tache mal designee, et le referentiel du produit dit lui-meme *"pays"* au
-  pluriel (`LVE-CM1-07`). **Extraite de `CONS-1` et portant son propre code** parce qu'elle n'est pas
-  de la meme nature que les quatre autres entrees non levees de `CONS-1` (celles-la sont des defauts
-  de designation de tache). **Propriete a tenir** : la consigne ne restreint pas a un seul pays un
-  contenu qui en sert plusieurs. **Regime : mot pour mot une fois le texte propose, 0,25.**
-  - **Lien** : `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md`, section `ANG-R2`.
+    section 7.4 (ouverture) et complement du 2026-09-06, section 3.2 (population et second motif).
+- **`ANG-R2`** (`bandit-manchot-anglais-cm1`, ouverte le 2026-09-06, **LEVEE le meme jour au
+  reaudit de `CONS-1`**) - la consigne disait *"reponds a la question de culture anglaise"* alors
+  que, sur les cinq items de culture du paquet, trois portent sur les Etats-Unis (capitale, drapeau,
+  Thanksgiving) : une inexactitude de fait, et le referentiel du produit dit lui-meme *"pays"* au
+  pluriel (`LVE-CM1-07`). **Levee** : la consigne livree, *"reponds a la question sur les pays
+  anglophones"*, est vraie des cinq items et reprend le mot du referentiel. **Sortie du prix total
+  du backlog de s31** ; conservee ici pour l'historique, non retiree.
+  - **Lien** : `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md`, section `ANG-R2` ;
+    `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
+    complement du 2026-09-06, section 3.4.
+- **`CONS-1`, reliquat sur `histoire-geographie-cm1`** (transverse, non bloquante, rejugee le
+  2026-09-06) - sur les dix entrees reecrites par `S30-9`, neuf tiennent desormais contre le paquet
+  qu'elles introduisent ; une seule ne tient toujours pas. La consigne livree,
+  *"Lis bien, puis situe dans le temps, ou associe un roi a son fait."*, nomme deux taches qui ne
+  couvrent que 26 des 57 items du paquet (16 + 10) : les 31 autres (dont les 21 items de geographie)
+  ne demandent ni l'une ni l'autre. **Propriete a tenir, sans texte impose** : la consigne couvre les
+  quatre familles de taches du paquet - se reperer dans le temps (16 items), associer un roi a son
+  fait (10), decrire un espace ou une ressource (21), lire un document (10) - ou bien elle ne nomme
+  aucune tache plutot que d'en nommer deux qui excluent les trente-et-une autres. **Regime : rejeu
+  borne, 0,5.**
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
+    complement du 2026-09-06, section 3.3 et section 4 (verdict).
+- **`CONS-3`** (transverse, `bandit-manchot-semaine-cp`, non bloquante, datee du 2026-09-06,
+  ouverte par `camille-po` sur observation de `nadia-prof`, `DEC-0078` amendee le 2026-09-07) - cette
+  entree porte *"Choisis la bonne reponse."*, le meme defaut que `CONS-1` (une consigne qui ne nomme
+  aucune tache) sous une chaine differente de celle que `DEC-0078` mesurait, et avait ete comptee a
+  tort parmi les entrees conformes. **Propriete a tenir** : la meme que `S30-9` - la consigne nomme
+  la tache reelle du jeu (se reperer dans la journee et la semaine ; lire l'heure pleine sur une
+  horloge, `MAT-CP` correspondante). **Prix non chiffre par `nadia-prof`** : elle a route
+  l'observation hors du perimetre de son reaudit sans lui donner de regime ; je n'en invente pas un
+  a sa place, elle le fixera au rejeu.
+  - **Lien** : `squad/decisions/produit/DEC-0078-consigne-generique-CONS-1-regle-produit-et-correctif-non-bloquant.md`,
+    section 5 ; `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
+    complement du 2026-09-06, section 2.
 - **`SAI-R1`** (transverse, gabarit `fragments/saisie.html`, non bloquante, datee du 2026-09-06,
   issue de la passe transverse `S30-11`) - le gabarit ajoute un point final a la chaine que l'enfant
   a saisie, quelle qu'elle soit ; quand l'enfant a lui-meme tape un point, l'ecran affiche deux
@@ -11221,14 +11313,22 @@ ecart trouve cette fois entre le releve transmis et la fiche elle-meme.
   - **Lien** : `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md`,
     section 2.3.
 
-**Prix total chiffre par `nadia-prof` pour les six reserves de l'Instance B** (`SIG-R1`, `SIG-R2`,
-`MEL-R1`, `MEL-R2`, `MEL-R3`, `POS-R3`) : **1,5**, en trois rejeux bornes de 0,5 chacun (un par
-paquet), dont aucun ne ferme de ligne. **Agent pressenti pour les formulations** : `lea-dev`
-(paquets de sciences et de division posee, formulations laissees a elle par `nadia-prof`) ;
-`marc-dev` pour les valeurs de `POS-R3` ; `nadia-prof` reverifie chaque rejeu. `camille-po` ecrit
-les criteres d'acceptation complets une fois s31 ouvert.
+**Prix total chiffre par `nadia-prof` pour les neuf reserves de l'Instance B** (`SIG-R1`, `SIG-R2`,
+`MEL-R1`, `MEL-R2`, `MEL-R3`, `POS-R3`, plus `CHA-R1`, `OBT-R1`, `OBT-R2` du reaudit) : **2,5**, en
+cinq rejeux bornes de 0,5 chacun (un par paquet), dont aucun ne ferme de ligne. **Prix des reserves
+et reliquats de l'Instance A qui restent ouverts** (`HG-R8`, `FOP-R4`, `DRO-R4`, `CONS-2`, `SAI-R1`,
+`ERR-R1`, plus le reliquat de `CONS-1` sur `histoire-geographie-cm1`) : **2,5**. **`ANG-R2` est
+levee et sort de ce total** ; `CONS-3` s'y ajoute sans prix, `nadia-prof` ne l'ayant pas chiffree.
 
-**Deux faits de serie a porter au-dela des treize reserves, nommes par `nadia-prof` elle-meme :**
+> **Total price du backlog de s31 issu de s30 : 5,0 chiffres (2,5 + 2,5), plus `CONS-3` non
+> chiffree.**
+
+**Agent pressenti pour les formulations** : `lea-dev` (paquets de sciences et de division posee,
+formulations laissees a elle par `nadia-prof`) ; `marc-dev` pour les valeurs de `POS-R3` ;
+`nadia-prof` reverifie chaque rejeu. `camille-po` ecrit les criteres d'acceptation complets une fois
+s31 ouvert.
+
+**Trois faits de serie a porter au-dela des dix-sept entrees, nommes par `nadia-prof` elle-meme :**
 
 - **`OBJ-R2` a produit le meme defaut de fabrication deux fois en deux jours, sur deux niveaux**
   (`bandit-manchot-objet-technique-cp` le 2026-09-06, puis `bandit-manchot-objet-technique-cm1`
@@ -11243,4 +11343,12 @@ les criteres d'acceptation complets une fois s31 ouvert.
   C'est la deuxieme reserve du sprint que cette meme famille produit (avec `DRO-R4`).
   - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
     section 11.
+- **La reprise des deux paquets de sciences refuses n'a ajoute aucun garde-fou** sur les proprietes
+  que les deux refus ont fait payer (repetition d'une regle de fabrication a l'interieur d'une
+  tache ; distracteur pris chez le voisin) : elle a corrige le contenu et mis a jour un commentaire
+  d'exclusion dans un test existant, rien de plus. `nadia-prof` le dit explicitement pour qu'on ne
+  croie pas couvert ce qui ne l'est pas - ces proprietes restent gardees par elle seule, en rejouant
+  a chaque sprint. **Routee a `theo-archi` et `yanis-qa`**, sans forme prescrite.
+  - **Lien** : `squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-B.md`,
+    complement du 2026-09-06, section 7.
 

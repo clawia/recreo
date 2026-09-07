@@ -131,3 +131,66 @@ rediscute ici : il est enregistre.
 - `squad/decisions/produit/DEC-index.md` : ligne `DEC-0080` ajoutee.
 - Aucun impact sur `squad/programme/MATRICE-couverture.md` (differe a la cloture, une fois les
   reaudits rendus) ni sur `docs/backlog/backlog.md` (aucune story neuve).
+
+## 7. Amendement du 2026-09-07 (`camille-po`) - les deux reaudits sont rendus ; le cout prevu en
+## section 4 se confirme au centime pres ; `CONS-1` ne ferme pas entierement ; `PAR-11` est
+## enregistree
+
+**Les deux reaudits, rendus le 2026-09-06 par `nadia-prof`.**
+
+**Instance B - les deux refus sont leves.** `SCI-CM1-17` (chaine alimentaire) et `SCI-CM1-12`
+(objet technique) passent **REFUSE -> VALIDE SOUS RESERVE** apres correction des taches en cause.
+Avec `SCI-CM1-05` et `SCI-CM1-02`, deja fermees au premier passage, **les quatre lignes de sciences
+visees par cette instance ferment**, le plafond arithmetique de `DEC-0079` (4 lignes) etant atteint
+sur cette seule moitie. Trois reserves neuves du reaudit (`CHA-R1`, `OBT-R1`, `OBT-R2`), aucune
+bloquante. **Cout final : 4,50 / 4,00**, exactement le chiffre que la section 4 ci-dessus avait
+enregistre avant d'etre consomme.
+
+**Instance A - le reliquat de `CONS-1` n'est pas entierement corrige, et c'est different de ce que
+la section 1 laissait attendre.** Rejuge une par une contre son paquet, **neuf entrees sur dix
+tiennent desormais**, pas cinq : trois defauts de designation de tache et une inexactitude de fait
+(`ANG-R2`, **levee**) sont payes dans le reaudit. **Une seule entree ne tient toujours pas** -
+`bandit-manchot-histoire-geographie-cm1`, dont la consigne nomme deux taches qui excluent 31 des 57
+items du paquet, dont toute la geographie. `CONS-1` **n'est donc pas levee** : elle est ramenee de
+cinq entrees ouvertes a une seule, routee au backlog de s31 (rejeu borne, 0,5). **Cout final :
+4,00 / 4,00**, egalement le chiffre attendu en section 4 - le reaudit a coute exactement les 0,5 de
+marge prevus, quel que soit le nombre d'entrees qu'il a fallu rejuger pour y arriver.
+
+**Ce que je corrige dans la section 1 ci-dessus** : elle presentait le reliquat de `CONS-1` comme
+devant etre "corrige" au sens de soldee ; le mot etait impropre. Le reliquat est **rejuge**, pas
+soldee au premier reaudit : son perimetre change de forme (cinq entrees a une), il ne disparait pas.
+`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`, complement du
+2026-09-06, porte le detail entree par entree.
+
+> **Le cout reel de s30 se confirme a 8,50 sur la borne de 8,0**, sans aucun ecart avec le chiffre
+> enregistre en section 4 avant que les reaudits soient rendus. Troisieme depassement consecutif,
+> ecrit d'avance et non decouvert au comptage de cloture.
+
+### `PAR-11`, clause neuve de `nadia-prof`, enregistree ici
+
+**Le fait qui la produit** : `nadia-prof` a ecrit dans son arbitrage prealable de s30 que la marge
+de rejeu de 1,0 (nommee au niveau du sprint, `PAR-9`) *"couvre exactement"* le cas de deux reaudits
+a 0,5 chacun. **Le calcul etait juste, le dimensionnement etait faux** : `PAR-2` concentre les deux
+lots de sciences sur une seule instance, si bien que les deux reaudits possibles tombaient tous deux
+sur la moitie de cette marge (0,5), et non sur le tout (1,0). Elle l'a decouvert en consommant 4,50
+sur son propre budget opposable de 4,0.
+
+> **`PAR-11` - la marge de rejeu se dimensionne par instance sur son exposition reelle, jamais par
+> part egale de la marge du sprint.** Une instance qui audite *n* lots de contenu neuf porte *n*
+> reaudits possibles ; sa marge est de **0,5 par lot neuf qu'elle audite**, et la marge du sprint
+> est la **somme** de ces marges instance par instance, non un total reparti a parts egales. `PAR-11`
+> ne releve aucune borne : elle deplace la marge la ou le risque est.
+
+**Ce que je fais de `PAR-11`** : je l'enregistre ici, a cote du cout qu'elle explique, et je note
+qu'elle **corrige l'application de `PAR-9`** (`DEC-0079`) sans la remplacer - le budget opposable de
+4,0 par instance reste la regle ; ce qui change est la facon de calculer la marge de rejeu **avant**
+qu'un sprint a plusieurs lots par instance ne s'ouvre. `DEC-0079` porte une reference courte vers la
+presente section. A appliquer des la composition de s31 si elle repartit plusieurs lots neufs sur
+une meme instance.
+
+**Ce que cette section ne fait pas** :
+- Elle ne fait bouger `squad/programme/MATRICE-couverture.md` que sur les quatre lignes de sciences
+  nommees ci-dessus - fait dans le meme geste, section "Sciences et technologie - CM1".
+- Elle ne considere pas `CONS-1` comme levee : une entree reste ouverte, routee a s31.
+- Elle ne rouvre aucun montant deja arbitre par l'utilisatrice en section 2 : le cout de 8,50/8,0
+  est confirme, pas rediscute.

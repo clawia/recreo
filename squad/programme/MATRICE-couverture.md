@@ -1754,22 +1754,22 @@ sur une ligne de ce lot dont le code n'est pas cite par le paquet qui la sert.
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation). | - | - | non couvert - jouable au choix textuel. Terrain le plus sur du lot. |
-| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange. | - | - | non couvert - jouable au choix textuel. Vocabulaire du programme, se laisse definir dans l'item lui-meme. |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange. | bandit-manchot-melanges-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B) - **`SCI-CM1-02` ferme.** Six classements exacts, cinq moyens de separation reels et bien apparies, une vraie progression de difficulte, indices portant le critere et non la categorie sur les cinq items binaires (`DRO-R2`). Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Trois reserves non bloquantes, datees du 2026-09-06 : **`MEL-R1`** (l'indice du sel dit "faire disparaitre l'eau", plante une conception fausse et nomme la reponse), **`MEL-R2`** (l'item de la decantation ecrit sa reponse dans sa question) et **`MEL-R3`** (troisieme proposition non plausible, meme defaut que `SIG-R2`) |
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à un point de repère donné. | - | - | non couvert - jouable au choix textuel, sur la description seule (le produit ne montre aucun mouvement). Recouvrement a ne pas double-compter avec mathematiques CM1 / Grandeurs et mesures (le calcul d'une vitesse). |
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre. | - | - | non couvert - jouable au choix textuel. Distracteurs naturels et plausibles, ce qui est rare. |
-| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran). | - | - | non couvert - jouable au choix textuel. Objets du quotidien, vocabulaire accessible au CM1. |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran). | bandit-manchot-signal-information-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B) - **`SCI-CM1-05` ferme.** Onze items exacts, deux taches reellement distinctes (classer le signal, decoder l'information qu'il porte), aucun fait faux, aucun biais, `SCI-1` et `SCI-4` tenues, `SCI-3` mesuree sur le lot (zero item numerique sur 22). Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Deux reserves non bloquantes, datees du 2026-09-06 : **`SIG-R1`** (la tache de classement ne monte jamais, cinq items sur six donnent leur reponse dans l'enonce) et **`SIG-R2`** (troisieme proposition de l'item de l'ambulance non plausible, `SCI-4` formellement tenue mais sans effet reel) |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu. | - | - | non couvert - jouable au choix textuel, item par item. Mention exigee d'avance : "raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non couvert" (refuse au palier 1 par `V3`). |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore). | - | - | non couvert - jouable au choix textuel. |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort). | - | - | non couvert - jouable au choix textuel. Ordonner deux etapes se pose en texte, sans frise ni manipulation. |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, circulation) et l'organe principal de chacune. | - | - | non couvert - jouable au choix textuel. L'association fonction / organe se fait en texte ; designer un organe sur un schema serait du palier 2, non exige. |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps. | - | - | non couvert - jouable au choix textuel, sous `BIA-4`. Aucun item n'interroge l'enfant sur sa propre vie. |
 | sciences et technologie | CM1 | Materiaux et objets techniques | Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité). | - | - | non couvert - jouable au choix textuel. Une propriete par item, jamais deux. |
-| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement. | - | - | non couvert - jouable au choix textuel. Nommer un composant se fait en texte ; le designer sur un schema serait du palier 2, non exige. |
+| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement. | bandit-manchot-objet-technique-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B, apres reprise) - **`SCI-CM1-12` ferme.** Refuse au premier audit (les deux distracteurs de la tache de fonction reproduisaient `OBJ-R2` : ils etaient toujours la fonction d'un autre objet du paquet, y compris sur un item en dessous du niveau CM1) ; **valide sous reserve au reaudit** apres correction - un enfant ignorant l'objet ne gagne plus aucun des quatre items de fonction. Tache B entiere conservee (six pieces reelles, distracteurs pris sur le meme objet) ; l'item 11 (le fonctionnement, chaine causale entiere) conserve et jugee obligatoire par `nadia-prof`. Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Deux reserves non bloquantes du reaudit, datees du 2026-09-06 : **`OBT-R1`** (l'indice de l'item du velo dement la bonne reponse de son propre item) et **`OBT-R2`** (deux indices ecartent nommement les deux distracteurs, defaut fabrique par la correction de `OBJ-R2`) |
 | sciences et technologie | CM1 | Materiaux et objets techniques | Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa fabrication ou dans son usage. | - | - | non couvert - jouable au choix textuel, sous `BIA-3`. On decrit un changement, aucun item ne dit que l'objet ancien etait moins bien. |
 | sciences et technologie | CM1 | Materiaux et objets techniques | Connaître quelques règles d'usage d'un environnement numérique (identification, courriel, recherche d'une information, protection de ses données). | - | - | non couvert - jouable au choix textuel, sur les connaissances seules. Mention exigee d'avance : "regles et connaissances d'usage seules ; la pratique d'un environnement numerique reste non couverte". |
 | sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Situer la Terre dans le système solaire et relier les mouvements de la Terre au jour, à la nuit et aux saisons. | - | - | non couvert - jouable au choix textuel, sous `SCI-1`. Exigence d'exactitude : la cause des saisons est l'inclinaison de l'axe terrestre, pas la distance au Soleil. |
 | sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Identifier quelques phénomènes géologiques et météorologiques (séisme, éruption, tempête, inondation) et les risques associés. | - | - | non couvert - jouable au choix textuel, sous `BIA-2`. Un paquet ne doit pas situer tous les risques ailleurs. |
-| sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Décrire un milieu proche : les êtres vivants qui le peuplent et les relations alimentaires qui les relient (chaîne alimentaire). | - | - | non couvert - jouable au choix textuel. "Qui mange qui ?" a deux maillons sert bien la relation alimentaire ; construire une chaine entiere serait refuse par `V3`. |
+| sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Décrire un milieu proche : les êtres vivants qui le peuplent et les relations alimentaires qui les relient (chaîne alimentaire). | bandit-manchot-chaine-alimentaire-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B, apres reprise) - **`SCI-CM1-17` ferme.** Refuse au premier audit (les cinq items de la tache de consequence etaient un seul item servi cinq fois avec un autre nom d'animal, meme question et memes bonne reponse et distracteurs) ; **valide sous reserve au reaudit** apres reecriture des cinq items - le tirage a servi les cinq items reecrits, plus aucun n'est resolu par memorisation d'une phrase. Six relations alimentaires exactes, milieu coherent, `V3`, `CYC-1`, `SCI-2`, `SCI-3` tenues. Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Reserve non bloquante du reaudit, datee du 2026-09-06 : **`CHA-R1`** (deux distracteurs indefendables sur la tache de classement, item de la mesange qui se donne entierement - `nadia-prof` precise que ce n'est pas un reproche a la reprise, la tache A n'etait pas concernee par le refus) |
 | sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Identifier un effet de l'activité humaine sur l'environnement et un geste de préservation des ressources. | - | - | non couvert - jouable au choix textuel, sous `SCI-2`, ligne la plus dangereuse du lot. Aucun item ne met en cause le foyer de l'enfant. |
 | sciences et technologie | CM1 | Demarches et langages scientifiques | Mener une démarche d'investigation : formuler une hypothèse, proposer une expérience pour la tester, interpréter le résultat et communiquer sa démarche. | - | - | **non couvrable en l'etat**, nature irreversible - geste pratique et compte rendu libre, jugement humain (`ADR-0008`) ; la decoupe qui la sauverait ("choisir l'experience qui teste cette hypothese") est une autre competence, plus etroite, et son emploi ici serait une contrefacon par reduction. |
 | sciences et technologie | CM1 | Demarches et langages scientifiques | Extraire une information d'un document scientifique (texte, tableau, schéma, graphique) et la restituer. | - | - | non couvert - jouable au choix textuel, sur le texte et le tableau. Mention exigee d'avance : "document textuel et tableau seuls ; le schema et le graphique restent non couverts" (palier 2). |
@@ -1779,7 +1779,8 @@ pourquoi elle est fausse, en une phrase) ; `SCI-2` (sur les risques naturels et 
 aucun item ne fait porter une responsabilite a l'enfant ni a son foyer) ; `SCI-3` (aucun item ne
 demande une valeur numerique a restituer au-dela d'un item sur six, transposition de `HIS-1`).
 
-**Bilan** : 20 lignes, 19 `non couvert`, 1 `non couvrable en l'etat`. 19 lignes entrent au
+**Bilan** : 20 lignes, **4 `couvert-valide`** (`SCI-CM1-02`, `SCI-CM1-05`, `SCI-CM1-12`,
+`SCI-CM1-17`, s30, instance B), 15 `non couvert`, 1 `non couvrable en l'etat`. 19 lignes entrent au
 denominateur atteignable.
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
@@ -4715,4 +4716,120 @@ proprietes deja tenues. Le detail chiffre est dans `DEC-0079`.
   lot de sciences passe la porte du premier coup, ce qui n'est jamais arrive sur ce produit.
 - Elle **ne differe pas elle-meme** `PER-R1` et `REG-R1` : c'est `nadia-prof` qui les differe a s31,
   avec son propre motif, repris dans `DEC-0079` et dans `docs/backlog/backlog.md`.
+
+## Synthese apres les verdicts du sprint 30 (2026-09-07) - quatre lignes de sciences ferment,
+## `CONS-1` n'est pas levee, troisieme depassement de borne assume
+
+`nadia-prof` a joue en deux instances disjointes, chacune reauditee dans le sprint apres un premier
+passage (Instance B : deux refus le 2026-09-06, leves au reaudit du meme jour ; Instance A :
+reliquat de `CONS-1` rejuge le 2026-09-06). Sources :
+`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`,
+`verdicts-nadia-instance-B.md` (corps et complements des deux documents), `DEC-0080` (arbitrages de
+l'utilisatrice et amendement de cloture).
+
+| Ligne | Instance | Mouvement |
+|---|---|---|
+| `SCI-CM1-05` (signal et information) | B, premier passage | `non couvert` -> `couvert-valide` |
+| `SCI-CM1-02` (melanges) | B, premier passage | `non couvert` -> `couvert-valide` |
+| `SCI-CM1-17` (chaine alimentaire) | B, reaudit apres refus | `non couvert` -> `couvert-valide` |
+| `SCI-CM1-12` (objet technique) | B, reaudit apres refus | `non couvert` -> `couvert-valide` |
+
+**Quatre lignes ferment**, toutes du seul lot de sciences et technologie CM1, qui n'avait recu
+aucun item avant ce sprint. `MAT-CM1-05` (bloc D) reste `couvert-valide`, sans mouvement de statut :
+`POS-R2` est levee, `POS-R3` est ouverte.
+
+### Le recompte, par ma methode, independant de tout chiffre transmis
+
+Comptage ligne a ligne des dix-huit tableaux de cette matrice, colonne `Statut`, apres application
+des quatre verdicts ci-dessus - je n'ai repris aucun total d'un autre document, j'ai reclasse chaque
+ligne telle qu'elle est ecrite dans ce fichier apres mise a jour, puis compte les statuts obtenus,
+table par table.
+
+| | Avant les verdicts (2026-09-06, ouverture de s30) | Apres les quatre verdicts de s30 |
+|---|---|---|
+| `couvert-valide` | 52 | **56** |
+| `en cours` | 7 | 7 |
+| `non couvert` | 79 | **75** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 209 | 209 |
+| Denominateur atteignable | 138 | 138 |
+| **Taux** | **52 / 138 = 37,7 %** | **56 / 138 = 40,6 %** |
+
+**56 / 138 = 0,40579... : 40,6 % arrondi.**
+
+**Aucun ecart trouve cette fois.** Mon compte, refait table par table (dix-huit tableaux verifies un
+par un, y compris les dix qui ne bougent pas ce sprint), converge exactement avec le plafond
+arithmetique que `DEC-0079` avait pose avant que le sprint soit joue (section 6, *"plafond
+arithmetique : 4 lignes. 52 + 4 = 56 / 138 = 40,6 %"*) : **le sprint atteint son plafond, comme s29
+avant lui**, et non un point de moins comme le laissait attendre le risque de refus que `nadia-prof`
+avait elle-meme nomme le plus probable de s30 (la repetition d'une regle de fabrication a
+l'interieur d'une tache, verifiee sur ses deux refus).
+
+### Les mentions de couverture partielle, verifiees contre l'arbitrage prealable de `nadia-prof`
+
+**Aucune mention de couverture partielle n'est due sur aucune des quatre lignes fermees.** Son
+arbitrage prealable (section 2.4) n'exigeait une telle mention que sur trois lignes de sciences -
+`SCI-CM1-06` (classement du vivant), `SCI-CM1-14` (environnement numerique) et `SCI-CM1-20`
+(document scientifique), aucune des trois n'etant servie ce sprint. `nadia-prof` l'ecrit
+explicitement dans les deux moities de son releve plutot que de laisser la question ouverte : *"je
+n'en ajoute pas une apres coup."*
+
+### `CONS-1` n'est pas levee, et la matrice n'en porte la trace nulle part ailleurs que dans le
+### backlog
+
+`CONS-1` (`DEC-0078`) et `REV-3` (`ADR-0084`) ne font bouger aucune ligne de cette matrice : les dix
+jeux qu'ils touchent sont deja `couvert-valide` ou hors de son perimetre. **`CONS-1` n'est pas close
+pour autant.** Rejugee entree par entree contre le paquet qu'elle introduit, elle tient desormais
+sur neuf entrees de dix ; une seule, `bandit-manchot-histoire-geographie-cm1`, reste ouverte - sa
+consigne nomme deux taches qui excluent 31 des 57 items du paquet, dont toute la geographie. Le
+reliquat est routee au backlog de s31 (rejeu borne, 0,5), pas soldee ici : voir
+`docs/backlog/backlog.md`, section "Backlog ouvert pour s31".
+
+**Un onzieme fait, distinct de `CONS-1` et non compris dans son reliquat**, est trouve par
+`nadia-prof` en recomptant sa propre population de reference : `bandit-manchot-semaine-cp` porte
+*"Choisis la bonne reponse."*, le meme defaut que `CONS-1` vise sous une autre chaine que celle que
+`DEC-0078` mesurait. **`DEC-0078` est amendee** (2026-09-07) pour corriger la population qu'elle
+annoncait (43 conformes sur 54, pas 44) et pour router ce onzieme cas au backlog de s31 sous le code
+`CONS-3`, prix non chiffre par `nadia-prof` a ce jour.
+
+### Le fait de gestion, confirme par l'amendement de cloture de `DEC-0080`
+
+**Total du sprint : 8,50 sur la borne de 8,0** (Instance A 4,00/4,00, aucun depassement ; Instance B
+4,50/4,00, 0,50 au-dela de son budget opposable, sous son plafond dur individuel de 5,0). C'est le
+**troisieme depassement consecutif** de ce produit (s28 : +0,25 ; s29 : +1,50 ; s30 : +0,50), ecrit
+et arbitre par l'utilisatrice avant d'etre consomme (`DEC-0080`), non decouvert au comptage de
+cloture comme celui de s29.
+
+**`PAR-11`, clause neuve de `nadia-prof`, enregistree dans `DEC-0080` (section 7) et referencee
+depuis `DEC-0079`** : la marge de rejeu se dimensionne par instance sur son exposition reelle (0,5
+par lot neuf qu'elle audite), et la marge du sprint est la somme de ces marges, non un total
+reparti a parts egales. Elle corrige l'application de `PAR-9` sans la remplacer.
+
+### Les reserves, tracees sans en perdre une
+
+**Neuf reserves ouvertes par l'Instance B pour s31, 2,5 au total** : les six du premier passage
+(`SIG-R1`, `SIG-R2`, `MEL-R1`, `MEL-R2`, `MEL-R3`, `POS-R3`, 1,5) et les trois du reaudit (`CHA-R1`,
+`OBT-R1`, `OBT-R2`, 1,0). **Sept reserves ou reliquats ouverts par l'Instance A pour s31, 2,5 au
+total** : `HG-R8`, `FOP-R4`, `DRO-R4`, `CONS-2` (population portee de deux entrees a trois, second
+motif ajoute), `SAI-R1`, `ERR-R1` (2,0), plus le reliquat de `CONS-1` sur `histoire-geographie-cm1`
+(0,5). `ANG-R2` est **levee** dans le reaudit et sort du backlog price. `CONS-3` (`semaine-cp`,
+`DEC-0078` amendee) s'ajoute sans prix chiffre. **Detail complet, avec lien vers chaque fiche ou
+verdict** : `docs/backlog/backlog.md`, section "Backlog ouvert pour s31".
+
+### Ce que je route, en plus du backlog
+
+| Fait | A qui | Ce qu'il en fait |
+|---|---|---|
+| **La reprise des deux paquets refuses n'a ajoute aucun garde-fou** sur les proprietes que les deux refus ont fait payer (repetition d'une regle de fabrication a l'interieur d'une tache, distracteur pris chez le voisin) : le contenu est corrige, un commentaire d'exclusion d'un test existant est mis a jour, rien de plus | `theo-archi`, `yanis-qa` | `nadia-prof` le dit elle-meme pour qu'on ne croie pas couvert ce qui ne l'est pas : ces proprietes restent gardees par elle seule, en rejouant a chaque sprint |
+| **Trois proprietes textuelles gardees par `nadia-prof` seule et mordables en principe** (plusieurs items d'un paquet portant la meme bonne reponse ; une bonne reponse recopiee mot pour mot dans son enonce ; un item de cycle 3 reprenant a l'identique un item de cycle 2 deja servi) | `theo-archi` | Troisieme sprint consecutif ou elle route une famille de ce genre. Je ne prescris aucune forme, je transmets la propriete |
+| **Le registre d'identifiants de `PAR-5` n'existe toujours pas** ; s30 y ajoute dix identifiants de plus rien que sur l'Instance B (`SIG-R1`, `SIG-R2`, `MEL-R1`, `MEL-R2`, `MEL-R3`, `POS-R3`, `CHA-R1`, `OBT-R1`, `OBT-R2`, `PAR-11`) | `theo-archi` | Troisieme sprint consecutif. C'est l'une des deux conditions qui bloquent la levee de la retenue de defiance de 1,0 sur la parallelisation ; elle n'est pas levee |
+
+### Ce que cette synthese ne fait pas
+
+- Elle ne prononce aucun Done : les verdicts sont de `nadia-prof`, dans les fiches et les documents
+  de verdict cites.
+- Elle ne fixe aucun perimetre pour s31.
+- Elle ne considere `CONS-1` levee sur aucune entree au-dela des neuf que `nadia-prof` a rejugees
+  tenues : le reliquat d'une seule entree reste une dette ouverte, pas une nuance de redaction.
+- Elle ne tranche pas le prix de `CONS-3` : routee a `nadia-prof` pour chiffrage au rejeu.
 

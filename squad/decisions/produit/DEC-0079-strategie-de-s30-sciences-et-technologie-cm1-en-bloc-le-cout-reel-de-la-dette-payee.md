@@ -179,6 +179,14 @@ individuel de `PAR-8` (5,0) reste un plafond dur qu'aucune instance ne franchit,
 d'etre le chiffre de planification : s29 a coute 9,50 sur 8,0 en respectant les deux plafonds
 individuels, parce que rien ne tenait leur somme.
 
+**Amendement du 2026-09-07 (`camille-po`)** : a la cloture de s30, la composition ci-dessus a
+concentre les deux lots de sciences (donc les deux reaudits possibles) sur une seule instance,
+pendant que `PAR-9` allouait la marge de rejeu par moitie egale de la borne du sprint plutot que par
+exposition reelle de chaque instance. `nadia-prof` en a tire `PAR-11`, qui corrige ce point sans
+remplacer `PAR-9` : la marge de rejeu se dimensionne desormais **par instance sur son exposition
+reelle** (0,5 par lot neuf qu'elle audite), non par part egale de la marge du sprint. Enregistree en
+detail dans `DEC-0080`, section 7.
+
 ### 6.2 La composition retenue
 
 | | Une instance | L'autre instance |

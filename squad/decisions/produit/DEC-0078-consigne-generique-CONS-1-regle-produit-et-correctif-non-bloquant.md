@@ -60,3 +60,31 @@ les jeux concernes s'apprennent malgre cette consigne.
   une entree neuve de catalogue" ajoutee, a instruire au planning de s30.
 - `squad/decisions/produit/DEC-index.md` : ligne `DEC-0078` ajoutee.
 - Aucune ligne de `squad/programme/MATRICE-couverture.md` ne change du fait de cette decision.
+
+## 5. Amendement du 2026-09-07 (`camille-po`) - la population mesuree en section 1 sous-comptait
+## d'une entree ; `bandit-manchot-semaine-cp` porte le meme defaut sous une autre chaine
+
+**Le fait, trouve par `nadia-prof` elle-meme en recomptant pendant le reaudit de `CONS-1` de s30**
+(`squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md`, complement
+du 2026-09-06, section 2) : le chiffre *"44 des 54 entrees"* de la section 1 ci-dessus comptait les
+entrees qui ne portaient **pas la chaine exacte** *"Lis bien la question, puis choisis la bonne
+reponse."*, et non les entrees qui **nomment reellement leur tache**. `bandit-manchot-semaine-cp`
+porte *"Choisis la bonne reponse."* - une chaine differente, purement generique, qui ne nomme
+aucune tache - et avait ete comptee a tort parmi les 44 conformes.
+
+**Population corrigee** : sur les 54 entrees existantes au 2026-09-03, **43 nomment leur tache**,
+pas 44 ; **11 ne le font pas**, pas 10. La regle 1 ci-dessus (*"toute entree neuve porte une
+consigne qui nomme la tache"*) n'est pas fausse et n'est pas amendee : elle vise deja le defaut, pas
+la chaine, et `bandit-manchot-semaine-cp` la violerait si elle etait une entree neuve. **Ce qui
+etait faux, c'est le perimetre de la regle 2** : le correctif planifie et livre a s30 ne portait que
+sur les dix entrees mesurees par la chaine exacte ; il n'a donc pas touche cette onzieme entree, qui
+porte le meme defaut sous une autre forme.
+
+**Je ne rouvre pas le correctif de s30** : il est livre, rejoue et sa portee reste ce qu'elle a
+toujours ete - dix entrees nommees. **J'ouvre un correctif distinct pour la onzieme**, route au
+backlog de s31 sous le code `CONS-3` (attribue par `camille-po`, `nadia-prof` n'ayant pas code cette
+observation - elle l'a explicitement routee hors du perimetre de son reaudit). **Prix non chiffre** :
+`nadia-prof` n'a pas fixe de regime pour cette entree, et je n'en invente pas un a sa place ; elle le
+chiffrera au rejeu, sur le meme modele que les dix premieres.
+
+- **Lien** : `docs/backlog/backlog.md`, section "Backlog ouvert pour s31", entree `CONS-3`.
