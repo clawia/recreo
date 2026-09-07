@@ -23,18 +23,37 @@ lignesDeReferentiel: ["SCI-CM1-11"]
 # chacune le critere decisif d'au moins un item de la tache B - resistance (item 6), isolation
 # (item 7), souplesse (items 8 et 11), impermeabilite (items 9 et 10) - au meme sens que "un moyen
 # de separation" pour cm1-sciences-melanges (SCI-CM1-02) : la position de bonne reponse est celle
-# de la propriete testee, pas une reprise litterale du mot dans le texte de la reponse.
+# de la propriete testee, pas une reprise litterale du mot dans le texte de la reponse. Confirme par
+# nadia-prof le 2026-09-07 (verdict de refus, section 2.4) : ce precedent condamne le premier
+# verdict plutot que de le sauver, precisement parce qu'il oblige l'item a tester la propriete.
 #
-# FAB-1b : sur la tache B, le materiau juste n'est jamais le meme d'un item a l'autre - metal, bois,
-# plastique, caoutchouc, tissu et verre servent chacun une fois la bonne reponse, jamais deux.
+# FAB-1b : sur la tache B, la bonne reponse n'est jamais invariante - metal (item 6), bois (item 7),
+# plastique (items 8 et 9), verre (item 10) et tissu (item 11) se partagent les six items, aucun
+# materiau ne domine la totalite de la tache. Un materiau juste peut se repeter d'un item a l'autre
+# (ici le plastique, items 8 et 9, sur deux proprietes differentes) : nadia-prof corrige elle-meme
+# sa premiere lecture de FAB-1a le 2026-09-07 (verdicts, section 4) - seule l'invariance totale est
+# interdite, un classement a categories fermees repete necessairement ses propositions.
 #
 # Une seule propriete par item (note de la matrice sur cette ligne : "une propriete par item,
 # jamais deux : la charge cognitive double sinon") : aucun item ne nomme deux proprietes a la fois.
 #
 # HIS-3 (chaque fait porte sa source) : les familles de materiaux (bois, metal, verre, plastique,
-# tissu, caoutchouc) et leurs proprietes usuelles (resistance du metal et du bois de charpente,
-# isolation thermique du bois, souplesse du plastique et du tissu, impermeabilite du caoutchouc et
-# du verre) sont des faits de technologie de base enseignes au cycle 3, sans controverse.
+# tissu, et le cuir en distracteur) et leurs proprietes usuelles (resistance du metal et du bois de
+# charpente, isolation thermique du bois, souplesse du plastique et du tissu, impermeabilite du
+# plastique et du verre) sont des faits de technologie de base enseignes au cycle 3, sans
+# controverse.
+#
+# Reprise s31 (nadia-prof, instance B, REFUSE le 2026-09-07,
+# squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md) : PLA-1, sur les quatre
+# proprietes de FER-1, une seule (isolation, item 7) etait servie par un item dont les distracteurs
+# etaient de vrais candidats ; trois items sur six (6, 10, 11) n'offraient aucune alternative
+# serieuse, l'enfant trouvant la reponse en ecartant l'absurde. Corrige un distracteur par item
+# concerne (le bois pour le pont de l'item 6, le plastique pour la bouteille de l'item 10, le cuir
+# pour le vetement de l'item 11), en gardant le modele qui fonctionnait deja (item 7, et l'item 8 de
+# cm1-sciences-etats-matiere, cite par nadia-prof comme exemple). Second motif corrige dans le meme
+# geste : l'indice de l'item 10 ("meme liquide", qui ne voulait rien dire, l'eau etant deja liquide)
+# est reecrit ; et le caoutchouc, servi en bonne reponse a l'item 9 sans avoir jamais ete enseigne
+# comme famille en tache A, est remplace par le plastique, deja enseigne (item 4).
 #
 # CON-1 : aucun item ne se resout sans connaitre le materiau ou l'objet qu'il decrit.
 #
@@ -62,7 +81,7 @@ items:
     indice: "Ce matériau est fait de fils tissés ou tricotés ensemble."
   - enonce: "On veut construire un pont qui doit supporter le poids de nombreux camions sans jamais se casser. Il faut un matériau très résistant. Lequel choisir ?"
     bonneReponse: "le métal"
-    distracteurs: ["le tissu", "le verre"]
+    distracteurs: ["le bois", "le verre"]
     indice: "Ce matériau supporte de très lourdes charges sans se briser facilement."
   - enonce: "On veut fabriquer le manche d'une poêle, qui ne doit jamais devenir brûlant à tenir même quand la poêle chauffe. Il faut un matériau isolant, qui ne laisse pas passer la chaleur. Lequel choisir ?"
     bonneReponse: "le bois"
@@ -73,14 +92,14 @@ items:
     distracteurs: ["le verre", "le métal"]
     indice: "Ce matériau se plie facilement et reprend sa forme sans se briser."
   - enonce: "On veut fabriquer une combinaison de plongée qui ne doit jamais laisser entrer l'eau. Il faut un matériau imperméable. Lequel choisir ?"
-    bonneReponse: "le caoutchouc"
+    bonneReponse: "le plastique"
     distracteurs: ["le tissu", "le bois"]
     indice: "Ce matériau empêche complètement l'eau de le traverser."
-  - enonce: "On veut fabriquer une bouteille qui ne doit jamais laisser l'eau s'échapper, même posée à l'envers. Il faut un matériau imperméable. Lequel choisir ?"
+  - enonce: "On veut fabriquer une bouteille réutilisable des centaines de fois, qui ne doit jamais garder le goût du dernier liquide versé. Il faut un matériau imperméable. Lequel choisir ?"
     bonneReponse: "le verre"
-    distracteurs: ["le tissu", "le bois"]
-    indice: "Ce matériau ne laisse jamais passer l'eau, même liquide."
+    distracteurs: ["le plastique", "le bois"]
+    indice: "Ce matériau ne garde jamais aucune odeur ni aucun goût, même après des centaines de lavages."
   - enonce: "On veut fabriquer un vêtement qui doit permettre de bouger librement dans tous les sens. Il faut un matériau souple. Lequel choisir ?"
     bonneReponse: "le tissu"
-    distracteurs: ["le métal", "le verre"]
+    distracteurs: ["le métal", "le cuir"]
     indice: "Ce matériau s'adapte aux mouvements du corps sans gêner."

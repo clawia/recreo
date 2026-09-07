@@ -131,16 +131,22 @@ class PaquetCm1SciencesFamillesMateriauxTest {
     }
 
     /**
-     * FAB-1b : sur la tache de choix, le materiau juste n'est jamais le meme d'un item a l'autre -
-     * les six bonnes reponses sont toutes distinctes.
+     * FAB-1b, corrige a la lecture de {@code nadia-prof} (verdicts de s31, instance B, section 4) :
+     * la bonne reponse de la tache de choix n'est jamais invariante, mais un materiau peut se
+     * repeter d'un item a l'autre sur deux proprietes differentes - ici le plastique, sur la
+     * souplesse (item 8) et l'impermeabilite (item 9). Seule l'invariance totale (un materiau qui
+     * domine la totalite de la tache) est interdite.
      */
     @Test
-    void fab1bLeMateriauJusteNEstJamaisLeMemeSurLaTacheDeChoix() {
-        List<String> reponses = itemsDeChoix().stream().map(Question::bonneReponse).distinct().toList();
+    void fab1bLaBonneReponseDeLaTacheDeChoixNEstJamaisInvariante() {
+        List<Question> choix = itemsDeChoix();
+        long meilleureFrequence = choix.stream().map(Question::bonneReponse)
+                .collect(java.util.stream.Collectors.groupingBy(r -> r, java.util.stream.Collectors.counting()))
+                .values().stream().mapToLong(Long::longValue).max().orElse(0);
 
-        assertThat(reponses)
-                .as("FAB-1b : chaque item de la tache de choix a un materiau juste different")
-                .hasSize(itemsDeChoix().size());
+        assertThat(meilleureFrequence)
+                .as("FAB-1b : aucun materiau ne domine la totalite de la tache de choix")
+                .isLessThan(choix.size());
     }
 
     /** Sur la tache de famille, les cinq objets decrits relevent chacun d'une famille differente. */
@@ -151,5 +157,64 @@ class PaquetCm1SciencesFamillesMateriauxTest {
         assertThat(reponses)
                 .as("chaque item de la tache de famille a une bonne reponse differente")
                 .hasSize(itemsDeFamille().size());
+    }
+
+    /**
+     * Reprise S31 (REFUSE, {@code squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md}) :
+     * toute bonne reponse de la tache de choix appartient a une famille deja enseignee par la tache
+     * de famille - le caoutchouc, servi en bonne reponse sans avoir jamais ete enseigne, est ce qui
+     * a fait partie du refus.
+     */
+    @Test
+    void touteBonneReponseDeLaTacheDeChoixAppartientAUneFamilleEnseigneeParLaTacheDeFamille() {
+        Set<String> famillesEnseignees = itemsDeFamille().stream().map(Question::bonneReponse)
+                .collect(java.util.stream.Collectors.toSet());
+
+        for (Question item : itemsDeChoix()) {
+            assertThat(famillesEnseignees)
+                    .as("item %s : la bonne reponse '%s' doit etre une famille deja enseignee par la"
+                            + " tache de famille", item.id().value(), item.bonneReponse())
+                    .contains(item.bonneReponse());
+        }
+    }
+
+    /**
+     * Reprise S31 (REFUSE, PLA-1) : sur les items 6 (pont), 10 (bouteille) et 11 (vetement), au
+     * moins un distracteur est desormais un materiau qu'un enfant peut serieusement envisager,
+     * la ou les deux distracteurs precedents n'appartenaient a rien.
+     */
+    @Test
+    void pla1LesTroisItemsCorrigesPortentDesormaisUnDistracteurPlausible() {
+        Question itemPont = itemDontLEnonceContient("construire un pont");
+        assertThat(itemPont.distracteurs())
+                .as("PLA-1 : le pont propose desormais le bois comme candidat plausible")
+                .contains("le bois");
+
+        Question itemBouteille = itemDontLEnonceContient("bouteille réutilisable");
+        assertThat(itemBouteille.distracteurs())
+                .as("PLA-1 : la bouteille propose desormais le plastique comme candidat plausible")
+                .contains("le plastique");
+
+        Question itemVetement = itemDontLEnonceContient("fabriquer un vêtement");
+        assertThat(itemVetement.distracteurs())
+                .as("PLA-1 : le vetement propose desormais le cuir comme candidat plausible")
+                .contains("le cuir");
+    }
+
+    /**
+     * Reprise S31 (REFUSE, SCI-1) : l'indice de l'item de la bouteille ne dit plus "même liquide",
+     * qui ne voulait rien dire puisque l'eau est deja liquide.
+     */
+    @Test
+    void sci1LIndiceDeLItemDeLaBouteilleDitDesormaisQuelqueChoseDeVrai() {
+        Question itemBouteille = itemDontLEnonceContient("bouteille réutilisable");
+        assertThat(itemBouteille.indice().orElseThrow())
+                .as("SCI-1 : l'indice ne repete plus 'meme liquide'")
+                .doesNotContain("même liquide");
+    }
+
+    private static Question itemDontLEnonceContient(String fragment) {
+        return items().stream().filter(item -> item.enonce().contains(fragment)).findFirst()
+                .orElseThrow(() -> new AssertionError("aucun item ne contient : " + fragment));
     }
 }
