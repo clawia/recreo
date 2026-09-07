@@ -411,9 +411,18 @@ class TexteAccentueExposeParLePortEntrantTest {
             // paquet qu'elles introduisent. Reecrites une seconde fois, chacune contre son paquet.
             "Lis bien, puis dis si c'est un être vivant, ou lequel des trois l'est.",
             "Lis bien, puis nomme la partie du corps.",
-            "Lis bien, puis situe dans le temps, ou associe un roi à son fait.",
             "Traduis le mot, ou réponds à la question sur les pays anglophones.",
             "Lis bien, puis dis si c'est un droit ou un devoir, ou à quoi ça sert.",
+            // Correction du 2026-09-07 (lea-dev, CONS-1, reaudit de nadia-prof,
+            // squad/sprints/s30-sciences-cm1-et-le-prix-des-reserves/verdicts-nadia-instance-A.md,
+            // complement du 2026-09-06, section 3.3) : la consigne du 2026-09-06 ne nommait que
+            // deux taches sur les quatre du paquet (situer dans le temps, associer un roi a son
+            // fait) et etait fausse sur 31 des 57 items (toute la geographie, 21 items, et la
+            // lecture de document, 10 items). Reecrite une troisieme fois pour nommer les quatre
+            // familles du paquet, comptees par nadia-prof : 16 + 10 + 21 + 10 = 57 items couverts.
+            // Rejeu borne a s31.
+            "Lis bien, puis situe dans le temps, associe un roi à son fait, décris un espace ou "
+                    + "une ressource, ou lis un document.",
             // S28-4 : deux consignes neuves.
             "Pose l'opération, puis choisis le bon résultat.",
             "Pose l'opération, puis choisis le bon quotient et le bon reste.",
