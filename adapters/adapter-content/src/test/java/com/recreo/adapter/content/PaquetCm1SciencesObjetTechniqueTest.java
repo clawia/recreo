@@ -77,6 +77,11 @@ class PaquetCm1SciencesObjetTechniqueTest {
                 .filter(item -> REPONSES_DE_COMPOSANT.contains(item.bonneReponse())).toList();
     }
 
+    private static Question itemDontLaBonneReponseEst(String bonneReponse) {
+        return items().stream().filter(item -> item.bonneReponse().equals(bonneReponse)).findFirst()
+                .orElseThrow(() -> new AssertionError("aucun item n'a pour bonne reponse : " + bonneReponse));
+    }
+
     /** FER-2 : au moins dix items servent cette ligne (onze depuis S30-2). */
     @Test
     void fer2AuMoinsDixItems() {
@@ -138,5 +143,38 @@ class PaquetCm1SciencesObjetTechniqueTest {
     @Test
     void lePaquetPorteExactementOnzeItems() {
         assertThat(items()).hasSize(11);
+    }
+
+    /**
+     * Reprise S31-6 ({@code OBT-R1}, nadia-prof, 2026-09-06,
+     * {@code squad/conformite/FICHE-bandit-manchot-objet-technique-cm1.md}) : l'indice de l'item
+     * du vélo affirmait "pour une fatigue proche", ce qui dement sa propre bonne reponse ("avec
+     * moins d'effort") en comparant a effort egal la ou l'enonce et la bonne reponse comparent a
+     * distance egale.
+     */
+    @Test
+    void obtR1LIndiceDeLItemDuVeloNeDementPlusSaBonneReponse() {
+        Question item = itemDontLaBonneReponseEst("à se déplacer plus vite et avec moins d'effort");
+        assertThat(item.indice().orElseThrow())
+                .as("OBT-R1 : l'indice ne compare plus a effort egal, ce qui dementait la bonne reponse")
+                .doesNotContainIgnoringCase("fatigue proche");
+    }
+
+    /**
+     * Reprise S31-6 ({@code OBT-R2}) : les indices de la lampe de poche et du taille-crayon
+     * nommaient les deux distracteurs de leur item pour les ecarter, revelant la bonne reponse des
+     * la premiere erreur.
+     */
+    @Test
+    void obtR2LesIndicesDeLaLampeEtDuTailleCrayonNEcartentPlusLesDeuxDistracteursALaFois() {
+        Question itemLampe = itemDontLaBonneReponseEst("à éclairer dans le noir");
+        assertThat(itemLampe.indice().orElseThrow())
+                .as("OBT-R2 : l'indice de la lampe ne nomme plus le distracteur 'recharger'")
+                .doesNotContainIgnoringCase("recharger");
+
+        Question itemTailleCrayon = itemDontLaBonneReponseEst("à tailler la pointe d'un crayon");
+        assertThat(itemTailleCrayon.indice().orElseThrow())
+                .as("OBT-R2 : l'indice du taille-crayon ne nomme plus le distracteur 'ranger'")
+                .doesNotContainIgnoringCase("ranger");
     }
 }

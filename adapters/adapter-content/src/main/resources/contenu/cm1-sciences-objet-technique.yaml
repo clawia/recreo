@@ -53,19 +53,31 @@ lignesDeReferentiel: ["SCI-CM1-12"]
 # trois parties déjà servies au CP : progression, pas contradiction.
 #
 # FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# Reprise S31-6 (docs/backlog/backlog.md, sprint 31 - squad/conformite/FICHE-bandit-manchot-objet-
+# technique-cm1.md, reserves OBT-R1 et OBT-R2, nadia-prof, 2026-09-06) : deux corrections, aucune
+# bloquante, la ligne reste couvert-valide.
+# - OBT-R1 : l'indice de l'item du velo affirmait "pour une fatigue proche", ce qui dement la
+#   bonne reponse ("avec moins d'effort") en introduisant une comparaison a effort egal la ou
+#   l'enonce et la bonne reponse se placent a distance egale. L'indice reste desormais dans le
+#   meme cadre que l'enonce (le trajet, donc la distance).
+# - OBT-R2 : les indices des items de la lampe de poche et du taille-crayon nommaient les deux
+#   distracteurs de leur item pour les ecarter, ce qui revele la bonne reponse des la premiere
+#   erreur. Chaque indice n'ecarte plus qu'un seul distracteur nomme, sur le modele de l'item du
+#   ventilateur qui n'en ecartait deja qu'un seul.
 items:
   - enonce: "À quoi sert un vélo, plutôt qu'à marcher, pour un long trajet ?"
     bonneReponse: "à se déplacer plus vite et avec moins d'effort"
     distracteurs: ["à se déplacer aussi vite qu'une voiture", "à se déplacer sans aucun effort"]
-    indice: "En pédalant, on avance plus vite qu'à pied, pour une fatigue proche."
+    indice: "Pour un même trajet, pédaler fatigue moins que marcher à pied."
   - enonce: "À quoi sert une lampe de poche ?"
     bonneReponse: "à éclairer dans le noir"
     distracteurs: ["à réchauffer les mains", "à recharger un téléphone"]
-    indice: "On l'allume quand il n'y a pas assez de lumière, jamais pour se réchauffer ni recharger un appareil."
+    indice: "On l'allume quand il n'y a pas assez de lumière ; elle ne sert jamais à réchauffer les mains."
   - enonce: "À quoi sert un taille-crayon ?"
     bonneReponse: "à tailler la pointe d'un crayon"
     distracteurs: ["à effacer ce qu'on a écrit au crayon", "à ranger les crayons dans une trousse"]
-    indice: "On l'utilise quand la pointe d'un crayon est devenue trop usée, jamais pour effacer ni pour ranger."
+    indice: "On l'utilise quand la pointe d'un crayon est devenue trop usée ; il ne sert jamais à effacer ce qu'on a écrit."
   - enonce: "À quoi sert un ventilateur, alors qu'il donne une impression de fraîcheur ?"
     bonneReponse: "à brasser l'air d'une salle, sans jamais le refroidir"
     distracteurs: ["à refroidir réellement l'air d'une salle", "à purifier l'air d'une salle"]
