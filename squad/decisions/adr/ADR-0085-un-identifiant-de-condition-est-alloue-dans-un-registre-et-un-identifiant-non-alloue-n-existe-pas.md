@@ -185,6 +185,48 @@ identifiants distincts.
   lieu de l'epeler.** C'est une gene reelle, elle porte sur quelques phrases par sprint, et elle est
   le revers exact de ce qui fait mordre la clause.
 
+## Amendement du 2026-09-07 (s31, verification de la porte technique) - la cecite de branche, et pourquoi elle ne demande aucun dispositif
+
+**Le fait, des le premier assemblage.** Ce registre a ete construit dans le worktree `s31-theo`.
+`nadia-prof` a nomme quatre clauses le meme jour dans `s31-nadia-arbitrage`, une branche que ce
+worktree **ne pouvait pas voir** - c'est exactement ce que la discipline de worktree dedie, par
+ailleurs juste, garantit. A l'assemblage des trois branches, la clause 2 a **fait rougir la CI** sur
+quatre identifiants ecrits sans allocation. `sofia-sm` a ferme le rouge par une allocation
+mecanique : quatre lignes, aucun sens change, 527 identifiants.
+
+**Enonce de la limite** : *un registre construit depuis un worktree ne voit pas ce qui s'ecrit en
+parallele dans un autre.*
+
+**Rien de plus n'est du, et le motif n'est pas la prudence.** Trois raisons, dans l'ordre ou elles
+decident.
+
+1. **La limite n'en est pas une, c'est la regle de gouvernance qui parle.** Le depot est la seule
+   memoire partagee. Une branche non fusionnee n'est pas encore le depot. Demander a ce registre de
+   voir une allocation non fusionnee, c'est lui demander d'etre vrai d'une chose qui, au sens de
+   `CLAUDE.md`, **n'existe pas encore**. Le seul instant ou la question est bien posee est la
+   fusion - et c'est la que la clause 2 mord.
+2. **Le mode de defaillance est le bon.** Le rouge est bruyant, il arrive au plus tot possible, et
+   il porte sur ce qui manque. **La propriete de `PAR-5` n'a jamais ete menacee** : la cecite
+   produit une **ligne absente**, pas deux conditions sous un meme nom. Une ligne absente se remplit
+   mecaniquement, et elle l'a ete.
+3. **Tout dispositif qui la supprimerait couterait plus qu'elle.** Faire lire les branches soeurs a
+   un garde-fou revient a balayer le travail non fusionne d'un autre agent, ce que l'amendement de
+   `squad/README.md` interdit et ce que ma propre charte m'interdit. Une pre-allocation ceremonielle
+   au planning couterait a **chaque** sprint pour eviter un defaut qui a coute **un commit
+   mecanique**. Une abstraction se justifie sur un usage constate, pas sur un usage anticipe.
+
+**Ce que je ne minimise pas, et qui est le vrai residu.** La cecite a produit ici le cas **bon
+marche** - une ligne absente. Le cas que `PAR-5` vise vraiment est l'autre : deux instances allouant
+**le meme identifiant a deux conditions differentes**. Il rougit aussi a la fusion, par la clause 1,
+**mais son correctif n'est pas mecanique** - il faut renumeroter l'une des deux et reprendre toutes
+ses citations. **Le registre rend ce cas visible ; il ne le rend pas bon marche, et personne ne doit
+croire le contraire.**
+
+> **Declencheur nomme, pour que ce ne soit pas a redemander** : la **premiere** collision de sens
+> constatee a une fusion. Ce jour-la, et pas avant, le remede se chiffre - une reservation de plage
+> de numeros par instance, ecrite au planning, une ligne. **Tant qu'elle n'a pas eu lieu, l'ecrire
+> serait construire un dispositif contre un defaut imaginaire.**
+
 ## Alternatives considerees
 
 - **Ne rien ecrire et continuer la mesure a la main.** Ecartee : c'est le statu quo de trois

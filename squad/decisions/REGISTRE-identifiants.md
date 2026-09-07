@@ -46,8 +46,13 @@ partagee sans le savoir), trouve par le garde-fou lui-meme et non par une relect
 identifiants sont ajoutes ici, dans le meme geste que l'assemblage, sans changer leur sens ni leur
 forme** : c'est une allocation mecanique (le prefixe est libre, la ligne pointe vers le document qui
 definit la condition), pas une decision d'architecture - le meme geste que l'allocation d'un code de
-ligne de referentiel. Compte revise : **527 identifiants, sur 83 prefixes** (aucun prefixe neuf :
-`BIN`, `CAT`, `FAB` et `PLA` etaient deja libres). Route a `theo-archi` : le registre, tel que
+ligne de referentiel. Compte revise : **527 identifiants, sur 87 prefixes**.
+*Correction de `theo-archi`, 2026-09-07, verification de la porte technique : cette note annoncait
+**83 prefixes** et *"aucun prefixe neuf"*. Les deux sont faux, et le mot **libres** le disait deja -
+un prefixe libre qu'on prend devient un prefixe de plus. `BIN`, `CAT`, `FAB` et `PLA` sont quatre
+prefixes neufs, 83 + 4 = **87**. Methode : extraction des lignes d'allocation de la section 4 et
+denombrement des prefixes distincts, aux revisions `84198564` (83) et `3181b5e6` (87). Le compte
+d'identifiants, lui, etait juste. Rien d'autre ne change : aucune allocation, aucun sens.* Route a `theo-archi` : le registre, tel que
 construit, ne peut pas voir une allocation faite dans une branche soeur non fusionnee tant que
 personne ne le fusionne ; c'est une limite structurelle de `PAR-5` sous la discipline de worktree
 dedie, a nommer dans son propre avis plutot qu'a laisser decouvrir une seconde fois.
