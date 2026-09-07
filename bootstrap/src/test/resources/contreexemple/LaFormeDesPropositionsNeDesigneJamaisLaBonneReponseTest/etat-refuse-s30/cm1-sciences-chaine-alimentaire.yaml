@@ -1,0 +1,88 @@
+schema: 1
+id: cm1-sciences-chaine-alimentaire
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "La planète Terre. Les êtres vivants dans leur environnement"
+  competence: "Décrire un milieu proche : les êtres vivants qui le peuplent et les relations alimentaires qui les relient (chaîne alimentaire)."
+lignesDeReferentiel: ["SCI-CM1-17"]
+#
+# S30-1 (docs/backlog/backlog.md, sprint 30). Second des deux paquets du premier lot de sciences et
+# technologie CM1 (DEC-0079, arbitrage prealable de nadia-prof du 2026-09-06, section 2.8 - ligne
+# jugee la moins couteuse du lot avec la ligne 5). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-17).
+#
+# Milieu proche retenu : la forêt, avec six relations alimentaires a deux maillons (jamais une
+# chaine entiere construite par l'enfant, V3) : le chêne (glands) -> l'écureuil ; l'écureuil ->
+# le renard ; l'herbe -> le lapin ; le lapin -> le renard ; le mulot -> la chouette ; la chenille ->
+# la mésange.
+#
+# Deux elements du libelle a servir en bonne reponse (FER-1) : "les êtres vivants du milieu" (tache
+# A, la bonne reponse nomme un animal ou une plante) et "la relation alimentaire" (tache B, la bonne
+# reponse decrit l'effet du lien qui unit deux etres vivants). Deux taches distinctes (FER-3) :
+# tache A, dire qui mange qui dans une situation decrite (six items) ; tache B, dire ce qui risque
+# d'arriver a un etre vivant si l'autre maillon de sa relation venait a manquer (cinq items).
+#
+# V3 : aucun item ne demande de construire une chaine alimentaire entiere - chaque item porte sur
+# une seule relation a deux maillons.
+#
+# CON-1 : aucun item ne se resout sans connaitre les deux etres vivants et la relation qui les unit.
+#
+# HIS-3 (chaque fait porte sa source) : les six relations alimentaires citees sont celles,
+# generalement enseignees, d'une forêt tempérée d'Europe (chaîne herbe/lapin/renard, chêne/gland/
+# écureuil, mulot/chouette, chenille/mésange) - faits d'écologie de base, sans controverse
+# scientifique.
+#
+# CYC-1 (squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-
+# quinze-reserves.md, section 2.6) : verifie contre cp-qlm-vivant-non-vivant.yaml (QLM-CP-01) - aucun
+# etre vivant nomme ici (chêne, écureuil, renard, herbe, lapin, mulot, chouette, chenille, mésange)
+# n'y est classe comme non-vivant ou objet ; c'est un ajout d'especes et de relations nouvelles au
+# CM1, jamais une contradiction d'un classement deja servi au CP.
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Dans la forêt, qui mange les glands du chêne ?"
+    bonneReponse: "l'écureuil"
+    distracteurs: ["le renard", "le mulot"]
+    indice: "Ce petit animal grimpe aux arbres et fait des réserves pour l'hiver."
+  - enonce: "Dans la forêt, qui mange l'écureuil ?"
+    bonneReponse: "le renard"
+    distracteurs: ["le lapin", "la chouette"]
+    indice: "Ce prédateur chasse aussi bien au sol que près des arbres."
+  - enonce: "Dans la forêt, que mange le lapin ?"
+    bonneReponse: "de l'herbe"
+    distracteurs: ["des glands", "des chenilles"]
+    indice: "Cet animal broute les plantes basses de la clairière."
+  - enonce: "Dans la forêt, qui mange le lapin ?"
+    bonneReponse: "le renard"
+    distracteurs: ["la chouette", "la mésange"]
+    indice: "Ce même prédateur chasse aussi bien le lapin que l'écureuil."
+  - enonce: "Dans la forêt, que mange la chouette ?"
+    bonneReponse: "le mulot"
+    distracteurs: ["le renard", "l'écureuil"]
+    indice: "Ce petit rongeur se déplace surtout la nuit, comme cet oiseau chasseur."
+  - enonce: "Dans la forêt, que mange la mésange ?"
+    bonneReponse: "la chenille"
+    distracteurs: ["le mulot", "le lapin"]
+    indice: "Ce petit oiseau attrape de petites proies sur les feuilles des arbres."
+  - enonce: "S'il n'y avait plus de glands dans la forêt, que risquerait-il d'arriver à l'écureuil ?"
+    bonneReponse: "il risquerait de manquer de nourriture"
+    distracteurs: ["il n'aurait plus besoin de manger", "il se mettrait à manger de l'herbe"]
+    indice: "Sans ce qu'il mange d'habitude, un être vivant ne peut pas se nourrir normalement."
+  - enonce: "Si l'herbe venait à manquer dans la forêt, que risquerait-il d'arriver au lapin ?"
+    bonneReponse: "il risquerait de manquer de nourriture"
+    distracteurs: ["il se mettrait à manger de la viande", "il n'aurait plus besoin de manger"]
+    indice: "Un être vivant ne peut pas remplacer facilement ce qu'il mange d'habitude."
+  - enonce: "Si tous les lapins disparaissaient de la forêt, que risquerait-il d'arriver au renard ?"
+    bonneReponse: "il risquerait de manquer de nourriture"
+    distracteurs: ["il se mettrait à manger de l'herbe", "il n'aurait plus besoin de manger"]
+    indice: "Le renard perdrait une partie de ce qu'il mange d'habitude dans la forêt."
+  - enonce: "S'il n'y avait plus de mulots dans la forêt, que risquerait-il d'arriver à la chouette ?"
+    bonneReponse: "elle risquerait de manquer de nourriture"
+    distracteurs: ["elle se mettrait à manger des glands", "elle n'aurait plus besoin de manger"]
+    indice: "La chouette perdrait une proie qu'elle chasse habituellement la nuit."
+  - enonce: "Si toutes les chenilles disparaissaient de la forêt, que risquerait-il d'arriver à la mésange ?"
+    bonneReponse: "elle risquerait de manquer de nourriture"
+    distracteurs: ["elle se mettrait à manger de l'herbe", "elle n'aurait plus besoin de manger"]
+    indice: "La mésange perdrait une proie qu'elle attrape habituellement sur les feuilles."

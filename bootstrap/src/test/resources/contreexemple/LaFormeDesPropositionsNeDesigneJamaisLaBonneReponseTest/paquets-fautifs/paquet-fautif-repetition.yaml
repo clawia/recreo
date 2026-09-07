@@ -1,0 +1,24 @@
+schema: 1
+id: paquet-fautif-repetition
+type: question
+descripteur:
+  matiere: "Jeu fautif"
+  niveau: "CP"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif d'ADR-0086, clause 1."
+lignesDeReferentiel: ["ZZZ-CP-01"]
+# Trois items coules dans le meme moule de propositions et portant tous la meme bonne reponse
+# d'une phrase entiere. Le mot substitue dans l'enonce ne change rien a ce qu'il faut presser.
+items:
+  - enonce: "Si le premier disparaissait, que se passerait-il ?"
+    bonneReponse: "il risquerait de manquer de quelque chose"
+    distracteurs: ["il n'aurait plus besoin de rien", "il se mettrait a manger autre chose"]
+    indice: "Jeu fautif."
+  - enonce: "Et si c'etait le deuxieme qui venait a manquer un jour ?"
+    bonneReponse: "il risquerait de manquer de quelque chose"
+    distracteurs: ["il n'aurait plus besoin de rien", "elle se mettrait a manger autre chose"]
+    indice: "Jeu fautif."
+  - enonce: "Que deviendrait le troisieme sans ce qu'il mange ?"
+    bonneReponse: "elle risquerait de manquer de quelque chose"
+    distracteurs: ["il n'aurait plus besoin de rien", "il se mettrait a manger autre chose"]
+    indice: "Jeu fautif."

@@ -1,0 +1,24 @@
+schema: 1
+id: paquet-fautif-amorce
+type: question
+descripteur:
+  matiere: "Jeu fautif"
+  niveau: "CP"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif d'ADR-0086, clause 2."
+lignesDeReferentiel: ["ZZZ-CP-02"]
+# Quatre distracteurs partagent le moule de leurs quatre premiers mots, qu'aucune bonne reponse ne
+# partage : l'enfant separe les boutons sur leur amorce, sans lire la suite.
+items:
+  - enonce: "Premiere question du jeu fautif ?"
+    bonneReponse: "en regardant ce qui est ecrit sur la boite"
+    distracteurs: ["en le croyant parce que quelqu'un l'a dit", "en le croyant parce que c'est ecrit gros"]
+    indice: "Jeu fautif."
+  - enonce: "Deuxieme question du jeu fautif ?"
+    bonneReponse: "en demandant a quelqu'un qui etait present"
+    distracteurs: ["en la croyant parce que tout le monde le repete", "en le croyant parce que personne ne dit le contraire"]
+    indice: "Jeu fautif."
+  - enonce: "Troisieme question du jeu fautif ?"
+    bonneReponse: "en verifiant sur le document d'origine"
+    distracteurs: ["en cherchant la reponse ailleurs", "en attendant que quelqu'un explique"]
+    indice: "Jeu fautif."
