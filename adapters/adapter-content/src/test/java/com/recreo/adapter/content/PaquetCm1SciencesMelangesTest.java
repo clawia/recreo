@@ -70,6 +70,16 @@ class PaquetCm1SciencesMelangesTest {
         return items().stream().filter(item -> !estDeClassement(item)).toList();
     }
 
+    private static Question itemDontLaBonneReponseEst(String bonneReponse) {
+        return items().stream().filter(item -> item.bonneReponse().equals(bonneReponse)).findFirst()
+                .orElseThrow(() -> new AssertionError("aucun item n'a pour bonne reponse : " + bonneReponse));
+    }
+
+    private static Question itemDontLEnonceContient(String fragment) {
+        return items().stream().filter(item -> item.enonce().contains(fragment)).findFirst()
+                .orElseThrow(() -> new AssertionError("aucun item ne contient : " + fragment));
+    }
+
     /** FER-2 : au moins dix items servent cette ligne (onze depuis S30-2). */
     @Test
     void fer2AuMoinsDixItems() {
@@ -130,5 +140,54 @@ class PaquetCm1SciencesMelangesTest {
         assertThat(Math.min(classement, separation))
                 .as("FER-3 : la tache la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
+    }
+
+    /**
+     * Reprise S31-5 ({@code MEL-R1}, nadia-prof, 2026-09-06,
+     * {@code squad/conformite/FICHE-bandit-manchot-melanges-cm1.md}) : l'indice de l'item du sel
+     * enseignait "il faut faire disparaître l'eau" - l'eau ne disparait pas, elle se vaporise, et
+     * c'est justement ce que {@code SCI-CM1-01} devra enseigner. Corrige dans le meme geste :
+     * l'indice de l'item du sirop de menthe parlait d'une "carafe" alors que son enonce parle d'un
+     * "bol".
+     */
+    @Test
+    void melR1LIndiceDuSelNEnseignePlusQueLEauDisparaitEtLIndiceDuSiropEstCoherentAvecSonEnonce() {
+        Question itemDuSel = itemDontLaBonneReponseEst("laisser l'eau s'évaporer");
+        assertThat(itemDuSel.indice().orElseThrow())
+                .as("MEL-R1 : l'indice du sel ne dit plus que l'eau disparait")
+                .doesNotContainIgnoringCase("disparaître")
+                .doesNotContainIgnoringCase("disparait");
+
+        Question itemDuSirop = itemDontLEnonceContient("sirop de menthe");
+        assertThat(itemDuSirop.indice().orElseThrow())
+                .as("MEL-R1 : l'indice du sirop de menthe nomme le meme recipient que son enonce")
+                .doesNotContain("carafe")
+                .contains("bol");
+    }
+
+    /**
+     * Reprise S31-5 ({@code MEL-R2}) : l'enonce de l'item de decantation ecrivait sa reponse dans
+     * sa propre question ("on laisse reposer" pour la bonne reponse "laisser reposer le
+     * mélange") - l'enfant n'avait pas a connaitre la decantation pour resoudre l'item.
+     */
+    @Test
+    void melR2LEnonceDeLItemDeDecantationNeContientPlusSaReponse() {
+        Question item = itemDontLaBonneReponseEst("laisser reposer le mélange");
+        assertThat(item.enonce())
+                .as("MEL-R2 : l'enonce ne nomme plus le geste que sa bonne reponse nomme")
+                .doesNotContainIgnoringCase("repos");
+    }
+
+    /**
+     * Reprise S31-5 ({@code MEL-R3}) : la troisieme proposition de l'item eau/huile ("un mélange
+     * qui n'existe pas") ne jouait pas le role de candidat plausible que {@code SCI-4} exige.
+     */
+    @Test
+    void melR3LaTroisiemePropositionDeLItemEauHuileNEstPlusUnBoutonDeRemplissage() {
+        Question item = itemDontLEnonceContient("de l'huile");
+        assertThat(item.distracteurs())
+                .as("MEL-R3 : le distracteur de remplissage est remplace par un candidat plausible")
+                .hasSize(2)
+                .doesNotContain("un mélange qui n'existe pas");
     }
 }

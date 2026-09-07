@@ -40,6 +40,22 @@ lignesDeReferentiel: ["SCI-CM1-02"]
 # monde CP ne porte sur les mélanges) - vacante, non tenue.
 #
 # FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# Reprise S31-5 (docs/backlog/backlog.md, sprint 31 - squad/conformite/FICHE-bandit-manchot-
+# melanges-cm1.md, reserves MEL-R1 a MEL-R3, nadia-prof, 2026-09-06) : trois corrections, aucune
+# bloquante, la ligne reste couvert-valide.
+# - MEL-R1 : l'indice de l'item du sel disait "il faut faire disparaître l'eau" - l'eau ne
+#   disparait pas, elle se vaporise, et c'est justement ce que SCI-CM1-01 doit enseigner. La
+#   seconde phrase de l'indice ne dit plus que l'eau disparait, ne nomme plus le geste a faire, et
+#   ne nomme plus la bonne reponse en d'autres mots. Corrige dans le meme geste : l'indice de
+#   l'item du sirop de menthe parlait d'une "carafe" alors que son enonce parle d'un "bol".
+# - MEL-R2 : l'enonce de l'item de decantation ecrivait sa reponse dans sa propre question ("on
+#   laisse reposer" pour la bonne reponse "laisser reposer le mélange"). L'enonce decrit desormais
+#   le resultat observe (l'eau redevenue claire, la terre deposee au fond) sans nommer le geste.
+# - MEL-R3 : la troisieme proposition de l'item eau/huile ("un mélange qui n'existe pas") ne
+#   jouait pas le role d'un candidat plausible que SCI-4 lui donne. Remplacee par une proposition
+#   qu'un enfant confronte a l'aspect trompeur du melange (uniforme juste apres avoir remue, puis
+#   separe) pourrait vraiment donner.
 items:
   - enonce: "Dans un verre, on mélange de l'eau et du sucre. Après avoir bien remué, on ne voit plus le sucre. Quel type de mélange est-ce ?"
     bonneReponse: "un mélange homogène"
@@ -47,7 +63,7 @@ items:
     indice: "On ne distingue plus les deux produits l'un de l'autre, même en regardant de près."
   - enonce: "On mélange de l'eau et de l'huile dans un verre. Juste après avoir remué, le mélange semble uniforme, mais on voit vite deux couches se former. Quel type de mélange est-ce ?"
     bonneReponse: "un mélange hétérogène"
-    distracteurs: ["un mélange homogène", "un mélange qui n'existe pas"]
+    distracteurs: ["un mélange homogène", "un mélange qui n'est ni homogène ni hétérogène"]
     indice: "Même remué, ce mélange ne reste pas uniforme bien longtemps. Les deux liquides finissent toujours par se séparer."
   - enonce: "Dans un verre, on mélange de l'eau et du sable. Le sable retombe au fond du verre. Quel type de mélange est-ce ?"
     bonneReponse: "un mélange hétérogène"
@@ -64,7 +80,7 @@ items:
   - enonce: "Dans un bol, on mélange de l'eau et du sirop de menthe. Le liquide devient vert partout, sans qu'on distingue le sirop. Quel type de mélange est-ce ?"
     bonneReponse: "un mélange homogène"
     distracteurs: ["un mélange hétérogène"]
-    indice: "Toute la carafe a la même couleur, du haut jusqu'en bas."
+    indice: "Tout le bol a la même couleur, du haut jusqu'en bas."
   - enonce: "On veut séparer le sable de l'eau, dans un mélange eau-sable. Quel moyen utiliser ?"
     bonneReponse: "utiliser un filtre"
     distracteurs: ["utiliser un aimant", "utiliser une éponge"]
@@ -72,12 +88,12 @@ items:
   - enonce: "On veut récupérer le sel d'une eau salée, en gardant seulement le sel. Quel moyen utiliser ?"
     bonneReponse: "laisser l'eau s'évaporer"
     distracteurs: ["utiliser un filtre", "utiliser un aimant"]
-    indice: "Le sel dissous ne peut pas être retenu par un filtre. Il faut faire disparaître l'eau."
+    indice: "Le sel dissous ne peut pas être retenu par un filtre. Il reste caché dans l'eau tant que celle-ci garde sa forme liquide."
   - enonce: "Dans un mélange de sable et de petits morceaux de fer, quel moyen permet de séparer le fer ?"
     bonneReponse: "utiliser un aimant"
     distracteurs: ["utiliser un filtre", "laisser reposer le mélange"]
     indice: "Ce moyen attire un seul des deux produits du mélange, jamais le sable."
-  - enonce: "Dans un verre d'eau trouble avec de la terre, on laisse reposer sans y toucher pendant longtemps. Quel moyen a-t-on utilisé pour séparer la terre ?"
+  - enonce: "Dans un verre d'eau trouble avec de la terre, après un long moment sans qu'on y touche, l'eau est redevenue claire et la terre s'est déposée au fond. Quel moyen a-t-on utilisé pour séparer la terre ?"
     bonneReponse: "laisser reposer le mélange"
     distracteurs: ["utiliser un aimant", "faire chauffer le mélange"]
     indice: "Avec le temps, le plus lourd des deux produits tombe tout seul au fond."
