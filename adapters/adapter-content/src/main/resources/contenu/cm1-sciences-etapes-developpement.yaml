@@ -43,6 +43,21 @@ lignesDeReferentiel: ["SCI-CM1-08"]
 # CON-1 : aucun item ne se resout sans connaitre l'etre vivant ou la situation qu'il decrit.
 #
 # FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# Reprise s31 (nadia-prof, instance B, REFUSE le 2026-09-07,
+# squad/conformite/FICHE-bandit-manchot-etapes-developpement-cm1.md) : deux motifs, tous deux
+# internes au paquet, aucun sur la decoupe a deux termes ni sur CYC-1, tous deux confirmes tenus.
+# - Premier motif : l'item de l'arbre affirmait qu'un arbre "a fini de grandir" en produisant ses
+#   premieres graines, ce qui est faux (un arbre continue de grandir toute sa vie), et le paquet se
+#   dementait lui-meme dans l'item de la reproduction, qui range "il arrete de grandir
+#   definitivement" en reponse fausse. La premisse fausse est retiree, la bonne reponse (le
+#   vieillissement) et le raisonnement ne changent pas.
+# - Second motif : les deux items de la metamorphose (tetard -> grenouille, chenille -> papillon)
+#   etaient un seul item sous deux noms d'animal - meme question, meme bonne reponse, memes deux
+#   distracteurs. Sous les deux seuils de la clause 1 d'ADR-0086 (trois items, trois mots), donc
+#   invisible du garde-fou. L'item de la chenille est reecrit sur une autre transition (la
+#   naissance, a la sortie de l'oeuf) avec des distracteurs differents, pour ne plus etre l'item du
+#   tetard sous un autre nom.
 items:
   - enonce: "Un chaton vient de naître ; il ne voit pas encore et tète sa mère. Quelle étape suivra bientôt dans sa vie ?"
     bonneReponse: "la croissance"
@@ -52,7 +67,7 @@ items:
     bonneReponse: "la reproduction"
     distracteurs: ["la naissance", "le vieillissement"]
     indice: "Une fois devenu adulte, un être vivant peut à son tour donner naissance à des petits."
-  - enonce: "Un jeune arbre a fini de grandir et produit pour la première fois des graines. Quelle étape suivra, bien plus tard, dans sa vie ?"
+  - enonce: "Un arbre produit pour la première fois des graines. Quelle étape suivra, bien plus tard, dans sa vie ?"
     bonneReponse: "le vieillissement"
     distracteurs: ["la naissance", "la croissance"]
     indice: "Après avoir pu se reproduire, un être vivant vieillit peu à peu."
@@ -64,10 +79,10 @@ items:
     bonneReponse: "la naissance"
     distracteurs: ["la croissance", "la reproduction"]
     indice: "Sortir de l'oeuf ou du ventre de sa mère marque le tout début de la vie."
-  - enonce: "Une chenille a fini de se transformer en papillon adulte, capable de voler d'une fleur à l'autre. Quelle étape suivra bientôt dans sa vie ?"
-    bonneReponse: "la reproduction"
-    distracteurs: ["la naissance", "le vieillissement"]
-    indice: "Une fois adulte, un papillon peut s'accoupler et pondre des oeufs à son tour."
+  - enonce: "Une chenille vient tout juste de sortir de son oeuf. Quelle étape de sa vie vient de commencer ?"
+    bonneReponse: "la naissance"
+    distracteurs: ["le vieillissement", "la mort"]
+    indice: "C'est la sortie de l'oeuf qui marque le tout début de la vie de la chenille."
   - enonce: "Pendant l'étape de la croissance, que se passe-t-il dans le corps d'un être vivant ?"
     bonneReponse: "il grandit et se développe"
     distracteurs: ["il donne naissance à des petits", "il cesse de se nourrir"]

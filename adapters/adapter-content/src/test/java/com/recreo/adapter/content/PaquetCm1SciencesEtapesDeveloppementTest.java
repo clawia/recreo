@@ -135,4 +135,52 @@ class PaquetCm1SciencesEtapesDeveloppementTest {
             }
         }
     }
+
+    /**
+     * Reprise S31 (REFUSE, {@code squad/conformite/FICHE-bandit-manchot-etapes-developpement-
+     * cm1.md}) : un arbre ne finit jamais de grandir, contrairement a ce que l'item de l'arbre
+     * affirmait, et cette premisse fausse dementait la bonne reponse d'un autre item du meme
+     * paquet (celui de la reproduction, qui range "il arrete de grandir definitivement" en reponse
+     * fausse).
+     */
+    @Test
+    void lItemDeLArbreNAffirmePlusQuUnArbreAFiniDeGrandir() {
+        Question item = itemDontLEnonceContient("Un arbre produit");
+
+        assertThat(item.enonce())
+                .as("un arbre continue de grandir toute sa vie, meme apres sa premiere fructification")
+                .doesNotContain("a fini de grandir");
+    }
+
+    /**
+     * Reprise S31 (REFUSE, meme famille de defaut que le refus de {@code SCI-CM1-17} a s30) :
+     * aucune paire d'items de la tache de transition ne partage a la fois sa bonne reponse et ses
+     * deux distracteurs - ce serait le meme item servi deux fois sous deux noms d'animal. Sous les
+     * deux seuils de la clause 1 d'{@code ADR-0086} (trois items pour une repetition, trois mots
+     * pour une bonne reponse), donc invisible de ce garde-fou transverse ; verifie ici, au niveau
+     * du paquet.
+     */
+    @Test
+    void aucuneDeuxItemsDeLaTacheDeTransitionNePartagentLaMemeBonneReponseEtLesMemesDistracteurs() {
+        List<Question> transition = itemsDeTransition();
+        for (int i = 0; i < transition.size(); i++) {
+            for (int j = i + 1; j < transition.size(); j++) {
+                Question a = transition.get(i);
+                Question b = transition.get(j);
+                boolean memeBonneReponse = a.bonneReponse().equals(b.bonneReponse());
+                boolean memesDistracteurs =
+                        new HashSet<>(a.distracteurs()).equals(new HashSet<>(b.distracteurs()));
+
+                assertThat(memeBonneReponse && memesDistracteurs)
+                        .as("items %s et %s : meme bonne reponse et memes distracteurs, un seul item"
+                                + " sous deux noms d'animal", a.id().value(), b.id().value())
+                        .isFalse();
+            }
+        }
+    }
+
+    private static Question itemDontLEnonceContient(String fragment) {
+        return items().stream().filter(item -> item.enonce().contains(fragment)).findFirst()
+                .orElseThrow(() -> new AssertionError("aucun item ne contient : " + fragment));
+    }
 }
