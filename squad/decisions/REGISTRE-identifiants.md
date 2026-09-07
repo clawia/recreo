@@ -33,6 +33,25 @@ sprint, les chartes d'agent et le code. **Les deux chiffres sont justes sur leur
 registre doit porter le plus large - une collision ne demande pas la permission d'etre dans le
 perimetre de quelqu'un.
 
+**Note de `sofia-sm`, a l'assemblage du planning de s31.** Ce registre a ete ecrit dans le worktree
+`s31-theo`, isole de `s31-nadia-arbitrage` par construction - la discipline de worktree dedie
+generalisee a s30 empeche precisement de balayer le travail d'un agent voisin non fusionne.
+`nadia-prof` a nomme quatre clauses neuves le meme jour (`CAT-1`, `FAB-1`, `PLA-1`, `BIN-1`,
+section 5 et section 2 de son arbitrage prealable) dans une branche que ce registre ne pouvait pas
+voir au moment de sa mesure. La CI a rougi a l'assemblage des trois branches
+(`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, quatre identifiants ecrits dans
+`docs/backlog/backlog.md` sans allocation visible) : c'est un defaut de couture au sens de
+`nadia-prof` (forme (c), section 8 de son arbitrage - deux instances ecrivant dans une ressource
+partagee sans le savoir), trouve par le garde-fou lui-meme et non par une relecture. **Les quatre
+identifiants sont ajoutes ici, dans le meme geste que l'assemblage, sans changer leur sens ni leur
+forme** : c'est une allocation mecanique (le prefixe est libre, la ligne pointe vers le document qui
+definit la condition), pas une decision d'architecture - le meme geste que l'allocation d'un code de
+ligne de referentiel. Compte revise : **527 identifiants, sur 83 prefixes** (aucun prefixe neuf :
+`BIN`, `CAT`, `FAB` et `PLA` etaient deja libres). Route a `theo-archi` : le registre, tel que
+construit, ne peut pas voir une allocation faite dans une branche soeur non fusionnee tant que
+personne ne le fusionne ; c'est une limite structurelle de `PAR-5` sous la discipline de worktree
+dedie, a nommer dans son propre avis plutot qu'a laisser decouvrir une seconde fois.
+
 ## 2. Ce que ce registre alloue, et ce qu'il n'alloue pas
 
 Il alloue les identifiants de **condition** et de **reserve**, les deux genres que la mesure de s30
@@ -112,6 +131,7 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `BIA-3` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `BIA-4` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `BIA-5` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
+| `BIN-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `BPM-1` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `BPM-2` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `BPM-3` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
@@ -120,6 +140,7 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `BPM-6` | `squad/conformite/FICHE-barre-entree-niveau.md` |
 | `BPM-7` | `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` |
 | `BPM-8` | `squad/conformite/FICHE-bandit-manchot-homophones-cm1.md` |
+| `CAT-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `CHA-R1` | `squad/conformite/FICHE-bandit-manchot-chaine-alimentaire-cm1.md` |
 | `COMP-1` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `COMP-2` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
@@ -216,6 +237,7 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `ETA-8` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-9` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-10` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
+| `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `FER-1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `FER-2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `FER-3` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
@@ -379,6 +401,7 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `PAR-10` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PAR-11` | `squad/programme/MATRICE-couverture.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
+| `PLA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `PLU-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `PLU-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `PLU-3` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
