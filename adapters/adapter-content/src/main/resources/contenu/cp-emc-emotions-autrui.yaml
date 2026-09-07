@@ -1,0 +1,104 @@
+schema: 1
+id: cp-emc-emotions-autrui
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Respecter autrui"
+  competence: "Identifier et nommer les émotions d'autrui dans une situation simple (joie, tristesse, colère, peur)."
+lignesDeReferentiel: ["EMC-CP-01"]
+#
+# S31-1 (docs/backlog/backlog.md, sprint 31). Premier des deux paquets du premier lot d'EMC CP
+# restreint aux lignes 1 a 7 du referentiel
+# (squad/programme/enseignement-moral-et-civique/competences-cp.md), arbitrage prealable de
+# nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md,
+# section 3.1, ligne EMC-CP-01) et DEC-0081. Referentiel copie conforme.
+#
+# CAT-1 (arbitrage prealable, section 2 ; nouvelle, datee du 2026-09-07) : la bonne reponse ne se
+# reconnait jamais a son ton. Ici, les trois propositions de chaque item sont toujours trois noms
+# d'emotion (joie, tristesse, colere, peur) : aucune n'est "polie" ni "grossiere", ce qui distingue
+# la bonne reponse est ce que la situation ou le signe corporel decrit, jamais un registre de
+# langue. C'est un classement a categories fermees, licite sous FAB-1 des lors que la bonne
+# reponse varie (FER-1 l'exige de toute facon).
+#
+# FER-1 : les quatre emotions de la parenthese (joie, tristesse, colere, peur) sont chacune en
+# bonne reponse au moins une fois - joie (items 2, 6, 9), tristesse (items 1, 5, 8), colere
+# (items 4, 7, 11), peur (items 3, 10).
+#
+# FER-3 : deux operations mentales distinctes - inferer l'emotion a partir d'un evenement decrit a
+# un personnage nomme (items 1 a 6), et lire un signe corporel decrit pour en deduire l'emotion
+# (items 7 a 11, question "Qu'est-ce que cela montre ?").
+#
+# EMC-2 : chaque situation n'admet qu'une seule emotion evidente - aucun distracteur n'est
+# defendable au regard de la situation ou du signe decrit.
+#
+# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit ou fait chez lui - les
+# situations et les signes corporels decrivent toujours un personnage nomme, exterieur a l'enfant.
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ("que ferais-tu si...") ;
+# chaque item decrit ce qui arrive a un personnage ou ce qu'un personnage montre.
+#
+# EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
+# organisation. Les personnages (Lea, Hugo, Aya, Malo, Tom) sont fictifs.
+#
+# PLA-1 : chaque proposition est une emotion que l'enfant de CP connait et peut serieusement
+# envisager face a la situation decrite, jamais un bouton de remplissage.
+#
+# FAB-1 : la classification a quatre categories reutilise necessairement les memes quatre mots
+# d'un item a l'autre (licite, FAB-1 note explicite) ; la bonne reponse varie d'un item a l'autre et
+# aucun sous-ensemble de trois items ou plus ne partage a la fois le meme trio de propositions et la
+# meme bonne reponse - verifie par ADR-0086 sur le contenu servi entier.
+#
+# Cette ligne ne sert pas la ligne 4 du referentiel (differences sans hierarchiser), explicitement
+# exclue de tout lot de s31 (DEC-0081, section 7).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+#
+# FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
+# strictement plus d'items que de manches).
+items:
+  - enonce: "Léa a perdu son doudou préféré à la sortie de l'école. Que ressent-elle ?"
+    bonneReponse: "de la tristesse"
+    distracteurs: ["de la joie", "de la colère"]
+    indice: "Elle n'a plus l'objet qu'elle aime garder tout le temps avec elle."
+  - enonce: "Hugo reçoit le vélo qu'il attendait depuis longtemps pour son anniversaire. Que ressent-il ?"
+    bonneReponse: "de la joie"
+    distracteurs: ["de la tristesse", "de la peur"]
+    indice: "Il obtient enfin ce qu'il espérait depuis longtemps."
+  - enonce: "Aya voit un gros chien aboyer très fort juste devant elle. Que ressent-elle ?"
+    bonneReponse: "de la peur"
+    distracteurs: ["de la colère", "de la tristesse"]
+    indice: "Le chien est bruyant et tout près d'elle, sans qu'elle s'y attende."
+  - enonce: "Malo voit son petit frère renverser exprès la tour de cubes qu'il venait de finir. Que ressent-il ?"
+    bonneReponse: "de la colère"
+    distracteurs: ["de la joie", "de la peur"]
+    indice: "Son travail est détruit volontairement par quelqu'un d'autre."
+  - enonce: "Tom apprend que son meilleur ami déménage très loin et qu'ils ne pourront plus jouer ensemble. Que ressent-il ?"
+    bonneReponse: "de la tristesse"
+    distracteurs: ["de la peur", "de la colère"]
+    indice: "Il va perdre quelqu'un d'important pour lui."
+  - enonce: "Léa gagne la partie à laquelle elle joue avec ses amis dans la cour. Que ressent-elle ?"
+    bonneReponse: "de la joie"
+    distracteurs: ["de la colère", "de la peur"]
+    indice: "Les choses se passent exactement comme elle le souhaitait."
+  - enonce: "Tom serre les poings et crie très fort. Qu'est-ce que cela montre ?"
+    bonneReponse: "de la colère"
+    distracteurs: ["de la tristesse", "de la joie"]
+    indice: "Son corps se raidit et sa voix devient forte d'un coup."
+  - enonce: "Aya a les larmes aux yeux et la tête baissée. Qu'est-ce que cela montre ?"
+    bonneReponse: "de la tristesse"
+    distracteurs: ["de la joie", "de la colère"]
+    indice: "Ses yeux et sa posture se ferment, comme pour se protéger."
+  - enonce: "Hugo sourit largement et saute partout dans le couloir. Qu'est-ce que cela montre ?"
+    bonneReponse: "de la joie"
+    distracteurs: ["de la peur", "de la tristesse"]
+    indice: "Son visage et son corps bougent librement, sans rien retenir."
+  - enonce: "Malo se cache derrière sa maman et tremble un peu. Qu'est-ce que cela montre ?"
+    bonneReponse: "de la peur"
+    distracteurs: ["de la colère", "de la joie"]
+    indice: "Son corps cherche à se protéger derrière quelqu'un de rassurant."
+  - enonce: "Léa fronce les sourcils et tape du pied par terre. Qu'est-ce que cela montre ?"
+    bonneReponse: "de la colère"
+    distracteurs: ["de la peur", "de la joie"]
+    indice: "Son visage et ses gestes deviennent brusques d'un coup."

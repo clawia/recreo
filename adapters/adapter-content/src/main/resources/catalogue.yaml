@@ -354,3 +354,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-objet-technique
     nombreDeManches: 10
+  - id: bandit-manchot-emotions-autrui-cp
+    titre: "Ce que ressent l'autre"
+    consigne: "Lis bien, puis dis ce que ressent la personne, ou ce que montre son geste."
+    mecanique: bandit-manchot
+    paquet: cp-emc-emotions-autrui
+    nombreDeManches: 10
+  - id: bandit-manchot-formules-de-politesse-cp
+    titre: "Les mots de politesse"
+    consigne: "Lis bien, puis dis quel mot employer, ou quelle règle n'est pas respectée."
+    mecanique: bandit-manchot
+    paquet: cp-emc-formules-de-politesse
+    nombreDeManches: 10

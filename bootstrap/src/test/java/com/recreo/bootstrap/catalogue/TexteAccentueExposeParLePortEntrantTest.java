@@ -207,6 +207,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // CM1 (mélanges, objet technique).
             "bandit-manchot-melanges-cm1",
             "bandit-manchot-objet-technique-cm1",
+            // S31-1 (backlog S31-1) : deux entrees neuves, premier lot d'enseignement moral et
+            // civique de s31, restreint aux lignes 1 a 7 du referentiel (emotions, politesse).
+            "bandit-manchot-emotions-autrui-cp",
+            "bandit-manchot-formules-de-politesse-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -316,6 +320,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S30-2 : deux titres neufs.
             "Mélanges et séparations",
             "Comment ça marche ?",
+            // S31-1 : deux titres neufs. Sans point d'interrogation, comme les titres des lots
+            // S29-4 et S29-5 : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
+            "Ce que ressent l'autre",
+            "Les mots de politesse",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -447,6 +455,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis si le mélange est homogène ou hétérogène, ou choisis le bon moyen "
                     + "de le séparer.",
             "Lis bien, puis dis à quoi sert l'objet, ou nomme sa pièce.",
+            // S31-1 : deux consignes neuves.
+            "Lis bien, puis dis ce que ressent la personne, ou ce que montre son geste.",
+            "Lis bien, puis dis quel mot employer, ou quelle règle n'est pas respectée.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -645,7 +656,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de "
                     + "séparer les constituants d'un mélange.",
             "Identifier la fonction d'un objet technique, nommer ses composants et décrire son "
-                    + "fonctionnement.");
+                    + "fonctionnement.",
+            // S31-1 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/enseignement-moral-et-civique/competences-cp.md, lignes
+            // EMC-CP-01 et EMC-CP-05).
+            "Identifier et nommer les émotions d'autrui dans une situation simple (joie, "
+                    + "tristesse, colère, peur).",
+            "Employer les formules de politesse et de respect dans les échanges (saluer, "
+                    + "remercier, demander, écouter sans couper).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

@@ -608,7 +608,22 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " description de fonctionnement en texte libre, valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-09-06 sur le paquet servi, apres la"
                     + " reprise du 2026-09-06 (squad/conformite/FICHE-bandit-manchot-objet-technique-"
-                    + "cm1.md) : aucune des 33 propositions ne commence par un chiffre"));
+                    + "cm1.md) : aucune des 33 propositions ne commence par un chiffre"),
+            // S31-1 : premier lot d'enseignement moral et civique (CP) de s31, restreint aux lignes
+            // 1 a 7 du referentiel (EMC-CP-01, EMC-CP-05).
+            Map.entry("cp-emc-emotions-autrui",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des noms d'émotion (\"de la"
+                    + " tristesse\", \"de la joie\", \"de la colère\", \"de la peur\"), valeurDe"
+                    + " rend null sur les trois propositions de chaque item. Mesure du 2026-09-07"
+                    + " sur le paquet servi : aucune des 33 propositions ne commence par un chiffre"),
+            Map.entry("cp-emc-formules-de-politesse",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des formules de politesse (\"bonjour\","
+                    + " \"merci\", \"s'il te plaît\") ou des regles d'echange en texte libre (\"écouter"
+                    + " sans couper la parole\", \"demander avant de prendre\"...), valeurDe rend null"
+                    + " sur les trois propositions de chaque item. Mesure du 2026-09-07 sur le paquet"
+                    + " servi : aucune des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
