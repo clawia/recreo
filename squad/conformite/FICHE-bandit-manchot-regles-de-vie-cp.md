@@ -249,5 +249,49 @@ defaut** - la phrase est courte, le mot *pourquoi* ouvre litteralement les cinq 
 les onze enonces portent chacun leur question entiere.
 
 **`CONS-1` est tenue sur cette entree.** C'est une des cinq reussites de `S30-9`, et un net progres
-sur la consigne generique qu'elle remplace. **`EMC-CP-05` reste `couvert-valide`, aucune ligne ne
+sur la consigne generique qu'elle remplace. **`EMC-CP-06` reste `couvert-valide`, aucune ligne ne
 bouge.**
+
+---
+
+## `CAT-1` - reserve neuve, datee du 2026-09-07, non bloquante
+
+**Trouvee en jouant une partie complete aujourd'hui**, arbre `2ef583ba`, worktree dedie, dix manches
+avec une erreur volontaire par manche. **Elle n'etait pas visible dans mes deux audits precedents,
+qui portaient sur le fichier et sur des parties ou je cherchais autre chose.**
+
+**Le fait.** Sur la tache *"que doit-on faire"*, la bonne reponse est, a chaque item, la seule
+proposition qui sonne comme l'ecole ; les deux distracteurs sont les seules qui sonnent comme la
+faute.
+
+| Manche | Bonne reponse | Distracteurs |
+|---|---|---|
+| 2 | *en marchant* | *en courant*, *en criant* |
+| 4 | *attendre son tour* | *parler plus fort que lui*, *le couper aussitot* |
+| 6 | *faire la queue* | *se bousculer*, *se servir tous ensemble* |
+| 7 | *les remettre a leur place* | *les laisser tomber par terre*, *les garder pour elle* |
+
+**Un enfant qui n'a jamais entendu la regle gagne ces quatre items en reconnaissant le registre
+attendu.** C'est `CON-1` : l'item se gagne sans la competence visee, et il se gagne d'autant plus
+surement que l'enfant est docile - ce qui est le contraire de ce que l'EMC construit. C'est
+exactement le **catechisme civique** dont j'avais ecrit le risque le 2026-09-03, dans le referentiel
+d'EMC CP, avant qu'un seul item de la matiere existe.
+
+**Ce que je demande, sans prescrire de texte** : sur cette tache, **les trois propositions sont du
+meme registre** ; ce qui les distingue est ce qu'elles disent, jamais comment elles sonnent. Une
+forme qui tient, donnee pour que la propriete soit praticable : sur *"pourquoi fait-on la queue a la
+cantine ?"*, trois raisons serieuses et polies, dont deux fausses (*"pour que le repas soit plus
+chaud"*, *"pour que la maitresse compte les eleves"*). L'enfant doit alors savoir **a quoi la regle
+sert**, ce qui est la moitie du libelle de `EMC-CP-06`.
+
+**Regime : voyage avec `REG-R1` dans le meme rejeu borne (`PAR-10`), sans cout supplementaire.**
+
+**Ce que cette reserve ne fait pas.** **`EMC-CP-06` reste `couvert-valide` et n'est pas rouverte.**
+Le poteau est neuf et date d'aujourd'hui ; il ne se retourne pas contre une barre franchie le
+2026-09-05. Mon verdict du 2026-09-05 reste lisible entier ci-dessus, sans retrait ni retouche.
+
+**Correction faite dans le meme geste, sur mon propre texte** : la derniere phrase de la section
+`CONS-1` disait *"`EMC-CP-05` reste `couvert-valide`"*. Ce paquet sert `EMC-CP-06`
+(`lignesDeReferentiel: ["EMC-CP-06"]`, verifie dans le fichier aujourd'hui) ; `EMC-CP-05` est `non
+couvert`. Le code est corrige. **Un code de ligne faux dans une fiche de conformite est de la meme
+famille qu'une reference qui pointe vers rien** : il se recopie ensuite dans la matrice.

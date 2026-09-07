@@ -342,5 +342,43 @@ tandis que la seconde moitie de la consigne ne parle que de l'interdit. **Ce n'e
 incoherence** : *"dis ce que fait la personne"* couvre les sept, permis compris, et *"ou pourquoi
 c'est interdit"* ne coiffe que les quatre items qui posent effectivement cette question.
 
-**`CONS-1` est tenue sur cette entree.** C'est une des cinq reussites de `S30-9`. **`EMC-CP-06` reste
+**`CONS-1` est tenue sur cette entree.** C'est une des cinq reussites de `S30-9`. **`EMC-CP-02` reste
 `couvert-valide`, aucune ligne ne bouge.**
+
+---
+
+## `CAT-1` - reserve neuve, datee du 2026-09-07, non bloquante
+
+**Trouvee en jouant une partie complete aujourd'hui**, arbre `2ef583ba`, worktree dedie, dix manches
+avec une erreur volontaire par manche.
+
+**Le fait.** Sur la tache *"pourquoi c'est interdit"*, la bonne reponse est la seule proposition qui
+exprime une consideration pour autrui ; les deux distracteurs sont, chaque fois, des motifs
+interesses.
+
+| Manche | Bonne reponse | Distracteurs |
+|---|---|---|
+| 4 | *pour ne pas lui faire mal* | *pour finir la recreation plus vite*, *pour etre le plus fort de la classe* |
+| 6 | *pour ne pas le faire souffrir* | *pour parler plus fort que lui*, *pour gagner une recompense* |
+
+**Un enfant qui ignore la regle gagne ces items en reconnaissant le registre attendu** : c'est
+`CON-1`, et c'est le **catechisme civique** dont j'avais ecrit le risque le 2026-09-03 dans le
+referentiel d'EMC CP, avant qu'un seul item de la matiere existe. Je ne l'avais pas vu a l'audit du
+2026-09-06, qui portait sur le fichier et sur d'autres proprietes.
+
+**Ce que je demande, sans prescrire de texte** : **les trois propositions sont du meme registre** ;
+ce qui les distingue est ce qu'elles disent, jamais comment elles sonnent. Sur cette tache, cela
+veut dire trois raisons plausibles et bienveillantes, dont deux sont fausses au regard de ce que la
+regle protege.
+
+**Regime : voyage avec `PER-R1` dans le meme rejeu borne (`PAR-10`), sans cout supplementaire.**
+
+**Ce que cette reserve ne fait pas.** **`EMC-CP-02` reste `couvert-valide` et n'est pas rouverte.**
+Le poteau est neuf et date d'aujourd'hui. Mes verdicts anterieurs restent lisibles entiers ci-dessus,
+sans retrait ni retouche - y compris le refus du premier passage, qui est ce qui a produit le paquet
+valide ensuite.
+
+**Correction faite dans le meme geste, sur mon propre texte** : la derniere phrase de la section
+`CONS-1` disait *"`EMC-CP-06` reste `couvert-valide`"*. Ce paquet sert `EMC-CP-02`
+(`lignesDeReferentiel: ["EMC-CP-02"]`, verifie dans le fichier aujourd'hui) ; `EMC-CP-06` est la
+ligne de `bandit-manchot-regles-de-vie-cp`. Le code est corrige.
