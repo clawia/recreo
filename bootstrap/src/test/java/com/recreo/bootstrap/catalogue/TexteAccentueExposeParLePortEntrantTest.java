@@ -215,6 +215,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // civique de s31 (exclusion, regle/souhait/loi).
             "bandit-manchot-exclusion-cp",
             "bandit-manchot-regle-souhait-loi-cp",
+            // S31-3 (backlog S31-3) : deux entrees neuves, premier lot de sciences et technologie
+            // CM1 en second passage (etats de la matiere, regimes alimentaires).
+            "bandit-manchot-etats-matiere-cm1",
+            "bandit-manchot-regimes-alimentaires-cm1",
+            // S31-4 (backlog S31-4) : deux entrees neuves, second lot de sciences et technologie
+            // CM1 en second passage (familles de materiaux, etapes du developpement).
+            "bandit-manchot-familles-materiaux-cm1",
+            "bandit-manchot-etapes-developpement-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -331,6 +339,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S31-2 : deux titres neufs, meme motif.
             "Une moquerie qui se répète",
             "Règle, souhait ou loi",
+            // S31-3 : deux titres neufs.
+            "États et changements d'état",
+            "Quel est son régime ?",
+            // S31-4 : deux titres neufs.
+            "De quoi c'est fait ?",
+            "Naître, grandir, vieillir",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -468,6 +482,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S31-2 : deux consignes neuves.
             "Lis bien, puis dis ce qu'il faut faire, ou à qui en parler.",
             "Lis bien, puis dis ce que c'est, ou qui doit la respecter.",
+            // S31-3 : deux consignes neuves.
+            "Lis bien, puis dis dans quel état se trouve la matière, ou nomme le changement d'état.",
+            "Lis bien, puis dis quel est le régime de l'animal, ou à quoi sert sa nourriture.",
+            // S31-4 : deux consignes neuves.
+            "Lis bien, puis dis de quelle famille de matériau il s'agit, ou quel matériau choisir.",
+            "Lis bien, puis dis quelle étape vient après, ou ce qui la caractérise.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -521,6 +541,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La planète Terre. Les êtres vivants dans leur environnement",
             // S30-2 : domaine neuf, second lot de sciences et technologie CM1.
             "Matériaux et objets techniques",
+            // S31-3 : domaine neuf, partage par les deux paquets du premier lot de sciences et
+            // technologie CM1 en second passage (regimes alimentaires, etapes du developpement).
+            // "Matière, mouvement, énergie, information" et "Matériaux et objets techniques" sont
+            // deja lists ci-dessus (S30-1, S30-2), reutilises par S31-3 et S31-4 sans nouvelle
+            // entree.
+            "Le vivant, sa diversité et les fonctions qui le caractérisent",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -680,7 +706,21 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à "
                     + "quel adulte en parler.",
             "Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître "
-                    + "qu'une loi s'impose à tous.");
+                    + "qu'une loi s'impose à tous.",
+            // S31-3 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/sciences-et-technologie/competences-cm1.md, lignes SCI-CM1-01 et
+            // SCI-CM1-07).
+            "Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; "
+                    + "fusion, solidification, vaporisation, condensation).",
+            "Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes "
+                    + "alimentaires (herbivore, carnivore, omnivore).",
+            // S31-4 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/sciences-et-technologie/competences-cm1.md, lignes SCI-CM1-11 et
+            // SCI-CM1-08).
+            "Identifier les principales familles de matériaux et choisir un matériau d'après une "
+                    + "propriété (résistance, isolation, souplesse, imperméabilité).",
+            "Ordonner les étapes du développement d'un être vivant (naissance, croissance, "
+                    + "reproduction, vieillissement, mort).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

@@ -1,0 +1,96 @@
+schema: 1
+id: cm1-sciences-etats-matiere
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Matière, mouvement, énergie, information"
+  competence: "Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation)."
+lignesDeReferentiel: ["SCI-CM1-01"]
+#
+# S31-3 (docs/backlog/backlog.md, sprint 31). Premier paquet du premier lot de sciences et
+# technologie CM1, second passage (arbitrage prealable de nadia-prof,
+# squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-
+# et-ma-borne.md, section 4.3 : ligne 1, "la plus sure du lot"). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-01).
+#
+# Trois etats du libelle (solide, liquide, gaz) et quatre changements d'etat (fusion,
+# solidification, vaporisation, condensation) a servir en bonne reponse (FER-1) : sept elements au
+# total, ce qui ne laisse que quatre items de manoeuvre sur onze (note de l'arbitrage, section
+# 4.3). Deux taches distinctes (FER-3) : tache A, identifier l'etat d'une matiere decrite (cinq
+# items, couvre les trois etats) ; tache B, nommer le changement d'etat que decrit une situation
+# (six items, couvre les quatre changements). Chaque tache est une classification a categories
+# fermees, licite tant que la bonne reponse varie a l'interieur de la tache (FAB-1, clause de
+# l'arbitrage de s31, section 5) : aucune des deux taches n'a de reponse invariante.
+#
+# Une seule propriete par item (etat ou changement, jamais les deux a la fois).
+#
+# SCI-1 et SCI-4 : l'item de la vaporisation (tache B) porte en distracteur la conception fausse
+# qu'une eau qui n'est plus visible a "disparu" purement et simplement ; l'indice corrige cette
+# conception sans nommer la bonne reponse, et l'item porte trois propositions.
+#
+# Couture avec cm1-sciences-melanges (SCI-CM1-02, deja couvert-valide) : l'indice de l'item du sel
+# de ce paquet-la ("Il reste caché dans l'eau tant que celle-ci garde sa forme liquide.", corrige a
+# S31-5, MEL-R1) laissait volontairement ouverte la question de ce que devient l'eau. C'est cette
+# ligne-ci qui la referme : l'eau qui s'evapore devient un gaz (la vapeur d'eau), elle ne disparait
+# pas. Aucun item de ce paquet n'ecrit que l'eau disparait, se perd ou s'en va sans devenir autre
+# chose.
+#
+# CYC-1 : verifie contre cp-qlm-vivant-non-vivant.yaml - aucun item de ce paquet ne range un
+# element comme vivant ou non vivant, la condition est donc vacante, non tenue. Verifie aussi
+# contre cp-qlm-etats-eau.yaml (QLM-CP-05), qui enseigne "fondre" (solide -> liquide) et "geler"
+# (liquide -> solide) sans nommer "fusion" ni "solidification" : ce paquet emploie le vocabulaire
+# scientifique du cycle 3 dans le meme sens, sans contradiction - une progression, pas une redite.
+#
+# HIS-3 (chaque fait porte sa source) : les trois etats de la matiere et les quatre changements
+# d'etat (fusion, solidification, vaporisation, condensation) sont des faits de physique de base,
+# enseignes au cycle 3, sans controverse scientifique.
+#
+# CON-1 : aucun item ne se resout sans connaitre la matiere ou la situation qu'il decrit.
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Un cube de glace sorti du congélateur, qu'on peut tenir dans la main sans qu'il coule : dans quel état de la matière se trouve-t-il ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide", "gaz"]
+    indice: "Il garde une forme fixe, qu'on peut tenir dans la main."
+  - enonce: "L'huile qu'on verse dans une poêle, qui coule et prend la forme du récipient : dans quel état de la matière se trouve-t-elle ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide", "gaz"]
+    indice: "Elle coule et prend la forme du récipient qui la contient."
+  - enonce: "L'air qu'on respire, invisible autour de nous et qui occupe toute une pièce : dans quel état de la matière se trouve-t-il ?"
+    bonneReponse: "gaz"
+    distracteurs: ["solide", "liquide"]
+    indice: "Il n'a ni forme ni volume propres : il occupe tout l'espace disponible."
+  - enonce: "Une barre de métal froide, qu'on ne peut pas plier avec les mains : dans quel état de la matière se trouve-t-elle ?"
+    bonneReponse: "solide"
+    distracteurs: ["liquide", "gaz"]
+    indice: "Elle garde sa forme tant qu'on ne la fait pas fondre."
+  - enonce: "Le jus de fruit versé dans un verre, qui prend immédiatement la forme du verre : dans quel état de la matière se trouve-t-il ?"
+    bonneReponse: "liquide"
+    distracteurs: ["solide", "gaz"]
+    indice: "Il coule dès qu'on incline le verre qui le contient."
+  - enonce: "Un glaçon oublié sur la table devient peu à peu une flaque d'eau. Comment appelle-t-on ce changement d'état ?"
+    bonneReponse: "la fusion"
+    distracteurs: ["la solidification", "la vaporisation"]
+    indice: "La matière passe de l'état solide à l'état liquide."
+  - enonce: "De l'eau liquide placée au congélateur devient un glaçon dur au bout de quelques heures. Comment appelle-t-on ce changement d'état ?"
+    bonneReponse: "la solidification"
+    distracteurs: ["la fusion", "la condensation"]
+    indice: "La matière passe de l'état liquide à l'état solide."
+  - enonce: "Une flaque d'eau, laissée au soleil, n'est plus visible dans la cour au bout de quelques heures. Comment appelle-t-on ce changement d'état ?"
+    bonneReponse: "la vaporisation"
+    distracteurs: ["la disparition", "la condensation"]
+    indice: "L'eau n'a pas disparu : elle est devenue un gaz invisible, présent dans l'air."
+  - enonce: "Le miroir de la salle de bain se couvre de petites gouttes d'eau après une douche chaude. Comment appelle-t-on ce changement d'état ?"
+    bonneReponse: "la condensation"
+    distracteurs: ["la vaporisation", "la fusion"]
+    indice: "La vapeur d'eau, invisible dans l'air chaud, redevient liquide au contact du miroir froid."
+  - enonce: "Une plaque de beurre, sortie du réfrigérateur et posée près d'une source de chaleur, devient molle et se met à couler. Comment appelle-t-on ce changement d'état ?"
+    bonneReponse: "la fusion"
+    distracteurs: ["la solidification", "la vaporisation"]
+    indice: "Le beurre passe de l'état solide à l'état liquide en chauffant."
+  - enonce: "L'eau qui bout longtemps dans une casserole voit son niveau diminuer, jusqu'à ce qu'il n'en reste presque plus. Comment appelle-t-on ce changement d'état ?"
+    bonneReponse: "la vaporisation"
+    distracteurs: ["la solidification", "la condensation"]
+    indice: "L'eau liquide se transforme en vapeur d'eau, un gaz invisible qui se mélange à l'air."

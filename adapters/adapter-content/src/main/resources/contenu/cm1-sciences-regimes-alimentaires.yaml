@@ -1,0 +1,87 @@
+schema: 1
+id: cm1-sciences-regimes-alimentaires
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Le vivant, sa diversité et les fonctions qui le caractérisent"
+  competence: "Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore)."
+lignesDeReferentiel: ["SCI-CM1-07"]
+#
+# S31-3 (docs/backlog/backlog.md, sprint 31). Second paquet du premier lot de sciences et
+# technologie CM1, second passage (arbitrage prealable de nadia-prof,
+# squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-
+# et-ma-borne.md, section 4.3 : ligne 7, "la plus sure du lot"). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-07). Le libelle porte
+# "herbivore, carnivore, omnivore" et non "vegetarien" - correction de fond faite le 2026-09-05
+# avant qu'aucun item ne soit ecrit sur cette ligne (squad/programme/sciences-et-technologie/
+# competences-cm1.md, note du 2026-09-05) : "vegetarien" est un choix alimentaire humain, pas le
+# regime d'un animal qui mange des vegetaux.
+#
+# Trois regimes du libelle (herbivore, carnivore, omnivore) a servir en bonne reponse (FER-1).
+# Deux taches distinctes (FER-3) : tache A, identifier le regime d'un animal decrit par ce qu'il
+# mange (sept items, couvre les trois regimes, herbivore x3, carnivore x2, omnivore x2 - la bonne
+# reponse varie, jamais invariante) ; tache B, dire a quoi sert la nourriture pour un etre vivant
+# (quatre items, quatre fonctions distinctes : bouger, grandir, reparer un tissu abime, tenir
+# pendant une periode sans nourriture).
+#
+# FAB-1b : sur la tache A, les trois regimes servent de propositions a chaque item (licite, FAB-1
+# l'autorise pour un classement a categories fermees des lors que la bonne reponse varie), mais le
+# regime juste n'est jamais le meme sur trois items consecutifs et les sept animaux decrits sont
+# tous distincts - aucun item n'est un autre servi sous un autre nom (clause 1, ADR-0086).
+#
+# Une seule propriete par item (le regime, ou la fonction de la nourriture, jamais les deux).
+#
+# HIS-3 (chaque fait porte sa source) : le regime alimentaire du lapin, du lion, du sanglier, de la
+# vache, du loup, de l'ours brun et de la chevre, ainsi que les fonctions de la nourriture (energie,
+# croissance, reparation des tissus, reserves), sont des faits de biologie de base enseignes au
+# cycle 3, sans controverse scientifique.
+#
+# CON-1 : aucun item ne se resout sans connaitre l'animal ou la situation qu'il decrit.
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Le lapin se nourrit d'herbe, de feuilles et de racines. Quel est son régime alimentaire ?"
+    bonneReponse: "herbivore"
+    distracteurs: ["carnivore", "omnivore"]
+    indice: "Il ne mange jamais la chair d'un autre animal."
+  - enonce: "Le lion chasse des gazelles et des zèbres pour se nourrir. Quel est son régime alimentaire ?"
+    bonneReponse: "carnivore"
+    distracteurs: ["herbivore", "omnivore"]
+    indice: "Il se nourrit uniquement de la chair d'autres animaux."
+  - enonce: "Le sanglier mange aussi bien des racines et des glands que des vers de terre et de petits animaux. Quel est son régime alimentaire ?"
+    bonneReponse: "omnivore"
+    distracteurs: ["herbivore", "carnivore"]
+    indice: "Il mange à la fois des végétaux et de la chair d'autres animaux."
+  - enonce: "La vache passe la majeure partie de sa journée à brouter de l'herbe dans un pré. Quel est son régime alimentaire ?"
+    bonneReponse: "herbivore"
+    distracteurs: ["carnivore", "omnivore"]
+    indice: "Elle ne mange que des végétaux, jamais de chair animale."
+  - enonce: "Le loup vit en groupe et chasse de grands animaux comme le cerf. Quel est son régime alimentaire ?"
+    bonneReponse: "carnivore"
+    distracteurs: ["herbivore", "omnivore"]
+    indice: "Toute sa nourriture provient de la chasse d'autres animaux."
+  - enonce: "L'ours brun mange des baies et des racines au printemps, puis des poissons et de petits mammifères en été. Quel est son régime alimentaire ?"
+    bonneReponse: "omnivore"
+    distracteurs: ["herbivore", "carnivore"]
+    indice: "Son alimentation mélange des végétaux et de la chair animale selon la saison."
+  - enonce: "La chèvre broute des herbes, des feuilles et l'écorce de jeunes arbres. Quel est son régime alimentaire ?"
+    bonneReponse: "herbivore"
+    distracteurs: ["carnivore", "omnivore"]
+    indice: "Elle ne se nourrit jamais de chair, seulement de végétaux."
+  - enonce: "Un enfant qui court longtemps pendant la récréation a de plus en plus faim en fin de journée. À quoi sert surtout la nourriture qu'il va manger ce soir-là ?"
+    bonneReponse: "à lui redonner de l'énergie pour bouger"
+    distracteurs: ["à le faire grandir plus vite que les autres enfants", "à combler seulement une sensation désagréable"]
+    indice: "Courir consomme de l'énergie, et cette énergie doit être remplacée par ce qu'on mange."
+  - enonce: "Un bébé animal mange beaucoup, par rapport à sa taille, comparé à un animal adulte de la même espèce. À quoi sert surtout cette nourriture ?"
+    bonneReponse: "à construire son corps pendant qu'il grandit"
+    distracteurs: ["à le faire dormir plus longtemps chaque jour", "à lui donner un pelage plus coloré"]
+    indice: "Grandir demande de fabriquer de nouveaux tissus, et ces tissus viennent de ce que l'animal mange."
+  - enonce: "Un chat qui s'est blessé à la patte continue de manger normalement pendant que la blessure guérit peu à peu. À quoi sert alors une partie de cette nourriture ?"
+    bonneReponse: "à réparer les tissus abîmés par la blessure"
+    distracteurs: ["à faire oublier la douleur au chat", "à rendre son pelage plus doux"]
+    indice: "Réparer une blessure demande des matériaux neufs, pris dans ce que le corps mange."
+  - enonce: "Un ours mange énormément avant l'hiver, puis ne mange presque plus pendant plusieurs mois d'hibernation. À quoi lui sert cette réserve de nourriture accumulée avant de dormir ?"
+    bonneReponse: "à lui fournir de l'énergie pendant qu'il ne mange plus"
+    distracteurs: ["à le faire grossir pour l'esthétique", "à remplacer le sommeil dont il a besoin"]
+    indice: "Le corps continue de consommer un peu d'énergie même pendant le sommeil profond de l'hibernation."

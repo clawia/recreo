@@ -1,0 +1,90 @@
+schema: 1
+id: cm1-sciences-etapes-developpement
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Le vivant, sa diversité et les fonctions qui le caractérisent"
+  competence: "Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort)."
+lignesDeReferentiel: ["SCI-CM1-08"]
+#
+# S31-4 (docs/backlog/backlog.md, sprint 31). Second paquet du second lot de sciences et
+# technologie CM1, second passage (arbitrage prealable de nadia-prof,
+# squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-
+# et-ma-borne.md, section 4.3 : ligne 8). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-08).
+#
+# Note du referentiel sur cette ligne (squad/programme/sciences-et-technologie/competences-cm1.md,
+# tableau de faisabilite, ligne 8) : "ordonner deux etapes se pose en texte, sans frise ni
+# manipulation" - un vrai geste d'ordonnancement serait une quatrieme mecanique, non construite ce
+# sprint (squad/sprints/s31-second-passage-de-sciences-et-emc-cp/avis-faisabilite-theo.md, section
+# 3.1). Ce paquet compare deux etapes a la fois, jamais une suite entiere (V3).
+#
+# Deux taches distinctes (FER-3) : tache A, dire quelle etape suit une etape decrite (six items,
+# une comparaison a deux termes a chaque fois, jamais une reconstitution de la sequence entiere) ;
+# tache B, dire ce qui caracterise une etape nommee (cinq items). Les cinq etapes du libelle
+# (naissance, croissance, reproduction, vieillissement, mort) sont chacune en bonne reponse au
+# moins une fois des la seule tache A (FER-1) ; la tache B les reprend toutes une seconde fois,
+# sous forme de caracteristique plutot que de nom d'etape.
+#
+# CYC-1 : verifie contre cp-qlm-cycle-de-vie.yaml (QLM-CP-02), qui enseigne cinq caracteres du
+# vivant (naitre, se nourrir, grandir, avoir des petits, mourir) sans nommer le "vieillissement",
+# absent de son propre libelle. Ce paquet ajoute le vieillissement et nomme "croissance" et
+# "reproduction" la ou le CP dit "grandir" et "avoir des petits" - meme sens, vocabulaire plus
+# precis du cycle 3, aucune contradiction.
+#
+# Une seule propriete par item (la transition suivante, ou la caracteristique d'une etape, jamais
+# les deux).
+#
+# HIS-3 (chaque fait porte sa source) : les cinq etapes du developpement d'un etre vivant et leur
+# ordre (naissance, croissance, reproduction, vieillissement, mort) sont des faits de biologie de
+# base enseignes au cycle 3, sans controverse scientifique.
+#
+# CON-1 : aucun item ne se resout sans connaitre l'etre vivant ou la situation qu'il decrit.
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Un chaton vient de naître ; il ne voit pas encore et tète sa mère. Quelle étape suivra bientôt dans sa vie ?"
+    bonneReponse: "la croissance"
+    distracteurs: ["la reproduction", "la mort"]
+    indice: "Après la naissance, l'être vivant grandit avant de pouvoir se reproduire."
+  - enonce: "Un têtard grandit dans la mare et se transforme peu à peu en grenouille adulte, plus grosse et plus forte. Quelle étape suivra, une fois adulte ?"
+    bonneReponse: "la reproduction"
+    distracteurs: ["la naissance", "le vieillissement"]
+    indice: "Une fois devenu adulte, un être vivant peut à son tour donner naissance à des petits."
+  - enonce: "Un jeune arbre a fini de grandir et produit pour la première fois des graines. Quelle étape suivra, bien plus tard, dans sa vie ?"
+    bonneReponse: "le vieillissement"
+    distracteurs: ["la naissance", "la croissance"]
+    indice: "Après avoir pu se reproduire, un être vivant vieillit peu à peu."
+  - enonce: "Un vieux chien a du mal à se déplacer, dort beaucoup et n'a plus la même énergie qu'avant. Quelle étape suivra, à la fin de sa vie ?"
+    bonneReponse: "la mort"
+    distracteurs: ["la naissance", "la reproduction"]
+    indice: "Après le vieillissement vient la fin de la vie d'un être vivant."
+  - enonce: "Un oeuf de poule se trouve dans le nid depuis plusieurs jours. Quelle étape commence quand le poussin sort de l'oeuf ?"
+    bonneReponse: "la naissance"
+    distracteurs: ["la croissance", "la reproduction"]
+    indice: "Sortir de l'oeuf ou du ventre de sa mère marque le tout début de la vie."
+  - enonce: "Une chenille a fini de se transformer en papillon adulte, capable de voler d'une fleur à l'autre. Quelle étape suivra bientôt dans sa vie ?"
+    bonneReponse: "la reproduction"
+    distracteurs: ["la naissance", "le vieillissement"]
+    indice: "Une fois adulte, un papillon peut s'accoupler et pondre des oeufs à son tour."
+  - enonce: "Pendant l'étape de la croissance, que se passe-t-il dans le corps d'un être vivant ?"
+    bonneReponse: "il grandit et se développe"
+    distracteurs: ["il donne naissance à des petits", "il cesse de se nourrir"]
+    indice: "Grandir, c'est essentiellement prendre de la taille et se développer, avant de pouvoir se reproduire."
+  - enonce: "Pendant l'étape de la reproduction, que fait un être vivant adulte ?"
+    bonneReponse: "il donne naissance à des petits, ou produit des graines"
+    distracteurs: ["il arrête de grandir définitivement", "il perd progressivement ses forces"]
+    indice: "Se reproduire, c'est donner la vie à une nouvelle génération."
+  - enonce: "Pendant l'étape du vieillissement, comment le corps d'un être vivant évolue-t-il généralement ?"
+    bonneReponse: "ses forces diminuent peu à peu"
+    distracteurs: ["il grandit de plus en plus vite", "il se reproduit pour la première fois"]
+    indice: "Vieillir, c'est voir ses capacités diminuer progressivement avec le temps."
+  - enonce: "À l'étape de la naissance, que vient-il de se passer pour un être vivant ?"
+    bonneReponse: "il vient de commencer à exister, en dehors de l'oeuf ou du ventre de sa mère"
+    distracteurs: ["il vient de donner naissance à des petits", "il vient de cesser de vivre"]
+    indice: "Naître, c'est le tout début de la vie d'un être vivant."
+  - enonce: "À l'étape de la mort, qu'est-ce qui caractérise un être vivant ?"
+    bonneReponse: "toutes les fonctions de son corps s'arrêtent définitivement"
+    distracteurs: ["il continue de grandir sans jamais s'arrêter", "il redevient tout petit comme à sa naissance"]
+    indice: "Mourir, c'est la fin définitive de toutes les fonctions du corps."

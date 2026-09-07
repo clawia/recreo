@@ -1,0 +1,86 @@
+schema: 1
+id: cm1-sciences-familles-materiaux
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Matériaux et objets techniques"
+  competence: "Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité)."
+lignesDeReferentiel: ["SCI-CM1-11"]
+#
+# S31-4 (docs/backlog/backlog.md, sprint 31). Premier paquet du second lot de sciences et
+# technologie CM1, second passage (arbitrage prealable de nadia-prof,
+# squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-
+# et-ma-borne.md, section 4.3 : ligne 11, l'une des "plus sures du lot"). Referentiel copie
+# conforme (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-11).
+#
+# Deux taches distinctes (FER-3) : tache A, nommer la famille de materiau dont releve un objet
+# decrit (cinq items, bonne reponse = bois, metal, verre, plastique ou tissu - cinq reponses
+# distinctes, aucune repetition) ; tache B, choisir le materiau adapte a un usage decrit d'apres
+# une propriete nommee dans l'enonce (six items, bonne reponse = un materiau).
+#
+# FER-1 : les quatre proprietes du libelle (resistance, isolation, souplesse, impermeabilite) sont
+# chacune le critere decisif d'au moins un item de la tache B - resistance (item 6), isolation
+# (item 7), souplesse (items 8 et 11), impermeabilite (items 9 et 10) - au meme sens que "un moyen
+# de separation" pour cm1-sciences-melanges (SCI-CM1-02) : la position de bonne reponse est celle
+# de la propriete testee, pas une reprise litterale du mot dans le texte de la reponse.
+#
+# FAB-1b : sur la tache B, le materiau juste n'est jamais le meme d'un item a l'autre - metal, bois,
+# plastique, caoutchouc, tissu et verre servent chacun une fois la bonne reponse, jamais deux.
+#
+# Une seule propriete par item (note de la matrice sur cette ligne : "une propriete par item,
+# jamais deux : la charge cognitive double sinon") : aucun item ne nomme deux proprietes a la fois.
+#
+# HIS-3 (chaque fait porte sa source) : les familles de materiaux (bois, metal, verre, plastique,
+# tissu, caoutchouc) et leurs proprietes usuelles (resistance du metal et du bois de charpente,
+# isolation thermique du bois, souplesse du plastique et du tissu, impermeabilite du caoutchouc et
+# du verre) sont des faits de technologie de base enseignes au cycle 3, sans controverse.
+#
+# CON-1 : aucun item ne se resout sans connaitre le materiau ou l'objet qu'il decrit.
+#
+# FER-2 (densite) : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Une table de jardin fabriquée à partir du tronc d'un arbre scié et poncé : de quelle famille de matériau est-elle faite ?"
+    bonneReponse: "le bois"
+    distracteurs: ["le métal", "le plastique"]
+    indice: "Ce matériau vient directement d'un arbre."
+  - enonce: "Une casserole qu'on peut poser directement sur une flamme sans qu'elle fonde ni brûle : de quelle famille de matériau est-elle faite ?"
+    bonneReponse: "le métal"
+    distracteurs: ["le bois", "le plastique"]
+    indice: "Ce matériau résiste à une chaleur très élevée sans se déformer."
+  - enonce: "Une bouteille transparente, qu'on voit au travers, mais qui se brise en morceaux tranchants si elle tombe sur un carrelage : de quelle famille de matériau est-elle faite ?"
+    bonneReponse: "le verre"
+    distracteurs: ["le plastique", "le métal"]
+    indice: "Ce matériau laisse passer la lumière mais casse facilement."
+  - enonce: "Un gobelet léger et coloré, qui peut fondre s'il est posé trop près d'une flamme : de quelle famille de matériau est-il fait ?"
+    bonneReponse: "le plastique"
+    distracteurs: ["le verre", "le métal"]
+    indice: "Ce matériau peut être moulé dans toutes les formes et toutes les couleurs."
+  - enonce: "Une écharpe tricotée, qu'on peut plier et ranger facilement dans une poche : de quelle famille de matériau est-elle faite ?"
+    bonneReponse: "le tissu"
+    distracteurs: ["le plastique", "le métal"]
+    indice: "Ce matériau est fait de fils tissés ou tricotés ensemble."
+  - enonce: "On veut construire un pont qui doit supporter le poids de nombreux camions sans jamais se casser. Il faut un matériau très résistant. Lequel choisir ?"
+    bonneReponse: "le métal"
+    distracteurs: ["le tissu", "le verre"]
+    indice: "Ce matériau supporte de très lourdes charges sans se briser facilement."
+  - enonce: "On veut fabriquer le manche d'une poêle, qui ne doit jamais devenir brûlant à tenir même quand la poêle chauffe. Il faut un matériau isolant, qui ne laisse pas passer la chaleur. Lequel choisir ?"
+    bonneReponse: "le bois"
+    distracteurs: ["le métal", "le verre"]
+    indice: "Ce matériau ne transmet presque pas la chaleur jusqu'à la main."
+  - enonce: "On veut fabriquer un tuyau d'arrosage qui doit s'enrouler facilement sans se casser. Il faut un matériau souple. Lequel choisir ?"
+    bonneReponse: "le plastique"
+    distracteurs: ["le verre", "le métal"]
+    indice: "Ce matériau se plie facilement et reprend sa forme sans se briser."
+  - enonce: "On veut fabriquer une combinaison de plongée qui ne doit jamais laisser entrer l'eau. Il faut un matériau imperméable. Lequel choisir ?"
+    bonneReponse: "le caoutchouc"
+    distracteurs: ["le tissu", "le bois"]
+    indice: "Ce matériau empêche complètement l'eau de le traverser."
+  - enonce: "On veut fabriquer une bouteille qui ne doit jamais laisser l'eau s'échapper, même posée à l'envers. Il faut un matériau imperméable. Lequel choisir ?"
+    bonneReponse: "le verre"
+    distracteurs: ["le tissu", "le bois"]
+    indice: "Ce matériau ne laisse jamais passer l'eau, même liquide."
+  - enonce: "On veut fabriquer un vêtement qui doit permettre de bouger librement dans tous les sens. Il faut un matériau souple. Lequel choisir ?"
+    bonneReponse: "le tissu"
+    distracteurs: ["le métal", "le verre"]
+    indice: "Ce matériau s'adapte aux mouvements du corps sans gêner."

@@ -643,7 +643,39 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " personnes en texte libre (\"tout le monde, même les adultes\","
                     + " \"seulement les enfants\"...), valeurDe rend null sur toutes les propositions."
                     + " Mesure du 2026-09-07 sur le paquet servi : aucune des 30 propositions ne"
-                    + " commence par un chiffre"));
+                    + " commence par un chiffre"),
+            // S31-3 : premier lot de sciences et technologie CM1, second passage (SCI-CM1-01,
+            // SCI-CM1-07).
+            Map.entry("cm1-sciences-etats-matiere",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des etats de la matiere (\"solide\","
+                    + " \"liquide\", \"gaz\") ou des changements d'etat en texte libre (\"la"
+                    + " fusion\", \"la vaporisation\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-07 sur le paquet servi : aucune"
+                    + " des 33 propositions ne commence par un chiffre"),
+            Map.entry("cm1-sciences-regimes-alimentaires",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des regimes alimentaires (\"herbivore\","
+                    + " \"carnivore\", \"omnivore\") ou des fonctions de la nourriture en texte"
+                    + " libre (\"à lui redonner de l'énergie pour bouger\"...), valeurDe rend null sur"
+                    + " les trois propositions de chaque item. Mesure du 2026-09-07 sur le paquet"
+                    + " servi : aucune des 33 propositions ne commence par un chiffre"),
+            // S31-4 : second lot de sciences et technologie CM1, second passage (SCI-CM1-11,
+            // SCI-CM1-08).
+            Map.entry("cm1-sciences-familles-materiaux",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des familles de materiau (\"le bois\","
+                    + " \"le métal\", \"le verre\"...) ou des materiaux choisis d'apres une"
+                    + " propriete en texte libre, valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-09-07 sur le paquet servi : aucune des 33"
+                    + " propositions ne commence par un chiffre"),
+            Map.entry("cm1-sciences-etapes-developpement",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des noms d'etape (\"la naissance\","
+                    + " \"la croissance\", \"la reproduction\"...) ou des caracteristiques d'etape"
+                    + " en texte libre (\"il grandit et se développe\"...), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-09-07 sur le paquet servi :"
+                    + " aucune des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

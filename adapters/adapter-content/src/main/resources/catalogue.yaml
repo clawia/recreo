@@ -378,3 +378,27 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-emc-regle-souhait-loi
     nombreDeManches: 10
+  - id: bandit-manchot-etats-matiere-cm1
+    titre: "États et changements d'état"
+    consigne: "Lis bien, puis dis dans quel état se trouve la matière, ou nomme le changement d'état."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-etats-matiere
+    nombreDeManches: 10
+  - id: bandit-manchot-regimes-alimentaires-cm1
+    titre: "Quel est son régime ?"
+    consigne: "Lis bien, puis dis quel est le régime de l'animal, ou à quoi sert sa nourriture."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-regimes-alimentaires
+    nombreDeManches: 10
+  - id: bandit-manchot-familles-materiaux-cm1
+    titre: "De quoi c'est fait ?"
+    consigne: "Lis bien, puis dis de quelle famille de matériau il s'agit, ou quel matériau choisir."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-familles-materiaux
+    nombreDeManches: 10
+  - id: bandit-manchot-etapes-developpement-cm1
+    titre: "Naître, grandir, vieillir"
+    consigne: "Lis bien, puis dis quelle étape vient après, ou ce qui la caractérise."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-etapes-developpement
+    nombreDeManches: 10
