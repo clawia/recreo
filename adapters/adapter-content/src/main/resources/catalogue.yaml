@@ -366,3 +366,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-emc-formules-de-politesse
     nombreDeManches: 10
+  - id: bandit-manchot-exclusion-cp
+    titre: "Une moquerie qui se répète"
+    consigne: "Lis bien, puis dis ce qu'il faut faire, ou à qui en parler."
+    mecanique: bandit-manchot
+    paquet: cp-emc-exclusion
+    nombreDeManches: 10
+  - id: bandit-manchot-regle-souhait-loi-cp
+    titre: "Règle, souhait ou loi"
+    consigne: "Lis bien, puis dis ce que c'est, ou qui doit la respecter."
+    mecanique: bandit-manchot
+    paquet: cp-emc-regle-souhait-loi
+    nombreDeManches: 10

@@ -623,7 +623,27 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"merci\", \"s'il te plaît\") ou des regles d'echange en texte libre (\"écouter"
                     + " sans couper la parole\", \"demander avant de prendre\"...), valeurDe rend null"
                     + " sur les trois propositions de chaque item. Mesure du 2026-09-07 sur le paquet"
-                    + " servi : aucune des 33 propositions ne commence par un chiffre"));
+                    + " servi : aucune des 33 propositions ne commence par un chiffre"),
+            // S31-2 : second lot d'enseignement moral et civique (CP) de s31, restreint aux lignes
+            // 1 a 7 du referentiel (EMC-CP-03, EMC-CP-07).
+            Map.entry("cp-emc-exclusion",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des reactions en texte libre (\"en"
+                    + " parler à un adulte\", \"régler ça toute seule avec Malo\"...) ou des adultes"
+                    + " nommes (\"à sa maîtresse\", \"à un surveillant de la cour\"...), valeurDe rend"
+                    + " null sur les trois propositions de chaque item. Mesure du 2026-09-07 sur le"
+                    + " paquet servi : aucune des 33 propositions ne commence par un chiffre"),
+            Map.entry("cp-emc-regle-souhait-loi",
+            "11 items sur 11 : trois items (tache de classement, forme binaire) portent un seul"
+                    + " distracteur (deux propositions) et huit items (les trois autres items de"
+                    + " classement, forme ternaire, et les cinq items de la tache de portee de la loi)"
+                    + " portent deux distracteurs (trois propositions), mais aucune des 30 propositions"
+                    + " n'est numerique : ce sont des categories institutionnelles (\"une règle qui"
+                    + " vaut pour tous\", \"un simple souhait\", \"une loi\") ou des groupes de"
+                    + " personnes en texte libre (\"tout le monde, même les adultes\","
+                    + " \"seulement les enfants\"...), valeurDe rend null sur toutes les propositions."
+                    + " Mesure du 2026-09-07 sur le paquet servi : aucune des 30 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

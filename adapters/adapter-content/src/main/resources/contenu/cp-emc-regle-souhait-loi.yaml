@@ -1,0 +1,104 @@
+schema: 1
+id: cp-emc-regle-souhait-loi
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous."
+lignesDeReferentiel: ["EMC-CP-07"]
+#
+# S31-2 (docs/backlog/backlog.md, sprint 31). Second des deux paquets du second lot d'EMC CP
+# restreint aux lignes 1 a 7 du referentiel, arbitrage prealable de nadia-prof (section 3.1, ligne
+# EMC-CP-07, "la plus sure des cinq a 1,0") et DEC-0081. Referentiel copie conforme. Le mot "loi"
+# n'est jamais defini dans l'enonce : il s'emploie uniquement sur des exemples concrets.
+#
+# FER-1 : les trois termes du libelle (regle, souhait, loi) sont chacun en bonne reponse au moins
+# une fois - "une regle qui vaut pour tous" (items 1, 3, 5), "un simple souhait" (items 2, 6),
+# "une loi" (item 4, l'obligation du casque a velo, un exemple concret hors du cadre scolaire).
+# La notion de loi est reprise en bonne reponse de chaque item de la tache B (items 7 a 11, "tout
+# le monde, meme les adultes").
+#
+# FER-3 : deux taches distinctes - classer une situation decrite comme une regle qui vaut pour tous,
+# un simple souhait, ou une loi (items 1 a 6), et reconnaitre qu'une loi citee sur un exemple concret
+# s'impose a tous, y compris aux adultes (items 7 a 11).
+#
+# BIN-1 : sur la tache de classement (items 1 a 6), qui porte le classement a deux categories
+# principal de la ligne (regle contre souhait), exactement la moitie des items (3 sur 6 : items 1,
+# 2, 3) portent deux propositions (regle ou souhait) ; les trois autres (items 4, 5, 6) en portent
+# trois, avec "une loi" comme troisieme categorie. La moitie au plus des items du classement est
+# binaire.
+#
+# Distinction retenue entre regle et loi, pour rester sur des exemples concrets sans jamais
+# definir le mot "loi" (referentiel) : une regle est propre a l'ecole ou a la classe (ranger sa
+# chaise, faire la queue a la cantine, ne pas pousser dans la cour) ; une loi est une obligation qui
+# vient de l'Etat et s'applique dans tout le pays, hors du seul cadre scolaire (le casque a velo).
+#
+# CAT-1 : les propositions de la tache A sont toujours des categories institutionnelles (regle,
+# souhait, loi), jamais un registre poli oppose a un registre grossier. Les propositions de la
+# tache B sont toujours des categories de personnes concernees par une loi ; aucune n'est
+# formulee de facon grossiere ou egoiste.
+#
+# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit ou fait chez lui.
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement.
+#
+# EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
+# organisation. Les personnages (Hugo, Aya) sont fictifs ; les autres items sont impersonnels
+# (code de la route, ceinture de securite, tabac, klaxon, passage pieton).
+#
+# PLA-1 : chaque proposition est une categorie ou un groupe de personnes que l'enfant de CP peut
+# serieusement envisager, jamais un bouton de remplissage.
+#
+# FAB-1 : verifie par ADR-0086 sur le contenu servi entier qu'aucun sous-ensemble de trois items ou
+# plus ne partage a la fois le meme trio (ou la meme paire) de propositions et la meme bonne
+# reponse.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+#
+# FER-2 : onze items, au-dessus du plancher de dix (DEC-0064).
+items:
+  - enonce: "Avant de sortir en récréation, chaque élève doit ranger sa chaise, sans exception. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+    bonneReponse: "une règle qui vaut pour tous"
+    distracteurs: ["un simple souhait"]
+    indice: "Personne n'a le droit d'y échapper."
+  - enonce: "La maîtresse aimerait que la classe soit un peu plus silencieuse pendant les exercices. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+    bonneReponse: "un simple souhait"
+    distracteurs: ["une règle qui vaut pour tous"]
+    indice: "Elle exprime ce qu'elle aimerait, pas une obligation écrite."
+  - enonce: "Dans la cour, il est interdit de pousser un camarade, pour tout le monde, sans exception. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+    bonneReponse: "une règle qui vaut pour tous"
+    distracteurs: ["un simple souhait"]
+    indice: "Cet interdit s'applique à chaque élève, sans exception."
+  - enonce: "Partout en France, il est obligatoire de porter un casque à vélo avant l'âge de douze ans. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+    bonneReponse: "une loi"
+    distracteurs: ["une règle qui vaut pour tous", "un simple souhait"]
+    indice: "Cette obligation vient de l'État et s'applique dans tout le pays, pas seulement à l'école."
+  - enonce: "À la cantine, chaque élève doit attendre son tour pour se servir, sans exception. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+    bonneReponse: "une règle qui vaut pour tous"
+    distracteurs: ["un simple souhait", "une loi"]
+    indice: "Cela s'applique à chaque élève qui mange à la cantine."
+  - enonce: "Aya aimerait que la maîtresse donne moins de devoirs le week-end. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+    bonneReponse: "un simple souhait"
+    distracteurs: ["une règle qui vaut pour tous", "une loi"]
+    indice: "C'est ce qu'elle voudrait, pas ce qui est décidé."
+  - enonce: "Le code de la route dit qu'il faut s'arrêter quand le feu est rouge. Qui doit respecter cette loi ?"
+    bonneReponse: "tout le monde, même les adultes"
+    distracteurs: ["seulement les enfants", "seulement les cyclistes"]
+    indice: "Cette loi ne fait pas de différence selon l'âge."
+  - enonce: "Une loi dit que porter la ceinture de sécurité en voiture est obligatoire. Qui doit la respecter ?"
+    bonneReponse: "tout le monde, même les adultes"
+    distracteurs: ["seulement le conducteur", "seulement les passagers"]
+    indice: "Cette loi concerne toutes les personnes assises dans la voiture."
+  - enonce: "Une loi interdit de fumer dans la cour d'une école. Qui doit la respecter ?"
+    bonneReponse: "tout le monde, même les adultes"
+    distracteurs: ["seulement les élèves", "seulement les enseignants"]
+    indice: "Cette loi s'applique à toutes les personnes présentes dans la cour."
+  - enonce: "Une loi interdit de klaxonner sans raison en ville. Qui doit la respecter ?"
+    bonneReponse: "tout le monde, même les conducteurs adultes"
+    distracteurs: ["seulement les motards", "seulement les enfants"]
+    indice: "Cette loi s'applique à toutes les personnes qui conduisent en ville."
+  - enonce: "Une loi interdit de traverser en dehors des passages prévus pour les piétons. Qui doit la respecter ?"
+    bonneReponse: "tout le monde, même les adultes"
+    distracteurs: ["seulement les enfants", "seulement les piétons pressés"]
+    indice: "Cette loi ne fait pas d'exception selon l'âge de la personne."

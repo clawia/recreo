@@ -211,6 +211,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // civique de s31, restreint aux lignes 1 a 7 du referentiel (emotions, politesse).
             "bandit-manchot-emotions-autrui-cp",
             "bandit-manchot-formules-de-politesse-cp",
+            // S31-2 (backlog S31-2) : deux entrees neuves, second lot d'enseignement moral et
+            // civique de s31 (exclusion, regle/souhait/loi).
+            "bandit-manchot-exclusion-cp",
+            "bandit-manchot-regle-souhait-loi-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -324,6 +328,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S29-4 et S29-5 : un contenu neuf n'herite d'aucune dette (TYP-1, ADR-0067).
             "Ce que ressent l'autre",
             "Les mots de politesse",
+            // S31-2 : deux titres neufs, meme motif.
+            "Une moquerie qui se répète",
+            "Règle, souhait ou loi",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -458,6 +465,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S31-1 : deux consignes neuves.
             "Lis bien, puis dis ce que ressent la personne, ou ce que montre son geste.",
             "Lis bien, puis dis quel mot employer, ou quelle règle n'est pas respectée.",
+            // S31-2 : deux consignes neuves.
+            "Lis bien, puis dis ce qu'il faut faire, ou à qui en parler.",
+            "Lis bien, puis dis ce que c'est, ou qui doit la respecter.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -663,7 +673,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Identifier et nommer les émotions d'autrui dans une situation simple (joie, "
                     + "tristesse, colère, peur).",
             "Employer les formules de politesse et de respect dans les échanges (saluer, "
-                    + "remercier, demander, écouter sans couper).");
+                    + "remercier, demander, écouter sans couper).",
+            // S31-2 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/enseignement-moral-et-civique/competences-cp.md, lignes
+            // EMC-CP-03 et EMC-CP-07).
+            "Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à "
+                    + "quel adulte en parler.",
+            "Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître "
+                    + "qu'une loi s'impose à tous.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
