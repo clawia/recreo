@@ -491,6 +491,29 @@ troisieme sous un identifiant different sur sa propre branche - constate et veri
 ecriture d'un lot ouvre son propre worktree, quel que soit le vocabulaire de la consigne qui l'a
 demande.
 
+**La discipline de mesure par worktree dedie, jusque-la limitee a la premiere ecriture d'un lot,
+s'etend a toute mesure du reacteur, complete ou partielle** (amendement s30, tranche au planning de
+s30, confirme tenu a sa retro). A s29, trois incidents d'orchestration venaient de mesures
+concurrentes sur un worktree partage : des rouges intermittents sur un `target/` en cours de
+reconstruction par une autre mesure, une consigne de mesure limitee au module qui a laisse passer
+un rouge que seul le reacteur complet voyait, et du travail d'un agent embarque dans le commit d'un
+autre. `yanis-qa` avait deja adopte de lui-meme cette discipline depuis s28 ; elle n'avait jamais
+ete generalisee aux autres agents. A s30, `marc-dev`, `lea-dev`, `theo-archi`, `yanis-qa` et les
+deux instances de `nadia-prof` ont tous mesure depuis leur propre worktree pour toute la duree du
+sprint, premiere mesure ou non, et l'assemblage n'a trouve aucun recouvrement de fichier sur
+vingt-huit paires de branches verifiees a travers trois vagues de fusion - la regle a tenu a
+l'epreuve d'un sprint entier.
+
+**Le worktree dedie isole l'arbre Git et le repertoire de compilation d'un agent ; il n'isole pas
+une ressource de travail temporaire partagee entre deux instances du meme agent** (amendement s30,
+retro de s30). A s30, les deux instances de `nadia-prof` tournant en parallele partageaient le meme
+scratchpad d'agent, hors du depot, et l'une a ecrase le fichier de l'autre pendant leurs reaudits -
+sans consequence de contenu, l'Instance A ayant detecte la collision et verifie qu'aucun contenu de
+l'autre instance n'avait contamine ses propres fichiers avant de rendre son verdict. **A partir de
+s31, toute paire d'instances du meme agent tournant en parallele recoit un scratchpad aussi dedie
+que son worktree** : la regle de ressource dediee ne se limite pas au depot Git, elle s'applique a
+toute ressource de travail qu'une mesure ou un audit concurrent pourrait faire collisionner.
+
 **Un sprint peut etre pilote par des arbitrages successifs de l'autorite produit plutot que par un
 objectif gele au planning, et le process le nomme plutot que de le taire** (amendement s15, cloture
 de s15). Dans ce mode, l'utilisatrice joue l'increment livre, rend un arbitrage, et ce rendu
