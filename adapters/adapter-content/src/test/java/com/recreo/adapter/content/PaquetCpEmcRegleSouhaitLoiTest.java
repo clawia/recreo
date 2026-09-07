@@ -32,6 +32,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  * propositions plutot que trois. Verifie ici, alors que les autres proprietes tonales
  * ({@code CAT-1}, {@code EMC-5}) restent la garde de {@code nadia-prof} seule.</p>
  *
+ * <p><b>Reecriture de la tache de portee apres REFUS de nadia-prof le 2026-09-07</b>
+ * ({@code squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md}) : la premiere version
+ * servait cinq fois "tout le monde, meme les adultes" (ou une variante a un mot pres), amorce
+ * reconnaissable sur cinq items sur cinq ({@code FAB-1a} et {@code FAB-1c}). Elle sert desormais
+ * cinq reponses entierement distinctes, dont une ou la loi ne s'applique justement pas aux enfants
+ * (la vente d'alcool) - l'enfant apprend "s'impose a tous" par contraste. <b>La tache de classement
+ * (items 1 a 6) est inchangee</b> : nadia-prof l'a confirmee bonne et a conserver telle quelle.</p>
+ *
  * <p><b>Ce que ce test ne juge pas.</b> {@code EMC-1}, {@code EMC-8}, {@code EMC-10} et
  * {@code CAT-1} demandent une lecture semantique, non gardees ici. {@code FAB-1} est verifiee depot
  * entier par {@code LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest} (ADR-0086).</p>
@@ -136,6 +144,25 @@ class PaquetCpEmcRegleSouhaitLoiTest {
                     .as("item %s : deux distracteurs attendus", item.id().value())
                     .hasSize(2);
         }
+    }
+
+    /**
+     * FAB-1a et FAB-1c, garde-fou de regression sur le motif exact du refus du 2026-09-07 : la
+     * tache de portee ne sert plus une seule reponse (ou une variante a un mot pres) sur tous ses
+     * items. Chaque bonne reponse de la tache est distincte des autres.
+     */
+    @Test
+    void fab1aLaTacheDePorteeNePorteJamaisUneReponseInvariante() {
+        List<Question> portee = itemsDePortee();
+        Set<String> reponsesDistinctes = portee.stream()
+                .map(Question::bonneReponse)
+                .collect(Collectors.toSet());
+
+        assertThat(reponsesDistinctes)
+                .as("FAB-1a/FAB-1c : les %d items de la tache de portee doivent porter des bonnes"
+                        + " reponses toutes distinctes, pas une seule reponse repetee a un mot pres",
+                        portee.size())
+                .hasSameSizeAs(portee);
     }
 
     /** Chaque item de la tache de classement porte un ou deux distracteurs, jamais plus. */

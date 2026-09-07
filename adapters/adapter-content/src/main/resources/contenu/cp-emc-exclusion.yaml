@@ -8,98 +8,108 @@ descripteur:
   competence: "Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte en parler."
 lignesDeReferentiel: ["EMC-CP-03"]
 #
-# S31-2 (docs/backlog/backlog.md, sprint 31). Premier des deux paquets du second lot d'EMC CP
-# restreint aux lignes 1 a 7 du referentiel, arbitrage prealable de nadia-prof (section 3.1, ligne
-# EMC-CP-03, "ligne delicate, a ecrire en dernier dans son lot") et DEC-0081. Referentiel copie
-# conforme. Ecrit en dernier dans ce lot, apres cp-emc-regle-souhait-loi.
+# S31-2 (docs/backlog/backlog.md, sprint 31). Reecriture complete apres REFUS de nadia-prof le
+# 2026-09-07 (squad/conformite/FICHE-bandit-manchot-exclusion-cp.md, squad/sprints/
+# s31-second-passage-de-sciences-et-emc-cp/verdicts-nadia-instance-A.md, section 4.1). Trois motifs
+# de refus, tous corriges dans ce meme geste :
 #
-# EMC-3 : chaque item met en scene un personnage temoin (Lea, Hugo, Aya, Malo, Tom) qui observe une
-# situation touchant deux AUTRES personnages ; aucun item ne met l'enfant qui joue en position de
-# victime ou d'auteur, aucun ne detaille une violence. La bonne reponse n'est jamais une solution
-# que le temoin appliquerait seul.
+# 1) La premiere moitie du libelle ("reconnaitre") n'etait pas travaillee : les six items de la
+#    tache A decrivaient tous une moquerie repetee, aucun n'etait un accident isole, donc rien
+#    n'etait a distinguer. LA TACHE A EST DESORMAIS UNE VRAIE DISCRIMINATION : elle sert trois
+#    situations de moquerie/exclusion repetee (items 1 a 3, marquees par "chaque midi cette
+#    semaine", "presque tous les jours", "depuis plusieurs jours ... a chaque recreation") et trois
+#    situations d'accident isole (items 4 a 6, marquees par "une seule fois", "par accident", "sans
+#    faire exprès"). La bonne reponse est un CLASSEMENT ("une moquerie qui se répète" / "un accident
+#    isolé"), jamais une action que l'enfant devrait entreprendre.
 #
-# Lecture retenue pour "la bonne reponse est toujours en parler a un adulte" (backlog, S31-2) :
-# l'invariant porte sur la CATEGORIE d'action (chercher un adulte, jamais regler seul), pas sur une
-# chaine de caracteres unique - la tache B nomme l'adulte precis selon le lieu (la maitresse en
-# classe, un surveillant en cour, l'adulte de la cantine), ce qui reste "en parler a un adulte" au
-# sens du critere. Point signale a nadia-prof pour verification a l'audit, plutot que tranche en
-# silence : une lecture strictement litterale rendrait la tache B (qui doit varier sa reponse selon
-# le lieu) incompatible avec FER-3.
+# 2) FAB-1a : la tache A servait six fois "en parler a un adulte", mot pour mot (FER-2 tombait a 6
+#    items comptables sur 10). Avec le classement ci-dessus, la bonne reponse varie reellement
+#    (5 reponses distinctes sur 11 items au total dans le paquet, aucune tache invariante).
 #
-# FER-3 : deux taches distinctes - reconnaitre qu'une moquerie ou une exclusion repetee (marquee
-# dans l'enonce : "chaque midi depuis une semaine", "presque tous les jours", "depuis plusieurs
-# jours", "toutes les semaines", "depuis le debut du mois", "chaque jour cette semaine") appelle a
-# en parler a un adulte plutot qu'a l'ignorer ou a la regler seul (items 1 a 6), et identifier
-# l'adulte a qui en parler selon le lieu decrit - la cour, la classe, la cantine (items 7 a 11).
+# 3) CAT-1 n'etait tenue sur aucune des deux taches. Sur la tache A, les propositions sont
+#    desormais trois CLASSEMENTS (jamais une reaction "prudente" contre des reactions "agressives")
+#    : "une moquerie qui se répète" / "un accident isolé" / une troisieme categorie de contraste
+#    ("une bagarre", "une blague entre amis", "un jeu de récréation", "une dispute", "une
+#    vengeance") - aucune n'est grossiere ni dangereuse, ce sont des labels de situation, pas des
+#    actes. Sur la tache B, la proposition au rabais "a personne, ..." est retiree ; les trois
+#    propositions sont desormais toujours trois adultes reels (maitresse, surveillant de cour,
+#    adulte de cantine), dont deux ne conviennent pas au lieu decrit.
 #
-# CAT-1 : dans la tache A, les trois propositions de chaque item sont trois attitudes serieusement
-# envisageables par un enfant (chercher un adulte, penser que ce n'est pas grave, regler ça soi-meme)
-# - aucune n'est grossiere, dangereuse ou egoiste dans sa formulation ; ce qui distingue la bonne
-# reponse est le fait qu'elle seule protege vraiment, jamais un registre de langue. Dans la tache B,
-# les trois propositions sont toujours des adultes ou l'absence d'adulte, jamais un registre poli
-# contre un registre grossier.
+# Lecture de EMC-3 qui fait foi, ecrite par nadia-prof le 2026-09-07 dans le verdict qui refusait
+# ce paquet : "EMC-3 est une interdiction portant sur les propositions - aucune, en bonne reponse
+# comme en distracteur, ne dit a l'enfant de regler la situation seul - et non une prescription
+# portant sur la bonne reponse. La bonne reponse d'un item de reconnaissance peut donc etre un
+# classement, qui n'expose l'enfant a rien." C'est exactement la forme retenue ici : aucune
+# proposition de la tache A n'est une action de gestion seule (les propositions sont des noms de
+# situation, jamais des verbes d'action) ; la lecture par categorie d'action de la tache B (nommer
+# l'adulte precis selon le lieu vaut "en parler a un adulte") reste confirmee sans reserve par
+# nadia-prof (meme verdict, section 4.1) : elle n'est pas retouchee ici.
 #
-# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit ou fait chez lui.
+# Longueur des enonces : ramenee a une seule phrase de situation courte (12 a 16 mots), contre 22 a
+# 31 mots sur la version refusee. Les indices de la tache A n'ajoutent plus seulement la duree deja
+# donnee par l'enonce ; ils disent le critere de distinction (la repetition contre l'occurrence
+# unique) sans jamais nommer la bonne reponse.
 #
-# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ("que ferais-tu si...") ;
-# chaque item decrit ce qu'un personnage temoin doit faire.
+# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit ou fait chez lui - les
+# personnages sont fictifs et exterieurs a l'enfant qui joue.
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement.
 #
 # EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
-# organisation. Les personnages sont fictifs.
+# organisation. Les personnages (Lea, Hugo, Aya, Malo, Tom) sont fictifs.
 #
-# PLA-1 : chaque proposition est une reaction ou un adulte que l'enfant de CP peut serieusement
-# envisager, jamais un bouton de remplissage.
+# PLA-1 : chaque proposition est une categorie de situation qu'un enfant de CP peut serieusement
+# envisager (moquerie, accident, bagarre, blague, jeu, dispute, vengeance ; un adulte reel selon le
+# lieu), jamais un bouton de remplissage.
 #
-# FAB-1 : la bonne reponse de la tache A est volontairement stable ("en parler a un adulte"), mais
-# chaque item porte des distracteurs entierement distincts (aucun sous-ensemble de trois items ou
-# plus ne partage a la fois le meme trio de propositions et la meme bonne reponse) - verifie par
-# ADR-0086 sur le contenu servi entier.
+# FAB-1, CAT-1 : verifies par ADR-0086 sur le contenu servi entier (aucun sous-ensemble de trois
+# items ou plus ne partage a la fois le meme trio de propositions et la meme bonne reponse).
 #
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064).
 items:
-  - enonce: "Chaque midi depuis une semaine, Malo empêche Aya de s'asseoir avec le groupe à la cantine. Léa le voit encore aujourd'hui. Que doit-elle faire ?"
-    bonneReponse: "en parler à un adulte"
-    distracteurs: ["penser que c'est un hasard et ne rien dire", "régler ça toute seule avec Malo"]
-    indice: "Ce n'est pas la première fois que cela arrive à Aya."
-  - enonce: "Depuis la rentrée, Hugo se moque presque tous les jours de la façon dont parle Tom. Aya l'entend encore ce matin. Que doit-elle faire ?"
-    bonneReponse: "en parler à un adulte"
-    distracteurs: ["trouver que ce n'est pas grave", "se moquer de Hugo à son tour"]
-    indice: "Cela recommence très souvent depuis le début de l'année."
-  - enonce: "Depuis plusieurs jours, à chaque récréation, Malo dit à Tom qu'il ne peut pas jouer avec le groupe. Hugo le remarque à nouveau aujourd'hui. Que doit-il faire ?"
-    bonneReponse: "en parler à un adulte"
-    distracteurs: ["penser que Tom exagère", "dire à Malo d'arrêter tout seul, en criant plus fort"]
-    indice: "Tom est mis à l'écart à chaque récréation depuis plusieurs jours."
-  - enonce: "Toutes les semaines, dans la cour, un petit groupe imite la voix d'Aya pour rire d'elle avec les autres. Malo le voit une nouvelle fois ce lundi. Que doit-il faire ?"
-    bonneReponse: "en parler à un adulte"
-    distracteurs: ["penser que ce n'est qu'un jeu sans importance", "imiter le groupe à son tour pour voir ce que ça fait"]
-    indice: "Cela revient chaque semaine, pas juste une fois."
-  - enonce: "Depuis le début du mois, personne ne veut donner la main à Tom pendant la ronde, à chaque récréation. Léa le remarque encore ce matin. Que doit-elle faire ?"
-    bonneReponse: "en parler à un adulte"
-    distracteurs: ["se dire que Tom n'a qu'à demander plus fort", "forcer un camarade à lui donner la main"]
-    indice: "Cela dure depuis le début du mois, à chaque récréation."
-  - enonce: "Chaque jour cette semaine, Hugo attend Aya à la sortie de la classe pour se moquer de son cartable. Malo le voit une fois de plus aujourd'hui. Que doit-il faire ?"
-    bonneReponse: "en parler à un adulte"
-    distracteurs: ["penser que c'est juste une plaisanterie sans conséquence", "attendre Hugo à son tour pour se venger"]
-    indice: "Cela se répète chaque jour depuis le début de la semaine."
-  - enonce: "Pendant la récréation, dans la cour, Hugo voit une moquerie qui se répète depuis plusieurs jours. À qui doit-il en parler ?"
+  - enonce: "Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe. Qu'est-ce que c'est ?"
+    bonneReponse: "une moquerie qui se répète"
+    distracteurs: ["un accident isolé", "une bagarre"]
+    indice: "Une seule fois serait un hasard ; là, cela recommence chaque jour."
+  - enonce: "Presque tous les jours, Hugo se moque de la façon dont parle Tom. Qu'est-ce que c'est ?"
+    bonneReponse: "une moquerie qui se répète"
+    distracteurs: ["un accident isolé", "une blague entre amis"]
+    indice: "Une moquerie qui revient aussi souvent n'est plus un hasard."
+  - enonce: "Depuis plusieurs jours, Malo écarte Tom du jeu à chaque récréation. Qu'est-ce que c'est ?"
+    bonneReponse: "une moquerie qui se répète"
+    distracteurs: ["un accident isolé", "un jeu de récréation"]
+    indice: "Écarter quelqu'un plusieurs jours de suite n'est pas un jeu ordinaire."
+  - enonce: "En courant, Tom bouscule Malo une seule fois et s'excuse aussitôt. Qu'est-ce que c'est ?"
+    bonneReponse: "un accident isolé"
+    distracteurs: ["une moquerie qui se répète", "une bagarre"]
+    indice: "Une excuse immédiate après un geste involontaire n'est pas de la moquerie."
+  - enonce: "Aya marche sur le pied de Hugo une seule fois, par accident. Qu'est-ce que c'est ?"
+    bonneReponse: "un accident isolé"
+    distracteurs: ["une moquerie qui se répète", "une dispute"]
+    indice: "Un seul faux pas involontaire n'est pas la même chose qu'une habitude."
+  - enonce: "Malo fait tomber le dessin de Léa une fois, sans faire exprès. Qu'est-ce que c'est ?"
+    bonneReponse: "un accident isolé"
+    distracteurs: ["une moquerie qui se répète", "une vengeance"]
+    indice: "Une maladresse unique n'a rien à voir avec un geste répété exprès."
+  - enonce: "Dans la cour, une moquerie se répète chaque jour. À qui Hugo doit-il en parler ?"
     bonneReponse: "à un surveillant de la cour"
-    distracteurs: ["à la personne qui prépare les repas", "à personne, ce n'est pas grave"]
+    distracteurs: ["à sa maîtresse", "à l'adulte qui surveille la cantine"]
     indice: "C'est un adulte présent dans la cour pendant la récréation."
-  - enonce: "En classe, pendant le travail en groupe, Aya voit une moquerie qui se répète depuis plusieurs jours. À qui doit-elle en parler ?"
+  - enonce: "En classe, une moquerie se répète chaque jour. À qui Aya doit-elle en parler ?"
     bonneReponse: "à sa maîtresse"
-    distracteurs: ["à un surveillant de la cour", "à personne, elle réglera ça seule"]
+    distracteurs: ["à un surveillant de la cour", "à l'adulte qui surveille la cantine"]
     indice: "C'est l'adulte présent avec la classe à ce moment-là."
-  - enonce: "À la cantine, pendant le repas, Malo voit une moquerie qui se répète depuis plusieurs jours. À qui doit-il en parler ?"
+  - enonce: "À la cantine, une moquerie se répète chaque jour. À qui Malo doit-il en parler ?"
     bonneReponse: "à l'adulte qui surveille la cantine"
-    distracteurs: ["à sa maîtresse", "à personne, ça arrive tous les jours"]
+    distracteurs: ["à sa maîtresse", "à un surveillant de la cour"]
     indice: "C'est un adulte présent au moment du repas."
-  - enonce: "Dans la cour, juste avant l'entrée en classe, Tom voit une moquerie qui se répète depuis plusieurs jours. À qui doit-il en parler ?"
+  - enonce: "Dans la cour, avant la classe, une moquerie se répète. À qui Tom doit-il en parler ?"
     bonneReponse: "à un surveillant de la cour"
-    distracteurs: ["à l'adulte qui surveille la cantine", "à personne, il oubliera vite"]
+    distracteurs: ["à l'adulte qui surveille la cantine", "à sa maîtresse"]
     indice: "C'est un adulte présent dans la cour à ce moment-là."
-  - enonce: "En classe, à la fin de la journée, Léa voit une moquerie qui se répète depuis plusieurs jours. À qui doit-elle en parler ?"
+  - enonce: "En classe, à la fin de la journée, une moquerie se répète. À qui Léa doit-elle en parler ?"
     bonneReponse: "à sa maîtresse"
-    distracteurs: ["à l'adulte qui surveille la cantine", "à personne, ce n'est pas son problème"]
+    distracteurs: ["à l'adulte qui surveille la cantine", "à un surveillant de la cour"]
     indice: "C'est l'adulte présent avec la classe à ce moment-là."
