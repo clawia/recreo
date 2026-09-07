@@ -57,6 +57,15 @@ construit, ne peut pas voir une allocation faite dans une branche soeur non fusi
 personne ne le fusionne ; c'est une limite structurelle de `PAR-5` sous la discipline de worktree
 dedie, a nommer dans son propre avis plutot qu'a laisser decouvrir une seconde fois.
 
+**Note de `nadia-prof`, instance B, le 2026-09-07.** Deux identifiants ajoutes - `RGA-R1` et
+`RGA-R2`, les deux reserves ouvertes sur `cm1-sciences-regimes-alimentaires` au Done pedagogique de
+`SCI-CM1-07`. Le prefixe `RGA` etait libre, verifie dans la table de la section 4 avant d'ecrire ;
+`REG` est deja pris par `regles-de-vie-cp`, et `ETA` par les problemes a plusieurs etapes de
+mathematiques, ce qui interdisait les deux abreviations les plus naturelles. **Le chiffre de la
+mesure ci-dessus n'est pas retouche** : il porte une methode et une date qui ne sont pas les
+miennes, et le corriger de deux unites sans refaire la mesure produirait un chiffre sans methode.
+Compte du seul point de vue de cette allocation : **+2**.
+
 ## 2. Ce que ce registre alloue, et ce qu'il n'alloue pas
 
 Il alloue les identifiants de **condition** et de **reserve**, les deux genres que la mesure de s30
@@ -483,6 +492,8 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `REP-12` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `REP-13` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `REP-14` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
+| `RGA-R1` | `squad/conformite/FICHE-bandit-manchot-regimes-alimentaires-cm1.md` |
+| `RGA-R2` | `squad/conformite/FICHE-bandit-manchot-regimes-alimentaires-cm1.md` |
 | `REV-1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `REV-2` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `REV-3` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
