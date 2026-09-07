@@ -195,7 +195,7 @@ autres fichiers sont conformes au compte de `theo-archi` (verifie un par un, auc
 | Education physique et sportive CP | `EPS` | `EPS-CP-01` a `EPS-CP-11` | Idem, deja prefixe de condition (`EPS-1` a `EPS-3`) |
 | Education physique et sportive CM1 | `EPS` | `EPS-CM1-01` a `EPS-CM1-10` | Idem |
 | Histoire des arts CM1 | `HDA` | `HDA-CM1-01` a `HDA-CM1-10` | Prefixe libre, verifie contre le registre `PAR-5` (`ADR-0085`) et contre l'ensemble des prefixes de ligne deja alloues (`EMC`, `FRA`, `HG`, `LVE`, `MAT`, `QLM`, `SCI`) : aucune collision |
-| Langues vivantes (anglais) CP | `LVE` | `LVE-CP-01` a `LVE-CP-06` | Le prefixe `LVE` sert deja les sept lignes de `langues-vivantes/competences-cm1.md`. Retenu par coherence plutot qu'un prefixe `ANG`, qui prejugerait d'une langue que le fichier lui-meme laisse non tranchee (voir sa note "Point de nomage non tranche") |
+| Langues vivantes (anglais) CP | `LVE` | `LVE-CP-01` a `LVE-CP-06` | Le prefixe `LVE` sert deja les sept lignes de `langues-vivantes/competences-cm1.md`. Retenu par coherence plutot qu'un prefixe `ANG`, qui prejugerait d'une langue que le fichier lui-meme laisse non tranchee (voir sa note "Point de nommage non tranche") |
 
 **Verifie contre le garde-fou** : `bash outils/mvn-jdk21.sh -pl bootstrap -am
 -Dtest=ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest
