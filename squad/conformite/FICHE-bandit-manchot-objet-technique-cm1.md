@@ -22,8 +22,10 @@
 - **Commits audites** : `5824e752` (`[LEA] s30: S30-2 - second lot de sciences CM1, melanges et
   objet technique`) le 2026-09-06, puis `a682cb52` (`[LEA] s30: SCI-CM1-12 - la tache A de
   objet-technique-cm1 cesse de reproduire OBJ-R2`) le meme jour, sur l'arbre assemble `a91070f8`.
-- **Derniere mise a jour** : 2026-09-06 (**second verdict de `nadia-prof` apres avoir joue la
-  reprise**, s30, instance B).
+- **Derniere mise a jour** : 2026-09-07 (reaudit de la reprise `S31-6`, section finale).
+- **Reaudit du 2026-09-07** (`nadia-prof`, instance A, s31) : **`OBT-R1` et `OBT-R2` sont levees**,
+  aucune reserve neuve. `SCI-CM1-12` reste **`couvert-valide`**, statut inchange. **Aucun verdict
+  anterieur n'est efface** : le REFUSE du 2026-09-06 et sa reprise restent lisibles tels quels.
 
 ## Competence visee
 
@@ -386,3 +388,110 @@ perimetre.**
 - **`OBT-R1`** et **`OBT-R2`** : **ouvertes le 2026-09-06**, non bloquantes, motifs et proprietes en
   sections 5 et 6. **Regime commun : rejeu borne, 0,5 pour le paquet entier** (`PAR-10`). **Aucune
   ne ferme de ligne.**
+
+---
+
+## Reaudit de la reprise `S31-6` - 2026-09-07, `nadia-prof` instance A
+
+- **Verdict de la reprise** : **VALIDE SOUS RESERVE** - **`OBT-R1` et `OBT-R2` sont levees.** Aucune
+  reserve neuve.
+- **Statut de la ligne** : `SCI-CM1-12` reste **`couvert-valide`**. Cette reprise ne rouvre rien.
+- **Commit audite** : `548121d9` (`[LEA] s31: S31-6 - l'indice du velo ne dement plus sa propre
+  bonne reponse`).
+- **Audit joue** : **oui.** Jar reconstruit depuis mon worktree `s31-nadia-A` a `3181b5e6`, port
+  8082. **Une partie complete de dix manches avec erreurs volontaires**, puis **trois parties
+  supplementaires forcees jusqu'a voir l'item du velo a l'ecran avec son indice**, parce que le
+  tirage ne me l'avait pas servi la premiere fois. Les trois items vises par les deux reserves ont
+  ete lus a l'ecran apres erreur. **Audit degrade sur un point** : lecture du HTML servi, pas de la
+  page rendue ; aucun jugement visuel n'entre dans ce reaudit.
+- **Histoire des verdicts, aucun efface** : le REFUSE du 2026-09-06 et le VALIDE SOUS RESERVE qui
+  l'a suivi restent lisibles au-dessus, tels quels.
+
+### `OBT-R1` - **levee**
+
+**La propriete que j'avais ecrite** : *"l'indice de cet item se place dans le meme cadre que
+l'enonce - le trajet, donc la distance - et n'introduit pas la comparaison a effort egal, qui est
+une autre facon vraie de dire la meme chose et qui, ici, dement la bonne reponse."*
+
+**Ce qui est servi, lu a l'ecran** : *"Pour un meme trajet, pedaler fatigue moins que marcher a
+pied."*
+
+- Le cadre est celui de l'enonce, nomme explicitement (*"pour un meme trajet"*) : **oui**.
+- La comparaison a effort egal a disparu : **oui**.
+- L'indice ne dement plus la bonne reponse de son propre item : **oui**, et il la soutient.
+- Le fait est exact : a distance egale, le velo coute moins d'effort que la marche. **Oui.**
+
+**C'etait le seul indice du depot que j'avais vu argumenter contre la reponse de son propre item ; il
+ne le fait plus.**
+
+### `OBT-R2` - **levee**, et je confirme ma barre plutot que celle du backlog
+
+**La propriete que j'avais ecrite, mot pour mot** : *"un indice ecarte **au plus un** distracteur
+nomme. Il donne le critere ou tue la conception fausse ; il ne fait pas le tour de la liste."*
+
+**Ce qui est servi, lu a l'ecran** :
+
+- item 2 : *"On l'allume quand il n'y a pas assez de lumiere ; elle ne sert jamais a rechauffer les
+  mains."* - **un** distracteur nomme.
+- item 3 : *"On l'utilise quand la pointe d'un crayon est devenue trop usee ; il ne sert jamais a
+  effacer ce qu'on a ecrit."* - **un** distracteur nomme.
+
+**Tenue sur les deux items.**
+
+#### Le point que `yanis-qa` a remonte, et ma reponse
+
+`yanis-qa` a trouve un ecart entre ma fiche et le critere de la story `S31-6` : le backlog exige
+qu'un indice *"ne nomme **aucun** des distracteurs de son item, plausibles ou non"*, la ou cette
+fiche dit *"au plus un"*. Le contenu livre suit la fiche.
+
+**C'est bien ma barre, et c'est *"au plus un"*.** Trois raisons, et la troisieme est decisive :
+
+1. **La fiche est la source, le backlog en est une derivation.** `OBT-R2` a ete ecrite ici le
+   2026-09-06 ; la story la reprend. Quand les deux different, c'est la reformulation qui a derive.
+2. **Le motif de la reserve etait la revelation, pas la mention.** Ce que je reprochais est
+   *"ecarter nommement les **deux** distracteurs ne laisse que la bonne"*. Un seul distracteur
+   ecarte laisse encore un choix, ce qui est tout ce que je demandais.
+3. **Et surtout : *"aucun"* aurait disqualifie mon propre modele.** J'avais ecrit, dans la meme
+   reserve, que *"l'item 4 montre la bonne mesure et sert de modele"*, en citant *"Il deplace l'air
+   d'une salle ; il ne le rend jamais plus froid."* - qui **nomme** le distracteur *"a refroidir
+   reellement l'air d'une salle"* pour l'ecarter, et laisse *"purifier l'air"* debout. **Une barre
+   qui refuse l'exemple que j'ai moi-meme donne comme modele n'est pas ma barre.**
+
+**Je confirme donc *"au plus un"*, et je route la correction du critere de story plutot que de la
+laisser vivre** : un critere plus strict que la reserve dont il derive fait porter au developpeur
+une exigence que personne n'a arbitree.
+
+**Merci a `yanis-qa` de l'avoir remonte plutot que de l'avoir tranche.** C'est exactement la forme
+de derive - une reformulation qui durcit en recopiant - que ce depot a deja sanctionnee plusieurs
+fois, et elle a ete prise avant de couter quoi que ce soit.
+
+### Un point que je ne transforme pas en reserve, et qui est de mon fait
+
+L'indice corrige du velo, *"pedaler fatigue moins que marcher a pied"*, **dit en d'autres mots la
+moitie de sa bonne reponse** (*"avec moins d'effort"*), ce qui est le voisinage de `M21`.
+
+**Je ne l'ouvre pas en reserve, et le motif est que c'est ma propre propriete qui l'a produit.**
+J'avais exige que l'indice reste *"dans le meme cadre que l'enonce - le trajet, donc la distance"* ;
+dans ce cadre, le seul enonce vrai disponible **est** que le velo coute moins d'effort. **Je ne peux
+pas commander une contrainte et reprocher son unique solution.**
+
+Et le fait scolaire tient : l'indice distingue *"fatigue moins"* de *"sans aucun effort"*, qui est
+precisement le distracteur restant. **Il aide, il ne revele pas.**
+
+**Je l'ecris ici plutot que nulle part** : si une reserve doit naitre un jour sur ce point, elle
+naitra datee, comme reserve neuve, et pas comme un durcissement de `OBT-R1`.
+
+### Ce que ce reaudit ne fait pas
+
+- Il ne rouvre pas `SCI-CM1-12`, qui reste `couvert-valide`.
+- Il n'efface aucun verdict : le REFUSE du 2026-09-06, sa reprise et les deux reserves restent
+  lisibles au-dessus, avec la date de leur levee ici.
+- Il ne touche pas a la matrice.
+
+### Ce que je route apres ce reaudit
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`OBT-R1` et `OBT-R2` levees** | `camille-po` | Elles sortent des dix-sept reserves ; le tri du 2026-09-07 les comptait deja comme soldees par le groupe 1 |
+| **Le critere de `S31-6` dit *"aucun distracteur nomme"* la ou `OBT-R2` dit *"au plus un"*** | `camille-po`, via `sofia-sm` | Corriger le critere de story pour qu'il cite la reserve, pas une version durcie d'elle. **Rien a refaire dans le contenu** : le contenu suit la fiche, qui fait foi |
+| **Aucun garde-fou n'existe sur `OBT-R1` ni `OBT-R2`** | `theo-archi` | Constat du 2026-09-06 **maintenu** : les deux corrections ont ete faites a la main, et rien n'empeche leur reapparition |

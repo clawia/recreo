@@ -13,7 +13,11 @@
   section 2.2 ligne 2, et `squad/programme/sciences-et-technologie/competences-cm1.md`.
 - **Commit audite** : `5824e752` (`[LEA] s30: S30-2 - second lot de sciences CM1, melanges et objet
   technique`).
-- **Derniere mise a jour** : 2026-09-06.
+- **Derniere mise a jour** : 2026-09-07 (reaudit de la reprise `S31-5`, section finale).
+- **Reaudit du 2026-09-07** (`nadia-prof`, instance A, s31) : **`MEL-R1`, `MEL-R2` et `MEL-R3` sont
+  levees**, la correction *bol / carafe* est faite, **une reserve neuve `MEL-R4` est ouverte**.
+  `SCI-CM1-02` reste **`couvert-valide`**, statut inchange. Voir la derniere section de cette fiche.
+  **Le verdict du 2026-09-06 n'est ni efface ni reecrit** : il reste lisible tel quel ci-dessous.
 
 ## Competence visee
 
@@ -217,3 +221,138 @@ sans reserve de perimetre**, et je n'en ajoute pas une apres coup.
 | **`MEL-R1`, `MEL-R2`, `MEL-R3`**, plus la correction *bol / carafe* qui voyage avec | `camille-po`, via `sofia-sm` | En faire des stories. Regime : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
 | **La bonne reponse d'un item apparait mot pour mot dans son enonce** | `theo-archi` | Propriete textuelle du YAML, donc mordable. Je dis la propriete, pas la forme |
 | **`MEL-R1` conditionne la coherence future avec `SCI-CM1-01`** | `camille-po` | A payer avant qu'un paquet d'etats de la matiere soit ecrit, pas apres |
+
+---
+
+## Reaudit de la reprise `S31-5` - 2026-09-07, `nadia-prof` instance A
+
+- **Verdict de la reprise** : **VALIDE SOUS RESERVE** - les trois reserves de s30 sont **levees**,
+  une reserve neuve et datee, `MEL-R4`, est ouverte.
+- **Statut de la ligne** : `SCI-CM1-02` reste **`couvert-valide`**. **Cette reprise ne rouvre rien
+  et ne referme rien** ; elle paie trois reserves non bloquantes.
+- **Commit audite** : `eb812fd4` (`[LEA] s31: S31-5 - l'indice du sel ne fait plus disparaitre
+  l'eau`).
+- **Audit joue** : **oui.** Jar reconstruit depuis mon worktree `s31-nadia-A` a `3181b5e6`, port
+  8082, **une partie complete de dix manches avec deux erreurs volontaires par manche**, donc les
+  trois indices corriges lus a l'ecran et non dans le fichier. **Audit degrade sur un point** :
+  lecture du HTML servi, pas de la page rendue ; aucun jugement visuel n'entre dans ce reaudit.
+
+### `MEL-R1` - **levee**
+
+**La propriete que j'avais ecrite** : *"l'indice de cet item garde sa premiere phrase, qui fait
+exactement ce que `SCI-1` demande, et remplace la seconde par une phrase qui ne dit ni que l'eau
+disparait, ni ce qu'il faut faire."*
+
+**Ce qui est servi, lu a l'ecran manche 3** : *"Le sel dissous ne peut pas etre retenu par un filtre.
+Il reste cache dans l'eau tant que celle-ci garde sa forme liquide."*
+
+- Premiere phrase conservee : **oui**.
+- L'eau ne disparait plus : **oui**. Et la formulation retenue dit **le contraire** de ce que je
+  reprochais - le sel *reste*, l'eau *garde sa forme liquide*. **C'est la conservation de la matiere
+  enoncee positivement**, ce qui est mieux que la neutralite que j'avais demandee.
+- La phrase ne nomme plus le geste a faire : **oui**. Elle ne dit pas d'evaporer ; elle dit
+  pourquoi le filtre echoue et a quoi tient la difference.
+
+**J'ai aussi verifie ce que je n'avais pas demande, parce que c'est le mot exact de la reserve** :
+l'indice de l'item 4 dit toujours *"Les grains ont disparu **a l'oeil**"*. **Ce n'est pas le meme
+defaut** : *"a l'oeil"* est precisement la qualification que la conservation exige, et cette
+formulation-la est juste. **Je la laisse et je le dis, pour qu'on ne la corrige pas par exces de
+zele.**
+
+**La correction *bol / carafe* qui voyageait avec est faite** : l'indice de l'item du sirop de
+menthe dit *"Tout le bol"*, comme son enonce. **Verifie a l'ecran, manche 4.**
+
+### `MEL-R2` - **levee**
+
+**La propriete que j'avais ecrite** : *"l'enonce decrit le resultat observe - l'eau redevenue claire,
+la terre deposee au fond - sans nommer le geste que la bonne reponse nomme."*
+
+**Ce qui est servi, lu a l'ecran manche 1** : *"Dans un verre d'eau trouble avec de la terre, apres
+un long moment sans qu'on y touche, l'eau est redevenue claire et la terre s'est deposee au fond.
+Quel moyen a-t-on utilise pour separer la terre ?"*
+
+- Le resultat observe est decrit, dans les termes memes de ma propriete : **oui**.
+- Le geste que la bonne reponse nomme (*laisser reposer*) n'est plus dans l'enonce : **oui**.
+
+**La propriete que j'ai ecrite est tenue, je leve la reserve, et je ne deplace pas ma barre.** Ce
+que je vois aujourd'hui de plus, je l'ecris en dessous comme une reserve **neuve et datee**, pas
+comme un durcissement de celle-ci.
+
+### `MEL-R3` - **levee**
+
+**La propriete que j'avais ecrite** : *"la troisieme proposition est un candidat plausible - une
+categorie que l'enfant connait, **ou** une reponse qu'il pourrait vraiment donner - et non un bouton
+de remplissage."*
+
+**Ce qui est servi, lu a l'ecran manche 2** : *"un melange qui n'est ni homogene ni heterogene"*, a
+la place de *"un melange qui n'existe pas"*.
+
+**La seconde branche du *ou* est satisfaite, et c'est celle qui compte ici.** L'enonce decrit
+exactement l'hesitation qui produit cette reponse : *"juste apres avoir remue, le melange semble
+uniforme, mais on voit vite deux couches se former"*. **Un enfant de CM1 devant un melange qui a
+l'air des deux choses successivement peut vraiment repondre *ni l'un ni l'autre*.** Ce n'est plus un
+bouton que personne ne presse ; c'est une conception fausse identifiable, que l'indice defait
+(*"Les deux liquides finissent toujours par se separer."*).
+
+**Je note, sans en faire une reserve** : la premiere branche du *ou* n'est pas satisfaite - ce n'est
+pas une categorie enseignee. **Ma clause dit *ou*, pas *et*. Je m'y tiens.**
+
+**Effet de bord favorable que je constate** : cet item etait le seul du paquet a trois propositions
+dont l'une ne comptait pas. Avec la correction, `BIN-1` - clause du 2026-09-07, qui **ne s'applique
+pas retroactivement a ce paquet** - serait desormais tenue sur lui : 5 items binaires sur 11.
+**Je le note comme un fait, pas comme une exigence satisfaite.**
+
+### `MEL-R4` - reserve **neuve**, ouverte le 2026-09-07, non bloquante
+
+**Ce n'est pas un durcissement de `MEL-R2`, qui est levee ci-dessus sur la propriete que j'avais
+ecrite.** C'est ce que je vois de plus maintenant que le defaut principal est parti, et ma propre
+regle m'oblige a l'ecrire comme une reserve nouvelle et datee plutot qu'a le glisser dans
+l'ancienne.
+
+L'enonce de l'item 10 ne nomme plus *laisser reposer*, mais il porte encore **la duree et
+l'absence de manipulation** : *"apres un long moment sans qu'on y touche"*. Ses deux distracteurs
+sont *"utiliser un aimant"* (rien de magnetique dans le melange) et *"faire chauffer le melange"*
+(l'enonce dit qu'on n'y a pas touche). **Un enfant qui ignore ce qu'est une decantation elimine les
+deux a partir du seul enonce.** C'est `CON-1` a l'etat residuel : moins grossier qu'avant, toujours
+present.
+
+> **Propriete a tenir** : l'enonce decrit **le seul resultat observe** - l'eau redevenue claire, la
+> terre deposee au fond - sans mentionner ni la duree, ni l'absence de manipulation. La formulation
+> appartient au developpeur.
+
+**Regime** : non bloquante, **a payer dans le prochain rejeu de ce paquet, sans rejeu dedie**
+(`PAR-10`). Elle ne cree pas de dette a elle seule.
+
+### La couture avec `SCI-CM1-01` (etats de la matiere) - vue de mon cote seulement
+
+`lea-dev` signale avoir ferme la couture d'avance : l'item de vaporisation du paquet d'etats de la
+matiere porterait *"la disparition"* en distracteur, corrige par son indice.
+
+**Je ne juge pas ce paquet-la : il est du perimetre de l'instance B, et je ne me prononce pas a sa
+place.** Ce que je peux dire, et c'est tout ce que je dis :
+
+> **De mon cote, la couture tient.** Le paquet `melanges` n'affirme plus nulle part que l'eau
+> disparait, se perd ou s'en va. Sa seule occurrence du verbe est *"les grains ont disparu **a
+> l'oeil**"* (item 4), qui est la formulation juste de la conservation. Sa bonne reponse de l'item 8
+> est *"laisser l'eau s'evaporer"*, qui nomme le changement d'etat. **Un enfant qui joue les deux
+> paquets ne rencontrera pas deux affirmations contraires du fait de `melanges`.**
+
+**Ce que ma phrase de `MEL-R1` laissait ouvert** - je l'avais ecrite comme une condition de
+coherence future, pas comme une specification du paquet voisin - **est donc ferme du cote que je
+juge.** Le cote `etats de la matiere` appartient a l'instance B.
+
+### Ce que ce reaudit ne fait pas
+
+- Il ne rouvre pas `SCI-CM1-02`, qui reste `couvert-valide`.
+- Il n'efface aucun verdict : le Done du 2026-09-06 et ses trois reserves restent lisibles au-dessus,
+  avec la date de leur levee ici.
+- Il ne touche pas a la matrice.
+- Il ne juge aucun paquet du perimetre de l'instance B.
+
+### Ce que je route apres ce reaudit
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`MEL-R1`, `MEL-R2`, `MEL-R3` levees** | `camille-po` | Elles sortent des dix-sept reserves ; le tri du 2026-09-07 les comptait deja comme soldees par le groupe 1 |
+| **`MEL-R4`** | `camille-po`, via `sofia-sm` | Non bloquante, a payer dans un rejeu deja finance de ce paquet. **Elle ne justifie pas un rejeu a elle seule** |
+| **La bonne reponse d'un item apparait mot pour mot dans son enonce** | `theo-archi` | Routage du 2026-09-06 **maintenu** : la reprise l'a corrige a la main, le garde-fou n'existe toujours pas |

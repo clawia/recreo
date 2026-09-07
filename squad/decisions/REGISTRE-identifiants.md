@@ -66,6 +66,26 @@ mesure ci-dessus n'est pas retouche** : il porte une methode et une date qui ne 
 miennes, et le corriger de deux unites sans refaire la mesure produirait un chiffre sans methode.
 Compte du seul point de vue de cette allocation : **+2**.
 
+**Note de `nadia-prof`, instance A, a la remise de ses verdicts de s31 (2026-09-07).** J'ai alloue
+moi-meme, dans la table de la section 4, les **cinq identifiants de reserve** que mes verdicts de ce
+jour ouvrent : `EMO-R1` et `EMO-R2`, `POL-R1` et `POL-R2`, `MEL-R4`. Deux prefixes sont neufs, `EMO`
+et `POL` ; `MEL` existait deja. **C'est une allocation mecanique** - chaque ligne pointe vers la
+fiche qui definit la reserve - **et non une decision d'architecture** : je l'ecris dans le meme geste
+que mes verdicts, precisement pour ne pas reproduire le defaut de couture de forme (c) que je viens
+de constater a l'assemblage du planning de ce sprint.
+
+**Compte apres cette allocation, recompte mecaniquement sur cette table** : **532 identifiants, sur
+89 prefixes**. *Methode : comptage des lignes de tableau de la forme `PREFIXE-[R]nombre`, puis
+retrait de l'unique homonyme de la section 3 (`UTF-8`) et de son prefixe.*
+
+**Et je signale un ecart que je ne corrige pas, parce qu'il appartient a son auteur.** La ligne de
+compte revise de la section 1 dit *"527 identifiants, sur **83** prefixes"*. Le meme comptage
+mecanique, applique a l'etat qui precede mon allocation, donne **527 identifiants** - le chiffre est
+juste - **et 87 prefixes** : les quatre prefixes `BIN`, `CAT`, `FAB` et `PLA` etaient libres, donc
+neufs, et s'ajoutent aux 83. **`theo-archi` a deja corrige ce chiffre de son cote ; sa ligne de
+mesure lui appartient et je ne la reecris pas.** Je le note ici parce qu'un chiffre faux laisse dans
+un fichier que tous les agents lisent est de la meme famille qu'une reference qui pointe vers rien.
+
 ## 2. Ce que ce registre alloue, et ce qu'il n'alloue pas
 
 Il alloue les identifiants de **condition** et de **reserve**, les deux genres que la mesure de s30
@@ -237,6 +257,8 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `EMC-8` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-9` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-10` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
+| `EMO-R1` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
+| `EMO-R2` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EPS-1` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
 | `EPS-2` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
 | `EPS-3` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
@@ -359,6 +381,7 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `MEL-R1` | `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md` |
 | `MEL-R2` | `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md` |
 | `MEL-R3` | `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md` |
+| `MEL-R4` | `squad/conformite/FICHE-bandit-manchot-melanges-cm1.md` |
 | `MES-1` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `MES-2` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `MNC-1` | `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md` |
@@ -431,6 +454,8 @@ quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit dispar
 | `PORTE-4` | `squad/conformite/FICHE-barre-entree-niveau.md` |
 | `PORTE-5` | `squad/conformite/FICHE-barre-entree-niveau.md` |
 | `PORTE-6` | `squad/conformite/FICHE-barre-entree-niveau.md` |
+| `POL-R1` | `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md` |
+| `POL-R2` | `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md` |
 | `POS-1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `POS-2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `POS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
