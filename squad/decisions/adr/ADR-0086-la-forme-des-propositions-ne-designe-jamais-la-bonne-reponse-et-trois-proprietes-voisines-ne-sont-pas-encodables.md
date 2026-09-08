@@ -414,20 +414,53 @@ ecrite ici ferait croire la propriete gardee, ce qui est pire que de la savoir n
 **Le fait de l'instance B est exact, et je l'ai verifie dans la source plutot que dans sa
 description.** Le test de `cm1-sciences-familles-materiaux` exigeait *six bonnes reponses distinctes*
 (`hasSize(itemsDeChoix().size())`) ; il compare desormais la frequence maximale a `choix.size()`,
-donc **il accepte cinq bonnes reponses identiques sur six**. Sa lecture du 2026-09-07 autorisait un
-materiau sur **deux** proprietes ; elle ne demandait pas ce relachement.
+donc **il accepte cinq bonnes reponses identiques sur six**. Sa lecture du 2026-09-07 dit que la
+repetition est licite *"des lors que la bonne reponse varie"* ; elle ne demandait pas ce relachement,
+et **elle ne fixe aucun plafond**.
 
 **C'est la famille du cliquet, et le depot l'a deja sanctionnee** : un plafond dont la valeur depasse
 la dette qu'il garde ne garde rien (`ADR-0013`, `ADR-0067`). Ici l'ecart est de **trois crans** -
 plafond a 5, dette mesuree a **2** (six items de choix, cinq materiaux, le plastique deux fois, sur
 la souplesse et l'impermeabilite).
 
-**La borne vaut desormais exactement ce que sa lecture autorise : deux.** Elle est ecrite, nommee,
+**La borne vaut desormais 2, et ce 2 est ma decision, pas sa lecture.** Elle est ecrite, nommee,
 motivee, et sans marge - un troisieme item sur le meme materiau, c'est la moitie de la tache derriere
 un seul bouton. **La relever demande un amendement ecrit**, pas une expression qui suit la taille du
 paquet. La morsure est arithmetique et non textuelle : la borne refuse la distribution que l'ancienne
 ecriture acceptait (cinq sur six) et celle qui la depasse d'un cran (trois sur six), et la
 distribution reellement servie la passe.
+
+**Qui a mesure quoi, et pourquoi cette phrase-ci est ecrite.** *Correction d'attribution du
+2026-09-08, sur signalement de `nadia-prof` en conclusion de s31 (section 5.6), le meme jour :* la
+redaction precedente de ce paragraphe disait *"la borne vaut desormais exactement ce que sa lecture
+autorise : deux"*, et la Javadoc du test disait *"la lecture de `nadia-prof` du 2026-09-08 autorise un
+materiau sur deux proprietes differentes et pas davantage"*. **Les deux lui attribuaient un plafond
+qu'elle n'a pas ecrit.** Le partage exact :
+
+| Ce qui est de `nadia-prof` | Ce qui est de moi |
+|---|---|
+| **Le fait** : le garde-fou accepte cinq bonnes reponses identiques sur six la ou il exigeait six distinctes - *"varier n'est pas ne pas etre constant"*. Verifie dans la source, exact | **Le plafond de 2**, decision d'architecture prise sur la mesure ci-dessus |
+| **La barre pedagogique** : la repetition est licite *"des lors que la bonne reponse varie"*. Elle ne chiffre rien | **Le choix de faire du chiffre mesure une borne**, plus strict que sa barre |
+| **L'observation du plastique** sur la souplesse et l'impermeabilite, citee par elle comme une mesure du contenu servi | **La lecture de cette observation comme une limite**, qu'elle n'a pas faite |
+
+Elle ne contredit pas ce 2 - *"un garde-fou plus strict que ma barre est dans son droit, et celui-la
+est utile"* - et je ne le change pas. **Ce qui change est la paternite ecrite**, et le motif est une
+regle de ce depot avant d'etre une politesse : un chiffre attribue a la porte pedagogique devient
+inattaquable pour de mauvaises raisons, et son auteur reel n'est plus celui qui doit le defendre.
+C'est la meme famille que l'exemption qui *"transforme un verdict de `nadia-prof` en dette
+technique"*, ecartee plus bas dans les alternatives de cet ADR.
+
+**La borne est atteinte sans marge : je confirme le constat, et je dis ce qu'il produit.** Six items
+de choix, cinq materiaux, frequence maximale **2** : la borne vaut exactement la distribution servie.
+Donc **le prochain paquet - ou la prochaine reprise de celui-ci - qui poserait un troisieme item sur
+un meme materiau est rouge**, et rouge sur une borne d'architecture, pas sur un verdict pedagogique.
+Ce n'est pas un effet de bord, c'est la propriete qu'`ADR-0013` exige d'un cliquet : un plafond qui
+depasse la dette qu'il garde ne garde rien, et celui-ci ne la depasse pas d'un cran. **Ce que celui
+qui rencontrera ce rouge doit savoir** : la marche a suivre n'est pas de relever la borne dans le test
+mais d'amender cet ADR - une ligne ecrite qui dise quel materiau porte trois proprietes reelles,
+verifiee par `nadia-prof` puisque c'est une question de contenu. La borne est **volontairement**
+plus etroite que sa barre : elle refuse une distribution qu'elle autoriserait, et c'est le prix
+assume d'un cliquet exact sur un seul paquet.
 
 **Ce que je ne fais pas** : etendre cette borne a tous les paquets. Une clause generale se
 calculerait **par tache**, et un paquet ne declare pas ses taches - c'est deja le declencheur ecrit

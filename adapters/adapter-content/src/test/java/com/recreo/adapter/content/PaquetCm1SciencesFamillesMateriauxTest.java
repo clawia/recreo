@@ -39,9 +39,10 @@ class PaquetCm1SciencesFamillesMateriauxTest {
     private static final int MINIMUM_PAR_TACHE = 3;
 
     /**
-     * FAB-1b : le nombre d'items de la tache de choix qu'un meme materiau peut porter. Deux, parce
-     * que la lecture de {@code nadia-prof} du 2026-09-08 autorise un materiau sur deux proprietes
-     * differentes et pas davantage.
+     * FAB-1b : le nombre d'items de la tache de choix qu'un meme materiau peut porter. Deux, par
+     * decision d'architecture prise sur la mesure du paquet servi (ADR-0086, section 7). Ce n'est pas
+     * la barre de {@code nadia-prof}, qui ne chiffre rien : sa clause dit que la repetition est licite
+     * <i>"des lors que la bonne reponse varie"</i>.
      */
     private static final int DOMINATION_MAXIMALE = 2;
 
@@ -150,13 +151,19 @@ class PaquetCm1SciencesFamillesMateriauxTest {
      * <b>trois crans au-dessus</b> de la dette qu'il gardait, ce qu'ADR-0013 refuse d'appeler un
      * cliquet.
      *
-     * <p><b>La borne vaut exactement ce que la lecture de {@code nadia-prof} autorise</b> : un
-     * materiau peut porter <b>deux</b> proprietes differentes - le plastique, sur la souplesse
-     * (item 8) et l'impermeabilite (item 9) -, jamais trois. Mesure du 2026-09-08 sur le paquet
-     * servi : six items de choix, cinq materiaux, frequence maximale <b>2</b>. La borne est donc
-     * atteinte sans marge, et c'est voulu : un troisieme item sur le meme materiau, c'est la moitie
-     * de la tache derriere un seul bouton. La relever demande un amendement ecrit d'ADR-0086, pas
-     * une expression qui suit la taille du paquet.
+     * <p><b>La borne vaut la dette mesuree, et ce chiffre est une decision d'architecture</b> - pas
+     * la lecture de {@code nadia-prof}, qui ne fixe aucun plafond (correction d'attribution du
+     * 2026-09-08, sur son signalement ; ADR-0086, section 7). Un materiau peut porter <b>deux</b>
+     * proprietes differentes - le plastique, sur la souplesse (item 8) et l'impermeabilite (item 9)
+     * -, jamais trois. Mesure du 2026-09-08 sur le paquet servi : six items de choix, cinq
+     * materiaux, frequence maximale <b>2</b>.
+     *
+     * <p><b>La borne est donc atteinte sans marge, {@code nadia-prof} le constate et je le
+     * confirme</b> : un troisieme item sur un meme materiau rend ce test rouge, et c'est voulu -
+     * c'est la moitie de la tache derriere un seul bouton, et un plafond qui depasse la dette qu'il
+     * garde ne garde rien (ADR-0013). <b>Ce que ce rouge demande</b> n'est pas de relever la borne
+     * ici : c'est un amendement ecrit d'ADR-0086 disant quel materiau porte trois proprietes reelles,
+     * et cette question-la est de contenu, donc de {@code nadia-prof}.
      */
     @Test
     void fab1bAucunMateriauNeRepondAPlusDeDeuxItemsDeLaTacheDeChoix() {
