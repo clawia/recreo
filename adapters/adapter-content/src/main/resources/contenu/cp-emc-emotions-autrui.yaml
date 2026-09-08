@@ -57,6 +57,19 @@ lignesDeReferentiel: ["EMC-CP-01"]
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
+#
+# Correction du 2026-09-08 (lea-dev, S32-4, docs/backlog/backlog.md, sprint 32) :
+#
+# EMO-R1 (arbitrage prealable de s32, section 16.4 et 16.5, chiffres corriges a 17 et 18 mots) :
+# les items 4 et 5 depassaient LON-1 (au plus 15 mots). Item 4, la relative "qu'il venait de finir"
+# est retiree ; item 5, la seconde subordonnee au futur ("et qu'ils ne pourront plus jouer
+# ensemble") est retiree. Chacun tient desormais en une proposition principale et une question,
+# sous la barre, sans rien changer au fait rapporte ni a la bonne reponse.
+#
+# EMO-R2 : trois indices de la tache B employaient un vocabulaire au-dessus du CP - "posture"
+# (item 8), "volontairement" (item 4), "brusques" (item 11). Remplaces par des mots plus simples
+# ("casse expres", "a du mal a retenir ses larmes", "bouge fort et vite") qui decrivent la meme
+# scene sans nommer l'emotion attendue.
 items:
   - enonce: "Léa a perdu son doudou préféré à la sortie de l'école. Que ressent-elle ?"
     bonneReponse: "de la tristesse"
@@ -70,11 +83,11 @@ items:
     bonneReponse: "de la peur"
     distracteurs: ["de la colère", "de la tristesse"]
     indice: "Le chien est bruyant et tout près d'elle, sans qu'elle s'y attende."
-  - enonce: "Malo voit son petit frère renverser exprès la tour de cubes qu'il venait de finir. Que ressent-il ?"
+  - enonce: "Malo voit son petit frère renverser sa tour de cubes exprès. Que ressent-il ?"
     bonneReponse: "de la colère"
     distracteurs: ["de la joie", "de la peur"]
-    indice: "Son travail est détruit volontairement par quelqu'un d'autre."
-  - enonce: "Tom apprend que son meilleur ami déménage très loin et qu'ils ne pourront plus jouer ensemble. Que ressent-il ?"
+    indice: "Son travail est cassé exprès par quelqu'un d'autre."
+  - enonce: "Tom apprend que son meilleur ami déménage très loin. Que ressent-il ?"
     bonneReponse: "de la tristesse"
     distracteurs: ["de la peur", "de la colère"]
     indice: "Il va perdre quelqu'un d'important pour lui."
@@ -89,7 +102,7 @@ items:
   - enonce: "Aya a les larmes aux yeux et la tête baissée. Qu'est-ce que cela montre ?"
     bonneReponse: "de la tristesse"
     distracteurs: ["de la joie", "de la colère"]
-    indice: "Ses yeux et sa posture se ferment, comme pour se protéger."
+    indice: "Elle a du mal à retenir ses larmes, et n'ose pas regarder les autres."
   - enonce: "Hugo sourit largement et saute partout dans le couloir. Qu'est-ce que cela montre ?"
     bonneReponse: "de la joie"
     distracteurs: ["de la peur", "de la tristesse"]
@@ -101,4 +114,4 @@ items:
   - enonce: "Léa fronce les sourcils et tape du pied par terre. Qu'est-ce que cela montre ?"
     bonneReponse: "de la colère"
     distracteurs: ["de la peur", "de la joie"]
-    indice: "Son visage et ses gestes deviennent brusques d'un coup."
+    indice: "Son corps bouge fort et vite, tout d'un coup."

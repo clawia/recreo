@@ -68,10 +68,41 @@ lignesDeReferentiel: ["EMC-CP-03"]
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064).
+#
+# Correction du 2026-09-08 (lea-dev, S32-4, docs/backlog/backlog.md, sprint 32), quatre des cinq
+# reserves de nadia-prof (squad/conformite/FICHE-bandit-manchot-exclusion-cp.md, bloc du reaudit) :
+#
+# EXC-R3 : la troisieme proposition de la tache A (items 1, 5, 6) n'etait pas un candidat serieux -
+# "une bagarre" la ou personne ne se bat (item 1), "une dispute" sur un pied ecrase par accident
+# (item 5), "une vengeance" sur un geste dit "sans faire expres" (item 6). Remplacees par des
+# categories qu'un enfant peut vraiment envisager pour la scene decrite ("une bousculade", "un jeu
+# de recreation", "une blague") - aucun trio de propositions ne se repete avec la meme bonne reponse.
+#
+# EXC-R4 : les deux enonces les plus longs de la tache B (items 9 et 10 de ce fichier, 16 et 18
+# mots avant correction) posaient deux circonstances avant la question. Ramenes a une seule
+# circonstance chacun (LON-1, LON-2, arbitrage prealable de s32, section 16.4).
+#
+# EXC-R2 : les cinq indices de la tache B ne redonnaient que le lieu deja ecrit dans l'enonce, et
+# deux d'entre eux reprenaient un mot de la bonne reponse. Ils disent desormais le role de l'adulte
+# aupres des eleves, une information que l'enonce ne donne pas, sans reprendre les mots de la bonne
+# reponse ni le lieu deja ecrit.
+#
+# EXC-R1 (consigne du catalogue) n'est PAS payee dans ce geste : la consigne servie ("Lis bien,
+# puis dis ce qu'il faut faire, ou a qui en parler.") ne nomme plus la tache A, qui ne sert plus une
+# action depuis la reecriture de s31. Le changer casse quatre tests de
+# TexteAccentueExposeParLePortEntrantTest (bootstrap), qui maintient un inventaire Java des chaines
+# exposees par le catalogue - hors du perimetre "contenu pur" de cette story. Route a sofia-sm.
+#
+# EXC-R5 (la presence de l'adulte plutot que le lieu comme critere) n'est pas payee non plus : la
+# forme que nadia-prof demande ("quel adulte est la a ce moment ?" au lieu de "a qui ... en
+# parler ?") romprait la classification de PaquetCpEmcExclusionTest#estDeTacheAdulte (elle filtre
+# sur la sous-chaine "A qui"), et changer le texte des bonnes reponses casserait
+# ADULTES_VALIDES, meme test - un changement de contenu ne peut pas payer cette reserve sans
+# toucher un module Java. Route a sofia-sm.
 items:
   - enonce: "Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe. Qu'est-ce que c'est ?"
     bonneReponse: "une moquerie qui se répète"
-    distracteurs: ["un accident isolé", "une bagarre"]
+    distracteurs: ["un accident isolé", "une bousculade"]
     indice: "Une seule fois serait un hasard ; là, cela recommence chaque jour."
   - enonce: "Presque tous les jours, Hugo se moque de la façon dont parle Tom. Qu'est-ce que c'est ?"
     bonneReponse: "une moquerie qui se répète"
@@ -87,29 +118,29 @@ items:
     indice: "Une excuse immédiate après un geste involontaire n'est pas de la moquerie."
   - enonce: "Aya marche sur le pied de Hugo une seule fois, par accident. Qu'est-ce que c'est ?"
     bonneReponse: "un accident isolé"
-    distracteurs: ["une moquerie qui se répète", "une dispute"]
+    distracteurs: ["une moquerie qui se répète", "un jeu de récréation"]
     indice: "Un seul faux pas involontaire n'est pas la même chose qu'une habitude."
   - enonce: "Malo fait tomber le dessin de Léa une fois, sans faire exprès. Qu'est-ce que c'est ?"
     bonneReponse: "un accident isolé"
-    distracteurs: ["une moquerie qui se répète", "une vengeance"]
+    distracteurs: ["une moquerie qui se répète", "une blague"]
     indice: "Une maladresse unique n'a rien à voir avec un geste répété exprès."
   - enonce: "Dans la cour, une moquerie se répète chaque jour. À qui Hugo doit-il en parler ?"
     bonneReponse: "à un surveillant de la cour"
     distracteurs: ["à sa maîtresse", "à l'adulte qui surveille la cantine"]
-    indice: "C'est un adulte présent dans la cour pendant la récréation."
+    indice: "Cette personne est là pour veiller sur les élèves qui jouent."
   - enonce: "En classe, une moquerie se répète chaque jour. À qui Aya doit-elle en parler ?"
     bonneReponse: "à sa maîtresse"
     distracteurs: ["à un surveillant de la cour", "à l'adulte qui surveille la cantine"]
-    indice: "C'est l'adulte présent avec la classe à ce moment-là."
+    indice: "C'est elle qui reste avec les élèves toute la journée."
   - enonce: "À la cantine, une moquerie se répète chaque jour. À qui Malo doit-il en parler ?"
     bonneReponse: "à l'adulte qui surveille la cantine"
     distracteurs: ["à sa maîtresse", "à un surveillant de la cour"]
-    indice: "C'est un adulte présent au moment du repas."
-  - enonce: "Dans la cour, avant la classe, une moquerie se répète. À qui Tom doit-il en parler ?"
+    indice: "Cette personne veille sur les élèves qui mangent."
+  - enonce: "Une moquerie se répète dans la cour, le matin. À qui Tom doit-il en parler ?"
     bonneReponse: "à un surveillant de la cour"
     distracteurs: ["à l'adulte qui surveille la cantine", "à sa maîtresse"]
-    indice: "C'est un adulte présent dans la cour à ce moment-là."
-  - enonce: "En classe, à la fin de la journée, une moquerie se répète. À qui Léa doit-elle en parler ?"
+    indice: "Son rôle est de veiller sur les élèves pendant les récréations."
+  - enonce: "En classe, une moquerie se répète le vendredi. À qui Léa doit-elle en parler ?"
     bonneReponse: "à sa maîtresse"
     distracteurs: ["à l'adulte qui surveille la cantine", "à un surveillant de la cour"]
-    indice: "C'est l'adulte présent avec la classe à ce moment-là."
+    indice: "C'est elle qui est avec ses élèves tous les jours."

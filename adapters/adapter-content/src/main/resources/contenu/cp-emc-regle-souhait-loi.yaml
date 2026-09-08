@@ -12,10 +12,10 @@ lignesDeReferentiel: ["EMC-CP-07"]
 # 2026-09-07 (squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md, squad/sprints/
 # s31-second-passage-de-sciences-et-emc-cp/verdicts-nadia-instance-A.md, section 4.1).
 #
-# LA TACHE A (items 1 a 6) EST INCHANGEE : nadia-prof l'a explicitement confirmee bonne et a
-# conserver telle quelle ("Elle est reutilisable telle quelle", fiche, section "Ce que je tiens a
-# porter au credit du paquet"). Deux motifs de refus portaient sur la seule tache B et sur l'item 11
-# de cette tache, tous deux corriges dans ce meme geste :
+# A LA DATE DU 2026-09-07, LA TACHE A (items 1 a 6) ETAIT INCHANGEE : nadia-prof l'avait
+# explicitement confirmee bonne et a conserver telle quelle ("Elle est reutilisable telle quelle",
+# fiche, section "Ce que je tiens a porter au credit du paquet"). Deux motifs de refus portaient sur
+# la seule tache B et sur l'item 11 de cette tache, tous deux corriges dans ce meme geste :
 #
 # 1) Un fait de droit etait faux (ancien item 11) : "une loi interdit de traverser en dehors des
 #    passages prevus pour les pietons" - l'article R412-37 du code de la route n'oblige a emprunter
@@ -61,48 +61,70 @@ lignesDeReferentiel: ["EMC-CP-07"]
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064).
+#
+# Correction du 2026-09-08 (lea-dev, S32-EMCCP07, docs/backlog/backlog.md, sprint 32), refus
+# maintenu par nadia-prof le 2026-09-08 sur le seul motif FAB-1c (squad/conformite/FICHE-bandit-
+# manchot-regle-souhait-loi-cp.md, bloc de reaudit) : sur la tache B (items 7 a 11), la bonne
+# reponse etait la seule proposition sans marqueur restrictif ("seulement", "sauf"...) sur 3 a 4
+# items sur 5, la ou la clause n'en autorise qu'un.
+#
+# FAB-1c payee : sur les items 7, 8, 9 et 10, un des deux distracteurs devient lui-meme une
+# proposition sans marqueur restrictif ("les motards et les cyclistes", "les enfants et les adultes
+# a l'arriere", "les adultes de l'ecole", "les chauffeurs de bus et de taxi"), toutes fausses pour la
+# situation decrite. La bonne reponse n'est donc plus jamais la seule proposition sans marqueur.
+# L'item 11 (vente d'alcool) est inchange : sa bonne reponse porte elle-meme le marqueur
+# ("seulement les adultes"), ce qui est deja le contre-exemple que la barre demande.
+#
+# LON-1 et LON-2 (arbitrage prealable de s32, section 16.4, nadia-prof) : chaque enonce du paquet
+# compte desormais au plus 15 mots et au plus deux phrases, la seconde etant la question. Les six
+# questions de la tache A ("Est-ce une regle qui vaut pour tous, [un simple souhait,] [ou une
+# loi] ?") reenumeraient les propositions deja portees par les boutons ; elles sont raccourcies en
+# "Est-ce une regle ?", et deux situations de la tache B (items 9 et 11) sont raccourcies d'un mot
+# chacune pour la meme barre. Aucune bonne reponse, aucun distracteur de la tache A et aucun fait de
+# la tache B ne changent : FER-1, BIN-1, CAT-1, EMC-1, EMC-5, EMC-8, EMC-10 et l'exactitude des cinq
+# faits de droit restent tenus a l'identique.
 items:
-  - enonce: "Avant de sortir en récréation, chaque élève doit ranger sa chaise, sans exception. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+  - enonce: "Avant la récréation, chaque élève doit ranger sa chaise, sans exception. Est-ce une règle ?"
     bonneReponse: "une règle qui vaut pour tous"
     distracteurs: ["un simple souhait"]
     indice: "Personne n'a le droit d'y échapper."
-  - enonce: "La maîtresse aimerait que la classe soit un peu plus silencieuse pendant les exercices. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+  - enonce: "La maîtresse aimerait que la classe soit plus silencieuse. Est-ce une règle ?"
     bonneReponse: "un simple souhait"
     distracteurs: ["une règle qui vaut pour tous"]
     indice: "Elle exprime ce qu'elle aimerait, pas une obligation écrite."
-  - enonce: "Dans la cour, il est interdit de pousser un camarade, pour tout le monde, sans exception. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+  - enonce: "Dans la cour, il est interdit de pousser un camarade. Est-ce une règle ?"
     bonneReponse: "une règle qui vaut pour tous"
     distracteurs: ["un simple souhait"]
     indice: "Cet interdit s'applique à chaque élève, sans exception."
-  - enonce: "Partout en France, il est obligatoire de porter un casque à vélo avant l'âge de douze ans. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+  - enonce: "En France, le casque à vélo est obligatoire avant douze ans. Est-ce une règle ?"
     bonneReponse: "une loi"
     distracteurs: ["une règle qui vaut pour tous", "un simple souhait"]
     indice: "Cette obligation vient de l'État et s'applique dans tout le pays, pas seulement à l'école."
-  - enonce: "À la cantine, chaque élève doit attendre son tour pour se servir, sans exception. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+  - enonce: "À la cantine, chaque élève doit attendre son tour pour se servir. Est-ce une règle ?"
     bonneReponse: "une règle qui vaut pour tous"
     distracteurs: ["un simple souhait", "une loi"]
     indice: "Cela s'applique à chaque élève qui mange à la cantine."
-  - enonce: "Aya aimerait que la maîtresse donne moins de devoirs le week-end. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+  - enonce: "Aya aimerait que la maîtresse donne moins de devoirs le week-end. Est-ce une règle ?"
     bonneReponse: "un simple souhait"
     distracteurs: ["une règle qui vaut pour tous", "une loi"]
     indice: "C'est ce qu'elle voudrait, pas ce qui est décidé."
   - enonce: "Le code de la route dit qu'il faut s'arrêter au feu rouge. Qui doit s'arrêter ?"
     bonneReponse: "tout le monde, y compris les adultes"
-    distracteurs: ["seulement les enfants à vélo", "seulement les piétons"]
+    distracteurs: ["les motards et les cyclistes", "seulement les piétons"]
     indice: "Cette règle ne fait pas de différence selon l'âge de la personne."
   - enonce: "Une loi rend obligatoire le port de la ceinture en voiture. Qui doit l'attacher ?"
     bonneReponse: "le conducteur et tous les passagers"
-    distracteurs: ["seulement le conducteur", "seulement les enfants à l'arrière"]
+    distracteurs: ["seulement le conducteur", "les enfants et les adultes à l'arrière"]
     indice: "Chaque personne assise dans la voiture doit l'attacher, quel que soit son âge."
-  - enonce: "Une loi interdit de fumer dans la cour d'une école. Qui a le droit d'y fumer ?"
+  - enonce: "Une loi interdit de fumer dans la cour d'une école. Qui peut y fumer ?"
     bonneReponse: "personne, pas même les adultes"
-    distracteurs: ["les enseignants seulement", "les visiteurs seulement"]
+    distracteurs: ["les enseignants seulement", "les adultes de l'école"]
     indice: "Cette interdiction s'applique à toutes les personnes présentes dans la cour."
   - enonce: "Une loi interdit de klaxonner sans raison en ville. Qui doit la respecter ?"
     bonneReponse: "tout conducteur, même adulte"
-    distracteurs: ["seulement les motards", "seulement les chauffeurs de taxi"]
+    distracteurs: ["seulement les motards", "les chauffeurs de bus et de taxi"]
     indice: "Cette loi s'applique à toutes les personnes qui conduisent en ville."
-  - enonce: "Une loi interdit de vendre de l'alcool aux moins de dix-huit ans. Qui peut en acheter ?"
+  - enonce: "Une loi interdit de vendre l'alcool aux moins de dix-huit ans. Qui peut en acheter ?"
     bonneReponse: "seulement les adultes"
     distracteurs: ["tout le monde, même les enfants", "seulement les enfants"]
     indice: "Cette loi fixe un âge minimum pour acheter de l'alcool."
