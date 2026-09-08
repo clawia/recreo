@@ -145,9 +145,14 @@ section 6, sans recalcul :
 - **Instance A** : histoire-geographie CM1, anglais CM1 (decouverte culturelle), et la portee D
   (passe transverse, `CONS-*`, verification de `SCO-1`, lignes `en cours`). A ne recoit aucune
   dette d'une autre matiere.
-- **Instance B** : la dette d'EMC CP (`CAT-1`, `EMC-CP-07`, dix reserves). Aucun lot neuf d'EMC CP
-  n'est ouvert ce sprint - le terrain d'EMC CP au sens large (matiere qui recevra un lot neuf) n'est
-  pas encore affecte et n'a pas a l'etre avant qu'un tel lot existe.
+- **Instance B** : **son terrain permanent reste sciences et technologie CM1**, qu'elle detient
+  depuis s30-s31 (quatre lignes fermees, `SCI-1` a `SCI-4` eprouvees) - aucun lot de sciences n'est
+  budgete a s32, le terrain reste sien pour s33 et s34 (`DEC-0083`, section 6). **Ce sprint, elle
+  recoit en plus, a titre ponctuel, la dette d'EMC CP** (`CAT-1`, `EMC-CP-07`, dix reserves) : ce
+  sont des corrections sur des lignes deja `couvert-valide` ou deja refusees, pas l'ouverture d'un
+  lot neuf, donc `PAR-2` (une matiere et un niveau ne sont jamais partages) n'est pas engagee - EMC
+  CP ne devient pas le terrain de B, et rien n'empeche qu'un lot neuf d'EMC CP soit ouvert par une
+  autre instance a un sprint futur.
 - **Instance C** : l'education physique et sportive, aux deux niveaux (`PAR-2` : EPS CP et EPS CM1
   comptent pour une seule matiere, comme EMC CP et EMC CM1). Premier terrain sans aucune image
   d'aucune instance (`PAR-13`).
