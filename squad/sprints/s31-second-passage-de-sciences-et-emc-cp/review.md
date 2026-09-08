@@ -4,7 +4,11 @@
 - **Anime par** : `sofia-sm`.
 - **Arbre revu** : `round-two` a `472df4fc`, assemble par moi par cherry-pick chronologique de
   quatorze commits venus de dix worktrees dedies, aucun agent n'ayant ecrit dans le worktree d'un
-  autre.
+  autre. **Cette revision borne les sections 1 a 6 ; les sections ecrites apres nomment chacune la
+  leur** - le Done technique est prononce sur `b18c8389`, et la mesure de l'arbre final est dans
+  `RAPPORT.md`, section "Mesure finale". Le sprint a continue de recevoir des commits apres
+  l'ouverture de ce fichier : six obstacles trouves a la cloture meme, dont deux par `nadia-prof`
+  en lisant cette review.
 - **Perimetre** : les six stories de `S31-1` a `S31-6`, les quatre refus et leurs reprises, les deux
   audits et les deux reaudits, et les livrables de cloture (`ADR-0085` et `ADR-0086` amendes,
   `DEC-0082`, mouvement de matrice).

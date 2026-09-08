@@ -75,16 +75,23 @@ class AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest {
             "AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest");
 
     /**
-     * Les lignes en surplus vivantes au 2026-09-08, designees par le nom de jeu qu'elles portent.
-     * Cette liste exempte, elle n'absout pas, et elle appartient a un fichier que je ne touche pas :
-     * le contenu des deux lignes de la matrice est celui de {@code camille-po}, qui le corrige en
-     * parallele de ce commit.
+     * Les lignes en surplus vivantes du depot, designees par le nom de jeu qu'elles portent.
+     * <b>Vide depuis la cloture de s31 : le depot ne porte plus aucune ligne en surplus.</b> Cette
+     * liste exempte, elle n'absout pas.
      *
      * <p>Meme mecanique que {@code DETTE_DE_BALAYAGE} d'ADR-0013 et que le cliquet d'ADR-0067 : elle
      * ne peut pas grandir - une ligne en surplus de plus est rouge -, elle ne peut pas pourrir - un
      * nom qui ne designe plus une ligne en surplus est rouge -, et la vider oblige a baisser le
-     * plafond dans le meme diff. <b>La correction de {@code camille-po} rend donc ce fichier rouge</b>,
-     * et le message dit quoi ecrire : c'est le prix de l'egalite, paye une fois.
+     * plafond dans le meme diff. Le detail de ce paiement est sous {@link #PLAFOND_DE_DETTE}.
+     *
+     * <p><i>Ce commentaire decrivait, jusqu'a la cloture de s31, les <b>deux</b> lignes de
+     * {@code MATRICE-couverture.md} que {@code theo-archi} avait exemptees plutot que corrigees,
+     * parce que leur contenu appartenait a {@code camille-po} - et il annoncait que la correction de
+     * celle-ci rendrait ce fichier rouge. Elle est arrivee, le rouge est venu, {@code sofia-sm} l'a
+     * paye en vidant l'ensemble - <b>et a laisse ce commentaire decrire deux noms au-dessus d'un
+     * ensemble vide.</b> Corrige ici par elle, une heure plus tard : changer une valeur sans toucher
+     * la Javadoc qui la decrit est de la meme famille qu'un chiffre sans methode, et ce sprint en a
+     * deja compte trois.</i>
      */
     private static final Set<String> DETTE_DE_CELLULES = Set.of();
 

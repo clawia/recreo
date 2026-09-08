@@ -138,8 +138,31 @@ commiter.**
 
 ## Mesure finale
 
-*Cette section porte le chiffre de l'arbre reellement fusionne, pose apres le dernier commit du
-sprint.*
+Prise par moi sur l'arbre fusionne final de `round-two`, apres le dernier commit du sprint. Chaque
+job dans la forme exacte que la CI lui donne, et non deduit d'un autre.
+
+| Job | Resultat |
+|---|---|
+| `prefixes` | **vert** - *"Tous les commits portent un prefixe d'agent connu."*, ses deux tests de garde-fou verts |
+| `chemins` | **vert** - *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, son test vert |
+| `outils` | **vert** - 9 juges purs executes, aucun motif de balayage vide |
+| `build` | **vert** - `bash outils/mvn-jdk21.sh -B clean verify` BUILD SUCCESS, reacteur complet depuis la racine, aucun `-pl` |
+
+**Comptage independant des rapports XML apres `clean`** : **190 fichiers `TEST-*.xml`, 1402 tests,
+0 echec, 0 erreur, 0 ignore.** JDK **21.0.10**, valeur `java.version` que **la machine virtuelle des
+tests rapporte dans son propre rapport**, jamais l'entree de toolchain qui la designe (`ADR-0071`).
+
+**Progression du compte de tests a travers le sprint, chaque delta explique par son auteur** :
+1332 a l'ouverture (planning, arbre assemble) ; 1385 apres les huit paquets neufs et les deux
+reprises (`yanis-qa` et `theo-archi`, independamment) ; 1394 apres l'amendement d'`ADR-0085` ; 1397
+apres celui d'`ADR-0086` ; **1402 apres `ADR-0087`**. Aucun delta non attribue.
+
+**Balayage independant d'`ADR-0087` sur l'arbre final** : 641 fichiers markdown, 2 166 tableaux,
+12 519 lignes de corps, **0 ligne en surplus**. La dette de cellules est payee, pas exemptee.
+
+**Ce que cette section ne dit pas et que je nomme** : ces quatre jobs sont ceux du workflow au
+2026-09-08. Le motif de les enumerer plutot que d'ecrire *"la CI est verte"* est la premiere section
+de la retro - `mvn verify` n'est pas la CI, et ce sprint a paye un sprint entier pour l'apprendre.
 
 ## Tableau de consommation de tokens
 
