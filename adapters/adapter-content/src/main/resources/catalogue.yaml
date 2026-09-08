@@ -284,7 +284,7 @@ jeux:
     nombreDeManches: 10
   - id: bandit-manchot-histoire-geographie-cm1
     titre: "Histoire et géographie"
-    consigne: "Lis bien, puis situe dans le temps, associe un roi à son fait, décris un espace ou une ressource, ou lis un document."
+    consigne: "Lis bien, puis situe dans le temps, nomme un peuple ou un mouvement de population, associe un roi à son fait, décris un espace ou une ressource, ou lis un document."
     mecanique: bandit-manchot
     paquet: cm1-histoire-geographie
     nombreDeManches: 10

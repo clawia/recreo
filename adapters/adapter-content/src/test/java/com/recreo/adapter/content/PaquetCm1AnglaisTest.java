@@ -46,7 +46,7 @@ class PaquetCm1AnglaisTest {
 
     private static final String PAQUET = "cm1-anglais";
 
-    private static final int NOMBRE_D_ITEMS_ATTENDU = 20;
+    private static final int NOMBRE_D_ITEMS_ATTENDU = 25;
 
     private static final String LIGNE_LIRE_ET_COMPRENDRE = "LVE-CM1-04";
     private static final String LIGNE_DECOUVERTE_CULTURELLE = "LVE-CM1-07";
@@ -89,12 +89,17 @@ class PaquetCm1AnglaisTest {
      * ajoute sans mise a jour de cette table fait echouer le test au lieu de passer a tort.
      */
     private static final Map<String, String> PAYS_PAR_BONNE_REPONSE_DE_DECOUVERTE_CULTURELLE =
-            Map.of(
-                    "Londres", "Royaume-Uni",
-                    "Big Ben", "Royaume-Uni",
-                    "Washington", "États-Unis",
-                    "le drapeau des États-Unis", "États-Unis",
-                    "Thanksgiving", "États-Unis");
+            Map.ofEntries(
+                    Map.entry("Londres", "Royaume-Uni"),
+                    Map.entry("Big Ben", "Royaume-Uni"),
+                    Map.entry("Washington", "États-Unis"),
+                    Map.entry("le drapeau des États-Unis", "États-Unis"),
+                    Map.entry("Thanksgiving", "États-Unis"),
+                    Map.entry("un uniforme scolaire", "Royaume-Uni"),
+                    Map.entry("le bus à impériale", "Royaume-Uni"),
+                    Map.entry("Halloween", "États-Unis"),
+                    Map.entry("en bus scolaire jaune", "États-Unis"),
+                    Map.entry("la statue de la Liberté", "États-Unis"));
 
     private static List<Question> tousLesItems(ContentSource contenu) {
         RandomSource hasard = new Random(1)::nextInt;
@@ -187,9 +192,21 @@ class PaquetCm1AnglaisTest {
     }
 
     @Test
-    void laDistributionParLigneEstQuinzeEtCinq() {
+    void laDistributionParLigneEstQuinzeEtDix() {
         assertThat(itemsDeLaLigne(LIGNE_LIRE_ET_COMPRENDRE)).hasSize(15);
-        assertThat(itemsDeLaLigne(LIGNE_DECOUVERTE_CULTURELLE)).hasSize(5);
+        assertThat(itemsDeLaLigne(LIGNE_DECOUVERTE_CULTURELLE)).hasSize(10);
+    }
+
+    /**
+     * FER-2 (S32-2) : la ligne de decouverte culturelle atteint desormais le plancher de dix
+     * items, cinq deja servis depuis s28 plus cinq neufs.
+     */
+    @Test
+    void fer2EstTenueSurLaLigneDecouverteCulturelle() {
+        assertThat(itemsDeLaLigne(LIGNE_DECOUVERTE_CULTURELLE))
+                .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2,
+                        LIGNE_DECOUVERTE_CULTURELLE)
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
     }
 
     @Test
@@ -375,6 +392,24 @@ class PaquetCm1AnglaisTest {
             reponses.add(item.get("bonneReponse"));
         }
         assertThat(reponses).hasSize(ligne7.size());
+    }
+
+    /**
+     * FER-1 (S32-2) : les trois elements de la parenthese du referentiel - fêtes, lieux, vie
+     * quotidienne - sont desormais chacun servis en bonne réponse. "Vie quotidienne" n'etait servie
+     * par aucun des cinq items de s28 (capitales, un monument, un drapeau, une fête) ; les deux
+     * items neufs sur l'école (uniforme au Royaume-Uni, bus scolaire aux États-Unis) la couvrent.
+     */
+    @Test
+    void fer1LesTroisElementsDeLaParentheseSontServis() {
+        Set<Object> reponses = itemsDeLaLigne(LIGNE_DECOUVERTE_CULTURELLE).stream()
+                .map(item -> item.get("bonneReponse"))
+                .collect(Collectors.toSet());
+
+        assertThat(reponses).as("fêtes").contains("Thanksgiving", "Halloween");
+        assertThat(reponses).as("lieux").contains("Londres", "la statue de la Liberté");
+        assertThat(reponses).as("vie quotidienne")
+                .contains("un uniforme scolaire", "en bus scolaire jaune");
     }
 
     /**

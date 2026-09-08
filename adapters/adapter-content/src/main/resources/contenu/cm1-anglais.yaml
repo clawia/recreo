@@ -61,6 +61,17 @@ lignesDeReferentiel: ["LVE-CM1-04", "LVE-CM1-07"]
 # Etats-Unis par leur capitale, leur drapeau et une fete traditionnelle - deux et trois traits
 # distincts, jamais un seul.
 #
+# S32-2 (arbitrage prealable de s32, section 7.2 ; docs/backlog/backlog.md, story S32-2). Cinq
+# items neufs, tous en francais, aucune competence linguistique servie. Les cinq items existants ne
+# sont pas modifies - nadia-prof les a confirmes bons au reaudit du 2026-09-08. Ligne portee de 5 a
+# 10 items (FER-2). Les trois elements de la parenthese du referentiel (fetes, lieux, vie
+# quotidienne) sont desormais tous servis en bonne reponse : les cinq items de s28 ne couvraient
+# que fetes et lieux, "vie quotidienne" n'etait servie par aucun ; deux items neufs la couvrent
+# (uniforme scolaire au Royaume-Uni, bus scolaire jaune aux Etats-Unis). Royaume-Uni passe de deux
+# a quatre traits, Etats-Unis de trois a six (BIA-2, toujours au moins deux). Chaque bonne reponse
+# neuve est distincte des cinq existantes et des quatre autres items neufs (FAB-1a). Aucun item ne
+# mentionne la France (BIA-1).
+#
 items:
   - enonce: "Comment dit-on « maison » en anglais ?"
     bonneReponse: "house"
@@ -161,4 +172,29 @@ items:
     bonneReponse: "Thanksgiving"
     distracteurs: ["Halloween", "Noël"]
     indice: "Cette fête remercie pour les récoltes de l'année."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Dans les écoles du Royaume-Uni, que portent la plupart des élèves ?"
+    bonneReponse: "un uniforme scolaire"
+    distracteurs: ["des vêtements de sport", "aucun vêtement particulier"]
+    indice: "Beaucoup d'écoles imposent la même tenue à tous les élèves."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Quel véhicule rouge à deux étages circule dans les rues de Londres ?"
+    bonneReponse: "le bus à impériale"
+    distracteurs: ["le tramway", "le métro souterrain"]
+    indice: "Il est célèbre par sa couleur rouge et ses deux niveaux."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Quelle fête, célébrée le 31 octobre aux États-Unis, où les enfants se déguisent et récoltent des bonbons, est très populaire ?"
+    bonneReponse: "Halloween"
+    distracteurs: ["Noël", "le Nouvel An"]
+    indice: "Les enfants frappent aux portes en réclamant des friandises."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Aux États-Unis, dans de nombreuses régions, comment la plupart des élèves se rendent-ils à l'école ?"
+    bonneReponse: "en bus scolaire jaune"
+    distracteurs: ["à pied", "en métro"]
+    indice: "Ce véhicule est reconnaissable à sa couleur vive."
+    ligneDeReferentiel: "LVE-CM1-07"
+  - enonce: "Quel monument, une grande statue tenant une torche, se trouve sur une île à l'entrée du port de New York ?"
+    bonneReponse: "la statue de la Liberté"
+    distracteurs: ["la tour Eiffel", "le Colisée"]
+    indice: "Elle est devenue un symbole d'accueil pour de nombreux immigrants."
     ligneDeReferentiel: "LVE-CM1-07"

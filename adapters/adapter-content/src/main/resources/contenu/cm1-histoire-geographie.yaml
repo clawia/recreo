@@ -20,7 +20,7 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 # HIS-1 (bloquante, au plus un tiers d'items de restitution) : compté, pas estimé, sur les vingt
 # items réels. Chaque item porte un marqueur '# HIS-1: <type>' - restitution, ordre, association ou
 # document - jamais lu par QuestionContentSourceFactory, sur le même patron que le marqueur COMP-3
-# de cm1-comprehension.yaml. Compte : 5 restitution, 5 ordre, 7 association, 3 document sur 20 items
+# de cm1-comprehension.yaml. Compte : 5 restitution, 5 ordre, 7 association, 3 document sur 20 items
 # - 5/20 = 25,0 %, sous le plafond d'un tiers (33,3 %). Vérifié par
 # PaquetCm1HistoireGeographieTest.auPlusUnTiersDesItemsSontDeLaRestitution.
 #
@@ -74,7 +74,7 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 #   "un espace urbain" (item existant + 1 item neuf, comparaison de densité), "un espace périurbain"
 #   (1 item neuf, absent jusqu'ici et servi seulement en distracteur), "un espace rural" (1 item
 #   neuf, en plus de l'item corrigé qui reste sur une caractéristique et non sur le nom de l'espace).
-# - FER-2 (densité) : 10 items, exactement le plancher de nadia-prof.
+# - FER-2 (densité) : 10 items, exactement le plancher de nadia-prof.
 # - FER-3 (deux tâches) : "identification" (décrire une scène ou comparer un fait, nommer le type
 #   d'espace - item existant + 3 items neufs = 4) et "association-caractéristique" (le type d'espace
 #   est donné, une caractéristique - logement, transport, commerces, activité - est demandée - item
@@ -98,7 +98,7 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 # - FER-1 (extension) : les trois besoins du libellé sont désormais servis - l'eau (3 items neufs,
 #   absente jusqu'ici), l'énergie (item existant + 3 items neufs), les aliments (3 items neufs,
 #   absents jusqu'ici).
-# - FER-2 (densité) : 10 items, exactement le plancher de nadia-prof.
+# - FER-2 (densité) : 10 items, exactement le plancher de nadia-prof.
 # - FER-3 (deux tâches) : "origine" (d'où vient la ressource, ou comment se nomme son lieu ou son
 #   type de production - item existant + 5 items neufs = 6) et "acheminement" (l'étape ou le moyen
 #   qui achemine la ressource jusqu'à nous - château d'eau, traitement, circuit court, lignes à haute
@@ -107,7 +107,7 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 # HIS-1 (bloquante, au plus un tiers de restitution, calculée sur le LOT - ADR-0079 - et, en plus,
 # sur ce fichier puisqu'il porte désormais plus de dix items, précision de nadia-prof du
 # 2026-09-03) : chaque item neuf porte son marqueur. Compte sur le fichier entier, seul fichier du
-# lot : 8 restitution sur 37 items, 21,6 %, sous le tiers (plafond entier(37 / 3) = 12). Vérifié par
+# lot : 8 restitution sur 37 items, 21,6 %, sous le tiers (plafond entier(37 / 3) = 12). Vérifié par
 # UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest.
 #
 # HIS-3 (chaque fait porte sa source) : tous les faits neufs sont des faits généraux de géographie ou
@@ -185,7 +185,7 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 #
 # HIS-1 (bloquante, au plus un tiers de restitution, calculée sur le LOT - ADR-0079 - et, en plus,
 # sur ce fichier puisqu'il porte désormais plus de dix items) : chaque item neuf porte son marqueur.
-# Compte sur le fichier entier, seul fichier du lot : 13 restitution sur 57 items, 22,8 %, sous le
+# Compte sur le fichier entier, seul fichier du lot : 13 restitution sur 57 items, 22,8 %, sous le
 # tiers (plafond entier(57 / 3) = 19). Vérifié par
 # UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest, mis à jour dans ce commit.
 #
@@ -211,10 +211,66 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 #   pêcheurs disait "reviennent avec leur récolte du jour" - une récolte est agricole, ce qui brouille
 #   exactement la distinction (pêche non agricole) que l'item veut faire tenir. Corrigé.
 #
+# S32-1 (arbitrage prealable de s32, sections 1.2, 7.2 et 13 ; docs/backlog/backlog.md, story
+# S32-1). Remplissage, tranche 1 : HG-CM1-01, HG-CM1-02, HG-CM1-03 et HG-CM1-04 passent chacune de
+# 1 ou 2 items a dix (FER-2), +35 items, fichier a 92 items. Ferme les quatre lignes si nadia-prof
+# verifie FER-1, FER-2, FER-3, CONS-1, HG-R4, HIS-1, HIS-2, HIS-3, FAB-1 et PLA-1 tenues -
+# independamment les unes des autres.
+#
+# HG-CM1-01 (FER-1, les cinq periodes de la parenthese) : la Prehistoire, l'Antiquite, le Moyen
+# Age, les Temps modernes et l'epoque contemporaine sont chacune servies en bonne reponse au moins
+# une fois (l'Antiquite et les Temps modernes l'etaient deja depuis s27). Deux taches (FER-3) :
+# "ordre" (cinq items, une periode par item, les deux items de s27 inclus) et "identification"
+# (cinq items neufs, un fait ou un objet decrit -> la periode).
+#
+# HG-CM1-02 (FER-3) : "situer dans un siecle ou un millenaire" (cinq items, l'item de s27 inclus -
+# quatre dates neuves : Clovis 481, Charlemagne 800, Jeanne d'Arc 1429, Napoleon 1804 en
+# millenaire) et "ordonner deux faits l'un par rapport a l'autre" (cinq items neufs, triades de
+# faits dates, "le plus tot"/"le plus tard"). Faits neufs, famille (a) : dates canoniques du
+# programme scolaire francais (481, 800, 1429, 1643), aucune disputee.
+#
+# HG-CM1-03 (FER-1, les trois peuples de la parenthese) : Gaulois et Grecs rejoignent les Romains
+# (deja servis depuis s27) en bonne reponse. Deux taches (FER-3) : "nommer le peuple a partir
+# d'une trace decrite" (trois items au total, un par peuple - au-dela, deux items partageraient la
+# meme bonne reponse mot pour mot, FAB-1a) et "dire ce qu'un peuple nomme a laisse sur le
+# territoire" (sept items neufs, reponses distinctes : arenes, aqueduc, reseau de routes, colonie,
+# vigne, fer, mots de vocabulaire gaulois dans le francais actuel).
+#
+# HG-CM1-04 (FER-3, pas de FER-1 numerote sur cette ligne) : "nommer un mouvement ou un
+# deplacement de population decrit" (trois items au total : peuples germaniques deja servi depuis
+# s27, Vikings et Sarrasins neufs) et "dire un effet de ce mouvement sur le territoire" (sept
+# items neufs, reponses distinctes : fin de l'Empire romain d'Occident, naissance de la France,
+# naissance de la Normandie, siege de Paris, arret de l'expansion a Poitiers, division en
+# plusieurs royaumes, naissance de la dynastie carolingienne). Bataille de Poitiers (732) et
+# Sarrasins : terme traditionnellement enseigne dans le programme francais pour cet evenement - a
+# confirmer par nadia-prof si un terme different est prefere.
+#
+# CONS-1 (reliquat de s31, section 1.2 de l'arbitrage prealable de s32) : la consigne de
+# bandit-manchot-histoire-geographie-cm1 (catalogue.yaml) ne nommait aucune des taches de
+# HG-CM1-03 et HG-CM1-04. Corrigee dans le meme geste pour nommer "un peuple ou un mouvement de
+# population", en plus des quatre taches deja servies.
+#
+# HG-R8 (nadia-prof, 2026-09-06, non bloquante, ouverte sur les deux items de nature de
+# HG-CM1-14) : les indices des items "un journal intime" et "une declaration de droits"
+# revelaient la reponse - l'un recopiait "Cher journal", l'autre prononcait "droits". Corriges
+# dans le meme geste : les deux indices decrivent desormais le genre du document (qui ecrit, pour
+# qui, dans quel but) sans jamais nommer le mot a trouver ni l'endroit du support ou le copier.
+#
+# HIS-1 (au plus un tiers de restitution, calcule sur le LOT - ADR-0079 - et sur ce fichier
+# puisqu'il porte plus de dix items) : chaque item neuf porte son marqueur. Compte sur le fichier
+# entier, seul fichier du lot : 17 restitution sur 92 items, 18,5 %, sous le tiers (plafond
+# entier(92 / 3) = 30).
+#
+# HG-R4 (mediane de charge de lecture) : mesuree sur les enonces du fichier entier, mot par mot,
+# espaces insecables inclus. Avant remplissage : 57 items, mediane a 16 mots, maximum a 30 mots
+# (item herite de s28 sur HG-CM1-11, hors perimetre de ce lot). Apres remplissage : 92 items,
+# mediane inchangee a 16 mots, maximum inchange a 30 mots - les 35 items neufs comptent chacun
+# entre 8 et 25 mots.
+#
 # S30-5 (reprise, bloc C ; nadia-prof, arbitrage prealable de s30 ; docs/backlog/backlog.md,
 # story S30-5). Deux reserves de la ligne HG-CM1-14, corrigees dans le meme geste :
 # - HG-R6 (rejeu borne, propriete a tenir, aucun texte impose) : sur les deux items de nature
-#   ("Quel type de document est ce texte ?", "Quel type de document est evoque dans ce texte ?"),
+#   ("Quel type de document est ce texte ?", "Quel type de document est evoque dans ce texte ?"),
 #   le distracteur "une carte de France" s'eliminait sans rien savoir - l'enfant a un texte sous les
 #   yeux. Il est remplace, sur chacun des deux items, par une forme de document ecrit (un poeme, une
 #   recette de cuisine) qui ne s'ecarte qu'en lisant le support. Le texte-support du second item est
@@ -486,7 +542,7 @@ items:
     texteSupport: "Cher journal, nous sommes le 15 juillet 1789. Hier, j'ai vu la foule envahir la prison de la Bastille. Tout Paris est en effervescence."
     bonneReponse: "un journal intime"
     distracteurs: ["un édit royal", "un poème"]
-    indice: "Repense à la façon dont ce texte commence."
+    indice: "Une seule personne y raconte, jour après jour, ce qu'elle vit et ressent, pour elle-même."
     ligneDeReferentiel: "HG-CM1-14"
   - enonce: "Qui est l'auteur de ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle, famille (a)
     texteSupport: "Moi, Henri IV, roi de France et de Navarre, je décide par cet édit que mes sujets protestants pourront pratiquer librement leur religion. Fait à Nantes, en 1598."
@@ -498,7 +554,7 @@ items:
     texteSupport: "Le 26 août 1789, les députés de l'Assemblée nationale votent un texte solennel qui affirme que tous les hommes naissent et demeurent libres et égaux en droits."
     bonneReponse: "une déclaration de droits"
     distracteurs: ["un journal intime", "une recette de cuisine"]
-    indice: "Repense à ce que ce texte affirme au sujet des droits de chaque être humain."
+    indice: "Plusieurs personnes réunies proclament ensemble, dans un texte solennel, ce qui doit valoir pour tous."
     ligneDeReferentiel: "HG-CM1-14"
   - enonce: "Qui a écrit ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
     texteSupport: "Nous, députés de l'Assemblée nationale, réunis le 26 août 1789, déclarons que tous les hommes naissent et demeurent libres et égaux en droits."
@@ -524,3 +580,178 @@ items:
     distracteurs: ["en 1789", "en 1610"]
     indice: "La date est donnée à la toute fin du texte."
     ligneDeReferentiel: "HG-CM1-14"
+  - enonce: "Quelle grande période vient juste avant l'Antiquité ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
+    bonneReponse: "la Préhistoire"
+    distracteurs: ["le Moyen Âge", "les Temps modernes"]
+    indice: "C'est la période la plus ancienne, avant l'invention de l'écriture."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Quelle grande période vient juste avant les Temps modernes ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["l'Antiquité", "l'époque contemporaine"]
+    indice: "C'est la période des chevaliers et des châteaux forts."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Quelle grande période vient juste après les Temps modernes ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
+    bonneReponse: "l'époque contemporaine"
+    distracteurs: ["l'Antiquité", "le Moyen Âge"]
+    indice: "C'est la période la plus récente, celle dans laquelle nous vivons."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Les hommes préhistoriques peignaient des animaux sur les parois des grottes. À quelle période cela correspond-il ?"  # HIS-1: association ; HIS-3: fait consensuel du programme cycle 3 (art pariétal), famille (a)
+    bonneReponse: "la Préhistoire"
+    distracteurs: ["l'Antiquité", "le Moyen Âge"]
+    indice: "Cette période est la plus ancienne de toutes, bien avant l'invention de l'écriture."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Les gladiateurs combattaient dans de grands amphithéâtres en pierre. À quelle période cela correspond-il ?"  # HIS-1: association ; HIS-3: fait consensuel du programme cycle 3 (amphithéâtres romains), famille (a)
+    bonneReponse: "l'Antiquité"
+    distracteurs: ["le Moyen Âge", "les Temps modernes"]
+    indice: "Pense à Rome et à ses grands monuments de pierre."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Les chevaliers vivaient dans des châteaux forts entourés de douves. À quelle période cela correspond-il ?"  # HIS-1: association ; HIS-3: fait consensuel du programme cycle 3 (châteaux forts médiévaux), famille (a)
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["l'Antiquité", "l'époque contemporaine"]
+    indice: "Pense aux tournois de chevaliers et aux châteaux forts."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Louis XIV a fait construire le château de Versailles. À quelle période cela correspond-il ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Louis XIV et Versailles)
+    bonneReponse: "les Temps modernes"
+    distracteurs: ["le Moyen Âge", "l'époque contemporaine"]
+    indice: "Ce roi règne bien après le Moyen Âge, avant la Révolution française."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Aujourd'hui, nous utilisons souvent un ordinateur ou un téléphone. À quelle période cela correspond-il ?"  # HIS-1: association ; HIS-3: fait consensuel et actuel, famille (a)
+    bonneReponse: "l'époque contemporaine"
+    distracteurs: ["les Temps modernes", "le Moyen Âge"]
+    indice: "C'est la période dans laquelle nous vivons aujourd'hui."
+    ligneDeReferentiel: "HG-CM1-01"
+  - enonce: "Clovis devient roi des Francs en 481. En quel siècle cela se passe-t-il ?"  # HIS-1: restitution ; HIS-3: date 481 consensuelle, fait canonique du programme scolaire français, famille (a)
+    bonneReponse: "le Ve siècle"
+    distracteurs: ["le IVe siècle", "le VIe siècle"]
+    indice: "481 se situe entre 401 et 500, dans le Ve siècle."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Charlemagne est couronné empereur en 800. En quel siècle cela se passe-t-il ?"  # HIS-1: restitution ; HIS-3: date 800 consensuelle, famille (a)
+    bonneReponse: "le VIIIe siècle"
+    distracteurs: ["le VIIe siècle", "le IXe siècle"]
+    indice: "800 se situe entre 701 et 800, dans le VIIIe siècle."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Jeanne d'Arc participe à la bataille d'Orléans en 1429. En quel siècle cela se passe-t-il ?"  # HIS-1: restitution ; HIS-3: date 1429 consensuelle, famille (a)
+    bonneReponse: "le XVe siècle"
+    distracteurs: ["le XIVe siècle", "le XVIe siècle"]
+    indice: "1429 se situe entre 1401 et 1500, dans le XVe siècle."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Napoléon Bonaparte se fait sacrer empereur en 1804. En quel millénaire cela se passe-t-il ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 8 (sacre de Napoléon en 1804), conversion en millénaire par convention calendaire
+    bonneReponse: "le IIe millénaire"
+    distracteurs: ["le Ier millénaire", "le IIIe millénaire"]
+    indice: "Un millénaire dure mille ans. 1804 se situe entre 1001 et 2000."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tôt ?"  # HIS-1: ordre ; HIS-3: dates 481, 800 et 1789, consensuelles, famille (a)
+    bonneReponse: "le sacre de Clovis, roi des Francs, en 481"
+    distracteurs: ["le sacre de Charlemagne, empereur, en 800", "la prise de la Bastille, en 1789"]
+    indice: "Repense à la date la plus ancienne des trois : 481."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tard ?"  # HIS-1: ordre ; HIS-3: dates 481, 1429 et 1789, consensuelles, famille (a)
+    bonneReponse: "la prise de la Bastille, en 1789"
+    distracteurs: ["le sacre de Clovis, roi des Francs, en 481", "la bataille d'Orléans menée par Jeanne d'Arc, en 1429"]
+    indice: "Repense à la date la plus récente des trois : 1789."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tôt ?"  # HIS-1: ordre ; HIS-3: dates 800, 1429 et 1598, consensuelles, famille (a)
+    bonneReponse: "le sacre de Charlemagne, empereur, en 800"
+    distracteurs: ["la bataille d'Orléans menée par Jeanne d'Arc, en 1429", "la signature de l'édit de Nantes, en 1598"]
+    indice: "Repense à la date la plus ancienne des trois : 800."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tard ?"  # HIS-1: ordre ; HIS-3: dates 1429, 1643 et 1804, consensuelles, famille (a)
+    bonneReponse: "le sacre de Napoléon, empereur, en 1804"
+    distracteurs: ["Louis XIV devient roi, en 1643", "la bataille d'Orléans menée par Jeanne d'Arc, en 1429"]
+    indice: "Repense à la date la plus récente des trois : 1804."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tôt ?"  # HIS-1: ordre ; HIS-3: dates 1598, 1789 et 1804, consensuelles, famille (a)
+    bonneReponse: "la signature de l'édit de Nantes, en 1598"
+    distracteurs: ["la prise de la Bastille, en 1789", "le sacre de Napoléon, empereur, en 1804"]
+    indice: "Repense à la date la plus ancienne des trois : 1598."
+    ligneDeReferentiel: "HG-CM1-02"
+  - enonce: "Des objets en fer, fabriqués avant l'arrivée des Romains, sont retrouvés dans le sol de nombreuses régions de France. Quel peuple les a fabriqués ?"  # HIS-1: association ; HIS-3: fait consensuel du programme cycle 3 (artisanat gaulois du fer), famille (a)
+    bonneReponse: "les Gaulois"
+    distracteurs: ["les Romains", "les Vikings"]
+    indice: "Pense au peuple qui vivait en Gaule avant la conquête romaine."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "La cité de Massalia, sur la côte méditerranéenne, est fondée par un peuple venu de la mer Égée. Quel peuple l'a fondée ?"  # HIS-1: association ; HIS-3: fait consensuel (fondation grecque de Massalia, actuelle Marseille), famille (a)
+    bonneReponse: "les Grecs"
+    distracteurs: ["les Romains", "les Gaulois"]
+    indice: "Cette cité deviendra plus tard la ville de Marseille."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Dans plusieurs villes de France, les Romains construisent de grandes constructions rondes en pierre pour des spectacles. Comment appelle-t-on ces constructions ?"  # HIS-1: association ; HIS-3: fait consensuel (arènes romaines), famille (a)
+    bonneReponse: "des arènes"
+    distracteurs: ["des châteaux forts", "des temples grecs"]
+    indice: "Pense aux spectacles de gladiateurs, comme au Colisée de Rome."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Romains construisent de longs canaux en pierre, comme le pont du Gard, pour transporter l'eau sur de grandes distances. Comment appelle-t-on ces constructions ?"  # HIS-1: association ; HIS-3: fait consensuel (aqueducs romains, pont du Gard), famille (a)
+    bonneReponse: "un aqueduc"
+    distracteurs: ["un château d'eau", "un temple"]
+    indice: "Cette construction permet à l'eau de voyager en hauteur, au-dessus des vallées."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Romains construisent un vaste réseau qui relie les villes de la Gaule et facilite les déplacements. Comment appelle-t-on cela ?"  # HIS-1: association ; HIS-3: fait consensuel (réseau routier romain), famille (a)
+    bonneReponse: "un réseau de routes"
+    distracteurs: ["un réseau de canaux", "un réseau de tunnels"]
+    indice: "Pense à ce qui permet de se déplacer d'une ville à l'autre, à pied ou en char."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Grecs fondent, sur la côte méditerranéenne, des villes loin de leur pays d'origine, vivant du commerce. Comment appelle-t-on ce type de ville ?"  # HIS-1: association ; HIS-3: vocabulaire du programme cycle 3 (colonie grecque), famille (a)
+    bonneReponse: "une colonie"
+    distracteurs: ["une capitale", "une forteresse"]
+    indice: "C'est une ville fondée par un peuple loin de son territoire d'origine, souvent pour commercer."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Grecs installés en Gaule font découvrir aux Gaulois une plante dont on tire le raisin. Quelle plante ont-ils apportée ?"  # HIS-1: association ; HIS-3: fait consensuel (introduction de la vigne par les colons grecs), famille (a)
+    bonneReponse: "la vigne"
+    distracteurs: ["le maïs", "la pomme de terre"]
+    indice: "C'est la plante dont on tire le raisin, encore cultivée dans le sud de la France."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Quel métal les Gaulois travaillaient-ils avec un grand savoir-faire pour fabriquer des épées et des outils ?"  # HIS-1: association ; HIS-3: fait consensuel (métallurgie du fer chez les Gaulois), famille (a)
+    bonneReponse: "le fer"
+    distracteurs: ["le bronze", "l'or"]
+    indice: "C'est un métal solide, plus résistant que le bronze utilisé avant eux."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Plusieurs mots de notre langue française, comme des noms d'arbres, viennent du gaulois. Qu'ont laissé les Gaulois dans notre langue actuelle ?"  # HIS-1: association ; HIS-3: fait consensuel (mots d'origine gauloise en français), famille (a)
+    bonneReponse: "des mots de vocabulaire"
+    distracteurs: ["des lettres de l'alphabet", "des règles de grammaire latine"]
+    indice: "Pense à ce qu'on utilise pour nommer les choses, comme le mot chêne ou charrue."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "À la fin du VIIIe siècle, des peuples venus du nord de l'Europe attaquent les côtes et remontent les fleuves. Comment appelle-t-on ces peuples ?"  # HIS-1: association ; HIS-3: fait consensuel (raids vikings sur les côtes et fleuves d'Europe de l'Ouest), famille (a)
+    bonneReponse: "les Vikings"
+    distracteurs: ["les Romains", "les Gaulois"]
+    indice: "Ce sont des marins venus de Scandinavie, qui remontent les fleuves sur leurs bateaux."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "En 732, une armée venue du sud est arrêtée près de Poitiers par Charles Martel. Quel peuple menait cette armée ?"  # HIS-1: association ; HIS-3: bataille de Poitiers 732, fait consensuel du programme scolaire français - terme traditionnellement enseigné, à confirmer par nadia-prof si un terme différent est préféré
+    bonneReponse: "les Sarrasins"
+    distracteurs: ["les Vikings", "les Romains"]
+    indice: "Cette armée venait de traverser la péninsule Ibérique avant d'arriver en Gaule."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Les mouvements des peuples germaniques affaiblissent peu à peu l'Empire romain d'Occident. Que se passe-t-il finalement en 476 ?"  # HIS-1: association ; HIS-3: chute de l'Empire romain d'Occident en 476, fait consensuel, famille (a)
+    bonneReponse: "l'Empire romain d'Occident disparaît"
+    distracteurs: ["l'Empire romain d'Occident devient plus puissant", "l'Empire romain d'Occident déménage sa capitale"]
+    indice: "C'est la fin d'un empire qui dominait une grande partie de l'Europe."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Les Francs s'installent en Gaule à la fin du Ve siècle et fondent un royaume qui deviendra un grand pays d'Europe. Lequel ?"  # HIS-1: association ; HIS-3: référentiel ligne 4 (installation des Francs), fait consensuel, famille (a)
+    bonneReponse: "la France"
+    distracteurs: ["l'Espagne", "l'Italie"]
+    indice: "Leur roi Clovis unifie ce royaume en 481."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Les Vikings s'installent dans le nord-ouest de la Gaule au début du Xe siècle. Quelle région porte encore leur nom aujourd'hui ?"  # HIS-1: association ; HIS-3: fait consensuel (installation viking à l'origine du nom de la Normandie), famille (a)
+    bonneReponse: "la Normandie"
+    distracteurs: ["la Bretagne", "la Provence"]
+    indice: "Le nom de cette région vient d'un mot qui signifie homme du Nord."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "À la fin du IXe siècle, les Vikings remontent la Seine et attaquent une grande ville. Laquelle ?"  # HIS-1: association ; HIS-3: fait consensuel (siège de Paris par les Vikings, fin du IXe siècle), famille (a)
+    bonneReponse: "Paris"
+    distracteurs: ["Marseille", "Lyon"]
+    indice: "Cette ville, aujourd'hui capitale de la France, est traversée par la Seine."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Après la défaite de Poitiers en 732, l'armée venue du sud n'avance plus vers le nord. Que devient son expansion en Europe ?"  # HIS-1: association ; HIS-3: bataille de Poitiers 732, fait consensuel, famille (a)
+    bonneReponse: "elle s'arrête"
+    distracteurs: ["elle continue jusqu'à Paris", "elle recommence l'année suivante"]
+    indice: "Charles Martel remporte cette bataille et empêche l'armée d'avancer davantage."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Après la disparition de l'Empire romain d'Occident, plusieurs peuples fondent chacun leur propre territoire. Que devient ce territoire ?"  # HIS-1: association ; HIS-3: fait consensuel (morcellement politique après 476), famille (a)
+    bonneReponse: "il se divise en plusieurs royaumes"
+    distracteurs: ["il reste un seul et même empire", "il redevient un territoire inhabité"]
+    indice: "Chaque peuple installé fonde son propre royaume, à la place d'un pouvoir unique."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "La victoire de Charles Martel à Poitiers renforce sa famille. Quelle dynastie de rois naît d'elle quelques années plus tard ?"  # HIS-1: association ; HIS-3: fait consensuel (dynastie carolingienne, issue de la famille de Charles Martel), famille (a)
+    bonneReponse: "la dynastie carolingienne"
+    distracteurs: ["la dynastie capétienne", "la dynastie mérovingienne"]
+    indice: "Le petit-fils de Charles Martel, Charlemagne, donnera son nom à cette dynastie."
+    ligneDeReferentiel: "HG-CM1-04"

@@ -450,8 +450,15 @@ class TexteAccentueExposeParLePortEntrantTest {
             // lecture de document, 10 items). Reecrite une troisieme fois pour nommer les quatre
             // familles du paquet, comptees par nadia-prof : 16 + 10 + 21 + 10 = 57 items couverts.
             // Rejeu borne a s31.
-            "Lis bien, puis situe dans le temps, associe un roi à son fait, décris un espace ou "
-                    + "une ressource, ou lis un document.",
+            //
+            // Correction du 2026-09-08 (marc-dev, CONS-1, arbitrage prealable de s32, section 1.2 ;
+            // story S32-1) : la consigne ne nommait toujours pas la tache reelle de HG-CM1-03 et
+            // HG-CM1-04 (nommer un peuple ou un mouvement de population), mesure en jouant le
+            // 2026-09-07. Reecrite une quatrieme fois pour l'ajouter, sans retirer aucune des quatre
+            // taches deja nommees.
+            "Lis bien, puis situe dans le temps, nomme un peuple ou un mouvement de population, "
+                    + "associe un roi à son fait, décris un espace ou une ressource, ou lis un "
+                    + "document.",
             // S28-4 : deux consignes neuves.
             "Pose l'opération, puis choisis le bon résultat.",
             "Pose l'opération, puis choisis le bon quotient et le bon reste.",
