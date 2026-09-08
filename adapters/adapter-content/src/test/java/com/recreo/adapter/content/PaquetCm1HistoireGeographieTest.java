@@ -76,13 +76,26 @@ class PaquetCm1HistoireGeographieTest {
     private static final String PAQUET = "cm1-histoire-geographie";
 
     /** Le compte est garde exactement, comme sur tous les paquets de ce depot. */
-    private static final int NOMBRE_D_ITEMS_ATTENDU = 57;
+    private static final int NOMBRE_D_ITEMS_ATTENDU = 92;
 
+    private static final String LIGNE_FRISE = "HG-CM1-01";
+    private static final String LIGNE_SIECLE_ET_MILLENAIRE = "HG-CM1-02";
+    private static final String LIGNE_PEUPLES_ANCIENS = "HG-CM1-03";
+    private static final String LIGNE_MOUVEMENTS_DE_POPULATION = "HG-CM1-04";
     private static final String LIGNE_TYPES_D_ESPACES = "HG-CM1-11";
     private static final String LIGNE_EAU_ENERGIE_ALIMENTS = "HG-CM1-13";
     private static final String LIGNE_ROIS_ET_REALISATIONS = "HG-CM1-06";
     private static final String LIGNE_REVOLUTION = "HG-CM1-07";
     private static final String LIGNE_COMPRENDRE_UN_DOCUMENT = "HG-CM1-14";
+
+    /** FER-1 sur HG-CM1-01 : les cinq periodes de la parenthese, chacune servie. */
+    private static final Set<String> GRANDES_PERIODES = Set.of(
+            "la Préhistoire", "l'Antiquité", "le Moyen Âge", "les Temps modernes",
+            "l'époque contemporaine");
+
+    /** FER-1 sur HG-CM1-03 : les trois peuples de la parenthese, chacun servi. */
+    private static final Set<String> PEUPLES_ANCIENS = Set.of("les Gaulois", "les Grecs",
+            "les Romains");
 
     /** FER-1 sur HG-CM1-06 : les quatre realisations du libelle, chacune en bonne reponse. */
     private static final Set<String> REALISATIONS_ROYALES =
@@ -182,11 +195,12 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     @Test
-    void lePaquetCompteExactementCinquanteSeptItems() {
+    void lePaquetCompteExactementQuatreVingtDouzeItems() {
         assertThat(tousLesItems(paquet()))
-                .as("S29-2 : trente-sept items apres s28 plus vingt items neufs (six sur %s, sept sur"
-                        + " %s, sept sur %s)",
-                        LIGNE_ROIS_ET_REALISATIONS, LIGNE_REVOLUTION, LIGNE_COMPRENDRE_UN_DOCUMENT)
+                .as("S32-1 : cinquante-sept items apres s29 plus trente-cinq items neufs (huit sur"
+                        + " %s, neuf sur %s, neuf sur %s, neuf sur %s)",
+                        LIGNE_FRISE, LIGNE_SIECLE_ET_MILLENAIRE, LIGNE_PEUPLES_ANCIENS,
+                        LIGNE_MOUVEMENTS_DE_POPULATION)
                 .hasSize(NOMBRE_D_ITEMS_ATTENDU);
     }
 
@@ -216,25 +230,165 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     /**
-     * La distribution exacte par ligne, apres S28-2 et S29-2 : les six lignes que ces deux lots ne
-     * touchent pas restent a leur compte de s27, et les cinq lignes des compositions B et A
-     * atteignent exactement le plancher de dix de {@code FER-2}. Une seule assertion prouve a la
-     * fois que le lot ferme sur son perimetre et qu'il n'ouvre aucune ligne neuve de la matiere.
+     * La distribution exacte par ligne, apres S28-2, S29-2 et S32-1 : les deux lignes que S32-1 ne
+     * touche pas (HG-CM1-08, HG-CM1-12) restent a leur compte de s27, et les sept lignes des
+     * compositions B, A et de la tranche 1 atteignent exactement le plancher de dix de
+     * {@code FER-2}. Une seule assertion prouve a la fois que chaque lot ferme sur son perimetre et
+     * qu'aucun n'ouvre de ligne neuve de la matiere.
      */
     @Test
-    void laDistributionParLigneEstExactementCelleDesCompositionsBEtA() {
+    void laDistributionParLigneEstExactementCelleDesCompositionsBEtAEtDeLaTranche1() {
         Map<String, Long> comptes = itemsBruts().stream()
                 .collect(Collectors.groupingBy(
                         item -> String.valueOf(item.get("ligneDeReferentiel")),
                         Collectors.counting()));
 
         assertThat(comptes).containsOnly(
-                Map.entry("HG-CM1-01", 2L), Map.entry("HG-CM1-02", 1L), Map.entry("HG-CM1-03", 1L),
-                Map.entry("HG-CM1-04", 1L), Map.entry(LIGNE_ROIS_ET_REALISATIONS, 10L),
-                Map.entry(LIGNE_REVOLUTION, 10L),
+                Map.entry(LIGNE_FRISE, 10L), Map.entry(LIGNE_SIECLE_ET_MILLENAIRE, 10L),
+                Map.entry(LIGNE_PEUPLES_ANCIENS, 10L), Map.entry(LIGNE_MOUVEMENTS_DE_POPULATION, 10L),
+                Map.entry(LIGNE_ROIS_ET_REALISATIONS, 10L), Map.entry(LIGNE_REVOLUTION, 10L),
                 Map.entry("HG-CM1-08", 1L), Map.entry(LIGNE_TYPES_D_ESPACES, 10L),
                 Map.entry("HG-CM1-12", 1L), Map.entry(LIGNE_EAU_ENERGIE_ALIMENTS, 10L),
                 Map.entry(LIGNE_COMPRENDRE_UN_DOCUMENT, 10L));
+    }
+
+    /** FER-2 (S32-1) : les quatre lignes de la tranche 1 atteignent chacune le plancher de dix. */
+    @Test
+    void fer2EstTenueSurLesQuatreLignesDeLaTranche1() {
+        assertThat(itemsDeLaLigne(LIGNE_FRISE)).hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+        assertThat(itemsDeLaLigne(LIGNE_SIECLE_ET_MILLENAIRE))
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+        assertThat(itemsDeLaLigne(LIGNE_PEUPLES_ANCIENS)).hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+        assertThat(itemsDeLaLigne(LIGNE_MOUVEMENTS_DE_POPULATION))
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+    }
+
+    /** FER-1 sur HG-CM1-01 : les cinq grandes periodes sont chacune servies en bonne reponse. */
+    @Test
+    void fer1LesCinqGrandesPeriodesSontServiesEnBonneReponse() {
+        Set<Object> reponses = itemsDeLaLigne(LIGNE_FRISE).stream()
+                .map(item -> item.get("bonneReponse"))
+                .collect(Collectors.toSet());
+
+        assertThat(reponses)
+                .as("FER-1 : la Préhistoire, l'Antiquité, le Moyen Âge, les Temps modernes et"
+                        + " l'époque contemporaine sont chacune servies en bonne réponse")
+                .containsAll(GRANDES_PERIODES);
+    }
+
+    /** FER-1 sur HG-CM1-03 : les trois peuples anciens sont chacun servis en bonne reponse. */
+    @Test
+    void fer1LesTroisPeuplesAnciensSontServisEnBonneReponse() {
+        Set<Object> reponses = itemsDeLaLigne(LIGNE_PEUPLES_ANCIENS).stream()
+                .map(item -> item.get("bonneReponse"))
+                .collect(Collectors.toSet());
+
+        assertThat(reponses)
+                .as("FER-1 : les Gaulois, les Grecs et les Romains sont chacun servis en bonne"
+                        + " réponse")
+                .containsAll(PEUPLES_ANCIENS);
+    }
+
+    /**
+     * FER-3 sur HG-CM1-01 : "ordre" (une periode par item, cinq items) et "identification" (un
+     * fait ou un objet decrit, cinq items), chacune au-dessus du plancher.
+     */
+    @Test
+    void fer3AuMoinsDeuxTachesSurHgCm101LaMoinsServieAuMoinsTroisItems() {
+        List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_FRISE);
+        long ordre = items.stream()
+                .filter(item -> String.valueOf(item.get("enonce")).startsWith("Quelle grande"
+                        + " période vient juste"))
+                .count();
+        long identification = items.size() - ordre;
+
+        assertThat(ordre).as("la tâche d'ordre est servie").isGreaterThan(0);
+        assertThat(identification).as("la tâche d'identification est servie").isGreaterThan(0);
+        assertThat(Math.min(ordre, identification))
+                .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
+                .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
+    }
+
+    /**
+     * FER-3 sur HG-CM1-02 : "situer dans un siecle ou un millenaire" et "ordonner deux faits l'un
+     * par rapport a l'autre", chacune au-dessus du plancher.
+     */
+    @Test
+    void fer3AuMoinsDeuxTachesSurHgCm102LaMoinsServieAuMoinsTroisItems() {
+        List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_SIECLE_ET_MILLENAIRE);
+        long ordre = items.stream()
+                .filter(item -> String.valueOf(item.get("enonce")).startsWith("Parmi ces trois"))
+                .count();
+        long situer = items.size() - ordre;
+
+        assertThat(ordre).as("la tâche d'ordre est servie").isGreaterThan(0);
+        assertThat(situer).as("la tâche de situer est servie").isGreaterThan(0);
+        assertThat(Math.min(ordre, situer))
+                .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
+                .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
+    }
+
+    /**
+     * FER-3 sur HG-CM1-03 : "nommer le peuple" (trois items, un par peuple - FAB-1a interdit un
+     * quatrieme sans repeter une bonne reponse) et "dire ce qu'un peuple a laisse" (sept items).
+     */
+    @Test
+    void fer3AuMoinsDeuxTachesSurHgCm103LaMoinsServieAuMoinsTroisItems() {
+        List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_PEUPLES_ANCIENS);
+        long nommerLePeuple = items.stream()
+                .filter(item -> PEUPLES_ANCIENS.contains(item.get("bonneReponse"))).count();
+        long directLaisse = items.size() - nommerLePeuple;
+
+        assertThat(nommerLePeuple).as("la tâche \"nommer le peuple\" est servie").isGreaterThan(0);
+        assertThat(directLaisse).as("la tâche \"dire ce qu'un peuple a laissé\" est servie")
+                .isGreaterThan(0);
+        assertThat(Math.min(nommerLePeuple, directLaisse))
+                .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
+                .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
+    }
+
+    /**
+     * FER-3 sur HG-CM1-04 : "nommer le mouvement" (trois items, un par peuple/mouvement) et "dire
+     * un effet sur le territoire" (sept items).
+     */
+    @Test
+    void fer3AuMoinsDeuxTachesSurHgCm104LaMoinsServieAuMoinsTroisItems() {
+        Set<String> mouvements = Set.of("les peuples germaniques", "les Vikings", "les Sarrasins");
+        List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_MOUVEMENTS_DE_POPULATION);
+        long nommerLeMouvement = items.stream()
+                .filter(item -> mouvements.contains(item.get("bonneReponse"))).count();
+        long direUnEffet = items.size() - nommerLeMouvement;
+
+        assertThat(nommerLeMouvement).as("la tâche \"nommer le mouvement\" est servie")
+                .isGreaterThan(0);
+        assertThat(direUnEffet).as("la tâche \"dire un effet sur le territoire\" est servie")
+                .isGreaterThan(0);
+        assertThat(Math.min(nommerLeMouvement, direUnEffet))
+                .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
+                .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
+    }
+
+    /**
+     * CONS-1 (S32-1) : la consigne du catalogue nomme desormais la tache reelle de HG-CM1-03 et
+     * HG-CM1-04, en plus des quatre taches deja nommees.
+     */
+    @Test
+    void cons1LaConsigneNommeLaTacheDeNommerUnPeupleOuUnMouvementDePopulation() {
+        String texte;
+        try (InputStream flux = PaquetCm1HistoireGeographieTest.class
+                .getResourceAsStream("/catalogue.yaml")) {
+            if (flux == null) {
+                throw new IllegalStateException("catalogue.yaml introuvable sur le classpath");
+            }
+            texte = new String(flux.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+
+        assertThat(texte)
+                .as("la consigne du jeu histoire-geographie nomme la tache de HG-CM1-03 et"
+                        + " HG-CM1-04, non couverte par les quatre taches deja nommees")
+                .contains("nomme un peuple ou un mouvement de population");
     }
 
     @Test

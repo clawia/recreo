@@ -313,8 +313,11 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                 .as("S29-2 (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-"
                         + "a-huit-lignes.md, section 3.3) : 37 items a la cloture de s28, +6 sur"
                         + " HG-CM1-06, +7 sur HG-CM1-07 et +7 sur HG-CM1-14 pour fermer la"
-                        + " composition A, soit 57 items")
-                .isEqualTo(57);
+                        + " composition A, soit 57 items ; S32-1 (arbitrage prealable de s32,"
+                        + " sections 1.2, 7.2 et 13 ; story S32-1) ajoute huit items sur HG-CM1-01,"
+                        + " neuf sur HG-CM1-02, neuf sur HG-CM1-03 et neuf sur HG-CM1-04, soit 92"
+                        + " items")
+                .isEqualTo(92);
     }
 
     /** Le paquet servi qui porte les marqueurs de HIS-1, choisi par le calcul et non par son nom. */
