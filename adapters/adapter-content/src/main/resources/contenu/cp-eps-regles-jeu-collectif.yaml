@@ -1,0 +1,106 @@
+schema: 1
+id: cp-eps-regles-jeu-collectif
+type: question
+descripteur:
+  matiere: "Éducation physique et sportive"
+  niveau: "CP"
+  domaine: "Conduire et maîtriser un affrontement individuel ou collectif"
+  competence: "Connaître et respecter les règles d'un jeu collectif simple."
+lignesDeReferentiel: ["EPS-CP-08"]
+#
+# S32-5 (docs/backlog/backlog.md, sprint 32, terrain C). Second paquet d'education physique et
+# sportive du produit, meme lot que cp-eps-regles-de-securite.yaml. Referentiel copie conforme
+# depuis squad/programme/education-physique-et-sportive/competences-cp.md (DEC-0074).
+#
+# Premier terrain sans image d'aucune instance de nadia-prof (PAR-13).
+#
+# Frontiere corps-et-effort (DEC-0083, section 9.2 ; arbitrage prealable de s32, section 6.4),
+# reprise mot pour mot : "l'EPS ne porte que l'effort lui-meme (...), jamais l'hygiene de vie en
+# general". Ce paquet ne porte aucun item sur les effets de l'effort, l'echauffement,
+# l'hydratation ou la recuperation (EPS-CP-10, EPS-CP-11) : il sert uniquement les regles d'un jeu
+# collectif, hors de la ligne de corps-et-effort que ce sprint ne finance pas.
+#
+# Couverture partielle exigee d'avance par nadia-prof (referentiel, ligne 8) : cette ligne ne
+# couvre que la connaissance de la regle du jeu ; la tenue d'un role en situation n'est pas servie
+# par ce produit.
+#
+# EPS-1 : chaque item porte sur un jeu collectif universellement scolaire en France (1, 2, 3
+# soleil ; chat perche ; l'epervier ; la balle au prisonnier ; le loup et les moutons ; les
+# demenageurs) - aucun item ne suppose une pratique particuliere non universelle, et aucune regle
+# ne depend d'une variante locale non nommee.
+#
+# EPS-2 : aucun item ne compare des corps, des performances ou des capacites entre enfants, et
+# aucune performance chiffree n'est presentee comme une norme.
+#
+# EPS-3 : aucun item ne fait porter une attitude, une emotion ou une conduite morale par la bonne
+# reponse - les items de la tache B jugent le respect factuel d'une regle, jamais une intention ou
+# un comportement moral (la contrefacon refusee a la ligne 9 du referentiel, "accepter le resultat",
+# n'est pas reproduite ici).
+#
+# BIA-4 : aucun item n'interroge l'enfant sur sa propre pratique ou sa propre situation - les
+# situations mettent en scene des personnages nommes (Léa, Hugo, Aya, Malo), exterieurs a l'enfant.
+#
+# FER-3 : deux taches mentalement distinctes - reconnaitre la regle d'un jeu collectif nomme (tache
+# A, items 1 a 6), et dire si une situation decrite respecte ou viole une regle donnee (tache B,
+# items 7 a 11).
+#
+# FER-2 : onze items, plancher de dix (DEC-0064).
+#
+# FER-1 : le libelle de cette ligne ne porte aucune parenthese enumerative ; la condition est donc
+# vacuement tenue.
+#
+# BIN-1 : la tache A ne porte aucun item binaire (0 sur 6) ; la tache B porte deux items binaires
+# sur cinq (items 7 et 8), soit moins de la moitie.
+#
+# ADR-0086 : aucune bonne reponse n'est repetee d'un item a l'autre sous le meme moule de
+# propositions ; aucun distracteur ne partage une amorce de quatre mots avec trois autres
+# distracteurs du paquet sans qu'aucune bonne reponse ne la partage ; aucun mot de la liste des
+# marqueurs de restriction (seulement, uniquement, seul, seule, seuls, seules, sauf) n'est employe.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "À 1, 2, 3, soleil, quand doit-on s'arrêter de bouger ?"
+    bonneReponse: "quand le meneur se retourne"
+    distracteurs: ["quand on touche le mur", "quand un joueur crie stop"]
+    indice: "Le meneur regarde les autres joueurs de temps en temps."
+  - enonce: "Au chat perché, comment un joueur évite-t-il d'être attrapé ?"
+    bonneReponse: "en montant sur un point en hauteur"
+    distracteurs: ["en fermant les yeux", "en criant le plus fort"]
+    indice: "Un joueur touché en hauteur n'est pas pris."
+  - enonce: "À l'épervier, que doivent faire les joueurs pour traverser ?"
+    bonneReponse: "éviter de se faire toucher"
+    distracteurs: ["rester immobiles au milieu", "lancer un ballon à l'épervier"]
+    indice: "Un joueur touché devient épervier à son tour."
+  - enonce: "À la balle au prisonnier, que se passe-t-il quand on est touché ?"
+    bonneReponse: "il va dans le camp adverse"
+    distracteurs: ["il gagne un point", "il devient arbitre du jeu"]
+    indice: "Être touché fait changer de camp, pas perdre la partie."
+  - enonce: "Au loup et les moutons, que devient un mouton touché ?"
+    bonneReponse: "il devient loup à son tour"
+    distracteurs: ["il sort du jeu", "il attend la fin de la partie"]
+    indice: "Le loup grandit au fil de la partie."
+  - enonce: "Aux déménageurs, comment une équipe gagne-t-elle la partie ?"
+    bonneReponse: "en transportant tous les objets avant l'autre équipe"
+    distracteurs: ["en portant deux objets à la fois", "en restant à l'arrivée sans bouger"]
+    indice: "Chaque joueur porte un objet à chaque passage."
+  - enonce: "Au chat perché, Léa touche Hugo sur un banc. A-t-elle respecté la règle ?"
+    bonneReponse: "non"
+    distracteurs: ["oui"]
+    indice: "Un joueur perché en hauteur ne peut pas être touché."
+  - enonce: "À l'épervier, Malo traverse sans se faire toucher. A-t-il respecté la règle ?"
+    bonneReponse: "oui"
+    distracteurs: ["non"]
+    indice: "Traverser sans être touché est justement le but du jeu."
+  - enonce: "Au chat perché, Malo touche Aya qui court au sol. Que se passe-t-il ?"
+    bonneReponse: "Aya est attrapée"
+    distracteurs: ["Aya devient meneuse", "rien ne se passe"]
+    indice: "Aya n'est pas en hauteur, elle peut donc être touchée."
+  - enonce: "Aux déménageurs, Hugo porte deux objets à la fois. Que se passe-t-il ?"
+    bonneReponse: "Hugo n'a pas respecté la règle"
+    distracteurs: ["Hugo a gagné la partie", "l'équipe change de camp"]
+    indice: "La règle des déménageurs impose de transporter un objet à chaque passage."
+  - enonce: "À 1, 2, 3, soleil, Hugo avance quand le meneur regarde. Que se passe-t-il ?"
+    bonneReponse: "Hugo doit retourner au départ"
+    distracteurs: ["Hugo gagne la partie", "Hugo devient meneur"]
+    indice: "Bouger pendant que le meneur regarde n'est pas permis."

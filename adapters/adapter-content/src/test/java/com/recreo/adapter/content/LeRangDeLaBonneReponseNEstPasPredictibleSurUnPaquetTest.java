@@ -675,7 +675,21 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"la croissance\", \"la reproduction\"...) ou des caracteristiques d'etape"
                     + " en texte libre (\"il grandit et se développe\"...), valeurDe rend null sur les"
                     + " trois propositions de chaque item. Mesure du 2026-09-07 sur le paquet servi :"
-                    + " aucune des 33 propositions ne commence par un chiffre"));
+                    + " aucune des 33 propositions ne commence par un chiffre"),
+            // S32-5 : premier lot d'education physique et sportive CP.
+            Map.entry("cp-eps-regles-de-securite",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des regles de securite ou des"
+                    + " motifs en texte libre (\"attendre l'autorisation de l'adulte\","
+                    + " \"un casque\"...), valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-09-08 sur le paquet servi : aucune des 33"
+                    + " propositions ne commence par un chiffre"),
+            Map.entry("cp-eps-regles-jeu-collectif",
+            "11 items sur 11 portent deux ou un distracteur(s) selon l'item, mais aucune des"
+                    + " propositions n'est numerique : ce sont des regles de jeu, des noms de"
+                    + " personnage ou \"oui\"/\"non\", valeurDe rend null sur chaque proposition."
+                    + " Mesure du 2026-09-08 sur le paquet servi : aucune proposition ne commence"
+                    + " par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
