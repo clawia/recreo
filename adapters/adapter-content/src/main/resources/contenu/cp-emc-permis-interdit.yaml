@@ -70,6 +70,21 @@ lignesDeReferentiel: ["EMC-CP-02"]
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
+#
+# Correction du 2026-09-08 (lea-dev, S32-CAT1, docs/backlog/backlog.md, sprint 32) : CAT-1, reserve
+# neuve de nadia-prof datee du 2026-09-07 (squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md).
+# Sur les items 4 et 6, la bonne reponse (une consideration pour autrui) etait la seule proposition
+# du meme registre que l'ecole, les deux distracteurs des motifs interesses - un enfant qui ignore la
+# regle gagnait en reconnaissant le registre. Sur chacun, un distracteur devient une raison serieuse
+# et plausible mais fausse pour la situation decrite ("pour ne pas deranger la classe", "pour ne pas
+# se faire mal soi-meme"), de sorte que les trois propositions se distinguent par ce qu'elles disent,
+# jamais par leur ton. PER-R1 (reserve du 2026-09-06, meme fiche) est payee dans le meme geste : sur
+# les six items de qualification qui demandaient "Qu'est-ce que X fait ?", la question et la bonne
+# reponse ne s'enchainaient pas toujours en francais correct ("elle fait un service", "il fait une
+# discussion"). Ils reprennent desormais la forme "Comment appelle-t-on ça ?", deja employee par
+# l'item 1, qui accepte les cinq qualifications sans forcer le verbe "faire". Aucune bonne reponse,
+# aucune situation ne change : FER-1, FER-2, FER-3, EMC-1, EMC-5, EMC-8, EMC-10 restent tenus a
+# l'identique.
 items:
   - enonce: "Hugo rit de la voix d'Aya. Comment appelle-t-on ça ?"
     bonneReponse: "une moquerie"
@@ -79,31 +94,31 @@ items:
     bonneReponse: "pour ne pas le blesser"
     distracteurs: ["pour gagner un jeu", "pour faire plus de bruit"]
     indice: "Une moquerie peut faire beaucoup de peine."
-  - enonce: "Malo dit des mots méchants à Hugo. Qu'est-ce qu'il lui fait ?"
+  - enonce: "Malo dit des mots méchants à Hugo. Comment appelle-t-on ça ?"
     bonneReponse: "une insulte"
     distracteurs: ["un service", "un cadeau"]
     indice: "Ce sont des mots blessants, pas des gestes."
   - enonce: "Pourquoi est-il interdit d'insulter un camarade ?"
     bonneReponse: "pour ne pas le faire souffrir"
-    distracteurs: ["pour parler plus fort que lui", "pour gagner une récompense"]
+    distracteurs: ["pour parler plus fort que lui", "pour ne pas déranger la classe"]
     indice: "Les mots peuvent blesser autant que les gestes."
-  - enonce: "Aya pousse Hugo très fort, sans raison. Qu'est-ce qu'Aya fait ?"
+  - enonce: "Aya pousse Hugo très fort, sans raison. Comment appelle-t-on ça ?"
     bonneReponse: "de la violence"
     distracteurs: ["un jeu", "un exercice"]
     indice: "Elle fait mal à Hugo avec son corps."
   - enonce: "Pourquoi est-il interdit de pousser ou de frapper ?"
     bonneReponse: "pour ne pas lui faire mal"
-    distracteurs: ["pour finir la récréation plus vite", "pour être le plus fort de la classe"]
+    distracteurs: ["pour finir la récréation plus vite", "pour ne pas se faire mal soi-même"]
     indice: "Le corps d'un camarade n'est pas un jouet."
-  - enonce: "Léa prête son crayon à Malo. Qu'est-ce qu'elle fait ?"
+  - enonce: "Léa prête son crayon à Malo. Comment appelle-t-on ça ?"
     bonneReponse: "un service"
     distracteurs: ["une moquerie", "de la violence"]
     indice: "Aider un camarade ne fait de mal à personne."
-  - enonce: "Hugo explique calmement pourquoi il n'est pas d'accord. Qu'est-ce qu'Hugo fait ?"
+  - enonce: "Hugo explique calmement pourquoi il n'est pas d'accord. Comment appelle-t-on ça ?"
     bonneReponse: "une discussion"
     distracteurs: ["une insulte", "de la violence"]
     indice: "Parler calmement ne fait de mal à personne."
-  - enonce: "Malo imite Léa devant la classe pour rire d'elle. Qu'est-ce que Malo fait ?"
+  - enonce: "Malo imite Léa devant la classe pour rire d'elle. Comment appelle-t-on ça ?"
     bonneReponse: "une moquerie"
     distracteurs: ["une insulte", "un compliment"]
     indice: "Il cherche à faire rire aux dépens de Léa."
@@ -111,7 +126,7 @@ items:
     bonneReponse: "parce que ça peut blesser malgré tout"
     distracteurs: ["parce que ça fait beaucoup de bruit", "parce que ça fait perdre du temps"]
     indice: "Une insulte fait mal, même dite en riant."
-  - enonce: "Aya tire les cheveux de Malo pendant la récréation. Qu'est-ce qu'Aya fait ?"
+  - enonce: "Aya tire les cheveux de Malo pendant la récréation. Comment appelle-t-on ça ?"
     bonneReponse: "de la violence"
     distracteurs: ["un jeu de récréation", "une blague sans conséquence"]
     indice: "Elle fait mal à Malo avec son corps, ce n'est pas un jeu."

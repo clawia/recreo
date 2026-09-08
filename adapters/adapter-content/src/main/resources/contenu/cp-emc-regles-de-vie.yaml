@@ -41,14 +41,29 @@ lignesDeReferentiel: ["EMC-CP-06"]
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
 # strictement plus d'items que de manches).
+#
+# Correction du 2026-09-08 (lea-dev, S32-CAT1, docs/backlog/backlog.md, sprint 32) : CAT-1, reserve
+# neuve de nadia-prof datee du 2026-09-07 (squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md).
+# Sur les items 1, 5, 7, 9, 10 et 11, la bonne reponse etait la seule proposition a sonner comme
+# l'ecole, les distracteurs les seules a sonner comme la faute - un enfant qui n'a jamais entendu la
+# regle gagnait en reconnaissant le registre plutot que la competence. Sur chacun de ces items, un
+# distracteur devient une proposition serieuse et polie mais fausse pour la situation decrite (forme
+# donnee par nadia-prof sur l'item 10 : "pour que le repas soit plus chaud", "pour que la maitresse
+# compte les eleves"), de sorte que ce qui distingue les trois propositions est ce qu'elles disent,
+# jamais comment elles sonnent. REG-R1 (reserve du 2026-09-05, meme fiche) est payee dans le meme
+# geste : les distracteurs "pour montrer qu'on a chaud" (item 2, absurde) et "pour connaitre l'heure"
+# (item 8, absurde) sont remplaces par des raisons plausibles, et "en criant" (item 5), qui n'etait
+# pas une facon de se deplacer, par une facon de se deplacer reelle mais fautive. Aucune bonne
+# reponse, aucun enonce ne change : FER-1, FER-2, FER-3, EMC-1, EMC-5, EMC-6, EMC-8, EMC-10
+# restent tenus a l'identique.
 items:
   - enonce: "Avant de parler en classe, que doit faire un élève ?"
     bonneReponse: "lever la main"
-    distracteurs: ["parler plus fort", "taper sur la table"]
+    distracteurs: ["parler plus fort", "regarder la maîtresse sans rien dire"]
     indice: "Un seul bras se lève, pour demander la parole."
   - enonce: "Pourquoi lève-t-on la main avant de parler en classe ?"
     bonneReponse: "pour que chacun parle à son tour"
-    distracteurs: ["pour montrer qu'on a chaud", "pour appeler la maîtresse de loin"]
+    distracteurs: ["pour que la maîtresse nous félicite", "pour appeler la maîtresse de loin"]
     indice: "Sans cette règle, tout le monde parlerait en même temps."
   - enonce: "Léa a fini de peindre. Que doit-elle faire de son matériel ?"
     bonneReponse: "le ranger"
@@ -60,7 +75,7 @@ items:
     indice: "Un matériel bien rangé se retrouve facilement le lendemain."
   - enonce: "Dans les couloirs de l'école, comment doit-on se déplacer ?"
     bonneReponse: "en marchant"
-    distracteurs: ["en courant", "en criant"]
+    distracteurs: ["en courant", "en sautant à cloche-pied"]
     indice: "On ne veut bousculer personne."
   - enonce: "Pourquoi marche-t-on dans les couloirs au lieu de courir ?"
     bonneReponse: "pour que personne ne se blesse"
@@ -68,21 +83,21 @@ items:
     indice: "Courir dans un couloir étroit fait facilement tomber quelqu'un."
   - enonce: "Hugo veut parler alors qu'un camarade parle déjà. Que doit-il faire ?"
     bonneReponse: "attendre son tour"
-    distracteurs: ["parler plus fort que lui", "le couper aussitôt"]
+    distracteurs: ["parler plus fort que lui", "aller prévenir la maîtresse tout de suite"]
     indice: "Une seule personne parle à la fois."
   - enonce: "Pourquoi écoute-t-on un camarade quand il parle ?"
     bonneReponse: "pour comprendre ce qu'il dit"
-    distracteurs: ["pour connaître l'heure", "pour gagner une récompense"]
+    distracteurs: ["pour savoir quand ce sera son tour de parler", "pour gagner une récompense"]
     indice: "Si tout le monde parle en même temps, personne ne comprend rien."
   - enonce: "À la cantine, plusieurs élèves veulent se servir en même temps. Que doivent-ils faire ?"
     bonneReponse: "faire la queue"
-    distracteurs: ["se bousculer", "se servir tous ensemble"]
+    distracteurs: ["se bousculer", "demander à la maîtresse de choisir qui passe en premier"]
     indice: "Chacun passe l'un après l'autre."
   - enonce: "Pourquoi fait-on la queue à la cantine ?"
     bonneReponse: "pour que tout le monde passe sans se bousculer"
-    distracteurs: ["pour manger plus vite", "pour être servi en premier"]
+    distracteurs: ["pour que le repas soit plus chaud", "pour que la maîtresse compte les élèves"]
     indice: "Une file évite que plusieurs élèves arrivent en même temps au même endroit."
   - enonce: "Aya a emprunté des crayons de la classe. Que doit-elle faire en repartant ?"
     bonneReponse: "les remettre à leur place"
-    distracteurs: ["les garder pour elle", "les laisser tomber par terre"]
+    distracteurs: ["les garder pour elle", "les donner à la maîtresse pour qu'elle les range"]
     indice: "Le matériel de la classe sert à tous les élèves."
