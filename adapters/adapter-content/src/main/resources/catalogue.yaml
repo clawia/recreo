@@ -402,3 +402,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-etapes-developpement
     nombreDeManches: 10
+  - id: bandit-manchot-regles-securite-eps-cp
+    titre: "Les règles de sécurité"
+    consigne: "Lis bien, puis dis quelle règle de sécurité s'applique, ou pourquoi elle existe."
+    mecanique: bandit-manchot
+    paquet: cp-eps-regles-de-securite
+    nombreDeManches: 10
+  - id: bandit-manchot-regles-jeu-collectif-eps-cp
+    titre: "Les règles du jeu collectif"
+    consigne: "Lis bien, puis dis quelle est la règle du jeu, ou ce qui se passe dans la situation."
+    mecanique: bandit-manchot
+    paquet: cp-eps-regles-jeu-collectif
+    nombreDeManches: 10

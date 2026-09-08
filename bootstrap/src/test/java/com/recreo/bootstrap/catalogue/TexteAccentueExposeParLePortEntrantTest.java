@@ -223,6 +223,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // CM1 en second passage (familles de materiaux, etapes du developpement).
             "bandit-manchot-familles-materiaux-cm1",
             "bandit-manchot-etapes-developpement-cm1",
+            // S32-5 : deux entrees neuves, premier lot d'education physique et sportive CP.
+            "bandit-manchot-regles-securite-eps-cp",
+            "bandit-manchot-regles-jeu-collectif-eps-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -345,6 +348,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S31-4 : deux titres neufs.
             "De quoi c'est fait ?",
             "Naître, grandir, vieillir",
+            // S32-5 : deux titres neufs, premier lot d'education physique et sportive CP.
+            "Les règles de sécurité",
+            "Les règles du jeu collectif",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -495,6 +501,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S31-4 : deux consignes neuves.
             "Lis bien, puis dis de quelle famille de matériau il s'agit, ou quel matériau choisir.",
             "Lis bien, puis dis quelle étape vient après, ou ce qui la caractérise.",
+            // S32-5 : deux consignes neuves, premier lot d'education physique et sportive CP.
+            "Lis bien, puis dis quelle règle de sécurité s'applique, ou pourquoi elle existe.",
+            "Lis bien, puis dis quelle est la règle du jeu, ou ce qui se passe dans la situation.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -514,6 +523,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Enseignement moral et civique",
             // S30-1 : matiere neuve, sciences et technologie CM1.
             "Sciences et technologie",
+            // S32-5 : matiere neuve, premier lot d'education physique et sportive.
+            "Éducation physique et sportive",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -554,6 +565,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // deja lists ci-dessus (S30-1, S30-2), reutilises par S31-3 et S31-4 sans nouvelle
             // entree.
             "Le vivant, sa diversité et les fonctions qui le caractérisent",
+            // S32-5 : deux domaines neufs, premier lot d'education physique et sportive CP
+            // (copies conformes du referentiel de nadia-prof,
+            // squad/programme/education-physique-et-sportive/competences-cp.md).
+            "Adapter ses déplacements à des environnements variés",
+            "Conduire et maîtriser un affrontement individuel ou collectif",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -727,7 +743,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Identifier les principales familles de matériaux et choisir un matériau d'après une "
                     + "propriété (résistance, isolation, souplesse, imperméabilité).",
             "Ordonner les étapes du développement d'un être vivant (naissance, croissance, "
-                    + "reproduction, vieillissement, mort).");
+                    + "reproduction, vieillissement, mort).",
+            // S32-5 : deux competences neuves, copiees conformes du referentiel de nadia-prof
+            // (squad/programme/education-physique-et-sportive/competences-cp.md, lignes
+            // EPS-CP-04 et EPS-CP-08).
+            "Connaître et respecter les règles de sécurité propres à l'activité et au lieu "
+                    + "de pratique.",
+            "Connaître et respecter les règles d'un jeu collectif simple.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
