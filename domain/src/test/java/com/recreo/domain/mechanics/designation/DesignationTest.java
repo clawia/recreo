@@ -121,7 +121,8 @@ class DesignationTest {
 
         DesignationSession suivante = jouer(premiere, "tableau");
 
-        assertThat(suivante.dernierVerdict()).contains(new DesignationVerdict(true, "tableau", Optional.empty()));
+        assertThat(suivante.dernierVerdict())
+                .contains(new DesignationVerdict(true, Optional.empty(), "Montre le tableau."));
         assertThat(suivante.score()).isEqualTo(new Score(1, 1));
         assertThat(suivante.status()).isEqualTo(SessionStatus.EN_COURS);
         assertThat(suivante.enonceManche()).contains("Montre la porte.");

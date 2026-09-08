@@ -1,5 +1,7 @@
 package com.recreo.archi;
 
+import com.tngtech.archunit.base.DescribedPredicate;
+import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.domain.JavaField;
 import com.tngtech.archunit.core.domain.JavaMethod;
 import com.tngtech.archunit.core.domain.JavaModifier;
@@ -213,6 +215,90 @@ class DecouplageMecaniqueContenuTest {
             .as("ADR-0080 : un record du contrat de contenu ou de mecanique ne declare aucune methode"
                     + " ecrite a la main hors de ses accesseurs et d'equals/hashCode/toString - un tel"
                     + " record loge un comportement que la clause (8) ne voit pas");
+
+    /**
+     * (12) ADR-0088, clause A : <b>le verdict d'une mecanique porte l'enonce de la manche qu'il
+     * juge.</b>
+     *
+     * <p><b>Le fait, et il est de quatre sprints.</b> ADR-0084 REV-3 a pose que la reponse d'une fin
+     * de partie voyage avec la question qu'elle commente, et l'a livre sur les deux mecaniques alors
+     * servies. Il a laisse {@code DesignationVerdict} de cote <b>en ecrivant pourquoi</b> - aucun
+     * ecran de designation n'existait. Le motif etait juste ; ce qui manquait est ce qui allait
+     * rappeler la question le jour ou l'ecran arriverait. Rien ne l'a rappelee : la troisieme
+     * mecanique est dans l'arbre depuis s28 et son verdict n'a pas d'enonce, sur une suite verte.
+     *
+     * <p><b>Ce qu'elle interdit reellement</b>, et c'est le contraire d'une regle decorative : elle
+     * <b>etait rouge</b> sur l'arbre du 2026-09-08 avant le diff qui l'accompagne, et le seul geste
+     * qui la rend verte est d'ajouter la composante au troisieme verdict. Elle interdit ensuite
+     * exactement ce que ce depot vient de faire une fois : livrer une quatrieme mecanique dont le
+     * verdict ne porte pas sa question. La faute est indetectable a la relecture - chaque mecanique
+     * porte sa propre boucle de partie par ADR-0004 clause 3, donc son propre verdict, et rien dans
+     * le fichier neuf ne renvoie a l'ancien.
+     *
+     * <p><b>Perimetre derive, jamais enumere, et c'est le point delicat de cette clause.</b> Aucun
+     * nom de type n'est ecrit ici et aucun suffixe {@code Verdict} n'est cherche : un critere sur le
+     * nom se contourne en renommant. Ce qui designe un verdict est <b>ce qu'il juge</b> - une
+     * composante {@code boolean juste}, la propriete que les trois mecaniques servies ecrivent
+     * identiquement et dont la Javadoc de chacune dit le sens (la manche compte-t-elle comme une
+     * reussite). Population au 2026-09-08 : <b>3 classes</b> - les trois verdicts, et eux seuls.
+     * {@code boolean juste} apparait par ailleurs sur les trois sessions, comme <b>parametre</b> de
+     * {@code resoudre} ; un parametre n'est pas un champ et ArchUnit ne le confond pas.
+     * {@code allowEmptyShould(false)} garde ce perimetre : le jour ou la marque disparaitrait des
+     * trois verdicts, cette clause le dirait au lieu de passer verte sur rien (ADR-0051).
+     *
+     * <p><b>Ce qu'elle ne garde pas, et qui le garde.</b> Elle voit la composante, jamais la valeur
+     * qui y voyage ni l'element de document qui la rend. Qu'un verdict porte reellement l'enonce de
+     * la manche jouee est verifie sur une partie reelle par
+     * {@code LeVerdictDUneDesignationPorteSaQuestionEtJamaisSaZoneTest} ({@code domain}) ; que
+     * l'ecran servi apparie la reponse a sa question l'est par
+     * {@code AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest} ({@code bootstrap}), dont la
+     * derivation totale rougit deja sur une forme d'item qu'aucun ecran de fin de partie ne sait
+     * jouer. Une propriete gardee a moitie qui se croit gardee en entier est la faute que ce depot a
+     * sanctionnee plusieurs fois ; elle est decoupee, et chaque moitie porte le nom de son garde.
+     */
+    @ArchTest
+    static final ArchRule unVerdictDeMecaniquePorteSonEnonce = classes()
+            .that().resideInAPackage(MECANIQUES)
+            .and(jugentUneManche())
+            .should(declarerLEnonceDeLaMancheJugee())
+            .allowEmptyShould(false)
+            .as("ADR-0088 : le verdict d'une mecanique porte l'enonce de la manche qu'il juge. A la"
+                    + " fin d'une partie la manche courante n'existe plus, et ce verdict est la seule"
+                    + " trace de l'item joue : sans enonce, l'ecran de fin nomme une reponse sans la"
+                    + " question qu'elle commente");
+
+    /** Un champ de ce nom et de ce type, ou rien. */
+    private static boolean declare(JavaClass classe, String nom, String typeAttendu) {
+        return classe.getFields().stream()
+                .anyMatch(champ -> champ.getName().equals(nom)
+                        && champ.getRawType().getName().equals(typeAttendu));
+    }
+
+    /**
+     * La marque d'un verdict : il dit si la manche compte comme une reussite. C'est ce que les trois
+     * mecaniques servies ecrivent identiquement, et c'est une propriete de ce que le type <b>fait</b>
+     * - un nom de type ou un suffixe se contourne en renommant.
+     */
+    private static DescribedPredicate<JavaClass> jugentUneManche() {
+        return DescribedPredicate.describe("jugent une manche (composante boolean juste)",
+                classe -> declare(classe, "juste", "boolean"));
+    }
+
+    private static ArchCondition<JavaClass> declarerLEnonceDeLaMancheJugee() {
+        return new ArchCondition<>("declarer une composante String enonce, obligatoire") {
+
+            @Override
+            public void check(JavaClass classe, ConditionEvents evenements) {
+                if (!declare(classe, "enonce", "java.lang.String")) {
+                    evenements.add(SimpleConditionEvent.violated(classe,
+                            classe.getName() + " juge une manche et ne porte pas son enonce."
+                                    + " ADR-0084 REV-3 : a l'instant de la fin de partie, la session"
+                                    + " n'a plus de manche courante et ce verdict est la seule trace"
+                                    + " de l'item joue - il n'y a rien a recomposer ailleurs"));
+                }
+            }
+        };
+    }
 
     private static ArchCondition<JavaMethod> nePorterQueLeNomDUnChampOuEtreDObjet() {
         return new ArchCondition<>(

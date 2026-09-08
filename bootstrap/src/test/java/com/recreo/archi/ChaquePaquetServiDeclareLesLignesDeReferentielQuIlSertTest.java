@@ -218,6 +218,23 @@ class ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest {
         return lignes;
     }
 
+    /**
+     * <b>Les codes de ligne qu'un arbre alloue, pour le garde-fou du registre d'identifiants</b>
+     * (ADR-0085, clause 6 ; ADR-0088, clause D).
+     *
+     * <p>ADR-0081 alloue les codes de ligne <b>ici</b> et ADR-0085 alloue les identifiants de
+     * condition dans son registre. Les deux espaces de noms se ressemblent, et le garde-fou du
+     * registre doit savoir lequel possede un code a trois segments pour ne pas exiger l'allocation
+     * d'un code que ce fichier-ci gouverne deja. Il appelle donc cette methode plutot que de tenir
+     * une seconde notion de ce qu'est un code de ligne : ADR-0061, un second exemplaire d'une
+     * association rancit.</p>
+     */
+    static Set<String> codesDeLigneAlloues(Path racine) {
+        return lignesDe(racine.resolve(PROGRAMME)).stream()
+                .map(Ligne::code)
+                .collect(java.util.stream.Collectors.toCollection(LinkedHashSet::new));
+    }
+
     /** Les paquets d'une arborescence de contenu, lus par la bibliotheque du chargeur servi. */
     static List<Paquet> paquetsDe(Path repertoire) {
         List<Paquet> paquets = new ArrayList<>();

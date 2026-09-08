@@ -183,14 +183,54 @@ class ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest {
     }
 
     /**
+     * <b>ADR-0088, clause C : un type de paquet que ce garde-fou n'a pas instruit est un grief,
+     * jamais un silence.</b>
+     *
+     * <p><b>Ce que ce gate corrige, et c'est une promesse de ce fichier qui etait fausse.</b> La
+     * Javadoc de {@link #colonnes(Map)} annonce qu'<i>"une troisieme forme, le jour ou elle
+     * arrivera, fera rougir ce garde-fou au lieu de passer en silence"</i>. Mesure du 2026-09-08 :
+     * la promesse ne tient que pour un paquet dont la <b>forme</b> est illisible, pas pour un paquet
+     * d'un <b>type</b> neuf dont la forme se lit par accident. Un paquet de type {@code designation}
+     * declare des {@code items} et aucun {@code distracteurs} : {@link #colonnes(Map)} y rend
+     * {@code Optional.of(1)}, aucun grief n'est ajoute, et le plafond etant un maximum, ce 1 ne
+     * gagne jamais. <b>Effet nul, promesse fausse</b> - et une promesse fausse dans un garde-fou est
+     * de la meme famille qu'un chiffre sans methode. Contrairement aux quatre autres garde-fous de
+     * rendu de ce paquet, ce fichier ne branchait pas du tout sur le type : c'est un cinquieme cas
+     * du meme defaut par un autre mecanisme, et il est nomme ici plutot que confondu avec eux.</p>
+     *
+     * <p>Le grief est ajoute, et le balayage <b>continue</b> : un paquet peut porter les deux
+     * defauts a la fois - un type non instruit et une forme illisible - et n'en montrer qu'un
+     * masquerait l'autre.</p>
+     */
+    private static Optional<String> defautDuTypeNonInstruit(String nom, Map<?, ?> paquet) {
+        String type = String.valueOf(paquet.get("type"));
+        return switch (type) {
+            case "question", "additions-bornees", "saisie" -> Optional.empty();
+            default -> Optional.of(nom + " : type '" + type + "', que ce garde-fou n'a pas instruit."
+                    + " Son nombre de colonnes est alors lu par la forme generique, qui peut le"
+                    + " rendre par accident : un paquet de designation declare des items sans"
+                    + " distracteurs et vaudrait 1 colonne sans qu'aucun grief ne le dise. Decider"
+                    + " ici combien de colonnes ce type peut produire - zero pour une designation,"
+                    + " qui ne rend aucun rouleau de propositions (ADR-0029, ADR-0088 clause C)");
+        };
+    }
+
+    /**
      * Le nombre de propositions qu'un item de ce paquet peut afficher, au plus.
      *
      * <p>Deux formes, parce que le depot en sert deux (ADR-0007) : un paquet enumere ses items et le
      * nombre de colonnes vaut la bonne reponse plus ses distracteurs ({@code
      * BanditManchotSession.melanger}) ; un paquet combinatoire declare {@code nombreDePropositions}
      * dans ses parametres, et le generateur en produit au plus autant. Dans les deux cas c'est une
-     * borne superieure, ce qui est le bon sens de l'approximation. Une troisieme forme, le jour ou
-     * elle arrivera, fera rougir ce garde-fou au lieu de passer en silence.</p>
+     * borne superieure, ce qui est le bon sens de l'approximation.</p>
+     *
+     * <p><b>Amendement du 2026-09-08 (ADR-0088, clause C).</b> Cette Javadoc disait <i>"une
+     * troisieme forme, le jour ou elle arrivera, fera rougir ce garde-fou au lieu de passer en
+     * silence"</i>. C'est vrai d'une forme <b>illisible</b> et faux d'un <b>type</b> neuf dont la
+     * forme se lit par accident : un paquet de designation declare des {@code items} sans
+     * {@code distracteurs} et vaut ici 1, sans grief. La promesse est donc tenue ailleurs, par
+     * {@link #defautDuTypeNonInstruit(String, Map)}, et elle est retiree d'ici plutot que laissee a
+     * moitie vraie.</p>
      */
     private static Optional<Integer> colonnes(Map<?, ?> paquet) {
         Object items = paquet.get("items");
@@ -227,6 +267,7 @@ class ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest {
                             + "confronte a rien (ADR-0013 obligation 2)");
                     continue;
                 }
+                defautDuTypeNonInstruit(nom, champs).ifPresent(defauts::add);
                 Optional<Integer> lues = colonnes(champs);
                 if (lues.isEmpty()) {
                     defauts.add(nom + " : ce paquet ne declare ni items lisibles ni "
@@ -438,12 +479,21 @@ class ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest {
      * ADR-0013 obligation 2 : un paquet dont le nombre de propositions n'est pas lisible est un
      * defaut et non une valeur ignoree. Sans ce cas, une troisieme forme de paquet entrerait dans le
      * depot en faisant sortir sa population du controle en silence.
+     *
+     * <p><b>Deux griefs sur le meme paquet fautif, et le second n'etait pas assere jusqu'au
+     * 2026-09-08.</b> Ce jeu d'artefacts portait deja un {@code type} qu'aucun chargeur n'enregistre
+     * - il avait ete choisi pour la couleur du fautif - et personne ne verifiait que ce type-la
+     * produise un grief. Il en produit un depuis {@link #defautDuTypeNonInstruit(String, Map)}, et
+     * les deux sont exiges ici : une forme illisible et un type non instruit sont deux defauts
+     * distincts, et un paquet peut n'avoir que le second - c'est exactement le cas d'un paquet de
+     * designation.</p>
      */
     @Test
     void unPaquetDontLeNombreDePropositionsEstIllisibleFaitEchouerLeGardeFou() {
         assertThatThrownBy(() -> verifierQueChaqueColonnePorteSonDecalage(
                 List.of(CONTRE_EXEMPLES.resolve("paquet-illisible"))))
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("ne declare ni items lisibles ni parametres.nombreDePropositions");
+                .hasMessageContaining("ne declare ni items lisibles ni parametres.nombreDePropositions")
+                .hasMessageContaining("que ce garde-fou n'a pas instruit");
     }
 }

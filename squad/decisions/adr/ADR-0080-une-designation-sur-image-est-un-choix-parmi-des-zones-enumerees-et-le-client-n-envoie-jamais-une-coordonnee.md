@@ -1,10 +1,15 @@
 # ADR-0080 - Une designation sur image est un choix parmi des zones enumerees, le client n'envoie jamais une coordonnee, et les cinq cas d'usage tiennent dans une seule mecanique
 
-- **Statut** : **Propose**. Aucune de ses regles n'est ecrite a la date de redaction, et cet `ADR`
+- **Statut** : **Propose**, amende deux fois - le 2026-09-04 (s28) et le 2026-09-08 (s32). Aucune de
+  ses regles n'est ecrite a la date de redaction, et cet `ADR`
   dit pour chacune **quand elle est due** et **si elle serait verte ou rouge aujourd'hui** plutot que
   de laisser le silence trancher. Une seule - la clause 11 - peut etre ecrite et verte des
   maintenant, sur une population non vide ; toutes les autres attendent le type ou le paquet
   qu'elles jugent, une regle a population vide etant ce qu'`ADR-0051` refuse.
+  **Le statut reste `Propose` au 2026-09-08** : cinq de ses huit regles sont ecrites (les deux
+  clauses ArchUnit et les garde-fous 4, 5 et 6), mais trois de celles-la mordent encore sur fixture
+  et non sur la population que leur table nomme, et les garde-fous 1, 2 et 3 n'existent pas. Ce que
+  `Accepte` exige est ecrit comme critere dans l'amendement du 2026-09-08, section 6.
 - **Sprint** : s28. **Date** : 2026-09-03. **Auteur** : `theo-archi`.
 - **Route par** : `DEC-0074`, arbitrage 2 de l'utilisatrice du 2026-09-03 - *"le palier 2 ouvre en
   s28 comme chantier de mecanique seul"*, et *"cette decision ne prejuge ni la faisabilite ni la
@@ -720,3 +725,152 @@ n'ecrit aucune story et ne fixe aucun rang.
 rendu, au style et a une valeur epinglee. C'est la que les surprises sont, et c'est aussi la tache
 dont le resultat se juge en jouant plutot qu'en lisant. Si un seul point de ce chantier doit etre
 demontre avant d'etre declare fini, c'est celui-la.
+
+---
+
+## Amendement du 2026-09-08 (s32, `theo-archi`) - ce que quatre sprints ont rendu faux dans cet `ADR`, et ce qu'il n'avait pas vu
+
+**Motif de cet amendement, avant son contenu.** Cet `ADR` a ete ecrit avant le code, ce qui etait
+voulu (`DEC-0074`). Quatre sprints plus tard, **sa section de faisabilite dit des choses fausses**,
+et un `ADR` qui dit des choses fausses est pire qu'un `ADR` absent : il est lu comme une decision.
+Il est donc amende plutot que laisse pourrir, et **son statut reste `Propose`** - trois de ses huit
+regles mordent encore sur fixture, et un `Accepte` prononce la-dessus serait le contraire de ce que
+cet `ADR` demande a tout le monde.
+
+**Arbre mesure** : worktree `s32-theo` sur `round-two` a `f503b4e5`. JDK 21.0.10, version rapportee
+par la machine virtuelle des tests (`ADR-0071`). Les mesures partielles du reacteur portent `-am` et
+nomment leur module.
+
+### 1. Ce qui est livre, et ce qui reste
+
+**T1, T2, T3 et T5 sont livres** (verifie par lecture de l'arbre, pas repris d'un rapport) :
+`Designation`, `DesignationSession`, `DesignationMove`, `DesignationVerdict`, `Zone`,
+`ZoneADesigner`, `CadreDeZone`, `DesignationContentSourceFactory` enregistree sous la cle
+`designation`, les clauses ArchUnit 10 et 11 dans `DecouplageMecaniqueContenuTest`, et les
+garde-fous 4, 5 et 6. **Compte des `ArchRule` du depot : 33**, exactement ce que cet `ADR`
+annoncait ; methode dans le meme paragraphe - motif `static final ArchRule` sur les arbres de
+sources des cinq modules, `/target/` exclu, faux module de contre-exemple exclu (il en declare 2,
+d'ou un comptage naif a 35) ; concordant par un second chemin, `LesReglesMordentTest` executant 33
+tests, mesure partielle `mvn -pl bootstrap -am`, module `recreo-bootstrap`.
+
+**T4 et T6 restent, et rien de la designation n'existe dans `adapter-web` ni dans `bootstrap`.**
+**Catalogue servi : 66 entrees, 64 `bandit-manchot`, 2 `saisie`, zero `designation`** (methode :
+comptage des entrees et des valeurs de `mecanique` sur `catalogue.yaml`). Personne ne peut jouer le
+palier 2.
+
+### 2. Les deux dependances externes que la section "Cout et decoupage" declare manquantes existent
+
+**Elle dit *"T4 est faisable moyennant un arbitrage qui n'existe pas"*. Il existe.** `recreo.css`
+porte `.image-designation { max-height: 22rem; }`, l'arbitrage d'`ines-design` sur la taille d'image
+du palier 2, avec son arithmetique de cible tactile, son plafond de grille et ses deux largeurs de
+container verifiees. Le garde-fou 3 doit lire ce plafond, **jamais celui de `.image-item`** : la
+designation ne partage plus le plafond des deux autres mecaniques.
+
+**Elle dit *"un arbitrage prealable de `nadia-prof` [...] n'est pas ecrit"*. Il est ecrit** depuis le
+2026-09-05 :
+`squad/conformite/ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md`.
+
+**Ce que ces deux faits changent** : le seul risque que cette section nommait au planning est solde.
+Ce qui reste de son verdict de faisabilite est juste - T4 est bien la tache qui touche a la fois au
+rendu, au style et a une valeur epinglee - mais son motif de blocage ne tient plus.
+
+### 3. Deux trous que cet `ADR` n'avait pas vus, et que T4 ne peut pas eviter
+
+**Trou A - `DesignationVerdict` ne porte pas d'enonce, la ou `ADR-0084` REV-3 l'exige.**
+`Verdict` (bandit manchot) et `SaisieVerdict` portent tous deux un champ `enonce` obligatoire, parce
+que *la reponse d'une fin de partie voyage avec la question qu'elle commente* et que
+`fragments/retour.html` rend `${enonceRevele}`. `DesignationVerdict` est
+`(boolean juste, String bonneZone, Optional<String> explication)`. A l'instant de la fin de partie la
+session n'a plus de manche courante : **le verdict est la seule trace possible de l'item joue**.
+C'est un residu de T2 dans `domain`, pas un travail d'adaptateur.
+
+**Trou B - `bonneZone` est un identifiant, et l'ecran de fin de partie en fait un texte lu par un
+enfant.** `fragments/retour.html` rend `${bonneReponse}` dans un element de classe
+`reponse-attendue`. `DesignationVerdict.bonneZone()` et `DesignationSession.bonneZoneRevelee()`
+rendent un `Zone.id()` - la valeur que le formulaire renvoie, jamais un libelle, comme la decision 4
+l'exige. **Ce qui est decide ici** : le verdict doit transporter quelque chose de presentable, ou la
+designation doit avoir son propre fragment de fin de partie ; la premiere voie est moins chere et
+n'ajoute aucun gabarit. **Ce qui n'est pas decide ici et reste a `nadia-prof`** : ce que l'enfant
+voit - un libelle, autre chose, ou rien. La section 8 lui laissait deja *"le libelle d'une zone, sa
+formulation"*.
+
+### 4. Ce que la section 6 promettait sur les garde-fous 1 a 3, precise par etat
+
+- **Garde-fou 2** (les sept interdits du JavaScript maison) est **ecrivable et vert des maintenant** :
+  sa population est le seul script maison du depot, non vide, et cet `ADR` a deja verifie les sept
+  mots sur ce materiau reel. Il n'a pas a attendre T4, et l'y laisser serait ecrire une regle le jour
+  ou elle gene.
+- **Garde-fous 1 et 3** restent a population vide et **ne peuvent pas etre ecrits avant T4** : leur
+  objet est le document servi d'un ecran de designation, qui n'existe pas. Ce n'est pas un report,
+  c'est une indissociabilite - un lot T4 qui les omettrait serait incomplet, pas en retard.
+- **Garde-fous 4, 5 et 6** : la dette datee du 2026-09-04 est toujours vivante et son cliquet est
+  toujours a zero. Elle est soldee par T6, dans le meme diff.
+
+### 5. Une regle de plus, due par cet `ADR` et ecrite avec cet amendement
+
+**Le fait, mesure : une mecanique peut vivre dans `domain`, etre testee unitairement, et n'etre
+jouable par personne, sans qu'aucun automate du depot le dise.** `com.recreo.domain.mechanics` porte
+trois tranches ; `MecaniquesConfiguration` publie deux beans. `Designation` est dans l'arbre depuis
+s28 et **aucune ligne de `bootstrap` ne la nomme** ; le constat a du etre fait a la main par
+`nadia-prof` en comptant le catalogue servi, quatre sprints plus tard, alors que 1396 tests surefire
+etaient verts, la clause 7 d'`ADR-0004` verte et la clause 10 de cet `ADR` verte.
+
+**C'est la dette 1 de `CLAUDE.md` par son autre face** - celle-la nommait une abstraction documentee
+partout et jamais implementee, celle-ci nomme une mecanique implementee et inatteignable - **et le
+mode de defaillance est le meme : tout est vert.**
+
+**Regle** :
+`bootstrap/src/test/java/com/recreo/archi/ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest.java`.
+Toute implantation concrete de `GameMechanic` sous `com.recreo.domain.mechanics..` a au moins une
+dependance directe entrante depuis `com.recreo.bootstrap..`. Perimetre derive du contrat implante et
+de la tranche, jamais d'une liste de noms ; critere derive du graphe reel
+(`getDirectDependenciesToSelf`), donc insensible a un bean commente ou a une classe de configuration
+renommee. **Cliquet, plafond `PLAFOND_DE_MECANIQUES_NON_CABLEES = 1`, exactement la taille de la
+dette, refuse en egalite dans les deux sens** (`ADR-0067`) : il descend a zero dans le meme diff que
+le bean de designation. Une regle seche serait rouge aujourd'hui, donc incommittable, donc reportee
+au jour ou elle gene - donc negociee. **6 tests verts**, mesure partielle
+`mvn -pl bootstrap -am -Dtest=ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest`, module
+`recreo-bootstrap`.
+
+**Ce qu'elle ne garde pas, et qui le garde** : un bean ne rend pas une mecanique jouable. La route
+est gardee par `ToutEcranEchangeEstUnDocumentJouableTest`, qui derive ses routes de
+`RequestMappingHandlerMapping` et rougit a la seconde ou une route neuve est declaree sans entrer
+dans son inventaire ; l'ecran par `LaConsigneDUnJeuServiAtteintLEcranDeMancheTest`, qui itere sur
+tout le catalogue servi ; l'entree de catalogue par `CatalogueChargeableIT`, qui demarre une partie
+sur chaque entree. **Une propriete gardee a moitie qui se croit gardee en entier est la faute que ce
+depot a sanctionnee plusieurs fois** ; elle est decoupee, et chaque moitie porte le nom de son garde.
+
+**Une seconde regle envisagee puis ecartee, dite plutot que le compte gonfle.** Une regle *"chaque
+`mecanique` du catalogue resout dans le registre"* existe deja en substance : `CatalogueChargeableIT`
+appelle `partie.demarrer(jeu.id())` pour chaque entree, `MechanicRegistryPort` resout par une lecture
+de correspondance, et un identifiant inconnu rend une absence puis leve dans `PartieService`. Le seul
+defaut est la forme du message. **Une regle de plus sur une propriete deja tenue serait decorative.**
+
+**Compte des `ArchRule` du depot : inchange, 33.** Ce garde-fou n'est pas une `ArchRule` - son juge
+est un cliquet a compte, qu'une `ArchRule` ne sait pas exprimer -, exactement comme le cliquet de
+paquets de designation de l'amendement du 2026-09-04.
+
+### 7. Renvoi du 2026-09-08 (s32) - les deux trous de la section 3 sont tranches ailleurs
+
+Les deux trous que la section 3 ci-dessus nomme sont **decides par `ADR-0088`**, apres l'arbitrage de
+`nadia-prof` du meme jour (section 17.6 de son arbitrage prealable de s32) : le verdict de designation
+porte l'enonce, il ne porte plus aucune zone, et l'ecran de fin de partie ne montre pas la zone
+attendue - rien a sa place. La question que la section 8 laissait a `nadia-prof` - *"le libelle d'une
+zone, sa formulation"* pour cet ecran-la - est **repondue** : ni l'identifiant, ni le libelle.
+
+Ce qui reste ecrit ici sans changement : la decision 4 - le client envoie un identifiant, jamais une
+coordonnee - et le fait que `Zone` distingue `id` de `libelle`. C'est cette distinction qui rend le
+trou B visible, pas elle qui le cause.
+
+### 6. Ce qui fait passer cet `ADR` a `Accepte`
+
+Ecrit comme critere et non comme intention : **T4 livre** avec les garde-fous 1, 2 et 3 ecrits et
+mordants ; **T6 livre** avec les trois balayages de production des garde-fous 4, 5 et 6 etendus et le
+cliquet monte a son compte reel dans le meme diff ; **les deux trous de la section 3 tranches** ; et
+**les huit regles vertes sur leur population reelle**, pas sur une fixture. **T4 seul ne suffit
+pas**, et c'est structurel : trois des huit regles ne changent d'objet qu'a T6.
+
+Le decoupage en lots, leur cout et leur repartition sont un avis de faisabilite et non une decision :
+ils vivent dans
+`squad/sprints/s32-instruction-prealable/avis-faisabilite-theo-achevement-du-palier-2.md`, qui perime
+au prochain sprint. Ce qui est decide vit ici.

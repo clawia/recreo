@@ -406,6 +406,21 @@ class LesReglesMordentTest {
     }
 
     /**
+     * ADR-0088, clause 12 : un verdict de mecanique qui juge une manche sans porter son enonce. Le
+     * contre-exemple est la forme reelle et non une caricature - c'est exactement l'etat de
+     * {@code DesignationVerdict} du 2026-09-04 au 2026-09-08, et celui des deux autres verdicts
+     * avant ADR-0084.
+     */
+    @Test
+    void unVerdictDeMecaniqueSansSaQuestionEstRefuse() {
+        assertThatThrownBy(() -> DecouplageMecaniqueContenuTest.unVerdictDeMecaniquePorteSonEnonce
+                .check(contreExemples("com.recreo.domain.mechanics.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("VerdictSansSaQuestionContreExemple")
+                .hasMessageContaining("juge une manche et ne porte pas son enonce");
+    }
+
+    /**
      * ADR-0011 : une regle d'existence n'a pas de classe fautive - la faute serait une absence,
      * meme mecanisme que uneAbstractionCiteeQuiDisparaitEstRefusee (ADR-0005).
      */
