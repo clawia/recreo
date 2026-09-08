@@ -390,3 +390,64 @@ fait foi.
 Aucun de ces six obstacles n'est clos par cette entree : elle les route, elle ne les tranche pas.
 Le sprint n'a pas de porte technique verte tant que le job `build` est rouge, et cette entree
 n'affirme aucun Done, ni technique ni pedagogique.
+
+## 15. Fusion de `s32-theo2` - le rouge herite est paye, trois routages evoluent
+
+**Casquette dev, geste distinct de la ceremonie de planning.**
+
+**Verification de lignee avant fusion** : `git merge-base round-two s32-theo2` rend `7ed471a7`,
+exactement la tete de `round-two` au moment ou `s32-theo2` a ete forkee (section 14). La branche en
+descend directement, aucune tete perimee. **Fusion en fast-forward** (`git merge --ff-only
+s32-theo2`), sans commit de fusion, sans conflit : le nouveau `HEAD` de `round-two` est `63590b33`.
+
+**Point de couture verifie, pas suppose** : `squad/decisions/adr/ADR-index.md` porte l'entree
+`ADR-0089`, et `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/confirmation-archunit.md`
+existe dans mon propre repertoire de sprint.
+
+**Quatre jobs de la CI lances par moi sur l'arbre fusionne, chacun nomme, aucun deduit** :
+
+| Job | Commande | Verdict |
+|---|---|---|
+| `build` | `bash outils/mvn-jdk21.sh -B clean verify` (reacteur complet, racine) | **BUILD SUCCESS**, six modules `SUCCESS`, 02:06 min |
+| `chemins` | `bash .github/scripts/verifier-chemins-test.sh`, puis `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh` | Vert. *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
+| `outils` | les neuf juges purs de `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` | Vert, 9 juges executes |
+| `prefixes` | `bash .github/scripts/verifier-prefixes-test.sh`, `bash .github/scripts/commit-atteignable-test.sh`, puis `git log --no-merges --format=%s 7ed471a7..HEAD \| bash .github/scripts/verifier-prefixes.sh` (plage reelle du push, le seul commit fusionne) | Vert. *"Tous les commits portent un prefixe d'agent connu."* |
+
+**Compte de tests mesure par moi sur l'arbre fusionne, pas relaye de la confirmation de
+`theo-archi`** : somme de l'attribut `tests` des fichiers `TEST-*.xml` de `surefire-reports` et
+`failsafe-reports` apres le `clean verify` ci-dessus - `recreo-domain` 105, `recreo-application` 13,
+`recreo-adapter-web` 388, `recreo-adapter-content` 689, `recreo-bootstrap` surefire 238, `recreo-bootstrap`
+failsafe 6. **193 fichiers, 1 439 tests, 0 echec, 0 erreur.** Identique, chiffre pour chiffre, a la
+mesure de `theo-archi` sur son propre worktree (`confirmation-archunit.md`) - deux mesures
+independantes, pas une recopiee dans l'autre.
+
+**Le rouge herite (section 14) est paye par `63590b33`, pas contourne** : l'exemption
+`DETTE_DE_MARQUEUR` est retiree de `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` (9
+tests, 0 echec, la clause 3 garde une population de 1 111 items a deux distracteurs sous cliquet a
+plafond zero), et `LON-1`/`LON-2` sont desormais executees par `ADR-0089`
+(`AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest`, 7 tests dont 3 morsures sur materiau reel).
+**Je ne prononce aucun Done** : les quatre jobs sont verts sur l'arbre fusionne, mais le Done
+technique appartient a `yanis-qa` et `theo-archi`, et le rapport qualite de `yanis-qa` n'est pas
+encore produit ce sprint.
+
+**Trois routages du tableau de la section 14 evoluent** :
+
+| Obstacle | Ancien routage | Nouveau statut | Motif |
+|---|---|---|---|
+| `EXC-R1` (consigne du catalogue) | Retour a la dette, technique | Route a `camille-po` | `theo-archi` mesure que la mise a jour de l'inventaire est mecanique - le geste que `marc-dev` et moi avons chacun fait ce sprint. Ce qui manque n'est plus technique : c'est le texte de la consigne, donc du texte lu par l'enfant |
+| `EXC-R5` (critere de l'adulte plutot que le lieu) | Retour a la dette, technique | Retiree de la dette, corrigee | Ce n'etait pas un probleme de tache mais un test (`PaquetCpEmcExclusionTest`) qui lisait l'identite d'une tache dans la sous-chaine `"A qui"` de l'enonce, la phrase exacte qu'`EXC-R5` demande de reecrire. La tache se lit desormais dans la bonne reponse, corrige dans `63590b33` |
+| Trois comptes de `nadia-prof` (section 16.5 de son arbitrage) : `EMO-R1`, `EXC-R4`, `POL-R1` | Non ouvert a la section 14 | Route a `nadia-prof` | La mesure automatisee d'`ADR-0089` dement ses trois comptes, tous dans le meme sens : `EMO-R1` nomme deux enonces trop longs quand il y en a trois, `EXC-R4` de meme, et les cinq longueurs de `POL-R1` ne sont pas recomptees sous sa propre convention de comptage. Aucune reserve n'est modifiee par ce constat, aucun verdict ne change : le constat lui est rendu, elle reaudite |
+
+**Une dette generale nouvelle, ouverte par `theo-archi` avec son propre chiffre, tracee pour s33** :
+25 fichiers de test de paquet sur 95 lisent l'enonce par une operation de chaine plutot que par un
+champ de tache dedie au schema d'item ; la regle generale n'est pas prise dans ce commit,
+declencheur ecrit dans `ADR-0089`.
+
+**Les deux obstacles restants du tableau de la section 14 sont inchanges**, tous deux toujours
+routes a `nadia-prof` : le plancher de `FER-3` et le terme "les Sarrasins" (`HG-CM1-04`).
+
+**Un obstacle distinct, hors du tableau de la section 14, note par `theo-archi` dans
+`confirmation-archunit.md`** : la clause 2 de `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest`
+mord encore sur du contenu vivant prive de son exemption, `FOP-R4` etant ouverte et non payee ; le
+geste attendu dans le meme diff que son paiement est ecrit dans la Javadoc du test concerne. Non
+tranche ici, laisse au backlog ou il vit deja.
