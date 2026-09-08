@@ -29,9 +29,16 @@
 
 **Ou tombe ce resultat par rapport a ce qui etait ecrit d'avance** : plafond arithmetique 8 lignes
 (64 / 138 = 46,4 %) ; attente raisonnable de `nadia-prof` 5 a 7 lignes (61 a 63 / 138, 44,2 % a
-45,7 %). **Le sprint tombe au sommet exact de la fourchette**, une ligne sous le plafond. C'est la
-premiere fois que `nadia-prof` ne sous-estime pas son propre sprint : elle s'etait trompee deux fois
-de suite dans ce sens (s29, s30) et avait choisi de ne pas monter son attente au plafond.
+45,7 %). **Le sprint tombe au sommet exact de la fourchette**, une ligne sous le plafond.
+
+*Correction de `sofia-sm`, 2026-09-08, sur signalement de `nadia-prof` a sa conclusion (section 7).
+Ce paragraphe se terminait par : "C'est la premiere fois que `nadia-prof` ne sous-estime pas son
+propre sprint : elle s'etait trompee deux fois de suite dans ce sens (s29, s30)". **C'est faux, et
+c'est son erreur que je recopiais** : a s30 elle annoncait 3 a 4 lignes et 4 ont ferme, donc dans sa
+fourchette et a son sommet, comme ici. **Une sous-estimation, celle de s29, pas deux.** Ce qui est
+vrai a la place, et qui est le fait interessant : a s30 le sommet de sa fourchette etait le plafond
+arithmetique lui-meme, il n'y avait pas de place au-dessus ; a s31 il y en avait une ligne, et le
+sprint ne l'a pas prise.*
 
 **Deux reprises livrees et rejouees** : `MEL-R1`, `MEL-R2`, `MEL-R3` levees sur
 `cm1-sciences-melanges` (`SCI-CM1-02`), `OBT-R1` et `OBT-R2` levees sur
@@ -100,6 +107,30 @@ faire passer le job en fin de sprint. Il a raison sur les deux points.
 
 **Done technique : non prononcable en l'etat de cette section.** Il le sera quand `chemins` sera
 vert, et pas avant.
+
+### Done technique - prononce le 2026-09-08 apres reparation
+
+**Prononce, sur les cinq jobs et non sur un seul.** Arbre `b18c8389`, apres la reparation du
+`relecteur-pedagogique` sur son propre fichier de s30 (commit `cf6738ab`) et la correction du titre
+de `DEC-0082` par `camille-po` (commit `b1ec6fd4`). Chaque job lance par moi, dans la forme exacte
+que la CI lui donne :
+
+| Job | Verdict | Mesure |
+|---|---|---|
+| `prefixes` | **vert** | son garde-fou, son test, le test de plage, et les commits du sprint : tous portent un tag connu |
+| `chemins` | **vert** | son test, puis le balayage de la CI : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
+| `outils` | **vert** | les trois motifs de balayage, **9 juges purs sur 9** |
+| `build` | **vert** | `mvn -B clean verify` BUILD SUCCESS, **189 fichiers `TEST-*.xml`, 1397 tests, 0 echec, 0 erreur, 0 ignore** |
+
+**Ce que la reparation de `chemins` a coute et n'a pas coute** : le reproche fait a `yanis-qa` a s30
+reste lisible et verifiable dans le fichier - c'est la forme du chemin fautif qui y est decrite,
+plus le chemin lui-meme - et une note datee y dit la faute, sa date d'origine, qui l'a trouvee et
+qui l'a corrigee. **Le script n'a pas ete relache**, ni par `theo-archi` qui a trouve le rouge, ni
+par son auteur qui l'a paye.
+
+**Le `relecteur-pedagogique` nomme lui-meme le geste qui manquait**, et il vaut pour toute la squad
+plutot que pour lui seul : *lancer la commande de la CI sur son propre diff avant de commiter*. Le
+garde-fou existait, il a mordu des le 2026-09-06 ; personne ne l'a lance.
 
 ---
 
@@ -186,7 +217,28 @@ un chiffre que ni l'une ni l'autre instance ne peut verifier depuis sa moitie. F
 instances ecrivant dans une meme ressource partagee sans le savoir. **Une seule occurrence de l'une
 des trois suffit a maintenir la retenue.**
 
+**Correction de `sofia-sm`, 2026-09-08, sur signalement de `nadia-prof` (section 7) - et c'est la
+plus lourde des trois qu'elle m'a signalees.** Toute cette section est ecrite comme si le point
+etait ouvert et attendait son constat. **Il ne l'etait pas : son instance A l'avait deja tranche par
+ecrit la veille**, section 5 de `verdicts-nadia-instance-A.md` - *"la retenue **reste**, ma borne de
+s32 est **8,0**"* - sur l'occurrence `O1`, celle du garde-fou du registre rouge a l'assemblage du
+planning. **Elle y ecarte nommement les trois objections que je reprends plus bas comme si elles
+etaient neuves**, dont *"c'etait avant l'ouverture du sprint"* et *"le garde-fou l'a attrape, donc
+il a fonctionne"*, en repondant que sa barre parle d'un sprint et non d'une fenetre dans un sprint,
+et qu'elle ne porte aucune clause *"sauf s'il est attrape"*. Ce document etait dans l'arbre que
+j'assemblais quand j'ai ecrit cette section. **Et mon inventaire de candidats ci-dessous omet `O1`,
+c'est-a-dire l'occurrence exacte sur laquelle son constat repose** - je l'avais rangee dans le
+tableau de la section 4 comme *"fermee avant l'ouverture"*, qui est le premier des arguments qu'elle
+refuse. Les quatre candidats restent ecrits tels quels, et le constat de la section 7 les tranche
+tous.
+
 **Je pose les candidats, tous, y compris ceux qui me chargent, et je ne prejuge d'aucun.**
+
+0. **`O1`, le garde-fou du registre rouge a l'assemblage du planning** - quatre identifiants nommes
+   par `nadia-prof` dans une branche que le worktree de `theo-archi` ne pouvait pas voir. **Candidat
+   ajoute par la correction ci-dessus, apres l'avoir omis.** C'est la forme (c) au mot pres, et je
+   l'avais moi-meme qualifiee ainsi dans le message du commit `94ede7b8` avant de la ranger hors
+   perimetre.
 
 1. **`O4`, le compte du registre dementi a la fusion.** Les deux instances ont alloue en parallele
    sans se voir ; l'instance B a **refuse** d'ecrire un total, l'instance A en a ecrit un
@@ -201,6 +253,12 @@ des trois suffit a maintenir la retenue.**
    est devenu du materiau pour le garde-fou qu'il venait de valider. Aucune des deux moities ne
    pouvait le voir de l'interieur. **Proche de la forme (c)**, avec une ressource partagee qui n'est
    ni un fichier ni un identifiant mais **le depot comme perimetre de balayage**.
+   *Correction de `sofia-sm`, 2026-09-08, sur signalement de `nadia-prof` : la derniere phrase est
+   fausse, et fausse de sept heures. Le garde-fou est commite a 14:34 le 2026-09-07, le rapport de
+   qualite a 21:53 - **le garde-fou etait deja dans l'arbre de base de `yanis-qa`, qui l'a mute
+   lui-meme pour le verifier**, et rien ne l'empechait de le relancer sur son propre rapport une
+   fois ecrit. Ce n'est donc pas un defaut invisible de l'interieur d'une moitie : c'est une mesure
+   non refaite apres ecriture, et c'est exactement le motif pour lequel ce candidat ne compte pas.*
 3. **`O2`, les 83 prefixes.** Ma note d'assemblage, ecrite avant l'ouverture des stories, portait un
    chiffre faux dans le fichier que tous les agents lisent. Trouve deux fois independamment.
    **Anterieur a l'ouverture des stories**, comme `O1` - mais c'est un chiffre, et il etait dans le
