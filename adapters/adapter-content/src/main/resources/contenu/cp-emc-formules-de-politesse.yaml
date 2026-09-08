@@ -52,6 +52,16 @@ lignesDeReferentiel: ["EMC-CP-05"]
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 #
 # FER-2 : onze items, au-dessus du plancher de dix (DEC-0064).
+#
+# Correction du 2026-09-08 (lea-dev, S32-4, docs/backlog/backlog.md, sprint 32) :
+#
+# POL-R1 (arbitrage prealable de s32, section 16.4 et 16.5, chiffres corriges a 20, 22, 23, 24 et 25
+# mots) : les cinq enonces de la tache B (items 7 a 11) posaient une situation en deux clauses
+# enchainees avant la question. Chacun tient desormais en une seule proposition principale (au plus
+# une relative), sous LON-1 et LON-2, sans changer le fait fautif ni la bonne reponse.
+#
+# POL-R2 : l'item 6 demandait "un peu plus d'eau" dans un verre "deja vide", ce qui ne se tient pas.
+# La scene devient "encore de l'eau" dans un verre "presque vide" (forme donnee par nadia-prof).
 items:
   - enonce: "Léa arrive à l'école le matin et croise sa maîtresse dans le couloir. Que doit-elle dire ?"
     bonneReponse: "bonjour"
@@ -73,27 +83,27 @@ items:
     bonneReponse: "merci"
     distracteurs: ["bonjour", "s'il te plaît"]
     indice: "Quelqu'un vient de l'aider."
-  - enonce: "Léa voudrait un peu plus d'eau à la cantine, dans son verre déjà vide. Que doit-elle dire ?"
+  - enonce: "Léa voudrait encore de l'eau, dans son verre presque vide. Que doit-elle dire ?"
     bonneReponse: "s'il te plaît"
     distracteurs: ["bonjour", "merci"]
     indice: "Elle a besoin de quelque chose que quelqu'un d'autre doit lui donner."
-  - enonce: "Hugo commence à raconter son week-end. Malo lui coupe la parole tout de suite pour parler du sien. Que ne respecte pas Malo ?"
+  - enonce: "Malo coupe la parole à Hugo qui raconte son week-end. Que ne respecte pas Malo ?"
     bonneReponse: "écouter sans couper la parole"
     distracteurs: ["dire bonjour", "dire merci"]
     indice: "Hugo n'a pas eu le temps de finir ce qu'il disait."
-  - enonce: "Aya prend le feutre de Léa sans rien dire et sans le lui demander. Que ne respecte pas Aya ?"
+  - enonce: "Aya prend le feutre de Léa sans le lui demander. Que ne respecte pas Aya ?"
     bonneReponse: "demander avant de prendre"
     distracteurs: ["dire bonjour", "écouter sans couper la parole"]
     indice: "Le feutre appartenait à Léa, qui ne l'a pas prêté."
-  - enonce: "Malo reçoit de l'aide de Tom pour porter son cartable, et repart aussitôt sans un mot. Que ne respecte pas Malo ?"
+  - enonce: "Tom aide Malo, qui repart aussitôt sans un mot. Que ne respecte pas Malo ?"
     bonneReponse: "dire merci"
     distracteurs: ["dire bonjour", "demander avant de prendre"]
     indice: "Tom vient pourtant de l'aider."
-  - enonce: "Léa entre dans la classe le matin et va directement s'asseoir sans un mot pour la maîtresse. Que ne respecte pas Léa ?"
+  - enonce: "Léa entre en classe sans un mot pour la maîtresse. Que ne respecte pas Léa ?"
     bonneReponse: "dire bonjour"
     distracteurs: ["dire merci", "écouter sans couper la parole"]
     indice: "C'est la première fois qu'elle voit la maîtresse aujourd'hui."
-  - enonce: "Tom explique son idée à Hugo, qui se met à parler plus fort par-dessus lui sans attendre qu'il ait fini. Que ne respecte pas Hugo ?"
+  - enonce: "Hugo parle plus fort que Tom, sans attendre la fin. Que ne respecte pas Hugo ?"
     bonneReponse: "écouter sans couper la parole"
     distracteurs: ["demander avant de prendre", "dire merci"]
     indice: "Tom n'a pas terminé sa phrase."
