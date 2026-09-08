@@ -1,0 +1,108 @@
+schema: 1
+id: cp-emc-regle-souhait-loi
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous."
+lignesDeReferentiel: ["EMC-CP-07"]
+#
+# S31-2 (docs/backlog/backlog.md, sprint 31). Reecriture partielle apres REFUS de nadia-prof le
+# 2026-09-07 (squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md, squad/sprints/
+# s31-second-passage-de-sciences-et-emc-cp/verdicts-nadia-instance-A.md, section 4.1).
+#
+# LA TACHE A (items 1 a 6) EST INCHANGEE : nadia-prof l'a explicitement confirmee bonne et a
+# conserver telle quelle ("Elle est reutilisable telle quelle", fiche, section "Ce que je tiens a
+# porter au credit du paquet"). Deux motifs de refus portaient sur la seule tache B et sur l'item 11
+# de cette tache, tous deux corriges dans ce meme geste :
+#
+# 1) Un fait de droit etait faux (ancien item 11) : "une loi interdit de traverser en dehors des
+#    passages prevus pour les pietons" - l'article R412-37 du code de la route n'oblige a emprunter
+#    le passage que s'il en existe un a moins de 50 metres. CET ITEM EST RETIRE et remplace par un
+#    item sur la vente d'alcool aux mineurs (Code de la sante publique, L3342-1 : vente d'alcool
+#    interdite aux moins de dix-huit ans), fait verifie exact.
+#
+# 2) FAB-1a et FAB-1c cumulees : la tache B servait cinq fois "tout le monde, meme les adultes"
+#    (ou une variante a un mot pres), amorce reconnaissable sur 5 items sur 5 (FER-2 tombait a 7
+#    comptables sur 10). LA TACHE B SERT DESORMAIS CINQ REPONSES ENTIEREMENT DISTINCTES, sans
+#    amorce partagee : "tout le monde, y compris les adultes" (feu rouge), "le conducteur et tous
+#    les passagers" (ceinture), "personne, pas meme les adultes" (tabac a l'ecole), "tout
+#    conducteur, meme adulte" (klaxon), "seulement les adultes" (vente d'alcool - contre-exemple
+#    d'une loi qui NE s'applique PAS aux enfants, comme nadia-prof le suggere dans son verdict :
+#    "une loi qui vise les adultes seuls (le tabac, l'alcool)"). L'enfant apprend alors ce que
+#    "s'impose a tous" veut dire par contraste plutot que par repetition d'une seule formule.
+#
+# PLA-1 sur l'item du klaxon : le distracteur "seulement les enfants" est retire (un enfant de six
+# ans ne klaxonne pas, ce n'est un candidat pour personne) et remplace par deux usagers de la route
+# plausibles ("seulement les motards", "seulement les chauffeurs de taxi").
+#
+# Faits verifies un par un (nadia-prof, meme verdict) : feu rouge (R412-30), ceinture pour le
+# conducteur et tous les passagers (R412-1), interdiction de fumer dans l'enceinte d'un
+# etablissement scolaire, espaces non couverts compris, sans exception pour les adultes, klaxon
+# limite au danger immediat (R416-1). Vente d'alcool aux mineurs interdite (Code de la sante
+# publique, L3342-1), verifie a l'ecriture de ce correctif.
+#
+# CAT-1 (tache A et tache B) : deja tenue et non retouchee - les propositions sont des categories
+# institutionnelles ou des groupes de personnes, jamais un registre poli oppose a un registre
+# grossier.
+#
+# BIN-1 (tache A) : deja tenue et non retouchee - trois des six items de classement portent deux
+# propositions (items 1, 2, 3), les trois autres en portent trois (items 4, 5, 6).
+#
+# FER-1 (tache A) : deja tenue et non retouchee - "une règle qui vaut pour tous" (items 1, 3, 5),
+# "un simple souhait" (items 2, 6), "une loi" (item 4).
+#
+# EMC-1, EMC-5, EMC-8, EMC-10 : deja tenues, non retouchees.
+#
+# FAB-1 : verifie par ADR-0086 sur le contenu servi entier (aucun sous-ensemble de trois items ou
+# plus ne partage a la fois le meme trio de propositions et la meme bonne reponse).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+#
+# FER-2 : onze items, au-dessus du plancher de dix (DEC-0064).
+items:
+  - enonce: "Avant de sortir en récréation, chaque élève doit ranger sa chaise, sans exception. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+    bonneReponse: "une règle qui vaut pour tous"
+    distracteurs: ["un simple souhait"]
+    indice: "Personne n'a le droit d'y échapper."
+  - enonce: "La maîtresse aimerait que la classe soit un peu plus silencieuse pendant les exercices. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+    bonneReponse: "un simple souhait"
+    distracteurs: ["une règle qui vaut pour tous"]
+    indice: "Elle exprime ce qu'elle aimerait, pas une obligation écrite."
+  - enonce: "Dans la cour, il est interdit de pousser un camarade, pour tout le monde, sans exception. Est-ce une règle qui vaut pour tous, ou un simple souhait ?"
+    bonneReponse: "une règle qui vaut pour tous"
+    distracteurs: ["un simple souhait"]
+    indice: "Cet interdit s'applique à chaque élève, sans exception."
+  - enonce: "Partout en France, il est obligatoire de porter un casque à vélo avant l'âge de douze ans. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+    bonneReponse: "une loi"
+    distracteurs: ["une règle qui vaut pour tous", "un simple souhait"]
+    indice: "Cette obligation vient de l'État et s'applique dans tout le pays, pas seulement à l'école."
+  - enonce: "À la cantine, chaque élève doit attendre son tour pour se servir, sans exception. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+    bonneReponse: "une règle qui vaut pour tous"
+    distracteurs: ["un simple souhait", "une loi"]
+    indice: "Cela s'applique à chaque élève qui mange à la cantine."
+  - enonce: "Aya aimerait que la maîtresse donne moins de devoirs le week-end. Est-ce une règle qui vaut pour tous, un simple souhait, ou une loi ?"
+    bonneReponse: "un simple souhait"
+    distracteurs: ["une règle qui vaut pour tous", "une loi"]
+    indice: "C'est ce qu'elle voudrait, pas ce qui est décidé."
+  - enonce: "Le code de la route dit qu'il faut s'arrêter au feu rouge. Qui doit s'arrêter ?"
+    bonneReponse: "tout le monde, y compris les adultes"
+    distracteurs: ["seulement les enfants à vélo", "seulement les piétons"]
+    indice: "Cette règle ne fait pas de différence selon l'âge de la personne."
+  - enonce: "Une loi rend obligatoire le port de la ceinture en voiture. Qui doit l'attacher ?"
+    bonneReponse: "le conducteur et tous les passagers"
+    distracteurs: ["seulement le conducteur", "seulement les enfants à l'arrière"]
+    indice: "Chaque personne assise dans la voiture doit l'attacher, quel que soit son âge."
+  - enonce: "Une loi interdit de fumer dans la cour d'une école. Qui a le droit d'y fumer ?"
+    bonneReponse: "personne, pas même les adultes"
+    distracteurs: ["les enseignants seulement", "les visiteurs seulement"]
+    indice: "Cette interdiction s'applique à toutes les personnes présentes dans la cour."
+  - enonce: "Une loi interdit de klaxonner sans raison en ville. Qui doit la respecter ?"
+    bonneReponse: "tout conducteur, même adulte"
+    distracteurs: ["seulement les motards", "seulement les chauffeurs de taxi"]
+    indice: "Cette loi s'applique à toutes les personnes qui conduisent en ville."
+  - enonce: "Une loi interdit de vendre de l'alcool aux moins de dix-huit ans. Qui peut en acheter ?"
+    bonneReponse: "seulement les adultes"
+    distracteurs: ["tout le monde, même les enfants", "seulement les enfants"]
+    indice: "Cette loi fixe un âge minimum pour acheter de l'alcool."

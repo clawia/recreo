@@ -103,8 +103,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * servi de chaque module declare au pom agregateur, par
  * {@link AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest#repertoiresDeContenu(Path)}. Aucun
  * paquet, aucun item et aucun texte n'est nomme dans ce fichier hors de ses jeux fautifs et de
- * l'exemption datee de la clause 2. Un paquet neuf entre dans la population le jour ou il entre au
- * contenu servi.
+ * l'exemption datee de la clause 2 - <b>la clause 3 n'en a plus depuis le 2026-09-08 (s32)</b>. Un
+ * paquet neuf entre dans la population le jour ou il entre au contenu servi.
  *
  * <p><b>Ce n'est pas une {@code ArchRule}, et le compte de regles ArchUnit du depot est
  * inchange.</b> ArchUnit lit du bytecode ; la fabrication des propositions d'un paquet YAML n'y est
@@ -188,21 +188,30 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
     private static final int ITEMS_POUR_UN_MARQUEUR = 2;
 
     /**
-     * Clause 3, cliquet exact. {@code cp-emc-regle-souhait-loi} porte le <b>refus maintenu</b> de
-     * {@code EMC-CP-07} du 2026-09-08 : nadia-prof a epuise sa borne d'audit de s31 et a route le
-     * motif en story de s32. Le paquet reste servi, la clause serait donc rouge des son ecriture.
+     * <b>Clause 3, dette payee le 2026-09-08 (s32) : la clause n'a plus aucune exemption.</b>
+     * {@code DETTE_DE_MARQUEUR} nommait {@code cp-emc-regle-souhait-loi.yaml}, seul paquet servi que
+     * la clause rougissait, sous le refus maintenu d'{@code EMC-CP-07}. {@code S32-EMCCP07} a reecrit
+     * sa tache B ; l'exemption a cesse de nommer quelque chose de reel, et le test d'obligation qui
+     * la tenait est devenu rouge - <b>c'est ce rouge-la qui a programme son propre retrait</b>, et il
+     * a fonctionne comme annonce.
      *
-     * <p><b>Cette exemption ne transforme aucun verdict pedagogique en dette technique</b> - c'est
-     * la frontiere qu'ADR-0079 trace, et elle n'est pas franchie ici : ce paquet n'est pas valide,
-     * il est refuse, et l'exemption <b>enregistre</b> ce refus au lieu de le contredire. Elle ne
-     * peut pas grandir - un paquet neuf qui trie par un marqueur est rouge -, elle ne peut pas
-     * pourrir, et le jour ou la story de s32 reecrit la tache B, elle devient rouge et disparait
-     * dans le meme diff. Meme mecanique qu'ADR-0067 et que la dette de la clause 2.
+     * <p><b>Ce que le retrait coutait, et ou ce cout est paye.</b> L'exemption etait aussi le
+     * materiau reel de la morsure : la clause etait mise a l'epreuve sur le contenu servi prive de son
+     * exemption, donc sur le paquet que nadia-prof avait refuse. Le retirer sans rien d'autre aurait
+     * laisse la clause 3 prouvee par la seule fixture de ma main - la faute de s05. L'etat refuse est
+     * donc <b>fige octet pour octet</b> sous {@code etat-refuse-emc-cp-07}, comme l'etat de la
+     * clause 1 l'est sous {@code etat-refuse-s30}, et la morsure porte desormais sur ce fige :
+     * {@link #laClauseTroisMordLEtatRefuseDuMarqueurRestrictif()}.
+     *
+     * <p><b>Ce que la clause garde maintenant qu'elle n'exempte plus rien</b> (mesure du 2026-09-08,
+     * arbre fusionne de s32, reacteur complet, JDK que la machine virtuelle des tests rapporte) :
+     * <b>65 paquets a propositions, 1 227 items, 1 111 a deux distracteurs ou plus</b> - la
+     * population de la clause -, et <b>zero item marque</b> dans tout le contenu servi. Le cliquet
+     * est donc a <b>plafond zero sur une population de 1 111 items</b>, et non une regle a population
+     * vide (ADR-0051). Le lexique, lui, nomme encore quelque chose de servi : {@code seulement} (8
+     * occurrences en proposition), {@code seul} (6), {@code seule} (2) - aucune ne tombe sur tous les
+     * distracteurs d'un item.
      */
-    private static final Set<String> DETTE_DE_MARQUEUR = Set.of("cp-emc-regle-souhait-loi.yaml");
-
-    private static final int PLAFOND_DE_DETTE_DE_MARQUEUR = 1;
-
     /** ADR-0013 obligation 3 : les jeux fautifs de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
             "LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest");
@@ -446,12 +455,9 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
      * mots, jamais sur une position : un marqueur en fin de proposition trie l'ecran comme un
      * marqueur en tete.
      */
-    static List<String> defautsDeMarqueur(List<Paquet> paquets, Set<String> dette) {
+    static List<String> defautsDeMarqueur(List<Paquet> paquets) {
         List<String> defauts = new ArrayList<>();
         for (Paquet paquet : paquets) {
-            if (dette.contains(paquet.nom())) {
-                continue;
-            }
             List<String> rangsMarques = new ArrayList<>();
             Set<String> marqueursVus = new TreeSet<>();
             for (int rang = 0; rang < paquet.items().size(); rang++) {
@@ -487,14 +493,13 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
         return defauts;
     }
 
-    static void verifierLesPaquets(List<Paquet> paquets, Set<String> detteDAmorce,
-            Set<String> detteDeMarqueur) {
+    static void verifierLesPaquets(List<Paquet> paquets, Set<String> detteDAmorce) {
         assertThat(paquets)
                 .as("ADR-0051 : sans paquet a propositions, ce garde-fou n'examine aucun objet")
                 .isNotEmpty();
         List<String> defauts = new ArrayList<>(defautsDeRepetition(paquets));
         defauts.addAll(defautsDAmorce(paquets, detteDAmorce));
-        defauts.addAll(defautsDeMarqueur(paquets, detteDeMarqueur));
+        defauts.addAll(defautsDeMarqueur(paquets));
         assertThat(defauts)
                 .as("ADR-0086 : la forme des propositions d'un paquet ne designe jamais la bonne"
                         + " reponse")
@@ -509,7 +514,7 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
 
     @Test
     void leContenuServiEstConforme() {
-        verifierLesPaquets(paquetsDuDepot(), DETTE_D_AMORCE, DETTE_DE_MARQUEUR);
+        verifierLesPaquets(paquetsDuDepot(), DETTE_D_AMORCE);
     }
 
     /**
@@ -537,11 +542,16 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
     }
 
     /**
-     * ADR-0067 : les cliquets des clauses 2 et 3. Une dette ne peut ni grandir - le plafond est
-     * ecrit et compare - ni pourrir : chaque paquet exempte doit encore etre <b>reellement
-     * fautif</b>, sans quoi l'exemption ne nomme plus rien de reel et doit disparaitre. Les deux
-     * dettes sont tenues separement parce qu'elles n'exemptent pas la meme clause : le jour ou l'une
-     * est payee, l'autre reste rouge sur son propre paquet.
+     * ADR-0067 : le cliquet de la clause 2. Une dette ne peut ni grandir - le plafond est ecrit et
+     * compare - ni pourrir : chaque paquet exempte doit encore etre <b>reellement fautif</b>, sans
+     * quoi l'exemption ne nomme plus rien de reel et doit disparaitre.
+     *
+     * <p><b>La clause 3 n'a plus de moitie ici, et c'est le mecanisme qui a fonctionne.</b> Ce test
+     * portait une seconde moitie sur {@code DETTE_DE_MARQUEUR} ; elle est devenue rouge le jour ou
+     * {@code S32-EMCCP07} a paye {@code FAB-1c}, c'est-a-dire exactement quand elle devait. La
+     * clause 3 n'exempte plus rien, son cliquet est desormais l'egalite a zero portee par
+     * {@link #leContenuServiEstConforme()} sur 1 111 items, et sa morsure est un etat fige de
+     * l'historique.
      */
     @Test
     void laDetteNePeutNiGrandirNiPourrir() {
@@ -558,21 +568,6 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
             assertThat(defautsDAmorce(seul, Set.of()))
                     .as("%s est exempte de la clause 2 alors qu'il n'est plus fautif : une exemption"
                             + " qui ne nomme plus rien de reel n'est pas un cliquet", exempte)
-                    .isNotEmpty();
-        }
-        assertThat(DETTE_DE_MARQUEUR)
-                .as("ADR-0067 : le plafond vaut exactement la taille de la dette du 2026-09-08")
-                .hasSize(PLAFOND_DE_DETTE_DE_MARQUEUR);
-        for (String exempte : DETTE_DE_MARQUEUR) {
-            List<Paquet> seul = paquets.stream()
-                    .filter(paquet -> paquet.nom().equals(exempte)).toList();
-            assertThat(seul)
-                    .as("%s est exempte de la clause 3 et n'est plus un paquet servi", exempte)
-                    .hasSize(1);
-            assertThat(defautsDeMarqueur(seul, Set.of()))
-                    .as("%s est exempte de la clause 3 alors qu'il n'est plus fautif : le jour ou la"
-                            + " story de s32 reecrit sa tache B, cette exemption doit disparaitre"
-                            + " dans le meme diff", exempte)
                     .isNotEmpty();
         }
     }
@@ -593,7 +588,7 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
         assertThat(defautsDeRepetition(refuses))
                 .as("la clause 1 doit mordre le paquet que nadia-prof a refuse")
                 .isNotEmpty();
-        assertThatThrownBy(() -> verifierLesPaquets(refuses, Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifierLesPaquets(refuses, Set.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("portent tous la meme bonne reponse")
                 .hasMessageContaining("il risquerait de manquer de nourriture");
@@ -603,25 +598,52 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
      * ADR-0013 obligation 3. La clause 2 est mordue sur le paquet reel qui porte {@code FOP-R4},
      * en lui retirant son exemption : c'est la meme mesure que celle de nadia-prof, huit
      * distracteurs sur dix.
+     *
+     * <p><b>Declencheur ecrit d'avance, parce que la clause 3 vient d'en payer le prix.</b> Cette
+     * morsure porte sur le <b>contenu vivant</b> prive de son exemption. Le jour ou {@code FOP-R4}
+     * est payee sur {@code cm1-emc-fait-opinion}, elle devient rouge <b>sans avoir rien detecte</b> -
+     * le defaut qu'{@code ADR-0087} a paye en cloture de s31, et celui que la clause 3 a paye ici le
+     * 2026-09-08. <b>Le geste attendu dans le meme diff que le paiement</b> : figer l'etat porteur de
+     * {@code FOP-R4} sous {@code CONTRE_EXEMPLE}, comme {@code etat-refuse-s30} et
+     * {@code etat-refuse-emc-cp-07}, faire porter cette morsure sur le fige, retirer
+     * {@code DETTE_D_AMORCE} et baisser {@code PLAFOND_DE_DETTE} a zero. Ce n'est pas fait d'avance :
+     * l'etat vivant <b>est</b> aujourd'hui l'etat fautif, et le figer maintenant recopierait un
+     * fichier pour ne rien prouver de plus.
      */
     @Test
     void lePaquetQuiPorteLaReserveFaitRougirLaClauseDeuxSansSonExemption() {
-        assertThatThrownBy(() -> verifierLesPaquets(paquetsDuDepot(), Set.of(), DETTE_DE_MARQUEUR))
+        assertThatThrownBy(() -> verifierLesPaquets(paquetsDuDepot(), Set.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("L'amorce du bouton departage a la place de la competence");
     }
 
     /**
      * ADR-0013 obligation 3, et <b>la morsure qui decide de la clause 3</b>. Le materiau n'est pas
-     * de ma main : c'est {@code cp-emc-regle-souhait-loi} tel qu'il est servi aujourd'hui, celui sur
-     * lequel nadia-prof a maintenu le refus d'{@code EMC-CP-07} le 2026-09-08. En lui retirant son
-     * exemption, la clause nomme <b>quatre</b> items - les items 7, 8, 9 et 10 - et le mot qui les
-     * trie. Une clause qui passerait verte sur ce paquet-la ne servirait a rien, et ce test est ce
-     * qui l'empeche de le devenir en silence.
+     * de ma main : c'est {@code cp-emc-regle-souhait-loi} tel qu'il etait servi le 2026-09-08 quand
+     * nadia-prof y a maintenu le refus d'{@code EMC-CP-07}, recopie octet pour octet depuis le
+     * commit qui precede {@code S32-EMCCP07} ({@code 167a4421}, parent). La clause nomme
+     * <b>quatre</b> items - les items 7, 8, 9 et 10 - et le mot qui les trie.
+     *
+     * <p><b>Pourquoi un etat fige, et pas le contenu vivant prive de son exemption.</b> C'est ainsi
+     * que ce test etait ecrit jusqu'au 2026-09-08, et cette forme est morte avec la dette : le
+     * paiement de {@code FAB-1c} l'a rendue rouge sans qu'elle ait rien detecte, ce qui est
+     * exactement le defaut qu'{@code ADR-0087} a paye en cloture de s31 - <i>une preuve de mecanisme
+     * qui ne vaut que pendant que le depot est en dette ne vaut plus rien quand il n'y est plus</i>.
+     * L'etat fige, lui, survit a la correction, comme celui de la clause 1 (ADR-0087, meme
+     * mecanique ; la lecon de s05 sur le materiau reel).
+     *
+     * <p><b>Et la moitie que ce test ne prouve pas</b> : il ne dit rien de l'etat vivant. C'est
+     * {@link #leContenuServiEstConforme()} qui le tient, sans exemption, sur les 1 111 items a deux
+     * distracteurs du contenu servi.
      */
     @Test
-    void leContenuQuiPorteLeRefusMaintenuFaitRougirLaClauseTroisSansSonExemption() {
-        assertThatThrownBy(() -> verifierLesPaquets(paquetsDuDepot(), DETTE_D_AMORCE, Set.of()))
+    void laClauseTroisMordLEtatRefuseDuMarqueurRestrictif() {
+        List<Paquet> refuse = paquetsServis(
+                List.of(CONTRE_EXEMPLE.resolve("etat-refuse-emc-cp-07")));
+        assertThat(refuse)
+                .as("le jeu fautif de la clause 3 est un etat reel de l'historique")
+                .isNotEmpty();
+        assertThatThrownBy(() -> verifierLesPaquets(refuse, Set.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("cp-emc-regle-souhait-loi.yaml : 4 items portent un marqueur"
                         + " de restriction (seulement)")
@@ -642,7 +664,7 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
                 new Item(List.of("tout le monde", "seulement les adultes"), "tout le monde"),
                 new Item(List.of("chaque eleve", "seulement les grands"), "chaque eleve")));
 
-        assertThat(defautsDeMarqueur(List.of(binaire), Set.of()))
+        assertThat(defautsDeMarqueur(List.of(binaire)))
                 .as("clause 3 : un item a deux propositions oppose deux etiquettes, pas une bonne"
                         + " reponse a des distracteurs semblables")
                 .isEmpty();
@@ -659,8 +681,7 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
     @Test
     void troisPaquetsFautifsFontRougirChacuneLeurClause() {
         assertThatThrownBy(() -> verifierLesPaquets(
-                paquetsServis(List.of(CONTRE_EXEMPLE.resolve("paquets-fautifs"))), Set.of(),
-                Set.of()))
+                paquetsServis(List.of(CONTRE_EXEMPLE.resolve("paquets-fautifs"))), Set.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ecrans pour un seul item")
                 .hasMessageContaining("L'amorce du bouton departage a la place de la competence")

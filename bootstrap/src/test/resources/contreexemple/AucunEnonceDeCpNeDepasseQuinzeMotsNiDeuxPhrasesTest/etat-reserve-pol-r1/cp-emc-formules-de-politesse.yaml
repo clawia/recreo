@@ -1,0 +1,99 @@
+schema: 1
+id: cp-emc-formules-de-politesse
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Respecter autrui"
+  competence: "Employer les formules de politesse et de respect dans les échanges (saluer, remercier, demander, écouter sans couper)."
+lignesDeReferentiel: ["EMC-CP-05"]
+#
+# S31-1 (docs/backlog/backlog.md, sprint 31). Second des deux paquets du premier lot d'EMC CP
+# restreint aux lignes 1 a 7 du referentiel, arbitrage prealable de nadia-prof (section 3.1, ligne
+# EMC-CP-05) et DEC-0081. Referentiel copie conforme.
+#
+# Couverture partielle exigee d'avance et non negociable (nadia-prof, refus n°14 ; backlog,
+# S31-1) : ce paquet sert la connaissance des formules seule. L'emploi effectif d'une formule dans
+# un echange reel n'est pas verifie - le verbe du libelle est "employer" et ce produit ne verifie
+# jamais ce qu'un enfant fait. La matrice doit porter cette mention a la fermeture.
+#
+# CAT-1 : les trois propositions de la tache de connaissance sont toujours trois formules de
+# politesse ("bonjour", "merci", "s'il te plaît") - aucune n'est grossiere ni hors sujet, ce qui
+# distingue la bonne reponse est la situation decrite, jamais un registre de langue. Meme logique
+# sur la tache de reconnaissance : les trois propositions sont toujours des regles d'echange
+# ("dire bonjour", "dire merci", "demander avant de prendre", "écouter sans couper la parole"),
+# jamais une regle respectee opposee a une regle grossierement violee.
+#
+# FER-1 : les quatre elements de la parenthese sont chacun en bonne reponse au moins une fois -
+# saluer ("bonjour", items 1, 4 et 10), remercier ("merci", items 2 et 5 ; "dire merci", item 9),
+# demander ("s'il te plaît", items 3 et 6 ; "demander avant de prendre", item 8), ecouter sans
+# couper ("écouter sans couper la parole", items 7 et 11).
+#
+# FER-3 : deux taches distinctes - choisir la formule qui convient a une situation decrite
+# (items 1 a 6), et dire quelle regle d'echange un dialogue donne ne respecte pas (items 7 a 11).
+#
+# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit ou fait chez lui - les
+# situations mettent en scene un personnage nomme, exterieur a l'enfant.
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ; chaque item decrit ce
+# qu'un personnage doit dire ou ne respecte pas.
+#
+# EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
+# organisation. Les personnages (Lea, Hugo, Aya, Malo, Tom) sont fictifs.
+#
+# PLA-1 : chaque proposition est une formule ou une regle que l'enfant de CP connait et peut
+# serieusement envisager, jamais un bouton de remplissage.
+#
+# FAB-1 : la tache de connaissance reutilise necessairement les trois memes formules d'un item a
+# l'autre (licite, classement a categories fermees) ; la bonne reponse varie selon la situation.
+# Verifie par ADR-0086 sur le contenu servi entier qu'aucun sous-ensemble de trois items ou plus ne
+# partage a la fois le meme trio de propositions et la meme bonne reponse.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+#
+# FER-2 : onze items, au-dessus du plancher de dix (DEC-0064).
+items:
+  - enonce: "Léa arrive à l'école le matin et croise sa maîtresse dans le couloir. Que doit-elle dire ?"
+    bonneReponse: "bonjour"
+    distracteurs: ["merci", "s'il te plaît"]
+    indice: "C'est la première fois qu'elle la voit aujourd'hui."
+  - enonce: "Hugo reçoit un livre offert par son oncle pour son anniversaire. Que doit-il dire ?"
+    bonneReponse: "merci"
+    distracteurs: ["bonjour", "s'il te plaît"]
+    indice: "Quelqu'un vient de lui offrir quelque chose."
+  - enonce: "Aya voudrait emprunter la gomme de Tom, qui ne s'en sert pas en ce moment. Que doit-elle dire ?"
+    bonneReponse: "s'il te plaît"
+    distracteurs: ["bonjour", "merci"]
+    indice: "Elle a besoin d'un objet qui appartient à quelqu'un d'autre."
+  - enonce: "Malo croise le directeur de l'école dans la cour, pour la première fois de la journée. Que doit-il dire ?"
+    bonneReponse: "bonjour"
+    distracteurs: ["merci", "s'il te plaît"]
+    indice: "C'est un moment où l'on rencontre quelqu'un."
+  - enonce: "Tom reçoit l'aide d'un camarade pour ranger les livres tombés par terre. Que doit-il dire ?"
+    bonneReponse: "merci"
+    distracteurs: ["bonjour", "s'il te plaît"]
+    indice: "Quelqu'un vient de l'aider."
+  - enonce: "Léa voudrait un peu plus d'eau à la cantine, dans son verre déjà vide. Que doit-elle dire ?"
+    bonneReponse: "s'il te plaît"
+    distracteurs: ["bonjour", "merci"]
+    indice: "Elle a besoin de quelque chose que quelqu'un d'autre doit lui donner."
+  - enonce: "Hugo commence à raconter son week-end. Malo lui coupe la parole tout de suite pour parler du sien. Que ne respecte pas Malo ?"
+    bonneReponse: "écouter sans couper la parole"
+    distracteurs: ["dire bonjour", "dire merci"]
+    indice: "Hugo n'a pas eu le temps de finir ce qu'il disait."
+  - enonce: "Aya prend le feutre de Léa sans rien dire et sans le lui demander. Que ne respecte pas Aya ?"
+    bonneReponse: "demander avant de prendre"
+    distracteurs: ["dire bonjour", "écouter sans couper la parole"]
+    indice: "Le feutre appartenait à Léa, qui ne l'a pas prêté."
+  - enonce: "Malo reçoit de l'aide de Tom pour porter son cartable, et repart aussitôt sans un mot. Que ne respecte pas Malo ?"
+    bonneReponse: "dire merci"
+    distracteurs: ["dire bonjour", "demander avant de prendre"]
+    indice: "Tom vient pourtant de l'aider."
+  - enonce: "Léa entre dans la classe le matin et va directement s'asseoir sans un mot pour la maîtresse. Que ne respecte pas Léa ?"
+    bonneReponse: "dire bonjour"
+    distracteurs: ["dire merci", "écouter sans couper la parole"]
+    indice: "C'est la première fois qu'elle voit la maîtresse aujourd'hui."
+  - enonce: "Tom explique son idée à Hugo, qui se met à parler plus fort par-dessus lui sans attendre qu'il ait fini. Que ne respecte pas Hugo ?"
+    bonneReponse: "écouter sans couper la parole"
+    distracteurs: ["demander avant de prendre", "dire merci"]
+    indice: "Tom n'a pas terminé sa phrase."

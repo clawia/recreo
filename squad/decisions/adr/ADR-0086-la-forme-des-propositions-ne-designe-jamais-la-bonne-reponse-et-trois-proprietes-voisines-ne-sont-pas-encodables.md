@@ -1,6 +1,8 @@
 # ADR-0086 - La forme des propositions d'un paquet ne designe jamais la bonne reponse, et trois proprietes voisines ne sont pas encodables
 
-- **Statut** : Accepte
+- **Statut** : Accepte. **Amende deux fois** : le 2026-09-08 (s31, clause 3 et son cliquet), puis le
+  2026-09-08 en s32 - **la dette de la clause 3 est payee et son exemption retiree**, section
+  *Amendement du 2026-09-08 (s32) : la clause 3 n'exempte plus rien*, en fin de fichier.
 - **Date** : 2026-09-07
 - **Auteur** : theo-archi
 - **Sprint** : s31
@@ -507,3 +509,100 @@ a partir de un. Aucune assertion ne portait sur ces rangs.
   main -, les deux clauses se calculeraient par tache et non par paquet, et `OBJ-R2` deviendrait
   peut-etre encodable a son tour. C'est le declencheur le plus probable, et il n'est pas de mon
   ressort : il commence par une decision de contenu.
+
+---
+
+## Amendement du 2026-09-08 (s32) : la clause 3 n'exempte plus rien, et sa morsure change de materiau
+
+- **Auteur** : `theo-archi`. **Arbre mesure** : worktree `s32-theo2`, branche `s32-theo2` partie de
+  `round-two` a `7ed471a7`. JDK **21.0.10**, version que la machine virtuelle des tests rapporte
+  (`ADR-0071`). Mesure partielle du reacteur avec `-am`, module `bootstrap`.
+
+### 1. Ce qui a declenche cet amendement, c'est le garde-fou lui-meme
+
+L'exemption `DETTE_DE_MARQUEUR` nommait `cp-emc-regle-souhait-loi.yaml`, seul paquet servi que la
+clause 3 rougissait, sous le refus maintenu d'`EMC-CP-07`. Sa Javadoc l'annoncait :
+*"le jour ou la story de s32 reecrit la tache B, elle devient rouge et disparait dans le meme diff."*
+
+`lea-dev` a paye `FAB-1c` a s32 (`S32-EMCCP07`), et **deux tests sont devenus rouges** :
+`laDetteNePeutNiGrandirNiPourrir` et
+`leContenuQuiPorteLeRefusMaintenuFaitRougirLaClauseTroisSansSonExemption`. **231 tests dans
+`recreo-bootstrap`, 2 echecs**, mesure de `sofia-sm` sur l'arbre fusionne, reproduite ici avant tout
+geste. Le mecanisme a fonctionne exactement comme annonce : **c'est le rouge qui a programme son
+propre retrait.**
+
+Elle ne l'a pas retiree parce que ma consigne lui interdisait de toucher Java, et elle a route
+l'obstacle plutot que de contourner le garde-fou. **L'erreur de consigne est la mienne.**
+
+### 2. Le retrait, et ce qu'il aurait coute s'il s'etait arrete la
+
+`DETTE_DE_MARQUEUR`, `PLAFOND_DE_DETTE_DE_MARQUEUR`, le parametre d'exemption de
+`defautsDeMarqueur` et la moitie clause 3 de `laDetteNePeutNiGrandirNiPourrir` sont retires.
+
+**L'exemption etait aussi le materiau de la morsure.** La morsure de la clause 3 s'executait sur le
+contenu vivant **prive de son exemption**, c'est-a-dire sur le paquet refuse. Le paiement l'a rendue
+rouge **sans qu'elle ait rien detecte** - le defaut exact qu'`ADR-0087` a paye en cloture de s31 :
+*une preuve de mecanisme qui ne vaut que pendant que le depot est en dette ne vaut plus rien quand il
+n'y est plus, c'est-a-dire exactement quand le garde-fou doit encore etre digne de confiance.*
+Retirer l'exemption sans rien d'autre aurait laisse la clause 3 prouvee par **la seule fixture de ma
+main** - la faute de s05.
+
+**Tranche** : l'etat refuse est fige **octet pour octet** sous
+`bootstrap/src/test/resources/contreexemple/LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest/etat-refuse-emc-cp-07/`,
+depuis le parent de `167a4421` - le commit qui a paye `FAB-1c` -, comme l'etat de la clause 1 l'est
+sous `etat-refuse-s30`. `laClauseTroisMordLEtatRefuseDuMarqueurRestrictif` porte desormais sur ce
+fige : la clause y nomme **quatre** items - 7, 8, 9 et 10 - et le mot qui les trie. La preuve survit
+a la correction.
+
+### 3. La clause mord-elle encore quelque chose ? La population, mesuree
+
+`ADR-0051` interdit une regle qui n'examine aucun objet, et une exemption retiree qui laisse une
+clause sans population serait ce cas-la. Mesure sur l'arbre `7ed471a7`, contenu servi entier, rendue
+a l'identique par le garde-fou et par un compteur independant :
+
+| | Le 2026-09-08 (s31) | Le 2026-09-08 (s32, apres fusion) |
+|---|---|---|
+| Paquets a propositions | 63 | **65** |
+| Items | 1 165 | **1 227** |
+| Items a deux distracteurs ou plus - **population de la clause 3** | 1 051 | **1 111** |
+| Paquets fautifs de la clause 3 | 1, exempte | **0** |
+| Items marques dans tout le contenu servi | 4, dans le paquet exempte | **0** |
+
+**Le cliquet est donc a plafond zero sur une population de 1 111 items, et non une regle a population
+vide.** La distinction est celle qu'`ADR-0088` a posee huit jours plus tot sur les codes a trois
+segments, et elle tient ici pour la meme raison : les objets existent, ils sont examines, et le
+verdict est zero.
+
+**Et le lexique nomme encore quelque chose de servi**, ce qu'`ADR-0067` exige d'une liste ecrite a la
+main : `seulement` (**8** occurrences en proposition), `seul` (**6**), `seule` (**2**) - aucune ne
+tombe sur tous les distracteurs d'un item. Les quatre autres entrees (`uniquement`, `seuls`,
+`seules`, `sauf`) restent sans occurrence servie, et leur seule preuve de morsure est le jeu fautif
+de `paquets-fautifs`, comme a l'amendement de s31.
+
+### 4. Ce que cet amendement ne fait pas, et le declencheur que je laisse ecrit
+
+**La clause 2 porte encore la forme fragile**, et je ne la change pas : sa morsure
+(`lePaquetQuiPorteLaReserveFaitRougirLaClauseDeuxSansSonExemption`) s'execute sur le contenu vivant
+prive de son exemption, et `FOP-R4` est **ouverte, non payee, qualifiee non bloquante** par
+`nadia-prof` le 2026-09-06. L'etat vivant **est** aujourd'hui l'etat fautif ; le figer maintenant
+recopierait un fichier de contenu pour ne rien prouver de plus, et ce serait une abstraction ecrite
+pour un usage imagine (`ADR-0005`).
+
+**Ce qui remplace le geste, c'est l'annonce, et elle est ecrite dans le test lui-meme** : le jour ou
+`FOP-R4` est payee sur `cm1-emc-fait-opinion`, le meme diff doit figer l'etat porteur sous
+`CONTRE_EXEMPLE`, faire porter la morsure sur le fige, vider `DETTE_D_AMORCE` et baisser
+`PLAFOND_DE_DETTE` a zero. La lecon de s32 n'est pas que l'annonce ne suffit pas - elle a
+parfaitement fonctionne - **c'est qu'un agent a qui on interdit de toucher au garde-fou ne peut pas
+l'honorer**. Cette contrainte-la ne se reproduit pas.
+
+### 5. Impact de cet amendement
+
+- `bootstrap/src/test/java/com/recreo/archi/LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest.java`
+  (exemption et test d'obligation de la clause 3 retires, morsure de la clause 3 portee sur un etat
+  fige ; **toujours 9 tests**, dont 5 morsures)
+- `bootstrap/src/test/resources/contreexemple/LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest/etat-refuse-emc-cp-07/`
+  (neuf : le paquet refuse, fige octet pour octet)
+- `squad/decisions/adr/ADR-index.md`
+
+**Aucune ligne de contenu servi n'est touchee, aucun statut de couverture n'est deplace, aucun Done
+n'est prononce.**

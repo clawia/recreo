@@ -30,10 +30,27 @@ import static org.assertj.core.api.Assertions.assertThat;
  * conformement a la lecture de {@code EMC-3} que nadia-prof a ecrite dans ce meme verdict :
  * "interdiction portant sur les propositions, pas prescription portant sur la bonne reponse".</p>
  *
- * <p><b>Deux taches distinctes (FER-3)</b>, distinguees par la forme de l'enonce : classer une
- * situation comme moquerie repetee ou accident isole ("...Qu'est-ce que c'est ?"), et identifier
- * l'adulte a qui en parler selon le lieu decrit ("À qui ... doit-il/elle en parler ?") - tache
- * inchangee sur le fond, seule sa troisieme proposition au rabais ("a personne, ...") est retiree.</p>
+ * <p><b>Deux taches distinctes (FER-3)</b> : classer une situation comme moquerie repetee ou
+ * accident isole, et identifier l'adulte a qui en parler selon le lieu decrit - tache inchangee sur
+ * le fond, seule sa troisieme proposition au rabais ("a personne, ...") est retiree.</p>
+ *
+ * <p><b>Correction du 2026-09-08 (theo-archi, s32) : la tache d'un item se lit desormais dans sa
+ * bonne reponse, et non dans une phrase de son enonce.</b> Jusqu'a ce jour, un item appartenait a la
+ * tache d'identification s'il contenait la sous-chaine {@code "À qui"}. Ce critere a fait de ce
+ * fichier le <b>seul obstacle technique</b> a {@code EXC-R5}, reserve ouverte par nadia-prof le
+ * 2026-09-08 : elle y demande precisement de reecrire cette question - <i>"que la question le dise
+ * (quel adulte est la a ce moment ?) plutot que 'a qui doit-il en parler ?'"</i> -, et la reecriture
+ * faisait basculer les cinq items de la tache B dans la tache A. <b>Une identite de tache accrochee
+ * a la formulation de l'ecran est le defaut qu'{@code ADR-0075} a nomme</b> ; la bonne reponse, elle,
+ * est le meme objet avant et apres la reecriture que la reserve demande.
+ *
+ * <p><b>Ce que le nouveau critere aurait pu perdre, et ou il est repris.</b> Classer sur la bonne
+ * reponse rend tautologique <i>"chaque bonne reponse est l'une des valeurs connues"</i> a l'interieur
+ * de chaque tache, et surtout il laisserait un item dont la reponse n'est dans aucune des deux
+ * listes <b>hors des deux taches, donc invisible</b> - le faux vert par ecartement silencieux
+ * qu'{@code ADR-0088} vient de payer sur cinq garde-fous de rendu. Le partage est donc rendu
+ * <b>exhaustif et verifie</b> par {@link #chaqueItemAppartientAExactementUneDesDeuxTaches()} : un
+ * item hors des deux listes est rouge, et il nomme sa bonne reponse.
  *
  * <p><b>Ce que ce test ne juge pas.</b> {@code EMC-1}, {@code EMC-8}, {@code EMC-10} et
  * {@code CAT-1} demandent une lecture semantique, non gardees ici. {@code FAB-1} est verifiee depot
@@ -70,13 +87,18 @@ class PaquetCpEmcExclusionTest {
         return items;
     }
 
-    /** Tache B : un enonce qui demande a quel adulte s'adresser. */
+    /** Tache B : un item dont la bonne reponse nomme l'adulte a qui s'adresser. */
     private static boolean estDeTacheAdulte(Question item) {
-        return item.enonce().contains("À qui");
+        return ADULTES_VALIDES.contains(item.bonneReponse());
+    }
+
+    /** Tache A : un item dont la bonne reponse est un classement de la situation. */
+    private static boolean estDeTacheClassement(Question item) {
+        return CLASSEMENTS_VALIDES.contains(item.bonneReponse());
     }
 
     private static List<Question> itemsDeClassement() {
-        return items().stream().filter(item -> !estDeTacheAdulte(item)).toList();
+        return items().stream().filter(PaquetCpEmcExclusionTest::estDeTacheClassement).toList();
     }
 
     private static List<Question> itemsDAdulte() {
@@ -108,6 +130,27 @@ class PaquetCpEmcExclusionTest {
     }
 
     /**
+     * <b>Le partage des taches est exhaustif, et c'est ce qui remplace le marqueur d'enonce.</b> La
+     * tache d'un item se lit dans sa bonne reponse ; un item dont la reponse n'est ni un classement
+     * ni un adulte n'appartient a aucune des deux taches, et il serait alors invisible de tous les
+     * comptages de ce fichier. Ce test est ce qui l'empeche : il est rouge, et il nomme la reponse
+     * qui n'entre nulle part.
+     */
+    @Test
+    void chaqueItemAppartientAExactementUneDesDeuxTaches() {
+        for (Question item : items()) {
+            assertThat(estDeTacheClassement(item) ^ estDeTacheAdulte(item))
+                    .as("item %s : sa bonne reponse \"%s\" n'entre dans exactement une des deux"
+                            + " taches - un item hors des deux serait compte par aucune",
+                            item.id().value(), item.bonneReponse())
+                    .isTrue();
+        }
+        assertThat(itemsDeClassement().size() + itemsDAdulte().size())
+                .as("les deux taches recouvrent le paquet entier")
+                .isEqualTo(items().size());
+    }
+
+    /**
      * FAB-1a, garde-fou de regression sur le motif exact du refus du 2026-09-07 : la tache de
      * classement sert ses deux categories, et aucune des deux ne domine au point de rendre la tache
      * invariante (chacune porte au moins trois items, comme la tache livree aujourd'hui).
@@ -115,11 +158,6 @@ class PaquetCpEmcExclusionTest {
     @Test
     void fab1aLaTacheDeClassementSertSesDeuxCategoriesSansReponseInvariante() {
         List<Question> classement = itemsDeClassement();
-
-        assertThat(classement)
-                .as("chaque item de la tache de classement porte l'une des deux categories connues")
-                .extracting(Question::bonneReponse)
-                .allMatch(CLASSEMENTS_VALIDES::contains);
 
         long moquerie = classement.stream()
                 .filter(item -> item.bonneReponse().equals("une moquerie qui se répète")).count();
@@ -144,11 +182,6 @@ class PaquetCpEmcExclusionTest {
     @Test
     void laTacheDAdulteNeSertPlusDeCandidatAuRabais() {
         List<Question> adulte = itemsDAdulte();
-
-        assertThat(adulte)
-                .as("chaque bonne reponse de la tache d'identification nomme un adulte reel")
-                .extracting(Question::bonneReponse)
-                .allMatch(ADULTES_VALIDES::contains);
 
         for (Question item : adulte) {
             assertThat(item.distracteurs())
