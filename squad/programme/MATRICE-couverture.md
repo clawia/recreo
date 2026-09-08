@@ -1616,13 +1616,13 @@ avant qu'un lot ne soit ecrit.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| enseignement moral et civique | CP | Respecter autrui | Identifier et nommer les émotions d'autrui dans une situation simple (joie, tristesse, colère, peur). | - | - | non couvert - jouable au choix, sous `EMC-1` et `EMC-2`. Risque propre : beaucoup de situations admettent deux emotions defendables (`HIS-2` transpose). |
+| enseignement moral et civique | CP | Respecter autrui | Identifier et nommer les émotions d'autrui dans une situation simple (joie, tristesse, colère, peur). | bandit-manchot-emotions-autrui-cp | bandit manchot | **couvert-valide** (2026-09-07, s31, instance A) - **`EMC-CP-01` ferme.** Onze items, les quatre emotions de la parenthese chacune en bonne reponse, deux taches distinctes (inferer l'emotion d'un evenement decrit, lire un signe corporel decrit), `CAT-1` tenue sans compromis (les trois propositions sont trois noms d'emotion, jamais une attitude). Aucune mention de couverture partielle n'est due - les deux verbes du libelle, identifier et nommer, sont tous deux servis. Deux reserves non bloquantes, datees du 2026-09-07 : **`EMO-R1`** (deux enonces sur onze, 18 et 19 mots, au-dessus de la longueur des paquets d'EMC CP deja fermes) et **`EMO-R2`** (trois indices de la tache B emploient un vocabulaire au-dessus du CP - *posture*, *volontairement*, *brusques*) |
 | enseignement moral et civique | CP | Respecter autrui | Distinguer ce qui est permis de ce qui est interdit dans les relations entre élèves (moquerie, insulte, violence). | bandit-manchot-permis-interdit-cp | bandit manchot | **couvert-valide** (2026-09-06, s29, instance B, apres reprise) - **`EMC-CP-02` ferme.** Refuse le 2026-09-05 (charge de lecture d'un autre niveau, item portant sa reponse dans son enonce), repris et valide sous reserve apres correction. Aucune mention de couverture partielle n'est due. Reserve non bloquante, datee du 2026-09-06 : **`PER-R1`** (question et bonne reponse ne s'enchainent pas toujours en francais correct sur les items de qualification) |
-| enseignement moral et civique | CP | Respecter autrui | Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte en parler. | - | - | non couvert - jouable au choix, sous `EMC-3`. Ligne delicate : mal ecrite, elle mettrait l'enfant en position de victime nommee ou lui suggererait de se debrouiller seul. |
+| enseignement moral et civique | CP | Respecter autrui | Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte en parler. | bandit-manchot-exclusion-cp | bandit manchot | **couvert-valide** (2026-09-08, s31, instance A, apres reprise) - **`EMC-CP-03` ferme.** Refusee le 2026-09-07 (moitie *reconnaitre* non travaillee, tache A a reponse invariante sur 6 items sur 10, `CAT-1` non tenue sur les deux taches) ; **valide sous reserve au reaudit** apres reecriture - la tache A devient un classement a deux categories (moquerie repetee / accident isole) et `CAT-1` verifiee tenue a l'ecran manche par manche sur les deux taches. `EMC-3` relue et corrigee par `nadia-prof` elle-meme au reaudit : c'est une interdiction sur les propositions, jamais une prescription figeant la chaine "en parler a un adulte". Aucune mention de couverture partielle n'est due. Cinq reserves non bloquantes, neuves et datees du 2026-09-08 : **`EXC-R1`** (la consigne du catalogue nomme encore l'ancienne tache), **`EXC-R2`** (les indices de la tache B ne font que redire le lieu deja donne dans l'enonce), **`EXC-R3`** (la troisieme proposition de la tache A n'est pas un candidat serieux sur trois items sur six), **`EXC-R4`** (deux enonces de la tache B en une seule proposition principale restent a raccourcir), **`EXC-R5`** (aucun item ne fait d'un adulte reel une reponse fausse) |
 | enseignement moral et civique | CP | Respecter autrui | Reconnaître que les personnes sont différentes et qu'aucune différence ne justifie de traiter quelqu'un moins bien. | - | - | non couvert - jouable au choix, sous `EMC-4`, `BIA-1` et `BIA-2`, seulement sous la forme de l'interdit, jamais sous celle de l'enumeration des differences (contrefacon a stereotype). **Non retenue a s31** (`DEC-0081`, section 7 ; `nadia-prof`, refus d'avance n°1 de son arbitrage prealable de s31) : `EMC-4` n'autorise qu'une seule tache possible (l'interdit), ce qui epuise `FER-3` avant qu'un item ne soit ecrit - aucun lot de s31 n'y depense d'item. |
-| enseignement moral et civique | CP | Respecter autrui | Employer les formules de politesse et de respect dans les échanges (saluer, remercier, demander, écouter sans couper). | - | - | non couvert - jouable sur la seule moitie connaissance ; l'emploi effectif en situation n'est pas servi. Mention exigee d'avance : "connaissance des formules seule ; leur emploi en situation n'est pas servi". |
+| enseignement moral et civique | CP | Respecter autrui | Employer les formules de politesse et de respect dans les échanges (saluer, remercier, demander, écouter sans couper). | bandit-manchot-formules-de-politesse-cp | bandit manchot | **couvert-valide** (2026-09-07, s31, instance A) - **`EMC-CP-05` ferme.** Onze items, les quatre elements de la parenthese chacun en bonne reponse, deux taches distinctes (choisir la formule qui convient, dire quelle regle d'echange un dialogue ne respecte pas), `CAT-1` tenue sans compromis, `FAB-1` sur ses trois branches. **Mention de couverture partielle exigee d'avance et reprise mot pour mot : "connaissance des formules seule ; leur emploi en situation n'est pas servi. Ce produit verifie ce qu'un enfant sait, jamais ce qu'il fait."** Deux reserves non bloquantes, datees du 2026-09-07 : **`POL-R1`** (les cinq enonces de la tache B, 20 a 26 mots, au-dessus de ce qui est deja accepte au CP) et **`POL-R2`** (l'enonce de l'item 6 est incoherent - un verre deja vide dont on demande "un peu plus d'eau") |
 | enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Connaître les règles de vie de la classe et de l'école et dire à quoi elles servent. | bandit-manchot-regles-de-vie-cp | bandit manchot | **couvert-valide** (2026-09-05, s29, instance B) - **`EMC-CP-06` ferme.** `FER-1` : les deux moities du libelle (connaitre les regles, dire a quoi elles servent) chacune en bonne reponse. `FER-2` : 11 items. `FER-3` : deux operations mentales distinctes. Exactitude 11 sur 11. **Mention de couverture partielle exigee d'avance et reprise mot pour mot : "connaissance de la regle et de ce a quoi elle sert seule ; sa mise en oeuvre en situation n'est pas servie. Ce produit verifie ce qu'un enfant sait, jamais ce qu'il fait."** Reserve non bloquante, datee du 2026-09-05 : **`REG-R1`** (trois distracteurs hors registre, reduisant l'item a un choix entre deux) |
-| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous. | - | - | non couvert - jouable au choix, sous reserve de lisibilite : le mot loi ne doit pas etre defini juridiquement dans l'enonce. |
+| enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Distinguer une règle qui vaut pour tous d'un simple souhait, et reconnaître qu'une loi s'impose à tous. | bandit-manchot-regle-souhait-loi-cp | bandit manchot | **non couvert - REFUSE, maintenu au reaudit** (2026-09-07 puis 2026-09-08, s31, instance A) - **`EMC-CP-07` ne ferme pas.** Refus initial sur trois motifs : un fait de droit faux (item 11), `FAB-1a` (la tache B porte cinq fois la meme bonne reponse) et `FAB-1c`. La reprise (`marc-dev`, commit `60bde989`) corrige le fait de droit et paye `FAB-1a` - les deux sont acquis et ne se redemandent pas. **Seul `FAB-1c` reste, et il mord** : sur les cinq items de la tache B, la bonne reponse est la seule proposition depourvue du marqueur restrictif *seulement* sur 3 a 4 items sur 5 selon la lecture, la ou la barre de `nadia-prof` n'en autorise qu'un (pas plus d'un tiers de la tache). Story de reprise routee a s32 : `docs/backlog/backlog.md`, `S32-EMCCP07`. Fiche : `squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md`. |
 | enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Reconnaître et nommer les symboles de la République française (drapeau tricolore, Marianne, La Marseillaise, la fête nationale). | - | - | non couvert - jouable au choix textuel, sous `ART-1`. La reponse ne se porte jamais par une couleur percue ; on demande le nom, l'hymne, la devise, la date. |
 | enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Connaître la devise de la République et donner un exemple concret de liberté, d'égalité et de fraternité. | - | - | non couvert - jouable au choix, sous `EMC-5`. La devise est une restitution exacte ; l'exemple demande que les deux autres propositions soient nettement hors sujet, sinon deux reponses defendables. |
 | enseignement moral et civique | CP | Acquerir et partager les valeurs de la Republique | Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à l'école, jouer). | - | - | non couvert - jouable au choix. Connaissance exacte, terrain sur ; `BIA-4` s'applique (aucun item n'interroge l'enfant sur sa propre situation). |
@@ -1650,6 +1650,11 @@ presentee comme attestant une conduite.
 **Bilan, corrige le 2026-09-06 (`camille-po`, s29)** : 14 lignes, 10 `non couvert`, 2
 `couvert-valide` (`EMC-CP-02`, `EMC-CP-06`), 2 `non couvrable en l'etat`. 12 lignes entrent au
 denominateur atteignable (inchange).
+
+**Bilan, corrige le 2026-09-08 (`camille-po`, s31) - trois lignes de plus ferment** : 14 lignes,
+7 `non couvert` (dont `EMC-CP-07`, refuse et maintenu au reaudit, et `EMC-CP-04`, non retenue a
+s31), **5 `couvert-valide`** (`EMC-CP-01`, `EMC-CP-02`, `EMC-CP-05`, `EMC-CP-06`, `EMC-CP-03`),
+2 `non couvrable en l'etat`. 12 lignes entrent au denominateur atteignable (inchange).
 
 ## Enseignement moral et civique - CM1 (cycle 3)
 
@@ -1753,18 +1758,18 @@ sur une ligne de ce lot dont le code n'est pas cite par le paquet qui la sert.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation). | - | - | non couvert - jouable au choix textuel. Terrain le plus sur du lot. |
-| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange. | bandit-manchot-melanges-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B) - **`SCI-CM1-02` ferme.** Six classements exacts, cinq moyens de separation reels et bien apparies, une vraie progression de difficulte, indices portant le critere et non la categorie sur les cinq items binaires (`DRO-R2`). Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Trois reserves non bloquantes, datees du 2026-09-06 : **`MEL-R1`** (l'indice du sel dit "faire disparaitre l'eau", plante une conception fausse et nomme la reponse), **`MEL-R2`** (l'item de la decantation ecrit sa reponse dans sa question) et **`MEL-R3`** (troisieme proposition non plausible, meme defaut que `SIG-R2`) |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation). | bandit-manchot-etats-matiere-cm1 | bandit manchot | **couvert-valide** (2026-09-07, s31, instance B) - **`SCI-CM1-01` ferme.** Onze items exacts, les trois etats et les quatre changements d'etat chacun en bonne reponse, deux taches distinctes (identifier l'etat decrit, nommer le changement d'etat decrit). **Seul des quatre paquets de s31 ou chaque proposition est un candidat serieux** ; `SCI-1` tenue a son point le plus exigeant. Referme la couture ouverte par `MEL-R1` : aucun item n'ecrit que l'eau disparait. Aucune mention de couverture partielle n'est due. Aucune reserve. |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange. | bandit-manchot-melanges-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B) - **`SCI-CM1-02` ferme.** Six classements exacts, cinq moyens de separation reels et bien apparies, une vraie progression de difficulte, indices portant le critere et non la categorie sur les cinq items binaires (`DRO-R2`). Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Trois reserves non bloquantes, datees du 2026-09-06 : **`MEL-R1`** (l'indice du sel dit "faire disparaitre l'eau", plante une conception fausse et nomme la reponse), **`MEL-R2`** (l'item de la decantation ecrit sa reponse dans sa question) et **`MEL-R3`** (troisieme proposition non plausible, meme defaut que `SIG-R2`) | **Reaudit du 2026-09-07 (s31, instance A)** : `MEL-R1`, `MEL-R2` et `MEL-R3` **levees** (l'indice du sel dit desormais que le sel reste dans l'eau sans la faire disparaitre, l'item de decantation ne redit plus sa reponse dans son enonce, la troisieme proposition de l'item eau/huile est devenue un candidat plausible). Une reserve neuve et datee, non bloquante, ouverte le 2026-09-07 : **`MEL-R4`** (l'enonce de l'item de decantation reste resolvable a la duree et a l'absence de manipulation seules, sans savoir ce qu'est une decantation). Statut inchange, `SCI-CM1-02` reste `couvert-valide`.
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à un point de repère donné. | - | - | non couvert - jouable au choix textuel, sur la description seule (le produit ne montre aucun mouvement). Recouvrement a ne pas double-compter avec mathematiques CM1 / Grandeurs et mesures (le calcul d'une vitesse). |
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre. | - | - | non couvert - jouable au choix textuel. Distracteurs naturels et plausibles, ce qui est rare. |
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran). | bandit-manchot-signal-information-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B) - **`SCI-CM1-05` ferme.** Onze items exacts, deux taches reellement distinctes (classer le signal, decoder l'information qu'il porte), aucun fait faux, aucun biais, `SCI-1` et `SCI-4` tenues, `SCI-3` mesuree sur le lot (zero item numerique sur 22). Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Deux reserves non bloquantes, datees du 2026-09-06 : **`SIG-R1`** (la tache de classement ne monte jamais, cinq items sur six donnent leur reponse dans l'enonce) et **`SIG-R2`** (troisieme proposition de l'item de l'ambulance non plausible, `SCI-4` formellement tenue mais sans effet reel) |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu. | - | - | non couvert - jouable au choix textuel, item par item. Mention exigee d'avance : "raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non couvert" (refuse au palier 1 par `V3`). |
-| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore). | - | - | non couvert - jouable au choix textuel. |
-| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort). | - | - | non couvert - jouable au choix textuel. Ordonner deux etapes se pose en texte, sans frise ni manipulation. |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore). | bandit-manchot-regimes-alimentaires-cm1 | bandit manchot | **couvert-valide** (2026-09-07, s31, instance B) - **`SCI-CM1-07` ferme.** Sept animaux distincts, les trois regimes (herbivore, carnivore, omnivore) chacun en bonne reponse - jamais *vegetarien*, corrige au referentiel a s30. Deux taches distinctes, la tache A portant `FER-1` a elle seule. Aucune mention de couverture partielle n'est due. Deux reserves non bloquantes, datees du 2026-09-07 : **`RGA-R1`** (sur les quatre items de la tache B, la bonne reponse est la seule proposition serieuse, `PLA-1`) et **`RGA-R2`** (deux formulations hors du registre du CM1 - *esthetique*, et une discrimination qui ne tient qu'a l'adverbe *seulement*) |
+| sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Ordonner les étapes du développement d'un être vivant (naissance, croissance, reproduction, vieillissement, mort). | bandit-manchot-etapes-developpement-cm1 | bandit manchot | **couvert-valide** (2026-09-08, s31, instance B, apres reprise) - **`SCI-CM1-08` ferme.** Refusee le 2026-09-07 (un fait faux - *"un jeune arbre a fini de grandir"* -, une auto-contradiction entre les items 3 et 8, deux items clones sous deux noms d'animal) ; **valide sous reserve au reaudit** apres correction - les trois motifs sont payes. Six items, chacun comparant deux etapes, les cinq etapes couvertes ; `CYC-1` verifiee contre `cp-qlm-cycle-de-vie`, progression sans contradiction. Aucune mention de couverture partielle n'est due (barre posee d'avance : ordonner deux etapes se pose en texte). Deux reserves non bloquantes, neuves et datees du 2026-09-08 : **`DEV-R1`** (deux items enseignent le meme fait sous deux noms d'animal, le garde-fou neuf ne les distingue pas) et **`DEV-R2`** (sur l'item de l'arbre, *la croissance* est rangee en reponse fausse alors qu'un arbre continue de grandir) |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, circulation) et l'organe principal de chacune. | - | - | non couvert - jouable au choix textuel. L'association fonction / organe se fait en texte ; designer un organe sur un schema serait du palier 2, non exige. |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps. | - | - | non couvert - jouable au choix textuel, sous `BIA-4`. Aucun item n'interroge l'enfant sur sa propre vie. |
-| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité). | - | - | non couvert - jouable au choix textuel. Une propriete par item, jamais deux. |
-| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement. | bandit-manchot-objet-technique-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B, apres reprise) - **`SCI-CM1-12` ferme.** Refuse au premier audit (les deux distracteurs de la tache de fonction reproduisaient `OBJ-R2` : ils etaient toujours la fonction d'un autre objet du paquet, y compris sur un item en dessous du niveau CM1) ; **valide sous reserve au reaudit** apres correction - un enfant ignorant l'objet ne gagne plus aucun des quatre items de fonction. Tache B entiere conservee (six pieces reelles, distracteurs pris sur le meme objet) ; l'item 11 (le fonctionnement, chaine causale entiere) conserve et jugee obligatoire par `nadia-prof`. Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Deux reserves non bloquantes du reaudit, datees du 2026-09-06 : **`OBT-R1`** (l'indice de l'item du velo dement la bonne reponse de son propre item) et **`OBT-R2`** (deux indices ecartent nommement les deux distracteurs, defaut fabrique par la correction de `OBJ-R2`) |
+| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier les principales familles de matériaux et choisir un matériau d'après une propriété (résistance, isolation, souplesse, imperméabilité). | bandit-manchot-familles-materiaux-cm1 | bandit manchot | **couvert-valide** (2026-09-08, s31, instance B, apres reprise) - **`SCI-CM1-11` ferme.** Refusee le 2026-09-07 (sur les quatre proprietes que `FER-1` oblige a servir, une seule etait testee par un item offrant une alternative serieuse ; trois items sur six sans alternative serieuse ; un indice qui ne voulait rien dire ; une sixieme famille jamais enseignee) ; **valide sous reserve au reaudit** - les quatre motifs sont payes, les quatre proprietes du libelle desormais servies chacune par un item avec une alternative serieuse a ecarter. Aucune mention de couverture partielle n'est due. Deux reserves non bloquantes, neuves et datees du 2026-09-08 : **`MAT-R1`** (l'item de la bouteille annonce l'impermeabilite comme critere alors que c'est la retention du gout qui departage, et le plastique y est faux sous une phrase qui le rend juste ailleurs dans la meme partie) et **`MAT-R2`** (l'item du tuyau d'arrosage n'offre aucune alternative serieuse, `PLA-1`) |
+| sciences et technologie | CM1 | Materiaux et objets techniques | Identifier la fonction d'un objet technique, nommer ses composants et décrire son fonctionnement. | bandit-manchot-objet-technique-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B, apres reprise) - **`SCI-CM1-12` ferme.** Refuse au premier audit (les deux distracteurs de la tache de fonction reproduisaient `OBJ-R2` : ils etaient toujours la fonction d'un autre objet du paquet, y compris sur un item en dessous du niveau CM1) ; **valide sous reserve au reaudit** apres correction - un enfant ignorant l'objet ne gagne plus aucun des quatre items de fonction. Tache B entiere conservee (six pieces reelles, distracteurs pris sur le meme objet) ; l'item 11 (le fonctionnement, chaine causale entiere) conserve et jugee obligatoire par `nadia-prof`. Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Deux reserves non bloquantes du reaudit, datees du 2026-09-06 : **`OBT-R1`** (l'indice de l'item du velo dement la bonne reponse de son propre item) et **`OBT-R2`** (deux indices ecartent nommement les deux distracteurs, defaut fabrique par la correction de `OBJ-R2`) | **Reaudit du 2026-09-07 (s31, instance A)** : `OBT-R1` et `OBT-R2` **levees** (l'indice de l'item du velo ne dement plus sa bonne reponse ; les deux indices touches par la correction de `OBJ-R2` n'ecartent plus qu'un seul distracteur nomme, jamais les deux a la fois - barre confirmee par `nadia-prof` elle-meme, *"au plus un distracteur nomme"*, contre une transcription plus stricte trouvee fausse dans le backlog et corrigee). Aucune reserve neuve. Statut inchange, `SCI-CM1-12` reste `couvert-valide`.
 | sciences et technologie | CM1 | Materiaux et objets techniques | Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa fabrication ou dans son usage. | - | - | non couvert - jouable au choix textuel, sous `BIA-3`. On decrit un changement, aucun item ne dit que l'objet ancien etait moins bien. |
 | sciences et technologie | CM1 | Materiaux et objets techniques | Connaître quelques règles d'usage d'un environnement numérique (identification, courriel, recherche d'une information, protection de ses données). | - | - | non couvert - jouable au choix textuel, sur les connaissances seules. Mention exigee d'avance : "regles et connaissances d'usage seules ; la pratique d'un environnement numerique reste non couverte". |
 | sciences et technologie | CM1 | La planete Terre. Les etres vivants dans leur environnement | Situer la Terre dans le système solaire et relier les mouvements de la Terre au jour, à la nuit et aux saisons. | - | - | non couvert - jouable au choix textuel, sous `SCI-1`. Exigence d'exactitude : la cause des saisons est l'inclinaison de l'axe terrestre, pas la distance au Soleil. |
@@ -1782,6 +1787,11 @@ demande une valeur numerique a restituer au-dela d'un item sur six, transpositio
 **Bilan** : 20 lignes, **4 `couvert-valide`** (`SCI-CM1-02`, `SCI-CM1-05`, `SCI-CM1-12`,
 `SCI-CM1-17`, s30, instance B), 15 `non couvert`, 1 `non couvrable en l'etat`. 19 lignes entrent au
 denominateur atteignable.
+
+**Bilan corrige le 2026-09-08 (`camille-po`, s31) - quatre lignes de plus ferment** : 20 lignes,
+**8 `couvert-valide`** (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`, `SCI-CM1-07`, `SCI-CM1-08`,
+`SCI-CM1-11`, `SCI-CM1-12`, `SCI-CM1-17`), 11 `non couvert`, 1 `non couvrable en l'etat`. 19 lignes
+entrent au denominateur atteignable (inchange).
 
 ## Synthese au sprint 0, mise a jour a l'ouverture du sprint 4
 
@@ -4833,3 +4843,96 @@ verdict** : `docs/backlog/backlog.md`, section "Backlog ouvert pour s31".
   tenues : le reliquat d'une seule entree reste une dette ouverte, pas une nuance de redaction.
 - Elle ne tranche pas le prix de `CONS-3` : routee a `nadia-prof` pour chiffrage au rejeu.
 
+
+## Synthese apres les verdicts du sprint 31 (2026-09-08) - sept lignes ferment, `EMC-CP-07` ne
+## ferme pas, le compte de reserves transmis est corrige
+
+`nadia-prof` a joue en deux instances disjointes, chacune reauditee dans le sprint apres un premier
+passage (Instance A : EMC CP et les deux reprises de sciences ; Instance B : les quatre paquets
+neufs de sciences CM1). Sources : `squad/sprints/s31-second-passage-de-sciences-et-emc-cp/verdicts-
+nadia-instance-A.md`, `reaudit-nadia-instance-A.md`, `verdicts-nadia-instance-B.md`, `reaudit-
+nadia-instance-B.md`, les dix fiches de conformite citees dans les lignes ci-dessus, `DEC-0081`
+(perimetre de s31) et `DEC-0082` (constat de cloture).
+
+### Les sept mouvements
+
+| Ligne | Instance | Mouvement |
+|---|---|---|
+| `EMC-CP-01` (emotions d'autrui) | A, premier passage | `non couvert` -> `couvert-valide` |
+| `EMC-CP-05` (formules de politesse) | A, premier passage | `non couvert` -> `couvert-valide`, avec mention de couverture partielle due |
+| `EMC-CP-03` (exclusion) | A, reaudit apres refus | `non couvert` -> `couvert-valide` |
+| `SCI-CM1-01` (etats de la matiere) | B, premier passage | `non couvert` -> `couvert-valide` |
+| `SCI-CM1-07` (regimes alimentaires) | B, premier passage | `non couvert` -> `couvert-valide` |
+| `SCI-CM1-08` (etapes du developpement) | B, reaudit apres refus | `non couvert` -> `couvert-valide` |
+| `SCI-CM1-11` (familles de materiaux) | B, reaudit apres refus | `non couvert` -> `couvert-valide` |
+
+**`EMC-CP-07` (regle, souhait, loi) ne ferme pas** : refusee par l'instance A le 2026-09-07 sur trois
+motifs (un fait de droit faux, `FAB-1a`, `FAB-1c`) ; la reprise paie le fait de droit et `FAB-1a` ;
+**le refus est maintenu au reaudit du 2026-09-08 sur le seul motif `FAB-1c`** - sur les cinq items de
+la tache B, la bonne reponse est la seule proposition depourvue du marqueur restrictif *seulement*
+sur 3 a 4 items sur 5 selon la lecture, la ou la barre n'en autorise qu'un. Reste `non couvert`.
+Story de reprise : `docs/backlog/backlog.md`, `S32-EMCCP07`.
+
+**Les deux reprises de reserves de s30** (`S31-5` sur `SCI-CM1-02`, `S31-6` sur `SCI-CM1-12`) ne
+deplacent aucune ligne : les deux etaient deja `couvert-valide`. Leur effet est trace dans les
+lignes elles-memes (sections "Sciences et technologie - CM1" ci-dessus) : `MEL-R1`, `MEL-R2`,
+`MEL-R3` et `OBT-R1`, `OBT-R2` levees, une reserve neuve ouverte (`MEL-R4`).
+
+### Le recompte, independant de tout chiffre transmis
+
+Recompte automatise sur les dix-huit tableaux de cette matrice, colonne `Statut`, apres application
+des sept verdicts ci-dessus - chaque ligne de donnees a ete reclassee telle qu'elle est ecrite dans
+ce fichier apres mise a jour, sans reprendre aucun total d'un autre document.
+
+| | Avant les verdicts (2026-09-07, ouverture de s31) | Apres les sept verdicts de s31 |
+|---|---|---|
+| `couvert-valide` | 56 | **63** |
+| `en cours` | 7 | 7 |
+| `non couvert` | 75 | **68** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 209 | 209 |
+| Denominateur atteignable | 138 | 138 |
+| **Taux** | **56 / 138 = 40,6 %** | **63 / 138 = 45,7 %** |
+
+**63 / 138 = 0,45652... : 45,7 % arrondi.**
+
+**Position dans les deux fourchettes annoncees d'avance** (`DEC-0081`, section 2) : le plafond
+arithmetique de s31 etait de 8 lignes (64/138 = 46,4 %) ; l'attente raisonnable de `nadia-prof`
+etait de 5 a 7 lignes (61 a 63/138, soit 44,2 % a 45,7 %). **Le sprint ferme 7 lignes sur 8 visees,
+au sommet exact de l'attente raisonnable et a une seule ligne du plafond arithmetique.** Aucun
+arrondi n'est fait en faveur du sprint : 63/138 est le point haut de la fourchette annoncee, pas un
+point au-dela.
+
+### Le compte de reserves transmis a la cloture etait faux, corrige ici
+
+`DEC-0082` le detaille : les trois lignes d'EMC CP qui ferment portent **neuf** reserves neuves
+non bloquantes, et non huit comme annonce a l'ouverture de la cloture - `EMO-R1`, `EMO-R2`,
+`POL-R1`, `POL-R2`, `EXC-R1`, `EXC-R2`, `EXC-R3`, `EXC-R4`, `EXC-R5`. L'enumeration citait deja les
+neuf identifiants ; seul le total les precedant s'est trompe. Corrige des l'ecriture de cette
+synthese pour qu'aucun document ulterieur ne reprenne le chiffre faux.
+
+### Les mentions de couverture partielle, verifiees contre les fiches
+
+**Une seule mention de couverture partielle est due, sur `EMC-CP-05`**, reprise mot pour mot depuis
+`squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md` : *"connaissance des formules
+seule ; leur emploi en situation n'est pas servi"*. Elle est portee dans la ligne `EMC-CP-05`
+ci-dessus. **Aucune des six autres lignes fermees n'en porte** : verifie contre chacune des dix
+fiches de conformite du sprint, aucune n'exige de mention au-dela de celle-ci.
+
+### Ce que je route, en plus du backlog
+
+| Fait | A qui | Ce qu'il en fait |
+|---|---|---|
+| **`CAT-1`, `REG-R1`, `PER-R1` restent impayees**, et le report atteint son quatrieme sprint consecutif sans paiement (s29, s30, s31, s32) | `sofia-sm` | Nomme comme priorite de planification pour s32 dans `DEC-0082` ; story deja ecrite, `S32-CAT1`, inchangee |
+| **`EMC-CP-07` reste ouverte**, motif `FAB-1c` seul | `sofia-sm` | Story ecrite, `S32-EMCCP07` |
+| **Le registre d'identifiants de `PAR-5`** ne peut pas voir une allocation faite dans une branche soeur non fusionnee (forme (c) de defaut de couture, constatee par `nadia-prof` a l'assemblage) | `theo-archi` | Route par `nadia-prof` elle-meme, section 5.5 de son verdict d'instance A ; je ne le retranche pas |
+
+### Ce que cette synthese ne fait pas
+
+- Elle ne prononce aucun Done : les sept verdicts sont de `nadia-prof`, dans les documents et les
+  fiches cites.
+- Elle ne fixe aucun perimetre pour s32 au-dela des deux priorites nommees ci-dessus.
+- Elle ne rejuge ni le refus maintenu sur `EMC-CP-07`, ni aucun des sept verdicts qui ferment une
+  ligne.
+- Elle ne rouvre pas `DEC-0081` : le constat sur le resultat de la composition retenue est ecrit
+  dans `DEC-0082`, a part de l'arbitrage lui-meme.

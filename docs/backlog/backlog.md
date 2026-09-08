@@ -11724,9 +11724,22 @@ referentiels, faite dans le meme geste que la presente ouverture.
     proche de celle de la marche (`OBT-R1`) - propriete a tenir, sans texte impose : un indice
     d'item ne contredit jamais la bonne reponse de ce meme item.
   - Etant donne les deux indices neufs introduits par la correction de `OBJ-R2` sur ce paquet
-    (manche 21), quand ils sont revus, alors aucun ne nomme l'un des deux distracteurs de son item
-    pour l'ecarter (`OBT-R2`) - propriete a tenir, sans texte impose : un indice ne nomme aucun des
-    distracteurs de son item, plausibles ou non.
+    (manche 21), quand ils sont revus, alors aucun n'ecarte nommement les **deux** distracteurs de
+    son item a la fois (`OBT-R2`) - propriete a tenir, sans texte impose : un indice ecarte au plus
+    un distracteur nomme de son item ; il donne le critere ou tue la conception fausse, il ne fait
+    pas le tour de la liste.
+    > **Correction du 2026-09-08 (`camille-po`, cloture de s31)** : ce critere ecrivait *"aucun ne
+    > nomme l'un des deux distracteurs de son item pour l'ecarter [...] un indice ne nomme aucun des
+    > distracteurs de son item, plausibles ou non"* - zero distracteur nomme. Ecart trouve par
+    > `yanis-qa` (`squad/sprints/s31-second-passage-de-sciences-et-emc-cp/rapport-qualite.md`,
+    > section 2) : la source autorisee, `squad/conformite/FICHE-bandit-manchot-objet-technique-
+    > cm1.md`, section 6, ou `nadia-prof` a ouvert `OBT-R2` le 2026-09-06, ecrit *"au plus un"*, pas
+    > *"aucun"* - et `nadia-prof` l'a confirme au reaudit du 2026-09-08 en le fondant sur son propre
+    > modele (l'item du ventilateur, qui ecarte deja un distracteur nomme). Le contenu livre et son
+    > test suivent la fiche et sont fideles a la barre reelle ; **c'est cette restitution-ci qui
+    > avait durci *"au plus un"* en *"aucun"* en le recopiant**, depuis l'ecriture de cette story a
+    > l'ouverture de s31 jusqu'a cette correction. La ligne ci-dessus est desormais conforme a la
+    > fiche.
   - Etant donne ces corrections, quand on recompte les items du paquet, alors `FER-1`, `FER-2` et
     `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture de `SCI-CM1-12`.
   - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran jusqu'a trois erreurs sur
@@ -11742,6 +11755,74 @@ referentiels, faite dans le meme geste que la presente ouverture.
   `DEC-0081`.
 - **Agent pressenti** : `lea-dev` ou `marc-dev` pour les textes ; `nadia-prof` pour la
   reverification.
+
+### Cloture de s31 (2026-09-08, `camille-po`) - le sort reel des six stories
+
+Verdicts de `nadia-prof` : `squad/sprints/s31-second-passage-de-sciences-et-emc-cp/verdicts-nadia-
+instance-A.md`, `reaudit-nadia-instance-A.md`, `verdicts-nadia-instance-B.md`,
+`reaudit-nadia-instance-B.md`. Detail ligne a ligne, mentions et reserves : `squad/programme/
+MATRICE-couverture.md`, section "Synthese apres les verdicts du sprint 31".
+
+| Story | Lignes visees | Sort reel |
+|---|---|---|
+| `S31-1` | `EMC-CP-01`, `EMC-CP-05` | **Les deux ferment.** `EMC-CP-01` sans reserve de perimetre, deux reserves non bloquantes (`EMO-R1`, `EMO-R2`). `EMC-CP-05` ferme **avec sa mention de couverture partielle due**, deux reserves non bloquantes (`POL-R1`, `POL-R2`) |
+| `S31-2` | `EMC-CP-03`, `EMC-CP-07` | **`EMC-CP-03` ferme au reaudit** (refuse le 2026-09-07, leve le 2026-09-08), cinq reserves non bloquantes (`EXC-R1` a `EXC-R5`). **`EMC-CP-07` ne ferme pas** : refuse le 2026-09-07, refus **maintenu** au reaudit du 2026-09-08 sur le seul motif `FAB-1c` (voir story ci-dessous, routee a s32) |
+| `S31-3` | `SCI-CM1-01`, `SCI-CM1-07` | **Les deux ferment.** `SCI-CM1-01` sans reserve. `SCI-CM1-07` avec deux reserves non bloquantes (`RGA-R1`, `RGA-R2`) |
+| `S31-4` | `SCI-CM1-11`, `SCI-CM1-08` | **Les deux ferment au reaudit** (refusees le 2026-09-07, levees le 2026-09-08). `SCI-CM1-11` avec `MAT-R1`, `MAT-R2` ; `SCI-CM1-08` avec `DEV-R1`, `DEV-R2` - quatre reserves non bloquantes au total |
+| `S31-5` | `SCI-CM1-02` (reprise, deja `couvert-valide`) | **Tenue.** `MEL-R1`, `MEL-R2`, `MEL-R3` levees ; une reserve neuve non bloquante ouverte, `MEL-R4`. La ligne ne change pas de statut |
+| `S31-6` | `SCI-CM1-12` (reprise, deja `couvert-valide`) | **Tenue.** `OBT-R1`, `OBT-R2` levees, aucune reserve neuve. La ligne ne change pas de statut. Critere d'acceptation corrige ci-dessus (transcription fausse trouvee par `yanis-qa`) |
+
+**Sept lignes de programme ferment ce sprint** : `EMC-CP-01`, `EMC-CP-03`, `EMC-CP-05`,
+`SCI-CM1-01`, `SCI-CM1-07`, `SCI-CM1-08`, `SCI-CM1-11`. Une ne ferme pas : `EMC-CP-07`, routee
+ci-dessous.
+
+## Backlog ouvert pour s32 - `EMC-CP-07`, refus maintenu au reaudit sur `FAB-1c`
+
+### S32-EMCCP07 - Le marqueur restrictif de la tache B fait deviner la loi sans la lire
+
+- **Besoin** : en tant qu'eleve de CP, je veux reconnaitre qu'une loi s'impose a tous sans pouvoir
+  gagner en reperant le mot *seulement* dans les propositions, afin d'apprendre vraiment la
+  distinction entre une regle, un souhait et une loi.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, ligne `non couvert`
+  "Distinguer une regle qui vaut pour tous d'un simple souhait, et reconnaitre qu'une loi s'impose
+  a tous" (`EMC-CP-07`).
+- **Ce qui motive cette story** : `nadia-prof` a refuse ce paquet deux fois de suite
+  (`squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md`). Le refus initial du
+  2026-09-07 portait deux motifs (`FAB-1a`, `FAB-1c`) plus un fait de droit faux ; la reprise de
+  `marc-dev` (commit `60bde989`) a corrige le fait de droit et paye `FAB-1a`. **Seul `FAB-1c`
+  reste**, recompte au reaudit du 2026-09-08
+  (`squad/sprints/s31-second-passage-de-sciences-et-emc-cp/reaudit-nadia-instance-A.md`, section
+  6.2) : sur les cinq items de la tache B, la bonne reponse est la seule proposition qui ne porte
+  pas le marqueur *seulement* sur 3 a 4 items sur 5 selon la lecture, la ou la clause `FAB-1c`
+  n'en autorise qu'un.
+- **Criteres d'acceptation**, repris mot pour mot du motif de refus, comme l'exige `CLAUDE.md`
+  (un critere issu d'un refus reprend les mots du refus) :
+  - Etant donne les cinq items de la tache B de `bandit-manchot-regle-souhait-loi-cp`, quand on
+    compte ceux ou la bonne reponse est la seule proposition depourvue du marqueur restrictif
+    (*seulement*, ou toute formule equivalente de restriction), alors **au plus un** des cinq
+    items est dans ce cas (`FAB-1c`, barre de `nadia-prof` : pas plus d'un tiers des items d'une
+    tache).
+  - Etant donne chaque item ou la bonne reponse cesse d'etre reconnaissable au marqueur, alors
+    elle l'est soit parce qu'elle est elle-meme une restriction vraie (l'item de l'alcool en est
+    le modele deja livre : *"seulement les adultes"* est la bonne reponse), soit parce que l'un
+    des deux distracteurs est lui-meme une proposition universelle et fausse, de sorte que le
+    marqueur ne trie plus rien (`nadia-prof`, meme section, "Ce qui fermerait la ligne").
+  - Etant donne le reste du paquet (le fait de droit, `FAB-1a`, `PLA-1`, la tache A), alors rien
+    n'est repris : ces points sont deja payes et ne se redemandent pas
+    (`reaudit-nadia-instance-A.md`, section 6.1).
+  - Etant donne le paquet corrige, quand `nadia-prof` le rejoue a l'ecran jusqu'a la revelation sur
+    les cinq items de la tache B, alors elle confirme le compte ci-dessus. **Regime : rejeu borne
+    pour le paquet entier** (`PAR-10`), prix a fixer par `nadia-prof` au moment du rejeu.
+  - Etant donne le verdict de ce rejeu, alors `EMC-CP-07` passe a `couvert-valide` si `FAB-1c` est
+    tenue, ou reste `non couvert` si elle ne l'est pas - cette story ne prejuge pas du verdict.
+- **Ce que cette story ne fait pas** : elle ne rouvre aucune des cinq reserves d'`EMC-CP-03`
+  (`EXC-R1` a `EXC-R5`, paquet distinct) ; elle ne modifie pas la tache A, que `nadia-prof` a
+  confirmee bonne et inchangee au reaudit.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md` ; `squad/sprints/
+  s31-second-passage-de-sciences-et-emc-cp/reaudit-nadia-instance-A.md`, section 6 ; `DEC-0081`.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour les textes ; `nadia-prof`, pour l'audit et le
+  Done pedagogique.
 
 ## Backlog ouvert pour s32 - `CAT-1`, trouvee en jouant a s31, non payee dans la composition
 ## retenue (`DEC-0081`)
