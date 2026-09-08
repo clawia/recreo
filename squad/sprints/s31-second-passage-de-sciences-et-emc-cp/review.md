@@ -1,6 +1,7 @@
 # Review de s31 - second passage de sciences et EMC CP
 
 - **Horodatage** : 2026-09-08.
+- **Horodatage de fin** : 2026-09-08 11:46
 - **Anime par** : `sofia-sm`.
 - **Arbre revu** : `round-two` a `472df4fc`, assemble par moi par cherry-pick chronologique de
   quatorze commits venus de dix worktrees dedies, aucun agent n'ayant ecrit dans le worktree d'un
