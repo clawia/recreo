@@ -305,3 +305,88 @@ tranche, qui releve de mon role :
 - `sofia-sm`, casquette SM : fusionne les trois branches au fil de leur arrivee, verifie la lignee
   de chacune avant sa premiere ecriture, mesure les quatre jobs de la CI sur l'arbre assemble avant
   d'ouvrir la review.
+
+## 14. Fusion des trois branches de developpement, jobs mesures, rouge herite et obstacles routes
+
+**Casquette dev, geste distinct de la ceremonie de planning**, ecrit avant la review comme
+`PAR-9` et la section 10 l'exigent pour tout transfert ou obstacle survenu en cours de sprint.
+
+**Verification de lignee avant chaque fusion.** `git merge-base round-two s32-marc`,
+`s32-lea` et `s32-sofia` rendent tous les trois `a613c38d`, la tete de `round-two` au moment ou
+les trois worktrees ont ete provisionnes : les trois branches en descendent directement, aucune
+n'est fourchee d'une tete perimee.
+
+**Verification du point de couture avant de le supposer.** Deux branches sur trois touchent
+`catalogue.yaml` et `TexteAccentueExposeParLePortEntrantTest` : diff verifie ligne a ligne avant
+fusion plutot que suppose. `s32-marc` reecrit une ligne de consigne existante (bloc
+histoire-geographie CM1) ; `s32-sofia` ajoute deux blocs neufs en fin de fichier (EPS CP). Meme
+verification sur l'inventaire de `TexteAccentueExposeParLePortEntrantTest` : `s32-marc` modifie la
+consigne de HG-CM1 (ligne ~450), `s32-sofia` ajoute des entrees dans des sections disjointes
+(mecanique, titres, consignes, matiere, domaines, competences). Aucun chevauchement de ligne.
+
+**Fusion sans conflit dans l'ordre marc, lea, sofia** : `git merge s32-marc` puis `git merge
+s32-lea` puis `git merge s32-sofia`, toutes trois en fast merge automatique, aucun marqueur de
+conflit residuel (`grep -rn "^<<<<<<<"` sur l'arbre, aucune occurrence).
+
+**Quatre jobs de la CI lances par moi sur l'arbre fusionne, chacun nomme, aucun deduit** :
+
+| Job | Commande | Verdict |
+|---|---|---|
+| `prefixes` | `bash .github/scripts/verifier-prefixes-test.sh`, `bash .github/scripts/commit-atteignable-test.sh`, puis `git log --no-merges --format=%s a613c38d..HEAD \| bash .github/scripts/verifier-prefixes.sh` | Vert |
+| `chemins` | `bash .github/scripts/verifier-chemins-test.sh`, puis `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh` | Vert |
+| `outils` | les neuf juges purs de `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` | Vert, 9 juges executes |
+| `build` | `bash outils/mvn-jdk21.sh -B clean verify` (reacteur complet, racine) | **ROUGE, herite et attendu** |
+
+**Aucune porte technique n'est annoncee.** Le rouge du job `build` est connu depuis avant la
+fusion (`lea-dev`, commit `167a4421`, l'a paye sciemment et route) : `FAB-1c` est corrige sur
+`cp-emc-regle-souhait-loi.yaml`, et l'exemption `DETTE_DE_MARQUEUR` de
+`LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` (bootstrap), qui prouvait ce defaut tant
+qu'il existait, ne l'a pas ete - sa consigne a `lea-dev` interdisait de toucher du Java. Deux
+echecs exacts, confirmes sur l'arbre fusionne (module `recreo-bootstrap`, 231 tests, 2 echecs, 0
+erreur) :
+
+- `laDetteNePeutNiGrandirNiPourrir` - le paquet exempte n'est plus fautif, l'exemption devrait
+  etre vide et ne l'est pas.
+- `leContenuQuiPorteLeRefusMaintenuFaitRougirLaClauseTroisSansSonExemption` - le test d'obligation
+  attendait un rejet que la clause 3 ne prononce plus, l'exemption masquant desormais un cas
+  conforme.
+
+**Routee a `theo-archi`, non reparee par moi** : c'est un garde-fou, donc son terrain. Le
+commentaire du test lui-meme programmait ce geste : *"le jour ou la story de s32 reecrit sa tache
+B, cette exemption doit disparaitre dans le meme diff."*
+
+**Compte de tests etabli par moi sur l'arbre fusionne, pas additionne depuis les trois rapports.**
+Mesure directe (`mvn -B clean verify`) : `recreo-domain` 105, `recreo-application` 13,
+`recreo-adapter-web` 388, `recreo-adapter-content` 688, `recreo-bootstrap` 231 (dont les 2 echecs
+ci-dessus). Le job `build` s'arrete a l'echec de `surefire` avant la phase `failsafe`, donc les
+tests d'integration de `recreo-bootstrap` n'y tournent pas ; remesures separement
+(`-Dmaven.test.failure.ignore=true`, dans le seul but de compter, sans changer le verdict rouge
+ci-dessus) : 6 tests d'integration, 0 echec, inchange depuis la base. **Total sur l'arbre fusionne :
+1431 tests, 2 echecs, 0 erreur.**
+
+Base rejouee independamment dans un worktree isole sur `a613c38d` (avant les trois fusions) pour
+ne pas relayer le chiffre du planning sans le revérifier : 105 + 13 + 388 + 678 + 231 + 6 = 1421,
+identique a ce que la section 0 annoncait. **Delta net +10, entierement dans
+`recreo-adapter-content`** (678 -> 688) : il correspond exactement aux dix methodes `@Test`
+ajoutees par `marc-dev` dans `PaquetCm1AnglaisTest` (+2) et `PaquetCm1HistoireGeographieTest`
+(+8). `lea-dev` n'a touche aucun fichier Java, delta nul confirme. Sur mon propre lot
+(`s32-sofia`), les deux paquets d'EPS neufs sont couverts par des tests deja generiques
+(`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, `TexteAccentueExposeParLePortEntrantTest`)
+qui ajoutent des entrees a des structures de donnees lues par une seule methode `@Test` existante :
+mon lot n'ajoute donc aucune execution de test nouvelle, malgre le contenu neuf - l'annonce
+"+2 ou plus" faite avant mesure ne se confirme pas telle quelle, et c'est le chiffre mesure ici qui
+fait foi.
+
+**Obstacles routes, non tranches ici :**
+
+| Obstacle | Categorie | Route a | Motif |
+|---|---|---|---|
+| Exemption `DETTE_DE_MARQUEUR` et son test d'obligation, `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` | Garde-fou, technique | `theo-archi` | Le defaut qu'elle exemptait est paye ; l'exemption doit disparaitre dans le meme diff, ce que la consigne "contenu pur" de `lea-dev` ne permettait pas |
+| `EXC-R1` (consigne du catalogue) et `EXC-R5` (critere de l'adulte plutot que le lieu), `cp-emc-exclusion.yaml` | Technique, hors perimetre contenu | Retour a la dette | `EXC-R1` casserait quatre tests de l'inventaire de `TexteAccentueExposeParLePortEntrantTest` ; `EXC-R5` romprait le classement de tache de `PaquetCpEmcExclusionTest`. Aucune des deux ne rouvre une ligne de la matrice - reserves non bloquantes, ecrites plutot que closes |
+| `LON-1` et `LON-2` sans regle executable (`ADR-0086`, section 16.6) | Technique, garde-fou absent | `theo-archi` | Une regle non executable est un souhait, pas une regle (`CLAUDE.md`) ; le respect de la barre a ete verifie a la main sur mon propre lot (22 enonces comptes par script), pas par un test qui mord |
+| Plancher de `FER-3` : ma consigne a `marc-dev` disait "au moins 4 items", le depot ecrit `MINIMUM_PAR_TACHE = 3` dans chaque test de paquet et `MATRICE-couverture.md` confirme 3 sur `HG-CM1-07` ("7 contre 3, exactement au plancher") | Pedagogie, source de la regle | `nadia-prof` | L'erreur est la mienne, pas celle de `marc-dev` : il a construit sur 3 et l'a signale plutot que de le contourner. `nadia-prof` est la source de `FER-3` et tranche laquelle des deux valeurs est la bonne |
+| Terme "les Sarrasins", `HG-CM1-04` (`cm1-histoire-geographie.yaml`, commentaire de `marc-dev`) | Pedagogie, formulation d'un contenu | `nadia-prof` | Terme traditionnellement enseigne dans le programme francais pour cet evenement, signale par `marc-dev` au moment de l'ecrire plutot que tranche par lui |
+
+Aucun de ces six obstacles n'est clos par cette entree : elle les route, elle ne les tranche pas.
+Le sprint n'a pas de porte technique verte tant que le job `build` est rouge, et cette entree
+n'affirme aucun Done, ni technique ni pedagogique.
