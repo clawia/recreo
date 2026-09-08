@@ -89,6 +89,29 @@ class AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest {
     private static final Set<String> DETTE_DE_CELLULES = Set.of();
 
     /**
+     * Les noms par lesquels {@link #lExemptionEstUneExemptionEtNonUnPerimetre()} exempte les lignes
+     * du contre-exemple. <b>Ils ne sont pas la dette vivante, et c'est la decision du 2026-09-08
+     * (cloture s31)</b> : {@code DETTE_DE_CELLULES} dit quel defaut le depot porte encore
+     * aujourd'hui, ce jeu-ci dit ce que le <b>mecanisme</b> d'exemption fait d'un nom qu'on lui
+     * donne. Deux proprietes, deux clauses, deux materiaux.
+     *
+     * <p><b>Motif, et il vient d'un rouge reel.</b> Cette preuve s'appuyait sur
+     * {@code DETTE_DE_CELLULES}. Le jour ou {@code camille-po} a corrige les deux lignes de la
+     * matrice et ou {@code sofia-sm} a paye la dette, la clause est devenue rouge <b>sans avoir rien
+     * detecte</b> : elle avait seulement perdu l'entree qui lui donnait un sens. Une preuve de
+     * mecanisme qui ne vaut que pendant que le depot est en dette ne vaut plus rien le jour ou il
+     * n'y est plus - c'est-a-dire exactement quand le garde-fou doit encore etre digne de confiance.
+     *
+     * <p><b>Ce jeu de noms ne peut pas pourrir</b> : sa clause exige que chacun designe encore une
+     * ligne en surplus <b>du contre-exemple</b>. Il est fige parce que son materiau est fige - un
+     * extrait de l'historique, recopie octet pour octet - et il n'a aucune raison de suivre l'etat
+     * du depot.
+     */
+    private static final Set<String> NOMS_DU_CONTRE_EXEMPLE = Set.of(
+            "bandit-manchot-melanges-cm1",
+            "bandit-manchot-objet-technique-cm1");
+
+    /**
      * Etat au 2026-09-08, s31, cloture : <b>0</b>. La dette est <b>vide</b>, donc toute ligne en
      * surplus qui apparaitrait desormais est rouge sans exemption possible.
      *
@@ -239,6 +262,20 @@ class AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest {
      * Le cliquet, en egalite et non en plancher (ADR-0055, ADR-0063, ADR-0067) : rouge si une ligne
      * en surplus s'ajoute, rouge si un nom de la dette ne designe plus rien, rouge si le plafond
      * cesse de valoir la taille de la dette.
+     *
+     * <p><b>Ce qu'il examine depuis que la dette est payee, dit plutot que suppose (ADR-0051)</b> :
+     * la moitie "une exemption ne pourrit pas" porte sur <b>zero objet</b>, la dette etant vide, et
+     * elle y restera tant qu'aucune exemption ne sera ecrite. Ce qui continue de mordre est
+     * l'egalite elle-meme - <b>le depot porte exactement zero ligne en surplus</b> -, et c'est la
+     * clause la plus forte des trois : sans exemption possible, la premiere ligne invisible qui
+     * entre est rouge.
+     *
+     * <p><b>Un defaut de sa premiere ecriture, trouve par {@code sofia-sm} en payant la dette</b> :
+     * le message prescrivait {@code PLAFOND_DE_DETTE - 1}, calcule nom par nom dans une boucle qui
+     * s'arretait au premier echec. Quand les deux noms tombent ensemble - ce qui est arrive - il
+     * prescrivait 1 la ou la reponse etait 0. L'assertion porte desormais sur l'ensemble des noms
+     * encore vivants, donc la valeur prescrite est juste quel que soit le nombre de noms qui
+     * tombent.
      */
     @Test
     void laDetteNommeExactementLesLignesEnSurplusQuiRestent() {
@@ -249,14 +286,16 @@ class AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest {
                         + " libre")
                 .hasSize(PLAFOND_DE_DETTE);
 
-        for (String nom : new TreeSet<>(DETTE_DE_CELLULES)) {
-            assertThat(balayage.surplus().stream().filter(ligne -> ligne.texte().contains(nom)).toList())
-                    .as("ADR-0087 : DETTE_DE_CELLULES nomme \"%s\", qui ne designe plus aucune ligne"
-                            + " en surplus. Retire ce nom et ecris PLAFOND_DE_DETTE = %d dans le meme"
-                            + " diff - une exemption qui ne nomme plus rien de reel n'est pas un"
-                            + " cliquet", nom, PLAFOND_DE_DETTE - 1)
-                    .isNotEmpty();
-        }
+        Set<String> vivants = new TreeSet<>(DETTE_DE_CELLULES.stream()
+                .filter(nom -> balayage.surplus().stream()
+                        .anyMatch(ligne -> ligne.texte().contains(nom)))
+                .toList());
+        assertThat(vivants)
+                .as("ADR-0087 : chaque nom de DETTE_DE_CELLULES designe encore une ligne en surplus"
+                        + " reelle. Retire les noms manquants ci-dessous et ecris PLAFOND_DE_DETTE ="
+                        + " %d dans le meme diff - une exemption qui ne nomme plus rien de reel"
+                        + " n'est pas un cliquet", vivants.size())
+                .containsExactlyElementsOf(new TreeSet<>(DETTE_DE_CELLULES));
 
         assertThat(balayage.surplus())
                 .as("ADR-0087 : le depot porte exactement les %d lignes en surplus de la dette",
@@ -300,12 +339,39 @@ class AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest {
     }
 
     /**
-     * La dette exempte les deux lignes de la matrice et rien d'autre : le meme extrait passe quand la
-     * dette les nomme. C'est ce qui distingue une exemption d'un perimetre - sans cette clause, un
-     * vert de la clause vivante ne dirait pas si elle a lu ces lignes ou si elle les a manquees.
+     * <b>Une exemption est une exemption et non un perimetre</b> : nomme, un defaut passe ; pas
+     * nomme, il echoue. Sans cette clause, un vert de la clause vivante ne dirait pas si le balayage
+     * a lu les lignes exemptees ou s'il les a manquees.
+     *
+     * <p><b>La preuve est le couple de cette clause et de
+     * {@link #lesDeuxLignesReellesDeLaMatriceFontEchouerLaRegle()}</b>, sur le <b>meme</b> materiau
+     * et avec deux jeux de noms : vide, il est rouge en nommant les deux lignes ; avec les deux
+     * noms, il est vert. Aucune des deux moities ne passe si le mecanisme casse - que l'argument
+     * d'exemption cesse d'etre honore (cette moitie-ci rougit), que le critere cesse de voir un
+     * surplus (l'autre rougit), ou que le materiau cesse de porter le defaut (l'autre rougit aussi).
+     * C'est ce couple qui rend la clause mordante, et non l'origine de ses noms.
+     *
+     * <p><b>Ses noms ne viennent donc plus de la dette vivante</b> (voir
+     * {@link #NOMS_DU_CONTRE_EXEMPLE}), et les assertions ci-dessous interdisent qu'ils
+     * pourrissent : chacun doit designer une ligne en surplus reelle de l'extrait.
      */
     @Test
-    void laMemeDetteExempteCesDeuxLignesEtRienDAutre() {
-        verifierQueRienNEstInvisible(CONTRE_EXEMPLE, DETTE_DE_CELLULES);
+    void lExemptionEstUneExemptionEtNonUnPerimetre() {
+        Balayage fautif = balayer(CONTRE_EXEMPLE);
+
+        assertThat(fautif.surplus())
+                .as("ADR-0087 : l'extrait de l'historique porte exactement %d ligne(s) en surplus,"
+                        + " une par nom ; s'il n'en porte plus, cette preuve ne prouve rien",
+                        NOMS_DU_CONTRE_EXEMPLE.size())
+                .hasSize(NOMS_DU_CONTRE_EXEMPLE.size());
+        for (String nom : new TreeSet<>(NOMS_DU_CONTRE_EXEMPLE)) {
+            assertThat(fautif.surplus().stream()
+                    .filter(ligne -> ligne.texte().contains(nom)).toList())
+                    .as("ADR-0087 : NOMS_DU_CONTRE_EXEMPLE nomme \"%s\", qui ne designe aucune"
+                            + " ligne en surplus de l'extrait", nom)
+                    .isNotEmpty();
+        }
+
+        verifierQueRienNEstInvisible(CONTRE_EXEMPLE, NOMS_DU_CONTRE_EXEMPLE);
     }
 }

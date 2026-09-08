@@ -67,6 +67,9 @@ markdown sous une autre extension, la population changera de definition et pas s
 
 ### 4. La dette existante est arretee par un cliquet exact, elle n'est pas corrigee ici
 
+*Cette section decrit l'etat du 2026-09-08 au moment de la decision. La dette a ete payee le meme
+jour ; voir l'amendement au bas de cet ADR.*
+
 Les deux lignes de la matrice sont exemptees par leur nom de jeu, avec un plafond de **2**, parce que
 le fichier appartient a `camille-po` et qu'elle y ecrit au moment ou cet ADR est ecrit. Le troisieme
 cas, `ADR-index.md`, n'est pas exempte : il est **corrige** dans le meme commit, parce que ce fichier
@@ -95,7 +98,7 @@ dans le job `build`.
 | `laDetteNommeExactementLesLignesEnSurplusQuiRestent` | le cliquet : rouge si une ligne en surplus s'ajoute, rouge si un nom de la dette ne designe plus rien, rouge si le plafond cesse de valoir la taille de la dette |
 | `leBalayageLitLesTableauxReelsDuDepot` | `ADR-0051` : le balayage dit combien de fichiers, de tableaux et de lignes il a lus, pour qu'un vert ne puisse pas venir d'un motif qui ne rend plus rien |
 | `lesDeuxLignesReellesDeLaMatriceFontEchouerLaRegle` | la morsure, sur materiau reel |
-| `laMemeDetteExempteCesDeuxLignesEtRienDAutre` | l'exemption est une exemption et non un perimetre : le meme materiau passe quand la dette le nomme |
+| `lExemptionEstUneExemptionEtNonUnPerimetre` | l'exemption est une exemption et non un perimetre : le meme materiau passe quand on le nomme, et echoue quand on ne le nomme pas (nommee `laMemeDetteExempteCesDeuxLignesEtRienDAutre` jusqu'a l'amendement du 2026-09-08) |
 
 **La morsure porte sur du materiau reel, jamais sur une fixture de ma main** - la lecon de s05. Le
 contre-exemple est
@@ -216,9 +219,75 @@ croire qu'il n'en a pas :
 5. **Encoder aussi le deficit, avec son cliquet de 9.** Ecartee sur le fait de rendu : rien n'y est
    invisible. Le declencheur est ecrit plus haut.
 
+## Amendement du 2026-09-08 (cloture s31) - la dette est payee, et la preuve du mecanisme d'exemption change de source
+
+**Ce qui est arrive, dans l'ordre.** `camille-po` a corrige les deux lignes de la matrice
+(`eecb331f`, `SCI-CM1-02` et `SCI-CM1-12` dans le meme commit) ; `sofia-sm` a fusionne mon commit en
+second et a paye la dette - `DETTE_DE_CELLULES` vide, `PLAFOND_DE_DETTE = 0`. **Le rouge annonce en
+section 4 est arrive**, il a ete paye la ou il devait l'etre, et le plafond ne remonte pas : la dette
+est **payee**, pas reduite - trois cas sur trois corriges, dont `ADR-index.md` par moi dans le commit
+qui a cree la regle.
+
+**Et il a casse une troisieme clause, que mon annonce n'avait pas prevue.** La clause qui prouvait que
+l'exemption est une exemption et non un perimetre s'executait sur le contre-exemple **avec la dette
+vivante en argument**. Dette vide, elle n'exempte plus rien : elle est devenue rouge **sans avoir rien
+detecte**, ayant seulement perdu l'entree qui lui donnait un sens. Etat mesure par `sofia-sm` sur le
+reacteur complet : 186 fichiers `TEST-*.xml`, 1 396 tests, **1 echec**, celui-la et lui seul.
+
+### Ce que je tranche, et le motif
+
+**Les noms de cette clause sont desormais fournis par la clause elle-meme** (`NOMS_DU_CONTRE_EXEMPLE`,
+deux noms figes), et non par la dette vivante. **Deux proprietes, deux clauses, deux materiaux** :
+
+| Propriete | Clause | Materiau |
+|---|---|---|
+| Quel defaut le depot porte **aujourd'hui**, et quelles exemptions designent encore quelque chose de reel | le cliquet | le depot reel |
+| Ce que le **mecanisme** d'exemption fait d'un nom qu'on lui donne | la clause de mecanisme | l'extrait de l'historique, fige |
+
+**Motif** : le mecanisme est une propriete de la fonction `(racine, dette)`, pas de l'etat du depot.
+Les faire dependre du meme argument couplait deux choses qui ne varient pas ensemble, et le couplage
+ne s'est vu que le jour ou la dette est passee a zero. **Une preuve de mecanisme qui ne vaut que
+pendant que le depot est en dette ne vaut plus rien le jour ou il n'y est plus - c'est-a-dire
+exactement quand le garde-fou doit encore etre digne de confiance.**
+
+**Le defaut que `sofia-sm` voyait sans savoir le peser - un jeu de noms fige rend la preuve
+insensible a la dette reelle - est reel, et c'est le but, pas un effet de bord.** Ce qui rendrait
+cette clause decorative n'est pas l'origine de ses noms : ce serait qu'elle passe alors que le
+mecanisme est casse. Elle ne peut pas, parce que **la preuve est un couple sur le meme materiau** :
+avec un jeu de noms vide, le contre-exemple est **rouge** en nommant les deux lignes ; avec les deux
+noms, il est **vert**. Chaque moitie garde ce que l'autre ne garde pas.
+
+**Prouve par mutation, pas affirme** (`bootstrap`, JDK que la machine virtuelle des tests rapporte :
+21.0.10) :
+
+| Mutation | Effet attendu | Mesure |
+|---|---|---|
+| L'argument d'exemption cesse d'etre honore (le filtre ignore `dette`) | la clause de mecanisme rougit | rouge, `lExemptionEstUneExemptionEtNonUnPerimetre` |
+| Le jeu de noms fige perd un nom en silence | la clause de mecanisme rougit | rouge, sur le compte de lignes en surplus de l'extrait |
+| Le materiau fige cesse de porter le defaut | **les deux moities** rougissent | rouge, la clause de mecanisme **et** la morsure |
+
+**Deux choses de plus, dans le meme geste.**
+
+1. **Un defaut de mon message d'echec, trouve par `sofia-sm` en payant la dette.** Il prescrivait
+   `PLAFOND_DE_DETTE - 1`, calcule nom par nom dans une boucle qui s'arretait au premier echec :
+   quand les deux noms tombent ensemble - ce qui est arrive - il prescrivait **1** la ou la reponse
+   etait **0**. L'assertion porte desormais sur l'ensemble des noms encore vivants, donc la valeur
+   prescrite est juste quel que soit le nombre de noms qui tombent. C'est la meme famille que le
+   chiffre sans methode : une prescription juste dans le cas qu'on a en tete et fausse dans le cas
+   general.
+2. **Ce que le cliquet examine maintenant, dit plutot que suppose** (`ADR-0051`) : la moitie *"une
+   exemption ne pourrit pas"* porte sur **zero objet**, la dette etant vide. Ce qui continue de
+   mordre est l'egalite elle-meme - **le depot porte exactement zero ligne en surplus** -, et c'est
+   la clause la plus forte des trois : sans exemption possible, la premiere ligne invisible qui entre
+   est rouge.
+
+**Ce que je ne change pas** : `PLAFOND_DE_DETTE` reste a **0**, la Javadoc de `sofia-sm` reste - elle
+est exacte, elle date son geste et elle n'attribue rien a personne a tort -, et le nombre de clauses
+reste **cinq**. Aucune propriete n'est perdue par cet amendement, une seule change de materiau.
+
 ## Impact
 
-- `bootstrap/src/test/java/com/recreo/archi/AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest.java` : cree.
+- `bootstrap/src/test/java/com/recreo/archi/AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest.java` : cree ; amende le 2026-09-08 (le jeu de noms du contre-exemple, la clause de mecanisme, l'assertion et le message du cliquet).
 - `bootstrap/src/test/resources/contreexemple/AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest/extrait-matrice.md` : cree.
 - `squad/decisions/adr/ADR-index.md` : ligne `ADR-0087` ajoutee ; **et la ligne `ADR-0063` corrigee**,
   son amendement du 2026-08-29 etant invisible au rendu pour la meme cause.
