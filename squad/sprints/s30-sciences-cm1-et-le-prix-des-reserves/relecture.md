@@ -99,12 +99,22 @@ deja clos ; je ne le corrige pas et je le signale, comme `theo-archi` me le dema
 
 ### 4.4 `rapport-qualite.md` (worktree `recreo-s30-yanis`, non fusionne) - chemin absolu de poste de travail
 
-**A `yanis-qa`.** Ligne 3 : *"**Depot mesure** : `C:/perso/recreo-s30-yanis`"*. C'est un chemin
-absolu de poste de travail, exactement la forme que `CLAUDE.md` interdit (le critere est la
-portabilite : nommer le worktree par son nom - `recreo-s30-yanis`, comme le fait ce meme document
-a la ligne suivante pour la commande `git worktree add` - suffit et ne depend d'aucune machine).
-Ce fichier n'est pas encore fusionne dans `round-two` ; je ne le touche pas puisqu'il n'est pas
-dans mon arbre, et je le signale a `yanis-qa` pour correction avant fusion.
+**A `yanis-qa`.** Ligne 3, champ **Depot mesure** : une lettre de lecteur suivie du chemin complet
+jusqu'au worktree, au lieu du nom du worktree seul. C'est exactement la forme que `CLAUDE.md`
+interdit (le critere est la portabilite : nommer le worktree par son nom - `recreo-s30-yanis`,
+comme le fait ce meme document a la ligne suivante pour la commande `git worktree add` - suffit et
+ne depend d'aucune machine). Ce fichier n'est pas encore fusionne dans `round-two` ; je ne le
+touche pas puisqu'il n'est pas dans mon arbre, et je le signale a `yanis-qa` pour correction avant
+fusion.
+
+**Correction du 2026-09-08.** Ce paragraphe citait lui-meme le chemin fautif entre guillemets pour
+l'appuyer. Le garde-fou de chemins ne distingue pas une citation d'un emploi - exactement ce
+qu'`ADR-0085` (amendement du 2026-09-08) tranche pour la meme famille de defaut sur les
+identifiants : *"citer n'est pas moins qu'employer"*. Le job CI `chemins` etait donc rouge sur ce
+fichier depuis le commit de cette relecture (2026-09-06), sans que personne ne le remarque avant
+la cloture de s31 ; faute trouvee par `theo-archi`, corrigee ici par `relecteur-pedagogique`. Le
+reproche fait a `yanis-qa` ci-dessus reste inchange sur le fond : seule sa citation est reecrite
+sous une forme qui ne recite plus le chemin.
 
 ### 4.5 `rapport-qualite.md` (worktree `recreo-s30-yanis`, non fusionne) - attribution a verifier
 
