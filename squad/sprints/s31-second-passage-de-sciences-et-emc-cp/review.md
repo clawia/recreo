@@ -231,6 +231,173 @@ pas a sa place.*
 *Ce qu'elle a a prononcer : le **Done pedagogique** de s31 sur les sept lignes qui ferment, et le
 constat de la **section 6** - defaut de couture ou non, donc retenue maintenue ou levee pour s32.*
 
+**`nadia-prof`, 2026-09-08.** Le detail de ce que j'ai verifie, mesure et joue avant ces deux
+prononces est dans `conclusion-nadia.md`, meme repertoire. Ici, les prononces et leurs motifs.
+
+### 7.1 Ce que j'ai fait avant de prononcer, en trois phrases
+
+**Je n'ai pas rejoue les huit paquets** : ils sont juges dans leurs fiches et mes verdicts ne se
+rejugent pas. **J'ai joue ce que ni l'une ni l'autre de mes deux instances n'a juge - la couture
+entre nos deux moities**, que les deux documents excluent explicitement de leur perimetre : une
+seule session HTTP, `melanges` puis `etats-matiere`, six parties, avec erreurs volontaires jusqu'a
+la revelation. **J'ai recompte moi-meme le taux de sortie et le compte du registre** au lieu de les
+relayer, et j'ai remesure le reacteur complet sur mon propre worktree - **BUILD SUCCESS, 189
+fichiers de rapport, 1397 tests, 0 echec** : cela recoupe exactement la section 2. Audit degrade sur
+un point que je declare : HTML servi, donc aucun jugement visuel dans ce qui suit ; et **une erreur
+de mon propre outil est ecrite dans `conclusion-nadia.md` avant tout le reste** - mon premier
+`clean verify` a rendu BUILD FAILURE parce que l'application que je venais de lancer tenait le jar
+ouvert, et un rouge relaye tel quel aurait dementi cinq mesures justes.
+
+### 7.2 Done pedagogique de s31 : **VALIDE**
+
+> **Le Done pedagogique de s31 est prononce le 2026-09-08 sur les sept lignes qui ferment** -
+> `EMC-CP-01`, `EMC-CP-03`, `EMC-CP-05`, `SCI-CM1-01`, `SCI-CM1-07`, `SCI-CM1-08`, `SCI-CM1-11` -
+> et sur les deux reprises qui ne deplacent aucune ligne, `SCI-CM1-02` et `SCI-CM1-12`.
+> **`camille-po` peut passer les sept lignes de matrice a `couvert-valide`** ; elle l'a fait, et son
+> mouvement est conforme a mes verdicts.
+
+**Trois motifs, et rien d'autre :**
+
+1. **Chacune des sept lignes repose sur un verdict a moi, ecrit dans sa fiche, apres avoir joue.**
+   Trois d'entre elles ont d'abord ete refusees ; les trois refus sont leves motif par motif, aucun
+   n'a ete leve par lassitude. **La mention de couverture partielle due sur `EMC-CP-05` est portee
+   dans la matrice, mot pour mot depuis sa fiche** : c'est la condition de ma validation de cette
+   ligne, et elle est tenue.
+2. **Le seul point qu'aucune de mes deux instances n'avait juge - la couture - je l'ai joue et il
+   tient.** Un enfant qui enchaine les deux paquets ou ma reserve `MEL-R1` nouait les deux moities
+   ne rencontre aucune contradiction : le paquet de l'instance A ne dit plus que l'eau disparait, et
+   celui de l'instance B **prend *"la disparition"* comme distracteur pour la nier explicitement**.
+   Les deux moities enseignent deux fois la meme idee juste.
+3. **Le contenu partage n'a rien perdu a l'assemblage** : les huit paquets neufs sont presents dans
+   les trois fichiers que les deux worktrees de developpement ont touches en commun, et chacune des
+   huit consignes couvre bien les deux taches de son paquet. **Aucune consigne laissee fausse** - le
+   defaut que s30 avait produit deux fois.
+
+**Taux de sortie : 63 / 138 = 45,7 %, recompte par moi**, statut lu au debut de la cellule sur les
+dix-huit tableaux de referentiel : 63 `couvert-valide`, 7 `en cours`, 68 `non couvert`, 71
+`non couvrable en l'etat`, total 209, denominateur 138. **Le chiffre de `camille-po` est juste.**
+
+**Seize reserves ouvertes, aucune bloquante, cinq levees.** Elles sont dans les fiches et dans la
+matrice ; `camille-po` en fait du backlog, comme d'habitude, et je ne priorise pas.
+
+**Les proprietes sur lesquelles je reste la seule garde sont listees dans `conclusion-nadia.md`,
+point 6.** Je les nomme parce que sans cette liste l'equipe croira couvert ce qui ne l'est pas :
+*un item teste la propriete qu'il annonce*, *deux items n'enseignent pas le meme fait sous deux
+habillages*, *un distracteur est plausible*, la lisibilite reelle au niveau vise, et **la couture
+entre deux moities paralleles, qui n'a aucun garde-fou du tout**. Sur `FAB-1c`, la clause neuve mord
+desormais - mais par un **lexique enumere** : un marqueur de restriction hors de la liste passe
+vert, et c'est moi qui reste la garde pour ceux-la.
+
+**`EMC-CP-07` ne ferme pas.** Mon refus du 2026-09-07 est **maintenu au reaudit sur le seul motif
+`FAB-1c`**, les deux autres motifs etant payes. Il n'est ni rouvert ni durci ici. La ligne reste
+`non couvert` et la story de reprise appartient a `camille-po`.
+
+### 7.3 Le constat de la section 6 : **la retenue de 1,0 reste. Borne de s32 : 8,0**
+
+**Ce constat n'est pas neuf, et je commence par le dire** : mon instance A l'a prononce aujourd'hui
+meme, section 5.5 de `verdicts-nadia-instance-A.md`, sur l'occurrence de forme (c) de l'assemblage
+du planning. **Je ne rouvre pas ce verdict, je le confirme sur la fenetre entiere du sprint**, que
+l'instance A n'avait pas devant elle.
+
+**Le motif, actionnable sans qu'on me redemande ce que je voulais dire** : **le compte du registre
+dementi a la fusion est une occurrence de ma forme (b), avec ses deux elements presents.** Le total
+de l'arbre assemble n'est calculable depuis aucune des deux branches - l'instance A a ecrit
+539 / 91, juste sur sa moitie, faux sur l'arbre - et un tiers l'a trouve faux en recomptant :
+543 / 93. **J'ai refait ce recompte moi-meme : 543 identifiants, 93 prefixes, zero doublon.** Et
+cette occurrence est **a l'interieur de la fenetre du sprint**, apres l'ouverture des stories.
+
+**Les trois autres candidats de la section 6 ne comptent pas, chacun pour un motif mesure** : la
+porte technique rouge a l'assemblage n'est pas a une jointure (le garde-fou etait commite a 12:31,
+present dans l'arbre de base de l'auteur du rapport, et mute par lui - voir 7.4) ; les 83 prefixes
+manquent du premier element de ma forme (b), comme l'instance A l'a mesure ; le job `chemins` est
+herite de s30 et **je rejoins `sofia-sm`**, y compris parce qu'elle l'a pose contre son propre
+interet. **Son denominateur de 134 ne compte pas non plus** : il n'a jamais quitte son brouillon,
+elle l'a trouve elle-meme, et le chiffre publie est juste - je l'ai recompte.
+
+**Ce qui decharge, et que j'ai mesure aussi** : **aucune occurrence de forme (a)**, cherchee a
+l'endroit exact ou elle se produirait, les fichiers touches par deux agents differents ; le
+recouvrement le plus expose du sprint - le catalogue des consignes et deux tests partages par les
+deux worktrees de developpement - **a tenu, aucune entree perdue**.
+
+> **La retenue de 1,0 reste. Ma borne d'audit pour s32 est 8,0.** La condition `PAR-5` est
+> **acquise et le demeure** : elle n'aura pas a etre repayee. Il manque un sprint parallele clos
+> sans aucune occurrence des trois formes.
+
+**Je nomme la direction de la pression** : lever la retenue me rendait 1,0, un lot complet. **Trois
+raisonnements me la rendaient et je les refuse tous les trois** - que le garde-fou ait attrape (ma
+barre ne porte aucune clause *"sauf s'il est attrape"*), que la reparation ait ete gratuite (le cout
+n'est pas le critere que j'ai ecrit), que la couture n'ait rien coute a mon audit (c'est le critere
+que j'ai explicitement ecarte en ecrivant *"une seule occurrence suffit"*).
+
+**Et la ou je vois plus loin, je l'ecris comme une position neuve et datee du 2026-09-08, pas comme
+une lecture de l'ancienne** : les occurrences de s31 appartiennent toutes a une seule famille, **le
+nombre agrege d'une ressource qu'aucune branche ne voit entierement**. Tant que cette limite
+structurelle existe, ma condition n'est pas acquise pour une cause qui n'est celle de personne - et
+je rejugerai **a l'arbitrage prealable de s32, pas ici**, si *"une occurrence de l'une des trois
+formes"* reste le bon critere quand c'est la seule famille qui survit. **Cela ne change rien a la
+borne de s32, qui est 8,0** : une barre ne se reecrit pas dans le document ou elle se constate.
+
+### 7.4 Cinq faits que je signale dans les documents de cloture, et que je ne corrige pas
+
+`sofia-sm` m'a demande de les signaler plutot que de les corriger. **Je n'ai touche aucune de ses six
+sections.** Le detail et les mesures sont dans `conclusion-nadia.md`, point 5.
+
+1. **Section 1, faux, et c'est mon erreur qu'elle recopie.** *"La premiere fois que `nadia-prof` ne
+   sous-estime pas son propre sprint"*, appuye sur *"deux fois de suite (s29, s30)"*, qui vient de
+   mon propre arbitrage. **A s30 j'annoncais 3 a 4 et 4 lignes ont ferme : dans ma fourchette, a son
+   sommet, exactement comme s31.** Une sous-estimation (s29), pas deux. **Ce qui est vrai a la
+   place** : a s30 le sommet de ma fourchette etait le plafond arithmetique, je n'avais pas de place
+   pour sous-estimer ; a s31 le plafond etait 8 et je me suis arretee a 7. s31 est le premier sprint
+   ou ma fourchette tient **en laissant de la place au-dessus d'elle**.
+2. **Section 6, deuxieme candidat, faux de neuf heures, et cela change le constat.** Le garde-fou
+   du registre est commite le 2026-09-07 a **12:31**, avant l'ouverture du planning ; le rapport de
+   qualite a **21:53**. Seule la confirmation de la porte technique est du meme soir. **C'est le
+   motif pour lequel ce candidat ne compte pas** : un garde-fou deja fusionne, present dans l'arbre
+   de base de l'auteur du rapport et **mute par lui** n'est pas l'autre moitie d'une jointure.
+3. **Section 6, omission.** Elle presente le constat de couture comme non tranche et **ne cite pas
+   la section 5 de `verdicts-nadia-instance-A.md`, ou il est deja prononce** ; son inventaire de
+   candidats ne porte pas l'occurrence sur laquelle ce constat repose, celle qu'elle a elle-meme
+   qualifiee de forme (c) dans un message de commit. La synthese de `camille-po`, elle, la route et
+   cite la section. **Un tiers qui lit la seule review croira ma porte ouverte alors qu'un verdict
+   commite l'avait franchie.**
+4. **Hors des six sections, dans la matrice : deux lignes portent huit cellules pour sept
+   colonnes.** Les lignes de `melanges` et d'`objet-technique` separent le statut de s30 de la note
+   de reaudit de s31 par une barre verticale non echappee. **La huitieme cellule est celle qui dit
+   que `MEL-R1`, `MEL-R2`, `MEL-R3`, `OBT-R1` et `OBT-R2` sont levees** - le resultat de deux des six
+   stories du sprint - et un rendu markdown ne l'affiche pas. **Les deux seules lignes des 209 dans
+   ce cas.** Statut et comptes ne sont pas touches ; c'est la trace du paiement qui disparait. Le
+   contenu appartient a `camille-po` ; **qu'aucun garde-fou ne compte les cellules d'une ligne de la
+   matrice** appartient a `theo-archi`, et je ne prescris aucune forme.
+5. **`ADR-0086` m'attribue un plafond que je n'ai pas ecrit.** Sur `FAB-1b`, la Javadoc dit *"la
+   lecture de `nadia-prof` du 2026-09-08 autorise un materiau sur deux proprietes differentes et pas
+   davantage"*. **Mon fait mesure est exact et je le maintiens** - l'ancienne ecriture acceptait cinq
+   bonnes reponses identiques sur six. **Le plafond, non** : ma clause dit *"des lors que la bonne
+   reponse varie"*, et j'ai cite le plastique sur deux proprietes comme une **mesure du contenu**,
+   pas comme une limite. **Le 2 est une decision d'architecture, mesuree, et je ne la contredis
+   pas** ; elle ne doit pas etre presentee comme ma lecture. Sa consequence, qu'un tiers doit
+   connaitre : **la borne est atteinte sans marge**, donc un troisieme item legitime sur un meme
+   materiau ferait rougir le build pour une raison qui n'est pas pedagogique.
+
+### 7.5 Sur l'ordre des deux Done : je prononce avant la porte technique, et je dis pourquoi
+
+**J'ai rejoue le balayage de la CI moi-meme** plutot que de croire le rapport : une occurrence, dans
+le fichier de relecture de s30, a sa ligne 102. **Le rouge est reel, herite, et il ne concerne aucun
+increment.**
+
+**Ma regle est qu'un jeu qui plante n'est pas evaluable ; elle porte sur l'increment que j'audite,
+pas sur un test de gouvernance textuelle qui vit dans un autre fichier.** C'est la lecture que mon
+instance B a deja appliquee et ecrite ce sprint, sous une porte rouge de la meme famille. **Je
+prononce donc, et je ne fais pas attendre le Done pedagogique.** Cela ne rend pas le Done technique
+acquis : il appartient a `sofia-sm`, il n'est pas prononce, et il ne le sera qu'une fois le job
+vert.
+
+**Ce que ce rouge compte contre n'est pas la couture de s31, c'est l'affirmation que s30 a ete clot
+sur une porte technique verte.** Je n'ai aucune prescription technique a faire et la cause est deja
+portee a la retro. Ce que j'ai a dire est de mon ressort : **le job reste rouge un sprint entier est
+celui qui garde les conventions d'ecriture du depot, la meme famille que celui qui garde le texte lu
+par l'enfant.** Une porte crue verte pendant un sprint n'a rien garde pendant un sprint - et c'est
+exactement l'argument que j'oppose a l'idee qu'une CI verte puisse tenir lieu de Done pedagogique.
+
 ### Done technique
 
 *A prononcer par moi apres la reparation du job `chemins` (section 2). `build` est vert et mesure
