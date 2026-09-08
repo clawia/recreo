@@ -199,7 +199,8 @@ clauses doivent laisser passer** - deux propositions d'un mot, le pronom qui ne 
 reponses, le distracteur numerique dont la bonne reponse partage le moule. Un assouplissement futur
 du moule les fera rougir.
 
-**Sept tests, tous verts.**
+**Sept tests, tous verts.** *Neuf depuis l'amendement du 2026-09-08, qui ajoute la clause 3 et son
+cliquet.*
 
 ### Le cliquet de la clause 2, et son plafond vaut exactement la dette
 
@@ -231,6 +232,214 @@ personne. Le cout d'un reaudit est de 0,5 ; le cout de la clause est nul apres s
   d'exemption datee **et** un amendement de cet ADR disant ce que la mesure avait manque - jamais un
   relevement silencieux du seuil.
 
+## Amendement du 2026-09-08 (s31, reaudits des deux instances de `nadia-prof`) - clause 3, deux proprietes de plus non encodables, et un plafond qui avait cesse d'en etre un
+
+### Ce qui route cet amendement, et pourquoi le calendrier compte
+
+**Les deux instances de `nadia-prof` ont chacune mesure un fait sur les garde-fous ecrits ce sprint
+meme**, et quatre faits sont arrives par `sofia-sm` en cloture. Le plus serieux des quatre n'est pas
+le plus gros : c'est **le seul motif de la seule ligne de programme que s31 ne ferme pas**
+(`EMC-CP-07`), et **il est passe vert sous les deux clauses de cet ADR, ecrites le jour d'avant pour
+attraper exactement sa famille**. Sa cause est de l'instance A, en une phrase :
+
+> *"La clause 2 compare le moule des quatre premiers mots de propositions de meme longueur ne
+> differant qu'en une position ; les distracteurs fautifs font trois mots (`seulement les pietons`,
+> `seulement le conducteur`) ou different en plusieurs positions. **Le marqueur qui trie l'ecran pour
+> l'enfant est un mot unique en tete, pas un moule de quatre mots.** Je dis la propriete, pas la
+> forme du test, et je ne prescris aucun seuil."*
+
+### La mesure, avec sa methode dans le meme paragraphe
+
+*Toutes les mesures de cet amendement portent sur le **contenu servi entier** - les repertoires de
+contenu de production des modules declares au pom agregateur -, soit **63 paquets a propositions et
+1 165 items, dont 1 051 portent au moins deux distracteurs**. Le contenu a grossi depuis la mesure du
+2026-09-07 (55 paquets, 1 077 items) : les quatre paquets de sciences CM1 et d'EMC CP de s31 y sont
+entres. Etat mesure : worktree `s31-theo-gardefous` sur `round-two` a `d0c3c494`, JDK que la machine
+virtuelle rapporte : **21.0.10**. Aucun chiffre ci-dessous ne vient d'un exemple ni d'une fixture de
+ma main : ils viennent tous du contenu que le depot sert.*
+
+### 1. Clause 3 - le marqueur de restriction
+
+**Un mot de restriction ne figure pas sur tous les distracteurs d'un item et sur aucune part de sa
+bonne reponse, sur deux items ou plus d'un meme paquet.**
+
+Le critere, terme par terme :
+
+- **mot de restriction** : une entree du lexique `MARQUEURS_DE_RESTRICTION`, sept mots
+  (`seulement`, `uniquement`, `seul`, `seule`, `seuls`, `seules`, `sauf`) ;
+- **sur tous les distracteurs** : la comparaison porte sur les mots, **jamais sur une position**.
+  `nadia-prof` decrit un marqueur *"en tete"* ; encoder la position aurait manque l'item 9 du paquet
+  fautif, `les enseignants seulement`. C'est pourquoi la clause en compte **quatre** la ou une
+  lecture en tete en compte trois - sa fourchette annoncee etait *"3 a 4 items sur 5"*, et les quatre
+  que la clause nomme sont les siens ;
+- **aucune part de la bonne reponse** : l'item 11 du meme paquet - *"seulement les adultes"* en bonne
+  reponse, la loi qui vise les adultes seuls - est **vert**, et il doit l'etre. C'est le
+  contre-exemple que le paquet porte lui-meme ;
+- **deux items ou plus** : un item isole ou la bonne reponse est la seule a ne pas restreindre reste
+  un item ou l'enfant doit savoir a qui la loi s'applique. C'est **la repetition** qui apprend a
+  presser le bouton sans *seulement*.
+
+### 2. Ce que ce reglage a coute a trouver, et les deux formulations mesurees avant lui
+
+| Critere mesure sur les 63 paquets | Items marques | Paquets | Rang du paquet refuse |
+|---|---|---|---|
+| Un mot quelconque sur tous les distracteurs, absent de la reponse | **194** sur 1 165 | **29** | **9e**, derriere `cp-nature-mot` (16/16) et `cp-qlm-vivant-non-vivant` (13/14), tous deux valides |
+| Le meme, restreint aux items a deux distracteurs | **86** sur 1 051 | **23** | derriere `cm1-histoire-geographie` (11/57), valide |
+| Le meme, en exigeant le **premier mot** partage (la forme litterale de `nadia-prof`) | **140** | **24** | **7e** |
+| **Le critere retenu** : lexique de restriction, items a deux distracteurs | **4** | **1** | **le paquet refuse, seul** |
+
+**Aucun seuil ne separe le defaut du contenu valide sur les trois premieres formulations** : le
+paquet refuse n'y est jamais premier. Le seul discriminant est **la nature du mot**, et c'est ce qui
+oblige au lexique. Deux exclusions du lexique portent chacune leur chiffre :
+
+- **`que` et `qu` retires** : ils produisent un faux rouge sur `cm1-emc-fait-opinion`, **un item**,
+  paquet valide, dont deux distracteurs portent *"en la croyant parce que ..."*. La conjonction de
+  subordination est bien plus frequente que la particule restrictive, et un enfant ne trie pas un
+  ecran sur `que`. Retires **sur ce chiffre**, pas sur une intuition ;
+- **`juste` retire** : il dit *correct* autant que *seulement*, et le contenu servi n'en porte
+  **aucune** occurrence en proposition. L'inclure n'aurait mordu que du futur ambigu.
+
+**Le plancher de deux distracteurs n'est pas un reglage de confort.** Un item a deux propositions
+n'oppose pas une bonne reponse a des distracteurs semblables : il oppose **deux etiquettes d'une
+dichotomie fermee**, et n'importe quel mot de l'une est absent de l'autre. Sans ce plancher, 194
+items rougissent et le premier est `cp-nature-mot`, 16 sur 16.
+
+**Marge du reglage, dite plutot que tue** : le paquet fautif porte **quatre** items marques, et
+**aucun autre paquet servi n'en porte un seul**. Le plancher de deux a donc deux items de marge de
+chaque cote, et il n'est pose sur aucune valeur qui fait juste passer.
+
+### 3. Ce que la clause 3 ne mord pas, et je l'assume comme un critere enumere
+
+**Le lexique est ecrit a la main, donc la clause est verte par defaut sur tout marqueur qu'elle ne
+nomme pas.** Un paquet qui ecrirait *"rien que les pietons"*, *"a part le conducteur"* ou *"hormis
+les adultes"* passerait devant elle sans rougir. **C'est un critere enumere assume au sens
+d'`ADR-0039`**, et il en paie le prix complet :
+
+- l'aveu est ecrit dans la source du garde-fou, sous la formule figee qu'`ADR-0039` cherche ;
+- `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` entre dans
+  `CRITERES_ENUMERES_DECLARES`, et `PLAFOND_DE_CRITERES_ENUMERES` **monte de 2 a 3** dans le meme
+  diff, comme il etait monte de 1 a 2 le 2026-08-19 ;
+- **ce que ce recensement exige et que voici** : quel objet reel passerait vert devant lui - les
+  trois formulations ci-dessus - et pourquoi aucun critere non enumere ne le remplace : **86 items
+  dans 23 paquets, dont 22 valides**.
+
+**Ce qui distingue son cas des deux declarants precedents, et c'est a son desavantage** :
+`AucunVocabulaireDeMatiereTest` et `TexteAccentueExposeParLePortEntrantTest` ont un complement qui ne
+s'atteint que par une decision de `camille-po` et de `nadia-prof` - une matiere neuve, un niveau
+neuf. Le complement du lexique de restriction depend de la langue, et **il ne se ferme pas**. Trois
+des sept entrees nomment quelque chose aujourd'hui - `seulement` (12 occurrences, 3 paquets), `seul`
+(5, 2), `seule` (2, 2) ; les quatre autres ne paraissent nulle part. Elles restent, et le jeu fautif
+de la clause 3 est la seule preuve qu'elles mordent.
+
+### 4. Le cliquet de la clause 3, et pourquoi une exemption ne blanchit rien ici
+
+`cp-emc-regle-souhait-loi` **est servi et il est refuse** : `nadia-prof` a maintenu le refus
+d'`EMC-CP-07` le 2026-09-08, borne d'audit epuisee, motif route en story de s32. La clause serait
+donc rouge des son ecriture, et un depot dont la porte technique est rouge n'a plus de porte.
+
+**Un paquet exempte, nomme, date ; plafond a un**, et l'objection qui vient d'abord recoit sa
+reponse : l'`ADR-0086` initial ecarte *"exempter du contenu valide, qui transformerait un verdict de
+`nadia-prof` en dette technique"*. **Ce paquet n'est pas valide, il est refuse.** L'exemption
+n'inverse aucun verdict : elle **enregistre** celui qui existe, et elle le rend visible en CI a
+cote d'un compte. Le jour ou la story de s32 reecrit la tache B, l'exemption devient rouge et doit
+disparaitre dans le meme diff - `laDetteNePeutNiGrandirNiPourrir` le tient, sur les deux dettes,
+tenues separement parce qu'elles n'exemptent pas la meme clause.
+
+### 5. La preuve de la morsure, sur le materiau que `nadia-prof` nomme
+
+| Epreuve | Ce qu'elle prouve |
+|---|---|
+| `leContenuQuiPorteLeRefusMaintenuFaitRougirLaClauseTroisSansSonExemption` | Sur `cp-emc-regle-souhait-loi` **tel qu'il est servi**, sans son exemption, la clause nomme **4 items portent un marqueur de restriction (seulement)** et **items 7, 8, 9, 10**. Ce ne sont pas mes items, ce sont les siens |
+| `troisPaquetsFautifsFontRougirChacuneLeurClause` | Un troisieme jeu fautif trie ses ecrans par `uniquement` et `sauf`, **les deux entrees du lexique que le contenu servi ne porte nulle part**, et son troisieme item porte le marqueur en fin de proposition |
+| `unItemADeuxPropositionsNEntrePasDansLaPopulationDeLaClauseTrois` | Deux items binaires portant `seulement` exactement comme le paquet refuse le porte restent verts. Un assouplissement futur du plancher les fera rougir |
+| **Mutation** : la ligne de la clause 3 retiree de `verifierLesPaquets` | **2 tests rouges sur 9**, dont celui qui porte le materiau reel |
+| **Mutation** : `DOMINATION_MAXIMALE` porte de 2 a 5 (section 7) | **1 test rouge sur 11** dans `adapter-content` |
+
+**Neuf tests dans le garde-fou** (sept avant cet amendement), tous verts.
+
+### 6. Deux proprietes de plus que je n'encode pas - et le titre de cet ADR en compte trois
+
+**Le titre dit *trois proprietes voisines*. Elles sont cinq depuis aujourd'hui.** Le nom du fichier
+n'est pas reecrit : c'est une reference que d'autres documents resolvent (`ADR-0066`), et la renommer
+casserait plus que la precision qu'elle gagnerait. **C'est cette section qui porte le compte exact.**
+
+#### 4. *Deux items d'un meme paquet n'enseignent pas le meme fait sous deux habillages* - refusee
+
+Routee par l'instance B (`DEV-R1`), avec un fait sur le test neuf de `lea-dev` : *"il exige bonne
+reponse **et** distracteurs identiques - la paire poussin/chenille passe dessous"*. **Le fait est
+exact**, verifie dans la source : le test compare `bonneReponse()` et l'ensemble des distracteurs, et
+la paire ne partage que la premiere.
+
+| Critere mesure | Paires trouvees | Paquets | La paire routee est-elle mordue ? |
+|---|---|---|---|
+| Bonne reponse repetee, plancher de **3 mots** (celui de la clause 1) | 59 | 13 | **non** - *"la naissance"* fait deux mots |
+| Bonne reponse repetee, plancher de **2 mots** | **135** | **23**, tous valides | oui, avec 134 paires de contenu valide |
+| Bonne reponse repetee **plus** un mot d'enonce partage vu dans au plus 2 items du paquet | **30** | **19** | oui - **et 29 paires dans 18 paquets valides** avec elle |
+
+**Le critere le plus fin que j'ai su ecrire accuse 29 paires valides pour en attraper une.** Et ce
+qu'il accuse n'est pas un hasard : `cm1-sciences-regimes-alimentaires` items 1 et 4 partagent *herbe*
+et repondent tous deux *herbivore* - c'est **la tache**, validee par l'instance B ce sprint meme.
+`cp-semaine` partage *mardi* et repond *mercredi*. La signature textuelle du defaut est celle de
+l'exercice de classement legitime, **exactement l'ecueil de la clause 1 sous une autre face**. Ce qui
+les separe est que le poussin et la chenille enseignent **le meme fait** - sortir de l'oeuf, c'est la
+naissance - et cela, aucune chaine ne le dit.
+
+**Sous la garde de qui elle reste** : `nadia-prof`, par `DEV-R1`, ouverte et non bloquante,
+routee a `camille-po` avec son regime de rejeu. **Et je n'ai pas resserre le test de paquet de
+`lea-dev`** : le resserrer a *"meme bonne reponse"* le rendrait rouge aujourd'hui, sur un paquet que
+la porte pedagogique a valide sous reserve, et le paiement de `DEV-R1` est un geste de contenu, pas
+de garde-fou. Une exemption pour trois jours n'est pas un cliquet, c'est du bruit.
+
+#### 5. *Un item teste la propriete qu'il annonce* (`MAT-R1`) - refusee, et c'est une propriete de sens
+
+Routee par l'instance B : *"un item teste la propriete qu'il annonce n'a aucun garde : c'est
+`MAT-R1`, et c'etait le coeur de mon refus."* L'item de la bouteille annonce *"il faut un materiau
+impermeable"* et c'est la retention du gout qui departage.
+
+Le seul critere textuel voisin est *deux items annoncent le meme critere et portent deux bonnes
+reponses differentes*. Mesure : **673 paires dans 22 paquets**, dont l'item de la bouteille est
+**une**. Et le chiffre qui clot la question est **interne au paquet reserve** : *"il faut un materiau
+souple"* y sert deux items - **le plastique** et **le tissu** - et `nadia-prof` a **explicitement
+autorise** cette repetition dans le meme document ou elle ouvre `MAT-R1`. **Le critere ne distingue
+donc meme pas les deux items du meme paquet**, l'un reserve et l'autre autorise par elle.
+
+Ce qui manque au critere n'est pas un seuil : c'est de savoir **quel materiau porte quelle
+propriete**. C'est un fait du monde, pas une chaine.
+
+**Sous la garde de qui elle reste** : `nadia-prof`, entierement, par `MAT-R1`. Une regle syntaxique
+ecrite ici ferait croire la propriete gardee, ce qui est pire que de la savoir non gardee.
+
+### 7. `FAB-1b` : un plafond trois crans au-dessus de sa dette n'est pas un plafond
+
+**Le fait de l'instance B est exact, et je l'ai verifie dans la source plutot que dans sa
+description.** Le test de `cm1-sciences-familles-materiaux` exigeait *six bonnes reponses distinctes*
+(`hasSize(itemsDeChoix().size())`) ; il compare desormais la frequence maximale a `choix.size()`,
+donc **il accepte cinq bonnes reponses identiques sur six**. Sa lecture du 2026-09-07 autorisait un
+materiau sur **deux** proprietes ; elle ne demandait pas ce relachement.
+
+**C'est la famille du cliquet, et le depot l'a deja sanctionnee** : un plafond dont la valeur depasse
+la dette qu'il garde ne garde rien (`ADR-0013`, `ADR-0067`). Ici l'ecart est de **trois crans** -
+plafond a 5, dette mesuree a **2** (six items de choix, cinq materiaux, le plastique deux fois, sur
+la souplesse et l'impermeabilite).
+
+**La borne vaut desormais exactement ce que sa lecture autorise : deux.** Elle est ecrite, nommee,
+motivee, et sans marge - un troisieme item sur le meme materiau, c'est la moitie de la tache derriere
+un seul bouton. **La relever demande un amendement ecrit**, pas une expression qui suit la taille du
+paquet. La morsure est arithmetique et non textuelle : la borne refuse la distribution que l'ancienne
+ecriture acceptait (cinq sur six) et celle qui la depasse d'un cran (trois sur six), et la
+distribution reellement servie la passe.
+
+**Ce que je ne fais pas** : etendre cette borne a tous les paquets. Une clause generale se
+calculerait **par tache**, et un paquet ne declare pas ses taches - c'est deja le declencheur ecrit
+au bas de cet ADR, et il commence par une decision de contenu.
+
+### 8. Ce que cet amendement change aussi, en une ligne
+
+Les messages de la clause 1 nommaient les items **a partir de zero**, ceux de la clause 3 les
+nomment a partir de un. Deux numerotations dans les messages d'un meme garde-fou coutent un decalage
+a chaque lecture, et c'est `nadia-prof` qui les lit : **la clause 1 numerote desormais comme elle**,
+a partir de un. Aucune assertion ne portait sur ces rangs.
+
 ## Alternatives considerees
 
 - **Encoder les cinq proprietes.** Ecartee sur mesure : trois d'entre elles rendent rouges 39, 3 et
@@ -246,9 +455,14 @@ personne. Le cout d'un reaudit est de 0,5 ; le cout de la clause est nul apres s
 ## Impact
 
 - `bootstrap/src/test/java/com/recreo/archi/LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest.java`
-  (neuf)
+  (neuf ; clause 3 et son cliquet a l'amendement du 2026-09-08)
 - `bootstrap/src/test/resources/contreexemple/LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest/`
-  (neuf : un etat de l'historique, deux jeux fautifs)
+  (neuf : un etat de l'historique, deux jeux fautifs ; un troisieme jeu fautif a l'amendement du
+  2026-09-08)
+- `bootstrap/src/test/java/com/recreo/archi/LesGardeFousSontMisALEpreuveTest.java` (amendement du
+  2026-09-08 : un declarant de critere enumere de plus, plafond de 2 a 3)
+- `adapters/adapter-content/src/test/java/com/recreo/adapter/content/PaquetCm1SciencesFamillesMateriauxTest.java`
+  (amendement du 2026-09-08 : la borne de `FAB-1b` vaut la dette mesuree)
 - `squad/decisions/adr/ADR-index.md`
 
 ## Ce qui me ferait changer d'avis plus tard

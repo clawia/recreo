@@ -1,0 +1,29 @@
+schema: 1
+id: paquet-fautif-marqueur
+type: question
+descripteur:
+  matiere: "Jeu fautif"
+  niveau: "CP"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif d'ADR-0086, clause 3."
+lignesDeReferentiel: ["ZZZ-CP-03"]
+# Deux items dont tous les distracteurs portent un mot de restriction que la bonne reponse ne porte
+# pas : l'enfant presse le bouton qui ne restreint rien, sans savoir de qui la phrase parle. Les deux
+# marqueurs employes ici - "uniquement" et "sauf" - ne paraissent nulle part dans le contenu servi ;
+# ce jeu fautif est la seule preuve que ces deux entrees du lexique mordent.
+#
+# Le troisieme item porte le marqueur en fin de proposition, comme l'item 9 du paquet reellement
+# refuse : la clause compare des mots, jamais une position.
+items:
+  - enonce: "Premiere question du jeu fautif ?"
+    bonneReponse: "tout le monde, y compris les grandes personnes"
+    distracteurs: ["uniquement les personnes de passage", "uniquement les personnes qui habitent la"]
+    indice: "Jeu fautif."
+  - enonce: "Deuxieme question du jeu fautif ?"
+    bonneReponse: "chaque personne presente ce jour-la"
+    distracteurs: ["sauf les personnes arrivees en avance", "sauf les personnes arrivees en retard"]
+    indice: "Jeu fautif."
+  - enonce: "Troisieme question du jeu fautif ?"
+    bonneReponse: "personne, pas meme les grandes personnes"
+    distracteurs: ["les personnes de passage uniquement", "les personnes qui habitent la uniquement"]
+    indice: "Jeu fautif."

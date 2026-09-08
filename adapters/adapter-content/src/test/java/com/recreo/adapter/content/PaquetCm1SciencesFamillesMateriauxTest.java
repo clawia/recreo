@@ -38,6 +38,13 @@ class PaquetCm1SciencesFamillesMateriauxTest {
     /** FER-3 : au moins deux taches, la moins servie portant au moins trois items. */
     private static final int MINIMUM_PAR_TACHE = 3;
 
+    /**
+     * FAB-1b : le nombre d'items de la tache de choix qu'un meme materiau peut porter. Deux, parce
+     * que la lecture de {@code nadia-prof} du 2026-09-08 autorise un materiau sur deux proprietes
+     * differentes et pas davantage.
+     */
+    private static final int DOMINATION_MAXIMALE = 2;
+
     /** Fragment qui distingue la tache B (choix) de la tache A (famille) dans l'enonce. */
     private static final String FRAGMENT_TACHE_DE_CHOIX = "Lequel choisir";
 
@@ -131,22 +138,66 @@ class PaquetCm1SciencesFamillesMateriauxTest {
     }
 
     /**
-     * FAB-1b, corrige a la lecture de {@code nadia-prof} (verdicts de s31, instance B, section 4) :
-     * la bonne reponse de la tache de choix n'est jamais invariante, mais un materiau peut se
-     * repeter d'un item a l'autre sur deux proprietes differentes - ici le plastique, sur la
-     * souplesse (item 8) et l'impermeabilite (item 9). Seule l'invariance totale (un materiau qui
-     * domine la totalite de la tache) est interdite.
+     * FAB-1b : la bonne reponse de la tache de choix ne se repete pas au-dela des proprietes qu'un
+     * materiau porte reellement. <b>Un materiau repond a au plus {@link #DOMINATION_MAXIMALE} items
+     * de la tache.</b>
+     *
+     * <p><b>Pourquoi la borne est ecrite et non deduite de la taille de la tache.</b> Cette
+     * assertion comparait la frequence maximale a {@code choix.size()}, soit six : elle acceptait
+     * <b>cinq bonnes reponses identiques sur six</b>. Fait mesure par {@code nadia-prof} au reaudit
+     * du 2026-09-08 - <i>"varier n'est pas ne pas etre constant"</i> - et exact : le seuil avait
+     * baisse de <i>six reponses distinctes</i> a <i>pas d'invariance totale</i>, un plafond
+     * <b>trois crans au-dessus</b> de la dette qu'il gardait, ce qu'ADR-0013 refuse d'appeler un
+     * cliquet.
+     *
+     * <p><b>La borne vaut exactement ce que la lecture de {@code nadia-prof} autorise</b> : un
+     * materiau peut porter <b>deux</b> proprietes differentes - le plastique, sur la souplesse
+     * (item 8) et l'impermeabilite (item 9) -, jamais trois. Mesure du 2026-09-08 sur le paquet
+     * servi : six items de choix, cinq materiaux, frequence maximale <b>2</b>. La borne est donc
+     * atteinte sans marge, et c'est voulu : un troisieme item sur le meme materiau, c'est la moitie
+     * de la tache derriere un seul bouton. La relever demande un amendement ecrit d'ADR-0086, pas
+     * une expression qui suit la taille du paquet.
      */
     @Test
-    void fab1bLaBonneReponseDeLaTacheDeChoixNEstJamaisInvariante() {
-        List<Question> choix = itemsDeChoix();
-        long meilleureFrequence = choix.stream().map(Question::bonneReponse)
-                .collect(java.util.stream.Collectors.groupingBy(r -> r, java.util.stream.Collectors.counting()))
-                .values().stream().mapToLong(Long::longValue).max().orElse(0);
+    void fab1bAucunMateriauNeRepondAPlusDeDeuxItemsDeLaTacheDeChoix() {
+        assertThat(dominationMaximaleDes(itemsDeChoix()))
+                .as("FAB-1b : un materiau repond a au plus %d items de la tache de choix",
+                        DOMINATION_MAXIMALE)
+                .isLessThanOrEqualTo(DOMINATION_MAXIMALE);
+    }
 
-        assertThat(meilleureFrequence)
-                .as("FAB-1b : aucun materiau ne domine la totalite de la tache de choix")
-                .isLessThan(choix.size());
+    /**
+     * ADR-0013 obligation 3, sur une borne arithmetique. La morsure ne se prouve pas sur du contenu
+     * - le contenu servi est conforme - mais sur ce que la borne <b>refuserait</b> : la distribution
+     * que l'ancienne ecriture laissait passer, cinq reponses identiques sur six, et celle qui la
+     * depasse d'un cran.
+     */
+    @Test
+    void laBorneRefuseLaDistributionQueLAncienneEcritureAcceptait() {
+        assertThat(dominationMaximale(List.of("le plastique", "le bois", "le metal", "le verre",
+                "le tissu", "le plastique")))
+                .as("la distribution reelle du paquet servi passe la borne")
+                .isLessThanOrEqualTo(DOMINATION_MAXIMALE);
+        assertThat(dominationMaximale(List.of("le plastique", "le plastique", "le plastique",
+                "le plastique", "le plastique", "le bois")))
+                .as("cinq reponses identiques sur six : l'ancienne ecriture les acceptait")
+                .isGreaterThan(DOMINATION_MAXIMALE);
+        assertThat(dominationMaximale(List.of("le plastique", "le plastique", "le plastique",
+                "le bois", "le metal", "le verre")))
+                .as("trois items sur le meme materiau : la moitie de la tache derriere un bouton")
+                .isGreaterThan(DOMINATION_MAXIMALE);
+    }
+
+    private static long dominationMaximaleDes(List<Question> items) {
+        return dominationMaximale(items.stream().map(Question::bonneReponse).toList());
+    }
+
+    /** Le nombre d'items que porte la bonne reponse la plus repetee. */
+    private static long dominationMaximale(List<String> reponses) {
+        return reponses.stream()
+                .collect(java.util.stream.Collectors.groupingBy(reponse -> reponse,
+                        java.util.stream.Collectors.counting()))
+                .values().stream().mapToLong(Long::longValue).max().orElse(0);
     }
 
     /** Sur la tache de famille, les cinq objets decrits relevent chacun d'une famille differente. */

@@ -70,7 +70,31 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * dans le meme moule - un critere litteral l'aurait declare fautif a tort, un critere de moule le
  * laisse vert.
  *
- * <p><b>Ce que ces deux clauses ne jugent pas.</b> Si un distracteur est <i>plausible</i> - la
+ * <p><b>Clause 3 - le marqueur de restriction, amendement du 2026-09-08.</b> C'est le fait mesure
+ * par nadia-prof au reaudit de s31, sur ce garde-fou meme : ses deux clauses etaient <b>vertes</b>
+ * sur {@code cp-emc-regle-souhait-loi} alors que {@code FAB-1c} y est fausse, et c'est le seul motif
+ * de la seule ligne de programme que s31 ne ferme pas. Sa cause tenait en une phrase :
+ * <i>"le marqueur qui trie l'ecran pour l'enfant est un mot unique en tete de proposition, pas un
+ * moule de quatre mots"</i>. Le critere : un <b>mot de restriction</b> present sur <b>tous</b> les
+ * distracteurs d'un item et sur <b>aucune</b> part de sa bonne reponse, sur au moins
+ * {@link #ITEMS_POUR_UN_MARQUEUR} items du paquet. La bonne reponse est alors la seule proposition
+ * qui ne restreint pas, et l'enfant la trie sans savoir de quoi elle parle.
+ *
+ * <p><b>La clause encode la propriete, pas la forme que nadia-prof en a decrite.</b> Elle dit
+ * <i>"en tete"</i> ; le critere ici est positionnel-libre, et c'est ce qui lui fait compter
+ * <b>quatre</b> items la ou une lecture en tete en compte trois - l'item 9 du paquet porte
+ * <i>"les enseignants seulement"</i>, marqueur en fin de proposition. Sa fourchette annoncee etait
+ * <i>"3 a 4 items sur 5"</i> ; la clause en nomme quatre, et ce sont les siens.
+ *
+ * <p><b>Ce que la clause 3 garde est un critere enumere assume</b> (ADR-0039) : la liste des
+ * marqueurs est ecrite a la main, donc <b>verte par defaut</b> sur tout mot de restriction qu'elle
+ * ne nomme pas. Un paquet qui ecrirait <i>"rien que les pietons"</i>, <i>"a part le conducteur"</i>
+ * ou <i>"hormis les adultes"</i> passerait devant elle sans rougir. C'est ecrit ici, compte dans
+ * {@code LesGardeFousSontMisALEpreuveTest} et motive dans ADR-0086 : mesure a l'appui, aucun critere
+ * non enumere ne separe ce defaut du contenu valide - le meme critere sans lexique marque 86 items
+ * dans 23 paquets, dont 22 valides.
+ *
+ * <p><b>Ce que ces trois clauses ne jugent pas.</b> Si un distracteur est <i>plausible</i> - la
  * moitie portante d'{@code OBJ-R2} -, si une reponse est juste, si un item est au niveau de sa
  * classe. Le sens reste a nadia-prof, en jouant et en lisant. Ce qui est tenu est que la
  * <b>fabrication</b> des propositions ne donne pas la reponse a qui ne lit que leur forme.
@@ -119,6 +143,66 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
 
     private static final int PLAFOND_DE_DETTE = 1;
 
+    /**
+     * Clause 3 : les mots par lesquels une proposition restreint ce qu'elle designe. Liste ecrite a
+     * la main - un critere enumere assume, declare comme tel ci-dessus.
+     *
+     * <p><b>Ce que la mesure du 2026-09-08 a retire de la premiere ecriture, et pourquoi ce n'est
+     * pas un reglage de confort</b> : {@code que} et {@code qu} y etaient, et ils produisent un faux
+     * rouge sur {@code cm1-emc-fait-opinion}, paquet valide, dont deux distracteurs portent
+     * <i>"en la croyant parce que ..."</i>. La conjonction de subordination est bien plus frequente
+     * que la particule restrictive, et un enfant ne trie pas un ecran sur {@code que}. Retires sur
+     * ce chiffre - un item, un paquet valide -, pas sur une intuition. {@code juste} est retire pour
+     * l'autre motif : il dit <i>correct</i> autant que <i>seulement</i>, et le contenu servi n'en
+     * porte aucune occurrence en proposition, donc l'inclure n'aurait mordu que du futur ambigu.
+     *
+     * <p><b>Trois des sept entrees nomment quelque chose aujourd'hui</b> : {@code seulement}
+     * (12 occurrences, 3 paquets), {@code seul} (5, 2), {@code seule} (2, 2). Les quatre autres ne
+     * paraissent nulle part dans le contenu servi, et elles restent : le jeu fautif de la clause 3
+     * les met a l'epreuve, et un lexique taille sur le corpus du jour laisserait passer le paquet de
+     * demain qui ecrit <i>uniquement</i>.
+     */
+    private static final Set<String> MARQUEURS_DE_RESTRICTION = Set.of(
+            "seulement", "uniquement", "seul", "seule", "seuls", "seules", "sauf");
+
+    /**
+     * Clause 3 : en deca de deux distracteurs, il n'y a pas d'intrus a reperer. Mesure du
+     * 2026-09-08 : sans ce plancher, le critere marque 194 items dans 29 paquets, et son premier
+     * rang est {@code cp-nature-mot} (16 items sur 16, valide), le paquet refuse venant au
+     * neuvieme. Un item a deux propositions n'oppose pas une bonne reponse a des distracteurs
+     * semblables : il oppose deux etiquettes d'une dichotomie fermee, et n'importe quel mot de l'une
+     * est absent de l'autre.
+     */
+    private static final int DISTRACTEURS_POUR_UN_MARQUEUR = 2;
+
+    /**
+     * Clause 3 : un item isole n'est pas une habitude de fabrication. Un seul item dont la bonne
+     * reponse est la seule a ne pas restreindre reste un item ou l'enfant doit savoir a qui la loi
+     * s'applique ; c'est la repetition qui apprend a presser le bouton sans <i>seulement</i>.
+     *
+     * <p><b>Marge du reglage, dite plutot que tue</b> (mesure du 2026-09-08, 63 paquets,
+     * 1 051 items a deux distracteurs) : le paquet fautif en porte <b>quatre</b>, et aucun autre
+     * paquet servi n'en porte <b>un seul</b>. Le plancher a deux mots de marge de chaque cote, et il
+     * n'est pose sur aucune valeur qui fait juste passer.
+     */
+    private static final int ITEMS_POUR_UN_MARQUEUR = 2;
+
+    /**
+     * Clause 3, cliquet exact. {@code cp-emc-regle-souhait-loi} porte le <b>refus maintenu</b> de
+     * {@code EMC-CP-07} du 2026-09-08 : nadia-prof a epuise sa borne d'audit de s31 et a route le
+     * motif en story de s32. Le paquet reste servi, la clause serait donc rouge des son ecriture.
+     *
+     * <p><b>Cette exemption ne transforme aucun verdict pedagogique en dette technique</b> - c'est
+     * la frontiere qu'ADR-0079 trace, et elle n'est pas franchie ici : ce paquet n'est pas valide,
+     * il est refuse, et l'exemption <b>enregistre</b> ce refus au lieu de le contredire. Elle ne
+     * peut pas grandir - un paquet neuf qui trie par un marqueur est rouge -, elle ne peut pas
+     * pourrir, et le jour ou la story de s32 reecrit la tache B, elle devient rouge et disparait
+     * dans le meme diff. Meme mecanique qu'ADR-0067 et que la dette de la clause 2.
+     */
+    private static final Set<String> DETTE_DE_MARQUEUR = Set.of("cp-emc-regle-souhait-loi.yaml");
+
+    private static final int PLAFOND_DE_DETTE_DE_MARQUEUR = 1;
+
     /** ADR-0013 obligation 3 : les jeux fautifs de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
             "LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest");
@@ -128,6 +212,12 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
     }
 
     private record Item(List<String> propositions, String bonneReponse) {
+
+        /** Les propositions qui ne sont pas la bonne reponse, dans l'ordre du paquet. */
+        List<String> distracteurs() {
+            return propositions().stream()
+                    .filter(proposition -> !proposition.equals(bonneReponse())).toList();
+        }
     }
 
     private static String lire(Path fichier) {
@@ -237,6 +327,11 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
      * formes par proche en proche ; un groupe d'au moins {@link #ITEMS_POUR_UNE_REPETITION} items
      * dont toutes les bonnes reponses coulent dans un seul moule d'au moins
      * {@link #MOTS_POUR_UNE_PHRASE} mots est un item servi plusieurs fois.
+     *
+     * <p>Les items sont nommes par leur <b>rang dans le paquet, a partir de un</b>, depuis le
+     * 2026-09-08 : c'est la numerotation que nadia-prof emploie dans ses verdicts, et ce message
+     * lui est destine. La clause 3 nomme les siens de la meme facon ; deux numerotations dans les
+     * messages d'un meme garde-fou coutent un decalage a chaque lecture.
      */
     static List<String> defautsDeRepetition(List<Paquet> paquets) {
         List<String> defauts = new ArrayList<>();
@@ -263,7 +358,7 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
                 List<Integer> membres = new ArrayList<>();
                 for (int rang = 0; rang < groupe.length; rang++) {
                     if (groupe[rang] == tete) {
-                        membres.add(rang);
+                        membres.add(rang + 1);
                     }
                 }
                 if (membres.size() < ITEMS_POUR_UNE_REPETITION) {
@@ -271,7 +366,7 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
                 }
                 List<String> reponses = new ArrayList<>();
                 for (int membre : membres) {
-                    String reponse = items.get(membre).bonneReponse();
+                    String reponse = items.get(membre - 1).bonneReponse();
                     if (reponses.stream().noneMatch(vue -> memeMoule(mots(vue), mots(reponse)))) {
                         reponses.add(reponse);
                     }
@@ -343,12 +438,63 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
         return defauts;
     }
 
-    static void verifierLesPaquets(List<Paquet> paquets, Set<String> dette) {
+    /**
+     * Clause 3. Un item est <b>marque</b> quand un mot de {@link #MARQUEURS_DE_RESTRICTION} figure
+     * dans chacun de ses distracteurs et dans aucune part de sa bonne reponse ; un paquet est fautif
+     * quand au moins {@link #ITEMS_POUR_UN_MARQUEUR} de ses items a au moins
+     * {@link #DISTRACTEURS_POUR_UN_MARQUEUR} distracteurs sont marques. La comparaison porte sur les
+     * mots, jamais sur une position : un marqueur en fin de proposition trie l'ecran comme un
+     * marqueur en tete.
+     */
+    static List<String> defautsDeMarqueur(List<Paquet> paquets, Set<String> dette) {
+        List<String> defauts = new ArrayList<>();
+        for (Paquet paquet : paquets) {
+            if (dette.contains(paquet.nom())) {
+                continue;
+            }
+            List<String> rangsMarques = new ArrayList<>();
+            Set<String> marqueursVus = new TreeSet<>();
+            for (int rang = 0; rang < paquet.items().size(); rang++) {
+                Item item = paquet.items().get(rang);
+                List<String> distracteurs = item.distracteurs();
+                if (distracteurs.size() < DISTRACTEURS_POUR_UN_MARQUEUR) {
+                    continue;
+                }
+                Set<String> motsDeLaReponse = new LinkedHashSet<>(mots(item.bonneReponse()));
+                for (String marqueur : new TreeSet<>(MARQUEURS_DE_RESTRICTION)) {
+                    if (motsDeLaReponse.contains(marqueur)) {
+                        continue;
+                    }
+                    if (distracteurs.stream().allMatch(autre -> mots(autre).contains(marqueur))) {
+                        rangsMarques.add(String.valueOf(rang + 1));
+                        marqueursVus.add(marqueur);
+                        break;
+                    }
+                }
+            }
+            if (rangsMarques.size() >= ITEMS_POUR_UN_MARQUEUR) {
+                defauts.add(String.format(
+                        "%s : %d items portent un marqueur de restriction (%s) sur tous leurs"
+                                + " distracteurs et sur aucune part de leur bonne reponse - items"
+                                + " %s. La bonne reponse est alors la seule proposition qui ne"
+                                + " restreint pas, et l'enfant la trie sans savoir de quoi elle"
+                                + " parle (FAB-1c, refus maintenu du 2026-09-08 ; ADR-0086,"
+                                + " clause 3)",
+                        paquet.nom(), rangsMarques.size(), String.join(", ", marqueursVus),
+                        String.join(", ", rangsMarques)));
+            }
+        }
+        return defauts;
+    }
+
+    static void verifierLesPaquets(List<Paquet> paquets, Set<String> detteDAmorce,
+            Set<String> detteDeMarqueur) {
         assertThat(paquets)
                 .as("ADR-0051 : sans paquet a propositions, ce garde-fou n'examine aucun objet")
                 .isNotEmpty();
         List<String> defauts = new ArrayList<>(defautsDeRepetition(paquets));
-        defauts.addAll(defautsDAmorce(paquets, dette));
+        defauts.addAll(defautsDAmorce(paquets, detteDAmorce));
+        defauts.addAll(defautsDeMarqueur(paquets, detteDeMarqueur));
         assertThat(defauts)
                 .as("ADR-0086 : la forme des propositions d'un paquet ne designe jamais la bonne"
                         + " reponse")
@@ -363,14 +509,16 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
 
     @Test
     void leContenuServiEstConforme() {
-        verifierLesPaquets(paquetsDuDepot(), DETTE_D_AMORCE);
+        verifierLesPaquets(paquetsDuDepot(), DETTE_D_AMORCE, DETTE_DE_MARQUEUR);
     }
 
     /**
      * ADR-0051 : le compte d'objets reellement examines, ecrit plutot qu'espere. Mesure du
-     * 2026-09-07 : 55 paquets a propositions, 1077 items, sur le reacteur complet, JDK 21.0.10. Les
-     * bornes sont posees sous cette mesure ; elles constatent qu'un vert porte sur le contenu servi
-     * entier et non sur une poignee de paquets qu'un chargement aurait laisse tomber.
+     * 2026-09-07 : 55 paquets a propositions, 1077 items, sur le reacteur complet, JDK 21.0.10.
+     * Remesure du 2026-09-08, apres les quatre paquets de s31 : <b>63 paquets, 1 165 items, dont
+     * 1 051 a deux distracteurs</b> - la population de la clause 3. Les bornes sont posees sous ces
+     * mesures ; elles constatent qu'un vert porte sur le contenu servi entier et non sur une poignee
+     * de paquets qu'un chargement aurait laisse tomber.
      */
     @Test
     void leBalayageExamineLeContenuServiEntier() {
@@ -381,12 +529,19 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
         assertThat(paquets.stream().mapToInt(paquet -> paquet.items().size()).sum())
                 .as("ADR-0086 : le contenu servi porte plus d'un millier d'items a propositions")
                 .isGreaterThan(1_000);
+        assertThat(paquets.stream().flatMap(paquet -> paquet.items().stream())
+                .filter(item -> item.distracteurs().size() >= DISTRACTEURS_POUR_UN_MARQUEUR).count())
+                .as("ADR-0086 : la clause 3 examine le millier d'items a deux distracteurs, et non"
+                        + " une poignee")
+                .isGreaterThan(1_000);
     }
 
     /**
-     * ADR-0067 : le cliquet de la clause 2. La dette ne peut ni grandir - le plafond est ecrit et
-     * compare - ni pourrir : chaque paquet exempte doit encore etre <b>reellement fautif</b>, sans
-     * quoi l'exemption ne nomme plus rien de reel et doit disparaitre.
+     * ADR-0067 : les cliquets des clauses 2 et 3. Une dette ne peut ni grandir - le plafond est
+     * ecrit et compare - ni pourrir : chaque paquet exempte doit encore etre <b>reellement
+     * fautif</b>, sans quoi l'exemption ne nomme plus rien de reel et doit disparaitre. Les deux
+     * dettes sont tenues separement parce qu'elles n'exemptent pas la meme clause : le jour ou l'une
+     * est payee, l'autre reste rouge sur son propre paquet.
      */
     @Test
     void laDetteNePeutNiGrandirNiPourrir() {
@@ -403,6 +558,21 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
             assertThat(defautsDAmorce(seul, Set.of()))
                     .as("%s est exempte de la clause 2 alors qu'il n'est plus fautif : une exemption"
                             + " qui ne nomme plus rien de reel n'est pas un cliquet", exempte)
+                    .isNotEmpty();
+        }
+        assertThat(DETTE_DE_MARQUEUR)
+                .as("ADR-0067 : le plafond vaut exactement la taille de la dette du 2026-09-08")
+                .hasSize(PLAFOND_DE_DETTE_DE_MARQUEUR);
+        for (String exempte : DETTE_DE_MARQUEUR) {
+            List<Paquet> seul = paquets.stream()
+                    .filter(paquet -> paquet.nom().equals(exempte)).toList();
+            assertThat(seul)
+                    .as("%s est exempte de la clause 3 et n'est plus un paquet servi", exempte)
+                    .hasSize(1);
+            assertThat(defautsDeMarqueur(seul, Set.of()))
+                    .as("%s est exempte de la clause 3 alors qu'il n'est plus fautif : le jour ou la"
+                            + " story de s32 reecrit sa tache B, cette exemption doit disparaitre"
+                            + " dans le meme diff", exempte)
                     .isNotEmpty();
         }
     }
@@ -423,7 +593,7 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
         assertThat(defautsDeRepetition(refuses))
                 .as("la clause 1 doit mordre le paquet que nadia-prof a refuse")
                 .isNotEmpty();
-        assertThatThrownBy(() -> verifierLesPaquets(refuses, Set.of()))
+        assertThatThrownBy(() -> verifierLesPaquets(refuses, Set.of(), Set.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("portent tous la meme bonne reponse")
                 .hasMessageContaining("il risquerait de manquer de nourriture");
@@ -436,24 +606,65 @@ class LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest {
      */
     @Test
     void lePaquetQuiPorteLaReserveFaitRougirLaClauseDeuxSansSonExemption() {
-        assertThatThrownBy(() -> verifierLesPaquets(paquetsDuDepot(), Set.of()))
+        assertThatThrownBy(() -> verifierLesPaquets(paquetsDuDepot(), Set.of(), DETTE_DE_MARQUEUR))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("L'amorce du bouton departage a la place de la competence");
     }
 
     /**
-     * ADR-0013 obligation 3. Deux jeux fautifs de ma main, qui prouvent que chaque clause mord une
-     * situation que l'historique n'a pas encore produite : un paquet ou trois items partagent le
-     * moule de leurs propositions et une reponse d'une phrase, et un paquet ou l'amorce des
-     * distracteurs les separe des bonnes reponses.
+     * ADR-0013 obligation 3, et <b>la morsure qui decide de la clause 3</b>. Le materiau n'est pas
+     * de ma main : c'est {@code cp-emc-regle-souhait-loi} tel qu'il est servi aujourd'hui, celui sur
+     * lequel nadia-prof a maintenu le refus d'{@code EMC-CP-07} le 2026-09-08. En lui retirant son
+     * exemption, la clause nomme <b>quatre</b> items - les items 7, 8, 9 et 10 - et le mot qui les
+     * trie. Une clause qui passerait verte sur ce paquet-la ne servirait a rien, et ce test est ce
+     * qui l'empeche de le devenir en silence.
      */
     @Test
-    void deuxPaquetsFautifsFontRougirChacuneLeurClause() {
+    void leContenuQuiPorteLeRefusMaintenuFaitRougirLaClauseTroisSansSonExemption() {
+        assertThatThrownBy(() -> verifierLesPaquets(paquetsDuDepot(), DETTE_D_AMORCE, Set.of()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("cp-emc-regle-souhait-loi.yaml : 4 items portent un marqueur"
+                        + " de restriction (seulement)")
+                .hasMessageContaining("items 7, 8, 9, 10");
+    }
+
+    /**
+     * La derivation qui remplace un reglage, sur la clause 3. Un item a deux propositions sort de sa
+     * population, et ce n'est pas une commodite : sur une dichotomie fermee, n'importe quel mot de
+     * l'une est absent de l'autre, et la mesure du 2026-09-08 le chiffre - sans ce plancher, le
+     * critere marque 194 items dans 29 paquets et met {@code cp-nature-mot} (16 sur 16, valide) au
+     * premier rang. Les deux items ci-dessous portent le marqueur exactement comme le paquet refuse
+     * le porte ; ils ne sont pas fautifs parce qu'il n'y a rien a trier.
+     */
+    @Test
+    void unItemADeuxPropositionsNEntrePasDansLaPopulationDeLaClauseTrois() {
+        Paquet binaire = new Paquet("paquet-binaire.yaml", List.of(
+                new Item(List.of("tout le monde", "seulement les adultes"), "tout le monde"),
+                new Item(List.of("chaque eleve", "seulement les grands"), "chaque eleve")));
+
+        assertThat(defautsDeMarqueur(List.of(binaire), Set.of()))
+                .as("clause 3 : un item a deux propositions oppose deux etiquettes, pas une bonne"
+                        + " reponse a des distracteurs semblables")
+                .isEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3. Trois jeux fautifs de ma main, qui prouvent que chaque clause mord
+     * une situation que l'historique n'a pas encore produite : un paquet ou trois items partagent le
+     * moule de leurs propositions et une reponse d'une phrase, un paquet ou l'amorce des
+     * distracteurs les separe des bonnes reponses, et un paquet qui trie ses ecrans par
+     * {@code uniquement} et {@code sauf} - deux entrees du lexique que le contenu servi ne porte
+     * nulle part, donc deux entrees dont ce jeu fautif est la seule preuve qu'elles mordent.
+     */
+    @Test
+    void troisPaquetsFautifsFontRougirChacuneLeurClause() {
         assertThatThrownBy(() -> verifierLesPaquets(
-                paquetsServis(List.of(CONTRE_EXEMPLE.resolve("paquets-fautifs"))), Set.of()))
+                paquetsServis(List.of(CONTRE_EXEMPLE.resolve("paquets-fautifs"))), Set.of(),
+                Set.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ecrans pour un seul item")
-                .hasMessageContaining("L'amorce du bouton departage a la place de la competence");
+                .hasMessageContaining("L'amorce du bouton departage a la place de la competence")
+                .hasMessageContaining("portent un marqueur de restriction (sauf, uniquement)");
     }
 
     /**

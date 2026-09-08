@@ -95,17 +95,30 @@ class LesGardeFousSontMisALEpreuveTest {
      * de preuve plutot que d'exiger une entree - et meme motif de portee : son complement ne
      * s'atteint que le jour ou un niveau au nom different entre au catalogue, une decision de
      * camille-po et de nadia-prof. Frontiere ecrite dans sa propre Javadoc.
+     *
+     * <p>LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest entre au recensement le 2026-09-08,
+     * avec la clause 3 d'ADR-0086 (amendement du meme jour) : elle juge un <b>mot de restriction</b>
+     * sur un lexique de sept entrees ecrit a la main, donc elle est verte par defaut sur tout
+     * marqueur qu'elle ne nomme pas - "rien que les pietons", "a part le conducteur", "hormis les
+     * adultes". Ce qui distingue son cas des deux precedents est que son complement ne depend
+     * d'aucune decision de camille-po ni de nadia-prof : il depend de la langue, et il ne se ferme
+     * pas. La mesure qui a fait ecarter le critere non enumere est dans ADR-0086 - le meme critere
+     * sans lexique marque 86 items dans 23 paquets, dont 22 valides - et ce recensement est le prix
+     * assume de ce choix.
      */
     private static final Set<String> CRITERES_ENUMERES_DECLARES = Set.of(
             "AucunVocabulaireDeMatiereTest",
+            "LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest",
             "TexteAccentueExposeParLePortEntrantTest");
 
     /**
      * Etat au 2026-08-14, s12, a la creation de ce recensement ; monte de 1 a 2 le 2026-08-19 (s16,
-     * TexteAccentueExposeParLePortEntrantTest). Ce nombre ne remonte jamais ; le baisser demande un
-     * diff visible, comme pour PLAFOND_DE_DETTE.
+     * TexteAccentueExposeParLePortEntrantTest), de 2 a 3 le 2026-09-08 (s31, clause 3 d'ADR-0086).
+     * Le plafond vaut exactement la taille du recensement : il ne monte que dans le diff qui ajoute
+     * le declarant et l'ADR qui dit quel objet reel passerait vert devant lui, et le baisser demande
+     * le meme diff visible qu'un PLAFOND_DE_DETTE.
      */
-    private static final int PLAFOND_DE_CRITERES_ENUMERES = 2;
+    private static final int PLAFOND_DE_CRITERES_ENUMERES = 3;
 
     private record SourceDeTest(Path module, Path fichier) {
 
