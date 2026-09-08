@@ -790,6 +790,8 @@ constate.
 | 12 | **Tout Done pedagogique sur un lot que je n'ai pas joue**, et tout reaudit compte comme gratuit hors de la marge | A la cloture, si un sprint deborde. Un reaudit se paie ; s'il n'y a plus de budget, la ligne ne ferme pas - elle ne ferme pas *quand meme*. **Refus reconduit de s31** |
 | 13 | **Tout dispositif qui verifierait ce qu'un adulte a dit a l'enfant** | Refuse d'avance depuis le 2026-09-01, motif ecrit, et l'EPS le rendra tentant : *"demande a un adulte de te montrer l'echauffement"* n'est pas un item |
 | 14 | **Tout enonce de CP de plus de 15 mots, ou de plus de deux phrases** (`LON-1`, `LON-2`, section 16, ajoutee le 2026-09-08) | Sur les quatre lots de CP de ce plan - deux d'EPS CP a s32 et s33, un d'arts plastiques CP a s33, un d'education musicale CP a s34 - et sur la reprise de `POL-R1`, ou cinq enonces sur cinq sont au-dela |
+| 15 | **Tout lot de designation audite avant que `DesignationVerdict` ne porte l'enonce de l'item joue** (section 17.6, ajoutee le 2026-09-08) | A la fin de la premiere partie de designation jouee : le dessin a disparu de l'ecran et l'enfant lit une reponse sans sa question ni son terrain |
+| 16 | **Tout ecran de fin de partie de designation qui montrerait la zone attendue**, par son identifiant ou par son libelle (section 17.6) | Sur `QLM-CP-12`, ou le libelle est positionnel par construction : *"la bonne reponse : le pays en bas a droite"* n'apprend rien de la France |
 
 **Les quatre proprietes de fabrication de s31 - `PLA-1`, `FAB-1a`, `FAB-1b`, `FAB-1c` - et `BIN-1`,
 `CAT-1`, `CYC-1` restent opposables telles quelles.** Aucune n'est amendee ici. **`FAB-1c` mordra
@@ -977,3 +979,214 @@ n'est pas fermee, et cette mesure est un moyen de la fermer, pas un motif de plu
 - **Elle ne rouvre aucune ligne `couvert-valide`.** `EMC-CP-01`, `EMC-CP-03` et `EMC-CP-05` restent
   fermees ; `LON-1` et `LON-2` ne valent que pour les enonces ecrits ou reecrits a partir du
   2026-09-08, et les trois reserves qui les attendaient etaient deja ouvertes et non bloquantes.
+
+---
+
+## 17. Amendement du 2026-09-08, apres coup - combien des lignes du palier 2 se ferment reellement
+
+**Ce que `theo-archi` me route**, section 3 de son avis de faisabilite (branche `s32-theo`,
+`dcbcd65a`) : *"Le palier 2 touche 10 lignes `non couvert` (11 avec le quadrillage). Combien il en
+ferme n'est pas une question d'architecture [...] et je le route a `nadia-prof`."* Il route aussi les
+deux trous de contrat de sa section 4.5 et le fond de la cellule du quadrillage.
+
+**Ma section 9 nommait le palier 2 comme le poste de plus grand rendement du depot, en disant que je
+ne pouvais pas le chiffrer. Je peux chiffrer la moitie qui est de moi - le nombre de lignes - et
+c'est celle-la qui decide.** Le voici, et il est plus bas que ce que ma propre section 9 laissait
+esperer.
+
+### 17.1 Ce que j'ai verifie avant de repondre
+
+**Les onze codes de ligne, retrouves un par un dans les referentiels et non deduits de la matrice**
+(`grep` du code entre crochets dans `squad/programme/<matiere>/competences-<niveau>.md`) :
+`MAT-CP-10`, `QLM-CP-11`, `QLM-CP-12`, `QLM-CP-14`, `HG-CM1-09`, `HG-CM1-10`, `ART-CM1-08`,
+`HDA-CM1-06`, `HDA-CM1-09`, `SCI-CM1-09`, `SCI-CM1-20`. **Onze codes, onze lignes, aucune
+ambiguite.**
+
+**Je confirme le compte de `theo-archi` et l'ecart qu'il nomme.** Onze lignes de tableau citent le
+palier 2, dont une `non couvrable en l'etat` (`EPS-CM1-04`, *suivre un itineraire*, dont la cellule
+dit elle-meme de ne pas double-compter avec `HG-CM1-09`). Restent dix `non couvert` citant le palier
+2, plus `MAT-CP-10` dont la cellule ne dit que *"non couvert"* - **invisible a tout recompte par
+motif, et c'est la ligne 1 de ma propre instruction du 2026-09-05.**
+
+**Et je confirme sa correction d'un chiffre qui est le mien** : j'avais ecrit que les dix *"portent
+toutes le motif palier 2 requis"*. Quatre le portent. **Mon compte etait juste, mon motif etait
+faux, et un compte dont le motif ne vaut que pour quatre de ses dix membres n'est pas
+reproductible** - c'est exactement ce qui a laisse `MAT-CP-10` hors de la liste pendant cinq jours.
+
+### 17.2 Ligne par ligne - ce qui ferme, ce qui ouvre sans fermer, ce qui n'est pas touche
+
+**Etat de depart identique sur les onze : aucun item, aucun dessin.** *Ferme* signifie : `FER-1`,
+`FER-2` et `FER-3` tenues, mecanique servie, contenu audite et valide par moi.
+
+| Code | Ligne | Effet du palier 2 acheve **plus** son contenu | Mention de couverture partielle due |
+|---|---|---|---|
+| `QLM-CP-11` | Situer un lieu ou un objet sur un plan simple | **FERME.** Les deux enumerations sont disjonctives : un plan de classe et un type de cible suffisent. **Un seul dessin.** La moins chere des onze | aucune |
+| `QLM-CP-12` | Situer la France et quelques espaces sur une carte ou un globe | **FERME.** Support disjonctif, une carte suffit ; la France en bonne zone plus trois autres espaces | **`VUE`** : les libelles de zone sont positionnels (`ZON-10`), l'ecran est navigable sans etre jouable sans voir (`ZON-6`) |
+| `QLM-CP-14` | Situer des evenements sur une frise (avant, apres, en meme temps) | **FERME**, et la mention partielle actuelle **tombe**. Un paquet de designation sert les trois relations a lui seul ; `FER-2` compte toutes moities confondues. **Deux dessins au minimum** | **`VUE`**. La mention *"moitie anteriorite/posteriorite seule"* est retiree, pas deplacee |
+| `MAT-CP-10` | Se reperer **et decrire** des deplacements sur un quadrillage | **OUVRE SANS FERMER.** *Decrire* un deplacement, c'est le produire ; l'enfant qui appuie sur une case n'a rien decrit. **Aucun item de designation ne servira jamais cette moitie** | **due** : *"moitie 'se reperer et se deplacer sur un quadrillage' seule ; la moitie 'decrire un deplacement' reste non couverte"*. Elle tombe le jour ou un **second paquet, textuel**, sert *decrire* |
+| `HDA-CM1-09` | Se reperer dans un musee, et en respecter les regles | **OUVRE SANS FERMER.** Support disjonctif - un plan de musee suffit - mais le libelle est conjonctif : *se reperer* **et** *en respecter les regles*. La moitie des regles se sert en choix textuel, dans un **second paquet** | **due** tant que le second paquet n'existe pas. Mon refus du 2026-09-03 tient : le quiz *"que fait-on dans un musee ?"* n'est pas un substitut du reperage - il est legitime **sur la moitie qui est la sienne** |
+| `HG-CM1-09` | Se reperer sur une carte de France **et** sur un planisphere | **OUVRE SANS FERMER a la taille d'image d'aujourd'hui.** Une zone doit atteindre 44 px de cible tactile, la hauteur rendue d'un dessin d'item est plafonnee a 176 px : **une zone occupe au moins un quart de la hauteur.** Sur un planisphere, l'Europe n'y arrive pas, une grande ville encore moins | **due**, et je l'ecrirai le moment venu. Elle tombe si l'image grandit - `ines-design`, deja route par `ADR-0080`. **Je ne tranche pas une taille d'image** |
+| `HG-CM1-10` | Situer **son** lieu de vie a differentes echelles | **NON TOUCHEE, et le palier 2 n'est pas son obstacle.** La ligne demande a l'enfant ou **il** vit : `EMC-1`, `EMC-6` et `BIA-4` me font refuser tout item qui interroge l'enfant sur son foyer ou sa commune, et `DEC-0028` fait que le produit ne le sait pas et ne peut pas le savoir. Un exercice generique d'emboitement d'echelles serait une **autre** competence | sans objet : rien ne ferme |
+| `ART-CM1-08` | Decrire une oeuvre (support, format, matiere, couleur, sujet, **composition**) | **NON TOUCHEE dans ces trois sprints.** Deux verrous, et le palier 2 n'est que le second : **aucune reproduction d'oeuvre n'est servie** (`DEC-0075`, section 9 de ce document). Le palier 2 acheve n'achete rien ici tant que le premier verrou tient | la mention pre-ecrite dans la matrice reste due si la ligne bouge un jour |
+| `HDA-CM1-06` | Identifier quelques oeuvres et les situer sur une frise | **NON TOUCHEE, et pour trois motifs.** Les reproductions manquent ; et **`DES-7` interdit tout element de texte dans un dessin servi**, donc une frise d'histoire des arts ne peut porter ni date ni titre. **C'est ma propre condition qui mord ma propre ligne** : sans texte et sans reproduction, il ne reste rien a designer sur cette frise | la mention pre-ecrite reste due |
+| `SCI-CM1-09` | Nommer les fonctions de nutrition et l'organe principal de chacune | **NON TOUCHEE, et la matrice le dit deja d'elle-meme** : *"designer un organe sur un schema serait du palier 2, **non exige**"*. **Cette ligne ferme en texte, aujourd'hui, sans palier 2.** Je confirme le *"non exige"* | aucune |
+| `SCI-CM1-20` | Extraire une information d'un document (texte, tableau, **schema, graphique**) | **NON TOUCHEE au sens du compte.** La ligne ferme en texte sur sa part servie, avec sa mention. Le palier 2 l'**enrichirait** - schema, graphique - mais un item ne compte que sur une ligne (`ADR-0081`, clause 5) : **enrichir une ligne deja fermee rapporte zero ligne** | la mention pre-ecrite est due a la fermeture textuelle : *"document textuel et tableau seuls ; le schema et le graphique restent non couverts"* |
+
+### 17.3 Le chiffre demande
+
+> **Le palier 2 acheve, plus ses paquets de contenu, ferme 3 des onze lignes** : `QLM-CP-11`,
+> `QLM-CP-12`, `QLM-CP-14`.
+>
+> **Il en ouvre 3 de plus sans les fermer** : `MAT-CP-10` et `HDA-CM1-09`, qui demandent chacune
+> **un second paquet textuel** ; `HG-CM1-09`, qui demande **une taille d'image plus grande**.
+>
+> **Il n'en touche pas 5** : `HG-CM1-10`, `ART-CM1-08`, `HDA-CM1-06`, `SCI-CM1-09`, `SCI-CM1-20`.
+>
+> **3 + 3 + 5 = 11. Aucune n'est perdue.**
+
+**Ce que le maximum atteignable vaut, si tout est finance** : 3 lignes par la designation seule, **5
+avec les deux paquets textuels** de `MAT-CP-10` et `HDA-CM1-09`, **6 si l'image grandit**. **Jamais
+10, jamais 11.**
+
+**Et deux des cinq non touchees sont deja comptees ailleurs, ce qui est un double compte a ne pas
+faire.** `SCI-CM1-09` et `SCI-CM1-20` sont annotees *jouables au choix textuel* et entrent donc dans
+la reserve de lignes jouables des maintenant, celle que le Plan 2 de la section 8.2 exploite.
+**Les compter aussi comme un gain du palier 2 les compterait deux fois.**
+
+### 17.4 Mon prix d'audit d'un lot de designation - je le donne, il est deja pose
+
+**On me demande si je peux le donner sans avoir vu un dessin. Oui : je l'ai pose le 2026-09-05, et
+je ne deplace pas mes poteaux.**
+
+> **Tarif d'un lot de designation : base + 1,0**, le supplement payant deux gestes d'audit qu'un lot
+> textuel ne demande pas - la **passe image effacee** (`ZON-1` a `ZON-3` : tout le texte servi sous
+> les yeux, la reponse doit rester introuvable) et la **passe jouee, zone par zone** (`ZON-9` : je
+> presse chaque zone de chaque item pour voir ou tombe chaque cadre).
+>
+> | Ce que le lot sert | Prix |
+> |---|---|
+> | Lignes dont je suis la source - quadrillage, plan de classe, frise de la vie de l'enfant | **2,0** |
+> | Lignes portant un fait a verifier contre une source - carte, planisphere, frise historique, musee | **2,5** |
+>
+> **Unite** : jusqu'a 20 items de contenu, plus un item par paquet au titre de la marge de manches,
+> et jusqu'a **6 dessins**. Au-dela de l'un ou de l'autre, prorata.
+>
+> **Aucun supplement de premiere application** : *une condition inedite ne fait pas monter mon prix,
+> elle fait baisser mon plafond de fermeture*. **Ce qui baisse a la place, et c'est une contrainte
+> que je m'impose : pas plus d'un lot de designation dans le sprint ou la mecanique est servie pour
+> la premiere fois.**
+
+**Ce qu'un specimen de dessin reviserait, et je le nomme comme non mesure plutot que de le
+provisionner maintenant.** Le supplement de 1,0 est forfaitaire par lot, alors que **deux de mes
+gestes se comptent par dessin et non par item** - l'exactitude d'un plan ou d'une carte, et l'accord
+des cadres avec le dessin. Je l'ai pose sans precedent : `ZON-9` est **le premier geste d'audit de ce
+depot qui exige de jouer plutot que de lire.** **Sur un lot a un ou deux dessins je tiens le
+forfait ; a six dessins je ne sais pas s'il tient, et c'est la seule chose que le specimen demande
+par `theo-archi` me dirait.** Je ne gonfle pas le tarif d'avance : je nomme le point ou il pourrait
+etre faux.
+
+**Ce que je ne chiffre pas, et ce n'est pas une esquive** : le cout de **produire** un plan, une
+carte ou une frise. Le depot sert 24 illustrations, toutes des figures geometriques ou des pieces de
+monnaie ; un planisphere n'est ni l'un ni l'autre. **Ce cout n'est pas de la capacite d'audit et il
+ne m'appartient pas.** Je confirme en revanche ce que le specimen doit porter pour que je puisse
+juger : **quatre cadres de zone declares par le contenu, et le dessin sous le plafond de poids**.
+
+### 17.5 Ce que ce chiffre dit du financement, contre les autres postes de ce document
+
+**L'arithmetique, faite et non supposee.** Mon instruction du 2026-09-05 chiffre les six paquets a
+**7,0 de ma borne**, en trois lots (2,0 / 2,5 / 2,5). Ces trois lots ferment **3 lignes** et en
+ouvrent 3.
+
+| Poste | Cout de ma borne par ligne fermee |
+|---|---|
+| `EMC-CP-07`, `FAB-1c` seul | **0,50** |
+| Le vivier `en cours`, sept lignes | **0,58** |
+| Un lot neuf de sciences ou d'EMC CM1 | **0,75** |
+| Un lot neuf d'EPS | 0,50 a 0,75 |
+| **Le palier 2, contenu compris** | **2,33** |
+
+> **La ligne du palier 2 coute quatre fois la ligne la moins chere du depot, et trois fois la ligne
+> moyenne** - et c'est avant les lots `L-a` a `L-e` de `theo-archi`, **qui cablent le chemin de jeu
+> et ne ferment aucune ligne**, et avant le cout des dessins, que personne ne sait chiffrer.
+
+**Et ma propre clause de s29 borne le debit, quel que soit le financement** : pas plus d'un lot de
+designation dans le sprint de la premiere mise en service. Si `L-a` a `L-e` tombent a s32, le premier
+lot de contenu est a s33 et le second a s34 : **au plus 4 lignes de designation sur s32-s34, dont 3
+fermees et 1 ouverte**, pour 4,5 de ma borne plus les cinq lots de developpement.
+
+> **Je corrige donc ma propre section 9.** J'y ai ecrit que *"le poste de plus grand rendement de
+> tout ce document"* etait l'achevement du palier 2, sur la foi de 10 lignes debloquees. **Ce
+> chiffre etait faux : il en ferme 3 dans ces trois sprints, et c'est le plus mauvais rendement de
+> tous les postes que ce document chiffre.** L'erreur est la mienne et elle allait dans le sens du
+> chantier le plus spectaculaire.
+
+**Mon avis, et il ne tranche aucun perimetre - `camille-po` priorise, l'utilisatrice arbitre.**
+
+- **Pour la couverture sur s32-s34 : je ne recommande pas de financer le palier 2.** Trois lignes au
+  prix de six a huit ailleurs.
+- **Ce qui plaide pour, et je le dis parce que ce n'est pas rien** : `QLM-CP-11`, `QLM-CP-12` et
+  `QLM-CP-14` sont les **trois seules lignes du depot que rien d'autre n'ouvrira jamais**, sur une
+  matiere - questionner le monde CP - dont mes conditions sont eprouvees. Elles ne se perimeront pas,
+  mais elles ne s'ouvriront pas non plus tout seules.
+- **Si l'utilisatrice finance quand meme, l'entree la moins chere et la plus sure est un seul lot :
+  `QLM-CP-11` plus `QLM-CP-14`, base 1,0 tous les deux, prix 2,0, pour deux lignes fermees.** Un
+  plan de classe et deux frises de la vie de l'enfant : **aucun fait a verifier contre une source,
+  aucun probleme de taille d'image, aucun besoin de reproduction d'oeuvre, trois dessins.** C'est le
+  seul endroit du palier 2 ou le rendement approche celui du reste du depot - **1,0 par ligne** -, et
+  c'est aussi le lot ou mes huit conditions `ZON-*` inedites rencontreront un contenu reel au moindre
+  risque.
+
+### 17.6 Les deux trous de contrat - les deux sont bloquants pour moi, et le second a une reponse
+
+**Trou A - `DesignationVerdict` ne porte pas d'enonce. Bloquant.**
+
+Motif, et il est plus fort sur une designation que sur les deux autres mecaniques. `ADR-0084` et
+`REV-3` existent parce que j'ai refuse un ecran de fin qui donne une reponse sans la question
+qu'elle commente. **Sur une designation, la reponse est un endroit sur un dessin - et a la fin de la
+partie, le dessin n'est plus a l'ecran.** L'enfant lirait donc une reponse sans la question **et**
+sans le terrain. `Verdict` et `SaisieVerdict` portent tous deux un `enonce` obligatoire ; celui-la
+doit le porter aussi.
+
+> **Condition, et elle est verifiable** : `DesignationVerdict` transporte l'enonce de l'item joue, au
+> meme titre que les deux autres verdicts. **Je ne valide aucun lot de designation avant.** C'est du
+> `domain`, donc du ressort de `theo-archi` ; je dis la propriete, pas la forme.
+
+**Trou B - `bonneZone` est un `Zone.id()` et `retour.html` le donne a lire a un enfant. Bloquant, et
+voici ma reponse a la question qu'`ADR-0080` section 8 me laisse.**
+
+**Ni l'identifiant, ni le libelle.** L'identifiant est une valeur de formulaire, et le montrer serait
+une faute grossiere. **Mais le libelle n'est pas meilleur, et c'est le point que je suis seule a
+pouvoir faire** : sur `QLM-CP-12` j'ai deja arbitre que les libelles de zone doivent etre
+**positionnels** (`ZON-10`), parce qu'un garde-fou -
+`AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest` - interdit qu'un enonce nomme le libelle
+de sa bonne zone, et il a raison de l'interdire. **Afficher *"La bonne reponse : le pays en bas a
+droite"* a la fin d'une partie n'apprend rien de la France.**
+
+> **Ma reponse : sur une designation, l'ecran de fin de partie porte l'enonce et ne montre pas la
+> zone attendue - il ne montre rien a sa place.** Un endroit ne se dit pas en mots sans soit nommer
+> ce que le garde-fou interdit, soit dire une position qui n'enseigne rien.
+>
+> **Et la revelation ne disparait pas pour autant : elle reste ou elle est utile, sur l'ecran de
+> manche, ou le dessin est encore la et ou l'enfant voit *ou* c'etait** - ce que
+> `DesignationSession.bonneZoneRevelee()` sert deja. `SCO-5` est intacte : une manche resolue par la
+> revelation n'est jamais une reussite.
+
+**Ce que cette reponse coute : rien de plus, et probablement moins.** `theo-archi` ecrit que deux
+issues sont faisables et que faire transporter au verdict quelque chose de presentable est la moins
+chere. **Ma reponse rend la moins chere suffisante** : le verdict transporte l'enonce (trou A) et
+aucune zone presentable, et le fragment de fin omet le bloc de reponse pour une designation. **La
+forme appartient a `theo-archi`.**
+
+### 17.7 Le fond de la cellule du quadrillage, que `theo-archi` me route
+
+**Oui, `MAT-CP-10` demande le palier 2, et pour une moitie seulement.** *Se reperer et se deplacer
+sur un quadrillage* est une designation sur un dessin et rien d'autre ne la sert ; *decrire un
+deplacement* n'est pas une designation et se sert en choix textuel, dans un second paquet.
+**La ligne ne ferme donc pas par le palier 2 seul**, et la mention du 17.2 est due.
+
+**Le cinquieme jour de cet ecart, et je le dis parce que je suis dans la chaine qui ne l'a pas
+paye.** `ADR-0080` l'a signale le 2026-09-03 ; ma propre instruction du 2026-09-05 en fait sa ligne
+1 sans que je regarde sa cellule ; **ma section 12 de ce document, ce matin, a instruit dix lignes
+sans annotation et n'a pas vu que celle-ci en etait une onzieme.** La cellule appartient a
+`camille-po`, le fond est ci-dessus, et **je l'ajoute a la liste de la section 11** : les dix lignes
+sans annotation sont onze, et la onzieme est celle-la.
