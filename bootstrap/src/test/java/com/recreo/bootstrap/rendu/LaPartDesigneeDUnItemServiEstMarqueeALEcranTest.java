@@ -123,6 +123,40 @@ class LaPartDesigneeDUnItemServiEstMarqueeALEcranTest {
                 String.valueOf(descripteur.get("competence")));
     }
 
+    /**
+     * <b>ADR-0013 obligation 2, et ADR-0088 clause C : un type de paquet que ce garde-fou ne sait pas
+     * juger est un echec, jamais un silence.</b>
+     *
+     * <p><b>Le defaut que ce geste paie.</b> Cette population etait construite par un
+     * {@code continue} sur tout paquet qui n'est pas de type {@code question}. Le chargeur de
+     * production enregistre <b>quatre</b> types ({@code YamlContentPackLoader.FABRIQUES}) ; ce
+     * garde-fou en connaissait un et ecartait les trois autres sans le dire, sur une suite verte.
+     *
+     * <p><b>Ce que ce gate decide, et ce qu'il refuse de decider.</b> Il laisse passer les trois
+     * types deja instruits par ce fichier et <b>leve</b> sur tout autre. Il ne pose <b>aucune</b>
+     * branche pour {@code designation}, bien que {@code ZoneADesigner} ne declare aujourd'hui
+     * aucune composante {@code partDesignee} : une exemption ecrite d'avance pourrirait le jour
+     * ou le contrat de son item changerait, et c'est exactement de cette famille
+     * qu'est le defaut paye ici. Un rouge pose la question avec le record sous les yeux. Le tri de
+     * perimetre reste ou il etait, dans {@link #estUnPaquetDeQuestions(Map)} : ce gate ne juge que
+     * le fait d'avoir ete instruit.</p>
+     */
+    private static void verifierQueLeTypeEstInstruit(String paquet, Map<String, Object> corps) {
+        String type = String.valueOf(corps.get("type"));
+        switch (type) {
+            case "question", "additions-bornees", "saisie" -> { }
+            default -> throw new IllegalStateException(refusDuType(paquet, type));
+        }
+    }
+
+    private static String refusDuType(String paquet, String type) {
+        return "paquet " + paquet + " : type '" + type + "', que ce garde-fou n'a pas instruit et"
+                + " qu'il ne sait donc pas juger. ZoneADesigner ne declare aujourd'hui aucune"
+                + " composante partDesignee, mais c'est le contrat de l'item qui doit le dire,"
+                + " pas ce fichier. Decider ici plutot que d'ecarter ce paquet en silence"
+                + " (ADR-0013 obligation 2, ADR-0088 clause C)";
+    }
+
     private static boolean estUnPaquetDeQuestions(Map<String, Object> corps) {
         return "question".equals(String.valueOf(corps.get("type")));
     }
@@ -374,6 +408,24 @@ class LaPartDesigneeDUnItemServiEstMarqueeALEcranTest {
                 .isNotEmpty();
     }
 
+    /**
+     * ADR-0013 obligation 3, et la morsure porte sur du <b>materiau reel</b> : le corps d'un paquet
+     * servi du depot, decouvert et non nomme, dont la seule mutation est la valeur de sa cle
+     * {@code type}. C'est l'etat exact qu'aura la population le jour ou T6 servira le premier paquet
+     * de designation.
+     */
+    @Test
+    void unPaquetDUnTypeQueCeGardeFouNeSaitPasJugerLeFaitEchouer() {
+        String paquet = paquetsDuRepertoireDeContenu().stream().sorted().findFirst().orElseThrow();
+        Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+        corps.put("type", "designation");
+
+        assertThatThrownBy(() -> verifierQueLeTypeEstInstruit(paquet, corps))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("type 'designation'")
+                .hasMessageContaining("c'est le contrat de l'item qui doit le dire");
+    }
+
     @TestConfiguration
     static class JeuxDeTestConfiguration {
 
@@ -384,9 +436,8 @@ class LaPartDesigneeDUnItemServiEstMarqueeALEcranTest {
             for (Map<String, Object> entree : entreesDuCatalogueReel()) {
                 String paquet = String.valueOf(entree.get("paquet"));
                 Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+                verifierQueLeTypeEstInstruit(paquet, corps);
                 if (!estUnPaquetDeQuestions(corps)) {
-                    // paquet combinatoire : ses items ne sont jamais lus dans un YAML, donc
-                    // structurellement incapables de declarer partDesignee (ADR-0032, meme exclusion).
                     continue;
                 }
                 ContentDescriptor descripteur = descripteurDe(corps);
@@ -397,6 +448,7 @@ class LaPartDesigneeDUnItemServiEstMarqueeALEcranTest {
 
             for (String paquet : paquetsDuRepertoireDeContenu()) {
                 Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+                verifierQueLeTypeEstInstruit(paquet, corps);
                 if (!estUnPaquetDeQuestions(corps)) {
                     continue;
                 }

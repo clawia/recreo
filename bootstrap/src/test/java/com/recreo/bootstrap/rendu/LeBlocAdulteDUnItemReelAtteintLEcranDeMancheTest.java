@@ -42,6 +42,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /**
@@ -123,6 +124,42 @@ class LeBlocAdulteDUnItemReelAtteintLEcranDeMancheTest {
         } catch (IOException echec) {
             throw new UncheckedIOException(echec);
         }
+    }
+
+    /**
+     * <b>ADR-0013 obligation 2, et ADR-0088 clause C : un type de paquet que ce garde-fou ne sait pas
+     * juger est un echec, jamais un silence.</b>
+     *
+     * <p><b>Le defaut que ce geste paie.</b> Cette population etait construite par un
+     * {@code continue} sur tout paquet qui n'est ni de type {@code question} ni de type
+     * {@code saisie}. Le chargeur de production enregistre <b>quatre</b> types
+     * ({@code YamlContentPackLoader.FABRIQUES}) ; ce garde-fou en connaissait deux et ecartait les
+     * deux autres sans le dire - dont {@code designation}, sur lequel {@code ZoneADesigner} declare
+     * bien une composante {@code texteAVoixHaute} : un paquet de designation entre reellement dans
+     * ce perimetre, et il en aurait ete ecarte sans qu'aucun diff ne le montre.</p>
+     *
+     * <p><b>Ce que ce gate decide, et ce qu'il refuse de decider.</b> Il laisse passer les trois
+     * types deja instruits par ce fichier et <b>leve</b> sur tout autre. Il ne pose <b>aucune</b>
+     * branche pour {@code designation} : une exemption ecrite d'avance pourrirait le jour ou le
+     * contrat de son item changerait, alors qu'un rouge pose la question avec le record sous les
+     * yeux. Le jour ou T6 sert le premier paquet de designation, ce garde-fou est rouge et sa
+     * branche s'ecrit la. Le tri de perimetre reste ou il etait : ce gate ne juge que le fait
+     * d'avoir ete instruit.</p>
+     */
+    private static void verifierQueLeTypeEstInstruit(String paquet, Map<String, Object> corps) {
+        String type = String.valueOf(corps.get("type"));
+        switch (type) {
+            case "question", "additions-bornees", "saisie" -> { }
+            default -> throw new IllegalStateException(refusDuType(paquet, type));
+        }
+    }
+
+    private static String refusDuType(String paquet, String type) {
+        return "paquet " + paquet + " : type '" + type + "', que ce garde-fou n'a pas instruit et"
+                + " qu'il ne sait donc pas juger. ZoneADesigner declare une composante"
+                + " texteAVoixHaute : un paquet de designation entre dans ce perimetre. Decider ici"
+                + " plutot que d'ecarter ce paquet en silence (ADR-0013 obligation 2, ADR-0088"
+                + " clause C)";
     }
 
     private static boolean estUnPaquetDeQuestions(Map<String, Object> corps) {
@@ -386,6 +423,24 @@ class LeBlocAdulteDUnItemReelAtteintLEcranDeMancheTest {
                 .isNotEmpty();
     }
 
+    /**
+     * ADR-0013 obligation 3, et la morsure porte sur du <b>materiau reel</b> : le corps d'un paquet
+     * servi du depot, decouvert et non nomme, dont la seule mutation est la valeur de sa cle
+     * {@code type}. C'est l'etat exact qu'aura la population le jour ou T6 servira le premier paquet
+     * de designation.
+     */
+    @Test
+    void unPaquetDUnTypeQueCeGardeFouNeSaitPasJugerLeFaitEchouer() {
+        String paquet = paquetsDuRepertoireDeContenu().stream().sorted().findFirst().orElseThrow();
+        Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+        corps.put("type", "designation");
+
+        assertThatThrownBy(() -> verifierQueLeTypeEstInstruit(paquet, corps))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("type 'designation'")
+                .hasMessageContaining("ZoneADesigner declare une composante texteAVoixHaute");
+    }
+
     @TestConfiguration
     static class JeuxDePreuveConfiguration {
 
@@ -396,6 +451,7 @@ class LeBlocAdulteDUnItemReelAtteintLEcranDeMancheTest {
             for (Map<String, Object> entree : entreesDuCatalogueReel()) {
                 String paquet = String.valueOf(entree.get("paquet"));
                 Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+                verifierQueLeTypeEstInstruit(paquet, corps);
                 ContentDescriptor descripteur = descripteurDe(corps);
                 ContentSource contenu;
                 MechanicId mecanique;
@@ -419,6 +475,7 @@ class LeBlocAdulteDUnItemReelAtteintLEcranDeMancheTest {
 
             for (String paquet : paquetsDuRepertoireDeContenu()) {
                 Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+                verifierQueLeTypeEstInstruit(paquet, corps);
                 boolean deChoix = estUnPaquetDeQuestions(corps);
                 boolean deSaisie = estUnPaquetDeSaisie(corps);
                 if (!deChoix && !deSaisie) {

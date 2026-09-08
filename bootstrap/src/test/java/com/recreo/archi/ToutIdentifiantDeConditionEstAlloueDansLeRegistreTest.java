@@ -47,7 +47,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *       reference qui pointe vers rien (ADR-0066) ;</li>
  *   <li>laisser <b>dormir</b> un homonyme ecarte - clause 4 : la section 3 du registre est une
  *       enumeration, donc un cliquet, et son plafond vaut exactement la taille de ce qu'elle
- *       nomme.</li>
+ *       nomme ;</li>
+ *   <li>annoncer un <b>compte courant</b> que la table dement - clause 5 ;</li>
+ *   <li>allouer ici un nom qu'<b>ADR-0081 alloue deja</b> comme code de ligne de referentiel -
+ *       clause 6, ajoutee le 2026-09-08 par ADR-0088. C'est la collision du 2026-09-03 a
+ *       l'echelle de deux espaces de noms au lieu de deux instances.</li>
  * </ol>
  *
  * <p><b>Ce qu'il ne juge pas, et c'est la moitie de ce qu'il faut savoir.</b> Il ne verifie pas
@@ -61,12 +65,26 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * texte du depot, les repertoires de sortie de build, les arbres de contre-exemple et les binaires
  * exclus - ces derniers reconnus a l'octet nul plutot qu'a leur extension (ADR-0036). Aucun
  * identifiant, aucun prefixe et aucun fichier n'est nomme dans cette source hors de son depot
- * fautif. Les quatre familles voisines - codes de ligne de referentiel, decisions, codes de story,
- * rangs internes a un document - sont ecartees <b>par leur forme</b> et non par une liste : leur
- * ecriture ne produit aucune correspondance avec {@link #IDENTIFIANT}, ce que
- * {@link #lesFormesVoisinesNeSontPasDesIdentifiantsDeCondition()} constate plutot que de le
- * supposer. Les deux prefixes {@code ADR} et {@code DEC} sont la seule exception, et ils sont
- * ecartes parce qu'<b>une autre decision les alloue deja</b> (ADR-0066), pas parce qu'ils genent.
+ * fautif.
+ *
+ * <p><b>Les familles voisines, et comment chacune est ecartee - corrige le 2026-09-08
+ * (ADR-0088, clause D).</b> Cette Javadoc disait que les <b>quatre</b> familles voisines
+ * l'etaient <i>"par leur forme"</i>, codes de ligne de referentiel comprises. C'etait vrai de
+ * trois d'entre elles et faux de la quatrieme, et la difference n'est pas academique : ecarter
+ * les codes de ligne par la forme ecartait <b>toute</b> forme a trois segments, donc aussi les
+ * identifiants de condition qui en portent une. Etat exact :
+ * <ul>
+ *   <li>un <b>code de story</b> porte un chiffre dans son prefixe, un <b>rang interne</b> n'a
+ *       qu'une lettre de prefixe : ecartes par la forme, aucun des deux motifs ne les lit ;</li>
+ *   <li>une <b>decision</b> est ecartee par son <b>prefixe</b>, parce qu'ADR-0066 l'alloue deja ;
+ *   </li>
+ *   <li>un <b>code de ligne de referentiel</b> est lu par
+ *       {@link #IDENTIFIANT_A_TROIS_SEGMENTS} et ecarte par son <b>proprietaire</b> : ADR-0081
+ *       l'alloue dans les referentiels, et ce garde-fou va y lire la liste plutot que d'en tenir
+ *       une copie (ADR-0061).</li>
+ * </ul>
+ * {@link #lesFormesVoisinesNeSontPasDesIdentifiantsDeCondition()} constate chacun de ces trois
+ * mecanismes plutot que de les supposer.
  *
  * <p><b>Ce n'est pas une {@code ArchRule}, et le compte de regles ArchUnit du depot est
  * inchange.</b> ArchUnit lit du bytecode ; un identifiant ecrit dans un texte de gouvernance n'y est
@@ -88,16 +106,62 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
     private static final Pattern IDENTIFIANT = Pattern.compile(
             "(?<![A-Za-z0-9_/-])([A-Z]{2,5})-(R?[0-9]{1,2})(?![A-Za-z0-9_-])");
 
+    /**
+     * <b>La forme d'un identifiant a trois segments, et le trou qu'elle ferme</b> (ADR-0088,
+     * clause D).
+     *
+     * <p><b>Le defaut, trouve le 2026-09-08 par nadia-prof en reparant un rouge que son propre
+     * commit avait cause.</b> {@link #IDENTIFIANT} borne son prefixe et son numero par des
+     * lookarounds qui refusent un tiret de part et d'autre - c'est ce qui ecarte un code de ligne
+     * de referentiel sans avoir a le nommer. Effet de bord non vu : <b>aucun identifiant a trois
+     * segments n'etait examine du tout.</b> Elle voulait glisser le niveau au milieu de
+     * l'identifiant de sa barre de longueur d'enonce - donc trois segments, sur la forme d'un
+     * {@code QLM-CP-07} ; un tel identifiant aurait ete <b>silencieusement ignore</b> par ce
+     * garde-fou, c'est-a-dire non alloue sans que rien ne le dise - le faux vert exact que
+     * {@code PAR-5} et ADR-0085 existent pour tuer. Elle a pris deux identifiants a deux segments
+     * pour passer a cote du trou ; le trou est ferme ici plutot que contourne une seconde fois.</p>
+     *
+     * <p><b>Ce que la forme seule ne peut pas decider, et qui le decide.</b> Un identifiant de
+     * condition a trois segments est ecrit <b>exactement</b> comme un code de ligne de referentiel,
+     * {@code QLM-CP-07} : aucun trait de forme ne les distingue de facon fiable - le nombre de
+     * chiffres du dernier segment n'en est pas un, rien n'interdisant a une condition d'atteindre
+     * deux chiffres. Le partage se fait donc par <b>proprietaire</b> et non par forme :
+     * un code que les referentiels declarent appartient a ADR-0081, tout autre code a trois segments
+     * doit etre alloue ici. Les codes de ligne sont lus chez leur proprietaire
+     * ({@code ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest.codesDeLigneAlloues}),
+     * jamais recopies (ADR-0061), et la clause 6 refuse qu'un meme code ait les deux
+     * proprietaires.</p>
+     *
+     * <p><b>Mesure du 2026-09-08 sur l'arbre du worktree, avant ce diff</b> : 209 codes a trois
+     * segments distincts ecrits dans le depot, 209 declares par un referentiel, <b>zero</b> hors
+     * referentiel. La population en faute de la clause 2 sur cette forme est donc vide aujourd'hui,
+     * et c'est un cliquet a plafond zero, pas une regle a population vide : le balayage examine bien
+     * 209 objets et il en trouve zero en faute (ADR-0051, ADR-0067).</p>
+     */
+    private static final Pattern IDENTIFIANT_A_TROIS_SEGMENTS = Pattern.compile(
+            "(?<![A-Za-z0-9_/-])([A-Z]{2,5})-([A-Z]{1,3}[0-9]{0,2})-(R?[0-9]{1,2})"
+                    + "(?![A-Za-z0-9_-])");
+
     /** Les deux prefixes qu'ADR-0066 alloue deja, sur les noms de fichiers de squad/decisions/. */
     private static final Set<String> PREFIXES_DE_DECISION = Set.of("ADR", "DEC");
 
+    /**
+     * La forme d'un identifiant tel que le registre l'ecrit dans ses deux tables : deux segments, ou
+     * trois quand la condition porte un niveau. Le segment intermediaire est facultatif depuis
+     * ADR-0088 clause D - sans lui, un identifiant a trois segments n'aurait pas pu etre alloue,
+     * donc n'aurait eu aucune sortie verte, et le garde-fou aurait interdit une forme au lieu de la
+     * gouverner.
+     */
+    private static final String FORME_ALLOUABLE =
+            "[A-Z]{2,5}(?:-[A-Z]{1,3}[0-9]{0,2})?-R?[0-9]{1,2}";
+
     /** Une ligne d'allocation du registre : un identifiant, un chemin de document. */
     private static final Pattern ALLOCATION = Pattern.compile(
-            "^\\| `([A-Z]{2,5}-R?[0-9]{1,2})` \\| `([^`|]+)` \\|$");
+            "^\\| `(" + FORME_ALLOUABLE + ")` \\| `([^`|]+)` \\|$");
 
     /** Une ligne d'homonyme ecarte : un identifiant apparent, et le motif qui l'ecarte. */
     private static final Pattern HOMONYME = Pattern.compile(
-            "^\\| `([A-Z]{2,5}-R?[0-9]{1,2})` \\| ([^|]+) \\|$");
+            "^\\| `(" + FORME_ALLOUABLE + ")` \\| ([^|]+) \\|$");
 
     /** Le titre qui ouvre la table des homonymes, et celui qui ouvre la table des allocations. */
     private static final String SECTION_DES_HOMONYMES = "## 3.";
@@ -173,7 +237,13 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
         }
     }
 
-    /** Tout identifiant de condition ecrit dans le depot, avec le fichier qui l'ecrit. */
+    /**
+     * Tout identifiant de condition ecrit dans le depot, avec le fichier qui l'ecrit - <b>les deux
+     * formes</b>, a deux et a trois segments (ADR-0088, clause D). Les deux motifs ne peuvent pas se
+     * chevaucher : le lookbehind du motif a deux segments refuse un tiret devant le prefixe, donc les
+     * deux derniers segments d'un {@code QLM-CP-07} n'y sont jamais lus comme un identifiant a deux
+     * segments.
+     */
     static List<Citation> citationsDuDepot(Path racine) {
         List<Citation> citations = new ArrayList<>();
         for (Path fichier : fichiersDuDepot(racine)) {
@@ -181,16 +251,35 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
             if (contenu == null) {
                 continue;
             }
-            Matcher trouve = IDENTIFIANT.matcher(contenu);
+            for (String identifiant : identifiantsDe(contenu)) {
+                citations.add(new Citation(identifiant, racine.relativize(fichier)));
+            }
+        }
+        return citations;
+    }
+
+    /**
+     * Les identifiants qu'un texte ecrit, sous les deux formes, les deux prefixes de decision
+     * ecartes. Un seul endroit lit les motifs : sans cela, la forme a trois segments serait entree
+     * dans un balayage et pas dans l'autre - c'est-a-dire dans le perimetre reel et pas dans le trou
+     * de contre-exemple, ou l'inverse.
+     */
+    private static List<String> identifiantsDe(String contenu) {
+        List<String> trouves = new ArrayList<>();
+        for (Pattern motif : List.of(IDENTIFIANT, IDENTIFIANT_A_TROIS_SEGMENTS)) {
+            Matcher trouve = motif.matcher(contenu);
             while (trouve.find()) {
                 if (PREFIXES_DE_DECISION.contains(trouve.group(1))) {
                     continue;
                 }
-                citations.add(new Citation(trouve.group(1) + "-" + trouve.group(2),
-                        racine.relativize(fichier)));
+                StringBuilder identifiant = new StringBuilder(trouve.group(1));
+                for (int groupe = 2; groupe <= trouve.groupCount(); groupe++) {
+                    identifiant.append('-').append(trouve.group(groupe));
+                }
+                trouves.add(identifiant.toString());
             }
         }
-        return citations;
+        return trouves;
     }
 
     /**
@@ -224,10 +313,7 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                         if (texte == null) {
                             continue;
                         }
-                        Matcher trouve = IDENTIFIANT.matcher(texte);
-                        while (trouve.find()) {
-                            identifiants.add(trouve.group(1) + "-" + trouve.group(2));
-                        }
+                        identifiants.addAll(identifiantsDe(texte));
                     }
                 }
             }
@@ -301,6 +387,8 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
         }
 
         Map<String, Set<String>> parContreExemple = identifiantsDesContreExemples(racine);
+        Set<String> codesDeLigne =
+                ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest.codesDeLigneAlloues(racine);
         Set<String> deja = new TreeSet<>();
         for (Citation citation : citationsDuDepot(racine)) {
             String nomDuFichier = citation.fichier().getFileName().toString();
@@ -314,6 +402,7 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
             }
             if (alloues.containsKey(citation.identifiant())
                     || ecartes.containsKey(citation.identifiant())
+                    || codesDeLigne.contains(citation.identifiant())
                     || !deja.add(citation.identifiant())) {
                 continue;
             }
@@ -365,6 +454,19 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                                 + " exemption qui ne nomme plus rien de reel n'est pas un cliquet"
                                 + " (ADR-0085, clause 4)",
                         REGISTRE, ecarte));
+            }
+        }
+
+        for (String identifiant : alloues.keySet()) {
+            if (codesDeLigne.contains(identifiant)) {
+                defauts.add(String.format(
+                        "%s alloue %s, que les referentiels de squad/programme declarent deja comme"
+                                + " code de ligne. Deux proprietaires pour un meme nom est la"
+                                + " collision du 2026-09-03 a l'echelle de deux espaces de noms :"
+                                + " ADR-0081 alloue les codes de ligne, ADR-0085 les identifiants de"
+                                + " condition, et un nom ne peut pas etre gouverne par les deux"
+                                + " (ADR-0085, clause 6)",
+                        REGISTRE, identifiant));
             }
         }
 
@@ -443,6 +545,15 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
         assertThat(citationsDuDepot(racine).stream().map(Citation::identifiant).distinct().count())
                 .as("PAR-5 : plusieurs centaines d'identifiants distincts")
                 .isGreaterThan(400L);
+        assertThat(citationsDuDepot(racine).stream()
+                .map(Citation::identifiant)
+                .filter(identifiant -> identifiant.chars().filter(lettre -> lettre == '-').count() == 2)
+                .distinct()
+                .count())
+                .as("ADR-0088 clause D : la forme a trois segments doit etre reellement examinee."
+                        + " Sans cette borne, elargir le motif et ne rien lire du tout rendrait le"
+                        + " meme vert qu'avant l'elargissement - le faux vert exact que ce diff paie")
+                .isGreaterThan(100L);
     }
 
     /**
@@ -455,7 +566,18 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
     @Test
     void lesFormesVoisinesNeSontPasDesIdentifiantsDeCondition() {
         assertThat(IDENTIFIANT.matcher("HG-CM1-11 EMC-CP-02 QLM-CP-07 SCI-CM1-20").find())
-                .as("ADR-0081 : un code de ligne a trois segments et n'entre pas dans ce registre")
+                .as("un code de ligne a trois segments : le motif a deux segments ne le lit pas, et"
+                        + " c'est ce qui laissait un identifiant de condition a trois segments hors"
+                        + " de tout balayage jusqu'au 2026-09-08")
+                .isFalse();
+        assertThat(IDENTIFIANT_A_TROIS_SEGMENTS.matcher("QLM-CP-07").find())
+                .as("ADR-0088 clause D : un code a trois segments est desormais lu, puis attribue a"
+                        + " son proprietaire - ce qu'aucun trait de forme ne saurait faire, un"
+                        + " identifiant de condition portant un segment de niveau s'ecrivant"
+                        + " exactement comme ce code de ligne-ci")
+                .isTrue();
+        assertThat(IDENTIFIANT_A_TROIS_SEGMENTS.matcher("S15-RETRO-1 S26-DETTE-2").find())
+                .as("un code de story reste ecarte par sa forme, sous les deux motifs")
                 .isFalse();
         assertThat(IDENTIFIANT.matcher("S30-4 S6-14 S15-RETRO-1 S26-DETTE-2").find())
                 .as("un code de story porte un chiffre dans son prefixe")
@@ -513,6 +635,27 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                 .anySatisfy(defaut -> assertThat(defaut)
                         .contains("rapport-fautif.md")
                         .contains("ecrit l'identifiant ZZZ-7"));
+    }
+
+    /**
+     * <b>ADR-0013 obligation 3, et c'est la morsure qui paie le trou du 2026-09-08.</b> Le depot
+     * fautif porte un arbitrage qui ecrit un identifiant a <b>trois segments</b> que son registre
+     * n'alloue pas et qu'aucun referentiel ne declare - il n'a d'ailleurs pas de referentiel du tout.
+     * Avant ce diff, ce fichier passait <b>vert</b> : le motif ne lisait aucune forme a trois
+     * segments, donc le fautif n'etait meme pas examine.
+     *
+     * <p>Le jour ou quelqu'un remet une borne de forme qui ecarte les trois segments, ce test
+     * tombe.</p>
+     */
+    @Test
+    void unIdentifiantATroisSegmentsNonAlloueEstRefuse() {
+        List<String> defauts = defautsDuRegistre(CONTRE_EXEMPLE.resolve("depot-fautif"));
+        assertThat(defauts)
+                .as("ADR-0085 clause 2, ADR-0088 clause D : un identifiant de condition a trois"
+                        + " segments est alloue comme n'importe quel autre, ou il n'existe pas")
+                .anySatisfy(defaut -> assertThat(defaut)
+                        .contains("ARBITRAGE-fautif.md")
+                        .contains("ecrit l'identifiant ZZZ-CP-3"));
     }
 
     /**

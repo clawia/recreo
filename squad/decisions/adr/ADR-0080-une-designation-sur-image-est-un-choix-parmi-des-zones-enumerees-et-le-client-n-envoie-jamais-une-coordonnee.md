@@ -850,6 +850,18 @@ defaut est la forme du message. **Une regle de plus sur une propriete deja tenue
 est un cliquet a compte, qu'une `ArchRule` ne sait pas exprimer -, exactement comme le cliquet de
 paquets de designation de l'amendement du 2026-09-04.
 
+### 7. Renvoi du 2026-09-08 (s32) - les deux trous de la section 3 sont tranches ailleurs
+
+Les deux trous que la section 3 ci-dessus nomme sont **decides par `ADR-0088`**, apres l'arbitrage de
+`nadia-prof` du meme jour (section 17.6 de son arbitrage prealable de s32) : le verdict de designation
+porte l'enonce, il ne porte plus aucune zone, et l'ecran de fin de partie ne montre pas la zone
+attendue - rien a sa place. La question que la section 8 laissait a `nadia-prof` - *"le libelle d'une
+zone, sa formulation"* pour cet ecran-la - est **repondue** : ni l'identifiant, ni le libelle.
+
+Ce qui reste ecrit ici sans changement : la decision 4 - le client envoie un identifiant, jamais une
+coordonnee - et le fait que `Zone` distingue `id` de `libelle`. C'est cette distinction qui rend le
+trou B visible, pas elle qui le cause.
+
 ### 6. Ce qui fait passer cet `ADR` a `Accepte`
 
 Ecrit comme critere et non comme intention : **T4 livre** avec les garde-fous 1, 2 et 3 ecrits et

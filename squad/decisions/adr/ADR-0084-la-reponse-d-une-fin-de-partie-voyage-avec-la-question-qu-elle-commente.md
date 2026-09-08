@@ -296,3 +296,21 @@ dont l'objet est un autre ecran.
 | **Le poids visuel de la question rappelee** : valeurs reprises de `.reponse-revelee`, non proposees | `ines-design` | Une proposition d'apparence n'est pas de mon ressort |
 | **La story de s30 qui porte ce lot**, son rang et son affectation | `camille-po`, `sofia-sm` | Je ne priorise pas et je n'affecte personne |
 | **Le Done pedagogique de `REV-3`** : rejeu sur les six paquets de la reverification de `REV-1` | `nadia-prof` | Je ne prononce jamais le Done pedagogique |
+
+## Renvoi du 2026-09-08 (s32) - la section "`DesignationVerdict` n'est pas modifie" a change de condition
+
+La section ci-dessus decide de ne pas toucher `DesignationVerdict`, et son motif est ecrit : aucun
+ecran de designation n'existait, et *"modifier son verdict pour un ecran qui n'existe pas serait une
+abstraction ecrite pour un usage imagine"*. **Ce motif etait juste et il est perime.**
+
+Ce qui a change le 2026-09-08 : l'utilisatrice finance un lot de contenu de designation, et
+`nadia-prof` ecrit que ce verdict sans enonce est **bloquant** - *"Je ne valide aucun lot de
+designation avant."* `ADR-0088` decide donc que `DesignationVerdict` porte son enonce, et **etend
+`REV-3` a toute classe qui juge une manche** par une clause ArchUnit, plutot que de la redecider
+mecanique par mecanique : ce qui a manque pendant quatre sprints n'est pas la decision, c'est ce qui
+allait la rappeler.
+
+Ce qui reste ecrit ici sans changement : la propriete de `REV-3`, son garde-fou de rendu, et le
+mecanisme que cette section-la annoncait pour le jour ou la question se poserait - *"la population du
+garde-fou echoue sur une forme d'item qu'aucun ecran de fin de partie ne sait jouer"*. **Ce mecanisme
+a tenu** : c'est encore lui qui rendra rouge l'ecran de fin de partie de designation le jour de T6.

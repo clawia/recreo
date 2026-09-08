@@ -404,6 +404,29 @@ au lieu de `continue` (la forme de 6.1, la plus honnete), ou traiter le cas. **L
 bonne pour les cinq** : elle ne coute que la ligne du `continue`, et elle transforme un vert muet en
 un rouge qui pose la question.
 
+### 6.4 bis Correction du 2026-09-08, apres l'arbitrage de `nadia-prof` - le cinquieme n'est pas de la meme famille que les quatre autres
+
+**Le chiffre de 6.4 est faux d'un cas, et l'erreur est de moi.** J'ai ecrit que les **cinq** font
+`continue` sur un paquet ni `question` ni `saisie`. C'est vrai de quatre.
+`ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest` **ne branche pas du tout sur le type** :
+il lit les `items` par une forme generique. Un paquet de designation, qui declare des items sans
+distracteurs, y vaut **1 colonne** - donc aucun grief, aucun rouge, et le plafond etant un maximum,
+**aucun effet sur son verdict**.
+
+Ce qui est reellement faux chez lui n'est donc pas un `continue`, c'est une **promesse ecrite** : sa
+Javadoc annonce qu'*"une troisieme forme, le jour ou elle arrivera, fera rougir ce garde-fou au lieu
+de passer en silence"*. La promesse tient pour un paquet de **forme** illisible et pas pour un paquet
+d'un **type** neuf dont la forme se lit par accident. Cinq cas, deux mecanismes.
+
+**Les cinq sont payes dans le meme commit que cet avis est corrige** : les quatre levent sur un type
+non instruit, le cinquieme ajoute un grief et poursuit son balayage. Aucun ne pose de branche
+`designation` - c'est un rouge date, pas une exemption ecrite d'avance. Ce qui est decide vit dans
+`ADR-0088`, clause C ; ce qui est mesure y est aussi.
+
+**Et le lot T6 herite donc de neuf rouges et non de quatre.** Les quatre de 6.1 et 6.2, plus les cinq
+de 6.4. C'est le prix de la derivation totale, et il est ecrit ici pour ne pas etre decouvert au
+planning.
+
 ### 6.5 La regle a ecrire dans le meme geste, et je l'ecris avec cet avis plutot que de la promettre
 
 **Le fait, mesure** : `com.recreo.domain.mechanics` porte trois tranches ;

@@ -117,8 +117,8 @@ public final class DesignationSession implements GameSession {
      * partie. C'est ce geste, et lui seul, qui fait avancer {@link Score#tentatives()}.
      */
     private DesignationSession resoudre(boolean juste) {
-        DesignationVerdict verdict = new DesignationVerdict(juste, mancheCourante.bonneZone(),
-                mancheCourante.explication());
+        DesignationVerdict verdict = new DesignationVerdict(juste, mancheCourante.explication(),
+                mancheCourante.enonce());
         Score nouveauScore = new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
         if (nouveauScore.tentatives() >= nombreDeManches) {
             return new DesignationSession(contenu, hasard, nombreDeManches, dejaTirees, null, 0,

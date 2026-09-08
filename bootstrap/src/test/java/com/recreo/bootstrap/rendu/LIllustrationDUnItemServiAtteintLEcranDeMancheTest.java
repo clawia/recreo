@@ -155,8 +155,50 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
                 String.valueOf(descripteur.get("competence")));
     }
 
+    /**
+     * <b>ADR-0013 obligation 2, et ADR-0088 clause C : un type de paquet que ce garde-fou ne sait pas
+     * juger est un echec, jamais un silence.</b>
+     *
+     * <p><b>Le defaut que ce geste paie, et il etait exactement de cette classe-ci.</b> Cette
+     * population etait construite par un {@code continue} sur tout paquet qui n'est pas de type
+     * {@code question}. Le chargeur de production enregistre <b>quatre</b> types
+     * ({@code YamlContentPackLoader.FABRIQUES}) ; ce garde-fou en connaissait un et ecartait les
+     * trois autres sans le dire. Le plus grave est le type {@code designation} :
+     * {@code ZoneADesigner} refuse une illustration vide dans son constructeur compact, donc c'est
+     * <b>la seule mecanique ou l'illustration est obligatoire</b>, et c'est celle que ce garde-fou
+     * aurait ecartee en silence le jour ou un paquet de designation entre au catalogue. Un garde-fou
+     * de l'illustration muet sur la mecanique de l'illustration obligatoire est un faux vert, et il
+     * avait une date d'echeance : le financement d'un lot de contenu de designation.</p>
+     *
+     * <p><b>Ce que cette methode decide, et ce qu'elle refuse de decider.</b> Elle laisse passer les
+     * trois types qu'ADR-0073 a instruits - {@code question}, dont les items peuvent declarer une
+     * illustration ; {@code additions-bornees}, dont les items ne sont jamais lus dans un YAML ;
+     * {@code saisie}, dont {@code ReponseAEcrire} ne declare aucune composante d'illustration - et
+     * elle <b>leve</b> sur tout autre. Elle ne pose <b>aucune</b> branche pour {@code designation} :
+     * une exemption ecrite d'avance pourrirait le jour ou le contrat de son item changerait, alors
+     * qu'un rouge pose la question avec le record sous les yeux. Le jour ou T6 sert le premier paquet
+     * de designation, ce garde-fou est rouge et sa branche s'ecrit la. Le tri de perimetre reste ou
+     * il etait, dans {@link #estUnPaquetDeQuestions(Map)} : ce gate-ci ne juge que le fait d'avoir
+     * ete instruit.</p>
+     */
+    private static void verifierQueLeTypeEstInstruit(String paquet, Map<String, Object> corps) {
+        String type = String.valueOf(corps.get("type"));
+        switch (type) {
+            case "question", "additions-bornees", "saisie" -> { }
+            default -> throw new IllegalStateException(refusDuType(paquet, type));
+        }
+    }
+
     private static boolean estUnPaquetDeQuestions(Map<String, Object> corps) {
         return "question".equals(String.valueOf(corps.get("type")));
+    }
+
+    private static String refusDuType(String paquet, String type) {
+        return "paquet " + paquet + " : type '" + type + "', qu'ADR-0073 n'a pas instruit et que ce"
+                + " garde-fou ne sait donc pas juger. Decider ici si ce type peut declarer une"
+                + " illustration - pour la designation, ZoneADesigner la rend obligatoire, donc"
+                + " oui - plutot que de l'ecarter en silence (ADR-0013 obligation 2, ADR-0088"
+                + " clause C)";
     }
 
     @SuppressWarnings("unchecked")
@@ -488,6 +530,25 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
                 .contains(premierItem.bonneReponse());
     }
 
+    /**
+     * ADR-0013 obligation 3, et la morsure porte sur du <b>materiau reel</b> : le corps d'un paquet
+     * servi du depot, decouvert et non nomme, dont la seule mutation est la valeur de sa cle
+     * {@code type}. C'est l'etat exact qu'aura la population le jour ou T6 servira le premier paquet
+     * de designation, et ce jour-la ce garde-fou doit rougir plutot que d'ecarter en silence la seule
+     * mecanique ou l'illustration est obligatoire.
+     */
+    @Test
+    void unPaquetDUnTypeQueCeGardeFouNeSaitPasJugerLeFaitEchouer() {
+        String paquet = paquetsDuRepertoireDeContenu().stream().sorted().findFirst().orElseThrow();
+        Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+        corps.put("type", "designation");
+
+        assertThatThrownBy(() -> verifierQueLeTypeEstInstruit(paquet, corps))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("type 'designation'")
+                .hasMessageContaining("ZoneADesigner la rend obligatoire");
+    }
+
     @TestConfiguration
     static class JeuxDeTestConfiguration {
 
@@ -498,9 +559,8 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
             for (Map<String, Object> entree : entreesDuCatalogueReel()) {
                 String paquet = String.valueOf(entree.get("paquet"));
                 Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+                verifierQueLeTypeEstInstruit(paquet, corps);
                 if (!estUnPaquetDeQuestions(corps)) {
-                    // paquet combinatoire : ses items ne sont jamais lus dans un YAML, donc
-                    // structurellement incapables de declarer une illustration.
                     continue;
                 }
                 ContentDescriptor descripteur = descripteurDe(corps);
@@ -512,6 +572,7 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
 
             for (String paquet : paquetsDuRepertoireDeContenu()) {
                 Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
+                verifierQueLeTypeEstInstruit(paquet, corps);
                 if (!estUnPaquetDeQuestions(corps)) {
                     continue;
                 }
