@@ -13,13 +13,25 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `534` identifiants alloues, `90` prefixes distincts.
+**Compte courant, verifie par la CI** : `543` identifiants alloues, `93` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
 refuse le fichier si les deux nombres ne sont pas ceux-la. Les notes datees qui suivent sont des
 mesures passees ; chacune porte sa methode, son perimetre et son auteur, et aucune n'est retouchee -
 une mesure datee ne pourrit pas, un etat courant si.*
+
+*Ligne portee de 534 / 90 a 543 / 93 par `sofia-sm` a l'assemblage des deux reaudits de s31, le
+2026-09-08. Methode : comptage des lignes de la table de la section 4 a la forme
+`| identifiant | document |`, identifiants distincts et prefixes distincts, sur l'arbre assemble.
+**Ce geste est le prix annonce de la clause 5, paye a l'endroit prevu.** Les deux instances de
+`nadia-prof` ont chacune ecrit un total juste sur sa moitie et faux sur l'arbre entier - l'instance
+B a refuse d'en ecrire un, l'instance A en a ecrit un (539 / 91) sans voir les quatre allocations de
+sa voisine. Aucune des deux ne pouvait faire mieux depuis son worktree : c'est la limite structurelle
+de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. La CI a rougi a la
+fusion, comme il l'avait ecrit, et la reparation est arithmetique - aucune allocation ajoutee, aucune
+retiree, aucun sens touche. Les deux notes des instances restent verbatim sous cette ligne : leur
+chiffre est date, le mien est courant.*
 
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
