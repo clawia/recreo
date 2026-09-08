@@ -1,4 +1,4 @@
-# DEC-0082 - Cloture de s31 : le resultat de la composition 1 retenue contre la recommandation de nadia-prof, le compte corrige a neuf reserves et non huit, et le report de CAT-1 atteint son quatrieme sprint
+# DEC-0082 - Cloture de s31 : le resultat de la composition 1 retenue contre la recommandation de nadia-prof, le compte corrige a neuf reserves et non huit, REG-R1 et PER-R1 atteignent leur quatrieme sprint sans paiement et CAT-1, nee a s31, route pour la premiere fois
 
 - **Type** : constat de cloture et decision de routage de `camille-po`, sur la foi des verdicts de
   `nadia-prof` ; aucun arbitrage neuf de l'utilisatrice n'est demande ni rendu ici.
