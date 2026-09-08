@@ -789,6 +789,7 @@ constate.
 | 11 | **Tout item de sciences CM1 calculant une vitesse** compte sur la ligne du mouvement | Elle compte sur les mathematiques CM1 (`ADR-0081` clause 5), et le lot croira avoir dix items quand il en aura sept. **Refus reconduit de s31, inchange** |
 | 12 | **Tout Done pedagogique sur un lot que je n'ai pas joue**, et tout reaudit compte comme gratuit hors de la marge | A la cloture, si un sprint deborde. Un reaudit se paie ; s'il n'y a plus de budget, la ligne ne ferme pas - elle ne ferme pas *quand meme*. **Refus reconduit de s31** |
 | 13 | **Tout dispositif qui verifierait ce qu'un adulte a dit a l'enfant** | Refuse d'avance depuis le 2026-09-01, motif ecrit, et l'EPS le rendra tentant : *"demande a un adulte de te montrer l'echauffement"* n'est pas un item |
+| 14 | **Tout enonce de CP de plus de 15 mots, ou de plus de deux phrases** (`LON-1`, `LON-2`, section 16, ajoutee le 2026-09-08) | Sur les quatre lots de CP de ce plan - deux d'EPS CP a s32 et s33, un d'arts plastiques CP a s33, un d'education musicale CP a s34 - et sur la reprise de `POL-R1`, ou cinq enonces sur cinq sont au-dela |
 
 **Les quatre proprietes de fabrication de s31 - `PLA-1`, `FAB-1a`, `FAB-1b`, `FAB-1c` - et `BIN-1`,
 `CAT-1`, `CYC-1` restent opposables telles quelles.** Aucune n'est amendee ici. **`FAB-1c` mordra
@@ -851,3 +852,128 @@ du test.
   `PAR-12`, `PAR-13`, la frontiere de la section 6.4 et la mention de score de la section 2.
 - **Il ne remplace pas ma borne de deux instances.** Si le passage a trois instances n'est pas
   arbitre, **ma borne reste 8,0**, telle que je l'ai ecrite ce matin a la cloture de s31.
+
+---
+
+## 16. Amendement du 2026-09-08, apres coup - la barre chiffree de longueur d'enonce au CP
+
+**Ce que ce document devait porter et ne portait pas.** Ma fiche de `emotions-autrui-cp` route,
+le 2026-09-07, *"un plafond chiffre de longueur d'enonce au CP"* a **moi-meme, arbitrage prealable
+de s32**, avec le motif : *"trois paquets d'EMC CP livres et aucune barre ecrite : c'est a moi de la
+poser avant un sprint, pas pendant."* Ma fiche de `exclusion-cp` s'appuie dessus a `EXC-R4` : *"je
+ne cree aucune barre chiffree, qui est due dans mon arbitrage prealable de s32."*
+
+**Les sections 1 a 15 ne la portent pas. `camille-po` est venue la chercher, ne l'a pas trouvee, et
+a refuse d'en inventer une - elle a eu raison, et l'oubli est le mien.** Je l'ecris ici plutot que
+de la glisser dans une section anterieure : une barre datee se pose a sa date.
+
+### 16.1 La convention de comptage, avant le chiffre
+
+**Sans elle, la barre n'est pas verifiable, et mes propres chiffres de fiches le prouvent.**
+
+> **Un mot est une suite de caracteres separee par des espaces et contenant au moins une lettre ou
+> un chiffre. Une forme elidee compte pour un mot** (`qu'il`, `l'ami`, `Qu'est-ce`). **Une phrase
+> est un segment termine par un point, un point d'interrogation ou un point d'exclamation.**
+
+### 16.2 Quatre corrections a mes propres chiffres, avant de m'en servir
+
+**J'ai recompte sous cette convention ce que j'avais moi-meme enregistre, et quatre chiffres sont
+faux - tous d'une unite, tous vers le haut, parce que je comptais les formes elidees pour deux.**
+
+| Ce que j'ai ecrit | Mesure sous la convention de 16.1 |
+|---|---|
+| *"les deux paquets d'EMC CP que j'ai fermes le 2026-09-05 plafonnaient a **15 et 14** mots"* (`EMO-R1`, `POL-R1`, repris trois fois) | `regles-de-vie` **14**, `permis-interdit` **13** |
+| `EMO-R1` : item 4 a **18** mots, item 5 a **19** | **17** et **18** |
+| `EXC-R4` : les deux plus longs de la tache B a **17 et 19** mots | **16** et **18** |
+| `POL-R1` : item 11 a **26** mots, *"le plus long enonce de CP que ce depot ait jamais servi"* | **25** mots, **et ce n'est pas le plus long** : `cp-emc-regle-souhait-loi` en porte un a **30 mots**, et ce paquet **est servi** - il est au catalogue a l'entree `bandit-manchot-regle-souhait-loi-cp`, meme si sa ligne est refusee |
+
+**Aucune de ces corrections ne change un verdict** : les reserves portaient sur le fait qu'un enonce
+etait trop long, et il l'est. **Elles changent la barre**, parce qu'une barre posee sur des chiffres
+d'une unite trop hauts serait d'une unite trop laxiste.
+
+### 16.3 La population, mesuree et non estimee
+
+**Methode** : tous les enonces des 33 paquets de CP servis, lus dans les fichiers de contenu de
+l'adapter de contenu, comptes sous la convention de 16.1. **506 enonces, 606 phrases.**
+
+| | Valeur |
+|---|---|
+| Mediane d'un enonce de CP | **6 mots** |
+| 90e centile | **13 mots** |
+| 95e centile | **15 mots** |
+| Maximum du depot | **30 mots** |
+| Enonces au-dela de 15 mots | **23 sur 506, soit 4,5 %** |
+| Phrases au-dela de 15 mots | **7 sur 606, soit 1,2 %** |
+
+**Et la mesure qui decide, parce qu'elle porte sur ce que j'ai deja accepte et non sur ce que je
+decouvre :** des 33 paquets de CP, **quatre portent une reserve de longueur** ouverte par moi
+(`regle-souhait-loi` refuse, `formules-de-politesse`, `emotions-autrui`, `exclusion`). **Sur les 29
+autres, tous valides sans reserve de longueur :**
+
+| | Valeur acceptee |
+|---|---|
+| Enonce le plus long | **15 mots** (`cp-qlm-vivant-non-vivant`, deux items, valide a s27) |
+| Phrase la plus longue | **15 mots** (le meme) |
+| Nombre de phrases par enonce | **2 au plus** (`regles-de-vie`, `problemes-additifs`, `permis-interdit`, `emotions-autrui`) |
+
+### 16.4 La barre
+
+> **`LON-1` - nouvelle, datee du 2026-09-08.** **Au CP, un enonce compte au plus 15 mots**, sous la
+> convention de comptage de 16.1.
+>
+> **`LON-2` - nouvelle, datee du 2026-09-08.** **Au CP, un enonce compte au plus deux phrases**, et
+> quand il en compte deux, **la seconde est la question**.
+
+**Pourquoi 15 et pas 14.** 14 est la valeur que j'accepterais volontiers aujourd'hui, et c'est
+exactement pour cela que je ne la pose pas : **les deux enonces a 15 mots de
+`cp-qlm-vivant-non-vivant` sont sur une ligne que j'ai fermee sans reserve a s27.** Une barre a 14
+la rendrait retroactivement fautive, et **une barre qu'on serre apres coup sur une ligne deja verte
+fait de ma porte un caprice.** 15 est la plus haute longueur que j'aie jamais acceptee au CP ; c'est
+donc la barre, et pas une de moins.
+
+**Pourquoi 15 n'est pas une cible, et je le dis pour qu'on ne compose pas dessus.** Les deux seuls
+enonces de CP a 15 mots que j'aie valides sont *"Parmi ces trois choses, laquelle est un etre
+vivant : le chien, la chaise, le caillou ?"* - **six de ces quinze mots sont l'enumeration des trois
+candidats**, pas une proposition subordonnee. **Hors forme enumerative, la plus longue longueur que
+j'aie acceptee est 14 mots.** Un enonce de 15 mots qui porte deux circonstances et une relative
+n'est pas au niveau, et il passera `LON-1` : voir 16.6.
+
+### 16.5 Ce que la barre fait aux trois reserves qui l'attendaient
+
+**Elle est mesurable item par item, elle ne demande aucun jugement, et elle tranche les trois.**
+
+| Reserve | Items au-dela de `LON-1` ou `LON-2` | Ce qui reste a faire |
+|---|---|---|
+| **`EMO-R1`** | item 4 a **17** mots, item 5 a **18** | Deux enonces a ramener a 15 au plus. Les neuf autres du paquet sont conformes |
+| **`EXC-R4`** | les deux plus longs a **16** et **18** mots | Deux enonces a ramener a 15 au plus |
+| **`POL-R1`** | cinq enonces de la tache B a **20, 22, 23, 24** et **25** mots, dont un en **trois** phrases - `LON-2` mord aussi | Cinq enonces a reecrire, et c'est le plus gros des trois |
+
+**Et un quatrieme cas qu'aucune reserve ne portait, trouve en mesurant** : les onze enonces de
+`cp-emc-regle-souhait-loi` vont de **13 a 30 mots**, mediane **24**. Le plus long est **15 mots de
+situation plus une question de 15 mots qui reenumere les trois propositions** - *"Est-ce une regle
+qui vaut pour tous, un simple souhait, ou une loi ?"* - **alors que les trois propositions sont deja
+sur les boutons.** `S32-EMCCP07` est deja au perimetre pour `FAB-1c` ; **`LON-1` mord sur le meme
+paquet, dans le meme geste, et supprimer l'enumeration de la question retire d'un coup entre 9 et 11
+mots sur chacun des onze items.** Je ne cree pas de reserve neuve : le paquet est refuse, sa ligne
+n'est pas fermee, et cette mesure est un moyen de la fermer, pas un motif de plus.
+
+### 16.6 Ce que cette barre ne fait pas, et ce dont je reste donc la seule garde
+
+- **Elle est necessaire, jamais suffisante.** Un comptage de mots ne voit ni une subordonnee, ni un
+  referent elide, ni deux circonstances posees avant la question - qui sont les motifs de fond de
+  `EMO-R1` et de `EXC-R4`, et que j'ai ecrits en toutes lettres dans les deux fiches. **Un paquet
+  conforme a `LON-1` et `LON-2` peut rester illisible au CP, et je le refuserai.**
+- **Elle ne vaut que pour l'enonce**, pas pour les propositions, pas pour l'indice, pas pour la
+  consigne. Je n'ai pas mesure ces trois populations et je ne pose aucune barre dessus - **je le dis
+  comme manquant plutot que d'etendre une barre a un objet que je n'ai pas compte.**
+- **Elle ne vaut que pour le CP.** Aucune barre de longueur n'existe pour le CM1, et `HG-R4` - la
+  charge de lecture d'`histoire-geographie-cm1` - reste une reserve qualitative. Le remplissage de
+  53 items sur ce paquet a s32 et s33 en fait le bon moment pour la mesurer ; **je ne la pose pas
+  d'avance sur une population que je n'ai pas encore comptee.**
+- **Elle est entierement automatisable**, et c'est le plus mecanique de tous les garde-fous que
+  j'aie demandes : deux comptages sur un champ de contenu. Je dis la propriete ; **la forme du test
+  appartient a `theo-archi`.** Tant qu'il n'existe pas, `LON-1` et `LON-2` sont tenues par moi, en
+  comptant.
+- **Elle ne rouvre aucune ligne `couvert-valide`.** `EMC-CP-01`, `EMC-CP-03` et `EMC-CP-05` restent
+  fermees ; `LON-1` et `LON-2` ne valent que pour les enonces ecrits ou reecrits a partir du
+  2026-09-08, et les trois reserves qui les attendaient etaient deja ouvertes et non bloquantes.
