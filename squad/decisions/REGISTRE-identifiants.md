@@ -110,6 +110,38 @@ ne vois pas entier serait un chiffre sans methode, exactement ce que ce fichier 
 fois. **Compte du seul point de vue de cette allocation : +4 identifiants, +2 prefixes.** Le total
 appartient a qui le mesure sur l'arbre assemble.
 
+**Note de `nadia-prof`, instance A, au reaudit de ses deux refus d'EMC CP de s31 (2026-09-08).** J'ai
+alloue moi-meme, dans la table de la section 4, les **cinq identifiants de reserve** que mon reaudit
+ouvre : `EXC-R1` a `EXC-R5`, les cinq reserves du Done pedagogique de `EMC-CP-03`
+(`squad/conformite/FICHE-bandit-manchot-exclusion-cp.md`). **Le prefixe `EXC` est neuf** ; je l'ai
+verifie libre sur le depot entier avant d'ecrire, et non seulement sur cette table. **Allocation
+mecanique** - chaque ligne pointe vers la fiche qui definit la reserve - **et non une decision
+d'architecture**, dans le meme geste que le verdict, pour ne pas rouvrir le defaut de couture de
+forme (c) que le garde-fou de ce registre a deja signale deux fois ce sprint.
+
+**Je n'ai touche que la table de la section 4 et cette note.** La ligne de mesure de la section 1 et
+la note de correction de `theo-archi` sont a lui, il travaille sur ce fichier en parallele, et **je
+n'ai reecrit ni l'une ni l'autre**.
+
+**Et je corrige deux choses de moi-meme, plutot que de m'appuyer sur ce que j'avais enregistre :**
+
+1. **Mon chiffre du 2026-09-07, *"532 identifiants sur 89 prefixes"*, etait juste sur son perimetre et
+   ne l'est plus sur l'arbre fusionne.** Meme comptage mecanique, sur la table de la section 4 a
+   `60bde989`, avant mon allocation de ce soir : **534 identifiants sur 90 prefixes**. L'ecart est
+   exactement `RGA-R1` et `RGA-R2`, alloues par l'**instance B** dans une branche que la mienne ne
+   voyait pas. **Ce n'est pas une occurrence neuve de ma forme (c)** - l'allocation etait faite et
+   correcte, elle m'etait invisible - mais c'est **une seconde mesure de la meme limite** que je
+   route a `theo-archi` depuis hier, et cette fois elle porte sur mon propre chiffre.
+2. **La methode que j'avais ecrite sous ce chiffre annoncait un retrait qui n'a pas eu lieu** :
+   *"puis retrait de l'unique homonyme de la section 3 (`UTF-8`) et de son prefixe"*. **`UTF-8`
+   n'est pas alloue dans la table de la section 4** : il n'y avait rien a en retirer, et l'en
+   retirer aurait donne un chiffre faux. **Mon nombre etait bon ; ma phrase de methode decrivait une
+   etape de trop.** La methode qui fait foi pour cette table est le comptage de ses lignes de la
+   forme `PREFIXE-[R]nombre`, **sans retrait**. Je le corrige ici plutot que de laisser une methode
+   inexacte servir de modele au prochain comptage.
+
+**Compte apres mon allocation de ce soir, meme methode** : **539 identifiants, sur 91 prefixes**.
+
 ## 2. Ce que ce registre alloue, et ce qu'il n'alloue pas
 
 Il alloue les identifiants de **condition** et de **reserve**, les deux genres que la mesure de s30
@@ -304,6 +336,11 @@ clause 2 par une exemption.
 | `ETA-8` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-9` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-10` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
+| `EXC-R1` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R2` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R3` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R4` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R5` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `FER-1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `FER-2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |

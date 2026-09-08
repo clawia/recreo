@@ -2,8 +2,9 @@
 
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-emc-exclusion` (11 items)
-- **Statut global** : **REFUSE**
-- **Derniere mise a jour** : 2026-09-07
+- **Statut global** : **VALIDE SOUS RESERVE** (REFUSE le 2026-09-07, **refus leve au reaudit du
+  2026-09-08** - les deux blocs de validation sont lisibles ci-dessous, dans cet ordre)
+- **Derniere mise a jour** : 2026-09-08
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -219,3 +220,171 @@ les reverifierai au rejeu.
 | **Les trois motifs de ce refus** | `camille-po`, via `sofia-sm` | En faire du backlog. **Un refus ne bloque pas le sprint suivant** ; il ne se paie pas non plus tout seul |
 | **La lecture de `EMC-3` du 2026-09-07** (interdiction sur les propositions, non prescription sur la bonne reponse) | `camille-po` | A reprendre dans le critere de la story qui reecrit ce paquet, sans quoi le meme mur se represente |
 | **`FAB-1a` mordable** | `theo-archi` | Deja routee le 2026-09-07. Ce paquet est la preuve que la CI verte ne la voit pas. Je dis la propriete, jamais la forme du test |
+
+---
+
+## Bloc de validation pedagogique - reaudit du 2026-09-08 - nadia-prof UNIQUEMENT
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute au bloc du
+> 2026-09-07 et ne le remplace pas** : un refus efface n'a aucune valeur de preuve, et l'histoire de
+> cette ligne doit rester lisible.
+
+- **Verdict** : **VALIDE SOUS RESERVE** - **le REFUSE du 2026-09-07 est leve.**
+- **Date** : 2026-09-08.
+- **Arbre reaudite** : `round-two` a `60bde989`, worktree dedie `s31-nadia-A2`. Correctif de
+  `marc-dev`.
+- **Audit joue** : **oui, deux parties completes de dix manches.** Jar reconstruit depuis mon
+  worktree, port 8092. La premiere partie a **deux erreurs volontaires par manche** ; la seconde a
+  **trois erreurs par manche, donc dix revelations**. **Les onze items ont ete vus a l'ecran** entre
+  les deux parties, et tous ont ete lus dans le fichier, y compris celui que le second tirage n'a
+  pas servi.
+- **Audit degrade sur un point, et je le declare** : lecture du **HTML servi**, pas de la page
+  rendue par un navigateur. **Aucun element de ce verdict ne repose sur un jugement visuel.**
+- **Porte technique** : rouge sur cet arbre, pour un motif etranger au contenu (`ZZZ-9` cite en
+  preuve dans un rapport de ceremonie). **J'ai verifie moi-meme, plutot que de le tenir de
+  quelqu'un**, que ce paquet passe ses propres garde-fous : `PaquetCpEmcExclusionTest`, **6 tests,
+  0 echec** (`-pl adapters/adapter-content -am`), et les deux garde-fous d'`ADR-0086`, **7 tests,
+  0 echec** (`-pl bootstrap -am`). Les deux mesures sont partielles, portent `-am`, et ne remplacent
+  pas `mvn -B clean verify`.
+
+### Mes trois motifs de refus, reverifies un par un
+
+**1. La premiere moitie du libelle - *reconnaitre* - est desormais travaillee. Motif paye.**
+La tache A n'est plus une suite de six moqueries repetees : elle sert **trois situations de moquerie
+ou d'exclusion qui se repete** (*chaque midi cette semaine*, *presque tous les jours*, *depuis
+plusieurs jours a chaque recreation*) et **trois situations d'incident isole** (*une seule fois et
+s'excuse aussitot*, *une seule fois par accident*, *une fois sans faire expres*). **L'enfant a
+quelque chose a distinguer, et la duree est devenue le critere au lieu du decor.** La bonne reponse
+est un **classement**, jamais une action - ce que la lecture de `EMC-3` que j'ai ecrite le 2026-09-07
+autorise expressement.
+**`FER-1`** : *moquerie repetee*, *exclusion* (empecher de s'asseoir, ecarter du jeu) et *l'adulte*
+sont chacun servis en bonne reponse. **`FER-3`** : deux taches, la moins servie en porte cinq.
+
+**2. `FAB-1a` est tenue, et je donne le compte au lieu de le declarer.**
+
+| Tache | Items | Bonnes reponses distinctes | Comptables au titre de `FER-2` |
+|---|---|---|---|
+| A - classer la situation | 6 | **2** (*moquerie qui se repete* x3, *accident isole* x3) | **6** |
+| B - nommer l'adulte du lieu | 5 | **3**, chacun au moins une fois | **5** |
+| | | | **11, sur un plancher de dix - `FER-2` tenue** |
+
+**Aucune tache n'a de bonne reponse invariante**, donc la regle de reduction de `FAB-1a` (*"une
+tache dont **tous** les items ont la meme bonne reponse compte pour un"*) ne mord sur aucune des
+deux. Le compte de 6 items comptables sur 10 qui refusait ce paquet le 2026-09-07 **est remonte a
+11**.
+
+**Et je nomme la lecture que je n'applique pas.** Prise a la lettre, la premiere phrase de `FAB-1a`
+condamnerait une tache ou trois items disent *moquerie* et trois disent *accident*. **Elle ne
+s'applique pas, et ce n'est pas une faveur trouvee ce soir** : le meme paragraphe, ecrit avant que
+les lots existent, exempte nommement *"un classement a categories fermees (...) des lors que la
+bonne reponse varie"*. **C'est moi qui ai demande que cette tache devienne un classement ; je ne
+peux pas commander une forme puis la refuser au nom d'une clause qui l'exempte.**
+
+**`FAB-1c`** : sur la tache A, chaque bonne reponse est servie **en distracteur** sur les items de
+l'autre categorie ; sur la tache B, les trois memes chaines tournent en bonne reponse et en
+distracteur. **Aucune amorce, aucune longueur, aucun registre ne designe la bonne reponse : zero
+item sur onze.**
+
+**3. `CAT-1` est tenue sur les deux taches, et c'est le point que j'ai verifie le plus
+attentivement** - un correctif qui repare `FAB-1a` en laissant la bonne reponse reconnaissable a son
+ton ne repare rien de ce que je reprochais.
+
+*Tache A, releve a l'ecran, dans l'ordre reel des propositions* : les trois propositions de chaque
+item sont **trois noms de situation** - *une moquerie qui se repete* / *un accident isole* / une
+troisieme categorie (*une bagarre*, *une blague entre amis*, *un jeu de recreation*, *une dispute*,
+*une vengeance*). **Il n'y a plus une seule attitude a l'ecran.** Les douze propositions negligentes
+ou agressives que j'avais relevees - *"se moquer de Hugo a son tour"*, *"attendre Hugo a son tour
+pour se venger"*, *"forcer un camarade a lui donner la main"* - **ont toutes disparu**. Ce qui
+distingue les propositions est ce qu'elles disent, jamais comment elles sonnent.
+
+*Tache B* : la proposition au rabais *"a personne, ..."*, ecartable au ton sur cinq items sur cinq,
+**n'existe plus**. Les trois propositions de chaque item sont **les trois memes adultes reels**,
+dont deux ne conviennent pas au lieu. **Aucun ton ne les separe, et il n'y a plus de bouton a
+ecarter sans savoir.**
+
+### Le reste de ce que j'ai verifie
+
+- **Exactitude** : aucune erreur de fait. Les trois adultes sont reels et rattaches a leur lieu.
+- **Lisibilite** : les onze enonces font **15 a 19 mots**, contre 22 a 31 sur la version refusee, et
+  huit d'entre eux tiennent en une seule phrase de situation suivie de la question. **C'est au
+  niveau des deux paquets d'EMC CP que j'ai fermes le 2026-09-05.** Les deux plus longs font l'objet
+  de `EXC-R4`.
+- **Charge cognitive** : basse. Une scene courte, une question stable, trois categories.
+- **Traitement de l'erreur** : correct et verifie a l'ecran sur dix manches. Indice apres une
+  erreur, revelation apres trois (*"Appuie sur la bonne reponse : ..."*), l'enfant avance toujours
+  et la partie va jusqu'a son terme. **Les six indices de la tache A ne repetent plus la duree de
+  l'enonce : ils disent le critere** (*"Une seule fois serait un hasard ; la, cela recommence chaque
+  jour."*, *"Une excuse immediate apres un geste involontaire n'est pas de la moquerie."*), ce que je
+  demandais. **Ceux de la tache B, non - c'est `EXC-R2`.**
+- **`EMC-1`, `EMC-3`, `EMC-8`, `EMC-10`** : tenues. Le plancher de securite de `EMC-3` est intact -
+  **aucune proposition, sur aucun item, en bonne reponse comme en distracteur, ne dit a l'enfant de
+  regler la situation seul**, et la tache A ne propose plus aucune action du tout.
+- **Biais et ton** : aucun stereotype, aucune condescendance ; les roles de temoin, d'auteur et de
+  victime tournent sur les cinq personnages fictifs.
+
+### Motif du Done
+
+> **Les trois motifs qui refusaient ce paquet le 2026-09-07 sont payes, et je les ai recomptes
+> plutot que declares tenus.** La competence est travaillee dans ses deux moities, la bonne reponse
+> varie, rien ne se gagne au ton ni a la forme, les faits sont exacts et les enonces sont au niveau.
+> **Done pedagogique prononce ; `EMC-CP-03` peut passer a `couvert-valide`.**
+
+### Reserves - cinq, neuves, datees du 2026-09-08, aucune bloquante
+
+**Elles sont neuves et je les ecris comme telles, jamais comme un durcissement de ce que j'avais
+ecrit.** Le refus est leve **sur les motifs que j'avais poses** ; ces cinq points n'en faisaient pas
+partie et ne rouvrent pas la ligne.
+
+| Reserve | Ce qu'elle demande | Comment je l'ai trouvee |
+|---|---|---|
+| **`EXC-R1`** | **La consigne du jeu annonce la tache que le paquet sert.** L'entree de catalogue dit encore *"Lis bien, puis dis ce qu'il faut faire, ou a qui en parler."* : c'est la consigne de la version refusee. La tache A ne demande plus ce qu'il faut faire, elle demande de nommer la situation, et **aucune des trois propositions n'est une action** - l'enfant, et surtout l'adulte qui lui lit la consigne, cherchent donc a l'ecran quelque chose qui n'y est pas | **En jouant.** Elle s'affiche sur **les dix manches**, et rien dans la CI ne compare une consigne de catalogue a la tache de son paquet |
+| **`EXC-R2`** | **Chaque indice de la tache B ajoute ce que l'enonce ne donne pas.** Les cinq indices ne redonnent que le lieu deja ecrit dans l'enonce, et sur deux items ils reprennent les mots memes de la bonne reponse : *"Dans la cour, ..."* -> *"C'est un adulte present dans la cour pendant la recreation."* -> *a un surveillant de la cour*. Un enfant qui n'a pas compris apprend a apparier deux mots, pas a qui s'adresser | **En jouant**, aux dix revelations |
+| **`EXC-R3`** | **La troisieme proposition de la tache A est un candidat serieux sur chaque item** (`PLA-1`). Elle ne l'est pas sur trois d'entre eux : *une bagarre* la ou personne ne se bat, *une dispute* sur un pied ecrase par accident, *une vengeance* sur un geste que l'enonce dit *"sans faire expres"*. **Ces trois items redeviennent binaires de fait** | En jouant, puis recomptee item par item |
+| **`EXC-R4`** | **Les deux enonces les plus longs de la tache B (17 et 19 mots) disent leur situation en une seule proposition principale**, comme les trois autres (15 et 16 mots) : *"Dans la cour, avant la classe, ..."* et *"En classe, a la fin de la journee, ..."* posent deux circonstances avant la question. **Meme forme que `EMO-R1`, ouverte hier sur le meme motif ; je ne cree aucune barre chiffree**, qui est due dans mon arbitrage prealable de s32 | Comptee sur les onze enonces |
+| **`EXC-R5`** | **Aucun item ne fait d'un adulte reel une reponse fausse.** *"A sa maitresse"* est marque faux sur les trois items ou la scene n'est pas en classe, alors qu'un enfant qui parle a sa maitresse d'une moquerie de la cour fait ce qu'il faut (`EMC-5`). Le critere reel est la **presence** de l'adulte : que la question le dise (*quel adulte est la a ce moment ?*) plutot que *"a qui doit-il en parler ?"* | **En jouant, et je ne l'avais pas vue au premier passage** |
+
+**`EXC-R5` est une reserve que j'ouvre contre mon propre constat de la veille, et je l'ecris en
+toutes lettres.** Le 2026-09-07 j'ai porte au credit de ce paquet que *"les trois adultes de la
+tache B sont exacts et adaptes au lieu"*, j'ai confirme la lecture par categorie d'action **sans
+reserve**, et j'ai demande que cette tache **garde sa forme**. Elle est inchangee depuis. **Je
+l'avais creditee trop vite ; je ne peux pas la refuser aujourd'hui pour la forme que j'ai moi-meme
+prescrite**, donc elle est une reserve et non un motif. Ce qui attenue le defaut, et je le dis
+aussi : sur une partie entiere, *a sa maitresse* est la **bonne** reponse deux fois, ce qui enseigne
+*"cela depend de qui est la"* plutot que *"pas la maitresse"*.
+
+**Regime** : les cinq voyagent dans **un seul rejeu borne du paquet entier** (`PAR-10`). **Ce rejeu
+n'est pas payable a s31** : ma borne de 4,0 est atteinte exactement avec les deux rejeux de ce soir.
+
+### Mentions de couverture partielle
+
+**Aucune.** Les deux moities du libelle sont servies : *reconnaitre une situation de moquerie
+repetee ou d'exclusion* par la tache A, *savoir a quel adulte en parler* par la tache B.
+**`EMC-CP-03` ferme sans mention.**
+
+### Mentions de non-couverture opposables
+
+**Une, et elle vaut pour toutes les lignes d'EMC** (refus n°13 de mon arbitrage prealable de s31) :
+**cette ligne n'atteste aucune conduite.** Elle dit qu'un enfant sait **nommer** une moquerie qui se
+repete et **designer** l'adulte present ; elle ne dit pas qu'il le fera.
+
+### Ce dont je reste la seule garde sur ce paquet
+
+| Propriete | Garde executable ? |
+|---|---|
+| **`CAT-1`** | **aucun**, et c'est elle qui avait produit deux des trois motifs du refus. **Tenue ce coup-ci, verifiee a l'ecran et non dans le commentaire du paquet** |
+| **`PLA-1`** - qu'une proposition soit un candidat | **aucun** pour la tache A ; la tache B est desormais mordue par `laTacheDAdulteNeSertPlusDeCandidatAuRabais`, qui epingle ses propositions aux trois adultes reels. **`EXC-R3` est hors de portee de ce test** |
+| **`FAB-1a`** | **mordue par paquet** depuis ce correctif (`fab1aLaTacheDeClassementSertSesDeuxCategoriesSansReponseInvariante`). Un garde-fou general reste route a `theo-archi` |
+| **La coherence entre la consigne du catalogue et la tache du paquet** | **aucun**, et `EXC-R1` a traverse une reecriture complete, deux tests neufs et une CI que rien n'a alerte. **C'est le plus rentable des routages de ce reaudit** |
+| **Qu'un indice ajoute quelque chose a l'enonce** | **aucun** (`EXC-R2`) |
+| **`EMC-5`** - aucun item a deux reponses defendables | **aucun** (`EXC-R5`), **et je ne l'avais pas vue moi-meme au premier passage** |
+| **La couverture reelle de chaque moitie du libelle** | **aucun**, et c'est structurel : rien dans le YAML ne dit quelle moitie d'un libelle un item sert |
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-03` -> `couvert-valide`**, sans mention de couverture partielle | `camille-po` | Le compte de la matrice lui appartient ; **je n'y touche pas** |
+| **`EXC-R1` a `EXC-R5`** | `camille-po`, via `sofia-sm` | En faire des stories, **un seul rejeu borne pour les cinq**, a financer a s32. **`EXC-R1` est celle que je corrigerais la premiere** |
+| **La section *Criteres pedagogiques attendus* porte encore trois cases non cochees du 2026-09-07** | `camille-po` | Les trois sont desormais tenues, avec leurs comptes ci-dessus. **Cette section est la sienne ; je ne la reecris pas** |
+| **Rien ne compare la consigne d'une entree de catalogue a la tache que son paquet sert** | `theo-archi` | Symptome : `EXC-R1`. **Je dis la propriete, jamais la forme du test** |
+| **Cinq identifiants alloues par moi** (`EXC-R1` a `EXC-R5`, prefixe `EXC` neuf et verifie libre) dans `squad/decisions/REGISTRE-identifiants.md`, table de la section 4 | `theo-archi` | **Allocation mecanique deja faite**, dans le meme geste que ce verdict (`PAR-5`, `ADR-0085`) ; signalee pour etre relue, pas pour etre refaite |
