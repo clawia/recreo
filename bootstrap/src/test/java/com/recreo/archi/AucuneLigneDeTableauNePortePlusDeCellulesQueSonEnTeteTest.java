@@ -86,17 +86,27 @@ class AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest {
      * plafond dans le meme diff. <b>La correction de {@code camille-po} rend donc ce fichier rouge</b>,
      * et le message dit quoi ecrire : c'est le prix de l'egalite, paye une fois.
      */
-    private static final Set<String> DETTE_DE_CELLULES = Set.of(
-            "bandit-manchot-melanges-cm1",
-            "bandit-manchot-objet-technique-cm1");
+    private static final Set<String> DETTE_DE_CELLULES = Set.of();
 
     /**
-     * Etat au 2026-09-08, s31 : <b>2</b>, soit exactement les deux lignes que {@code nadia-prof} a
-     * trouvees et que {@code sofia-sm} a verifiees. Le troisieme cas du depot, dans
-     * {@code ADR-index.md}, n'y figure pas : il est corrige dans le meme commit, parce que ce
-     * fichier est le mien. Ce nombre ne remonte jamais ; le baisser demande un diff visible.
+     * Etat au 2026-09-08, s31, cloture : <b>0</b>. La dette est <b>vide</b>, donc toute ligne en
+     * surplus qui apparaitrait desormais est rouge sans exemption possible.
+     *
+     * <p>Ce nombre valait <b>2</b> quand {@code theo-archi} a ecrit ce garde-fou, soit exactement
+     * les deux lignes de la matrice que {@code nadia-prof} avait trouvees. Il les a ecrites en
+     * exemption plutot qu'en les corrigeant, parce que le contenu de ces deux lignes appartient a
+     * {@code camille-po}, et il a annonce dans le meme geste que la correction de celle-ci rendrait
+     * son fichier rouge. <b>Elle est arrivee, le rouge est venu, et c'est ici qu'il se paye</b> :
+     * {@code sofia-sm} a l'assemblage, en fusionnant en second. Les deux noms ne designaient plus
+     * aucune ligne en surplus - verifie par le balayage lui-meme, qui refuse une exemption qui ne
+     * nomme plus rien de reel.
+     *
+     * <p><b>La dette n'est pas reduite, elle est payee.</b> Le troisieme cas du depot,
+     * {@code ADR-index.md}, avait ete corrige par {@code theo-archi} dans son propre commit - son
+     * garde-fou l'a mordu avant de mordre quiconque. Ce nombre ne remonte jamais ; le remonter
+     * demanderait un diff aussi visible que celui-ci.
      */
-    private static final int PLAFOND_DE_DETTE = 2;
+    private static final int PLAFOND_DE_DETTE = 0;
 
     /** Une ligne de corps qui porte plus de cellules que l'en-tete de son tableau. */
     private record LigneEnSurplus(Path fichier, int numero, int cellules, int enTete, String invisible,
