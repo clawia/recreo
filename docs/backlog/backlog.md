@@ -11875,3 +11875,317 @@ ci-dessous.
 - **Agent pressenti** : `lea-dev` ou `marc-dev` pour les textes ; `nadia-prof` pour l'audit et le
   verdict, seule autorite sur le maintien ou non du statut `couvert-valide` des deux lignes.
 
+## Sprint 32 - Trois instances de `nadia-prof` en parallele, Plan 2 (couverture soutenable) :
+## remplissage histoire-geographie-cm1 tranche 1 et anglais CM1, dette d'EMC CP, ouverture de
+## l'education physique et sportive (`DEC-0083`)
+
+Perimetre arbitre par l'utilisatrice le 2026-09-08 (`DEC-0083`), sur l'arbitrage prealable de
+`nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`) :
+passage a trois instances de `nadia-prof` en parallele, Plan 2 retenu contre le Plan 1 (vu et
+ecarte, `DEC-0083` section 5).
+
+**Borne du sprint : 12,0**, decotee de 3,0 sur une capacite brute de 15,0 (1,0 par paire de
+coutures, trois paires - `DEC-0083`, section 2). **Budget opposable par instance : 4,0** (`PAR-9`),
+marge de rejeu comprise. **Composition retenue** (`DEC-0083`, section 6) :
+
+| Instance | Postes | Total | Lignes |
+|---|---|---|---|
+| **A** (terrain : histoire-geographie CM1, anglais CM1, portee D) | `S32-1` (2,5) + `S32-2` (0,5) + `S32-3` passe transverse (0,5) + marge `PAR-11` (0,5) | 4,0 | +5 |
+| **B** (dette d'EMC CP) | `S32-CAT1` (1,0) + `S32-EMCCP07` (0,5) + `S32-4` (1,5) + marge (0,5) + marge non allouee (0,5) | 4,0 | +1 au plus |
+| **C** (terrain : education physique et sportive, conditions inedites, `PAR-13`) | `S32-5` (1,0) + reserves du lot soldees dans le sprint (1,0) + marge `PAR-11` amendee (1,5) + marge non allouee (0,5) | 4,0 | +2 |
+
+**Le chiffre honnete, a garder present tout le sprint** : **plafond arithmetique 8 lignes, 63 + 8 =
+71/138 = 51,4 %. Attente raisonnable de `nadia-prof` : 6 a 7 lignes, 69 a 70/138, soit 50,0 % a
+50,7 %.** L'ouverture de l'EPS porte le seul terrain sans aucune mesure de calibration
+(`PAR-13`) : son attente descend a 0 ou 1 ligne sur les deux visees.
+
+**Deux clauses opposables des ce sprint, reprises de `DEC-0083`, section 3** : `PAR-9` (tout
+transfert de budget entre instances en cours de sprint est ecrit au moment du transfert, dans le
+fichier de planning) ; `PAR-11` amendee (0,5 par lot neuf audite, plus 0,5 pour l'instance C, dont
+le terrain n'a jamais rencontre de contenu reel).
+
+**Ce que ce sprint ne finance pas** : aucun lot de sciences CM1 (terrain de B, reporte a s33-s34) ;
+le second lot d'EPS CP (`EPS-CP-10`, `EPS-CP-11`, la ligne de corps-et-effort, sous condition de la
+frontiere de `DEC-0083` section 9.2) ; `D4` (groupe 2b) et `D7` (verification de `SCO-1`), tous
+deux routes a s33.
+
+### S32-1 - Remplissage d'histoire-geographie CM1, tranche 1 : la frise des grandes periodes, situer
+### un fait dans un siecle, les traces d'une occupation ancienne, les mouvements de population
+
+- **Besoin** : en tant qu'eleve de CM1, je veux situer les grandes periodes de l'histoire sur une
+  frise, situer un fait dans un siecle, reconnaitre ce que les Gaulois, les Grecs et les Romains ont
+  laisse sur le territoire, et identifier les grands mouvements de population du IVe au Xe siecle et
+  leurs effets, en jouant au bandit manchot, afin de continuer a decouvrir l'histoire-geographie de
+  CM1 dans l'application.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3) -
+  `squad/programme/histoire-geographie/competences-cm1.md`, quatre lignes `en cours` depuis le
+  premier paquet de la matiere (s27) : "Situer et ordonner les grandes periodes historiques sur une
+  frise (Prehistoire, Antiquite, Moyen Age, Temps modernes, epoque contemporaine)" (`HG-CM1-01`),
+  "Situer un fait dans un siecle ou un millenaire et ordonner des faits les uns par rapport aux
+  autres" (`HG-CM1-02`), "Identifier les traces d'une occupation ancienne du territoire et ce que
+  les Gaulois, les Grecs et les Romains y ont laisse" (`HG-CM1-03`), "Identifier les grands
+  mouvements et deplacements de populations du IVe au Xe siecle et leurs effets sur le territoire"
+  (`HG-CM1-04`).
+- **Criteres d'acceptation** :
+  - Etant donne `HG-CM1-01`, quand on compte ses items apres remplissage, alors il en porte au
+    moins dix (`FER-2`), les cinq periodes de la parenthese sont chacune en bonne reponse au moins
+    une fois (`FER-1`), et deux taches distinctes existent (`FER-3`) : situer une periode a partir
+    d'un fait ou d'un objet decrit, et dire quelle periode precede ou suit une periode nommee.
+  - Etant donne `HG-CM1-02`, quand on compte ses items apres remplissage, alors il en porte au moins
+    dix, et deux taches distinctes existent (`FER-3`) : situer un fait decrit dans un siecle ou un
+    millenaire donne, et ordonner deux faits l'un par rapport a l'autre.
+  - Etant donne `HG-CM1-03`, quand on compte ses items apres remplissage, alors il en porte au moins
+    dix, les trois peuples de la parenthese (Gaulois, Grecs, Romains) sont chacun en bonne reponse
+    au moins une fois (`FER-1`), et deux taches distinctes existent (`FER-3`) : nommer le peuple a
+    l'origine d'une trace decrite, et dire ce qu'un peuple nomme a laisse sur le territoire.
+  - Etant donne `HG-CM1-04`, quand on compte ses items apres remplissage, alors il en porte au moins
+    dix, et deux taches distinctes existent (`FER-3`) : nommer un mouvement ou un deplacement de
+    population decrit, et dire un effet de ce mouvement sur le territoire.
+  - Etant donne la consigne de `bandit-manchot-histoire-geographie-cm1` apres remplissage, alors
+    elle nomme, en plus des quatre taches deja servies (situer dans le temps, associer un roi a son
+    fait, decrire un espace ou une ressource, lire un document), les taches reelles que servent
+    `HG-CM1-03` et `HG-CM1-04` - nommer un peuple ou un mouvement de population -, faute de quoi
+    `CONS-1` n'est pas tenue sur ces deux lignes (refus d'avance repris mot pour mot de
+    `nadia-prof` : "leurs items demandent de nommer un peuple, des peuples et un regime, et la
+    consigne servie ne nomme aucune de ces taches").
+  - Etant donne le paquet apres remplissage, alors sa mediane de charge de lecture, en nombre de
+    mots par item, ne depasse pas celle mesuree avant le remplissage de ce sprint (`HG-R4`, refus
+    d'avance repris mot pour mot : "cinquante-trois items neufs sur ce paquet peuvent en faire un
+    paquet illisible sans qu'aucune ligne ne rougisse") ; l'item le plus long reste, a l'issue du
+    remplissage, celui de `HG-CM1-04` deja servi (33 mots), sauf si un item neuf le remplace en
+    restant sous ce compte.
+  - Etant donne chaque item neuf, alors deux items d'une meme tache ne portent jamais la meme bonne
+    reponse mot pour mot (`FAB-1a`), les distracteurs ne sont pas pris systematiquement dans le
+    vivier des bonnes reponses des autres items de la meme tache (`FAB-1b`), et la bonne reponse ne
+    se reconnait pas a la forme de son texte sur plus d'un tiers des items d'une tache (`FAB-1c`).
+  - Etant donne chaque proposition de chaque item neuf, alors elle est un candidat qu'un enfant de
+    CM1 peut serieusement envisager, jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne chaque fait porte par un item neuf, alors sa source est ecrite dans le commentaire
+    du paquet (`HIS-3`), aucun item n'a deux reponses defendables (`HIS-2`), et la proportion
+    d'items resolubles par restitution litterale du texte-support reste sous un tiers (`HIS-1`).
+  - Etant donne les quatre lignes, alors chacune reste servie par le meme paquet unique, qui
+    declare toujours ses lignes de referentiel sous `lignesDeReferentiel` (`ADR-0081`).
+  - Etant donne `HG-R8` (reserve non bloquante deja ouverte sur ce paquet) et le reliquat de
+    `CONS-1` sur les items deja servis, alors ils sont corriges dans le meme rejeu que ce
+    remplissage, sans cout supplementaire (`PAR-10`, `DEC-0083` section 6).
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance A verifie `FER-1`, `FER-2`, `FER-3`, `CONS-1`, `HG-R4`,
+    `HIS-1`, `HIS-2`, `HIS-3`, `FAB-1` et `PLA-1` tenues - une ligne peut fermer independamment des
+    trois autres.
+- **Ce que cette story ne fait pas** : elle ne touche pas a `HG-CM1-08` ni `HG-CM1-12` (tranche 2,
+  routee a s33) ; elle ne touche pas a la ligne 5 (les rois), laissee de cote depuis le premier
+  paquet, ni aux lignes 9 et 10, hors de portee du palier 1.
+- **Lien decision** :
+  `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`,
+  sections 1.2, 7.2 et 13 (refus n6 et n7) ; `DEC-0083`, section 6.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, instance A, pour l'audit et le Done pedagogique.
+
+### S32-2 - Remplissage de `LVE-CM1-07` : cinq items de plus sur la decouverte culturelle des pays
+### anglophones
+
+- **Besoin** : en tant qu'eleve de CM1, je veux repondre a des questions de plus sur les aspects
+  culturels des pays de la langue etudiee, en jouant au bandit manchot, afin de terminer cette
+  ligne de decouverte culturelle.
+- **Competence programme visee** : langues vivantes (anglais), CM1 (cycle 3) -
+  `squad/programme/langues-vivantes/competences-cm1.md`, ligne `en cours` depuis s28 : "Decouvrir
+  quelques aspects culturels des pays de la langue etudiee (fetes, lieux, vie quotidienne)"
+  (`LVE-CM1-07`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `bandit-manchot-anglais-cm1`, quand on compte les items de
+    `LVE-CM1-07` apres l'ajout des cinq items neufs, alors il en porte au moins dix (`FER-2` -
+    cinq deja servis, cinq a ajouter).
+  - Etant donne les cinq items existants de cette ligne, alors ils ne sont pas modifies : `nadia-prof`
+    les a confirmes bons au reaudit du 2026-09-08.
+  - Etant donne chaque item neuf, alors aucun ne sert une competence linguistique (lecture,
+    traduction, ecriture d'un mot ou d'une expression en anglais) : la ligne reste une decouverte
+    culturelle en francais (refus d'avance repris mot pour mot de `nadia-prof` : "toute fermeture
+    de cette ligne sans sa mention").
+  - Etant donne chaque item neuf, alors il est verifie contre une source (`BIA-1`, `BIA-2` tenues,
+    comme sur les cinq items existants).
+  - Etant donne le Done pedagogique de cette ligne, alors la matrice porte, mot pour mot, la mention
+    deja exigee d'avance : "decouverte culturelle seule, en francais ; aucune competence
+    linguistique n'est servie".
+  - Etant donne les items neufs, alors deux items ne portent jamais la meme bonne reponse mot pour
+    mot (`FAB-1a`), et chaque proposition est un candidat serieux, jamais un bouton de remplissage
+    (`PLA-1`).
+  - Etant donne le Done pedagogique de cette ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance A verifie `FER-1`, `FER-2`, `BIA-1`, `BIA-2`, `FAB-1` et
+    `PLA-1` tenues, et que la mention de couverture partielle est portee.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas `LVE-CM1-04`, deja `couvert-valide` ; elle
+  ne sert aucune competence linguistique sur cette ligne, aujourd'hui ni plus tard, tant que sa
+  mention de couverture partielle reste due.
+- **Lien decision** :
+  `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`,
+  section 7.2 ; `squad/programme/MATRICE-couverture.md`, section langues vivantes CM1 ; `DEC-0083`,
+  section 6.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, instance A, pour l'audit et le Done pedagogique.
+
+### S32-3 - Passe transverse de l'instance d'accumulation sur les proprietes de portee "depot servi
+### entier"
+
+- **Besoin** : transverse - pas de contenu pedagogique. Cette story ne met aucun jeu neuf entre les
+  mains d'un enfant : c'est la tache d'audit que `nadia-prof` nomme necessaire chaque sprint ou elle
+  audite en parallele de deux autres instances d'elle-meme (`PAR-4`, `PAR-12`).
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne le depot de contenu servi a l'ouverture de s32, quand l'instance qui porte
+    l'accumulation (`PAR-12`) conduit sa passe transverse, alors elle cherche les autres endroits ou
+    un gabarit compose une phrase autour d'un champ de contenu, dans la famille de defaut deja
+    trouvee a s29 (`REV-1`) et a s30 (`SAI-R1`).
+  - Etant donne cette passe, alors elle verifie l'homogeneite de registre au-dela de la consigne -
+    titres, messages de reussite, ecrans de fin - explicitement hors du perimetre de `CONS-1`.
+  - Etant donne les trois instances actives ce sprint, alors elle verifie qu'aucun identifiant de
+    condition ou de reserve mine par l'une n'entre en collision avec un identifiant deja existant du
+    registre (`ADR-0085`, `PAR-5`).
+  - Etant donne cette passe, alors son resultat est ecrit - motif, portee, verdict - dans un
+    document consultable, et non seulement rendu oralement ou implicitement.
+  - Etant donne cette passe, alors elle ne prononce aucun Done pedagogique sur un increment neuf de
+    s32 : elle produit des reserves ou des alertes sur le depot existant, jamais une fermeture de
+    ligne.
+- **Ce que cette story ne fait pas** : elle ne relit pas les lots des deux autres instances comme un
+  double controle - deux paires d'yeux sur des lots disjoints ne sont pas une verification croisee.
+- **Lien decision** : `DEC-0083`, sections 2, 3 et 6.
+- **Agent pressenti** : `nadia-prof`, instance A, qui porte l'accumulation ce sprint.
+
+### S32-4 - Reprise : dix reserves non bloquantes sur trois paquets d'enseignement moral et civique
+### CP (`EMO-R1`, `EMO-R2`, `POL-R1`, `POL-R2`, `EXC-R1` a `EXC-R5`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que les enonces qui me decrivent une situation
+  restent a ma portee de lecture, que les indices qui m'aident n'ajoutent rien que je n'aie pas
+  deja, que chaque proposition qu'on me presente soit une reponse que je pourrais vraiment donner,
+  que la consigne du jeu dise ce qu'il me demande vraiment, et qu'un adulte reel ne devienne jamais
+  une reponse fausse, afin de jouer trois jeux d'enseignement moral et civique sans obstacle ajoute
+  par du texte mal calibre.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) - trois lignes deja
+  `couvert-valide`, correction non bloquante, aucune ne change de statut par cette story :
+  `EMC-CP-01` (`bandit-manchot-emotions-autrui-cp`), `EMC-CP-05` (`bandit-manchot-formules-de-
+  politesse-cp`), `EMC-CP-03` (`bandit-manchot-exclusion-cp`).
+- **Criteres d'acceptation, par paquet** :
+  - **`bandit-manchot-emotions-autrui-cp`** :
+    - Etant donne les items 4 et 5 (`EMO-R1`), quand ils sont revus, alors leur longueur et leur
+      complexite syntaxique se rapprochent de ce que le produit a deja accepte sur les paquets
+      d'EMC CP fermes le 2026-09-05 (15 et 14 mots au plus, une seule proposition principale) -
+      propriete a tenir sans barre chiffree imposee, `nadia-prof` n'en ayant jamais ecrit pour l'EMC
+      CP.
+    - Etant donne les trois indices de la tache B qui emploient un vocabulaire au-dessus du CP
+      (posture, volontairement, brusques - `EMO-R2`), quand ils sont revus, alors ils emploient un
+      vocabulaire que le produit a deja accepte sur les deux memes paquets de reference.
+  - **`bandit-manchot-formules-de-politesse-cp`** :
+    - Etant donne les cinq enonces de la tache B (`POL-R1`, 20 a 26 mots), quand ils sont revus,
+      alors leur longueur se rapproche de meme du plafond deja accepte (15 et 14 mots), sans barre
+      chiffree imposee.
+    - Etant donne l'item 6 (`POL-R2`), dont l'enonce demande "un peu plus d'eau" pour un verre "deja
+      vide", quand il est revu, alors la scene se tient : soit l'enfant "voudrait encore de l'eau"
+      avec un verre presque vide, soit il "voudrait de l'eau" avec un verre vide.
+  - **`bandit-manchot-exclusion-cp`** :
+    - Etant donne la consigne de ce jeu (`EXC-R1`), quand elle est revue, alors elle annonce la
+      tache reellement servie par le paquet - nommer la situation decrite, jamais "dire ce qu'il
+      faut faire".
+    - Etant donne chaque indice de la tache B (`EXC-R2`), quand il est revu, alors il ajoute une
+      information que l'enonce ne donne pas deja, et ne reprend pas les mots memes de la bonne
+      reponse.
+    - Etant donne la troisieme proposition des trois items ou elle n'est pas un candidat serieux
+      (`EXC-R3` - une bagarre la ou personne ne se bat, une dispute sur un pied ecrase par accident,
+      une vengeance sur un geste dit "sans faire expres"), quand elle est revue, alors elle devient
+      un candidat qu'un enfant de CP pourrait vraiment envisager (`PLA-1`).
+    - Etant donne les deux enonces les plus longs de la tache B (17 et 19 mots, `EXC-R4`), quand ils
+      sont revus, alors ils disent leur situation en une seule proposition principale, comme les
+      trois autres enonces de la meme tache (15 et 16 mots) - meme famille que `EMO-R1`, sans barre
+      chiffree imposee.
+    - Etant donne les items ou "a sa maitresse" est marque faux alors que la scene n'est pas en
+      classe (`EXC-R5`), quand ils sont revus, alors le critere devient la presence de l'adulte au
+      moment decrit, jamais le seul lieu de la scene : aucun item ne fait d'un adulte reel une
+      reponse fausse (`EMC-5`).
+  - Etant donne ces corrections, quand on recompte les items des trois paquets, alors `FER-1`,
+    `FER-2` et `FER-3` restent tenues a l'identique de ce qu'elles etaient a la fermeture initiale
+    de chaque ligne.
+  - Etant donne les trois paquets corriges, quand `nadia-prof` les rejoue a l'ecran, alors elle
+    confirme que les dix reserves ci-dessus sont levees. Regime : rejeu borne, 0,5 par paquet,
+    trois paquets, 1,5 au total (`PAR-10`, `D5` de `DEC-0083`).
+  - Etant donne ces corrections, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
+    change de statut : `EMC-CP-01`, `EMC-CP-05` et `EMC-CP-03` restent `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne pose aucune barre chiffree la ou `nadia-prof` refuse
+  explicitement d'en poser une (`EMO-R1`, `POL-R1`, `EXC-R4`) - une barre annoncee dans
+  `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` pour cet arbitrage prealable n'y figure
+  finalement pas, et cette story ne l'invente pas a sa place (`DEC-0083`, section 12) ; elle ne
+  touche a aucune autre ligne de ces trois paquets ; elle ne rouvre pas le Done pedagogique de
+  `EMC-CP-01`, `EMC-CP-05` ou `EMC-CP-03` au-dela de ces dix points.
+- **Lien** : `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md`,
+  `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md`,
+  `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md`, sections "Reserves" ; `DEC-0083`,
+  sections 6 et 7.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour les textes ; `nadia-prof`, instance B, pour
+  l'audit et la reverification.
+
+### S32-5 - Premier lot d'education physique et sportive CP : connaitre et respecter les regles de
+### securite, connaitre et respecter les regles d'un jeu collectif simple
+
+- **Besoin** : en tant qu'eleve de CP, je veux connaitre les regles de securite propres a une
+  activite et savoir reconnaitre les regles d'un jeu collectif simple, en jouant au bandit manchot,
+  afin de decouvrir l'education physique et sportive dans l'application.
+- **Competence programme visee** : education physique et sportive, CP (cycle 2) -
+  `squad/programme/education-physique-et-sportive/competences-cp.md`, deux lignes `non couvert` :
+  "Connaitre et respecter les regles de securite propres a l'activite et au lieu de pratique"
+  (`EPS-CP-04`) et "Connaitre et respecter les regles d'un jeu collectif simple" (`EPS-CP-08`).
+  Premier terrain sans image : aucune instance de `nadia-prof` n'a encore audite de contenu reel sur
+  ces conditions (`PAR-13`).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `EPS-CP-04`, quand on compte ses items, alors il en porte au moins
+    onze (`FER-2`), et deux taches distinctes existent (`FER-3`) : reconnaitre la regle de securite
+    qui s'applique a une activite ou un lieu decrit, et dire pourquoi une regle de securite decrite
+    existe.
+  - Etant donne le paquet de `EPS-CP-08`, quand on compte ses items, alors il en porte au moins
+    onze, et deux taches distinctes existent (`FER-3`) : reconnaitre la regle d'un jeu collectif
+    nomme, et dire si une situation decrite respecte ou viole une regle donnee.
+  - Etant donne chaque item des deux paquets qui porte sur la regle d'un jeu, alors cette regle est
+    soit rappelee dans l'enonce, soit universellement scolaire (`EPS-1`) - refus d'avance repris mot
+    pour mot : "un item sur le hors-jeu au football exclut tout enfant qui n'y joue pas, et ne
+    mesure pas la competence".
+  - Etant donne chaque item des deux paquets, alors aucun ne compare des corps, des performances ou
+    des capacites entre enfants, et aucun ne presente une performance chiffree comme une norme
+    (`EPS-2`).
+  - Etant donne chaque item des deux paquets, alors aucun ne fait porter une attitude, une emotion
+    ou une conduite morale par la bonne reponse (`EPS-3`) - refus d'avance repris mot pour mot :
+    "que fais-tu si un joueur triche ?" est l'item le plus evident de la ligne et le plus faux.
+  - Etant donne chaque item des deux paquets, alors aucun ne demande a un enfant de demander a un
+    adulte de lui montrer ou de lui expliquer quoi que ce soit : aucun dispositif ne verifie ce
+    qu'un adulte a dit ou fait (refus d'avance reconduit).
+  - Etant donne chaque item, alors deux items d'une meme tache ne portent jamais la meme bonne
+    reponse mot pour mot (`FAB-1a`), les distracteurs ne sont pas pris systematiquement dans le
+    vivier des bonnes reponses des autres items de la meme tache (`FAB-1b`), et la bonne reponse ne
+    se reconnait pas a la forme de son texte sur plus d'un tiers des items d'une tache (`FAB-1c`) -
+    vigilance nommee d'avance par `nadia-prof` sur des amorces comme "il faut boire de l'eau" ou
+    "il faut s'echauffer", qui signeraient la bonne reponse sur tout un paquet.
+  - Etant donne chaque proposition de chaque item, alors elle est un candidat qu'un enfant de CP
+    peut serieusement envisager, jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne les items d'une meme tache, alors au plus la moitie d'entre eux portent deux
+    propositions plutot que trois (`BIN-1`).
+  - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
+    ligne sous `lignesDeReferentiel` (`ADR-0081`) ; chaque paquet porte onze items exactement et
+    `nombreDeManches: 10` sans derogation (`DEC-0064`).
+  - Etant donne l'entree de catalogue de chaque paquet, alors sa consigne nomme la tache reelle du
+    jeu et ne reprend pas la formule generique que `DEC-0078` interdit desormais aux entrees
+    neuves.
+  - Etant donne le Done pedagogique de chaque ligne, alors la matrice porte, mot pour mot, la
+    mention deja exigee d'avance : "connaissances qui entourent la pratique physique seules ;
+    aucune activite physique, aucun geste et aucune performance ne sont servis par ce produit"
+    (refus d'avance n5 de `nadia-prof`, sans laquelle elle refuse la fermeture).
+  - Etant donne les reserves non bloquantes que ce lot neuf peut ouvrir, alors elles sont soldees
+    dans le meme sprint (Plan 2, `PAR-10`, `DEC-0083` section 6), et non differees.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si l'instance C verifie `FER-1`, `FER-2`, `FER-3`, `EPS-1`, `EPS-2`,
+    `EPS-3`, `FAB-1`, `PLA-1` et `BIN-1` tenues, et que la mention de couverture partielle est
+    portee - une ligne peut fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert ni `EPS-CP-10` ni `EPS-CP-11` (effets de
+  l'effort, echauffement, hydratation, recuperation - la ligne de corps-et-effort, routee a s33 sous
+  la frontiere de `DEC-0083`, section 9.2) ; elle ne touche a aucune ligne d'EPS CM1.
+- **Lien decision** : `DEC-0074` (`nadia-prof` ecrit le referentiel EPS), `DEC-0083`, sections 6 et
+  9.2 ; `squad/programme/education-physique-et-sportive/competences-cp.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, instance C, pour l'audit et le Done pedagogique - premier terrain sans
+  image d'aucune instance (`PAR-13`).
+
