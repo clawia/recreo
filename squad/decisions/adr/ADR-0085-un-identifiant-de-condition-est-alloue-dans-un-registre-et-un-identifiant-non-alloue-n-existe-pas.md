@@ -81,7 +81,8 @@ Ecrites parce que la forme retenue ne se comprend que contre elles.
 **Un identifiant de condition est alloue dans `squad/decisions/REGISTRE-identifiants.md`, une fois
 et une seule ; un identifiant ecrit sans y avoir sa ligne n'existe pas.**
 
-Quatre clauses, a l'imperatif.
+Quatre clauses, a l'imperatif. *Une cinquieme s'ajoute le 2026-09-08 - amendement en fin
+de document.*
 
 1. **Le registre n'alloue jamais deux fois le meme identifiant.** C'est la collision elle-meme, et
    c'est le seul point ou deux instances qui ne se lisent pas se rencontrent : chacune ajoute sa
@@ -147,7 +148,8 @@ qui suit.**
 Le depot fautif (`bootstrap/src/test/resources/contreexemple/ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest/depot-fautif/`)
 porte les quatre defauts a la fois : un identifiant ecrit sans etre alloue, un identifiant alloue
 deux fois, une allocation qui nomme un document qui ne l'ecrit pas, un homonyme ecarte que plus rien
-ne porte. `unDepotFautifFaitEchouerLesQuatreClauses` exige les quatre messages.
+ne porte. Depuis l'amendement du 2026-09-08 il en porte un cinquieme, un compte courant que
+sa propre table dement, et `unDepotFautifFaitEchouerLesCinqClauses` exige les cinq messages.
 
 **Quatre tests, tous verts sur `2ef583ba` plus le present lot, JDK 21.0.10** ; le compte d'objets
 examines est assere plutot qu'espere (`ADR-0051`) : plus de 10 000 occurrences et plus de 400
@@ -227,6 +229,147 @@ croire le contraire.**
 > de numeros par instance, ecrite au planning, une ligne. **Tant qu'elle n'a pas eu lieu, l'ecrire
 > serait construire un dispositif contre un defaut imaginaire.**
 
+## Amendement du 2026-09-08 (s31, cloture) - citer n'est pas moins qu'employer, et le compte du registre est verifie
+
+Deux points routes par `sofia-sm` a l'assemblage de fin de s31, sur l'arbre ou les huit commits de
+cloture sont reunis. Ils ajoutent une clause et un cliquet, et ils ne touchent pas la clause 2.
+
+### 1. Le fait : la clause 2 a rougi sur une preuve, et la preuve etait juste
+
+`yanis-qa` a mis ce garde-fou a l'epreuve **sur le depot reel**, comme sa charge le demande : il a
+insere dans un paquet servi un identifiant fictif jamais alloue, constate le rouge, **cite le
+message d'erreur verbatim** dans son rapport de qualite, restaure, reconstate le vert. Son rapport a
+ete ecrit apres la mesure, dans un worktree que le garde-fou n'a jamais rebalaye. A l'assemblage, la
+clause 2 a rougi sur **son rapport** : elle ne distingue pas un identifiant employe d'un identifiant
+cite en preuve.
+
+Le rouge etait juste et il porte sur le bon fichier. Ce qui manquait n'etait pas dans la clause.
+
+### 2. Ce que je tranche : la clause 2 ne distingue pas, et elle ne distinguera pas
+
+**Decision : citer un identifiant n'est pas moins que l'employer.** Aucun contexte textuel - bloc de
+code, guillemets, voisinage du mot *identifiant*, section intitulee *mutation* - n'exempte quoi que
+ce soit. La consequence ecrite dans cet ADR le 2026-09-07 (*"la clause 2 s'applique a tout le depot,
+y compris a un fichier qui ne fait que citer"*) n'est pas revisee : elle est **la** propriete, et non
+un effet de bord qu'on aurait supporte.
+
+Le motif est mesure, pas prudentiel. Un bloc de code dans un rapport est exactement l'endroit ou une
+faute de frappe sur un numero voisin - le defaut que `PAR-5` vise - **ne se remarque pas**. Exempter
+ce contexte, c'est ouvrir le trou sous le seul endroit du depot qui ecrive des identifiants sans les
+definir. Il n'y aurait alors plus de garde-fou : il y aurait un garde-fou, plus une convention
+d'ecriture pour le contourner.
+
+**La forme derivee que j'ai essayee, et pourquoi elle ne tient pas.** Elle etait tentante : les
+identifiants qu'un arbre de contre-exemple porte sont fictifs par construction, il suffirait de les
+exempter partout au lieu de les exempter dans leur seul test. Mesure sur l'arbre assemble : les
+arbres de contre-exemple du depot portent **46 identifiants** de la forme reconnue, dont **41 sont
+alloues** - ce sont de vraies conditions que les fixtures citent legitimement - et **5 ne le sont
+pas**, exactement les fictifs. *Methode : extraction du meme motif `PREFIXE-[R]nombre` sur tous les
+fichiers des repertoires nommes `contreexemple` du depot, prefixes `ADR` et `DEC` retires, croisee
+avec les lignes d'allocation de la section 4 du registre ; arbre `s31-theo-cloture` a l'etat de ce
+commit, JDK 21.0.10 rapporte par la machine virtuelle des tests (`ADR-0071`).* La regle derivee
+s'ecrirait donc *"est fictif un identifiant qu'un contre-exemple porte et que le registre n'alloue
+pas"* - et c'est **circulaire** : *non alloue* est precisement ce que la clause 2 teste. N'importe
+qui pourrait desactiver la clause 2 sur son identifiant en l'ajoutant a une fixture. **Une exemption
+qui s'auto-delivre est pire que le faux rouge qu'elle supprime.**
+
+### 3. Ce que je fais a la place : une ligne d'ecart, sous un cliquet a plafond exact
+
+C'est le remede que cet ADR avait deja nomme au chapitre *Ce qui me ferait changer d'avis* :
+*"si la clause 2 produisait un faux rouge sur une forme legitime que je n'ai pas vue, la reponse est
+une ligne d'homonyme dans le registre, pas un assouplissement de la forme"*. Il s'applique tel quel.
+
+- **Le rapport de `yanis-qa` n'est pas touche.** Sa preuve reste verbatim, au caractere. Le depot
+  exige qu'une preuve soit montree ; elle l'est.
+- **La section 3 du registre gagne une ligne**, qui nomme l'identifiant fictif du depot fautif de ce
+  garde-fou et dit pourquoi il est ecrit hors de sa propre source. L'ecart vaut **un identifiant** :
+  pas une famille, pas un prefixe, pas un contexte.
+- **La section 3 devient un cliquet a plafond exact.** Son plafond, `PLAFOND_D_HOMONYMES`, vit dans
+  le fichier de test et vaut **2**. C'est le point qui compte : sans lui, la reponse la moins
+  couteuse a n'importe quel rouge de clause 2 serait une ligne de plus dans un fichier de
+  gouvernance, sans diff de code et sans decision. Avec lui, **chaque ecart de plus passe par le
+  Java**.
+
+**Les autres identifiants fictifs restent refuses hors de leur test**, et c'est mesure : seuls ceux
+qui sont **cites hors de leur fixture et de leur propre source** ont une ligne. Le trou derive
+d'`ADR-0066` couvre les autres, et cet amendement ne l'elargit pas.
+
+### 4. La preuve que la version amendee mord encore - quatre mutations, dont deux sur du materiau reel
+
+| Mutation | Attendu | Resultat |
+|---|---|---|
+| Un identifiant non alloue, insere **dans un bloc de code** du rapport de qualite reel, a cote de la citation exemptee | rouge sur la clause 2 | **ROUGE**, 1 echec, le message nomme le rapport et l'identifiant |
+| La ligne d'ecart retiree de la section 3 du registre | rouge sur la clause 2 **et** sur le plafond | **ROUGE**, 2 echecs, dont *"Expected size: 2 but was: 1"* |
+| Une troisieme ligne d'ecart ajoutee au registre seul, sans diff de code | rouge sur le plafond | **ROUGE**, 2 echecs, dont *"Expected size: 2 but was: 3"* - et la clause 4 rougit en effet de bord, l'ecart ne nommant rien de reel |
+| Le compte courant du registre baisse d'une unite | rouge sur la clause 5 | **ROUGE**, 1 echec, le message oppose le nombre declare a celui de la table |
+
+*Perimetre de ces quatre mesures : `mvn -pl bootstrap -am test` sur la seule classe
+`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, six tests, arbre `s31-theo-cloture`, JDK
+21.0.10 rapporte par la machine virtuelle des tests. Chaque mutation a ete restauree et le tree
+verifie propre avant la suivante ; la mesure de la porte technique, elle, est le reacteur complet
+depuis la racine.*
+
+Un cinquieme cas est permanent plutot que mute : le depot fautif porte desormais un rapport de sprint
+qui **ne fait que citer**, sous la forme reelle d'un rapport de qualite, un identifiant ni alloue ni
+ecarte, et `uneCitationDansUnMessageDErreurNEstPasExemptee` exige qu'il soit refuse. Le jour ou
+quelqu'un ajoute une exemption de contexte a la clause 2, ce test tombe.
+
+### 5. Clause 5 : le registre declare son compte, et sa table le verifie
+
+**Le second fait, de la meme famille.** L'arbre assemble porte cote a cote **trois** notes
+d'allocation ecrites le meme jour : la mienne (527 identifiants, 87 prefixes), celle de `nadia-prof`
+instance B (+2, prefixe neuf `RGA`), celle de son instance A (532 identifiants, 89 prefixes, prefixes
+neufs `EMO` et `POL`). Chacune est **juste sur son perimetre** et porte sa methode ; aucune des deux
+instances ne pouvait voir l'autre ; `sofia-sm` les a gardees verbatim au conflit de cherry-pick, avec
+raison. **Le compte de l'arbre assemble n'etait donc ecrit nulle part.** C'est la forme (b) d'un
+defaut de couture au sens de `nadia-prof` : un chiffre que ni l'une ni l'autre moitie ne peut
+verifier depuis sa branche.
+
+**Clause 5, a l'imperatif : le registre declare son compte courant sous une forme figee, et ce compte
+egale celui de sa table.** Une seule ligne du fichier pretend dire l'etat courant ; les notes datees
+qui l'entourent sont des mesures passees, chacune avec sa methode et son auteur, et **aucune n'est
+retouchee** - une mesure datee ne pourrit pas, un etat courant si.
+
+Ce que la clause interdit reellement, et c'est la question a se poser avant de l'ecrire : elle
+interdit qu'un nombre survive a la table qu'il decrit. Ce defaut n'est pas hypothetique, il a eu lieu
+**deux fois en deux jours** sur ce meme fichier - un compte de prefixes faux de quatre unites,
+corrige par son auteur et signale independamment par `nadia-prof` ; puis le compte de l'arbre
+assemble, absent. **Le mode de defaillance devient un rouge a la fusion, la ou les deux moities
+existent**, et son correctif est un comptage. Aucune instance n'a besoin de lire la branche d'une
+autre : c'est exactement la propriete que `PAR-5` demande.
+
+**Le prix, ecrit.** Deux instances qui allouent en parallele toucheront la **meme ligne**, donc
+produiront un conflit de fusion sur cette ligne, a chaque fois. C'est voulu, et c'est le meilleur des
+modes disponibles : un conflit se voit et se resout mecaniquement, un nombre faux ne se voit pas.
+J'ai ecarte la forme opposee - **supprimer tout compte courant du registre**, au motif qu'un second
+exemplaire d'un fait rancit (`ADR-0061`) - parce qu'elle n'est pas encodable : on ne teste pas
+l'absence d'un nombre dans de la prose sans un motif qui attraperait aussi les mesures datees, ce qui
+est la faute mesuree en s05.
+
+**Le compte de l'arbre assemble, avec sa methode.** **534 identifiants alloues, sur 90 prefixes
+distincts**, et **zero doublon** - les 534 lignes de la table portent 534 identifiants distincts,
+donc la clause 1 est verte sans exemption. *Methode : extraction des lignes de la table de la
+section 4 du registre a la forme `| identifiant | document |`, denombrement des identifiants
+distincts et des prefixes distincts ; arbre `s31-theo-cloture` a l'etat de ce commit. Le chiffre
+recoupe les trois notes : 532 (instance A, sur l'etat qui precede l'allocation de l'instance B) + 2
+(instance B) = 534, et 89 + 1 = 90.* Les deux instances etaient justes ; il ne manquait que
+l'addition, et c'est desormais la CI qui la fait.
+
+### 6. La cecite de branche ne demande toujours aucune clause, et ce sprint le confirme
+
+`sofia-sm` demande si la limite structurelle nommee le 2026-09-07 - *un registre construit depuis un
+worktree ne voit pas ce qui s'ecrit en parallele dans un autre* - demande une clause de plus. **Non,
+et l'evenement de ce sprint est un argument de plus contre, pas pour.**
+
+Deux instances de `nadia-prof` ont alloue en parallele, sans se voir, sur le meme fichier. Ce que la
+cecite a produit : **aucune collision, aucune ligne manquante, aucun sens perdu**. Les deux ont
+ouvert la table, verifie que leur prefixe etait libre, ecrit leur ligne et leur methode. Le seul
+degat etait **un nombre agrege que ni l'une ni l'autre ne pouvait calculer** - et c'est ce que la
+clause 5 attrape, a la fusion, sans qu'aucune branche ait besoin d'en lire une autre.
+
+La limite reste donc **nommee et assumee**, avec le declencheur deja ecrit : la premiere collision de
+sens constatee a une fusion. Elle n'a pas eu lieu ce sprint-ci non plus.
+
 ## Alternatives considerees
 
 - **Ne rien ecrire et continuer la mesure a la main.** Ecartee : c'est le statu quo de trois
@@ -253,6 +396,13 @@ croire le contraire.**
 
 - **Si la clause 2 produisait un faux rouge sur une forme legitime que je n'ai pas vue**, la
   reponse est une ligne d'homonyme dans le registre, pas un assouplissement de la forme.
+  *C'est arrive le 2026-09-08, et c'est exactement ce qui a ete fait - amendement, section 3.
+  La ligne est desormais sous cliquet a plafond exact : la reponse reste disponible, elle
+  n'est plus gratuite.*
+- **Si le plafond de la section 3 devait monter plusieurs fois en quelques sprints**, l'ecart
+  cesserait d'etre un cas et deviendrait une famille ; il faudrait alors chercher une forme
+  derivee, ce que la section 2 de l'amendement n'a pas trouve pour un cas unique. Declencheur
+  mesurable : un troisieme ecart.
 - **Si un marqueur de definition devenait universel** - par exemple parce que `nadia-prof` adopte
   une forme fixe pour poser ses conditions -, la colonne du document deviendrait derivable et le
   registre pourrait maigrir. Le declencheur est mesurable : le marqueur couvre plus de 95 % de la

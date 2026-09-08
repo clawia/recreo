@@ -13,6 +13,14 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
+**Compte courant, verifie par la CI** : `534` identifiants alloues, `90` prefixes distincts.
+
+*Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
+verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
+refuse le fichier si les deux nombres ne sont pas ceux-la. Les notes datees qui suivent sont des
+mesures passees ; chacune porte sa methode, son perimetre et son auteur, et aucune n'est retouchee -
+une mesure datee ne pourrit pas, un etat courant si.*
+
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
 virtuelle, pas par l'entree de toolchain - `ADR-0071`).
@@ -108,13 +116,18 @@ chacune est ecartee par sa forme ou par la decision qui la gouverne deja :
 
 ## 3. Les homonymes ecartes
 
-**Une seule forme du depot ressemble a un identifiant de condition sans en etre un.** Elle est
-nommee ici plutot que cachee dans le garde-fou, et le garde-fou verifie qu'elle designe encore
-quelque chose de reel : le jour ou elle disparait du depot, sa ligne doit disparaitre aussi.
+**Deux formes du depot ressemblent a un identifiant de condition sans en etre une.** Elles sont
+nommees ici plutot que cachees dans le garde-fou, et le garde-fou verifie que chacune designe encore
+quelque chose de reel : le jour ou l'une disparait du depot, sa ligne doit disparaitre aussi. **Cette
+table est un cliquet a plafond exact** : son plafond vaut deux, il est ecrit dans le garde-fou, et
+une troisieme ligne fait rougir la CI au lieu d'entrer en silence. Ajouter un ecart coute donc un
+diff dans le Java, pas une ligne discrete dans ce fichier - c'est ce qui empeche d'eteindre la
+clause 2 par une exemption.
 
 | Forme | Ce que c'est |
 |---|---|
 | `UTF-8` | le nom d'un encodage de caracteres, dans les `pom.xml`, les gabarits et les scripts |
+| `ZZZ-9` | un identifiant fictif du depot fautif d'`ADR-0085`, cite verbatim hors de son propre test comme preuve de morsure dans un rapport de qualite |
 
 ## 4. Les identifiants alloues
 

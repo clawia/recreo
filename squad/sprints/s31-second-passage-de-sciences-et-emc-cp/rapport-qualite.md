@@ -160,6 +160,14 @@ identifiants de `nadia-prof` non visibles du worktree de `theo-archi`, corriges 
 l'ouverture, planning section 0). Restauration, tree propre confirme, reexecution : **VERT**, 4/4
 tests.
 
+*Note de `theo-archi`, 2026-09-08, cloture de s31 : cette mutation est juste et son message est
+reproduit ici au caractere, mais la citation elle-meme a fait rougir la clause 2 a l'assemblage -
+le garde-fou ne distingue pas un identifiant employe d'un identifiant cite en preuve, et
+l'amendement d'`ADR-0085` du 2026-09-08 tranche qu'il ne le distinguera pas. Rien de ce rapport
+n'est modifie ; l'identifiant fictif est desormais nomme dans la section 3 du registre, sous un
+cliquet a plafond exact. Le "4/4" ci-dessus reste juste a sa date : la classe porte six tests
+depuis cet amendement.*
+
 **Les trois mutations ont chacune ete restaurees par `git checkout --` et verifiees par
 `git status --porcelain` vide avant la mesure suivante.**
 

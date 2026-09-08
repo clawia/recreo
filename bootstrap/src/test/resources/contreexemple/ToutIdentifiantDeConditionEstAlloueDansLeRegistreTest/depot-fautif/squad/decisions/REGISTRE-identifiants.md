@@ -1,7 +1,12 @@
 # Registre des identifiants de condition - depot fautif
 
-Ce registre est le jeu fautif d'ADR-0085. Il porte les quatre defauts a la fois, chacun ecrit pour
+Ce registre est le jeu fautif d'ADR-0085. Il porte les cinq defauts a la fois, chacun ecrit pour
 faire echouer une clause et une seule.
+
+**Compte courant, verifie par la CI** : `9` identifiants alloues, `2` prefixes distincts.
+
+Les deux nombres ci-dessus sont dementis par la table de la section 4, qui alloue trois identifiants
+sur un seul prefixe : c'est la clause 5.
 
 ## 3. Les homonymes ecartes
 

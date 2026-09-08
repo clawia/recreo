@@ -104,6 +104,32 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
 
     private static final String SECTION_DES_ALLOCATIONS = "## 4.";
 
+    /**
+     * La seule ligne du registre qui pretende dire son etat courant - clause 5. Une forme figee, et
+     * non une phrase libre : le fichier porte plusieurs mesures datees, chacune juste sur son
+     * perimetre, et un motif qui attraperait de la prose confondrait un etat courant avec l'histoire
+     * d'un comptage. C'est la lecon d'ADR-0015 appliquee au motif lui-meme.
+     */
+    private static final Pattern COMPTE_COURANT = Pattern.compile(
+            "^\\*\\*Compte courant, verifie par la CI\\*\\* : `([0-9]+)` identifiants alloues,"
+                    + " `([0-9]+)` prefixes distincts\\.$", Pattern.MULTILINE);
+
+    /**
+     * Le plafond du cliquet de la section 3 du registre, decide par l'amendement du 2026-09-08.
+     * Etat a cette date : deux formes, l'homonyme d'encodage et l'identifiant fictif du depot fautif
+     * de ce test, cite verbatim hors de sa propre source par le rapport de qualite de s31. Monte de
+     * 1 a 2 ce jour-la.
+     *
+     * <p><b>Ce que ce nombre garde, et c'est la seule raison de l'ecrire.</b> Une ligne de la
+     * section 3 <b>eteint la clause 2</b> pour l'identifiant qu'elle nomme, dans tout le depot. Sans
+     * plafond, la reponse la moins couteuse a n'importe quel rouge de clause 2 serait d'ajouter une
+     * ligne au registre - un fichier de gouvernance, sans diff de code, sans ADR. Avec lui, chaque
+     * ecart de plus passe par ce fichier de test. Le plafond vaut exactement la taille de la dette
+     * (ADR-0013, amendement du 2026-08-15) : il n'y a pas une place de libre, et le baisser demande
+     * un diff aussi visible que le monter.
+     */
+    private static final int PLAFOND_D_HOMONYMES = 2;
+
     /** ADR-0013 obligation 3 : le depot fautif de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
             "ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest");
@@ -341,6 +367,48 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                         REGISTRE, ecarte));
             }
         }
+
+        defauts.addAll(defautsDuCompteCourant(registre, alloues));
+        return defauts;
+    }
+
+    /**
+     * Clause 5 : le compte courant que le registre declare vaut celui de sa table. Deux instances
+     * qui ne se lisent pas ne peuvent pas verifier ce nombre depuis leur moitie ; il est donc verifie
+     * a la fusion, ou les deux moities existent, et nulle part ailleurs.
+     */
+    private static List<String> defautsDuCompteCourant(String registre, Map<String, String> alloues) {
+        List<String> defauts = new ArrayList<>();
+        Matcher declare = COMPTE_COURANT.matcher(registre);
+        if (!declare.find()) {
+            defauts.add(String.format(
+                    "%s n'ecrit aucun compte courant sous la forme que la CI verifie. Un registre"
+                            + " sans compte verifiable laisse a chaque instance le soin d'annoncer un"
+                            + " nombre que sa moitie ne permet pas de calculer (ADR-0085, clause 5)",
+                    REGISTRE));
+            return defauts;
+        }
+        int identifiantsDeclares = Integer.parseInt(declare.group(1));
+        int prefixesDeclares = Integer.parseInt(declare.group(2));
+        long prefixes = alloues.keySet().stream()
+                .map(identifiant -> identifiant.substring(0, identifiant.indexOf('-')))
+                .distinct()
+                .count();
+        if (identifiantsDeclares != alloues.size() || prefixesDeclares != prefixes) {
+            defauts.add(String.format(
+                    "%s declare %d identifiants alloues et %d prefixes distincts, sa table en porte"
+                            + " %d et %d. Un compte qu'aucune moitie ne peut verifier depuis sa"
+                            + " branche est verifie a la fusion, ou les deux moities existent"
+                            + " (ADR-0085, clause 5)",
+                    REGISTRE, identifiantsDeclares, prefixesDeclares, alloues.size(), prefixes));
+        }
+        if (declare.find()) {
+            defauts.add(String.format(
+                    "%s ecrit deux comptes courants ; le second est le geste exact d'une instance qui"
+                            + " ajoute le sien plutot que de corriger celui qu'elle trouve"
+                            + " (ADR-0085, clause 5)",
+                    REGISTRE));
+        }
         return defauts;
     }
 
@@ -405,17 +473,63 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
     }
 
     /**
-     * ADR-0013 obligation 3. Le depot fautif porte les quatre defauts a la fois : un identifiant
-     * ecrit sans etre alloue, un identifiant alloue deux fois, une allocation qui nomme un document
-     * qui ne l'ecrit pas, et un homonyme ecarte que plus rien ne porte.
+     * Le cliquet de la section 3 du registre. Ce test ne dit pas <i>quelles</i> formes sont ecartees
+     * - le registre le dit, et un second exemplaire de cette liste rancirait (ADR-0061) - il dit
+     * seulement <b>combien</b>. C'est ce qui empeche qu'un rouge de clause 2 se referme par une ligne
+     * ajoutee au registre seul, sans diff de code et sans decision.
      */
     @Test
-    void unDepotFautifFaitEchouerLesQuatreClauses() {
+    void laTableDesHomonymesEcartesResteSousSonPlafond() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        String registre = lireSiTexte(racine.resolve(REGISTRE));
+        assertThat(homonymes(registre))
+                .as("ADR-0085, clause 4 : une ligne de la section 3 eteint la clause 2 pour"
+                        + " l'identifiant qu'elle nomme. Le plafond vaut exactement la taille de la"
+                        + " dette ; un ecart de plus se decide dans ce fichier de test, jamais dans"
+                        + " le registre seul")
+                .hasSize(PLAFOND_D_HOMONYMES);
+    }
+
+    /**
+     * <b>La distinction que ce garde-fou refuse de faire, prouvee plutot qu'affirmee.</b> Le rapport
+     * de qualite de s31 a fait rougir la clause 2 en citant verbatim, dans un bloc de code, le
+     * message d'erreur d'une mutation - donc un identifiant fictif jamais alloue. L'amendement du
+     * 2026-09-08 a tranche que <b>citer n'est pas moins qu'employer</b> : aucun contexte textuel -
+     * bloc de code, guillemets, voisinage du mot "identifiant" - n'exempte quoi que ce soit, parce
+     * qu'un tel contexte est exactement l'endroit ou un identifiant reellement non alloue passerait
+     * sans bruit.
+     *
+     * <p>Le depot fautif porte donc un rapport de sprint qui ne fait <b>que citer</b>, sous la forme
+     * meme du rapport reel, un identifiant qui n'est ni alloue ni ecarte. Il doit rougir. Le jour ou
+     * quelqu'un ajoute une exemption de contexte a la clause 2, ce test tombe.
+     */
+    @Test
+    void uneCitationDansUnMessageDErreurNEstPasExemptee() {
+        List<String> defauts = defautsDuRegistre(CONTRE_EXEMPLE.resolve("depot-fautif"));
+        assertThat(defauts)
+                .as("ADR-0085, clause 2 et amendement du 2026-09-08 : un identifiant non alloue cite"
+                        + " dans un message d'erreur reproduit verbatim est refuse comme n'importe"
+                        + " quel autre")
+                .anySatisfy(defaut -> assertThat(defaut)
+                        .contains("rapport-fautif.md")
+                        .contains("ecrit l'identifiant ZZZ-7"));
+    }
+
+    /**
+     * ADR-0013 obligation 3. Le depot fautif porte les cinq defauts a la fois : un identifiant
+     * ecrit sans etre alloue, un identifiant alloue deux fois, une allocation qui nomme un document
+     * qui ne l'ecrit pas, un homonyme ecarte que plus rien ne porte, et un compte courant que sa
+     * propre table dement.
+     */
+    @Test
+    void unDepotFautifFaitEchouerLesCinqClauses() {
         assertThatThrownBy(() -> verifierLeRegistre(CONTRE_EXEMPLE.resolve("depot-fautif")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("alloue deux fois ZZZ-2")
                 .hasMessageContaining("ecrit l'identifiant ZZZ-9")
                 .hasMessageContaining("qui ne l'ecrit pas")
-                .hasMessageContaining("ecarte ZZZ-8 comme homonyme");
+                .hasMessageContaining("ecarte ZZZ-8 comme homonyme")
+                .hasMessageContaining("declare 9 identifiants alloues et 2 prefixes distincts, sa"
+                        + " table en porte 3 et 1");
     }
 }
