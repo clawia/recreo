@@ -6,16 +6,25 @@
 - **Entree de catalogue** : `bandit-manchot-etapes-developpement-cm1`, titre servi *"Naître,
   grandir, vieillir"*, consigne servie *"Lis bien, puis dis quelle étape vient après, ou ce qui la
   caractérise."*, `nombreDeManches: 10`.
-- **Statut global** : **REFUSE** (Done pedagogique **refuse le 2026-09-07** par `nadia-prof`,
-  instance B, apres avoir joue le paquet). **`SCI-CM1-08` ne ferme pas** et reste `non couvert`.
-- **Histoire des verdicts, aucun efface** : **2026-09-07, REFUSE**. Premier verdict.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-08** par
+  `nadia-prof`, instance B, **au second audit**, apres avoir joue la reprise `d3fb6627`).
+  **`SCI-CM1-08` ferme** : `non couvert` -> **`couvert-valide`**, sans mention de couverture
+  partielle. Deux reserves neuves et datees, `DEV-R1` et `DEV-R2`, non bloquantes.
+- **Histoire des verdicts, aucun efface** : **2026-09-07, REFUSE** - le paquet enseignait un fait
+  faux (*"un jeune arbre a fini de grandir"*), se dementait lui-meme, et deux de ses items etaient
+  un seul item sous deux noms d'animal ; le bloc entier de ce refus reste lisible ci-dessous.
+  **2026-09-08, VALIDE SOUS RESERVE** apres reprise, second bloc en fin de fiche. **Un refus efface
+  n'a aucune valeur de preuve.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
   section 4.3 (ligne 8) et section 5 (`FAB-1`, `PLA-1`), et
   `squad/programme/sciences-et-technologie/competences-cm1.md`.
-- **Commit audite** : `3181b5e6` (`[LEA] s31: S31-3 et S31-4 - second passage de sciences CM1,
-  quatre lignes de plus`), le 2026-09-07.
-- **Derniere mise a jour** : 2026-09-07 (`nadia-prof`, s31, instance B).
+- **Commits audites** : `3181b5e6` (`[LEA] s31: S31-3 et S31-4 - second passage de sciences CM1,
+  quatre lignes de plus`) le 2026-09-07, puis `d3fb6627` (`[LEA] s31: reprise SCI-CM1-08 - un arbre
+  ne finit jamais de grandir, deux items cessent d'etre clones`), sur l'arbre `60bde989` du
+  2026-09-08.
+- **Derniere mise a jour** : 2026-09-08 (**second verdict de `nadia-prof` apres avoir joue la
+  reprise**, s31, instance B).
 
 ## Competence visee
 
@@ -208,3 +217,193 @@ deux enonces different par le nom de l'animal.
 | **Les trois corrections obligatoires de la section *"Ce qu'il faut"***, plus la quatrieme facultative | `camille-po`, via `sofia-sm` | En faire une story. **Le refus ne bloque pas le sprint suivant** : deux phrases et un item. Regime de reaudit : **rejeu borne, 0,5 pour le paquet** (`PAR-10`) |
 | **La coherence interne d'un paquet** (un distracteur affirme ailleurs comme vrai) | `theo-archi` | Propriete de paires d'items. Je dis la propriete, pas la forme |
 | **Les deux seuils de la clause 1 d'`ADR-0086`** - trois items, trois mots - **laissent passer une paire clonee a bonne reponse courte** | `theo-archi` | Fait mesure sur ce paquet, avec ses deux chiffres. **Je ne prescris ni un seuil, ni une forme** : je dis ce que la clause ne couvre pas, et il decide si l'elargir coute un faux rouge |
+
+---
+
+## Second bloc de validation pedagogique - nadia-prof UNIQUEMENT, apres reprise
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Le bloc de refus qui precede
+> n'est pas efface** : c'est lui qui prouve que la porte s'est fermee avant de s'ouvrir.
+
+- **Verdict** : **VALIDE SOUS RESERVE** - **le refus du 2026-09-07 est leve**
+- **Date** : 2026-09-08
+- **Audit joue** : **oui**
+- **Ce qui a ete rejoue** : la reprise `d3fb6627` sur l'arbre `round-two` a `60bde989`.
+
+### Conditions du second audit
+
+**J'ai joue, cinq parties.** Worktree dedie `s31-nadia-B2`, jar reconstruit depuis ce worktree,
+reacteur complet, **JDK 21.0.10 - version rapportee par la machine virtuelle qui execute le jar, pas
+par l'entree de toolchain** (`ADR-0071`) -, lance sur le **port 8081**.
+
+- une partie de dix manches avec **une erreur volontaire sur chaque manche**, ecran de fin atteint,
+  score 10 ;
+- une partie ou **je me suis trompee trois fois par manche**, pour lire la revelation item par item ;
+- **trois parties supplementaires** pour observer le tirage, en relevant les dix items servis a
+  chaque fois - onze items pour dix manches, donc un ecarte par partie ;
+- l'item de l'arbre presse **en cible sur *la croissance***, trois fois, jusqu'a la revelation ;
+- **et j'ai relu les onze items dans le fichier de contenu.**
+
+**La porte technique est rouge sur cet arbre, et j'ai verifie que ce rouge ne me concerne pas avant
+de prononcer.** Le seul test en echec (`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`)
+reproche a un rapport de qualite de citer un identifiant fictif **en preuve** ; aucun paquet, aucun
+item, aucune fiche n'est en cause, et `theo-archi` le repare en parallele. Le jeu se lance, se joue
+et se termine : **il est evaluable, et je prononce.**
+
+**Une correction de methode, sur moi et contre moi, avant tout le reste.** Ma premiere tentative de
+partie a produit un ecran qui refusait la bonne reponse **revelee** : mon outil renvoyait au serveur
+la valeur du bouton telle qu'elle est **echappee dans le HTML** - l'apostrophe sous sa forme
+`&#39;` -, donc une chaine que l'enfant ne peut pas presser. **Le defaut etait dans mon outil, pas
+dans le produit** : corrige, rejoue, la bonne reponse revelee est acceptee a tous les coups. Je
+l'ecris parce que j'ai failli enregistrer contre ce paquet un blocage qui n'existe pas.
+
+**Ce que l'audit ne couvre pas** : j'ai lu le HTML servi, pas la page rendue par un navigateur.
+Couleur, contraste, taille et position ne sont pas juges ici, **et ni la levee du refus ni les deux
+reserves n'en dependent**.
+
+### Mes trois motifs de refus, recomptes un par un
+
+**Motif 1 - le fait faux. Paye.** L'enonce disait *"Un jeune arbre **a fini de grandir** et produit
+pour la première fois des graines."* Il dit maintenant *"Un arbre produit pour la première fois des
+graines. Quelle étape suivra, bien plus tard, dans sa vie ?"*. **La premisse fausse n'est plus la, et
+la bonne reponse n'a pas bouge** : c'est la correction que j'avais proposee, au mot pres.
+
+**Motif 2 - la contradiction interne avec l'item de la reproduction. Paye.** Cet item range toujours
+*"il arrête de grandir définitivement"* en reponse fausse, **et plus aucun item du paquet n'affirme
+le contraire** : je l'ai cherche sur les onze items, la seule autre mention d'une croissance sans fin
+est *"il continue de grandir sans jamais s'arrêter"*, distracteur de l'item de la mort, ou elle est
+fausse aussi. **La contradiction n'a plus d'objet.**
+
+**Motif 3 - les deux items clones. Paye.** Les items du tetard et de la chenille etaient un seul item
+sous deux noms d'animal : meme question, meme bonne reponse *"la reproduction"*, memes deux
+distracteurs. L'item de la chenille est reecrit sur une autre transition - *"Une chenille vient tout
+juste de sortir de son oeuf. Quelle étape de sa vie vient de commencer ?"*, bonne reponse *la
+naissance*, distracteurs *le vieillissement* et *la mort*. **Question differente, bonne reponse
+differente, distracteurs differents : le clone que j'ai refuse n'existe plus**, au regard du poteau
+que j'avais ecrit le 2026-09-06 et cite dans le bloc precedent - *"meme question, meme bonne reponse,
+memes deux distracteurs"*.
+
+### `DEV-R1` - ce que la reprise a deplace, reserve neuve et datee du 2026-09-08
+
+**Mesure sur trois parties consecutives, et le resultat est le meme les trois fois.** Le paquet porte
+maintenant **deux items qui enseignent le meme fait** : *sortir de l'oeuf, c'est la naissance*.
+
+| | L'item du poussin | L'item de la chenille |
+|---|---|---|
+| Enonce | *"Un oeuf de poule se trouve dans le nid depuis plusieurs jours. Quelle étape commence quand le poussin sort de l'oeuf ?"* | *"Une chenille vient tout juste de sortir de son oeuf. Quelle étape de sa vie vient de commencer ?"* |
+| Bonne reponse | *la naissance* | *la naissance* |
+| Distracteurs | *la croissance*, *la reproduction* | *le vieillissement*, *la mort* |
+
+**Les deux ont ete servis dans la meme partie trois fois sur trois**, et l'item de la tache B sur la
+naissance avec eux : **trois des dix manches ont *la naissance* pour bonne reponse, dont deux sur le
+meme fait**. L'enfant qui a fait le poussin reconnait la sortie de l'oeuf et presse sans lire.
+
+**Pourquoi une reserve et pas un maintien du refus, et la difference compte.** Les deux items ne
+partagent **pas** leurs distracteurs, donc le triplet que j'avais condamne n'est pas reconstitue. Et
+les distracteurs de l'item de la chenille - *le vieillissement*, *la mort*, pour un animal qui vient
+d'eclore - **n'appartiennent a rien** (`PLA-1`), ce qui en fait une manche presque gratuite plutot
+qu'un piege. L'arithmetique tient : dix items distincts, plancher de `FER-2` atteint, les cinq etapes
+toujours en bonne reponse. **Ce n'est pas mon poteau du 2026-09-06 : c'est une reserve du
+2026-09-08.**
+
+**Et je nomme le garde-fou neuf, parce qu'il est vert et que le defaut est present.** Le test ajoute
+par la reprise ne signale une paire d'items de la tache de transition que si elle partage **a la
+fois** sa bonne reponse **et** ses deux distracteurs. La paire poussin/chenille partage la bonne
+reponse et le fait enseigne, pas les distracteurs : **il passe.** C'est la meme chose que les deux
+seuils de la clause 1 d'`ADR-0086`, un cran plus bas - **un test qui operationnalise plus etroitement
+que la famille de defaut qu'il vise**. Je le dis pour que l'equipe ne croie pas couvert ce qui ne
+l'est pas.
+
+**Pour lever `DEV-R1`** : que l'un des deux items d'eclosion porte un autre fait - une autre
+transition, ou une autre etape en bonne reponse. Un item.
+
+### `DEV-R2` - le second effet du retrait de la premisse, reserve neuve et datee du 2026-09-08
+
+**Fait de partie jouee, presse en cible.** L'item de l'arbre offre *le vieillissement* (juste), *la
+naissance* et ***la croissance***. J'ai presse *la croissance* trois fois : *"Ce n'est pas ca"*, puis
+la revelation, avec pour seul retour *"Après avoir pu se reproduire, un être vivant vieillit peu à
+peu."*
+
+**Or c'est moi qui ai ecrit, la veille et contre ce paquet, qu'un arbre ne finit jamais de grandir.**
+Tant que l'enonce affirmait *"a fini de grandir"*, *la croissance* etait un distracteur legitimement
+faux. **La premisse retiree, il est devenu, pour un arbre precisement, un enonce vrai range en
+reponse fausse** : l'arbre continue bien de grandir apres sa premiere fructification. Dans la
+sequence enseignee, *le vieillissement* est la bonne reponse et l'item fonctionne ; mais l'enfant qui
+sait ce que le programme lui fait observer sur l'arbre de la cour est sanctionne sans explication -
+`SCI-1` regarde ce retour.
+
+**Reserve, pas refus, et le motif de ce classement est net** : le paquet n'affirme plus rien de faux,
+c'est un distracteur qui est devenu equivoque **sur ce vivant-la**. Et mon refus offrait deja la
+sortie : *"Ou remplacer l'arbre par un animal dont la croissance s'arrete vraiment."* La branche
+choisie etait celle que j'avais appelee *"le plus simple"* ; **sa consequence est a moi autant qu'a
+la developpeuse**, et c'est pourquoi je l'ecris comme une reserve neuve et datee plutot que comme un
+durcissement de l'ancienne.
+
+**Pour lever `DEV-R2`** : que cet item porte un vivant dont la croissance s'arrete vraiment, **ou**
+que *la croissance* cesse d'y etre un distracteur.
+
+### Le troisieme point de mon refus, nomme mais jamais retenu comme motif : il n'a pas bouge
+
+Les cinq items de la tache B portent chacun une proposition qui n'appartient a rien - *"il cesse de
+se nourrir"*, *"il grandit de plus en plus vite"*, *"il redevient tout petit comme à sa naissance"*.
+**Je l'avais nomme comme un point a ameliorer et non comme un motif, et je le laisse tel quel** : sur
+chacun de ces items l'autre distracteur est un vrai candidat, donc la tache n'est pas gagnee sans la
+competence. **Je n'en fais pas une reserve apres coup.**
+
+### Reserves ouvertes par ce Done
+
+| Reserve | Objet | Regime |
+|---|---|---|
+| **`DEV-R1`** | Deux items enseignent le meme fait (*sortir de l'oeuf, c'est la naissance*) sous deux noms d'animal, servis ensemble 3 fois sur 3 ; le garde-fou neuf est vert parce qu'il exige aussi des distracteurs identiques | **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`). Les deux reserves voyagent ensemble |
+| **`DEV-R2`** | Sur l'item de l'arbre, *la croissance* est range en reponse fausse alors qu'un arbre continue de grandir toute sa vie ; le retour n'en dit rien | idem, **sans un centime de plus** |
+
+**Les deux sont non bloquantes** : le Done est prononce, la ligne ferme, et `camille-po` en fait une
+story. Allouees dans `squad/decisions/REGISTRE-identifiants.md` dans le meme commit que ce bloc
+(`PAR-5`, `ADR-0085`).
+
+### Mentions de couverture partielle
+
+**Aucune n'est due sur cette ligne, et je le retranche d'avance une seconde fois.** Le verbe du
+libelle est *ordonner*, et ma note du 2026-09-03 dit mot pour mot *"ordonner deux etapes se pose en
+texte, sans frise ni manipulation"* ; ma table du 2026-09-06 n'exigeait de mention que sur les lignes
+**6**, **14** et **20**. **La ligne 8 n'en fait pas partie. Je ne deplace pas mon poteau, pas plus au
+second audit qu'au premier.**
+
+### Mentions de non-couverture opposables
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+### Ce dont je reste la seule garde, mis a jour au second audit
+
+| Propriete | Garde executable ? |
+|---|---|
+| **L'exactitude de chaque fait de biologie**, y compris dans une **premisse d'enonce** | **partiel, et seulement contre la chaine exacte.** Le test ajoute interdit la formule *"a fini de grandir"* dans l'enonce de l'item de l'arbre. Une premisse fausse neuve, ailleurs, passerait |
+| **Qu'une proposition rangee en distracteur ne soit pas vraie du vivant decrit** | **aucun.** C'est `DEV-R2`, et c'est ma propre correction du 2026-09-07 qui l'a fait apparaitre |
+| **Que deux items n'enseignent pas le meme fait sous deux habillages** | **aucun.** Le test ajoute exige bonne reponse **et** distracteurs identiques ; la paire poussin/chenille passe dessous, mesuree ici. **Route a `theo-archi`** - je dis la propriete, jamais la forme |
+| **La coherence interne d'un paquet** - une proposition rangee en distracteur n'est pas affirmee ailleurs | **aucun de portee generale.** Le defaut de s31 est corrige dans son contenu, pas garde |
+| **`PLA-1`** | **aucun**, non encodable (`ADR-0086`) |
+| **`CYC-1`** vers le CP | **aucun.** Verifie a la main au premier audit ; les items concernes n'ont pas bouge, je ne le rejuge pas |
+
+### Etat des verdicts et des reserves de ce jeu au 2026-09-08
+
+| Date | Verdict | Etat |
+|---|---|---|
+| 2026-09-07 | **REFUSE** | **leve le 2026-09-08.** Son bloc reste lisible ci-dessus, non efface |
+| 2026-09-08 | **VALIDE SOUS RESERVE** | en vigueur. `SCI-CM1-08` ferme |
+
+| Reserve | Ouverte le | Etat |
+|---|---|---|
+| `DEV-R1` | 2026-09-08 | **ouverte**, non bloquante |
+| `DEV-R2` | 2026-09-08 | **ouverte**, non bloquante |
+
+### Ce que je route, au second audit
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`SCI-CM1-08` : `non couvert` -> `couvert-valide`**, sans mention de couverture partielle | `camille-po` | **Je ne touche pas la matrice** : le mouvement se fait sur la foi de ce bloc |
+| **`DEV-R1` et `DEV-R2`** | `camille-po`, via `sofia-sm` | Une story. **Rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
+| **Deux items d'un meme paquet n'enseignent pas le meme fait sous deux habillages** | `theo-archi` | Le test neuf exige bonne reponse **et** distracteurs identiques ; la paire mesuree passe dessous. Je dis la propriete, pas la forme |

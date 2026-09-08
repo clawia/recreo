@@ -6,16 +6,24 @@
 - **Entree de catalogue** : `bandit-manchot-familles-materiaux-cm1`, titre servi *"De quoi c'est
   fait ?"*, consigne servie *"Lis bien, puis dis de quelle famille de matériau il s'agit, ou quel
   matériau choisir."*, `nombreDeManches: 10`.
-- **Statut global** : **REFUSE** (Done pedagogique **refuse le 2026-09-07** par `nadia-prof`,
-  instance B, apres avoir joue le paquet). **`SCI-CM1-11` ne ferme pas** et reste `non couvert`.
-- **Histoire des verdicts, aucun efface** : **2026-09-07, REFUSE**. Premier verdict.
+- **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-08** par
+  `nadia-prof`, instance B, **au second audit**, apres avoir joue la reprise `0e162501`).
+  **`SCI-CM1-11` ferme** : `non couvert` -> **`couvert-valide`**, sans mention de couverture
+  partielle. Deux reserves neuves et datees, `MAT-R1` et `MAT-R2`, non bloquantes.
+- **Histoire des verdicts, aucun efface** : **2026-09-07, REFUSE** - sur les quatre proprietes que
+  `FER-1` oblige a servir, une seule etait servie par un item qui teste ce qu'il annonce ; le bloc
+  entier de ce refus, avec ses quatre motifs et ses deux tables, reste lisible ci-dessous.
+  **2026-09-08, VALIDE SOUS RESERVE** apres reprise, second bloc en fin de fiche. **Un refus efface
+  n'a aucune valeur de preuve.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
   section 4.3 (ligne 11, parmi *"les plus sures"*) et section 5 (`PLA-1`), et
   `squad/programme/sciences-et-technologie/competences-cm1.md`.
-- **Commit audite** : `3181b5e6` (`[LEA] s31: S31-3 et S31-4 - second passage de sciences CM1,
-  quatre lignes de plus`), le 2026-09-07.
-- **Derniere mise a jour** : 2026-09-07 (`nadia-prof`, s31, instance B).
+- **Commits audites** : `3181b5e6` (`[LEA] s31: S31-3 et S31-4 - second passage de sciences CM1,
+  quatre lignes de plus`) le 2026-09-07, puis `0e162501` (`[LEA] s31: reprise SCI-CM1-11 - trois
+  distracteurs deviennent des candidats plausibles (PLA-1)`), sur l'arbre `60bde989` du 2026-09-08.
+- **Derniere mise a jour** : 2026-09-08 (**second verdict de `nadia-prof` apres avoir joue la
+  reprise**, s31, instance B).
 
 ## Competence visee
 
@@ -197,3 +205,183 @@ le seul garde.
 | **`SCI-CM1-11` reste `non couvert`** | `camille-po` | La ligne ne ferme pas. **Je ne touche pas la matrice** |
 | **Les trois corrections de la section *"Ce qu'il faut"*** | `camille-po`, via `sofia-sm` | En faire une story. **Le refus ne bloque pas le sprint suivant** : la tache A est acquise, seuls quatre items et un indice sont a reprendre. Regime de reaudit : **rejeu borne, 0,5 pour le paquet** (`PAR-10`) |
 | **La coherence familles enseignees / familles servies en reponse** | `theo-archi` | Propriete d'ensemble sur le YAML, donc potentiellement mordable. Je dis la propriete, pas la forme |
+
+---
+
+## Second bloc de validation pedagogique - nadia-prof UNIQUEMENT, apres reprise
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Le bloc de refus qui precede
+> n'est pas efface** : c'est lui qui prouve que la porte s'est fermee avant de s'ouvrir.
+
+- **Verdict** : **VALIDE SOUS RESERVE** - **le refus du 2026-09-07 est leve**
+- **Date** : 2026-09-08
+- **Audit joue** : **oui**
+- **Ce qui a ete rejoue** : la reprise `0e162501` sur l'arbre `round-two` a `60bde989`.
+
+### Conditions du second audit
+
+**J'ai joue, cinq parties.** Worktree dedie `s31-nadia-B2`, jar reconstruit depuis ce worktree,
+reacteur complet, **JDK 21.0.10 - version rapportee par la machine virtuelle qui execute le jar,
+pas par l'entree de toolchain** (`ADR-0071`) -, lance sur le **port 8081**.
+
+- une partie de dix manches avec **une erreur volontaire sur chaque manche**, ecran de fin atteint,
+  score 10 ;
+- une partie ou **je me suis trompee trois fois sur chacune des dix manches**, pour lire la
+  revelation dix fois de suite ;
+- **trois parties supplementaires** pour observer le tirage : onze items pour dix manches, donc un
+  item ecarte par partie, et j'ai releve lequel a chaque fois ;
+- deux items presses **en cible** - le tuyau d'arrosage et la combinaison de plongee - jusqu'a la
+  revelation ;
+- **et j'ai relu les onze items dans le fichier de contenu**, y compris celui que le tirage ecarte.
+
+**La porte technique est rouge sur cet arbre, et j'ai verifie que ce rouge ne me concerne pas avant
+de prononcer.** Le seul test en echec (`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`)
+reproche a un rapport de qualite de citer un identifiant fictif **en preuve** ; aucun paquet, aucun
+item, aucune fiche n'est en cause, et `theo-archi` le repare en parallele. Le jeu se lance, se joue
+et se termine : **il est evaluable, et je prononce.** Le detail de ce raisonnement est en section 0
+de `squad/sprints/s31-second-passage-de-sciences-et-emc-cp/reaudit-nadia-instance-B.md`.
+
+**Ce que l'audit ne couvre pas** : j'ai lu le HTML servi, pas la page rendue par un navigateur.
+Couleur, contraste, taille et position ne sont pas juges ici, **et ni la levee du refus ni les deux
+reserves n'en dependent**.
+
+### Mes quatre motifs de refus, recomptes un par un
+
+**Le titre du commit de reprise n'annonce qu'un de mes quatre motifs.** J'ai donc verifie les trois
+autres nommement, sans me fier au titre. **Les quatre sont payes.**
+
+**Motif 1 - les quatre proprietes de `FER-1` servies par un item qui teste ce qu'il annonce. Paye.**
+Etat sur les propositions telles qu'elles m'ont ete servies a l'ecran :
+
+| Propriete du libelle | Item | Bonne reponse | Distracteurs servis | Un enfant en envisage-t-il un ? |
+|---|---|---|---|---|
+| **resistance** | le pont | le metal | **le bois**, le verre | **oui, le bois** - un pont en bois existe, et il faut savoir pourquoi il ne suffit pas pour des camions |
+| **isolation** | le manche de poele | le bois | **le metal**, le verre | **oui, le metal**, la conception fausse utile. Item inchange : c'etait deja le bon |
+| **souplesse** | le vetement | le tissu | **le cuir**, le metal | **oui, le cuir** - un vetement en cuir existe et il est bien moins souple |
+| **impermeabilite** | la combinaison de plongee | le plastique | **le tissu**, le bois | **oui, le tissu**, reponse spontanee sur un vetement |
+
+**Quatre proprietes sur quatre, contre une sur quatre la veille.** `FER-1` n'est plus seulement
+tenue a la lettre : **son objet est atteint. C'est la barre que j'avais ecrite, elle est franchie, et
+le refus tombe.**
+
+**Motif 2 - `PLA-1` sur les items 6, 10 et 11. Paye sur les trois items obligatoires.** Ma demande
+etait *"au moins un distracteur qu'un enfant choisirait vraiment"* sur les items 6, 10 et 11, **et de
+preference aussi 8**. Les trois obligatoires y sont. **L'item 8, le tuyau d'arrosage, ne l'est pas** -
+il offre encore *le verre* et *le metal*. **C'etait facultatif dans mon refus et cela reste
+facultatif** : ce point devient `MAT-R2`. **Une barre qu'on releve apres coup fait de ma porte un
+caprice.**
+
+**Motif 3 - l'indice qui ne voulait rien dire. Paye.** *"ne laisse jamais passer l'eau, meme
+liquide"* est remplace par *"Ce matériau ne garde jamais aucune odeur ni aucun goût, même après des
+centaines de lavages."* **C'est vrai** - le verre ne retient ni gout ni odeur, a la difference du
+plastique - **et c'est lisible par un enfant de CM1**. Lu a l'ecran apres erreur volontaire, sur
+trois parties.
+
+**Motif 4 - la sixieme famille jamais enseignee. Paye.** Le caoutchouc cede la place au plastique,
+enseigne en tache A par le gobelet. Mon refus offrait exactement ces deux issues et c'est la seconde
+qui a ete prise.
+
+*Point nomme, non retenu* : la reponse la plus exacte pour une combinaison de plongee serait le
+**caoutchouc** (neoprene). Ranger un polymere de synthese dans les matieres plastiques est defendable
+au cycle 3, ou les cinq familles enseignees sont bois, metal, verre, plastique et tissu - **et
+surtout c'est l'issue que j'ai moi-meme autorisee**, je ne la reproche donc pas. Si le paquet
+enseigne un jour six familles, cet item devra recuperer le caoutchouc.
+
+*Le cuir n'est pas le meme cas* : mon motif portait sur une famille servie **en bonne reponse** sans
+etre enseignee. Un distracteur n'a pas besoin d'appartenir aux familles du programme pour etre un
+candidat que l'enfant envisage - et c'est moi qui ai propose le cuir.
+
+### `MAT-R1` - ce que la reprise a introduit, reserve neuve et datee du 2026-09-08
+
+**Fait de partie jouee, mesure sur quatre parties consecutives.** L'item de la bouteille dit
+maintenant *"On veut fabriquer une bouteille réutilisable des centaines de fois, qui ne doit jamais
+garder le goût du dernier liquide versé. **Il faut un matériau imperméable.** Lequel choisir ?"* -
+bonne reponse *le verre*, distracteurs *le plastique* et *le bois*.
+
+**Et l'item de la combinaison, servi dans la meme partie quatre fois sur quatre**, dit *"...ne doit
+jamais laisser entrer l'eau. **Il faut un matériau imperméable.** Lequel choisir ?"* - bonne reponse
+**le plastique**.
+
+L'enfant lit deux fois la meme phrase et **le plastique est juste a l'une, faux a l'autre**. Presse
+*le plastique* sur la bouteille, il recoit *"Ce n'est pas ca"* et un indice qui parle du gout,
+**jamais du fait que le plastique est impermeable lui aussi**. Verifie a l'ecran jusqu'a la
+revelation.
+
+Deux consequences, separees :
+
+1. **le critere annonce n'est plus celui qui departage** - l'impermeabilite elimine le bois, c'est le
+   gout qui elimine le plastique. L'item **reste solvable** parce que l'enonce dit le gout, et c'est
+   ce qui en fait une reserve et non un refus ; mais il porte desormais **deux criteres**, la ou ma
+   note du 2026-09-03 sur cette ligne - verifiee tenue sur les onze items au premier audit - dit
+   *"une propriete par item, jamais deux : la charge cognitive double sinon"* ;
+2. **le risque d'apprentissage est nommable** : un enfant peut en repartir avec *"le plastique n'est
+   pas impermeable"*, qui est faux et que l'autre item du meme paquet dement.
+
+**Pourquoi une reserve et pas un maintien du refus, dit franchement.** Ma section *"Ce qu'il faut"*
+offrait deux issues sur cet item : *que l'enonce dise ce qui departage le verre du plastique*, **ou**
+*que le verre cesse d'etre la reponse*. La premiere a ete prise, a la lettre. Le resultat me montre
+quelque chose que je ne voyais pas en ecrivant cette phrase : **je l'ecris donc comme une reserve
+nouvelle et datee, jamais comme un durcissement de l'ancienne.**
+
+**Pour lever `MAT-R1`** : que l'item de la bouteille cesse d'annoncer *l'impermeabilite* comme
+critere - par exemple en n'annoncant que la propriete qui departage reellement -, **ou** que le verre
+cesse d'y etre la bonne reponse. Une phrase.
+
+### Reserves ouvertes par ce Done
+
+| Reserve | Objet | Regime |
+|---|---|---|
+| **`MAT-R1`** | L'item de la bouteille annonce l'impermeabilite alors que c'est la retention du gout qui departage, et **le plastique y est faux sous une phrase qui le rend juste a l'item de la combinaison** | **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`). Les deux reserves voyagent ensemble |
+| **`MAT-R2`** | L'item du tuyau d'arrosage n'offre aucune alternative serieuse (*le verre*, *le metal*) - `PLA-1`. C'etait le *de preference* de mon refus, il reste facultatif | idem, **sans un centime de plus** |
+
+**Les deux sont non bloquantes** : le Done est prononce, la ligne ferme, et `camille-po` en fait une
+story. Allouees dans `squad/decisions/REGISTRE-identifiants.md` dans le meme commit que ce bloc
+(`PAR-5`, `ADR-0085`).
+
+### Mentions de couverture partielle
+
+**Aucune n'est due sur cette ligne.** Ma table du 2026-09-06 n'en exigeait que sur les lignes **6**,
+**14** et **20** de sciences, et `SCI-CM1-11` n'en fait pas partie. La parenthese *(resistance,
+isolation, souplesse, imperméabilité)* est une liste d'elements a servir, **et les quatre sont
+servis par un item qui les teste** : c'est exactement ce que ce second audit a verifie. **La ligne
+ferme sans reserve de perimetre, et je n'en ajoute pas apres coup.**
+
+### Mentions de non-couverture opposables
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+### Ce dont je reste la seule garde, mis a jour au second audit
+
+| Propriete | Garde executable ? |
+|---|---|
+| **`PLA-1`** - une proposition est un candidat, jamais un remplissage | **aucun de portee generale** (`ADR-0086` : clause non encodable). Le test ajoute par la reprise verifie **les trois materiaux nommes dans mon refus sur les trois items nommes** : c'est un cliquet contre la regression exacte, pas un garde de la propriete. `MAT-R2` le prouve - il est vert et l'item du tuyau n'a pas d'alternative serieuse |
+| **Qu'un item teste la propriete qu'il annonce** | **aucun.** C'est `MAT-R1`, et c'est le coeur de ce que mon refus faisait payer. **Route a `theo-archi`** - je dis la propriete, jamais la forme |
+| **`SCI-1`** - qu'un indice dise quelque chose de vrai | **partiel, contre la chaine exacte.** Le test ajoute interdit la formule *"meme liquide"* dans l'indice d'un item nomme ; un indice neuf qui ne veut rien dire passerait |
+| **La coherence familles enseignees / familles servies en bonne reponse** | **oui, desormais.** Toute bonne reponse de la tache de choix doit etre une famille enseignee en tache A. **C'est exactement ce que j'avais route a `theo-archi` le 2026-09-07, et c'est paye** |
+| **`FAB-1b`** telle que le test l'encode maintenant | **plus faible que mon exception ne le dit.** Il exigeait six bonnes reponses distinctes, il exige desormais qu'aucun materiau ne domine **la totalite** de la tache - il accepterait cinq items identiques sur six. **Le contenu, lui, varie reellement** (cinq materiaux sur six items) : ce n'est donc **pas un motif**, mais *varier* n'est pas *ne pas etre constant*. **Route a `theo-archi` et `lea-dev` comme un ecart de garde-fou** |
+| **L'exactitude de chaque appariement propriete / materiau** | **aucun** |
+
+### Etat des verdicts et des reserves de ce jeu au 2026-09-08
+
+| Date | Verdict | Etat |
+|---|---|---|
+| 2026-09-07 | **REFUSE** | **leve le 2026-09-08.** Son bloc reste lisible ci-dessus, non efface |
+| 2026-09-08 | **VALIDE SOUS RESERVE** | en vigueur. `SCI-CM1-11` ferme |
+
+| Reserve | Ouverte le | Etat |
+|---|---|---|
+| `MAT-R1` | 2026-09-08 | **ouverte**, non bloquante |
+| `MAT-R2` | 2026-09-08 | **ouverte**, non bloquante |
+
+### Ce que je route, au second audit
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`SCI-CM1-11` : `non couvert` -> `couvert-valide`**, sans mention de couverture partielle | `camille-po` | **Je ne touche pas la matrice** : le mouvement se fait sur la foi de ce bloc |
+| **`MAT-R1` et `MAT-R2`** | `camille-po`, via `sofia-sm` | Une story. **Rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
+| **Un item teste la propriete qu'il annonce** | `theo-archi` | Propriete de contenu, probablement non encodable comme `PLA-1`. **A nommer comme telle plutot qu'a laisser croire couverte** |
+| **`FAB-1b` : le test accepte cinq bonnes reponses identiques sur six** | `theo-archi`, `lea-dev` | Un garde-fou relache au-dela de ce que ma correction de lecture du 2026-09-07 demandait. Le contenu est conforme |

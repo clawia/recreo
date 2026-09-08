@@ -94,6 +94,22 @@ neufs, et s'ajoutent aux 83. **`theo-archi` a deja corrige ce chiffre de son cot
 mesure lui appartient et je ne la reecris pas.** Je le note ici parce qu'un chiffre faux laisse dans
 un fichier que tous les agents lisent est de la meme famille qu'une reference qui pointe vers rien.
 
+**Note de `nadia-prof`, instance B, au reaudit de s31 (2026-09-08).** J'ai alloue moi-meme, dans la
+table de la section 4, les **quatre identifiants de reserve** que mes deux verdicts de reaudit
+ouvrent : `MAT-R1` et `MAT-R2` sur `cm1-sciences-familles-materiaux` (`SCI-CM1-11`), `DEV-R1` et
+`DEV-R2` sur `cm1-sciences-etapes-developpement` (`SCI-CM1-08`). **Deux prefixes sont neufs, `MAT` et
+`DEV`**, tous deux verifies libres dans la table de la section 4 avant d'ecrire, et verifies absents
+du depot entier. **C'est une allocation mecanique** - chaque ligne nomme la fiche ou la reserve est
+definie, jamais ce qu'elle veut dire (`ADR-0061`) - **et non une decision d'architecture** : je
+l'ecris dans le meme geste que mes verdicts, parce qu'un garde-fou mord toute reserve ecrite sans
+allocation visible et qu'il a deja rougi deux fois ce sprint pour ce motif exact.
+
+**Je ne retouche aucun chiffre de compte global, et c'est delibere.** `theo-archi` et l'instance A
+ecrivent dans ce fichier en meme temps que moi ; un compte que je recalculerais sur un arbre que je
+ne vois pas entier serait un chiffre sans methode, exactement ce que ce fichier a deja porte deux
+fois. **Compte du seul point de vue de cette allocation : +4 identifiants, +2 prefixes.** Le total
+appartient a qui le mesure sur l'arbre assemble.
+
 ## 2. Ce que ce registre alloue, et ce qu'il n'alloue pas
 
 Il alloue les identifiants de **condition** et de **reserve**, les deux genres que la mesure de s30
@@ -244,6 +260,8 @@ clause 2 par une exemption.
 | `DES-5` | `squad/sprints/s25-le-premier-palier-visuel/contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md` |
 | `DES-6` | `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md` |
 | `DES-7` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md` |
+| `DEV-R1` | `squad/conformite/FICHE-bandit-manchot-etapes-developpement-cm1.md` |
+| `DEV-R2` | `squad/conformite/FICHE-bandit-manchot-etapes-developpement-cm1.md` |
 | `DRO-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `DRO-R2` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `DRO-R3` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
@@ -381,6 +399,8 @@ clause 2 par une exemption.
 | `LIS-8` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
 | `LIS-9` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
 | `LIS-10` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
+| `MAT-R1` | `squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md` |
+| `MAT-R2` | `squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md` |
 | `MD-1` | `squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md` |
 | `MD-2` | `squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md` |
 | `MD-3` | `squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md` |
