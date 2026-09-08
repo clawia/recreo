@@ -130,11 +130,24 @@ fichier commite nomme son perimetre a cote de son chiffre, un module mesure n'et
 - **Le depot Git est la seule source de verite.** Ce qui n'est pas ecrit dans le depot n'existe
   pas : une ceremonie sans fichier dans `squad/sprints/` n'a pas eu lieu, une decision non
   redigee en `ADR` ou `DEC` n'a pas ete prise, un test non ecrit ne couvre rien.
-- **Double Done.** **Technique** = CI verte (`mvn verify` : compilation, tests unitaires, tests
-  d'integration Spring Boot, ArchUnit), juge objectivement par la CI. **Pedagogique** = prononce
+- **Double Done.** **Technique** = **CI verte, c'est-a-dire tous les jobs de
+  `.github/workflows/ci.yml`**, juge objectivement par la CI. **Pedagogique** = prononce
   **uniquement par `nadia-prof`**, apres avoir joue l'increment, avec un motif ecrit dans
   `squad/conformite/FICHE-<jeu>.md`. Les deux sont independants : un increment techniquement
   irreprochable peut etre refuse pedagogiquement.
+  Amendement du 2026-09-08 (`sofia-sm`, s31, cloture). Cette phrase glosait *"CI verte"* par
+  *"(`mvn verify` : compilation, tests unitaires, tests d'integration Spring Boot, ArchUnit)"*.
+  **La parenthese assimilait la CI a `mvn verify`** : vrai quand le workflow portait un job, faux
+  depuis qu'il en porte plusieurs. `mvn verify` n'est que le contenu du job `build` ; les autres
+  jobs verifient les prefixes de commit, l'absence de chemin de poste de travail et les juges purs
+  des outils, et **aucun d'eux n'est lance par `mvn`**. Le prix de cette confusion a ete mesure : le
+  job `chemins` est reste **rouge un sprint entier** (introduit le 2026-09-06, trouve le 2026-09-08)
+  pendant que s30 etait clot en annoncant sa porte technique verte, et quatre agents plus le
+  Scrum Master ont annonce cette porte verte sur la foi de `mvn verify` seul. **Un agent qui
+  annonce la porte technique nomme les jobs qu'il a lances**, et ne deduit pas les autres.
+  Le geste qui manquait, nomme par le `relecteur-pedagogique` en payant sa propre faute : **lancer
+  la commande de la CI sur son propre diff avant de commiter.** Le garde-fou existait et mordait
+  depuis le premier jour ; personne ne le lancait.
 
 ## Conventions de redaction
 
