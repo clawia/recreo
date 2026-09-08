@@ -8,17 +8,22 @@
 - **Auteur** : `camille-po`.
 - **Sprints** : s32 (perimetre ferme), s33 et s34 (perimetre indicatif, gouverne par les memes
   clauses).
-- **Statut** : Acceptee.
+- **Statut** : Acceptee, amendee le 2026-09-08 (meme jour, section 13 - quatrieme arbitrage, le
+  palier 2 finance a son entree minimale).
 - **Lien** :
   `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`
   (`nadia-prof`, commit `f503b4e5`, arbitrage prealable complet - chiffres, clauses et conditions
-  repris sans etre recalcules), `DEC-0077` (section 8.3, precedent de forme pour "vu et non
-  retenu"), `DEC-0079`, `DEC-0080`, `DEC-0081`, `DEC-0082` (strategie et clotures de s29 a s31,
-  `PAR-1` a `PAR-11`), `ADR-0081` (codes de ligne de referentiel), `ADR-0085` (`PAR-5`, registre des
-  identifiants), `ADR-0080` (palier 2, statut *Propose*), `DEC-0074` (referentiels EMC CP, sciences
-  CM1, EPS CP et CM1), `DEC-0075` (corpus d'oeuvres, question de droits ouverte),
-  `squad/programme/MATRICE-couverture.md`, `docs/backlog/backlog.md` (sections "Sprint 31",
-  "Backlog ouvert pour s32").
+  repris sans etre recalcules ; sections 16 et 17, meme fichier, commit `b1ee89f4`, amendement du
+  2026-09-08 - la barre de longueur d'enonce au CP et le compte reel de fermeture du palier 2),
+  `DEC-0077` (section 8.3, precedent de forme pour "vu et non retenu"), `DEC-0079`, `DEC-0080`,
+  `DEC-0081`, `DEC-0082` (strategie et clotures de s29 a s31, `PAR-1` a `PAR-11`), `ADR-0081`
+  (codes de ligne de referentiel), `ADR-0085` (`PAR-5`, registre des identifiants), `ADR-0080`
+  (palier 2, statut *Propose*, amende par `theo-archi` le 2026-09-08), `DEC-0074` (referentiels EMC
+  CP, sciences CM1, EPS CP et CM1), `DEC-0075` (corpus d'oeuvres, question de droits ouverte),
+  `squad/sprints/s32-instruction-prealable/avis-faisabilite-theo-achevement-du-palier-2.md`
+  (`theo-archi`, branche `s32-theo`, commit `dcbcd65a` - **branche non fusionnee dans `round-two` a
+  la date de cet amendement**), `squad/programme/MATRICE-couverture.md`, `docs/backlog/backlog.md`
+  (sections "Sprint 31", "Backlog ouvert pour s32", "Backlog ouvert pour s33").
 
 ---
 
@@ -252,7 +257,7 @@ engage ici).
 
 | Instance | Postes indicatifs |
 |---|---|
-| A | Remplissage `histoire-geographie-cm1`, tranche 2 (`HG-CM1-08`, `-12`, 18 items) ; `D4` (groupe 2b) ; `D7` (verification `SCO-1`) ; instruction des dix lignes sans annotation de jouabilite (section 9) ; passe transverse |
+| A | Remplissage `histoire-geographie-cm1`, tranche 2 (`HG-CM1-08`, `-12`, 18 items) ; `D4` (groupe 2b) ; `D7` (verification `SCO-1`) ; instruction des **onze** lignes sans annotation de jouabilite (`nadia-prof`, section 11 de son arbitrage, corrigee section 17.7 : `MAT-CP-10` en est la onzieme, la cellule du quadrillage n'en portait aucun motif) ; passe transverse |
 | B | Un lot de sciences CM1 neuf, avec reserves soldees dans le sprint ; `SIG-R1`/`R2`, `CHA-R1` (residu 2a) |
 | C | Second lot EPS CP - corps et effort (`EPS-CP-10`, `EPS-CP-11`), **sous condition explicite de la frontiere de la section 9** ; reserves soldees dans le sprint |
 
@@ -389,3 +394,119 @@ plus tot, sous forme d'une decision distincte si son avis ouvre un chantier.
   section 6 du backlog : `EMO-R1`, `POL-R1`, `EXC-R4` restent sans barre imposee, malgre l'annonce
   d'une barre dans `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` que cet arbitrage
   prealable ne tient finalement pas - fait signale, non resolu a sa place).
+
+## 13. Amendement du 2026-09-08 (meme jour) - quatrieme arbitrage : le palier 2 finance a son
+## entree minimale, les deux trous de contrat payes d'abord
+
+**L'utilisatrice a rendu un quatrieme arbitrage le 2026-09-08**, apres reception du chiffre que la
+section 11 laissait ouvert : le compte reel de fermeture du palier 2 par `nadia-prof` (sections 16
+et 17 de son arbitrage prealable, meme fichier que la section 1, commit `b1ee89f4`) et l'avis de
+faisabilite de `theo-archi` sur son chemin de jeu (`squad/sprints/s32-instruction-prealable/
+avis-faisabilite-theo-achevement-du-palier-2.md`, branche `s32-theo`, commit `dcbcd65a` - **cette
+branche n'est pas fusionnee dans `round-two` a la date de cet amendement**, et rien ci-dessous ne le
+presuppose). La section 11 ci-dessus est tranchee par cet amendement ; elle n'est pas reecrite.
+
+### 13.1 Ce qu'elle a vu, et ce qu'elle n'a pas retenu
+
+Trois options lui ont ete presentees, chiffrees par `nadia-prof` et par `theo-archi` sans etre
+recalculees ici :
+
+- **Le palier 2 entier** : le chemin de jeu (cinq lots de developpement, `L-a` a `L-e` de l'avis de
+  `theo-archi`, section 7) plus tout son contenu chiffrable a ce jour (trois lots de designation,
+  base 2,0/2,5/2,5, soit 7,0 de la borne de `nadia-prof`). **Il ferme 3 lignes sur les onze qu'il
+  touche, et 4 au plus sur les trois sprints s32-s34** en tenant la clause que `nadia-prof` s'impose
+  depuis s29 - pas plus d'un lot de designation dans le sprint de premiere mise en service (section
+  17.5 de son arbitrage). Le rendement mesure - **2,33 de sa borne par ligne fermee** - est **le
+  plus mauvais de tous les postes que ce document chiffre** (section 17.5), et c'est `nadia-prof`
+  qui le dit contre sa propre section 9, ecrite le matin meme sur la foi d'un compte de dix lignes
+  "debloquees" qui n'en ferme reellement que trois.
+- **Les deux trous seuls, sans financer aucun contenu** : payer le chemin de jeu (`L-a`, `L-b`,
+  `L-c`, `L-d`) sans jamais commander le lot de designation qui l'exploite (`L-e`). `theo-archi`
+  nomme lui-meme ce choix comme defendable, a la condition qu'il soit fait "les yeux ouverts"
+  (section 9 de son avis) : la dette se reduit alors a des dessins et a un audit, et **aucune ligne
+  de matrice ne ferme**.
+- **L'avis de `nadia-prof` de ne rien financer du tout** : "je ne recommande pas de financer le
+  palier 2. Trois lignes au prix de six a huit ailleurs" (section 17.5).
+
+**Elle a vu les trois et a choisi une quatrieme voie**, a la forme deja tracee par `DEC-0077`,
+section 8.3, pour "vu et non retenu" : **l'entree la moins chere que `nadia-prof` nomme elle-meme
+comme la plus sure** (section 17.5) - **un seul lot de designation, `QLM-CP-11` + `QLM-CP-14`, base
+1,0 chacune (`nadia-prof` en est la source), prix 2,0, pour deux lignes fermees**. Aucun fait a
+verifier contre une source, aucun probleme de taille d'image, aucun besoin de reproduction d'oeuvre,
+trois dessins (un plan de classe, deux frises de la vie de l'enfant). C'est le seul endroit du
+palier 2 ou le rendement - 1,0 de sa borne par ligne - approche celui du reste du depot, et c'est le
+lot ou ses huit conditions `ZON-*`, jamais encore mordues sur du contenu reel, le rencontrent au
+moindre risque (`PAR-13`).
+
+**Ce que cette entree ne finance pas, et que cette decision ne finance donc pas non plus** :
+`QLM-CP-12` (necessite un fait verifie contre une source, base 2,5, mention `VUE` due), et les deux
+paquets textuels qui ouvriraient sans fermer `MAT-CP-10` et `HDA-CM1-09`, ni la taille d'image plus
+grande que `HG-CM1-09` demande. Ces quatre lignes restent, apres cet amendement, exactement dans
+l'etat que la section 17.2 de `nadia-prof` decrit.
+
+### 13.2 Ce que cela coute sur la borne, et ce qui en sort
+
+**La borne de chaque sprint reste 12,0, constante (section 2.1) : cet amendement ne l'etire pas.**
+s32 est deja saturee a 12,0 exactement (section 6, trois totaux de 4,0). Les compositions
+indicatives de s33 et s34 (section 8) ne portent pas de chiffrage poste par poste - seul leur
+plafond de lignes (6 chacune) est donne - et cette decision ne comble pas cette absence en
+inventant un chiffre qui n'est ni de `nadia-prof` ni de `theo-archi`.
+
+**Ce que je peux dire sans recalculer** : le lot de designation ne peut pas se jouer avant que
+`L-c` soit livre (un developpeur, un sprint entier, `PartieController` etant indivisible - avis de
+`theo-archi`, sections 4.6 et 7), donc son audit par `nadia-prof` (2,0) ne peut pas tomber avant s34
+au plus tot. **A s34, ce n'est pas un poste gratuit** : au tarif de `nadia-prof` (0,5 a 0,75 pour un
+lot neuf de sciences ou d'EPS, section 17.5), 2,0 vaut l'equivalent de trois lots neufs ordinaires.
+Ce lot **deplace donc reellement du perimetre**, et cette decision ne le nie pas : soit un poste
+indicatif de s34 (section 8) cede 2,0 de la borne de l'instance qui herite du lot de designation,
+soit la retenue de couture tombe a la cloture de s32 (section 2.1) et porte la borne de s33 a 15,0 -
+un surplus de 3,0 qui absorberait alors ce cout sans rien deplacer. **Cette decision ne choisit
+aucune des deux voies** : lequel des postes indicatifs de s34 cede sa place, ou si le surplus de
+couture l'absorbe, est arrete par `sofia-sm` au planning du sprint qui recoit reellement `L-e`, une
+fois `L-c` sequence.
+
+**Ce que cet amendement ne fait pas ici, dit explicitement** : il n'ajoute pas 2,0 en silence a une
+composition de s33 ou s34 qui etait deja donnee comme pleine ; il nomme le cout, nomme la condition
+qui l'absorbe sans rien couper, et route le choix a `sofia-sm`.
+
+### 13.3 Les deux trous de contrat se paient d'abord - aucun lot de designation n'est valide avant
+
+`theo-archi` a trouve, en instruisant le chemin de jeu, deux trous qu'`ADR-0080` n'avait pas vus
+(son avis, section 4.5) :
+
+- **Trou A - bloquant.** `DesignationVerdict` ne porte pas d'`enonce`, la ou `Verdict` et
+  `SaisieVerdict` en portent un obligatoire (`ADR-0084`, `REV-3`). Sur une designation c'est pire
+  qu'ailleurs : le dessin n'est plus a l'ecran a la fin de la partie, et l'enfant lirait une reponse
+  sans la question et sans le terrain. `nadia-prof` ne valide aucun lot de designation avant que ce
+  trou soit ferme (section 17.6 de son arbitrage).
+- **Trou B - bloquant, et la reponse pedagogique existe deja.** `bonneZone` est un `Zone.id()`, et
+  l'ecran de fin de partie ne peut en faire ni un identifiant lu par un enfant, ni un libelle - les
+  libelles de zone etant positionnels (`ZON-10`), un libelle dirait une position qui n'enseigne
+  rien. **`nadia-prof` a deja tranche** (section 17.6) : l'ecran de fin de partie porte l'enonce et
+  ne montre rien a la place de la zone attendue ; la revelation reste sur l'ecran de manche, ou le
+  dessin est encore la, via `DesignationSession.bonneZoneRevelee()` (`SCO-5` intacte). Ce que cette
+  reponse coute est nul en unites d'audit ; `theo-archi` confirme qu'elle rend la forme la moins
+  chere des deux qu'il avait identifiees suffisante (section 17.6).
+
+**L'`ADR` qui acte ces deux changements de contrat dans `domain` est ecrit par `theo-archi`, pas par
+`camille-po`.** Cette decision le route, par `sofia-sm`, comme prealable a toute story de
+developpement du lot de designation : `L-b` (trou A) et la part de `L-c` qui omet le bloc de
+reponse pour une designation (trou B) ne se commencent pas avant que cet `ADR` existe. Les stories
+correctives correspondantes (section suivante du backlog) nomment cet `ADR` comme un prerequis a
+ecrire, jamais comme un acquis.
+
+### 13.4 Ce que cet amendement ne fait pas
+
+- Il ne ferme aucune ligne de `squad/programme/MATRICE-couverture.md` et ne change le statut
+  d'aucune : `QLM-CP-11`, `QLM-CP-12` et `QLM-CP-14` restent `non couvert`, `MAT-CP-10` aussi (sa
+  cellule porte desormais un motif, pas un nouveau statut).
+- Il ne prononce aucun Done pedagogique.
+- Il n'ecrit pas l'`ADR` des deux trous de contrat : voir section 13.3, c'est `theo-archi`.
+- Il ne fusionne pas la branche `s32-theo` : elle reste distincte de `round-two` a cette date.
+- Il ne recalcule aucun chiffre de `nadia-prof` ni de `theo-archi` : le prix (2,0), le compte de
+  lignes (3 fermees, 3 ouvertes, 5 non touchees sur onze) et le sequencement des lots de
+  developpement (`L-a` a `L-e`) sont repris tels quels.
+- Il n'affecte aucun agent ni aucune instance a ce lot : l'affectation, comme pour `POS-R3` et
+  `FOP-R4`/`DRO-R4` (section 6), revient a `sofia-sm`.
+- Il ne choisit pas quel poste indicatif de s33 ou s34 cede sa place au cout de 2,0 : voir section
+  13.2.
