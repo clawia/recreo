@@ -12066,18 +12066,20 @@ deux routes a s33.
   politesse-cp`), `EMC-CP-03` (`bandit-manchot-exclusion-cp`).
 - **Criteres d'acceptation, par paquet** :
   - **`bandit-manchot-emotions-autrui-cp`** :
-    - Etant donne les items 4 et 5 (`EMO-R1`), quand ils sont revus, alors leur longueur et leur
-      complexite syntaxique se rapprochent de ce que le produit a deja accepte sur les paquets
-      d'EMC CP fermes le 2026-09-05 (15 et 14 mots au plus, une seule proposition principale) -
-      propriete a tenir sans barre chiffree imposee, `nadia-prof` n'en ayant jamais ecrit pour l'EMC
-      CP.
+    - Etant donne les items 4 et 5 (`EMO-R1`, mesures a 17 et 18 mots), quand ils sont revus, alors
+      chacun compte au plus 15 mots (`LON-1`) et au plus deux phrases, la seconde etant la question
+      (`LON-2`) - barre chiffree ecrite par `nadia-prof` le 2026-09-08, apres l'ecriture initiale de
+      cette story (arbitrage prealable de s32, section 16.4 ; convention de comptage section 16.1,
+      une forme elidee comptant pour un mot), et qui remplace ici la formulation sans barre
+      chiffree de la premiere version de ce critere.
     - Etant donne les trois indices de la tache B qui emploient un vocabulaire au-dessus du CP
       (posture, volontairement, brusques - `EMO-R2`), quand ils sont revus, alors ils emploient un
       vocabulaire que le produit a deja accepte sur les deux memes paquets de reference.
   - **`bandit-manchot-formules-de-politesse-cp`** :
-    - Etant donne les cinq enonces de la tache B (`POL-R1`, 20 a 26 mots), quand ils sont revus,
-      alors leur longueur se rapproche de meme du plafond deja accepte (15 et 14 mots), sans barre
-      chiffree imposee.
+    - Etant donne les cinq enonces de la tache B (`POL-R1`, mesures a 20, 22, 23, 24 et 25 mots,
+      dont un en trois phrases), quand ils sont revus, alors chacun compte au plus 15 mots (`LON-1`)
+      et au plus deux phrases, la seconde etant la question (`LON-2`) - meme barre que sur
+      `EMO-R1`, ecrite le 2026-09-08.
     - Etant donne l'item 6 (`POL-R2`), dont l'enonce demande "un peu plus d'eau" pour un verre "deja
       vide", quand il est revu, alors la scene se tient : soit l'enfant "voudrait encore de l'eau"
       avec un verre presque vide, soit il "voudrait de l'eau" avec un verre vide.
@@ -12092,10 +12094,10 @@ deux routes a s33.
       (`EXC-R3` - une bagarre la ou personne ne se bat, une dispute sur un pied ecrase par accident,
       une vengeance sur un geste dit "sans faire expres"), quand elle est revue, alors elle devient
       un candidat qu'un enfant de CP pourrait vraiment envisager (`PLA-1`).
-    - Etant donne les deux enonces les plus longs de la tache B (17 et 19 mots, `EXC-R4`), quand ils
-      sont revus, alors ils disent leur situation en une seule proposition principale, comme les
-      trois autres enonces de la meme tache (15 et 16 mots) - meme famille que `EMO-R1`, sans barre
-      chiffree imposee.
+    - Etant donne les deux enonces les plus longs de la tache B (mesures a 16 et 18 mots, `EXC-R4`),
+      quand ils sont revus, alors chacun compte au plus 15 mots (`LON-1`) et au plus deux phrases,
+      la seconde etant la question (`LON-2`) - meme barre que sur `EMO-R1` et `POL-R1`, ecrite le
+      2026-09-08.
     - Etant donne les items ou "a sa maitresse" est marque faux alors que la scene n'est pas en
       classe (`EXC-R5`), quand ils sont revus, alors le critere devient la presence de l'adulte au
       moment decrit, jamais le seul lieu de la scene : aucun item ne fait d'un adulte reel une
@@ -12108,12 +12110,13 @@ deux routes a s33.
     trois paquets, 1,5 au total (`PAR-10`, `D5` de `DEC-0083`).
   - Etant donne ces corrections, alors aucune ligne de `squad/programme/MATRICE-couverture.md` ne
     change de statut : `EMC-CP-01`, `EMC-CP-05` et `EMC-CP-03` restent `couvert-valide`.
-- **Ce que cette story ne fait pas** : elle ne pose aucune barre chiffree la ou `nadia-prof` refuse
-  explicitement d'en poser une (`EMO-R1`, `POL-R1`, `EXC-R4`) - une barre annoncee dans
-  `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` pour cet arbitrage prealable n'y figure
-  finalement pas, et cette story ne l'invente pas a sa place (`DEC-0083`, section 12) ; elle ne
-  touche a aucune autre ligne de ces trois paquets ; elle ne rouvre pas le Done pedagogique de
-  `EMC-CP-01`, `EMC-CP-05` ou `EMC-CP-03` au-dela de ces dix points.
+- **Ce que cette story ne fait pas** : elle n'invente aucune barre chiffree au-dela de `LON-1` et
+  `LON-2` - ces deux-la sont desormais dues sur `EMO-R1`, `POL-R1` et `EXC-R4` (amendement du
+  2026-09-08 a l'arbitrage prealable de s32, section 16 ; ce qui corrige, dans le meme geste, la
+  version anterieure de ce critere qui les disait sans barre chiffree, ecrite avant cet amendement
+  et reprise mot pour mot par `DEC-0083`, section 12, avant qu'elle ne soit elle-meme corrigee) ;
+  elle ne touche a aucune autre ligne de ces trois paquets ; elle ne rouvre pas le Done pedagogique
+  de `EMC-CP-01`, `EMC-CP-05` ou `EMC-CP-03` au-dela de ces dix points.
 - **Lien** : `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md`,
   `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md`,
   `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md`, sections "Reserves" ; `DEC-0083`,
@@ -12162,6 +12165,10 @@ deux routes a s33.
     "il faut s'echauffer", qui signeraient la bonne reponse sur tout un paquet.
   - Etant donne chaque proposition de chaque item, alors elle est un candidat qu'un enfant de CP
     peut serieusement envisager, jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne chaque enonce des deux paquets, alors il compte au plus 15 mots (`LON-1`) et au
+    plus deux phrases, la seconde etant la question (`LON-2`) - barre chiffree de `nadia-prof`,
+    datee du 2026-09-08 (arbitrage prealable de s32, section 16.4 ; convention de comptage section
+    16.1, une forme elidee comptant pour un mot). Premiers items neufs de CP ecrits sous cette barre.
   - Etant donne les items d'une meme tache, alors au plus la moitie d'entre eux portent deux
     propositions plutot que trois (`BIN-1`).
   - Etant donne les deux lignes, alors chacune est servie par un paquet distinct qui declare sa
@@ -12198,7 +12205,9 @@ Perimetre arbitre par l'utilisatrice le 2026-09-08 (`DEC-0083`, section 13), sur
 (`squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`,
 sections 16 et 17) et sur l'avis de faisabilite de `theo-archi`
 (`squad/sprints/s32-instruction-prealable/avis-faisabilite-theo-achevement-du-palier-2.md`, branche
-`s32-theo`, commit `dcbcd65a` - **non fusionnee dans `round-two` a ce jour**).
+`s32-theo`, commit `dcbcd65a`, complete par `ADR-0088` (commit `043b8503`) - **fusionnee dans
+`round-two` au planning de s32, commit `cb0b191e`, quatre jobs de la CI mesures verts par
+`sofia-sm` sur l'arbre fusionne**).
 
 **Cinq lots de developpement composent le chemin de jeu que ces trois stories supposent** (avis de
 `theo-archi`, section 7) : `L-a` (les sept interdits du JavaScript maison, plus le cliquet de la
