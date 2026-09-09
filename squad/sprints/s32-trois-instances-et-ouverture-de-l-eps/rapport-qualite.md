@@ -36,12 +36,20 @@ mienne ; je l'ai reprise, et j'obtiens le meme total.
 **Aucun module sans test** (`find <module>/src/test -iname "*.java" | wc -l`) : `domain` 15,
 `application` 3, `adapters/adapter-web` 49, `adapters/adapter-content` 96, `bootstrap` 84.
 
-**36 declarations `ArchRule`** (`grep -rn "static final ArchRule "`, excluant `target/` et le faux
-depot de test-ressources `RegleContreExemple.java` qui en declare une factice pour sa propre mise
-a l'epreuve) : 35 regles reelles. En hausse depuis les 33 mesurees a la cloture de s31 - coherent
-avec la clause 12 d'`ArchRule` qu'`ADR-0088` ajoute a `DecouplageMecaniqueContenuTest` (avis de
-faisabilite du palier 2, fusionne avant l'ouverture de s32). Confirmation architecturale detaillee
-: `theo-archi`, `confirmation-archunit.md`.
+**36 declarations `ArchRule`** (`grep -rn "static final ArchRule "`, excluant `target/`) : **34
+regles reelles**, apres exclusion du faux depot de test-ressources `RegleContreExemple.java`.
+
+Correction sur ma propre premiere version de ce rapport, trouvee par le `relecteur-pedagogique` et
+confirmee par `sofia-sm` : j'avais soustrait *"une factice"* sans compter la population que je
+soustrayais, alors que `RegleContreExemple.java` en declare **deux**
+(`uneRegleEprouvee`, `uneRegleJamaisEprouvee`, lignes 13 et 15 - l'une mise a l'epreuve par un
+`.check(...)`, l'autre jamais, ce qui est precisement le contraste que ce fichier existe pour
+illustrer). 36 moins ces deux-la fait 34, pas 35. Remesure a moi : `grep -c "static final ArchRule
+" RegleContreExemple.java` rend 2 ; `grep -rn "static final ArchRule " --include=*.java . | grep
+-v /target/ | wc -l` rend 36 pour l'ensemble du depot. En hausse depuis les 33 mesurees a la
+cloture de s31 - coherent avec la clause 12 d'`ArchRule` qu'`ADR-0088` ajoute a
+`DecouplageMecaniqueContenuTest` (avis de faisabilite du palier 2, fusionne avant l'ouverture de
+s32). Confirmation architecturale detaillee : `theo-archi`, `confirmation-archunit.md`.
 
 **Catalogue : 68 entrees** (`grep -c "^  - id:" catalogue.yaml`).
 
