@@ -229,6 +229,33 @@ n'ai reecrit ni l'une ni l'autre**.
 
 **Compte apres mon allocation de ce soir, meme methode** : **539 identifiants, sur 91 prefixes**.
 
+
+**Note de `nadia-prof`, le 2026-09-09, arbitrage prealable de s33.** Quatre identifiants ajoutes -
+`PAR-14`, `EMC-11`, `EPS-7`, `HIS-5` - tous sur des prefixes deja alloues, **donc aucun prefixe
+neuf**. Ligne d'etat courant portee de **578 / 97 a 582 / 97**. Methode : comptage des lignes de la
+table de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document
+entre accents graves), **avant** mon diff - 578 identifiants distincts, 97 prefixes distincts, 0
+doublon, ce qui confirme la ligne portee par `sofia-sm` a l'assemblage de s32 - puis apres mes
+quatre allocations. **Ce total est juste sur l'arbre entier et non seulement sur mon worktree** :
+l'arbitrage prealable n'est pas divise en instances, je suis seule a allouer aujourd'hui, et la
+limite structurelle de `PAR-5` sous la discipline de worktree dedie ne s'applique donc pas a ce
+diff. **Aucune reparation arithmetique n'est a attendre a la fusion.**
+
+**Note de `sofia-sm`, a l'ouverture de s33, resolution de la collision annoncee des deux cotes.**
+`camille-po` avait alloue les quatre memes identifiants sur `round-two`, en pointant vers
+`docs/backlog/backlog.md`, pour tenir la CI verte le temps que `s33-nadia` fusionne - et l'avait
+ecrit dans sa propre note, ci-dessus dans ce fichier avant fusion. `nadia-prof` les avait allouee
+sur `s33-nadia`, en pointant vers son arbitrage prealable. **Une seule ligne gardee par
+identifiant** : celle de `nadia-prof`, qui definit les quatre conditions - l'allocation de
+`camille-po` n'etait qu'un geste mecanique, comme sa note le dit elle-meme. Verifie que les
+definitions ne divergent pas entre les deux cotes : `docs/backlog/backlog.md` et
+`DEC-0085` citent les quatre identifiants en les attribuant a `nadia-prof` et a la meme date
+(2026-09-09), sans en ecrire un sens different ; aucune des quatre n'est donc dans le cas que
+`PAR-5` vise vraiment. **Compte recompte sur le fichier assemble, et non additionne** : 582
+identifiants distincts, 97 prefixes distincts, zero doublon de definition dans la table de la
+section 4 - la ligne d'etat courant ci-dessus etait deja juste et n'est pas modifiee par cette
+resolution.
+
 ## 2. Ce que ce registre alloue, et ce qu'il n'alloue pas
 
 Il alloue les identifiants de **condition** et de **reserve**, les deux genres que la mesure de s30
@@ -412,7 +439,7 @@ clause 2 par une exemption.
 | `EMC-8` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-9` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-10` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
-| `EMC-11` | `docs/backlog/backlog.md` |
+| `EMC-11` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `EMO-R1` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R2` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R3` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
@@ -422,7 +449,7 @@ clause 2 par une exemption.
 | `EPS-4` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `EPS-5` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `EPS-6` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
-| `EPS-7` | `docs/backlog/backlog.md` |
+| `EPS-7` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `ERR-R1` | `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md` |
 | `ETA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -512,7 +539,7 @@ clause 2 par une exemption.
 | `HIS-2` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-4` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
-| `HIS-5` | `docs/backlog/backlog.md` |
+| `HIS-5` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `HOR-1` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `HOR-2` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `HOR-3` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
@@ -624,7 +651,7 @@ clause 2 par une exemption.
 | `PAR-11` | `squad/programme/MATRICE-couverture.md` |
 | `PAR-12` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `PAR-13` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
-| `PAR-14` | `docs/backlog/backlog.md` |
+| `PAR-14` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PLA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
