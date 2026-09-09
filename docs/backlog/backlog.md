@@ -12342,3 +12342,361 @@ la presument pas.
   les trois dessins (un plan de classe, deux frises de la vie de l'enfant) ; `marc-dev` ou
   `lea-dev` pour le contenu ; `nadia-prof` pour l'audit et le Done pedagogique.
 
+
+## Backlog ouvert pour s33 (suite) - les quatre refus et les reserves impayees des verdicts de s32
+## (`DEC-0084`, cloture de s32)
+
+Perimetre constate a la cloture de s32 (`DEC-0084`), sur les verdicts de `nadia-prof`
+(`squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`, `-B.md`,
+`-C.md`) et les dix fiches de conformite qu'ils citent. Ces dix stories ne sont pas encore
+affectees a une instance ni chiffrees contre la borne de s33 : c'est le travail du planning de s33,
+par `sofia-sm`.
+
+### S33-HG-02 - Corriger le fait faux sur le sacre de Clovis, jamais eu lieu (`HG-R11`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que la date et le fait qu'on m'enseigne sur Clovis
+  soient exacts, en jouant au bandit manchot d'histoire-geographie, afin de ne pas apprendre un
+  evenement qui n'a jamais eu lieu.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3) - `HG-CM1-02`, "Situer un
+  fait dans un siecle ou un millenaire et ordonner des faits les uns par rapport aux autres", ligne
+  `en cours`, refusee a s32 sur `HG-R11`.
+- **Criteres d'acceptation** :
+  - Etant donne les items 70 et 71, quand ils sont revus, alors ils portent la meme formulation que
+    l'item 66 du meme fichier - "Clovis devient roi des Francs, en 481" - et non "le sacre de
+    Clovis, roi des Francs, en 481" (repris mot pour mot du motif de `HG-R11` : "en 481, Clovis
+    succede a son pere Childeric et devient roi des Francs saliens de Tournai : il n'y a pas de
+    ceremonie, et il n'y en aura jamais pour lui"). Ni la date, ni la tache, ni les autres
+    propositions ne changent (regime mot pour mot).
+  - Etant donne les cinq items de la tache "ordonner" (`HG-R9`, reserve non bloquante), quand ils
+    sont revus dans le meme rejeu, alors leur indice porte la methode - ce qu'il faut comparer,
+    comment situer une date par rapport a une autre - et jamais la date de la bonne reponse, qui
+    est aujourd'hui designee sans ambiguite des lors que chaque proposition affiche la sienne.
+  - Etant donne ces corrections, alors `FER-1`, `FER-2` et `FER-3` restent tenues a l'identique de
+    ce qu'elles etaient au verdict de s32 - le refus ne les concernait pas.
+  - Etant donne le Done pedagogique de cette ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si `nadia-prof` confirme, en jouant, que `HG-R11` est levee, sans que ce
+    paiement rouvre `HG-CM1-04` (ligne distincte, refusee sur un autre motif).
+- **Ce que cette story ne fait pas** : elle ne touche pas `HG-CM1-04` ni le terme "les Sarrasins"
+  (story separee, `S33-HG-04`) ; elle n'invente aucune regle de datation au-dela de la formulation
+  deja ecrite dans le meme fichier.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`, section 4 ;
+  `squad/programme/MATRICE-couverture.md`, ligne `HG-CM1-02`.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour l'audit.
+
+### S33-HG-04 - Remplacer "les Sarrasins" par une designation qui nomme un peuple (`HG-R12`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux qu'on me demande de nommer un vrai peuple quand je
+  reponds a une question sur les mouvements de population, en jouant au bandit manchot
+  d'histoire-geographie, afin de ne pas retenir un mot qui ne designe aucun peuple.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3) - `HG-CM1-04`, "Identifier
+  les grands mouvements et deplacements de populations du IVe au Xe siecle et leurs effets sur le
+  territoire", ligne `en cours`, refusee a s32 sur `HG-R12`.
+- **Criteres d'acceptation** :
+  - Etant donne l'item sur l'armee arretee pres de Poitiers en 732, quand il est revu, alors soit
+    il nomme l'armee par son origine plutot que par un nom de peuple, soit il cesse de porter sur
+    l'identite de l'armee et porte sur le mouvement lui-meme, comme le font deja les items 90 et 92
+    de la meme ligne (deux directions reprises mot pour mot du motif de `HG-R12`, aucune troisieme
+    a chercher).
+  - Etant donne cette reecriture, alors aucune bonne reponse de la ligne ne designe un groupe
+    humain par un exonyme qu'aucun groupe ne revendique pour lui-meme (`HG-R12`).
+  - Etant donne que le plafond de la tache de nomination n'est pas structurel sur cette ligne (le
+    libelle n'enumere rien et ne ferme aucune liste), alors un quatrieme mouvement du IVe au Xe
+    siecle peut y entrer si la reecriture en a besoin - l'installation des Bretons venus de
+    Grande-Bretagne en Armorique en est un exemple recevable, sans obligation de le reprendre mot
+    pour mot.
+  - Etant donne l'indice de l'item 85 ("la peninsule Iberique", terme au-dessus du CM1), quand la
+    reecriture de `HG-R12` le fait disparaitre dans le meme geste, alors aucun cout supplementaire
+    n'est facture pour ce point.
+  - Etant donne l'item 87 (indice : "Leur roi Clovis unifie ce royaume en 481", egalement faux),
+    quand il est revu, alors il reprend la meme formulation juste de l'item 66 du meme fichier -
+    "Clovis devient roi des Francs, en 481" (`HG-R10`, reserve non bloquante, regime mot pour mot).
+  - Etant donne le Done pedagogique de cette ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si `nadia-prof` confirme, en jouant, que `HG-R12` et `HG-R10` sont levees.
+- **Ce que cette story ne fait pas** : elle ne touche pas `HG-CM1-02` (story separee, `S33-HG-02`) ;
+  elle ne modifie pas l'item 90 ("elle s'arrete"), deja juge exact par simplification du programme.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`, section 5.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour l'audit.
+
+### S33-EMCCP07 - Quatrieme passage sur `bandit-manchot-regle-souhait-loi-cp` : le plus petit
+### perimetre du refus
+
+- **Besoin** : en tant qu'eleve de CP, je veux qu'une regle qui vaut pour tous les enfants de
+  France ne soit jamais marquee fausse, et qu'aucune proposition morte ne me soit presentee, en
+  jouant au bandit manchot, afin d'apprendre a distinguer une regle, un souhait et une loi sans
+  etre trompe par le jeu lui-meme.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) - `EMC-CP-07`,
+  "Distinguer une regle qui vaut pour tous d'un simple souhait, et reconnaitre qu'une loi s'impose
+  a tous", `non couvert`, refusee au troisieme passage a s32 sur un motif entierement neuf.
+- **Criteres d'acceptation** :
+  - Etant donne l'item 4 (le casque a velo obligatoire avant douze ans), quand il est revu, alors
+    "le casque a velo obligatoire" cesse d'etre marque comme une reponse fausse, puisque la loi qui
+    l'impose oblige tous les enfants de France - repris mot pour mot du motif du refus : "le casque
+    a velo est une regle qui vaut pour tous, et le jeu marque cette proposition fausse."
+  - Etant donne ce meme item, alors la correction ne s'appuie sur aucune clause distinguant "une
+    regle" d'"une loi" que le libelle de la ligne ne porte pas - `nadia-prof` ecrit elle-meme que
+    "distinguer une regle d'une loi n'est pas dans ce libelle."
+  - Etant donne l'item 11 (vente d'alcool aux mineurs), quand son distracteur mort est revu, alors
+    chaque proposition redevient un candidat qu'un enfant de CP peut serieusement envisager
+    (`PLA-1`) : la chaine "seulement les enfants" ne survit dans aucune proposition de la ligne.
+  - Etant donne le reste de la tache B (les cinq autres items) et la tache A, alors les acquis du
+    troisieme passage ne regressent pas : `FAB-1c` reste tenue, les cinq faits de droit restent
+    exacts, les onze enonces restent entre 12 et 15 mots.
+  - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, que ces deux items sont corriges sans regression sur les neuf
+    autres.
+- **Ce que cette story ne fait pas** : elle ne retouche aucun des neuf autres items ; elle
+  n'introduit aucune condition `EMC-*` au-dela de celles deja ecrites par `nadia-prof`.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`, sections
+  3 et 13 ; `squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md`.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour le texte ; `nadia-prof`, quatrieme passage.
+
+### S33-CAT1 - Deuxieme tentative de paiement de `CAT-1` : defaire le repere lexical sur
+### `regles-de-vie-cp` et `permis-interdit-cp`
+
+- **Besoin** : en tant qu'eleve de CP, je veux que la bonne reponse ne se reconnaisse jamais a un
+  mot recurrent ni a un ton, en jouant a ces deux jeux, afin que reussir demande vraiment de
+  connaitre la regle.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) - `EMC-CP-02`
+  (`bandit-manchot-permis-interdit-cp`) et `EMC-CP-06` (`bandit-manchot-regles-de-vie-cp`), toutes
+  deux `couvert-valide`, correction non bloquante - `CAT-1` refusee au paiement pour la seconde
+  fois, aucune ligne rouverte.
+- **Criteres d'acceptation** :
+  - Etant donne chaque item des deux paquets, quand ses trois propositions sont revues, alors les
+    trois - et non une seule - sont du meme registre (repris mot pour mot du motif du refus de
+    paiement : "ma clause demande que les trois propositions soient du meme registre ; le
+    correctif en a rendu une serieuse par item").
+  - Etant donne le mot "maitresse", quand les distracteurs de `regles-de-vie-cp` sont revus, alors
+    il cesse d'etre le repere qui donne la reponse d'emblee : aujourd'hui 6 distracteurs sur 11 le
+    portent et aucune bonne reponse ne le porte (repris mot pour mot : "le repere de registre a ete
+    remplace par un repere lexical").
+  - Etant donne le meme defaut sur `permis-interdit-cp`, quand il est revu, alors le compte d'items
+    tenant la clause depasse le 1 sur 4 mesure aujourd'hui.
+  - Etant donne ces corrections, alors `REG-R1` et `PER-R1` (deja levees) ne regressent pas, et
+    aucune des deux lignes ne change de statut de matrice : `EMC-CP-02` et `EMC-CP-06` restent
+    `couvert-valide`.
+  - Etant donne le paiement de `CAT-1`, alors `nadia-prof` le confirme en jouant, item par item sur
+    les deux paquets, avant qu'il ne soit marque leve.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas le Done pedagogique global de
+  `EMC-CP-02` ni de `EMC-CP-06` ; elle ne modifie pas `FER-1`, `FER-2` ni `FER-3`, deja tenues.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`, sections
+  1, 4, 10 et 13.
+- **Agent pressenti** : `lea-dev` ou `marc-dev` pour le texte ; `nadia-prof`, deuxieme tentative de
+  paiement.
+
+### S33-EPS-SEC - Reecrire les huit distracteurs de la tache B de `bandit-manchot-regles-securite-
+### eps-cp` (`SEC-R3`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que la bonne raison d'une regle de securite ne se
+  reconnaisse pas seulement parce qu'elle parle de se faire mal, en jouant au bandit manchot, afin
+  d'apprendre vraiment pourquoi la regle existe.
+- **Competence programme visee** : education physique et sportive, CP (cycle 2) - `EPS-CP-04`,
+  "Connaitre et respecter les regles de securite propres a l'activite et au lieu de pratique",
+  `non couvert`, refusee au premier contact.
+- **Criteres d'acceptation** :
+  - Etant donne les items 8, 9, 10 et 11 de la tache B, quand leurs distracteurs sont revus, alors
+    les trois propositions de chaque item nomment un danger, une blessure, un secours ou une
+    consequence, dont deux fausses - forme reprise mot pour mot sur l'item 9 : "pour porter secours
+    en cas de danger / pour verifier que l'eau n'est pas trop froide / pour compter les nageurs qui
+    entrent dans le bassin."
+  - Etant donne ces huit distracteurs reecrits, alors au plus un item sur les cinq de la tache B
+    porte une proposition hors du champ du danger parmi ses distracteurs (plafond d'un tiers,
+    `FAB-1c`) - contre quatre sur cinq aujourd'hui.
+  - Etant donne les onze enonces, les onze bonnes reponses, les onze indices et toute la tache A,
+    alors ils restent inchanges : `nadia-prof` les dit exacts et bons.
+  - Etant donne `SEC-R1` (items 3 et 8, securite routiere du pieton sans engin ni lieu de pratique)
+    et `SEC-R2` (item 1, "mettre de la creme solaire" est une reponse defendable), traitees dans la
+    meme reprise, alors les items 3 et 8 portent un engin ou un lieu de pratique d'EPS, et l'indice
+    de l'item 1 ecarte explicitement la creme solaire ou son distracteur cesse d'etre une regle de
+    securite concurrente.
+  - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, que la tache B ne se gagne plus au registre.
+- **Ce que cette story ne fait pas** : elle ne touche pas `EPS-CP-08` (story separee,
+  `S33-EPS-JEU`) ; elle n'ajoute aucun item au-dela des onze deja servis.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md`, sections
+  5 et 11.
+- **Agent pressenti** : `sofia-sm` (casquette dev) ou `marc-dev`/`lea-dev` pour le texte ;
+  `nadia-prof`, second contact.
+
+### S33-EPS-JEU - Corriger quatre erreurs de fait et deux items au registre de `bandit-manchot-
+### regles-jeu-collectif-eps-cp` (`JEU-R1` a `JEU-R6`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que les regles des jeux de cour qu'on me presente
+  soient vraies, et que je doive vraiment connaitre la regle pour gagner, en jouant au bandit
+  manchot, afin de ne pas apprendre une fausse regle que je reprocherais a tort a un camarade.
+- **Competence programme visee** : education physique et sportive, CP (cycle 2) - `EPS-CP-08`,
+  "Connaitre et respecter les regles d'un jeu collectif simple", `non couvert`, refusee au premier
+  contact.
+- **Criteres d'acceptation** :
+  - Etant donne l'item 7 (chat perche), quand il est revu, alors il pose la question de l'effet et
+    non celle de la faute - motif repris mot pour mot : "toucher un joueur perche n'est pas une
+    infraction... le joueur perche ne peut pas etre pris" - et son indice cesse d'affirmer qu'un
+    joueur perche "ne peut pas etre touche" (`JEU-R1`).
+  - Etant donne l'item 5 (loup et les moutons), quand il est revu, alors l'enonce rappelle la
+    variante qu'il juge, ou porte sur une regle que les deux variantes partagent, ou cede la place
+    a un item d'un des cinq autres jeux (`JEU-R2`).
+  - Etant donne l'indice de l'item 5 ("Le loup grandit au fil de la partie"), quand il est revu,
+    alors il devient "Chaque mouton touche devient un loup de plus" ou une formulation qui ne se
+    lit pas au premier degre comme une croissance physique (`JEU-R3`, mot pour mot pour la
+    formulation donnee).
+  - Etant donne l'item 8 (epervier), quand il est revu, alors il met une vraie regle en jeu plutot
+    qu'une question dont l'enonce porte deja le verdict, et il porte trois propositions plutot que
+    deux (`JEU-R4`).
+  - Etant donne l'item 4 (balle au prisonnier), quand il est revu, alors le pronom des propositions
+    a un antecedent dans l'enonce - "que devient un joueur touche ?" plutot que "que se passe-t-il
+    quand on est touche ?" (`JEU-R5`, mot pour mot).
+  - Etant donne les items 10 et 11 (demenageurs, 1-2-3 soleil), quand leurs distracteurs sont
+    revus, alors les deux propositions concurrentes de la bonne reponse sont elles aussi des
+    consequences plausibles d'une faute, et non une recompense reconnaissable par sa seule forme
+    (`JEU-R6`).
+  - Etant donne `JEU-R7` (la regle "un objet a la fois" n'est jamais posee avant d'etre jugee) et
+    `JEU-R8` ("Au loup et les moutons" ne se lit pas au CP), traitees dans la meme reprise sans
+    cout supplementaire, alors l'enonce de l'item 10 pose la regle avant de la juger ou un item de
+    la tache A la porte en bonne reponse, et la tournure "Au loup et les moutons" est reecrite - la
+    forme grammaticale relevant du `relecteur-pedagogique`, l'obstacle de lecture relevant de
+    `nadia-prof`.
+  - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, que les quatre erreurs de fait et les deux items au registre
+    sont corriges sans regression sur les cinq items restants de la tache A.
+- **Ce que cette story ne fait pas** : elle ne touche pas `EPS-CP-04` (story separee,
+  `S33-EPS-SEC`) ; elle ne renomme pas les six jeux ni ne change leur repartition entre les taches.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md`, sections
+  6 et 11.
+- **Agent pressenti** : `sofia-sm` (casquette dev) ou `marc-dev`/`lea-dev` pour le texte ;
+  `relecteur-pedagogique` pour la tournure de `JEU-R8` ; `nadia-prof` pour l'audit.
+
+### S33-EXC-R1 - La consigne de `bandit-manchot-exclusion-cp` nomme la tache reellement servie
+
+- **Besoin** : en tant qu'eleve de CP, je veux que la consigne du jeu me dise vraiment ce qu'il me
+  demande de faire, en jouant a ce jeu, afin de ne pas lire une instruction qui ne correspond a
+  aucune des reponses proposees.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) - `EMC-CP-03`
+  (`bandit-manchot-exclusion-cp`), `couvert-valide`, correction non bloquante - `EXC-R1`, non
+  payee depuis le 2026-09-07, aucune ligne rouverte.
+- **Prealable, deja leve** : le deblocage technique est mecanique - `theo-archi` a mesure que la
+  mise a jour de l'inventaire `TexteAccentueExposeParLePortEntrantTest` ne coute rien de plus que le
+  geste deja fait deux fois ce sprint par `marc-dev` et `sofia-sm` sur leurs propres paquets
+  (`ADR-0089`). **Ce qui manque est le texte de la consigne, donc du texte lu par l'enfant.**
+- **Criteres d'acceptation** :
+  - Etant donne la consigne servie du catalogue, actuellement "Lis bien, puis dis ce qu'il faut
+    faire, ou a qui en parler.", quand elle est revue, alors elle nomme la tache reellement servie
+    par les deux moities du paquet - reconnaitre si une situation decrite est une moquerie qui se
+    repete ou un accident isole, et dire a quel adulte en parler d'une moquerie qui se repete -
+    puisqu'aucune proposition de la tache A n'est une action.
+  - Etant donne cette reecriture, alors l'inventaire de `TexteAccentueExposeParLePortEntrantTest`
+    est mis a jour dans le meme commit.
+  - Etant donne le paquet corrige, alors aucun item, aucune bonne reponse et aucun distracteur ne
+    change : seule la consigne du catalogue est revue.
+  - Etant donne le Done pedagogique, alors la ligne `EMC-CP-03` reste `couvert-valide`, et
+    `nadia-prof` confirme, en jouant, que la consigne annonce desormais la tache reelle.
+- **Ce que cette story ne fait pas** : elle n'ouvre aucun garde-fou technique au-dela de la mise a
+  jour d'inventaire deja mesuree sans cout ; elle ne touche pas `EXC-R5` (story separee).
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/confirmation-archunit.md`, section 4 ;
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`, sections
+  8 et 13.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte de consigne ; `nadia-prof` pour
+  l'audit.
+
+### S33-EXC-R5 - Aucun item ne fait d'un adulte reel une reponse fausse
+
+- **Besoin** : en tant qu'eleve de CP, je veux qu'un adulte a qui je parle vraiment d'une moquerie
+  ne soit jamais compte comme une mauvaise reponse, en jouant a ce jeu, afin de ne pas apprendre a
+  douter d'un adulte qui peut vraiment m'aider.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) - `EMC-CP-03`
+  (`bandit-manchot-exclusion-cp`), `couvert-valide`, correction non bloquante - `EXC-R5`, non
+  payee depuis le 2026-09-07, aucune ligne rouverte.
+- **Prealable, deja leve** : l'obstacle technique est leve - `PaquetCpEmcExclusionTest` lit
+  desormais la tache dans la bonne reponse et non dans une sous-chaine de l'enonce (`ADR-0089`,
+  decision E). **Ce qui reste a faire est du contenu, pas du deblocage.**
+- **Criteres d'acceptation** :
+  - Etant donne les items ou "a sa maitresse" est marque faux pour une moquerie qui se repete a la
+    cantine ou ailleurs qu'en classe, quand ils sont revus, alors le critere devient la presence de
+    l'adulte au moment decrit, jamais le seul lieu de la scene (repris mot pour mot : "aucun item
+    ne fait d'un adulte reel une reponse fausse", `EMC-5`).
+  - Etant donne la formule mesuree par `theo-archi` sur une mutation non commitee ("Quel adulte est
+    la" plutot que "A qui X doit-il en parler"), quand les cinq enonces de la tache B sont revus,
+    alors les occurrences de "A qui" disparaissent de cette tache.
+  - Etant donne cette reecriture, alors `FER-3` reste tenue : le partage entre les deux taches
+    reste exhaustif, aucun item ne tombe dans un troisieme sac muet.
+  - Etant donne le Done pedagogique, alors la ligne `EMC-CP-03` reste `couvert-valide`, et
+    `nadia-prof` confirme, en jouant, qu'un adulte reel present au moment decrit n'est plus jamais
+    une reponse fausse.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas le test technique, deja corrige ; elle ne
+  touche pas `EXC-R1` (story separee), meme si les deux se reprennent probablement dans le meme
+  geste sur le meme paquet.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/confirmation-archunit.md`, section 4 ;
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`, sections
+  8 et 13.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour l'audit.
+
+### S33-CONS-4 - Le grain de `bandit-manchot-histoire-geographie-cm1` empeche sa consigne
+### d'informer l'enfant
+
+- **Besoin** : transverse - pas de contenu pedagogique. Le defaut n'est pas une phrase a corriger :
+  c'est le nombre de lignes de referentiel qu'un seul jeu sert, qui est en question.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge par cette story.
+- **Le fait, avec sa source** : la consigne de `bandit-manchot-histoire-geographie-cm1` grossit
+  d'une clause par sprint (12 mots et 0 tache nommee a s27-s30, 22 mots et 4 taches a s31, 31 mots
+  et 5 taches a s32) sans jamais informer l'enfant de la tache qu'il a devant lui - il lit 31 mots
+  pour n'en retenir aucun. Le meme lot cree, dans le meme geste, quatorze items dont la tache n'est
+  nommee par aucune des cinq clauses (les sept de `HG-CM1-03`, les sept de `HG-CM1-04`) : le compte
+  d'items non nommes est plus grand apres le lot qu'avant. Source :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`,
+  section 8.
+- **Prealable bloquant, nomme et non presume tranche** : `nadia-prof` route la cause a `camille-po`
+  et non la phrase - "c'est le grain du jeu qui est en question" - et `ADR-0081` confie ce
+  decoupage a `camille-po` et `nadia-prof` ensemble, jamais a un developpeur ni a `theo-archi`
+  seuls. **Cette story ne s'ouvre pas avant que cette decision de grain soit rendue.**
+- **Criteres d'acceptation** :
+  - Etant donne la decision de grain rendue par `camille-po` et `nadia-prof`, quand elle est
+    appliquee, alors soit la consigne de `bandit-manchot-histoire-geographie-cm1` cesse d'enumerer
+    les taches et devient une phrase que l'enfant retient reellement, soit le jeu se scinde en
+    plusieurs entrees de catalogue dont chaque consigne nomme une seule tache.
+  - Etant donne les quatorze items dont la tache n'est nommee par aucune des cinq clauses
+    actuelles, quand la decision est appliquee, alors chacun est nomme par la consigne qui le
+    sert.
+  - Etant donne cette story, alors son cout n'est pas chiffre contre la borne de s33 tant que la
+    decision de grain n'est pas rendue - le cout depend entierement de l'issue choisie.
+- **Ce que cette story ne fait pas** : elle ne tranche pas elle-meme entre les deux issues ; elle
+  ne touche pas `CONS-1` sur `bandit-manchot-anglais-cm1`, deja levee et non rouverte.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`, section
+  8 ; `ADR-0081`.
+- **Agent pressenti** : `camille-po` et `nadia-prof` pour la decision de grain ; `sofia-sm` pour
+  affecter la story et la chiffrer une fois la decision rendue.
+
+### S33-SCO-1 - Preuve neuve : le score reste parfait par elimination, verifie en jouant (renvoi a
+### `S25-SCO-1`)
+
+- **Statut** : non engagee, comme `S25-SCO-1` qu'elle ne remplace pas - les criteres `SCO-1` a
+  `SCO-7` de cette story restent ceux qui font foi, non repris ici pour ne pas en creer une seconde
+  version. Cette entree porte une preuve neuve et le routage technique deja acte par `DEC-0083`
+  (`D7`, remede a `theo-archi`).
+- **Besoin** : inchange depuis `S25-SCO-1` - en tant qu'eleve de CP ou de CM1, je veux que le
+  resultat affiche a la fin d'une partie me dise vraiment ce que j'ai su faire.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Le fait, avec sa source, verifie en jouant et non deduit** : sur `bandit-manchot-histoire-
+  geographie-cm1` et `bandit-manchot-anglais-cm1`, huit parties completes de dix manches, en
+  pressant systematiquement les propositions fausses avant la bonne a chaque manche, rendent huit
+  scores de 10 sur 10, pour 17 a 24 appuis depenses au total selon la partie - jamais moins de sept
+  appuis de trop. Source :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`,
+  section 9. `SCO-1` est a son neuvieme sprint sans etre payee (elle en etait a son huitieme le
+  2026-09-08).
+- **Ce que cette entree ne fait pas** : elle ne rouvre ni ne rechiffre les sept criteres de
+  `S25-SCO-1` ; elle n'ajoute aucune condition de Done pedagogique sur le score, comme `nadia-prof`
+  le nomme elle-meme depuis s31 ; elle ne remplace pas le routage de `D7` a `theo-archi` deja acte
+  par `DEC-0083`.
+- **Lien decision** : `S25-SCO-1` (criteres inchanges) ; `DEC-0061` ; `DEC-0083` (routage `D7`) ;
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`, section
+  9.
+- **Agent pressenti** : `theo-archi` pour le remede technique (`D7`) ; `sofia-sm` pour l'affecter
+  une fois `theo-archi` rendu son avis.

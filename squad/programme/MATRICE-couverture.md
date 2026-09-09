@@ -1321,10 +1321,10 @@ paquet), `BIA-5` sur les lignes 5 a 8 (aucun jugement de valeur sur un personnag
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer et ordonner les grandes périodes historiques sur une frise (Préhistoire, Antiquité, Moyen Âge, Temps modernes, époque contemporaine). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B, consacree a `HG-CM1-11` et `HG-CM1-13`) : reste a 2 items, reste `en cours` |
-| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer un fait dans un siècle ou un millénaire et ordonner des faits les uns par rapport aux autres. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 1 item, reste `en cours` |
-| histoire-geographie | CM1 | Et avant la France ? | Identifier les traces d'une occupation ancienne du territoire et ce que les Gaulois, les Grecs et les Romains y ont laissé. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 1 item, reste `en cours` |
-| histoire-geographie | CM1 | Et avant la France ? | Identifier les grands mouvements et déplacements de populations du IVe au Xe siècle et leurs effets sur le territoire. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours** (2026-09-03, s27) - **VALIDE**, servie par `bandit-manchot-histoire-geographie-cm1` (premier paquet de la matiere, onze des douze lignes jouables touchees a la fois, ligne 5 exclue et laissee a un paquet ulterieur). Ligne ouverte et non fermee (`nadia-prof` : "un premier paquet de matiere neuve ouvre une ligne, il ne la ferme pas"). `HIS-1` (25,0 % de restitution, sous le plafond d'un tiers), `HIS-2` et `HIS-3` verifies item par item ; `HIS-2` et l'exactitude factuelle restent sans garde executable. **Non touchee par le second lot de s28** (`ec73c51`, composition B) : reste a 1 item, reste `en cours` |
+| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer et ordonner les grandes périodes historiques sur une frise (Préhistoire, Antiquité, Moyen Âge, Temps modernes, époque contemporaine). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-09, s32, instance A) - **`HG-CM1-01` ferme.** `FER-1` : les cinq periodes de la parenthese chacune servies en bonne reponse. `FER-2` : 10 items. `FER-3` : deux operations mentales distinctes (ordonner, identifier a partir d'un fait decrit), la moins servie a 5 items. Exactitude verifiee sur les dix items. **Mention de couverture partielle, due, et ecrite ici mot pour mot depuis sa source (`nadia-prof`)** : "ordre et identification des cinq grandes periodes par la lecture seule ; le placement sur une frise reste non couvert." |
+| histoire-geographie | CM1 | Se reperer dans le temps : construire des reperes historiques | Situer un fait dans un siècle ou un millénaire et ordonner des faits les uns par rapport aux autres. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours - REFUSE, ne ferme pas** (2026-09-09, s32, instance A) - `FER-1` (siecle ou millenaire, et ordonner), `FER-2` (10 items) et `FER-3` (5 contre 5) sont tenues. **Motif du refus, `HG-R11`, bloquant** : deux items donnent en bonne reponse et en distracteur "le sacre de Clovis, roi des Francs, en 481" - fait faux, Clovis succede a son pere cette annee-la, il n'y a pas de sacre, et le meme fichier dit la chose juste ailleurs ("Clovis devient roi des Francs en 481"). `HIS-3` n'est pas tenue : le marqueur source la date, pas l'evenement que l'item affirme. Reste `en cours`. Story de reprise : `docs/backlog/backlog.md`, `S33-HG-02`. Fiche : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| histoire-geographie | CM1 | Et avant la France ? | Identifier les traces d'une occupation ancienne du territoire et ce que les Gaulois, les Grecs et les Romains y ont laissé. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-09, s32, instance A) - **`HG-CM1-03` ferme.** `FER-1` : les trois peuples de la parenthese chacun servis en bonne reponse. `FER-2` : 10 items. `FER-3` : deux operations mentales distinctes (nommer le peuple a partir d'une trace decrite, dire ce qu'un peuple a laisse), la moins servie exactement au plancher structurel de trois items - la tache de nomination ne peut pas depasser trois sans repeter une bonne reponse (`FAB-1a`), le libelle enumerant trois peuples. Exactitude verifiee sur les dix items. Aucune mention de couverture partielle n'est due |
+| histoire-geographie | CM1 | Et avant la France ? | Identifier les grands mouvements et déplacements de populations du IVe au Xe siècle et leurs effets sur le territoire. | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **en cours - REFUSE, ne ferme pas** (2026-09-09, s32, instance A) - `FER-1`, `FER-2` (10 items) et `FER-3` (3 contre 7, minorite exactement au plancher, non structurel sur cette ligne : le libelle n'enumere rien et ne ferme aucune liste) sont tenues. **Motif du refus, `HG-R12`, bloquant** : l'item sur l'armee arretee a Poitiers en 732 donne en bonne reponse "les Sarrasins", terme qui ne designe aucun peuple - `HIS-3` n'est pas tenue (designation disputee, non source) et le fond ne depend d'aucune source (aucun groupe ne s'est jamais designe ainsi ; l'armee est celle du gouverneur omeyyade d'al-Andalus, arabe et berbere). Reste `en cours`. Story de reprise : `docs/backlog/backlog.md`, `S33-HG-04`. Fiche : `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | histoire-geographie | CM1 | Le temps des rois | Nommer et situer dans le temps quelques rois qui ont marqué la construction du royaume (Louis IX, François Ier, Henri IV, Louis XIV). | - | - | non couvert - ligne 5, laissee de cote par ce premier paquet (`nadia-prof`, `cm1-histoire-geographie.yaml`) ; a servir dans un paquet ulterieur. |
 | histoire-geographie | CM1 | Le temps des rois | Associer chacun de ces rois à un fait ou à une réalisation qui le caractérise (la croisade, la Renaissance, l'édit de Nantes, Versailles). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s29, composition A) - **`HG-CM1-06` ferme.** `FER-1` : les quatre realisations de la parenthese enfin servies en bonne reponse - elles ne l'etaient pas avant ce lot. `FER-2` : 10 items. `FER-3` : deux taches a 4 items. Aucune tradition parmi les faits. Aucune mention de couverture partielle n'est due |
 | histoire-geographie | CM1 | Le temps de la Revolution et de l'Empire | Situer les événements majeurs de la Révolution française (1789, l'abolition des privilèges, la Déclaration des droits de l'homme et du citoyen, la fin de la monarchie). | bandit-manchot-histoire-geographie-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s29, composition A) - **`HG-CM1-07` ferme.** `FER-1` : les quatre evenements de la parenthese. `FER-2` : 10 items. `FER-3` : 7 contre 3, exactement au plancher, `nadia-prof` le dit tel quel. Chronologie revolutionnaire juste sur les dix items. Aucune mention de couverture partielle n'est due |
@@ -1359,6 +1359,13 @@ sont pas
 `en cours` : `-05` n'a jamais ete servie (laissee de cote par le premier paquet) et `-09`/`-10`
 sont hors de portee du palier 1. Bilan de la matiere apres s29 : 5 `couvert-valide`, 6 `en cours`,
 3 `non couvert`, 14 au total.
+
+**Bilan du 2026-09-09 (s32, instance A)** : deux des six lignes `en cours` ferment - `HG-CM1-01`
+(frise des grandes periodes, sur sa part servie) et `HG-CM1-03` (traces d'occupation ancienne)
+passent `couvert-valide`. Deux refus maintiennent `HG-CM1-02` et `HG-CM1-04` `en cours` (`HG-R11`,
+`HG-R12`, bloquantes, reprises a s33 sous `S33-HG-02` et `S33-HG-04`). Bilan de la matiere apres
+s32 : 7 `couvert-valide`, 4 `en cours` (`HG-CM1-02`, `-04`, `-08`, `-12`), 3 `non couvert`, 14 au
+total.
 
 ## Langues vivantes (anglais) - CP (cycle 2)
 
@@ -1400,12 +1407,17 @@ les trois demandees.
 | langues vivantes (anglais) | CM1 | Lire et comprendre | Lire et comprendre des mots et des expressions familiers dans les champs lexicaux du cycle 3. | bandit-manchot-anglais-cm1 | bandit manchot | **couvert-valide** (2026-09-04, s28) - **`LVE-CM1-04` ferme.** Premier paquet, textuel (aucune illustration, `REC-1` a `REC-4` sans objet). Quinze items sur cette ligne (plancher dix, `FER-2`), trois champs lexicaux declares et servis a cinq mots chacun (`ANG-4`), deux taches de traduction - francais -> anglais (douze items), anglais -> francais (trois items), la moins servie exactement au plancher (`FER-3`). Quinze traductions verifiees une par une, aucune erreur. Aucun dispositif ne demande a un adulte de prononcer un mot d'anglais. Reserve non bloquante **`ANG-R1`** : l'item `montagne` -> `mountain` viole `REC-5` (mot transparent en bonne reponse) et `REC-6` (longueur non voisine des deux autres propositions) - correction fournie mot pour mot par `nadia-prof`, routee a s29 |
 | langues vivantes (anglais) | CM1 | Lire et comprendre | Lire et comprendre un texte court et simple (consigne, message, courte description). | - | - | non couvert - jouable, sous condition que le lexique de la ligne 4 soit deja servi en choix. **Une condition sur deux est remplie depuis s28** : le lexique de `LVE-CM1-04` existe et est `couvert-valide` ; `nadia-prof` (2026-09-04) exige un second paquet lexical avant que cette ligne s'ouvre - refusee d'avance pour s28, non instruite pour s29. |
 | langues vivantes (anglais) | CM1 | Ecrire | Écrire des mots et des expressions mémorisés (légender une image, renseigner une fiche). | - | - | non couvert - jouable par saisie, sous conditions `ANG-S1` et `ANG-S2` (lexique ferme deja servi en choix, indice sans jamais montrer le mot). |
-| langues vivantes (anglais) | CM1 | Decouverte culturelle | Découvrir quelques aspects culturels des pays de la langue étudiée. | bandit-manchot-anglais-cm1 | bandit manchot | **en cours** (2026-09-04, s28) - **`LVE-CM1-07` s'ouvre, ne ferme pas.** Cinq items sur cette ligne, sous le plancher de dix (`FER-2` non tenue et n'avait pas a l'etre : `nadia-prof` avait ecrit d'avance que ce lot "ferme la ligne 4 et ouvre la ligne 7"). `BIA-1` et `BIA-2` tenues. **Mention exigee d'avance par `nadia-prof`, a reprendre mot pour mot, sans laquelle elle n'aurait pas laisse cette ligne bouger** : "decouverte culturelle seule, en francais ; aucune competence linguistique n'est servie". |
+| langues vivantes (anglais) | CM1 | Decouverte culturelle | Découvrir quelques aspects culturels des pays de la langue étudiée. | bandit-manchot-anglais-cm1 | bandit manchot | **couvert-valide** (2026-09-09, s32, instance A) - **`LVE-CM1-07` ferme, VALIDE SOUS RESERVE.** `FER-2` : 10 items (cinq de s28, cinq neufs). `FER-1` : la ligne n'enumere rien, condition acceptee sur la declaration du lot (trois aspects - fetes, lieux, vie quotidienne - chacun servi). `FER-3` : etablie par `nadia-prof` elle-meme faute de declaration de tache par item, 4 contre 6, au-dessus du plancher. `BIA-1`, `BIA-2` tenues. Exactitude verifiee sur les dix items. **Mention de couverture partielle, due, et reprise mot pour mot depuis sa source** : "decouverte culturelle seule, en francais ; aucune competence linguistique n'est servie". Quatre reserves non bloquantes, datees du 2026-09-09 : **`ANG-R3`** (trois des cinq items neufs se repondent par la seule lecture de l'enonce, sans savoir sur le pays), **`ANG-R4`** (l'enonce de l'item 23 coupe sa question principale par une incise de 14 mots), **`ANG-R5`** (l'indice de l'item 16 attribue a "Londres" le nom de la grande roue, qui est "London Eye"), **`ANG-R6`** (l'item 24 ecarte son seul candidat serieux, "en voiture avec un parent", au profit de deux propositions non concurrentes). **Une incoherence du referentiel, tracee et non corrigee ici** : la parenthese "(fetes, lieux, vie quotidienne)" que le lot invoque porte sur `LVE-CP-06`, pas sur cette ligne, qui n'en porte aucune - meme competence, deux niveaux, une seule parenthese ecrite. |
 
 **Bilan, corrige le 2026-09-05 (`camille-po`) - le bilan precedent (4 `non couvert`) datait
 d'avant le lot de s28 et n'avait pas ete mis a jour** : 7 lignes, 2 `non couvert`, 1 `en
 cours` (`LVE-CM1-07`), 1 `couvert-valide` (`LVE-CM1-04`), 3 `non couvrable en l'etat`. 4
 lignes entrent au denominateur atteignable (inchange).
+
+**Bilan du 2026-09-09 (s32, instance A)** : `LVE-CM1-07` passe `en cours` -> `couvert-valide`.
+Bilan de la matiere apres s32 : 7 lignes, 2 `non couvert`, plus aucune `en cours`, 2
+`couvert-valide` (`LVE-CM1-04`, `LVE-CM1-07`), 3 `non couvrable en l'etat`. 4 lignes entrent au
+denominateur atteignable (inchange).
 
 ## Arts plastiques - CP (cycle 2)
 
@@ -4936,3 +4948,104 @@ fiches de conformite du sprint, aucune n'exige de mention au-dela de celle-ci.
   ligne.
 - Elle ne rouvre pas `DEC-0081` : le constat sur le resultat de la composition retenue est ecrit
   dans `DEC-0082`, a part de l'arbitrage lui-meme.
+
+## Synthese apres les verdicts du sprint 32 (2026-09-09) - trois lignes ferment sur huit visees,
+## quatre refus, le declencheur de la borne de s33 s'evalue sur un fait
+
+`nadia-prof` a joue en trois instances disjointes pour la premiere fois (`DEC-0083`). Sources :
+`squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`, `-B.md`,
+`-C.md`, les dix fiches de conformite qu'elles citent, `planning.md`, `rapport-qualite.md`,
+`confirmation-archunit.md`, `relecture.md` (meme repertoire de sprint), `DEC-0083` (perimetre de
+s32) et `DEC-0084` (constat de cloture).
+
+### Les trois mouvements
+
+| Ligne | Instance | Mouvement |
+|---|---|---|
+| `HG-CM1-01` (frise des grandes periodes) | A | `en cours` -> `couvert-valide`, avec mention de couverture partielle due |
+| `HG-CM1-03` (traces d'occupation ancienne) | A | `en cours` -> `couvert-valide` |
+| `LVE-CM1-07` (decouverte culturelle CM1) | A | `en cours` -> `couvert-valide`, VALIDE SOUS RESERVE, avec mention de couverture partielle due |
+
+### Les quatre refus, aucun ne deplace de ligne
+
+- **`HG-CM1-02`** (instance A) - refusee sur `HG-R11`, bloquante : deux items donnent en bonne
+  reponse et en distracteur "le sacre de Clovis, roi des Francs, en 481", fait faux que le meme
+  fichier dement lui-meme ailleurs. Reste `en cours`. Story de reprise : `S33-HG-02`.
+- **`HG-CM1-04`** (instance A) - refusee sur `HG-R12`, bloquante : l'item sur l'armee arretee a
+  Poitiers en 732 donne "les Sarrasins" comme nom de peuple, terme qu'aucun groupe n'a jamais
+  revendique pour lui-meme. Reste `en cours`. Story de reprise : `S33-HG-04`.
+- **`EMC-CP-07`** (instance B, troisieme passage) - refusee sur un motif entierement neuf : l'item 4
+  de la tache A marque fausse une proposition vraie ("le casque a velo obligatoire" **est** une
+  regle qui vaut pour tous) et l'item 11 porte un distracteur mort. `FAB-1c`, le motif du deuxieme
+  refus, est paye. Reste `non couvert`. Story de reprise : `S33-EMCCP07` (quatrieme passage).
+- **`EPS-CP-04`** et **`EPS-CP-08`** (instance C, premier contact) - refusees toutes deux. Sur
+  `EPS-CP-04`, la tache B se gagne au champ lexical du danger sur 4 items sur 5 (`SEC-R3`, `CAT-1`
+  transposee au registre du danger). Sur `EPS-CP-08`, quatre items sur onze enseignent ou
+  verifient quelque chose de faux (`JEU-R1` a `JEU-R5`), et deux de plus se gagnent a la forme de
+  l'enonce (`JEU-R6`). Restent `non couvert`. Stories de reprise : `S33-EPS-SEC`, `S33-EPS-JEU`.
+
+**`CAT-1`, paiement refuse sur `EMC-CP-02` et `EMC-CP-06`** (instance B) : le correctif rend une
+proposition serieuse par item la ou la clause en demande trois, et remplace le repere de registre
+par un repere lexical (*maitresse* dans 6 distracteurs sur 11, dans aucune bonne reponse). Aucune
+des deux lignes n'est rouverte : toutes deux restent `couvert-valide`. Story de reprise :
+`S33-CAT1`.
+
+### Le recompte, independant de tout chiffre transmis
+
+Recompte automatise sur les dix-huit tableaux de cette matrice, colonne `Statut`, apres application
+des trois verdicts ci-dessus - chaque ligne de donnees a ete reclassee telle qu'elle est ecrite
+dans ce fichier apres mise a jour, sans reprendre aucun total d'un autre document.
+
+| | Avant les verdicts (2026-09-08, ouverture de s32) | Apres les trois verdicts de s32 |
+|---|---|---|
+| `couvert-valide` | 63 | **66** |
+| `en cours` | 7 | **4** |
+| `non couvert` | 68 | 68 |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 209 | 209 |
+| Denominateur atteignable | 138 | 138 |
+| **Taux** | **63 / 138 = 45,7 %** | **66 / 138 = 47,8 %** |
+
+**66 / 138 = 0,47826... : 47,8 % arrondi.**
+
+**Position dans les deux fourchettes annoncees d'avance** (`planning.md`, section 3) : le plafond
+arithmetique de s32 etait de 8 lignes (71/138 = 51,4 %) ; l'attente raisonnable de `nadia-prof`
+etait de 6 a 7 lignes (69 a 70/138, soit 50,0 % a 50,7 %). **Le sprint ferme 3 lignes sur 8 visees,
+sous les deux bornes basses des deux fourchettes annoncees.** Ce n'est pas un ecart de mesure : les
+quatre refus de contenu neuf (`HG-CM1-02`, `HG-CM1-04`, `EMC-CP-07`, et les deux lignes d'EPS) et le
+paiement refuse de `CAT-1` pesent plus que la seule instance C, seule annoncee sans calibration
+(`PAR-13`), ne pouvait le laisser prevoir : l'instance A, sur un terrain deja mesure quatre fois,
+ferme deux lignes sur quatre visees plutot que les quatre annoncees en plafond.
+
+### Les mentions de couverture partielle, verifiees contre les fiches
+
+**Deux mentions sont dues, toutes deux reprises mot pour mot depuis leur source** :
+
+- `HG-CM1-01`, depuis `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` : *"ordre
+  et identification des cinq grandes periodes par la lecture seule ; le placement sur une frise
+  reste non couvert."*
+- `LVE-CM1-07`, depuis `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` : *"decouverte
+  culturelle seule, en francais ; aucune competence linguistique n'est servie"*.
+
+**`HG-CM1-03` n'en porte aucune** : verifie contre sa fiche, `nadia-prof` ne l'exige pas.
+
+### Ce que je route, en plus du backlog
+
+| Fait | A qui | Ce qu'il en fait |
+|---|---|---|
+| **`HG-CM1-02`, `HG-CM1-04` restent `en cours`, refusees** | `sofia-sm` | Stories ecrites, `S33-HG-02` (fait faux sur Clovis, mot pour mot) et `S33-HG-04` (le terme "les Sarrasins") |
+| **`EMC-CP-07` refusee au troisieme passage**, motif neuf | `sofia-sm` | Story ecrite, `S33-EMCCP07` |
+| **`CAT-1` non payee** sur `EMC-CP-02` et `EMC-CP-06` | `sofia-sm` | Story ecrite, `S33-CAT1` |
+| **`EPS-CP-04`, `EPS-CP-08` refusees au premier contact** | `sofia-sm` | Stories ecrites, `S33-EPS-SEC` et `S33-EPS-JEU` |
+| **`EXC-R1`, `EXC-R5`, `CONS-4`, `SCO-1`** (dette de portee D et de contenu, non fermees par s32) | `sofia-sm` | Stories ecrites, `S33-EXC-R1`, `S33-EXC-R5`, `S33-CONS-4` ; `SCO-1` reste routee au remede technique de `theo-archi` |
+| **Une incoherence du referentiel** (`LVE-CM1-07` ne porte pas la parenthese "fetes, lieux, vie quotidienne" que `LVE-CP-06` porte, meme competence, deux niveaux) | `nadia-prof` a signale, je trace | Non corrigee ici : `nadia-prof` est la source du referentiel, elle tranche si la parenthese doit etre ecrite aux deux niveaux |
+
+### Ce que cette synthese ne fait pas
+
+- Elle ne prononce aucun Done : les trois verdicts qui ferment une ligne, et les quatre qui n'en
+  ferment aucune, sont de `nadia-prof`, dans les documents et les fiches cites.
+- Elle ne fixe aucun perimetre pour s33 au-dela des priorites nommees ci-dessus.
+- Elle ne rejuge aucun des sept verdicts de ce sprint, ni les trois qui ferment une ligne, ni les
+  quatre refus, ni le paiement refuse de `CAT-1`.
+- Elle ne rouvre pas `DEC-0083` : le constat sur le resultat contre le plan est ecrit dans
+  `DEC-0084`, a part de l'arbitrage lui-meme.

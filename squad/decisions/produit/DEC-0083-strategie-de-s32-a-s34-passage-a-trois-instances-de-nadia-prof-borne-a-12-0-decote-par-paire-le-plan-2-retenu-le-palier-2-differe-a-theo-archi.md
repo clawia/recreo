@@ -21,8 +21,12 @@
   (palier 2, statut *Propose*, amende par `theo-archi` le 2026-09-08), `DEC-0074` (referentiels EMC
   CP, sciences CM1, EPS CP et CM1), `DEC-0075` (corpus d'oeuvres, question de droits ouverte),
   `squad/sprints/s32-instruction-prealable/avis-faisabilite-theo-achevement-du-palier-2.md`
-  (`theo-archi`, branche `s32-theo`, commit `dcbcd65a` - **branche non fusionnee dans `round-two` a
-  la date de cet amendement**), `squad/programme/MATRICE-couverture.md`, `docs/backlog/backlog.md`
+  (`theo-archi`, branche `s32-theo`, commit `96c8efbe` - **branche non fusionnee dans `round-two` a
+  la date de cet amendement**. Correction du 2026-09-09, `camille-po` : cette citation portait
+  `dcbcd65a`, un commit orphelin, atteignable depuis aucune branche ni aucun tag - residu d'un
+  geste anterieur a une reecriture de commit, passe par erreur depuis un rapport anterieur.
+  `96c8efbe` porte le meme message et le meme contenu de fichier, et il est atteignable depuis
+  `round-two`), `squad/programme/MATRICE-couverture.md`, `docs/backlog/backlog.md`
   (sections "Sprint 31", "Backlog ouvert pour s32", "Backlog ouvert pour s33").
 
 ---
@@ -402,9 +406,10 @@ plus tot, sous forme d'une decision distincte si son avis ouvre un chantier.
 section 11 laissait ouvert : le compte reel de fermeture du palier 2 par `nadia-prof` (sections 16
 et 17 de son arbitrage prealable, meme fichier que la section 1, commit `b1ee89f4`) et l'avis de
 faisabilite de `theo-archi` sur son chemin de jeu (`squad/sprints/s32-instruction-prealable/
-avis-faisabilite-theo-achevement-du-palier-2.md`, branche `s32-theo`, commit `dcbcd65a` - **cette
+avis-faisabilite-theo-achevement-du-palier-2.md`, branche `s32-theo`, commit `96c8efbe` - **cette
 branche n'est pas fusionnee dans `round-two` a la date de cet amendement**, et rien ci-dessous ne le
-presuppose). La section 11 ci-dessus est tranchee par cet amendement ; elle n'est pas reecrite.
+presuppose ; reference corrigee le 2026-09-09, voir la section "Lien" ci-dessus). La section 11
+ci-dessus est tranchee par cet amendement ; elle n'est pas reecrite.
 
 ### 13.1 Ce qu'elle a vu, et ce qu'elle n'a pas retenu
 
