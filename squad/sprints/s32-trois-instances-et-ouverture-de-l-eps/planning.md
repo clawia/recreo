@@ -500,3 +500,75 @@ pas faites** :
 |---|---|---|
 | `rapport-qualite.md` annonce 35 `ArchRule` reelles | `RegleContreExemple.java` (fixture de `LesGardeFousSontMisALEpreuveTest`) declare **deux** `ArchRule` factices, pas une - verifie par moi (`grep -n "static final ArchRule"` sur le fichier). 36 declarations moins deux factices : le compte reel est **34**, coherent avec `ADR-index.md` et `ADR-0089` | `yanis-qa`, c'est son artefact |
 | `DEC-0083` cite le commit `dcbcd65a` (section Lien et section 13) pour l'avis de faisabilite du palier 2 | Ce commit est orphelin - verifie par moi, `git branch -a --contains dcbcd65a` et `git tag --contains dcbcd65a` ne le rendent depuis nulle part. Le contenu reellement fusionne vit sous `043b8503`, confirme present sur `round-two`. L'erreur d'origine est mienne : ce SHA a ete passe a `camille-po` depuis le premier rapport de `theo-archi`, avant qu'il ne reecrive son commit - meme famille que la reference qui pointe vers rien, deja payee dans `CLAUDE.md` | `camille-po` |
+
+## 17. Fusion des trois instances de `nadia-prof` - la couture du registre, annoncee par les trois, payee une fois
+
+**Casquette dev, geste distinct de la ceremonie de planning.**
+
+**Verification de lignee avant chaque fusion.** `git merge-base round-two s32-nadia-a`,
+`s32-nadia-b` et `s32-nadia-c` rendent tous les trois `fd19d18f`, la tete de `round-two` au moment
+ou les trois instances ont ete provisionnees (fusion de `s32-lea2`, section 16). Les trois branches
+en descendent directement, un seul commit chacune, aucune tete perimee.
+
+**Fusion dans l'ordre A, B, C** (`git merge --no-ff`, un commit de fusion par branche). Aucun
+fichier de fiche de conformite ni de verdict n'est partage entre les trois : seul
+`squad/decisions/REGISTRE-identifiants.md` est touche par les trois, et c'est la couture que les
+trois avaient annoncee d'avance dans leur propre commit, avant meme la fusion.
+
+**Le conflit annonce, et rien d'autre.** Fusion de A : sans conflit (premiere des trois, table et
+etat courant s'appliquent tels quels). Fusion de B : conflit sur `REGISTRE-identifiants.md`,
+section 1 uniquement (deux blocs - la ligne d'etat courant, et les deux notes d'instance A et B
+qui se recouvraient). La table de la section 4 s'est auto-fusionnee sans marqueur : les dix lignes
+de A et les sept de B tombent a des points distincts d'une table triee alphabetiquement. Fusion de
+C : meme forme de conflit, memes deux blocs, resolus de la meme facon.
+
+**Resolution : les notes des trois instances restent verbatim, une note de `sofia-sm` s'ajoute
+apres chacune, jamais une note retouchee.** C'est le patron deja pose a la fusion des deux reaudits
+de s31 (section 1 du registre, note du 2026-09-08) : une mesure datee ne pourrit pas, seul l'etat
+courant est reecrit.
+
+**Compte recompte sur la table assemblee, jamais additionne depuis les trois annonces.** Mesure
+directe : `awk` isole la section 4 du fichier fusionne, un motif identique a celui du garde-fou
+d'`ADR-0085` (`| \`identifiant\` | \`document\` |`) compte les lignes.
+
+| Etape | Identifiants distincts | Prefixes distincts | Doublons |
+|---|---|---|---|
+| Apres fusion de A seule | 564 | 95 | 0 |
+| Apres fusion de A + B | 564 | 95 | 0 |
+| Apres fusion de A + B + C (final) | **578** | **97** | **0** |
+
+547 (base `fd19d18f`) + 10 (instance A, un prefixe neuf `EXA`) + 7 (instance B, aucun prefixe
+neuf) + 14 (instance C, deux prefixes neufs `SEC` et `JEU` - `EPS` existait deja avec `EPS-1` a
+`EPS-3`) = 578. **Verifie explicitement qu'aucun identifiant n'est alloue deux fois entre les trois
+lots** : intersection des trois listes (10, 7, 14 identifiants) vide dans les trois sens - le cas
+que `PAR-5` visait vraiment n'a pas eu lieu ce sprint, seule sa forme (c), deja vue et deja
+annoncee, s'est produite.
+
+**C'est la troisieme occurrence de la forme (c) du defaut de couture de `nadia-prof`** (registre
+non vu par une branche soeur non fusionnee), et la premiere ou les trois instances l'ont ecrite
+d'avance plutot que de la laisser decouvrir au rouge - exactement ce que la decote de 3,0 sur la
+borne de s32 achete (section 10). Le conflit a ete reel et visible sur le fichier, jamais silencieux.
+
+**Quatre jobs de la CI lances par moi sur l'arbre assemble, chacun nomme, aucun deduit** :
+
+| Job | Commande | Verdict |
+|---|---|---|
+| `prefixes` | `bash .github/scripts/verifier-prefixes-test.sh`, `bash .github/scripts/commit-atteignable-test.sh`, puis `git log --no-merges --format=%s fd19d18f..HEAD \| bash .github/scripts/verifier-prefixes.sh` | Vert. *"Tous les commits portent un prefixe d'agent connu."* |
+| `chemins` | `bash .github/scripts/verifier-chemins-test.sh`, puis `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh` | Vert. *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
+| `outils` | les neuf juges purs de `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` | Vert, 9 juges executes |
+| `build` | `bash outils/mvn-jdk21.sh -B clean verify` (reacteur complet, racine) | **BUILD SUCCESS**, six modules `SUCCESS`, 03:53 min |
+
+**Compte de tests mesure par moi sur l'arbre assemble, pas relaye des trois instances** : somme de
+l'attribut `tests` des fichiers `TEST-*.xml` de `surefire-reports` et `failsafe-reports` apres le
+`clean verify` ci-dessus - `recreo-domain` 105, `recreo-application` 13, `recreo-adapter-web` 388,
+`recreo-adapter-content` 689, `recreo-bootstrap` surefire 238, `recreo-bootstrap` failsafe 6. **193
+fichiers, 1 439 tests, 0 echec, 0 erreur - inchange**, conforme a l'annonce des trois instances :
+aucune ne touche de fichier Java, seulement des fiches de conformite, des verdicts et le registre.
+
+**Je ne prononce aucun Done.** Les quatre jobs sont verts sur l'arbre assemble, mais le Done
+technique appartient a `yanis-qa` et `theo-archi`, et le Done pedagogique appartient a
+`nadia-prof`, qui vient de rendre les trois verdicts fusionnes ici, pas de les rejouer sur
+l'assemblage. Je ne mets a jour ni `squad/programme/MATRICE-couverture.md` ni aucun contenu : c'est
+`camille-po`, sur les trois verdicts. Deux corrections dues restent tracees et ne sont pas closes
+ici : le compte de 34 `ArchRule` dans `rapport-qualite.md` (section 16, a `yanis-qa`) et la
+reference orpheline `dcbcd65a` dans `DEC-0083` (section 16, a `camille-po`).
