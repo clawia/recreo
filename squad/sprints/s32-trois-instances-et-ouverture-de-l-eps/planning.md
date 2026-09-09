@@ -451,3 +451,52 @@ routes a `nadia-prof` : le plancher de `FER-3` et le terme "les Sarrasins" (`HG-
 mord encore sur du contenu vivant prive de son exemption, `FOP-R4` etant ouverte et non payee ; le
 geste attendu dans le meme diff que son paiement est ecrit dans la Javadoc du test concerne. Non
 tranche ici, laisse au backlog ou il vit deja.
+
+## 16. Fusion de `s32-lea2` - un defaut de relecture et deux referents casses par la meme compression
+
+**Casquette dev, geste distinct de la ceremonie de planning.**
+
+**Verification de lignee avant fusion** : `git merge-base round-two s32-lea2` rend `c7d87e98`,
+exactement la tete de `round-two` au moment ou `s32-lea2` a ete forkee. Un seul commit au-dessus,
+aucune tete perimee. **Fusion en fast-forward** (`git merge --ff-only s32-lea2`), sans commit de
+fusion, sans conflit : le nouveau `HEAD` de `round-two` est `c0c62792`.
+
+**Point de couture verifie, pas suppose** : `cp-emc-formules-de-politesse.yaml` et
+`cp-emc-emotions-autrui.yaml` etaient deja modifies par `lea-dev` a `ba2871ea` (fusion de section
+14), entre dans `round-two` avant la fusion de ce jour. Le diff de `c0c62792` s'applique dessus
+proprement - les deux blocs de commentaire ajoutes suivent le commentaire de compression EMO-R1 /
+POL-R1 deja present, sans le remplacer.
+
+**Quatre jobs de la CI lances par moi sur l'arbre fusionne, chacun nomme, aucun deduit** :
+
+| Job | Commande | Verdict |
+|---|---|---|
+| `prefixes` | `bash .github/scripts/verifier-prefixes-test.sh`, `bash .github/scripts/commit-atteignable-test.sh`, puis `git log --no-merges --format=%s -1 \| bash .github/scripts/verifier-prefixes.sh` | Vert. *"Tous les commits portent un prefixe d'agent connu."* |
+| `chemins` | `bash .github/scripts/verifier-chemins-test.sh`, puis `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh` | Vert. *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
+| `outils` | les neuf juges purs de `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` | Vert, 9 juges executes |
+| `build` | `bash outils/mvn-jdk21.sh -B clean verify` (reacteur complet, racine) | **BUILD SUCCESS**, six modules `SUCCESS`, 02:32 min |
+
+**Compte de tests mesure par moi sur l'arbre fusionne** : `recreo-domain` 105, `recreo-application`
+13, `recreo-adapter-web` 388, `recreo-adapter-content` 689, `recreo-bootstrap` surefire 238,
+`recreo-bootstrap` failsafe 6. **1 439 tests, 0 echec, 0 erreur - inchange**, conforme a l'annonce :
+`lea-dev` ne touche aucun fichier Java, seulement trois paquets YAML.
+
+**Je ne prononce aucun Done** : les quatre jobs sont verts sur l'arbre fusionne, mais le Done
+technique appartient a `yanis-qa` et `theo-archi`, et le Done pedagogique appartient a `nadia-prof`,
+qui n'a pas rejoue cet increment.
+
+**Le constat de serie de `lea-dev`, a tracer en retro** : trois defauts de langue distincts
+(`cp-emc-regle-souhait-loi` item 11, partitif retire ; `cp-emc-emotions-autrui` item 4, possessif a
+deux antecedents possibles ; `cp-emc-formules-de-politesse` item 11, "la fin" sans referent), tous
+produits par la meme facon de comprimer un enonce pour tenir `LON-1` (retirer une subordonnee sans
+reconstruire la phrase autour), tous trouves par la meme relecture et tous corriges dans un seul
+commit. Ce n'est pas trois defauts independants, c'est un seul mode de defaillance de la
+compression, vu trois fois.
+
+**Deux corrections de la relecture restent dues, ni l'une ni l'autre n'est la mienne - tracees ici,
+pas faites** :
+
+| Correction due | Constat | Destinataire |
+|---|---|---|
+| `rapport-qualite.md` annonce 35 `ArchRule` reelles | `RegleContreExemple.java` (fixture de `LesGardeFousSontMisALEpreuveTest`) declare **deux** `ArchRule` factices, pas une - verifie par moi (`grep -n "static final ArchRule"` sur le fichier). 36 declarations moins deux factices : le compte reel est **34**, coherent avec `ADR-index.md` et `ADR-0089` | `yanis-qa`, c'est son artefact |
+| `DEC-0083` cite le commit `dcbcd65a` (section Lien et section 13) pour l'avis de faisabilite du palier 2 | Ce commit est orphelin - verifie par moi, `git branch -a --contains dcbcd65a` et `git tag --contains dcbcd65a` ne le rendent depuis nulle part. Le contenu reellement fusionne vit sous `043b8503`, confirme present sur `round-two`. L'erreur d'origine est mienne : ce SHA a ete passe a `camille-po` depuis le premier rapport de `theo-archi`, avant qu'il ne reecrive son commit - meme famille que la reference qui pointe vers rien, deja payee dans `CLAUDE.md` | `camille-po` |
