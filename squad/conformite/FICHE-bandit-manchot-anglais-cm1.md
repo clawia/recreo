@@ -12,7 +12,8 @@
   `ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`, sections 5.3 et 6 ;
   `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` (`REC-1` a `REC-6`, `ANG-S1`,
   `ANG-S2`, `BIA-1`, `BIA-2`).
-- **Derniere mise a jour** : 2026-09-04 (**verdict de `nadia-prof` apres avoir joue**, s28).
+- **Statut global s32** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-09** sur l'increment de s32, story `S32-2`, par `nadia-prof`, **instance A**, apres trois parties completes). **`LVE-CM1-07` ferme** : `en cours` -> **`couvert-valide`**, avec la **mention exigee d'avance reprise mot pour mot**. C'est la derniere ligne `en cours` de cette matiere. Quatre reserves nouvelles, toutes non bloquantes : `ANG-R3`, `ANG-R4`, `ANG-R5`, `ANG-R6`. `CONS-1` reste **levee** sur cette entree.
+- **Derniere mise a jour** : 2026-09-09 (**verdict de `nadia-prof`, instance A, apres trois parties completes et la lecture des dix items de la ligne, les cinq de s28 compris**, s32).
 
 ## Competences visees
 
@@ -407,3 +408,269 @@ lieu, un monument, un embleme, une fete - n'est toujours pas nommee. **Je ne l'o
 motif ci-dessus.
 
 **Aucune ligne ne bouge. `ANG-R1` reste levee.**
+
+---
+
+# s32 - audit de `nadia-prof`, **instance A**, 2026-09-09 (`S32-2`, `90b01fdd`)
+
+- **Verdict** : **VALIDE SOUS RESERVE**, prononce le **2026-09-09** par `nadia-prof`, **instance A**,
+  apres avoir joue trois parties completes.
+- **`LVE-CM1-07` ferme** : `en cours` -> **`couvert-valide`**, avec la **mention exigee d'avance,
+  reprise mot pour mot** (ci-dessous). C'est la derniere ligne `en cours` de cette matiere.
+- **Reserves nouvelles, datees du 2026-09-09, toutes non bloquantes** : `ANG-R3`, `ANG-R4`, `ANG-R5`,
+  `ANG-R6`.
+- **`CONS-1` reste levee sur cette entree** : la consigne servie n'a pas change et le lot ne l'a pas
+  touchee. **Je ne rouvre rien.**
+- **Relevé complet, avec les mesures et les comptes** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`.
+
+## **Mention exigee d'avance, a reprendre mot pour mot dans la matrice par `camille-po`**
+
+> *"decouverte culturelle seule, en francais ; aucune competence linguistique n'est servie"*
+
+*C'est le texte que j'avais exige d'avance a s28 et sans lequel je n'aurais pas laisse cette ligne
+bouger. Il est reproduit ici a l'identique, non reformule.*
+
+## `SCO-1` sur ce jeu - **le score reste parfait par elimination**
+
+*Mention due dans toute fiche que j'ecris a partir de la cloture de s32, par la reserve que j'ai posee
+le 2026-09-08.*
+
+**Mesure du 2026-09-09, trois parties completes, score lu dans la reponse de chaque appui** : le score
+atteint **10 / 10 a chaque partie** en pressant les propositions dans l'ordre servi jusqu'a la bonne,
+pour **19, 20 et 21 appuis**. Exemple releve tel quel, troisieme partie, manche 10 : *"field"* faux,
+*"street"* faux, *"town"* juste, **score 9 -> 10**.
+
+> **`SCO-1` est vivante sur ce jeu.** Le score qu'un enfant rapporte de cette partie **ne distingue pas
+> celui qui savait de celui qui a elimine.** Cette mention se retire le jour ou `SCO-1` est verte ; elle
+> **n'est pas une condition du Done** et ne remet en cause aucun verdict deja prononce - ni celui de
+> `LVE-CM1-04`, ni celui que je prononce ici.
+
+## Conditions de l'audit
+
+**J'ai joue.** Jar reconstruit depuis le worktree `s32-nadia-a` (base `fd19d18f`), application lancee
+sur un port local.
+
+- **3 parties completes de dix manches**, jusqu'a l'ecran de fin, avec erreurs volontaires. **Les
+  cinq items neufs ont ete vus servis**, ainsi que quatre des cinq items de s28.
+- **Les dix items de `LVE-CM1-07` lus un par un** dans le fichier - enonce, bonne reponse,
+  distracteurs, indice - **y compris les cinq de s28**, parce qu'ils comptent dans les dix qui
+  ferment la ligne aujourd'hui et sont donc dans mon perimetre.
+- **Audit degrade sur un point, declare** : j'ai lu le **HTML servi**, pas la page rendue par un
+  navigateur. Cela ne couvre ni la couleur, ni le contraste, ni la taille, ni la position. **Aucun
+  verdict de ce bloc ne repose sur un jugement visuel.** Le paquet est textuel, donc `REC-1` a
+  `REC-4` restent sans objet.
+
+## 1. Les conditions de fermeture, mesurees
+
+| Condition | Mesure | Verdict |
+|---|---|---|
+| `FER-2` | **10 items** sur `LVE-CM1-07`, cinq de s28 et cinq neufs. Plancher atteint | **tenue** |
+| `FER-1` | trois aspects declares par le lot - fetes, lieux, vie quotidienne - chacun servi en bonne reponse ; *vie quotidienne* n'etait servie par aucun des cinq items de s28 | **tenue sur la declaration du lot**, section 2 |
+| `FER-3` | **etablie par moi, le lot ne la revendique pas** : 4 contre 6, section 3 | **tenue** |
+| `BIA-1` | aucun item ne compare un ailleurs a un ici en position de norme | **tenue** |
+| `BIA-2` | Royaume-Uni **4** traits, Etats-Unis **6** ; aucun pays reduit a un seul | **tenue** |
+| `FAB-1a` | dix bonnes reponses distinctes | **tenue** |
+| `PLA-1` (les cinq items neufs seuls, section 4) | trois items dont au moins une proposition n'est candidate a rien | **non tenue** : `ANG-R3` |
+| Exactitude | les dix items, un par un | **tenue sur les dix bonnes reponses** ; une inexactitude dans un indice : `ANG-R5` |
+
+**Ce qui a rendu la fermeture possible et qui n'existait pas avant ce lot** : *vie quotidienne*. Les
+cinq items de s28 servaient deux capitales, un monument, un drapeau et une fete - **des choses a
+savoir, pas une vie a se representer**. L'uniforme scolaire et le trajet vers l'ecole donnent enfin a
+l'enfant quelque chose qu'il peut comparer a sa propre journee sans qu'on le lui demande. **C'est le
+bon ajout, et il est celui qui manquait.**
+
+## 2. La parenthese que le lot invoque n'est pas dans la ligne qu'il ferme - et le defaut est le mien
+
+Le commentaire du paquet et le Javadoc du test neuf disent *"les trois elements de la parenthese du
+referentiel (fetes, lieux, vie quotidienne)"*.
+
+**`LVE-CM1-07` ne porte aucune parenthese** : *"Decouvrir quelques aspects culturels des pays de la
+langue etudiee."*, point. **La parenthese est sur `LVE-CP-06`**, la meme competence au CP.
+
+**C'est une incoherence de mon propre referentiel** : j'ai ecrit la meme competence a deux niveaux et je
+n'ai mis la parenthese qu'au CP. Consequence directe : **`FER-1` est infalsifiable sur cette ligne**,
+exactement le trou que `ANG-4` a comble pour `LVE-CM1-04`.
+
+Ce que j'en fais, et ce que je n'en fais pas :
+
+- **Je ne corrige pas le referentiel pendant que j'audite le lot qui s'y mesure.** Ajouter la parenthese
+  aujourd'hui rendrait `FER-1` plus mordante sur le lot que je juge : **ce serait un poteau deplace, et
+  je n'en plante pas un sur mon propre oubli.**
+- **J'accepte la declaration du lot comme tenant le role de `FER-1`** : trois aspects declares, trois
+  aspects servis en bonne reponse, avec un test qui les nomme. C'est le regime d'`ANG-4`, et le lot l'a
+  tenu - **la chose faite est juste, c'est sa citation qui ne l'est pas.**
+- **Je le route a `camille-po` via `sofia-sm`** : la meme competence doit-elle porter la meme parenthese
+  aux deux niveaux ? La ligne de referentiel est a corriger hors audit, et je ne la tranche pas dans le
+  document qui juge le lot.
+
+## 3. `FER-3` - je l'ai etablie moi-meme, et je donne le partage pour qu'il soit contestable
+
+**Le lot ne revendique pas `FER-3` sur cette ligne, et aucun test ne l'ecrit.** Elle est neanmoins l'une
+de mes trois conditions de fermeture depuis le 2026-09-03, et rien n'exempte cette ligne. **Je l'ai donc
+faite a la main.**
+
+| Tache | Items | Ce que l'enfant fait |
+|---|---|---|
+| **Restituer un fait que la question designe par son pays** | 16 (capitale du Royaume-Uni), 18 (capitale des Etats-Unis), 21 (uniforme scolaire), 24 (trajet vers l'ecole) - **4** | retrouver en memoire un fait qu'on lui a appris, la question ne decrivant pas la reponse |
+| **Reconnaitre un objet ou une fete a partir des traits qu'on en decrit** | 17 (Big Ben), 19 (drapeau), 20 (Thanksgiving), 22 (bus a imperiale), 23 (Halloween), 25 (statue de la Liberte) - **6** | apparier une description a son referent |
+
+**Minorite a 4, au-dessus du plancher de trois. `FER-3` est tenue sur ce partage.**
+
+**Et je nomme la limite plutot que de la laisser croire couverte** : sans declaration de tache par item,
+**`FER-3` n'est calculable sur cette ligne par aucun automate et par personne d'autre que moi.** C'est le
+meme manque qu'`ADR-0081` a comble pour les lignes de referentiel, et il est ici entier. Un lot futur qui
+ajouterait cinq items de la seconde tache ferait tomber la premiere sous le plancher **sans qu'aucun test
+ne rougisse**.
+
+## 4. `ANG-R3` - reserve nouvelle, datee du 2026-09-09, **non bloquante** : `PLA-1` sur trois des cinq items neufs
+
+`PLA-1`, posee le 2026-09-07 et valant *"pour les paquets ecrits a partir d'aujourd'hui"*, s'applique aux
+cinq items neufs **et a eux seuls** - les cinq items de s28 sont hors de sa portee et je ne les lui
+soumets pas. **Elle n'est pas tenue sur trois des cinq.**
+
+| Item | Ce que l'enonce donne deja | Les propositions a ecarter |
+|---|---|---|
+| 22 - *"Quel vehicule rouge a deux etages circule dans les rues de Londres ?"* | rouge, deux etages, **dans les rues** | *"le metro souterrain"* n'est ni rouge, ni a etages, ni dans les rues - l'enonce l'exclut trois fois ; *"le tramway"* n'a pas deux etages |
+| 23 - *"Quelle fete, celebree le 31 octobre aux Etats-Unis, ou les enfants se deguisent et recoltent des bonbons, est tres populaire ?"* | la date, les deguisements, les bonbons | *"Noel"* et *"le Nouvel An"* tombent sur la seule date |
+| 25 - *"Quel monument, une grande statue tenant une torche, se trouve sur une ile a l'entree du port de New York ?"* | une statue, une torche, une ile, New York | *"la tour Eiffel"* et *"le Colisee"* ne sont ni des statues ni a New York |
+
+**Ces trois items se repondent sans rien savoir du Royaume-Uni ni des Etats-Unis : ils se repondent en
+lisant.** C'est le motif meme de `PLA-1` - *"un item dont l'une des propositions n'appartient a rien
+redevient binaire de fait"* - sauf qu'ici il redevient **unaire**.
+
+**Et un second defaut se cache derriere le premier** : la bonne reponse de l'item 22 est *"le bus a
+imperiale"*, ou **le mot *imperiale* est au-dessus du CM1 et n'est explique nulle part** - ni dans
+l'enonce, ni dans l'indice, ni ailleurs dans le paquet. Combine a la faille ci-dessus, **l'enfant gagne
+l'item sans avoir appris le mot** : il l'a designe par elimination. Un enfant qui repond juste et qui ne
+sait pas ce qu'il a dit n'a rien appris de cet item.
+
+**Pourquoi ce n'est pas un refus.** `PLA-1` a produit `SIG-R2` et `MEL-R3`, deux reserves non bloquantes
+sur des lignes que j'ai fermees, et **je m'y tiens plutot que de durcir parce que le defaut est plus
+large ici.** Aucune bonne reponse n'est fausse, et les sept autres items de la ligne tiennent.
+
+**Mais je dis ce que cela coute, une fois** : `FER-2` compte dix items sur cette ligne, et **trois des
+cinq que ce lot a ajoutes ne sont pas des exercices.** C'est exactement ce que ma propre clause voulait
+dire en ecrivant que **`FER-2` est *"necessaire et non suffisante"***.
+
+**Et je nomme, datee du 2026-09-09 et valant pour l'avenir seulement, la clause que je n'ecris pas
+aujourd'hui** : `FAB-1a` deduit deja du compte de `FER-2` les items d'une tache a bonne reponse
+invariante. Deduire de la meme facon un item dont l'enonce contient sa propre reponse serait la suite
+logique - **et je ne l'ecris pas maintenant, parce que je l'appliquerais au lot que je suis en train de
+juger.** Si je la pose, ce sera avant un lot, jamais pendant.
+
+> **`ANG-R3`. Propriete a tenir** : sur les items neufs de `LVE-CM1-07`, aucune proposition ne s'ecarte
+> par la seule lecture de l'enonce. Soit l'enonce cesse de decrire l'objet qu'il fait nommer, soit les
+> propositions deviennent des candidats reels du meme genre - un autre monument de New York, une autre
+> fete americaine d'automne, un autre transport londonien. **Et sur l'item 22, le mot *imperiale* est
+> explique la ou l'enfant le rencontre, ou remplace.** **Je ne fournis pas les textes.** **Regime : rejeu
+> borne, 0,5.**
+
+## 5. `ANG-R4` - reserve nouvelle, datee du 2026-09-09, **non bloquante** : l'enonce de l'item 23
+
+*"Quelle fete, celebree le 31 octobre aux Etats-Unis, ou les enfants se deguisent et recoltent des
+bonbons, est tres populaire ?"*
+
+**21 mots, dont 14 inseres entre le sujet et le verbe** de la question principale - *"Quelle fete ... est
+tres populaire ?"*. C'est l'enonce le plus lourd de la ligne, a egalite de longueur avec l'item 25, et
+**le seul dont la question principale soit coupee en deux**. Un enfant de CM1 lit peu et lentement ; il
+doit ici tenir le mot *fete* en memoire pendant quatorze mots avant de trouver le verbe qui l'attend.
+
+> **`ANG-R4`. Propriete a tenir** : sur `LVE-CM1-07`, la question principale d'un enonce n'est pas coupee
+> par une incise. **Le patron existe deja dans le meme paquet**, a l'item 20 : *"Quelle fete
+> traditionnelle, celebree fin novembre aux Etats-Unis, reunit la famille autour d'un grand repas ?"* -
+> meme structure, mais le verbe suit immediatement l'incise. **Regime : mot pour mot, 0,25.**
+>
+> *Le rattachement du relatif* ***ou*** *- qui se lit comme portant sur* ***Etats-Unis*** *et non sur*
+> ***fete*** *- est de la grammaire : il appartient au `relecteur-pedagogique` (`DEC-0002`, amendement du
+> 2026-08-04 ; `DEC-0056`) et je le lui route sans le compter dans ma reserve.*
+
+## 6. `ANG-R5` - reserve nouvelle, datee du 2026-09-09, **non bloquante** : l'indice de l'item 16
+
+*"Quelle est la capitale du Royaume-Uni ?"* -> *"Londres"*, indice *"C'est aussi le nom d'une grande roue
+celebre au bord de la Tamise."*
+
+**La grande roue s'appelle le *London Eye*, pas *Londres*.** L'indice affirme que la reponse *"est aussi
+le nom"* de la roue ; elle ne l'est pas. Un enfant qui cherche *"une grande roue qui s'appelle comme la
+reponse"* ne trouvera rien qui s'appelle *Londres*.
+
+**Deux choses a dire honnetement.**
+
+1. **L'item date de s28 et le lot ne l'a pas touche** - mais **il est l'un des dix que je compte pour
+   fermer la ligne aujourd'hui, donc il est dans mon perimetre.** Une ligne ne ferme pas sur des items
+   que je refuse de regarder parce qu'ils sont anciens.
+2. **Le paquet ecrit que *"`nadia-prof` les a confirmes bons au reaudit du 2026-09-08"*, et c'est plus
+   fort que ce que j'ai ecrit.** Ce que j'avais verifie, mot pour mot : *"les cinq items de `LVE-CM1-07`
+   servis, quatre d'entre eux dans une seule partie ; la consigne a deux taches, exacte sur les dix
+   manches."* **Servis et exacts sur les manches jouees - pas un audit signe des cinq items.** Je corrige
+   la citation avant qu'elle serve de caution a autre chose.
+
+**Non bloquante** : l'indice n'est pas une reponse attendue, et c'est le critere que j'applique depuis
+`HG-R7` et depuis `ANG-R2` sur cette fiche meme.
+
+> **`ANG-R5`. Propriete a tenir** : l'indice n'attribue pas a la bonne reponse un nom qui n'est pas le
+> sien. **Regime : mot pour mot, 0,25.**
+
+## 7. `ANG-R6` - reserve nouvelle, datee du 2026-09-09, **non bloquante** : l'item 24 et sa majorite
+
+*"Aux Etats-Unis, dans de nombreuses regions, comment la plupart des eleves se rendent-ils a l'ecole ?"*
+-> *"en bus scolaire jaune"*, contre *"a pied"* et *"en metro"*.
+
+**Je ne refuse pas, et je dis pourquoi plutot que de le laisser deviner.** L'item affirme une majorite -
+*"la plupart des eleves"* - **que je ne peux pas sourcer cette session**, n'ayant aucun outil de
+recherche en ligne. La double reserve *"dans de nombreuses regions"* la rend defendable : dans les
+districts ruraux et periurbains, le ramassage scolaire est bien le mode dominant. **Une affirmation
+couverte par sa propre restriction n'est pas une erreur de fait, et je ne la traite pas comme telle.**
+C'est le sens exact de ma famille (b) : je ne signe pas, mais je ne refuse pas ce que la formulation ne
+sur-affirme pas.
+
+**Ce qui reste, et qui est reel** : le mode qu'un enfant francais nommerait d'abord - *"en voiture, avec
+un parent"* - **est absent des propositions**, alors qu'il est, dans une grande partie des Etats-Unis,
+celui qui dispute la majorite au bus. **L'item ecarte donc son seul candidat serieux et retient les deux
+qui ne le sont pas.** C'est la meme famille que `ANG-R3`, sur un item que la double reserve sauve du
+refus.
+
+**Et `BIA-2` n'est pas en cause** : le paquet sert six traits des Etats-Unis, aucun pays n'est reduit a
+un seul trait, et je l'ai compte.
+
+> **`ANG-R6`. Propriete a tenir** : quand un item affirme une pratique majoritaire d'un pays, l'une de
+> ses propositions est **la pratique concurrente reelle**, et non deux pratiques ecartables. **Regime :
+> mot pour mot, 0,25.**
+
+## 8. Etat des lignes et des reserves de cette matiere au 2026-09-09
+
+| Ligne | Avant | Apres |
+|---|---|---|
+| `LVE-CM1-04` (lire et comprendre des mots) | `couvert-valide` | **inchangee** |
+| `LVE-CM1-07` (decouverte culturelle) | `en cours` | **`couvert-valide`**, avec sa mention mot pour mot |
+| `LVE-CM1-05`, `LVE-CM1-06` | `non couvert` | **inchangees**, non touchees par ce lot |
+| `LVE-CM1-01`, `-02`, `-03` | `non couvrable en l'etat` | **inchangees** |
+
+**Bilan de la matiere : 7 lignes, 2 `couvert-valide`, 2 `non couvert`, 3 `non couvrable en l'etat`,
+aucune `en cours`.**
+
+| Reserve | Etat au 2026-09-09 |
+|---|---|
+| `ANG-R1` | **levee** (s29) |
+| `ANG-R2` | **levee** (s30) |
+| `ANG-R3` | **ouverte**, non bloquante, rejeu borne 0,5 |
+| `ANG-R4` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `ANG-R5` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `ANG-R6` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `CONS-1` | **levee** sur cette entree depuis le 2026-09-06, et elle le reste |
+
+## 9. Ce dont je reste la seule garde sur cette matiere
+
+- **`FER-3` sur `LVE-CM1-07`** : **rien ne la mord.** Le lot ne l'a pas revendiquee, aucun test ne
+  l'ecrit, et sans declaration de tache par item elle n'est calculable par personne d'autre que moi
+  (section 3). **C'est la garde la plus fragile de ce bloc**, parce qu'un lot futur peut la faire tomber
+  sans qu'aucun test ne rougisse.
+- **`PLA-1`** : la plausibilite d'une proposition pour un enfant de neuf ans ne se calcule pas.
+- **L'exactitude factuelle** des dix faits culturels, indices compris : **moi seule**, et sans outil de
+  recherche. `ANG-R5` est ce que cette garde a trouve ce jour-la, sur un item que deux audits
+  precedents avaient laisse passer - le mien inclus.
+- **`BIA-1`** : la comparaison implicite a un *ici* norme est un jugement, pas un motif. Le test compte
+  les traits par pays (`BIA-2`), il ne lit pas le ton.
+- **`SCO-1`** : entierement automatisable, **et rien n'est ecrit**. Voir le bloc de mention en tete.
+- La couleur, le contraste, la taille, la position a l'ecran : **hors de ma portee cette session**
+  (audit degrade). Personne ne les a regardees sur ce jeu ce sprint.
