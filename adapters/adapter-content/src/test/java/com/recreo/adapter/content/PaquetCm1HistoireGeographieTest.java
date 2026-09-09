@@ -70,13 +70,24 @@ import static org.assertj.core.api.Assertions.assertThat;
  * verifient {@code FER-1} et {@code FER-2} sur les lignes {@code HG-CM1-06} (rois et realisations),
  * {@code HG-CM1-07} (Revolution) et {@code HG-CM1-14} (comprendre un document), sur le meme patron
  * que la composition B.</p>
+ *
+ * <p><b>S33-HG-08-12 (arbitrage prealable de s33 de nadia-prof, branche {@code s33-nadia}, commit
+ * {@code a9ab05ec}, sections 3.1, 3.2, 5.2, 9.2 et 9.3 ; docs/backlog/backlog.md, story
+ * S33-HG-08-12).</b> Le fichier passe de quatre-vingt-douze a cent dix items, motif dans le
+ * commentaire du paquet. Remplit {@code HG-CM1-08} (passage de la Revolution a l'Empire) et
+ * {@code HG-CM1-12} (se loger, travailler, se cultiver et se deplacer), chacune de 1 a 10 items.
+ * Les tests ajoutes ici verifient {@code FER-2} sur les deux lignes, {@code FER-1} sur la moitie du
+ * libelle de {@code HG-CM1-08} qu'aucun item ne servait avant ce lot, {@code FER-1} sur la pratique
+ * "se cultiver" de {@code HG-CM1-12}, absente jusqu'ici, et {@code HIS-5} (nadia-prof, 2026-09-09) :
+ * aucun item neuf ne reprend la cellule "se loger dans un espace urbain", deja comptee sur
+ * {@code HG-CM1-11}, ligne fermee.</p>
  */
 class PaquetCm1HistoireGeographieTest {
 
     private static final String PAQUET = "cm1-histoire-geographie";
 
     /** Le compte est garde exactement, comme sur tous les paquets de ce depot. */
-    private static final int NOMBRE_D_ITEMS_ATTENDU = 92;
+    private static final int NOMBRE_D_ITEMS_ATTENDU = 110;
 
     private static final String LIGNE_FRISE = "HG-CM1-01";
     private static final String LIGNE_SIECLE_ET_MILLENAIRE = "HG-CM1-02";
@@ -87,6 +98,15 @@ class PaquetCm1HistoireGeographieTest {
     private static final String LIGNE_ROIS_ET_REALISATIONS = "HG-CM1-06";
     private static final String LIGNE_REVOLUTION = "HG-CM1-07";
     private static final String LIGNE_COMPRENDRE_UN_DOCUMENT = "HG-CM1-14";
+    private static final String LIGNE_REVOLUTION_A_L_EMPIRE = "HG-CM1-08";
+    private static final String LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE = "HG-CM1-12";
+
+    /** HIS-5 (nadia-prof, 2026-09-09) : la cellule deja comptee et fermee sur HG-CM1-11. */
+    private static final String REPONSE_DEJA_COMPTEE_SUR_HG_CM1_11 = "des immeubles collectifs";
+
+    /** FER-1 sur HG-CM1-08 : la moitie du libelle qu'aucun item ne servait avant S33-HG-08-12. */
+    private static final Set<String> CE_QUE_NAPOLEON_CHANGE = Set.of(
+            "le Code civil", "des lycées", "la Légion d'honneur", "un préfet", "la Banque de France");
 
     /** FER-1 sur HG-CM1-01 : les cinq periodes de la parenthese, chacune servie. */
     private static final Set<String> GRANDES_PERIODES = Set.of(
@@ -222,12 +242,11 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     @Test
-    void lePaquetCompteExactementQuatreVingtDouzeItems() {
+    void lePaquetCompteExactementCentDixItems() {
         assertThat(tousLesItems(paquet()))
-                .as("S32-1 : cinquante-sept items apres s29 plus trente-cinq items neufs (huit sur"
-                        + " %s, neuf sur %s, neuf sur %s, neuf sur %s)",
-                        LIGNE_FRISE, LIGNE_SIECLE_ET_MILLENAIRE, LIGNE_PEUPLES_ANCIENS,
-                        LIGNE_MOUVEMENTS_DE_POPULATION)
+                .as("S33-HG-08-12 : quatre-vingt-douze items apres S32-1 plus dix-huit items neufs"
+                        + " (neuf sur %s, neuf sur %s)",
+                        LIGNE_REVOLUTION_A_L_EMPIRE, LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE)
                 .hasSize(NOMBRE_D_ITEMS_ATTENDU);
     }
 
@@ -257,14 +276,13 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     /**
-     * La distribution exacte par ligne, apres S28-2, S29-2 et S32-1 : les deux lignes que S32-1 ne
-     * touche pas (HG-CM1-08, HG-CM1-12) restent a leur compte de s27, et les sept lignes des
-     * compositions B, A et de la tranche 1 atteignent exactement le plancher de dix de
-     * {@code FER-2}. Une seule assertion prouve a la fois que chaque lot ferme sur son perimetre et
-     * qu'aucun n'ouvre de ligne neuve de la matiere.
+     * La distribution exacte par ligne, apres S28-2, S29-2, S32-1 et S33-HG-08-12 : les onze lignes
+     * du paquet atteignent chacune exactement le plancher de dix de {@code FER-2}. Une seule
+     * assertion prouve a la fois que chaque lot ferme sur son perimetre et qu'aucun n'ouvre de
+     * ligne neuve de la matiere.
      */
     @Test
-    void laDistributionParLigneEstExactementCelleDesCompositionsBEtAEtDeLaTranche1() {
+    void laDistributionParLigneEstExactementDixItemsSurChacuneDesOnzeLignes() {
         Map<String, Long> comptes = itemsBruts().stream()
                 .collect(Collectors.groupingBy(
                         item -> String.valueOf(item.get("ligneDeReferentiel")),
@@ -274,9 +292,9 @@ class PaquetCm1HistoireGeographieTest {
                 Map.entry(LIGNE_FRISE, 10L), Map.entry(LIGNE_SIECLE_ET_MILLENAIRE, 10L),
                 Map.entry(LIGNE_PEUPLES_ANCIENS, 10L), Map.entry(LIGNE_MOUVEMENTS_DE_POPULATION, 10L),
                 Map.entry(LIGNE_ROIS_ET_REALISATIONS, 10L), Map.entry(LIGNE_REVOLUTION, 10L),
-                Map.entry("HG-CM1-08", 1L), Map.entry(LIGNE_TYPES_D_ESPACES, 10L),
-                Map.entry("HG-CM1-12", 1L), Map.entry(LIGNE_EAU_ENERGIE_ALIMENTS, 10L),
-                Map.entry(LIGNE_COMPRENDRE_UN_DOCUMENT, 10L));
+                Map.entry(LIGNE_REVOLUTION_A_L_EMPIRE, 10L), Map.entry(LIGNE_TYPES_D_ESPACES, 10L),
+                Map.entry(LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE, 10L),
+                Map.entry(LIGNE_EAU_ENERGIE_ALIMENTS, 10L), Map.entry(LIGNE_COMPRENDRE_UN_DOCUMENT, 10L));
     }
 
     /** FER-2 (S32-1) : les quatre lignes de la tranche 1 atteignent chacune le plancher de dix. */
@@ -626,5 +644,67 @@ class PaquetCm1HistoireGeographieTest {
                 + " Sa chute est fêtée dans toute la ville et, l'année suivante, une grande fête"
                 + " réunit la France entière pour son anniversaire.");
         assertThat(item.get("bonneReponse")).isEqualTo("le pouvoir absolu et l'autorité du roi");
+    }
+
+    /** FER-2 (S33-HG-08-12) : les deux lignes remplies par ce lot atteignent chacune le plancher de dix. */
+    @Test
+    void fer2EstTenueSurLesDeuxLignesDeS33Hg0812() {
+        assertThat(itemsDeLaLigne(LIGNE_REVOLUTION_A_L_EMPIRE))
+                .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2, LIGNE_REVOLUTION_A_L_EMPIRE)
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+        assertThat(itemsDeLaLigne(LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE))
+                .as("FER-2 : au moins %d items servent %s", PLANCHER_FER_2,
+                        LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE)
+                .hasSizeGreaterThanOrEqualTo(PLANCHER_FER_2);
+    }
+
+    /**
+     * FER-1 sur HG-CM1-08 : avant S33-HG-08-12, aucun item ne servait la moitie du libelle "ce que
+     * Napoleon Bonaparte change" - l'unique item de s27 ne servait que "l'Empire", la moitie
+     * "passage". Au moins un des cinq faits neufs est desormais servi en bonne reponse.
+     */
+    @Test
+    void fer1SurHgCm108LaMoitieCeQueNapoleonChangeEstDesormaisServie() {
+        Set<Object> reponses = itemsDeLaLigne(LIGNE_REVOLUTION_A_L_EMPIRE).stream()
+                .map(item -> item.get("bonneReponse"))
+                .collect(Collectors.toSet());
+
+        assertThat(reponses)
+                .as("FER-1 : au moins un fait sur ce que Napoléon Bonaparte change est servi en"
+                        + " bonne réponse, en plus du passage de la Révolution à l'Empire lui-même")
+                .containsAnyElementsOf(CE_QUE_NAPOLEON_CHANGE);
+    }
+
+    /**
+     * FER-1 sur HG-CM1-12 : la pratique "se cultiver", absente jusqu'ici de la ligne, est
+     * desormais servie en bonne reponse par au moins un des neuf items neufs.
+     */
+    @Test
+    void fer1SurHgCm112LaPratiqueSeCultiverEstDesormaisServie() {
+        List<String> enonces = itemsDeLaLigne(LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE).stream()
+                .map(item -> String.valueOf(item.get("enonce")))
+                .toList();
+
+        assertThat(enonces)
+                .as("FER-1 : au moins un item sert la pratique \"se cultiver\", absente jusqu'ici de"
+                        + " %s", LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE)
+                .anyMatch(enonce -> enonce.contains("œuvres d'art") || enonce.contains("monuments")
+                        || enonce.contains("évènement culturel"));
+    }
+
+    /**
+     * HIS-5 (nadia-prof, 2026-09-09, S33-HG-08-12) : un item ne compte que sur une ligne
+     * (ADR-0081, clause 5). La cellule "se loger dans un espace urbain" est deja comptee sur
+     * HG-CM1-11 (ligne fermee, "des immeubles collectifs") ; aucun item neuf de HG-CM1-12 ne la
+     * reprend.
+     */
+    @Test
+    void hisR5AucunItemDeHgCm112NeReprendLaCelluleDejaCompteeSurHgCm111() {
+        List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE);
+
+        assertThat(items)
+                .as("aucun item de %s ne reprend la bonne réponse déjà comptée et fermée sur %s",
+                        LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE, LIGNE_TYPES_D_ESPACES)
+                .noneMatch(item -> REPONSE_DEJA_COMPTEE_SUR_HG_CM1_11.equals(item.get("bonneReponse")));
     }
 }
