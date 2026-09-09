@@ -7,7 +7,8 @@
 - **Statut global s28** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-04** sur l'increment de s28, composition B). **Deux lignes ferment** : `HG-CM1-11` et `HG-CM1-13` passent a `couvert-valide`. **Les neuf autres lignes du paquet restent `en cours`** et personne ne doit s'en etonner : je l'avais ecrit d'avance. Deux reserves nommees, non bloquantes, `HG-R4` et `HG-R5`.
 - **Statut s27, conserve tel quel** : **VALIDE** (Done pedagogique prononce le 2026-09-03). **Ma reserve bloquante du 2026-09-03 sur l'item 5 est levee** : la reformulation est reprise mot pour mot. Lignes de matrice `non couvert` -> **`en cours`** - premier paquet d'une matiere neuve, aucune ligne ne se ferme.
 - **Arbitrage prealable de `nadia-prof`** : `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` sections 5, 7.2, 7.4 et 7.5 (`HIS-1` a `HIS-3`, `BIA-5`) ; `ARBITRAGE-s27-s1-8-retrecie-unite-de-ma-borne-et-trois-faits-d-histoire.md` section 3.
-- **Derniere mise a jour** : 2026-09-06 (**troisieme verdict de `nadia-prof` apres avoir rejoue et lu les cinquante-sept items**, s29).
+- **Statut global s32** : **REFUSE** (Done pedagogique **refuse le 2026-09-09** sur l'increment de s32, story `S32-1`, par `nadia-prof`, **instance A**). **Le refus porte ligne par ligne** : `HG-CM1-02` (`HG-R11`) et `HG-CM1-04` (`HG-R12`) ne ferment pas et restent `en cours` ; **`HG-CM1-01` et `HG-CM1-03` ferment** et passent `couvert-valide`, la ligne 1 avec une **mention de couverture partielle** que j'ecris ce jour. `HG-R8` **levee**. Reserves nouvelles : `HG-R9`, `HG-R10` (non bloquantes), `HG-R11`, `HG-R12` (**bloquantes**), `CONS-4` (non bloquante, portee D). `CONS-1` **non levee** sur cette entree.
+- **Derniere mise a jour** : 2026-09-09 (**quatrieme verdict de `nadia-prof`, instance A, apres cinq parties completes, vingt-six passes ciblees et la lecture des quarante items des quatre lignes**, s32).
 
 ## Competence visee
 
@@ -784,3 +785,355 @@ enonce de barre trop court de ma part, repris de bonne foi.
 **`HG-CM1-06`, `-07` et `-14` restent `couvert-valide`**, la ligne 14 avec sa mention de couverture
 partielle. **Aucune ligne ne bouge. `HG-R8`, ouverte hier, n'est pas rejouee ici** : elle est au
 backlog de s31.
+
+---
+
+# s32 - audit de `nadia-prof`, **instance A**, 2026-09-09 (`S32-1`, `90b01fdd`)
+
+- **Verdict du lot** : **REFUSE**, prononce le **2026-09-09** par `nadia-prof`, **instance A**, apres
+  avoir joue. **Le refus est nominatif et il porte ligne par ligne** : `HG-CM1-02` et `HG-CM1-04` ne
+  ferment pas, `HG-CM1-01` et `HG-CM1-03` ferment. Le lot lui-meme demandait a etre juge
+  *"independamment"* ligne par ligne, et **un refus sur deux lignes ne retire pas deux verdicts
+  gagnes sur deux autres.**
+- **Ce qui ferme** : `HG-CM1-01` (avec une **mention de couverture partielle**, section 2) et
+  `HG-CM1-03` passent `en cours` -> **`couvert-valide`**.
+- **Ce qui ne ferme pas** : `HG-CM1-02` (**`HG-R11`**, bloquante) et `HG-CM1-04` (**`HG-R12`**,
+  bloquante) **restent `en cours`**.
+- **Reserves nouvelles, datees du 2026-09-09** : `HG-R9` et `HG-R10`, non bloquantes ; `HG-R11` et
+  `HG-R12`, **bloquantes**. `HG-R8` est **levee** (section 5).
+- **`CONS-1` reste non levee sur cette entree**, et `CONS-4` est ouverte (section 6).
+- **Relevé complet, avec les mesures et les comptes** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`.
+
+## `SCO-1` sur ce jeu - **le score reste parfait par elimination**
+
+*Mention due dans toute fiche que j'ecris a partir de la cloture de s32, par la reserve que j'ai posee
+le 2026-09-08.*
+
+**Mesure du 2026-09-09, cinq parties completes, score lu dans la reponse de chaque appui** : le score
+atteint **10 / 10 a chaque partie** en pressant les propositions dans l'ordre servi jusqu'a la bonne,
+pour **17, 17, 17, 21 et 24 appuis**. Manche 1 de la premiere partie : deux propositions fausses, puis
+la bonne, **score 0 -> 1**.
+
+> **`SCO-1` est vivante sur ce jeu.** Le score qu'un enfant rapporte de cette partie **ne distingue pas
+> celui qui savait de celui qui a elimine.** Cette mention se retire le jour ou `SCO-1` est verte ; elle
+> **n'est pas une condition du Done** et ne remet en cause aucun verdict deja prononce.
+
+## Conditions de l'audit
+
+**J'ai joue.** Jar reconstruit depuis le worktree `s32-nadia-a` (base `fd19d18f`), application lancee
+sur un port local.
+
+- **5 parties completes de dix manches, jusqu'a l'ecran *"C'est fini !"***, avec erreurs volontaires,
+  dont une manche poussee jusqu'a la revelation.
+- **26 parties supplementaires en passe ciblee**, pour voir a l'ecran les items qu'une partie de dix
+  manches sur quatre-vingt-douze laisse le plus souvent de cote : l'item de Poitiers, l'item des
+  Francs et son indice, les items d'ordre de `HG-CM1-02` et leurs indices. **Les trois defauts que je
+  refuse ou reserve ont ete vus servis, pas seulement lus dans le fichier.**
+- **Les 40 items des quatre lignes lus un par un** dans le fichier - enonce, bonne reponse,
+  distracteurs, indice, marqueur `HIS-1`, marqueur `HIS-3` - parce qu'une partie de dix manches en
+  laisse quatre-vingt-deux que l'enfant ne voit pas, et c'est ainsi que j'ai manque un item a s27.
+- **Audit degrade sur un point, declare** : j'ai lu le **HTML servi**, pas la page rendue par un
+  navigateur. Cela ne couvre ni la couleur, ni le contraste, ni la taille, ni la position. **Aucun
+  verdict de ce bloc ne repose sur un jugement visuel.**
+
+## 1. Les conditions, mesurees et non estimees
+
+Comptes refaits par extraction sur le fichier servi, jamais repris de la note du paquet.
+
+| Condition | Mesure | Verdict |
+|---|---|---|
+| `FER-2` | `HG-CM1-01` 10, `-02` 10, `-03` 10, `-04` 10 items | **tenue sur les quatre** |
+| `FER-1` | `-01` : les cinq periodes chacune en bonne reponse ; `-02` : siecle/millenaire et ordonner ; `-03` : Gaulois, Grecs, Romains chacun en bonne reponse ; `-04` : les mouvements **et** leurs effets | **tenue sur les quatre** |
+| `FER-3` | `-01` 5/5 ; `-02` 5/5 ; `-03` **3**/7 ; `-04` **3**/7 | **tenue sur les quatre**, deux d'entre elles exactement au plancher |
+| `HIS-1` | 17 restitution sur 92 items, **18,5 %**, plafond entier(92/3) = 30 | **tenue** |
+| `HIS-2` | les 40 items lus un par un | **tenue** |
+| `HIS-3` | les 35 items neufs, marqueur par marqueur | **non tenue sur deux items** : `HG-R11`, `HG-R12` |
+| `HG-R4` | mediane du fichier 16, maximum du lot 25, maximum du fichier 30 | **tenue sur le lot**, et je tranche la lecture en section 4 |
+| `FAB-1a` | quatre lignes, tache par tache | **tenue** |
+| `FAB-1b` | `-01`, `-03`, `-04` | **tenue, et je dis pourquoi** : cinq periodes et trois peuples sont des **categories fermees**, cas que `FAB-1` exclut explicitement - *"c'est licite des lors que la bonne reponse varie"*. Une lecture naive de `FAB-1b` rendrait ces lignes rouges ; ce n'est pas ce que ma clause dit |
+| `FAB-1c`, `PLA-1`, `BIA-5` | quatre lignes | **tenues** |
+
+**Le plancher de `FER-3` est trois**, et une consigne fautive a dit quatre. Ce n'est pas ce que j'ai
+ecrit le 2026-09-03, ce n'est pas ce que le depot encode (`MINIMUM_PAR_TACHE = 3`), et ce n'est pas ce
+que ma matrice dit de `HG-CM1-07` (*"7 contre 3, exactement au plancher"*). **`marc-dev` a construit
+sur le standard ecrit du depot et il a signale l'ecart ; rien de ce lot ne se juge sur quatre.**
+
+**Sur le plafond structurel a trois, je confirme une moitie et je corrige l'autre** :
+
+- `HG-CM1-03` : **structurel, confirme.** Le libelle enumere trois peuples ; une quatrieme item de
+  nomination repeterait une bonne reponse, ce que `FAB-1a` interdit.
+- `HG-CM1-04` : **pas structurel, et je le dis contre la note du paquet.** Le libelle - *"les grands
+  mouvements et deplacements de populations du IVe au Xe siecle"* - n'enumere rien et ne ferme aucune
+  liste. Cette distinction decide si mon refus a une sortie. **Il en a une** (section 3).
+
+## 2. `HG-CM1-01` - **la ligne ferme**, et une mention de couverture partielle est due
+
+Les cinq periodes de la parenthese sont **chacune servie en bonne reponse** - deux l'etaient avant ce
+lot. Les deux taches de `FER-3` different par **l'operation** et non par la phrase, ce qui est le
+critere que j'ai ecrit : *ordonner* une suite d'un cote, *rattacher un fait concret a une categorie*
+de l'autre. Les cinq faits d'ancrage - art parietal, amphitheatres et gladiateurs, chateaux forts et
+douves, Versailles sous Louis XIV, ordinateur et telephone - sont chacun dans la bonne periode.
+
+**`PLA-1` est tenue, et le motif merite d'etre ecrit parce qu'il n'est pas evident.** Un distracteur
+comme *"le Moyen Age"* face a *"ordinateur ou telephone"* n'est pas serieux pour un enfant qui sait
+quelque chose - mais il **appartient a la categorie fermee que l'item enseigne**, et `PLA-1` vise la
+proposition *"qui n'appartient a rien"*.
+
+### **Mention exigee, a reprendre mot pour mot dans la matrice par `camille-po`**
+
+Le libelle dit *"Situer et ordonner les grandes periodes historiques **sur une frise**"*. **Le produit
+ne sert aucune frise et n'en servira pas au palier 1.** C'est le regime de `FER-1` - *"la ligne ne
+ferme alors que sur sa part servie, avec la mention de couverture partielle ecrite dans la matrice"* -
+et c'est ce que j'ai deja fait sur `QLM-CP-14`, dont le libelle porte la meme frise, et sur
+`HG-CM1-14`, fermee *"sur sa part servie"*. **Je m'applique mon precedent, je n'invente pas une
+exigence pour cette ligne-ci.**
+
+**Aucune mention n'etait pre-ecrite pour cette ligne** - celle que `FER-1` annonce *"exigee d'avance
+sur la frise"* est celle de `QLM-CP-14`, dans la matrice depuis le 2026-09-02. **Je l'ecris donc
+aujourd'hui et j'en suis la source** :
+
+> *"ordre et identification des cinq grandes periodes par la lecture seule ; le placement sur une
+> frise reste non couvert."*
+
+## 3. Les deux refus, avec leur motif et sa sortie
+
+### `HG-R11` - **bloquante**, `HG-CM1-02` : *"le sacre de Clovis"* n'a jamais eu lieu
+
+**Vu a l'ecran le 2026-09-09, deuxieme partie, manche 2.** Item 70, **bonne reponse** : *"le sacre de
+Clovis, roi des Francs, en 481"*. Item 71, **distracteur** : le meme texte.
+
+**Le fait est faux, et il l'est deux fois.** En 481, Clovis **succede** a son pere Childeric et devient
+roi des Francs saliens de Tournai : aucune ceremonie, et il n'y en aura jamais pour lui. **Le sacre
+d'un roi franc commence avec Pepin le Bref en 751**, ce que le programme de cycle 3 enseigne ; de
+Clovis, on enseigne le **bapteme**, vers 496, que ce paquet ne mentionne nulle part.
+
+**Le meme fichier dit la chose juste plus haut** : l'item 66 porte *"Clovis devient roi des Francs en
+481"*, et je l'ai valide. **Le paquet se contredit sur son propre fait.** Et le marqueur `HIS-3` source
+*"dates 481, 800 et 1789, consensuelles, famille (a)"* : la **date** est sourcee et juste, l'**evenement**
+que l'item nomme ne l'est pas. **Un marqueur qui source autre chose que ce que l'item dit ne tient pas
+`HIS-3`.**
+
+**Pourquoi c'est un refus et non une reserve, et ce n'est pas un durcissement.** Ma doctrine est ecrite
+depuis le 2026-09-06, dans le bloc `ANG-R2` de `FICHE-bandit-manchot-anglais-cm1.md` : *"Pourquoi ce
+n'est pas un refus, alors qu'une erreur de fait est chez moi un motif de refus a elle seule. **Aucune
+reponse attendue ne depend de cette phrase** : elle vit dans une consigne, pas dans une question."*
+C'est le meme motif qui a fait de `HG-R7` une reserve non bloquante, ligne fermee.
+
+> **Ici, la reponse attendue *est* la phrase fausse.** L'enfant qui joue juste est recompense pour avoir
+> choisi un evenement qui n'existe pas ; l'enfant qui joue faux se le voit presenter comme ecarte pour
+> une raison de **date**, ce qui le confirme comme evenement. **La condition de ma propre doctrine est
+> remplie dans le sens du refus. Je l'applique la ou je l'avais posee.**
+>
+> **`HG-R11`. Ce qui la leve** : reprendre, aux items 70 et 71, la formulation que l'item 66 du meme
+> fichier porte deja - *"Clovis devient roi des Francs, en 481"*. **Le texte existe dans le depot** ;
+> ni la date, ni la tache, ni les autres propositions n'ont a changer. **Regime : mot pour mot, 0,25.**
+
+### `HG-R12` - **bloquante**, `HG-CM1-04` : *"les Sarrasins"* en reponse a *"Quel peuple ?"*
+
+**Vu a l'ecran le 2026-09-09** : *"En 732, une armee venue du sud est arretee pres de Poitiers par
+Charles Martel. **Quel peuple** menait cette armee ?"* -> **`les Sarrasins`**, contre *"les Vikings"* et
+*"les Romains"*.
+
+`marc-dev` a signale le terme et l'a laisse a mon arbitrage. **Je l'arbitre, et je ne le signe pas.**
+Deux motifs, le premier suffit.
+
+**1. `HIS-3`, famille (b) - ma propre precision du 2026-09-03**, qui distingue *"(a) fait de manuel sans
+variante - elle en est une source recevable et signe ; (b) fait date, dispute, ou dont la formulation
+engage une couverture - elle ne signe pas, il faut une source ou une reformulation qui retire le besoin
+de source."* **Une designation que le developpeur route lui-meme a mon arbitrage est, par construction,
+de la famille (b).** Je n'ai pas d'outil de recherche en ligne cette session, pas plus que lui, et
+`HIS-3` est **bloquante** sur cette matiere par declaration du referentiel et de la matrice.
+
+**2. Le fond, et il ne depend d'aucune source.** *Sarrasins* n'est pas le nom d'un peuple : c'est une
+designation medievale chretienne, appliquee globalement aux musulmans, qu'aucun groupe n'a jamais
+revendiquee pour lui-meme ; l'armee de 732 est celle du gouverneur omeyyade d'al-Andalus, aux troupes
+arabes et berberes. **La question demande un *peuple* et la reponse n'en nomme pas.** Ce n'est donc pas
+un debat sur un mot traditionnel : c'est un desaccord de nature entre la question et la reponse qu'elle
+recompense. Et le contexte le rend plus net : **les huit autres items de ces deux lignes nomment des
+peuples reels** - Romains, Gaulois, Grecs, Francs, Vikings, peuples germaniques. **Le seul qui n'en
+nomme pas est celui qui designe des musulmans.** `BIA-5` ne mord pas ici - elle interdit le jugement de
+valeur sur un **personnage** - et je ne l'invoque pas.
+
+> **`HG-R12`. Propriete a tenir, et je ne fournis pas le texte** - ecrire cet item est le jugement qu'il
+> faut faire. Sur `HG-CM1-04`, aucune bonne reponse ne designe un groupe humain par un exonyme qu'aucun
+> groupe ne revendique. Deux directions me conviennent : **soit l'item nomme l'armee par son origine**
+> plutot que par un nom de peuple, **soit l'item cesse de porter sur l'identite de l'armee** et porte
+> sur le mouvement lui-meme, comme le font deja les items 90 et 92 de la meme ligne.
+>
+> **Et la sortie existe, contrairement a ce que la note du paquet laisse croire** : la tache de
+> nomination est a trois items, mais son plafond **n'est pas structurel** sur cette ligne. Un quatrieme
+> mouvement du IVe-Xe siecle s'enseigne : l'installation des Bretons venus de Grande-Bretagne en
+> Armorique. **Le refus ne ferme pas la ligne, il demande un item.** **Regime : rejeu borne, 0,5.**
+
+## 4. Les deux reserves non bloquantes, et une lecture que je tranche
+
+### `HG-R9` - `HG-CM1-02` : les cinq indices de la tache *ordonner* designent la reponse
+
+| Item | Indice servi apres une erreur | Ce qu'il fait |
+|---|---|---|
+| 70 | *"Repense a la date la plus ancienne des trois : 481."* | **une seule proposition porte 481** |
+| 71 | *"Repense a la date la plus recente des trois : 1789."* | idem |
+| 72, 73, 74 | meme forme, avec 800, 1804, 1598 | idem |
+
+**C'est `M21`, et c'est la famille exacte de `HG-R8`.** L'indice ne nomme pas la reponse, il la
+**designe sans ambiguite** - ce qui revient au meme puisque chaque proposition affiche sa date.
+
+**Non bloquante** : les cinq bonnes reponses sont justes, l'indice n'est lu qu'apres une erreur, et je
+me tiens a `HG-R8` - *"un item trop facile n'est pas un item faux"*. **Mais je nomme ce que cela coute,
+parce que c'est plus large que `HG-R8` ne l'etait** : `HG-R8` portait sur deux items d'une ligne de dix,
+celui-ci porte sur **la totalite de la seconde tache**, c'est-a-dire sur la moitie que `FER-3` compte.
+
+> **`HG-R9`. Propriete a tenir** : sur les items d'ordre de `HG-CM1-02`, l'indice porte **la methode** -
+> ce qu'il faut comparer, comment on situe une date par rapport a une autre - et **jamais la date de la
+> bonne reponse** quand chaque proposition affiche la sienne. **Je ne fournis pas les textes.**
+> **Regime : rejeu borne, 0,5.**
+
+### `HG-R10` - `HG-CM1-04` : un indice faux sur la meme annee 481
+
+**Vu a l'ecran apres deux erreurs sur l'item 87** (*"...fondent un royaume qui deviendra un grand pays
+d'Europe. Lequel ?"* -> *"la France"*) : *"Leur roi Clovis unifie ce royaume en 481."*
+
+**Faux.** 481 est l'annee ou Clovis devient roi d'un petit royaume franc autour de Tournai ;
+l'unification vient de Soissons (486) et de Vouille (507). **C'est le troisieme endroit de ce fichier ou
+l'annee 481 se voit attribuer un evenement qu'elle ne porte pas.**
+
+**Non bloquante, et je m'applique mon precedent plutot que de durcir parce que c'est le meme sprint** :
+l'indice n'est pas une reponse attendue, et `HG-R7` comme `ANG-R2` ont ete traitees en reserve pour ce
+motif exact. **Elle doit neanmoins etre corrigee avant que la ligne ferme, la ligne etant refusee par
+ailleurs.** **Regime : mot pour mot, 0,25** - la formulation juste est celle de l'item 66.
+
+### La lecture de `HG-R4` que je tranche, et l'enonce fautif est le mien
+
+Mesure du jour sur les 92 enonces, mot par mot, espaces insecables compris : mediane **16**, maximum du
+fichier **30**, maximum des 35 items neufs **25**, maximum de mes quatre lignes **27**.
+
+**Les quatre enonces qui depassent vingt-cinq mots sont tous anterieurs au lot, et celui de 27 mots qui
+tombe sur `HG-CM1-04` est mon propre texte** - la reformulation que j'ai fournie mot pour mot le
+2026-09-03 pour lever ma reserve bloquante sur l'item 5.
+
+> **Je tranche la question que `marc-dev` m'a routee a s29 : `HG-R4` vise le lot livre, pas le fichier
+> entier.** Sous cette lecture, `HG-R4` est **tenue** sur ce lot. Je retiens la plus indulgente des deux
+> lectures qu'il proposait, et le motif est celui-la : **la lecture severe se retourne d'abord contre mon
+> propre texte**, et une barre dont l'auteur s'exonere n'est pas une barre.
+
+### Un point verifie qui **n'est pas** un defaut, dit pour qu'un tiers ne le compte pas comme tel
+
+Item 67 : *"Charlemagne est couronne empereur en 800. En quel siecle cela se passe-t-il ?"* -> *"le VIIIe
+siecle"*. **C'est juste** : 800 est la derniere annee du VIIIe siecle (701-800), la meme convention qui
+met 1789 au XVIIIe, et l'indice l'ecrit. C'est le **seul item du paquet sur une annee en 00**, donc le
+seul ou la regle scolaire usuelle donne le distracteur ; l'indice explique l'intervalle, donc l'erreur
+enseigne quelque chose. **Je ne l'ouvre pas en reserve** ; je l'ecris pour qu'il ne se relise pas comme
+une erreur de fait.
+
+## 5. `HG-R8` - **LEVEE**
+
+Reserve ouverte le 2026-09-06 : sur les deux items de nature de `HG-CM1-14`, l'indice remettait l'enfant
+sur le **mot** plutot que sur le **genre** du document - l'un designait *"Cher journal"*, l'autre
+prononcait *droits*.
+
+**Textes livres, lus dans le fichier et vus servis :**
+
+| Item | Indice servi aujourd'hui | Ce qu'il fait |
+|---|---|---|
+| 51, *"un journal intime"* | *"Une seule personne y raconte, jour apres jour, ce qu'elle vit et ressent, pour elle-meme."* | decrit **qui ecrit, pour qui, dans quel but** ; ne designe plus *"Cher journal"* ni l'endroit du support ou le copier |
+| 53, *"une declaration de droits"* | *"Plusieurs personnes reunies proclament ensemble, dans un texte solennel, ce qui doit valoir pour tous."* | decrit le genre ; **le mot *droits* a disparu de l'indice**, alors qu'aucun distracteur ne le portait |
+
+**Ma barre disait** : *"l'indice porte ce qui caracterise le genre du document - a qui il s'adresse, dans
+quel but il est ecrit, qui l'ecrit - et jamais le mot que l'enfant a a trouver, ni l'endroit du support
+ou le copier."* **Elle est atteinte sur les deux items. Je leve `HG-R8`.**
+
+**Et je ne recharge pas la barre sur autre chose, alors que je pourrais.** L'indice de l'item 53 reprend
+*"un texte solennel"*, expression que le texte-support porte deja. **Ce n'est pas ce que j'avais
+interdit** : le mot a trouver est *declaration*, et il n'y est pas. **Une equipe qui atteint la barre que
+j'ai ecrite recupere sa ligne, meme si je vois desormais mieux.** Si je voulais plus, ce serait une
+reserve neuve et datee, pas un durcissement de celle-ci - et je n'en veux pas plus.
+
+**`HG-CM1-14` reste `couvert-valide`** avec sa mention deja ecrite (*"document textuel seul ; carte et
+image restent non couvertes"*). **Aucune ligne deja fermee ne bouge, ni dans un sens ni dans l'autre.**
+
+## 6. `CONS-1` - **non levee**, et `CONS-4` ouverte
+
+**Consigne servie, relevee a chacune de mes 31 parties** : *"Lis bien, puis situe dans le temps, nomme
+un peuple ou un mouvement de population, associe un roi a son fait, decris un espace ou une ressource,
+ou lis un document."*
+
+**La clause neuve fait ce qu'elle annonce, et je le porte au credit du lot** : les items que je citais le
+2026-09-08 comme portant une tache non nommee sur `HG-CM1-03` et `HG-CM1-04` le sont desormais.
+
+**Et le lot a cree, dans le meme geste, quatorze items dont la tache n'est nommee par aucune des cinq
+clauses** : les items 77 a 83 de `HG-CM1-03` (nommer **ce qu'un peuple a laisse** - des arenes, un
+aqueduc, un reseau de routes, une colonie, la vigne, le fer, des mots de vocabulaire) et les items 86 a
+92 de `HG-CM1-04` (dire **un effet du mouvement sur le territoire**). **Ce sont les taches majoritaires
+des deux lignes que le lot voulait fermer.** Et les trois que je citais deja restent non nommees :
+nommer un texte (item 49), nommer une installation (item 35), nommer un regime politique (item 13).
+
+> **`CONS-1` reste non levee sur cette entree.** Le compte d'items dont la tache n'est pas nommee est
+> **plus grand apres le lot qu'avant** : deux nommes, quatorze crees. **Ce n'est pas un reproche au lot**
+> - refondre la consigne n'etait pas son objet - **c'est le constat que la methode ne converge pas.** Je
+> ne donne pas de pourcentage : l'attribution item par tache est la mienne, faite a la main, et un
+> chiffre que personne ne peut refaire ne vaut pas mieux qu'aucun chiffre.
+
+### `CONS-4` - reserve nouvelle, datee du 2026-09-09, non bloquante, **portee D**
+
+| Arbre | La consigne de cette entree | Mots | Taches nommees |
+|---|---|---|---|
+| s27-s30 | *"Lis bien, puis reponds a la question d'histoire ou de geographie."* | 12 | **0** |
+| s31 | quatre taches | 22 | 4 |
+| s32 | cinq taches | **31** | 5 |
+
+**La consigne grossit d'une clause par sprint**, consequence arithmetique de payer `CONS-1` sur un jeu
+unique qui sert onze lignes de referentiel. **Et l'objet de `CONS-1` cesse d'etre atteint en chemin** :
+une enumeration de cinq taches alternatives en 31 mots ne dit toujours pas a l'enfant ce qu'il doit
+faire, puisque la tache est decidee par l'item qu'il a devant lui et non choisie par lui dans une liste
+lue avant de commencer. **L'enfant lit 31 mots pour n'en retenir aucun.**
+
+> **`CONS-4`. Propriete a tenir** : la consigne d'un jeu nomme une tache que l'enfant reconnaitra dans la
+> manche qu'il a devant lui. **La cause n'est pas la consigne, c'est le grain du jeu.** `marc-dev` a route
+> ce decoupage a s28 en disant que le nombre et le grain des jeux sont une decision de contenu
+> qu'`ADR-0081` reserve a `camille-po` et a moi ; **il a raison, et la question m'est revenue par un autre
+> chemin.** **Je ne tranche pas le decoupage ici** - ce serait fixer un perimetre, et `ADR-0081` le confie
+> a `camille-po` et a moi ensemble. **Route a `camille-po` via `sofia-sm`**, deux issues : ou la consigne
+> cesse d'enumerer, ou le jeu se scinde. **Regime : je ne le chiffre pas, le geste n'est pas de mon
+> ressort.**
+
+## 7. Etat des lignes et des reserves de cette matiere au 2026-09-09
+
+| Ligne | Avant | Apres | Mention |
+|---|---|---|---|
+| `HG-CM1-01` | `en cours` | **`couvert-valide`** | **due** : *"ordre et identification des cinq grandes periodes par la lecture seule ; le placement sur une frise reste non couvert."* |
+| `HG-CM1-02` | `en cours` | **`en cours`** (refusee, `HG-R11`) | - |
+| `HG-CM1-03` | `en cours` | **`couvert-valide`** | **aucune n'est due** |
+| `HG-CM1-04` | `en cours` | **`en cours`** (refusee, `HG-R12`) | - |
+| `-06`, `-07`, `-11`, `-13`, `-14` | `couvert-valide` | **inchangees** | celle de `-14` inchangee |
+| `-08`, `-12` | `en cours` | **inchangees**, non touchees par ce lot | - |
+| `-05`, `-09`, `-10` | `non couvert` | **inchangees** | - |
+
+**Bilan de la matiere : 7 `couvert-valide`, 4 `en cours`, 3 `non couvert`, 14 au total.**
+
+| Reserve | Etat au 2026-09-09 |
+|---|---|
+| `HG-R1` a `HG-R7` | **levees** (s28, s29, s30) |
+| `HG-R8` | **levee ce jour** (section 5) |
+| `HG-R9` | **ouverte**, non bloquante, rejeu borne 0,5 |
+| `HG-R10` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `HG-R11` | **ouverte, BLOQUANTE**, mot pour mot 0,25 |
+| `HG-R12` | **ouverte, BLOQUANTE**, rejeu borne 0,5 |
+| `CONS-1` | **non levee** sur cette entree |
+| `CONS-4` | **ouverte**, non bloquante, non chiffree |
+
+## 8. Ce dont je reste la seule garde sur cette matiere
+
+- **L'exactitude factuelle** - et les deux refus de ce bloc en sont la preuve : **les tests neufs du lot
+  sont verts sur `HG-CM1-02` et sur `HG-CM1-04`.** `EXA-1`, que j'ecris ce jour, ne rend pas
+  l'exactitude mordable : elle dit seulement ce qu'on fait d'une inexactitude quand quelqu'un la trouve.
+- **`HIS-2`** et **`HIS-3` famille (b)** - aucune n'est mordable, et la seconde est ce qui refuse
+  `HG-CM1-04`.
+- **`PLA-1`** - la plausibilite pour un enfant de neuf ans ne se calcule pas.
+- **`CONS-4`** - propriete de portee D qu'aucun audit de lot ne voit.
+- **`FER-3` sur `HG-CM1-01` et `-02`** : **desormais mordue, mais par un proxy plus etroit que ma
+  clause.** Les tests neufs comptent les items dont l'enonce **commence par** *"Quelle grande periode
+  vient juste"* ou *"Parmi ces trois"* ; ma clause porte sur **l'operation mentale**, pas sur l'amorce de
+  la phrase. **Le proxy derivera** le jour ou un item d'une autre operation commencera par ces mots. Je
+  le nomme plutot que de laisser croire que la clause est encodee.
+- **`SCO-1`** : entierement automatisable, **et rien n'est ecrit**. Voir le bloc de mention en tete.

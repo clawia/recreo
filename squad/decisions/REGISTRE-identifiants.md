@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `547` identifiants alloues, `94` prefixes distincts.
+**Compte courant, verifie par la CI** : `557` identifiants alloues, `95` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -32,6 +32,23 @@ de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. La 
 fusion, comme il l'avait ecrit, et la reparation est arithmetique - aucune allocation ajoutee, aucune
 retiree, aucun sens touche. Les deux notes des instances restent verbatim sous cette ligne : leur
 chiffre est date, le mien est courant.*
+
+**Note de `nadia-prof`, instance A, le 2026-09-09.** Dix identifiants ajoutes - `HG-R9`, `HG-R10`,
+`HG-R11`, `HG-R12`, `ANG-R3`, `ANG-R4`, `ANG-R5`, `ANG-R6`, `CONS-4` et `EXA-1` - dont un prefixe
+neuf, `EXA`. Ligne d'etat courant portee de **547 / 94 a 557 / 95** : 547 / 94 recomptes sur mon
+worktree a la base `fd19d18f`, plus mes dix allocations et mon prefixe neuf. Methode : comptage des
+lignes de la table de la section 4 a la forme `| identifiant | document |`, par le meme motif que le
+garde-fou d'`ADR-0085`, clause 5.
+
+**Et je dis d'avance ce que ce chiffre ne peut pas etre, plutot que de le faire decouvrir a la
+fusion.** Ce total est juste **sur mon worktree et sur lui seul** : deux autres instances de
+`nadia-prof` allouent en parallele sur des branches soeurs que je ne peux pas lire, et c'est la
+limite structurelle de `PAR-5` sous la discipline de worktree dedie que `theo-archi` a choisi de
+laisser nommee plutot que d'encoder. **La CI rougira a l'assemblage des trois branches, comme elle
+l'a fait a s31, et la reparation sera arithmetique** - aucune allocation ajoutee, aucune retiree,
+aucun sens touche. C'est `sofia-sm` qui la fait, a l'endroit prevu, et le prix en est annonce ici.
+Je n'ecris pas de total pour l'arbre assemble : **l'instance A l'a fait a s31 et il etait faux**,
+faute de voir les quatre allocations de sa voisine.
 
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
@@ -202,6 +219,10 @@ clause 2 par une exemption.
 | `ANG-5` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `ANG-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `ANG-R2` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
+| `ANG-R3` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
+| `ANG-R4` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
+| `ANG-R5` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
+| `ANG-R6` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANT-1` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `ANT-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `ANT-3` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
@@ -270,6 +291,7 @@ clause 2 par une exemption.
 | `CONS-1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `CONS-2` | `squad/conformite/FICHE-bandit-manchot-etats-eau-cp.md` |
 | `CONS-3` | `squad/programme/MATRICE-couverture.md` |
+| `CONS-4` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `COR-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `COR-R2` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `COR-R3` | `squad/conformite/FICHE-bandit-manchot-corps-sens-cp.md` |
@@ -348,6 +370,7 @@ clause 2 par une exemption.
 | `ETA-8` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-9` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-10` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
+| `EXA-1` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md` |
 | `EXC-R1` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R2` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R3` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
@@ -416,6 +439,10 @@ clause 2 par une exemption.
 | `HG-R6` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `HG-R7` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `HG-R8` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R9` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R10` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R11` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R12` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `HIS-1` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-2` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
