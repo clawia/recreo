@@ -62,6 +62,11 @@ lignesDeReferentiel: ["EMC-CP-05"]
 #
 # POL-R2 : l'item 6 demandait "un peu plus d'eau" dans un verre "deja vide", ce qui ne se tient pas.
 # La scene devient "encore de l'eau" dans un verre "presque vide" (forme donnee par nadia-prof).
+#
+# Correction du 2026-09-09 (lea-dev, s32, meme relecture que cp-emc-regle-souhait-loi) : la
+# compression POL-R1 avait retire, sur l'item 11, "qu'il ait fini [son idee]" au profit de "sans
+# attendre la fin", qui ne dit plus la fin de quoi. Remplace par "sans le laisser finir", dont le
+# pronom se lie sans ambiguite a Tom, sans depasser le compte de mots deja tenu par POL-R1.
 items:
   - enonce: "Léa arrive à l'école le matin et croise sa maîtresse dans le couloir. Que doit-elle dire ?"
     bonneReponse: "bonjour"
@@ -103,7 +108,7 @@ items:
     bonneReponse: "dire bonjour"
     distracteurs: ["dire merci", "écouter sans couper la parole"]
     indice: "C'est la première fois qu'elle voit la maîtresse aujourd'hui."
-  - enonce: "Hugo parle plus fort que Tom, sans attendre la fin. Que ne respecte pas Hugo ?"
+  - enonce: "Hugo parle plus fort que Tom, sans le laisser finir. Que ne respecte pas Hugo ?"
     bonneReponse: "écouter sans couper la parole"
     distracteurs: ["demander avant de prendre", "dire merci"]
     indice: "Tom n'a pas terminé sa phrase."

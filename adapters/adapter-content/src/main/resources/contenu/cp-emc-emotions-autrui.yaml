@@ -70,6 +70,13 @@ lignesDeReferentiel: ["EMC-CP-01"]
 # (item 8), "volontairement" (item 4), "brusques" (item 11). Remplaces par des mots plus simples
 # ("casse expres", "a du mal a retenir ses larmes", "bouge fort et vite") qui decrivent la meme
 # scene sans nommer l'emotion attendue.
+#
+# Correction du 2026-09-09 (lea-dev, s32, meme relecture que cp-emc-regle-souhait-loi) : la
+# compression EMO-R1 avait retire, sur l'item 4, la relative qui disait a qui appartenait la tour
+# de cubes ("qu'il venait de finir"), laissant "sa tour de cubes" sans referent net - le possessif
+# pouvait se lire comme celui du petit frere aussi bien que celui de Malo. L'enonce est restructure
+# ("Malo voit sa tour de cubes renversee expres par son petit frere") pour que "sa" ne se lie plus
+# qu'a Malo, sans depasser le compte de mots deja tenu par EMO-R1.
 items:
   - enonce: "Léa a perdu son doudou préféré à la sortie de l'école. Que ressent-elle ?"
     bonneReponse: "de la tristesse"
@@ -83,7 +90,7 @@ items:
     bonneReponse: "de la peur"
     distracteurs: ["de la colère", "de la tristesse"]
     indice: "Le chien est bruyant et tout près d'elle, sans qu'elle s'y attende."
-  - enonce: "Malo voit son petit frère renverser sa tour de cubes exprès. Que ressent-il ?"
+  - enonce: "Malo voit sa tour de cubes renversée exprès par son petit frère. Que ressent-il ?"
     bonneReponse: "de la colère"
     distracteurs: ["de la joie", "de la peur"]
     indice: "Son travail est cassé exprès par quelqu'un d'autre."

@@ -83,6 +83,13 @@ lignesDeReferentiel: ["EMC-CP-07"]
 # chacune pour la meme barre. Aucune bonne reponse, aucun distracteur de la tache A et aucun fait de
 # la tache B ne changent : FER-1, BIN-1, CAT-1, EMC-1, EMC-5, EMC-8, EMC-10 et l'exactitude des cinq
 # faits de droit restent tenus a l'identique.
+#
+# Correction du 2026-09-09 (lea-dev, s32, defaut trouve par relecteur-pedagogique) : le
+# raccourcissement de l'item 11 pour LON-1 avait retire le partitif ("vendre l'alcool" au lieu de
+# "vendre de l'alcool"), un enonce agrammatical servi a un enfant en cours d'apprentissage de la
+# lecture. Le partitif est restitue, et "aux moins de dix-huit ans" est remplace par "aux mineurs"
+# (le terme meme du Code de la sante publique, L3342-1) pour rester sous la barre : l'enonce tombe
+# a 13 mots, sans toucher au fait de droit ni a la bonne reponse.
 items:
   - enonce: "Avant la récréation, chaque élève doit ranger sa chaise, sans exception. Est-ce une règle ?"
     bonneReponse: "une règle qui vaut pour tous"
@@ -124,7 +131,7 @@ items:
     bonneReponse: "tout conducteur, même adulte"
     distracteurs: ["seulement les motards", "les chauffeurs de bus et de taxi"]
     indice: "Cette loi s'applique à toutes les personnes qui conduisent en ville."
-  - enonce: "Une loi interdit de vendre l'alcool aux moins de dix-huit ans. Qui peut en acheter ?"
+  - enonce: "Une loi interdit de vendre de l'alcool aux mineurs. Qui peut en acheter ?"
     bonneReponse: "seulement les adultes"
     distracteurs: ["tout le monde, même les enfants", "seulement les enfants"]
     indice: "Cette loi fixe un âge minimum pour acheter de l'alcool."
