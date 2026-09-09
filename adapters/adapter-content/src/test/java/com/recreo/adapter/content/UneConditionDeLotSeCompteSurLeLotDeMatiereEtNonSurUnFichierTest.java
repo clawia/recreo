@@ -316,8 +316,9 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " composition A, soit 57 items ; S32-1 (arbitrage prealable de s32,"
                         + " sections 1.2, 7.2 et 13 ; story S32-1) ajoute huit items sur HG-CM1-01,"
                         + " neuf sur HG-CM1-02, neuf sur HG-CM1-03 et neuf sur HG-CM1-04, soit 92"
-                        + " items")
-                .isEqualTo(92);
+                        + " items ; S33-HG-08-12 (docs/backlog/backlog.md, story S33-HG-08-12) ajoute"
+                        + " neuf items sur HG-CM1-08 et neuf sur HG-CM1-12, soit 110 items")
+                .isEqualTo(110);
     }
 
     /** Le paquet servi qui porte les marqueurs de HIS-1, choisi par le calcul et non par son nom. */

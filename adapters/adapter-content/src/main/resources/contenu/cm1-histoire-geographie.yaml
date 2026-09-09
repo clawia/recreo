@@ -284,6 +284,52 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 #   "devient, des l'annee suivante, une fete nationale" - le 14 juillet n'est fete nationale que
 #   depuis 1880. Remplace par le texte fourni par nadia-prof. Enonce, bonne reponse, distracteurs et
 #   indice inchanges.
+#
+# S33-HG-08-12 (docs/backlog/backlog.md, story S33-HG-08-12 ; arbitrage prealable de s33 de
+# nadia-prof, branche s33-nadia, commit a9ab05ec, sections 3.1, 3.2, 5.2, 9.2 et 9.3 ; DEC-0085).
+# Remplit HG-CM1-08 (passage de la Revolution a l'Empire, ce que Napoleon Bonaparte y change) et
+# HG-CM1-12 (se loger, travailler, se cultiver et se deplacer dans un espace urbain et un espace
+# touristique), chacune de 1 a 10 items (+9 chacune, exactement le plancher de FER-2). Le fichier
+# passe de 92 a 110 items.
+#
+# HG-CM1-08 (FER-1 sur les deux moities du libelle, jamais une seule) : l'item de s27 ne servait que
+# la moitie "passage" ("l'Empire" en bonne reponse) - la moitie "ce que Napoleon Bonaparte change"
+# n'etait servie par aucun item. Deux taches (FER-3) : "situer le passage" (le coup d'Etat de 1799,
+# le titre de premier consul, le Consulat, la Republique d'avant l'Empire - item de s27 inclus, 5
+# items) et "ce que Napoleon Bonaparte change" (le Code civil, les lycees, la Legion d'honneur, les
+# prefets, la Banque de France - 5 items neufs). Minorite a 5, au-dessus du plancher de trois.
+#
+# HG-CM1-12 (HIS-5, nadia-prof, 2026-09-09 : un item ne compte que sur une ligne, ADR-0081 clause 5)
+# : la cellule "se loger dans un espace urbain" est deja depensee par l'item sur les immeubles
+# collectifs de HG-CM1-11 (ligne fermee) et n'est reprise par aucun des neuf items neufs. Six
+# cellules restaient libres (se loger/touristique, travailler/urbain, se cultiver/urbain,
+# se cultiver/touristique, se deplacer/urbain, se deplacer/touristique) pour les neuf items neufs -
+# deux items par cellule sur trois d'entre elles, un sur les trois autres. FER-1 : "se cultiver",
+# absente jusqu'ici de la ligne, est desormais servie (musee, monuments historiques, festival). Deux
+# taches (FER-3) : "se loger et se deplacer" (quatre items) et "travailler et se cultiver" (six
+# items, l'item de s27 sur le tourisme lie au ski inclus). Minorite a quatre, au-dessus du plancher
+# de trois.
+#
+# HIS-1 (au plus un tiers de restitution, calcule sur le LOT - ADR-0079 - et sur ce fichier puisqu'il
+# porte plus de dix items) : chaque item neuf porte son marqueur. Compte sur le fichier entier, seul
+# fichier du lot : 23 restitution sur 110 items, 20,9 %, sous le tiers (plafond entier(110 / 3) =
+# 36). Verifie par UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest.
+#
+# HG-R4 (mediane de charge de lecture, nadia-prof) : mesuree sur les enonces du fichier entier, mot
+# par mot. Avant ce lot : 92 items, mediane a 16 mots, maximum a 30 mots (item herite de HG-CM1-11,
+# hors perimetre de ce lot). Apres ce lot : 110 items, mediane inchangee a 16 mots, maximum inchange
+# a 30 mots - les 18 items neufs comptent chacun entre 13 et 18 mots.
+#
+# HIS-3 (chaque fait porte sa source) : les neuf faits neufs sur HG-CM1-08 (le coup d'Etat de 1799,
+# le titre de premier consul, le Consulat, la Republique d'avant l'Empire, le Code civil, les
+# lycees, la Legion d'honneur, les prefets, la Banque de France) sont des faits consensuels du
+# programme scolaire francais de cycle 3, famille (a), aucun ne date ni ne dispute. Les neuf faits
+# neufs sur HG-CM1-12 sont des faits geographiques et economiques generaux, famille (a), meme
+# statut que les items herites de HG-CM1-11 et HG-CM1-13.
+#
+# BIA-5 (aucun jugement de valeur sur un personnage) : aucun des neuf items neufs sur HG-CM1-08
+# ne le qualifie de bon, mauvais, juste ou injuste - chacun decrit une reforme sans en juger le
+# merite, meme limite que HIS-2, verifiee item par item.
 items:
   - enonce: "Quelle grande période vient juste après la Préhistoire ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
     bonneReponse: "l'Antiquité"
@@ -641,29 +687,29 @@ items:
     indice: "Un millénaire dure mille ans. 1804 se situe entre 1001 et 2000."
     ligneDeReferentiel: "HG-CM1-02"
   - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tôt ?"  # HIS-1: ordre ; HIS-3: dates 481, 800 et 1789, consensuelles, famille (a)
-    bonneReponse: "le sacre de Clovis, roi des Francs, en 481"
+    bonneReponse: "Clovis devient roi des Francs, en 481"
     distracteurs: ["le sacre de Charlemagne, empereur, en 800", "la prise de la Bastille, en 1789"]
-    indice: "Repense à la date la plus ancienne des trois : 481."
+    indice: "Compare les trois dates : cherche celle qui est arrivée en premier."
     ligneDeReferentiel: "HG-CM1-02"
   - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tard ?"  # HIS-1: ordre ; HIS-3: dates 481, 1429 et 1789, consensuelles, famille (a)
     bonneReponse: "la prise de la Bastille, en 1789"
-    distracteurs: ["le sacre de Clovis, roi des Francs, en 481", "la bataille d'Orléans menée par Jeanne d'Arc, en 1429"]
-    indice: "Repense à la date la plus récente des trois : 1789."
+    distracteurs: ["Clovis devient roi des Francs, en 481", "la bataille d'Orléans menée par Jeanne d'Arc, en 1429"]
+    indice: "Compare les trois dates : cherche celle qui est arrivée en dernier."
     ligneDeReferentiel: "HG-CM1-02"
   - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tôt ?"  # HIS-1: ordre ; HIS-3: dates 800, 1429 et 1598, consensuelles, famille (a)
     bonneReponse: "le sacre de Charlemagne, empereur, en 800"
     distracteurs: ["la bataille d'Orléans menée par Jeanne d'Arc, en 1429", "la signature de l'édit de Nantes, en 1598"]
-    indice: "Repense à la date la plus ancienne des trois : 800."
+    indice: "Compare les trois dates : cherche celle qui est arrivée en premier."
     ligneDeReferentiel: "HG-CM1-02"
   - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tard ?"  # HIS-1: ordre ; HIS-3: dates 1429, 1643 et 1804, consensuelles, famille (a)
     bonneReponse: "le sacre de Napoléon, empereur, en 1804"
     distracteurs: ["Louis XIV devient roi, en 1643", "la bataille d'Orléans menée par Jeanne d'Arc, en 1429"]
-    indice: "Repense à la date la plus récente des trois : 1804."
+    indice: "Compare les trois dates : cherche celle qui est arrivée en dernier."
     ligneDeReferentiel: "HG-CM1-02"
   - enonce: "Parmi ces trois faits de l'histoire de France, lequel a eu lieu le plus tôt ?"  # HIS-1: ordre ; HIS-3: dates 1598, 1789 et 1804, consensuelles, famille (a)
     bonneReponse: "la signature de l'édit de Nantes, en 1598"
     distracteurs: ["la prise de la Bastille, en 1789", "le sacre de Napoléon, empereur, en 1804"]
-    indice: "Repense à la date la plus ancienne des trois : 1598."
+    indice: "Compare les trois dates : cherche celle qui est arrivée en premier."
     ligneDeReferentiel: "HG-CM1-02"
   - enonce: "Des objets en fer, fabriqués avant l'arrivée des Romains, sont retrouvés dans le sol de nombreuses régions de France. Quel peuple les a fabriqués ?"  # HIS-1: association ; HIS-3: fait consensuel du programme cycle 3 (artisanat gaulois du fer), famille (a)
     bonneReponse: "les Gaulois"
@@ -755,3 +801,93 @@ items:
     distracteurs: ["la dynastie capétienne", "la dynastie mérovingienne"]
     indice: "Le petit-fils de Charles Martel, Charlemagne, donnera son nom à cette dynastie."
     ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "En 1799, Napoléon Bonaparte prend le pouvoir en France. Comment appelle-t-on cette prise de pouvoir ?"  # HIS-1: restitution ; HIS-3: coup d'État du 18 brumaire (1799), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "un coup d'État"
+    distracteurs: ["une élection", "une invasion étrangère"]
+    indice: "Il prend le pouvoir par la force, sans élection."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Après son coup d'État de 1799, quel titre Napoléon Bonaparte porte-t-il d'abord, avant de devenir empereur ?"  # HIS-1: association ; HIS-3: titre de premier consul porté par Napoléon Bonaparte de 1799 à 1804, fait consensuel, famille (a)
+    bonneReponse: "premier consul"
+    distracteurs: ["roi", "président de la République"]
+    indice: "Ce titre désigne le chef d'un nouveau gouvernement, avant le titre d'empereur."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Quel régime politique la France connaît-elle entre le coup d'État de 1799 et le sacre de 1804 ?"  # HIS-1: association ; HIS-3: le Consulat (1799-1804), fait consensuel, famille (a)
+    bonneReponse: "le Consulat"
+    distracteurs: ["la monarchie absolue", "la République romaine"]
+    indice: "Ce régime porte le même nom que le titre de premier consul."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Avant de devenir empereur en 1804, quel régime la Révolution avait-elle installé en France ?"  # HIS-1: association ; HIS-3: passage de la République (1792) à l'Empire (1804) via le Consulat, fait consensuel, famille (a)
+    bonneReponse: "la République"
+    distracteurs: ["la monarchie", "l'Empire romain"]
+    indice: "La Révolution avait aboli le roi et son pouvoir."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte fait rédiger un même ensemble de lois pour toute la France. Comment appelle-t-on ce texte ?"  # HIS-1: restitution ; HIS-3: Code civil de 1804, fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "le Code civil"
+    distracteurs: ["la Déclaration des droits de l'homme et du citoyen", "la Constitution de 1791"]
+    indice: "Il porte encore aujourd'hui le nom de son créateur dans plusieurs pays."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte crée de nouvelles écoles publiques pour les élèves les plus âgés. Comment les appelle-t-on ?"  # HIS-1: restitution ; HIS-3: création des lycées (1802), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "des lycées"
+    distracteurs: ["des universités royales", "des écoles primaires"]
+    indice: "Ce mot désigne encore aujourd'hui l'école qui accueille les élèves après le collège."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte crée une récompense pour honorer le mérite, civil ou militaire. Comment s'appelle-t-elle ?"  # HIS-1: restitution ; HIS-3: Légion d'honneur (1802), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "la Légion d'honneur"
+    distracteurs: ["la Croix de guerre", "l'Ordre de la Toison d'or"]
+    indice: "C'est encore aujourd'hui la plus haute distinction française."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte place un représentant de l'État à la tête de chaque département. Comment appelle-t-on ce représentant ?"  # HIS-1: restitution ; HIS-3: création des préfets (1800), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "un préfet"
+    distracteurs: ["un maire", "un député"]
+    indice: "Il est nommé par le pouvoir central, il n'est pas élu par les habitants."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte crée une nouvelle banque chargée de fabriquer la monnaie et de stabiliser l'économie. Comment s'appelle-t-elle ?"  # HIS-1: restitution ; HIS-3: création de la Banque de France (1800), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "la Banque de France"
+    distracteurs: ["le Trésor royal", "la Bourse de Paris"]
+    indice: "Cette banque existe encore aujourd'hui et porte le nom du pays."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Dans une station de montagne touristique, quel logement loue-t-on souvent aux vacanciers ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12) ; HIS-5 (nadia-prof, 2026-09-09) : "se loger" dans un espace touristique, cellule distincte de "se loger" dans un espace urbain, déjà servie sur HG-CM1-11
+    bonneReponse: "un chalet ou un appartement de location"
+    distracteurs: ["une ferme isolée", "un immeuble de bureaux"]
+    indice: "Pense au logement loué seulement pour quelques jours ou quelques semaines."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Dans un espace urbain, quel secteur emploie le plus d'habitants, les services ou l'agriculture ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+    bonneReponse: "les services"
+    distracteurs: ["l'agriculture", "la pêche"]
+    indice: "Pense aux bureaux, aux commerces et aux entreprises que l'on trouve en ville."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Dans une grande ville, où les habitants découvrent-ils le plus souvent des œuvres d'art exposées ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12) ; HIS-5 : premier item de la ligne à servir la pratique "se cultiver", absente jusqu'ici
+    bonneReponse: "dans un musée"
+    distracteurs: ["dans une ferme", "sur un bateau de pêche"]
+    indice: "C'est un bâtiment qui conserve et expose des objets ou des œuvres."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Dans une ville touristique riche en histoire, que visitent surtout les touristes ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+    bonneReponse: "des monuments historiques"
+    distracteurs: ["des usines modernes", "des champs cultivés"]
+    indice: "Pense à des bâtiments anciens que l'on visite pour connaître le passé d'un lieu."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Dans une grande ville, quel transport en commun circule souvent sous terre ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+    bonneReponse: "le métro"
+    distracteurs: ["le tracteur", "le bateau de pêche"]
+    indice: "Ce transport circule dans des tunnels, sous les rues de la ville."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Dans une station de ski, quel appareil fait monter les touristes vers les pistes ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+    bonneReponse: "un télésiège"
+    distracteurs: ["un métro", "une péniche"]
+    indice: "Cet appareil suspendu à un câble fait monter les skieurs vers le sommet."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Sur la Côte d'Azur, en été, quel hébergement en plein air choisissent souvent les touristes ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+    bonneReponse: "un camping"
+    distracteurs: ["une ferme d'élevage", "une usine désaffectée"]
+    indice: "C'est un hébergement en plein air, avec des tentes ou des mobil-homes."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Dans un espace urbain, où travaillent souvent les employés d'une banque ou d'une administration ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+    bonneReponse: "dans un bureau"
+    distracteurs: ["dans un champ", "sur un bateau de pêche"]
+    indice: "C'est un lieu de travail fermé, avec des tables et des ordinateurs."
+    ligneDeReferentiel: "HG-CM1-12"
+  - enonce: "Dans une ville touristique, quel évènement culturel attire souvent des visiteurs en été ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+    bonneReponse: "un festival"
+    distracteurs: ["une moisson", "une pêche en mer"]
+    indice: "C'est une manifestation artistique ou musicale organisée pendant plusieurs jours."
+    ligneDeReferentiel: "HG-CM1-12"
