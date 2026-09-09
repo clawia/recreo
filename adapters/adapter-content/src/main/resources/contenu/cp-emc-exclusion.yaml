@@ -87,18 +87,30 @@ lignesDeReferentiel: ["EMC-CP-03"]
 # aupres des eleves, une information que l'enonce ne donne pas, sans reprendre les mots de la bonne
 # reponse ni le lieu deja ecrit.
 #
-# EXC-R1 (consigne du catalogue) n'est PAS payee dans ce geste : la consigne servie ("Lis bien,
-# puis dis ce qu'il faut faire, ou a qui en parler.") ne nomme plus la tache A, qui ne sert plus une
-# action depuis la reecriture de s31. Le changer casse quatre tests de
-# TexteAccentueExposeParLePortEntrantTest (bootstrap), qui maintient un inventaire Java des chaines
-# exposees par le catalogue - hors du perimetre "contenu pur" de cette story. Route a sofia-sm.
+# EXC-R1 et EXC-R5, payees le 2026-09-09 (lea-dev, S33-EXC-R1, S33-EXC-R5,
+# squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/confirmation-archunit.md, section 4 ;
+# verdicts-nadia-instance-B.md, sections 8 et 13). L'obstacle technique des deux etait deja leve a
+# s32 (theo-archi, ADR-0089, decision E) : PaquetCpEmcExclusionTest lit la tache d'un item dans sa
+# bonne reponse, jamais dans une sous-chaine de son enonce.
 #
-# EXC-R5 (la presence de l'adulte plutot que le lieu comme critere) n'est pas payee non plus : la
-# forme que nadia-prof demande ("quel adulte est la a ce moment ?" au lieu de "a qui ... en
-# parler ?") romprait la classification de PaquetCpEmcExclusionTest#estDeTacheAdulte (elle filtre
-# sur la sous-chaine "A qui"), et changer le texte des bonnes reponses casserait
-# ADULTES_VALIDES, meme test - un changement de contenu ne peut pas payer cette reserve sans
-# toucher un module Java. Route a sofia-sm.
+# EXC-R1 : la consigne du catalogue ("Lis bien, puis dis ce qu'il faut faire, ou a qui en
+# parler.") ne nommait plus la tache A, qui ne sert plus une action depuis la reecriture de s31 -
+# aucune proposition de la tache A n'y est une action. Devenue "Lis bien, puis dis si c'est une
+# moquerie qui se repete, ou a quel adulte en parler." (catalogue.yaml), qui nomme les deux taches
+# reellement servies. L'inventaire de TexteAccentueExposeParLePortEntrantTest (bootstrap) est mis
+# a jour dans le meme commit, comme la story l'exige.
+#
+# EXC-R5 : sur les cinq enonces de la tache B, "a sa maitresse" etait marque faux pour une
+# moquerie qui se repete a la cantine ou dans la cour, au seul motif du lieu decrit - nadia-prof a
+# presse ce bouton en jouant sur l'item de la cantine et le jeu l'a refuse a tort (verdicts-nadia-
+# instance-B.md, section 8). Les cinq enonces disent desormais explicitement quel adulte est
+# present au moment decrit ("devant le surveillant", "devant la maitresse", "devant l'adulte du
+# repas") plutot que de laisser deviner une convention de lieu non ecrite : le critere devient la
+# presence, jamais le seul lieu de la scene. La forme "A qui X doit-il en parler ?" disparait des
+# cinq enonces, remplacee par "Quel adulte est la ?", comme la reserve le demande mot pour mot.
+# Aucune bonne reponse ne change (les cinq items continuent de nommer l'un des trois adultes de
+# ADULTES_VALIDES) : FER-3, ADULTES_VALIDES et le partage exhaustif des deux taches restent tenus
+# a l'identique. Les cinq nouveaux enonces comptent 13 a 15 mots et deux phrases (LON-1, LON-2).
 items:
   - enonce: "Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe. Qu'est-ce que c'est ?"
     bonneReponse: "une moquerie qui se répète"
@@ -124,23 +136,23 @@ items:
     bonneReponse: "un accident isolé"
     distracteurs: ["une moquerie qui se répète", "une blague"]
     indice: "Une maladresse unique n'a rien à voir avec un geste répété exprès."
-  - enonce: "Dans la cour, une moquerie se répète chaque jour. À qui Hugo doit-il en parler ?"
+  - enonce: "Hugo voit une moquerie se répéter devant le surveillant. Quel adulte est là ?"
     bonneReponse: "à un surveillant de la cour"
     distracteurs: ["à sa maîtresse", "à l'adulte qui surveille la cantine"]
     indice: "Cette personne est là pour veiller sur les élèves qui jouent."
-  - enonce: "En classe, une moquerie se répète chaque jour. À qui Aya doit-elle en parler ?"
+  - enonce: "Aya voit une moquerie se répéter devant la maîtresse. Quel adulte est là ?"
     bonneReponse: "à sa maîtresse"
     distracteurs: ["à un surveillant de la cour", "à l'adulte qui surveille la cantine"]
     indice: "C'est elle qui reste avec les élèves toute la journée."
-  - enonce: "À la cantine, une moquerie se répète chaque jour. À qui Malo doit-il en parler ?"
+  - enonce: "Malo voit une moquerie se répéter devant l'adulte du repas. Quel adulte est là ?"
     bonneReponse: "à l'adulte qui surveille la cantine"
     distracteurs: ["à sa maîtresse", "à un surveillant de la cour"]
     indice: "Cette personne veille sur les élèves qui mangent."
-  - enonce: "Une moquerie se répète dans la cour, le matin. À qui Tom doit-il en parler ?"
+  - enonce: "Tom voit une moquerie se répéter près du surveillant. Quel adulte est là ?"
     bonneReponse: "à un surveillant de la cour"
     distracteurs: ["à l'adulte qui surveille la cantine", "à sa maîtresse"]
     indice: "Son rôle est de veiller sur les élèves pendant les récréations."
-  - enonce: "En classe, une moquerie se répète le vendredi. À qui Léa doit-elle en parler ?"
+  - enonce: "Léa voit une moquerie se répéter devant sa maîtresse. Quel adulte est là ?"
     bonneReponse: "à sa maîtresse"
     distracteurs: ["à l'adulte qui surveille la cantine", "à un surveillant de la cour"]
     indice: "C'est elle qui est avec ses élèves tous les jours."

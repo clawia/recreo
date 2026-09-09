@@ -90,6 +90,35 @@ lignesDeReferentiel: ["EMC-CP-07"]
 # lecture. Le partitif est restitue, et "aux moins de dix-huit ans" est remplace par "aux mineurs"
 # (le terme meme du Code de la sante publique, L3342-1) pour rester sous la barre : l'enonce tombe
 # a 13 mots, sans toucher au fait de droit ni a la bonne reponse.
+#
+# Quatrieme passage (2026-09-09, lea-dev, S33-EMCCP07). Refus du 2026-09-08 sur deux points
+# (squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md, section 3 ;
+# squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-
+# realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md, section 3.4).
+#
+# Point 2, item 11 (vente d'alcool aux mineurs), PAYE : le distracteur mort "seulement les enfants"
+# (condamne par nadia-prof le 2026-09-08 sur l'item du klaxon du meme paquet, et retrouve intact ici
+# le 2026-09-09) est remplace par "seulement les parents", un candidat qu'un enfant de CP peut
+# vraiment envisager (PLA-1) sans devenir la bonne reponse.
+#
+# Point 1, items 4, 5, 6, NON PAYE, route a theo-archi et nadia-prof via sofia-sm plutot que
+# contourne. L'arbitrage prealable de s33 (section 3.4) demande que la tache de classement
+# redevienne binaire sur ces trois items ("une regle qui vaut pour tous" contre "un simple
+# souhait", comme sur les items 1, 2 et 3), au motif que le libelle ne demande pas de distinguer
+# une loi d'une regle. Mesure sur ce diff, avant d'etre revert : cette sortie fait echouer deux
+# garde-fous opposables et non amendes par cet arbitrage ("aucune clause anterieure n'est
+# amendee ici", meme section) -
+#   - FER-1 (PaquetCpEmcRegleSouhaitLoiTest.fer1LesTroisTermesSontEnBonneReponseDeLaTacheDe
+#     Classement) : "une loi" ne serait plus en position de bonne reponse sur aucun item de la
+#     tache de classement, alors que le test l'exige mot pour mot depuis S31-2 ;
+#   - BIN-1 (PaquetCpEmcRegleSouhaitLoiTest.bin1AuPlusLaMoitieDesItemsDeClassementSontBinaires) :
+#     les six items de la tache de classement deviendraient tous binaires (6 sur 6), bien au-dela
+#     du plafond d'un item sur deux que BIN-1 pose.
+# Aucune troisieme proposition non fautive n'est constructible sur ces trois items sans reprendre
+# soit "une loi" (interdit par EMC-11), soit un distracteur mort (interdit par PLA-1) : les items
+# 4, 5 et 6 restent donc au comportement refuse le 2026-09-08, dans l'attente d'une decision
+# ecrite sur laquelle des deux clauses (FER-1 tel que code, ou BIN-1) cede.
+#
 items:
   - enonce: "Avant la récréation, chaque élève doit ranger sa chaise, sans exception. Est-ce une règle ?"
     bonneReponse: "une règle qui vaut pour tous"
@@ -133,5 +162,5 @@ items:
     indice: "Cette loi s'applique à toutes les personnes qui conduisent en ville."
   - enonce: "Une loi interdit de vendre de l'alcool aux mineurs. Qui peut en acheter ?"
     bonneReponse: "seulement les adultes"
-    distracteurs: ["tout le monde, même les enfants", "seulement les enfants"]
+    distracteurs: ["tout le monde, même les enfants", "seulement les parents"]
     indice: "Cette loi fixe un âge minimum pour acheter de l'alcool."

@@ -56,48 +56,67 @@ lignesDeReferentiel: ["EMC-CP-06"]
 # pas une facon de se deplacer, par une facon de se deplacer reelle mais fautive. Aucune bonne
 # reponse, aucun enonce ne change : FER-1, FER-2, FER-3, EMC-1, EMC-5, EMC-6, EMC-8, EMC-10
 # restent tenus a l'identique.
+#
+# Deuxieme tentative de paiement de CAT-1 (2026-09-09, lea-dev, S33-CAT1,
+# squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md, sections
+# 1, 4, 10 et 13). Le correctif de S32-CAT1 ci-dessus n'avait rendu qu'une proposition serieuse
+# par item (2 items sur 11 tenaient la clause, 5 a moitie, 4 pas du tout), et avait introduit un
+# repere lexical a la place du repere de registre qu'il payait : "maitresse" comptait 1 occurrence
+# dans les distracteurs avant S32-CAT1, 7 apres, sur 6 items sur 11, aucune bonne reponse ne le
+# portant (item 2 : les deux distracteurs le portaient, donnant la reponse d'emblee).
+#
+# Ce correctif reecrit le second distracteur de chaque item pour que les trois propositions - et
+# non plus une seule - soient une raison ou une action serieuse et plausible pour la situation
+# decrite, jamais un choix ouvertement fautif ou absurde qui se reconnait au ton plutot qu'a la
+# regle : par exemple l'item 3, ou "le jeter a la poubelle" et "le laisser sur la table" sonnaient
+# tous deux comme la faute a cote de "le ranger", devient "le laisser secher sur la table" et "le
+# donner a un camarade pour qu'il l'utilise", deux actions tout aussi serieuses que la bonne
+# reponse. "Maitresse" est retire des onze items (aucune occurrence restante, dans une bonne
+# reponse comme dans un distracteur) plutot que redistribue, pour qu'aucun mot ne porte plus
+# d'information que la regle elle-meme. Aucune bonne reponse, aucun enonce, aucun indice ne
+# change : FER-1, FER-2, FER-3, EMC-1, EMC-5, EMC-6, EMC-8, EMC-10 restent tenus a l'identique.
 items:
   - enonce: "Avant de parler en classe, que doit faire un élève ?"
     bonneReponse: "lever la main"
-    distracteurs: ["parler plus fort", "regarder la maîtresse sans rien dire"]
+    distracteurs: ["attendre en silence", "chuchoter à son voisin"]
     indice: "Un seul bras se lève, pour demander la parole."
   - enonce: "Pourquoi lève-t-on la main avant de parler en classe ?"
     bonneReponse: "pour que chacun parle à son tour"
-    distracteurs: ["pour que la maîtresse nous félicite", "pour appeler la maîtresse de loin"]
+    distracteurs: ["pour montrer qu'on a compris", "pour demander la permission de sortir"]
     indice: "Sans cette règle, tout le monde parlerait en même temps."
   - enonce: "Léa a fini de peindre. Que doit-elle faire de son matériel ?"
     bonneReponse: "le ranger"
-    distracteurs: ["le laisser sur la table", "le jeter à la poubelle"]
+    distracteurs: ["le laisser sécher sur la table", "le donner à un camarade pour qu'il l'utilise"]
     indice: "La classe doit rester en ordre pour la leçon suivante."
   - enonce: "Pourquoi range-t-on le matériel après l'avoir utilisé ?"
     bonneReponse: "pour que chacun retrouve ses affaires"
-    distracteurs: ["pour empêcher les autres d'y toucher", "pour gagner un jeu"]
+    distracteurs: ["pour que la salle soit plus jolie", "pour qu'il dure plus longtemps"]
     indice: "Un matériel bien rangé se retrouve facilement le lendemain."
   - enonce: "Dans les couloirs de l'école, comment doit-on se déplacer ?"
     bonneReponse: "en marchant"
-    distracteurs: ["en courant", "en sautant à cloche-pied"]
+    distracteurs: ["en marchant à reculons", "en traînant les pieds"]
     indice: "On ne veut bousculer personne."
   - enonce: "Pourquoi marche-t-on dans les couloirs au lieu de courir ?"
     bonneReponse: "pour que personne ne se blesse"
-    distracteurs: ["pour arriver en retard", "pour arriver le premier en classe"]
+    distracteurs: ["pour ne pas faire de bruit", "pour garder de l'énergie pour la récréation"]
     indice: "Courir dans un couloir étroit fait facilement tomber quelqu'un."
   - enonce: "Hugo veut parler alors qu'un camarade parle déjà. Que doit-il faire ?"
     bonneReponse: "attendre son tour"
-    distracteurs: ["parler plus fort que lui", "aller prévenir la maîtresse tout de suite"]
+    distracteurs: ["parler plus fort que lui", "lui dire de se taire"]
     indice: "Une seule personne parle à la fois."
   - enonce: "Pourquoi écoute-t-on un camarade quand il parle ?"
     bonneReponse: "pour comprendre ce qu'il dit"
-    distracteurs: ["pour savoir quand ce sera son tour de parler", "pour gagner une récompense"]
+    distracteurs: ["pour savoir quand ce sera son tour de parler", "pour montrer qu'on est poli"]
     indice: "Si tout le monde parle en même temps, personne ne comprend rien."
   - enonce: "À la cantine, plusieurs élèves veulent se servir en même temps. Que doivent-ils faire ?"
     bonneReponse: "faire la queue"
-    distracteurs: ["se bousculer", "demander à la maîtresse de choisir qui passe en premier"]
+    distracteurs: ["attendre que les autres soient partis", "laisser les plus grands passer devant"]
     indice: "Chacun passe l'un après l'autre."
   - enonce: "Pourquoi fait-on la queue à la cantine ?"
     bonneReponse: "pour que tout le monde passe sans se bousculer"
-    distracteurs: ["pour que le repas soit plus chaud", "pour que la maîtresse compte les élèves"]
+    distracteurs: ["pour que le service soit plus rapide", "pour montrer qu'on est patient"]
     indice: "Une file évite que plusieurs élèves arrivent en même temps au même endroit."
   - enonce: "Aya a emprunté des crayons de la classe. Que doit-elle faire en repartant ?"
     bonneReponse: "les remettre à leur place"
-    distracteurs: ["les garder pour elle", "les donner à la maîtresse pour qu'elle les range"]
+    distracteurs: ["les garder pour elle", "les donner à un camarade qui n'en a pas"]
     indice: "Le matériel de la classe sert à tous les élèves."

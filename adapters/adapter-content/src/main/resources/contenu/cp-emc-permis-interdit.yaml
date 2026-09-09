@@ -85,6 +85,20 @@ lignesDeReferentiel: ["EMC-CP-02"]
 # l'item 1, qui accepte les cinq qualifications sans forcer le verbe "faire". Aucune bonne reponse,
 # aucune situation ne change : FER-1, FER-2, FER-3, EMC-1, EMC-5, EMC-8, EMC-10 restent tenus a
 # l'identique.
+#
+# Deuxieme tentative de paiement de CAT-1 (2026-09-09, lea-dev, S33-CAT1,
+# squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md, sections
+# 1, 4, 10 et 13). Le correctif de S32-CAT1 ci-dessus n'avait rendu qu'un seul des deux
+# distracteurs serieux sur les items 4 et 6 (1 item sur 4 tenait la clause, 2 a moitie, 1 pas du
+# tout, sur les quatre items "pourquoi" ou le registre est mesurable). Ce correctif reecrit le
+# second distracteur des items 2, 4, 6 et 10 pour que les trois propositions soient chacune une
+# raison serieuse et plausible pour la situation decrite, jamais une reponse reconnaissable a son
+# ton ("pour gagner un jeu", "pour faire plus de bruit") : par exemple l'item 2 devient "pour ne
+# pas etre puni" et "pour respecter le reglement de l'ecole", deux raisons aussi serieuses que la
+# bonne reponse "pour ne pas le blesser". Les sept autres items (tache de qualification :
+# nommer une moquerie, une insulte ou de la violence) ne portent pas cet axe de registre et ne
+# sont pas touches. Aucune bonne reponse, aucune situation ne change : FER-1, FER-2, FER-3,
+# EMC-1, EMC-5, EMC-8, EMC-10 restent tenus a l'identique.
 items:
   - enonce: "Hugo rit de la voix d'Aya. Comment appelle-t-on ça ?"
     bonneReponse: "une moquerie"
@@ -92,7 +106,7 @@ items:
     indice: "On rit de quelqu'un plutôt qu'avec lui."
   - enonce: "Pourquoi est-il interdit de se moquer d'un camarade ?"
     bonneReponse: "pour ne pas le blesser"
-    distracteurs: ["pour gagner un jeu", "pour faire plus de bruit"]
+    distracteurs: ["pour ne pas être puni", "pour respecter le règlement de l'école"]
     indice: "Une moquerie peut faire beaucoup de peine."
   - enonce: "Malo dit des mots méchants à Hugo. Comment appelle-t-on ça ?"
     bonneReponse: "une insulte"
@@ -100,7 +114,7 @@ items:
     indice: "Ce sont des mots blessants, pas des gestes."
   - enonce: "Pourquoi est-il interdit d'insulter un camarade ?"
     bonneReponse: "pour ne pas le faire souffrir"
-    distracteurs: ["pour parler plus fort que lui", "pour ne pas déranger la classe"]
+    distracteurs: ["pour ne pas se faire gronder", "pour ne pas déranger la classe"]
     indice: "Les mots peuvent blesser autant que les gestes."
   - enonce: "Aya pousse Hugo très fort, sans raison. Comment appelle-t-on ça ?"
     bonneReponse: "de la violence"
@@ -108,7 +122,7 @@ items:
     indice: "Elle fait mal à Hugo avec son corps."
   - enonce: "Pourquoi est-il interdit de pousser ou de frapper ?"
     bonneReponse: "pour ne pas lui faire mal"
-    distracteurs: ["pour finir la récréation plus vite", "pour ne pas se faire mal soi-même"]
+    distracteurs: ["pour ne pas se faire mal soi-même", "pour respecter le règlement de l'école"]
     indice: "Le corps d'un camarade n'est pas un jouet."
   - enonce: "Léa prête son crayon à Malo. Comment appelle-t-on ça ?"
     bonneReponse: "un service"
@@ -124,7 +138,7 @@ items:
     indice: "Il cherche à faire rire aux dépens de Léa."
   - enonce: "Pourquoi est-il interdit d'insulter un camarade, même pour rire ?"
     bonneReponse: "parce que ça peut blesser malgré tout"
-    distracteurs: ["parce que ça fait beaucoup de bruit", "parce que ça fait perdre du temps"]
+    distracteurs: ["parce que ça dérange la classe", "parce que ça fait perdre du temps"]
     indice: "Une insulte fait mal, même dite en riant."
   - enonce: "Aya tire les cheveux de Malo pendant la récréation. Comment appelle-t-on ça ?"
     bonneReponse: "de la violence"

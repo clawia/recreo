@@ -493,7 +493,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis ce que ressent la personne, ou ce que montre son geste.",
             "Lis bien, puis dis quel mot employer, ou quelle règle n'est pas respectée.",
             // S31-2 : deux consignes neuves.
-            "Lis bien, puis dis ce qu'il faut faire, ou à qui en parler.",
+            // S33-EXC-R1 : la consigne de bandit-manchot-exclusion-cp ne nommait plus la tache
+            // reellement servie depuis la reecriture de s31 (aucune proposition de la tache A n'est
+            // une action) - corrigee en meme temps que le paquet.
+            "Lis bien, puis dis si c'est une moquerie qui se répète, ou à quel adulte en parler.",
             "Lis bien, puis dis ce que c'est, ou qui doit la respecter.",
             // S31-3 : deux consignes neuves.
             "Lis bien, puis dis dans quel état se trouve la matière, ou nomme le changement d'état.",
