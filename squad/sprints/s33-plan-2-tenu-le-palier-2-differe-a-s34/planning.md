@@ -199,6 +199,59 @@ concernees ne les engagent, soit l'argent qui leur est reserve reste inemploye c
 | Trois postes finances sans story ecrite (section 10) | Produit | `camille-po` | Story ecrite, ou poste non engage |
 | 0,5 non alloue de l'instance B (paquet de sciences ou transfert) | Capacite | moi-meme, en cours de sprint | Reaffectation ecrite au moment ou elle est faite |
 
+## 13. Fusion des quatre branches livrees, casquette dev (2026-09-09)
+
+**Lignee verifiee avant chaque fusion** : `s33-theo` (`d85cc7b0`), `s33-marc` (`4adc751f`),
+`s33-lea` (`fbb370a7`) et `s33-sofia` (`556cad9f`) forkent toutes de `1740807e`, le commit qui a
+ouvert ce planning. Fusionnees dans cet ordre, sur instruction de `theo-archi` (section 5 de son
+avis de faisabilite) : `s33-theo` en premier, ses lignes etant a huit lignes de l'enumeration que
+`marc-dev` met a jour dans le meme fichier.
+
+**Le point de couture attendu sur `PaquetCm1HistoireGeographieTest` (theo et marc) ne s'est pas
+materialise en conflit Git** : fusion automatique. Verifie apres coup que les deux lots
+coexistent intacts et non que l'un a silencieusement absorbe l'autre - les six methodes
+`partageDesTachesEpingle` de `theo-archi` (lignes `HG-CM1-01`, `-02`, `-03`, `-04`, `-11`, `-13`)
+et les trois tests neufs de `marc-dev` sur `HG-CM1-08`/`HG-CM1-12` portent sur des
+lignes disjointes du referentiel : aucune collision reelle, seulement un risque correctement
+anticipe. Les quatre autres points de couture nommes ne l'etaient pas non plus : `catalogue.yaml`
+n'est touche que par `s33-lea` (une ligne, consigne de `bandit-manchot-exclusion-cp`) ;
+`TexteAccentueExposeParLePortEntrantTest` que par `s33-lea` ;
+`UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest` que par `s33-marc` ;
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` que par `s33-sofia`. Chacun verifie
+plutot que suppose.
+
+**Quatre jobs de la CI mesures sur l'arbre fusionne, nommes un par un** : `prefixes` vert (les
+quatre commits non-merge depuis `1740807e` portent tous un prefixe connu), `chemins` vert (aucun
+chemin de poste de travail dans les fichiers versionnes), `outils` vert (9 juges purs executes),
+`build` vert (`mvn -B clean verify`, reacteur complet a six modules, BUILD SUCCESS, JDK 21.0.10
+rapporte par la machine virtuelle des tests).
+
+**Compte de tests : 1443**, soit 1439 + 4, l'attendu exact (`marc-dev` ajoute quatre methodes
+`@Test`, les trois autres branches n'en ajoutent aucune). Methode : somme de l'attribut `tests`
+sur les 193 fichiers `TEST-*.xml` de `surefire-reports` et `failsafe-reports` de l'arbre fusionne
+(105 `domain`, 13 `application`, 388 `adapter-web`, 693 `adapter-content`, 244 `bootstrap`),
+aucune classe executee deux fois - croisee independamment avec les totaux "Tests run" que Maven
+annonce par module dans sa propre sortie console, qui donnent la meme somme. Les deux methodes
+convergent sur le meme chiffre.
+
+**Etat reel des onze stories du sprint apres cette fusion.** Sept payees dans ce lot :
+`S33-HG-02`, `S33-HG-08-12` (`marc-dev`), `S33-CAT1`, `S33-EXC-R1`, `S33-EXC-R5` (`lea-dev`),
+`S33-EPS-SEC`, `S33-EPS-JEU` (`sofia-sm`). `S33-HG-04` : debloquee par l'avis de `theo-archi`
+(faisable en l'etat, sans `ADR`) mais **non engagee** - `marc-dev` l'ecrit dans son commit,
+faute de l'avis au moment ou il a ouvert sa branche. `S33-EMCCP07` : **partielle et bloquee** -
+un item corrige sur trois, les deux autres refuses par `lea-dev` faute d'une troisieme
+proposition constructible sous les conditions actuelles de `nadia-prof` (route en section 12).
+`S33-CONS-4` et `S33-SCO-1` restent bloquees exactement comme a l'ouverture de ce planning,
+aucune des quatre branches ne les touchant. Le total de sept stories payees ne correspond pas au
+compte de neuf lignes de couverture que la composition de la section 2 visait au maximum
+(plafond arithmetique) : deux des lignes financees (`HG-CM1-08`, `HG-CM1-12`) sont payees par une
+seule story (`S33-HG-08-12`), et les deux stories `S33-EXC-R1`/`S33-EXC-R5` sont des corrections
+non bloquantes sur une ligne deja `couvert-valide` (`EMC-CP-03`), pas des lignes neuves. Aucun
+mouvement de `squad/programme/MATRICE-couverture.md` n'est fait ici - il appartient a la review.
+
+Rien n'est pousse. Les trois obstacles pedagogiques (`S33-EMCCP07`, `S33-SCO-1`, `S33-CONS-4`)
+restent routes tels qu'ecrits en section 12, sans reponse nouvelle a ce jour.
+
 ## Decisions prises
 
 Aucune decision prise pendant ce planning : la strategie (`DEC-0085`) est geree en amont par
