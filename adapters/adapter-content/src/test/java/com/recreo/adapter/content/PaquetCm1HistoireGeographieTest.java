@@ -188,6 +188,33 @@ class PaquetCm1HistoireGeographieTest {
         return resultat;
     }
 
+    /**
+     * <b>Le partage entre les deux taches d'une ligne est epingle, jamais seulement minore.</b>
+     * Le plancher de {@code FER-3} ({@code min >= MINIMUM_PAR_TACHE}) est muet dans les deux sens
+     * ou ce partage se deplace reellement : un item classe du mauvais cote reste au-dessus du
+     * plancher, et un classificateur qui cesse de reconnaitre un item verse cet item dans l'autre
+     * tache par la simple soustraction qui calcule la seconde. Les deux modes ont deja coute a ce
+     * depot - le second est le motif d'ADR-0089 decision E, ou {@code EXC-R5} etait bloquee par une
+     * tache lue dans une sous-chaine d'enonce, et yanis-qa a signale le 2026-09-08 que les deux
+     * tests de ce fichier qui lisent encore l'enonce ({@code HG-CM1-01}, {@code HG-CM1-02})
+     * glisseraient de la meme facon a la premiere reformulation.
+     *
+     * <p>Epingler les deux effectifs rend tout deplacement rouge et le nomme, sans demander au
+     * contenu de declarer sa tache - ce que le schema ne porte pas, et ce qu'aucun classificateur
+     * ne peut deriver ici (avis de faisabilite de s33, section 1). Un effectif attendu se met a
+     * jour dans le commit qui deplace le partage, exactement comme {@link #NOMBRE_D_ITEMS_ATTENDU}.
+     */
+    private static void partageDesTachesEpingle(String ligne, String nomA, long effectifA,
+                                                 int attenduA, String nomB, long effectifB,
+                                                 int attenduB) {
+        assertThat(effectifA)
+                .as("%s : la tâche \"%s\" porte exactement %d items", ligne, nomA, attenduA)
+                .isEqualTo(attenduA);
+        assertThat(effectifB)
+                .as("%s : la tâche \"%s\" porte exactement %d items", ligne, nomB, attenduB)
+                .isEqualTo(attenduB);
+    }
+
     private static List<Map<String, Object>> itemsDeLaLigne(String code) {
         return itemsBruts().stream()
                 .filter(item -> code.equals(item.get("ligneDeReferentiel")))
@@ -304,6 +331,8 @@ class PaquetCm1HistoireGeographieTest {
 
         assertThat(ordre).as("la tâche d'ordre est servie").isGreaterThan(0);
         assertThat(identification).as("la tâche d'identification est servie").isGreaterThan(0);
+        partageDesTachesEpingle(LIGNE_FRISE, "ordre", ordre, 5, "identification",
+                identification, 5);
         assertThat(Math.min(ordre, identification))
                 .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
@@ -323,6 +352,8 @@ class PaquetCm1HistoireGeographieTest {
 
         assertThat(ordre).as("la tâche d'ordre est servie").isGreaterThan(0);
         assertThat(situer).as("la tâche de situer est servie").isGreaterThan(0);
+        partageDesTachesEpingle(LIGNE_SIECLE_ET_MILLENAIRE, "ordonner", ordre, 5,
+                "situer dans un siècle ou un millénaire", situer, 5);
         assertThat(Math.min(ordre, situer))
                 .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
@@ -342,6 +373,8 @@ class PaquetCm1HistoireGeographieTest {
         assertThat(nommerLePeuple).as("la tâche \"nommer le peuple\" est servie").isGreaterThan(0);
         assertThat(directLaisse).as("la tâche \"dire ce qu'un peuple a laissé\" est servie")
                 .isGreaterThan(0);
+        partageDesTachesEpingle(LIGNE_PEUPLES_ANCIENS, "nommer le peuple", nommerLePeuple, 3,
+                "dire ce qu'un peuple a laissé", directLaisse, 7);
         assertThat(Math.min(nommerLePeuple, directLaisse))
                 .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
@@ -363,6 +396,8 @@ class PaquetCm1HistoireGeographieTest {
                 .isGreaterThan(0);
         assertThat(direUnEffet).as("la tâche \"dire un effet sur le territoire\" est servie")
                 .isGreaterThan(0);
+        partageDesTachesEpingle(LIGNE_MOUVEMENTS_DE_POPULATION, "nommer le mouvement",
+                nommerLeMouvement, 3, "dire un effet sur le territoire", direUnEffet, 7);
         assertThat(Math.min(nommerLeMouvement, direUnEffet))
                 .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
@@ -498,6 +533,8 @@ class PaquetCm1HistoireGeographieTest {
         assertThat(identification).as("la tâche d'identification est servie").isGreaterThan(0);
         assertThat(association).as("la tâche d'association-caractéristique est servie")
                 .isGreaterThan(0);
+        partageDesTachesEpingle(LIGNE_TYPES_D_ESPACES, "identification", identification, 3,
+                "association-caractéristique", association, 7);
         assertThat(Math.min(identification, association))
                 .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
@@ -512,6 +549,8 @@ class PaquetCm1HistoireGeographieTest {
 
         assertThat(acheminement).as("la tâche d'acheminement est servie").isGreaterThan(0);
         assertThat(origine).as("la tâche d'origine est servie").isGreaterThan(0);
+        partageDesTachesEpingle(LIGNE_EAU_ENERGIE_ALIMENTS, "acheminement", acheminement, 4,
+                "origine", origine, 6);
         assertThat(Math.min(acheminement, origine))
                 .as("FER-3 : la tâche la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
