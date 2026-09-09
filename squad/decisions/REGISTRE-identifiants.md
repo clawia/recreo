@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `547` identifiants alloues, `94` prefixes distincts.
+**Compte courant, verifie par la CI** : `561` identifiants alloues, `96` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -32,6 +32,18 @@ de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. La 
 fusion, comme il l'avait ecrit, et la reparation est arithmetique - aucune allocation ajoutee, aucune
 retiree, aucun sens touche. Les deux notes des instances restent verbatim sous cette ligne : leur
 chiffre est date, le mien est courant.*
+
+*Ligne portee de 547 / 94 a 561 / 96 par `nadia-prof`, instance C, le 2026-09-09, dans le meme
+diff que les documents qui definissent ses quatorze allocations - c'est la clause `PAR-5`, dont
+l'oubli avait rendu `round-two` rouge sur mon propre commit le 2026-09-07. Methode : comptage des
+lignes de la table de la section 4 a la forme `| identifiant | document |`, identifiants distincts
+et prefixes distincts, sur mon worktree seul. **Ce total est juste sur ma moitie et faux des que les
+instances A et B fusionnent** : je suis dans la situation exacte que la note du 2026-09-08 decrit
+au-dessus, et je l'ecris plutot que de laisser croire que mon chiffre survivra a l'assemblage.
+Allocations ajoutees : `EPS-4`, `EPS-5`, `EPS-6` (trois conditions inedites de l'EPS), `SEC-R1` a
+`SEC-R3`, `JEU-R1` a `JEU-R8` (motifs de refus et reserves des deux paquets d'EPS CP). **Un premier
+passage sur une matiere neuve mint beaucoup d'identifiants** : quatorze pour deux paquets, et c'est
+le sprint le plus expose de mon histoire a la faute de `PAR-5`.*
 
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
@@ -337,6 +349,9 @@ clause 2 par une exemption.
 | `EPS-1` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
 | `EPS-2` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
 | `EPS-3` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
+| `EPS-4` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
+| `EPS-5` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
+| `EPS-6` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `ERR-R1` | `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md` |
 | `ETA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -428,6 +443,14 @@ clause 2 par une exemption.
 | `HOR-6` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `HOR-7` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `HOR-8` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
+| `JEU-R1` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R2` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R3` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R4` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R5` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R6` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R7` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R8` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
 | `LIA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `LIA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `LIA-3` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -632,6 +655,9 @@ clause 2 par une exemption.
 | `SCO-5` | `docs/backlog/backlog.md` |
 | `SCO-6` | `docs/backlog/backlog.md` |
 | `SCO-7` | `docs/backlog/backlog.md` |
+| `SEC-R1` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
+| `SEC-R2` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
+| `SEC-R3` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
 | `SEG-1` | `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md` |
 | `SEG-2` | `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md` |
 | `SEG-3` | `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md` |
