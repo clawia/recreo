@@ -488,14 +488,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " cp-qlm-vivant-non-vivant - et les deux propositions sont toujours les memes"
                     + " deux etats (\"solide\", \"liquide\"), jamais une valeur numerique. Mesure du"
                     + " 2026-09-02 sur le paquet servi"),
-            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1. Motif recompte a
+            // s33 (S33-HG-04) : le chiffre precedent (20 items, 60 propositions) datait de s27 et
+            // n'avait pas suivi les lots de s28 a s33 ; corrige avec sa methode plutot que reporte.
             Map.entry("cm1-histoire-geographie",
-            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
-                    + " propositions n'est numerique : ce sont des noms de periodes, de peuples, de"
-                    + " rois, d'evenements ou de lieux, et des dates toujours ecrites en toutes"
-                    + " lettres ou precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe"
-                    + " rend null sur les trois propositions de chaque item. Mesure du 2026-09-02 sur"
-                    + " le paquet servi : aucune des 60 propositions ne commence par un chiffre"),
+            "110 items sur 110 portent deux distracteurs (trois propositions, 330 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de periodes, de peuples, de rois,"
+                    + " d'evenements ou de lieux, et des dates toujours ecrites en toutes lettres ou"
+                    + " precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe rend null sur"
+                    + " les trois propositions de chaque item. Mesure du 2026-09-09, comptage direct"
+                    + " sur le paquet servi (\"bonneReponse\" et \"distracteurs\") : aucune des 330"
+                    + " propositions ne commence par un chiffre"),
             // S28-3 : premier paquet d'anglais, matiere neuve du produit, CM1.
             Map.entry("cm1-anglais",
             "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"

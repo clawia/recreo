@@ -238,12 +238,15 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-03", "HG-CM1-04", "HG-CM
 #
 # HG-CM1-04 (FER-3, pas de FER-1 numerote sur cette ligne) : "nommer un mouvement ou un
 # deplacement de population decrit" (trois items au total : peuples germaniques deja servi depuis
-# s27, Vikings et Sarrasins neufs) et "dire un effet de ce mouvement sur le territoire" (sept
-# items neufs, reponses distinctes : fin de l'Empire romain d'Occident, naissance de la France,
-# naissance de la Normandie, siege de Paris, arret de l'expansion a Poitiers, division en
-# plusieurs royaumes, naissance de la dynastie carolingienne). Bataille de Poitiers (732) et
-# Sarrasins : terme traditionnellement enseigne dans le programme francais pour cet evenement - a
-# confirmer par nadia-prof si un terme different est prefere.
+# s27, Vikings deja servi, origine de l'armee de 732 corrigee a s33) et "dire un effet de ce
+# mouvement sur le territoire" (sept items neufs, reponses distinctes : fin de l'Empire romain
+# d'Occident, naissance de la France, naissance de la Normandie, siege de Paris, arret de
+# l'expansion a Poitiers, division en plusieurs royaumes, naissance de la dynastie carolingienne).
+# Bataille de Poitiers (732), HG-R12 (s33, nadia-prof) : "les Sarrasins" ne designe aucun peuple
+# reel (exonyme medieval chretien qu'aucun groupe n'a revendique) et la question demandait un
+# peuple sans que la reponse en nomme un. L'item nomme desormais l'armee par son origine
+# geographique (Espagne, via Al-Andalus omeyyade) plutot que par un nom de peuple - premiere des
+# deux directions que nadia-prof a jugees recevables.
 #
 # CONS-1 (reliquat de s31, section 1.2 de l'arbitrage prealable de s32) : la consigne de
 # bandit-manchot-histoire-geographie-cm1 (catalogue.yaml) ne nommait aucune des taches de
@@ -761,10 +764,10 @@ items:
     distracteurs: ["les Romains", "les Gaulois"]
     indice: "Ce sont des marins venus de Scandinavie, qui remontent les fleuves sur leurs bateaux."
     ligneDeReferentiel: "HG-CM1-04"
-  - enonce: "En 732, une armée venue du sud est arrêtée près de Poitiers par Charles Martel. Quel peuple menait cette armée ?"  # HIS-1: association ; HIS-3: bataille de Poitiers 732, fait consensuel du programme scolaire français - terme traditionnellement enseigné, à confirmer par nadia-prof si un terme différent est préféré
-    bonneReponse: "les Sarrasins"
-    distracteurs: ["les Vikings", "les Romains"]
-    indice: "Cette armée venait de traverser la péninsule Ibérique avant d'arriver en Gaule."
+  - enonce: "En 732, une armée est arrêtée près de Poitiers par Charles Martel. D'où venait cette armée ?"  # HIS-1: association ; HIS-3: bataille de Poitiers 732, armée venue d'Espagne (Al-Andalus omeyyade), fait consensuel du programme scolaire français, famille (a) - HG-R12 : l'item ne désigne plus l'armée par un exonyme, il nomme son origine géographique
+    bonneReponse: "d'Espagne"
+    distracteurs: ["d'Italie", "d'Angleterre"]
+    indice: "Cette armée avait traversé les Pyrénées avant d'arriver en Gaule."
     ligneDeReferentiel: "HG-CM1-04"
   - enonce: "Les mouvements des peuples germaniques affaiblissent peu à peu l'Empire romain d'Occident. Que se passe-t-il finalement en 476 ?"  # HIS-1: association ; HIS-3: chute de l'Empire romain d'Occident en 476, fait consensuel, famille (a)
     bonneReponse: "l'Empire romain d'Occident disparaît"
@@ -774,7 +777,7 @@ items:
   - enonce: "Les Francs s'installent en Gaule à la fin du Ve siècle et fondent un royaume qui deviendra un grand pays d'Europe. Lequel ?"  # HIS-1: association ; HIS-3: référentiel ligne 4 (installation des Francs), fait consensuel, famille (a)
     bonneReponse: "la France"
     distracteurs: ["l'Espagne", "l'Italie"]
-    indice: "Leur roi Clovis unifie ce royaume en 481."
+    indice: "Clovis devient roi des Francs, en 481."
     ligneDeReferentiel: "HG-CM1-04"
   - enonce: "Les Vikings s'installent dans le nord-ouest de la Gaule au début du Xe siècle. Quelle région porte encore leur nom aujourd'hui ?"  # HIS-1: association ; HIS-3: fait consensuel (installation viking à l'origine du nom de la Normandie), famille (a)
     bonneReponse: "la Normandie"

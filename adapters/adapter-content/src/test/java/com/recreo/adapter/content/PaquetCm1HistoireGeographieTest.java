@@ -399,12 +399,13 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     /**
-     * FER-3 sur HG-CM1-04 : "nommer le mouvement" (trois items, un par peuple/mouvement) et "dire
-     * un effet sur le territoire" (sept items).
+     * FER-3 sur HG-CM1-04 : "nommer le mouvement" (trois items, un par peuple/mouvement/origine) et
+     * "dire un effet sur le territoire" (sept items). S33-HG-04 (HG-R12) : "les Sarrasins" ne nomme
+     * plus l'armée de 732, remplacé par son origine géographique ("d'Espagne").
      */
     @Test
     void fer3AuMoinsDeuxTachesSurHgCm104LaMoinsServieAuMoinsTroisItems() {
-        Set<String> mouvements = Set.of("les peuples germaniques", "les Vikings", "les Sarrasins");
+        Set<String> mouvements = Set.of("les peuples germaniques", "les Vikings", "d'Espagne");
         List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_MOUVEMENTS_DE_POPULATION);
         long nommerLeMouvement = items.stream()
                 .filter(item -> mouvements.contains(item.get("bonneReponse"))).count();
