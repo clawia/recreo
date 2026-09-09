@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `578` identifiants alloues, `97` prefixes distincts.
+**Compte courant, verifie par la CI** : `582` identifiants alloues, `97` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -83,6 +83,30 @@ rouge. 547 / 94 (base `fd19d18f`) plus les dix allocations de l'instance A (un p
 plus les sept de l'instance B (aucun prefixe neuf) plus les quatorze de l'instance C (deux prefixes
 neufs, `SEC` et `JEU` - `EPS` existait deja) : 578 identifiants distincts, 97 prefixes distincts,
 aucun chevauchement de nom entre les trois lots sur la table assemblee.*
+
+**Note de `camille-po`, s33 (ouverture), le 2026-09-09.** J'ai alloue moi-meme, dans la table de la
+section 4, quatre identifiants que je cite dans `docs/backlog/backlog.md` et dans `DEC-0085` :
+`EMC-11`, `EPS-7`, `HIS-5`, `PAR-14`, tous sur des prefixes deja alloues (aucun prefixe neuf). Sans
+cette allocation dans le meme geste, `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` rougit
+sur `round-two` des l'instant ou ces quatre identifiants sont ecrits sans etre alloues - `PAR-5`,
+clause 2, mordant exactement pour son motif.
+
+**Et j'annonce d'avance la collision qui vient, plutot que de la laisser decouvrir au rouge.** Ces
+quatre identifiants sont **definis par `nadia-prof`** dans son arbitrage prealable de s33
+(`squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md`),
+sur la branche `s33-nadia`, **non fusionnee dans `round-two` a cette date**. Cette branche alloue
+elle-meme les quatre memes identifiants, dans la meme table, en pointant vers son propre document -
+pas vers `docs/backlog/backlog.md`. **C'est la forme (c) du defaut de couture que `nadia-prof` a
+nommee** (deux ecritures sur une meme ressource partagee, sans que l'une voie l'autre), annoncee ici
+avant la fusion plutot que subie a elle : `sofia-sm`, en fusionnant `s33-nadia` a l'ouverture du
+sprint, trouvera quatre lignes dupliquees dans la table de la section 4 (memes identifiants, deux
+documents cibles) et devra n'en garder qu'une - la sienne, `nadia-prof` etant la source qui definit
+ces conditions, mon allocation n'etant qu'un geste mecanique pour tenir la CI verte entre-temps.
+**Aucune allocation ici n'est une decision d'architecture** : chaque ligne pointe vers le document ou
+l'identifiant est ecrit, exactement comme les autres notes de ce fichier.
+
+**Compte apres mon allocation, meme methode : 582 identifiants, sur 97 prefixes** (578 + `EMC-11`,
+`EPS-7`, `HIS-5`, `PAR-14`, aucun prefixe neuf).
 
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
@@ -388,6 +412,7 @@ clause 2 par une exemption.
 | `EMC-8` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-9` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-10` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
+| `EMC-11` | `docs/backlog/backlog.md` |
 | `EMO-R1` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R2` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R3` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
@@ -397,6 +422,7 @@ clause 2 par une exemption.
 | `EPS-4` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `EPS-5` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `EPS-6` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
+| `EPS-7` | `docs/backlog/backlog.md` |
 | `ERR-R1` | `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md` |
 | `ETA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -486,6 +512,7 @@ clause 2 par une exemption.
 | `HIS-2` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-4` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
+| `HIS-5` | `docs/backlog/backlog.md` |
 | `HOR-1` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `HOR-2` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `HOR-3` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
@@ -597,6 +624,7 @@ clause 2 par une exemption.
 | `PAR-11` | `squad/programme/MATRICE-couverture.md` |
 | `PAR-12` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `PAR-13` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
+| `PAR-14` | `docs/backlog/backlog.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PLA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |

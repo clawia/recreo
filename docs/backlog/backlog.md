@@ -12196,152 +12196,14 @@ deux routes a s33.
   `lea-dev` ; `nadia-prof`, instance C, pour l'audit et le Done pedagogique - premier terrain sans
   image d'aucune instance (`PAR-13`).
 
-## Backlog ouvert pour s33 - le palier 2 finance a son entree minimale : deux trous de contrat
-## prealables et un lot de designation (`QLM-CP-11`, `QLM-CP-14`) (`DEC-0083`, amendement du
-## 2026-09-08)
+## Le palier 2 est reporte a s34
 
-Perimetre arbitre par l'utilisatrice le 2026-09-08 (`DEC-0083`, section 13), sur le chiffre de
-`nadia-prof`
-(`squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`,
-sections 16 et 17) et sur l'avis de faisabilite de `theo-archi`
-(`squad/sprints/s32-instruction-prealable/avis-faisabilite-theo-achevement-du-palier-2.md`, branche
-`s32-theo`, commit `dcbcd65a`, complete par `ADR-0088` (commit `043b8503`) - **fusionnee dans
-`round-two` au planning de s32, commit `cb0b191e`, quatre jobs de la CI mesures verts par
-`sofia-sm` sur l'arbre fusionne**).
-
-**Cinq lots de developpement composent le chemin de jeu que ces trois stories supposent** (avis de
-`theo-archi`, section 7) : `L-a` (les sept interdits du JavaScript maison, plus le cliquet de la
-regle qui verifie qu'une mecanique du domaine est cablee), `L-b` (le trou A ci-dessous), `L-c` (la
-troisieme branche de `PartieController`, indivisible - **un seul developpeur, un sprint entier**),
-`L-d` (cinq garde-fous de rendu qui doivent lever plutot que rester muets sur une designation),
-`L-e` (le paquet, ses dessins, l'entree de catalogue). **Leur affectation aux trois instances et aux
-developpeurs, et leur repartition entre s33 et s34, sont le travail de `sofia-sm`** ; ces stories ne
-la presument pas.
-
-### S33-PAL2-TROU-A - L'ecran de fin de partie d'une designation porte la question qu'il commente
-
-- **Besoin** : en tant qu'eleve qui vient de terminer une partie de designation, je veux voir, sur
-  l'ecran qui me dit si j'ai reussi, la question a laquelle je viens de repondre, afin de comprendre
-  ce que la partie vient de verifier meme si le dessin n'est plus affiche.
-- **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la mecanique
-  de designation, sur son ecran de fin de partie, qu'aucun contenu ne sert encore aujourd'hui.
-- **Prealable bloquant, nomme et non presume acquis** : `theo-archi` route ce trou a lui-meme
-  (`DEC-0083`, section 13.3) - `DesignationVerdict` ne porte pas d'`enonce`, la ou `Verdict` et
-  `SaisieVerdict` en portent un obligatoire (`ADR-0084`, `REV-3`). **Cette story ne s'ouvre pas avant
-  que `theo-archi` ait ecrit l'`ADR` qui ajoute ce champ au contrat de `domain`.** Elle ne l'ecrit
-  pas a sa place.
-- **Criteres d'acceptation** :
-  - Etant donne une manche de designation resolue (juste, fausse ou par revelation), quand l'ecran
-    de fin de partie l'affiche, alors il porte l'enonce entier de l'item joue, au meme titre que sur
-    le bandit manchot et sur la saisie (`ADR-0084`, `REV-3`).
-  - Etant donne plusieurs manches de designation dans la meme partie, quand l'ecran de fin de partie
-    les liste, alors chaque enonce reste apparie a sa propre manche - meme propriete que
-    `AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest`, etendue a la designation.
-  - Etant donne le lot de designation `S33-PAL2-1` (ci-dessous), alors il ne peut pas entrer en
-    audit chez `nadia-prof` tant que cette story n'est pas livree : elle refuse d'avance tout lot de
-    designation avant que ce trou soit ferme (arbitrage prealable, section 17.6).
-- **Ce que cette story ne fait pas** : elle ne choisit pas la forme technique du champ ajoute au
-  contrat de `domain` - `theo-archi` la tranche dans son `ADR` ; elle ne s'applique a aucun paquet
-  reel avant que le premier paquet de designation existe, les garde-fous de sa population restant a
-  zero jusque-la (avis de `theo-archi`, section 5).
-- **Lien decision** : `DEC-0083`, section 13.3 ; avis de `theo-archi`, section 4.5 ; arbitrage
-  prealable de `nadia-prof`, section 17.6.
-- **Agent pressenti** : `theo-archi` pour l'`ADR` prealable (non ecrit a ce jour) ; `lea-dev` ou
-  `marc-dev` pour l'implementation (lot `L-b`) ; `nadia-prof` pour l'audit.
-
-### S33-PAL2-TROU-B - L'ecran de fin de partie d'une designation ne montre ni un identifiant ni un
-### libelle a la place de la zone attendue
-
-- **Besoin** : en tant qu'eleve qui me suis trompe ou qui ai eu besoin d'une aide sur une
-  designation, je veux voir l'endroit attendu sur l'ecran ou le dessin est encore affiche, plutot
-  que de lire, a la fin de la partie, un mot qui ne m'apprend rien sur la carte ou le plan.
-- **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la mecanique
-  de designation, sur son ecran de fin de partie.
-- **Prealable bloquant, nomme et non presume acquis** : `theo-archi` route ce trou a lui-meme
-  (`DEC-0083`, section 13.3) - `DesignationVerdict.bonneZone()` est un `Zone.id()`, une valeur de
-  formulaire qu'aucun ecran ne peut lire a un enfant. `nadia-prof` a deja tranche la reponse
-  pedagogique (section 17.6 de son arbitrage) : ni l'identifiant, ni le libelle, les libelles de
-  zone etant positionnels (`ZON-10`). **Cette story ne s'ouvre pas avant que `theo-archi` ait ecrit
-  l'`ADR` qui encode ce contrat** - l'ecran de fin de partie d'une designation omet le bloc de
-  reponse. Elle ne l'ecrit pas a sa place.
-- **Criteres d'acceptation** :
-  - Etant donne l'ecran de fin de partie d'une designation, quand il est rendu, alors il ne montre
-    ni l'identifiant technique de la zone attendue, ni son libelle positionnel : aucun element ne
-    remplace le bloc de reponse qu'affichent les deux autres mecaniques a cet ecran (`nadia-prof`,
-    section 17.6).
-  - Etant donne une manche de designation resolue par revelation, alors la zone attendue reste
-    visible sur l'ecran de manche, ou le dessin est encore affiche, via
-    `DesignationSession.bonneZoneRevelee()`, et `SCO-5` (une manche resolue par revelation n'est
-    jamais comptee comme une reussite) reste tenue.
-  - Etant donne le lot de designation `S33-PAL2-1` (ci-dessous), alors il ne peut pas entrer en
-    audit chez `nadia-prof` tant que cette story n'est pas livree, pour le meme motif que
-    `S33-PAL2-TROU-A`.
-- **Ce que cette story ne fait pas** : elle n'invente aucun texte de remplacement pour le bloc de
-  reponse - `nadia-prof` a tranche qu'il n'y en a pas ; elle ne renomme ni le libelle ni
-  l'identifiant de zone du contrat existant.
-- **Lien decision** : `DEC-0083`, section 13.3 ; avis de `theo-archi`, section 4.5 ; arbitrage
-  prealable de `nadia-prof`, section 17.6.
-- **Agent pressenti** : `theo-archi` pour l'`ADR` prealable (non ecrit a ce jour) ; `lea-dev` ou
-  `marc-dev` pour l'implementation (partie du lot `L-c`) ; `nadia-prof` pour l'audit.
-
-### S33-PAL2-1 - Premier lot de designation : situer un lieu sur un plan de classe, situer un
-### evenement de la journee sur une frise
-
-- **Besoin** : en tant qu'eleve de CP, je veux toucher, sur un plan de classe, l'endroit qu'on me
-  decrit, et toucher, sur une frise de ma journee, le moment qui correspond a un evenement decrit
-  par rapport a un autre, en jouant a un jeu de designation, afin d'apprendre a me reperer dans
-  l'espace de ma classe et dans le temps de ma journee.
-- **Competence programme visee** : questionner le monde, CP (cycle 2) -
-  `squad/programme/questionner-le-monde/competences-cp.md`, deux lignes `non couvert` :
-  "Situer un lieu ou un objet sur un plan simple de la classe, de l'ecole ou du quartier"
-  (`QLM-CP-11`) et "Situer des evenements les uns par rapport aux autres sur une frise
-  chronologique simple (avant, apres, en meme temps)" (`QLM-CP-14`).
-- **Ce qui motive cette story** : `DEC-0083`, section 13, amendement du 2026-09-08 - l'entree la
-  moins chere du palier 2, nommee par `nadia-prof` elle-meme comme la plus sure (arbitrage
-  prealable, section 17.5) : base 1,0 chacune, prix 2,0 pour les deux lignes, aucun fait a verifier
-  contre une source, aucun probleme de taille d'image, aucun besoin de reproduction d'oeuvre.
-- **Prealables bloquants, nommes et non presumes acquis** : les lots de developpement `L-a`, `L-c`
-  et `L-d` du chemin de jeu (avis de `theo-archi`, section 7, non livres a ce jour), et les deux
-  trous de contrat `S33-PAL2-TROU-A` et `S33-PAL2-TROU-B` ci-dessus. **Cette story ne s'ouvre avant
-  aucun des cinq.**
-- **Criteres d'acceptation** :
-  - Etant donne le paquet de `QLM-CP-11`, quand il est servi, alors un seul dessin (un plan de
-    classe) sert les deux enumerations disjonctives du referentiel - un lieu ou un objet -, et
-    `FER-1`, `FER-2` et `FER-3` sont tenues.
-  - Etant donne le paquet de `QLM-CP-14`, quand il est servi, alors deux dessins au minimum servent
-    les trois relations du referentiel (avant, apres, en meme temps), toutes moities confondues pour
-    `FER-2`, et la mention de couverture partielle aujourd'hui portee par cette ligne
-    (`squad/programme/MATRICE-couverture.md`, "moitie anteriorite/posteriorite seule") **tombe** -
-    elle n'est pas deplacee, elle est retiree.
-  - Etant donne chaque cadre de zone declare par le contenu des deux paquets, quand `nadia-prof`
-    joue la passe image effacee (`ZON-1` a `ZON-3` : tout le texte servi sous les yeux, la reponse
-    doit rester introuvable) et la passe jouee zone par zone (`ZON-9` : chaque zone de chaque item
-    pressee pour verifier ou tombe chaque cadre), alors les huit conditions `ZON-*` sont tenues sur
-    ce premier contenu reel (`PAR-13`, terrain jamais mordu).
-  - Etant donne chaque enonce de designation, alors aucun ne nomme le libelle de sa propre bonne
-    zone (garde-fou `AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest`).
-  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
-    `couvert-valide` que si `nadia-prof` verifie `FER-1`, `FER-2`, `FER-3` et les conditions `ZON-*`
-    applicables tenues, et que `S33-PAL2-TROU-A` et `S33-PAL2-TROU-B` sont deja fermees - une ligne
-    peut fermer independamment de l'autre.
-  - Etant donne le rejeu de `nadia-prof`, alors son prix ne depasse pas celui qu'elle a annonce
-    d'avance - base 1,0 par ligne dont elle est la source, plus 1,0 de supplement image pour le lot
-    (passe image effacee et passe jouee zone par zone), soit 2,0 au total pour les deux lignes -
-    sauf ecart explicitement mesure et ecrit au moment du rejeu (arbitrage prealable, section 17.4).
-- **Ce que cette story ne fait pas** : elle ne sert pas `QLM-CP-12` (necessite un fait verifie
-  contre une source, base 2,5, hors de cette entree) ; elle ne sert ni `MAT-CP-10` ni `HDA-CM1-09`
-  (chacune demande un second paquet textuel non finance par cette story) ; elle ne sert pas
-  `HG-CM1-09` (la taille d'image actuelle ne porte pas une zone d'un quart de la hauteur rendue sur
-  un planisphere) ; elle ne commence aucun travail de contenu avant que les cinq prealables ci-dessus
-  soient leves.
-- **Lien decision** : `DEC-0083`, section 13 ; arbitrage prealable de `nadia-prof`, sections 16 et
-  17 (commit `b1ee89f4`) ; avis de faisabilite de `theo-archi` (branche `s32-theo`, commit
-  `dcbcd65a`, non fusionnee).
-- **Agent pressenti** : a affecter par `sofia-sm` parmi les trois instances - ce lot n'a pas de
-  terrain nomme, comme `POS-R3` et `FOP-R4`/`DRO-R4` (`DEC-0083`, section 6) ; `ines-design` pour
-  les trois dessins (un plan de classe, deux frises de la vie de l'enfant) ; `marc-dev` ou
-  `lea-dev` pour le contenu ; `nadia-prof` pour l'audit et le Done pedagogique.
-
+Les trois stories du palier 2 (`S33-PAL2-TROU-A`, `S33-PAL2-TROU-B`, `S33-PAL2-1`), arbitrees pour
+s33 le 2026-09-08 (`DEC-0083`, section 13), sont reportees a s34 le 2026-09-09 (`DEC-0085`), sur un
+motif chiffre par `nadia-prof` : le cablage du chemin de jeu (`L-c`) prend un developpeur pour le
+sprint entier, et le plafond de 9 lignes de s33 suppose trois producteurs de contenu. Le financement
+lui-meme n'est pas annule. Voir la section "Backlog ouvert pour s34" plus bas pour les trois stories,
+inchangees sur le fond, avec le motif du report et deux prealables d'ADR desormais leves (`ADR-0088`).
 
 ## Backlog ouvert pour s33 (suite) - les quatre refus et les reserves impayees des verdicts de s32
 ## (`DEC-0084`, cloture de s32)
@@ -12437,6 +12299,13 @@ par `sofia-sm`.
   - Etant donne ce meme item, alors la correction ne s'appuie sur aucune clause distinguant "une
     regle" d'"une loi" que le libelle de la ligne ne porte pas - `nadia-prof` ecrit elle-meme que
     "distinguer une regle d'une loi n'est pas dans ce libelle."
+  - Etant donne les items 5 et 6, qui portent le meme ternaire non disjoint que l'item 4 sans avoir
+    ete nommes par le troisieme refus, quand ils sont revus dans le meme geste, alors "une loi"
+    cesse d'etre une troisieme proposition sur les items 4, 5 et 6 : la tache A redevient le
+    binaire que le libelle demande - "une regle qui vaut pour tous" contre "un simple souhait" -
+    sur ces trois items comme sur les items 1, 2 et 3 (`EMC-11`, nouvelle, `nadia-prof`,
+    2026-09-09 : toute correction de l'item 4 qui laisse "une loi" dans les propositions des items
+    5 ou 6 est refusee d'avance, le defaut y dormant sans etre nomme par le troisieme refus).
   - Etant donne l'item 11 (vente d'alcool aux mineurs), quand son distracteur mort est revu, alors
     chaque proposition redevient un candidat qu'un enfant de CP peut serieusement envisager
     (`PLA-1`) : la chaine "seulement les enfants" ne survit dans aucune proposition de la ligne.
@@ -12444,13 +12313,15 @@ par `sofia-sm`.
     troisieme passage ne regressent pas : `FAB-1c` reste tenue, les cinq faits de droit restent
     exacts, les onze enonces restent entre 12 et 15 mots.
   - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
-    `nadia-prof` confirme, en jouant, que ces deux items sont corriges sans regression sur les neuf
-    autres.
-- **Ce que cette story ne fait pas** : elle ne retouche aucun des neuf autres items ; elle
-  n'introduit aucune condition `EMC-*` au-dela de celles deja ecrites par `nadia-prof`.
+    `nadia-prof` confirme, en jouant, que les items 4, 5, 6 et 11 sont corriges sans regression sur
+    les sept autres.
+- **Ce que cette story ne fait pas** : elle ne retouche aucun des sept autres items (1, 2, 3, 7,
+  8, 9, 10) ; elle n'ajoute aucun item et ne cree aucune condition `EMC-*` au-dela d'`EMC-11`.
 - **Lien decision** :
   `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`, sections
-  3 et 13 ; `squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md`.
+  3 et 13 ; `squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md` ; arbitrage prealable de
+  `nadia-prof` (branche `s33-nadia`, commit `a9ab05ec`, non fusionnee), section 3.4 et refus 6 de la
+  section 9.3.
 - **Agent pressenti** : `lea-dev` ou `marc-dev` pour le texte ; `nadia-prof`, quatrieme passage.
 
 ### S33-CAT1 - Deuxieme tentative de paiement de `CAT-1` : defaire le repere lexical sur
@@ -12505,8 +12376,14 @@ par `sofia-sm`.
   - Etant donne ces huit distracteurs reecrits, alors au plus un item sur les cinq de la tache B
     porte une proposition hors du champ du danger parmi ses distracteurs (plafond d'un tiers,
     `FAB-1c`) - contre quatre sur cinq aujourd'hui.
-  - Etant donne les onze enonces, les onze bonnes reponses, les onze indices et toute la tache A,
-    alors ils restent inchanges : `nadia-prof` les dit exacts et bons.
+  - Etant donne les indices des items 8, 9, 10 et 11, revus dans le meme geste que leurs
+    distracteurs, alors aucun ne reprend le mot ou le champ lexical de la bonne reponse - danger,
+    blessure, choc, ou un synonyme evident - de sorte qu'un indice ne designe plus laquelle des
+    trois propositions reecrites est la bonne (`EPS-7`, nouvelle, `nadia-prof`, 2026-09-09 - exemple
+    mesure : l'indice "Un danger dans l'eau peut survenir tres vite" designerait toujours la bonne
+    reponse une fois les trois propositions de l'item 9 reecrites autour du mot danger).
+  - Etant donne les onze enonces, les onze bonnes reponses, les indices des items autres que 8, 9,
+    10 et 11, et toute la tache A, alors ils restent inchanges : `nadia-prof` les dit exacts et bons.
   - Etant donne `SEC-R1` (items 3 et 8, securite routiere du pieton sans engin ni lieu de pratique)
     et `SEC-R2` (item 1, "mettre de la creme solaire" est une reponse defendable), traitees dans la
     meme reprise, alors les items 3 et 8 portent un engin ou un lieu de pratique d'EPS, et l'indice
@@ -12518,7 +12395,8 @@ par `sofia-sm`.
   `S33-EPS-JEU`) ; elle n'ajoute aucun item au-dela des onze deja servis.
 - **Lien decision** :
   `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md`, sections
-  5 et 11.
+  5 et 11 ; arbitrage prealable de `nadia-prof` (branche `s33-nadia`, commit `a9ab05ec`, non
+  fusionnee), section 3.5 et refus 5 de la section 9.3.
 - **Agent pressenti** : `sofia-sm` (casquette dev) ou `marc-dev`/`lea-dev` pour le texte ;
   `nadia-prof`, second contact.
 
@@ -12559,6 +12437,11 @@ par `sofia-sm`.
     la tache A la porte en bonne reponse, et la tournure "Au loup et les moutons" est reecrite - la
     forme grammaticale relevant du `relecteur-pedagogique`, l'obstacle de lecture relevant de
     `nadia-prof`.
+  - Etant donne que les corrections listees ci-dessus touchent six items sur onze - plus de la
+    moitie du paquet -, alors l'audit de `nadia-prof` rejoue l'integralite des conditions
+    applicables du paquet (`FER-2`, `FER-3`, `BIN-1`, `FAB-1a`, `FAB-1b`, `FAB-1c`, `PLA-1`, `EPS-1`
+    a `EPS-6`) comme pour un lot neuf, et non les six items corriges seuls (`PAR-14`, nouvelle,
+    `nadia-prof`, 2026-09-09, non retroactive - elle ne s'applique qu'a cette reprise).
   - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
     `nadia-prof` confirme, en jouant, que les quatre erreurs de fait et les deux items au registre
     sont corriges sans regression sur les cinq items restants de la tache A.
@@ -12566,7 +12449,8 @@ par `sofia-sm`.
   `S33-EPS-SEC`) ; elle ne renomme pas les six jeux ni ne change leur repartition entre les taches.
 - **Lien decision** :
   `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md`, sections
-  6 et 11.
+  6 et 11 ; arbitrage prealable de `nadia-prof` (branche `s33-nadia`, commit `a9ab05ec`, non
+  fusionnee), section 5.5 (`PAR-14`, chiffrage) et section 6.4 (tarif de lot applique par C).
 - **Agent pressenti** : `sofia-sm` (casquette dev) ou `marc-dev`/`lea-dev` pour le texte ;
   `relecteur-pedagogique` pour la tournure de `JEU-R8` ; `nadia-prof` pour l'audit.
 
@@ -12700,3 +12584,222 @@ par `sofia-sm`.
   9.
 - **Agent pressenti** : `theo-archi` pour le remede technique (`D7`) ; `sofia-sm` pour l'affecter
   une fois `theo-archi` rendu son avis.
+
+## Backlog ouvert pour s33 (remplissage) - le vivier chiffre par `nadia-prof` pour la tranche 2 de
+## `cm1-histoire-geographie` (`DEC-0085`)
+
+Perimetre chiffre par l'arbitrage prealable de s33 de `nadia-prof` (branche `s33-nadia`, commit
+`a9ab05ec`, non fusionnee a la date de cette decision), sections 3.1, 3.2, 5.2, 9.2 et 9.3. Cette
+story n'est pas encore affectee a une instance ni chiffree contre la borne de s33 dans son detail
+d'execution : c'est le travail du planning de s33, par `sofia-sm` (nadia-prof recommande l'instance
+qui detient deja le paquet, celle qui reprend `HG-CM1-02` et `HG-CM1-04` sous `S33-HG-02` et
+`S33-HG-04`).
+
+### S33-HG-08-12 - Remplir HG-CM1-08 (ce que Napoleon Bonaparte change) et HG-CM1-12 (vivre en
+### ville et en lieu touristique) sans reprendre une connaissance deja servie par une ligne fermee
+
+- **Besoin** : en tant qu'eleve de CM1, je veux apprendre ce que Napoleon Bonaparte change apres la
+  Revolution, et comment on se loge, on travaille, on se cultive et on se deplace dans un espace
+  urbain et dans un espace touristique, sans qu'on me redemande une chose que j'ai deja apprise sur
+  une autre ligne, en jouant au bandit manchot d'histoire-geographie.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3) - `HG-CM1-08`, "Identifier le
+  passage de la Revolution a l'Empire et ce que Napoleon Bonaparte y change" (1 item servi sur 10
+  requis par `FER-2`), et `HG-CM1-12`, "Decrire comment on se loge, on travaille, on se cultive et on
+  se deplace dans un espace urbain et dans un espace touristique" (1 item servi sur 10 requis),
+  toutes deux `en cours`.
+- **Criteres d'acceptation** :
+  - Etant donne `HG-CM1-08`, quand neuf items sont ajoutes, alors au moins un porte en bonne reponse
+    ce que Napoleon Bonaparte change, et non seulement le passage de la Revolution a l'Empire
+    lui-meme - le libelle porte un "et" qui n'est satisfait par aucune des deux moities seule.
+  - Etant donne `HG-CM1-12` et ses quatre pratiques (se loger, travailler, se cultiver, se deplacer)
+    croisees avec ses deux espaces (urbain, touristique), alors aucun des neuf items neufs ne compte
+    sur la cellule "se loger dans un espace urbain" : elle est deja servie par l'item 25 de
+    `HG-CM1-11`, ligne fermee `couvert-valide`, et un item ne compte que sur une ligne (`ADR-0081`,
+    clause 5) (`HIS-5`, nouvelle, `nadia-prof`, 2026-09-09).
+  - Etant donne `HG-CM1-12`, alors au moins un item neuf sert la pratique "se cultiver" dans l'un des
+    deux espaces - cette pratique n'a aucun contenu dans le paquet aujourd'hui (`FER-1`).
+  - Etant donne les 18 items neufs, alors chacun porte exactement une cellule pratique/espace de sa
+    propre ligne, et aucun ne reprend une cellule deja comptee sur `HG-CM1-11` - meme motif que
+    `HIS-5`, applique uniquement aux items neufs : `HG-CM1-11` reste fermee et n'est pas rejouee.
+  - Etant donne le paquet `cm1-histoire-geographie.yaml` apres l'ajout des 18 items, alors sa
+    mediane de charge de lecture ne depasse pas celle mesuree avant l'ajout (`HG-R4`) - l'unique
+    item actuel de `HG-CM1-08` (27 mots) ne sert pas de modele de longueur aux items neufs.
+  - Etant donne les dix items de chaque ligne, alors `FER-2` (dix items par ligne) et `FER-3`
+    (partage exhaustif des taches) sont tenues, et `FER-1` est verifiee sur l'integralite du libelle
+    de chaque ligne, jamais sur une seule de ses moities.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si `nadia-prof` confirme, en jouant, `HIS-5`, `HG-R4`, `FER-1` sur les deux
+    moities du libelle, `FER-2` et `FER-3` - une ligne peut fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas `HG-CM1-11`, fermee et `couvert-valide` -
+  aucun de ses dix items ne change ; elle ne touche pas `HG-CM1-02` ni `HG-CM1-04` (stories
+  separees, `S33-HG-02`, `S33-HG-04`), meme si les quatre lignes vivent dans le meme fichier et se
+  rejouent ensemble sous `PAR-10`.
+- **Lien decision** : arbitrage prealable de `nadia-prof` (branche `s33-nadia`, commit `a9ab05ec`,
+  non fusionnee), sections 3.1, 3.2, 5.2, 9.2 et 9.3 (refus 1 a 4) ; `DEC-0085`.
+- **Agent pressenti** : affectation nominative a `sofia-sm` ; `nadia-prof` recommande l'instance qui
+  reprend deja `HG-CM1-02` et `HG-CM1-04` ; `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour
+  l'audit.
+
+## Backlog ouvert pour s34 - le palier 2 finance a son entree minimale, reporte de s33
+## (`DEC-0085`) : deux trous de contrat prealables et un lot de designation (`QLM-CP-11`,
+## `QLM-CP-14`) (`DEC-0083`, amendement du 2026-09-08)
+
+Perimetre arbitre par l'utilisatrice le 2026-09-08 (`DEC-0083`, section 13), sur le chiffre de
+`nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`,
+sections 16 et 17) et sur l'avis de faisabilite de `theo-archi`
+(`squad/sprints/s32-instruction-prealable/avis-faisabilite-theo-achevement-du-palier-2.md`, branche
+`s32-theo`, commit `96c8efbe`, complete par `ADR-0088` (commit `043b8503`) - **fusionnee dans
+`round-two` au planning de s32, commit `cb0b191e`, quatre jobs de la CI mesures verts par
+`sofia-sm` sur l'arbre fusionne**).
+
+**Cinq lots de developpement composent le chemin de jeu que ces trois stories supposent** (avis de
+`theo-archi`, section 7) : `L-a` (les sept interdits du JavaScript maison, plus le cliquet de la
+regle qui verifie qu'une mecanique du domaine est cablee), `L-b` (le trou A ci-dessous), `L-c` (la
+troisieme branche de `PartieController`, indivisible - **un seul developpeur, un sprint entier**),
+`L-d` (cinq garde-fous de rendu qui doivent lever plutot que rester muets sur une designation),
+`L-e` (le paquet, ses dessins, l'entree de catalogue). **Leur affectation aux trois instances et aux
+developpeurs, et leur repartition entre s33 et s34, sont le travail de `sofia-sm`** ; ces stories ne
+la presument pas.
+
+**Report a s34, motif chiffre par `nadia-prof` (`DEC-0085`, 2026-09-09).** Premier report de ces
+trois stories, qui visaient s33 depuis leur ecriture le 2026-09-08 (`DEC-0083`, section 13) - ce
+n'est pas un second report de l'ouverture du palier 2 elle-meme, dont l'instruction d'architecture
+avait ete routee a `theo-archi` sans etre reportee (`DEC-0083`, section 11). Motif : `L-c`
+(troisieme branche de `PartieController`) est indivisible et prend un developpeur pour le sprint
+entier ; le plafond de 9 lignes que `nadia-prof` chiffre pour s33 (`DEC-0085`) suppose trois
+producteurs de contenu pour trois instances d'audit, et il n'en resterait que deux si `L-c` etait
+engage a s33. **Le financement lui-meme n'est pas annule** : l'entree minimale (`QLM-CP-11` et
+`QLM-CP-14`, 2,0 pour deux lignes) reste arbitree par `DEC-0083`, section 13 ; seul le sprint qui la
+recoit change. Ce que ce report coute, nomme par `nadia-prof` et non par moi : le vivier de s34 est
+deja, par construction du Plan 2, ce que s33 n'aura pas ferme - au plus pauvre si s33 ferme son
+plafond de 9 lignes (aucune ligne `en cours` ne resterait alors dans le depot), a 3-5 lignes s'il se
+comporte comme s32 - et engager `L-c` a s34 y retire un troisieme producteur de contenu au moment ou
+ce vivier est le plus bas de tout le Plan 2.
+
+### S33-PAL2-TROU-A - L'ecran de fin de partie d'une designation porte la question qu'il commente
+
+- **Besoin** : en tant qu'eleve qui vient de terminer une partie de designation, je veux voir, sur
+  l'ecran qui me dit si j'ai reussi, la question a laquelle je viens de repondre, afin de comprendre
+  ce que la partie vient de verifier meme si le dessin n'est plus affiche.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la mecanique
+  de designation, sur son ecran de fin de partie, qu'aucun contenu ne sert encore aujourd'hui.
+- **Prealable d'ADR leve depuis le 2026-09-08** : `theo-archi` a ecrit et fait accepter `ADR-0088`,
+  qui tranche ce trou ; le contrat de `domain` porte deja `enonce` sur `DesignationVerdict`, verifie
+  sur le fichier servi par `round-two` (`DesignationVerdict.java`). **Ce qui reste bloquant n'est
+  plus l'ADR, c'est le rendu** : `nadia-prof` constate en jouant, le 2026-09-09, qu'aucun ecran ne
+  sert encore une designation (`L-c`, `L-d` de l'avis de `theo-archi`, non livres a ce jour) - le
+  premier critere ci-dessous ne peut donc pas etre verifie avant leur livraison.
+- **Criteres d'acceptation** :
+  - Etant donne une manche de designation resolue (juste, fausse ou par revelation), quand l'ecran
+    de fin de partie l'affiche, alors il porte l'enonce entier de l'item joue, au meme titre que sur
+    le bandit manchot et sur la saisie (`ADR-0084`, `REV-3`).
+  - Etant donne plusieurs manches de designation dans la meme partie, quand l'ecran de fin de partie
+    les liste, alors chaque enonce reste apparie a sa propre manche - meme propriete que
+    `AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest`, etendue a la designation.
+  - Etant donne le lot de designation `S33-PAL2-1` (ci-dessous), alors il ne peut pas entrer en
+    audit chez `nadia-prof` tant que cette story n'est pas livree : elle refuse d'avance tout lot de
+    designation avant que ce trou soit ferme (arbitrage prealable, section 17.6).
+- **Ce que cette story ne fait pas** : elle ne choisit pas la forme technique du champ ajoute au
+  contrat de `domain` - `theo-archi` la tranche dans son `ADR` ; elle ne s'applique a aucun paquet
+  reel avant que le premier paquet de designation existe, les garde-fous de sa population restant a
+  zero jusque-la (avis de `theo-archi`, section 5).
+- **Lien decision** : `DEC-0083`, section 13.3 ; avis de `theo-archi`, section 4.5 ; arbitrage
+  prealable de `nadia-prof`, section 17.6.
+- **Agent pressenti** : `theo-archi` a rendu l'`ADR` prealable (`ADR-0088`) ; `lea-dev` ou
+  `marc-dev` pour l'implementation (lot `L-b`) ; `nadia-prof` pour l'audit.
+
+### S33-PAL2-TROU-B - L'ecran de fin de partie d'une designation ne montre ni un identifiant ni un
+### libelle a la place de la zone attendue
+
+- **Besoin** : en tant qu'eleve qui me suis trompe ou qui ai eu besoin d'une aide sur une
+  designation, je veux voir l'endroit attendu sur l'ecran ou le dessin est encore affiche, plutot
+  que de lire, a la fin de la partie, un mot qui ne m'apprend rien sur la carte ou le plan.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la mecanique
+  de designation, sur son ecran de fin de partie.
+- **Prealable d'ADR leve depuis le 2026-09-08** : `theo-archi` a ecrit et fait accepter `ADR-0088`,
+  qui encode la reponse pedagogique de `nadia-prof` (section 17.6 de son arbitrage de s32) - ni
+  l'identifiant, ni le libelle - et retire `bonneZone()` du contrat de `DesignationVerdict`,
+  verifie sur le fichier servi par `round-two`. **Ce qui reste bloquant n'est plus l'ADR, c'est le
+  rendu** : aucun ecran de fin de partie de designation n'existe encore pour verifier que le bloc de
+  reponse en est bien absent (meme motif que la story precedente).
+- **Criteres d'acceptation** :
+  - Etant donne l'ecran de fin de partie d'une designation, quand il est rendu, alors il ne montre
+    ni l'identifiant technique de la zone attendue, ni son libelle positionnel : aucun element ne
+    remplace le bloc de reponse qu'affichent les deux autres mecaniques a cet ecran (`nadia-prof`,
+    section 17.6).
+  - Etant donne une manche de designation resolue par revelation, alors la zone attendue reste
+    visible sur l'ecran de manche, ou le dessin est encore affiche, via
+    `DesignationSession.bonneZoneRevelee()`, et `SCO-5` (une manche resolue par revelation n'est
+    jamais comptee comme une reussite) reste tenue.
+  - Etant donne le lot de designation `S33-PAL2-1` (ci-dessous), alors il ne peut pas entrer en
+    audit chez `nadia-prof` tant que cette story n'est pas livree, pour le meme motif que
+    `S33-PAL2-TROU-A`.
+- **Ce que cette story ne fait pas** : elle n'invente aucun texte de remplacement pour le bloc de
+  reponse - `nadia-prof` a tranche qu'il n'y en a pas ; elle ne renomme ni le libelle ni
+  l'identifiant de zone du contrat existant.
+- **Lien decision** : `DEC-0083`, section 13.3 ; avis de `theo-archi`, section 4.5 ; arbitrage
+  prealable de `nadia-prof`, section 17.6.
+- **Agent pressenti** : `theo-archi` a rendu l'`ADR` prealable (`ADR-0088`) ; `lea-dev` ou
+  `marc-dev` pour l'implementation (partie du lot `L-c`) ; `nadia-prof` pour l'audit.
+
+### S33-PAL2-1 - Premier lot de designation : situer un lieu sur un plan de classe, situer un
+### evenement de la journee sur une frise
+
+- **Besoin** : en tant qu'eleve de CP, je veux toucher, sur un plan de classe, l'endroit qu'on me
+  decrit, et toucher, sur une frise de ma journee, le moment qui correspond a un evenement decrit
+  par rapport a un autre, en jouant a un jeu de designation, afin d'apprendre a me reperer dans
+  l'espace de ma classe et dans le temps de ma journee.
+- **Competence programme visee** : questionner le monde, CP (cycle 2) -
+  `squad/programme/questionner-le-monde/competences-cp.md`, deux lignes `non couvert` :
+  "Situer un lieu ou un objet sur un plan simple de la classe, de l'ecole ou du quartier"
+  (`QLM-CP-11`) et "Situer des evenements les uns par rapport aux autres sur une frise
+  chronologique simple (avant, apres, en meme temps)" (`QLM-CP-14`).
+- **Ce qui motive cette story** : `DEC-0083`, section 13, amendement du 2026-09-08 - l'entree la
+  moins chere du palier 2, nommee par `nadia-prof` elle-meme comme la plus sure (arbitrage
+  prealable, section 17.5) : base 1,0 chacune, prix 2,0 pour les deux lignes, aucun fait a verifier
+  contre une source, aucun probleme de taille d'image, aucun besoin de reproduction d'oeuvre.
+- **Prealables bloquants, nommes et non presumes acquis** : les lots de developpement `L-a`, `L-c`
+  et `L-d` du chemin de jeu (avis de `theo-archi`, section 7, non livres a ce jour), et les deux
+  trous de contrat `S33-PAL2-TROU-A` et `S33-PAL2-TROU-B` ci-dessus. **Cette story ne s'ouvre avant
+  aucun des cinq.**
+- **Criteres d'acceptation** :
+  - Etant donne le paquet de `QLM-CP-11`, quand il est servi, alors un seul dessin (un plan de
+    classe) sert les deux enumerations disjonctives du referentiel - un lieu ou un objet -, et
+    `FER-1`, `FER-2` et `FER-3` sont tenues.
+  - Etant donne le paquet de `QLM-CP-14`, quand il est servi, alors deux dessins au minimum servent
+    les trois relations du referentiel (avant, apres, en meme temps), toutes moities confondues pour
+    `FER-2`, et la mention de couverture partielle aujourd'hui portee par cette ligne
+    (`squad/programme/MATRICE-couverture.md`, "moitie anteriorite/posteriorite seule") **tombe** -
+    elle n'est pas deplacee, elle est retiree.
+  - Etant donne chaque cadre de zone declare par le contenu des deux paquets, quand `nadia-prof`
+    joue la passe image effacee (`ZON-1` a `ZON-3` : tout le texte servi sous les yeux, la reponse
+    doit rester introuvable) et la passe jouee zone par zone (`ZON-9` : chaque zone de chaque item
+    pressee pour verifier ou tombe chaque cadre), alors les huit conditions `ZON-*` sont tenues sur
+    ce premier contenu reel (`PAR-13`, terrain jamais mordu).
+  - Etant donne chaque enonce de designation, alors aucun ne nomme le libelle de sa propre bonne
+    zone (garde-fou `AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest`).
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si `nadia-prof` verifie `FER-1`, `FER-2`, `FER-3` et les conditions `ZON-*`
+    applicables tenues, et que `S33-PAL2-TROU-A` et `S33-PAL2-TROU-B` sont deja fermees - une ligne
+    peut fermer independamment de l'autre.
+  - Etant donne le rejeu de `nadia-prof`, alors son prix ne depasse pas celui qu'elle a annonce
+    d'avance - base 1,0 par ligne dont elle est la source, plus 1,0 de supplement image pour le lot
+    (passe image effacee et passe jouee zone par zone), soit 2,0 au total pour les deux lignes -
+    sauf ecart explicitement mesure et ecrit au moment du rejeu (arbitrage prealable, section 17.4).
+- **Ce que cette story ne fait pas** : elle ne sert pas `QLM-CP-12` (necessite un fait verifie
+  contre une source, base 2,5, hors de cette entree) ; elle ne sert ni `MAT-CP-10` ni `HDA-CM1-09`
+  (chacune demande un second paquet textuel non finance par cette story) ; elle ne sert pas
+  `HG-CM1-09` (la taille d'image actuelle ne porte pas une zone d'un quart de la hauteur rendue sur
+  un planisphere) ; elle ne commence aucun travail de contenu avant que les cinq prealables ci-dessus
+  soient leves.
+- **Lien decision** : `DEC-0083`, section 13 ; arbitrage prealable de `nadia-prof`, sections 16 et
+  17 (commit `b1ee89f4`) ; avis de faisabilite de `theo-archi` (branche `s32-theo`, commit
+  `96c8efbe`, fusionnee dans `round-two` le 2026-09-08, commit `cb0b191e`) ; `ADR-0088` ;
+  `DEC-0085` (report a s34).
+- **Agent pressenti** : a affecter par `sofia-sm` parmi les trois instances - ce lot n'a pas de
+  terrain nomme, comme `POS-R3` et `FOP-R4`/`DRO-R4` (`DEC-0083`, section 6) ; `ines-design` pour
+  les trois dessins (un plan de classe, deux frises de la vie de l'enfant) ; `marc-dev` ou
+  `lea-dev` pour le contenu ; `nadia-prof` pour l'audit et le Done pedagogique.
+
+
