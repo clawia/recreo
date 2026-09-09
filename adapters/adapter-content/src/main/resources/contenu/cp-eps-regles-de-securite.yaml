@@ -60,16 +60,41 @@ lignesDeReferentiel: ["EPS-CP-04"]
 #
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
 # dette heritee.
+#
+# S33-EPS-SEC (docs/backlog/backlog.md, sprint 33). Reprise apres REFUS du 2026-09-09
+# (squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md ;
+# squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md, sections 5
+# et 11). Quatre motifs traites dans ce diff, la tache A restant inchangee :
+#
+# 1) SEC-R3 (motif du refus, FAB-1c/CAT-1 branche registre) : sur la tache B, la bonne reponse des
+#    items 8, 9, 10 et 11 etait la seule proposition a nommer un danger, une blessure ou un secours
+#    (quatre items sur cinq). Les huit distracteurs de ces items sont reecrits pour que les trois
+#    propositions de chaque item nomment un danger, une blessure ou une consequence, dont deux
+#    fausses - forme reprise mot pour mot sur l'item 9 dans le backlog.
+#
+# 2) EPS-7 (condition nouvelle, nadia-prof, 2026-09-09, arbitrage prealable de s33 section 3.5) :
+#    les quatre indices de ces memes items portaient le meme repere lexical que la bonne reponse
+#    ("voiture", "danger", le choc, "blesser"), ce qui aurait redesigne la bonne reponse une fois
+#    les distracteurs reecrits. Les quatre indices sont reformules pour expliquer la regle sans
+#    reprendre ce mot.
+#
+# 3) SEC-R1 (reserve) : les items 3 et 8 portaient sur la traversee d'une rue a pied, hors du champ
+#    "activite et lieu de pratique" de EPS-CP-04. Les deux enonces ancrent desormais la situation
+#    sur un engin roulant (la trottinette), comme le fait deja le referentiel a la ligne 4.
+#
+# 4) SEC-R2 (reserve) : sur l'item 1, "mettre de la creme solaire" restait une reponse de securite
+#    defendable que l'indice n'ecartait pas. L'indice ecarte desormais explicitement la creme
+#    solaire, en plus d'affirmer la regle de la bonne reponse.
 items:
   - enonce: "Avant d'entrer dans une piscine, que doit-on faire ?"
     bonneReponse: "attendre l'autorisation de l'adulte"
     distracteurs: ["mettre de la crème solaire", "courir sur le bord du bassin"]
-    indice: "Un adulte doit d'abord donner le signal d'entrer dans l'eau."
+    indice: "La crème solaire protège du soleil, pas de l'eau. Il faut d'abord l'autorisation de l'adulte."
   - enonce: "Pour faire du vélo dans la rue, que doit-on porter ?"
     bonneReponse: "un casque"
     distracteurs: ["des chaussures de sport", "des lunettes de soleil"]
     indice: "Le casque protège la tête en cas de chute."
-  - enonce: "Avant de traverser la rue, que doit-on faire ?"
+  - enonce: "Avant de traverser une rue en trottinette, que doit-on faire ?"
     bonneReponse: "regarder des deux côtés"
     distracteurs: ["attendre qu'un camarade traverse d'abord", "courir sans s'arrêter"]
     indice: "Il faut vérifier soi-même qu'aucune voiture n'arrive."
@@ -89,19 +114,19 @@ items:
     bonneReponse: "pour protéger la tête en cas de chute"
     distracteurs: ["pour aller plus vite en pédalant", "pour être vu de loin par les voitures"]
     indice: "En cas de chute, la tête est la partie la plus fragile."
-  - enonce: "Pourquoi regarde-t-on des deux côtés avant de traverser ?"
+  - enonce: "Pourquoi regarde-t-on des deux côtés avant de traverser en trottinette ?"
     bonneReponse: "pour vérifier qu'aucune voiture n'arrive"
-    distracteurs: ["pour voir si un ami arrive", "pour observer les vitrines des magasins"]
-    indice: "Une voiture peut arriver de la gauche comme de la droite."
+    distracteurs: ["pour éviter de trébucher sur le trottoir", "pour ne pas se cogner à un passant"]
+    indice: "Regarder des deux côtés permet de voir ce qui arrive avant de traverser."
   - enonce: "Pourquoi un adulte surveille-t-il toujours la piscine ?"
     bonneReponse: "pour porter secours en cas de danger"
-    distracteurs: ["pour choisir la musique diffusée", "pour compter les longueurs nagées"]
-    indice: "Un danger dans l'eau peut survenir très vite."
+    distracteurs: ["pour vérifier que l'eau n'est pas trop froide", "pour compter les nageurs qui entrent dans le bassin"]
+    indice: "Un adulte présent peut réagir tout de suite si besoin."
   - enonce: "Pourquoi descend-on un par un sur le toboggan ?"
     bonneReponse: "pour éviter que deux enfants se heurtent"
-    distracteurs: ["pour faire moins de bruit en glissant", "pour user moins vite le toboggan"]
-    indice: "Une glissade à deux peut faire tomber l'un des deux enfants."
+    distracteurs: ["pour ne pas tomber en attendant en haut", "pour éviter de glisser trop vite"]
+    indice: "Descendre seul laisse de la place en bas du toboggan."
   - enonce: "Pourquoi vérifie-t-on la profondeur avant de plonger ?"
     bonneReponse: "pour éviter de se blesser en touchant le fond"
-    distracteurs: ["pour savoir combien de temps on peut nager", "pour choisir la couleur de son maillot"]
-    indice: "Plonger dans une eau trop basse peut blesser la tête ou le cou."
+    distracteurs: ["pour éviter d'avaler de l'eau en plongeant", "pour ne pas glisser sur le bord du bassin"]
+    indice: "Vérifier avant de plonger évite les mauvaises surprises."
