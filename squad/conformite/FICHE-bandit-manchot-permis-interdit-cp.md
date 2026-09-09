@@ -3,11 +3,17 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-emc-permis-interdit.yaml`.
 - **Entree de catalogue** : `bandit-manchot-permis-interdit-cp`, titre servi *"Permis ou
-  interdit"*, consigne servie *"Lis bien la question, puis choisis la bonne reponse."*,
-  `nombreDeManches: 10`.
+  interdit"*, consigne servie *"Lis bien, puis dis ce que fait la personne, ou pourquoi c'est
+  interdit."*, `nombreDeManches: 10`. **Corrige le 2026-09-09 par `nadia-prof`** : cette ligne
+  annoncait *"Lis bien la question, puis choisis la bonne reponse."*, qui n'est plus la consigne
+  servie par `catalogue.yaml`. Meme defaut corrige dans le meme geste sur
+  `FICHE-bandit-manchot-regles-de-vie-cp.md` ; **c'est la famille d'`EXC-R1`, dans mes propres
+  fichiers cette fois**. Aucun verdict n'en depend.
 - **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
   `nadia-prof`, apres avoir joue la reprise `4dbf9b2`). **`EMC-CP-02` ferme** : `non couvert` ->
-  **`couvert-valide`**. Une reserve nommee et datee, `PER-R1`, non bloquante.
+  **`couvert-valide`**. **Etat des reserves au 2026-09-09** : `PER-R1` **levee**, `CAT-1` **non payee
+  et maintenue**, `PER-R2` **ouverte** - toutes non bloquantes, bloc de constat en fin de fiche.
+  **La ligne n'est pas rouverte.**
 - **Histoire des verdicts, aucun efface** : **2026-09-05, REFUSE** - charge de lecture d'un autre
   niveau (mediane 15 mots, maximum 20) et item 9 portant sa reponse dans son enonce ; le bloc entier
   de ce refus, avec ses deux motifs et ses trois defauts nommes, reste lisible ci-dessous.
@@ -382,3 +388,138 @@ valide ensuite.
 `CONS-1` disait *"`EMC-CP-06` reste `couvert-valide`"*. Ce paquet sert `EMC-CP-02`
 (`lignesDeReferentiel: ["EMC-CP-02"]`, verifie dans le fichier aujourd'hui) ; `EMC-CP-06` est la
 ligne de `bandit-manchot-regles-de-vie-cp`. Le code est corrige.
+
+
+---
+
+## Bloc de constat de paiement - 2026-09-09 - nadia-prof UNIQUEMENT
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute aux blocs du
+> 2026-09-05, du 2026-09-06 et du 2026-09-07 et n'en retouche aucun.** Il porte sur le correctif
+> `S32-CAT1` de `lea-dev` (`b7a79e34`).
+
+- **Verdict** : **VALIDE SOUS RESERVE - maintenu.** **`EMC-CP-02` reste `couvert-valide` et n'est pas
+  rouverte.**
+- **`PER-R1` : LEVEE.**
+- **`CAT-1` : NON PAYEE.** Je refuse le paiement, avec le compte item par item. Elle reste ouverte
+  sur ce paquet, **non bloquante**, et elle ne rouvre pas la ligne.
+- **`PER-R2` : ouverte**, datee du 2026-09-09, non bloquante - **et elle est nee du correctif
+  lui-meme**.
+- **Date** : 2026-09-09.
+- **Arbre audite** : `round-two` a `fd19d18f`, worktree dedie `s32-nadia-b`. Commit du correctif :
+  `b7a79e34`.
+- **Audit joue** : **oui, une partie complete de dix manches**, erreurs volontaires jusqu'a
+  epuisement des propositions sur chaque manche dont la premiere reponse n'etait pas la bonne. Jar
+  reconstruit depuis mon worktree, JDK de la toolchain 21 (21.0.10 rapporte par la machine
+  virtuelle), port local. Le tirage m'a servi **dix items sur onze** ; le onzieme, l'item 5 (*"Aya
+  pousse Hugo tres fort, sans raison."*), lu dans le fichier. **Releve integral des dix manches dans
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`,
+  section 5.**
+- **Audit degrade sur un point, declare** : lecture du **HTML servi**, pas de la page rendue par un
+  navigateur. Aucun constat de ce bloc ne repose sur un jugement visuel.
+- **Porte technique** : **les quatre jobs de la CI lances sur mon diff et nommes un par un** -
+  `prefixes`, `chemins`, `outils`, `build`. Chiffres dans mon releve, section 9.
+
+### `PER-R1` est levee
+
+Les six items de qualification demandaient *"Qu'est-ce que X fait ?"*, et la question ne s'enchainait
+pas en francais correct avec sa bonne reponse (*"elle fait un service"*, *"il fait une discussion"*).
+**Ils demandent desormais *"Comment appelle-t-on ca ?"***, forme que l'item 1 employait deja, et
+l'enchainement est correct sur les cinq qualifications servies - *une moquerie*, *une insulte*, *de
+la violence*, *un service*, *une discussion*. **Verifie sur les six items, et entendu a l'ecran sur
+les cinq qui m'ont ete tires.** Aucune situation, aucune bonne reponse n'a change.
+
+### `CAT-1` n'est pas payee - le compte item par item
+
+`CAT-1` ne concerne ici que la tache *"pourquoi c'est interdit"*, quatre items : les sept autres
+demandent de nommer un acte, et leurs propositions sont des categories neutres, ce que j'ai
+reverifie.
+
+| Item | Bonne reponse | Distracteur 1 | Distracteur 2 | Etat de `CAT-1` |
+|---|---|---|---|---|
+| 2 - *pourquoi ne pas se moquer* | *pour ne pas le blesser* | *pour gagner un jeu* | *pour faire plus de bruit* | **non tenue** |
+| 4 - *pourquoi ne pas insulter* | *pour ne pas le faire souffrir* | *pour parler plus fort que lui* | *pour ne pas deranger la classe* | **a moitie** |
+| 6 - *pourquoi ne pas pousser* | *pour ne pas lui faire mal* | *pour finir la recreation plus vite* | *pour ne pas se faire mal soi-meme* | **a moitie** |
+| 10 - *meme pour rire* | *parce que ca peut blesser malgre tout* | *parce que ca fait beaucoup de bruit* | *parce que ca fait perdre du temps* | **tenue** |
+
+**Un item sur quatre tient la clause, deux la tiennent a moitie, un ne la tient pas.** Ma clause
+demande que **les trois** propositions soient du meme registre ; sur les items 4 et 6, l'un des deux
+distracteurs reste un motif interesse, donc la strategie *"j'ecarte le bouton egoiste"* elimine
+encore une proposition sur trois sans rien savoir de la regle. **Sur l'item 2, elle en elimine
+deux.**
+
+**Ce que je porte au credit du correctif, et ce n'est pas une politesse** : les deux distracteurs
+ajoutes sont **serieux, plausibles et faux**, ce qui est le geste juste - *"pour ne pas deranger la
+classe"* et *"pour ne pas se faire mal soi-meme"* sont des raisons qu'un adulte pourrait dire. **Le
+defaut n'est pas la qualite du remplacement, c'est qu'il n'y en a qu'un par item, et aucun sur
+l'item 2** que ni mon releve ni le correctif n'ont touche.
+
+**Ce qui paie `CAT-1` sur ce paquet** :
+
+> **Sur les quatre items de la tache *pourquoi*, les trois propositions sont du meme registre** :
+> chacune est une raison qu'un adulte pourrait donner serieusement, et deux sont fausses pour la
+> situation decrite. **Quatre sur quatre ; il n'y a pas de compte partiel.** *La formulation
+> appartient au developpeur.*
+
+**Regime inchange** : `CAT-1` voyage dans le rejeu borne du paquet, sans cout supplementaire
+(`PAR-10`).
+
+### `PER-R2` - l'item 6 dit *"lui"* et personne n'est nomme, et le nouveau distracteur en fait le critere de l'item
+
+**Ouverte le 2026-09-09, non bloquante.**
+
+**Item 6, joue en manche 2.** Enonce : *"Pourquoi est-il interdit de pousser ou de frapper ?"*.
+Propositions servies : *pour ne pas se faire mal soi-meme*, *pour finir la recreation plus vite*,
+*pour ne pas lui faire mal*.
+
+**Le probleme, et il est de comprehension, pas d'orthographe** : *"lui"* n'a **aucun antecedent**.
+L'enonce ne nomme personne - ni un camarade, ni un prenom - et la mecanique n'affiche qu'un item a la
+fois, donc rien a l'ecran ne dit qui est *lui*. Les deux items voisins de la meme tache, eux, posent
+leur antecedent : *"pourquoi est-il interdit de se moquer **d'un camarade** ?"* -> *"pour ne pas
+**le** blesser"*, *"d'insulter **un camarade**"* -> *"pour ne pas **le** faire souffrir"*. **L'item 6
+est le seul des quatre a ne pas le faire.**
+
+**Et c'est le correctif qui rend le defaut couteux, sans l'avoir cree.** Avant `S32-CAT1`, *"pour ne
+pas lui faire mal"* etait la seule proposition qui parlait de faire mal, et l'enfant pouvait s'en
+tirer sans resoudre le pronom. Le nouveau distracteur *"pour ne pas se faire mal soi-meme"* met en
+regard **deux** propositions qui parlent de faire mal, et **la seule chose qui les distingue est
+*lui* contre *soi-meme***. L'item se joue donc sur un pronom sans antecedent. **Un enfant de CP qui
+lit peu et lentement ne peut pas resoudre ca seul.**
+
+**Ce n'est pas un poteau deplace** : le pronom nu est anterieur a ma fermeture du 2026-09-06 et je ne
+l'avais pas vu - **c'est ma reserve neuve et datee, pas un durcissement de `PER-R1`.** Ce qui est
+neuf, en revanche, c'est qu'il porte desormais la discrimination de l'item, et cela date du
+2026-09-08.
+
+> **Propriete a tenir** : chaque pronom d'une proposition a un antecedent dans l'enonce du meme item.
+> La formulation appartient au developpeur. **Elle se paie dans le meme geste que `CAT-1` sur cet
+> item.** C'est la meme famille que les deux referents casses que `lea-dev` a trouves elle-meme le
+> 2026-09-09 sur `emotions-autrui` et `formules-de-politesse` ; ici la cause n'est pas une
+> compression, c'est un enonce qui n'a jamais nomme sa victime.
+
+### Ce que j'ai verifie et qui ne fait pas reserve - dit pour qu'on ne me le redemande pas
+
+- **Aucune bonne reponse, aucune situation n'a change** : `FER-1`, `FER-2`, `FER-3`, `EMC-1`,
+  `EMC-8`, `EMC-10` tenues a l'identique, recomptees sur le materiau servi.
+- **`EMC-5`** : *"pour ne pas deranger la classe"* et *"pour ne pas se faire mal soi-meme"* sont
+  fausses comme **raison de l'interdit**, et je les ai regardees de pres parce que c'est le risque de
+  ce genre de correction : une insulte derange la classe, une bousculade peut blesser celui qui
+  pousse, mais **ce n'est pas pour cela que c'est interdit**. Le motif de l'interdit est le tort fait
+  a l'autre, et l'indice le dit. **Deux reponses defendables : non.** Le cas est plus serre que sur
+  le paquet voisin, et je le note comme tel plutot que de le passer sous silence.
+- **`LON-1` et `LON-2`** : les onze enonces vont de **6 a 12 mots**, deux phrases au plus, la seconde
+  etant la question. **Le plus court des six paquets d'EMC CP.** Dette de longueur nulle.
+- **L'equilibre des roles entre les quatre personnages**, corrige a s29 (les prenoms des items 3 et
+  11 echanges), n'est pas defait par ce correctif : verifie.
+- **`REG-R3`, la serie du genre de l'adulte** : ce paquet **ne nomme aucun adulte d'ecole**, ni avant
+  ni apres le correctif. **Je ne lui impute rien** - la reserve est ouverte sur
+  `regles-de-vie`, qui l'a aggravee.
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-02` reste `couvert-valide`** | `camille-po` | **Aucun mouvement de matrice** |
+| **`CAT-1` non payee (1/4), et `PER-R2`** | `camille-po`, via `sofia-sm` | En faire une story. **Les deux se paient dans le meme geste sur l'item 6** ; l'item 2 n'a jamais ete touche et c'est celui qui coute le plus. Regime : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
+| **Qu'un pronom de proposition ait un antecedent dans l'enonce de son item** | `theo-archi` | **Symptome mesure sur un item.** Je doute qu'un test puisse le voir en general et je ne l'affirme pas ; s'il existe une forme qui epingle un pronom de troisieme personne sans antecedent dans le meme item, elle vaut plus que ma vigilance. **Je dis la propriete, jamais la forme du test** |
+| **La ligne d'entree de catalogue de cette fiche** | moi-meme, corrigee ci-dessus | Corrigee dans ce diff, comme sur `regles-de-vie` |

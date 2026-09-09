@@ -3,8 +3,9 @@
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-emc-regle-souhait-loi` (11 items)
 - **Statut global** : **REFUSE** (prononce le 2026-09-07, **maintenu au reaudit du 2026-09-08 sur un
-  seul motif** - les deux blocs de validation sont lisibles ci-dessous, dans cet ordre)
-- **Derniere mise a jour** : 2026-09-08
+  seul motif**, **maintenu au troisieme passage du 2026-09-09 sur un motif entierement neuf** - les
+  trois blocs de validation sont lisibles ci-dessous, dans cet ordre, et aucun n'est retouche)
+- **Derniere mise a jour** : 2026-09-09
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -363,3 +364,211 @@ pour etre repris en story, pas pour etre rejoue aujourd'hui.
 | **Le motif unique, avec son compte et sa sortie** | `camille-po`, via `sofia-sm` | En faire une story de s32. **La tache A reste a conserver telle quelle, et les cinq faits de droit exacts aussi** : la story ne touche que la forme des propositions de la tache B |
 | **Le marqueur restrictif en tete de proposition, non couvert par la clause 2 d'`ADR-0086`** | `theo-archi` | **Fait mesure, avec sa cause.** Je dis la propriete, jamais la forme du test, et je ne prescris aucun seuil |
 | **La source d'un fait de droit dans le commentaire d'un paquet** | moi-meme, arbitrage prealable de s32 | Deja due depuis hier. **`marc-dev` a cite ses sources cette fois-ci, de lui-meme, et cela m'a fait gagner du temps** - raison de plus pour que la clause existe avant le prochain sprint plutot que pendant |
+
+
+---
+
+## Bloc de validation pedagogique - troisieme passage du 2026-09-09 - nadia-prof UNIQUEMENT
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute aux deux blocs du
+> 2026-09-07 et du 2026-09-08 et ne les remplace pas.**
+
+- **Verdict** : **REFUSE - troisieme, sur un motif entierement neuf.** **`FAB-1c`, le motif unique
+  du 2026-09-08, est paye, et il ne se redemandera pas.** Les cinq faits de droit, `FAB-1a` et
+  `FER-2`, deja acquis au reaudit precedent, ne se redemandent pas non plus.
+- **Date** : 2026-09-09.
+- **Arbre audite** : `round-two` a `fd19d18f`, worktree dedie `s32-nadia-b`. Correctifs de
+  `lea-dev` : `167a4421` (`S32-EMCCP07`) et `c0c62792` (partitif restitue).
+- **Audit joue** : **oui, une partie complete de dix manches**, erreurs volontaires jusqu'a
+  epuisement des propositions sur chaque manche dont la premiere reponse n'etait pas la bonne. Jar
+  reconstruit depuis mon worktree, lance sur le JDK que designe la toolchain 21 (version rapportee
+  par la machine virtuelle : 21.0.10), port local. **Le tirage m'a servi dix items sur onze** ; le
+  onzieme (item 3, *"Dans la cour, il est interdit de pousser un camarade."*) lu dans le fichier.
+  **Le releve des dix manches, propositions dans l'ordre reel apres brassage, est dans
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`,
+  section 3.** C'est la trace ecrite d'une partie jouee que `yanis-qa` a constatee absente du depot,
+  et elle existe desormais pour les six paquets d'EMC CP de ce sprint.
+- **Audit degrade sur un point, et je le declare** : lecture du **HTML servi**, pas de la page
+  rendue par un navigateur. **Aucun des deux points de ce refus ne repose sur un jugement visuel** :
+  les deux se recomptent sur le fichier, et je donne les comptes.
+- **Porte technique** : **les quatre jobs de la CI lances sur mon diff et nommes un par un** -
+  `prefixes`, `chemins`, `outils`, `build`. Chiffres et methode dans mon releve, section 9. Mon diff
+  ne touche aucun fichier de contenu ni de code : il ajoute des blocs de fiche, un releve de sprint
+  et sept allocations d'identifiant.
+
+### Ce qui est paye, acquis, et ne se redemandera pas
+
+**1. `FAB-1c` est payee, et je donne le compte plutot que l'impression.** Ma barre du 2026-09-08 :
+*"au plus un item de la tache B laisse la bonne reponse comme seule proposition depourvue du marqueur
+restrictif."* Releve item par item, sur les propositions telles que l'ecran les sert :
+
+| Item | Bonne reponse | Distracteurs | La bonne reponse est-elle la seule sans marqueur restrictif ? |
+|---|---|---|---|
+| 7 - feu rouge | *tout le monde, y compris les adultes* | *les motards et les cyclistes*, *seulement les pietons* | non |
+| 8 - ceinture | *le conducteur et tous les passagers* | *seulement le conducteur*, *les enfants et les adultes a l'arriere* | non |
+| 9 - tabac | *personne, pas meme les adultes* | *les enseignants seulement*, *les adultes de l'ecole* | non |
+| 10 - klaxon | *tout conducteur, meme adulte* | *seulement les motards*, *les chauffeurs de bus et de taxi* | non |
+| 11 - alcool | *seulement les adultes* | *tout le monde, meme les enfants*, *seulement les enfants* | non - elle porte elle-meme le marqueur |
+
+**Zero item sur cinq, la ou ma barre en autorise un et la ou j'en comptais trois a quatre le
+2026-09-08.** La strategie *"j'evite le bouton qui commence par seulement"* ne gagne plus aucune
+manche. **`FAB-1c` est tenue sur ce paquet, et c'est mieux que ce que ma barre demandait.**
+
+**2. Les cinq faits de droit, reverifies un par un** - arret au feu rouge pour tous, ceinture pour le
+conducteur et tous les passagers, interdiction de fumer dans l'enceinte scolaire sans exception pour
+les adultes, avertisseur sonore limite au danger immediat, interdiction de vendre de l'alcool aux
+mineurs. **Exacts.** Le fait de la tache A (casque a velo obligatoire avant douze ans) est exact
+aussi. **L'item 11 dit desormais *"aux mineurs"*, le terme du code de la sante publique, et son
+enonce est grammatical.**
+
+**3. `LON-1` et `LON-2` sont tenues, mesurees sur les onze enonces** sous ma convention de comptage
+(section 16.1 de mon arbitrage prealable de s32) : **de 12 a 15 mots, mediane 14, deux phrases au
+plus, la seconde etant toujours la question.** Le paquet allait de **13 a 30 mots, mediane 24**,
+quand j'ai pose la barre. **C'est le plus gros ecart de lisibilite paye sur un paquet de CP depuis
+que je tiens cette porte, et je le porte au credit du correctif.**
+
+**4. Le partitif de l'item 11 est restitue, et l'enonce y perd deux mots au lieu d'en gagner.**
+*"vendre de l'alcool"*, 13 mots. **Ma barre avait produit du francais incorrect** - *"vendre
+l'alcool"* - et c'est `relecteur-pedagogique` qui l'a trouve. `lea-dev` a ensuite trouve d'elle-meme
+deux referents casses par la meme compression sur deux autres paquets. **Ma barre est necessaire,
+jamais suffisante : je l'avais ecrit en section 16.6, et ce sprint vient de le mesurer contre moi.**
+
+### Motif - deux points, et aucun des deux n'est celui du 2026-09-08
+
+#### Point 1, principal - l'item 4 de la tache A note une distinction absente du libelle, et sa bonne reponse n'est pas la seule vraie
+
+**Joue, manche 7 de ma partie.** Enonce servi : *"En France, le casque a velo est obligatoire avant
+douze ans. Est-ce une regle ?"*. Trois boutons : *une loi*, *une regle qui vaut pour tous*, *un
+simple souhait*. **La bonne reponse est *une loi*, et *une regle qui vaut pour tous* est marquee
+fausse.**
+
+**Ce que l'ecran dit alors a l'enfant est faux.** Une loi qui oblige tous les enfants de France a
+porter un casque **est** une regle qui vaut pour tous. L'enfant qui le comprend et qui presse ce
+bouton lit *"Ce n'est pas ca. Essaie encore !"*. **Ce n'est pas un distracteur plausible mais faux :
+c'est une proposition vraie declaree fausse**, et elle est vraie dans les mots exacts du libelle de
+la ligne.
+
+**Et la distinction que l'item note n'est pas celle de la ligne.** `EMC-CP-07` dit : *"Distinguer une
+regle qui vaut pour tous d'un simple souhait, et reconnaitre qu'une loi s'impose a tous."* Les deux
+moities sont **regle contre souhait** et **une loi s'impose a tous**. **Distinguer une regle d'une
+loi n'y figure pas** - c'est une troisieme discrimination, et c'est la seule que l'item 4 note. Le
+critere reel (l'obligation vient de l'Etat et non de l'ecole) n'est ecrit que dans l'**indice**, qui
+ne s'affiche qu'apres l'erreur : au moment de choisir, rien a l'ecran ne dit que *regle* veut dire
+*regle de l'ecole*.
+
+**Pourquoi ce point est un refus et non une reserve, et j'applique le test que j'ai deja applique sur
+ce paquet.** Mon premier refus, le 2026-09-07, portait sur **un seul item** - un fait de droit faux.
+Un item qui dit quelque chose de faux a un enfant est un motif de refus a lui seul, et ce paquet en
+porte le precedent. **Refuser ici, c'est appliquer ma propre jurisprudence ; valider serait la
+suspendre pour fermer une ligne.**
+
+**Ce que je corrige dans mes propres constats, avant qu'on me l'oppose - et cette fois la faute est
+entiere.** J'ai ecrit **deux textes le meme jour, le 2026-09-08, qui ne disaient pas la meme chose de
+la tache A.** Le bloc de reaudit de cette fiche : *"La tache A est inchangee, comme je l'avais
+demande, et elle reste bonne. `EMC-5` : tenue, reverifiee"*, puis, dans ce que je routais : *"La
+tache A reste a conserver telle quelle."* Et la section 16.5 de mon arbitrage prealable, le meme
+jour : *"`LON-1` mord sur le meme paquet, dans le meme geste, et supprimer l'enumeration de la
+question retire d'un coup entre 9 et 11 mots sur chacun des onze items."* **`lea-dev` a suivi le
+second, ce qui etait le choix raisonnable : une barre chiffree opposable pese plus qu'une phrase de
+fiche.** La question enumeree *"Est-ce une regle qui vaut pour tous, un simple souhait, ou une
+loi ?"* est devenue *"Est-ce une regle ?"*, et c'est cette compression qui met l'ambiguite de
+l'item 4 en pleine lumiere.
+
+**Deux choses a dire, et je ne me menage sur aucune des deux.** L'ambiguite **preexistait** a la
+compression : avec l'enumeration, l'enfant comprenait qu'il choisissait parmi trois categories, et
+c'est ce qui la masquait - **je l'ai creditee `EMC-5` deux fois, le 2026-09-07 et le 2026-09-08, sans
+la voir.** Et la compression qui l'a mise a nu vient de mon propre texte. **Le defaut est donc a mon
+debit deux fois : je ne l'ai pas vu, et j'ai prescrit le geste qui l'a rendu visible.** Cela ne rend
+pas l'item servable ; cela veut dire que ce refus ne reproche rien a `lea-dev`, et je l'ecris ici
+pour que personne ne le lise comme un correctif rate.
+
+#### Point 2 - l'item 11 porte un distracteur mort, et c'est la chaine de caracteres que j'ai moi-meme condamnee la veille sur ce paquet
+
+**Item 11** : *"Une loi interdit de vendre de l'alcool aux mineurs. Qui peut en acheter ?"* - bonne
+reponse *seulement les adultes*, distracteurs *tout le monde, meme les enfants* et **`seulement les
+enfants`**. Qu'il n'y ait que les enfants qui puissent acheter de l'alcool n'est envisageable par
+aucun enfant de six ans : **l'item est binaire de fait** (`PLA-1`).
+
+**Et voici ce que je dois dire sur moi.** Mon bloc du 2026-09-08 credite `PLA-1` en ces termes :
+*"`PLA-1` est payee sur l'item du klaxon : **seulement les enfants**, qu'aucun enfant de six ans ne
+peut envisager, cede la place a seulement les motards et seulement les chauffeurs de taxi."* **La
+meme chaine survit sur l'item 11 du meme paquet, et je l'ai lue le meme jour sans la voir** - j'ai
+meme porte cet item au credit du correctif (*"un vrai progres pedagogique"*), ce qu'il est par
+ailleurs. **Ce n'est pas un poteau deplace, c'est un poteau que j'avais plante et devant lequel je
+suis passee sans regarder.** C'est ma quatrieme correction de constat de la meme famille, apres
+`EMC-3`, `SCI-4` et ma prescription trop faible de `FAB-1c`.
+
+### Ce que j'ai verifie et qui ne refuse pas ce paquet - dit pour qu'on ne me le redemande pas, et pour qu'on ne le corrige pas par erreur
+
+- **Le marqueur d'universalite en miroir : je le constate, je le mesure, et je ne le compte pas
+  contre le paquet.** Sur quatre des cinq items de la tache B, la bonne reponse est la seule
+  proposition qui porte un marqueur d'universalite (*tout le monde*, *tous les passagers*, *personne,
+  pas meme*, *tout conducteur*). Une strategie *"je prends le bouton qui dit tout le monde"* gagne
+  quatre manches sur cinq et perd la cinquieme, celle de l'alcool. **Je ne refuse pas sur ce point,
+  pour deux raisons que je veux ecrites** : l'universalite **est** la substance de la seconde moitie
+  du libelle - *reconnaitre qu'une loi s'impose a tous* -, donc l'exiger absente reviendrait a
+  interdire a la bonne reponse de dire ce que la ligne enseigne ; et **ma propre prescription du
+  2026-09-08 offrait deux routes**, dont celle que `lea-dev` a prise. **Elle a atteint la barre que
+  j'avais ecrite. Je ne la releve pas apres coup** - c'est exactement la faute que je m'interdis.
+  L'item 11 reste le contre-exemple qui empeche la strategie de gagner toujours, et c'est ce que je
+  reclamais.
+- **`CAT-1` est tenue sur ce paquet** : aucun item n'oppose une proposition polie a des propositions
+  grossieres. Verifie sur les onze items, comme aux deux passages precedents.
+- **La consigne du catalogue** (*"Lis bien, puis dis ce que c'est, ou qui doit la respecter."*) nomme
+  les deux taches et reste juste apres la reecriture des questions. **Ce n'est pas un `EXC-R1` de
+  plus**, et je le dis parce que le meme defaut existe a cote sur `exclusion`.
+- **`FER-1`, `BIN-1`, `FER-2`, `EMC-1`, `EMC-8`, `EMC-10`** : tenues, recomptees sur le materiau
+  servi.
+
+### Ce qui fermerait la ligne - je dis les proprietes et leur compte, jamais le texte
+
+> **1. Aucun item ne marque fausse une proposition vraie de la situation decrite** (`EMC-5`). Sur
+> l'item 4, cela se paie de deux facons au moins, et **le choix appartient au developpeur** : soit la
+> troisieme categorie de la tache A cesse d'etre en concurrence avec la bonne reponse (une categorie
+> fausse pour la situation, du type *une regle de la classe*, n'est ni vraie ni absurde pour une
+> obligation nationale), soit l'item quitte la tache A pour la tache B, ou la question porte sur
+> **qui** doit respecter l'obligation et non sur ce qu'elle est. **Ce que je n'accepterai pas, c'est
+> le retour de l'enumeration dans la question** : elle reenumere des propositions deja portees par
+> les boutons et elle repasse `LON-1`. Les deux contraintes sont conjointement satisfaisables ; c'est
+> la seule chose que j'affirme sur la forme.
+>
+> **2. Chaque proposition de la tache B est un candidat qu'un enfant de CP peut envisager**
+> (`PLA-1`). Un seul item est en cause, l'item 11, et un seul de ses distracteurs.
+
+**Ce que la story ne doit pas toucher, et c'est aussi opposable que le reste** : les cinq faits de
+droit, la forme des propositions de la tache B acquise par `FAB-1c`, les onze longueurs sous
+`LON-1`. **Trois choses payees en deux sprints ne se rejouent pas pour reparer un item.**
+
+### Reserves
+
+**Aucune.** Un paquet refuse ne porte pas de reserves : ses defauts sont dans son motif, et ils se
+paient sur deux items nommes.
+
+### Mentions de couverture partielle
+
+**Sans objet** : la ligne ne ferme pas. **`EMC-CP-07` reste `non couvert`.** Le compte de la matrice
+appartient a `camille-po` ; **rien ne bouge sur cette ligne.**
+
+### Mentions de non-couverture opposables
+
+**Sans objet** : `MNC-1` n'est due que sur un Done `VALIDE` ou `VALIDE SOUS RESERVE`.
+
+### Ce dont je reste la seule garde sur ce paquet
+
+| Propriete | Garde executable ? |
+|---|---|
+| **Qu'aucune proposition vraie ne soit marquee fausse** (`EMC-5`, le point 1 de ce refus) | **aucun, et c'est le fait le plus utile de ce passage.** Les quatre jobs de la CI sont verts sur cet arbre, `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` et les deux garde-fous d'`ADR-0086` sont verts sur ce paquet, `AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest` l'est aussi - **et l'item 4 dit quelque chose de faux a l'enfant.** Aucun test ne peut savoir qu'une proposition est vraie ; **c'est moi, en jouant** |
+| **`PLA-1`** - qu'une proposition soit un candidat envisageable | **aucun**, et je viens de manquer moi-meme, un jour sur deux, la survivance de la chaine que j'avais condamnee. **Un garde-fou qui epinglerait la reapparition d'une proposition retiree pour ce motif est concevable ; je dis la propriete, jamais la forme du test** |
+| **Que la discrimination notee par un item soit dans le libelle de la ligne** | **aucun**, et c'est la meme famille que `CON-1` : la matrice ne voit pas ce qu'un item note reellement |
+| **`FAB-1c`** | **aucun** (le marqueur en tete de proposition reste hors de portee de la clause 2 d'`ADR-0086`, mesure au reaudit precedent) - **mais elle est tenue aujourd'hui, comptee ci-dessus** |
+| **L'exactitude de chaque fait de droit** | **aucun.** Reverifies un par un contre leur source |
+| **`LON-1`, `LON-2`** | **mordues** depuis `ADR-0089` (`AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest`), a egalite, dette zero sur ce paquet. **Premiere de mes barres de contenu qui cesse d'etre tenue par moi en comptant** |
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-07` reste `non couvert`** | `camille-po` | Troisieme passage, la ligne ne ferme pas. **Le motif du 2026-09-08 est paye et sort du perimetre** ; le nouveau porte sur **deux items**, l'item 4 de la tache A et un distracteur de l'item 11 |
+| **Les deux proprietes ci-dessus, avec ce qui ne doit pas etre retouche** | `camille-po`, via `sofia-sm` | En faire une story. **C'est le plus petit perimetre des trois passages** : un item a re-poser, un distracteur a remplacer, et trois acquis a ne pas casser |
+| **La contradiction entre mon bloc de reaudit et la section 16.5 de mon arbitrage prealable, tous deux du 2026-09-08** | moi-meme | **Ecrite ici, pas effacee la-bas.** Quand une de mes barres chiffrees mord un paquet dont je viens d'ecrire *"a conserver telle quelle"*, c'est a moi de dire lequel des deux textes gouverne, dans le geste ou je pose la barre |
+| **Qu'un item note une discrimination absente du libelle de sa ligne** | `camille-po` | **Fait general, pas propre a ce paquet** : c'est la porte d'entree de `CON-1`. Je ne cree aucune clause en cours de sprint ; je la porterai dans mon prochain arbitrage prealable si elle se reproduit |
