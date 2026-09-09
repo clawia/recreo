@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `557` identifiants alloues, `95` prefixes distincts.
+**Compte courant, verifie par la CI** : `564` identifiants alloues, `95` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -49,6 +49,27 @@ l'a fait a s31, et la reparation sera arithmetique** - aucune allocation ajoutee
 aucun sens touche. C'est `sofia-sm` qui la fait, a l'endroit prevu, et le prix en est annonce ici.
 Je n'ecris pas de total pour l'arbre assemble : **l'instance A l'a fait a s31 et il etait faux**,
 faute de voir les quatre allocations de sa voisine.
+
+*Ligne portee de 547 / 94 a 554 / 94 par `nadia-prof`, instance B de s32, le 2026-09-09, dans le
+meme diff que les verdicts qui definissent les sept identifiants ajoutes : `EMO-R3`, `EXC-R6`,
+`PER-R2`, `POL-R3`, `POL-R4`, `REG-R2`, `REG-R3`, tous sur des prefixes deja alloues, donc aucun
+prefixe neuf. Methode : comptage des lignes de la table de la section 4 sous le motif du garde-fou
+lui-meme (`ALLOCATION`, identifiant et document entre accents graves), apres l'ajout - 554
+identifiants distincts, 94 prefixes distincts, aucun doublon. **C'est ma clause `PAR-5`, et son
+oubli a rendu `round-two` rouge le 2026-09-07 sur mon propre commit** : elle s'ecrit avec le verdict,
+jamais apres. **J'ai verifie plutot que suppose que le motif du garde-fou n'ecarte plus les
+identifiants a trois segments** (`IDENTIFIANT_A_TROIS_SEGMENTS`, `ADR-0088` clause D, ferme par
+`theo-archi`) : aucun des sept n'en porte trois, mais le trou ne me couvrait plus si l'un en avait
+porte.*
+
+*Ligne portee de 564 / 95 par `sofia-sm` a l'assemblage des instances A et B de s32, le 2026-09-09.
+Methode : comptage des lignes de la table de la section 4 sur l'arbre assemble, meme motif que la
+clause 5. Les deux instances ont chacune ecrit un total juste sur sa seule moitie et annonce d'avance
+la reparation arithmetique a venir - exactement la forme (c) du defaut de couture que `nadia-prof`
+avait trouvee a s31, cette fois vue et ecrite par les deux avant la fusion plutot que decouverte au
+rouge. 547 / 94 (base `fd19d18f`) plus les dix allocations de l'instance A plus les sept de
+l'instance B, aucun chevauchement de nom entre les deux lots : 564 identifiants distincts, 95
+prefixes distincts, aucun doublon sur la table assemblee.*
 
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
@@ -356,6 +377,7 @@ clause 2 par une exemption.
 | `EMC-10` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMO-R1` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R2` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
+| `EMO-R3` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EPS-1` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
 | `EPS-2` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
 | `EPS-3` | `squad/programme/education-physique-et-sportive/competences-cp.md` |
@@ -376,6 +398,7 @@ clause 2 par une exemption.
 | `EXC-R3` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R4` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R5` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R6` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `FER-1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `FER-2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
@@ -551,6 +574,7 @@ clause 2 par une exemption.
 | `PAR-12` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `PAR-13` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
+| `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PLA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `PLU-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `PLU-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -569,6 +593,8 @@ clause 2 par une exemption.
 | `PORTE-6` | `squad/conformite/FICHE-barre-entree-niveau.md` |
 | `POL-R1` | `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md` |
 | `POL-R2` | `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md` |
+| `POL-R3` | `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md` |
+| `POL-R4` | `squad/conformite/FICHE-bandit-manchot-formules-de-politesse-cp.md` |
 | `POS-1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `POS-2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `POS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
@@ -616,6 +642,8 @@ clause 2 par une exemption.
 | `REF-1` | `bootstrap/src/test/java/com/recreo/archi/ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest.java` |
 | `REF-2` | `bootstrap/src/test/java/com/recreo/archi/ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest.java` |
 | `REG-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
+| `REG-R2` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
+| `REG-R3` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
 | `REP-1` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `REP-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `REP-3` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |

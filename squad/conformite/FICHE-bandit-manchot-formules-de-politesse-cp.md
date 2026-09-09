@@ -2,8 +2,11 @@
 
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-emc-formules-de-politesse` (11 items)
-- **Statut global** : **VALIDE SOUS RESERVE**
-- **Derniere mise a jour** : 2026-09-07
+- **Statut global** : **VALIDE SOUS RESERVE** (`EMC-CP-05` **fermee le 2026-09-07**, sous la mention
+  de couverture partielle exigee d'avance ; **etat des reserves au 2026-09-09** : `POL-R1`
+  **levee**, `POL-R2` **levee**, `POL-R3` et `POL-R4` **ouvertes**, non bloquantes - bloc de constat
+  en fin de fiche. **La ligne n'est pas rouverte**)
+- **Derniere mise a jour** : 2026-09-09
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-1` et du referentiel ; **le bloc
@@ -222,3 +225,142 @@ renforcent.
 | **`EMC-CP-05` : `non couvert` -> `couvert-valide`, avec la mention de couverture partielle citee mot pour mot** | `camille-po` | Le compte de la matrice lui appartient ; la mention, elle, est opposable |
 | **`POL-R1` et `POL-R2`** | `camille-po`, via `sofia-sm` | En faire une story. Regime : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
 | **Un plafond chiffre de longueur d'enonce au CP** | moi-meme, arbitrage prealable de s32 | Meme routage que sur `EMO-R1` : c'est a moi de poser cette barre avant un sprint, pas pendant |
+
+
+---
+
+## Bloc de constat de paiement - 2026-09-09 - nadia-prof UNIQUEMENT
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute au bloc du
+> 2026-09-07 et ne le remplace pas.** Il porte sur le correctif `S32-4` de `lea-dev` (`ba2871ea`) et
+> sur sa reprise `c0c62792`.
+
+- **Verdict** : **VALIDE SOUS RESERVE - maintenu.** **`EMC-CP-05` reste `couvert-valide` et n'est pas
+  rouverte**, sous la mention de couverture partielle deja exigee et inchangee.
+- **`POL-R1` : LEVEE. `POL-R2` : LEVEE.**
+- **`POL-R3` et `POL-R4` : ouvertes**, datees du 2026-09-09, non bloquantes. **La premiere nait de
+  ce que ma reserve n'avait pas compte ; la seconde de ce que je n'avais pas vu.**
+- **Date** : 2026-09-09.
+- **Arbre audite** : `round-two` a `fd19d18f`, worktree dedie `s32-nadia-b`.
+- **Audit joue** : **oui, une partie complete de dix manches**, erreurs volontaires jusqu'a
+  epuisement des propositions sur chaque manche dont la premiere reponse n'etait pas la bonne. Jar
+  reconstruit depuis mon worktree, JDK de la toolchain 21 (21.0.10 rapporte par la machine
+  virtuelle), port local. Le tirage m'a servi **dix items sur onze**, dont **les cinq de la tache
+  B** - celle que `POL-R1` visait. **Releve integral dans
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`,
+  section 7.**
+- **Audit degrade sur un point, declare** : lecture du **HTML servi**, pas de la page rendue par un
+  navigateur.
+- **Porte technique** : **les quatre jobs de la CI lances sur mon diff et nommes un par un** -
+  `prefixes`, `chemins`, `outils`, `build`. Chiffres dans mon releve, section 9.
+
+### `POL-R1` est levee - c'etait le plus gros des trois paiements de longueur
+
+| Item | Avant, tel que ma reserve l'a ecrit | Apres | Mots, recomptes par moi le 2026-09-09 |
+|---|---|---|---|
+| 7 | 24 mots, **3 phrases** | *"Malo coupe la parole a Hugo qui raconte son week-end."* | **15** |
+| 8 | 20 mots | *"Aya prend le feutre de Lea sans le lui demander."* | **15** |
+| 9 | 22 mots | *"Tom aide Malo, qui repart aussitot sans un mot."* | **14** |
+| 10 | 23 mots | *"Lea entre en classe sans un mot pour la maitresse."* | **15** |
+| 11 | 26 mots, **deux relatives enchainees** | *"Hugo parle plus fort que Tom, sans le laisser finir."* | **15** |
+
+**Les chiffres de la colonne *avant* sont ceux de ma reserve et je ne les recompte pas sous ma
+convention de comptage** : le sprint m'a rendu le constat qu'ils ne l'ont jamais ete, et
+l'`ADR-0089` mesure l'item 11 a **25** mots la ou ma reserve en ecrit 26. **Cela ne change rien** :
+la reserve disait que ces enonces etaient trop longs, ils l'etaient, et les cinq valeurs de la
+colonne *apres* sont les seules qui decident aujourd'hui.
+
+**La propriete que j'avais posee** - *"chaque enonce de la tache B decrit le comportement fautif en
+une proposition principale, sans relative enchainee"* - **est tenue sur les cinq.** Deux gardent une
+relative simple (items 7 et 9), ce que ma propriete autorise : **elle interdisait l'enchainement, pas
+la relative**, et l'exemple que j'avais moi-meme donne (*"Malo coupe la parole a Hugo qui racontait
+son week-end."*) en portait une. **L'item 7 est servi mot pour mot dans la forme que j'avais
+proposee.** L'item 7 perd aussi sa troisieme phrase : **`LON-2` est tenue sur les onze items.**
+
+### `POL-R2` est levee
+
+*"Lea voudrait **encore** de l'eau, dans son verre **presque vide**. Que doit-elle dire ?"* - c'est
+exactement l'une des deux formes que ma propriete autorisait. **La scene se tient, joue en manche 5.**
+
+### `POL-R3` - trois enonces de la tache A restent au-dessus de `LON-1`, et ma reserve ne les avait pas comptes
+
+**Ouverte le 2026-09-09, non bloquante.**
+
+| Item | Enonce servi | Mots |
+|---|---|---|
+| 1 | *"Lea arrive a l'ecole le matin et croise sa maitresse dans le couloir. Que doit-elle dire ?"* | **16** |
+| 3 | *"Aya voudrait emprunter la gomme de Tom, qui ne s'en sert pas en ce moment. Que doit-elle dire ?"* | **18** |
+| 4 | *"Malo croise le directeur de l'ecole dans la cour, pour la premiere fois de la journee. Que doit-il dire ?"* | **19** |
+
+**Ce reste est a mon debit, et il m'a ete rendu avant que je juge.** `POL-R1` portait sur *"les cinq
+enonces de la tache B"* : je n'ai pas mesure la tache A, et **elle porte les trois plus longs enonces
+du paquet apres correction**. Le garde-fou d'`ADR-0089` compte cette dette a **3** enonces sur ce
+paquet, et **j'ai recompte les onze moi-meme sous ma convention avant d'ecrire ceci** : 13 a 19 mots,
+trois au-dessus de la barre, ce sont ceux-la. **`POL-R1` reste levee** - elle nommait cinq enonces
+d'une tache et ils sont payes ; je n'y rattache pas trois autres apres coup.
+
+**L'item 4 est celui qui coute le plus** : 19 mots, deux circonstances (*"dans la cour"*, *"pour la
+premiere fois de la journee"*) posees avant la question, alors que l'item 1 dit la meme chose de la
+meme scene en 16. **La reformulation de l'item 4 ne peut pas se contenter d'une soustraction** : la
+circonstance *"pour la premiere fois de la journee"* est le critere de la reponse (*bonjour*), et la
+retirer rendrait l'item indecidable. **C'est exactement le piege des trois referents casses de ce
+sprint, et je le nomme d'avance parce que ma barre est ce qui l'ouvre.**
+
+> **Propriete a tenir** : ces trois enonces disent la meme situation sous `LON-1`, **sans perdre la
+> circonstance qui decide de la reponse**. La formulation appartient au developpeur.
+
+### `POL-R4` - la question de la tache B ne s'enchaine pas en francais correct avec ses propositions
+
+**Ouverte le 2026-09-09, non bloquante.**
+
+Les cinq items de la tache B demandent *"Que ne respecte pas Malo ?"*, et les propositions sont des
+regles a l'infinitif : *dire bonjour*, *dire merci*, *demander avant de prendre*, *ecouter sans
+couper la parole*. **Recolle, cela donne *"Malo ne respecte pas dire merci"***, joue en manche 9.
+Ce n'est pas du francais : on ne respecte pas *dire merci*, on respecte une **regle**.
+
+**C'est exactement `PER-R1`, que j'ai ouverte moi-meme le 2026-09-06 sur le paquet voisin** - la
+question *"Qu'est-ce que X fait ?"* qui ne s'enchainait pas avec *"un service"* -, **et que `lea-dev`
+vient de payer dans ce meme sprint.** Le meme defaut existait ici depuis le premier jour et **je ne
+l'ai pas vu quand j'ai ferme la ligne le 2026-09-07** : je l'ecris comme une reserve neuve et datee,
+pas comme un durcissement de `POL-R1`, et je dis que ne pas la nommer aujourd'hui serait traiter deux
+fois le meme defaut de deux facons opposees.
+
+**Ce que ce n'est pas** : ni de l'orthographe, ni de la ponctuation - ce controle-la appartient au
+`relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`). **C'est la question
+elle-meme**, donc le fond de ce que l'enfant doit comprendre pour repondre.
+
+> **Propriete a tenir** : la question de la tache B et chacune de ses propositions forment une phrase
+> correcte quand on les recolle. La formulation appartient au developpeur. **Une contrainte a dire,
+> parce qu'elle n'est pas evidente** : les cinq enonces sont a 14 et 15 mots, donc la reformulation
+> dispose d'un ou deux mots au plus sous `LON-1`. **J'ai verifie qu'au moins une forme existe dans
+> cette marge avant d'ouvrir la reserve** - je ne demande pas l'impossible, et je ne prescris pas la
+> forme.
+
+**Regime des deux reserves** : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`). `POL-R4` voyage
+avec `POL-R3` sans cout supplementaire.
+
+### Ce que j'ai verifie et qui ne fait pas reserve
+
+- **`FER-1`, `FER-2`, `FER-3`** : les trois formules et les quatre regles en position de bonne
+  reponse, onze items, deux taches. Tenues a l'identique, recomptees sur le materiau servi.
+- **`LON-2`** : les onze enonces comptent deux phrases au plus, la seconde etant la question. **Zero
+  faute, y compris l'item 7 qui en portait trois.**
+- **`EMC-5`** : aucun item a deux reponses defendables. Reverifiee sur les cinq enonces reecrits :
+  *"sans le lui demander"*, *"repart aussitot sans un mot"*, *"sans un mot pour la maitresse"*,
+  *"sans le laisser finir"* designent chacun une seule regle des quatre.
+- **Les indices** : inchanges par ce correctif, chacun plus simple que son enonce, aucun ne nomme la
+  reponse.
+- **`CAT-1`** : sans objet. Les propositions sont les formules et les regles du libelle, aucun
+  registre n'oppose une reponse polie a des reponses grossieres.
+- **`REG-R3`, la serie du genre de l'adulte d'ecole** : ce paquet porte **trois** occurrences de
+  *maitresse* et **la seule occurrence masculine du contenu d'EMC CP** (*le directeur de l'ecole*,
+  item 4). **Je ne lui impute rien** : il est le seul des six a ne pas aggraver la serie.
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-05` reste `couvert-valide`** | `camille-po` | **Aucun mouvement de matrice.** La mention de couverture partielle exigee d'avance (*"connaissance des formules seule ; leur emploi en situation n'est pas servi"*) reste due, mot pour mot |
+| **`POL-R3` et `POL-R4`** | `camille-po`, via `sofia-sm` | En faire une story. **Les deux se paient dans le meme geste** : `POL-R4` reecrit la question des cinq items de la tache B, `POL-R3` trois enonces de la tache A. Regime : **rejeu borne, 0,5 pour le paquet entier** |
+| **La dette de longueur d'`ADR-0089` nomme `POL-R1` pour ce paquet** | `theo-archi` | **Constat, pas demande** : `POL-R1` est levee, et les trois enonces que la dette compte sont ceux de `POL-R3`. Le chiffre reste juste - **3** -, son etiquette a change de reserve |
+| **Qu'une question et ses propositions forment une phrase correcte recollees** | `theo-archi` | **Deuxieme occurrence du meme defaut sur deux paquets** (`PER-R1` le 2026-09-06, `POL-R4` aujourd'hui), et **aucune des deux n'a ete vue par un test.** Je doute qu'un juge de chaine puisse le decider et je ne l'affirme pas. **Je dis la propriete, jamais la forme du test** |

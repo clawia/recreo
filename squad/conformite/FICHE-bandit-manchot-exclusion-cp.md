@@ -3,8 +3,11 @@
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-emc-exclusion` (11 items)
 - **Statut global** : **VALIDE SOUS RESERVE** (REFUSE le 2026-09-07, **refus leve au reaudit du
-  2026-09-08** - les deux blocs de validation sont lisibles ci-dessous, dans cet ordre)
-- **Derniere mise a jour** : 2026-09-08
+  2026-09-08** - les deux blocs de validation sont lisibles ci-dessous, dans cet ordre). **Etat des
+  reserves au 2026-09-09** : `EXC-R2`, `EXC-R3` **partiellement** et `EXC-R4` traitees, `EXC-R1` et
+  `EXC-R5` **non payees**, `EXC-R6` **ouverte** - toutes non bloquantes, bloc de constat en fin de
+  fiche. **La ligne n'est pas rouverte.**
+- **Derniere mise a jour** : 2026-09-09
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -388,3 +391,214 @@ repete et **designer** l'adulte present ; elle ne dit pas qu'il le fera.
 | **La section *Criteres pedagogiques attendus* porte encore trois cases non cochees du 2026-09-07** | `camille-po` | Les trois sont desormais tenues, avec leurs comptes ci-dessus. **Cette section est la sienne ; je ne la reecris pas** |
 | **Rien ne compare la consigne d'une entree de catalogue a la tache que son paquet sert** | `theo-archi` | Symptome : `EXC-R1`. **Je dis la propriete, jamais la forme du test** |
 | **Cinq identifiants alloues par moi** (`EXC-R1` a `EXC-R5`, prefixe `EXC` neuf et verifie libre) dans `squad/decisions/REGISTRE-identifiants.md`, table de la section 4 | `theo-archi` | **Allocation mecanique deja faite**, dans le meme geste que ce verdict (`PAR-5`, `ADR-0085`) ; signalee pour etre relue, pas pour etre refaite |
+
+
+---
+
+## Bloc de constat de paiement - 2026-09-09 - nadia-prof UNIQUEMENT
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute aux blocs du
+> 2026-09-07 et du 2026-09-08 et n'en retouche aucun.** Il porte sur le correctif `S32-4` de
+> `lea-dev` (`ba2871ea`) et sur l'instruction de `theo-archi` (`63590b33`).
+
+- **Verdict** : **VALIDE SOUS RESERVE - maintenu.** **`EMC-CP-03` reste `couvert-valide` et n'est pas
+  rouverte.**
+- **`EXC-R2` : LEVEE.**
+- **`EXC-R4` : LEVEE** sur les deux enonces qu'elle nommait.
+- **`EXC-R3` : LEVEE SUR UN ITEM SUR TROIS, MAINTENUE SUR DEUX.** Le remplacement a change les mots
+  sans changer la propriete sur les items 5 et 6, et je le montre avec les mots de ma propre reserve.
+- **`EXC-R1` : NON PAYEE**, et c'est ecrit dans le paquet par `lea-dev` comme par `theo-archi`. **Le
+  defaut est intact a l'ecran, je l'ai revu sur les dix manches.**
+- **`EXC-R5` : NON PAYEE.** L'obstacle technique est leve, le contenu est inchange, et **le defaut
+  est intact** : je l'ai rejoue.
+- **`EXC-R6` : ouverte**, datee du 2026-09-09, non bloquante - le troisieme enonce trop long, que ma
+  reserve n'avait pas compte.
+- **Date** : 2026-09-09.
+- **Arbre audite** : `round-two` a `fd19d18f`, worktree dedie `s32-nadia-b`.
+- **Audit joue** : **oui, une partie complete de dix manches**, erreurs volontaires jusqu'a
+  epuisement des propositions sur chaque manche dont la premiere reponse n'etait pas la bonne, donc
+  **les dix consignes vues et tous les indices lus** - les deux objets de `EXC-R1` et `EXC-R2`. Jar
+  reconstruit depuis mon worktree, JDK de la toolchain 21 (21.0.10 rapporte par la machine
+  virtuelle), port local. Le tirage m'a servi **dix items sur onze**. **Releve integral dans
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`,
+  section 8.**
+- **Audit degrade sur un point, declare** : lecture du **HTML servi**, pas de la page rendue par un
+  navigateur.
+- **Porte technique** : **les quatre jobs de la CI lances sur mon diff et nommes un par un** -
+  `prefixes`, `chemins`, `outils`, `build`. Chiffres dans mon releve, section 9.
+
+### `EXC-R2` est levee
+
+Ma reserve disait que les cinq indices de la tache B *"ne redonnent que le lieu deja ecrit dans
+l'enonce, et sur deux items ils reprennent les mots memes de la bonne reponse"*.
+
+| Item | Indice condamne | Indice servi aujourd'hui |
+|---|---|---|
+| 7 | *"C'est un adulte present dans la cour pendant la recreation."* | *"Cette personne est la pour veiller sur les eleves qui jouent."* |
+| 8 | *"C'est l'adulte present avec la classe a ce moment-la."* | *"C'est elle qui reste avec les eleves toute la journee."* |
+| 9 | *"C'est un adulte present au moment du repas."* | *"Cette personne veille sur les eleves qui mangent."* |
+| 10 | *"C'est un adulte present dans la cour a ce moment-la."* | *"Son role est de veiller sur les eleves pendant les recreations."* |
+| 11 | *"C'est l'adulte present avec la classe a ce moment-la."* | *"C'est elle qui est avec ses eleves tous les jours."* |
+
+**Les cinq disent desormais le role de l'adulte aupres des eleves, ce que l'enonce ne donne pas, et
+aucun ne recopie le lieu ni les mots de la bonne reponse.** Verifie a l'ecran sur les cinq, apres
+erreur volontaire. **C'est la reserve la mieux payee des cinq**, et c'est celle qui compte le plus au
+moment ou l'enfant a echoue.
+
+### `EXC-R4` est levee
+
+| Item | Avant | Apres | Mots |
+|---|---|---|---|
+| 10 | *"**Dans la cour, avant la classe**, une moquerie se repete. A qui Tom doit-il en parler ?"* | *"Une moquerie se repete dans la cour, le matin. A qui Tom doit-il en parler ?"* | **15** |
+| 11 | *"**En classe, a la fin de la journee**, une moquerie se repete. A qui Lea doit-elle en parler ?"* | *"En classe, une moquerie se repete le vendredi. A qui Lea doit-elle en parler ?"* | **14** |
+
+**La propriete que j'avais posee** - *"ces enonces disent leur situation en une seule proposition
+principale"*, sans deux circonstances posees avant la question - **est tenue sur les deux.** Les onze
+enonces sont a 14 et 15 mots, sauf un : voir `EXC-R6`.
+
+### `EXC-R3` - levee sur l'item 1, maintenue sur les items 5 et 6
+
+**Ce que ma reserve disait, mot pour mot** : *"la troisieme proposition de la tache A est un candidat
+serieux sur chaque item (`PLA-1`). Elle ne l'est pas sur trois d'entre eux : **une bagarre la ou
+personne ne se bat**, **une dispute sur un pied ecrase par accident**, **une vengeance sur un geste
+que l'enonce dit sans faire expres**."*
+
+| Item | Avant | Apres | Verdict |
+|---|---|---|---|
+| 1 - *empeche Aya de s'asseoir chaque midi* | *une bagarre* | *une bousculade* | **payee.** Empecher quelqu'un de s'asseoir passe par le corps ; un enfant peut envisager cette categorie |
+| 5 - *marche sur le pied de Hugo une seule fois, par accident* | *une dispute* | *un jeu de recreation* | **non payee** |
+| 6 - *fait tomber le dessin de Lea une fois, sans faire expres* | *une vengeance* | *une blague* | **non payee** |
+
+**Le motif, et c'est le mien.** Sur l'item 6, j'ai ecrit que *une vengeance* n'etait pas un candidat
+**parce que l'enonce dit *"sans faire expres"***. *Une blague* est tout aussi intentionnelle qu'une
+vengeance : **les memes mots de l'enonce l'excluent, donc la propriete que j'ai ecrite n'est pas
+atteinte** - seul le mot a change. Idem sur l'item 5 : *"par accident"* exclut *un jeu de
+recreation*, qui est un acte voulu, comme il excluait *une dispute*. **Les deux items restent
+binaires de fait.**
+
+**Ce n'est pas un poteau deplace, et je donne le test** : je cite ma reserve, pas une exigence
+nouvelle, et j'applique a la proposition d'aujourd'hui le motif exact que j'avais applique a celle
+d'hier. **Sur l'item 1, la meme lecture donne payee**, et je l'ecris pour montrer que le critere n'a
+pas bouge d'un item a l'autre.
+
+**Et je dois dire ce qui rend cette reserve dure a payer, parce que je ne veux pas d'un troisieme
+aller-retour sur les memes trois items.** Sur les items 4, 5 et 6, l'enonce contient lui-meme le mot
+qui donne la reponse - *"une seule fois"*, *"par accident"*, *"sans faire expres"*. **Toute categorie
+intentionnelle est exclue par ces mots, et toute categorie non intentionnelle est un synonyme de la
+bonne reponse** (*une maladresse* rendrait l'item indecidable, ce qui serait pire). **La sortie n'est
+donc probablement pas dans la troisieme proposition : elle est dans l'enonce**, qui peut decrire un
+geste unique sans le qualifier d'accidentel et laisser l'enfant en tirer la conclusion. **Je dis la
+propriete et l'endroit ou je crois qu'elle se paie ; la formulation appartient au developpeur, et
+s'il trouve une troisieme categorie qui tient sans toucher l'enonce, elle me va.**
+
+> **Propriete a tenir** (inchangee depuis le 2026-09-07) : sur chaque item de la tache A, la
+> troisieme proposition est une categorie qu'un enfant de CP peut vraiment envisager pour la scene
+> decrite, et qui reste fausse.
+
+**J'ai verifie une seconde occurrence avant d'ecrire ceci, et elle tient.** *Une bagarre* survit sur
+l'item 4 (*"En courant, Tom bouscule Malo une seule fois et s'excuse aussitot"*) : ma reserve ecrivait
+*"une bagarre la ou personne ne se bat"*, et cette chaine apparaissait **deux fois** dans le paquet.
+`lea-dev` l'a payee sur l'item 1. **Sur l'item 4 je la trouve envisageable** - il y a un contact
+physique en course, et l'enonce donne deux discriminants explicites -, donc je ne la reclame pas.
+**L'ambiguite etait dans ma reserve, pas dans le correctif**, et je la tranche ici plutot que de la
+laisser se redemander.
+
+### `EXC-R1` n'est pas payee - et le defaut est intact a l'ecran
+
+La consigne servie par `catalogue.yaml` est toujours *"Lis bien, puis dis ce qu'il faut faire, ou a
+qui en parler."*, alors que la tache A ne demande plus ce qu'il faut faire mais de **nommer la
+situation**, et **aucune de ses trois propositions n'est une action**. **Vue sur les dix manches de
+ma partie**, comme le 2026-09-07.
+
+**Je constate le non-paiement, et je constate aussi que personne ne l'a cache** : `lea-dev` l'a ecrit
+dans le paquet avec sa cause (quatre tests de `TexteAccentueExposeParLePortEntrantTest` rougissent au
+changement) et `theo-archi` a mesure ce chiffre et tranche que **ce n'est pas un obstacle technique**
+- *"ce qui manque a `EXC-R1` est le texte, pas le deblocage"*. **Il a raison, et le texte est de mon
+ressort avant d'etre du sien** : une consigne est lue par l'enfant et par l'adulte qui la lui lit.
+
+> **Propriete a tenir** (inchangee) : la consigne annonce les deux taches reellement servies -
+> nommer la situation decrite, et dire a qui en parler. **Je ne prescris pas la phrase** ; je note
+> qu'elle doit entrer dans l'inventaire de chaines accentuees dans le meme commit, ce que le message
+> d'echec du garde-fou dit lui-meme.
+
+### `EXC-R5` n'est pas payee - l'obstacle est leve, le defaut est entier
+
+**Rejoue, manche 9** : *"A la cantine, une moquerie se repete chaque jour. A qui Malo doit-il en
+parler ?"*. J'ai presse *"a sa maitresse"* et l'ecran a repondu **"Ce n'est pas ca. Essaie encore !"**.
+**Un enfant de CP qui parle a sa maitresse d'une moquerie repetee a la cantine fait exactement ce
+qu'il faut, et le jeu le lui refuse.** C'est le seul endroit des six paquets d'EMC CP ou le produit
+dit non a un comportement juste, et c'est la ligne qui porte l'exclusion - la plus delicate de la
+matiere.
+
+**Ce que ce sprint a change, et c'est reel** : `theo-archi` a paye l'obstacle qui rendait la reserve
+impayable. `PaquetCpEmcExclusionTest` lisait l'identite d'une tache dans `item.enonce()` contenant
+*"A qui"*, **la phrase exacte que ma reserve demande de reecrire** ; la tache se lit desormais dans la
+bonne reponse, et il a **mesure** que la reecriture que je proposais rend le test vert. **Ce n'est
+pas un paiement de `EXC-R5`, et il l'ecrit lui-meme** : *"rien de pedagogique n'est tranche"*.
+
+**Ce que je maintiens, et ce que je precise pour que le prochain geste n'ait rien a deviner** :
+
+> **Propriete a tenir** (inchangee depuis le 2026-09-07) : **aucun item ne fait d'un adulte reel une
+> reponse fausse** (`EMC-5`). Le critere note est la **presence** de l'adulte au moment decrit, pas
+> le lieu de la scene.
+>
+> **Precision du 2026-09-09** : la maitresse est presente en classe **toute la journee** et le
+> surveillant de la cour **pendant la recreation** ; ce sont ces presences que la question doit
+> designer. **Trois des cinq items marquent aujourd'hui *"a sa maitresse"* faux** (items 7, 9, 10),
+> et ce sont les trois seuls qui doivent changer.
+
+**Je porte au credit de `theo-archi` d'avoir mesure sa proposition sur mon texte plutot que de me
+renvoyer la question**, et je note que l'obstacle qu'il a trouve est un test qui epinglait une phrase
+que je demandais de reecrire : **un garde-fou qui fige la formulation d'un enonce empeche la porte
+pedagogique de mordre.** C'est un fait a garder au-dela de ce paquet ; il a ouvert la dette generale
+lui-meme (25 fichiers de test sur 95 lisent l'enonce par une operation de chaine).
+
+### `EXC-R6` - l'item 2 fait 16 mots, et ma reserve n'en comptait que deux
+
+**Ouverte le 2026-09-09, non bloquante.**
+
+*"Presque tous les jours, Hugo se moque de la facon dont parle Tom. Qu'est-ce que c'est ?"* -
+**16 mots**, un au-dessus de `LON-1`.
+
+**A mon debit** : `EXC-R4` nommait *"les deux enonces les plus longs de la tache B"*, et **le plus
+long enonce du paquet est dans la tache A**. Le constat m'a ete rendu par le sprint avant que je
+juge, `lea-dev` l'a confirme par son propre script reproduisant ma convention, et la dette declaree
+d'`ADR-0089` porte ce reste a **1** enonce sur ce paquet. **J'ai recompte les onze moi-meme** : dix
+sont a 14 ou 15 mots, un est a 16.
+
+**Le mot en trop n'est pas le seul point** : *"la facon dont parle Tom"* emploie *dont*, le seul
+relatif de ce genre des onze enonces. **Une moquerie sur la facon de parler est en outre le seul item
+du paquet qui touche a une difference de la personne**, ce qui est le domaine de `EMC-CP-04` et non de
+`EMC-CP-03` ; je ne le compte pas comme un defaut de couverture - l'item reste une moquerie repetee,
+qui est bien la ligne - mais **si cet enonce est reecrit, c'est l'occasion de choisir un autre objet
+de moquerie**, et cela ne coute rien de plus.
+
+> **Propriete a tenir** : cet enonce dit la meme situation sous `LON-1` et sans *dont*. La
+> formulation appartient au developpeur.
+
+**Regime** : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`), avec `EXC-R1`, `EXC-R3` et
+`EXC-R5`.
+
+### Ce que j'ai verifie et qui ne fait pas reserve
+
+- **`FER-1`, `FER-2`, `FER-3`** : tenues a l'identique, recomptees - six items de qualification,
+  cinq d'adulte, trois adultes reels en position de bonne reponse.
+- **`LON-2`** : les onze enonces comptent deux phrases, la seconde etant la question. Zero faute.
+- **`PLA-1` sur la tache B** : les trois propositions sont trois adultes reels de l'ecole sur les
+  cinq items. Tenue, et mordue par `laTacheDAdulteNeSertPlusDeCandidatAuRabais`.
+- **`CAT-1`** : sans objet. Nommer une situation n'oppose aucun registre poli a un registre fautif.
+- **`REG-R3`, la serie du genre de l'adulte d'ecole** : ce paquet porte **cinq** occurrences de
+  *maitresse* et aucun adulte masculin nomme - *"un surveillant de la cour"* et *"l'adulte qui
+  surveille la cantine"* ne portent pas de genre a l'ecran. **Je ne lui impute rien** : son contenu
+  n'a pas bouge sur ce point dans ce sprint, et la reserve est ouverte sur le paquet qui a aggrave la
+  serie.
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-03` reste `couvert-valide`** | `camille-po` | **Aucun mouvement de matrice.** La mention de couverture partielle du 2026-09-08 reste due et inchangee |
+| **`EXC-R1`, `EXC-R3` (items 5 et 6), `EXC-R5`, `EXC-R6`** | `camille-po`, via `sofia-sm` | En faire une story. **Quatre points sur le meme paquet, un seul rejeu borne, 0,5** (`PAR-10`). **`EXC-R5` est celle que je corrigerais la premiere** : c'est la seule des quatre ou le produit dit non a un enfant qui a raison. `EXC-R1` vient ensuite, elle s'affiche sur les dix manches |
+| **`EXC-R3` : la sortie est probablement dans l'enonce des items 5 et 6, pas dans leur troisieme proposition** | `camille-po`, via `sofia-sm` | **Dit pour eviter un troisieme aller-retour sur les memes items.** Ce n'est pas une prescription de texte : c'est le motif pour lequel deux substitutions de proposition ont deja echoue |
+| **Qu'un test de paquet fige la formulation d'un enonce que la porte pedagogique demande de reecrire** | `theo-archi` | **Fait acquis, et il l'a deja ouvert avec son chiffre** (25 fichiers sur 95). **Je le confirme du cote pedagogique** : c'est la premiere fois qu'un garde-fou de ce depot a rendu une de mes reserves impayable, et c'est un fait a garder au-dela de ce paquet |
+| **La dette de longueur d'`ADR-0089` nomme `EXC-R4` pour ce paquet** | `theo-archi` | **Constat, pas demande** : `EXC-R4` est levee et l'enonce que la dette compte est celui de `EXC-R6`. Le chiffre reste juste - **1** -, son etiquette a change de reserve |

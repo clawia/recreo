@@ -3,11 +3,18 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-emc-regles-de-vie.yaml`.
 - **Entree de catalogue** : `bandit-manchot-regles-de-vie-cp`, titre servi *"Les regles de l'ecole"*,
-  consigne servie *"Lis bien la question, puis choisis la bonne reponse."*, `nombreDeManches: 10`.
+  consigne servie *"Lis bien, puis dis ce qu'il faut faire, ou pourquoi."*, `nombreDeManches: 10`.
+  **Corrige le 2026-09-09 par `nadia-prof`** : cette ligne annoncait *"Lis bien la question, puis
+  choisis la bonne reponse."*, qui n'est plus la consigne servie par `catalogue.yaml`. **Une fiche de
+  conformite qui cite un texte que le produit ne sert plus est de la meme famille qu'`EXC-R1`**, a
+  ceci pres que le fichier fautif est le mien. Verifie dans `catalogue.yaml` le jour de la
+  correction ; aucun verdict n'en depend.
 - **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-05** par
   `nadia-prof`, apres avoir joue). **`EMC-CP-06` ferme** : `non couvert` -> **`couvert-valide`**,
   **a la condition que la mention de couverture partielle ci-dessous soit ecrite dans la matrice**.
-  Une reserve nommee, `REG-R1`, non bloquante.
+  **Etat des reserves au 2026-09-09** : `REG-R1` **levee**, `CAT-1` **non payee et maintenue**,
+  `REG-R2` et `REG-R3` **ouvertes** - trois reserves nommees, toutes non bloquantes, bloc de constat
+  en fin de fiche. **La ligne n'est pas rouverte.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
   sections 4.3 et 5, et
@@ -295,3 +302,193 @@ Le poteau est neuf et date d'aujourd'hui ; il ne se retourne pas contre une barr
 (`lignesDeReferentiel: ["EMC-CP-06"]`, verifie dans le fichier aujourd'hui) ; `EMC-CP-05` est `non
 couvert`. Le code est corrige. **Un code de ligne faux dans une fiche de conformite est de la meme
 famille qu'une reference qui pointe vers rien** : il se recopie ensuite dans la matrice.
+
+
+---
+
+## Bloc de constat de paiement - 2026-09-09 - nadia-prof UNIQUEMENT
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute aux blocs du
+> 2026-09-05 et du 2026-09-07 et n'en retouche aucun.** Il porte sur le correctif `S32-CAT1` de
+> `lea-dev` (`b7a79e34`).
+
+- **Verdict** : **VALIDE SOUS RESERVE - maintenu.** **`EMC-CP-06` reste `couvert-valide` et n'est pas
+  rouverte.**
+- **`REG-R1` : LEVEE**, y compris sa clause la plus dure.
+- **`CAT-1` : NON PAYEE.** Je refuse le paiement, avec le compte item par item ci-dessous. Elle
+  reste ouverte sur ce paquet, **non bloquante**, et elle ne rouvre pas la ligne.
+- **`REG-R2` et `REG-R3` : ouvertes**, datees du 2026-09-09, non bloquantes.
+- **Date** : 2026-09-09.
+- **Arbre audite** : `round-two` a `fd19d18f`, worktree dedie `s32-nadia-b`. Commit du correctif :
+  `b7a79e34` (`[LEA] s32: S32-CAT1`).
+- **Audit joue** : **oui, une partie complete de dix manches**, erreurs volontaires jusqu'a
+  epuisement des propositions sur chaque manche dont la premiere reponse n'etait pas la bonne - donc
+  **tous les distracteurs presses et tous les indices lus**. Jar reconstruit depuis mon worktree,
+  lance sur le JDK que designe la toolchain 21 (21.0.10 rapporte par la machine virtuelle), port
+  local. Le tirage m'a servi **dix items sur onze** ; le onzieme, l'item 2 (*"Pourquoi leve-t-on la
+  main avant de parler en classe ?"*), lu dans le fichier. **Le releve integral des dix manches est
+  dans
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-B.md`,
+  section 4** ; il est la trace ecrite d'une partie jouee dont `yanis-qa` a constate l'absence.
+- **Audit degrade sur un point, declare** : lecture du **HTML servi**, pas de la page rendue par un
+  navigateur. **Aucun constat de ce bloc ne repose sur un jugement visuel** : tous se recomptent sur
+  le fichier de contenu.
+- **Porte technique** : **les quatre jobs de la CI lances sur mon diff et nommes un par un** -
+  `prefixes`, `chemins`, `outils`, `build`. Chiffres dans mon releve, section 9.
+
+### `REG-R1` est levee, et sa clause la plus dure est tenue
+
+Les trois distracteurs que la reserve nommait ont disparu, chacun remplace par une raison plausible
+et fausse :
+
+| Item | Ce que `REG-R1` condamnait | Ce que l'ecran sert aujourd'hui |
+|---|---|---|
+| 2 | *"pour montrer qu'on a chaud"* (absurde) | *"pour que la maitresse nous felicite"* |
+| 5 | *"en criant"* (**n'est pas une facon de se deplacer**) | *"en sautant a cloche-pied"* |
+| 8 | *"pour connaitre l'heure"* (absurde) | *"pour savoir quand ce sera son tour de parler"* |
+
+**Sur l'item 5, j'avais pose une contrainte plus dure que sur les deux autres** - *"les trois
+propositions doivent etre des facons de se deplacer"*. **Elle est tenue** : marcher, courir, sauter a
+cloche-pied. **`REG-R1` est levee sans reserve residuelle**, et je le dis dans ces termes parce que
+c'est la barre que j'avais ecrite et qu'elle est atteinte.
+
+### `CAT-1` n'est pas payee - le compte item par item
+
+**Ce que ma clause demande, dans les mots ou je l'ai ecrite le 2026-09-07** : *"Les trois
+propositions sont du meme registre ; ce qui les distingue est ce qu'elles disent, jamais comment
+elles sonnent."* Et la forme que j'ai donnee pour la rendre praticable montre **deux** raisons
+serieuses et fausses face a la bonne, pas une.
+
+**Ce que `lea-dev` a fait, et je le dis avant de compter** : sur six items - dont les deux que mon
+releve du 2026-09-07 ne nommait pas -, **un** des deux distracteurs devient une proposition serieuse
+et polie mais fausse. C'est un progres reel et c'est plus que ce que mon releve nommait. **Ce n'est
+pas ce que ma clause demande.**
+
+| Item | Distracteur 1 | Distracteur 2 | Etat de `CAT-1` |
+|---|---|---|---|
+| 1 - *avant de parler* | *parler plus fort* (registre de la faute) | *regarder la maitresse sans rien dire* | **a moitie** |
+| 2 - *pourquoi lever la main* | *pour que la maitresse nous felicite* | *pour appeler la maitresse de loin* | **tenue** |
+| 3 - *que faire du materiel* | *le laisser sur la table* | *le jeter a la poubelle* | **non tenue** |
+| 4 - *pourquoi ranger* | *pour empecher les autres d'y toucher* | *pour gagner un jeu* | **non tenue** |
+| 5 - *comment se deplacer* | *en courant* | *en sautant a cloche-pied* | **non tenue** |
+| 6 - *pourquoi marcher* | *pour arriver en retard* | *pour arriver le premier en classe* | **non tenue** |
+| 7 - *un camarade parle deja* | *parler plus fort que lui* | *aller prevenir la maitresse tout de suite* | **a moitie** |
+| 8 - *pourquoi ecouter* | *pour savoir quand ce sera son tour* | *pour gagner une recompense* | **a moitie** |
+| 9 - *se servir en meme temps* | *se bousculer* | *demander a la maitresse de choisir qui passe en premier* | **a moitie** |
+| 10 - *pourquoi la queue* | *pour que le repas soit plus chaud* | *pour que la maitresse compte les eleves* | **tenue** |
+| 11 - *les crayons empruntes* | *les garder pour elle* | *les donner a la maitresse pour qu'elle les range* | **a moitie** |
+
+**Deux items sur onze tiennent la clause. Cinq la tiennent a moitie. Quatre ne la tiennent pas du
+tout.** Sur ces quatre, un enfant qui n'a jamais entendu la regle **gagne encore en reconnaissant le
+registre**, exactement comme le 2026-09-07 : la bonne reponse y est la seule proposition calme,
+soigneuse ou desinteressee.
+
+**Et l'item 5 est celui qui decide, parce qu'il etait dans mon releve.** *"En marchant"* reste la
+seule facon calme de se deplacer face a deux facons agitees. La correction de l'item 5 paie `REG-R1`
+- le distracteur mort devient une vraie facon de se deplacer - **et ne paie pas `CAT-1`**. **Ce n'est
+pas un poteau deplace : c'est un des six items que j'avais nommes, et la propriete que j'avais
+nommee n'y est pas atteinte.**
+
+#### Ce que la correction a mis a la place du registre, et pourquoi cela compte
+
+**Mesure, pas impression.** Sur les onze items, **six portent desormais au moins un distracteur qui
+nomme la maitresse**, et **aucune bonne reponse ne la nomme**. Sur l'item 2, **les deux**
+distracteurs la nomment.
+
+**Consequence, jouee** : la strategie *"je ne prends jamais le bouton qui parle de la maitresse"*
+elimine un distracteur sur cinq items **et donne la bonne reponse d'emblee sur l'item 2** - celui-la
+meme ou `CAT-1` est desormais tenue. **Le repere de registre a ete remplace par un repere lexical**,
+qui est de la famille de `FAB-1c` : la bonne reponse se reconnait a la forme de son texte. Le compte
+etait de **1** occurrence de *maitresse* dans les propositions de ce paquet avant le correctif, il
+est de **7** apres.
+
+**Je ne l'ecris pas comme une reserve de plus** : c'est le meme geste qui doit payer `CAT-1`, et le
+compter deux fois serait facturer deux fois la meme reecriture. **Je l'ecris comme une contrainte
+opposable sur la prochaine correction**, pour qu'elle ne refasse pas le chemin dans l'autre sens.
+
+#### Ce qui paie `CAT-1` sur ce paquet - la propriete et son compte, jamais le texte
+
+> **Sur les onze items, les trois propositions sont du meme registre** : chacune est une phrase qu'un
+> adulte pourrait dire serieusement a un enfant, et deux sont fausses pour la situation decrite.
+> **Onze sur onze ; il n'y a pas de compte partiel** - la clause est ecrite par item, sans seuil, et
+> je ne lui en donne pas un aujourd'hui, ce qui serait l'affaiblir apres coup.
+>
+> **Et le repere ne se deplace pas d'un canal a l'autre** : aucun mot present dans les distracteurs
+> de plusieurs items ne doit etre absent de toutes les bonnes reponses du paquet. *La formulation
+> appartient au developpeur.*
+
+**Regime** : `CAT-1` garde le regime que je lui ai donne le 2026-09-07 - **elle voyage dans le rejeu
+borne du paquet, sans cout supplementaire** (`PAR-10`). **Elle n'a pas ete payee ; elle n'est pas non
+plus a refacturer.**
+
+### Reserves ouvertes aujourd'hui - deux, non bloquantes, datees du 2026-09-09
+
+#### `REG-R2` - deux distracteurs absurdes survivent, et mon compte de trois etait incomplet
+
+**Ouverte le 2026-09-09, non bloquante.**
+
+| Item | Distracteur | Ce qui ne va pas |
+|---|---|---|
+| 4 - *pourquoi range-t-on le materiel* | *"pour gagner un jeu"* | hors sujet ; ranger n'a aucun rapport avec gagner un jeu |
+| 6 - *pourquoi marche-t-on au lieu de courir* | *"pour arriver en retard"* | **absurde a l'envers** : personne ne court pour arriver en retard, et l'enfant ecarte cette proposition sans rien savoir de la regle |
+
+**C'est une correction de mon propre constat, et c'est la quatrieme de ce sprint qui va dans le meme
+sens.** Ma reserve `REG-R1` du 2026-09-05 annoncait *"Mesure, pas impression - les trois, cites"*.
+**Il y en avait cinq.** Les trois que j'avais cites sont payes ; ces deux-la ne l'ont jamais ete
+parce que je ne les avais pas comptes. **`REG-R1` reste levee** - elle nommait trois distracteurs et
+ils sont payes ; **je n'y rattache pas les deux autres apres coup**, j'ouvre une reserve neuve et
+datee.
+
+> **Propriete a tenir** : chaque distracteur est une raison qu'un enfant de CP pourrait vraiment
+> donner pour la situation decrite. La formulation appartient au developpeur. **Elle se paie dans le
+> meme geste que `CAT-1`, dont elle est un cas particulier sur ces deux items.**
+
+#### `REG-R3` - l'adulte de l'ecole est une femme sept fois sur sept, et le correctif l'a aggrave
+
+**Ouverte le 2026-09-09, non bloquante.**
+
+**Le 2026-09-05, dans cette meme fiche, j'ai ecrit ceci** : *"Sur les quatre paquets d'EMC de s29,
+l'enseignant est nomme trois fois et il est trois fois une femme. Aucune occurrence masculine. Ce
+n'est pas un defaut de ce paquet-ci et je ne le lui impute pas - une occurrence isolee ne fait pas un
+motif. C'est un constat de serie, date du 2026-09-05, que je pose **pour que le prochain lot ne
+l'aggrave pas**."*
+
+**Le lot suivant l'a aggrave, et c'est mesure** : ce paquet passe de **1** a **7** occurrences de
+*maitresse* dans ses propositions, **toutes feminines, aucune masculine**. Sur l'ensemble du contenu
+d'EMC servi au CP - enonces, propositions et indices des six paquets confondus -, le compte est de
+**17** occurrences de *maitresse* contre **1** adulte d'ecole masculin (*le directeur*, sur
+`formules-de-politesse`). **Ce n'est plus une occurrence isolee, c'est
+une serie, et cette fois je l'impute** - a ce paquet-ci, parce que c'est lui qui l'a aggravee, et pas
+aux paquets voisins que je n'ai pas rejoues pour ce motif.
+
+**Ce que ce n'est pas** : ni une erreur factuelle, ni un obstacle a jouer, ni un motif de refus. Une
+classe de CP peut parfaitement avoir une maitresse. **Ce qui est en cause est la serie** : un enfant
+qui joue les six paquets d'EMC CP ne rencontre jamais un homme devant une classe.
+
+> **Propriete a tenir** : sur l'ensemble des propositions et des enonces de ce paquet, l'adulte de
+> l'ecole n'est pas systematiquement d'un seul genre. **Je ne fixe aucune proportion** - je n'ai
+> compte cette population que sur l'EMC CP, et une barre chiffree se pose sur une population comptee,
+> dans un arbitrage prealable, jamais dans une fiche en cours de sprint.
+
+### Ce que j'ai verifie et qui ne fait pas reserve - dit pour qu'on ne me le redemande pas
+
+- **Aucune bonne reponse n'a change**, aucun enonce n'a change : `FER-1`, `FER-2`, `FER-3`, `EMC-1`,
+  `EMC-8`, `EMC-10` sont tenues a l'identique, recomptees sur le materiau servi.
+- **`LON-1` et `LON-2`** : les onze enonces vont de **7 a 14 mots**, deux phrases au plus, la seconde
+  etant la question. **Dette de longueur nulle sur ce paquet**, ce qui etait deja le cas avant le
+  correctif.
+- **`EMC-5`** : aucun item n'a deux reponses defendables. Les distracteurs polis ajoutes sont faux
+  pour la situation - *"regarder la maitresse sans rien dire"* n'est pas ce qu'on fait avant de
+  parler, *"aller prevenir la maitresse"* n'est pas ce qu'on fait quand un camarade parle, *"demander
+  a la maitresse de choisir"* n'est pas la regle de la cantine. **Verifie item par item : c'est le
+  risque principal de ce genre de correction, et il n'est pas realise.**
+- **Les indices** : inchanges, et chacun reste plus simple que son enonce.
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-06` reste `couvert-valide`** | `camille-po` | **Aucun mouvement de matrice.** La mention de couverture partielle exigee le 2026-09-05 reste due et inchangee |
+| **`CAT-1` non payee, avec son compte de 2/11**, plus `REG-R2` et `REG-R3` | `camille-po`, via `sofia-sm` | En faire une story. **Les trois se paient dans le meme geste** : `REG-R2` est un cas particulier de `CAT-1` sur deux items, `REG-R3` est une contrainte sur les mots que ce geste emploie. Regime inchange : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
+| **Que la bonne reponse ne se reconnaisse pas a un mot present dans les seuls distracteurs** | `theo-archi` | **Fait mesure** : 6 items sur 11 portent *maitresse* dans un distracteur, 0 bonne reponse le porte. C'est une comparaison d'ensembles de mots sur un paquet, du meme genre que la clause 2 d'`ADR-0086`. **Je dis la propriete, jamais la forme du test, et je ne prescris aucun seuil** |
+| **La ligne d'entree de catalogue de cette fiche, qui citait une consigne que le produit ne sert plus** | moi-meme, corrigee ci-dessus | **Corrigee dans ce diff.** Le meme defaut existe sur `FICHE-bandit-manchot-permis-interdit-cp.md`, corrige dans le meme geste |
