@@ -252,6 +252,60 @@ mouvement de `squad/programme/MATRICE-couverture.md` n'est fait ici - il apparti
 Rien n'est pousse. Les trois obstacles pedagogiques (`S33-EMCCP07`, `S33-SCO-1`, `S33-CONS-4`)
 restent routes tels qu'ecrits en section 12, sans reponse nouvelle a ce jour.
 
+## 14. Fusion de `s33-marc2` - S33-HG-04 payee, derniere fusion possible de s33 (2026-09-09)
+
+**Lignee verifiee avant la fusion** : `s33-marc2` (`30726ecb`, un commit) forke de `e5aebf9c`, qui
+etait la tete de `round-two` au moment de cette fusion - confirme par `git merge-base round-two
+s33-marc2` (`e5aebf9c`, identique). Arbre propre avant fusion.
+
+**Les trois points de couture nommes viennent d'etre touches par la fusion de la section 13** :
+`cm1-histoire-geographie.yaml`, `PaquetCm1HistoireGeographieTest` et
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`. Verifie que le diff de `s33-marc2`
+s'applique bien sur l'etat fusionne et non sur l'etat perime d'avant la section 13 : l'item 85 lu
+apres fusion porte "D'ou venait cette armee ?" / "d'Espagne", au meme numero de ligne que celui du
+commit `s33-marc2`. Fusion sans conflit (`ort`, `Merge made by the 'ort' strategy`).
+
+**Contenu paye par cette fusion.** `S33-HG-04` : l'item 85 de `cm1-histoire-geographie.yaml`
+demande desormais l'origine geographique de l'armee de 732 ("d'Espagne") plutot qu'un exonyme,
+sans quatrieme item ajoute a la tache de trois sur sept. `HG-R10` payee au passage : l'indice de
+l'item 87 reprend mot pour mot la formulation juste deja servie ailleurs dans le fichier.
+L'enumeration `Set.of(...)` de `PaquetCm1HistoireGeographieTest` est mise a jour a la main, pas
+remplacee par une lecture d'enonce - regle de `theo-archi` (avis de faisabilite, section 6.2) :
+un ensemble ecrit a la main rougit quand le contenu change, une sous-chaine passe au vert. Seconde
+correction routee par `theo-archi` : le motif d'exemption de `cm1-histoire-geographie` dans
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` citait un compte de s27 (20 items, 60
+propositions) jamais mis a jour ; recompte a 110 items et 330 propositions, methode nommee dans le
+commentaire du commit.
+
+**Delta de tests : +0.** Aucune methode `@Test` ajoutee par ce commit.
+
+**Quatre jobs de la CI mesures sur l'arbre fusionne, nommes un par un** : `prefixes` vert (tous les
+commits non-merge depuis `e5aebf9c`, dont celui de `s33-marc2`, portent un prefixe connu),
+`chemins` vert (aucun chemin de poste de travail dans les fichiers versionnes), `outils` vert (9
+juges purs executes), `build` vert (`mvn -B clean verify`, reacteur complet a six modules, BUILD
+SUCCESS, JDK 21.0.10 rapporte par la machine virtuelle des tests).
+
+**Compte de tests : 1443, inchange.** Meme methode qu'a la section 13 : somme de l'attribut
+`tests` sur les fichiers `TEST-*.xml` de `surefire-reports` et `failsafe-reports` de l'arbre
+fusionne (105 `domain`, 13 `application`, 388 `adapter-web`, 693 `adapter-content`, 244
+`bootstrap`), croisee avec les totaux "Tests run" que Maven annonce par module - les deux methodes
+convergent sur le meme chiffre, inchange puisque le delta de cette fusion est nul.
+
+**Etat d'arret du sprint. Huit stories payees sur onze**, et c'est la derniere fusion possible de
+s33 : tout ce qui reste depend d'un arbitrage de `nadia-prof`, pas d'un developpeur.
+
+| Story | Etat | Ce qui manque |
+|---|---|---|
+| `S33-HG-02`, `S33-HG-04`, `S33-HG-08-12`, `S33-CAT1`, `S33-EXC-R1`, `S33-EXC-R5`, `S33-EPS-SEC`, `S33-EPS-JEU` | payees | rien - elles attendent les verdicts |
+| `S33-EMCCP07` | partielle, item 11 paye | Une phrase de `nadia-prof` disant quelle clause cede entre `FER-1`, `BIN-1`, `EMC-11` et `PLA-1` : la sortie que son arbitrage prescrit est infaisable sous ses propres conditions, mesure par `lea-dev` puis revoquee. Quatrieme passage de la ligne |
+| `S33-SCO-1` | instruite, remede non choisi | L'instruction 1 de `DEC-0061`, jamais rendue : ce que trois essais doit vouloir dire quand l'elimination est possible. `theo-archi` a etabli qu'"ajouter une proposition" n'est pas un remede disponible - `ADR-0063` plafonne a 3 et `ESSAIS_AVANT_REVELATION` vaut 3. Le choix entre crediter moins et permettre moins est pedagogique |
+| `S33-CONS-4` | chiffree, non evaluable | La decision de grain, de `camille-po` et `nadia-prof` ensemble. Cout technique instruit : zero code de production, cout dominant N-1 portes pedagogiques |
+
+Aucune ligne de `squad/programme/MATRICE-couverture.md` n'a bouge et aucun verdict n'est rendu :
+les trois instances de `nadia-prof` n'ont pas audite ce sprint. Le taux reste 66 / 138 = 47,8 %.
+
+Rien n'est pousse.
+
 ## Decisions prises
 
 Aucune decision prise pendant ce planning : la strategie (`DEC-0085`) est geree en amont par
