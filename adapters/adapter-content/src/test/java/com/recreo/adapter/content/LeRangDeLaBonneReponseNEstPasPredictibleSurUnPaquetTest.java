@@ -685,11 +685,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " chaque item. Mesure du 2026-09-08 sur le paquet servi : aucune des 33"
                     + " propositions ne commence par un chiffre"),
             Map.entry("cp-eps-regles-jeu-collectif",
-            "11 items sur 11 portent deux ou un distracteur(s) selon l'item, mais aucune des"
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
                     + " propositions n'est numerique : ce sont des regles de jeu, des noms de"
-                    + " personnage ou \"oui\"/\"non\", valeurDe rend null sur chaque proposition."
-                    + " Mesure du 2026-09-08 sur le paquet servi : aucune proposition ne commence"
-                    + " par un chiffre"));
+                    + " personnage ou des consequences en texte libre, valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-09-09 sur le paquet servi"
+                    + " apres S33-EPS-JEU (les items 7 et 8, jusque-la binaires, portent desormais"
+                    + " trois propositions) : aucune des 33 propositions ne commence par un"
+                    + " chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

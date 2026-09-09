@@ -49,8 +49,8 @@ lignesDeReferentiel: ["EPS-CP-08"]
 # FER-1 : le libelle de cette ligne ne porte aucune parenthese enumerative ; la condition est donc
 # vacuement tenue.
 #
-# BIN-1 : la tache A ne porte aucun item binaire (0 sur 6) ; la tache B porte deux items binaires
-# sur cinq (items 7 et 8), soit moins de la moitie.
+# BIN-1 : aucun item n'est binaire (0 sur 11). Les items 7 et 8 l'etaient a l'origine ; leur
+# reprise S33-EPS-JEU (JEU-R1, JEU-R4) les a portes a trois propositions chacun.
 #
 # ADR-0086 : aucune bonne reponse n'est repetee d'un item a l'autre sous le meme moule de
 # propositions ; aucun distracteur ne partage une amorce de quatre mots avec trois autres
@@ -59,6 +59,39 @@ lignesDeReferentiel: ["EPS-CP-08"]
 #
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
 # dette heritee.
+#
+# S33-EPS-JEU (docs/backlog/backlog.md, sprint 33). Reprise apres REFUS du 2026-09-09
+# (squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md ;
+# squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md, sections 6
+# et 11), au tarif de lot de PAR-14 (six items sur onze retouches). Sur la tache A, les items 1, 2
+# et 3 sont inchanges ; l'item 4 ne change que d'enonce (JEU-R5) ; les items 5 et 6 sont reecrits
+# (JEU-R2, JEU-R3, JEU-R8, JEU-R7) :
+#
+# 1) JEU-R1 (item 7) : toucher un joueur perche au chat perche n'a aucun effet, ce n'est pas une
+#    infraction. L'item pose desormais la question de l'effet ("que se passe-t-il ?") et non celle
+#    de la faute, et son indice cesse d'affirmer qu'un joueur perche "ne peut pas etre touche".
+#
+# 2) JEU-R2, JEU-R3, JEU-R8 (item 5) : la regle jugee ("un mouton touche devient loup") est
+#    desormais rappelee dans l'enonce lui-meme plutot que supposee (EPS-1) ; son indice ("le loup
+#    grandit au fil de la partie") etait faux au premier degre et devient "chaque mouton touche
+#    devient un loup de plus" ; la tournure "Au loup et les moutons" devient "Au jeu du loup et des
+#    moutons", lisible au CP.
+#
+# 3) JEU-R4 (item 8) : a l'epervier, "traverser sans se faire toucher" n'est pas une regle mais une
+#    reussite, et l'enonce portait deja son propre verdict. L'item met desormais en jeu la vraie
+#    regle du couloir et porte trois propositions plutot que deux.
+#
+# 4) JEU-R5 (item 4) : le pronom des propositions n'avait aucun antecedent dans l'enonce ("quand on
+#    est touche" puis "il va..."). L'enonce devient "que devient un joueur touche ?", sans toucher
+#    aux propositions.
+#
+# 5) JEU-R6 (items 10 et 11) : la tache B se gagnait a la forme de l'enonce, la bonne reponse etant
+#    la seule proposition de forme "sanction" face a deux recompenses. Les distracteurs des deux
+#    items deviennent des sanctions plausibles elles aussi.
+#
+# 6) JEU-R7 (reserve, item 6) : la regle "un objet a la fois", jugee en tache B a l'item 10,
+#    n'etait jamais posee comme regle avant d'etre jugee. L'item 6 porte desormais cette regle en
+#    bonne reponse ("un seul objet"), avant que l'item 10 ne la juge.
 items:
   - enonce: "À 1, 2, 3, soleil, quand doit-on s'arrêter de bouger ?"
     bonneReponse: "quand le meneur se retourne"
@@ -72,35 +105,35 @@ items:
     bonneReponse: "éviter de se faire toucher"
     distracteurs: ["rester immobiles au milieu", "lancer un ballon à l'épervier"]
     indice: "Un joueur touché devient épervier à son tour."
-  - enonce: "À la balle au prisonnier, que se passe-t-il quand on est touché ?"
+  - enonce: "À la balle au prisonnier, que devient un joueur touché ?"
     bonneReponse: "il va dans le camp adverse"
     distracteurs: ["il gagne un point", "il devient arbitre du jeu"]
     indice: "Être touché fait changer de camp, pas perdre la partie."
-  - enonce: "Au loup et les moutons, que devient un mouton touché ?"
-    bonneReponse: "il devient loup à son tour"
-    distracteurs: ["il sort du jeu", "il attend la fin de la partie"]
-    indice: "Le loup grandit au fil de la partie."
-  - enonce: "Aux déménageurs, comment une équipe gagne-t-elle la partie ?"
-    bonneReponse: "en transportant tous les objets avant l'autre équipe"
-    distracteurs: ["en portant deux objets à la fois", "en restant à l'arrivée sans bouger"]
-    indice: "Chaque joueur porte un objet à chaque passage."
-  - enonce: "Au chat perché, Léa touche Hugo sur un banc. A-t-elle respecté la règle ?"
-    bonneReponse: "non"
-    distracteurs: ["oui"]
-    indice: "Un joueur perché en hauteur ne peut pas être touché."
-  - enonce: "À l'épervier, Malo traverse sans se faire toucher. A-t-il respecté la règle ?"
-    bonneReponse: "oui"
-    distracteurs: ["non"]
-    indice: "Traverser sans être touché est justement le but du jeu."
+  - enonce: "Au jeu du loup et des moutons, un mouton touché devient loup. Que fait-il ensuite ?"
+    bonneReponse: "il peut toucher d'autres moutons"
+    distracteurs: ["il doit attendre la fin de la partie", "il redevient mouton peu après"]
+    indice: "Chaque mouton touché devient un loup de plus."
+  - enonce: "Aux déménageurs, combien d'objets porte-t-on à chaque passage ?"
+    bonneReponse: "un seul objet"
+    distracteurs: ["deux objets à la fois", "autant d'objets que l'on veut"]
+    indice: "Porter un seul objet permet d'aller plus vite entre les deux zones."
+  - enonce: "Au chat perché, Léa touche Hugo monté sur un banc. Que se passe-t-il ?"
+    bonneReponse: "rien, Hugo est perché"
+    distracteurs: ["Hugo est attrapé", "Hugo devient chat"]
+    indice: "Toucher un joueur perché ne change rien pour lui."
+  - enonce: "À l'épervier, Malo traverse en sortant du couloir. Que se passe-t-il ?"
+    bonneReponse: "Malo est éliminé"
+    distracteurs: ["Malo change de rôle", "Malo continue de jouer"]
+    indice: "Le couloir marque les limites que les joueurs doivent respecter."
   - enonce: "Au chat perché, Malo touche Aya qui court au sol. Que se passe-t-il ?"
     bonneReponse: "Aya est attrapée"
     distracteurs: ["Aya devient meneuse", "rien ne se passe"]
     indice: "Aya n'est pas en hauteur, elle peut donc être touchée."
   - enonce: "Aux déménageurs, Hugo porte deux objets à la fois. Que se passe-t-il ?"
     bonneReponse: "Hugo n'a pas respecté la règle"
-    distracteurs: ["Hugo a gagné la partie", "l'équipe change de camp"]
+    distracteurs: ["Hugo passe son tour", "Hugo laisse un objet à l'arrivée"]
     indice: "La règle des déménageurs impose de transporter un objet à chaque passage."
   - enonce: "À 1, 2, 3, soleil, Hugo avance quand le meneur regarde. Que se passe-t-il ?"
     bonneReponse: "Hugo doit retourner au départ"
-    distracteurs: ["Hugo gagne la partie", "Hugo devient meneur"]
+    distracteurs: ["Hugo doit rester immobile pendant un tour", "Hugo change de place avec un autre joueur"]
     indice: "Bouger pendant que le meneur regarde n'est pas permis."
