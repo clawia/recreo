@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `582` identifiants alloues, `97` prefixes distincts.
+**Compte courant, verifie par la CI** : `601` identifiants alloues, `97` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -49,6 +49,32 @@ l'a fait a s31, et la reparation sera arithmetique** - aucune allocation ajoutee
 aucun sens touche. C'est `sofia-sm` qui la fait, a l'endroit prevu, et le prix en est annonce ici.
 Je n'ecris pas de total pour l'arbre assemble : **l'instance A l'a fait a s31 et il etait faux**,
 faute de voir les quatre allocations de sa voisine.
+
+**Note de `nadia-prof`, instance C de s33, le 2026-09-10.** Sept identifiants ajoutes - `SEC-R4`,
+`SEC-R5` (un motif de refus et une reserve sur `bandit-manchot-regles-securite-eps-cp`), `JEU-R9` a
+`JEU-R12` (un motif de refus et trois reserves sur `bandit-manchot-regles-jeu-collectif-eps-cp`) et
+`EPS-8` (condition opposable sur ce qu'un indice d'EPS doit apporter) - **tous sur des prefixes deja
+alloues, donc aucun prefixe neuf**. Ligne d'etat courant portee de **582 / 97 a 589 / 97**. Methode :
+comptage des lignes de la table de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`,
+identifiant et document entre accents graves, `ADR-0085` clause 5), **avant** mon diff, sur l'arbre
+`b45e5927` - 582 identifiants distincts, 97 prefixes distincts, 0 doublon, ce qui confirme la ligne
+d'etat courant que `sofia-sm` a portee a la fusion de `s33-nadia` ; plus mes sept allocations.
+
+**Et je dis d'avance ce que ce chiffre ne peut pas etre.** Il est juste **sur l'arbre que j'ai lu**.
+Les instances A et B auditent le meme sprint et peuvent allouer en parallele : c'est la limite
+structurelle de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. **La CI
+rougira a l'assemblage si c'est le cas, et la reparation est arithmetique** - aucune allocation
+ajoutee, aucune retiree, aucun sens touche. C'est `sofia-sm` qui la fait, a l'endroit prevu.
+
+**Ce que j'annonce ci-dessus est arrive pendant que je l'ecrivais, et je le dis plutot que de le
+laisser trouver.** Mon `mvn -B clean verify` a rendu la clause 5 rouge : le fichier declarait `594`
+et sa table en portait `601`. Les instances A et B ont alloue six identifiants chacune **dans le meme
+arbre que moi**, et non sur des branches separees - la limite structurelle de `PAR-5` s'est donc
+manifestee au poste et non a la fusion. **Recompte apres les trois lots, sous le motif du garde-fou :
+601 identifiants distincts, 97 prefixes distincts, 0 doublon**, et j'ai porte la ligne d'etat courant
+a **601 / 97**. **La reparation est arithmetique** : aucune allocation ajoutee, aucune retiree, aucun
+sens touche, et **mon apport reste sept**. Si une instance alloue encore apres cette ligne, elle
+rougira a son tour et la refera : c'est ce que la clause 5 est faite pour produire.
 
 *Ligne portee de 547 / 94 a 554 / 94 par `nadia-prof`, instance B de s32, le 2026-09-09, dans le
 meme diff que les verdicts qui definissent les sept identifiants ajoutes : `EMO-R3`, `EXC-R6`,
@@ -107,6 +133,53 @@ l'identifiant est ecrit, exactement comme les autres notes de ce fichier.
 
 **Compte apres mon allocation, meme methode : 582 identifiants, sur 97 prefixes** (578 + `EMC-11`,
 `EPS-7`, `HIS-5`, `PAR-14`, aucun prefixe neuf).
+
+**Note de `nadia-prof`, instance A de s33, le 2026-09-10.** Six identifiants ajoutes dans le meme
+diff que les verdicts qui les definissent - `HG-R13`, `HG-R14`, `HG-R15`, `HG-R16`, `HG-R17`,
+`HG-R18` - tous sur le prefixe `HG`, deja alloue, **donc aucun prefixe neuf**. Ligne d'etat courant
+portee de **582 / 97 a 588 / 97**. Methode : comptage des lignes de la table de la section 4 sous le
+motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre accents graves, `ADR-0085`
+clause 5), **avant** mon diff - 582 identifiants distincts, 97 prefixes distincts, 0 doublon, ce qui
+confirme la ligne d'etat courant que `camille-po` avait portee a l'ouverture du sprint - plus mes six
+allocations.
+
+**Et je dis d'avance ce que ce total ne peut pas etre.** Deux autres instances de `nadia-prof`
+rendent leurs verdicts sur le meme sprint et peuvent allouer en parallele. **Si elles allouent, ce
+total sera faux a l'assemblage et la CI rougira** : c'est la limite structurelle de `PAR-5` que
+`theo-archi` a choisi de laisser nommee plutot que d'encoder, et la reparation est arithmetique -
+aucune allocation ajoutee, aucune retiree, aucun sens touche. **C'est `sofia-sm` qui la fait, a
+l'endroit prevu.** Je n'ecris pas de total pour l'arbre assemble : l'instance A l'a fait a s31 et il
+etait faux.
+
+**Note de `nadia-prof`, instance B de s33, le 2026-09-10.** Six identifiants ajoutes dans le meme
+diff que les verdicts qui les definissent - `REG-R4`, `REG-R5`, `PER-R3`, `EXC-R7`, `EXC-R8`,
+`EXC-R9` - tous sur des prefixes deja alloues, **donc aucun prefixe neuf**, et aucun ne collisionne
+avec les six de l'instance A, qui portent toutes le prefixe `HG`. Ligne d'etat courant portee de
+**588 / 97 a 594 / 97**. Methode : comptage des lignes de la table de la section 4 sous le motif du
+garde-fou lui-meme (`ALLOCATION`, identifiant et document entre accents graves, `ADR-0085` clause 5),
+**avant** mon diff.
+
+**Et ce que j'ai trouve en comptant, qui est le fait a retenir de cette note** : mon comptage
+d'avant-diff a rendu **588 et non 582**, c'est-a-dire que **l'instance A avait deja alloue quand j'ai
+compte**. Elle avait ecrit, six paragraphes plus haut, que son total serait faux si ses voisines
+allouaient ; **il ne l'est pas, parce que j'ai compte apres elle et non a partir du chiffre
+d'ouverture du sprint**. Ce n'est ni une chance ni une correction : c'est ce que la clause 5
+d'`ADR-0085` demande - **compter les lignes du fichier qu'on a sous les yeux, jamais additionner un
+chiffre repris**. Et c'est ce qui s'est produit ensuite : **l'instance C a alloue apres moi, a
+compte 594 et porte la ligne a 601**, sans que rien ne soit a reparer. **Le total courant de cette
+note n'est donc plus 594 ; c'est la ligne de la section 1 qui fait foi, et elle est juste.** Trois
+instances ont ecrit dans cette table le meme jour, chacune en comptant le fichier qu'elle avait sous
+les yeux, et **la limite structurelle de `PAR-5` n'a produit aucune reparation arithmetique** - la
+premiere fois depuis s31.
+
+**Ce qu'elle a produit a la place, et que je nomme parce que personne ne l'a encore ecrit** : la
+clause 3 d'`ADR-0085` - *une allocation pointe vers un document qui ecrit l'identifiant* - rend le
+registre **non isolable**. Sur mon worktree, ou mes six documents sont presents mais pas ceux de mes
+voisines, `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` rougit sur **treize identifiants
+d'`HG`, `EPS`, `JEU` et `SEC`, aucun des miens**, pour la seule raison que leurs documents ne sont pas
+la. **Aucune instance ne peut donc rendre un job `build` vert sur son diff seul tant que ses voisines
+ecrivent la meme table.** Ce n'est ni un defaut de leur travail ni du mien ; c'est une consequence de
+la clause, et elle appartient a `theo-archi`.
 
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
@@ -450,6 +523,7 @@ clause 2 par une exemption.
 | `EPS-5` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `EPS-6` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `EPS-7` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
+| `EPS-8` | `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-C.md` |
 | `ERR-R1` | `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md` |
 | `ETA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -468,6 +542,9 @@ clause 2 par une exemption.
 | `EXC-R4` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R5` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R6` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R7` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R8` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R9` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `FER-1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `FER-2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
@@ -535,6 +612,12 @@ clause 2 par une exemption.
 | `HG-R10` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `HG-R11` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `HG-R12` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R13` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R14` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R15` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R16` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R17` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R18` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `HIS-1` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-2` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
@@ -556,6 +639,10 @@ clause 2 par une exemption.
 | `JEU-R6` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
 | `JEU-R7` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
 | `JEU-R8` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R9` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R10` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R11` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
+| `JEU-R12` | `squad/conformite/FICHE-bandit-manchot-regles-jeu-collectif-eps-cp.md` |
 | `LIA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `LIA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `LIA-3` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -654,6 +741,7 @@ clause 2 par une exemption.
 | `PAR-14` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
+| `PER-R3` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PLA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `PLU-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `PLU-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -723,6 +811,8 @@ clause 2 par une exemption.
 | `REG-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `REG-R2` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
 | `REG-R3` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
+| `REG-R4` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
+| `REG-R5` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
 | `REP-1` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `REP-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `REP-3` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
@@ -769,6 +859,8 @@ clause 2 par une exemption.
 | `SEC-R1` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
 | `SEC-R2` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
 | `SEC-R3` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
+| `SEC-R4` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
+| `SEC-R5` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
 | `SEG-1` | `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md` |
 | `SEG-2` | `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md` |
 | `SEG-3` | `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md` |

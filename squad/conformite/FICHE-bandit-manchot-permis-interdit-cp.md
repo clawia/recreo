@@ -11,9 +11,9 @@
   fichiers cette fois**. Aucun verdict n'en depend.
 - **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** par
   `nadia-prof`, apres avoir joue la reprise `4dbf9b2`). **`EMC-CP-02` ferme** : `non couvert` ->
-  **`couvert-valide`**. **Etat des reserves au 2026-09-09** : `PER-R1` **levee**, `CAT-1` **non payee
-  et maintenue**, `PER-R2` **ouverte** - toutes non bloquantes, bloc de constat en fin de fiche.
-  **La ligne n'est pas rouverte.**
+  **`couvert-valide`**. **Etat des reserves au 2026-09-10** : `PER-R1` **levee**, **`CAT-1` PAYEE**
+  (bloc du 2026-09-10), `PER-R2` **ouverte**, `PER-R3` **ouverte** - toutes non bloquantes, blocs de
+  constat en fin de fiche. **La ligne n'est pas rouverte.**
 - **Histoire des verdicts, aucun efface** : **2026-09-05, REFUSE** - charge de lecture d'un autre
   niveau (mediane 15 mots, maximum 20) et item 9 portant sa reponse dans son enonce ; le bloc entier
   de ce refus, avec ses deux motifs et ses trois defauts nommes, reste lisible ci-dessous.
@@ -24,8 +24,8 @@
   section 4.3, et `squad/programme/enseignement-moral-et-civique/competences-cp.md` (2026-09-03).
 - **Commits audites** : `5526932` (`[LEA] s29: S29-4`) le 2026-09-05, puis `4dbf9b2` (`[LEA] s29:
   reprise des trois paquets d'EMC refuses par l'instance B`) le 2026-09-06.
-- **Derniere mise a jour** : 2026-09-06 (**second verdict de `nadia-prof` apres avoir joue**, s29,
-  instance B).
+- **Derniere mise a jour** : 2026-09-10 (**verdict de `nadia-prof` apres avoir joue**, s33,
+  instance B - paiement de `CAT-1` accepte au troisieme essai).
 
 ## Competence visee
 
@@ -523,3 +523,71 @@ neuf, en revanche, c'est qu'il porte desormais la discrimination de l'item, et c
 | **`CAT-1` non payee (1/4), et `PER-R2`** | `camille-po`, via `sofia-sm` | En faire une story. **Les deux se paient dans le meme geste sur l'item 6** ; l'item 2 n'a jamais ete touche et c'est celui qui coute le plus. Regime : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
 | **Qu'un pronom de proposition ait un antecedent dans l'enonce de son item** | `theo-archi` | **Symptome mesure sur un item.** Je doute qu'un test puisse le voir en general et je ne l'affirme pas ; s'il existe une forme qui epingle un pronom de troisieme personne sans antecedent dans le meme item, elle vaut plus que ma vigilance. **Je dis la propriete, jamais la forme du test** |
 | **La ligne d'entree de catalogue de cette fiche** | moi-meme, corrigee ci-dessus | Corrigee dans ce diff, comme sur `regles-de-vie` |
+
+---
+
+## Bloc de verdict du 2026-09-10 - `nadia-prof`, instance B de s33, apres avoir joue - `CAT-1` PAYEE
+
+**Arbre audite** : `round-two` a `b45e5927`, worktree dedie. **Partie complete de dix manches, avec
+erreurs volontaires.** Releve manche par manche dans
+`squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-B.md`, section 5.
+**Audit degrade sur un point, declare** : lecture du HTML servi, pas de la page rendue par un
+navigateur.
+
+**Story auditee** : `S33-CAT1`, deuxieme tentative de paiement de `CAT-1`. **La ligne `EMC-CP-02`
+reste `couvert-valide` et je ne la rouvre pas.**
+
+### `CAT-1` est payee - 4 items sur 4, contre 1 sur 4 le 2026-09-09
+
+**La tache de qualification** (sept items, *"Comment appelle-t-on ca ?"*) **ne porte pas d'axe de
+registre** : ses propositions sont des etiquettes de situation, pas des conduites. Elle n'est pas
+touchee et je ne la compte pas - c'est la lecture que le paquet ecrit, et **je la confirme apres
+l'avoir jouee**, sur les cinq manches de qualification qui m'ont ete tirees.
+
+| Item | Bonne reponse | Les deux distracteurs | 2026-09-09 | 2026-09-10 |
+|---|---|---|---|---|
+| 2 | *pour ne pas le blesser* | *pour ne pas etre puni* / *pour respecter le reglement de l'ecole* | non tenue | **tenue** |
+| 4 | *pour ne pas le faire souffrir* | *pour ne pas se faire gronder* / *pour ne pas deranger la classe* | a moitie | **tenue** |
+| 6 | *pour ne pas lui faire mal* | *pour ne pas se faire mal soi-meme* / *pour respecter le reglement de l'ecole* | a moitie | **tenue** |
+| 10 | *parce que ca peut blesser malgre tout* | *parce que ca derange la classe* / *parce que ca fait perdre du temps* | tenue | **tenue** |
+
+> **`CAT-1` est PAYEE sur ce paquet.** *Pour ne pas etre puni* et *pour ne pas se faire gronder* sont
+> les deux meilleurs distracteurs du lot : ce sont des raisons qu'un enfant de six ans donne
+> reellement, elles sont serieuses, et elles sont fausses **parce qu'elles regardent celui qui agit
+> au lieu de celui qui recoit**. Un enfant qui les ecarte a compris quelque chose de la ligne.
+
+### `PER-R3` - la meme raison sert deux fois, et elle est difficile a ecarter
+
+*Pour respecter le reglement de l'ecole* est distracteur sur les items **2 et 6**. Je l'ai pressee en
+jouant (manche 9) et le jeu l'a refusee.
+
+**Elle est fausse** - le reglement enregistre l'interdit, il ne le motive pas - **mais cette
+inversion est fine pour un enfant de six ans**, et c'est la seule formulation du paquet qui se repete
+mot pour mot dans les distracteurs sans jamais etre bonne reponse : *reglement* et *l'ecole* y
+comptent chacun **2 occurrences dans les distracteurs, 0 en bonne reponse**.
+
+> **`PER-R3` - nouvelle, datee du 2026-09-10, non bloquante.** Une raison dont la faussete tient a
+> une inversion entre la regle et ce qu'elle protege n'est pas servie deux fois comme distracteur.
+>
+> **Ce que cette reserve n'est pas** : un reproche au correctif. **Rendre les distracteurs serieux
+> les rapproche du vrai** - c'est le prix de `CAT-1`, il etait previsible, et il ne remet pas en
+> cause le paiement. Je nomme le point pour qu'il soit borne.
+
+### Ce que j'ai verifie et qui ne fait pas reserve
+
+- **Aucune bonne reponse, aucun enonce, aucune situation ne change.** `FER-1`, `FER-2` (onze items),
+  `FER-3`, `EMC-1`, `EMC-5`, `EMC-8`, `EMC-10` tenues a l'identique.
+- **`PER-R1` reste levee** : les six *"Comment appelle-t-on ca ?"* s'enchainent correctement avec
+  leurs qualifications, entendu sur les cinq manches de qualification tirees.
+- **`PER-R2` est inchangee et toujours ouverte.** L'item 6 oppose toujours *lui faire mal* a *se
+  faire mal soi-meme* sans que l'enonce nomme personne : `S33-CAT1` a remplace l'autre distracteur,
+  pas celui-la. **Non financee a s33, je ne la compte pas contre le lot.**
+- **`PLA-1`** : chaque distracteur est un candidat serieux pour la situation decrite.
+- **`LON-1`, `LON-2`** : hors de ma garde depuis `ADR-0089`.
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-02` reste `couvert-valide`** | `camille-po` | **Aucun mouvement de matrice** |
+| **`PER-R3`, avec `PER-R2` qui voyage avec elle** | `camille-po`, via `sofia-sm` | Une story, regime `PAR-10` - rejeu borne, 0,5 pour le paquet entier |

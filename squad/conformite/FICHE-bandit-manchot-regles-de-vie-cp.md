@@ -12,17 +12,17 @@
 - **Statut global** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-05** par
   `nadia-prof`, apres avoir joue). **`EMC-CP-06` ferme** : `non couvert` -> **`couvert-valide`**,
   **a la condition que la mention de couverture partielle ci-dessous soit ecrite dans la matrice**.
-  **Etat des reserves au 2026-09-09** : `REG-R1` **levee**, `CAT-1` **non payee et maintenue**,
-  `REG-R2` et `REG-R3` **ouvertes** - trois reserves nommees, toutes non bloquantes, bloc de constat
-  en fin de fiche. **La ligne n'est pas rouverte.**
+  **Etat des reserves au 2026-09-10** : `REG-R1` **levee**, **`CAT-1` PAYEE** (bloc du 2026-09-10),
+  `REG-R2` **levee**, `REG-R3` **ouverte**, `REG-R4` et `REG-R5` **ouvertes** - toutes non
+  bloquantes, blocs de constat en fin de fiche. **La ligne n'est pas rouverte.**
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
   sections 4.3 et 5, et
   `squad/programme/enseignement-moral-et-civique/competences-cp.md` (conditions `EMC-1` a `EMC-7`,
   posees le 2026-09-03).
 - **Commit audite** : `5526932` (`[LEA] s29: S29-4`).
-- **Derniere mise a jour** : 2026-09-05 (**verdict de `nadia-prof` apres avoir joue**, s29,
-  instance B de la parallelisation `PAR-0` a `PAR-8`).
+- **Derniere mise a jour** : 2026-09-10 (**verdict de `nadia-prof` apres avoir joue**, s33,
+  instance B - paiement de `CAT-1` accepte au troisieme essai).
 
 ## Competence visee
 
@@ -492,3 +492,142 @@ qui joue les six paquets d'EMC CP ne rencontre jamais un homme devant une classe
 | **`CAT-1` non payee, avec son compte de 2/11**, plus `REG-R2` et `REG-R3` | `camille-po`, via `sofia-sm` | En faire une story. **Les trois se paient dans le meme geste** : `REG-R2` est un cas particulier de `CAT-1` sur deux items, `REG-R3` est une contrainte sur les mots que ce geste emploie. Regime inchange : **rejeu borne, 0,5 pour le paquet entier** (`PAR-10`) |
 | **Que la bonne reponse ne se reconnaisse pas a un mot present dans les seuls distracteurs** | `theo-archi` | **Fait mesure** : 6 items sur 11 portent *maitresse* dans un distracteur, 0 bonne reponse le porte. C'est une comparaison d'ensembles de mots sur un paquet, du meme genre que la clause 2 d'`ADR-0086`. **Je dis la propriete, jamais la forme du test, et je ne prescris aucun seuil** |
 | **La ligne d'entree de catalogue de cette fiche, qui citait une consigne que le produit ne sert plus** | moi-meme, corrigee ci-dessus | **Corrigee dans ce diff.** Le meme defaut existe sur `FICHE-bandit-manchot-permis-interdit-cp.md`, corrige dans le meme geste |
+
+---
+
+## Bloc de verdict du 2026-09-10 - `nadia-prof`, instance B de s33, apres avoir joue - `CAT-1` PAYEE
+
+**Arbre audite** : `round-two` a `b45e5927`, worktree dedie. **Partie complete de dix manches, avec
+erreurs volontaires sur chaque manche dont la premiere proposition pressee n'etait pas la bonne.**
+Releve manche par manche dans
+`squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-B.md`, section 4.
+**Audit degrade sur un point, declare** : lecture du HTML servi, pas de la page rendue par un
+navigateur - aucune conclusion de ce bloc ne repose sur un jugement visuel.
+
+**Story auditee** : `S33-CAT1`, deuxieme tentative de paiement de `CAT-1`. **La ligne `EMC-CP-06`
+reste `couvert-valide` et je ne la rouvre pas.**
+
+### `CAT-1` est payee
+
+**Ma clause demande les trois propositions du meme registre.** Meme grille qu'a s32 - **tenue** quand
+aucune des trois n'est reconnaissable a son ton, **a moitie** quand une seule des deux fausses l'est,
+**non tenue** quand la bonne reponse est la seule qui ne le soit pas.
+
+| Item | Bonne reponse | Les deux distracteurs | 2026-09-09 | 2026-09-10 |
+|---|---|---|---|---|
+| 1 | *lever la main* | *attendre en silence* / *chuchoter a son voisin* | non tenue | **a moitie** |
+| 2 | *pour que chacun parle a son tour* | *pour montrer qu'on a compris* / *pour demander la permission de sortir* | non tenue | **tenue** |
+| 3 | *le ranger* | *le laisser secher sur la table* / *le donner a un camarade pour qu'il l'utilise* | non tenue | **tenue** |
+| 4 | *pour que chacun retrouve ses affaires* | *pour que la salle soit plus jolie* / *pour qu'il dure plus longtemps* | non tenue | **tenue** |
+| 5 | *en marchant* | *en marchant a reculons* / *en trainant les pieds* | a moitie | **tenue** |
+| 6 | *pour que personne ne se blesse* | *pour ne pas faire de bruit* / *pour garder de l'energie pour la recreation* | a moitie | **tenue** |
+| 7 | *attendre son tour* | *parler plus fort que lui* / *lui dire de se taire* | a moitie | **NON TENUE** |
+| 8 | *pour comprendre ce qu'il dit* | *pour savoir quand ce sera son tour de parler* / *pour montrer qu'on est poli* | tenue | **tenue** |
+| 9 | *faire la queue* | *attendre que les autres soient partis* / *laisser les plus grands passer devant* | a moitie | **tenue** |
+| 10 | *pour que tout le monde passe sans se bousculer* | *pour que le service soit plus rapide* / *pour montrer qu'on est patient* | a moitie | **tenue** |
+| 11 | *les remettre a leur place* | *les garder pour elle* / *les donner a un camarade qui n'en a pas* | tenue | **a moitie** |
+
+**8 tenues, 2 a moitie, 1 non tenue** - c'etait **2 / 5 / 4** le 2026-09-09. Sur les cinq items
+*"pourquoi"*, la tache ou le registre etait le plus mordant, la clause est tenue **5 fois sur 5**.
+
+> **`CAT-1` est PAYEE sur ce paquet.** Le controle se fait sur la tache entiere, jamais item par
+> item, et **aucune des deux taches ne se gagne plus au registre**. C'est ce que ma clause demande le
+> 2026-09-07, et **je ne demande rien de plus apres coup.**
+
+### Le repere lexical de s32 est parti, et je l'ai compte plutot que suppose
+
+| | *maitresse* dans les propositions servies | dans une bonne reponse |
+|---|---|---|
+| Avant `S32-CAT1` | 1 | 0 |
+| Apres `S32-CAT1` (etat refuse le 2026-09-09) | **7**, sur 6 items de 11 | 0 |
+| Apres `S33-CAT1` | **0** | **0** |
+
+**Compte fait sur les items du fichier servi, pas sur le fichier** : les trois occurrences restantes
+de la chaine dans `cp-emc-regles-de-vie.yaml` sont toutes dans les commentaires d'en-tete et
+n'atteignent aucun enfant. **Le mot n'a pas ete redistribue, il a ete retire** - c'etait le choix
+couteux, et c'est celui que la clause demandait.
+
+### `REG-R2` est levee
+
+Les deux distracteurs absurdes des items 4 et 6, que `REG-R1` n'avait pas comptes, sont remplaces par
+quatre raisons plausibles : *pour que la salle soit plus jolie*, *pour qu'il dure plus longtemps*,
+*pour ne pas faire de bruit*, *pour garder de l'energie pour la recreation*. **Levee.**
+
+### `REG-R4` - l'item 7 est plus mauvais qu'avant le correctif
+
+| | Distracteurs de l'item 7 |
+|---|---|
+| Avant `S33-CAT1` | *parler plus fort que lui* / **aller prevenir la maitresse tout de suite** |
+| Apres `S33-CAT1` | *parler plus fort que lui* / **lui dire de se taire** |
+
+**Le distracteur serieux a ete remplace par un distracteur impoli**, parce qu'il portait le mot que la
+story devait retirer. **La bonne reponse redevient la seule proposition polie des trois**, ce qui est
+mot pour mot la premiere phrase de `CAT-1`. En jouant, j'ai presse *attendre son tour* du premier
+coup sans lire les deux autres.
+
+> **`REG-R4` - nouvelle, datee du 2026-09-10, non bloquante.** Sur l'item 7, les deux distracteurs
+> sont impolis et la bonne reponse est la seule qui ne le soit pas. **Le remede du repere lexical ne
+> se paie pas par un retour du repere de registre sur l'item ou le mot a ete retire.**
+
+### `REG-R5` - un gabarit de phrase a pris la place du mot
+
+Trois distracteurs partagent la meme amorce de cinq mots, et aucune bonne reponse ne la porte :
+*pour montrer qu'on a compris* (item 2), *pour montrer qu'on est poli* (item 8), *pour montrer qu'on
+est patient* (item 10) - **trois des cinq items de la tache *"pourquoi"***.
+
+La strategie *"je ne prends jamais le bouton qui commence par pour montrer qu'on"* **elimine** un
+distracteur sur ces trois items ; **elle ne donne pas la reponse**, contrairement au *maitresse* de
+s32 qui la donnait d'emblee sur l'item 2 en portant les **deux** distracteurs. **C'est pourquoi c'est
+une reserve et non un refus de paiement.**
+
+> **`REG-R5` - nouvelle, datee du 2026-09-10, non bloquante.** Aucun gabarit de phrase repete ne se
+> trouve dans les seuls distracteurs. **Je ne pose aucun seuil chiffre** : trois occurrences sur cinq
+> items d'une tache est ce que j'ai mesure, ce n'est pas une barre.
+
+### Correction a mon propre constat de `REG-R3`, et elle va contre moi
+
+**Ce que j'ai ecrit le 2026-09-09 dans cette fiche** : *"17 occurrences de maitresse contre 1 adulte
+d'ecole masculin"* sur l'EMC CP entier.
+
+**Recompte le 2026-09-10** sur le materiau servi des six paquets - enonces, bonnes reponses,
+distracteurs et indices, mots designant un adulte d'ecole a genre grammatical marque :
+
+| | Feminin | Masculin |
+|---|---|---|
+| Avant s33 | **17** | **6** |
+| Apres s33 | **12** | **8** |
+
+**Les cinq occurrences de *un surveillant de la cour*, dans les propositions de `exclusion`, n'ont
+jamais ete comptees.** Le desequilibre est reel et **plus petit que je ne l'ai ecrit**. `REG-R3`
+reste ouverte, sa propriete est intacte, et **je ne pose toujours aucune barre chiffree**.
+
+**Sur les cinq points gagnes cote masculin, quatre viennent des enonces de `exclusion` que je refuse
+par ailleurs** : si ces enonces reviennent a leur etat d'avant s33, le compte redescend a **10 / 6**.
+**Ce paquet-ci garde son gain propre** - le retrait des sept *maitresse* - et c'est celui-la qui est
+acquis.
+
+### Ce que j'ai verifie et qui ne fait pas reserve - dit pour qu'on ne me le redemande pas
+
+- **Aucune bonne reponse, aucun enonce, aucun indice n'a change.** `FER-1`, `FER-2` (onze items),
+  `FER-3`, `EMC-1`, `EMC-8`, `EMC-10` tenues a l'identique, recomptees sur le materiau servi.
+- **`EMC-5`** : aucun item n'a deux reponses defendables. Verifie item par item, parce que **rendre
+  les distracteurs serieux les rapproche du vrai** et que c'est le risque propre de ce correctif.
+  Les deux qui m'ont fait m'arreter : *attendre en silence* (item 1) n'est pas ce qu'on fait avant de
+  parler, on leve la main ; *le laisser secher sur la table* (item 3) n'est pas ce qu'on fait *de son
+  materiel* quand on a fini. Les deux sont faux pour la situation decrite.
+- **`PLA-1`** : chaque distracteur est un candidat qu'un enfant de six ans peut serieusement
+  envisager. *En marchant a reculons* et *en trainant les pieds* sont deux facons de marcher que les
+  enfants pratiquent.
+- **`LON-1`, `LON-2`** : hors de ma garde depuis `ADR-0089`, qui les execute. **Je ne recompte pas a
+  la main ce qu'un garde-fou compte mieux que moi.**
+- **Le chemin d'erreur** : premiere erreur -> *"Ce n'est pas ca. Essaie encore !"* suivi de l'indice ;
+  troisieme -> revelation de la reponse et l'enfant continue. **Un enfant bloque peut avancer.**
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-06` reste `couvert-valide`** | `camille-po` | **Aucun mouvement de matrice.** La mention de couverture partielle exigee le 2026-09-05 reste due et inchangee |
+| **`REG-R4` et `REG-R5`** | `camille-po`, via `sofia-sm` | Une seule story : les deux se paient dans le meme geste sur ce paquet. Regime `PAR-10` inchange - rejeu borne, 0,5 pour le paquet entier |
+| **`REG-R3`, chiffre corrige a 17 / 6 puis 12 / 8** | `camille-po`, via `sofia-sm` | Reserve toujours ouverte. **Le gain repose pour moitie sur des enonces que je refuse sur `exclusion`** |
+| **Que la bonne reponse ne se reconnaisse pas a un gabarit present dans les seuls distracteurs** | `theo-archi` | **Fait mesure** : 3 distracteurs de 3 items portent *pour montrer qu'on*, 0 bonne reponse le porte. Meme genre que la clause 2 d'`ADR-0086`. **Je dis la propriete, jamais la forme du test, et je ne prescris aucun seuil** |

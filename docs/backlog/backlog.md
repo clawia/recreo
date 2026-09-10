@@ -12802,4 +12802,168 @@ ce vivier est le plus bas de tout le Plan 2.
   les trois dessins (un plan de classe, deux frises de la vie de l'enfant) ; `marc-dev` ou
   `lea-dev` pour le contenu ; `nadia-prof` pour l'audit et le Done pedagogique.
 
+## Backlog ouvert pour s34 - trois postes finances par la composition de s33 sans story ecrite
+## (`DEC-0085`, section 10)
+
+La composition de s33 (`DEC-0085`, section 3) finance trois postes - `cm1-anglais` `ANG-R3` a
+`R6` (0,5, instance A), la passe transverse de l'instance A (0,5) et le lot de l'effort et du corps
+`EPS-CP-10`/`EPS-CP-11` (1,5, instance C) - qu'aucune story n'a jamais portes. Le planning de s33 l'a
+constate en section 10 et route a `camille-po` sans les inventer. **Aucun des trois n'a ete engage
+pendant s33** : le planning ferme le sprint sur huit stories payees sur onze, sans qu'aucune de ces
+trois n'y figure. Les trois stories ci-dessous sont donc ouvertes **pour s34**, et non pour s33
+retroactivement - voir `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/arbitrage-produit-camille.md`
+pour le detail du routage et, pour la troisieme, la position produit sur le grain (un seul paquet).
+
+### S34-ANG-CORR - Lever les quatre reserves non bloquantes de `cm1-anglais` sur `LVE-CM1-07`
+### (`ANG-R3` a `ANG-R6`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que les indices et les propositions des questions de
+  culture des pays anglophones restent des candidats que je peux vraiment ecarter ou choisir en
+  lisant l'enonce, et que l'indice qui m'aide ne m'attribue jamais un fait faux, afin de jouer au
+  bandit manchot d'anglais sans texte qui triche ou qui ment.
+- **Competence programme visee** : langues vivantes (anglais), CM1 (cycle 3) -
+  `squad/programme/langues-vivantes/competences-cm1.md`, `LVE-CM1-07` "Decouvrir quelques aspects
+  culturels des pays de la langue etudiee", deja `couvert-valide`. Correction non bloquante : aucun
+  statut de matrice ne change par cette story.
+- **Criteres d'acceptation**, repris mot pour mot des proprietes de `nadia-prof` :
+  - Etant donne les items 22, 23 et 25 (`ANG-R3`), quand ils sont revus, alors aucune proposition ne
+    s'ecarte par la seule lecture de l'enonce : soit l'enonce cesse de decrire l'objet qu'il fait
+    nommer, soit les propositions deviennent des candidats reels du meme genre (un autre monument de
+    New York, une autre fete americaine d'automne, un autre transport londonien).
+  - Etant donne l'item 23 (`ANG-R4`, 21 mots dont 14 inseres entre le sujet et le verbe de la
+    question principale), quand il est revu, alors sa question principale n'est plus coupee par une
+    incise, sur le patron de l'item 20 du meme paquet ("Quelle fete traditionnelle, celebree fin
+    novembre aux Etats-Unis, reunit la famille autour d'un grand repas ?").
+  - Etant donne l'indice de l'item 16 (`ANG-R5` : "C'est aussi le nom d'une grande roue celebre au
+    bord de la Tamise", attribue a tort a "Londres" plutot qu'au "London Eye"), quand il est revu,
+    alors l'indice n'attribue plus a la bonne reponse un nom qui n'est pas le sien.
+  - Etant donne l'item 24 (`ANG-R6`, "la plupart des eleves" se rendent a l'ecole "en bus scolaire
+    jaune" contre "a pied" et "en metro"), quand il est revu, alors l'une des propositions devient la
+    pratique concurrente reelle (par exemple le ramassage a pied dans les zones les plus denses),
+    et non deux pratiques ecartables d'emblee.
+  - Etant donne ces quatre reprises, alors les cinq items existants confirmes bons par `nadia-prof`
+    au reaudit du 2026-09-08 ne sont pas modifies, et `FER-1`, `FER-2` (dix items sur cette ligne)
+    restent tenues a l'identique.
+  - Etant donne le rejeu de `nadia-prof`, alors elle confirme, en jouant, que les quatre proprietes
+    ci-dessus sont tenues sur les items concernes.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas `LVE-CM1-07`, deja `couvert-valide` ; elle
+  ne touche a aucun autre paquet d'anglais ; elle n'ajoute aucun item neuf sur cette ligne.
+- **Lien decision** :
+  `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-A.md`, section sur
+  `LVE-CM1-07` (`ANG-R3` a `ANG-R6`, datees du 2026-09-09) ; `DEC-0085`, section 3 (poste finance,
+  jamais engage) ; `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/arbitrage-produit-camille.md`.
+- **Agent pressenti** : a affecter au planning de s34 par `sofia-sm` ; `marc-dev` ou `lea-dev` pour le
+  texte ; `nadia-prof` pour l'audit.
+
+### S34-TRANSVERSE-1 - Passe transverse de l'instance d'accumulation sur les proprietes de portee
+### "depot servi entier"
+
+- **Besoin** : transverse - pas de contenu pedagogique. Cette story ne met aucun jeu neuf entre les
+  mains d'un enfant : c'est la tache d'audit que `nadia-prof` nomme necessaire chaque sprint ou une
+  instance audite en parallele de deux autres (`PAR-4`, `PAR-12`), sur le patron de `S32-3` deja
+  livree.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
+  `squad/programme/MATRICE-couverture.md` ne bouge par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne le depot de contenu servi a l'ouverture de s34, quand l'instance qui porte
+    l'accumulation conduit sa passe transverse, alors elle cherche les autres endroits ou un gabarit
+    compose une phrase autour d'un champ de contenu, dans la famille de defaut deja trouvee a s29
+    (`REV-1`) et a s30 (`SAI-R1`).
+  - Etant donne cette passe, alors elle verifie l'homogeneite de registre au-dela de la consigne -
+    titres, messages de reussite, ecrans de fin - explicitement hors du perimetre de `CONS-1`.
+  - Etant donne les instances actives ce sprint, alors elle verifie qu'aucun identifiant de condition
+    ou de reserve mine par l'une n'entre en collision avec un identifiant deja existant du registre
+    (`ADR-0085`, `PAR-5`).
+  - Etant donne cette passe, alors son resultat est ecrit - motif, portee, verdict - dans un document
+    consultable, et non seulement rendu oralement ou implicitement.
+  - Etant donne cette passe, alors elle ne prononce aucun Done pedagogique sur un increment neuf de
+    s34 : elle produit des reserves ou des alertes sur le depot existant, jamais une fermeture de
+    ligne.
+- **Ce que cette story ne fait pas** : elle ne relit pas les lots des deux autres instances comme un
+  double controle - deux paires d'yeux sur des lots disjoints ne sont pas une verification croisee.
+- **Lien decision** : `DEC-0083`, sections 2, 3 et 6 (`S32-3`, modele repris) ; `DEC-0085`, section 3
+  (poste finance a s33, jamais engage) ;
+  `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/arbitrage-produit-camille.md`.
+- **Agent pressenti** : `nadia-prof`, instance qui portera l'accumulation a s34 - affectation au
+  planning par `sofia-sm`.
+
+### S34-EPS-CORPS-EFFORT - Second lot d'education physique et sportive CP : les effets de l'effort
+### sur le corps, l'echauffement, l'hydratation et la recuperation
+
+- **Besoin** : en tant qu'eleve de CP, je veux reconnaitre ce que l'effort fait a mon corps dans
+  l'instant et connaitre quelques regles d'echauffement, d'hydratation et de recuperation autour de
+  l'effort, en jouant au bandit manchot, afin de completer ce que je decouvre de l'education physique
+  et sportive dans l'application.
+- **Competence programme visee** : education physique et sportive, CP (cycle 2) -
+  `squad/programme/education-physique-et-sportive/competences-cp.md`, deux lignes `non couvert` :
+  "Reconnaitre les effets de l'effort sur son corps (essoufflement, coeur qui bat vite, chaleur,
+  soif)" (`EPS-CP-10`) et "Connaitre quelques regles d'echauffement, d'hydratation et de
+  recuperation autour de l'effort" (`EPS-CP-11`).
+- **Le grain retenu, position produit rendue** : **un seul paquet sert les deux lignes**, avec une
+  consigne a deux clauses, et non deux paquets distincts. Position de `camille-po`
+  (`squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/arbitrage-produit-camille.md`, section 2),
+  convergente avec la recommandation de `nadia-prof` (arbitrage prealable de s33, section 5.6) : les
+  deux lignes portent le meme objet (l'effort physique), aucune surface de couture n'existe entre
+  elles, et le prix d'un paquet unique est la moitie de celui de deux paquets.
+- **La frontiere corps-et-effort, ecrite par `nadia-prof` (`DEC-0083`, section 9.2), reprise mot pour
+  mot et opposable des le premier item** :
+  - "L'EPS ne porte que l'effort lui-meme : ce que l'effort fait au corps dans l'instant
+    (essoufflement, coeur qui bat vite, chaleur, soif), ce qui l'entoure (echauffement, hydratation,
+    recuperation) et les regles de securite de la pratique. Jamais l'hygiene de vie en general."
+  - "Les sciences CM1 ne portent que les quatre facteurs de sante generale - alimentation, activite
+    physique, sommeil, hygiene - rapportes au fonctionnement du corps, jamais aux effets immediats
+    d'un effort."
+  - "Questionner le monde CP ne porte que le niveau CP de l'hygiene de vie, et `CYC-1` s'applique :
+    aucun item de cycle 3 ne contredit ce que le CP enseigne sur le meme objet."
+- **Criteres d'acceptation** :
+  - Etant donne le paquet, quand on compte ses items, alors il en porte au moins vingt (`FER-2`, dix
+    par ligne), avec strictement plus d'items que de manches (`ADR-0023`).
+  - Etant donne le paquet, alors deux taches distinctes existent par ligne au minimum, sur le meme
+    patron que le premier lot d'EPS CP : reconnaitre l'effet ou la regle decrite, et dire pourquoi ou
+    dans quel contexte elle s'applique (`FER-3`).
+  - Etant donne chaque fait sur le corps a l'effort (essoufflement, frequence cardiaque, chaleur,
+    soif, delai de recuperation), alors il est verifie contre une source, comme tout fait factuel du
+    produit (`BIA-1`, `BIA-2`).
+  - Etant donne la frontiere corps-et-effort ci-dessus, alors aucun item ne porte sur l'hygiene de
+    vie en general, sur l'alimentation, le sommeil ou l'hygiene corporelle hors du contexte de
+    l'effort - ces objets restent a `EPS-CM1-10` (sciences) ou a questionner le monde CP.
+  - Etant donne chaque item sur la regle d'echauffement, d'hydratation ou de recuperation, alors
+    cette regle est soit rappelee dans l'enonce, soit universellement scolaire (`EPS-1`).
+  - Etant donne chaque item, alors aucun ne compare des corps, des performances ou des capacites
+    entre enfants (`EPS-2`), et aucun ne fait porter une attitude, une emotion ou une conduite
+    morale par la bonne reponse (`EPS-3`).
+  - Etant donne chaque indice du paquet, alors il ne decrit pas la dynamique d'un effort par une
+    image lue au premier degre (`EPS-6` - pas de "le coeur s'emballe", "les jambes deviennent
+    lourdes").
+  - Etant donne chaque item, alors deux items d'une meme tache ne portent jamais la meme bonne
+    reponse mot pour mot (`FAB-1a`), les distracteurs ne sont pas pris systematiquement dans le
+    vivier des bonnes reponses des autres items de la meme tache (`FAB-1b`), et la bonne reponse ne
+    se reconnait pas a la forme de son texte sur plus d'un tiers des items d'une tache (`FAB-1c`).
+  - Etant donne chaque proposition de chaque item, alors elle est un candidat qu'un enfant de CP peut
+    serieusement envisager, jamais un bouton de remplissage (`PLA-1`).
+  - Etant donne chaque enonce, alors il compte au plus 15 mots (`LON-1`) et au plus deux phrases, la
+    seconde etant la question (`LON-2`).
+  - Etant donne les items d'une meme tache, alors au plus la moitie d'entre eux portent deux
+    propositions plutot que trois (`BIN-1`).
+  - Etant donne le paquet, alors il declare ses deux lignes sous `lignesDeReferentiel` et attribue
+    chaque item a l'une des deux (`ADR-0081`, clauses 4 et 5).
+  - Etant donne l'entree de catalogue, alors sa consigne nomme les deux taches reellement servies en
+    deux clauses, et ne reprend pas la formule generique que `DEC-0078` interdit aux entrees neuves.
+  - Etant donne les reserves non bloquantes que ce lot neuf peut ouvrir, alors elles sont soldees
+    dans le meme sprint (Plan 2, `PAR-10`), et non differees.
+  - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
+    `couvert-valide` que si `nadia-prof` verifie `FER-1`, `FER-2`, `FER-3`, `EPS-1`, `EPS-2`,
+    `EPS-3`, `EPS-6`, `FAB-1`, `PLA-1`, `BIN-1`, `BIA-1`, `BIA-2` et la frontiere corps-et-effort
+    tenues - une ligne peut fermer independamment de l'autre.
+- **Ce que cette story ne fait pas** : elle ne sert aucune ligne de sciences CM1 ni de questionner le
+  monde CP sur l'hygiene de vie generale (frontiere ci-dessus) ; elle ne touche pas `EPS-CP-04` ni
+  `EPS-CP-08`, deja servies ; elle ne rouvre pas la question du grain une deuxieme fois - le paquet
+  unique est la position rendue, pas une option parmi d'autres a rediscuter a chaque sprint.
+- **Lien decision** : `DEC-0083`, sections 6 et 9.2 (frontiere corps-et-effort) ; arbitrage prealable
+  de s33 de `nadia-prof`, section 5.6 (recommandation de grain, prix) ; `DEC-0085`, section 3 (poste
+  finance a s33, jamais engage) ;
+  `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/arbitrage-produit-camille.md`.
+- **Agent pressenti** : a affecter au planning de s34 par `sofia-sm` ; contenu par `marc-dev` ou
+  `lea-dev` ; `nadia-prof`, instance C, pour l'audit et le Done pedagogique.
+
 

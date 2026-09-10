@@ -889,7 +889,7 @@ items:
     distracteurs: ["dans un champ", "sur un bateau de pêche"]
     indice: "C'est un lieu de travail fermé, avec des tables et des ordinateurs."
     ligneDeReferentiel: "HG-CM1-12"
-  - enonce: "Dans une ville touristique, quel évènement culturel attire souvent des visiteurs en été ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
+  - enonce: "Dans une ville touristique, quel événement culturel attire souvent des visiteurs en été ?"  # HIS-1: association ; HIS-3: fait géographique général, famille (a) (référentiel ligne 12)
     bonneReponse: "un festival"
     distracteurs: ["une moisson", "une pêche en mer"]
     indice: "C'est une manifestation artistique ou musicale organisée pendant plusieurs jours."

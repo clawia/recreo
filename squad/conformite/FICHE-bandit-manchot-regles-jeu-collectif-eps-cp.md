@@ -2,8 +2,8 @@
 
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-eps-regles-jeu-collectif` (11 items)
-- **Statut global** : **REFUSE**
-- **Derniere mise a jour** : 2026-09-09
+- **Statut global** : **REFUSE** (second refus, 2026-09-10)
+- **Derniere mise a jour** : 2026-09-10
 
 > **Fiche ouverte par `nadia-prof`, instance C, et non par `camille-po`.** Le paquet est neuf et la
 > matiere n'avait aucune fiche. J'ai rempli les sections descriptives depuis la story `S32-5` du
@@ -335,3 +335,219 @@ produit ne le montrera jamais.
 | Date | Verdict | Instance | Motif en une ligne |
 |---|---|---|---|
 | 2026-09-09 | **REFUSE** | C | `JEU-R1` a `JEU-R6` - quatre items sur onze enseignent ou verifient quelque chose de faux, dont une erreur de regle du chat perche servie deux fois |
+
+---
+
+## Bloc de validation pedagogique - second passage, 2026-09-10 - nadia-prof UNIQUEMENT
+
+> **Rien n'est efface au-dessus. On ajoute.** Le bloc du 2026-09-09 reste verbatim : un refus efface
+> n'a aucune valeur de preuve, et six de ses huit motifs ont ete payes - ils doivent rester lisibles.
+
+- **Verdict** : **REFUSE**
+- **Date** : 2026-09-10
+- **Auteur** : `nadia-prof`, **instance C de s33**
+- **Increment audite** : `S33-EPS-JEU`, commit `556cad9f`, fusionne en `e5aebf9c`, arbre `b45e5927`
+- **Audit joue** : **oui.** Jar reconstruit depuis un worktree dedie, application lancee sur un port
+  local, arretee **par l'identifiant de son processus**. **Huit parties, quatre-vingts manches, les onze
+  items vus a l'ecran**, avec erreur volontaire sur chaque item non encore rencontre pour lire
+  l'indice servi.
+- **Audit degrade sur un point, declare** : joue par requetes HTTP reelles, donc **HTML servi** et
+  non page rendue par un navigateur. **Ni couleur, ni contraste, ni taille, ni position** - aucune
+  conclusion de ce bloc n'en depend.
+- **`PAR-14` s'applique, et le compte que j'avais ecrit est faux dans le bon sens** : la reprise
+  touche **sept items sur onze** et non six - item 4 (enonce), items 5, 6, 7, 8 (entiers), items 10
+  et 11 (distracteurs). Mon compte de six oubliait l'item 6, que `JEU-R7` a fait reecrire. **Le tarif
+  ne change pas**, il etait deja au tarif de lot, et **j'ai rebalaye toutes les conditions du paquet
+  comme pour un premier passage** - c'est ce que ce tarif achete.
+
+### Les conditions, une par une, sur le paquet entier
+
+| Condition | Etat | Ce que j'ai mesure |
+|---|---|---|
+| **`FER-1`** | **tenue, vacuement** | Le libelle ne porte aucune parenthese enumerative |
+| **`FER-2`** | **tenue** | Onze items, plancher de dix |
+| **`FER-3`** | **tenue** | Tache A - reconnaitre la regle d'un jeu nomme, items 1 a 6. Tache B - dire ce qui se passe dans une situation decrite, items 7 a 11. **Cinq au minimum, plancher de trois** |
+| **`EPS-1`** | **NON TENUE sur l'item 8** | **C'est le motif du refus** |
+| **`EPS-2`** | **tenue** | Aucune comparaison de corps, de performance ni de capacite |
+| **`EPS-3`** | **tenue** | La tache B juge le respect **factuel** d'une regle, jamais une intention ni une conduite morale |
+| **`EPS-6`** | **tenue** | *"Le loup grandit au fil de la partie"* a disparu ; aucun indice ne decrit une dynamique par une image. **Reserve voisine mais distincte : `JEU-R11`** |
+| **`BIA-4`** | **tenue** | Les situations mettent en scene des personnages nommes, exterieurs a l'enfant |
+| **`CAT-1`, `FAB-1c`** | **tenues** | Un seul item de la tache B se gagne encore a la forme (`JEU-R10`), **sous mon seuil de deux sur cinq**. **`JEU-R6` est levee** |
+| **`FAB-1a`** | **tenue** | Six bonnes reponses distinctes sur la tache A, cinq sur la tache B |
+| **`FAB-1b`** | **tenue** | Verifie sur les vingt-deux distracteurs |
+| **`PLA-1`** | **tenue** | **Amelioration nette** : les deux boutons de remplissage de s32 (*oui* / *non*) ont disparu. **Une proposition est trop plausible, et c'est `JEU-R9`** |
+| **`BIN-1`** | **tenue, et amelioree** | **Zero item binaire sur onze**, contre deux a s32 |
+| **`LON-1`, `LON-2`** | **tenues** | Mordues par `AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest` depuis `ADR-0089`, job `build` vert. **Je ne recompte pas a la main ce qu'un garde-fou compte mieux que moi** |
+| **`EXA-1`** | **NON TENUE sur l'item 8** | Voir le motif |
+
+### Les huit motifs de s32, un par un
+
+| Motif | Etat | Mesure a l'ecran |
+|---|---|---|
+| **`JEU-R1`** (erreur de regle du chat perche) | **LEVEE, et bien** | *"Au chat perché, Léa touche Hugo monté sur un banc. Que se passe-t-il ?"* -> *"rien, Hugo est perché"*, avec *"Hugo est attrapé"* et *"Hugo devient chat"* en face. Indice : *"Toucher un joueur perché ne change rien pour lui."* **La regle enseignee est redevenue vraie, et l'item est meilleur qu'avant** |
+| **`JEU-R2`** (variante non rappelee) | **LEVEE** | *"Au jeu du loup et des moutons, un mouton touché devient loup. Que fait-il ensuite ?"* **Un enfant qui joue l'autre variante dans sa cour n'est plus declare faux** |
+| **`JEU-R3`** (indice faux au premier degre) | **LEVEE** | *"Chaque mouton touché devient un loup de plus."* - mot pour mot ce que j'attendais |
+| **`JEU-R4`** (item 8 sans regle en jeu) | **LEVEE a la lettre** | L'item met une regle en jeu et porte trois propositions. **La regle choisie est le probleme, et c'est `JEU-R9`** |
+| **`JEU-R5`** (pronom sans antecedent) | **LEVEE** | *"À la balle au prisonnier, que devient un joueur touché ?"* - l'antecedent est dans l'enonce, les trois propositions n'ont pas bouge |
+| **`JEU-R6`** (la tache B se gagne a la forme) | **LEVEE** | L'item 11 demande desormais **laquelle** des trois sanctions s'applique. Reste l'item 10, **un sur cinq, sous mon seuil** : `JEU-R10`, non bloquant. **Une barre qu'on applique dans un sens s'applique dans l'autre** |
+| **`JEU-R7`** (regle jamais posee) | **LEVEE, et c'est le meilleur geste de la reprise** | L'item 6 enseigne la regle en **bonne reponse** - *"Aux déménageurs, combien d'objets porte-t-on à chaque passage ?"* -> *"un seul objet"* - **avant** que l'item 10 ne la juge |
+| **`JEU-R8`** (tournure illisible) | **LEVEE** | *"Au jeu du loup et des moutons"* |
+
+### Motif du refus - `JEU-R9`
+
+#### `JEU-R9` - item 8 : la sanction creditee de l'epervier contredit celle que le paquet enseigne, n'est rappelee par aucun enonce, et marque fausse une reponse defendable
+
+**A l'ecran** : *"À l'épervier, Malo traverse en sortant du couloir. Que se passe-t-il ?"* -
+propositions *"Malo est éliminé"* (creditee), *"Malo change de rôle"*, *"Malo continue de jouer"*.
+Indice : *"Le couloir marque les limites que les joueurs doivent respecter."*
+
+**Trois faits, et chacun suffirait.**
+
+1. **Le paquet se contredit sur le meme jeu, a cinq items d'intervalle.** L'item 3, tache A,
+   **inchange depuis s32**, sert cet indice : *"Un joueur touché devient épervier à son tour."* Le
+   paquet enseigne donc que le joueur pris a l'epervier **change de role**. L'item 8 credite
+   **l'elimination** et **marque fausse** la proposition *"Malo change de rôle"*. **L'enfant qui a
+   retenu ce que le paquet lui a appris cinq minutes plus tot est marque faux avec.** N'importe qui
+   peut verifier ce point sans connaitre l'epervier : les deux items sont dans le meme fichier.
+2. **`EPS-1` n'est pas tenue.** *"Sortir du couloir"* et sa sanction ne sont **rappeles dans aucun
+   enonce du paquet**, et l'elimination n'est pas la forme universellement scolaire de ce jeu : dans
+   la forme courante, le joueur pris rejoint les eperviers - ce que dit precisement l'item 3. **C'est
+   le defaut exact de `JEU-R2`, celui que la meme reprise vient de payer sur le loup et les moutons,
+   reapparu sur l'item que cette reprise reecrivait.**
+3. **`EXA-1`** : la proposition marquee fausse est defendable et probablement la bonne. **Ce n'est
+   pas `PLA-1`** - le distracteur est plausible, c'est meme le probleme - **c'est de l'exactitude, et
+   une erreur factuelle dans un contenu scolaire est un motif de refus a elle seule.**
+
+**L'indice n'arrange rien** : il dit qu'il y a une limite, jamais ce qui arrive quand on la franchit.
+L'enfant qui echoue lit une phrase qui ne l'aide pas a choisir entre trois consequences.
+
+**Ce que j'attends, et le paquet porte deja la solution.** `JEU-R7` a ete payee en faisant enseigner
+la regle des demenageurs par l'item 6 de la tache A **avant** que l'item 10 de la tache B ne la juge.
+**C'est le bon geste, il est dans ce diff, et il n'a pas ete applique a l'epervier.** Deux voies :
+
+1. **L'item 3 (tache A) enseigne la limite et sa consequence** avant que l'item 8 ne la juge -
+   exactement le patron des demenageurs.
+2. **Ou l'item 8 credite la sanction que le paquet enseigne deja** : *"Malo est pris, il devient
+   épervier"*, avec deux consequences plausibles en face.
+
+**Aucun item a ajouter, aucune mecanique a toucher, `FER-2` et `FER-3` inchangees. Un item sur onze.
+Puis rejeu par moi.**
+
+### Les sept corrections tiennent-elles ensemble comme un paquet
+
+**C'est la question que `PAR-14` me fait payer, et la reponse est : six sur sept tiennent, une casse
+le paquet.**
+
+**Ce qui tient, et c'est du travail de paquet et non d'item** : le chat perche est desormais coherent
+**sur trois items a la fois**. L'item 2 (tache A, inchange) dit *"Un joueur touché en hauteur n'est
+pas pris."* ; l'item 7 (reecrit) dit qu'un joueur perche touche ne subit rien ; l'item 9 (inchange)
+dit qu'un joueur au sol touche est attrape. **Les trois disent la meme regle sous trois angles, et
+l'enfant qui les rencontre dans n'importe quel ordre apprend la distinction juste.** Meme constat sur
+les demenageurs (items 6 et 10) apres `JEU-R7`.
+
+**Ce qui casse** : l'epervier. **La reprise a rendu les items 3 et 8 contradictoires** en ne regardant
+que l'item 8. Le geste qui manquait est celui que la meme reprise venait d'inventer pour les
+demenageurs. **Le defaut n'est pas dans la correction prise seule - elle repond mot pour mot a
+`JEU-R4` - il est dans le fait qu'elle a ete faite item par item alors que sa regle appartient au
+paquet.** L'item 10 en est le second symptome : mes deux distracteurs de s32 y ont ete deposes tels
+quels sans que la bonne reponse bouge (`JEU-R10`).
+
+### Reserves non bloquantes
+
+#### `JEU-R10` - item 10 : la bonne reponse est le seul verdict parmi deux sanctions
+
+**A l'ecran** : *"Aux déménageurs, Hugo porte deux objets à la fois. Que se passe-t-il ?"* - *"Hugo
+n'a pas respecté la règle"* (creditee), *"Hugo passe son tour"*, *"Hugo laisse un objet à
+l'arrivée"*.
+
+**Ce que j'avais ecrit a s32, en entier** : *"que les deux distracteurs soient eux aussi des
+consequences plausibles d'une faute (...), **de sorte que l'enfant doive savoir laquelle est la
+sanction du jeu**, et non seulement qu'il y en a une."* La premiere moitie est faite ; **la seconde ne
+l'est pas**, parce que la bonne reponse est restee un **verdict** quand les deux autres sont devenues
+des **sanctions**. **La forme designe toujours, elle a seulement change de sens** : hier la seule
+sanction parmi deux recompenses, aujourd'hui le seul verdict parmi deux sanctions.
+
+**Non bloquant** : un item sur cinq, **sous mon seuil de `FAB-1c`**, et la regle jugee est desormais
+enseignee par l'item 6, donc l'enfant qui gagne cet item a de quoi le gagner.
+
+**Ce que j'attends** : que la bonne reponse soit elle aussi une consequence, comme sur l'item 11. **Et
+je nomme la difficulte plutot que de la laisser trouver** : les demenageurs n'ont pas de sanction
+codifiee a l'ecole. Si aucune consequence juste n'est ecrivable, **l'item ne doit pas etre reforme,
+il doit changer de jeu**.
+
+#### `JEU-R11` - item 6 : l'indice presente une regle comme un moyen d'aller plus vite
+
+**Indice servi** : *"Porter un seul objet permet d'aller plus vite entre les deux zones."* La regle
+*un objet par passage* n'existe pas pour aller plus vite - elle existe pour que le jeu soit une course
+a plusieurs voyages. **L'indice transforme une regle en tactique**, sur le paquet meme dont l'item 10
+sanctionne un enfant qui ne l'a pas respectee. Un enfant qui lit les deux peut conclure qu'Hugo a joue
+moins vite, pas qu'il a triche.
+
+**Non bloquant** : l'enonce et la bonne reponse sont justes, et l'item 10 dit clairement que c'est une
+regle. **Ce que j'attends** : *"Aux déménageurs, on ne transporte qu'un objet par voyage."*
+
+#### `JEU-R12` - apres la reprise, le seul personnage qui enfreint une regle est un garcon, deux fois
+
+**Constat, compte sur les onze items.** A s32 j'avais ecrit que les quatre personnages se
+repartissaient les roles sans stereotype - *"une fille et un garcon enfreignent, une fille et un
+garcon respectent"*. **La reprise a defait cet equilibre sans le vouloir** : l'item 7 ne contient plus
+de faute, ce qui est la correction juste de `JEU-R1`, et il reste **Hugo, deux fois, seul fautif du
+paquet** (items 10 et 11). Aucune fille n'enfreint plus rien.
+
+**Non bloquant, et je borne ce que je dis** : deux occurrences sur onze items et quatre personnages ne
+font pas une mesure. **Je l'ecris parce que j'ai deja vu ce que coute un signalement non ecrit** : sur
+l'EMC CP, j'ai signale le genre de l'adulte d'ecole le 2026-09-05, le lot suivant l'a aggrave
+(`REG-R3`, 17 contre 1), et cela figure aujourd'hui au registre de dette. **Je le nomme au premier
+ecart, pas au septieme.**
+
+**Ce que j'attends** : qu'un des deux items de faute soit porte par Aya ou Lea. **Cela ne coute qu'un
+prenom.**
+
+### Points que je ne transforme pas en reserve, et je le dis pour qu'on ne me les redemande pas
+
+- **Le distracteur *"Hugo est attrapé"* de l'item 7 et la bonne reponse *"Aya est attrapée"* de
+  l'item 9.** `FAB-1b` est tenue a la lettre, et **je ne fais pas de reserve sur l'esprit ici, parce
+  que l'esprit est bon** : deux items qui opposent le meme geste dans deux positions differentes sont
+  la meilleure facon d'enseigner cette distinction. **Ecarte volontairement.**
+- **Les cinq items de la tache B posent desormais la meme question, *"Que se passe-t-il ?"*.** J'ai
+  regarde si cette uniformite aidait a repondre : **non**, elle ne dit rien du contenu, et au CP une
+  question stable d'un item a l'autre reduit la charge de lecture. **Ecarte, et c'est une
+  amelioration.**
+- **Le commentaire d'en-tete du fichier declare qu'aucun marqueur de restriction n'est employe** ;
+  *"un seul objet"* en porte un depuis cette reprise, en bonne reponse. **Le garde-fou d'`ADR-0086`
+  ne mord que dans l'autre sens - marqueur sur tous les distracteurs et sur aucune part de la bonne
+  reponse - et il a raison de ne pas mordre ici** : l'enonce demande un nombre, les trois propositions
+  sont des quantites, rien n'est designe par la forme. **Le defaut est dans le commentaire, pas dans
+  le contenu** : route au `relecteur-pedagogique`, ce n'est pas ma porte.
+- **La consigne de catalogue** nomme les deux taches. **`DEC-0078` tenue.**
+
+### Ce dont je reste la seule garde sur ce paquet - mise a jour du 2026-09-10
+
+| Propriete | Garde executable ? |
+|---|---|
+| **L'exactitude de chaque regle de jeu** | **aucun.** **C'est le motif du refus d'aujourd'hui, et les quatre jobs sont verts sur l'arbre qui le porte.** Un automate ne sait pas ce que dit l'epervier |
+| **La coherence d'un paquet avec lui-meme** - deux items du meme jeu qui disent la meme regle | **aucun**, et **c'est la propriete neuve la plus dangereuse de ce terrain**. Elle n'existait dans aucune de mes conditions avant aujourd'hui ; mesurable en principe, **je ne pose pas de barre chiffree en cours de sprint** |
+| **`EPS-1`** - la regle est rappelee ou universellement scolaire | **aucun**, et il en faudrait un catalogue de variantes scolaires que personne n'a. **Deuxieme sprint consecutif ou elle est le motif d'un refus sur ce paquet** |
+| **`PLA-1`** | **aucun**, et le cas d'aujourd'hui est l'inverse de celui de s32 : le distracteur n'est plus invraisemblable, il est **defendable** - ce qui est pire et qu'aucun automate ne distingue |
+| **`FAB-1c` branche registre, `CAT-1`, `EPS-4`** | **aucun**, et elles sont **tenues aujourd'hui** - premiere fois sur ce paquet |
+| **`EPS-2`, `EPS-3`, `EPS-6`** | **aucun**, toutes tenues |
+| **Le genre des personnages qui enfreignent une regle** (`JEU-R12`) | **mesurable** - un comptage de prenoms - **mais la population est trop petite pour une barre**, et je n'en pose pas |
+| **`LON-1`, `LON-2`** | **`AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest`, depuis `ADR-0089`.** Second sprint ou je ne recompte pas a la main |
+| **`FER-1`, `FER-2`, `FER-3`, `BIN-1`, `FAB-1a`, `FAB-1b`** | **aucun** : aucun test de paquet n'existe pour l'EPS. **Comptes a la main pour la deuxieme fois** - route a `theo-archi` a s32, non paye |
+
+### Ce que je route - 2026-09-10
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EPS-CP-08` reste `non couvert`** | `camille-po` | La ligne ne passe pas a `couvert-valide`. **Je ne touche pas la matrice** |
+| **`JEU-R9`** (motif bloquant) | `camille-po`, via `sofia-sm` | Un item sur onze, par l'une des deux voies ci-dessus. **Puis rejeu par moi** |
+| **`JEU-R10`, `JEU-R11`, `JEU-R12`** (reserves) | `camille-po`, via `sofia-sm` | Dans la meme reprise, le paquet etant de toute facon rouvert |
+| **Le commentaire d'en-tete du fichier** (`ADR-0086`, marqueur de restriction) | `relecteur-pedagogique` | Le commentaire affirme une propriete que le contenu ne porte plus |
+| **`EPS-8`** | toute l'equipe, pour le prochain lot d'EPS | Condition opposable, allouee au registre dans le meme diff que ce verdict |
+| **Un test de paquet pour ce paquet** | `theo-archi`, via `sofia-sm` | `FER-2`, `FER-3`, `BIN-1`, `FAB-1a`, `FAB-1b` sont mordables. **Route a s32, non paye** |
+
+### Historique des verdicts sur ce paquet - suite
+
+| Date | Verdict | Instance | Motif en une ligne |
+|---|---|---|---|
+| 2026-09-10 | **REFUSE** | C (s33) | `JEU-R9` - l'item 8 credite une sanction de l'epervier que l'item 3 du meme paquet contredit, que nul enonce ne rappelle, et marque fausse une reponse defendable. **Les huit motifs de s32 sont leves** |

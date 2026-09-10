@@ -2,8 +2,8 @@
 
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-eps-regles-de-securite` (11 items)
-- **Statut global** : **REFUSE**
-- **Derniere mise a jour** : 2026-09-09
+- **Statut global** : **REFUSE** (second refus, 2026-09-10)
+- **Derniere mise a jour** : 2026-09-10
 
 > **Fiche ouverte par `nadia-prof`, instance C, et non par `camille-po`.** Le paquet est neuf, la
 > matiere n'avait aucune fiche, et celle-ci est la premiere de l'education physique et sportive dans
@@ -312,3 +312,160 @@ qu'on sait a propos de l'EPS, pas l'EPS.**
 | Date | Verdict | Instance | Motif en une ligne |
 |---|---|---|---|
 | 2026-09-09 | **REFUSE** | C | `SEC-R3` - la tache B se gagne au champ lexical du danger sur quatre items sur cinq (`FAB-1c` branche registre) |
+
+---
+
+## Bloc de validation pedagogique - second passage, 2026-09-10 - nadia-prof UNIQUEMENT
+
+> **Rien n'est efface au-dessus. On ajoute.** Le bloc du 2026-09-09 reste verbatim : un refus efface
+> n'a aucune valeur de preuve, et le premier motif de ce paquet a ete paye - il doit rester lisible.
+
+- **Verdict** : **REFUSE**
+- **Date** : 2026-09-10
+- **Auteur** : `nadia-prof`, **instance C de s33**
+- **Increment audite** : `S33-EPS-SEC`, commit `556cad9f`, fusionne en `e5aebf9c`, arbre `b45e5927`
+- **Audit joue** : **oui.** Jar reconstruit depuis un worktree dedie, application lancee sur un port
+  local, arretee **par l'identifiant de son processus**. **Huit parties, quatre-vingts manches, les onze
+  items vus a l'ecran**, avec erreur volontaire sur chaque item non encore rencontre pour lire
+  l'indice servi.
+- **Audit degrade sur un point, declare** : joue par requetes HTTP reelles, donc **HTML servi** et
+  non page rendue par un navigateur. **Ni couleur, ni contraste, ni taille, ni position** - aucune
+  conclusion de ce bloc n'en depend.
+- **`PAR-14` s'applique a cette reprise, et c'est une correction contre l'equipe que je fais
+  moi-meme** : **six items sur onze touches** (item 1 indice, item 3 enonce, item 8 enonce et
+  propositions et indice, items 9, 10, 11 propositions et indice), donc plus de la moitie du paquet.
+  Ma phrase du planning et de `DEC-0085` - *"aucune autre reprise de ce sprint n'atteint la moitie de
+  son paquet"* - **est fausse, et elle l'etait deja sur le perimetre planifie**. La reprise vaut
+  **1,0 et non 0,5**, et **j'ai rebalaye toutes les conditions du paquet**, ce que ce tarif achete.
+
+### Les quatre motifs de s32 sont leves, un par un
+
+| Motif | Etat | Mesure |
+|---|---|---|
+| **`SEC-R3`** (motif bloquant du premier refus) | **LEVEE** | Sur les items 8, 9, 10 et 11, **les trois propositions nomment un danger, une blessure ou une consequence, dont deux fausses**. Verifie une par une. **La strategie *prendre la reponse qui parle de se faire mal* ne gagne plus rien**, et `FAB-1c` branche registre est **tenue** sur la tache B - les deux cases non cochees de la section de `camille-po` ci-dessus sont a cocher ; **c'est sa section, je ne la reecris pas** |
+| **`EPS-7`** | **LEVEE a la lettre** | Aucun des quatre indices ne reprend le mot qui distinguait sa bonne reponse : *voiture*, *danger*, le choc, *blesser* ont disparu. Ce qui reste est `SEC-R5`, **non bloquant, et sa cause est chez moi** |
+| **`SEC-R1`** | **LEVEE** | Les items 3 et 8 portent un engin roulant. `EPS-5` demandait *"un engin roulant, l'eau, un agres, un parcours, un gymnase, une cour"* ; la trottinette en est un. **Je ne rediscute pas ma propre condition apres coup** |
+| **`SEC-R2`** | **LEVEE** | L'indice de l'item 1 ecarte la creme solaire explicitement, dans la formulation que j'avais donnee |
+
+**Le reste du paquet est intact et reste bon** : toute la tache A, la lisibilite - six a dix mots par
+enonce, une phrase, aucun mot hors du vocabulaire de CP -, le traitement de l'erreur, l'absence de
+tout stereotype. **`FER-1` vacuement tenue, `FER-2` onze items, `FER-3` deux taches a six et cinq,
+`BIN-1` zero item binaire, `FAB-1a`, `FAB-1b`, `PLA-1`, `EPS-2`, `EPS-3`, `BIA-4` tenues** -
+reverifiees, non rediscutees. **L'equipe n'a pas travaille pour rien, et le refus d'aujourd'hui porte
+sur un defaut que la reprise a introduit.**
+
+### Motif du refus - `SEC-R4`
+
+#### `SEC-R4` - items 3 et 8 : l'enonce met l'enfant sur sa trottinette, les propositions le decrivent a pied, et la reponse creditee n'est pas la regle qui s'applique
+
+**Element 1 - le mot ajoute a l'enonce n'a pas ete porte dans les propositions.** Verifiable sans
+aucune expertise.
+
+| Item | Ce que dit l'enonce | Ce que disent les propositions |
+|---|---|---|
+| 3 | *"Avant de traverser une rue **en trottinette**, que doit-on faire ?"* | *"courir sans s'arrêter"* - **on ne court pas sur une trottinette** ; *"attendre qu'un camarade traverse d'abord"* - deux pietons |
+| 8 | *"Pourquoi regarde-t-on des deux côtés avant de traverser **en trottinette** ?"* | *"pour éviter de trébucher sur le trottoir"*, *"pour ne pas se cogner à un passant"* - **un enfant a pied sur un trottoir** |
+
+**Element 2, et c'est celui qui bloque - la reponse creditee n'est pas la regle qui s'applique, sur
+une ligne dont l'objet est la securite du corps.** A la question *"Avant de traverser une rue en
+trottinette, que doit-on faire ?"*, le jeu credite **"regarder des deux côtés"** et ne propose rien
+d'autre. Ce qu'on apprend a un enfant de cet age, c'est qu'**on descend de sa trottinette et qu'on la
+pousse a la main pour traverser**. Regarder vient ensuite, et ne vient jamais seul.
+
+**Un enfant de six ans qui joue cet item retient qu'on traverse la rue sur sa trottinette apres avoir
+regarde.** Le premier geste de la regle manque, et c'est celui qui sort le corps de la chaussee.
+
+**Pourquoi c'est un refus et non une reserve.** Mon critere du 2026-09-06, reconduit et non amende :
+un defaut est bloquant si *quelque chose de faux est enseigne* **ou** si *un item se gagne sans la
+competence*. **La premiere branche mord.** Aucune phrase du paquet n'est fausse prise isolement -
+*"regarder des deux côtés"* est vrai. Mais **un jeu de choix n'enseigne pas des phrases : il enseigne
+la reponse qu'il credite**, et celle-ci est la mauvaise reponse a la question posee. Devant un eleve
+qui me repondrait cela dans ma classe, je corrigerais ; le jeu, lui, affiche *"Bravo !"*.
+
+**Ma part dans ce defaut, et je l'ecris avant de demander quoi que ce soit.** L'exemple
+*"Ou regarde-t-on avant de traverser en trottinette ?"* est **de moi**, ecrit le 2026-09-03 dans le
+referentiel, et **repris mot pour mot dans `SEC-R1` a s32 pour dire ce que j'attendais**. L'equipe l'a
+suivi a la lettre. **Mon exemple posait la question au mauvais endroit de la regle**, et rien ne
+permettait de s'en mefier. `SEC-R1` est donc **levee** et **je ne refuse pas sur elle** : le refus
+porte un identifiant neuf et date, sur un fait que la reprise a cree. **La correction de l'exemple du
+referentiel m'appartient et je me la route.**
+
+**Ce que j'attends - deux voies, et je dis laquelle je prendrais.**
+
+1. **Remplacer les deux items par deux items d'une activite d'EPS** - la cour, le gymnase, un agres,
+   un parcours d'equilibre, l'eau. **C'est la voie que je prendrais** : elle regle la regle de
+   securite *et* l'ancrage.
+2. **Ou corriger la regle** : *"En trottinette, comment traverse-t-on une rue ?"* avec *"on descend
+   et on la pousse"* en bonne reponse, et deux propositions qui decrivent aussi un enfant sur une
+   trottinette. L'item 8 suit : *"Pourquoi descend-on de sa trottinette pour traverser ?"*
+
+**Dans les deux cas : `FER-2` reste a onze items, `FER-3` ne bouge pas, la tache A n'est pas touchee,
+rien de technique n'est en cause. Deux items sur onze. Puis rejeu par moi.**
+
+### Reserve non bloquante
+
+#### `SEC-R5` - trois des quatre indices reecrits n'apportent plus de fait a l'enfant qui vient d'echouer
+
+| Item | Indice avant s33 | Indice servi aujourd'hui | Ce qu'il apprend |
+|---|---|---|---|
+| 8 | *"Une voiture peut arriver de la gauche comme de la droite."* | *"Regarder des deux côtés permet de voir ce qui arrive avant de traverser."* | **Rien** : il repete l'enonce en le retournant |
+| 9 | *"Un danger dans l'eau peut survenir très vite."* | *"Un adulte présent peut réagir tout de suite si besoin."* | **Le fait qui tranche.** Celui-ci est bon, et il montre que c'etait faisable |
+| 10 | *"Une glissade à deux peut faire tomber l'un des deux enfants."* | *"Descendre seul laisse de la place en bas du toboggan."* | Un fait vrai, mais **pas la raison de la regle** |
+| 11 | *"Plonger dans une eau trop basse peut blesser la tête ou le cou."* | *"Vérifier avant de plonger évite les mauvaises surprises."* | **Rien**, et *"les mauvaises surprises"* est lu au premier degre au CP - une surprise, a six ans, est une bonne chose |
+
+**Les trois propositions d'un item nommant desormais toutes un danger, l'indice est le seul texte qui
+peut dire lequel est la vraie raison. Trois fois sur quatre, il ne le dit plus.**
+
+**Non bloquant, et le motif est de gouvernance** : `EPS-7`, telle que je l'ai ecrite, ne demandait que
+le **retrait** d'un mot, jamais le fait a mettre a la place. **L'equipe a tenu ma condition ; je ne
+refuse pas sur ce que je n'avais pas ecrit.** La condition qui l'ecrit est **`EPS-8`, datee du
+2026-09-10**, opposable au prochain lot et pas a celui-ci.
+
+**Ce que j'attends** : que chaque indice de la tache B donne **un fait sur la situation** que l'enfant
+ne peut pas deviner, comme le fait celui de l'item 9. Exemple sur l'item 11 : *"Sous l'eau, le fond
+est plus près qu'il n'en a l'air."*
+
+### Points que je ne transforme pas en reserve, et je le dis pour qu'on ne me les redemande pas
+
+- **L'indice de l'item 3 (tache A) dit *"aucune voiture n'arrive"*, qui est la bonne reponse de
+  l'item 8 (tache B).** J'ai regarde si cela designait l'item 8 : **je l'ecarte.** Un indice de tache
+  A qui enseigne la raison, puis un item de tache B qui la demande, est un ordre d'apprentissage
+  correct - le contraire du defaut de `JEU-R7` sur le paquet voisin. Meme constat entre l'item 4 et
+  l'item 10 sur le toboggan. **C'est du bon travail et je ne le penalise pas.**
+- **L'indice de l'item 1 fait deux phrases et dix-sept mots**, le plus long du paquet. `LON-1` et
+  `LON-2` portent sur les **enonces** et sont executees par `ADR-0089`. **Je n'ai aucune barre sur la
+  longueur des indices et je n'en cree pas une en cours de sprint** : je note que la question existe.
+- **Le mot *maîtresse*** reste dans un distracteur de l'item 4, seul adulte d'ecole genre du paquet.
+  **Un sur un ne fait pas une population.** Ecarte a s32, ecarte encore.
+- **La consigne de catalogue** nomme les deux taches. **`DEC-0078` tenue.**
+
+### Ce dont je reste la seule garde sur ce paquet - mise a jour du 2026-09-10
+
+| Propriete | Garde executable ? |
+|---|---|
+| **L'exactitude de chaque regle de securite** | **aucun.** **C'est le motif du refus d'aujourd'hui, et les quatre jobs sont verts sur l'arbre qui le porte.** Aucun automate ne sait ce qu'on fait d'une trottinette au bord d'une chaussee |
+| **La coherence entre l'enonce d'un item et ses propositions** (`SEC-R4`, element 1) | **aucun**, et c'est un defaut a dix mots qu'`ADR-0089` ne peut pas voir |
+| **`EPS-4`, `EPS-7`, `EPS-8`** | **aucun** : jugement de registre, puis jugement de substance |
+| **`FAB-1c` branche registre, `CAT-1`** | **aucun**, et elles sont **tenues aujourd'hui** - premiere fois sur ce paquet |
+| **`PLA-1`, `EPS-2`, `EPS-3`, `EPS-5`** | **aucun**, toutes tenues |
+| **`LON-1`, `LON-2`** | **`AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest`, depuis `ADR-0089`** - **et il n'a rien vu de `SEC-R4`, qui est un defaut a dix mots.** Ma barre est necessaire, jamais suffisante |
+| **`FER-1`, `FER-2`, `FER-3`, `BIN-1`, `FAB-1a`, `FAB-1b`** | **aucun** : aucun test de paquet n'existe pour l'EPS. **Comptes a la main pour la deuxieme fois** - route a `theo-archi` a s32, non paye |
+
+### Ce que je route - 2026-09-10
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EPS-CP-04` reste `non couvert`** | `camille-po` | La ligne ne passe pas a `couvert-valide`. **Je ne touche pas la matrice** |
+| **`SEC-R4`** (motif bloquant) | `camille-po`, via `sofia-sm` | Deux items sur onze, par l'une des deux voies ci-dessus. **Puis rejeu par moi** |
+| **`SEC-R5`** (reserve) | `camille-po`, via `sofia-sm` | Dans la meme reprise, le paquet etant de toute facon rouvert |
+| **Les deux cases `FAB-1c` et `CAT-1`** de la section de criteres | `camille-po` | Elles sont tenues ; **c'est sa section et je ne la reecris pas** |
+| **L'exemple *"traverser en trottinette"* du referentiel d'EPS CP** | moi-meme | Correction dans le prochain diff de ce fichier. **C'est ma faute** |
+| **La frontiere entre `EPS-CP-04` et la premiere education a la route** | `camille-po` et moi | A ecrire dans le referentiel. **Non opposable retroactivement a ce lot** |
+| **`EPS-8`** | toute l'equipe, pour le prochain lot d'EPS | Condition opposable, allouee au registre dans le meme diff que ce verdict |
+| **`PAR-14` s'applique aussi a cette reprise** | `camille-po` et `sofia-sm` | Correction de chiffrage, 0,5 vers 1,0. **Elle est de moi et elle est contre l'equipe** |
+
+### Historique des verdicts sur ce paquet - suite
+
+| Date | Verdict | Instance | Motif en une ligne |
+|---|---|---|---|
+| 2026-09-10 | **REFUSE** | C (s33) | `SEC-R4` - les items 3 et 8 mettent l'enfant sur sa trottinette, decrivent un pieton dans leurs propositions, et creditent une regle de traversee dont le premier geste manque. **Les quatre motifs de s32 sont leves** |

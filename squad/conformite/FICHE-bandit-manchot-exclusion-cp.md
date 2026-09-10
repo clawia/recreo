@@ -4,10 +4,13 @@
 - **Contenu(s)** : `cp-emc-exclusion` (11 items)
 - **Statut global** : **VALIDE SOUS RESERVE** (REFUSE le 2026-09-07, **refus leve au reaudit du
   2026-09-08** - les deux blocs de validation sont lisibles ci-dessous, dans cet ordre). **Etat des
-  reserves au 2026-09-09** : `EXC-R2`, `EXC-R3` **partiellement** et `EXC-R4` traitees, `EXC-R1` et
-  `EXC-R5` **non payees**, `EXC-R6` **ouverte** - toutes non bloquantes, bloc de constat en fin de
-  fiche. **La ligne n'est pas rouverte.**
-- **Derniere mise a jour** : 2026-09-09
+  reserves au 2026-09-10** : `EXC-R2`, `EXC-R3` **partiellement** et `EXC-R4` traitees, **`EXC-R5`
+  LEVEE**, `EXC-R1` **toujours non payee**, `EXC-R6` **ouverte**, et **`EXC-R7`, `EXC-R8`, `EXC-R9`
+  ouvertes le 2026-09-10** - toutes non bloquantes, blocs de constat en fin de fiche. **La ligne
+  n'est pas rouverte.** **L'increment `S33-EXC-R5` est REFUSE**, et son motif est a mon debit avant
+  d'etre a celui du lot : la sortie que ma propre formule prescrivait retire du paquet la seconde
+  moitie du libelle de la ligne (bloc du 2026-09-10).
+- **Derniere mise a jour** : 2026-09-10
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -602,3 +605,151 @@ de moquerie**, et cela ne coute rien de plus.
 | **`EXC-R3` : la sortie est probablement dans l'enonce des items 5 et 6, pas dans leur troisieme proposition** | `camille-po`, via `sofia-sm` | **Dit pour eviter un troisieme aller-retour sur les memes items.** Ce n'est pas une prescription de texte : c'est le motif pour lequel deux substitutions de proposition ont deja echoue |
 | **Qu'un test de paquet fige la formulation d'un enonce que la porte pedagogique demande de reecrire** | `theo-archi` | **Fait acquis, et il l'a deja ouvert avec son chiffre** (25 fichiers sur 95). **Je le confirme du cote pedagogique** : c'est la premiere fois qu'un garde-fou de ce depot a rendu une de mes reserves impayable, et c'est un fait a garder au-dela de ce paquet |
 | **La dette de longueur d'`ADR-0089` nomme `EXC-R4` pour ce paquet** | `theo-archi` | **Constat, pas demande** : `EXC-R4` est levee et l'enonce que la dette compte est celui de `EXC-R6`. Le chiffre reste juste - **1** -, son etiquette a change de reserve |
+
+---
+
+## Bloc de verdict du 2026-09-10 - `nadia-prof`, instance B de s33, apres avoir joue - `EXC-R5` LEVEE, l'increment REFUSE
+
+**Arbre audite** : `round-two` a `b45e5927`, worktree dedie. **Partie complete de dix manches, avec
+erreurs volontaires.** Releve manche par manche dans
+`squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-B.md`, section 6.
+**Audit degrade sur un point, declare** : lecture du HTML servi, pas de la page rendue par un
+navigateur.
+
+**Stories auditees** : `S33-EXC-R1` et `S33-EXC-R5`, toutes deux payees dans le meme commit
+(`fbb370a7`). **La ligne `EMC-CP-03` reste `couvert-valide` et je ne la rouvre pas.**
+
+### `EXC-R5` est LEVEE, et je ne la reformule pas apres coup
+
+**Ce que j'avais ecrit le 2026-09-07**, dans cette fiche : *"Le critere reel est la **presence** de
+l'adulte : que la question le dise (*quel adulte est la a ce moment ?*) plutot que *a qui doit-il en
+parler ?*"*
+
+**La reserve a ete executee dans ces termes exacts.** J'ai presse *a sa maitresse* sur la manche 6 et
+le jeu l'a refusee - **et cette fois il a raison** : l'enonce dit que le surveillant est la, pas la
+maitresse. **Aucun item ne fait plus d'un adulte reel une reponse fausse a une question a laquelle il
+repondait bien.**
+
+> **`EXC-R5` est LEVEE.** La barre que j'avais plantee est atteinte, et **je ne la deplace pas**. Le
+> refus du 2026-09-07 et le constat de non-paiement du 2026-09-09 restent lisibles ou ils ont ete
+> ecrits, avec leurs dates.
+
+### L'increment est REFUSE - trois reserves neuves, et leur motif est a mon debit
+
+**La sortie que ma propre formule prescrivait detruit trois proprietes que la reserve ne visait
+pas.** *"Que la question dise quel adulte est la"* rend la question inutile : si l'enonce nomme
+l'adulte present, il n'y a plus rien a savoir. **Je l'ecris ici plutot que de le faire porter au
+lot** - `lea-dev` a applique ma phrase au mot pres, et `theo-archi` l'avait mesuree avant elle
+(`confirmation-archunit.md` de s32, section 4 : *"la formule que `nadia-prof` propose"*).
+
+#### `EXC-R7` - la reponse est dans l'enonce
+
+| Item | Ce que l'enonce dit | Bonne reponse |
+|---|---|---|
+| 7 | *devant **le surveillant*** | *a un **surveillant** de la cour* |
+| 8 | *devant **la maitresse*** | *a sa **maitresse*** |
+| 10 | *pres du **surveillant*** | *a un **surveillant** de la cour* |
+| 11 | *devant sa **maitresse*** | *a sa **maitresse*** |
+
+Le cinquieme (item 9, *l'adulte du repas* -> *l'adulte qui surveille la cantine*) demande un pas de
+plus : savoir que le repas se prend a la cantine.
+
+**Un enfant de CP qui ne sait rien de la ligne gagne ces quatre items en appariant deux mots
+identiques.** C'est `CON-1` a son degre maximal, et c'est **la meme famille que le repere lexical qui
+a refuse le paiement de `CAT-1` a s32** - en pire : la ou *maitresse* eliminait, la recopie
+**designe**.
+
+> **`EXC-R7` - nouvelle, datee du 2026-09-10, non bloquante.** Aucune bonne reponse ne reprend un mot
+> que son propre enonce vient d'ecrire.
+
+#### `EXC-R8` - la question et ses propositions ne forment plus une phrase
+
+**Recolle, l'item donne** : *"Quel adulte est la ? -> a sa maitresse."*
+
+**Ce n'est pas du francais.** La question demande un sujet, les propositions repondent au datif : les
+trois ont garde la forme *"a ..."* de la question supprimee, et personne ne les a reprises quand la
+question a change. **Cinq items sur onze**, lus a l'ecran sur cinq manches.
+
+C'est le defaut de `PER-R1` et de `POL-R4`, **troisieme occurrence en trois sprints sur trois paquets
+de la meme matiere**, et c'est la propriete dont j'ai ecrit a s32 que j'en restais **la seule
+garde**. C'est aussi la classe de defaut que la retro de s32 a nommee - *la compression qui casse la
+langue* : ici ce n'est pas une subordonnee retiree pour tenir une longueur, c'est **une question
+remplacee sans reprendre les reponses**, et la cause est la meme.
+
+> **`EXC-R8` - nouvelle, datee du 2026-09-10, non bloquante.** La question de la tache B et chacune
+> de ses trois propositions forment une phrase correcte une fois recollees.
+>
+> **Ce n'est pas du registre du `relecteur-pedagogique`** (`DEC-0002`, amendement du 2026-08-04 ;
+> `DEC-0056`) : ce n'est ni une faute d'accord, ni d'accentuation, ni de ponctuation. C'est une
+> question qui ne demande pas ce que ses boutons repondent.
+
+#### `EXC-R9` - la seconde moitie du libelle n'est plus servie, et la consigne annonce ce qui a disparu
+
+**Le libelle de `EMC-CP-03`** : *"Reconnaitre une situation de moquerie repetee ou d'exclusion **et
+savoir a quel adulte en parler**."*
+
+**Aucun item ne demande plus a qui en parler.** Les cinq items de la tache B demandent **qui est
+present**, ce que l'enonce a deja dit. Sous `FER-1`, chaque element enumere par le libelle doit etre
+servi par au moins un item ou il est en position de bonne reponse : **la seconde moitie ne l'est plus
+par aucun.**
+
+**Et le paquet se contredit avec lui-meme dans le meme commit** : `S33-EXC-R1` a corrige la consigne
+en *"Lis bien, puis dis si c'est une moquerie qui se repete, **ou a quel adulte en parler**."* -
+elle nomme donc la tache que `S33-EXC-R5` venait de retirer du paquet. **Les deux stories du meme
+commit se defont l'une l'autre.** Je l'ai lu dix fois en dix manches.
+
+> **`EXC-R9` - nouvelle, datee du 2026-09-10, non bloquante mais la plus lourde des trois.** Au moins
+> un item sert *savoir a quel adulte en parler* en position de bonne reponse, et l'adulte a qui
+> parler ne se lit pas dans l'enonce.
+>
+> **Ce que cette reserve n'est pas** : je **ne rouvre pas** `EMC-CP-03` et je ne demande aucun
+> mouvement de matrice. **Je dis ce que j'ai mesure** : la ligne a ete fermee sur une tache qui
+> n'existe plus dans le paquet, et tant que ce texte est servi, ce n'est plus le contenu qui l'a
+> fermee qui est a l'ecran.
+
+### `EXC-R1` reste NON PAYEE, et le defaut a change de cote
+
+**Le texte de consigne ecrit par `S33-EXC-R1` est juste.** Il nomme correctement la tache A (*"dis si
+c'est une moquerie qui se repete"*), ce que l'ancienne consigne ne faisait plus depuis la reecriture
+de s31. **Il nomme aussi une tache que le meme commit a fait disparaitre du paquet.**
+
+> **`EXC-R1` : NON PAYEE.** Sa condition - *la consigne nomme la tache reellement servie* - n'est pas
+> remplie apres le commit. **Ce qui doit changer n'est pas la consigne, ce sont les items** : le
+> texte de consigne est le bon des lors que `EXC-R9` est payee. **Les deux se paient ensemble ou pas
+> du tout.**
+
+### La propriete a reprendre, et elle n'est pas de moi seule a trancher
+
+Le probleme que `EXC-R5` posait - *un enfant qui parle a sa maitresse d'une moquerie de la cour fait
+ce qu'il faut* - **n'a pas de solution tant que les trois propositions sont trois adultes de l'ecole
+dont deux seraient de mauvais destinataires : aucun ne l'est.** Ma formule de s32 contournait le
+probleme en changeant la question ; elle a coute la tache.
+
+> **Decision de forme due avant le premier item reecrit**, de `camille-po` et de moi ensemble, sur le
+> meme regime que la decision de grain de `CONS-4`. **Je ne fournis pas les textes et je n'ecris pas
+> d'items.**
+
+### Ce que j'ai verifie et qui ne fait pas reserve
+
+- **La tache A est intacte et bonne.** Six items, trois moqueries repetees et trois accidents
+  isoles, le critere de repetition porte par l'enonce et repris par l'indice sans nommer la bonne
+  reponse. **Joue sur six manches**, aucune reserve.
+- **`EXC-R2` reste levee** : les cinq indices de la tache B disent le role de l'adulte, information
+  que l'enonce ne donne pas.
+- **`EXC-R3` reste levee sur l'item 1 et maintenue sur les items 5 et 6**, inchangee.
+- **`EXC-R6` inchangee et toujours ouverte** (item 2, le plus long de la tache A). Non financee a
+  s33.
+- **`FER-2`** : onze items. **`FER-3`** : deux taches, la moins servie a cinq items.
+- **`PaquetCpEmcExclusionTest` est vert** sur cet arbre. Il lit la tache d'un item **dans sa bonne
+  reponse** (`ADR-0089`, decision E), donc il ne voit ni l'enonce ni la question posee : **il ne
+  pouvait pas voir ce que j'ai vu en jouant, et il n'a jamais pretendu le voir.** Les quatre jobs de
+  la CI sont verts sur le meme arbre.
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-03` reste `couvert-valide`** | `camille-po` | **Aucun mouvement de matrice**, dans les deux sens |
+| **`EXC-R7`, `EXC-R8`, `EXC-R9` et `EXC-R1` toujours impayee** | `camille-po`, via `sofia-sm` | **Une seule story**, sur la tache B. **Les quatre ont une cause unique et se defont ensemble ou pas du tout.** `EXC-R6` voyage avec elles (`PAR-10`) |
+| **La forme de la tache B** | `camille-po` et moi, ensemble | Decision ecrite **avant le premier item reecrit** |
+| **`EXC-R7` comme propriete mordable** | `theo-archi` | Comparaison de mots entre l'enonce d'un item et sa bonne reponse, meme genre que la clause 2 d'`ADR-0086`. **Fait mesure** : 4 items sur 11. **Je dis la propriete, jamais la forme du test, et je ne prescris aucun seuil** |

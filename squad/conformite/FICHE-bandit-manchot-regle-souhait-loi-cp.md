@@ -3,9 +3,13 @@
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-emc-regle-souhait-loi` (11 items)
 - **Statut global** : **REFUSE** (prononce le 2026-09-07, **maintenu au reaudit du 2026-09-08 sur un
-  seul motif**, **maintenu au troisieme passage du 2026-09-09 sur un motif entierement neuf** - les
-  trois blocs de validation sont lisibles ci-dessous, dans cet ordre, et aucun n'est retouche)
-- **Derniere mise a jour** : 2026-09-09
+  seul motif**, **maintenu au troisieme passage du 2026-09-09 sur un motif entierement neuf**,
+  **maintenu au quatrieme passage du 2026-09-10** - les quatre blocs de validation sont lisibles
+  ci-dessous, dans cet ordre, et aucun n'est retouche). **Au quatrieme passage, `PLA-1` sur l'item 11
+  est payee** ; `EMC-11` n'est pas engagee et l'item 4 marque toujours fausse une proposition vraie
+  (`EMC-5`). **Le blocage qui empechait d'engager `EMC-11` est leve dans le bloc du 2026-09-10 :
+  aucune de mes quatre clauses ne cede, c'est mon propre chiffrage qui etait faux.**
+- **Derniere mise a jour** : 2026-09-10
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -572,3 +576,139 @@ appartient a `camille-po` ; **rien ne bouge sur cette ligne.**
 | **Les deux proprietes ci-dessus, avec ce qui ne doit pas etre retouche** | `camille-po`, via `sofia-sm` | En faire une story. **C'est le plus petit perimetre des trois passages** : un item a re-poser, un distracteur a remplacer, et trois acquis a ne pas casser |
 | **La contradiction entre mon bloc de reaudit et la section 16.5 de mon arbitrage prealable, tous deux du 2026-09-08** | moi-meme | **Ecrite ici, pas effacee la-bas.** Quand une de mes barres chiffrees mord un paquet dont je viens d'ecrire *"a conserver telle quelle"*, c'est a moi de dire lequel des deux textes gouverne, dans le geste ou je pose la barre |
 | **Qu'un item note une discrimination absente du libelle de sa ligne** | `camille-po` | **Fait general, pas propre a ce paquet** : c'est la porte d'entree de `CON-1`. Je ne cree aucune clause en cours de sprint ; je la porterai dans mon prochain arbitrage prealable si elle se reproduit |
+
+---
+
+## Bloc de verdict du 2026-09-10 - `nadia-prof`, instance B de s33, apres avoir joue - QUATRIEME REFUS, et le blocage leve
+
+**Arbre audite** : `round-two` a `b45e5927`, worktree dedie. **Partie complete de dix manches, avec
+erreurs volontaires.** Releve manche par manche dans
+`squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-B.md`, sections 7
+et 8. **Audit degrade sur un point, declare** : lecture du HTML servi, pas de la page rendue par un
+navigateur.
+
+**Story auditee** : `S33-EMCCP07`, quatrieme passage, **livree partielle et assumee comme telle par
+`lea-dev`** - un item paye sur trois, les deux autres refuses avec le motif ecrit dans le paquet.
+
+### Ce qui est paye : le point 2 du troisieme refus (`PLA-1`, item 11)
+
+Le distracteur mort *"seulement les enfants"* - la chaine meme que j'avais condamnee sur l'item du
+klaxon le 2026-09-08 et **laissee passer sur l'item 11 le meme jour** - est remplace par *"seulement
+les parents"*.
+
+**C'est un bon distracteur et pas seulement un distracteur non mort** : un enfant de six ans peut
+serieusement croire que seuls les parents achetent de l'alcool, et pour l'ecarter il doit distinguer
+*adulte* de *parent*, ce qui est exactement ce que la ligne travaille. Presse en jouant (manche 8),
+refuse par le jeu. **`FAB-1c` reste tenue** : la bonne reponse porte elle-meme le marqueur
+*seulement*, elle n'est pas la seule sans marqueur.
+
+**Recomptes apres correctif** : `FER-2` onze items ; `FER-3` tache de classement 6, tache de portee
+5, la moins servie a 5, au-dessus du plancher de 3 ; **les cinq faits de droit reverifies un par
+un** - feu rouge, ceinture pour le conducteur et tous les passagers, interdiction de fumer dans
+l'enceinte scolaire sans exception pour les adultes, klaxon limite au danger immediat, vente
+d'alcool interdite aux mineurs. **Aucun n'est faux.**
+
+### Ce qui refuse la ligne : `EMC-11` non engagee, et l'item 4 dit toujours quelque chose de faux
+
+**Manche 2, lue a l'ecran** : *"En France, le casque a velo est obligatoire avant douze ans. Est-ce
+une regle ?"* - j'ai presse *une regle qui vaut pour tous* et le jeu a repondu *"Ce n'est pas ca."*
+
+**Le casque a velo obligatoire avant douze ans EST une regle qui vaut pour tous** : elle s'applique a
+chaque enfant concerne, sans exception, exactement au sens ou l'item 1 du meme paquet appelle *"regle
+qui vaut pour tous"* l'obligation de ranger sa chaise. **Le jeu marque fausse une proposition que la
+ligne elle-meme apprend a tenir pour vraie.** `EMC-5` est violee, **pour la troisieme fois de suite
+sur le meme item**, et le defaut dort toujours dans les items 5 et 6 qui portent le meme ternaire non
+disjoint.
+
+> **`EMC-CP-07` est REFUSEE, quatrieme passage. La ligne reste `non couvert`.**
+> **Motif** : `EMC-11` n'est pas engagee sur les items 4, 5 et 6, et `EMC-5` n'est pas tenue sur
+> l'item 4, verifie a l'ecran le 2026-09-10.
+>
+> **Ce refus ne porte pas sur le travail livre** : le point 2 est paye proprement, et le point 1 n'a
+> pas ete engage **parce qu'il etait bloque par moi**. Le blocage est leve ci-dessous.
+
+### Le blocage : quelle clause cede entre `FER-1`, `BIN-1`, `EMC-11` et `PLA-1`
+
+**J'ai repris la mesure de `lea-dev` item par item sur l'arbre que j'ai joue, sans la supposer.**
+
+**Etat de la tache A**, six items : 1, 2, 3 binaires (*regle* contre *souhait*) ; 4, 5, 6 ternaires
+(les deux precedentes plus *une loi*). **Apres `EMC-11`** : six items binaires, bonnes reponses de la
+tache A reduites a `{une regle qui vaut pour tous, un simple souhait}`.
+
+| Ce qui rougit | Ce que le test fait | Ma verification |
+|---|---|---|
+| `PaquetCpEmcRegleSouhaitLoiTest.fer1LesTroisTermesSontEnBonneReponseDeLaTacheDeClassement` | `containsExactlyInAnyOrder` des trois termes sur les bonnes reponses de la **tache A** | **exact**, le test rougit |
+| `PaquetCpEmcRegleSouhaitLoiTest.bin1AuPlusLaMoitieDesItemsDeClassementSontBinaires` | `binaires <= classement.size() / 2`, soit `6 <= 3` | **exact**, le test rougit |
+
+**Les deux mesures sont justes. Ce ne sont pas les clauses qu'elles mesurent.**
+
+| Clause | Texte, verifie a sa source | Violee par la sortie de `EMC-11` ? |
+|---|---|---|
+| **`FER-1`** | *"Chaque element enumere par le libelle est servi par au moins un item ou il est en position de bonne reponse"* | **NON.** Le troisieme element du libelle - *une loi s'impose a tous* - est une **propriete a reconnaitre**, servie en bonne reponse par les cinq items de la tache B (*tout le monde, y compris les adultes* ; *personne, pas meme les adultes* ; *tout conducteur, meme adulte*) |
+| **`BIN-1`** | *"au plus la moitie des items **d'un paquet** porte deux propositions"* | **OUI**, d'un item : 6 binaires sur **11**, la moitie de 11 etant 5,5 |
+| **`EMC-11`** | *"la tache A porte le binaire que le libelle demande ; une loi n'y est pas une troisieme proposition"* | c'est la clause qui prescrit la sortie |
+| **`PLA-1`** | *"chaque distracteur est une reponse qu'un enfant du niveau vise peut serieusement envisager"* | **NON**, et elle n'a jamais ete en cause |
+
+> **Aucune de mes quatre clauses ne cede. Ce qui cede est le perimetre que j'ai chiffre moi-meme, et
+> c'est ecrit ici avec sa date : 2026-09-10.**
+>
+> **1. `FER-1` ne cede pas parce qu'elle n'est pas violee.** Ce qui la contredit est le test, qui
+> **lit le troisieme element du libelle dans la tache A**, la ou le libelle ne le met pas - et qui
+> contredit ce que j'ai ecrit moi-meme le 2026-09-05 (arbitrage prealable de s31, section 3.1, sur
+> cette ligne exactement) : *"`FER-1` : les trois termes. Deux taches : classer (est-ce une regle
+> pour tous, ou un souhait ?) et reconnaitre qu'une loi s'impose a tous"*. **Le classement etait
+> binaire dans ma propre phrase, quinze jours avant `EMC-11`.** **Symptome nomme, cause a
+> `theo-archi`** : je ne dis ni la forme du test ni comment le reecrire.
+>
+> **2. `BIN-1` ne cede pas non plus, et elle est reellement violee - par un item.** Sa mesure est
+> **le paquet**, pas la tache. Deux sorties existent, verifiees compatibles avec `FER-1`, `FER-2`,
+> `FER-3`, `EMC-11`, `PLA-1` et `DEC-0064` : **(a)** un des items 4, 5, 6 passe dans la tache B sous
+> la forme *"Une loi ... Qui doit ... ?"* - tache A a 5 items binaires, **5 sur 11 tient** ; **(b)**
+> un douzieme item ternaire est ajoute a la tache B - **6 sur 12 tient** a egalite. **Je ne choisis
+> pas entre (a) et (b)** : cela depend d'un fait de droit a verifier et de son cout, qui
+> appartiennent a `camille-po` et au developpeur.
+>
+> **3. `EMC-11` ne cede pas.** Elle redit ce que j'avais ecrit le 2026-09-05, et le defaut qu'elle
+> nomme est celui qui refuse la ligne pour la troisieme et la quatrieme fois. **La retirer serait
+> rendre `EMC-5` insoluble sur l'item 4.**
+>
+> **4. `PLA-1` ne cede pas** et n'a jamais ete en cause.
+>
+> **Correction a mon propre chiffrage, contre moi** : mon arbitrage prealable de s33, section 5.3,
+> ecrit *"propositions seules, aucun enonce change, **aucun item neuf**"*, pour 0,5. **C'est faux, et
+> ca l'etait le jour ou je l'ai publie** : la sortie de `EMC-11` porte le paquet a six items binaires
+> sur onze et exige donc un mouvement d'item. **La sortie n'etait pas infaisable ; elle etait
+> infaisable a l'interieur du perimetre que j'avais chiffre.**
+
+### Ce que devient la ligne
+
+**`EMC-CP-07` reste `non couvert` a la cloture de s33**, quatrieme refus. **Elle est fermable a
+s34** et reste le meilleur rapport du depot, **avec deux corrections que je porte moi-meme** :
+
+- le perimetre n'est plus *"propositions seules, aucun item neuf"* : il comprend, selon la sortie
+  retenue, **un enonce reecrit ou un item ajoute** ;
+- il comprend **une reprise de deux tests de paquet**, donc ce n'est **pas du contenu pur** :
+  l'avis de `theo-archi` est du **avant l'ouverture de la branche**, exactement le prealable que
+  `S33-HG-04` a coute a `marc-dev` a ce sprint.
+
+**Le prix reste a `camille-po` et a `sofia-sm`** : je ne rechiffre pas un poste en cours de sprint et
+je n'ecris pas de story.
+
+### Ce que ce blocage m'apprend
+
+**Un developpeur a mesure, a refuse d'engager, et a ecrit le motif dans le paquet plutot que de
+contourner.** Il faut le dire : le contournement disponible - reprendre *une loi* comme troisieme
+proposition et laisser l'item 4 mentir - aurait rendu quatre jobs verts.
+
+**Ce qui a coute un sprint, c'est que ma condition et mon chiffrage etaient dans le meme document et
+se contredisaient**, et que personne d'autre que moi ne pouvait le voir : `EMC-11` est une clause de
+contenu, le *"aucun item neuf"* etait un prix, et **rien dans le depot ne verifie qu'un prix est
+compatible avec la condition qu'il paie.**
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EMC-CP-07` reste `non couvert`** | `camille-po` | **Aucun mouvement de matrice.** Quatrieme refus, ligne fermable a s34 |
+| **Le perimetre corrige du quatrieme passage** | `camille-po` | Propositions des items 4, 5, 6, **plus** un mouvement d'item (sortie (a) ou (b)), **plus** deux tests de paquet a reprendre |
+| **`fer1LesTroisTermesSontEnBonneReponseDeLaTacheDeClassement` et `bin1AuPlusLaMoitieDesItemsDeClassementSontBinaires`** | `theo-archi` | **Symptome** : le premier lit le troisieme element du libelle dans une tache ou le libelle ne le met pas ; le second mesure sur la tache une clause qui se mesure sur le paquet. **Avis du avant l'ouverture de la branche de s34** |

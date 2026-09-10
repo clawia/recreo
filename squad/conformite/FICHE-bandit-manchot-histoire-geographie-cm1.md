@@ -8,7 +8,8 @@
 - **Statut s27, conserve tel quel** : **VALIDE** (Done pedagogique prononce le 2026-09-03). **Ma reserve bloquante du 2026-09-03 sur l'item 5 est levee** : la reformulation est reprise mot pour mot. Lignes de matrice `non couvert` -> **`en cours`** - premier paquet d'une matiere neuve, aucune ligne ne se ferme.
 - **Arbitrage prealable de `nadia-prof`** : `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` sections 5, 7.2, 7.4 et 7.5 (`HIS-1` a `HIS-3`, `BIA-5`) ; `ARBITRAGE-s27-s1-8-retrecie-unite-de-ma-borne-et-trois-faits-d-histoire.md` section 3.
 - **Statut global s32** : **REFUSE** (Done pedagogique **refuse le 2026-09-09** sur l'increment de s32, story `S32-1`, par `nadia-prof`, **instance A**). **Le refus porte ligne par ligne** : `HG-CM1-02` (`HG-R11`) et `HG-CM1-04` (`HG-R12`) ne ferment pas et restent `en cours` ; **`HG-CM1-01` et `HG-CM1-03` ferment** et passent `couvert-valide`, la ligne 1 avec une **mention de couverture partielle** que j'ecris ce jour. `HG-R8` **levee**. Reserves nouvelles : `HG-R9`, `HG-R10` (non bloquantes), `HG-R11`, `HG-R12` (**bloquantes**), `CONS-4` (non bloquante, portee D). `CONS-1` **non levee** sur cette entree.
-- **Derniere mise a jour** : 2026-09-09 (**quatrieme verdict de `nadia-prof`, instance A, apres cinq parties completes, vingt-six passes ciblees et la lecture des quarante items des quatre lignes**, s32).
+- **Statut global s33** : **VALIDE SOUS RESERVE sur trois lignes, REFUSE sur une** (verdicts prononces le 2026-09-10 sur l'increment de s33, stories `S33-HG-02`, `S33-HG-04` et `S33-HG-08-12`, par `nadia-prof`, **instance A**). **`HG-CM1-02`, `HG-CM1-04` et `HG-CM1-08` ferment** et passent `couvert-valide` ; **`HG-CM1-12` est refusee** (`HG-R17`, bloquante) et reste `en cours`. `HG-R9`, `HG-R10`, `HG-R11` et `HG-R12` **levees**. Reserves nouvelles : `HG-R13` a `HG-R16` et `HG-R18` (non bloquantes), `HG-R17` (**bloquante**). `CONS-1` **toujours non levee** ; `CONS-4` **toujours ouverte**. **Aucune mention de couverture partielle n'est due sur les quatre lignes.**
+- **Derniere mise a jour** : 2026-09-10 (**cinquieme verdict de `nadia-prof`, instance A, apres vingt-huit parties completes, 280 manches servies et la lecture des 110 items du fichier**, s33).
 
 ## Competence visee
 
@@ -1137,3 +1138,287 @@ lue avant de commencer. **L'enfant lit 31 mots pour n'en retenir aucun.**
   la phrase. **Le proxy derivera** le jour ou un item d'une autre operation commencera par ces mots. Je
   le nomme plutot que de laisser croire que la clause est encodee.
 - **`SCO-1`** : entierement automatisable, **et rien n'est ecrit**. Voir le bloc de mention en tete.
+
+---
+
+# Cinquieme passage - increment de s33 (`S33-HG-02` et `S33-HG-08-12`, `4adc751f` ; `S33-HG-04`, `30726ecb`) - **VALIDE SOUS RESERVE sur trois lignes, REFUSE sur une**
+
+> Bloc de validation pedagogique - **`nadia-prof` UNIQUEMENT, instance A de s33**. Il n'est jamais
+> pre-rempli ni anticipe par un autre agent. **Les blocs de s27 a s32 ci-dessus ne sont pas
+> retouches** : un refus efface n'a aucune valeur de preuve, et ceux de s32 sur `HG-CM1-02` et
+> `HG-CM1-04` restent lisibles avec leur date et leur motif sous les levees d'aujourd'hui.
+>
+> **Le detail complet de cet audit vit dans
+> `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-A.md`.** Ce bloc
+> porte les verdicts, les levees et les reserves neuves ; il ne recopie pas les mesures.
+
+## Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `b45e5927`, jar de l'arbre fusionne lance sur un port local,
+**vingt-huit parties completes de dix manches, 280 manches servies**, chaque proposition fausse
+pressee avant la bonne, plus un chemin de revelation joue a part. **Verifie avant de jouer** que le
+paquet servi par ce jar est bien celui d'apres la fusion de la section 14 du planning : 110 items, et
+l'item 85 y porte *"D'ou venait cette armee ?"*.
+
+**Degrade sur un point, declare comme a s32** : j'ai joue par requetes HTTP reelles, donc j'ai lu le
+HTML servi et non la page rendue par un navigateur. **Ni la couleur, ni le contraste, ni la taille, ni
+la position a l'ecran ne sont couverts, et aucun verdict de ce bloc n'en depend.**
+
+## 1. Les quatre verdicts
+
+| Ligne | Story | Verdict | Etat de matrice demande |
+|---|---|---|---|
+| `HG-CM1-02` | `S33-HG-02` | **VALIDE SOUS RESERVE** | `en cours` -> **`couvert-valide`** |
+| `HG-CM1-04` | `S33-HG-04` | **VALIDE SOUS RESERVE** | `en cours` -> **`couvert-valide`** |
+| `HG-CM1-08` | `S33-HG-08-12` | **VALIDE SOUS RESERVE** | `en cours` -> **`couvert-valide`** |
+| `HG-CM1-12` | `S33-HG-08-12` | **REFUSE** (`HG-R17`, bloquante) | **reste `en cours`** |
+
+**Aucune mention de couverture partielle n'est due sur ces quatre lignes.** Celles deja ecrites sur
+`HG-CM1-01` et `HG-CM1-14` sont inchangees. **Le mouvement de la matrice appartient a `camille-po` et
+a la review ; je ne l'ecris pas.**
+
+## 2. Quatre reserves levees
+
+- **`HG-R11`, bloquante - LEVEE.** *"le sacre de Clovis, roi des Francs, en 481"* a disparu des items
+  70 et 71, remplace par la formulation de l'item 66 que ma reserve dictait mot pour mot. **Verifie
+  sur le fichier entier : plus aucune occurrence.**
+- **`HG-R12`, bloquante - LEVEE.** L'item 85 demande desormais *"D'ou venait cette armee ?"* ->
+  *"d'Espagne"*, **la premiere des deux directions que ma reserve nommait**. Aucune bonne reponse de
+  `HG-CM1-04` ne designe plus un groupe humain par un exonyme qu'aucun groupe ne revendique. **Je ne
+  demande pas le quatrieme item** : je l'avais nomme pour montrer que la sortie existait, pas pour
+  l'exiger, et la direction retenue garde l'item dans sa tache. *"La peninsule Iberique"*, que j'avais
+  relevee sans lui allouer de code, a disparu du meme geste.
+- **`HG-R9` - LEVEE.** Les cinq indices de la tache d'ordre portent la methode (*"Compare les trois
+  dates : cherche celle qui est arrivee en premier."*) et **aucun ne porte plus de date**.
+- **`HG-R10` - LEVEE.** L'indice de l'item 87 n'attribue plus a 481 l'unification du royaume.
+
+## 3. Deux corrections a mes propres constats, avant de m'en servir
+
+**Deux des quatre reserves payees ici portaient un texte que j'avais dicte moi-meme.** `marc-dev` a
+applique exactement ce que j'avais ecrit ; ce que ces textes produisent est donc a moi.
+
+1. **Le texte de `HG-R11` fabrique une proposition qui ne repond pas a sa question.** *"Clovis devient
+   roi des Francs, en 481"* est une phrase a verbe conjugue placee parmi des groupes nominaux, dans
+   une liste qui repond a *"lequel a eu lieu le plus tot ?"*. **Je leve `HG-R11` et j'ouvre `HG-R13`,
+   neuve et datee, non bloquante. Je ne durcis pas la reserve levee.**
+2. **Le texte de `HG-R10` fabrique un indice qui n'ajoute presque rien** au choix de l'item 87. Il
+   oriente encore - le chemin *Francs* vers *France* est celui que l'enfant doit prendre - **donc je
+   n'ouvre rien**, et je l'ecris pour que personne ne le releve plus tard comme un defaut manque.
+
+**Et un point que je ne rouvre pas** : les cinq indices *"En quel siecle ?"* de `HG-CM1-02` nomment la
+bonne reponse. **J'ai regarde exactement ces indices a s32 et j'ai ecrit qu'ils ne sont pas un
+defaut**, l'indice enseignant la regle du siecle. Je m'y tiens.
+
+## 4. `HG-CM1-08` - ce qui la ferme, et les trois reserves qui restent
+
+**Mes deux refus d'avance sur cette ligne sont evites.** La seconde moitie du libelle - *ce que
+Napoleon Bonaparte y change* - est servie **en bonne reponse par cinq items** (le Code civil, des
+lycees, la Legion d'honneur, un prefet, la Banque de France), contre cinq sur le passage. `FER-1` sur
+les deux moities, `FER-2` a dix items, `FER-3` a cinq contre cinq : tenues. **La charge de lecture n'a
+pas bouge** : mediane du paquet a 16 mots avant comme apres les dix-huit items neufs.
+
+**Les deux lectures de `HG-R4` tiennent toutes les deux, et je le dis plutot que de choisir apres
+coup** : celle que j'ai tranchee a s30 (*le lot livre*) donne un maximum de 19 mots sur les items
+neufs ; celle que mon refus d'avance de s33 ecrit (*la mediane du paquet*) donne 16 avant et 16 apres.
+**Aucune des deux n'est mise en defaut**, et je ne reecris pas l'une pour l'autre.
+
+**Exactitude** : les neuf faits neufs sont justes, un par un. Les distracteurs sont des candidats
+serieux du meme genre que la bonne reponse **sur les dix items** - *"la Declaration des droits de
+l'homme et du citoyen"* contre *"le Code civil"*, *"un maire"* et *"un depute"* contre *"un prefet"*.
+
+- **`HG-R14` - neuve, datee du 2026-09-10, non bloquante.** *"Avant de devenir empereur en 1804, quel
+  regime la Revolution avait-elle installe en France ?"* : le seul sujet de la phrase est *la
+  Revolution*, et **Napoleon Bonaparte n'est nomme nulle part dans l'item**. A la lettre, l'enonce dit
+  que la Revolution devient empereur. **C'est la classe de defaut que la retro de s32 a nommee** - une
+  phrase remontee sans que le francais soit repris autour. **Propriete a tenir** : l'enonce nomme
+  celui qui devient empereur, ou renonce a sa subordonnee. **Regime : mot pour mot, 0,25.**
+- **`HG-R15` - neuve, datee du 2026-09-10, non bloquante.** L'indice du Code civil - *"Il porte encore
+  aujourd'hui le nom de son createur dans plusieurs pays."* - **ne designe aucune des trois
+  propositions** : aucune ne porte un nom de personne. L'enfant qui s'est trompe ne peut pas avancer.
+  L'indice dit en outre *"son createur"* la ou l'enonce ecrit soigneusement *"fait rediger"*.
+  **Propriete a tenir** : l'indice nomme une propriete qui distingue *le Code civil* des deux autres.
+  **Regime : mot pour mot, 0,25.**
+- **`HG-R16` - neuve, datee du 2026-09-10, non bloquante.** *"une nouvelle banque chargee de fabriquer
+  la monnaie"* : la Banque de France de 1800 n'est pas chargee de fabriquer la monnaie ; elle recoit
+  le privilege d'emettre des billets a Paris en 1803, et la frappe des pieces reste une affaire
+  d'Etat. **Pourquoi ce n'est pas un refus, alors qu'une erreur de fait est chez moi un motif de refus
+  a elle seule** : **la reponse attendue ne depend pas de cette phrase** - l'enfant repond *"la Banque
+  de France"* dans les deux cas. C'est le motif exact de `HG-R7` et de `ANG-R2`, et je l'applique dans
+  le sens de la reserve. **Propriete a tenir** : l'enonce decrit une mission qu'elle a reellement
+  recue a sa creation, ou renonce a en decrire une. **Regime : mot pour mot, 0,25.**
+
+## 5. `HG-CM1-12` - **REFUSEE**, et je dis d'abord ce que le refus ne porte pas sur
+
+- **`HIS-5`, ma frontiere ecrite avant le premier item, est respectee.** Aucun des neuf items neufs ne
+  reprend la cellule *se loger dans un espace urbain*, deja depensee sur `HG-CM1-11`, ligne fermee.
+  **Verifie par moi sur les vingt items des deux lignes, et non sur le test** : le test n'ecarte
+  qu'une chaine de caracteres, ma frontiere porte sur la cellule. **Mon refus d'avance numero 1 est
+  evite.**
+- **Les six cellules libres sont servies, et *on se cultive* la premiere** - un musee, des monuments
+  historiques, un festival. C'etait celle des quatre que je disais que le lot oublierait. **Mon refus
+  d'avance numero 2 est evite.**
+- `FER-1`, `FER-2` a dix items, `FER-3` a quatre contre six : tenues. **Aucune inexactitude factuelle
+  sur les neuf items neufs.**
+
+### `HG-R17` - **reserve neuve, datee du 2026-09-10, BLOQUANTE** : le registre des distracteurs est le discriminant de la ligne entiere
+
+**Compte, avec sa methode.** Attribution faite a la main par moi, sur les dix-huit distracteurs neufs
+de la ligne, sur le fichier servi : **quatorze appartiennent au registre de la ferme, du champ, de la
+peche ou de la batellerie** - *une ferme isolee*, *l'agriculture*, *la peche*, *dans une ferme*, *un
+bateau de peche* (trois fois), *des champs cultives*, *le tracteur*, *une peniche*, *une ferme
+d'elevage*, *dans un champ*, *une moisson*, *une peche en mer*. **Et aucune des dix bonnes reponses de
+la ligne n'y appartient - zero sur dix.** Le detail item par item est dans les verdicts de l'instance
+A, section 5.1.
+
+**Devant l'ecran, cela donne une regle** : *la ferme, le champ, le bateau de peche et la moisson ne
+sont jamais la bonne reponse*. **Un enfant qui a joue deux parties repond aux neuf items sans lire les
+questions.**
+
+**Le corollaire, qui est le meme fait vu de l'autre cote** : les distracteurs ne sont pas des
+candidats. *"Sur un bateau de peche"* n'est pas une reponse a *"ou travaillent les employes d'une
+banque ?"*. **Sur au plus deux des neuf items neufs l'enfant a devant lui un distracteur serieux du
+meme genre que la bonne reponse** - contre dix sur dix pour `HG-CM1-08`, ecrit par le meme
+developpeur dans le meme commit.
+
+**Deux items ajoutent un appariement de mots par-dessus** : *"riche en histoire"* -> *"des monuments
+historiques"*, et *"quel logement loue-t-on"* -> *"un chalet ou un appartement de location"*.
+
+**Ce que le refus ne dit pas** : la ligne porte sur l'espace urbain et l'espace touristique, donc **il
+est normal qu'une reponse rurale y soit fausse**. Le defaut est qu'elles soient **les seules** a
+l'etre, systematiquement, de sorte que la faussete se lit dans le registre sans passer par la
+question.
+
+**Pourquoi c'est un refus, et pourquoi ce n'est pas un durcissement de `PLA-1`, de `CAT-1` ni de
+`ANG-R3`.**
+
+- **`ANG-R3`, le 2026-09-09** : trois items sur cinq etaient unaires et j'ai ferme la ligne. **Mon
+  motif ecrit etait** : *"les sept autres items de la ligne tiennent"*. **Ici neuf des dix items de la
+  ligne sont les items neufs** : il n'y a pas de majorite qui tienne a cote. **C'est mon propre
+  critere qui echoue, pas une barre que je releve.**
+- **`CAT-1`** : je n'ai pas rouvert `EMC-CP-02` ni `EMC-CP-06`, **deja `couvert-valide`**. Rouvrir une
+  ligne fermee et refuser d'en fermer une neuve sont deux gestes differents.
+- **Je ne refuse pas sur `PLA-1` seule.** Je refuse sur un fait qu'aucune des trois n'attrape : la
+  faussete est predictible **au niveau de la ligne entiere**, sans lire l'item. Sur l'anglais l'enfant
+  devait au moins lire l'enonce ; ici il n'a pas a le lire.
+- **Et sur ce que la matrice dirait** : passer `HG-CM1-12` a `couvert-valide` affirmerait que le
+  produit couvre *"decrire comment on se loge, on travaille, on se cultive et on se deplace dans un
+  espace urbain et dans un espace touristique"*. **Une ligne dont les dix items se repondent par une
+  regle sur le registre des distracteurs ne met jamais cette competence a l'epreuve.**
+
+> **`HG-R17`. Propriete a tenir, et je ne fournis pas les textes.** Sur `HG-CM1-12`, les deux
+> distracteurs de chaque item appartiennent au **meme genre que la bonne reponse et au meme espace que
+> celui de l'enonce** : un autre lieu de la ville contre le musee, un autre transport urbain contre le
+> metro, un autre hebergement de vacances contre le camping, un autre metier de ville contre le
+> bureau. **Un enfant qui ne sait pas doit pouvoir se tromper serieusement.** Et sur les deux items
+> nommes, le mot de la bonne reponse cesse d'etre appariable a un mot de l'enonce.
+>
+> **Ce que je ne demande pas** : aucun item neuf, aucune cellule de plus, aucun changement d'enonce
+> sauf sur les deux items d'appariement. `FER-1`, `FER-2`, `FER-3` et `HIS-5` sont **tenues** et je ne
+> les redemande pas. **Regime : rejeu borne, 0,5.**
+
+### `HG-R18` - **reserve neuve, datee du 2026-09-10, non bloquante**
+
+*"Dans un espace urbain, quel secteur emploie le plus d'habitants, **les services ou l'agriculture**
+?"*, servi avec trois propositions dont *"la peche"*. **La question offre une alternative fermee entre
+deux termes et l'ecran en presente trois** : l'enfant qui lit bien apprend de l'enonce que la
+troisieme n'est pas a considerer, et passe de trois choix a deux. **C'est l'inverse de ce que la
+lecture devrait lui rapporter.** **Propriete a tenir** : l'enonce pose sa question sans enumerer de
+propositions. **Regime : mot pour mot, 0,25**, il voyage avec `HG-R17` sur le meme paquet (`PAR-10`).
+
+### Un point verifie sur cette ligne qui ne fonde aucune demande
+
+**Biais social** : j'ai regarde si les neuf items presupposent un contexte que tous les enfants n'ont
+pas - une station de ski, un telesiege, un camping sur la Cote d'Azur, un chalet loue. **Ils ne le
+presupposent pas** : chaque enonce donne l'espace dont il parle, et decrire un espace touristique est
+le libelle meme de la ligne. `BIA-1` a `BIA-5` : aucun stereotype, aucun personnage juge. **Je le dis
+pour que ce point ne se relise pas comme manque.**
+
+## 6. `CONS-1` - **toujours non levee**, et ce que le remplissage y deplace
+
+La consigne servie est **inchangee**, relevee a chacune de mes 280 manches : 31 mots, cinq clauses.
+
+**Sur les 200 manches de ma seconde serie, appariees a leur item du fichier** (199 sur 200 appariees ;
+une manche n'a pas pu l'etre par une difference d'apostrophe, et je le dis plutot que d'arrondir) :
+**dix-sept manches ont servi `HG-CM1-08`, dont aucune des cinq clauses ne nomme la tache.** *Comment
+appelle-t-on ce texte, cette recompense, ce representant ?* n'est ni situer dans le temps, ni nommer
+un peuple, ni associer un roi a son fait, ni decrire un espace, ni lire un document - **et Napoleon
+Bonaparte n'est pas un roi.** Avant s33 cette ligne portait un item sur 92 ; elle en porte dix sur
+110. **L'item 85, corrige par `S33-HG-04`, sort lui aussi de la clause *nomme un peuple ou un
+mouvement*.**
+
+**Je ne refais pas le comptage a la main de mon arbitrage prealable** - neuf manches sur vingt le
+2026-09-09 - **et je ne le fusionne pas avec celui-ci** : un chiffre date ne se refait pas a chaque
+document, et les deux n'ont pas la meme methode.
+
+> **`CONS-1` reste non levee sur cette entree, non bloquante.** Ce n'est pas un reproche au lot :
+> refondre la consigne n'etait pas son objet, et `S33-CONS-4` est restee bloquee tout le sprint faute
+> de la decision de grain. **`CONS-4` reste ouverte, non bloquante, portee D, non chiffree** - et
+> cette decision m'est due autant qu'a `camille-po` (`ADR-0081`). Je ne l'ai pas rendue a s33 et je
+> l'ecris. **Elle se prend desormais sur un paquet de 110 items au lieu de 92**, exactement ce que mon
+> arbitrage prealable annoncait comme le prix de son report.
+
+## 7. `SCO-1` - mesuree une quatrieme fois sur ce paquet
+
+**28 parties completes, 28 scores de 10 / 10**, chaque proposition fausse pressee avant la bonne, de
+15 a 27 appuis depenses pour dix manches. **Un enfant qui ne sait rien rapporte 10 sur 10 de ce jeu.**
+`D7` reste a **0,0** : cette observation est gratuite, faite dans des parties que je jouais de toute
+facon, et elle redeviendra due a 0,5 le jour ou il y aura un remede a verifier. **Le remede appartient
+a `theo-archi`. L'instruction 1 de `DEC-0061` - ce que *trois essais* veut dire quand l'elimination
+est possible - m'appartient, elle attend depuis neuf sprints, et je la porte a s34 comme une dette de
+ma porte.**
+
+## 8. Etat des lignes et des reserves de cette matiere au 2026-09-10
+
+| Ligne | Avant | Apres | Mention |
+|---|---|---|---|
+| `HG-CM1-02` | `en cours` (refusee a s32) | **`couvert-valide`** | aucune n'est due |
+| `HG-CM1-04` | `en cours` (refusee a s32) | **`couvert-valide`** | aucune n'est due |
+| `HG-CM1-08` | `en cours` | **`couvert-valide`** | aucune n'est due |
+| `HG-CM1-12` | `en cours` | **`en cours`** (refusee, `HG-R17`) | sans objet |
+| `-01`, `-03`, `-06`, `-07`, `-11`, `-13`, `-14` | `couvert-valide` | **inchangees** | celles de `-01` et `-14` inchangees |
+| `-05`, `-09`, `-10` | `non couvert` | **inchangees** | - |
+
+**Bilan de la matiere : 10 `couvert-valide`, 1 `en cours`, 3 `non couvert`, 14 au total.**
+
+| Reserve | Etat au 2026-09-10 |
+|---|---|
+| `HG-R1` a `HG-R8` | **levees** (s28, s29, s30, s32) |
+| `HG-R9`, `HG-R10` | **levees ce jour** |
+| `HG-R11`, `HG-R12` (bloquantes) | **levees ce jour** |
+| `HG-R13` | **ouverte**, non bloquante, rejeu borne 0,25 |
+| `HG-R14` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `HG-R15` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `HG-R16` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `HG-R17` | **ouverte, BLOQUANTE**, rejeu borne 0,5 |
+| `HG-R18` | **ouverte**, non bloquante, mot pour mot 0,25 |
+| `CONS-1` | **non levee** sur cette entree |
+| `CONS-4` | **ouverte**, non bloquante, portee D, decision due |
+
+**Sous `PAR-10`, les six reserves neuves vivent dans un seul paquet et se soldent ensemble : 0,5 en
+tout.** Les regimes disent ce que le developpeur doit faire, pas ce que je facture.
+
+## 9. Ce dont je reste la seule garde sur cette matiere, apres s33
+
+- **`HG-R17`** - le registre des distracteurs comme discriminant d'une ligne entiere. **Les tests du
+  lot sont verts sur `HG-CM1-12`.** Aucun automate ne le voit, et je ne pose pas de barre chiffree en
+  cours de sprint.
+- **`HIS-5`** - le test ecrit par le lot ecarte **une chaine de caracteres** (*"des immeubles
+  collectifs"*), pas une cellule. Il aurait laisse passer un item neuf disant la meme chose autrement.
+  **C'est un proxy, pas ma clause**, et je le nomme plutot que de laisser croire qu'elle est encodee.
+- **`FER-3` sur `HG-CM1-04`** - mordue par un ensemble de trois chaines de bonnes reponses ecrit a la
+  main. **La forme est le bon choix** (`theo-archi`, avis de faisabilite : un ensemble ecrit a la main
+  rougit quand le contenu change, une sous-chaine passe au vert) ; c'est sa **portee** que je nomme -
+  il compte des chaines, pas des taches.
+- **`FER-1` sur `HG-CM1-12`** - mordue par un proxy qui cherche trois mots dans les enonces. Il prouve
+  que *se cultiver* est servie, pas que les quatre pratiques le sont.
+- **`EXA-1` et l'exactitude factuelle** - `HG-R16` en est la preuve de plus : les quatre jobs sont
+  verts sur un arbre ou un enonce dit que la Banque de France fabrique la monnaie.
+- **`PLA-1`**, **`HIS-3` famille (b)**, **qu'une question et ses propositions forment une phrase
+  correcte recollees** (`HG-R13`), **qu'un enonce garde un sujet a son infinitive** (`HG-R14`),
+  **qu'un indice permette a l'enfant bloque d'avancer** (`HG-R15`) - aucune n'est mordable, et **la
+  premiere de ces trois-la a ete cassee par mon propre texte**.
+- **`CONS-1`, `CONS-4`** - partiellement mordables, et seulement si le paquet declarait la tache de
+  chaque item : **il ne la declare toujours pas.**
+- **`SCO-1`** - entierement automatisable, **et personne ne la tient**, quatrieme mesure.
+- **La couleur, le contraste, la taille, la position a l'ecran** - **personne sur ce terrain ce
+  sprint** (audit degrade).
