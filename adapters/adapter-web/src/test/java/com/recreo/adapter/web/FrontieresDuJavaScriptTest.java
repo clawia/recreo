@@ -36,12 +36,24 @@ class FrontieresDuJavaScriptTest {
      * il lui suffit de relire {@code .propositions} et de decider laquelle arrive dans quelle
      * colonne. Ces deux mots-la nomment exactement ce que le serveur doit avoir decide avant que le
      * fragment ne le quitte, et ils sont absents de {@code recreo.js} au jour de cet amendement.
+     *
+     * <p><b>Amendement ADR-0080, garde-fou 2 (T4, lot L-a) : sept mots rejoignent la liste.</b>
+     * {@code zone}, {@code clientX}, {@code clientY}, {@code offsetX}, {@code offsetY},
+     * {@code getBoundingClientRect}, {@code elementFromPoint} nomment ce que le serveur doit avoir
+     * decide avant que le fragment ne le quitte sur la mecanique de designation : la resolution d'un
+     * point en zone. Une designation n'envoie jamais une coordonnee, elle envoie l'identifiant du
+     * bouton presse (ADR-0080, decision 4) ; un script qui lirait une position de clic ou de toucher
+     * pour la comparer a un cadre reprendrait cote client une decision que le serveur seul doit
+     * rendre. Verifies sur le materiau reel et non sur une fixture, comme le reste de cette liste :
+     * aucun des sept ne figure dans {@code recreo.js} au jour de cet amendement.
      */
     private static final List<String> INTERDITS_JS = List.of(
             "fetch(", "XMLHttpRequest", "JSON.parse", "JSON.stringify",
             "localStorage", "sessionStorage", "eval(",
             "score", "correct", "bonneReponse", "reponse",
-            "proposition", "colonne");
+            "proposition", "colonne",
+            "zone", "clientX", "clientY", "offsetX", "offsetY",
+            "getBoundingClientRect", "elementFromPoint");
 
     @TempDir
     private Path tempo;

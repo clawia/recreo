@@ -62,10 +62,18 @@
          enonce est rendu. Cette clause a raison sur l'ecran de manche, ou l'enfant doit agir sur
          l'enonce et ou la consigne peut porter la question invariante du paquet ; ici l'enfant n'a
          plus rien a faire de cette phrase, la seule action de l'ecran etant d'en sortir. Ce n'est
-         donc pas un enonce a jouer mais une question rappelee, et la classe le dit. -->
-    <p class="question-rappelee" th:unless="${juste}" th:text="${enonceRevele}"></p>
-    <p class="reponse-revelee" th:unless="${juste}">La bonne réponse :</p>
-    <p class="reponse-attendue" th:unless="${juste}" th:text="${bonneReponse}"></p>
+         donc pas un enonce a jouer mais une question rappelee, et la classe le dit.
+         S33-PAL2-TROU-A, S33-PAL2-TROU-B (ADR-0088) : les deux conditions ci-dessous ne sont plus
+         "th:unless juste" mais deux booleens poses par le controleur, parce que la troisieme
+         mecanique (designation) ne suit plus la meme regle que les deux autres - questionRappeleeVisible
+         vaut vrai sur toute manche de designation, juste comprise, le dessin n'etant plus a l'ecran ;
+         reponseAttendueVisible vaut toujours faux sur une designation, nadia-prof ayant tranche que
+         ni un identifiant technique ni un libelle positionnel n'apprend quoi que ce soit ici. Sur le
+         bandit manchot et sur la saisie, les deux valent exactement "${!juste}" comme avant ce lot :
+         rien n'y change. -->
+    <p class="question-rappelee" th:if="${questionRappeleeVisible}" th:text="${enonceRevele}"></p>
+    <p class="reponse-revelee" th:if="${reponseAttendueVisible}">La bonne réponse :</p>
+    <p class="reponse-attendue" th:if="${reponseAttendueVisible}" th:text="${bonneReponse}"></p>
     <!-- ADR-0024, S6-7 : l'explication de l'item joue, posee au modele sous "explication" par
          PartieController, vide quand le contenu n'en porte pas (ecrite par ChaquePaquetExpliqueSesItemsAVariationTest
          sur les seuls items dont la graphie differe de la reponse attendue). Affichee systematiquement,

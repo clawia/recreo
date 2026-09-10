@@ -186,32 +186,31 @@ class ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest {
      * <b>ADR-0088, clause C : un type de paquet que ce garde-fou n'a pas instruit est un grief,
      * jamais un silence.</b>
      *
-     * <p><b>Ce que ce gate corrige, et c'est une promesse de ce fichier qui etait fausse.</b> La
-     * Javadoc de {@link #colonnes(Map)} annonce qu'<i>"une troisieme forme, le jour ou elle
+     * <p><b>Ce que ce gate corrigeait, et ce qu'il decide desormais (S33-PAL2-1, s34).</b> La
+     * Javadoc de {@link #colonnes(Map)} annoncait qu'<i>"une troisieme forme, le jour ou elle
      * arrivera, fera rougir ce garde-fou au lieu de passer en silence"</i>. Mesure du 2026-09-08 :
-     * la promesse ne tient que pour un paquet dont la <b>forme</b> est illisible, pas pour un paquet
-     * d'un <b>type</b> neuf dont la forme se lit par accident. Un paquet de type {@code designation}
-     * declare des {@code items} et aucun {@code distracteurs} : {@link #colonnes(Map)} y rend
-     * {@code Optional.of(1)}, aucun grief n'est ajoute, et le plafond etant un maximum, ce 1 ne
-     * gagne jamais. <b>Effet nul, promesse fausse</b> - et une promesse fausse dans un garde-fou est
-     * de la meme famille qu'un chiffre sans methode. Contrairement aux quatre autres garde-fous de
-     * rendu de ce paquet, ce fichier ne branchait pas du tout sur le type : c'est un cinquieme cas
-     * du meme defaut par un autre mecanisme, et il est nomme ici plutot que confondu avec eux.</p>
+     * la promesse ne tenait que pour un paquet dont la <b>forme</b> est illisible, pas pour un
+     * paquet d'un <b>type</b> neuf dont la forme se lit par accident - un paquet de type
+     * {@code designation} declare des {@code items} et aucun {@code distracteurs}, ce qui rendait
+     * silencieusement {@code Optional.of(1)}. Le premier paquet reel servi
+     * ({@code cp-frise-de-la-journee}, S33-PAL2-1) a rendu ce rouge date reel : la decision, prise
+     * ici, est que ce type produit
+     * <b>zero</b> colonne - une designation ne rend jamais de rouleau de propositions (ADR-0029),
+     * elle pose des boutons de zone sur une image. {@link #colonnes(Map)} le decide desormais
+     * explicitement plutot que de le lire par accident sur l'absence de {@code distracteurs}.</p>
      *
-     * <p>Le grief est ajoute, et le balayage <b>continue</b> : un paquet peut porter les deux
-     * defauts a la fois - un type non instruit et une forme illisible - et n'en montrer qu'un
-     * masquerait l'autre.</p>
+     * <p>Le grief reste ajoute pour tout type non reconnu, et le balayage <b>continue</b> : un
+     * paquet peut porter les deux defauts a la fois - un type non instruit et une forme illisible -
+     * et n'en montrer qu'un masquerait l'autre.</p>
      */
     private static Optional<String> defautDuTypeNonInstruit(String nom, Map<?, ?> paquet) {
         String type = String.valueOf(paquet.get("type"));
         return switch (type) {
-            case "question", "additions-bornees", "saisie" -> Optional.empty();
+            case "question", "additions-bornees", "saisie", "designation" -> Optional.empty();
             default -> Optional.of(nom + " : type '" + type + "', que ce garde-fou n'a pas instruit."
                     + " Son nombre de colonnes est alors lu par la forme generique, qui peut le"
-                    + " rendre par accident : un paquet de designation declare des items sans"
-                    + " distracteurs et vaudrait 1 colonne sans qu'aucun grief ne le dise. Decider"
-                    + " ici combien de colonnes ce type peut produire - zero pour une designation,"
-                    + " qui ne rend aucun rouleau de propositions (ADR-0029, ADR-0088 clause C)");
+                    + " rendre par accident. Decider ici combien de colonnes ce type peut produire"
+                    + " (ADR-0029, ADR-0088 clause C)");
         };
     }
 
@@ -224,15 +223,18 @@ class ChaqueColonneQueLeContenuPeutProduirePorteSonDecalageTest {
      * dans ses parametres, et le generateur en produit au plus autant. Dans les deux cas c'est une
      * borne superieure, ce qui est le bon sens de l'approximation.</p>
      *
-     * <p><b>Amendement du 2026-09-08 (ADR-0088, clause C).</b> Cette Javadoc disait <i>"une
-     * troisieme forme, le jour ou elle arrivera, fera rougir ce garde-fou au lieu de passer en
-     * silence"</i>. C'est vrai d'une forme <b>illisible</b> et faux d'un <b>type</b> neuf dont la
-     * forme se lit par accident : un paquet de designation declare des {@code items} sans
-     * {@code distracteurs} et vaut ici 1, sans grief. La promesse est donc tenue ailleurs, par
-     * {@link #defautDuTypeNonInstruit(String, Map)}, et elle est retiree d'ici plutot que laissee a
-     * moitie vraie.</p>
+     * <p><b>Amendement du 2026-09-08 (ADR-0088, clause C), decide au 2026-09-10 (S33-PAL2-1, s34).</b>
+     * Cette Javadoc disait <i>"une troisieme forme, le jour ou elle arrivera, fera rougir ce
+     * garde-fou au lieu de passer en silence"</i>. C'est vrai d'une forme <b>illisible</b> et faux
+     * d'un <b>type</b> neuf dont la forme se lit par accident : un paquet de designation declarait
+     * des {@code items} sans {@code distracteurs} et valait 1 par accident, sans grief. Decide
+     * desormais explicitement a zero, pour le motif documente par
+     * {@link #defautDuTypeNonInstruit(String, Map)}.</p>
      */
     private static Optional<Integer> colonnes(Map<?, ?> paquet) {
+        if ("designation".equals(String.valueOf(paquet.get("type")))) {
+            return Optional.of(0);
+        }
         Object items = paquet.get("items");
         if (items instanceof List<?> liste && !liste.isEmpty()) {
             int maximum = 0;

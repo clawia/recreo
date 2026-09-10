@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0080 : ecran de manche de la troisieme mecanique, homologue de fragments/saisie.html et de
+     fragments/manche.html. ADR-0020 : ce fragment ne porte pas l'identifiant de la zone qui le
+     recoit.
+     S10, M13 : data-focus est declare par le serveur, jamais devine par un script - meme convention
+     que sur les deux autres mecaniques. "enonce" designe l'enonce (manche fraiche) ; l'autre valeur
+     designe le bouton de zone porteur de data-focus-cible (celui que l'enfant vient de designer sur
+     un echec, celui qui porte la zone revelee au troisieme echec). -->
+<div th:fragment="designation" class="ecran-de-jeu" th:attr="data-focus=${focus}">
+    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <!-- Meme bloc que sur les deux autres mecaniques, meme motif (ADR-0075 section 7, VOI-12). -->
+    <div class="bloc-adulte" tabindex="-1" th:if="${blocAdulte != null}">
+        <p class="etiquette-adulte">Adulte, à voix haute :</p>
+        <p class="stimulus-a-lire" th:text="${blocAdulte.stimulus()}"></p>
+        <p class="consigne-adulte" th:text="${blocAdulte.miseEnGarde()}"></p>
+    </div>
+    <p class="consigne" th:text="${consigne}"></p>
+    <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js - meme motif que sur
+         fragments/manche.html : c'est la seule maniere dont focus() peut atteindre ce paragraphe
+         quand data-focus="enonce" le designe (M13 clause 4). ZoneADesigner ne declare ni part
+         designee (ADR-0062) ni texte-support (ADR-0050) : l'enonce est rendu tel quel. -->
+    <p class="enonce" tabindex="-1" th:text="${enonce}"></p>
+    <!-- ADR-0080, decision 4 : l'image et ses zones, positionnees par le cadre que le contenu
+         declare - aucune arithmetique ici, le pourcentage EST la valeur declaree. Le client
+         n'envoie jamais une coordonnee : chaque zone est un vrai bouton de formulaire, portant
+         l'identifiant que le serveur y a lui-meme ecrit.
+         Garde-fou 1 (ChaqueZoneDesignableEstUnBoutonDuFormulaireDeCoupTest, ADR-0080) : chaque zone
+         est un et un seul <button type="submit" name="zoneDesignee">, jamais une image cliquable -
+         aucun usemap, aucun <map>, aucun <area> - et jamais un gestionnaire d'evenement en ligne.
+         Garde-fou 3 (AucuneZoneDesignableNeDescendSousLaCibleTactileTest) : la taille rendue d'une
+         zone est portee par son cadre en pourcentage, jamais par une classe qui varierait sa taille
+         a son insu. -->
+    <div class="illustration-designation">
+        <img class="image-item image-designation" th:src="@{'/illustrations/' + ${illustration} + '.svg'}"
+             th:alt="${illustrationTexteAlternatif}">
+        <!-- M9 : "deja-essayee" marque une zone deja designee sur cette manche, meme motif que
+             ".proposition.deja-essayee" sur fragments/manche.html. M13 clause 2 et 5 :
+             data-focus-cible designe le bouton que ce fragment declare comme point de focus quand
+             data-focus ne vaut pas "enonce" - la zone que l'enfant vient de designer sur un echec,
+             ou celle qui porte la zone revelee. -->
+        <form class="zones-designables" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/designations'}"
+              hx-target="#jeu" hx-swap="innerHTML">
+            <button type="submit" class="btn zone" data-role="action"
+                    th:each="zone : ${zones}"
+                    th:classappend="${zonesEssayees.contains(zone.id())} ? 'deja-essayee' : ''"
+                    th:attr="data-focus-cible=${focusCibles.contains(zone.id())},
+                             style=${'left:' + zone.cadre().x() + '%; top:' + zone.cadre().y() + '%; width:' + zone.cadre().largeur() + '%; height:' + zone.cadre().hauteur() + '%;'}"
+                    name="zoneDesignee" th:value="${zone.id()}" th:text="${zone.libelle()}"></button>
+        </form>
+    </div>
+    <!-- Meme bloc que sur les deux autres mecaniques : le seul emplacement ou le jeu parle de la
+         reponse de l'enfant, avec le signal non textuel, l'explication et l'indice. Aucun bloc de
+         reponse revelee ici : sur cette mecanique la revelation se lit sur la zone elle-meme
+         (data-focus-cible ci-dessus), le dessin etant encore a l'ecran. -->
+    <div class="message-jeu" role="status" th:if="${message != null}">
+        <div class="signal" th:classappend="${signalJuste} ? 'est-juste' : 'est-faux'">
+            <span class="icone-signal" aria-hidden="true"></span>
+            <p class="verdict" th:text="${message}"></p>
+        </div>
+        <p class="explication" th:if="${explication != null}" th:text="${explication}"></p>
+        <p class="indice" th:if="${indice != null}" th:text="${indice}"></p>
+    </div>
+</div>
+</body>
+</html>

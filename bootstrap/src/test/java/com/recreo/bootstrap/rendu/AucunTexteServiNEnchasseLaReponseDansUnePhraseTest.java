@@ -313,6 +313,14 @@ class AucunTexteServiNEnchasseLaReponseDansUnePhraseTest {
                 population.addAll(ecransDUneQuestion(jeu, question));
             } else if (item instanceof ReponseAEcrire aEcrire) {
                 population.addAll(ecransDUneReponseAEcrire(jeu, aEcrire));
+            } else if (item instanceof ZoneADesigner) {
+                // ADR-0088 clause B (S33-PAL2-1, s34) : une designation ne nomme jamais de reponse en
+                // texte, sur aucun de ses deux ecrans - la revelation marque la zone elle-meme
+                // (data-focus-cible), jamais par un mot, et la fin de partie ne porte plus de zone du
+                // tout. Ce garde-fou verifie qu'une reponse nommee n'est pas enchassee dans une
+                // phrase : sans reponse nommee, il n'a rien a examiner sur ce jeu, decision et non
+                // omission.
+                continue;
             } else {
                 throw new IllegalStateException("forme d'item qu'aucun ecran servi ne sait jouer, et"
                         + " que ce garde-fou ne sait donc pas juger : " + item.getClass().getName()

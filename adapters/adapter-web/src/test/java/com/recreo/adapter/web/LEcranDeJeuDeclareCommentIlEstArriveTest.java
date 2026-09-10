@@ -114,6 +114,9 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
     /** S24 : le jeu de la seconde mecanique du catalogue de test (PartieControllerTest). */
     private static final String JEU_SAISIE_ID = PartieControllerTest.JEU_SAISIE_ID;
 
+    /** ADR-0080 : le jeu de la troisieme mecanique du catalogue de test (PartieControllerTest). */
+    private static final String JEU_DESIGNATION_ID = PartieControllerTest.JEU_DESIGNATION_ID;
+
     private static final String NIVEAU = "CP";
 
     /**
@@ -251,7 +254,21 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
         reponses.add(reponse("manche de saisie suivante, apres le geste de suite",
                 "POST /parties/{jeuId}/manche", gesteDeSuiteApresLaRevelation()));
 
+        // ADR-0080 : la route de la troisieme mecanique. Aucun ecran de designation ne porte de
+        // proposition, donc ecransAnimables() y sera vide et les clauses de cette classe ne le
+        // jugeront pas, meme motif que les deux mecaniques ci-dessus - seule la couverture des
+        // routes l'exige. fragments/designation.html ne pose pas non plus data-arrivee.
+        reponses.add(reponse("manche de designation apres une designation fausse, la partie continue",
+                "POST /parties/{jeuId}/designations", designationFausse()));
+
         return reponses;
+    }
+
+    private MockHttpServletRequestBuilder designationFausse() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_DESIGNATION_ID).session(session));
+        return post("/parties/{jeuId}/designations", JEU_DESIGNATION_ID).session(session)
+                .param("zoneDesignee", "porte");
     }
 
     private MockHttpServletRequestBuilder reponseEcriteFausse() throws Exception {

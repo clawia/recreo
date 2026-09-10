@@ -68,7 +68,13 @@ class TailleDesTextesEtBoutonsTest {
     private static final String CLASSE_AJOUTEE = "th:classappend";
 
     private static final double PLANCHER_DE_LISIBILITE_REM = 1.25;
-    private static final double CIBLE_TACTILE_REM = 2.75;
+    /**
+     * Visibilite de paquet plutot que privee (ADR-0059) depuis ADR-0080, garde-fou 3
+     * ({@code AucuneZoneDesignableNeDescendSousLaCibleTactileTest}) : le meme plancher de cible
+     * tactile, epingle ici une seule fois, gouverne aussi bien un pressable ordinaire qu'une zone
+     * designable sur une image.
+     */
+    static final double CIBLE_TACTILE_REM = 2.75;
 
     /**
      * S8-5 : plancher accepte par nadia-prof pour .proposition, sous le seul repli a quatre

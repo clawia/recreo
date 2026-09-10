@@ -469,6 +469,71 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     max-height: 22rem;
 }
 
+/* ADR-0080, T4 : le conteneur de l'image et de ses zones. position: relative en fait le referentiel
+   des quatre declarations de position en pourcentage que le gabarit ecrit sur chaque bouton .zone a
+   partir du CadreDeZone que le contenu declare (ADR-0080, decision 4) - aucune arithmetique ici, le
+   pourcentage EST la valeur declaree. display: inline-block, comme .image-item lui-meme, pour que ce
+   referentiel epouse exactement la boite rendue de l'image et non la largeur du conteneur de l'ecran.
+   Meme marge que .illustration, pour le meme motif de mise en page. */
+.illustration-designation {
+    position: relative;
+    display: inline-block;
+    margin: 0.25rem 0 0.75rem;
+}
+
+/* Le formulaire qui porte les zones designables : aucune mise en page propre, chaque zone est
+   positionnee independamment par .zone. Reset explicite plutot qu'une classe sans regle - une
+   classe posee sans qu'aucune feuille ne la nomme retombe sur le rendu par defaut du navigateur
+   (HabillageDesEcransTest). */
+.zones-designables {
+    margin: 0;
+    padding: 0;
+}
+
+/* ADR-0080, decision 4 : une zone designable est un vrai bouton de formulaire, pose par-dessus la
+   boite de l'image a l'endroit exact que son CadreDeZone declare. Elle doit rester visible sur le
+   dessin qu'elle designe - contrairement aux boutons pleins de l'application (.demarrer,
+   .proposition, .sortie-pleine...), un fond opaque cacherait precisement ce que l'enfant doit lire
+   pour repondre. Fond translucide et contour plutot qu'un aplat, mais meme plancher de cible tactile
+   et meme plancher de lisibilite que les autres boutons actionnables de l'application (ADR-0014,
+   point 6) : min-height, min-width, padding et font-size sont declares ici et non herites d'un aplat
+   qu'elle ne partage pas.
+   Garde-fou 3 (AucuneZoneDesignableNeDescendSousLaCibleTactileTest) : le cadre en pourcentage donne
+   la taille de la zone, ce plancher est un filet de securite pour le cas ou un cadre trop petit la
+   ferait descendre sous la cible tactile - box-sizing: border-box (regle universelle de ce fichier)
+   fait que ce plancher agrandit la boite au besoin, jamais qu'il la fait deborder de son cadre
+   declare quand celui-ci suffit deja. */
+.zone {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    padding: 0.75rem 1.25rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--recreo-texte);
+    background-color: rgba(255, 255, 255, 0.55);
+    border: 0.125rem solid var(--recreo-accent);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+/* ADR-0046 : meme motif que ".proposition.deja-essayee:hover/:active/:focus-visible" - une regle
+   tierce a pseudo-classe (.btn:hover, .btn:first-child:active, .btn:focus-visible) l'emporte par
+   specificite sur une regle maison au repos, quel que soit l'ordre de chargement des feuilles. Une
+   zone deja designee doit garder sa marque (M9) sous le pointeur, sous l'appui et au focus clavier -
+   sans cette regle, .zone declarant color, background-color et border au repos, les trois etats
+   tiers les lui reprendraient au premier survol. */
+.zone.deja-essayee:hover,
+.zone.deja-essayee:active,
+.zone.deja-essayee:focus-visible {
+    color: var(--recreo-texte);
+    background-color: rgba(255, 255, 255, 0.55);
+    border: 0.125rem solid var(--recreo-accent);
+}
+
 /* ADR-0062, NAT-5 : marque le segment de .enonce que le contenu declare designer, sur un jeu marque
    seulement (cp-nature-mot) - un jeu non marque ne rend jamais cette classe. Regle reprise de la
    proposition mesuree d'ines-design (hors-sprint, squad/sprints/s19-contenu-seul-et-conception-de-
@@ -1201,7 +1266,9 @@ body:has(.filtre-niveau) .chip-niveau.est-actif:focus-visible {
 .proposition.deja-essayee:focus-visible,
 .retour-accueil:focus-visible,
 .lien-accueil:focus-visible,
-.chip-niveau:focus-visible {
+.chip-niveau:focus-visible,
+.zone:focus-visible,
+.zone.deja-essayee:focus-visible {
     box-shadow: inset 0 0 0 0.1875rem currentColor;
 }
 
