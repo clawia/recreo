@@ -420,7 +420,7 @@ Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
 | `camille-po` | claude-sonnet-5 | 170 | 340 | 100 709 | 675 667 | 39 952 949 |
-| `sofia-sm` | claude-sonnet-5 | 587 | 1 174 | 189 423 | 1 868 887 | 64 715 259 |
+| `sofia-sm` | claude-sonnet-5 | 577 | 1 154 | 188 263 | 1 852 529 | 63 741 556 |
 | `theo-archi` | claude-opus-5 | 175 | 350 | 113 637 | 458 681 | 24 464 212 |
 | `marc-dev` | claude-sonnet-5 | 249 | 498 | 146 251 | 682 614 | 60 563 251 |
 | `lea-dev` | claude-sonnet-5 | 420 | 840 | 203 528 | 1 247 998 | 87 007 623 |
@@ -428,7 +428,24 @@ Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 | `relecteur-pedagogique` | claude-sonnet-5 | 162 | 324 | 43 927 | 540 269 | 22 561 161 |
 | `nadia-prof` | claude-opus-5 | 556 | 1 112 | 424 913 | 2 417 696 | 85 180 464 |
 | orchestrateur (fil principal) | claude-opus-5 | 84 | 168 | 212 565 | 1 905 578 | 23 161 536 |
-| **Total** | | **2564** | **5 128** | **1 477 546** | **10 253 366** | **419 587 524** |
+| **Total** | | **2554** | **5 108** | **1 476 386** | **10 237 008** | **418 613 821** |
+
+Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
+
+## Sprint s33
+
+| Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
+|---|---|---|---:|---:|---:|---:|
+| `camille-po` | claude-sonnet-5 | 53 | 106 | 36 740 | 381 374 | 5 334 551 |
+| `sofia-sm` | claude-sonnet-5 | 449 | 898 | 212 183 | 1 672 817 | 63 136 609 |
+| `theo-archi` | claude-opus-5 | 315 | 630 | 145 357 | 768 692 | 38 088 807 |
+| `marc-dev` | claude-sonnet-5 | 512 | 1 024 | 170 024 | 1 011 982 | 83 511 710 |
+| `lea-dev` | claude-sonnet-5 | 341 | 682 | 134 051 | 988 884 | 72 803 326 |
+| `yanis-qa` | claude-sonnet-5 | 241 | 482 | 56 470 | 515 669 | 32 632 570 |
+| `relecteur-pedagogique` | claude-sonnet-5 | 170 | 340 | 40 467 | 550 333 | 34 547 088 |
+| `nadia-prof` | claude-opus-5 | 497 | 994 | 343 633 | 1 891 417 | 79 906 364 |
+| orchestrateur (fil principal) | claude-opus-5 | 95 | 190 | 169 776 | 1 151 965 | 25 985 338 |
+| **Total** | | **2673** | **5 346** | **1 308 701** | **8 933 133** | **435 946 363** |
 
 Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 
@@ -436,16 +453,16 @@ Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-opus-5  claude-sonnet-5 | 5830 | 294 843 | 3 015 252 | 30 053 578 | 821 534 948 |
-| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 6045 | 105 269 | 2 037 779 | 21 989 581 | 932 527 442 |
+| `camille-po` | claude-opus-5  claude-sonnet-5 | 6019 | 295 221 | 3 140 483 | 30 872 406 | 865 568 515 |
+| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 6380 | 105 939 | 2 124 666 | 22 721 456 | 970 831 642 |
 | `theo-archi` | claude-opus-5 | 7294 | 138 941 | 4 021 178 | 34 547 789 | 1 196 816 919 |
 | `marc-dev` | claude-sonnet-5 | 1801 | 146 888 | 895 005 | 7 425 887 | 440 504 018 |
 | `lea-dev` | claude-sonnet-5 | 1158 | 160 863 | 501 242 | 4 029 792 | 193 164 851 |
 | `yanis-qa` | claude-opus-5  claude-sonnet-5 | 684 | 1 368 | 254 351 | 1 690 538 | 109 874 555 |
 | `relecteur-pedagogique` | claude-sonnet-5 | 337 | 674 | 87 852 | 1 365 276 | 38 261 529 |
-| `nadia-prof` | claude-opus-5 | 5480 | 64 079 | 3 454 706 | 34 008 186 | 684 026 331 |
+| `nadia-prof` | claude-opus-5 | 5677 | 64 473 | 3 585 971 | 35 120 529 | 717 490 427 |
 | `ines-design` | claude-opus-5  claude-sonnet-5 | 3724 | 131 918 | 1 828 469 | 15 095 068 | 648 505 339 |
 | `Explore` | claude-opus-5 | 50 | 44 821 | 28 452 | 363 820 | 3 399 289 |
 | `Plan` | claude-opus-5 | 20 | 40 | 17 138 | 76 644 | 2 950 551 |
-| orchestrateur (fil principal) | claude-opus-5 | 2953 | 47 925 | 4 918 355 | 35 577 590 | 1 060 374 221 |
-| **Total** | | **35376** | **1 137 629** | **21 059 779** | **186 223 749** | **6 131 939 993** |
+| orchestrateur (fil principal) | claude-opus-5 | 3019 | 48 057 | 4 999 290 | 36 829 822 | 1 082 902 642 |
+| **Total** | | **36163** | **1 139 203** | **21 484 097** | **190 139 027** | **6 270 270 277** |

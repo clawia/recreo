@@ -295,6 +295,17 @@ fausse de `nadia-prof`, un seul dans le contenu livre - distinction absente du c
 specification fausse coute quand meme un cycle), mais elle est desormais nommee a chaque
 rechiffrage plutot que noyee dans un total unique.
 
+**Quand un commit paye plusieurs stories qui touchent le meme paquet de contenu, le paquet
+resultant est relu comme un tout - la consigne contre l'ensemble des taches reellement servies -
+avant de commiter, jamais story par story seulement** (amendement s33, retro de s33). Fonde sur
+`S33-EXC-R1`/`S33-EXC-R5` : la premiere reecrit la consigne de `bandit-manchot-exclusion-cp` pour
+nommer une tache ("savoir a quel adulte en parler") que la seconde retire du meme paquet, dans le
+meme commit - chaque story respectait individuellement son propre critere d'acceptation, mais le
+paquet assemble se contredisait avec lui-meme des le premier jour ou il a ete servi. Trouve par
+`nadia-prof` en jouant, jamais par un garde-fou : `PaquetCpEmcExclusionTest` lit la tache d'un item
+dans sa bonne reponse (`ADR-0089`), jamais dans l'enonce ni dans la consigne, et ne pouvait donc
+pas voir la contradiction.
+
 ## 5. La synthese de sprint - `RAPPORT.md`
 
 C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la
