@@ -679,6 +679,13 @@ class PaquetCm1HistoireGeographieTest {
     /**
      * FER-1 sur HG-CM1-12 : la pratique "se cultiver", absente jusqu'ici de la ligne, est
      * desormais servie en bonne reponse par au moins un des neuf items neufs.
+     *
+     * <p>Correction du 2026-09-10, routee par le relecteur-pedagogique (s33, relecture, section 2) :
+     * le troisieme motif s'ecrivait {@code "évènement culturel"}, graphie que sa correction
+     * orthographique du meme sprint a fait disparaitre du contenu servi. Le test restait vert par un
+     * autre motif, donc <b>rien ne le disait</b> : une branche de predicat qui ne peut plus
+     * correspondre a rien est un morceau de garde-fou qui a cesse de garder, et il se lit comme s'il
+     * gardait encore.</p>
      */
     @Test
     void fer1SurHgCm112LaPratiqueSeCultiverEstDesormaisServie() {
@@ -690,7 +697,7 @@ class PaquetCm1HistoireGeographieTest {
                 .as("FER-1 : au moins un item sert la pratique \"se cultiver\", absente jusqu'ici de"
                         + " %s", LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE)
                 .anyMatch(enonce -> enonce.contains("œuvres d'art") || enonce.contains("monuments")
-                        || enonce.contains("évènement culturel"));
+                        || enonce.contains("événement culturel"));
     }
 
     /**

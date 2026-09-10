@@ -279,6 +279,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     private static final int PLAFOND_DE_DETTE_SEUIL_MINIMUM = 3;
 
     /**
+     * Un compte ecrit dans un motif d'exemption : un groupe de chiffres suivi du mot qu'il compte.
+     * Voir {@link #chaqueCompteEcritDansUnMotifVautLeCompteMesureSurLePaquet()}.
+     */
+    private static final Pattern COMPTE_ECRIT_DANS_UN_MOTIF =
+            Pattern.compile("(\\d+)\\s+(items|propositions)");
+
+    /**
      * ADR-0051 : les paquets dont <b>aucun</b> item n'entre dans le calcul de rang, avec le motif de
      * chacun. Ce n'est ni une dette ni une exemption : ces paquets ne violent rien, ils sont hors du
      * domaine d'une propriete qui suppose trois valeurs comparables. Ce qui est en cause n'est pas
@@ -320,14 +327,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             Map.entry("cp-le-bon-son",
             "15 items sur 15 proposent des graphies de phonemes (\"on\", \"in\", \"an\") : deux"
                     + " distracteurs, aucune valeur numerique lisible"),
+            // Motif nettoye le 2026-09-10 : sa premiere phrase portait encore le compte d'avant le
+            // retrait de quatre items du 2026-08-20, que sa derniere phrase corrigeait deja. Un
+            // motif dit l'etat du jour ; l'histoire du paquet vit dans git.
             Map.entry("cm1-synonymes",
             "16 items sur 16 portent deux distracteurs (trois propositions), mais aucune des 48"
                     + " propositions n'est numerique : ce sont des mots de vocabulaire (synonymes et"
                     + " distracteurs), valeurDe rend null sur les trois propositions de chaque item."
-                    + " Mesure du 2026-08-19, verification directe : aucune des 60 propositions ne"
-                    + " commence par un chiffre - remesure du 2026-08-20 apres le retrait de quatre"
-                    + " items par camille-po (vite, ancien, poli, drole), meme motif inchange sur"
-                    + " les 16 restants et leurs 48 propositions"),
+                    + " Mesure du 2026-08-20 apres le retrait de quatre items par camille-po (vite,"
+                    + " ancien, poli, drole), recomptee le 2026-09-10 sur le paquet servi : aucune"
+                    + " des 48 propositions ne commence par un chiffre"),
             Map.entry("cm1-accords-groupe-nominal",
             "24 items, un nombre de distracteurs qui varie selon la composante testee (1 pour le"
                     + " nom, 2 pour le determinant, 3 pour l'adjectif) : les huit items de"
@@ -472,22 +481,30 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " Mesure du 2026-09-02 sur le paquet servi : aucune des 48 propositions ne"
                     + " commence par un chiffre"),
             // S27-2 : premier paquet de "Questionner le monde" (CP), matiere neuve du produit.
+            // Motifs recomptes le 2026-09-10 : les trois dataient du 2026-09-02 et n'avaient pas
+            // suivi le lot de s28 qui a porte chacun de ces paquets de huit a quatorze items. Deux
+            // d'entre eux etaient faux en plus sur la forme - ils affirmaient que TOUS les items
+            // portaient un seul distracteur, ce qui a cesse d'etre vrai le meme jour.
             Map.entry("cp-qlm-vivant-non-vivant",
-            "8 items sur 8 portent un seul distracteur, donc deux propositions - hors du domaine au"
-                    + " meme titre que cp-son-dans-mot - et les deux propositions sont toujours les"
-                    + " memes deux categories (\"un être vivant\", \"un objet\"), jamais une valeur"
-                    + " numerique. Mesure du 2026-09-02 sur le paquet servi"),
+            "14 items, 31 propositions : onze items portent un seul distracteur (deux propositions -"
+                    + " hors du domaine au meme titre que cp-son-dans-mot), trois en portent deux."
+                    + " Aucune proposition n'est numerique : ce sont deux categories (\"un être"
+                    + " vivant\", \"un objet\"), une reponse binaire (\"oui\", \"non\") ou des noms"
+                    + " d'etres et d'objets (\"le chien\", \"la chaise\", \"le caillou\"). Mesure du"
+                    + " 2026-09-10, comptage direct sur le paquet servi (\"bonneReponse\" et"
+                    + " \"distracteurs\")"),
             Map.entry("cp-qlm-corps-sens",
-            "8 items sur 8 portent deux distracteurs (trois propositions), mais aucune des 24"
+            "14 items sur 14 portent deux distracteurs (trois propositions), mais aucune des 42"
                     + " propositions n'est numerique : ce sont des noms de parties du corps (\"les"
                     + " oreilles\", \"les yeux\", \"le nez\"...), valeurDe rend null sur les trois"
-                    + " propositions de chaque item. Mesure du 2026-09-02 sur le paquet servi :"
-                    + " aucune des 24 propositions ne commence par un chiffre"),
+                    + " propositions de chaque item. Mesure du 2026-09-10, comptage direct sur le"
+                    + " paquet servi : aucune des 42 propositions ne commence par un chiffre"),
             Map.entry("cp-qlm-etats-eau",
-            "8 items sur 8 portent un seul distracteur, donc deux propositions - meme motif que"
-                    + " cp-qlm-vivant-non-vivant - et les deux propositions sont toujours les memes"
-                    + " deux etats (\"solide\", \"liquide\"), jamais une valeur numerique. Mesure du"
-                    + " 2026-09-02 sur le paquet servi"),
+            "14 items, 30 propositions : douze items portent un seul distracteur (deux propositions,"
+                    + " toujours les deux memes etats - \"solide\", \"liquide\"), deux en portent"
+                    + " deux (les noms des changements d'etat - \"fondre\", \"geler\", \"couler\")."
+                    + " Aucune proposition n'est numerique. Mesure du 2026-09-10, comptage direct sur"
+                    + " le paquet servi (\"bonneReponse\" et \"distracteurs\")"),
             // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1. Motif recompte a
             // s33 (S33-HG-04) : le chiffre precedent (20 items, 60 propositions) datait de s27 et
             // n'avait pas suivi les lots de s28 a s33 ; corrige avec sa methode plutot que reporte.
@@ -500,13 +517,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " sur le paquet servi (\"bonneReponse\" et \"distracteurs\") : aucune des 330"
                     + " propositions ne commence par un chiffre"),
             // S28-3 : premier paquet d'anglais, matiere neuve du produit, CM1.
+            // Motif recompte le 2026-09-10 : le chiffre du 2026-09-04 n'avait pas suivi le lot de
+            // s32 qui a porte ce paquet de vingt a vingt-cinq items.
             Map.entry("cm1-anglais",
-            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+            "25 items sur 25 portent deux distracteurs (trois propositions), mais aucune des 75"
                     + " propositions n'est numerique : ce sont des mots de vocabulaire anglais ou"
                     + " francais (\"house\", \"chien\", \"castle\"...) et des faits de decouverte"
                     + " culturelle (\"Londres\", \"Big Ben\", \"Thanksgiving\"...), valeurDe rend null"
-                    + " sur les trois propositions de chaque item. Mesure du 2026-09-04 sur le paquet"
-                    + " servi : aucune des 60 propositions ne commence par un chiffre"),
+                    + " sur les trois propositions de chaque item. Mesure du 2026-09-10, comptage"
+                    + " direct sur le paquet servi : aucune des 75 propositions ne commence par un"
+                    + " chiffre"),
             // S28-4 : second paquet neuf du lot de calcul pose CM1, division euclidienne (quotient
             // et reste), MAT-CM1-05. Le premier paquet du lot, cm1-multiplication-posee, ecrit lui
             // un nombre nu par proposition et reste dans le domaine (aucune entree ici).
@@ -723,7 +743,7 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * plus tot si le paquet est fini (Optional.empty()) ou si plus rien de neuf n'apparait pendant
      * TIRAGES_SANS_NOUVEAUTE_AVANT_ARRET tirages consecutifs (paquet combinatoire epuise en pratique).
      */
-    static List<Question> itemsTires(ContentSource contenu) {
+    static List<Item> tousLesItemsTires(ContentSource contenu) {
         RandomSource hasard = new Random(5)::nextInt;
         Set<ItemId> dejaVus = new java.util.HashSet<>();
         Map<ItemId, Item> items = new LinkedHashMap<>();
@@ -741,6 +761,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                 tiragesSansNouveaute++;
             }
         }
+        return List.copyOf(items.values());
+    }
+
+    /**
+     * Les memes items, bornes a ceux qui presentent des propositions - la population de la propriete
+     * de rang. La separation date du 2026-09-10 : {@link #comptesPerimesDesMotifs} compte des items
+     * et des propositions ecrits dans un motif d'exemption, et un motif qui parle d'un paquet de
+     * saisie parle bien de ses items, que cette borne-ci ecarte.
+     */
+    static List<Question> itemsTires(ContentSource contenu) {
         // Lot 5a de s24, decision 10 : borne aux items qui presentent des propositions. La propriete
         // decrit une STRATEGIE DE PRESSION - "une strategie qui choisit toujours le meme rang parmi
         // les trois propositions, sans jamais lire l'enonce". En saisie il n'y a ni rang, ni bouton,
@@ -749,7 +779,7 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
         // boutons, et au plus trois sur onze par manche en saisie. Un paquet entierement de saisie
         // rend ici une liste vide, ce que les appelants traitent deja comme "hors du domaine, aucun
         // taux calcule et rien d'affirme" (le meme sort qu'un paquet sans item numerique).
-        return ClassementDesItems.presentantDesPropositions(List.copyOf(items.values()));
+        return ClassementDesItems.presentantDesPropositions(tousLesItemsTires(contenu));
     }
 
     /**
@@ -1094,6 +1124,113 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
         assertThat(declarationsFantomes)
                 .as("ADR-0051 : chaque nom declare designe un paquet qui existe reellement")
                 .isEmpty();
+    }
+
+    /**
+     * <b>Cinquieme clause, datee du 2026-09-10 : un compte ecrit dans un motif d'exemption vaut le
+     * compte mesure sur le paquet que ce motif exempte.</b>
+     *
+     * <p><b>Le fait qui la fait naitre, et il est mesure.</b> A la cloture de s33, le motif de
+     * {@code cm1-histoire-geographie} affirmait <i>"20 items, 60 propositions"</i> sur un paquet qui
+     * en portait 110 et 330 : le chiffre datait de s27 et n'avait suivi aucun des cinq lots qui ont
+     * grossi ce paquet. Le recomptage a alors trouve <b>quatre autres motifs perimes</b> par le meme
+     * mecanisme. Ce n'est pas un faux vert - le garde-fou recalcule la propriete sur le paquet reel a
+     * chaque execution, et {@link #aucunPaquetNEstEcarteEnSilenceDuCalculDeRang()} refuse deja qu'une
+     * entree designe un paquet qui contribue - <b>c'est la prose de l'exemption qui pourrit</b>, et
+     * c'est elle qui justifie l'exemption. Un chiffre sans garde dans un fichier commite est la
+     * famille de defaut que ce depot sanctionne partout ailleurs.
+     *
+     * <p><b>Ce que la clause tient exactement</b> : tout groupe de chiffres suivi du mot
+     * {@code items} ou du mot {@code propositions}, dans un motif, vaut le total mesure sur le paquet
+     * servi que l'entree designe. <i>Mesure du 2026-09-10, sur les 53 entrees de la table :
+     * 131 chiffres ecrits, 122 exacts, 9 faux repartis sur 5 entrees.</i> Elle est donc <b>rouge sur
+     * l'etat du depot au moment ou elle est ecrite</b>, et les cinq motifs sont corriges dans le meme
+     * commit - la regle seule serait rouge, les corrections seules revieilliraient au prochain lot.
+     *
+     * <p><b>Ce qu'elle ne tient pas, nomme plutot que laisse decouvrir.</b> Un compte ecrit en toutes
+     * lettres lui echappe (<i>"cinq items"</i>, {@code cp-qlm-cycle-de-vie}) : c'est un plancher sur
+     * la forme chiffree, pas une garantie sur la prose entiere. Et elle ne juge pas la <b>forme</b>
+     * qu'un motif decrit : deux des cinq entrees corrigees affirmaient en plus que <i>tous</i> leurs
+     * items portaient un seul distracteur, ce qui etait faux depuis s28 sur deux et trois items ;
+     * cette moitie-la du defaut se corrige a la main et rien ne la garde.
+     *
+     * <p><b>Consequence assumee sur la redaction d'un motif</b> : un motif dit des <b>totaux</b>. Un
+     * compte partiel ecrit en chiffres (<i>"les 8 items de determinant"</i>) serait rouge alors qu'il
+     * serait juste. Mesure sur les 53 motifs du jour : aucun n'en ecrit un, le seul qui nomme un
+     * sous-ensemble l'ecrit en toutes lettres.
+     */
+    @Test
+    void chaqueCompteEcritDansUnMotifVautLeCompteMesureSurLePaquet() {
+        assertThat(comptesPerimesDesMotifs(
+                CONTENU_DE_PRODUCTION, "", PAQUETS_HORS_DU_DOMAINE_NUMERIQUE))
+                .as("un motif d'exemption n'est pas un journal : le compte qu'il ecrit est celui que"
+                        + " le paquet porte aujourd'hui")
+                .isEmpty();
+    }
+
+    /** La clause, extraite pour se prouver mordante sur un motif mute plutot que sur une fixture. */
+    static List<String> comptesPerimesDesMotifs(Path racine, String racineClasspath,
+                                                 Map<String, String> declares) {
+        List<String> paquets = paquets(racine);
+        List<String> defauts = new ArrayList<>();
+        for (Map.Entry<String, String> declaration : declares.entrySet()) {
+            String paquet = declaration.getKey();
+            if (!paquets.contains(paquet)) {
+                continue;
+            }
+            List<Item> items = tousLesItemsTires(
+                    new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            int nombreDItems = items.size();
+            int nombreDePropositions = items.stream()
+                    .mapToInt(item -> item instanceof Question question
+                            ? 1 + question.distracteurs().size() : 0)
+                    .sum();
+            Matcher compte = COMPTE_ECRIT_DANS_UN_MOTIF.matcher(declaration.getValue());
+            while (compte.find()) {
+                boolean surLesItems = "items".equals(compte.group(2));
+                int mesure = surLesItems ? nombreDItems : nombreDePropositions;
+                int ecrit = Integer.parseInt(compte.group(1));
+                if (ecrit != mesure) {
+                    defauts.add(String.format(
+                            "paquet %s : le motif d'exemption ecrit \"%s %s\", le paquet servi en"
+                                    + " porte %d. Un motif perime justifie l'exemption par un etat"
+                                    + " qui n'existe plus ; il se recompte, il ne se reporte pas",
+                            paquet, compte.group(1), compte.group(2), mesure));
+                }
+            }
+        }
+        return defauts;
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la clause du 2026-09-10 mise a l'epreuve sur un motif mute, et sur le
+     * corpus reel - l'objet juge est le motif, c'est donc lui qu'il faut muter.
+     */
+    @Test
+    void unCompteFauxDansUnMotifFaitEchouerLeGardeFou() {
+        String paquet = PAQUETS_HORS_DU_DOMAINE_NUMERIQUE.keySet().iterator().next();
+        Map<String, String> perime = Map.of(paquet,
+                "motif pose par la mise a l'epreuve : 999 items, 999 propositions");
+
+        assertThat(comptesPerimesDesMotifs(CONTENU_DE_PRODUCTION, "", perime))
+                .as("un compte faux dans un motif doit etre nomme, deux fois plutot qu'une")
+                .hasSize(2)
+                .allMatch(defaut -> defaut.contains(paquet))
+                .anyMatch(defaut -> defaut.contains("\"999 items\""))
+                .anyMatch(defaut -> defaut.contains("\"999 propositions\""));
+    }
+
+    /**
+     * Le sens inverse, sur le meme corpus : un motif dont les comptes sont exacts passe. Sans cette
+     * seconde mesure, une clause qui refuserait tout motif chiffre aurait la meme trace rouge.
+     */
+    @Test
+    void unMotifDontLesComptesSontExactsPasseLeGardeFou() {
+        String paquet = "cp-emc-regle-souhait-loi";
+        Map<String, String> exact = Map.of(paquet,
+                "motif pose par la mise a l'epreuve : 11 items, 30 propositions");
+
+        assertThat(comptesPerimesDesMotifs(CONTENU_DE_PRODUCTION, "", exact)).isEmpty();
     }
 
     /**
