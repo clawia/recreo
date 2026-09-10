@@ -26,8 +26,14 @@ import java.util.Optional;
  * portee <b>a chaque resolution</b>, sans condition, et le mode declare par l'item resolu voyage a
  * cote. Ce que l'ecran en fait n'est decide ni ici ni par cette mecanique.</p>
  *
- * <p>{@code juste} dit si la manche <b>compte comme une reussite</b>, comme chez la mecanique
- * voisine : une manche resolue par revelation porte {@code false} et ne fait pas monter le score.</p>
+ * <p>{@code juste} dit si la manche a ete resolue par une reponse ecrite juste, plutot que par une
+ * revelation, comme chez les deux mecaniques voisines : une manche resolue par revelation porte
+ * {@code false}.</p>
+ *
+ * <p>DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : {@code juste} ne dit plus a lui seul si
+ * la manche compte comme une reussite dans le score. {@code Score#reussites()} ne monte que si, en
+ * plus d'une reponse juste, aucune tentative fausse n'a precede cette reponse sur la meme manche -
+ * l'enfant l'a trouvee du premier coup (voir {@code SaisieSession#resoudre(boolean, String)}).</p>
  *
  * <p><b>ADR-0084, REV-3 : {@code enonce} voyage ici, obligatoire, exactement comme chez la
  * mecanique voisine.</b> Meme motif que celui deja ecrit ci-dessus pour la forme de reference et

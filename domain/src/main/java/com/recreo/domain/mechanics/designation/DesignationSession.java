@@ -115,11 +115,18 @@ public final class DesignationSession implements GameSession {
     /**
      * Resout la manche courante - juste ou par revelation - et tire la suivante, ou termine la
      * partie. C'est ce geste, et lui seul, qui fait avancer {@link Score#tentatives()}.
+     *
+     * <p>DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : {@link Score#reussites()} ne monte
+     * que si la manche est resolue par une designation juste <b>et</b> qu'aucun echec ne l'a
+     * precede sur cette meme manche - l'enfant garde ses trois essais, mais seule une reponse
+     * trouvee du premier coup est comptee comme une reussite.</p>
      */
     private DesignationSession resoudre(boolean juste) {
         DesignationVerdict verdict = new DesignationVerdict(juste, mancheCourante.explication(),
                 mancheCourante.enonce());
-        Score nouveauScore = new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
+        boolean reussieDuPremierCoup = juste && essaisSurLaManche == 0;
+        Score nouveauScore = new Score(score.reussites() + (reussieDuPremierCoup ? 1 : 0),
+                score.tentatives() + 1);
         if (nouveauScore.tentatives() >= nombreDeManches) {
             return new DesignationSession(contenu, hasard, nombreDeManches, dejaTirees, null, 0,
                     Set.of(), Optional.empty(), false, Optional.of(verdict), nouveauScore,

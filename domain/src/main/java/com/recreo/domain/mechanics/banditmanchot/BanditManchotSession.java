@@ -135,11 +135,18 @@ public final class BanditManchotSession implements GameSession {
     /**
      * Resout la manche courante - juste ou par revelation - et tire la suivante, ou termine la
      * partie. M3 : c'est ce geste, et lui seul, qui fait avancer {@link Score#tentatives()}.
+     *
+     * <p>DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : {@link Score#reussites()} ne monte
+     * que si la manche est resolue par un appui juste <b>et</b> qu'aucun echec ne l'a precede sur
+     * cette meme manche - l'enfant garde ses trois essais, mais seule une reponse trouvee du
+     * premier coup est comptee comme une reussite.</p>
      */
     private BanditManchotSession resoudre(boolean juste) {
         Verdict verdict = new Verdict(juste, mancheCourante.bonneReponse(),
                 mancheCourante.explication(), mancheCourante.enonce());
-        Score nouveauScore = new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
+        boolean reussieDuPremierCoup = juste && essaisSurLaManche == 0;
+        Score nouveauScore = new Score(score.reussites() + (reussieDuPremierCoup ? 1 : 0),
+                score.tentatives() + 1);
         if (nouveauScore.tentatives() >= nombreDeManches) {
             return new BanditManchotSession(contenu, hasard, nombreDeManches, dejaTirees, null,
                     List.of(), 0, Set.of(), Optional.empty(), false, Optional.of(verdict), nouveauScore,
