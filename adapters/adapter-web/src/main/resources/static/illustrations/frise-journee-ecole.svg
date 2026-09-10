@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Palier 2, designation (ADR-0080). Frise de la journee d'ecole, pour QLM-CP-14 (premier des
+     deux dessins). Six evenements ordonnes de gauche a droite sur un axe oriente (ZON-12) :
+     lever, petit-dejeuner, ecole (matin), dejeuner, ecole (apres-midi), gouter. Voir
+     proposition-ines-palier2-designation.md pour l'identifiant, le libelle positionnel et le
+     CadreDeZone en pourcentage de chacune.
+     Aucun evenement n'est ecrit (DES-7) : chaque evenement est un pictogramme trace.
+     Plafond de hauteur de palier 2 : 352 px (.image-designation) ; ce dessin en declare 320,
+     sous le plafond avec une marge deliberee (section 8.2 de la proposition), au rapport 2:1
+     deja mesure comme le plus large de la famille par la feuille de style. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" role="img"
+     fill="none" stroke="#1c2733" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- L'axe du temps, oriente vers la droite (fleche). -->
+  <line x1="15" y1="256" x2="615" y2="256"/>
+  <path d="M600,244 L622,256 L600,268" stroke-width="3"/>
+
+  <!-- Une graduation par evenement, aux six centres de colonne (48, 157, 266, 374, 483, 592). -->
+  <line x1="48" y1="246" x2="48" y2="266"/>
+  <line x1="157" y1="246" x2="157" y2="266"/>
+  <line x1="266" y1="246" x2="266" y2="266"/>
+  <line x1="374" y1="246" x2="374" y2="266"/>
+  <line x1="483" y1="246" x2="483" y2="266"/>
+  <line x1="592" y1="246" x2="592" y2="266"/>
+
+  <defs>
+    <!-- Icone "ecole" (livre ouvert : une couverture rectangulaire, une ligne centrale pour les
+         deux pages), reutilisee deux fois (matin et apres-midi) : DES-6. -->
+    <g id="icone-livre">
+      <rect x="-35" y="-90" width="70" height="60"/>
+      <line x1="0" y1="-90" x2="0" y2="-30"/>
+    </g>
+  </defs>
+
+  <!-- Zone "lever" : x=0 y=10 largeur=15 hauteur=75, centree en x=48. Un lit avec sa tete de lit,
+       son oreiller et sa couverture. -->
+  <g transform="translate(48,256)">
+    <rect x="-40" y="-70" width="80" height="45"/>
+    <line x1="-40" y1="-100" x2="-40" y2="-25"/>
+    <rect x="-32" y="-64" width="22" height="16"/>
+    <line x1="-5" y1="-45" x2="35" y2="-45"/>
+  </g>
+
+  <!-- Zone "petit-dejeuner" : x=17 y=10 largeur=15 hauteur=75, centree en x=157. Un bol et une
+       cuillere. -->
+  <g transform="translate(157,256)">
+    <path d="M-30,-60 A30,25 0 0 0 30,-60"/>
+    <line x1="-30" y1="-60" x2="30" y2="-60"/>
+    <ellipse cx="13" cy="-78" rx="6" ry="9"/>
+    <line x1="15" y1="-75" x2="25" y2="-40"/>
+  </g>
+
+  <!-- Zone "ecole-matin" : x=34 y=10 largeur=15 hauteur=75, centree en x=266. -->
+  <use href="#icone-livre" x="266" y="256"/>
+
+  <!-- Zone "dejeuner" : x=51 y=10 largeur=15 hauteur=75, centree en x=374. Une assiette, un
+       couteau et une fourchette. -->
+  <g transform="translate(374,256)">
+    <circle cx="0" cy="-55" r="32"/>
+    <line x1="-45" y1="-90" x2="-45" y2="-20"/>
+    <line x1="45" y1="-90" x2="45" y2="-20"/>
+    <line x1="40" y1="-90" x2="40" y2="-100"/>
+    <line x1="45" y1="-90" x2="45" y2="-102"/>
+    <line x1="50" y1="-90" x2="50" y2="-100"/>
+  </g>
+
+  <!-- Zone "ecole-apres-midi" : x=68 y=10 largeur=15 hauteur=75, centree en x=483. -->
+  <use href="#icone-livre" x="483" y="256"/>
+
+  <!-- Zone "gouter" : x=85 y=10 largeur=15 hauteur=75, centree en x=592. Un gobelet et un
+       biscuit a pepites (trois points pleins, seul remplissage de ce dessin - meme encre que le
+       trait, DES-5 : ce n'est pas une couleur, c'est la meme teinte pleine plutot qu'en contour). -->
+  <g transform="translate(592,256)">
+    <path d="M-45,-70 L-5,-70 L-10,-25 L-40,-25 Z"/>
+    <path d="M-5,-65 A12,10 0 0 1 -5,-35"/>
+    <circle cx="28" cy="-48" r="15"/>
+    <circle cx="23" cy="-52" r="2" fill="#1c2733" stroke="none"/>
+    <circle cx="33" cy="-45" r="2" fill="#1c2733" stroke="none"/>
+    <circle cx="32" cy="-55" r="2" fill="#1c2733" stroke="none"/>
+  </g>
+</svg>

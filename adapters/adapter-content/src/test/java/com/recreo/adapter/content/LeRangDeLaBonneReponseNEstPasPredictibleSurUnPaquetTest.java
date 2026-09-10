@@ -714,7 +714,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " trois propositions de chaque item. Mesure du 2026-09-09 sur le paquet servi"
                     + " apres S33-EPS-JEU (les items 7 et 8, jusque-la binaires, portent desormais"
                     + " trois propositions) : aucune des 33 propositions ne commence par un"
-                    + " chiffre"));
+                    + " chiffre"),
+            // S33-PAL2-1 (s34) : premier paquet de designation servi, troisieme mecanique du
+            // produit. cp-plan-de-la-classe (QLM-CP-11) n'est pas servi : ses libelles de zone
+            // debordent de leur bouton a l'ecran de manche, constate au jar et route a sofia-sm.
+            Map.entry("cp-frise-de-la-journee",
+            "11 items sur 11 sont des items de designation (ADR-0080) : ils ne presentent aucune"
+                    + " proposition en texte, mais des zones posees sur deux frises - il n'y a ni"
+                    + " distracteur ni rang de bonne reponse au sens de cette propriete. C'est la"
+                    + " forme d'item, pas son contenu, qui place ce paquet hors du domaine : la"
+                    + " garantie qu'un enfant ne gagne pas en ignorant l'enonce est portee ailleurs,"
+                    + " par le garde-fou 4 d'ADR-0080 (LaBonneZoneNEstPasPredictibleSurUnPaquetTest)"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

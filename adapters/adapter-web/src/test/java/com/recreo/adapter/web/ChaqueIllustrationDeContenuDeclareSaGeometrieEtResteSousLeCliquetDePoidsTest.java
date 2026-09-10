@@ -172,6 +172,44 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
     private static final int PLAFOND_DE_RENDU_EN_PIXELS = 176;
 
     /**
+     * <b>ADR-0080, garde-fou 3, la lecture DES-3 pour {@code .image-designation} (S33-PAL2-1,
+     * s34).</b> {@code recreo.css} porte, depuis ADR-0080, un second plafond de rendu d'image, deux
+     * fois plus haut que {@code .image-item} (22rem = 352px contre 11rem = 176px), <b>parce que
+     * cette mecanique-la, seule, pose des zones que le contenu positionne sur le dessin</b> - voir
+     * le commentaire de {@code .image-designation} dans {@code recreo.css}. Derive de la feuille
+     * maison, jamais recopie : {@code TailleDesTextesEtBoutonsTest.proprieteEnRemSiExiste} lit la
+     * meme declaration que le garde-fou 3 d'ADR-0080
+     * ({@code AucuneZoneDesignableNeDescendSousLaCibleTactileTest}).
+     */
+    private static final int PLAFOND_DE_RENDU_DESIGNATION_EN_PIXELS = (int) Math.round(
+            TailleDesTextesEtBoutonsTest.proprieteEnRemSiExiste(
+                    TailleDesTextesEtBoutonsTest.blocsMaison(Path.of("src/main/resources"))
+                            .get(".image-designation"),
+                    "max-height").orElseThrow(() -> new AssertionError(
+                            ".image-designation doit declarer max-height en rem dans recreo.css"))
+                    * 16);
+
+    /**
+     * <b>Les dessins que la troisieme mecanique sert, et qui suivent donc le plafond de rendu de
+     * {@code .image-designation} plutot que celui de {@code .image-item}.</b> Cette liste est
+     * ecrite a la main, plutot que derivee d'un paquet de contenu : ce module (adapter-web) ne
+     * depend pas d'adapter-content (sens des dependances, CLAUDE.md), et une derivation depuis le
+     * contenu servi n'a donc pas sa place ici sans franchir cette frontiere - question de forme
+     * technique routee a theo-archi si cette liste devait grandir au point de justifier un mecanisme
+     * partage.
+     *
+     * <p>Elle ne peut ni grandir en silence (un dessin qui declarerait plus de 176 px sans y figurer
+     * reste juge par le plafond de {@code .image-item}, donc rouge), ni etre un nom de fichier devine
+     * (ADR-0077) : chaque entree nomme le paquet de designation qui reference ce dessin.</p>
+     */
+    private static final Set<String> DESSINS_DE_DESIGNATION = Set.of(
+            // S33-PAL2-1 (s34) : les deux frises de QLM-CP-14. plan-classe.svg (QLM-CP-11) n'est
+            // pas servi - voir AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest,
+            // PLAFOND_DE_DESIGNATION_EN_PRODUCTION - et n'a donc pas sa place dans cette liste.
+            "frise-journee-ecole.svg",
+            "frise-soir-routine.svg");
+
+    /**
      * DES-3, plancher de trait : <i>"le trait rend au moins 2 px"</i>, la plus fine ligne que recreo
      * dessine deja en lui faisant porter un sens - la bordure de {@code 0.125rem} de
      * {@code .champ-reponse} et des deux sorties. Une epaisseur qui tombe sous le pixel disparait.
@@ -206,8 +244,15 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * decision d'ADR-0077 - `theo-archi` a laisse le cliquet ou il etait faute des octets a mesurer
      * dans son propre arbre - mais la valeur qu'il annoncait pour la suite ne tenait pas, et c'est ce
      * commit qui la mesure.
+     *
+     * <p><b>2 775 vers 3 984</b>, lea-dev, s34, S33-PAL2-1 : {@code frise-journee-ecole.svg}, le plus
+     * lourd des deux dessins du palier 2 servis (ADR-0080, {@code cp-frise-de-la-journee.yaml}),
+     * trace six pictogrammes d'evenement plus les trois points pleins du gouter (<defs>/<use>,
+     * DES-6) - le poids suit la geometrie, pas un choix de forme. {@code plan-classe.svg}
+     * (QLM-CP-11, 3 213 octets) n'est pas servi et ne compte pas ici. Mesure sur le fichier commite,
+     * commentaires compris, fins de ligne normalisees en LF, comme le reste de ce cliquet.
      */
-    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 2775;
+    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 3984;
 
     /**
      * Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, meme perimetre et meme methode que
@@ -247,9 +292,16 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       cet arbre, jamais recopiee de l'annonce qui l'a precedee</b> - ADR-0077 annoncait 30 730,
      *       et cette annonce se confirme au chiffre pres ici, ce qui n'etait pas garanti d'avance et
      *       s'est verifie faux sur l'autre cliquet, ci-dessus.</li>
+     *   <li><b>30 730 vers 37 812</b>, lea-dev, s34, S33-PAL2-1 : entree des deux dessins du
+     *       palier 2 effectivement servis (ADR-0080, {@code cp-frise-de-la-journee.yaml}) -
+     *       {@code frise-journee-ecole.svg} (3 984 octets, voir {@link #POIDS_D_UN_DESSIN_MAXIMUM})
+     *       et {@code frise-soir-routine.svg} (3 098 octets), 7 082 octets au total. {@code
+     *       plan-classe.svg} (QLM-CP-11, 3 213 octets) n'est pas servi - ses libelles de zone
+     *       debordent de leur bouton a l'ecran de manche, constate au jar et route a
+     *       {@code sofia-sm} - et n'entre donc pas dans ce total.</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 30730;
+    private static final int POIDS_TOTAL_MAXIMUM = 37812;
 
     /**
      * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour
@@ -433,9 +485,11 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
                         + " declaration muette (DES-1)");
                 continue;
             }
-            if (hauteur > PLAFOND_DE_RENDU_EN_PIXELS) {
+            int plafondApplicable = DESSINS_DE_DESIGNATION.contains(nom)
+                    ? PLAFOND_DE_RENDU_DESIGNATION_EN_PIXELS : PLAFOND_DE_RENDU_EN_PIXELS;
+            if (hauteur > plafondApplicable) {
                 fautes.add(nom + " : hauteur declaree de " + hauteur + " px, au-dessus du plafond"
-                        + " de rendu de " + PLAFOND_DE_RENDU_EN_PIXELS + " px. La feuille rogne :"
+                        + " de rendu de " + plafondApplicable + " px. La feuille rogne :"
                         + " la declaration est sans effet et annonce une taille que rien ne rend"
                         + " (DES-3)");
             }
@@ -480,7 +534,16 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
                         + " niveaux de gris (COU-2, HOR-3, FIG-3)");
             }
 
-            couleursDeTrait.addAll(valeursDeLAttribut(source, TRAIT));
+            // S33-PAL2-1 (s34) : "none" n'est pas une couleur, c'est l'absence de trait - le motif
+            // exact qui exempte deja "none" du cote remplissage, quelques lignes au-dessus (FIG-4).
+            // frise-journee-ecole.svg pose stroke="none" sur les trois points pleins du gouter
+            // (fill="#1c2733") pour empecher le trait par defaut du groupe de s'y ajouter ; ce n'est
+            // pas une seconde teinte de trait au sens de FIG-3/DES-5.
+            for (String trait : valeursDeLAttribut(source, TRAIT)) {
+                if (!"none".equals(trait)) {
+                    couleursDeTrait.add(trait);
+                }
+            }
 
             if (poids > poidsDUnDessinMaximum) {
                 fautes.add(nom + " : " + poids + " octets, au-dessus du cliquet de "

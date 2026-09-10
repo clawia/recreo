@@ -226,6 +226,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S32-5 : deux entrees neuves, premier lot d'education physique et sportive CP.
             "bandit-manchot-regles-securite-eps-cp",
             "bandit-manchot-regles-jeu-collectif-eps-cp",
+            // S33-PAL2-1 (s34) : une entree neuve, premier lot de designation, troisieme
+            // mecanique du produit (frise de la journee). designation-plan-de-la-classe
+            // (QLM-CP-11) n'est pas servi : ses libelles de zone debordent de leur bouton a
+            // l'ecran de manche, constate au jar et route a sofia-sm.
+            "designation-frise-de-la-journee",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -351,6 +356,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S32-5 : deux titres neufs, premier lot d'education physique et sportive CP.
             "Les règles de sécurité",
             "Les règles du jeu collectif",
+            // S33-PAL2-1 (s34) : un titre neuf, premier lot de designation.
+            "La journée, moment par moment",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -507,11 +514,15 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S32-5 : deux consignes neuves, premier lot d'education physique et sportive CP.
             "Lis bien, puis dis quelle règle de sécurité s'applique, ou pourquoi elle existe.",
             "Lis bien, puis dis quelle est la règle du jeu, ou ce qui se passe dans la situation.",
+            // S33-PAL2-1 (s34) : une consigne neuve, premier lot de designation.
+            "Montre le moment qu'on te décrit.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
             "bandit-manchot",
             "saisie",
+            // S33-PAL2-1 (s34) : troisieme valeur, la designation (ADR-0080).
+            "designation",
             // matiere (descripteur de chaque paquet reference par le catalogue).
             // S19-5 (ADR-0049) : graphie accentuee, corrigee depuis S16-5.
             "Mathématiques",
@@ -573,6 +584,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // squad/programme/education-physique-et-sportive/competences-cp.md).
             "Adapter ses déplacements à des environnements variés",
             "Conduire et maîtriser un affrontement individuel ou collectif",
+            // S33-PAL2-1 (s34) : un domaine neuf, premier lot de designation.
+            "Se situer dans le temps",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -752,7 +765,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // EPS-CP-04 et EPS-CP-08).
             "Connaître et respecter les règles de sécurité propres à l'activité et au lieu "
                     + "de pratique.",
-            "Connaître et respecter les règles d'un jeu collectif simple.");
+            "Connaître et respecter les règles d'un jeu collectif simple.",
+            // S33-PAL2-1 (s34) : une competence neuve, premier lot de designation, copiee
+            // conforme du referentiel (squad/programme/questionner-le-monde/competences-cp.md,
+            // QLM-CP-14). QLM-CP-11 n'est pas servi - voir designation-frise-de-la-journee
+            // ci-dessus.
+            "Situer des événements les uns par rapport aux autres sur une frise chronologique "
+                    + "simple (avant, après, en même temps)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

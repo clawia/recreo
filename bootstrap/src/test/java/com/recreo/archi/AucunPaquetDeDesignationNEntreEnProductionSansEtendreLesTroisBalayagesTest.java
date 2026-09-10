@@ -65,12 +65,21 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
             "ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest");
 
     /**
-     * Le plafond vaut exactement la dette : zero paquet de type {@code designation} servi sous
-     * {@code src/main/resources} a ce jour (mesure le 2026-09-04). Ce nombre ne remonte jamais
-     * sans que le premier paquet reel ne l'accompagne dans le meme diff, comme
-     * {@code PLAFOND_DE_DETTE} d'ADR-0013 et {@code PLAFOND_DE_DECLARATION} d'ADR-0081.
+     * Le plafond vaut exactement le compte reel. Il valait zero du 2026-09-04 (mesure sur l'arbre a
+     * cette date) au s34 : aucun paquet de type {@code designation} n'etait alors servi sous
+     * {@code src/main/resources}. Il monte a un avec le premier paquet reel
+     * ({@code cp-frise-de-la-journee}, QLM-CP-14), comme {@code PLAFOND_DE_DETTE} d'ADR-0013 et
+     * {@code PLAFOND_DE_DECLARATION} d'ADR-0081 l'exigent de leur propre dette.
+     *
+     * <p><b>{@code cp-plan-de-la-classe} (QLM-CP-11) n'est pas servi</b> : ses six zones, telles
+     * qu'{@code ines-design} les a proposees, rendent un defaut de rendu constate au jar (trois
+     * libelles debordent largement de leur bouton de zone a l'ecran de manche - "tableau",
+     * "armoire", "porte" - un plancher de police et un pave de geometrie penses pour un
+     * quadrillage ne tiennent pas sur des cadres de meuble etroits). Route a {@code sofia-sm},
+     * non tranche ici : ni la geometrie d'{@code ines-design}, ni un plancher de lisibilite
+     * accepte par {@code nadia-prof} ne sont du ressort de ce garde-fou ni de son auteur.
      */
-    private static final int PLAFOND_DE_DESIGNATION_EN_PRODUCTION = 0;
+    private static final int PLAFOND_DE_DESIGNATION_EN_PRODUCTION = 1;
 
     /** ADR-0013 obligation 3 : le jeu fautif commite de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
@@ -149,9 +158,10 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
     }
 
     /**
-     * Le garde-fou tel qu'il tourne en CI : la population reelle, le plafond reel. Vert
-     * aujourd'hui parce que le compte et le plafond valent tous les deux zero ; rouge le jour ou
-     * un premier paquet de designation est servi, tant que le plafond n'a pas monte avec lui.
+     * Le garde-fou tel qu'il tourne en CI : la population reelle, le plafond reel. Vert depuis s34
+     * parce que le compte et le plafond valent tous les deux un ({@code cp-frise-de-la-journee},
+     * S33-PAL2-1) ; rouge le jour ou un second paquet de designation est servi sans que le plafond
+     * ne monte avec lui.
      */
     @Test
     void aucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayages() {
@@ -163,20 +173,23 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
     }
 
     /**
-     * <b>Morsure 1.</b> Un paquet de designation fabrique, ajoute a la population reelle, fait
-     * rougir le garde-fou avec un message qui nomme les trois balayages a etendre - pas
-     * seulement qu'un compte a change.
+     * <b>Morsure 1.</b> Un paquet de designation fabrique, ajoute a la population reelle (qui en
+     * porte deja un depuis S33-PAL2-1), fait rougir le garde-fou avec un message qui nomme les trois
+     * balayages a etendre - pas seulement qu'un compte a change. Le compte attendu est derive du
+     * compte reel plutot qu'ecrit en dur, pour ne pas se perimer au prochain paquet de designation.
      */
     @Test
     void unPaquetDeDesignationEnProductionFaitEchouerLeGardeFouEtNommeLesTroisBalayages() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
-        List<Object> corps = new ArrayList<>(corpsCharges(
-                AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu(racine)));
+        List<Object> corpsReels = corpsCharges(
+                AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu(racine));
+        long compteReel = paquetsDeDesignation(corpsReels);
+        List<Object> corps = new ArrayList<>(corpsReels);
         corps.add(Map.of(CLE_DE_TYPE, TYPE_DESIGNATION));
 
         assertThatThrownBy(() -> verifier(corps, PLAFOND_DE_DESIGNATION_EN_PRODUCTION))
                 .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("1 paquet(s)")
+                .hasMessageContaining((compteReel + 1) + " paquet(s)")
                 .hasMessageContaining("LaBonneZoneNEstPasPredictibleSurUnPaquetTest")
                 .hasMessageContaining("AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest")
                 .hasMessageContaining("ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest")
@@ -228,16 +241,23 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
      * memoire : {@code avec-designation/} porte un paquet de type designation et rougit, tandis
      * que {@code sans-designation/} du meme jeu, charge separement, reste vert. Preuve que la
      * lecture disque -> SnakeYAML -> comptage fonctionne reellement, pas seulement le juge pur.
+     *
+     * <p>Le plafond utilise ici est le litteral <b>0</b>, et non
+     * {@code PLAFOND_DE_DESIGNATION_EN_PRODUCTION} : ce test isole le mecanisme de lecture sur son
+     * propre jeu fautif, independant du compte reel de production - qui vaut desormais un depuis
+     * S33-PAL2-1. Coupler les deux ferait echouer ce test des que la production sert un pack de
+     * plus, ce qui n'a rien a voir avec ce qu'il prouve.</p>
      */
     @Test
     void leJeuFautifCommiteEstRefuseEtLePaquetSainDuMemeJeuNeLEstPas() {
+        int plafondDuJeuFautif = 0;
         List<Object> sain = corpsCharges(List.of(CONTRE_EXEMPLE.resolve("sans-designation")));
         assertThat(sain).as("le jeu fautif ne prouve rien sans paquet sain").isNotEmpty();
-        verifier(sain, PLAFOND_DE_DESIGNATION_EN_PRODUCTION);
+        verifier(sain, plafondDuJeuFautif);
 
         List<Object> fautif = corpsCharges(List.of(CONTRE_EXEMPLE.resolve("avec-designation")));
         assertThat(fautif).as("le jeu fautif ne prouve rien sans paquet").isNotEmpty();
-        assertThatThrownBy(() -> verifier(fautif, PLAFOND_DE_DESIGNATION_EN_PRODUCTION))
+        assertThatThrownBy(() -> verifier(fautif, plafondDuJeuFautif))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("LaBonneZoneNEstPasPredictibleSurUnPaquetTest")
                 .hasMessageContaining("AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest")
