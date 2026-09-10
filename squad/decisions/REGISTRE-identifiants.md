@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `601` identifiants alloues, `97` prefixes distincts.
+**Compte courant, verifie par la CI** : `608` identifiants alloues, `99` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -49,6 +49,20 @@ l'a fait a s31, et la reparation sera arithmetique** - aucune allocation ajoutee
 aucun sens touche. C'est `sofia-sm` qui la fait, a l'endroit prevu, et le prix en est annonce ici.
 Je n'ecris pas de total pour l'arbre assemble : **l'instance A l'a fait a s31 et il etait faux**,
 faute de voir les quatre allocations de sa voisine.
+
+**Note de `nadia-prof`, arbitrage prealable de s34, le 2026-09-10.** Sept identifiants ajoutes -
+`RES-1` a `RES-4` (ce qu'une reserve doit contenir, ce que je m'interdis d'y ecrire, le controle
+d'objet sur un diff, et le fait qu'une reserve sans objet ecrit n'est pas engageable), `COH-1` (deux
+items d'un meme paquet qui portent sur le meme objet ne se contredisent pas), `PAR-15` et `PAR-16`
+(deux clauses de mon budget d'audit) - dont **deux prefixes neufs**, `RES` et `COH`, verifies libres
+sur la table de la section 4 avant allocation. Ligne d'etat courant portee de **601 / 97 a
+608 / 99**. Methode : comptage des lignes de la table de la section 4 sous le motif du garde-fou
+lui-meme (`ALLOCATION`, identifiant et document entre accents graves, `ADR-0085` clause 5), sur
+l'arbre `48635ba0` **avant** mon diff - 601 identifiants distincts, 97 prefixes distincts, 0 doublon,
+ce qui confirme la ligne d'etat courant que `sofia-sm` a portee a la review de s33 - puis apres mes
+sept allocations. **Je travaille seule sur ce diff** : l'arbitrage prealable n'est pas divise en
+instances, aucune branche soeur n'alloue en parallele, et la limite structurelle de `PAR-5` ne
+produira donc aucune reparation arithmetique a la fusion pour ce diff.
 
 **Note de `nadia-prof`, instance C de s33, le 2026-09-10.** Sept identifiants ajoutes - `SEC-R4`,
 `SEC-R5` (un motif de refus et une reserve sur `bandit-manchot-regles-securite-eps-cp`), `JEU-R9` a
@@ -435,6 +449,7 @@ clause 2 par une exemption.
 | `COMP-5` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `COMP-6` | `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md` |
 | `COMP-7` | `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md` |
+| `COH-1` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
 | `CON-1` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `CON-2` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `CON-3` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
@@ -739,6 +754,8 @@ clause 2 par une exemption.
 | `PAR-12` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `PAR-13` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `PAR-14` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
+| `PAR-15` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
+| `PAR-16` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PER-R3` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
@@ -829,6 +846,10 @@ clause 2 par une exemption.
 | `REP-14` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `RGA-R1` | `squad/conformite/FICHE-bandit-manchot-regimes-alimentaires-cm1.md` |
 | `RGA-R2` | `squad/conformite/FICHE-bandit-manchot-regimes-alimentaires-cm1.md` |
+| `RES-1` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
+| `RES-2` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
+| `RES-3` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
+| `RES-4` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
 | `REV-1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `REV-2` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `REV-3` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |

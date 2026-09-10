@@ -73,7 +73,7 @@ La numérotation ci-dessous suit l'ordre de lecture de la liste de compétences.
 | 1 | Courir, sauter, lancer et mesurer une performance | **`non couvrable en l'etat`**, nature **irréversible** | Geste moteur mesuré. Aucun capteur, aucune mécanique de ce produit n'observe un corps. Ni un choix ni une saisie ne le produisent |
 | 2 | Comparer sa performance à la précédente | **`non couvrable en l'etat`**, nature **irréversible** | Deux motifs autonomes : la performance elle-même n'est pas mesurable (ligne 1, irréversible), et le produit ne conserve rien d'une session à l'autre (`DEC-0028`). **Le premier motif suffit et il est irréversible** ; lever la persistance ne rouvrirait rien tant qu'il n'y a rien à conserver |
 | 3 | Se déplacer en s'adaptant au milieu | **`non couvrable en l'etat`**, nature **irréversible** | Geste moteur dans un milieu physique. Une simulation à l'écran d'un parcours d'équilibre ne fait pas tenir en équilibre : ce serait une contrefaçon (`CON-1`) et non une couverture |
-| 4 | Connaître et respecter les règles de sécurité | **`non couvert`** - jouable sur la seule moitié **connaissance** | *"Que fait-on avant d'entrer dans un bassin ?"*, *"Où regarde-t-on avant de traverser en trottinette ?"* : connaissances exactes, courtes, du niveau du CP, et pédagogiquement utiles. **La mise en œuvre en situation reste hors de portée.** Mention exigée d'avance : *"connaissance de la règle de sécurité seule ; son respect en situation n'est pas servi"* |
+| 4 | Connaître et respecter les règles de sécurité | **`non couvert`** - jouable sur la seule moitié **connaissance** | *"Que fait-on avant d'entrer dans un bassin ?"*, *"Pourquoi attend-on que le toboggan soit libre avant de glisser ?"* : connaissances exactes, courtes, du niveau du CP, et pédagogiquement utiles. **La mise en œuvre en situation reste hors de portée.** Mention exigée d'avance : *"connaissance de la règle de sécurité seule ; son respect en situation n'est pas servi"*. **Second exemple corrigé le 2026-09-10, voir plus bas** |
 | 5 | Mobiliser son corps pour exprimer une intention | **`non couvrable en l'etat`**, nature **irréversible** | Production corporelle libre devant des spectateurs, jugement humain (`ADR-0008`) |
 | 6 | Regarder la prestation des autres et en parler | **`non couvrable en l'etat`**, nature **irréversible** | Production orale libre, aucune bonne réponse, et il n'y a pas d'autre enfant devant l'écran |
 | 7 | Tenir un rôle dans un jeu collectif | **`non couvrable en l'etat`**, nature **irréversible** | Rôle tenu en situation, dans un groupe qui n'existe pas ici |
@@ -108,6 +108,30 @@ fois sous deux matières, dans le sens qui arrange, et sans que rien ne le signa
 > **`EPS-3` - Aucun item ne fait porter une attitude, une émotion ou une conduite morale par une
 > bonne réponse.** Motif complet à la ligne 9. Cette condition vaut aussi pour la ligne 6, et elle
 > est la sœur d'`ART-2` en arts plastiques.
+
+### Correction datée du 2026-09-10 - le second exemple de la ligne 4 était fautif, et il a été appliqué tel quel
+
+Le second exemple de la ligne 4 était, du 2026-09-03 au 2026-09-10 : *"Où regarde-t-on avant de
+traverser en trottinette ?"*. **Cet exemple est faux et il est de moi.** Un enfant de six ans qui
+traverse une rue avec sa trottinette **en descend et la pousse à la main** ; regarder vient ensuite
+et ne vient jamais seul. La question posait donc le geste au mauvais endroit de la règle, et un
+enfant qui répond *"des deux côtés"* retient qu'on traverse une rue **sur** sa trottinette.
+
+**Ce que cet exemple a coûté, et c'est pourquoi la correction est écrite ici plutôt que dans un
+document de verdicts.** Je l'ai repris mot pour mot à s32 dans `SEC-R1` pour dire ce que
+j'attendais ; il a été appliqué mot pour mot ; il est devenu l'item 3 de
+`bandit-manchot-regles-securite-eps-cp` ; et il est le motif du refus de la ligne 4 au second
+passage le 2026-09-10 (`SEC-R4`, `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-C.md`,
+section 5.2). **L'exécution a été fidèle au texte reçu ; le texte reçu portait le défaut.**
+
+**Ce que je change dans ma façon d'écrire un exemple** (`RES-2`, `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md`) :
+**tout exemple que j'écris dans un référentiel est vérifié contre le geste réel qu'il décrit avant
+d'être écrit**, et si je ne peux pas le vérifier, je nomme la connaissance visée sans en fabriquer
+l'énoncé. Le second exemple ci-dessus - *"Pourquoi attend-on que le toboggan soit libre avant de
+glisser ?"* - décrit une règle de cour d'école dont le geste est celui qu'il nomme : attendre.
+
+**Ce que cette correction ne fait pas** : elle ne lève ni ne durcit `SEC-R1`, qui est **levée**
+depuis le 2026-09-10, et elle ne change aucun statut de ligne. La ligne 4 reste `non couvert`.
 
 ### Mention exigée d'avance si une ligne bouge
 
