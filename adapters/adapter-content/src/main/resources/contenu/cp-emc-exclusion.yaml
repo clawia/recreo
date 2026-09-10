@@ -111,6 +111,46 @@ lignesDeReferentiel: ["EMC-CP-03"]
 # Aucune bonne reponse ne change (les cinq items continuent de nommer l'un des trois adultes de
 # ADULTES_VALIDES) : FER-3, ADULTES_VALIDES et le partage exhaustif des deux taches restent tenus
 # a l'identique. Les cinq nouveaux enonces comptent 13 a 15 mots et deux phrases (LON-1, LON-2).
+#
+# S34-EXC-TACHEB (2026-09-10, marc-dev). Refonte de la tache B, sur la decision de forme de
+# nadia-prof (arbitrage prealable de s34, section 4.4 ; arbitrage de sortie,
+# squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md, sections 4
+# a 4.6). La competence n'est pas "quel adulte", c'est "qu'on en parle a un adulte" : les cinq items
+# opposent desormais trois conduites qu'un enfant de six ans a reellement face a une moquerie qui se
+# repete, jamais trois adultes de l'ecole.
+#
+# Objet (4.4 puis 4.2) : devant une moquerie qui se repete, l'enfant reconnait, parmi trois
+# conduites, celle qui consiste a en parler a un adulte. Les deux autres sont ce qu'un enfant fait a
+# la place - attendre que cela s'arrete tout seul, en parler a un camarade, esperer qu'un adulte
+# l'ait deja remarque - jamais une conduite vilaine ("rendre le coup" n'apparait dans aucune
+# proposition, C-1 : un item de cette tache ne se decide plus au ton).
+#
+# C-2 (bloquante) payee : la bonne reponse varie sur les cinq items ("en parler a un surveillant de
+# la cour" x2, "en parler a sa maitresse" x2, "en parler a l'adulte qui surveille la cantine" x1),
+# jamais une reponse invariante - le defaut meme du premier passage (FAB-1a).
+#
+# Q1 (EXC-R7) : aucun item ne se gagne en appariant deux mots identiques entre l'enonce et la bonne
+# reponse. Le lieu ou le moment est installe par un mot que la bonne reponse n'emploie pas
+# ("recreation" contre "surveillant de la cour" ; "classe" contre "maitresse" ; "au moment du repas"
+# contre "cantine"), l'enfant doit inferer quel adulte est present, jamais recopier un mot.
+#
+# Condition ajoutee par Q1 (FAB-1c recomptee) : deux des cinq items (le troisieme et le cinquieme)
+# portent un distracteur qui nomme lui aussi un adulte ("esperer qu'un adulte l'ait deja remarque"),
+# pour que la bonne reponse ne soit jamais, sur l'ensemble de la tache, la seule proposition a
+# nommer un adulte.
+#
+# Q3 : "attendre que cela s'arrete tout seul" est retenu comme distracteur (PLA-1 : un enfant de six
+# ans l'envisage vraiment ; CAT-1 : rien de vilain). Son indice ne renomme pas la bonne reponse : il
+# donne le role de l'adulte concerne, un fait que l'enonce ne donne pas.
+#
+# EXC-R8 : la question ("Que doit faire X ?") recollee a chacune des trois propositions forme une
+# phrase francaise ("Que doit faire Tom ? en parler à un surveillant de la cour.").
+#
+# Ce qui ne bouge pas (perimetre de la story, section 4.2 de l'arbitrage de sortie) : la tache A
+# (items 1 a 6), la consigne du catalogue, le fait de droit implicite de chaque lieu. TYP-1 (espace
+# insecable devant le "?" final) et LON-1/LON-2 (au plus 15 mots, deux phrases dont la seconde est la
+# question) sont tenues sur les cinq enonces neufs sans toucher a la dette de longueur declaree
+# (item 2 de la tache A, inchange).
 items:
   - enonce: "Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe. Qu'est-ce que c'est ?"
     bonneReponse: "une moquerie qui se répète"
@@ -136,23 +176,23 @@ items:
     bonneReponse: "un accident isolé"
     distracteurs: ["une moquerie qui se répète", "une blague"]
     indice: "Une maladresse unique n'a rien à voir avec un geste répété exprès."
-  - enonce: "Hugo voit une moquerie se répéter devant le surveillant. Quel adulte est là ?"
-    bonneReponse: "à un surveillant de la cour"
-    distracteurs: ["à sa maîtresse", "à l'adulte qui surveille la cantine"]
+  - enonce: "Hugo se moque de Tom à chaque récréation. Que doit faire Tom ?"
+    bonneReponse: "en parler à un surveillant de la cour"
+    distracteurs: ["attendre que cela s'arrête tout seul", "en parler à un camarade"]
     indice: "Cette personne est là pour veiller sur les élèves qui jouent."
-  - enonce: "Aya voit une moquerie se répéter devant la maîtresse. Quel adulte est là ?"
-    bonneReponse: "à sa maîtresse"
-    distracteurs: ["à un surveillant de la cour", "à l'adulte qui surveille la cantine"]
+  - enonce: "Malo se moque des dessins de Léa chaque jour, en classe. Que doit faire Léa ?"
+    bonneReponse: "en parler à sa maîtresse"
+    distracteurs: ["espérer qu'un adulte l'ait remarqué", "en parler à un camarade"]
     indice: "C'est elle qui reste avec les élèves toute la journée."
-  - enonce: "Malo voit une moquerie se répéter devant l'adulte du repas. Quel adulte est là ?"
-    bonneReponse: "à l'adulte qui surveille la cantine"
-    distracteurs: ["à sa maîtresse", "à un surveillant de la cour"]
+  - enonce: "Aya se moque de Hugo chaque midi, au moment du repas. Que doit faire Hugo ?"
+    bonneReponse: "en parler à l'adulte qui surveille la cantine"
+    distracteurs: ["garder cela pour lui sans rien dire", "en parler à un camarade"]
     indice: "Cette personne veille sur les élèves qui mangent."
-  - enonce: "Tom voit une moquerie se répéter près du surveillant. Quel adulte est là ?"
-    bonneReponse: "à un surveillant de la cour"
-    distracteurs: ["à l'adulte qui surveille la cantine", "à sa maîtresse"]
+  - enonce: "Tom écarte Malo du jeu à chaque récréation. Que doit faire Malo ?"
+    bonneReponse: "en parler à un surveillant de la cour"
+    distracteurs: ["faire comme si de rien n'était", "en parler à un camarade"]
     indice: "Son rôle est de veiller sur les élèves pendant les récréations."
-  - enonce: "Léa voit une moquerie se répéter devant sa maîtresse. Quel adulte est là ?"
-    bonneReponse: "à sa maîtresse"
-    distracteurs: ["à l'adulte qui surveille la cantine", "à un surveillant de la cour"]
+  - enonce: "Hugo se moque de la lecture d'Aya chaque jour, en classe. Que doit faire Aya ?"
+    bonneReponse: "en parler à sa maîtresse"
+    distracteurs: ["attendre que cela s'arrête tout seul", "espérer qu'un adulte l'ait remarqué"]
     indice: "C'est elle qui est avec ses élèves tous les jours."

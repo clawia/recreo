@@ -651,11 +651,12 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             // 1 a 7 du referentiel (EMC-CP-03, EMC-CP-07).
             Map.entry("cp-emc-exclusion",
             "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
-                    + " propositions n'est numerique : ce sont des reactions en texte libre (\"en"
-                    + " parler à un adulte\", \"régler ça toute seule avec Malo\"...) ou des adultes"
-                    + " nommes (\"à sa maîtresse\", \"à un surveillant de la cour\"...), valeurDe rend"
-                    + " null sur les trois propositions de chaque item. Mesure du 2026-09-07 sur le"
-                    + " paquet servi : aucune des 33 propositions ne commence par un chiffre"),
+                    + " propositions n'est numerique : ce sont des classements en texte libre (\"une"
+                    + " moquerie qui se répète\", \"un accident isolé\"...) ou des conduites face a"
+                    + " une moquerie (\"en parler à un surveillant de la cour\", \"attendre que cela"
+                    + " s'arrête tout seul\"...), valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-09-10 sur le paquet servi, apres S34-EXC-TACHEB :"
+                    + " aucune des 33 propositions ne commence par un chiffre"),
             Map.entry("cp-emc-regle-souhait-loi",
             "11 items sur 11 : cinq items (tache de classement, forme binaire depuis le cinquieme"
                     + " passage, S34-EMCCP07) portent un seul distracteur (deux propositions) et six"
