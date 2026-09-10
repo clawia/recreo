@@ -147,7 +147,7 @@ Trois produisent un fichier, une non.
 
 | Ceremonie | Fichier | Ce qu'elle contient obligatoirement |
 |---|---|---|
-| Planning | `planning.md` | Horodatage de debut, objectif gele, stories avec competence visee, affectations nominatives, avis de faisabilite de Theo |
+| Planning | `planning.md` | Horodatage de debut, objectif gele, stories avec competence visee, affectations nominatives, avis de faisabilite de Theo, verification poste/story (`PAR-16`, `DEC-0086` section 5) |
 | Daily | **aucun** | Synchronisation de travail. Sofia collecte, classe et route ; elle n'ecrit pas de fichier |
 | Review | `review.md` | Horodatage de fin, duree, rapport qualite de Yanis, confirmation ArchUnit de Theo, corrections du relecteur, tableau des obstacles, avis de Nadia et Done pedagogique |
 | Retro | `retro.md` | Ce qui a marche, ce qui a coince, amendements a ce README |
@@ -162,6 +162,21 @@ decision ecrite, obstacle clos" serait perdue.
 
 Regle de cloture : un fichier de ceremonie n'est complet que s'il contient une section
 `## Decisions prises` **non vide**, ou l'enonce explicite qu'aucune decision n'a ete prise.
+
+**Le point de controle poste/story (`PAR-16`, amendement s34, cloture du planning de s34,
+`DEC-0086` section 5).** A la cloture de `planning.md`, Sofia verifie, poste par poste, la table de
+composition de la decision de strategie en vigueur : chaque poste porte-t-il une story dans
+`docs/backlog/backlog.md`, et cette story porte-t-elle une affectation nominative (instance,
+developpeur) ? Un poste qui n'a ni l'un ni l'autre est ecrit explicitement sous l'une de deux
+issues, jamais une troisieme silencieuse : soit une story lui est ecrite et affectee avant la
+cloture du planning, soit il est ecrit **"non engage, budget libere"**, avec le montant libere et ou
+il va. Fonde sur un trou mesure a s33 : trois postes finances par la composition (`cm1-anglais`, la
+passe transverse, le lot de l'effort et du corps) avaient ete nommes comme risque des le planning
+(section 10) sans qu'aucune story ne les rende engageables a temps, et deux postes de plus
+(`cp-emc-emotions-autrui`, `cp-emc-formules-de-politesse`) n'avaient meme pas ete detectes comme
+risque a ce moment-la. Nommer un poste sans story ne suffit pas si aucun controle ne revient
+verifier, avant l'execution du sprint, qu'il a recu l'un ou l'autre. Un chiffre alloue a un poste
+sans story n'achete rien et empeche d'acheter autre chose.
 
 **Methode de comptage obligatoire (amendement s06, retro de s05).** Tout chiffre de comptage cite
 dans `rapport-qualite.md` ou `confirmation-archunit.md` (nombre de tests, nombre de regles ArchUnit,
@@ -524,6 +539,23 @@ l'autre instance n'avait contamine ses propres fichiers avant de rendre son verd
 s31, toute paire d'instances du meme agent tournant en parallele recoit un scratchpad aussi dedie
 que son worktree** : la regle de ressource dediee ne se limite pas au depot Git, elle s'applique a
 toute ressource de travail qu'une mesure ou un audit concurrent pourrait faire collisionner.
+
+**Une instance de `nadia-prof` qui ecrit dans `squad/decisions/REGISTRE-identifiants.md` le fait
+depuis son propre worktree, jamais dans le checkout partage** (amendement hors sprint, 2026-09-10,
+route par `theo-archi` dans son avis de faisabilite de s34, section 3.3). Ce garde-fou balaie
+l'arbre de travail : quand plusieurs instances allouent en parallele sur le checkout partage, il
+juge un etat qui ne sera jamais un commit, sous deux modes distincts - un **faux rouge** (transitoire,
+un fichier non commite d'une instance soeur cite un identifiant que le registre n'alloue pas encore,
+mesure deux fois a s33) et un **faux vert**, plus grave et jamais nomme avant ce jour (l'allocation
+non commitee d'une instance fait passer la citation d'une autre, qui rougit ensuite a la fusion, sur
+son propre commit, pour des identifiants qui ne sont pas les siens - mesure par `theo-archi` sur son
+propre document a l'ouverture de s34). Deux agents (`yanis-qa`, `theo-archi`) ont chacun du batir un
+worktree isole ou jetable pour prouver, a la main, qu'un rouge ne venait pas de leur commit -
+troisieme et quatrieme occurrences de ce cout. **Aucun test ne peut voir cette regle** : un fichier
+ne porte pas le nom de qui l'ecrit. Ce que la CI garde reste intact - les deux modes se referment a
+la fusion - ; ce qui est degrade est l'experience locale, et c'est de la que vient le risque reel :
+un agent qui apprend a lire un rouge comme "ce n'est pas le mien" finit par le lire ainsi le jour ou
+il l'est.
 
 **Un sprint peut etre pilote par des arbitrages successifs de l'autorite produit plutot que par un
 objectif gele au planning, et le process le nomme plutot que de le taire** (amendement s15, cloture
