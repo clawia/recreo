@@ -28,9 +28,22 @@ import static org.assertj.core.api.Assertions.assertThat;
  * règle...?"), et reconnaitre qu'une loi citee sur un exemple concret s'impose a tous, y compris
  * aux adultes ("Qui doit respecter cette loi ?" / "Qui doit la respecter ?").</p>
  *
- * <p><b>{@code BIN-1}</b> : sur la tache de classement, au plus la moitie des items portent deux
- * propositions plutot que trois. Verifie ici, alors que les autres proprietes tonales
- * ({@code CAT-1}, {@code EMC-5}) restent la garde de {@code nadia-prof} seule.</p>
+ * <p><b>{@code BIN-1}</b> : au plus la moitie des items <b>du paquet</b> portent deux propositions
+ * plutot que trois. L'unite est le paquet, jamais une tache : l'arbitrage prealable de s31,
+ * section 5, en donne le motif ("un paquet de fermeture porte onze items pour dix manches,
+ * {@code DEC-0064}, donc le tirage est presque exhaustif et une propriete comptee sur le paquet
+ * vaut pour la partie"). Verifie ici, alors que les autres proprietes tonales ({@code CAT-1},
+ * {@code EMC-5}) restent la garde de {@code nadia-prof} seule.</p>
+ *
+ * <p><b>Reprise du 2026-09-10 ({@code theo-archi}, prealable de s34)</b>, sur les deux ecarts que
+ * {@code nadia-prof} a nommes dans son arbitrage prealable de s34, section 5.2 : les deux tests
+ * etaient plus durs que les clauses qu'ils pretendaient mesurer. {@code fer1...} exigeait les trois
+ * termes du libelle en bonne reponse de la <b>seule</b> tache de classement, la ou {@code FER-1}
+ * demande "au moins un item ou il est en position de bonne reponse", sans dire dans quelle tache -
+ * la troisieme clause du libelle est servie par la tache de portee. {@code bin1...} divisait par le
+ * nombre d'items de la tache de classement, la ou la clause divise par le nombre d'items du paquet :
+ * un durcissement d'un facteur deux, jamais decide. <b>Aucune clause ne cede ici</b> ; les trois
+ * methodes qui suivent sont vertes sur le contenu servi du jour comme sur celui d'arrivee.</p>
  *
  * <p><b>Reecriture de la tache de portee apres REFUS de nadia-prof le 2026-09-07</b>
  * ({@code squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md}) : la premiere version
@@ -54,9 +67,9 @@ class PaquetCpEmcRegleSouhaitLoiTest {
     /** FER-3 : au moins deux taches, la moins servie portant au moins trois items. */
     private static final int MINIMUM_PAR_TACHE = 3;
 
-    /** FER-1 : les trois termes du libelle. */
-    private static final Set<String> TROIS_TERMES = Set.of(
-            "une règle qui vaut pour tous", "un simple souhait", "une loi");
+    /** FER-1 : les deux categories que la premiere moitie du libelle demande de distinguer. */
+    private static final Set<String> CATEGORIES_DU_CLASSEMENT = Set.of(
+            "une règle qui vaut pour tous", "un simple souhait");
 
     private static List<Question> items() {
         ContentSource contenu = new YamlContentPackLoader("").chargerPaquet(PAQUET);
@@ -93,16 +106,34 @@ class PaquetCpEmcRegleSouhaitLoiTest {
                 .isGreaterThanOrEqualTo(PLANCHER_FER_2);
     }
 
-    /** FER-1 : les trois termes du libelle sont chacun en position de bonne reponse. */
+    /**
+     * FER-1, premiere moitie du libelle : chacune des deux categories a distinguer est servie par
+     * au moins un item ou elle est en position de bonne reponse.
+     */
     @Test
-    void fer1LesTroisTermesSontEnBonneReponseDeLaTacheDeClassement() {
-        Set<String> reponses = itemsDeClassement().stream()
-                .map(Question::bonneReponse)
-                .collect(Collectors.toSet());
+    void fer1LesDeuxCategoriesDuClassementSontChacuneEnBonneReponse() {
+        assertThat(itemsDeClassement().stream().map(Question::bonneReponse)
+                .collect(Collectors.toSet()))
+                .as("FER-1, premiere moitie du libelle : regle et souhait sont chacun servis en"
+                        + " position de bonne reponse")
+                .containsAll(CATEGORIES_DU_CLASSEMENT);
+    }
 
-        assertThat(reponses)
-                .as("FER-1 : regle, souhait et loi doivent tous etre representes en bonne reponse")
-                .containsExactlyInAnyOrderElementsOf(TROIS_TERMES);
+    /**
+     * FER-1, seconde moitie du libelle ("reconnaitre qu'une loi s'impose a tous") : elle est servie
+     * par une tache qui ne classe pas, en designant qui la loi oblige. Interdit que cette tache
+     * disparaisse ou qu'elle se replie sur un troisieme classement.
+     */
+    @Test
+    void fer1LaSecondeMoitieDuLibelleEstServieParUneTacheQuiNeClassePas() {
+        List<Question> portee = itemsDePortee();
+        assertThat(portee).as("FER-1 : la seconde moitie du libelle est servie").isNotEmpty();
+        for (Question item : portee) {
+            assertThat(item.bonneReponse())
+                    .as("item %s : la portee de la loi se sert en designant qui elle oblige, jamais"
+                            + " en reclassant la situation", item.id().value())
+                    .isNotIn(CATEGORIES_DU_CLASSEMENT);
+        }
     }
 
     /**
@@ -122,18 +153,18 @@ class PaquetCpEmcRegleSouhaitLoiTest {
     }
 
     /**
-     * BIN-1 : sur la tache de classement, au plus la moitie des items portent deux propositions
-     * (un distracteur) plutot que trois.
+     * BIN-1 : au plus la moitie des items du paquet portent deux propositions (un distracteur)
+     * plutot que trois. Le denominateur est le paquet entier, tache de portee comprise.
      */
     @Test
-    void bin1AuPlusLaMoitieDesItemsDeClassementSontBinaires() {
-        List<Question> classement = itemsDeClassement();
-        long binaires = classement.stream().filter(item -> item.distracteurs().size() == 1).count();
+    void bin1AuPlusLaMoitieDesItemsDuPaquetSontBinaires() {
+        List<Question> items = items();
+        long binaires = items.stream().filter(item -> item.distracteurs().size() == 1).count();
 
         assertThat(binaires)
-                .as("BIN-1 : au plus la moitié des %d items de classement sont binaires (2"
-                        + " propositions), or %d le sont", classement.size(), binaires)
-                .isLessThanOrEqualTo(classement.size() / 2);
+                .as("BIN-1 : au plus la moitié des %d items du paquet portent deux propositions,"
+                        + " or %d les portent", items.size(), binaires)
+                .isLessThanOrEqualTo(items.size() / 2);
     }
 
     /** Chaque item de la tache de portee porte deux distracteurs (une bonne reponse, trois choix). */
