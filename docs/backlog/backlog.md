@@ -12640,9 +12640,16 @@ qui detient deja le paquet, celle qui reprend `HG-CM1-02` et `HG-CM1-04` sous `S
   reprend deja `HG-CM1-02` et `HG-CM1-04` ; `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour
   l'audit.
 
-## Backlog ouvert pour s34 - le palier 2 finance a son entree minimale, reporte de s33
-## (`DEC-0085`) : deux trous de contrat prealables et un lot de designation (`QLM-CP-11`,
-## `QLM-CP-14`) (`DEC-0083`, amendement du 2026-09-08)
+## Backlog ouvert pour s34 - le palier 2 engage a son entree minimale : deux trous de contrat
+## prealables et un lot de designation (`QLM-CP-11`, `QLM-CP-14`) (`DEC-0083`, amendement du
+## 2026-09-08 ; engagement arbitre par l'utilisatrice le 2026-09-10, `DEC-0086`, section 12)
+
+**Engagement.** L'entree minimale du palier 2, financee a s33 (`DEC-0083`, section 13) puis reportee
+une premiere fois de s33 a s34 (`DEC-0085`), est **engagee a s34** par arbitrage de l'utilisatrice du
+2026-09-10 (`DEC-0086`, section 12) : le sujet, route a elle par `camille-po` faute d'un element neuf
+qui lui donnerait autorite pour trancher a sa place, n'a pas ete reporte une seconde fois. Les 2,0 de
+son prix sont pris sur le sous-total non affecte de la composition de s34 (`DEC-0086`, section 3,
+amendee section 12) : il passe de 5,5 a 3,5, et le sous-total engage passe de 7,0 a 9,0.
 
 Perimetre arbitre par l'utilisatrice le 2026-09-08 (`DEC-0083`, section 13), sur le chiffre de
 `nadia-prof`
@@ -12759,10 +12766,28 @@ ce vivier est le plus bas de tout le Plan 2.
   moins chere du palier 2, nommee par `nadia-prof` elle-meme comme la plus sure (arbitrage
   prealable, section 17.5) : base 1,0 chacune, prix 2,0 pour les deux lignes, aucun fait a verifier
   contre une source, aucun probleme de taille d'image, aucun besoin de reproduction d'oeuvre.
-- **Prealables bloquants, nommes et non presumes acquis** : les lots de developpement `L-a`, `L-c`
-  et `L-d` du chemin de jeu (avis de `theo-archi`, section 7, non livres a ce jour), et les deux
-  trous de contrat `S33-PAL2-TROU-A` et `S33-PAL2-TROU-B` ci-dessus. **Cette story ne s'ouvre avant
-  aucun des cinq.**
+- **Prealables bloquants, nommes et non presumes acquis** : cette story est le lot `L-e` du chemin
+  de jeu (avis de `theo-archi`, section 7) - le paquet, ses dessins, l'entree de catalogue -, et
+  elle ne s'ouvre avant aucun des quatre autres lots qui la conditionnent : `L-a` (les sept
+  interdits du JavaScript maison, plus le cliquet de la regle qui verifie qu'une mecanique du
+  domaine est cablee), `L-b` (le trou A, porte par `S33-PAL2-TROU-A`), `L-c` (la troisieme branche
+  de `PartieController`, indivisible, dont le bloc de reponse omis sur une designation est porte
+  par `S33-PAL2-TROU-B`), `L-d` (cinq garde-fous de rendu qui doivent lever plutot que rester muets
+  sur une designation). Aucun des quatre n'est livre a ce jour.
+- **Ce que cette story fait passer `ADR-0080` a `Accepte`, et ce qu'elle laisse ouvert** : `ADR-0080`
+  reste au statut *Propose* tant que ce lot (`T6`) n'est pas servi - trois de ses huit regles
+  (garde-fous 4, 5 et 6 : `LaBonneZoneNEstPasPredictibleSurUnPaquetTest`,
+  `AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest`,
+  `ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest`) ne mordent aujourd'hui que sur une
+  fixture (avis de `theo-archi`, section 5). Cette story est le geste qui leur donne une population
+  reelle : leurs trois balayages de production doivent etre etendus au paquet livre, et le plafond
+  de `AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest` monte a son compte
+  reel dans le meme diff. **Ce que cette story seule ne suffit pas a faire** : `ADR-0080` ne passe a
+  `Accepte` que si `L-c` (`T4`, porte par les deux stories de trous ci-dessus et le reste du chemin
+  de jeu) est egalement livre, avec les garde-fous 1, 2 et 3 ecrits et mordants (avis de
+  `theo-archi`, section 5, critere en quatre points). Faire passer l'`ADR` a `Accepte` n'est donc pas
+  au seul ressort de cette story, et cette story ne le declare pas elle-meme : c'est `theo-archi`
+  qui constate l'etat de son propre `ADR`.
 - **Criteres d'acceptation** :
   - Etant donne le paquet de `QLM-CP-11`, quand il est servi, alors un seul dessin (un plan de
     classe) sert les deux enumerations disjonctives du referentiel - un lieu ou un objet -, et
@@ -12773,10 +12798,25 @@ ce vivier est le plus bas de tout le Plan 2.
     (`squad/programme/MATRICE-couverture.md`, "moitie anteriorite/posteriorite seule") **tombe** -
     elle n'est pas deplacee, elle est retiree.
   - Etant donne chaque cadre de zone declare par le contenu des deux paquets, quand `nadia-prof`
-    joue la passe image effacee (`ZON-1` a `ZON-3` : tout le texte servi sous les yeux, la reponse
-    doit rester introuvable) et la passe jouee zone par zone (`ZON-9` : chaque zone de chaque item
-    pressee pour verifier ou tombe chaque cadre), alors les huit conditions `ZON-*` sont tenues sur
-    ce premier contenu reel (`PAR-13`, terrain jamais mordu).
+    joue la passe image effacee (`ZON-1` a `ZON-3`, reconduites sans changement : tout le texte
+    servi sous les yeux, la reponse doit rester introuvable) et la passe jouee zone par zone
+    (`ZON-9`), alors les **huit conditions neuves du 2026-09-05**, jamais mordues sur du contenu
+    reel avant ce lot (`PAR-13`), sont tenues une par une :
+    - `ZON-7` (recevabilite) - le paquet n'entre pas en audit tant que l'ecran de manche de
+      designation n'est pas servi ;
+    - `ZON-8` (nombre de zones) - au moins trois zones par item, au plus six au CP ;
+    - `ZON-9` (zones masquees) - chaque item joue zones masquees ; la cible se trouve sur le dessin
+      seul, et la zone declaree bonne couvre l'endroit trouve ;
+    - `ZON-10` (forme du libelle) - une seule forme par paquet, positionnelle des qu'un enonce nomme
+      sa cible, jamais nommante et positionnelle melangees ;
+    - `ZON-11` (ordre de declaration) - les zones sont declarees de haut en bas puis de gauche a
+      droite, dans l'ordre de lecture de l'image ;
+    - `ZON-12` (le dessin est un schema) - un plan de classe se lit comme un plan, une frise comme
+      un axe oriente, jamais en perspective ;
+    - `ZON-13` (non-chevauchement) - deux zones d'un item ne se chevauchent pas, aucune zone ne
+      deborde du dessin ;
+    - `ZON-14` (un item, un geste) - une manche de designation demande une seule designation, jamais
+      deux zones a designer ni une confirmation apres le geste.
   - Etant donne chaque enonce de designation, alors aucun ne nomme le libelle de sa propre bonne
     zone (garde-fou `AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest`).
   - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
@@ -12791,12 +12831,14 @@ ce vivier est le plus bas de tout le Plan 2.
   contre une source, base 2,5, hors de cette entree) ; elle ne sert ni `MAT-CP-10` ni `HDA-CM1-09`
   (chacune demande un second paquet textuel non finance par cette story) ; elle ne sert pas
   `HG-CM1-09` (la taille d'image actuelle ne porte pas une zone d'un quart de la hauteur rendue sur
-  un planisphere) ; elle ne commence aucun travail de contenu avant que les cinq prealables ci-dessus
-  soient leves.
+  un planisphere) ; elle ne commence aucun travail de contenu avant que les quatre lots ci-dessus
+  soient livres.
 - **Lien decision** : `DEC-0083`, section 13 ; arbitrage prealable de `nadia-prof`, sections 16 et
   17 (commit `b1ee89f4`) ; avis de faisabilite de `theo-archi` (branche `s32-theo`, commit
   `96c8efbe`, fusionnee dans `round-two` le 2026-09-08, commit `cb0b191e`) ; `ADR-0088` ;
-  `DEC-0085` (report a s34).
+  `DEC-0085` (report a s34) ; `DEC-0086`, section 12 (engagement de l'entree minimale a s34, arbitre
+  par l'utilisatrice le 2026-09-10) ; `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/avis-faisabilite-theo.md`, section 5
+  (etat des huit regles d'`ADR-0080`).
 - **Agent pressenti** : a affecter par `sofia-sm` parmi les trois instances - ce lot n'a pas de
   terrain nomme, comme `POS-R3` et `FOP-R4`/`DRO-R4` (`DEC-0083`, section 6) ; `ines-design` pour
   les trois dessins (un plan de classe, deux frises de la vie de l'enfant) ; `marc-dev` ou
@@ -12934,7 +12976,14 @@ pour le detail du routage et, pour la troisieme, la position produit sur le grai
     morale par la bonne reponse (`EPS-3`).
   - Etant donne chaque indice du paquet, alors il ne decrit pas la dynamique d'un effort par une
     image lue au premier degre (`EPS-6` - pas de "le coeur s'emballe", "les jambes deviennent
-    lourdes").
+    lourdes"), et il apporte un fait que l'enfant ne peut pas deviner de l'enonce seul, jamais une
+    reformulation de celui-ci (`EPS-8`, nouvelle, `nadia-prof`, 2026-09-10, opposable a partir de
+    ce lot).
+  - Etant donne chaque item, alors il fixe le moment de l'effort dont il parle - pendant, juste
+    apres, plus tard - et aucune de ses propositions n'est vraie a un autre moment (refus d'avance
+    numero 8, `nadia-prof`, 2026-09-10 : un distracteur peut etre vrai a un autre moment que celui
+    de la question, par exemple "on a froid" apres l'effort, quand la sueur s'evapore, jamais
+    pendant - un item qui ne fixe pas le moment marque alors fausse une proposition vraie).
   - Etant donne chaque item, alors deux items d'une meme tache ne portent jamais la meme bonne
     reponse mot pour mot (`FAB-1a`), les distracteurs ne sont pas pris systematiquement dans le
     vivier des bonnes reponses des autres items de la meme tache (`FAB-1b`), et la bonne reponse ne
@@ -12953,17 +13002,365 @@ pour le detail du routage et, pour la troisieme, la position produit sur le grai
     dans le meme sprint (Plan 2, `PAR-10`), et non differees.
   - Etant donne le Done pedagogique de chaque ligne, alors son statut de matrice ne passe a
     `couvert-valide` que si `nadia-prof` verifie `FER-1`, `FER-2`, `FER-3`, `EPS-1`, `EPS-2`,
-    `EPS-3`, `EPS-6`, `FAB-1`, `PLA-1`, `BIN-1`, `BIA-1`, `BIA-2` et la frontiere corps-et-effort
-    tenues - une ligne peut fermer independamment de l'autre.
+    `EPS-3`, `EPS-6`, `EPS-8`, le refus d'avance numero 8, `FAB-1`, `PLA-1`, `BIN-1`, `BIA-1`,
+    `BIA-2` et la frontiere corps-et-effort tenues - une ligne peut fermer independamment de
+    l'autre.
 - **Ce que cette story ne fait pas** : elle ne sert aucune ligne de sciences CM1 ni de questionner le
   monde CP sur l'hygiene de vie generale (frontiere ci-dessus) ; elle ne touche pas `EPS-CP-04` ni
   `EPS-CP-08`, deja servies ; elle ne rouvre pas la question du grain une deuxieme fois - le paquet
   unique est la position rendue, pas une option parmi d'autres a rediscuter a chaque sprint.
+- **Attente de fermeture, nommee par `nadia-prof` (arbitrage prealable de s34, section 5.6)** : 0 a
+  1 pour la paire, et elle penche vers 0 - c'est le premier contact d'`EPS-2`, d'`EPS-3` et de la
+  frontiere corps-et-effort avec du contenu reel, et le seul taux mesure de l'EPS au premier
+  contact est zero sur deux.
 - **Lien decision** : `DEC-0083`, sections 6 et 9.2 (frontiere corps-et-effort) ; arbitrage prealable
-  de s33 de `nadia-prof`, section 5.6 (recommandation de grain, prix) ; `DEC-0085`, section 3 (poste
-  finance a s33, jamais engage) ;
+  de s33 de `nadia-prof`, section 5.6 (recommandation de grain, prix) ; arbitrage prealable de s34
+  de `nadia-prof`, section 5.6 (`EPS-8`, refus d'avance numero 8, attente confirmee) ;
+  `DEC-0085`, section 3 (poste finance a s33, jamais engage) ; `DEC-0086`, section 3 ;
   `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/arbitrage-produit-camille.md`.
 - **Agent pressenti** : a affecter au planning de s34 par `sofia-sm` ; contenu par `marc-dev` ou
   `lea-dev` ; `nadia-prof`, instance C, pour l'audit et le Done pedagogique.
+
+## Backlog ouvert pour s34 (composition de `DEC-0086`) - le vivier de quatre refus, la refonte de
+## `cp-emc-exclusion`, le decoupage de `S33-CONS-4` et l'instruction 1 de `DEC-0061`
+
+Sept stories neuves, chiffrees par `nadia-prof` (arbitrage prealable de s34, sections 4 et 5) et
+composees contre la borne de 12,0 par `DEC-0086`, section 3. `S34-ANG-CORR` et `S34-TRANSVERSE-1`,
+deja ecrites a la cloture de s33, sont confirmees dans la borne sans modification de fond ;
+`S34-EPS-CORPS-EFFORT`, deja ecrite, est ajustee ci-dessus (`EPS-8`, refus d'avance numero 8).
+
+### S34-HG-12 - Les distracteurs de `HG-CM1-12` deviennent des reponses serieuses
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que les mauvaises reponses proposees sur les
+  questions de vie en ville et en lieu touristique restent des reponses qu'un enfant peut vraiment
+  donner, en jouant au bandit manchot d'histoire-geographie, afin de devoir vraiment connaitre la
+  reponse pour gagner et non seulement reconnaitre un registre de mots.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3) -
+  `squad/programme/histoire-geographie/competences-cm1.md`, `HG-CM1-12`, "Decrire comment on se
+  loge, on travaille, on se cultive et on se deplace dans un espace urbain et dans un espace
+  touristique", `en cours`, refusee au premier passage sur `HG-R17`.
+- **L'objet, repris mot pour mot de `nadia-prof`** : un enfant qui ne connait pas la reponse doit
+  pouvoir se tromper serieusement. Aujourd'hui il lui suffit d'ecarter tout ce qui parle de ferme,
+  de champ, de peche ou de peniche pour repondre aux neuf items sans lire une seule question.
+- **Criteres d'acceptation** :
+  - Etant donne les 18 distracteurs des 9 items neufs de la ligne, quand ils sont revus, alors
+    chacun des deux distracteurs de chaque item est une reponse qu'un enfant peut serieusement
+    envisager a la question posee - remplacer un mot rural par un autre mot tout aussi
+    invraisemblable ne leve pas la reserve (`HG-R17`, mode de defaillance nomme d'avance :
+    "un immeuble de bureaux" n'est pas rural et n'est pas davantage un logement de vacances).
+  - Etant donne l'enonce qui enumere deja deux des trois propositions, quand il est revu, alors il
+    cesse d'enumerer (`HG-R18`).
+  - Etant donne l'enonce ou le mot de la bonne reponse est deja present dans la question, quand il
+    est revu, alors ce mot en est retire (`PLA-1`).
+  - Etant donne `HG-R13` a `HG-R16` (proposition verbale dans une liste de groupes nominaux, enonce
+    ou personne ne devient empereur, indice du Code civil, ce que fait la Banque de France), quand
+    la meme reprise les traite, alors aucun cout supplementaire n'est facture : elles voyagent avec
+    le meme paquet (`PAR-10`).
+  - Etant donne la cellule "se loger dans un espace urbain", deja servie par l'item 25 de
+    `HG-CM1-11` (ligne fermee `couvert-valide`), alors aucun des neuf items neufs n'y retombe
+    (`HIS-5`) ; `HG-CM1-11` n'est pas rouverte.
+  - Etant donne `FER-1` sur les quatre pratiques, `FER-2` a dix items, `FER-3` et `HG-R4` sur la
+    mediane du paquet, alors ils restent tenus a l'identique - le refus ne les concernait pas.
+  - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, que chaque distracteur des 9 items neufs est un candidat
+    serieux et que `HG-R17` et `HG-R18` sont levees.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas `HG-CM1-11` ; elle ne touche pas
+  `HG-CM1-08`, deja `couvert-valide`.
+- **Lien decision** : arbitrage prealable de s34 de `nadia-prof`, section 5.1 ; `DEC-0085` (`HIS-5`,
+  cellule deja depensee) ; `DEC-0086`, section 3.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour l'audit (instance
+  A).
+
+### S34-EMCCP07 - Cinquieme passage sur `bandit-manchot-regle-souhait-loi-cp` : retirer "une loi"
+### des items 5 et 6, et le mouvement d'item que `BIN-1` impose
+
+- **Besoin** : en tant qu'eleve de CP, je veux qu'une regle qui vaut pour tous les enfants de
+  France ne soit jamais marquee fausse sur aucun des items qui la mettent en jeu, en jouant au
+  bandit manchot, afin d'apprendre a distinguer une regle, un souhait et une loi sans etre trompe
+  par le jeu lui-meme.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, `EMC-CP-07`, "Distinguer une
+  regle qui vaut pour tous d'un simple souhait, et reconnaitre qu'une loi s'impose a tous",
+  `non couvert`, refusee au quatrieme passage sur un motif entierement nomme par `nadia-prof`
+  elle-meme.
+- **Prealable rendu le 2026-09-10** (`squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/avis-faisabilite-theo.md`, sections 1 et
+  1.6) : `theo-archi` confirme que les deux tests de paquet que `nadia-prof` nomme
+  (`fer1LesTroisTermesSontEnBonneReponseDeLaTacheDeClassement`,
+  `bin1AuPlusLaMoitieDesItemsDeClassementSontBinaires`) sont repris sans toucher a aucune clause -
+  vingt lignes dans un seul fichier de test, zero fichier de production, zero fichier de contenu -
+  et il chiffre les deux sorties possibles ci-dessous, sans les choisir : la sortie (a), qui deplace
+  l'item 4 en tache B, ne demande aucun fait de droit neuf et garde une marge d'un demi-item sur
+  `BIN-1` (5 items binaires sur 11) ; la sortie (b), qui ajoute un douzieme item, demande un fait de
+  droit neuf et tient `BIN-1` a egalite stricte (6 sur 12), sans aucune marge. Cette story peut
+  s'ouvrir.
+- **La reprise des deux tests est incluse dans cette story, et elle n'attend ni le contenu ni le
+  choix de sortie** : elle est verte des aujourd'hui sur le contenu servi (`theo-archi`, section
+  1.4) et elle reste verte apres l'une comme l'autre des deux sorties. Elle peut donc etre commitee
+  des l'ouverture de la branche, avant que "une loi" ne soit retiree des items 5 et 6.
+- **Criteres d'acceptation** :
+  - Etant donne les items 4, 5 et 6, qui portent le meme ternaire non disjoint, quand ils sont
+    revus, alors "une loi" cesse d'etre une troisieme proposition sur les trois : la tache A
+    redevient le binaire que le libelle demande sur ces trois items comme sur les items 1, 2 et 3
+    (`EMC-11` : toute correction de l'item 4 qui laisse "une loi" dans les propositions des items 5
+    ou 6 est refusee d'avance).
+  - Etant donne la contrainte `BIN-1` (au plus la moitie des items d'une tache sont binaires) et le
+    mouvement d'item qu'elle impose une fois les items 4, 5 et 6 rendus binaires, quand la sortie
+    est choisie par `nadia-prof` entre les deux qu'elle a elle-meme verifiees compatibles avec
+    `FER-1`, `FER-2`, `FER-3`, `EMC-11`, `PLA-1` et `DEC-0064` (deplacer un des trois items en
+    tache B sous la forme "Une loi ... Qui doit ... ?", ou ajouter un douzieme item ternaire en
+    tache B), alors la tache de classement compte au plus 5 items binaires sur 11 (premiere sortie)
+    ou exactement 6 sur 12 (seconde), jamais 6 sur 11.
+  - Etant donne l'item 11 (vente d'alcool aux mineurs), quand son distracteur mort ("seulement les
+    enfants") est revu, alors chaque proposition redevient un candidat serieux (`PLA-1`, deja paye,
+    non regresse).
+  - Etant donne le reste du paquet (items 1, 2, 3, 7, 8, 9, 10, et la tache A pour sa part restante),
+    alors `FAB-1c`, les faits de droit et la longueur des enonces restent inchanges.
+  - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, `EMC-11` et `BIN-1` tenues sur la tache de classement entiere.
+- **Ce que cette story ne fait pas** : elle ne choisit pas laquelle des deux sorties est retenue -
+  **le choix est pedagogique et il revient a `nadia-prof`, pas a `theo-archi`** (correction du
+  2026-09-10 : la story precedente le routait a tort a `theo-archi`, qui ne fait que chiffrer
+  l'ecart entre les deux sans preference) ; elle ne touche pas les items 1, 2, 3, 7, 8, 9, 10.
+- **Lien decision** : arbitrage prealable de s34 de `nadia-prof`, section 5.2 ; `DEC-0085` ;
+  `docs/backlog/backlog.md`, `S33-EMCCP07` (passages precedents, non repris) ; `DEC-0086`, sections 3
+  et 12 ; `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/avis-faisabilite-theo.md`, sections 1 et 1.6.
+- **Agent pressenti** : `theo-archi` pour l'avis technique prealable ; `marc-dev` ou `lea-dev` pour
+  le texte ; `nadia-prof`, cinquieme passage.
+
+### S34-EPS-SEC - Reprise de `EPS-CP-04` : la situation de l'enonce et les indices qui n'enseignent
+### plus rien
+
+- **Besoin** : en tant qu'eleve de CP, je veux que la regle de securite qu'on m'enseigne en
+  trottinette soit la vraie regle, et que la situation posee par la question soit la meme que celle
+  que decrivent les reponses proposees, en jouant au bandit manchot, afin d'apprendre un geste que
+  je peux vraiment refaire.
+- **Competence programme visee** : education physique et sportive, CP (cycle 2) -
+  `squad/programme/education-physique-et-sportive/competences-cp.md`, `EPS-CP-04`, "Connaitre et
+  respecter les regles de securite propres a l'activite et au lieu de pratique", `non couvert`,
+  refusee au second passage sur `SEC-R4`.
+- **Criteres d'acceptation** :
+  - Etant donne les items 3 et 8, quand ils sont revus, alors soit les trois propositions de
+    chacun decrivent toutes un enfant sur une trottinette, soit les deux items sont remplaces par
+    deux items portant sur une autre activite d'EPS (la cour, le gymnase, un agres, l'eau) qui
+    tiennent la meme regle de securite (`SEC-R4` : aujourd'hui l'enonce met l'enfant sur une
+    trottinette et les trois propositions le decrivent a pied).
+  - Etant donne les indices des items 8, 10 et 11, quand ils sont revus, alors chacun apporte un
+    fait que l'enfant ne peut pas deviner de l'enonce seul, jamais une reformulation de celui-ci
+    (`EPS-8`, `SEC-R5` : trois indices sur quatre n'enseignent plus rien depuis que le mot interdit
+    par `EPS-7` en a ete retire).
+  - Etant donne le reste du paquet (les neuf autres items, la tache A), alors il reste inchange -
+    `nadia-prof` l'a deja verifie exact et bon.
+  - Etant donne toute fermeture de cette ligne, alors elle porte la mention de couverture partielle
+    deja ecrite dans la matrice, mot pour mot (refus d'avance numero 7 de `nadia-prof`) - une
+    fermeture sans cette mention est refusee.
+  - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, `SEC-R4` levee, `SEC-R5` levee et `EPS-8` tenue.
+- **Ce que cette story ne fait pas** : elle ne touche pas `EPS-CP-08` (story separee,
+  `S34-EPS-JEU`) ; elle ne choisit pas laquelle des deux voies (remplacement des deux items ou
+  correction en trottinette) sans que `nadia-prof` verifie que la voie retenue tient les memes
+  proprietes.
+- **Lien decision** : arbitrage prealable de s34 de `nadia-prof`, section 5.3 ; `DEC-0086`,
+  section 3.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof`, troisieme passage.
+
+### S34-EPS-JEU - Reprise de `EPS-CP-08` : l'epervier dit une seule regle sur ses deux items
+
+- **Besoin** : en tant qu'eleve de CP, je veux que le paquet dise une seule chose de la regle de
+  l'epervier, et que je ne sois jamais marque faux avec ce que le meme paquet vient de m'apprendre,
+  en jouant au bandit manchot, afin de ne pas apprendre une fausse regle que je reprocherais a tort
+  a un camarade.
+- **Competence programme visee** : education physique et sportive, CP (cycle 2) -
+  `squad/programme/education-physique-et-sportive/competences-cp.md`, `EPS-CP-08`, "Connaitre et
+  respecter les regles d'un jeu collectif simple", `non couvert`, refusee au second passage sur
+  `JEU-R9`.
+- **Criteres d'acceptation** :
+  - Etant donne les items 3 et 8 de l'epervier, quand ils sont revus, alors le paquet dit une seule
+    chose de sa regle : soit l'item 3 enseigne le sort d'un joueur qui franchit la limite avant que
+    l'item 8 ne le juge, soit l'item 8 credite exactement la consequence que l'item 3 enseigne deja
+    (`JEU-R9` ; `COH-1`, nouvelle, `nadia-prof`, 2026-09-10 : deux items d'un meme paquet qui
+    portent sur le meme objet ne se contredisent pas - aujourd'hui l'item 3 enseigne qu'un joueur
+    touche change de role et l'item 8 marque fausse "Malo change de role").
+  - Etant donne l'indice de l'item 8, quand il est revu, alors il dit ce qui arrive quand la limite
+    est franchie, et non seulement qu'une limite existe (`EPS-8`).
+  - Etant donne l'item 10, quand ses deux distracteurs sont revus, alors la bonne reponse cesse
+    d'etre reconnaissable a une forme de texte inchangee pendant que les distracteurs changent
+    (`JEU-R10`).
+  - Etant donne l'indice de l'item 6, revu dans le meme geste, alors il reste coherent avec la
+    regle de l'epervier telle que corrigee.
+  - Etant donne `JEU-R12` (le genre des personnages qui enfreignent une regle, deux occurrences),
+    alors cette reprise ne l'aggrave pas en reecrivant - `nadia-prof` ne pose aucune barre chiffree
+    sur ce point.
+  - Etant donne le Done pedagogique, alors le statut ne passe a `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, `JEU-R9` levee et `EPS-1`, `EPS-8`, `COH-1` tenues sur le
+    paquet entier.
+- **Ce que cette story ne fait pas** : elle ne touche pas `EPS-CP-04` (story separee,
+  `S34-EPS-SEC`) ; elle ne renomme pas les six jeux ni ne change leur repartition entre les taches.
+- **Lien decision** : arbitrage prealable de s34 de `nadia-prof`, section 5.4 ; `DEC-0086`,
+  section 3.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof`, troisieme passage.
+
+### S34-CONS-4 - Scinder `bandit-manchot-histoire-geographie-cm1` en quatre entrees de catalogue,
+### une tache par entree (remplace `S33-CONS-4`)
+
+- **Besoin** : transverse - pas de contenu pedagogique. Le defaut n'est pas une phrase a corriger :
+  c'est le nombre de taches qu'un seul jeu sert sous une seule consigne, qui empeche cette consigne
+  d'informer l'enfant.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Les 110 items existants
+  continuent de servir les memes lignes de `squad/programme/histoire-geographie/competences-cm1.md`
+  (`HG-CM1-01`, `-02`, `-03`, `-04`, `-06`, `-07`, `-08`, `-11`, `-12`, `-13`, `-14`) ; aucun statut
+  de matrice ne bouge par cette story.
+- **La decision de grain, rendue conjointement par `camille-po` et `nadia-prof` (`ADR-0081`)** :
+  quatre entrees de catalogue remplacent l'unique `bandit-manchot-histoire-geographie-cm1`, une par
+  tache reellement distincte plutot qu'une par ligne de referentiel :
+
+  | Entree | Tache | Lignes de referentiel servies | Items |
+  |---|---|---|---|
+  | Situer dans le temps | Situer un fait dans le temps, ou remettre des faits dans l'ordre | `HG-CM1-01`, `-02`, plus 5 items de `-07` | 25 |
+  | Nommer, en histoire | Nommer ce que l'enonce decrit | `HG-CM1-03`, `-04`, `-06`, 5 items de `-07`, `-08` | 45 |
+  | Nommer, en geographie | Nommer ce que l'enonce decrit | `HG-CM1-11`, `-12`, `-13` | 30 |
+  | Lire un document | Lire un document fourni et en tirer une reponse | `HG-CM1-14` | 10 |
+
+- **Criteres d'acceptation** :
+  - Etant donne les 110 items existants du paquet actuel, quand ils sont repartis dans les quatre
+    entrees ci-dessus, alors chacun des 110 est servi par exactement une des quatre entrees, aucun
+    n'est perdu et aucun n'est duplique (recompte exigible sur le fichier servi).
+  - Etant donne les cinq items de `HG-CM1-07` dont la repartition entre "Situer dans le temps" et
+    "Nommer, en histoire" est discutable, quand elle est faite, alors le choix precis est laisse a
+    qui l'execute - `nadia-prof` a verifie que le grain ne change pas quel que soit cet arbitrage,
+    les deux viviers restant tres au-dessus de dix items.
+  - Etant donne chaque entree neuve, quand sa consigne est ecrite, alors elle nomme une seule
+    tache, en une seule clause, et non une enumeration de clauses. **`nadia-prof` ecrit elle-meme
+    le texte de chaque consigne, item devant elle, dans la meme reprise que l'audit** - elle ne le
+    fournit pas d'avance (`RES-2`).
+  - Etant donne les items neufs de `HG-CM1-08` et `HG-CM1-12` (livres par `S33-HG-08-12`), alors
+    ils rejoignent respectivement "Nommer, en histoire" et "Nommer, en geographie" - verifie par
+    `nadia-prof` item par item, aucune sixieme tache ne s'ouvre.
+  - Etant donne `DEC-0064` (dix manches au moins par entree de fermeture), alors chacune des quatre
+    entrees porte au moins dix items, verifie sur les quatre viviers du tableau ci-dessus (25, 45,
+    30, 10).
+  - Etant donne le Done pedagogique, alors aucune des quatre entrees ne passe `couvert-valide` sans
+    que `nadia-prof` confirme, en jouant chacune, que sa consigne nomme la tache de toutes ses
+    manches et qu'aucun item n'est perdu dans la migration.
+- **Ce que cette story ne fait pas** : elle n'ecrit aucune des quatre consignes a la place de
+  `nadia-prof` ; elle ne cree aucun item neuf ; elle ne touche pas `bandit-manchot-anglais-cm1`.
+- **Lien decision** : arbitrage prealable de s34 de `nadia-prof`, section 4.2 ; `ADR-0081` ;
+  `docs/backlog/backlog.md`, `S33-CONS-4` (decision de grain, remplacee par cette story) ;
+  `DEC-0086`, sections 3 et 7.
+- **Agent pressenti** : `theo-archi` pour la forme technique de la scission en quatre entrees de
+  catalogue ; `marc-dev` ou `lea-dev` pour l'execution ; `nadia-prof` pour l'ecriture des quatre
+  consignes et l'audit.
+
+### S34-EXC-TACHEB - Refondre la tache B de `bandit-manchot-exclusion-cp` : parler a un adulte, pas
+### reconnaitre lequel
+
+- **Besoin** : en tant qu'eleve de CP, je veux reconnaitre, parmi trois comportements qu'un enfant
+  peut vraiment avoir face a une moquerie qui se repete, celui qui consiste a en parler a un
+  adulte, en jouant a ce jeu, afin d'apprendre a ne pas me taire, a ne pas rendre le coup et a ne
+  pas m'en remettre a un camarade.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, `EMC-CP-03`
+  (`bandit-manchot-exclusion-cp`), deja `couvert-valide`, correction non bloquante sur la tache B -
+  `EXC-R1`, `EXC-R6` a `EXC-R9`, non payees, aucune ligne rouverte.
+- **L'objet de la tache B, tranche par `nadia-prof` et repris mot pour mot** : devant une moquerie
+  qui se repete, l'enfant doit pouvoir reconnaitre, parmi trois conduites qu'un enfant de son age a
+  reellement, celle qui consiste a en parler a un adulte. Les deux autres propositions sont ce
+  qu'un enfant fait a la place - plausibles precisement parce qu'elles sont frequentes. Ce que
+  l'enfant doit apprendre n'est pas de choisir entre deux adultes de l'ecole - les deux
+  conviennent - c'est de ne pas se taire, de ne pas rendre le coup et de ne pas s'en remettre a un
+  camarade.
+- **Mode de defaillance nomme d'avance par `nadia-prof`** : garder trois adultes de l'ecole et
+  changer une troisieme fois la question - c'est la pente deja prise deux fois, et elle ramene au
+  meme mur, puisqu'aucun adulte de l'ecole n'est un mauvais destinataire.
+- **Criteres d'acceptation** :
+  - Etant donne les cinq items de la tache B, quand ils sont reecrits, alors leurs trois
+    propositions sont trois conduites qu'un enfant de six ans peut vraiment avoir face a une
+    moquerie qui se repete (en parler a un adulte ; se taire ; rendre le coup ; ou s'en remettre a
+    un camarade), et non trois adultes de l'ecole.
+  - Etant donne chaque question recollee a ses trois propositions, alors elle forme une phrase
+    francaise (`EXC-R8`) et la bonne reponse ne reprend pas un mot que l'enonce vient d'ecrire
+    (`EXC-R7`).
+  - Etant donne l'item 2 de la tache A (le plus long, `EXC-R6`), quand il est revu dans la meme
+    reprise, alors il tient les memes proprietes que le reste de la tache A.
+  - Etant donne la consigne du catalogue, quand la tache B est reecrite selon l'objet ci-dessus,
+    alors la consigne redevient exacte sans qu'un mot supplementaire soit ajoute au-dela de ce que
+    l'objet demande (`EXC-R1` : sa condition est remplie des que `EXC-R9` l'est, `nadia-prof`
+    l'ecrit elle-meme).
+  - Etant donne le paquet assemble (tache A et tache B), quand le commit est pret, alors il est relu
+    comme un tout avant de commiter - la consigne contre l'ensemble des taches reellement servies
+    (amendement de `squad/README.md`, section 4, retro de s33).
+  - Etant donne le Done pedagogique, alors `EMC-CP-03` reste `couvert-valide`, et `nadia-prof`
+    confirme, en jouant, que `EXC-R1` et `EXC-R6` a `EXC-R9` sont levees.
+- **Ce que cette story ne fait pas** : elle n'invente aucun enonce, aucune proposition et aucun
+  indice a la place de `nadia-prof`, qui ne les fournit pas d'avance (`RES-2`, interdit 1) - le
+  texte est ecrit par qui l'implemente, guide par l'objet ci-dessus, jamais par un texte dicte ;
+  elle ne rouvre pas `EMC-CP-03` au-dela de la tache B et de l'item 2 de la tache A.
+- **Lien decision** : arbitrage prealable de s34 de `nadia-prof`, sections 4.4 et 5.5 ; `PAR-15` ;
+  `DEC-0086`, section 3.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour l'audit.
+
+### S34-SCO1-REMEDE - Trois essais quand l'elimination est possible : un essai qui compte, deux qui
+### enseignent (instruction 1 de `DEC-0061`, rendue)
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux garder mes trois essais sur une manche a
+  elimination et voir, a la fin de la partie, ce que j'ai trouve seul et le fait que j'ai fait
+  toutes les questions, afin que le jeu ne me dise pas que j'ai reussi une manche que je n'ai pas
+  trouvee du premier coup, sans pour autant me punir d'avoir eu besoin d'un deuxieme essai.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Defaut de la mecanique
+  a elimination (`bandit-manchot`), sur son calcul de score, qu'aucun contenu specifique ne porte.
+- **La phrase de `nadia-prof`, rendue et a citer telle quelle (`DEC-0061`, instruction 1, famille
+  A)** : "Quand l'elimination est possible, l'enfant garde ses trois essais, et le score cesse de
+  compter comme trouvee une manche qu'il n'a pas trouvee du premier coup."
+- **Criteres d'acceptation** :
+  - Etant donne une manche a elimination, quand l'enfant se trompe, alors il conserve ses deux
+    essais restants sur cette manche - aucune elimination de la manche n'intervient avant le
+    troisieme echec (`M1`, l'indice arrive des le premier echec et reste utilisable).
+  - Etant donne une manche resolue au deuxieme ou au troisieme essai, alors elle compte comme
+    "trouvee apres une erreur", jamais comme "trouvee du premier coup" dans le score - cinq
+    parties completes sur cinq paquets differents, en pressant les propositions dans l'ordre
+    affiche, ont mesure quinze manches sur cinquante trouvees du premier appui pour un score de
+    "10 sur 10" les cinq fois : ce cas est celui que la mesure a trouve et que la correction
+    supprime.
+  - Etant donne une manche resolue par revelation (troisieme essai depense), alors elle n'est
+    jamais comptee comme une reussite (`M5`, inchange depuis s10 : la manche se termine sur
+    l'appui de l'enfant, pas sur une revelation).
+  - Etant donne l'ecran de fin de partie, quand il est rendu, alors il affiche deux informations
+    distinctes - combien de manches l'enfant a trouvees seul, et qu'il a fait la totalite des dix
+    questions - jamais un nombre reduit qui remplacerait les deux (refus d'avance numero 6 de
+    `nadia-prof` : un enfant qui a trouve quatre questions seul et six apres une erreur n'a pas
+    "4 sur 10").
+  - Etant donne les propositions d'une manche, alors leur ordre n'est pas remelange apres une
+    erreur - `nadia-prof` et `theo-archi` refusent tous deux cette voie, qui ne defait qu'une
+    strategie de position et ne rend pas la propriete demandee.
+  - Etant donne le Done pedagogique du texte de l'ecran de fin (quand il sera ecrit), alors il
+    revient devant `nadia-prof` : le remede lui-meme est mordable par un automate, la phrase que
+    l'enfant lit ne l'est pas.
+  - Etant donne `DeuxCoupsSimultanesTest` (garde-fou de non-regression de `ADR-0019`, le double
+    appui qui faisait perdre un point), quand le remede est applique, alors son assertion est
+    remplacee par un temoin qui survit au remede - `score.tentatives()` vaut exactement 1 apres deux
+    appuis simultanes, quel que soit leur ordre - avec une Javadoc qui dit pourquoi l'ancien temoin
+    (le score qui fait foi vaut toujours 1, quel que soit l'ordre) cesse d'en etre un sous le remede
+    : ce rouge attendu n'est pas une regression de `ADR-0019` ni de la concurrence, et il n'est pas
+    lu comme tel (`theo-archi`, avis de s34, section 2.3, route a `yanis-qa` et a `sofia-sm`).
+- **Ce que cette story ne fait pas** : elle ne choisit pas la forme technique exacte entre les deux
+  informations de l'ecran de fin (variante `A-2` ou une autre) - `theo-archi` la choisit ;
+  elle ne s'applique qu'aux paquets a elimination possible (114 items a deux propositions et les
+  paquets a trois propositions confondus) et ne cree aucune condition nouvelle sur les paquets qui
+  n'eliminent jamais.
+- **Cout technique, mesure par `theo-archi` et plus large que le seul prix d'audit de `nadia-prof`
+  (0,5, inchange - c'est son propre prix, non recalcule)** : une expression modifiee dans chacune
+  des trois sessions du domaine (`SaisieSession` s'ecrit differemment des deux autres,
+  `tentatives.isEmpty()`), l'assertion de `DeuxCoupsSimultanesTest` remplacee, une classe de test
+  neuve pour la regle de non-regression ("une manche resolue apres au moins un essai infructueux
+  n'est pas comptee comme une reussite", environ 60 lignes), les non-regressions `SCO-4` a `SCO-7`
+  differees par l'avis de s33 (environ 40 lignes), et l'`ADR` qui porte le tout dans le meme commit
+  que sa regle (`theo-archi`, avis de s34, section 2.6). Ce cout est technique, il ne s'ajoute pas
+  au prix d'audit de `nadia-prof` sur la borne de `DEC-0086`.
+- **Lien decision** : `DEC-0061` (instruction 1, neuf sprints d'attente) ; arbitrage prealable de
+  s34 de `nadia-prof`, section 4.1 ; `DEC-0086`, sections 3 et 12 ;
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/avis-faisabilite-theo.md`, sections 2 et 2.6.
+- **Agent pressenti** : `theo-archi` pour la regle technique et son `ADR` (deja route par
+  `nadia-prof`) ; `marc-dev` ou `lea-dev` pour l'implementation ; `nadia-prof` pour le texte de
+  l'ecran de fin, quand il sera ecrit.
+
 
 
