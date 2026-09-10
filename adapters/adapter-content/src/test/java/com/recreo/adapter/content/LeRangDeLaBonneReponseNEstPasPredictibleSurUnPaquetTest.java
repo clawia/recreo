@@ -657,16 +657,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " null sur les trois propositions de chaque item. Mesure du 2026-09-07 sur le"
                     + " paquet servi : aucune des 33 propositions ne commence par un chiffre"),
             Map.entry("cp-emc-regle-souhait-loi",
-            "11 items sur 11 : trois items (tache de classement, forme binaire) portent un seul"
-                    + " distracteur (deux propositions) et huit items (les trois autres items de"
-                    + " classement, forme ternaire, et les cinq items de la tache de portee de la loi)"
-                    + " portent deux distracteurs (trois propositions), mais aucune des 30 propositions"
-                    + " n'est numerique : ce sont des categories institutionnelles (\"une règle qui"
-                    + " vaut pour tous\", \"un simple souhait\", \"une loi\") ou des groupes de"
-                    + " personnes en texte libre (\"tout le monde, même les adultes\","
-                    + " \"seulement les enfants\"...), valeurDe rend null sur toutes les propositions."
-                    + " Mesure du 2026-09-07 sur le paquet servi : aucune des 30 propositions ne"
-                    + " commence par un chiffre"),
+            "11 items sur 11 : cinq items (tache de classement, forme binaire depuis le cinquieme"
+                    + " passage, S34-EMCCP07) portent un seul distracteur (deux propositions) et six"
+                    + " items (les cinq items de la tache de portee de la loi, plus l'item du casque"
+                    + " a velo transpose depuis la tache de classement) portent deux distracteurs"
+                    + " (trois propositions), mais aucune des 28 propositions n'est numerique : ce"
+                    + " sont des categories institutionnelles (\"une règle qui vaut pour tous\", \"un"
+                    + " simple souhait\") ou des groupes de personnes en texte libre (\"tout le monde,"
+                    + " même les adultes\", \"seulement les enfants\"...), valeurDe rend null sur"
+                    + " toutes les propositions. Mesure du 2026-09-10 sur le paquet servi, apres le"
+                    + " cinquieme passage : aucune des 28 propositions ne commence par un chiffre"),
             // S31-3 : premier lot de sciences et technologie CM1, second passage (SCI-CM1-01,
             // SCI-CM1-07).
             Map.entry("cm1-sciences-etats-matiere",
@@ -1228,7 +1228,7 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     void unMotifDontLesComptesSontExactsPasseLeGardeFou() {
         String paquet = "cp-emc-regle-souhait-loi";
         Map<String, String> exact = Map.of(paquet,
-                "motif pose par la mise a l'epreuve : 11 items, 30 propositions");
+                "motif pose par la mise a l'epreuve : 11 items, 28 propositions");
 
         assertThat(comptesPerimesDesMotifs(CONTENU_DE_PRODUCTION, "", exact)).isEmpty();
     }

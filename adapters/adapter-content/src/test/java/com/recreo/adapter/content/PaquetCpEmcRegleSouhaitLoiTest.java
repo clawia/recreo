@@ -53,6 +53,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * (la vente d'alcool) - l'enfant apprend "s'impose a tous" par contraste. <b>La tache de classement
  * (items 1 a 6) est inchangee</b> : nadia-prof l'a confirmee bonne et a conserver telle quelle.</p>
  *
+ * <p><b>Cinquieme passage (2026-09-10, {@code marc-dev}, {@code S34-EMCCP07}).</b> Sortie (a)
+ * retenue par {@code nadia-prof} ({@code squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-
+ * engage/arbitrage-emccp07-nadia.md}, sections 2 et 3) : l'item du casque a velo quitte la tache de
+ * classement pour la tache de portee, et "une loi" est retiree des deux items de classement
+ * restants. La tache de classement compte desormais cinq items, tous binaires ; la tache de portee
+ * en compte six, tous ternaires - {@code BIN-1} reste tenue a 5 sur 11.</p>
+ *
  * <p><b>Ce que ce test ne juge pas.</b> {@code EMC-1}, {@code EMC-8}, {@code EMC-10} et
  * {@code CAT-1} demandent une lecture semantique, non gardees ici. {@code FAB-1} est verifiee depot
  * entier par {@code LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest} (ADR-0086).</p>
