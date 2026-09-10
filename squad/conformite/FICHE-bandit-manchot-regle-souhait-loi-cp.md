@@ -712,3 +712,48 @@ compatible avec la condition qu'il paie.**
 | **`EMC-CP-07` reste `non couvert`** | `camille-po` | **Aucun mouvement de matrice.** Quatrieme refus, ligne fermable a s34 |
 | **Le perimetre corrige du quatrieme passage** | `camille-po` | Propositions des items 4, 5, 6, **plus** un mouvement d'item (sortie (a) ou (b)), **plus** deux tests de paquet a reprendre |
 | **`fer1LesTroisTermesSontEnBonneReponseDeLaTacheDeClassement` et `bin1AuPlusLaMoitieDesItemsDeClassementSontBinaires`** | `theo-archi` | **Symptome** : le premier lit le troisieme element du libelle dans une tache ou le libelle ne le met pas ; le second mesure sur la tache une clause qui se mesure sur le paquet. **Avis du avant l'ouverture de la branche de s34** |
+
+---
+
+## Bloc d'arbitrage du 2026-09-10 - `nadia-prof`, s34 - la sortie retenue sur `BIN-1` : **(a), l'item 4**
+
+**Ce bloc n'est pas un verdict et ne prononce aucun Done.** Il leve le seul point que le quatrieme
+refus laissait ouvert - *laquelle des deux sorties* - avant que la branche de s34 ne s'ouvre.
+**Aucun verdict anterieur n'est efface, aucune clause n'est amendee, aucune ligne de matrice ne
+bouge : `EMC-CP-07` reste `non couvert`.**
+
+**Arbre `8f37bc6b`.** *Mode d'audit declare* : les deux parties completes jouees le 2026-09-10 sur
+`b45e5927` valent pour cet arbitrage, `git diff b45e5927..8f37bc6b` etant vide sur le paquet servi,
+sur `catalogue.yaml` et sur le fichier de test.
+
+> **Sortie retenue : (a) - l'item 4 quitte la tache de classement pour la tache de portee.** Etat
+> d'arrivee : **11 items**, tache A a 5 (items 1, 2, 3, 5, 6, tous binaires), tache B a 6,
+> **5 binaires sur 11**.
+>
+> **Le motif qui decide, et ce n'est pas la marge d'un demi-item.** `BIN-1` dit *"une partie ne se
+> joue pas majoritairement a pile ou face"* : le paquet n'y est l'unite que parce que le tirage est
+> presque exhaustif. Le tirage etant **sans remise** (`ListContentSource.next`) et la partie faisant
+> **dix manches** (`catalogue.yaml`), une partie presente dix items distincts. Sous **(a)**, elle
+> porte 4 ou 5 manches binaires - **jamais une majorite**. Sous **(b)** - douze items, six binaires -
+> elle en porte 4, 5 **ou 6** ; le cas a six survient quand les deux items non tires sont tous deux
+> ternaires, soit **15 tirages sur 66**. **(b) satisfait l'arithmetique de la clause et reproduit,
+> une partie sur cinq environ, exactement la partie sur laquelle je l'ai ecrite.**
+>
+> **Et c'est l'item 4**, seul des trois a porter deja une obligation legale (verifie item par item
+> sur le paquet servi : la cantine et le souhait d'Aya n'en portent aucune), et seule des trois
+> situations qu'un enfant de CP rencontre dans sa propre vie.
+>
+> **Le mode de defaillance que je nomme d'avance, et c'est un refus d'avance** : transposer l'item 4
+> en opposant *seulement les enfants* aux *adultes aussi*. C'est vrai, c'est fidele a ma phrase
+> *"sous la forme 'Une loi ... Qui doit ... ?'"*, **et cela apprend a un enfant de six ans que les
+> lois sont pour les enfants et que les adultes en sont dispenses** - l'inverse de la seconde moitie
+> du libelle et des cinq items voisins. **L'axe est *tous ceux que la loi nomme, sans exception*
+> contre *seulement une partie d'entre eux*.**
+>
+> **Lecture de `BIN-1` tranchee ici** : la clause s'applique bien que la tache de classement devienne
+> minoritaire (5 contre 6). Son entree qualifie **la ligne**, pas un decompte d'items.
+
+**La consigne complete - constat, objet, mode de defaillance, perimetre mesure sur l'etat d'arrivee,
+regime et prix, au format `RES-1`** - est dans
+`squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md`, section 3.
+**Prix inchange : rejeu, 0,5 ; `PAR-15` ne s'applique pas a cette sortie.**

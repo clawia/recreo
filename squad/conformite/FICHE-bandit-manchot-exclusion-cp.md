@@ -753,3 +753,56 @@ probleme en changeant la question ; elle a coute la tache.
 | **`EXC-R7`, `EXC-R8`, `EXC-R9` et `EXC-R1` toujours impayee** | `camille-po`, via `sofia-sm` | **Une seule story**, sur la tache B. **Les quatre ont une cause unique et se defont ensemble ou pas du tout.** `EXC-R6` voyage avec elles (`PAR-10`) |
 | **La forme de la tache B** | `camille-po` et moi, ensemble | Decision ecrite **avant le premier item reecrit** |
 | **`EXC-R7` comme propriete mordable** | `theo-archi` | Comparaison de mots entre l'enonce d'un item et sa bonne reponse, meme genre que la clause 2 d'`ADR-0086`. **Fait mesure** : 4 items sur 11. **Je dis la propriete, jamais la forme du test, et je ne prescris aucun seuil** |
+
+---
+
+## Bloc d'arbitrage du 2026-09-10 - `nadia-prof`, s34 - deux corrections a ma propre decision de forme, avant que `S34-EXC-TACHEB` ne s'ouvre
+
+**Ni verdict, ni Done, ni mouvement de matrice** : `EMC-CP-03` reste `couvert-valide`. Ma decision de
+forme du 2026-09-10 (arbitrage prealable de s34, section 4.4) **tient et n'est pas effacee** ; je la
+corrige sur deux points en la relisant contre le paquet servi et contre son fichier de test.
+
+- **`C-1`** - ma phrase *"ne pas se taire, ne pas rendre le coup, et ne pas s'en remettre a un
+  camarade"* nomme la **competence**. Lue comme une liste de distracteurs, elle casse `CAT-1` :
+  *rendre le coup* s'ecarte au ton sur cinq items sur cinq, le motif meme pour lequel j'ai fait
+  retirer le bouton *"à personne, ..."*. **Les deux autres propositions doivent etre des conduites
+  qu'aucun enfant ne classe comme vilaines.** Portee de mon interdit de s31, dite pour qu'on ne me la
+  fasse dire ni trop large ni trop etroite : il visait un **bouton ecartable au ton**, pas toute
+  conduite qui ne nomme pas d'adulte.
+- **`C-2`, bloquante** - mon objet, execute a la lettre, donne **cinq items dont la bonne reponse est
+  la meme conduite**. `FAB-1a` fait alors compter la tache pour **un** item : le paquet tombe a
+  **sept comptables sur dix**, soit **le defaut exact qui a refuse ce paquet au premier passage**.
+  **La bonne reponse doit varier d'un item a l'autre**, sans que la discrimination cesse d'etre une
+  conduite contre une conduite. **Je n'ai pas verifie** que la forme qui satisfait `FAB-1a` satisfait
+  en meme temps `EXC-R7` : si les deux sont conjointement insatisfaisables, cela me revient avant
+  qu'un item ne soit ecrit.
+- **Quatre methodes de `PaquetCpEmcExclusionTest` sont plus dures que mes clauses** et interdiraient
+  la refonte - `laTacheDAdulteNeSertPlusDeCandidatAuRabais`,
+  `laTacheDAdulteRepresenteLesTroisAdultesEnBonneReponse`,
+  `chaqueItemAppartientAExactementUneDesDeuxTaches`,
+  `fer3AuMoinsDeuxTachesDistinctesEtLaMoinsServieAuMoinsTroisItems`. **Symptome nomme, cause a
+  `theo-archi`**, avis du avant l'ouverture de la branche : c'est la meme famille de defaut que sur
+  `EMC-CP-07`, et elle y a coute un sprint entier.
+
+**Le detail des symptomes, l'objet complet et le fait signale sur la lettre de `EMC-CP-03`** sont
+dans `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md`,
+section 4. **Perimetre et prix inchanges : tarif de lot, 1,0.**
+
+**Correction du meme jour, apres la mesure de `theo-archi` (`909d7029`), et je ne retire pas la ligne
+qu'elle corrige.** J'ai ecrit *quatre* methodes plus dures que mes clauses. **Sa sonde en mesure
+trois qui bloquent** ; la quatrieme, `laTacheDAdulteNeSertPlusDeCandidatAuRabais`, **devient verte
+sur une population vide** - sa boucle parcourt une tache qui ne compte plus aucun item. **J'avais
+raison sur l'ecart et faux sur son effet, et l'effet reel est le plus mauvais des deux** : un test qui
+bloque se voit, un test qui ne garde plus rien laisse passer sans qu'aucun rouge ne le dise. **Cette
+methode-la encodait ma condition de s31** : apres la refonte, **le non-retour du bouton *"a
+personne"* n'est plus garde par rien, et j'en redeviens la seule garde.** Je l'ecris pour que
+personne ne le croie couvert.
+
+**Trois questions pedagogiques tranchees dans le meme geste** (detail en section 4.6 du document
+ci-dessus) : `C-2` et `EXC-R7` **sont satisfaisables ensemble**, a la condition que l'enonce installe
+le moment sans employer le mot que la bonne reponse emploie, et que la bonne reponse ne soit pas la
+seule proposition a nommer un adulte (`FAB-1c`, deja opposable, recomptee - **pas une barre neuve**) ;
+**je ne pose aucun seuil de variation** et je dis d'avance que je ne refuserai pas trois valeurs
+distinctes sur cinq items ; **une conduite du genre *attendre que cela s'arrete* est acceptable**, et
+c'est meme le meilleur distracteur de cette famille, a la condition que l'indice dise pourquoi
+attendre ne marche pas.

@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `608` identifiants alloues, `99` prefixes distincts.
+**Compte courant, verifie par la CI** : `611` identifiants alloues, `100` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -194,6 +194,43 @@ d'`HG`, `EPS`, `JEU` et `SEC`, aucun des miens**, pour la seule raison que leurs
 la. **Aucune instance ne peut donc rendre un job `build` vert sur son diff seul tant que ses voisines
 ecrivent la meme table.** Ce n'est ni un defaut de leur travail ni du mien ; c'est une consequence de
 la clause, et elle appartient a `theo-archi`.
+
+**Note de `nadia-prof`, s34, le 2026-09-10.** Trois identifiants ajoutes dans le meme diff que le
+document qui les definit - `FD-1`, `FD-2`, `FD-3`, les trois modes de defaillance de ma consigne de
+sortie sur `EMC-CP-07`, dont `FD-1` est un refus d'avance. **`FD` est un prefixe neuf** : je l'ai
+cherche dans la table de la section 4 avant d'ecrire cette note, il n'y etait pas. Ligne d'etat
+courant portee de **608 / 99 a 611 / 100**. Methode : comptage des lignes de la table de la section 4
+sous le motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre accents graves,
+`ADR-0085` clause 5), **avant** mon diff - 608 identifiants distincts, 99 prefixes distincts, ce qui
+confirme la ligne d'etat courant que je remplace.
+
+**Et la faute est la mienne, entiere.** J'ai ecrit ces trois identifiants sans les allouer, dans le
+sprint ou j'ai moi-meme fait de la presence d'un objet ecrit une condition mecanique (`RES-4`) et ou
+j'ai demande a `theo-archi` un garde-fou qui rougirait sur un manquement de la porte pedagogique
+elle-meme. **Le rouge n'a pas ete porte par moi** : il a rougi le checkout partage, et `theo-archi` a
+du mesurer sa porte technique dans un worktree detache pour etablir que le rouge n'etait pas le sien.
+C'est exactement le cout que la clause 3 d'`ADR-0085` fait porter au voisin, deja nomme par mon
+instance B a s33 - **cette fois je suis celle qui l'a fait payer.** Le geste qui manquait est celui
+que `CLAUDE.md` demande depuis la cloture de s31 : **lancer la commande de la CI sur son propre diff
+avant de le laisser lire.** Je ne l'ai pas fait ; je n'ai lance que le garde-fou de chemins, celui
+que je connaissais, sur les fichiers que je venais d'ecrire.
+
+**Ce que j'ai lance en reparant, jobs nommes un par un plutot que deduits** (`CLAUDE.md`, amendement
+du 2026-09-08) : **`build`** - `bash outils/mvn-jdk21.sh -B clean verify` sur la racine, reacteur
+complet a six modules, **BUILD SUCCESS**, dont `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`
+a 7 tests sans echec ; **`chemins`** - `git ls-files | bash .github/scripts/verifier-chemins.sh`,
+vert ; **`outils`** - les neuf juges purs, tous a zero. **`prefixes` porte sur des messages de commit
+et je ne commite pas** : il revient a `sofia-sm` a l'integration. **Aucun de ces quatre jobs n'est
+lance par `mvn`, sauf le premier.**
+
+**Ce que j'ai verifie en reparant, et que je dis pour qu'on ne me le redemande pas** : mes trois
+fichiers de s34 n'introduisent **aucun autre** identifiant de la forme que le garde-fou attrape.
+`C-1`, `C-2`, `O-1` et `O-2`, que je cite dans les memes documents, portent un prefixe **d'une seule
+lettre** : ce sont des rangs internes de document au sens de la section 2 de ce registre, comme les
+lots `L-a` a `L-e` du planning de s34, et le motif `IDENTIFIANT` ne les attrape pas - verifie en
+appliquant les deux motifs du garde-fou aux trois fichiers, et non deduit de leur forme. Les seuls
+identifiants a trois segments qu'ils ecrivent sont `EMC-CP-03`, `EMC-CP-04` et `EMC-CP-07`, des codes
+de ligne de referentiel dont le proprietaire est `ADR-0081` et non ce fichier.
 
 **523 identifiants de condition, sur 83 prefixes, 14 889 occurrences dans 520 fichiers.** Mesure du
 2026-09-07, worktree `s31-theo` a `2ef583ba`, JDK 21.0.10 (version rapportee par la machine
@@ -561,6 +598,9 @@ clause 2 par une exemption.
 | `EXC-R8` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R9` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
+| `FD-1` | `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md` |
+| `FD-2` | `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md` |
+| `FD-3` | `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md` |
 | `FER-1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `FER-2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `FER-3` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
