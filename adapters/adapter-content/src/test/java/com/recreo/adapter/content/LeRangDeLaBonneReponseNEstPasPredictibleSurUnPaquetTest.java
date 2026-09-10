@@ -714,7 +714,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " trois propositions de chaque item. Mesure du 2026-09-09 sur le paquet servi"
                     + " apres S33-EPS-JEU (les items 7 et 8, jusque-la binaires, portent desormais"
                     + " trois propositions) : aucune des 33 propositions ne commence par un"
-                    + " chiffre"));
+                    + " chiffre"),
+            // S34-EPS-CORPS-EFFORT : second lot d'education physique et sportive CP.
+            Map.entry("cp-eps-corps-effort",
+            "22 items sur 22 portent deux distracteurs (trois propositions), mais aucune des 66"
+                    + " propositions n'est numerique : ce sont des effets de l'effort sur le corps,"
+                    + " des regles d'echauffement, d'hydratation ou de recuperation, ou des"
+                    + " consequences en texte libre, valeurDe rend null sur les trois propositions"
+                    + " de chaque item. Mesure du 2026-09-10 sur le paquet servi : aucune des 66"
+                    + " propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

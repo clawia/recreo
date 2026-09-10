@@ -414,3 +414,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-eps-regles-jeu-collectif
     nombreDeManches: 10
+  - id: bandit-manchot-corps-effort-eps-cp
+    titre: "Le corps et l'effort"
+    consigne: "Lis bien, puis dis ce que l'effort fait au corps, ou quelle règle l'entoure."
+    mecanique: bandit-manchot
+    paquet: cp-eps-corps-effort
+    nombreDeManches: 10
