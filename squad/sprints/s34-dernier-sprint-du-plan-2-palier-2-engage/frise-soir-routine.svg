@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Palier 2, designation (ADR-0080). Frise de la routine du soir, pour QLM-CP-14 (second des
+     deux dessins). Quatre evenements sur trois colonnes : diner, puis brosse-a-dents ET pyjama
+     empiles a la meme place de l'axe (la relation "en meme temps"), puis coucher. Voir
+     proposition-ines-palier2-designation.md pour l'identifiant, le libelle positionnel et le
+     CadreDeZone en pourcentage de chacune.
+     Meme plafond, meme rapport, meme regime DES-1 a DES-7 que frise-journee-ecole.svg. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" role="img"
+     fill="none" stroke="#1c2733" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- L'axe du temps, oriente vers la droite (fleche). -->
+  <line x1="15" y1="256" x2="615" y2="256"/>
+  <path d="M600,244 L622,256 L600,268" stroke-width="3"/>
+
+  <!-- Trois graduations : diner (x=115), le couple brosse-a-dents/pyjama (x=326, une seule
+       colonne de temps pour les deux), coucher (x=538). -->
+  <line x1="115" y1="246" x2="115" y2="266"/>
+  <line x1="326" y1="246" x2="326" y2="266"/>
+  <line x1="538" y1="246" x2="538" y2="266"/>
+
+  <!-- Zone "diner" : x=5 y=10 largeur=26 hauteur=75, centree en x=115. Un bol creux (rebord
+       ovale), pour se distinguer du bol plat du petit-dejeuner de l'autre frise. -->
+  <g transform="translate(115,256)">
+    <path d="M-35,-55 A35,20 0 0 0 35,-55"/>
+    <ellipse cx="0" cy="-55" rx="35" ry="8"/>
+  </g>
+
+  <!-- Zone "brosse-dents" : x=38 y=10 largeur=26 hauteur=40, centree en x=326, meme bord haut que
+       "diner" et "coucher" (y=10) pour l'ordre de lecture (ZON-11 - voir la note de proposition,
+       section 5). Une brosse a dents couchee : manche et tete a poils. -->
+  <g transform="translate(326,256)">
+    <line x1="-45" y1="-100" x2="8" y2="-100"/>
+    <rect x="8" y="-108" width="20" height="16"/>
+    <line x1="12" y1="-108" x2="12" y2="-116"/>
+    <line x1="18" y1="-108" x2="18" y2="-118"/>
+    <line x1="24" y1="-108" x2="24" y2="-116"/>
+  </g>
+
+  <!-- Zone "pyjama" : x=38 y=52 largeur=26 hauteur=33, centree en x=326, dans la moitie basse de
+       la colonne, juste sous la brosse a dents avec un intervalle de 2% (aucun chevauchement,
+       ZON-13) : les deux evenements de la meme colonne partagent la meme place sur l'axe, l'un
+       au-dessus de l'autre (la relation "en meme temps"). Silhouette d'un vetement de nuit. -->
+  <g transform="translate(326,256)">
+    <path d="M-15,-70 Q0,-80 15,-70 L15,-55 L28,-50 L28,-35 L15,-40 L15,-15
+             L-15,-15 L-15,-40 L-28,-35 L-28,-50 L-15,-55 Z"/>
+  </g>
+
+  <!-- Zone "coucher" : x=71 y=10 largeur=26 hauteur=75, centree en x=538. Un croissant de lune :
+       deux arcs de rayons differents (50 et 36) entre les deux memes points, seule construction
+       qui rend un croissant ferme plutot qu'un arc ouvert - verifie au rendu (mesure du
+       2026-09-10, voir la note de proposition). -->
+  <g transform="translate(538,256)">
+    <path d="M0,-90 A50,50 0 1 0 0,-20 A36,36 0 0 1 0,-90 Z"/>
+  </g>
+</svg>

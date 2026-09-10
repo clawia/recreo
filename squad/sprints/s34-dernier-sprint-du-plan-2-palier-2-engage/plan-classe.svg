@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Palier 2, designation (ADR-0080). Plan de classe vu de dessus, pour QLM-CP-11.
+     Six zones : tableau, bureau, fenetre, armoire, porte, coin-lecture (voir
+     proposition-ines-palier2-designation.md pour l'identifiant, le libelle positionnel et le
+     CadreDeZone en pourcentage de chacune - les six rectangles ci-dessous sont dessines aux memes
+     positions que les zones proposees, pour que le contenu et le dessin s'accordent).
+     ZON-12 : vue de dessus, aucune perspective - chaque meuble est trace dans sa silhouette au sol.
+     DES-1 a DES-7 (palier 1, contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md) reconduites,
+     avec le plafond de hauteur de palier 2 (352 px, .image-designation, ADR-0080 section 8) a la
+     place de celui de palier 1 (176 px, .image-item) : viewBox et width/height en unites
+     utilisateur au meme rapport (ici 1:1), hauteur declaree a 352 px (le plafond, pas au-dela),
+     trait en unites utilisateur (aucun vector-effect), teinte en clair #1c2733, aucun element de
+     texte (DES-7), aucune couleur ne porte d'information (fill="none" partout, ZON-5/QUA-5). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="352" height="352" role="img"
+     fill="none" stroke="#1c2733" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- Murs de la classe : le cadre du plan. -->
+  <rect x="3" y="3" width="94" height="94" stroke-width="1.5"/>
+
+  <!-- Zone "tableau" : x=28 y=6 largeur=34 hauteur=15. Tableau mural, avec sa tablette a craie. -->
+  <rect x="30" y="8" width="30" height="7" stroke-width="1"/>
+  <line x1="30" y1="17" x2="60" y2="17" stroke-width="0.8"/>
+
+  <!-- Zone "bureau" : x=15 y=26 largeur=28 hauteur=20. Bureau du maitre face au tableau, avec sa
+       chaise. -->
+  <rect x="17" y="28" width="24" height="12" stroke-width="1"/>
+  <rect x="25" y="41" width="8" height="6" stroke-width="0.8"/>
+
+  <!-- Zone "fenetre" : x=68 y=26 largeur=18 hauteur=40. Mur de droite perce d'une fenetre : un
+       trait interieur parallele au mur (le verre) entre deux montants perpendiculaires. -->
+  <line x1="94" y1="26" x2="100" y2="26" stroke-width="1"/>
+  <line x1="94" y1="66" x2="100" y2="66" stroke-width="1"/>
+  <line x1="94" y1="26" x2="94" y2="66" stroke-width="0.8"/>
+
+  <!-- Zone "armoire" : x=6 y=55 largeur=16 hauteur=22. Armoire a deux portes contre le mur de
+       gauche : le caisson et la ligne mediane des deux vantaux. -->
+  <rect x="6" y="55" width="16" height="22" stroke-width="1"/>
+  <line x1="14" y1="55" x2="14" y2="77" stroke-width="0.8"/>
+
+  <!-- Zone "porte" : x=8 y=80 largeur=18 hauteur=16. Porte ouverte sur le mur du bas : le vantail
+       et son arc de debattement, symbole de plan classique. -->
+  <path d="M8,97 L8,80" stroke-width="1"/>
+  <path d="M8,80 A17,17 0 0 1 25,97" stroke-width="0.8"/>
+
+  <!-- Zone "coin-lecture" : x=58 y=76 largeur=34 hauteur=20. Tapis et petite pile de livres. -->
+  <ellipse cx="75" cy="86" rx="15" ry="8" stroke-width="1"/>
+  <rect x="64" y="78" width="10" height="3" stroke-width="0.8"/>
+  <rect x="65" y="75" width="8" height="3" stroke-width="0.8"/>
+  <rect x="66" y="72" width="6" height="3" stroke-width="0.8"/>
+</svg>
