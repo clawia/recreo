@@ -72,6 +72,29 @@ lignesDeReferentiel: ["LVE-CM1-04", "LVE-CM1-07"]
 # neuve est distincte des cinq existantes et des quatre autres items neufs (FAB-1a). Aucun item ne
 # mentionne la France (BIA-1).
 #
+# S34-ANG-CORR (2026-09-10, marc-dev, docs/backlog/backlog.md). Leve les quatre reserves non
+# bloquantes de LVE-CM1-07 (deja couvert-valide, aucun statut de matrice ne change) confirmees par
+# nadia-prof le 2026-09-09 :
+#
+# ANG-R3 : sur les items du bus a imperiale et de Halloween, les distracteurs n'etaient pas
+# ecartables par la seule lecture - ils le sont devenus par accumulation d'indices dans l'enonce
+# lui-meme. Le bus a imperiale ne decrit plus l'objet (couleur, nombre d'etages) et propose deux
+# autres transports londoniens reels (le metro, le taxi noir) ; Halloween propose deux autres fetes
+# americaines d'automne reelles (Thanksgiving, le Labor Day).
+#
+# ANG-R4 : la question de Halloween etait coupee par une incise de 14 mots entre le sujet et le
+# verbe. Reecrite sur le patron de l'item de Thanksgiving ("Quelle fete traditionnelle, celebree fin
+# novembre aux Etats-Unis, reunit la famille... ?") : une courte apposition, puis le verbe.
+#
+# ANG-R5 : l'indice de Londres attribuait a la capitale le nom d'une grande roue (le London Eye),
+# qui n'est pas son nom. Remplace par un fait propre a la ville elle-meme.
+#
+# ANG-R6 : sur le trajet vers l'ecole americaine, "a pied" reste la pratique concurrente reelle des
+# zones les plus denses ; "en metro", ecartable d'emblee dans ce contexte, est remplace par "en
+# voiture avec un parent", une autre pratique reelle et frequente.
+#
+# Ce qui ne bouge pas : les dix bonnes reponses, les cinq items confirmes bons au reaudit du
+# 2026-09-08, FER-1 et FER-2 (dix items sur la ligne).
 items:
   - enonce: "Comment dit-on « maison » en anglais ?"
     bonneReponse: "house"
@@ -151,7 +174,7 @@ items:
   - enonce: "Quelle est la capitale du Royaume-Uni ?"
     bonneReponse: "Londres"
     distracteurs: ["Berlin", "Madrid"]
-    indice: "C'est aussi le nom d'une grande roue célèbre au bord de la Tamise."
+    indice: "C'est la plus grande ville du Royaume-Uni, traversée par la Tamise."  # ANG-R5 (S34-ANG-CORR) : l'indice ne cite plus le London Eye, une grande roue, comme si elle portait le nom de la capitale
     ligneDeReferentiel: "LVE-CM1-07"
   - enonce: "Quel monument célèbre, situé à Londres, sert aussi d'horloge ?"
     bonneReponse: "Big Ben"
@@ -178,19 +201,19 @@ items:
     distracteurs: ["des vêtements de sport", "aucun vêtement particulier"]
     indice: "Beaucoup d'écoles imposent la même tenue à tous les élèves."
     ligneDeReferentiel: "LVE-CM1-07"
-  - enonce: "Quel véhicule rouge à deux étages circule dans les rues de Londres ?"
+  - enonce: "Quel moyen de transport est un symbole touristique de Londres ?"  # ANG-R3 (S34-ANG-CORR) : l'énoncé ne décrit plus l'objet (couleur, nombre d'étages)
     bonneReponse: "le bus à impériale"
-    distracteurs: ["le tramway", "le métro souterrain"]
+    distracteurs: ["le métro", "le taxi noir"]  # ANG-R3 (S34-ANG-CORR) : deux autres transports londoniens réels
     indice: "Il est célèbre par sa couleur rouge et ses deux niveaux."
     ligneDeReferentiel: "LVE-CM1-07"
-  - enonce: "Quelle fête, célébrée le 31 octobre aux États-Unis, où les enfants se déguisent et récoltent des bonbons, est très populaire ?"
+  - enonce: "Quelle fête américaine, célébrée le 31 octobre, fait déguiser les enfants pour récolter des bonbons ?"  # ANG-R4 (S34-ANG-CORR) : la question principale n'est plus coupée par une incise, sur le patron de l'item "Quelle fête traditionnelle, célébrée fin novembre aux États-Unis, réunit la famille autour d'un grand repas ?"
     bonneReponse: "Halloween"
-    distracteurs: ["Noël", "le Nouvel An"]
+    distracteurs: ["Thanksgiving", "le Labor Day"]  # ANG-R3 (S34-ANG-CORR) : deux autres fêtes américaines d'automne réelles
     indice: "Les enfants frappent aux portes en réclamant des friandises."
     ligneDeReferentiel: "LVE-CM1-07"
   - enonce: "Aux États-Unis, dans de nombreuses régions, comment la plupart des élèves se rendent-ils à l'école ?"
     bonneReponse: "en bus scolaire jaune"
-    distracteurs: ["à pied", "en métro"]
+    distracteurs: ["à pied", "en voiture avec un parent"]  # ANG-R6 (S34-ANG-CORR) : "à pied" reste la pratique concurrente réelle des zones denses ; "en métro", écartable d'emblée, est remplacé par une autre pratique réelle
     indice: "Ce véhicule est reconnaissable à sa couleur vive."
     ligneDeReferentiel: "LVE-CM1-07"
   - enonce: "Quel monument, une grande statue tenant une torche, se trouve sur une île à l'entrée du port de New York ?"
