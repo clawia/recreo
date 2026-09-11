@@ -30,31 +30,41 @@ import static org.assertj.core.api.Assertions.assertThat;
  * conformement a la lecture de {@code EMC-3} que nadia-prof a ecrite dans ce meme verdict :
  * "interdiction portant sur les propositions, pas prescription portant sur la bonne reponse".</p>
  *
- * <p><b>Deux taches distinctes (FER-3)</b> : classer une situation comme moquerie repetee ou
- * accident isole, et identifier l'adulte a qui en parler selon le lieu decrit - tache inchangee sur
- * le fond, seule sa troisieme proposition au rabais ("a personne, ...") est retiree.</p>
+ * <p><b>S34-EXC-TACHEB (2026-09-10, {@code marc-dev}) : la tache B est refondue, et son critere
+ * d'appartenance change de nature.</b> Jusqu'a ce jour, un item entrait dans la tache B si sa bonne
+ * reponse etait l'un de trois adultes nommes d'avance ({@code ADULTES_VALIDES}). {@code theo-archi}
+ * a mesure (avis du 2026-09-10, {@code squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/
+ * avis-theo-quatre-tests-de-cp-emc-exclusion.md}) que ce critere litteral rendait quatre methodes
+ * plus dures que les clauses qu'elles pretendaient mesurer, dont une qui <b>devient verte sur une
+ * population vide</b> des que la tache B ne porte plus ces trois valeurs - un faux vert par
+ * ecartement silencieux, la meme famille que celle qu'{@code ADR-0088} a deja payee. <b>La tache B
+ * se definit desormais comme le complement de la tache A</b>, elle-meme identifiee par la forme de
+ * son enonce ("Qu'est-ce que c'est ?"), exactement la forme employee ce meme jour sur
+ * {@code cp-emc-regle-souhait-loi} ({@code PaquetCpEmcRegleSouhaitLoiTest}, {@code S34-EMCCP07}) :
+ * deux signaux independants - la forme de l'enonce pour l'appartenance, la bonne reponse pour ce
+ * qu'une clause y verifie - au lieu d'un seul, qui rendait la verification tautologique.</p>
  *
- * <p><b>Correction du 2026-09-08 (theo-archi, s32) : la tache d'un item se lit desormais dans sa
- * bonne reponse, et non dans une phrase de son enonce.</b> Jusqu'a ce jour, un item appartenait a la
- * tache d'identification s'il contenait la sous-chaine {@code "À qui"}. Ce critere a fait de ce
- * fichier le <b>seul obstacle technique</b> a {@code EXC-R5}, reserve ouverte par nadia-prof le
- * 2026-09-08 : elle y demande precisement de reecrire cette question - <i>"que la question le dise
- * (quel adulte est la a ce moment ?) plutot que 'a qui doit-il en parler ?'"</i> -, et la reecriture
- * faisait basculer les cinq items de la tache B dans la tache A. <b>Une identite de tache accrochee
- * a la formulation de l'ecran est le defaut qu'{@code ADR-0075} a nomme</b> ; la bonne reponse, elle,
- * est le meme objet avant et apres la reecriture que la reserve demande.
+ * <p><b>Objet de la tache B refondue</b> (arbitrage de {@code nadia-prof}, {@code
+ * arbitrage-emccp07-nadia.md}, sections 4 a 4.6) : devant une moquerie qui se repete, l'enfant
+ * reconnait, parmi trois conduites qu'un enfant de son age a reellement, celle qui consiste a en
+ * parler a un adulte - jamais laquelle des trois adultes de l'ecole choisir. La bonne reponse varie
+ * d'un item a l'autre ({@code C-2}, {@code FAB-1a}) pour ne jamais devenir invariante ; les deux
+ * autres propositions sont des conduites neutres, jamais une conduite vilaine qui ferait gagner
+ * l'item au ton ({@code C-1}, {@code CAT-1}).</p>
  *
- * <p><b>Ce que le nouveau critere aurait pu perdre, et ou il est repris.</b> Classer sur la bonne
- * reponse rend tautologique <i>"chaque bonne reponse est l'une des valeurs connues"</i> a l'interieur
- * de chaque tache, et surtout il laisserait un item dont la reponse n'est dans aucune des deux
- * listes <b>hors des deux taches, donc invisible</b> - le faux vert par ecartement silencieux
- * qu'{@code ADR-0088} vient de payer sur cinq garde-fous de rendu. Le partage est donc rendu
- * <b>exhaustif et verifie</b> par {@link #chaqueItemAppartientAExactementUneDesDeuxTaches()} : un
- * item hors des deux listes est rouge, et il nomme sa bonne reponse.
+ * <p><b>Ce que le partage par complement garde, et ce qu'il ne pretend plus garder.</b> Il rend
+ * l'exhaustivite du partage vraie par construction : aucun item ne peut plus tomber hors des deux
+ * taches, quel que soit ce que la tache B ecrit. Ce que
+ * {@code chaqueItemAppartientAExactementUneDesDeuxTaches()} verifiait de reel - qu'aucune bonne
+ * reponse de la tache B ne se replie sur un second classement - est repris par
+ * {@link #aucuneBonneReponseDeLaTacheBNEstUneCategorieDeClassement()}, qui mord reellement puisque
+ * son critere (la bonne reponse) est independant de celui qui definit la tache (l'enonce).</p>
  *
  * <p><b>Ce que ce test ne juge pas.</b> {@code EMC-1}, {@code EMC-8}, {@code EMC-10} et
  * {@code CAT-1} demandent une lecture semantique, non gardees ici. {@code FAB-1} est verifiee depot
- * entier par {@code LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest} (ADR-0086).</p>
+ * entier par {@code LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest} (ADR-0086). Le degre de
+ * variation de la bonne reponse de la tache B au-dela de "pas unique" reste la garde de
+ * {@code nadia-prof}, en jouant une partie complete (elle l'ecrit elle-meme, section 4.6).</p>
  */
 class PaquetCpEmcExclusionTest {
 
@@ -70,9 +80,12 @@ class PaquetCpEmcExclusionTest {
     private static final Set<String> CLASSEMENTS_VALIDES = Set.of(
             "une moquerie qui se répète", "un accident isolé");
 
-    /** Tache d'identification : les seuls adultes valides selon le lieu decrit. */
-    private static final Set<String> ADULTES_VALIDES = Set.of(
-            "à un surveillant de la cour", "à sa maîtresse", "à l'adulte qui surveille la cantine");
+    /**
+     * Le bouton au rabais que nadia-prof a fait retirer de la tache B a s31 ("a personne, ...").
+     * Garde-fou de regression derive du paquet entier (theo-archi, section 3, point 4 de son avis),
+     * insensible a toute reecriture ulterieure de la tache B.
+     */
+    private static final String BOUTON_AU_RABAIS = "à personne";
 
     private static List<Question> items() {
         ContentSource contenu = new YamlContentPackLoader("").chargerPaquet(PAQUET);
@@ -87,22 +100,19 @@ class PaquetCpEmcExclusionTest {
         return items;
     }
 
-    /** Tache B : un item dont la bonne reponse nomme l'adulte a qui s'adresser. */
-    private static boolean estDeTacheAdulte(Question item) {
-        return ADULTES_VALIDES.contains(item.bonneReponse());
-    }
-
-    /** Tache A : un item dont la bonne reponse est un classement de la situation. */
+    /** Tache A : un item dont l'enonce pose la question de classement. */
     private static boolean estDeTacheClassement(Question item) {
-        return CLASSEMENTS_VALIDES.contains(item.bonneReponse());
+        return item.enonce().contains("Qu'est-ce que c'est");
     }
 
     private static List<Question> itemsDeClassement() {
         return items().stream().filter(PaquetCpEmcExclusionTest::estDeTacheClassement).toList();
     }
 
-    private static List<Question> itemsDAdulte() {
-        return items().stream().filter(PaquetCpEmcExclusionTest::estDeTacheAdulte).toList();
+    /** Tache B : le complement de la tache A. Exhaustif par construction. */
+    private static List<Question> itemsDeLaTacheB() {
+        return items().stream()
+                .filter(item -> !estDeTacheClassement(item)).toList();
     }
 
     /** FER-2 : au moins dix items servent cette ligne (onze). */
@@ -120,34 +130,30 @@ class PaquetCpEmcExclusionTest {
     @Test
     void fer3AuMoinsDeuxTachesDistinctesEtLaMoinsServieAuMoinsTroisItems() {
         int classement = itemsDeClassement().size();
-        int adulte = itemsDAdulte().size();
+        int tacheB = itemsDeLaTacheB().size();
 
         assertThat(classement).as("la tache de classement est servie").isGreaterThan(0);
-        assertThat(adulte).as("la tache d'identification de l'adulte est servie").isGreaterThan(0);
-        assertThat(Math.min(classement, adulte))
+        assertThat(tacheB).as("la tache B est servie").isGreaterThan(0);
+        assertThat(Math.min(classement, tacheB))
                 .as("FER-3 : la tache la moins servie porte au moins %d items", MINIMUM_PAR_TACHE)
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
     }
 
     /**
-     * <b>Le partage des taches est exhaustif, et c'est ce qui remplace le marqueur d'enonce.</b> La
-     * tache d'un item se lit dans sa bonne reponse ; un item dont la reponse n'est ni un classement
-     * ni un adulte n'appartient a aucune des deux taches, et il serait alors invisible de tous les
-     * comptages de ce fichier. Ce test est ce qui l'empeche : il est rouge, et il nomme la reponse
-     * qui n'entre nulle part.
+     * Ce que {@code chaqueItemAppartientAExactementUneDesDeuxTaches()} verifiait de reel, sous un
+     * critere d'appartenance devenu independant de la bonne reponse (theo-archi, section 3, point 3
+     * de son avis) : aucune bonne reponse de la tache B ne se replie sur un second classement.
      */
     @Test
-    void chaqueItemAppartientAExactementUneDesDeuxTaches() {
-        for (Question item : items()) {
-            assertThat(estDeTacheClassement(item) ^ estDeTacheAdulte(item))
-                    .as("item %s : sa bonne reponse \"%s\" n'entre dans exactement une des deux"
-                            + " taches - un item hors des deux serait compte par aucune",
-                            item.id().value(), item.bonneReponse())
-                    .isTrue();
+    void aucuneBonneReponseDeLaTacheBNEstUneCategorieDeClassement() {
+        List<Question> tacheB = itemsDeLaTacheB();
+        assertThat(tacheB).as("la tache B est servie").isNotEmpty();
+        for (Question item : tacheB) {
+            assertThat(item.bonneReponse())
+                    .as("item %s : la tache B ne reclasse pas la situation, elle porte une"
+                            + " conduite", item.id().value())
+                    .isNotIn(CLASSEMENTS_VALIDES);
         }
-        assertThat(itemsDeClassement().size() + itemsDAdulte().size())
-                .as("les deux taches recouvrent le paquet entier")
-                .isEqualTo(items().size());
     }
 
     /**
@@ -175,36 +181,38 @@ class PaquetCpEmcExclusionTest {
     }
 
     /**
-     * CAT-1/PLA-1, garde-fou de regression : la troisieme proposition au rabais ("a personne, ...")
-     * que nadia-prof a fait retirer de la tache d'identification n'y reapparait pas, et chaque
-     * bonne reponse nomme toujours un adulte reel selon le lieu.
+     * FAB-1a/C-2, encode sans seuil invente (theo-archi, section 3, point 5 ; nadia-prof, section
+     * 4.6, Q2 : "je ne pose aucun seuil, [...] le minimum encodable reste [...] la tache B ne porte
+     * pas une bonne reponse unique"). Tout degre de variation au-dela reste la garde de
+     * {@code nadia-prof}, en jouant une partie complete.
      */
     @Test
-    void laTacheDAdulteNeSertPlusDeCandidatAuRabais() {
-        List<Question> adulte = itemsDAdulte();
-
-        for (Question item : adulte) {
-            assertThat(item.distracteurs())
-                    .as("item %s : aucun distracteur n'est le bouton au rabais \"a personne\" que"
-                            + " nadia-prof a fait retirer", item.id().value())
-                    .allMatch(ADULTES_VALIDES::contains);
-        }
-    }
-
-    /**
-     * FER-3, condition de discrimination reelle : les deux categories de la tache de classement
-     * different sur au moins trois items chacune (deja verifie ci-dessus), et les trois adultes de
-     * la tache d'identification sont tous les trois representes en bonne reponse au moins une fois.
-     */
-    @Test
-    void laTacheDAdulteRepresenteLesTroisAdultesEnBonneReponse() {
-        Set<String> reponses = itemsDAdulte().stream()
+    void laTacheBNePorteJamaisUneBonneReponseUnique() {
+        Set<String> reponses = itemsDeLaTacheB().stream()
                 .map(Question::bonneReponse)
                 .collect(Collectors.toSet());
 
         assertThat(reponses)
-                .as("les trois adultes valides doivent tous etre representes en bonne reponse")
-                .containsExactlyInAnyOrderElementsOf(ADULTES_VALIDES);
+                .as("FAB-1a/C-2 : la tache B ne porte pas une seule bonne reponse sur tous ses items")
+                .hasSizeGreaterThan(1);
+    }
+
+    /**
+     * CAT-1/PLA-1, garde-fou de regression derive du paquet entier plutot que d'une tache (theo-
+     * archi, section 3, point 4 de son avis) : la proposition au rabais ("a personne, ...") que
+     * nadia-prof a fait retirer a s31 ne reapparait dans aucune proposition, de aucune tache, quelle
+     * que soit sa forme future.
+     */
+    @Test
+    void laPropositionAuRabaisAPersonneNApparaitDansAucuneTache() {
+        for (Question item : items()) {
+            List<String> propositions = new ArrayList<>(item.distracteurs());
+            propositions.add(item.bonneReponse());
+            assertThat(propositions)
+                    .as("item %s : aucune proposition n'est le bouton au rabais \"%s\" que"
+                            + " nadia-prof a fait retirer", item.id().value(), BOUTON_AU_RABAIS)
+                    .noneMatch(proposition -> proposition.startsWith(BOUTON_AU_RABAIS));
+        }
     }
 
     /** Chaque item propose exactement deux distracteurs (une bonne reponse, trois choix au total). */

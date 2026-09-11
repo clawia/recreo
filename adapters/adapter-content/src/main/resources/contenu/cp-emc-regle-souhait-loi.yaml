@@ -119,6 +119,32 @@ lignesDeReferentiel: ["EMC-CP-07"]
 # 4, 5 et 6 restent donc au comportement refuse le 2026-09-08, dans l'attente d'une decision
 # ecrite sur laquelle des deux clauses (FER-1 tel que code, ou BIN-1) cede.
 #
+# Cinquieme passage (2026-09-10, marc-dev, S34-EMCCP07). Sortie retenue par nadia-prof : (a),
+# l'item du casque a velo quitte la tache de classement pour la tache de portee (squad/sprints/
+# s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md, sections 2 et 3).
+#
+# EMC-11 PAYE : "une loi" est retiree des propositions des anciens items 5 et 6 (desormais items 4
+# et 5 de la tache de classement) ; les six items de classement redeviennent tous binaires, comme
+# les items 1, 2 et 3.
+#
+# BIN-1 tenue sur le paquet apres le mouvement d'item : tache de classement 5 items (tous
+# binaires), tache de portee 6 items (tous ternaires) - 5 binaires sur 11, au plafond exact d'un
+# item sur deux. Mesure sur la partie (dix manches, tirage sans remise sur onze items) : aucune
+# partie ne peut etre majoritairement binaire, ce qui n'est pas le cas de la sortie (b) qu'elle
+# ecarte (arbitrage de sortie, section 2.1).
+#
+# L'item transpose (O-2 de l'arbitrage de sortie) : l'axe est "tous ceux que la loi nomme, sans
+# exception" contre "seulement une partie d'entre eux", jamais enfants contre adultes (FD-1,
+# refus d'avance explicitement nomme) - la loi du casque ne vise justement que les enfants de
+# moins de douze ans, et lui opposer les adultes apprendrait l'inverse de ce que la seconde
+# moitie du libelle enseigne sur les cinq autres items de la tache. Les deux distracteurs
+# reprennent les deux fausses exceptions qu'un enfant peut croire (la pratique en club, la
+# decision des parents) ; l'indice donne le fait qui les ecarte toutes deux, non deductible de
+# l'enonce (le trajet court compte aussi).
+#
+# FAB-1a/FAB-1c recomptees sur les six items de la tache de portee (au lieu de cinq) : les six
+# bonnes reponses restent toutes distinctes, aucune ne redevient reconnaissable a sa forme.
+#
 items:
   - enonce: "Avant la récréation, chaque élève doit ranger sa chaise, sans exception. Est-ce une règle ?"
     bonneReponse: "une règle qui vaut pour tous"
@@ -132,17 +158,13 @@ items:
     bonneReponse: "une règle qui vaut pour tous"
     distracteurs: ["un simple souhait"]
     indice: "Cet interdit s'applique à chaque élève, sans exception."
-  - enonce: "En France, le casque à vélo est obligatoire avant douze ans. Est-ce une règle ?"
-    bonneReponse: "une loi"
-    distracteurs: ["une règle qui vaut pour tous", "un simple souhait"]
-    indice: "Cette obligation vient de l'État et s'applique dans tout le pays, pas seulement à l'école."
   - enonce: "À la cantine, chaque élève doit attendre son tour pour se servir. Est-ce une règle ?"
     bonneReponse: "une règle qui vaut pour tous"
-    distracteurs: ["un simple souhait", "une loi"]
+    distracteurs: ["un simple souhait"]
     indice: "Cela s'applique à chaque élève qui mange à la cantine."
   - enonce: "Aya aimerait que la maîtresse donne moins de devoirs le week-end. Est-ce une règle ?"
     bonneReponse: "un simple souhait"
-    distracteurs: ["une règle qui vaut pour tous", "une loi"]
+    distracteurs: ["une règle qui vaut pour tous"]
     indice: "C'est ce qu'elle voudrait, pas ce qui est décidé."
   - enonce: "Le code de la route dit qu'il faut s'arrêter au feu rouge. Qui doit s'arrêter ?"
     bonneReponse: "tout le monde, y compris les adultes"
@@ -164,3 +186,7 @@ items:
     bonneReponse: "seulement les adultes"
     distracteurs: ["tout le monde, même les enfants", "seulement les parents"]
     indice: "Cette loi fixe un âge minimum pour acheter de l'alcool."
+  - enonce: "Le port du casque à vélo est obligatoire avant douze ans. Qui doit le porter ?"
+    bonneReponse: "tous les enfants concernés, même pour un trajet très court"
+    distracteurs: ["seulement ceux qui font de la compétition", "seulement si les parents le décident"]
+    indice: "Cette règle protège chaque enfant qui roule, même quelques minutes."
