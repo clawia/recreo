@@ -146,7 +146,7 @@ section 6 - `RES-4` les rend non engageables tant qu'ils ne portent pas un objet
 | `S34-HG-12` | Les distracteurs de `HG-CM1-12` deviennent des reponses serieuses | Histoire-geographie, CM1 - `HG-CM1-12` | Arbitrage prealable de s34, section 5.1 | `marc-dev`, instance A |
 | `S34-ANG-CORR` | Lever les quatre reserves non bloquantes de `cm1-anglais` sur `LVE-CM1-07` | Anglais, CM1 - `LVE-CM1-07` (deja `couvert-valide`) | `DEC-0085`, section 10 ; verdicts-nadia-instance-A.md (s32) | `marc-dev`, instance A |
 | `S34-TRANSVERSE-1` | Passe transverse de l'instance d'accumulation | Transverse | `DEC-0083` ; `DEC-0085`, section 10 | `nadia-prof`, instance A |
-| `S34-CONS-4` | Scinder `bandit-manchot-histoire-geographie-cm1` en quatre entrees, une tache par entree | Transverse (110 items existants, aucune ligne fermee par la story elle-meme) | Arbitrage prealable de s34, section 4.2 ; `ADR-0081` | `marc-dev` (execution), `theo-archi` (forme technique), `nadia-prof` (quatre consignes, audit), instance A |
+| `S34-CONS-4` | Scinder `bandit-manchot-histoire-geographie-cm1` en quatre entrees, une tache par entree | Transverse (110 items existants, aucune ligne fermee par la story elle-meme) | Arbitrage prealable de s34, section 4.2 ; `ADR-0081` | `marc-dev` (execution, y compris la redaction des quatre consignes sur le gabarit du catalogue et la tache que `nadia-prof` a nommee), `theo-archi` (forme technique), `nadia-prof` (audit, `RES-3`), instance A. **Correction du 2026-09-11, section 15.1** : la formulation initiale faisait porter a `nadia-prof` la redaction des quatre consignes, en contradiction avec son arbitrage (section 4.2, *"je n'ecris aucune des quatre consignes"*) |
 | `S34-EMCCP07` | Cinquieme passage sur `bandit-manchot-regle-souhait-loi-cp` | EMC, CP - `EMC-CP-07` | Arbitrage prealable de s34, section 5.2 ; avis de `theo-archi`, sections 1 et 1.6 | `marc-dev`, instance B |
 | `S34-EXC-TACHEB` | Refondre la tache B de `bandit-manchot-exclusion-cp` | EMC, CP - `EMC-CP-03` (deja `couvert-valide`, correction non bloquante) | Arbitrage prealable de s34, sections 4.4 et 5.5 ; `PAR-15` | `marc-dev`, instance B |
 | `S34-EPS-SEC` | Reprise de `EPS-CP-04` | EPS, CP - `EPS-CP-04` | Arbitrage prealable de s34, section 5.3 | `sofia-sm` (dev), instance C |
@@ -306,6 +306,154 @@ deux amendements de la section 12, avant tout commit.
 | `chemins` | `verifier-chemins-test.sh`, puis `git ls-files` (suivis) plus `git ls-files --others --exclude-standard` (non suivis) passes a `verifier-chemins.sh` | vert - *"Tous les cas passent : le garde-fou de chemins mord, et sur le bon motif."* puis *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sur l'union suivis + non suivis, y compris ce fichier et les deux amendements de `squad/README.md` |
 | `outils` | la boucle du job sur ses trois motifs (`outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py`) | vert - **9 juges purs executes**, aucun motif vide, aucun echec |
 | `build` | `bash outils/mvn-jdk21.sh -B clean verify` sur la racine, reacteur complet a six modules | vert - `BUILD SUCCESS`, six modules `SUCCESS` (`domain` 15 s, `application` 5 s, `adapter-web` 40 s, `adapter-content` 25 s, `bootstrap` 1 min 42), JDK 21.0.10 rapporte par la machine virtuelle des tests (`c.r.b.catalogue.CatalogueChargeableIT`, log Spring Boot). **1446 tests, 0 echec, 0 erreur, 0 ignore** - somme de l'attribut `tests` sur les **193** fichiers `TEST-*.xml` de `surefire-reports` et `failsafe-reports` de l'arbre entier, mesuree sur le disque apres ce `clean verify`. Identique au chiffre que `theo-archi` a mesure sur son propre diff (section 5 de son avis) : je ne modifie aucun fichier Java dans ce planning, les deux fichiers de test qu'il a corriges etant deja integres en section 0 |
+
+## 14. Fusion des quatre branches livrees, casquette dev (2026-09-11)
+
+**Un cinquieme diff, non commite dans le checkout partage a l'ouverture de ce geste** :
+`squad/README.md` portait un amendement de process ecrit par l'orchestrateur (section 9, une
+defaillance d'infrastructure - `marc-dev` arrete en pleine tache par une erreur d'API,
+`invalid_request`, sans rapport avec la qualite du contenu qu'il editait). Je l'ai juge et
+corrige avant de le commiter : il s'auto-attribuait a *"retro de s34"*, une ceremonie qui n'a pas
+encore eu lieu (nous sommes en fusion, avant review et retro) - contradiction directe avec la
+regle qui le precede dans le meme fichier (*"une regle de conduite trouvee en cours de sprint est
+ecrite... pas seulement gardee en memoire d'agent"*). Reetiquete *"ecrit pendant la fusion, avant
+la review et la retro"* et commite (`0b4017b9`).
+
+**Lignee verifiee avant chaque fusion** (`git merge-base`) : `s34-sofia` (`8ee750f0`) fourche de
+`8f37bc6b` (le commit qui ouvre ce planning) ; `s34-theo` (`2c3463b3`) fourche de `f705d62a`
+(son propre prealable EMC-CP-07, lui-meme enfant de `8f37bc6b`) ; `s34-marc` (`76d43606`) et
+`s34-lea` (`605038a1`) fourchent toutes deux de `d2b13635`, la tete de `round-two` a l'ouverture
+des branches (apres integration du prealable de `theo-archi`, de son avis sur les quatre tests
+`cp-emc-exclusion`, de la decision de sortie de `nadia-prof` et des trois dessins d'`ines-design`).
+Les quatre lignees remontent a `round-two`, aucune n'est orpheline.
+
+**Ordre de fusion, avec la contrainte non prevue au planning** : `s34-sofia` en premier, puis
+`s34-theo` immediatement apres et avant toute mesure - `ADR-0090` est rouge par construction tant
+que le remede des trois sessions (`S34-SCO1-REMEDE`, port par `s34-sofia`) n'est pas present, ce
+que `theo-archi` a ecrit dans son `ADR`, dans l'index et dans son message de commit. **Le rouge se
+referme exactement a cette fusion** : `UneMancheResolueApresUnEssaiInfructueuxNEstPasUneReussiteTest`
+mesure 3/3 vert des que `s34-theo` est fusionnee sur l'arbre qui porte deja le remede de
+`s34-sofia`, avant meme la fusion de `marc-dev` et de `lea-dev`. Puis `s34-marc`, puis `s34-lea`
+en dernier, sur le patron du planning (section 9).
+
+**Trois conflits, tous nommes d'avance au planning (section 7), aucune resolution automatique
+silencieuse supposee - verifie apres chaque fusion que les blocs coexistent intacts** :
+
+- `catalogue.yaml` : `s34-sofia` (bloc `bandit-manchot-corps-effort-eps-cp`) et `s34-lea` (bloc
+  `designation-frise-de-la-journee`) ajoutaient chacune une entree a la meme position en fin de
+  fichier - deux blocs disjoints concatenes, aucun perdu.
+- `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` : meme motif, deux entrees
+  d'exemption disjointes (`cp-eps-corps-effort` et `cp-frise-de-la-journee`) sur la meme fermeture
+  de `Map.ofEntries`, concatenees.
+- `TexteAccentueExposeParLePortEntrantTest` : cinq zones de conflit, les listes de chaines
+  attendues (titre, consigne, domaine, competence) de `s34-sofia` et de `s34-lea` entrelacees dans
+  l'ordre d'arrivee des paquets, sans qu'aucune des deux ne soit perdue.
+
+`marc-dev` n'a touche `catalogue.yaml` ni aucun des deux fichiers de test ci-dessus (`S34-CONS-4`
+non commencee, voir section 15). Les deux autres points de couture nommes se sont fondus sans
+conflit Git : `PaquetCpEmcRegleSouhaitLoiTest` (`theo-archi` en prealable, `f705d62a`, puis
+`marc-dev`, `cefb15aa` - sequence stricte respectee, verifiee sur l'historique du fichier) et
+`domain/mechanics` plus `DeuxCoupsSimultanesTest` (`s34-sofia` seule, `theo-archi` n'y touchant
+pas). Le temoin de remplacement ecrit d'avance par `theo-archi` dans son `ADR`
+(`score.tentatives()` vaut 1 apres deux coups simultanes) est bien celui qu'implemente
+`DeuxCoupsSimultanesTest` apres fusion.
+
+**Quatre jobs de la CI mesures sur l'arbre fusionne, nommes un par un** :
+
+| Job | Ce que j'ai lance | Resultat |
+|---|---|---|
+| `prefixes` | `.github/scripts/verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, puis `git log --no-merges --format=%s 48635ba0..HEAD` passe a `verifier-prefixes.sh` | vert - tous les cas passent, tous les commits de s34 portent un prefixe d'agent connu |
+| `chemins` | `.github/scripts/verifier-chemins-test.sh`, puis l'union de `git ls-files` et `git ls-files --others --exclude-standard` passee a `verifier-chemins.sh` | vert - aucun chemin de poste de travail ni nom de compte |
+| `outils` | la boucle du job sur ses trois motifs | vert - **9 juges purs executes**, aucun motif vide, aucun echec |
+| `build` | `bash outils/mvn-jdk21.sh -B clean verify` sur la racine, reacteur complet a six modules | vert - `BUILD SUCCESS`, JDK 21.0.10 rapporte par la machine virtuelle des tests |
+
+**Compte de tests sur l'arbre fusionne : 1464, sur 196 fichiers `TEST-*.xml`** (`domain` 111,
+`application` 13, `adapter-web` 397, `adapter-content` 699, `bootstrap` 244). Deux methodes
+independantes convergent sur ce chiffre : la somme de l'attribut `tests` des fichiers
+`surefire-reports`/`failsafe-reports` sur le disque apres `mvn -B clean verify`, et les totaux
+"Tests run" que Maven annonce par module dans un second `mvn -B verify` (sans `clean`, memes
+resultats, 0 echec). **Ce n'est le chiffre annonce par aucune branche individuelle**, et ce n'est
+pas cense l'etre : `lea-dev` mesure 1458 tests sur son propre arbre (base `d2b13635` a 1447,
+`+11` sur son lot, avant fusion avec `s34-marc`, `s34-sofia` et `s34-theo`) ; `marc-dev` mesure un
+delta net de zero sur l'un de ses commits, pas sur l'ensemble des quatre. Le chiffre qui compte
+est celui-ci, mesure sur l'arbre fusionne apres la derniere fusion, pas la somme des annonces.
+
+**Etat reel des stories du sprint apres cette fusion.** Payees : `S34-HG-12`, `S34-ANG-CORR`,
+`S34-EMCCP07`, `S34-EXC-TACHEB` (`marc-dev`) ; `S34-EPS-SEC`, `S34-EPS-JEU`,
+`S34-EPS-CORPS-EFFORT`, `S34-SCO1-REMEDE` (`sofia-sm`, avec l'`ADR` de `theo-archi`) ;
+`S33-PAL2-TROU-A`, `S33-PAL2-TROU-B` et la moitie de `S33-PAL2-1` portant `QLM-CP-14` (`lea-dev`,
+avec les trois dessins d'`ines-design`). **Non commencee** : `S34-CONS-4` (route en section 15).
+**Non livree** : la moitie de `S33-PAL2-1` portant `QLM-CP-11` (route en section 15).
+`S34-TRANSVERSE-1` est un poste d'audit seul, sans developpeur affecte - rien a fusionner. Aucun
+mouvement de `squad/programme/MATRICE-couverture.md` n'est fait ici et aucun verdict n'est rendu :
+les trois instances de `nadia-prof` n'ont pas encore audite ce sprint.
+
+Rien n'est pousse.
+
+## 15. Deux obstacles routes, casquette Scrum Master (2026-09-11)
+
+### 15.1 `S34-CONS-4` - qui ecrit les quatre consignes, et le sprint qui la porte
+
+**La contradiction est dans mon propre planning, pas dans l'arbitrage de `nadia-prof`, et c'est
+moi qui la corrige.** La section 4 de ce fichier affecte `S34-CONS-4` a *"`marc-dev` (execution),
+`theo-archi` (forme technique), `nadia-prof` (quatre consignes, audit)"* - une formulation qui
+fait porter a `nadia-prof` la redaction des quatre textes. Son arbitrage prealable (section 4.2)
+dit exactement l'inverse, et l'a dit avant que ce planning ne soit ecrit : *"Ce que je ne fais
+pas, et c'est `RES-2` appliquee tout de suite : je n'ecris aucune des quatre consignes. Je nomme
+la tache de chaque entree ; le texte revient devant moi quand il est ecrit, item devant lui."*
+`marc-dev` a lu l'arbitrage plutot que la ligne fautive de ma propre table, a refuse d'inventer un
+texte pedagogique destine a un enfant sans autorite pour le faire, et a escalade - c'est
+exactement le comportement attendu, pas un blocage de sa part.
+
+**Ce que je tranche, parce que c'est une affectation et non un jugement pedagogique** : `nadia-prof`
+a deja fait le jugement pedagogique qui comptait - elle a nomme la tache de chacune des quatre
+entrees (situer dans le temps, nommer en histoire, nommer en geographie, lire un document) et le
+motif du decoupage. Ecrire la phrase de consigne qui porte ce nom, sur le gabarit deja en usage
+dans tout le catalogue (*"Lis bien, puis dis..."*), est le meme geste d'execution que `marc-dev`
+fait deja pour chacune des autres entrees qu'il livre ce sprint - il ne invente pas un jugement
+pedagogique neuf, il met en mots une tache que `nadia-prof` a deja nommee. **`marc-dev` ecrit les
+quatre consignes, sur le gabarit du catalogue et la tache que `nadia-prof` a nommee ; `nadia-prof`
+les audite ensuite, texte devant items, comme `RES-3` l'exige pour toute reprise.** Je corrige la
+section 4 de ce fichier dans le meme geste que ce routage.
+
+**Cette story ne rentre plus dans ce sprint.** Les quatre branches sont fusionnees, la fenetre de
+developpement de s34 est fermee : rouvrir un worktree pour `S34-CONS-4` maintenant reviendrait a
+commencer un travail neuf apres la fusion, ce que je ne fais pas dans ce geste. Elle part a s35,
+avec l'affectation corrigee ci-dessus.
+
+### 15.2 `QLM-CP-11` (plan de la classe) - geometrie et plancher de lisibilite, pas un defaut de `lea-dev`
+
+**Fait mesure par `lea-dev`, en jouant le jar (JDK 21.0.10), Chrome headless, gabarit et CSS
+reels** : sur les six zones de `plan-classe.svg`, trois (`tableau`, `armoire`, `porte`) rendent un
+libelle qui deborde de son bouton a l'ecran de manche et chevauche les zones voisines. Les cadres
+en cause (`armoire`, 56 x 77 px ; `porte`, 63 x 56 px) sont des rectangles de meuble etroits ; le
+plancher de police et le pave de `.zone` (`recreo.css`) ont ete penses pour des zones proches d'un
+quadrillage, pas pour cette geometrie-la. `lea-dev` a retire `cp-plan-de-la-classe.yaml` et
+`plan-classe.svg` de son commit plutot que de corriger une geometrie et un plancher qui ne sont pas
+de son ressort - comportement attendu, pas un renoncement. Les deux fichiers restent sur le disque
+de son worktree, non commites ; la table id/libelle/x/y/largeur/hauteur d'`ines-design`
+(`proposition-ines-palier2-designation.md`, section 4) suffit a les reconstruire.
+
+**Route, en deux temps disjoints** :
+
+- **La geometrie** (les six rectangles de `plan-classe.svg`, en particulier `armoire` et `porte`,
+  et les libelles positionnels qui doivent y tenir) : `ines-design`, autrice du dessin et du
+  format technique de la classe `.image-designation`. Elle propose, elle ne tranche pas.
+- **Le plancher de lisibilite** (la taille de police minimale et le pave de `.zone` en dessous
+  duquel un libelle cesse d'etre lisible par un enfant de CP) : `nadia-prof`. Ce n'est pas une
+  question de CSS mais de ce qui reste lisible pour l'age vise - la meme distinction que
+  `CLAUDE.md` fait deja pour tout le contenu de CP (*"elle ne dispense d'aucune exigence de
+  lisibilite"*).
+
+**Ce que le poste du palier 2 devient.** `S33-PAL2-1` etait chiffre a 2,0 pour deux lignes
+(`QLM-CP-11`, `QLM-CP-14`). Une seule est livree ce sprint. `DEC-0086` ne definit aucune methode
+de proration d'un poste engage et partiellement livre - le meme principe que la section 3.2 de ce
+fichier applique deja ailleurs (*"`camille-po` le dit elle-meme et je ne le comble pas a sa
+place"*) : je ne divise pas les 2,0 en 1,0 paye plus 1,0 non depense, je constate le fait tel
+qu'il est. `QLM-CP-14` est techniquement livree et attend son audit pedagogique ; `QLM-CP-11`
+reste `non couvert`, engagee mais non livree, bloquee par un obstacle route ci-dessus et non par
+un choix de `lea-dev`. Le mouvement de `squad/programme/MATRICE-couverture.md` et le compte final
+du poste appartiennent a la review, pas a ce geste.
 
 ## Decisions prises
 
