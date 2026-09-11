@@ -1,0 +1,20 @@
+schema: 1
+id: vrai-paquet-texte-alternatif
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu sain d'ADR-0091 clause 1, jamais servi"
+items:
+  - enonce: "Montre le tableau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: tableau
+    zones:
+      - id: tableau
+        libelle: "le premier"
+        cadre: { x: 8, y: 4, largeur: 30, hauteur: 22 }
+      - id: coin-lecture
+        libelle: "le deuxieme"
+        cadre: { x: 62, y: 8, largeur: 30, hauteur: 26 }
