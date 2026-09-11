@@ -1,0 +1,251 @@
+schema: 1
+id: cm1-histoire-geographie-nommer-en-histoire
+type: question
+descripteur:
+  matiere: "Histoire-géographie"
+  niveau: "CM1"
+  domaine: "Repères historiques et géographiques"
+  competence: "Nommer ce que l'énoncé décrit, en histoire : un peuple ou un mouvement de population, un roi et sa réalisation, un événement de la Révolution ou de l'Empire (référentiel CM1, lignes HG-CM1-03, HG-CM1-04, HG-CM1-06, HG-CM1-07, HG-CM1-08)"
+lignesDeReferentiel: ["HG-CM1-03", "HG-CM1-04", "HG-CM1-06", "HG-CM1-07", "HG-CM1-08"]
+#
+# S35-CONS-4 (docs/backlog/backlog.md ; DEC-0088 ; avis de faisabilite de s35 de
+# theo-archi, section 6). Ce paquet est l'une des quatre entrees issues de la scission de
+# bandit-manchot-histoire-geographie-cm1 (S34-CONS-4, decision de grain rendue conjointement par
+# camille-po et nadia-prof, ADR-0081) : une entree par tache reellement distincte plutot qu'une par
+# ligne de referentiel. Les items ci-dessous sont repris a l'identique (enonce, bonne reponse,
+# distracteurs, indice, marqueurs HIS-1/HIS-3) depuis cm1-histoire-geographie.yaml, retire par ce
+# commit ; leur genealogie complete (S27-3 a S33-HG-08-12, chaque reserve levee par nadia-prof) vit
+# dans l'historique git de ce fichier retire, pas ici. La scission ne cree aucun item neuf, ne
+# modifie aucun texte et ne rouvre aucune ligne de referentiel.
+#
+# Repartition de HG-CM1-07 (dix items) entre cette entree et "Nommer, en histoire", laissee au
+# choix de qui execute (S34-CONS-4, nadia-prof ayant verifie que le grain ne change pas quel que
+# soit cet arbitrage) : les cinq items ci-dessous relevent d'une tache de situer/ordonner dans le
+# temps (marque HIS-1 "ordre", ou restitution d'une date), les cinq autres relevent d'une tache de
+# nommer un evenement a partir d'une description (voir cm1-histoire-geographie-nommer-en-histoire.yaml).
+items:
+  - enonce: "Des arènes et des aqueducs en pierre ont été construits en Gaule durant l'Antiquité. Quel peuple les a construits ?"  # HIS-1: association ; HIS-3: patrimoine romain en Gaule (arènes, aqueducs), fait consensuel du programme cycle 3 - je n'ai pas d'outil de recherche en ligne cette session, nadia-prof doit confirmer
+    bonneReponse: "les Romains"
+    distracteurs: ["les Vikings", "les Égyptiens"]
+    indice: "Pense au peuple de l'Antiquité qui a laissé le plus de traces de pierre en Gaule."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Des objets en fer, fabriqués avant l'arrivée des Romains, sont retrouvés dans le sol de nombreuses régions de France. Quel peuple les a fabriqués ?"  # HIS-1: association ; HIS-3: fait consensuel du programme cycle 3 (artisanat gaulois du fer), famille (a)
+    bonneReponse: "les Gaulois"
+    distracteurs: ["les Romains", "les Vikings"]
+    indice: "Pense au peuple qui vivait en Gaule avant la conquête romaine."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "La cité de Massalia, sur la côte méditerranéenne, est fondée par un peuple venu de la mer Égée. Quel peuple l'a fondée ?"  # HIS-1: association ; HIS-3: fait consensuel (fondation grecque de Massalia, actuelle Marseille), famille (a)
+    bonneReponse: "les Grecs"
+    distracteurs: ["les Romains", "les Gaulois"]
+    indice: "Cette cité deviendra plus tard la ville de Marseille."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Dans plusieurs villes de France, les Romains construisent de grandes constructions rondes en pierre pour des spectacles. Comment appelle-t-on ces constructions ?"  # HIS-1: association ; HIS-3: fait consensuel (arènes romaines), famille (a)
+    bonneReponse: "des arènes"
+    distracteurs: ["des châteaux forts", "des temples grecs"]
+    indice: "Pense aux spectacles de gladiateurs, comme au Colisée de Rome."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Romains construisent de longs canaux en pierre, comme le pont du Gard, pour transporter l'eau sur de grandes distances. Comment appelle-t-on ces constructions ?"  # HIS-1: association ; HIS-3: fait consensuel (aqueducs romains, pont du Gard), famille (a)
+    bonneReponse: "un aqueduc"
+    distracteurs: ["un château d'eau", "un temple"]
+    indice: "Cette construction permet à l'eau de voyager en hauteur, au-dessus des vallées."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Romains construisent un vaste réseau qui relie les villes de la Gaule et facilite les déplacements. Comment appelle-t-on cela ?"  # HIS-1: association ; HIS-3: fait consensuel (réseau routier romain), famille (a)
+    bonneReponse: "un réseau de routes"
+    distracteurs: ["un réseau de canaux", "un réseau de tunnels"]
+    indice: "Pense à ce qui permet de se déplacer d'une ville à l'autre, à pied ou en char."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Grecs fondent, sur la côte méditerranéenne, des villes loin de leur pays d'origine, vivant du commerce. Comment appelle-t-on ce type de ville ?"  # HIS-1: association ; HIS-3: vocabulaire du programme cycle 3 (colonie grecque), famille (a)
+    bonneReponse: "une colonie"
+    distracteurs: ["une capitale", "une forteresse"]
+    indice: "C'est une ville fondée par un peuple loin de son territoire d'origine, souvent pour commercer."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Les Grecs installés en Gaule font découvrir aux Gaulois une plante dont on tire le raisin. Quelle plante ont-ils apportée ?"  # HIS-1: association ; HIS-3: fait consensuel (introduction de la vigne par les colons grecs), famille (a)
+    bonneReponse: "la vigne"
+    distracteurs: ["le maïs", "la pomme de terre"]
+    indice: "C'est la plante dont on tire le raisin, encore cultivée dans le sud de la France."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Quel métal les Gaulois travaillaient-ils avec un grand savoir-faire pour fabriquer des épées et des outils ?"  # HIS-1: association ; HIS-3: fait consensuel (métallurgie du fer chez les Gaulois), famille (a)
+    bonneReponse: "le fer"
+    distracteurs: ["le bronze", "l'or"]
+    indice: "C'est un métal solide, plus résistant que le bronze utilisé avant eux."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "Plusieurs mots de notre langue française, comme des noms d'arbres, viennent du gaulois. Qu'ont laissé les Gaulois dans notre langue actuelle ?"  # HIS-1: association ; HIS-3: fait consensuel (mots d'origine gauloise en français), famille (a)
+    bonneReponse: "des mots de vocabulaire"
+    distracteurs: ["des lettres de l'alphabet", "des règles de grammaire latine"]
+    indice: "Pense à ce qu'on utilise pour nommer les choses, comme le mot chêne ou charrue."
+    ligneDeReferentiel: "HG-CM1-03"
+  - enonce: "À partir du IVe siècle, des peuples venus du nord et de l'est s'installent dans l'Empire romain. Les Francs sont l'un d'eux. Comment appelle-t-on ces peuples ?"  # HIS-1: restitution ; HIS-3: reformulation de nadia-prof qui retire le besoin de source (arbitrage du 2026-09-03, section 3.4) - "l'ensemble" retire, la réponse ne prétend plus à une couverture totale (les Huns, par exemple, n'entrent pas dans "peuples germaniques")
+    bonneReponse: "les peuples germaniques"
+    distracteurs: ["les peuples grecs", "les peuples gaulois"]
+    indice: "Ce ne sont ni les Grecs ni les Gaulois, déjà installés bien avant."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "À la fin du VIIIe siècle, des peuples venus du nord de l'Europe attaquent les côtes et remontent les fleuves. Comment appelle-t-on ces peuples ?"  # HIS-1: association ; HIS-3: fait consensuel (raids vikings sur les côtes et fleuves d'Europe de l'Ouest), famille (a)
+    bonneReponse: "les Vikings"
+    distracteurs: ["les Romains", "les Gaulois"]
+    indice: "Ce sont des marins venus de Scandinavie, qui remontent les fleuves sur leurs bateaux."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "En 732, une armée est arrêtée près de Poitiers par Charles Martel. D'où venait cette armée ?"  # HIS-1: association ; HIS-3: bataille de Poitiers 732, armée venue d'Espagne (Al-Andalus omeyyade), fait consensuel du programme scolaire français, famille (a) - HG-R12 : l'item ne désigne plus l'armée par un exonyme, il nomme son origine géographique
+    bonneReponse: "d'Espagne"
+    distracteurs: ["d'Italie", "d'Angleterre"]
+    indice: "Cette armée avait traversé les Pyrénées avant d'arriver en Gaule."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Les mouvements des peuples germaniques affaiblissent peu à peu l'Empire romain d'Occident. Que se passe-t-il finalement en 476 ?"  # HIS-1: association ; HIS-3: chute de l'Empire romain d'Occident en 476, fait consensuel, famille (a)
+    bonneReponse: "l'Empire romain d'Occident disparaît"
+    distracteurs: ["l'Empire romain d'Occident devient plus puissant", "l'Empire romain d'Occident déménage sa capitale"]
+    indice: "C'est la fin d'un empire qui dominait une grande partie de l'Europe."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Les Francs s'installent en Gaule à la fin du Ve siècle et fondent un royaume qui deviendra un grand pays d'Europe. Lequel ?"  # HIS-1: association ; HIS-3: référentiel ligne 4 (installation des Francs), fait consensuel, famille (a)
+    bonneReponse: "la France"
+    distracteurs: ["l'Espagne", "l'Italie"]
+    indice: "Clovis devient roi des Francs, en 481."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Les Vikings s'installent dans le nord-ouest de la Gaule au début du Xe siècle. Quelle région porte encore leur nom aujourd'hui ?"  # HIS-1: association ; HIS-3: fait consensuel (installation viking à l'origine du nom de la Normandie), famille (a)
+    bonneReponse: "la Normandie"
+    distracteurs: ["la Bretagne", "la Provence"]
+    indice: "Le nom de cette région vient d'un mot qui signifie homme du Nord."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "À la fin du IXe siècle, les Vikings remontent la Seine et attaquent une grande ville. Laquelle ?"  # HIS-1: association ; HIS-3: fait consensuel (siège de Paris par les Vikings, fin du IXe siècle), famille (a)
+    bonneReponse: "Paris"
+    distracteurs: ["Marseille", "Lyon"]
+    indice: "Cette ville, aujourd'hui capitale de la France, est traversée par la Seine."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Après la défaite de Poitiers en 732, l'armée venue du sud n'avance plus vers le nord. Que devient son expansion en Europe ?"  # HIS-1: association ; HIS-3: bataille de Poitiers 732, fait consensuel, famille (a)
+    bonneReponse: "elle s'arrête"
+    distracteurs: ["elle continue jusqu'à Paris", "elle recommence l'année suivante"]
+    indice: "Charles Martel remporte cette bataille et empêche l'armée d'avancer davantage."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Après la disparition de l'Empire romain d'Occident, plusieurs peuples fondent chacun leur propre territoire. Que devient ce territoire ?"  # HIS-1: association ; HIS-3: fait consensuel (morcellement politique après 476), famille (a)
+    bonneReponse: "il se divise en plusieurs royaumes"
+    distracteurs: ["il reste un seul et même empire", "il redevient un territoire inhabité"]
+    indice: "Chaque peuple installé fonde son propre royaume, à la place d'un pouvoir unique."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "La victoire de Charles Martel à Poitiers renforce sa famille. Quelle dynastie de rois naît d'elle quelques années plus tard ?"  # HIS-1: association ; HIS-3: fait consensuel (dynastie carolingienne, issue de la famille de Charles Martel), famille (a)
+    bonneReponse: "la dynastie carolingienne"
+    distracteurs: ["la dynastie capétienne", "la dynastie mérovingienne"]
+    indice: "Le petit-fils de Charles Martel, Charlemagne, donnera son nom à cette dynastie."
+    ligneDeReferentiel: "HG-CM1-04"
+  - enonce: "Quel roi de France a fait construire le château de Versailles ?"  # HIS-1: association ; HIS-3: association donnée par le référentiel lui-même (ligne 6, Louis XIV et Versailles)
+    bonneReponse: "Louis XIV"
+    distracteurs: ["Henri IV", "François Ier"]
+    indice: "C'est le roi au plus long règne de l'histoire de France."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel roi de France a signé l'édit de Nantes ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle
+    bonneReponse: "Henri IV"
+    distracteurs: ["Louis IX", "Louis XIV"]
+    indice: "Ce roi a mis fin à des années de guerres de religion en 1598."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel roi de France a participé à une croisade ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Louis IX et la croisade)
+    bonneReponse: "Louis IX"
+    distracteurs: ["François Ier", "Henri IV"]
+    indice: "Ce roi est aussi appelé Saint Louis."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Sous quel roi de France le château de Chambord est-il construit, témoin de la Renaissance ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), château de Chambord
+    bonneReponse: "François Ier"
+    distracteurs: ["Louis IX", "Henri IV"]
+    indice: "Ce roi a régné au début du XVIe siècle, en pleine Renaissance."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel fait caractérise le règne de Louis IX, aussi appelé Saint Louis ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Louis IX et la croisade), fait consensuel, famille (a)
+    bonneReponse: "la croisade"
+    distracteurs: ["la Renaissance", "l'édit de Nantes"]
+    indice: "Ce roi part combattre en Terre sainte."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel fait caractérise le règne de François Ier, qui invite en France le peintre Léonard de Vinci ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), Léonard de Vinci invité par François Ier, fait consensuel, famille (a)
+    bonneReponse: "la Renaissance"
+    distracteurs: ["la croisade", "Versailles"]
+    indice: "Ce roi encourage les arts et les lettres, comme la peinture italienne."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel fait caractérise le règne de Henri IV, qui met fin aux guerres de religion en 1598 ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle, famille (a)
+    bonneReponse: "l'édit de Nantes"
+    distracteurs: ["la Renaissance", "Versailles"]
+    indice: "Ce texte accorde la liberté de culte aux protestants."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel fait caractérise le règne de Louis XIV, surnommé le Roi-Soleil ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Louis XIV et Versailles), surnom consensuel, famille (a)
+    bonneReponse: "Versailles"
+    distracteurs: ["la croisade", "l'édit de Nantes"]
+    indice: "Ce roi fait construire un immense château non loin de Paris."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Quel château de la Renaissance, avec son escalier à double révolution, est construit sous François Ier ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), château de Chambord, fait consensuel, famille (a)
+    bonneReponse: "Chambord"
+    distracteurs: ["Versailles", "le Louvre"]
+    indice: "Son escalier permet à deux personnes de monter sans se croiser."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "Comment appelle-t-on la grande salle du château de Versailles décorée de miroirs, sous le règne de Louis XIV ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 6 (Louis XIV et Versailles), galerie des Glaces, fait consensuel, famille (a)
+    bonneReponse: "la galerie des Glaces"
+    distracteurs: ["la salle du Jeu de paume", "la cour Carrée"]
+    indice: "Son nom rappelle les nombreux miroirs qui ornent ses murs."
+    ligneDeReferentiel: "HG-CM1-06"
+  - enonce: "En 1789, quel événement marque le début de la Révolution française à Paris ?"  # HIS-1: restitution ; HIS-3: date du 14 juillet 1789, fait consensuel enseigné nationalement
+    bonneReponse: "la prise de la Bastille"
+    distracteurs: ["le sacre de Napoléon", "la signature de l'édit de Nantes"]
+    indice: "C'est une prison parisienne, symbole du pouvoir du roi."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Le 4 août 1789, l'Assemblée nationale supprime les droits particuliers de la noblesse et du clergé. Comment appelle-t-on cet événement ?"  # HIS-1: association ; HIS-3: référentiel ligne 7, nuit du 4 août 1789 consensuelle, famille (a)
+    bonneReponse: "l'abolition des privilèges"
+    distracteurs: ["la prise de la Bastille", "la Déclaration des droits de l'homme et du citoyen"]
+    indice: "Cet événement porte le nom de ce que perdent la noblesse et le clergé cette nuit-là."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "En 1792, les rois cessent de gouverner la France et un nouveau régime politique commence. Comment appelle-t-on cet événement ?"  # HIS-1: association ; HIS-3: référentiel ligne 7, année 1792 consensuelle, famille (a)
+    bonneReponse: "la fin de la monarchie"
+    distracteurs: ["la prise de la Bastille", "l'abolition des privilèges"]
+    indice: "Cet événement porte le nom du régime politique qui s'arrête cette année-là."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Quel texte est adopté le 26 août 1789, affirmant que les hommes naissent et demeurent libres et égaux en droits ?"  # HIS-1: restitution ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
+    bonneReponse: "la Déclaration des droits de l'homme et du citoyen"
+    distracteurs: ["l'édit de Nantes", "l'abolition des privilèges"]
+    indice: "Ce texte proclame la liberté et l'égalité des hommes en droits."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Dans la nuit du 4 août 1789, qui perd ses droits particuliers en France ?"  # HIS-1: association ; HIS-3: référentiel ligne 7, nuit du 4 août 1789 consensuelle, famille (a)
+    bonneReponse: "la noblesse et le clergé"
+    distracteurs: ["le roi et sa famille", "les paysans"]
+    indice: "Ce sont les deux ordres qui profitaient jusque-là de privilèges particuliers."
+    ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "En 1804, Napoléon Bonaparte se fait sacrer empereur, alors que la Révolution avait aboli la monarchie en 1792. Quel nouveau régime politique commence donc en 1804 ?"  # HIS-1: ordre ; HIS-3: sacre de Napoléon en 1804 et fin de la monarchie en 1792, faits consensuels
+    bonneReponse: "l'Empire"
+    distracteurs: ["la monarchie absolue", "la République romaine"]
+    indice: "Ce n'est pas un retour à la monarchie, puisqu'elle a déjà été abolie."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "En 1799, Napoléon Bonaparte prend le pouvoir en France. Comment appelle-t-on cette prise de pouvoir ?"  # HIS-1: restitution ; HIS-3: coup d'État du 18 brumaire (1799), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "un coup d'État"
+    distracteurs: ["une élection", "une invasion étrangère"]
+    indice: "Il prend le pouvoir par la force, sans élection."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Après son coup d'État de 1799, quel titre Napoléon Bonaparte porte-t-il d'abord, avant de devenir empereur ?"  # HIS-1: association ; HIS-3: titre de premier consul porté par Napoléon Bonaparte de 1799 à 1804, fait consensuel, famille (a)
+    bonneReponse: "premier consul"
+    distracteurs: ["roi", "président de la République"]
+    indice: "Ce titre désigne le chef d'un nouveau gouvernement, avant le titre d'empereur."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Quel régime politique la France connaît-elle entre le coup d'État de 1799 et le sacre de 1804 ?"  # HIS-1: association ; HIS-3: le Consulat (1799-1804), fait consensuel, famille (a)
+    bonneReponse: "le Consulat"
+    distracteurs: ["la monarchie absolue", "la République romaine"]
+    indice: "Ce régime porte le même nom que le titre de premier consul."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Avant de devenir empereur en 1804, quel régime la Révolution avait-elle installé en France ?"  # HIS-1: association ; HIS-3: passage de la République (1792) à l'Empire (1804) via le Consulat, fait consensuel, famille (a)
+    bonneReponse: "la République"
+    distracteurs: ["la monarchie", "l'Empire romain"]
+    indice: "La Révolution avait aboli le roi et son pouvoir."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte fait rédiger un même ensemble de lois pour toute la France. Comment appelle-t-on ce texte ?"  # HIS-1: restitution ; HIS-3: Code civil de 1804, fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "le Code civil"
+    distracteurs: ["la Déclaration des droits de l'homme et du citoyen", "la Constitution de 1791"]
+    indice: "Il porte encore aujourd'hui le nom de son créateur dans plusieurs pays."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte crée de nouvelles écoles publiques pour les élèves les plus âgés. Comment les appelle-t-on ?"  # HIS-1: restitution ; HIS-3: création des lycées (1802), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "des lycées"
+    distracteurs: ["des universités royales", "des écoles primaires"]
+    indice: "Ce mot désigne encore aujourd'hui l'école qui accueille les élèves après le collège."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte crée une récompense pour honorer le mérite, civil ou militaire. Comment s'appelle-t-elle ?"  # HIS-1: restitution ; HIS-3: Légion d'honneur (1802), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "la Légion d'honneur"
+    distracteurs: ["la Croix de guerre", "l'Ordre de la Toison d'or"]
+    indice: "C'est encore aujourd'hui la plus haute distinction française."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte place un représentant de l'État à la tête de chaque département. Comment appelle-t-on ce représentant ?"  # HIS-1: restitution ; HIS-3: création des préfets (1800), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "un préfet"
+    distracteurs: ["un maire", "un député"]
+    indice: "Il est nommé par le pouvoir central, il n'est pas élu par les habitants."
+    ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Napoléon Bonaparte crée une nouvelle banque chargée de fabriquer la monnaie et de stabiliser l'économie. Comment s'appelle-t-elle ?"  # HIS-1: restitution ; HIS-3: création de la Banque de France (1800), fait consensuel du programme cycle 3, famille (a)
+    bonneReponse: "la Banque de France"
+    distracteurs: ["le Trésor royal", "la Bourse de Paris"]
+    indice: "Cette banque existe encore aujourd'hui et porte le nom du pays."
+    ligneDeReferentiel: "HG-CM1-08"

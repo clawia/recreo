@@ -505,17 +505,41 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " deux (les noms des changements d'etat - \"fondre\", \"geler\", \"couler\")."
                     + " Aucune proposition n'est numerique. Mesure du 2026-09-10, comptage direct sur"
                     + " le paquet servi (\"bonneReponse\" et \"distracteurs\")"),
-            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1. Motif recompte a
-            // s33 (S33-HG-04) : le chiffre precedent (20 items, 60 propositions) datait de s27 et
-            // n'avait pas suivi les lots de s28 a s33 ; corrige avec sa methode plutot que reporte.
-            Map.entry("cm1-histoire-geographie",
-            "110 items sur 110 portent deux distracteurs (trois propositions, 330 au total), mais"
-                    + " aucune n'est numerique : ce sont des noms de periodes, de peuples, de rois,"
-                    + " d'evenements ou de lieux, et des dates toujours ecrites en toutes lettres ou"
-                    + " precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe rend null sur"
-                    + " les trois propositions de chaque item. Mesure du 2026-09-09, comptage direct"
-                    + " sur le paquet servi (\"bonneReponse\" et \"distracteurs\") : aucune des 330"
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1, scinde en quatre
+            // entrees par S35-CONS-4 (DEC-0088, ADR-0081, avis de faisabilite de s35 de theo-archi,
+            // section 6.3) : la clef "cm1-histoire-geographie" disparait avec le fichier, remplacee
+            // par quatre motifs neufs, recomptes sur chacun des quatre paquets servis.
+            Map.entry("cm1-histoire-geographie-situer-dans-le-temps",
+            "25 items sur 25 portent deux distracteurs (trois propositions, 75 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de periodes, de siecles, de"
+                    + " millenaires ou de faits dates, toujours ecrits en toutes lettres ou precedes"
+                    + " d'un mot (\"le XVIIIe siecle\", \"le Moyen Age\") - valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-09-11, comptage direct sur"
+                    + " le paquet servi (\"bonneReponse\" et \"distracteurs\") : aucune des 75"
                     + " propositions ne commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-nommer-en-histoire",
+            "45 items sur 45 portent deux distracteurs (trois propositions, 135 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de peuples, de mouvements de"
+                    + " population, de rois, de realisations royales ou d'evenements de la"
+                    + " Revolution et de l'Empire, valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-09-11, comptage direct sur le paquet servi"
+                    + " (\"bonneReponse\" et \"distracteurs\") : aucune des 135 propositions ne"
+                    + " commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-nommer-en-geographie",
+            "30 items sur 30 portent deux distracteurs (trois propositions, 90 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de types d'espace ou de"
+                    + " ressources (eau, energie, aliments) et de leurs modes d'acheminement,"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-11, comptage direct sur le paquet servi (\"bonneReponse\" et"
+                    + " \"distracteurs\") : aucune des 90 propositions ne commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-lire-un-document",
+            "10 items sur 10 portent deux distracteurs (trois propositions, 30 au total), mais"
+                    + " aucune n'est numerique : ce sont des dates ecrites en toutes lettres ou"
+                    + " precedees d'un mot (\"en 1789\"), des natures de document ou des noms"
+                    + " d'auteur, valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-11, comptage direct sur le paquet servi (\"bonneReponse\""
+                    + " et \"distracteurs\") : aucune des 30 propositions ne commence par un"
+                    + " chiffre"),
             // S28-3 : premier paquet d'anglais, matiere neuve du produit, CM1.
             // Motif recompte le 2026-09-10 : le chiffre du 2026-09-04 n'avait pas suivi le lot de
             // s32 qui a porte ce paquet de vingt a vingt-cinq items.

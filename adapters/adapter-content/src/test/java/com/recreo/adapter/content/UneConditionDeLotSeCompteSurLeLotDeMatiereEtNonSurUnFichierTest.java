@@ -312,8 +312,11 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                 .as("1 fichier a la cloture de s27, inchange a S28-1 qui n'a touche que la matiere"
                         + " questionner le monde ; S28-2 et S29-2 etendent ce meme fichier, motif"
                         + " dans son commentaire (ADR-0081 reserve le decoupage a nadia-prof et"
-                        + " camille-po)")
-                .hasSize(1);
+                        + " camille-po) ; S35-CONS-4 (DEC-0088) scinde ce fichier unique en quatre"
+                        + " paquets, un par tache reellement distincte, sans changer le lot de"
+                        + " matiere ni son total d'items (ADR-0081 alternative E, decision de grain"
+                        + " qui appartient a nadia-prof et camille-po, pas a un decoupage technique)")
+                .hasSize(4);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")).stream().mapToInt(Paquet::items).sum())
                 .as("S29-2 (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-"
                         + "a-huit-lignes.md, section 3.3) : 37 items a la cloture de s28, +6 sur"
