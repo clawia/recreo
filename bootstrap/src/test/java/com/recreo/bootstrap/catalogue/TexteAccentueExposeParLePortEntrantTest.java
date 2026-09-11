@@ -179,8 +179,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-vivant-non-vivant-cp",
             "bandit-manchot-corps-sens-cp",
             "bandit-manchot-etats-eau-cp",
-            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1.
-            "bandit-manchot-histoire-geographie-cm1",
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1. Scindee en quatre
+            // entrees par S35-CONS-4 (DEC-0088, ADR-0081) : une entree par tache reellement
+            // distincte plutot qu'une seule par matiere.
+            "bandit-manchot-histoire-geographie-situer-dans-le-temps-cm1",
+            "bandit-manchot-histoire-geographie-nommer-en-histoire-cm1",
+            "bandit-manchot-histoire-geographie-nommer-en-geographie-cm1",
+            "bandit-manchot-histoire-geographie-lire-un-document-cm1",
             // S28-3 (backlog S28-3) : entree neuve, premier paquet d'anglais, CM1.
             "bandit-manchot-anglais-cm1",
             // S28-4 : deux entrees neuves, calcul pose CM1 (multiplication et division
@@ -313,8 +318,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Vivant ou pas vivant",
             "Le corps et les sens",
             "L'eau solide ou liquide",
-            // S27-3 : titre neuf.
-            "Histoire et géographie",
+            // S27-3 : titre neuf. Scinde en quatre titres par S35-CONS-4 (DEC-0088, ADR-0081).
+            "Situer dans le temps",
+            "Nommer, en histoire",
+            "Nommer, en géographie",
+            "Lire un document",
             // S28-3 : titre neuf.
             "Anglais",
             // S28-4 : deux titres neufs.
@@ -468,14 +476,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // familles du paquet, comptees par nadia-prof : 16 + 10 + 21 + 10 = 57 items couverts.
             // Rejeu borne a s31.
             //
-            // Correction du 2026-09-08 (marc-dev, CONS-1, arbitrage prealable de s32, section 1.2 ;
-            // story S32-1) : la consigne ne nommait toujours pas la tache reelle de HG-CM1-03 et
-            // HG-CM1-04 (nommer un peuple ou un mouvement de population), mesure en jouant le
-            // 2026-09-07. Reecrite une quatrieme fois pour l'ajouter, sans retirer aucune des quatre
-            // taches deja nommees.
-            "Lis bien, puis situe dans le temps, nomme un peuple ou un mouvement de population, "
-                    + "associe un roi à son fait, décris un espace ou une ressource, ou lis un "
-                    + "document.",
+            // S35-CONS-4 (DEC-0088, ADR-0081) : la consigne unique ci-dessus, qui enumerait cinq
+            // taches distinctes en une seule clause, est remplacee par une consigne par entree - une
+            // seule tache, en une seule clause, par entree issue de la scission.
+            "Situe le fait dans le temps, ou remets les faits dans l'ordre.",
+            "Nomme ce que l'énoncé décrit.",
+            "Lis le document fourni, puis réponds à la question.",
             // S28-4 : deux consignes neuves.
             "Pose l'opération, puis choisis le bon résultat.",
             "Pose l'opération, puis choisis le bon quotient et le bon reste.",
@@ -690,15 +696,23 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Nommer les principales parties du corps humain et les cinq sens.",
             "Reconnaître les états de l'eau (solide, liquide) et les changements d'état "
                     + "observables.",
-            // S27-3 : competence neuve, premier paquet de la matiere. Touche plusieurs lignes du
-            // referentiel (S27-3 ne pretend fermer aucune ligne) - libelle du descripteur du
+            // S27-3 : competence neuve, premier paquet de la matiere. Touchait plusieurs lignes du
+            // referentiel (S27-3 ne pretendait fermer aucune ligne) - libelle du descripteur du
+            // paquet, mot pour mot. Scindee en quatre competences par S35-CONS-4 (DEC-0088,
+            // ADR-0081), une par entree issue de la scission, libelle du descripteur de chaque
             // paquet, mot pour mot.
-            "Ouvre plusieurs compétences du référentiel : se repérer dans le temps (grandes "
-                    + "périodes, siècles), identifier des traces d'une occupation ancienne, nommer "
-                    + "des rois et leur réalisation, situer les événements de la Révolution et de "
-                    + "l'Empire, distinguer des types d'espaces et leurs activités, comprendre un "
-                    + "document historique (lignes 1, 2, 3, 4, 6, 7, 8, 11, 12, 13, 14 du "
-                    + "référentiel CM1)",
+            "Se repérer dans le temps : situer un fait dans le temps (grande période, siècle ou "
+                    + "millénaire), ou remettre des faits dans l'ordre chronologique (référentiel "
+                    + "CM1, lignes HG-CM1-01, HG-CM1-02, HG-CM1-07)",
+            "Nommer ce que l'énoncé décrit, en histoire : un peuple ou un mouvement de population, "
+                    + "un roi et sa réalisation, un événement de la Révolution ou de l'Empire "
+                    + "(référentiel CM1, lignes HG-CM1-03, HG-CM1-04, HG-CM1-06, HG-CM1-07, "
+                    + "HG-CM1-08)",
+            "Nommer ce que l'énoncé décrit, en géographie : un type d'espace et ses activités, une "
+                    + "ressource (eau, énergie, aliment) et son acheminement (référentiel CM1, "
+                    + "lignes HG-CM1-11, HG-CM1-12, HG-CM1-13)",
+            "Lire un document fourni (texte) et en tirer une réponse : date, nature, auteur ou "
+                    + "information extraite (référentiel CM1, ligne HG-CM1-14)",
             // S28-3 : competence neuve, premier paquet d'anglais. Libelle du descripteur du
             // paquet, mot pour mot (cm1-anglais.yaml).
             "Ouvre la ligne lire et comprendre des mots et expressions familiers du référentiel "
