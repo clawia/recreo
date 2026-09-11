@@ -13657,17 +13657,40 @@ porte une competence neuve.**
   C'est le quatrieme sprint consecutif ou la consigne fautive de ce jeu n'est pas corrigee -
   routee de s32 a s33 (`S33-CONS-4`), de s33 a s34 (`S34-CONS-4`), et de s34 a s35 par cette
   entree.
-- **Criteres d'acceptation** : inchanges, ceux de `S34-CONS-4` - la table des quatre entrees de
-  catalogue (Situer dans le temps, Nommer en histoire, Nommer en geographie, Lire un document),
-  le recompte exhaustif des 110 items existants, la redaction des quatre consignes par qui
-  execute (une seule tache par consigne, en une seule clause), et l'audit de `nadia-prof` sur
-  chaque consigne, texte devant items.
+- **Prealable bloquant, leve dans le meme geste que cette entree** : `theo-archi` mesure, dans son
+  avis de faisabilite de s35 (section 6), une contradiction entre trois textes tous valides - la
+  table des quatre entrees (qui affecte "Lire un document" a `HG-CM1-14` seule, 10 items),
+  `DEC-0064` (defaut `nombreDeManches: 10`, sauf derogation ecrite) et `ADR-0023` (le nombre
+  d'items doit etre strictement superieur au nombre de manches, l'egalite etant refusee comme le
+  defaut) - qui fait rougir `ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest` de facon garantie
+  si rien ne bouge. **`DEC-0088` leve ce blocage par une derogation ecrite** (`nombreDeManches: 7`
+  pour cette seule entree, sur le patron exact de `DEC-0020`) : la story n'est engageable qu'a
+  compter de cette derogation.
+- **Criteres d'acceptation** : ceux de `S34-CONS-4` restent ceux qui font foi (table des quatre
+  entrees, recompte exhaustif des 110 items existants, redaction des quatre consignes par qui
+  execute, audit de `nadia-prof` texte devant items), **plus trois criteres ajoutes par
+  `DEC-0088` pour que la scission ne soit pas rouge garanti a l'execution** (nommes par
+  `theo-archi`, avis de s35, section 6.3) :
+  - Etant donne l'entree de catalogue "Lire un document", quand elle est creee, alors elle porte
+    `nombreDeManches: 7`, et non le defaut de `DEC-0064` (`DEC-0088`).
+  - Etant donne les items de cette seule entree, quand le paquet est ecrit, alors ils **perdent**
+    leur cle `ligneDeReferentiel` - le paquet ne sert qu'une seule ligne de referentiel
+    (`HG-CM1-14`), et le garde-fou qui verifie cette regle refuse explicitement le cas contraire.
+  - Etant donne les quatre paquets issus de la scission, quand ils sont crees, alors ils
+    conservent le meme descripteur `matiere` / `niveau` (`Histoire-geographie`, `CM1`) - `HIS-1`
+    (au plus un tiers de restitution) se compte sur le lot de matiere entier et non par paquet ;
+    un descripteur qui derive romprait cette garantie sans qu'aucun des criteres deja ecrits ne
+    le voie.
 - **Ce que cette story ne fait pas** : elle ne rouvre pas la decision de grain deja rendue
-  conjointement par `camille-po` et `nadia-prof` (`ADR-0081`) ; elle n'invente aucun critere neuf
-  au-dela de ceux deja ecrits dans `S34-CONS-4`.
-- **Lien decision** : `S34-CONS-4` (ce document, criteres inchanges) ; `S33-CONS-4` (decision de
-  grain, deja remplacee) ; `ADR-0081` ; `verdicts-nadia-instance-A.md`, section 9.3 (idle mesure) ;
-  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`, "Encore ouverts".
+  conjointement par `camille-po` et `nadia-prof` (`ADR-0081`) ; elle ne cree aucun item neuf sur
+  `HG-CM1-14` (l'issue ecartee par `DEC-0088`) ; elle n'invente aucun critere neuf au-dela de ceux
+  deja ecrits dans `S34-CONS-4` et des trois ajoutes par `DEC-0088`.
+- **Lien decision** : `S34-CONS-4` (ce document, criteres repris) ; `S33-CONS-4` (decision de
+  grain, deja remplacee) ; `ADR-0081` ; `ADR-0023` ; `DEC-0064` ; `DEC-0088` (derogation
+  `nombreDeManches`, prealable bloquant leve) ; `verdicts-nadia-instance-A.md`, section 9.3 (idle
+  mesure) ; `squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/avis-faisabilite-theo.md`,
+  section 6 ; `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`,
+  "Encore ouverts".
 - **Agent pressenti** : a affecter au planning de s35 par `sofia-sm` - `theo-archi` pour la forme
   technique de la scission ; `marc-dev` ou `lea-dev` pour l'execution et l'ecriture des quatre
   consignes ; `nadia-prof` pour l'audit.
