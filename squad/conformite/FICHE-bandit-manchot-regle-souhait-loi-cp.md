@@ -2,14 +2,19 @@
 
 - **Mecanique** : `bandit-manchot`
 - **Contenu(s)** : `cp-emc-regle-souhait-loi` (11 items)
-- **Statut global** : **REFUSE** (prononce le 2026-09-07, **maintenu au reaudit du 2026-09-08 sur un
+- **Statut global** : **VALIDE SOUS RESERVE** au cinquieme passage, **2026-09-11** - **Done
+  pedagogique prononce**, `EMC-CP-07` fermable. **Deux reserves ouvertes, non bloquantes** :
+  `RSL-R1` (l'item transpose ne nomme aucune source de droit) et `RSL-R2` (sa bonne reponse emploie
+  *concernes* et compte dix mots), bloc de validation du 2026-09-11 en fin de fiche. **Les quatre
+  refus anterieurs ne sont pas effaces** ; leur historique suit.
+- **Statut jusqu'au 2026-09-10** : **REFUSE** (prononce le 2026-09-07, **maintenu au reaudit du 2026-09-08 sur un
   seul motif**, **maintenu au troisieme passage du 2026-09-09 sur un motif entierement neuf**,
   **maintenu au quatrieme passage du 2026-09-10** - les quatre blocs de validation sont lisibles
   ci-dessous, dans cet ordre, et aucun n'est retouche). **Au quatrieme passage, `PLA-1` sur l'item 11
   est payee** ; `EMC-11` n'est pas engagee et l'item 4 marque toujours fausse une proposition vraie
   (`EMC-5`). **Le blocage qui empechait d'engager `EMC-11` est leve dans le bloc du 2026-09-10 :
   aucune de mes quatre clauses ne cede, c'est mon propre chiffrage qui etait faux.**
-- **Derniere mise a jour** : 2026-09-10
+- **Derniere mise a jour** : 2026-09-11
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -757,3 +762,133 @@ sur `catalogue.yaml` et sur le fichier de test.
 regime et prix, au format `RES-1`** - est dans
 `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md`, section 3.
 **Prix inchange : rejeu, 0,5 ; `PAR-15` ne s'applique pas a cette sortie.**
+
+---
+
+## Bloc de validation pedagogique - cinquieme passage, 2026-09-11 - nadia-prof UNIQUEMENT
+
+> Les quatre blocs precedents restent lisibles tels quels, avec leurs refus. **Un refus ne s'efface
+> pas, meme leve** : c'est l'histoire de cette ligne qui dit ce qu'elle a coute.
+
+- **Verdict** : **VALIDE SOUS RESERVE** - **Done pedagogique prononce.** Quatre refus leves.
+- **Date** : 2026-09-11
+- **Auteur** : `nadia-prof`, instance B de s34
+- **Arbre** : `round-two` a `a7852398`. Contenu du jar compare au contenu de l'arbre avant de jouer,
+  identique sur ce paquet - je ne juge pas un jar plus vieux que l'arbre.
+- **Audit joue** : **oui.** Une partie complete de dix manches, **une erreur volontaire sur chaque
+  manche**, indice lu a chaque echec. **Les cinq items de la tache de classement et cinq des six
+  items de la tache de portee vus a l'ecran**, dont l'item transpose. Le onzieme item, non tire dans
+  cette partie, relu dans le paquet servi.
+- **Ce que `camille-po` peut faire** : passer `EMC-CP-07` a `couvert-valide` dans
+  `squad/programme/MATRICE-couverture.md`. **Je ne touche pas la matrice.**
+
+### Les trois modes de defaillance que j'avais nommes d'avance, verifies un par un a l'ecran
+
+**C'est le premier test grandeur nature de `RES-1`, et la question posee etait : un mode de
+defaillance nomme d'avance empeche-t-il le defaut, ou permet-il seulement de le nommer apres coup ?
+Sur ce paquet, il l'a empeche.**
+
+> **`FD-1` - opposer les enfants aux adultes sur l'item transpose. Evite, et evite dans l'objet et
+> pas seulement dans la lettre.** Manche 9, vu a l'ecran : *"Le port du casque a velo est obligatoire
+> avant douze ans. Qui doit le porter ?"*, trois boutons - **tous les enfants concernes, meme pour un
+> trajet tres court** / *seulement ceux qui font de la competition* / *seulement si les parents le
+> decident*. **Le mot *adulte* n'apparait sur aucun des trois.** L'axe servi est exactement celui que
+> `O-2` demandait : *tous ceux que la loi nomme, sans exception* contre *seulement une partie d'entre
+> eux*, et les deux fausses exceptions sont celles qu'un enfant peut reellement croire. **C'etait un
+> refus d'avance ; il n'a pas lieu d'etre prononce.**
+>
+> **`FD-2` - corriger l'item 4 seul en laissant dormir le meme ternaire dans les items 5 et 6.
+> Evite.** Vu a l'ecran sur les deux items, manches 5 et 7 : *"A la cantine, chaque eleve doit
+> attendre son tour"* et *"Aya aimerait que la maitresse donne moins de devoirs"* servent **deux
+> boutons**, *une regle qui vaut pour tous* contre *un simple souhait*. **La proposition *une loi* a
+> disparu des deux.**
+>
+> **`FD-3` - ajouter un item a la tache de portee sans recompter `FAB-1c` sur six items. Evite.**
+> Recompte a la main sur les six items : la bonne reponse est la seule proposition sans marqueur
+> restrictif sur **un item sur six** - l'item transpose lui-meme, dont les deux distracteurs portent
+> *seulement*. Le seuil de `FAB-1c` est *"plus d'un tiers des items de la tache"*, soit deux sur six.
+> **Tenue, a un item du seuil.**
+
+### `O-1` et `O-2`, les deux objets que j'avais ecrits
+
+- **`O-1` est entierement servi.** La tache de classement est binaire sur ses cinq items, il n'y a
+  plus de troisieme categorie a l'ecran, et **aucune reponse vraie n'est plus marquee fausse**
+  (`EMC-5`). C'etait le motif du refus du 2026-09-07, du 2026-09-08 et du 2026-09-10 : il est paye.
+- **`O-2` est servi sur son axe, et incomplet sur un point que je n'avais pas ecrit** - voir
+  `RSL-R1`.
+- **`BIN-1`, mesuree sur la partie et non sur le paquet.** La partie jouee a porte **cinq manches
+  binaires sur dix** - la moitie, jamais une majorite, ce que mon compte du 2026-09-10 annoncait
+  comme le seul cas possible sous la sortie (a). **La clause est tenue, mesuree la ou je l'avais
+  ecrite.**
+- **Les cinq faits de droit de la tache de portee** (feu rouge, ceinture, tabac a l'ecole, klaxon,
+  vente d'alcool aux mineurs) **sont inchanges et n'ont pas ete rejoues** : trois choses payees en
+  deux sprints ne se rejouent pas pour reparer un item. **Le fait du casque a ete reverifie contre sa
+  source** : l'obligation du casque pour les moins de douze ans, cycliste comme passager, est exacte.
+
+### Les deux reserves, non bloquantes, au format `RES-1`
+
+> **`RSL-R1` - l'item transpose est le seul des six a ne nommer aucune source de droit, et son indice
+> l'appelle *"cette regle"*.**
+>
+> **Constat.** Les cinq autres items de la tache de portee nomment leur source : *"Le code de la
+> route dit..."*, *"Une loi rend obligatoire..."*, *"Une loi interdit..."* (trois fois). L'item
+> transpose dit *"Le port du casque a velo est obligatoire avant douze ans."* - **ni *loi*, ni *code
+> de la route*, ni *En France***, que son enonce portait avant le mouvement. Dans son ancienne place,
+> l'enfant apprenait que c'etait une loi **en pressant le bouton *une loi***, et l'indice disait
+> *"Cette obligation vient de l'Etat et s'applique dans tout le pays, pas seulement a l'ecole."*
+>
+> **Objet.** *L'enfant apprend, sur cet item comme sur les cinq voisins, que ce qui l'oblige a porter
+> un casque est une loi et non une regle de son ecole.* La seconde moitie du libelle est
+> *"reconnaitre qu'**une loi** s'impose a tous"* : un item qui enseigne la portee sans nommer la loi
+> n'en sert que la moitie.
+>
+> **Mode de defaillance nomme d'avance.** **Ajouter *une loi* a l'enonce et s'arreter la.** L'enonce
+> compte 12 mots et `LON-1` en autorise 15 : la marge existe, mais une reecriture qui allonge l'enonce
+> sans toucher l'indice laisse *"Cette regle protege chaque enfant qui roule"* a l'ecran juste apres
+> que la tache de classement a appris a l'enfant que *"une regle qui vaut pour tous"* est une regle
+> d'ecole. **Le paquet dirait alors *loi* d'un cote et *regle* de l'autre sur le meme fait, ce qui est
+> `COH-1`.**
+>
+> **Perimetre, mesure sur l'etat d'arrivee.** L'item transpose seul : son enonce et son indice. **Les
+> dix autres items ne bougent pas.** `LON-1` et `LON-2` recomptees sur cet enonce. **Ce que je ne
+> demande pas** : je ne touche pas a l'indice de l'item du feu rouge, qui dit lui aussi *"Cette
+> regle"* - **je l'ai valide, il est anterieur a ce sprint et je ne deplace pas mes poteaux.** C'est
+> l'absence de source dans l'enonce qui est neuve dans ce diff.
+
+> **`RSL-R2` - la bonne reponse de l'item transpose emploie *concernes* et compte dix mots.**
+>
+> **Constat.** *"tous les enfants concernes, meme pour un trajet tres court"* - dix mots sur un
+> bouton, contre trois a sept pour les cinq autres bonnes reponses de la meme tache. **Et
+> *concerne*** : un enfant de six ans ne lit ni ne comprend ce mot, qui ne renvoie a rien de concret
+> et suppose de retrouver dans l'enonce qui la loi nomme.
+>
+> **Objet.** *L'enfant lit seul le bouton qu'il doit presser.* Une bonne reponse illisible se presse
+> par elimination, ce qui rend l'item a la forme au lieu de la competence.
+>
+> **Mode de defaillance nomme d'avance.** **Raccourcir en retirant *meme pour un trajet tres
+> court*.** C'est la moitie qui porte l'axe de `O-2` - l'exception que l'enfant croit - et sans elle
+> la bonne reponse redevient *"tous les enfants"*, que les deux distracteurs en *seulement* designent
+> par contraste de forme (`FAB-1c` repasserait alors a deux items sur six, au seuil). **C'est le mot
+> *concernes* qui doit partir, pas la fin de la proposition.**
+>
+> **Perimetre.** La bonne reponse de l'item transpose seule. **Les deux distracteurs et l'indice ne
+> bougent pas** ; `FAB-1a` et `FAB-1c` recomptees sur les six items apres la reecriture.
+>
+> **Pourquoi ce n'est pas un refus, et je le dis plutot que de le laisser deviner.** Aucune de mes
+> barres ecrites ne porte sur la longueur ni sur le vocabulaire d'une **proposition** : `LON-1` et
+> `LON-2` portent sur l'enonce. **Refuser un cinquieme passage sur un mot, quand l'equipe a evite les
+> trois modes de defaillance que j'avais nommes d'avance, serait exactement le caprice que je
+> m'interdis.** La reserve est ecrite, datee, et elle vaudra pour tout paquet a partir d'ici.
+
+### Ce dont je reste la seule garde sur ce paquet, apres ce passage
+
+| Propriete | Garde executable ? |
+|---|---|
+| **`EMC-5`** - qu'aucune proposition vraie ne soit marquee fausse | **aucun.** Aucun test ne sait qu'une proposition est vraie. **C'est moi, en jouant** |
+| **`FD-1`** - l'axe de la discrimination de l'item transpose | **aucun**, et aucun n'est concevable |
+| **`PLA-1`** - qu'une proposition soit un candidat envisageable | **aucun** |
+| **`CAT-1`** - qu'un item ne se gagne pas au ton | **aucun** |
+| **L'exactitude des six faits de droit** | **aucun.** Reverifies contre leur source |
+| **`BIN-1` mesuree sur la partie plutot que sur le paquet** | **aucun.** Le compte est de moi, refait a la main sur le tirage, et confirme par une partie jouee. **Je ne demande toujours pas de garde-fou** |
+| **`RSL-R2`** - qu'un enfant de CP puisse lire le bouton qu'il presse | **aucun**, et c'est neuf sur ce paquet |
+| **`LON-1`, `LON-2`** | **mordues** par `ADR-0089`, dette zero sur ce paquet |

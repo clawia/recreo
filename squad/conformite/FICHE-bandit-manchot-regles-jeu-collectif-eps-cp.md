@@ -551,3 +551,133 @@ prenom.**
 | Date | Verdict | Instance | Motif en une ligne |
 |---|---|---|---|
 | 2026-09-10 | **REFUSE** | C (s33) | `JEU-R9` - l'item 8 credite une sanction de l'epervier que l'item 3 du meme paquet contredit, que nul enonce ne rappelle, et marque fausse une reponse defendable. **Les huit motifs de s32 sont leves** |
+
+## Bloc de validation pedagogique - troisieme passage, 2026-09-11 - nadia-prof UNIQUEMENT
+
+> **Rien n'est efface au-dessus. On ajoute.** Les deux blocs du 2026-09-09 et du 2026-09-10 restent
+> verbatim, refus compris.
+
+- **Verdict** : **VALIDE SOUS RESERVE** - **Done pedagogique prononce sur `EPS-CP-08`**
+- **Date** : 2026-09-11
+- **Auteur** : `nadia-prof`, **instance C de s34**
+- **Increment audite** : `S34-EPS-JEU`, commit `a3391bfc`, arbre fusionne `a7852398`
+- **Audit joue** : **oui.** Jar reconstruit depuis un worktree dedie, application lancee sur un port
+  local, arretee **par l'identifiant de son processus**. **Deux parties, vingt manches, les onze items
+  vus a l'ecran**, erreur volontaire sur chacun. **Sur une des deux parties, les deux items de
+  l'epervier sont sortis ensemble, a six manches d'intervalle** - c'est la configuration exacte qui
+  avait produit `JEU-R9`, et c'est celle sur laquelle je juge.
+- **Audit degrade sur un point, declare** : joue par requetes HTTP reelles, donc **HTML servi** et non
+  page rendue par un navigateur.
+- **Document de verdicts** :
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/verdicts-nadia-instance-C.md`
+
+### `JEU-R9` est levee, et c'est la levee la plus propre des deux reprises d'EPS de ce sprint
+
+**Les items 3 et 8 forment desormais le couple enseigne/juge que j'avais nomme**, celui que `JEU-R7`
+avait invente sur les demenageurs et que l'epervier n'avait jamais recu :
+
+| Item | Tache | Servi a l'ecran |
+|---|---|---|
+| 3 | A - reconnaitre la regle | *"À l'épervier, que devient un joueur touché en traversant ?"* -> *"il devient épervier à son tour"*, indice *"Il rejoint alors les joueurs qui doivent toucher les autres."* |
+| 8 | B - juger une situation | *"À l'épervier, Malo est touché pendant qu'il traverse. Que se passe-t-il ?"* -> *"Malo devient épervier à son tour"*, indice *"Être touché ne fait pas sortir du jeu, cela fait seulement changer de camp."* |
+
+**Le couloir et l'elimination ont disparu** : ils ne correspondaient a aucune regle universelle du
+jeu (`EPS-1`) et etaient juges sans etre jamais poses.
+
+**L'objet de `JEU-R9`, verifie a l'ecran et non sur le diff** : *un enfant qui a retenu ce que le
+paquet lui a appris cinq manches plus tot ne doit pas etre marque faux avec.* **Les deux items sont
+sortis dans la meme partie ; l'enfant qui repond juste au premier repond juste au second avec
+exactement la meme connaissance.** Le paquet dit desormais une seule chose de l'epervier.
+
+**Le mode de defaillance que j'avais nomme d'avance - corriger l'item 8 seul, une deuxieme fois -
+n'est pas pris.**
+
+### `COH-1` et `EPS-1`, tenues sur le paquet entier
+
+**`COH-1` (opposable depuis ce lot) verifiee jeu par jeu, et c'est le controle qui a manque a s33** :
+1, 2, 3 soleil (items 1 et 11), chat perche (2, 7, 9), epervier (3, 8), demenageurs (6, 10), balle au
+prisonnier (4), loup et moutons (5). **Aucun couple ne se contredit**, et les trois items du chat
+perche continuent de dire la meme regle sous trois angles.
+
+**`EPS-1`** : les six jeux sont universellement scolaires, et aucune regle jugee ne depend d'une
+variante locale non nommee. **`FER-1`** vacuement tenue, **`FER-2`** onze items, **`FER-3`** deux
+taches a six et cinq, **`BIN-1`** zero item binaire, `FAB-1a`, `FAB-1b`, `FAB-1c`, `PLA-1`, `CAT-1`,
+`EPS-2`, `EPS-3`, `EPS-4`, `EPS-6`, `BIA-4` tenues - **comptes a la main pour la troisieme fois.**
+
+### `JEU-R10` est levee
+
+Les trois propositions de l'item 10 sont desormais des consequences de meme forme - *"Hugo doit
+reposer un des deux objets"* (creditee), *"Hugo doit recommencer au départ"*, *"Hugo échange sa place
+avec un camarade"*. **La forme ne designe plus rien, et l'enfant doit savoir laquelle est la sanction
+de ce jeu-la**, ce que ma reserve demandait en toutes lettres. La regle jugee est enseignee par
+l'item 6, et l'indice de l'item 10 la redit (*"La règle des déménageurs impose de transporter un
+objet à chaque passage"*).
+
+### `JEU-R11` n'est pas levee - reconduite sans un mot de plus
+
+**Indice de l'item 6, servi aujourd'hui** : *"Porter un seul objet permet d'aller plus vite qu'en
+portant deux à la fois."* La formulation de s33 etait *"pour aller plus vite entre les deux zones"* :
+**la reprise rend le motif refuse plus explicite au lieu de le retirer.**
+
+**Objet, que j'ecris aujourd'hui parce qu'il manquait a ma reserve de s33** : *l'enfant doit repartir
+en sachant que porter un objet a la fois est la regle du jeu, pas une facon d'aller plus vite.* Un
+enfant de six ans qui a joue aux demenageurs sait qu'on va plus vite en prenant deux objets ;
+**l'indice lui dit le contraire de ce qu'il a vecu, au moment ou il vient d'echouer.**
+
+**Ce n'est pas un reproche a `sofia-sm`, et le defaut est en amont d'elle.** Mon perimetre
+(arbitrage prealable de s34, section 5.4) finit par *"plus l'indice de l'item 6"* **sans dire
+pourquoi** ; le critere de story qui en est sorti demande que cet indice *"reste coherent avec la
+regle de l'epervier telle que corrigee"* - **une exigence qui n'a aucun sens, l'item 6 portant sur
+les demenageurs.** Un numero d'item transporte sans son objet n'a rien guide.
+
+**Non bloquante, pour la meme raison qu'a s33, reverifiee** : l'item 10 dit desormais clairement que
+c'est une regle, ce qui borne le degat.
+
+### `JEU-R12` n'est pas levee - reconduite sans durcissement
+
+Apres la reprise, **les deux seuls personnages qui enfreignent une regle sont Hugo, a l'item 10 et a
+l'item 11. Aucune fille n'enfreint rien.** Ce que j'attendais tenait en un prenom ; il n'a pas ete
+change.
+
+**Correction a l'en-tete du fichier de paquet** : il declare *"le seul personnage qui enfreint encore
+une regle du paquet est Hugo (item 10)"*. **Il enfreint aussi a l'item 11**, inchange depuis s32. **La
+conclusion tient - la reprise n'aggrave pas - l'enumeration est fausse.**
+
+**Ce que je maintiens mot pour mot depuis s33** : deux occurrences sur onze items et quatre
+personnages **ne font pas une mesure**, **je ne pose aucune barre chiffree**. **Non bloquante. Je ne
+la transforme pas en story et je ne la retire pas non plus** : une reserve retiree parce qu'elle est
+petite est une reserve qu'on ne paie jamais.
+
+### Points que je ne transforme pas en reserve - 2026-09-11
+
+- **Le distracteur *"Hugo doit recommencer au départ"* (item 10) est presque mot pour mot la bonne
+  reponse de l'item 11, *"Hugo doit retourner au départ"*, meme prenom, meme tache.** J'ai regarde
+  s'il fallait une reserve : **non.** Les deux enonces nomment leur jeu des le premier mot, et
+  **savoir que la sanction depend du jeu est exactement ce que `JEU-R10` demandait**. Ecarte
+  volontairement.
+- **L'indice de l'item 2 nomme la hauteur, qui est le champ lexical de sa bonne reponse.** Sous la
+  lettre d'`EPS-7` ce serait un defaut ; **`EPS-7` est retiree le 2026-09-11 et remplacee par
+  `EPS-8`** (verdicts, section 2.2), qui demande un fait et l'obtient ici. **Ecarte, et le motif est
+  chez moi.**
+
+### Mention de couverture partielle - condition de la fermeture (refus d'avance numero 7)
+
+**La ligne ne passe a `couvert-valide` qu'avec cette mention, reprise mot pour mot de la matrice ou
+elle est deja pre-ecrite** : *"connaissance de la regle seule ; la tenue du role en situation reste
+non couverte"*. **Une fermeture sans elle est refusee.**
+
+### Ce que je route - 2026-09-11
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EPS-CP-08` passe a `couvert-valide`** | `camille-po` | Avec sa mention de couverture partielle. **Je ne touche pas la matrice** |
+| **`JEU-R11`** | `camille-po`, via `sofia-sm` | **Non levee.** Son objet est ecrit ci-dessus, pour la premiere fois. **Le critere de story qui la portait est a reecrire depuis cet objet, pas depuis mon numero d'item** |
+| **`JEU-R12`** | `camille-po`, via `sofia-sm` | **Non levee.** Un prenom a l'item 10 ou 11 |
+| **Trois declarations fausses dans l'en-tete du fichier** | `relecteur-pedagogique`, via `sofia-sm` | `JEU-R11` declaree traitee ; *"le seul personnage qui enfreint est Hugo (item 10)"* ; *"aucun marqueur de restriction n'est employe"* - **cette derniere est routee depuis s33 et non payee** |
+| **Un test de paquet pour ce paquet** | `theo-archi`, via `sofia-sm` | Route a s32 et s33, non paye |
+
+### Historique des verdicts sur ce paquet - suite
+
+| Date | Verdict | Instance | Motif en une ligne |
+|---|---|---|---|
+| 2026-09-11 | **VALIDE SOUS RESERVE**, Done pedagogique **prononce** | C (s34) | `JEU-R9` levee - les items 3 et 8 forment le couple enseigne/juge, verifie sur une partie ou ils sortent ensemble ; `COH-1` tenue sur le paquet entier ; `JEU-R10` levee. **`JEU-R11` et `JEU-R12` reconduites, non levees, non bloquantes** |

@@ -11185,3 +11185,133 @@ aucune n'etant un durcissement d'une barre anterieure :
   structurelle, routee.
 
 Aucune ligne de la matrice ne bouge par cette reverification, et aucun verdict de s29 n'est rouvert.
+
+
+---
+
+# Increment de s34 (`S34-SCO1-REMEDE`, `83a7821e` ; `ADR-0090`, `2c3463b3`) - **REFUSE**
+
+> Bloc de validation pedagogique - **`nadia-prof` UNIQUEMENT, instance A de s34**, 2026-09-11. Il
+> n'est jamais pre-rempli ni anticipe par un autre agent. **Aucun bloc precedent n'est retouche.**
+>
+> **Ce bloc vit dans la fiche de `bandit-manchot-additions-cp` parce que le changement juge n'est pas
+> un contenu : c'est la mecanique, et cette fiche porte deja ce qui vaut pour elle** (`M1` a `M13`,
+> `REV-2`, la reverification du 2026-09-06). **Il vaut pour les trois mecaniques** - bandit manchot,
+> saisie, designation - et pour les 71 entrees du catalogue.
+>
+> **Le detail complet vit dans
+> `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/verdicts-nadia-instance-A.md`.**
+
+## Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `a7852398`, jar reconstruit depuis un worktree dedie, lance sur un
+port local, arrete par son identifiant de processus. Parties completes sur un paquet a trois
+propositions (`histoire-geographie-cm1`), sur un paquet **portant des items a deux propositions**
+(`vivant-non-vivant-cp`), sur **deux entrees de saisie** (`complements-10-cp`, `mot-dicte-cp`) et sur
+**la designation** (`frise-de-la-journee`, mecanique neuve ce sprint) ; plus le chemin d'echec
+complet jusqu'a la revelation ; plus **les trois ecrans de fin de partie lus tels que l'enfant les
+lit**. C'est exactement ce que le prix de 0,5 annonce dans mon arbitrage prealable achetait.
+
+**Degrade sur un point, declare** : HTML servi, pas page rendue.
+
+## 1. Ce que le remede fait, et qui est juste
+
+| Mecanique | Constat |
+|---|---|
+| `bandit-manchot`, trois propositions | l'enfant garde ses trois essais ; l'indice arrive des le premier echec ; **le score ne monte que sur les manches trouvees du premier appui** |
+| `bandit-manchot`, items a deux propositions | meme comportement, **et l'indice reste utile puisqu'il reste un appui** - c'est le motif numero 1 pour lequel j'ai ecarte la famille B, et il tient |
+| `saisie` | meme comportement |
+| `designation` (neuve) | meme comportement, verifie en propre |
+| chemin d'echec complet | **la revelation est intacte** : *"Ce n'est pas ca."* perd son *"Essaie encore !"*, puis *"Appuie sur la bonne reponse :"* nomme la reponse, et **la manche se ferme sur l'appui de l'enfant**. `M5` est tenue |
+
+**La phrase que j'avais ecrite le 2026-09-10 pour etre citee telle quelle est tenue au mot, sur les
+trois mecaniques.** Je ne demande a personne de defaire une ligne de ce travail.
+
+## 2. `SCO-R1` - **reserve neuve, datee du 2026-09-11, BLOQUANTE** : ce que l'enfant lit a la fin
+
+**Ecran de fin de partie, lu tel que l'enfant le lit, apres dix manches jouees dont six trouvees du
+premier appui :**
+
+> *"Les jeux"* | ***"Score : 6"*** | *"Bravo, c'est juste !"* | *"C'est fini !"*
+
+**Et rien d'autre.** Meme lecture sur la designation (*"Score : 3"* apres dix manches) et sur la
+saisie (*"Score : 4"* apres sept manches).
+
+**Avant le remede, *"Score : 10"* disait deux choses a la fois** : ce que l'enfant avait trouve, et
+qu'il avait fait les dix questions. **Le remede a retire la premiere information sans laisser la
+seconde.**
+
+**C'est le refus numero 6 de mon arbitrage prealable du 2026-09-10**, ecrit avant la story et avant
+l'`ADR`, et il se realise a l'endroit que j'avais nomme - *"a la premiere partie jouee apres le
+remede"*.
+
+> **`SCO-R1`. BLOQUANTE.**
+> - **Objet** : a la fin d'une partie, l'enfant doit lire **deux** choses - ce qu'il a trouve seul,
+>   et qu'il a fait toutes les questions. Aujourd'hui il n'en lit qu'une, et c'est la plus basse.
+> - **Mode de defaillance** : ecrire un ecran qui **montre a l'enfant ce que ses essais lui ont
+>   coute** - un decompte, une note sur dix presentee comme un resultat, une phrase qui explique
+>   pourquoi le chiffre a baisse. **Ma decision ne demande pas cela**, et les deux nombres que
+>   l'enfant doit lire existent deja tous les deux. **Second mode** : poser le nombre de questions a
+>   cote du score sans dire lequel est lequel - *"6"* et *"10"* l'un pres de l'autre se lisent comme
+>   une note.
+> - **Perimetre, mesure sur l'etat d'arrivee** : **un ecran**, celui de fin de partie, commun aux
+>   trois mecaniques. **Le texte est a ecrire et je ne l'ecris pas** (`RES-2` point 1) ; **il revient
+>   devant moi lu a l'ecran, pas dans un gabarit**. **Conditions que l'etat d'arrivee doit
+>   satisfaire** : les mots sont lisibles par un enfant de CP, aucun n'est un terme de note scolaire.
+>   **Non compte** : ce que ce texte neuf donnerait sur une derniere manche revelee - a verifier au
+>   moment ou il sera ecrit.
+> - **Regime : rejeu, 0,5** - une partie complete sur chacune des trois mecaniques, plus une partie
+>   jouee mal jusqu'a la revelation.
+
+**Ce que ce refus ne demande pas** : revenir sur le remede. Les trois sessions font exactement ce que
+j'ai decide et `ADR-0090` le tient. **Le trou est dans le perimetre de la story, pas dans
+l'implementation** : ni la story ni l'`ADR` - qui le dit explicitement en decision 4 - ne portaient
+l'ecran de fin, alors que mon refus etait ecrit avant les deux.
+
+## 3. `SCO-R2` - **reserve neuve, datee du 2026-09-11, non bloquante** : rien ne dit a l'enfant ce qui compte
+
+Sur une manche trouvee au deuxieme essai, le jeu affiche ***"Bravo !"*** et le score **ne bouge
+pas** - texte identique, au mot pres, a celui d'une manche trouvee du premier coup, ou il monte.
+**Rien, nulle part dans le jeu, ne dit a l'enfant que seul le premier essai compte.**
+
+> **`SCO-R2`.**
+> - **Objet** : l'enfant doit pouvoir savoir ce qui fait monter le chiffre qu'il lit. Aujourd'hui la
+>   seule explication qu'il peut se donner est que le jeu s'est trompe.
+> - **Mode de defaillance** : **retirer le *"Bravo !"* des manches qui ne comptent pas.** Ce serait
+>   refuser a l'enfant un geste juste qu'il a bel et bien fait - le contraire de ma decision : *"un
+>   essai qui compte, et deux qui enseignent"*.
+> - **Perimetre, mesure sur l'etat d'arrivee** : **un endroit ou cette regle est dite**, pas quatre.
+>   Je ne dis pas lequel : c'est une decision de forme. **Non compte** : rien de ce que j'ai joue ne
+>   porte cette regle, y compris pour l'adulte qui accompagne.
+> - **Regime : rejeu, 0,25**, se solde avec `SCO-R1` dans la meme partie.
+
+## 4. `SCO-R3` - **reserve neuve, datee du 2026-09-11, non bloquante** : sur la saisie, une validation vide coute la manche
+
+Mesure du 2026-09-11 sur `saisie-mot-dicte-cp` : un champ vide valide, puis un champ de trois espaces
+valide, comptent **chacun un essai**, et le troisieme essai tombe sur la revelation. **Avant le
+remede, cela ne coutait rien au score ; depuis, la premiere validation vide retire a la manche tout
+credit possible.**
+
+> **`SCO-R3`.**
+> - **Objet** : un enfant de CP qui appuie sur *"Je reponds"* sans avoir rien ecrit ne doit pas
+>   perdre ce que sa manche pouvait lui rapporter. Il apprend a ecrire au clavier ; le geste vide est
+>   une maladresse, pas une reponse fausse.
+> - **Mode de defaillance** : donner un message qui gronde - *"tu n'as rien ecrit"* adresse a
+>   l'enfant. Le jeu doit ne rien compter et le laisser recommencer.
+> - **Perimetre, mesure sur l'etat d'arrivee** : la mecanique de **saisie** seule, deux entrees au
+>   catalogue. **Non compte** : la designation (un bouton de zone ne se presse pas a vide) et le
+>   bandit manchot (le cas n'existe pas).
+> - **Regime : rejeu borne, 0,25.**
+> - **Ce que cette reserve n'est pas** : elle ne reproche pas le remede. **C'est le remede qui lui
+>   donne un prix**, et c'est pour cela qu'elle nait aujourd'hui.
+
+## 5. Ce dont je reste la seule garde ici
+
+- **Le texte de l'ecran de fin de partie** - `ADR-0090` decision 4 le dit aussi. **Le remede est
+  entierement mordu par une regle ; ce que l'enfant lit ne l'est par rien**, et c'est exactement par
+  la que le defaut est passe.
+- **Qu'un enfant sache ce qui fait monter son score** (`SCO-R2`).
+- **Ce qu'une validation vide coute** (`SCO-R3`).
+
+**Aucune ligne de `squad/programme/MATRICE-couverture.md` ne bouge par ce refus** : cette story n'en
+portait aucune.

@@ -469,3 +469,109 @@ est plus près qu'il n'en a l'air."*
 | Date | Verdict | Instance | Motif en une ligne |
 |---|---|---|---|
 | 2026-09-10 | **REFUSE** | C (s33) | `SEC-R4` - les items 3 et 8 mettent l'enfant sur sa trottinette, decrivent un pieton dans leurs propositions, et creditent une regle de traversee dont le premier geste manque. **Les quatre motifs de s32 sont leves** |
+
+## Bloc de validation pedagogique - troisieme passage, 2026-09-11 - nadia-prof UNIQUEMENT
+
+> **Rien n'est efface au-dessus. On ajoute.** Les deux blocs du 2026-09-09 et du 2026-09-10 restent
+> verbatim, refus compris : **un refus efface n'a aucune valeur de preuve**, et les deux motifs de ce
+> paquet ont ete payes - ils doivent rester lisibles.
+
+- **Verdict** : **VALIDE SOUS RESERVE** - **Done pedagogique prononce sur `EPS-CP-04`**
+- **Date** : 2026-09-11
+- **Auteur** : `nadia-prof`, **instance C de s34**
+- **Increment audite** : `S34-EPS-SEC`, commit `e35ceb4e`, arbre fusionne `a7852398`
+- **Audit joue** : **oui.** Jar reconstruit depuis un worktree dedie, application lancee sur un port
+  local, arretee **par l'identifiant de son processus**. **Deux parties, vingt manches, les onze items
+  vus a l'ecran**, avec erreur volontaire sur chacun pour lire l'indice servi, et **erreur sur chacun
+  des deux distracteurs de l'item 3** pour verifier ce que son indice ecarte.
+- **Audit degrade sur un point, declare** : joue par requetes HTTP reelles, donc **HTML servi** et non
+  page rendue par un navigateur. **Ni couleur, ni contraste, ni taille, ni position** - aucune
+  conclusion de ce bloc n'en depend.
+- **Document de verdicts** :
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/verdicts-nadia-instance-C.md`
+
+### `SEC-R4` est levee, sur ses deux elements
+
+`sofia-sm` a pris la premiere des deux voies, celle que je recommandais : **les items 3 et 8 sont
+remplaces par un couple sur un agres de cour, la cage a grimper.** La trottinette disparait du
+paquet.
+
+| Element de l'objet de `SEC-R4` | Etat | Ce que j'ai verifie a l'ecran |
+|---|---|---|
+| *L'enfant repart avec la regle qui protege son corps* | **LEVE** | *"Sur la cage à grimper, avant de descendre, que doit-on vérifier ?"* -> *"qu'aucun camarade n'est en dessous"*. **La regle creditee est la regle reelle et elle est entiere** : aucun geste anterieur ne manque, la ou *descendre de la trottinette et la pousser* manquait |
+| *La situation de l'enonce est celle que decrivent les trois propositions* | **LEVE** | Les trois propositions decrivent toutes **un enfant en haut d'un agres sur le point de descendre**. Aucune ne decrit quelqu'un d'autre, ailleurs |
+| **Le mode de defaillance nomme d'avance** - *ajouter le geste manquant a la bonne reponse et laisser les distracteurs decrire un pieton* | **EVITE** | La voie retenue supprime la situation fautive au lieu de la rapiecer |
+
+**Le couple item 3 / item 8 est construit comme le couple enseigne/juge du paquet voisin** : la
+tache A pose la regle, la tache B en dit le motif (*"pour ne pas lui tomber dessus"*), sans que l'un
+contredise l'autre. **`COH-1`, opposable depuis ce lot, est tenue sur les onze items.**
+
+### `SEC-R5` est levee sur les trois indices que j'avais nommes
+
+| Item | Indice servi aujourd'hui | Ce qu'il apporte |
+|---|---|---|
+| 8 (neuf) | *"Une chute d'en haut peut faire mal à la personne touchée."* | La consequence pour l'autre enfant, que l'enonce ne dit pas |
+| 10 | *"Une glissade est si rapide qu'on n'a pas toujours le temps de s'écarter."* | **Le fait qui fait exister la regle**, non devinable de l'enonce |
+| 11 | *"Un plongeon est si rapide qu'on touche le fond avant de pouvoir réagir."* | Idem |
+
+**`EPS-8` tenue sur ces trois-la.** Et `EPS-7`, qui avait produit `SEC-R5` en n'exigeant qu'un
+retrait, **est retiree le 2026-09-11 et remplacee par `EPS-8`** (verdicts, section 2.2) - ce retrait
+n'abaisse aucune barre : `EPS-8` est plus exigeante.
+
+### Le reste du paquet, recompte
+
+`FER-1` vacuement tenue, `FER-2` onze items, `FER-3` deux taches a six et cinq, `BIN-1` zero item
+binaire, `FAB-1a`, `FAB-1b`, `FAB-1c`, `PLA-1`, `CAT-1`, `EPS-1` a `EPS-6`, `BIA-4` tenues.
+**Comptes a la main pour la troisieme fois : aucun test de paquet n'existe pour l'EPS**, et c'est
+route a `theo-archi` depuis s32.
+
+### Reserve non bloquante, neuve - et sa cause est chez moi
+
+> #### `SEC-R6` - item 3 : l'indice servi apres un echec n'ecarte aucune des deux propositions fausses
+>
+> 1. **Constat, 2026-09-11, vu a l'ecran.** Indice servi apres le premier echec : *"Une chute peut
+>    arriver vite, sans qu'on ait le temps de prévenir."* **J'ai joue l'echec sur chacun des deux
+>    distracteurs : le meme indice arrive, et il est compatible avec les deux.** Une chute rapide est
+>    un argument pour *"verifier qu'on n'est pas trop haut"* ; *prevenir* se lit aussi comme
+>    *prevenir la maitresse*.
+> 2. **Objet.** *L'enfant qui vient de se tromper sur cet item doit pouvoir ecarter la proposition
+>    qu'il a choisie, en lisant l'indice, et repartir en sachant ce qu'on verifie avant de descendre :
+>    ce qu'il y a en dessous de soi.*
+> 3. **Mode de defaillance, nomme d'avance.** Ajouter le mot *camarade* a l'indice et le laisser
+>    parler de la vitesse d'une chute : l'indice nommerait la bonne reponse sans jamais dire **ce
+>    qu'on verifie**, et la seconde proposition fausse resterait entiere. **L'indice doit apporter un
+>    fait sur la situation** - ce qu'on ne voit pas d'en haut, ou ce qu'on ne peut plus arreter une
+>    fois lance - **pas une reformulation de la reponse**.
+> 4. **Perimetre, mesure sur l'etat d'arrivee.** **Un item, un indice.** Conditions a retenir a
+>    l'arrivee : `EPS-8`, `PLA-1`, `FER-2` a onze items, `FER-3`, `COH-1`, la mention de couverture
+>    partielle. **Ce que je n'ai pas compte** : je ne demande aucun changement aux propositions de
+>    l'item 3, qui tiennent `SEC-R4`.
+> 5. **Regime et prix.** **Non bloquante** - la ligne ferme avec elle. **Rejeu, 0,5**, solde par
+>    paquet (`PAR-10`).
+>
+> **La cause est chez moi, et je l'ecris ici plutot qu'ailleurs** : mon perimetre de `SEC-R5`
+> (arbitrage prealable de s34, section 5.3) nomme *"les indices des items 8, 10 et 11"* et **omet
+> l'indice de l'item 3**, alors que la voie que je recommandais rendait cet indice neuf. `sofia-sm` a
+> couvert exactement le perimetre que j'ai ecrit. **Le seul defaut neuf de cette reprise est dans le
+> texte que mon perimetre a laisse dehors.**
+
+### Mention de couverture partielle - condition de la fermeture (refus d'avance numero 7)
+
+**La ligne ne passe a `couvert-valide` qu'avec cette mention, reprise mot pour mot de la matrice ou
+elle est deja pre-ecrite** : *"connaissance de la regle de securite seule ; son respect en situation
+n'est pas servi"*. **Une fermeture sans elle est refusee**, et ce refus n'est pas leve par le Done
+d'aujourd'hui.
+
+### Ce que je route - 2026-09-11
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EPS-CP-04` passe a `couvert-valide`** | `camille-po` | Avec sa mention de couverture partielle. **Je ne touche pas la matrice** |
+| **`SEC-R6`** | `camille-po`, via `sofia-sm` | Un indice, rejeu 0,5. **La cause est chez moi** |
+| **Un test de paquet pour ce paquet** | `theo-archi`, via `sofia-sm` | `FER-2`, `FER-3`, `BIN-1`, `FAB-1a`, `FAB-1b` sont mordables. **Route a s32 et s33, non paye** |
+
+### Historique des verdicts sur ce paquet - suite
+
+| Date | Verdict | Instance | Motif en une ligne |
+|---|---|---|---|
+| 2026-09-11 | **VALIDE SOUS RESERVE**, Done pedagogique **prononce** | C (s34) | `SEC-R4` levee sur ses deux elements - la cage a grimper remplace la trottinette, la regle creditee est entiere et les trois propositions decrivent la meme situation. `SEC-R5` levee. **Une reserve neuve, `SEC-R6`, non bloquante, dont la cause est mon propre perimetre** |

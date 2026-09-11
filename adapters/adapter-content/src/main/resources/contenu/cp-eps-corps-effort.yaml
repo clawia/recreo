@@ -100,7 +100,7 @@ items:
     distracteurs: ["somnolent", "affamé"]
     indice: "Les muscles ont besoin de beaucoup plus d'air pendant l'effort."
     ligneDeReferentiel: "EPS-CP-10"
-  - enonce: "Pendant un effort physique, que fait le coeur ?"
+  - enonce: "Pendant un effort physique, que fait le cœur ?"
     bonneReponse: "il bat plus vite"
     distracteurs: ["il bat plus lentement", "il s'arrête un instant"]
     indice: "Le sang doit circuler plus vite pour nourrir les muscles."
@@ -130,7 +130,7 @@ items:
     distracteurs: ["pour parler plus fort", "pour se refroidir plus vite"]
     indice: "Les muscles qui travaillent consomment plus d'oxygène."
     ligneDeReferentiel: "EPS-CP-10"
-  - enonce: "Pourquoi le coeur bat-il plus vite pendant un effort physique ?"
+  - enonce: "Pourquoi le cœur bat-il plus vite pendant un effort physique ?"
     bonneReponse: "pour envoyer plus de sang aux muscles"
     distracteurs: ["pour envoyer plus de sang au cerveau", "pour ralentir la respiration"]
     indice: "Le sang transporte l'énergie dont les muscles ont besoin."
@@ -163,7 +163,7 @@ items:
   - enonce: "Juste après un effort physique intense, de quoi le corps a-t-il besoin ?"
     bonneReponse: "d'un temps de repos"
     distracteurs: ["d'un nouvel effort immédiat", "d'un repas très copieux"]
-    indice: "Le coeur et la respiration ont besoin de temps pour ralentir."
+    indice: "Le cœur et la respiration ont besoin de temps pour ralentir."
     ligneDeReferentiel: "EPS-CP-11"
   - enonce: "Quand doit-on échauffer ses muscles ?"
     bonneReponse: "avant de commencer un effort intense"

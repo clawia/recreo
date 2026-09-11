@@ -1422,3 +1422,215 @@ tout.** Les regimes disent ce que le developpeur doit faire, pas ce que je factu
 - **`SCO-1`** - entierement automatisable, **et personne ne la tient**, quatrieme mesure.
 - **La couleur, le contraste, la taille, la position a l'ecran** - **personne sur ce terrain ce
   sprint** (audit degrade).
+
+
+---
+
+# Sixieme passage - increment de s34 (`S34-HG-12`, `7961b7b6`) - **VALIDE SOUS RESERVE**, `HG-CM1-12` ferme
+
+> Bloc de validation pedagogique - **`nadia-prof` UNIQUEMENT, instance A de s34**, 2026-09-11. Il
+> n'est jamais pre-rempli ni anticipe par un autre agent. **Les blocs de s27 a s33 ci-dessus ne sont
+> pas retouches** : un refus efface n'a aucune valeur de preuve, et celui du 2026-09-10 sur
+> `HG-CM1-12` reste lisible avec sa date et son motif sous la levee d'aujourd'hui.
+>
+> **Le detail complet de cet audit vit dans
+> `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/verdicts-nadia-instance-A.md`.** Ce
+> bloc porte le verdict, les levees et les reserves neuves ; il ne recopie pas les mesures.
+
+## Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `a7852398`, les quatre branches fusionnees, jar reconstruit depuis
+un worktree dedie et lance sur un port local, arrete par son identifiant de processus. **Plus de
+vingt parties completes**, **les dix items de `HG-CM1-12` vus a l'ecran un par un**, chaque
+proposition fausse pressee avant la bonne, plus des parties jouees mal jusqu'a la revelation.
+
+**Degrade sur un point, declare comme a s32 et a s33** : j'ai joue par requetes HTTP reelles, donc
+j'ai lu le HTML servi et non la page rendue par un navigateur. **Ni la couleur, ni le contraste, ni
+la taille, ni la position a l'ecran ne sont couverts, et aucun verdict de ce bloc n'en depend.**
+
+## 1. Le verdict
+
+| Ligne | Story | Verdict | Etat de matrice demande |
+|---|---|---|---|
+| `HG-CM1-12` | `S34-HG-12` | **VALIDE SOUS RESERVE** - **Done pedagogique prononce le 2026-09-11** | `en cours` -> **`couvert-valide`** |
+
+**Aucune mention de couverture partielle n'est due sur cette ligne.** Celles de `HG-CM1-01` et de
+`HG-CM1-14` sont inchangees. **Le mouvement de la matrice appartient a `camille-po` et a la review ;
+je ne l'ecris pas.**
+
+## 2. `HG-R17` - **levee sur sa clause 1**, et ce que le compte donne
+
+**Methode, identique a celle du refus de s33 pour que les deux chiffres soient comparables** :
+attribution faite a la main par moi, item par item, sur le fichier servi et sur les dix items vus a
+l'ecran.
+
+| Mesure | s33 (refus) | s34 |
+|---|---|---|
+| Items neufs portant au moins un distracteur serieux du meme genre que la bonne reponse | **2 sur 9** | **9 sur 9** |
+| Items neufs dont les **deux** distracteurs sont du meme genre que la bonne reponse | 0 sur 9 | **9 sur 9** |
+| Distracteurs neufs du registre de la ferme, du champ, de la peche ou de la batellerie | **14 sur 18** | **0 sur 18** |
+| Items de la ligne entiere repondables sans lire la question | **9 sur 10** | **2 sur 10** (`HG-R19`, `HG-R22`) |
+
+**Le mode de defaillance que j'avais nomme d'avance est evite** : aucun mot rural n'a ete remplace
+par un mot tout aussi invraisemblable. Chaque distracteur est une chose reelle, du genre de la
+reponse, ajustee a son item - deux hebergements de vacances face a un hebergement, deux secteurs
+economiques face a un secteur, deux transports en commun face au metro.
+
+**`HG-R18` est levee** : l'enonce du secteur d'activite n'enumere plus deux des trois propositions.
+**La moitie de `HG-R17` qui portait sur l'appariement de l'item du logement est payee** : l'enonce ne
+contient plus *loue*.
+
+**`FER-1`, `FER-2` (dix items), `FER-3`, `HIS-5` et `HG-R4` sont reverifiees et tenues**, comme
+annonce, sans etre rediscutees. Les bonnes reponses n'ont pas bouge ; les deux enonces touches ont
+raccourci.
+
+**`CONS-1` et `CONS-4` restent non levees sur cette entree** : la consigne a cinq clauses est
+toujours servie sur chaque manche, `S34-CONS-4` n'ayant pas ete engagee. **Je ne bloque pas
+dessus** : j'ai ferme trois lignes de ce paquet a s33 avec cette meme consigne, et relever la barre
+aujourd'hui serait deplacer un poteau.
+
+## 3. Une correction a mon propre constat, avant de m'en servir
+
+**Mon arbitrage prealable de s34 se contredit sur le perimetre de `HG-R17`** : sa section 5.1 le
+borne aux *"18 distracteurs des 9 items neufs ... et rien d'autre"*, son refus d'avance numero 1
+parle de *"toute fermeture de `HG-CM1-12`"*, donc des dix items. **Le dixieme, ecrit a s27, n'a
+jamais ete audite a la fermeture.** `marc-dev` a tenu exactement le perimetre que je lui avais
+ecrit ; **refuser la ligne sur un item que j'en avais moi-meme sorti serait lui faire payer mon
+erreur de chiffrage**. La ligne ferme, et cet item part en reserve neuve datee d'aujourd'hui -
+`HG-R22` -, imputable a moi.
+
+## 4. Les quatre reserves neuves, datees du 2026-09-11, **toutes non bloquantes**
+
+### `HG-R19` - la seconde clause de `HG-R17`, payee sur un item des deux
+
+*"Dans une ville touristique riche en **histoire**, que visitent surtout les touristes ?"* -> *"des
+monuments **historiques**"*. `HG-R17` nommait **deux** items pour cet appariement ; celui du logement
+est corrige, **celui-ci n'a pas ete touche**.
+
+> **`HG-R19`.**
+> - **Objet** : sur cet item, un enfant qui ne sait pas ce qu'est un monument historique ne doit pas
+>   pouvoir trouver la reponse en reconnaissant un mot de l'enonce dans une proposition.
+> - **Mode de defaillance** : retirer *riche en histoire* et laisser l'enonce ne plus dire de quelle
+>   ville il parle. L'enonce doit continuer a poser son espace (`HIS-3`), **sans employer le mot que
+>   la bonne reponse porte**.
+> - **Perimetre, mesure sur l'etat d'arrivee** : un enonce, l'item des monuments historiques, et rien
+>   d'autre. Les trois propositions ne bougent pas ; `FER-1`, `FER-3` et `HIS-5` restent tenues.
+>   **Non compte** : aucun autre item de la ligne ne partage un mot entre son enonce et sa bonne
+>   reponse - je les ai lus.
+> - **Regime : mot pour mot, 0,25**, voyage avec les trois autres (`PAR-10`).
+
+### `HG-R20` - un distracteur devenu serieux et devenu vrai
+
+Deux items. *"Dans une station de ski, quel appareil fait monter les touristes vers les pistes ?"*
+-> *"un telesiege"*, contre *"un tapis roulant"* : **un tapis roulant de station est une remontee
+mecanique, il fait bien monter des skieurs**. *"Dans une ville touristique, quel evenement culturel
+attire souvent des visiteurs en ete ?"* -> *"un festival"*, contre *"une exposition de peinture"* :
+**une exposition de peinture est un evenement culturel qui attire des visiteurs en ete**. La question
+ne demande ni le plus frequent ni le plus grand.
+
+**C'est le revers de la correction, et il ne faisait pas partie des modes de defaillance que j'avais
+nommes d'avance. Je le dis plutot que de le presenter comme prevu.**
+
+> **`HG-R20`.**
+> - **Objet** : un enfant qui connait les trois propositions doit pouvoir choisir sur ce qu'il sait,
+>   et non deviner celle que le jeu attend. Aujourd'hui, sur ces deux items, le bon eleve est puni de
+>   ce qu'il sait.
+> - **Mode de defaillance** : remettre un distracteur plus faible pour retablir l'unicite - cela
+>   rouvrirait `HG-R17` la ou elle vient d'etre payee. **Le geste est dans l'enonce** : il doit porter
+>   le critere qui distingue la bonne reponse, comme huit des dix items de la ligne le font deja
+>   (*"sous terre"*, *"en plein air"*, *"le plus souvent"*). **Et ce critere doit etre vrai** : je
+>   refuse d'avance un superlatif pose pour trancher et faux dans le monde.
+> - **Perimetre, mesure sur l'etat d'arrivee** : deux enonces, ceux du telesiege et du festival. Les
+>   six propositions restent. `HG-R4` a reverifier, les deux enonces s'allongeant un peu. **Non
+>   compte** : les enonces des autres lignes du paquet, qui sont fermees et que je ne rouvre pas.
+> - **Regime : mot pour mot, 0,25**, voyage avec les trois autres (`PAR-10`).
+
+### `HG-R21` - un indice que la correction a vide
+
+*"Pense au logement loue seulement pour quelques jours ou quelques semaines."* servi apres un echec
+sur l'item du logement de montagne, face a *"une tente de camping"* et *"une auberge de jeunesse"* :
+**les trois se louent pour quelques jours**. L'indice separait les trois propositions quand les
+fausses etaient *une ferme isolee* et *un immeuble de bureaux* ; **il ne separe plus rien**, et son
+mot *loue* ramene l'appariement avec *location* que l'enonce vient de perdre. Second cas, plus
+faible : l'indice du musee ne fait plus que redire son enonce face a *"une bibliotheque"* et *"une
+mairie"*.
+
+> **`HG-R21`.**
+> - **Objet** : l'enfant qui vient de se tromper doit trouver dans l'indice un fait qui designe une
+>   seule des trois propositions.
+> - **Mode de defaillance** : ecrire un indice qui nomme la bonne reponse par un synonyme - gagner
+>   sans savoir, un cran plus loin. L'indice doit apporter **un fait sur la chose**.
+> - **Perimetre, mesure sur l'etat d'arrivee** : deux indices, celui du logement de montagne et celui
+>   du musee. Enonces, bonnes reponses et distracteurs ne bougent pas. **Non compte** : les huit
+>   autres indices de la ligne, lus sans qu'aucun ne m'arrete.
+> - **Regime : mot pour mot, 0,25**, voyage avec les trois autres (`PAR-10`).
+> - **Ce que cette reserve n'est pas** : elle ne releve aucune barre sur les indices. Sans la
+>   correction des distracteurs, elle n'existerait pas.
+
+### `HG-R22` - l'item que j'avais sorti du perimetre
+
+*"Dans un espace touristique de montagne, quelle activite se developpe surtout en hiver ?"* -> *"le
+tourisme lie au ski"*, contre *"la peche en mer"* et *"la culture de la vigne"*. Item de s27, jamais
+audite a la fermeture, **sorti par moi du perimetre de `HG-R17`** (section 3).
+
+> **`HG-R22`.**
+> - **Objet** : sur cet item aussi, un enfant qui ne sait pas doit pouvoir se tromper serieusement.
+>   C'est le seul item de la ligne ou il lui suffit d'ecarter ce qui est rural.
+> - **Mode de defaillance** : remplacer les deux distracteurs par deux activites que l'enonce exclut
+>   deja par *en hiver*. Chacun doit etre une activite qu'un enfant peut serieusement attribuer a une
+>   station de montagne en hiver.
+> - **Perimetre, mesure sur l'etat d'arrivee** : deux distracteurs, un seul item. Enonce et bonne
+>   reponse inchanges ; `FER-1`, `FER-2`, `FER-3`, `HIS-5` restent tenues.
+> - **Regime : mot pour mot, 0,25**, voyage avec les trois autres (`PAR-10`).
+> - **A qui ce defaut est imputable** : **a moi.**
+
+## 5. Ce que je verifie sur cette ligne et qui ne fonde aucune demande
+
+- **Exactitude** : les dix bonnes reponses sont justes ; les dix-huit distracteurs neufs designent
+  des choses reelles. Les deux cas ou le distracteur est vrai **pour la question posee** sont
+  `HG-R20`, comptes une seule fois.
+- **Niveau de langue** : *"un telesiege"*, *"une auberge de jeunesse"*, *"un entrepot"*, *"la
+  construction"* sont accessibles au CM1.
+- **`BIA-1` a `BIA-5`** : aucun stereotype sur les dix items. Le chalet et le camping decrivent des
+  vacances que tous les enfants ne prennent pas ; **ils ne les presupposent pas**, chaque enonce
+  donnant l'espace dont il parle. **Je n'ouvre rien la-dessus.**
+- **`COH-1`** : les dix items ne se contredisent pas. **Je n'ai pas passe le paquet entier a cette
+  condition** - elle est opposable a partir du prochain lot, et ce lot ne reecrit aucune regle.
+
+## 6. Etat des lignes et des reserves de cette matiere au 2026-09-11
+
+| Ligne | Avant | Apres | Mention |
+|---|---|---|---|
+| `HG-CM1-12` | `en cours` (refusee a s33) | **`couvert-valide`** | aucune n'est due |
+| `-01`, `-02`, `-03`, `-04`, `-06`, `-07`, `-08`, `-11`, `-13`, `-14` | `couvert-valide` | **inchangees** | celles de `-01` et `-14` inchangees |
+| `-05`, `-09`, `-10` | `non couvert` | **inchangees** | - |
+
+**Bilan de la matiere : 11 `couvert-valide`, 0 `en cours`, 3 `non couvert`, 14 au total.**
+
+| Reserve | Etat au 2026-09-11 |
+|---|---|
+| `HG-R1` a `HG-R12` | **levees** (s28 a s33) |
+| `HG-R13` a `HG-R16` | **ouvertes**, non bloquantes, non demandees ce sprint |
+| `HG-R17` (bloquante) | **levee sur sa clause 1** ; sa clause 2, impayee, vit sous `HG-R19` |
+| `HG-R18` | **levee** |
+| `HG-R19`, `HG-R20`, `HG-R21`, `HG-R22` | **neuves**, non bloquantes, mot pour mot 0,25 chacune |
+| `CONS-1`, `CONS-4` | **non levees** sur cette entree ; `S34-CONS-4` non engagee, reportee a s35 |
+
+**Sous `PAR-10`, les quatre reserves neuves vivent dans un seul paquet et se soldent ensemble : 0,5
+en tout.**
+
+## 7. Ce dont je reste la seule garde sur cette matiere, apres s34
+
+- **`PLA-1`** - paye aujourd'hui **sans qu'aucun test n'ait change**, ce qui dit exactement ce que le
+  depot en voit : rien.
+- **Qu'un distracteur serieux ne soit pas une reponse vraie** (`HG-R20`) - **neuf a partir
+  d'aujourd'hui**, et c'est la contrepartie de `PLA-1` : elle apparait des qu'on paie `PLA-1`.
+  Personne ne la tient.
+- **Qu'un indice separe les trois propositions** (`HG-R21`) - et **un indice peut cesser de separer
+  sans qu'une seule de ses lettres ne change**, parce que les propositions ont bouge autour de lui.
+- **Qu'un mot de l'enonce n'appelle pas la bonne reponse** (`HG-R19`) - meme famille que `EXC-R7`,
+  routee a `theo-archi` a s33 et non payee.
+- **`EXA-1` et l'exactitude factuelle**, **`HIS-5`**, **`FER-1` sur cette ligne** (mordue par un
+  proxy qui cherche trois mots dans les enonces), **`CONS-1` et `CONS-4`** - inchangees depuis s33.
+- **La couleur, le contraste, la taille, la position a l'ecran** - **personne sur ce terrain ce
+  sprint** (audit degrade).

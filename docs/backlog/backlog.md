@@ -13229,9 +13229,14 @@ deja ecrites a la cloture de s33, sont confirmees dans la borne sans modificatio
     qui l'execute - `nadia-prof` a verifie que le grain ne change pas quel que soit cet arbitrage,
     les deux viviers restant tres au-dessus de dix items.
   - Etant donne chaque entree neuve, quand sa consigne est ecrite, alors elle nomme une seule
-    tache, en une seule clause, et non une enumeration de clauses. **`nadia-prof` ecrit elle-meme
-    le texte de chaque consigne, item devant elle, dans la meme reprise que l'audit** - elle ne le
-    fournit pas d'avance (`RES-2`).
+    tache, en une seule clause, et non une enumeration de clauses. **`marc-dev` ecrit les quatre
+    consignes, sur le gabarit deja en usage dans le catalogue et la tache que `nadia-prof` a
+    nommee pour chaque entree** (arbitrage prealable de s34, section 4.2 : *"je n'ecris aucune des
+    quatre consignes. Je nomme la tache de chaque entree ; le texte revient devant moi quand il est
+    ecrit, item devant lui."*) ; `nadia-prof` audite ensuite chaque consigne, texte devant items,
+    comme `RES-3` l'exige pour toute reprise - correction du 2026-09-11 (planning de s34,
+    section 15.1) a la premiere redaction de ce critere, qui faisait porter a `nadia-prof` la
+    redaction elle-meme.
   - Etant donne les items neufs de `HG-CM1-08` et `HG-CM1-12` (livres par `S33-HG-08-12`), alors
     ils rejoignent respectivement "Nommer, en histoire" et "Nommer, en geographie" - verifie par
     `nadia-prof` item par item, aucune sixieme tache ne s'ouvre.
@@ -13241,14 +13246,16 @@ deja ecrites a la cloture de s33, sont confirmees dans la borne sans modificatio
   - Etant donne le Done pedagogique, alors aucune des quatre entrees ne passe `couvert-valide` sans
     que `nadia-prof` confirme, en jouant chacune, que sa consigne nomme la tache de toutes ses
     manches et qu'aucun item n'est perdu dans la migration.
-- **Ce que cette story ne fait pas** : elle n'ecrit aucune des quatre consignes a la place de
-  `nadia-prof` ; elle ne cree aucun item neuf ; elle ne touche pas `bandit-manchot-anglais-cm1`.
+- **Ce que cette story ne fait pas** : elle n'invente aucun jugement pedagogique neuf - la tache de
+  chaque entree est celle que `nadia-prof` a deja nommee, et ecrire la phrase de consigne qui la
+  porte est le meme geste d'execution que pour chacune des autres entrees du catalogue ; elle ne
+  cree aucun item neuf ; elle ne touche pas `bandit-manchot-anglais-cm1`.
 - **Lien decision** : arbitrage prealable de s34 de `nadia-prof`, section 4.2 ; `ADR-0081` ;
   `docs/backlog/backlog.md`, `S33-CONS-4` (decision de grain, remplacee par cette story) ;
-  `DEC-0086`, sections 3 et 7.
+  `DEC-0086`, sections 3 et 7 ; planning de s34, section 15.1 (correction de cette affectation).
 - **Agent pressenti** : `theo-archi` pour la forme technique de la scission en quatre entrees de
-  catalogue ; `marc-dev` ou `lea-dev` pour l'execution ; `nadia-prof` pour l'ecriture des quatre
-  consignes et l'audit.
+  catalogue ; `marc-dev` ou `lea-dev` pour l'execution, y compris l'ecriture des quatre consignes
+  sur le gabarit du catalogue et la tache que `nadia-prof` a nommee ; `nadia-prof` pour l'audit.
 
 ### S34-EXC-TACHEB - Refondre la tache B de `bandit-manchot-exclusion-cp` : parler a un adulte, pas
 ### reconnaitre lequel

@@ -182,7 +182,7 @@ items:
     indice: "Cette personne est là pour veiller sur les élèves qui jouent."
   - enonce: "Malo se moque des dessins de Léa chaque jour, en classe. Que doit faire Léa ?"
     bonneReponse: "en parler à sa maîtresse"
-    distracteurs: ["espérer qu'un adulte l'ait remarqué", "en parler à un camarade"]
+    distracteurs: ["espérer qu'un adulte l'ait remarquée", "en parler à un camarade"]
     indice: "C'est elle qui reste avec les élèves toute la journée."
   - enonce: "Aya se moque de Hugo chaque midi, au moment du repas. Que doit faire Hugo ?"
     bonneReponse: "en parler à l'adulte qui surveille la cantine"
@@ -194,5 +194,5 @@ items:
     indice: "Son rôle est de veiller sur les élèves pendant les récréations."
   - enonce: "Hugo se moque de la lecture d'Aya chaque jour, en classe. Que doit faire Aya ?"
     bonneReponse: "en parler à sa maîtresse"
-    distracteurs: ["attendre que cela s'arrête tout seul", "espérer qu'un adulte l'ait remarqué"]
+    distracteurs: ["attendre que cela s'arrête tout seul", "espérer qu'un adulte l'ait remarquée"]
     indice: "C'est elle qui est avec ses élèves tous les jours."

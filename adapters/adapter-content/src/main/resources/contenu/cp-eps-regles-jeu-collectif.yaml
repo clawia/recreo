@@ -54,8 +54,10 @@ lignesDeReferentiel: ["EPS-CP-08"]
 #
 # ADR-0086 : aucune bonne reponse n'est repetee d'un item a l'autre sous le meme moule de
 # propositions ; aucun distracteur ne partage une amorce de quatre mots avec trois autres
-# distracteurs du paquet sans qu'aucune bonne reponse ne la partage ; aucun mot de la liste des
-# marqueurs de restriction (seulement, uniquement, seul, seule, seuls, seules, sauf) n'est employe.
+# distracteurs du paquet sans qu'aucune bonne reponse ne la partage ; deux mots de la liste des
+# marqueurs de restriction (seulement, uniquement, seul, seule, seuls, seules, sauf) apparaissent
+# ("seul" en bonne reponse de l'item 6, "seulement" dans l'indice de l'item 8), mais aucun ne porte
+# sur tous les distracteurs d'un item en epargnant sa bonne reponse : la clause ne mord pas.
 #
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
 # dette heritee.
@@ -115,16 +117,19 @@ lignesDeReferentiel: ["EPS-CP-08"]
 #    meme forme ("Hugo doit reposer un des deux objets", "Hugo doit recommencer au depart", "Hugo
 #    echange sa place avec un camarade").
 #
-# 3) JEU-R11 (items 8 et 10) : les indices sont reecrits pour rester coherents avec les enonces et
-#    bonnes reponses corriges ci-dessus.
+# 3) Les indices des items 8 et 10 sont reecrits pour rester coherents avec les enonces et bonnes
+#    reponses corriges ci-dessus.
 #
-# 4) L'indice de l'item 6 (demenageurs), touche dans le meme geste : il reste coherent avec la
-#    regle qu'il enseigne ("un seul objet") une fois que l'item 10 en juge la violation par un
-#    verdict de meme forme que ses distracteurs.
+# 4) L'indice de l'item 6 (demenageurs) est touche dans le meme geste, pour rester coherent en
+#    forme avec le verdict que l'item 10 rend desormais sur la meme regle ("un seul objet"). **Ceci
+#    ne paie pas JEU-R11** : son texte servi ("Porter un seul objet permet d'aller plus vite qu'en
+#    portant deux a la fois") continue de presenter la regle comme un moyen d'aller plus vite,
+#    l'inverse de ce que JEU-R11 demande. JEU-R11 reste ouverte, non bloquante
+#    (verdicts-nadia-instance-C.md, s34, section 5.2).
 #
 # JEU-R12 (le genre des personnages qui enfreignent une regle) n'est pas aggrave par cette reprise :
-# le seul personnage qui enfreint encore une regle du paquet est Hugo (item 10) ; Malo, a l'item 8,
-# est desormais touche par le jeu, ce qui n'est l'infraction de personne.
+# le seul personnage qui enfreint encore une regle du paquet est Hugo, aux items 10 et 11 ; Malo, a
+# l'item 8, est desormais touche par le jeu, ce qui n'est l'infraction de personne.
 items:
   - enonce: "À 1, 2, 3, soleil, quand doit-on s'arrêter de bouger ?"
     bonneReponse: "quand le meneur se retourne"

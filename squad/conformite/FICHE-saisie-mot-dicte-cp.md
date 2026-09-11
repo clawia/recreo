@@ -404,3 +404,52 @@ sprints et trois codes a se resorber.
 > **Regime : mot pour mot une fois le correctif livre, 0,25.**
 
 **Aucune ligne ne bouge.**
+
+
+---
+
+# Passe transverse de s34 (`S34-TRANSVERSE-1`) - `nadia-prof`, instance A, 2026-09-11
+
+> **Aucun Done pedagogique n'est prononce dans ce bloc**, et aucune ligne de
+> `squad/programme/MATRICE-couverture.md` ne bouge : la story l'interdit elle-meme. Ce sont des
+> constats sur le depot existant, et aucun verdict anterieur n'est rouvert.
+>
+> **Le detail complet vit dans
+> `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/verdicts-nadia-instance-A.md`,
+> section 6.**
+
+**Ce que j'ai cherche ici** : les endroits ou un gabarit compose une phrase autour d'un champ - la
+famille de `REV-1` (s29) et de `SAI-R1` (s30). **Methode** : les cinq gabarits servis et les 39
+expressions de texte qu'ils portent, relues une par une, puis les deux compositions trouvees jouees a
+l'ecran.
+
+**Deux compositions subsistent dans tout le depot servi.** La premiere, *"Pour le "* suivi du niveau
+sur l'accueil, rend *"Pour le CP"* et *"Pour le CM1"* : les deux formes sont correctes et il n'y a pas
+d'autre valeur possible - **aucun defaut, et je le dis pour qu'on ne le cherche pas deux fois**. La
+seconde est ici.
+
+## `SAI-R2` - **reserve neuve, datee du 2026-09-11, non bloquante, dernier rang**
+
+**Joue le 2026-09-11.** L'enfant tape `chat.` ; l'ecran rend ***"Tu as ecrit : chat.."*** - deux
+points. Le gabarit ajoute son point a un texte qui en porte deja un.
+
+> **`SAI-R2`.**
+> - **Objet** : l'enfant qui relit ce qu'il a tape doit voir **exactement** ce qu'il a tape. C'est
+>   toute la fonction de cette ligne : elle lui rend sa propre ecriture pour qu'il la compare a la
+>   forme attendue, juste en dessous.
+> - **Mode de defaillance** : retirer le point du gabarit et laisser la ligne sans ponctuation. Le
+>   texte lu par l'enfant reste une phrase francaise ; la sortie est de poser la valeur seule dans son
+>   propre element, comme `ADR-0083` clause 1 le fait deja partout ailleurs.
+> - **Perimetre, mesure sur l'etat d'arrivee** : **une ligne d'un gabarit**, celui de la saisie.
+>   **Non compte** : la frequence reelle - un enfant de CP qui tape un point apres un mot dicte est
+>   rare, **et c'est pourquoi cette reserve est de dernier rang**.
+> - **Regime : mot pour mot, 0,25**, et elle ne merite pas d'etre prise seule : elle voyagera avec le
+>   prochain geste sur cette mecanique.
+> - **Ce qu'elle n'est pas** : une correction de ponctuation, qui appartiendrait au
+>   `relecteur-pedagogique`. **C'est un gabarit qui compose une phrase autour d'une valeur** - la
+>   famille de `REV-1` -, et le point double n'en est que le symptome visible.
+
+**Ce que j'ai constate d'autre sur cette entree, et qui n'est pas une reserve de ce bloc** : sur cette
+meme mecanique, **une validation a champ vide consomme un essai**, ce qui, depuis le remede de
+`SCO-1`, coute a la manche tout credit possible. C'est `SCO-R3`, ecrite dans
+`FICHE-bandit-manchot-additions-cp.md` avec le reste de ce qui touche la mecanique.

@@ -674,3 +674,130 @@ aucune `en cours`.**
 - **`SCO-1`** : entierement automatisable, **et rien n'est ecrit**. Voir le bloc de mention en tete.
 - La couleur, le contraste, la taille, la position a l'ecran : **hors de ma portee cette session**
   (audit degrade). Personne ne les a regardees sur ce jeu ce sprint.
+
+
+---
+
+# Correction de s34 (`S34-ANG-CORR`, `76d43606`) - **VALIDE SOUS RESERVE**, `LVE-CM1-07` reste `couvert-valide`
+
+> Bloc de validation pedagogique - **`nadia-prof` UNIQUEMENT, instance A de s34**, 2026-09-11. Il
+> n'est jamais pre-rempli ni anticipe par un autre agent. **Les blocs precedents ne sont pas
+> retouches.**
+>
+> **Le detail complet de cet audit vit dans
+> `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/verdicts-nadia-instance-A.md`.**
+
+## Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `a7852398`, jar reconstruit depuis un worktree dedie, lance sur un
+port local, arrete par son identifiant de processus. Les **dix items de `LVE-CM1-07`** releves sur le
+fichier servi, quatre d'entre eux joues a l'ecran avec leurs propositions et leur indice.
+
+**Degrade sur un point, declare** : HTML servi, pas page rendue. **Ni la couleur, ni le contraste, ni
+la taille, ni la position ne sont couverts, et aucun verdict de ce bloc n'en depend.**
+
+**Aucun statut de matrice ne change** : la ligne etait deja `couvert-valide` depuis s32, avec sa
+mention. **Le Done pedagogique prononce ici porte sur la correction**, pas sur une fermeture.
+
+## 1. Trois reserves levees
+
+- **`ANG-R4` - levee.** L'enonce de Halloween devient *"Quelle fete americaine, celebree le 31
+  octobre, fait deguiser les enfants pour recolter des bonbons ?"* : l'apposition fait quatre mots,
+  le verbe suit. **L'objet est tenu** - l'enfant n'a plus a garder *fete* en memoire pendant quatorze
+  mots. Le patron que j'avais cite a ete lu comme un patron, pas recopie.
+- **`ANG-R5` - levee.** L'indice de Londres devient *"C'est la plus grande ville du Royaume-Uni,
+  traversee par la Tamise."* **Exact**, il ne donne plus a la capitale le nom d'une grande roue, et
+  **il separe Londres de Berlin et de Madrid** : il fait ce qu'un indice doit faire. Une correction
+  de lettre aurait retire la roue sans rien mettre a sa place.
+- **`ANG-R6` - levee.** *"en metro"* devient *"en voiture avec un parent"* : **la pratique
+  concurrente reelle**, exactement la propriete que j'avais ecrite sans la nommer.
+
+## 2. `ANG-R3` - **levee sur deux items des trois, elle reste ouverte**
+
+Ma reserve portait un tableau de **trois** items. Deux sont repris :
+
+- **le bus a imperiale** : l'enonce ne decrit plus l'objet, les distracteurs deviennent *"le metro"*
+  et *"le taxi noir"*, deux transports londoniens reels, **et le fait qui enseigne - rouge, deux
+  niveaux - est deplace dans l'indice**, la ou l'enfant qui s'est trompe le lit. C'est un bon geste,
+  et je le dis.
+- **Halloween** : les distracteurs deviennent *"Thanksgiving"* et *"le Labor Day"*, deux fetes
+  americaines reelles, **et la date de l'enonce est ce qui tranche**. L'item est devenu un exercice.
+
+**Le troisieme n'a pas ete touche** : *"Quel monument, une grande statue tenant une torche, se trouve
+sur une ile a l'entree du port de New York ?"* -> *"la statue de la Liberte"*, contre *"la tour
+Eiffel"* et *"le Colisee"*. **Ni l'une ni l'autre n'est une statue, ni a New York : l'enonce les
+exclut quatre fois**, et l'item se repond sans rien savoir des Etats-Unis. **La seconde clause n'est
+pas payee non plus** : le mot *imperiale* est toujours en bonne reponse, et il n'est explique que
+dans l'indice - donc seulement pour l'enfant qui s'est trompe. Celui qui trouve du premier coup
+designe un mot qu'il ne comprend pas.
+
+> **`ANG-R3`, reexprimee au format de `RES-1` le 2026-09-11, sans etre elargie ni durcie. Son
+> perimetre est reduit a ce qui reste.**
+>
+> - **Objet** : sur les items neufs de `LVE-CM1-07`, l'enfant ne doit pas pouvoir ecarter une
+>   proposition par la seule lecture de l'enonce ; et le mot qu'il designe en repondant doit lui etre
+>   accessible.
+> - **Mode de defaillance** : retirer la description de l'enonce de la statue et laisser *"la tour
+>   Eiffel"* et *"le Colisee"* en face. Le defaut ne vient pas seulement de l'enonce bavard : il vient
+>   de deux propositions candidates a rien. Il faut les deux gestes, ou le second seul - **un autre
+>   monument de New York**.
+> - **Perimetre, mesure sur l'etat d'arrivee** : un enonce et deux distracteurs sur l'item de la
+>   statue de la Liberte ; plus le sort du mot *imperiale*, explique la ou l'enfant le rencontre ou
+>   remplace. **Conditions que l'etat d'arrivee doit encore satisfaire** : `FER-1` et `FER-2` (dix
+>   items sur la ligne), qu'aucun de ces gestes ne touche. **Non compte** : les cinq items de s28,
+>   hors de la portee de `PLA-1`.
+> - **Regime : rejeu borne, 0,25** - la moitie du prix initial, la moitie du travail ayant ete faite.
+
+## 3. `ANG-R7` - **reserve neuve, datee du 2026-09-11, non bloquante** : un enonce dont les trois propositions sont vraies
+
+*"Quel moyen de transport est un symbole touristique de Londres ?"* -> *"le bus a imperiale"*, contre
+*"le metro"* et *"le taxi noir"*. **Les trois en sont.** Le metro de Londres et le taxi noir sont des
+symboles touristiques de la ville au meme titre que le bus rouge, et l'enonce dit *"un symbole"*, pas
+*"le symbole"*. **En rendant les propositions serieuses, la correction a rendu la question ambigue.**
+
+> **`ANG-R7`.**
+> - **Objet** : sur cet item, l'enfant doit pouvoir choisir sur un fait, et non sur ce qu'il suppose
+>   que le jeu prefere.
+> - **Mode de defaillance** : remettre la description de l'objet dans l'enonce - rouge, deux etages -
+>   ce qui rouvrirait `ANG-R3` la ou elle vient d'etre payee. **Le geste est de poser dans l'enonce un
+>   critere qui distingue le bus des deux autres sans le decrire** ; l'indice garde le fait qui
+>   enseigne.
+> - **Perimetre, mesure sur l'etat d'arrivee** : un enonce. Les trois propositions et l'indice
+>   restent ; `FER-1` et `FER-2` inchangees.
+> - **Regime : mot pour mot, 0,25**, voyage avec `ANG-R3` sur le meme paquet (`PAR-10`).
+
+## 4. Ce que je verifie et qui ne fonde aucune demande
+
+- **Exactitude des dix items** : juste. *"le Labor Day"* est bien une fete americaine ; la question
+  tranche par la date, pas par la saison, et je ne lui oppose rien.
+- **`COH-1`** : Thanksgiving et Halloween se servent mutuellement de distracteur, **et chacun porte
+  son propre critere** - fin novembre et le repas de famille d'un cote, le 31 octobre et les
+  deguisements de l'autre. **Ce n'est pas une contradiction, c'est une discrimination**, et c'est
+  bien fait.
+- **`BIA-2`** : aucun pays n'est reduit a un seul trait.
+
+## 5. Etat des lignes et des reserves de cette matiere au 2026-09-11
+
+| Ligne | Avant | Apres |
+|---|---|---|
+| `LVE-CM1-04` | `couvert-valide` | **inchangee** |
+| `LVE-CM1-07` | `couvert-valide` | **inchangee**, mention de s32 inchangee et non reecrite |
+
+| Reserve | Etat au 2026-09-11 |
+|---|---|
+| `ANG-R1`, `ANG-R2` | **levees** (s28, s32) |
+| `ANG-R3` | **ouverte**, non bloquante, **perimetre reduit**, rejeu borne 0,25 |
+| `ANG-R4`, `ANG-R5`, `ANG-R6` | **levees ce jour** |
+| `ANG-R7` | **neuve**, non bloquante, mot pour mot 0,25 |
+| `CONS-1` | **levee** sur cette entree, inchangee |
+
+## 6. Ce dont je reste la seule garde sur cette matiere, apres s34
+
+- **`PLA-1` sur cette ligne** - deux items repris sur trois, **et rien dans le depot ne l'a vu** :
+  aucun test n'a change, le message de commit annonce la reserve payee.
+- **Qu'un distracteur serieux ne soit pas une reponse vraie** (`ANG-R7`) - **neuf a partir
+  d'aujourd'hui**, meme famille que `HG-R20` sur l'autre paquet de cette instance, et **contrepartie
+  directe de `PLA-1`**.
+- **Qu'un mot en bonne reponse soit accessible au niveau vise** (*imperiale*) - **non mordable**, et
+  non paye au bout de deux sprints.
+- **La couleur, le contraste, la taille, la position a l'ecran** - hors de ma portee (audit degrade).

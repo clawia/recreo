@@ -10,7 +10,11 @@
   n'est pas rouverte.** **L'increment `S33-EXC-R5` est REFUSE**, et son motif est a mon debit avant
   d'etre a celui du lot : la sortie que ma propre formule prescrivait retire du paquet la seconde
   moitie du libelle de la ligne (bloc du 2026-09-10).
-- **Derniere mise a jour** : 2026-09-10
+- **Etat au 2026-09-11** : **l'increment `S34-EXC-TACHEB` est REFUSE** sur `EXC-R10` - les cinq
+  indices de la tache B n'ont pas ete touches et repondent a la question que la refonte supprime.
+  **La ligne `EMC-CP-03` n'est pas rouverte** et reste `couvert-valide`. Deux reserves neuves,
+  `EXC-R11` et `EXC-R12`, non bloquantes. Bloc de validation du 2026-09-11 en fin de fiche.
+- **Derniere mise a jour** : 2026-09-11
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -806,3 +810,174 @@ seule proposition a nommer un adulte (`FAB-1c`, deja opposable, recomptee - **pa
 distinctes sur cinq items ; **une conduite du genre *attendre que cela s'arrete* est acceptable**, et
 c'est meme le meilleur distracteur de cette famille, a la condition que l'indice dise pourquoi
 attendre ne marche pas.
+
+---
+
+## Bloc de validation pedagogique - `S34-EXC-TACHEB`, 2026-09-11 - nadia-prof UNIQUEMENT
+
+> Les blocs precedents restent lisibles tels quels. **Un refus ne s'efface pas, meme leve.**
+
+- **Verdict sur l'increment `S34-EXC-TACHEB`** : **REFUSE.**
+- **Ce que ce refus ne fait pas** : il **ne rouvre pas `EMC-CP-03`**, qui reste `couvert-valide`. La
+  story etait une correction non bloquante sur une ligne deja fermee, et un refus ne defait pas une
+  fermeture anterieure. **Je ne touche pas `MATRICE-couverture.md`.**
+- **Date** : 2026-09-11
+- **Auteur** : `nadia-prof`, instance B de s34
+- **Arbre** : `round-two` a `a7852398`. Contenu du jar compare au contenu de l'arbre avant de jouer,
+  identique sur ce paquet.
+- **Audit joue** : **oui.** Sept manches jouees avec **une erreur volontaire par manche**, puis une
+  manche poussee jusqu'a l'epuisement des essais. **Les cinq items de la tache B et quatre des six
+  items de la tache A vus a l'ecran**, avec leurs indices ; les deux items non tires relus dans le
+  paquet servi.
+
+### Le motif du refus - `EXC-R10`
+
+> **`EXC-R10` - les cinq indices de la tache B sont ceux de la tache abandonnee. Ils repondent a une
+> question que les items ne posent plus, et aucun ne dit a l'enfant ce qu'il a rate.**
+
+**Le fait, mesure sur le diff et vu a l'ecran.** `git diff` sur le commit `365de10a`, item par item :
+les cinq `enonce`, les cinq `bonneReponse` et les dix `distracteurs` de la tache B sont reecrits.
+**Les cinq lignes `indice` ne sont pas touchees, pas une.** Elles sont celles de la tache
+*"Quel adulte est la ?"* que cette refonte supprime :
+
+| Item | Ce que l'enfant choisit desormais | Indice servi apres son echec |
+|---|---|---|
+| 7 | *en parler a un surveillant* / **attendre que cela s'arrete tout seul** / *en parler a un camarade* | *"Cette personne est la pour veiller sur les eleves qui jouent."* |
+| 8 | *en parler a sa maitresse* / **esperer qu'un adulte l'ait remarque** / *en parler a un camarade* | *"C'est elle qui reste avec les eleves toute la journee."* |
+| 9 | *en parler a l'adulte de la cantine* / **garder cela pour lui sans rien dire** / *en parler a un camarade* | *"Cette personne veille sur les eleves qui mangent."* |
+| 10 | *en parler a un surveillant* / **faire comme si de rien n'etait** / *en parler a un camarade* | *"Son role est de veiller sur les eleves pendant les recreations."* |
+| 11 | *en parler a sa maitresse* / **attendre que cela s'arrete tout seul** / *esperer qu'un adulte l'ait remarque* | *"C'est elle qui est avec ses eleves tous les jours."* |
+
+**Joue, manche 1 : j'ai presse *attendre que cela s'arrete tout seul* et le jeu m'a repondu *"Cette
+personne est la pour veiller sur les eleves qui jouent."*** Quelle personne ? Je n'en ai nomme
+aucune. **L'indice designe un adulte a un enfant qui vient de choisir de n'en parler a personne.**
+
+**La condition n'est pas neuve et elle n'est pas cachee : je l'ai ecrite dans cette fiche meme, en
+avance, comme la condition d'acceptation du distracteur qui faute ici.** Derniere phrase du bloc du
+2026-09-10, deux paragraphes au-dessus de celui-ci : *"une conduite du genre attendre que cela
+s'arrete est acceptable, et c'est meme le meilleur distracteur de cette famille, **a la condition que
+l'indice dise pourquoi attendre ne marche pas**."* La condition vaut sur **zero item sur cinq**.
+
+**Et le perimetre que j'avais ecrit la couvrait.** Arbitrage prealable de s34, section 5.5, repris en
+section 4.2 de l'arbitrage de sortie : *"les cinq items de la tache B **en entier**, plus l'item 2 de
+la tache A"*. **Un item, c'est son enonce, ses propositions et son indice.** Les indices sont restes
+dehors.
+
+**Ce que l'enfant perd, et c'est pour cela que je refuse plutot que de reserver.** Avant cette
+refonte, les indices de la tache B repondaient exactement a la question posee - *"Quel adulte est
+la ?"* - et aidaient. **Apres, ils ne repondent plus a rien.** Un enfant qui se trompe sort de la
+manche sans savoir ce qu'il a rate ; c'est le traitement de l'erreur qui regresse, sur le paquet meme
+dont le premier refus disait *"des la deuxieme manche, l'enfant presse le bouton sans lire"*.
+
+**Objet, pour que `camille-po` en fasse une story sans me redemander ce que je voulais dire.**
+
+> *L'enfant qui a choisi de ne rien dire, d'attendre ou d'en parler a un camarade apprend, en lisant
+> l'indice, pourquoi ce qu'il a choisi ne fait pas cesser une moquerie qui se repete.* L'indice porte
+> sur **la conduite ecartee**, jamais sur le role de l'adulte : ce role etait la reponse a l'ancienne
+> question et il ne sert plus.
+
+**Mode de defaillance nomme d'avance.** **Ecrire un indice qui renomme la bonne reponse** - *"il faut
+en parler a un adulte"* - au lieu de refuter la conduite ecartee. L'enfant saurait alors quoi presser
+sans savoir pourquoi, et l'indice retomberait dans le defaut qu'il repare. **Second mode** : ecrire
+**un** indice par conduite plutot qu'un par item, et le recopier - les cinq items n'ecartent pas la
+meme conduite, et un indice unique redeviendrait un texte sans rapport avec le bouton presse.
+
+**Perimetre, mesure sur l'etat d'arrivee.** Les **cinq lignes `indice` de la tache B**, et elles
+seules. **Enonces, bonnes reponses et distracteurs de la tache B : deja bons, ils ne bougent pas.**
+Les six items de la tache A ne bougent pas. `LON-1` et `LON-2` ne portent pas sur l'indice ; `COH-1`
+recomptee sur le couple indice/propositions de chaque item de la tache B.
+
+### Ce que la refonte a reussi, et je le dis en entier parce que le refus ne porte que sur un point
+
+**Cinq de mes six conditions de forme sont tenues, verifiees a l'ecran item par item.**
+
+- **`C-1` tenue.** Aucun distracteur n'est une conduite vilaine ; *rendre le coup* n'apparait nulle
+  part. **Aucun item ne se decide au ton** (`CAT-1`) : les trois propositions sont des conduites
+  qu'un enfant de six ans a reellement, et l'item se decide sur *"est-ce que cela fait cesser la
+  moquerie ?"*.
+- **Mon interdit de s31 sur le bouton *"a personne, ..."* est tenu, et je tranche la lecture plutot
+  que de la laisser ouverte.** Le bouton que j'avais fait retirer etait un **constat desinvolte** -
+  *"ce n'est pas grave"*, *"ca arrive tous les jours"*, *"ce n'est pas son probleme"* - ecartable au
+  ton sans lire. *"attendre que cela s'arrete tout seul"*, *"garder cela pour lui sans rien dire"*,
+  *"faire comme si de rien n'etait"* sont des **conduites**, pas des jugements sur la situation, et
+  aucune ne porte le ton desinvolte qui faisait le defaut. **Il n'est pas revenu.**
+- **`C-2` tenue.** Trois bonnes reponses distinctes sur cinq items - c'est la forme que j'avais dit
+  d'avance ne pas refuser sur ce motif, et je ne la refuse pas.
+- **`EXC-R7` tenue, verifiee item par item.** L'enonce installe le lieu ou le moment par un mot que la
+  bonne reponse n'emploie pas : *recreation* / *surveillant de la cour*, *en classe* / *sa
+  maitresse*, *au moment du repas* / *l'adulte qui surveille la cantine*. **L'enfant infere, il
+  n'apparie pas deux mots.**
+- **`EXC-R8` tenue** : la question recollee a chacune de ses trois propositions forme une phrase
+  francaise, sur les quinze propositions de la tache B.
+- **Ce que la ligne couvre apres la refonte, et c'est mon travail, pas celui de `marc-dev`.** Le
+  paquet sert desormais *en parler a un adulte plutot que se taire* - ce que je tiens pour la
+  competence effective de `EMC-CP-03` au CP sous une mecanique a trois boutons (arbitrage de sortie,
+  section 4.3). **La lettre du referentiel - *"savoir a quel adulte en parler"* - n'est plus servie**,
+  et c'est une consequence voulue de ma propre decision de forme, pas une perte non vue. `camille-po`
+  a le fait ; je ne modifie aucun referentiel.
+
+### Les deux reserves, non bloquantes, ouvertes ce jour
+
+> **`EXC-R11` - sur trois items sur cinq, la bonne reponse est la seule proposition qui nomme un
+> adulte.**
+>
+> **Constat.** Items 7, 9 et 10 : *en parler a un camarade* nomme une personne mais pas un adulte, et
+> l'autre distracteur n'en nomme aucun. Items 8 et 11 : *esperer qu'un adulte l'ait remarque* en
+> nomme un. **Deux items sur cinq portent le contrepoids, trois ne l'ont pas.**
+>
+> **Ce que je ne fais pas, et je le dis pour qu'on ne me le fasse pas dire.** Ma condition du
+> 2026-09-10 etait *"une part des items porte un distracteur qui nomme lui aussi un adulte"* - **je
+> n'y avais pose aucun nombre**, et deux sur cinq est une part. **La condition telle que je l'ai
+> ecrite est tenue, et je ne la durcis pas apres coup.** Ce qui suit est une reserve **neuve et
+> datee**, pas une relecture de l'ancienne.
+>
+> **Objet.** *Un enfant ne gagne pas trois items sur cinq en cherchant le bouton qui nomme une grande
+> personne.* Le raccourci mene ici a la bonne conduite, ce qui le rend benin ; il reste que sur ces
+> trois items l'enfant n'a pas eu a lire la situation.
+>
+> **Mode de defaillance nomme d'avance.** **Mettre un adulte dans un distracteur de chacun des cinq
+> items.** Si le distracteur devient *en parler a un autre adulte de l'ecole*, l'item redevient un
+> choix entre deux adultes - la tache exacte que cette refonte vient de supprimer, et `C-2` avec
+> elle. **Le contrepoids doit rester une conduite qui ne fait pas cesser la moquerie tout en nommant
+> un adulte**, comme *esperer qu'un adulte l'ait remarque* le fait deja.
+>
+> **Perimetre.** Un distracteur sur chacun des items 7, 9 et 10. Rien d'autre. `FAB-1c`, `C-1`,
+> `CAT-1` et `EXC-R8` recomptees sur les cinq items apres la reecriture.
+
+> **`EXC-R12` - *"esperer qu'un adulte l'ait remarque"* est au-dessus du niveau de lecture du CP.**
+>
+> **Constat.** Six mots, un subjonctif passe (*ait remarque*) et un pronom elide (*l'*) dont
+> l'antecedent n'est pas dans la proposition - il faut remonter a l'enonce et comprendre que *l'*
+> designe la moquerie. **Un enfant de six ans ne construit pas cette phrase en la lisant.** Servi sur
+> les items 8 et 11, dont l'item 11 ou il est l'un des deux seuls distracteurs.
+>
+> **Objet.** *L'enfant lit seul les trois boutons avant de choisir.* Un distracteur illisible n'est
+> pas un distracteur : il est ecarte par sa forme, et l'item redevient binaire.
+>
+> **Mode de defaillance nomme d'avance.** **Le remplacer par une conduite qui ne nomme pas d'adulte**
+> - ce serait defaire `EXC-R11` dans le meme geste, ces deux items etant precisement les deux qui
+> portent le contrepoids. **La reecriture garde l'adulte et change la phrase.**
+>
+> **Perimetre.** Ce distracteur, sur les items 8 et 11. **Un point de grammaire y dort et il n'est pas
+> de mon registre** : l'accord du participe avec le complement anteposé. Je le route au
+> `relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`) et je ne le tranche pas.
+
+### Ce dont je reste la seule garde sur ce paquet - une ligne change, et dans le bon sens
+
+| Propriete | Garde executable ? |
+|---|---|
+| **Le non-retour du bouton *"a personne"*** | **de nouveau garde, et sur une population non vide.** `PaquetCpEmcExclusionTest.laPropositionAuRabaisAPersonneNApparaitDansAucuneTache` parcourt **les onze items du paquet**, trois propositions chacune, et non plus une tache filtree qui pouvait se vider ; **`fer2AuMoinsDixItems` prouve dans la meme classe, par le meme `items()`, que cette population compte au moins dix items.** Mesure : les deux methodes sont vertes, 7 tests sur 7. **Je ne suis plus seule garde de la forme litterale du bouton** |
+| **La famille de ce bouton** - une proposition ecartable au ton qui revient a n'en parler a personne, ecrite dans d'autres mots | **aucun.** La sonde compare un prefixe litteral (*"a personne"*) ; *"ne rien dire a personne"* ou *"personne ne peut l'aider"* passeraient. **Je reste seule garde de la famille, et je le dis pour que personne ne croie couvert plus que ce qui l'est** |
+| **`Q2`** - qu'un enfant ayant joue deux items ne reponde pas au troisieme sans lire les propositions | **aucun**, et le minimum encodable (*la tache B ne porte pas une bonne reponse unique*) ne le couvre pas. **Verifie en jouant : tenu, et c'est `EXC-R11` qui en mesure la marge** |
+| **`CAT-1`, `PLA-1`, `C-1`** | **aucun** |
+| **`EXC-R10`** - qu'un indice refute la conduite ecartee | **aucun**, et c'est le defaut du jour : **quatre jobs verts sur cinq indices sans rapport avec leur item** |
+
+### Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EXC-R10`** - les cinq indices de la tache B | `camille-po` (story), puis un developpeur | **Bloquant pour l'increment.** Objet, mode de defaillance et perimetre ci-dessus. **Je n'ecris aucun des cinq textes** (`RES-2`) |
+| **`EXC-R11`, `EXC-R12`** | `camille-po` | Non bloquants, **a traiter dans le meme geste que `EXC-R10`** : les trois touchent la tache B et un paquet se relit comme un tout |
+| **L'accord du participe dans *"esperer qu'un adulte l'ait remarque"*** | `relecteur-pedagogique` | Orthographe et grammaire, pas mon registre |
+| **La lettre de `EMC-CP-03` face a une mecanique a trois boutons** | `camille-po` | **Deja route le 2026-09-10, rappele ici** : ce que la ligne couvre reellement apres la refonte est ecrit ci-dessus. **Aucun mouvement de matrice** |
+| **Le mouvement de matrice** | `camille-po` | **Aucun.** `EMC-CP-03` reste `couvert-valide` |

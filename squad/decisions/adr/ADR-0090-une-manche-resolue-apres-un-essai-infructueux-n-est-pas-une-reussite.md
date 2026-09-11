@@ -1,6 +1,13 @@
 # ADR-0090 - Une manche resolue apres un essai infructueux n'est pas comptee comme une reussite
 
-- **Statut** : Propose
+- **Statut** : **Accepte** le 2026-09-11 (s34, confirmation de la porte technique). Le rouge
+  construit que cet `ADR` annoncait s'est referme **exactement a la fusion** de `s34-theo` sur
+  l'arbre portant le remede : meme test, meme commande, `2c3463b3` **rouge** (3 tests, 1 echec),
+  `5bb6f9db` **vert** (3 sur 3), `a7852398` vert au `verify` complet. La derivation de population
+  mord encore : une mecanique concrete neuve ecrite dans `domain/mechanics` puis supprimee rend
+  `chaqueMecaniqueConcreteDuDomainePorteSonScenario` rouge et nomme la mecanique sans scenario.
+  Mesures dans
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/confirmation-archunit.md`, section 6.
 - **Sprint** : s34
 - **Date** : 2026-09-10
 - **Auteur** : `theo-archi`

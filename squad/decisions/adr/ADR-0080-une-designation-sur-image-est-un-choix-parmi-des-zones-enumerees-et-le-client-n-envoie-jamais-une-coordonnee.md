@@ -1,12 +1,16 @@
 # ADR-0080 - Une designation sur image est un choix parmi des zones enumerees, le client n'envoie jamais une coordonnee, et les cinq cas d'usage tiennent dans une seule mecanique
 
-- **Statut** : **Propose**, amende deux fois - le 2026-09-04 (s28) et le 2026-09-08 (s32). Aucune de
+- **Statut** : **Propose**, amende trois fois - le 2026-09-04 (s28), le 2026-09-08 (s32) et le
+  2026-09-11 (s34). Aucune de
   ses regles n'est ecrite a la date de redaction, et cet `ADR`
   dit pour chacune **quand elle est due** et **si elle serait verte ou rouge aujourd'hui** plutot que
   de laisser le silence trancher. Une seule - la clause 11 - peut etre ecrite et verte des
   maintenant, sur une population non vide ; toutes les autres attendent le type ou le paquet
   qu'elles jugent, une regle a population vide etant ce qu'`ADR-0051` refuse.
-  **Le statut reste `Propose` au 2026-09-08** : cinq de ses huit regles sont ecrites (les deux
+  **Le statut reste `Propose` au 2026-09-11** (amendement du 2026-09-11, ci-dessous) : six des
+  huit regles mordent desormais sur leur population reelle, les garde-fous 1 et 3 mordent encore
+  sur un jeu fabrique d'`adapter-web`, et la clause qui leve ce dernier point est nommee.
+  Etat au 2026-09-08 : cinq de ses huit regles sont ecrites (les deux
   clauses ArchUnit et les garde-fous 4, 5 et 6), mais trois de celles-la mordent encore sur fixture
   et non sur la population que leur table nomme, et les garde-fous 1, 2 et 3 n'existent pas. Ce que
   `Accepte` exige est ecrit comme critere dans l'amendement du 2026-09-08, section 6.
@@ -874,3 +878,75 @@ Le decoupage en lots, leur cout et leur repartition sont un avis de faisabilite 
 ils vivent dans
 `squad/sprints/s32-instruction-prealable/avis-faisabilite-theo-achevement-du-palier-2.md`, qui perime
 au prochain sprint. Ce qui est decide vit ici.
+
+
+---
+
+## Amendement du 2026-09-11 (s34, `theo-archi`) - six regles sur huit mordent sur le reel, le statut reste `Propose`, et la clause qui manque est nommee
+
+**Arbre mesure** : `round-two` a `a7852398`, worktree dedie detache. JDK 21.0.10 rapporte par la
+machine virtuelle des tests (`ADR-0071`). Mesures completes dans
+`squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/confirmation-archunit.md`, section 5.
+
+### 1. Trois des quatre criteres d'`Accepte` sont remplis
+
+**T4 est livre** : `PartieController.designer` et `mancheDeDesignation`,
+`fragments/designation.html`, `MecaniquesConfiguration` publie `Designation`, et
+`ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest` baisse son cliquet de 1 a 0 dans le meme
+diff. **T6 est livre pour une ligne sur deux** : `designation-frise-de-la-journee`
+(`cp-frise-de-la-journee`, 11 items) est servi - catalogue a **70 entrees, 67 `bandit-manchot`, 2
+`saisie`, 1 `designation`** -, le cliquet
+`AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest` monte de 0 a 1 en
+egalite avec le compte reel ; `cp-plan-de-la-classe` (`QLM-CP-11`) n'est pas servi, obstacle route a
+`sofia-sm`. **Les deux trous de la section 3 sont tranches** par `ADR-0088`, `Accepte` et implemente.
+
+### 2. Le quatrieme critere n'est pas rempli : six regles sur huit mordent sur leur population reelle
+
+Verifie par mutation du materiau reel, appliquee puis remise en etat. **Mordent sur le reel** : les
+clauses 10 et 11 (types de production), le garde-fou 2 (`recreo.js`, materiau reel depuis toujours),
+et les garde-fous 4, 5 et 6, chacun avec sa clause de non-vacuite et chacun nommant
+`designation-frise-de-la-journee` dans son message d'echec sous mutation. **Un seul paquet suffit a
+ces trois-la** : ils jugent des proprietes par paquet, et 11 items les exercent reellement -
+`QLM-CP-11` aurait ajoute une population, pas une propriete.
+
+**Les garde-fous 1 et 3 mordent sur un jeu fabrique dans `adapter-web`, et c'est structurel** :
+`adapter-web` ne depend que de `recreo-application` et de `recreo-domain`, il ne peut pas charger un
+paquet d'`adapter-content`. **Le statut reste donc `Propose`.**
+
+### 3. Ce que le garde-fou 3 ne garde pas, mesure sur le cas qui vient de couter une ligne de matrice
+
+Son juge compare `min(largeur%, hauteur%) / 100 x plafond` au plancher, les deux termes derives
+(`.image-designation { max-height: 22rem }`, `CIBLE_TACTILE_REM = 2,75`) : le seuil vaut
+**12,5 % du plus petit cote**. Les six cadres de `cp-plan-de-la-classe` proposes par `ines-design` -
+`tableau` 34 x 15, `bureau` 28 x 20, `fenetre` 18 x 40, `armoire` 16 x 22, `coin-lecture` 34 x 20,
+`porte` 18 x 16 - ont pour plus petit cote **15 %, soit 52,8 px, au-dessus du plancher de 44 px sur
+les six**. L'arithmetique rend 56 x 77 px pour `armoire` et 63 x 56 px pour `porte`, ce que
+`lea-dev` a mesure au jar au pixel pres. **Les six passent le garde-fou 3, et trois rendent un
+libelle qui deborde de son bouton.**
+
+**Ce qui est decide ici** : *le plancher de cible tactile et la propriete "le libelle tient dans sa
+zone" sont deux proprietes distinctes, et le garde-fou 3 ne tient que la premiere.* Cet `ADR` ne la
+lui fait pas tenir : la seconde se mesure sur un rendu, pas sur un document HTML, et le plancher de
+lisibilite qui la borne est une question pedagogique routee a `nadia-prof`. **Elle est nommee ici
+pour ne pas etre decouverte une seconde fois au jar.**
+
+### 4. La clause qui manque a `Accepte`, et elle est ecrivable aujourd'hui
+
+**Un garde-fou de `bootstrap` sert l'ecran de manche du jeu reel de designation et y rejoue les
+criteres des garde-fous 1 et 3.** `bootstrap` voit `adapter-web` et `adapter-content` ; le mecanisme
+est deja employe trois fois dans `bootstrap/rendu`, qui sert `jeu.id()` du catalogue reel par MockMvc
+(`LaPartDesigneeDUnItemServiEstMarqueeALEcranTest`,
+`LeTexteSupportDUnItemReelAtteintLEcranDeMancheTest`,
+`LIllustrationDUnItemServiAtteintLEcranDeMancheTest`). Sa population n'est plus vide depuis s34.
+
+**Le motif de l'ecrire est mesure, pas theorique** : **sept** garde-fous de `bootstrap/rendu` ont
+recu ce sprint une branche `designation`, et les sept l'ecartent. Chaque exclusion est motivee prise
+une par une - une designation ne declare ni part designee, ni texte-support, ni reponse de fin de
+partie. **Leur effet cumule ne l'est pas : aucun test du depot ne sert l'ecran de manche du paquet
+reel.** C'est la forme exacte du defaut que `ADR-0088` clause C a paye sur cinq garde-fous de rendu,
+par un autre chemin.
+
+**Ce qui est decide** : cette clause est **due**, elle est la derniere condition de l'`Accepte` de
+cet `ADR`, et **elle appartient au lot qui achevera `QLM-CP-11`** - pas a une confirmation de porte
+technique, un garde-fou neuf ecrit apres la fusion des branches etant du code qu'aucune story ne
+porte.
