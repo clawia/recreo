@@ -1,0 +1,154 @@
+schema: 1
+id: cp-plan-de-la-classe
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Se situer dans l'espace"
+  competence: "Situer un lieu ou un objet sur un plan simple de la classe, de l'école ou du quartier."
+lignesDeReferentiel: ["QLM-CP-11"]
+items:
+  - enonce: "Montre le tableau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vu de dessus, avec six éléments disposés le long des murs."
+    bonneZone: tableau
+    indice: "C'est ce que la maîtresse regarde le plus souvent."
+    zones:
+      - id: tableau
+        libelle: "en haut, au centre"
+        cadre: { x: 28, y: 6, largeur: 34, hauteur: 15 }
+      - id: bureau
+        libelle: "en haut, à gauche"
+        cadre: { x: 15, y: 26, largeur: 28, hauteur: 20 }
+      - id: fenetre
+        libelle: "au centre, à droite"
+        cadre: { x: 68, y: 26, largeur: 18, hauteur: 40 }
+      - id: armoire
+        libelle: "au centre, à gauche"
+        cadre: { x: 4, y: 48, largeur: 30, hauteur: 30 }
+      - id: coin-lecture
+        libelle: "en bas, à droite"
+        cadre: { x: 58, y: 76, largeur: 34, hauteur: 20 }
+      - id: porte
+        libelle: "en bas, à gauche"
+        cadre: { x: 4, y: 80, largeur: 32, hauteur: 17 }
+  - enonce: "Montre le bureau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vu de dessus, avec six éléments disposés le long des murs."
+    bonneZone: bureau
+    indice: "C'est là que la maîtresse pose ses affaires."
+    zones:
+      - id: tableau
+        libelle: "en haut, au centre"
+        cadre: { x: 28, y: 6, largeur: 34, hauteur: 15 }
+      - id: bureau
+        libelle: "en haut, à gauche"
+        cadre: { x: 15, y: 26, largeur: 28, hauteur: 20 }
+      - id: fenetre
+        libelle: "au centre, à droite"
+        cadre: { x: 68, y: 26, largeur: 18, hauteur: 40 }
+      - id: armoire
+        libelle: "au centre, à gauche"
+        cadre: { x: 4, y: 48, largeur: 30, hauteur: 30 }
+      - id: coin-lecture
+        libelle: "en bas, à droite"
+        cadre: { x: 58, y: 76, largeur: 34, hauteur: 20 }
+      - id: porte
+        libelle: "en bas, à gauche"
+        cadre: { x: 4, y: 80, largeur: 32, hauteur: 17 }
+  - enonce: "Montre la fenêtre."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vu de dessus, avec six éléments disposés le long des murs."
+    bonneZone: fenetre
+    indice: "C'est par là qu'on voit dehors."
+    zones:
+      - id: tableau
+        libelle: "en haut, au centre"
+        cadre: { x: 28, y: 6, largeur: 34, hauteur: 15 }
+      - id: bureau
+        libelle: "en haut, à gauche"
+        cadre: { x: 15, y: 26, largeur: 28, hauteur: 20 }
+      - id: fenetre
+        libelle: "au centre, à droite"
+        cadre: { x: 68, y: 26, largeur: 18, hauteur: 40 }
+      - id: armoire
+        libelle: "au centre, à gauche"
+        cadre: { x: 4, y: 48, largeur: 30, hauteur: 30 }
+      - id: coin-lecture
+        libelle: "en bas, à droite"
+        cadre: { x: 58, y: 76, largeur: 34, hauteur: 20 }
+      - id: porte
+        libelle: "en bas, à gauche"
+        cadre: { x: 4, y: 80, largeur: 32, hauteur: 17 }
+  - enonce: "Montre l'armoire."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vu de dessus, avec six éléments disposés le long des murs."
+    bonneZone: armoire
+    indice: "C'est là qu'on range le matériel."
+    zones:
+      - id: tableau
+        libelle: "en haut, au centre"
+        cadre: { x: 28, y: 6, largeur: 34, hauteur: 15 }
+      - id: bureau
+        libelle: "en haut, à gauche"
+        cadre: { x: 15, y: 26, largeur: 28, hauteur: 20 }
+      - id: fenetre
+        libelle: "au centre, à droite"
+        cadre: { x: 68, y: 26, largeur: 18, hauteur: 40 }
+      - id: armoire
+        libelle: "au centre, à gauche"
+        cadre: { x: 4, y: 48, largeur: 30, hauteur: 30 }
+      - id: coin-lecture
+        libelle: "en bas, à droite"
+        cadre: { x: 58, y: 76, largeur: 34, hauteur: 20 }
+      - id: porte
+        libelle: "en bas, à gauche"
+        cadre: { x: 4, y: 80, largeur: 32, hauteur: 17 }
+  - enonce: "Montre le coin lecture."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vu de dessus, avec six éléments disposés le long des murs."
+    bonneZone: coin-lecture
+    indice: "C'est là qu'on peut lire tranquillement."
+    zones:
+      - id: tableau
+        libelle: "en haut, au centre"
+        cadre: { x: 28, y: 6, largeur: 34, hauteur: 15 }
+      - id: bureau
+        libelle: "en haut, à gauche"
+        cadre: { x: 15, y: 26, largeur: 28, hauteur: 20 }
+      - id: fenetre
+        libelle: "au centre, à droite"
+        cadre: { x: 68, y: 26, largeur: 18, hauteur: 40 }
+      - id: armoire
+        libelle: "au centre, à gauche"
+        cadre: { x: 4, y: 48, largeur: 30, hauteur: 30 }
+      - id: coin-lecture
+        libelle: "en bas, à droite"
+        cadre: { x: 58, y: 76, largeur: 34, hauteur: 20 }
+      - id: porte
+        libelle: "en bas, à gauche"
+        cadre: { x: 4, y: 80, largeur: 32, hauteur: 17 }
+  - enonce: "Montre la porte."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vu de dessus, avec six éléments disposés le long des murs."
+    bonneZone: porte
+    indice: "C'est par là qu'on entre et qu'on sort."
+    zones:
+      - id: tableau
+        libelle: "en haut, au centre"
+        cadre: { x: 28, y: 6, largeur: 34, hauteur: 15 }
+      - id: bureau
+        libelle: "en haut, à gauche"
+        cadre: { x: 15, y: 26, largeur: 28, hauteur: 20 }
+      - id: fenetre
+        libelle: "au centre, à droite"
+        cadre: { x: 68, y: 26, largeur: 18, hauteur: 40 }
+      - id: armoire
+        libelle: "au centre, à gauche"
+        cadre: { x: 4, y: 48, largeur: 30, hauteur: 30 }
+      - id: coin-lecture
+        libelle: "en bas, à droite"
+        cadre: { x: 58, y: 76, largeur: 34, hauteur: 20 }
+      - id: porte
+        libelle: "en bas, à gauche"
+        cadre: { x: 4, y: 80, largeur: 32, hauteur: 17 }

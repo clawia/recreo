@@ -203,11 +203,12 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * (ADR-0077) : chaque entree nomme le paquet de designation qui reference ce dessin.</p>
      */
     private static final Set<String> DESSINS_DE_DESIGNATION = Set.of(
-            // S33-PAL2-1 (s34) : les deux frises de QLM-CP-14. plan-classe.svg (QLM-CP-11) n'est
-            // pas servi - voir AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest,
-            // PLAFOND_DE_DESIGNATION_EN_PRODUCTION - et n'a donc pas sa place dans cette liste.
+            // S33-PAL2-1 (s34) : les deux frises de QLM-CP-14.
             "frise-journee-ecole.svg",
-            "frise-soir-routine.svg");
+            "frise-soir-routine.svg",
+            // S35-QLM11-PLANCLASSE (s35) : plan-classe.svg (QLM-CP-11) entre en production dans ce
+            // meme lot, avec les deux cadres agrandis par ines-design (armoire, porte).
+            "plan-classe.svg");
 
     /**
      * DES-3, plancher de trait : <i>"le trait rend au moins 2 px"</i>, la plus fine ligne que recreo
@@ -312,9 +313,15 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       redessin du pictogramme "lever" ajoute 649 octets a {@code frise-journee-ecole.svg}
      *       (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}) et rien d'autre dans le repertoire ; le total
      *       monte du meme montant.</li>
+     *   <li><b>38 461 vers 42 336</b>, lea-dev, s35, {@code S35-QLM11-PLANCLASSE} : entree de
+     *       {@code plan-classe.svg} (QLM-CP-11, 3 875 octets mesures fins de ligne normalisees en
+     *       LF), premiere livraison reelle de cette ligne - geometrie livree par ines-design, cadres
+     *       {@code armoire} et {@code porte} agrandis. Il ne devient pas le plus gros dessin du
+     *       repertoire : {@code frise-journee-ecole.svg} le reste (voir
+     *       {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 38461;
+    private static final int POIDS_TOTAL_MAXIMUM = 42336;
 
     /**
      * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour

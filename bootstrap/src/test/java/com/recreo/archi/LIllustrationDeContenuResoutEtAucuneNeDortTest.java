@@ -128,17 +128,23 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * <p><b>24 vers 35, lea-dev, s34, S33-PAL2-1</b> : le premier paquet de designation servi
      * ({@code cp-frise-de-la-journee}) declare onze items, et {@code ZoneADesigner} rend
      * l'illustration <b>obligatoire</b> sur chacun (ADR-0080, decision 1) - les onze items
-     * s'ajoutent donc tous, sans exception a chercher. {@code cp-plan-de-la-classe} (QLM-CP-11) n'est
-     * pas servi : ses libelles de zone debordent de leur bouton a l'ecran de manche, constate au jar,
-     * route a {@code sofia-sm} plutot que tranche ici.</p>
+     * s'ajoutent donc tous, sans exception a chercher.</p>
+     *
+     * <p><b>35 vers 41, lea-dev, s35, S35-QLM11-PLANCLASSE</b> : {@code cp-plan-de-la-classe}
+     * (QLM-CP-11), premiere livraison reelle de cette ligne, declare six items, et
+     * {@code ZoneADesigner} rend l'illustration obligatoire sur chacun - les six items s'ajoutent
+     * tous.</p>
      */
-    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 35;
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 41;
 
     /**
      * <b>24 vers 26, lea-dev, s34, S33-PAL2-1</b> : les deux dessins du premier paquet de
      * designation servi ({@code frise-journee-ecole.svg}, {@code frise-soir-routine.svg}).
+     *
+     * <p><b>26 vers 27, lea-dev, s35, S35-QLM11-PLANCLASSE</b> : {@code plan-classe.svg}, seul
+     * dessin du second paquet de designation servi ({@code cp-plan-de-la-classe}).</p>
      */
-    private static final int FICHIERS_D_ILLUSTRATION = 26;
+    private static final int FICHIERS_D_ILLUSTRATION = 27;
 
     private static String lire(Path fichier) {
         try {
