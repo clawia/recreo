@@ -1,0 +1,207 @@
+schema: 1
+id: cp-eps-corps-effort
+type: question
+descripteur:
+  matiere: "Éducation physique et sportive"
+  niveau: "CP"
+  domaine: "Entretenir sa santé par la pratique"
+  competence: "Sert la ligne reconnaître les effets de l'effort sur son corps et la ligne connaître quelques règles d'échauffement, d'hydratation et de récupération autour de l'effort (lignes EPS-CP-10 et EPS-CP-11)"
+lignesDeReferentiel: ["EPS-CP-10", "EPS-CP-11"]
+#
+# S34-EPS-CORPS-EFFORT (docs/backlog/backlog.md, sprint 34). Second lot d'education physique et
+# sportive du produit, second paquet apres cp-eps-regles-de-securite.yaml et
+# cp-eps-regles-jeu-collectif.yaml (S32-5). Referentiel copie conforme depuis
+# squad/programme/education-physique-et-sportive/competences-cp.md (DEC-0074).
+#
+# Le grain retenu, position produit rendue (arbitrage prealable de s34, section 4.3 ;
+# arbitrage prealable de s33, section 5.6) : un seul paquet sert les deux lignes, avec une
+# consigne a deux clauses, plutot que deux paquets distincts - les deux lignes portent le meme
+# objet (l'effort physique) et aucune surface de couture n'existe entre elles (ADR-0081,
+# clause 4 : un item ne compte que sur une ligne, ici distinguee par le champ ligneDeReferentiel
+# de chaque item).
+#
+# Frontiere corps-et-effort (DEC-0083, section 9.2 ; nadia-prof), reprise mot pour mot et
+# opposable des le premier item de ce paquet :
+#   - "L'EPS ne porte que l'effort lui-meme : ce que l'effort fait au corps dans l'instant
+#     (essoufflement, coeur qui bat vite, chaleur, soif), ce qui l'entoure (echauffement,
+#     hydratation, recuperation) et les regles de securite de la pratique. Jamais l'hygiene de
+#     vie en general."
+#   - "Les sciences CM1 ne portent que les quatre facteurs de sante generale - alimentation,
+#     activite physique, sommeil, hygiene - rapportes au fonctionnement du corps, jamais aux
+#     effets immediats d'un effort."
+#   - "Questionner le monde CP ne porte que le niveau CP de l'hygiene de vie, et CYC-1
+#     s'applique : aucun item de cycle 3 ne contredit ce que le CP enseigne sur le meme objet."
+# Aucun item de ce paquet ne porte sur l'alimentation, le sommeil ou l'hygiene corporelle hors
+# du contexte immediat de l'effort.
+#
+# Couverture partielle, sur le meme motif que les deux paquets voisins de la matiere (a
+# confirmer par nadia-prof a l'audit, dans les memes termes) : ces deux lignes ne couvrent que
+# la connaissance des effets de l'effort et des regles qui l'entourent ; ce produit ne peut
+# observer si un enfant echauffe reellement ses muscles, boit reellement de l'eau ou se repose
+# reellement (aucun capteur, aucune mecanique n'observe un geste).
+#
+# EPS-2 : aucun item ne compare des corps, des performances ou des capacites entre enfants ;
+# aucune performance chiffree n'est presentee comme une norme (refus d'avance : une question du
+# type "au bout de combien de temps est-on essouffle ?" n'a pas de reponse et n'est pas posee).
+#
+# EPS-3 : aucun item ne fait porter une attitude, une emotion ou une conduite morale par la
+# bonne reponse. Les items sur les regles d'echauffement, d'hydratation et de recuperation
+# restent au registre factuel de la regle elle-meme (a l'identique de
+# cp-eps-regles-de-securite.yaml, deja valide sur ce point) : ils sont formules a la troisieme
+# personne impersonnelle ("que doit-on faire", jamais "que dois-tu faire"), pour qu'aucun ne
+# devienne une injonction personnelle sur la pratique de l'enfant (BIA-4, et refus d'avance :
+# "que dois-tu faire si tu as soif ?" n'est pas une forme employee ici).
+#
+# EPS-6 : aucun indice ne decrit la dynamique d'un effort par une image lue au premier degre
+# (pas de "le coeur s'emballe" ni de "les jambes deviennent lourdes") - chaque indice apporte
+# un fait mecanique ou physiologique, jamais une image.
+#
+# EPS-8 : chaque indice apporte un fait que l'enfant ne peut pas deviner de l'enonce seul,
+# jamais une reformulation de celui-ci.
+#
+# Refus d'avance numero 8 (nadia-prof, 2026-09-10) : chaque enonce fixe explicitement le moment
+# de l'effort dont il parle - pendant, juste apres, ou le lendemain - et aucune de ses
+# propositions n'est vraie a un autre moment que celui pose par l'enonce.
+#
+# BIA-1, BIA-2 : chaque fait sur le corps a l'effort (essoufflement, frequence cardiaque,
+# chaleur, soif, delai de recuperation) est un fait de physiologie de l'effort etabli et non
+# controverse, enseigne des le cycle 2 - verifie par sofia-sm avant l'ecriture de ce paquet, a
+# confirmer par nadia-prof a l'audit.
+#
+# FER-3 : quatre taches mentalement distinctes, deux par ligne - reconnaitre l'effet ou la
+# regle decrite, et dire pourquoi ou dans quel contexte elle s'applique :
+#   - items 1 a 6 : reconnaitre un effet de l'effort sur le corps (EPS-CP-10) ;
+#   - items 7 a 11 : dire pourquoi cet effet se produit (EPS-CP-10) ;
+#   - items 12 a 17 : reconnaitre une regle d'echauffement, d'hydratation ou de recuperation
+#     (EPS-CP-11) ;
+#   - items 18 a 22 : dire pourquoi cette regle existe, ou ce qu'on risque a ne pas la suivre
+#     (EPS-CP-11).
+#
+# FER-2 : vingt-deux items, onze par ligne - plancher de dix par ligne (DEC-0064).
+#
+# FER-1 : les quatre elements enumeres par EPS-CP-10 (essoufflement, coeur qui bat vite,
+# chaleur, soif) sont chacun servis en position de bonne reponse (items 1, 2, 3, 4) ; les trois
+# elements enumeres par EPS-CP-11 (echauffement, hydratation, recuperation) le sont egalement
+# (items 12, 13, 14 et leurs paires de la tache "pourquoi").
+#
+# BIN-1 : tous les items portent trois propositions (deux distracteurs) ; aucun n'est binaire.
+#
+# ADR-0086 : aucune bonne reponse n'est repetee d'un item a l'autre sous le meme moule de
+# propositions ; aucun distracteur ne partage une amorce de quatre mots avec trois autres
+# distracteurs du paquet sans qu'aucune bonne reponse ne la partage ; aucun mot de la liste des
+# marqueurs de restriction (seulement, uniquement, seul, seule, seuls, seules, sauf) n'est
+# employe.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf,
+# aucune dette heritee.
+items:
+  - enonce: "Pendant un effort physique intense, que devient-on souvent ?"
+    bonneReponse: "essoufflé"
+    distracteurs: ["somnolent", "affamé"]
+    indice: "Les muscles ont besoin de beaucoup plus d'air pendant l'effort."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pendant un effort physique, que fait le coeur ?"
+    bonneReponse: "il bat plus vite"
+    distracteurs: ["il bat plus lentement", "il s'arrête un instant"]
+    indice: "Le sang doit circuler plus vite pour nourrir les muscles."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pendant un effort physique, que ressent-on souvent ?"
+    bonneReponse: "on a chaud"
+    distracteurs: ["on a froid", "on n'a rien de spécial"]
+    indice: "Le corps produit de la chaleur quand les muscles travaillent."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pendant un effort physique, que ressent-on souvent au bout d'un moment ?"
+    bonneReponse: "on a soif"
+    distracteurs: ["on a sommeil", "on a faim"]
+    indice: "Le corps perd de l'eau en transpirant pendant l'effort."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Juste après avoir arrêté un effort physique intense, comment est la respiration ?"
+    bonneReponse: "encore rapide, puis elle ralentit"
+    distracteurs: ["immédiatement normale", "plus lente que d'habitude"]
+    indice: "Le corps met un peu de temps à revenir au calme après un effort intense."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pendant un effort physique intense, que devient souvent le visage ?"
+    bonneReponse: "il devient rouge"
+    distracteurs: ["il devient tout pâle", "il ne change pas de couleur"]
+    indice: "Le sang afflue davantage vers la peau pendant l'effort."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pourquoi respire-t-on plus vite pendant un effort physique ?"
+    bonneReponse: "pour apporter plus d'air aux muscles"
+    distracteurs: ["pour parler plus fort", "pour se refroidir plus vite"]
+    indice: "Les muscles qui travaillent consomment plus d'oxygène."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pourquoi le coeur bat-il plus vite pendant un effort physique ?"
+    bonneReponse: "pour envoyer plus de sang aux muscles"
+    distracteurs: ["pour envoyer plus de sang au cerveau", "pour ralentir la respiration"]
+    indice: "Le sang transporte l'énergie dont les muscles ont besoin."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pourquoi a-t-on chaud pendant un effort physique ?"
+    bonneReponse: "parce que les muscles produisent de la chaleur en travaillant"
+    distracteurs: ["parce que le soleil chauffe plus fort", "parce que les vêtements retiennent l'air"]
+    indice: "Même en hiver ou à l'intérieur, l'effort donne chaud."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pourquoi a-t-on soif pendant un effort physique ?"
+    bonneReponse: "parce que le corps perd de l'eau en transpirant"
+    distracteurs: ["parce qu'on a mangé quelque chose de salé avant", "parce qu'on a couru dans le vent"]
+    indice: "Transpirer fait perdre de l'eau, et il faut la remplacer."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Pourquoi la respiration reste-t-elle rapide juste après un effort intense ?"
+    bonneReponse: "le corps a encore besoin de beaucoup d'air pour se calmer"
+    distracteurs: ["il faut souffler pour ne pas avoir mal au ventre", "l'air frais empêche de respirer normalement"]
+    indice: "Le retour au calme n'est pas immédiat, même à l'arrêt."
+    ligneDeReferentiel: "EPS-CP-10"
+  - enonce: "Avant un effort physique intense, que doit-on faire avec ses muscles ?"
+    bonneReponse: "les échauffer par des mouvements légers"
+    distracteurs: ["les étirer le plus fort possible", "les laisser complètement immobiles"]
+    indice: "Des muscles froids se blessent plus facilement qu'un muscle échauffé."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Pendant un effort physique qui dure, que doit-on faire régulièrement ?"
+    bonneReponse: "boire un peu d'eau"
+    distracteurs: ["manger un grand repas", "retenir sa respiration"]
+    indice: "Boire régulièrement remplace l'eau perdue en transpirant."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Juste après un effort physique intense, de quoi le corps a-t-il besoin ?"
+    bonneReponse: "d'un temps de repos"
+    distracteurs: ["d'un nouvel effort immédiat", "d'un repas très copieux"]
+    indice: "Le coeur et la respiration ont besoin de temps pour ralentir."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Quand doit-on échauffer ses muscles ?"
+    bonneReponse: "avant de commencer un effort intense"
+    distracteurs: ["à la fin de l'effort", "le lendemain de l'effort"]
+    indice: "Un muscle a besoin d'être prêt avant de fournir un effort intense."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Quand doit-on boire de l'eau autour d'un effort physique ?"
+    bonneReponse: "avant, pendant et après l'effort"
+    distracteurs: ["le soir avant de dormir", "juste avant de manger"]
+    indice: "Le corps perd de l'eau pendant tout l'effort, pas juste à un moment."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Le lendemain d'un effort physique intense, comment se sentent souvent les muscles ?"
+    bonneReponse: "un peu fatigués"
+    distracteurs: ["parfaitement reposés", "plus forts que la veille"]
+    indice: "Le corps met plusieurs jours à récupérer complètement d'un effort intense."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Pourquoi échauffe-t-on ses muscles avant un effort intense ?"
+    bonneReponse: "pour éviter de se blesser"
+    distracteurs: ["pour aller plus vite dès le départ", "pour avoir moins soif pendant l'effort"]
+    indice: "Un muscle froid est plus raide et se déchire plus facilement."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Pourquoi boit-on de l'eau autour d'un effort physique ?"
+    bonneReponse: "pour remplacer l'eau perdue en transpirant"
+    distracteurs: ["pour avoir moins chaud immédiatement", "pour donner de l'énergie aux muscles"]
+    indice: "L'eau ne nourrit pas les muscles, mais le corps en a besoin pour fonctionner."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Pourquoi le corps a-t-il besoin de repos après un effort physique intense ?"
+    bonneReponse: "pour que les muscles et le coeur récupèrent"
+    distracteurs: ["pour avoir plus faim au repas suivant", "pour oublier l'effort fourni"]
+    indice: "Le corps se répare et se recharge pendant le repos."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Que risque-t-on si l'on commence un effort intense sans échauffement ?"
+    bonneReponse: "de se blesser plus facilement"
+    distracteurs: ["de courir plus vite", "de moins transpirer"]
+    indice: "Les muscles et les articulations ont besoin d'être préparés progressivement."
+    ligneDeReferentiel: "EPS-CP-11"
+  - enonce: "Que risque-t-on si l'on ne boit pas assez d'eau pendant un effort qui dure ?"
+    bonneReponse: "de se sentir mal ou d'avoir des vertiges"
+    distracteurs: ["de transpirer moins vite", "d'avoir moins chaud"]
+    indice: "Manquer d'eau empêche le corps de bien fonctionner pendant l'effort."
+    ligneDeReferentiel: "EPS-CP-11"

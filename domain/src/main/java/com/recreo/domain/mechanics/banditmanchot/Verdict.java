@@ -5,11 +5,16 @@ import java.util.Optional;
 /**
  * Le resultat d'une manche resolue, avec la bonne reponse pour que l'ecran puisse la designer.
  *
- * <p>S10, M11 clause 3 : {@code juste} ne dit plus seulement si la reponse pressee etait la bonne,
- * il dit si la manche <b>compte comme une reussite</b>. Une manche resolue par revelation (M5 -
- * l'enfant presse la reponse que le jeu vient de nommer, apres trois echecs) porte {@code juste =
- * false} bien que le geste presse la bonne reponse : ce n'est pas une reussite, elle ne fait pas
- * monter le score et le jeu ne felicite pas l'enfant de l'avoir pressee.</p>
+ * <p>S10, M11 clause 3 : {@code juste} dit si la manche a ete resolue par un appui sur la bonne
+ * reponse, plutot que par une revelation. Une manche resolue par revelation (M5 - l'enfant presse
+ * la reponse que le jeu vient de nommer, apres trois echecs) porte {@code juste = false} bien que
+ * le geste presse la bonne reponse : le jeu ne felicite pas l'enfant de l'avoir pressee.</p>
+ *
+ * <p>DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : {@code juste} ne dit plus a lui seul si
+ * la manche compte comme une reussite dans le score. Une manche resolue par un appui juste porte
+ * {@code juste = true} meme si elle suit un ou deux echecs sur la meme manche, mais
+ * {@code Score#reussites()} ne monte que si, en plus, aucun echec n'a precede cet appui - l'enfant
+ * l'a trouvee du premier coup (voir {@code BanditManchotSession#resoudre(boolean)}).</p>
  *
  * <p>ADR-0024 : le verdict porte aussi l'explication de l'item qui vient d'etre joue, parce qu'il
  * est la seule trace de cet item une fois la partie terminee. Un accesseur separe sur la session,

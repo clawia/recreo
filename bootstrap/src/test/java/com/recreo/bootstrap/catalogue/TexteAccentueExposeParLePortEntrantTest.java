@@ -226,6 +226,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S32-5 : deux entrees neuves, premier lot d'education physique et sportive CP.
             "bandit-manchot-regles-securite-eps-cp",
             "bandit-manchot-regles-jeu-collectif-eps-cp",
+            // S34-EPS-CORPS-EFFORT : entree neuve, second lot d'education physique et sportive CP.
+            "bandit-manchot-corps-effort-eps-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -351,6 +353,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S32-5 : deux titres neufs, premier lot d'education physique et sportive CP.
             "Les règles de sécurité",
             "Les règles du jeu collectif",
+            // S34-EPS-CORPS-EFFORT : titre neuf, second lot d'education physique et sportive CP.
+            "Le corps et l'effort",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
@@ -507,6 +511,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S32-5 : deux consignes neuves, premier lot d'education physique et sportive CP.
             "Lis bien, puis dis quelle règle de sécurité s'applique, ou pourquoi elle existe.",
             "Lis bien, puis dis quelle est la règle du jeu, ou ce qui se passe dans la situation.",
+            // S34-EPS-CORPS-EFFORT : consigne neuve, second lot d'education physique et sportive
+            // CP.
+            "Lis bien, puis dis ce que l'effort fait au corps, ou quelle règle l'entoure.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -573,6 +580,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // squad/programme/education-physique-et-sportive/competences-cp.md).
             "Adapter ses déplacements à des environnements variés",
             "Conduire et maîtriser un affrontement individuel ou collectif",
+            // S34-EPS-CORPS-EFFORT : domaine neuf, second lot d'education physique et sportive CP
+            // (copie conforme du referentiel de nadia-prof,
+            // squad/programme/education-physique-et-sportive/competences-cp.md).
+            "Entretenir sa santé par la pratique",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
@@ -752,7 +763,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // EPS-CP-04 et EPS-CP-08).
             "Connaître et respecter les règles de sécurité propres à l'activité et au lieu "
                     + "de pratique.",
-            "Connaître et respecter les règles d'un jeu collectif simple.");
+            "Connaître et respecter les règles d'un jeu collectif simple.",
+            // S34-EPS-CORPS-EFFORT : competence neuve, second lot d'education physique et
+            // sportive CP - sert deux lignes du referentiel de nadia-prof (EPS-CP-10, EPS-CP-11),
+            // meme motif que S24-SAI-2 et cm1-anglais pour une entree qui en sert plusieurs.
+            "Sert la ligne reconnaître les effets de l'effort sur son corps et la ligne connaître "
+                    + "quelques règles d'échauffement, d'hydratation et de récupération autour de "
+                    + "l'effort (lignes EPS-CP-10 et EPS-CP-11)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

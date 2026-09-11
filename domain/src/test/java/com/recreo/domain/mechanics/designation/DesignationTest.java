@@ -129,6 +129,25 @@ class DesignationTest {
         assertThat(suivante.zonesEssayees()).as("manche fraiche : aucun essai encore").isEmpty();
     }
 
+    /**
+     * DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : l'enfant garde ses trois essais, et
+     * une manche resolue apres un echec n'est plus comptee comme trouvee du premier coup.
+     */
+    @Test
+    void uneDesignationJusteApresUnEchecResoutLaMancheSansLaCompterCommeUneReussite() {
+        DesignationSession session = demarrer(troisManches());
+
+        DesignationSession apresLEchec = jouer(session, "coin-lecture");
+        DesignationSession apresLaBonneDesignation = jouer(apresLEchec, "tableau");
+
+        assertThat(apresLaBonneDesignation.dernierVerdict().orElseThrow().juste())
+                .as("la manche est resolue par une designation juste, pas par une revelation")
+                .isTrue();
+        assertThat(apresLaBonneDesignation.score())
+                .as("trouvee apres un echec : elle n'est pas comptee comme une reussite")
+                .isEqualTo(new Score(0, 1));
+    }
+
     @Test
     void uneDesignationIncorrecteResteSurLaMemeMancheSansRevelerLaBonneZone() {
         DesignationSession premiere = demarrer(troisManches());

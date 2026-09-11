@@ -164,12 +164,21 @@ public final class SaisieSession implements GameSession {
     /**
      * Resout la manche courante - juste ou par revelation - et tire la suivante, ou termine la
      * partie. M3 : c'est ce geste, et lui seul, qui fait avancer {@link Score#tentatives()}.
+     *
+     * <p>DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : {@link Score#reussites()} ne monte
+     * que si la manche est resolue par une reponse juste <b>et</b> qu'aucune tentative fausse ne
+     * l'a precedee sur cette meme manche ({@code tentatives.isEmpty()} - cette classe n'a pas de
+     * champ {@code essaisSurLaManche} comme les deux mecaniques voisines, SAI-12 en fait la
+     * source) - l'enfant garde ses trois essais, mais seule une reponse trouvee du premier coup
+     * est comptee comme une reussite.</p>
      */
     private SaisieSession resoudre(boolean juste, String chaineJugee) {
         SaisieVerdict verdict = new SaisieVerdict(juste, mancheCourante.formeDeReference(),
                 mancheCourante.explication(), chaineJugee, mancheCourante.exigenceDeForme(),
                 mancheCourante.enonce());
-        Score nouveauScore = new Score(score.reussites() + (juste ? 1 : 0), score.tentatives() + 1);
+        boolean reussieDuPremierCoup = juste && tentatives.isEmpty();
+        Score nouveauScore = new Score(score.reussites() + (reussieDuPremierCoup ? 1 : 0),
+                score.tentatives() + 1);
         if (nouveauScore.tentatives() >= nombreDeManches) {
             return new SaisieSession(contenu, hasard, nombreDeManches, dejaTirees, null, List.of(),
                     false, Optional.of(verdict), nouveauScore, SessionStatus.TERMINEE);

@@ -92,6 +92,39 @@ lignesDeReferentiel: ["EPS-CP-08"]
 # 6) JEU-R7 (reserve, item 6) : la regle "un objet a la fois", jugee en tache B a l'item 10,
 #    n'etait jamais posee comme regle avant d'etre jugee. L'item 6 porte desormais cette regle en
 #    bonne reponse ("un seul objet"), avant que l'item 10 ne la juge.
+#
+# S34-EPS-JEU (docs/backlog/backlog.md, sprint 34). Reprise apres REFUS du 2026-09-10 sur JEU-R9,
+# bloquante (arbitrage prealable de s34 de nadia-prof, section 5.4). Sur la tache A, les items 1, 2,
+# 4, 5 et 6 restent inchanges (item 6 excepte pour son indice, point 4 ci-dessous) :
+#
+# 1) JEU-R9 (motif du refus, meme paquet que JEU-R7) : l'item 3 enseignait, par son indice, qu'un
+#    joueur touche a l'epervier devient epervier a son tour, et l'item 8 marquait fausse
+#    "Malo change de role" en creditant "Malo est elimine" pour une infraction de couloir jamais
+#    posee comme regle ailleurs dans le paquet - deux items du meme jeu se contredisaient. Le geste
+#    de paquet invente par JEU-R7 (tache A enseigne, tache B juge) n'avait pas ete applique a
+#    l'epervier. Les items 3 et 8 sont desormais un couple enseigne/juge sur la meme regle : l'item
+#    3 porte en bonne reponse ce que devient un joueur touche ("il devient epervier a son tour"),
+#    l'item 8 en credite exactement la consequence pour un personnage nomme, comme le fait deja le
+#    couple item 2/item 7 du chat perche. Le "couloir" et l'"elimination", qui ne correspondaient a
+#    aucune regle universelle du jeu (EPS-1), disparaissent.
+#
+# 2) JEU-R10 (item 10) : la bonne reponse ("Hugo n'a pas respecte la regle") restait la seule
+#    proposition de forme "verdict" face a deux distracteurs qui decrivaient une action ("Hugo passe
+#    son tour", "Hugo laisse un objet a l'arrivee") - la forme designait la reponse, independamment
+#    du sens (ADR-0086). Les trois propositions decrivent desormais une action ou une consequence de
+#    meme forme ("Hugo doit reposer un des deux objets", "Hugo doit recommencer au depart", "Hugo
+#    echange sa place avec un camarade").
+#
+# 3) JEU-R11 (items 8 et 10) : les indices sont reecrits pour rester coherents avec les enonces et
+#    bonnes reponses corriges ci-dessus.
+#
+# 4) L'indice de l'item 6 (demenageurs), touche dans le meme geste : il reste coherent avec la
+#    regle qu'il enseigne ("un seul objet") une fois que l'item 10 en juge la violation par un
+#    verdict de meme forme que ses distracteurs.
+#
+# JEU-R12 (le genre des personnages qui enfreignent une regle) n'est pas aggrave par cette reprise :
+# le seul personnage qui enfreint encore une regle du paquet est Hugo (item 10) ; Malo, a l'item 8,
+# est desormais touche par le jeu, ce qui n'est l'infraction de personne.
 items:
   - enonce: "À 1, 2, 3, soleil, quand doit-on s'arrêter de bouger ?"
     bonneReponse: "quand le meneur se retourne"
@@ -101,10 +134,10 @@ items:
     bonneReponse: "en montant sur un point en hauteur"
     distracteurs: ["en fermant les yeux", "en criant le plus fort"]
     indice: "Un joueur touché en hauteur n'est pas pris."
-  - enonce: "À l'épervier, que doivent faire les joueurs pour traverser ?"
-    bonneReponse: "éviter de se faire toucher"
-    distracteurs: ["rester immobiles au milieu", "lancer un ballon à l'épervier"]
-    indice: "Un joueur touché devient épervier à son tour."
+  - enonce: "À l'épervier, que devient un joueur touché en traversant ?"
+    bonneReponse: "il devient épervier à son tour"
+    distracteurs: ["il est éliminé du jeu", "il doit recommencer de l'autre côté"]
+    indice: "Il rejoint alors les joueurs qui doivent toucher les autres."
   - enonce: "À la balle au prisonnier, que devient un joueur touché ?"
     bonneReponse: "il va dans le camp adverse"
     distracteurs: ["il gagne un point", "il devient arbitre du jeu"]
@@ -116,22 +149,22 @@ items:
   - enonce: "Aux déménageurs, combien d'objets porte-t-on à chaque passage ?"
     bonneReponse: "un seul objet"
     distracteurs: ["deux objets à la fois", "autant d'objets que l'on veut"]
-    indice: "Porter un seul objet permet d'aller plus vite entre les deux zones."
+    indice: "Porter un seul objet permet d'aller plus vite qu'en portant deux à la fois."
   - enonce: "Au chat perché, Léa touche Hugo monté sur un banc. Que se passe-t-il ?"
     bonneReponse: "rien, Hugo est perché"
     distracteurs: ["Hugo est attrapé", "Hugo devient chat"]
     indice: "Toucher un joueur perché ne change rien pour lui."
-  - enonce: "À l'épervier, Malo traverse en sortant du couloir. Que se passe-t-il ?"
-    bonneReponse: "Malo est éliminé"
-    distracteurs: ["Malo change de rôle", "Malo continue de jouer"]
-    indice: "Le couloir marque les limites que les joueurs doivent respecter."
+  - enonce: "À l'épervier, Malo est touché pendant qu'il traverse. Que se passe-t-il ?"
+    bonneReponse: "Malo devient épervier à son tour"
+    distracteurs: ["Malo est éliminé du jeu", "Malo doit attendre le prochain tour"]
+    indice: "Être touché ne fait pas sortir du jeu, cela fait seulement changer de camp."
   - enonce: "Au chat perché, Malo touche Aya qui court au sol. Que se passe-t-il ?"
     bonneReponse: "Aya est attrapée"
     distracteurs: ["Aya devient meneuse", "rien ne se passe"]
     indice: "Aya n'est pas en hauteur, elle peut donc être touchée."
   - enonce: "Aux déménageurs, Hugo porte deux objets à la fois. Que se passe-t-il ?"
-    bonneReponse: "Hugo n'a pas respecté la règle"
-    distracteurs: ["Hugo passe son tour", "Hugo laisse un objet à l'arrivée"]
+    bonneReponse: "Hugo doit reposer un des deux objets"
+    distracteurs: ["Hugo doit recommencer au départ", "Hugo échange sa place avec un camarade"]
     indice: "La règle des déménageurs impose de transporter un objet à chaque passage."
   - enonce: "À 1, 2, 3, soleil, Hugo avance quand le meneur regarde. Que se passe-t-il ?"
     bonneReponse: "Hugo doit retourner au départ"

@@ -1,10 +1,11 @@
 package com.recreo.adapter.web;
 
-import org.jsoup.Jsoup;
+import com.recreo.domain.mechanic.GameSession;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -17,7 +18,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /**
@@ -36,6 +36,19 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * repetitions est donc dimensionne pour qu'un depot casse ne puisse pas passer par chance - voir
  * REPETITIONS. La preuve deterministe de l'exclusion mutuelle, elle, est dans
  * EtatDePartieEnSessionTest.</p>
+ *
+ * <p><b>DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : le temoin d'origine cesse d'en
+ * etre un, et il est remplace.</b> Le temoin d'origine lisait {@code score.reussites()} et exigeait
+ * qu'il vaille toujours 1, quel que soit l'ordre de traitement des deux coups. Sous le remede,
+ * {@code score.reussites()} depend desormais de cet ordre : si la mauvaise reponse est traitee la
+ * premiere, la manche a coute un echec, et la bonne reponse qui la resout ensuite n'est plus
+ * comptee comme trouvee du premier coup (c'est exactement ce que la decision de nadia-prof
+ * demande) - {@code reussites()} peut alors valoir 0. Ce rouge n'est pas une regression d'ADR-0019
+ * ni de l'exclusion mutuelle qu'il protege : la propriete que ADR-0019 garde - aucune ecriture
+ * n'en ecrase une autre - reste vraie. Le temoin de remplacement est {@code score.tentatives()} :
+ * sous verrou il vaut exactement 1 apres les deux appuis simultanes, quel que soit leur ordre,
+ * puisqu'une seule manche est resolue ; sans verrou, la derniere ecriture ecrase l'autre et il peut
+ * valoir 0 (theo-archi, avis de s34, section 2.3).</p>
  */
 @WebMvcTest(PartieController.class)
 @Import(PartieControllerTest.JeuDeTestConfiguration.class)
@@ -60,9 +73,9 @@ class DeuxCoupsSimultanesTest {
     private MockMvc mockMvc;
 
     @Test
-    void deuxCoupsSimultanesNeFontJamaisPerdreLePointGagne() throws Exception {
+    void deuxCoupsSimultanesNeFontJamaisDisparaitreUneTentative() throws Exception {
         ExecutorService fils = Executors.newFixedThreadPool(2);
-        List<Integer> scoresObserves = new ArrayList<>();
+        List<Integer> tentativesObservees = new ArrayList<>();
         try {
             for (int essai = 0; essai < REPETITIONS; essai++) {
                 MockHttpSession session = new MockHttpSession();
@@ -74,15 +87,16 @@ class DeuxCoupsSimultanesTest {
                 juste.get();
                 faux.get();
 
-                scoresObserves.add(scoreQuiFaitFoi(session));
+                tentativesObservees.add(tentativesQuiFontFoi(session));
             }
         } finally {
             fils.shutdownNow();
         }
 
-        assertThat(scoresObserves)
-                .as("une bonne reponse et une mauvaise jouees ensemble : le score qui fait foi vaut"
-                        + " toujours 1, quel que soit l'ordre dans lequel le serveur les traite")
+        assertThat(tentativesObservees)
+                .as("une bonne reponse et une mauvaise jouees ensemble : une seule manche est"
+                        + " resolue, quel que soit l'ordre dans lequel le serveur les traite -"
+                        + " aucune ecriture n'en a ecrase une autre")
                 .containsOnly(1);
     }
 
@@ -96,16 +110,15 @@ class DeuxCoupsSimultanesTest {
     }
 
     /**
-     * L'etat qui fait foi, relu apres coup, et non l'ecran rendu au moment de la reponse.
-     *
-     * <p>S10 : {@code GET /parties/{jeuId}/manche} a disparu avec "Encore !", son seul appelant. La
-     * reprise silencieuse de {@code GET /} lit le meme etat de session sans le muter (elle ne passe
-     * jamais par {@code EtatDePartieEnSession.jouer}) : c'est une relecture tout aussi neutre.</p>
+     * Le nombre de tentatives qui fait foi, relu directement sur l'etat de session, et non sur
+     * l'ecran rendu au moment de la reponse - {@code EtatDePartieEnSession} est package-private,
+     * accessible depuis ce test parce qu'il vit dans le meme package (meme technique que
+     * EtatDePartieEnSessionTest).
      */
-    private int scoreQuiFaitFoi(MockHttpSession session) throws Exception {
-        String html = mockMvc.perform(get("/").session(session))
-                .andReturn().getResponse().getContentAsString();
-        String affiche = Jsoup.parse(html).select(".score").text();
-        return Integer.parseInt(affiche.replace("Score : ", "").strip());
+    private int tentativesQuiFontFoi(MockHttpSession session) {
+        MockHttpServletRequest requete = new MockHttpServletRequest();
+        requete.setSession(session);
+        GameSession finale = new EtatDePartieEnSession(requete).lire().session();
+        return finale.score().tentatives();
     }
 }

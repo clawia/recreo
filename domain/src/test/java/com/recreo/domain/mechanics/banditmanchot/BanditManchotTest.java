@@ -646,6 +646,25 @@ class BanditManchotTest {
         assertThat(session.explicationRevelee()).contains("explication de q1");
     }
 
+    /**
+     * DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : l'enfant garde ses trois essais, et
+     * une manche resolue apres un echec n'est plus comptee comme trouvee du premier coup.
+     */
+    @Test
+    void uneReponseJusteApresUnEchecResoutLaMancheSansLaCompterCommeUneReussite() {
+        BanditManchotSession session = demarrer(troisManches());
+
+        BanditManchotSession apresUnEchec = jouer(session, "3");
+        BanditManchotSession apresLaBonneReponse = jouer(apresUnEchec, "1");
+
+        assertThat(apresLaBonneReponse.dernierVerdict().orElseThrow().juste())
+                .as("la manche est resolue par un appui juste, pas par une revelation")
+                .isTrue();
+        assertThat(apresLaBonneReponse.score())
+                .as("trouvee apres un echec : elle n'est pas comptee comme une reussite")
+                .isEqualTo(new Score(0, 1));
+    }
+
     /** M13 : la derniere tentative sert au point de focus ; elle est neuve sur chaque manche. */
     @Test
     void laDerniereTentativeEstReinitialiseeSurUneMancheFraiche() {

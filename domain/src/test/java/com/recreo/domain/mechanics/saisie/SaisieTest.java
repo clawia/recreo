@@ -192,6 +192,27 @@ class SaisieTest {
         assertThat(apresUneJuste.score().reussites()).isEqualTo(1);
     }
 
+    /**
+     * DEC-0061, instruction 1, famille A (S34-SCO1-REMEDE) : l'enfant garde ses trois essais, et
+     * une manche resolue apres un echec n'est plus comptee comme trouvee du premier coup.
+     */
+    @Test
+    void uneReponseJusteApresUnEchecResoutLaMancheSansLaCompterCommeUneReussite() {
+        SaisieSession session = ecrire(partieDe(2, libre("item-0", "7"), libre("item-1", "5")), "3");
+
+        SaisieSession apresLaBonneReponse = ecrire(session, "7");
+
+        assertThat(apresLaBonneReponse.dernierVerdict().orElseThrow().juste())
+                .as("la manche est resolue par une reponse juste, pas par une revelation")
+                .isTrue();
+        assertThat(apresLaBonneReponse.score().reussites())
+                .as("trouvee apres un echec : elle n'est pas comptee comme une reussite")
+                .isZero();
+        assertThat(apresLaBonneReponse.score().tentatives())
+                .as("la manche est neanmoins resolue")
+                .isEqualTo(1);
+    }
+
     @Test
     void unePremiereReponseFausseLaisseLEnfantSurLaMemeMancheEtMontreLIndice() {
         SaisieSession session = ecrire(partieDe(2, libre("item-0", "7"), libre("item-1", "5")), "3");
