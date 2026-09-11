@@ -13369,5 +13369,307 @@ deja ecrites a la cloture de s33, sont confirmees dans la borne sans modificatio
   `nadia-prof`) ; `marc-dev` ou `lea-dev` pour l'implementation ; `nadia-prof` pour le texte de
   l'ecran de fin, quand il sera ecrit.
 
+## Backlog ouvert pour s35 - fermer tout ce qui n'a pas encore recu le go pedagogique de
+## `nadia-prof` (aucune ligne de programme neuve)
+
+**Objectif unique du sprint, arbitre par l'utilisatrice.** s35 n'ouvre aucune ligne de
+`squad/programme/MATRICE-couverture.md` : les six stories ci-dessous cloturent des refus
+pedagogiques bloquants (`S34-SCO1-REMEDE`, `S34-EXC-TACHEB`, `QLM-CP-14`) ou des reserves et
+routages non soldes a la cloture de s34 (`QLM-CP-11` jamais livree, la reserve restante de
+`S34-ANG-CORR`, `S34-CONS-4` jamais engagee). Sources : `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`,
+section "Obstacles - Encore ouverts" ; `review.md`, sections 2, 4 et 9 ; les trois verdicts
+d'instance. **Chaque story ci-dessous ferme un refus ou une reserve deja prononce ; aucune ne
+porte une competence neuve.**
+
+### S35-SCO1-ECRAN-FIN - L'ecran de fin de partie dit ce que l'enfant a trouve seul et qu'il a
+### fait toutes les questions (leve `SCO-R1`, ferme le refus de `S34-SCO1-REMEDE`)
+
+- **Besoin** : en tant qu'eleve de CP ou de CM1, je veux voir, a la fin d'une partie, ce que j'ai
+  trouve seul et le fait que j'ai fait toutes les questions, afin de ne pas lire un seul chiffre
+  bas qui ne dit qu'une partie de ce que j'ai fait.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Ecran de fin de
+  partie, commun aux trois mecaniques (`bandit-manchot`, `saisie`, `designation`) ; aucune ligne
+  de la matrice ne bouge par cette story.
+- **Le motif du refus, repris mot pour mot (`SCO-R1`, bloquante, `verdicts-nadia-instance-A.md`,
+  section 5.2)** : *"a la fin d'une partie, l'enfant doit lire deux choses - ce qu'il a trouve
+  seul, et qu'il a fait toutes les questions. Aujourd'hui il n'en lit qu'une, et c'est la plus
+  basse."* Constat vu a l'ecran sur les trois mecaniques : *"Score : 6"* apres dix manches dont
+  six trouvees du premier appui, et rien d'autre.
+- **Criteres d'acceptation** :
+  - Etant donne un ecran de fin de partie apres des manches dont une partie est trouvee du
+    premier appui, quand il est rendu, alors il affiche deux informations distinctes et
+    lisibles separement : le nombre de manches trouvees seul, et le fait que la totalite des
+    manches a ete jouee - jamais un nombre reduit qui remplace les deux (`SCO-R1` mot pour mot :
+    "un enfant qui a trouve quatre questions seul et six apres une erreur n'a pas '4 sur 10'").
+  - Etant donne les trois mecaniques, quand l'ecran de fin est revu, alors le meme texte s'y
+    applique - un ecran commun, pas trois variantes (verifie a s34 sur `bandit-manchot`, `saisie`
+    et `designation`, meme comportement constate sur les trois).
+  - Etant donne le remede des trois essais deja livre et accepte (`ADR-0090`), alors cette story
+    ne le modifie pas : aucune session (`SaisieSession` et les deux autres) n'est retouchee sur
+    son calcul de score, seul le texte de l'ecran change.
+  - Etant donne le texte ecrit, alors il est lisible par un enfant de CP : aucun terme de note
+    scolaire, aucune formule qui presente le score reduit comme un resultat (mode de defaillance
+    nomme d'avance par `nadia-prof`, a eviter).
+  - Etant donne l'ecran de fin apres une manche resolue par revelation, alors le texte neuf y est
+    verifie separement - `nadia-prof` note ne pas l'avoir compte a s34.
+  - Etant donne le Done pedagogique, alors le texte revient devant `nadia-prof` avant toute
+    fermeture : elle confirme, en jouant sur les trois mecaniques, que `SCO-R1` est levee.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas `ADR-0090` ni le calcul de score
+  lui-meme ; elle ne choisit pas la forme technique exacte de l'ecran - `theo-archi` la tranche ;
+  elle ne traite pas `SCO-R2` (rien ne dit a l'enfant que seul le premier essai compte) ni
+  `SCO-R3` (une validation vide coute desormais un essai sur la saisie), deux reserves non
+  bloquantes distinctes de `verdicts-nadia-instance-A.md`, sections 5.3 et 5.4, qui restent
+  ouvertes et ne sont pas requises pour fermer ce refus.
+- **Lien decision** : `S34-SCO1-REMEDE` (ce document, refusee) ; `DEC-0061` (instruction 1) ;
+  `ADR-0090` ; `verdicts-nadia-instance-A.md`, section 5 (`SCO-R1`, `SCO-R2`, `SCO-R3`) ;
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`, "Encore ouverts".
+- **Agent pressenti** : `theo-archi` pour la forme technique du texte (deja route a s34) ;
+  `marc-dev` ou `lea-dev` pour l'implementation ; `nadia-prof` pour le Done pedagogique du texte.
+
+### S35-EXC-INDICES - Les cinq indices de la tache B de `bandit-manchot-exclusion-cp` disent
+### pourquoi la conduite choisie ne marche pas (leve `EXC-R10`, ferme le refus de
+### `S34-EXC-TACHEB`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que l'indice qui m'aide, quand je me trompe sur la
+  conduite a avoir face a une moquerie qui se repete, me dise pourquoi ce que j'ai choisi ne
+  marche pas, et non une phrase qui repond a une question qu'on ne me pose plus, afin de
+  comprendre mon erreur.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2) - `EMC-CP-03`
+  (`bandit-manchot-exclusion-cp`), deja `couvert-valide` ; cette story ne rouvre pas la ligne,
+  elle leve le motif qui a fait refuser `S34-EXC-TACHEB`.
+- **Le motif du refus, repris mot pour mot (`EXC-R10`, bloquante, `verdicts-nadia-instance-B.md`,
+  section 3)** : la refonte de la tache B reecrit les cinq `enonce`, les cinq `bonneReponse` et
+  les dix `distracteurs`, mais *"les cinq lignes `indice` ne sont pas touchees. Elles sont celles
+  de la tache 'Quel adulte est la ?' que la refonte supprime."* Joue, manche 1 : un distracteur
+  *"attendre que cela s'arrete tout seul"* recoit l'indice *"Cette personne est la pour veiller
+  sur les eleves qui jouent"* - aucune personne n'est nommee dans la question.
+- **Criteres d'acceptation** :
+  - Etant donne les cinq lignes `indice` de la tache B, quand elles sont revues, alors chacune
+    dit pourquoi la conduite choisie par l'enfant ne resout pas la moquerie repetee, et non plus
+    la reponse a "Quel adulte est la ?" (`EXC-R10` mot pour mot : "aucune ne dit a l'enfant
+    pourquoi la conduite qu'il a choisie ne marche pas").
+  - Etant donne tout item ou le distracteur est de la famille "attendre que cela s'arrete tout
+    seul" ou une conduite equivalente, quand son indice est ecrit, alors il dit explicitement
+    pourquoi attendre ne marche pas - condition ecrite par `nadia-prof` elle-meme la veille du
+    refus (`FICHE-bandit-manchot-exclusion-cp.md`), valant sur zero item sur cinq a la cloture de
+    s34.
+  - Etant donne les trois items sur cinq ou la bonne reponse est aujourd'hui la seule proposition
+    qui nomme un adulte (`EXC-R11`, non bloquante, datee du 2026-09-11), quand les indices sont
+    revus dans le meme geste, alors cette reserve est soldee ou explicitement laissee ouverte
+    avec son cout nomme - `nadia-prof` precise que ce n'est pas un durcissement de sa condition
+    du 2026-09-10.
+  - Etant donne le distracteur "esperer qu'un adulte l'ait remarquee" (`EXC-R12`), quand il est
+    revu, alors la phrase entiere est simplifiee pour un enfant de CP - le subjonctif passe et le
+    pronom elide sans antecedent clair sont retires, et pas seulement l'accord du participe deja
+    corrige par le `relecteur-pedagogique` (`relecture.md`, section 1.1).
+  - Etant donne le paquet assemble (tache A et tache B), quand le commit est pret, alors il est
+    relu comme un tout avant de commiter - la consigne contre l'ensemble des taches reellement
+    servies (amendement de `squad/README.md`, section 4, retro de s33) - deja exige par
+    `S34-EXC-TACHEB`, repris ici parce que le meme paquet est retouche.
+  - Etant donne le Done pedagogique, alors `EMC-CP-03` reste `couvert-valide` et `nadia-prof`
+    confirme, en jouant, que `EXC-R10` est levee.
+- **Ce que cette story ne fait pas** : elle n'invente aucun texte a la place de `nadia-prof`, qui
+  ne le fournit pas d'avance (`RES-2`) ; elle ne rouvre pas la tache A ni les `enonce`,
+  `bonneReponse` et `distracteurs` deja reecrits de la tache B - `C-1`, `C-2`, `EXC-R7`, `EXC-R8`
+  restent tenus, verifies a l'ecran a s34.
+- **Lien decision** : `S34-EXC-TACHEB` (ce document, refusee) ; `verdicts-nadia-instance-B.md`,
+  section 3 (`EXC-R10`, `EXC-R11`, `EXC-R12`) ; `relecture.md`, section 1.1 (accord du participe
+  deja corrige, mode du verbe reste a traiter) ; `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`,
+  "Encore ouverts".
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof` pour l'audit.
+
+### S35-QLM14-FRISE - Un texte alternatif honnete et un pictogramme de lever reconnaissable sur
+### `cp-frise-de-la-journee` (leve `FRI-R1` et `FRI-R2`, ferme le refus de `QLM-CP-14`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux devoir vraiment regarder le dessin de la frise pour
+  trouver le bon moment de la journee, et reconnaitre un lit sur le pictogramme du lever, afin que
+  le jeu verifie que je sais lire une frise et non seulement compter un rang.
+- **Competence programme visee** : questionner le monde, CP (cycle 2) -
+  `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-14`, "Situer des evenements
+  les uns par rapport aux autres sur une frise chronologique simple (avant, apres, en meme
+  temps)", `non couvert`, refusee au premier passage.
+- **Les deux motifs du refus, repris mot pour mot (`verdicts-nadia-instance-B.md`, section 4)** :
+  - **`FRI-R1`, bloquante** : *"Les deux dessins servent un texte alternatif qui liste leurs
+    moments dans l'ordre de la frise, et les libelles de zone sont des rangs. Les deux ensemble
+    forment une table de correspondance complete."* Neuf items sur onze se gagnent entierement
+    sans regarder le dessin, et sur l'item 1 l'indice donne le libelle de la bonne zone mot pour
+    mot. *"Un texte alternatif honnete dit ce que l'image est, pas ce qu'elle contient dans
+    l'ordre."*
+  - **`FRI-R2`, bloquante** : *"le pictogramme du lever ne se lit pas comme un lit."* Regarde a la
+    taille servie puis au triple agrandissement : *"un rectangle large avec un petit rectangle et
+    un trait, plus un trait vertical detache qui deborde au-dessus. Je ne trouve pas le lit."*
+- **Criteres d'acceptation** :
+  - Etant donne les deux textes alternatifs des dessins de frise, quand ils sont revus, alors
+    chacun dit ce que l'image **est** (une frise de tant de moments, disposee ainsi) et non ce
+    qu'elle **contient** dans l'ordre des moments (`FRI-R1`).
+  - Etant donne l'indice de l'item 1, quand il est revu, alors il n'emploie plus une formule qui
+    donne mot pour mot le libelle de la bonne zone (aujourd'hui : "C'est le tout premier moment
+    de la journee").
+  - Etant donne la passe image effacee (`ZON-1`, `ZON-3`) rejouee sur les onze items apres
+    correction, alors `nadia-prof` mesure, en jouant, que moins de neuf items sur onze se
+    resolvent sans regarder le dessin.
+  - Etant donne le pictogramme du lever (item 1), quand il est reforme, alors `nadia-prof`
+    reconnait un lit en le regardant a la taille servie et au triple agrandissement (`FRI-R2`).
+  - Etant donne l'item 7 (meme zone que l'item 1, visee par une relation), alors il n'est pas
+    retouche par cette story - il n'est pas concerne par `FRI-R2`.
+  - Etant donne les libelles positionnels de zone deja servis (des rangs), alors ils restent la
+    forme retenue : `ZON-10` n'est pas amendee - `nadia-prof` tranche que ce ne sont pas les
+    libelles qui fautent seuls, mais les libelles plus le texte alternatif ensemble.
+  - Etant donne le Done pedagogique, alors `QLM-CP-14` ne passe `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, que `FRI-R1` et `FRI-R2` sont levees, et que la mention de
+    couverture partielle deja portee par cette ligne dans la matrice ("moitie
+    anteriorite/posteriorite seule") tombe, `FER-1` etant deja verifiee tenue sur les trois
+    relations a s34 (`verdicts-nadia-instance-B.md`, section 4).
+- **Ce que cette story ne fait pas** : elle ne touche pas la geometrie des cadres ni la taille des
+  libelles du plan de classe (`ZON-15`, `ZON-16` - story separee, `S35-QLM11-PLANCLASSE`, meme
+  famille de condition mais paquet different) ; elle ne traite pas `FRI-R3` (le bol du diner ne
+  porte pas le repas du soir), `FRI-R4` (deux libelles debordent de 2 a 3 px) ni `FRI-R5` (la
+  revelation apres trois essais n'est qu'un deplacement de focus, sans marque visible), trois
+  reserves non bloquantes distinctes qui restent ouvertes ; elle ne corrige pas le recouvrement
+  des boutons de zone sur le dessin, defaut transverse a tout paquet de designation route
+  separement a `ines-design` et `theo-archi`.
+- **Lien decision** : `verdicts-nadia-instance-B.md`, section 4 (`FRI-R1`, `FRI-R2`, `FRI-R3`,
+  `FRI-R4`, `FRI-R5`) ; `squad/conformite/FICHE-designation-frise-de-la-journee.md` ;
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`, "Encore ouverts".
+- **Agent pressenti** : `lea-dev` (auteure du paquet), via `sofia-sm`, pour les textes alternatifs
+  et l'indice de l'item 1 ; `ines-design`, via `sofia-sm`, pour le pictogramme du lever ;
+  `nadia-prof` pour l'audit.
+
+### S35-QLM11-PLANCLASSE - Deux cadres du plan de classe et le plancher de lisibilite de leurs
+### libelles (`ZON-15`, `ZON-16`, livre `QLM-CP-11` pour la premiere fois)
+
+- **Besoin** : en tant qu'eleve de CP, je veux pouvoir lire le libelle de chaque zone du plan de
+  classe sans qu'il deborde de son cadre ou ne cache le dessin, afin de savoir quelle zone
+  toucher.
+- **Competence programme visee** : questionner le monde, CP (cycle 2) -
+  `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-11`, "Situer un lieu ou un
+  objet sur un plan simple de la classe, de l'ecole ou du quartier", `non couvert`, jamais livree
+  - quatrieme sprint sur cette ligne.
+- **Les deux conditions qui bloquent, repris mot pour mot (`verdicts-nadia-instance-B.md`,
+  section 4)** :
+  - **`ZON-15`** : *"Le libelle d'une zone est un texte qu'un enfant de CP doit lire pour presser
+    le bon bouton : le plancher est 1,25rem [...] A la taille servie, le libelle tient
+    entierement dans son cadre sans deborder ni toucher une zone voisine, et ne recouvre aucun
+    trait du dessin que sa zone designe. Si les deux ne tiennent pas ensemble a 1,25rem, c'est le
+    cadre ou le libelle qui change, jamais la police."* Mesure sur les cadres de l'armoire (56 x
+    77 px) et de la porte (63 x 56 px) : 16 a 23 px de boite de contenu apres le pave de `.zone`,
+    *"aucun libelle n'y tient a 1,25rem, meme d'un mot"*.
+  - **`ZON-16`** : *"Un libelle positionnel de CP compte au plus trois mots et ne porte qu'un seul
+    repere. 'en haut, au centre' passe ; 'a gauche, contre le mur' ne passe pas."*
+  - *"Ni l'une ni l'autre seule ne suffit"* - `nadia-prof` le dit explicitement.
+- **Criteres d'acceptation** :
+  - Etant donne les cadres de l'armoire et de la porte, quand leur geometrie est revue par
+    `ines-design`, alors chacun offre une boite de contenu suffisante pour qu'un libelle a
+    1,25rem y tienne entierement, sans deborder ni toucher une zone voisine, et sans recouvrir un
+    trait du dessin que sa zone designe (`ZON-15`).
+  - Etant donne le libelle de chaque zone du plan de classe, quand il est revu par `nadia-prof`,
+    alors il compte au plus trois mots et ne porte qu'un seul repere positionnel (`ZON-16`).
+  - Etant donne le plancher de cible tactile deja mesure par `theo-archi` (12,5 % du plus petit
+    cote, `.image-designation { max-height: 22rem }`, `CIBLE_TACTILE_REM = 2,75`), alors cette
+    story ne le rouvre pas : c'est une propriete distincte de celle que `ZON-15` ajoute
+    (lisibilite du libelle dans son cadre, pas taille de la cible pressable).
+  - Etant donne le paquet servi, quand il est joue, alors `FER-1`, `FER-2`, `FER-3` et les huit
+    conditions `ZON-1` a `ZON-14` deja opposables sont tenues, dans les memes termes que
+    `S33-PAL2-1` les avait posees (recevabilite, nombre de zones, zones masquees, forme du
+    libelle, ordre de declaration, dessin en schema, non-chevauchement, un item un geste).
+  - Etant donne le Done pedagogique, alors `QLM-CP-11` ne passe `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, que `ZON-15` et `ZON-16` sont tenues ensemble - aucune des
+    deux moities ne suffit seule.
+- **Ce que cette story ne fait pas** : elle ne touche pas la frise de la journee ni `QLM-CP-14`
+  (story separee, `S35-QLM14-FRISE`) ; elle ne rouvre pas le plancher de cible tactile
+  d'`ADR-0080` ; elle ne tranche pas le recouvrement general des boutons de zone sur le dessin,
+  defaut transverse route separement a `ines-design` et `theo-archi`.
+- **Lien decision** : `verdicts-nadia-instance-B.md`, section 4 (`ZON-15`, `ZON-16`) ;
+  `S33-PAL2-1` (ce document, criteres `ZON-1` a `ZON-14` inchanges) ;
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/confirmation-archunit.md`, section 5
+  (plancher de cible tactile) ; `RAPPORT.md`, "Encore ouverts".
+- **Agent pressenti** : `ines-design` pour la geometrie des deux cadres ; `nadia-prof` pour les
+  six libelles et pour l'audit.
+
+### S35-ANG-R3 - Le monument de New York redevient une question qu'il faut vraiment savoir, et le
+### mot "imperiale" est explique meme au premier essai (leve la reserve restante de
+### `S34-ANG-CORR`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que l'item sur le monument de New York reste une
+  question ou je dois vraiment connaitre la reponse, et que le mot "imperiale" me soit explique
+  meme si je trouve du premier coup, afin de ne pas gagner en eliminant par la seule lecture de
+  l'enonce.
+- **Competence programme visee** : langues vivantes (anglais), CM1 (cycle 3) -
+  `squad/programme/langues-vivantes/competences-cm1.md`, `LVE-CM1-07`, deja `couvert-valide` ;
+  correction non bloquante, aucun statut de matrice ne bouge.
+- **La reserve, reexprimee par `nadia-prof` au format `RES-1` et reprise mot pour mot
+  (`ANG-R3`, `verdicts-nadia-instance-A.md`, section 4.2)** : *"sur les items neufs de
+  `LVE-CM1-07`, l'enfant ne doit pas pouvoir ecarter une proposition par la seule lecture de
+  l'enonce ; et le mot qu'il designe en repondant doit lui etre accessible."* Deux items sur trois
+  du perimetre d'origine sont deja corriges (Halloween, le bus a imperiale) ; le troisieme (la
+  statue de la Liberte) ne l'est pas, et la clause sur le mot "imperiale" n'est pas payee non
+  plus.
+- **Criteres d'acceptation** :
+  - Etant donne l'item de la statue de la Liberte (*"Quel monument, une grande statue tenant une
+    torche, se trouve sur une ile a l'entree du port de New York ?"* -> *"la statue de la
+    Liberte"*, contre *"la tour Eiffel"* et *"le Colisee"*), quand il est revu, alors soit
+    l'enonce redevient descriptif et les deux distracteurs deviennent des candidats serieux (par
+    exemple un autre monument de New York), soit l'enonce reste depouille et les deux
+    distracteurs sont remplaces par deux monuments de New York plausibles - le mode de
+    defaillance nomme d'avance par `nadia-prof` (retirer la description et laisser "la tour
+    Eiffel" et "le Colisee" en face, deux monuments hors sujet) est explicitement evite.
+  - Etant donne le mot "imperiale" (item du bus a etage), quand il est revu, alors il est
+    explique la ou l'enfant le rencontre - dans l'enonce ou dans une proposition - et non plus
+    seulement dans l'indice, que seul l'enfant qui s'est trompe lit.
+  - Etant donne l'item du bus a imperiale deja corrige a s34 (devenu *"Quel moyen de transport est
+    un symbole touristique de Londres ?"* contre *"le metro"* et *"le taxi noir"*), quand la
+    reserve `ANG-R7` (non bloquante, `verdicts-nadia-instance-A.md`, section 4.3 : les trois
+    propositions sont desormais vraies, l'enfant devine ce que le jeu attend) est traitee dans le
+    meme geste, alors l'enonce porte un critere qui distingue le bus des deux autres sans le
+    decrire a nouveau - le mode de defaillance nomme d'avance (remettre la description "rouge,
+    deux etages", qui rouvrirait `ANG-R3`) est evite.
+  - Etant donne le reste du paquet `cm1-anglais`, alors `FER-1` et `FER-2` (dix items sur la
+    ligne) restent tenues a l'identique, et les cinq items de s28 restent hors du perimetre de
+    `PLA-1`, comme `nadia-prof` l'a explicitement ecrit.
+  - Etant donne le Done pedagogique, alors `LVE-CM1-07` reste `couvert-valide` et `nadia-prof`
+    confirme, en jouant, que `ANG-R3` est levee sur son troisieme item et sur sa seconde clause
+    (le mot "imperiale"), et que `ANG-R7` est levee si traitee dans le meme lot.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas `LVE-CM1-07` elle-meme ; elle ne touche
+  pas les items deja confirmes bons a s34 (`ANG-R4`, `ANG-R5`, `ANG-R6`, levees).
+- **Lien decision** : `S34-ANG-CORR` (ce document) ; `verdicts-nadia-instance-A.md`, section 4.2
+  (`ANG-R3` reexprimee) et section 4.3 (`ANG-R7`) ;
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`.
+- **Agent pressenti** : `marc-dev` ou `lea-dev` pour le texte ; `nadia-prof`, quatrieme passage
+  sur cet item.
+
+### S35-CONS-4 - Reprise de `S34-CONS-4` : scinder `bandit-manchot-histoire-geographie-cm1` en
+### quatre entrees de catalogue (jamais engagee, quatrieme sprint sur ce sujet)
+
+- **Statut** : non engagee, comme `S34-CONS-4` (qui remplacait deja `S33-CONS-4`) qu'elle ne
+  remplace pas - les criteres d'acceptation de `S34-CONS-4` restent ceux qui font foi, non repris
+  ici pour ne pas en creer une seconde version. Cette entree porte le renvoi et le fait mesure a
+  la cloture de s34.
+- **Besoin** : transverse - pas de contenu pedagogique (inchange depuis `S34-CONS-4`).
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Les 110 items
+  existants continuent de servir les memes lignes de
+  `squad/programme/histoire-geographie/competences-cm1.md` ; aucun statut de matrice ne bouge par
+  cette story.
+- **Le fait, avec sa source** : la fenetre de developpement de s34 s'est fermee avant que cette
+  story ne soit engagee - aucune branche n'a ete ouverte pour elle
+  (`verdicts-nadia-instance-A.md`, section 9.3 : idle de 1,0 sur l'instance A, *"S34-CONS-4 non
+  engagee, non demarree - aucun audit du a une story qui n'existe pas"* ;
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`, "Encore ouverts").
+  C'est le quatrieme sprint consecutif ou la consigne fautive de ce jeu n'est pas corrigee -
+  routee de s32 a s33 (`S33-CONS-4`), de s33 a s34 (`S34-CONS-4`), et de s34 a s35 par cette
+  entree.
+- **Criteres d'acceptation** : inchanges, ceux de `S34-CONS-4` - la table des quatre entrees de
+  catalogue (Situer dans le temps, Nommer en histoire, Nommer en geographie, Lire un document),
+  le recompte exhaustif des 110 items existants, la redaction des quatre consignes par qui
+  execute (une seule tache par consigne, en une seule clause), et l'audit de `nadia-prof` sur
+  chaque consigne, texte devant items.
+- **Ce que cette story ne fait pas** : elle ne rouvre pas la decision de grain deja rendue
+  conjointement par `camille-po` et `nadia-prof` (`ADR-0081`) ; elle n'invente aucun critere neuf
+  au-dela de ceux deja ecrits dans `S34-CONS-4`.
+- **Lien decision** : `S34-CONS-4` (ce document, criteres inchanges) ; `S33-CONS-4` (decision de
+  grain, deja remplacee) ; `ADR-0081` ; `verdicts-nadia-instance-A.md`, section 9.3 (idle mesure) ;
+  `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/RAPPORT.md`, "Encore ouverts".
+- **Agent pressenti** : a affecter au planning de s35 par `sofia-sm` - `theo-archi` pour la forme
+  technique de la scission ; `marc-dev` ou `lea-dev` pour l'execution et l'ecriture des quatre
+  consignes ; `nadia-prof` pour l'audit.
 
 
