@@ -1,10 +1,14 @@
 # ADR-0091 - Le texte alternatif d'un item de designation ne nomme aucune de ses zones, et son indice ne porte aucun jeton distinctif du libelle de sa bonne zone
 
-- **Statut** : **`Propose`**. Ses deux regles sont **ecrites ci-dessous et dues avec le lot de
-  `S35-QLM14-FRISE`**. Elles ne sont pas dans l'arbre a la date de redaction, et cet `ADR` ne
-  passera `Accepte` que quand elles y seront, avec leurs jeux fautifs. **La clause 1 est rouge sur
-  le contenu servi aujourd'hui** : c'est elle qui paie `FRI-R1`, et une regle ecrite le jour ou
-  elle gene est une regle qu'on negocie.
+- **Statut** : **`Accepte`** le 2026-09-11 (s35, confirmation de la porte technique), apres avoir
+  ete `Propose` le meme jour. Ses deux garde-fous sont dans l'arbre avec leurs quatre jeux fautifs,
+  et **leur morsure est verifiee sur le materiau reel plutot que sur la declaration de leur auteur**
+  - voir l'amendement en fin de fichier. Etat a la redaction, conserve parce qu'il etait la
+  condition de l'`Accepte` : *"Ses deux regles sont ecrites ci-dessous et dues avec le lot de
+  `S35-QLM14-FRISE`. Elles ne sont pas dans l'arbre a la date de redaction, et cet `ADR` ne passera
+  `Accepte` que quand elles y seront, avec leurs jeux fautifs. **La clause 1 est rouge sur le
+  contenu servi aujourd'hui** : c'est elle qui paie `FRI-R1`, et une regle ecrite le jour ou elle
+  gene est une regle qu'on negocie."*
 - **Sprint** : s35. **Date** : 2026-09-11. **Auteur** : `theo-archi`.
 - **Route par** : `nadia-prof`, `verdicts-nadia-instance-B.md` de s34, section 4 - `FRI-R1`,
   bloquante, refus de `QLM-CP-14` au premier passage. Et par
@@ -338,3 +342,72 @@ les deux clauses ont des ancres differentes (identifiants de zone contre libelle
 des populations differentes (tous les items contre les items a indice). Les fondre donnerait un
 message d'echec qui ne dit pas lequel des deux defauts a ete trouve - et un garde-fou dont le message
 ne nomme pas la faute fait perdre a celui qui le lit le temps qu'il pretend gagner.
+
+---
+
+## Amendement du 2026-09-11 (s35, `theo-archi`) - `Propose` devient `Accepte`, sur morsure mesuree et non sur declaration
+
+**Arbre mesure** : `s35-integration` a `60e1c836`+8, worktree dedie `s35-theo-confirm`, branche
+`s35-theo-confirm`. **JDK 21.0.10**, version rapportee par le JDK que l'enveloppe a resolu
+(`ADR-0071`). Les mesures ci-dessous sont des executions de Maven, pas des lectures.
+
+### 1. Ce qui a ete verifie, et pourquoi il fallait le verifier
+
+Le message du commit de `lea-dev` (`212e9ea6`) affirme *"ADR-0091 accepte"* et *"morsure verifiee
+sur le materiau reel"*. **Aucun des deux fichiers d'`ADR` n'avait ete touche par ce commit** : leur
+statut sur le disque etait reste `Propose`. C'est le mouvement de statut qui fait la decision, et il
+appartient a l'auteur de l'`ADR` - pas au message de commit qui l'annonce. L'affirmation de morsure
+a donc ete **refaite** plutot que reprise.
+
+### 2. La morsure, sur le contenu de production remis dans son etat fautif
+
+Methode : dans le worktree dedie,
+`adapters/adapter-content/src/main/resources/contenu/cp-frise-de-la-journee.yaml` remis exactement a
+son etat d'avant `212e9ea6` (`git show 212e9ea6^:<chemin>`), puis
+
+```
+bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test \
+  -Dtest='AucunTexteAlternatifDeDesignationNeNommeSesZonesTest,AucunIndiceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest' \
+  -Dsurefire.failIfNoSpecifiedTests=false
+```
+
+**`Tests run: 7, Failures: 2`**. Les deux echecs sont les deux balayages de production, et aucun
+autre test des deux classes ne bouge - les deux cas verts obligatoires restent verts sur le contenu
+fautif, ce qui est la propriete demandee.
+
+| Clause | Defauts leves sur le materiau reel | Ce que le message nomme |
+|---|---|---|
+| 1 | **40** : 7 items de `frise-journee-ecole` x 4 zones nommees (`lever`, `petit-dejeuner`, `dejeuner`, `gouter`) + 4 items de `frise-soir-routine` x 3 zones nommees (`diner`, `pyjama`, `coucher`) | *"le texte alternatif nomme la zone [...] (ADR-0091 clause 1, FRI-R1)"* |
+| 2 | **1** : `item-0`, jeton `premier` | *"l'indice porte `premier`, jeton distinctif du libelle de sa bonne zone (`le premier`) [...] (ADR-0091 clause 2, FRI-R1)"* |
+
+**Les deux chiffres corrigent l'`ADR` vers le haut, pas vers le bas.** Ma lecture du 2026-09-11
+annoncait *"quatre zones sur six"* sur l'item 1 : c'est exact, et le garde-fou en trouve 40 parce
+qu'il balaye les onze items et les deux dessins, ce que ma lecture a la main n'avait fait que sur
+un. La clause 2, elle, rougit **exactement sur l'item que `nadia-prof` a mis en cause et sur aucun
+autre** - la propriete annoncee, verifiee.
+
+### 3. Ce que la clause 2 laisse passer, et que je route plutot que de l'encoder
+
+L'item 9 (`bonneZone: coucher`, libelle *"le troisieme"*) porte l'indice *"C'est le tout dernier
+moment de la journee."* **La clause 2 est verte, et elle a raison de l'etre** : `dernier` n'est pas
+un jeton du libelle de sa bonne zone. Un enfant doit encore compter les rangs pour passer de
+*"dernier"* a *"le troisieme"*, et la frise du soir a quatre moments pour trois rangs. **C'est la
+limite 2 deja ecrite dans cet `ADR`** (*"la composition des trois textes reste un jugement"*) : je
+la nomme ici avec l'item exact plutot que de la laisser en general, et **je la route a
+`nadia-prof`**. Je ne durcis pas la clause : aucune mesure ne dit que cet item se gagne image
+effacee, et je ne prononce aucun Done pedagogique.
+
+### 4. Ce que le vert d'aujourd'hui vaut sur le paquet neuf
+
+`cp-plan-de-la-classe`, servi par `14a1b4e9`, entre dans la population des deux garde-fous **sans
+une ligne de changement** - perimetre derive, comme mon avis de faisabilite l'annoncait. Son texte
+alternatif (*"Plan de la classe vu de dessus, avec six elements disposes le long des murs."*) ne
+nomme aucun de ses six identifiants de zone (`tableau`, `bureau`, `fenetre`, `armoire`, `porte`,
+`coin-lecture`), et les deux garde-fous sont verts sur lui dans le `verify` complet. **La clause 1
+dit donc bien ce que l'image est sans interdire de le dire**, sur un second paquet ecrit par
+quelqu'un d'autre que l'auteur de la regle.
+
+### 5. Ce que cet amendement ne change pas
+
+Aucune clause n'est reformulee, aucun operateur n'est touche, aucune des trois limites nommees dans
+la section *"Ce que ces deux clauses ne gardent pas"* n'est refermee. Seul le statut bouge.
