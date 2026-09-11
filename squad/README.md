@@ -807,6 +807,34 @@ trancher, jamais laissee vivre seulement dans la memoire d'un agent jusqu'a la p
 Son instance est ecrite dans le meme geste : **un processus s'arrete par son identifiant de
 processus (PID), jamais par nom d'image, et son identite est verifiee avant l'arret.**
 
+**Une defaillance d'infrastructure n'est pas une defaillance du travail** (amendement s34,
+2026-09-10, ecrit pendant la fusion, avant la review et la retro - la regle qui precede impose de
+ne pas attendre la prochaine ceremonie). Le 2026-09-10, pendant s34, le sous-agent `marc-dev` a ete
+arrete en pleine tache par une
+erreur de l'API, et non par une faute de son code : `invalid_request`, avec pour seul detail le mot
+`[bio]`. Il editait du contenu YAML d'EMC et d'histoire-geographie pour des enfants de CP et de CM1,
+ou aucun sujet biologique, medical ou dangereux n'apparait. Un classifieur a declenche a tort.
+L'agent s'est interrompu entre deux stories, laissant trois fichiers modifies et non commites dans
+son worktree, et aucun commit sur sa branche.
+
+Ce que cet incident etablit, et qui vaut pour n'importe quel agent :
+
+- **Un agent arrete par une erreur d'infrastructure laisse son worktree intact.** Avant de le
+  relancer, on lit ce que la branche porte (`git log`) et ce que l'arbre porte (`git status`,
+  `git diff`), et on le relance en lui disant de reprendre l'en-cours plutot que de repartir de
+  zero. Jeter un worktree sans l'avoir lu perd du travail qu'aucun commit ne garde.
+- **Un agent relance juge le diff qu'il trouve ; il ne le presume ni bon ni mauvais.** Il ne l'a
+  pas ecrit lui-meme, et la consigne qui le relance doit le dire explicitement.
+- **Le motif de l'arret est ecrit tel quel, sans etre reinterprete.** Une erreur d'API n'est pas un
+  refus de l'agent et ne dit rien de la qualite du contenu qu'il editait. Conclure l'inverse - qu'un
+  arret signale un probleme dans le contenu - ferait modifier du contenu juste pour une raison
+  fausse, et c'est la seule facon dont cet incident pourrait couter quelque chose au produit.
+
+Trace, pour qui voudrait rapprocher une autre occurrence de celle-ci : `invalid_request`, detail
+`[bio]`, identifiant de requete `req_011Ceuz5K9VviaBoZE1sBDuT`, modele `claude-sonnet-5`. Une seule
+occurrence a ce jour, non reproduite ; elle est ecrite ici parce qu'une seule occurrence suffit a
+faire perdre un lot de travail a qui ne sait pas ou le retrouver.
+
 ## 10. Frontieres entre agents
 
 - Camille ne decide pas la technique. Theo ne decide pas le produit ni la pedagogie.
