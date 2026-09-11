@@ -12,9 +12,9 @@
 ## 1. Defaut CI reel - job `chemins` - corrige
 
 `squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/planning.md`, section 1, portait
-trois chemins absolus de poste de travail (`C:\perso\recreo-s35-camille`,
-`C:\perso\recreo-s35-theo`, `C:\perso\recreo-s35-sofia`), en violation de `CLAUDE.md`, section
-"Conventions de redaction". Corriges sous leur forme portable, relative au depot :
+trois chemins absolus de poste de travail (worktrees `s35-camille`, `s35-theo`, `s35-sofia`), en
+violation de `CLAUDE.md`, section "Conventions de redaction". Corriges sous leur forme portable,
+relative au depot :
 
 - `../recreo-s35-camille`
 - `../recreo-s35-theo`
