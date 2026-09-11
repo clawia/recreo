@@ -318,7 +318,10 @@ class EcranDeSaisieTest {
         assertThat(ecran.select("input.champ-reponse"))
                 .as("le vivier est epuise : plus aucune manche a jouer")
                 .isEmpty();
-        assertThat(ecran.select(".score").text()).isEqualTo("Score : 3");
+        // S35-SCO1-ECRAN-FIN, SCO-R1 : les trois manches sont trouvees du premier coup, les deux
+        // nombres neufs de l'ecran de fin (reussites, tentatives) valent donc tous deux 3.
+        assertThat(ecran.select(".score-trouve-nombre").text()).isEqualTo("3");
+        assertThat(ecran.select(".score-joue-nombre").text()).isEqualTo("3");
     }
 
     /**

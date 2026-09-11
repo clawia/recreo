@@ -122,6 +122,14 @@ class TexteAccentueDesGabaritsTest {
             "Si tu pars, ta partie s'arrête.",     // arbitrage du 2026-08-14, CONF-3
             "Continuer la partie",                 // arbitrage du 2026-08-14, CONF-3
             "Bravo, c'est juste !",                // FICHE-bandit-manchot-additions-cp.md
+            // S35-SCO1-ECRAN-FIN, SCO-R1 (verdicts-nadia-instance-A.md, section 5.2). "Score : "
+            // sort de cet inventaire : il n'y a jamais figure, la concatenation Thymeleaf qui le
+            // portait etant un th:text que ce garde-fou ne lit pas (voir commentaire de
+            // fragments/retour.html). Les deux textes ci-dessous sont des CANDIDATS, au meme sens
+            // que "La bonne réponse :" plus bas : nadia-prof ne les a pas encore lus, ils entrent
+            // ici pour que le prochain qui les change le fasse en clair.
+            "Tu as trouvé, tout seul :",
+            "Tu as joué toutes les questions :",
             // S29, REV-1 et ADR-0083. "Non, c'est" sort de cet inventaire : c'etait la seconde
             // occurrence du defaut que nadia-prof a mesure sur l'ecran de revelation - la reponse
             // suivait, posee par le modele, et "Non, c'est ce n'est pas un etre vivant." se lisait
