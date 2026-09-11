@@ -71,15 +71,13 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
      * ({@code cp-frise-de-la-journee}, QLM-CP-14), comme {@code PLAFOND_DE_DETTE} d'ADR-0013 et
      * {@code PLAFOND_DE_DECLARATION} d'ADR-0081 l'exigent de leur propre dette.
      *
-     * <p><b>{@code cp-plan-de-la-classe} (QLM-CP-11) n'est pas servi</b> : ses six zones, telles
-     * qu'{@code ines-design} les a proposees, rendent un defaut de rendu constate au jar (trois
-     * libelles debordent largement de leur bouton de zone a l'ecran de manche - "tableau",
-     * "armoire", "porte" - un plancher de police et un pave de geometrie penses pour un
-     * quadrillage ne tiennent pas sur des cadres de meuble etroits). Route a {@code sofia-sm},
-     * non tranche ici : ni la geometrie d'{@code ines-design}, ni un plancher de lisibilite
-     * accepte par {@code nadia-prof} ne sont du ressort de ce garde-fou ni de son auteur.
+     * <p><b>Il monte a deux avec {@code cp-plan-de-la-classe} (QLM-CP-11, S35-QLM11-PLANCLASSE,
+     * s35, lea-dev)</b> : les deux cadres trop etroits (`armoire`, `porte`) sont agrandis par
+     * `ines-design`, et le recouvrement du dessin par le libelle cesse d'etre gardable par une
+     * arithmetique (`ADR-0092`) - il reste tenu a l'oeil par `nadia-prof`, paquet par paquet, et par
+     * le cliquet exact d'{@code AucunPaquetDeDesignationNEntreEnProductionSansLaDetteDeLisibiliteDuLibelleTest}.
      */
-    private static final int PLAFOND_DE_DESIGNATION_EN_PRODUCTION = 1;
+    private static final int PLAFOND_DE_DESIGNATION_EN_PRODUCTION = 2;
 
     /** ADR-0013 obligation 3 : le jeu fautif commite de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",

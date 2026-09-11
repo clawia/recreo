@@ -32,13 +32,19 @@
     </g>
   </defs>
 
-  <!-- Zone "lever" : x=0 y=10 largeur=15 hauteur=75, centree en x=48. Un lit avec sa tete de lit,
-       son oreiller et sa couverture. -->
+  <!-- Zone "lever" : x=0 y=10 largeur=15 hauteur=75, centree en x=48. Un lit vu de profil,
+       refait a s35 (FRI-R2, nadia-prof : "je ne trouve pas le lit" sur la version precedente,
+       ou la tete de lit etait un trait vertical detache qui debordait au-dessus du sommier au
+       lieu d'un montant ferme). Deux rectangles pleins partageant la meme base (y=-25, le sol) :
+       un montant de tete de lit, plus haut et plus etroit, directement accole a un sommier plus
+       bas et plus large - la silhouette classique d'un lit vu de cote. L'oreiller est pose sur le
+       sommier contre la tete de lit (il en chevauche le bord haut, comme un coussin qui bombe), et
+       le pli de couverture reste un simple trait a l'interieur du sommier, sans toucher aucun bord. -->
   <g transform="translate(48,256)">
-    <rect x="-40" y="-70" width="80" height="45"/>
-    <line x1="-40" y1="-100" x2="-40" y2="-25"/>
-    <rect x="-32" y="-64" width="22" height="16"/>
-    <line x1="-5" y1="-45" x2="35" y2="-45"/>
+    <rect x="-40" y="-95" width="12" height="70"/>
+    <rect x="-28" y="-55" width="66" height="30"/>
+    <rect x="-24" y="-66" width="20" height="13" rx="3"/>
+    <line x1="-2" y1="-40" x2="34" y2="-40"/>
   </g>
 
   <!-- Zone "petit-dejeuner" : x=17 y=10 largeur=15 hauteur=75, centree en x=157. Un bol et une

@@ -444,3 +444,9 @@ jeux:
     mecanique: designation
     paquet: cp-frise-de-la-journee
     nombreDeManches: 10
+  - id: designation-plan-de-la-classe
+    titre: "Le plan de la classe"
+    consigne: "Montre l'endroit qu'on te décrit."
+    mecanique: designation
+    paquet: cp-plan-de-la-classe
+    nombreDeManches: 5

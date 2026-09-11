@@ -203,11 +203,12 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * (ADR-0077) : chaque entree nomme le paquet de designation qui reference ce dessin.</p>
      */
     private static final Set<String> DESSINS_DE_DESIGNATION = Set.of(
-            // S33-PAL2-1 (s34) : les deux frises de QLM-CP-14. plan-classe.svg (QLM-CP-11) n'est
-            // pas servi - voir AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest,
-            // PLAFOND_DE_DESIGNATION_EN_PRODUCTION - et n'a donc pas sa place dans cette liste.
+            // S33-PAL2-1 (s34) : les deux frises de QLM-CP-14.
             "frise-journee-ecole.svg",
-            "frise-soir-routine.svg");
+            "frise-soir-routine.svg",
+            // S35-QLM11-PLANCLASSE (s35) : plan-classe.svg (QLM-CP-11) entre en production dans ce
+            // meme lot, avec les deux cadres agrandis par ines-design (armoire, porte).
+            "plan-classe.svg");
 
     /**
      * DES-3, plancher de trait : <i>"le trait rend au moins 2 px"</i>, la plus fine ligne que recreo
@@ -251,8 +252,17 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      * DES-6) - le poids suit la geometrie, pas un choix de forme. {@code plan-classe.svg}
      * (QLM-CP-11, 3 213 octets) n'est pas servi et ne compte pas ici. Mesure sur le fichier commite,
      * commentaires compris, fins de ligne normalisees en LF, comme le reste de ce cliquet.
+     *
+     * <p><b>3 984 vers 4 633</b>, ines-design, s35, {@code S35-QLM14-FRISE} (`FRI-R2`) :
+     * {@code nadia-prof} a refuse le pictogramme de la zone "lever" - <i>"un rectangle large avec
+     * un petit rectangle et un trait, plus un trait vertical detache qui deborde au-dessus. Je ne
+     * trouve pas le lit."</i> Le trait de tete de lit, une simple ligne detachee qui depassait le
+     * sommier par le haut, est remplace par un montant ferme (un second rectangle), accole au
+     * sommier sur la meme base : deux formes pleines de plus que la version refusee, 649 octets de
+     * plus. {@code frise-journee-ecole.svg} reste le plus lourd du repertoire et cette valeur reste
+     * la borne exacte du fichier commite, LF, commentaires compris.
      */
-    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 3984;
+    private static final int POIDS_D_UN_DESSIN_MAXIMUM = 4633;
 
     /**
      * Cliquet de poids, ADR-0036 clause 5 : le repertoire entier, meme perimetre et meme methode que
@@ -299,9 +309,19 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       plan-classe.svg} (QLM-CP-11, 3 213 octets) n'est pas servi - ses libelles de zone
      *       debordent de leur bouton a l'ecran de manche, constate au jar et route a
      *       {@code sofia-sm} - et n'entre donc pas dans ce total.</li>
+     *   <li><b>37 812 vers 38 461</b>, ines-design, s35, {@code S35-QLM14-FRISE} (`FRI-R2`) : le
+     *       redessin du pictogramme "lever" ajoute 649 octets a {@code frise-journee-ecole.svg}
+     *       (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}) et rien d'autre dans le repertoire ; le total
+     *       monte du meme montant.</li>
+     *   <li><b>38 461 vers 42 336</b>, lea-dev, s35, {@code S35-QLM11-PLANCLASSE} : entree de
+     *       {@code plan-classe.svg} (QLM-CP-11, 3 875 octets mesures fins de ligne normalisees en
+     *       LF), premiere livraison reelle de cette ligne - geometrie livree par ines-design, cadres
+     *       {@code armoire} et {@code porte} agrandis. Il ne devient pas le plus gros dessin du
+     *       repertoire : {@code frise-journee-ecole.svg} le reste (voir
+     *       {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 37812;
+    private static final int POIDS_TOTAL_MAXIMUM = 42336;
 
     /**
      * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour
