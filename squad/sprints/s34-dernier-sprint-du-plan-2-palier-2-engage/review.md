@@ -210,7 +210,7 @@ silence dans les postes existants.
 
 | | Montant |
 |---|---|
-| Dix postes non touches (inchanges) | 6,0 + 1,0 (groupe 2b) = **7,0** |
+| Dix postes non touches (inchanges) | 4,5 + 1,0 (groupe 2b) = **5,5** |
 | `cm1-histoire-geographie` (non paye) | **0,5** |
 | `cp-eps-regles-jeu-collectif` (non paye) | **0,5** |
 | `cp-emc-exclusion` (non paye, increment refuse) | **1,0** |
@@ -219,6 +219,15 @@ silence dans les postes existants.
 | `cp-eps-regles-de-securite` (paye puis remis a neuf) | **0,5** |
 | `cp-eps-corps-effort` (poste neuf) | **0,5** |
 | **Total mesure a la cloture de s34** | **9,5** |
+
+**Correction du 2026-09-11 (`sofia-sm`, routee par `camille-po`, `DEC-0087` section 3).** La
+ligne "Dix postes non touches" portait `6,0 + 1,0 (groupe 2b) = 7,0`, incoherente avec ma propre
+enumeration du paragraphe qui precede le tableau : neuf postes a 0,5 chacun (4,5), pas 6,0. Le
+total de la colonne ne changeait pas ce que ce total sommait reellement - 4,5 + 1,0 + 0,5 + 0,5 +
+1,0 + 0,5 + 0,5 + 0,5 + 0,5 = 9,5, le chiffre deja annonce - mais la ligne intermediaire qui y
+menait etait fausse, et un total juste obtenu par une ligne fausse n'est pas une mesure tenue.
+Corrigee a **4,5 + 1,0 (groupe 2b) = 5,5** ci-dessus, sans effet sur le total ni sur aucune autre
+conclusion de cette section.
 
 **Plancher, au sens de `DEC-0086`** (ouverture moins les postes dont le paquet clarifie ET dont la
 ligne ferme reellement) : `cp-emc-regle-souhait-loi` et `cp-eps-regles-de-securite` sont les deux
