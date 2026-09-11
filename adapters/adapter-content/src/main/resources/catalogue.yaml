@@ -282,12 +282,30 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-qlm-objet-technique
     nombreDeManches: 10
-  - id: bandit-manchot-histoire-geographie-cm1
-    titre: "Histoire et géographie"
-    consigne: "Lis bien, puis situe dans le temps, nomme un peuple ou un mouvement de population, associe un roi à son fait, décris un espace ou une ressource, ou lis un document."
+  - id: bandit-manchot-histoire-geographie-situer-dans-le-temps-cm1
+    titre: "Situer dans le temps"
+    consigne: "Situe le fait dans le temps, ou remets les faits dans l'ordre."
     mecanique: bandit-manchot
-    paquet: cm1-histoire-geographie
+    paquet: cm1-histoire-geographie-situer-dans-le-temps
     nombreDeManches: 10
+  - id: bandit-manchot-histoire-geographie-nommer-en-histoire-cm1
+    titre: "Nommer, en histoire"
+    consigne: "Nomme ce que l'énoncé décrit."
+    mecanique: bandit-manchot
+    paquet: cm1-histoire-geographie-nommer-en-histoire
+    nombreDeManches: 10
+  - id: bandit-manchot-histoire-geographie-nommer-en-geographie-cm1
+    titre: "Nommer, en géographie"
+    consigne: "Nomme ce que l'énoncé décrit."
+    mecanique: bandit-manchot
+    paquet: cm1-histoire-geographie-nommer-en-geographie
+    nombreDeManches: 10
+  - id: bandit-manchot-histoire-geographie-lire-un-document-cm1
+    titre: "Lire un document"
+    consigne: "Lis le document fourni, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: cm1-histoire-geographie-lire-un-document
+    nombreDeManches: 7
   - id: bandit-manchot-anglais-cm1
     titre: "Anglais"
     consigne: "Traduis le mot, ou réponds à la question sur les pays anglophones."
@@ -426,3 +444,9 @@ jeux:
     mecanique: designation
     paquet: cp-frise-de-la-journee
     nombreDeManches: 10
+  - id: designation-plan-de-la-classe
+    titre: "Le plan de la classe"
+    consigne: "Montre l'endroit qu'on te décrit."
+    mecanique: designation
+    paquet: cp-plan-de-la-classe
+    nombreDeManches: 5

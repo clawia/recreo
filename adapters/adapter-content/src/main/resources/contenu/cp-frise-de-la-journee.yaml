@@ -10,9 +10,9 @@ lignesDeReferentiel: ["QLM-CP-14"]
 items:
   - enonce: "Montre le lever."
     illustration: frise-journee-ecole
-    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments de gauche à droite."
     bonneZone: lever
-    indice: "C'est le tout premier moment de la journée."
+    indice: "C'est le moment où l'on se réveille, avant tout le reste."
     zones:
       - id: lever
         libelle: "le premier"
@@ -34,7 +34,7 @@ items:
         cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
   - enonce: "Montre le petit-déjeuner."
     illustration: frise-journee-ecole
-    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments de gauche à droite."
     bonneZone: petit-dejeuner
     indice: "C'est le repas du matin."
     zones:
@@ -58,7 +58,7 @@ items:
         cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
   - enonce: "Montre l'école du matin."
     illustration: frise-journee-ecole
-    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments de gauche à droite."
     bonneZone: ecole-matin
     indice: "C'est là qu'on apprend, avant de manger à midi."
     zones:
@@ -82,7 +82,7 @@ items:
         cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
   - enonce: "Montre le déjeuner."
     illustration: frise-journee-ecole
-    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments de gauche à droite."
     bonneZone: dejeuner
     indice: "C'est le repas du milieu de journée."
     zones:
@@ -106,7 +106,7 @@ items:
         cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
   - enonce: "Montre ce qui vient juste avant l'école du matin."
     illustration: frise-journee-ecole
-    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments de gauche à droite."
     bonneZone: petit-dejeuner
     indice: "Cherche d'abord l'école du matin, puis regarde juste avant."
     zones:
@@ -130,7 +130,7 @@ items:
         cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
   - enonce: "Montre ce qui vient juste après le déjeuner."
     illustration: frise-journee-ecole
-    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments de gauche à droite."
     bonneZone: ecole-apres-midi
     indice: "Cherche d'abord le déjeuner, puis regarde juste après."
     zones:
@@ -154,7 +154,7 @@ items:
         cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
   - enonce: "Montre ce qui vient juste avant le petit-déjeuner."
     illustration: frise-journee-ecole
-    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments de gauche à droite."
     bonneZone: lever
     indice: "Cherche d'abord le petit-déjeuner, puis regarde juste avant."
     zones:
@@ -178,7 +178,7 @@ items:
         cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
   - enonce: "Montre le dîner."
     illustration: frise-soir-routine
-    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments de gauche à droite."
     bonneZone: diner
     indice: "C'est le repas du soir."
     zones:
@@ -196,7 +196,7 @@ items:
         cadre: { x: 71, y: 10, largeur: 26, hauteur: 75 }
   - enonce: "Montre le coucher."
     illustration: frise-soir-routine
-    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments de gauche à droite."
     bonneZone: coucher
     indice: "C'est le tout dernier moment de la journée."
     zones:
@@ -214,7 +214,7 @@ items:
         cadre: { x: 71, y: 10, largeur: 26, hauteur: 75 }
   - enonce: "Montre ce qui se passe en même temps que se brosser les dents."
     illustration: frise-soir-routine
-    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments de gauche à droite."
     bonneZone: pyjama
     indice: "Ce n'est ni avant, ni après - cherche ce qui se passe au même moment."
     zones:
@@ -232,7 +232,7 @@ items:
         cadre: { x: 71, y: 10, largeur: 26, hauteur: 75 }
   - enonce: "Montre ce qui se passe en même temps que mettre son pyjama."
     illustration: frise-soir-routine
-    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments de gauche à droite."
     bonneZone: brosse-dents
     indice: "Ce n'est ni avant, ni après - cherche ce qui se passe au même moment."
     zones:

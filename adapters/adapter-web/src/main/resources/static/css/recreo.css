@@ -1364,6 +1364,24 @@ body:has(.ecran-exclusif) .chip-niveau {
     margin: 0.25rem 0;
 }
 
+/* S35-SCO1-ECRAN-FIN, SCO-R1 (verdicts-nadia-instance-A.md, section 5.2) : sur l'ecran de fin de
+   partie, les deux nombres que l'enfant doit lire (ce qu'il a trouve seul, le fait qu'il a joue
+   toutes les questions) sont deux elements distincts, chacun son libelle invariant puis son
+   nombre seul - jamais le "Score : N" concatene que .score porte sur l'ecran de manche. Le nombre
+   reprend la mise en avant de .score, le libelle qui le precede reste en texte courant. */
+.score-trouve-libelle,
+.score-joue-libelle {
+    margin: 0.25rem 0 0;
+}
+
+.score-trouve-nombre,
+.score-joue-nombre {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--recreo-accent);
+    margin: 0 0 0.25rem;
+}
+
 .fin-de-partie {
     font-size: 1.5rem;
     color: var(--recreo-accent);

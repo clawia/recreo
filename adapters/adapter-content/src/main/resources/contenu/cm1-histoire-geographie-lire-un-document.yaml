@@ -1,0 +1,77 @@
+schema: 1
+id: cm1-histoire-geographie-lire-un-document
+type: question
+descripteur:
+  matiere: "Histoire-géographie"
+  niveau: "CM1"
+  domaine: "Repères historiques et géographiques"
+  competence: "Lire un document fourni (texte) et en tirer une réponse : date, nature, auteur ou information extraite (référentiel CM1, ligne HG-CM1-14)"
+lignesDeReferentiel: ["HG-CM1-14"]
+#
+# S35-CONS-4 (docs/backlog/backlog.md ; DEC-0088 ; avis de faisabilite de s35 de
+# theo-archi, section 6). Ce paquet est l'une des quatre entrees issues de la scission de
+# bandit-manchot-histoire-geographie-cm1 (S34-CONS-4, decision de grain rendue conjointement par
+# camille-po et nadia-prof, ADR-0081) : une entree par tache reellement distincte plutot qu'une par
+# ligne de referentiel. Les items ci-dessous sont repris a l'identique (enonce, bonne reponse,
+# distracteurs, indice, marqueurs HIS-1/HIS-3) depuis cm1-histoire-geographie.yaml, retire par ce
+# commit ; leur genealogie complete (S27-3 a S33-HG-08-12, chaque reserve levee par nadia-prof) vit
+# dans l'historique git de ce fichier retire, pas ici. La scission ne cree aucun item neuf, ne
+# modifie aucun texte et ne rouvre aucune ligne de referentiel.
+#
+# DEC-0088 : cette entree porte nombreDeManches: 7 au catalogue (et non le defaut de 10 de
+# DEC-0064), derogation motivee par le vivier de dix items herite de HG-CM1-14 (ADR-0023 exige un
+# nombre d'items strictement superieur au nombre de manches). Ses items perdent la cle
+# ligneDeReferentiel : ce paquet ne sert qu'une seule ligne de referentiel (HG-CM1-14), declaree une
+# fois au niveau du paquet (ADR-0081, clause 6 ; garde-fou
+# ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest).
+items:
+  - enonce: "D'après ce texte, en quelle année ce document est-il adopté ?"  # HIS-1: document ; HIS-3: texte construit sur le fait du référentiel ligne 7 (1789, Déclaration des droits de l'homme et du citoyen)
+    texteSupport: "Le 26 août 1789, l'Assemblée nationale adopte un texte majeur de la Révolution française. Il affirme que les hommes naissent et demeurent libres et égaux en droits."
+    bonneReponse: "en 1789"
+    distracteurs: ["en 1804", "en 1610"]
+    indice: "Relis la première phrase du texte, elle donne la date."
+  - enonce: "D'après ce texte, que peut-on dire de la vie quotidienne de Louis XIV à Versailles ?"  # HIS-1: document ; HIS-3: cérémonial du lever et du coucher du roi à Versailles, caractérisation historique documentée - je n'ai pas d'outil de recherche en ligne cette session, nadia-prof doit confirmer
+    texteSupport: "Chaque matin, Louis XIV se lève devant des dizaines de nobles qui se disputent l'honneur de lui tendre sa chemise. Le soir, il ne peut ni manger ni se coucher sans qu'un cérémonial précis ne soit respecté devant toute la cour."
+    bonneReponse: "elle suit des règles très strictes et se déroule en public"
+    distracteurs: ["elle se déroule dans le calme et la solitude", "elle est identique à celle des paysans du royaume"]
+    indice: "Repense au nombre de personnes présentes autour du roi, du matin au soir."
+  - enonce: "D'après ce texte, que représentait cette prison pour les habitants de Paris avant sa prise ?"  # HIS-1: document ; HIS-3: symbole de la Bastille comme instrument du pouvoir royal, fait consensuel
+    texteSupport: "En 1789, des habitants de Paris prennent d'assaut une vieille prison qui servait aussi à enfermer des opposants au roi. Sa chute est fêtée dans toute la ville et, l'année suivante, une grande fête réunit la France entière pour son anniversaire."
+    bonneReponse: "le pouvoir absolu et l'autorité du roi"
+    distracteurs: ["un simple lieu de commerce", "un monument touristique"]
+    indice: "Repense à qui la prison enfermait, en plus des prisonniers ordinaires."
+  - enonce: "Quel type de document est ce texte ?"  # HIS-1: document ; HIS-3: texte fictif à but pédagogique illustrant le journal intime ; date de la prise de la Bastille consensuelle, famille (a)
+    texteSupport: "Cher journal, nous sommes le 15 juillet 1789. Hier, j'ai vu la foule envahir la prison de la Bastille. Tout Paris est en effervescence."
+    bonneReponse: "un journal intime"
+    distracteurs: ["un édit royal", "un poème"]
+    indice: "Une seule personne y raconte, jour après jour, ce qu'elle vit et ressent, pour elle-même."
+  - enonce: "Qui est l'auteur de ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle, famille (a)
+    texteSupport: "Moi, Henri IV, roi de France et de Navarre, je décide par cet édit que mes sujets protestants pourront pratiquer librement leur religion. Fait à Nantes, en 1598."
+    bonneReponse: "Henri IV"
+    distracteurs: ["Louis XIV", "François Ier"]
+    indice: "Ce roi se présente lui-même au tout début du texte."
+  - enonce: "Quel type de document est évoqué dans ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
+    texteSupport: "Le 26 août 1789, les députés de l'Assemblée nationale votent un texte solennel qui affirme que tous les hommes naissent et demeurent libres et égaux en droits."
+    bonneReponse: "une déclaration de droits"
+    distracteurs: ["un journal intime", "une recette de cuisine"]
+    indice: "Plusieurs personnes réunies proclament ensemble, dans un texte solennel, ce qui doit valoir pour tous."
+  - enonce: "Qui a écrit ce texte ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, 26 août 1789 consensuelle, famille (a)
+    texteSupport: "Nous, députés de l'Assemblée nationale, réunis le 26 août 1789, déclarons que tous les hommes naissent et demeurent libres et égaux en droits."
+    bonneReponse: "les députés de l'Assemblée nationale"
+    distracteurs: ["le roi Louis XVI", "le pape"]
+    indice: "Ce texte commence par se désigner lui-même, avec le mot Nous."
+  - enonce: "D'après ce texte, de quelle période le château de Chambord devient-il le symbole ?"  # HIS-1: document ; HIS-3: référentiel ligne 6 (François Ier et la Renaissance), château de Chambord, fait consensuel, famille (a)
+    texteSupport: "François Ier fait construire un immense château à Chambord, avec un escalier si large que deux personnes peuvent y monter sans se croiser. Ce château devient un symbole de la Renaissance française."
+    bonneReponse: "la Renaissance française"
+    distracteurs: ["la Révolution française", "les croisades"]
+    indice: "Relis la dernière phrase du texte."
+  - enonce: "D'après ce texte, qui perd ses privilèges dans la nuit du 4 août 1789 ?"  # HIS-1: document ; HIS-3: référentiel ligne 7, nuit du 4 août 1789 consensuelle, famille (a)
+    texteSupport: "Dans la nuit du 4 août 1789, les députés de l'Assemblée nationale votent la suppression des privilèges de la noblesse et du clergé."
+    bonneReponse: "la noblesse et le clergé"
+    distracteurs: ["le peuple de Paris", "les députés de l'Assemblée nationale"]
+    indice: "Relis qui vote ce texte et qui en subit les conséquences."
+  - enonce: "D'après ce texte, en quelle année ce document est-il signé ?"  # HIS-1: document ; HIS-3: référentiel ligne 6, date 1598 consensuelle, famille (a)
+    texteSupport: "Moi, Henri IV, roi de France et de Navarre, je décide par cet édit que mes sujets protestants pourront pratiquer librement leur religion. Fait à Nantes, en 1598."
+    bonneReponse: "en 1598"
+    distracteurs: ["en 1789", "en 1610"]
+    indice: "La date est donnée à la toute fin du texte."

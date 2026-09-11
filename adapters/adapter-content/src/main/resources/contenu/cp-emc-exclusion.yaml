@@ -151,6 +151,46 @@ lignesDeReferentiel: ["EMC-CP-03"]
 # insecable devant le "?" final) et LON-1/LON-2 (au plus 15 mots, deux phrases dont la seconde est la
 # question) sont tenues sur les cinq enonces neufs sans toucher a la dette de longueur declaree
 # (item 2 de la tache A, inchange).
+#
+# S35-EXC-INDICES (2026-09-11, sofia-sm). Refonte des cinq lignes indice de la tache B, refusee a
+# s34 (EXC-R10, squad/conformite/FICHE-bandit-manchot-exclusion-cp.md, section "Le motif du refus") :
+# les cinq indices etaient restes ceux de la tache "Quel adulte est la ?" que la refonte de
+# S34-EXC-TACHEB supprime, et repondaient donc a une question que les items ne posent plus.
+#
+# EXC-R10 (bloquante) payee : chacun des cinq indices dit desormais pourquoi les deux conduites
+# ecartees de son item ne font pas cesser une moquerie qui se repete, jamais le role de l'adulte de
+# la bonne reponse - "Si Tom attend ou croit qu'un adulte a deja vu, Hugo continuera de se moquer de
+# lui" plutot que "Cette personne est la pour veiller sur les eleves qui jouent". Aucun indice ne
+# renomme la bonne reponse (mode de defaillance nomme par nadia-prof) : le mot "adulte" y figure
+# comme sujet d'une conduite ecartee, jamais comme la reponse a presser.
+#
+# EXC-R11 (non bloquante, soldee dans le meme geste) : sur les trois items qui n'avaient aucun
+# distracteur nommant un adulte (items 7, 9, 10), un des deux distracteurs devient "croire qu'un
+# adulte a deja vu cela" - la meme famille de conduite que celle deja servie sur les items 8 et 11.
+# Les cinq items de la tache portent donc desormais chacun un contrepoids qui nomme un adulte sans
+# resoudre la moquerie, au lieu de trois sur cinq a la cloture de s34.
+#
+# EXC-R12 (non bloquante, soldee dans le meme geste) : "esperer qu'un adulte l'ait remarquee"
+# (subjonctif passe, pronom elide sans antecedent dans la proposition) devient, sur les items 8 et
+# 11 qui la portaient, "penser que la situation est deja connue d'un adulte" - indicatif, aucun
+# pronom elide. Deux formulations distinctes portent cette famille de conduite ("croire qu'un
+# adulte a deja vu cela" sur 7, 9, 10 ; "penser que la situation est deja connue d'un adulte" sur 8
+# et 11), plutot qu'une seule recopiee cinq fois : LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest
+# (ADR-0086, clause 2, FOP-R4) refuse qu'un moule de quatre mots ou plus se repete sur quatre
+# distracteurs ou plus d'un meme paquet sans qu'aucune bonne reponse ne le partage - une premiere
+# ecriture de ce lot, ou les cinq items recopiaient "croire qu'un adulte a deja vu cela" mot pour
+# mot, faisait rougir ce garde-fou (5 distracteurs sur 16 dans le meme moule) : c'est exactement la
+# contrefacon par l'amorce que la clause existe pour refuser, un enfant qui n'a rien compris
+# trouvant la bonne reponse en reconnaissant que les boutons commencant par "croire qu'un adulte"
+# sont toujours faux. Corrige en scindant la famille en deux groupes de trois et deux items, chacun
+# sous son plafond.
+#
+# Piege de caractere (avis de faisabilite de theo-archi, s35, section 2.3) : aucune des cinq
+# propositions neuves ne porte de ligature "oe"/"ae" (PropositionsAccentueesJouablesIT).
+#
+# Ce qui ne bouge pas : les cinq enonce, bonneReponse et distracteurs "en parler a ..." de la tache
+# B (deja bons, EXC-R7, EXC-R8, C-1, C-2 tenus a l'identique) ; les six items de la tache A ; TYP-1,
+# LON-1, LON-2 (qui ne portent pas sur l'indice).
 items:
   - enonce: "Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe. Qu'est-ce que c'est ?"
     bonneReponse: "une moquerie qui se répète"
@@ -178,21 +218,21 @@ items:
     indice: "Une maladresse unique n'a rien à voir avec un geste répété exprès."
   - enonce: "Hugo se moque de Tom à chaque récréation. Que doit faire Tom ?"
     bonneReponse: "en parler à un surveillant de la cour"
-    distracteurs: ["attendre que cela s'arrête tout seul", "en parler à un camarade"]
-    indice: "Cette personne est là pour veiller sur les élèves qui jouent."
+    distracteurs: ["attendre que cela s'arrête tout seul", "croire qu'un adulte a déjà vu cela"]
+    indice: "Si Tom attend ou croit qu'un adulte a déjà vu cela, Hugo continuera de se moquer de lui à la récréation."
   - enonce: "Malo se moque des dessins de Léa chaque jour, en classe. Que doit faire Léa ?"
     bonneReponse: "en parler à sa maîtresse"
-    distracteurs: ["espérer qu'un adulte l'ait remarquée", "en parler à un camarade"]
-    indice: "C'est elle qui reste avec les élèves toute la journée."
+    distracteurs: ["penser que la situation est déjà connue d'un adulte", "en parler à un camarade"]
+    indice: "Penser qu'un adulte est déjà au courant, ou le dire seulement à un camarade, ne fait pas arrêter Malo."
   - enonce: "Aya se moque de Hugo chaque midi, au moment du repas. Que doit faire Hugo ?"
     bonneReponse: "en parler à l'adulte qui surveille la cantine"
-    distracteurs: ["garder cela pour lui sans rien dire", "en parler à un camarade"]
-    indice: "Cette personne veille sur les élèves qui mangent."
+    distracteurs: ["garder cela pour lui sans rien dire", "croire qu'un adulte a déjà vu cela"]
+    indice: "Si Hugo garde cela pour lui ou croit qu'un adulte a déjà vu cela, Aya continuera de se moquer de lui à la cantine."
   - enonce: "Tom écarte Malo du jeu à chaque récréation. Que doit faire Malo ?"
     bonneReponse: "en parler à un surveillant de la cour"
-    distracteurs: ["faire comme si de rien n'était", "en parler à un camarade"]
-    indice: "Son rôle est de veiller sur les élèves pendant les récréations."
+    distracteurs: ["faire comme si de rien n'était", "croire qu'un adulte a déjà vu cela"]
+    indice: "Si Malo fait comme si de rien n'était ou croit qu'un adulte a déjà vu cela, Tom continuera de l'écarter du jeu."
   - enonce: "Hugo se moque de la lecture d'Aya chaque jour, en classe. Que doit faire Aya ?"
     bonneReponse: "en parler à sa maîtresse"
-    distracteurs: ["attendre que cela s'arrête tout seul", "espérer qu'un adulte l'ait remarquée"]
-    indice: "C'est elle qui est avec ses élèves tous les jours."
+    distracteurs: ["attendre que cela s'arrête tout seul", "penser que la situation est déjà connue d'un adulte"]
+    indice: "Attendre, ou penser qu'un adulte est déjà au courant, ne fait pas arrêter Hugo. Il faut le dire soi-même."

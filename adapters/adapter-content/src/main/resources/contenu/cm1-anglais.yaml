@@ -201,9 +201,9 @@ items:
     distracteurs: ["des vêtements de sport", "aucun vêtement particulier"]
     indice: "Beaucoup d'écoles imposent la même tenue à tous les élèves."
     ligneDeReferentiel: "LVE-CM1-07"
-  - enonce: "Quel moyen de transport est un symbole touristique de Londres ?"  # ANG-R3 (S34-ANG-CORR) : l'énoncé ne décrit plus l'objet (couleur, nombre d'étages)
-    bonneReponse: "le bus à impériale"
-    distracteurs: ["le métro", "le taxi noir"]  # ANG-R3 (S34-ANG-CORR) : deux autres transports londoniens réels
+  - enonce: "Quel moyen de transport circule dans les rues de Londres en transportant plusieurs dizaines de passagers à la fois ?"  # ANG-R3 (S34-ANG-CORR, S35-ANG-R3) : l'enonce ne decrit plus l'objet (couleur, nombre d'etages) ; le critere (circule en surface, transporte beaucoup de monde) distingue le bus du metro et du taxi sans redecrire l'objet (ANG-R7)
+    bonneReponse: "le bus à impériale (deux étages)"  # ANG-R3 (S35-ANG-R3) : le mot impériale est explique la ou l'enfant le rencontre (dans la proposition), meme au premier essai
+    distracteurs: ["le métro (sous terre)", "le taxi noir (une voiture)"]  # ANG-R3/ANG-R7 (S34-ANG-CORR, S35-ANG-R3) : le metro circule sous terre, le taxi ne transporte que quelques passagers ; parenthese sur les trois propositions pour qu'aucune ne se distingue par sa seule longueur (risque nomme par theo-archi, avis de faisabilite s35, section 5.2)
     indice: "Il est célèbre par sa couleur rouge et ses deux niveaux."
     ligneDeReferentiel: "LVE-CM1-07"
   - enonce: "Quelle fête américaine, célébrée le 31 octobre, fait déguiser les enfants pour récolter des bonbons ?"  # ANG-R4 (S34-ANG-CORR) : la question principale n'est plus coupée par une incise, sur le patron de l'item "Quelle fête traditionnelle, célébrée fin novembre aux États-Unis, réunit la famille autour d'un grand repas ?"
@@ -216,8 +216,8 @@ items:
     distracteurs: ["à pied", "en voiture avec un parent"]  # ANG-R6 (S34-ANG-CORR) : "à pied" reste la pratique concurrente réelle des zones denses ; "en métro", écartable d'emblée, est remplacé par une autre pratique réelle
     indice: "Ce véhicule est reconnaissable à sa couleur vive."
     ligneDeReferentiel: "LVE-CM1-07"
-  - enonce: "Quel monument, une grande statue tenant une torche, se trouve sur une île à l'entrée du port de New York ?"
+  - enonce: "Quel monument se trouve sur une île à l'entrée du port de New York ?"  # ANG-R3 (S35-ANG-R3) : l'enonce ne decrit plus l'objet (statue, torche) ; les deux distracteurs sont deux autres monuments reels de New York
     bonneReponse: "la statue de la Liberté"
-    distracteurs: ["la tour Eiffel", "le Colisée"]
-    indice: "Elle est devenue un symbole d'accueil pour de nombreux immigrants."
+    distracteurs: ["l'Empire State Building", "le pont de Brooklyn"]  # ANG-R3 (S35-ANG-R3) : deux monuments new-yorkais reels, ni sur une ile ni a l'entree du port - l'enfant doit savoir lequel des trois y est
+    indice: "Il est devenu un symbole d'accueil pour de nombreux immigrants."
     ligneDeReferentiel: "LVE-CM1-07"

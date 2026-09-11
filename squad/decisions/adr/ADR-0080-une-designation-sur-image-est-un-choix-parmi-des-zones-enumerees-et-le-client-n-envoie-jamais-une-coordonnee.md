@@ -1,14 +1,19 @@
 # ADR-0080 - Une designation sur image est un choix parmi des zones enumerees, le client n'envoie jamais une coordonnee, et les cinq cas d'usage tiennent dans une seule mecanique
 
-- **Statut** : **Propose**, amende trois fois - le 2026-09-04 (s28), le 2026-09-08 (s32) et le
-  2026-09-11 (s34). Aucune de
+- **Statut** : **`Accepte`** le 2026-09-11 (s35, confirmation de la porte technique), apres avoir
+  ete **`Propose` huit jours et amende quatre fois** - le 2026-09-04 (s28), le 2026-09-08 (s32), le
+  2026-09-11 (s34) et le 2026-09-11 (s35, l'amendement d'acceptation en fin de fichier). **Le
+  quatrieme et dernier critere de son `Accepte` est rempli** : les garde-fous 1 et 3 ne mordent plus
+  seulement sur un jeu fabrique d'`adapter-web`, leurs criteres sont rejoues sur l'ecran de manche
+  **reellement servi** du catalogue par le mecanisme 1 d'`ADR-0092`, et cette morsure est mesuree sur
+  un defaut de geometrie introduit dans un paquet de production. Aucune de
   ses regles n'est ecrite a la date de redaction, et cet `ADR`
   dit pour chacune **quand elle est due** et **si elle serait verte ou rouge aujourd'hui** plutot que
   de laisser le silence trancher. Une seule - la clause 11 - peut etre ecrite et verte des
   maintenant, sur une population non vide ; toutes les autres attendent le type ou le paquet
   qu'elles jugent, une regle a population vide etant ce qu'`ADR-0051` refuse.
-  **Le statut reste `Propose` au 2026-09-11** (amendement du 2026-09-11, ci-dessous) : six des
-  huit regles mordent desormais sur leur population reelle, les garde-fous 1 et 3 mordent encore
+  Etat au 2026-09-11 (s34) : six des
+  huit regles mordent sur leur population reelle, les garde-fous 1 et 3 mordent encore
   sur un jeu fabrique d'`adapter-web`, et la clause qui leve ce dernier point est nommee.
   Etat au 2026-09-08 : cinq de ses huit regles sont ecrites (les deux
   clauses ArchUnit et les garde-fous 4, 5 et 6), mais trois de celles-la mordent encore sur fixture
@@ -950,3 +955,50 @@ par un autre chemin.
 cet `ADR`, et **elle appartient au lot qui achevera `QLM-CP-11`** - pas a une confirmation de porte
 technique, un garde-fou neuf ecrit apres la fusion des branches etant du code qu'aucune story ne
 porte.
+
+---
+
+## Amendement du 2026-09-11 (s35, `theo-archi`) - `Propose` devient `Accepte` : le quatrieme critere est rempli, et la mesure dit lequel des sept sprints l'avait laisse ouvert
+
+**Arbre mesure** : `s35-integration` a `60e1c836`+8, worktree dedie `s35-theo-confirm`. **JDK
+21.0.10**, version rapportee par le JDK que l'enveloppe a resolu (`ADR-0071`). Mesures completes dans
+`squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/confirmation-archunit.md`.
+
+### 1. Les quatre criteres de la section 6, un par un
+
+| Critere d'`Accepte` (section 6) | Etat | Ou la mesure vit |
+|---|---|---|
+| **T4 livre**, garde-fous 1, 2 et 3 ecrits et mordants | rempli | s34 pour l'ecriture ; **s35 pour la morsure des garde-fous 1 et 3 sur la population reelle**, section 2 ci-dessous |
+| **T6 livre**, trois balayages de production etendus, cliquet monte a son compte reel dans le meme diff | rempli | s34 pour `cp-frise-de-la-journee` ; s35 pour `cp-plan-de-la-classe`, cliquet `1 -> 2` en egalite, commit `14a1b4e9` |
+| **Les deux trous de la section 3 tranches** | rempli | `ADR-0088`, `Accepte` et implemente (s32) |
+| **Les huit regles vertes sur leur population reelle**, pas sur une fixture | rempli | six mesurees a s34 par mutation du materiau reel (amendement precedent) ; les deux dernieres a s35, section 2 |
+
+### 2. Ce qui manquait, et comment il est desormais tenu
+
+Le mecanisme 1 d'`ADR-0092`,
+`bootstrap/src/test/java/com/recreo/bootstrap/rendu/LEcranDeMancheDuJeuDeDesignationReelEstServiTest.java`,
+sert l'ecran de manche de **chaque** entree du catalogue reel dont la mecanique est `designation` -
+perimetre derive, jamais une liste de noms - et y rejoue les criteres des garde-fous 1 et 3.
+
+**La morsure est mesuree sur du materiau de production, pas sur une fixture** : le cadre de la zone
+`armoire` de `cp-plan-de-la-classe.yaml` ramene a `hauteur: 5`, puis le reacteur complet. **Un seul
+test du depot sur 1473 rougit**, et c'est celui-la ; `AucuneZoneDesignableNeDescendSousLaCibleTactileTest`
+d'`adapter-web`, qui tient le meme critere sur un jeu fabrique, reste vert. Le detail de la mesure
+est dans l'amendement d'`ADR-0092`, section 1.
+
+**Ce que cela ne change pas** : les garde-fous 1 et 3 eux-memes vivent toujours dans `adapter-web` et
+mordent toujours sur un jeu fabrique. La contrainte de modules qui l'impose n'a pas bouge, et **elle
+n'est pas contournee : elle est doublee**. Le depot porte donc deux juges du meme critere sur deux
+populations differentes - une piece mobile de plus, assumee, dont le prix est ecrit dans la Javadoc du
+mecanisme 1 (la constante `2,75` epinglee une seconde fois, aucun `test-jar` ne la publiant hors de
+son module).
+
+### 3. Ce que cet `Accepte` ne dit pas
+
+- **Il ne prononce aucun Done pedagogique.** `QLM-CP-11` est servie ; elle n'est pas auditee.
+  `cp-plan-de-la-classe` n'a **aucune fiche de conformite** dans `squad/conformite/` a ce jour, et
+  `ZON-15` comme `ZON-16` restent a `nadia-prof`.
+- **Il ne referme pas l'obstacle transverse** du recouvrement des boutons sur le dessin. La section 3
+  de l'amendement de s34 le nommait sans le tenir ; `ADR-0092` le **borne** par un cliquet et le
+  laisse ouvert pour un futur paquet. Un cadre plus grand couvre plus de dessin, pas moins.
+- **Il ne ferme aucune ligne de matrice** : c'est le travail de `camille-po` et de `nadia-prof`.

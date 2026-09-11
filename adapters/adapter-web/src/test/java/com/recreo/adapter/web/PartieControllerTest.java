@@ -341,7 +341,10 @@ class PartieControllerTest {
 
         assertThat(fragment.text()).doesNotContain("Oups ! Le jeu a un souci.");
         assertThat(fragment.select(".fin-de-partie").text()).isEqualTo("C'est fini !");
-        assertThat(fragment.select(".score").text()).isEqualTo("Score : 2");
+        // S35-SCO1-ECRAN-FIN, SCO-R1 : les deux manches de cette partie sont trouvees du premier
+        // coup, les deux nombres neufs de l'ecran de fin valent donc tous deux 2.
+        assertThat(fragment.select(".score-trouve-nombre").text()).isEqualTo("2");
+        assertThat(fragment.select(".score-joue-nombre").text()).isEqualTo("2");
     }
 
     /**
@@ -652,8 +655,10 @@ class PartieControllerTest {
 
         assertThat(fragment.select(".fin-de-partie")).isNotEmpty();
         // Les deux manches sont resolues par revelation, jamais par une reussite (M11 clause 3) :
-        // le score final ne compte que les reussites, il vaut donc zero.
-        assertThat(fragment.select(".score").text()).isEqualTo("Score : 0");
+        // le nombre de manches trouvees seul vaut donc zero, et le nombre de manches jouees vaut
+        // deux - S35-SCO1-ECRAN-FIN, SCO-R1 : les deux restent lisibles separement.
+        assertThat(fragment.select(".score-trouve-nombre").text()).isEqualTo("0");
+        assertThat(fragment.select(".score-joue-nombre").text()).isEqualTo("2");
     }
 
     /** S1-4, 4e critere : recharger la page pendant que la session HTTP est valide est silencieux. */

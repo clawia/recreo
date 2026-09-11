@@ -14,6 +14,7 @@ import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -29,6 +30,26 @@ import static org.assertj.core.api.Assertions.assertThat;
  * matiere neuve du produit sur ce referentiel. Ce paquet OUVRE des lignes de matrice, il n'en FERME
  * aucune (section 8.4 de l'arbitrage).
  *
+ * <p><b>S35-CONS-4 (docs/backlog/backlog.md ; DEC-0088 ; avis de faisabilite de s35 de theo-archi,
+ * section 6) : le fichier unique est scinde en quatre paquets, un par tache reellement distincte
+ * (`S34-CONS-4`, decision de grain rendue conjointement par `camille-po` et `nadia-prof`,
+ * `ADR-0081`).</b> Ce fichier de test ne teste donc plus <i>un</i> paquet mais <i>quatre</i>, et ses
+ * assertions sont ecrites pour rester justes quel que soit celui des quatre qui porte un item donne
+ * : {@link #itemsDeLaLigne(String)} agrege les items d'une ligne de referentiel <b>tous paquets
+ * confondus</b>, exactement comme {@code FER-2} se compte deja "tous paquets confondus" ailleurs
+ * dans ce depot ({@code ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest}). C'est le cas de
+ * {@code HG-CM1-07}, dont les dix items se repartissent entre "cm1-histoire-geographie-situer-dans-
+ * le-temps" (cinq items) et "cm1-histoire-geographie-nommer-en-histoire" (cinq items) - repartition
+ * laissee au choix de qui execute par `S34-CONS-4`, `nadia-prof` ayant verifie que le grain ne
+ * change pas quel que soit cet arbitrage.
+ *
+ * <p><b>Ce que la scission retire de ce fichier</b> : {@code cons1LaConsigneNommeLaTacheDeNommerUn
+ * PeupleOuUnMouvementDePopulation}, dont la premisse (une consigne unique du catalogue doit nommer
+ * une phrase precise) ne tient plus des lors que quatre consignes distinctes, une par tache, la
+ * remplacent - decision deja rendue par `S34-CONS-4`/`DEC-0088`, pas reouverte ici. Chacune des
+ * quatre consignes est desormais auditee par `nadia-prof`, texte devant items, comme `RES-3`
+ * l'exige.
+ *
  * <p>Ne couvre que les criteres d'acceptation automatisables (comptage, forme du descripteur, trois
  * propositions distinctes par item, et le plafond de `HIS-1`) : la justesse de chaque fait historique
  * ou geographique (`HIS-3`), l'absence de double reponse defendable (`HIS-2`) et l'absence de
@@ -37,54 +58,22 @@ import static org.assertj.core.api.Assertions.assertThat;
  * `PaquetCm1ComprehensionTest`.</p>
  *
  * <p><b>HIS-1 a vecu ici du 2026-09-02 au 2026-09-03, et vit desormais dans
- * {@code UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest} (ADR-0079). Le motif est
- * ecrit plutot que le deplacement laisse nu.</b> Le marqueur "# HIS-1: &lt;type&gt;" pose dans le
- * YAML servi ne change pas d'un caractere, et le mecanisme reste celui que marc-dev a ecrit - meme
+ * {@code UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest} (ADR-0079).</b> Le
+ * marqueur "# HIS-1: &lt;type&gt;" pose dans le YAML servi ne change pas d'un caractere sur aucun
+ * des quatre paquets issus de la scission, et le mecanisme reste celui que marc-dev a ecrit - meme
  * patron que le marqueur "# COMP-3" de {@code PaquetCm1ComprehensionTest}, invisible a
- * {@code QuestionContentSourceFactory} qui ignore les commentaires.</p>
- *
- * <p><b>Ce qui change est la population, et c'est nadia-prof qui l'a demande</b> le 2026-09-03 :
- * son unite d'audit est le <b>lot de matiere</b> - jusqu'a vingt items d'une matiere et d'un niveau -
- * et non le fichier, parce qu'<i>"un ratio calcule sur huit items ne veut rien dire"</i>. La clause
- * qui vivait ici designait sa population par <b>un chemin de ressource ecrit en dur</b> et son
- * plafond par <b>une constante egale au tiers de vingt</b> : elle etait juste tant que l'histoire
- * tenait en un seul fichier, et <b>un second fichier du meme lot n'aurait ete juge par rien</b>.
- * Le tiers se compte desormais sur le lot, sur une population derivee des descripteurs servis.
- * <b>Ce n'est pas un defaut du travail de marc-dev</b> : c'est un perimetre enumere, juste tant que
- * le monde ressemble a l'enumeration - la meme famille que {@code FIG-4} etendue hors de son paquet
- * la veille (ADR-0077).</p>
- *
- * <p><b>S28-2 (arbitrage prealable de s28, section 3.2 et 5.1 ; DEC-0074, amendement du
- * 2026-09-03 ; docs/backlog/backlog.md, story S28-2) : second paquet, composition B.</b> Le fichier
- * passe de vingt a trente-sept items, sans en ouvrir un fichier de plus - le motif du decoupage est
- * ecrit dans le commentaire du paquet lui-meme. Les tests ci-dessous ajoutent ce que
- * {@code ADR-0081} ne juge pas : {@code FER-1}, {@code FER-2} et {@code FER-3} sur les lignes
- * {@code HG-CM1-11} (types d'espaces) et {@code HG-CM1-13} (eau, energie, aliments), lues sur le
- * YAML brut plutot que sur {@link Question} parce que {@code ligneDeReferentiel} n'entre pas dans ce
- * record - {@code ADR-0081} clause 6 : la cle est ignoree par {@code QuestionContentSourceFactory},
- * jamais par un chargeur de plus.</p>
- *
- * <p><b>S29-2 (arbitrage prealable de s29, sections 3.3, 4 et 5.1 ; DEC-0077 section 8 ;
- * docs/backlog/backlog.md, story S29-2) : troisieme paquet, composition A.</b> Le fichier passe de
- * trente-sept a cinquante-sept items, motif dans le commentaire du paquet. Les tests ajoutes ici
- * verifient {@code FER-1} et {@code FER-2} sur les lignes {@code HG-CM1-06} (rois et realisations),
- * {@code HG-CM1-07} (Revolution) et {@code HG-CM1-14} (comprendre un document), sur le meme patron
- * que la composition B.</p>
- *
- * <p><b>S33-HG-08-12 (arbitrage prealable de s33 de nadia-prof, branche {@code s33-nadia}, commit
- * {@code a9ab05ec}, sections 3.1, 3.2, 5.2, 9.2 et 9.3 ; docs/backlog/backlog.md, story
- * S33-HG-08-12).</b> Le fichier passe de quatre-vingt-douze a cent dix items, motif dans le
- * commentaire du paquet. Remplit {@code HG-CM1-08} (passage de la Revolution a l'Empire) et
- * {@code HG-CM1-12} (se loger, travailler, se cultiver et se deplacer), chacune de 1 a 10 items.
- * Les tests ajoutes ici verifient {@code FER-2} sur les deux lignes, {@code FER-1} sur la moitie du
- * libelle de {@code HG-CM1-08} qu'aucun item ne servait avant ce lot, {@code FER-1} sur la pratique
- * "se cultiver" de {@code HG-CM1-12}, absente jusqu'ici, et {@code HIS-5} (nadia-prof, 2026-09-09) :
- * aucun item neuf ne reprend la cellule "se loger dans un espace urbain", deja comptee sur
- * {@code HG-CM1-11}, ligne fermee.</p>
+ * {@code QuestionContentSourceFactory} qui ignore les commentaires. Le lot de matiere (matiere,
+ * niveau) reste inchange par la scission (DEC-0088, section 3) : le tiers de restitution continue de
+ * se compter sur les 110 items, quel que soit le nombre de fichiers qui les portent.</p>
  */
 class PaquetCm1HistoireGeographieTest {
 
-    private static final String PAQUET = "cm1-histoire-geographie";
+    /** Les quatre paquets issus de la scission de S35-CONS-4, dans l'ordre du tableau de grain. */
+    private static final List<String> PAQUETS = List.of(
+            "cm1-histoire-geographie-situer-dans-le-temps",
+            "cm1-histoire-geographie-nommer-en-histoire",
+            "cm1-histoire-geographie-nommer-en-geographie",
+            "cm1-histoire-geographie-lire-un-document");
 
     /** Le compte est garde exactement, comme sur tous les paquets de ce depot. */
     private static final int NOMBRE_D_ITEMS_ATTENDU = 110;
@@ -100,6 +89,12 @@ class PaquetCm1HistoireGeographieTest {
     private static final String LIGNE_COMPRENDRE_UN_DOCUMENT = "HG-CM1-14";
     private static final String LIGNE_REVOLUTION_A_L_EMPIRE = "HG-CM1-08";
     private static final String LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE = "HG-CM1-12";
+
+    private static final List<String> TOUTES_LES_LIGNES = List.of(LIGNE_FRISE,
+            LIGNE_SIECLE_ET_MILLENAIRE, LIGNE_PEUPLES_ANCIENS, LIGNE_MOUVEMENTS_DE_POPULATION,
+            LIGNE_ROIS_ET_REALISATIONS, LIGNE_REVOLUTION, LIGNE_REVOLUTION_A_L_EMPIRE,
+            LIGNE_TYPES_D_ESPACES, LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE, LIGNE_EAU_ENERGIE_ALIMENTS,
+            LIGNE_COMPRENDRE_UN_DOCUMENT);
 
     /** HIS-5 (nadia-prof, 2026-09-09) : la cellule deja comptee et fermee sur HG-CM1-11. */
     private static final String REPONSE_DEJA_COMPTEE_SUR_HG_CM1_11 = "des immeubles collectifs";
@@ -121,7 +116,12 @@ class PaquetCm1HistoireGeographieTest {
     private static final Set<String> REALISATIONS_ROYALES =
             Set.of("la croisade", "la Renaissance", "l'édit de Nantes", "Versailles");
 
-    /** FER-1 sur HG-CM1-07 : les quatre evenements du libelle, chacun en bonne reponse. */
+    /**
+     * FER-1 sur HG-CM1-07 : les quatre evenements du libelle, chacun en bonne reponse. Depuis
+     * S35-CONS-4, les dix items de cette ligne se repartissent entre deux paquets
+     * ("cm1-histoire-geographie-situer-dans-le-temps" et "cm1-histoire-geographie-nommer-en-
+     * histoire") ; {@link #itemsDeLaLigne(String)} les recompose avant que ce test ne les lise.
+     */
     private static final Set<String> EVENEMENTS_REVOLUTION = Set.of(
             "en 1789", "l'abolition des privilèges",
             "la Déclaration des droits de l'homme et du citoyen", "la fin de la monarchie");
@@ -160,7 +160,7 @@ class PaquetCm1HistoireGeographieTest {
     private static final Set<String> REPONSES_ALIMENTS = Set.of(
             "un circuit court", "un aliment importé", "un aliment de saison");
 
-    /** Enumere tous les items distincts du paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
+    /** Enumere tous les items distincts d'un paquet en faisant grossir le tirage deja-vu jusqu'a epuisement. */
     private static List<Question> tousLesItems(ContentSource contenu) {
         RandomSource hasard = new Random(1)::nextInt;
         Set<ItemId> dejaVus = new HashSet<>();
@@ -174,33 +174,46 @@ class PaquetCm1HistoireGeographieTest {
         return items;
     }
 
-    private static ContentSource paquet() {
-        return new YamlContentPackLoader().chargerPaquet(PAQUET);
+    private static ContentSource paquet(String id) {
+        return new YamlContentPackLoader().chargerPaquet(id);
+    }
+
+    /** Les items des quatre paquets issus de la scission, agreges par le chargeur reel. */
+    private static List<Question> tousLesItemsDeTousLesPaquets() {
+        List<Question> tous = new ArrayList<>();
+        for (String id : PAQUETS) {
+            tous.addAll(tousLesItems(paquet(id)));
+        }
+        return tous;
     }
 
     /**
-     * Lecture du YAML brut, pour la seule cle que le domaine ne porte pas :
-     * {@code ligneDeReferentiel} (ADR-0081, clause 6 - ignoree par le chargeur de production, lue
-     * ici comme un garde-fou la lit). Meme chemin de classpath que
+     * Lecture du YAML brut d'un paquet nomme, pour les cles que le domaine ne porte pas :
+     * {@code lignesDeReferentiel} et {@code ligneDeReferentiel} (ADR-0081, clause 6 - ignorees par
+     * le chargeur de production, lues ici comme un garde-fou les lit). Meme chemin de classpath que
      * {@code YamlContentPackLoader.chargerPaquet}, jamais un chemin de fichier de production : ce
      * n'est pas un balayage au sens d'ADR-0013, seulement la lecture d'un paquet nomme, deja permise
      * sans jeu fautif par tous les {@code Paquet*Test} de ce module.
      */
     @SuppressWarnings("unchecked")
-    private static List<Map<String, Object>> itemsBruts() {
+    private static Map<String, Object> corpsBrutDe(String paquetNom) {
         String texte;
         try (InputStream flux = PaquetCm1HistoireGeographieTest.class
-                .getResourceAsStream("/contenu/" + PAQUET + ".yaml")) {
+                .getResourceAsStream("/contenu/" + paquetNom + ".yaml")) {
             if (flux == null) {
-                throw new IllegalStateException("contenu/" + PAQUET + ".yaml introuvable sur le"
+                throw new IllegalStateException("contenu/" + paquetNom + ".yaml introuvable sur le"
                         + " classpath");
             }
             texte = new String(flux.readAllBytes(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
-        Map<String, Object> corps = (Map<String, Object>) new Yaml().load(texte);
-        List<Object> items = (List<Object>) corps.get("items");
+        return (Map<String, Object>) new Yaml().load(texte);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<Map<String, Object>> itemsBrutsDe(String paquetNom) {
+        List<Object> items = (List<Object>) corpsBrutDe(paquetNom).get("items");
         List<Map<String, Object>> resultat = new ArrayList<>();
         for (Object item : items) {
             resultat.add((Map<String, Object>) item);
@@ -208,21 +221,47 @@ class PaquetCm1HistoireGeographieTest {
         return resultat;
     }
 
+    /** Les items bruts des quatre paquets, sans filtre de ligne. */
+    private static List<Map<String, Object>> itemsBruts() {
+        List<Map<String, Object>> tous = new ArrayList<>();
+        for (String paquetNom : PAQUETS) {
+            tous.addAll(itemsBrutsDe(paquetNom));
+        }
+        return tous;
+    }
+
     /**
-     * <b>Le partage entre les deux taches d'une ligne est epingle, jamais seulement minore.</b>
-     * Le plancher de {@code FER-3} ({@code min >= MINIMUM_PAR_TACHE}) est muet dans les deux sens
-     * ou ce partage se deplace reellement : un item classe du mauvais cote reste au-dessus du
-     * plancher, et un classificateur qui cesse de reconnaitre un item verse cet item dans l'autre
-     * tache par la simple soustraction qui calcule la seconde. Les deux modes ont deja coute a ce
-     * depot - le second est le motif d'ADR-0089 decision E, ou {@code EXC-R5} etait bloquee par une
-     * tache lue dans une sous-chaine d'enonce, et yanis-qa a signale le 2026-09-08 que les deux
-     * tests de ce fichier qui lisent encore l'enonce ({@code HG-CM1-01}, {@code HG-CM1-02})
-     * glisseraient de la meme facon a la premiere reformulation.
-     *
-     * <p>Epingler les deux effectifs rend tout deplacement rouge et le nomme, sans demander au
-     * contenu de declarer sa tache - ce que le schema ne porte pas, et ce qu'aucun classificateur
-     * ne peut deriver ici (avis de faisabilite de s33, section 1). Un effectif attendu se met a
-     * jour dans le commit qui deplace le partage, exactement comme {@link #NOMBRE_D_ITEMS_ATTENDU}.
+     * Les items qui servent une ligne de referentiel donnee, <b>tous paquets confondus</b> - le seul
+     * changement de comportement que S35-CONS-4 introduit dans ce fichier. Un paquet qui ne sert
+     * qu'une seule ligne (cas de "cm1-histoire-geographie-lire-un-document", HG-CM1-14 seule, DEC-
+     * 0088) attribue tous ses items a cette ligne sans qu'aucun d'eux ne porte la cle
+     * {@code ligneDeReferentiel} (ADR-0081, clause 6) ; un paquet qui en sert plusieurs lit la ligne
+     * de chaque item individuellement. Meme regle que
+     * {@code ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest.itemsParLigne}.
+     */
+    @SuppressWarnings("unchecked")
+    private static List<Map<String, Object>> itemsDeLaLigne(String code) {
+        List<Map<String, Object>> resultat = new ArrayList<>();
+        for (String paquetNom : PAQUETS) {
+            Map<String, Object> corps = corpsBrutDe(paquetNom);
+            List<Object> lignesDeclarees = (List<Object>) corps.get("lignesDeReferentiel");
+            boolean uneSeuleLigne = lignesDeclarees != null && lignesDeclarees.size() == 1;
+            for (Map<String, Object> item : itemsBrutsDe(paquetNom)) {
+                String ligneDeCetItem = uneSeuleLigne
+                        ? String.valueOf(lignesDeclarees.get(0))
+                        : String.valueOf(item.get("ligneDeReferentiel"));
+                if (code.equals(ligneDeCetItem)) {
+                    resultat.add(item);
+                }
+            }
+        }
+        return resultat;
+    }
+
+    /**
+     * Le partage entre les deux taches d'une ligne est epingle, jamais seulement minore. Voir
+     * l'original de cette methode, inchange par S35-CONS-4 : la scission ne deplace aucun texte
+     * d'item, seulement le fichier qui le porte.
      */
     private static void partageDesTachesEpingle(String ligne, String nomA, long effectifA,
                                                  int attenduA, String nomB, long effectifB,
@@ -235,34 +274,33 @@ class PaquetCm1HistoireGeographieTest {
                 .isEqualTo(attenduB);
     }
 
-    private static List<Map<String, Object>> itemsDeLaLigne(String code) {
-        return itemsBruts().stream()
-                .filter(item -> code.equals(item.get("ligneDeReferentiel")))
-                .toList();
-    }
-
     @Test
-    void lePaquetCompteExactementCentDixItems() {
-        assertThat(tousLesItems(paquet()))
-                .as("S33-HG-08-12 : quatre-vingt-douze items apres S32-1 plus dix-huit items neufs"
-                        + " (neuf sur %s, neuf sur %s)",
-                        LIGNE_REVOLUTION_A_L_EMPIRE, LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE)
+    void lesQuatrePaquetsComptentAuTotalCentDixItems() {
+        assertThat(tousLesItemsDeTousLesPaquets())
+                .as("S35-CONS-4 : les quatre paquets issus de la scission portent ensemble les cent"
+                        + " dix items existants, aucun perdu et aucun duplique")
                 .hasSize(NOMBRE_D_ITEMS_ATTENDU);
     }
 
     @Test
-    void leDescripteurEstHistoireGeographieCm1() {
-        var descripteur = paquet().descriptor();
+    void chaquePaquetADescripteurHistoireGeographieCm1() {
+        for (String id : PAQUETS) {
+            var descripteur = paquet(id).descriptor();
 
-        assertThat(descripteur.matiere()).isEqualTo("Histoire-géographie");
-        assertThat(descripteur.niveau()).isEqualTo("CM1");
-        assertThat(descripteur.domaine()).isEqualTo("Repères historiques et géographiques");
-        assertThat(descripteur.competence()).contains("référentiel");
+            assertThat(descripteur.matiere())
+                    .as("%s : meme descripteur matiere sur les quatre paquets (DEC-0088)", id)
+                    .isEqualTo("Histoire-géographie");
+            assertThat(descripteur.niveau())
+                    .as("%s : meme descripteur niveau sur les quatre paquets (DEC-0088)", id)
+                    .isEqualTo("CM1");
+            assertThat(descripteur.domaine()).isEqualTo("Repères historiques et géographiques");
+            assertThat(descripteur.competence()).as("%s", id).contains("référentiel");
+        }
     }
 
     @Test
     void chaqueItemPorteExactementTroisPropositionsDistinctes() {
-        for (Question item : tousLesItems(paquet())) {
+        for (Question item : tousLesItemsDeTousLesPaquets()) {
             assertThat(item.distracteurs())
                     .as("'%s' : deux distracteurs, pour trois propositions au total", item.enonce())
                     .hasSize(2);
@@ -276,25 +314,19 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     /**
-     * La distribution exacte par ligne, apres S28-2, S29-2, S32-1 et S33-HG-08-12 : les onze lignes
-     * du paquet atteignent chacune exactement le plancher de dix de {@code FER-2}. Une seule
-     * assertion prouve a la fois que chaque lot ferme sur son perimetre et qu'aucun n'ouvre de
-     * ligne neuve de la matiere.
+     * La distribution exacte par ligne, apres S28-2, S29-2, S32-1, S33-HG-08-12 et S35-CONS-4 : les
+     * onze lignes du paquet atteignent chacune exactement le plancher de dix de {@code FER-2}, tous
+     * paquets confondus.
      */
     @Test
     void laDistributionParLigneEstExactementDixItemsSurChacuneDesOnzeLignes() {
-        Map<String, Long> comptes = itemsBruts().stream()
-                .collect(Collectors.groupingBy(
-                        item -> String.valueOf(item.get("ligneDeReferentiel")),
-                        Collectors.counting()));
+        Map<String, Integer> comptes = new LinkedHashMap<>();
+        for (String ligne : TOUTES_LES_LIGNES) {
+            comptes.put(ligne, itemsDeLaLigne(ligne).size());
+        }
 
-        assertThat(comptes).containsOnly(
-                Map.entry(LIGNE_FRISE, 10L), Map.entry(LIGNE_SIECLE_ET_MILLENAIRE, 10L),
-                Map.entry(LIGNE_PEUPLES_ANCIENS, 10L), Map.entry(LIGNE_MOUVEMENTS_DE_POPULATION, 10L),
-                Map.entry(LIGNE_ROIS_ET_REALISATIONS, 10L), Map.entry(LIGNE_REVOLUTION, 10L),
-                Map.entry(LIGNE_REVOLUTION_A_L_EMPIRE, 10L), Map.entry(LIGNE_TYPES_D_ESPACES, 10L),
-                Map.entry(LIGNE_VIVRE_URBAIN_ET_TOURISTIQUE, 10L),
-                Map.entry(LIGNE_EAU_ENERGIE_ALIMENTS, 10L), Map.entry(LIGNE_COMPRENDRE_UN_DOCUMENT, 10L));
+        comptes.forEach((ligne, compte) -> assertThat(compte)
+                .as("%s : exactement dix items, tous paquets confondus", ligne).isEqualTo(10));
     }
 
     /** FER-2 (S32-1) : les quatre lignes de la tranche 1 atteignent chacune le plancher de dix. */
@@ -422,29 +454,6 @@ class PaquetCm1HistoireGeographieTest {
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
     }
 
-    /**
-     * CONS-1 (S32-1) : la consigne du catalogue nomme desormais la tache reelle de HG-CM1-03 et
-     * HG-CM1-04, en plus des quatre taches deja nommees.
-     */
-    @Test
-    void cons1LaConsigneNommeLaTacheDeNommerUnPeupleOuUnMouvementDePopulation() {
-        String texte;
-        try (InputStream flux = PaquetCm1HistoireGeographieTest.class
-                .getResourceAsStream("/catalogue.yaml")) {
-            if (flux == null) {
-                throw new IllegalStateException("catalogue.yaml introuvable sur le classpath");
-            }
-            texte = new String(flux.readAllBytes(), StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-
-        assertThat(texte)
-                .as("la consigne du jeu histoire-geographie nomme la tache de HG-CM1-03 et"
-                        + " HG-CM1-04, non couverte par les quatre taches deja nommees")
-                .contains("nomme un peuple ou un mouvement de population");
-    }
-
     @Test
     void fer2EstTenueSurLesDeuxLignesDeLaCompositionB() {
         assertThat(itemsDeLaLigne(LIGNE_TYPES_D_ESPACES))
@@ -481,7 +490,10 @@ class PaquetCm1HistoireGeographieTest {
                 .containsAll(REALISATIONS_ROYALES);
     }
 
-    /** FER-1 sur HG-CM1-07 : les quatre evenements de la parenthese sont chacun servis. */
+    /**
+     * FER-1 sur HG-CM1-07 : les quatre evenements de la parenthese sont chacun servis, recomposes
+     * depuis les deux paquets qui se partagent desormais cette ligne (S35-CONS-4).
+     */
     @Test
     void fer1LesQuatreEvenementsDeLaRevolutionSontServisEnBonneReponse() {
         Set<Object> reponses = itemsDeLaLigne(LIGNE_REVOLUTION).stream()
@@ -577,11 +589,11 @@ class PaquetCm1HistoireGeographieTest {
 
     /**
      * HG-R3 (nadia-prof, 2026-09-03) : les deux distracteurs absurdes de l'ancien item sur l'espace
-     * rural ne doivent plus figurer nulle part dans le paquet.
+     * rural ne doivent plus figurer nulle part dans aucun des quatre paquets.
      */
     @Test
     void hgR3LesAnciensDistracteursAbsurdesOntDisparu() {
-        for (Question item : tousLesItems(paquet())) {
+        for (Question item : tousLesItemsDeTousLesPaquets()) {
             assertThat(item.distracteurs())
                     .as("'%s' : HG-R3 corrige l'item sur l'espace rural, ses anciens distracteurs"
                             + " absurdes ne doivent réapparaître sur aucun item", item.enonce())
@@ -679,13 +691,6 @@ class PaquetCm1HistoireGeographieTest {
     /**
      * FER-1 sur HG-CM1-12 : la pratique "se cultiver", absente jusqu'ici de la ligne, est
      * desormais servie en bonne reponse par au moins un des neuf items neufs.
-     *
-     * <p>Correction du 2026-09-10, routee par le relecteur-pedagogique (s33, relecture, section 2) :
-     * le troisieme motif s'ecrivait {@code "évènement culturel"}, graphie que sa correction
-     * orthographique du meme sprint a fait disparaitre du contenu servi. Le test restait vert par un
-     * autre motif, donc <b>rien ne le disait</b> : une branche de predicat qui ne peut plus
-     * correspondre a rien est un morceau de garde-fou qui a cesse de garder, et il se lit comme s'il
-     * gardait encore.</p>
      */
     @Test
     void fer1SurHgCm112LaPratiqueSeCultiverEstDesormaisServie() {

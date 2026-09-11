@@ -13695,4 +13695,92 @@ porte une competence neuve.**
   technique de la scission ; `marc-dev` ou `lea-dev` pour l'execution et l'ecriture des quatre
   consignes ; `nadia-prof` pour l'audit.
 
+### S36-QLM11-PLANCLASSE - Reprise de `S35-QLM11-PLANCLASSE` : la geometrie des six cadres du plan
+### de la classe, pas les libelles (`ZON-15` seule reste a tenir, cinquieme sprint sur cette ligne)
+
+- **Statut** : reprise de `S35-QLM11-PLANCLASSE` (ce document, **REFUSE**), qui ne remplace pas ses
+  criteres d'acceptation sur ce qui reste tenu (les six libelles, `ZON-1` a `ZON-14`, `ZON-16`) -
+  cette entree porte uniquement ce que le refus de s35 laisse ouvert. Cinquieme sprint sur cette
+  ligne (`QLM-CP-11`), premier ou le motif exact et son chiffrage sont connus d'avance.
+- **Besoin** : en tant qu'eleve de CP, je veux pouvoir lire le libelle de chaque zone du plan de
+  classe sans qu'il deborde de son cadre, ne cache le dessin ou ne recouvre le libelle d'une zone
+  voisine, afin de savoir sans ambiguite quelle zone toucher.
+- **Competence programme visee** : questionner le monde, CP (cycle 2) -
+  `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-11`, "Situer un lieu ou un
+  objet sur un plan simple de la classe, de l'ecole ou du quartier", `non couvert`.
+- **Le motif du refus de s35, repris mot pour mot (`FICHE-designation-plan-de-la-classe.md`,
+  sections 1 et 3)** : *"Six zones sur six. De 17 a 95 px. Ce n'est pas une marge, c'est un ecran
+  illisible."* Et la cause structurelle : *"Un libelle positionnel replie sur deux lignes demande,
+  dans le pave de `.zone`, un cadre d'au moins 109 x 88 px, soit 31 % x 25 % du dessin servi. Il
+  faut cela six fois. Or trois des six elements d'un plan de classe sont des bandes minces par
+  nature : un tableau contre le mur du haut, une fenetre percee dans le mur de droite, une porte
+  dans le mur du bas. On ne peut pas donner 25 % de hauteur au tableau sans mentir sur le plan [...]
+  le libelle d'une zone ne peut pas vivre a l'interieur d'un cadre quand ce cadre doit rester une
+  bande mince."* Agrandir deux cadres (l'armoire, la porte) ne suffit pas : les quatre autres,
+  jamais mesures avant s35, sont dans le meme etat ou pire (`fenetre` : 19,4 px de largeur utile).
+- **Ce que `nadia-prof` accepte, mot pour mot (meme fiche, section 3)**, et je ne choisis pas entre
+  les deux - la forme appartient a `ines-design` (propose) et `theo-archi` (decide)** :
+  - *"Ce que j'accepte : que le libelle sorte de la boite du bouton - une legende a cote du plan, un
+    renvoi, un libelle en marge - pourvu que l'enfant sache sans ambiguite quel bouton porte quel
+    libelle, et que le bouton garde son nom accessible."*
+  - *"Ce que j'accepte aussi : que le pave de `.zone` soit reduit sur une zone de designation. [...]
+    Ce n'est pas la police, c'est le pave."*
+- **Ce que `nadia-prof` refuse, mot pour mot, et que cette story n'engage pas** :
+  - *"Ce que je refuse : baisser la taille du libelle sous 1,25rem. Ce plancher est de moi, il n'est
+    pas neuf, `ADR-0050` (decision 4) le tient deja, et aucune geometrie ne le justifie."*
+  - *"Ce que je refuse aussi : l'alternative `(d)` d'`ADR-0092`, accepter qu'un libelle deborde de
+    son cadre. [...] le debordement n'est pas cosmetique ici, il fait se recouvrir les libelles de
+    zones voisines."*
+- **Criteres d'acceptation** :
+  - Etant donne les six cadres du plan de classe (`tableau`, `bureau`, `fenetre`, `armoire`,
+    `coin-lecture`, `porte`), quand ils sont revus par `ines-design` et `theo-archi` selon l'une des
+    deux sorties acceptees ci-dessus (libelle hors de la boite du bouton, ou pave de `.zone` reduit
+    sur ce paquet), alors chacun des six libelles, a 1,25rem gras, tient entierement dans son
+    espace, ne deborde d'aucun cote, ne touche ni ne recouvre le libelle d'une zone voisine, et ne
+    recouvre aucun trait du dessin que sa zone designe (`ZON-15`) - verifie sur les six zones, pas
+    sur un sous-ensemble.
+  - Etant donne l'alternative `(d)` d'`ADR-0092` (accepter le debordement), quand la reprise est
+    conçue, alors elle n'est pas retenue - refus explicite et motive de `nadia-prof`, cite
+    ci-dessus.
+  - Etant donne la taille de police, quand la reprise est conçue, alors elle reste a 1,25rem ou
+    au-dessus sur les six libelles - aucune sortie ne baisse la police pour resoudre la geometrie.
+  - Etant donne les six libelles deja ecrits et confirmes par `nadia-prof` (*"en haut, au centre"*,
+    *"en haut, a gauche"*, *"au centre, a droite"*, *"au centre, a gauche"*, *"en bas, a droite"*,
+    *"en bas, a gauche"*), quand cette story est livree, alors leur texte n'est pas modifie -
+    `ZON-16` est deja tenue sur ce paquet et n'entre pas dans le perimetre de la reprise (fiche,
+    section 4 et section 8 : *"Rien a faire : ils sont bons, audites, confirmes"*).
+  - Etant donne `ZON-16` telle que `nadia-prof` l'a reformulee le 2026-09-11 (s35, section 4 de la
+    meme fiche), alors elle reste la condition opposable a tout libelle positionnel qui serait
+    quand meme retouche a l'occasion de cette reprise : *"Un libelle positionnel de CP est fait
+    d'au plus deux locutions positionnelles (donc au plus quatre mots), chacune purement
+    positionnelle, et il ne nomme aucun objet du dessin. 'en haut, au centre' passe ; 'a gauche,
+    contre le mur' ne passe pas."*
+  - Etant donne les deux reserves de contenu non bloquantes de s35, quand cette reprise est livree,
+    alors elles sont absorbees dans le meme geste plutot que reportees a un sixieme audit
+    (`nadia-prof` : *"un paquet se relit comme un tout"*) :
+    - `PCL-R1` : les six indices disent aujourd'hui a quoi sert l'objet (*"C'est la qu'on range le
+      materiel"*) plutot que d'aider a le situer sur ce plan-ci ; l'indice doit aider a lire le
+      plan (une forme, un mur, une position), pas a reconnaitre un objet deja connu.
+    - `PCL-R2` : l'indice du tableau est inexact (*"C'est ce que la maitresse regarde le plus
+      souvent"* - une enseignante regarde sa classe, pas son tableau) et l'adulte de l'ecole est
+      nomme deux fois sur six items, toujours au feminin (*"la maitresse"*) - a varier.
+  - Etant donne le plancher de cible tactile deja mesure par `theo-archi` (`ADR-0080`, 12,5 % du
+    plus petit cote, `CIBLE_TACTILE_REM = 2,75`), alors cette story ne le rouvre pas : propriete
+    distincte de celle que `ZON-15` porte.
+  - Etant donne le Done pedagogique, alors `QLM-CP-11` ne passe `couvert-valide` que si
+    `nadia-prof` confirme, en jouant, que `ZON-15` est tenue sur les six zones - `ZON-16` restant
+    acquise sans etre rejouee si les six libelles ne bougent pas.
+- **Ce que cette story ne fait pas** : elle ne touche pas la frise de la journee ni `QLM-CP-14`
+  (deja `couvert-valide`, `S35-QLM14-FRISE`) ; elle ne retente pas l'alternative `(d)` d'`ADR-0092` ;
+  elle ne rouvre pas le plancher de cible tactile d'`ADR-0080` ; elle ne modifie pas le texte des
+  six libelles si `ines-design` et `theo-archi` ne le jugent pas necessaire a la geometrie retenue.
+- **Lien decision** : `S35-QLM11-PLANCLASSE` (ce document, refusee) ;
+  `squad/conformite/FICHE-designation-plan-de-la-classe.md`, sections 1, 3, 4, 5, 8 ;
+  `squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/verdicts-nadia.md`, section 2 ;
+  `ADR-0092` (alternatives de geometrie, alternative `(d)` refusee) ; `ADR-0050` (decision 4,
+  plancher de 1,25rem) ; `ADR-0080` (plancher de cible tactile, non rouvert).
+- **Agent pressenti** : `ines-design` pour la geometrie des six cadres ou le placement hors bouton ;
+  `theo-archi` pour la forme technique retenue (pave de `.zone` ou position du libelle) ; `nadia-prof`
+  pour les deux reserves de contenu et pour l'audit final.
+
 

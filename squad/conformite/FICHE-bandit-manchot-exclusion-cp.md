@@ -14,7 +14,16 @@
   indices de la tache B n'ont pas ete touches et repondent a la question que la refonte supprime.
   **La ligne `EMC-CP-03` n'est pas rouverte** et reste `couvert-valide`. Deux reserves neuves,
   `EXC-R11` et `EXC-R12`, non bloquantes. Bloc de validation du 2026-09-11 en fin de fiche.
-- **Derniere mise a jour** : 2026-09-11
+- **Etat au 2026-09-11 (s35, `S35-EXC-INDICES`)** : **l'increment est VALIDE SOUS RESERVE.**
+  **`EXC-R10` est LEVEE** (cinq indices sur cinq, contre zero sur cinq a la cloture de s34) et
+  **`EXC-R11` est SOLDEE** (cinq contrepoids sur cinq). **`EXC-R12` : sa lettre est payee, son objet
+  l'est a moitie** - le subjonctif passe et le pronom elide sont retires, la phrase servie n'est pas
+  plus simple. Deux reserves neuves, non bloquantes : **`EXC-R13`** (la proposition des items 8 et
+  11 est un passif a agent, plus long que ce qu'il remplace) et **`EXC-R14`** (les cinq indices de
+  la tache B font 19 a 24 mots contre 10 a 12 sur la tache A, et la cause est dans ma propre
+  condition). **La ligne `EMC-CP-03` n'est pas rouverte** et reste `couvert-valide`. Troisieme bloc
+  de validation en fin de fiche.
+- **Derniere mise a jour** : 2026-09-11 (s35)
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -980,4 +989,159 @@ recomptee sur le couple indice/propositions de chaque item de la tache B.
 | **`EXC-R11`, `EXC-R12`** | `camille-po` | Non bloquants, **a traiter dans le meme geste que `EXC-R10`** : les trois touchent la tache B et un paquet se relit comme un tout |
 | **L'accord du participe dans *"esperer qu'un adulte l'ait remarque"*** | `relecteur-pedagogique` | Orthographe et grammaire, pas mon registre |
 | **La lettre de `EMC-CP-03` face a une mecanique a trois boutons** | `camille-po` | **Deja route le 2026-09-10, rappele ici** : ce que la ligne couvre reellement apres la refonte est ecrit ci-dessus. **Aucun mouvement de matrice** |
+| **Le mouvement de matrice** | `camille-po` | **Aucun.** `EMC-CP-03` reste `couvert-valide` |
+
+---
+
+## Bloc de validation pedagogique - nadia-prof UNIQUEMENT - troisieme passage, s35 (`S35-EXC-INDICES`)
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute aux deux precedents
+> sans en effacer une ligne** : le refus du 2026-09-10 reste lisible au-dessus, avec son motif. Un
+> refus efface n'a aucune valeur de preuve.
+
+- **Verdict** : **VALIDE SOUS RESERVE**
+- **Date** : 2026-09-11 (s35)
+- **Auteur** : `nadia-prof`
+- **Arbre** : `s35-integration` a `c1b326d4`, worktree `s35-nadia`
+- **Audit joue** : **oui.** Jar reconstruit depuis mon propre worktree, lance sur le JDK `21.0.10`
+  de la toolchain. **Une partie complete de dix manches, avec un appui faux volontaire sur chacune,
+  pour lire les indices servis** ; puis une seconde passe en pressant l'autre distracteur de chaque
+  item de la tache B, pour verifier que l'indice ne depend pas du bouton presse.
+  **Les onze items ont ete vus a l'ecran, les cinq indices de la tache B ont ete lus a l'ecran.**
+- **Mouvement de matrice** : **aucun.** `EMC-CP-03` reste `couvert-valide`, comme la story le
+  prevoit.
+
+### 1. `EXC-R10` est **levee** - cinq items sur cinq, contre zero sur cinq a la cloture de s34
+
+Mon refus disait : *"aucune ne dit a l'enfant pourquoi la conduite qu'il a choisie ne marche pas."*
+**Lu a l'ecran, item par item :**
+
+| Item | Les deux conduites ecartees | L'indice servi | Dit-il pourquoi elles ne marchent pas ? |
+|---|---|---|---|
+| 7 | *attendre que cela s'arrete tout seul* / *croire qu'un adulte a deja vu cela* | *"Si Tom attend ou croit qu'un adulte a deja vu cela, Hugo continuera de se moquer de lui a la recreation."* | **oui, les deux nommees, la consequence dite** |
+| 8 | *penser que la situation est deja connue d'un adulte* / *en parler a un camarade* | *"Penser qu'un adulte est deja au courant, ou le dire seulement a un camarade, ne fait pas arreter Malo."* | **oui** |
+| 9 | *garder cela pour lui sans rien dire* / *croire qu'un adulte a deja vu cela* | *"Si Hugo garde cela pour lui ou croit qu'un adulte a deja vu cela, Aya continuera de se moquer de lui a la cantine."* | **oui** |
+| 10 | *faire comme si de rien n'etait* / *croire qu'un adulte a deja vu cela* | *"Si Malo fait comme si de rien n'etait ou croit qu'un adulte a deja vu cela, Tom continuera de l'ecarter du jeu."* | **oui** |
+| 11 | *attendre que cela s'arrete tout seul* / *penser que la situation est deja connue d'un adulte* | *"Attendre, ou penser qu'un adulte est deja au courant, ne fait pas arreter Hugo. Il faut le dire soi-meme."* | **oui, et c'est le seul qui pose aussi la regle positive** |
+
+**Et la condition que j'avais ecrite moi-meme la veille du refus est tenue** : *"une conduite du
+genre attendre que cela s'arrete est acceptable [...] a la condition que l'indice dise pourquoi
+attendre ne marche pas."* Sur les items 7 et 11, qui portent litteralement *attendre que cela
+s'arrete tout seul*, l'indice dit *"Hugo continuera de se moquer de lui"* et *"ne fait pas arreter
+Hugo"*. **Elle valait sur zero item sur cinq ; elle vaut sur cinq sur cinq.**
+
+**Aucun indice ne renomme la bonne reponse** - le mode de defaillance que j'avais nomme d'avance.
+Verifie mot par mot : le mot *adulte* y figure comme sujet d'une conduite ecartee, jamais comme la
+reponse a presser. Aucun indice ne nomme la maitresse, le surveillant ni l'adulte de la cantine.
+
+**Un point que je porte au credit du lot et qui n'etait pas demande** : l'indice de l'item 11 ajoute
+*"Il faut le dire soi-meme."* C'est la seule phrase du paquet qui dise a l'enfant la regle plutot
+que l'erreur, et c'est utile. Elle s'approche de la bonne reponse sans la nommer, et je l'accepte
+telle quelle.
+
+### 2. `EXC-R11` est **soldee** - cinq items sur cinq portent un contrepoids qui nomme un adulte
+
+Ma reserve mesurait *"trois items sur cinq ou la bonne reponse est la seule proposition qui nomme un
+adulte"*. Verifie a l'ecran sur les cinq : chacun porte desormais un distracteur qui nomme un adulte
+sans resoudre la moquerie (*croire qu'un adulte a deja vu cela* sur 7, 9, 10 ; *penser que la
+situation est deja connue d'un adulte* sur 8, 11). **`Q2` tient avec la marge que je demandais : un
+enfant ne peut plus gagner en cherchant le seul bouton ou le mot *adulte* apparait.**
+
+Et je note le geste qui a evite un second defaut en passant : les deux formulations sont distinctes
+au lieu d'une seule recopiee cinq fois, ce qui aurait fabrique une amorce reconnaissable (*"les
+boutons qui commencent par croire qu'un adulte sont toujours faux"*). **C'est exactement la
+contrefacon par l'amorce, et elle a ete vue avant moi.**
+
+### 3. `EXC-R12` - **la lettre est payee, l'objet ne l'est qu'a moitie**
+
+Ma reserve demandait deux choses. La premiere est payee : *"esperer qu'un adulte l'ait remarquee"*
+disparait, **le subjonctif passe et le pronom elide sans antecedent sont retires**. Verifie sur les
+items 8 et 11.
+
+**La seconde ne l'est pas** : *"la phrase entiere est simplifiee pour un enfant de CP."* Le
+remplacement servi est ***"penser que la situation est deja connue d'un adulte"***.
+
+- **Neuf mots**, contre six a la phrase qu'il remplace. **Il est plus long.**
+- **Un passif avec son agent introduit par *de*** - *connue d'un adulte*. Cette construction ne se
+  rencontre pas au CP.
+- **Un nom abstrait**, *la situation*, la ou l'enfant a besoin d'un fait concret.
+
+**Et la preuve que c'etait faisable est dans le meme fichier** : l'autre formulation de la meme
+famille, *"croire qu'un adulte a deja vu cela"*, fait sept mots, un verbe concret, aucun passif.
+**Elle est bonne. C'est la seconde qui ne l'est pas.**
+
+> **`EXC-R13`** - **reserve neuve, datee du 2026-09-11 (s35), non bloquante.**
+>
+> - **Objet** : *sur les items 8 et 11, la proposition qui porte la conduite "un adulte sait deja"
+>   se lit par un enfant de CP.* Elle est aujourd'hui un passif a agent avec un nom abstrait.
+> - **Mode de defaillance** : **remettre les cinq items dans le meme moule** pour simplifier, ce qui
+>   rouvrirait l'amorce reconnaissable que ce lot a justement evitee. Les deux groupes de trois et
+>   de deux items doivent rester deux formulations distinctes.
+> - **Perimetre, mesure sur l'etat d'arrivee** : **une proposition, sur deux items.** Rien d'autre
+>   du paquet ne bouge ; l'indice des deux items la reprend, donc il suit.
+> - **Ceci n'est pas un durcissement de `EXC-R12`** : `EXC-R12` portait deja *"la phrase entiere est
+>   simplifiee pour un enfant de CP"*, et ses deux fautes nommees sont bien corrigees. Je constate
+>   que son objet ne l'est pas, sur la meme proposition, et je le redate plutot que de pretendre que
+>   `EXC-R12` disait autre chose.
+> - **Regime et prix** : **mot pour mot, 0,25.**
+
+### 4. `EXC-R14` - **reserve neuve, datee du 2026-09-11 (s35), non bloquante** : les cinq indices de la tache B sont deux fois plus longs que ceux de la tache A
+
+**Mesure, en mots, sur les indices lus a l'ecran :**
+
+| Tache | Indices | Longueur |
+|---|---|---|
+| A (items 1 a 6) | six | **10 a 12 mots** |
+| B (items 7 a 11) | cinq | **19, 19, 21, 22 et 24 mots** |
+
+Le plus long, sur l'item 9 : *"Si Hugo garde cela pour lui ou croit qu'un adulte a deja vu cela, Aya
+continuera de se moquer de lui a la cantine."* **Vingt-quatre mots, une subordonnee conditionnelle a
+deux branches, un futur.** Pour un enfant de CP qui vient de se tromper, c'est beaucoup - et il le
+lit au moment ou il est le moins disponible pour lire.
+
+**Et je dis d'ou vient cette longueur, parce qu'elle vient de moi.** J'ai demande que l'indice dise
+pourquoi la conduite ecartee ne marche pas ; le moteur ne sert **qu'un seul indice par item**, quel
+que soit le bouton presse - verifie en jouant, j'ai presse les deux distracteurs de chaque item et
+obtenu le meme indice. **L'auteur devait donc refuter deux conduites dans une seule phrase, et ma
+condition a produit cette longueur.** Je ne la reproche a personne.
+
+> - **Objet** : *l'indice de la tache B se lit d'un trait par un enfant de CP qui vient d'echouer.*
+> - **Deux sorties, et je ne choisis pas entre elles - la seconde n'est pas de mon ressort** :
+>   nommer la **famille** de conduite une fois au lieu de ses deux membres (contenu seul) ; ou servir
+>   **un indice par proposition** plutot qu'un par item (forme technique, `theo-archi`).
+> - **Mode de defaillance** : raccourcir en retirant la consequence (*"Hugo continuera"*), qui est
+>   exactement ce que `EXC-R10` vient de payer. **La consequence reste ; c'est l'enumeration des deux
+>   conduites qui peut tomber.**
+> - **Perimetre** : **cinq indices**, ou une decision de forme sur la mecanique.
+> - **Regime et prix** : **rejeu borne, 0,25.**
+
+### 5. Ce que je verifie et qui ne fonde aucune demande
+
+- **Exactitude et ton des cinq items de la tache B** : justes. Aucune conduite vilaine, aucune
+  proposition qui demande a l'enfant de regler la situation seul, aucun item qui l'interroge sur sa
+  propre vie. `C-1`, `C-2`, `CAT-1`, `PLA-1`, `EMC-1`, `EMC-8`, `EMC-10` tenues, verifiees a l'ecran.
+- **`EXC-R7` et `EXC-R8`** : tenues a l'identique, les enonces n'ont pas bouge. Aucun item ne se
+  gagne en appariant deux mots ; la question recollee a chaque proposition forme une phrase.
+- **La tache A** : hors perimetre, non retouchee, et je ne la rouvre pas. Ses six indices disent le
+  critere de distinction sans nommer la reponse - deja verifie, toujours vrai a l'ecran.
+- **`FER-2`** : onze items. **`FER-3`** : six et cinq.
+- **Le bouton *"a personne"*** n'est pas revenu. Verifie a l'ecran sur les onze items.
+
+### 6. Ce dont je reste la seule garde sur ce paquet apres ce lot
+
+| Propriete | Garde executable ? |
+|---|---|
+| **`EXC-R10`** - qu'un indice refute la conduite ecartee de **son** item | **aucun, et c'est moi seule.** `yanis-qa` l'a mesure et dit (rapport de s35, section 6) : le sens d'un indice est de la famille de `REC-5`, hors de portee d'un automate general. **Un indice qu'un lot futur recopierait d'une autre tache repasserait sans un rouge.** Je le redis parce que c'est exactement le defaut qui a traverse quatre jobs verts a s34 |
+| **`EXC-R11`** (un contrepoids nommant un adulte par item) et **`EXC-R12`** (la forme exacte refusee) | **gardes depuis le commit `8f9d39cb`**, apres le defaut de tracabilite que `yanis-qa` a remonte en section 7 de son rapport. Je porte ce comblement au credit du lot : la reserve a un garde-fou de regression, pas seulement un commentaire de fichier qui s'auto-declare |
+| **La famille du bouton au rabais** - une conduite evasive ecrite dans d'autres mots que *"a personne"* | **aucun, et `yanis-qa` l'a demontre par mutation** : un distracteur reel remplace par *"ne rien dire du tout"*, meme famille pedagogique, garde-fou reste vert 7/7 (section 4 de son rapport). **Faux vert demontre. Je reste seule garde de la famille ; seule la forme litterale est gardee** |
+| **La longueur d'un indice** (`EXC-R14`) | **aucun.** `LON-1`/`LON-2` portent sur l'enonce, pas sur l'indice |
+| **`CAT-1`, `PLA-1`, `C-1`, `Q2`** | **aucun** |
+
+### 7. Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`EXC-R13`** - la proposition des items 8 et 11 | `camille-po` | Non bloquante. Objet et mode de defaillance ci-dessus. **Je n'ecris pas la proposition** (`RES-2`), mais je nomme celle du meme paquet qui est deja bonne comme reference de niveau |
+| **`EXC-R14`** - la longueur des cinq indices de la tache B | `camille-po`, et `theo-archi` pour la seconde sortie | Non bloquante. **La cause est dans ma propre condition et je l'ecris** |
+| **La famille du bouton au rabais, faux vert demontre par `yanis-qa`** | `theo-archi` | La forme du garde-fou n'est pas de mon ressort. **Ce que je demande est qu'on cesse d'ecrire que cette clause couvre la famille** : elle couvre un incident |
 | **Le mouvement de matrice** | `camille-po` | **Aucun.** `EMC-CP-03` reste `couvert-valide` |

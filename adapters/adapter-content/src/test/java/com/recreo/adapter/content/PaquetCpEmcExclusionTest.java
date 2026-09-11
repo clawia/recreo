@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -222,6 +223,67 @@ class PaquetCpEmcExclusionTest {
             assertThat(item.distracteurs())
                     .as("item %s : deux distracteurs attendus", item.id().value())
                     .hasSize(2);
+        }
+    }
+
+    /**
+     * Les trois facons de nommer un adulte de l'ecole sur la tache B ("en parler a un
+     * surveillant de la cour" / "... a sa maitresse" / "... a l'adulte qui surveille la
+     * cantine"), plus les deux distracteurs qui evoquent un adulte sans agir ("croire qu'un
+     * adulte a deja vu cela", "penser que la situation est deja connue d'un adulte").
+     */
+    private static boolean nommeUnAdulte(String proposition) {
+        String texte = proposition.toLowerCase(Locale.ROOT);
+        return texte.contains("adulte") || texte.contains("maîtresse") || texte.contains("surveillant");
+    }
+
+    /**
+     * EXC-R11 (S35-EXC-INDICES, non bloquante mais soldee dans le meme geste - {@code
+     * verdicts-nadia-instance-B.md}, section 3 ; {@code rapport-qualite.md} de yanis-qa, section 7).
+     * A la cloture de s34, sur trois items de la tache B sur cinq (7, 9, 10), aucun distracteur ne
+     * nommait un adulte : la bonne reponse etait donc la seule proposition a le faire, un raccourci
+     * qu'un enfant peut presser sans rien comprendre a la situation. Sur ces trois items exactement,
+     * ce test est rouge avant le correctif du commit {@code 5fd3ec59} (contenu ecrit avant cette
+     * histoire) et vert apres : chaque item de la tache B porte desormais au moins un distracteur
+     * qui nomme lui aussi un adulte.
+     */
+    @Test
+    void exc11AucuneBonneReponseDeLaTacheBNEstLaSeulePropositionANommerUnAdulte() {
+        List<Question> tacheB = itemsDeLaTacheB();
+        assertThat(tacheB).as("la tache B est servie").isNotEmpty();
+        for (Question item : tacheB) {
+            List<String> propositions = new ArrayList<>(item.distracteurs());
+            propositions.add(item.bonneReponse());
+            long nommentUnAdulte = propositions.stream()
+                    .filter(PaquetCpEmcExclusionTest::nommeUnAdulte)
+                    .count();
+            assertThat(nommentUnAdulte)
+                    .as("item %s : EXC-R11, la bonne reponse ne doit pas etre la seule"
+                            + " proposition a nommer un adulte", item.id().value())
+                    .isGreaterThan(1);
+        }
+    }
+
+    /**
+     * EXC-R12 (S35-EXC-INDICES, non bloquante mais soldee dans le meme geste - {@code
+     * verdicts-nadia-instance-B.md}, section 3 ; {@code rapport-qualite.md} de yanis-qa, section 7).
+     * Garde-fou de regression sur la forme exacte refusee, du meme genre que
+     * {@link #laPropositionAuRabaisAPersonneNApparaitDansAucuneTache()} : le subjonctif passe a
+     * pronom elide sans antecedent ("esperer qu'un adulte l'ait remarque(e)") ne reapparait dans
+     * aucune proposition, quelle que soit la reecriture future de la tache B.
+     */
+    private static final String FORME_REFUSEE_EXC_R12 = "l'ait remarqu";
+
+    @Test
+    void exc12AucuneOppositionNeReprendLeSubjonctifPasseAPronomElideRefuseParExcR12() {
+        for (Question item : items()) {
+            List<String> propositions = new ArrayList<>(item.distracteurs());
+            propositions.add(item.bonneReponse());
+            assertThat(propositions)
+                    .as("item %s : EXC-R12, aucune proposition ne reprend la forme refusee"
+                            + " \"%s...\"", item.id().value(), FORME_REFUSEE_EXC_R12)
+                    .noneMatch(proposition ->
+                            proposition.toLowerCase(Locale.ROOT).contains(FORME_REFUSEE_EXC_R12));
         }
     }
 }

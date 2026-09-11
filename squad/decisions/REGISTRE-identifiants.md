@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `640` identifiants alloues, `103` prefixes distincts.
+**Compte courant, verifie par la CI** : `649` identifiants alloues, `104` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -457,6 +457,19 @@ identifiants distincts, 97 prefixes distincts, zero doublon de definition dans l
 section 4 - la ligne d'etat courant ci-dessus etait deja juste et n'est pas modifiee par cette
 resolution.
 
+
+*Ligne portee de 640 / 103 a 649 / 104 par `nadia-prof` a l'ecriture de ses six verdicts de s35,
+le 2026-09-11. Methode : recomptage des lignes de la table de la section 4 a la forme `|
+identifiant | document |`, identifiants distincts et prefixes distincts, sur l'arbre de mon
+worktree apres l'ajout de mes neuf allocations - **et non 640 + 9 calcule de tete**. Perimetre :
+mon seul diff, aucune autre branche n'etait en vol. Les neuf sont `SCO-R4`, `EXC-R13`, `EXC-R14`,
+`FRI-R6`, `FRI-R7`, `PCL-R1`, `PCL-R2`, `ANG-R8` et `CONS-5` ; le prefixe neuf est `PCL` (plan de
+la classe), choisi a deux segments plutot que `PLA-CL-` a trois, pour ne pas ecrire un identifiant
+de la forme d'un code de ligne de referentiel quand aucun niveau n'y est en jeu. **Ce geste est le
+prix annonce de la clause 5, et j'ai decouvert le devoir en lancant `mvn -B clean verify` sur mon
+propre diff avant de commiter, ce que `CLAUDE.md` demande depuis le 2026-09-08 : la premiere
+version de mon commit a fait rougir ce garde-fou sur mes neuf identifiants.***
+
 ## 2. Ce que ce registre alloue, et ce qu'il n'alloue pas
 
 Il alloue les identifiants de **condition** et de **reserve**, les deux genres que la mesure de s30
@@ -510,6 +523,7 @@ clause 2 par une exemption.
 | `ANG-R5` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANG-R6` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANG-R7` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
+| `ANG-R8` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANT-1` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `ANT-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `ANT-3` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
@@ -580,6 +594,7 @@ clause 2 par une exemption.
 | `CONS-2` | `squad/conformite/FICHE-bandit-manchot-etats-eau-cp.md` |
 | `CONS-3` | `squad/programme/MATRICE-couverture.md` |
 | `CONS-4` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `CONS-5` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `COR-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `COR-R2` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `COR-R3` | `squad/conformite/FICHE-bandit-manchot-corps-sens-cp.md` |
@@ -685,6 +700,8 @@ clause 2 par une exemption.
 | `EXC-R10` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R11` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R12` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R13` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R14` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `FD-1` | `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md` |
 | `FD-2` | `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md` |
@@ -726,6 +743,8 @@ clause 2 par une exemption.
 | `FRI-R3` | `squad/conformite/FICHE-designation-frise-de-la-journee.md` |
 | `FRI-R4` | `squad/conformite/FICHE-designation-frise-de-la-journee.md` |
 | `FRI-R5` | `squad/conformite/FICHE-designation-frise-de-la-journee.md` |
+| `FRI-R6` | `squad/conformite/FICHE-designation-frise-de-la-journee.md` |
+| `FRI-R7` | `squad/conformite/FICHE-designation-frise-de-la-journee.md` |
 | `GN-1` | `squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md` |
 | `GN-2` | `squad/conformite/ARBITRAGE-PREALABLE-s12-mathematiques-cm1.md` |
 | `GRA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s21-trois-paquets-de-volume-cp.md` |
@@ -893,6 +912,8 @@ clause 2 par une exemption.
 | `PAR-14` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `PAR-15` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
 | `PAR-16` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
+| `PCL-R1` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
+| `PCL-R2` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PER-R3` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
@@ -1020,6 +1041,7 @@ clause 2 par une exemption.
 | `SCO-R1` | `squad/conformite/FICHE-bandit-manchot-additions-cp.md` |
 | `SCO-R2` | `squad/conformite/FICHE-bandit-manchot-additions-cp.md` |
 | `SCO-R3` | `squad/conformite/FICHE-bandit-manchot-additions-cp.md` |
+| `SCO-R4` | `squad/conformite/PASSE-TRANSVERSE-s35-ecran-de-fin-de-partie.md` |
 | `SEC-R1` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
 | `SEC-R2` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |
 | `SEC-R3` | `squad/conformite/FICHE-bandit-manchot-regles-securite-eps-cp.md` |

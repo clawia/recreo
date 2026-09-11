@@ -294,10 +294,10 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " cloture de s28 ; S29-1 ajoute deux fichiers neufs (cp-qlm-cycle-de-vie,"
                         + " cp-qlm-objet-technique) pour fermer QLM-CP-02 et QLM-CP-07, soit 5"
                         + " fichiers a la cloture de s29 ; S33-PAL2-1 (s34) ajoute"
-                        + " cp-frise-de-la-journee (QLM-CP-14), soit 6 fichiers - cp-plan-de-la-classe"
-                        + " (QLM-CP-11) n'est pas servi, ses libelles de zone debordant de leur bouton"
-                        + " a l'ecran de manche, constate au jar et route a sofia-sm")
-                .hasSize(6);
+                        + " cp-frise-de-la-journee (QLM-CP-14), soit 6 fichiers ; S35-QLM11-PLANCLASSE"
+                        + " (s35) ajoute cp-plan-de-la-classe (QLM-CP-11), premiere livraison reelle"
+                        + " de cette ligne, soit 7 fichiers")
+                .hasSize(7);
         assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")).stream().mapToInt(Paquet::items).sum())
                 .as("S28-1 (ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-"
                         + "lots.md, section 3.1) : 24 items a la cloture de s27, +6 par ligne pour"
@@ -306,14 +306,18 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + "plafond-a-huit-lignes.md, section 4.1) ajoute onze items par ligne neuve"
                         + " (QLM-CP-02, QLM-CP-07), soit 64 items a la cloture de s29 ; S33-PAL2-1"
                         + " (s34) ajoute onze items pour le seul paquet de designation servi"
-                        + " (cp-frise-de-la-journee, QLM-CP-14), soit 75 items")
-                .isEqualTo(75);
+                        + " (cp-frise-de-la-journee, QLM-CP-14), soit 75 items ; S35-QLM11-PLANCLASSE"
+                        + " (s35) ajoute six items (cp-plan-de-la-classe, QLM-CP-11), soit 81 items")
+                .isEqualTo(81);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("1 fichier a la cloture de s27, inchange a S28-1 qui n'a touche que la matiere"
                         + " questionner le monde ; S28-2 et S29-2 etendent ce meme fichier, motif"
                         + " dans son commentaire (ADR-0081 reserve le decoupage a nadia-prof et"
-                        + " camille-po)")
-                .hasSize(1);
+                        + " camille-po) ; S35-CONS-4 (DEC-0088) scinde ce fichier unique en quatre"
+                        + " paquets, un par tache reellement distincte, sans changer le lot de"
+                        + " matiere ni son total d'items (ADR-0081 alternative E, decision de grain"
+                        + " qui appartient a nadia-prof et camille-po, pas a un decoupage technique)")
+                .hasSize(4);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")).stream().mapToInt(Paquet::items).sum())
                 .as("S29-2 (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-"
                         + "a-huit-lignes.md, section 3.3) : 37 items a la cloture de s28, +6 sur"

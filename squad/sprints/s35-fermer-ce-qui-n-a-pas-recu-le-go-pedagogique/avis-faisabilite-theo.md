@@ -277,7 +277,7 @@ Arithmetique sur les valeurs lues dans `recreo.css` (`.zone`) et dans le gabarit
 
 ```
 .zone { min-height: 2.75rem; min-width: 2.75rem; padding: 0.75rem 1.25rem;
-        border: 0.125rem; font-size: 1.25rem; }   box-sizing: border-box (regle universelle)
+        border: 0.125rem solid ...; font-size: 1.25rem; }   box-sizing: border-box (regle universelle)
 gabarit : style="left:..%; top:..%; width:..%; height:..%"   -> le cadre est une taille FIXE
 ```
 

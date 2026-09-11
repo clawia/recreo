@@ -1,8 +1,18 @@
-# Fiche de conformite - bandit-manchot-histoire-geographie-cm1
+# Fiche de conformite - bandit-manchot-histoire-geographie-cm1 (**entree scindee en quatre a s35**)
+
+> **Cette fiche est celle de l'ancetre, et elle n'est pas supprimee.** L'entree de catalogue
+> `bandit-manchot-histoire-geographie-cm1` et le paquet `cm1-histoire-geographie.yaml` ont disparu au
+> commit `b16bbbcb` (s35, `S35-CONS-4`) ; **leurs 110 items sont tous servis, repartis sur quatre
+> entrees neuves qui ont chacune leur fiche.** Les cinq verdicts et les vingt-et-une reserves
+> ci-dessous portent sur ces memes 110 items et **restent opposables** : les quatre fiches neuves
+> renvoient ici pour toute l'histoire d'avant s35. La table des quatre entrees, la mesure de
+> fidelite de la scission et le verdict de `nadia-prof` du 2026-09-11 (s35) sont **en fin de
+> fiche**.
 
 - **Mecanique** : bandit manchot.
-- **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-histoire-geographie.yaml`.
-- **Entree de catalogue** : `bandit-manchot-histoire-geographie-cm1`, titre servi *"Histoire et géographie"*, `nombreDeManches: 10`.
+- **Contenu, jusqu'a s35** : `adapters/adapter-content/src/main/resources/contenu/cm1-histoire-geographie.yaml` (**retire du depot au commit `b16bbbcb`, scinde en quatre paquets**).
+- **Entree de catalogue, jusqu'a s35** : `bandit-manchot-histoire-geographie-cm1`, titre servi *"Histoire et géographie"*, `nombreDeManches: 10` (**retiree du catalogue au commit `b16bbbcb`**).
+- **Statut global s35** : **VALIDE** sur la scission (Done pedagogique **prononce le 2026-09-11**). **`CONS-4` est LEVEE** au quatrieme sprint : la consigne fourre-tout de 28 mots est remplacee par quatre consignes de 5 a 11 mots, chacune nommant la tache reellement servie. **Fidelite verifiee a la main sur les 110 items : aucun perdu, aucun neuf, aucun texte change**, les dix seuls ecarts etant le retrait de `ligneDeReferentiel` qu'exige `DEC-0088`. Une reserve neuve, non bloquante : **`CONS-5`** (quatre items sur 110 ne font pas ce que leur consigne annonce). **Aucun mouvement de matrice.**
 - **Statut global s29** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-06** sur l'increment de s29, composition A, stories `S29-2` et `S29-7`). **Trois lignes de plus ferment** : `HG-CM1-06`, `HG-CM1-07` et `HG-CM1-14` passent a `couvert-valide`, avec une **mention exigee d'avance sur la ligne 14**. **Six lignes du paquet restent `en cours`** (section 8 du bloc de s29). `HG-R4` et `HG-R5` sont **levees** ; deux reserves nouvelles, non bloquantes : `HG-R6` et `HG-R7`.
 - **Statut global s28** : **VALIDE SOUS RESERVE** (Done pedagogique **prononce le 2026-09-04** sur l'increment de s28, composition B). **Deux lignes ferment** : `HG-CM1-11` et `HG-CM1-13` passent a `couvert-valide`. **Les neuf autres lignes du paquet restent `en cours`** et personne ne doit s'en etonner : je l'avais ecrit d'avance. Deux reserves nommees, non bloquantes, `HG-R4` et `HG-R5`.
 - **Statut s27, conserve tel quel** : **VALIDE** (Done pedagogique prononce le 2026-09-03). **Ma reserve bloquante du 2026-09-03 sur l'item 5 est levee** : la reformulation est reprise mot pour mot. Lignes de matrice `non couvert` -> **`en cours`** - premier paquet d'une matiere neuve, aucune ligne ne se ferme.
@@ -1634,3 +1644,179 @@ en tout.**
   proxy qui cherche trois mots dans les enonces), **`CONS-1` et `CONS-4`** - inchangees depuis s33.
 - **La couleur, le contraste, la taille, la position a l'ecran** - **personne sur ce terrain ce
   sprint** (audit degrade).
+
+---
+
+## Bloc de validation pedagogique - nadia-prof UNIQUEMENT - s35 (`S35-CONS-4`) : **l'entree de catalogue auditee par cette fiche n'existe plus**
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il n'efface aucun des cinq
+> verdicts precedents** : ils portent sur les 110 items qui continuent tous d'etre servis, et ils
+> restent lisibles au-dessus, ainsi que toutes les reserves `HG-R*` ouvertes. **C'est la seule
+> raison pour laquelle cette fiche n'est pas supprimee : elle est l'histoire des 110 items.**
+
+- **Verdict** : **VALIDE** sur la scission elle-meme
+- **Date** : 2026-09-11 (s35)
+- **Auteur** : `nadia-prof`
+- **Arbre** : `s35-integration` a `c1b326d4`, worktree `s35-nadia`
+- **Mouvement de matrice** : **aucun.** Les 110 items servent les memes lignes qu'avant ; la
+  scission ne ferme ni n'ouvre rien.
+- **Ce que cette fiche devient** : **la fiche de l'ancetre.** L'entree
+  `bandit-manchot-histoire-geographie-cm1` a disparu du catalogue au commit `b16bbbcb` ; quatre
+  entrees la remplacent, chacune avec sa fiche, et chacune renvoie ici pour son histoire d'avant
+  s35. **Aucune ligne de cette fiche n'est reecrite** ; ce bloc est la charniere.
+
+| Entree de catalogue servie depuis s35 | Paquet | Items | Fiche |
+|---|---|---|---|
+| `bandit-manchot-histoire-geographie-situer-dans-le-temps-cm1` | `cm1-histoire-geographie-situer-dans-le-temps` | 25 | `FICHE-bandit-manchot-histoire-geographie-situer-dans-le-temps-cm1.md` |
+| `bandit-manchot-histoire-geographie-nommer-en-histoire-cm1` | `cm1-histoire-geographie-nommer-en-histoire` | 45 | `FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md` |
+| `bandit-manchot-histoire-geographie-nommer-en-geographie-cm1` | `cm1-histoire-geographie-nommer-en-geographie` | 30 | `FICHE-bandit-manchot-histoire-geographie-nommer-en-geographie-cm1.md` |
+| `bandit-manchot-histoire-geographie-lire-un-document-cm1` | `cm1-histoire-geographie-lire-un-document` | 10 | `FICHE-bandit-manchot-histoire-geographie-lire-un-document-cm1.md` |
+
+- **Pourquoi quatre fiches et pas une.** La convention du depot attache une fiche a un jeu servi.
+  Quatre entrees de catalogue, quatre jeux, quatre consignes distinctes, quatre fiches. Un enfant
+  joue l'une des quatre, jamais leur reunion. **Et pourquoi je ne scinde pas celle-ci en quatre :**
+  cinq verdicts et vingt-et-une reserves y sont ecrits contre un paquet unique ; les decouper
+  reviendrait a les reecrire, et un verdict reecrit n'est plus une preuve. **On ajoute, on date, on
+  laisse lire l'histoire.**
+- **Audit joue** : **oui.** Jar reconstruit depuis mon propre worktree, lance sur le JDK `21.0.10`
+  de la toolchain. **Quatre parties completes, une par entree neuve** (10, 10, 10 et 7 manches),
+  chaque manche jouee en pressant les propositions jusqu'a la bonne, pour lire les indices. Les
+  quatre consignes ont ete lues **a l'ecran, au-dessus de leurs items**, et non dans le catalogue.
+
+### 1. Fidelite au contenu d'origine - **110 items entres, 110 sortis, aucun texte change**
+
+**Mesure, et je dis la methode.** J'ai extrait le paquet d'origine du blob Git d'avant la scission
+(`b16bbbcb~1`), extrait les items des quatre paquets servis aujourd'hui, et compare **champ par
+champ** ce que l'enfant lit : `enonce`, `bonneReponse`, `distracteurs`, `indice`, `texteSupport`,
+`explication`, `ligneDeReferentiel`.
+
+| Ce que je mesure | Resultat |
+|---|---|
+| Items a l'origine | **110** |
+| Items dans les quatre paquets | **25 + 45 + 30 + 10 = 110** |
+| Enonces distincts, avant / apres | **110 / 110** |
+| Enonces presents a l'origine et absents apres | **0** |
+| Enonces neufs, absents a l'origine | **0** |
+| Ecarts sur un `enonce`, `bonneReponse`, `distracteurs`, `indice`, `texteSupport` ou `explication` | **0** |
+| Ecarts sur `ligneDeReferentiel` | **10**, et ce sont les dix attendus |
+
+**Les dix seuls ecarts du lot sont le retrait de `ligneDeReferentiel: "HG-CM1-14"` sur les dix items
+de *Lire un document*** - exactement le critere que `DEC-0088` pose, le paquet ne servant plus
+qu'une seule ligne. **Aucune ligne neuve, aucun sens change, aucune reponse deplacee. La fidelite
+est totale, et c'etait la condition premiere de mon audit.**
+
+Les trois criteres ajoutes par `DEC-0088`, verifies a la main : *Lire un document* porte
+`nombreDeManches: 7` (et non le defaut de `DEC-0064`), ses items ont perdu leur
+`ligneDeReferentiel`, et **les quatre paquets portent le meme descripteur `matiere` /
+`niveau` / `domaine`** - *Histoire-geographie*, *CM1*, *Reperes historiques et geographiques* -, ce
+qui preserve le comptage de `HIS-1` sur le lot de matiere entier.
+
+### 2. `CONS-4` est **levee** - le gain pour l'enfant est le fait principal de cette story
+
+**Ce que l'enfant lisait avant chaque manche, jusqu'a s35** :
+
+> *"Lis bien, puis situe dans le temps, nomme un peuple ou un mouvement de population, associe un roi
+> a son fait, decris un espace ou une ressource, ou lis un document."*
+
+**Vingt-huit mots, cinq taches enumerees dont quatre ne concernent pas la manche affichee.** Un
+enfant de CM1 lit cette phrase avant chaque question et n'en retient rien, parce qu'elle ne lui dit
+pas quoi faire : elle lui dit tout ce qu'il pourrait avoir a faire.
+
+**Ce qu'il lit aujourd'hui, une consigne par jeu, lue a l'ecran :**
+
+| Jeu | Consigne servie | Mots |
+|---|---|---|
+| *Situer dans le temps* | *"Situe le fait dans le temps, ou remets les faits dans l'ordre."* | 11 |
+| *Nommer, en histoire* | *"Nomme ce que l'enonce decrit."* | 5 |
+| *Nommer, en geographie* | *"Nomme ce que l'enonce decrit."* | 5 |
+| *Lire un document* | *"Lis le document fourni, puis reponds a la question."* | 8 |
+
+**Cinq a onze mots au lieu de vingt-huit, et chacune nomme la tache que l'enfant a effectivement
+devant lui.** C'est le gain, il est net, et il est le motif de mon `VALIDE`. **Quatrieme sprint sur
+cette entree - et c'est paye.**
+
+### 3. Chaque consigne devant les items de son paquet, verifiee un par un
+
+C'est ce que `S34-CONS-4` demandait mot pour mot (*"audit de `nadia-prof` texte devant items"*), et
+c'est le seul endroit ou la scission pouvait fabriquer un defaut neuf.
+
+- ***Lire un document*** (10 items) : **exacte sur les dix.** Les dix enonces portent sur le texte
+  (*"D'apres ce texte..."*, *"Quel type de document est ce texte ?"*, *"Qui a ecrit ce texte ?"*), et
+  **les dix items portent bien un `texteSupport`** - je l'ai verifie sur les dix, parce que *"le
+  document fourni"* serait un mensonge s'il manquait une seule fois. **Le meilleur ajustement des
+  quatre.**
+- ***Situer dans le temps*** (25 items) : **exacte, avec un point lache que je nomme.** Vingt des
+  vingt-cinq items situent un fait (*"A quelle periode cela correspond-il ?"*, *"En quel siecle ?"*)
+  ou ordonnent des faits (*"lequel a eu lieu le plus tot ?"*). **Les cinq items *"Quelle grande
+  periode vient juste apres X ?"* ordonnent des periodes, pas des faits**, et la consigne dit *"les
+  faits"*. C'est un mot, pas un contresens, et un enfant n'en sera pas gene.
+- ***Nommer, en histoire*** (45 items) et ***Nommer, en geographie*** (30 items) : **exactes sur 71
+  des 75 items**, et inexactes sur quatre. Voir `CONS-5` ci-dessous.
+
+### 4. `CONS-5` - **reserve neuve, datee du 2026-09-11 (s35), non bloquante** : quatre items sur 110 ne font pas ce que leur consigne annonce
+
+*"Nomme ce que l'enonce decrit"* suppose deux choses : que l'enonce **decrive**, et que la reponse
+soit **un nom**. Sur quatre items, l'une des deux manque - verifie en jouant :
+
+| Paquet | Enonce | Bonne reponse | Ce que l'enfant fait reellement |
+|---|---|---|---|
+| geographie | *"Dans un espace urbain, la densite de population [...] est-elle en general plus elevee ou plus faible que dans un espace rural ?"* | *plus elevee* | **il compare deux espaces**, il ne nomme rien |
+| histoire | *"Que se passe-t-il finalement en 476 ?"* | *l'Empire romain d'Occident disparait* | il produit **un evenement**, pas un nom |
+| histoire | *"Que devient son expansion en Europe ?"* | *elle s'arrete* | il produit **une issue** |
+| histoire | *"Que devient ce territoire ?"* | *il se divise en plusieurs royaumes* | il produit **une issue** |
+
+- **Objet** : *la consigne d'une entree de catalogue nomme la tache que l'enfant a devant lui, sur
+  chacun de ses items.* Sur ces quatre, elle nomme une autre tache.
+- **Ce que la scission a fait de bien, et que cette reserve ne conteste pas** : le defaut passe de
+  **110 items sur 110 mal servis par une consigne fourre-tout** a **4 items sur 110**. C'est un ordre
+  de grandeur, pas une demi-mesure.
+- **Deux sorties, et je ne choisis pas** : elargir la consigne des deux paquets *Nommer* d'un mot
+  (*"Nomme ou dis ce que l'enonce decrit"*), ou deplacer ces quatre items. **Je note que la seconde
+  couterait un paquet de plus pour quatre items, ce qui me parait disproportionne**, mais le grain du
+  catalogue est une decision de `camille-po` et de `theo-archi` (`ADR-0081`), pas la mienne.
+- **Mode de defaillance** : **revenir a une consigne qui enumere les taches**, ce qui rouvrirait
+  `CONS-4` a l'endroit ou elle vient d'etre payee. **Le gain de la section 2 ne se rend pas.**
+- **Ce que cette reserve ne fait pas** : elle ne touche **aucun de ces quatre items**, qui sont
+  inchanges depuis leur ecriture et que je n'avais pas releves lors de mes cinq verdicts precedents.
+  **Le defaut est du cote de la consigne, pas des items.**
+- **Perimetre, mesure sur l'etat d'arrivee** : **une consigne**, ou deux si les deux paquets *Nommer*
+  sont traites ensemble.
+- **Regime et prix** : **mot pour mot, 0,25.**
+
+### 5. Ce que la scission ne casse pas, verifie et non suppose
+
+- **Les quatre jeux se jouent de bout en bout**, quatre parties completes, aucun ecran casse, aucun
+  item absent, aucune repetition dans une partie.
+- **`ADR-0023`** : chaque paquet offre plus d'items que de manches - 25/10, 45/10, 30/10, **10/7**.
+  Le dernier est celui que `DEC-0088` a du deroger, et il tient avec deux de marge.
+- **`HG-CM1-07` est servie par deux paquets** (*Situer dans le temps* et *Nommer, en histoire*), ce
+  que `theo-archi` avait nomme d'avance. **Rien a y opposer** : une ligne de referentiel peut etre
+  travaillee par deux taches, et c'est meme souhaitable.
+- **Les indices** : lus a l'ecran sur les quatre paquets, tous exacts, tous a leur item. Ceux de
+  *Lire un document* renvoient explicitement au texte (*"Relis la premiere phrase du texte, elle
+  donne la date"*, *"Ce roi se presente lui-meme au tout debut du texte"*) : **c'est ce qu'un indice
+  de lecture documentaire doit faire**, et je le porte au credit du paquet.
+- **Toutes les reserves `HG-R*` ouvertes restent ouvertes**, sur les items qui les portaient, et
+  elles voyagent avec eux dans leur nouveau paquet. **La scission n'en solde aucune et n'en cree
+  aucune autre que `CONS-5`.**
+- **`CONS-1`** (le titre servi) : **non levee, inchangee**, et je ne la rouvre pas ici - les quatre
+  titres neufs (*Situer dans le temps*, *Nommer, en histoire*, *Nommer, en geographie*, *Lire un
+  document*) ne portent pas leur niveau, ce qui est le point de `CONS-1` ; je le note sans en faire
+  une demande dans ce lot.
+
+### 6. Ce dont je reste la seule garde apres la scission
+
+| Propriete | Garde executable ? |
+|---|---|
+| **Qu'une consigne corresponde aux items de son paquet** (`CONS-4`, `CONS-5`) | **aucun**, et la scission n'en cree pas. **C'est moi, en jouant, texte devant items, et il faudra le refaire a chaque paquet neuf** |
+| **La fidelite d'une scission future** | **aucun test ne compare un paquet a son ancetre.** Je l'ai fait a la main sur les 110 items ce jour ; **une scission prochaine repasserait sans qu'aucun rouge ne dise si un item a ete perdu en route.** Je remonte le symptome, la forme est a `theo-archi` |
+| **`EXA-1` et l'exactitude factuelle**, **`HIS-5`**, **`FER-1`**, **`HG-R19`**, **`HG-R21`** | inchangees depuis s33, et elles voyagent avec leurs items |
+
+### 7. Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **`CONS-4` levee** | `camille-po` | **Quatrieme sprint, payee.** Le gain est chiffre en section 2 |
+| **`CONS-5`** | `camille-po` | Non bloquante. Quatre items nommes, deux sorties, et le fait que la seconde me parait disproportionnee |
+| **Le fait qu'aucun test ne compare un paquet a son ancetre** | `theo-archi` | Symptome seul. **La scission d'aujourd'hui est fidele, je l'ai verifiee ; la prochaine n'aura personne pour le dire si je ne suis pas la** |
+| **Le mouvement de matrice** | `camille-po` | **Aucun** |

@@ -8,6 +8,15 @@
   `nadia-prof`, apres avoir joue). **`LVE-CM1-04` ferme** : `non couvert` -> **`couvert-valide`**.
   **`LVE-CM1-07` s'ouvre et ne ferme pas** : `non couvert` -> **`en cours`**. Une reserve nommee,
   `ANG-R1`, non bloquante.
+- **Etat au 2026-09-11 (s35, `S35-ANG-R3`)** : **l'increment est VALIDE.** **`ANG-R3` est LEVEE sur
+  ses deux clauses** - l'item du monument de New York oppose desormais trois monuments reels de New
+  York, et le mot *imperiale* est glose dans la proposition elle-meme, donc lu aussi par l'enfant qui
+  trouve du premier coup. **`ANG-R7` est LEVEE** : l'enonce du transport londonien porte deux
+  criteres de fait, et la description de l'objet n'est pas revenue dans l'enonce. Une reserve neuve,
+  non bloquante : **`ANG-R8`** (les gloses *(sous terre)* et *(une voiture)* ecartent les deux
+  distracteurs a la lecture - suite directe de ma propre demande sur *imperiale*). `LVE-CM1-07`
+  reste `couvert-valide`, aucun statut de matrice ne bouge. Quatrieme bloc de validation en fin de
+  fiche.
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`, sections 5.3 et 6 ;
   `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` (`REC-1` a `REC-6`, `ANG-S1`,
@@ -801,3 +810,143 @@ symboles touristiques de la ville au meme titre que le bus rouge, et l'enonce di
 - **Qu'un mot en bonne reponse soit accessible au niveau vise** (*imperiale*) - **non mordable**, et
   non paye au bout de deux sprints.
 - **La couleur, le contraste, la taille, la position a l'ecran** - hors de ma portee (audit degrade).
+
+---
+
+## Bloc de validation pedagogique - nadia-prof UNIQUEMENT - quatrieme passage, s35 (`S35-ANG-R3`)
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute aux blocs precedents
+> sans en effacer une ligne.**
+
+- **Verdict** : **VALIDE**
+- **Date** : 2026-09-11 (s35)
+- **Auteur** : `nadia-prof`
+- **Arbre** : `s35-integration` a `c1b326d4`, worktree `s35-nadia`
+- **Ce que ce verdict autorise** : **`ANG-R3` est levee sur ses deux clauses** - son troisieme item
+  et le mot *imperiale* - et **`ANG-R7` est levee**. `LVE-CM1-07` reste `couvert-valide`, aucun
+  statut de matrice ne bouge : c'est une correction, pas une fermeture.
+- **Audit joue** : **oui.** Jar reconstruit depuis mon propre worktree, lance sur le JDK `21.0.10`
+  de la toolchain. **Deux parties completes de dix manches, en pressant chaque proposition de chaque
+  item jusqu'a la bonne**, pour lire les vingt propositions et les dix indices de la ligne.
+  **Les deux items du perimetre ont ete vus a l'ecran, propositions comprises.**
+
+### 1. `ANG-R3`, premiere clause - l'item du monument de New York : **levee**
+
+**Ma reserve nommait deux sorties acceptables et un mode de defaillance a eviter.** L'etat servi :
+
+> *"Quel monument se trouve sur une ile a l'entree du port de New York ?"* -> **la statue de la
+> Liberte**, contre ***l'Empire State Building*** et ***le pont de Brooklyn***.
+
+**C'est la seconde sortie que j'avais ecrite, appliquee telle quelle** : *"soit l'enonce reste
+depouille et les deux distracteurs sont remplaces par deux monuments de New York plausibles."*
+
+- **Le mode de defaillance que j'avais nomme d'avance est evite** : *"la tour Eiffel"* et *"le
+  Colisee"* ont disparu. Aucune proposition n'est hors sujet.
+- **L'enonce n'ecarte plus rien tout seul.** Les trois sont des monuments reels de New York ; un
+  enfant de CM1 ne sait pas d'avance lequel se trouve sur une ile a l'entree du port. **Il doit le
+  savoir, et c'est le point entier de ma reserve.**
+- **Les trois faits sont exacts** : la statue de la Liberte est sur Liberty Island, dans la baie, a
+  l'entree du port ; l'Empire State Building est un gratte-ciel de Manhattan ; le pont de Brooklyn
+  franchit l'East River. **Aucun des deux distracteurs n'est ni sur une ile ni a l'entree du port** -
+  ce sont donc de vrais candidats et de vraies fausses reponses, ce qui est exactement ce qu'un
+  distracteur doit etre.
+- **L'indice** devient *"Il est devenu un symbole d'accueil pour de nombreux immigrants."* **Exact,
+  distinctif, et il enseigne quelque chose que la question ne donnait pas.** Un indice doit faire
+  cela.
+
+**Quatrieme passage sur cet item, et c'est le bon.**
+
+### 2. `ANG-R3`, seconde clause - le mot *imperiale* : **levee**
+
+Ma reserve disait : *"le mot **imperiale** est explique la ou l'enfant le rencontre, ou remplace"*,
+et je constatais qu'il ne l'etait *"que dans l'indice, c'est-a-dire seulement pour l'enfant qui s'est
+trompe"*.
+
+**L'etat servi** : la bonne reponse est ***"le bus a imperiale (deux etages)"***. **Le mot est glose
+dans la proposition elle-meme, donc sous les yeux de l'enfant qui trouve du premier coup comme de
+celui qui se trompe.** Et la glose est juste : l'imperiale d'un bus est son etage superieur.
+**C'est la lettre et l'objet de ma clause, payes au meme endroit.**
+
+### 3. `ANG-R7` - **levee** : l'enonce porte desormais un critere, pas une preference
+
+Ma reserve constatait que les trois propositions etaient toutes vraies (*"le metro de Londres et le
+taxi noir sont des symboles touristiques de Londres au meme titre que le bus rouge"*) et que
+l'enfant devait deviner *"celle que le jeu attend"*.
+
+**L'etat servi** : *"Quel moyen de transport circule dans les rues de Londres en transportant
+plusieurs dizaines de passagers a la fois ?"*
+
+**Deux criteres, et chacun ecarte une proposition par un fait** : *circule dans les rues* ecarte le
+metro, *plusieurs dizaines de passagers a la fois* ecarte le taxi. **L'enfant choisit sur un fait,
+et non sur ce qu'il suppose que le jeu prefere.** C'est exactement l'objet de `ANG-R7`.
+
+**Et le mode de defaillance que j'avais nomme d'avance est evite** : la description de l'objet -
+*rouge, deux etages* - **n'est pas revenue dans l'enonce**. Elle vit dans l'indice (*"Il est celebre
+par sa couleur rouge et ses deux niveaux"*), ou elle enseigne sans donner la reponse. **`ANG-R3`
+n'est pas rouverte a l'endroit ou elle vient d'etre payee.**
+
+### 4. `ANG-R8` - **reserve neuve, datee du 2026-09-11 (s35), non bloquante** : les gloses entre parentheses ecartent les deux distracteurs a la lecture
+
+**Constat, lu a l'ecran** : les trois propositions de l'item du transport londonien sont *"le bus a
+imperiale **(deux etages)**"*, *"le metro **(sous terre)**"*, *"le taxi noir **(une voiture)**"*. Un
+enfant qui lit *circule dans les rues* dans l'enonce et *(sous terre)* sur un bouton ecarte le metro
+**sans rien savoir de Londres** ; *(une voiture)* ecarte le taxi de la meme facon.
+
+**Et je dis d'ou vient ce defaut, parce qu'il vient de moi.** J'ai demande que *imperiale* soit
+explique dans la proposition. Une fois la bonne reponse glosee, gloser les deux autres devient
+necessaire, sinon **la glose elle-meme marque la bonne reponse** - le risque que `theo-archi` avait
+nomme d'avance (avis de faisabilite de s35, section 5.2). **Le lot a pris la seule sortie qui ne
+cassait pas ma propre demande, et elle a ce cout.** Je ne le reproche a personne.
+
+- **Objet** : *sur cet item, la glose d'une proposition explique un mot difficile sans donner le
+  critere qui l'ecarte.* Aujourd'hui *(sous terre)* et *(une voiture)* ne glosent aucun mot
+  difficile : elles donnent la raison de l'ecarter.
+- **Mode de defaillance a eviter** : **retirer la glose de *imperiale***, ce qui rouvrirait la
+  seconde clause de `ANG-R3` a l'endroit ou elle vient d'etre payee. **Le geste est du cote des deux
+  distracteurs** : *"le metro"* et *"le taxi noir"* sont deja comprehensibles d'un enfant de CM1
+  sans glose, contrairement a *imperiale*. **Ce qui est vrai de la bonne reponse n'a pas besoin
+  d'etre vrai des trois.**
+- **Ce que ceci n'est pas** : ce n'est pas `ANG-R3` qui reviendrait. `ANG-R3` portait sur *"la seule
+  lecture de l'enonce"* ; ici l'enonce est bon et ce sont les boutons qui parlent trop. **Reserve
+  neuve, datee, et non un durcissement.**
+- **Perimetre, mesure sur l'etat d'arrivee** : **deux parentheses**, sur un item. `FER-1`, `FER-2` et
+  les dix items de la ligne inchanges.
+- **Regime et prix** : **mot pour mot, 0,25.**
+
+**Pourquoi cela ne fait pas passer ce verdict a *VALIDE SOUS RESERVE*, et je l'assume :** `ANG-R3` et
+`ANG-R7` etaient les deux objets de la story, ils sont payes tous les deux, sur les deux clauses, aux
+endroits exacts que j'avais nommes. Mon verdict porte sur **la correction demandee**, et elle est
+faite. `ANG-R8` est une suite que j'ai moi-meme provoquee, ouverte et datee - pas une dette de ce
+lot. **Je prefere le dire ainsi que teinter d'une reserve un travail qui a atteint la barre que
+j'avais ecrite.**
+
+### 5. Ce que j'ai regarde et sur quoi je ne demande rien - y compris la ou j'aurais pu
+
+- **Les dix items de `LVE-CM1-07`, exactitude** : justes. Verifie un par un a l'ecran, propositions
+  comprises. Les gloses elles-memes sont exactes : l'imperiale est bien l'etage superieur, le metro
+  de Londres circule bien pour l'essentiel sous terre, le taxi noir est bien une voiture.
+- **`FER-2`** : dix items sur la ligne, recomptes (`LVE-CM1-07`). **`FER-1`** inchangee.
+- **L'item de Big Ben, et je dis pourquoi je ne le rouvre pas.** Son enonce est *"Quel monument
+  celebre, **situe a Londres**, sert aussi d'horloge ?"* contre *"le Colisee"* et *"la statue de la
+  Liberte"* : **c'est exactement la forme de defaut que je viens de faire corriger sur l'item de la
+  statue**, et il est maintenant le seul item de la ligne ou l'enonce ecarte les deux distracteurs
+  tout seul. **Je ne l'oppose pas, et ce n'est pas un oubli** : j'ai ecrit le 2026-09-09, en posant
+  `PLA-1`, que *"les cinq items de s28 sont hors de sa portee et je ne les lui soumets pas"*, et Big
+  Ben est l'un de ces cinq. **Une barre qu'on releve apres coup fait de ma porte un caprice.** Je le
+  note ici pour que le fait soit ecrit, sans en faire une demande : si `camille-po` veut l'ouvrir un
+  jour, elle a le constat sous la main.
+- **`ANG-R4`, `ANG-R5`, `ANG-R6`** : levees a s34, rejouees aujourd'hui, toujours tenues.
+- **Les quinze items de `LVE-CM1-04`** : hors perimetre, non retouches, non rouverts.
+- **`ANG-R1`, `ANG-R2`** : inchangees.
+- **La couleur, le contraste et la position a l'ecran** restent hors de ma portee sur ce paquet
+  (audit degrade sur ce point, comme aux passages precedents).
+
+### 6. Ce dont je reste la seule garde sur cette ligne, apres s35
+
+| Propriete | Garde executable ? |
+|---|---|
+| **Qu'un distracteur ne soit pas ecartable par la seule lecture** (`ANG-R3`) | **aucun**, et c'est la propriete que ce sprint vient de payer a la main pour la troisieme fois. **Rien n'empeche le prochain lot de la rouvrir sans un rouge** |
+| **Qu'aucun distracteur serieux ne soit une reponse vraie** (`ANG-R7`) | **aucun** |
+| **Qu'une glose explique un mot au lieu de donner un critere** (`ANG-R8`) | **aucun**, et elle est neuve aujourd'hui |
+| **Qu'un mot en bonne reponse soit accessible au niveau vise** (*imperiale*) | **aucun**, mais **la clause est desormais payee** : la glose vit dans la donnee servie, pas dans une promesse |
+| **`FER-3` sur cette ligne** - le partage des deux taches | **aucun automate, et personne d'autre que moi** : sans declaration de tache par item, je l'ai calcule a la main le 2026-09-06 et le calcul n'est pas reproductible par un test. **Inchange, et je le redis pour que personne ne croie ce point couvert** |

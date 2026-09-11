@@ -505,17 +505,41 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " deux (les noms des changements d'etat - \"fondre\", \"geler\", \"couler\")."
                     + " Aucune proposition n'est numerique. Mesure du 2026-09-10, comptage direct sur"
                     + " le paquet servi (\"bonneReponse\" et \"distracteurs\")"),
-            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1. Motif recompte a
-            // s33 (S33-HG-04) : le chiffre precedent (20 items, 60 propositions) datait de s27 et
-            // n'avait pas suivi les lots de s28 a s33 ; corrige avec sa methode plutot que reporte.
-            Map.entry("cm1-histoire-geographie",
-            "110 items sur 110 portent deux distracteurs (trois propositions, 330 au total), mais"
-                    + " aucune n'est numerique : ce sont des noms de periodes, de peuples, de rois,"
-                    + " d'evenements ou de lieux, et des dates toujours ecrites en toutes lettres ou"
-                    + " precedees d'un mot (\"le XVIIIe siecle\", \"en 1789\") - valeurDe rend null sur"
-                    + " les trois propositions de chaque item. Mesure du 2026-09-09, comptage direct"
-                    + " sur le paquet servi (\"bonneReponse\" et \"distracteurs\") : aucune des 330"
+            // S27-3 : entree neuve, premier paquet d'histoire-geographie, CM1, scinde en quatre
+            // entrees par S35-CONS-4 (DEC-0088, ADR-0081, avis de faisabilite de s35 de theo-archi,
+            // section 6.3) : la clef "cm1-histoire-geographie" disparait avec le fichier, remplacee
+            // par quatre motifs neufs, recomptes sur chacun des quatre paquets servis.
+            Map.entry("cm1-histoire-geographie-situer-dans-le-temps",
+            "25 items sur 25 portent deux distracteurs (trois propositions, 75 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de periodes, de siecles, de"
+                    + " millenaires ou de faits dates, toujours ecrits en toutes lettres ou precedes"
+                    + " d'un mot (\"le XVIIIe siecle\", \"le Moyen Age\") - valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-09-11, comptage direct sur"
+                    + " le paquet servi (\"bonneReponse\" et \"distracteurs\") : aucune des 75"
                     + " propositions ne commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-nommer-en-histoire",
+            "45 items sur 45 portent deux distracteurs (trois propositions, 135 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de peuples, de mouvements de"
+                    + " population, de rois, de realisations royales ou d'evenements de la"
+                    + " Revolution et de l'Empire, valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-09-11, comptage direct sur le paquet servi"
+                    + " (\"bonneReponse\" et \"distracteurs\") : aucune des 135 propositions ne"
+                    + " commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-nommer-en-geographie",
+            "30 items sur 30 portent deux distracteurs (trois propositions, 90 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de types d'espace ou de"
+                    + " ressources (eau, energie, aliments) et de leurs modes d'acheminement,"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-11, comptage direct sur le paquet servi (\"bonneReponse\" et"
+                    + " \"distracteurs\") : aucune des 90 propositions ne commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-lire-un-document",
+            "10 items sur 10 portent deux distracteurs (trois propositions, 30 au total), mais"
+                    + " aucune n'est numerique : ce sont des dates ecrites en toutes lettres ou"
+                    + " precedees d'un mot (\"en 1789\"), des natures de document ou des noms"
+                    + " d'auteur, valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-11, comptage direct sur le paquet servi (\"bonneReponse\""
+                    + " et \"distracteurs\") : aucune des 30 propositions ne commence par un"
+                    + " chiffre"),
             // S28-3 : premier paquet d'anglais, matiere neuve du produit, CM1.
             // Motif recompte le 2026-09-10 : le chiffre du 2026-09-04 n'avait pas suivi le lot de
             // s32 qui a porte ce paquet de vingt a vingt-cinq items.
@@ -725,15 +749,21 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " de chaque item. Mesure du 2026-09-10 sur le paquet servi : aucune des 66"
                     + " propositions ne commence par un chiffre"),
             // S33-PAL2-1 (s34) : premier paquet de designation servi, troisieme mecanique du
-            // produit. cp-plan-de-la-classe (QLM-CP-11) n'est pas servi : ses libelles de zone
-            // debordent de leur bouton a l'ecran de manche, constate au jar et route a sofia-sm.
+            // produit. S35-QLM11-PLANCLASSE (s35) : cp-plan-de-la-classe rejoint le meme motif,
+            // premiere livraison reelle de QLM-CP-11.
             Map.entry("cp-frise-de-la-journee",
             "11 items sur 11 sont des items de designation (ADR-0080) : ils ne presentent aucune"
                     + " proposition en texte, mais des zones posees sur deux frises - il n'y a ni"
                     + " distracteur ni rang de bonne reponse au sens de cette propriete. C'est la"
                     + " forme d'item, pas son contenu, qui place ce paquet hors du domaine : la"
                     + " garantie qu'un enfant ne gagne pas en ignorant l'enonce est portee ailleurs,"
-                    + " par le garde-fou 4 d'ADR-0080 (LaBonneZoneNEstPasPredictibleSurUnPaquetTest)"));
+                    + " par le garde-fou 4 d'ADR-0080 (LaBonneZoneNEstPasPredictibleSurUnPaquetTest)"),
+            Map.entry("cp-plan-de-la-classe",
+            "6 items sur 6 sont des items de designation (ADR-0080) : memes motifs que"
+                    + " cp-frise-de-la-journee, sur le plan de la classe (QLM-CP-11) plutot que sur"
+                    + " une frise - il n'y a ni distracteur ni rang de bonne reponse au sens de cette"
+                    + " propriete, et la garantie qu'un enfant ne gagne pas en ignorant l'enonce est"
+                    + " portee par le garde-fou 4 d'ADR-0080"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
