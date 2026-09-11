@@ -1,9 +1,13 @@
 # ADR-0092 - Le libelle d'une zone designable n'est pas gardable par une arithmetique : la police servie est celle de l'appareil, et voici les deux mecanismes qui gardent ce qui reste gardable
 
-- **Statut** : **`Propose`**. Sa decision 2 est un **refus d'ecrire une regle**, motive par une
-  mesure ; ses deux mecanismes de remplacement sont ecrits ci-dessous et **dus avec le lot de
-  `S35-QLM11-PLANCLASSE`**. Il ne passera `Accepte` que quand ces deux mecanismes seront dans
-  l'arbre.
+- **Statut** : **`Accepte`** le 2026-09-11 (s35, confirmation de la porte technique), apres avoir
+  ete `Propose` le meme jour, **et amende deux fois dans le geste qui l'accepte** : sa decision 3
+  annoncait un levier *"gratuit"* qui ne l'est pas, et son mecanisme 2 prescrivait un nom de
+  constante qui affirme un audit qui n'a pas eu lieu. Les deux corrections sont en fin de fichier,
+  avec leur mesure. Etat a la redaction : *"Sa decision 2 est un refus d'ecrire une regle, motive
+  par une mesure ; ses deux mecanismes de remplacement sont ecrits ci-dessous et dus avec le lot de
+  `S35-QLM11-PLANCLASSE`. Il ne passera `Accepte` que quand ces deux mecanismes seront dans
+  l'arbre."*
 - **Sprint** : s35. **Date** : 2026-09-11. **Auteur** : `theo-archi`.
 - **Route par** : la cloture de s34, obstacle encore ouvert - *"Le recouvrement des boutons de zone
   sur le dessin qu'ils designent, transverse a tout paquet de designation"*, route a `ines-design`
@@ -217,8 +221,10 @@ deja sanctionne.
  * d'AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest, reutilises et non
  * recrits - un second recensement des paquets de designation divergerait un jour du premier.
  */
-private static final int PAQUETS_DE_DESIGNATION_AUDITES_A_L_OEIL = 2; // valeur posee par le
-        // diff qui sert le second paquet ; 1 si QLM-CP-11 n'est pas livree
+// Nom corrige par l'amendement du 2026-09-11, section 3 : ce compteur compte des paquets
+// SERVIS, jamais des paquets audites, et ce nom-ci affirmait un audit qui n'a pas eu lieu.
+private static final int PAQUETS_DE_DESIGNATION_PORTANT_LA_DETTE_DE_LISIBILITE = 2; // valeur
+        // posee par le diff qui sert le second paquet ; 1 si QLM-CP-11 n'est pas livree
 
 @Test
 void aucunPaquetDeDesignationDePlusNEntreEnProductionSansQueCetteDetteSoitPayee() {
@@ -229,13 +235,14 @@ void aucunPaquetDeDesignationDePlusNEntreEnProductionSansQueCetteDetteSoitPayee(
     long compte = AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
             .paquetsDeDesignation(corps);
     assertThat(compte)
-            .as("ADR-0092 : %d paquets de designation sont servis et %d ont ete audites a l'oeil"
-                    + " sur ZON-15. Un paquet de plus entre en production avec une propriete de"
-                    + " lisibilite que rien ne garde : soit son libelle est juge a l'ecran par"
-                    + " nadia-prof et ce chiffre monte dans le meme diff, soit la propriete cesse"
-                    + " de dependre de la police (ADR-0092, decisions 2 et 3)",
-                    compte, PAQUETS_DE_DESIGNATION_AUDITES_A_L_OEIL)
-            .isEqualTo(PAQUETS_DE_DESIGNATION_AUDITES_A_L_OEIL);
+            .as("ADR-0092 : %d paquets de designation sont servis, et ce cliquet en portait %d."
+                    + " Un paquet de plus entre en production avec une propriete de lisibilite"
+                    + " que rien ne garde : soit son libelle est juge a l'ecran par nadia-prof et"
+                    + " ce chiffre monte dans le meme diff, soit la propriete cesse de dependre de"
+                    + " la police (ADR-0092, decisions 2 et 3). Ce cliquet compte des paquets"
+                    + " servis, pas des paquets audites - il route l'audit, il ne le verifie pas",
+                    compte, PAQUETS_DE_DESIGNATION_PORTANT_LA_DETTE_DE_LISIBILITE)
+            .isEqualTo(PAQUETS_DE_DESIGNATION_PORTANT_LA_DETTE_DE_LISIBILITE);
 }
 ```
 
@@ -332,3 +339,118 @@ et son gain, plutot que d'etre redecouverte au sprint suivant.
 **Ecartee** : c'est ce que s34 a fait, apres que l'amendement d'`ADR-0080` l'avait deja nomme. Un
 sujet route deux fois sans mecanisme est un sujet documente quatre fois et jamais paye - le motif
 exact pour lequel `CLAUDE.md` porte une section de dettes.
+
+---
+
+## Amendement du 2026-09-11 (s35, `theo-archi`) - `Accepte`, et deux de mes propres phrases corrigees par la mesure d'autrui
+
+**Arbre mesure** : `s35-integration` a `60e1c836`+8, worktree dedie `s35-theo-confirm`. **JDK
+21.0.10**, version rapportee par le JDK que l'enveloppe a resolu (`ADR-0071`). Les mesures ci-dessous
+sont des executions de Maven.
+
+### 1. Le mecanisme 1 mord, et la mesure dit exactement ce qu'il ajoute
+
+Methode : dans le worktree dedie, le cadre de la zone `armoire` de
+`adapters/adapter-content/src/main/resources/contenu/cp-plan-de-la-classe.yaml` - **materiau de
+production, pas une fixture** - ramene de `hauteur: 30` a `hauteur: 5` sur ses six occurrences, puis
+`bash outils/mvn-jdk21.sh -B test` sur la **racine** du reacteur.
+
+| Module | Tests | Echecs |
+|---|---|---|
+| `recreo-domain` | 111 | 0 |
+| `recreo-application` | 13 | 0 |
+| `recreo-adapter-web` | 397 | 0 |
+| `recreo-adapter-content` | 705 | 0 |
+| `recreo-bootstrap` | 247 | **1** |
+
+**Un seul test du depot voit ce defaut**, et c'est
+`LEcranDeMancheDuJeuDeDesignationReelEstServiTest.surChaqueJeuDeDesignationDuCatalogueReelLEcranDeMancheEstConforme`
+: *"la zone `armoire` rend au plus 1.1rem (plafond de hauteur 22.0rem, plus petit cote 5.0%), sous
+le plancher de cible tactile de 2.75rem (ADR-0080, garde-fou 3)"*. Les **1472** autres restent verts,
+dont `AucuneZoneDesignableNeDescendSousLaCibleTactileTest` d'`adapter-web`, qui tient le meme critere
+sur un jeu fabrique et ne pouvait pas voir celui-la.
+
+**C'est la mesure que la section *"Le motif est mesure, pas theorique"* promettait**, obtenue par
+l'autre bout : elle affirmait que sept garde-fous de `bootstrap/rendu` ecartent la designation et
+qu'aucun test ne sert son ecran de manche. Un defaut de geometrie reel, introduit dans un paquet de
+production, le confirme sans qu'on ait a recenser les exclusions une a une. Le mecanisme 1 n'est pas
+un doublon des garde-fous 1 et 3 : c'est le seul chemin par lequel leurs criteres rencontrent le
+catalogue servi.
+
+Le materiau a ete remis en etat ; `git status` est propre avant les ecritures de cet amendement.
+
+### 2. Correction 1 - la decision 3 annoncait un levier *"gratuit"*, et il ne l'est pas
+
+`ines-design` me l'a remonte dans
+`squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/proposition-ines-s35-frise-et-plan-de-classe.md`,
+section 2.2, en le trouvant par le reacteur et non par une lecture. **Verifie par moi plutot que
+repris de son rapport** - meme discipline que celle appliquee au commit de `lea-dev` ci-contre :
+le pave horizontal de `.zone` ramene a `0,25rem` dans `recreo.css` (materiau de production), puis
+`bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test -Dtest='LActionNeDeclarePasMoinsQueLaSortieTest'`
+rend **`Tests run: 13, Failures: 1`**, avec six griefs sur
+`templates/fragments/designation.html`, dont : *"la sortie `.btn.lien-accueil` "Les jeux" declare
+rembourrage gauche et droite a 1,10rem quand l'action `.btn.zone` "" se contente de 0,25rem"*.
+
+**Ce que ma decision 3 disait, et qui est faux** : *"le pave est donc un levier, et il ne coute rien
+sur une propriete deja gardee"*, *"sans toucher un cadre ni un libelle"*, *"passer le pave horizontal
+de `1,25rem` a `0` sur `armoire` fait passer la boite de contenu de 12 px a 52 px"*. **Ce qui est
+juste et ce qui ne l'est pas se separent nettement** : l'arithmetique sur le garde-fou 3 est exacte
+et reste vraie, mais *"il ne casse rien"* etait une conclusion tiree du **seul** garde-fou que
+j'avais regarde. `ADR-0017` borne ce pave par en dessous a **1,1rem** - la plus large des sorties
+servies sur un ecran de jeu (`.lien-accueil { padding: 0.5rem 1.1rem }`, `.chip-niveau { 0.5rem
+0.9rem }`, valeurs lues dans `recreo.css`). Le gain reel du levier est donc
+`(1,25 - 1,1) x 2 x 16 = 4,8 px`, pas 40 px.
+
+**Ce que cela change a la decision 3** : le troisieme levier existe toujours, il reste mesure, mais
+il est **presque nul** et il touche une regle d'habillage partagee par tout ecran de jeu. Il n'est
+plus le levier qu'un futur arbitrage devrait preferer ; le cadre l'est. *La forme de ma faute est
+nommee parce qu'elle se reproduira autrement* : **une propriete verifiee contre un garde-fou n'est
+pas une propriete verifiee contre le depot**, et un architecte qui annonce a un lot qu'un changement
+*"ne casse rien"* doit avoir lance le reacteur, pas lu une regle.
+
+### 3. Correction 2 - le mecanisme 2 prescrivait un nom qui affirme un audit
+
+`ADR-0092` ecrivait `private static final int PAQUETS_DE_DESIGNATION_AUDITES_A_L_OEIL = 2;` et
+`lea-dev` l'a implemente tel quel, Javadoc comprise (*"`cp-plan-de-la-classe`, audite a l'oeil par
+`nadia-prof` sur `ZON-15`"*). **Le fait, verifie dans l'arbre** : `squad/conformite/` porte
+`FICHE-designation-frise-de-la-journee.md` et **aucune fiche pour `cp-plan-de-la-classe`** ; aucun
+verdict de `nadia-prof` de s35 n'existe dans le depot. Au moment ou ce chiffre passe a 2, **2
+paquets sont servis et 1 seul a ete audite**.
+
+**La cause est dans cet `ADR`, pas dans son implementation** : le recensement que le cliquet
+reutilise ne sait lire que les paquets **servis**. Aucun nom ne peut donc promettre l'audit sans
+mentir, et j'ai prescrit celui qui le promet - `ADR-0015`, un nom qui promet plus que son perimetre,
+applique a ma propre prescription.
+
+**Corrige dans le meme geste** : la constante s'appelle
+`PAQUETS_DE_DESIGNATION_PORTANT_LA_DETTE_DE_LISIBILITE`, sa Javadoc et son message d'echec disent
+qu'elle compte des paquets servis. **La valeur `2` ne change pas** - elle est juste, et l'egalite
+avec le compte reel est la propriete du cliquet.
+
+**Ce que le mecanisme 2 fait reellement, ecrit maintenant plutot que deduit plus tard** : il oblige
+le diff qui sert un paquet de designation de plus a toucher ce chiffre, ce qui **route** la question
+de l'audit. Il ne verifie pas qu'un audit a eu lieu, et **il ne bloque pas un paquet dont l'audit est
+en attente** - `cp-plan-de-la-classe` est dans ce cas aujourd'hui. Cette limite est du meme ordre que
+la mauvaise consequence deja ecrite (*"`ZON-15` reste tenue par un oeil"*) ; elle est plus precise, et
+elle interdit de lire ce cliquet comme une preuve d'audit.
+
+### 4. L'obstacle transverse, et ou il en est
+
+`ines-design` a ecarte mon alternative (d) - le bouton elastique - pour trois motifs (section 3.1 de
+sa proposition), dont un que je n'avais pas vu et qui est de la nature de l'obstacle lui-meme : **un
+bouton qui grandit pour loger son texte recouvre une part du dessin plus grande que son cadre**, donc
+aggrave le fait que l'alternative pretendait attenuer. Je ne conteste pas ce refus ; il ne m'appartient
+pas et son motif est ecrit.
+
+**Ce que le lot ferme** : la lisibilite du libelle sur les deux cadres de `cp-plan-de-la-classe`,
+par la geometrie seule - `armoire` 30 x 30 % et `porte` 32 x 17 %, verifies dans le `yaml` servi,
+boite de contenu de 61,6 px et 68,64 px contre 12 px et 19 px. Verification de ma part sur ce que la
+CI garde : les six cadres passent le garde-fou 3, et le mecanisme 1 le rejoue desormais sur l'ecran
+reellement servi (section 1).
+
+**Ce que le lot ne ferme pas, et qui reste donc ouvert** : le recouvrement du dessin par le bouton
+lui-meme. Un cadre plus grand couvre **plus** de dessin, pas moins ; le fond translucide a 55 % reste
+pose sur le trait qu'il designe, et `ines-design` le dit elle-meme en section 3.3. **L'obstacle
+transverse n'est donc pas referme - il est borne**, par ce que la decision 1 et le mecanisme 2 de cet
+`ADR` mettent en place, et il reste entier pour un futur paquet de designation. La difference avec
+s34 est la seule qui compte : il n'est plus route sans mecanisme.
