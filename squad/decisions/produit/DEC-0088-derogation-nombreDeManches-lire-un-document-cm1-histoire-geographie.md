@@ -78,7 +78,7 @@ marge appliquee ici.
 
 ### Pourquoi je ne prends pas les deux autres sorties
 
-1. **Un onzieme item neuf.** Contrediction directe et documentee : le critere d'acceptation de
+1. **Un onzieme item neuf.** Contradiction directe et documentee : le critere d'acceptation de
    `S35-CONS-4` dit *"elle ne cree aucun item neuf"*, et l'objectif unique de s35, arbitre par
    l'utilisatrice, est de fermer des refus et des reserves deja prononces, jamais d'ouvrir du
    contenu neuf. Ecrire un item pour satisfaire un garde-fou technique serait fabriquer du contenu
@@ -122,7 +122,7 @@ rendraient sinon la story rouge garanti a l'execution), et un troisieme cite cet
 - les items de cette seule entree **perdent** leur cle `ligneDeReferentiel`, puisqu'elle ne sert
   qu'une seule ligne de referentiel (`HG-CM1-14`) - le garde-fou qui verifie cette regle la refuse
   explicitement dans le cas contraire ;
-- les quatre paquets issus de la scission conservent le meme descripteur `matiere` /`niveau`
+- les quatre paquets issus de la scission conservent le meme descripteur `matiere` / `niveau`
   (`Histoire-geographie`, `CM1`) pour que `HIS-1` (au plus un tiers de restitution) continue de se
   compter sur le lot de matiere entier - 110 items, inchange - et non par paquet.
 

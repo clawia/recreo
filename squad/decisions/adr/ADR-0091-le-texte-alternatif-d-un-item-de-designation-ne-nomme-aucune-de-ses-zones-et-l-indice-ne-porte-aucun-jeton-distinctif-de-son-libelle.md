@@ -306,7 +306,7 @@ regle de `CLAUDE.md` : les tests sont ecrits dans le meme commit que le code.
 - **Deux garde-fous de plus a maintenir**, et deux jeux fautifs. Le compte des garde-fous de contenu
   de type designation passe de 3 a 5.
 - **La clause 1 depend d'un choix d'auteur** (l'identifiant de zone) : elle est contournable par un
-  identifiant opaque. Nomme, non gardé, rendu a la relecture.
+  identifiant opaque. Nomme, non garde, rendu a la relecture.
 
 ---
 
