@@ -219,7 +219,7 @@ items:
   - enonce: "Hugo se moque de Tom à chaque récréation. Que doit faire Tom ?"
     bonneReponse: "en parler à un surveillant de la cour"
     distracteurs: ["attendre que cela s'arrête tout seul", "croire qu'un adulte a déjà vu cela"]
-    indice: "Si Tom attend ou croit qu'un adulte a déjà vu, Hugo continuera de se moquer de lui à la récréation."
+    indice: "Si Tom attend ou croit qu'un adulte a déjà vu cela, Hugo continuera de se moquer de lui à la récréation."
   - enonce: "Malo se moque des dessins de Léa chaque jour, en classe. Que doit faire Léa ?"
     bonneReponse: "en parler à sa maîtresse"
     distracteurs: ["penser que la situation est déjà connue d'un adulte", "en parler à un camarade"]
@@ -227,11 +227,11 @@ items:
   - enonce: "Aya se moque de Hugo chaque midi, au moment du repas. Que doit faire Hugo ?"
     bonneReponse: "en parler à l'adulte qui surveille la cantine"
     distracteurs: ["garder cela pour lui sans rien dire", "croire qu'un adulte a déjà vu cela"]
-    indice: "Si Hugo garde cela pour lui ou croit qu'un adulte a déjà vu, Aya continuera de se moquer de lui à la cantine."
+    indice: "Si Hugo garde cela pour lui ou croit qu'un adulte a déjà vu cela, Aya continuera de se moquer de lui à la cantine."
   - enonce: "Tom écarte Malo du jeu à chaque récréation. Que doit faire Malo ?"
     bonneReponse: "en parler à un surveillant de la cour"
     distracteurs: ["faire comme si de rien n'était", "croire qu'un adulte a déjà vu cela"]
-    indice: "Si Malo fait comme si de rien n'était ou croit qu'un adulte a déjà vu, Tom continuera de l'écarter du jeu."
+    indice: "Si Malo fait comme si de rien n'était ou croit qu'un adulte a déjà vu cela, Tom continuera de l'écarter du jeu."
   - enonce: "Hugo se moque de la lecture d'Aya chaque jour, en classe. Que doit faire Aya ?"
     bonneReponse: "en parler à sa maîtresse"
     distracteurs: ["attendre que cela s'arrête tout seul", "penser que la situation est déjà connue d'un adulte"]
