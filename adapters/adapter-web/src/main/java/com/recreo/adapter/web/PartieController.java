@@ -8,6 +8,9 @@ import com.recreo.domain.mechanic.SessionStatus;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotMove;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotSession;
 import com.recreo.domain.mechanics.banditmanchot.Verdict;
+import com.recreo.domain.mechanics.designation.DesignationMove;
+import com.recreo.domain.mechanics.designation.DesignationSession;
+import com.recreo.domain.mechanics.designation.DesignationVerdict;
 import com.recreo.domain.mechanics.saisie.ContinuerMove;
 import com.recreo.domain.mechanics.saisie.SaisieMove;
 import com.recreo.domain.mechanics.saisie.SaisieSession;
@@ -291,6 +294,24 @@ public class PartieController {
     }
 
     /**
+     * ADR-0080, decision 4 : le coup de la mecanique de designation - une route et un parametre
+     * distincts de ceux des deux autres mecaniques, parce que ce n'est pas le meme geste. Le client
+     * n'envoie jamais une coordonnee : {@code zoneDesignee} est l'identifiant que le serveur a
+     * lui-meme ecrit sur le bouton presse. Une route neuve entre d'elle-meme dans le perimetre du
+     * garde-fou de tabulation, qui derive ses routes du registre de Spring.
+     */
+    @PostMapping("/parties/{jeuId}/designations")
+    public String designer(@PathVariable String jeuId, @RequestParam String zoneDesignee,
+                            HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).jouer(jeuId,
+                actuelle -> partie.jouer(jeuId, actuelle, new DesignationMove(zoneDesignee)));
+        synchroniserMarqueurDePartie(etat.session(), requete, reponse);
+
+        return mancheModele(modele, jeuId, etat.consigne(), etat.consigneAdulte(), etat.session(),
+                PAR_UN_GESTE);
+    }
+
+    /**
      * Le geste qui suit la revelation sur un ecran de saisie. Il resout la manche sans la compter
      * comme une reussite, exactement comme l'appui sur la reponse nommee chez l'autre mecanique -
      * la difference est qu'il n'y a plus rien a ecrire a ce moment-la, donc plus de champ a l'ecran.
@@ -362,6 +383,9 @@ public class PartieController {
         }
         if (session instanceof SaisieSession saisieSession) {
             return mancheDeSaisie(modele, jeuId, consigne, consigneAdulte, saisieSession);
+        }
+        if (session instanceof DesignationSession designationSession) {
+            return mancheDeDesignation(modele, jeuId, consigne, consigneAdulte, designationSession);
         }
         throw new PartieIndisponible(
                 "aucun ecran de jeu pour ce type de session : " + session.getClass().getSimpleName());
@@ -545,6 +569,67 @@ public class PartieController {
     }
 
     /**
+     * ADR-0080, ADR-0058 R-A : <b>le point de descente nomme</b> de la mecanique de designation,
+     * troisieme branche de {@code mancheModele}. Meme boucle que {@code mancheDeBanditManchot} -
+     * trois essais, indice des le premier echec, revelation au troisieme -, sans melange d'ordre :
+     * les zones sont rendues dans l'ordre exact ou le contenu les declare (ADR-0080, decision 3 et
+     * 4), qui est aussi l'ordre de tabulation.
+     *
+     * <p>Aucun segment d'enonce ici (ADR-0062) : {@code ZoneADesigner} ne declare pas de part
+     * designee, la designation portant deja sur un endroit de l'image et non sur un mot de l'enonce.
+     * Aucun texte-support non plus (ADR-0050) : le contrat de l'item ne le declare pas
+     * (ADR-0080, decision 1).</p>
+     */
+    private String mancheDeDesignation(Model modele, String jeuId, String consigne,
+                                        String consigneAdulte, DesignationSession session) {
+        if (session.status() == SessionStatus.TERMINEE) {
+            return retourDeDesignation(modele, jeuId, session);
+        }
+        boolean fraiche = session.zonesEssayees().isEmpty();
+        modele.addAttribute("jeuId", jeuId);
+        modele.addAttribute("consigne", consigne);
+        modele.addAttribute("blocAdulte",
+                BlocAdulte.creerOuNull(session.texteAVoixHauteManche().orElse(null), consigneAdulte));
+        modele.addAttribute("enonce", session.enonceManche().orElseThrow());
+        // ADR-0080, decision 1 : illustration et son texte alternatif sont obligatoires sur cette
+        // forme d'item - jamais null ici, a la difference de mancheDeBanditManchot.
+        modele.addAttribute("illustration", session.illustrationManche().orElseThrow());
+        modele.addAttribute("illustrationTexteAlternatif",
+                session.illustrationTexteAlternatifManche().orElseThrow());
+        modele.addAttribute("zones", session.zonesManche());
+        modele.addAttribute("zonesEssayees", session.zonesEssayees());
+        modele.addAttribute("score", session.score());
+        modele.addAttribute("indice", session.indice().orElse(null));
+
+        String message = null;
+        boolean signalJuste = false;
+        String explication = null;
+        String focus = FOCUS_ENONCE;
+        Set<String> focusCibles = Set.of();
+
+        if (session.revelee()) {
+            message = MESSAGE_REVELATION;
+            explication = session.explicationRevelee().orElse(null);
+            focus = FOCUS_BOUTON;
+            focusCibles = session.bonneZoneRevelee().map(Set::of).orElse(Set.of());
+        } else if (!fraiche) {
+            message = MESSAGE_ECHEC;
+            focus = FOCUS_BOUTON;
+            focusCibles = session.derniereTentative().map(Set::of).orElse(Set.of());
+        } else if (session.dernierVerdict().map(DesignationVerdict::juste).orElse(false)) {
+            message = MESSAGE_BRAVO;
+            signalJuste = true;
+        }
+
+        modele.addAttribute("message", message);
+        modele.addAttribute("signalJuste", signalJuste);
+        modele.addAttribute("explication", explication);
+        modele.addAttribute("focus", focus);
+        modele.addAttribute("focusCibles", focusCibles);
+        return "fragments/designation :: designation";
+    }
+
+    /**
      * SAI-2c : sur un item en forme exacte, la chaine jugee est montree <b>aussi</b> a la reussite.
      * Sur un item en forme libre, elle ne l'est pas : ce que l'enfant a ecrit y a ete accepte tel
      * quel ou par une tolerance, et c'est la forme de reference qui l'interesse alors, pas sa
@@ -581,6 +666,39 @@ public class PartieController {
         // ADR-0084, REV-3 : meme geste que sur l'autre mecanique, meme motif.
         modele.addAttribute("enonceRevele", verdict.enonce());
         modele.addAttribute("explication", verdict.explication().orElse(null));
+        // S33-PAL2-TROU-A, S33-PAL2-TROU-B : sur cette mecanique, la question rappelee et le bloc
+        // de reponse restent lies au meme etat qu'avant ce lot - voir le commentaire de
+        // retourDeDesignation pour le motif qui les decouple sur la troisieme mecanique.
+        modele.addAttribute("questionRappeleeVisible", !verdict.juste());
+        modele.addAttribute("reponseAttendueVisible", !verdict.juste());
+        return "fragments/retour :: retour";
+    }
+
+    /**
+     * <b>S33-PAL2-TROU-A, S33-PAL2-TROU-B (ADR-0088) : l'ecran de fin de partie d'une designation.</b>
+     * Meme gabarit que les deux autres mecaniques, avec deux differences que {@code nadia-prof} a
+     * tranchees (arbitrage prealable de s32, section 17.6) :
+     *
+     * <ul>
+     *   <li><b>Trou A</b> - la question rappelee est portee <b>quel que soit le verdict</b> - juste,
+     *   fausse ou par revelation -, jamais seulement sur un echec comme sur les deux autres
+     *   mecaniques : a cet instant le dessin n'est plus a l'ecran, et c'est la seule trace du terrain
+     *   sur lequel l'enfant vient de jouer, y compris quand il a reussi.</li>
+     *   <li><b>Trou B</b> - le bloc de reponse n'est <b>jamais</b> rendu : {@code DesignationVerdict}
+     *   ne porte plus de zone du tout depuis ADR-0088 clause B - ni un identifiant technique, ni un
+     *   libelle positionnel qui n'apprendrait rien. La revelation reste sur l'ecran de manche, ou le
+     *   dessin est encore la, par {@code DesignationSession.bonneZoneRevelee()}.</li>
+     * </ul>
+     */
+    private String retourDeDesignation(Model modele, String jeuId, DesignationSession session) {
+        DesignationVerdict verdict = session.dernierVerdict().orElseThrow();
+        modele.addAttribute("jeuId", jeuId);
+        modele.addAttribute("score", session.score());
+        modele.addAttribute("juste", verdict.juste());
+        modele.addAttribute("enonceRevele", verdict.enonce());
+        modele.addAttribute("explication", verdict.explication().orElse(null));
+        modele.addAttribute("questionRappeleeVisible", true);
+        modele.addAttribute("reponseAttendueVisible", false);
         return "fragments/retour :: retour";
     }
 
@@ -610,6 +728,9 @@ public class PartieController {
         // etait orpheline.
         modele.addAttribute("enonceRevele", verdict.enonce());
         modele.addAttribute("explication", verdict.explication().orElse(null));
+        // S33-PAL2-TROU-A, S33-PAL2-TROU-B : voir le commentaire de retourDeDesignation.
+        modele.addAttribute("questionRappeleeVisible", !verdict.juste());
+        modele.addAttribute("reponseAttendueVisible", !verdict.juste());
         return "fragments/retour :: retour";
     }
 

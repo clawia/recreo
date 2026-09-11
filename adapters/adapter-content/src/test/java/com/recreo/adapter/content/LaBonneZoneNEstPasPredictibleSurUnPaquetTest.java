@@ -1,5 +1,6 @@
 package com.recreo.adapter.content;
 
+import com.recreo.application.catalog.GameDefinition;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -30,13 +31,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * le meme</b> : une strategie qui ignore le contenu ne doit jamais etre majoritaire (plus de la
  * moitie des items), la moitie pile n'echouant pas - meme comparaison stricte que la clause soeur.</p>
  *
- * <p><b>Pourquoi ce garde-fou n'est pas encore cable sur le contenu de production.</b> Aucun paquet
- * de designation n'existe sous {@code src/main/resources/contenu} a ce jour (`DEC-0074`, le gain de
- * couverture arrive au plus tot a s29) : une clause qui scannerait ce repertoire aujourd'hui
- * trouverait une population vide, ce qu'ADR-0051 refuse. La regle est donc ecrite et eprouvee sur
- * des paquets fictifs, prete a etre pointee sur le contenu reel des qu'un premier paquet de
- * designation sera livre - c'est alors ce fichier qui devra gagner un test sur
- * {@code src/main/resources}, pas cette clause qui devra changer.</p>
+ * <p><b>Cablee sur le contenu de production depuis S33-PAL2-1 (s34).</b> Le premier paquet de
+ * designation servi ({@code cp-frise-de-la-journee}) donne enfin une population reelle a la clause
+ * ci-dessous, ecrite et eprouvee sur des paquets fictifs depuis s28 en attendant ce jour.</p>
  *
  * <p>ADR-0013, les trois obligations : perimetre derive - les items viennent de la chaine reelle
  * ({@link YamlContentPackLoader}), jamais d'une lecture a la main du YAML ; derivation totale -
@@ -169,5 +166,31 @@ class LaBonneZoneNEstPasPredictibleSurUnPaquetTest {
         assertThat(items).isNotEmpty();
 
         verifier(verifierQueLaBonneZoneNEstPasPredictible("vrai-paquet-designation", items));
+    }
+
+    /**
+     * <b>S33-PAL2-1 : le balayage de production, du depuis ADR-0080 et jamais ecrit avant ce lot.</b>
+     * Perimetre derive - chaque jeu du catalogue de production ({@link YamlContentPackLoader}, le
+     * meme appel que {@code ContenuConfiguration}), chaque item de designation qu'il tire. ADR-0051 :
+     * au moins un paquet de designation reellement examine, sans quoi cette clause serait verte sur
+     * une population vide.
+     */
+    @Test
+    void surLeContenuReelDeProductionLaBonneZoneNEstPasPredictible() {
+        List<String> defauts = new ArrayList<>();
+        int paquetsDeDesignationExamines = 0;
+        for (GameDefinition jeu : new YamlContentPackLoader().games()) {
+            List<ZoneADesigner> items = itemsDeDesignation(jeu.contenu());
+            if (items.isEmpty()) {
+                continue;
+            }
+            paquetsDeDesignationExamines++;
+            defauts.addAll(verifierQueLaBonneZoneNEstPasPredictible(jeu.id(), items));
+        }
+
+        assertThat(paquetsDeDesignationExamines)
+                .as("ADR-0051 : ce garde-fou n'a examine aucun paquet de designation reel")
+                .isPositive();
+        assertThat(defauts).isEmpty();
     }
 }

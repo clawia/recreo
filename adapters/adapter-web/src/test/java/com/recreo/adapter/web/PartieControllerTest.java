@@ -5,17 +5,21 @@ import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.application.port.out.MechanicRegistryPort;
 import com.recreo.application.usecase.PartieService;
+import com.recreo.domain.content.CadreDeZone;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.Zone;
+import com.recreo.domain.content.ZoneADesigner;
 import com.recreo.domain.content.source.AdditionsBorneesContentSource;
 import com.recreo.domain.content.source.ListContentSource;
 import com.recreo.domain.content.ExigenceDeForme;
 import com.recreo.domain.content.ReponseAEcrire;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
+import com.recreo.domain.mechanics.designation.Designation;
 import com.recreo.domain.mechanics.saisie.Saisie;
 import jakarta.servlet.http.Cookie;
 import org.jsoup.Jsoup;
@@ -59,6 +63,9 @@ class PartieControllerTest {
 
     /** ADR-0075 : le jeu dont l'item et l'entree de catalogue declarent la famille a voix. */
     private static final String JEU_A_VOIX_ID = "jeu-a-voix";
+
+    /** ADR-0080 : le jeu de la troisieme mecanique, la designation (voir JeuDeTestConfiguration). */
+    static final String JEU_DESIGNATION_ID = "jeu-designation";
 
     /** Le seul niveau du catalogue de test (JeuDeTestConfiguration). */
     private static final String NIVEAU = "CP";
@@ -990,9 +997,43 @@ class PartieControllerTest {
                                             Optional.empty(), Optional.empty(), Optional.empty(),
                                             Optional.empty(), Optional.empty(), Optional.empty(),
                                             Optional.of("Le mot est chapeau.")))),
-                            1, Optional.of("Dites le mot normalement, sans le couper.")));
-            MechanicRegistryPort mecaniques =
-                    id -> Saisie.ID.equals(id) ? new Saisie() : new BanditManchot();
+                            1, Optional.of("Dites le mot normalement, sans le couper.")),
+                    // ADR-0080 : un jeu de la troisieme mecanique. Deux items, donc deux manches
+                    // resolues epuisent le vivier et terminent la partie - meme patron que JEU_ID.
+                    // Les trois zones sont les memes sur les deux items, seule bonneZone change,
+                    // pour exercer la revelation et l'appariement question/reponse des deux cotes.
+                    new GameDefinition(JEU_DESIGNATION_ID, "Jeu de designation", "Montre ce qu'on te demande.",
+                            Designation.ID, DESCRIPTEUR,
+                            new ListContentSource(DESCRIPTEUR, List.of(
+                                    new ZoneADesigner(new ItemId("d1"), "Montre le tableau.",
+                                            "test-designation", "Un plan de test.", List.of(
+                                                    new Zone("tableau", "le tableau",
+                                                            new CadreDeZone(8, 4, 30, 22)),
+                                                    new Zone("fenetre", "la fenetre",
+                                                            new CadreDeZone(60, 4, 30, 22)),
+                                                    new Zone("porte", "la porte",
+                                                            new CadreDeZone(35, 60, 30, 22))),
+                                            "tableau", Optional.of("Il est devant la classe."),
+                                            Optional.of("explication de d1")),
+                                    new ZoneADesigner(new ItemId("d2"), "Montre la fenetre.",
+                                            "test-designation", "Un plan de test.", List.of(
+                                                    new Zone("tableau", "le tableau",
+                                                            new CadreDeZone(8, 4, 30, 22)),
+                                                    new Zone("fenetre", "la fenetre",
+                                                            new CadreDeZone(60, 4, 30, 22)),
+                                                    new Zone("porte", "la porte",
+                                                            new CadreDeZone(35, 60, 30, 22))),
+                                            "fenetre", Optional.empty(), Optional.empty()))),
+                            10));
+            MechanicRegistryPort mecaniques = id -> {
+                if (Saisie.ID.equals(id)) {
+                    return new Saisie();
+                }
+                if (Designation.ID.equals(id)) {
+                    return new Designation();
+                }
+                return new BanditManchot();
+            };
             RandomSource hasard = bound -> 0;
             return new PartieService(catalogue, mecaniques, hasard);
         }

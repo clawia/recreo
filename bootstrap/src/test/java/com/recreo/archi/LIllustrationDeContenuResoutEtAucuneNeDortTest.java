@@ -124,10 +124,21 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * <p><b>Mesures par sofia-sm sur l'arbre fusionne des deux paires</b>, et non recopies depuis
      * l'annonce d'un lot : chaque lot avait mesure 12 et 12 sur sa propre branche, ce qui etait
      * exact chez lui et faux apres fusion.
+     *
+     * <p><b>24 vers 35, lea-dev, s34, S33-PAL2-1</b> : le premier paquet de designation servi
+     * ({@code cp-frise-de-la-journee}) declare onze items, et {@code ZoneADesigner} rend
+     * l'illustration <b>obligatoire</b> sur chacun (ADR-0080, decision 1) - les onze items
+     * s'ajoutent donc tous, sans exception a chercher. {@code cp-plan-de-la-classe} (QLM-CP-11) n'est
+     * pas servi : ses libelles de zone debordent de leur bouton a l'ecran de manche, constate au jar,
+     * route a {@code sofia-sm} plutot que tranche ici.</p>
      */
-    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 24;
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 35;
 
-    private static final int FICHIERS_D_ILLUSTRATION = 24;
+    /**
+     * <b>24 vers 26, lea-dev, s34, S33-PAL2-1</b> : les deux dessins du premier paquet de
+     * designation servi ({@code frise-journee-ecole.svg}, {@code frise-soir-routine.svg}).
+     */
+    private static final int FICHIERS_D_ILLUSTRATION = 26;
 
     private static String lire(Path fichier) {
         try {

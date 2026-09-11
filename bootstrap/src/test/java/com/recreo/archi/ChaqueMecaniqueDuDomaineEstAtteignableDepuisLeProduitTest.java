@@ -67,13 +67,13 @@ class ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest {
     private static final String CABLAGE = "com.recreo.bootstrap.";
 
     /**
-     * Le plafond vaut exactement la dette : <b>une</b> mecanique concrete du domaine que rien de
-     * {@code bootstrap} ne cable, mesuree le 2026-09-08 sur l'arbre de {@code round-two} a
-     * {@code f503b4e5}. Il descend a zero dans le meme diff que le bean qui la cable, et il ne
-     * remonte jamais sans qu'une mecanique neuve non cablee l'accompagne - ce que ce garde-fou
-     * refuse justement de laisser passer.
+     * Le plafond vaut exactement la dette. Il valait <b>1</b> du 2026-09-08 (mesure sur l'arbre de
+     * {@code round-two} a {@code f503b4e5}) au s34, lot L-a : {@code Designation} n'avait alors aucun
+     * bean dans {@code MecaniquesConfiguration}. Il descend a <b>0</b> dans le meme diff que ce bean
+     * (ADR-0080, T4), et il ne remonte jamais sans qu'une mecanique neuve non cablee l'accompagne -
+     * ce que ce garde-fou refuse justement de laisser passer.
      */
-    private static final int PLAFOND_DE_MECANIQUES_NON_CABLEES = 1;
+    private static final int PLAFOND_DE_MECANIQUES_NON_CABLEES = 0;
 
     /**
      * Les classes de production des cinq modules, telles que le classpath de test de {@code
@@ -154,10 +154,9 @@ class ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest {
     }
 
     /**
-     * Le garde-fou tel qu'il tourne en CI : le graphe reel, le plafond reel. Vert aujourd'hui parce
-     * que le compte et le plafond valent tous les deux un ; rouge le jour ou une quatrieme mecanique
-     * entre sans son bean, et rouge aussi le jour ou {@code Designation} recoit le sien tant que le
-     * plafond n'est pas descendu avec lui.
+     * Le garde-fou tel qu'il tourne en CI : le graphe reel, le plafond reel. Vert depuis s34 parce
+     * que le compte et le plafond valent tous les deux zero (le bean de {@code Designation} est
+     * publie, ADR-0080 T4) ; rouge le jour ou une quatrieme mecanique entre sans son bean.
      */
     @Test
     void chaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduit() {
@@ -168,11 +167,13 @@ class ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest {
 
     /**
      * <b>Le constat, epingle plutot que raconte.</b> Trois mecaniques concretes dans le domaine,
-     * exactement une non cablee. Si ce test devient faux, c'est que l'etat du depot a change et que
-     * le plafond doit bouger - c'est precisement ce que le cliquet ci-dessus dit en rouge.
+     * <b>toutes cablees</b> depuis que {@code MecaniquesConfiguration} publie le bean de
+     * {@code Designation} (ADR-0080, T4, lot L-a). Avant ce lot, exactement une echappait au
+     * cablage ; si ce test devient faux, c'est que l'etat du depot a change et que le plafond doit
+     * bouger - c'est precisement ce que le cliquet ci-dessus dit en rouge.
      */
     @Test
-    void leDepotPorteTroisMecaniquesConcretesEtUneSeuleEchappeAuCablage() {
+    void leDepotPorteTroisMecaniquesConcretesToutesCablees() {
         JavaClasses classes = classesDeProduction();
 
         assertThat(mecaniquesConcretes(classes))
@@ -183,20 +184,27 @@ class ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest {
                         "com.recreo.domain.mechanics.saisie.Saisie");
 
         assertThat(mecaniquesNonCablees(classes))
-                .as("ADR-0080, T4 : la mecanique de designation n'est cablee nulle part depuis s28")
-                .containsExactly("com.recreo.domain.mechanics.designation.Designation");
+                .as("ADR-0080, T4 : les trois mecaniques du domaine sont desormais publiees par"
+                        + " MecaniquesConfiguration")
+                .isEmpty();
     }
 
     /**
-     * <b>Morsure 1.</b> Le predicat de cablage distingue reellement une mecanique cablee d'une
-     * mecanique qui ne l'est pas, <b>sur le graphe reel et non sur une fixture</b> : les deux
-     * mecaniques que {@code MecaniquesConfiguration} publie sont vues comme cablees, la troisieme ne
-     * l'est pas. Sans cette morsure, un predicat toujours vrai rendrait le cliquet vert pour
-     * toujours - la faute de s05, ou une detection passait sa propre epreuve et echouait dans le
-     * monde.
+     * <b>Morsure 1.</b> Le predicat de cablage vaut vrai sur les trois mecaniques reelles,
+     * <b>sur le graphe reel et non sur une fixture</b> : les trois beans que
+     * {@code MecaniquesConfiguration} publie desormais sont tous vus comme cables.
+     *
+     * <p><b>Ce que cette morsure ne prouve plus, dit plutot que tu.</b> Avant le bean de
+     * {@code Designation} (ADR-0080, T4), cette meme methode distinguait deux mecaniques cablees
+     * d'une troisieme qui ne l'etait pas, sur le graphe reel. Ce cas negatif reel a disparu avec la
+     * dette qu'il montrait : aucune mecanique concrete du domaine n'est plus non cablee aujourd'hui,
+     * et en fabriquer une pour la seule preuve de ce predicat serait du code mort. La capacite du
+     * predicat a distinguer un nom cable d'un nom qui ne l'est pas reste verifiee par les morsures 2
+     * et 3 ci-dessous, sur des ensembles fabriques - c'est ce que {@code verifier} sait juger sans
+     * dependre d'une mecanique domaine reellement non cablee.
      */
     @Test
-    void lePredicatDeCablageDistingueLesDeuxMecaniquesCableesDeLaTroisieme() {
+    void lePredicatDeCablageEstVraiSurLesTroisMecaniquesReelles() {
         JavaClasses classes = classesDeProduction();
 
         assertThat(estCablee(classes.get("com.recreo.domain.mechanics.banditmanchot.BanditManchot")))
@@ -206,8 +214,8 @@ class ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest {
                 .as("Saisie est publiee par MecaniquesConfiguration")
                 .isTrue();
         assertThat(estCablee(classes.get("com.recreo.domain.mechanics.designation.Designation")))
-                .as("Designation n'est publiee par aucune configuration")
-                .isFalse();
+                .as("Designation est publiee par MecaniquesConfiguration depuis ADR-0080, T4")
+                .isTrue();
     }
 
     /** <b>Morsure 2.</b> Une mecanique non cablee de plus est rouge, et le message dit quoi faire. */
@@ -233,7 +241,7 @@ class ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest {
     void unPlafondSuperieurAuCompteReelFaitEchouerLeGardeFou() {
         Set<String> concretes = new TreeSet<>(List.of("A", "B", "C"));
 
-        assertThatThrownBy(() -> verifier(concretes, Set.of(), PLAFOND_DE_MECANIQUES_NON_CABLEES))
+        assertThatThrownBy(() -> verifier(concretes, Set.of(), PLAFOND_DE_MECANIQUES_NON_CABLEES + 1))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("place libre");
     }

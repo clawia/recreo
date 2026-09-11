@@ -1,0 +1,8 @@
+/* ADR-0013 obligation 3 : le jeu fautif commite de
+   AucuneZoneDesignableNeDescendSousLaCibleTactileTest. Un plafond de hauteur volontairement trop
+   bas (5rem au lieu des 22rem de production) : applique aux memes zones que celles reellement
+   servies par PartieControllerTest.JeuDeTestConfiguration (au plus etroit, 22 % du cote), il rend
+   une taille de zone de 1,1rem, sous le plancher de cible tactile de 2,75rem. */
+.image-designation {
+    max-height: 5rem;
+}

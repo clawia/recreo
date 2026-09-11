@@ -139,27 +139,28 @@ class LeBlocAdulteDUnItemReelAtteintLEcranDeMancheTest {
      * ce perimetre, et il en aurait ete ecarte sans qu'aucun diff ne le montre.</p>
      *
      * <p><b>Ce que ce gate decide, et ce qu'il refuse de decider.</b> Il laisse passer les trois
-     * types deja instruits par ce fichier et <b>leve</b> sur tout autre. Il ne pose <b>aucune</b>
-     * branche pour {@code designation} : une exemption ecrite d'avance pourrirait le jour ou le
-     * contrat de son item changerait, alors qu'un rouge pose la question avec le record sous les
-     * yeux. Le jour ou T6 sert le premier paquet de designation, ce garde-fou est rouge et sa
-     * branche s'ecrit la. Le tri de perimetre reste ou il etait : ce gate ne juge que le fait
-     * d'avoir ete instruit.</p>
+     * types deja instruits par ce fichier et <b>leve</b> sur tout autre.</p>
+     *
+     * <p><b>Decide au 2026-09-10 (S33-PAL2-1, s34) : {@code designation} rejoint la liste des types
+     * instruits.</b> {@code ZoneADesigner} declare bien une composante {@code texteAVoixHaute}, mais
+     * ce fichier ne sait construire qu'une {@code GameDefinition} de mecanique {@code BanditManchot}
+     * ou {@code Saisie} ({@link JeuxDePreuveConfiguration}) : il ne peut pas jouer une designation, et
+     * un paquet de designation retombe donc dans le {@code continue} deja pose pour tout type ni
+     * question ni saisie. La garantie que le bloc-adulte atteint l'ecran de designation reste a
+     * instruire, mais separement, par un harnais qui sait jouer cette mecanique - pas ici.</p>
      */
     private static void verifierQueLeTypeEstInstruit(String paquet, Map<String, Object> corps) {
         String type = String.valueOf(corps.get("type"));
         switch (type) {
-            case "question", "additions-bornees", "saisie" -> { }
+            case "question", "additions-bornees", "saisie", "designation" -> { }
             default -> throw new IllegalStateException(refusDuType(paquet, type));
         }
     }
 
     private static String refusDuType(String paquet, String type) {
         return "paquet " + paquet + " : type '" + type + "', que ce garde-fou n'a pas instruit et"
-                + " qu'il ne sait donc pas juger. ZoneADesigner declare une composante"
-                + " texteAVoixHaute : un paquet de designation entre dans ce perimetre. Decider ici"
-                + " plutot que d'ecarter ce paquet en silence (ADR-0013 obligation 2, ADR-0088"
-                + " clause C)";
+                + " qu'il ne sait donc pas juger. Decider ici plutot que d'ecarter ce paquet en"
+                + " silence (ADR-0013 obligation 2, ADR-0088 clause C)";
     }
 
     private static boolean estUnPaquetDeQuestions(Map<String, Object> corps) {
@@ -426,19 +427,20 @@ class LeBlocAdulteDUnItemReelAtteintLEcranDeMancheTest {
     /**
      * ADR-0013 obligation 3, et la morsure porte sur du <b>materiau reel</b> : le corps d'un paquet
      * servi du depot, decouvert et non nomme, dont la seule mutation est la valeur de sa cle
-     * {@code type}. C'est l'etat exact qu'aura la population le jour ou T6 servira le premier paquet
-     * de designation.
+     * {@code type}. Le type fictif ne nomme aucun type reel du depot (question, saisie,
+     * additions-bornees, designation sont tous desormais instruits) : c'est ce qui prouve que la
+     * derivation mord sur un type neuf, jamais sur un nom particulier.
      */
     @Test
     void unPaquetDUnTypeQueCeGardeFouNeSaitPasJugerLeFaitEchouer() {
         String paquet = paquetsDuRepertoireDeContenu().stream().sorted().findFirst().orElseThrow();
         Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
-        corps.put("type", "designation");
+        corps.put("type", "type-fictif-non-instruit");
 
         assertThatThrownBy(() -> verifierQueLeTypeEstInstruit(paquet, corps))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("type 'designation'")
-                .hasMessageContaining("ZoneADesigner declare une composante texteAVoixHaute");
+                .hasMessageContaining("type 'type-fictif-non-instruit'")
+                .hasMessageContaining("ne sait donc pas juger");
     }
 
     @TestConfiguration

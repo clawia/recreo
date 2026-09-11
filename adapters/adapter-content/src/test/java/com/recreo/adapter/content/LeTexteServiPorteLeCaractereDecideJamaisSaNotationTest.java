@@ -6,6 +6,8 @@ import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.ReponseAEcrire;
+import com.recreo.domain.content.Zone;
+import com.recreo.domain.content.ZoneADesigner;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -189,6 +191,10 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
                     textes.addAll(textesDUnItemDeSaisie(paquet, reponse));
                     continue;
                 }
+                if (itemTire instanceof ZoneADesigner zone) {
+                    textes.addAll(textesDUnItemDeDesignation(paquet, zone));
+                    continue;
+                }
                 Question item = (Question) itemTire;
                 textes.add(new TexteServi(paquet, "enonce", item.enonce(), item.enonce()));
                 textes.add(new TexteServi(paquet, "bonneReponse", item.enonce(), item.bonneReponse()));
@@ -235,6 +241,31 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
                 textes.add(new TexteServi(paquet, "indice", item.enonce(), indice)));
         item.explication().ifPresent(explication ->
                 textes.add(new TexteServi(paquet, "explication", item.enonce(), explication)));
+        return textes;
+    }
+
+    /**
+     * ADR-0080 : les chaines qu'un item de designation fait servir a ce module - toutes lues par
+     * l'enfant. {@code bonneZone} en est exclue, comme {@code id} d'une {@code Zone} : ce sont des
+     * identifiants compares, jamais du texte que l'enfant lit (meme motif que l'exclusion des formes
+     * acceptees d'un item de saisie, pour la raison inverse - ici rien n'est jamais compare, tout est
+     * lu).
+     */
+    private static List<TexteServi> textesDUnItemDeDesignation(String paquet, ZoneADesigner item) {
+        List<TexteServi> textes = new ArrayList<>();
+        textes.add(new TexteServi(paquet, "enonce", item.enonce(), item.enonce()));
+        textes.add(new TexteServi(paquet, "illustrationTexteAlternatif", item.enonce(),
+                item.illustrationTexteAlternatif()));
+        for (Zone zone : item.zones()) {
+            textes.add(new TexteServi(paquet, "libelle de la zone " + zone.id(), item.enonce(),
+                    zone.libelle()));
+        }
+        item.indice().ifPresent(indice ->
+                textes.add(new TexteServi(paquet, "indice", item.enonce(), indice)));
+        item.explication().ifPresent(explication ->
+                textes.add(new TexteServi(paquet, "explication", item.enonce(), explication)));
+        item.texteAVoixHaute().ifPresent(texte ->
+                textes.add(new TexteServi(paquet, "texteAVoixHaute", item.enonce(), texte)));
         return textes;
     }
 

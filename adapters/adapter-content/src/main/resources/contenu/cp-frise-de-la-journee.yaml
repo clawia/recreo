@@ -1,0 +1,250 @@
+schema: 1
+id: cp-frise-de-la-journee
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Se situer dans le temps"
+  competence: "Situer des événements les uns par rapport aux autres sur une frise chronologique simple (avant, après, en même temps)"
+lignesDeReferentiel: ["QLM-CP-14"]
+items:
+  - enonce: "Montre le lever."
+    illustration: frise-journee-ecole
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    bonneZone: lever
+    indice: "C'est le tout premier moment de la journée."
+    zones:
+      - id: lever
+        libelle: "le premier"
+        cadre: { x: 0, y: 10, largeur: 15, hauteur: 75 }
+      - id: petit-dejeuner
+        libelle: "le deuxième"
+        cadre: { x: 17, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-matin
+        libelle: "le troisième"
+        cadre: { x: 34, y: 10, largeur: 15, hauteur: 75 }
+      - id: dejeuner
+        libelle: "le quatrième"
+        cadre: { x: 51, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-apres-midi
+        libelle: "le cinquième"
+        cadre: { x: 68, y: 10, largeur: 15, hauteur: 75 }
+      - id: gouter
+        libelle: "le sixième"
+        cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
+  - enonce: "Montre le petit-déjeuner."
+    illustration: frise-journee-ecole
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    bonneZone: petit-dejeuner
+    indice: "C'est le repas du matin."
+    zones:
+      - id: lever
+        libelle: "le premier"
+        cadre: { x: 0, y: 10, largeur: 15, hauteur: 75 }
+      - id: petit-dejeuner
+        libelle: "le deuxième"
+        cadre: { x: 17, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-matin
+        libelle: "le troisième"
+        cadre: { x: 34, y: 10, largeur: 15, hauteur: 75 }
+      - id: dejeuner
+        libelle: "le quatrième"
+        cadre: { x: 51, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-apres-midi
+        libelle: "le cinquième"
+        cadre: { x: 68, y: 10, largeur: 15, hauteur: 75 }
+      - id: gouter
+        libelle: "le sixième"
+        cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
+  - enonce: "Montre l'école du matin."
+    illustration: frise-journee-ecole
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    bonneZone: ecole-matin
+    indice: "C'est là qu'on apprend, avant de manger à midi."
+    zones:
+      - id: lever
+        libelle: "le premier"
+        cadre: { x: 0, y: 10, largeur: 15, hauteur: 75 }
+      - id: petit-dejeuner
+        libelle: "le deuxième"
+        cadre: { x: 17, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-matin
+        libelle: "le troisième"
+        cadre: { x: 34, y: 10, largeur: 15, hauteur: 75 }
+      - id: dejeuner
+        libelle: "le quatrième"
+        cadre: { x: 51, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-apres-midi
+        libelle: "le cinquième"
+        cadre: { x: 68, y: 10, largeur: 15, hauteur: 75 }
+      - id: gouter
+        libelle: "le sixième"
+        cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
+  - enonce: "Montre le déjeuner."
+    illustration: frise-journee-ecole
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    bonneZone: dejeuner
+    indice: "C'est le repas du milieu de journée."
+    zones:
+      - id: lever
+        libelle: "le premier"
+        cadre: { x: 0, y: 10, largeur: 15, hauteur: 75 }
+      - id: petit-dejeuner
+        libelle: "le deuxième"
+        cadre: { x: 17, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-matin
+        libelle: "le troisième"
+        cadre: { x: 34, y: 10, largeur: 15, hauteur: 75 }
+      - id: dejeuner
+        libelle: "le quatrième"
+        cadre: { x: 51, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-apres-midi
+        libelle: "le cinquième"
+        cadre: { x: 68, y: 10, largeur: 15, hauteur: 75 }
+      - id: gouter
+        libelle: "le sixième"
+        cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
+  - enonce: "Montre ce qui vient juste avant l'école du matin."
+    illustration: frise-journee-ecole
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    bonneZone: petit-dejeuner
+    indice: "Cherche d'abord l'école du matin, puis regarde juste avant."
+    zones:
+      - id: lever
+        libelle: "le premier"
+        cadre: { x: 0, y: 10, largeur: 15, hauteur: 75 }
+      - id: petit-dejeuner
+        libelle: "le deuxième"
+        cadre: { x: 17, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-matin
+        libelle: "le troisième"
+        cadre: { x: 34, y: 10, largeur: 15, hauteur: 75 }
+      - id: dejeuner
+        libelle: "le quatrième"
+        cadre: { x: 51, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-apres-midi
+        libelle: "le cinquième"
+        cadre: { x: 68, y: 10, largeur: 15, hauteur: 75 }
+      - id: gouter
+        libelle: "le sixième"
+        cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
+  - enonce: "Montre ce qui vient juste après le déjeuner."
+    illustration: frise-journee-ecole
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    bonneZone: ecole-apres-midi
+    indice: "Cherche d'abord le déjeuner, puis regarde juste après."
+    zones:
+      - id: lever
+        libelle: "le premier"
+        cadre: { x: 0, y: 10, largeur: 15, hauteur: 75 }
+      - id: petit-dejeuner
+        libelle: "le deuxième"
+        cadre: { x: 17, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-matin
+        libelle: "le troisième"
+        cadre: { x: 34, y: 10, largeur: 15, hauteur: 75 }
+      - id: dejeuner
+        libelle: "le quatrième"
+        cadre: { x: 51, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-apres-midi
+        libelle: "le cinquième"
+        cadre: { x: 68, y: 10, largeur: 15, hauteur: 75 }
+      - id: gouter
+        libelle: "le sixième"
+        cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
+  - enonce: "Montre ce qui vient juste avant le petit-déjeuner."
+    illustration: frise-journee-ecole
+    illustrationTexteAlternatif: "Frise de la journée d'école, six moments sur un axe - le lever, le petit-déjeuner, l'école du matin, le déjeuner, l'école de l'après-midi, le goûter."
+    bonneZone: lever
+    indice: "Cherche d'abord le petit-déjeuner, puis regarde juste avant."
+    zones:
+      - id: lever
+        libelle: "le premier"
+        cadre: { x: 0, y: 10, largeur: 15, hauteur: 75 }
+      - id: petit-dejeuner
+        libelle: "le deuxième"
+        cadre: { x: 17, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-matin
+        libelle: "le troisième"
+        cadre: { x: 34, y: 10, largeur: 15, hauteur: 75 }
+      - id: dejeuner
+        libelle: "le quatrième"
+        cadre: { x: 51, y: 10, largeur: 15, hauteur: 75 }
+      - id: ecole-apres-midi
+        libelle: "le cinquième"
+        cadre: { x: 68, y: 10, largeur: 15, hauteur: 75 }
+      - id: gouter
+        libelle: "le sixième"
+        cadre: { x: 85, y: 10, largeur: 15, hauteur: 75 }
+  - enonce: "Montre le dîner."
+    illustration: frise-soir-routine
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    bonneZone: diner
+    indice: "C'est le repas du soir."
+    zones:
+      - id: diner
+        libelle: "le premier"
+        cadre: { x: 5, y: 10, largeur: 26, hauteur: 75 }
+      - id: brosse-dents
+        libelle: "le deuxième, en haut"
+        cadre: { x: 38, y: 10, largeur: 26, hauteur: 40 }
+      - id: pyjama
+        libelle: "le deuxième, en bas"
+        cadre: { x: 38, y: 52, largeur: 26, hauteur: 33 }
+      - id: coucher
+        libelle: "le troisième"
+        cadre: { x: 71, y: 10, largeur: 26, hauteur: 75 }
+  - enonce: "Montre le coucher."
+    illustration: frise-soir-routine
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    bonneZone: coucher
+    indice: "C'est le tout dernier moment de la journée."
+    zones:
+      - id: diner
+        libelle: "le premier"
+        cadre: { x: 5, y: 10, largeur: 26, hauteur: 75 }
+      - id: brosse-dents
+        libelle: "le deuxième, en haut"
+        cadre: { x: 38, y: 10, largeur: 26, hauteur: 40 }
+      - id: pyjama
+        libelle: "le deuxième, en bas"
+        cadre: { x: 38, y: 52, largeur: 26, hauteur: 33 }
+      - id: coucher
+        libelle: "le troisième"
+        cadre: { x: 71, y: 10, largeur: 26, hauteur: 75 }
+  - enonce: "Montre ce qui se passe en même temps que se brosser les dents."
+    illustration: frise-soir-routine
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    bonneZone: pyjama
+    indice: "Ce n'est ni avant, ni après - cherche ce qui se passe au même moment."
+    zones:
+      - id: diner
+        libelle: "le premier"
+        cadre: { x: 5, y: 10, largeur: 26, hauteur: 75 }
+      - id: brosse-dents
+        libelle: "le deuxième, en haut"
+        cadre: { x: 38, y: 10, largeur: 26, hauteur: 40 }
+      - id: pyjama
+        libelle: "le deuxième, en bas"
+        cadre: { x: 38, y: 52, largeur: 26, hauteur: 33 }
+      - id: coucher
+        libelle: "le troisième"
+        cadre: { x: 71, y: 10, largeur: 26, hauteur: 75 }
+  - enonce: "Montre ce qui se passe en même temps que mettre son pyjama."
+    illustration: frise-soir-routine
+    illustrationTexteAlternatif: "Frise de la routine du soir, quatre moments - le dîner, se brosser les dents et mettre son pyjama en même temps, puis le coucher."
+    bonneZone: brosse-dents
+    indice: "Ce n'est ni avant, ni après - cherche ce qui se passe au même moment."
+    zones:
+      - id: diner
+        libelle: "le premier"
+        cadre: { x: 5, y: 10, largeur: 26, hauteur: 75 }
+      - id: brosse-dents
+        libelle: "le deuxième, en haut"
+        cadre: { x: 38, y: 10, largeur: 26, hauteur: 40 }
+      - id: pyjama
+        libelle: "le deuxième, en bas"
+        cadre: { x: 38, y: 52, largeur: 26, hauteur: 33 }
+      - id: coucher
+        libelle: "le troisième"
+        cadre: { x: 71, y: 10, largeur: 26, hauteur: 75 }

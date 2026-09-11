@@ -91,6 +91,9 @@ class AucunArretDeTabulationNEstDestructeurTest {
     /** S24 : le jeu de la seconde mecanique du catalogue de test (PartieControllerTest). */
     private static final String JEU_SAISIE_ID = PartieControllerTest.JEU_SAISIE_ID;
 
+    /** ADR-0080 : le jeu de la troisieme mecanique du catalogue de test (PartieControllerTest). */
+    private static final String JEU_DESIGNATION_ID = PartieControllerTest.JEU_DESIGNATION_ID;
+
     private static final String JEU_REPETE_ID = "jeu-repete";
     private static final String PROPOSITION_FAUSSE = "mauvaise";
 
@@ -235,6 +238,15 @@ class AucunArretDeTabulationNEstDestructeurTest {
                     corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID).session(session)
                             .param("reponseEcrite", "3"));
                     return corps(post("/parties/{jeuId}/manche", JEU_SAISIE_ID).session(session));
+                }));
+
+        // ADR-0080 : la route de la troisieme mecanique. Meme motif que la saisie ci-dessus - une
+        // zone designable est un arret de tabulation de plus (garde-fou 1, ADR-0080).
+        ecrans.add(ecranFragment("manche de designation apres une designation fausse, la partie continue",
+                "POST /parties/{jeuId}/designations", session -> {
+                    corps(post("/parties/{jeuId}", JEU_DESIGNATION_ID).session(session));
+                    return corps(post("/parties/{jeuId}/designations", JEU_DESIGNATION_ID)
+                            .session(session).param("zoneDesignee", "porte"));
                 }));
 
         ecrans.add(ecranFragment("demande de confirmation avant d'abandonner, la partie continue",

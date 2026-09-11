@@ -142,28 +142,29 @@ class LeTexteSupportDUnItemReelAtteintLEcranDeMancheTest {
      * garde-fou en connaissait un et ecartait les trois autres sans le dire, sur une suite verte.
      *
      * <p><b>Ce que ce gate decide, et ce qu'il refuse de decider.</b> Il laisse passer les trois
-     * types deja instruits par ce fichier et <b>leve</b> sur tout autre. Il ne pose <b>aucune</b>
-     * branche pour {@code designation}, bien que {@code ZoneADesigner} ne declare aujourd'hui
-     * aucune composante {@code texteSupport} : une exemption ecrite d'avance pourrirait le jour
-     * ou le contrat de son item changerait, et c'est exactement de cette famille
-     * qu'est le defaut paye ici. Un rouge pose la question avec le record sous les yeux. Le tri de
-     * perimetre reste ou il etait, dans {@link #estUnPaquetDeQuestions(Map)} : ce gate ne juge que
-     * le fait d'avoir ete instruit.</p>
+     * types deja instruits par ce fichier et <b>leve</b> sur tout autre.</p>
+     *
+     * <p><b>Decide au 2026-09-10 (S33-PAL2-1, s34) : {@code designation} rejoint la liste des types
+     * instruits, et cette decision est definitive plutot qu'en attente.</b> {@code ZoneADesigner} ne
+     * declare aucune composante {@code texteSupport} dans son contrat (ADR-0080, decision 1) : ce
+     * n'est pas qu'elle ne le fait pas encore, c'est que cette forme d'item n'a rien de cette nature a
+     * porter - un texte-support est la matiere de comprehension d'une question, une designation
+     * montre un dessin. Le type est donc reconnu et retombe dans le {@code continue} deja pose pour
+     * tout type qui n'est pas {@code question} : c'etait deja le comportement voulu, seulement pas
+     * decide explicitement.</p>
      */
     private static void verifierQueLeTypeEstInstruit(String paquet, Map<String, Object> corps) {
         String type = String.valueOf(corps.get("type"));
         switch (type) {
-            case "question", "additions-bornees", "saisie" -> { }
+            case "question", "additions-bornees", "saisie", "designation" -> { }
             default -> throw new IllegalStateException(refusDuType(paquet, type));
         }
     }
 
     private static String refusDuType(String paquet, String type) {
         return "paquet " + paquet + " : type '" + type + "', que ce garde-fou n'a pas instruit et"
-                + " qu'il ne sait donc pas juger. ZoneADesigner ne declare aujourd'hui aucune"
-                + " composante texteSupport, mais c'est le contrat de l'item qui doit le dire,"
-                + " pas ce fichier. Decider ici plutot que d'ecarter ce paquet en silence"
-                + " (ADR-0013 obligation 2, ADR-0088 clause C)";
+                + " qu'il ne sait donc pas juger. Decider ici plutot que d'ecarter ce paquet en"
+                + " silence (ADR-0013 obligation 2, ADR-0088 clause C)";
     }
 
     private static boolean estUnPaquetDeQuestions(Map<String, Object> corps) {
@@ -446,19 +447,20 @@ class LeTexteSupportDUnItemReelAtteintLEcranDeMancheTest {
     /**
      * ADR-0013 obligation 3, et la morsure porte sur du <b>materiau reel</b> : le corps d'un paquet
      * servi du depot, decouvert et non nomme, dont la seule mutation est la valeur de sa cle
-     * {@code type}. C'est l'etat exact qu'aura la population le jour ou T6 servira le premier paquet
-     * de designation.
+     * {@code type}. Le type fictif ne nomme aucun type reel du depot (question, saisie,
+     * additions-bornees, designation sont tous desormais instruits, ADR-0088 clause C) : c'est ce qui
+     * prouve que la derivation mord sur un type neuf, jamais sur un nom particulier.
      */
     @Test
     void unPaquetDUnTypeQueCeGardeFouNeSaitPasJugerLeFaitEchouer() {
         String paquet = paquetsDuRepertoireDeContenu().stream().sorted().findFirst().orElseThrow();
         Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
-        corps.put("type", "designation");
+        corps.put("type", "type-fictif-non-instruit");
 
         assertThatThrownBy(() -> verifierQueLeTypeEstInstruit(paquet, corps))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("type 'designation'")
-                .hasMessageContaining("c'est le contrat de l'item qui doit le dire");
+                .hasMessageContaining("type 'type-fictif-non-instruit'")
+                .hasMessageContaining("ne sait donc pas juger");
     }
 
     @TestConfiguration

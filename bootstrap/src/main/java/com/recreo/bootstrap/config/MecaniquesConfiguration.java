@@ -4,6 +4,7 @@ import com.recreo.application.port.out.MechanicRegistryPort;
 import com.recreo.domain.mechanic.GameMechanic;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
+import com.recreo.domain.mechanics.designation.Designation;
 import com.recreo.domain.mechanics.saisie.Saisie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,17 @@ class MecaniquesConfiguration {
     @Bean
     GameMechanic saisie() {
         return new Saisie();
+    }
+
+    /**
+     * ADR-0080, T4, lot L-a : le bean qui cable la troisieme mecanique. Sans lui, {@code Designation}
+     * existe dans {@code domain} depuis s28 et n'est jouable par personne -
+     * {@code ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest} le disait en rouge tant que ce
+     * bean manquait.
+     */
+    @Bean
+    GameMechanic designation() {
+        return new Designation();
     }
 
     @Bean

@@ -62,10 +62,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  *       neuf entre dans la population le jour ou il entre au catalogue.</li>
  *   <li><b>Derivation totale</b> : chaque paquet servi produit une partie de <b>deux manches</b>,
  *       jouee mal jusqu'au bout sur les deux, et son ecran de fin de partie produit ses assertions.
- *       Une forme d'item qu'aucun ecran servi ne sait jouer ({@link ZoneADesigner} aujourd'hui) fait
- *       <b>echouer</b> la construction de la population au lieu d'etre ecartee en silence - le jour
- *       ou un paquet de designation est servi, c'est ici que la question de son ecran de fin de
- *       partie se pose, en rouge.</li>
+ *       {@link ZoneADesigner} (S33-PAL2-1, s34) en est <b>explicitement</b> exclu, pour le motif
+ *       decide par ADR-0088 clause B et deja nomme plus bas pour la manche reussie : l'ecran de
+ *       fin de partie d'une designation ne nomme jamais de reponse, quel que soit le verdict -
+ *       aucune reponse ne peut donc jamais y etre orpheline. Une forme d'item non decidee
+ *       resterait, elle, un echec de construction et non un silence.</li>
  *   <li><b>Mise a l'epreuve</b> : deux morsures, toutes deux sur la <b>sortie reelle du serveur</b>.
  *       L'une retire la question - c'est l'etat exact du produit avant ce lot. L'autre y met la
  *       question d'une <b>autre</b> manche de la meme partie, ce qu'aucune assertion de presence ne
@@ -286,6 +287,15 @@ class AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest {
         List<FinDePartieServie> population = new ArrayList<>();
         for (GameDefinition jeu : partie.jeuxDisponibles()) {
             List<Item> items = itemsDe(jeu.contenu(), MANCHES);
+            if (items.get(0) instanceof ZoneADesigner) {
+                // ADR-0088 clause B (S33-PAL2-1, s34) : l'ecran de fin de partie d'une designation ne
+                // nomme jamais de reponse - ni un identifiant technique, ni un libelle positionnel -
+                // quel que soit le verdict. C'est la meme exclusion, decidee et non omise, que celle
+                // deja documentee ci-dessus pour l'ecran d'une manche reussie : "cet ecran ne nomme
+                // aucune reponse, donc aucune reponse n'y est orpheline". Aucune reponse ne peut donc
+                // jamais etre jugee ici, sur aucun de ses items - ce jeu est hors de cette population.
+                continue;
+            }
             MockHttpSession session = new MockHttpSession();
             mockMvc.perform(post("/parties/{jeuId}", jeu.id()).session(session));
 

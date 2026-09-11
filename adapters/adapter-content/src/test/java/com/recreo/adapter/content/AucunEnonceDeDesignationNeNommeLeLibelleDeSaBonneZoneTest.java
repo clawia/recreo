@@ -1,5 +1,6 @@
 package com.recreo.adapter.content;
 
+import com.recreo.application.catalog.GameDefinition;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -36,11 +37,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * recouvrement lexical n'existe entre l'enonce et le libelle. Cette moitie-la reste entierement a la
  * relecture de {@code nadia-prof}, item par item ; ce garde-fou n'y pretend pas.</p>
  *
- * <p><b>Pourquoi ce garde-fou n'est pas encore cable sur le contenu de production</b>, meme motif
- * qu'{@link LaBonneZoneNEstPasPredictibleSurUnPaquetTest} : aucun paquet de designation n'existe sous
- * {@code src/main/resources/contenu} a ce jour (`DEC-0074`), et une clause sur une population vide
- * serait refusee par ADR-0051. Elle est ecrite et eprouvee sur des paquets fictifs, prete a etre
- * pointee sur le contenu reel des le premier paquet de designation livre.</p>
+ * <p><b>Cablee sur le contenu de production depuis S33-PAL2-1 (s34)</b>, meme motif
+ * qu'{@link LaBonneZoneNEstPasPredictibleSurUnPaquetTest} : le premier paquet de designation servi
+ * ({@code cp-frise-de-la-journee}) donne enfin une population reelle a la clause ci-dessous.</p>
  *
  * <p>ADR-0013, les trois obligations : perimetre derive - les items viennent de la chaine reelle
  * ({@link YamlContentPackLoader}) ; derivation totale - chaque item de designation d'un paquet est
@@ -131,5 +130,28 @@ class AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest {
         assertThat(items).isNotEmpty();
 
         verifier(verifierQuAucunEnonceNeNommeLeLibelleDeSaBonneZone("vrai-paquet-designation", items));
+    }
+
+    /**
+     * <b>S33-PAL2-1 : le balayage de production, du depuis ADR-0080 et jamais ecrit avant ce lot.</b>
+     * Meme motif et meme forme que {@link LaBonneZoneNEstPasPredictibleSurUnPaquetTest#surLeContenuReelDeProductionLaBonneZoneNEstPasPredictible}.
+     */
+    @Test
+    void surLeContenuReelDeProductionAucunEnonceNeNommeLeLibelleDeSaBonneZone() {
+        List<String> defauts = new ArrayList<>();
+        int paquetsDeDesignationExamines = 0;
+        for (GameDefinition jeu : new YamlContentPackLoader().games()) {
+            List<ZoneADesigner> items = itemsDeDesignation(jeu.contenu());
+            if (items.isEmpty()) {
+                continue;
+            }
+            paquetsDeDesignationExamines++;
+            defauts.addAll(verifierQuAucunEnonceNeNommeLeLibelleDeSaBonneZone(jeu.id(), items));
+        }
+
+        assertThat(paquetsDeDesignationExamines)
+                .as("ADR-0051 : ce garde-fou n'a examine aucun paquet de designation reel")
+                .isPositive();
+        assertThat(defauts).isEmpty();
     }
 }

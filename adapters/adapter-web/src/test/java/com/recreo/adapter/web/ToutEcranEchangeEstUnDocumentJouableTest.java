@@ -84,6 +84,9 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     /** S24 : le jeu de la seconde mecanique du catalogue de test (PartieControllerTest). */
     private static final String JEU_SAISIE_ID = PartieControllerTest.JEU_SAISIE_ID;
 
+    /** ADR-0080 : le jeu de la troisieme mecanique du catalogue de test (PartieControllerTest). */
+    private static final String JEU_DESIGNATION_ID = PartieControllerTest.JEU_DESIGNATION_ID;
+
     private static final String NIVEAU = "CP";
 
     /**
@@ -246,6 +249,20 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 "POST /parties/{jeuId}/reponses",
                 assembler(corps(post("/parties/{jeuId}/reponses", JEU_SAISIE_ID)
                         .session(partieDeSaisieReussie).param("reponseEcrite", "sept")))));
+
+        // ADR-0080 : la route de la troisieme mecanique.
+        MockHttpSession partieDeDesignation = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_DESIGNATION_ID).session(partieDeDesignation));
+        ecrans.add(new Ecran("manche de designation apres une designation fausse, la partie continue",
+                "POST /parties/{jeuId}/designations",
+                assembler(corps(post("/parties/{jeuId}/designations", JEU_DESIGNATION_ID)
+                        .session(partieDeDesignation).param("zoneDesignee", "porte")))));
+        corps(post("/parties/{jeuId}/designations", JEU_DESIGNATION_ID).session(partieDeDesignation)
+                .param("zoneDesignee", "tableau"));
+        ecrans.add(new Ecran("retour de la derniere manche de designation, fin de partie",
+                "POST /parties/{jeuId}/designations",
+                assembler(corps(post("/parties/{jeuId}/designations", JEU_DESIGNATION_ID)
+                        .session(partieDeDesignation).param("zoneDesignee", "fenetre")))));
 
         ecrans.add(new Ecran("liste filtree par niveau, aucune partie en cours", "GET /niveaux/{niveau}",
                 Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU)))));

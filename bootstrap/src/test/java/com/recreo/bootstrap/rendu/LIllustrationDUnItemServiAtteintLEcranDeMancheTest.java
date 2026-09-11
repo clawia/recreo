@@ -174,17 +174,24 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
      * trois types qu'ADR-0073 a instruits - {@code question}, dont les items peuvent declarer une
      * illustration ; {@code additions-bornees}, dont les items ne sont jamais lus dans un YAML ;
      * {@code saisie}, dont {@code ReponseAEcrire} ne declare aucune composante d'illustration - et
-     * elle <b>leve</b> sur tout autre. Elle ne pose <b>aucune</b> branche pour {@code designation} :
-     * une exemption ecrite d'avance pourrirait le jour ou le contrat de son item changerait, alors
-     * qu'un rouge pose la question avec le record sous les yeux. Le jour ou T6 sert le premier paquet
-     * de designation, ce garde-fou est rouge et sa branche s'ecrit la. Le tri de perimetre reste ou
-     * il etait, dans {@link #estUnPaquetDeQuestions(Map)} : ce gate-ci ne juge que le fait d'avoir
-     * ete instruit.</p>
+     * elle <b>leve</b> sur tout autre.</p>
+     *
+     * <p><b>Decide au 2026-09-10 (S33-PAL2-1, s34) : {@code designation} rejoint la liste des types
+     * instruits, sans lui ouvrir de branche de jeu.</b> Le premier paquet reel a rendu ce rouge date,
+     * et la question qu'il posait avait deja sa reponse : ce fichier entier construit des
+     * {@link GameDefinition} de mecanique {@code BanditManchot} pour rejouer la traversee HTTP du
+     * champ illustration - il ne peut pas, et n'a pas a, exercer la troisieme mecanique, dont l'ecran
+     * de manche et le gabarit sont entierement distincts (voir {@code PartieController.mancheDeDesignation},
+     * {@code fragments/designation.html}). Reconnaitre le type ici fait retomber un paquet de
+     * designation dans le filtre existant de {@link #estUnPaquetDeQuestions(Map)}, qui l'ecarte
+     * (il ne l'ecartait pas en silence avant cette decision : il faisait lever ce garde-fou, faute
+     * d'une decision explicite). La garantie que la designation illustre reellement l'ecran qu'elle
+     * sert est tenue ailleurs, par le rendu propre a cette mecanique.</p>
      */
     private static void verifierQueLeTypeEstInstruit(String paquet, Map<String, Object> corps) {
         String type = String.valueOf(corps.get("type"));
         switch (type) {
-            case "question", "additions-bornees", "saisie" -> { }
+            case "question", "additions-bornees", "saisie", "designation" -> { }
             default -> throw new IllegalStateException(refusDuType(paquet, type));
         }
     }
@@ -533,20 +540,20 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
     /**
      * ADR-0013 obligation 3, et la morsure porte sur du <b>materiau reel</b> : le corps d'un paquet
      * servi du depot, decouvert et non nomme, dont la seule mutation est la valeur de sa cle
-     * {@code type}. C'est l'etat exact qu'aura la population le jour ou T6 servira le premier paquet
-     * de designation, et ce jour-la ce garde-fou doit rougir plutot que d'ecarter en silence la seule
-     * mecanique ou l'illustration est obligatoire.
+     * {@code type}. Le type fictif ne nomme aucun type reel du depot (question, saisie,
+     * additions-bornees, designation sont tous desormais instruits, ADR-0088 clause C) : c'est ce qui
+     * prouve que la derivation mord sur un type neuf, jamais sur un nom particulier.
      */
     @Test
     void unPaquetDUnTypeQueCeGardeFouNeSaitPasJugerLeFaitEchouer() {
         String paquet = paquetsDuRepertoireDeContenu().stream().sorted().findFirst().orElseThrow();
         Map<String, Object> corps = lireYaml("/contenu/" + paquet + ".yaml");
-        corps.put("type", "designation");
+        corps.put("type", "type-fictif-non-instruit");
 
         assertThatThrownBy(() -> verifierQueLeTypeEstInstruit(paquet, corps))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("type 'designation'")
-                .hasMessageContaining("ZoneADesigner la rend obligatoire");
+                .hasMessageContaining("type 'type-fictif-non-instruit'")
+                .hasMessageContaining("ne sait donc pas juger");
     }
 
     @TestConfiguration

@@ -657,12 +657,18 @@ class RessourcesTiercesTest {
     /**
      * ADR-0073 clause 3, et c'est la premiere des deux moities : l'exemption <b>existe</b> et elle est
      * exercee par la production, pas par une fixture. Le plafond vaut exactement la taille de la
-     * population - une reference admise, celle du fragment de manche. Un second gabarit qui voudrait
-     * une illustration de contenu rend ce test rouge, et son auteur lit ADR-0073 au lieu de decouvrir
-     * apres coup que le garde-fou a cesse de compter.
+     * population. Un gabarit qui voudrait une illustration de contenu de plus rend ce test rouge, et
+     * son auteur lit ADR-0073 au lieu de decouvrir apres coup que le garde-fou a cesse de compter.
+     *
+     * <p><b>Porte de 1 a 2 (ADR-0080, T4, s34) : fragments/designation.html rejoint
+     * fragments/manche.html.</b> C'est la meme decision - l'illustration d'un item, dont le chemin est
+     * compose ici et nulle part ailleurs (ADR-0073 clause 1 et 3) -, sur la troisieme mecanique : une
+     * designation ne montre rien d'autre que l'image que le contenu declare, et {@code ZoneADesigner}
+     * la rend meme obligatoire (ADR-0080, decision 1). Ce n'est pas une decision neuve a tracer ; c'est
+     * la meme regle, exercee une seconde fois.
      */
     @Test
-    void uneSeuleReferenceDeLaProductionEstUneIllustrationDeContenu() {
+    void deuxReferencesDeLaProductionSontDesIllustrationsDeContenu() {
         List<String> admises = new ArrayList<>();
         for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
@@ -676,8 +682,8 @@ class RessourcesTiercesTest {
         assertThat(admises)
                 .as("ADR-0051 et ADR-0073 clause 3 : cette exemption ne prouve rien tant qu'aucune "
                         + "reference de production ne l'emprunte, et elle cesse d'etre etroite des "
-                        + "qu'une seconde l'emprunte sans qu'on l'ait decide")
-                .hasSize(1);
+                        + "qu'une troisieme l'emprunte sans qu'on l'ait decide")
+                .hasSize(2);
     }
 
     /**
