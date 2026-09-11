@@ -22,7 +22,29 @@
          reserve 4). ADR-0017 : data-role="sortie". -->
     <button type="button" class="btn sortie-pleine" data-role="sortie"
             hx-post="/retour" hx-target="#jeu" hx-swap="innerHTML">Les jeux</button>
-    <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
+    <!-- S35-SCO1-ECRAN-FIN, SCO-R1 (verdicts-nadia-instance-A.md, section 5.2), ADR-0083 : cet ecran
+         portait un troisieme exemplaire du meme defaut que REV-1 et REV-3 avaient deja corrige plus
+         bas dans ce fichier - une concatenation Thymeleaf, "'Score : ' + score.reussites()", qui de
+         surcroit echappait a TexteAccentueDesGabaritsTest (son inventaire ne lit que les noeuds de
+         texte litteraux, et un th:text remplace tout son sous-arbre au rendu : les mots "Score : "
+         n'y ont jamais ete visibles). Un enfant qui avait fait dix manches et en avait trouve six
+         seul lisait "Score : 6", un point final - SCO-R1 refuse ce nombre reduit qui remplace les
+         deux informations que l'enfant doit lire.
+         Forme retenue (avis de faisabilite de theo-archi, s35, section 1.3) : les deux nombres que
+         Score porte deja (reussites, tentatives) sont rendus dans deux elements distincts, chacun
+         seul et entier dans le sien, jamais l'un concatene dans une phrase - meme forme que
+         .reponse-attendue plus bas. Les mots invariants sont desormais du texte litteral du
+         gabarit, donc visibles de TexteAccentueDesGabaritsTest. Places hors du bloc .signal, comme
+         les deux etaient deja : rendus identiquement que la derniere manche ait ete resolue par une
+         reussite ou par une revelation (nadia-prof, meme section, dernier point : "je n'ai pas
+         verifie ce que le texte neuf y donnerait" sur ce cas precis).
+         Le texte lui-meme reste un candidat, au sens ou les autres textes de ce fichier le sont deja
+         (SAI-9b, "La bonne réponse :") : nadia-prof l'arbitre en jouant, avant le Done pedagogique
+         de cette story. -->
+    <p class="score-trouve-libelle">Tu as trouvé, tout seul :</p>
+    <p class="score-trouve-nombre" th:text="${score.reussites()}"></p>
+    <p class="score-joue-libelle">Tu as joué toutes les questions :</p>
+    <p class="score-joue-nombre" th:text="${score.tentatives()}"></p>
     <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <div> n'est pas
          focalisable nativement ; c'est la seule maniere dont focus() peut l'atteindre quand aucun
          data-focus n'est present sur cet ecran, et que le script replie sur .signal. -->

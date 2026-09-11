@@ -96,7 +96,7 @@ class PaquetCm1AnglaisTest {
                     Map.entry("le drapeau des États-Unis", "États-Unis"),
                     Map.entry("Thanksgiving", "États-Unis"),
                     Map.entry("un uniforme scolaire", "Royaume-Uni"),
-                    Map.entry("le bus à impériale", "Royaume-Uni"),
+                    Map.entry("le bus à impériale (deux étages)", "Royaume-Uni"),  // S35-ANG-R3 : le mot "impériale" est desormais explique dans la proposition elle-meme
                     Map.entry("Halloween", "États-Unis"),
                     Map.entry("en bus scolaire jaune", "États-Unis"),
                     Map.entry("la statue de la Liberté", "États-Unis"));
