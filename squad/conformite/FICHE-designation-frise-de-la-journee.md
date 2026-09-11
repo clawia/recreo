@@ -2,8 +2,19 @@
 
 - **Mecanique** : `designation` (**mecanique neuve du produit**, `ADR-0080`, `ADR-0088`)
 - **Contenu(s)** : `cp-frise-de-la-journee` (11 items, deux dessins)
-- **Statut global** : **REFUSE** (premier passage, 2026-09-11)
-- **Derniere mise a jour** : 2026-09-11
+- **Statut global** : **VALIDE SOUS RESERVE** (REFUSE au premier passage le 2026-09-11, **refus leve
+  au second passage du 2026-09-11, s35** - les deux blocs de validation sont lisibles ci-dessous,
+  dans cet ordre)
+- **Etat au 2026-09-11 (s35, `S35-QLM14-FRISE`)** : **`FRI-R1` et `FRI-R2` sont LEVEES.** La passe
+  image effacee, rejouee sur les onze items, tombe a **5 sur 11** contre 9 sur 11 a s34, et le
+  pictogramme du lever se lit comme un lit aux deux tailles. **`QLM-CP-14` passe `couvert-valide` et
+  la mention de couverture partielle de la matrice tombe.** Reserves ouvertes, toutes non
+  bloquantes : **`FRI-R6`** (le texte alternatif de la frise du soir annonce *quatre moments de
+  gauche a droite* pour un dessin de quatre moments sur **trois places**, deux d'entre eux empiles -
+  **la plus lourde, a payer avant que la formule ne soit recopiee**), **`FRI-R7`** (l'indice de
+  l'item 9 nomme un rang que les libelles ne portent pas), et `FRI-R3`, `FRI-R4`, `FRI-R5`
+  inchangees.
+- **Derniere mise a jour** : 2026-09-11 (s35)
 
 > **Fiche ouverte par `nadia-prof`, instance B de s34, et non par `camille-po`.** Le jeu est neuf, la
 > mecanique est neuve, aucune fiche n'existait. J'ai rempli les sections descriptives depuis la story
@@ -273,3 +284,217 @@ suffit.
 | **Les boutons de zone couvrent le dessin** | `ines-design`, `theo-archi` | **Le fait le plus lourd de cet audit.** Il n'est pas un defaut de ce contenu et il frappera tous les paquets de designation. `ZON-15` (b) le nomme a partir d'aujourd'hui |
 | **`ZON-15`, `ZON-16` appliquees a `QLM-CP-11`** | `camille-po`, `ines-design` | Les deux moities de l'obstacle du plan de la classe : les cadres a `ines-design`, les six libelles a moi. **Aucune ne suffit seule** |
 | **Le mouvement de matrice** | `camille-po` | **Aucun.** `QLM-CP-14` reste `non couvert`, `QLM-CP-11` reste `non couvert`. Je ne touche pas `MATRICE-couverture.md` |
+
+---
+
+## Bloc de validation pedagogique - nadia-prof UNIQUEMENT - second passage, s35 (`S35-QLM14-FRISE`)
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **Il s'ajoute au refus du
+> 2026-09-11 sans en effacer une ligne** : le premier bloc reste lisible au-dessus, avec ses deux
+> motifs. Un refus efface n'a aucune valeur de preuve.
+
+- **Verdict** : **VALIDE SOUS RESERVE** - **premier `VALIDE` de cette fiche**
+- **Date** : 2026-09-11 (s35)
+- **Auteur** : `nadia-prof`
+- **Arbre** : `s35-integration` a `c1b326d4`, worktree `s35-nadia`
+- **Ce que ce verdict autorise** : `FRI-R1` et `FRI-R2` sont **levees**. `QLM-CP-14` peut passer
+  `couvert-valide`, **et la mention de couverture partielle de la matrice ("moitie
+  anteriorite/posteriorite seule") tombe** - `FER-1` etant deja verifiee tenue sur les trois
+  relations a s34, je ne la redemande pas.
+- **Audit joue** : **oui.** Jar reconstruit depuis mon propre worktree, lance sur le JDK `21.0.10`
+  de la toolchain. **Une partie complete de dix manches avec une erreur volontaire sur chacune**,
+  pour lire les dix indices servis, plus une passe sur le onzieme item. **Les onze items ont ete vus
+  a l'ecran, les deux dessins et leurs deux textes alternatifs ont ete lus tels qu'ils sont servis.**
+- **Audit degrade sur un point, et je le declare** : a s34 j'avais rendu l'ecran de manche **dans un
+  navigateur**. Cette fois je ne l'ai pas fait. J'ai rendu les deux dessins **a partir de leur
+  geometrie**, a la taille servie (640 x 320) et au triple agrandissement, et mesure la place des
+  libelles **avec les metriques reelles de la police systeme de l'appareil a 1,25rem gras**, celle
+  que la pile `--bs-font-sans-serif` designe faute de `@font-face` servi. **Le controle qui rend
+  cette methode credible** : elle reproduit exactement la mesure que j'avais faite au navigateur a
+  s34 sur `FRI-R4` - *"le quatrieme"* et *"le cinquieme"* debordent de **2 a 3 px** de leur bouton.
+  Deux methodes independantes, le meme chiffre. Je m'appuie dessus sur cette base et pas davantage.
+
+### 1. `FRI-R1` est **levee**, et je dis exactement contre quoi je la mesure
+
+Mon refus portait une phrase : *"Un texte alternatif honnete dit ce que l'image est, pas ce qu'elle
+contient dans l'ordre."* **Les deux textes servis aujourd'hui, lus a l'ecran :**
+
+| Dessin | Texte alternatif servi | Dit-il ce que l'image est ? | Enumere-t-il ses moments ? |
+|---|---|---|---|
+| `frise-journee-ecole` | *"Frise de la journee d'ecole, six moments de gauche a droite."* | oui | **non** |
+| `frise-soir-routine` | *"Frise de la routine du soir, quatre moments de gauche a droite."* | oui | **non** |
+
+**La table de correspondance complete a disparu.** Aucune zone n'est nommee dans aucun des deux
+textes. Le libelle de la bonne zone n'est plus derivable de la lecture du texte alternatif.
+
+**L'indice de l'item 1** passe de *"C'est le tout premier moment de la journee"* - qui donnait *"le
+premier"* mot pour mot - a ***"C'est le moment ou l'on se reveille, avant tout le reste."*** Il ne
+reprend plus aucun jeton du libelle. **La clause est tenue a la lettre.**
+
+### 2. La passe image effacee, rejouee sur les onze items - **5 sur 11, contre 9 sur 11**
+
+Mon critere etait chiffre : *"moins de neuf items sur onze se resolvent sans regarder le dessin"*.
+**Je l'ai recomptee item par item, avec la seule information dont un enfant dispose quand l'image
+est effacee : l'enonce, le texte alternatif, et la liste des libelles de zone.**
+
+| Item | Ce qui est demande | Bonne zone -> libelle | Resoluble sans le dessin ? |
+|---|---|---|---|
+| 1 | *Montre le lever.* | `lever` -> *le premier* | **oui** - se lever est le premier moment d'une journee, l'enfant le sait de sa vie |
+| 2 | *Montre le petit-dejeuner.* | `petit-dejeuner` -> *le deuxieme* | **oui**, de justesse - le repas qui suit le lever |
+| 3 | *Montre l'ecole du matin.* | `ecole-matin` -> *le troisieme* | **non** - rien ne dit **quels** six moments la frise porte |
+| 4 | *Montre le dejeuner.* | `dejeuner` -> *le quatrieme* | **non**, meme raison |
+| 5 | *juste avant l'ecole du matin* | `petit-dejeuner` -> *le deuxieme* | **non** - il faut d'abord placer l'ecole du matin |
+| 6 | *juste apres le dejeuner* | `ecole-apres-midi` -> *le cinquieme* | **non** |
+| 7 | *juste avant le petit-dejeuner* | `lever` -> *le premier* | **oui** - ce qui precede le petit-dejeuner est le premier moment |
+| 8 | *Montre le diner.* | `diner` -> *le premier* | **oui** - premier moment d'une routine du soir |
+| 9 | *Montre le coucher.* | `coucher` -> *le troisieme* | **oui** - le dernier libelle de la liste |
+| 10 | *en meme temps que se brosser les dents* | `pyjama` -> *le deuxieme, en bas* | **non** - deux candidats sur quatre, sans moyen de choisir. Un tirage a pile ou face n'est pas une resolution |
+| 11 | *en meme temps que mettre son pyjama* | `brosse-dents` -> *le deuxieme, en haut* | **non**, meme raison |
+
+**Cinq sur onze.** Le critere est tenu, et largement.
+
+**Et je tranche la lecture du residu plutot que de la laisser ouverte, parce qu'elle compte.** Les
+cinq items qui restent resolubles sans le dessin le sont **parce que l'enfant connait la chronologie
+de sa propre journee** et que les libelles sont des rangs. **Ce n'est plus une contrefacon : c'est
+`QLM-CP-14` elle-meme**, exercee sur des rangs. A s34 l'enfant lisait la reponse dans un texte ;
+aujourd'hui il la deduit d'un savoir qu'on veut justement lui faire travailler. **La difference
+n'est pas de degre, elle est de nature**, et c'est pour cela que je leve.
+
+`ZON-10` n'est pas amendee, comme la story le prevoit, et je ne rouvre pas les libelles positionnels
+de ce paquet.
+
+### 3. `FRI-R2` est **levee** - je trouve le lit
+
+Mon refus decrivait ce que je voyais : *"un rectangle large avec un petit rectangle et un trait, plus
+un trait vertical detache qui deborde au-dessus. Je ne trouve pas le lit."*
+
+**Regarde a la taille servie puis au triple agrandissement, le pictogramme reforme donne** : un
+montant vertical haut et etroit a gauche, **ferme et accole** au sommier, tous deux posant sur la
+meme base ; un oreiller en petit rectangle arrondi pose sur le sommier contre le montant, et un pli
+de couverture en trait a l'interieur du sommier. **C'est la silhouette classique d'un lit vu de cote,
+et je la reconnais aux deux tailles.** Les trois defauts que j'avais nommes sont tous corriges : le
+trait detache est devenu un montant ferme, il ne deborde plus au-dessus, et il partage la base du
+sommier au lieu de flotter.
+
+L'item 7, qui vise la meme zone par une relation, n'est pas concerne et n'a pas ete retouche.
+
+### 4. Ce que j'ai regarde parce que `theo-archi` me l'a route, et ma reponse : **oui, c'est un probleme reel, non, il n'est pas bloquant**
+
+`theo-archi` signale (confirmation ArchUnit de s35) que l'item 9 porte l'indice *"C'est le tout
+dernier moment de la journee"* alors que le libelle de sa bonne zone est *"le troisieme"*, et que le
+garde-fou d'`ADR-0091` laisse passer ce cas, aucun jeton du libelle n'etant repris litteralement.
+**Je l'ai joue.**
+
+**Ce que j'y trouve n'est pas celui des deux defauts qu'il soupconnait, et c'est pire nomme
+autrement.** Le probleme n'est pas que l'indice donne la reponse par paraphrase - c'est qu'il **nomme
+un rang dans une echelle que le dessin n'offre pas**. La frise du soir porte **quatre moments** et
+**trois places** sur l'axe, parce que deux moments sont empiles a la meme place. Un enfant qui vient
+de compter quatre dessins s'entend dire *"le tout dernier"* et cherche un quatrieme bouton : il n'en
+existe pas, le dernier libelle est *"le troisieme"*. **Deux systemes de comptage se croisent sur le
+meme ecran.**
+
+**Pourquoi ce n'est pas bloquant** : l'indice n'arrive qu'apres une erreur, la bonne zone est
+presente et atteignable, l'enfant qui presse *"le troisieme"* obtient *"Bravo"*, et l'accroc est un
+temps d'hesitation, pas une reponse fausse. **L'item 9 n'etait pas dans le perimetre de mon refus et
+je ne l'y ajoute pas apres coup** ; je le date comme une reserve nouvelle.
+
+> **`FRI-R7`** - **reserve neuve, datee du 2026-09-11 (s35), non bloquante.**
+>
+> - **Objet** : *sur la frise du soir, un indice ne nomme pas un rang que les libelles ne portent
+>   pas.* L'indice de l'item 9 dit *le tout dernier* la ou le dernier libelle est *le troisieme*, sur
+>   un dessin de quatre moments.
+> - **Mode de defaillance** : **renumeroter les libelles de la frise du soir** pour que le coucher
+>   devienne *"le quatrieme"*. Cela detruirait la relation *en meme temps* que le partage du rang 2
+>   encode, et rouvrirait l'arbitrage que j'ai rendu le 2026-09-10 sur `ZON-11`. **Le geste est du
+>   cote de l'indice** : dire le fait du monde (*"c'est le moment ou l'on s'endort, apres tout le
+>   reste"*) plutot qu'un rang.
+> - **Perimetre, mesure sur l'etat d'arrivee** : **un indice, sur un item.**
+> - **Regime et prix** : **mot pour mot, 0,25.**
+
+### 5. `FRI-R6` - **reserve neuve, datee du 2026-09-11 (s35), non bloquante** : le texte alternatif de la frise du soir decrit une disposition qui n'est pas celle du dessin
+
+**C'est le point le plus lourd de cet audit, et il est de ma main : mon propre critere demandait
+*"une frise de tant de moments, disposee ainsi"*. Le nombre est juste ; la disposition est fausse.**
+
+**Mesure, sur le dessin servi et sur son texte.** `frise-soir-routine.svg` porte **trois graduations**
+sur l'axe du temps - le diner, puis une seule place partagee par la brosse a dents et le pyjama
+empiles, puis le coucher. **Quatre moments, trois places, deux d'entre eux l'un au-dessus de
+l'autre.** Le texte alternatif servi dit : *"Frise de la routine du soir, quatre moments de gauche a
+droite."*
+
+**Quatre moments de gauche a droite decrit une file de quatre places. Ce n'est pas le dessin.** Et
+l'ecart ne tombe pas n'importe ou : **il tombe exactement sur la relation que les items 10 et 11
+testent.** Un enfant qui travaille sur ce texte - parce qu'il ne voit pas, ou parce que l'adulte qui
+l'accompagne le lui lit, ce que la premisse du produit prevoit - s'entend decrire une succession la
+ou l'exercice porte sur la simultaneite. **On lui donne le contraire de ce qu'il doit trouver.**
+
+- **Objet** : *le texte alternatif d'un dessin de frise dit la disposition reelle du dessin, y
+  compris quand deux moments partagent une place sur l'axe.*
+- **Mode de defaillance** : **nommer les deux moments empiles** pour dire leur partage, ce qui
+  rouvrirait `FRI-R1` et violerait la clause 1 d'`ADR-0091`. **Le partage se dit sans nommer
+  personne** - *"trois places sur l'axe ; a la place du milieu, deux moments l'un au-dessus de
+  l'autre"* nomme zero zone.
+- **Perimetre, mesure sur l'etat d'arrivee** : **un texte alternatif**, repete sur les quatre items
+  du dessin du soir. Le texte de la frise d'ecole est juste et ne bouge pas.
+- **Pourquoi je ne refuse pas dessus, et je l'ecris pour qu'on puisse me le reprocher** : `FRI-R1`
+  etait une reserve sur **la table de correspondance**, c'est-a-dire sur le fait que le texte donnait
+  la reponse. **Cette dishonnetete-la a disparu.** Ce qui reste est une inexactitude de description,
+  sur un canal que l'enfant voyant n'emprunte pas, et refuser dessus laisserait `QLM-CP-14` non
+  couverte pour un cinquieme sprint alors que les deux motifs que j'avais nommes bloquants sont tous
+  les deux payes. **Mais je le dis sans detour : si cette phrase etait un enonce et non un texte
+  alternatif, elle serait un refus a elle seule, parce qu'une erreur factuelle dans un contenu
+  scolaire en est un.** Elle est a payer avant que la formule ne soit recopiee sur un paquet de
+  designation de plus.
+- **Regime et prix** : **mot pour mot, 0,25.**
+
+### 6. Ce que je verifie et qui ne fonde aucune demande
+
+- **Les onze indices, exactitude et niveau** : justes, 9 a 14 mots, aucun mot hors de portee d'un CP.
+- **Les trois relations de `FER-1`** : *avant* (items 5, 7), *apres* (item 6), *en meme temps* (items
+  10, 11). Rejouees, toutes trois servies, et la geometrie **montre** la simultaneite. `FER-3` : six
+  et cinq items.
+- **`ZON-11`** : l'ordre des boutons dans le formulaire est celui de l'axe puis du haut vers le bas
+  dans la colonne partagee - exactement ce que j'ai tranche le 2026-09-10. Inchange.
+- **`ZON-13`** : aucun chevauchement de cadres, verifie sur les deux dessins. L'intervalle de 2 %
+  entre les deux cadres empiles tient.
+- **`ZON-14`** : un item, un geste.
+- **L'ecran de fin de partie** porte la question qu'il commente et ne montre ni identifiant ni
+  libelle de zone (`ADR-0088`, clauses A et B). Verifie a l'ecran : *"Bravo, c'est juste ! / Montre
+  le lever."*
+- **Les deux nombres de l'ecran de fin** : justes sur cette mecanique aussi. Verdict separe dans
+  `PASSE-TRANSVERSE-s35-ecran-de-fin-de-partie.md`.
+- **`FRI-R4`** : remesure, 2 a 3 px de debordement sur *"le quatrieme"* et *"le cinquieme"*, chiffre
+  identique a celui de s34. **Reserve inchangee, non bloquante, non rouverte.**
+
+### 7. Ce que je ne compte pas, pour ne pas deplacer mes poteaux
+
+- **`ZON-15` ne s'applique pas a ce paquet, et je le dis parce que j'aurais pu m'en servir.** Je
+  l'ai ecrite le 2026-09-11 en declarant explicitement *"elles ne valent pas contre le lot
+  d'aujourd'hui"*, et la story de s35 la reserve au plan de la classe (*"elle ne touche pas la
+  geometrie des cadres ni la taille des libelles du plan de classe - story separee"*). **Les
+  libelles de la frise recouvrent bien des traits des pictogrammes qu'ils designent - je l'ai vu -
+  et je ne l'oppose pas a ce lot.** Ce sera opposable au prochain lot de frise, pas a celui-ci.
+- **`FRI-R3`** (le bol du diner ne porte pas le repas du soir) et **`FRI-R5`** (la revelation apres
+  trois essais n'est qu'un deplacement de focus) restent ouvertes, non bloquantes, hors perimetre.
+- **Le recouvrement general des boutons de zone sur le dessin** reste le defaut transverse route a
+  `ines-design` et `theo-archi`, borne par `ADR-0092`. Je ne le compte pas ici.
+
+### 8. Ce dont je reste la seule garde sur ce paquet
+
+| Propriete | Garde executable ? |
+|---|---|
+| **Le texte alternatif ne nomme aucune zone** (`ADR-0091`, clause 1) | **garde, et mis a l'epreuve sur le fichier de production** par `yanis-qa` (rapport de s35, section 3.1 : rouge sur le fichier remis a son etat fautif, vert restaure). **Je ne suis plus seule garde de ce point**, et je le porte au credit du lot |
+| **L'indice ne reprend aucun jeton distinctif du libelle** (`ADR-0091`, clause 2) | **garde, meme mise a l'epreuve.** Mais il compare des **jetons** : *"avant tout le reste"* pour *"le premier"*, *"le tout dernier"* pour *"le troisieme"*, **passent tous les deux**. **Je reste seule garde de la paraphrase**, comme je l'avais annonce a s29 |
+| **L'exactitude du texte alternatif contre le dessin** (`FRI-R6`) | **aucun.** Aucun test ne lit un dessin. C'est moi, en regardant |
+| **La passe image effacee** - combien d'items se gagnent sans le dessin | **aucun**, et `ADR-0091` le dit lui-meme. `yanis-qa` le declare comme limite de mesure (section 6 de son rapport). **C'est moi, en jouant, et le chiffre de cet audit est 5 sur 11** |
+| **Qu'un pictogramme se lise** (`ZON-9`) | **aucun.** C'est moi, en regardant, a la taille servie et au triple agrandissement |
+
+### 9. Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| **Le mouvement de matrice** | `camille-po` | **`QLM-CP-14` -> `couvert-valide`**, et **la mention de couverture partielle tombe** |
+| **`FRI-R6`** - le texte alternatif de la frise du soir | `camille-po` | Non bloquante mais **prioritaire sur les autres reserves de ce paquet** : la formule sera recopiee sur le prochain paquet de designation. **Je n'ecris pas le texte** (`RES-2`), je dis ce qu'il doit rendre |
+| **`FRI-R7`** - l'indice de l'item 9 | `camille-po` | Non bloquante |
+| **`FRI-R3`, `FRI-R4`, `FRI-R5`** | `camille-po` | Inchangees, ouvertes, non bloquantes |
+| **La paraphrase qu'`ADR-0091` clause 2 ne voit pas** | `theo-archi`, pour information | **Je ne demande pas de garde-fou** : `ADR-0091` dit lui-meme ce qu'il ne garde pas. Je demande qu'on n'ecrive nulle part que cette clause couvre la paraphrase |
