@@ -14,9 +14,9 @@
 
 Verifie avec `outils/verifier-lignee.sh` avant toute ecriture, sur chacun des trois worktrees :
 
-- `s35-camille` (`C:\perso\recreo-s35-camille`, commit `eaa0552e`) : descend de `round-two`.
-- `s35-theo` (`C:\perso\recreo-s35-theo`, commit `c64d8b57`) : descend de `round-two`.
-- `s35-sofia` (`C:\perso\recreo-s35-sofia`, ouvert pour ce planning depuis `round-two` a
+- `s35-camille` (`../recreo-s35-camille`, commit `eaa0552e`) : descend de `round-two`.
+- `s35-theo` (`../recreo-s35-theo`, commit `c64d8b57`) : descend de `round-two`.
+- `s35-sofia` (`../recreo-s35-sofia`, ouvert pour ce planning depuis `round-two` a
   `60e1c836`) : descend de `round-two`.
 
 Les deux branches ne touchent aucun fichier en commun (`s35-camille` : `docs/backlog/backlog.md`,
