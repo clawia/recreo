@@ -1,0 +1,18 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, ADR-0095).
+# Deux entrees, une seule fautive : le jeu fautif doit prouver que la regle DISCRIMINE, pas
+# seulement qu elle sait dire non. La premiere sert un niveau que la sequence d ADR-0095 ne nomme
+# pas ; la seconde sert un niveau que la sequence nomme.
+schema: 1
+jeux:
+  - id: bandit-manchot-fautif-ce2
+    titre: "Les additions a trous"
+    consigne: "Combien ça fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-fautif-ce2
+    nombreDeManches: 10
+  - id: bandit-manchot-correct-cp
+    titre: "Les petites additions"
+    consigne: "Combien ça fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-correct-cp
+    nombreDeManches: 10

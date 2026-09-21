@@ -1,0 +1,14 @@
+# JEU FAUTIF, JAMAIS SERVI. Le defaut est ici, et nulle part ailleurs : le niveau declare n est
+# pas nomme dans OrdreDesNiveaux.SEQUENCE. Un en-tete le rangerait en dernier sans rien signaler.
+schema: 1
+id: paquet-fautif-ce2
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE2"
+  domaine: "Nombres et calculs"
+  competence: "Calculer des sommes"
+items:
+  - enonce: "Combien font 1 et 1 ?"
+    bonneReponse: "2"
+    distracteurs: ["3", "4"]

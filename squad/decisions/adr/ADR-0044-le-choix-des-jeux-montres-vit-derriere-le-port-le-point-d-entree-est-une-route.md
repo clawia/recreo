@@ -300,3 +300,24 @@ enumerer aucun.
   contenu ; leur graphie est une question de redaction pour un enfant (`DEC-0002`), pas une propriete
   d'architecture. La question voisine de la matiere accentuee est instruite dans l'avis de
   faisabilite de s14, pour s15.
+
+## Note du 2026-09-21 (`theo-archi`, s37) - la clause "dans l'ordre du catalogue" est perimee
+
+Cet `ADR` decrit `niveauxDuCatalogue()` comme rendant *"les valeurs distinctes ... dans l'ordre du
+catalogue"*. Ce n'est plus vrai depuis `ADR-0095` : l'ordre est desormais celui de la progression
+scolaire que `DEC-0090` fixe, porte par une cle de tri unique, et les valeurs distinctes sont
+triees par ce rang avant d'etre rendues.
+
+**Ce n'est pas un amendement, et la decision d'`ADR-0044` n'est pas touchee.** Ce qu'elle decide -
+le choix de ce que l'en-tete montre vit derriere le port entrant, jamais dans l'adaptateur de
+rendu - est inchange, et sa regle executable l'est aussi. `ADR-0095` s'appuie dessus plutot que de
+la contredire : c'est parce que le choix vit derriere le port que l'ordre pouvait y etre pose sans
+toucher un adaptateur. Seule la description d'un detail de rendu, exacte quand elle a ete ecrite,
+a cesse de l'etre. `DEC-0090` avait prevu cette note et laisse a l'architecte le choix entre elle
+et un amendement.
+
+L'alternative 6 ci-dessus - un enum `Niveau` dans le domaine, *"ecartee sans hesiter"* - est
+desormais encodee : `LOrdreDesNiveauxResteUneDonneeTest.aucunNiveauNEstUneConstanteDEnumeration`.
+Elle etait, jusqu'au 2026-09-21, refusee par deux `ADR` et gardee par aucune regle qui la voie -
+la mesure d'`ADR-0095` montre que la regle d'`ADR-0006` censee la tenir laissait passer la forme
+la plus probable.
