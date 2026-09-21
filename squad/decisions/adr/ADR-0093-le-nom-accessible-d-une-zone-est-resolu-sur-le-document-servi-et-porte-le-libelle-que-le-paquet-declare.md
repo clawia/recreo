@@ -3,6 +3,10 @@
 - **Statut** : **`Propose`** le 2026-09-21 (planning de s36). Il ne passera `Accepte` que quand ses
   deux clauses seront dans l'arbre, dans les deux fichiers nommes en section *Regle executable*,
   avec leurs quatre morsures.
+- **Amende le 2026-09-21** (meme jour, meme auteur, avant toute ligne de code) : **l'ordre de
+  resolution de la clause 1 etait l'inverse du calcul reel du nom accessible**, et la forme
+  proposee par `ines-design` le meme jour le revele. Voir *Amendement du 2026-09-21* en bas de la
+  section *Decision*.
 - **Sprint** : s36. **Date** : 2026-09-21. **Auteur** : `theo-archi`.
 - **Route par** : `S36-QLM11-PLANCLASSE` (`docs/backlog/backlog.md`, section "Sprint 36"), reprise
   de la ligne `QLM-CP-11` refusee a s35, et par la premiere des deux sorties que `nadia-prof`
@@ -98,12 +102,13 @@ degradations que le juge actuel interdit par accident :
 
 ### 1. Le nom accessible d'un bouton de zone est **resolu**, et trois formes seulement le portent
 
-Sur le document servi, le nom accessible d'un bouton de zone est :
+Sur le document servi, le nom accessible d'un bouton de zone est, **dans cet ordre** (voir
+l'amendement du 2026-09-21 en fin de section, qui a renverse cet ordre) :
 
-- le **texte** du bouton, s'il n'est pas vide ; sinon
-- la valeur de son **`aria-label`**, si elle n'est pas vide ; sinon
 - la concatenation des textes des elements que son **`aria-labelledby`** designe, **chaque**
-  identifiant devant resoudre, dans le meme document, vers un element au texte non vide.
+  identifiant devant resoudre, dans le meme document, vers un element au texte non vide ; sinon
+- la valeur de son **`aria-label`**, si elle n'est pas vide ; sinon
+- le **texte** du bouton, s'il n'est pas vide.
 
 Un bouton qui ne porte aucune des trois est **rouge**, exactement comme aujourd'hui. Un
 `aria-labelledby` dont un seul identifiant ne resout pas est **rouge** : c'est un nom accessible
@@ -131,9 +136,37 @@ regarder un ecran. Ce qui est encode est la moitie opposable - le nom existe, et
 contenu. Le reste reste l'oeil de `nadia-prof`, au meme titre que `ZON-15` depuis `ADR-0092`,
 decision 2. Ecrit ici pour qu'un vert de CI ne soit pas lu comme un Done pedagogique.
 
----
+### Amendement du 2026-09-21 - l'ordre de resolution etait l'inverse du bon
 
-## Regle executable ArchUnit
+**Ce que la clause 1 disait ce matin** : texte, sinon `aria-label`, sinon `aria-labelledby`. **Ce
+qu'elle dit desormais** : `aria-labelledby`, sinon `aria-label`, sinon texte.
+
+**Le fait qui l'a revele**, et il est arrive le jour meme : la forme proposee par `ines-design`
+(section 2.2 de sa proposition de s36) met **un numero de repere dans le bouton** et le libelle
+dans un `aria-label`. Sous l'ancien ordre, la clause 1 rend `"4"` - le texte l'emporte - et la
+clause 2 constate que `"4"` ne contient pas `"en haut, au centre"` : **rouge**. Or le nom que
+l'enfant entend est `"en haut, au centre"`, parce que `aria-label` l'emporte sur le texte du
+sous-arbre dans le calcul reel du nom accessible. **C'etait un faux rouge sur la seule forme qui
+survit**, et il aurait ete lu comme un defaut de la forme au lieu d'un defaut du juge.
+
+**L'ancien ordre n'etait pas seulement genant, il etait faux dans les deux sens.** Un bouton portant
+le texte `"en haut, au centre"` et `aria-label="bidule"` etait **vert** sous l'ancien ordre - juge
+sur son texte - alors que l'enfant entend `"bidule"`. Le nouvel ordre le rend **rouge**. Le
+renversement est donc un **renforcement**, jamais une concession : il ne rend vert aucun cas que
+l'ancien ordre refusait a bon droit, et il rend rouge un cas que l'ancien laissait passer.
+
+**Pourquoi l'erreur n'avait rien casse jusque-la, et pourquoi c'est precisement le motif de
+l'ecrire** : aucun bouton de ce depot ne porte aujourd'hui deux porteurs a la fois, donc les deux
+ordres coincident sur toute la population existante. Une clause qui n'est juste que parce que son
+cas discriminant n'existe pas encore est la meme famille de defaut que la clause d'origine que cet
+`ADR` corrige - un juge qui verifie une propriete plus etroite que celle que son nom annonce, et
+qui ne se trahit que le jour ou la propriete etroite et la propriete vraie se separent. Elle s'est
+separee en neuf heures.
+
+Le code de la section *Regle executable* est corrige en consequence. **Un cinquieme cas de morsure
+est du** : un bouton portant a la fois un texte et un `aria-label` differents est juge sur
+l'`aria-label`, et la morsure porte les deux verdicts dans la meme assertion - sans quoi le
+renversement pourrait etre decoratif sans que personne le voie.
 
 **Ce ne sont pas des `ArchRule`** : les objets juges sont des documents HTML rendus et des paquets
 de contenu charges, pas des classes. Aucune `ArchRule` n'est ajoutee par cet `ADR` ; le compte du
@@ -149,27 +182,29 @@ recompte aujourd'hui.**
 - `bootstrap/src/test/java/com/recreo/bootstrap/rendu/LEcranDeMancheDuJeuDeDesignationReelEstServiTest.java`
 
 ```java
-/** ADR-0093 clause 1 : le nom accessible est resolu, il n'est plus assimile au texte du bouton. */
+/**
+ * ADR-0093 clause 1 : le nom accessible est resolu, il n'est plus assimile au texte du bouton.
+ * Amendement du 2026-09-21 : l'ordre est celui du calcul reel du nom accessible - aria-labelledby,
+ * puis aria-label, puis le texte du sous-arbre. L'ordre inverse, ecrit le matin meme, rendait
+ * rouge un bouton correctement nomme par aria-label et vert un bouton renomme a l'insu du contenu.
+ */
 private static String nomAccessible(Element bouton, Document document) {
-    if (!bouton.text().isBlank()) {
-        return bouton.text();
+    String references = bouton.attr("aria-labelledby").trim();
+    if (!references.isBlank()) {
+        StringBuilder nom = new StringBuilder();
+        for (String identifiant : references.split("\\s+")) {
+            Element cible = document.getElementById(identifiant);
+            if (cible == null || cible.text().isBlank()) {
+                return "";
+            }
+            nom.append(nom.isEmpty() ? "" : " ").append(cible.text());
+        }
+        return nom.toString();
     }
     if (!bouton.attr("aria-label").isBlank()) {
         return bouton.attr("aria-label");
     }
-    String references = bouton.attr("aria-labelledby").trim();
-    if (references.isBlank()) {
-        return "";
-    }
-    StringBuilder nom = new StringBuilder();
-    for (String identifiant : references.split("\\s+")) {
-        Element cible = document.getElementById(identifiant);
-        if (cible == null || cible.text().isBlank()) {
-            return "";
-        }
-        nom.append(nom.isEmpty() ? "" : " ").append(cible.text());
-    }
-    return nom.toString();
+    return bouton.text();
 }
 ```
 
@@ -189,7 +224,9 @@ Pour chaque bouton de zone du document servi, `value` donne l'identifiant de zon
 le libelle de cette zone pour l'item joue ; la comparaison est un `contains` sur les deux chaines
 normalisees (espaces reduits, casse repliee).
 
-### Les quatre morsures dues (`ADR-0013`, obligation 3)
+### Les cinq morsures dues (`ADR-0013`, obligation 3)
+
+*Quatre a la redaction ; la cinquieme est due par l'amendement du 2026-09-21.*
 
 1. **Un bouton sans aucun des trois porteurs est rouge.** La propriete d'origine ne s'affaiblit pas.
 2. **Un bouton nomme par `aria-label` seul est vert sous le juge neuf, et rouge sous l'ancien.** La
@@ -199,6 +236,12 @@ normalisees (espaces reduits, casse repliee).
 4. **Un nom accessible qui ne porte pas le libelle declare est rouge**, sur **materiau reel** : le
    libelle d'une zone de `cp-plan-de-la-classe.yaml` mute en memoire, ou le nom du bouton mute dans
    le document servi - jamais une fixture ecrite de ma main, lecon de s05 rappelee par `ADR-0092`.
+5. **Un bouton qui porte a la fois un texte et un `aria-label` differents est juge sur
+   l'`aria-label`** (amendement du 2026-09-21). La morsure porte les deux verdicts dans la meme
+   assertion : le bouton numerote `"4"` avec `aria-label` egal au libelle est **vert**, et le meme
+   bouton dont l'`aria-label` est remplace par une autre chaine est **rouge** - alors que son texte
+   `"4"`, lui, n'a pas bouge. Sans cette morsure, le renversement d'ordre serait indistinguable de
+   l'ancien code sur toute la population existante.
 
 ---
 
