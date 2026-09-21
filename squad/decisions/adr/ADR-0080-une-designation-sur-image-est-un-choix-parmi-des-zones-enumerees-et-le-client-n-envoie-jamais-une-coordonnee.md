@@ -478,6 +478,14 @@ de script, une feuille de style, des cles de YAML et des items charges** - aucun
 | 5 | `AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest` | `adapter-content` | L'enonce ne nomme pas le libelle de la bonne zone. **Avec l'operateur d'`ADR-0076`** - decoupage en mots, jamais sous-chaine - et **en reutilisant son tokeniseur**, pas un second ecrit a cote. Interdit la contrefacon par enonce : *"Montre le tableau"* avec une zone nommee *"le tableau"* se repond par le nom accessible seul, image effacee, ce qui est `CON-1` en echec | T5 |
 | 6 | `ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest` | `adapter-content` | Pour chaque paquet servi, chaque cle facultative d'item declaree dans le YAML se retrouve dans l'item **charge par la chaine reelle**. **Ferme le trou qu'`ADR-0070` nomme dans sa propre Javadoc** : une cle lue par deux fabriques sur trois est aujourd'hui verte partout et perdue a l'execution | T3 |
 
+**Amendement du 2026-09-21 (s36, `theo-archi`) - la clause de nom accessible du garde-fou 1 est
+corrigee par `ADR-0093`.** La table ci-dessus dit *"a nom accessible non vide"* ; les deux juges
+qui la portent verifient le texte du bouton, ce qui n'est pas la meme propriete des qu'un libelle
+sort de la boite du bouton. `ADR-0093` resout le nom accessible sur le document servi (texte,
+`aria-label`, `aria-labelledby`) et exige qu'il porte le libelle declare par le paquet. La
+propriete de cette table ne change pas ; c'est son juge qui cesse de promettre plus qu'il ne
+verifie (`ADR-0015`).
+
 **Amendement du 2026-09-04 (s28, `theo-archi`) - ce que les garde-fous 4, 5 et 6 gardent
 reellement a la fin de s28, et quand ils garderont ce que cette table promet.** Les trois sont
 livres, mordants, et leurs jeux fautifs sont dans l'arbre. Mais la colonne *"ce qu'il interdit"*
