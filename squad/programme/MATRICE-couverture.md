@@ -1,8 +1,8 @@
 # Matrice de couverture - recreo
 
 Cette matrice est l'outil de pilotage le plus important de `camille-po`. Elle liste, une ligne
-par competence, l'integralite des dix-huit referentiels desormais disponibles
-(`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`,
+par competence, l'integralite des dix-neuf referentiels desormais disponibles
+(`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`, `competences-ce1.md`,
 `squad/programme/francais/competences-cp.md`, `competences-cm1.md`,
 `squad/programme/questionner-le-monde/competences-cp.md`,
 `squad/programme/histoire-geographie/competences-cm1.md`,
@@ -15,18 +15,15 @@ par competence, l'integralite des dix-huit referentiels desormais disponibles
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
 
-**Note du 2026-09-21** : le perimetre s'ouvre a un troisieme niveau, CE1 (cycle 2), sur decision
-proposee par `DEC-0089` - CM2 reste explicitement differe. **Aucune ligne CE1 n'entre dans cette
-matrice a cette date** : les dix-huit referentiels listes ci-dessus restent les seuls a exister
-sur le disque, et `DEC-0089` route l'ecriture d'un premier referentiel, mathematiques CE1
-(`squad/programme/mathematiques/competences-ce1.md`), a `nadia-prof`. Le denominateur atteignable
-(138, voir la synthese du sprint 35 ci-dessous) et le taux de 76/138 = 55,1 % restent ceux d'un
-perimetre a deux niveaux jusqu'a ce que ce referentiel existe. Suivant la regle deja posee au
-2026-09-02 pour l'ouverture de matiere : **le jour ou la premiere ligne mathematiques CE1 entrera
-ici, la synthese qui l'accompagnera portera l'ancien denominateur, le nouveau, l'ancien taux, le
-nouveau taux, et la phrase "par le seul effet du denominateur"** - le taux affiche baissera
-mecaniquement des cette entree, avant qu'aucun jeu CE1 n'existe, et ce recul n'est pas une
-regression du produit.
+**Note du 2026-09-21, mise a jour le meme jour** : le perimetre s'ouvre a un troisieme niveau, CE1
+(cycle 2), sur decision de `DEC-0089` - CM2 reste explicitement differe. `nadia-prof` a ecrit le
+premier referentiel CE1 (mathematiques, 17 competences, `squad/programme/mathematiques/
+competences-ce1.md`) le jour meme ; ses dix-sept lignes sont desormais integrees ci-dessous
+(section "Mathematiques - CE1 (cycle 2)"), a l'etat `non couvert`, exactement comme cette note
+l'annoncait par avance. Le denominateur atteignable passe de 138 a 155, le taux de 76/138 = 55,1 %
+a 76/155 = 49,0 % - **par le seul effet du denominateur**, avant qu'aucun paquet ou jeu CE1
+n'existe ; ce recul n'est pas une regression du produit (detail et recompte complets dans la
+section "Mathematiques - CE1 (cycle 2)" ci-dessous).
 
 **Note du 2026-09-03** : le denominateur final du produit, que la note du 2026-09-02 (ci-dessous,
 conservee pour l'historique) annoncait comme un evenement futur, **est atteint a cette date**. Les
@@ -553,6 +550,71 @@ plus grande proposition gagne desormais 48,5 % des manches (les colonnes n'ayant
 largeur sous la voie 4), contre 33,3 % au hasard - meme famille que la reserve deja ouverte sur "Les
 mesures" (candidate de story au backlog, section "Backlog - sprints suivants" de
 `docs/backlog/backlog.md`), et non une condition de ce statut.
+
+## Mathematiques - CE1 (cycle 2)
+
+Source : `squad/programme/mathematiques/competences-ce1.md`, ecrit par `nadia-prof` le 2026-09-21
+sur le routage de `DEC-0089` (section 3). Dix-neuvieme tableau de cette matrice - les dix-huit
+precedents portaient tous CP ou CM1 - et le premier a porter le niveau CE1, troisieme niveau du
+produit ouvert par `DEC-0089`, CM2 restant explicitement differe. Aucune ligne n'est encore
+`couvert-valide` ni `en cours` : aucun paquet de contenu CE1 n'existe.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| mathematiques | CE1 | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 1000 (unites, dizaines, centaines) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Comparer, ranger et encadrer les nombres jusqu'a 1000, et les placer sur une ligne graduee | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Calcul mental - additions et soustractions dans la limite de 100 (complements a la dizaine, doubles et moities) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Poser et effectuer une addition avec retenue (nombres a deux ou trois chiffres) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Poser et effectuer une soustraction (nombres a deux ou trois chiffres) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Comprendre le sens de la multiplication (addition reiteree, disposition en lignes et en colonnes) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4 | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Resoudre des problemes d'addition, de soustraction et de multiplication a une ou deux etapes | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Mesurer et comparer des longueurs avec une regle graduee ; utiliser le centimetre et le metre | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre) | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se reperer dans le calendrier (mois, date) | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Calculer une duree simple en heures entieres ou en demi-heures | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Utiliser la monnaie : composer une somme en euros et en centimes, savoir ce qui est rendu | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Se reperer, se deplacer et coder un deplacement sur un quadrillage | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Reconnaitre, decrire et tracer des figures planes (carre, rectangle, triangle, triangle rectangle, cercle) a la regle et sur quadrillage | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Reconnaitre et nommer des solides usuels (cube, pave droit, boule, cylindre, cone) | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Reconnaitre un axe de symetrie et completer une figure par symetrie sur quadrillage | - | - | non couvert |
+
+**Dix-sept lignes**, verifiees contre le referentiel source par recherche des dix-sept codes
+`MAT-CE1-01` a `MAT-CE1-17` (aucun doublon, aucun trou) : `grep -oE "MAT-CE1-[0-9]+"
+squad/programme/mathematiques/competences-ce1.md`, sur la branche `s36-nadia` (commit `eaaadb45`,
+2026-09-21) ou `nadia-prof` l'a ecrit - ce fichier n'est pas encore fusionne sur cette branche-ci.
+
+**Ce que ce referentiel precise et que cette matrice ne reprend pas en colonne** : deux bornes de
+lisibilite hors competence (`LON-CE1-1`, au plus vingt mots ; `LON-CE1-2`, au plus trois phrases)
+sont posees par `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md` et s'appliqueront a
+tout paquet CE1 futur, en plus de la ligne de competence qu'il declare.
+
+**Effet de perimetre, pose d'avance comme `DEC-0089` section 5 l'exige** : ce dix-neuvieme tableau
+ajoute dix-sept lignes `non couvert` au denominateur atteignable de cette matrice. Aucune n'est
+`couvert-valide` ni `non couvrable en l'etat` : les 17 entrent entierement dans le denominateur,
+aucune n'entre au numerateur.
+
+| | Avant ce referentiel (2026-09-11, cloture de s35) | Apres l'entree du referentiel mathematiques CE1 |
+|---|---|---|
+| `couvert-valide` | 76 | 76 |
+| `en cours` | 0 | 0 |
+| `non couvert` | 62 | **79** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 209 | **226** |
+| Denominateur atteignable | 138 | **155** |
+| **Taux** | **76 / 138 = 55,1 %** | **76 / 155 = 49,0 %** |
+
+Methode, sur le meme patron que les recomptes de cloture de s34 et de s35 (sections "Le recompte,
+independant de tout chiffre transmis" ci-dessous) : les colonnes "Avant" reprennent le recompte
+independant deja verifie a la cloture de s35 (couvert-valide 76, en cours 0, non couvert 62, non
+couvrable en l'etat 71, total 209, denominateur atteignable 138 - meme section, ci-dessous), pas un
+chiffre recopie d'un autre document. La colonne "Apres" ajoute uniquement les dix-sept lignes de ce
+tableau, aucun autre mouvement n'a lieu dans ce meme geste. **76 / 155 = 49,0 %, jamais le "155"
+avance sans verification par `nadia-prof`** (chiffre juste par coincidence arithmetique - 138 + 17
+- mais que je recalcule ici depuis ma propre lecture du referentiel plutot que de le recopier tel
+quel) : le taux affiche recule de 6,1 points par le seul effet du denominateur, avant qu'aucun jeu
+CE1 n'existe, exactement comme la note du 2026-09-21 en tete de ce fichier l'annoncait d'avance.
+**Ce recul n'est pas une regression du produit.**
 
 ## Francais - CP (cycle 2)
 
