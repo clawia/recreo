@@ -1,8 +1,14 @@
 # ADR-0093 - Le nom accessible d'un bouton de zone est resolu sur le document servi, et il porte le libelle que le paquet declare
 
-- **Statut** : **`Propose`** le 2026-09-21 (planning de s36). Il ne passera `Accepte` que quand ses
-  deux clauses seront dans l'arbre, dans les deux fichiers nommes en section *Regle executable*,
-  avec leurs quatre morsures.
+- **Statut** : **`Accepte`** le 2026-09-21 (s36, confirmation de la porte technique). Propose le
+  meme jour au planning de s36, sous la condition suivante : *"il ne passera `Accepte` que quand
+  ses deux clauses seront dans l'arbre, dans les deux fichiers nommes en section Regle executable,
+  avec leurs quatre morsures"* - cinq apres l'amendement du meme jour. **Condition remplie et
+  verifiee**, implementation de `lea-dev` (`8d29e726`), arbre fusionne `s36-sofia` a `1d361786` :
+  les deux clauses sont dans les deux fichiers nommes, les cinq morsures sont ecrites, et la clause
+  2 a ete mordue une sixieme fois par mutation de la **source de production** (le gabarit servi, et
+  non le document en memoire) - `squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/confirmation-archunit.md`,
+  section 4.
 - **Amende le 2026-09-21** (meme jour, meme auteur, avant toute ligne de code) : **l'ordre de
   resolution de la clause 1 etait l'inverse du calcul reel du nom accessible**, et la forme
   proposee par `ines-design` le meme jour le revele. Voir *Amendement du 2026-09-21* en bas de la
@@ -170,11 +176,21 @@ renversement pourrait etre decoratif sans que personne le voie.
 
 **Ce ne sont pas des `ArchRule`** : les objets juges sont des documents HTML rendus et des paquets
 de contenu charges, pas des classes. Aucune `ArchRule` n'est ajoutee par cet `ADR` ; le compte du
-depot est donc inchange par rapport au dernier compte mesure, **33** au 2026-09-11 (methode : motif
-`static final ArchRule` sur les arbres de sources, `/target/` exclu et le faux module de
-contre-exemple exclu -
-`squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/confirmation-archunit.md`). **Je ne l'ai pas
-recompte aujourd'hui.**
+depot est donc inchange par rapport au dernier compte mesure, **33** au 2026-09-11
+(`squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/confirmation-archunit.md`). **Je
+ne l'ai pas recompte aujourd'hui.**
+
+*Correction du 2026-09-21, a la confirmation de la porte technique, par l'auteur de la phrase
+ci-dessus.* Cette phrase donnait pour methode du **33** *"motif `static final ArchRule` sur les
+arbres de sources, `/target/` exclu et le faux module de contre-exemple exclu"*. **Ce n'est pas la
+methode qui produit 33** : le 33 de s35 est un compte d'occurrences de l'annotation `@ArchTest`
+dans `**/src/test/java/**/*.java`. Recompte le 2026-09-21 sur `s36-sofia` a `1d361786` : `@ArchTest`
+= **33** (inchange par s36) ; `static final ArchRule` moins le faux module = **34**. L'ecart de 1
+est `ScanDeComposantsTest.aucuneClasseDeTestSurLeClasspathDeLApplicationNePorteDeStereotype`, une
+`ArchRule` evaluee par deux `@Test` ordinaires appelant `.check(...)`, dans l'arbre depuis s06 -
+l'ecart preexistait au 2026-09-11 et n'a pas ete introduit par s36. Le chiffre etait juste, la
+methode ecrite a cote de lui ne l'etait pas : c'est la faute que ce depot sanctionne, dans sa
+variante la plus discrete - une methode plausible recopiee de memoire a cote d'un chiffre exact.
 
 ### Clause 1 - dans les deux fichiers qui portent deja la clause
 
@@ -291,6 +307,23 @@ toujours ete verifie.
 refuserait par avance une forme legitime que `nadia-prof` n'a pas exclue - un numero de renvoi devant
 le libelle - et produirait un faux rouge sur une proposition d'`ines-design` qui tient la propriete.
 L'inclusion garde ce qui compte : le libelle du contenu est dans le nom.
+
+---
+
+## Ce que l'acceptation a appris - une limite de la clause 2, ecrite le 2026-09-21
+
+En cherchant a mordre la clause 2 sur du materiau de production, j'ai d'abord voulu muter le
+libelle d'une zone **dans `cp-plan-de-la-classe.yaml`**. **Cette mutation ne peut pas la faire
+rougir**, et c'est structurel : la clause compare le document servi au paquet charge, donc muter le
+paquet deplace les deux cotes de la comparaison en meme temps. La morsure a du porter sur le
+**gabarit** (`aria-label` rendu depuis `zone.id()` au lieu de `zone.libelle()`), et elle a rougi -
+8 tests, 3 echecs, sur le catalogue reel.
+
+**Ce que la clause garde reellement** : la coherence entre le rendu et le contenu. **Ce qu'elle ne
+garde pas** : la justesse du contenu lui-meme. Un libelle faux, declare dans le paquet et rendu
+fidelement, la laisse verte. C'etait deja implicite dans la decision 3 ; c'est desormais mesure, et
+ecrit ici pour qu'aucune lecture future ne credite cette clause d'une propriete qu'elle ne peut pas
+voir (amendement s12 de `squad/README.md`).
 
 ---
 
