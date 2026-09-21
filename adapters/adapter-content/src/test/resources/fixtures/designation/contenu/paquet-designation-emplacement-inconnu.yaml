@@ -1,0 +1,21 @@
+schema: 1
+id: paquet-designation-emplacement-inconnu
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Se situer dans l'espace"
+  competence: "sonde du lot ADR-0094, jamais servie a un enfant"
+emplacementDuLibelleDeZone: au-milieu
+items:
+  - enonce: "Montre le tableau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vu de dessus, avec deux elements."
+    bonneZone: tableau
+    zones:
+      - id: tableau
+        libelle: "en haut, au centre"
+        cadre: { x: 28, y: 6, largeur: 34, hauteur: 15 }
+      - id: bureau
+        libelle: "en haut, a gauche"
+        cadre: { x: 15, y: 26, largeur: 28, hauteur: 20 }
