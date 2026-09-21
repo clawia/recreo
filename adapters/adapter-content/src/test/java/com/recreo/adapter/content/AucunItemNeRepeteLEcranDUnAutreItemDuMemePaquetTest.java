@@ -1,6 +1,7 @@
 package com.recreo.adapter.content;
 
 import com.recreo.domain.content.ContentSource;
+import com.recreo.domain.content.EmplacementDuLibelleDeZone;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
@@ -175,10 +176,17 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * montrent le meme plan et posent la meme question sont le meme ecran pour l'enfant, exactement
      * comme deux items de choix de meme enonce et memes propositions le sont ; {@code propositions}
      * reste vide sur un item de designation, comme il l'est deja sur un item de saisie.</p>
+     *
+     * <p>ADR-0094 : {@code emplacementDuLibelleDeZone} y entre. Deux items qui montrent le meme plan,
+     * posent la meme question et designent les memes zones, mais dont l'un rend le libelle dans la
+     * boite du bouton et l'autre hors d'elle (numero servi et legende), presentent un ecran
+     * different pour l'enfant - le texte du bouton et la presence d'une legende changent. C'est le
+     * meme motif structurel qu'{@code illustration} et {@code zones}.</p>
      */
     private record Ecran(String enonce, Set<String> propositions, Optional<String> partDesignee,
                           Optional<String> texteSupport, Optional<String> illustration,
-                          Set<Zone> zones, Optional<String> texteAVoixHaute) {
+                          Set<Zone> zones, Optional<String> texteAVoixHaute,
+                          Optional<EmplacementDuLibelleDeZone> emplacementDuLibelleDeZone) {
     }
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
@@ -252,13 +260,14 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                 propositions.addAll(question.distracteurs());
                 yield new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee(),
                         question.texteSupport(), question.illustration(), Set.of(),
-                        question.texteAVoixHaute());
+                        question.texteAVoixHaute(), Optional.empty());
             }
             case ReponseAEcrire reponse -> new Ecran(reponse.enonce(), Set.of(), Optional.empty(),
-                    Optional.empty(), Optional.empty(), Set.of(), reponse.texteAVoixHaute());
+                    Optional.empty(), Optional.empty(), Set.of(), reponse.texteAVoixHaute(),
+                    Optional.empty());
             case ZoneADesigner zone -> new Ecran(zone.enonce(), Set.of(), Optional.empty(),
                     Optional.empty(), Optional.of(zone.illustration()), Set.copyOf(zone.zones()),
-                    zone.texteAVoixHaute());
+                    zone.texteAVoixHaute(), Optional.of(zone.emplacementDuLibelleDeZone()));
         };
     }
 
@@ -297,10 +306,16 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * boutons differents, a des endroits differents : les classer hors de l'identite refuserait tous
      * les items sauf le premier comme des copies, alors que l'enfant voit un ecran different a chaque
      * fois.</p>
+     *
+     * <p>ADR-0094 : {@code emplacementDuLibelleDeZone} y entre, meme motif structurel. Deux items de
+     * designation de meme enonce, meme illustration et memes zones, dont l'un rend le libelle dans la
+     * boite du bouton et l'autre hors d'elle, montrent des boutons dont le texte differe (le libelle,
+     * ou un numero de repere) et l'un porte une legende que l'autre ne porte pas : deux ecrans
+     * differents pour l'enfant.</p>
      */
     private static final Set<String> COMPOSANTES_DANS_L_IDENTITE_D_ECRAN =
             Set.of("enonce", "bonneReponse", "distracteurs", "partDesignee", "texteSupport",
-                    "illustration", "zones", "texteAVoixHaute");
+                    "illustration", "zones", "texteAVoixHaute", "emplacementDuLibelleDeZone");
 
     /**
      * ADR-0050, clause 2 : les composantes d'un item qui n'entrent pas dans son identite d'ecran, et

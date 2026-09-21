@@ -39,9 +39,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  *   <li><b>Derivation totale</b> : chaque bouton trouve est juge sur les quatre criteres a la fois -
  *       balise, type, valeur non vide, nom accessible non vide - et le document entier est balaye pour
  *       les trois formes interdites (usemap, map, area), pas seulement le voisinage du formulaire.</li>
- *   <li><b>Mise a l'epreuve</b> : quatre morsures sur la sortie reelle du serveur, mutee - jamais une
+ *   <li><b>Mise a l'epreuve</b> : sept morsures sur la sortie reelle du serveur, mutee - jamais une
  *       fixture ecrite de ma main.</li>
  * </ul>
+ *
+ * <p><b>ADR-0093, clause 1 : le nom accessible d'un bouton de zone est resolu</b>, il n'est plus
+ * assimile au texte du bouton - un bouton nomme par {@code aria-label} ou par
+ * {@code aria-labelledby} a un nom accessible et peut n'avoir aucun texte. Ce module ne compare pas
+ * le nom resolu au libelle declare par le paquet (clause 2) : il ne voit pas {@code adapter-content},
+ * et ce fabrique de test ne charge aucun contenu reel. Cette moitie-la est rejouee dans
+ * {@code bootstrap}, seul module qui voie les deux cotes
+ * ({@code LEcranDeMancheDuJeuDeDesignationReelEstServiTest}).</p>
  */
 @WebMvcTest(PartieController.class)
 @Import(PartieControllerTest.JeuDeTestConfiguration.class)
@@ -59,6 +67,31 @@ class ChaqueZoneDesignableEstUnBoutonDuFormulaireDeCoupTest {
 
     private Document ecranDeManche() throws Exception {
         return Jsoup.parseBodyFragment(corps(JEU_DESIGNATION_ID));
+    }
+
+    /**
+     * ADR-0093 clause 1 : le nom accessible est resolu, il n'est plus assimile au texte du bouton.
+     * Ordre corrige le 2026-09-21, dans le sens du calcul reel du nom accessible - aria-labelledby,
+     * puis aria-label, puis le texte du sous-arbre. L'ordre inverse rendait rouge un bouton
+     * correctement nomme par aria-label et vert un bouton renomme a l'insu du contenu.
+     */
+    static String nomAccessible(Element bouton, Document document) {
+        String references = bouton.attr("aria-labelledby").trim();
+        if (!references.isBlank()) {
+            StringBuilder nom = new StringBuilder();
+            for (String identifiant : references.split("\\s+")) {
+                Element cible = document.getElementById(identifiant);
+                if (cible == null || cible.text().isBlank()) {
+                    return "";
+                }
+                nom.append(nom.isEmpty() ? "" : " ").append(cible.text());
+            }
+            return nom.toString();
+        }
+        if (!bouton.attr("aria-label").isBlank()) {
+            return bouton.attr("aria-label");
+        }
+        return bouton.text();
     }
 
     /**
@@ -94,9 +127,10 @@ class ChaqueZoneDesignableEstUnBoutonDuFormulaireDeCoupTest {
             if (bouton.attr("value").isBlank()) {
                 griefs.add("le bouton de zone " + bouton.outerHtml() + " porte une valeur vide");
             }
-            if (bouton.text().isBlank()) {
-                griefs.add("le bouton de zone " + bouton.outerHtml()
-                        + " ne porte aucun nom accessible (texte vide)");
+            if (nomAccessible(bouton, document).isBlank()) {
+                griefs.add("le bouton de zone " + bouton.outerHtml() + " ne porte aucun nom"
+                        + " accessible : ni texte, ni aria-label, ni aria-labelledby resolvant vers"
+                        + " un texte non vide");
             }
         }
 
@@ -177,6 +211,53 @@ class ChaqueZoneDesignableEstUnBoutonDuFormulaireDeCoupTest {
         assertThat(image).as("l'ecran de manche doit porter l'image de designation").isNotNull();
         image.attr("usemap", "#plan");
         image.after("<map name=\"plan\"><area shape=\"rect\" coords=\"0,0,10,10\" href=\"#\"></map>");
+
+        assertThat(griefs(document)).isNotEmpty();
+    }
+
+    /**
+     * ADR-0093, morsure 1 : un bouton sans aucun des trois porteurs de nom accessible est rouge - la
+     * propriete d'origine ne s'affaiblit pas.
+     */
+    @Test
+    void unBoutonSansAucunPorteurDeNomAccessibleFaitEchouerLeGardeFou() throws Exception {
+        Document document = ecranDeManche();
+        Element bouton = document.select("form[hx-post] button").first();
+        assertThat(bouton).as("un bouton de zone doit exister avant mutation").isNotNull();
+        bouton.text("");
+
+        assertThat(griefs(document)).isNotEmpty();
+    }
+
+    /**
+     * ADR-0093, morsure 2 : un bouton nomme par aria-label seul (texte vide) est vert sous le juge
+     * neuf. La morsure porte les deux verdicts dans la meme assertion : sans elle, le juge neuf
+     * pourrait etre aussi strict que l'ancien sans que rien ne le montre.
+     */
+    @Test
+    void unBoutonNommeParAriaLabelSeulEstAccepteParLeGardeFou() throws Exception {
+        Document document = ecranDeManche();
+        Element bouton = document.select("form[hx-post] button").first();
+        assertThat(bouton).as("un bouton de zone doit exister avant mutation").isNotNull();
+        bouton.text("");
+        bouton.attr("aria-label", "une zone");
+
+        assertThat(bouton.text())
+                .as("l'ancien critere (bouton.text().isBlank()) aurait refuse ce bouton")
+                .isBlank();
+        assertThat(griefs(document)).isEmpty();
+    }
+
+    /**
+     * ADR-0093, morsure 3 : un aria-labelledby qui designe un identifiant absent du document est
+     * rouge - un nom accessible vide qui se croit rempli.
+     */
+    @Test
+    void unAriaLabelledbyVersUnIdentifiantAbsentFaitEchouerLeGardeFou() throws Exception {
+        Document document = ecranDeManche();
+        Element bouton = document.select("form[hx-post] button").first();
+        assertThat(bouton).as("un bouton de zone doit exister avant mutation").isNotNull();
+        bouton.attr("aria-labelledby", "identifiant-absent-du-document");
 
         assertThat(griefs(document)).isNotEmpty();
     }
