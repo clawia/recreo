@@ -3,6 +3,9 @@
 - **Statut** : **`Propose`** le 2026-09-21 (s36). Il ne passera `Accepte` que quand les quatre
   relais de sa decision 4 seront dans l'arbre **et** que sa regle executable y sera avec ses quatre
   morsures.
+  **Maintenu `Propose` le 2026-09-21 a la confirmation de la porte technique de s36** : les quatre
+  relais sont dans l'arbre et corrects, **la regle executable n'y est pas**. Voir *Etat de
+  l'acceptation* en fin de document.
 - **Sprint** : s36. **Date** : 2026-09-21. **Auteur** : `theo-archi`.
 - **Route par** : la section 2.5 de
   `squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/proposition-ines-s36-barre-trois-puces-et-libelle-externe-qlm11.md`
@@ -187,11 +190,18 @@ seule de cet `ADR` qui interdise quelque chose qu'on aurait envie de faire.
 
 **Ce n'est pas une `ArchRule`** : les objets juges sont des fichiers de gabarit, une feuille de
 style et des paquets de contenu charges, pas des classes. **Aucune `ArchRule` n'est ajoutee par cet
-`ADR`** ; le compte du depot reste celui du dernier comptage mesure, **33 au 2026-09-11** (methode :
-motif `static final ArchRule` sur les arbres de sources, `/target/` exclu et le faux module de
-contre-exemple exclu -
-`squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/confirmation-archunit.md`). **Je ne
-l'ai pas recompte aujourd'hui.**
+`ADR`** ; le compte du depot reste celui du dernier comptage mesure, **33 au 2026-09-11**
+(`squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/confirmation-archunit.md`). **Je
+ne l'ai pas recompte aujourd'hui.**
+
+*Correction du 2026-09-21, a la confirmation de la porte technique, par l'auteur de la phrase
+ci-dessus.* La methode donnee pour le **33** - *"motif `static final ArchRule` [...], `/target/`
+exclu et le faux module de contre-exemple exclu"* - **n'est pas celle qui produit 33** : le 33 de
+s35 compte les occurrences de l'annotation `@ArchTest`. Recompte le 2026-09-21 sur `s36-sofia` a
+`1d361786` : `@ArchTest` = **33**, inchange par s36 ; `static final ArchRule` moins le faux module
+= **34**, l'ecart de 1 etant une `ArchRule` evaluee par des `@Test` ordinaires
+(`ScanDeComposantsTest`, dans l'arbre depuis s06). Le detail et les deux comptes sont en section 2
+de `squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/confirmation-archunit.md`.
 
 ### Le garde-fou
 
@@ -335,6 +345,61 @@ motif habituel de ce depot, avec une aggravation : la donnee traverse **quatre c
 question *"pourquoi le domaine porte-t-il une valeur que seul le gabarit lit ?"* se reposera. Sans
 cet `ADR`, la reponse serait perdue, et le raccourci de l'alternative (a) serait reintroduit comme
 une simplification.
+
+---
+
+## Etat de l'acceptation - 2026-09-21, confirmation de la porte technique de s36
+
+Verifie sur l'arbre fusionne `s36-sofia` a `1d361786`, worktree dedie `s36-theo-porte`.
+
+### Ce qui est dans l'arbre : les quatre relais, tous les quatre
+
+| Relais (decision 4) | Etat |
+|---|---|
+| 1. `DesignationContentSourceFactory` | **present** : cle lue au niveau du paquet, defaut `DANS_LA_BOITE`, valeur inconnue qui arrete le chargement en nommant la cle et la valeur, valeur posee sur chaque item |
+| 2. `ZoneADesigner` | **present** : composante ajoutee, constructeur de commodite conservant l'arite (`ADR-0016`), aucun site de construction retouche |
+| 3. `DesignationSession.emplacementDuLibelleDeZoneManche()` | **present** : transport strict, aucune lecture par la mecanique, aucun verdict change |
+| 4. `PartieController` | **present** : un seul attribut booleen de modele, l'enum n'entre pas dans le gabarit |
+
+`EmplacementDuLibelleDeZone` est dans `domain/content`, `application` n'est pas touche, aucun port
+n'est ajoute. Sur les relais, rien a redire.
+
+### Ce qui n'est pas dans l'arbre : la regle executable
+
+`bootstrap/src/test/java/com/recreo/archi/AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest.java`
+**n'existe pas**. La recherche de ce nom dans tout l'arbre ne le trouve que dans le present `ADR`
+et dans `ADR-index.md` - c'est-a-dire uniquement la ou il est promis. Ses quatre morsures dues
+n'existent donc pas non plus.
+
+**C'est la seule chose que cet `ADR` interdise.** Les quatre relais transportent une valeur, ils
+n'empechent personne de rien. Un `ADR` dont seule la partie qui n'interdit rien est implementee
+n'est pas un `ADR` accepte : c'est la dette 1 de `CLAUDE.md` - une abstraction documentee partout
+et absente du code - en train de se reformer.
+
+**La propriete tient aujourd'hui, et ce n'est pas un motif d'accepter.** Balayage a la main sur cet
+arbre, avec sa methode : 101 identifiants derives du contenu servi (extraction plus grossiere que
+celle que cet `ADR` prescrit, donc **minorant**), 17 fichiers du perimetre, **0 occurrence
+litterale hors commentaire**. Un constat a la main un jour donne n'est pas un garde-fou.
+
+### Un second ecart, entre la decision 5 et le gabarit servi
+
+La decision 5 ecrit que `aria-label` porte **toujours** `zone.libelle()`. Le gabarit de l'arbre
+porte `aria-label=${libelleDeZoneHorsDeLaBoite} ? ${zone.libelle()} : null`, c'est-a-dire le repli
+conditionnel que la *Seconde mauvaise consequence* reservait au cas ou `nadia-prof` refuserait que
+`frise-de-la-journee` recoive un attribut neuf. **Aucun verdict de `nadia-prof` sur ce point
+n'existe dans `squad/` pour s36** : le declencheur ecrit du repli n'est pas survenu.
+
+Consequence technique : aucune - sur un paquet `dans-la-boite`, le nom accessible retombe sur le
+texte du bouton, qui est le libelle, et la clause 2 d'`ADR-0093` reste verte, verifiee sur le
+catalogue reel. Consequence de gouvernance : le gabarit et cet `ADR` disent deux choses
+differentes. **Je ne reecris pas la decision 5 pour la faire coincider avec le code apres coup** -
+ce serait exactement le geste que l'alternative (f) ci-dessus ecarte. L'ecart est a trancher quand
+cet `ADR` reviendra en acceptation, et les deux formes restent ouvertes.
+
+### Les deux conditions qui restent
+
+1. Le garde-fou de la decision 6 dans l'arbre, avec ses quatre morsures dues.
+2. L'ecart de la decision 5 tranche, dans un sens ou dans l'autre.
 
 ---
 
