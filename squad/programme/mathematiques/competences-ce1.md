@@ -18,6 +18,14 @@ la centaine, la multiplication et la mesure instrumentée. Ce référentiel se l
 `squad/programme/mathematiques/competences-cp.md`, dont il prolonge plusieurs lignes sans les
 reprendre.
 
+**Complété le 2026-09-21** par `MAT-CE1-18` (sens de la division), ligne que j'avais signalée
+absente le jour même en relisant ce document
+(`squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/verdicts-nadia.md`, section 3) et
+que `camille-po` a choisi de faire ajouter tout de suite plutôt que d'en faire une dette
+(`DEC-0089`, note du 2026-09-21). Elle prend le numéro libre suivant : les dix-sept lignes déjà
+écrites ne sont pas renumérotées, et `MAT-CE1-08` n'est pas reformulée - il manquait une ligne, il
+n'y avait pas d'erreur dans ce qui était écrit.
+
 ## Nombres et calculs
 
 - [MAT-CE1-01] Dénombrer, lire, écrire et décomposer les nombres jusqu'à 1000 (unités, dizaines,
@@ -33,6 +41,8 @@ reprendre.
 - [MAT-CE1-07] Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4.
 - [MAT-CE1-08] Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou
   deux étapes.
+- [MAT-CE1-18] Comprendre le sens de la division en résolvant des problèmes de partage et de
+  groupement (sans technique opératoire posée).
 
 ## Grandeurs et mesures
 
