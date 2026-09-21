@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `651` identifiants alloues, `104` prefixes distincts.
+**Compte courant, verifie par la CI** : `655` identifiants alloues, `104` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -54,6 +54,17 @@ d'autres lots de s36 peuvent allouer en parallele sur des branches soeurs que je
 c'est le cas, la CI rougira a l'assemblage comme `ADR-0085` clause 5 le prevoit, et la reparation
 sera arithmetique - aucune allocation ajoutee, aucune retiree, aucun sens touche. C'est `sofia-sm`
 qui la fait, a l'endroit prevu.
+
+**Note de `sofia-sm`, s36, le 2026-09-21 - la reparation arithmetique annoncee ci-dessus.**
+`mvn -B clean verify` a rougi a l'assemblage de `s36-nadia-audit` sur `PAR-5` clause 2 : sa fiche
+`squad/conformite/FICHE-designation-plan-de-la-classe.md` ecrit quatre reserves neuves, `PCL-R3` a
+`PCL-R6`, sans leur ligne dans ce registre - exactement le lot parallele que la note precedente
+annoncait ne pas pouvoir voir. Quatre lignes ajoutees a la section 4, meme document que `PCL-R1` et
+`PCL-R2`, aucun prefixe neuf. Ligne d'etat courant portee de **651 / 104 a 655 / 104**. Methode :
+recomptage des lignes de la table de la section 4 sous le motif du garde-fou lui-meme
+(`ALLOCATION`, `ADR-0085` clause 5), sur l'arbre fusionne apres mes quatre lignes - 655 identifiants
+distincts, 104 prefixes distincts, 0 doublon. Aucune allocation retiree, aucun sens touche : je n'ai
+pas relu ce que `PCL-R3` a `PCL-R6` designent, seulement rendu leur allocation visible.
 
 **Note de `nadia-prof`, instance C, le 2026-09-11.** Huit identifiants ajoutes - `SEC-R6` et `EFF-R1`
 a `EFF-R7` -, dont un prefixe neuf, `EFF` (le lot de l'effort et du corps). **`COR` n'etait pas
@@ -938,6 +949,10 @@ clause 2 par une exemption.
 | `PAR-16` | `squad/conformite/ARBITRAGE-PREALABLE-s34-le-motif-transverse-l-objet-d-une-reserve-et-le-vivier-de-quatre-refus.md` |
 | `PCL-R1` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
 | `PCL-R2` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
+| `PCL-R3` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
+| `PCL-R4` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
+| `PCL-R5` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
+| `PCL-R6` | `squad/conformite/FICHE-designation-plan-de-la-classe.md` |
 | `PER-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `PER-R2` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
 | `PER-R3` | `squad/conformite/FICHE-bandit-manchot-permis-interdit-cp.md` |
