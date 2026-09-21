@@ -206,6 +206,53 @@ couverture.md`, synthese du sprint 35).
 | Ce qui est du | Proprietaire | Etat |
 |---|---|---|
 | Confirmation citable, par l'utilisatrice, du perimetre CE1 seul / CM2 differe | l'utilisatrice | **Rendue le 2026-09-21, section "Confirmation du 2026-09-21"** |
-| Referentiel de competences mathematiques CE1 (`squad/programme/mathematiques/competences-ce1.md`) | `nadia-prof` | **Route, section 3** |
-| Ligne(s) neuve(s) de `MATRICE-couverture.md` une fois ce referentiel ecrit | `camille-po` | **A faire des que le referentiel existe** |
+| Referentiel de competences mathematiques CE1 (`squad/programme/mathematiques/competences-ce1.md`) | `nadia-prof` | **Route, section 3 - rendu le 2026-09-21, 17 lignes, voir note ci-dessous pour une ligne manquante trouvee a la relecture** |
+| Ligne(s) neuve(s) de `MATRICE-couverture.md` une fois ce referentiel ecrit | `camille-po` | **Faite le 2026-09-21, section "Mathematiques - CE1 (cycle 2)"** |
 | Story(ies) de developpement du premier paquet mathematiques CE1 | `camille-po` puis `sofia-sm` | **Non engageable avant le referentiel - voir `docs/backlog/backlog.md`, section "Sprint 36"** |
+
+## Note du 2026-09-21 (complement, apres relecture de `nadia-prof` de son propre referentiel)
+
+En relisant `competences-ce1.md` le jour meme ou elle l'a ecrit, `nadia-prof` signale une ligne
+absente plutot que de la corriger elle-meme, exactement la frontiere que ce document pose en
+section 3 - elle ne fabrique jamais une competence sans le dire, je ne fabrique jamais une
+competence du tout : *"`MAT-CE1-08` enumere 'addition, soustraction et multiplication'. Les
+problemes de partage et de groupement - le sens de la division - manquent, et ils appartiennent au
+CE1. [...] le document prendrait `MAT-CE1-18` sans renumeroter quoi que ce soit. Je ne l'ajoute pas
+dans le meme geste que mon verdict de sprint [...] et je la route a `camille-po` pour qu'elle
+decide quand."* (`squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/verdicts-nadia.md`,
+section 3).
+
+**Decision : ajout immediat, route a `nadia-prof`, pas une dette tracee pour un sprint futur.**
+Trois motifs, tous verifiables sur l'etat du depot a cette date plutot que sur une preference :
+
+1. **Le cout de corriger maintenant est au plus bas qu'il ne sera jamais.** Aucun paquet de contenu
+   CE1 n'existe (`nadia-prof`, meme document, section 3 : "aucun paquet ne la sert encore") : ajouter
+   une dix-huitieme ligne ne rejoue aucun audit, ne rouvre aucune fiche de conformite, ne deplace
+   aucun statut de matrice au-dela d'une ligne neuve `non couvert`. Le jour ou un premier paquet
+   mathematiques CE1 sera ecrit contre `MAT-CE1-08` tel qu'il est aujourd'hui (addition,
+   soustraction, multiplication seules), puis que la ligne de division sera ajoutee ensuite, ce
+   paquet devra etre repris ou un second paquet ecrit contre une ligne qui aurait pu exister depuis
+   le debut - exactement le cout que ce depot a deja nomme plus cher qu'une correction immediate
+   (`squad/README.md`, amendement de la retro de s21, sur `DEC-0076` : "corriger et reauditer dans
+   le sprint plutot que trois items faux en production").
+2. **Ce n'est pas une extension de perimetre de s36, c'est l'achevement de la tache deja routee.**
+   `DEC-0089` (ce document, section 3) route "le referentiel de competences mathematiques CE1" a
+   `nadia-prof`, pas "seize ou dix-sept lignes de ce referentiel" : une ligne qu'elle identifie
+   elle-meme comme appartenant au CE1, dans la matiere deja engagee ce sprint, complete la meme
+   livraison plutot que d'en ouvrir une neuve. Aucune reouverture de `PAR-16` n'est due : le poste
+   "referentiel mathematiques CE1" reste le meme poste, avec la meme affectation nominative.
+3. **Le referentiel se declare lui-meme non exhaustif** (`squad/programme/mathematiques/
+   competences-ce1.md`, en-tete : *"Socle realiste de depart, non exhaustif et non officiel"*) et
+   nomme lui-meme la forme de la correction (`MAT-CE1-18`, sans renumeroter les dix-sept lignes
+   existantes) : je ne decide donc d'aucune forme technique, seulement du moment, et le moment le
+   moins couteux est maintenant.
+
+**Ce que cette decision ne fait pas** : elle n'ajoute aucune ligne de matrice pour `MAT-CE1-18` -
+comme pour les dix-sept lignes deja entrees, une ligne de matrice n'existe qu'une fois la ligne de
+referentiel ecrite (section 3, "je ne fabrique aucune competence CE1"), jamais avant. Elle ne fixe
+aucun contenu de cette dix-huitieme competence : son intitule exact reste entierement a
+`nadia-prof`, je ne propose ni "problemes de partage et de groupement" ni "sens de la division"
+comme un texte a valider, seulement le fait qu'une ligne sur ce sujet est due. Elle n'engage aucun
+developpeur ni aucune story : comme les dix-sept lignes existantes, `MAT-CE1-18` n'est pas
+developpable avant qu'un arbitrage de perimetre plus large sur le premier paquet mathematiques CE1
+ne soit instruit (`docs/backlog/backlog.md`, section "Sprint 36").
