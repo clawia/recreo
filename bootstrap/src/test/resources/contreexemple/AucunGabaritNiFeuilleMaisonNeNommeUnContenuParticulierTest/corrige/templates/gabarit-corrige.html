@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Le corrige du meme jeu fautif, et c'est lui qui montre ce que la regle demande : le gabarit ne
+     connait plus le dessin, il lit le fait que le paquet declare (ADR-0094, decision 4). Ce
+     commentaire nomme dessin-nomme-par-le-gabarit, et le juge reste vert - c'est l'exclusion des
+     commentaires prouvee du cote vert. -->
+<div th:fragment="corrige">
+    <p th:if="${libelleDeZoneHorsDeLaBoite}">Le libellé se lit sous le dessin.</p>
+</div>
+</body>
+</html>

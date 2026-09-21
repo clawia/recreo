@@ -1,0 +1,8 @@
+schema: 1
+jeux:
+  - id: jeu-nomme-par-la-feuille
+    titre: "Le jeu du contre-exemple"
+    consigne: "Montre ce qu'on te décrit."
+    mecanique: designation
+    paquet: paquet-cite-en-commentaire-seulement
+    nombreDeManches: 5

@@ -1,8 +1,8 @@
 # Matrice de couverture - recreo
 
 Cette matrice est l'outil de pilotage le plus important de `camille-po`. Elle liste, une ligne
-par competence, l'integralite des dix-huit referentiels desormais disponibles
-(`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`,
+par competence, l'integralite des dix-neuf referentiels desormais disponibles
+(`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`, `competences-ce1.md`,
 `squad/programme/francais/competences-cp.md`, `competences-cm1.md`,
 `squad/programme/questionner-le-monde/competences-cp.md`,
 `squad/programme/histoire-geographie/competences-cm1.md`,
@@ -14,6 +14,16 @@ par competence, l'integralite des dix-huit referentiels desormais disponibles
 `squad/programme/histoire-des-arts/competences-cm1.md`,
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
+
+**Note du 2026-09-21, mise a jour le meme jour** : le perimetre s'ouvre a un troisieme niveau, CE1
+(cycle 2), sur decision de `DEC-0089` - CM2 reste explicitement differe. `nadia-prof` a ecrit le
+premier referentiel CE1 (mathematiques, 17 competences, `squad/programme/mathematiques/
+competences-ce1.md`) le jour meme ; ses dix-sept lignes sont desormais integrees ci-dessous
+(section "Mathematiques - CE1 (cycle 2)"), a l'etat `non couvert`, exactement comme cette note
+l'annoncait par avance. Le denominateur atteignable passe de 138 a 155, le taux de 76/138 = 55,1 %
+a 76/155 = 49,0 % - **par le seul effet du denominateur**, avant qu'aucun paquet ou jeu CE1
+n'existe ; ce recul n'est pas une regression du produit (detail et recompte complets dans la
+section "Mathematiques - CE1 (cycle 2)" ci-dessous).
 
 **Note du 2026-09-03** : le denominateur final du produit, que la note du 2026-09-02 (ci-dessous,
 conservee pour l'historique) annoncait comme un evenement futur, **est atteint a cette date**. Les
@@ -540,6 +550,71 @@ plus grande proposition gagne desormais 48,5 % des manches (les colonnes n'ayant
 largeur sous la voie 4), contre 33,3 % au hasard - meme famille que la reserve deja ouverte sur "Les
 mesures" (candidate de story au backlog, section "Backlog - sprints suivants" de
 `docs/backlog/backlog.md`), et non une condition de ce statut.
+
+## Mathematiques - CE1 (cycle 2)
+
+Source : `squad/programme/mathematiques/competences-ce1.md`, ecrit par `nadia-prof` le 2026-09-21
+sur le routage de `DEC-0089` (section 3). Dix-neuvieme tableau de cette matrice - les dix-huit
+precedents portaient tous CP ou CM1 - et le premier a porter le niveau CE1, troisieme niveau du
+produit ouvert par `DEC-0089`, CM2 restant explicitement differe. Aucune ligne n'est encore
+`couvert-valide` ni `en cours` : aucun paquet de contenu CE1 n'existe.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| mathematiques | CE1 | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 1000 (unites, dizaines, centaines) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Comparer, ranger et encadrer les nombres jusqu'a 1000, et les placer sur une ligne graduee | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Calcul mental - additions et soustractions dans la limite de 100 (complements a la dizaine, doubles et moities) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Poser et effectuer une addition avec retenue (nombres a deux ou trois chiffres) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Poser et effectuer une soustraction (nombres a deux ou trois chiffres) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Comprendre le sens de la multiplication (addition reiteree, disposition en lignes et en colonnes) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4 | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Resoudre des problemes d'addition, de soustraction et de multiplication a une ou deux etapes | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Mesurer et comparer des longueurs avec une regle graduee ; utiliser le centimetre et le metre | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre) | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se reperer dans le calendrier (mois, date) | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Calculer une duree simple en heures entieres ou en demi-heures | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Utiliser la monnaie : composer une somme en euros et en centimes, savoir ce qui est rendu | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Se reperer, se deplacer et coder un deplacement sur un quadrillage | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Reconnaitre, decrire et tracer des figures planes (carre, rectangle, triangle, triangle rectangle, cercle) a la regle et sur quadrillage | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Reconnaitre et nommer des solides usuels (cube, pave droit, boule, cylindre, cone) | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Reconnaitre un axe de symetrie et completer une figure par symetrie sur quadrillage | - | - | non couvert |
+
+**Dix-sept lignes**, verifiees contre le referentiel source par recherche des dix-sept codes
+`MAT-CE1-01` a `MAT-CE1-17` (aucun doublon, aucun trou) : `grep -oE "MAT-CE1-[0-9]+"
+squad/programme/mathematiques/competences-ce1.md`, sur la branche `s36-nadia` (commit `eaaadb45`,
+2026-09-21) ou `nadia-prof` l'a ecrit - ce fichier n'est pas encore fusionne sur cette branche-ci.
+
+**Ce que ce referentiel precise et que cette matrice ne reprend pas en colonne** : deux bornes de
+lisibilite hors competence (`LON-CE1-1`, au plus vingt mots ; `LON-CE1-2`, au plus trois phrases)
+sont posees par `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md` et s'appliqueront a
+tout paquet CE1 futur, en plus de la ligne de competence qu'il declare.
+
+**Effet de perimetre, pose d'avance comme `DEC-0089` section 5 l'exige** : ce dix-neuvieme tableau
+ajoute dix-sept lignes `non couvert` au denominateur atteignable de cette matrice. Aucune n'est
+`couvert-valide` ni `non couvrable en l'etat` : les 17 entrent entierement dans le denominateur,
+aucune n'entre au numerateur.
+
+| | Avant ce referentiel (2026-09-11, cloture de s35) | Apres l'entree du referentiel mathematiques CE1 |
+|---|---|---|
+| `couvert-valide` | 76 | 76 |
+| `en cours` | 0 | 0 |
+| `non couvert` | 62 | **79** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 209 | **226** |
+| Denominateur atteignable | 138 | **155** |
+| **Taux** | **76 / 138 = 55,1 %** | **76 / 155 = 49,0 %** |
+
+Methode, sur le meme patron que les recomptes de cloture de s34 et de s35 (sections "Le recompte,
+independant de tout chiffre transmis" ci-dessous) : les colonnes "Avant" reprennent le recompte
+independant deja verifie a la cloture de s35 (couvert-valide 76, en cours 0, non couvert 62, non
+couvrable en l'etat 71, total 209, denominateur atteignable 138 - meme section, ci-dessous), pas un
+chiffre recopie d'un autre document. La colonne "Apres" ajoute uniquement les dix-sept lignes de ce
+tableau, aucun autre mouvement n'a lieu dans ce meme geste. **76 / 155 = 49,0 %, jamais le "155"
+avance sans verification par `nadia-prof`** (chiffre juste par coincidence arithmetique - 138 + 17
+- mais que je recalcule ici depuis ma propre lecture du referentiel plutot que de le recopier tel
+quel) : le taux affiche recule de 6,1 points par le seul effet du denominateur, avant qu'aucun jeu
+CE1 n'existe, exactement comme la note du 2026-09-21 en tete de ce fichier l'annoncait d'avance.
+**Ce recul n'est pas une regression du produit.**
 
 ## Francais - CP (cycle 2)
 
@@ -1295,7 +1370,7 @@ ligne "questionner le monde / CM1".
 | questionner le monde | CP | Le vivant, la matiere et les objets | Reconnaître les objets numériques du quotidien et quelques règles simples de leur usage. | - | - | non couvert |
 | questionner le monde | CP | Le vivant, la matiere et les objets | Mener une démarche d'investigation simple : observer, questionner, expérimenter, dire ce qu'on a trouvé. | - | - | **non couvrable en l'etat** (2026-09-02, `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.1) - jugement humain sur une production libre (`ADR-0008`), meme famille que *rediger* (`ADR-0008`) et *copier* (`DEC-0066`), nature irreversible. `nadia-prof` : "Geste pratique et compte rendu libre. Observer, experimenter et dire ce qu'on a trouve ne se produisent ni par un choix ni par une saisie." |
 | questionner le monde | CP | Se situer dans l'espace | Utiliser le vocabulaire de position pour décrire l'espace proche (devant/derrière, gauche/droite, au-dessus/au-dessous, près/loin). | - | - | non couvert |
-| questionner le monde | CP | Se situer dans l'espace | Situer un lieu ou un objet sur un plan simple de la classe, de l'école ou du quartier. | - | - | non couvert - palier 2 requis (designer un lieu sur un plan), refuse au palier 1 par `V1` (2026-08-24) - **non** `non couvrable en l'etat` : `nadia-prof` le distingue explicitement, "le palier 2 est constructible, il n'existe pas". **s34** : entree minimale du palier 2 engagee par l'utilisatrice (`DEC-0086`, section 12.1), lot de designation `QLM-CP-11` + `QLM-CP-14` (`S33-PAL2-1`) **jamais livre sur cette ligne** - la geometrie des cadres du plan de classe (`armoire`, `porte`) et le plancher de lisibilite d'un libelle de zone restent a trancher (`ZON-15`, `ZON-16`, routees a `ines-design` et `nadia-prof`). **s35** (`S35-QLM11-PLANCLASSE`) : premier lot reellement servi sur cette ligne (`designation-plan-de-la-classe`, 6 items) et **REFUSE** - `ZON-15` rompue sur les six zones sur six, de 17 a 95 px de debordement selon la zone, les libelles se recouvrant entre voisins et couvrant les traits du meuble qu'ils designent ; `ZON-16` en revanche **tenue sur les six libelles**, confirmes tels quels et non repris dans le perimetre de la reprise. Constat structurel de `nadia-prof`, cite mot pour mot (`FICHE-designation-plan-de-la-classe.md`, section 3) : *"Un libelle positionnel replie sur deux lignes demande, dans le pave de `.zone`, un cadre d'au moins 109 x 88 px, soit 31 % x 25 % du dessin servi. Il faut cela six fois. Or trois des six elements d'un plan de classe sont des bandes minces par nature : un tableau contre le mur du haut, une fenetre percee dans le mur de droite, une porte dans le mur du bas. On ne peut pas donner 25 % de hauteur au tableau sans mentir sur le plan - et mentir sur le plan est exactement ce que `QLM-CP-11` interdit, puisque la competence est de situer sur un plan. [...] le libelle d'une zone ne peut pas vivre a l'interieur d'un cadre quand ce cadre doit rester une bande mince."* Deux sorties acceptees par `nadia-prof`, aucune tranchee (forme a `ines-design`/`theo-archi`) : que le libelle sorte de la boite du bouton, ou que le pave de `.zone` soit reduit sur une zone de designation. Une sortie refusee explicitement : l'alternative `(d)` d'`ADR-0092` (accepter qu'un libelle deborde de son cadre), parce que le debordement mesure ici fait se recouvrir des libelles de zones voisines. **Cinquieme sprint sur cette ligne a l'ouverture du sprint suivant.** Ligne inchangee, reste `non couvert`. Verdict : `squad/conformite/FICHE-designation-plan-de-la-classe.md` ; repris dans `squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/verdicts-nadia.md`, section 2. |
+| questionner le monde | CP | Se situer dans l'espace | Situer un lieu ou un objet sur un plan simple de la classe, de l'école ou du quartier. | designation-plan-de-la-classe | designation | **couvert-valide** (2026-09-21, s36, `S36-QLM11-PLANCLASSE`, VALIDE SOUS RESERVE) - **`QLM-CP-11` ferme, cinquieme sprint sur cette ligne.** Historique jusqu'a s36 : palier 2 requis (designer un lieu sur un plan), refuse au palier 1 par `V1` (2026-08-24) - **non** `non couvrable en l'etat` : `nadia-prof` le distingue explicitement, "le palier 2 est constructible, il n'existe pas". **s34** : entree minimale du palier 2 engagee par l'utilisatrice (`DEC-0086`, section 12.1), lot de designation `QLM-CP-11` + `QLM-CP-14` (`S33-PAL2-1`) **jamais livre sur cette ligne** - la geometrie des cadres du plan de classe (`armoire`, `porte`) et le plancher de lisibilite d'un libelle de zone restent a trancher (`ZON-15`, `ZON-16`, routees a `ines-design` et `nadia-prof`). **s35** (`S35-QLM11-PLANCLASSE`) : premier lot reellement servi sur cette ligne (`designation-plan-de-la-classe`, 6 items) et **REFUSE** - `ZON-15` rompue sur les six zones sur six, de 17 a 95 px de debordement selon la zone, les libelles se recouvrant entre voisins et couvrant les traits du meuble qu'ils designent ; `ZON-16` en revanche **tenue sur les six libelles**, confirmes tels quels et non repris dans le perimetre de la reprise. Constat structurel de `nadia-prof`, cite mot pour mot (`FICHE-designation-plan-de-la-classe.md`, section 3) : *"Un libelle positionnel replie sur deux lignes demande, dans le pave de `.zone`, un cadre d'au moins 109 x 88 px, soit 31 % x 25 % du dessin servi. Il faut cela six fois. Or trois des six elements d'un plan de classe sont des bandes minces par nature : un tableau contre le mur du haut, une fenetre percee dans le mur de droite, une porte dans le mur du bas. On ne peut pas donner 25 % de hauteur au tableau sans mentir sur le plan - et mentir sur le plan est exactement ce que `QLM-CP-11` interdit, puisque la competence est de situer sur un plan. [...] le libelle d'une zone ne peut pas vivre a l'interieur d'un cadre quand ce cadre doit rester une bande mince."* Deux sorties acceptees par `nadia-prof`, aucune tranchee (forme a `ines-design`/`theo-archi`) : que le libelle sorte de la boite du bouton, ou que le pave de `.zone` soit reduit sur une zone de designation. Une sortie refusee explicitement : l'alternative `(d)` d'`ADR-0092` (accepter qu'un libelle deborde de son cadre), parce que le debordement mesure ici fait se recouvrir des libelles de zones voisines. **s36** (`S36-QLM11-PLANCLASSE`, reprise sur la geometrie seule, `ADR-0093`) : `nadia-prof` rejoue une partie complete de cinq manches plus une manche a trois erreurs volontaires, dans un navigateur reel, geometrie mesuree par `getBoundingClientRect` sur le document servi. **`ZON-15` premiere moitie tenue** : 0,00 px de debordement horizontal et vertical sur les six zones (contre 17 a 95 px au refus de s35). **`ZON-15` seconde moitie clarifiee** : trois chiffres de designation croisent encore un trait du dessin (21,1 % a 30,9 % de leur encre), mais `nadia-prof` precise elle-meme sa condition - elle protege la silhouette de l'objet, pas l'absence de tout croisement de trait - et juge les six silhouettes identifiables aux deux mesures ; assouplissement qu'elle nomme comme tel, pas une nouvelle barre atteinte par le contenu. La correspondance numero -> libelle est verifiee lisible sans ambiguite par un enfant de CP (chiffre et legende a 20 px gras, six correspondances bijectives, la legende jamais necessaire pour jouer). **Quatre reserves non bloquantes** : `PCL-R1`, `PCL-R2` (indices imprecis, ouvertes depuis le 2026-09-11, inchangees, deja classees non bloquantes a leur ouverture) ; `PCL-R3` (le chiffre croise un trait sur trois zones), `PCL-R4` (le vocabulaire positionnel s'est detache de la position qu'il nomme), neuves du 2026-09-21. **Deux defauts transverses neufs, non bloquants, dates de s34 par `git log -S` et non une regression de s36**, touchant aussi `designation-frise-de-la-journee` (`QLM-CP-14`, non rouverte) : `PCL-R5` (une zone deja essayee ne se distingue en rien d'une zone neuve) et `PCL-R6` (apres la troisieme erreur, la bonne zone n'est designee par rien a l'ecran, `:focus-visible` faux apres un appui de pointeur) - routes a `camille-po` pour le backlog, forme a `ines-design`, cause a `theo-archi`. Verdict : `squad/conformite/FICHE-designation-plan-de-la-classe.md`, bloc de validation pedagogique nº 2 (2026-09-21, s36) ; repris dans `squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/verdicts-nadia.md`, sections 1, 2 et 5. |
 | questionner le monde | CP | Se situer dans l'espace | Situer la France et quelques espaces étudiés sur une carte ou sur un globe. | - | - | non couvert - meme motif que la ligne precedente - palier 2 requis, non construit a ce jour. |
 | questionner le monde | CP | Se situer dans le temps | Nommer et ordonner les mois de l'année et les saisons. | - | - | non couvert |
 | questionner le monde | CP | Se situer dans le temps | Situer des événements les uns par rapport aux autres sur une frise chronologique simple (avant, après, en même temps). | designation-frise-de-la-journee | designation | **couvert-valide** (2026-09-11, s35, `S35-QLM14-FRISE`) - **`QLM-CP-14` ferme.** Historique jusqu'a s35 : jouable sur la seule moitie textuelle (anteriorite/posteriorite), placement sur une frise reste du palier 2 (`nadia-prof`, section 7.1) ; **s34**, lot de designation `cp-frise-de-la-journee` (`S33-PAL2-1`) livre et **REFUSE** (`FRI-R1`, `FRI-R2`, bloquantes, instance B) - neuf items sur onze se gagnaient sans regarder le dessin et le pictogramme du lever ne se lisait pas comme un lit. **s35** : `FRI-R1` et `FRI-R2` **levees** - les deux textes alternatifs ne nomment plus aucune zone (passe image effacee a 5 sur 11, contre 9 sur 11 au refus de s34, le residu tenant desormais a la chronologie de la journee que l'enfant connait et non a une contrefacon) et le pictogramme du lever se lit comme un lit aux deux tailles. `FER-1` (les trois relations *avant*, *apres*, *en meme temps* chacune servies) et `FER-3` (6 contre 5) deja verifiees tenues a s34, non redemandees. **La mention de couverture partielle tombe** : la ligne n'est plus limitee a la moitie textuelle, elle est servie par le jeu de designation entier (11 items, deux dessins). **Reserves neuves, non bloquantes** : `FRI-R6` (le texte alternatif de `frise-soir-routine` annonce "quatre moments de gauche a droite" pour un dessin ou deux moments sont empiles sur trois places - la plus lourde des reserves de s35, a payer avant qu'un autre paquet de designation ne recopie la meme formule) et `FRI-R7` (l'indice de l'item 9 nomme un rang, "le tout dernier", que les libelles ne portent pas sur ce dessin a quatre moments et trois places). `FRI-R3`, `FRI-R4`, `FRI-R5` restent ouvertes, non bloquantes, hors perimetre de ce mouvement. Verdict : `squad/conformite/FICHE-designation-frise-de-la-journee.md`, bloc de validation du second passage (s35) ; repris dans `squad/sprints/s35-fermer-ce-qui-n-a-pas-recu-le-go-pedagogique/verdicts-nadia.md`, sections 1 et 5. |

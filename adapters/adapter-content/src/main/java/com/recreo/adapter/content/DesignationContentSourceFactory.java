@@ -3,6 +3,7 @@ package com.recreo.adapter.content;
 import com.recreo.domain.content.CadreDeZone;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentSource;
+import com.recreo.domain.content.EmplacementDuLibelleDeZone;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Zone;
 import com.recreo.domain.content.ZoneADesigner;
@@ -32,8 +33,23 @@ import java.util.Optional;
  * <p>Une cle que cette fabrique ne connait pas est ignoree sans un mot, comme ses deux soeurs
  * 'question' et 'saisie' ; {@code AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest} fait echouer
  * le build tant qu'aucune source du depot ne la nomme.</p>
+ *
+ * <p>ADR-0094, decision 4.1 : la cle facultative 'emplacementDuLibelleDeZone' est lue <b>au niveau
+ * du paquet seulement</b> - a la difference de 'exigenceDeForme' (ADR-0058), aucun paquet de
+ * designation ne demande de surcharge par item. Absente, elle vaut
+ * {@link EmplacementDuLibelleDeZone#DANS_LA_BOITE} : le comportement d'aujourd'hui, au caractere
+ * pres. Une valeur ecrite mais inconnue arrete le chargement en nommant la cle et la valeur, sur le
+ * meme patron que 'exigenceDeForme' - une faute de frappe rendrait sinon un paquet dans une forme
+ * que son auteur croit avoir changee, et personne ne le verrait. La valeur resolue est posee sur
+ * chaque item construit.</p>
  */
 final class DesignationContentSourceFactory implements ContentSourceFactory {
+
+    private static final String CLE_EMPLACEMENT_DU_LIBELLE_DE_ZONE = "emplacementDuLibelleDeZone";
+
+    private static final String EMPLACEMENT_DANS_LA_BOITE = "dans-la-boite";
+
+    private static final String EMPLACEMENT_HORS_DE_LA_BOITE = "hors-de-la-boite";
 
     @Override
     public ContentSource creer(ContentDescriptor descripteur, Map<String, Object> corps) {
@@ -41,16 +57,35 @@ final class DesignationContentSourceFactory implements ContentSourceFactory {
         if (!(brut instanceof List<?> items) || items.isEmpty()) {
             throw new IllegalStateException("champ obligatoire manquant ou vide : 'items'");
         }
+        EmplacementDuLibelleDeZone emplacementDuPaquet =
+                emplacementDe(corps.get(CLE_EMPLACEMENT_DU_LIBELLE_DE_ZONE));
         List<ZoneADesigner> zonesADesigner = new ArrayList<>();
         int position = 0;
         for (Object itemBrut : items) {
-            zonesADesigner.add(zoneADesigner(itemBrut, position));
+            zonesADesigner.add(zoneADesigner(itemBrut, position, emplacementDuPaquet));
             position++;
         }
         return new ListContentSource(descripteur, zonesADesigner, false);
     }
 
-    private ZoneADesigner zoneADesigner(Object itemBrut, int position) {
+    private EmplacementDuLibelleDeZone emplacementDe(Object declaree) {
+        if (declaree == null) {
+            return EmplacementDuLibelleDeZone.DANS_LA_BOITE;
+        }
+        String valeur = String.valueOf(declaree);
+        if (EMPLACEMENT_DANS_LA_BOITE.equals(valeur)) {
+            return EmplacementDuLibelleDeZone.DANS_LA_BOITE;
+        }
+        if (EMPLACEMENT_HORS_DE_LA_BOITE.equals(valeur)) {
+            return EmplacementDuLibelleDeZone.HORS_DE_LA_BOITE;
+        }
+        throw new IllegalStateException("le paquet : '" + CLE_EMPLACEMENT_DU_LIBELLE_DE_ZONE
+                + "' vaut '" + valeur + "', qui n'est ni '" + EMPLACEMENT_DANS_LA_BOITE + "' ni '"
+                + EMPLACEMENT_HORS_DE_LA_BOITE + "'");
+    }
+
+    private ZoneADesigner zoneADesigner(Object itemBrut, int position,
+                                         EmplacementDuLibelleDeZone emplacementDuPaquet) {
         if (!(itemBrut instanceof Map<?, ?> item)) {
             throw new IllegalStateException("items[" + position + "] : doit etre une correspondance (map)");
         }
@@ -76,7 +111,8 @@ final class DesignationContentSourceFactory implements ContentSourceFactory {
                 indice == null ? Optional.empty() : Optional.of(String.valueOf(indice)),
                 explication == null ? Optional.empty() : Optional.of(String.valueOf(explication)),
                 texteAVoixHaute == null
-                        ? Optional.empty() : Optional.of(String.valueOf(texteAVoixHaute)));
+                        ? Optional.empty() : Optional.of(String.valueOf(texteAVoixHaute)),
+                emplacementDuPaquet);
     }
 
     private Zone zone(Object zoneBrut, int position, int rang) {

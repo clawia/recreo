@@ -7,7 +7,12 @@ import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.application.port.out.MechanicRegistryPort;
 import com.recreo.application.usecase.PartieService;
+import com.recreo.domain.content.ContentSource;
+import com.recreo.domain.content.Item;
+import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.RandomSource;
+import com.recreo.domain.content.Zone;
+import com.recreo.domain.content.ZoneADesigner;
 import com.recreo.domain.mechanic.GameMechanic;
 import com.recreo.domain.mechanic.MechanicId;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchot;
@@ -30,7 +35,13 @@ import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -62,6 +73,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  * juge sur les quatre criteres du garde-fou 1 et sur la cible tactile du garde-fou 3 ; <b>mise a
  * l'epreuve</b> - les memes morsures que les deux garde-fous d'origine, rejouees sur le document
  * reellement servi par ce catalogue.</p>
+ *
+ * <p><b>ADR-0093 : les deux clauses du nom accessible d'un bouton de zone.</b> Clause 1 - le nom
+ * accessible est resolu (aria-labelledby, sinon aria-label, sinon texte), duplique ici comme dans
+ * {@code ChaqueZoneDesignableEstUnBoutonDuFormulaireDeCoupTest} pour le motif ecrit dans la Javadoc
+ * de classe (aucun test-jar ne publie l'un hors de son module). Clause 2 - <b>ce module est le seul
+ * qui voie a la fois {@code adapter-content} et {@code adapter-web}</b>, donc le seul qui puisse
+ * comparer le nom accessible resolu au libelle que le paquet declare pour la zone dont le bouton
+ * porte l'identifiant en {@code value}. Le paquet de l'entree de catalogue jugee est lu par la meme
+ * chaine que la production ({@link GameDefinition#contenu()}, issu de {@link YamlContentPackLoader}),
+ * jamais par un second recensement.</p>
  */
 @WebMvcTest(PartieController.class)
 @Import(LEcranDeMancheDuJeuDeDesignationReelEstServiTest.JeuxDeTestConfiguration.class)
@@ -97,6 +118,36 @@ class LEcranDeMancheDuJeuDeDesignationReelEstServiTest {
         return Jsoup.parseBodyFragment(corps);
     }
 
+    /**
+     * ADR-0093 clause 1 : le nom accessible est resolu, il n'est plus assimile au texte du bouton.
+     * Meme methode, meme ordre corrige (aria-labelledby, aria-label, texte) que dans
+     * {@code ChaqueZoneDesignableEstUnBoutonDuFormulaireDeCoupTest} - dupliquee et non appelee a
+     * travers une frontiere de module qui n'existe pas (Javadoc de classe).
+     */
+    private static String nomAccessible(Element bouton, Document document) {
+        String references = bouton.attr("aria-labelledby").trim();
+        if (!references.isBlank()) {
+            StringBuilder nom = new StringBuilder();
+            for (String identifiant : references.split("\\s+")) {
+                Element cible = document.getElementById(identifiant);
+                if (cible == null || cible.text().isBlank()) {
+                    return "";
+                }
+                nom.append(nom.isEmpty() ? "" : " ").append(cible.text());
+            }
+            return nom.toString();
+        }
+        if (!bouton.attr("aria-label").isBlank()) {
+            return bouton.attr("aria-label");
+        }
+        return bouton.text();
+    }
+
+    /** Espaces reduits, casse repliee - la forme de comparaison que la clause 2 d'ADR-0093 exige. */
+    private static String normalise(String texte) {
+        return String.join(" ", texte.trim().split("\\s+")).toLowerCase(Locale.ROOT);
+    }
+
     // --- Garde-fou 1 d'ADR-0080 : chaque zone est un et un seul bouton de soumission du coup ---
 
     private static List<String> griefsDeFormulaire(Document document) {
@@ -127,9 +178,10 @@ class LEcranDeMancheDuJeuDeDesignationReelEstServiTest {
             if (bouton.attr("value").isBlank()) {
                 griefs.add("le bouton de zone " + bouton.outerHtml() + " porte une valeur vide");
             }
-            if (bouton.text().isBlank()) {
-                griefs.add("le bouton de zone " + bouton.outerHtml()
-                        + " ne porte aucun nom accessible (texte vide)");
+            if (nomAccessible(bouton, document).isBlank()) {
+                griefs.add("le bouton de zone " + bouton.outerHtml() + " ne porte aucun nom"
+                        + " accessible : ni texte, ni aria-label, ni aria-labelledby resolvant vers"
+                        + " un texte non vide");
             }
         }
 
@@ -142,6 +194,59 @@ class LEcranDeMancheDuJeuDeDesignationReelEstServiTest {
                     + " au lieu d'un vrai bouton de formulaire");
         }
 
+        return griefs;
+    }
+
+    // --- ADR-0093, clause 2 : le nom accessible resolu porte le libelle que le paquet declare ---
+
+    private static final int BUDGET_DE_TIRAGES = 500;
+
+    /**
+     * Le libelle que le paquet declare pour chaque zone de l'item reellement servi - retrouve par
+     * son enonce, jamais par l'ordre de tirage (le hasard fixe de {@link JeuxDeTestConfiguration} ne
+     * garantit rien de ce cote-ci d'une frontiere de module). Materiau reel : la meme chaine de
+     * chargement que la production, jamais une seconde lecture du YAML.
+     */
+    private static Map<String, String> libellesDeclares(ContentSource contenu, String enonceRendu) {
+        RandomSource hasard = borne -> 0;
+        Set<ItemId> dejaVus = new HashSet<>();
+        for (int tirage = 0; tirage < BUDGET_DE_TIRAGES; tirage++) {
+            Optional<Item> tire = contenu.next(hasard, dejaVus);
+            if (tire.isEmpty()) {
+                break;
+            }
+            Item item = tire.orElseThrow();
+            dejaVus.add(item.id());
+            if (item instanceof ZoneADesigner zone && zone.enonce().equals(enonceRendu)) {
+                Map<String, String> libelles = new LinkedHashMap<>();
+                for (Zone declaree : zone.zones()) {
+                    libelles.put(declaree.id(), declaree.libelle());
+                }
+                return libelles;
+            }
+        }
+        throw new AssertionError("aucun item de designation du paquet ne porte l'enonce \""
+                + enonceRendu + "\" - le document servi et le contenu charge divergent");
+    }
+
+    private static List<String> griefsDeCorrespondanceLibelle(Document document,
+                                                                Map<String, String> libellesDeclares) {
+        List<String> griefs = new ArrayList<>();
+        for (Element bouton : document.select("form[hx-post] button")) {
+            String id = bouton.attr("value");
+            String libelleDeclare = libellesDeclares.get(id);
+            if (libelleDeclare == null) {
+                griefs.add("le bouton de zone " + bouton.outerHtml() + " porte l'identifiant \"" + id
+                        + "\", que le paquet ne declare pour aucune zone de cet item");
+                continue;
+            }
+            String nomAccessible = nomAccessible(bouton, document);
+            if (!normalise(nomAccessible).contains(normalise(libelleDeclare))) {
+                griefs.add("le bouton de zone " + bouton.outerHtml() + " a pour nom accessible \""
+                        + nomAccessible + "\", qui ne porte pas le libelle \"" + libelleDeclare
+                        + "\" que le paquet declare pour la zone \"" + id + "\" (ADR-0093 clause 2)");
+            }
+        }
         return griefs;
     }
 
@@ -225,10 +330,12 @@ class LEcranDeMancheDuJeuDeDesignationReelEstServiTest {
         return griefs;
     }
 
-    private static List<String> griefsDuDocument(Document document) {
+    private static List<String> griefsDuDocument(Document document, ContentSource contenu) {
         List<String> griefs = new ArrayList<>(griefsDeFormulaire(document));
         griefs.addAll(griefsDeCibleTactile(zonesRendues(document), plafondDeHauteurEnRem(),
                 PLANCHER_DE_CIBLE_TACTILE_REM));
+        String enonceRendu = document.select(".enonce").text();
+        griefs.addAll(griefsDeCorrespondanceLibelle(document, libellesDeclares(contenu, enonceRendu)));
         return griefs;
     }
 
@@ -242,12 +349,12 @@ class LEcranDeMancheDuJeuDeDesignationReelEstServiTest {
 
         List<String> defauts = new ArrayList<>();
         for (GameDefinition jeu : jeuxDeDesignation) {
-            defauts.addAll(griefsDuDocument(ecran(mockMvc, jeu.id())));
+            defauts.addAll(griefsDuDocument(ecran(mockMvc, jeu.id()), jeu.contenu()));
         }
 
         assertThat(defauts)
-                .as("ADR-0080, garde-fous 1 et 3, rejoues sur l'ecran de manche reellement servi du"
-                        + " catalogue reel")
+                .as("ADR-0080, garde-fous 1 et 3, et ADR-0093 clause 2, rejoues sur l'ecran de manche"
+                        + " reellement servi du catalogue reel")
                 .isEmpty();
     }
 
@@ -310,6 +417,85 @@ class LEcranDeMancheDuJeuDeDesignationReelEstServiTest {
                 PLANCHER_DE_CIBLE_TACTILE_REM)).isEmpty())
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("sous le plancher de cible tactile");
+    }
+
+    /**
+     * ADR-0013 obligation 3, morsure du garde-fou 1 (clause 1 d'ADR-0093) : un bouton nomme par
+     * aria-label seul (texte vide) est vert sous le juge neuf, sur le document reellement servi.
+     */
+    @Test
+    void unBoutonNommeParAriaLabelSeulEstAccepteParLeGardeFouSurLeDocumentReel() throws Exception {
+        GameDefinition jeu = jeuxDeDesignationDuCatalogueReel(partie).stream()
+                .filter(candidat -> "designation-plan-de-la-classe".equals(candidat.id()))
+                .findFirst().orElseThrow();
+        Document document = ecran(mockMvc, jeu.id());
+        Element bouton = document.select("form[hx-post] button").first();
+        assertThat(bouton).as("un bouton de zone doit exister avant mutation").isNotNull();
+        bouton.text("");
+        bouton.attr("aria-label", "une zone");
+
+        assertThat(bouton.text())
+                .as("l'ancien critere (bouton.text().isBlank()) aurait refuse ce bouton")
+                .isBlank();
+        assertThat(griefsDeFormulaire(document)).isEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3, morsure 4 d'ADR-0093 (clause 2) : le libelle d'une zone du paquet reel
+     * mute en memoire, sur du materiau reel (le document servi de {@code cp-plan-de-la-classe},
+     * "hors-de-la-boite" depuis ce lot - son premier bouton porte donc deja un aria-label egal au
+     * libelle declare, sans aucune mutation de document).
+     */
+    @Test
+    void unLibelleDeclareMuteEnMemoireFaitEchouerLeGardeFou() throws Exception {
+        GameDefinition jeu = jeuxDeDesignationDuCatalogueReel(partie).stream()
+                .filter(candidat -> "designation-plan-de-la-classe".equals(candidat.id()))
+                .findFirst().orElseThrow();
+        Document document = ecran(mockMvc, jeu.id());
+        String enonceRendu = document.select(".enonce").text();
+        Map<String, String> libellesReels = libellesDeclares(jeu.contenu(), enonceRendu);
+        assertThat(libellesReels).as("l'item servi doit declarer au moins un libelle").isNotEmpty();
+
+        Map<String, String> libellesMutes = new LinkedHashMap<>(libellesReels);
+        String premiereZone = libellesMutes.keySet().iterator().next();
+        libellesMutes.put(premiereZone, "un libelle que le paquet ne declare pas");
+
+        assertThat(griefsDeCorrespondanceLibelle(document, libellesReels)).isEmpty();
+        assertThat(griefsDeCorrespondanceLibelle(document, libellesMutes))
+                .isNotEmpty()
+                .anyMatch(grief -> grief.contains("ADR-0093 clause 2"));
+    }
+
+    /**
+     * ADR-0013 obligation 3, morsure 5 d'ADR-0093 (clause 2) : un bouton dont le texte (le numero de
+     * repere servi) n'a pas bouge mais dont l'aria-label est remplace par une autre chaine que le
+     * libelle declare - juge sur l'aria-label, et rouge, alors que la seule verification du texte ne
+     * l'aurait jamais vu.
+     */
+    @Test
+    void unAriaLabelRemplaceParUneAutreChaineFaitEchouerLeGardeFouAlorsQueLeTexteNAPasBouge()
+            throws Exception {
+        GameDefinition jeu = jeuxDeDesignationDuCatalogueReel(partie).stream()
+                .filter(candidat -> "designation-plan-de-la-classe".equals(candidat.id()))
+                .findFirst().orElseThrow();
+        Document document = ecran(mockMvc, jeu.id());
+        String enonceRendu = document.select(".enonce").text();
+        Map<String, String> libellesReels = libellesDeclares(jeu.contenu(), enonceRendu);
+
+        Element bouton = document.select("form[hx-post] button").first();
+        assertThat(bouton).as("un bouton de zone doit exister avant mutation").isNotNull();
+        assertThat(bouton.attr("aria-label"))
+                .as("hors-de-la-boite : le bouton doit deja porter un aria-label egal au libelle"
+                        + " declare, sans aucune mutation")
+                .isEqualTo(libellesReels.get(bouton.attr("value")));
+        String texteAvant = bouton.text();
+
+        assertThat(griefsDeCorrespondanceLibelle(document, libellesReels)).isEmpty();
+
+        bouton.attr("aria-label", "une chaine que le paquet ne declare pour aucune zone");
+
+        assertThat(bouton.text()).as("le texte du bouton n'a pas bouge").isEqualTo(texteAvant);
+        assertThat(griefsDeCorrespondanceLibelle(document, libellesReels)).isNotEmpty();
     }
 
     @TestConfiguration

@@ -31,7 +31,14 @@
          aucun usemap, aucun <map>, aucun <area> - et jamais un gestionnaire d'evenement en ligne.
          Garde-fou 3 (AucuneZoneDesignableNeDescendSousLaCibleTactileTest) : la taille rendue d'une
          zone est portee par son cadre en pourcentage, jamais par une classe qui varierait sa taille
-         a son insu. -->
+         a son insu.
+         ADR-0094 : "libelleDeZoneHorsDeLaBoite" est le seul fait de contenu que ce gabarit lit ici -
+         un booleen de vue, jamais l'enum de contenu (decision 4). Le rendu par defaut (libelle dans
+         la boite du bouton) est inchange au caractere pres pour tout paquet qui ne declare rien.
+         Quand il vaut vrai, le bouton porte un numero de repere servi (le rang d'iteration du
+         gabarit, jamais un compteur CSS - ADR-0027 clause 7 interdit a une regle maison de fabriquer
+         un mot que le serveur n'a pas envoye) et un aria-label egal au libelle du paquet ; une
+         legende sous le dessin liste alors les libelles complets, dans le meme ordre. -->
     <div class="illustration-designation">
         <img class="image-item image-designation" th:src="@{'/illustrations/' + ${illustration} + '.svg'}"
              th:alt="${illustrationTexteAlternatif}">
@@ -43,13 +50,18 @@
         <form class="zones-designables" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/designations'}"
               hx-target="#jeu" hx-swap="innerHTML">
             <button type="submit" class="btn zone" data-role="action"
-                    th:each="zone : ${zones}"
+                    th:each="zone, zoneStatut : ${zones}"
                     th:classappend="${zonesEssayees.contains(zone.id())} ? 'deja-essayee' : ''"
                     th:attr="data-focus-cible=${focusCibles.contains(zone.id())},
+                             aria-label=${libelleDeZoneHorsDeLaBoite} ? ${zone.libelle()} : null,
                              style=${'left:' + zone.cadre().x() + '%; top:' + zone.cadre().y() + '%; width:' + zone.cadre().largeur() + '%; height:' + zone.cadre().hauteur() + '%;'}"
-                    name="zoneDesignee" th:value="${zone.id()}" th:text="${zone.libelle()}"></button>
+                    name="zoneDesignee" th:value="${zone.id()}"
+                    th:text="${libelleDeZoneHorsDeLaBoite} ? ${zoneStatut.count} : ${zone.libelle()}"></button>
         </form>
     </div>
+    <ol class="legende-zones" th:if="${libelleDeZoneHorsDeLaBoite}">
+        <li th:each="zone : ${zones}" th:text="${zone.libelle()}"></li>
+    </ol>
     <!-- Meme bloc que sur les deux autres mecaniques : le seul emplacement ou le jeu parle de la
          reponse de l'enfant, avec le signal non textuel, l'explication et l'indice. Aucun bloc de
          reponse revelee ici : sur cette mecanique la revelation se lit sur la zone elle-meme
