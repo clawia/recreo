@@ -218,9 +218,10 @@ l'intérieur des huit bandes, et il y en a beaucoup.
 ### 4.4 Ce que cette table **ne** garantit pas, et que je m'interdis d'exiger plus tard
 
 Une répartition conforme sur 200 000 tirages **n'empêche pas** qu'une partie de dix manches tombe
-sans aucune manche d'entrée : à 10 % sur la ligne 2, cela arrive encore environ une fois sur
-quatre. Un tirage manche par manche qui garantirait un appui dans chaque partie serait une
-propriété plus forte, et je ne la demande pas.
+sans aucune manche d'entrée : au plancher strict, 10 % sur la ligne 2 et 1,3 % sur la ligne 1, cela
+arrive encore environ **une fois sur trois** (`0,887` puissance dix, soit 30 %). La table fait donc
+passer ce cas de 59 % à 30 % au pire, pas à zéro. Un tirage manche par manche qui garantirait un
+appui dans chaque partie serait une propriété plus forte, et je ne la demande pas.
 
 **Je l'écris comme un engagement, pas comme une réserve dormante : je ne refuserai pas `S37-1` au
 motif qu'une partie donnée ne contient pas de manche facile, dès lors que `ADD-CE1-2` est tenue.**
