@@ -13695,6 +13695,18 @@ porte une competence neuve.**
   technique de la scission ; `marc-dev` ou `lea-dev` pour l'execution et l'ecriture des quatre
   consignes ; `nadia-prof` pour l'audit.
 
+## Sprint 36 - Reprise de `QLM-CP-11` (cinquieme sprint) et ouverture du perimetre CE1,
+## mathematiques seule (`DEC-0089`)
+
+Deux lots disjoints. Le premier reprend une ligne existante (`QLM-CP-11`, refusee a s35) et porte
+sa story complete, deja specifiee mot pour mot contre le motif du refus (`S36-QLM11-PLANCLASSE`,
+ci-dessous). Le second ouvre le perimetre du produit a un troisieme niveau, CE1 (`DEC-0089`) :
+**aucune story de developpement n'y est ecrite**, pour le meme motif qui a deja empeche d'en
+ecrire une pour l'anglais CM1 a s27 avant que son referentiel n'existe (`docs/backlog/
+backlog.md`, section "Sprint 27", "Reserve, hors perimetre de s27") - inventer une competence CE1
+ou un critere d'acceptation sans referentiel reproduirait exactement le defaut que cette regle
+existe pour eviter.
+
 ### S36-QLM11-PLANCLASSE - Reprise de `S35-QLM11-PLANCLASSE` : la geometrie des six cadres du plan
 ### de la classe, pas les libelles (`ZON-15` seule reste a tenir, cinquieme sprint sur cette ligne)
 
@@ -13782,5 +13794,37 @@ porte une competence neuve.**
 - **Agent pressenti** : `ines-design` pour la geometrie des six cadres ou le placement hors bouton ;
   `theo-archi` pour la forme technique retenue (pave de `.zone` ou position du libelle) ; `nadia-prof`
   pour les deux reserves de contenu et pour l'audit final.
+
+### Reserve, hors perimetre de developpement de s36 - ouverture CE1, mathematiques (`DEC-0089`)
+
+**Aucune story de developpement n'est ecrite ici**, meme regle que pour l'anglais CM1 a s27
+("Reserve, hors perimetre de s27") : le premier paquet mathematiques CE1 suppose un referentiel
+de competences qui n'existe pas encore. Ce qui est du, avant qu'une story testable puisse
+s'ecrire :
+
+- **Referentiel de competences mathematiques CE1**
+  (`squad/programme/mathematiques/competences-ce1.md`), route a `nadia-prof` par `DEC-0089`,
+  section 3 - socle realiste, non exhaustif, non officiel, sur le meme modele que les
+  referentiels existants.
+- **Une fois ce referentiel ecrit** : `camille-po` ajoute la ou les lignes correspondantes a
+  `squad/programme/MATRICE-couverture.md`, sous une nouvelle section `## Mathematiques - CE1
+  (cycle 2)`, puis peut ecrire une premiere story de developpement avec une competence reelle,
+  un lien vers la ligne du referentiel, et des criteres d'acceptation testables - exactement la
+  forme que `S27-2` (premier paquet questionner le monde) a suivie une fois son propre
+  referentiel et son arbitrage prealable disponibles.
+- **Ce que ce sprint mesure, faute de story chiffrable a l'avance** : le temps et le nombre
+  d'echanges necessaires a `nadia-prof` pour produire ce premier referentiel CE1, compare au
+  cout deja mesure d'un arbitrage de premiere matiere neuve sur un niveau existant (`DEC-0071`,
+  section 6). C'est ce chiffre, une fois connu, qui dira si un second referentiel CE1 (francais)
+  est engageable au meme sprint ou doit attendre le sprint suivant.
+- **Ce que ce sprint n'ouvre pas** : francais CE1 ni aucune des sept autres matieres CE1
+  (`DEC-0089`, section 3) ; CM2, differe explicitement par `DEC-0089`, section 2.
+
+- **Lien decision** : `DEC-0089` (ouverture du perimetre, referentiel route, choix de la matiere
+  pilote).
+- **A faire, et par qui** : `nadia-prof` ecrit le referentiel ; `camille-po` ouvre les lignes de
+  matrice et ecrit la premiere story une fois le referentiel disponible ; `sofia-sm` l'affecte
+  nominativement au planning de s36 ou du sprint suivant, selon le moment ou le referentiel
+  arrive.
 
 

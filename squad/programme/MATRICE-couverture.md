@@ -15,6 +15,19 @@ par competence, l'integralite des dix-huit referentiels desormais disponibles
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
 
+**Note du 2026-09-21** : le perimetre s'ouvre a un troisieme niveau, CE1 (cycle 2), sur decision
+proposee par `DEC-0089` - CM2 reste explicitement differe. **Aucune ligne CE1 n'entre dans cette
+matrice a cette date** : les dix-huit referentiels listes ci-dessus restent les seuls a exister
+sur le disque, et `DEC-0089` route l'ecriture d'un premier referentiel, mathematiques CE1
+(`squad/programme/mathematiques/competences-ce1.md`), a `nadia-prof`. Le denominateur atteignable
+(138, voir la synthese du sprint 35 ci-dessous) et le taux de 76/138 = 55,1 % restent ceux d'un
+perimetre a deux niveaux jusqu'a ce que ce referentiel existe. Suivant la regle deja posee au
+2026-09-02 pour l'ouverture de matiere : **le jour ou la premiere ligne mathematiques CE1 entrera
+ici, la synthese qui l'accompagnera portera l'ancien denominateur, le nouveau, l'ancien taux, le
+nouveau taux, et la phrase "par le seul effet du denominateur"** - le taux affiche baissera
+mecaniquement des cette entree, avant qu'aucun jeu CE1 n'existe, et ce recul n'est pas une
+regression du produit.
+
 **Note du 2026-09-03** : le denominateur final du produit, que la note du 2026-09-02 (ci-dessous,
 conservee pour l'historique) annoncait comme un evenement futur, **est atteint a cette date**. Les
 dix referentiels des enseignements jusque-la absents (arts plastiques, education musicale,
