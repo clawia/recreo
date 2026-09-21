@@ -1,19 +1,41 @@
 # DEC-0089 - Ouverture du perimetre CE1 : un troisieme niveau, CM2 differe, mathematiques seule instruite pour s36
 
-- **Statut** : Proposee. Le perimetre (CE1 seul, CM2 differe) est pose ; aucune competence CE1
-  n'est fixee par ce document, et rien n'est developpable avant que le referentiel qu'il route
-  n'existe.
+- **Statut** : Acceptee (confirmee par l'utilisatrice le 2026-09-21, voir "Confirmation du
+  2026-09-21" ci-dessous). Aucune competence CE1 n'est fixee par ce document, et rien n'est
+  developpable avant que le referentiel qu'il route n'existe.
 - **Date** : 2026-09-21
 - **Auteur** : `camille-po`
 - **Sprint** : hors-sprint (branche `s36-camille`, avant ouverture de s36)
 - **Retour qui la fonde** : recu de MASTER, sans source dans le depot, cite mot pour mot,
   2026-09-21 - *"L'utilisatrice a decide d'ouvrir un troisieme niveau, CE1 seul (pas CM2 pour
   l'instant - un seul niveau a la fois, pour mesurer le cout reel avant d'engager le second)."*
-  Ce document est le premier endroit du depot ou cet enonce est ecrit ; jusqu'a ce qu'il soit
-  confirme par l'utilisatrice elle-meme sous une forme citable (forme 2 de `squad/README.md`,
-  section 2 bis), il ne fonde que la proposition ci-dessous, pas un fait acquis - deux bornes que
-  `DEC-0062` pose explicitement pour un enonce recu par ce canal, et que je m'applique a moi-meme
-  plutot que de les relacher au motif que la conclusion me parait raisonnable.
+  Ce document est le premier endroit du depot ou cet enonce est ecrit ; au moment ou cette phrase
+  a ete redigee, il ne fondait que la proposition ci-dessous, pas un fait acquis - deux bornes que
+  `DEC-0062` pose explicitement pour un enonce recu par ce canal, et que je m'appliquais a
+  moi-meme plutot que de les relacher au motif que la conclusion me paraissait raisonnable. **Ce
+  retour est desormais confirme sous forme 2, voir ci-dessous** : la reserve qu'il portait est
+  levee, le texte d'origine est laisse tel quel pour que la chronologie reste lisible.
+
+## Confirmation du 2026-09-21 (le meme jour, apres reponse de l'utilisatrice)
+
+**Forme 2** (`squad/README.md`, section 2 bis) : l'enonce vient directement de l'utilisatrice, ses
+mots sont cites entre guillemets, la date est celle de la reponse.
+
+Question posee mot pour mot : *"confirmez-vous explicitement : ouverture du perimetre CE1 seul
+(CM2 differe), lot s36 limite a mathematiques CE1 ?"*
+
+Reponse de l'utilisatrice, verbatim, 2026-09-21 : *"oui et tu peux lancer le sprint quand c'est
+bon."*
+
+Cette reponse confirme, sous une forme desormais citable directement, exactement les deux points
+que le retour recu hors des neuf agents avait avances sans pouvoir les fonder seul : le perimetre
+CE1 seul / CM2 differe (section 2) et le lot de s36 borne a mathematiques CE1 (section 4). Elle
+autorise en outre l'ouverture du sprint - lu ici comme portant sur le routage a `nadia-prof`
+(section 3) et sur l'engagement du lot de s36 tel qu'instruit, pas comme une levee du prealable
+que ce meme document pose : aucune story de developpement ne devient engageable avant que le
+referentiel mathematiques CE1 n'existe (section 4, `docs/backlog/backlog.md`, section "Sprint
+36").
+
 - **Competence programme visee** : transverse - ce document porte sur le perimetre des
   referentiels eux-memes, pas sur le contenu d'une ligne.
 
@@ -171,9 +193,11 @@ couverture.md`, synthese du sprint 35).
 - Il ne cree aucune ligne de matrice : aucune ligne CE1 n'existe tant qu'aucun referentiel n'existe
   pour elle.
 - Il ne prononce aucun Done, technique ou pedagogique.
-- Il ne confirme pas, a lui seul, que l'utilisatrice a bien decide ce que ce document lui
-  attribue : cette confirmation reste due (section "Retour qui la fonde"). Si elle infirme ou
-  ajuste ce perimetre, ce document est amende ou remplace, jamais silencieusement contourne.
+- **Point leve le 2026-09-21** : ce document ne confirmait pas, a lui seul, que l'utilisatrice
+  avait bien decide ce qu'il lui attribuait ; cette confirmation etait due (section "Retour qui
+  la fonde"). Elle est desormais rendue (section "Confirmation du 2026-09-21"). Si elle infirme ou
+  ajuste ce perimetre a l'avenir, ce document est amende ou remplace, jamais silencieusement
+  contourne.
 
 ---
 
@@ -181,7 +205,7 @@ couverture.md`, synthese du sprint 35).
 
 | Ce qui est du | Proprietaire | Etat |
 |---|---|---|
-| Confirmation citable, par l'utilisatrice, du perimetre CE1 seul / CM2 differe | l'utilisatrice | **Route, section "Retour qui la fonde"** |
+| Confirmation citable, par l'utilisatrice, du perimetre CE1 seul / CM2 differe | l'utilisatrice | **Rendue le 2026-09-21, section "Confirmation du 2026-09-21"** |
 | Referentiel de competences mathematiques CE1 (`squad/programme/mathematiques/competences-ce1.md`) | `nadia-prof` | **Route, section 3** |
 | Ligne(s) neuve(s) de `MATRICE-couverture.md` une fois ce referentiel ecrit | `camille-po` | **A faire des que le referentiel existe** |
 | Story(ies) de developpement du premier paquet mathematiques CE1 | `camille-po` puis `sofia-sm` | **Non engageable avant le referentiel - voir `docs/backlog/backlog.md`, section "Sprint 36"** |
