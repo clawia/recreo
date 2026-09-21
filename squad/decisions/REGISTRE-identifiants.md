@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `649` identifiants alloues, `104` prefixes distincts.
+**Compte courant, verifie par la CI** : `651` identifiants alloues, `104` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -32,6 +32,28 @@ de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. La 
 fusion, comme il l'avait ecrit, et la reparation est arithmetique - aucune allocation ajoutee, aucune
 retiree, aucun sens touche. Les deux notes des instances restent verbatim sous cette ligne : leur
 chiffre est date, le mien est courant.*
+
+**Note de `nadia-prof`, s36, le 2026-09-21.** Deux identifiants ajoutes - `LON-CE1-1` et
+`LON-CE1-2`, la borne de longueur d'un enonce au CE1
+(`squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md`) - **aucun prefixe neuf** : `LON`
+etait deja dans la table de la section 4, verifie avant allocation. Ligne d'etat courant portee de
+**649 / 104 a 651 / 104**. Methode : comptage des lignes de la table de la section 4 sous le motif
+du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre accents graves, `ADR-0085`
+clause 5), sur mon worktree dedie a la base `364ce0dd` **avant** mon diff - 649 identifiants
+distincts, 104 prefixes distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le
+fichier declarait -, puis apres mes deux allocations.
+
+**Ce sont les deux premiers identifiants a trois segments alloues dans ce registre, et c'est moi
+qui avais renonce a cette forme.** A s32 j'avais pris `LON-1` et `LON-2` a deux segments pour
+contourner un trou du motif de detection ; la clause D d'`ADR-0088` l'a ferme le 2026-09-08 et la
+forme allouable porte depuis un segment intermediaire facultatif. J'ecris donc la forme que je
+voulais alors, la dette qui l'interdisait ayant ete payee.
+
+**Ce que ce total ne peut pas etre.** Il est juste sur mon worktree dedie et sur lui seul :
+d'autres lots de s36 peuvent allouer en parallele sur des branches soeurs que je ne lis pas. Si
+c'est le cas, la CI rougira a l'assemblage comme `ADR-0085` clause 5 le prevoit, et la reparation
+sera arithmetique - aucune allocation ajoutee, aucune retiree, aucun sens touche. C'est `sofia-sm`
+qui la fait, a l'endroit prevu.
 
 **Note de `nadia-prof`, instance C, le 2026-09-11.** Huit identifiants ajoutes - `SEC-R6` et `EFF-R1`
 a `EFF-R7` -, dont un prefixe neuf, `EFF` (le lot de l'effort et du corps). **`COR` n'etait pas
@@ -836,6 +858,8 @@ clause 2 par une exemption.
 | `LIS-10` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
 | `LON-1` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `LON-2` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
+| `LON-CE1-1` | `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md` |
+| `LON-CE1-2` | `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md` |
 | `MAT-R1` | `squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md` |
 | `MAT-R2` | `squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md` |
 | `MD-1` | `squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md` |
