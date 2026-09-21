@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Ce commentaire nomme paquet-cite-en-commentaire-seulement, et c'est la moitie verte du jeu
+     fautif : un commentaire cite, il ne couple rien. Le juge ne doit pas le voir, sans quoi il
+     serait la faute de s05 recommencee - une detection par sous-chaine qui rougit sur douze
+     occurrences legitimes. -->
+<div th:fragment="fautif">
+    <p th:if="${illustration == 'dessin-nomme-par-le-gabarit'}">Ce gabarit connaît un dessin.</p>
+</div>
+</body>
+</html>
