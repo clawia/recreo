@@ -7,6 +7,7 @@ descripteur:
   domaine: "Se situer dans l'espace"
   competence: "Situer un lieu ou un objet sur un plan simple de la classe, de l'école ou du quartier."
 lignesDeReferentiel: ["QLM-CP-11"]
+emplacementDuLibelleDeZone: hors-de-la-boite
 items:
   - enonce: "Montre le tableau."
     illustration: plan-classe

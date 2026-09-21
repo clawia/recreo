@@ -31,11 +31,17 @@ import java.util.Optional;
  * <p>{@code indice}, {@code explication} et {@code texteAVoixHaute} sont facultatifs et se
  * comportent exactement comme sur {@link Question} et {@link ReponseAEcrire} : un item qui n'en
  * porte pas ne remplit aucune valeur factice.</p>
+ *
+ * <p>ADR-0094 : {@code emplacementDuLibelleDeZone} dit ou se lit le libelle de chaque zone - dans
+ * la boite du bouton, ou hors d'elle. C'est un fait de paquet, jamais un choix de forme ; il vaut
+ * {@link EmplacementDuLibelleDeZone#DANS_LA_BOITE} sur tout item construit par un site qui ne le
+ * precise pas (constructeur de commodite ci-dessous, ADR-0016).</p>
  */
 public record ZoneADesigner(ItemId id, String enonce, String illustration,
                              String illustrationTexteAlternatif, List<Zone> zones, String bonneZone,
                              Optional<String> indice, Optional<String> explication,
-                             Optional<String> texteAVoixHaute) implements Item {
+                             Optional<String> texteAVoixHaute,
+                             EmplacementDuLibelleDeZone emplacementDuLibelleDeZone) implements Item {
 
     public ZoneADesigner {
         if (illustration == null || illustration.isBlank()) {
@@ -60,6 +66,19 @@ public record ZoneADesigner(ItemId id, String enonce, String illustration,
                     "ADR-0080 : bonneZone doit etre l'identifiant d'une des zones de l'item - item "
                             + id.value() + ", bonneZone '" + bonneZone + "'");
         }
+    }
+
+    /**
+     * ADR-0094 : constructeur de commodite qui conserve l'arite d'avant cet ADR et laisse
+     * {@code emplacementDuLibelleDeZone} a sa valeur par defaut - aucun site de construction
+     * existant n'est retouche.
+     */
+    public ZoneADesigner(ItemId id, String enonce, String illustration,
+                          String illustrationTexteAlternatif, List<Zone> zones, String bonneZone,
+                          Optional<String> indice, Optional<String> explication,
+                          Optional<String> texteAVoixHaute) {
+        this(id, enonce, illustration, illustrationTexteAlternatif, zones, bonneZone, indice,
+                explication, texteAVoixHaute, EmplacementDuLibelleDeZone.DANS_LA_BOITE);
     }
 
     /** ADR-0016 : constructeur de commodite qui laisse {@code texteAVoixHaute} vide. */

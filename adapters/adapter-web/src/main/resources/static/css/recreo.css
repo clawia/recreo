@@ -534,6 +534,21 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     border: 0.125rem solid var(--recreo-accent);
 }
 
+/* ADR-0094 : la legende des libelles de zone, rendue sous le dessin de designation quand le paquet
+   declare "hors-de-la-boite" (fragments/designation.html, th:if="${libelleDeZoneHorsDeLaBoite}").
+   Meme plancher de lisibilite que le reste de l'application (ADR-0050) : 1,25rem et rien en dessous.
+   Aucune regle de numerotation ici - le numero de repere que le bouton porte est un texte servi par
+   le gabarit (le rang d'iteration), jamais un compteur CSS (ADR-0027 clause 7). */
+.legende-zones {
+    margin: 0.75rem 0 0;
+    padding-left: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.legende-zones li {
+    margin-bottom: 0.25rem;
+}
+
 /* ADR-0062, NAT-5 : marque le segment de .enonce que le contenu declare designer, sur un jeu marque
    seulement (cp-nature-mot) - un jeu non marque ne rend jamais cette classe. Regle reprise de la
    proposition mesuree d'ines-design (hors-sprint, squad/sprints/s19-contenu-seul-et-conception-de-

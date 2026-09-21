@@ -2,6 +2,7 @@ package com.recreo.adapter.web;
 
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.port.in.PartieUseCase;
+import com.recreo.domain.content.EmplacementDuLibelleDeZone;
 import com.recreo.domain.content.ExigenceDeForme;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.SessionStatus;
@@ -600,6 +601,13 @@ public class PartieController {
         modele.addAttribute("zonesEssayees", session.zonesEssayees());
         modele.addAttribute("score", session.score());
         modele.addAttribute("indice", session.indice().orElse(null));
+        // ADR-0094, decision 4.4 : l'enum de contenu est converti en un seul booleen de vue ici,
+        // la seule couche qui a le droit de connaitre les deux cotes - il n'entre jamais dans le
+        // modele et donc jamais dans le gabarit.
+        modele.addAttribute("libelleDeZoneHorsDeLaBoite",
+                session.emplacementDuLibelleDeZoneManche()
+                        .orElse(EmplacementDuLibelleDeZone.DANS_LA_BOITE)
+                        == EmplacementDuLibelleDeZone.HORS_DE_LA_BOITE);
 
         String message = null;
         boolean signalJuste = false;

@@ -1,6 +1,7 @@
 package com.recreo.domain.mechanics.designation;
 
 import com.recreo.domain.content.ContentSource;
+import com.recreo.domain.content.EmplacementDuLibelleDeZone;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
@@ -180,6 +181,15 @@ public final class DesignationSession implements GameSession {
     /** ADR-0080 : ce qu'un lecteur d'ecran annonce de l'image de la manche courante. */
     public Optional<String> illustrationTexteAlternatifManche() {
         return Optional.ofNullable(mancheCourante).map(ZoneADesigner::illustrationTexteAlternatif);
+    }
+
+    /**
+     * ADR-0094, decision 4.3 : ou se lit le libelle des zones de la manche courante - transport
+     * strict, sur le patron exact de {@link #illustrationManche()}. Cette mecanique ne lit jamais
+     * cette valeur et ne s'en sert pour aucun verdict.
+     */
+    public Optional<EmplacementDuLibelleDeZone> emplacementDuLibelleDeZoneManche() {
+        return Optional.ofNullable(mancheCourante).map(ZoneADesigner::emplacementDuLibelleDeZone);
     }
 
     /**
