@@ -13830,8 +13830,9 @@ s'ecrire :
 ### S36-ORDRE-NIVEAUX - L'en-tete affiche les niveaux dans l'ordre de la progression scolaire, pas
 ### dans l'ordre du catalogue (`DEC-0090`)
 
-- **Statut** : story neuve, non engagee a s36 (aucun developpeur libre, `planning.md` section 4) -
-  en attente d'affectation a un sprint futur.
+- **Statut** : story neuve a s36, non engagee a s36 (aucun developpeur libre, `planning.md`
+  section 4). **Engagee a s37**, verifiee a jour sans reecriture (voir la note du 2026-09-21 a la
+  fin de cette entree) - affectation nominative due au planning de s37.
 - **Besoin** : en tant qu'eleve de CP (accompagne d'un adulte) ou de CM1, je veux retrouver mon
   niveau range dans l'en-tete toujours au meme ordre que je connais deja de l'ecole - CP, puis CE1,
   puis CM1, puis CM2 - afin de trouver mon bouton sans avoir a chercher parmi des niveaux ranges
@@ -13861,5 +13862,137 @@ s'ecrire :
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite et le mecanisme retenu ; un
   developpeur (`marc-dev`, `lea-dev` ou `sofia-sm` sous sa casquette dev) pour l'implementation et
   ses tests, au sprint ou elle est affectee.
+- **Note du 2026-09-21 (`camille-po`, planning de s37) : verifiee a jour, engagee telle quelle.**
+  Avant d'ouvrir s37, relecture de cette story contre l'etat reel du depot au commit `f118c17a`
+  (integration de s36) : `PartieService.niveauxDuCatalogue()`
+  (`application/src/main/java/com/recreo/application/usecase/PartieService.java`, lignes 43-52)
+  rend toujours les niveaux distincts dans l'ordre d'apparition au catalogue, sans changement
+  depuis `DEC-0090` - le premier critere reste un rouge reel aujourd'hui, pas deja tenu par
+  accident. `catalogue.yaml` ne porte toujours que des paquets CP et CM1 (aucune entree `ce1` -
+  verifie par recherche sur le fichier), et son premier paquet declare est `cp-additions-jusqu-a-10`
+  avant tout paquet CM1 : le deuxieme critere (l'ordre CP puis CM1 reste inchange sur le catalogue
+  actuel) reste egalement exact tel qu'ecrit. Rien n'a invalide cette story depuis s36. Elle est
+  engagee a s37 sans reecriture ; l'affectation nominative reste due au planning de s37, comme pour
+  toute story (`sofia-sm`).
+
+## Sprint 37 - Premier paquet mathematiques CE1 (`MAT-CE1-03`, additions jusqu'a 100, `DEC-0089`)
+## et engagement de `S36-ORDRE-NIVEAUX` (`DEC-0090`)
+
+Deux lots disjoints. Le premier ouvre le premier paquet de contenu du troisieme niveau du produit,
+CE1, mathematiques seule (`DEC-0089`) : c'est la mesure que `DEC-0089` section 2 attend, comparee
+au cout deja mesure d'une matiere neuve (`DEC-0071` section 6). Le second engage `S36-ORDRE-NIVEAUX`,
+ecrite et non engagee a s36 faute de developpeur libre (`DEC-0090`), confirmee a jour ci-dessus.
+
+### S37-1 - Premier paquet mathematiques CE1 : additions dans la limite de 100 (`DEC-0089`,
+### `MAT-CE1-03`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer sur des additions un peu plus grandes
+  que celles du CP (par exemple 34 + 28) en jouant au bandit manchot, afin de progresser en calcul
+  mental sans que ce soit vecu comme une interrogation ecrite.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-03`, "Calcul mental - additions et
+  soustractions dans la limite de 100 (complements a la dizaine, doubles et moities)" (sous-partie
+  de la ligne : additions seules, dans la limite de 100 - les soustractions, les complements a la
+  dizaine, les doubles et les moities restent hors perimetre de ce premier paquet).
+
+**Justification du choix de cette ligne, contre `DEC-0001` plutot que par intuition.** `DEC-0001`
+a choisi, pour la toute premiere competence jamais couverte par ce produit, "Calcul mental -
+additions dans la limite de 10" (`MAT-CP-03`) sur trois criteres : simplicite d'audit (reponse
+binaire, sans nuance linguistique, sans enonce ouvert a interpretation, sans image a juger),
+genericite de la mecanique (le bandit manchot ne connait ni matiere ni niveau), et position dans
+le referentiel (premiere competence de *calcul*, apres les lignes de numeration et de comparaison
+qui exigent plus de nuance ou un support visuel, avant les competences de mesure ou de geometrie
+qui exigent un support spatial que le bandit manchot ne sait pas encore bien servir). Les trois
+memes criteres, verifies contre `squad/programme/mathematiques/competences-ce1.md` plutot que
+supposes transposables :
+
+1. **Simplicite d'audit.** Une addition dans la limite de 100 reste une reponse binaire
+   vraie/fausse, sans nuance linguistique et sans image a juger - exactement la propriete que
+   `DEC-0001` cite en premier.
+2. **Genericite de la mecanique.** Voir verification ci-dessous : aucune regle de la mecanique
+   bandit manchot ne mentionne "addition", "CE1" ni "100".
+3. **Position dans le referentiel.** `MAT-CE1-03` occupe, dans `competences-ce1.md`, exactement la
+   meme position que `MAT-CP-03` occupait dans `competences-cp.md` : troisieme ligne du domaine
+   "Nombres et calculs", premiere ligne de calcul mental, apres la numeration (`MAT-CE1-01`) et la
+   comparaison sur ligne graduee (`MAT-CE1-02`, support visuel) - la meme raison qui a fait sauter
+   ces deux lignes au CP au profit de `MAT-CP-03`. C'est un precedent direct, pas une analogie : la
+   ligne choisie ici est la continuation textuelle de la ligne choisie par `DEC-0001` (le
+   referentiel CE1 le dit lui-meme, en-tete : *"le CE1 consolide ce que le CP a ouvert"*).
+
+**Ce que ce choix ne fait pas** : il ne pretend pas que `MAT-CE1-03` soit servie dans son
+integralite par ce premier paquet. Comme `MAT-CP-03` ("additions ... puis 20") a ete servie en deux
+temps, ce paquet ne sert que la sous-partie "additions", et le laisse ecrit ici plutot que
+suppose : la ligne ne pourra passer a `couvert-valide` qu'une fois les soustractions, les
+complements a la dizaine, les doubles et les moities egalement couverts et valides.
+
+**Verification de la mecanique bandit manchot contre cette competence, et un point ouvert trouve
+en lisant le code plutot que suppose.** Le type de contenu generatif `additions-bornees`, deja
+utilise pour `MAT-CP-03`
+(`adapters/adapter-content/src/main/resources/contenu/cp-additions-jusqu-a-10.yaml`), est pilote
+par un seul parametre numerique (`sommeMaximale`) lu par
+`AdditionsBorneesContentSourceFactory` sans aucune reference au niveau ni a la matiere
+(`adapters/adapter-content/src/main/java/com/recreo/adapter/content/
+AdditionsBorneesContentSourceFactory.java`) : passer de `sommeMaximale: 10` a `sommeMaximale: 100`
+est un changement de donnee, pas de code - exactement le principe directeur du produit
+(`CLAUDE.md`). **Mais** `AdditionsBorneesContentSource`
+(`domain/src/main/java/com/recreo/domain/content/source/AdditionsBorneesContentSource.java`, champ
+`ACCEPTATION_OPERANDE_NUL_SUR`) porte une constante calibree specifiquement pour `sommeMaximale =
+10` : `DEC-0004` point 5 fixe une cible pedagogique de proportion d'additions a operande nul (5 % a
+15 %, precisee a 12,9 % par son amendement du 2026-08-05), mesuree et tenue par `theo-archi`
+uniquement pour cette borne de 10, et `nadia-prof` qualifie explicitement cette cible de propre au
+"programme de calcul de CP" (`DEC-0004`, amendement du 2026-08-05) - jamais ecrite comme
+transverse aux niveaux. Reutiliser cette classe telle quelle pour `sommeMaximale = 100` changerait
+mecaniquement la proportion de couples a operande nul parmi les couples valides (elle decroit avec
+`sommeMaximale`, la classe elle-meme le montre : la combinatoire est en O(n²) quand les couples a
+operande nul restent en O(n)), sans qu'aucune mesure n'existe aujourd'hui pour dire si la
+constante `ACCEPTATION_OPERANDE_NUL_SUR = 3` produit encore une proportion dans une bande
+acceptable a cette echelle. **Ce n'est pas une question a laquelle je reponds** : ni le choix
+technique (reutiliser et recalibrer `additions-bornees`, ou authorer ce paquet en type `question`
+statique comme la quasi-totalite du contenu deja livre, y compris `cp-soustractions.yaml` et tous
+les paquets de calcul CM1) ni la cible pedagogique CE1 pour la proportion d'operande nul (si le
+generateur est reutilise) ne sont de mon ressort.
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle
+    presente une addition de deux nombres entiers compris entre 0 et 100 dont la somme est
+    elle-meme comprise entre 0 et 100 (jamais superieure a 100).
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec au moins une proposition fausse plausible (un entier proche de la
+    bonne reponse), jamais de proposition negative ni non entiere.
+  - Etant donne 20 manches jouees a la suite, quand on releve les additions proposees, alors elles
+    ne sont pas toutes identiques (variete minimale, pas de question figee repetee).
+  - Etant donne le champ `enonce` d'un item, si le paquet en porte un distinct de l'expression
+    elle-meme, quand il s'affiche, alors il respecte `LON-CE1-1` (au plus 20 mots) et `LON-CE1-2`
+    (au plus trois phrases, la derniere etant la question) -
+    `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md`.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-03` et uniquement elle (`ADR-0081`).
+  - Etant donne le choix technique retenu par `theo-archi` a l'avis de faisabilite, si le type
+    generatif `additions-bornees` est reutilise, alors la proportion de tirages a operande nul
+    qu'il produit a `sommeMaximale = 100` est mesuree explicitement (meme methode que `DEC-0007`,
+    200 000 tirages, graine fixee) et comparee a une cible que `nadia-prof` fixe pour le CE1 avant
+    la livraison - jamais supposee identique aux 12,9 % calibres pour `MAT-CP-03`. Ce critere ne
+    s'applique pas si le type `question` statique est retenu a la place.
+  - Etant donne le Done pedagogique de ce paquet, quand il est rendu, alors le statut de matrice de
+    `MAT-CE1-03` passe au plus a `en cours` : la ligne ne passe pas a `couvert-valide` par ce seul
+    paquet, les soustractions, les complements a la dizaine, les doubles et les moities restant hors
+    perimetre - meme motif que `DEC-0001` pour "additions ... (puis 20)" au CP.
+- **Ce que cette story ne fait pas** : elle ne sert pas les soustractions, les complements a la
+  dizaine, les doubles ni les moities de `MAT-CE1-03` (paquet ulterieur) ; elle ne choisit pas
+  entre reutiliser `additions-bornees` ou authorer un paquet de type `question` - ce choix reste a
+  `theo-archi` ; elle ne fixe aucune cible pedagogique de proportion d'operande nul pour le CE1 -
+  cela reste a `nadia-prof` ; elle n'ouvre aucune autre ligne de `competences-ce1.md`, aucune autre
+  matiere CE1, et n'ouvre pas CM2.
+- **Lien decision** : `DEC-0089` (ouverture du perimetre CE1, choix de mathematiques comme matiere
+  pilote). Le choix de cette ligne precise, dans un perimetre deja autorise, est justifie ci-dessus
+  contre `DEC-0001` ; il ne cree pas de decision produit nouvelle, meme forme que `S27-2` pour le
+  choix de ses lignes precises dans le perimetre deja autorise par `DEC-0072`.
+- **Agent pressenti** : `sofia-sm` pour l'affectation nominative au planning de s37 ; `theo-archi`
+  pour l'avis de faisabilite, en particulier le point ouvert ci-dessus (reutilisation et mesure du
+  generateur `additions-bornees`, ou authoring statique) ; `marc-dev` ou `lea-dev` pour le contenu ;
+  `nadia-prof` pour la cible pedagogique CE1 d'operande nul (si le generateur est reutilise) et pour
+  l'audit du paquet - matiere deja familiere (mathematiques a deja deux niveaux couverts), cout
+  attendu moindre que celui d'une matiere neuve, mesure a rapporter contre `DEC-0071` section 6
+  pour repondre a `DEC-0089` section 2.
+
 
 
