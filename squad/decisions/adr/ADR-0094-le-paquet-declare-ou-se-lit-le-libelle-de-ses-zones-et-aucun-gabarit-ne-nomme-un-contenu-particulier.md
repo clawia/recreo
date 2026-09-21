@@ -1,11 +1,12 @@
 # ADR-0094 - Le paquet declare ou se lit le libelle de ses zones, et aucun gabarit ne nomme un contenu particulier
 
-- **Statut** : **`Propose`** le 2026-09-21 (s36). Il ne passera `Accepte` que quand les quatre
-  relais de sa decision 4 seront dans l'arbre **et** que sa regle executable y sera avec ses quatre
-  morsures.
-  **Maintenu `Propose` le 2026-09-21 a la confirmation de la porte technique de s36** : les quatre
-  relais sont dans l'arbre et corrects, **la regle executable n'y est pas**. Voir *Etat de
-  l'acceptation* en fin de document.
+- **Statut** : **`Accepte`** le 2026-09-21 (s36), apres deux etapes ecrites le meme jour.
+  `Propose` a la redaction : *"il ne passera `Accepte` que quand les quatre relais de sa decision 4
+  seront dans l'arbre et que sa regle executable y sera avec ses quatre morsures"*. **Maintenu
+  `Propose` a la confirmation de la porte technique** : les quatre relais etaient dans l'arbre et
+  corrects, **la regle executable n'y etait pas**. `Accepte` maintenant que les deux conditions
+  qu'il s'etait posees sont tenues - la regle de la decision 6 est dans l'arbre avec ses morsures,
+  et l'ecart de la decision 5 est tranche. Voir *Etat de l'acceptation* en fin de document.
 - **Sprint** : s36. **Date** : 2026-09-21. **Auteur** : `theo-archi`.
 - **Route par** : la section 2.5 de
   `squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/proposition-ines-s36-barre-trois-puces-et-libelle-externe-qlm11.md`
@@ -23,8 +24,10 @@
   renvoi, leur place et leur taille appartiennent a `ines-design` qui propose et a `nadia-prof` qui
   tranche. Il ne prononce aucun Done, ne ferme aucune ligne de matrice, ne touche aucun contenu
   pedagogique, n'amende ni `ZON-15` ni `ZON-16`, et ne rouvre ni `ADR-0017` ni `ADR-0050`.
-- **Arbre mesure** : worktree `s36-theo`, ouvert depuis `s36-sofia` a `364ce0dd`. Les chiffres de
-  la section *Regle executable* sont mesures sur cet arbre, avec leur methode ecrite a cote.
+- **Arbres mesures** : worktree `s36-theo`, ouvert depuis `s36-sofia` a `364ce0dd`, pour la
+  redaction ; worktree `s36-theo-regle`, ouvert depuis `s36-sofia` a `5d7f2549`, pour l'ecriture de
+  la regle et l'acceptation. Chaque chiffre porte sa methode dans le meme paragraphe que lui, et
+  nomme celui des deux arbres sur lequel il a ete mesure.
 
 ---
 
@@ -166,23 +169,69 @@ seule couche qui a le droit de connaitre les deux cotes.
 **Aucun port n'est ajoute**, ni entrant ni sortant : la valeur voyage dans la session, qui traverse
 deja `application` par `GameSession`. **`application` n'est pas touche.**
 
-### 5. Le nom accessible est rendu dans les deux formes, et il ne depend pas de la forme
+### 5. Le nom accessible porte le libelle du paquet dans les deux formes
 
-`aria-label` porte **toujours** `zone.libelle()`, que le libelle soit dans la boite ou non. Seul le
-noeud de texte du bouton est conditionnel.
+*Cette decision est amendee le 2026-09-21, a l'acceptation, par l'auteur de sa premiere redaction.
+Sa forme d'origine est conservee sous l'amendement, parce que l'ecart qu'elle a ouvert est le fait
+le plus instructif de cet `ADR`.*
 
-Ce choix a un prix - un attribut de plus sur un ecran deja accorde
-(`cp-designation-frise-de-la-journee`) - et un gain qui le paie : sous le calcul reel du nom
-accessible, `aria-label` l'emporte sur le texte du sous-arbre, donc **le nom annonce est le libelle
-du paquet sur les deux formes, par construction**, et la clause 2 d'`ADR-0093` est tenue sans
-dependre de la forme choisie. Le document rendu pour `frise-de-la-journee` change d'un attribut ;
-le nom annonce a l'enfant ne change pas d'un caractere, les deux chaines etant la meme.
+**Ce qui est tenu est le nom accessible du bouton de zone, jamais la presence d'un attribut.** Il
+vaut le libelle que le paquet declare, dans les deux formes, et les deux formes l'obtiennent
+differemment : quand le bouton porte son libelle comme texte (`dans-la-boite`), le nom accessible
+**est** ce texte et aucun attribut n'est ajoute ; quand il ne le porte pas (`hors-de-la-boite`),
+`aria-label` porte `zone.libelle()`. Le gabarit ecrit donc
+`aria-label=${libelleDeZoneHorsDeLaBoite} ? ${zone.libelle()} : null`.
+
+**La regle qui tient cette decision existe deja et n'est pas ecrite pour l'occasion** : la clause 2
+d'`ADR-0093`, qui resout le nom accessible (`aria-labelledby`, sinon `aria-label`, sinon le texte)
+sur le **document reellement servi** de **chaque** jeu de designation du catalogue reel, et le
+compare au libelle que le paquet declare pour la zone dont le bouton porte l'identifiant. Elle
+couvre les deux branches de la condition, parce qu'elle juge le document et non le gabarit, et sa
+morsure 4 mute un libelle declare du paquet `hors-de-la-boite` et exige le rouge.
+
+**Pourquoi la forme inconditionnelle est ecartee, et ce n'est pas parce que le code l'etait.** Sa
+justification tenait en trois mots - *"par construction"* - c'est-a-dire la forme de preuve que ce
+depot a deja disqualifiee deux fois au profit de la mesure de l'artefact reel (`ADR-0071` sur la
+version d'un JDK, `ADR-0092` sur la largeur d'un libelle). Ce que *"par construction"* promettait,
+un garde-fou le verifie sur le document servi, ce qui est strictement plus fort : il resterait rouge
+le jour ou le texte du bouton cesserait d'etre le libelle. Le prix de la forme inconditionnelle,
+lui, est reel - un attribut de plus sur `cp-designation-frise-de-la-journee`, ecran deja accorde par
+`nadia-prof`, pour zero changement du nom annonce.
+
+**Ce qui n'est pas le motif de cet amendement, et qui doit etre dit** : le repli conditionnel etait
+ecrit dans la *Seconde mauvaise consequence* comme la reponse a un refus de `nadia-prof` qui **n'a
+pas eu lieu** - aucun verdict de ce genre n'existe dans `squad/` pour s36. Le declencheur ecrit
+n'est donc pas survenu, et cet amendement ne s'en reclame pas. Il tranche sur le fond, et il perd
+quelque chose qu'il nomme : l'independance du nom accessible vis-a-vis du texte visible n'est plus
+obtenue par construction, elle est obtenue par un garde-fou. **Ce qui me ferait revenir a la forme
+inconditionnelle** : que la clause 2 d'`ADR-0093` cesse de s'executer sur le document servi de
+chaque jeu de designation, ou qu'une forme rende le texte du bouton different du libelle sans le
+declarer `hors-de-la-boite`.
+
+*Forme d'origine, 2026-09-21 : "`aria-label` porte **toujours** `zone.libelle()`, que le libelle
+soit dans la boite ou non. Seul le noeud de texte du bouton est conditionnel."* Elle a ete
+implementee sous sa forme de repli sans que le declencheur du repli soit survenu, et l'ecart a
+vecu de l'implementation a la confirmation de porte technique - une journee, parce qu'une
+confirmation de porte a relu la decision et le gabarit cote a cote. C'est le mode de defaillance
+que cet `ADR` a lui-meme nomme ailleurs : un texte et un code qui disent deux choses differentes,
+et rien d'executable entre les deux pour le dire. Ici, il n'y en avait rien parce que **la decision
+5 n'etait pas encodable en l'etat** : elle nommait un attribut, pas une propriete. L'amendement la
+reecrit en propriete, et la propriete a sa regle.
 
 ### 6. Ce que le gabarit n'a pas le droit de faire, et c'est la regle executable
 
 **Aucun gabarit et aucune regle de la feuille maison ne nomme litteralement un jeu, un paquet ou une
 illustration du catalogue.** C'est la propriete que la section 2.5 demandait de tenir, et c'est la
 seule de cet `ADR` qui interdise quelque chose qu'on aurait envie de faire.
+
+*Amendement du 2026-09-21, a l'ecriture de la regle.* Le perimetre est **toute la production des
+modules declares**, et pas seulement les gabarits et la feuille : les scripts maison
+(`static/js/`) et les `.java` de production des cinq modules y entrent. Motif mesure, pas presume :
+l'extension est **gratuite** - 175 identifiants derives, 69 fichiers, 12 occurrences litterales
+toutes en commentaire, **0 hors commentaire** - et strictement plus forte, un identifiant de jeu
+cable dans `domain` etant le meme defaut une couche plus bas. La feuille et le JavaScript tiers
+(`static/vendor/`) restent hors perimetre : ils ne sont pas ecrits ici, et `ADR-0046` les garde
+autrement.
 
 ---
 
@@ -210,30 +259,55 @@ de `squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/confirmation
 `bootstrap` est le seul module qui voie a la fois `adapter-content` et `adapter-web` - meme motif
 que pour la clause 2 d'`ADR-0093`.
 
-**Perimetre derive, jamais enumere** (`ADR-0013`). Les identifiants juges sont lus sur le contenu
-servi, par le recensement **existant**
-(`AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu`, deja reutilise par les
-deux cliquets de designation - un second recensement du meme objet divergerait un jour) :
+**Perimetre derive, jamais enumere** (`ADR-0013`). Les modules viennent du pom agregateur, par
+`LesGardeFousSontMisALEpreuveTest.modulesDeclares` - deux notions de *"quels modules existent"*
+divergeraient un jour. Les identifiants juges sont lus sur le contenu servi lui-meme, par
+SnakeYAML, la bibliotheque avec laquelle le chargeur de production lit ces memes fichiers :
 
-- l'`id` de chaque entree de `catalogue.yaml`, et son `paquet` ;
+- l'`id` de chaque entree de catalogue, et son `paquet` ;
 - l'`id` de chaque paquet servi ;
 - la valeur `illustration` de chaque item de chaque paquet servi.
 
-Le materiau juge est l'ensemble des `.html` de
-`adapters/adapter-web/src/main/resources/templates/`, la feuille
-`adapters/adapter-web/src/main/resources/static/css/recreo.css`, et les `.java` de
-`adapters/adapter-web/src/main/java/`.
+*Ecart assume avec la redaction du 2026-09-21 matin, qui annoncait reutiliser
+`AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu`.* Ce recensement-la ne
+rend que les repertoires `contenu/` ; **le catalogue n'y est pas** - il vit un cran au-dessus, a la
+racine des ressources du module - et l'avoir reutilise tel quel aurait donne un garde-fou qui ne
+derive **aucun identifiant de jeu**, c'est-a-dire vert sur `jeuId == 'designation-plan-de-la-classe'`,
+l'exemple meme que cet `ADR` cite comme interdit. La derivation retenue balaie la racine de
+ressources de production de chaque module declare, dont `contenu/` est un sous-arbre : elle est un
+**sur-ensemble** de celle qui etait annoncee, elle partage avec elle la seule source de *"quels
+modules existent"*, et le catalogue s'y reconnait **a sa forme** (une cle `jeux` portant une liste)
+plutot qu'a son nom de fichier - le jour ou il demenage, le garde-fou le suit au lieu de juger sur
+zero identifiant de jeu.
+
+Le materiau juge est, pour chaque module declare : les `.html` de `src/main/resources/templates/`,
+les `.css` de `src/main/resources/static/css/`, les `.js` de `src/main/resources/static/js/` et les
+`.java` de `src/main/java/`.
 
 **Les commentaires sont exclus, et ce n'est pas une commodite : c'est une mesure.** Sur l'arbre de
-ce jour, **175 identifiants derives, 17 fichiers dans le perimetre, 15 occurrences litterales - et
-les 15 sont dans des commentaires**, toutes des citations de fiches de conformite
-(`FICHE-bandit-manchot-additions-cp.md` porte l'identifiant de jeu `bandit-manchot-additions-cp`).
-**Hors commentaire : 0.** Un juge naif par sous-chaine serait donc **rouge a sa premiere execution,
-pour quinze motifs tous legitimes** - c'est exactement la lecon de s05, le `!important` cherche par
-sous-chaine dans un nom de variable, et elle a ete payee ici en mesurant avant d'ecrire plutot
-qu'en fabriquant une fixture. Le juge analyse donc le gabarit par Jsoup et n'inspecte que les noeuds
-de texte, les noms d'attributs et les valeurs d'attributs ; il retire les `/* ... */` de la feuille
-et les commentaires de bloc et de ligne du Java.
+ce jour, perimetre etendu compris : **175 identifiants derives, 69 fichiers dans le perimetre, 12
+occurrences litterales - et les 12 sont dans des commentaires**, citations de fiches de conformite
+ou de paquets d'exemple (`AdditionsBorneesContentSource` cite `bandit-manchot-additions-cp`,
+`recreo.css` en cite sept dans ses commentaires de section). **Hors commentaire : 0.** Un
+juge naif par sous-chaine serait donc **rouge a sa premiere execution, pour douze motifs tous
+legitimes** - c'est exactement la lecon de s05, le `!important` cherche par sous-chaine dans un nom
+de variable, et elle a ete payee ici en mesurant sur le materiau reel avant d'ecrire plutot qu'en
+fabriquant une fixture. Le juge analyse donc le gabarit par Jsoup et n'inspecte que les noeuds de
+texte, les noms d'attributs et les valeurs d'attributs ; il retire les `/* ... */` de la feuille et
+les commentaires de bloc et de ligne du Java et du script - par un automate a etats, jamais par une
+expression reguliere, pour le motif deja mesure dans
+`AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest` : une adresse `http://` dans une chaine ferait
+disparaitre la fin de sa ligne, et le garde-fou deviendrait vert sur un identifiant ecrit juste
+apres.
+
+*Methode des deux chiffres, dans le meme paragraphe qu'eux.* **175** : identifiants distincts
+derives de tous les `.yaml` sous `src/main/resources` des cinq modules declares, un identifiant
+n'etant retenu qu'une fois, sous le genre du premier fichier qui le nomme - 74 identifiants de jeu,
+74 paquets nommes par une entree de catalogue, 27 illustrations d'items ; le genre *"paquet servi
+qu'aucune entree ne reference"* est vide ce jour. **69** : fichiers du materiau juge sur le meme
+arbre - 7 gabarits, 1 feuille maison, 1 script maison, 60 `.java` de production. Mesure sur le worktree
+`s36-theo-regle`, ouvert depuis `s36-sofia` a `5d7f2549`, `target/` hors perimetre par construction
+(le balayage part de `src/main/`), tests de tous les modules hors perimetre.
 
 ### Ce que la regle interdit reellement
 
@@ -249,18 +323,56 @@ l'identifiant - un paquet reconnu par le nombre de ses zones, par son texte alte
 niveau. Le perimetre de cette regle est la **forme litterale** du couplage, pas toutes ses formes
 possibles. Elle ferme celle qui se presente, qui est aussi la seule qu'on ecrit sans y penser.
 
-### Les quatre morsures dues (`ADR-0013`, obligation 3)
+### Les quatre morsures dues (`ADR-0013`, obligation 3), et les trois qui s'y sont ajoutees
 
-1. **Rouge** quand `fragments/designation.html` recoit
-   `th:if="${illustration == 'plan-classe'}"`, `plan-classe` etant **lu dans
-   `cp-plan-de-la-classe.yaml`** et jamais ecrit dans le test.
-2. **Rouge** quand `recreo.css` recoit une regle dont le selecteur porte l'identifiant d'un jeu
-   servi.
-3. **Rouge** quand `PartieController` compare `jeuId` a l'identifiant litteral d'un jeu servi.
-4. **La population est non vide, des deux cotes** (`ADR-0003`) : le nombre d'identifiants derives
-   et le nombre de fichiers du perimetre sont tous deux assertes non nuls. Sans cela, un
-   recensement qui ne lit rien serait vert par accident - et c'est le mode de defaillance le plus
-   probable de ce garde-fou, puisqu'il lit des fichiers par leur chemin.
+Les quatre annoncees, ecrites et executees le 2026-09-21. Aucun identifiant n'est ecrit dans le
+fichier de test, pas meme dans une morsure : chacune lit le sien sur le contenu servi, donc le jour
+ou un paquet est renomme, les morsures jugent le nom neuf sans qu'on les touche.
+
+1. **Rouge** quand un gabarit reel recoit `th:if="${illustration == '...'}"`, l'illustration etant
+   **lue dans un paquet servi**
+   (`unGabaritQuiNommeUneIllustrationServieFaitEchouerLeGardeFou`).
+2. **Rouge** quand la feuille maison recoit une regle dont le selecteur porte l'identifiant d'un jeu
+   servi, lu dans le catalogue reel
+   (`uneFeuilleMaisonDontLeSelecteurPorteUnJeuServiFaitEchouerLeGardeFou`).
+3. **Rouge** quand une source de production compare un identifiant de jeu servi a un litteral
+   (`uneSourceDeProductionQuiCompareUnJeuServiAUnLitteralFaitEchouerLeGardeFou`).
+4. **La population est non vide, des deux cotes** (`ADR-0003`), et **les deux clauses mordent**
+   (`unePopulationVideDUnCoteOuDeLAutreFaitEchouerLeGardeFou`). Sans cela, un recensement qui ne lit
+   rien serait vert par accident - et c'est le mode de defaillance le plus probable de ce garde-fou,
+   puisqu'il lit des fichiers par leur chemin.
+
+Les morsures 1 a 3 mutent le materiau reel **en memoire** : la population de production est lue sur
+disque, une source y est remplacee par elle-meme plus le texte fautif, et le juge - pur, il ne lit
+ni disque ni classpath - doit nommer le chemin mute et l'identifiant. Rien n'est ecrit sur disque,
+donc rien ne pourrit.
+
+Trois morsures s'y sont ajoutees a l'ecriture, qu'aucune des quatre ne couvrait :
+
+5. **Le jeu fautif commite** (`ADR-0013`, obligation 3) prouve la chaine disque -> SnakeYAML ->
+   Jsoup -> juge, que les mutations en memoire ne prouvent pas. Son gabarit nomme une illustration
+   dans un `th:if` et un paquet **dans un commentaire** ; sa feuille nomme un jeu dans son
+   selecteur. Le message doit nommer les deux premiers et **jamais** le paquet cite en commentaire -
+   sans quoi ce garde-fou serait la faute de s05 recommencee
+   (`leJeuFautifCommiteEstRefuseEtSonCommentaireNeLEstPas`).
+6. **Le corrige du meme jeu fautif est vert** (`leCorrigeDuMemeJeuFautifEstVert`). Une morsure qui
+   ne montre que le rouge ne dit pas si le juge sait dire non : elle dit qu'il dit oui a tout.
+7. **Les genres d'identifiants sur lesquels les morsures s'appuient sont derives du contenu servi.**
+   Sans cette clause, un genre devenu vide ferait lever les morsures 1 a 3 au lieu de les faire
+   juger. Elle a mordu a l'ecriture : ecrite d'abord sur les **quatre** genres, elle a echoue, parce
+   qu'un identifiant n'est retenu qu'une fois et que le catalogue est lu avant les paquets - les 74
+   paquets servis sont retenus comme *"paquet d'une entree de catalogue"*, et le genre *"paquet
+   servi qu'aucune entree ne reference"* est vide. Il n'est pas retire pour autant : un paquet
+   retire du catalogue mais laisse sur disque reste juge, ce que `ChaquePaquetPorteUnIndiceTest` a
+   etabli en s05.
+
+**Une huitieme epreuve, hors suite parce qu'elle mute le disque.** Les mutations en memoire prouvent
+le juge ; elles ne prouvent pas que le garde-fou tel qu'il tourne en CI voit un vrai fichier fautif.
+`th:if="${illustration == 'plan-classe'}"` a donc ete ecrit **dans
+`fragments/designation.html` sur disque**, la suite lancee - rouge, avec le message nommant le
+fichier, `plan-classe`, et son origine `cp-plan-de-la-classe.yaml` - puis le fichier restaure par
+`git checkout --` et la suite relancee - verte, 8 tests. Le resultat est reporte dans
+`squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/confirmation-archunit.md`.
 
 ### Ce qui est deja garde par des regles existantes, et que je n'ajoute donc pas
 
@@ -296,11 +408,17 @@ Une regle ecrite ici serait decorative :
   libelle deborde - et la CI reste verte. C'est le meme angle mort que `ZON-15`, pour la meme cause
   (`ADR-0092` decision 2), et il reste tenu par l'oeil de `nadia-prof`. **Un vert sur cet `ADR`
   n'est pas un Done pedagogique.**
-- **Seconde mauvaise consequence** : `frise-de-la-journee`, deja accorde, recoit un `aria-label`
+- ~~**Seconde mauvaise consequence** : `frise-de-la-journee`, deja accorde, recoit un `aria-label`
   qu'il n'avait pas. Le nom annonce ne change pas (meme chaine), mais le document rendu change, et
   un ecran deja valide est donc touche par un diff qu'il n'a pas demande. Je le nomme plutot que de
   le glisser : `nadia-prof` en est informee, et si elle refuse, la section Decision 5 se replie sur
-  un `aria-label` conditionnel, au prix d'une seconde condition dans le gabarit.
+  un `aria-label` conditionnel, au prix d'une seconde condition dans le gabarit.~~
+  **Consequence eteinte le 2026-09-21 par l'amendement de la decision 5** : le document rendu de
+  `frise-de-la-journee` est inchange au caractere pres, aucun ecran accorde n'est touche. Le prix
+  paye a la place est celui qui etait annonce ici : une seconde condition dans le gabarit, et un nom
+  accessible tenu par un garde-fou (clause 2 d'`ADR-0093`, sur le document servi) plutot que par
+  construction. Barree et non effacee : c'est cette phrase qui a arme le repli, et elle documente
+  comment un repli prevu pour un declencheur peut etre implemente sans lui.
 - **Un cout de forme que cet `ADR` ne paie pas, et qui doit etre su** : la numerotation par compteur
   CSS proposee en section 2.2 de la proposition d'`ines-design` est **refusee par un garde-fou deja
   dans l'arbre** - clause 7 de `LAnimationRetardeMaisNeDetermineRienTest` (`ADR-0027`), qui rougit
@@ -400,6 +518,64 @@ cet `ADR` reviendra en acceptation, et les deux formes restent ouvertes.
 
 1. Le garde-fou de la decision 6 dans l'arbre, avec ses quatre morsures dues.
 2. L'ecart de la decision 5 tranche, dans un sens ou dans l'autre.
+
+---
+
+## Acceptation - 2026-09-21, meme jour, apres les deux conditions
+
+Worktree dedie `s36-theo-regle`, ouvert depuis `s36-sofia` a `5d7f2549`, lignee verifiee.
+
+### Condition 1 : la regle executable est dans l'arbre
+
+`bootstrap/src/test/java/com/recreo/archi/AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest.java`,
+avec son jeu fautif commite sous
+`bootstrap/src/test/resources/contreexemple/AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest/`
+(un fautif, un corrige). **Ce n'est pas une `ArchRule`** : les objets juges sont des gabarits, une
+feuille, un script et des sources - pas des classes chargees par ArchUnit - et une `ArchRule` ne
+sait pas lire un `.html`. Le compte d'`@ArchTest` du depot est donc **inchange : 33**, meme methode
+et meme compte qu'au 2026-09-21 matin
+(`squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/confirmation-archunit.md`,
+section 2) - occurrences de l'annotation `@ArchTest` dans les sources de test des modules declares,
+`target/` et faux module de contre-exemple exclus. Ce fichier ajoute **8 tests JUnit**, pas une
+regle ArchUnit.
+
+`bootstrap` reste le module d'accueil, pour le motif d'origine : c'est le seul qui voie a la fois
+`adapter-content` et `adapter-web`, donc le seul qui puisse confronter le contenu servi aux
+gabarits qui le rendent.
+
+### Condition 2 : l'ecart de la decision 5 est tranche
+
+Tranche **en amendant la decision 5**, qui est reecrite ci-dessus en propriete (*le nom accessible
+porte le libelle*) au lieu d'un attribut (*`aria-label` porte toujours le libelle*), et dont la
+regle executable est la clause 2 d'`ADR-0093`, deja dans l'arbre et deja mordante sur le document
+servi des deux formes. Le gabarit n'est pas modifie ; **aucun changement de code n'est route a
+`lea-dev`**.
+
+Ce que ce choix concede, puisque le contraire etait defendable : la forme inconditionnelle aurait
+rendu le nom accessible independant du texte visible par construction, et elle etait la lettre de
+la decision d'origine. Elle est ecartee parce que son gain est deja obtenu par un garde-fou qui
+juge le document reellement servi - une preuve plus forte que *"par construction"* - et que son
+prix, un attribut de plus sur un ecran deja accorde par `nadia-prof`, n'est paye par personne.
+**Ce qui me ferait revenir en arriere est ecrit dans la decision 5 elle-meme.**
+
+### La porte technique, avec les commandes
+
+- `mvn -B clean verify` sur la racine du worktree, via l'enveloppe de toolchain : **BUILD SUCCESS**,
+  six modules, **1495 tests, 0 echec** (1487 avant ce lot, plus les 8 de ce garde-fou). Version
+  rapportee par la machine virtuelle qui a resolu la toolchain, et non par l'entree qui la declare
+  (`ADR-0071`) : **21.0.10**.
+- Les trois autres jobs de `.github/workflows/ci.yml` - `prefixes`, `chemins`, `juges purs` - sont
+  lances sur ce diff et reportes dans
+  `squad/sprints/s36-ouverture-ce1-mathematiques-seule-cm2-differe/confirmation-archunit.md`. Un
+  agent qui annonce la porte technique nomme les jobs qu'il a lances (`CLAUDE.md`, amendement du
+  2026-09-08) ; `mvn verify` n'est que le contenu du job `build`.
+
+### Ce que cette acceptation ne prononce pas
+
+Aucun Done pedagogique, aucune ligne de matrice fermee, aucune forme choisie. Un vert sur cet `ADR`
+dit que le gabarit ne connait aucun contenu particulier ; il ne dit rien de ce que l'enfant lit.
+`ZON-15` et la justesse de la declaration `hors-de-la-boite` restent tenues par l'oeil de
+`nadia-prof`, comme la premiere *mauvaise consequence* le nomme.
 
 ---
 

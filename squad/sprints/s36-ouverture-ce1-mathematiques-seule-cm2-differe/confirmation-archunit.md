@@ -20,7 +20,7 @@
 | `ArchRule` du depot | **33** par la methode de s35 (`@ArchTest`), inchange par ce sprint - **et 34** par la methode que mes deux `ADR` de s36 ont ecrite a cote du chiffre (section 2) |
 | Preuves de morsure | **trois**, toutes par mutation de source de production (sections 3.1, 3.2, 4.2) |
 | `ADR-0093` | **`Propose` -> `Accepte`** : deux clauses dans l'arbre, cinq morsures sur cinq (section 4) |
-| `ADR-0094` | **reste `Propose`** : quatre relais sur quatre dans l'arbre, **regle executable absente** (section 5) |
+| `ADR-0094` | **reste `Propose`** au moment de cette table : quatre relais sur quatre dans l'arbre, **regle executable absente** (section 5). **Passe `Accepte` le jour meme**, regle et morsures ecrites, ecart de la decision 5 tranche (section 8) |
 
 **Ce que cette confirmation ne fait pas** : elle ne prononce aucun Done pedagogique, ne ferme
 aucune ligne de matrice, ne juge aucun contenu. La porte pedagogique est a `nadia-prof`.
@@ -29,7 +29,8 @@ aucune ligne de matrice, ne juge aucun contenu. La porte pedagogique est a `nadi
 2026-09-08 a `CLAUDE.md`) : `mvn verify` **n'est que le job `build`** de
 `.github/workflows/ci.yml`. J'ai lance en plus **le job `chemins` sur mon propre diff** (section
 6). Les jobs de prefixes de commit et de juges purs des outils **ne sont pas lances par moi et je
-ne les deduis pas**.
+ne les deduis pas**. **Les quatre jobs sont lances sur le lot de la section 8**, et nommes un a un
+dans sa table.
 
 ---
 
@@ -323,9 +324,10 @@ geste qui manquait a s30 et qui a laisse le job `chemins` rouge un sprint entier
 ## 7. Ce que cette confirmation laisse ouvert
 
 1. **La regle executable d'`ADR-0094`** (section 5.2) - absente, l'`ADR` reste `Propose`. C'est la
-   seule dette que ce sprint ouvre de mon cote.
+   seule dette que ce sprint ouvre de mon cote. **Ferme le jour meme, section 8.1.**
 2. **L'ecart de la decision 5 d'`ADR-0094`** (section 5.3) - `aria-label` conditionnel dans l'arbre
    contre `aria-label` inconditionnel dans l'`ADR`, sans le declencheur ecrit du repli.
+   **Tranche le jour meme, section 8.2.**
 3. **L'audit pedagogique de `cp-plan-de-la-classe` sous sa forme neuve** - numero dans le bouton,
    legende sous le dessin. Non fait ici, et un vert de CI n'en dit rien. A `nadia-prof`.
 4. **Les jobs de CI autres que `build` et `chemins`** (section 0) - non lances par moi, non
@@ -334,3 +336,113 @@ geste qui manquait a s30 et qui a laisse le job `chemins` rouge un sprint entier
    `ADR`, mais aucun automate ne verifie qu'un chiffre cite dans un `ADR` porte la methode qui le
    produit. Je ne propose pas de garde-fou pour cela aujourd'hui : je ne sais pas l'encoder sans
    ecrire une regle decorative.
+
+---
+
+## 8. Ce que la meme journee a ferme, apres cette confirmation (`theo-archi`, 2026-09-21)
+
+Les points 1 et 2 de la section 7 etaient les deux seules dettes que cette confirmation ouvrait de
+mon cote. Ils sont payes le jour meme, dans un second worktree dedie, `s36-theo-regle`, ouvert
+depuis `s36-sofia` a `5d7f2549`, lignee verifiee avant toute ecriture
+(`git merge-base --is-ancestor round-two HEAD`, code de retour 0).
+
+### 8.1 La regle executable d'`ADR-0094` est dans l'arbre (point 1 ferme)
+
+`bootstrap/src/test/java/com/recreo/archi/AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest.java`,
+jeu fautif commite sous
+`bootstrap/src/test/resources/contreexemple/AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest/`
+(un fautif, un corrige). **8 tests JUnit, aucune `ArchRule`** : les objets juges sont des gabarits,
+une feuille, un script et des sources - pas des classes chargees par ArchUnit. Le compte
+d'`@ArchTest` du depot reste donc **33**, meme methode et meme compte qu'en section 2.
+
+Perimetre juge, derive des modules du pom agregateur : par module declare, les `.html` de
+`src/main/resources/templates/`, les `.css` de `src/main/resources/static/css/`, les `.js` de
+`src/main/resources/static/js/`, les `.java` de `src/main/java/`. Identifiants juges, derives du
+contenu servi par SnakeYAML : `id` et `paquet` de chaque entree de catalogue, `id` de chaque paquet,
+`illustration` de chaque item. **Le perimetre est plus large que celui qu'`ADR-0094` annoncait**
+(les `.java` d'`adapter-web` seuls) : l'extension a la production des cinq modules et aux scripts
+maison est mesuree gratuite et strictement plus forte.
+
+**Les chiffres, avec leur methode dans le meme paragraphe.** Mesure sur `s36-theo-regle` a
+`5d7f2549` : **175** identifiants distincts derives de tous les `.yaml` sous `src/main/resources`
+des cinq modules declares, un identifiant retenu une seule fois - 74 identifiants de jeu, 74 paquets
+nommes par une entree de catalogue, 27 illustrations d'items ; **69** fichiers dans le materiau juge
+- 7 gabarits, 1 feuille maison, 1 script maison, 60 `.java` de production ; **12** occurrences
+litterales, **toutes dans des commentaires** (`recreo.css` en cite sept dans ses commentaires de
+section, `AdditionsBorneesContentSource` un, deux gabarits un chacun, deux sources un chacune) ;
+**0 hors commentaire**. `target/` est hors perimetre par construction, les tests de tous les modules
+aussi. Le balayage a la main de la section 5.2 annoncait 101 identifiants et 17 fichiers : il
+mesurait un perimetre plus etroit avec une extraction plus grossiere, et ses chiffres sont remplaces
+par ceux-ci, pas contredits.
+
+**Les morsures, et leur resultat.** Quatre etaient dues, trois s'y sont ajoutees a l'ecriture :
+mutation d'un gabarit reel qui nomme une illustration servie, d'une feuille maison dont le selecteur
+porte un identifiant de jeu servi, d'une source de production qui compare un jeu servi a un litteral
+- les trois sur le materiau reel mute en memoire, l'identifiant lu sur le contenu servi et jamais
+ecrit dans le test ; population vide des deux cotes, les deux clauses mordant ; jeu fautif commite,
+dont le paquet **cite dans un commentaire** ne doit pas etre signale ; corrige du meme jeu, vert ;
+et la derivation des genres d'identifiants, **qui a mordu a l'ecriture** - ecrite d'abord sur quatre
+genres, elle a echoue parce que le catalogue est lu avant les paquets et que le genre *"paquet
+qu'aucune entree de catalogue ne reference"* est vide ce jour.
+
+**Une huitieme epreuve, hors suite parce qu'elle mute le disque.** Les mutations en memoire prouvent
+le juge, pas que le garde-fou tel qu'il tourne en CI voie un vrai fichier fautif. La condition
+`th:if` sur la valeur d'`illustration`, avec l'identifiant du dessin du plan de la classe, a donc
+ete ecrite dans `fragments/designation.html` **sur disque**, la suite lancee, puis le fichier
+restaure par `git checkout --` et la suite relancee :
+
+```
+bash outils/mvn-jdk21.sh -B -pl bootstrap -am -DskipITs \
+  -Dtest=AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest test
+```
+
+- avec le litteral sur disque : **rouge**, le message nommant le gabarit fautif, l'identifiant
+  litteral, son genre (illustration declaree par un item) et le paquet ou il est lu
+  (`cp-plan-de-la-classe.yaml`) ;
+- apres restauration : **vert**, 8 tests sur 8.
+
+Le `-am` n'est pas decoratif ici : `CLAUDE.md` l'exige de toute mesure partielle du reacteur, et ce
+garde-fou lit les ressources d'`adapter-content` et d'`adapter-web` depuis `bootstrap`.
+
+### 8.2 L'ecart de la decision 5 est tranche (point 2 ferme)
+
+Tranche **en amendant la decision 5**, reecrite en propriete - *le nom accessible du bouton de zone
+porte le libelle que le paquet declare* - au lieu d'un attribut - *`aria-label` porte toujours le
+libelle*. Sa regle executable est la **clause 2 d'`ADR-0093`**, deja dans l'arbre : elle resout le
+nom accessible sur le **document reellement servi** de chaque jeu de designation du catalogue reel,
+donc dans les deux formes, et sa morsure 4 mute un libelle declare du paquet `hors-de-la-boite` et
+exige le rouge. **Le gabarit n'est pas modifie ; aucun changement de code n'est route a `lea-dev`.**
+
+Ce que ce choix concede, puisque le contraire etait defendable : la forme inconditionnelle rendait
+le nom accessible independant du texte visible **par construction**, et c'etait la lettre de la
+decision d'origine. Elle est ecartee parce que *"par construction"* est la forme de preuve que ce
+depot a deja disqualifiee deux fois au profit de la mesure de l'artefact reel (`ADR-0071` sur la
+version d'un JDK, `ADR-0092` sur la largeur d'un libelle), et parce que son prix - un attribut de
+plus sur `cp-designation-frise-de-la-journee`, ecran deja accorde - n'est paye par personne.
+**Ce qui n'est pas le motif** : le declencheur ecrit du repli, un refus de `nadia-prof`, n'a jamais
+eu lieu ; l'amendement le dit au lieu de s'en reclamer.
+
+### 8.3 Statut d'`ADR-0094` et porte technique de ce lot
+
+`ADR-0094` passe de **`Propose`** a **`Accepte`**, document et `ADR-index.md`. Les deux conditions
+qu'il s'etait posees sont tenues et nommees dans sa section *Acceptation*.
+
+Les quatre jobs de `.github/workflows/ci.yml`, lances sur ce diff - je les nomme au lieu d'en
+deduire aucun :
+
+| Job | Commande | Resultat |
+|---|---|---|
+| `build` | `bash outils/mvn-jdk21.sh -B clean verify` (racine du worktree) | **BUILD SUCCESS**, 6 modules sur 6, **1495 tests, 0 echec, 0 erreur, 0 ignore** (1487 avant ce lot, plus les 8 de ce garde-fou) |
+| `chemins` | `bash .github/scripts/verifier-chemins-test.sh`, puis `verifier-chemins.sh` alimente par les onze fichiers de ce lot | **code 0**, *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."* |
+| `outils` | les trois motifs de balayage de l'etape *"Tester les juges purs des outils"* | **9 juges purs executes**, tous verts |
+| `prefixes` | `bash .github/scripts/verifier-prefixes-test.sh`, puis la verification des prefixes sur le commit de ce lot | **code 0** |
+
+**Version** : **JDK 21.0.10**, celle que le JDK resolu par l'enveloppe rapporte, pas celle qu'une
+entree de toolchain declare (`ADR-0071`).
+
+### 8.4 Ce que ce lot ne prononce pas
+
+Le point 3 de la section 7 reste entier : **l'audit pedagogique de `cp-plan-de-la-classe` sous sa
+forme neuve appartient a `nadia-prof`**, et un vert de CI n'en dit rien. Le point 5 aussi - aucun
+automate ne verifie encore qu'un chiffre cite dans un `ADR` porte la methode qui le produit, et je
+ne sais toujours pas l'encoder sans ecrire une regle decorative.

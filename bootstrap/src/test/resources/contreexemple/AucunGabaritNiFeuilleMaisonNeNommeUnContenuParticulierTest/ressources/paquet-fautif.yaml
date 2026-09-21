@@ -1,0 +1,6 @@
+schema: 1
+id: paquet-cite-en-commentaire-seulement
+type: designation
+items:
+  - enonce: "Montre le point rouge."
+    illustration: dessin-nomme-par-le-gabarit
