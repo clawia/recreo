@@ -450,3 +450,9 @@ jeux:
     mecanique: designation
     paquet: cp-plan-de-la-classe
     nombreDeManches: 5
+  - id: bandit-manchot-additions-ce1
+    titre: "Les grandes additions"
+    consigne: "Combien ça fait ?"
+    mecanique: bandit-manchot
+    paquet: ce1-additions-jusqu-a-100
+    nombreDeManches: 10

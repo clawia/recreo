@@ -1,0 +1,145 @@
+# MAT-CE1-03, sous-partie "additions dans la limite de 100" (S37-1).
+# La repartition par forme tient ADD-CE1-2 (arbitrage de nadia-prof du 2026-09-21) et elle est
+# exacte, pas estimee : 32 items, 0 operande nul, 5 sommes <= 20, 3 doubles, 5 complements a la
+# dizaine, 5 ajouts d'un nombre rond, 6 "deux chiffres plus un chiffre", 4 sans retenue,
+# 4 avec retenue. Le garde-fou qui la verifie est
+# ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest ; l'ordre de priorite des huit cases
+# est celui de la section 4.3 de l'arbitrage, et il est encode la-bas, pas ici.
+schema: 1
+id: ce1-additions-jusqu-a-100
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - additions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "8 + 5 = ?"
+    bonneReponse: "13"
+    distracteurs: ["14", "15"]
+    indice: "Pars de 8 et avance de 5."
+  - enonce: "7 + 9 = ?"
+    bonneReponse: "16"
+    distracteurs: ["15", "17"]
+    indice: "Pars du plus grand, 9, et avance de 7."
+  - enonce: "12 + 6 = ?"
+    bonneReponse: "18"
+    distracteurs: ["16", "17"]
+    indice: "Pars de 12 et avance de 6."
+  - enonce: "14 + 5 = ?"
+    bonneReponse: "19"
+    distracteurs: ["20", "21"]
+    indice: "Pars de 14 et avance de 5."
+  - enonce: "13 + 4 = ?"
+    bonneReponse: "17"
+    distracteurs: ["16", "18"]
+    indice: "Pars de 13 et avance de 4."
+  - enonce: "15 + 15 = ?"
+    bonneReponse: "30"
+    distracteurs: ["28", "29"]
+    indice: "C'est un double : 15 et encore 15."
+  - enonce: "18 + 18 = ?"
+    bonneReponse: "36"
+    distracteurs: ["37", "38"]
+    indice: "C'est un double : 18 et encore 18."
+  - enonce: "24 + 24 = ?"
+    bonneReponse: "48"
+    distracteurs: ["47", "49"]
+    indice: "C'est un double : 24 et encore 24."
+  - enonce: "34 + 26 = ?"
+    bonneReponse: "60"
+    distracteurs: ["59", "61"]
+    indice: "Regarde les unités : 4 et 6 font une dizaine entière."
+  - enonce: "47 + 23 = ?"
+    bonneReponse: "70"
+    distracteurs: ["68", "69"]
+    indice: "Regarde les unités : 7 et 3 font une dizaine entière."
+  - enonce: "56 + 34 = ?"
+    bonneReponse: "90"
+    distracteurs: ["91", "92"]
+    indice: "Regarde les unités : 6 et 4 font une dizaine entière."
+  - enonce: "18 + 22 = ?"
+    bonneReponse: "40"
+    distracteurs: ["39", "41"]
+    indice: "Regarde les unités : 8 et 2 font une dizaine entière."
+  - enonce: "63 + 17 = ?"
+    bonneReponse: "80"
+    distracteurs: ["78", "79"]
+    indice: "Regarde les unités : 3 et 7 font une dizaine entière."
+  - enonce: "40 + 25 = ?"
+    bonneReponse: "65"
+    distracteurs: ["66", "67"]
+    indice: "40 est un nombre rond : ajoute-le aux dizaines de 25."
+  - enonce: "30 + 47 = ?"
+    bonneReponse: "77"
+    distracteurs: ["76", "78"]
+    indice: "30 est un nombre rond : ajoute-le aux dizaines de 47."
+  - enonce: "60 + 18 = ?"
+    bonneReponse: "78"
+    distracteurs: ["76", "77"]
+    indice: "60 est un nombre rond : ajoute-le aux dizaines de 18."
+  - enonce: "50 + 33 = ?"
+    bonneReponse: "83"
+    distracteurs: ["84", "85"]
+    indice: "50 est un nombre rond : ajoute-le aux dizaines de 33."
+  - enonce: "20 + 36 = ?"
+    bonneReponse: "56"
+    distracteurs: ["55", "57"]
+    indice: "20 est un nombre rond : ajoute-le aux dizaines de 36."
+  - enonce: "34 + 7 = ?"
+    bonneReponse: "41"
+    distracteurs: ["39", "40"]
+    indice: "Pars de 34 et avance de 7, unité par unité."
+  - enonce: "8 + 45 = ?"
+    bonneReponse: "53"
+    distracteurs: ["54", "55"]
+    indice: "Pars de 45 et avance de 8, unité par unité."
+  - enonce: "67 + 5 = ?"
+    bonneReponse: "72"
+    distracteurs: ["71", "73"]
+    indice: "Pars de 67 et avance de 5, unité par unité."
+  - enonce: "9 + 28 = ?"
+    bonneReponse: "37"
+    distracteurs: ["35", "36"]
+    indice: "Pars de 28 et avance de 9, unité par unité."
+  - enonce: "56 + 6 = ?"
+    bonneReponse: "62"
+    distracteurs: ["63", "64"]
+    indice: "Pars de 56 et avance de 6, unité par unité."
+  - enonce: "4 + 79 = ?"
+    bonneReponse: "83"
+    distracteurs: ["82", "84"]
+    indice: "Pars de 79 et avance de 4, unité par unité."
+  - enonce: "34 + 25 = ?"
+    bonneReponse: "59"
+    distracteurs: ["57", "58"]
+    indice: "Ajoute les dizaines, puis les unités : 4 et 5 restent sous dix."
+  - enonce: "42 + 36 = ?"
+    bonneReponse: "78"
+    distracteurs: ["79", "80"]
+    indice: "Ajoute les dizaines, puis les unités : 2 et 6 restent sous dix."
+  - enonce: "53 + 14 = ?"
+    bonneReponse: "67"
+    distracteurs: ["66", "68"]
+    indice: "Ajoute les dizaines, puis les unités : 3 et 4 restent sous dix."
+  - enonce: "61 + 27 = ?"
+    bonneReponse: "88"
+    distracteurs: ["86", "87"]
+    indice: "Ajoute les dizaines, puis les unités : 1 et 7 restent sous dix."
+  - enonce: "27 + 15 = ?"
+    bonneReponse: "42"
+    distracteurs: ["32", "43"]
+    indice: "7 et 5 dépassent dix : n'oublie pas la dizaine qu'ils forment."
+  - enonce: "36 + 28 = ?"
+    bonneReponse: "64"
+    distracteurs: ["54", "63"]
+    indice: "6 et 8 dépassent dix : n'oublie pas la dizaine qu'ils forment."
+  - enonce: "48 + 26 = ?"
+    bonneReponse: "74"
+    distracteurs: ["75", "76"]
+    indice: "8 et 6 dépassent dix : n'oublie pas la dizaine qu'ils forment."
+  - enonce: "59 + 23 = ?"
+    bonneReponse: "82"
+    distracteurs: ["72", "83"]
+    indice: "9 et 3 dépassent dix : n'oublie pas la dizaine qu'ils forment."

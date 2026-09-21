@@ -239,6 +239,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S35-QLM11-PLANCLASSE (s35) : seconde entree de designation, premiere livraison
             // reelle de QLM-CP-11 (plan de la classe).
             "designation-plan-de-la-classe",
+            // S37-1 (s37) : entree neuve, premier paquet de mathematiques CE1 (MAT-CE1-03,
+            // additions dans la limite de 100), reparti par forme selon ADD-CE1-2.
+            "bandit-manchot-additions-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -373,8 +376,16 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La journée, moment par moment",
             // S35-QLM11-PLANCLASSE (s35) : titre neuf, second lot de designation.
             "Le plan de la classe",
+            // S37-1 (s37) : titre neuf, premier paquet CE1. Il ne porte pas son niveau
+            // (ADR-0078) et se distingue de "Les petites additions", qui sert le CP.
+            "Les grandes additions",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
+            // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
+            // juste au-dessus - celle-ci porte le blanc insecable qu'ADR-0067 (TYP-1) exige
+            // d'un contenu neuf, l'autre est dans la table de dette. La comparaison est une
+            // egalite (ADR-0039) : deux graphies, deux entrees.
+            "Combien ça fait ?",
             "Quel verbe complète la phrase ?",
             "Dis le mot. Quel son entends-tu ?",
             "Combien en reste-t-il ?",
@@ -557,6 +568,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Sciences et technologie",
             // S32-5 : matiere neuve, premier lot d'education physique et sportive.
             "Éducation physique et sportive",
+            // niveau (descripteur) : "CP" et "CM1" sont exemptes ci-dessus, "CE1" entre ici.
+            // S37-1 (s37) : troisieme niveau du produit. Il n'a pas plus de lettre
+            // accentuable que les deux autres, mais l'exemption enumeree qui les couvre est
+            // un critere enumere assume, plafonne et compte ; l'inventaire est strictement
+            // plus fort et ne coute rien ici.
+            "CE1",
             // domaine (descripteur)
             "Nombres et calculs",
             "Orthographe et grammaire",
@@ -612,6 +629,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Se situer dans l'espace",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
+            // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
+            "Calcul mental - additions dans la limite de 100",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
             "Calcul mental - soustractions dans la limite de 10",
             "Comparer deux nombres entiers jusqu'à 100 (<, >, =)",

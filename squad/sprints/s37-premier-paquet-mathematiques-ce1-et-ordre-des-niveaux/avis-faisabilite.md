@@ -121,10 +121,24 @@ soit la cible d'operande nul, parce que sa forme n'est pas pilotable sans mecani
 ### 2.5 Trois points operationnels pour le developpeur, mesures
 
 - **Un distracteur peut depasser 100.** Sur une somme de 100, les distracteurs sont 101 et 102.
-  Mesure : **1,32 %** des distracteurs depassent la borne a `sommeMaximale = 100`, contre
+  ~~Mesure : **1,32 %** des distracteurs depassent la borne a `sommeMaximale = 100`~~, contre
   **12,15 %** a `sommeMaximale = 10` - la situation est donc moins frequente qu'au CP, ou elle est
   deja servie et validee. Ce n'est pas un blocage, c'est un fait a poser devant `nadia-prof`
   puisque le paquet promet *"jusqu'a 100"*.
+
+  **Correction du 2026-09-21, trouvee par `nadia-prof` (arbitrage, section 5), et elle a raison.**
+  Le chiffre juste est **2,96 %**, plus du double. `1,32 %` etait **exactement** mon propre chiffre
+  d'operande nul de la meme page : une recopie, pas une mesure. Le calcul le confirme - un
+  distracteur depasse 100 quand la somme vaut 98, 99 ou 100 et que le rang tire place assez de
+  voisins au-dessus, soit environ 2,9 % sur la combinatoire. La conclusion ne bouge pas (le CP sert
+  deja 26,20 % de manches dont un distracteur depasse sa borne, valide), et c'est precisement ce
+  qui rend la faute instructive : **un chiffre recopie d'un autre chiffre survit tant que sa
+  conclusion tient**, et le prochain pourrait porter sur autre chose. Ce que j'en tire pour mes
+  propres mesures : les trois autres chiffres de cette section viennent de la meme execution que le
+  tableau 2.1 et sont reproduits par la mesure independante de `nadia-prof` (section 1 de son
+  arbitrage, six chiffres sur six a l'ecart de graine pres) ; celui-la etait le seul que je n'avais
+  pas lu dans une sortie de mesure. Le garde-fou qui manque n'est pas technique : c'est de ne
+  jamais ecrire un pourcentage qui ne soit pas la copie d'une ligne de sortie.
 - **Le 4e critere de la story est vide si le generatif est retenu.** `additions-bornees` produit un
   enonce qui **est** l'expression (`"34 + 28"`) et aucun enonce distinct ; `LON-CE1-1` et
   `LON-CE1-2` n'ont alors rien a juger. Le critere ne devient portant que si le paquet statique
@@ -193,3 +207,61 @@ declares au pom agregateur, `target/` exclu, mesurees le 2026-09-21 - `static fi
 **34 -> 36**, `@ArchTest` **33 -> 35**. Les deux comptes different d'une unite avant comme apres,
 pour la cause qu'`ADR-0094` a deja nommee : une `ArchRule` du depot n'est pas annotee. Les deux
 regles neuves le sont, le delta est donc de +2 des deux cotes.
+
+## 5. Addendum du 2026-09-21 - le mecanisme retenu pour `S37-1`, apres l'arbitrage
+
+`nadia-prof` a tranche les deux questions que la section 2 lui routait
+(`squad/conformite/ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md`). Elle ferme
+le chemin a zero ligne de Java et me laisse le choix du mecanisme. **`ADR-0096`** le tranche.
+
+**Retenu : un paquet statique de type `question`**, et `ADD-CE1-2` encodee en garde-fou de contenu
+dont le perimetre derive de la forme des items. Les cinq motifs sont dans l'`ADR` ; les deux qui
+decident sont mesures :
+
+- **Le statique est la norme du depot pour le calcul, pas l'exception.** Comptage du 2026-09-21 :
+  21 paquets de mathematiques servis, **20 de type `question`, 1 generatif** - et ce dernier est le
+  premier paquet jamais ecrit. Tous les paquets de calcul CM1 sont statiques.
+- **Le juge reste independant de ce qu'il juge.** La partition ordonnee doit etre encodee de toute
+  facon pour le garde-fou. Avec un paquet statique elle est ecrite une fois, dans le test, et rien
+  en production ne la connait. Avec un generateur qui tire la forme avant le couple, la meme
+  partition vit aussi en production et le garde-fou la duplique ou la partage.
+
+**La regle est la table, jamais le moyen** : le garde-fou compte des couples et ne regarde pas le
+type du paquet. Un generateur qui tiendrait les huit bandes passerait sans qu'une ligne bouge. Ce
+qui me ferait basculer est ecrit dans l'`ADR` : un **deuxieme** paquet demandant la meme table.
+
+### Ce qui est pret pour `marc-dev`, et ce qui ne l'est pas
+
+Livre sur la branche `s37-theo-mecanique`, `mvn -B clean verify` vert :
+
+- `adapters/adapter-content/src/main/resources/contenu/ce1-additions-jusqu-a-100.yaml` - **32
+  items**, repartition **exacte** : 0 operande nul, 5 sommes <= 20 (15,62 %), 3 doubles (9,38 %),
+  5 complements a la dizaine (15,62 %), 5 ajouts d'un nombre rond (15,62 %), 6 deux-chiffres-plus-
+  un-chiffre (18,75 %), 4 sans retenue (12,50 %), 4 avec retenue (12,50 %). Les huit bandes sont
+  tenues avec de la marge des deux cotes. Rang de la bonne reponse **31,25 / 37,50 / 31,25 %**,
+  dans la bande que `nadia-prof` a fixee en s01 et au-dessus de son plancher de 10 %
+  (`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, vert). **Aucun distracteur ne depasse
+  100** - la voie statique eteint au passage l'observation de la section 2.5.
+- L'entree de catalogue, le garde-fou et son jeu fautif, l'extension de l'inventaire du port
+  entrant.
+
+**Ce qui n'est pas de moi et reste du, ecrit plutot que laisse croire couvert.** Trois chaines de
+prose sont des **propositions**, pas des decisions d'architecture : le titre *"Les grandes
+additions"*, la consigne, et les 32 indices. `nadia-prof` garde l'indice nommement (section 6.4 de
+son arbitrage : *"rien ne garantit qu'il aide a 36 + 28"*), plus l'exactitude de chaque enonce et
+la plausibilite de chaque distracteur (6.5), plus les quatre autres points de sa section 6. Le
+travail de `marc-dev` est de les reprendre autant qu'il le juge utile : le garde-fou lui dit
+immediatement s'il sort des bandes, ce qui rend l'iteration de contenu bon marche. C'est la ce que
+j'ai voulu lui livrer - **la table rendue executable**, pas un contenu a prendre tel quel.
+
+**Consequence de planning que je signale sans la trancher** (`sofia-sm`) : entre `S36-ORDRE-NIVEAUX`
+livree et ce lot, la part de `S37-1` qui restait chiffrable a beaucoup diminue. Je ne repriorise
+pas.
+
+### Ce que les deux lots de s37 donnent ensemble, mesure
+
+Le paquet CE1 est declare **en dernier** dans `catalogue.yaml`. Sur le contexte Spring assemble,
+`PartieUseCase.niveauxDuCatalogue()` rend **`[CP, CE1, CM1]`** - mesure le 2026-09-21, classe de
+mesure supprimee apres coup. Sans `ADR-0095`, l'en-tete aurait affiche CP, CM1, CE1 le jour ou ce
+paquet est entre. La story ecrite *"pour une propriete qui n'etait pas encore mise a l'epreuve"*
+l'a ete au sprint suivant sa redaction.
