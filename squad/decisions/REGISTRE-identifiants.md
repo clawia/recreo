@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `655` identifiants alloues, `104` prefixes distincts.
+**Compte courant, verifie par la CI** : `657` identifiants alloues, `105` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -32,6 +32,25 @@ de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. La 
 fusion, comme il l'avait ecrit, et la reparation est arithmetique - aucune allocation ajoutee, aucune
 retiree, aucun sens touche. Les deux notes des instances restent verbatim sous cette ligne : leur
 chiffre est date, le mien est courant.*
+
+**Note de `nadia-prof`, s37, le 2026-09-21.** Deux identifiants ajoutes - `ADD-CE1-1` (plafond
+d'operande nul au CE1) et `ADD-CE1-2` (table de repartition par forme a `sommeMaximale = 100`),
+tous deux ecrits dans
+`squad/conformite/ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md`. **`ADD` est un
+prefixe neuf**, verifie absent de la table de la section 4 avant allocation - contrairement a mes
+deux allocations de s36, ou `LON` preexistait. Ligne d'etat courant portee de **655 / 104 a
+657 / 105**. Methode : comptage des lignes de la table de la section 4 sous le motif du garde-fou
+lui-meme (`ALLOCATION`, identifiant et document entre accents graves, `ADR-0085` clause 5), prefixe
+pris comme **premier segment** de l'identifiant - c'est ainsi que le garde-fou le derive, verifie
+en relisant sa source plutot que suppose depuis la forme des identifiants. Sur mon worktree dedie a
+la base `70979851` **avant** mon diff : 655 identifiants distincts, 104 prefixes distincts, 0
+doublon, ce qui confirme la ligne d'etat courant que le fichier declarait. Puis apres mes deux
+allocations.
+
+**Ce que ce total ne peut pas etre**, meme reserve qu'a s36 : il est juste sur mon worktree dedie et
+sur lui seul. Si un autre lot de s37 alloue en parallele, la CI rougira a l'assemblage comme
+`ADR-0085` clause 5 le prevoit, et la reparation sera arithmetique - aucune allocation ajoutee,
+aucune retiree, aucun sens touche. C'est `sofia-sm` qui la fait, a l'endroit prevu.
 
 **Note de `nadia-prof`, s36, le 2026-09-21.** Deux identifiants ajoutes - `LON-CE1-1` et
 `LON-CE1-2`, la borne de longueur d'un enonce au CE1
@@ -544,6 +563,8 @@ clause 2 par une exemption.
 |---|---|
 | `ACC-1` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `ACC-2` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
+| `ADD-CE1-1` | `squad/conformite/ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md` |
+| `ADD-CE1-2` | `squad/conformite/ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md` |
 | `AGN-1` | `squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-cm1.md` |
 | `AGN-2` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
 | `AGN-3` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
