@@ -13827,4 +13827,39 @@ s'ecrire :
   nominativement au planning de s36 ou du sprint suivant, selon le moment ou le referentiel
   arrive.
 
+### S36-ORDRE-NIVEAUX - L'en-tete affiche les niveaux dans l'ordre de la progression scolaire, pas
+### dans l'ordre du catalogue (`DEC-0090`)
+
+- **Statut** : story neuve, non engagee a s36 (aucun developpeur libre, `planning.md` section 4) -
+  en attente d'affectation a un sprint futur.
+- **Besoin** : en tant qu'eleve de CP (accompagne d'un adulte) ou de CM1, je veux retrouver mon
+  niveau range dans l'en-tete toujours au meme ordre que je connais deja de l'ecole - CP, puis CE1,
+  puis CM1, puis CM2 - afin de trouver mon bouton sans avoir a chercher parmi des niveaux ranges
+  dans un ordre qui ne correspond a rien de connu et qui peut changer sans lien avec mon usage de
+  l'application.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Cette story porte sur
+  la navigation permanente de l'interface, pas sur une competence de `squad/programme/`.
+- **Lien decision** : `DEC-0090`.
+- **Criteres d'acceptation** :
+  - Etant donne un catalogue dont les entrees de niveau sont declarees dans un ordre quelconque
+    (par exemple CM1 avant CP, ou CM1 avant CE1 avant CP), quand `niveauxDuCatalogue()` est appele,
+    alors la liste rendue respecte l'ordre CP, CE1, CM1, CM2, restreinte aux seuls niveaux presents
+    au catalogue - jamais l'ordre de declaration des entrees.
+  - Etant donne le catalogue actuel (CP et CM1 seuls), quand cette story est livree, alors l'ordre
+    affiche reste CP puis CM1 : aucune regression visible sur le catalogue existant, cette story ne
+    corrige rien qui soit observable aujourd'hui, elle garantit une propriete qui ne l'etait pas.
+  - Etant donne un niveau non couvert par le catalogue (aujourd'hui CE1 et CM2), quand
+    `niveauxDuCatalogue()` est appele, alors ce niveau n'apparait pas dans la liste rendue - la
+    story ne cree aucune puce pour un niveau sans contenu.
+  - Etant donne `ADR-0006` (le niveau reste une donnee, jamais un type enumere du domaine), quand
+    cette story est livree, alors elle ne l'a pas rouverte : la garantie d'ordre est portee par une
+    forme que `theo-archi` choisit, sans introduire d'enumeration Java du niveau dans le domaine.
+- **Ce que cette story ne fait pas** : elle ne choisit pas le mecanisme technique (table de
+  correspondance, comparateur, cle de tri sur le descripteur, ou toute autre forme) - ce choix
+  reste a `theo-archi`, dans son avis de faisabilite au moment ou elle est engagee. Elle ne cree ni
+  ne modifie aucune entree de `squad/programme/`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite et le mecanisme retenu ; un
+  developpeur (`marc-dev`, `lea-dev` ou `sofia-sm` sous sa casquette dev) pour l'implementation et
+  ses tests, au sprint ou elle est affectee.
+
 
