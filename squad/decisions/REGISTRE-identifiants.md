@@ -24,9 +24,24 @@ segment** de l'identifiant. Sur mon worktree dedie, avant mon diff : 665 identif
 108 prefixes distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le fichier
 declarait.
 
+**Note de `nadia-prof`, s39, le 2026-09-22 (arbitrage prealable sur quatre lots).** Onze
+identifiants ajoutes, tous ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` : `MES-CE1-1` a
+`MES-CE1-3` (bornes de tirage pour la mesure textuelle de longueurs, `S39-LONGUEUR`), `MON-CE1-1` a
+`MON-CE1-4` (bornes de tirage pour la monnaie CE1, `S39-MONNAIE`), `SOL-CE1-1` a `SOL-CE1-4`
+(conditions de rendu visuel des solides, `S39-SOLIDES`). **Un seul prefixe neuf : `SOL`** ; `MES`
+et `MON` etaient deja alloues (`MES-1`/`MES-2`, `MON-1` a `MON-6`), verifie avant allocation.
+`S39-DEN` ne recoit aucun identifiant neuf : `DEN-2` est confirmee telle quelle, pas amendee.
+Ligne d'etat courant portee de **666 / 108 a 677 / 109**. Methode : comptage des lignes de la
+table de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document
+entre accents graves, `ADR-0085` clause 5), prefixe pris comme **premier segment** de
+l'identifiant. Sur mon worktree dedie, avant mon diff : 666 identifiants distincts, 108 prefixes
+distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le fichier declarait ; apres mon
+diff : 677 et 109.
+
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `666` identifiants alloues, `108` prefixes distincts.
+**Compte courant, verifie par la CI** : `677` identifiants alloues, `109` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1276,3 +1291,14 @@ clause 2 par une exemption.
 | `ZON-14` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md` |
 | `ZON-15` | `squad/conformite/FICHE-designation-frise-de-la-journee.md` |
 | `ZON-16` | `squad/conformite/FICHE-designation-frise-de-la-journee.md` |
+| `MES-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `MES-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `MES-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `MON-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `MON-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `MON-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `MON-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `SOL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `SOL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `SOL-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `SOL-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
