@@ -172,18 +172,78 @@ qu'a n'importe quel nombre a deux chiffres.
 
 ### 2.3 Distracteurs, avec un cas de collision a traiter explicitement
 
-> **Un distracteur est `unite(a)`** (l'enfant repond le chiffre des unites de `a`, confondant "ce
+**Amendement du 2026-09-22, en reponse au routage de `sofia-sm`
+(`squad/sprints/s38-fermeture-mat-ce1-03/routage-complements-dizaine-et-adr-mecanisme.md`), sur le
+fait demontre - pas suppose - par `theo-archi` (avis de faisabilite, section 10) : la clause
+d'origine, ci-dessous barree, prescrivait `d` comme second distracteur. Comme `CDZ-CE1-1` borne la
+bonne reponse `d - a` a un entier de 1 a 9 et `d` lui-meme a un multiple de dix d'au moins 10, `d`
+est **systematiquement** la plus grande des trois propositions, jamais la bonne reponse : le rang
+"la plus grande" vaudrait 0 % sur tout paquet conforme a la lettre, ce qui fait rougir
+`DETTE_DE_SEUIL_MINIMUM` sans recours (cliquet a son plafond de trois noms). Cette clause n'a
+jamais ete mise a l'epreuve d'un paquet livre : aucun Done pedagogique n'a ete prononce dessus. La
+corriger ici n'est donc pas revenir sur une barre deja franchie - c'est fermer une specification
+qui s'est revelee inexecutable avant tout code, exactement le role que ce document se donne
+lui-meme en section 0 ("il sera mis a l'epreuve... je le dis d'avance").**
+
+> ~~**Un distracteur est `unite(a)`** (l'enfant repond le chiffre des unites de `a`, confondant "ce
 > qui est deja la" avec "ce qu'il manque"), **sauf s'il est egal a la bonne reponse** - ce qui
 > arrive exactement quand `unite(a) = 5` (`a + ? = d` avec `unite(a) = 5` donne un complement de
 > 5 aussi) ; dans ce cas, ce distracteur est remplace par `unite(a) - 1` s'il est positif, sinon
 > par `d`. **Un second distracteur est `d`** (l'enfant repond la cible plutot que ce qu'il faut lui
 > ajouter). Les deux distracteurs sont toujours des entiers positifs distincts de la bonne reponse
-> et l'un de l'autre.
+> et l'un de l'autre.~~
+
+> **Un distracteur est `unite(a)`** (l'enfant repond le chiffre des unites de `a`, confondant "ce
+> qui est deja la" avec "ce qu'il manque"), **sauf s'il est egal a la bonne reponse** - ce qui
+> arrive exactement quand `unite(a) = 5` ; dans ce cas, ce distracteur est remplace par
+> `unite(a) - 1`, toujours positif dans ce cas precis (`unite(a) = 5` donne `4`).
+>
+> **Un second distracteur est `d - a - 1`** - l'enfant compte le complement en s'arretant un pas
+> trop tot (il compte `a+1, a+2, ..., d-1` et oublie le dernier pas jusqu'a `d`), l'erreur de
+> decompte d'un rang deja acceptee comme distracteur valide sur les complements a 10 du CP
+> (`FICHE-bandit-manchot-complements-10-cp.md`, meme famille citee en section 3.4 pour les
+> moities de ce document) - **sauf dans deux cas ou il est remplace par `d - a + 1`**, le meme
+> decompte d'un rang mais par exces (l'enfant compte un pas de trop, `a+1, ..., d, d+1`) plutot
+> que par defaut :
+> - quand `d - a - 1` n'est pas strictement positif, ce qui arrive exactement quand `d - a = 1`
+>   (donc `unite(a) = 9`) ;
+> - quand `d - a - 1` coinciderait avec le premier distracteur une fois sa propre collision
+>   traitee, ce qui arrive exactement quand `unite(a) = 5` (`d - a - 1 = 4`, et le premier
+>   distracteur, deja remplace par `unite(a) - 1` pour la raison ci-dessus, vaut aussi 4).
+>
+> Les deux distracteurs sont toujours des entiers positifs, distincts entre eux et de la bonne
+> reponse.
 
 Je nomme la collision `unite(a) = 5` explicitement parce qu'un item ou elle n'est pas traitee
 livrerait deux fois la meme valeur sous deux libelles differents - un defaut que je refuserais
 immediatement en jouant, exactement du meme ordre que les defauts que ma porte existe pour
-attraper.
+attraper. Le meme motif justifie de nommer les deux cas de repli du second distracteur plutot que
+de les laisser decouvrir a l'ecriture du premier item ou ils se produisent.
+
+**Verification que la correction leve reellement le blocage, faite a la main sur les neuf valeurs
+possibles de `unite(a)` (1 a 9), puisque `CDZ-CE1-2` impose que chacune apparaisse au moins une
+fois et que le rang ne depend que de `unite(a)`, jamais de la dizaine de `a`.**
+
+| `unite(a)` | bonne reponse (`d-a`) | 1er distracteur | 2e distracteur | rang de la bonne reponse |
+|---|---|---|---|---|
+| 1 | 9 | 1 | 8 | plus grande |
+| 2 | 8 | 2 | 7 | plus grande |
+| 3 | 7 | 3 | 6 | plus grande |
+| 4 | 6 | 4 | 5 | plus grande |
+| 5 | 5 | 4 | 6 | intermediaire |
+| 6 | 4 | 6 | 3 | intermediaire |
+| 7 | 3 | 7 | 2 | intermediaire |
+| 8 | 2 | 8 | 1 | intermediaire |
+| 9 | 1 | 9 | 2 | plus petite |
+
+Sur un paquet qui respecte `CDZ-CE1-2` en repartissant a peu pres egalement ses neuf valeurs de
+complement, la bonne reponse est "la plus petite" sur 1 item sur 9 (~11,1 %), "intermediaire" sur 4
+sur 9 (~44,4 %) et "la plus grande" sur 4 sur 9 (~44,4 %) : **les trois rangs restent au-dessus du
+seuil de 10 % de `DETTE_DE_SEUIL_MINIMUM`, et aucun n'atteint la majorite de 50 % qui ferait rougir
+le premier garde-fou.** Le cas signale par `theo-archi` (au moins un item sur dix ou les deux
+distracteurs sont inferieurs a la bonne reponse) est couvert plus largement que le minimum demande
+: les quatre lignes ou la bonne reponse est "la plus grande" (`unite(a)` de 1 a 4) le verifient par
+construction, puisque c'est la definition meme de ce rang.
 
 ---
 
