@@ -1,0 +1,94 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, SOU-CE1-2).
+# Ce paquet n a pas de defaut : il tient les sept bandes. Il est ici pour que le jeu
+# fautif prouve que la regle DISCRIMINE, et non qu elle refuse tout paquet qu on lui
+# donne.
+schema: 1
+id: paquet-conforme-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - soustractions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "23 - 15 = ?"
+    bonneReponse: "8"
+    distracteurs: ["9", "10"]
+    indice: "Compte tes pas."
+  - enonce: "34 - 19 = ?"
+    bonneReponse: "15"
+    distracteurs: ["16", "17"]
+    indice: "Compte tes pas."
+  - enonce: "45 - 28 = ?"
+    bonneReponse: "17"
+    distracteurs: ["18", "19"]
+    indice: "Compte tes pas."
+  - enonce: "52 - 39 = ?"
+    bonneReponse: "13"
+    distracteurs: ["14", "15"]
+    indice: "Compte tes pas."
+  - enonce: "87 - 30 = ?"
+    bonneReponse: "57"
+    distracteurs: ["58", "59"]
+    indice: "Compte tes pas."
+  - enonce: "95 - 20 = ?"
+    bonneReponse: "75"
+    distracteurs: ["76", "77"]
+    indice: "Compte tes pas."
+  - enonce: "76 - 40 = ?"
+    bonneReponse: "36"
+    distracteurs: ["37", "38"]
+    indice: "Compte tes pas."
+  - enonce: "45 - 3 = ?"
+    bonneReponse: "42"
+    distracteurs: ["43", "44"]
+    indice: "Compte tes pas."
+  - enonce: "57 - 4 = ?"
+    bonneReponse: "53"
+    distracteurs: ["54", "55"]
+    indice: "Compte tes pas."
+  - enonce: "68 - 5 = ?"
+    bonneReponse: "63"
+    distracteurs: ["64", "65"]
+    indice: "Compte tes pas."
+  - enonce: "79 - 6 = ?"
+    bonneReponse: "73"
+    distracteurs: ["74", "75"]
+    indice: "Compte tes pas."
+  - enonce: "58 - 13 = ?"
+    bonneReponse: "45"
+    distracteurs: ["46", "47"]
+    indice: "Compte tes pas."
+  - enonce: "67 - 24 = ?"
+    bonneReponse: "43"
+    distracteurs: ["44", "45"]
+    indice: "Compte tes pas."
+  - enonce: "79 - 35 = ?"
+    bonneReponse: "44"
+    distracteurs: ["45", "46"]
+    indice: "Compte tes pas."
+  - enonce: "84 - 41 = ?"
+    bonneReponse: "43"
+    distracteurs: ["44", "45"]
+    indice: "Compte tes pas."
+  - enonce: "52 - 27 = ?"
+    bonneReponse: "25"
+    distracteurs: ["26", "27"]
+    indice: "Compte tes pas."
+  - enonce: "63 - 38 = ?"
+    bonneReponse: "25"
+    distracteurs: ["26", "27"]
+    indice: "Compte tes pas."
+  - enonce: "74 - 49 = ?"
+    bonneReponse: "25"
+    distracteurs: ["26", "27"]
+    indice: "Compte tes pas."
+  - enonce: "85 - 57 = ?"
+    bonneReponse: "28"
+    distracteurs: ["29", "30"]
+    indice: "Compte tes pas."
+  - enonce: "91 - 68 = ?"
+    bonneReponse: "23"
+    distracteurs: ["24", "25"]
+    indice: "Compte tes pas."
