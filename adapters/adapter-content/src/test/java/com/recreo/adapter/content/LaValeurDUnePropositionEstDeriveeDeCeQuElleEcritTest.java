@@ -113,9 +113,17 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
      * ("trois huitiemes"), soit une fraction ecrite en chiffres ("3/8"), que la lecture de valeur
      * ecarte depuis ADR-0068 parce que le reste apres le premier nombre porte encore un chiffre.
      * Mesure du 2026-08-31, sur le paquet servi.</p>
+     *
+     * <p>{@code cp-nombres-jusqu-a-100} (S39-DEN) porte 21 items a trois propositions dont 14 dans
+     * le domaine (les verbes "ecrire" et le verbe "decomposer" de la ligne, dont les trois
+     * propositions sont numeriques - un nombre nu, ou un nombre suivi de "dizaines"/"unités") et 7
+     * ecartes : les 7 items du verbe "lire" (bonne reponse et distracteurs en designation
+     * litterale, par exemple "soixante-douze"), memes motif et forme que les items "lire" de
+     * {@code cm1-grands-nombres} ci-dessus. Mesure du 2026-09-22, sur le paquet servi.</p>
      */
     private static final Map<String, Integer> PAQUETS_A_ITEMS_ECARTES =
-            Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14, "cm1-fractions", 18);
+            Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14, "cm1-fractions", 18,
+                    "cp-nombres-jusqu-a-100", 7);
 
     /** Un item a trois propositions, vu par la lecture de valeur. */
     private record Lecture(List<String> propositions, List<Lue> lues) {

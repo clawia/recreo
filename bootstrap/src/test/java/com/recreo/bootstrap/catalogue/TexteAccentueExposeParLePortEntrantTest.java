@@ -251,6 +251,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (MAT-CE1-03, soustractions dans la limite de 100), reparti par forme selon
             // SOU-CE1-2 (ADR-0097).
             "bandit-manchot-soustractions-ce1",
+            // S39-DEN (s39) : entree neuve, DEN-1 a DEN-8, ligne MAT-CP-01 plafonnee "en cours"
+            // (DEN-2 non servi).
+            "bandit-manchot-nombres-jusqu-a-100-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -396,6 +399,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // "Les grandes additions" : il ne porte pas son niveau (ADR-0078) et se distingue
             // de "Les petites soustractions", qui sert le CP.
             "Les grandes soustractions",
+            // S39-DEN (s39) : titre neuf.
+            "Les nombres jusqu'à 100",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -566,6 +571,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Quel nombre manque ?",
             // S38-MOITIES (s38) : consigne neuve.
             "Quelle est la moitié ?",
+            // S39-DEN (s39) : consigne neuve.
+            "Lis le nombre, écris-le, ou trouve ses dizaines et ses unités.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -862,7 +869,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // conforme du referentiel (squad/programme/questionner-le-monde/competences-cp.md,
             // QLM-CP-11), premiere livraison reelle de cette ligne.
             "Situer un lieu ou un objet sur un plan simple de la classe, de l'école ou du "
-                    + "quartier.");
+                    + "quartier.",
+            // S39-DEN (s39) : competence neuve, libelle du referentiel (squad/programme/
+            // mathematiques/competences-cp.md, MAT-CP-01). Couverture partielle nommee (DEN-2) :
+            // le paquet ne sert pas "dénombrer".
+            "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 100");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
