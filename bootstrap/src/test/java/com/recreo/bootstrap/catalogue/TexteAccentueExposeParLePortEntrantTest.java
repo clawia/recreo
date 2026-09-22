@@ -242,6 +242,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S37-1 (s37) : entree neuve, premier paquet de mathematiques CE1 (MAT-CE1-03,
             // additions dans la limite de 100), reparti par forme selon ADD-CE1-2.
             "bandit-manchot-additions-ce1",
+            // S38-COMPLEMENTS-DIZAINE (s38) : entree neuve, complements a la dizaine pris pour
+            // eux-memes (MAT-CE1-03).
+            "bandit-manchot-complements-dizaine-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -379,6 +382,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S37-1 (s37) : titre neuf, premier paquet CE1. Il ne porte pas son niveau
             // (ADR-0078) et se distingue de "Les petites additions", qui sert le CP.
             "Les grandes additions",
+            // S38-COMPLEMENTS-DIZAINE (s38) : titre neuf.
+            "Le compte jusqu'à la dizaine",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -545,6 +550,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Montre le moment qu'on te décrit.",
             // S35-QLM11-PLANCLASSE (s35) : consigne neuve, second lot de designation.
             "Montre l'endroit qu'on te décrit.",
+            // S38-COMPLEMENTS-DIZAINE (s38) : consigne neuve.
+            "Quel nombre manque ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -631,6 +638,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
             "Calcul mental - additions dans la limite de 100",
+            // S38-COMPLEMENTS-DIZAINE (s38) : competence neuve, MAT-CE1-03 sous-partie
+            // "complements a la dizaine" (ADR-0097, SousPartieDeMathematiquesCe1).
+            "Calcul mental - compléments à la dizaine",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
             "Calcul mental - soustractions dans la limite de 10",
             "Comparer deux nombres entiers jusqu'à 100 (<, >, =)",

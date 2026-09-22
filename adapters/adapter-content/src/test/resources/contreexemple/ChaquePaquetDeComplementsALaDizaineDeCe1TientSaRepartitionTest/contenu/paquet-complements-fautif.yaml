@@ -1,0 +1,24 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, CDZ-CE1-1).
+# Le premier item porte a = 40, un multiple de dix : CDZ-CE1-1 l exclut explicitement.
+schema: 1
+id: paquet-complements-fautif
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - compléments à la dizaine"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "40 + ? = 50"
+    bonneReponse: "10"
+    distracteurs: ["1", "8"]
+    indice: "Avance jusqu a la dizaine suivante."
+  - enonce: "32 + ? = 40"
+    bonneReponse: "8"
+    distracteurs: ["2", "7"]
+    indice: "Avance jusqu a la dizaine suivante."
+  - enonce: "43 + ? = 50"
+    bonneReponse: "7"
+    distracteurs: ["3", "6"]
+    indice: "Avance jusqu a la dizaine suivante."

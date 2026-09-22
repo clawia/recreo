@@ -1,0 +1,21 @@
+# JEU FAUTIF, JAMAIS SERVI. Trois entrees de CE1, une seule dont le paquet est fautif.
+schema: 1
+jeux:
+  - id: bandit-manchot-paquet-complements-conforme
+    titre: "Le complement range"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-complements-conforme
+    nombreDeManches: 5
+  - id: bandit-manchot-paquet-complements-fautif
+    titre: "Le complement penche"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-complements-fautif
+    nombreDeManches: 5
+  - id: bandit-manchot-paquet-autre-competence
+    titre: "Les additions rangees"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-autre-competence
+    nombreDeManches: 5

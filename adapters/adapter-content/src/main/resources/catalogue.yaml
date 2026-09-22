@@ -456,3 +456,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-additions-jusqu-a-100
     nombreDeManches: 10
+  - id: bandit-manchot-complements-dizaine-ce1
+    titre: "Le compte jusqu'à la dizaine"
+    consigne: "Quel nombre manque ?"
+    mecanique: bandit-manchot
+    paquet: ce1-complements-dizaine
+    nombreDeManches: 10
