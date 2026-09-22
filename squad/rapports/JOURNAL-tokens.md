@@ -369,13 +369,27 @@ Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 
 Aucune invocation mesuree sur cette fenetre pour : `marc-dev`, `relecteur-pedagogique`, `ines-design`.
 
+## Sprint s37
+
+| Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
+|---|---|---|---:|---:|---:|---:|
+| `camille-po` | claude-sonnet-5 | 75 | 150 | 22 266 | 415 374 | 14 114 032 |
+| `sofia-sm` | claude-sonnet-5 | 130 | 260 | 42 094 | 696 302 | 17 846 549 |
+| `theo-archi` | claude-opus-5 | 86 | 172 | 67 820 | 1 462 130 | 21 883 902 |
+| `yanis-qa` | claude-sonnet-5 | 124 | 248 | 34 580 | 347 465 | 12 194 256 |
+| `nadia-prof` | claude-opus-5 | 188 | 376 | 89 791 | 586 212 | 14 337 451 |
+| orchestrateur (fil principal) | claude-sonnet-5 | 26 | 52 | 28 664 | 609 732 | 6 562 403 |
+| **Total** | | **629** | **1 258** | **285 215** | **4 117 215** | **86 938 593** |
+
+Aucune invocation mesuree sur cette fenetre pour : `marc-dev`, `lea-dev`, `relecteur-pedagogique`, `ines-design`.
+
 ## hors sprint
 
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-opus-5  claude-sonnet-5 | 4206 | 8 412 | 2 389 404 | 23 961 140 | 681 502 594 |
-| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 4853 | 9 706 | 1 798 165 | 20 486 123 | 921 081 628 |
-| `theo-archi` | claude-opus-5 | 5080 | 10 160 | 2 733 109 | 20 369 383 | 771 224 492 |
+| `camille-po` | claude-opus-5  claude-sonnet-5 | 4312 | 8 624 | 2 436 289 | 24 468 167 | 692 355 571 |
+| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 4937 | 9 874 | 1 816 479 | 20 766 037 | 928 922 620 |
+| `theo-archi` | claude-opus-5 | 5247 | 10 494 | 2 809 043 | 20 785 465 | 790 101 630 |
 | `marc-dev` | claude-sonnet-5 | 806 | 1 612 | 387 381 | 3 845 083 | 145 879 930 |
 | `lea-dev` | claude-sonnet-5 | 1852 | 3 704 | 709 548 | 5 523 067 | 663 285 069 |
 | `yanis-qa` | claude-opus-5  claude-sonnet-5 | 479 | 958 | 171 408 | 1 359 916 | 75 251 247 |
@@ -384,5 +398,5 @@ Aucune invocation mesuree sur cette fenetre pour : `marc-dev`, `relecteur-pedago
 | `ines-design` | claude-opus-5  claude-sonnet-5 | 1782 | 3 564 | 1 019 480 | 7 497 431 | 298 232 378 |
 | `fork` | claude-sonnet-5 | 373 | 746 | 140 282 | 3 706 006 | 149 497 313 |
 | `general-purpose` | claude-sonnet-5 | 27 | 54 | 10 250 | 354 041 | 1 332 464 |
-| orchestrateur (fil principal) | claude-opus-5  claude-sonnet-5 | 2531 | 5 062 | 3 963 633 | 23 956 223 | 643 177 139 |
-| **Total** | | **26342** | **52 684** | **16 268 009** | **136 843 728** | **4 985 590 362** |
+| orchestrateur (fil principal) | claude-opus-5  claude-sonnet-5 | 2553 | 5 106 | 3 989 776 | 23 999 562 | 648 572 130 |
+| **Total** | | **26721** | **53 442** | **16 435 285** | **138 090 090** | **5 028 556 460** |
