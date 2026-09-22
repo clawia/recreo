@@ -15,6 +15,20 @@ par competence, l'integralite des dix-neuf referentiels desormais disponibles
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
 
+**Note du 2026-09-22 (s39)** : quatre lignes fermees, deux ouvertes, sur six lots audites par
+`nadia-prof` apres avoir joue le jar servi. **Fermetures (`non couvert` -> `couvert-valide`)** :
+`MAT-CE1-13` (monnaie CE1, `FICHE-bandit-manchot-monnaie-ce1.md`), `SCI-CM1-04` (energie CM1,
+`FICHE-bandit-manchot-energie-cm1.md`), `ART-CP-11` (outils arts plastiques CP,
+`FICHE-bandit-manchot-outils-arts-cp.md`), `MAT-CE1-16` (solides CE1,
+`FICHE-bandit-manchot-solides-ce1.md`) - les quatre **VALIDE, sans reserve**. **Ouvertures
+partielles (`non couvert` -> `en cours`)** : `MAT-CP-01` (denombrement CP, sous-parties lire/ecrire/
+decomposer **VALIDE**, verbe "denombrer" non servi par `DEN-2`,
+`FICHE-bandit-manchot-nombres-jusqu-a-100-cp.md`) et `MAT-CE1-09` (longueurs CE1, sous-partie
+comparer/utiliser cm-m **VALIDE**, verbe "mesurer avec une regle graduee" non servi,
+`FICHE-bandit-manchot-longueurs-ce1.md`). Le taux passe de **78 / 155 = 50,3 %** a
+**82 / 155 = 52,9 %** (quatre lignes au numerateur ; les deux ouvertures ne le touchent pas).
+Detail et recompte complets dans la section "Synthese apres les verdicts du sprint 39".
+
 **Note du 2026-09-22 (s38)** : fermeture de `MAT-CE1-03`. Les quatre pieces de la ligne (additions,
 soustractions, complements a la dizaine pris pour eux-memes, moities) ont chacune recu un Done
 pedagogique de `nadia-prof` apres avoir joue le jar servi : additions **VALIDE**, soustractions
@@ -151,7 +165,7 @@ Source : `squad/programme/mathematiques/competences-cp.md`.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
-| mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | - | - | non couvert |
+| mathematiques | CP | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 | bandit-manchot-nombres-jusqu-a-100-cp | bandit manchot | **en cours** (2026-09-22, s39) - **couverture partielle.** `nadia-prof` prononce **VALIDE** sur la part servie (`squad/conformite/FICHE-bandit-manchot-nombres-jusqu-a-100-cp.md`) : les 21 items exacts, `DEN-1`, `DEN-4` a `DEN-8`, `GN-1`/`GN-2` toutes tenues, pour les verbes "lire", "ecrire" et "decomposer" seuls. **Le verbe "denombrer" (`DEN-2`) n'est pas servi et ne peut pas l'etre par une mecanique textuelle** (constat verifie sur le code par `theo-archi`, `ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md`, section 1) : la ligne ne passe pas a `couvert-valide` sur la foi de ce Done seul. |
 | mathematiques | CP | Nombres et calculs | Comparer et ranger des nombres jusqu'a 100 (<, >, =) | bandit-manchot-comparer-nombres-cp, cp-ranger-nombres | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - additions dans la limite de 10 (puis 20) | bandit-manchot-additions-cp | bandit manchot | couvert-valide |
 | mathematiques | CP | Nombres et calculs | Calcul mental - soustractions dans la limite de 10 | bandit-manchot-soustractions-cp | bandit manchot | couvert-valide |
@@ -587,14 +601,14 @@ produit ouvert par `DEC-0089`, CM2 restant explicitement differe. Aucune ligne n
 | mathematiques | CE1 | Nombres et calculs | Comprendre le sens de la multiplication (addition reiteree, disposition en lignes et en colonnes) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4 | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Resoudre des problemes d'addition, de soustraction et de multiplication a une ou deux etapes | - | - | non couvert |
-| mathematiques | CE1 | Grandeurs et mesures | Mesurer et comparer des longueurs avec une regle graduee ; utiliser le centimetre et le metre | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Mesurer et comparer des longueurs avec une regle graduee ; utiliser le centimetre et le metre | bandit-manchot-longueurs-ce1 | bandit manchot | **en cours** (2026-09-22, s39) - **couverture partielle.** `nadia-prof` prononce **VALIDE** sur la part servie (`squad/conformite/FICHE-bandit-manchot-longueurs-ce1.md`) : les 14 items exacts, `MES-CE1-1` a `MES-CE1-3` (version amendee) toutes tenues, pour "comparer des longueurs" et "utiliser le centimetre et le metre" (conversions) seuls. **Le verbe "mesurer... avec une regle graduee" n'est pas servi et ne peut pas l'etre par du texte seul** (aucune image de regle, aucune lecture de graduation) : la ligne ne passe pas a `couvert-valide` sur la foi de ce Done seul. |
 | mathematiques | CE1 | Grandeurs et mesures | Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre) | - | - | non couvert |
 | mathematiques | CE1 | Grandeurs et mesures | Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se reperer dans le calendrier (mois, date) | - | - | non couvert |
 | mathematiques | CE1 | Grandeurs et mesures | Calculer une duree simple en heures entieres ou en demi-heures | - | - | non couvert |
-| mathematiques | CE1 | Grandeurs et mesures | Utiliser la monnaie : composer une somme en euros et en centimes, savoir ce qui est rendu | - | - | non couvert |
+| mathematiques | CE1 | Grandeurs et mesures | Utiliser la monnaie : composer une somme en euros et en centimes, savoir ce qui est rendu | bandit-manchot-monnaie-ce1 | bandit manchot | **couvert-valide** (2026-09-22, s39) - **`MAT-CE1-13` ferme.** Done pedagogique **VALIDE, sans reserve**, prononce par `nadia-prof` apres avoir joue le jar servi (`squad/conformite/FICHE-bandit-manchot-monnaie-ce1.md`). 12 items exacts (composition et rendu recalcules), `MON-CE1-1` a `MON-CE1-4` toutes tenues. Ecriture exclusive en centimes jugee acceptable, sans reserve. |
 | mathematiques | CE1 | Espace et geometrie | Se reperer, se deplacer et coder un deplacement sur un quadrillage | - | - | non couvert |
 | mathematiques | CE1 | Espace et geometrie | Reconnaitre, decrire et tracer des figures planes (carre, rectangle, triangle, triangle rectangle, cercle) a la regle et sur quadrillage | - | - | non couvert |
-| mathematiques | CE1 | Espace et geometrie | Reconnaitre et nommer des solides usuels (cube, pave droit, boule, cylindre, cone) | - | - | non couvert |
+| mathematiques | CE1 | Espace et geometrie | Reconnaitre et nommer des solides usuels (cube, pave droit, boule, cylindre, cone) | bandit-manchot-solides-ce1 | bandit manchot ; item illustre | **couvert-valide** (2026-09-22, s39) - **`MAT-CE1-16` ferme.** Done pedagogique **VALIDE, sans reserve**, prononce par `nadia-prof` apres avoir joue le jar servi et regarde les 15 dessins a l'ecran, a leur taille reelle de rendu (`squad/conformite/FICHE-bandit-manchot-solides-ce1.md`). `SOL-CE1-1` a `SOL-CE1-4` toutes tenues, attention particuliere portee a la lisibilite de l'ellipse d'equateur de la boule sur ses trois tailles - tenue sans reserve. |
 | mathematiques | CE1 | Espace et geometrie | Reconnaitre un axe de symetrie et completer une figure par symetrie sur quadrillage | - | - | non couvert |
 
 **Dix-sept lignes**, verifiees contre le referentiel source par recherche des dix-sept codes
@@ -1626,7 +1640,7 @@ d'usage non instruite, ouverte formellement en `DEC-0075`, non tranchee.**
 | arts plastiques | CP | La narration et le temoignage par les images | Transformer une image existante (découpage, ajout, association) pour en modifier le sens. | - | - | **non couvrable en l'etat**, nature irreversible - production plastique, memes deux motifs que la ligne 1. |
 | arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Décrire une œuvre : dire ce qu'on y voit (sujet, couleurs, formes, matériaux). | - | - | non couvert - palier 1 illustre, image d'oeuvre requise. La forme existe (image fixe, propositions en texte, `ADR-0073`), mais aucune reproduction d'oeuvre n'est servie par le depot ; un item textuel qui decrirait l'oeuvre serait une contrefacon (`CON-1`). Question de droits d'usage ouverte en `DEC-0075`, non tranchee. |
 | arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres. | - | - | non couvert - meme motif que la ligne precedente (image d'oeuvre requise, `DEC-0075`). Un quiz de noms ("qui a peint la Joconde ?") servirait la culture generale, pas la reconnaissance d'une oeuvre. |
-| arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, argile, esquisse). | - | - | non couvert - jouable au choix textuel. Vocabulaire concret, court, du niveau du CP, exact et verifiable. |
+| arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, argile, esquisse). | bandit-manchot-outils-arts-cp | bandit manchot | **couvert-valide** (2026-09-22, s39) - **`ART-CP-11` ferme.** Done pedagogique **VALIDE, sans reserve**, prononce par `nadia-prof` apres avoir joue le jar servi (`squad/conformite/FICHE-bandit-manchot-outils-arts-cp.md`). Les quatre termes de la parenthese (pinceau, craie, argile, esquisse) chacun servis en bonne reponse sur les 12 items, `ART-1` et `ART-2` tenues, `ADR-0089` (lisibilite CP) verifie a l'ecran. |
 
 **Conditions opposables, posees le 2026-09-03** : `ART-1` (aucun item ne fait porter la reponse par
 une couleur percue - la ligne 5 se sert par le nom ecrit des couleurs et par la regle de melange,
@@ -1971,7 +1985,7 @@ sur une ligne de ce lot dont le code n'est pas cite par le paquet qui la sert.
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire les états de la matière et les changements d'état (solide, liquide, gaz ; fusion, solidification, vaporisation, condensation). | bandit-manchot-etats-matiere-cm1 | bandit manchot | **couvert-valide** (2026-09-07, s31, instance B) - **`SCI-CM1-01` ferme.** Onze items exacts, les trois etats et les quatre changements d'etat chacun en bonne reponse, deux taches distinctes (identifier l'etat decrit, nommer le changement d'etat decrit). **Seul des quatre paquets de s31 ou chaque proposition est un candidat serieux** ; `SCI-1` tenue a son point le plus exigeant. Referme la couture ouverte par `MEL-R1` : aucun item n'ecrit que l'eau disparait. Aucune mention de couverture partielle n'est due. Aucune reserve. |
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Distinguer un mélange homogène d'un mélange hétérogène et identifier un moyen de séparer les constituants d'un mélange. | bandit-manchot-melanges-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B) - **`SCI-CM1-02` ferme.** Six classements exacts, cinq moyens de separation reels et bien apparies, une vraie progression de difficulte, indices portant le critere et non la categorie sur les cinq items binaires (`DRO-R2`). Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Trois reserves non bloquantes, datees du 2026-09-06 : **`MEL-R1`** (l'indice du sel dit "faire disparaitre l'eau", plante une conception fausse et nomme la reponse), **`MEL-R2`** (l'item de la decantation ecrit sa reponse dans sa question) et **`MEL-R3`** (troisieme proposition non plausible, meme defaut que `SIG-R2`). **Reaudit du 2026-09-07 (s31, instance A)** : `MEL-R1`, `MEL-R2` et `MEL-R3` **levees** (l'indice du sel dit desormais que le sel reste dans l'eau sans la faire disparaitre, l'item de decantation ne redit plus sa reponse dans son enonce, la troisieme proposition de l'item eau/huile est devenue un candidat plausible). Une reserve neuve et datee, non bloquante, ouverte le 2026-09-07 : **`MEL-R4`** (l'enonce de l'item de decantation reste resolvable a la duree et a l'absence de manipulation seules, sans savoir ce qu'est une decantation). Statut inchange, `SCI-CM1-02` reste `couvert-valide`.
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à un point de repère donné. | - | - | non couvert - jouable au choix textuel, sur la description seule (le produit ne montre aucun mouvement). Recouvrement a ne pas double-compter avec mathematiques CM1 / Grandeurs et mesures (le calcul d'une vitesse). |
-| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre. | - | - | non couvert - jouable au choix textuel. Distracteurs naturels et plausibles, ce qui est rare. |
+| sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre. | bandit-manchot-energie-cm1 | bandit manchot | **couvert-valide** (2026-09-22, s39) - **`SCI-CM1-04` ferme.** Done pedagogique **VALIDE, sans reserve**, prononce par `nadia-prof` apres avoir joue le jar servi (`squad/conformite/FICHE-bandit-manchot-energie-cm1.md`). 12 items exacts (sources, formes, conversions), `FER-1` a `FER-3` tenues, refus 3 de l'arbitrage prealable (electricite jamais bonne reponse a "source ou forme ?") respecte. |
 | sciences et technologie | CM1 | Matiere, mouvement, energie, information | Identifier un signal et une information dans quelques objets du quotidien (feu tricolore, panneau, alarme, écran). | bandit-manchot-signal-information-cm1 | bandit manchot | **couvert-valide** (2026-09-06, s30, instance B) - **`SCI-CM1-05` ferme.** Onze items exacts, deux taches reellement distinctes (classer le signal, decoder l'information qu'il porte), aucun fait faux, aucun biais, `SCI-1` et `SCI-4` tenues, `SCI-3` mesuree sur le lot (zero item numerique sur 22). Aucune mention de couverture partielle n'est due (`nadia-prof` le dit explicitement, hors des lignes 6, 14 et 20). Deux reserves non bloquantes, datees du 2026-09-06 : **`SIG-R1`** (la tache de classement ne monte jamais, cinq items sur six donnent leur reponse dans l'enonce) et **`SIG-R2`** (troisieme proposition de l'item de l'ambulance non plausible, `SCI-4` formellement tenue mais sans effet reel) |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu. | - | - | non couvert - jouable au choix textuel, item par item. Mention exigee d'avance : "raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non couvert" (refuse au palier 1 par `V3`). |
 | sciences et technologie | CM1 | Le vivant, sa diversite et les fonctions qui le caracterisent | Identifier les besoins des êtres vivants pour se nourrir et distinguer les régimes alimentaires (herbivore, carnivore, omnivore). | bandit-manchot-regimes-alimentaires-cm1 | bandit manchot | **couvert-valide** (2026-09-07, s31, instance B) - **`SCI-CM1-07` ferme.** Sept animaux distincts, les trois regimes (herbivore, carnivore, omnivore) chacun en bonne reponse - jamais *vegetarien*, corrige au referentiel a s30. Deux taches distinctes, la tache A portant `FER-1` a elle seule. Aucune mention de couverture partielle n'est due. Deux reserves non bloquantes, datees du 2026-09-07 : **`RGA-R1`** (sur les quatre items de la tache B, la bonne reponse est la seule proposition serieuse, `PLA-1`) et **`RGA-R2`** (deux formulations hors du registre du CM1 - *esthetique*, et une discrimination qui ne tient qu'a l'adverbe *seulement*) |
@@ -5529,3 +5543,59 @@ plutot que corrige en silence puisqu'il n'est pas dans le perimetre de cette tac
 - Elle ne mesure ni ne ratifie le registre de dette : les six reserves neuves de ce sprint sont
   enregistrees dans `squad/decisions/produit/REGISTRE-reserves-neuves-s35.md`, qui ne recalcule pas
   non plus le total du registre - cette mesure reste due a la cloture, comme a s34 (`DEC-0087`).
+
+## Synthese apres les verdicts du sprint 39 (2026-09-22) - quatre fermetures, deux ouvertures partielles, aucun refus
+
+`nadia-prof` a joue le jar servi des six lots de `DEC-0092` et prononce six Done pedagogiques,
+aucun refus. Quatre lignes ferment sans reserve ; deux lignes, deja limitees d'avance par un
+arbitrage prealable a leur sous-partie textuelle, s'ouvrent sans pouvoir fermer sur ce seul Done.
+
+| Lot | Ligne | Verdict | Mouvement de ligne |
+|---|---|---|---|
+| Monnaie CE1 (`bandit-manchot-monnaie-ce1`) | `MAT-CE1-13` | **VALIDE**, sans reserve | `non couvert` -> **`couvert-valide`** |
+| Energie CM1 (`bandit-manchot-energie-cm1`) | `SCI-CM1-04` | **VALIDE**, sans reserve | `non couvert` -> **`couvert-valide`** |
+| Outils arts plastiques CP (`bandit-manchot-outils-arts-cp`) | `ART-CP-11` | **VALIDE**, sans reserve | `non couvert` -> **`couvert-valide`** |
+| Solides CE1 (`bandit-manchot-solides-ce1`) | `MAT-CE1-16` | **VALIDE**, sans reserve | `non couvert` -> **`couvert-valide`** |
+| Nombres jusqu'a 100 CP (`bandit-manchot-nombres-jusqu-a-100-cp`) | `MAT-CP-01` | **VALIDE, limite a la part textuelle** (lire, ecrire, decomposer) | `non couvert` -> **`en cours`** |
+| Longueurs CE1 (`bandit-manchot-longueurs-ce1`) | `MAT-CE1-09` | **VALIDE, limite a la part textuelle** (comparer, utiliser cm/m) | `non couvert` -> **`en cours`** |
+
+**Les deux ouvertures ne sont pas des reserves de ma part.** Sur `MAT-CP-01`, le verbe "denombrer"
+(`DEN-2`) n'est pas servi par ce paquet et ne peut pas l'etre par une mecanique textuelle - constat
+verifie sur le code par `theo-archi` et reconfirme par `nadia-prof` le jour meme
+(`squad/conformite/FICHE-bandit-manchot-nombres-jusqu-a-100-cp.md`). Sur `MAT-CE1-09`, le verbe
+"mesurer... avec une regle graduee" n'est pas servi par ce paquet et ne peut pas l'etre par du
+texte seul - aucun rendu de regle graduee n'existe a ce jour
+(`squad/conformite/FICHE-bandit-manchot-longueurs-ce1.md`). Les deux fiches le disent dans les
+memes mots : *"la ligne reste `en cours` quel que soit ce Done [...] ce n'est pas une reserve
+actionnable dans ce sprint, c'est une limite deja actee"*.
+
+### Le recompte, independant de tout chiffre transmis
+
+Recompte sur les dix-neuf tableaux de cette matrice, colonne `Statut`, avant et apres application
+des six mouvements ci-dessus - chaque ligne de donnees reclassee telle qu'elle est ecrite dans ce
+fichier apres mise a jour. Base "avant" reprise du recompte verifie a la fermeture de `MAT-CE1-03`
+(s38, section "Mathematiques - CE1 (cycle 2)", sous-section "Fermeture de `MAT-CE1-03` (s38)") :
+couvert-valide 78, en cours 0, non couvert 77, non couvrable en l'etat 71, total 226, denominateur
+atteignable 155 - pas un chiffre recopie d'un autre document.
+
+| | Avant les verdicts (2026-09-22, avant s39) | Apres les six verdicts |
+|---|---|---|
+| `couvert-valide` | 78 | **82** |
+| `en cours` | 0 | **2** |
+| `non couvert` | 77 | **71** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 226 | 226 |
+| Denominateur atteignable | 155 | 155 |
+| **Taux** | **78 / 155 = 50,3 %** | **82 / 155 = 52,9 %** |
+
+**82 / 155 = 0,529032... : 52,9 % arrondi.** Les quatre fermetures portent le numerateur de 78 a
+82 ; les deux ouvertures partielles ne le touchent pas (une ligne qui passe de `non couvert` a
+`en cours` ne touche pas le numerateur). Le denominateur atteignable ne bouge pas : `en cours` y
+compte deja comme `non couvert`.
+
+### Ce que cette synthese ne fait pas
+
+- Elle ne prononce aucun Done : les six verdicts sont de `nadia-prof`, dans les six fiches citees.
+- Elle ne fait passer `MAT-CP-01` ni `MAT-CE1-09` a `couvert-valide` : les deux fiches l'interdisent
+  explicitement tant que `DEN-2` (denombrer) et le rendu d'une regle graduee ne sont pas servis.
+- Elle ne fixe aucun perimetre pour le sprint suivant.
