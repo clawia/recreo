@@ -20,6 +20,10 @@
   (`LON-CE1-1`, `LON-CE1-2`), `domain/src/main/java/com/recreo/domain/mechanics/designation/
   Designation.java`, `DesignationSession.java`, `domain/src/main/java/com/recreo/domain/content/
   ZoneADesigner.java`.
+- **Amendements du 2026-09-22** (apres l'avis de faisabilite de `theo-archi`,
+  `squad/sprints/s39-couverture-maximale-six-lignes-candidates/avis-faisabilite.md`, sections 18.2
+  et 12) : `MES-CE1-3` (distracteur "confusion d'unite", section 2) et `SOL-CE1-1`/`SOL-CE1-4`
+  (forme de la boule, section 4). Voir les blocs "Amendement du 2026-09-22" dans chaque section.
 
 ---
 
@@ -88,6 +92,44 @@ faisabilite dans ce sprint, question technique pour `theo-archi`.
 > valeur attendue en m, ou l'inverse) ou une erreur de conversion par un facteur autre que 100
 > (le plus frequent chez l'enfant : diviser ou multiplier par 10 au lieu de 100) ; jamais une
 > longueur negative ni une valeur absurde.
+
+## Amendement du 2026-09-22 (apres avis de faisabilite de `theo-archi`) - `MES-CE1-3`, le distracteur "confusion d'unite"
+
+`theo-archi` a signale que `LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest`
+(`ADR-0041`, clause `lesTroisPropositionsDUnItemDuDomaineLaissentLeMemeResteApresLecture`) refuse
+tout item dont les propositions laissent des restes d'unite differents, et cite explicitement le
+cas *"'cm' face a 'm'"*. J'ai relu ma propre formulation avant d'arbitrer : le premier volet de
+`MES-CE1-3` (*"repondre en cm la valeur attendue en m, ou l'inverse"*) demande deux propositions
+d'unites differentes dans un meme item - il tombe directement dans ce cas.
+
+Je verifie le motif du garde-fou plutot que de le contourner. Il est juste, et il me fait voir une
+faute que je n'avais pas vue moi-meme : `300 cm` et `3 m` ne sont pas une bonne reponse face a une
+fausse, ce sont **deux ecritures de la meme longueur**. Le distracteur que j'avais pose n'aurait
+donc pas ete une erreur, il aurait ete la bonne reponse deguisee - une faute pedagogique
+independante du garde-fou technique, que je n'ai vue qu'en vérifiant l'`ADR`.
+
+**Je retire le premier volet de `MES-CE1-3`** et je ne le remplace pas par une autre forme a deux
+unites : aucune forme de ce genre ne peut a la fois rester dans une seule unite (ce que le
+garde-fou exige, a bon droit) et tester "l'enfant confond cm et m" par un simple changement de
+label - changer le label sans changer le nombre donne soit la bonne reponse sous une autre forme,
+soit un nombre sans justification.
+
+**Le second volet couvre deja la meme famille d'erreur, sous une forme qui tient dans une seule
+unite.** *"Diviser ou multiplier par 10 au lieu de 100"* est exactement l'erreur que commet en
+pratique un enfant qui confond cm et m : il applique le mauvais facteur de conversion.
+`MES-CE1-3` devient :
+
+> **`MES-CE1-3` (version amendee, 2026-09-22)** - les distracteurs plausibles sont une erreur de
+> facteur de conversion cm/m (diviser ou multiplier par 10, par 1 - c'est-a-dire ne pas convertir
+> du tout -, ou par un facteur autre que 100), **toutes les propositions d'un meme item exprimees
+> dans la meme unite que la bonne reponse** ; jamais une proposition exprimee dans une unite
+> differente des deux autres ; jamais une longueur negative ni une valeur absurde.
+
+Ce que cet amendement ne fait pas : il ne baisse pas la barre. La borne initiale visait a tester
+si l'enfant sait que 1 m = 100 cm ; la borne amendee teste exactement la meme chose, par la voie
+que le corpus deja servi (`cm1-mesures`, `7 cm -> 70 mm`, distracteurs `700 mm` et `7000 mm`) a
+deja validee. Rien d'autre dans la section 2 n'est modifie : la ligne reste plafonnee `en cours`
+pour le motif deja ecrit (absence de rendu de regle graduee).
 
 ## 3. `S39-MONNAIE` (`MAT-CE1-13`) - le precedent CP ne s'applique pas, verifie et non presume
 
@@ -169,6 +211,35 @@ aux proportions fiables, sont constructibles dans la capacite de ce sprint. C'es
 d'architecture et de charge de contenu - `item illustre` existe deja comme mecanique, seul le
 materiau (les cinq dessins) manque, contrairement a `S39-DEN` ou c'est la mecanique elle-meme qui
 manque. Je le nomme pour que `theo-archi` ne confonde pas les deux natures de manque.
+
+## Amendement du 2026-09-22 (apres avis de faisabilite de `theo-archi`) - `SOL-CE1-1` / `SOL-CE1-4`, forme de la boule
+
+`theo-archi` a trouve un trou que ni mon arbitrage ni aucun garde-fou existant ne couvrait : une
+boule dessinee comme un simple cercle passerait toutes les clauses de geometrie en vigueur, alors
+que ce cercle est - par la derivation d'`ADR-0077` (*"un dessin qui ne trace qu'une seule forme
+rendue **est** cette forme"*) - exactement un cercle, pas une boule. C'est le meme defaut que
+celui que j'ai sanctionne sous `FIG-4` pour les figures planes CP, retourne du cote du volume.
+
+Je tranche la forme visuelle. **Une boule est dessinee comme un cercle traverse par une ellipse
+figurant son equateur** - la convention du globe ou du ballon a bande, celle qui distingue
+usuellement une representation en volume d'une figure plane des le cycle 2. Cette ellipse doit
+etre visiblement une courbe fermee distincte du contour circulaire - ni un simple segment, ni un
+arc trop plat pour se voir a 176 px de hauteur - pour qu'un enfant de CE1 y lise "un rond avec une
+bande autour", et non un second cercle concentrique ou un decor sans rapport.
+
+**Ce que cela impose concretement, pour que `theo-archi` l'encode** : le dessin porte au moins
+deux formes rendues distinctes - le contour circulaire et l'ellipse d'equateur -, ce que la clause
+qu'il a deja redigee (section 12 de son avis, *"au moins deux formes rendues"*) verifie
+mecaniquement. **Ce que ce garde-fou ne verifie pas, et que je reste seule a garder** : que la
+seconde forme est bien une ellipse d'equateur credible, et non un trait quelconque colle au cercle
+pour faire passer le compte a deux. Cette part se juge item par item au Done, exactement comme
+`theo-archi` l'a ecrit pour le rapport d'aretes du cube et du pave droit (`R7` de son avis) - aucun
+automate ne la fera a sa place.
+
+**Ce que je ne tranche pas ici**, hors du perimetre qui m'est pose : le nombre d'ellipses (une
+seule, l'equateur, suffit a la clause ; une seconde en meridien ameliore la lisibilite sans etre
+exigee), et l'orientation ou la variation des trois exemples de boule (`R6` de l'avis de
+`theo-archi`), qu'il a explicitement route en dehors de cette question.
 
 ## 5. Ce que ce document ne fait pas
 
