@@ -3002,6 +3002,51 @@ refus** : le Done pedagogique de cette ligne reste `couvert-valide`, non rouvert
   requis sur le garde-fou generique, comme pour toute regle neuve). **Candidate au sprint 14** : le
   sprint 13 ne la porte pas.
 
+### Story de correction differee - `SOU-CE1-R1` : un distracteur non identifiable sur quatre items de "Les grandes soustractions"
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-soustractions-ce1` a s38 et prononce **VALIDE
+SOUS RESERVE** (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, section 4 et bloc de
+validation). Sur quatre des sept items de la forme "un chiffre soustrait" (`45 - 3`, `57 - 4`,
+`68 - 5`, `79 - 6`), le second distracteur (`20`, `25`, `30`, `35` respectivement) ne correspond ni
+a la somme `a + b`, ni au second terme recopie, ni a une erreur de soustraction qu'elle identifie
+comme plausible - alors que leurs trois freres de la meme bande (`84 - 7`, `91 - 8`, `99 - 9`) et
+toutes les autres bandes non-emprunt du paquet portent la somme comme second distracteur. Joue a
+l'ecran, l'item se reduit dans les faits a un choix entre deux propositions plutot que trois : "une
+manche qui enseigne moins que ses freres de la meme forme, pas une manche fausse" (section 4). **Ce
+n'est pas un motif de refus** : le Done pedagogique reste `VALIDE SOUS RESERVE`, la reserve est non
+bloquante et n'a pas retenu la fermeture de `MAT-CE1-03` a s38.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Les grandes soustractions", je veux que chaque
+  proposition fausse represente une erreur de calcul plausible, afin que la manche m'apprenne autant
+  que ses freres de la meme forme plutot que de se reduire a deviner entre deux nombres.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs",
+  `MAT-CE1-03` (`squad/programme/mathematiques/competences-ce1.md`), sous-partie "soustractions dans
+  la limite de 100" - ligne deja `couvert-valide` depuis s38 (Done pedagogique **VALIDE SOUS
+  RESERVE** sur ce paquet), non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'item `45 - 3` (bonne reponse 42), quand le paquet corrige est charge, alors ses
+    deux distracteurs sont `3` et `48` (`48` remplace `20`).
+  - Etant donne l'item `57 - 4` (bonne reponse 53), quand le paquet corrige est charge, alors ses
+    deux distracteurs sont `4` et `61` (`61` remplace `25`).
+  - Etant donne l'item `68 - 5` (bonne reponse 63), quand le paquet corrige est charge, alors ses
+    deux distracteurs sont `5` et `73` (`73` remplace `30`).
+  - Etant donne l'item `79 - 6` (bonne reponse 73), quand le paquet corrige est charge, alors ses
+    deux distracteurs sont `6` et `85` (`85` remplace `35`).
+  - Etant donne le paquet corrige, quand on relit les criteres deja verifies par `nadia-prof` sur ce
+    paquet (`SOU-CE1-1`, `SOU-CE1-2`, exactitude des 32 differences, ancrage sur `MAT-CE1-03`),
+    alors ils restent tous vrais : cette story ne touche qu'un champ (le second distracteur) sur
+    quatre items sur 32, rien d'autre.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les quatre items corriges et confirme que le second distracteur y
+    est desormais aussi plausible que sur leurs trois freres de la meme bande.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-09-22 (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, section 4), identifiant
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de
+  sprint, sur le meme patron que `DEC-0091` pour `ADD-CE1-R1`/`ADD-CE1-R2`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur. Non engagee a s38 - le
+  perimetre de s38 est borne par `DEC-0091` aux quatre lots deja instruits
+  (`S38-CORR`, `S38-SOUSTRACTIONS`, `S38-COMPLEMENTS-DIZAINE`, `S38-MOITIES`).
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,

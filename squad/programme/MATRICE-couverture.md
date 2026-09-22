@@ -15,6 +15,14 @@ par competence, l'integralite des dix-neuf referentiels desormais disponibles
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
 
+**Note du 2026-09-22 (s38)** : fermeture de `MAT-CE1-03`. Les quatre pieces de la ligne (additions,
+soustractions, complements a la dizaine pris pour eux-memes, moities) ont chacune recu un Done
+pedagogique de `nadia-prof` apres avoir joue le jar servi : additions **VALIDE**, soustractions
+**VALIDE SOUS RESERVE** (reserve non bloquante `SOU-CE1-R1`), complements-dizaine **VALIDE**,
+moities **VALIDE**. `MAT-CE1-03` passe de `en cours` a `couvert-valide`. Le taux passe de
+**77 / 155 = 49,7 %** a **78 / 155 = 50,3 %**. Detail et recompte complets dans la section
+"Mathematiques - CE1 (cycle 2)", sous-section "Fermeture de `MAT-CE1-03` (s38)".
+
 **Note du 2026-09-22 (s37)** : premier mouvement sur une ligne CE1. `MAT-CE1-03` (calcul mental,
 additions et soustractions dans la limite de 100) passe de `non couvert` a `en cours` sur Done
 pedagogique **VALIDE SOUS RESERVE** de `nadia-prof` pour le premier paquet CE1 du produit
@@ -573,7 +581,7 @@ produit ouvert par `DEC-0089`, CM2 restant explicitement differe. Aucune ligne n
 |---|---|---|---|---|---|---|
 | mathematiques | CE1 | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 1000 (unites, dizaines, centaines) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Comparer, ranger et encadrer les nombres jusqu'a 1000, et les placer sur une ligne graduee | - | - | non couvert |
-| mathematiques | CE1 | Nombres et calculs | Calcul mental - additions et soustractions dans la limite de 100 (complements a la dizaine, doubles et moities) | bandit-manchot-additions-ce1 | bandit manchot | **en cours** (2026-09-22, s37) - **`MAT-CE1-03` ne ferme pas.** Premier paquet CE1 du produit, sous-partie "additions dans la limite de 100" seule (`S37-1`) : `nadia-prof` prononce **VALIDE SOUS RESERVE** apres avoir joue le jar servi (32 items recalcules, 32 exacts ; huit bandes de forme tenues contre `ADD-CE1-2`, dont trois doubles et cinq complements a la dizaine ; `LON-CE1-1`/`LON-CE1-2` tenues). Deux reserves non bloquantes, datees du 2026-09-22 : **`ADD-CE1-R1`** (l'indice des cinq items "ajout d'un nombre rond" s'arrete une etape trop tot et menerait l'enfant qui le suit a la lettre a un nombre absent des propositions) et **`ADD-CE1-R2`** (`48 + 26` est le seul item de la forme "deux a deux chiffres avec retenue" dont un distracteur ne porte pas la retenue oubliee). Le mouvement est explicitement borne par `nadia-prof` elle-meme, ecrit d'avance le 2026-09-21 avant qu'un item n'existe : les soustractions, les complements a la dizaine pris pour eux-memes (forme `47 + ? = 50`) et les moities restent entiers, donc la ligne reste `en cours`, pas `couvert-valide`. Verdict : `squad/conformite/FICHE-bandit-manchot-additions-ce1.md`, sections 7 et 8. |
+| mathematiques | CE1 | Nombres et calculs | Calcul mental - additions et soustractions dans la limite de 100 (complements a la dizaine, doubles et moities) | bandit-manchot-additions-ce1 ; bandit-manchot-soustractions-ce1 ; bandit-manchot-complements-dizaine-ce1 ; bandit-manchot-moities-ce1 | bandit manchot | **couvert-valide** (2026-09-22, s38). **`MAT-CE1-03` ferme sur ses quatre pieces**, chacune auditee par `nadia-prof` apres avoir joue le jar servi. **Additions** (`S37-1`, deja `VALIDE SOUS RESERVE` a s37) : les deux reserves `ADD-CE1-R1` (indice des cinq items "ajout d'un nombre rond" s'arretant une etape trop tot) et `ADD-CE1-R2` (`48 + 26` sans la retenue oubliee en distracteur) sont **corrigees et fermees a s38** ; verdict desormais **VALIDE, sans reserve** (`squad/conformite/FICHE-bandit-manchot-additions-ce1.md`, sections 7, 8 et 11). **Soustractions** (`S38-SOUSTRACTIONS`) : `nadia-prof` prononce **VALIDE SOUS RESERVE** (32 differences exactes, `SOU-CE1-1`/`SOU-CE1-2` tenues) ; une reserve non bloquante, **`SOU-CE1-R1`** - sur quatre items de la forme "un chiffre soustrait" (`45 - 3`, `57 - 4`, `68 - 5`, `79 - 6`), le second distracteur ne correspond a aucune forme autorisee ni a une erreur de soustraction plausible ; correctif deja donne par `nadia-prof` (remplacer par la somme `a + b`, soit `48`, `61`, `73`, `85`), routee comme story de correction differee dans `docs/backlog/backlog.md`, section "Backlog - sprints suivants (intentions non detaillees)" (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, section 4). **Complements a la dizaine pris pour eux-memes** (`S38-COMPLEMENTS-DIZAINE`, forme `47 + ? = 50`) : **VALIDE, aucune reserve** (18 items exacts, `CDZ-CE1-1`/`CDZ-CE1-2` tenues ; `squad/conformite/FICHE-bandit-manchot-complements-dizaine-ce1.md`). **Moities** (`S38-MOITIES`) : **VALIDE, aucune reserve** (21 items exacts, `MOI-CE1-1`/`MOI-CE1-2` tenues ; `squad/conformite/FICHE-bandit-manchot-moities-ce1.md`). **La reserve `SOU-CE1-R1`, non bloquante, n'empeche pas la fermeture de la ligne** : un Done pedagogique sous reserve non bloquante reste un Done pedagogique, exactement comme `ADD-CE1-R1`/`ADD-CE1-R2` ne l'empechaient pas a s37. |
 | mathematiques | CE1 | Nombres et calculs | Poser et effectuer une addition avec retenue (nombres a deux ou trois chiffres) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Poser et effectuer une soustraction (nombres a deux ou trois chiffres) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Comprendre le sens de la multiplication (addition reiteree, disposition en lignes et en colonnes) | - | - | non couvert |
@@ -665,6 +673,37 @@ un ecart. Le denominateur atteignable (total moins `non couvrable en l'etat`) ne
 `en cours` y comptant deja comme `non couvert`. **Ce que ce recompte ne fait pas** : il ne prononce
 aucun Done - le verdict est de `nadia-prof`, dans la fiche citee ; il ne cree ni ne ferme aucune
 autre ligne CE1 ; il ne fixe aucun perimetre pour la suite de s37.
+
+### Fermeture de `MAT-CE1-03` (s38)
+
+`MAT-CE1-03` passe de `en cours` a `couvert-valide`. `nadia-prof` a joue le jar servi des quatre
+pieces de la ligne et prononce un Done pedagogique sur chacune (verdicts et motifs complets dans la
+ligne ci-dessus et dans les quatre fiches citees) : additions **VALIDE** (les deux reserves de s37
+fermees), soustractions **VALIDE SOUS RESERVE** (`SOU-CE1-R1`, non bloquante), complements a la
+dizaine **VALIDE**, moities **VALIDE**. Une reserve non bloquante est un Done pedagogique ouvert,
+pas un Done refuse (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, bloc de
+validation) : elle ne retient donc pas la fermeture de la ligne.
+
+**Recompte, independant de tout chiffre transmis**, sur le meme patron que le recompte de s37
+ci-dessus : un seul mouvement de statut a ce sprint (`MAT-CE1-03`, `en cours` -> `couvert-valide`),
+sur les dix-neuf tableaux de cette matrice, colonne `Statut`. Base "avant" reprise du recompte
+verifie a la cloture de s37 ci-dessus (couvert-valide 77, en cours 1, non couvert 77, non couvrable
+en l'etat 71, total 226, denominateur atteignable 155), pas un chiffre recopie d'un autre document.
+
+| | Avant ce mouvement (2026-09-22, avant fermeture de `MAT-CE1-03`) | Apres la fermeture de `MAT-CE1-03` |
+|---|---|---|
+| `couvert-valide` | 77 | **78** |
+| `en cours` | 1 | **0** |
+| `non couvert` | 77 | 77 |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 226 | 226 |
+| Denominateur atteignable | 155 | 155 |
+| **Taux** | **77 / 155 = 49,7 %** | **78 / 155 = 50,3 %** |
+
+**Ce que ce recompte ne fait pas** : il ne prononce aucun Done - les quatre verdicts sont de
+`nadia-prof`, dans les fiches citees ; il ne cree ni ne ferme aucune autre ligne CE1 ; il ne solde
+pas la reserve `SOU-CE1-R1`, routee comme dette a un sprint futur dans `docs/backlog/backlog.md`,
+section "Backlog - sprints suivants (intentions non detaillees)".
 
 ## Francais - CP (cycle 2)
 
