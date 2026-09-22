@@ -14218,5 +14218,270 @@ des trois lots de sous-partie n'est developpable avant l'arbitrage pedagogique p
   affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0091`, section
   2.2).
 
+## Sprint 39 - Couverture maximale sur six lignes candidates (`DEC-0092`)
+
+Six lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` a
+l'ouverture du sprint. Objectif et perimetre formalises par `DEC-0092` ; aucun ne rouvre
+`DEC-0089` (CE1 mathematiques seule, CM2 differe) ni les neuf lignes bloquees par
+`ART-3`/`DEC-0075`. Quatre lots restent bloques avant tout developpement, dans l'attente d'un
+arbitrage pedagogique prealable de `nadia-prof` ; deux lots (`S39-ENERGIE`, `S39-OUTILS`) peuvent
+recevoir un avis de faisabilite de `theo-archi` sans cette etape, la matrice les caracterisant deja
+comme du vocabulaire ou de la connaissance fixe, jouable au choix textuel avec des distracteurs
+naturellement plausibles - meme regime que les lignes sciences deja fermees sans arbitrage
+prealable (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`).
+
+### S39-DEN - Denombrer, lire, ecrire et decomposer les nombres jusqu'a 100 (`MAT-CP-01`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a lire, ecrire et decomposer des
+  nombres jusqu'a 100 en jouant au bandit manchot, afin de progresser sur la numeration en
+  attendant de pouvoir aussi m'entrainer a compter une collection.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-cp.md`, `MAT-CP-01`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 154.
+- **Obstacle preexistant, verifie et non contourne** : `DEN-2`
+  (`squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md`, ligne 136 ;
+  reconfirmee le 2026-08-30, `ARBITRAGE-PREALABLE-s24-borne-den-premier-paquet-de-saisie-et-deux-
+  points-de-satisfaisabilite.md`, ligne 192, *"non negociable"*) interdit a cette ligne de passer
+  `couvert-valide` par la seule mecanique textuelle, meme si le paquet est valide : le verbe
+  *denombrer* exige une collection **dessinee, groupee par dix, sur laquelle l'enfant agit**
+  (`INSTRUCTION-s25-les-16-lignes-hors-couvert-valide.md`, ligne 57), mecanique absente du depot a
+  ce jour. **Cette story ne peut donc pas promettre la fermeture de la ligne** - voir "Ce que
+  cette story ne fait pas".
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** (`DEC-0092`, section 5, routage d'office) : `DEN-2` tient-elle encore telle
+  quelle, ou une voie neuve existe-t-elle (par exemple un palier visuel avec interaction, si un tel
+  palier existe desormais dans le depot) qui permettrait de la lever ? Aucune reponse n'est
+  prejugee par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle porte
+    exactement une des trois taches deja arbitrees `DEN-1` a `DEN-8` (2026-08-24) : lire un nombre
+    (chiffres vers lettres), l'ecrire (lettres vers chiffres) ou le decomposer en dizaines et
+    unites - jamais une tache de denombrement d'une collection affichee.
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors "lire" et "ecrire" y sont
+    travailles dans les deux sens (`DEN-3`) et les distracteurs se distinguent par la valeur
+    designee, jamais par l'orthographe des mots-nombres (`GN-1`, `GN-2`).
+  - Etant donne l'arbitrage pedagogique prealable de `nadia-prof`, quand il fixe les bornes et la
+    repartition des trois taches (`DEN-1` a `DEN-8`), alors le paquet livre les tient.
+  - Etant donne le paquet livre et son Done pedagogique, quand on verifie le statut de
+    `MATRICE-couverture.md`, alors la ligne passe au plus de `non couvert` a `en cours`, jamais a
+    `couvert-valide`, sauf si l'arbitrage pedagogique prealable de `nadia-prof` sur `DEN-2`
+    (ci-dessus) dit explicitement le contraire.
+- **Ce que cette story ne fait pas** : elle ne sert pas le verbe *denombrer* et ne pretend pas le
+  servir. Elle ne construit aucune mecanique visuelle interactive (collection dessinee, groupee
+  par dix, sur laquelle l'enfant agit) : une telle mecanique n'existe pas dans le depot, sa
+  construction est un chantier d'architecture (nouvelle interaction, regles ArchUnit associees)
+  hors de portee d'un seul sprint et hors du mandat de cette story - si `nadia-prof` juge qu'elle
+  est neanmoins due pour lever `DEN-2`, la question est a router a `theo-archi` comme un chantier
+  distinct, pas a absorber ici.
+- **Lien decision** : `DEC-0092`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable (condition d'entree) ;
+  `theo-archi` ensuite ; affectation nominative du developpement par `sofia-sm` une fois l'avis
+  rendu (`DEC-0092`, section 5).
+
+### S39-LONGUEUR - Mesurer et comparer des longueurs avec une regle graduee ; centimetre et metre
+### (`MAT-CE1-09`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a comparer et mesurer des longueurs en
+  centimetres et en metres en jouant au bandit manchot, afin de savoir utiliser ces unites dans des
+  situations concretes.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Grandeurs et mesures" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-09`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 590.
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** : aucune borne de tirage (valeurs en cm, conversions cm/m) ni forme de
+  distracteur n'existe a cette echelle - question de meme famille que celles tranchees pour les
+  additions et soustractions CE1 (`ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-
+  100.md`, `DEC-0091`). Question supplementaire, propre a cette ligne : le verbe "mesurer... avec
+  une regle graduee" exige-t-il un rendu visuel d'une regle (palier 2, a l'image de "lire l'heure
+  sur une horloge", encore non couvert faute de ce rendu), ou la competence est-elle servable en
+  choix textuel pur (enonces numeriques de longueur, sans image de regle) ? Je ne tranche pas cette
+  question, `nadia-prof` le fait.
+- **Criteres d'acceptation** :
+  - Etant donne l'arbitrage pedagogique prealable de `nadia-prof`, quand il fixe la forme retenue
+    (choix textuel pur ou rendu visuel d'une regle graduee), alors le paquet livre respecte
+    exclusivement cette forme.
+  - Etant donne une manche generee, quand la question s'affiche, alors elle presente une longueur
+    exprimee en centimetres ou en metres, dans les bornes que l'arbitrage pedagogique prealable
+    fixe.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs plausibles fixes par ce meme arbitrage (par exemple
+    une confusion d'unite ou une lecture graduee erronee), jamais negatifs.
+  - Etant donne le champ `enonce` d'un item, s'il est distinct de l'expression elle-meme, quand il
+    s'affiche, alors il respecte `LON-CE1-1` et `LON-CE1-2`.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-09` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que les bornes, la forme et les distracteurs fixes par son propre arbitrage prealable sont
+    tenus.
+- **Ce que cette story ne fait pas** : elle ne fixe aucune borne de tirage ni aucune forme de
+  distracteur - reste entierement a `nadia-prof` ; elle ne tranche pas si un rendu visuel de regle
+  graduee est necessaire - question routee, pas presumee ; elle ne choisit pas le mecanisme
+  technique - reste a `theo-archi`. Si l'arbitrage exige un rendu visuel absent du depot, cette
+  story ne le construit pas : le motif est a nommer plutot qu'un critere intenable a ecrire.
+- **Lien decision** : `DEC-0092`, `DEC-0089`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable ; `theo-archi` ensuite ;
+  affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0092`, section
+  5).
+
+### S39-MONNAIE - Utiliser la monnaie : composer une somme en euros et en centimes, savoir ce qui
+### est rendu (`MAT-CE1-13`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a composer une somme en euros et en
+  centimes et a savoir ce qui doit m'etre rendu en jouant au bandit manchot, afin de progresser sur
+  l'usage de la monnaie au-dela de ce que je savais deja faire au CP.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Grandeurs et mesures" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-13`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 594.
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** : aucune borne de tirage (montants, pieces et billets utilises, presence de
+  centimes) ni forme de distracteur (par exemple une erreur de rendu par exces ou par defaut)
+  n'existe a cette echelle CE1, plus complexe que celle deja arbitree pour la ligne monnaie CP.
+  **Obstacle route a deux endroits sur un meme perimetre voisin, nomme comme tel** (amendement
+  s19, `squad/README.md` section 9) : la ligne monnaie CP (`MATRICE-couverture.md`, ligne 160,
+  `MON-1`/`MON-3`, mecanique item illustre palier 1, deja `couvert-valide`) est un precedent
+  proche par son theme, signale a `nadia-prof` pour eviter une redecouverte a vide - sans presumer
+  que la meme forme s'applique telle quelle, l'ajout du rendu de monnaie et des centimes etant
+  nouveau.
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee, quand la question s'affiche, alors elle presente une
+    composition de somme en euros et centimes ou un calcul de ce qui est rendu, dans les bornes que
+    l'arbitrage pedagogique prealable de `nadia-prof` fixe.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs plausibles fixes par ce meme arbitrage, jamais
+    negatifs.
+  - Etant donne l'arbitrage pedagogique prealable, quand il precise si et comment le precedent de
+    la ligne monnaie CP (`MON-1`/`MON-3`) s'applique a cette ligne, alors le paquet livre suit
+    exactement ce qui est fixe, pas une extrapolation de mon fait.
+  - Etant donne le champ `enonce` d'un item, s'il est distinct de l'expression elle-meme, quand il
+    s'affiche, alors il respecte `LON-CE1-1` et `LON-CE1-2`.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-13` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que les bornes, la forme et les distracteurs fixes par son propre arbitrage prealable sont
+    tenus.
+- **Ce que cette story ne fait pas** : elle ne fixe aucune borne ni forme de distracteur - reste
+  entierement a `nadia-prof` ; elle ne reutilise pas la forme retenue pour la monnaie CP sans
+  confirmation explicite de `nadia-prof` ; elle ne choisit pas le mecanisme technique - reste a
+  `theo-archi`.
+- **Lien decision** : `DEC-0092`, `DEC-0089`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable ; `theo-archi` ensuite ;
+  affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0092`, section
+  5).
+
+### S39-SOLIDES - Reconnaitre et nommer des solides usuels (cube, pave droit, boule, cylindre,
+### cone) (`MAT-CE1-16`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a reconnaitre et nommer des solides
+  usuels en jouant au bandit manchot, afin de savoir les distinguer dans la vie courante.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Espace et geometrie" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-16`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 597.
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** : question de forme, pas de tirage. Une discrimination visuelle voisine a deja
+  ete **refusee en entier** par `nadia-prof` sur ce depot : les figures planes CP, au motif que
+  *"la discrimination que la ligne demande [...] tient a une proportion, et les proportions d'un
+  glyphe sont celles de la police, pas du contenu"* (`MATRICE-couverture.md`, ligne 189).
+  Reconnaitre un cube d'un pave droit souleve potentiellement le meme risque de fond. Je ne
+  tranche pas si un choix textuel par description verbale (par exemple "un solide a six faces
+  carrees identiques") suffit, ou si un rendu visuel fiable est necessaire - `nadia-prof` le fait,
+  avant tout engagement de code.
+- **Criteres d'acceptation** :
+  - Etant donne l'arbitrage pedagogique prealable de `nadia-prof`, quand il fixe la forme retenue
+    (choix textuel par description, ou item illustre), alors le paquet livre respecte
+    exclusivement cette forme.
+  - Si la forme retenue est le choix textuel par description : etant donne un item, quand sa
+    description s'affiche, alors elle designe un seul des cinq solides du referentiel (cube, pave
+    droit, boule, cylindre, cone) sans jamais nommer ce solide dans la description elle-meme.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs plausibles fixes par l'arbitrage pedagogique
+    prealable (par exemple cube confondu avec pave droit, cylindre avec cone).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-16` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que chaque item designe sans ambiguite un seul solide et que les distracteurs fixes par son
+    arbitrage sont tenus.
+- **Ce que cette story ne fait pas** : elle ne decide pas seule si un rendu visuel est necessaire -
+  reste a `nadia-prof` ; elle ne choisit pas le mecanisme technique - reste a `theo-archi`. Si
+  l'arbitrage conclut qu'aucune forme fiable n'existe dans le depot actuel (meme motif que le
+  refus entier des figures planes CP), cette story ne pretend pas fermer la ligne malgre ce
+  constat.
+- **Lien decision** : `DEC-0092`, `DEC-0089`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable ; `theo-archi` ensuite ;
+  affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0092`, section
+  5).
+
+### S39-ENERGIE - Identifier des sources et des formes d'energie, et un exemple de conversion
+### (`SCI-CM1-04`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a identifier des sources et des formes
+  d'energie, et un exemple de conversion d'une forme a une autre, en jouant au bandit manchot, afin
+  de consolider mes connaissances en sciences.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Matiere,
+  mouvement, energie, information" - `squad/programme/sciences-et-technologie/competences-cm1.md`,
+  `SCI-CM1-04`. Ligne `non couvert`, `MATRICE-couverture.md` ligne 1974, deja notee "jouable au
+  choix textuel. Distracteurs naturels et plausibles, ce qui est rare."
+- **Aucun arbitrage pedagogique prealable route** : cette ligne porte deja, dans la matrice, une
+  caracterisation de contenu de connaissance fixe, jouable au choix textuel avec des distracteurs
+  naturellement plausibles - meme regime que les trois lignes sciences deja fermees sans arbitrage
+  prealable (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`, toutes `couvert-valide`). `theo-archi` peut
+  rendre son avis de faisabilite directement ; `nadia-prof` reste seule autorite sur le Done
+  pedagogique, une fois le contenu ecrit et joue.
+- **Criteres d'acceptation** :
+  - Etant donne un item portant sur une source d'energie (par exemple soleil, vent, eau,
+    electricite, charbon), quand il s'affiche, alors la source nommee et sa classification eventuelle
+    sont scientifiquement exactes pour le niveau CM1.
+  - Etant donne un item portant sur un exemple de conversion d'une forme d'energie a une autre (par
+    exemple eolienne : vent vers electricite), quand il s'affiche, alors l'exemple cite est un fait
+    scientifiquement etabli, sans simplification trompeuse.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres sources ou formes d'energie
+    reelles, jamais des elements sans rapport avec l'energie.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-04` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    l'exactitude scientifique de chaque item et la plausibilite de chaque distracteur, meme
+    protocole que pour `SCI-CM1-01`, `SCI-CM1-02` et `SCI-CM1-05`.
+- **Ce que cette story ne fait pas** : elle ne fixe aucun contenu factuel precis (quelles sources,
+  quels exemples de conversion retenir) - reste a l'auteur du paquet puis a l'audit de
+  `nadia-prof`, meme si aucun arbitrage prealable distinct n'est route en amont.
+- **Lien decision** : `DEC-0092`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
+  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0092`, section 5) ;
+  `nadia-prof` pour le Done pedagogique.
+
+### S39-OUTILS - Nommer quelques outils, supports et gestes du travail plastique (`ART-CP-11`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a nommer des outils, des supports et des
+  gestes du travail plastique (pinceau, craie, argile, esquisse) en jouant, afin de connaitre le
+  vocabulaire de l'art plastique.
+- **Competence programme visee** : arts plastiques, CP (cycle 2), domaine "Se reperer dans les
+  domaines lies aux arts plastiques" - `squad/programme/arts-plastiques/competences-cp.md`,
+  `ART-CP-11`. Ligne `non couvert`, `MATRICE-couverture.md` ligne 1629, deja notee "jouable au
+  choix textuel. Vocabulaire concret, court, du niveau du CP, exact et verifiable."
+- **Aucun arbitrage pedagogique prealable route** : cette ligne porte deja, dans la matrice, la
+  caracterisation la plus simple des six candidats - un vocabulaire concret et court, exact et
+  verifiable, sans tirage numerique ni discrimination visuelle. `theo-archi` peut rendre son avis
+  de faisabilite directement ; `nadia-prof` reste seule autorite sur le Done pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur un seul terme de vocabulaire (nom
+    d'un outil, d'un support ou d'un geste du travail plastique reel), avec une formulation exacte
+    et sans ambiguite sur la bonne reponse.
+  - Etant donne cet item, quand il touche a une couleur ou a un ressenti, alors il respecte `ART-1`
+    (aucune reponse portee par une couleur percue) et `ART-2` (aucune question sur ce que l'enfant
+    ressent) - conditions deja opposables sur cette matiere.
+  - Etant donne cette manche, quand les propositions s'affichent, alors les distracteurs sont
+    d'autres termes reels de vocabulaire du travail plastique, jamais des mots sans rapport avec la
+    matiere.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `ART-CP-11` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    l'exactitude et la verifiabilite de chaque terme et de chaque distracteur.
+- **Ce que cette story ne fait pas** : elle ne sert aucune des neuf lignes d'arts plastiques
+  bloquees par `ART-3`/`DEC-0075` (reproductions d'oeuvres) ; elle ne fixe aucun contenu factuel
+  precis - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0092`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
+  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0092`, section 5) ;
+  `nadia-prof` pour le Done pedagogique.
 
 
