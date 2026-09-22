@@ -1,0 +1,130 @@
+schema: 1
+id: ce1-solides
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Espace et géométrie"
+  competence: "Reconnaître et nommer des solides usuels"
+lignesDeReferentiel: ["MAT-CE1-16"]
+#
+# S39-SOLIDES (MAT-CE1-16). Reutilise le mecanisme "item illustre" d'ADR-0073, deja servi par
+# cp-figures-planes (s25) : meme convention de dessin (trait #1c2733 seul, 6 unites, sans
+# remplissage), seul le materiau change.
+#
+# SOL-CE1-1 a SOL-CE1-4 (nadia-prof, arbitrage prealable du 2026-09-22, section 4, amende le meme
+# jour sur la forme de la boule) : proportions declarees par le contenu (jamais un texte, jamais un
+# glyphe), au moins trois exemples par solide variant l'orientation et la taille, couleur jamais
+# discriminante, cube et pave droit jamais confondus (ecart de proportion >= 50 % en relatif,
+# contrainte-ines-solides-ce1.md, section 1.1), cylindre et cone jamais confondus (presence ou
+# absence de pointe), boule = cercle + ellipse d'equateur (jamais un cercle nu, derivation
+# d'ADR-0077).
+#
+# CON-1 a CON-5 (arbitrage du palier 1 visuel, reconduits) : l'enonce ne decrit ni la forme, ni la
+# position, ni la couleur du solide - la reponse est entierement dans le dessin. Le texte alternatif
+# est identique sur les quinze items et ne nomme aucun solide (CON-5). CON-6 : l'indice est choisi
+# d'apres le jeu de propositions de l'item, jamais d'apres sa bonne reponse - les dix indices de ce
+# paquet decrivent un critere partage par les trois solides proposes (faces plates ou surface
+# arrondie, presence ou absence de pointe), jamais le nom d'un solide.
+#
+# ADR-0032 : deux items ne presentent jamais le meme ecran (enonce + jeu de propositions). Avec cinq
+# solides, C(5,3) = 10 jeux de propositions possibles ; deux formulations d'enonce ("Quel est ce
+# solide ?" / "Comment s'appelle ce solide ?") portent les quinze items sans qu'aucun couple
+# (enonce, propositions) ne se repete.
+#
+# ADR-0098 : la sous-partie de MAT-CE1-16 est allouee dans SousPartieDeMathematiquesCe1
+# ("Reconnaître et nommer des solides usuels"), et ce paquet declare la ligne qu'elle sert.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable. Ce paquet entre a zero occurrence
+# detachable.
+items:
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-cube-a
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cube"
+    distracteurs: ["un pavé droit", "une boule"]
+    indice: "Regarde si le solide a des faces plates ou une surface arrondie."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-cube-b
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cube"
+    distracteurs: ["un cylindre", "un cône"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Comment s'appelle ce solide ?"
+    illustration: solide-cube-c
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cube"
+    distracteurs: ["un pavé droit", "un cylindre"]
+    indice: "Compare la forme des faces de chaque solide."
+  - enonce: "Comment s'appelle ce solide ?"
+    illustration: solide-pave-droit-a
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un pavé droit"
+    distracteurs: ["un cube", "une boule"]
+    indice: "Regarde si le solide a des faces plates ou une surface arrondie."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-pave-droit-b
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un pavé droit"
+    distracteurs: ["un cylindre", "un cône"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-pave-droit-c
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un pavé droit"
+    distracteurs: ["une boule", "un cône"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-boule-a
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "une boule"
+    distracteurs: ["un cube", "un cylindre"]
+    indice: "Regarde si le solide a des faces plates ou une surface arrondie."
+  - enonce: "Comment s'appelle ce solide ?"
+    illustration: solide-boule-b
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "une boule"
+    distracteurs: ["un pavé droit", "un cône"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-boule-c
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "une boule"
+    distracteurs: ["un cylindre", "un cône"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Comment s'appelle ce solide ?"
+    illustration: solide-cylindre-a
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cylindre"
+    distracteurs: ["un cube", "un cône"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-cylindre-b
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cylindre"
+    distracteurs: ["un pavé droit", "une boule"]
+    indice: "Regarde si le solide a des faces plates ou une surface arrondie."
+  - enonce: "Comment s'appelle ce solide ?"
+    illustration: solide-cylindre-c
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cylindre"
+    distracteurs: ["une boule", "un cône"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-cone-a
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cône"
+    distracteurs: ["un cube", "un pavé droit"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Comment s'appelle ce solide ?"
+    illustration: solide-cone-b
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cône"
+    distracteurs: ["un pavé droit", "un cylindre"]
+    indice: "Regarde si le solide a une pointe."
+  - enonce: "Quel est ce solide ?"
+    illustration: solide-cone-c
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "un cône"
+    distracteurs: ["un cube", "une boule"]
+    indice: "Regarde si le solide a une pointe."

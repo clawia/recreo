@@ -327,6 +327,10 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             Map.entry("cp-le-bon-son",
             "15 items sur 15 proposent des graphies de phonemes (\"on\", \"in\", \"an\") : deux"
                     + " distracteurs, aucune valeur numerique lisible"),
+            Map.entry("ce1-solides",
+            "15 items sur 15 proposent un nom de solide (\"un cube\", \"une boule\") : deux"
+                    + " distracteurs, aucune valeur numerique lisible. Mesure du 2026-09-22, sur le"
+                    + " paquet servi (S39-SOLIDES)"),
             // Motif nettoye le 2026-09-10 : sa premiere phrase portait encore le compte d'avant le
             // retrait de quatre items du 2026-08-20, que sa derniere phrase corrigeait deja. Un
             // motif dit l'etat du jour ; l'histoire du paquet vit dans git.

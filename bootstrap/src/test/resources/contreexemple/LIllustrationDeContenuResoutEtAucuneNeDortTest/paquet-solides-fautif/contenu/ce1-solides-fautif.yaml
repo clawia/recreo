@@ -1,0 +1,20 @@
+# Jeu fautif de la clause s39 (theo-archi, avis de faisabilite, section 12). Ce paquet n'est servi
+# par rien : il vit sous contreexemple/ et le recensement de production ne le voit pas. Une seule
+# faute : le dessin declare ne trace qu'une seule forme rendue - un cercle nu, donc un cercle, pas
+# une boule (derivation d'ADR-0077).
+schema: 1
+id: ce1-solides-fautif
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Espace et géométrie"
+  competence: "Reconnaître et nommer des solides usuels"
+lignesDeReferentiel: ["MAT-CE1-16"]
+items:
+  - enonce: "Quel est ce solide ?"
+    illustration: "boule-fautive"
+    illustrationTexteAlternatif: "Un solide à reconnaître."
+    bonneReponse: "une boule"
+    distracteurs: ["un cube", "un cylindre"]
+    indice: "Regarde si le solide a des faces plates ou une surface arrondie."

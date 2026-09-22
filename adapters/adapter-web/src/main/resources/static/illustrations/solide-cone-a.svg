@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Cone : ellipse de base et deux generatrices convergeant vers une pointe.
+     SOL-CE1-4 : la pointe visible distingue le cone du cylindre. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <ellipse cx="50" cy="80" rx="30" ry="10" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <line x1="50" y1="15" x2="20" y2="80" stroke="#1c2733" stroke-width="6"/>
+  <line x1="50" y1="15" x2="80" y2="80" stroke="#1c2733" stroke-width="6"/>
+</svg>

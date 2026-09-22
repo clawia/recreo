@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Boule, cercle plus ellipse d'equateur (amendement de nadia-prof du 2026-09-22,
+     ARBITRAGE-PREALABLE-s39, section "Amendement" de la section 4) : un cercle nu serait un cercle,
+     pas une boule (derivation d'ADR-0077). Rayon vertical de l'ellipse environ un tiers du rayon
+     horizontal (ines-design, contrainte-ines-solides-ce1.md, section 2). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <circle cx="50" cy="50" r="38" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <ellipse cx="50" cy="50" rx="38" ry="13" fill="none" stroke="#1c2733" stroke-width="6"/>
+</svg>

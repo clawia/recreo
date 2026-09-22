@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Pave droit, projection cavaliere. SOL-CE1-4 : rapport hauteur/largeur de la boite
+     englobante distinct de celui du cube d'au moins 50 % en relatif (contrainte-ines-solides-ce1.md,
+     section 1.1) - ici 1,54 contre 1,0 pour solide-cube-a, soit 54 % de difference relative. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <path d="M37 82 L63 82 L63 34 L37 34 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M37 34 L63 34 L78 19 L52 19 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M63 82 L63 34 L78 19 L78 67 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+</svg>

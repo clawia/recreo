@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Pave droit, projection cavaliere miroir, plus allonge. SOL-CE1-4 : rapport
+     hauteur/largeur de 2,0 contre 1,0 pour le cube, 100 % de difference relative. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <path d="M45 80 L65 80 L65 26 L45 26 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M45 26 L65 26 L51 12 L31 12 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M45 80 L45 26 L31 12 L31 66 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+</svg>

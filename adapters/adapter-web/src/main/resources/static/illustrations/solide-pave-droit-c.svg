@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Pave droit, projection cavaliere, taille reduite. SOL-CE1-4 : rapport
+     hauteur/largeur de 1,67 contre 1,0 pour le cube, 67 % de difference relative. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <path d="M30 88 L48 88 L48 50 L30 50 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M30 50 L48 50 L60 38 L42 38 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M48 88 L48 50 L60 38 L60 76 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+</svg>

@@ -492,3 +492,21 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-arts-outils
     nombreDeManches: 10
+  - id: bandit-manchot-nombres-jusqu-a-100-cp
+    titre: "Les nombres jusqu'à 100"
+    consigne: "Lis le nombre, écris-le, ou trouve ses dizaines et ses unités."
+    mecanique: bandit-manchot
+    paquet: cp-nombres-jusqu-a-100
+    nombreDeManches: 10
+  - id: bandit-manchot-longueurs-ce1
+    titre: "Les longueurs"
+    consigne: "Compare les longueurs, ou convertis-les en centimètres et en mètres."
+    mecanique: bandit-manchot
+    paquet: ce1-longueurs
+    nombreDeManches: 10
+  - id: bandit-manchot-solides-ce1
+    titre: "Les solides"
+    consigne: "Regarde bien le dessin, puis choisis son nom."
+    mecanique: bandit-manchot
+    paquet: ce1-solides
+    nombreDeManches: 10

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Cone, plus large et plus court. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <ellipse cx="50" cy="78" rx="34" ry="11" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <line x1="50" y1="30" x2="16" y2="78" stroke="#1c2733" stroke-width="6"/>
+  <line x1="50" y1="30" x2="84" y2="78" stroke="#1c2733" stroke-width="6"/>
+</svg>

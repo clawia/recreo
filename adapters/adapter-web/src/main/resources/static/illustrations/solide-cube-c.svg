@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Cube, projection cavaliere, taille reduite. SOL-CE1-2 : variation de taille par
+     rapport a solide-cube-a et solide-cube-b. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <path d="M15 85 L45 85 L45 55 L15 55 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M15 55 L45 55 L59 41 L29 41 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M45 85 L45 55 L59 41 L59 71 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+</svg>

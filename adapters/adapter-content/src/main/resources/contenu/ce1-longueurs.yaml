@@ -1,0 +1,94 @@
+schema: 1
+id: ce1-longueurs
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Mesurer et comparer des longueurs en centimètres et en mètres"
+lignesDeReferentiel: ["MAT-CE1-09"]
+#
+# S39-LONGUEUR (MAT-CE1-09). Arbitrage prealable de nadia-prof du 2026-09-22
+# (squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md, section 2, amendee le
+# meme jour) : le verbe "mesurer... avec une regle graduee" exige un rendu visuel absent du depot et
+# n'est pas servi ici. Seuls "comparer des longueurs" et "utiliser le centimetre et le metre" le
+# sont, par du texte seul - la ligne reste "en cours" dans la matrice, jamais "couvert-valide", tant
+# que ce rendu n'existe pas.
+#
+# MES-CE1-1 : les longueurs tirees restent entre 1 cm et 500 cm (5 m), sur des objets ou distances
+# plausibles pour un enfant de CE1 (crayon, table, salle de classe, couloir).
+# MES-CE1-2 : les conversions cm/m ne portent que sur des cas simples ou le nombre de metres est
+# entier (1 m = 100 cm) - jamais de millimetre ni de fraction de centimetre.
+# MES-CE1-3 (version amendee du 2026-09-22, apres l'avis de faisabilite de theo-archi sur la
+# collision avec ADR-0041) : les distracteurs de conversion sont une erreur de facteur (diviser ou
+# multiplier par 10, par 1 - pas de conversion du tout -, ou par un facteur autre que 100), toutes
+# les propositions d'un meme item exprimees dans la meme unite que la bonne reponse - jamais une
+# proposition dans une unite differente des deux autres, jamais une longueur negative ni absurde.
+#
+# ADR-0098 : la sous-partie de MAT-CE1-09 est allouee dans SousPartieDeMathematiquesCe1 ("Mesurer et
+# comparer des longueurs en centimètres et en mètres"), et ce paquet declare la ligne qu'elle sert.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable. Ce paquet entre a zero occurrence
+# detachable.
+items:
+  # "Utiliser le centimetre et le metre" : conversions exactes (MES-CE1-2), distracteurs de facteur
+  # (MES-CE1-3), une seule unite par item.
+  - enonce: "100 cm, combien de m ?"
+    bonneReponse: "1 m"
+    distracteurs: ["10 m", "100 m"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "300 cm, combien de m ?"
+    bonneReponse: "3 m"
+    distracteurs: ["30 m", "300 m"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "2 m, combien de cm ?"
+    bonneReponse: "200 cm"
+    distracteurs: ["20 cm", "2 cm"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "4 m, combien de cm ?"
+    bonneReponse: "400 cm"
+    distracteurs: ["40 cm", "4 cm"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "500 cm, combien de m ?"
+    bonneReponse: "5 m"
+    distracteurs: ["50 m", "500 m"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "1 m, combien de cm ?"
+    bonneReponse: "100 cm"
+    distracteurs: ["10 cm", "1 cm"]
+    indice: "1 m, c'est 100 cm."
+  - enonce: "200 cm, combien de m ?"
+    bonneReponse: "2 m"
+    distracteurs: ["20 m", "200 m"]
+    indice: "1 m, c'est 100 cm."
+  # "Comparer des longueurs" : trois longueurs d'objets plausibles, une seule unite par item
+  # (MES-CE1-1). La question posee varie (plus longue, plus courte, ni l'une ni l'autre) pour que le
+  # rang de la bonne reponse ne soit pas toujours le meme.
+  - enonce: "Un crayon mesure 18 cm, une trousse mesure 24 cm, une gomme mesure 5 cm. Quelle est la plus longue ?"
+    bonneReponse: "24 cm"
+    distracteurs: ["18 cm", "5 cm"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Une table mesure 120 cm, une chaise mesure 45 cm, une porte mesure 200 cm. Quelle est la plus longue ?"
+    bonneReponse: "200 cm"
+    distracteurs: ["120 cm", "45 cm"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Un stylo mesure 15 cm, une règle mesure 30 cm, une gomme mesure 5 cm. Quelle est la plus courte ?"
+    bonneReponse: "5 cm"
+    distracteurs: ["15 cm", "30 cm"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Une salle de classe mesure 5 m, un couloir mesure 4 m, une armoire mesure 2 m. Quelle est la plus courte ?"
+    bonneReponse: "2 m"
+    distracteurs: ["5 m", "4 m"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Un cahier mesure 24 cm, un classeur mesure 32 cm, une carte postale mesure 10 cm. Quelle longueur n'est ni la plus grande ni la plus petite ?"
+    bonneReponse: "24 cm"
+    distracteurs: ["32 cm", "10 cm"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Un tableau mesure 2 m, une porte mesure 3 m, une fenêtre mesure 1 m. Quelle longueur n'est ni la plus grande ni la plus petite ?"
+    bonneReponse: "2 m"
+    distracteurs: ["3 m", "1 m"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Un crayon mesure 12 cm, une ardoise mesure 28 cm, une règle mesure 20 cm. Quelle longueur n'est ni la plus grande ni la plus petite ?"
+    bonneReponse: "20 cm"
+    distracteurs: ["12 cm", "28 cm"]
+    indice: "Compare bien les trois nombres avant de répondre."

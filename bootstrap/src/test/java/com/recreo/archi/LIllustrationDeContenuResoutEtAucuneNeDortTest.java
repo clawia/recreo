@@ -134,8 +134,12 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * (QLM-CP-11), premiere livraison reelle de cette ligne, declare six items, et
      * {@code ZoneADesigner} rend l'illustration obligatoire sur chacun - les six items s'ajoutent
      * tous.</p>
+     *
+     * <p><b>41 vers 56, lea-dev, s39, S39-SOLIDES</b> : {@code ce1-solides} (MAT-CE1-16) declare
+     * quinze items de type {@code question}, chacun avec une illustration - les quinze items
+     * s'ajoutent tous.</p>
      */
-    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 41;
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 56;
 
     /**
      * <b>24 vers 26, lea-dev, s34, S33-PAL2-1</b> : les deux dessins du premier paquet de
@@ -143,8 +147,11 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      *
      * <p><b>26 vers 27, lea-dev, s35, S35-QLM11-PLANCLASSE</b> : {@code plan-classe.svg}, seul
      * dessin du second paquet de designation servi ({@code cp-plan-de-la-classe}).</p>
+     *
+     * <p><b>27 vers 42, lea-dev, s39, S39-SOLIDES</b> : les quinze dessins {@code solide-*.svg}
+     * (cube, pave droit, boule, cylindre, cone, trois exemples chacun).</p>
      */
-    private static final int FICHIERS_D_ILLUSTRATION = 27;
+    private static final int FICHIERS_D_ILLUSTRATION = 42;
 
     private static String lire(Path fichier) {
         try {
@@ -234,6 +241,150 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      */
     record IllustrationDeclaree(String paquet, String identifiant, String texteAlternatif,
                                  String premiereCle) {
+    }
+
+    /**
+     * SOL-CE1-1 et SOL-CE1-4 (nadia-prof, arbitrage prealable du 2026-09-22, section 4) : un solide
+     * n'est pas une figure plane. La derivation d'ADR-0077 - un dessin qui ne trace qu'une seule
+     * forme rendue <b>est</b> cette forme - dit qu'une boule livree en cercle nu est un cercle, et
+     * qu'un cube livre en carre nu est un carre. Aucune autre clause du depot ne le voit : ni
+     * {@link #verifier}, dont les quatre clauses portent sur la resolution de l'identifiant et non
+     * sur le trace du dessin, ni {@code PaquetCpFiguresPlanesTest}, qui ne lit que le YAML.
+     *
+     * <p><b>Le perimetre est derive, jamais enumere</b> (ADR-0013 obligation 1) : {@link
+     * #LIGNE_DES_SOLIDES} est un code de ligne du referentiel, deja alloue et deja lu par
+     * {@code ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest} (ADR-0081) - jamais un nom
+     * de paquet, jamais un prefixe de nom de fichier, les deux qu'ADR-0077 interdit.
+     *
+     * <p><b>Ou elle vit, et pourquoi pas ailleurs</b> (theo-archi, avis de faisabilite s39, section
+     * 12) : ici, le seul module qui voie a la fois les paquets de contenu et les fichiers de
+     * dessin. {@code adapter-content} ne voit pas les SVG (ressources d'{@code adapter-web}) ;
+     * {@code adapter-web} voit les dessins mais ne depend pas d'{@code adapter-content} (sens des
+     * dependances). Le compteur de formes ({@link #formesRendues}) est donc duplique depuis
+     * {@code ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest}
+     * (adapter-web) - environ vingt lignes dupliquees valent mieux qu'un {@code test-jar} entre
+     * modules pour un seul appelant.
+     */
+    private static final String LIGNE_DES_SOLIDES = "MAT-CE1-16";
+
+    /** Un dessin declare par un paquet qui sert {@link #LIGNE_DES_SOLIDES}, avec le paquet qui le porte. */
+    record IllustrationDeclareeParLigne(String paquet, String identifiant) {
+    }
+
+    /**
+     * FIG-4, la meme population que celle d'{@code adapter-web} : les sept elements de forme du
+     * langage SVG, plus {@code use} qui en instancie un.
+     */
+    private static final List<String> FORMES_SVG =
+            List.of("circle", "ellipse", "line", "path", "polygon", "polyline", "rect", "use");
+
+    private static final String DEBUT_DE_DEFINITIONS = "<defs";
+
+    private static final String FIN_DE_DEFINITIONS = "</defs>";
+
+    private static final String DEBUT_DE_COMMENTAIRE = "<!--";
+
+    private static final String FIN_DE_COMMENTAIRE = "-->";
+
+    /** Ce qui est enleve entre deux marques, autant de fois qu'il y a d'occurrences. */
+    private static String sansLesBlocs(String source, String debut, String fin) {
+        StringBuilder reste = new StringBuilder(source);
+        int ouverture;
+        while ((ouverture = reste.indexOf(debut)) >= 0) {
+            int fermeture = reste.indexOf(fin, ouverture);
+            if (fermeture < 0) {
+                return reste.substring(0, ouverture);
+            }
+            reste.delete(ouverture, fermeture + fin.length());
+        }
+        return reste.toString();
+    }
+
+    /**
+     * Le nombre de formes qu'un dessin <b>rend</b>, meme derivation que dans
+     * {@code ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest} :
+     * definitions et commentaires retires d'abord, puis les elements de {@link #FORMES_SVG},
+     * reconnus seulement suivis d'un blanc, d'une barre oblique ou d'un chevron fermant.
+     */
+    static int formesRendues(String source) {
+        if (source == null) {
+            return 0;
+        }
+        String rendu = sansLesBlocs(
+                sansLesBlocs(source, DEBUT_DE_DEFINITIONS, FIN_DE_DEFINITIONS),
+                DEBUT_DE_COMMENTAIRE, FIN_DE_COMMENTAIRE);
+        int comptees = 0;
+        for (String forme : FORMES_SVG) {
+            String marque = "<" + forme;
+            int position = 0;
+            while ((position = rendu.indexOf(marque, position)) >= 0) {
+                int apres = position + marque.length();
+                if (apres < rendu.length() && (Character.isWhitespace(rendu.charAt(apres))
+                        || rendu.charAt(apres) == '/' || rendu.charAt(apres) == '>')) {
+                    comptees++;
+                }
+                position = apres;
+            }
+        }
+        return comptees;
+    }
+
+    /**
+     * Le recensement des illustrations declarees par les seuls paquets qui servent {@code ligne}
+     * dans {@code lignesDeReferentiel} (ADR-0081) - jamais par nom de paquet.
+     */
+    static List<IllustrationDeclareeParLigne> illustrationsDeclareesParLesPaquetsQuiServent(
+            String ligne, List<Path> repertoiresDeContenu) {
+        List<IllustrationDeclareeParLigne> declarees = new ArrayList<>();
+        for (Path repertoire : repertoiresDeContenu) {
+            try (Stream<Path> arborescence = Files.walk(repertoire)) {
+                List<Path> paquets = arborescence.filter(Files::isRegularFile)
+                        .filter(fichier -> fichier.getFileName().toString().endsWith(".yaml"))
+                        .sorted().toList();
+                for (Path paquet : paquets) {
+                    ajouterSiLaLigneEstServie(paquet, ligne, declarees);
+                }
+            } catch (IOException echec) {
+                throw new UncheckedIOException(echec);
+            }
+        }
+        return declarees;
+    }
+
+    private static void ajouterSiLaLigneEstServie(Path paquet, String ligne,
+            List<IllustrationDeclareeParLigne> declarees) {
+        if (!(new Yaml().load(lire(paquet)) instanceof Map<?, ?> corps)
+                || !(corps.get("lignesDeReferentiel") instanceof List<?> lignes)
+                || lignes.stream().noneMatch(candidate -> ligne.equals(String.valueOf(candidate)))
+                || !(corps.get("items") instanceof List<?> items)) {
+            return;
+        }
+        String nom = paquet.getFileName().toString();
+        for (Object item : items) {
+            if (item instanceof Map<?, ?> champs
+                    && champs.get(CLE_ILLUSTRATION) instanceof String identifiant) {
+                declarees.add(new IllustrationDeclareeParLigne(nom, identifiant));
+            }
+        }
+    }
+
+    /**
+     * Le juge, pur : mordu sur du materiau reel mute en memoire (morsure ci-dessous) et sur le jeu
+     * fautif commite, jamais sur une fixture inventee.
+     */
+    static List<String> dessinsQuiNeTracentPasDeSolide(List<IllustrationDeclareeParLigne> declarees,
+            Map<String, String> dessins) {
+        List<String> fautes = new ArrayList<>();
+        for (IllustrationDeclareeParLigne declaree : declarees) {
+            int formes = formesRendues(dessins.get(declaree.identifiant()));
+            if (formes < 2) {
+                fautes.add(declaree.identifiant() + " (" + declaree.paquet() + ") : " + formes
+                        + " forme rendue. Un dessin d'une seule forme EST cette forme (ADR-0077) :"
+                        + " une boule livree en cercle nu est un cercle, et la ligne demande de"
+                        + " reconnaitre un solide (SOL-CE1-1, SOL-CE1-4)");
+            }
+        }
+        return fautes;
     }
 
     /**
@@ -544,5 +695,78 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         assertThatThrownBy(() -> verifier(List.of(), Map.of(), Map.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ADR-0051");
+    }
+
+    /**
+     * S39-SOLIDES (theo-archi, avis de faisabilite, section 12) : sur les quinze dessins reellement
+     * servis par {@code ce1-solides}, aucun ne trace une seule forme.
+     */
+    @Test
+    void chaqueDessinQuiSertUnSolideTraceUneProjectionEtNonUneFigurePlane() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        List<IllustrationDeclareeParLigne> declarees = illustrationsDeclareesParLesPaquetsQuiServent(
+                LIGNE_DES_SOLIDES,
+                AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu(racine));
+        Map<String, String> dessins = fichiersIndexesParNomDeBase(repertoires(racine, ILLUSTRATIONS_DE_CONTENU));
+
+        assertThat(dessinsQuiNeTracentPasDeSolide(declarees, dessins)).isEmpty();
+    }
+
+    /**
+     * Non-vacuite (ADR-0051) : le recensement atteint bien les quinze items de {@code ce1-solides}.
+     * Sans cette assertion, la morsure ci-dessus pourrait etre verte sur une population que le
+     * recensement n'a jamais trouvee.
+     */
+    @Test
+    void leRecensementTrouveLesQuinzeDessinsDeLaLigneDesSolides() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        assertThat(illustrationsDeclareesParLesPaquetsQuiServent(LIGNE_DES_SOLIDES,
+                AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu(racine)))
+                .hasSize(15);
+    }
+
+    /**
+     * Mise a l'epreuve sur du materiau reel mute en memoire, pas sur une fixture : un des quinze
+     * dessins servis est remplace par un cercle nu, et le garde-fou doit le nommer. Verifie que la
+     * clause rougit reellement avant de la considerer faite (routage de sofia-sm).
+     */
+    @Test
+    void unDessinDeSolideMuteEnCercleNuFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        List<IllustrationDeclareeParLigne> declarees = illustrationsDeclareesParLesPaquetsQuiServent(
+                LIGNE_DES_SOLIDES,
+                AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu(racine));
+        Map<String, String> dessins = new LinkedHashMap<>(
+                fichiersIndexesParNomDeBase(repertoires(racine, ILLUSTRATIONS_DE_CONTENU)));
+        String identifiant = declarees.get(0).identifiant();
+        dessins.put(identifiant,
+                "<svg xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"50\" cy=\"50\" r=\"40\""
+                        + " fill=\"none\" stroke=\"#1c2733\" stroke-width=\"6\"/></svg>");
+
+        assertThat(dessinsQuiNeTracentPasDeSolide(declarees, dessins))
+                .as("un cercle nu ne trace qu'une seule forme rendue, la clause doit le nommer")
+                .anyMatch(faute -> faute.contains(identifiant));
+    }
+
+    /**
+     * ADR-0013 obligation 3 : le jeu fautif commite, sur disque, pas en memoire. Traverse la lecture
+     * disque et le balayage du repertoire de contenu - preuve que le recensement lit
+     * {@code lignesDeReferentiel} et resout les dessins d'un jeu qui n'est pas celui de production.
+     */
+    @Test
+    void leJeuFautifDeLaLigneDesSolidesEstRefuse() {
+        Path jeuFautif = CONTRE_EXEMPLE.resolve("paquet-solides-fautif");
+        List<IllustrationDeclareeParLigne> declarees = illustrationsDeclareesParLesPaquetsQuiServent(
+                LIGNE_DES_SOLIDES, List.of(jeuFautif.resolve("contenu")));
+        Map<String, String> dessins = fichiersIndexesParNomDeBase(
+                List.of(jeuFautif.resolve("static/illustrations")));
+
+        assertThat(declarees)
+                .as("ADR-0051 : ce jeu fautif ne prouve rien si le recensement n'y lit aucune"
+                        + " declaration sur la ligne des solides")
+                .hasSize(1);
+
+        assertThat(dessinsQuiNeTracentPasDeSolide(declarees, dessins))
+                .anyMatch(faute -> faute.contains("boule-fautive"));
     }
 }

@@ -260,6 +260,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S39-OUTILS (s39) : entree neuve, premiere ligne d'arts plastiques du produit
             // (ART-CP-11).
             "bandit-manchot-outils-arts-cp",
+            // S39-DEN (s39) : entree neuve, DEN-1 a DEN-8, ligne MAT-CP-01 plafonnee "en cours"
+            // (DEN-2 non servi).
+            "bandit-manchot-nombres-jusqu-a-100-cp",
+            // S39-LONGUEUR (s39) : entree neuve, sous-partie textuelle de MAT-CE1-09 (ADR-0098),
+            // ligne plafonnee "en cours" (pas de rendu de regle graduee).
+            "bandit-manchot-longueurs-ce1",
+            // S39-SOLIDES (s39) : entree neuve, MAT-CE1-16, sous-partie allouee par ADR-0098.
+            "bandit-manchot-solides-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -413,6 +421,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La monnaie et le rendu",
             // S39-OUTILS (s39) : titre neuf.
             "Les outils, supports et gestes",
+            // S39-DEN (s39) : titre neuf.
+            "Les nombres jusqu'à 100",
+            // S39-LONGUEUR (s39) : titre neuf.
+            "Les longueurs",
+            // S39-SOLIDES (s39) : titre neuf.
+            "Les solides",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -591,6 +605,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Dis quel outil, quel support ou quel geste convient.",
             // S38-MOITIES (s38) : consigne neuve.
             "Quelle est la moitié ?",
+            // S39-DEN (s39) : consigne neuve.
+            "Lis le nombre, écris-le, ou trouve ses dizaines et ses unités.",
+            // S39-LONGUEUR (s39) : consigne neuve.
+            "Compare les longueurs, ou convertis-les en centimètres et en mètres.",
+            // S39-SOLIDES (s39) : consigne reprise de "Regarde bien le dessin, puis choisis son
+            // nom." (bandit-manchot-figures-planes-cp), deja dans cet inventaire, aucune entree
+            // neuve.
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -904,7 +925,18 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S39-OUTILS (s39) : competence neuve, copiee conforme du referentiel de nadia-prof
             // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-11).
             "Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, "
-                    + "argile, esquisse).");
+                    + "argile, esquisse).",
+            // S39-DEN (s39) : competence neuve, libelle du referentiel (squad/programme/
+            // mathematiques/competences-cp.md, MAT-CP-01). Couverture partielle nommee (DEN-2) :
+            // le paquet ne sert pas "dénombrer".
+            "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 100",
+            // S39-LONGUEUR (s39) : competence neuve, sous-partie allouee dans
+            // SousPartieDeMathematiquesCe1 (ADR-0098). Couverture partielle nommee : le paquet ne
+            // sert pas "mesurer avec une règle graduée".
+            "Mesurer et comparer des longueurs en centimètres et en mètres",
+            // S39-SOLIDES (s39) : competence neuve, sous-partie allouee dans
+            // SousPartieDeMathematiquesCe1 (ADR-0098).
+            "Reconnaître et nommer des solides usuels");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

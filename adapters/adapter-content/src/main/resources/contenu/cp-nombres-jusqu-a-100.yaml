@@ -1,0 +1,128 @@
+schema: 1
+id: cp-nombres-jusqu-a-100
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 100"
+lignesDeReferentiel: ["MAT-CP-01"]
+#
+# S39-DEN (MAT-CP-01). Arbitrage prealable de nadia-prof du 2026-08-24
+# (squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md, section 1.2),
+# reconduit le 2026-08-30 et confirme non negociable le 2026-09-22
+# (squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md, section 1) : DEN-2
+# interdit a cette ligne de passer couvert-valide par la seule mecanique textuelle - le verbe
+# "denombrer" n'est pas servi ici, aucune collection dessinee n'existe dans ce paquet. Seuls
+# "lire", "ecrire" et "decomposer" le sont, sous DEN-1 a DEN-8.
+#
+# DEN-5 : le mot "decompose"/"decomposer" n'apparait nulle part dans ce que l'enfant lit (enonce,
+# consigne du catalogue) - la consigne et les enonces demandent "combien de dizaines", "combien
+# d'unites", jamais le mot de maitre.
+#
+# GN-1/GN-2 (reconduits de l'arbitrage de s12) : dans le sens chiffres vers lettres ("lire"), les
+# distracteurs se distinguent de la bonne reponse par la valeur qu'ils designent, jamais par
+# l'orthographe des mots-nombres. Dans le sens lettres vers chiffres ("ecrire"), la designation
+# litterale est ecrite sans faute et de facon constante dans tout le paquet (traits d'union de la
+# convention classique, "et" sur 21/31/41/51/61/71 seulement).
+#
+# DEN-6 : au moins un tiers des items porte sur un nombre entre 60 et 99, en position de bonne
+# reponse - tenu sur 11 items sur 21.
+# DEN-7 : au moins un nombre entre 11 et 16 en bonne reponse ("quinze", "quatorze") et au moins un
+# multiple de dix ecrit sans unite ("soixante", "quatre-vingts").
+# DEN-4 : au moins la moitie des items de decomposition emploie le vocabulaire dizaines/unites -
+# quatre des sept items de decomposition (les trois autres completent une addition a trou).
+# DEN-8 : les trois propositions d'un meme item ont le meme nombre de chiffres (items "ecrire" et
+# de decomposition) ou une longueur litterale comparable a un mot pres (items "lire").
+#
+# TYP-1 (ADR-0067) : l'espace qui precede ":" et "?" est insecable. Ce paquet entre a zero
+# occurrence detachable.
+items:
+  # Verbe "lire" (ecriture chiffree donnee, designation litterale a trouver)
+  - enonce: "Lis ce nombre : 72."
+    bonneReponse: "soixante-douze"
+    distracteurs: ["soixante-deux", "quatre-vingt-douze"]
+    indice: "Sépare la dizaine de l'unité, puis choisis le bon mot."
+  - enonce: "Lis ce nombre : 91."
+    bonneReponse: "quatre-vingt-onze"
+    distracteurs: ["quatre-vingt-un", "soixante-onze"]
+    indice: "Repère si le nombre est du côté des soixante ou des quatre-vingts."
+  - enonce: "Lis ce nombre : 15."
+    bonneReponse: "quinze"
+    distracteurs: ["seize", "treize"]
+    indice: "Les nombres de onze à seize ont chacun leur propre mot."
+  - enonce: "Lis ce nombre : 60."
+    bonneReponse: "soixante"
+    distracteurs: ["quarante", "cinquante"]
+    indice: "C'est un compte rond de dizaines."
+  - enonce: "Lis ce nombre : 80."
+    bonneReponse: "quatre-vingts"
+    distracteurs: ["quatre-vingt-dix", "soixante-dix"]
+    indice: "C'est un compte rond de dizaines, du côté des quatre-vingts."
+  - enonce: "Lis ce nombre : 38."
+    bonneReponse: "trente-huit"
+    distracteurs: ["quarante-huit", "vingt-huit"]
+    indice: "Repère d'abord la dizaine, puis l'unité."
+  - enonce: "Lis ce nombre : 100."
+    bonneReponse: "cent"
+    distracteurs: ["dix", "quatre-vingts"]
+    indice: "C'est le plus grand nombre de ce jeu."
+  # Verbe "ecrire" (designation litterale donnee, ecriture chiffree a trouver)
+  - enonce: "Écris en chiffres : quarante-sept."
+    bonneReponse: "47"
+    distracteurs: ["63", "89"]
+    indice: "Repère la dizaine du mot, puis ajoute l'unité."
+  - enonce: "Écris en chiffres : quatre-vingt-douze."
+    bonneReponse: "92"
+    distracteurs: ["43", "58"]
+    indice: "Ce nombre commence par quatre-vingt."
+  - enonce: "Écris en chiffres : cinquante-cinq."
+    bonneReponse: "55"
+    distracteurs: ["34", "78"]
+    indice: "La dizaine et l'unité se ressemblent ici."
+  - enonce: "Écris en chiffres : soixante-et-onze."
+    bonneReponse: "71"
+    distracteurs: ["26", "49"]
+    indice: "Ce nombre commence par soixante."
+  - enonce: "Écris en chiffres : quatorze."
+    bonneReponse: "14"
+    distracteurs: ["38", "90"]
+    indice: "Ce nombre s'écrit avec un seul mot."
+  - enonce: "Écris en chiffres : soixante."
+    bonneReponse: "60"
+    distracteurs: ["24", "95"]
+    indice: "C'est un compte rond de dizaines."
+  - enonce: "Écris en chiffres : quatre-vingt-trois."
+    bonneReponse: "83"
+    distracteurs: ["61", "99"]
+    indice: "Ce nombre commence par quatre-vingt."
+  # Verbe "decomposer" (jamais nomme a l'enfant - DEN-5), en dizaines et unites (DEN-4)
+  - enonce: "47, combien de dizaines ?"
+    bonneReponse: "4 dizaines"
+    distracteurs: ["7 dizaines", "14 dizaines"]
+    indice: "Le premier chiffre du nombre donne la réponse."
+  - enonce: "83, combien de dizaines ?"
+    bonneReponse: "8 dizaines"
+    distracteurs: ["3 dizaines", "5 dizaines"]
+    indice: "Le premier chiffre du nombre donne la réponse."
+  - enonce: "12, combien d'unités ?"
+    bonneReponse: "2 unités"
+    distracteurs: ["7 unités", "9 unités"]
+    indice: "Le second chiffre du nombre donne la réponse."
+  - enonce: "76, combien d'unités ?"
+    bonneReponse: "6 unités"
+    distracteurs: ["2 unités", "9 unités"]
+    indice: "Le second chiffre du nombre donne la réponse."
+  # Verbe "decomposer", forme addition a trou (DEN-4, l'autre moitie)
+  - enonce: "58 = 50 + ?"
+    bonneReponse: "8"
+    distracteurs: ["3", "6"]
+    indice: "Regarde le chiffre des unités."
+  - enonce: "91 = 90 + ?"
+    bonneReponse: "1"
+    distracteurs: ["4", "7"]
+    indice: "Regarde le chiffre des unités."
+  - enonce: "24 = 20 + ?"
+    bonneReponse: "4"
+    distracteurs: ["2", "9"]
+    indice: "Regarde le chiffre des unités."
