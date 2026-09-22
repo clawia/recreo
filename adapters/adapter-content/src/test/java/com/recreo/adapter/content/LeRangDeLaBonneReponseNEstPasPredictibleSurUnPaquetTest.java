@@ -772,7 +772,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " lumière\"...) ou des transformations en texte libre (\"le vent en énergie"
                     + " électrique\"...), valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-09-22 sur le paquet servi : aucune des 36 propositions ne"
-                    + " commence par un chiffre"));
+                    + " commence par un chiffre"),
+            // S39-OUTILS : paquet neuf d'arts plastiques CP, premiere ligne de cette matiere
+            // (ART-CP-11).
+            Map.entry("cp-arts-outils",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des noms d'outils (\"le pinceau\", \"la"
+                    + " craie\"...), de supports (\"le carton\", \"l'argile\"...) ou de gestes"
+                    + " (\"l'esquisse\", \"le modelage\"...) du travail plastique, valeurDe rend null"
+                    + " sur les trois propositions de chaque item. Mesure du 2026-09-22 sur le paquet"
+                    + " servi : aucune des 36 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

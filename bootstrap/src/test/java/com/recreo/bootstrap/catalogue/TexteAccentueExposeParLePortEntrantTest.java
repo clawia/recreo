@@ -257,6 +257,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S39-MONNAIE (s39) : entree neuve, troisieme paquet de mathematiques CE1
             // (MAT-CE1-13, sous-partie "monnaie", ADR-0098).
             "bandit-manchot-monnaie-ce1",
+            // S39-OUTILS (s39) : entree neuve, premiere ligne d'arts plastiques du produit
+            // (ART-CP-11).
+            "bandit-manchot-outils-arts-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -408,6 +411,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (CP, item illustre) pour ne pas dupliquer un libelle de bouton entre deux jeux
             // differents ; il ne porte pas son niveau (ADR-0078).
             "La monnaie et le rendu",
+            // S39-OUTILS (s39) : titre neuf.
+            "Les outils, supports et gestes",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -582,6 +587,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S39-MONNAIE (s39) : consigne neuve, generique - designe les deux taches (composer
             // une somme, trouver un rendu) sans nommer aucun montant d'aucun item.
             "Compte la somme, ou trouve ce qui est rendu.",
+            // S39-OUTILS (s39) : consigne neuve.
+            "Dis quel outil, quel support ou quel geste convient.",
             // S38-MOITIES (s38) : consigne neuve.
             "Quelle est la moitié ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
@@ -607,6 +614,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Sciences et technologie",
             // S32-5 : matiere neuve, premier lot d'education physique et sportive.
             "Éducation physique et sportive",
+            // S39-OUTILS (s39) : matiere neuve, treizieme matiere du corpus servi.
+            "Arts plastiques",
             // niveau (descripteur) : "CP" et "CM1" sont exemptes ci-dessus, "CE1" entre ici.
             // S37-1 (s37) : troisieme niveau du produit. Il n'a pas plus de lettre
             // accentuable que les deux autres, mais l'exemption enumeree qui les couvre est
@@ -666,6 +675,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Se situer dans le temps",
             // S35-QLM11-PLANCLASSE (s35) : domaine neuf, second lot de designation.
             "Se situer dans l'espace",
+            // S39-OUTILS (s39) : domaine neuf, premiere ligne d'arts plastiques du produit
+            // (copie conforme du referentiel de nadia-prof,
+            // squad/programme/arts-plastiques/competences-cp.md).
+            "Se repérer dans les domaines liés aux arts plastiques",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
@@ -887,7 +900,11 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "quartier.",
             // S39-MONNAIE (s39) : competence neuve, MAT-CE1-13 sous-partie "monnaie" (ADR-0098,
             // SousPartieDeMathematiquesCe1.MONNAIE).
-            "Utiliser la monnaie en euros et en centimes");
+            "Utiliser la monnaie en euros et en centimes",
+            // S39-OUTILS (s39) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-11).
+            "Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, "
+                    + "argile, esquisse).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

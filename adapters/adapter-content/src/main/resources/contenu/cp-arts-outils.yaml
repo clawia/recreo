@@ -1,0 +1,81 @@
+# ART-CP-11, "Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie,
+# argile, esquisse)." (S39-OUTILS). Avis de faisabilite de s39 de theo-archi, section 4 :
+# treizieme matiere du corpus servi, premiere ligne d'arts plastiques. Aucun ADR neuf, mecanisme
+# identique a tout paquet statique de type "question" deja servi.
+#
+# Referentiel (squad/programme/arts-plastiques/competences-cp.md, ligne 11, jugement de
+# faisabilite du 2026-09-03) : "vocabulaire concret, court, du niveau du CP, exact et verifiable",
+# exemples donnes par nadia-prof elle-meme - "À quoi sert un pinceau ?", "Avec quoi modèle-t-on ?".
+#
+# Douze items, repartis en trois familles fermees de quatre termes chacune (meme regime que le
+# classement a categories fermees de cp-emc-formules-de-politesse, FAB-1) : outils (pinceau, craie,
+# ciseaux, rouleau - items 1 a 4), supports (carton, argile, papier, mur - items 5 a 8), gestes
+# (esquisse, modelage, collage, découpage - items 9 a 12). Les quatre termes de la parenthese du
+# referentiel (pinceau, craie, argile, esquisse) sont chacun servis en bonne reponse.
+#
+# ART-1 : aucune reponse portee par une couleur percue - aucun item ne nomme ni ne montre une
+# couleur.
+#
+# ART-2 : aucune question sur le ressenti - chaque item porte sur une connaissance verifiable
+# (quel outil, quel support, quel geste), jamais sur ce qu'un enfant aime ou trouve reussi.
+#
+# ADR-0089 (LON-1, LON-2) : chaque enonce est une phrase unique de neuf a onze mots, terminee par
+# le point d'interrogation - largement sous le plafond de quinze mots et deux phrases.
+schema: 1
+id: cp-arts-outils
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CP"
+  domaine: "Se repérer dans les domaines liés aux arts plastiques"
+  competence: "Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, argile, esquisse)."
+lignesDeReferentiel: ["ART-CP-11"]
+items:
+  - enonce: "Avec quel outil peint-on sur une feuille ?"
+    bonneReponse: "le pinceau"
+    distracteurs: ["les ciseaux", "l'éponge"]
+    indice: "Cet outil a un manche et des poils doux à son extrémité."
+  - enonce: "Avec quel outil dessine-t-on sur un tableau noir ?"
+    bonneReponse: "la craie"
+    distracteurs: ["le pinceau", "les ciseaux"]
+    indice: "Ce petit bâton blanc laisse une trace sur une surface sombre."
+  - enonce: "Avec quel outil découpe-t-on une feuille de papier ?"
+    bonneReponse: "les ciseaux"
+    distracteurs: ["le pinceau", "la craie"]
+    indice: "Cet outil a deux lames qui se croisent."
+  - enonce: "Avec quel outil étale-t-on une grande quantité de peinture ?"
+    bonneReponse: "le rouleau"
+    distracteurs: ["les ciseaux", "la craie"]
+    indice: "Cet outil avance sur la feuille pour couvrir une grande surface."
+  - enonce: "Sur quel support colle-t-on des morceaux de papier découpés ?"
+    bonneReponse: "le carton"
+    distracteurs: ["l'argile", "la craie"]
+    indice: "Ce support est plus épais et plus rigide qu'une simple feuille."
+  - enonce: "Avec quel support modèle-t-on une petite sculpture avec les mains ?"
+    bonneReponse: "l'argile"
+    distracteurs: ["le carton", "le papier"]
+    indice: "Cette matière est molle et prend la forme que les mains lui donnent."
+  - enonce: "Sur quel support dessine-t-on le plus souvent en classe ?"
+    bonneReponse: "le papier"
+    distracteurs: ["l'argile", "le carton"]
+    indice: "Ce support est fin, léger et souvent blanc."
+  - enonce: "Sur quel support peint-on une grande fresque ?"
+    bonneReponse: "le mur"
+    distracteurs: ["l'argile", "le papier"]
+    indice: "Ce support est vertical et fait partie d'une pièce ou d'un couloir."
+  - enonce: "Quel geste fait-on avant de peindre pour préparer le dessin final ?"
+    bonneReponse: "l'esquisse"
+    distracteurs: ["le découpage", "le modelage"]
+    indice: "Ce geste trace rapidement les grandes lignes, avant les détails."
+  - enonce: "Quel geste fait-on pour donner une forme à un morceau d'argile ?"
+    bonneReponse: "le modelage"
+    distracteurs: ["le découpage", "le collage"]
+    indice: "Ce geste façonne une matière molle avec les mains."
+  - enonce: "Quel geste fait-on pour assembler deux morceaux de papier ?"
+    bonneReponse: "le collage"
+    distracteurs: ["le modelage", "l'esquisse"]
+    indice: "Ce geste unit deux morceaux de papier avec un produit gluant."
+  - enonce: "Quel geste fait-on pour séparer une feuille en plusieurs morceaux ?"
+    bonneReponse: "le découpage"
+    distracteurs: ["le collage", "l'esquisse"]
+    indice: "Ce geste utilise des ciseaux pour obtenir plusieurs morceaux."

@@ -486,3 +486,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-monnaie
     nombreDeManches: 10
+  - id: bandit-manchot-outils-arts-cp
+    titre: "Les outils, supports et gestes"
+    consigne: "Dis quel outil, quel support ou quel geste convient."
+    mecanique: bandit-manchot
+    paquet: cp-arts-outils
+    nombreDeManches: 10
