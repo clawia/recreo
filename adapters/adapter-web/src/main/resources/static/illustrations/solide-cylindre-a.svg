@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Cylindre : deux ellipses (dessus, dessous) et deux generatrices verticales.
+     ines-design, contrainte-ines-solides-ce1.md, section 1.2 : pas de tirete sur l'arete cachee, la
+     boucle refermee en trait plein suffit a lire "cylindre" sans marquer une arete "cachee". -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <ellipse cx="50" cy="25" rx="30" ry="10" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <ellipse cx="50" cy="75" rx="30" ry="10" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <line x1="20" y1="25" x2="20" y2="75" stroke="#1c2733" stroke-width="6"/>
+  <line x1="80" y1="25" x2="80" y2="75" stroke="#1c2733" stroke-width="6"/>
+</svg>

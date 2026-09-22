@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Cube, projection cavaliere (face avant + face du dessus + face de droite).
+     SOL-CE1-1 : face avant carree, aretes visiblement egales. Trois formes rendues (theo-archi,
+     avis s39 section 12) : le solide n'est jamais une figure plane nue. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <path d="M20 80 L60 80 L60 40 L20 40 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M20 40 L60 40 L78 22 L38 22 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M60 80 L60 40 L78 22 L78 60 Z" fill="none" stroke="#1c2733" stroke-width="6" stroke-linejoin="round"/>
+</svg>

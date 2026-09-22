@@ -319,9 +319,14 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       {@code armoire} et {@code porte} agrandis. Il ne devient pas le plus gros dessin du
      *       repertoire : {@code frise-journee-ecole.svg} le reste (voir
      *       {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
+     *   <li><b>42 336 vers 51 307</b>, lea-dev, s39, {@code S39-SOLIDES} : quinze dessins neufs sous
+     *       {@code solide-*.svg} (cube, pave droit, boule, cylindre, cone, trois exemples chacun),
+     *       8 971 octets fins de ligne normalisees en LF, mesure exacte sur l'arbre du lot. Aucun ne
+     *       devient le plus gros dessin du repertoire : {@code frise-journee-ecole.svg} le reste
+     *       (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 42336;
+    private static final int POIDS_TOTAL_MAXIMUM = 51307;
 
     /**
      * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour

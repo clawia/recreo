@@ -486,3 +486,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-longueurs
     nombreDeManches: 10
+  - id: bandit-manchot-solides-ce1
+    titre: "Les solides"
+    consigne: "Regarde bien le dessin, puis choisis son nom."
+    mecanique: bandit-manchot
+    paquet: ce1-solides
+    nombreDeManches: 10

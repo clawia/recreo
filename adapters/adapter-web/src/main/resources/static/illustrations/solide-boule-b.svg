@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S39-SOLIDES. Boule, taille reduite (nadia-prof, 2026-08-31, reconduit pour la boule : "la
+     taille est la seule transformation qui laisse un cercle invariant"). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="176" height="176" role="img">
+  <circle cx="50" cy="52" r="30" fill="none" stroke="#1c2733" stroke-width="6"/>
+  <ellipse cx="50" cy="52" rx="30" ry="10" fill="none" stroke="#1c2733" stroke-width="6"/>
+</svg>
