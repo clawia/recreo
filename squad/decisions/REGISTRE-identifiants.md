@@ -13,7 +13,7 @@ la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui dem
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `657` identifiants alloues, `105` prefixes distincts.
+**Compte courant, verifie par la CI** : `659` identifiants alloues, `105` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -32,6 +32,27 @@ de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. La 
 fusion, comme il l'avait ecrit, et la reparation est arithmetique - aucune allocation ajoutee, aucune
 retiree, aucun sens touche. Les deux notes des instances restent verbatim sous cette ligne : leur
 chiffre est date, le mien est courant.*
+
+**Note de `nadia-prof`, s37, le 2026-09-22, et elle commence par ma propre faute.** Deux
+identifiants ajoutes - `ADD-CE1-R1` et `ADD-CE1-R2`, les deux reserves de mon audit du paquet
+d'additions de CE1, tous deux ecrits dans
+`squad/conformite/FICHE-bandit-manchot-additions-ce1.md`. **Je les ai d'abord ecrits dans la fiche
+sans les allouer ici, et `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` a rougi sur mon
+propre diff avant que je ne pousse quoi que ce soit.** C'est exactement le geste que `CLAUDE.md`
+nomme depuis s31 - lancer la commande de la CI sur son propre diff avant de commiter - et c'est
+pour l'avoir fait que la faute a coute une minute au lieu d'un sprint. Je l'ecris plutot que de
+corriger en silence : `PAR-5` mord, et il a mordu la personne qui detient la porte pedagogique.
+**Aucun prefixe neuf** : `ADD` etait deja alloue par mes deux clauses de la veille, verifie avant
+allocation. Les deux identifiants portent **trois segments**, la forme que j'avais du contourner a
+s32 et que la clause D d'`ADR-0088` autorise depuis le 2026-09-08 ; ils s'alignent ainsi sur
+`ADD-CE1-1` et `ADD-CE1-2` plutot que de nommer des reserves de CE1 sans dire le niveau. Ligne
+d'etat courant portee de **657 / 105 a 659 / 105**. Methode : comptage des lignes de la table de la
+section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre accents
+graves, `ADR-0085` clause 5), prefixe pris comme **premier segment**. Sur mon worktree dedie a la
+base `9412f659` **avant** mon diff : 657 identifiants distincts, 105 prefixes distincts, 0 doublon,
+ce qui confirme la ligne d'etat courant que le fichier declarait. **Ce total est juste sur mon
+worktree seul** et faux des qu'une instance voisine alloue de son cote : c'est la limite
+structurelle de `PAR-5`, et la CI la tranche a la fusion.
 
 **Note de `nadia-prof`, s37, le 2026-09-21.** Deux identifiants ajoutes - `ADD-CE1-1` (plafond
 d'operande nul au CE1) et `ADD-CE1-2` (table de repartition par forme a `sommeMaximale = 100`),
@@ -565,6 +586,8 @@ clause 2 par une exemption.
 | `ACC-2` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `ADD-CE1-1` | `squad/conformite/ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md` |
 | `ADD-CE1-2` | `squad/conformite/ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md` |
+| `ADD-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-additions-ce1.md` |
+| `ADD-CE1-R2` | `squad/conformite/FICHE-bandit-manchot-additions-ce1.md` |
 | `AGN-1` | `squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-cm1.md` |
 | `AGN-2` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
 | `AGN-3` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |

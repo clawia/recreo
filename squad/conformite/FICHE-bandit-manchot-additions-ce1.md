@@ -7,7 +7,7 @@
   consigne servie *"Combien ca fait ?"*, `nombreDeManches: 10`.
 - **Ligne declaree** : `MAT-CE1-03`, sous-partie *"additions dans la limite de 100"*.
 - **Statut global** : **VALIDE SOUS RESERVE**. Done pedagogique **prononce le 2026-09-22** par
-  `nadia-prof`, **apres avoir joue le jar servi**. Deux reserves nommees, `ADD-R1` et `ADD-R2`,
+  `nadia-prof`, **apres avoir joue le jar servi**. Deux reserves nommees, `ADD-CE1-R1` et `ADD-CE1-R2`,
   **non bloquantes**.
 - **Mouvement de ligne autorise** : `MAT-CE1-03` passe de `non couvert` a **`en cours`**, et **pas
   au-dela**. Motif en section 8. Le mouvement est ecrit par `camille-po`, pas par moi.
@@ -63,7 +63,7 @@ bonne reponse. Cette forme **interdit l'elimination par ordre de grandeur** et o
 exact : c'est une qualite, pas un defaut, et c'est la structure du paquet de CP deja servie et
 validee. Les trois exceptions (`27 + 15`, `36 + 28`, `59 + 23`) portent en distracteur **la retenue
 oubliee** (`32`, `54`, `72`), qui est l'erreur classique du niveau : ce sont les trois meilleurs
-items du paquet. Voir `ADD-R2` pour le quatrieme de cette famille, qui ne la porte pas.
+items du paquet. Voir `ADD-CE1-R2` pour le quatrieme de cette famille, qui ne la porte pas.
 
 ## 3. Ancrage au programme - point 6.1, celui dont je restais la seule garde
 
@@ -139,7 +139,7 @@ apres coup.
 
 ## 7. Les deux reserves
 
-### 7.1 `ADD-R1` - l'indice des cinq items *"ajout d'un nombre rond"* s'arrete une etape trop tot
+### 7.1 `ADD-CE1-R1` - l'indice des cinq items *"ajout d'un nombre rond"* s'arrete une etape trop tot
 
 **Ouverte le 2026-09-22. Non bloquante.** C'est le seul defaut de cet increment, et il est dans le
 seul endroit qu'aucun garde-fou du depot ne lit : l'indice.
@@ -183,7 +183,7 @@ suivant est **la bonne reponse**. L'expression *"les dizaines de 47"* disparait 
 demandait a un enfant de CE1 de traduire seul *"les dizaines de 47"* en **40** et non en **4**,
 ce qui est un second obstacle dans un texte cense en lever un.
 
-### 7.2 `ADD-R2` - `48 + 26` est le seul item avec retenue qui ne porte pas la retenue oubliee
+### 7.2 `ADD-CE1-R2` - `48 + 26` est le seul item avec retenue qui ne porte pas la retenue oubliee
 
 **Ouverte le 2026-09-22. Non bloquante.** Un seul nombre a changer.
 
@@ -226,7 +226,7 @@ qui est desormais couvert :
 | **`ADD-CE1-1`** (plafond d'operande nul) | **plus moi seule.** `ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest` l'execute |
 | **`ADD-CE1-2`** (les huit bandes) | **plus moi seule.** Meme test. J'ai relu son `formeDe` ligne a ligne : c'est la traduction litterale de ma section 4.3, **ordre de priorite compris**, et sa population est derivee et non enumeree. J'ai compte les huit bandes moi-meme **avant** de l'ouvrir, et nos deux comptages concordent |
 | **Que le paquet serve `MAT-CE1-03` et non `MAT-CE1-04`** | **moi seule.** Aucun automate ne lit une declaration de ligne pour en juger la verite. Verifie ce jour, section 3 |
-| **Que l'indice aide** | **moi seule, et c'est precisement la que le seul defaut de cet increment se trouve.** Aucun garde-fou du depot ne lit un indice, ni ne le confronte aux propositions de son item. `ADD-R1` et `ADD-R2` ont toutes deux ete trouvees en jouant, sur une porte technique verte |
+| **Que l'indice aide** | **moi seule, et c'est precisement la que le seul defaut de cet increment se trouve.** Aucun garde-fou du depot ne lit un indice, ni ne le confronte aux propositions de son item. `ADD-CE1-R1` et `ADD-CE1-R2` ont toutes deux ete trouvees en jouant, sur une porte technique verte |
 | **L'ordre des manches dans une partie** | **moi seule.** La table est une distribution, elle ne dit rien de l'ordre. Regarde ce jour sur 40 parties : les sept formes ouvrent des parties, aucune ne domine l'entree. **Rien n'est ouvert la-dessus** |
 | **L'exactitude des 32 enonces et la plausibilite des distracteurs** | **moi**, mais recalculable par quiconque - et recalculee ce jour, section 2 |
 
@@ -261,9 +261,9 @@ qui est desormais couvert :
 > `MAT-CE1-03` et non sur `MAT-CE1-04` (25 % de doubles et complements, 12,5 % de forme 8), et la
 > composition reelle de 40 parties.
 >
-> **Les deux reserves, non bloquantes** : `ADD-R1` - les cinq indices *"ajout d'un nombre rond"*
+> **Les deux reserves, non bloquantes** : `ADD-CE1-R1` - les cinq indices *"ajout d'un nombre rond"*
 > s'arretent avant les unites et produisent, appliques a la lettre, un nombre absent des
-> propositions ; texte de remplacement donne en 7.1. `ADD-R2` - `48 + 26` ne porte pas la retenue
+> propositions ; texte de remplacement donne en 7.1. `ADD-CE1-R2` - `48 + 26` ne porte pas la retenue
 > oubliee en distracteur, contrairement a ses trois freres ; valeur donnee en 7.2.
 >
 > **`MAT-CE1-03` : `non couvert` -> `en cours`**, jamais `couvert-valide` avec ce seul paquet. Le
