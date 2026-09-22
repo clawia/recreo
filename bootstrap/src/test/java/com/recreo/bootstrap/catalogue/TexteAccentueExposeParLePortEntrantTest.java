@@ -245,6 +245,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S38-COMPLEMENTS-DIZAINE (s38) : entree neuve, complements a la dizaine pris pour
             // eux-memes (MAT-CE1-03).
             "bandit-manchot-complements-dizaine-ce1",
+            // S38-MOITIES (s38) : entree neuve, moities (MAT-CE1-03).
+            "bandit-manchot-moities-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -384,6 +386,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les grandes additions",
             // S38-COMPLEMENTS-DIZAINE (s38) : titre neuf.
             "Le compte jusqu'à la dizaine",
+            // S38-MOITIES (s38) : titre neuf.
+            "La moitié",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -552,6 +556,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Montre l'endroit qu'on te décrit.",
             // S38-COMPLEMENTS-DIZAINE (s38) : consigne neuve.
             "Quel nombre manque ?",
+            // S38-MOITIES (s38) : consigne neuve.
+            "Quelle est la moitié ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -641,6 +647,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S38-COMPLEMENTS-DIZAINE (s38) : competence neuve, MAT-CE1-03 sous-partie
             // "complements a la dizaine" (ADR-0097, SousPartieDeMathematiquesCe1).
             "Calcul mental - compléments à la dizaine",
+            // S38-MOITIES (s38) : competence neuve, MAT-CE1-03 sous-partie "moities" (ADR-0097,
+            // SousPartieDeMathematiquesCe1).
+            "Calcul mental - moitiés dans la limite de 100",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
             "Calcul mental - soustractions dans la limite de 10",
             "Comparer deux nombres entiers jusqu'à 100 (<, >, =)",

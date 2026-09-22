@@ -1,0 +1,24 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, MOI-CE1-1).
+# Le premier item porte n = 7, un entier impair : MOI-CE1-1 exige un entier pair.
+schema: 1
+id: paquet-moities-fautif
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - moitiés dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "Moitié de 7 = ?"
+    bonneReponse: "3"
+    distracteurs: ["4", "2"]
+    indice: "Cherche un nombre proche de 7."
+  - enonce: "Moitié de 8 = ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "2"]
+    indice: "8, c est 4 et 4."
+  - enonce: "Moitié de 12 = ?"
+    bonneReponse: "6"
+    distracteurs: ["7", "5"]
+    indice: "12, c est 6 et 6."

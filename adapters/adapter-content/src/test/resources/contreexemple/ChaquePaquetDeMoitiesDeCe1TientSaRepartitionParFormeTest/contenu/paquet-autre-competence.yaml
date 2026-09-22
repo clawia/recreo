@@ -1,0 +1,21 @@
+# JEU FAUTIF, JAMAIS SERVI. Ce paquet n est pas fautif : il est de CE1, de mathematiques, mais
+# declare une autre competence (additions). Il prouve que le perimetre derive de la competence
+# declaree et pas du seul niveau ou de la seule matiere.
+schema: 1
+id: paquet-autre-competence
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - additions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "45 + 12 = ?"
+    bonneReponse: "57"
+    distracteurs: ["56", "58"]
+    indice: "Ajoute d abord les dizaines."
+  - enonce: "23 + 34 = ?"
+    bonneReponse: "57"
+    distracteurs: ["56", "58"]
+    indice: "Ajoute d abord les dizaines."

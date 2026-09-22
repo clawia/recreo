@@ -1,0 +1,110 @@
+# MAT-CE1-03, sous-partie "moities" (S38-MOITIES).
+# 21 items, n pair, 0 % de cas degenere (n = 0, MOI-CE1-1 : au plus 5 %, sans plancher, donc 0 %
+# est conforme). Repartition par forme (MOI-CE1-2) : 9 items de repertoire de base (2 a 20,
+# 42,9 %, bande 30-50 %), 5 items de nombre rond (30 a 100, 23,8 %, bande 15-30 %), 7 items de
+# deux chiffres general (22 a 98 pair hors multiples de dix, 33,3 %, bande 15-35 %).
+# Distracteurs (arbitrage de nadia-prof du 2026-09-22, section 3.4) : le double, la moitie plus
+# un, la moitie moins un. Avec seulement ces trois formules, la bonne reponse ne peut jamais etre
+# la plus grande des trois propositions (le double la depasse toujours) : pour que le rang de la
+# bonne reponse ne soit pas predictible sur le paquet (LeRangDeLaBonneReponseNEstPasPredictibleSur
+# UnPaquetTest), un tiers des items associe la moitie moins un a la moitie moins deux (au lieu du
+# double), qui reste une erreur de decompte identifiable - la meme famille que celle deja retenue
+# pour les complements a la dizaine - et rend la bonne reponse la plus grande des trois. Les deux
+# autres tiers utilisent le double avec la moitie plus un (bonne reponse la plus petite) ou la
+# moitie plus un avec la moitie moins un (bonne reponse intermediaire). Sept items par rang sur
+# les vingt et un, soit 33,3 % chacun : au-dessus du plancher de 10 %, loin du plafond de
+# majorite a 50 %.
+schema: 1
+id: ce1-moities
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - moitiés dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "Moitié de 2 = ?"
+    bonneReponse: "1"
+    distracteurs: ["4", "2"]
+    indice: "2, c'est 1 et 1."
+  - enonce: "Moitié de 4 = ?"
+    bonneReponse: "2"
+    distracteurs: ["8", "3"]
+    indice: "4, c'est 2 et 2."
+  - enonce: "Moitié de 6 = ?"
+    bonneReponse: "3"
+    distracteurs: ["4", "2"]
+    indice: "6, c'est 3 et 3."
+  - enonce: "Moitié de 8 = ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "2"]
+    indice: "8, c'est 4 et 4."
+  - enonce: "Moitié de 10 = ?"
+    bonneReponse: "5"
+    distracteurs: ["20", "6"]
+    indice: "10, c'est 5 et 5."
+  - enonce: "Moitié de 12 = ?"
+    bonneReponse: "6"
+    distracteurs: ["7", "5"]
+    indice: "12, c'est 6 et 6."
+  - enonce: "Moitié de 14 = ?"
+    bonneReponse: "7"
+    distracteurs: ["6", "5"]
+    indice: "14, c'est 7 et 7."
+  - enonce: "Moitié de 16 = ?"
+    bonneReponse: "8"
+    distracteurs: ["32", "9"]
+    indice: "16, c'est 8 et 8."
+  - enonce: "Moitié de 18 = ?"
+    bonneReponse: "9"
+    distracteurs: ["8", "7"]
+    indice: "18, c'est 9 et 9."
+  - enonce: "Moitié de 30 = ?"
+    bonneReponse: "15"
+    distracteurs: ["16", "14"]
+    indice: "30, c'est 3 dizaines : la moitié est 15."
+  - enonce: "Moitié de 40 = ?"
+    bonneReponse: "20"
+    distracteurs: ["19", "18"]
+    indice: "40, c'est 4 dizaines : la moitié est 2 dizaines, donc 20."
+  - enonce: "Moitié de 60 = ?"
+    bonneReponse: "30"
+    distracteurs: ["31", "29"]
+    indice: "60, c'est 6 dizaines : la moitié est 3 dizaines, donc 30."
+  - enonce: "Moitié de 80 = ?"
+    bonneReponse: "40"
+    distracteurs: ["39", "38"]
+    indice: "80, c'est 8 dizaines : la moitié est 4 dizaines, donc 40."
+  - enonce: "Moitié de 100 = ?"
+    bonneReponse: "50"
+    distracteurs: ["200", "51"]
+    indice: "100, c'est 10 dizaines : la moitié est 5 dizaines, donc 50."
+  - enonce: "Moitié de 22 = ?"
+    bonneReponse: "11"
+    distracteurs: ["44", "12"]
+    indice: "22, c'est 20 et 2 : la moitié de 20 est 10, la moitié de 2 est 1, donc 11."
+  - enonce: "Moitié de 26 = ?"
+    bonneReponse: "13"
+    distracteurs: ["14", "12"]
+    indice: "26, c'est 20 et 6 : la moitié de 20 est 10, la moitié de 6 est 3, donc 13."
+  - enonce: "Moitié de 34 = ?"
+    bonneReponse: "17"
+    distracteurs: ["16", "15"]
+    indice: "34, c'est 30 et 4 : la moitié de 30 est 15, la moitié de 4 est 2, donc 17."
+  - enonce: "Moitié de 46 = ?"
+    bonneReponse: "23"
+    distracteurs: ["24", "22"]
+    indice: "46, c'est 40 et 6 : la moitié de 40 est 20, la moitié de 6 est 3, donc 23."
+  - enonce: "Moitié de 58 = ?"
+    bonneReponse: "29"
+    distracteurs: ["116", "30"]
+    indice: "58, c'est 50 et 8 : la moitié de 50 est 25, la moitié de 8 est 4, donc 29."
+  - enonce: "Moitié de 74 = ?"
+    bonneReponse: "37"
+    distracteurs: ["36", "35"]
+    indice: "74, c'est 70 et 4 : la moitié de 70 est 35, la moitié de 4 est 2, donc 37."
+  - enonce: "Moitié de 86 = ?"
+    bonneReponse: "43"
+    distracteurs: ["44", "42"]
+    indice: "86, c'est 80 et 6 : la moitié de 80 est 40, la moitié de 6 est 3, donc 43."

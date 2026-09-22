@@ -462,3 +462,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-complements-dizaine
     nombreDeManches: 10
+  - id: bandit-manchot-moities-ce1
+    titre: "La moitié"
+    consigne: "Quelle est la moitié ?"
+    mecanique: bandit-manchot
+    paquet: ce1-moities
+    nombreDeManches: 10

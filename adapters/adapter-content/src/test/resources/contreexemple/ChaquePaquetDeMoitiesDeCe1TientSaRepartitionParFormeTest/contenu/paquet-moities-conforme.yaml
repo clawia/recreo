@@ -1,0 +1,54 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, MOI-CE1-1, MOI-CE1-2).
+# Ce paquet n a pas de defaut : quatre items de repertoire (40 %), trois de nombre rond (30 %),
+# trois de deux chiffres general (30 %). Il est ici pour que le jeu fautif prouve que la regle
+# DISCRIMINE.
+schema: 1
+id: paquet-moities-conforme
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - moitiés dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "Moitié de 4 = ?"
+    bonneReponse: "2"
+    distracteurs: ["8", "3"]
+    indice: "4, c est 2 et 2."
+  - enonce: "Moitié de 8 = ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "2"]
+    indice: "8, c est 4 et 4."
+  - enonce: "Moitié de 12 = ?"
+    bonneReponse: "6"
+    distracteurs: ["7", "5"]
+    indice: "12, c est 6 et 6."
+  - enonce: "Moitié de 16 = ?"
+    bonneReponse: "8"
+    distracteurs: ["32", "9"]
+    indice: "16, c est 8 et 8."
+  - enonce: "Moitié de 30 = ?"
+    bonneReponse: "15"
+    distracteurs: ["16", "14"]
+    indice: "30, c est 3 dizaines."
+  - enonce: "Moitié de 50 = ?"
+    bonneReponse: "25"
+    distracteurs: ["26", "24"]
+    indice: "50, c est 5 dizaines."
+  - enonce: "Moitié de 80 = ?"
+    bonneReponse: "40"
+    distracteurs: ["39", "38"]
+    indice: "80, c est 8 dizaines."
+  - enonce: "Moitié de 24 = ?"
+    bonneReponse: "12"
+    distracteurs: ["48", "13"]
+    indice: "24, c est 20 et 4."
+  - enonce: "Moitié de 38 = ?"
+    bonneReponse: "19"
+    distracteurs: ["20", "18"]
+    indice: "38, c est 30 et 8."
+  - enonce: "Moitié de 66 = ?"
+    bonneReponse: "33"
+    distracteurs: ["34", "32"]
+    indice: "66, c est 60 et 6."

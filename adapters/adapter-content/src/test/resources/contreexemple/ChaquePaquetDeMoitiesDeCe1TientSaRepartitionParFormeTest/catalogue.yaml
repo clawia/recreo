@@ -1,0 +1,21 @@
+# JEU FAUTIF, JAMAIS SERVI. Trois entrees de CE1, une seule dont le paquet est fautif.
+schema: 1
+jeux:
+  - id: bandit-manchot-paquet-moities-conforme
+    titre: "La moitie rangee"
+    consigne: "Quel est le resultat ?"
+    mecanique: bandit-manchot
+    paquet: paquet-moities-conforme
+    nombreDeManches: 5
+  - id: bandit-manchot-paquet-moities-fautif
+    titre: "La moitie penchee"
+    consigne: "Quel est le resultat ?"
+    mecanique: bandit-manchot
+    paquet: paquet-moities-fautif
+    nombreDeManches: 5
+  - id: bandit-manchot-paquet-autre-competence-moities
+    titre: "Les additions rangees"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-autre-competence
+    nombreDeManches: 5
