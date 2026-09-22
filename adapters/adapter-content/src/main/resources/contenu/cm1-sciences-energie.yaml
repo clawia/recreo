@@ -1,0 +1,86 @@
+# SCI-CM1-04, "Identifier des sources et des formes d'énergie, et un exemple de conversion d'une
+# forme a une autre." (S39-ENERGIE). Avis de faisabilite de s39 de theo-archi, section 3 : meme
+# regime que les paquets de sciences CM1 deja fermes (SCI-CM1-01, SCI-CM1-02, SCI-CM1-05,
+# SCI-CM1-17), paquet statique de type "question", aucun ADR neuf.
+#
+# Conditions pedagogiques opposables (arbitrage prealable de nadia-prof, s30,
+# ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md,
+# ligne 4 du tableau section 2.2, et section 6, refus 3) :
+#
+# FER-1 (3 elements du libelle exiges en bonne reponse d'au moins un item) : une source (le vent,
+# le soleil, l'eau, le charbon - items 1 a 4), une forme (de la chaleur, de la lumiere - items 5 et
+# 6), une conversion (des exemples "X en energie Y" - items 7 a 12).
+#
+# FER-3 (deux taches distinctes, la moins servie au moins 3 items) : tache "source ou forme" (dire
+# la source ou la forme d'energie d'un objet decrit, six items) et tache "transformation" (dire ce
+# qu'un objet transforme et en quelle forme, six items).
+#
+# FER-2 : douze items, superieur au plancher de dix.
+#
+# Refus 3 de nadia-prof (section 6) tenu explicitement : aucun item ne demande si l'electricite est
+# une source ou une forme d'energie - la distinction n'est pas tranchable sur cet exemple au cycle
+# 3. L'electricite n'apparait ici que comme resultat d'une transformation (items 7 a 9) ou comme
+# source d'une transformation inverse (items 10 a 12), jamais comme bonne reponse a une question
+# "source ou forme ?".
+#
+# SCI-3 (exactitude scientifique, pas de simplification trompeuse) : chaque conversion est
+# rattachee a un objet reel qui la realise ("un panneau solaire transforme..."), jamais a une
+# formule raccourcie du type "le soleil produit de l'electricite" qu'aucun objet ne mediatiserait.
+schema: 1
+id: cm1-sciences-energie
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Matière, mouvement, énergie, information"
+  competence: "Identifier des sources et des formes d'énergie, et un exemple de conversion d'une forme à une autre."
+lignesDeReferentiel: ["SCI-CM1-04"]
+items:
+  - enonce: "Quelle est la source d'énergie utilisée par une éolienne ?"
+    bonneReponse: "le vent"
+    distracteurs: ["le soleil", "l'eau"]
+    indice: "Une éolienne a de grandes pales qui tournent avec l'air qui souffle."
+  - enonce: "Quelle est la source d'énergie utilisée par un panneau solaire ?"
+    bonneReponse: "le soleil"
+    distracteurs: ["le vent", "le charbon"]
+    indice: "Ce panneau capte ce qui vient du ciel pendant la journée."
+  - enonce: "Quelle est la source d'énergie utilisée par un barrage hydraulique ?"
+    bonneReponse: "l'eau"
+    distracteurs: ["le vent", "le charbon"]
+    indice: "Un barrage retient une grande quantité de ce liquide dans une rivière."
+  - enonce: "Quel combustible une centrale à charbon brûle-t-elle pour produire de l'énergie ?"
+    bonneReponse: "le charbon"
+    distracteurs: ["le vent", "le soleil"]
+    indice: "Ce combustible est une roche noire extraite du sol."
+  - enonce: "Quelle forme d'énergie un sèche-cheveux produit-il surtout ?"
+    bonneReponse: "de la chaleur"
+    distracteurs: ["de la lumière", "du mouvement"]
+    indice: "Cet appareil souffle de l'air chaud pour sécher les cheveux."
+  - enonce: "Quelle forme d'énergie un lampadaire de rue allumé la nuit produit-il surtout ?"
+    bonneReponse: "de la lumière"
+    distracteurs: ["de la chaleur", "du mouvement"]
+    indice: "Ce lampadaire éclaire la rue quand la nuit tombe."
+  - enonce: "Quelle transformation d'énergie une éolienne réalise-t-elle ?"
+    bonneReponse: "le vent en énergie électrique"
+    distracteurs: ["le soleil en énergie électrique", "l'eau en énergie électrique"]
+    indice: "Regarde ce qui fait tourner les grandes pales de l'éolienne."
+  - enonce: "Quelle transformation d'énergie un panneau solaire réalise-t-il ?"
+    bonneReponse: "la lumière du soleil en énergie électrique"
+    distracteurs: ["le vent en énergie électrique", "l'eau en énergie électrique"]
+    indice: "Ce panneau alimente des appareils grâce à des cellules spéciales."
+  - enonce: "Quelle transformation d'énergie un barrage hydraulique réalise-t-il ?"
+    bonneReponse: "le mouvement de l'eau en énergie électrique"
+    distracteurs: ["le vent en énergie électrique", "le soleil en énergie électrique"]
+    indice: "L'eau retenue par le barrage fait tourner une turbine."
+  - enonce: "Quelle transformation d'énergie un moulin à vent traditionnel réalise-t-il ?"
+    bonneReponse: "le vent en énergie mécanique"
+    distracteurs: ["le vent en énergie électrique", "le vent en énergie lumineuse"]
+    indice: "Les ailes du moulin font tourner une meule qui écrase le grain."
+  - enonce: "Quelle transformation d'énergie une lampe de poche allumée réalise-t-elle ?"
+    bonneReponse: "l'énergie électrique en énergie lumineuse"
+    distracteurs: ["l'énergie électrique en énergie mécanique", "l'énergie électrique en énergie thermique"]
+    indice: "La pile de cette lampe fournit le courant qui l'allume."
+  - enonce: "Quelle transformation d'énergie un grille-pain réalise-t-il ?"
+    bonneReponse: "l'énergie électrique en énergie thermique"
+    distracteurs: ["l'énergie électrique en énergie lumineuse", "l'énergie électrique en énergie mécanique"]
+    indice: "Cet appareil fait dorer des tranches de pain grâce à la chaleur qu'il produit."
