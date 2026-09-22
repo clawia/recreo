@@ -480,3 +480,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-nombres-jusqu-a-100
     nombreDeManches: 10
+  - id: bandit-manchot-longueurs-ce1
+    titre: "Les longueurs"
+    consigne: "Compare les longueurs, ou convertis-les en centimètres et en mètres."
+    mecanique: bandit-manchot
+    paquet: ce1-longueurs
+    nombreDeManches: 10
