@@ -1,0 +1,21 @@
+# JEU FAUTIF, JAMAIS SERVI. Hors perimetre par le niveau, bien qu il soit de mathematiques et qu il
+# ne declare aucune sous-partie allouee. ADR-0097 ne porte que sur le CE1 : les sous-parties d une
+# autre ligne de referentiel ne sont pas allouees dans ce tableau.
+schema: 1
+id: paquet-mathematiques-cm1
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CM1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - tables de multiplication"
+lignesDeReferentiel: ["MAT-CM1-02"]
+items:
+  - enonce: "7 x 8 = ?"
+    bonneReponse: "56"
+    distracteurs: ["54", "63"]
+    indice: "Pense a 7 x 4, puis double."
+  - enonce: "6 x 9 = ?"
+    bonneReponse: "54"
+    distracteurs: ["45", "56"]
+    indice: "Pense a 6 x 10, puis retire 6."

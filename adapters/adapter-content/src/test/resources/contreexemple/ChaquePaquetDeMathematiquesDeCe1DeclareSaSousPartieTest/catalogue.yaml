@@ -1,0 +1,28 @@
+# JEU FAUTIF, JAMAIS SERVI. Quatre entrees, dont deux seulement entrent dans le perimetre
+# d'ADR-0097 (mathematiques de CE1), et une seule de ces deux est fautive.
+schema: 1
+jeux:
+  - id: bandit-manchot-paquet-conforme-ce1
+    titre: "Les additions rangees"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-conforme-ce1
+    nombreDeManches: 10
+  - id: bandit-manchot-paquet-moities-ce1
+    titre: "Les parts egales"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-moities-ce1
+    nombreDeManches: 10
+  - id: bandit-manchot-paquet-francais-ce1
+    titre: "Le bon petit mot"
+    consigne: "Quel mot convient ?"
+    mecanique: bandit-manchot
+    paquet: paquet-francais-ce1
+    nombreDeManches: 10
+  - id: bandit-manchot-paquet-mathematiques-cm1
+    titre: "Les grands calculs"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-mathematiques-cm1
+    nombreDeManches: 10

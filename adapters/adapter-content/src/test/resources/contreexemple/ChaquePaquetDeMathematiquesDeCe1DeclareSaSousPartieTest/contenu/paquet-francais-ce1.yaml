@@ -1,0 +1,21 @@
+# JEU FAUTIF, JAMAIS SERVI. Hors perimetre par la matiere, bien qu il soit de CE1 et qu il ne
+# declare aucune sous-partie allouee. Une regle de MAT-CE1-03 qui rougirait ici garderait autre
+# chose que ce qu elle dit.
+schema: 1
+id: paquet-francais-ce1
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Etude de la langue"
+  competence: "Accorder le verbe avec son sujet"
+lignesDeReferentiel: ["FRA-CE1-01"]
+items:
+  - enonce: "Les chats ... dans le jardin."
+    bonneReponse: "dorment"
+    distracteurs: ["dort", "dormes"]
+    indice: "Le sujet est au pluriel."
+  - enonce: "La fille ... une pomme."
+    bonneReponse: "mange"
+    distracteurs: ["mangent", "manges"]
+    indice: "Le sujet est au singulier."

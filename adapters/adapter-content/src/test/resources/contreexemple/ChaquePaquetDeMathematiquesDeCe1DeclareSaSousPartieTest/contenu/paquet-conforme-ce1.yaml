@@ -1,0 +1,20 @@
+# JEU FAUTIF, JAMAIS SERVI. Ce paquet n est pas fautif : il declare une sous-partie allouee.
+# Il prouve que la regle discrimine, et non qu elle refuse tout paquet qu on lui donne.
+schema: 1
+id: paquet-conforme-ce1
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - additions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "40 + 25 = ?"
+    bonneReponse: "65"
+    distracteurs: ["55", "75"]
+    indice: "Ajoute d abord les dizaines."
+  - enonce: "30 + 47 = ?"
+    bonneReponse: "77"
+    distracteurs: ["67", "87"]
+    indice: "Ajoute d abord les dizaines."

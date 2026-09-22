@@ -1,0 +1,25 @@
+# JEU FAUTIF, JAMAIS SERVI. Le seul paquet fautif du jeu : il est bien un paquet de mathematiques
+# de CE1, et il formule sa sous-partie autrement que ce qui est alloue. C est le geste exact que la
+# section 9 de l avis de faisabilite de s38 decrit - sans ADR-0097, ce paquet serait vert ici et
+# invisible pour le garde-fou de repartition qui l attend.
+#
+# Sa matiere est ecrite sans accent a dessein : sa presence dans le recensement prouve que le
+# repliage d ADR-0049 fonctionne aussi a la lecture disque, et pas seulement en memoire.
+schema: 1
+id: paquet-moities-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - moities de nombres jusqu a 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "Quelle est la moitie de 58 ?"
+    bonneReponse: "29"
+    distracteurs: ["28", "116"]
+    indice: "Coupe 58 en 50 et 8."
+  - enonce: "Quelle est la moitie de 14 ?"
+    bonneReponse: "7"
+    distracteurs: ["8", "28"]
+    indice: "Cherche le double de quel nombre fait 14."
