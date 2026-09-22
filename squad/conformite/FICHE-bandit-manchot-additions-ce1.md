@@ -6,17 +6,20 @@
 - **Entree de catalogue** : `bandit-manchot-additions-ce1`, titre servi *"Les grandes additions"*,
   consigne servie *"Combien ca fait ?"*, `nombreDeManches: 10`.
 - **Ligne declaree** : `MAT-CE1-03`, sous-partie *"additions dans la limite de 100"*.
-- **Statut global** : **VALIDE SOUS RESERVE**. Done pedagogique **prononce le 2026-09-22** par
-  `nadia-prof`, **apres avoir joue le jar servi**. Deux reserves nommees, `ADD-CE1-R1` et `ADD-CE1-R2`,
-  **non bloquantes**.
-- **Mouvement de ligne autorise** : `MAT-CE1-03` passe de `non couvert` a **`en cours`**, et **pas
-  au-dela**. Motif en section 8. Le mouvement est ecrit par `camille-po`, pas par moi.
+- **Statut global** : **VALIDE**. Done pedagogique **prononce le 2026-09-22** par `nadia-prof`,
+  **apres avoir joue le jar servi**. Les deux reserves initiales, `ADD-CE1-R1` et `ADD-CE1-R2`,
+  ont ete corrigees sur le paquet livre en s38 (commit `[MARC] s38: corrige ADD-CE1-R1 et
+  ADD-CE1-R2 ...`) et **fermees le meme jour** apres re-audit sur l'ecran ; voir section 11.
+- **Mouvement de ligne autorise** : ce paquet, pris seul, ne suffit toujours pas a
+  `couvert-valide` (les trois autres pieces de `MAT-CE1-03` restent a auditer par ailleurs), mais
+  **il ne porte plus aucune reserve qui l'en empecherait**. Voir section 11.
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md` (2026-09-21), clauses
   `ADD-CE1-1` et `ADD-CE1-2`, et les six points de sa section 6.
 - **Borne de longueur applicable** : `LON-CE1-1` et `LON-CE1-2`
   (`ARBITRAGE-s36-longueur-d-enonce-au-ce1.md`).
-- **Derniere mise a jour** : 2026-09-22 (premier audit, s37).
+- **Derniere mise a jour** : 2026-09-22 (premier audit s37, re-audit de la correction s38, meme
+  jour calendaire).
 
 ---
 
@@ -141,6 +144,9 @@ apres coup.
 
 ### 7.1 `ADD-CE1-R1` - l'indice des cinq items *"ajout d'un nombre rond"* s'arrete une etape trop tot
 
+**Fermee le 2026-09-22 (s38), re-audit en section 11 : les cinq textes servis a l'ecran sont
+desormais, mot pour mot, ceux que je demandais ci-dessous.**
+
 **Ouverte le 2026-09-22. Non bloquante.** C'est le seul defaut de cet increment, et il est dans le
 seul endroit qu'aucun garde-fou du depot ne lit : l'indice.
 
@@ -184,6 +190,9 @@ demandait a un enfant de CE1 de traduire seul *"les dizaines de 47"* en **40** e
 ce qui est un second obstacle dans un texte cense en lever un.
 
 ### 7.2 `ADD-CE1-R2` - `48 + 26` est le seul item avec retenue qui ne porte pas la retenue oubliee
+
+**Fermee le 2026-09-22 (s38), re-audit en section 11 : le distracteur `75` est remplace par `64`,
+exactement la valeur demandee.**
 
 **Ouverte le 2026-09-22. Non bloquante.** Un seul nombre a changer.
 
@@ -244,11 +253,34 @@ qui est desormais couvert :
   entre en s35 et il est partage par tous les jeux. **Ce n'est pas une reserve de cet increment** ;
   je le route a `camille-po` comme une observation transverse, a traiter la ou il vit ou pas du tout.
 
+## 11. Re-audit du 2026-09-22 (s38) - fermeture de `ADD-CE1-R1` et `ADD-CE1-R2`
+
+**Ce que j'ai fait.** Reconstruit le reacteur sur le commit corrige (`mvn -B clean package
+-DskipTests` via `outils/mvn-jdk21.sh`, `BUILD SUCCESS`), relance `bootstrap/target/recreo.jar`,
+et rejoue specifiquement les six items concernes par les deux reserves - les cinq de la forme 5
+(*"ajout d'un nombre rond"*) et `48 + 26`.
+
+**`ADD-CE1-R1`.** Les cinq indices servis a l'ecran sont, mot pour mot, ceux que j'avais donnes en
+7.1 : verifie sur `50 + 33` en jouant (*"50 est un nombre rond : ajoute d'abord 50 et 30, puis les
+3 qui restent."*) et sur les quatre autres en relisant le fichier de contenu corrige, terme a terme
+contre ma table de 7.1. Applique a la lettre, chaque indice produit desormais la bonne reponse.
+
+**`ADD-CE1-R2`.** Sur `48 + 26`, le distracteur `75` est remplace par `64` (soit `74` sans la
+retenue) ; les trois propositions sont `64`, `74`, `76`. L'item rejoint ses trois freres : la
+retenue oubliee est maintenant a l'ecran partout ou l'indice de forme 8 en avertit.
+
+**Rien d'autre n'a change** : les 32 sommes, `ADD-CE1-1`, `ADD-CE1-2`, l'ancrage sur `MAT-CE1-03`,
+`LON-CE1-1`/`LON-CE1-2` restent ce que la section 2 a section 5 decrivent - je ne les ai pas
+rejoues integralement, le diff etant confine a douze lignes du YAML (six indices, un distracteur).
+
+**Verdict.** Les deux reserves sont fermees. Aucune reserve ne subsiste sur ce paquet.
+
 ---
 
 ## Bloc de validation
 
-> **Done pedagogique : VALIDE SOUS RESERVE.**
+> **Done pedagogique : VALIDE SOUS RESERVE** (verdict initial, non retouche - voir la mise a jour
+> ci-dessous).
 >
 > **Prononce le 2026-09-22 par `nadia-prof`, apres avoir joue le jar servi** - 65 parties, les 32
 > items rencontres a l'ecran, les 32 indices lus comme l'enfant les lit, erreurs jouees
@@ -268,6 +300,20 @@ qui est desormais couvert :
 >
 > **`MAT-CE1-03` : `non couvert` -> `en cours`**, jamais `couvert-valide` avec ce seul paquet. Le
 > mouvement est ecrit par `camille-po`.
+
+> ## Mise a jour du 2026-09-22 (s38)
+>
+> **Done pedagogique : VALIDE, sans reserve.**
+>
+> **Prononce apres re-audit sur l'ecran servi du paquet corrige** (section 11). `ADD-CE1-R1` et
+> `ADD-CE1-R2` sont fermees : les cinq indices de la forme 5 et le distracteur de `48 + 26`
+> correspondent desormais, mot pour mot et chiffre pour chiffre, a ce que j'avais demande.
+>
+> **Ce paquet, pris seul, ne suffit toujours pas** a faire passer `MAT-CE1-03` a `couvert-valide` -
+> les trois autres pieces de la ligne (soustractions, complements a la dizaine, moities) sont
+> auditees par ailleurs, le meme jour. Combine a un Done pedagogique sur chacune des trois, ce
+> paquet ne porte plus aucun obstacle de son cote. Le mouvement de ligne reste ecrit par
+> `camille-po`, pas par moi.
 
 ## S36-ORDRE-NIVEAUX - confirmation, et aucun Done
 

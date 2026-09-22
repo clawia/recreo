@@ -301,17 +301,67 @@ un paquet qui doit d'abord construire le repertoire de base.
 
 ### 3.4 Distracteurs
 
-> **Au moins un distracteur par item correspond a une erreur identifiable parmi** : le double au
+**Amendement du 2026-09-22, a l'audit du paquet livre (`S38-MOITIES`), meme famille de correction
+que la section 2.3 - une clause fermee avant tout code, revelee inexecutable par le premier paquet
+qui la met a l'epreuve, et non un durcissement retroactif d'une barre deja franchie.** La clause
+d'origine, ci-dessous barree, ne nommait que trois formes : le double, la moitie plus un, la moitie
+moins un. **Avec ces trois seules formes, la bonne reponse ne peut mathematiquement jamais etre la
+plus grande des trois propositions** : le double vaut toujours plus que la moitie (`n x 2 > n / 2`
+des que `n > 0`), donc tout item qui l'utilise range la bonne reponse en position la plus petite ou
+intermediaire ; et la paire restante (`moitie plus un`, `moitie moins un`) encadre la bonne reponse
+sans jamais la laisser en tete non plus. Sur un paquet entier, le rang "plus grande" resterait a 0 %
+- exactement le defaut que `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` existe pour
+attraper (section 2.3 le cite, le garde-fou lui-meme cite mon propre REFUS de `S12-3`), et je
+l'aurais moi-meme refuse en le decouvrant a l'ecran. Je ne l'ai pas vu en ecrivant la clause parce
+que je n'ai pas refait, pour les moities, la verification a la main que j'avais faite pour les
+complements a la dizaine en section 2.3 - c'est une omission de ma part, que je corrige ici plutot
+que de la laisser peser sur l'increment qui l'a heritee.
+
+> ~~**Au moins un distracteur par item correspond a une erreur identifiable parmi** : le double au
 > lieu de la moitie (`n x 2`), la moitie plus un (`n / 2 + 1`), ou la moitie moins un (`n / 2 - 1`,
 > uniquement si positive ou nulle). Tous les distracteurs sont des entiers positifs, distincts
-> entre eux et de la bonne reponse.
+> entre eux et de la bonne reponse.~~
+
+> **Au moins un distracteur par item correspond a une erreur identifiable parmi** : le double au
+> lieu de la moitie (`n x 2`), la moitie plus un (`n / 2 + 1`), la moitie moins un (`n / 2 - 1`,
+> uniquement si positive ou nulle), ou **la moitie moins deux** (`n / 2 - 2`, uniquement si positive
+> ou nulle, et uniquement associee a `n / 2 - 1` comme second distracteur). Tous les distracteurs
+> sont des entiers positifs, distincts entre eux et de la bonne reponse.
 
 **Motif du "double au lieu de la moitie".** C'est l'erreur de confusion d'operation la plus
 frequente sur cette competence, symetrique de la "somme au lieu de la difference" deja acceptee
 pour les soustractions (section 1.4) et pour le CP (`FICHE-bandit-manchot-soustractions-cp.md`).
-**Motif du "plus ou moins un".** Erreur de decompte d'un rang, deja utilisee comme distracteur
-valide sur les complements a 10 du CP (`FICHE-bandit-manchot-complements-10-cp.md`, "le nombre de
-depart recopie... plus le complement a 9" - meme famille, erreur d'un rang plutot que de nature).
+**Motif du "plus ou moins un", et de la quatrieme forme "moins deux" qu'il entraine.** Erreur de
+decompte d'un rang, deja utilisee comme distracteur valide sur les complements a 10 du CP
+(`FICHE-bandit-manchot-complements-10-cp.md`, "le nombre de depart recopie... plus le complement a
+9" - meme famille, erreur d'un rang plutot que de nature) et sur les complements a la dizaine du
+CE1 (section 2.3, `d - a - 1`). La paire `(moitie moins un, moitie moins deux)` est la meme famille
+d'erreur de decompte, portee un cran plus loin pour etre la seule combinaison, parmi celles que ces
+quatre formes permettent, ou la bonne reponse peut se trouver au rang "plus grande" - ce qui est
+precisement ce qu'elle doit faire pour que le paquet ne soit pas structurellement condamne a ne
+jamais y placer la bonne reponse.
+
+**Verification que la correction couvre reellement les trois rangs, faite sur les six combinaisons
+que les quatre formes permettent** (chaque paire de deux distracteurs distincts parmi les quatre,
+en excluant les paires non demandees par la clause) :
+
+| Paire de distracteurs | Rang de la bonne reponse |
+|---|---|
+| double, moitie + 1 | plus petite |
+| double, moitie - 1 | intermediaire |
+| double, moitie - 2 | intermediaire |
+| moitie + 1, moitie - 1 | intermediaire |
+| moitie + 1, moitie - 2 | intermediaire |
+| **moitie - 1, moitie - 2** | **plus grande** |
+
+Seule la derniere paire atteint le rang "plus grande" ; c'est pourquoi la clause corrigee la
+reserve nommement a cet usage plutot que de laisser un generateur la combiner autrement.
+
+**Ce que je ne fais pas ici.** Je ne reproche rien au paquet livre, qui a applique cette paire
+exactement comme la clause corrigee le demande, avant meme que je ne l'ecrive noir sur blanc - c'est
+son commit qui m'a fait relire ma propre section 3.4 et y trouver le trou. Voir
+`squad/conformite/FICHE-bandit-manchot-moities-ce1.md` pour la verification chiffree du paquet
+livre contre cette clause corrigee.
 
 ---
 
