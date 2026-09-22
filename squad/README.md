@@ -720,6 +720,16 @@ agent dessus, pas seulement avant de fusionner son lot.
 **5. Relecture.** Le `relecteur-pedagogique` passe sur les livrables non executables. Il corrige
 ce qui est sans ambiguite, signale le reste.
 
+**Une relecture qui ne trouve rien a corriger ecrit tout de meme une ligne qui le dit** (amendement
+s38, retro de s38). A s38, `relecteur-pedagogique` a ete invoque (72 tours, mesure par
+`outils/rapport-tokens.py`) sans laisser aucun commit ni fichier dans le dossier du sprint. Rien
+n'indique une faute - une relecture propre ne produit naturellement aucun diff -, mais rien
+n'ecrit non plus qu'elle a eu lieu et sur quel perimetre : le seul artefact restant est un
+compteur de tokens, qui atteste une consommation, jamais une conclusion. Desormais, quand la
+relecture ne trouve rien a corriger, elle ecrit une ligne dans le dossier du sprint (date,
+perimetre relu, "rien a corriger") - au meme titre qu'un rapport qualite qui confirme un Done
+sans defaut trouve reste ecrit.
+
 **6. Porte pedagogique.** Nadia joue l'increment, l'audite contre le referentiel, ecrit son
 verdict dans la fiche de conformite. Si c'est `VALIDE`, Camille passe la ligne de matrice a
 `couvert-valide`.
