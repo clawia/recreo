@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -72,10 +73,70 @@ class PartieServiceTest {
         assertThat(service().niveauxDuCatalogue()).containsExactly(DESCRIPTEUR.niveau());
     }
 
-    /** ADR-0044 : les valeurs distinctes, dans l'ordre du catalogue - jamais un effectif epingle. */
+    /**
+     * ADR-0044 pour les valeurs distinctes, ADR-0095 et DEC-0090 pour leur ordre : ce n'est plus
+     * celui du catalogue - jamais un effectif epingle.
+     */
     @Test
-    void niveauxDuCatalogueRendLesValeursDistinctesDansLOrdreDuCatalogue() {
+    void niveauxDuCatalogueRendLesValeursDistinctes() {
         assertThat(serviceAvecDeuxNiveaux().niveauxDuCatalogue()).containsExactly("CP", "CM1");
+    }
+
+    private static GameDefinition jeuDeNiveau(String niveau) {
+        ContentDescriptor descripteur =
+                new ContentDescriptor("Mathematiques", niveau, "Nombres et calculs", "denombrer");
+        return new GameDefinition("jeu-" + niveau, "Un jeu", "Choisis la bonne reponse",
+                BanditManchot.ID, descripteur,
+                new ListContentSource(descripteur,
+                        List.of(new Question(new ItemId("q1"), "un", "1", List.of("2")))),
+                NOMBRE_DE_MANCHES);
+    }
+
+    private static PartieService serviceSurLesNiveaux(String... niveaux) {
+        List<GameDefinition> jeux = Stream.of(niveaux).map(PartieServiceTest::jeuDeNiveau).toList();
+        return new PartieService(() -> jeux, id -> new BanditManchot(), TOUJOURS_ZERO);
+    }
+
+    /**
+     * DEC-0090, 1er critere de S36-ORDRE-NIVEAUX : le catalogue est declare a l'envers de la
+     * progression scolaire, et l'en-tete la retablit.
+     */
+    @Test
+    void niveauxDuCatalogueSuitLaProgressionScolaireEtNonLOrdreDeDeclaration() {
+        assertThat(serviceSurLesNiveaux("CM2", "CM1", "CE1", "CP").niveauxDuCatalogue())
+                .containsExactly("CP", "CE1", "CM1", "CM2");
+        assertThat(serviceSurLesNiveaux("CM1", "CE1", "CP").niveauxDuCatalogue())
+                .containsExactly("CP", "CE1", "CM1");
+    }
+
+    /**
+     * DEC-0090, 2e critere : sur le catalogue d'aujourd'hui, l'ordre affiche ne change pas. Cette
+     * story ne corrige rien d'observable, elle garantit ce qui ne l'etait pas.
+     */
+    @Test
+    void surUnCatalogueCpPuisCm1LOrdreAfficheNeChangePas() {
+        assertThat(serviceSurLesNiveaux("CP", "CM1").niveauxDuCatalogue())
+                .containsExactly("CP", "CM1");
+    }
+
+    /** DEC-0090, 3e critere : un niveau sans contenu n'a pas de puce. */
+    @Test
+    void unNiveauDeLaSequenceAbsentDuCatalogueNApparaitPas() {
+        assertThat(serviceSurLesNiveaux("CM1", "CP").niveauxDuCatalogue())
+                .containsExactly("CP", "CM1")
+                .doesNotContain("CE1", "CM2");
+    }
+
+    /**
+     * ADR-0095, le rang de repli : un niveau hors sequence se range apres les niveaux connus, dans
+     * l'ordre du catalogue, plutot que de faire echouer l'accueil. Le cas est impossible sur le
+     * catalogue servi ({@code ChaqueNiveauServiEstNommeDansLaSequenceTest}) ; il est teste ici
+     * parce qu'un comportement de repli non teste est un comportement suppose.
+     */
+    @Test
+    void unNiveauHorsSequenceSeRangeApresLesAutresDansLOrdreDuCatalogue() {
+        assertThat(serviceSurLesNiveaux("6e", "CM1", "5e", "CP").niveauxDuCatalogue())
+                .containsExactly("CP", "CM1", "6e", "5e");
     }
 
     @Test

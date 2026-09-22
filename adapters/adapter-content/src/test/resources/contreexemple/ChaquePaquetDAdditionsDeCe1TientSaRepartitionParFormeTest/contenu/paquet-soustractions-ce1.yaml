@@ -1,0 +1,20 @@
+# JEU FAUTIF, JAMAIS SERVI. Ce paquet n est pas fautif : il est de CE1 et n est pas un paquet
+# d additions. Il prouve que le perimetre derive de la forme des items et pas du seul niveau.
+schema: 1
+id: paquet-soustractions-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - soustractions"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "45 - 12 = ?"
+    bonneReponse: "33"
+    distracteurs: ["34", "35"]
+    indice: "Retire d abord les dizaines."
+  - enonce: "78 - 23 = ?"
+    bonneReponse: "55"
+    distracteurs: ["56", "57"]
+    indice: "Retire d abord les dizaines."

@@ -1,5 +1,7 @@
 package com.recreo.archi;
 
+import com.recreo.domain.content.ContratAuNiveauEnumereContreExemple;
+import com.recreo.domain.content.NiveauEnumereContreExemple;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.core.importer.ImportOption;
@@ -365,6 +367,48 @@ class LesReglesMordentTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("com.recreo.domain.content.ModeDeSaisieEnBooleenContreExemple.formeExacteExigee")
                 .hasMessageContaining("boolean");
+    }
+
+    /**
+     * ADR-0095 : la morsure est double, et c'est la seconde moitie qui justifie la regle.
+     *
+     * <p>Le contre-exemple est le chemin le moins cher vers un ordre des niveaux : un
+     * {@code enum Niveau} pose dans le contrat de contenu, cite par un descripteur, et
+     * {@code Comparator.comparing(Niveau::valueOf)} pour trier. La regle neuve le refuse.
+     *
+     * <p>La regle d'ADR-0006 qui est censee tenir la meme propriete, elle, <b>reste verte</b> sur
+     * exactement ce materiau : son {@code estPermis} admet tout type de
+     * {@code com.recreo.domain.content}. C'est mesure ici plutot qu'affirme dans l'ADR, parce
+     * qu'une regle neuve dont on ne prouve pas qu'elle ferme quelque chose de neuf est
+     * decorative. L'import est restreint aux deux contre-exemples : sur le paquet entier, la regle
+     * d'ADR-0006 rougirait de toute facon sur les quatre autres, et la mesure ne dirait rien.
+     */
+    @Test
+    void unNiveauEnumereDansLeContratEstRefuseEtLaRegleDAdr0006LeLaissePasser() {
+        JavaClasses lesDeuxContreExemples = new ClassFileImporter().importClasses(
+                NiveauEnumereContreExemple.class, ContratAuNiveauEnumereContreExemple.class);
+
+        assertThatThrownBy(() -> LOrdreDesNiveauxResteUneDonneeTest.aucunNiveauNEstUneConstanteDEnumeration
+                .check(lesDeuxContreExemples))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("com.recreo.domain.content.NiveauEnumereContreExemple")
+                .hasMessageContaining("CE1");
+
+        DifficulteTest.leContratDeContenuNePorteQueDuTexte.check(lesDeuxContreExemples);
+    }
+
+    /**
+     * ADR-0095 : la dette 1 de CLAUDE.md - une abstraction citee partout et jamais implementee.
+     * Une regle d'existence n'a pas de classe fautive, sa faute est une absence : ce qui doit
+     * mordre est {@code allowEmptyShould(false)}, et le desactiver rend ce test rouge.
+     */
+    @Test
+    void uneSequenceDesNiveauxQuiDisparaitEstRefusee() {
+        assertThatThrownBy(() -> LOrdreDesNiveauxResteUneDonneeTest.laSequenceDesNiveauxExiste
+                .check(productionSansLeContrat("com.recreo.domain.mechanic")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ADR-0095 : la sequence des niveaux existe dans le code")
+                .hasMessageContaining("failed to check any classes");
     }
 
     /** ADR-0007 : le dixieme chargeur, hors de l'adaptateur de contenu. */

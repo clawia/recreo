@@ -1,0 +1,93 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, ADD-CE1-2).
+# Ce paquet n a pas de defaut : il tient les huit bandes. Il est ici pour que le jeu fautif
+# prouve que la regle DISCRIMINE, et non qu elle refuse tout paquet qu on lui donne.
+schema: 1
+id: paquet-conforme-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - additions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "8 + 5 = ?"
+    bonneReponse: "13"
+    distracteurs: ["14", "15"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "7 + 9 = ?"
+    bonneReponse: "16"
+    distracteurs: ["17", "18"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "12 + 6 = ?"
+    bonneReponse: "18"
+    distracteurs: ["19", "20"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "18 + 18 = ?"
+    bonneReponse: "36"
+    distracteurs: ["37", "38"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "24 + 24 = ?"
+    bonneReponse: "48"
+    distracteurs: ["49", "50"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "34 + 26 = ?"
+    bonneReponse: "60"
+    distracteurs: ["61", "62"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "47 + 23 = ?"
+    bonneReponse: "70"
+    distracteurs: ["71", "72"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "18 + 22 = ?"
+    bonneReponse: "40"
+    distracteurs: ["41", "42"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "40 + 25 = ?"
+    bonneReponse: "65"
+    distracteurs: ["66", "67"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "30 + 47 = ?"
+    bonneReponse: "77"
+    distracteurs: ["78", "79"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "50 + 33 = ?"
+    bonneReponse: "83"
+    distracteurs: ["84", "85"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "34 + 7 = ?"
+    bonneReponse: "41"
+    distracteurs: ["42", "43"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "8 + 45 = ?"
+    bonneReponse: "53"
+    distracteurs: ["54", "55"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "67 + 5 = ?"
+    bonneReponse: "72"
+    distracteurs: ["73", "74"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "9 + 28 = ?"
+    bonneReponse: "37"
+    distracteurs: ["38", "39"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "34 + 25 = ?"
+    bonneReponse: "59"
+    distracteurs: ["60", "61"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "42 + 36 = ?"
+    bonneReponse: "78"
+    distracteurs: ["79", "80"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "53 + 14 = ?"
+    bonneReponse: "67"
+    distracteurs: ["68", "69"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "27 + 15 = ?"
+    bonneReponse: "42"
+    distracteurs: ["43", "44"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "36 + 28 = ?"
+    bonneReponse: "64"
+    distracteurs: ["65", "66"]
+    indice: "Ajoute les dizaines, puis les unites."

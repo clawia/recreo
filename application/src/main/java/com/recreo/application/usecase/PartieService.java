@@ -1,6 +1,7 @@
 package com.recreo.application.usecase;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.OrdreDesNiveaux;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.application.port.out.MechanicRegistryPort;
@@ -10,6 +11,7 @@ import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.Move;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -36,8 +38,13 @@ public final class PartieService implements PartieUseCase {
 
     /**
      * ADR-0044 : la selection vit ici, derriere le port entrant, jamais dans l'adaptateur de
-     * rendu. Les valeurs distinctes sont rendues dans l'ordre du catalogue - c'est cette methode,
-     * et rien d'autre, qui dit combien de points d'entree l'en-tete porte.
+     * rendu - c'est cette methode, et rien d'autre, qui dit combien de points d'entree l'en-tete
+     * porte et dans quel ordre.
+     *
+     * <p>ADR-0095, DEC-0090 : les valeurs distinctes ne sont plus rendues dans l'ordre du
+     * catalogue mais dans celui de {@link OrdreDesNiveaux#SEQUENCE}. Le tri de {@link List} est
+     * stable, donc deux niveaux de meme rang - le cas de repli, qu'aucun catalogue servi ne peut
+     * atteindre - conservent entre eux l'ordre du catalogue.
      */
     @Override
     public List<String> niveauxDuCatalogue() {
@@ -48,6 +55,7 @@ public final class PartieService implements PartieUseCase {
                 niveaux.add(niveau);
             }
         }
+        niveaux.sort(Comparator.comparingInt(OrdreDesNiveaux::rang));
         return niveaux;
     }
 

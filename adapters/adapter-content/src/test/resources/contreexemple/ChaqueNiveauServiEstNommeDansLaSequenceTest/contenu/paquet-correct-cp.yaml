@@ -1,0 +1,14 @@
+# JEU FAUTIF, JAMAIS SERVI. Ce paquet n a pas de defaut : il est ici pour que le jeu fautif prouve
+# que la regle discrimine, et non qu elle refuse tout ce qu on lui donne.
+schema: 1
+id: paquet-correct-cp
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Nombres et calculs"
+  competence: "Calculer des sommes"
+items:
+  - enonce: "Combien font 1 et 1 ?"
+    bonneReponse: "2"
+    distracteurs: ["3", "4"]

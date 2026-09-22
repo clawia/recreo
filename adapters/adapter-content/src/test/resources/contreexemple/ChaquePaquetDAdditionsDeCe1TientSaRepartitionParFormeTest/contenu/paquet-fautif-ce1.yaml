@@ -1,0 +1,94 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, ADD-CE1-2).
+# Le defaut est ici : la forme du tirage generatif inchange a l echelle 100. Une seule somme
+# jusqu a 20, un seul complement a la dizaine, aucun double - les trois bandes que nadia-prof a
+# mesurees en echec le 2026-09-21.
+schema: 1
+id: paquet-fautif-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - additions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "8 + 5 = ?"
+    bonneReponse: "13"
+    distracteurs: ["14", "15"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "34 + 26 = ?"
+    bonneReponse: "60"
+    distracteurs: ["61", "62"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "40 + 25 = ?"
+    bonneReponse: "65"
+    distracteurs: ["66", "67"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "30 + 47 = ?"
+    bonneReponse: "77"
+    distracteurs: ["78", "79"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "50 + 33 = ?"
+    bonneReponse: "83"
+    distracteurs: ["84", "85"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "20 + 36 = ?"
+    bonneReponse: "56"
+    distracteurs: ["57", "58"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "34 + 7 = ?"
+    bonneReponse: "41"
+    distracteurs: ["42", "43"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "8 + 45 = ?"
+    bonneReponse: "53"
+    distracteurs: ["54", "55"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "67 + 5 = ?"
+    bonneReponse: "72"
+    distracteurs: ["73", "74"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "9 + 28 = ?"
+    bonneReponse: "37"
+    distracteurs: ["38", "39"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "56 + 6 = ?"
+    bonneReponse: "62"
+    distracteurs: ["63", "64"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "34 + 25 = ?"
+    bonneReponse: "59"
+    distracteurs: ["60", "61"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "42 + 36 = ?"
+    bonneReponse: "78"
+    distracteurs: ["79", "80"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "53 + 14 = ?"
+    bonneReponse: "67"
+    distracteurs: ["68", "69"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "61 + 27 = ?"
+    bonneReponse: "88"
+    distracteurs: ["89", "90"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "72 + 13 = ?"
+    bonneReponse: "85"
+    distracteurs: ["86", "87"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "27 + 15 = ?"
+    bonneReponse: "42"
+    distracteurs: ["43", "44"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "36 + 28 = ?"
+    bonneReponse: "64"
+    distracteurs: ["65", "66"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "48 + 26 = ?"
+    bonneReponse: "74"
+    distracteurs: ["75", "76"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "59 + 23 = ?"
+    bonneReponse: "82"
+    distracteurs: ["83", "84"]
+    indice: "Ajoute les dizaines, puis les unites."
