@@ -360,6 +360,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-chaine-alimentaire
     nombreDeManches: 10
+  - id: bandit-manchot-energie-cm1
+    titre: "Les sources et les formes d'énergie"
+    consigne: "Lis bien, puis dis quelle est la source ou la forme, ou comment l'énergie se transforme."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-energie
+    nombreDeManches: 10
   - id: bandit-manchot-melanges-cm1
     titre: "Mélanges et séparations"
     consigne: "Lis bien, puis dis si le mélange est homogène ou hétérogène, ou choisis le bon moyen de le séparer."

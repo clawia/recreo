@@ -208,6 +208,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // CM1, matiere neuve du produit (signal/information, chaine alimentaire).
             "bandit-manchot-signal-information-cm1",
             "bandit-manchot-chaine-alimentaire-cm1",
+            // S39-ENERGIE (s39) : entree neuve, second passage de sciences et technologie CM1
+            // (sources et formes d'énergie).
+            "bandit-manchot-energie-cm1",
             // S30-2 (backlog S30-2) : deux entrees neuves, second lot de sciences et technologie
             // CM1 (mélanges, objet technique).
             "bandit-manchot-melanges-cm1",
@@ -362,6 +365,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Droits et devoirs",
             // S30-1 : deux titres neufs.
             "Signal et information",
+            // S39-ENERGIE (s39) : titre neuf.
+            "Les sources et les formes d'énergie",
             "Qui mange qui ?",
             // S30-2 : deux titres neufs.
             "Mélanges et séparations",
@@ -539,6 +544,9 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "information.",
             // S30-1 : deux consignes neuves.
             "Lis bien, puis dis quel est le signal, ou ce qu'il veut dire.",
+            // S39-ENERGIE (s39) : consigne neuve.
+            "Lis bien, puis dis quelle est la source ou la forme, ou comment l'énergie se "
+                    + "transforme.",
             "Lis bien, puis dis qui mange qui, ou ce qui pourrait arriver.",
             // S30-2 : deux consignes neuves.
             "Lis bien, puis dis si le mélange est homogène ou hétérogène, ou choisis le bon moyen "
@@ -816,6 +824,10 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "tricolore, panneau, alarme, écran).",
             "Décrire un milieu proche : les êtres vivants qui le peuplent et les relations "
                     + "alimentaires qui les relient (chaîne alimentaire).",
+            // S39-ENERGIE (s39) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/sciences-et-technologie/competences-cm1.md, ligne SCI-CM1-04).
+            "Identifier des sources et des formes d'énergie, et un exemple de conversion d'une "
+                    + "forme à une autre.",
             // S30-2 : deux competences neuves, copiees conformes du referentiel de nadia-prof
             // (squad/programme/sciences-et-technologie/competences-cm1.md, lignes SCI-CM1-02 et
             // SCI-CM1-12).

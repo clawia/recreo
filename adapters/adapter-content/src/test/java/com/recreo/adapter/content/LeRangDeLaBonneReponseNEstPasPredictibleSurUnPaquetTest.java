@@ -763,7 +763,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " cp-frise-de-la-journee, sur le plan de la classe (QLM-CP-11) plutot que sur"
                     + " une frise - il n'y a ni distracteur ni rang de bonne reponse au sens de cette"
                     + " propriete, et la garantie qu'un enfant ne gagne pas en ignorant l'enonce est"
-                    + " portee par le garde-fou 4 d'ADR-0080"));
+                    + " portee par le garde-fou 4 d'ADR-0080"),
+            // S39-ENERGIE : paquet neuf de sciences et technologie CM1 (SCI-CM1-04).
+            Map.entry("cm1-sciences-energie",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des noms de sources d'energie (\"le"
+                    + " vent\", \"le soleil\"...), de formes d'energie (\"de la chaleur\", \"de la"
+                    + " lumière\"...) ou des transformations en texte libre (\"le vent en énergie"
+                    + " électrique\"...), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-22 sur le paquet servi : aucune des 36 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
