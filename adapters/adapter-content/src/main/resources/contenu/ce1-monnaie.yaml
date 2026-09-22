@@ -1,0 +1,85 @@
+# MAT-CE1-13, sous-partie "monnaie" (S39-MONNAIE, ADR-0098, SousPartieDeMathematiquesCe1.MONNAIE).
+# Arbitrage prealable de nadia-prof (2026-09-22, ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-
+# solides.md, section 3) : MON-CE1-1 a MON-CE1-4. Le precedent de la monnaie CP (MON-1/MON-3,
+# item illustre) ne s'applique pas ici - verifie et ecarte par nadia-prof elle-meme, la competence
+# CE1 ne portant aucun verbe de reconnaissance visuelle.
+#
+# Ecriture des montants (avis de faisabilite de s39 de theo-archi, section 21) : chaque proposition
+# ecrit un seul nombre entier suivi de l'unite "centimes", jamais une virgule decimale ni deux
+# nombres dans une meme proposition. Cette ecriture reste dans le domaine numerique tenu par
+# lireValeur (ADR-0068) : aucune declaration dans PAQUETS_A_ITEMS_ECARTES ni dans
+# PAQUETS_HORS_DU_DOMAINE_NUMERIQUE n'est due pour ce paquet, verifie sur les douze items livres.
+# MON-CE1-1 (montants entre 0,05 et 50 euros, soit 5 et 5000 centimes, multiples de 5) et MON-CE1-2
+# (seules les denominations reelles - pieces de 5, 10, 20, 50 centimes, 1 et 2 euros ; billets de 5,
+# 10, 20 et 50 euros) sont tenues en n'utilisant jamais les pieces de 1 et 2 centimes, ce qui rend
+# tout total multiple de 5 par construction.
+#
+# MON-CE1-3 (au moins un tiers des items sur le rendu de monnaie) : six des douze items posent
+# explicitement "Combien lui rend-on ?", les six autres composent une somme a partir de plusieurs
+# pieces ou billets.
+#
+# MON-CE1-4 (distracteurs plausibles, jamais negatifs) : sur les six items de composition, les deux
+# distracteurs sont soit une confusion d'echelle euro/centime (multiplier ou diviser par 10), soit
+# un oubli d'une des pieces annoncees, soit un double compte d'une piece. Sur les six items de rendu,
+# les deux distracteurs sont un rendu par exces ou par defaut. Le rang de la bonne reponse parmi les
+# trois propositions est reparti a dessein sur les trois positions (quatre fois la plus petite,
+# quatre fois l'intermediaire, quatre fois la plus grande) pour qu'aucune strategie de position
+# constante ne soit majoritaire (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest).
+schema: 1
+id: ce1-monnaie
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Utiliser la monnaie en euros et en centimes"
+lignesDeReferentiel: ["MAT-CE1-13"]
+items:
+  - enonce: "Léa a une pièce de 2 euros et une pièce de 50 centimes. Quelle somme a-t-elle en tout ?"
+    bonneReponse: "250 centimes"
+    distracteurs: ["25 centimes", "2500 centimes"]
+    indice: "Additionne 200 et 50."
+  - enonce: "Sami a une pièce de 1 euro et une pièce de 50 centimes. Quelle somme a-t-il en tout ?"
+    bonneReponse: "150 centimes"
+    distracteurs: ["1500 centimes", "250 centimes"]
+    indice: "Additionne 100 et 50."
+  - enonce: "Nora a deux pièces de 2 euros et une pièce de 50 centimes. Quelle somme a-t-elle en tout ?"
+    bonneReponse: "450 centimes"
+    distracteurs: ["45 centimes", "400 centimes"]
+    indice: "Additionne 200, 200 et 50."
+  - enonce: "Malo a un billet de 5 euros et une pièce de 50 centimes. Quelle somme a-t-il en tout ?"
+    bonneReponse: "550 centimes"
+    distracteurs: ["55 centimes", "5500 centimes"]
+    indice: "Additionne 500 et 50."
+  - enonce: "Yanis a une pièce de 10 centimes et une pièce de 20 centimes. Quelle somme a-t-il en tout ?"
+    bonneReponse: "30 centimes"
+    distracteurs: ["300 centimes", "50 centimes"]
+    indice: "Additionne 10 et 20."
+  - enonce: "Inès a des pièces de 20, 50 et 10 centimes. Quelle somme a-t-elle en tout ?"
+    bonneReponse: "80 centimes"
+    distracteurs: ["8 centimes", "70 centimes"]
+    indice: "Additionne 20, 50 et 10."
+  - enonce: "Un crayon coûte 180 centimes. Léo paye avec une pièce de 2 euros. Combien lui rend-on ?"
+    bonneReponse: "20 centimes"
+    distracteurs: ["10 centimes", "15 centimes"]
+    indice: "200 moins 180."
+  - enonce: "Un livre coûte 350 centimes. Nora paye avec un billet de 5 euros. Combien lui rend-on ?"
+    bonneReponse: "150 centimes"
+    distracteurs: ["160 centimes", "170 centimes"]
+    indice: "500 moins 350."
+  - enonce: "Un jeu coûte 780 centimes. Sami paye avec un billet de 10 euros. Combien lui rend-on ?"
+    bonneReponse: "220 centimes"
+    distracteurs: ["210 centimes", "230 centimes"]
+    indice: "1000 moins 780."
+  - enonce: "Un ballon coûte 1650 centimes. Malo paye avec un billet de 20 euros. Combien lui rend-on ?"
+    bonneReponse: "350 centimes"
+    distracteurs: ["330 centimes", "340 centimes"]
+    indice: "2000 moins 1650."
+  - enonce: "Un goûter coûte 320 centimes. Inès paye avec un billet de 5 euros. Combien lui rend-on ?"
+    bonneReponse: "180 centimes"
+    distracteurs: ["190 centimes", "200 centimes"]
+    indice: "500 moins 320."
+  - enonce: "Un vélo coûte 4200 centimes. Yanis paye avec un billet de 50 euros. Combien lui rend-on ?"
+    bonneReponse: "800 centimes"
+    distracteurs: ["790 centimes", "810 centimes"]
+    indice: "5000 moins 4200."

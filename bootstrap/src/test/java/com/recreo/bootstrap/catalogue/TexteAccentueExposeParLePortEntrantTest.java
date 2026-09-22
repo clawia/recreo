@@ -251,6 +251,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (MAT-CE1-03, soustractions dans la limite de 100), reparti par forme selon
             // SOU-CE1-2 (ADR-0097).
             "bandit-manchot-soustractions-ce1",
+            // S39-MONNAIE (s39) : entree neuve, troisieme paquet de mathematiques CE1
+            // (MAT-CE1-13, sous-partie "monnaie", ADR-0098).
+            "bandit-manchot-monnaie-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -396,6 +399,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // "Les grandes additions" : il ne porte pas son niveau (ADR-0078) et se distingue
             // de "Les petites soustractions", qui sert le CP.
             "Les grandes soustractions",
+            // S39-MONNAIE (s39) : titre neuf, troisieme paquet CE1. Distinct de "La monnaie"
+            // (CP, item illustre) pour ne pas dupliquer un libelle de bouton entre deux jeux
+            // differents ; il ne porte pas son niveau (ADR-0078).
+            "La monnaie et le rendu",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -564,6 +571,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Montre l'endroit qu'on te décrit.",
             // S38-COMPLEMENTS-DIZAINE (s38) : consigne neuve.
             "Quel nombre manque ?",
+            // S39-MONNAIE (s39) : consigne neuve, generique - designe les deux taches (composer
+            // une somme, trouver un rendu) sans nommer aucun montant d'aucun item.
+            "Compte la somme, ou trouve ce qui est rendu.",
             // S38-MOITIES (s38) : consigne neuve.
             "Quelle est la moitié ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
@@ -862,7 +872,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // conforme du referentiel (squad/programme/questionner-le-monde/competences-cp.md,
             // QLM-CP-11), premiere livraison reelle de cette ligne.
             "Situer un lieu ou un objet sur un plan simple de la classe, de l'école ou du "
-                    + "quartier.");
+                    + "quartier.",
+            // S39-MONNAIE (s39) : competence neuve, MAT-CE1-13 sous-partie "monnaie" (ADR-0098,
+            // SousPartieDeMathematiquesCe1.MONNAIE).
+            "Utiliser la monnaie en euros et en centimes");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
