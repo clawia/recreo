@@ -15,6 +15,16 @@ par competence, l'integralite des dix-neuf referentiels desormais disponibles
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
 
+**Note du 2026-09-22 (s37)** : premier mouvement sur une ligne CE1. `MAT-CE1-03` (calcul mental,
+additions et soustractions dans la limite de 100) passe de `non couvert` a `en cours` sur Done
+pedagogique **VALIDE SOUS RESERVE** de `nadia-prof` pour le premier paquet CE1 du produit
+(`S37-1`, sous-partie "additions" seule ; `squad/conformite/FICHE-bandit-manchot-additions-ce1.md`).
+Le taux affiche, deja a **77 / 155 = 49,7 %** depuis la fermeture de `QLM-CP-11` a l'integration de
+s36 (`f118c17a`, non reprise par la note du 2026-09-21 ci-dessous, qui date d'avant cette fermeture),
+**n'est pas modifie par ce mouvement** : une ligne qui passe de `non couvert` a `en cours` ne touche
+pas le numerateur. Detail et recompte complets dans la section "Mathematiques - CE1 (cycle 2)",
+sous-section "Premier mouvement sur une ligne CE1".
+
 **Note du 2026-09-21, mise a jour le meme jour** : le perimetre s'ouvre a un troisieme niveau, CE1
 (cycle 2), sur decision de `DEC-0089` - CM2 reste explicitement differe. `nadia-prof` a ecrit le
 premier referentiel CE1 (mathematiques, 17 competences, `squad/programme/mathematiques/
@@ -563,7 +573,7 @@ produit ouvert par `DEC-0089`, CM2 restant explicitement differe. Aucune ligne n
 |---|---|---|---|---|---|---|
 | mathematiques | CE1 | Nombres et calculs | Denombrer, lire, ecrire et decomposer les nombres jusqu'a 1000 (unites, dizaines, centaines) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Comparer, ranger et encadrer les nombres jusqu'a 1000, et les placer sur une ligne graduee | - | - | non couvert |
-| mathematiques | CE1 | Nombres et calculs | Calcul mental - additions et soustractions dans la limite de 100 (complements a la dizaine, doubles et moities) | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Calcul mental - additions et soustractions dans la limite de 100 (complements a la dizaine, doubles et moities) | bandit-manchot-additions-ce1 | bandit manchot | **en cours** (2026-09-22, s37) - **`MAT-CE1-03` ne ferme pas.** Premier paquet CE1 du produit, sous-partie "additions dans la limite de 100" seule (`S37-1`) : `nadia-prof` prononce **VALIDE SOUS RESERVE** apres avoir joue le jar servi (32 items recalcules, 32 exacts ; huit bandes de forme tenues contre `ADD-CE1-2`, dont trois doubles et cinq complements a la dizaine ; `LON-CE1-1`/`LON-CE1-2` tenues). Deux reserves non bloquantes, datees du 2026-09-22 : **`ADD-CE1-R1`** (l'indice des cinq items "ajout d'un nombre rond" s'arrete une etape trop tot et menerait l'enfant qui le suit a la lettre a un nombre absent des propositions) et **`ADD-CE1-R2`** (`48 + 26` est le seul item de la forme "deux a deux chiffres avec retenue" dont un distracteur ne porte pas la retenue oubliee). Le mouvement est explicitement borne par `nadia-prof` elle-meme, ecrit d'avance le 2026-09-21 avant qu'un item n'existe : les soustractions, les complements a la dizaine pris pour eux-memes (forme `47 + ? = 50`) et les moities restent entiers, donc la ligne reste `en cours`, pas `couvert-valide`. Verdict : `squad/conformite/FICHE-bandit-manchot-additions-ce1.md`, sections 7 et 8. |
 | mathematiques | CE1 | Nombres et calculs | Poser et effectuer une addition avec retenue (nombres a deux ou trois chiffres) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Poser et effectuer une soustraction (nombres a deux ou trois chiffres) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Comprendre le sens de la multiplication (addition reiteree, disposition en lignes et en colonnes) | - | - | non couvert |
@@ -615,6 +625,46 @@ avance sans verification par `nadia-prof`** (chiffre juste par coincidence arith
 quel) : le taux affiche recule de 6,1 points par le seul effet du denominateur, avant qu'aucun jeu
 CE1 n'existe, exactement comme la note du 2026-09-21 en tete de ce fichier l'annoncait d'avance.
 **Ce recul n'est pas une regression du produit.**
+
+### Premier mouvement sur une ligne CE1 (2026-09-22, s37, `MAT-CE1-03`)
+
+`MAT-CE1-03` passe de `non couvert` a `en cours` sur Done pedagogique **VALIDE SOUS RESERVE** de
+`nadia-prof` (`squad/conformite/FICHE-bandit-manchot-additions-ce1.md`, section 8 : *"Le mouvement
+est ecrit par `camille-po`, pas par moi."*). Detail du verdict et des deux reserves non bloquantes
+(`ADD-CE1-R1`, `ADD-CE1-R2`) dans la ligne ci-dessus. **Pas `couvert-valide`** : seule la sous-partie
+"additions dans la limite de 100" est servie ; les soustractions, les complements a la dizaine pris
+pour eux-memes et les moities restent hors perimetre de `S37-1`, motif ecrit d'avance par
+`nadia-prof` le 2026-09-21, avant qu'un seul item n'existe.
+
+**Recompte, independant de tout chiffre transmis**, sur le meme patron que les recomptes de cloture
+de s34 a s36 : recompte sur les dix-neuf tableaux de cette matrice, colonne `Statut`, avant et apres
+ce mouvement unique - chaque ligne de donnees reclassee telle qu'elle est ecrite dans ce fichier,
+jamais un total repris d'un autre document. Methode : `grep -cE "^\| [a-z].* \| (CP|CE1|CM1) \|"` sur
+`squad/programme/MATRICE-couverture.md` pour isoler les 226 lignes de donnees des tableaux de
+synthese (memes colonnes ailleurs dans ce fichier), puis classement du dernier champ (`Statut`) par
+prefixe. Les deux lignes de sciences et technologie CM1 (`SCI-CM1-02`, `SCI-CM1-12`) sans pipe de
+fermeture (defaut de forme deja signale a la cloture de s36, non corrige ici, hors perimetre de
+cette tache) sont comptees a la main : leur cellule `Statut` commence par `**couvert-valide**` dans
+les deux cas, verifie par lecture directe des deux lignes. Le chiffre "avant" recompte ainsi
+(couvert-valide 77, non couvert 78) confirme, depuis ma propre lecture, celui annonce par le commit
+d'integration de s36 (`f118c17a`, "couverture 76/138 -> 77/155") sans le reprendre tel quel.
+
+| | Avant ce mouvement (2026-09-22, avant `S37-1`) | Apres le mouvement de `MAT-CE1-03` |
+|---|---|---|
+| `couvert-valide` | 77 | 77 |
+| `en cours` | 0 | **1** |
+| `non couvert` | 78 | **77** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 226 | 226 |
+| Denominateur atteignable | 155 | 155 |
+| **Taux** | **77 / 155 = 49,7 %** | **77 / 155 = 49,7 %** |
+
+**Le taux n'est pas modifie par ce mouvement.** Une ligne qui passe de `non couvert` a `en cours` ne
+touche pas le numerateur (`couvert-valide` seul) : c'est arithmetique, pas un arrondi qui masquerait
+un ecart. Le denominateur atteignable (total moins `non couvrable en l'etat`) ne bouge pas non plus,
+`en cours` y comptant deja comme `non couvert`. **Ce que ce recompte ne fait pas** : il ne prononce
+aucun Done - le verdict est de `nadia-prof`, dans la fiche citee ; il ne cree ni ne ferme aucune
+autre ligne CE1 ; il ne fixe aucun perimetre pour la suite de s37.
 
 ## Francais - CP (cycle 2)
 
