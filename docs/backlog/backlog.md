@@ -13994,5 +13994,184 @@ generateur est reutilise) ne sont de mon ressort.
   attendu moindre que celui d'une matiere neuve, mesure a rapporter contre `DEC-0071` section 6
   pour repondre a `DEC-0089` section 2.
 
+## Sprint 38 - Fermeture visee de `MAT-CE1-03` (`DEC-0091`) : corrections des deux reserves du
+## premier paquet et instruction des trois sous-parties restantes
+
+Quatre lots, tous a l'interieur du perimetre deja ouvert par `DEC-0089` (CE1, mathematiques seule).
+Objectif du sprint et regle de gouvernance formalises par `DEC-0091` : fermer `MAT-CE1-03` a
+`couvert-valide`, sous la reserve de sourcage que `DEC-0091` section 3 nomme explicitement. Aucun
+des trois lots de sous-partie n'est developpable avant l'arbitrage pedagogique prealable de
+`nadia-prof` qu'il route ci-dessous - meme motif que celui qui a debloque `S37-1` a s37
+(`ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md`).
+
+### S38-CORR - Corriger les deux reserves du premier paquet d'additions CE1 (`ADD-CE1-R1`,
+### `ADD-CE1-R2`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux que l'indice affiche apres une erreur me mene
+  vraiment vers la bonne reponse quand je le suis a la lettre, afin de ne pas croire que j'ai mal
+  calcule alors que j'ai fait exactement ce que l'indice me disait de faire.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2) - `MAT-CE1-03`, sous-partie
+  "additions dans la limite de 100", deja `en cours`. Cette story ne deplace pas le statut de la
+  ligne a elle seule : elle corrige un paquet deja livre, elle n'en ouvre aucun nouveau.
+- **Origine des criteres** : les deux textes de remplacement sont ceux de `nadia-prof`, repris mot
+  pour mot plutot que reformules - `squad/conformite/FICHE-bandit-manchot-additions-ce1.md`,
+  sections 7.1 et 7.2. Aucun arbitrage pedagogique neuf n'est du sur ce lot.
+- **Criteres d'acceptation** :
+  - Etant donne l'item `40 + 25`, quand l'enfant se trompe et lit l'indice, alors le texte servi
+    est exactement : *"40 est un nombre rond : ajoute d'abord 40 et 20, puis les 5 qui restent."*
+  - Etant donne l'item `30 + 47`, meme situation, alors le texte servi est exactement : *"30 est un
+    nombre rond : ajoute d'abord 30 et 40, puis les 7 qui restent."*
+  - Etant donne l'item `60 + 18`, meme situation, alors le texte servi est exactement : *"60 est un
+    nombre rond : ajoute d'abord 60 et 10, puis les 8 qui restent."*
+  - Etant donne l'item `50 + 33`, meme situation, alors le texte servi est exactement : *"50 est un
+    nombre rond : ajoute d'abord 50 et 30, puis les 3 qui restent."*
+  - Etant donne l'item `20 + 36`, meme situation, alors le texte servi est exactement : *"20 est un
+    nombre rond : ajoute d'abord 20 et 30, puis les 6 qui restent."*
+  - Etant donne l'item `48 + 26`, quand ses trois propositions s'affichent, alors elles comportent
+    `64` parmi les distracteurs (en remplacement de `75` ou de `76`, au choix technique de
+    l'auteur), en plus de la bonne reponse `74` et du distracteur restant.
+  - Etant donne le paquet corrige, quand on recompte les 32 items, alors les proprietes deja tenues
+    au premier audit restent tenues sans regression : `ADD-CE1-1` (0 % d'operande nul), `ADD-CE1-2`
+    (les huit bandes de forme), `LON-CE1-1` et `LON-CE1-2`, exactitude des 32 sommes.
+  - Etant donne le Done pedagogique de cette correction, quand `nadia-prof` audite le paquet corrige
+    en le jouant, alors elle confirme explicitement, par item, que `ADD-CE1-R1` et `ADD-CE1-R2` sont
+    levees ; le statut de `MAT-CE1-03` ne passe pas a `couvert-valide` par ce seul lot, les trois
+    sous-parties ci-dessous restant hors de son perimetre.
+- **Ce que cette story ne fait pas** : elle ne touche a aucun autre item du paquet que les six cites
+  ci-dessus ; elle ne sert ni les soustractions, ni les complements a la dizaine pris pour eux-memes,
+  ni les moities.
+- **Lien decision** : `DEC-0091` (objectif de fermeture de s38), `DEC-0089` (perimetre CE1).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite (correction de donnees dans un
+  paquet existant, perimetre attendu minimal) ; affectation nominative du developpement par
+  `sofia-sm` une fois cet avis rendu (`DEC-0091`, section 2.2) ; `nadia-prof` pour le reaudit et la
+  levee explicite des deux reserves.
+
+### S38-SOUSTRACTIONS - Soustractions dans la limite de 100 (`MAT-CE1-03`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer sur des soustractions un peu plus
+  grandes que celles du CP en jouant au bandit manchot, afin de progresser en calcul mental de la
+  meme facon que pour les additions.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-03`, sous-partie "soustractions dans
+  la limite de 100".
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** (`DEC-0091`, section 4) : `ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-
+  l-echelle-100.md` porte exclusivement sur les additions et le dit explicitement ("Il ne dit rien
+  des soustractions de `MAT-CE1-03`, hors perimetre de `S37-1`"). Aucune borne de tirage ni forme de
+  distracteur n'existe pour la soustraction a cette echelle. Questions ouvertes de la meme famille
+  que celles tranchees pour les additions : la proportion tolerable de soustractions a soustracteur
+  nul (`a - 0`) ou a resultat nul (`a - a`), la repartition par forme (avec ou sans emprunt, a
+  l'image des bandes `ADD-CE1-2`), et la plausibilite des distracteurs (notamment si l'erreur
+  classique "emprunt oublie" doit y figurer, a l'image de la retenue oubliee pour l'addition).
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle presente
+    une soustraction `a - b` de deux nombres entiers compris entre 0 et 100, avec `a >= b` (jamais de
+    resultat negatif) et `a` lui-meme au plus 100.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs plausibles et entiers, jamais negatifs.
+  - Etant donne l'arbitrage pedagogique prealable de `nadia-prof` sur ce lot, quand il fixe une
+    repartition par forme et des bornes de tirage, alors le paquet livre les tient - mesuree sur la
+    liste des items pour un paquet statique, ou sur 200 000 tirages a graine fixee pour un paquet
+    generatif (meme protocole que `ADD-CE1-2`).
+  - Etant donne le champ `enonce` d'un item, s'il est distinct de l'expression elle-meme, quand il
+    s'affiche, alors il respecte `LON-CE1-1` et `LON-CE1-2`.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-03` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand il est rendu, alors le statut de
+    `MAT-CE1-03` ne passe a `couvert-valide` que si les deux autres sous-parties ci-dessous et les
+    additions (deja `en cours`) sont, elles aussi, couvertes et validees.
+- **Ce que cette story ne fait pas** : elle ne fixe aucune borne de tirage ni aucune forme de
+  distracteur pour la soustraction - reste entierement a `nadia-prof` ; elle ne choisit pas le
+  mecanisme technique (paquet statique, reutilisation ou adaptation d'un mecanisme generatif) -
+  reste a `theo-archi` ; elle ne sert ni les complements a la dizaine pris pour eux-memes, ni les
+  moities.
+- **Lien decision** : `DEC-0091`, `DEC-0089`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable, condition d'entree
+  avant tout avis de faisabilite ; `theo-archi` ensuite ; affectation nominative du developpement
+  par `sofia-sm` une fois l'avis rendu (`DEC-0091`, section 2.2).
+
+### S38-COMPLEMENTS-DIZAINE - Complements a la dizaine pris pour eux-memes, forme `47 + ? = 50`
+### (`MAT-CE1-03`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a trouver le nombre qui manque pour
+  atteindre la dizaine superieure en jouant au bandit manchot, afin de savoir utiliser cette
+  strategie seule, et pas seulement la reconnaitre noyee parmi d'autres additions.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-03`, sous-partie "complements a la
+  dizaine pris pour eux-memes" (prolonge `MAT-CP-05`, "Compléments à 10").
+- **Ce qui distingue ce lot du premier paquet livre a s37** : `bandit-manchot-additions-ce1` sert
+  deja le complement a la dizaine comme l'une de huit formes possibles a l'interieur d'un item
+  `a + b = ?` (`ADD-CE1-2`, forme 4). Ce lot est une **forme d'item differente** : la dizaine cible
+  est donnee, l'un des deux termes est inconnu (`47 + ? = 50`), ce qu'aucun item du premier paquet ne
+  pose (`FICHE-bandit-manchot-additions-ce1.md`, section 8 : "les complements a la dizaine pris pour
+  eux-memes... restent entiers").
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** (`DEC-0091`, section 4) : aucun arbitrage existant ne fixe les bornes de `a` et de
+  la dizaine cible pour cette forme, ni la plausibilite des distracteurs d'un item a inconnue
+  (question de meme famille que celle tranchee pour les additions completes par
+  `ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md`, mais non couverte par lui).
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle presente
+    un complement a la dizaine de la forme "`a` + ? = `d`", ou `d` est un multiple de dix et `a` est
+    strictement inferieur a `d`, dans les bornes que l'arbitrage pedagogique prealable de
+    `nadia-prof` fixe.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse (`d - a`)
+    y figure exactement une fois, avec des distracteurs plausibles fixes par ce meme arbitrage,
+    jamais negatifs ni non entiers.
+  - Etant donne l'arbitrage pedagogique prealable, quand il fixe une repartition par forme et des
+    bornes de tirage, alors le paquet livre les tient - meme methode de mesure que `ADD-CE1-2`.
+  - Etant donne le champ `enonce` d'un item, s'il est distinct de l'expression elle-meme, quand il
+    s'affiche, alors il respecte `LON-CE1-1` et `LON-CE1-2`.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-03` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand il est rendu, alors le statut de
+    `MAT-CE1-03` ne passe a `couvert-valide` que si les deux autres sous-parties de ce sprint et les
+    additions (deja `en cours`) sont, elles aussi, couvertes et validees.
+- **Ce que cette story ne fait pas** : elle ne fixe ni les bornes de `a` et de `d`, ni la forme des
+  distracteurs - reste entierement a `nadia-prof` ; elle ne choisit pas le mecanisme technique - reste
+  a `theo-archi` ; elle ne sert ni les soustractions, ni les moities.
+- **Lien decision** : `DEC-0091`, `DEC-0089`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable ; `theo-archi` ensuite ;
+  affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0091`, section
+  2.2).
+
+### S38-MOITIES - Moities (`MAT-CE1-03`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a trouver la moitie d'un nombre en
+  jouant au bandit manchot, afin de consolider une strategie de calcul mental nommee par ma
+  competence.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-03`, sous-partie "moities".
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** (`DEC-0091`, section 4) : aucun arbitrage existant ne dit si `n` doit rester pair
+  (moitie entiere garantie) ou si un traitement des nombres impairs est attendu, ni les bornes de
+  tirage de `n`, ni la plausibilite des distracteurs - question de meme famille que celles deja
+  tranchees pour les additions, non couverte par `ARBITRAGE-s37-operande-nul-et-forme-du-tirage-
+  a-l-echelle-100.md`.
+- **Criteres d'acceptation** :
+  - Etant donne une manche generee par ce contenu, quand la question s'affiche, alors elle presente
+    un nombre entier `n`, dans les bornes et sous la contrainte de parite que l'arbitrage
+    pedagogique prealable de `nadia-prof` fixe.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse (la moitie
+    de `n`, un entier) y figure exactement une fois, avec des distracteurs plausibles fixes par ce
+    meme arbitrage, jamais negatifs ni non entiers.
+  - Etant donne l'arbitrage pedagogique prealable, quand il fixe une repartition par forme et des
+    bornes de tirage, alors le paquet livre les tient - meme methode de mesure que `ADD-CE1-2`.
+  - Etant donne le champ `enonce` d'un item, s'il est distinct de l'expression elle-meme, quand il
+    s'affiche, alors il respecte `LON-CE1-1` et `LON-CE1-2`.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-03` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand il est rendu, alors le statut de
+    `MAT-CE1-03` ne passe a `couvert-valide` que si les deux autres sous-parties de ce sprint et les
+    additions (deja `en cours`) sont, elles aussi, couvertes et validees.
+- **Ce que cette story ne fait pas** : elle ne fixe ni la contrainte de parite de `n`, ni ses bornes,
+  ni la forme des distracteurs - reste entierement a `nadia-prof` ; elle ne choisit pas le mecanisme
+  technique - reste a `theo-archi` ; elle ne sert ni les soustractions, ni les complements a la
+  dizaine pris pour eux-memes.
+- **Lien decision** : `DEC-0091`, `DEC-0089`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable ; `theo-archi` ensuite ;
+  affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0091`, section
+  2.2).
+
 
 
