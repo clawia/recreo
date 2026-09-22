@@ -1,7 +1,11 @@
 # Planning - s39 - couverture maximale sur six lignes candidates
 
-- **Horodatage de debut** : 2026-09-22 (aucune heure locale fiable transmise avec la consigne de
-  ce planning - je ne fabrique pas de precision que je n'ai pas).
+- **Horodatage de debut** : 2026-09-22 14:45 (UTC+02:00) - horodatage du commit de ce fichier
+  (`5a7a2312`), verifiable (`git log -1 --format=%ci 5a7a2312`). Aucune heure locale fiable n'a
+  ete transmise avec la consigne recue de MASTER (section 2) ; la precision retenue ici est celle
+  de l'ecriture de ce planning, pas celle, non fabriquee, de la reception de la consigne.
+  Complement ajoute a la cloture (`sofia-sm`) pour que `outils/rapport-tokens.py` puisse borner la
+  fenetre du sprint - le reste de ce document est inchange depuis l'ouverture.
 - **Casquette** : `sofia-sm`, Scrum Master.
 - **Slug** : `s39-couverture-maximale-six-lignes-candidates`, choisi par `sofia-sm` a l'ouverture -
   aucun agent n'avait encore prepare de worktree pour ce sprint.

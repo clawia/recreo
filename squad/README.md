@@ -557,6 +557,19 @@ la fusion - ; ce qui est degrade est l'experience locale, et c'est de la que vie
 un agent qui apprend a lire un rouge comme "ce n'est pas le mien" finit par le lire ainsi le jour ou
 il l'est.
 
+**Sofia ouvre elle-meme le worktree de l'agent qu'elle route, dans le meme geste que le routage,
+plutot que de compter sur cet agent pour s'en souvenir** (amendement s39, retro de s39). Cinq
+occurrences de la meme faute en trente-neuf sprints (s06, s18, s21/22, s38, s39), quatre tentatives
+de texte deja portees par cette section - dont un refus explicite a s38, au motif, toujours valide,
+que le texte ne manquait de rien - et un engagement personnel non ecrit de Sofia elle-meme a s38
+qui n'a pas mieux tenu qu'un texte deja ecrit quatre fois. A s39, `camille-po` a de nouveau ecrit
+directement sur `round-two` sans worktree ni fusion, et cette fois le retard correspondant a fait
+rougir le reacteur avant d'etre corrige. Ce qui change n'est pas la regle de fond - elle reste
+celle de s06 - mais l'acteur qui en repond : desormais Sofia cree le worktree au moment ou elle
+route, de sorte que l'agent route trouve un worktree deja pret plutot que d'avoir a s'en souvenir.
+Cela ne dispense aucun agent de la regle telle qu'ecrite depuis s06 : un agent qui recevrait un
+routage sans worktree deja ouvert (defaillance de Sofia elle-meme) en reste tenu.
+
 **Un sprint peut etre pilote par des arbitrages successifs de l'autorite produit plutot que par un
 objectif gele au planning, et le process le nomme plutot que de le taire** (amendement s15, cloture
 de s15). Dans ce mode, l'utilisatrice joue l'increment livre, rend un arbitrage, et ce rendu
