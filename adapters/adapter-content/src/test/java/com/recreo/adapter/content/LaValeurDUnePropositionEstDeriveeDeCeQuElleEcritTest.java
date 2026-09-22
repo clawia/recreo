@@ -418,6 +418,39 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
     }
 
     /**
+     * <b>ADR-0068, la forme decimale a la virgule - affirmee par sa Javadoc, prouvee par rien
+     * jusqu'ici.</b> {@code unChiffreEstRestePourCompte} nomme <i>"une ecriture decimale a la
+     * virgule"</i> parmi les formes qu'il attrape, et aucune assertion du depot ne l'exercait : le
+     * corpus servi n'en ecrit aucune (mesure du 2026-09-22, aucun fichier de {@code contenu/} ne
+     * porte un chiffre suivi d'une virgule puis d'un chiffre). <b>Le premier paquet qui en ecrira
+     * une est celui de la monnaie CE1</b>, et sa conception repose entierement sur ce que cette
+     * lecture rend. Une affirmation de Javadoc sur laquelle un lot s'appuie est un souhait tant
+     * qu'une assertion ne la tient pas.
+     *
+     * <p>Les deux formes voisines sont la pour la meme raison : un montant en une seule unite reste
+     * dans le domaine avec son unite pour reste, un montant en deux unites en sort. Ce test ne dit
+     * pas laquelle des deux ecritures le paquet doit choisir - c'est la contrainte de conception de
+     * l'avis de faisabilite de s39, section 21, et le choix du libelle appartient a
+     * {@code nadia-prof}.</p>
+     */
+    @Test
+    void uneEcritureDecimaleALaVirguleSortDuDomaineEtUnMontantEntierYReste() {
+        assertThat(LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.lireValeur("3,50 euros"))
+                .as("ADR-0068 : \"3,50 euros\" laisse \",50 euros\" derriere la lecture de 3, et"
+                        + " cette valeur-la n'est pas celle de la proposition")
+                .isNull();
+        assertThat(LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest
+                .lireValeur("3 euros 50"))
+                .as("meme cas sous une autre graphie : le reste porte encore un chiffre")
+                .isNull();
+        assertThat(LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.lireValeur("350 centimes"))
+                .as("un montant ecrit en une seule unite entiere reste dans le domaine, avec son"
+                        + " unite pour reste - c'est la clause du reste d'ADR-0041 qui le garde")
+                .isEqualTo(new LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.Lue(350,
+                        "centimes"));
+    }
+
+    /**
      * ADR-0003 : les deux clauses ne prouvent rien si la production ne leur offre aucun item du
      * domaine a juger. Ce n'est pas une redite des assertions de non-vacuite ci-dessus, qui ne
      * comptent que les paquets : un depot ou plus aucune proposition n'aurait de valeur les

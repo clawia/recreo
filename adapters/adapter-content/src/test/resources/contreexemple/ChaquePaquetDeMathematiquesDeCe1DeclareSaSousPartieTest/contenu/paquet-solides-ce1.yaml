@@ -1,0 +1,23 @@
+# JEU FAUTIF, JAMAIS SERVI. Le paquet fautif de la clause d ADR-0098 : sa competence est bien
+# allouee, mais elle l est sur MAT-CE1-03, une ligne que ce paquet ne declare pas. Il sert
+# MAT-CE1-16 et entrerait, vert et muet, dans la population derivee du garde-fou des additions.
+# C est le geste que l elargissement de l allocation aux lignes de s39 rendrait gratuit sans cette
+# clause.
+schema: 1
+id: paquet-solides-ce1
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Espace et géométrie"
+  competence: "Calcul mental - additions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-16"]
+items:
+  - enonce: "Quel solide a six faces carrees ?"
+    bonneReponse: "Le cube"
+    distracteurs: ["La boule", "Le cone"]
+    indice: "Compte les faces d un de a jouer."
+  - enonce: "Quel solide roule dans toutes les directions ?"
+    bonneReponse: "La boule"
+    distracteurs: ["Le cube", "Le pave droit"]
+    indice: "Pense a un ballon."

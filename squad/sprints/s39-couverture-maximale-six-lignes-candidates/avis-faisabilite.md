@@ -660,3 +660,90 @@ priorise rien (`DEC-0092`, section 5). Elle ne prononce aucun Done, et elle ne d
 lignes bougeront dans la matrice - un statut suit un Done pedagogique, jamais un avis de
 faisabilite.
 
+
+---
+
+# s39 - Ajout date du 2026-09-22 (`theo-archi`) - l'ecriture des montants de `S39-MONNAIE`
+
+- **Ce que cet ajout est.** La reponse a la question laissee ouverte en section 19.2 - *comment
+  `S39-MONNAIE` existe sans violer `ADR-0068`*. Aucun mot des sections 1 a 20 n'est modifie ni
+  retire. La ceremonie de s39 n'est pas close.
+- **Base** : `round-two` a `77e441e2`, plus le worktree `s39-theo-adr` qui porte `ADR-0098`.
+- **Version de mesure** : `bash outils/mvn-jdk21.sh`, qui a rapporte **`Maven lance sur le JDK de
+  la toolchain jdk 21 : 21.0.10`** - la version que la machine virtuelle des tests rapporte
+  (`ADR-0071`).
+
+## 21. `S39-MONNAIE` - la contrainte de conception, et pourquoi elle n'est pas un `ADR`
+
+### 21.1 Ce que j'ai mesure plutot que suppose
+
+Trois lectures, sur la lecture reelle du depot et non sur une copie :
+
+| Ecriture | Ce que `lireValeur` rend | Consequence |
+|---|---|---|
+| `3,50 euros` | `null` | hors du domaine numerique |
+| `3 euros 50` | `null` | hors du domaine numerique |
+| `350 centimes` | valeur `350`, reste `centimes` | dans le domaine |
+
+Le critere est le chiffre laisse derriere la lecture, jamais la forme qui le porte (`ADR-0068`,
+`ADR-0039`) : une virgule decimale, une liste, une fraction et un intervalle sont attrapees par la
+meme ligne de code.
+
+**Ces trois lectures etaient affirmees par une Javadoc et prouvees par rien.** Aucune assertion du
+depot n'exercait la forme decimale, et le corpus servi n'en ecrit aucune - mesure du 2026-09-22,
+aucun fichier de `adapters/adapter-content/src/main/resources/contenu/` ne porte un chiffre suivi
+d'une virgule puis d'un chiffre. Une affirmation de Javadoc sur laquelle un lot entier s'appuie est
+un souhait tant qu'une assertion ne la tient pas : elle est desormais tenue par
+`uneEcritureDecimaleALaVirguleSortDuDomaineEtUnMontantEntierYReste`, dans
+`adapters/adapter-content/src/test/java/com/recreo/adapter/content/LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest.java`.
+Mesure : `Tests run: 10, Failures: 0` sur ce fichier, `-pl adapters/adapter-content -am`.
+
+### 21.2 La contrainte, en trois clauses
+
+Elles sont techniques et elles sont de ma main. Elles ne choisissent pas le libelle des montants.
+
+**C1 - les trois propositions d'un item se tiennent dans une seule unite.** Deja ecrite en 19.3, elle
+vient de la clause de reste identique d'`ADR-0041` et elle vaut quelle que soit l'ecriture retenue.
+
+**C2 - tout item dont une proposition ecrit deux nombres sort du domaine numerique, et sa sortie se
+declare.** Les deux mecanismes existent, leurs noms sont verifies dans le code, et le paquet entre
+dans **l'un des deux, jamais les deux** :
+
+| Cas | Mecanisme | Fichier | Ce qui est du |
+|---|---|---|---|
+| Une partie des items seulement | `PAQUETS_A_ITEMS_ECARTES` | `LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest.java` | le **nombre exact** d'items ecartes, mesure sur le paquet livre |
+| Tous les items | `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` | `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest.java` | un **motif ecrit**, dont chaque compte cite est mesure |
+
+Ni l'un ni l'autre n'a de plafond, et ce n'est pas un oubli : un contenu textuel de plus n'est pas
+une degradation, c'est le programme scolaire. Les deux refusent en revanche de pourrir dans les deux
+sens - un paquet non declare est rouge, une declaration qui ne correspond plus est rouge, un compte
+faux est rouge.
+
+**C3 - `ADR-0068` n'est pas rouvert.** Personne n'apprend a `lireValeur` a lire une virgule. Le
+motif n'est pas la prudence : une lecture qui rendrait 350 sur `3,50 euros` la comparerait a 3 sur
+`3 euros`, soit deux echelles dans une meme comparaison - exactement le faux vert qu'`ADR-0068` a
+ferme. Une lecture decimale correcte demanderait de connaitre l'unite de chaque proposition, donc de
+faire entrer le sens de l'unite dans un garde-fou qui ne lit aujourd'hui que des chiffres.
+
+### 21.3 Pourquoi ce n'est pas un `ADR`
+
+Parce qu'aucune de ces trois clauses n'est une decision neuve. `ADR-0068` decide la lecture,
+`ADR-0041` decide la declaration partielle et la clause de reste, `ADR-0051` decide la declaration
+totale. Les trois sont en vigueur, gardees, et elles mordent sur `S39-MONNAIE` sans qu'une ligne
+bouge. **Un `ADR` qui redirait ce que trois `ADR` decident deja serait decoratif**, et ecrire un
+`ADR` apres coup pour documenter une pratique deja reglee est ce que mon mandat m'interdit.
+
+**Ce qui me ferait changer d'avis, ecrit maintenant** : un second besoin d'ecriture decimale, hors de
+la monnaie - les nombres decimaux de CM2 en sont le candidat evident. Deux paquets sur lesquels
+aucun garde-fou de rang ne porte, pour la meme cause, cesseraient d'etre un cas et deviendraient une
+famille ; une lecture decimale qui declare son echelle deviendrait alors un usage constate, et elle
+se deciderait en `ADR`. Aujourd'hui c'est un paquet.
+
+### 21.4 Ce que cet ajout ne dit pas
+
+Il ne choisit pas l'ecriture des montants. `MON-CE1-1` impose des centimes en multiples de 5 et
+`MON-CE1-3` impose des items de rendu : ecrire `3,50 euros`, `3 euros 50` ou `350 centimes` est un
+arbitrage pedagogique de `nadia-prof`, et les trois sont **techniquement servables** - les deux
+premieres au prix d'une declaration mesuree, la troisieme sans declaration mais sous une graphie
+qu'elle seule peut juger acceptable pour un enfant de CE1. Il ne prononce aucun Done, n'affecte
+personne et ne priorise rien (`DEC-0092`, section 5).

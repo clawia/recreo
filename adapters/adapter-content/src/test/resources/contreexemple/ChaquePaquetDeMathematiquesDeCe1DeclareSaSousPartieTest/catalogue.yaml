@@ -1,5 +1,7 @@
-# JEU FAUTIF, JAMAIS SERVI. Quatre entrees, dont deux seulement entrent dans le perimetre
-# d'ADR-0097 (mathematiques de CE1), et une seule de ces deux est fautive.
+# JEU FAUTIF, JAMAIS SERVI. Cinq entrees, dont trois seulement entrent dans le perimetre
+# d'ADR-0097 (mathematiques de CE1), et deux de ces trois sont fautives - une par clause :
+# la sous-partie non allouee (ADR-0097), la sous-partie allouee sur une ligne non declaree
+# (ADR-0098).
 schema: 1
 jeux:
   - id: bandit-manchot-paquet-conforme-ce1
@@ -13,6 +15,12 @@ jeux:
     consigne: "Combien ca fait ?"
     mecanique: bandit-manchot
     paquet: paquet-moities-ce1
+    nombreDeManches: 10
+  - id: bandit-manchot-paquet-solides-ce1
+    titre: "Les solides usuels"
+    consigne: "Quel solide convient ?"
+    mecanique: bandit-manchot
+    paquet: paquet-solides-ce1
     nombreDeManches: 10
   - id: bandit-manchot-paquet-francais-ce1
     titre: "Le bon petit mot"
