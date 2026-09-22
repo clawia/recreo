@@ -11,9 +11,23 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s38, le 2026-09-22.** Six identifiants ajoutes, tous ecrits dans
+`squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` : `SOU-CE1-1`
+et `SOU-CE1-2` (soustractions dans la limite de 100), `CDZ-CE1-1` et `CDZ-CE1-2` (complements a la
+dizaine pris pour eux-memes), `MOI-CE1-1` et `MOI-CE1-2` (moities). **Trois prefixes neufs -
+`SOU`, `CDZ`, `MOI`** - verifies absents de la table de la section 4 avant allocation (`COMP` y
+etait deja alloue a une autre famille de conditions, francais CM1 et mecanique, sans rapport avec
+le complement a la dizaine ; je ne le reprends donc pas, pour ne pas faire porter deux sens
+differents au meme prefixe). Ligne d'etat courant portee de **659 / 105 a 665 / 108**. Methode :
+comptage des lignes de la table de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`,
+identifiant et document entre accents graves, `ADR-0085` clause 5), prefixe pris comme **premier
+segment** de l'identifiant. Sur mon worktree dedie, avant mon diff : 659 identifiants distincts,
+105 prefixes distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le fichier
+declarait.
+
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `659` identifiants alloues, `105` prefixes distincts.
+**Compte courant, verifie par la CI** : `665` identifiants alloues, `108` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -588,6 +602,12 @@ clause 2 par une exemption.
 | `ADD-CE1-2` | `squad/conformite/ARBITRAGE-s37-operande-nul-et-forme-du-tirage-a-l-echelle-100.md` |
 | `ADD-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-additions-ce1.md` |
 | `ADD-CE1-R2` | `squad/conformite/FICHE-bandit-manchot-additions-ce1.md` |
+| `SOU-CE1-1` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
+| `SOU-CE1-2` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
+| `CDZ-CE1-1` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
+| `CDZ-CE1-2` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
+| `MOI-CE1-1` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
+| `MOI-CE1-2` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
 | `AGN-1` | `squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-cm1.md` |
 | `AGN-2` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
 | `AGN-3` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
