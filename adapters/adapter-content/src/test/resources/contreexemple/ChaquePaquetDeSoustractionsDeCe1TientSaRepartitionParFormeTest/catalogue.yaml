@@ -1,0 +1,21 @@
+# JEU FAUTIF, JAMAIS SERVI. Trois entrees de CE1, une seule dont le paquet est fautif.
+schema: 1
+jeux:
+  - id: bandit-manchot-paquet-conforme-ce1
+    titre: "Les soustractions rangees"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-conforme-ce1
+    nombreDeManches: 10
+  - id: bandit-manchot-paquet-fautif-ce1
+    titre: "Les soustractions penchees"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-fautif-ce1
+    nombreDeManches: 10
+  - id: bandit-manchot-paquet-additions-ce1
+    titre: "Les ajouts"
+    consigne: "Combien ca fait ?"
+    mecanique: bandit-manchot
+    paquet: paquet-additions-ce1
+    nombreDeManches: 10

@@ -1,0 +1,93 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0013 obligation 3, SOU-CE1-2).
+# Le defaut est ici : tous les items ont un soustracteur nul (b = 0), tres au dela du
+# plafond de 5 % que SOU-CE1-1 fixe.
+schema: 1
+id: paquet-fautif-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - soustractions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "1 - 0 = ?"
+    bonneReponse: "1"
+    distracteurs: ["2", "3"]
+    indice: "Rien a enlever."
+  - enonce: "2 - 0 = ?"
+    bonneReponse: "2"
+    distracteurs: ["3", "4"]
+    indice: "Rien a enlever."
+  - enonce: "3 - 0 = ?"
+    bonneReponse: "3"
+    distracteurs: ["4", "5"]
+    indice: "Rien a enlever."
+  - enonce: "4 - 0 = ?"
+    bonneReponse: "4"
+    distracteurs: ["5", "6"]
+    indice: "Rien a enlever."
+  - enonce: "5 - 0 = ?"
+    bonneReponse: "5"
+    distracteurs: ["6", "7"]
+    indice: "Rien a enlever."
+  - enonce: "6 - 0 = ?"
+    bonneReponse: "6"
+    distracteurs: ["7", "8"]
+    indice: "Rien a enlever."
+  - enonce: "7 - 0 = ?"
+    bonneReponse: "7"
+    distracteurs: ["8", "9"]
+    indice: "Rien a enlever."
+  - enonce: "8 - 0 = ?"
+    bonneReponse: "8"
+    distracteurs: ["9", "10"]
+    indice: "Rien a enlever."
+  - enonce: "9 - 0 = ?"
+    bonneReponse: "9"
+    distracteurs: ["10", "11"]
+    indice: "Rien a enlever."
+  - enonce: "10 - 0 = ?"
+    bonneReponse: "10"
+    distracteurs: ["11", "12"]
+    indice: "Rien a enlever."
+  - enonce: "11 - 0 = ?"
+    bonneReponse: "11"
+    distracteurs: ["12", "13"]
+    indice: "Rien a enlever."
+  - enonce: "12 - 0 = ?"
+    bonneReponse: "12"
+    distracteurs: ["13", "14"]
+    indice: "Rien a enlever."
+  - enonce: "13 - 0 = ?"
+    bonneReponse: "13"
+    distracteurs: ["14", "15"]
+    indice: "Rien a enlever."
+  - enonce: "14 - 0 = ?"
+    bonneReponse: "14"
+    distracteurs: ["15", "16"]
+    indice: "Rien a enlever."
+  - enonce: "15 - 0 = ?"
+    bonneReponse: "15"
+    distracteurs: ["16", "17"]
+    indice: "Rien a enlever."
+  - enonce: "16 - 0 = ?"
+    bonneReponse: "16"
+    distracteurs: ["17", "18"]
+    indice: "Rien a enlever."
+  - enonce: "17 - 0 = ?"
+    bonneReponse: "17"
+    distracteurs: ["18", "19"]
+    indice: "Rien a enlever."
+  - enonce: "18 - 0 = ?"
+    bonneReponse: "18"
+    distracteurs: ["19", "20"]
+    indice: "Rien a enlever."
+  - enonce: "19 - 0 = ?"
+    bonneReponse: "19"
+    distracteurs: ["20", "21"]
+    indice: "Rien a enlever."
+  - enonce: "20 - 0 = ?"
+    bonneReponse: "20"
+    distracteurs: ["21", "22"]
+    indice: "Rien a enlever."

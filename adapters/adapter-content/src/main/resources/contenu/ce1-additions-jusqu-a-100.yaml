@@ -70,23 +70,23 @@ items:
   - enonce: "40 + 25 = ?"
     bonneReponse: "65"
     distracteurs: ["66", "67"]
-    indice: "40 est un nombre rond : ajoute-le aux dizaines de 25."
+    indice: "40 est un nombre rond : ajoute d'abord 40 et 20, puis les 5 qui restent."
   - enonce: "30 + 47 = ?"
     bonneReponse: "77"
     distracteurs: ["76", "78"]
-    indice: "30 est un nombre rond : ajoute-le aux dizaines de 47."
+    indice: "30 est un nombre rond : ajoute d'abord 30 et 40, puis les 7 qui restent."
   - enonce: "60 + 18 = ?"
     bonneReponse: "78"
     distracteurs: ["76", "77"]
-    indice: "60 est un nombre rond : ajoute-le aux dizaines de 18."
+    indice: "60 est un nombre rond : ajoute d'abord 60 et 10, puis les 8 qui restent."
   - enonce: "50 + 33 = ?"
     bonneReponse: "83"
     distracteurs: ["84", "85"]
-    indice: "50 est un nombre rond : ajoute-le aux dizaines de 33."
+    indice: "50 est un nombre rond : ajoute d'abord 50 et 30, puis les 3 qui restent."
   - enonce: "20 + 36 = ?"
     bonneReponse: "56"
     distracteurs: ["55", "57"]
-    indice: "20 est un nombre rond : ajoute-le aux dizaines de 36."
+    indice: "20 est un nombre rond : ajoute d'abord 20 et 30, puis les 6 qui restent."
   - enonce: "34 + 7 = ?"
     bonneReponse: "41"
     distracteurs: ["39", "40"]
@@ -137,7 +137,7 @@ items:
     indice: "6 et 8 dépassent dix : n'oublie pas la dizaine qu'ils forment."
   - enonce: "48 + 26 = ?"
     bonneReponse: "74"
-    distracteurs: ["75", "76"]
+    distracteurs: ["64", "76"]
     indice: "8 et 6 dépassent dix : n'oublie pas la dizaine qu'ils forment."
   - enonce: "59 + 23 = ?"
     bonneReponse: "82"

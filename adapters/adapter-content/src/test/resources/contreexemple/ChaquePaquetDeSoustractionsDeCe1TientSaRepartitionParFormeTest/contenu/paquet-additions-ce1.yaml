@@ -1,0 +1,21 @@
+# JEU FAUTIF, JAMAIS SERVI. Ce paquet declare la competence des additions, pas celle des
+# soustractions : il doit sortir du perimetre derive par la competence (ADR-0097), meme si un
+# item malicieux ci-dessous porte un enonce en "a - b = ?".
+schema: 1
+id: paquet-additions-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - additions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "8 + 5 = ?"
+    bonneReponse: "13"
+    distracteurs: ["14", "15"]
+    indice: "Ajoute les dizaines, puis les unites."
+  - enonce: "23 - 15 = ?"
+    bonneReponse: "8"
+    distracteurs: ["9", "10"]
+    indice: "Ceci est un piege : cet item porte un enonce de soustraction sous une competence"
