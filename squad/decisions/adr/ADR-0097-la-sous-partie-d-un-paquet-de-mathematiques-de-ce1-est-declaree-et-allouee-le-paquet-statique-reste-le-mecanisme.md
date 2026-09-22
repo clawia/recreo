@@ -1,6 +1,8 @@
 # ADR-0097 - Declarer la sous-partie de `MAT-CE1-03` dans le descripteur du paquet et l'allouer en un seul endroit, et servir les soustractions et les moities de CE1 par des paquets statiques
 
-- **Statut** : Accepte
+- **Statut** : Accepte. **Etendu par `ADR-0098` le 2026-09-22** (s39) : l'allocation de la decision 2
+  nomme desormais la ligne de referentiel de chaque sous-partie et ne vaut plus pour `MAT-CE1-03`
+  seule. La decision et la regle ci-dessous sont inchangees ; seule leur portee s'elargit.
 - **Date** : 2026-09-22
 - **Auteur** : theo-archi
 - **Sprint** : s38
