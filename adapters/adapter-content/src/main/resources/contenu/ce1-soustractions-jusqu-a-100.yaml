@@ -1,0 +1,147 @@
+# MAT-CE1-03, sous-partie "soustractions dans la limite de 100" (S38-SOUSTRACTIONS).
+# La repartition par forme tient SOU-CE1-2 (arbitrage de nadia-prof du 2026-09-22) et
+# elle est exacte, pas estimee : 32 items, 0 soustracteur nul, 0 resultat nul, 6
+# differences faciles (<= 20), 5 soustractions d'un nombre rond, 7 items "un chiffre
+# soustrait", 7 items deux a deux chiffres sans emprunt, 7 items deux a deux chiffres
+# avec emprunt. Le garde-fou qui la verifie est
+# ChaquePaquetDeSoustractionsDeCe1TientSaRepartitionParFormeTest ; l'ordre de priorite
+# des sept cases est celui de la section 1.3 de l'arbitrage, et il est encode la-bas,
+# pas ici.
+schema: 1
+id: ce1-soustractions-jusqu-a-100
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - soustractions dans la limite de 100"
+lignesDeReferentiel: ["MAT-CE1-03"]
+items:
+  - enonce: "23 - 15 = ?"
+    bonneReponse: "8"
+    distracteurs: ["38", "15"]
+    indice: "Pars de 15 et compte tes pas jusqu'à 23."
+  - enonce: "34 - 19 = ?"
+    bonneReponse: "15"
+    distracteurs: ["53", "19"]
+    indice: "Pars de 19 et compte tes pas jusqu'à 34."
+  - enonce: "45 - 28 = ?"
+    bonneReponse: "17"
+    distracteurs: ["73", "28"]
+    indice: "Pars de 28 et compte tes pas jusqu'à 45."
+  - enonce: "52 - 39 = ?"
+    bonneReponse: "13"
+    distracteurs: ["91", "39"]
+    indice: "Pars de 39 et compte tes pas jusqu'à 52."
+  - enonce: "61 - 44 = ?"
+    bonneReponse: "17"
+    distracteurs: ["105", "44"]
+    indice: "Pars de 44 et compte tes pas jusqu'à 61."
+  - enonce: "78 - 60 = ?"
+    bonneReponse: "18"
+    distracteurs: ["138", "60"]
+    indice: "Pars de 60 et compte tes pas jusqu'à 78."
+  - enonce: "87 - 30 = ?"
+    bonneReponse: "57"
+    distracteurs: ["30", "117"]
+    indice: "30 est un nombre rond : enlève-le d'un coup à 87."
+  - enonce: "95 - 20 = ?"
+    bonneReponse: "75"
+    distracteurs: ["20", "115"]
+    indice: "20 est un nombre rond : enlève-le d'un coup à 95."
+  - enonce: "76 - 40 = ?"
+    bonneReponse: "36"
+    distracteurs: ["40", "116"]
+    indice: "40 est un nombre rond : enlève-le d'un coup à 76."
+  - enonce: "68 - 10 = ?"
+    bonneReponse: "58"
+    distracteurs: ["10", "78"]
+    indice: "10 est un nombre rond : enlève-le d'un coup à 68."
+  - enonce: "90 - 40 = ?"
+    bonneReponse: "50"
+    distracteurs: ["40", "130"]
+    indice: "40 est un nombre rond : enlève-le d'un coup à 90."
+  - enonce: "45 - 3 = ?"
+    bonneReponse: "42"
+    distracteurs: ["3", "20"]
+    indice: "Pars de 45 et recule de 3, unité par unité."
+  - enonce: "57 - 4 = ?"
+    bonneReponse: "53"
+    distracteurs: ["4", "25"]
+    indice: "Pars de 57 et recule de 4, unité par unité."
+  - enonce: "68 - 5 = ?"
+    bonneReponse: "63"
+    distracteurs: ["5", "30"]
+    indice: "Pars de 68 et recule de 5, unité par unité."
+  - enonce: "79 - 6 = ?"
+    bonneReponse: "73"
+    distracteurs: ["6", "35"]
+    indice: "Pars de 79 et recule de 6, unité par unité."
+  - enonce: "84 - 7 = ?"
+    bonneReponse: "77"
+    distracteurs: ["91", "7"]
+    indice: "Pars de 84 et recule de 7, unité par unité."
+  - enonce: "91 - 8 = ?"
+    bonneReponse: "83"
+    distracteurs: ["99", "8"]
+    indice: "Pars de 91 et recule de 8, unité par unité."
+  - enonce: "99 - 9 = ?"
+    bonneReponse: "90"
+    distracteurs: ["108", "9"]
+    indice: "Pars de 99 et recule de 9, unité par unité."
+  - enonce: "58 - 13 = ?"
+    bonneReponse: "45"
+    distracteurs: ["13", "71"]
+    indice: "Enlève les dizaines, puis les unités : 8 et 3 se soustraient sans échange."
+  - enonce: "67 - 24 = ?"
+    bonneReponse: "43"
+    distracteurs: ["24", "91"]
+    indice: "Enlève les dizaines, puis les unités : 7 et 4 se soustraient sans échange."
+  - enonce: "79 - 35 = ?"
+    bonneReponse: "44"
+    distracteurs: ["35", "114"]
+    indice: "Enlève les dizaines, puis les unités : 9 et 5 se soustraient sans échange."
+  - enonce: "84 - 41 = ?"
+    bonneReponse: "43"
+    distracteurs: ["41", "125"]
+    indice: "Enlève les dizaines, puis les unités : 4 et 1 se soustraient sans échange."
+  - enonce: "93 - 52 = ?"
+    bonneReponse: "41"
+    distracteurs: ["52", "145"]
+    indice: "Enlève les dizaines, puis les unités : 3 et 2 se soustraient sans échange."
+  - enonce: "76 - 31 = ?"
+    bonneReponse: "45"
+    distracteurs: ["31", "107"]
+    indice: "Enlève les dizaines, puis les unités : 6 et 1 se soustraient sans échange."
+  - enonce: "89 - 47 = ?"
+    bonneReponse: "42"
+    distracteurs: ["47", "136"]
+    indice: "Enlève les dizaines, puis les unités : 9 et 7 se soustraient sans échange."
+  - enonce: "52 - 27 = ?"
+    bonneReponse: "25"
+    distracteurs: ["35", "27"]
+    indice: "Recule de 2 pour atteindre 50, puis encore de 25."
+  - enonce: "63 - 38 = ?"
+    bonneReponse: "25"
+    distracteurs: ["35", "38"]
+    indice: "Recule de 3 pour atteindre 60, puis encore de 35."
+  - enonce: "74 - 49 = ?"
+    bonneReponse: "25"
+    distracteurs: ["35", "49"]
+    indice: "Recule de 4 pour atteindre 70, puis encore de 45."
+  - enonce: "85 - 57 = ?"
+    bonneReponse: "28"
+    distracteurs: ["32", "57"]
+    indice: "Recule de 5 pour atteindre 80, puis encore de 52."
+  - enonce: "91 - 68 = ?"
+    bonneReponse: "23"
+    distracteurs: ["37", "68"]
+    indice: "Recule de 1 pour atteindre 90, puis encore de 67."
+  - enonce: "45 - 19 = ?"
+    bonneReponse: "26"
+    distracteurs: ["34", "19"]
+    indice: "Recule de 5 pour atteindre 40, puis encore de 14."
+  - enonce: "56 - 29 = ?"
+    bonneReponse: "27"
+    distracteurs: ["33", "29"]
+    indice: "Recule de 6 pour atteindre 50, puis encore de 23."

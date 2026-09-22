@@ -242,6 +242,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S37-1 (s37) : entree neuve, premier paquet de mathematiques CE1 (MAT-CE1-03,
             // additions dans la limite de 100), reparti par forme selon ADD-CE1-2.
             "bandit-manchot-additions-ce1",
+            // S38-SOUSTRACTIONS (s38) : entree neuve, second paquet de mathematiques CE1
+            // (MAT-CE1-03, soustractions dans la limite de 100), reparti par forme selon
+            // SOU-CE1-2 (ADR-0097).
+            "bandit-manchot-soustractions-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -379,6 +383,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S37-1 (s37) : titre neuf, premier paquet CE1. Il ne porte pas son niveau
             // (ADR-0078) et se distingue de "Les petites additions", qui sert le CP.
             "Les grandes additions",
+            // S38-SOUSTRACTIONS (s38) : titre neuf, second paquet CE1. Meme convention que
+            // "Les grandes additions" : il ne porte pas son niveau (ADR-0078) et se distingue
+            // de "Les petites soustractions", qui sert le CP.
+            "Les grandes soustractions",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -633,6 +641,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Calcul mental - additions dans la limite de 100",
             "Conjuguer les verbes fréquents au présent, futur et imparfait de l'indicatif",
             "Calcul mental - soustractions dans la limite de 10",
+            // S38-SOUSTRACTIONS (s38) : competence neuve, MAT-CE1-03 sous-partie
+            // "soustractions" (ADR-0097).
+            "Calcul mental - soustractions dans la limite de 100",
             "Comparer deux nombres entiers jusqu'à 100 (<, >, =)",
             "Compléments à 10",
             "Calcul mental - tables de multiplication (jusqu'à ×10), rappel automatisé",

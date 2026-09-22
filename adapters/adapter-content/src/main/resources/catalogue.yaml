@@ -456,3 +456,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-additions-jusqu-a-100
     nombreDeManches: 10
+  - id: bandit-manchot-soustractions-ce1
+    titre: "Les grandes soustractions"
+    consigne: "Combien ça fait ?"
+    mecanique: bandit-manchot
+    paquet: ce1-soustractions-jusqu-a-100
+    nombreDeManches: 10
