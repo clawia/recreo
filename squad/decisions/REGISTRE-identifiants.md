@@ -11,23 +11,22 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
-**Note de `nadia-prof`, s38, le 2026-09-22.** Six identifiants ajoutes, tous ecrits dans
-`squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` : `SOU-CE1-1`
-et `SOU-CE1-2` (soustractions dans la limite de 100), `CDZ-CE1-1` et `CDZ-CE1-2` (complements a la
-dizaine pris pour eux-memes), `MOI-CE1-1` et `MOI-CE1-2` (moities). **Trois prefixes neufs -
-`SOU`, `CDZ`, `MOI`** - verifies absents de la table de la section 4 avant allocation (`COMP` y
-etait deja alloue a une autre famille de conditions, francais CM1 et mecanique, sans rapport avec
-le complement a la dizaine ; je ne le reprends donc pas, pour ne pas faire porter deux sens
-differents au meme prefixe). Ligne d'etat courant portee de **659 / 105 a 665 / 108**. Methode :
+**Note de `nadia-prof`, s38, le 2026-09-22 (audit du paquet de soustractions).** Un identifiant
+ajoute - `SOU-CE1-R1`, la reserve non bloquante ouverte sur le second distracteur des quatre items
+`b < 10` du paquet de soustractions de CE1, ecrite dans
+`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`. **Aucun prefixe neuf** : `SOU` etait
+deja alloue par mes deux clauses de la veille (le paragraphe qui suit), verifie avant allocation.
+Meme forme a trois segments que `ADD-CE1-R1`/`ADD-CE1-R2`, pour la meme raison : nommer une reserve
+de CE1 sans taire le niveau. Ligne d'etat courant portee de **665 / 108 a 666 / 108**. Methode :
 comptage des lignes de la table de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`,
 identifiant et document entre accents graves, `ADR-0085` clause 5), prefixe pris comme **premier
-segment** de l'identifiant. Sur mon worktree dedie, avant mon diff : 659 identifiants distincts,
-105 prefixes distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le fichier
+segment** de l'identifiant. Sur mon worktree dedie, avant mon diff : 665 identifiants distincts,
+108 prefixes distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le fichier
 declarait.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `665` identifiants alloues, `108` prefixes distincts.
+**Compte courant, verifie par la CI** : `666` identifiants alloues, `108` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -46,6 +45,21 @@ de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder. La 
 fusion, comme il l'avait ecrit, et la reparation est arithmetique - aucune allocation ajoutee, aucune
 retiree, aucun sens touche. Les deux notes des instances restent verbatim sous cette ligne : leur
 chiffre est date, le mien est courant.*
+
+**Note de `nadia-prof`, s38, le 2026-09-22 (arbitrage prealable).** Six identifiants ajoutes, tous
+ecrits dans
+`squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` : `SOU-CE1-1`
+et `SOU-CE1-2` (soustractions dans la limite de 100), `CDZ-CE1-1` et `CDZ-CE1-2` (complements a la
+dizaine pris pour eux-memes), `MOI-CE1-1` et `MOI-CE1-2` (moities). **Trois prefixes neufs -
+`SOU`, `CDZ`, `MOI`** - verifies absents de la table de la section 4 avant allocation (`COMP` y
+etait deja alloue a une autre famille de conditions, francais CM1 et mecanique, sans rapport avec
+le complement a la dizaine ; je ne le reprends donc pas, pour ne pas faire porter deux sens
+differents au meme prefixe). Ligne d'etat courant portee de **659 / 105 a 665 / 108**. Methode :
+comptage des lignes de la table de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`,
+identifiant et document entre accents graves, `ADR-0085` clause 5), prefixe pris comme **premier
+segment** de l'identifiant. Sur mon worktree dedie, avant mon diff : 659 identifiants distincts,
+105 prefixes distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le fichier
+declarait.
 
 **Note de `nadia-prof`, s37, le 2026-09-22, et elle commence par ma propre faute.** Deux
 identifiants ajoutes - `ADD-CE1-R1` et `ADD-CE1-R2`, les deux reserves de mon audit du paquet
@@ -604,6 +618,7 @@ clause 2 par une exemption.
 | `ADD-CE1-R2` | `squad/conformite/FICHE-bandit-manchot-additions-ce1.md` |
 | `SOU-CE1-1` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
 | `SOU-CE1-2` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
+| `SOU-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md` |
 | `CDZ-CE1-1` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
 | `CDZ-CE1-2` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
 | `MOI-CE1-1` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
