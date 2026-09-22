@@ -66,7 +66,7 @@ reponse 'ok' a la proposition qui lui a ete faite". **Ce que je possede reelleme
 guillemets, venant d'elle : le seul mot "ok".** Je ne connais pas la formulation exacte de la
 proposition a laquelle elle a repondu, et je ne l'invente pas pour completer une citation forme 2
 que je n'ai pas - exactement la reserve que `planning.md` pose lui-meme (section 2) et que je
-reprends sans l'attenuer. **Ceci est une sourcage plus mince que celui de `DEC-0091`** : `DEC-0091`
+reprends sans l'attenuer. **Ceci est un sourcage plus mince que celui de `DEC-0091`** : `DEC-0091`
 recevait un enonce narre des deux points par le meme canal hors agents, sans guillemets sur les mots
 de l'utilisatrice non plus, mais sans pretendre a un mot cite d'elle du tout. Ici, un mot existe
 ("ok") mais il ne dit rien du contenu de ce qu'il approuve au-dela de ce que le canal hors agents

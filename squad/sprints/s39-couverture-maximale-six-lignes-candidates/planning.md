@@ -167,7 +167,7 @@ pour le meme motif qui l'a fait naitre a s38 (retro de s37, section 2 : `theo-ar
 code deux fois de suite hors de son role d'avis de faisabilite, sans qu'un planning ne l'ait
 decide) et parce qu'aucun evenement de s39 ne justifie de s'en affranchir.
 
-**Regle geleee pour s39** : des qu'un avis de faisabilite de `theo-archi` est rendu sur une des six
+**Regle gelee pour s39** : des qu'un avis de faisabilite de `theo-archi` est rendu sur une des six
 lignes, le developpement qui en decoule est affecte nominativement (`marc-dev`, `lea-dev`, ou
 `sofia-sm` sous sa casquette dev) et n'est pas livre directement par `theo-archi`.
 

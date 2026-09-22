@@ -80,7 +80,7 @@ items:
     bonneReponse: "55"
     distracteurs: ["34", "78"]
     indice: "La dizaine et l'unité se ressemblent ici."
-  - enonce: "Écris en chiffres : soixante-et-onze."
+  - enonce: "Écris en chiffres : soixante et onze."
     bonneReponse: "71"
     distracteurs: ["26", "49"]
     indice: "Ce nombre commence par soixante."

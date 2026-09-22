@@ -14278,8 +14278,7 @@ prealable (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`).
   `theo-archi` ensuite ; affectation nominative du developpement par `sofia-sm` une fois l'avis
   rendu (`DEC-0092`, section 5).
 
-### S39-LONGUEUR - Mesurer et comparer des longueurs avec une regle graduee ; centimetre et metre
-### (`MAT-CE1-09`)
+### S39-LONGUEUR - Mesurer et comparer des longueurs avec une regle graduee ; centimetre et metre (`MAT-CE1-09`)
 
 - **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a comparer et mesurer des longueurs en
   centimetres et en metres en jouant au bandit manchot, afin de savoir utiliser ces unites dans des
@@ -14323,8 +14322,7 @@ prealable (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`).
   affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0092`, section
   5).
 
-### S39-MONNAIE - Utiliser la monnaie : composer une somme en euros et en centimes, savoir ce qui
-### est rendu (`MAT-CE1-13`)
+### S39-MONNAIE - Utiliser la monnaie : composer une somme en euros et en centimes, savoir ce qui est rendu (`MAT-CE1-13`)
 
 - **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a composer une somme en euros et en
   centimes et a savoir ce qui doit m'etre rendu en jouant au bandit manchot, afin de progresser sur
@@ -14368,8 +14366,7 @@ prealable (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`).
   affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0092`, section
   5).
 
-### S39-SOLIDES - Reconnaitre et nommer des solides usuels (cube, pave droit, boule, cylindre,
-### cone) (`MAT-CE1-16`)
+### S39-SOLIDES - Reconnaitre et nommer des solides usuels (cube, pave droit, boule, cylindre, cone) (`MAT-CE1-16`)
 
 - **Besoin** : en tant qu'eleve de CE1, je veux m'entrainer a reconnaitre et nommer des solides
   usuels en jouant au bandit manchot, afin de savoir les distinguer dans la vie courante.
@@ -14410,8 +14407,7 @@ prealable (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`).
   affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0092`, section
   5).
 
-### S39-ENERGIE - Identifier des sources et des formes d'energie, et un exemple de conversion
-### (`SCI-CM1-04`)
+### S39-ENERGIE - Identifier des sources et des formes d'energie, et un exemple de conversion (`SCI-CM1-04`)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a identifier des sources et des formes
   d'energie, et un exemple de conversion d'une forme a une autre, en jouant au bandit manchot, afin
