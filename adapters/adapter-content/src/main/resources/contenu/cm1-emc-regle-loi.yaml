@@ -1,0 +1,105 @@
+schema: 1
+id: cm1-emc-regle-loi
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Distinguer une règle d'une loi, et identifier ce que la loi autorise, interdit et protège."
+lignesDeReferentiel: ["EMC-CM1-08"]
+#
+# S40-LOI (docs/backlog/backlog.md, sprint 40). Arbitrage prealable deja rendu, aucun arbitrage neuf a
+# router (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md,
+# ligne 425) : "rentable [...] FER-1 : les trois verbes de la parenthese. Jamais de definition
+# juridique dans l'enonce" - critere repris mot pour mot par la matrice (ligne 1901). Referentiel
+# copie conforme (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-08).
+#
+# Risque signale pour l'audit par l'avis de faisabilite de theo-archi (section 5.3) : le patron voisin
+# EMC-CP-07 (regle/souhait/loi, CP, cp-emc-regle-souhait-loi.yaml) a demande cinq passages avant de
+# fermer sur EMC-5. Aucune regle executable ne peut mordre EMC-5, et ce paquet ne pretend pas
+# l'avoir resolu d'avance - il route ce risque a nadia-prof, comme le backlog le demande.
+#
+# FER-1 : les trois verbes de la parenthese (autorise, interdit, protege) sont chacun en bonne
+# reponse sur des items distincts de la tache B (items 9, 10 : interdit ; item 11 : autorise ;
+# items 7, 8 : protege).
+#
+# FER-3 : deux taches distinctes - distinguer une regle d'une loi sur un exemple concret dont la
+# portee (une classe, une ecole, tout le pays) determine sans ambiguite la reponse (tache A, items 1
+# a 6), et dire ce que fait une loi citee (tache B, items 7 a 11).
+#
+# Le mot "loi" n'est jamais accompagne d'une definition juridique dans l'enonce - il se reconnait sur
+# un exemple concret (le code de la route, la vente d'alcool, le droit a l'education), jamais sur une
+# formule de droit. Les cinq faits de la tache B sont verifies : vente d'alcool aux mineurs interdite
+# (Code de la sante publique, L3342-1, deja verifie a l'ecriture de cp-emc-regle-souhait-loi.yaml) ;
+# interdiction de fumer dans l'enceinte d'un etablissement scolaire (idem) ; droit de vote a dix-huit
+# ans (article 3 de la Constitution et code electoral, article L2) ; liberte de conscience et de
+# culte (loi du 9 decembre 1905, article 1er) ; droit a la sante et protection contre la violence
+# (Convention internationale des droits de l'enfant, articles 19 et 24, deja verifies a l'ecriture de
+# cm1-emc-droit-devoir.yaml).
+#
+# EMC-5 : chaque distracteur est une proposition serieuse pour la situation decrite, jamais absurde ;
+# aucun item n'a deux reponses defendables au sens ou l'entend nadia-prof, sous reserve de son audit.
+#
+# EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
+# organisation.
+#
+# CYC-1 : verifie contre cp-emc-regle-souhait-loi.yaml (EMC-CP-07) - les deux paquets partagent des
+# faits de droit deja etablis (vente d'alcool, tabac a l'ecole), sans contradiction, la tache posee
+# differant (qui doit respecter la loi, au CP ; ce que fait la loi, au CM1).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, section "Mention exigee
+# d'avance si une ligne bouge") : "connaissances civiques et reconnaissance de situations seules ;
+# aucun comportement, aucun engagement et aucune participation a une decision collective ne sont
+# servis par ce produit." Ce paquet ne demande ni comportement, ni engagement, ni participation a
+# une decision collective.
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Dans notre classe, chaque élève lève la main avant de parler. Est-ce une règle ou une loi ?"
+    bonneReponse: "une règle"
+    distracteurs: ["une loi"]
+    indice: "Cette habitude ne concerne que les élèves de cette classe."
+  - enonce: "En France, chaque conducteur doit s'arrêter au feu rouge. Est-ce une règle ou une loi ?"
+    bonneReponse: "une loi"
+    distracteurs: ["une règle"]
+    indice: "Cette obligation s'applique à toutes les personnes qui conduisent en France."
+  - enonce: "Dans notre école, les élèves doivent marcher dans les couloirs. Est-ce une règle ou une loi ?"
+    bonneReponse: "une règle"
+    distracteurs: ["une loi"]
+    indice: "Cette habitude ne concerne que les élèves de cette école."
+  - enonce: "En France, vendre de l'alcool à un mineur est interdit. Est-ce une règle ou une loi ?"
+    bonneReponse: "une loi"
+    distracteurs: ["une règle"]
+    indice: "Cet interdit s'applique à tous les vendeurs du pays, pas seulement à l'école."
+  - enonce: "Dans notre classe, le matériel commun doit être rangé après usage. Est-ce une règle ou une loi ?"
+    bonneReponse: "une règle"
+    distracteurs: ["une loi"]
+    indice: "Cette habitude ne concerne que les élèves de cette classe."
+  - enonce: "En France, chaque enfant a le droit d'aller à l'école gratuitement. Est-ce une règle ou une loi ?"
+    bonneReponse: "une loi"
+    distracteurs: ["une règle"]
+    indice: "Ce droit s'applique à tous les enfants du pays, pas seulement à une école."
+  - enonce: "La loi protège le droit de chaque enfant à être soigné, même si ses parents manquent d'argent. Que fait cette loi ?"
+    bonneReponse: "elle protège"
+    distracteurs: ["elle autorise", "elle interdit"]
+    indice: "Cette loi veille à ce que l'argent ne soit jamais un obstacle aux soins."
+  - enonce: "La loi protège un enfant contre toute forme de violence, même venant d'un adulte de sa famille. Que fait cette loi ?"
+    bonneReponse: "elle protège"
+    distracteurs: ["elle autorise", "elle interdit"]
+    indice: "Cette loi met un enfant à l'abri, quelle que soit la personne en cause."
+  - enonce: "La loi interdit de fumer à l'intérieur d'une école, même dans la cour. Que fait cette loi ?"
+    bonneReponse: "elle interdit"
+    distracteurs: ["elle autorise", "elle protège"]
+    indice: "Personne n'a le droit de le faire, en aucun endroit de l'école."
+  - enonce: "La loi interdit de vendre de l'alcool à un mineur. Que fait cette loi ?"
+    bonneReponse: "elle interdit"
+    distracteurs: ["elle autorise", "elle protège"]
+    indice: "Aucun vendeur n'a le droit de le faire à une personne de moins de dix-huit ans."
+  - enonce: "La loi autorise chacun à choisir librement sa religion, ou de n'en avoir aucune. Que fait cette loi ?"
+    bonneReponse: "elle autorise"
+    distracteurs: ["elle interdit", "elle protège"]
+    indice: "Chaque personne peut décider elle-même, sans qu'on le lui impose."

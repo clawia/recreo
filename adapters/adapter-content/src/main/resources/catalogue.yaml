@@ -522,3 +522,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-emc-regles-vie-collective
     nombreDeManches: 10
+  - id: bandit-manchot-regle-loi-cm1
+    titre: "Règle ou loi"
+    consigne: "Lis bien, puis dis si c'est une règle ou une loi, ou ce que fait cette loi."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-regle-loi
+    nombreDeManches: 10

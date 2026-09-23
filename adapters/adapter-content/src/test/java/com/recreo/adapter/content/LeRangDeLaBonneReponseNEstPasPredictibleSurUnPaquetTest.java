@@ -800,7 +800,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des actions ou des justifications de la"
                     + " vie collective a l'école en texte libre, valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune"
-                    + " des 33 propositions ne commence par un chiffre"));
+                    + " des 33 propositions ne commence par un chiffre"),
+            // S40-LOI : paquet neuf d'enseignement moral et civique CM1 (EMC-CM1-08).
+            Map.entry("cm1-emc-regle-loi",
+            "11 items sur 11 : six items (tâche de classement) portent un seul distracteur (deux"
+                    + " propositions) et cinq items (tâche de portée de la loi) portent deux"
+                    + " distracteurs (trois propositions), mais aucune des 27 propositions n'est"
+                    + " numerique : ce sont des categories (\"une règle\", \"une loi\") ou des verbes"
+                    + " en texte libre (\"elle autorise\", \"elle interdit\", \"elle protège\"),"
+                    + " valeurDe rend null sur toutes les propositions. Mesure du 2026-09-23 sur le"
+                    + " paquet servi : aucune des 27 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

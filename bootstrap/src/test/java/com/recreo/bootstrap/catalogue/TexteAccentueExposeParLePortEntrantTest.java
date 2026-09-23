@@ -273,6 +273,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-nutrition-cm1",
             // S40-REGLES (s40) : entree neuve, EMC-CM1-04, regles de la vie collective a l'ecole.
             "bandit-manchot-regles-vie-collective-cm1",
+            // S40-LOI (s40) : entree neuve, EMC-CM1-08, distinguer une regle d'une loi.
+            "bandit-manchot-regle-loi-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -436,6 +438,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le corps qui se nourrit",
             // S40-REGLES (s40) : titre neuf.
             "Les règles de la vie collective",
+            // S40-LOI (s40) : titre neuf.
+            "Règle ou loi",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -625,6 +629,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis quel organe, ou quelle fonction du corps.",
             // S40-REGLES (s40) : consigne neuve.
             "Lis bien, puis dis ce qu'il faut faire à l'école, ou pourquoi cette règle existe.",
+            // S40-LOI (s40) : consigne neuve.
+            "Lis bien, puis dis si c'est une règle ou une loi, ou ce que fait cette loi.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -956,7 +962,11 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "circulation) et l'organe principal de chacune.",
             // S40-REGLES (s40) : competence neuve, copiee conforme du referentiel de nadia-prof
             // (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne EMC-CM1-04).
-            "Connaître les règles de la vie collective à l'école et dire à quoi elles servent.");
+            "Connaître les règles de la vie collective à l'école et dire à quoi elles servent.",
+            // S40-LOI (s40) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne EMC-CM1-08).
+            "Distinguer une règle d'une loi, et identifier ce que la loi autorise, interdit et "
+                    + "protège.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
