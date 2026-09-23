@@ -14571,10 +14571,19 @@ prealable explicite, cite en entier ci-dessous, et peuvent recevoir un avis de f
 - **Ce que cette story ne fait pas** : elle ne construit aucun rendu de schema ni de graphique -
   hors de portee de la fermeture textuelle deja arbitree ; elle ne fixe aucun contenu factuel
   precis - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
-- **Lien decision** : `DEC-0093`.
-- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
-  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0093`, section 5) ;
-  `nadia-prof` pour le Done pedagogique.
+- **Note de perimetre (`DEC-0094`, s40)** : l'avis de faisabilite de `theo-archi`
+  (`squad/sprints/s40-couverture-maximale-emc-histoire-sciences/avis-faisabilite.md`, section 6)
+  trouve la moitie texte faisable en l'etat et la moitie tableau infaisable sans `ADR` (aucune cle
+  `tableau` au format de contenu actuel). Les criteres d'acceptation ci-dessus ne sont **pas**
+  reduits a la seule moitie texte : le texte seul ne satisfait pas la mention deja arbitree par
+  `nadia-prof` ("document textuel et tableau seuls"), et reduire ce perimetre n'est pas une
+  decision de `camille-po`. L'`ADR` de support tableau est du et route a `theo-archi`, qui l'ecrit
+  avant tout paquet ; le calendrier de livraison (dans s40 ou glisse a un sprint suivant) revient
+  a `sofia-sm`. Voir `DEC-0094` pour le detail.
+- **Lien decision** : `DEC-0093`, `DEC-0094`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite deja rendu et pour l'`ADR` de
+  support tableau qu'il reste a ecrire ; affectation nominative du developpement par `sofia-sm`
+  une fois l'`ADR` ecrit (`DEC-0093`, section 5) ; `nadia-prof` pour le Done pedagogique.
 
 ### S40-NUTRITION - Nommer les fonctions de nutrition du corps humain et l'organe principal de chacune (`SCI-CM1-09`)
 
