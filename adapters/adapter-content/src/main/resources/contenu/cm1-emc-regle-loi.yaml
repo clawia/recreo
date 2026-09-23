@@ -28,14 +28,24 @@ lignesDeReferentiel: ["EMC-CM1-08"]
 # a 6), et dire ce que fait une loi citee (tache B, items 7 a 11).
 #
 # Le mot "loi" n'est jamais accompagne d'une definition juridique dans l'enonce - il se reconnait sur
-# un exemple concret (le code de la route, la vente d'alcool, le droit a l'education), jamais sur une
-# formule de droit. Les cinq faits de la tache B sont verifies : vente d'alcool aux mineurs interdite
-# (Code de la sante publique, L3342-1, deja verifie a l'ecriture de cp-emc-regle-souhait-loi.yaml) ;
-# interdiction de fumer dans l'enceinte d'un etablissement scolaire (idem) ; droit de vote a dix-huit
-# ans (article 3 de la Constitution et code electoral, article L2) ; liberte de conscience et de
-# culte (loi du 9 decembre 1905, article 1er) ; droit a la sante et protection contre la violence
-# (Convention internationale des droits de l'enfant, articles 19 et 24, deja verifies a l'ecriture de
-# cm1-emc-droit-devoir.yaml).
+# un exemple concret (la sante, la securite, le tabac, l'alcool, la religion), jamais sur une formule
+# de droit. Les cinq faits de la tache B sont verifies : droit a la sante quels que soient les moyens
+# des parents et protection contre la violence, y compris familiale (Convention internationale des
+# droits de l'enfant, articles 24 et 19, deja verifies a l'ecriture de cm1-emc-droit-devoir.yaml) ;
+# interdiction de fumer dans l'enceinte d'un etablissement scolaire et interdiction de vendre de
+# l'alcool a un mineur (Code de la sante publique, deja verifiees a l'ecriture de
+# cp-emc-regle-souhait-loi.yaml) ; liberte de conscience et de culte (loi du 9 decembre 1905,
+# article 1er).
+#
+# Correction du 2026-09-23 (marc-dev, S40-LOI-FIX), refus de nadia-prof le meme jour
+# (squad/conformite/FICHE-bandit-manchot-regle-loi-cm1.md) : sur les cinq items de la tache B (7 a
+# 11), l'enonce nommait litteralement le verbe attendu comme reponse (par exemple "La loi protege
+# [...]. Que fait cette loi ?" -> "elle protege"), ce qui reduisait la tache a une recopie du mot deja
+# lu plutot qu'a une identification. Les cinq enonces sont reecrits pour decrire la situation ou
+# l'effet de la loi sans jamais nommer autorise/interdit/protege : la consequence pour l'enfant
+# protege (items 7, 8), la sanction encourue par l'auteur de l'acte interdit (items 9, 10), l'absence
+# de contrainte possible (item 11). Les cinq faits de droit et les cinq bonnes reponses restent
+# inchanges, comme le refus le demande ; la tache A (items 1 a 6) n'est pas touchee.
 #
 # EMC-5 : chaque distracteur est une proposition serieuse pour la situation decrite, jamais absurde ;
 # aucun item n'a deux reponses defendables au sens ou l'entend nadia-prof, sous reserve de son audit.
@@ -83,23 +93,23 @@ items:
     bonneReponse: "une loi"
     distracteurs: ["une règle"]
     indice: "Ce droit s'applique à tous les enfants du pays, pas seulement à une école."
-  - enonce: "La loi protège le droit de chaque enfant à être soigné, même si ses parents manquent d'argent. Que fait cette loi ?"
+  - enonce: "Une loi dit que personne ne peut empêcher un enfant malade d'être soigné, même si ses parents manquent d'argent. Que fait cette loi ?"
     bonneReponse: "elle protège"
     distracteurs: ["elle autorise", "elle interdit"]
     indice: "Cette loi veille à ce que l'argent ne soit jamais un obstacle aux soins."
-  - enonce: "La loi protège un enfant contre toute forme de violence, même venant d'un adulte de sa famille. Que fait cette loi ?"
+  - enonce: "Une loi dit qu'un enfant doit toujours être en sécurité, même face à un adulte de sa famille. Que fait cette loi ?"
     bonneReponse: "elle protège"
     distracteurs: ["elle autorise", "elle interdit"]
     indice: "Cette loi met un enfant à l'abri, quelle que soit la personne en cause."
-  - enonce: "La loi interdit de fumer à l'intérieur d'une école, même dans la cour. Que fait cette loi ?"
+  - enonce: "Une loi dit que fumer à l'intérieur d'une école, même dans la cour, est puni d'une amende. Que fait cette loi ?"
     bonneReponse: "elle interdit"
     distracteurs: ["elle autorise", "elle protège"]
     indice: "Personne n'a le droit de le faire, en aucun endroit de l'école."
-  - enonce: "La loi interdit de vendre de l'alcool à un mineur. Que fait cette loi ?"
+  - enonce: "Une loi dit que vendre de l'alcool à un enfant est puni d'une amende pour le vendeur. Que fait cette loi ?"
     bonneReponse: "elle interdit"
     distracteurs: ["elle autorise", "elle protège"]
     indice: "Aucun vendeur n'a le droit de le faire à une personne de moins de dix-huit ans."
-  - enonce: "La loi autorise chacun à choisir librement sa religion, ou de n'en avoir aucune. Que fait cette loi ?"
+  - enonce: "Une loi dit que personne ne peut obliger un enfant à croire une religion, ou à ne pas y croire. Que fait cette loi ?"
     bonneReponse: "elle autorise"
     distracteurs: ["elle interdit", "elle protège"]
     indice: "Chaque personne peut décider elle-même, sans qu'on le lui impose."
