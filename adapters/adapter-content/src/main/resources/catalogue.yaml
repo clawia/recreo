@@ -510,3 +510,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-solides
     nombreDeManches: 10
+  - id: bandit-manchot-histoire-des-arts-relier-contexte-cm1
+    titre: "L'art dans son contexte"
+    consigne: "Lis bien, puis relie l'œuvre décrite à son époque, sa civilisation ou son usage."
+    mecanique: bandit-manchot
+    paquet: cm1-histoire-des-arts-relier-contexte
+    nombreDeManches: 10

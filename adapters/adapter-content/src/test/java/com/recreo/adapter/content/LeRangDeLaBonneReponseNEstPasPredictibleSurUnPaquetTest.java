@@ -785,7 +785,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " craie\"...), de supports (\"le carton\", \"l'argile\"...) ou de gestes"
                     + " (\"l'esquisse\", \"le modelage\"...) du travail plastique, valeurDe rend null"
                     + " sur les trois propositions de chaque item. Mesure du 2026-09-22 sur le paquet"
-                    + " servi : aucune des 36 propositions ne commence par un chiffre"));
+                    + " servi : aucune des 36 propositions ne commence par un chiffre"),
+            // S40-HDA : paquet neuf d'histoire des arts CM1, premier de cette matiere (HDA-CM1-05).
+            Map.entry("cm1-histoire-des-arts-relier-contexte",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des noms d'epoques (\"le Moyen Âge\","
+                    + " \"l'Antiquité\"), de civilisations (\"la civilisation grecque antique\"...) ou"
+                    + " d'usages (\"c'est un lieu de culte\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune"
+                    + " des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

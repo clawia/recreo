@@ -1,0 +1,96 @@
+schema: 1
+id: cm1-histoire-des-arts-relier-contexte
+type: question
+descripteur:
+  matiere: "Histoire des arts"
+  niveau: "CM1"
+  domaine: "Situer une œuvre dans le temps et dans son contexte"
+  competence: "Relier les caractéristiques d'une œuvre d'art à des usages et au contexte historique et culturel de sa création (référentiel CM1, ligne HDA-CM1-05)"
+lignesDeReferentiel: ["HDA-CM1-05"]
+#
+# S40-HDA (docs/backlog/backlog.md, sprint 40 ; DEC-0093). Premier paquet d'histoire des arts du
+# produit. Criteres fixes par l'arbitrage prealable de nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md,
+# identifiants HDA-1 a HDA-4) :
+#   - HDA-1 : chaque item decrit un type/style/genre etabli, jamais une oeuvre individuelle nommee.
+#   - HDA-2 : le fait de contexte demande est une classification etablie - periode, civilisation ou
+#     usage - jamais une interpretation ou une datation disputee.
+#   - HDA-3 : chaque distracteur est lui-meme un style reel, vrai en tant que tel, ecarte par un
+#     marqueur specifique croise a un second trait, jamais par une propriete fausse sur lui-meme.
+#   - HDA-4 : le corpus ne tire pas tous ses items d'une seule periode, civilisation ou d'un seul
+#     type d'edifice.
+#
+# Cinq familles de style retenues, toutes deja rencontrees en histoire-geographie CM1
+# (squad/programme/histoire-geographie/competences-cm1.md) : l'architecture gothique, l'architecture
+# romane, le temple antique grec, le temple antique romain, l'art funeraire egyptien antique et le
+# chateau fort medieval. Deux periodes (Antiquite, Moyen Age), quatre civilisations/aires
+# culturelles (Grece antique, Rome antique, Egypte antique, Europe medievale chretienne et feodale)
+# et les quatre usages admissibles par HDA-2 (lieu de culte, tombeau, residence de pouvoir absente
+# ici faute de style assez etabli sans risque, defense) sont chacun representes.
+#
+# HIS-3 : chaque fait de contexte cite est une classification consensuelle du programme de cycle 3,
+# sans datation ni attribution precise disputee.
+#   - architecture gothique : grands vitraux colores, arcs brises, elevation vers le ciel -
+#     caracteristique de la fin du Moyen Age en Europe medievale chretienne, batiments religieux
+#     (cathedrales).
+#   - architecture romane : murs tres epais, petites fenetres etroites, plus ancien que le gothique
+#     dans le Moyen Age europeen, batiments religieux (abbayes, eglises).
+#   - temple grec antique : colonnes et fronton triangulaire, dedie aux dieux de la mythologie
+#     grecque - Antiquite, civilisation grecque antique, lieu de culte.
+#   - temple romain antique : colonnes et fronton triangulaire egalement, mais inscription en latin
+#     et dedie aux divinites protectrices de la cite romaine - Antiquite, civilisation romaine
+#     antique, lieu de culte. Le marqueur diagnostique face au temple grec est la langue de
+#     l'inscription et les divinites nommees, jamais les colonnes seules (HDA-3).
+#   - art funeraire egyptien antique : pyramides et momification, objets destines a accompagner le
+#     defunt dans l'au-dela - Antiquite, civilisation egyptienne antique, tombeau.
+#   - chateau fort medieval : murailles epaisses, douves et tours de guet percees de meurtrieres -
+#     Moyen Age, Europe medievale feodale, defense.
+#
+# indicesNommentLaReponse n'est pas pose sur ce paquet (absent, vaut faux).
+#
+# Onze items, strictement superieur aux dix manches par defaut (DEC-0064, ADR-0023).
+items:
+  - enonce: "Une église est décrite ainsi : ses murs sont percés d'immenses vitraux colorés, et ses arcs brisés l'élancent très haut vers le ciel. À quelle époque appartient ce style d'architecture ?"
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["l'Antiquité", "la Renaissance"]
+    indice: "Ce style de grandes fenêtres colorées et d'arcs pointus est apparu bien après les temples antiques, mais avant les grands châteaux de la Renaissance."
+  - enonce: "Un bâtiment est décrit ainsi : ses murs sont percés d'immenses vitraux colorés, et ses arcs brisés l'élancent très haut vers le ciel. À quoi sert un bâtiment construit dans ce style ?"
+    bonneReponse: "c'est un lieu de culte"
+    distracteurs: ["c'est un tombeau", "c'est une forteresse de défense"]
+    indice: "Des vitraux aussi grands laissent entrer la lumière pour éclairer une grande assemblée réunie pour prier."
+  - enonce: "Une église est décrite ainsi : ses murs sont très épais et ses fenêtres sont petites et étroites, laissant entrer peu de lumière. À quelle époque appartient ce style d'architecture ?"
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["l'Antiquité", "la Renaissance"]
+    indice: "Ce style de murs épais et de petites fenêtres a précédé, dans la même longue période, le style aux grands vitraux colorés."
+  - enonce: "Une abbaye est décrite ainsi : ses murs sont très épais et ses fenêtres sont petites et étroites, laissant entrer peu de lumière. Quel style d'architecture cette description désigne-t-elle ?"
+    bonneReponse: "le style roman"
+    distracteurs: ["le style gothique", "le style classique"]
+    indice: "Le style aux grands vitraux colorés et aux arcs brisés laisse entrer beaucoup de lumière, à l'inverse de ce que décrit l'énoncé."
+  - enonce: "Un temple est décrit ainsi : il est soutenu par des colonnes et un fronton triangulaire, et il est dédié aux dieux de la mythologie grecque. À quelle civilisation appartient ce temple ?"
+    bonneReponse: "la civilisation grecque antique"
+    distracteurs: ["la civilisation égyptienne antique", "la civilisation romaine antique"]
+    indice: "Les dieux nommés dans la description sont ceux de la mythologie de la Grèce antique, pas ceux d'une autre civilisation."
+  - enonce: "Un temple est décrit ainsi : il est soutenu par des colonnes et un fronton triangulaire, et il est dédié aux dieux de la mythologie grecque. À quoi sert ce bâtiment ?"
+    bonneReponse: "c'est un lieu de culte"
+    distracteurs: ["c'est un tombeau", "c'est une forteresse de défense"]
+    indice: "Un bâtiment dédié à des dieux est le lieu où on leur rend hommage."
+  - enonce: "Un temple est décrit ainsi : il est soutenu par des colonnes et un fronton triangulaire, une inscription en latin le dédie aux divinités protectrices de la cité, et il ne porte aucun nom de dieu grec. À quelle civilisation appartient ce temple ?"
+    bonneReponse: "la civilisation romaine antique"
+    distracteurs: ["la civilisation grecque antique", "la civilisation égyptienne antique"]
+    indice: "La langue de l'inscription n'est pas celle des Grecs de l'Antiquité."
+  - enonce: "Une construction est décrite ainsi : elle prend la forme d'une pyramide, et le corps du défunt qu'elle abrite a été momifié avec des objets destinés à l'accompagner dans l'au-delà. À quoi sert cette construction ?"
+    bonneReponse: "c'est un tombeau"
+    distracteurs: ["c'est un lieu de culte", "c'est une forteresse de défense"]
+    indice: "Ce que cette construction abrite est le corps d'une personne qui n'est plus en vie."
+  - enonce: "Une construction est décrite ainsi : elle prend la forme d'une pyramide, et le corps du défunt qu'elle abrite a été momifié avec des objets destinés à l'accompagner dans l'au-delà. À quelle époque appartient cette construction ?"
+    bonneReponse: "l'Antiquité"
+    distracteurs: ["le Moyen Âge", "la Renaissance"]
+    indice: "Les pyramides et la momification sont des pratiques très anciennes, bien avant le Moyen Âge."
+  - enonce: "Un château est décrit ainsi : il est entouré de murailles très épaisses et d'un fossé rempli d'eau, et ses tours de guet sont percées de fentes étroites pour surveiller les alentours. À quoi sert ce château ?"
+    bonneReponse: "à défendre ses habitants"
+    distracteurs: ["à rendre un culte religieux", "à abriter un défunt"]
+    indice: "Des murailles épaisses, un fossé d'eau et des tours de guet protègent contre une attaque."
+  - enonce: "Un château est décrit ainsi : il est entouré de murailles très épaisses et d'un fossé rempli d'eau, et ses tours de guet sont percées de fentes étroites pour surveiller les alentours. À quelle époque appartient ce type de construction ?"
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["l'Antiquité", "la Renaissance"]
+    indice: "Ces fortifications défensives sont apparues à la même longue période que les grandes églises aux petites fenêtres et celles aux grands vitraux."

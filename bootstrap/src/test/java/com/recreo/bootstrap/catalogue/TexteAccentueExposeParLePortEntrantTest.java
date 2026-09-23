@@ -268,6 +268,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-longueurs-ce1",
             // S39-SOLIDES (s39) : entree neuve, MAT-CE1-16, sous-partie allouee par ADR-0098.
             "bandit-manchot-solides-ce1",
+            // S40-HDA (s40) : entree neuve, premier paquet d'histoire des arts (HDA-CM1-05).
+            "bandit-manchot-histoire-des-arts-relier-contexte-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -427,6 +429,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les longueurs",
             // S39-SOLIDES (s39) : titre neuf.
             "Les solides",
+            // S40-HDA (s40) : titre neuf.
+            "L'art dans son contexte",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -612,6 +616,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S39-SOLIDES (s39) : consigne reprise de "Regarde bien le dessin, puis choisis son
             // nom." (bandit-manchot-figures-planes-cp), deja dans cet inventaire, aucune entree
             // neuve.
+            // S40-HDA (s40) : consigne neuve.
+            "Lis bien, puis relie l'œuvre décrite à son époque, sa civilisation ou son usage.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -637,6 +643,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Éducation physique et sportive",
             // S39-OUTILS (s39) : matiere neuve, treizieme matiere du corpus servi.
             "Arts plastiques",
+            // S40-HDA (s40) : matiere neuve, quatorzieme matiere du corpus servi.
+            "Histoire des arts",
             // niveau (descripteur) : "CP" et "CM1" sont exemptes ci-dessus, "CE1" entre ici.
             // S37-1 (s37) : troisieme niveau du produit. Il n'a pas plus de lettre
             // accentuable que les deux autres, mais l'exemption enumeree qui les couvre est
@@ -700,6 +708,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (copie conforme du referentiel de nadia-prof,
             // squad/programme/arts-plastiques/competences-cp.md).
             "Se repérer dans les domaines liés aux arts plastiques",
+            // S40-HDA (s40) : domaine neuf, premier paquet d'histoire des arts (copie conforme du
+            // referentiel de nadia-prof, squad/programme/histoire-des-arts/competences-cm1.md).
+            "Situer une œuvre dans le temps et dans son contexte",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
@@ -936,7 +947,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Mesurer et comparer des longueurs en centimètres et en mètres",
             // S39-SOLIDES (s39) : competence neuve, sous-partie allouee dans
             // SousPartieDeMathematiquesCe1 (ADR-0098).
-            "Reconnaître et nommer des solides usuels");
+            "Reconnaître et nommer des solides usuels",
+            // S40-HDA (s40) : competence neuve, libelle du descripteur du paquet, mot pour mot
+            // (cm1-histoire-des-arts-relier-contexte.yaml, ligne HDA-CM1-05).
+            "Relier les caractéristiques d'une œuvre d'art à des usages et au contexte historique "
+                    + "et culturel de sa création (référentiel CM1, ligne HDA-CM1-05)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
