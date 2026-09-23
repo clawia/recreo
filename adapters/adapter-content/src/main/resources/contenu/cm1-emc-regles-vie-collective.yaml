@@ -1,0 +1,95 @@
+schema: 1
+id: cm1-emc-regles-vie-collective
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Respecter autrui"
+  competence: "Connaître les règles de la vie collective à l'école et dire à quoi elles servent."
+lignesDeReferentiel: ["EMC-CM1-04"]
+#
+# S40-REGLES (docs/backlog/backlog.md, sprint 40). Arbitrage prealable deja rendu, aucun arbitrage
+# neuf a router (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-
+# lignes.md, ligne 427) : "meme exigence qu'a la ligne 6 du CP : la moitie 'a quoi elles servent' est
+# ce qui distingue la ligne d'un reglement recite" - meme patron que EMC-CP-06, deja couvert-valide
+# (cp-emc-regles-de-vie.yaml). Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-04).
+#
+# FER-1 : les deux moities du libelle sont chacune en position de bonne reponse - la regle elle-meme
+# (items 1 a 6) et ce a quoi elle sert (items 7 a 11, chaque bonne reponse commence par "pour ").
+# Chaque item de justification porte sur la raison d'etre de la regle (ce qu'elle protege ou permet),
+# jamais sur son seul enonce.
+#
+# FER-3 : deux taches distinctes, la moins servie (justification, cinq items) au-dessus du plancher
+# de trois items.
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement ("que fais-tu si...") - chaque
+# item porte sur ce qu'un eleve generique doit faire, jamais sur l'enfant qui joue.
+#
+# EMC-1 : aucun item n'interroge l'enfant sur ce qu'il ressent, vit ou fait chez lui.
+#
+# EMC-6 : aucun item ne suppose un lieu de vie, une commune ou une configuration familiale - toutes
+# les situations se passent a l'ecole (bibliotheque, classe, cantine, sortie scolaire, cour).
+#
+# EMC-5 : chaque distracteur est une proposition serieuse pour la situation decrite, jamais absurde,
+# mais aucun n'est defendable comme une seconde bonne reponse.
+#
+# EMC-10 : aucun item ne nomme une personne reelle vivante, un parti, un syndicat ni une
+# organisation - aucune situation ne nomme de personnage, generique ("un eleve", "les eleves").
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, section "Mention exigee
+# d'avance si une ligne bouge") : "connaissances civiques et reconnaissance de situations seules ;
+# aucun comportement, aucun engagement et aucune participation a une decision collective ne sont
+# servis par ce produit." Ce paquet ne fait reciter aucun reglement d'ecole particulier et ne
+# demande ni comportement, ni engagement, ni participation a une decision collective.
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "À la bibliothèque de l'école, un élève qui a fini de lire un livre, que doit-il en faire ?"
+    bonneReponse: "le ranger à sa place sur l'étagère"
+    distracteurs: ["le garder dans son cartable toute l'année", "le laisser sur une table libre"]
+    indice: "Un livre qui n'est pas à sa place est difficile à retrouver pour les autres."
+  - enonce: "Pendant que le maître explique une leçon, que doit faire un élève ?"
+    bonneReponse: "écouter sans parler"
+    distracteurs: ["relire la leçon de la veille", "ranger son cartable pour la sortie"]
+    indice: "Si tout le monde parle en même temps, personne n'entend la leçon."
+  - enonce: "À la cantine, quand un élève a fini son repas, où doit-il poser son plateau ?"
+    bonneReponse: "à l'endroit prévu pour les plateaux"
+    distracteurs: ["sur la table, pour le suivant", "près de la porte de sortie"]
+    indice: "Un plateau oublié sur la table gêne l'élève suivant."
+  - enonce: "Dans le car, pendant une sortie scolaire, que doit faire chaque élève assis ?"
+    bonneReponse: "attacher sa ceinture de sécurité"
+    distracteurs: ["ouvrir la fenêtre pour respirer", "changer de place à chaque arrêt"]
+    indice: "La ceinture protège en cas d'arrêt brusque du car."
+  - enonce: "Pendant un travail de groupe, que doit faire un élève qui a terminé avant les autres ?"
+    bonneReponse: "attendre en silence, sans déranger le groupe"
+    distracteurs: ["commencer un autre exercice à voix haute", "aller voir le maître pour autre chose"]
+    indice: "Un groupe qui travaille encore a besoin de calme pour finir."
+  - enonce: "Après une séance de sport dans la cour, que doivent faire les élèves avec le matériel ?"
+    bonneReponse: "le ranger avec les autres à sa place"
+    distracteurs: ["le laisser sur le terrain pour la classe suivante", "le donner à un seul élève responsable"]
+    indice: "Le matériel rangé est facile à retrouver pour la classe suivante."
+  - enonce: "Pourquoi range-t-on les livres à leur place à la bibliothèque ?"
+    bonneReponse: "pour que chacun retrouve facilement ce qu'il cherche"
+    distracteurs: ["pour que la bibliothèque paraisse plus grande", "pour que les livres soient plus jolis"]
+    indice: "Un livre bien rangé se retrouve du premier coup."
+  - enonce: "Pourquoi écoute-t-on en silence quand le maître explique ?"
+    bonneReponse: "pour que chacun comprenne la leçon"
+    distracteurs: ["pour que la classe soit plus jolie", "pour montrer qu'on est sage"]
+    indice: "Comprendre une leçon demande d'entendre ce que dit le maître."
+  - enonce: "Pourquoi débarrasse-t-on son plateau à la cantine ?"
+    bonneReponse: "pour que la cantine reste propre pour tous"
+    distracteurs: ["pour finir le repas plus vite", "pour avoir le droit de ressortir en premier"]
+    indice: "Une cantine propre profite à tous les élèves qui viennent après."
+  - enonce: "Pourquoi attache-t-on sa ceinture dans le car ?"
+    bonneReponse: "pour être protégé en cas de freinage brusque"
+    distracteurs: ["pour que le chauffeur voie mieux la route", "pour occuper les mains pendant le trajet"]
+    indice: "Un coup de frein brusque peut arriver sans prévenir."
+  - enonce: "Pourquoi range-t-on le matériel de sport après la séance ?"
+    bonneReponse: "pour que la classe suivante puisse s'en servir"
+    distracteurs: ["pour que le terrain soit plus joli", "pour finir la séance plus vite"]
+    indice: "La classe suivante a besoin du même matériel en bon état."

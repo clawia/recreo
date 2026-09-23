@@ -516,3 +516,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-nutrition
     nombreDeManches: 10
+  - id: bandit-manchot-regles-vie-collective-cm1
+    titre: "Les règles de la vie collective"
+    consigne: "Lis bien, puis dis ce qu'il faut faire à l'école, ou pourquoi cette règle existe."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-regles-vie-collective
+    nombreDeManches: 10

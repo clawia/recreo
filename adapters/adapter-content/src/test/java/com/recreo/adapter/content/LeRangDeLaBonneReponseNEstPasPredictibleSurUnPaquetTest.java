@@ -793,6 +793,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " poumons\", \"le coeur\") ou des noms de fonctions (\"la digestion\", \"la"
                     + " respiration\", \"la circulation\"), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune"
+                    + " des 33 propositions ne commence par un chiffre"),
+            // S40-REGLES : paquet neuf d'enseignement moral et civique CM1 (EMC-CM1-04).
+            Map.entry("cm1-emc-regles-vie-collective",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des actions ou des justifications de la"
+                    + " vie collective a l'école en texte libre, valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune"
                     + " des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
