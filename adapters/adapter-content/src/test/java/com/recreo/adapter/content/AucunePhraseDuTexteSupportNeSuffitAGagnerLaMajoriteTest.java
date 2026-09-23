@@ -45,9 +45,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *       auquel l'enfant repond en ecrivant n'en presente aucune. La donnee que ce critere lit
  *       n'existe pas davantage - {@code ReponseAEcrire} ne porte pas de texte support, ce n'est pas
  *       une composante vide, c'est une composante absente du type ;</li>
- *   <li><b>un item sans texte support est hors du domaine</b>, exactement comme le rang d'une
+ *   <li><b>un item sans aucun support est hors du domaine</b>, exactement comme le rang d'une
  *       proposition non numerique l'est dans le garde-fou de s12.</li>
  * </ul>
+ *
+ * <p><b>Amendement du 2026-09-23 (ADR-0099, decision 4).</b> Le domaine de ce garde-fou etait
+ * "l'item porte un texte support" ; il est desormais "l'item porte un support", c'est-a-dire un
+ * texte, une grille, ou les deux, et le fragment qu'une strategie aveugle lit est une phrase de
+ * texte <b>ou une rangee de tableau</b> ({@link #fragmentsDeSupport}). Sans cet amendement,
+ * {@code tableauSupport} ouvrait une forme de support entierement hors du domaine de ce garde-fou :
+ * il serait reste vert sur un paquet de grilles gagnable a 100 % sans lire la question.
+ *
+ * <p><b>Le nom de cette classe n'a pas change, et c'est un choix</b> : le renommer deplacerait les
+ * repertoires de contre-exemple qui portent le materiau reel de s24 - le paquet de {@code lea-dev}
+ * avant et apres sa correction -, et ce materiau vaut plus que l'exactitude du nom. Declencheur
+ * ecrit : le jour ou un troisieme genre de support existera, le nom sera a reprendre dans le meme
+ * geste que lui.</p>
  *
  * <p><b>Et le compte des ecartes est tenu</b> : une borne qui emporterait toute la population servie
  * n'est plus une borne, c'est une exemption generale, et elle est rouge.
@@ -78,6 +91,11 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
     private static final String CAS_VERT = "reponse-repartie-entre-les-deux-phrases";
 
     private static final String POPULATION_ECARTEE = "population-entierement-ecartee";
+
+    /** ADR-0099 : les deux jeux de la moitie tableau du domaine, fautif puis corrige. */
+    private static final String JEU_FAUTIF_TABLEAU = "reponse-toujours-dans-la-meme-rangee-du-tableau";
+
+    private static final String CAS_VERT_TABLEAU = "reponse-repartie-entre-les-rangees-du-tableau";
 
     /**
      * Le seuil de s12, repris tel quel : une strategie qui ignore le contenu ne doit jamais etre
@@ -121,6 +139,37 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
         return phrases;
     }
 
+    /**
+     * <b>ADR-0099, decision 4 : une rangee de tableau est un fragment de support au meme titre
+     * qu'une phrase de texte.</b> Les fragments d'un item sont les phrases de son texte-support,
+     * puis les rangees de sa grille - dans cet ordre, pour qu'un rang designe le meme objet d'un
+     * item a l'autre d'un paquet de meme forme.
+     *
+     * <p><b>Ce que cette extension empeche, et elle n'est pas decorative.</b> Sans elle, un paquet
+     * dont les items ne portent qu'une grille sortait du domaine de ce garde-fou : la strategie
+     * "ne lire qu'une rangee et presser la seule proposition qui s'y trouve" aurait pu gagner tous
+     * les items, sur une suite verte. C'est exactement la forme d'item que SCI-CM1-20 demande - une
+     * information explicitement presente dans le document - et la maniere naturelle de l'ecrire
+     * met la bonne reponse dans une rangee qui ne porte aucun distracteur.
+     *
+     * <p><b>Ce que cette extension coute, dit d'avance</b> : un paquet de grilles dont les items
+     * interrogent tous la meme rangee est rouge. Ce n'est pas un faux rouge - un enfant qui lit
+     * toujours la meme rangee y gagne sans lire la question - et ce qui le paie est de faire varier
+     * la rangee interrogee, jamais de rendre la grille moins lisible.
+     */
+    static List<String> fragmentsDeSupport(Question item) {
+        List<String> fragments = new ArrayList<>();
+        item.texteSupport().ifPresent(support -> fragments.addAll(phrases(support)));
+        item.tableauSupport().ifPresent(tableau -> {
+            // L'en-tete est une rangee comme les autres : il se lit comme elles. Il ne porte
+            // ordinairement aucune valeur candidate, donc il ne fait gagner personne - mais
+            // l'ecarter d'avance serait decider pour un contenu qui n'existe pas encore.
+            fragments.add(String.join(" ", tableau.enTete()));
+            tableau.lignes().forEach(ligne -> fragments.add(String.join(" ", ligne)));
+        });
+        return fragments;
+    }
+
     record Strategie(int itemsAvecSupport, int rangDePhrase, double partGagnee) {
     }
 
@@ -136,19 +185,20 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
      * comportement dans un garde-fou.
      */
     static Strategie meilleureStrategie(List<Question> items) {
-        List<Question> avecSupport = items.stream().filter(item -> item.texteSupport().isPresent()).toList();
+        List<Question> avecSupport = items.stream()
+                .filter(item -> !fragmentsDeSupport(item).isEmpty()).toList();
         if (avecSupport.isEmpty()) {
             return new Strategie(0, 0, 0.0);
         }
         int phrasesMax = avecSupport.stream()
-                .mapToInt(item -> phrases(item.texteSupport().orElseThrow()).size())
+                .mapToInt(item -> fragmentsDeSupport(item).size())
                 .max().orElse(0);
         int meilleurRang = 0;
         int meilleursGains = 0;
         for (int rang = 0; rang < phrasesMax; rang++) {
             int gains = 0;
             for (Question item : avecSupport) {
-                List<String> phrasesDeLItem = phrases(item.texteSupport().orElseThrow());
+                List<String> phrasesDeLItem = fragmentsDeSupport(item);
                 if (rang >= phrasesDeLItem.size()) {
                     continue;
                 }
@@ -213,10 +263,10 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
             Strategie strategie = meilleureStrategie(aPropositions);
             itemsJuges += strategie.itemsAvecSupport();
             if (strategie.partGagnee() > SEUIL_MAJORITE) {
-                fautifs.add(paquet + " : une strategie qui ne lit que la phrase "
-                        + strategie.rangDePhrase() + " du texte support gagne "
+                fautifs.add(paquet + " : une strategie qui ne lit que le fragment de support de rang "
+                        + strategie.rangDePhrase() + " (phrase de texte ou rangee de tableau) gagne "
                         + Math.round(strategie.partGagnee() * 1000) / 10.0 + " % de ses "
-                        + strategie.itemsAvecSupport() + " items a texte support");
+                        + strategie.itemsAvecSupport() + " items a support (texte, tableau, ou les deux)");
             }
         }
         // Lot 5a de s24 : une borne qui emporte toute la population n'est plus une borne. La
@@ -230,7 +280,7 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
                     + " exemption generale");
         }
         if (itemsJuges == 0) {
-            throw new AssertionError("ADR-0051, ADR-0072 : aucun item a texte support examine - le"
+            throw new AssertionError("ADR-0051, ADR-0072 : aucun item a support examine - le"
                     + " domaine de ce garde-fou est vide, il ne garde rien");
         }
         if (!fautifs.isEmpty()) {
@@ -271,7 +321,7 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
                 CONTRE_EXEMPLE.resolve(JEU_FAUTIF)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("cp-texte-narratif-avant-correction")
-                .hasMessageContaining("phrase 1")
+                .hasMessageContaining("rang 1")
                 .hasMessageContaining("65.0 %");
     }
 
@@ -313,6 +363,49 @@ class AucunePhraseDuTexteSupportNeSuffitAGagnerLaMajoriteTest {
                 CONTRE_EXEMPLE.resolve(POPULATION_ECARTEE)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("exemption generale");
+    }
+
+    /**
+     * ADR-0099, decision 4, ADR-0013 obligation 3 : la moitie <b>tableau</b> du domaine mord. Un
+     * paquet dont les items ne portent aucun texte-support et dont six grilles sur dix se
+     * repondent en ne lisant que la premiere ligne du corps est rouge - sans l'extension du
+     * domaine, ce meme paquet etait <b>hors du domaine</b> de ce garde-fou, donc vert.
+     *
+     * <p><b>Ce materiau n'est pas reel, et c'est ecrit plutot que tu, parce que c'est la faiblesse
+     * de cette moitie-la</b> (lecon de s05) : aucun paquet ne declarait de grille le 2026-09-23.
+     * Ce qui la compense est que le juge, lui, est le meme que celui qui s'execute sur les paquets
+     * a texte-support servis et sur le materiau reel de s24.</p>
+     */
+    @Test
+    void lePaquetOuLaReponseEstToujoursDansLaMemeRangeeDeSaGrilleFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifier(CONTRE_EXEMPLE_CLASSPATH + "/" + JEU_FAUTIF_TABLEAU,
+                CONTRE_EXEMPLE.resolve(JEU_FAUTIF_TABLEAU)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("extraction-tableau-avant-variation")
+                .hasMessageContaining("rang 2")
+                .hasMessageContaining("60.0 %");
+    }
+
+    /**
+     * La seconde moitie de la mise a l'epreuve : le meme paquet, dont la seule difference est la
+     * rangee interrogee. Sans elle, la morsure ci-dessus ne prouverait pas que ce garde-fou
+     * distingue le defaut de la <b>forme</b> tableau - un garde-fou qui rougirait sur toute grille
+     * fermerait SCI-CM1-20 au lieu de la garder.
+     */
+    @Test
+    void lePaquetDeGrillesDontLaRangeeInterrogeeVariePasse() {
+        Path racineFichiers = CONTRE_EXEMPLE.resolve(CAS_VERT_TABLEAU);
+        verifier(CONTRE_EXEMPLE_CLASSPATH + "/" + CAS_VERT_TABLEAU, racineFichiers);
+
+        Strategie strategie = meilleureStrategie(ClassementDesItems.presentantDesPropositions(
+                itemsDe(CONTRE_EXEMPLE_CLASSPATH + "/" + CAS_VERT_TABLEAU, racineFichiers,
+                        "extraction-tableau-apres-variation")));
+        assertThat(strategie.itemsAvecSupport())
+                .as("ADR-0099 : les dix items de grille entrent bien dans le domaine")
+                .isEqualTo(10);
+        assertThat(strategie.partGagnee())
+                .as("ADR-0099 : la meilleure strategie a une rangee reste sous le seuil de S12-3")
+                .isLessThan(SEUIL_MAJORITE);
     }
 
     /** ADR-0051 : la clause de non-vacuite mord, elle aussi. */

@@ -11,6 +11,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.RecordComponent;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -117,14 +118,33 @@ class ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest {
         return items;
     }
 
-    /** La composante facultative de meme nom que la cle, si la forme de l'item chargee en porte une. */
+    /**
+     * La composante facultative <b>de texte</b> de meme nom que la cle, si la forme de l'item
+     * chargee en porte une.
+     *
+     * <p><b>ADR-0099 : le type porte est lu, pas seulement {@code Optional}.</b> Ce critere
+     * s'arretait a "la composante est un {@code Optional}", ce qui etait exact tant que toutes
+     * l'etaient de {@code String} - la Javadoc de classe le declare depuis toujours ("les
+     * composantes facultatives d'un autre type que {@code Optional<String>}" sont hors perimetre),
+     * mais rien ne l'executait. {@code tableauSupport} est le premier {@code Optional} d'une
+     * structure : compare comme du texte, il aurait donne un <b>faux rouge</b> le jour du premier
+     * paquet a grille, sa valeur chargee et sa valeur ecrite n'ayant aucune raison d'avoir la meme
+     * ecriture. Le perimetre declare devient donc le perimetre execute.</p>
+     */
     private static Optional<RecordComponent> composantFacultatif(Item item, String cle) {
         for (RecordComponent composant : item.getClass().getRecordComponents()) {
-            if (composant.getName().equals(cle) && composant.getType().equals(Optional.class)) {
+            if (composant.getName().equals(cle) && porteUnTexteFacultatif(composant)) {
                 return Optional.of(composant);
             }
         }
         return Optional.empty();
+    }
+
+    private static boolean porteUnTexteFacultatif(RecordComponent composant) {
+        return composant.getType().equals(Optional.class)
+                && composant.getGenericType() instanceof ParameterizedType parametre
+                && parametre.getActualTypeArguments().length == 1
+                && String.class.equals(parametre.getActualTypeArguments()[0]);
     }
 
     @SuppressWarnings("unchecked")

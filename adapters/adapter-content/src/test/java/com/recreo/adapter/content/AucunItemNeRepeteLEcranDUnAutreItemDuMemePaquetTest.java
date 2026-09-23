@@ -5,6 +5,7 @@ import com.recreo.domain.content.EmplacementDuLibelleDeZone;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
+import com.recreo.domain.content.TableauSupport;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.ReponseAEcrire;
 import com.recreo.domain.content.Zone;
@@ -159,8 +160,9 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
     /**
      * Ce que l'enfant voit ou entend d'un item sur l'ecran de manche : son enonce, ses
      * propositions, la part que le contenu a designee (ADR-0062), le texte-support qu'il porte
-     * (ADR-0050), l'illustration qu'il montre (ADR-0073), l'ensemble de ses zones designables
-     * (ADR-0080) et le texte que l'adulte lui lit a voix haute (ADR-0075). Deux items de meme enonce
+     * (ADR-0050), la grille qu'il donne a lire (ADR-0099), l'illustration qu'il montre (ADR-0073),
+     * l'ensemble de ses zones designables (ADR-0080) et le texte que l'adulte lui lit a voix haute
+     * (ADR-0075). Deux items de meme enonce
      * et de memes propositions qui designent deux mots differents, qui portent deux textes-support
      * differents, qui montrent deux dessins differents, dont les zones designables different, ou
      * dont l'adulte lit deux textes differents, sont deux ecrans differents.
@@ -186,7 +188,8 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
     private record Ecran(String enonce, Set<String> propositions, Optional<String> partDesignee,
                           Optional<String> texteSupport, Optional<String> illustration,
                           Set<Zone> zones, Optional<String> texteAVoixHaute,
-                          Optional<EmplacementDuLibelleDeZone> emplacementDuLibelleDeZone) {
+                          Optional<EmplacementDuLibelleDeZone> emplacementDuLibelleDeZone,
+                          Optional<TableauSupport> tableauSupport) {
     }
 
     /** ADR-0013 obligation 1 : les paquets viennent du repertoire, jamais d'une liste. */
@@ -260,14 +263,15 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
                 propositions.addAll(question.distracteurs());
                 yield new Ecran(question.enonce(), Set.copyOf(propositions), question.partDesignee(),
                         question.texteSupport(), question.illustration(), Set.of(),
-                        question.texteAVoixHaute(), Optional.empty());
+                        question.texteAVoixHaute(), Optional.empty(), question.tableauSupport());
             }
             case ReponseAEcrire reponse -> new Ecran(reponse.enonce(), Set.of(), Optional.empty(),
                     Optional.empty(), Optional.empty(), Set.of(), reponse.texteAVoixHaute(),
-                    Optional.empty());
+                    Optional.empty(), Optional.empty());
             case ZoneADesigner zone -> new Ecran(zone.enonce(), Set.of(), Optional.empty(),
                     Optional.empty(), Optional.of(zone.illustration()), Set.copyOf(zone.zones()),
-                    zone.texteAVoixHaute(), Optional.of(zone.emplacementDuLibelleDeZone()));
+                    zone.texteAVoixHaute(), Optional.of(zone.emplacementDuLibelleDeZone()),
+                    Optional.empty());
         };
     }
 
@@ -312,10 +316,18 @@ class AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest {
      * boite du bouton et l'autre hors d'elle, montrent des boutons dont le texte differe (le libelle,
      * ou un numero de repere) et l'un porte une legende que l'autre ne porte pas : deux ecrans
      * differents pour l'enfant.</p>
+     *
+     * <p>ADR-0099 : {@code tableauSupport} y entre, exactement pour le motif du texte-support, dont
+     * il est l'autre forme. Un paquet d'extraction pose la meme question sur des grilles differentes
+     * - meme enonce, memes propositions, une grille par item : la classer hors de l'identite
+     * refuserait tous les items sauf le premier comme des copies, alors que l'enfant lit une grille
+     * differente a chaque fois. L'egalite de {@link TableauSupport} est celle d'un record, donc
+     * profonde : deux grilles qui ne different que par une cellule sont deux ecrans differents.</p>
      */
     private static final Set<String> COMPOSANTES_DANS_L_IDENTITE_D_ECRAN =
             Set.of("enonce", "bonneReponse", "distracteurs", "partDesignee", "texteSupport",
-                    "illustration", "zones", "texteAVoixHaute", "emplacementDuLibelleDeZone");
+                    "illustration", "zones", "texteAVoixHaute", "emplacementDuLibelleDeZone",
+                    "tableauSupport");
 
     /**
      * ADR-0050, clause 2 : les composantes d'un item qui n'entrent pas dans son identite d'ecran, et

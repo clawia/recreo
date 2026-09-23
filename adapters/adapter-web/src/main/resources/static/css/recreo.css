@@ -387,6 +387,30 @@ body:has(.ecran-porte-sa-sortie) .lien-accueil {
     margin-bottom: 0.25rem;
 }
 
+/* ADR-0099 : la grille d'un item d'extraction. Meme taille que .texte-support (1,25rem, plancher de
+   lisibilite de TailleDesTextesEtBoutonsTest) et meme espacement dessous, parce que c'est la meme
+   chose pour l'enfant - la matiere sur laquelle porte la question, dans une autre forme.
+   border-collapse et les bordures ne sont pas decoratives : une grille sans separateur visible
+   laisse l'oeil relier une valeur a la mauvaise colonne, ce qui est exactement la competence que la
+   ligne de programme fait travailler. La largeur des colonnes est laissee au moteur de rendu ;
+   aucune valeur en pixels n'est posee ici (CabinetDeLaMachineTest), et aucune n'a a l'etre : c'est
+   le contenu qui decide combien il y a de colonnes.
+   text-align: left sur les deux, y compris les intitules, que les navigateurs centrent par defaut :
+   un intitule centre au-dessus d'une colonne de valeurs alignees a gauche cesse de pointer sa
+   colonne des que les largeurs different. */
+.tableau-support {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    border-collapse: collapse;
+}
+
+.tableau-support th,
+.tableau-support td {
+    border: 0.0625rem solid var(--recreo-texte);
+    padding: 0.25rem 0.5rem;
+    text-align: left;
+}
+
 /* ADR-0073, palier 1 du visuel : le bloc qui porte le dessin d'un item. Il centre, il espace, et
    rien d'autre - ni fond, ni bordure, ni rembourrage. Ce n'est pas une economie de style, c'est une
    mesure d'ines-design (proposition-ines-palier-1-du-visuel.md, section 8) : un aplat sous le dessin

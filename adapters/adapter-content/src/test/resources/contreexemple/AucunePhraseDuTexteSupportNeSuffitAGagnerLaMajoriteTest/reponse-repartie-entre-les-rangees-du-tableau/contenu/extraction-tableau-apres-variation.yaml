@@ -1,0 +1,120 @@
+# CAS VERT (ADR-0013, ADR-0072, ADR-0099 decision 4). Ce fichier n'est pas un paquet servi.
+#
+# Le meme paquet que celui du repertoire voisin, a une seule difference pres : la rangee
+# interrogee varie d'un item a l'autre - quatre items sur la premiere ligne du corps, trois sur
+# la deuxieme, trois sur la troisieme. Aucune strategie qui ne lit qu'une rangee ne depasse 40 %.
+#
+# Sans ce cas vert, la morsure prouverait seulement que le garde-fou rougit sur quelque chose ;
+# avec lui, elle prouve qu'il distingue exactement le defaut - la rangee interrogee, jamais la
+# forme tableau elle-meme. Un garde-fou qui rougirait sur toute grille refuserait la famille au
+# lieu du defaut, et fermerait SCI-CM1-20 au lieu de la garder.
+#
+schema: 1
+id: extraction-tableau-apres-variation
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Le vivant, sa diversité et les fonctions qui le caractérisent"
+  competence: "Extraire une information d'un document (tableau)"
+items:
+  - enonce: "Quelle est la hauteur du chêne ?"
+    tableauSupport:
+      enTete: ["Arbre", "Hauteur"]
+      lignes:
+        - ["chêne", "25 mètres"]
+        - ["hêtre", "30 mètres"]
+        - ["bouleau", "18 mètres"]
+    bonneReponse: "25 mètres"
+    distracteurs: ["30 mètres", "18 mètres"]
+    indice: "Cherche la ligne du chêne."
+  - enonce: "Quelle est la masse du hêtre ?"
+    tableauSupport:
+      enTete: ["Arbre", "Masse"]
+      lignes:
+        - ["chêne", "12 tonnes"]
+        - ["hêtre", "9 tonnes"]
+        - ["bouleau", "4 tonnes"]
+    bonneReponse: "9 tonnes"
+    distracteurs: ["12 tonnes", "4 tonnes"]
+    indice: "Cherche la ligne du hêtre."
+  - enonce: "Quel âge a le bouleau ?"
+    tableauSupport:
+      enTete: ["Arbre", "Âge"]
+      lignes:
+        - ["chêne", "120 ans"]
+        - ["hêtre", "80 ans"]
+        - ["bouleau", "40 ans"]
+    bonneReponse: "40 ans"
+    distracteurs: ["120 ans", "80 ans"]
+    indice: "Cherche la ligne du bouleau."
+  - enonce: "Combien de glands produit le chêne ?"
+    tableauSupport:
+      enTete: ["Arbre", "Graines"]
+      lignes:
+        - ["chêne", "900 glands"]
+        - ["hêtre", "700 faînes"]
+        - ["bouleau", "500 samares"]
+    bonneReponse: "900 glands"
+    distracteurs: ["700 faînes", "500 samares"]
+    indice: "Cherche la ligne du chêne."
+  - enonce: "Quelle est la largeur du hêtre ?"
+    tableauSupport:
+      enTete: ["Arbre", "Largeur"]
+      lignes:
+        - ["chêne", "14 mètres"]
+        - ["hêtre", "11 mètres"]
+        - ["bouleau", "6 mètres"]
+    bonneReponse: "11 mètres"
+    distracteurs: ["14 mètres", "6 mètres"]
+    indice: "Cherche la ligne du hêtre."
+  - enonce: "Quelle est la profondeur des racines du bouleau ?"
+    tableauSupport:
+      enTete: ["Arbre", "Racines"]
+      lignes:
+        - ["chêne", "7 mètres"]
+        - ["hêtre", "3 mètres"]
+        - ["bouleau", "2 mètres"]
+    bonneReponse: "2 mètres"
+    distracteurs: ["7 mètres", "3 mètres"]
+    indice: "Cherche la ligne du bouleau."
+  - enonce: "Quelle est la hauteur du hêtre ?"
+    tableauSupport:
+      enTete: ["Arbre", "Hauteur"]
+      lignes:
+        - ["chêne", "25 mètres"]
+        - ["hêtre", "30 mètres"]
+        - ["bouleau", "18 mètres"]
+    bonneReponse: "30 mètres"
+    distracteurs: ["25 mètres", "18 mètres"]
+    indice: "Cherche la ligne du hêtre."
+  - enonce: "Quel âge a le chêne ?"
+    tableauSupport:
+      enTete: ["Arbre", "Âge"]
+      lignes:
+        - ["chêne", "120 ans"]
+        - ["hêtre", "80 ans"]
+        - ["bouleau", "40 ans"]
+    bonneReponse: "120 ans"
+    distracteurs: ["80 ans", "40 ans"]
+    indice: "Cherche la ligne du chêne."
+  - enonce: "Quelle est la masse du chêne ?"
+    tableauSupport:
+      enTete: ["Arbre", "Masse"]
+      lignes:
+        - ["chêne", "12 tonnes"]
+        - ["hêtre", "9 tonnes"]
+        - ["bouleau", "4 tonnes"]
+    bonneReponse: "12 tonnes"
+    distracteurs: ["9 tonnes", "4 tonnes"]
+    indice: "Cherche la ligne du chêne."
+  - enonce: "Combien de samares produit le bouleau ?"
+    tableauSupport:
+      enTete: ["Arbre", "Graines"]
+      lignes:
+        - ["chêne", "900 glands"]
+        - ["hêtre", "700 faînes"]
+        - ["bouleau", "500 samares"]
+    bonneReponse: "500 samares"
+    distracteurs: ["900 glands", "700 faînes"]
+    indice: "Cherche la ligne du bouleau."

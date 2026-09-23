@@ -52,13 +52,24 @@ import java.util.Optional;
  * jamais une proposition de son item, ni la bonne reponse - une regle de fermeture, pas une liste
  * d'interdits. ADR-0075, decision 3 : il entre desormais dans l'identite d'ecran d'ADR-0032, parce
  * que l'identite d'un tour est ce qui le distingue pour l'enfant, vu <b>ou entendu</b>.</p>
+ *
+ * <p>ADR-0099 : {@code tableauSupport} porte le document en <b>grille</b> qu'un item donne a lire,
+ * quand la competence visee est d'en extraire une information. Septieme composante optionnelle,
+ * meme patron que les six precedentes : la mecanique la transporte sans jamais la lire, et un
+ * paquet qui ne montre aucune grille ne remplit aucun champ factice. Elle ne se substitue pas a
+ * {@code texteSupport} - un item peut porter l'un, l'autre, ou les deux - parce que ce ne sont pas
+ * deux ecritures du meme objet : un paragraphe n'a ni colonnes ni intitules, et
+ * {@link TableauSupport} dit pourquoi une grille ecrite en texte n'est pas une grille. C'est la
+ * seule composante de ce record qui ne soit pas une chaine, et le motif est celui d'ADR-0062 : la
+ * structure est declaree par le contenu, jamais devinee par le gabarit.</p>
  */
 public record Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
                         Optional<String> indice, Optional<String> explication,
                         Optional<String> partDesignee, Optional<String> texteSupport,
                         Optional<String> illustration,
                         Optional<String> illustrationTexteAlternatif,
-                        Optional<String> texteAVoixHaute) implements Item {
+                        Optional<String> texteAVoixHaute,
+                        Optional<TableauSupport> tableauSupport) implements Item {
 
     /**
      * ADR-0073 clause 5 : les deux cles de l'illustration se gardent l'une l'autre. Une image qui
@@ -136,5 +147,19 @@ public record Question(ItemId id, String enonce, String bonneReponse, List<Strin
                      Optional<String> illustration, Optional<String> illustrationTexteAlternatif) {
         this(id, enonce, bonneReponse, distracteurs, indice, explication, partDesignee, texteSupport,
                 illustration, illustrationTexteAlternatif, Optional.empty());
+    }
+
+    /**
+     * ADR-0099 : meme defaut d'ADR-0016 qu'au-dessus, assume pour le meme motif - ne pas rouvrir les
+     * sites de construction des paquets qui ne montrent aucune grille. Laisse
+     * {@code tableauSupport} vide.
+     */
+    public Question(ItemId id, String enonce, String bonneReponse, List<String> distracteurs,
+                     Optional<String> indice, Optional<String> explication,
+                     Optional<String> partDesignee, Optional<String> texteSupport,
+                     Optional<String> illustration, Optional<String> illustrationTexteAlternatif,
+                     Optional<String> texteAVoixHaute) {
+        this(id, enonce, bonneReponse, distracteurs, indice, explication, partDesignee, texteSupport,
+                illustration, illustrationTexteAlternatif, texteAVoixHaute, Optional.empty());
     }
 }
