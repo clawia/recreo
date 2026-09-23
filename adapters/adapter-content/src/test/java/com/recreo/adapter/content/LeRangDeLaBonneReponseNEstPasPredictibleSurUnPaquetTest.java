@@ -825,7 +825,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " des situations illustrant la liberté, l'égalité et la fraternité en texte"
                     + " libre (items 2 à 11), valeurDe rend null sur les trois propositions de chaque"
                     + " item. Mesure du 2026-09-23 sur le paquet servi : aucune des 33 propositions ne"
-                    + " commence par un chiffre"));
+                    + " commence par un chiffre"),
+            // S40-EXTRACTION : paquet neuf de sciences CM1, extraction d'information (SCI-CM1-20).
+            Map.entry("cm1-sciences-extraire-information",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des extraits de texte (\"du nectar\","
+                    + " \"des rayons dangereux du Soleil\"...) ou des valeurs de tableau en texte libre"
+                    + " (\"herbivore\", \"solide\"...), valeurDe rend null sur les trois propositions"
+                    + " de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune des 36"
+                    + " propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

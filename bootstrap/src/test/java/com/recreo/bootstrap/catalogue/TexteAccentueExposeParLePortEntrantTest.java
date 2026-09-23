@@ -279,6 +279,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-regle-loi-cm1",
             // S40-DEVISE (s40) : entree neuve, EMC-CP-09, la devise de la Republique.
             "bandit-manchot-devise-cp",
+            // S40-EXTRACTION (s40) : entree neuve, extraction d'information texte et tableau
+            "bandit-manchot-sciences-extraire-information-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -448,6 +450,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Règle ou loi",
             // S40-DEVISE (s40) : titre neuf.
             "La devise de la France",
+            // S40-EXTRACTION (s40) : titre neuf.
+            "Lis le document scientifique",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -643,6 +647,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis si c'est une règle ou une loi, ou ce que fait cette loi.",
             // S40-DEVISE (s40) : consigne neuve.
             "Lis bien, puis dis la devise, ou choisis le bon exemple.",
+            // S40-EXTRACTION (s40) : consigne neuve.
+            "Lis le texte ou le tableau, puis réponds à la question.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -736,6 +742,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S40-HDA (s40) : domaine neuf, premier paquet d'histoire des arts (copie conforme du
             // referentiel de nadia-prof, squad/programme/histoire-des-arts/competences-cm1.md).
             "Situer une œuvre dans le temps et dans son contexte",
+            // S40-EXTRACTION (s40) : domaine neuf, sciences et technologie CM1 (copie conforme du
+            // referentiel de nadia-prof, squad/programme/sciences-et-technologie/competences-cm1.md).
+            "Démarches et langages scientifiques",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
@@ -991,7 +1000,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S40-DEVISE (s40) : competence neuve, copiee conforme du referentiel de nadia-prof
             // (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne EMC-CP-09).
             "Connaître la devise de la République et donner un exemple concret de liberté, "
-                    + "d'égalité et de fraternité.");
+                    + "d'égalité et de fraternité.",
+            // S40-EXTRACTION (s40) : competence neuve, libelle du descripteur du paquet, mot pour
+            // mot (cm1-sciences-extraire-information.yaml, ligne SCI-CM1-20).
+            "Extraire une information explicitement présente dans un document scientifique (texte "
+                    + "ou tableau) et la restituer (référentiel CM1, ligne SCI-CM1-20)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
