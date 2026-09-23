@@ -793,7 +793,39 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"l'Antiquité\"), de civilisations (\"la civilisation grecque antique\"...) ou"
                     + " d'usages (\"c'est un lieu de culte\"...), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune"
-                    + " des 33 propositions ne commence par un chiffre"));
+                    + " des 33 propositions ne commence par un chiffre"),
+            // S40-NUTRITION : paquet neuf de sciences et technologie CM1 (SCI-CM1-09).
+            Map.entry("cm1-sciences-nutrition",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des noms d'organes (\"l'estomac\", \"les"
+                    + " poumons\", \"le coeur\") ou des noms de fonctions (\"la digestion\", \"la"
+                    + " respiration\", \"la circulation\"), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune"
+                    + " des 33 propositions ne commence par un chiffre"),
+            // S40-REGLES : paquet neuf d'enseignement moral et civique CM1 (EMC-CM1-04).
+            Map.entry("cm1-emc-regles-vie-collective",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des actions ou des justifications de la"
+                    + " vie collective a l'école en texte libre, valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune"
+                    + " des 33 propositions ne commence par un chiffre"),
+            // S40-LOI : paquet neuf d'enseignement moral et civique CM1 (EMC-CM1-08).
+            Map.entry("cm1-emc-regle-loi",
+            "11 items sur 11 : six items (tâche de classement) portent un seul distracteur (deux"
+                    + " propositions) et cinq items (tâche de portée de la loi) portent deux"
+                    + " distracteurs (trois propositions), mais aucune des 27 propositions n'est"
+                    + " numerique : ce sont des categories (\"une règle\", \"une loi\") ou des verbes"
+                    + " en texte libre (\"elle autorise\", \"elle interdit\", \"elle protège\"),"
+                    + " valeurDe rend null sur toutes les propositions. Mesure du 2026-09-23 sur le"
+                    + " paquet servi : aucune des 27 propositions ne commence par un chiffre"),
+            // S40-DEVISE : paquet neuf d'enseignement moral et civique CP (EMC-CP-09).
+            Map.entry("cp-emc-devise",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont la devise et ses variantes (item 1) ou"
+                    + " des situations illustrant la liberté, l'égalité et la fraternité en texte"
+                    + " libre (items 2 à 11), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-09-23 sur le paquet servi : aucune des 33 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

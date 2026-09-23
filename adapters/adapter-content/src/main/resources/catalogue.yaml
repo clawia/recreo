@@ -516,3 +516,27 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-histoire-des-arts-relier-contexte
     nombreDeManches: 10
+  - id: bandit-manchot-nutrition-cm1
+    titre: "Le corps qui se nourrit"
+    consigne: "Lis bien, puis dis quel organe, ou quelle fonction du corps."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-nutrition
+    nombreDeManches: 10
+  - id: bandit-manchot-regles-vie-collective-cm1
+    titre: "Les règles de la vie collective"
+    consigne: "Lis bien, puis dis ce qu'il faut faire à l'école, ou pourquoi cette règle existe."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-regles-vie-collective
+    nombreDeManches: 10
+  - id: bandit-manchot-regle-loi-cm1
+    titre: "Règle ou loi"
+    consigne: "Lis bien, puis dis si c'est une règle ou une loi, ou ce que fait cette loi."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-regle-loi
+    nombreDeManches: 10
+  - id: bandit-manchot-devise-cp
+    titre: "La devise de la France"
+    consigne: "Lis bien, puis dis la devise, ou choisis le bon exemple."
+    mecanique: bandit-manchot
+    paquet: cp-emc-devise
+    nombreDeManches: 10
