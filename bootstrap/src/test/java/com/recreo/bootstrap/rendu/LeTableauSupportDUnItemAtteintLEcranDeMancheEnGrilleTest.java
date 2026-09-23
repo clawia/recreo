@@ -307,6 +307,21 @@ class LeTableauSupportDUnItemAtteintLEcranDeMancheEnGrilleTest {
         verifierChaqueItemPorteurDUneGrille(mockMvc, jeuxPorteursDUneGrille());
     }
 
+    /**
+     * <b>Amendement du 2026-09-23, premier paquet a grille servi (`S40-EXTRACTION`).</b> Cette
+     * clause comparait l'ecran a <b>rien</b> : elle refusait toute grille sur tout jeu du catalogue
+     * reel, au motif qu'aucun n'en declarait. La promesse d'ADR-0099 est *si et seulement si*, et
+     * la moitie *"seulement si"* etait ecrite comme un *"jamais"* - vrai tant que la population
+     * etait vide, faux le jour ou elle cesse de l'etre, c'est-a-dire le jour ou cette clause sert
+     * enfin a quelque chose.
+     *
+     * <p>Elle compare desormais l'ecran a <b>l'item que ce jeu sert</b>, par le meme
+     * {@link #manquements} que l'autre cote : une grille rendue sans declaration reste rouge, une
+     * grille rendue conformement a sa declaration est verte, et le premier paquet a grille du depot
+     * est juge au lieu d'etre refuse. Le tirage est deterministe ({@code RandomSource} de test a 0,
+     * {@code ListContentSource} rend alors le premier item non vu), donc l'item attendu est celui
+     * de rang 0 du paquet - meme derivation que le garde-fou du texte-support.</p>
+     */
     @Test
     void aucunJeuDuCatalogueReelNAfficheDeGrilleSansDeclaration() throws Exception {
         List<GameDefinition> jeuxReels = partie.jeuxDisponibles().stream()
@@ -319,12 +334,23 @@ class LeTableauSupportDUnItemAtteintLEcranDeMancheEnGrilleTest {
         List<String> defauts = new ArrayList<>();
         for (GameDefinition jeu : jeuxReels) {
             Document ecranDeManche = ecran(mockMvc, jeu.id(), new MockHttpSession());
-            if (!ecranDeManche.select("table.tableau-support").isEmpty()) {
-                defauts.add("jeu " + jeu.id() + " : une grille atteint l'ecran alors que son item"
-                        + " n'en declare aucune (ADR-0099, decision 3, seconde moitie)");
-            }
+            Question premierItem = itemsDuCorps(lireYaml("/contenu/" + paquetDe(jeu) + ".yaml")).get(0);
+            defauts.addAll(manquements(jeu.id(), premierItem, ecranDeManche));
         }
-        assertThat(defauts).isEmpty();
+        assertThat(defauts)
+                .as("ADR-0099, decision 3 : sur un jeu du catalogue reel, une grille atteint l'ecran"
+                        + " si et seulement si l'item servi en declare une, avec ses intitules et ses"
+                        + " cellules exacts")
+                .isEmpty();
+    }
+
+    /** Le nom du paquet reel derriere une entree du catalogue, lu sur l'entree elle-meme. */
+    private static String paquetDe(GameDefinition jeu) {
+        return entreesDuCatalogueReel().stream()
+                .filter(entree -> jeu.id().equals(String.valueOf(entree.get("id"))))
+                .map(entree -> String.valueOf(entree.get("paquet")))
+                .findFirst()
+                .orElseThrow();
     }
 
     /** ADR-0051 : la clause de non-vacuite mord, elle aussi. */
@@ -407,8 +433,13 @@ class LeTableauSupportDUnItemAtteintLEcranDeMancheEnGrilleTest {
      */
     @Test
     void uneGrillePoseeSurUnItemQuiNEnDeclareAucuneFaitEchouerLaClause() throws Exception {
+        // Un jeu reel dont l'item servi ne declare aucune grille - decouvert et non suppose : depuis
+        // S40-EXTRACTION, le catalogue en sert un qui en declare une, et le premier venu ne convient
+        // plus.
         GameDefinition jeuReel = partie.jeuxDisponibles().stream()
                 .filter(jeu -> !jeu.id().startsWith(PREFIXE_JEU_DE_PREUVE))
+                .filter(jeu -> itemsDuCorps(lireYaml("/contenu/" + paquetDe(jeu) + ".yaml")).get(0)
+                        .tableauSupport().isEmpty())
                 .findFirst().orElseThrow();
         Question sansGrille = new Question(new ItemId("item-0"), "enonce quelconque", "juste",
                 List.of("faux"));

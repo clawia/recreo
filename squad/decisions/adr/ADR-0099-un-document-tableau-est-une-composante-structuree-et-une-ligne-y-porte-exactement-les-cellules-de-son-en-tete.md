@@ -221,10 +221,9 @@ ecrit en s17 qui a impose une decision en s40 sans que personne ait a y penser.
   grille sont decouverts par balayage du repertoire de contenu, jamais nommes.
 - **Rien ne juge ce qu'une cellule contient.** Une grille bien formee peut mentir, et la justesse
   d'un tableau de sciences est a `nadia-prof`.
-- **`AucunTexteServiNEnchasseLaReponseDansUnePhraseTest` (`ADR-0083`) ne lit pas les cellules.** Son
-  objet est l'ecran de revelation et l'ecran de fin de partie, ou aucune grille n'est rendue ; y
-  ajouter les cellules ne garderait rien de plus aujourd'hui. **Declencheur** : le jour ou une grille
-  serait rendue sur l'un de ces deux ecrans.
+- ~~**`AucunTexteServiNEnchasseLaReponseDansUnePhraseTest` (`ADR-0083`) ne lit pas les cellules.** Son
+  objet est l'ecran de revelation et l'ecran de fin de partie, ou aucune grille n'est rendue.~~
+  **Faux, corrige le jour meme - voir l'amendement du 2026-09-23 au bas de cet ADR.**
 - **La mention de couverture partielle de `SCI-CM1-20`** - *"document textuel et tableau seuls"* - reste
   gardee par aucun automate. C'est la dette que ma section 4.3 a nommee et qui n'est pas payee ici :
   elle porte sur au moins trois lignes deja servies, et la trancher dans cet ADR-ci serait la trancher
@@ -352,3 +351,70 @@ mien** - deux formes fautives epelees dans mon avis de faisabilite de s40 - et i
 
 Les autres jobs de `.github/workflows/ci.yml` - prefixes de commit, chemins de poste de travail,
 juges purs des outils - ne sont pas lances par `mvn` et ne sont pas annonces ici.
+
+## Amendement du 2026-09-23 - le premier paquet a grille arrive, et deux de mes garde-fous supposaient qu'il n'arriverait pas
+
+`lea-dev` a ecrit `cm1-sciences-extraire-information` (12 items, six a texte, six a grille) en
+suivant cet ADR a la lettre. Le paquet est conforme ; **deux garde-fous ont rougi, et les deux
+avaient tort**. Ce n'est pas un alea : c'est le declencheur que cet ADR annoncait lui-meme, en
+section *"ce qu'ils ne voient pas"*, sans le payer. Une population vide rend indistinguables deux
+ecritures d'une meme clause, et on ne decouvre laquelle a ete ecrite que le jour ou la population
+cesse d'etre vide - c'est-a-dire le jour ou le garde-fou sert enfin a quelque chose.
+
+### 1. La moitie *"seulement si"* etait ecrite comme un *"jamais"*
+
+`LeTableauSupportDUnItemAtteintLEcranDeMancheEnGrilleTest.aucunJeuDuCatalogueReelNAfficheDeGrilleSansDeclaration`
+comparait l'ecran d'un jeu du catalogue reel a **rien** : toute table trouvee etait un defaut. La
+promesse de la decision 3 est *si et seulement si* ; cette clause disait *jamais*. Les deux
+coincident exactement tant qu'aucun jeu servi ne declare de grille, et divergent au premier qui en
+declare une - qu'elle refusait alors qu'il est conforme.
+
+**Corrige** : la clause compare desormais l'ecran a **l'item que le jeu sert**, par le meme
+`manquements` que l'autre cote. Une grille sans declaration reste rouge, une grille conforme est
+verte, et la grille servie est reellement **jugee** - intitules et cellules compris - au lieu d'etre
+refusee en bloc. **Morsure verifiee sur du materiau reel plutot qu'affirmee** : `scope="col"` retire
+du gabarit de production, cette clause rougit sur le paquet servi ; le gabarit restaure, elle est
+verte. C'est la premiere fois que ce cote juge autre chose qu'un item de ma main.
+
+### 2. L'ecran de revelation **est** l'ecran de manche, et il porte la grille
+
+J'avais ecrit qu'il n'y avait rien a ajouter aux valeurs de contenu lues par
+`AucunTexteServiNEnchasseLaReponseDansUnePhraseTest` (`ADR-0083`), *"l'ecran de revelation et l'ecran
+de fin de partie, ou aucune grille n'est rendue"*. **C'est faux, et le fait etait verifiable le jour
+ou je l'ai ecrit** : la revelation n'est pas un ecran distinct, c'est l'ecran de manche avec son bloc
+de message - donc il porte la grille, comme il porte le texte-support.
+
+Consequence mesuree : chaque `<th>` et chaque `<td>` comptait comme un **mot de la mecanique**, et
+comme leur texte varie d'un item a l'autre - c'est leur raison d'etre -, `ADR-0083` les prenait pour
+une phrase composee autour de la reponse. **17 griefs sur les six items a grille du paquet de
+`lea-dev`.**
+
+**Corrige** : les cellules de la grille rejoignent les valeurs de contenu de ce garde-fou, sur la
+ligne exacte ou le texte-support et le texte a voix haute y sont deja. La propriete d'`ADR-0083` est
+inchangee et sa morsure, qui porte sur du materiau reel mute, est verte apres correction.
+
+### Ce que je retiens, et qui vaut au-dela de ces deux cas
+
+**Un garde-fou dont la population reelle est vide ne dit pas ce qu'on croit qu'il dit.** Les deux
+defauts sont la meme faute sous deux formes : j'ai ecrit ce qui etait vrai de l'etat du depot au lieu
+d'ecrire la propriete, parce que rien ne distinguait les deux au moment ou j'ecrivais. La contrepartie
+a exiger n'est pas de renoncer a ecrire la regle avant le contenu - `DEC-0094` demandait l'inverse et
+elle a bien fait - c'est de **relire chaque clause en se demandant ce qu'elle dira le jour ou sa
+population cessera d'etre vide**, et de le dire dans l'ADR comme une clause a verifier, pas comme une
+limite a subir.
+
+**Le second defaut n'avait meme pas besoin d'un paquet pour etre trouve** : *"aucune grille n'est
+rendue sur l'ecran de revelation"* est un fait sur le gabarit, lisible dans `manche.html`, et je l'ai
+affirme sans le lire.
+
+### Impact de cet amendement
+
+- `bootstrap/src/test/java/com/recreo/bootstrap/rendu/LeTableauSupportDUnItemAtteintLEcranDeMancheEnGrilleTest.java` :
+  la clause *"seulement si"*, et la mise a l'epreuve qui posait une grille sur un item qui n'en
+  declare aucun - elle prenait le premier jeu reel venu, elle prend desormais le premier dont l'item
+  servi ne declare pas de grille, decouvert et non suppose.
+- `bootstrap/src/test/java/com/recreo/bootstrap/rendu/AucunTexteServiNEnchasseLaReponseDansUnePhraseTest.java` :
+  les cellules parmi les valeurs de contenu.
+- Aucun changement de production : ni le domaine, ni la fabrique, ni le gabarit, ni la feuille de
+  style. **Le contenu de `lea-dev` n'est pas touche d'un caractere** - il etait conforme, ce sont les
+  deux clauses qui ne l'etaient pas.

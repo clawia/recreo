@@ -540,3 +540,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-emc-devise
     nombreDeManches: 10
+  - id: bandit-manchot-sciences-extraire-information-cm1
+    titre: "Lis le document scientifique"
+    consigne: "Lis le texte ou le tableau, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-extraire-information
+    nombreDeManches: 10

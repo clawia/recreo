@@ -355,6 +355,17 @@ class AucunTexteServiNEnchasseLaReponseDansUnePhraseTest {
         ajouter(contenu, question.texteSupport());
         ajouter(contenu, question.illustrationTexteAlternatif());
         ajouter(contenu, question.texteAVoixHaute());
+        // ADR-0099, amendement du 2026-09-23 : les cellules d'une grille sont des valeurs de
+        // contenu, au meme titre que le texte-support juste au-dessus. Sans cette ligne, chaque
+        // <th> et chaque <td> compte comme un mot de la mecanique, et comme leur texte varie d'un
+        // item a l'autre - c'est leur raison d'etre -, ce garde-fou les prend pour une phrase
+        // composee autour de la reponse. L'ADR qui a cree la cle avait ecrit l'inverse, en se
+        // fondant sur l'idee qu'aucune grille n'atteint l'ecran de revelation : c'est faux, cet
+        // ecran est l'ecran de manche avec son bloc de message, et il porte la grille.
+        question.tableauSupport().ifPresent(grille -> {
+            contenu.addAll(normalises(grille.enTete()));
+            grille.lignes().forEach(ligne -> contenu.addAll(normalises(ligne)));
+        });
         return List.of(
                 new EcranServi(jeu.id(), jeu.mecanique().value(), ECRAN_REVELATION,
                         question.bonneReponse(), question.enonce(), contenu, revelation),
