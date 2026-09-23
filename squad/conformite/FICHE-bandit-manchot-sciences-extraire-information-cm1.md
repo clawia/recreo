@@ -27,8 +27,7 @@ manches de chaque tirage (`nombreDeManches: 10` sur un pool de 12 items) : quatr
 et six items a texte vus a l'ecran au total entre les deux parties, sur les six de chaque type que
 porte le paquet.
 
-## 2. Verification demandee en priorite : le tableau ne fuit pas, et ses reponses en sont des
-   cellules
+## 2. Verification demandee en priorite : le tableau ne fuit pas, et ses reponses en sont des cellules
 
 **Rendu inspecte a la source HTML brute** (`curl`, avant tout traitement visuel), sur l'item
 "regime alimentaire" avant toute reponse : la consigne, un `<table>` HTML reel (`<thead>` avec

@@ -109,7 +109,7 @@ items:
     bonneReponse: "elle interdit"
     distracteurs: ["elle autorise", "elle protège"]
     indice: "Aucun vendeur n'a le droit de le faire à une personne de moins de dix-huit ans."
-  - enonce: "Une loi dit que personne ne peut obliger un enfant à croire une religion, ou à ne pas y croire. Que fait cette loi ?"
+  - enonce: "Une loi dit que personne ne peut obliger un enfant à croire en une religion, ou à ne pas y croire. Que fait cette loi ?"
     bonneReponse: "elle autorise"
     distracteurs: ["elle interdit", "elle protège"]
     indice: "Chaque personne peut décider elle-même, sans qu'on le lui impose."

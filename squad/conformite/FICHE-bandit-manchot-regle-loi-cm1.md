@@ -156,7 +156,7 @@ Les cinq enonces de la tache B, vus a l'ecran :
   puni d'une amende. Que fait cette loi ?"*
 - item 10 (interdit) : *"Une loi dit que vendre de l'alcool a un enfant est puni d'une amende pour
   le vendeur. Que fait cette loi ?"*
-- item 11 (autorise) : *"Une loi dit que personne ne peut obliger un enfant a croire une religion,
+- item 11 (autorise) : *"Une loi dit que personne ne peut obliger un enfant a croire en une religion,
   ou a ne pas y croire. Que fait cette loi ?"*
 
 Aucun des cinq n'ecrit plus "autorise", "interdit" ou "protege" dans l'enonce : le mot-reponse est
@@ -174,7 +174,7 @@ meme reflexe sur "personne ne peut obliger" en item 11, et repondre "protege" au
 avec "elle interdit" tout aussi tentant par lecture litterale de "ne peut" comme un interdit.
 
 J'ai controle ce risque specifiquement, en le jouant et en le relisant plusieurs fois. Ce qui leve
-le risque : l'item 11 ne se limite pas a "personne ne peut obliger" - il ajoute *"a croire une
+le risque : l'item 11 ne se limite pas a "personne ne peut obliger" - il ajoute *"a croire en une
 religion, ou a ne pas y croire"*, qui nomme explicitement les deux issues possibles pour l'enfant
 et met en avant un choix, pas une interdiction faite a un tiers ni une mise a l'abri d'un danger.
 C'est ce choix explicitement nomme qui signale "autorise" sans ambiguite reelle : la loi permet a

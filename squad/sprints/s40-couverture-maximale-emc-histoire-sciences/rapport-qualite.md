@@ -146,5 +146,5 @@ worktree.
 Il ne prononce aucun Done pedagogique - `nadia-prof` seule le fait. Il ne juge le niveau scolaire
 d'aucun des six lots. Il n'etablit aucun total sur l'arbre fusionne `round-two` au-dela de
 `652cafc8` : c'est `sofia-sm` qui l'etablit a l'integration. Il ne modifie aucun contenu ni aucun
-code de production : les quatre mutations de la section 3 ont ete restaurees par `git checkout --`
+code de production : les trois mutations de la section 3 ont ete restaurees par `git checkout --`
 avant la redaction de ce rapport, chaque restauration verifiee par `git status --short` vide.
