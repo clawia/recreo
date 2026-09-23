@@ -6,6 +6,7 @@ import com.recreo.domain.content.ItemId;
 import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import com.recreo.domain.content.ReponseAEcrire;
+import com.recreo.domain.content.TableauSupport;
 import com.recreo.domain.content.ZoneADesigner;
 import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.Score;
@@ -224,6 +225,15 @@ public final class BanditManchotSession implements GameSession {
      */
     public Optional<String> texteSupportManche() {
         return Optional.ofNullable(mancheCourante).flatMap(Question::texteSupport);
+    }
+
+    /**
+     * ADR-0099 : la grille que la manche courante donne a lire, vide quand l'item n'en porte pas -
+     * le cas ordinaire. Cette mecanique ne la lit pas, elle la transporte, exactement comme le
+     * texte-support : elle ne change ni la facon de repondre ni le verdict (ADR-0058).
+     */
+    public Optional<TableauSupport> tableauSupportManche() {
+        return Optional.ofNullable(mancheCourante).flatMap(Question::tableauSupport);
     }
 
     /**

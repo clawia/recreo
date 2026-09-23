@@ -424,6 +424,11 @@ public class PartieController {
         // ADR-0050 : le texte-support d'un item de comprehension, vide sur tout item qui n'en porte
         // pas - le gabarit ne rend alors aucun paragraphe (th:if), jamais une balise vide.
         modele.addAttribute("texteSupport", session.texteSupportManche().orElse(null));
+        // ADR-0099 : la grille d'un item d'extraction, vide sur tout item qui n'en porte pas - le
+        // gabarit ne rend alors aucune table (th:if). L'objet voyage structure jusqu'au gabarit :
+        // aucune mise en colonnes n'est calculee ici, c'est le moteur de rendu qui la fait et non
+        // la police servie (ADR-0092).
+        modele.addAttribute("tableauSupport", session.tableauSupportManche().orElse(null));
         // ADR-0073 : l'item declare un identifiant, cet adapter est le seul endroit du produit qui
         // sache ou le fichier est servi et sous quelle extension - le gabarit compose les trois
         // termes, le contenu n'en connait qu'un. Vide sur tout item qui ne montre rien : le gabarit

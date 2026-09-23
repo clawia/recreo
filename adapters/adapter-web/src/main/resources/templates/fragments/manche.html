@@ -64,6 +64,32 @@
          COMP-6). Jamais un paragraphe vide (ADR-0020) : th:if garde ce bloc absent des jeux qui
          n'en portent pas, plutot que de le nourrir d'une valeur factice. -->
     <p class="texte-support" th:if="${texteSupport != null}" th:text="${texteSupport}"></p>
+    <!-- ADR-0099 : la grille qu'un item d'extraction donne a lire. Meme emplacement que le
+         texte-support - "la matiere sur laquelle porte la question" (ADR-0050) - et meme th:if,
+         jamais une table vide (ADR-0020).
+         C'est un vrai <table>, jamais un texte aligne a l'espace : la mise en colonnes est faite
+         par le moteur de rendu, la ou un alignement ecrit dans une chaine depend de la police
+         servie, qui est celle de l'appareil (ADR-0092). scope="col" est la seule chose qui, dans
+         un document servi, rattache une cellule a l'intitule de sa colonne pour une lecture
+         d'ecran ; sans lui, l'enfant accompagne entend une suite de valeurs sans savoir de quoi.
+         Aucun <caption> : le gabarit ne peut en ecrire qu'un seul, identique pour toutes les
+         grilles de tous les paquets, donc qui n'en decrirait aucune - meme motif que le texte
+         alternatif d'une illustration, qui vient du modele et jamais d'ici (ADR-0073 clause 5).
+         Les intitules et les cellules viennent du contenu, et rien ici ne les compose : le
+         nombre de colonnes est celui de l'en-tete declaree, et qu'une ligne en porte exactement
+         autant est un invariant pose des la construction de l'item (ADR-0099, decision 2). -->
+    <table class="tableau-support" th:if="${tableauSupport != null}">
+        <thead>
+            <tr>
+                <th scope="col" th:each="intitule : ${tableauSupport.enTete()}" th:text="${intitule}"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="ligne : ${tableauSupport.lignes()}">
+                <td th:each="cellule : ${ligne}" th:text="${cellule}"></td>
+            </tr>
+        </tbody>
+    </table>
     <!-- ADR-0073, palier 1 du visuel : l'image fixe qu'un item declare. Elle occupe l'emplacement du
          texte-support - "la matiere sur laquelle porte la question" (ADR-0050) -, entre la consigne
          et l'enonce, et n'invente aucun emplacement neuf : ines-design a mesure les deux placements

@@ -122,8 +122,16 @@ Verifie pour les cinq, dans les referentiels, sous la forme exacte que le motif 
 | `SCI-CM1-09` | `squad/programme/sciences-et-technologie/competences-cm1.md` | 58 |
 | `SCI-CM1-20` | idem | 78 |
 
-Les cinq resolvent. Un paquet qui declarerait `EMC-CM1-4`, `EMC-CM1-O4` ou `SCI-CM1-20 ` est rouge
-aujourd'hui, sans rien ecrire.
+Les cinq resolvent. Un paquet dont le code perdrait le zero de son numero, remplacerait ce zero par
+la lettre O, ou trainerait une espace finale est rouge aujourd'hui, sans rien ecrire.
+
+*Correction du 2026-09-23 (`theo-archi`, meme jour) : cette phrase epelait les trois formes fautives.
+Deux d'entre elles ont la forme d'un identifiant de condition, et `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`
+(`ADR-0085`, `PAR-5`) les a comptees comme des identifiants ecrits sans allocation - a juste titre :
+il ne peut pas distinguer un identifiant cite en exemple d'un identifiant pose. C'est la lecon
+qu'`ADR-0087` avait deja ecrite pour lui-meme ("cet ADR-ci ne recopie aucune des lignes fautives -
+il les designe"), et que cet avis n'avait pas appliquee. Les formes sont desormais designees, pas
+epelees.*
 
 ### 4.2 Pourquoi la sous-partie d'`ADR-0097`/`ADR-0098` n'a pas d'equivalent a allouer ici
 
