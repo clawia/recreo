@@ -510,3 +510,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-solides
     nombreDeManches: 10
+  - id: bandit-manchot-nutrition-cm1
+    titre: "Le corps qui se nourrit"
+    consigne: "Lis bien, puis dis quel organe, ou quelle fonction du corps."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-nutrition
+    nombreDeManches: 10

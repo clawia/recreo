@@ -268,6 +268,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-longueurs-ce1",
             // S39-SOLIDES (s39) : entree neuve, MAT-CE1-16, sous-partie allouee par ADR-0098.
             "bandit-manchot-solides-ce1",
+            // S40-NUTRITION (s40) : entree neuve, SCI-CM1-09, fonctions de nutrition du corps
+            // humain.
+            "bandit-manchot-nutrition-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -427,6 +430,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les longueurs",
             // S39-SOLIDES (s39) : titre neuf.
             "Les solides",
+            // S40-NUTRITION (s40) : titre neuf.
+            "Le corps qui se nourrit",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -612,6 +617,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S39-SOLIDES (s39) : consigne reprise de "Regarde bien le dessin, puis choisis son
             // nom." (bandit-manchot-figures-planes-cp), deja dans cet inventaire, aucune entree
             // neuve.
+            // S40-NUTRITION (s40) : consigne neuve.
+            "Lis bien, puis dis quel organe, ou quelle fonction du corps.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -936,7 +943,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Mesurer et comparer des longueurs en centimètres et en mètres",
             // S39-SOLIDES (s39) : competence neuve, sous-partie allouee dans
             // SousPartieDeMathematiquesCe1 (ADR-0098).
-            "Reconnaître et nommer des solides usuels");
+            "Reconnaître et nommer des solides usuels",
+            // S40-NUTRITION (s40) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/sciences-et-technologie/competences-cm1.md, ligne SCI-CM1-09).
+            "Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, "
+                    + "circulation) et l'organe principal de chacune.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

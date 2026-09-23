@@ -1,0 +1,90 @@
+schema: 1
+id: cm1-sciences-nutrition
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Le vivant, sa diversité et les fonctions qui le caractérisent"
+  competence: "Nommer les grandes fonctions de nutrition du corps humain (digestion, respiration, circulation) et l'organe principal de chacune."
+lignesDeReferentiel: ["SCI-CM1-09"]
+#
+# S40-NUTRITION (docs/backlog/backlog.md, sprint 40). Arbitrage prealable deja rendu, aucun arbitrage
+# neuf a router (ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-
+# le-prix-d-une-ligne-marginale.md, section 17.2, ligne SCI-CM1-09) : "designer un organe sur un
+# schema serait du palier 2, non exige. Cette ligne ferme en texte, aujourd'hui, sans palier 2. Je
+# confirme le 'non exige'." L'association fonction/organe se fait donc entierement en texte, jamais
+# par designation sur un schema. Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-09).
+#
+# Avis de faisabilite de theo-archi (squad/sprints/s40-couverture-maximale-emc-histoire-sciences/
+# avis-faisabilite.md, section 5.1) : patron identique a cm1-sciences-chaine-alimentaire (S30-1).
+#
+# FER-1 : les trois fonctions du referentiel (digestion, respiration, circulation) sont chacune en
+# bonne reponse de la tache "organe" (items 1, 4 ; 2, 5 ; 3, 6) et les trois organes principaux
+# (l'estomac, les poumons, le coeur) sont chacun en bonne reponse de la tache "fonction" (items 7, 10 ;
+# 8 ; 9, 11).
+#
+# FER-3 : deux taches distinctes - donner l'organe principal d'une fonction citee (items 1 a 6),
+# donner la fonction principale d'un organe cite (items 7 a 11).
+#
+# ADR-0086, clause 1 : les bonnes reponses "l'estomac", "les poumons", "le coeur", "la digestion",
+# "la respiration" et "la circulation" comptent chacune moins de trois mots (plancher de la clause) -
+# ce sont des etiquettes de categorie, au meme titre que les etres vivants de la chaine alimentaire.
+# Leur repetition (deux fois chacune au maximum) reste sous le seuil de trois occurrences que la
+# clause examine, et la tache varie a chaque paire d'items plutot que le seul mot, comme l'avis de
+# faisabilite le recommande.
+#
+# Distracteurs : sur la tache "organe", les deux distracteurs sont toujours les deux autres organes
+# de nutrition (jamais un organe sans rapport, comme le cerveau ou les reins) ; sur la tache
+# "fonction", les deux distracteurs sont toujours les deux autres fonctions de nutrition. L'enfant
+# doit donc connaitre l'association precise, pas seulement ecarter une proposition absurde.
+#
+# L'exactitude scientifique de chaque association (digestion -> estomac, respiration -> poumons,
+# circulation -> coeur) reste la garde de nadia-prof au Done pedagogique.
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Quel organe assure surtout la digestion des aliments ?"
+    bonneReponse: "l'estomac"
+    distracteurs: ["les poumons", "le coeur"]
+    indice: "C'est l'organe qui reçoit les aliments juste après l'œsophage."
+  - enonce: "Quel organe permet surtout de respirer ?"
+    bonneReponse: "les poumons"
+    distracteurs: ["l'estomac", "le coeur"]
+    indice: "Cet organe se remplit et se vide d'air à chaque souffle."
+  - enonce: "Quel organe fait circuler le sang dans tout le corps ?"
+    bonneReponse: "le coeur"
+    distracteurs: ["l'estomac", "les poumons"]
+    indice: "Cet organe bat sans arrêt, jour et nuit, dans la poitrine."
+  - enonce: "Après un repas, quel organe transforme les aliments avalés ?"
+    bonneReponse: "l'estomac"
+    distracteurs: ["les poumons", "le coeur"]
+    indice: "Cet organe malaxe les aliments pour commencer à les transformer."
+  - enonce: "Quand on court vite, quel organe se remplit d'air plus vite ?"
+    bonneReponse: "les poumons"
+    distracteurs: ["l'estomac", "le coeur"]
+    indice: "Cet organe a besoin de plus d'air quand le corps fait un effort."
+  - enonce: "Quel organe pompe le sang vers tout le corps ?"
+    bonneReponse: "le coeur"
+    distracteurs: ["l'estomac", "les poumons"]
+    indice: "Cet organe envoie le sang dans tout le corps à chaque battement."
+  - enonce: "L'estomac sert surtout à quelle fonction du corps ?"
+    bonneReponse: "la digestion"
+    distracteurs: ["la respiration", "la circulation"]
+    indice: "C'est la fonction qui transforme les aliments en éléments utiles au corps."
+  - enonce: "Les poumons servent surtout à quelle fonction du corps ?"
+    bonneReponse: "la respiration"
+    distracteurs: ["la digestion", "la circulation"]
+    indice: "C'est la fonction qui fait entrer l'air dans le corps."
+  - enonce: "Le cœur sert surtout à quelle fonction du corps ?"
+    bonneReponse: "la circulation"
+    distracteurs: ["la digestion", "la respiration"]
+    indice: "C'est la fonction qui fait circuler le sang dans tout le corps."
+  - enonce: "Quand l'estomac transforme les aliments avalés, quelle fonction assure-t-il ?"
+    bonneReponse: "la digestion"
+    distracteurs: ["la respiration", "la circulation"]
+    indice: "C'est la même fonction que celle qui commence dans la bouche, en mâchant."
+  - enonce: "Quand le cœur pompe le sang dans le corps, quelle fonction assure-t-il ?"
+    bonneReponse: "la circulation"
+    distracteurs: ["la digestion", "la respiration"]
+    indice: "C'est la même fonction qui envoie le sang jusqu'aux bras et aux jambes."
