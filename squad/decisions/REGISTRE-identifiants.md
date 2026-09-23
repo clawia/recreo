@@ -39,9 +39,26 @@ l'identifiant. Sur mon worktree dedie, avant mon diff : 666 identifiants distinc
 distincts, 0 doublon, ce qui confirme la ligne d'etat courant que le fichier declarait ; apres mon
 diff : 677 et 109.
 
+**Note de `nadia-prof`, s40, le 2026-09-23 (reparation - identifiants ecrits sans allocation).**
+Quatre identifiants ajoutes, tous ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md` :
+`HDA-1` a `HDA-4` (criteres qui font tenir `HIS-2` sur `HDA-CM1-05` - forme de l'item, faits de
+contexte admissibles, distracteurs, diversite du corpus). J'avais ecrit ce document dans un commit
+anterieur sans allouer ses identifiants dans ce registre : `PAR-5` (`ADR-0085`, clause 2) a rougi
+a la fusion, signale par `sofia-sm` et retrouve independamment par `theo-archi`. **Un prefixe
+neuf : `HDA`**, verifie absent de la table de la section 4 avant allocation - je le distingue des
+codes de ligne a trois segments du referentiel d'histoire des arts (`HDA-CM1-01` a `HDA-CM1-10`,
+`ADR-0081`), qui portent trois segments et non deux : aucune collision de nom, verifiee sur les
+deux chaines exactes plutot que sur le seul prefixe partage. Ligne d'etat courant portee de
+**677 / 109 a 681 / 110**. Methode : comptage des lignes de la table de la section 4 sous le motif
+du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre accents graves, `ADR-0085`
+clause 5), prefixe pris comme **premier segment** de l'identifiant. Sur mon worktree dedie, avant
+mon diff : 677 identifiants distincts, 109 prefixes distincts, ce qui confirme la ligne d'etat
+courant que le fichier declarait ; apres mon diff : 681 et 110.
+
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `677` identifiants alloues, `109` prefixes distincts.
+**Compte courant, verifie par la CI** : `681` identifiants alloues, `110` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -894,6 +911,10 @@ clause 2 par une exemption.
 | `GRN-1` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `GRN-2` | `squad/conformite/FICHE-bandit-manchot-grands-nombres-cm1.md` |
 | `GRN-3` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
+| `HDA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md` |
+| `HDA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md` |
+| `HDA-3` | `squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md` |
+| `HDA-4` | `squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md` |
 | `HG-R1` | `squad/conformite/PASSE-TRANSVERSE-s29-les-proprietes-de-portee-depot.md` |
 | `HG-R2` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
 | `HG-R3` | `squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md` |
