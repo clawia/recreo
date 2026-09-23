@@ -570,6 +570,20 @@ route, de sorte que l'agent route trouve un worktree deja pret plutot que d'avoi
 Cela ne dispense aucun agent de la regle telle qu'ecrite depuis s06 : un agent qui recevrait un
 routage sans worktree deja ouvert (defaillance de Sofia elle-meme) en reste tenu.
 
+**Avant d'ouvrir le worktree de l'agent qu'elle route, Sofia verifie que sa propre ceremonie qui
+produit ce routage est deja fusionnee sur `round-two`** (amendement s40, retro de s40). L'amendement
+de s39 ci-dessus couvrait un sens de la dependance - un worktree route existe au moment ou l'agent
+en a besoin - sans couvrir l'autre : ce worktree doit etre construit sur un socle qui porte deja
+tout ce que la ceremonie qui le route vient d'ecrire. A s40, Sofia a ouvert son propre worktree
+dedie pour ecrire `planning.md` (`a32fa316`), puis, au moment de router vers `camille-po`, a
+constate elle-meme que ce commit n'etait pas encore fusionne sur `round-two` : un worktree ouvert a
+cet instant depuis le tip de `round-two` n'aurait pas contenu le planning routant le travail de
+`camille-po`. Constate avant tout travail en aval, corrige sans aucun cout - mais le seul precedent
+comparable (`camille-po`, s39, section ci-dessus) avait coute un reacteur rouge pendant un retard.
+Desormais, Sofia verifie que le commit portant sa propre ceremonie (planning, `DEC`, ou tout autre
+document routant un travail) est deja sur `round-two` avant d'ouvrir, depuis son tip, le worktree
+de l'agent qu'elle route.
+
 **Un sprint peut etre pilote par des arbitrages successifs de l'autorite produit plutot que par un
 objectif gele au planning, et le process le nomme plutot que de le taire** (amendement s15, cloture
 de s15). Dans ce mode, l'utilisatrice joue l'increment livre, rend un arbitrage, et ce rendu
