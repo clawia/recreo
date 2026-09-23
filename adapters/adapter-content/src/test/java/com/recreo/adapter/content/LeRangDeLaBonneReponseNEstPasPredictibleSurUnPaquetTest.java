@@ -809,7 +809,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " numerique : ce sont des categories (\"une règle\", \"une loi\") ou des verbes"
                     + " en texte libre (\"elle autorise\", \"elle interdit\", \"elle protège\"),"
                     + " valeurDe rend null sur toutes les propositions. Mesure du 2026-09-23 sur le"
-                    + " paquet servi : aucune des 27 propositions ne commence par un chiffre"));
+                    + " paquet servi : aucune des 27 propositions ne commence par un chiffre"),
+            // S40-DEVISE : paquet neuf d'enseignement moral et civique CP (EMC-CP-09).
+            Map.entry("cp-emc-devise",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont la devise et ses variantes (item 1) ou"
+                    + " des situations illustrant la liberté, l'égalité et la fraternité en texte"
+                    + " libre (items 2 à 11), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-09-23 sur le paquet servi : aucune des 33 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

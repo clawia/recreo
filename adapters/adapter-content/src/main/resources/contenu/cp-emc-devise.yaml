@@ -1,0 +1,85 @@
+schema: 1
+id: cp-emc-devise
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Connaître la devise de la République et donner un exemple concret de liberté, d'égalité et de fraternité."
+lignesDeReferentiel: ["EMC-CP-09"]
+#
+# S40-DEVISE (docs/backlog/backlog.md, sprint 40). Arbitrage prealable deja rendu, aucun arbitrage
+# neuf a router (ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-
+# borne.md, ligne 235) : "La devise est une restitution exacte et sure. La moitie exemple est ou
+# EMC-5 mord le plus fort [...] La ligne ferme, mais elle coute cher a verifier." Referentiel copie
+# conforme (squad/programme/enseignement-moral-et-civique/competences-cp.md, EMC-CP-09).
+#
+# ADR-0086, clause 1 : la bonne reponse de restitution ("liberté, égalité, fraternité") compte trois
+# mots, au seuil exact de la clause. Ce paquet ne porte donc qu'UN SEUL item de restitution (item 1) :
+# la clause ne s'applique qu'a partir de trois items partageant la meme bonne reponse, et un seul
+# item l'exclut d'office (avis de faisabilite de theo-archi, section 5.4).
+#
+# ADR-0089 (LON-1, LON-2) : au CP, chaque enonce compte au plus quinze mots et au plus deux phrases,
+# la seconde etant la question. Tous les enonces de ce paquet sont des questions d'une seule phrase,
+# tres en dessous du plafond de mots.
+#
+# FER-1 : les trois valeurs (liberté, égalité, fraternité) sont chacune illustrées par au moins un
+# exemple concret (items 2 à 4 : liberté ; items 5 à 7 : égalité ; items 8 à 11 : fraternité).
+#
+# EMC-5 : sur la moitié exemple, les deux propositions écartées de chaque item sont des actions du
+# quotidien scolaire sans aucun rapport avec l'une des trois valeurs (ranger, colorier, compter,
+# boire, dessiner...), jamais une action qui illustrerait une autre des trois valeurs ou la même
+# valeur sous un autre angle défendable.
+#
+# EMC-1 : aucun item ne demande à l'enfant un exemple tiré de sa propre vie - chaque exemple met en
+# scène une situation générale, jamais l'enfant qui joue.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Quelle est la devise de la France ?"
+    bonneReponse: "liberté, égalité, fraternité"
+    distracteurs: ["liberté, égalité, unité", "égalité, fraternité, sécurité"]
+    indice: "Ces trois mots sont écrits sur le fronton des écoles."
+  - enonce: "Quel exemple illustre la liberté ?"
+    bonneReponse: "choisir son livre à la bibliothèque"
+    distracteurs: ["ranger sa trousse dans le cartable", "porter son cartable sur le dos"]
+    indice: "Personne ne choisit ce livre à sa place."
+  - enonce: "Quel exemple illustre la liberté ?"
+    bonneReponse: "choisir son jeu pendant la récréation"
+    distracteurs: ["attacher ses lacets avant d'entrer en classe", "écrire son prénom sur la feuille"]
+    indice: "Chacun décide lui-même à quoi il joue."
+  - enonce: "Quel exemple illustre la liberté ?"
+    bonneReponse: "donner son avis sur un sujet de classe"
+    distracteurs: ["colorier un dessin avec des crayons", "ranger les livres sur l'étagère"]
+    indice: "Chaque élève peut dire ce qu'il pense, sans qu'on l'en empêche."
+  - enonce: "Quel exemple illustre l'égalité ?"
+    bonneReponse: "tous les élèves suivent la même règle en classe"
+    distracteurs: ["boire un verre d'eau à la cantine", "regarder les nuages par la fenêtre"]
+    indice: "La règle est la même pour chaque élève de la classe."
+  - enonce: "Quel exemple illustre l'égalité ?"
+    bonneReponse: "les filles et les garçons font le même sport"
+    distracteurs: ["plier sa feuille de dessin en deux", "compter jusqu'à dix à voix haute"]
+    indice: "Le sport proposé ne change pas selon qu'on est une fille ou un garçon."
+  - enonce: "Quel exemple illustre l'égalité ?"
+    bonneReponse: "chaque élève reçoit le même nombre de feuilles"
+    distracteurs: ["ouvrir son cahier de mathématiques", "manger à la cantine à midi"]
+    indice: "Aucun élève n'en reçoit plus ou moins qu'un autre."
+  - enonce: "Quel exemple illustre la fraternité ?"
+    bonneReponse: "aider un camarade tombé dans la cour"
+    distracteurs: ["dessiner un soleil sur sa feuille", "ranger ses crayons dans la trousse"]
+    indice: "Un camarade a besoin d'aide, et on la lui apporte."
+  - enonce: "Quel exemple illustre la fraternité ?"
+    bonneReponse: "partager son goûter avec un camarade qui a oublié le sien"
+    distracteurs: ["essuyer le tableau de la classe", "ouvrir la fenêtre de la classe"]
+    indice: "On donne une partie de ce qu'on a à quelqu'un qui n'a rien."
+  - enonce: "Quel exemple illustre la fraternité ?"
+    bonneReponse: "consoler un camarade qui pleure"
+    distracteurs: ["plier son manteau sur la chaise", "colorier une image dans le cahier"]
+    indice: "On reste auprès d'un camarade triste pour l'aider à se sentir mieux."
+  - enonce: "Quel exemple illustre la fraternité ?"
+    bonneReponse: "aider un camarade à porter son sac trop lourd"
+    distracteurs: ["compter les cahiers empilés sur le bureau", "attacher son cartable avant de partir"]
+    indice: "On porte une partie du poids à la place d'un camarade qui peine."

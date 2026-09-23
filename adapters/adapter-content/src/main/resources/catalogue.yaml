@@ -528,3 +528,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-emc-regle-loi
     nombreDeManches: 10
+  - id: bandit-manchot-devise-cp
+    titre: "La devise de la France"
+    consigne: "Lis bien, puis dis la devise, ou choisis le bon exemple."
+    mecanique: bandit-manchot
+    paquet: cp-emc-devise
+    nombreDeManches: 10

@@ -275,6 +275,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-regles-vie-collective-cm1",
             // S40-LOI (s40) : entree neuve, EMC-CM1-08, distinguer une regle d'une loi.
             "bandit-manchot-regle-loi-cm1",
+            // S40-DEVISE (s40) : entree neuve, EMC-CP-09, la devise de la Republique.
+            "bandit-manchot-devise-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -440,6 +442,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les règles de la vie collective",
             // S40-LOI (s40) : titre neuf.
             "Règle ou loi",
+            // S40-DEVISE (s40) : titre neuf.
+            "La devise de la France",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -631,6 +635,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis ce qu'il faut faire à l'école, ou pourquoi cette règle existe.",
             // S40-LOI (s40) : consigne neuve.
             "Lis bien, puis dis si c'est une règle ou une loi, ou ce que fait cette loi.",
+            // S40-DEVISE (s40) : consigne neuve.
+            "Lis bien, puis dis la devise, ou choisis le bon exemple.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -966,7 +972,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S40-LOI (s40) : competence neuve, copiee conforme du referentiel de nadia-prof
             // (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne EMC-CM1-08).
             "Distinguer une règle d'une loi, et identifier ce que la loi autorise, interdit et "
-                    + "protège.");
+                    + "protège.",
+            // S40-DEVISE (s40) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne EMC-CP-09).
+            "Connaître la devise de la République et donner un exemple concret de liberté, "
+                    + "d'égalité et de fraternité.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
