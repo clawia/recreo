@@ -14480,4 +14480,260 @@ prealable (`SCI-CM1-01`, `SCI-CM1-02`, `SCI-CM1-05`).
   nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0092`, section 5) ;
   `nadia-prof` pour le Done pedagogique.
 
+## Sprint 40 - Couverture maximale sur six lignes candidates, EMC/histoire des arts/sciences (`DEC-0093`)
+
+Six lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` a
+l'ouverture du sprint. Objectif et perimetre formalises par `DEC-0093` ; aucun ne rouvre
+`DEC-0089` (CE1 mathematiques seule, CM2 differe) ni les neuf lignes bloquees par
+`ART-3`/`DEC-0075`. Un seul lot (`S40-HDA`) reste bloque avant tout developpement, dans l'attente
+d'un arbitrage pedagogique prealable de `nadia-prof` ; les cinq autres portent deja un arbitrage
+prealable explicite, cite en entier ci-dessous, et peuvent recevoir un avis de faisabilite de
+`theo-archi` sans etape supplementaire.
+
+### S40-HDA - Relier une oeuvre a son contexte historique et culturel (`HDA-CM1-05`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a relier les caracteristiques d'une
+  oeuvre d'art a ses usages et a son contexte historique et culturel en jouant au bandit manchot,
+  afin de situer une oeuvre dans son epoque sans avoir besoin de la voir.
+- **Competence programme visee** : histoire des arts, CM1 (cycle 3), domaine "Situer une oeuvre
+  dans le temps et dans son contexte" - `squad/programme/histoire-des-arts/competences-cm1.md`,
+  `HDA-CM1-05`. Ligne `non couvert`, `MATRICE-couverture.md` ligne 1941, deja notee "jouable des
+  aujourd'hui au choix textuel, seule ligne de la matiere sans image requise" - explicitement hors
+  des neuf lignes bloquees par `ART-3`/`DEC-0075`.
+- **Arbitrage pedagogique prealable route a `nadia-prof`, avant tout avis de faisabilite de
+  `theo-archi`** (`DEC-0093`, section 5) : la matrice porte elle-meme la reserve, ecrite par
+  `nadia-prof`, que *"`HIS-2` est ici la barre critique : le contexte d'une oeuvre a souvent
+  plusieurs lectures defendables"*. Aucun critere existant ne dit comment choisir ou restreindre
+  les oeuvres et les elements de contexte retenus pour qu'un item n'ait jamais deux reponses
+  defendables. Question posee explicitement, non prejugee : quel sous-ensemble d'oeuvres et de
+  faits de contexte (periode, mouvement, usage) est assez etabli et non discute pour porter un
+  item, et comment le distracteur doit-il rester ecarte de ce risque ?
+- **Criteres d'acceptation** :
+  - Etant donne l'arbitrage pedagogique prealable de `nadia-prof`, quand il fixe les criteres de
+    selection des oeuvres et des elements de contexte admissibles, alors le paquet livre ne retient
+    que des items conformes a ces criteres.
+  - Etant donne une manche generee, quand la question s'affiche, alors elle relie une
+    caracteristique d'une oeuvre (nommee dans l'enonce, jamais montree) a un usage ou a un element
+    de contexte historique et culturel (epoque, civilisation, fonction) fixe par l'arbitrage
+    prealable.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois et aucune des deux autres propositions ne constitue une lecture egalement
+    defendable du contexte de l'oeuvre citee (`HIS-2`).
+  - Etant donne chaque fait de contexte cite dans un item, quand on le verifie, alors il porte sa
+    source dans le commentaire du paquet (`HIS-3`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `HDA-CM1-05` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    qu'aucun item n'admet une seconde lecture defendable du contexte et que les criteres de
+    selection fixes par son propre arbitrage prealable sont tenus.
+- **Ce que cette story ne fait pas** : elle ne fixe aucun critere de selection d'oeuvre ni aucun
+  contenu factuel de contexte - reste entierement a `nadia-prof` ; elle ne montre ni ne suppose
+  aucune image d'oeuvre (les neuf lignes bloquees par `ART-3`/`DEC-0075` restent hors de son
+  perimetre) ; elle ne choisit pas le mecanisme technique - reste a `theo-archi`. Si l'arbitrage
+  conclut qu'aucun sous-ensemble d'oeuvres n'est assez etabli pour tenir `HIS-2` de facon fiable,
+  cette story ne pretend pas fermer la ligne malgre ce constat.
+- **Lien decision** : `DEC-0093`, `DEC-0089`.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage pedagogique prealable ; `theo-archi` ensuite ;
+  affectation nominative du developpement par `sofia-sm` une fois l'avis rendu (`DEC-0093`, section
+  5).
+
+### S40-EXTRACTION - Extraire une information d'un document scientifique et la restituer (`SCI-CM1-20`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a extraire une information d'un texte
+  ou d'un tableau et a la restituer en jouant au bandit manchot, afin de savoir lire un document
+  scientifique simple.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Demarches et
+  langages scientifiques" - `squad/programme/sciences-et-technologie/competences-cm1.md`,
+  `SCI-CM1-20`. Ligne `non couvert`, `MATRICE-couverture.md` ligne 2004.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-
+  une-ligne-marginale.md`, ligne 1033) : *"La ligne ferme en texte sur sa part servie, avec sa
+  mention [...] la mention pre-ecrite est due a la fermeture textuelle : document textuel et
+  tableau seuls ; le schema et le graphique restent non couverts."* La forme est deja tranchee : le
+  "document" est un texte ou un tableau rendu en texte dans l'enonce, jamais une image de schema ou
+  de graphique. `theo-archi` peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand le document source s'affiche dans l'enonce, alors il prend
+    exclusivement la forme d'un texte court ou d'un tableau rendu en texte (lignes et colonnes
+    lisibles sans image), jamais celle d'un schema ou d'un graphique.
+  - Etant donne ce document, quand la question s'affiche, alors elle demande une information
+    explicitement presente dans le document (jamais deduite ou calculee au-dela d'une lecture
+    directe).
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs pris dans le meme document ou de meme nature,
+    jamais hors sujet.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-20` et uniquement elle, avec la mention de couverture partielle deja fixee ("document
+    textuel et tableau seuls ; le schema et le graphique restent non couverts") portee par la
+    matrice au Done pedagogique.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que chaque information demandee est bien lisible dans le document affiche, sans induction.
+- **Ce que cette story ne fait pas** : elle ne construit aucun rendu de schema ni de graphique -
+  hors de portee de la fermeture textuelle deja arbitree ; elle ne fixe aucun contenu factuel
+  precis - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0093`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
+  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0093`, section 5) ;
+  `nadia-prof` pour le Done pedagogique.
+
+### S40-NUTRITION - Nommer les fonctions de nutrition du corps humain et l'organe principal de chacune (`SCI-CM1-09`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a nommer les grandes fonctions de
+  nutrition du corps humain et l'organe principal de chacune en jouant au bandit manchot, afin de
+  connaitre le fonctionnement de mon corps.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Le vivant, sa
+  diversite et les fonctions qui le caracterisent" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-09`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 1993.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s32...`, ligne 1032) : *"Cette ligne ferme en texte, aujourd'hui, sans
+  palier 2 [...] Je confirme le 'non exige'"* - l'association fonction / organe se fait en texte ;
+  designer un organe sur un schema est explicitement hors exigence. `theo-archi` peut rendre son
+  avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur l'une des trois fonctions de
+    nutrition du referentiel (digestion, respiration, circulation) et demande l'organe principal
+    qui lui est associe, ou l'inverse (organe donne, fonction demandee).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les trois fonctions et
+    leurs organes principaux respectifs y sont chacun en bonne reponse au moins une fois.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs pris parmi les organes ou fonctions reels du corps
+    humain, jamais un organe sans rapport avec la nutrition.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-09` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    l'exactitude scientifique de chaque association fonction/organe.
+- **Ce que cette story ne fait pas** : elle ne construit aucun schema anatomique ni aucune
+  designation sur une image - hors exigence, deja confirme ; elle ne fixe aucun contenu factuel
+  precis - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0093`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
+  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0093`, section 5) ;
+  `nadia-prof` pour le Done pedagogique.
+
+### S40-REGLES - Connaitre les regles de la vie collective a l'ecole et dire a quoi elles servent (`EMC-CM1-04`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a connaitre les regles de la vie
+  collective a l'ecole et a dire a quoi elles servent en jouant au bandit manchot, afin de
+  comprendre pourquoi ces regles existent, pas seulement les reciter.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine
+  "Respecter autrui" - `squad/programme/enseignement-moral-et-civique/competences-cm1.md`,
+  `EMC-CM1-04`. Ligne `non couvert`, `MATRICE-couverture.md` ligne 1897.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
+  ligne 427) : *"rentable [...] Meme exigence qu'a la ligne 6 du CP : la moitie 'a quoi elles
+  servent' est ce qui distingue la ligne d'un reglement recite"* - meme patron que `EMC-CP-06`,
+  deja `couvert-valide` (`FER-1` a `FER-3` tenues sur les deux moities du libelle). `theo-archi`
+  peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les deux moities du
+    libelle (connaitre la regle, dire a quoi elle sert) sont chacune en bonne reponse sur des items
+    distincts (`FER-1`).
+  - Etant donne un item de la moitie "a quoi elle sert", quand il s'affiche, alors la question porte
+    sur la raison d'etre de la regle (ce qu'elle protege ou permet), jamais sur son seul enonce -
+    un paquet qui ne ferait que reciter des regles ne sert pas cette moitie de la ligne.
+  - Etant donne cette manche, quand les propositions s'affichent, alors aucun item n'a deux
+    reponses defendables (`EMC-5`) et aucun ne suppose un lieu de vie, une commune ou une
+    configuration familiale de l'enfant (`EMC-6`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CM1-04` et uniquement elle, avec la mention deja exigee sur toute ligne d'EMC CM1 qui
+    bouge : *"connaissances civiques et reconnaissance de situations seules ; aucun comportement,
+    aucun engagement et aucune participation a une decision collective ne sont servis par ce
+    produit"*.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que les deux moities du libelle sont tenues et qu'aucun item ne se resout par la seule
+    memorisation d'un reglement.
+- **Ce que cette story ne fait pas** : elle ne fait reciter aucun reglement d'ecole particulier ;
+  elle ne fixe aucun contenu factuel precis - reste a l'auteur du paquet puis a l'audit de
+  `nadia-prof`.
+- **Lien decision** : `DEC-0093`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
+  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0093`, section 5) ;
+  `nadia-prof` pour le Done pedagogique.
+
+### S40-LOI - Distinguer une regle d'une loi, et identifier ce que la loi autorise, interdit et protege (`EMC-CM1-08`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a distinguer une regle d'une loi et a
+  identifier ce qu'une loi autorise, interdit et protege en jouant au bandit manchot, afin de
+  comprendre la difference entre une regle de classe et une loi qui s'impose a tous.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine
+  "Acquerir et partager les valeurs de la Republique" -
+  `squad/programme/enseignement-moral-et-civique/competences-cm1.md`, `EMC-CM1-08`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1901.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s29...`, ligne 425) : *"rentable [...] `FER-1` : les trois verbes de la
+  parenthese. Jamais de definition juridique dans l'enonce"* - critere exact, repris mot pour mot
+  par la matrice (ligne 1901 : "le mot loi est accessible sur des exemples concrets, jamais defini
+  juridiquement dans l'enonce"). `theo-archi` peut rendre son avis de faisabilite directement.
+  **Risque signale pour l'audit, pas pour l'instruction** : le patron voisin `EMC-CP-07`
+  (regle/souhait/loi, CP) a demande cinq passages avant de fermer
+  (`squad/conformite/FICHE-bandit-manchot-regle-souhait-loi-cp.md`), le critere prealable existant
+  n'ayant pas empeche des refus successifs sur le contenu ecrit (`EMC-5`, propositions vraies
+  marquees fausses). Cette story ne le contourne pas : elle nomme le risque a `theo-archi` et a
+  `nadia-prof` d'avance, sans en faire une condition d'entree supplementaire.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les trois verbes de la
+    parenthese (autorise, interdit, protege) sont chacun en bonne reponse sur des items distincts
+    (`FER-1`).
+  - Etant donne un item, quand le mot "loi" y figure, alors il n'est jamais accompagne d'une
+    definition juridique dans l'enonce - la loi se reconnait sur un exemple concret, jamais sur une
+    formule de droit.
+  - Etant donne un item de distinction regle/loi, quand la question s'affiche, alors elle porte sur
+    un exemple concret dont la portee (une classe, une ecole, tout le pays) determine sans ambiguite
+    s'il s'agit d'une regle ou d'une loi.
+  - Etant donne cette manche, quand les propositions s'affichent, alors aucune proposition vraie de
+    la situation decrite n'est marquee fausse (`EMC-5`) et aucun item n'a deux reponses defendables.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CM1-08` et uniquement elle, avec la mention deja exigee sur toute ligne d'EMC CM1 qui
+    bouge (memes termes que `S40-REGLES`).
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    qu'aucune proposition vraie n'est marquee fausse et que la distinction regle/loi ne repose sur
+    aucune definition juridique dans l'enonce.
+- **Ce que cette story ne fait pas** : elle ne definit juridiquement le mot "loi" dans aucun enonce
+  ni aucun indice ; elle ne fixe aucun contenu factuel precis (quelles lois, quels exemples
+  retenir) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0093`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
+  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0093`, section 5) ;
+  `nadia-prof` pour le Done pedagogique.
+
+### S40-DEVISE - Connaitre la devise de la Republique et donner un exemple concret de liberte, d'egalite et de fraternite (`EMC-CP-09`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux connaitre la devise de la Republique et savoir
+  reconnaitre un exemple concret de liberte, d'egalite ou de fraternite en jouant au bandit manchot,
+  afin de connaitre ce que ces mots veulent dire.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine "Acquerir
+  et partager les valeurs de la Republique" -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, `EMC-CP-09`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1845.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
+  ligne 235) : *"La devise est une restitution exacte et sure. La moitie exemple est ou `EMC-5`
+  mord le plus fort : un exemple de fraternite a choisir parmi trois exige que les deux autres
+  soient nettement hors sujet, sinon l'item a deux reponses defendables. La ligne ferme, mais elle
+  coute cher a verifier."* Feasible et deja borne, cout de verification signale, pas une question
+  ouverte. `theo-archi` peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne un item de restitution, quand il s'affiche, alors il demande la devise exacte de
+    la Republique francaise ("liberte, egalite, fraternite"), sans variante ni synonyme accepte en
+    bonne reponse.
+  - Etant donne un item d'exemple concret, quand il s'affiche, alors il presente une situation
+    illustrant l'une des trois valeurs, avec deux propositions ecartees qui sont nettement hors
+    sujet - jamais une seconde proposition qui illustrerait une autre des trois valeurs ou la meme
+    valeur sous un autre angle defendable (`EMC-5`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les trois valeurs
+    (liberte, egalite, fraternite) sont chacune illustrees par au moins un exemple.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CP-09` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle verifie
+    item par item, et non sur un echantillon, qu'aucun exemple n'admet une seconde valeur
+    defendable.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant un exemple tire de sa
+  propre vie (`EMC-1`) ; elle ne fixe aucun contenu factuel precis - reste a l'auteur du paquet
+  puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0093`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; affectation
+  nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0093`, section 5) ;
+  `nadia-prof` pour le Done pedagogique.
+
 
