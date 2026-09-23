@@ -56,9 +56,24 @@ clause 5), prefixe pris comme **premier segment** de l'identifiant. Sur mon work
 mon diff : 677 identifiants distincts, 109 prefixes distincts, ce qui confirme la ligne d'etat
 courant que le fichier declarait ; apres mon diff : 681 et 110.
 
+**Note de `camille-po`, s40, le 2026-09-23 (reserve non bloquante sur la devise CP).** Un
+identifiant ajoute - `DVS-CP-R1`, la reserve non bloquante ouverte par `nadia-prof` sur le verbe
+*illustre* (dix des onze enonces du paquet, registre trop soutenu pour un enfant de CP), decrite en
+prose dans `squad/conformite/FICHE-bandit-manchot-devise-cp.md` sans y recevoir de code - c'est moi
+qui le mine, pour qu'un sprint futur puisse la retrouver et l'appliquer sans redemander a
+`nadia-prof` ce qu'elle a deja ecrit. **J'ecris `DVS-CP-R1` dans
+`squad/programme/MATRICE-couverture.md`, jamais dans la fiche de `nadia-prof`** : je ne touche pas
+un document qu'elle signe. **Un prefixe neuf : `DVS`**, verifie absent de la table de la section 4
+avant allocation - distinct du prefixe voisin `DV` (validation design, s25, sans rapport). Ligne
+d'etat courant portee de **681 / 110 a 682 / 111**. Methode : comptage des lignes de la table de la
+section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre accents
+graves, `ADR-0085` clause 5), prefixe pris comme **premier segment** de l'identifiant. Sur mon
+worktree dedie, avant mon diff : 681 identifiants distincts, 110 prefixes distincts, 0 doublon, ce
+qui confirme la ligne d'etat courant que le fichier declarait.
+
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `681` identifiants alloues, `110` prefixes distincts.
+**Compte courant, verifie par la CI** : `682` identifiants alloues, `111` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -789,6 +804,7 @@ clause 2 par une exemption.
 | `DV-8` | `squad/sprints/s25-le-premier-palier-visuel/planning.md` |
 | `DV-9` | `squad/sprints/s25-le-premier-palier-visuel/planning.md` |
 | `DV-10` | `squad/sprints/s25-le-premier-palier-visuel/planning.md` |
+| `DVS-CP-R1` | `squad/programme/MATRICE-couverture.md` |
 | `EAU-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EAU-R2` | `squad/conformite/FICHE-bandit-manchot-etats-eau-cp.md` |
 | `EFF-R1` | `squad/conformite/FICHE-bandit-manchot-corps-effort-eps-cp.md` |
