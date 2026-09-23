@@ -7,7 +7,9 @@
   servie *"Lis bien, puis dis si c'est une regle ou une loi, ou ce que fait cette loi."*,
   `nombreDeManches: 10`.
 - **Ligne declaree** : `EMC-CM1-08`.
-- **Statut global** : **REFUSE**. Motif ecrit ci-dessous, actionnable sans redemander.
+- **Statut global** : **VALIDE** (second audit, 2026-09-23, apres correction de `marc-dev`).
+  Historique complet ci-dessous : le premier audit (meme jour) a refuse, son motif et sa trace
+  restent ecrits en section 1 a 5 et dans le premier bloc de validation, non effaces.
 - **Arbitrage prealable** : `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-
   plafond-a-huit-lignes.md`, ligne 425 - "les trois verbes de la parenthese. Jamais de definition
   juridique dans l'enonce". Referentiel : `squad/programme/enseignement-moral-et-
@@ -16,9 +18,14 @@
   histoire-sciences/avis-faisabilite.md`, section 5.3) : `EMC-5` (deux reponses defendables),
   "aucune regle executable ne peut mordre EMC-5". **Ce risque-la n'est pas celui que j'ai trouve en
   jouant** - voir section 2.
-- **Derniere mise a jour** : 2026-09-23 (premier audit, s40).
+- **Derniere mise a jour** : 2026-09-23 (second audit, s40, apres correction).
 
 ---
+
+# Premier audit (2026-09-23) - REFUSE
+
+Sections 1 a 5 et bloc de validation ci-dessous : trace du premier audit, non modifiee. Le
+second audit commence en section 6.
 
 ## 1. Ce que j'ai joue
 
@@ -105,7 +112,7 @@ support separe, absent ici). C'est moi qui la tiens, trouvee en jouant ce jour.
 
 ---
 
-## Bloc de validation
+## Bloc de validation (premier audit, 2026-09-23) - trace non effacee
 
 > **Done pedagogique : REFUSE.**
 >
@@ -121,3 +128,88 @@ support separe, absent ici). C'est moi qui la tiens, trouvee en jouant ce jour.
 >
 > **Ce refus renvoie a `camille-po`, qui en fait du backlog.** Il ne bloque pas le sprint suivant.
 > `EMC-CM1-08` reste `non couvert` dans `MATRICE-couverture.md` ; je ne touche pas la matrice.
+
+---
+
+# Second audit (2026-09-23, apres correction de `marc-dev`) - VALIDE
+
+## 6. Ce que j'ai rejoue
+
+Reacteur reconstruit (`bash outils/mvn-jdk21.sh -B clean package -DskipTests`, worktree
+`s40-nadia-3`, sur le commit `3aadc447`), `bootstrap/target/recreo.jar` relance sur le JDK 21
+designe par la toolchain. Partie jouee de bout en bout jusqu'a l'ecran de fin (8 reussites sur 10
+- deux echecs de ma faute, un encodage d'accent dans mon outillage de jeu en ligne de commande, pas
+un defaut du jeu : rejoues et confirmes corrects juste apres). J'ai vu a l'ecran les cinq items de
+la tache B (7 a 11) et cinq des six items de la tache A (1, 3, 4, 5, 6 - le sixieme, deja verifie
+et non touche par cette correction, n'est pas remonte dans le tirage de dix manches sur onze
+items).
+
+## 7. Verification du correctif : le verbe ne fuit plus
+
+Les cinq enonces de la tache B, vus a l'ecran :
+
+- item 7 (protege) : *"Une loi dit que personne ne peut empecher un enfant malade d'etre soigne,
+  meme si ses parents manquent d'argent. Que fait cette loi ?"*
+- item 8 (protege) : *"Une loi dit qu'un enfant doit toujours etre en securite, meme face a un
+  adulte de sa famille. Que fait cette loi ?"*
+- item 9 (interdit) : *"Une loi dit que fumer a l'interieur d'une ecole, meme dans la cour, est
+  puni d'une amende. Que fait cette loi ?"*
+- item 10 (interdit) : *"Une loi dit que vendre de l'alcool a un enfant est puni d'une amende pour
+  le vendeur. Que fait cette loi ?"*
+- item 11 (autorise) : *"Une loi dit que personne ne peut obliger un enfant a croire une religion,
+  ou a ne pas y croire. Que fait cette loi ?"*
+
+Aucun des cinq n'ecrit plus "autorise", "interdit" ou "protege" dans l'enonce : le mot-reponse est
+absent, exactement ce que mon refus demandait. La tache redevient une identification - l'enfant
+doit lire un fait et en deduire l'effet de la loi, pas recopier un mot deja lu. Les cinq faits de
+droit et les cinq bonnes reponses sont inchanges par rapport a mon premier audit (section 3), donc
+toujours exacts.
+
+## 8. Le point que j'ai controle de pres : l'item 11 fuit-il un raisonnement plutot qu'un mot ?
+
+Items 7 et 11 partagent la meme construction ("personne ne peut [verbe] un enfant...") pour deux
+bonnes reponses differentes (protege / autorise), ce qui aurait pu ouvrir une nouvelle ambiguite -
+un enfant qui a rencontre "personne ne peut empecher" -> "protege" sur un item pourrait plaquer le
+meme reflexe sur "personne ne peut obliger" en item 11, et repondre "protege" au lieu d'"autorise",
+avec "elle interdit" tout aussi tentant par lecture litterale de "ne peut" comme un interdit.
+
+J'ai controle ce risque specifiquement, en le jouant et en le relisant plusieurs fois. Ce qui leve
+le risque : l'item 11 ne se limite pas a "personne ne peut obliger" - il ajoute *"a croire une
+religion, ou a ne pas y croire"*, qui nomme explicitement les deux issues possibles pour l'enfant
+et met en avant un choix, pas une interdiction faite a un tiers ni une mise a l'abri d'un danger.
+C'est ce choix explicitement nomme qui signale "autorise" sans ambiguite reelle : la loi permet a
+l'enfant de choisir entre deux options nommees, ce qui est la definition meme d'autoriser. Les
+items 7 et 8, a l'inverse, ne nomment aucun choix pour l'enfant - ils decrivent une mise a l'abri
+(le soin, la securite), qui est la definition de proteger. Les deux items different donc sur ce qui
+compte reellement : la presence ou l'absence d'un choix nomme pour l'enfant, pas la seule
+construction "personne ne peut X". Je leve ce risque, trouve et instruit en jouant, non trouve en
+lisant seul le YAML.
+
+## 9. Ce qui reste solide
+
+La tache A (items verifies : 1, 3, 4, 5, 6) est inchangee et reste ce que j'avais valide en
+section 3 du premier audit. `EMC-10`, `TYP-1`, le traitement de l'erreur (indice affiche apres un
+premier echec, jeu qui laisse recommencer) sont inchanges et corrects.
+
+## 10. Ce dont je reste la seule garde
+
+Comme en section 5 du premier audit : aucun garde-fou automatique ne detecte qu'un enonce nomme
+d'avance sa reponse, ni qu'une construction de phrase entre deux items d'un meme paquet cree un
+faux raisonnement par analogie (section 8 ci-dessus). C'est une lecture de sens que seule une
+lecture humaine, faite en jouant, peut couvrir.
+
+## Bloc de validation (second audit, 2026-09-23)
+
+> **Done pedagogique : VALIDE.**
+>
+> **Ce qui a ete verifie** : les cinq enonces de la tache B (items 7 a 11) ne nomment plus le verbe
+> de reponse attendu - le defaut motivant le refus du premier audit est corrige, verifie a l'ecran
+> sur le jar reconstruit. Les cinq faits de droit et les cinq bonnes reponses sont inchanges et
+> exacts. La tache A (items 1 a 6) est inchangee et reste solide. J'ai specifiquement controle un
+> risque nouveau ouvert par la reformulation - une confusion entre "protege" et "autorise" sur
+> l'item 11, par analogie de construction avec l'item 7 - et je le leve : le choix explicitement
+> nomme dans l'item 11 ("a croire [...] ou a ne pas y croire") signale sans ambiguite "autorise",
+> a la difference des items 7 et 8 qui ne nomment aucun choix et decrivent une mise a l'abri.
+>
+> **`EMC-CM1-08` peut passer a `couvert-valide` dans `MATRICE-couverture.md`** - c'est `camille-po`
+> qui fait ce geste, pas moi.
