@@ -22,65 +22,76 @@ lignesDeReferentiel: ["MAT-CP-10"]
 # "moitie 'decrire un deplacement' seule, en choix textuel ; la moitie 'se reperer et se deplacer'
 # (designation sur quadrillage, palier 2) reste non couverte".
 #
+# REFUS du Done pedagogique le 2026-09-24 par nadia-prof, instance B (DEC-0098 ;
+# squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md), sur la version precedente
+# de ce paquet. Deux motifs, chacun suffisant : (1) douze items ne posaient jamais de quadrillage et
+# se resolvaient par simple substitution du mot de direction deja present dans l'enonce vers
+# l'etiquette du geste, sans aucun raisonnement spatial ; (2) deux items decrivaient un etat final
+# sans etat initial, non deductible de l'enonce, avec une confusion gauche relative / gauche
+# absolue. Correctif applique ici, repris de la fiche : chaque enonce pose une position de depart
+# sur une suite de cases numerotees et demande la case d'arrivee apres un deplacement d'une case ;
+# la bonne reponse n'est plus jamais l'etiquette du geste deja donnee dans l'enonce, et les indices
+# donnent une regle de comptage plutot que de reformuler la direction.
+#
 # Avis de faisabilite de theo-archi (squad/sprints/s42-fusion-six-lignes-deux-instances/
 # avis-faisabilite.md, section 6.3) : la contrainte reelle du lot est LON-1/LON-2 (ADR-0089) - au CP,
 # un enonce compte au plus quinze mots et au plus deux phrases, la seconde etant la question. Chaque
 # enonce ci-dessous pose la scene en une premiere phrase courte, puis la question en seconde phrase,
-# sans texteSupport : mesure a l'ecriture, aucun enonce ne depasse onze mots.
+# sans texteSupport : mesure a l'ecriture, aucun enonce ne depasse quinze mots.
 #
 # Aucune condition pedagogique bloquante n'est posee sur cette ligne (meme avis, section 7.5). Les
-# quatre formes de deplacement du critere d'acceptation (avancer, reculer, tourner a gauche, tourner
-# a droite) sont chacune en bonne reponse trois fois. Aucun item ne designe une case ou un point sur
-# une image : ce paquet ne porte aucune illustration, palier 2 hors de portee ici.
+# quatre formes de deplacement du critere d'acceptation (avancer, reculer, aller a gauche, aller a
+# droite) figurent chacune dans l'enonce de trois items ; la bonne reponse et les distracteurs sont
+# toujours une case du quadrillage, jamais l'etiquette du geste. Aucun item ne designe une case ou un
+# point sur une image : ce paquet ne porte aucune illustration, palier 2 hors de portee ici.
 #
-# TYP-1 (ADR-0067) : l'espace qui precede le point d'interrogation est insecable. Ce paquet entre a
-# zero occurrence detachable.
+# TYP-1 (ADR-0067) : l'espace qui precede le point d'interrogation est insecable.
 items:
-  - enonce: "Zoé va vers la case de devant. Quel geste fait-elle ?"
-    bonneReponse: "avancer"
-    distracteurs: ["reculer", "tourner à droite"]
-    indice: "Elle va vers l'avant, pas vers l'arrière."
-  - enonce: "Malo rejoint la case juste devant lui. Quel geste fait-il ?"
-    bonneReponse: "avancer"
-    distracteurs: ["tourner à gauche", "reculer"]
-    indice: "Il va vers l'avant, pas vers l'arrière."
-  - enonce: "Nina quitte sa case pour celle d'en face. Quel geste fait-elle ?"
-    bonneReponse: "avancer"
-    distracteurs: ["tourner à droite", "tourner à gauche"]
-    indice: "Elle va vers l'avant, pas vers l'arrière."
-  - enonce: "Iris va vers la case de derrière. Quel geste fait-elle ?"
-    bonneReponse: "reculer"
-    distracteurs: ["avancer", "tourner à gauche"]
-    indice: "Elle va vers l'arrière, pas vers l'avant."
-  - enonce: "Hugo rejoint la case juste derrière lui. Quel geste fait-il ?"
-    bonneReponse: "reculer"
-    distracteurs: ["tourner à droite", "avancer"]
-    indice: "Il va vers l'arrière, pas vers l'avant."
-  - enonce: "Léa quitte sa case pour celle de derrière. Quel geste fait-elle ?"
-    bonneReponse: "reculer"
-    distracteurs: ["tourner à gauche", "tourner à droite"]
-    indice: "Elle va vers l'arrière, pas vers l'avant."
-  - enonce: "Tom regarde maintenant vers la gauche. Quel geste fait-il ?"
-    bonneReponse: "tourner à gauche"
-    distracteurs: ["tourner à droite", "avancer"]
-    indice: "Il change de côté, vers la gauche."
-  - enonce: "Nour fait face au mur de gauche. Quel geste fait-elle ?"
-    bonneReponse: "tourner à gauche"
-    distracteurs: ["reculer", "tourner à droite"]
-    indice: "Elle change de côté, vers la gauche."
-  - enonce: "Ali change de direction et regarde à gauche. Quel geste fait-il ?"
-    bonneReponse: "tourner à gauche"
-    distracteurs: ["avancer", "reculer"]
-    indice: "Il change de côté, vers la gauche."
-  - enonce: "Elsa regarde maintenant vers la droite. Quel geste fait-elle ?"
-    bonneReponse: "tourner à droite"
-    distracteurs: ["tourner à gauche", "reculer"]
-    indice: "Elle change de côté, vers la droite."
-  - enonce: "Ivan fait face au mur de droite. Quel geste fait-il ?"
-    bonneReponse: "tourner à droite"
-    distracteurs: ["avancer", "tourner à gauche"]
-    indice: "Il change de côté, vers la droite."
-  - enonce: "Maya change de direction et regarde à droite. Quel geste fait-elle ?"
-    bonneReponse: "tourner à droite"
-    distracteurs: ["reculer", "avancer"]
-    indice: "Elle change de côté, vers la droite."
+  - enonce: "Zoé est sur la case 3 et avance d'une case. Où est-elle ?"
+    bonneReponse: "la case 4"
+    distracteurs: ["la case 2", "la case 3"]
+    indice: "Avancer, c'est ajouter une case. Compte bien."
+  - enonce: "Malo est sur la case 2 et avance d'une case. Où est-il ?"
+    bonneReponse: "la case 3"
+    distracteurs: ["la case 1", "la case 2"]
+    indice: "Avancer, c'est ajouter une case. Compte bien."
+  - enonce: "Nina est sur la case 4 et avance d'une case. Où est-elle ?"
+    bonneReponse: "la case 5"
+    distracteurs: ["la case 3", "la case 4"]
+    indice: "Avancer, c'est ajouter une case. Compte bien."
+  - enonce: "Iris est sur la case 4 et recule d'une case. Où est-elle ?"
+    bonneReponse: "la case 3"
+    distracteurs: ["la case 4", "la case 5"]
+    indice: "Reculer, c'est retirer une case. Compte bien."
+  - enonce: "Hugo est sur la case 3 et recule d'une case. Où est-il ?"
+    bonneReponse: "la case 2"
+    distracteurs: ["la case 3", "la case 4"]
+    indice: "Reculer, c'est retirer une case. Compte bien."
+  - enonce: "Léa est sur la case 2 et recule d'une case. Où est-elle ?"
+    bonneReponse: "la case 1"
+    distracteurs: ["la case 2", "la case 3"]
+    indice: "Reculer, c'est retirer une case. Compte bien."
+  - enonce: "Tom est sur la case 4 et va vers la gauche d'une case. Où est-il ?"
+    bonneReponse: "la case 3"
+    distracteurs: ["la case 4", "la case 5"]
+    indice: "Aller à gauche, c'est retirer une case. Compte bien."
+  - enonce: "Nour est sur la case 3 et va vers la gauche d'une case. Où est-elle ?"
+    bonneReponse: "la case 2"
+    distracteurs: ["la case 3", "la case 4"]
+    indice: "Aller à gauche, c'est retirer une case. Compte bien."
+  - enonce: "Ali est sur la case 2 et va vers la gauche d'une case. Où est-il ?"
+    bonneReponse: "la case 1"
+    distracteurs: ["la case 2", "la case 3"]
+    indice: "Aller à gauche, c'est retirer une case. Compte bien."
+  - enonce: "Elsa est sur la case 2 et va vers la droite d'une case. Où est-elle ?"
+    bonneReponse: "la case 3"
+    distracteurs: ["la case 1", "la case 2"]
+    indice: "Aller à droite, c'est ajouter une case. Compte bien."
+  - enonce: "Ivan est sur la case 3 et va vers la droite d'une case. Où est-il ?"
+    bonneReponse: "la case 4"
+    distracteurs: ["la case 2", "la case 3"]
+    indice: "Aller à droite, c'est ajouter une case. Compte bien."
+  - enonce: "Maya est sur la case 4 et va vers la droite d'une case. Où est-elle ?"
+    bonneReponse: "la case 5"
+    distracteurs: ["la case 3", "la case 4"]
+    indice: "Aller à droite, c'est ajouter une case. Compte bien."
