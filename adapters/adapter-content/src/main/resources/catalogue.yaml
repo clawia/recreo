@@ -582,3 +582,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-emc-droits-enfant
     nombreDeManches: 10
+  - id: bandit-manchot-matiere-objets-cp
+    titre: "La matière des objets"
+    consigne: "Lis bien, puis dis en quelle matière est fait l'objet, ou trie les matières selon leurs propriétés."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-matiere
+    nombreDeManches: 10

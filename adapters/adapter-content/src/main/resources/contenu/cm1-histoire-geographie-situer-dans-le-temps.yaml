@@ -5,8 +5,8 @@ descripteur:
   matiere: "Histoire-géographie"
   niveau: "CM1"
   domaine: "Repères historiques et géographiques"
-  competence: "Se repérer dans le temps : situer un fait dans le temps (grande période, siècle ou millénaire), ou remettre des faits dans l'ordre chronologique (référentiel CM1, lignes HG-CM1-01, HG-CM1-02, HG-CM1-07)"
-lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-07"]
+  competence: "Se repérer dans le temps : situer un fait dans le temps (grande période, siècle ou millénaire), ou remettre des faits dans l'ordre chronologique (référentiel CM1, lignes HG-CM1-01, HG-CM1-02, HG-CM1-05, HG-CM1-07)"
+lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-05", "HG-CM1-07"]
 #
 # S35-CONS-4 (docs/backlog/backlog.md ; DEC-0088 ; avis de faisabilite de s35 de
 # theo-archi, section 6). Ce paquet est l'une des quatre entrees issues de la scission de
@@ -23,6 +23,12 @@ lignesDeReferentiel: ["HG-CM1-01", "HG-CM1-02", "HG-CM1-07"]
 # soit cet arbitrage) : les cinq items ci-dessous relevent d'une tache de situer/ordonner dans le
 # temps (marque HIS-1 "ordre", ou restitution d'une date), les cinq autres relevent d'une tache de
 # nommer un evenement a partir d'une description (voir cm1-histoire-geographie-nommer-en-histoire.yaml).
+#
+# S42-HG-ROIS (docs/backlog/backlog.md ; DEC-0098 ; avis de faisabilite de s42 de theo-archi,
+# section 5) : HG-CM1-05 est conjonctive ("nommer et situer dans le temps") et tombe dans ce
+# paquet et dans "nommer, en histoire", meme configuration deja verte que HG-CM1-07. Les deux
+# items neufs ci-dessous ordonnent les quatre rois du libelle (Louis IX, Francois Ier, Henri IV,
+# Louis XIV) les uns par rapport aux autres - jamais un jugement de valeur sur le personnage (BIA-5).
 items:
   - enonce: "Quelle grande période vient juste après la Préhistoire ?"  # HIS-1: ordre ; HIS-3: ordre des périodes donné par le référentiel (arbitrage s27, section 5, ligne 1)
     bonneReponse: "l'Antiquité"
@@ -149,3 +155,13 @@ items:
     distracteurs: ["le 26 août 1789", "le 4 août 1789"]
     indice: "C'est la date que la France célèbre chaque année comme fête nationale."
     ligneDeReferentiel: "HG-CM1-07"
+  - enonce: "Parmi ces quatre rois qui ont marqué la construction du royaume, lequel a régné le premier ?"  # HIS-1: ordre ; HIS-3: chronologie des quatre rois du libelle (Louis IX, XIIIe siecle ; Francois Ier, XVIe siecle ; Henri IV, fin XVIe-debut XVIIe siecle ; Louis XIV, XVIIe-XVIIIe siecle), faits consensuels du programme cycle 3
+    bonneReponse: "Louis IX"
+    distracteurs: ["François Ier", "Louis XIV"]
+    indice: "C'est le seul des quatre à avoir régné au Moyen Âge."
+    ligneDeReferentiel: "HG-CM1-05"
+  - enonce: "Parmi ces quatre rois qui ont marqué la construction du royaume, lequel a régné le dernier ?"  # HIS-1: ordre ; HIS-3: chronologie des quatre rois du libelle, meme justification que l'item precedent
+    bonneReponse: "Louis XIV"
+    distracteurs: ["Louis IX", "Henri IV"]
+    indice: "C'est le roi qui fait construire le château de Versailles."
+    ligneDeReferentiel: "HG-CM1-05"

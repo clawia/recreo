@@ -5,8 +5,8 @@ descripteur:
   matiere: "Histoire-géographie"
   niveau: "CM1"
   domaine: "Repères historiques et géographiques"
-  competence: "Nommer ce que l'énoncé décrit, en histoire : un peuple ou un mouvement de population, un roi et sa réalisation, un événement de la Révolution ou de l'Empire (référentiel CM1, lignes HG-CM1-03, HG-CM1-04, HG-CM1-06, HG-CM1-07, HG-CM1-08)"
-lignesDeReferentiel: ["HG-CM1-03", "HG-CM1-04", "HG-CM1-06", "HG-CM1-07", "HG-CM1-08"]
+  competence: "Nommer ce que l'énoncé décrit, en histoire : un peuple ou un mouvement de population, un roi et sa réalisation ou sa situation dans le temps, un événement de la Révolution ou de l'Empire (référentiel CM1, lignes HG-CM1-03, HG-CM1-04, HG-CM1-05, HG-CM1-06, HG-CM1-07, HG-CM1-08)"
+lignesDeReferentiel: ["HG-CM1-03", "HG-CM1-04", "HG-CM1-05", "HG-CM1-06", "HG-CM1-07", "HG-CM1-08"]
 #
 # S35-CONS-4 (docs/backlog/backlog.md ; DEC-0088 ; avis de faisabilite de s35 de
 # theo-archi, section 6). Ce paquet est l'une des quatre entrees issues de la scission de
@@ -23,6 +23,13 @@ lignesDeReferentiel: ["HG-CM1-03", "HG-CM1-04", "HG-CM1-06", "HG-CM1-07", "HG-CM
 # soit cet arbitrage) : les cinq items ci-dessous relevent d'une tache de situer/ordonner dans le
 # temps (marque HIS-1 "ordre", ou restitution d'une date), les cinq autres relevent d'une tache de
 # nommer un evenement a partir d'une description (voir cm1-histoire-geographie-nommer-en-histoire.yaml).
+#
+# S42-HG-ROIS (docs/backlog/backlog.md ; DEC-0098 ; avis de faisabilite de s42 de theo-archi,
+# section 5) : HG-CM1-05 est conjonctive ("nommer et situer dans le temps") et tombe dans ce
+# paquet et dans "situer dans le temps", meme configuration deja verte que HG-CM1-07. Les trois
+# items neufs ci-dessous nomment un des quatre rois du libelle (Louis IX, Francois Ier, Henri IV,
+# Louis XIV) a partir d'une realisation ou d'une situation dans le temps par rapport a un autre roi
+# du libelle - jamais un jugement de valeur sur le personnage (BIA-5).
 items:
   - enonce: "Des arènes et des aqueducs en pierre ont été construits en Gaule durant l'Antiquité. Quel peuple les a construits ?"  # HIS-1: association ; HIS-3: patrimoine romain en Gaule (arènes, aqueducs), fait consensuel du programme cycle 3 - je n'ai pas d'outil de recherche en ligne cette session, nadia-prof doit confirmer
     bonneReponse: "les Romains"
@@ -249,3 +256,18 @@ items:
     distracteurs: ["le Trésor royal", "la Bourse de Paris"]
     indice: "Cette banque existe encore aujourd'hui et porte le nom du pays."
     ligneDeReferentiel: "HG-CM1-08"
+  - enonce: "Parmi ces quatre rois qui ont marqué la construction du royaume, lequel est parti combattre en croisade et est resté connu sous le nom de Saint Louis ?"  # HIS-1: association ; HIS-3: fait consensuel (croisade de Saint Louis, autre nom de Louis IX), famille (a)
+    bonneReponse: "Louis IX"
+    distracteurs: ["François Ier", "Henri IV"]
+    indice: "Il est parti combattre loin de France, en Terre sainte."
+    ligneDeReferentiel: "HG-CM1-05"
+  - enonce: "Parmi ces quatre rois qui ont marqué la construction du royaume, lequel a régné en pleine Renaissance, entre Louis IX et Henri IV ?"  # HIS-1: association ; HIS-3: chronologie des quatre rois du libelle (Louis IX, XIIIe siecle ; Francois Ier, Renaissance, XVIe siecle ; Henri IV, fin XVIe-debut XVIIe siecle ; Louis XIV, XVIIe-XVIIIe siecle), faits consensuels du programme cycle 3
+    bonneReponse: "François Ier"
+    distracteurs: ["Louis IX", "Henri IV"]
+    indice: "Ce roi invite en France le peintre Léonard de Vinci."
+    ligneDeReferentiel: "HG-CM1-05"
+  - enonce: "Parmi ces quatre rois qui ont marqué la construction du royaume, lequel a mis fin aux guerres de religion en signant l'édit de Nantes ?"  # HIS-1: association ; HIS-3: référentiel ligne 6 (Henri IV et l'édit de Nantes), date 1598 consensuelle
+    bonneReponse: "Henri IV"
+    distracteurs: ["Louis IX", "Louis XIV"]
+    indice: "Il règne après François Ier et avant Louis XIV, parmi ces quatre rois."
+    ligneDeReferentiel: "HG-CM1-05"

@@ -75,13 +75,18 @@ class PaquetCm1HistoireGeographieTest {
             "cm1-histoire-geographie-nommer-en-geographie",
             "cm1-histoire-geographie-lire-un-document");
 
-    /** Le compte est garde exactement, comme sur tous les paquets de ce depot. */
-    private static final int NOMBRE_D_ITEMS_ATTENDU = 110;
+    /**
+     * Le compte est garde exactement, comme sur tous les paquets de ce depot. S42-HG-ROIS ajoute
+     * cinq items neufs (trois sur "nommer, en histoire", deux sur "situer dans le temps"), portant
+     * la ligne HG-CM1-05, de 110 a 115.
+     */
+    private static final int NOMBRE_D_ITEMS_ATTENDU = 115;
 
     private static final String LIGNE_FRISE = "HG-CM1-01";
     private static final String LIGNE_SIECLE_ET_MILLENAIRE = "HG-CM1-02";
     private static final String LIGNE_PEUPLES_ANCIENS = "HG-CM1-03";
     private static final String LIGNE_MOUVEMENTS_DE_POPULATION = "HG-CM1-04";
+    private static final String LIGNE_ROIS_DU_ROYAUME = "HG-CM1-05";
     private static final String LIGNE_TYPES_D_ESPACES = "HG-CM1-11";
     private static final String LIGNE_EAU_ENERGIE_ALIMENTS = "HG-CM1-13";
     private static final String LIGNE_ROIS_ET_REALISATIONS = "HG-CM1-06";
@@ -115,6 +120,13 @@ class PaquetCm1HistoireGeographieTest {
     /** FER-1 sur HG-CM1-06 : les quatre realisations du libelle, chacune en bonne reponse. */
     private static final Set<String> REALISATIONS_ROYALES =
             Set.of("la croisade", "la Renaissance", "l'édit de Nantes", "Versailles");
+
+    /**
+     * S42-HG-ROIS, critere d'acceptation "les quatre rois du libelle sont chacun en bonne reponse
+     * au moins une fois" sur HG-CM1-05 : les quatre rois nommes par le libelle de la story.
+     */
+    private static final Set<String> ROIS_DU_ROYAUME =
+            Set.of("Louis IX", "François Ier", "Henri IV", "Louis XIV");
 
     /**
      * FER-1 sur HG-CM1-07 : les quatre evenements du libelle, chacun en bonne reponse. Depuis
@@ -488,6 +500,40 @@ class PaquetCm1HistoireGeographieTest {
                 .as("FER-1 : la croisade, la Renaissance, l'édit de Nantes et Versailles sont chacun"
                         + " servis en bonne réponse")
                 .containsAll(REALISATIONS_ROYALES);
+    }
+
+    /**
+     * S42-HG-ROIS : les quatre rois du libelle sont chacun en bonne reponse au moins une fois sur
+     * HG-CM1-05, recomposes depuis les deux paquets qui se partagent cette ligne (meme
+     * configuration que HG-CM1-07, S35-CONS-4).
+     */
+    @Test
+    void lesQuatreRoisDuLibelleSontServisEnBonneReponseSurHgCm105() {
+        Set<Object> reponses = itemsDeLaLigne(LIGNE_ROIS_DU_ROYAUME).stream()
+                .map(item -> item.get("bonneReponse"))
+                .collect(Collectors.toSet());
+
+        assertThat(reponses)
+                .as("les quatre rois du libelle (Louis IX, François Ier, Henri IV, Louis XIV)"
+                        + " doivent tous etre representes")
+                .containsAll(ROIS_DU_ROYAUME);
+    }
+
+    /**
+     * S42-HG-ROIS, BIA-5 : chaque item de HG-CM1-05 declare un des quatre rois du libelle, sa
+     * datation ou sa situation dans le temps - jamais un jugement de valeur sur le personnage.
+     */
+    @Test
+    void hgCm105NePorteAucunJugementDeValeurSurUnRoi() {
+        List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_ROIS_DU_ROYAUME);
+
+        assertThat(items).as("HG-CM1-05 est servie par au moins un item").isNotEmpty();
+        for (Map<String, Object> item : items) {
+            assertThat(ROIS_DU_ROYAUME)
+                    .as("'%s' : la bonne réponse doit être un des quatre rois du libellé (BIA-5)",
+                            item.get("enonce"))
+                    .contains(String.valueOf(item.get("bonneReponse")));
+        }
     }
 
     /**

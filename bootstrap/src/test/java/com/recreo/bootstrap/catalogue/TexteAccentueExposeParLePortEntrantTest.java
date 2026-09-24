@@ -295,6 +295,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-symboles-cp",
             // S41-EMC-DROITS (s41) : entree neuve, EMC-CP-10, les droits de l'enfant.
             "bandit-manchot-droits-enfant-cp",
+            // S42-QLM-MATIERE (s42) : entree neuve, QLM-CP-06, la matiere d'un objet.
+            "bandit-manchot-matiere-objets-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -478,6 +480,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les symboles de la République",
             // S41-EMC-DROITS (s41) : titre neuf.
             "Les droits de l'enfant",
+            // S42-QLM-MATIERE (s42) : titre neuf.
+            "La matière des objets",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -687,6 +691,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
             // S41-EMC-DROITS (s41) : consigne neuve.
             "Lis bien, puis dis quel droit c'est, ou ce qu'il garantit.",
+            // S42-QLM-MATIERE (s42) : consigne neuve.
+            "Lis bien, puis dis en quelle matière est fait l'objet, ou trie les matières selon "
+                    + "leurs propriétés.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -892,13 +899,17 @@ class TexteAccentueExposeParLePortEntrantTest {
             // paquet, mot pour mot. Scindee en quatre competences par S35-CONS-4 (DEC-0088,
             // ADR-0081), une par entree issue de la scission, libelle du descripteur de chaque
             // paquet, mot pour mot.
+            // S42-HG-ROIS (s42) : les deux competences ci-dessous sont etendues a HG-CM1-05,
+            // ligne conjonctive ("nommer et situer dans le temps") qui tombe dans les deux
+            // paquets, meme configuration deja verte que HG-CM1-07 (avis de faisabilite de s42
+            // de theo-archi, section 5).
             "Se repérer dans le temps : situer un fait dans le temps (grande période, siècle ou "
                     + "millénaire), ou remettre des faits dans l'ordre chronologique (référentiel "
-                    + "CM1, lignes HG-CM1-01, HG-CM1-02, HG-CM1-07)",
+                    + "CM1, lignes HG-CM1-01, HG-CM1-02, HG-CM1-05, HG-CM1-07)",
             "Nommer ce que l'énoncé décrit, en histoire : un peuple ou un mouvement de population, "
-                    + "un roi et sa réalisation, un événement de la Révolution ou de l'Empire "
-                    + "(référentiel CM1, lignes HG-CM1-03, HG-CM1-04, HG-CM1-06, HG-CM1-07, "
-                    + "HG-CM1-08)",
+                    + "un roi et sa réalisation ou sa situation dans le temps, un événement de la "
+                    + "Révolution ou de l'Empire (référentiel CM1, lignes HG-CM1-03, HG-CM1-04, "
+                    + "HG-CM1-05, HG-CM1-06, HG-CM1-07, HG-CM1-08)",
             "Nommer ce que l'énoncé décrit, en géographie : un type d'espace et ses activités, une "
                     + "ressource (eau, énergie, aliment) et son acheminement (référentiel CM1, "
                     + "lignes HG-CM1-11, HG-CM1-12, HG-CM1-13)",
@@ -1068,7 +1079,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
             // EMC-CP-10).
             "Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à "
-                    + "l'école, jouer).");
+                    + "l'école, jouer).",
+            // S42-QLM-MATIERE (s42) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
+            // QLM-CP-06).
+            "Identifier de quelle matière un objet est fait et trier des matériaux selon une "
+                    + "propriété simple.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

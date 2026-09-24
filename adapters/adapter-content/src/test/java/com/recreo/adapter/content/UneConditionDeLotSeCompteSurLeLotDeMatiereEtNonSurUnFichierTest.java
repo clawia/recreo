@@ -298,8 +298,9 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " (s35) ajoute cp-plan-de-la-classe (QLM-CP-11), premiere livraison reelle"
                         + " de cette ligne, soit 7 fichiers ; S41-QLM-HYGIENE et S41-QLM-SAISONS (s41)"
                         + " ajoutent cp-qlm-hygiene (QLM-CP-04) et cp-qlm-saisons (QLM-CP-13), soit 9"
-                        + " fichiers")
-                .hasSize(9);
+                        + " fichiers ; S42-QLM-MATIERE (s42) ajoute cp-qlm-matiere (QLM-CP-06), soit"
+                        + " 10 fichiers")
+                .hasSize(10);
         assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")).stream().mapToInt(Paquet::items).sum())
                 .as("S28-1 (ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-"
                         + "lots.md, section 3.1) : 24 items a la cloture de s27, +6 par ligne pour"
@@ -312,8 +313,9 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " (s35) ajoute six items (cp-plan-de-la-classe, QLM-CP-11), soit 81 items ;"
                         + " S41-QLM-HYGIENE (s41) ajoute quinze items (cp-qlm-hygiene, QLM-CP-04),"
                         + " soit 96 items ; S41-QLM-SAISONS (s41) ajoute seize items (cp-qlm-saisons,"
-                        + " QLM-CP-13), soit 112 items")
-                .isEqualTo(112);
+                        + " QLM-CP-13), soit 112 items ; S42-QLM-MATIERE (s42) ajoute onze items"
+                        + " (cp-qlm-matiere, QLM-CP-06), soit 123 items")
+                .isEqualTo(123);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("1 fichier a la cloture de s27, inchange a S28-1 qui n'a touche que la matiere"
                         + " questionner le monde ; S28-2 et S29-2 etendent ce meme fichier, motif"
@@ -331,8 +333,11 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " sections 1.2, 7.2 et 13 ; story S32-1) ajoute huit items sur HG-CM1-01,"
                         + " neuf sur HG-CM1-02, neuf sur HG-CM1-03 et neuf sur HG-CM1-04, soit 92"
                         + " items ; S33-HG-08-12 (docs/backlog/backlog.md, story S33-HG-08-12) ajoute"
-                        + " neuf items sur HG-CM1-08 et neuf sur HG-CM1-12, soit 110 items")
-                .isEqualTo(110);
+                        + " neuf items sur HG-CM1-08 et neuf sur HG-CM1-12, soit 110 items ;"
+                        + " S42-HG-ROIS (s42) ajoute cinq items sur HG-CM1-05, repartis sur les deux"
+                        + " paquets qui servent la ligne conjonctive (trois sur \"nommer, en"
+                        + " histoire\", deux sur \"situer dans le temps\"), soit 115 items")
+                .isEqualTo(115);
     }
 
     /** Le paquet servi qui porte les marqueurs de HIS-1, choisi par le calcul et non par son nom. */

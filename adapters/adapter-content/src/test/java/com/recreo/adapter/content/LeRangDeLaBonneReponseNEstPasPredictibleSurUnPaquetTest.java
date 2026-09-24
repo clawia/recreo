@@ -516,21 +516,22 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             // section 6.3) : la clef "cm1-histoire-geographie" disparait avec le fichier, remplacee
             // par quatre motifs neufs, recomptes sur chacun des quatre paquets servis.
             Map.entry("cm1-histoire-geographie-situer-dans-le-temps",
-            "25 items sur 25 portent deux distracteurs (trois propositions, 75 au total), mais"
+            "27 items sur 27 portent deux distracteurs (trois propositions, 81 au total), mais"
                     + " aucune n'est numerique : ce sont des noms de periodes, de siecles, de"
-                    + " millenaires ou de faits dates, toujours ecrits en toutes lettres ou precedes"
-                    + " d'un mot (\"le XVIIIe siecle\", \"le Moyen Age\") - valeurDe rend null sur les"
-                    + " trois propositions de chaque item. Mesure du 2026-09-11, comptage direct sur"
-                    + " le paquet servi (\"bonneReponse\" et \"distracteurs\") : aucune des 75"
-                    + " propositions ne commence par un chiffre"),
+                    + " millenaires, de faits dates ou de rois, toujours ecrits en toutes lettres ou"
+                    + " precedes d'un mot (\"le XVIIIe siecle\", \"le Moyen Age\") - valeurDe rend"
+                    + " null sur les trois propositions de chaque item. Mesure du 2026-09-24 (S42-HG-"
+                    + "ROIS ajoute deux items sur HG-CM1-05), comptage direct sur le paquet servi"
+                    + " (\"bonneReponse\" et \"distracteurs\") : aucune des 81 propositions ne"
+                    + " commence par un chiffre"),
             Map.entry("cm1-histoire-geographie-nommer-en-histoire",
-            "45 items sur 45 portent deux distracteurs (trois propositions, 135 au total), mais"
+            "48 items sur 48 portent deux distracteurs (trois propositions, 144 au total), mais"
                     + " aucune n'est numerique : ce sont des noms de peuples, de mouvements de"
                     + " population, de rois, de realisations royales ou d'evenements de la"
                     + " Revolution et de l'Empire, valeurDe rend null sur les trois propositions de"
-                    + " chaque item. Mesure du 2026-09-11, comptage direct sur le paquet servi"
-                    + " (\"bonneReponse\" et \"distracteurs\") : aucune des 135 propositions ne"
-                    + " commence par un chiffre"),
+                    + " chaque item. Mesure du 2026-09-24 (S42-HG-ROIS ajoute trois items sur"
+                    + " HG-CM1-05), comptage direct sur le paquet servi (\"bonneReponse\" et"
+                    + " \"distracteurs\") : aucune des 144 propositions ne commence par un chiffre"),
             Map.entry("cm1-histoire-geographie-nommer-en-geographie",
             "30 items sur 30 portent deux distracteurs (trois propositions, 90 au total), mais"
                     + " aucune n'est numerique : ce sont des noms de types d'espace ou de"
@@ -883,7 +884,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " à 8) ou de courtes phrases sur ce que chaque droit garantit (items 9 à 12),"
                     + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
                     + " 2026-09-24 sur le paquet servi : aucune des 36 propositions ne commence par un"
-                    + " chiffre"));
+                    + " chiffre"),
+            // S42-QLM-MATIERE : paquet neuf de questionner le monde CP (QLM-CP-06).
+            Map.entry("cp-qlm-matiere",
+            "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de matieres (\"bois\", \"métal\","
+                    + " \"le verre\"...), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-09-24 sur le paquet servi (\"bonneReponse\" et"
+                    + " \"distracteurs\") : aucune des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

@@ -1,0 +1,74 @@
+schema: 1
+id: cp-qlm-matiere
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Identifier de quelle matière un objet est fait et trier des matériaux selon une propriété simple."
+lignesDeReferentiel: ["QLM-CP-06"]
+#
+# S42-QLM-MATIERE (docs/backlog/backlog.md ; DEC-0098). Dixieme paquet de la matiere "Questionner
+# le monde" (CP). Referentiel copie conforme depuis le referentiel de nadia-prof
+# (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-06) : le libelle de
+# competence ci-dessus est recopie a l'identique.
+#
+# Arbitrage prealable : ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md, section 7.1,
+# ligne 6 - "Le nom de l'objet dans l'enonce donne souvent la matiere ('une cuillere en bois').
+# Distracteurs a surveiller." Vigilance tenue : aucun enonce ci-dessous ne nomme la matiere de
+# l'objet qu'il decrit, ni dans le nom de l'objet, ni ailleurs dans le texte.
+#
+# LON-1 / LON-2 (ADR-0089) : chaque enonce compte au plus quinze mots et au plus deux phrases, la
+# seconde etant la question.
+#
+# FER-1 (les quatre materiaux du critere d'acceptation) : bois, metal, plastique et verre sont
+# chacun en bonne reponse au moins une fois, sur les deux taches. Le tissu s'y ajoute.
+#
+# FER-3 (deux taches distinctes) : tache A, identifier la matiere d'un objet decrit sans que son
+# nom ne la revele (items 1 a 6) ; tache B, trier les materiaux selon une propriete simple - flotte
+# ou coule, se casse, doux au toucher, reste leger (items 7 a 11).
+items:
+  - enonce: "Les fenêtres de la maison laissent passer la lumière. En quelle matière sont-elles faites ?"
+    bonneReponse: "verre"
+    distracteurs: ["tissu", "métal"]
+    indice: "On voit au travers, et elle se casse si on la laisse tomber."
+  - enonce: "Les clous sont durs et brillent un peu. En quelle matière sont-ils faits ?"
+    bonneReponse: "métal"
+    distracteurs: ["bois", "plastique"]
+    indice: "On les enfonce avec un marteau, dans un mur ou une planche."
+  - enonce: "Une porte peinte est souvent lourde et solide. En quelle matière est-elle faite ?"
+    bonneReponse: "bois"
+    distracteurs: ["verre", "métal"]
+    indice: "On peut la clouer et la peindre de toutes les couleurs."
+  - enonce: "Un pull tient bien chaud en hiver. En quelle matière est-il souvent fait ?"
+    bonneReponse: "tissu"
+    distracteurs: ["plastique", "métal"]
+    indice: "On le porte sur le corps, il est doux et souple."
+  - enonce: "Un seau de plage est léger et coloré. En quelle matière est-il souvent fait ?"
+    bonneReponse: "plastique"
+    distracteurs: ["métal", "verre"]
+    indice: "Il ne casse pas si on le laisse tomber sur le sable."
+  - enonce: "Une casserole qui va sur le feu. En quelle matière est-elle souvent faite ?"
+    bonneReponse: "métal"
+    distracteurs: ["plastique", "bois"]
+    indice: "Elle chauffe vite et résiste au feu."
+  - enonce: "Parmi ces trois matières, laquelle flotte sur l'eau ?"
+    bonneReponse: "le bois"
+    distracteurs: ["le métal", "le verre"]
+    indice: "C'est la matière des bateaux et des radeaux, plus légère que l'eau."
+  - enonce: "Parmi ces trois matières, laquelle coule dans l'eau ?"
+    bonneReponse: "le métal"
+    distracteurs: ["le bois", "le plastique"]
+    indice: "Elle est lourde, comme une pièce de monnaie qui tombe au fond."
+  - enonce: "Parmi ces trois matières, laquelle se casse si elle tombe ?"
+    bonneReponse: "le verre"
+    distracteurs: ["le tissu", "le plastique"]
+    indice: "Elle est transparente, et se brise en petits morceaux."
+  - enonce: "Parmi ces trois matières, laquelle est douce et souple au toucher ?"
+    bonneReponse: "le tissu"
+    distracteurs: ["le métal", "le verre"]
+    indice: "On en fait des vêtements et des couvertures pour se tenir chaud."
+  - enonce: "Parmi ces trois matières, laquelle reste légère même en grand objet ?"
+    bonneReponse: "le plastique"
+    distracteurs: ["le métal", "le verre"]
+    indice: "On l'utilise pour les jouets et les bidons, car il ne pèse pas lourd."
