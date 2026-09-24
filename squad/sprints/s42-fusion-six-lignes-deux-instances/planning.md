@@ -209,3 +209,14 @@ amendee) et l'avis de faisabilite de `theo-archi` existent deja avant ce plannin
 confirme l'affectation nominative proposee par `camille-po` sans l'amender, transmet
 explicitement les deux conditions et l'alerte pedagogique aux destinataires nommes, et ouvre le
 sprint au developpement.
+
+## Amendement du 2026-09-24 (`sofia-sm`, cloture) - horodatage de debut precise
+
+La section d'en-tete ecrit *"Horodatage de debut : 2026-09-24"*, sans heure : suffisant pour lire
+ce planning, insuffisant pour `outils/rapport-tokens.py`, qui exige une heure et des minutes sur
+la meme ligne que le mot *"horodatage"* et n'ouvre aucune fenetre de sprint sans elle - constate a
+la cloture, le script a ignore ce dossier avec le motif *"pas d'horodatage de debut dans
+planning.md"*. Je ne remplace pas la ligne d'origine, je precise le seul fait qui lui manquait,
+avec sa source verifiable : **Horodatage de debut : 2026-09-24 17:26:51 (UTC+02:00), horodatage du
+commit `edbe8582`** (ce planning lui-meme), premier commit de ce dossier de sprint portant un tag
+d'agent de developpement.
