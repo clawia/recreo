@@ -546,3 +546,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-extraire-information
     nombreDeManches: 10
+  - id: bandit-manchot-symboles-cp
+    titre: "Les symboles de la République"
+    consigne: "Lis bien, puis dis le nom du symbole, ou ce qu'il représente."
+    mecanique: bandit-manchot
+    paquet: cp-emc-symboles
+    nombreDeManches: 10
+  - id: bandit-manchot-droits-enfant-cp
+    titre: "Les droits de l'enfant"
+    consigne: "Lis bien, puis dis quel droit c'est, ou ce qu'il garantit."
+    mecanique: bandit-manchot
+    paquet: cp-emc-droits-enfant
+    nombreDeManches: 10

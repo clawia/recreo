@@ -833,7 +833,23 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"des rayons dangereux du Soleil\"...) ou des valeurs de tableau en texte libre"
                     + " (\"herbivore\", \"solide\"...), valeurDe rend null sur les trois propositions"
                     + " de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune des 36"
-                    + " propositions ne commence par un chiffre"));
+                    + " propositions ne commence par un chiffre"),
+            // S41-EMC-SYMBOLES : paquet neuf d'enseignement moral et civique CP (EMC-CP-08).
+            Map.entry("cp-emc-symboles",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des noms de symboles de la République"
+                    + " (items 1 à 8) ou de courtes phrases sur ce qu'ils représentent (items 9 à 12),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-24 sur le paquet servi : aucune des 36 propositions ne commence par un"
+                    + " chiffre"),
+            // S41-EMC-DROITS : paquet neuf d'enseignement moral et civique CP (EMC-CP-10).
+            Map.entry("cp-emc-droits-enfant",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des noms de droits de l'enfant (items 1"
+                    + " à 8) ou de courtes phrases sur ce que chaque droit garantit (items 9 à 12),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-24 sur le paquet servi : aucune des 36 propositions ne commence par un"
+                    + " chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

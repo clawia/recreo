@@ -1,0 +1,91 @@
+schema: 1
+id: cp-emc-symboles
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Reconnaître et nommer les symboles de la République française (drapeau tricolore, Marianne, La Marseillaise, la fête nationale)."
+lignesDeReferentiel: ["EMC-CP-08"]
+#
+# S41-EMC-SYMBOLES (docs/backlog/backlog.md, sprint 41). Arbitrage prealable deja rendu, aucun
+# arbitrage neuf a router (ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-
+# civique-et-ma-borne.md, ligne 234) : "Connaissance exacte. FER-1 : drapeau, Marianne, La
+# Marseillaise, fete nationale, chacun en bonne reponse. Deux taches : nommer le symbole decrit ;
+# dire ce qu'il represente. ART-1 : aucune reponse portee par une couleur percue." Referentiel
+# copie conforme (squad/programme/enseignement-moral-et-civique/competences-cp.md, EMC-CP-08).
+#
+# Avis de faisabilite de theo-archi (squad/sprints/s41-fusion-emc-sciences-qlm/avis-faisabilite.md,
+# section 4.2) : le lot reste en texte seul, une version illustree n'est pas ce lot. ART-1 est deja
+# tranche par nadia-prof, pas une economie proposee ici : aucun item ne demande la couleur d'un
+# element (par exemple "de quelle couleur est le drapeau ?"), et aucun mot de couleur n'apparait
+# dans ce paquet.
+#
+# FER-1 : les quatre symboles du libelle (le drapeau, Marianne, la Marseillaise, la fête nationale)
+# sont chacun en bonne reponse au moins une fois, sur la tache de reconnaissance (items 1 a 8).
+#
+# FER-3 : deux taches distinctes - nommer le symbole decrit a partir d'un indice (items 1 a 8,
+# deux items par symbole) ; dire ce qu'il represente (items 9 a 12, un item par symbole). Jamais
+# uniquement la premiere tache sur tout le paquet.
+#
+# Distracteurs : sur la tache de reconnaissance, les distracteurs sont les trois autres symboles du
+# libelle. Sur la tache de sens, les distracteurs sont ce que representent les trois autres
+# symboles. Dans les deux cas, jamais un element sans rapport avec le registre republicain.
+#
+# ADR-0089 (LON-1, LON-2) : au CP, chaque enonce compte au plus quinze mots et au plus deux
+# phrases, la seconde etant la question. Tous les enonces de ce paquet sont en dessous de ce
+# plafond.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf,
+# aucune dette heritee.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Il flotte au-dessus des mairies et des écoles. Comment s'appelle-t-il ?"
+    bonneReponse: "le drapeau"
+    distracteurs: ["Marianne", "la Marseillaise"]
+    indice: "On le voit sur les bâtiments publics."
+  - enonce: "On le porte lors des défilés et des grandes fêtes. Comment s'appelle-t-il ?"
+    bonneReponse: "le drapeau"
+    distracteurs: ["Marianne", "la fête nationale"]
+    indice: "On le porte haut, attaché à un bâton."
+  - enonce: "Cette statue de femme est dans toutes les mairies. Comment s'appelle-t-elle ?"
+    bonneReponse: "Marianne"
+    distracteurs: ["le drapeau", "la Marseillaise"]
+    indice: "C'est une statue, pas un chant ni un tissu."
+  - enonce: "On la voit aussi sur les pièces et les timbres. Comment s'appelle-t-elle ?"
+    bonneReponse: "Marianne"
+    distracteurs: ["le drapeau", "la fête nationale"]
+    indice: "Son visage figure sur de petits objets du quotidien."
+  - enonce: "On l'entend lors des grandes cérémonies officielles. Comment s'appelle ce chant ?"
+    bonneReponse: "la Marseillaise"
+    distracteurs: ["le drapeau", "Marianne"]
+    indice: "C'est un chant, pas un objet que l'on porte."
+  - enonce: "On le chante pour honorer la France. Comment s'appelle ce chant ?"
+    bonneReponse: "la Marseillaise"
+    distracteurs: ["Marianne", "la fête nationale"]
+    indice: "On le chante debout, parfois en chœur."
+  - enonce: "C'est le jour où la France fête la République. Comment s'appelle ce jour ?"
+    bonneReponse: "la fête nationale"
+    distracteurs: ["le drapeau", "la Marseillaise"]
+    indice: "Ce jour revient chaque année à la même date."
+  - enonce: "Il a lieu le 14 juillet, avec un défilé. Comment s'appelle ce jour ?"
+    bonneReponse: "la fête nationale"
+    distracteurs: ["Marianne", "la Marseillaise"]
+    indice: "On regarde souvent un feu d'artifice ce soir-là."
+  - enonce: "Que représente le drapeau français ?"
+    bonneReponse: "le pays et la République"
+    distracteurs: ["la République", "l'hymne de la France"]
+    indice: "Il rassemble tous les habitants du pays."
+  - enonce: "Que représente Marianne ?"
+    bonneReponse: "la République"
+    distracteurs: ["le pays et la République", "un grand jour de fête pour la France"]
+    indice: "Elle est le visage que l'on donne à la République."
+  - enonce: "Que représente la Marseillaise ?"
+    bonneReponse: "l'hymne de la France"
+    distracteurs: ["la République", "le pays et la République"]
+    indice: "On la chante pour honorer le pays."
+  - enonce: "Que représente le 14 juillet ?"
+    bonneReponse: "un grand jour de fête pour la France"
+    distracteurs: ["la République", "l'hymne de la France"]
+    indice: "Toute la France célèbre ce jour ensemble."
