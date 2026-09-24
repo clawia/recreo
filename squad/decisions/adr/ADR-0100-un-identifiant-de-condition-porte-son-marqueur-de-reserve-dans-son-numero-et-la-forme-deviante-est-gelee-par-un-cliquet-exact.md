@@ -178,6 +178,31 @@ que rien ne modifie plus**. Apres renommage des fiches et de `MATRICE-couverture
 atteignable est celui que portent ces deux fichiers-la. Le plafond se mesure a ce moment et se
 descend par un diff dans le fichier de test, jamais ailleurs.
 
+### Amendement du 2026-09-24, meme jour - le plafond descend de 9 a 7
+
+`nadia-prof` a renomme et alloue ses huit reserves (`7004286e`), sous la forme a trois segments que
+la decision 3 decrivait. **Le cliquet a rougi**, comme sa Javadoc l'annoncait : une egalite exacte
+rougit quand la dette baisse, exactement comme quand elle monte. C'est le comportement voulu, et
+c'est ce qui rend le plafond couteux a bouger dans les deux sens.
+
+**Le plafond passe a 7, et non a 6.** Perimetre et critere inchanges, mesure faite **deux fois et
+par deux chemins** - un balayage independant des sources, puis l'execution du test lui-meme :
+**7 jetons distincts, 38 occurrences, 7 fichiers**, arbre d'apres le renommage et **avant le present
+diff** - qui n'ajoute que des occurrences de jetons deja comptes, jamais un jeton de plus, verifie en
+recomptant apres ecriture. Cinq portent le marqueur en tete
+(`R-EMC-CM1-05-1`, `R-EMC-CM1-05-2`, `R-MAT-CP-10-1` a `-3`), deux au milieu. Aucun n'est plus un
+identifiant courant : ils sont cites par les tables de correspondance des fiches, par `review.md` et
+`retro.md` de s42, par `MATRICE-couverture.md`, par le registre et par cet ADR.
+
+**L'ecart avec le 6 annonce porte sa cause, et elle est connue de ce depot.** La note de renommage
+du registre predit `6` et range `R-EMC-CM1-05-2` parmi les jetons *"qui disparaissent"* - **dans la
+phrase meme qui l'ecrit**, donc qui le maintient vivant. Le compte etait juste sur l'arbre d'avant
+son propre diff, et faux sur l'arbre qu'il produit. **Troisieme occurrence en deux jours du meme
+mode de defaillance** : la porte technique annoncee verte par la review de s42 avant son propre
+commit, l'enumeration des sept jetons a la cloture, et ce compte-ci. Le plafond vaut ce que le
+balayage trouve, jamais ce qu'un auteur prevoit - **je n'ai pas repris son chiffre, je l'ai
+mesure**, et c'est la seule raison pour laquelle l'ecart est visible.
+
 ## Regle executable
 
 **Fichier** :

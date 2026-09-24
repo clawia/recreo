@@ -218,28 +218,42 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                     + "(?:[A-Z0-9]{1,4}-)*[A-Z0-9]{1,4}(?![A-Za-z0-9_-])");
 
     /**
-     * Le plafond du cliquet d'ADR-0100 : <b>9</b>, la taille exacte de la dette du 2026-09-24, les
-     * deux places confondues.
+     * Le plafond du cliquet d'ADR-0100 : <b>7</b> depuis le renommage de {@code nadia-prof} du
+     * 2026-09-24, les deux places confondues. <b>Descendu de 9 a 7</b>, et il ne remonte jamais.
      *
      * <p><b>Methode du chiffre, dans le meme paragraphe.</b> Perimetre : les fichiers texte du
      * depot que {@link #fichiersDuDepot(Path)} enumere - repertoires de sortie de build, arbres de
      * contre-exemple et binaires exclus, ces derniers reconnus a l'octet nul (ADR-0036). Critere :
      * {@link #MARQUEUR_DE_RESERVE_EN_TETE} et {@link #MARQUEUR_DE_RESERVE_AU_MILIEU}. Resultat,
-     * arbre du 2026-09-24 <b>avant ce diff</b> : <b>7 jetons en tete</b> (23 occurrences, 5 fichiers -
-     * {@code R-EMC-CM1-05-1} a {@code -4} et {@code R-MAT-CP-10-1} a {@code -3}) et <b>2 jetons au
-     * milieu</b> (2 occurrences, 1 fichier - les deux notations d'intervalle de {@code review.md}),
-     * soit <b>9</b>. La mention {@code R-MAT-CP-10-1 bis} n'est pas un jeton de plus : l'espace
-     * ferme la chaine, et {@code bis} qualifie le jeton qui precede.
+     * arbre du 2026-09-24 <b>apres le renommage et avant ce diff</b> : <b>7 jetons distincts, 38
+     * occurrences, 7 fichiers</b> - cinq en tete ({@code R-EMC-CM1-05-1}, {@code R-EMC-CM1-05-2},
+     * {@code R-MAT-CP-10-1} a {@code -3}) et deux au milieu (les notations d'intervalle de
+     * {@code review.md}). Aucun ne vit plus dans une fiche comme identifiant courant : ils y sont
+     * cites par les tables de correspondance, par deux ceremonies closes, par le registre et par
+     * ADR-0100. <b>Mesure faite deux fois et par deux chemins</b> - un balayage independant des
+     * sources, puis l'execution de ce test - parce qu'un plafond est un chiffre et qu'un chiffre
+     * porte sa methode.
+     *
+     * <p><b>Etat precedent : 9, le 2026-09-24 avant le renommage</b> - 7 en tete (23 occurrences, 5
+     * fichiers) et 2 au milieu (2 occurrences, 1 fichier). La mention {@code R-MAT-CP-10-1 bis}
+     * n'etait pas un jeton de plus : l'espace ferme la chaine, et {@code bis} qualifie le jeton qui
+     * precede.
+     *
+     * <p><b>L'ecart avec le 6 annonce, et il porte sa cause.</b> La note de renommage du registre
+     * predit <b>6</b> et nomme {@code R-EMC-CM1-05-2} parmi les jetons <i>"qui disparaissent"</i> -
+     * dans la phrase meme qui l'ecrit, donc qui le maintient vivant. Le compte etait juste sur
+     * l'arbre d'avant son propre diff, et faux sur l'arbre qu'il produit. <b>C'est la troisieme fois
+     * en deux jours qu'un chiffre de ce depot est mesure avant le diff qui le change</b> : la porte
+     * technique de la review de s42, l'enumeration des sept jetons a la cloture, et celui-ci. Le
+     * plafond vaut ce que le balayage trouve, jamais ce qu'un auteur prevoit.
      *
      * <p><b>Ce que ce nombre garde.</b> Il vaut exactement la dette, il n'y a pas une place de
-     * libre (ADR-0013, amendement du 2026-08-15) : un dixieme jeton, sous l'une ou l'autre place,
+     * libre (ADR-0013, amendement du 2026-08-15) : un huitieme jeton, sous l'une ou l'autre place,
      * ecrit n'importe ou dans le depot, fait rougir la CI. Le descendre demande un diff aussi
-     * visible que le monter. <b>Il ne descendra pas a zero par le seul renommage</b> : six des neuf
-     * jetons sont cites par {@code review.md} et {@code retro.md} de s42, fichiers de ceremonie
-     * close que rien ne modifie plus (squad/README.md, section 2). Le plancher atteignable est
-     * celui que portent ces deux fichiers-la, et c'est a la cloture du renommage qu'il se mesure.
+     * visible que le monter - <b>et ce diff-ci est la preuve que le cliquet fonctionne dans les deux
+     * sens</b> : le renommage l'a fait rougir, il ne s'est pas efface tout seul.
      */
-    private static final int PLAFOND_DE_JETONS_A_MARQUEUR_DEPLACE = 9;
+    private static final int PLAFOND_DE_JETONS_A_MARQUEUR_DEPLACE = 7;
 
     /** Les deux prefixes qu'ADR-0066 alloue deja, sur les noms de fichiers de squad/decisions/. */
     private static final Set<String> PREFIXES_DE_DECISION = Set.of("ADR", "DEC");
