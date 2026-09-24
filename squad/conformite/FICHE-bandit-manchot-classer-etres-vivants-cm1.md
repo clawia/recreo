@@ -8,10 +8,11 @@
   etres vivants"*, consigne servie *"Lis bien, puis dis lequel des trois ne partage pas le meme
   caractere."*, `nombreDeManches: 10`.
 - **Ligne declaree** : `SCI-CM1-06`.
-- **Statut global** : **EN ATTENTE D'AUDIT.** Fiche ouverte par `camille-po` a l'ouverture du bloc
-  de construction du sprint s41 (paquet et catalogue livres et fusionnes dans `round-two`, commit
-  `b5b07966`). Le bloc de validation pedagogique reste vide jusqu'a ce que `nadia-prof` le
-  remplisse.
+- **Statut global** : **DONE PEDAGOGIQUE REFUSE** le 2026-09-24 par `nadia-prof` (instance B),
+  apres partie complete jouee - deux motifs, voir le bloc de validation en fin de fiche. La ligne
+  `SCI-CM1-06` reste `non couvert`. Fiche ouverte par `camille-po` a l'ouverture du bloc de
+  construction du sprint s41 (paquet et catalogue livres et fusionnes dans `round-two`, commit
+  `b5b07966`).
 - **Story** : `S41-SCI-CLASSER` - Classer des etres vivants d'apres un caractere commun observable
   (`docs/backlog/backlog.md`).
 - **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Le vivant, sa
@@ -33,7 +34,8 @@
   de `nadia-prof` (instance B). Aucun item de ce paquet ne doit contredire ce que ces deux paquets
   enseignent deja sur le meme objet.
 - **Lien decision** : `DEC-0095`.
-- **Derniere mise a jour** : 2026-09-24 (ouverture, `camille-po`).
+- **Derniere mise a jour** : 2026-09-24 (Done pedagogique REFUSE, `nadia-prof` instance B ;
+  ouverture le meme jour par `camille-po`).
 
 ---
 
@@ -67,11 +69,170 @@ retenir) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
 
 ---
 
-## Bloc de validation pedagogique
+## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
-> Non rempli. A completer par `nadia-prof` seule, apres avoir joue l'increment (voir
-> `squad/README.md`, section 7 - Double Done). Trois verdicts possibles : `VALIDE`,
-> `VALIDE SOUS RESERVE`, `REFUSE`. La mention de couverture partielle deja fixee par la matrice
-> ("raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non
-> couvert") doit etre reprise mot pour mot dans le verdict si `nadia-prof` prononce un Done
-> pedagogique.
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+- **Verdict** : **REFUSE**
+- **Date** : 2026-09-24
+- **Auditrice** : `nadia-prof`, instance B (`DEC-0095`, section 9).
+- **Audit joue** : **oui**
+
+### Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `3f6b379f`, application construite depuis les modules de cet
+arbre et lancee depuis leurs classes compilees sur le JDK de la toolchain (21.0.10 rapporte par la
+machine virtuelle), sur un port dedie - le fat jar etait tenu ouvert par un autre processus.
+**Deux parties completes de dix manches par appels HTTP reels**, la premiere avec trois erreurs
+volontaires sur les manches 1 et 4, ecran de fin atteint - *"Tu as trouve, tout seul : 8 / Tu as
+joue toutes les questions : 10"*. **Et j'ai lu les onze items du paquet**, plus
+`cp-qlm-vivant-non-vivant.yaml`, `cp-qlm-cycle-de-vie.yaml` et
+`cm1-sciences-etapes-developpement.yaml`.
+
+**Ce n'est pas un audit degrade, et les deux motifs du refus sont des faits de partie jouee : les
+items en cause m'ont ete servis, dans la meme partie, aux manches 1 et 9.**
+
+**Ce que l'audit ne couvre pas** : j'ai lu le document servi, pas la page peinte par un navigateur.
+Le refus n'en depend pas.
+
+### Ce qui tient, et qu'il faut garder
+
+Je commence par la, parce qu'un refus n'est utile que si l'equipe sait ce qu'elle garde. La forme
+du lot est bonne et **huit items sur onze sont a garder tels quels**.
+
+- **`V3` est respectee sans discussion.** Aucun item ne demande de trier ni de deplacer une
+  collection : chaque manche pose trois etres vivants et demande lequel ne partage pas le caractere
+  des deux autres. C'est exactement la forme que le referentiel citait - *"Lequel des trois n'a pas
+  de plumes ?"* - et elle travaille bien le caractere.
+- **Plusieurs caracteres observables distincts sont mobilises** : plumes (item 1), nombre de pattes
+  (2, 7, 10), ecailles (4), poils (5), vol (6), milieu de vie (3, 8, 9, 11). Aucun caractere unique
+  repete sur tout le paquet.
+- **Les huit items qui ne portent pas sur un milieu sont exacts** : la chauve-souris est un
+  mammifere volant sans plumes ; l'araignee porte huit pattes contre six a la fourmi et a l'abeille ;
+  le lezard en porte quatre contre six a la mouche et a la coccinelle ; le chat porte des poils la
+  ou le serpent et le lezard portent des ecailles ; le canard porte des plumes la ou le renard et
+  l'ecureuil portent des poils ; le chien marche sur quatre pattes la ou le pigeon et la poule en
+  ont deux. **Verifie un par un, aucune erreur.**
+- **Les distracteurs sont toujours d'autres etres vivants reels**, jamais un objet, jamais un
+  element hors du vivant. La bonne reponse figure exactement une fois.
+- **`CYC-1`, verifiee et non prise sur parole.** J'ai relu `cp-qlm-vivant-non-vivant.yaml`
+  (`QLM-CP-01`) et `cp-qlm-cycle-de-vie.yaml` (`QLM-CP-02`) : aucun des etres vivants nommes ici
+  n'y est classe autrement, et aucun item d'ici ne contredit ce que le CP enseigne sur la
+  distinction du vivant. **La declaration de l'en-tete du paquet est exacte sur ce point.**
+- **Traitement de l'erreur** : l'indice s'affiche des la premiere erreur et apporte le caractere
+  manquant ; la revelation debloque a la troisieme sans dispenser du geste.
+- **Niveau et ton** : une phrase par item, vocabulaire de CM1, aucun biais, aucun animal traite sur
+  un registre affectif.
+
+### Premier motif du refus - trois enonces affirment, comme un fait, ce que leur propre question demande de nier
+
+Les trois items qui portent sur un milieu sont ecrits sur le meme moule :
+
+> *"**Dans une mare vivent** la grenouille, le tetard **et l'ecureuil** : lequel de ces trois etres
+> vivants ne vit pas dans la mare ?"* (item 8)
+>
+> *"**Dans une foret vivent** le renard, l'ecureuil **et le poisson rouge** : lequel de ces trois
+> etres vivants ne vit pas dans la foret ?"* (item 9)
+>
+> *"**Dans la savane vivent** le lion, la gazelle **et le poisson-clown** : lequel de ces trois
+> etres vivants ne vit pas dans la savane ?"* (item 11)
+
+**Chacune de ces phrases affirme d'abord ce que sa question demande ensuite de nier.** Le premier
+membre de phrase n'est pas un decor : c'est une proposition declarative, et elle enseigne que
+l'ecureuil vit dans la mare, que le poisson rouge vit dans une foret et que le poisson-clown vit
+dans la savane. **Ces trois affirmations sont fausses.** L'enfant qui lit ce qu'on lui donne a lire
+- et c'est ce qu'on lui demande de faire, la consigne dit *"Lis bien"* - se trouve devant un enonce
+qui se contredit en une ligne. Celui qui repond juste est celui qui a appris a ne pas croire le
+debut de la phrase.
+
+**Ce n'est pas une maladresse de style, c'est le contenu lui-meme** : en sciences, la premisse d'un
+raisonnement de classement est ce qu'on enseigne au meme titre que sa conclusion.
+
+**Et cela porte precisement la moitie du libelle que le lot revendiquait.** Le libelle de
+`SCI-CM1-06` a deux membres : *classer d'apres un caractere commun observable*, et *reperer la
+diversite des especes d'un milieu*. Le second membre n'est servi que par ces trois items-la. **Les
+huit items sains ne couvrent que la premiere moitie.**
+
+**Correctif actionnable** : retirer la proposition declarative et poser les trois candidats dans la
+question. Par exemple, mot pour mot et pret a coller :
+
+> *"Lequel de ces trois etres vivants ne vit pas dans une mare : la grenouille, la libellule,
+> l'ecureuil ?"*
+
+La forme est deja employee, sans defaut, par les items 3 et 6 du meme paquet (*"La truite, le
+brochet et le lapin : lequel de ces trois etres vivants ne vit pas dans l'eau ?"*). **Il s'agit
+d'aligner trois items sur huit autres du meme paquet, pas de reecrire le lot.**
+
+**Une part de ce defaut vient de la story, pas de la developpeuse**, et je l'ecris pour que la
+correction se fasse aux deux endroits : le critere d'acceptation dit *"alors il decrit ce milieu et
+les especes qui l'occupent"*, ce qui invite litteralement a annoncer l'intrus comme un occupant du
+milieu. **Le critere est a reecrire en meme temps que les trois items**, sinon le defaut reviendra
+au prochain paquet de milieu.
+
+### Second motif du refus - l'item 8 fait du tetard et de la grenouille deux etres vivants differents, contre ce qu'un autre jeu de CM1 enseigne deja
+
+L'item 8 pose *"la grenouille, le tetard et l'ecureuil"* et les appelle *"ces trois etres
+vivants"*. **Le tetard n'est pas un autre etre vivant que la grenouille : c'est la grenouille
+elle-meme, avant sa metamorphose.**
+
+**Et ce produit l'enseigne deja, au meme niveau, dans un jeu servi et valide.**
+`cm1-sciences-etapes-developpement.yaml` (`SCI-CM1-08`,
+`FICHE-bandit-manchot-etapes-developpement-cm1.md`, Done pedagogique prononce) porte cet item :
+
+> *"Un tetard grandit dans la mare et se transforme peu a peu en grenouille adulte, plus grosse et
+> plus forte. Quelle etape suivra, une fois adulte ?"*
+
+Un enfant de CM1 qui joue les deux jeux apprend dans l'un que le tetard devient la grenouille -
+**un animal, deux etapes** - et dans l'autre qu'on peut les compter comme deux etres vivants d'une
+mare. **C'est une contradiction interne au produit, sur le meme niveau et sur le meme objet.** Ce
+n'est pas `CYC-1`, qui ne regarde que le CP contre le cycle 3 : c'est la coherence du CM1 avec
+lui-meme, qu'aucune clause ecrite ne couvrait encore et qu'aucun automate ne peut voir.
+
+**Correctif actionnable** : remplacer *"le tetard"* par un autre etre vivant de la mare qui ne soit
+pas un stade d'un des deux autres - la libellule, le triton ou l'escargot d'eau conviennent, et la
+libellule est deja nommee ailleurs dans le paquet.
+
+### Ce qui n'est pas un motif de refus, et que je ne compte pas contre le lot
+
+Pour que personne ne corrige ce que je n'ai pas demande :
+
+- **La facilite des items par rapport au CM1.** Elle est reelle sur quelques items, mais **la barre
+  est celle que j'ai moi-meme ecrite** - le referentiel cite *"Lequel des trois n'a pas de plumes ?
+  travaille bien le caractere"*. **Je ne deplace pas mon poteau apres coup.**
+- **La mention de couverture partielle** (*"raisonnement sur un caractere, item par item ; le tri
+  d'une collection entiere reste non couvert"*). Elle reste due le jour ou cette ligne passera, et
+  elle est tenue par le lot : aucun item ne demande de trier une collection.
+
+### Reserve datee du 2026-09-24, a traiter avec le correctif et non apres
+
+**Item 6, *"La libellule, le papillon et la fourmi : lequel de ces trois etres vivants ne vole
+pas ?"*.** La reponse attendue est la fourmi, et l'indice dit *"Cet etre vivant marche et grimpe,
+mais il ne vole pas"*. **C'est vrai de l'ouvriere, que l'enfant observe, et faux de l'espece** : les
+fourmis reproductrices sont ailees et volent, et le vol nuptial d'un soir d'ete est un phenomene
+que beaucoup d'enfants ont vu. L'item reste jouable et sa reponse reste la bonne ; **mais l'indice
+enonce comme une propriete de la fourmi ce qui n'est vrai que de l'ouvriere.** A regler en visant
+le caractere observable plutot que l'espece : *"Cette ouvriere marche et grimpe ; elle n'a pas
+d'ailes."*
+
+### Ce dont je reste la seule garde sur ce paquet
+
+`BIN-1` est desormais mordue par un test et prouvee par mutation (`theo-archi`,
+`squad/sprints/s41-fusion-emc-sciences-qlm/confirmation-archunit.md`) : je ne la recompte pas et je
+la considere couverte. **Ce qui ne l'est par rien, et que ce refus vient de demontrer :**
+
+- **Qu'un enonce ne se contredise pas lui-meme** - aucun automate ne lit une premisse.
+- **Qu'un paquet ne contredise pas un autre paquet du meme niveau sur le meme objet du vivant** -
+  aucun test ne compare deux paquets de deux lignes differentes.
+- **L'exactitude zoologique de chaque caractere** - aucun garde-fou ne verifie qu'une araignee a
+  huit pattes.
+
+**Ces trois proprietes sont tenues par moi seule, en lisant. Tant qu'aucun test ne les mord,
+l'equipe ne doit pas les croire couvertes par une CI verte** - et c'est bien ce qui s'est passe
+ici : quatre jobs verts, 1701 tests, et trois enonces qui se dementent en une ligne.
+
+### Consequence pour la matrice
+
+**`camille-po` ne passe pas la ligne `SCI-CM1-06` a `couvert-valide`.** Elle reste `non couvert`.
+Ce refus ne bloque pas le sprint suivant : il produit du backlog, et le correctif tient en trois
+enonces reecrits, une substitution d'espece, un indice reformule et un critere d'acceptation
+corrige. **Le lot revient devant moi avec ces cinq points, pas avec un paquet neuf.**
