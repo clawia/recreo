@@ -7,10 +7,9 @@
   Republique"*, consigne servie *"Lis bien, puis dis le nom du symbole, ou ce qu'il represente."*,
   `nombreDeManches: 10`.
 - **Ligne declaree** : `EMC-CP-08`.
-- **Statut global** : **EN ATTENTE D'AUDIT.** Fiche ouverte par `camille-po` a l'ouverture du bloc
-  de construction du sprint s41 (paquet et catalogue livres et fusionnes dans `round-two`, commit
-  `b5b07966`). Le bloc de validation pedagogique reste vide jusqu'a ce que `nadia-prof` le
-  remplisse.
+- **Statut global** : **REFUSE** (audit joue du 2026-09-24, `nadia-prof` instance A). Fiche ouverte
+  par `camille-po` a l'ouverture du bloc de construction du sprint s41 (paquet et catalogue livres
+  et fusionnes dans `round-two`, commit `b5b07966`).
 - **Story** : `S41-EMC-SYMBOLES` - Reconnaitre et nommer les symboles de la Republique francaise
   (`docs/backlog/backlog.md`).
 - **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine "Acquerir
@@ -23,7 +22,7 @@
   La Marseillaise, fete nationale, chacun en bonne reponse. Deux taches : nommer le symbole
   decrit ; dire ce qu'il represente. `ART-1` : aucune reponse portee par une couleur percue."*
 - **Lien decision** : `DEC-0095`.
-- **Derniere mise a jour** : 2026-09-24 (ouverture, `camille-po`).
+- **Derniere mise a jour** : 2026-09-24 (audit pedagogique, `nadia-prof` instance A).
 
 ---
 
@@ -56,6 +55,135 @@ aucun contenu factuel precis - reste a l'auteur du paquet puis a l'audit de `nad
 
 ## Bloc de validation pedagogique
 
-> Non rempli. A completer par `nadia-prof` seule, apres avoir joue l'increment (voir
-> `squad/README.md`, section 7 - Double Done). Trois verdicts possibles : `VALIDE`,
-> `VALIDE SOUS RESERVE`, `REFUSE`.
+# Audit du 2026-09-24 (`nadia-prof`, instance A de s41) - REFUSE
+
+## 1. Ce que j'ai joue, et sur quoi
+
+Reacteur reconstruit depuis `round-two` au commit `3f6b379f`
+(`bash outils/mvn-jdk21.sh -B clean package -DskipTests`), `bootstrap/target/recreo.jar` relance
+sur le JDK 21 designe par la toolchain. **Audit joue, pas lu** : cinq parties completes de dix
+manches, plus deux parties ciblees sur un item precis (section 3), plus une partie ou je me trompe
+volontairement a repetition pour voir le traitement de l'erreur.
+
+**Precision de methode, et elle a failli me faire auditer le mauvais arbre** : le jar present dans
+`bootstrap/target/` en debut de session etait anterieur a s41 et le catalogue qu'il servait ne
+contenait aucun des trois jeux d'EMC de ce sprint. Je l'ai vu parce que j'ai cherche le jeu dans la
+page `/niveaux/CP` avant de jouer, et non parce qu'un garde-fou me l'a dit. **Un jar present n'est
+pas un jar a jour** : je le note ici pour la prochaine instance qui auditera, et c'est aussi
+pourquoi la commande de reconstruction est ecrite ci-dessus plutot que sous-entendue.
+
+Les **douze items** du paquet sont remontes a l'ecran au fil des cinq parties (douze enonces
+distincts releves). Rien de ce qui suit ne repose sur la seule lecture du YAML.
+
+## 2. Ce qui est tenu, et que je constate avant de refuser
+
+- **`FER-1`** : les quatre symboles du libelle sont chacun en bonne reponse, vus a l'ecran - le
+  drapeau (items 1 et 2), Marianne (3 et 4), la Marseillaise (5 et 6), la fete nationale (7 et 8).
+- **`FER-3`** : deux taches distinctes, jouees toutes les deux - nommer le symbole decrit (items 1
+  a 8), dire ce qu'il represente (items 9 a 12).
+- **`ART-1`, la condition que j'avais posee d'avance** : aucun item ne demande une couleur, aucun
+  mot de couleur n'est servi a l'enfant. Le mot *tricolore* n'existe que dans le descripteur
+  (recopie du referentiel), jamais dans un enonce, une proposition ou un indice. **Cette condition
+  est tenue, et elle l'est a l'ecran.**
+- **Lisibilite** : aucun enonce ne depasse quinze mots ni deux phrases (`LON-1`, `LON-2`), la
+  seconde phrase est toujours la question. Les huit enonces de la tache de nom sont courts et
+  concrets.
+- **Traitement de l'erreur** : premiere erreur, *"Ce n'est pas ca. Essaie encore !"* suivi de
+  l'indice ; troisieme erreur, la bonne reponse est revelee et l'enfant peut avancer. Aucun
+  blocage.
+- **Distracteurs** : toujours d'autres elements du registre republicain, jamais un element sans
+  rapport.
+
+## 3. Le motif du refus : deux items ont deux reponses defendables, et la bonne est refusee a l'ecran
+
+**`EMC-5`, posee le 2026-09-03 dans
+`squad/programme/enseignement-moral-et-civique/competences-cp.md` pour la matiere entiere** :
+*"Aucun item n'a deux reponses defendables."* Ce n'est pas une barre neuve et je ne durcis rien :
+elle precede de trois semaines l'ecriture de ce paquet.
+
+**Item 9, joue, capture d'ecran de la partie** :
+
+- enonce : *"Que represente le drapeau francais ?"*
+- les trois propositions telles que l'enfant les voit : *"le pays et la Republique"* /
+  *"l'hymne de la France"* / *"la Republique"*
+- j'ai appuye sur *"la Republique"*, et l'application repond : **"Ce n'est pas ca. Essaie
+  encore !"**
+
+**Le drapeau tricolore represente la Republique francaise** : c'est l'embleme national de la
+Republique, et *"la Republique"* est une reponse juste a la question posee. Le jeu la declare
+fausse. **Une reponse exacte qu'un jeu scolaire sanctionne n'est pas une maladresse de
+formulation, c'est un contresens enseigne.** De surcroit la proposition refusee est **contenue
+mot pour mot dans la proposition couronnee** : *"le pays et la Republique"* contient
+*"la Republique"*. Aucun enfant de six ans ne peut trancher entre une reponse et une partie
+d'elle-meme, et il n'y a rien a trancher puisque les deux sont vraies.
+
+**Item 10, joue, meme capture** :
+
+- enonce : *"Que represente Marianne ?"*
+- propositions : *"le pays et la Republique"* / *"un grand jour de fete pour la France"* /
+  *"la Republique"*
+- j'ai appuye sur *"le pays et la Republique"*, et l'application repond : **"Ce n'est pas ca.
+  Essaie encore !"**
+
+Les deux items sont donc **symetriquement fautifs** : la meme paire de propositions y sert de bonne
+reponse et de distracteur, dans un sens sur l'item 9 et dans l'autre sur l'item 10. Ce que le
+paquet demande a l'enfant sur ces deux items n'est pas de connaitre un symbole, c'est de deviner
+laquelle de deux formules quasi identiques l'auteur a decidee de couronner sur cet item-la. **Deux
+items sur douze, soit les deux tiers de ce que le paquet apprend sur Marianne et sur le drapeau
+dans la tache de sens.**
+
+**Correction demandee, et elle est bornee** : sur la tache de sens (items 9 a 12), les quatre
+reponses attendues doivent etre **mutuellement exclusives** - aucune proposition d'un item ne peut
+etre vraie en meme temps que la bonne reponse de cet item, et **aucune proposition ne peut etre
+contenue dans une autre**. Concretement, le couple *"le pays et la Republique"* / *"la Republique"*
+disparait : une seule des deux formules survit, et le symbole qui perd la sienne recoit une reponse
+qui ne recouvre pas celle de l'autre. Les items 11 (la Marseillaise -> *"l'hymne de la France"*) et
+12 (le 14 juillet -> *"un grand jour de fete pour la France"*) sont exacts et discriminants, ils ne
+sont pas concernes. Les huit items de la tache de nom ne sont pas concernes non plus : **ils sont
+bons et je demande qu'ils ne soient pas reecrits.**
+
+## 4. Second point a corriger dans le meme passage (n'est pas, a lui seul, le motif du refus)
+
+**Item 3** : *"Cette statue de femme est dans toutes les mairies. Comment s'appelle-t-elle ?"*
+Aucune obligation n'impose un buste de Marianne dans une mairie ; il y en a dans la grande majorite
+d'entre elles, pas dans **toutes**. *"dans presque toutes les mairies"* dit la meme chose et est
+exact. Point mineur, releve parce que la ligne porte sur une **connaissance exacte** et que le
+paquet est de toute facon rouvert.
+
+## 5. Ce dont je reste la seule garde sur ce paquet
+
+Dit explicitement pour que l'equipe ne croie pas couvert ce qui ne l'est pas. La CI est verte sur
+cet increment et **aucun de ces deux defauts n'a ete vu par elle** : ils ne sont pas de nature a
+etre vus par un automate.
+
+| Propriete | Automatisable ? | Qui la tient |
+|---|---|---|
+| `EMC-5` - aucun item n'a deux reponses defendables | non | **moi seule** |
+| Aucune proposition contenue dans une autre proposition du meme item | **oui, et ce serait mordable** | personne aujourd'hui |
+| Exactitude de chaque enonce et de chaque reponse contre source | non | **moi, contre source** |
+| `ART-1` - aucune reponse portee par une couleur percue | partiellement | moi ; **tenue ici** |
+
+La deuxieme ligne est la seule des quatre qu'un garde-fou pourrait prendre : *"aucune proposition
+d'un item n'est une sous-chaine d'une autre proposition du meme item"* est une propriete de forme,
+elle se verifie sur le paquet sans jugement semantique, et elle aurait fait rougir l'item 9 avant
+qu'un enfant ne le voie. Je la nomme ; l'ecrire ou non appartient a `theo-archi`.
+
+---
+
+> **Done pedagogique : REFUSE.** 2026-09-24, `nadia-prof`, instance A de s41.
+>
+> **Motif** : sur la tache de sens, l'item 9 (*"Que represente le drapeau francais ?"*) declare
+> fausse la proposition *"la Republique"*, qui est une reponse exacte - le drapeau tricolore
+> represente bien la Republique francaise - et qui est de surcroit contenue dans la proposition
+> couronnee, *"le pays et la Republique"*. L'item 10 (*"Que represente Marianne ?"*) porte le meme
+> defaut en miroir. Deux reponses defendables par item : `EMC-5`, posee le 2026-09-03 pour la
+> matiere entiere. Verifie en jouant, pas en lisant.
+>
+> **Correction demandee** : rendre mutuellement exclusives les quatre reponses de la tache de sens
+> (items 9 a 12), aucune proposition ne pouvant etre vraie en meme temps que la bonne reponse ni
+> contenue dans elle. Corriger au passage *"dans toutes les mairies"* en *"dans presque toutes les
+> mairies"* (item 3). **Les huit items de la tache de nom sont exacts, discriminants et lisibles :
+> ils ne doivent pas etre reecrits.**
+>
+> **Ce refus renvoie a `camille-po`, qui en fait du backlog.** Il ne bloque pas le sprint suivant.
+> `EMC-CP-08` reste `non couvert` dans `MATRICE-couverture.md` ; je ne touche pas la matrice.

@@ -8,10 +8,9 @@
   l'ecole et de la commune"*, consigne servie *"Lis bien, puis dis a qui s'adresser, ou ce que
   fait cette personne."*, `nombreDeManches: 10`.
 - **Ligne declaree** : `EMC-CP-13`.
-- **Statut global** : **EN ATTENTE D'AUDIT.** Fiche ouverte par `camille-po` a l'ouverture du bloc
-  de construction du sprint s41 (paquet et catalogue livres et fusionnes dans `round-two`, commit
-  `b5b07966`). Le bloc de validation pedagogique reste vide jusqu'a ce que `nadia-prof` le
-  remplisse.
+- **Statut global** : **REFUSE** (audit joue du 2026-09-24, `nadia-prof` instance A). Fiche ouverte
+  par `camille-po` a l'ouverture du bloc de construction du sprint s41 (paquet et catalogue livres
+  et fusionnes dans `round-two`, commit `b5b07966`).
 - **Story** : `S41-EMC-ROLES` - Identifier quelques roles et services de l'ecole et de la commune
   (`docs/backlog/backlog.md`).
 - **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine
@@ -25,7 +24,7 @@
   suppose la commune, l'ecole ou le foyer de l'enfant. Le produit ne les connait pas et ne peut
   pas les connaitre (`DEC-0028`)."*
 - **Lien decision** : `DEC-0095`.
-- **Derniere mise a jour** : 2026-09-24 (ouverture, `camille-po`).
+- **Derniere mise a jour** : 2026-09-24 (audit pedagogique, `nadia-prof` instance A).
 
 ---
 
@@ -57,6 +56,121 @@ contenu factuel precis - reste a l'auteur du paquet puis a l'audit de `nadia-pro
 
 ## Bloc de validation pedagogique
 
-> Non rempli. A completer par `nadia-prof` seule, apres avoir joue l'increment (voir
-> `squad/README.md`, section 7 - Double Done). Trois verdicts possibles : `VALIDE`,
-> `VALIDE SOUS RESERVE`, `REFUSE`.
+# Audit du 2026-09-24 (`nadia-prof`, instance A de s41) - REFUSE
+
+## 1. Ce que j'ai joue
+
+Reacteur reconstruit depuis `round-two` au commit `3f6b379f`
+(`bash outils/mvn-jdk21.sh -B clean package -DskipTests`), `bootstrap/target/recreo.jar` relance
+sur le JDK 21 designe par la toolchain. **Audit joue, pas lu** : cinq parties completes de dix
+manches, plus une partie ou je me trompe volontairement. **Les onze items sont remontes a
+l'ecran**, les six de la tache A et les cinq de la tache B.
+
+## 2. Ce qui est tenu, et que je constate avant de refuser
+
+- **`EMC-6`, la condition que j'avais posee d'avance et que `theo-archi` a declaree non encodable**
+  (avis de faisabilite, section 6.3 : jugement semantique, ma garde) : **aucun des onze items ne
+  suppose la commune, l'ecole ou le foyer de l'enfant.** Les situations disent *"un batiment"*,
+  *"un enfant"*, *"une classe"*, *"une rue du quartier"*, *"les habitants"*, *"une personne"*.
+  Jamais *"ta commune"*, jamais *"ton ecole"*, jamais *"ta mairie"*. **Condition tenue sans
+  exception, verifiee item par item a l'ecran.**
+- **`FER-1`** : les quatre roles et services du libelle sont chacun en bonne reponse - les pompiers
+  (items 1, 6), le medecin (2), le directeur ou la directrice (3, 5), la mairie (4).
+- **`FER-3`** : deux taches distinctes, jouees toutes les deux - a qui s'adresser (items 1 a 6),
+  que fait tel role ou tel service (items 7 a 11).
+- **Lisibilite** : aucun enonce ne depasse quinze mots ni deux phrases, la seconde etant la
+  question.
+- **Traitement de l'erreur** : premiere erreur, *"Ce n'est pas ca. Essaie encore !"* suivi de
+  l'indice ; troisieme erreur, la bonne reponse est revelee. Un enfant bloque avance.
+- **Ecriture non genree des roles** : *"le directeur ou la directrice"*, *"il ou elle"*,
+  *"une maitresse ou un maitre"*. C'est juste, et sur une ligne qui nomme des metiers c'est ce
+  qu'il fallait faire.
+- **Point que j'ai regarde specifiquement** : l'indice de l'item 9 mentionne *"un camion rouge"*.
+  Une couleur percue y figure, mais elle n'y porte aucune reponse - l'indice nomme aussi
+  *"une grande echelle"* et *"un camion"*, et l'enonce porte deja *"en cas d'incendie"*. Un enfant
+  daltonien n'est desavantage sur aucun item de ce paquet.
+- **Exactitude des dix autres items** : verifiee un par un. Les pompiers interviennent bien
+  au-dela de l'incendie (item 6, ascenseur ; item 11, secours aux personnes) ; la commune a bien la
+  charge des batiments et du materiel d'une ecole elementaire publique (item 8) ; le directeur ou
+  la directrice autorise bien une sortie scolaire sans nuitee (item 3) ; le medecin soigne et
+  vaccine (item 10). **Rien a reprendre sur ces dix items, et je demande qu'ils ne soient pas
+  reecrits.**
+
+## 3. Le motif du refus : l'item 7 enseigne un fait inexact sur l'ecole
+
+**Item 7, joue** :
+
+- enonce : *"Que fait le directeur ou la directrice de l'ecole ?"*
+- bonne reponse servie a l'enfant : *"il ou elle organise l'ecole et **remplace les enseignants
+  absents**"*
+- distracteurs : *"il ou elle soigne les blessures"* / *"il ou elle eteint les incendies"*
+
+**Ce n'est pas ce que fait un directeur d'ecole.** Le remplacement d'un enseignant absent est
+assure par un **enseignant remplacant**, affecte par les services departementaux de l'education
+nationale ; c'est un poste distinct, tenu par un autre professeur des ecoles. Le directeur ou la
+directrice **veille a la bonne marche de l'ecole et repartit les eleves entre les classes** quand
+aucun remplacant n'est disponible - ce qui n'est pas la meme chose que remplacer, et ce que le
+paquet dit d'ailleurs correctement ailleurs, en **item 5** : *"Un enseignant est absent. Qui
+organise la classe ce jour-la ?"* -> *"le directeur de l'ecole"*. **Le paquet connait la bonne
+formulation et la sert deja ; l'item 7 la deborde.**
+
+**Pourquoi je refuse pour un seul membre de phrase.** Sur cette ligne, la seule chose que le jeu
+apprend a un enfant de six ans, c'est **qui fait quoi**. L'item 7 est precisement l'item qui
+**definit** le role du directeur, et la definition qu'il sert est fausse sur sa seconde moitie. Les
+deux distracteurs etant tres eloignes (*soigne les blessures*, *eteint les incendies*), l'enfant
+choisira la bonne proposition sans difficulte - **et repartira avec l'enonce faux en tete, sans
+jamais avoir eu l'occasion de le contredire**. Un item qu'on ne peut pas rater est exactement celui
+dont le texte doit etre exact. C'est aussi ce que l'arbitrage prealable de cette ligne demandait en
+un mot : *"connaissance verifiable"*.
+
+**Correction demandee, et elle tient en un membre de phrase** : remplacer *"et remplace les
+enseignants absents"* par ce que le role recouvre reellement, par exemple *"il ou elle organise
+l'ecole et repartit les eleves quand un enseignant est absent"*, ou plus simplement *"il ou elle
+organise l'ecole et veille a ce que tout s'y passe bien"*. **Les deux distracteurs de l'item 7 et
+les dix autres items ne sont pas concernes.**
+
+## 4. Second point a corriger dans le meme passage (n'est pas, a lui seul, le motif du refus)
+
+**Item 2** : *"Un enfant a une forte fievre depuis plusieurs jours. Qui **consulte-t-on** ?"* Le
+verbe *consulter*, au sens medical, n'est pas du vocabulaire de CP, et sa forme interrogative avec
+le pronom *on* inverse ajoute une difficulte de lecture a une question par ailleurs simple. *"Qui
+va-t-on voir ?"* dit la meme chose et se lit en CP. Meme famille que la reserve que j'ai ouverte le
+2026-09-23 sur le verbe *illustre* (`FICHE-bandit-manchot-devise-cp.md`, section 3) : **c'est une
+reserve de registre, non bloquante en elle-meme**, et elle ne serait pas devenue un refus si l'item
+7 n'avait pas rouvert le paquet. Je la note ici pour qu'elle soit payee dans le meme passage.
+
+## 5. Ce dont je reste la seule garde sur ce paquet
+
+Dit explicitement pour que l'equipe ne croie pas couvert ce qui ne l'est pas. La CI est verte sur
+cet increment ; **elle n'a vu ni l'inexactitude de l'item 7, ni le registre de l'item 2**, et aucune
+des deux n'est de nature a etre vue par un automate.
+
+| Propriete | Automatisable ? | Qui la tient |
+|---|---|---|
+| `EMC-6` - aucun item ne suppose la commune, l'ecole ou le foyer de l'enfant | non (`theo-archi`, avis de faisabilite section 6.3) | **moi seule** ; **tenue ici** |
+| Exactitude de ce que fait chaque role et chaque service | non | **moi, contre source** |
+| `EMC-5` - aucun item n'a deux reponses defendables | non | **moi seule** |
+| Registre de vocabulaire adapte au CP (item 2) | non | **moi seule** |
+
+---
+
+> **Done pedagogique : REFUSE.** 2026-09-24, `nadia-prof`, instance A de s41.
+>
+> **Motif** : l'item 7, qui est l'item de definition du role, sert a l'enfant un fait inexact - *"le
+> directeur ou la directrice organise l'ecole et **remplace les enseignants absents**"*. Le
+> remplacement d'un enseignant absent est assure par un enseignant remplacant affecte par les
+> services departementaux, pas par le directeur, qui veille a la bonne marche de l'ecole et
+> repartit les eleves entre les classes quand aucun remplacant n'est disponible. Le paquet sert
+> deja la formulation exacte en item 5 (*"Qui organise la classe ce jour-la ?"*). Les deux
+> distracteurs de l'item 7 etant tres eloignes, l'enfant ne peut pas rater l'item et repart donc
+> avec l'enonce faux : un item qu'on ne peut pas rater est celui dont le texte doit etre exact. La
+> ligne demandait une *"connaissance verifiable"*.
+>
+> **Correction demandee** : remplacer *"et remplace les enseignants absents"* par ce que le role
+> recouvre reellement (par exemple *"et repartit les eleves quand un enseignant est absent"*).
+> Corriger au passage *"Qui consulte-t-on ?"* en *"Qui va-t-on voir ?"* (item 2, registre de CP).
+> **Les dix autres items sont exacts, `EMC-6` est tenue sans exception sur les onze, et rien
+> d'autre ne doit etre reecrit.**
+>
+> **Ce refus renvoie a `camille-po`, qui en fait du backlog.** Il ne bloque pas le sprint suivant.
+> `EMC-CP-13` reste `non couvert` dans `MATRICE-couverture.md` ; je ne touche pas la matrice.
