@@ -833,7 +833,22 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"des rayons dangereux du Soleil\"...) ou des valeurs de tableau en texte libre"
                     + " (\"herbivore\", \"solide\"...), valeurDe rend null sur les trois propositions"
                     + " de chaque item. Mesure du 2026-09-23 sur le paquet servi : aucune des 36"
-                    + " propositions ne commence par un chiffre"));
+                    + " propositions ne commence par un chiffre"),
+            // S41-EMC-ROLES : paquet neuf d'enseignement moral et civique CP (EMC-CP-13).
+            Map.entry("cp-emc-roles-ecole-commune",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des noms de rôles ou de services"
+                    + " (\"les pompiers\", \"le médecin\"...) ou des descriptions de leur fonction en"
+                    + " texte libre, valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-24 sur le paquet servi : aucune des 33 propositions ne"
+                    + " commence par un chiffre"),
+            // S41-SCI-CLASSER : paquet neuf de sciences et technologie CM1 (SCI-CM1-06).
+            Map.entry("cm1-sciences-classer-etres-vivants",
+            "11 items sur 11 portent deux distracteurs (trois propositions), mais aucune des 33"
+                    + " propositions n'est numerique : ce sont des noms d'êtres vivants (\"la"
+                    + " chauve-souris\", \"l'araignée\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-24 sur le paquet servi :"
+                    + " aucune des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

@@ -1,0 +1,102 @@
+schema: 1
+id: cm1-sciences-classer-etres-vivants
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Le vivant, sa diversité et les fonctions qui le caractérisent"
+  competence: "Classer des êtres vivants d'après un caractère commun observable, et repérer la diversité des espèces d'un milieu."
+lignesDeReferentiel: ["SCI-CM1-06"]
+#
+# S41-SCI-CLASSER (docs/backlog/backlog.md, sprint 41). Arbitrage prealable deja rendu, aucun
+# arbitrage neuf a router (ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-
+# civique-et-ma-borne.md, section 4.3) : ligne classee "les suivantes", "6 (classement, mention
+# partielle due)". Referentiel source (MATRICE-couverture.md, ligne 2006) : "jouable au choix
+# textuel, item par item [...] 'Lequel des trois n'a pas de plumes ?' travaille bien le caractere."
+# Referentiel copie conforme (squad/programme/sciences-et-technologie/competences-cm1.md,
+# SCI-CM1-06).
+#
+# Mention de couverture partielle exigee d'avance par la matrice (ligne 2006) : "raisonnement sur un
+# caractere, item par item ; le tri d'une collection entiere reste non couvert". Ce paquet ne
+# construit jamais un classement d'une collection entiere.
+#
+# V3 (refuse d'avance) : chaque item demande de reconnaitre lequel de trois etres vivants decrits ne
+# partage pas un caractere observable commun aux deux autres, jamais de trier ou de deplacer une
+# collection entiere. La mecanique reste le bandit manchot a choix textuel, item par item.
+#
+# Plusieurs caracteres observables distincts sont mobilises d'un item a l'autre (FER de forme,
+# critere de la story) : les plumes (item 1), le nombre de pattes (items 2, 7, 10), le milieu de vie
+# eau/terre (items 3, 8, 9, 11), les ecailles (item 4), les poils (item 5), le vol (item 6) - jamais
+# un seul caractere repete sur tout le paquet.
+#
+# CYC-1 (avis de faisabilite de theo-archi, squad/sprints/s41-fusion-emc-sciences-qlm/
+# avis-faisabilite.md, section 6.6, et DEC-0095 section 9.3) : verifie contre
+# cp-qlm-vivant-non-vivant.yaml (QLM-CP-01) et cp-qlm-cycle-de-vie.yaml (QLM-CP-02) - aucun des
+# etres vivants nommes ici (moineau, pigeon, chauve-souris, fourmi, abeille, araignée, truite,
+# brochet, lapin, serpent, lézard, chat, renard, écureuil, canard, libellule, papillon, poule,
+# chien, grenouille, têtard, poisson rouge, mouche, coccinelle, lion, gazelle, poisson-clown) n'y
+# est classe comme non-vivant ou objet ; c'est un ajout d'especes au CM1, jamais une contradiction
+# d'un classement deja servi au CP.
+#
+# HIS-3 (chaque fait porte sa source) : les traits cites sont des faits de zoologie de base, sans
+# controverse scientifique - la chauve-souris est un mammifere volant sans plumes ; les araignees
+# portent huit pattes contre six pour les insectes ; les poissons et les reptiles portent des
+# ecailles, jamais les mammiferes ; les oiseaux portent des plumes, jamais de poils ; les fourmis
+# marchent et ne volent pas, a la difference des libellules et des papillons ; les oiseaux se
+# deplacent sur deux pattes, les mammiferes terrestres cites sur quatre ; les especes citees par
+# milieu (mare, foret, savane) sont celles generalement enseignees a ce niveau.
+#
+# CON-1 : aucun item ne se resout sans connaitre le caractere observable et les trois etres vivants
+# cites - aucun enonce n'enchasse la reponse.
+#
+# BIN-1 : sans objet ici - chaque item porte trois propositions (deux distracteurs), jamais deux, la
+# forme "lequel des trois" imposant naturellement trois candidats. Verifie explicitement par le test
+# du paquet, sur le patron de PaquetCpEmcRegleSouhaitLoiTest (avis de faisabilite de theo-archi,
+# section 6.6 : condition de faisabilite du lot).
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Le moineau, le pigeon et la chauve-souris : lequel de ces trois êtres vivants n'a pas de plumes ?"
+    bonneReponse: "la chauve-souris"
+    distracteurs: ["le moineau", "le pigeon"]
+    indice: "Cet être vivant vole, mais son corps est couvert de poils, pas de plumes."
+  - enonce: "La fourmi, l'abeille et l'araignée : lequel de ces trois êtres vivants n'a pas six pattes ?"
+    bonneReponse: "l'araignée"
+    distracteurs: ["la fourmi", "l'abeille"]
+    indice: "Cet être vivant a huit pattes, pas six."
+  - enonce: "La truite, le brochet et le lapin : lequel de ces trois êtres vivants ne vit pas dans l'eau ?"
+    bonneReponse: "le lapin"
+    distracteurs: ["la truite", "le brochet"]
+    indice: "Cet être vivant vit sur la terre, jamais dans l'eau."
+  - enonce: "Le serpent, le lézard et le chat : lequel de ces trois êtres vivants n'a pas d'écailles ?"
+    bonneReponse: "le chat"
+    distracteurs: ["le serpent", "le lézard"]
+    indice: "Son corps est couvert de poils, pas d'écailles."
+  - enonce: "Le renard, l'écureuil et le canard : lequel de ces trois êtres vivants n'a pas de poils ?"
+    bonneReponse: "le canard"
+    distracteurs: ["le renard", "l'écureuil"]
+    indice: "Son corps est couvert de plumes, pas de poils."
+  - enonce: "La libellule, le papillon et la fourmi : lequel de ces trois êtres vivants ne vole pas ?"
+    bonneReponse: "la fourmi"
+    distracteurs: ["la libellule", "le papillon"]
+    indice: "Cet être vivant marche et grimpe, mais il ne vole pas."
+  - enonce: "Le pigeon, la poule et le chien : lequel de ces trois êtres vivants n'a pas deux pattes ?"
+    bonneReponse: "le chien"
+    distracteurs: ["le pigeon", "la poule"]
+    indice: "Cet être vivant marche sur quatre pattes, pas sur deux."
+  - enonce: "Dans une mare vivent la grenouille, le têtard et l'écureuil : lequel de ces trois êtres vivants ne vit pas dans la mare ?"
+    bonneReponse: "l'écureuil"
+    distracteurs: ["la grenouille", "le têtard"]
+    indice: "Cet être vivant vit dans les arbres, loin de l'eau."
+  - enonce: "Dans une forêt vivent le renard, l'écureuil et le poisson rouge : lequel de ces trois êtres vivants ne vit pas dans la forêt ?"
+    bonneReponse: "le poisson rouge"
+    distracteurs: ["le renard", "l'écureuil"]
+    indice: "Cet être vivant a besoin de vivre dans l'eau, jamais dans les arbres."
+  - enonce: "La mouche, la coccinelle et le lézard : lequel de ces trois êtres vivants n'a pas six pattes ?"
+    bonneReponse: "le lézard"
+    distracteurs: ["la mouche", "la coccinelle"]
+    indice: "Cet être vivant a quatre pattes, pas six."
+  - enonce: "Dans la savane vivent le lion, la gazelle et le poisson-clown : lequel de ces trois êtres vivants ne vit pas dans la savane ?"
+    bonneReponse: "le poisson-clown"
+    distracteurs: ["le lion", "la gazelle"]
+    indice: "Cet être vivant vit dans la mer, jamais dans la savane."

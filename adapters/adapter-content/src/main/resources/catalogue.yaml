@@ -546,3 +546,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-extraire-information
     nombreDeManches: 10
+  - id: bandit-manchot-roles-ecole-commune-cp
+    titre: "Les rôles de l'école et de la commune"
+    consigne: "Lis bien, puis dis à qui s'adresser, ou ce que fait cette personne."
+    mecanique: bandit-manchot
+    paquet: cp-emc-roles-ecole-commune
+    nombreDeManches: 10
+  - id: bandit-manchot-classer-etres-vivants-cm1
+    titre: "Classer les êtres vivants"
+    consigne: "Lis bien, puis dis lequel des trois ne partage pas le même caractère."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-classer-etres-vivants
+    nombreDeManches: 10
