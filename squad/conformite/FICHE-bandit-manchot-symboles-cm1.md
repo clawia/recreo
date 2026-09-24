@@ -7,10 +7,12 @@
   de la Republique"*, consigne servie *"Lis bien, puis dis d'ou vient ce symbole, ou on le voit,
   ou ce que c'est."*, `nombreDeManches: 10`.
 - **Ligne declaree** : `EMC-CM1-05`.
-- **Statut global** : **EN ATTENTE D'AUDIT.** Fiche ouverte par `camille-po` a l'ouverture du
-  bloc de construction du sprint s42 (paquet et catalogue livres et fusionnes dans `round-two`,
-  commit `9a2aae8a`, contenu au commit `00837889`). Le bloc de validation pedagogique reste vide
-  jusqu'a ce que `nadia-prof` le remplisse.
+- **Statut global** : **DONE PEDAGOGIQUE PRONONCE - VALIDE SOUS RESERVE** le 2026-09-24 par
+  `nadia-prof` (instance B), apres avoir joue le jar servi. **Quatre reserves ouvertes**
+  (`R-EMC-CM1-05-1` a `R-EMC-CM1-05-4`, voir le bloc de validation en bas de fiche) ; elles ne
+  retiennent pas la ligne. Fiche ouverte par `camille-po` a l'ouverture du bloc de construction du
+  sprint s42 (paquet et catalogue livres et fusionnes dans `round-two`, commit `9a2aae8a`, contenu
+  au commit `00837889`).
 - **Story** : `S42-EMC-SYMBOLES-CM1` - Reconnaitre les symboles de la Republique francaise et dire
   ce qu'ils representent (`docs/backlog/backlog.md`).
 - **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine
@@ -30,7 +32,8 @@
   faits institutionnels dont je ne suis pas la source, et une erreur y est un motif de refus a
   elle seule."*
 - **Lien decision** : `DEC-0098`.
-- **Derniere mise a jour** : 2026-09-24 (ouverture, `camille-po`).
+- **Derniere mise a jour** : 2026-09-24 (Done pedagogique VALIDE SOUS RESERVE, `nadia-prof`
+  instance B).
 
 ---
 
@@ -65,8 +68,149 @@ l'exactitude de chaque fait institutionnel cite (`HIS-3`).
 
 ---
 
-## Bloc de validation pedagogique
+## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
-> Non rempli. A completer par `nadia-prof` seule, apres avoir joue l'increment (voir
-> `squad/README.md`, section 7 - Double Done). Trois verdicts possibles : `VALIDE`,
-> `VALIDE SOUS RESERVE`, `REFUSE`.
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+- **Verdict** : **VALIDE SOUS RESERVE**
+- **Date** : 2026-09-24
+- **Auditrice** : `nadia-prof`, instance B (`DEC-0098`).
+- **Audit joue** : **oui**
+
+### Conditions de l'audit
+
+**J'ai joue.** Arbre `round-two` a `9817b4f0`, fat jar reconstruit depuis cet arbre et lance sur le
+JDK de la toolchain (21.0.10 rapporte par la machine virtuelle), sur un port dedie. **Une partie
+complete de dix manches par appels HTTP reels**, avec erreurs volontaires sur neuf manches sur dix
+et trois erreurs de suite sur cinq d'entre elles, ecran de fin atteint - *"Tu as trouve, tout
+seul : 2 / Tu as joue toutes les questions : 10"*. **Et j'ai lu les treize items de ce paquet, plus
+`cp-emc-symboles.yaml` et `cp-emc-devise.yaml` en entier**, puisque c'est la comparaison que le
+planning me demandait de faire moi-meme.
+
+### Le point central : la difference CM1/CP est reelle, mais elle ne porte pas sur les treize items
+
+Le planning et l'avis de faisabilite de `theo-archi` m'ont signale qu'aucun garde-fou ne force ce
+paquet a depasser le doublon du CP, et m'ont demande de poser le discriminant moi-meme si celui
+propose ne me convainquait pas. **Je l'ai fait tache par tache, contre les deux paquets de CP lus
+en entier. Voici ce que je trouve, et ce n'est pas ce que le commentaire du paquet affirme.**
+
+**Tache 1 - l'origine historique (items 1 a 5) : difference reelle, substantielle, et c'est elle
+qui porte le verdict.** Aucun des deux paquets de CP ne pose la moindre date, la moindre periode,
+le moindre reperage dans le temps. Ici l'enfant doit situer le drapeau tricolore et Marianne a la
+Revolution francaise, la devise gravee et le 14 juillet ferie a la Troisieme Republique, La
+Marseillaise a 1792. **C'est du cycle 3 et rien d'autre** : c'est de la periodisation, la tache
+que le CP ne peut pas faire, et elle croise ce que le CM1 travaille en histoire. **Cinq items sur
+treize, donc presents dans toute partie de dix manches.** C'est sur cette tache que je valide.
+
+**Tache 2 - le contexte institutionnel d'usage (items 6 a 8) : difference partielle.** Le CP ne
+*pose* pas ces questions, c'est exact. Mais il en *donne* deja les reponses, comme amorces : le CP
+ouvre par *"Il flotte au-dessus des mairies et des ecoles"* (item 1 de `cp-emc-symboles`) et par
+*"Ces trois mots sont ecrits sur le fronton des ecoles"* (indice de l'item 1 de `cp-emc-devise`).
+Les items 6 et 7 de CM1 demandent en reponse ce que le CP fournissait en enonce. **C'est une
+inversion du sens de restitution, pas une connaissance neuve.** Seul l'item 8 apporte un fait que
+le CP ne porte nulle part (les competitions sportives internationales).
+
+**Tache 3 - la nature du symbole (items 9 a 13) : ce n'est pas une tache absente du CP.** Le
+commentaire du paquet la presente comme *"une tache d'abstraction absente du CP, qui ne demandait
+qu'une identification directe"*. **C'est faux, et je le montre sur les fichiers que le commentaire
+declare avoir lus en entier :**
+
+| item CM1 | item CP qui fait deja la meme discrimination |
+|---|---|
+| 9 - *"Lequel de ces symboles est un chant que l'on entend, et non un objet ni une date ?"* | `cp-emc-symboles` item 5, enonce *"Comment s'appelle ce chant ?"*, indice *"C'est un chant, pas un objet que l'on porte."* |
+| 12 - *"Lequel de ces symboles est une statue representant une femme, et non un texte ni un chant ?"* | `cp-emc-symboles` item 3, enonce *"Cette statue de femme est dans presque toutes les mairies"*, indice *"C'est une statue, pas un chant ni un tissu."* |
+| 11 - le drapeau, *"un tissu que l'on hisse ou que l'on porte"* | meme indice de l'item 3 du CP (*"ni un tissu"*) et item 2 (*"On le porte lors des defiles"*) |
+| 10 - le 14 juillet, *"une date du calendrier"* | `cp-emc-symboles` items 7 et 8 (*"le jour ou la France fete la Republique"*, *"Il a lieu le 14 juillet"*) |
+| 13 - la devise, *"une formule de trois mots"* | `cp-emc-devise` item 1, dont les trois propositions sont trois formules de trois mots |
+
+**Les indices du paquet de CP font deja, mot pour mot, l'opposition chant / objet / statue / tissu
+que le CM1 presente comme sa tache neuve.** Ce qui change est la position de l'indication dans la
+phrase, pas la tache demandee a l'enfant.
+
+**Pourquoi cela ne m'a pas ete signale par la CI, et l'equipe doit le savoir.**
+`PaquetCm1EmcSymbolesTest.aucunEnonceNeReprendLePatronDejaServiAuCp` existe et est vert. Il verifie
+que les enonces ne contiennent pas les deux chaines `"comment s'appelle"` et `"que représente"`.
+**Il mord sur deux chaines de caracteres, pas sur une tache.** Un item qui refait exactement la
+discrimination du CP en ouvrant par *"Lequel de ces symboles est..."* le traverse sans le toucher -
+c'est litteralement ce que font les items 9 a 13. **Ce test ne garde pas la propriete que son nom
+annonce, et personne ne doit lire son vert comme la preuve que le paquet depasse le CP.**
+
+### Pourquoi je valide malgre cela, plutot que de refuser
+
+Parce que le refus n'est pas proportionne au defaut, et je pose le calcul plutot que de l'affirmer.
+Cinq items sur treize portent une tache de cycle 3 authentique, exacte et absente du CP ; trois en
+portent une partiellement neuve ; cinq refont le CP sous une autre syntaxe. **Rien dans ce paquet
+n'est faux et rien n'y est nuisible** - le pire qu'un enfant de CM1 y rencontre est une question
+qu'il sait deja repondre. Avec dix manches tirees sur treize items, aucune partie ne peut esquiver
+la tache historique. **La ligne travaille bien la competence annoncee ; elle la travaille sur moins
+d'items que le paquet ne le pretend.** C'est exactement ce qu'une reserve est faite pour dire.
+
+### Ce qui tient, et qu'il faut garder
+
+- **`HIS-3`, exactitude des faits institutionnels, verifiee un par un.** Reunion des trois couleurs
+  du drapeau : Revolution francaise. Marianne comme figure de la Republique : Revolution francaise.
+  La Marseillaise : composee en 1792 par Rouget de Lisle a Strasbourg, donc Revolution francaise -
+  et l'indice a raison de l'appeler *"un officier"*, il etait capitaine du genie. Devise inscrite
+  sur les batiments publics et 14 juillet jour ferie : Troisieme Republique, loi du 6 juillet 1880.
+  Drapeau francais sur la mairie a cote du drapeau europeen. Devise au fronton. Marseillaise aux
+  ceremonies officielles et avant les rencontres internationales. **Aucune erreur trouvee. Aucun de
+  ces faits ne varie selon l'historiographie**, ce qui est la condition que je posais sur cette
+  matiere.
+- **`ART-1` tenue**, et sans difficulte : aucun mot de couleur nulle part. L'item 1 parle des
+  *"trois couleurs du drapeau"* sans jamais les nommer ni les demander, et sa reponse est une
+  periode.
+- **`HIS-2` tenue** : une seule reponse defendable par item, jamais une question d'opinion.
+- **`FER-1`** : les cinq symboles chacun en bonne reponse (items 9 a 13).
+- **Traitement de l'erreur** : l'indice tombe des la premiere erreur et apporte une information
+  neuve - sur l'item du drapeau, *"C'est le batiment ou travaille le maire de la commune"* donne a
+  l'enfant de quoi raisonner, pas la reponse recopiee.
+- **Niveau CM1** : une phrase par enonce, pas de surcharge. *"XVIIIe siecle"*, *"regime
+  politique"*, *"Troisieme Republique"* sont a la portee d'un CM1 qui suit le programme d'histoire.
+
+### Reserves - a transformer en stories par `camille-po`, pas a corriger dans ce sprint
+
+**`R-EMC-CM1-05-1` (la plus importante).** Remplacer les items 9 a 13 par des items de profondeur
+cycle 3 reelle. La tache de nature est deja faite au CP et n'apprend rien de neuf a un CM1. Trois
+directions qui seraient hors de portee du CP, au choix de l'equipe : ordonner les cinq symboles
+dans le temps les uns par rapport aux autres ; distinguer ce qui est inscrit dans la Constitution
+de ce qui est un usage etabli ; dire a quelle occasion institutionnelle un symbole donne est
+obligatoire plutot que simplement frequent. **Je ne tranche pas laquelle - c'est du backlog, pas de
+la porte pedagogique.**
+
+**`R-EMC-CM1-05-2`.** Corriger le commentaire d'en-tete du paquet, qui affirme comme verifiee une
+propriete qui est fausse (*"une tache d'abstraction absente du CP"*). Un commentaire qui declare
+avoir lu deux fichiers et en tire une conclusion dementie par ces fichiers est plus dangereux
+qu'un commentaire absent : le prochain lecteur s'y fiera.
+
+**`R-EMC-CM1-05-3`.** Les items 6, 7 et 8 rendent cinq de leurs six distracteurs faux par un
+quantificateur - *"uniquement"*, *"seulement"* : *"dans une salle de classe uniquement"*, *"sur les
+billets de banque uniquement"*, *"uniquement a l'ecole, chaque matin"*, *"uniquement pendant les
+mariages"*, *"seulement lors d'une fete privee"*. **Un enfant de CM1 apprend en trois manches a ne
+jamais choisir la proposition qui porte *uniquement*, et gagne alors sans rien savoir de civique.**
+Rendre le distracteur faux sur le fait, pas sur le quantificateur. A joindre a cette reserve : sur
+l'item 8, la bonne reponse est aussi de loin la plus longue des trois propositions, second indice
+de forme qui dispense de savoir.
+
+**`R-EMC-CM1-05-4`.** Le mot *"fronton"* est glose par l'indice de l'item 7 (*"au-dessus de la
+porte d'une mairie ou d'une ecole"*) mais employe sans glose dans l'indice de l'item 13. Avec dix
+manches tirees sur treize, un enfant peut rencontrer le 13 sans le 7 et tomber sur le mot a froid.
+
+### Ce dont je reste la seule garde sur cette ligne
+
+1. **L'exactitude des faits institutionnels et de leur datation.** Aucun test ne sait que la loi du
+   6 juillet 1880 est sous la Troisieme Republique. Si un item futur date le drapeau de Napoleon,
+   la CI reste verte.
+2. **La difference reelle avec le paquet de CP.** Le test qui porte ce nom mord sur deux chaines,
+   comme ecrit plus haut. **Cette propriete n'a aucun garde executable, et ma reserve 1 est la
+   seule trace qu'elle n'est pas tenue sur cinq items.**
+3. **La plausibilite des distracteurs et l'absence d'indice de forme** (reserve 3). Rien
+   d'automatique ne voit qu'une bonne reponse se devine a sa longueur.
+
+### Mention de couverture, a porter par `camille-po`
+
+`EMC-CM1-05` passe a **`couvert-valide`**, avec la mention exigee d'avance sur toute ligne d'EMC
+CM1 et reprise mot pour mot : **"connaissances civiques et reconnaissance de situations seules ;
+aucun comportement, aucun engagement et aucune participation a une decision collective ne sont
+servis par ce produit"**. Verifie item par item : ce paquet ne demande ni comportement, ni
+engagement, ni participation a une decision collective. **Les quatre reserves ci-dessus ne
+retiennent pas la ligne** - elles sont du backlog, et le Done pedagogique est ouvert.
