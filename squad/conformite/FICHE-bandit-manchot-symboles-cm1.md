@@ -9,7 +9,7 @@
 - **Ligne declaree** : `EMC-CM1-05`.
 - **Statut global** : **DONE PEDAGOGIQUE PRONONCE - VALIDE SOUS RESERVE** le 2026-09-24 par
   `nadia-prof` (instance B), apres avoir joue le jar servi. **Quatre reserves ouvertes**
-  (`R-EMC-CM1-05-1` a `R-EMC-CM1-05-4`, voir le bloc de validation en bas de fiche) ; elles ne
+  (`EMC-CM1-R1` a `EMC-CM1-R4`, voir le bloc de validation en bas de fiche) ; elles ne
   retiennent pas la ligne. Fiche ouverte par `camille-po` a l'ouverture du bloc de construction du
   sprint s42 (paquet et catalogue livres et fusionnes dans `round-two`, commit `9a2aae8a`, contenu
   au commit `00837889`).
@@ -169,7 +169,21 @@ d'items que le paquet ne le pretend.** C'est exactement ce qu'une reserve est fa
 
 ### Reserves - a transformer en stories par `camille-po`, pas a corriger dans ce sprint
 
-**`R-EMC-CM1-05-1` (la plus importante).** Remplacer les items 9 a 13 par des items de profondeur
+**Renommage du 2026-09-24, apres coup, et les anciens noms sont ecrits ici plutot qu'effaces.**
+J'avais nomme ces reserves `R-EMC-CM1-05-1` a `-4`. **Cette forme est fautive** : `ADR-0100`
+etablit que le marqueur `R` vit dans le **dernier** segment, jamais en tete, et un jeton a marqueur
+deplace n'est ni lu ni allouable - il n'avait donc **aucune existence** pour le registre, ce qui est
+exactement pourquoi il a traverse un sprint entier sans qu'un rouge le nomme. Elles s'appellent
+desormais `EMC-CM1-R1` a `EMC-CM1-R4`, sur la forme a trois segments que j'avais moi-meme employee
+deux jours plus tot (`ADD-CE1-R1`, `SOU-CE1-R1`). **La correspondance, parce que `review.md`,
+`retro.md` et `MATRICE-couverture.md` citent encore les anciens noms :** `R-EMC-CM1-05-1` ->
+`EMC-CM1-R1`, `-2` -> `EMC-CM1-R2`, `-3` -> `EMC-CM1-R3`, `-4` -> `EMC-CM1-R4`.
+
+Aucun prefixe neuf : `EMC` etait deja alloue (`EMC-1` a `EMC-11`), verifie avant allocation. Un
+identifiant a deux segments et un identifiant a trois segments de meme prefixe ne se collisionnent
+pas - `EMC-11` et `EMC-CM1-R1` sont deux jetons distincts.
+
+**`EMC-CM1-R1` (la plus importante).** Remplacer les items 9 a 13 par des items de profondeur
 cycle 3 reelle. La tache de nature est deja faite au CP et n'apprend rien de neuf a un CM1. Trois
 directions qui seraient hors de portee du CP, au choix de l'equipe : ordonner les cinq symboles
 dans le temps les uns par rapport aux autres ; distinguer ce qui est inscrit dans la Constitution
@@ -177,12 +191,12 @@ de ce qui est un usage etabli ; dire a quelle occasion institutionnelle un symbo
 obligatoire plutot que simplement frequent. **Je ne tranche pas laquelle - c'est du backlog, pas de
 la porte pedagogique.**
 
-**`R-EMC-CM1-05-2`.** Corriger le commentaire d'en-tete du paquet, qui affirme comme verifiee une
+**`EMC-CM1-R2`.** Corriger le commentaire d'en-tete du paquet, qui affirme comme verifiee une
 propriete qui est fausse (*"une tache d'abstraction absente du CP"*). Un commentaire qui declare
 avoir lu deux fichiers et en tire une conclusion dementie par ces fichiers est plus dangereux
 qu'un commentaire absent : le prochain lecteur s'y fiera.
 
-**`R-EMC-CM1-05-3`.** Les items 6, 7 et 8 rendent cinq de leurs six distracteurs faux par un
+**`EMC-CM1-R3`.** Les items 6, 7 et 8 rendent cinq de leurs six distracteurs faux par un
 quantificateur - *"uniquement"*, *"seulement"* : *"dans une salle de classe uniquement"*, *"sur les
 billets de banque uniquement"*, *"uniquement a l'ecole, chaque matin"*, *"uniquement pendant les
 mariages"*, *"seulement lors d'une fete privee"*. **Un enfant de CM1 apprend en trois manches a ne
@@ -191,7 +205,7 @@ Rendre le distracteur faux sur le fait, pas sur le quantificateur. A joindre a c
 l'item 8, la bonne reponse est aussi de loin la plus longue des trois propositions, second indice
 de forme qui dispense de savoir.
 
-**`R-EMC-CM1-05-4`.** Le mot *"fronton"* est glose par l'indice de l'item 7 (*"au-dessus de la
+**`EMC-CM1-R4`.** Le mot *"fronton"* est glose par l'indice de l'item 7 (*"au-dessus de la
 porte d'une mairie ou d'une ecole"*) mais employe sans glose dans l'indice de l'item 13. Avec dix
 manches tirees sur treize, un enfant peut rencontrer le 13 sans le 7 et tomber sur le mot a froid.
 
@@ -201,9 +215,9 @@ manches tirees sur treize, un enfant peut rencontrer le 13 sans le 7 et tomber s
    6 juillet 1880 est sous la Troisieme Republique. Si un item futur date le drapeau de Napoleon,
    la CI reste verte.
 2. **La difference reelle avec le paquet de CP.** Le test qui porte ce nom mord sur deux chaines,
-   comme ecrit plus haut. **Cette propriete n'a aucun garde executable, et ma reserve 1 est la
-   seule trace qu'elle n'est pas tenue sur cinq items.**
-3. **La plausibilite des distracteurs et l'absence d'indice de forme** (reserve 3). Rien
+   comme ecrit plus haut. **Cette propriete n'a aucun garde executable, et ma reserve
+   `EMC-CM1-R1` est la seule trace qu'elle n'est pas tenue sur cinq items.**
+3. **La plausibilite des distracteurs et l'absence d'indice de forme** (`EMC-CM1-R3`). Rien
    d'automatique ne voit qu'une bonne reponse se devine a sa longueur.
 
 ### Mention de couverture, a porter par `camille-po`

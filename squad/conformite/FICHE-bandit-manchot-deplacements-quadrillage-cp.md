@@ -309,7 +309,7 @@ paye"*. **C'etait vrai pour l'un, faux pour l'autre, et je le dis plutot que de 
   comptage et non une troisieme formulation de la question. L'enfant qui echoue recoit de quoi
   travailler et **doit encore compter** : je me suis trompee deux fois de suite aux manches 5, 7
   et 8, et l'indice ne m'a jamais donne la reponse.
-- **La progression n'est pas payee**, et ne pouvait pas l'etre par ce correctif. Voir la reserve 2.
+- **La progression n'est pas payee**, et ne pouvait pas l'etre par ce correctif. Voir `DEP-CP-R3`.
 
 ### Ce que la CI garde desormais, et ce qu'elle ne garde toujours pas
 
@@ -327,11 +327,11 @@ n'est plus ma garde : il est celle de la CI.
 **Ce que ces tests ne gardent pas, et l'equipe ne doit pas croire le contraire :**
 
 1. **La longueur des enonces.** Aucun test ne mesure `LON-1`/`LON-2` sur ce paquet ni sur aucun
-   autre - le seul endroit ou la conformite est affirmee est un commentaire. Voir la reserve 3.
-2. **Le fait que la suite de cases soit une ligne et non un quadrillage** (reserve 1). Le garde-fou
+   autre - le seul endroit ou la conformite est affirmee est un commentaire. Voir `DEP-CP-R4`.
+2. **Le fait que la suite de cases soit une ligne et non un quadrillage** (`DEP-CP-R1`). Le garde-fou
    recalcule `depart +/- 1` : il presuppose la ligne, donc il ne pourra jamais la signaler.
-3. **La progression** (reserve 2). Rien d'automatique ne voit qu'un paquet est trop facile.
-4. **Que la tache soit du cote production ou reception de la competence** (reserve 1 bis).
+3. **La progression** (`DEP-CP-R3`). Rien d'automatique ne voit qu'un paquet est trop facile.
+4. **Que la tache soit du cote production ou reception de la competence** (`DEP-CP-R2`).
 
 `laBonneReponseNEstJamaisLEtiquetteDuGeste`, pris seul, est plus etroit que mon premier motif : il
 verifie que la bonne reponse a la forme `la case N`, pas que la tache demande un raisonnement. **Je
@@ -340,12 +340,32 @@ de l'ecart, mais c'est lui qui garde la propriete, pas celui qui en porte le nom
 
 ### Reserves - NEUVES, datees du 2026-09-24, second passage
 
+**Renommage du 2026-09-24, apres coup, et les anciens noms sont ecrits ici plutot qu'effaces.**
+J'avais nomme ces reserves `R-MAT-CP-10-1`, `-1 bis`, `-2`, `-3`. **Cette forme est fautive** :
+`ADR-0100` etablit que le marqueur `R` vit dans le **dernier** segment, jamais en tete, et un jeton
+a marqueur deplace n'est ni lu ni allouable - il n'avait donc **aucune existence** pour le registre,
+ce qui est exactement pourquoi il a traverse un sprint entier sans qu'un rouge le nomme. Elles
+s'appellent desormais `DEP-CP-R1` a `DEP-CP-R4`, sur la forme a trois segments que j'avais
+moi-meme employee deux jours plus tot (`ADD-CE1-R1`, `SOU-CE1-R1`). **La correspondance, parce que
+`review.md` et `retro.md` de s42 citent encore les anciens noms et ne seront pas modifies
+(ceremonies closes, `squad/README.md` section 2) :**
+
+| ancien nom, fautif | nom actuel |
+|---|---|
+| `R-MAT-CP-10-1` | `DEP-CP-R1` |
+| `R-MAT-CP-10-1 bis` | `DEP-CP-R2` (reserve a part entiere, plus une sous-variante) |
+| `R-MAT-CP-10-2` | `DEP-CP-R3` |
+| `R-MAT-CP-10-3` | `DEP-CP-R4` |
+
+Prefixe `DEP` neuf, verifie absent des sections 3 et 4 du registre avant allocation ; je ne
+reprends pas `MAT`, deja alloue a une autre famille.
+
 **Ce ne sont pas des durcissements du refus.** Les deux motifs du refus sont leves sans reserve
 attachee. Ce qui suit est ce que je vois **depuis** la correction, et que je n'avais pas ecrit
 avant : le dire comme une reserve datee plutot que comme une condition retroactive est la seule
 facon de ne pas faire de ma porte un caprice.
 
-**`R-MAT-CP-10-1`. La suite de cases numerotees est une ligne, pas un quadrillage, et les indices
+**`DEP-CP-R1`. La suite de cases numerotees est une ligne, pas un quadrillage, et les indices
 enoncent comme une regle generale ce qui n'est vrai que sur une ligne.** Sur une bande numerotee,
 *avancer* et *aller a droite* sont la meme operation (+1), *reculer* et *aller a gauche* aussi
 (-1). Les indices le disent tels quels : *"Avancer, c'est ajouter une case"* et *"Aller a droite,
@@ -359,20 +379,20 @@ mon refus, mot pour mot, y compris ses trois propositions.** `lea-dev` a impleme
 specifie. **Cette reserve est a ma charge, pas a la sienne**, et elle ne pouvait pas etre trouvee
 autrement qu'en jouant le resultat.
 
-**`R-MAT-CP-10-1 bis`, du meme geste.** La question posee est *"Ou est-elle ?"* : l'enfant
+**`DEP-CP-R2`, du meme geste que la precedente.** La question posee est *"Ou est-elle ?"* : l'enfant
 **interprete** un deplacement decrit et localise son resultat ; il ne **produit** jamais la
 description d'un deplacement. La moitie *decrire un deplacement* est donc servie du cote reception,
 pas du cote production. C'est defendable - on ne decrit pas ce qu'on ne sait pas lire - et c'est
 encore une consequence de la forme que j'ai specifiee. **Je l'ecris pour que celui qui fermera
 cette ligne plus tard ne croie pas la production couverte.**
 
-**`R-MAT-CP-10-2`. Aucune progression.** Douze items, cases 1 a 5, toujours un seul pas, toujours
+**`DEP-CP-R3`. Aucune progression.** Douze items, cases 1 a 5, toujours un seul pas, toujours
 +1 ou -1. L'enfant qui reussit le premier item reussit les douze ; j'ai joue dix manches sans
 jamais rencontrer une difficulte superieure a la premiere. Le plancher est legitime pour un premier
 paquet, il ne l'est pas pour la ligne. **Correctif : faire varier le nombre de cases du
 deplacement, et elargir la bande au-dela de cinq cases.**
 
-**`R-MAT-CP-10-3`. `LON-1` est atteinte au mot pres sur six items, et rien ne la mesure.** *"Tom
+**`DEP-CP-R4`. `LON-1` est atteinte au mot pres sur six items, et rien ne la mesure.** *"Tom
 est sur la case 4 et va vers la gauche d'une case. Ou est-il ?"* est au plafond de quinze mots. Le
 paquet est conforme ; il n'a plus un mot de marge, et la conformite ne repose que sur un
 commentaire. **Je ne demande pas de raccourcir ces items** - ils sont legaux et je ne deplace pas
@@ -398,7 +418,7 @@ a cote : elle attribuait la couverture a l'autre moitie, en sens inverse de
 `ARBITRAGE-PREALABLE-s32` section 17.7, comme `camille-po` l'avait signale en ouvrant cette fiche.
 La tenue de la cellule reste a `camille-po`.
 
-**A lire avec la reserve `R-MAT-CP-10-1 bis`** : la moitie nommee dans cette mention est servie du
+**A lire avec la reserve `DEP-CP-R2`** : la moitie nommee dans cette mention est servie du
 cote reception. La mention n'est pas amendee pour autant - elle est deja citee a l'identique par la
 story, par l'en-tete du paquet et par le critere d'acceptation, et en creer une quatrieme variante
 ferait a cette cellule ce qu'une mention inversee lui a deja fait.

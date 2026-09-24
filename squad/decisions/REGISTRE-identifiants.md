@@ -113,9 +113,75 @@ structurelle de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d
 s'est deja produite a s31 (ligne 543 / 93 de la note d'assemblage). **Je l'ecris d'avance plutot que
 de laisser croire que 689 / 112 vaut pour le sprint.**
 
+**Note de `nadia-prof`, s42, le 2026-09-24 (renommage sous `ADR-0100` - instance B).** Huit
+identifiants ajoutes, issus de mes deux verdicts du jour sur le terrain 2 de `DEC-0098` :
+
+- `EMC-CM1-R1` a `EMC-CM1-R4`, ecrits dans
+  `squad/conformite/FICHE-bandit-manchot-symboles-cm1.md` (reserves neuves du Done
+  `VALIDE SOUS RESERVE` sur `S42-EMC-SYMBOLES-CM1` : cinq items qui refont la discrimination du CP,
+  un commentaire de paquet qui l'affirme absente, cinq distracteurs faux par un quantificateur, un
+  mot non glose) ;
+- `DEP-CP-R1` a `DEP-CP-R4`, ecrits dans
+  `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` (reserves neuves du second
+  passage sur `S42-MAT-TEXTUEL` : la suite de cases est une ligne et non un quadrillage, la tache
+  est servie du cote reception, aucune progression, `LON-1` au mot pres sans mesure).
+
+**Un seul prefixe neuf : `DEP`**, verifie absent des sections 3 et 4 avant allocation. Je ne
+reprends pas `MAT`, deja alloue a une autre famille (`MAT-R1`/`MAT-R2`, familles de materiaux CM1),
+ni `QUA`, deja alloue : un prefixe ne porte qu'un sens. **Aucun prefixe neuf du cote `EMC`**
+(`EMC-1` a `EMC-11` etaient deja alloues) - un identifiant a deux segments et un identifiant a
+trois segments de meme prefixe ne se collisionnent pas.
+
+**Huit allocations pour sept jetons renommes, et je dis ou passe le huitieme.** J'avais ecrit ces
+reserves sous la forme `R-EMC-CM1-05-1` a `-4` et `R-MAT-CP-10-1`, `-1 bis`, `-2`, `-3` : le
+marqueur `R` en tete, ce qu'`ADR-0100` etablit comme fautif. La mention `-1 bis` n'etait pas un
+jeton distinct - l'espace fermait la chaine - et elle devient ici une reserve a part entiere,
+`DEP-CP-R2`. Les deux fiches portent la table de correspondance : `review.md` et `retro.md` de s42
+citent encore les anciens noms et ne seront pas modifies, ce sont des ceremonies closes
+(`squad/README.md`, section 2).
+
+**Ce que ce renommage repare, et il est de la meme famille que mes deux notes precedentes.** Un
+jeton a marqueur deplace n'est **ni lu ni allouable** : il n'avait ni rouge, ni sortie verte, ni
+existence pour ce registre. Mes notes de s40 et de s42 ci-dessus disent que j'appelle un verdict
+fini avant d'ouvrir ce fichier ; celle-ci dit qu'en plus **j'ai invente une forme** alors que
+j'avais moi-meme employe la bonne deux jours plus tot (`ADD-CE1-R1`, `SOU-CE1-R1`). Trois fois en
+trois jours, sur le meme geste.
+
+**Le cliquet d'`ADR-0100` doit descendre, et je ne le descends pas moi-meme.**
+`PLAFOND_DE_JETONS_A_MARQUEUR_DEPLACE` vaut **9** et son test asserte une **egalite**, pas un
+plafond : mon renommage fait tomber le compte et **rend ce test rouge tant que la constante n'est
+pas abaissee**. La constante vit dans
+`bootstrap/src/test/java/com/recreo/archi/ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest.java`,
+et sa propre Javadoc dit que le renommage n'appartient pas a ce fichier et qu'un changement de ce
+nombre se decide la. Je n'ecris rien sous `bootstrap/`.
+
+**Le chiffre, mesure et non deduit** : `mvn -B clean verify` sur le reacteur complet, apres mon
+diff, rend **une seule defaillance sur 280 tests du module et 1 727 sur le reacteur** -
+`aucunJetonNeDeplaceSonMarqueurDeReserveAuDelaDeLaDetteGelee`, *"Expected size: 9 but was: 6"*.
+**`theo-archi` a une ligne a ecrire : `PLAFOND_DE_JETONS_A_MARQUEUR_DEPLACE` passe de `9` a `6`.**
+Les six jetons restants sont `HG-R23-25` et `MOB-R1-4` (les deux notations d'intervalle de
+`review.md`, marqueur au milieu, qui ne sont pas de moi) et `R-EMC-CM1-05-1`, `R-MAT-CP-10-1`,
+`R-MAT-CP-10-2`, `R-MAT-CP-10-3`, que `review.md`, `retro.md`, `MATRICE-couverture.md` et
+`ADR-0100` citent encore et que mes tables de correspondance nomment pour rester lisibles. **C'est
+le plancher qu'annoncait la Javadoc du cliquet** : *"il ne descendra pas a zero par le seul
+renommage"*. Les trois jetons qui disparaissent sont `R-EMC-CM1-05-2`, `-3` et `-4`, qui ne
+vivaient que dans ma fiche.
+
+**Je commite ce diff en sachant le reacteur rouge, et je ne l'annonce pas vert.** L'alternative
+etait de laisser dans deux fiches une forme qu'`ADR-0100` declare fautive et qu'aucun garde-fou ne
+lit ; le rouge, lui, est nomme, chiffre, et se ferme par une ligne dans un fichier dont je n'ai pas
+la charge.
+
+Ligne d'etat courant portee de **689 / 112 a 697 / 113**. Methode : comptage des lignes de la table
+de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre
+accents graves, `ADR-0085` clause 5), prefixe pris comme **premier segment** de l'identifiant. Sur
+mon arbre, avant mon diff : 689 identifiants distincts, 112 prefixes distincts, 0 doublon, ce qui
+confirme la ligne d'etat courant que l'instance A declarait ; apres mon diff : 697 et 113, 0
+doublon.
+
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `689` identifiants alloues, `112` prefixes distincts.
+**Compte courant, verifie par la CI** : `697` identifiants alloues, `113` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -823,6 +889,10 @@ clause 2 par une exemption.
 | `DEN-6` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `DEN-7` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `DEN-8` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
+| `DEP-CP-R1` | `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` |
+| `DEP-CP-R2` | `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` |
+| `DEP-CP-R3` | `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` |
+| `DEP-CP-R4` | `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` |
 | `DES-1` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md` |
 | `DES-2` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md` |
 | `DES-3` | `squad/sprints/s25-le-premier-palier-visuel/contrainte-ines-ce-qu-un-dessin-servi-doit-declarer.md` |
@@ -867,6 +937,10 @@ clause 2 par une exemption.
 | `EMC-9` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-10` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `EMC-11` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
+| `EMC-CM1-R1` | `squad/conformite/FICHE-bandit-manchot-symboles-cm1.md` |
+| `EMC-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-symboles-cm1.md` |
+| `EMC-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-symboles-cm1.md` |
+| `EMC-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-symboles-cm1.md` |
 | `EMO-R1` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R2` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R3` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
