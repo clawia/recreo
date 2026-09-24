@@ -1,9 +1,13 @@
 # DEC-0097 - Proposition de perimetre pour s42 et s43
 
-**Statut : Proposee, en attente de validation de l'utilisatrice.** Ce document n'ouvre aucun
-dossier de sprint, n'ecrit aucune story dans `docs/backlog/backlog.md` et ne fait passer aucune
-ligne de `squad/programme/MATRICE-couverture.md` a `en cours`. C'est une proposition a examiner,
-pas un engagement.
+**Statut : perimetre chiffre accepte le 2026-09-24** (les six lignes et leurs tarifs estimes des
+sections 5 et 6, reprises telles quelles par `DEC-0098`). **Le dispositif a deux sprints separes a
+instance unique que ce document proposait est remplace par `DEC-0098`**, qui fusionne s42 et s43 en
+un seul sprint a deux instances paralleles de `nadia-prof`, sur instruction directe de
+l'utilisatrice. Ce document reste la source du chiffrage ligne par ligne ; il n'ouvre toujours
+aucun dossier de sprint, n'ecrit toujours aucune story dans `docs/backlog/backlog.md` et ne fait
+toujours passer aucune ligne de `squad/programme/MATRICE-couverture.md` a `en cours` - ces gestes
+restent a `sofia-sm`, route par `DEC-0098`.
 
 ## 0. Commande et methode
 
