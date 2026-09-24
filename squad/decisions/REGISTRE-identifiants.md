@@ -71,9 +71,51 @@ graves, `ADR-0085` clause 5), prefixe pris comme **premier segment** de l'identi
 worktree dedie, avant mon diff : 681 identifiants distincts, 110 prefixes distincts, 0 doublon, ce
 qui confirme la ligne d'etat courant que le fichier declarait.
 
+**Note de `nadia-prof`, s42, le 2026-09-24 (reparation - sept identifiants ecrits sans allocation,
+instance A).** Sept identifiants ajoutes, issus de mes deux verdicts du jour sur le terrain 1 de
+`DEC-0098` :
+
+- `HG-R23`, `HG-R24`, `HG-R25`, ecrits dans
+  `squad/conformite/FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md` (reserves
+  neuves sur les cinq items de `S42-HG-ROIS` : un enonce qui nomme ses propres distracteurs, trois
+  couples bonne reponse / distracteurs deja servis par `HG-CM1-06`, une annonce de *quatre*
+  propositions devant trois). **`HG-R25` est aussi citee dans
+  `FICHE-bandit-manchot-histoire-geographie-situer-dans-le-temps-cm1.md`**, qui y renvoie plutot que
+  de la recopier ; le registre nomme le document ou elle est **ecrite**, une seule fois ;
+- `MOB-R1` a `MOB-R4`, ecrits dans `squad/conformite/FICHE-bandit-manchot-matiere-objets-cp.md`
+  (reserves neuves sur `S42-QLM-MATIERE` : vocabulaire de la consigne, deux enonces illisibles au CP,
+  un distracteur defendable).
+
+**Aucun prefixe neuf du cote `HG`** (`HG-R1` a `HG-R22` etaient deja alloues, verifie avant
+allocation, le suivant libre etait `HG-R23`). **Un prefixe neuf : `MOB`**, verifie absent de la
+table de la section 4 avant allocation - je ne reprends pas `MAT`, deja alloue a une autre famille
+(`MAT-R1`/`MAT-R2`, familles de materiaux CM1), pour ne pas faire porter deux sens au meme prefixe ;
+je ne reprends pas non plus `MOI`, `MON` ni `MNC`, alloues et sans rapport.
+
+**J'ai ecrit ces sept identifiants dans un commit anterieur du jour (`1d5c00de`) sans les allouer
+ici** : `PAR-5` (`ADR-0085`, clause 2) a rougi sur `round-two`, trouve par `lea-dev` en lancant
+`mvn -B clean verify` apres sa propre correction. **C'est la deuxieme fois que je cause ce rouge
+exactement de la meme facon** - la premiere est la note de s40, quatre lignes plus haut, datee
+d'hier. Je le laisse ecrit a cote d'elle plutot que de le presenter comme un incident isole : deux
+fois le meme oubli en deux jours n'est pas un accident, c'est que **j'ecris mes reserves dans la
+fiche et que j'appelle le verdict fini avant d'avoir ouvert ce fichier**.
+
+Ligne d'etat courant portee de **682 / 111 a 689 / 112**. Methode : comptage des lignes de la table
+de la section 4 sous le motif du garde-fou lui-meme (`ALLOCATION`, identifiant et document entre
+accents graves, `ADR-0085` clause 5), prefixe pris comme **premier segment** de l'identifiant. Sur
+mon arbre, avant mon diff : 682 identifiants distincts, 111 prefixes distincts, 0 doublon, ce qui
+confirme la ligne d'etat courant que le fichier declarait ; apres mon diff : 689 et 112.
+
+**Ce chiffre est juste sur ma moitie du sprint et je ne peux pas le garantir sur l'arbre entier.**
+`DEC-0098` fait tourner deux instances de `nadia-prof` en parallele ; si l'instance B alloue sur son
+terrain, la clause 5 rougira a la fusion et la reparation sera arithmetique. C'est la limite
+structurelle de `PAR-5` que `theo-archi` a choisi de laisser nommee plutot que d'encoder, et elle
+s'est deja produite a s31 (ligne 543 / 93 de la note d'assemblage). **Je l'ecris d'avance plutot que
+de laisser croire que 689 / 112 vaut pour le sprint.**
+
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `682` identifiants alloues, `111` prefixes distincts.
+**Compte courant, verifie par la CI** : `689` identifiants alloues, `112` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -953,6 +995,9 @@ clause 2 par une exemption.
 | `HG-R20` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `HG-R21` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
 | `HG-R22` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-cm1.md` |
+| `HG-R23` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md` |
+| `HG-R24` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md` |
+| `HG-R25` | `squad/conformite/FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md` |
 | `HIS-1` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-2` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `HIS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
@@ -1021,6 +1066,10 @@ clause 2 par une exemption.
 | `MES-1` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `MES-2` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `MNC-1` | `squad/conformite/ARBITRAGE-M4-ET-BALAYAGE-DES-CONDITIONS-DE-MECANIQUE-2026-08-29.md` |
+| `MOB-R1` | `squad/conformite/FICHE-bandit-manchot-matiere-objets-cp.md` |
+| `MOB-R2` | `squad/conformite/FICHE-bandit-manchot-matiere-objets-cp.md` |
+| `MOB-R3` | `squad/conformite/FICHE-bandit-manchot-matiere-objets-cp.md` |
+| `MOB-R4` | `squad/conformite/FICHE-bandit-manchot-matiere-objets-cp.md` |
 | `MON-1` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `MON-2` | `squad/conformite/ARBITRAGE-PREALABLE-s25-palier-1-visuel-mon-ordre-du-15-aout-et-la-mesure-de-pli.md` |
 | `MON-3` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
