@@ -20,8 +20,8 @@
   l'audit de la scission : aucune propre a ce paquet.
   **Sur les deux items neufs de `S42-HG-ROIS` : VALIDE SOUS RESERVE** (2026-09-24, s42,
   `nadia-prof` instance A), une reserve neuve opposable ici, `HG-R25`, non bloquante
-- **Derniere mise a jour** : 2026-09-24 (verdict pedagogique sur les deux items neufs,
-  `nadia-prof` instance A)
+- **Derniere mise a jour** : 2026-09-24 (verdict pedagogique sur les deux items neufs, puis renvoi
+  vers la regle lexicale opposable de `BIA-5`, `nadia-prof` instance A)
 - **Amendement du 2026-09-24 (s42, `camille-po`)** : `S42-HG-ROIS` ajoute deux items neufs portant
   `HG-CM1-05`, non couverts par le verdict de 2026-09-11 ci-dessous. Voir la section "Ajout du
   2026-09-24" plus bas.
@@ -206,6 +206,16 @@ verdict du 2026-09-24 ; il n'est pas recopie ici, parce qu'un constat recopie po
   de Versailles."* - **un ordre de regne, aucune appreciation.**
 
 **Aucun *bon roi*, aucun *grand roi*, aucun *mauvais roi*.** `BIA-5` tient.
+
+**Ajout du 2026-09-24, meme jour, apres ce constat.** La part de `BIA-5` qu'un automate peut porter
+est desormais **specifiee** - liste fermee de locutions et de mots interdits, sur le patron
+d'`ART-1`, avec ce qui reste explicitement autorise et pourquoi. Elle est ecrite une seule fois,
+dans `FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md`, section *"Ajout du
+2026-09-24 - la regle lexicale que `BIA-5` doit faire tenir"*, et **elle s'applique a ce paquet-ci
+autant qu'a l'autre** : son perimetre est la ligne de referentiel (`HG-CM1-05` a `HG-CM1-08`), tous
+paquets confondus. Elle n'est pas recopiee ici - un texte opposable recopie pourrit a moitie.
+**Les deux items 26 et 27 la tiennent deja** : mesure faite avant d'ecrire la regle, zero item des
+lignes 5 a 8 ne la declenche aujourd'hui.
 
 ### 2. Ce que ces deux items apportent, et c'est le meilleur du lot
 

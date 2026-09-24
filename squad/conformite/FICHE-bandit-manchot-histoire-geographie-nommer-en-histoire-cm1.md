@@ -20,8 +20,8 @@
   bloquante) : trois items de ce paquet ne font pas ce que leur consigne annonce.
   **Sur les trois items neufs de `S42-HG-ROIS` : VALIDE SOUS RESERVE** (2026-09-24, s42,
   `nadia-prof` instance A), reserves neuves `HG-R23`, `HG-R24`, `HG-R25`, aucune bloquante
-- **Derniere mise a jour** : 2026-09-24 (verdict pedagogique sur les trois items neufs,
-  `nadia-prof` instance A)
+- **Derniere mise a jour** : 2026-09-24 (verdict pedagogique sur les trois items neufs, puis la
+  regle lexicale opposable de `BIA-5` en fin de fiche, `nadia-prof` instance A)
 - **Amendement du 2026-09-24 (s42, `camille-po`)** : `S42-HG-ROIS` ajoute trois items neufs
   portant `HG-CM1-05`, non couverts par le verdict de 2026-09-11 ci-dessous. Voir la section
   "Ajout du 2026-09-24" plus bas.
@@ -352,3 +352,161 @@ reponse par cet ecart.** Il sera seulement mis devant un texte qui ne decrit pas
 | **Qu'un item neuf n'en reproduise pas un deja present** (`HG-R24`) | **aucun.** Rien ne compare deux items d'un meme paquet. Je l'ai mesure a la main sur les 48. **Route a `theo-archi` comme symptome** : le meme couple bonne reponse / distracteurs deux fois dans un paquet est mecaniquement detectable, la ou le juger ne l'est pas |
 | **Qu'un enonce decrive l'ecran qu'il accompagne** (`HG-R25`) | **aucun.** Aucun test ne rapproche le mot *quatre* d'un enonce du nombre de boutons rendus |
 | **Les reserves `HG-R*` anterieures** | inchangees, voir la fiche de l'ancetre et le bloc du 2026-09-11 |
+
+---
+
+## Ajout du 2026-09-24 (s42, `nadia-prof` instance A) - la regle lexicale que `BIA-5` doit faire tenir
+
+> **Ce bloc ne modifie aucun verdict.** Il n'ajoute aucune exigence aux cinq items de
+> `S42-HG-ROIS`, qui la tiennent deja - je l'ai mesure avant de l'ecrire, section 5 ci-dessous.
+> **Je ne releve pas une barre apres coup** : j'ecris, dans une forme qu'un developpeur peut
+> implementer, la part de `BIA-5` qu'un automate peut porter. Le reste de `BIA-5` reste ma garde.
+
+### 1. Pourquoi ce bloc existe
+
+Le test `hgCm105NePorteAucunJugementDeValeurSurUnRoi`
+(`adapters/adapter-content/src/test/java/com/recreo/adapter/content/PaquetCm1HistoireGeographieTest.java`)
+cite `BIA-5` dans sa Javadoc et **ne verifie que l'appartenance de la bonne reponse a l'ensemble des
+quatre noms de rois du libelle**. Signale par moi a l'audit, confirme independamment par
+`theo-archi` a la cloture de s42. **Un enonce disant *"Parmi ces quatre rois, lequel fut le plus
+grand roi ?"* laisse le reacteur vert** : sa bonne reponse est un des quatre noms.
+
+Un test dont la Javadoc annonce plus que ce que son assertion mord est **pire qu'un test absent** :
+il fait croire couvert ce qui ne l'est pas. C'est exactement ce que dit ma ligne *"ce dont je reste
+la seule garde"* de la section 4 ci-dessus, et c'est cette ligne qui reste vraie tant que la regle
+ci-dessous n'est pas implementee.
+
+### 2. Ce que la regle couvre, et ce qu'elle ne couvre pas
+
+**Elle est un plancher, pas la condition.** `BIA-5` interdit qu'un item fasse porter un jugement de
+valeur sur un personnage ; **juger si un enonce le fait est un jugement de sens, et aucun automate
+ne le rend**. Un enonce comme *"Lequel de ces rois aurait du ecouter davantage son peuple ?"* ne
+contient aucun des motifs ci-dessous et reste un motif de refus - **c'est moi qui le refuse, item
+par item, et cela ne change pas**.
+
+Ce que la regle ferme, c'est **la famille de formes que le francais emploie reellement pour juger un
+souverain** : le superlatif d'appreciation, le qualificatif evaluatif accole au titre, le comparatif
+evaluatif, et la question d'opinion adressee a l'enfant. Ces quatre familles sont enumerables, et
+tant qu'elles ne sont pas mordues, la forme la plus evidente du defaut passe verte.
+
+### 3. La regle, sur le patron d'`ART-1`
+
+**Perimetre.** Tout item dont la `ligneDeReferentiel` vaut `HG-CM1-05`, `HG-CM1-06`, `HG-CM1-07` ou
+`HG-CM1-08`, **tous paquets confondus** - c'est le perimetre que `BIA-5` se donne elle-meme
+(*"lignes 5 a 8"*, `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`), et c'est
+l'agregation que le fichier de test pratique deja pour `HG-CM1-05` et `HG-CM1-07`.
+
+**Champs examines.** `enonce`, `bonneReponse`, **chaque distracteur**, et `indice`. Un jugement de
+valeur dans un indice est servi a l'enfant exactement comme un jugement de valeur dans l'enonce, et
+c'est meme la que je l'attendrais en premier.
+
+**Comparaison.** Texte passe en minuscules avant recherche, comme le fait deja
+`PaquetCm1EmcSymbolesTest` pour `ART-1`. Replier les accents des deux cotes est permis et
+preferable ; les motifs sont ecrits ci-dessous **avec** leurs accents, forme sous laquelle le
+contenu servi a l'enfant est obligatoirement redige.
+
+#### 3.1 Liste A - locutions, recherche de sous-chaine simple
+
+Aucune de ces locutions n'entre en collision avec un mot du contenu servi : elles portent toutes au
+moins deux mots, ce qui est precisement ce qui les rend sures.
+
+| Famille | Motifs interdits |
+|---|---|
+| Superlatif d'appreciation | `le plus grand`, `la plus grande`, `les plus grands`, `le plus beau`, `la plus belle`, `le meilleur`, `la meilleure`, `les meilleurs`, `le plus juste`, `le plus sage`, `le plus célèbre`, `la plus célèbre`, `le mieux`, `le moins bien` |
+| Qualificatif evaluatif accole au titre | `bon roi`, `grand roi`, `mauvais roi`, `petit roi`, `roi sage`, `roi cruel`, `bonne reine`, `grande reine`, `mauvaise reine`, `bon empereur`, `grand empereur`, `mauvais empereur`, `bon souverain`, `grand souverain`, `grand homme` |
+| Comparatif evaluatif | `meilleur que`, `meilleure que`, `moins bon que`, `plus juste que`, `plus sage que`, `plus cruel que` |
+| Question d'opinion adressee a l'enfant | `à ton avis`, `selon toi`, `penses-tu`, `trouves-tu`, `préfères-tu`, `aimes-tu`, `avait-il raison`, `a-t-il eu raison`, `a-t-il bien fait`, `aurait-il dû` |
+
+**Une seule exception, et elle est necessaire** : `le plus grand nombre` **reste autorise**. C'est
+une quantite mesurable, pas une appreciation. Elle n'est pas hypothetique - elle est servie
+aujourd'hui deux fois dans ce lot de matiere (*"quelle activite occupe traditionnellement le plus
+grand nombre d'habitants"*, `HG-CM1-11` ; *"quel secteur emploie le plus grand nombre
+d'habitants"*, `HG-CM1-12`). Ces deux items sont hors du perimetre de `BIA-5`, mais **l'exception
+s'ecrit quand meme** : le jour ou un item des lignes 5 a 8 comptera des sujets, des soldats ou des
+provinces, la regle ne doit pas le refuser.
+
+#### 3.2 Liste B - mots isoles, recherche **avec limite de mot**
+
+`génial`, `géniale`, `formidable`, `extraordinaire`, `magnifique`, `admirable`, `glorieux`,
+`glorieuse`, `héroïque`, `ridicule`, `idiot`, `stupide`, `méchant`, `méchante`, `nul`, `nulle`,
+`pire`.
+
+**La limite de mot n'est pas une precaution de style, elle est obligatoire, et voici ce qui la
+rend obligatoire** - collisions relevees dans le contenu servi aujourd'hui :
+
+| Motif | Ce qu'une recherche de sous-chaine nue attraperait a tort |
+|---|---|
+| `pire` | **`l'Empire romain d'Occident`** (`HG-CM1-04`), **`l'Empire`** (`HG-CM1-08`) - le mot *empire* contient *pire*. C'est la collision la plus frequente de tout le lot |
+| `nul` | *nulle part*, *annuler* |
+
+Et voici, a l'inverse, **trois mots que je n'ai pas mis dans la liste B**, parce que meme borne par
+une limite de mot ils refuseraient du contenu juste :
+
+- **`grand`** - *grande période*, *grands amphithéâtres*, *grand savoir-faire*, *un grand pays
+  d'Europe*, *une grande partie de l'Europe* sont tous servis aujourd'hui et tous descriptifs. C'est
+  pourquoi *grand* n'apparait qu'en locution (liste A).
+- **`sage`** - *paysage*, *passage*. Meme raison : seules `roi sage`, `le plus sage` et
+  `plus sage que` sont interdites.
+- **`fort`** - *châteaux forts* est servi **quatre fois** (`HG-CM1-01`, `HG-CM1-03`). `fort` n'est
+  interdit sous aucune forme.
+
+### 4. Ce qui reste autorise, et qu'aucune implementation ne doit faire rougir
+
+**Le libelle du referentiel lui-meme, en premier.** *"Parmi ces quatre rois qui ont marqué la
+construction du royaume..."* ouvre les cinq enonces de `S42-HG-ROIS` et **doit rester vert** :
+*marquer la construction du royaume* est un constat historique verifiable, pas une appreciation sur
+un personnage. Aucun motif des listes A et B ne s'y trouve - verifie, pas suppose.
+
+Restent egalement autorises, et tous presents aujourd'hui :
+
+| Forme | Pourquoi ce n'est pas un jugement de valeur |
+|---|---|
+| `le plus tôt`, `le plus tard`, `le plus ancien`, `la plus ancienne`, `le plus récent`, `la plus récente` | superlatifs **chronologiques**, tranches par des dates. Servis **onze fois, champs confondus**, sur `HG-CM1-01`, `HG-CM1-02` et `HG-CM1-07` |
+| *"lequel a régné le premier"*, *"lequel a régné le dernier"* | ordre de regne, verifiable. Ce sont les deux items neufs qui portent la moitie *situer* de `HG-CM1-05` |
+| `la plus haute distinction` | rang institutionnel d'une decoration, pas une appreciation sur un homme (indice de l'item de la Legion d'honneur, `HG-CM1-08`) |
+| `le plus de traces` | quantite constatable (`HG-CM1-03`) |
+| `plus résistant que` | propriete physique d'un metal (`HG-CM1-03`) |
+| `plus puissant` dans *"l'Empire romain d'Occident devient plus puissant"* | distracteur qui enonce un fait faux sur un **Etat**, pas une appreciation sur une personne. `BIA-5` porte sur un personnage |
+| `célèbre` verbe (*"la date que la France célèbre chaque année"*) | seules `le plus célèbre` et `la plus célèbre` sont interdites |
+| `juste avant`, `juste après` | adverbe de position, pas de justice. Servi cinq fois sur `HG-CM1-01` (*"Quelle grande période vient juste après..."*) |
+| `les plus âgés` | age, mesurable (`HG-CM1-08`) |
+
+### 5. Ce que j'ai mesure avant d'ecrire cette regle
+
+**Methode** : les quatre paquets YAML d'histoire-geographie CM1 lus hors du depot, items filtres sur
+`ligneDeReferentiel` dans {`HG-CM1-05`, `HG-CM1-06`, `HG-CM1-07`, `HG-CM1-08`}, quatre champs par
+item (`enonce`, `bonneReponse`, distracteurs, `indice`), textes passes en minuscules et accents
+replies, liste A cherchee en sous-chaine et liste B avec limite de mot.
+
+- **Sur le perimetre de la regle (lignes 5 a 8) : zero item touche.** La regle ne rougit rien
+  aujourd'hui, et n'est donc opposable qu'au contenu a venir.
+- **Sur les quatre paquets entiers, toutes lignes confondues : deux touches**, tous deux
+  `le plus grand nombre`, sur `HG-CM1-11` et `HG-CM1-12`. **C'est cette mesure qui a produit
+  l'exception de la section 3.1** - je ne l'avais pas prevue en ecrivant la liste, je l'ai trouvee
+  en la passant sur le contenu reel. Je l'ecris parce qu'une regle dont on ne dit pas ce qu'elle a
+  failli casser n'est pas verifiable par un tiers.
+
+### 6. Deux exigences sur l'implementation, et ce qu'elles evitent
+
+1. **Le test doit prouver qu'il mord.** Une liste de motifs qu'aucun contenu ne declenche est
+   indistinguable d'un test vide - c'est le defaut meme que ce bloc repare. L'implementation porte
+   un cas qui applique la regle a une chaine fabriquee et exige qu'elle soit refusee, sur la phrase
+   exacte de ma reserve : ***"Parmi ces quatre rois, lequel fut le plus grand roi ?"***. Sans ce
+   cas, le remplacement d'un faux vert par un autre est possible.
+2. **La Javadoc du test dit ce que le test mord, et rien de plus.** La methode existante garde son
+   utilite (la bonne reponse est un des quatre rois) mais **cesse de citer `BIA-5`** : cette
+   assertion-la sert le libelle de `HG-CM1-05`, pas l'absence de jugement de valeur. `BIA-5`
+   n'est citee que par la methode qui applique les listes A et B, et sa Javadoc dit **qu'elle ne
+   couvre que les formes enumerees et que le jugement de sens reste a `nadia-prof`**.
+
+### 7. Ce que je reste seule a garder, meme regle implementee
+
+- **Un jugement de valeur ecrit sans aucun des motifs enumeres.** La liste est fermee par
+  construction ; la langue ne l'est pas.
+- **L'exactitude de ce que la regle laisse passer** : *"le plus tard"* est autorise parce qu'il est
+  chronologique, et il reste faux si les dates le sont.
+- **`BIA-5` sur les trois autres lignes de sa portee** (`HG-CM1-06` a `HG-CM1-08`) : la regle y sera
+  active, mais elle n'y sera pas plus complete qu'ici.
+
+**Destinataire** : `camille-po`, pour en faire une story. Je n'ecris ni le test ni le code, et je
+n'ai touche aucun fichier sous `adapters/`.
