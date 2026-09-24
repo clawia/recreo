@@ -15006,9 +15006,13 @@ vivier (tarif 1,0), coherent avec sa double casquette de Scrum Master et de troi
     collection entiere (`V3`).
   - Etant donne le paquet livre, quand on le relit dans son entier, alors plusieurs caracteres
     observables distincts sont mobilises d'un item a l'autre, pas un seul caractere repete.
-  - Etant donne un item, quand il porte sur la diversite des especes d'un milieu, alors il decrit ce
-    milieu et les especes qui l'occupent sans jamais contredire ce que `QLM-CP-01` et `QLM-CP-02`
-    enseignent deja sur la distinction du vivant (`CYC-1`).
+  - Etant donne un item, quand il porte sur la diversite des especes d'un milieu, alors les trois
+    etres vivants sont poses dans la question elle-meme, sur le patron deja employe sans defaut par
+    les items 3 et 6 du meme paquet (par exemple "A, B et C : lequel de ces trois etres vivants ne
+    vit pas dans [milieu] ?"), jamais une phrase declarative qui affirme comme un fait ce que la
+    question demande ensuite de nier (par exemple "Dans [milieu] vivent A, B et C : lequel..."),
+    sans jamais contredire ce que `QLM-CP-01` et `QLM-CP-02` enseignent deja sur la distinction du
+    vivant (`CYC-1`).
   - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
     exactement une fois, avec des distracteurs qui sont d'autres etres vivants reels partageant un
     caractere different, jamais des elements sans rapport avec le vivant.

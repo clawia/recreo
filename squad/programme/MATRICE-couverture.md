@@ -1496,6 +1496,17 @@ ligne "questionner le monde / CM1".
 | questionner le monde | CP | Se situer dans le temps | Comparer des modes de vie d'autrefois et d'aujourd'hui à partir d'objets et d'images du quotidien. | - | - | non couvert |
 | questionner le monde | CP | Explorer les organisations du monde | Comparer des modes de vie ici et ailleurs (habitat, alimentation, école, déplacements). | - | - | non couvert - ligne signalee comme la plus a risque de biais du lot ; `BIA-1` et `BIA-2` (section 7.4 de l'arbitrage) sont opposables a tout paquet qui la sert. |
 
+**Note du 2026-09-24 (s41, `camille-po`) - question ouverte, non routee, statut inchange.**
+`nadia-prof` (instance B) signale un ecart entre son propre referentiel `SEM-1` (2026-08-31, qui
+autorise "mois et leur ordre, saisons" dans le paquet de mathematiques `cp-semaine`) et la ligne
+`QLM-CP-13` ci-dessus (ligne 1494), que le referentiel de questionner le monde reserve aux mois et
+aux saisons. Quatre items de `cp-semaine` travaillent donc la meme competence que celle comptee sur
+`QLM-CP-13` - question de double-compte entre deux paquets de matieres differentes, pas de defaut de
+contenu sur l'un ou l'autre. Constat integral, cite en entier :
+`squad/conformite/FICHE-bandit-manchot-saisons-cp.md`, section "Correction d'un de mes propres
+constats, avant de m'en servir". Non bloquant pour le Done pedagogique de `S41-QLM-SAISONS`, non
+tranche ici.
+
 **Bilan, corrige le 2026-09-06 (`camille-po`, s29) - deux lignes de plus ferment** : 16 lignes,
 10 `non couvert`, 5 `couvert-valide` (`QLM-CP-01`, `QLM-CP-02`, `QLM-CP-03`, `QLM-CP-05`,
 `QLM-CP-07`), 1 `non couvrable en l'etat`. 15 lignes entrent au denominateur atteignable
