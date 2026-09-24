@@ -8,12 +8,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -51,7 +53,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  *   <li>annoncer un <b>compte courant</b> que la table dement - clause 5 ;</li>
  *   <li>allouer ici un nom qu'<b>ADR-0081 alloue deja</b> comme code de ligne de referentiel -
  *       clause 6, ajoutee le 2026-09-08 par ADR-0088. C'est la collision du 2026-09-03 a
- *       l'echelle de deux espaces de noms au lieu de deux instances.</li>
+ *       l'echelle de deux espaces de noms au lieu de deux instances ;</li>
+ *   <li>ecrire un dixieme jeton dont le <b>marqueur de reserve n'est pas dans son dernier
+ *       segment</b> - clauses 7 et 8, ajoutees le 2026-09-24 par ADR-0100. Le marqueur en tete
+ *       donnait un silence, le marqueur au milieu un faux rouge ; les deux sont la meme convention
+ *       violee, et les deux sont desormais comptees et gelees.</li>
  * </ol>
  *
  * <p><b>Ce qu'il ne juge pas, et c'est la moitie de ce qu'il faut savoir.</b> Il ne verifie pas
@@ -98,6 +104,14 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
     private static final String REGISTRE = "squad/decisions/REGISTRE-identifiants.md";
 
     /**
+     * Un segment qui porte le marqueur de reserve et son numero, vu <b>suivi d'un autre segment</b>
+     * - la place ou aucun identifiant de condition ne met son marqueur (ADR-0100). Ecrit une fois
+     * et lu par trois motifs : la place du marqueur est la propriete, et trois copies d'une meme
+     * propriete divergeraient.
+     */
+    private static final String SEGMENT_DE_MARQUEUR = "R[0-9]{1,2}-";
+
+    /**
      * La forme d'un identifiant de condition : un prefixe de deux a cinq lettres majuscules, un
      * {@code R} facultatif qui distingue une reserve d'une condition, un numero d'un ou deux
      * chiffres. Les bornes interdisent qu'il soit colle a un mot, a un chiffre ou a un tiret : c'est
@@ -137,10 +151,95 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
      * referentiel. La population en faute de la clause 2 sur cette forme est donc vide aujourd'hui,
      * et c'est un cliquet a plafond zero, pas une regle a population vide : le balayage examine bien
      * 209 objets et il en trouve zero en faute (ADR-0051, ADR-0067).</p>
+     *
+     * <p><b>Le segment intermediaire est un niveau, et un niveau ne porte jamais le marqueur de
+     * reserve</b> (ADR-0100, clause 8, le 2026-09-24). Sans cette borne, ce motif lisait
+     * {@code <PREFIXE>-R<n>-<m>} comme un identifiant a trois segments - la notation d'<b>intervalle
+     * collee</b> par laquelle {@code review.md} de s42 designe les reserves {@code HG-R23} a
+     * {@code HG-R25} et {@code MOB-R1} a {@code MOB-R4}. <b>Ce n'etait pas un identifiant, et le
+     * garde-fou en exigeait l'allocation : il a rougi sur {@code round-two} tout le temps qu'a dure
+     * s42 apres le commit de la review.</b> Aucun des 689 identifiants alloues n'a un segment
+     * intermediaire de cette forme - les niveaux servis s'ecrivent {@code CP}, {@code CE1},
+     * {@code CM1} - donc la borne ne retranche aucun objet reel de la clause 2. Ce que la clause 2
+     * cesse de lire, le cliquet d'ADR-0100 le compte : la notation n'est pas exemptee, elle change
+     * de juge.</p>
      */
     private static final Pattern IDENTIFIANT_A_TROIS_SEGMENTS = Pattern.compile(
-            "(?<![A-Za-z0-9_/-])([A-Z]{2,5})-([A-Z]{1,3}[0-9]{0,2})-(R?[0-9]{1,2})"
-                    + "(?![A-Za-z0-9_-])");
+            "(?<![A-Za-z0-9_/-])([A-Z]{2,5})-(?!" + SEGMENT_DE_MARQUEUR + ")([A-Z]{1,3}[0-9]{0,2})"
+                    + "-(R?[0-9]{1,2})(?![A-Za-z0-9_-])");
+
+    /**
+     * <b>La forme qu'aucun identifiant de condition ne prend : le marqueur de reserve en tete</b>
+     * (ADR-0100, clause 7).
+     *
+     * <p><b>Le fait, du 2026-09-24 (s42).</b> Les deux verdicts de l'instance B de {@code
+     * nadia-prof} ont ouvert leurs reserves sous la forme {@code R-<MATIERE>-<NIVEAU>-<ligne>-<n>},
+     * cinq segments et le {@code R} en <b>premier</b> segment. Ni {@link #IDENTIFIANT} ni {@link
+     * #IDENTIFIANT_A_TROIS_SEGMENTS} n'en lisent une seule, pour deux raisons independantes : le
+     * premier segment {@code R} est en dessous du plancher {@code [A-Z]{2,5}}, et les lookarounds
+     * des deux motifs refusent un tiret de part et d'autre, donc aucun sous-segment n'y est lu non
+     * plus. <b>Ces jetons n'etaient donc pas non alloues : ils n'etaient pas examines du tout</b> -
+     * le faux vert exact que {@code PAR-5} existe pour tuer, et le meme trou que la clause D
+     * d'ADR-0088 a ferme pour trois segments. Les sept jetons de l'instance A du meme jour
+     * ({@code HG-R23} a {@code HG-R25}, {@code MOB-R1} a {@code MOB-R4}) portent le marqueur dans
+     * leur segment de numero, la forme que le registre alloue depuis toujours : ils ont rougi, et
+     * ils ont ete alloues.
+     *
+     * <p><b>Ce motif ne rend pas cette forme allouable, et c'est la decision.</b> {@link
+     * #FORME_ALLOUABLE} ne l'accueille pas : le registre ne sait pas ecrire une ligne pour un tel
+     * jeton, donc la seule sortie verte pour une reserve neuve reste la forme conforme. Ce motif
+     * sert a <b>compter</b> la dette existante et a la geler, sur le precedent d'ADR-0067 : on
+     * arrete une dette avant de la corriger, et la corriger appartient a son auteur.
+     */
+    private static final Pattern MARQUEUR_DE_RESERVE_EN_TETE = Pattern.compile(
+            "(?<![A-Za-z0-9_/-])R(?:-[A-Z0-9]{1,4}){2,}(?![A-Za-z0-9_-])");
+
+    /**
+     * <b>La seconde place ou le marqueur de reserve n'a rien a faire : au milieu</b> (ADR-0100,
+     * clause 8).
+     *
+     * <p><b>Le fait, du 2026-09-24, et il est d'un autre auteur que le precedent.</b>
+     * {@code review.md} de s42 designe deux plages de reserves par une <b>notation d'intervalle
+     * collee</b>, {@code <PREFIXE>-R<premier>-<dernier>}. Ce n'est pas un identifiant, mais c'est
+     * ecrit exactement comme un identifiant a trois segments, et {@link
+     * #IDENTIFIANT_A_TROIS_SEGMENTS} en exigeait l'allocation : <b>la clause 2 a rougi sur
+     * {@code round-two} des le commit de cette review</b>, et le rouge a survecu a la cloture du
+     * sprint - reproduit sur {@code HEAD} sans aucune modification locale avant d'ecrire cette
+     * ligne. C'est le symetrique exact du defaut precedent : la meme convention violee, la meme
+     * classe de garde-fou, et un faux rouge la ou l'autre donnait un silence.
+     *
+     * <p><b>Pourquoi cette forme n'est pas rendue lisible a la clause 2, ni exemptee.</b> La rendre
+     * allouable ferait entrer une notation dans l'espace des identifiants ; l'exempter la rendrait
+     * invisible, c'est-a-dire la ramenerait au defaut de l'instance B. Elle est donc <b>retiree a
+     * la clause 2 et donnee au cliquet</b> : elle change de juge, elle ne disparait pas.
+     */
+    private static final Pattern MARQUEUR_DE_RESERVE_AU_MILIEU = Pattern.compile(
+            "(?<![A-Za-z0-9_/-])[A-Z]{2,5}-" + SEGMENT_DE_MARQUEUR
+                    + "(?:[A-Z0-9]{1,4}-)*[A-Z0-9]{1,4}(?![A-Za-z0-9_-])");
+
+    /**
+     * Le plafond du cliquet d'ADR-0100 : <b>9</b>, la taille exacte de la dette du 2026-09-24, les
+     * deux places confondues.
+     *
+     * <p><b>Methode du chiffre, dans le meme paragraphe.</b> Perimetre : les fichiers texte du
+     * depot que {@link #fichiersDuDepot(Path)} enumere - repertoires de sortie de build, arbres de
+     * contre-exemple et binaires exclus, ces derniers reconnus a l'octet nul (ADR-0036). Critere :
+     * {@link #MARQUEUR_DE_RESERVE_EN_TETE} et {@link #MARQUEUR_DE_RESERVE_AU_MILIEU}. Resultat,
+     * arbre du 2026-09-24 <b>avant ce diff</b> : <b>7 jetons en tete</b> (23 occurrences, 5 fichiers -
+     * {@code R-EMC-CM1-05-1} a {@code -4} et {@code R-MAT-CP-10-1} a {@code -3}) et <b>2 jetons au
+     * milieu</b> (2 occurrences, 1 fichier - les deux notations d'intervalle de {@code review.md}),
+     * soit <b>9</b>. La mention {@code R-MAT-CP-10-1 bis} n'est pas un jeton de plus : l'espace
+     * ferme la chaine, et {@code bis} qualifie le jeton qui precede.
+     *
+     * <p><b>Ce que ce nombre garde.</b> Il vaut exactement la dette, il n'y a pas une place de
+     * libre (ADR-0013, amendement du 2026-08-15) : un dixieme jeton, sous l'une ou l'autre place,
+     * ecrit n'importe ou dans le depot, fait rougir la CI. Le descendre demande un diff aussi
+     * visible que le monter. <b>Il ne descendra pas a zero par le seul renommage</b> : six des neuf
+     * jetons sont cites par {@code review.md} et {@code retro.md} de s42, fichiers de ceremonie
+     * close que rien ne modifie plus (squad/README.md, section 2). Le plancher atteignable est
+     * celui que portent ces deux fichiers-la, et c'est a la cloture du renommage qu'il se mesure.
+     */
+    private static final int PLAFOND_DE_JETONS_A_MARQUEUR_DEPLACE = 9;
 
     /** Les deux prefixes qu'ADR-0066 alloue deja, sur les noms de fichiers de squad/decisions/. */
     private static final Set<String> PREFIXES_DE_DECISION = Set.of("ADR", "DEC");
@@ -151,9 +250,15 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
      * ADR-0088 clause D - sans lui, un identifiant a trois segments n'aurait pas pu etre alloue,
      * donc n'aurait eu aucune sortie verte, et le garde-fou aurait interdit une forme au lieu de la
      * gouverner.
+     *
+     * <p><b>La meme borne de niveau que {@link #IDENTIFIANT_A_TROIS_SEGMENTS}</b> (ADR-0100, clause
+     * 8) : sans elle, une notation d'intervalle collee comme celle de {@code review.md} de s42
+     * etait <b>allouable</b>, et la facon la moins couteuse d'eteindre le rouge qu'elle causait
+     * aurait ete de lui ajouter une ligne de registre - c'est-a-dire de faire entrer une notation
+     * dans l'espace des identifiants.
      */
     private static final String FORME_ALLOUABLE =
-            "[A-Z]{2,5}(?:-[A-Z]{1,3}[0-9]{0,2})?-R?[0-9]{1,2}";
+            "[A-Z]{2,5}(?:-(?!" + SEGMENT_DE_MARQUEUR + ")[A-Z]{1,3}[0-9]{0,2})?-R?[0-9]{1,2}";
 
     /** Une ligne d'allocation du registre : un identifiant, un chemin de document. */
     private static final Pattern ALLOCATION = Pattern.compile(
@@ -296,6 +401,19 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
      * plutot que d'en inventer une seconde.
      */
     private static Map<String, Set<String>> identifiantsDesContreExemples(Path racine) {
+        return desContreExemples(racine,
+                ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest::identifiantsDe);
+    }
+
+    /**
+     * La meme derivation, appliquee a ce que la lecture passee en argument trouve. Les deux familles
+     * de jetons - ceux de la clause 2 et ceux du cliquet d'ADR-0100 - partagent cette autorisation
+     * sans partager leur lecture : un jeton a marqueur en tete ne doit pas entrer dans les citations
+     * de la clause 2, qui exigerait alors son allocation sous une forme que le registre ne sait pas
+     * ecrire.
+     */
+    private static Map<String, Set<String>> desContreExemples(
+            Path racine, Function<String, Collection<String>> lecture) {
         Map<String, Set<String>> parTest = new LinkedHashMap<>();
         try (Stream<Path> arborescence = Files.walk(racine)) {
             List<Path> arbres = arborescence
@@ -313,7 +431,7 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                         if (texte == null) {
                             continue;
                         }
-                        identifiants.addAll(identifiantsDe(texte));
+                        identifiants.addAll(lecture.apply(texte));
                     }
                 }
             }
@@ -321,6 +439,47 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
             throw new UncheckedIOException(echec);
         }
         return parTest;
+    }
+
+    /**
+     * Les jetons distincts qui portent leur marqueur de reserve en tete, sur le meme perimetre de
+     * fichiers que le balayage des identifiants - ADR-0100, clause 7. La lecture du perimetre n'est
+     * pas dupliquee : un second avis sur ce qu'est un fichier du depot divergerait du premier.
+     */
+    static Set<String> jetonsAMarqueurDeReserveDeplace(Path racine) {
+        Map<String, Set<String>> parContreExemple = desContreExemples(
+                racine, ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest::jetonsDe);
+        Set<String> jetons = new TreeSet<>();
+        for (Path fichier : fichiersDuDepot(racine)) {
+            String contenu = lireSiTexte(fichier);
+            if (contenu == null) {
+                continue;
+            }
+            String nomDuFichier = fichier.getFileName().toString();
+            Set<String> permis = nomDuFichier.endsWith(".java")
+                    ? parContreExemple.getOrDefault(
+                            nomDuFichier.substring(0, nomDuFichier.length() - ".java".length()),
+                            Set.of())
+                    : Set.of();
+            for (String jeton : jetonsDe(contenu)) {
+                if (!permis.contains(jeton)) {
+                    jetons.add(jeton);
+                }
+            }
+        }
+        return jetons;
+    }
+
+    /** Les jetons dont le marqueur de reserve n'est pas a sa place, les deux places confondues. */
+    private static Collection<String> jetonsDe(String contenu) {
+        List<String> trouves = new ArrayList<>();
+        for (Pattern motif : List.of(MARQUEUR_DE_RESERVE_EN_TETE, MARQUEUR_DE_RESERVE_AU_MILIEU)) {
+            Matcher trouve = motif.matcher(contenu);
+            while (trouve.find()) {
+                trouves.add(trouve.group());
+            }
+        }
+        return trouves;
     }
 
     /** Les allocations du registre, dans l'ordre du fichier, doublons compris - c'est la clause 1. */
@@ -576,6 +735,11 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                         + " identifiant de condition portant un segment de niveau s'ecrivant"
                         + " exactement comme ce code de ligne-ci")
                 .isTrue();
+        assertThat(IDENTIFIANT_A_TROIS_SEGMENTS.matcher("HG-R23-25 MOB-R1-4").find())
+                .as("ADR-0100 clause 8 : une notation d'intervalle collee n'est pas un identifiant a"
+                        + " trois segments. Son segment intermediaire porte le marqueur de reserve,"
+                        + " la ou un identifiant porte un niveau - c'est le faux rouge reel de s42")
+                .isFalse();
         assertThat(IDENTIFIANT_A_TROIS_SEGMENTS.matcher("S15-RETRO-1 S26-DETTE-2").find())
                 .as("un code de story reste ecarte par sa forme, sous les deux motifs")
                 .isFalse();
@@ -656,6 +820,84 @@ class ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest {
                 .anySatisfy(defaut -> assertThat(defaut)
                         .contains("ARBITRAGE-fautif.md")
                         .contains("ecrit l'identifiant ZZZ-CP-3"));
+    }
+
+    /**
+     * <b>ADR-0100 : le cliquet exact sur les jetons dont le marqueur de reserve n'est pas a sa
+     * place.</b>
+     *
+     * <p>Ce test ne juge pas une forme imaginee : il compte, sur l'arbre reel, les jetons de deux
+     * formes que la clause 2 ne lit pas, et il refuse le dixieme. C'est la morsure qui manquait le
+     * 2026-09-24, ou sept jetons ont traverse un sprint entier sans qu'un seul rouge ne les nomme -
+     * trouves a la main a la cloture, par deux agents separement, et pas par la CI.
+     *
+     * <p><b>Le renommage n'est pas ici, et c'est voulu.</b> Les jetons appartiennent a des fiches
+     * de conformite et a des fichiers de ceremonie que d'autres agents signent ; ce fichier gele
+     * leur nombre, il ne reecrit rien.
+     */
+    @Test
+    void aucunJetonNeDeplaceSonMarqueurDeReserveAuDelaDeLaDetteGelee() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        assertThat(jetonsAMarqueurDeReserveDeplace(racine))
+                .as("ADR-0100 : un identifiant de condition porte son marqueur de reserve dans son"
+                        + " dernier segment, jamais en tete ni au milieu. La dette du 2026-09-24 est"
+                        + " gelee a sa taille exacte ; un jeton de plus se decide dans ce fichier de"
+                        + " test, jamais dans une fiche ni dans un rapport seul")
+                .hasSize(PLAFOND_DE_JETONS_A_MARQUEUR_DEPLACE);
+    }
+
+    /**
+     * <b>Pourquoi ces jetons echappaient, constate et non affirme - les deux places.</b> Un jeton a
+     * marqueur en tete n'est lu par aucun motif de la clause 2 et n'est pas allouable : il n'avait
+     * ni rouge, ni sortie verte, ni existence. Un jeton a marqueur au milieu etait, lui, lu <b>et
+     * allouable</b> : il donnait un faux rouge, que la ligne de registre la moins couteuse aurait
+     * eteint en faisant entrer une notation dans l'espace des identifiants. La forme conforme reste
+     * lue et allouable dans les deux cas. Le jour ou quelqu'un elargit {@link #FORME_ALLOUABLE}
+     * pour accueillir l'une des deux formes deviantes, ce test tombe.
+     */
+    @Test
+    void unMarqueurDeplaceNEstNiLuNiAllouableAlorsQueLaFormeConformeLEst() {
+        for (String deviant : List.of("R-EMC-CM1-05-1", "HG-R23-25", "MOB-R1-4")) {
+            assertThat(identifiantsDe(deviant))
+                    .as("aucun motif de la clause 2 ne lit %s : le marqueur n'y est pas a sa place,"
+                            + " et un jeton dont le marqueur n'est pas a sa place n'est pas un"
+                            + " identifiant", deviant)
+                    .isEmpty();
+            assertThat(deviant.matches(FORME_ALLOUABLE))
+                    .as("le registre ne sait pas ecrire une ligne pour %s : il n'a aucune sortie"
+                            + " verte, et c'est ce qui en fait un renommage plutot qu'une"
+                            + " allocation", deviant)
+                    .isFalse();
+            assertThat(jetonsDe(deviant))
+                    .as("ADR-0100 : %s est desormais compte, donc gele - il change de juge, il ne"
+                            + " disparait pas", deviant)
+                    .containsExactly(deviant);
+        }
+        assertThat(identifiantsDe("ZZZ-CP-R1 HG-R23 MOB-R1 ADD-CE1-R1"))
+                .as("la forme conforme, marqueur dans le dernier segment, reste lue par la clause"
+                        + " 2 - a deux comme a trois segments. Les trois derniers sont des jetons"
+                        + " reels du 2026-09-24 et de s38, pas des fixtures de ma main")
+                .containsExactlyInAnyOrder("HG-R23", "MOB-R1", "ZZZ-CP-R1", "ADD-CE1-R1");
+        assertThat("ZZZ-CP-R1".matches(FORME_ALLOUABLE))
+                .as("et elle est allouable, donc elle a une sortie verte")
+                .isTrue();
+        assertThat(jetonsDe("ZZZ-CP-R1 HG-R23 ADD-CE1-R1"))
+                .as("le cliquet ne compte aucune forme conforme, sans quoi son plafond ne"
+                        + " mesurerait pas la dette")
+                .isEmpty();
+    }
+
+    /**
+     * ADR-0013 obligation 3 : la morsure sur un arbre de contre-exemple. Le depot fautif porte une
+     * fiche qui ouvre une reserve sous chacune des deux formes deviantes ; le compteur du cliquet
+     * doit voir les deux. Sans ce constat, un plafond de neuf pourrait etre tenu par un compteur
+     * qui ne lit rien du tout.
+     */
+    @Test
+    void lesDeuxFormesAMarqueurDeplaceSontVuesDansUnDepotFautif() {
+        assertThat(jetonsAMarqueurDeReserveDeplace(CONTRE_EXEMPLE.resolve("depot-fautif")))
+                .as("ADR-0100 : le compteur lit les deux places la ou elles sont ecrites")
+                .containsExactly("R-ZZZ-CP-01-1", "ZZZ-R9-9");
     }
 
     /**
