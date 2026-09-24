@@ -49,8 +49,12 @@ class PaquetCpSemaineTest {
 
     private static final String PAQUET = "cp-semaine";
 
-    /** Le compte est garde exactement, comme sur tous les paquets de ce depot. SEM-9 en exige vingt. */
-    private static final int NOMBRE_D_ITEMS_ATTENDU = 23;
+    /**
+     * Le compte est garde exactement, comme sur tous les paquets de ce depot. SEM-9 en exige vingt.
+     * DEC-0096 (2026-09-24) retire onze items mois/saisons hors du perimetre amende de SEM-1 et huit
+     * items neufs les remplacent : vingt-trois items deviennent vingt.
+     */
+    private static final int NOMBRE_D_ITEMS_ATTENDU = 20;
 
     private static final int SEM_9_ITEMS_MINIMUM = 20;
 
@@ -106,7 +110,7 @@ class PaquetCpSemaineTest {
     }
 
     @Test
-    void lePaquetCompteExactementVingtTroisItems() {
+    void lePaquetCompteExactementVingtItems() {
         List<Question> items = tousLesItems(paquet());
         assertThat(items)
                 .as("SEM-9 : au moins %d items, et le compte est garde exactement a %d",

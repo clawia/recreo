@@ -33,11 +33,13 @@ lignesDeReferentiel: ["MAT-CP-09"]
 # plutot que de trancher. Aucun item de ce paquet n'en porte, donc la question n'est pas posee ici -
 # ce n'est pas un arbitrage rendu, c'est un perimetre qui n'y va pas.
 #
-# SEM-1 : moments de la journee, jours de la semaine et leur ordre, mois et leur ordre, saisons.
-# Rien d'autre. SEM-5 : les propositions d'un item sont toujours de la meme categorie que la bonne
-# reponse. SEM-6 : dix items sur vingt-trois demandent ce qui vient JUSTE avant ou JUSTE apres,
-# contre huit exiges par le tiers - la marge est de deux items, et elle est voulue : un paquet
-# exactement a la borne ne survit pas au retrait d'un seul item.
+# SEM-1, amendee par nadia-prof le 2026-09-24 (commit d3216c84) : moments de la journee (matin,
+# midi, apres-midi, soir, nuit), jours de la semaine et leur ordre. Rien d'autre - les mois et les
+# saisons sortent du perimetre (recouvrement avec QLM-CP-13, DEC-0096) : onze items en sont retires
+# et huit items neufs les remplacent, dans ce perimetre corrige.
+# SEM-5 : les propositions d'un item sont toujours de la meme categorie que la bonne reponse.
+# SEM-6 : onze items sur vingt demandent ce qui vient JUSTE avant ou JUSTE apres, contre sept
+# exiges par le tiers - la marge est de quatre items.
 # SEM-7 : aucune situation ne suppose une configuration familiale, un rythme scolaire, un depart en
 # vacances, une fete religieuse ni un pays ; le mercredi et le samedi ne portent aucune activite.
 #
@@ -60,26 +62,6 @@ items:
     bonneReponse: "mercredi"
     distracteurs: ["vendredi", "mardi"]
     indice: "Récite les jours de la semaine."
-  - enonce: "Quel mois vient juste après mars ?"
-    bonneReponse: "avril"
-    distracteurs: ["février", "mai"]
-    indice: "Récite les douze mois dans l'ordre."
-  - enonce: "Quel mois vient juste avant janvier ?"
-    bonneReponse: "décembre"
-    distracteurs: ["novembre", "février"]
-    indice: "Récite les douze mois dans l'ordre."
-  - enonce: "Quel mois vient juste après juillet ?"
-    bonneReponse: "août"
-    distracteurs: ["juin", "octobre"]
-    indice: "Récite les douze mois dans l'ordre."
-  - enonce: "Quelle saison vient juste après le printemps ?"
-    bonneReponse: "l'été"
-    distracteurs: ["l'automne", "l'hiver"]
-    indice: "Pense au tour des quatre saisons."
-  - enonce: "Quelle saison vient juste avant le printemps ?"
-    bonneReponse: "l'hiver"
-    distracteurs: ["l'été", "l'automne"]
-    indice: "Pense au tour des quatre saisons."
   - enonce: "Quel moment vient juste après le matin ?"
     bonneReponse: "le midi"
     distracteurs: ["le soir", "la nuit"]
@@ -100,30 +82,6 @@ items:
     bonneReponse: "samedi"
     distracteurs: ["jeudi", "lundi"]
     indice: "Récite les jours de la semaine."
-  - enonce: "Quel est le premier mois de l'année ?"
-    bonneReponse: "janvier"
-    distracteurs: ["décembre", "juin"]
-    indice: "Récite les douze mois dans l'ordre."
-  - enonce: "Quel est le dernier mois de l'année ?"
-    bonneReponse: "décembre"
-    distracteurs: ["novembre", "janvier"]
-    indice: "Récite les douze mois dans l'ordre."
-  - enonce: "Quel mois vient entre avril et juin ?"
-    bonneReponse: "mai"
-    distracteurs: ["mars", "juillet"]
-    indice: "Récite les douze mois dans l'ordre."
-  - enonce: "Quel mois vient entre janvier et mars ?"
-    bonneReponse: "février"
-    distracteurs: ["avril", "décembre"]
-    indice: "Récite les douze mois dans l'ordre."
-  - enonce: "Pendant quelle saison les feuilles tombent ?"
-    bonneReponse: "l'automne"
-    distracteurs: ["le printemps", "l'été"]
-    indice: "Pense au tour des quatre saisons."
-  - enonce: "Pendant quelle saison les fleurs poussent ?"
-    bonneReponse: "le printemps"
-    distracteurs: ["l'automne", "l'hiver"]
-    indice: "Pense au tour des quatre saisons."
   - enonce: "Le soleil se lève à quel moment ?"
     bonneReponse: "le matin"
     distracteurs: ["le soir", "la nuit"]
@@ -133,6 +91,38 @@ items:
     distracteurs: ["le matin", "le midi"]
     indice: "Pense au fil de la journée."
   - enonce: "Quand fait-il tout noir dehors ?"
+    bonneReponse: "la nuit"
+    distracteurs: ["le matin", "le midi"]
+    indice: "Pense au fil de la journée."
+  - enonce: "Quel jour vient juste après lundi ?"
+    bonneReponse: "mardi"
+    distracteurs: ["dimanche", "mercredi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient juste avant mercredi ?"
+    bonneReponse: "mardi"
+    distracteurs: ["jeudi", "lundi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient entre lundi et mercredi ?"
+    bonneReponse: "mardi"
+    distracteurs: ["jeudi", "dimanche"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel jour vient entre samedi et lundi ?"
+    bonneReponse: "dimanche"
+    distracteurs: ["mardi", "vendredi"]
+    indice: "Récite les jours de la semaine."
+  - enonce: "Quel moment vient juste après le midi ?"
+    bonneReponse: "l'après-midi"
+    distracteurs: ["le matin", "la nuit"]
+    indice: "Pense au fil de la journée."
+  - enonce: "Quel moment vient juste avant le soir ?"
+    bonneReponse: "l'après-midi"
+    distracteurs: ["le matin", "la nuit"]
+    indice: "Pense au fil de la journée."
+  - enonce: "Quel moment vient juste avant le matin ?"
+    bonneReponse: "la nuit"
+    distracteurs: ["le midi", "le soir"]
+    indice: "Pense au fil de la journée."
+  - enonce: "Quel moment vient juste après le soir ?"
     bonneReponse: "la nuit"
     distracteurs: ["le matin", "le midi"]
     indice: "Pense au fil de la journée."

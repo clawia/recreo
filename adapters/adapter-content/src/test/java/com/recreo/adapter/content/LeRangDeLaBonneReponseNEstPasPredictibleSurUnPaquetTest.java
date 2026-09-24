@@ -435,14 +435,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " jardiniers\", \"la troupe\"), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-08-31 sur le paquet servi :"
                     + " aucune des 60 propositions ne commence par un chiffre"),
-            // S25-SEM : entree neuve, se reperer dans la journee et la semaine, CP.
+            // S25-SEM : entree neuve, se reperer dans la journee et la semaine, CP. DEC-0096
+            // (2026-09-24) retire onze items mois/saisons hors du perimetre amende de SEM-1 ;
+            // huit items neufs les remplacent.
             Map.entry("cp-semaine",
-            "23 items sur 23 portent deux distracteurs (trois propositions), mais aucune des 69"
-                    + " propositions n'est numerique : ce sont des noms de jours, de mois, de"
-                    + " saisons et de moments de la journee (\"mercredi\", \"decembre\","
-                    + " \"l'hiver\", \"le matin\"), valeurDe rend null sur les trois"
-                    + " propositions de chaque item. Mesure du 2026-08-31 sur le paquet servi :"
-                    + " aucune des 69 propositions ne commence par un chiffre"),
+            "20 items sur 20 portent deux distracteurs (trois propositions), mais aucune des 60"
+                    + " propositions n'est numerique : ce sont des noms de jours et de moments de"
+                    + " la journee (\"mercredi\", \"vendredi\", \"le matin\", \"l'apres-midi\"),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-24 sur le paquet servi : aucune des 60 propositions ne commence"
+                    + " par un chiffre"),
             // S26-L1 : entree neuve, localiser une syllabe dans un mot par la voix d'un adulte, CP.
             Map.entry("cp-position-syllabe",
             "18 items sur 18 portent deux distracteurs (trois propositions), mais aucune des 54"
