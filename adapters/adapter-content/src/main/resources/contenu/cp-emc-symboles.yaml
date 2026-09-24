@@ -75,11 +75,11 @@ items:
     indice: "On regarde souvent un feu d'artifice ce soir-là."
   - enonce: "Que représente le drapeau français ?"
     bonneReponse: "le pays"
-    distracteurs: ["la République", "l'hymne de la France"]
+    distracteurs: ["l'hymne de la France", "un grand jour de fête pour la France"]
     indice: "Il rassemble tous les habitants du pays."
   - enonce: "Que représente Marianne ?"
     bonneReponse: "la République"
-    distracteurs: ["le pays", "un grand jour de fête pour la France"]
+    distracteurs: ["l'hymne de la France", "un grand jour de fête pour la France"]
     indice: "Elle est le visage que l'on donne à la République."
   - enonce: "Que représente la Marseillaise ?"
     bonneReponse: "l'hymne de la France"
