@@ -1,0 +1,101 @@
+schema: 1
+id: cp-qlm-saisons
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Se situer dans le temps"
+  competence: "Nommer et ordonner les mois de l'année et les saisons."
+lignesDeReferentiel: ["QLM-CP-13"]
+#
+# S41-QLM-SAISONS (docs/backlog/backlog.md, sprint 41). Arbitrage prealable deja rendu, aucun
+# arbitrage neuf a router (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-
+# a-huit-lignes.md, ligne 368) : "rentable. FER-1 sur les deux moities, pas sur les douze mois. FER-3
+# : nommer, et ordonner ('quel mois vient apres... ?')." Referentiel copie conforme depuis
+# squad/programme/questionner-le-monde/competences-cp.md (QLM-CP-13).
+#
+# Cette ligne ne porte aucun recouvrement avec cp-semaine (mathematiques CP, MAT-CP-09, jours de la
+# semaine) ni avec la journee (mathematiques CP) : voir "Recouvrements a ne pas double-compter",
+# squad/programme/questionner-le-monde/competences-cp.md. Aucun item de ce paquet ne demande l'ordre
+# des jours de la semaine ni de la journee.
+#
+# FER-1 : deux moities distinctes, chacune sur des items propres, sans exigence de couvrir les douze
+# mois individuellement :
+#   - nommer (items 1 a 8) : l'item demande le nom d'un mois ou d'une saison a partir d'une
+#     description ou d'une position ;
+#   - ordonner (items 9 a 16) : l'item demande une relation d'ordre entre deux ou trois mois ou
+#     saisons nommes (avant, apres, premier, dernier, juste avant, juste apres), jamais uniquement
+#     leur nom.
+#
+# FER-2 : seize items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# Les propositions sont des noms de mois et de saisons, hors du domaine numerique
+# (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest, PAQUETS_HORS_DU_DOMAINE_NUMERIQUE).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "Quel mois vient après le mois de juin ?"
+    bonneReponse: "juillet"
+    distracteurs: ["mai", "août"]
+    indice: "Juin est le sixième mois de l'année."
+  - enonce: "Quel mois vient après le mois de septembre ?"
+    bonneReponse: "octobre"
+    distracteurs: ["août", "novembre"]
+    indice: "Septembre est le neuvième mois de l'année."
+  - enonce: "Quel est le premier mois de l'année ?"
+    bonneReponse: "janvier"
+    distracteurs: ["décembre", "février"]
+    indice: "L'année commence toujours par ce mois."
+  - enonce: "Quel est le dernier mois de l'année ?"
+    bonneReponse: "décembre"
+    distracteurs: ["novembre", "janvier"]
+    indice: "L'année se termine toujours par ce mois."
+  - enonce: "Quelle saison vient après l'hiver ?"
+    bonneReponse: "le printemps"
+    distracteurs: ["l'été", "l'automne"]
+    indice: "Après le froid de l'hiver, les températures remontent doucement."
+  - enonce: "Quelle saison vient après l'été ?"
+    bonneReponse: "l'automne"
+    distracteurs: ["l'hiver", "le printemps"]
+    indice: "Après les grandes chaleurs de l'été, les feuilles commencent à tomber."
+  - enonce: "En quelle saison fait-il souvent le plus froid, avec parfois de la neige ?"
+    bonneReponse: "l'hiver"
+    distracteurs: ["l'été", "le printemps"]
+    indice: "C'est la saison la plus froide de l'année."
+  - enonce: "En quelle saison fait-il souvent le plus chaud ?"
+    bonneReponse: "l'été"
+    distracteurs: ["l'automne", "l'hiver"]
+    indice: "C'est la saison la plus chaude de l'année."
+  - enonce: "Le mois de mai vient-il avant ou après le mois d'avril ?"
+    bonneReponse: "après"
+    distracteurs: ["avant"]
+    indice: "Avril est le quatrième mois de l'année, mai le cinquième."
+  - enonce: "Le mois de mars vient-il avant ou après le mois de juin ?"
+    bonneReponse: "avant"
+    distracteurs: ["après"]
+    indice: "Mars est le troisième mois de l'année, juin le sixième."
+  - enonce: "Parmi ces trois mois, lequel vient juste avant le mois d'avril : mars, juin, septembre ?"
+    bonneReponse: "mars"
+    distracteurs: ["juin", "septembre"]
+    indice: "Avril est le quatrième mois de l'année."
+  - enonce: "Parmi ces trois mois, lequel vient juste après le mois d'avril : mai, mars, décembre ?"
+    bonneReponse: "mai"
+    distracteurs: ["mars", "décembre"]
+    indice: "Avril est le quatrième mois de l'année."
+  - enonce: "Parmi ces trois mois, lequel vient en premier dans l'année : mars, janvier, mai ?"
+    bonneReponse: "janvier"
+    distracteurs: ["mars", "mai"]
+    indice: "Range les trois mois dans l'ordre du calendrier."
+  - enonce: "Parmi ces trois mois, lequel vient en dernier dans l'année : octobre, décembre, août ?"
+    bonneReponse: "décembre"
+    distracteurs: ["octobre", "août"]
+    indice: "Range les trois mois dans l'ordre du calendrier."
+  - enonce: "Parmi ces trois saisons, laquelle vient juste après le printemps : l'hiver, l'été, l'automne ?"
+    bonneReponse: "l'été"
+    distracteurs: ["l'hiver", "l'automne"]
+    indice: "Range les quatre saisons dans leur ordre habituel."
+  - enonce: "Parmi ces trois saisons, laquelle vient juste avant l'hiver : le printemps, l'été, l'automne ?"
+    bonneReponse: "l'automne"
+    distracteurs: ["le printemps", "l'été"]
+    indice: "Range les quatre saisons dans leur ordre habituel."

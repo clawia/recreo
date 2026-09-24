@@ -287,6 +287,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S41-SCI-CLASSER (s41) : entree neuve, SCI-CM1-06, classer des etres vivants d'apres
             // un caractere commun observable.
             "bandit-manchot-classer-etres-vivants-cm1",
+            // S41-QLM-HYGIENE (s41) : entree neuve, QLM-CP-04, regles d'hygiene de vie.
+            "bandit-manchot-hygiene-cp",
+            // S41-QLM-SAISONS (s41) : entree neuve, QLM-CP-13, mois et saisons.
+            "bandit-manchot-saisons-cp",
             // S41-EMC-SYMBOLES (s41) : entree neuve, EMC-CP-08, les symboles de la Republique.
             "bandit-manchot-symboles-cp",
             // S41-EMC-DROITS (s41) : entree neuve, EMC-CP-10, les droits de l'enfant.
@@ -466,6 +470,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les rôles de l'école et de la commune",
             // S41-SCI-CLASSER (s41) : titre neuf.
             "Classer les êtres vivants",
+            // S41-QLM-HYGIENE (s41) : titre neuf.
+            "Les règles d'hygiène de vie",
+            // S41-QLM-SAISONS (s41) : titre neuf.
+            "Les mois et les saisons",
             // S41-EMC-SYMBOLES (s41) : titre neuf.
             "Les symboles de la République",
             // S41-EMC-DROITS (s41) : titre neuf.
@@ -671,6 +679,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis à qui s'adresser, ou ce que fait cette personne.",
             // S41-SCI-CLASSER (s41) : consigne neuve.
             "Lis bien, puis dis lequel des trois ne partage pas le même caractère.",
+            // S41-QLM-HYGIENE (s41) : consigne neuve.
+            "Lis bien, puis dis quelle règle suivre, ou pourquoi elle est bonne pour la santé.",
+            // S41-QLM-SAISONS (s41) : consigne neuve.
+            "Lis bien, puis nomme le mois ou la saison, ou dis lequel vient avant ou après.",
             // S41-EMC-SYMBOLES (s41) : consigne neuve.
             "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
             // S41-EMC-DROITS (s41) : consigne neuve.
@@ -1040,6 +1052,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // SCI-CM1-06).
             "Classer des êtres vivants d'après un caractère commun observable, et repérer la "
                     + "diversité des espèces d'un milieu.",
+            // S41-QLM-HYGIENE (s41) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-04).
+            "Connaître quelques règles d'hygiène de vie (sommeil, alimentation, hygiène du corps) "
+                    + "et leur effet sur la santé.",
+            // S41-QLM-SAISONS (s41) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-13).
+            "Nommer et ordonner les mois de l'année et les saisons.",
             // S41-EMC-SYMBOLES (s41) : competence neuve, copiee conforme du referentiel de
             // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
             // EMC-CP-08).

@@ -558,6 +558,18 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-classer-etres-vivants
     nombreDeManches: 10
+  - id: bandit-manchot-hygiene-cp
+    titre: "Les règles d'hygiène de vie"
+    consigne: "Lis bien, puis dis quelle règle suivre, ou pourquoi elle est bonne pour la santé."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-hygiene
+    nombreDeManches: 10
+  - id: bandit-manchot-saisons-cp
+    titre: "Les mois et les saisons"
+    consigne: "Lis bien, puis nomme le mois ou la saison, ou dis lequel vient avant ou après."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-saisons
+    nombreDeManches: 10
   - id: bandit-manchot-symboles-cp
     titre: "Les symboles de la République"
     consigne: "Lis bien, puis dis le nom du symbole, ou ce qu'il représente."
