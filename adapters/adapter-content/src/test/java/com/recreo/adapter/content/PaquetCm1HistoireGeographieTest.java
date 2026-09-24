@@ -12,13 +12,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,10 +55,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * <p>Ne couvre que les criteres d'acceptation automatisables (comptage, forme du descripteur, trois
  * propositions distinctes par item, et le plafond de `HIS-1`) : la justesse de chaque fait historique
- * ou geographique (`HIS-3`), l'absence de double reponse defendable (`HIS-2`) et l'absence de
- * jugement de valeur sur un personnage (`BIA-5`) restent un jugement de sens que ce depot confie a
- * `nadia-prof`, en jouant - aucun automate ne les porte, meme limite ecrite pour `COMP-2` sur
- * `PaquetCm1ComprehensionTest`.</p>
+ * ou geographique (`HIS-3`) et l'absence de double reponse defendable (`HIS-2`) restent un jugement
+ * de sens que ce depot confie a `nadia-prof`, en jouant - aucun automate ne les porte, meme limite
+ * ecrite pour `COMP-2` sur `PaquetCm1ComprehensionTest`. `BIA-5` (absence de jugement de valeur sur
+ * un personnage) reste elle aussi la garde de `nadia-prof` pour tout ce que la langue peut ecrire,
+ * mais porte depuis le 2026-09-24 (s42) un plancher automatise, quatre familles de formes
+ * enumerables, sur {@link #bia5AucunItemDesLignesHgCm105A08NePorteUneFormeDeJugementDeValeur()}.</p>
  *
  * <p><b>HIS-1 a vecu ici du 2026-09-02 au 2026-09-03, et vit desormais dans
  * {@code UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest} (ADR-0079).</b> Le
@@ -520,20 +525,137 @@ class PaquetCm1HistoireGeographieTest {
     }
 
     /**
-     * S42-HG-ROIS, BIA-5 : chaque item de HG-CM1-05 declare un des quatre rois du libelle, sa
-     * datation ou sa situation dans le temps - jamais un jugement de valeur sur le personnage.
+     * S42-HG-ROIS : chaque item de HG-CM1-05 declare un des quatre rois du libelle en bonne
+     * reponse. Cette assertion sert le libelle de HG-CM1-05, pas l'absence de jugement de valeur :
+     * elle ne cite plus BIA-5 depuis que {@code nadia-prof} a signale, dans l'ajout du 2026-09-24 de
+     * {@code FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md}, qu'une phrase
+     * comme "lequel fut le plus grand roi ?" garde une bonne reponse parmi les quatre noms et
+     * passerait ce test vert. BIA-5 est desormais verifiee par
+     * {@link #bia5AucunItemDesLignesHgCm105A08NePorteUneFormeDeJugementDeValeur()}.
      */
     @Test
-    void hgCm105NePorteAucunJugementDeValeurSurUnRoi() {
+    void hgCm105LaBonneReponseAppartientAuxQuatreRoisDuLibelle() {
         List<Map<String, Object>> items = itemsDeLaLigne(LIGNE_ROIS_DU_ROYAUME);
 
         assertThat(items).as("HG-CM1-05 est servie par au moins un item").isNotEmpty();
         for (Map<String, Object> item : items) {
             assertThat(ROIS_DU_ROYAUME)
-                    .as("'%s' : la bonne réponse doit être un des quatre rois du libellé (BIA-5)",
+                    .as("'%s' : la bonne réponse doit être un des quatre rois du libellé",
                             item.get("enonce"))
                     .contains(String.valueOf(item.get("bonneReponse")));
         }
+    }
+
+    /**
+     * BIA-5, regle lexicale opposable ecrite par {@code nadia-prof} le 2026-09-24 (ajout de
+     * {@code FICHE-bandit-manchot-histoire-geographie-nommer-en-histoire-cm1.md}, section "la regle
+     * lexicale que BIA-5 doit faire tenir"). Perimetre : les quatre lignes que BIA-5 se donne
+     * elle-meme (HG-CM1-05 a HG-CM1-08), tous paquets confondus, sur {@code enonce},
+     * {@code bonneReponse}, chaque distracteur et {@code indice}.
+     *
+     * <p>C'est un plancher, pas la condition : elle ferme les quatre familles de formes enumerables
+     * que le francais emploie pour juger un souverain (superlatif d'appreciation, qualificatif
+     * evaluatif accole au titre, comparatif evaluatif, question d'opinion adressee a l'enfant), et
+     * les mots isoles de la meme famille. Le jugement de sens sur une forme non enumeree reste la
+     * garde de {@code nadia-prof}, item par item - elle ne change pas.</p>
+     */
+    @Test
+    void bia5AucunItemDesLignesHgCm105A08NePorteUneFormeDeJugementDeValeur() {
+        List<Map<String, Object>> items = itemsDuPerimetreBia5();
+        assertThat(items).as("le perimetre de BIA-5 est servi par au moins un item").isNotEmpty();
+
+        for (Map<String, Object> item : items) {
+            verifierAbsenceDeJugementDeValeur(item, "enonce", String.valueOf(item.get("enonce")));
+            verifierAbsenceDeJugementDeValeur(item, "bonneReponse",
+                    String.valueOf(item.get("bonneReponse")));
+            @SuppressWarnings("unchecked")
+            List<String> distracteurs = (List<String>) item.get("distracteurs");
+            for (String distracteur : distracteurs) {
+                verifierAbsenceDeJugementDeValeur(item, "distracteur", distracteur);
+            }
+            Object indice = item.get("indice");
+            if (indice != null) {
+                verifierAbsenceDeJugementDeValeur(item, "indice", String.valueOf(indice));
+            }
+        }
+    }
+
+    /**
+     * Exigence 1 de {@code nadia-prof} (meme section que ci-dessus) : la regle doit prouver qu'elle
+     * mord, sur la phrase exacte de sa reserve - pas seulement qu'une liste de motifs existe.
+     */
+    @Test
+    void bia5MordSurLaPhraseExacteDeLaReserveDeNadiaProf() {
+        String phraseDeLaReserve = "Parmi ces quatre rois, lequel fut le plus grand roi ?";
+
+        assertThat(porteUneLocutionDeJugementDeValeur(replier(phraseDeLaReserve)))
+                .as("BIA-5 doit refuser '%s'", phraseDeLaReserve)
+                .isTrue();
+    }
+
+    /** Les items des quatre lignes que BIA-5 se donne elle-meme, tous paquets confondus. */
+    private static List<Map<String, Object>> itemsDuPerimetreBia5() {
+        List<Map<String, Object>> resultat = new ArrayList<>();
+        for (String ligne : List.of(LIGNE_ROIS_DU_ROYAUME, LIGNE_ROIS_ET_REALISATIONS,
+                LIGNE_REVOLUTION, LIGNE_REVOLUTION_A_L_EMPIRE)) {
+            resultat.addAll(itemsDeLaLigne(ligne));
+        }
+        return resultat;
+    }
+
+    /** Texte passe en minuscules, accents replies - meme forme que les motifs de la fiche. */
+    private static String replier(String texte) {
+        return Normalizer.normalize(texte, Normalizer.Form.NFD)
+                .replaceAll("\\p{M}", "").toLowerCase(Locale.FRENCH);
+    }
+
+    /**
+     * BIA-5, liste A : locutions d'au moins deux mots, recherche de sous-chaine simple. "le plus
+     * grand nombre" est une quantite mesurable, pas une appreciation, et reste seule exception.
+     */
+    private static final List<String> LOCUTIONS_DE_JUGEMENT_DE_VALEUR = List.of(
+            "le plus grand", "la plus grande", "les plus grands", "le plus beau", "la plus belle",
+            "le meilleur", "la meilleure", "les meilleurs", "le plus juste", "le plus sage",
+            "le plus celebre", "la plus celebre", "le mieux", "le moins bien",
+            "bon roi", "grand roi", "mauvais roi", "petit roi", "roi sage", "roi cruel",
+            "bonne reine", "grande reine", "mauvaise reine", "bon empereur", "grand empereur",
+            "mauvais empereur", "bon souverain", "grand souverain", "grand homme",
+            "meilleur que", "meilleure que", "moins bon que", "plus juste que", "plus sage que",
+            "plus cruel que",
+            "a ton avis", "selon toi", "penses-tu", "trouves-tu", "preferes-tu", "aimes-tu",
+            "avait-il raison", "a-t-il eu raison", "a-t-il bien fait", "aurait-il du");
+
+    /** BIA-5 : la seule exception de la liste A - une quantite mesurable, pas une appreciation. */
+    private static final String EXCEPTION_QUANTITE_MESURABLE = "le plus grand nombre";
+
+    /** BIA-5, liste B : mots isoles, recherche avec limite de mot obligatoire (ex. "pire" dans
+     * "empire"). */
+    private static final List<String> MOTS_ISOLES_DE_JUGEMENT_DE_VALEUR = List.of(
+            "genial", "geniale", "formidable", "extraordinaire", "magnifique", "admirable",
+            "glorieux", "glorieuse", "heroique", "ridicule", "idiot", "stupide", "mechant",
+            "mechante", "nul", "nulle", "pire");
+
+    private static boolean porteUneLocutionDeJugementDeValeur(String texteReplie) {
+        String texteSansException = texteReplie.replace(EXCEPTION_QUANTITE_MESURABLE, "");
+        return LOCUTIONS_DE_JUGEMENT_DE_VALEUR.stream().anyMatch(texteSansException::contains);
+    }
+
+    private static boolean porteUnMotIsoleDeJugementDeValeur(String texteReplie) {
+        return MOTS_ISOLES_DE_JUGEMENT_DE_VALEUR.stream()
+                .anyMatch(mot -> Pattern.compile("\\b" + mot + "\\b").matcher(texteReplie).find());
+    }
+
+    private static void verifierAbsenceDeJugementDeValeur(Map<String, Object> item, String champ,
+                                                            String texte) {
+        String texteReplie = replier(texte);
+        assertThat(porteUneLocutionDeJugementDeValeur(texteReplie))
+                .as("item '%s', champ %s : '%s' porte une locution de jugement de valeur (BIA-5)",
+                        item.get("enonce"), champ, texte)
+                .isFalse();
+        assertThat(porteUnMotIsoleDeJugementDeValeur(texteReplie))
+                .as("item '%s', champ %s : '%s' porte un mot de jugement de valeur (BIA-5)",
+                        item.get("enonce"), champ, texte)
+                .isFalse();
     }
 
     /**
