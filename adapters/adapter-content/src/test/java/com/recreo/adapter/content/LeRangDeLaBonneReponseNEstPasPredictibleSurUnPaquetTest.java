@@ -848,7 +848,24 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des noms d'êtres vivants (\"la"
                     + " chauve-souris\", \"l'araignée\"...), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-09-24 sur le paquet servi :"
-                    + " aucune des 33 propositions ne commence par un chiffre"));
+                    + " aucune des 33 propositions ne commence par un chiffre"),
+            // S41-QLM-HYGIENE : paquet neuf de questionner le monde CP (QLM-CP-04).
+            Map.entry("cp-qlm-hygiene",
+            "15 items sur 15 portent deux distracteurs (trois propositions), mais aucune des 45"
+                    + " propositions n'est numerique : ce sont des regles d'hygiene de vie et leurs"
+                    + " effets sur la sante en texte libre (\"pour que le corps se repose et"
+                    + " récupère\", \"manger des aliments variés\"...), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-09-24 sur le paquet servi :"
+                    + " aucune des 45 propositions ne commence par un chiffre"),
+            // S41-QLM-SAISONS : paquet neuf de questionner le monde CP (QLM-CP-13).
+            Map.entry("cp-qlm-saisons",
+            "16 items, 46 propositions : quatorze items portent deux distracteurs (trois"
+                    + " propositions, des noms de mois ou de saisons), deux en portent un seul (deux"
+                    + " propositions, la relation d'ordre \"avant\"/\"après\"). Aucune proposition"
+                    + " n'est numerique : ce sont des noms de mois (\"janvier\", \"juillet\"...), de"
+                    + " saisons (\"l'hiver\", \"l'été\"...) ou une relation d'ordre en texte libre,"
+                    + " valeurDe rend null sur toutes les propositions. Mesure du 2026-09-24 sur le"
+                    + " paquet servi : aucune des 46 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
