@@ -1,0 +1,134 @@
+schema: 1
+id: cm1-emc-symboles
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Reconnaître les symboles de la République française et dire ce qu'ils représentent (drapeau, devise, Marianne, hymne, fête nationale)."
+lignesDeReferentiel: ["EMC-CM1-05"]
+#
+# S42-EMC-SYMBOLES-CM1 (docs/backlog/backlog.md, sprint 42). Arbitrage prealable deja rendu, aucun
+# arbitrage neuf a router (squad/programme/enseignement-moral-et-civique/competences-cm1.md,
+# Jugement de faisabilite, nadia-prof, 2026-09-03, ligne 5) : "non couvert - jouable au choix
+# textuel, sous ART-1 - Connaissance exacte et verifiable, terrain sur. La reponse ne se porte
+# jamais par une couleur percue : on demande le nom, la devise, la date, la figure - jamais 'de
+# quelle couleur est... ?'." S'ajoutent les conditions valables sur toute la matiere (introduction
+# du meme document) : "ART-1 (aucune reponse portee par une couleur percue) s'applique a la ligne
+# des symboles. HIS-2 et HIS-3 s'appliquent : cette matiere porte des faits institutionnels dont je
+# ne suis pas la source, et une erreur y est un motif de refus a elle seule." Referentiel copie
+# conforme (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-05).
+#
+# Avis de faisabilite de theo-archi (squad/sprints/s42-fusion-six-lignes-deux-instances/
+# avis-faisabilite.md, section 8.1) : les cinq symboles du libelle sont deja servis au CP, a la
+# formulation pres, par cp-emc-symboles (EMC-CP-08, s41 : drapeau, Marianne, la Marseillaise, la
+# fete nationale, sur les deux taches "nommer" et "que represente") et par cp-emc-devise (EMC-CP-09,
+# s40 : la devise). Aucun garde-fou du depot ne compare deux paquets ; le discriminant est une
+# condition de procedure, pas de contenu, et il est tenu ici : cp-emc-symboles.yaml et
+# cp-emc-devise.yaml ont ete lus en entier avant l'ecriture de ce paquet.
+#
+# Le discriminant retenu, parce qu'un doublon de vocabulaire n'aurait rien ajoute au CP. Le CP
+# identifie et definit chaque symbole ("Comment s'appelle-t-il ?", "Que represente-t-il ?") ; aucun
+# des deux paquets de CP ne pose de date, de periode historique, de contexte institutionnel d'usage
+# ni de classification par nature. Ce paquet de CM1 ne repete aucune des deux taches du CP : il pose
+# trois taches propres au cycle 3, plus exigeantes en comprehension et en mise en contexte
+# civique/historique -
+#   - l'origine historique de chaque symbole (items 1 a 5) : a quelle periode il apparait ou devient
+#     officiel, jamais demande au CP ;
+#   - le contexte institutionnel dans lequel chaque symbole est utilise ou visible (items 6 a 8) : ou
+#     et quand on le rencontre dans la vie civique, jamais demande au CP ;
+#   - la nature de chaque symbole, par opposition aux quatre autres (items 9 a 13) : un chant n'est
+#     pas un objet, une date n'est pas une statue - une tache d'abstraction absente du CP, qui ne
+#     demandait qu'une identification directe.
+#
+# HIS-3, les faits et leur source (connaissances generales du cycle 3, verifiees, aucune ne varie
+# selon l'historiographie) : les trois couleurs du drapeau tricolore et Marianne comme figure de la
+# Republique remontent a la Revolution francaise (1789-1799) ; La Marseillaise est composee par
+# Rouget de Lisle a Strasbourg en 1792, pendant les guerres de la Revolution ; la devise est gravee
+# au fronton des batiments publics et le 14 juillet devient jour ferie national sous la Troisieme
+# Republique (loi du 6 juillet 1880) ; le buste de Marianne est un usage etabli dans les mairies
+# francaises ; La Marseillaise est jouee lors des ceremonies officielles et avant les rencontres
+# sportives internationales impliquant une equipe de France.
+#
+# ART-1 : aucune reponse ne se porte par une couleur percue. Aucune couleur n'est nommee ni demandee
+# dans aucun item de ce paquet.
+#
+# HIS-2 : chaque item n'a qu'une seule reponse defendable - une periode historique, un lieu d'usage
+# ou une nature de symbole, jamais une question d'opinion.
+#
+# FER-1 : les cinq symboles du libelle (drapeau, devise, Marianne, hymne, fete nationale) sont
+# chacun en bonne reponse au moins une fois, sur la tache de nature (items 11, 13, 12, 9, 10).
+#
+# FER-3 : trois taches distinctes - l'origine historique (items 1 a 5, cinq items) ; le contexte
+# institutionnel d'usage (items 6 a 8, trois items) ; la nature du symbole par opposition aux quatre
+# autres (items 9 a 13, cinq items).
+#
+# Mention exigee d'avance si une ligne d'EMC CM1 bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, section "Mention exigee
+# d'avance si une ligne bouge") : "connaissances civiques et reconnaissance de situations seules ;
+# aucun comportement, aucun engagement et aucune participation a une decision collective ne sont
+# servis par ce produit." Ce paquet ne demande ni comportement, ni engagement, ni participation a
+# une decision collective.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# HIS-1 n'est pas cite : mesure du 2026-09-24, le lot EMC CM1 ne porte aucun marqueur "# HIS-1:"
+# dans aucun de ses quatre paquets servis, et ce paquet n'en pose aucun non plus - un marqueur pose
+# par analogie avec le lot histoire-geographie CM1 soumettrait a tort tout le lot EMC CM1 (avis de
+# faisabilite de theo-archi, section 7.4).
+#
+# FER-2 : treize items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "À quelle période historique remonte la réunion des trois couleurs du drapeau français ?"
+    bonneReponse: "la Révolution française"
+    distracteurs: ["la Seconde Guerre mondiale", "sous Louis XIV"]
+    indice: "C'est une période où la France change profondément de régime politique, à la fin du XVIIIe siècle."
+  - enonce: "À quelle période historique Marianne devient-elle une figure de la République ?"
+    bonneReponse: "la Révolution française"
+    distracteurs: ["le Moyen Âge", "la Seconde Guerre mondiale"]
+    indice: "C'est la même période où le drapeau tricolore apparaît."
+  - enonce: "Depuis quelle période la devise de la République est-elle inscrite sur les bâtiments publics ?"
+    bonneReponse: "la Troisième République"
+    distracteurs: ["le Moyen Âge", "sous Napoléon"]
+    indice: "C'est une période de la fin du XIXe siècle, bien après la Révolution française."
+  - enonce: "Pendant quelle période historique La Marseillaise a-t-elle été composée ?"
+    bonneReponse: "la Révolution française"
+    distracteurs: ["le Moyen Âge", "sous Louis XIV"]
+    indice: "Un officier nommé Rouget de Lisle la compose à Strasbourg, en pleine guerre."
+  - enonce: "Depuis quelle période le 14 juillet est-il un jour férié national ?"
+    bonneReponse: "la Troisième République"
+    distracteurs: ["la Seconde Guerre mondiale", "sous Napoléon"]
+    indice: "C'est la même période où la devise est gravée sur les bâtiments publics."
+  - enonce: "Où voit-on souvent le drapeau français, à côté du drapeau européen, dans une commune ?"
+    bonneReponse: "sur la mairie"
+    distracteurs: ["dans une salle de classe uniquement", "seulement lors d'une fête privée"]
+    indice: "C'est le bâtiment où travaille le maire de la commune."
+  - enonce: "Où la devise de la République est-elle généralement gravée, de façon visible ?"
+    bonneReponse: "sur le fronton des bâtiments publics"
+    distracteurs: ["sur les billets de banque uniquement", "sur les drapeaux étrangers"]
+    indice: "On la lit souvent au-dessus de la porte d'une mairie ou d'une école."
+  - enonce: "Dans quelles grandes occasions entend-on La Marseillaise ?"
+    bonneReponse: "lors des cérémonies officielles et des compétitions sportives internationales"
+    distracteurs: ["uniquement à l'école, chaque matin", "uniquement pendant les mariages"]
+    indice: "On l'entend par exemple avant un match de l'équipe de France."
+  - enonce: "Lequel de ces symboles est un chant que l'on entend, et non un objet ni une date ?"
+    bonneReponse: "la Marseillaise"
+    distracteurs: ["le drapeau", "le 14 juillet"]
+    indice: "On l'entend, on ne le voit pas."
+  - enonce: "Lequel de ces symboles est une date du calendrier, et non un objet, un chant ou une statue ?"
+    bonneReponse: "le 14 juillet"
+    distracteurs: ["le drapeau", "la Marseillaise"]
+    indice: "C'est un jour précis de l'année, pas un objet que l'on peut toucher."
+  - enonce: "Lequel de ces symboles est un tissu que l'on hisse ou que l'on porte, et non un chant ni une statue ?"
+    bonneReponse: "le drapeau"
+    distracteurs: ["la devise", "Marianne"]
+    indice: "On peut le porter, l'accrocher ou le faire flotter dans le vent."
+  - enonce: "Lequel de ces symboles est une statue représentant une femme, et non un texte ni un chant ?"
+    bonneReponse: "Marianne"
+    distracteurs: ["la devise", "le 14 juillet"]
+    indice: "On la trouve souvent dans les mairies, sous la forme d'un buste."
+  - enonce: "Lequel de ces symboles est une formule de trois mots, et non un objet ou une date ?"
+    bonneReponse: "la devise"
+    distracteurs: ["le drapeau", "le 14 juillet"]
+    indice: "Ces trois mots sont gravés sur le fronton de nombreux bâtiments publics."

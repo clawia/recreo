@@ -295,6 +295,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-symboles-cp",
             // S41-EMC-DROITS (s41) : entree neuve, EMC-CP-10, les droits de l'enfant.
             "bandit-manchot-droits-enfant-cp",
+            // S42-ART-COULEURS (s42) : entree neuve, ART-CP-05, les couleurs et les melanges.
+            "bandit-manchot-couleurs-arts-cp",
+            // S42-EMC-SYMBOLES-CM1 (s42) : entree neuve, EMC-CM1-05, les symboles de la
+            // Republique en CM1.
+            "bandit-manchot-symboles-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -478,6 +483,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les symboles de la République",
             // S41-EMC-DROITS (s41) : titre neuf.
             "Les droits de l'enfant",
+            // S42-ART-COULEURS (s42) : titre neuf.
+            "Les couleurs et les mélanges",
+            // S42-EMC-SYMBOLES-CM1 (s42) : titre neuf, distinct de "Les symboles de la
+            // République" (CP, S41-EMC-SYMBOLES) pour ne pas dupliquer un libelle de bouton
+            // entre deux jeux differents.
+            "L'histoire des symboles de la République",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -687,6 +698,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
             // S41-EMC-DROITS (s41) : consigne neuve.
             "Lis bien, puis dis quel droit c'est, ou ce qu'il garantit.",
+            // S42-ART-COULEURS (s42) : consigne neuve.
+            "Dis le nom de la couleur, ou ce qu'on obtient en mélangeant deux couleurs.",
+            // S42-EMC-SYMBOLES-CM1 (s42) : consigne neuve.
+            "Lis bien, puis dis d'où vient ce symbole, où on le voit, ou ce que c'est.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -780,6 +795,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S40-HDA (s40) : domaine neuf, premier paquet d'histoire des arts (copie conforme du
             // referentiel de nadia-prof, squad/programme/histoire-des-arts/competences-cm1.md).
             "Situer une œuvre dans le temps et dans son contexte",
+            // S42-ART-COULEURS (s42) : domaine neuf, second paquet d'arts plastiques (copie
+            // conforme du referentiel de nadia-prof, squad/programme/arts-plastiques/
+            // competences-cp.md).
+            "L'expression des émotions",
             // S40-EXTRACTION (s40) : domaine neuf, sciences et technologie CM1 (copie conforme du
             // referentiel de nadia-prof, squad/programme/sciences-et-technologie/competences-cm1.md).
             "Démarches et langages scientifiques",
@@ -1068,7 +1087,16 @@ class TexteAccentueExposeParLePortEntrantTest {
             // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
             // EMC-CP-10).
             "Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à "
-                    + "l'école, jouer).");
+                    + "l'école, jouer).",
+            // S42-ART-COULEURS (s42) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-05).
+            "Reconnaître et nommer les couleurs, distinguer les couleurs primaires de celles "
+                    + "obtenues par mélange.",
+            // S42-EMC-SYMBOLES-CM1 (s42) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-05).
+            "Reconnaître les symboles de la République française et dire ce qu'ils représentent "
+                    + "(drapeau, devise, Marianne, hymne, fête nationale).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

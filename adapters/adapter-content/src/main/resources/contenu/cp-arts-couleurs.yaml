@@ -1,0 +1,101 @@
+schema: 1
+id: cp-arts-couleurs
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CP"
+  domaine: "L'expression des émotions"
+  competence: "Reconnaître et nommer les couleurs, distinguer les couleurs primaires de celles obtenues par mélange."
+lignesDeReferentiel: ["ART-CP-05"]
+#
+# S42-ART-COULEURS (docs/backlog/backlog.md, sprint 42). Arbitrage prealable deja rendu, aucun
+# arbitrage neuf a router (squad/programme/arts-plastiques/competences-cp.md, Jugement de
+# faisabilite, nadia-prof, 2026-09-03, ligne 5) : "jouable au choix textuel, sous ART-1 - Le melange
+# des couleurs est une connaissance : 'Quelle couleur obtient-on en melangeant le bleu et le
+# jaune ?' se pose en trois propositions ecrites, se verifie, et ne demande a l'enfant de percevoir
+# aucune couleur." Referentiel copie conforme (squad/programme/arts-plastiques/competences-cp.md,
+# ART-CP-05).
+#
+# Avis de faisabilite de theo-archi (squad/sprints/s42-fusion-six-lignes-deux-instances/
+# avis-faisabilite.md, section 7.3) : ART-1 est la condition qui fait de ce lot du texte seul, et
+# elle est deja rendue, pas proposee par le developpeur. Le lot reste faisable en l'etat, sans ADR
+# ni regle neuve.
+#
+# ART-1 : aucune reponse ne se porte par une couleur percue. Aucun item ne montre une pastille
+# coloree ni une image, aucun enonce ne demande "de quelle couleur est... ?" sur un element affiche.
+# Toute couleur nommee dans ce paquet l'est par un mot ecrit, jamais par une perception : soit une
+# connaissance du monde rappelee de memoire (la couleur habituelle d'un objet connu, items 1 a 4 et
+# 12), soit une regle de melange verifiable (items 9 a 11), soit une classification de vocabulaire
+# (items 5 a 8).
+#
+# FER-1 : les trois couleurs primaires (bleu, jaune, rouge) sont chacune en bonne reponse au moins
+# une fois (items 1, 5, 2, 6, 3, 7). Les trois melanges reels du programme (vert, orange, violet)
+# sont chacun en bonne reponse au moins une fois (items 9, 10, 11, renforces par 4, 8, 12).
+#
+# FER-3 : trois taches distinctes, quatre items chacune - nommer la couleur habituelle d'un objet ou
+# d'un element connu (items 1 a 4) ; distinguer une couleur primaire d'une couleur obtenue par
+# melange (items 5 a 8) ; appliquer la regle de melange de deux couleurs primaires (items 9 a 11),
+# complete par un item de reconnaissance d'un melange courant (item 12).
+#
+# Mention exigee d'avance si la ligne bouge (squad/programme/arts-plastiques/competences-cp.md,
+# ligne 5) : "vocabulaire et connaissances de la pratique plastique seuls ; aucune production
+# plastique n'est servie par ce produit." Ce paquet ne demande aucune production plastique : aucun
+# geste de tracé, aucune manipulation de matiere, aucun jugement sur une oeuvre.
+#
+# ADR-0089 (LON-1, LON-2) : au CP, chaque enonce compte au plus quinze mots et au plus deux phrases,
+# la seconde etant la question. Tous les enonces de ce paquet sont des questions d'une seule phrase,
+# entre neuf et douze mots.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Quelle couleur porte le ciel par une journée bien claire ?"
+    bonneReponse: "bleu"
+    distracteurs: ["vert", "orange"]
+    indice: "C'est la couleur qu'on voit en levant les yeux, un jour sans nuage."
+  - enonce: "Quelle couleur porte un citron bien mûr, prêt à manger ?"
+    bonneReponse: "jaune"
+    distracteurs: ["rouge", "bleu"]
+    indice: "C'est une couleur vive, la même que celle du soleil dans les dessins."
+  - enonce: "Quelle couleur porte une fraise bien mûre, prête à manger ?"
+    bonneReponse: "rouge"
+    distracteurs: ["jaune", "vert"]
+    indice: "C'est la couleur du feu et des pompiers."
+  - enonce: "Quelle couleur porte l'herbe fraîche au printemps, dans un pré ?"
+    bonneReponse: "vert"
+    distracteurs: ["bleu", "orange"]
+    indice: "C'est la couleur des feuilles des arbres en été."
+  - enonce: "Quelle est une couleur primaire, qui ne s'obtient par aucun mélange ?"
+    bonneReponse: "bleu"
+    distracteurs: ["vert", "orange"]
+    indice: "C'est une des trois couleurs de base, avec le jaune et le rouge."
+  - enonce: "Quelle couleur ne s'obtient jamais en mélangeant deux autres couleurs ?"
+    bonneReponse: "jaune"
+    distracteurs: ["violet", "vert"]
+    indice: "C'est une des trois couleurs de base, avec le bleu et le rouge."
+  - enonce: "Quelle couleur fait partie des trois couleurs de base de la peinture ?"
+    bonneReponse: "rouge"
+    distracteurs: ["orange", "vert"]
+    indice: "C'est une des trois couleurs de base, avec le bleu et le jaune."
+  - enonce: "Quelle couleur s'obtient seulement en mélangeant deux autres couleurs ?"
+    bonneReponse: "vert"
+    distracteurs: ["bleu", "rouge"]
+    indice: "Cette couleur n'existe qu'en mélangeant deux autres couleurs."
+  - enonce: "Quelle couleur obtient-on en mélangeant le bleu et le jaune ?"
+    bonneReponse: "vert"
+    distracteurs: ["rouge", "orange"]
+    indice: "C'est la couleur de l'herbe."
+  - enonce: "Quelle couleur obtient-on en mélangeant le rouge et le jaune ?"
+    bonneReponse: "orange"
+    distracteurs: ["vert", "violet"]
+    indice: "C'est la couleur d'une orange, le fruit."
+  - enonce: "Quelle couleur obtient-on en mélangeant le rouge et le bleu ?"
+    bonneReponse: "violet"
+    distracteurs: ["vert", "orange"]
+    indice: "C'est la couleur d'une aubergine."
+  - enonce: "Quelle couleur porte une aubergine, le légume, la plupart du temps ?"
+    bonneReponse: "violet"
+    distracteurs: ["bleu", "rouge"]
+    indice: "C'est la couleur qu'on obtient en mélangeant le rouge et le bleu."
