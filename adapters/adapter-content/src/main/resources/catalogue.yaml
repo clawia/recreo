@@ -582,6 +582,24 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-emc-droits-enfant
     nombreDeManches: 10
+  - id: bandit-manchot-deplacements-quadrillage-cp
+    titre: "Décrire un déplacement"
+    consigne: "Lis bien, puis dis quel geste est décrit."
+    mecanique: bandit-manchot
+    paquet: cp-deplacements-quadrillage
+    nombreDeManches: 10
+  - id: bandit-manchot-couleurs-arts-cp
+    titre: "Les couleurs et les mélanges"
+    consigne: "Dis le nom de la couleur, ou ce qu'on obtient en mélangeant deux couleurs."
+    mecanique: bandit-manchot
+    paquet: cp-arts-couleurs
+    nombreDeManches: 10
+  - id: bandit-manchot-symboles-cm1
+    titre: "L'histoire des symboles de la République"
+    consigne: "Lis bien, puis dis d'où vient ce symbole, où on le voit, ou ce que c'est."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-symboles
+    nombreDeManches: 10
   - id: bandit-manchot-matiere-objets-cp
     titre: "La matière des objets"
     consigne: "Lis bien, puis dis en quelle matière est fait l'objet, ou trie les matières selon leurs propriétés."

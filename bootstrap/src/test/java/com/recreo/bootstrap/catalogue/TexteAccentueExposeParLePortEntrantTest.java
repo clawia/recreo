@@ -295,6 +295,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-symboles-cp",
             // S41-EMC-DROITS (s41) : entree neuve, EMC-CP-10, les droits de l'enfant.
             "bandit-manchot-droits-enfant-cp",
+            // S42-MAT-TEXTUEL (s42) : entree neuve, MAT-CP-10, moitie textuelle (decrire un
+            // deplacement sur un quadrillage).
+            "bandit-manchot-deplacements-quadrillage-cp",
+            // S42-ART-COULEURS (s42) : entree neuve, ART-CP-05, les couleurs et les melanges.
+            "bandit-manchot-couleurs-arts-cp",
+            // S42-EMC-SYMBOLES-CM1 (s42) : entree neuve, EMC-CM1-05, les symboles de la
+            // Republique en CM1.
+            "bandit-manchot-symboles-cm1",
             // S42-QLM-MATIERE (s42) : entree neuve, QLM-CP-06, la matiere d'un objet.
             "bandit-manchot-matiere-objets-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
@@ -480,6 +488,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les symboles de la République",
             // S41-EMC-DROITS (s41) : titre neuf.
             "Les droits de l'enfant",
+            // S42-MAT-TEXTUEL (s42) : titre neuf.
+            "Décrire un déplacement",
+            // S42-ART-COULEURS (s42) : titre neuf.
+            "Les couleurs et les mélanges",
+            // S42-EMC-SYMBOLES-CM1 (s42) : titre neuf, distinct de "Les symboles de la
+            // République" (CP, S41-EMC-SYMBOLES) pour ne pas dupliquer un libelle de bouton
+            // entre deux jeux differents.
+            "L'histoire des symboles de la République",
             // S42-QLM-MATIERE (s42) : titre neuf.
             "La matière des objets",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -691,6 +707,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
             // S41-EMC-DROITS (s41) : consigne neuve.
             "Lis bien, puis dis quel droit c'est, ou ce qu'il garantit.",
+            // S42-MAT-TEXTUEL (s42) : consigne neuve.
+            "Lis bien, puis dis quel geste est décrit.",
+            // S42-ART-COULEURS (s42) : consigne neuve.
+            "Dis le nom de la couleur, ou ce qu'on obtient en mélangeant deux couleurs.",
+            // S42-EMC-SYMBOLES-CM1 (s42) : consigne neuve.
+            "Lis bien, puis dis d'où vient ce symbole, où on le voit, ou ce que c'est.",
             // S42-QLM-MATIERE (s42) : consigne neuve.
             "Lis bien, puis dis en quelle matière est fait l'objet, ou trie les matières selon "
                     + "leurs propriétés.",
@@ -787,6 +809,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S40-HDA (s40) : domaine neuf, premier paquet d'histoire des arts (copie conforme du
             // referentiel de nadia-prof, squad/programme/histoire-des-arts/competences-cm1.md).
             "Situer une œuvre dans le temps et dans son contexte",
+            // S42-ART-COULEURS (s42) : domaine neuf, second paquet d'arts plastiques (copie
+            // conforme du referentiel de nadia-prof, squad/programme/arts-plastiques/
+            // competences-cp.md).
+            "L'expression des émotions",
             // S40-EXTRACTION (s40) : domaine neuf, sciences et technologie CM1 (copie conforme du
             // referentiel de nadia-prof, squad/programme/sciences-et-technologie/competences-cm1.md).
             "Démarches et langages scientifiques",
@@ -1080,6 +1106,20 @@ class TexteAccentueExposeParLePortEntrantTest {
             // EMC-CP-10).
             "Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à "
                     + "l'école, jouer).",
+            // S42-MAT-TEXTUEL (s42) : competence neuve, libelle entier du referentiel de
+            // nadia-prof (squad/programme/mathematiques/competences-cp.md, ligne MAT-CP-10) ;
+            // couverture partielle nommee, ce paquet ne sert que la moitie "decrire un
+            // deplacement".
+            "Se repérer et décrire des déplacements sur un quadrillage simple",
+            // S42-ART-COULEURS (s42) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-05).
+            "Reconnaître et nommer les couleurs, distinguer les couleurs primaires de celles "
+                    + "obtenues par mélange.",
+            // S42-EMC-SYMBOLES-CM1 (s42) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-05).
+            "Reconnaître les symboles de la République française et dire ce qu'ils représentent "
+                    + "(drapeau, devise, Marianne, hymne, fête nationale).",
             // S42-QLM-MATIERE (s42) : competence neuve, copiee conforme du referentiel de
             // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
             // QLM-CP-06).

@@ -885,6 +885,31 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
                     + " 2026-09-24 sur le paquet servi : aucune des 36 propositions ne commence par un"
                     + " chiffre"),
+            // S42-MAT-TEXTUEL : paquet neuf de mathematiques CP, moitie textuelle de MAT-CP-10.
+            Map.entry("cp-deplacements-quadrillage",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont les quatre formes de deplacement en"
+                    + " texte libre (\"avancer\", \"reculer\", \"tourner à gauche\", \"tourner à"
+                    + " droite\"), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-24 sur le paquet servi : aucune des 36 propositions ne"
+                    + " commence par un chiffre"),
+            // S42-ART-COULEURS : paquet neuf d'arts plastiques CP (ART-CP-05).
+            Map.entry("cp-arts-couleurs",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des noms de couleurs (\"bleu\","
+                    + " \"jaune\", \"rouge\", \"vert\", \"orange\", \"violet\"), valeurDe rend null"
+                    + " sur les trois propositions de chaque item. Mesure du 2026-09-24 sur le paquet"
+                    + " servi : aucune des 36 propositions ne commence par un chiffre"),
+            // S42-EMC-SYMBOLES-CM1 : paquet neuf d'enseignement moral et civique CM1 (EMC-CM1-05).
+            Map.entry("cm1-emc-symboles",
+            "13 items sur 13 portent deux distracteurs (trois propositions), mais aucune des 39"
+                    + " propositions n'est numerique : ce sont des periodes historiques (\"la"
+                    + " Révolution française\", \"la Troisième République\"...), des lieux ou"
+                    + " contextes d'usage en texte libre, ou des noms de symboles (\"le drapeau\","
+                    + " \"la devise\", \"Marianne\", \"la Marseillaise\", \"le 14 juillet\"),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-24 sur le paquet servi : aucune des 39 propositions ne commence par"
+                    + " un chiffre"),
             // S42-QLM-MATIERE : paquet neuf de questionner le monde CP (QLM-CP-06).
             Map.entry("cp-qlm-matiere",
             "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
