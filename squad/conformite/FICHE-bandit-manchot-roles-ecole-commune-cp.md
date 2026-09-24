@@ -8,7 +8,8 @@
   l'ecole et de la commune"*, consigne servie *"Lis bien, puis dis a qui s'adresser, ou ce que
   fait cette personne."*, `nombreDeManches: 10`.
 - **Ligne declaree** : `EMC-CP-13`.
-- **Statut global** : **REFUSE** (audit joue du 2026-09-24, `nadia-prof` instance A). Fiche ouverte
+- **Statut global** : **VALIDE** (second audit du 2026-09-24, apres correction ; le premier audit
+  du meme jour avait refuse, sa trace est conservee plus bas). Fiche ouverte
   par `camille-po` a l'ouverture du bloc de construction du sprint s41 (paquet et catalogue livres
   et fusionnes dans `round-two`, commit `b5b07966`).
 - **Story** : `S41-EMC-ROLES` - Identifier quelques roles et services de l'ecole et de la commune
@@ -24,7 +25,7 @@
   suppose la commune, l'ecole ou le foyer de l'enfant. Le produit ne les connait pas et ne peut
   pas les connaitre (`DEC-0028`)."*
 - **Lien decision** : `DEC-0095`.
-- **Derniere mise a jour** : 2026-09-24 (audit pedagogique, `nadia-prof` instance A).
+- **Derniere mise a jour** : 2026-09-24 (second audit apres correction, `nadia-prof` instance A).
 
 ---
 
@@ -174,3 +175,87 @@ des deux n'est de nature a etre vue par un automate.
 >
 > **Ce refus renvoie a `camille-po`, qui en fait du backlog.** Il ne bloque pas le sprint suivant.
 > `EMC-CP-13` reste `non couvert` dans `MATRICE-couverture.md` ; je ne touche pas la matrice.
+
+---
+
+# Second audit (2026-09-24, apres correction de `lea-dev` au commit `bddd8233`) - VALIDE
+
+**Le refus ci-dessus n'est pas efface et ne le sera pas.** Il est leve par ce second audit, sa
+trace reste lisible.
+
+## 6. Ce que j'ai rejoue
+
+Reacteur reconstruit sur `round-two` a jour (`bcbe3b5f`,
+`bash outils/mvn-jdk21.sh -B clean package -DskipTests`), jar relance sur le JDK 21 designe par la
+toolchain. Quatre parties completes de dix manches plus deux parties ciblees sur les items 2 et 7.
+**Les onze items sont remontes a l'ecran**, y compris les neuf que je n'avais pas demande de
+rejouer : je verifie a chaque fois que la correction n'a rien casse ailleurs.
+
+## 7. Le motif du refus est paye
+
+**Item 7, rejoue, capture de la partie** :
+
+- enonce : *"Que fait le directeur ou la directrice de l'ecole ?"*
+- bonne reponse servie : *"il ou elle organise l'ecole et **veille au bon deroulement de la
+  journee**"*
+- distracteurs inchanges : *"il ou elle soigne les blessures"* / *"il ou elle eteint les
+  incendies"*
+- indice inchange, et toujours coherent avec le nouvel enonce : *"Il ou elle est responsable de
+  toute l'ecole, du matin au soir."*
+
+La clause fautive a disparu. **Ce que l'item enseigne desormais est exact** : organiser l'ecole et
+veiller au bon deroulement de la journee est ce que recouvre la fonction, et la formulation ne
+revendique plus une mission qui appartient a un enseignant remplacant. L'item 5 (*"Un enseignant
+est absent. Qui organise la classe ce jour-la ?"* -> *"le directeur de l'ecole"*) reste inchange et
+reste exact : le paquet dit maintenant la meme chose aux deux endroits.
+
+**Point que j'ai controle de pres, parce qu'une reecriture peut deplacer un probleme plutot que le
+regler** : la nouvelle formulation ne recouvre aucune des deux autres propositions de l'item, ni
+aucune bonne reponse d'un autre item de la tache B. *"veille au bon deroulement de la journee"* ne
+se confond ni avec *"elle s'occupe des batiments et du materiel de l'ecole"* (item 8, la mairie),
+ni avec *"il ou elle decide des regles de l'ecole"* ou *"il ou elle organise les sorties
+scolaires"*, qui restent des distracteurs de l'item 10. Aucun item n'a deux reponses defendables
+(`EMC-5`).
+
+## 8. Le second point est paye aussi
+
+**Item 2, rejoue** : *"Un enfant a une forte fievre depuis plusieurs jours. Qui doit-on aller
+voir ?"* Le verbe *consulter* a disparu, la tournure est celle d'un enfant de CP, la bonne reponse
+et l'indice sont inchanges. Treize mots, deux phrases, la seconde etant la question : `LON-1` et
+`LON-2` tenues.
+
+## 9. Rien n'a casse ailleurs
+
+Verifie a l'ecran sur les onze items : `EMC-6` reste tenue sans exception (aucune situation ne
+suppose la commune, l'ecole ou le foyer de l'enfant - les deux enonces reecrits disent toujours
+*"un enfant"* et *"l'ecole"* de facon generique) ; `FER-1` et `FER-3` sont inchangees, les quatre
+roles et services du libelle restent chacun en bonne reponse ; les dix items que j'avais juges
+exacts au premier audit sont inchanges au caractere pres ; le traitement de l'erreur est intact
+(*"Ce n'est pas ca. Essaie encore !"* puis l'indice, puis revelation de la bonne reponse au
+troisieme echec), verifie en me trompant volontairement sur les deux items corriges ; l'ecran de
+fin de partie s'affiche normalement.
+
+## 10. Ce dont je reste la seule garde sur ce paquet
+
+Inchange depuis la section 5 du premier audit, et je le redis parce qu'un verdict vert ne le
+supprime pas : `EMC-6`, `EMC-5` et l'exactitude de ce que fait chaque role sont des jugements
+semantiques qu'aucun automate de ce depot ne rend. La CI etait verte sur la version que j'ai
+refusee.
+
+---
+
+> **Done pedagogique : VALIDE.** 2026-09-24, `nadia-prof`, instance A de s41. Le refus du meme jour
+> est **leve**, sa trace est conservee ci-dessus.
+>
+> **Ce que j'ai verifie** : les onze items rejoues a l'ecran sur un jar reconstruit depuis
+> `round-two` a jour. L'item 7 n'affirme plus que le directeur remplace les enseignants absents et
+> ce qu'il enseigne est exact ; l'item 2 est passe dans le registre du CP ; les neuf autres items
+> sont inchanges et toujours exacts ; `EMC-6` est tenue sans exception sur les onze, `FER-1` et
+> `FER-3` sont tenues, aucun item n'a deux reponses defendables, aucun distracteur n'est absurde,
+> l'erreur est traitee (indice puis revelation) et un enfant bloque avance. Aucune des deux
+> corrections n'a introduit de defaut ailleurs dans le paquet.
+>
+> **`camille-po` peut passer `EMC-CP-13` a `couvert-valide`** dans `MATRICE-couverture.md`. Je ne
+> touche pas la matrice.
+>
+> **Aucune reserve ouverte sur ce paquet.**
