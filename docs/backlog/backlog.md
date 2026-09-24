@@ -14745,4 +14745,287 @@ prealable explicite, cite en entier ci-dessous, et peuvent recevoir un avis de f
   nominative du developpement par `sofia-sm` une fois cet avis rendu (`DEC-0093`, section 5) ;
   `nadia-prof` pour le Done pedagogique.
 
+## Sprint 41 - Fusion de deux sprints projetes (EMC, sciences CM1, questionner le monde CP), passage a deux instances de `nadia-prof` (`DEC-0095`)
+
+Six lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` a
+l'ouverture du sprint. Objectif et perimetre formalises par `DEC-0095`, amendee le 2026-09-23
+(section 9) : passage a deux instances de `nadia-prof` en parallele, borne recalculee a 8,0,
+perimetre porte de deux a six lots sur deux terrains non chevauchants. Aucun ne rouvre `DEC-0089`
+(CE1 mathematiques seule, CM2 differe) ni les neuf lignes bloquees par `ART-3`/`DEC-0075`. Les six
+lots portent deja un arbitrage prealable explicite, cite en entier ci-dessous : `theo-archi` peut
+rendre un avis de faisabilite directement sur chacun, sans arbitrage pedagogique prealable neuf a
+attendre.
+
+**Deux terrains non chevauchants, un par instance de `nadia-prof`** (`DEC-0095`, section 9.3 -
+`PAR-2` force le terrain EMC sur une seule instance ; `CYC-1` est satisfaite par construction sur le
+terrain sciences/questionner le monde CP, les deux matieres y partageant la meme instance ; aucune
+clause de frontiere n'est due, verifie contre le seul critere que `nadia-prof` a ecrit pour en
+produire une, `ARBITRAGE-PREALABLE-s32`, section 6.4) :
+
+| Terrain | Instance | Lots | Cout |
+|---|---|---|---|
+| 1 - enseignement moral et civique (CP + CM1) | **A** | `S41-EMC-SYMBOLES`, `S41-EMC-DROITS`, `S41-EMC-ROLES` | 4,5 / 5,0 |
+| 2 - sciences et technologie CM1 + questionner le monde CP | **B** | `S41-QLM-HYGIENE`, `S41-QLM-SAISONS`, `S41-SCI-CLASSER` | 3,5 / 5,0 |
+
+**Point signale, non tranche par cette instruction : le terrain 1 ne conserve aucune marge de rejeu
+individuelle** (4,5 sur son plafond de 5,0, tarif uniforme a 1,5 sur les trois lignes retenues -
+aucune combinaison de trois lignes d'EMC dans le vivier ne coute moins). L'utilisatrice a tranche de
+garder les trois lignes plutot que d'en retirer une (`DEC-0095`, section 9.7) : le perimetre
+ci-dessous est fige a six lots, sans reduction du terrain 1.
+
+**Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
+`sofia-sm`** (`DEC-0095`, section 7) : deux lots chacun, `marc-dev` et `lea-dev` sur le terrain EMC
+(le second lot de `lea-dev` etant sur le terrain sciences, les deux terrains restant independants et
+parallelisables), `sofia-sm` sur les deux lots de questionner le monde CP - les deux moins chers du
+vivier (tarif 1,0), coherent avec sa double casquette de Scrum Master et de troisieme developpeuse.
+
+### S41-EMC-SYMBOLES - Reconnaitre et nommer les symboles de la Republique francaise (`EMC-CP-08`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a reconnaitre et nommer les symboles de
+  la Republique francaise en jouant au bandit manchot, afin de savoir les nommer sans les confondre.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine "Acquerir et
+  partager les valeurs de la Republique" -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, `EMC-CP-08`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1860.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
+  ligne 234) : *"oui (lot a 1,5) [...] Connaissance exacte. `FER-1` : drapeau, Marianne, La
+  Marseillaise, fete nationale, chacun en bonne reponse. Deux taches : nommer le symbole decrit ;
+  dire ce qu'il represente. `ART-1` : aucune reponse portee par une couleur percue."* `theo-archi`
+  peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les quatre symboles du
+    libelle (drapeau, Marianne, La Marseillaise, fete nationale) sont chacun en bonne reponse au
+    moins une fois (`FER-1`).
+  - Etant donne un item, quand il s'affiche, alors il porte l'une des deux taches distinctes
+    (nommer le symbole decrit ; dire ce qu'il represente), jamais uniquement la premiere sur tout le
+    paquet (`FER-3`).
+  - Etant donne un item portant sur le drapeau, quand la question s'affiche, alors elle ne demande
+    jamais la couleur d'un element (par exemple "de quelle couleur est le drapeau ?"), mais son nom,
+    son hymne, sa devise ou sa date (`ART-1`).
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres symboles ou elements reels du
+    registre republicain, jamais des elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CP-08` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme que les quatre symboles sont chacun servis et qu'aucune reponse ne se porte par
+    une couleur percue.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant une couleur percue en bonne
+  reponse (`ART-1`) ; elle ne fixe aucun contenu factuel precis - reste a l'auteur du paquet puis a
+  l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0095`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement
+  propose a `marc-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0095` section 7) ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S41-EMC-DROITS - Identifier les principaux droits de l'enfant (`EMC-CP-10`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a identifier les principaux droits de
+  l'enfant en jouant au bandit manchot, afin de savoir ce a quoi j'ai droit.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine "Acquerir et
+  partager les valeurs de la Republique" -
+  `squad/programme/enseignement-moral-et-civique/competences-cp.md`, `EMC-CP-10`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1862.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
+  ligne 236) : *"oui, et c'est le terrain le plus sur des cinq a 1,5. `FER-1` : etre protege, etre
+  soigne, aller a l'ecole, jouer. Deux taches : reconnaitre le droit dont parle une situation ; dire
+  ce que le droit garantit. `BIA-4` et `EMC-1` : aucun item n'interroge l'enfant sur sa propre
+  situation. 'As-tu le droit d'aller a l'ecole ?' est refuse d'avance."* Ligne evaluee par
+  `nadia-prof` elle-meme comme la moins risquee des cinq lignes d'EMC CP a ce tarif. `theo-archi`
+  peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les quatre droits du
+    libelle (etre protege, etre soigne, aller a l'ecole, jouer) sont chacun en bonne reponse au
+    moins une fois (`FER-1`).
+  - Etant donne un item, quand il s'affiche, alors il porte l'une des deux taches distinctes
+    (reconnaitre le droit dont parle une situation decrite ; dire ce que le droit garantit), jamais
+    uniquement la premiere sur tout le paquet (`FER-3`).
+  - Etant donne un item, quand la situation ou la question s'affiche, alors elle ne s'adresse jamais
+    directement a l'enfant sur sa propre situation (par exemple "as-tu le droit de...") mais decrit
+    un personnage ou une situation generale (`BIA-4`, `EMC-1`).
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres droits ou notions reels, jamais des
+    elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CP-10` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme que les quatre droits sont chacun servis et qu'aucun item n'interroge l'enfant sur
+    sa propre situation.
+- **Ce que cette story ne fait pas** : elle n'interroge jamais l'enfant sur sa propre situation
+  (`BIA-4`, `EMC-1`) ; elle ne fixe aucun contenu factuel precis - reste a l'auteur du paquet puis a
+  l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0095`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement
+  propose a `marc-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0095` section 7) ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S41-EMC-ROLES - Identifier quelques roles et services de l'ecole et de la commune (`EMC-CP-13`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a identifier a qui m'adresser a l'ecole
+  ou a la commune selon la situation en jouant au bandit manchot, afin de savoir vers qui me tourner.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine "Construire
+  une culture civique" - `squad/programme/enseignement-moral-et-civique/competences-cp.md`,
+  `EMC-CP-13`. Ligne `non couvert`, `MATRICE-couverture.md` ligne 1865.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
+  ligne 237) : *"oui (lot a 1,5) [...] Connaissance verifiable. Deux taches : a qui s'adresse-t-on
+  pour telle chose ; que fait telle personne ou tel service. `EMC-6` : aucun item ne suppose la
+  commune, l'ecole ou le foyer de l'enfant. Le produit ne les connait pas et ne peut pas les
+  connaitre (`DEC-0028`)."* `theo-archi` peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les roles et services du
+    libelle (directeur, mairie, pompiers, medecin) sont chacun en bonne reponse au moins une fois
+    (`FER-1`).
+  - Etant donne un item, quand il s'affiche, alors il porte l'une des deux taches distinctes (a qui
+    s'adresse-t-on pour telle situation ; que fait telle personne ou tel service), jamais uniquement
+    la premiere sur tout le paquet (`FER-3`).
+  - Etant donne un item, quand la situation s'affiche, alors elle ne suppose jamais une commune, une
+    ecole ou une configuration familiale particuliere de l'enfant (`EMC-6`).
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres roles ou services reels, jamais des
+    elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CP-13` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme que les roles et services du libelle sont chacun servis et qu'aucun item ne
+    suppose la commune ou l'ecole de l'enfant.
+- **Ce que cette story ne fait pas** : elle ne suppose jamais la commune, l'ecole ou le foyer de
+  l'enfant (`EMC-6`) ; elle ne fixe aucun contenu factuel precis - reste a l'auteur du paquet puis a
+  l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0095`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement
+  propose a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0095` section 7) ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S41-QLM-HYGIENE - Connaitre quelques regles d'hygiene de vie et leur effet sur la sante (`QLM-CP-04`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a connaitre quelques regles d'hygiene de
+  vie (sommeil, alimentation, hygiene du corps) en jouant au bandit manchot, afin de savoir pourquoi
+  elles sont bonnes pour ma sante.
+- **Competence programme visee** : questionner le monde, CP (cycle 2), domaine "Le vivant, la
+  matiere et les objets" - `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-04`.
+  Ligne `non couvert`, `MATRICE-couverture.md` ligne 1485.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
+  ligne 370) : *"moyenne, sous `BIA-4`. Terrain sur si aucun item n'interroge l'enfant sur sa propre
+  vie."* Precise par `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, ligne 368 :
+  *"Piege de biais pose d'avance : 'que manges-tu au petit dejeuner ?' presuppose qu'il y en a un.
+  `BIA-4`."* `theo-archi` peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les trois domaines du
+    libelle (sommeil, alimentation, hygiene du corps) sont chacun en bonne reponse au moins une
+    fois.
+  - Etant donne un item, quand la question s'affiche, alors elle porte sur une regle generale et son
+    effet sur la sante (par exemple "pourquoi se laver les mains avant de manger ?"), jamais sur ce
+    que l'enfant fait, mange ou vit lui-meme (`BIA-4`) - aucune formulation du type "que manges-tu
+    au petit dejeuner ?" qui presuppose une reponse personnelle.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres comportements reels lies a
+    l'hygiene de vie, jamais des elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `QLM-CP-04` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme qu'aucun item n'interroge l'enfant sur sa propre vie et que les trois domaines du
+    libelle sont chacun servis.
+- **Ce que cette story ne fait pas** : elle n'interroge jamais l'enfant sur sa propre vie, ses
+  propres habitudes ou son propre foyer (`BIA-4`) ; elle ne fixe aucun contenu factuel precis -
+  reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0095`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement
+  propose a `sofia-sm` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`
+  elle-meme, `DEC-0095` section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+### S41-QLM-SAISONS - Nommer et ordonner les mois de l'annee et les saisons (`QLM-CP-13`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux m'entrainer a nommer et a ordonner les mois de
+  l'annee et les saisons en jouant au bandit manchot, afin de savoir me reperer dans le temps qui
+  passe.
+- **Competence programme visee** : questionner le monde, CP (cycle 2), domaine "Se situer dans le
+  temps" - `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-13`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1494.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
+  ligne 368) : *"rentable [...] `FER-1` sur les deux moities, pas sur les douze mois. `FER-3` :
+  nommer, et ordonner ('quel mois vient apres... ?')."* Precise par
+  `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, ligne 377 : *"Terrain deja
+  eprouve par `cp-semaine`."* `theo-archi` peut rendre son avis de faisabilite directement.
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les deux moities du
+    libelle (nommer un mois ou une saison, ordonner deux mois ou deux saisons l'un par rapport a
+    l'autre) sont chacune en bonne reponse sur des items distincts (`FER-1`). Aucune exigence de
+    couvrir les douze mois individuellement par un item distinct.
+  - Etant donne un item de la moitie "nommer", quand il s'affiche, alors il demande le nom d'un mois
+    ou d'une saison a partir d'une description ou d'une position (par exemple "quel mois vient apres
+    juin ?").
+  - Etant donne un item de la moitie "ordonner", quand il s'affiche, alors il demande une relation
+    d'ordre entre deux mois ou deux saisons (avant, apres), jamais uniquement leur nom.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres mois ou saisons reels et proches
+    dans l'ordre du calendrier, jamais des elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `QLM-CP-13` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme que les deux moities du libelle (nommer, ordonner) sont chacune tenues.
+- **Ce que cette story ne fait pas** : elle ne demande jamais l'ordre des jours de la semaine ni de
+  la journee (deja porte par `cp-semaine` et par mathematiques CP, `squad/programme/questionner-le-
+  monde/competences-cp.md`, section "Recouvrements a ne pas double-compter") ; elle ne fixe aucun
+  contenu factuel precis - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0095`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement
+  propose a `sofia-sm` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`
+  elle-meme, `DEC-0095` section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+### S41-SCI-CLASSER - Classer des etres vivants d'apres un caractere commun observable (`SCI-CM1-06`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux m'entrainer a classer des etres vivants d'apres un
+  caractere commun observable en jouant au bandit manchot, afin de mieux comprendre la diversite du
+  vivant.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Le vivant, sa
+  diversite et les fonctions qui le caracterisent" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-06`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 2006, deja notee "jouable au choix textuel, item par item. Mention
+  exigee d'avance : 'raisonnement sur un caractere, item par item ; le tri d'une collection entiere
+  reste non couvert' (refuse au palier 1 par `V3`)."
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md`,
+  section 4.3) : classee dans le rang *"les suivantes"*, deuxieme rang de surete sur quatre parmi
+  les lignes de sciences CM1 alors restantes - *"6 (classement, mention partielle due)"*. Le
+  referentiel source precise, cite mot pour mot : *"'Lequel des trois n'a pas de plumes ?' travaille
+  bien le caractere."* `theo-archi` peut rendre son avis de faisabilite directement.
+- **`CYC-1` s'applique et se satisfait par construction** (`DEC-0095`, section 9.3 et 9.4) : cette
+  ligne de cycle 3 porte sur le meme objet que `QLM-CP-01` (distinguer les etres vivants) et
+  `QLM-CP-02` (caracteriser un etre vivant), deja `couvert-valide` et audites par la meme instance de
+  `nadia-prof` (instance B). Aucun item de ce paquet ne doit contredire ce que ces deux paquets
+  enseignent deja sur le meme objet.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande de reconnaitre lequel de trois etres
+    vivants decrits ne partage pas un caractere observable commun aux deux autres (par exemple
+    presence de plumes, nombre de pattes, milieu de vie), jamais de trier ou de deplacer une
+    collection entiere (`V3`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors plusieurs caracteres
+    observables distincts sont mobilises d'un item a l'autre, pas un seul caractere repete.
+  - Etant donne un item, quand il porte sur la diversite des especes d'un milieu, alors il decrit ce
+    milieu et les especes qui l'occupent sans jamais contredire ce que `QLM-CP-01` et `QLM-CP-02`
+    enseignent deja sur la distinction du vivant (`CYC-1`).
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres etres vivants reels partageant un
+    caractere different, jamais des elements sans rapport avec le vivant.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-06` et uniquement elle, avec la mention de couverture partielle deja fixee
+    ("raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non
+    couvert") portee par la matrice au Done pedagogique.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme qu'aucun item ne demande de trier une collection et qu'aucun item ne contredit
+    `QLM-CP-01` ou `QLM-CP-02`.
+- **Ce que cette story ne fait pas** : elle ne construit aucune interaction de tri ou de deplacement
+  d'une collection - hors de portee du palier 1 (`V3`) ; elle ne fixe aucun contenu factuel precis
+  (quels etres vivants, quels caracteres retenir) - reste a l'auteur du paquet puis a l'audit de
+  `nadia-prof`.
+- **Lien decision** : `DEC-0095`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement
+  propose a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0095` section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
+
 
