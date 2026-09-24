@@ -707,8 +707,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
             // S41-EMC-DROITS (s41) : consigne neuve.
             "Lis bien, puis dis quel droit c'est, ou ce qu'il garantit.",
-            // S42-MAT-TEXTUEL (s42) : consigne neuve.
-            "Lis bien, puis dis quel geste est décrit.",
+            // S42-MAT-TEXTUEL (s42), corrigee suite au refus nadia-prof (DEC-0098) : la tache
+            // demande desormais la case d'arrivee, plus jamais l'etiquette d'un geste.
+            "Lis bien, puis dis sur quelle case l'enfant se trouve.",
             // S42-ART-COULEURS (s42) : consigne neuve.
             "Dis le nom de la couleur, ou ce qu'on obtient en mélangeant deux couleurs.",
             // S42-EMC-SYMBOLES-CM1 (s42) : consigne neuve.
