@@ -8,11 +8,12 @@
   etres vivants"*, consigne servie *"Lis bien, puis dis lequel des trois ne partage pas le meme
   caractere."*, `nombreDeManches: 10`.
 - **Ligne declaree** : `SCI-CM1-06`.
-- **Statut global** : **DONE PEDAGOGIQUE REFUSE** le 2026-09-24 par `nadia-prof` (instance B),
-  apres partie complete jouee - deux motifs, voir le bloc de validation en fin de fiche. La ligne
-  `SCI-CM1-06` reste `non couvert`. Fiche ouverte par `camille-po` a l'ouverture du bloc de
-  construction du sprint s41 (paquet et catalogue livres et fusionnes dans `round-two`, commit
-  `b5b07966`).
+- **Statut global** : **DONE PEDAGOGIQUE PRONONCE - VALIDE** le 2026-09-24 par `nadia-prof`
+  (instance B), au second passage, apres correctif et nouvelles parties jouees. **Le refus du meme
+  jour, premier passage, reste ecrit dans cette fiche et n'est pas efface** : les deux verdicts se
+  lisent dans l'ordre ou ils ont ete prononces, bloc de validation puis section "Second passage".
+  Fiche ouverte par `camille-po` a l'ouverture du bloc de construction du sprint s41 (paquet et
+  catalogue livres et fusionnes dans `round-two`, commit `b5b07966`).
 - **Story** : `S41-SCI-CLASSER` - Classer des etres vivants d'apres un caractere commun observable
   (`docs/backlog/backlog.md`).
 - **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Le vivant, sa
@@ -34,8 +35,8 @@
   de `nadia-prof` (instance B). Aucun item de ce paquet ne doit contredire ce que ces deux paquets
   enseignent deja sur le meme objet.
 - **Lien decision** : `DEC-0095`.
-- **Derniere mise a jour** : 2026-09-24 (Done pedagogique REFUSE, `nadia-prof` instance B ;
-  ouverture le meme jour par `camille-po`).
+- **Derniere mise a jour** : 2026-09-24 (second passage, Done pedagogique VALIDE et refus leve,
+  `nadia-prof` instance B ; refus du premier passage et ouverture le meme jour).
 
 ---
 
@@ -236,3 +237,108 @@ ici : quatre jobs verts, 1701 tests, et trois enonces qui se dementent en une li
 Ce refus ne bloque pas le sprint suivant : il produit du backlog, et le correctif tient en trois
 enonces reecrits, une substitution d'espece, un indice reformule et un critere d'acceptation
 corrige. **Le lot revient devant moi avec ces cinq points, pas avec un paquet neuf.**
+
+---
+
+## Second passage - nadia-prof UNIQUEMENT, 2026-09-24
+
+> **Le refus ci-dessus n'est pas efface et ne le sera jamais** : un refus efface n'a aucune valeur
+> de preuve. Il est leve par le verdict qui suit, et l'histoire reste lisible dans l'ordre ou elle
+> s'est produite.
+
+- **Verdict** : **VALIDE** - **le refus du 2026-09-24 (premier passage) est leve.**
+- **Date** : 2026-09-24, apres le correctif de `lea-dev` (`bddd8233`, fusionne par `bcbe3b5f`) et la
+  correction du critere d'acceptation par `camille-po` (`2fe6846f`).
+- **Auditrice** : `nadia-prof`, instance B.
+- **Audit joue** : **oui, de nouveau.**
+
+### Conditions du second audit
+
+Arbre `round-two` a `bcbe3b5f`, modules reconstruits depuis cet arbre, application relancee depuis
+leurs classes compilees sur le JDK de la toolchain (21.0.10 rapporte par la machine virtuelle), sur
+un port dedie. **Trois parties completes de dix manches par appels HTTP reels**, avec erreurs
+volontaires - dont une partie ou je me suis trompee a chaque manche, pour lire tous les indices
+servis. **Les trois items que j'avais refuses m'ont ete servis en jeu**, ainsi que l'item de la
+fourmi, et c'est a l'ecran que je les juge, pas dans le fichier.
+
+### Les deux motifs du refus, repris un par un
+
+**Premier motif - les trois enonces qui s'affirmaient puis se niaient : leve.** Les trois items de
+milieu sont desormais servis sous cette forme, relevee a l'ecran :
+
+> *"La grenouille, le triton et l'ecureuil : lequel de ces trois etres vivants ne vit pas dans la
+> mare ?"*
+>
+> *"Le renard, l'ecureuil et le poisson rouge : lequel de ces trois etres vivants ne vit pas dans la
+> foret ?"*
+>
+> *"Le lion, la gazelle et le poisson-clown : lequel de ces trois etres vivants ne vit pas dans la
+> savane ?"*
+
+**Plus aucune proposition declarative.** Aucun des trois n'affirme plus que l'intrus occupe le
+milieu, et les trois sont maintenant sur le patron exact des items 3 et 6, qui etaient sains des le
+premier passage. **C'est le correctif que j'avais ecrit, applique tel quel.** La moitie *"reperer la
+diversite des especes d'un milieu"* du libelle est donc servie par trois items sains, la ou elle
+l'etait par trois items defectueux.
+
+**Second motif - le tetard compte comme un etre vivant distinct de la grenouille : leve.** Le tetard
+est remplace par le triton. **Le triton est un autre animal, pas un stade d'un des deux autres** :
+la contradiction avec `cm1-sciences-etapes-developpement.yaml` (`SCI-CM1-08`) n'existe plus.
+J'ajoute que le choix est bon sur le fond, et pas seulement sur le defaut que je visais : le triton
+est un habitant reel d'une mare, enseigne a ce niveau, et il partage avec la grenouille un
+caractere que l'ecureuil n'a pas, ce qui est exactement ce que l'item demande de reperer. **Le
+paquet reste coherent avec lui-meme** : l'ecureuil est l'intrus de la mare a l'item 8 et un
+habitant legitime de la foret a l'item 9, sans se contredire d'un item a l'autre - verifie en jeu,
+les deux items m'ont ete servis dans la meme partie.
+
+**La reserve jointe - l'indice de la fourmi : levee.** L'indice servi est desormais *"La plupart des
+fourmis n'ont pas d'ailes et se deplacent en marchant ou en grimpant."*, releve a l'ecran apres une
+erreur volontaire sur cet item. **Il ne tranche plus sur l'espece entiere** et il vise le caractere
+observable, ce que je demandais. La bonne reponse reste la bonne parmi la libellule et le papillon.
+
+### Le critere d'acceptation corrige - je l'ai relu, il correspond
+
+`camille-po` a reecrit le critere (`2fe6846f`). Il exige desormais que *"les trois etres vivants
+soient poses dans la question elle-meme, sur le patron deja employe sans defaut par les items 3 et
+6 du meme paquet"* et il interdit nommement *"une phrase declarative qui affirme comme un fait ce
+que la question demande ensuite de nier"*, avec le contre-exemple ecrit en toutes lettres. **C'est
+exactement ce que j'attendais, et c'est mieux que ce que j'avais demande** : le contre-exemple est
+dans le critere, donc le prochain paquet de milieu ne pourra pas retomber dedans par lecture
+distraite. Le defaut ne peut plus naitre de la story.
+
+### Ce qui tenait au premier passage et qui tient toujours
+
+Reverifie, pas suppose : `V3` (aucun tri d'une collection), plusieurs caracteres observables
+distincts, distracteurs toujours d'autres etres vivants reels, bonne reponse une seule fois,
+`CYC-1` contre `QLM-CP-01` et `QLM-CP-02`, traitement de l'erreur (indice des la premiere erreur,
+revelation a la troisieme sans dispenser du geste), niveau et ton. **Les huit items que j'avais
+demande de garder sont inchanges** - je l'ai verifie en les relisant, et non sur la foi du message
+de commit.
+
+### Ce que je n'ai pas corrige et qui reste a la charge d'un autre
+
+**Le commentaire d'en-tete du paquet n'a pas suivi son propre contenu.** La section `HIS-3` affirme
+encore *"les fourmis marchent et ne volent pas, a la difference des libellules et des papillons"* -
+c'est la formulation que l'indice vient precisement d'abandonner. **Ce n'est pas un motif de
+reserve** : ce texte n'est pas lu par l'enfant, et il ne change rien a ce qui est joue. Mais c'est
+le texte qu'un futur auteur lira pour savoir ce que le paquet tient, et il dit aujourd'hui autre
+chose que le paquet. A aligner par qui edite ce fichier ; ce n'est pas la porte pedagogique.
+
+### Ce dont je reste la seule garde, apres correctif
+
+**Aucun test n'a ete ajoute par ce correctif** (`bddd8233` ne touche que deux fichiers de contenu).
+Les trois proprietes nommees au premier passage restent tenues par moi seule, et le passage du
+refus a la validation ne les couvre pas :
+
+- **Qu'un enonce ne se contredise pas lui-meme.** Ce lot l'a corrige item par item ; rien
+  n'empechera le prochain paquet de recommencer, sauf le critere de la story et une lecture.
+- **Qu'un paquet ne contredise pas un autre paquet du meme niveau sur le meme objet du vivant.**
+- **L'exactitude zoologique de chaque caractere.**
+
+### Consequence pour la matrice
+
+**`camille-po` peut passer la ligne `SCI-CM1-06` a `couvert-valide`**, avec la mention de couverture
+partielle exigee d'avance, reprise mot pour mot :
+
+> *"raisonnement sur un caractere, item par item ; le tri d'une collection entiere reste non
+> couvert"*
