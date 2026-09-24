@@ -1,0 +1,86 @@
+schema: 1
+id: cp-deplacements-quadrillage
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CP"
+  domaine: "Espace et géométrie"
+  competence: "Se repérer et décrire des déplacements sur un quadrillage simple"
+lignesDeReferentiel: ["MAT-CP-10"]
+#
+# S42-MAT-TEXTUEL (docs/backlog/backlog.md, section "Sprint 42"). Terrain 2, instance B de
+# nadia-prof (squad/sprints/s42-fusion-six-lignes-deux-instances/planning.md).
+#
+# Arbitrage prealable deja rendu, cite en entier par la story, aucun arbitrage neuf a router
+# (ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-
+# ligne-marginale.md, section 17.7) : decrire un deplacement n'est pas une designation et se sert en
+# choix textuel, dans un second paquet distinct de celui qui servira le palier 2 (se reperer et se
+# deplacer sur un quadrillage, designation sur un dessin, hors de portee ici). Ce paquet ne couvre
+# QUE la moitie "decrire un deplacement". Mention de couverture partielle due au Done pedagogique,
+# reprise mot pour mot du critere d'acceptation de la story pour tracabilite - la tenue de la cellule
+# 227 de MATRICE-couverture.md reste a camille-po, pas a moi :
+# "moitie 'decrire un deplacement' seule, en choix textuel ; la moitie 'se reperer et se deplacer'
+# (designation sur quadrillage, palier 2) reste non couverte".
+#
+# Avis de faisabilite de theo-archi (squad/sprints/s42-fusion-six-lignes-deux-instances/
+# avis-faisabilite.md, section 6.3) : la contrainte reelle du lot est LON-1/LON-2 (ADR-0089) - au CP,
+# un enonce compte au plus quinze mots et au plus deux phrases, la seconde etant la question. Chaque
+# enonce ci-dessous pose la scene en une premiere phrase courte, puis la question en seconde phrase,
+# sans texteSupport : mesure a l'ecriture, aucun enonce ne depasse onze mots.
+#
+# Aucune condition pedagogique bloquante n'est posee sur cette ligne (meme avis, section 7.5). Les
+# quatre formes de deplacement du critere d'acceptation (avancer, reculer, tourner a gauche, tourner
+# a droite) sont chacune en bonne reponse trois fois. Aucun item ne designe une case ou un point sur
+# une image : ce paquet ne porte aucune illustration, palier 2 hors de portee ici.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede le point d'interrogation est insecable. Ce paquet entre a
+# zero occurrence detachable.
+items:
+  - enonce: "Zoé va vers la case de devant. Quel geste fait-elle ?"
+    bonneReponse: "avancer"
+    distracteurs: ["reculer", "tourner à droite"]
+    indice: "Elle va vers l'avant, pas vers l'arrière."
+  - enonce: "Malo rejoint la case juste devant lui. Quel geste fait-il ?"
+    bonneReponse: "avancer"
+    distracteurs: ["tourner à gauche", "reculer"]
+    indice: "Il va vers l'avant, pas vers l'arrière."
+  - enonce: "Nina quitte sa case pour celle d'en face. Quel geste fait-elle ?"
+    bonneReponse: "avancer"
+    distracteurs: ["tourner à droite", "tourner à gauche"]
+    indice: "Elle va vers l'avant, pas vers l'arrière."
+  - enonce: "Iris va vers la case de derrière. Quel geste fait-elle ?"
+    bonneReponse: "reculer"
+    distracteurs: ["avancer", "tourner à gauche"]
+    indice: "Elle va vers l'arrière, pas vers l'avant."
+  - enonce: "Hugo rejoint la case juste derrière lui. Quel geste fait-il ?"
+    bonneReponse: "reculer"
+    distracteurs: ["tourner à droite", "avancer"]
+    indice: "Il va vers l'arrière, pas vers l'avant."
+  - enonce: "Léa quitte sa case pour celle de derrière. Quel geste fait-elle ?"
+    bonneReponse: "reculer"
+    distracteurs: ["tourner à gauche", "tourner à droite"]
+    indice: "Elle va vers l'arrière, pas vers l'avant."
+  - enonce: "Tom regarde maintenant vers la gauche. Quel geste fait-il ?"
+    bonneReponse: "tourner à gauche"
+    distracteurs: ["tourner à droite", "avancer"]
+    indice: "Il change de côté, vers la gauche."
+  - enonce: "Nour fait face au mur de gauche. Quel geste fait-elle ?"
+    bonneReponse: "tourner à gauche"
+    distracteurs: ["reculer", "tourner à droite"]
+    indice: "Elle change de côté, vers la gauche."
+  - enonce: "Ali change de direction et regarde à gauche. Quel geste fait-il ?"
+    bonneReponse: "tourner à gauche"
+    distracteurs: ["avancer", "reculer"]
+    indice: "Il change de côté, vers la gauche."
+  - enonce: "Elsa regarde maintenant vers la droite. Quel geste fait-elle ?"
+    bonneReponse: "tourner à droite"
+    distracteurs: ["tourner à gauche", "reculer"]
+    indice: "Elle change de côté, vers la droite."
+  - enonce: "Ivan fait face au mur de droite. Quel geste fait-il ?"
+    bonneReponse: "tourner à droite"
+    distracteurs: ["avancer", "tourner à gauche"]
+    indice: "Il change de côté, vers la droite."
+  - enonce: "Maya change de direction et regarde à droite. Quel geste fait-elle ?"
+    bonneReponse: "tourner à droite"
+    distracteurs: ["reculer", "avancer"]
+    indice: "Elle change de côté, vers la droite."

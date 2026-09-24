@@ -883,7 +883,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " à 8) ou de courtes phrases sur ce que chaque droit garantit (items 9 à 12),"
                     + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
                     + " 2026-09-24 sur le paquet servi : aucune des 36 propositions ne commence par un"
-                    + " chiffre"));
+                    + " chiffre"),
+            // S42-MAT-TEXTUEL : paquet neuf de mathematiques CP, moitie textuelle de MAT-CP-10.
+            Map.entry("cp-deplacements-quadrillage",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont les quatre formes de deplacement en"
+                    + " texte libre (\"avancer\", \"reculer\", \"tourner à gauche\", \"tourner à"
+                    + " droite\"), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-24 sur le paquet servi : aucune des 36 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
