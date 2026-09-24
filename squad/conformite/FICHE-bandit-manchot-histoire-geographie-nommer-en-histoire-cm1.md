@@ -18,7 +18,10 @@
 - **Fiche de l'ancetre** : `FICHE-bandit-manchot-histoire-geographie-cm1.md`
 - **Statut global** : **VALIDE** (premier passage sur cette entree, 2026-09-11, s35). **`CONS-4` levee sur cette entree**, et **`CONS-5` ouverte** (non
   bloquante) : trois items de ce paquet ne font pas ce que leur consigne annonce
-- **Derniere mise a jour** : 2026-09-11 (s35)
+- **Derniere mise a jour** : 2026-09-24 (ajout, `camille-po`, voir amendement ci-dessous)
+- **Amendement du 2026-09-24 (s42, `camille-po`)** : `S42-HG-ROIS` ajoute trois items neufs
+  portant `HG-CM1-05`, non couverts par le verdict de 2026-09-11 ci-dessous. Voir la section
+  "Ajout du 2026-09-24" plus bas.
 
 ## Competences visees
 
@@ -41,6 +44,45 @@ plus les trois criteres ajoutes par `DEC-0088`.
       issus de la scission (`DEC-0088`), pour que `HIS-1` continue de se compter sur le lot de
       matiere entier
 - [x] Plus d'items que de manches (`ADR-0023`) - 45 pour 10
+
+## Ajout du 2026-09-24 (s42, `camille-po`) - `S42-HG-ROIS`
+
+Trois items neufs ajoutes en fin de paquet (46e a 48e position) par `S42-HG-ROIS`
+(`docs/backlog/backlog.md`), portant tous `HG-CM1-05` : nommer, parmi les quatre rois du libelle
+(Louis IX, Francois Ier, Henri IV, Louis XIV), celui que decrit l'enonce a partir d'une
+realisation ou d'une situation dans le temps par rapport a un autre roi du libelle - jamais un
+jugement de valeur sur le personnage (`BIA-5`). Cette story etend le paquet existant, elle n'ouvre
+pas une forme neuve (`DEC-0077`, section 9). Livres et fusionnes dans `round-two` au commit
+`cdf0229f` (contenu au commit `cbe35d0b`). Lien decision : `DEC-0098`.
+
+`HG-CM1-05` est conjonctive ("nommer et situer dans le temps") : les criteres qui portent sur le
+paquet livre dans son entier (`HIS-1`, les quatre rois chacun en bonne reponse au moins une fois)
+se verifient sur les **cinq** items neufs de `S42-HG-ROIS` pris ensemble - les trois d'ici et les
+deux de `cm1-histoire-geographie-situer-dans-le-temps.yaml` (voir
+`FICHE-bandit-manchot-histoire-geographie-situer-dans-le-temps-cm1.md`), pas sur les trois d'ici
+seuls.
+
+**Le bloc de validation pedagogique ci-dessous porte sur les 45 items anterieurs a cet ajout
+(verdict du 2026-09-11, s35) : il ne couvre pas ces trois items neufs.** Ils restent en attente
+d'un Done pedagogique propre. `HG-CM1-05` reste `non couvert` dans `MATRICE-couverture.md` au
+moment de cet ajout.
+
+Criteres d'acceptation de `S42-HG-ROIS` portant sur ces items, repris de la story :
+
+- [ ] Chaque item porte sur l'un des quatre rois nommes par le libelle, sa datation ou sa
+      situation dans le temps par rapport a un autre roi du libelle - jamais un jugement de valeur
+      sur le personnage (`BIA-5`).
+- [ ] Sur les cinq items neufs pris ensemble (les trois d'ici et les deux du paquet "situer dans
+      le temps"), au plus un tiers demande une date, un nom ou un chiffre a restituer seul ; les
+      deux autres tiers demandent d'ordonner deux rois dans le temps, d'associer un roi a un fait,
+      ou d'extraire une information d'un document (`HIS-1`).
+- [ ] Une seule des trois propositions est defendable par item, aucune reponse discutable
+      (`HIS-2`).
+- [ ] Chaque fait historique (date, nom, filiation) porte sa source dans le commentaire du
+      paquet, et aucun fait n'est errone (`HIS-3`).
+- [ ] Sur les cinq items neufs pris ensemble, les quatre rois du libelle sont chacun en bonne
+      reponse au moins une fois.
+- [ ] Chaque item declare `HG-CM1-05` et uniquement elle.
 
 ---
 
