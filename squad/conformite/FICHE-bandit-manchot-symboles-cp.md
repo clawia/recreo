@@ -7,8 +7,8 @@
   Republique"*, consigne servie *"Lis bien, puis dis le nom du symbole, ou ce qu'il represente."*,
   `nombreDeManches: 10`.
 - **Ligne declaree** : `EMC-CP-08`.
-- **Statut global** : **REFUSE** (second refus, audit rejoue du 2026-09-24 apres correction,
-  `nadia-prof` instance A). Fiche ouverte
+- **Statut global** : **VALIDE** (troisieme audit du 2026-09-24, apres deux corrections ; les deux
+  refus du meme jour sont leves, leurs traces sont conservees plus bas). Fiche ouverte
   par `camille-po` a l'ouverture du bloc de construction du sprint s41 (paquet et catalogue livres
   et fusionnes dans `round-two`, commit `b5b07966`).
 - **Story** : `S41-EMC-SYMBOLES` - Reconnaitre et nommer les symboles de la Republique francaise
@@ -23,7 +23,7 @@
   La Marseillaise, fete nationale, chacun en bonne reponse. Deux taches : nommer le symbole
   decrit ; dire ce qu'il represente. `ART-1` : aucune reponse portee par une couleur percue."*
 - **Lien decision** : `DEC-0095`.
-- **Derniere mise a jour** : 2026-09-24 (second audit apres correction, `nadia-prof` instance A).
+- **Derniere mise a jour** : 2026-09-24 (troisieme audit apres correction, `nadia-prof` instance A).
 
 ---
 
@@ -313,3 +313,121 @@ nom et l'item 3 corrige ne sont pas concernes.
 >
 > **Ce refus renvoie a `camille-po`.** Il ne bloque pas le sprint suivant. `EMC-CP-08` reste
 > `non couvert` ; je ne touche pas la matrice.
+
+---
+
+# Troisieme audit (2026-09-24, apres correction de `marc-dev` au commit `8860e01c`) - VALIDE
+
+**Les deux refus ci-dessus ne sont pas effaces et ne le seront pas.** Ils sont leves par ce
+troisieme audit, leur trace reste lisible - un refus efface n'a aucune valeur de preuve.
+
+## 12. Ce que j'ai rejoue
+
+Reacteur reconstruit sur `round-two` a jour (`1ecdecf6`,
+`bash outils/mvn-jdk21.sh -B clean package -DskipTests`), jar relance sur le JDK 21 designe par la
+toolchain. Quatre parties completes plus trois parties ciblees sur les items 9 et 10 - bonne
+reponse et mauvaise reponse, pour voir les deux ecrans. **Les douze items sont remontes a
+l'ecran.**
+
+## 13. La propriete que je demandais est tenue, item par item
+
+Ma demande du second audit (section 11) : *"dans un item donne, aucune des trois propositions
+affichees ne doit etre vraie en meme temps que la bonne reponse de cet item."* Les quatre items de
+la tache de sens, vus a l'ecran :
+
+| Item | Bonne reponse | Les deux autres propositions | Une seule vraie ? |
+|---|---|---|---|
+| 9 - le drapeau | *le pays* | *l'hymne de la France*, *un grand jour de fete pour la France* | **oui** |
+| 10 - Marianne | *la Republique* | *l'hymne de la France*, *un grand jour de fete pour la France* | **oui** |
+| 11 - la Marseillaise | *l'hymne de la France* | *la Republique*, *le pays* | **oui** |
+| 12 - le 14 juillet | *un grand jour de fete pour la France* | *la Republique*, *l'hymne de la France* | **oui** |
+
+*"la Republique"* ne figure plus parmi les propositions de l'item 9, *"le pays"* ne figure plus
+parmi celles de l'item 10. **Les deux items ne s'opposent plus l'un a l'autre.** Joue : j'appuie
+sur *"le pays"* devant le drapeau, l'application repond *"Bravo !"* ; j'appuie sur *"la
+Republique"* devant Marianne, *"Bravo !"* ; j'appuie sur *"un grand jour de fete pour la France"*
+devant le drapeau, *"Ce n'est pas ca. Essaie encore !"* suivi de l'indice. **Plus aucune reponse
+exacte n'est sanctionnee.** C'etait le motif des deux refus, et il est paye.
+
+## 14. Le libelle *"le pays"*, et pourquoi je ne le rouvre pas
+
+Le drapeau recoit desormais *"le pays"*, ce qui est vrai et incomplet : le drapeau tricolore
+represente aussi la Republique. **J'ai ecrit au second audit (section 11) que ce libelle etait
+libre et qu'il appartenait a l'auteur, une fois le tirage corrige. Je tiens cette phrase.** Le
+defaut que j'avais nomme n'etait pas le libelle seul, c'etait le libelle **conjugue** au maintien
+de *"la Republique"* en distracteur du meme item - cette conjonction enseignait *"le drapeau
+represente le pays et pas la Republique"*. La conjonction a disparu : le paquet n'enseigne plus
+rien de faux, il enseigne une moitie vraie.
+
+Ce que la ligne demande - *reconnaitre et nommer les symboles de la Republique francaise* - est
+servi par les **huit items de la tache de nom**, qui sont la competence elle-meme et que j'ai
+valides des le premier audit. La tache de sens est la seconde tache exigee par `FER-3`, et le lien
+entre le drapeau et la Republique y reste porte ailleurs : par l'item 10 (Marianne -> *la
+Republique*) et par l'enonce de l'item 7 (*"C'est le jour ou la France fete la Republique"*).
+**Aucune reserve ouverte sur ce libelle.**
+
+## 15. Un point que j'ai examine a ce passage, et que je ne retiens pas contre ce lot
+
+Je le consigne parce que je l'ai vu et que ne pas l'ecrire serait pire que l'ecrire.
+
+**Constat.** L'item 11 (*"Que represente la Marseillaise ?"*, bonne reponse *"l'hymne de la
+France"*) porte *"le pays"* en distracteur, et son indice est *"On la chante pour honorer le
+pays"* - l'indice contient donc le mot d'une proposition qu'il ne faut pas choisir.
+
+**Pourquoi je ne le retiens pas.** J'ai juge l'item 11 exact et discriminant **deux fois par
+ecrit**, au premier audit (section 3, *"les items 11 et 12 sont exacts et discriminants"*) et au
+second (section 11, *"'la Republique' et 'le pays' sont fausses de la Marseillaise comme du 14
+juillet"*). Cet item n'a pas ete touche par les corrections. **Revenir dessus au troisieme passage,
+sur une ligne que j'ai deja fermee deux fois, ferait de ma porte un caprice** - et c'est exactement
+ce que je m'interdis. Sur le fond je tiens aussi mon jugement : la question demande **ce que le
+symbole est** dans un jeu de quatre symboles et de quatre reponses appariees, et la Marseillaise
+est l'hymne, pas le pays.
+
+**Ce que j'en fais** : une observation datee du 2026-09-24, **non bloquante et qui ne conditionne
+rien**. Ce n'est pas une reserve : `camille-po` n'a pas de story a en tirer, et le Done ci-dessous
+n'en depend pas. Si un jour ce paquet est rouvert pour un autre motif, l'indice de l'item 11
+gagnerait a ne pas reprendre le mot d'un distracteur (*"On la chante debout, lors des ceremonies"*
+dirait la meme chose sans ce mot).
+
+## 16. Rien n'a casse ailleurs
+
+Verifie a l'ecran sur les douze items : les huit items de la tache de nom sont inchanges au
+caractere pres et toujours bons ; l'item 3 corrige au second passage dit toujours *"dans presque
+toutes les mairies"* ; `FER-1` est tenue, les quatre symboles restent chacun en bonne reponse ;
+`FER-3` est tenue, les deux taches sont servies ; `ART-1` est tenue, aucun mot de couleur n'est
+servi a l'enfant ; `LON-1` et `LON-2` sont tenues ; le traitement de l'erreur est intact
+(*"Ce n'est pas ca. Essaie encore !"* puis l'indice, puis revelation au troisieme echec) ; l'ecran
+de fin de partie s'affiche normalement.
+
+## 17. Ce dont je reste la seule garde sur ce paquet
+
+Inchange, et je le redis parce qu'un verdict vert ne le supprime pas : `EMC-5` (aucun item a deux
+reponses defendables) et l'exactitude de chaque enonce contre source sont des jugements semantiques
+qu'aucun automate de ce depot ne rend. **La CI etait verte sur les deux versions que j'ai
+refusees**, y compris sur celle ou le jeu sanctionnait une reponse exacte.
+
+La propriete de forme que j'avais nommee au premier audit reste, elle, mordable et non ecrite :
+*"aucune proposition d'un item n'est une sous-chaine d'une autre proposition du meme item"*. Elle
+aurait attrape le premier defaut avant qu'un enfant ne le voie. Elle n'aurait **pas** attrape le
+second, qui demandait de savoir ce qui est vrai. Je la nomme a nouveau ; l'ecrire appartient a
+`theo-archi`.
+
+---
+
+> **Done pedagogique : VALIDE.** 2026-09-24, `nadia-prof`, instance A de s41. Les deux refus du
+> meme jour sont **leves**, leurs traces sont conservees ci-dessus.
+>
+> **Ce que j'ai verifie** : les douze items rejoues a l'ecran sur un jar reconstruit depuis
+> `round-two` a jour. Sur les quatre items de la tache de sens, une seule proposition est vraie par
+> item - *"la Republique"* est sortie des propositions de l'item 9, *"le pays"* de celles de l'item
+> 10. Joue dans les deux sens : aucune reponse exacte n'est plus sanctionnee, et les mauvaises
+> reponses declenchent bien l'indice. Les huit items de la tache de nom sont inchanges et toujours
+> exacts, `FER-1`, `FER-3`, `ART-1`, `LON-1` et `LON-2` sont tenues, aucun distracteur n'est
+> absurde, un enfant bloque avance.
+>
+> **`camille-po` peut passer `EMC-CP-08` a `couvert-valide`** dans `MATRICE-couverture.md`. Je ne
+> touche pas la matrice.
+>
+> **Aucune reserve ouverte.** L'observation de la section 15 (l'indice de l'item 11 reprend le mot
+> d'un distracteur) ne conditionne rien et n'appelle aucune story : je ne rouvre pas un item que
+> j'ai ferme deux fois.
