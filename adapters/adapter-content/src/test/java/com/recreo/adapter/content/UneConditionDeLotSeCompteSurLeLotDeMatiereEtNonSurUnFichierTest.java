@@ -296,8 +296,10 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " fichiers a la cloture de s29 ; S33-PAL2-1 (s34) ajoute"
                         + " cp-frise-de-la-journee (QLM-CP-14), soit 6 fichiers ; S35-QLM11-PLANCLASSE"
                         + " (s35) ajoute cp-plan-de-la-classe (QLM-CP-11), premiere livraison reelle"
-                        + " de cette ligne, soit 7 fichiers")
-                .hasSize(7);
+                        + " de cette ligne, soit 7 fichiers ; S41-QLM-HYGIENE et S41-QLM-SAISONS (s41)"
+                        + " ajoutent cp-qlm-hygiene (QLM-CP-04) et cp-qlm-saisons (QLM-CP-13), soit 9"
+                        + " fichiers")
+                .hasSize(9);
         assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")).stream().mapToInt(Paquet::items).sum())
                 .as("S28-1 (ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-"
                         + "lots.md, section 3.1) : 24 items a la cloture de s27, +6 par ligne pour"
@@ -307,8 +309,11 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " (QLM-CP-02, QLM-CP-07), soit 64 items a la cloture de s29 ; S33-PAL2-1"
                         + " (s34) ajoute onze items pour le seul paquet de designation servi"
                         + " (cp-frise-de-la-journee, QLM-CP-14), soit 75 items ; S35-QLM11-PLANCLASSE"
-                        + " (s35) ajoute six items (cp-plan-de-la-classe, QLM-CP-11), soit 81 items")
-                .isEqualTo(81);
+                        + " (s35) ajoute six items (cp-plan-de-la-classe, QLM-CP-11), soit 81 items ;"
+                        + " S41-QLM-HYGIENE (s41) ajoute quinze items (cp-qlm-hygiene, QLM-CP-04),"
+                        + " soit 96 items ; S41-QLM-SAISONS (s41) ajoute seize items (cp-qlm-saisons,"
+                        + " QLM-CP-13), soit 112 items")
+                .isEqualTo(112);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("1 fichier a la cloture de s27, inchange a S28-1 qui n'a touche que la matiere"
                         + " questionner le monde ; S28-2 et S29-2 etendent ce meme fichier, motif"

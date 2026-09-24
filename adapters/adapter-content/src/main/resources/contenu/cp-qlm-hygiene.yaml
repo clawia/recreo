@@ -1,0 +1,97 @@
+schema: 1
+id: cp-qlm-hygiene
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Connaître quelques règles d'hygiène de vie (sommeil, alimentation, hygiène du corps) et leur effet sur la santé."
+lignesDeReferentiel: ["QLM-CP-04"]
+#
+# S41-QLM-HYGIENE (docs/backlog/backlog.md, sprint 41). Arbitrage prealable deja rendu, aucun
+# arbitrage neuf a router (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-
+# a-huit-lignes.md, ligne 370 ; precise par ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-
+# programme.md, ligne 368) : "moyenne, sous BIA-4. Terrain sur si aucun item n'interroge l'enfant sur
+# sa propre vie." Referentiel copie conforme depuis
+# squad/programme/questionner-le-monde/competences-cp.md (QLM-CP-04).
+#
+# Adjacence de contenu nommee par l'avis de faisabilite de theo-archi (s41, section 6.4), a lire
+# avant d'ecrire ce paquet : cp-eps-corps-effort.yaml (EPS-CP-10, EPS-CP-11) sert deja l'eau et le
+# repos, mais borne tout au contexte immediat de l'effort physique ("autour de l'effort"). Aucun item
+# de ce paquet ne porte sur l'effort physique : le sommeil, l'alimentation et l'hygiene du corps y
+# sont traites comme des regles de vie quotidiennes, jamais rapportees a un effort.
+#
+# BIA-4 : chaque enonce pose une regle generale et son effet sur la sante, formule a la troisieme
+# personne impersonnelle ("pourquoi faut-il...", "que doit-on faire...", "que risque-t-on..."),
+# jamais une question sur ce que l'enfant fait, mange ou vit lui-meme. Aucune formulation du type
+# "que manges-tu au petit dejeuner ?" qui presuppose une reponse personnelle.
+#
+# Les trois domaines du libelle (sommeil, alimentation, hygiene du corps) sont chacun en bonne
+# reponse au moins une fois : items 1 a 5 (sommeil), items 6 a 10 (alimentation), items 11 a 15
+# (hygiene du corps).
+#
+# FER-2 : quinze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "Pourquoi est-il important de bien dormir la nuit ?"
+    bonneReponse: "pour que le corps se repose et récupère"
+    distracteurs: ["pour avoir plus de devoirs le lendemain", "pour manger davantage au réveil"]
+    indice: "Pendant le sommeil, le corps se répare et le cerveau se repose."
+  - enonce: "Que ressent-on souvent quand on n'a pas assez dormi ?"
+    bonneReponse: "de la fatigue et moins d'attention"
+    distracteurs: ["une grande forme toute la journée", "moins faim que d'habitude"]
+    indice: "Un corps qui manque de sommeil récupère moins bien."
+  - enonce: "Quelle habitude aide à bien s'endormir le soir ?"
+    bonneReponse: "se coucher à une heure régulière"
+    distracteurs: ["regarder un écran juste avant de dormir", "boire une boisson sucrée avant de se coucher"]
+    indice: "Un rythme régulier aide le corps à trouver le sommeil."
+  - enonce: "Pourquoi le corps a-t-il besoin d'une nuit complète de sommeil ?"
+    bonneReponse: "pour récupérer de la fatigue de la journée"
+    distracteurs: ["pour arrêter de grandir", "pour perdre l'appétit"]
+    indice: "Le sommeil permet au corps de se remettre en forme."
+  - enonce: "Que risque-t-on si l'on dort trop peu plusieurs nuits de suite ?"
+    bonneReponse: "d'être malade plus facilement"
+    distracteurs: ["de courir plus vite", "de voir moins bien les couleurs"]
+    indice: "Un corps fatigué se défend moins bien contre les microbes."
+  - enonce: "Pourquoi faut-il manger des fruits et des légumes régulièrement ?"
+    bonneReponse: "pour apporter des vitamines au corps"
+    distracteurs: ["pour avoir plus de bonbons après le repas", "pour retarder l'heure du repas"]
+    indice: "Les fruits et les légumes apportent des vitamines utiles au corps."
+  - enonce: "Que doit-on faire pour bien nourrir son corps chaque jour ?"
+    bonneReponse: "manger des aliments variés"
+    distracteurs: ["manger toujours le même aliment", "manger le plus possible d'un coup"]
+    indice: "Un repas varié apporte différents éléments utiles au corps."
+  - enonce: "Pourquoi vaut-il mieux ne pas manger trop de sucreries ?"
+    bonneReponse: "pour protéger ses dents et sa santé"
+    distracteurs: ["pour grandir plus vite", "pour avoir plus faim au dîner"]
+    indice: "Trop de sucre abîme les dents et n'apporte pas ce dont le corps a besoin."
+  - enonce: "Pourquoi mange-t-on à des heures régulières dans la journée ?"
+    bonneReponse: "pour donner au corps l'énergie dont il a besoin"
+    distracteurs: ["pour ne plus jamais avoir faim", "pour faire plaisir aux adultes"]
+    indice: "Le corps a besoin d'énergie répartie tout au long de la journée."
+  - enonce: "Que risque-t-on si l'on ne mange pas assez pendant la journée ?"
+    bonneReponse: "de manquer d'énergie"
+    distracteurs: ["de voir moins bien de loin", "d'avoir plus chaud"]
+    indice: "La nourriture donne au corps l'énergie pour bouger et réfléchir."
+  - enonce: "Pourquoi faut-il se laver les mains avant de manger ?"
+    bonneReponse: "pour enlever les microbes qui pourraient rendre malade"
+    distracteurs: ["pour que le repas soit plus rapide à préparer", "pour faire durer le repas plus longtemps"]
+    indice: "Les mains touchent beaucoup d'objets où se cachent des microbes."
+  - enonce: "Pourquoi se brosse-t-on les dents chaque jour ?"
+    bonneReponse: "pour éviter les caries et garder des dents saines"
+    distracteurs: ["pour faire plaisir au dentiste", "pour avoir une haleine sucrée"]
+    indice: "Se brosser les dents enlève les résidus qui abîment l'émail."
+  - enonce: "Pourquoi prend-on une douche ou un bain régulièrement ?"
+    bonneReponse: "pour nettoyer la peau et enlever la saleté"
+    distracteurs: ["pour avoir moins froid en hiver", "pour changer de vêtements plus souvent"]
+    indice: "La peau accumule de la saleté et de la sueur au fil de la journée."
+  - enonce: "Que doit-on faire juste après être allé aux toilettes ?"
+    bonneReponse: "se laver les mains"
+    distracteurs: ["se peigner les cheveux", "changer de chaussures"]
+    indice: "Se laver les mains à ce moment évite de transporter des microbes."
+  - enonce: "Pourquoi faut-il se couper les ongles régulièrement ?"
+    bonneReponse: "pour éviter que la saleté s'y accumule"
+    distracteurs: ["pour avoir des mains plus jolies", "pour jouer plus longtemps dehors"]
+    indice: "Des ongles longs retiennent plus facilement la saleté."

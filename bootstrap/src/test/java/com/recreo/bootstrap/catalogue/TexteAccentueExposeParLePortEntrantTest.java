@@ -281,6 +281,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-devise-cp",
             // S40-EXTRACTION (s40) : entree neuve, extraction d'information texte et tableau
             "bandit-manchot-sciences-extraire-information-cm1",
+            // S41-QLM-HYGIENE (s41) : entree neuve, QLM-CP-04, regles d'hygiene de vie.
+            "bandit-manchot-hygiene-cp",
+            // S41-QLM-SAISONS (s41) : entree neuve, QLM-CP-13, mois et saisons.
+            "bandit-manchot-saisons-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -452,6 +456,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La devise de la France",
             // S40-EXTRACTION (s40) : titre neuf.
             "Lis le document scientifique",
+            // S41-QLM-HYGIENE (s41) : titre neuf.
+            "Les règles d'hygiène de vie",
+            // S41-QLM-SAISONS (s41) : titre neuf.
+            "Les mois et les saisons",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -649,6 +657,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis la devise, ou choisis le bon exemple.",
             // S40-EXTRACTION (s40) : consigne neuve.
             "Lis le texte ou le tableau, puis réponds à la question.",
+            // S41-QLM-HYGIENE (s41) : consigne neuve.
+            "Lis bien, puis dis quelle règle suivre, ou pourquoi elle est bonne pour la santé.",
+            // S41-QLM-SAISONS (s41) : consigne neuve.
+            "Lis bien, puis nomme le mois ou la saison, ou dis lequel vient avant ou après.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1004,7 +1016,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S40-EXTRACTION (s40) : competence neuve, libelle du descripteur du paquet, mot pour
             // mot (cm1-sciences-extraire-information.yaml, ligne SCI-CM1-20).
             "Extraire une information explicitement présente dans un document scientifique (texte "
-                    + "ou tableau) et la restituer (référentiel CM1, ligne SCI-CM1-20)");
+                    + "ou tableau) et la restituer (référentiel CM1, ligne SCI-CM1-20)",
+            // S41-QLM-HYGIENE (s41) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-04).
+            "Connaître quelques règles d'hygiène de vie (sommeil, alimentation, hygiène du corps) "
+                    + "et leur effet sur la santé.",
+            // S41-QLM-SAISONS (s41) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-13).
+            "Nommer et ordonner les mois de l'année et les saisons.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
