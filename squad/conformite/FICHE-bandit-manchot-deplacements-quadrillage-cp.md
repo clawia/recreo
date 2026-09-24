@@ -5,15 +5,20 @@
   `adapters/adapter-content/src/main/resources/contenu/cp-deplacements-quadrillage.yaml`
   (12 items, type `question`).
 - **Entree de catalogue** : `bandit-manchot-deplacements-quadrillage-cp`, titre servi *"Decrire un
-  deplacement"*, consigne servie *"Lis bien, puis dis quel geste est decrit."*,
-  `nombreDeManches: 10`.
+  deplacement"*, consigne servie *"Lis bien, puis dis sur quelle case l'enfant se trouve."*
+  (corrigee par `lea-dev` au second passage ; elle disait *"Lis bien, puis dis quel geste est
+  decrit."* au premier), `nombreDeManches: 10`.
 - **Ligne declaree** : `MAT-CP-10`, **couverture partielle des l'origine** (voir ci-dessous).
-- **Statut global** : **DONE PEDAGOGIQUE REFUSE** le 2026-09-24 par `nadia-prof` (instance B),
-  apres avoir joue le jar servi. Deux motifs, chacun suffisant (voir le bloc de validation en bas
-  de fiche). **`MAT-CP-10` reste `non couvert`** et la mention actuellement portee ligne 227 de
-  `MATRICE-couverture.md` est a **retirer**, pas a inverser. Fiche ouverte par `camille-po` a
-  l'ouverture du bloc de construction du sprint s42 (paquet et catalogue livres et fusionnes dans
-  `round-two`, commit `00952c9a`, contenu au commit `051ba2bb`).
+- **Statut global** : **DONE PEDAGOGIQUE PRONONCE - VALIDE SOUS RESERVE** le 2026-09-24 par
+  `nadia-prof` (instance B), **au second passage**, apres avoir rejoue le jar reconstruit.
+  **REFUSE au premier passage** le meme jour, sur deux motifs chacun suffisant ; **corrige par
+  `lea-dev`** (commits `da1b0b61`, `7317b990`) ; **les deux motifs sont payes**, verifie en
+  rejouant. **Les deux blocs de validation sont conserves ci-dessous, dans l'ordre** - un refus
+  efface n'a aucune valeur de preuve. **`MAT-CP-10` passe a `en cours`**, jamais a
+  `couvert-valide`, avec la mention de couverture partielle. **Trois reserves neuves et datees du
+  second passage**, qui ne retiennent pas la ligne. Fiche ouverte par `camille-po` a l'ouverture du
+  bloc de construction du sprint s42 (paquet et catalogue livres et fusionnes dans `round-two`,
+  commit `00952c9a`, contenu au commit `051ba2bb`).
 - **Story** : `S42-MAT-TEXTUEL` - Se reperer et decrire des deplacements sur un quadrillage
   simple, moitie textuelle seulement (`docs/backlog/backlog.md`).
 - **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Espace et geometrie" -
@@ -36,7 +41,8 @@
   alors que `ARBITRAGE-PREALABLE-s32`, section 17.7, dit l'inverse). La correction de cette
   cellule est hors du perimetre de cette fiche.
 - **Lien decision** : `DEC-0098`.
-- **Derniere mise a jour** : 2026-09-24 (Done pedagogique REFUSE, `nadia-prof` instance B).
+- **Derniere mise a jour** : 2026-09-24 (second passage - Done pedagogique VALIDE SOUS RESERVE,
+  `nadia-prof` instance B ; le REFUS du premier passage est conserve).
 
 ---
 
@@ -72,9 +78,13 @@ l'audit de `nadia-prof`.
 
 ---
 
-## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
+## Bloc de validation pedagogique - PREMIER PASSAGE - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+>
+> **Conserve tel quel apres la correction et la levee du refus.** Un refus efface n'a aucune valeur
+> de preuve : il se lit avec son motif, sa date et ce qui l'a paye. Le verdict qui fait foi
+> aujourd'hui est celui du **second passage**, plus bas dans cette fiche.
 
 - **Verdict** : **REFUSE**
 - **Date** : 2026-09-24
@@ -234,3 +244,161 @@ textuelle** - reprise mot pour mot :
 > deplacer' (designation sur quadrillage, palier 2) reste non couverte"**
 
 La ligne passera alors a **`en cours`**, **jamais a `couvert-valide`** sur cette seule moitie.
+
+---
+
+## Bloc de validation pedagogique - SECOND PASSAGE - nadia-prof UNIQUEMENT
+
+> Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent. **C'est le verdict qui fait foi.**
+
+- **Verdict** : **VALIDE SOUS RESERVE**
+- **Date** : 2026-09-24 (second passage, le meme jour que le refus)
+- **Auditrice** : `nadia-prof`, instance B (`DEC-0098`).
+- **Audit joue** : **oui**
+- **Objet** : correction de `lea-dev` (commits `da1b0b61` et `7317b990`), reaudit **des deux motifs
+  du refus** et de ce que la correction a deplace.
+
+### Conditions de l'audit
+
+**J'ai rejoue.** Arbre `round-two` a `d88fb20c`, **fat jar reconstruit depuis cet arbre** - pas
+celui du premier passage -, lance sur le JDK de la toolchain (21.0.10 rapporte par la machine
+virtuelle), sur un port dedie. **Une partie complete de dix manches par appels HTTP reels**, avec
+erreurs volontaires sur six manches sur dix et deux erreurs de suite sur trois d'entre elles, ecran
+de fin atteint - *"Tu as trouve, tout seul : 4 / Tu as joue toutes les questions : 10"*. **Et j'ai
+relu les douze items reecrits, la consigne du catalogue et les garde-fous neufs.**
+
+**Les deux items que j'avais nommes au refus m'ont ete servis dans cette partie** : l'ancien item 8
+(Nour) a la manche 6, l'ancien item 11 (Ivan) a la manche 4. Le reaudit porte sur des items joues,
+pas sur un diff lu.
+
+### Premier motif - PAYE
+
+Chaque enonce pose maintenant une case de depart et demande la case d'arrivee. **La bonne reponse
+n'est plus jamais contenue dans la phrase que l'enfant lit** : il doit tenir une position en tete
+et lui appliquer un pas.
+
+> *"Zoe est sur la case 3 et avance d'une case. Ou est-elle ?"* - propositions *la case 4*, *la
+> case 2*, *la case 3*.
+
+**La barre que j'avais ecrite au refus est atteinte, et je la cite pour qu'on verifie que je ne la
+deplace pas** : *"un paquet textuel de `MAT-CP-10` doit faire representer a l'enfant au moins une
+position ou une orientation qui n'est pas donnee dans la phrase qu'il lit"*. Elle est tenue sur les
+douze items. **Je leve le motif.**
+
+**Et les distracteurs sont meilleurs que ce que j'avais demande.** Sur chaque item, l'un est la
+case de depart - il attrape l'enfant qui n'a pas bouge - et l'autre est la case du mauvais cote -
+il attrape celui qui s'est trompe de sens. **Les deux erreurs possibles sont chacune diagnostiquees
+par une proposition.** Verifie sur les douze items, joue sur dix manches. Ce point ne m'avait pas
+ete promis ; il est acquis.
+
+### Second motif - PAYE
+
+Les deux enonces en etat final sans etat initial ont disparu. *"Nour fait face au mur de gauche"*
+est devenu *"Nour est sur la case 3 et va vers la gauche d'une case. Ou est-elle ?"*, et *"Ivan
+fait face au mur de droite"* de meme. **La reponse se deduit maintenant entierement de l'enonce**,
+et la confusion entre gauche relative et gauche absolue n'a plus d'objet : il n'y a plus de mur,
+plus d'orientation d'un personnage, seulement une position et un pas. L'item 3 (*"celle d'en
+face"*), que j'avais signale comme symptome, a disparu dans le meme geste. **Je leve le motif.**
+
+### Troisieme constat du refus - paye pour moitie, et je corrige ma propre prevision
+
+J'avais ecrit que les deux constats aggravants *"disparaitront d'eux-memes si le premier motif est
+paye"*. **C'etait vrai pour l'un, faux pour l'autre, et je le dis plutot que de laisser passer.**
+
+- **Les indices sont payes.** *"Reculer, c'est retirer une case. Compte bien."* donne une regle de
+  comptage et non une troisieme formulation de la question. L'enfant qui echoue recoit de quoi
+  travailler et **doit encore compter** : je me suis trompee deux fois de suite aux manches 5, 7
+  et 8, et l'indice ne m'a jamais donne la reponse.
+- **La progression n'est pas payee**, et ne pouvait pas l'etre par ce correctif. Voir la reserve 2.
+
+### Ce que la CI garde desormais, et ce qu'elle ne garde toujours pas
+
+`lea-dev` n'a pas seulement corrige le contenu : **elle a rendu mes deux motifs executables**, ce
+qui est la bonne reponse a un refus. `PaquetCpDeplacementsQuadrillageTest` porte maintenant
+`laBonneReponseNEstJamaisLEtiquetteDuGeste`, `chaqueEnonceDeclareSonEtatInitialAvantLeDeplacement`
+et `lesPropositionsSontLesTroisCasesAdjacentesALaCaseDeDepartEtLaBonneReponseSuitLeSensAnnonce`.
+
+**Le troisieme est le plus fort, et je l'ai lu avant de m'y fier** : il ne compare pas des chaines,
+il **recalcule** la case d'arrivee depuis le depart et le sens annonces dans l'enonce, puis exige
+que la bonne reponse soit celle-la et que les distracteurs soient les deux autres cases adjacentes.
+**Un item dont la reponse ne suivrait pas de son enonce ne peut plus passer.** Mon second motif
+n'est plus ma garde : il est celle de la CI.
+
+**Ce que ces tests ne gardent pas, et l'equipe ne doit pas croire le contraire :**
+
+1. **La longueur des enonces.** Aucun test ne mesure `LON-1`/`LON-2` sur ce paquet ni sur aucun
+   autre - le seul endroit ou la conformite est affirmee est un commentaire. Voir la reserve 3.
+2. **Le fait que la suite de cases soit une ligne et non un quadrillage** (reserve 1). Le garde-fou
+   recalcule `depart +/- 1` : il presuppose la ligne, donc il ne pourra jamais la signaler.
+3. **La progression** (reserve 2). Rien d'automatique ne voit qu'un paquet est trop facile.
+4. **Que la tache soit du cote production ou reception de la competence** (reserve 1 bis).
+
+`laBonneReponseNEstJamaisLEtiquetteDuGeste`, pris seul, est plus etroit que mon premier motif : il
+verifie que la bonne reponse a la forme `la case N`, pas que la tache demande un raisonnement. **Je
+l'ecris parce que le nom du test promet plus que son corps.** Le troisieme test couvre l'essentiel
+de l'ecart, mais c'est lui qui garde la propriete, pas celui qui en porte le nom.
+
+### Reserves - NEUVES, datees du 2026-09-24, second passage
+
+**Ce ne sont pas des durcissements du refus.** Les deux motifs du refus sont leves sans reserve
+attachee. Ce qui suit est ce que je vois **depuis** la correction, et que je n'avais pas ecrit
+avant : le dire comme une reserve datee plutot que comme une condition retroactive est la seule
+facon de ne pas faire de ma porte un caprice.
+
+**`R-MAT-CP-10-1`. La suite de cases numerotees est une ligne, pas un quadrillage, et les indices
+enoncent comme une regle generale ce qui n'est vrai que sur une ligne.** Sur une bande numerotee,
+*avancer* et *aller a droite* sont la meme operation (+1), *reculer* et *aller a gauche* aussi
+(-1). Les indices le disent tels quels : *"Avancer, c'est ajouter une case"* et *"Aller a droite,
+c'est ajouter une case"*. **Sur un vrai quadrillage, c'est faux** : avant/arriere et gauche/droite
+y sont deux axes distincts, et c'est precisement ce que le paquet de `palier 2` enseignera sur
+cette meme ligne de referentiel. Un enfant qui joue les deux apprendra deux choses incompatibles.
+**Correctif : borner la regle a la situation (*"Ici, aller a gauche, c'est retirer une case"*), ou
+passer a deux axes des que le support le permet.**
+**Je dois preciser d'ou vient ce defaut : la forme d'item est celle que j'ai moi-meme ecrite dans
+mon refus, mot pour mot, y compris ses trois propositions.** `lea-dev` a implemente ce que j'avais
+specifie. **Cette reserve est a ma charge, pas a la sienne**, et elle ne pouvait pas etre trouvee
+autrement qu'en jouant le resultat.
+
+**`R-MAT-CP-10-1 bis`, du meme geste.** La question posee est *"Ou est-elle ?"* : l'enfant
+**interprete** un deplacement decrit et localise son resultat ; il ne **produit** jamais la
+description d'un deplacement. La moitie *decrire un deplacement* est donc servie du cote reception,
+pas du cote production. C'est defendable - on ne decrit pas ce qu'on ne sait pas lire - et c'est
+encore une consequence de la forme que j'ai specifiee. **Je l'ecris pour que celui qui fermera
+cette ligne plus tard ne croie pas la production couverte.**
+
+**`R-MAT-CP-10-2`. Aucune progression.** Douze items, cases 1 a 5, toujours un seul pas, toujours
++1 ou -1. L'enfant qui reussit le premier item reussit les douze ; j'ai joue dix manches sans
+jamais rencontrer une difficulte superieure a la premiere. Le plancher est legitime pour un premier
+paquet, il ne l'est pas pour la ligne. **Correctif : faire varier le nombre de cases du
+deplacement, et elargir la bande au-dela de cinq cases.**
+
+**`R-MAT-CP-10-3`. `LON-1` est atteinte au mot pres sur six items, et rien ne la mesure.** *"Tom
+est sur la case 4 et va vers la gauche d'une case. Ou est-il ?"* est au plafond de quinze mots. Le
+paquet est conforme ; il n'a plus un mot de marge, et la conformite ne repose que sur un
+commentaire. **Je ne demande pas de raccourcir ces items** - ils sont legaux et je ne deplace pas
+la barre d'`ADR-0089`. Je signale qu'un ajout d'un seul mot au prochain sprint la franchira sans
+que rien ne morde.
+
+### Mention de couverture, a porter par `camille-po` - ligne 227
+
+**Je confirme que le libelle que j'avais prepare au refus tient sans changement**, et je l'ai
+verifie contre le paquet livre et non contre mon souvenir : aucun item ne porte d'illustration,
+aucun ne demande de designer une case sur un dessin (verifie en jouant - aucun texte-support,
+aucune image servie - et garde par `aucunItemNePorteDIllustration`). La moitie *palier 2* reste
+entierement a faire.
+
+`MAT-CP-10` passe de **`non couvert`** a **`en cours`**, **jamais a `couvert-valide`**, avec la
+mention de couverture partielle reprise mot pour mot :
+
+> **"moitie 'decrire un deplacement' seule, en choix textuel ; la moitie 'se reperer et se
+> deplacer' (designation sur quadrillage, palier 2) reste non couverte"**
+
+**La mention ecrite ligne 227 avant ce sprint reste a remplacer par celle-ci**, et non a conserver
+a cote : elle attribuait la couverture a l'autre moitie, en sens inverse de
+`ARBITRAGE-PREALABLE-s32` section 17.7, comme `camille-po` l'avait signale en ouvrant cette fiche.
+La tenue de la cellule reste a `camille-po`.
+
+**A lire avec la reserve `R-MAT-CP-10-1 bis`** : la moitie nommee dans cette mention est servie du
+cote reception. La mention n'est pas amendee pour autant - elle est deja citee a l'identique par la
+story, par l'en-tete du paquet et par le critere d'acceptation, et en creer une quatrieme variante
+ferait a cette cellule ce qu'une mention inversee lui a deja fait.
