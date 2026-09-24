@@ -165,6 +165,26 @@ jamais une lecture seule du YAML.
 | Terrain 1 (EMC) compose sans marge de rejeu individuelle (4,5/5,0, `DEC-0095` section 9.5) : un refus sur l'un des trois lots ferait, au sens du tarif ecrit, depasser la borne sans reallocation ecrite | Gouvernance / produit, route mais non tranchee par `DEC-0095` elle-meme | `camille-po` et l'utilisatrice (`DEC-0095`, section 9.7) | **Ouvert, non tranche** - le risque nomme d'avance s'est materialise : `EMC-CP-08`, un des trois lots du terrain 1, a ete refuse deux fois. Aucune `DEC` ne reconcilie ce fait avec la clause de marge nulle ; je le signale, je ne le tranche pas |
 | `MAT-CE1-18` (sens de la division) toujours sans ligne dans `MATRICE-couverture.md` | Gouvernance / produit | Non signale par personne durant s41 | **Ouvert, non corrige, rupture du signalement** - signale a chacun des sprints s36 a s40 (cinq fois consecutives par `camille-po`), absent de `planning.md`, de `DEC-0095` et de la matrice ce sprint-ci. Toujours verifie absent (`grep -n "MAT-CE1-18"` sur la matrice : aucune occurrence) |
 
+**Addendum du 2026-09-24 (`nadia-prof`), sur la sixieme ligne du tableau ci-dessus - `SEM-1` et le
+recouvrement avec `QLM-CP-13`. Je n'edite pas la ligne : elle decrit l'etat a la cloture de s41 et
+c'est ce qu'elle doit continuer a dire. Voici la suite, apres la cloture.**
+
+Le point y est note *"Ouvert, non tranche"* et parle de *"quatre items de `cp-semaine`"*. **Ce chiffre
+est de moi et il etait faux** : il comptait les items de `cp-qlm-saisons` en recouvrement, pas ceux de
+`cp-semaine`. Apres relecture des vingt-trois enonces un par un, **onze items sortaient du perimetre
+corrige**, pas quatre - la correction est ecrite dans mon amendement du 2026-09-24 (`d3216c84`).
+
+**Le point est desormais clos, et par le depot.** `SEM-1` amendee (`d3216c84`), `DEC-0096` par
+`camille-po` (`b0061230`), execution par `marc-dev` (`0d48d2a3`) : onze items retires, huit items
+neufs dans le perimetre corrige, vingt items au total. **J'ai reaudite le paquet modifie en le jouant**
+et j'ai prononce le 2026-09-24 un **second verdict : VALIDE SOUS RESERVE** - `SEM-1` a `SEM-9` tenues
+sur les vingt items, **le Done pedagogique est confirme**, `MAT-CP-09` reste `couvert-valide` avec la
+meme mention et **aucune ligne de matrice n'a a bouger**. Deux reserves neuves et datees, non
+bloquantes, sont nommees dans la fiche : deux paires d'items offrent le meme triplet de propositions
+avec la meme bonne reponse (mesure : deux parties sur cinq environ en contiennent au moins une), et
+sur deux items neufs le distracteur voisin dans la suite des moments manque. Motifs actionnables et
+resultat attendu : `squad/conformite/FICHE-bandit-manchot-semaine-cp.md`, verdict du 2026-09-24.
+
 **Un point signale hors depot, non corrobore par le depot, que je nomme sans le laisser passer pour
 verifie** : il m'a ete rapporte que `lea-dev` aurait signale, pendant le developpement, des
 collisions transitoires (`mvnd`, verrous de fichiers) sur le worktree principal partage quand
