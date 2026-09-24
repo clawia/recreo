@@ -7,6 +7,9 @@
 - **Perimetre mesure** : `round-two` a **`b5b07966`**, worktree dedie `s41-theo-confirmation`
   branche depuis ce commit (amendement s18 et s21 : une branche dediee nommee pour un agent
   implique un worktree dedie du meme nom ; toute mesure du reacteur depuis son propre worktree).
+  **Remesure le 2026-09-24 apres fusion de `round-two` a `a86234ed`** dans ce meme worktree : le
+  diff apporte est du `squad/` seul, aucun fichier de code ni de contenu, donc tous les verdicts de
+  ce fichier valent sur les deux arbres. Les chiffres cites sont ceux de la relance (section 1).
 - **Version** : **JDK 21.0.10**, telle que le JDK resolu par l'enveloppe la rapporte, jamais telle
   qu'une entree de toolchain la declare (`ADR-0071`). Premiere ligne de l'enveloppe :
   *"Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10"*. Maven 3.9.9.
@@ -45,6 +48,8 @@ Reacteur **complet depuis la racine** - la question du `-am` ne se pose donc pas
 concerne que les mesures partielles (`CLAUDE.md`, prerequis de build). Les deux mesures partielles de
 la section 4 portent `-am`, elles.
 
+**Premier lancement, sur `b5b07966`** :
+
 ```
 Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10
 [INFO] recreo ............................................. SUCCESS [  1.797 s]
@@ -58,26 +63,81 @@ Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10
 [INFO] Finished at: 2026-09-24T10:24:45+02:00
 ```
 
-**Comptes, avec leur methode dans le meme paragraphe** : somme des blocs `Tests run:` des rapports
-`.txt` de `surefire-reports` et `failsafe-reports` des **cinq** modules declares au pom agregateur,
-sous le `target/` du worktree dedie, produits par la commande ci-dessus et par elle seule
-(`clean` prealable).
+**Relance apres la fusion de `round-two`** (rapport qualite de `yanis-qa` et six fiches de
+conformite de `camille-po` : **aucun fichier de code ni de contenu au diff**, donc meme population
+de tests) :
 
-| Module | Tests | Echecs | Erreurs | Ignores |
-|---|---|---|---|---|
-| `domain` | 120 | 0 | 0 | 0 |
-| `application` | 17 | 0 | 0 | 0 |
-| `adapter-web` | 399 | 0 | 0 | 0 |
-| `adapter-content` | 881 | 0 | 0 | 0 |
-| `bootstrap` (surefire) | 269 | 0 | 0 | 0 |
-| `bootstrap` (failsafe) | 6 | 0 | 0 | 0 |
-| **total** | **1692** | **0** | **0** | **0** |
+```
+Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10
+[INFO] recreo-domain ...................................... SUCCESS [ 14.585 s]
+[INFO] recreo-application ................................. SUCCESS [  5.229 s]
+[INFO] recreo-adapter-web ................................. SUCCESS [01:13 min]
+[INFO] recreo-adapter-content ............................. SUCCESS [ 45.835 s]
+[INFO] recreo-bootstrap ................................... SUCCESS [03:03 min]
+[INFO] BUILD SUCCESS
+[INFO] Total time:  05:23 min
+```
 
-**La cause de divergence que mon propre prompt me designe - deux moteurs JUnit dont les rapports
-texte n'en garderaient qu'un - est verifiee ici et ne s'applique pas.**
-`ArchitectureEnCouchesTest` porte **deux `@ArchTest` et zero `@Test`** : il n'a aucune methode que
-le moteur Jupiter puisse compter. Son rapport texte porte `Tests run: 2`. Le moteur ArchUnit est
-donc bien dans ces totaux. Ce n'est pas une supposition, c'est le fichier de rapport.
+**Comptes, avec leur methode dans le meme paragraphe** : somme des blocs `[INFO] Results:` du
+reacteur Maven apres `clean` complet, methode autoritaire de `squad/README.md`, section 9
+(amendement s11). Chiffres de la relance ci-dessus ; 0 echec, 0 erreur, 0 ignore sur les six.
+
+| Module | Tests |
+|---|---|
+| `domain` | 120 |
+| `application` | 17 |
+| `adapter-web` | 400 |
+| `adapter-content` | 881 |
+| `bootstrap` (surefire) | 277 |
+| `bootstrap` (failsafe) | 6 |
+| **total** | **1701** |
+
+Chiffre identique a celui de `yanis-qa` (`rapport-qualite.md`, section 1), obtenu par deux methodes
+independantes : blocs `Results:` du journal, et somme des attributs `tests="..."` des rapports XML.
+
+### 1.1 Correction du 2026-09-24 (`theo-archi`), et elle porte sur ma propre mesure
+
+**La premiere version de cette section annoncait `1692` tests**, avec `adapter-web` a `399` et
+`bootstrap` (surefire) a `269`, par la methode *"somme des blocs `Tests run:` des rapports `.txt`"*.
+**Ce chiffre est faux et cette methode est explicitement interdite par `squad/README.md` depuis
+l'amendement s11** : *"jamais la somme des lignes `Tests run:` des rapports `.txt`"*. L'ecart avec
+`yanis-qa` - 1692 contre 1701 - est ce qui l'a rendu visible, a la fusion.
+
+**Cause, mesuree classe par classe** en comparant le journal du meme lancement aux rapports `.txt`.
+Cinq classes divergent, et ce sont **exactement les cinq** qui melangent un `@ArchTest ArchRule`
+(moteur `archunit-junit5`) et une methode `@Test` ordinaire (moteur Jupiter) dans une meme classe.
+Surefire n'ecrit qu'un `.txt` par classe, et il n'y garde que le compte du moteur Jupiter :
+
+| Classe | `@ArchTest` | `@Test` | journal | rapport `.txt` | perdu |
+|---|---|---|---|---|---|
+| `AbstractionsCiteesTest` | 4 | 1 | 5 | 1 | 4 |
+| `LOrdreDesNiveauxResteUneDonneeTest` | 2 | 3 | 5 | 3 | 2 |
+| `ChargementDuContenuTest` | 1 | 1 | 2 | 1 | 1 |
+| `LesReglesMordentTest` | 1 | 36 | 37 | 36 | 1 |
+| `AssertionsWebTest` (`adapter-web`) | 1 | 1 | 2 | 1 | 1 |
+| | | | | **total perdu** | **9** |
+
+1692 + 9 = 1701. **Aucune autre classe du depot ne diverge**, et la population des classes mixtes
+est passee de **quatre** (compte de `yanis-qa` a s11) a **cinq** : `AssertionsWebTest` a rejoint le
+lot depuis.
+
+**Ce que je m'etais fait a moi-meme, et c'est le plus instructif.** J'avais ecrit ici, en toutes
+lettres : *"La cause de divergence que mon propre prompt me designe - deux moteurs JUnit dont les
+rapports texte n'en garderaient qu'un - est verifiee ici et ne s'applique pas"*, avec pour preuve
+`ArchitectureEnCouchesTest`, **2 `@ArchTest` et 0 `@Test`**. C'est le seul temoin du depot qui ne
+pouvait pas reveler le defaut : sans methode Jupiter, aucun rapport Jupiter n'est ecrit, donc rien
+n'ecrase le rapport ArchUnit, et le compte est juste. **J'ai choisi le temoin qui rendait ma phrase
+vraie.** C'est litteralement la faute que mon propre prompt nomme - *"une fixture ecrite par
+l'auteur d'une regle ressemble a ce qu'il imagine, pas a ce que le monde ecrit"* - commise en
+croyant l'eviter, et dans le paragraphe meme ou je la citais. **Le temoin qu'il fallait prendre est
+une classe mixte, et le depot en porte cinq.**
+
+**Ce que cette correction ne change pas** : le verdict des trois questions, le `BUILD SUCCESS`, les
+zeros d'echec, les comptes de regles ArchUnit (36 / 35, greps de source, non concernes par les
+moteurs de test), et la mesure par mutation de la section 4.2 (lue sur le journal, pas sur les
+`.txt`). Les chiffres de la section 2.2 sont corriges au meme geste et portent la meme
+marque ; **ceux de la section 2.3 sont inchanges**, verifies un a un contre le journal - aucune de
+ces neuf classes n'est mixte.
 
 ## 2. Question 1 - les tests ArchUnit sur le code neuf des six lots
 
@@ -120,12 +180,13 @@ pas. Ils sont, eux, verts sur de la matiere neuve, et c'est le resultat qui comp
 
 ### 2.2 Les 29 classes de `com.recreo.archi`, une par une
 
-Toutes vertes, **190 tests, 0 echec, 0 erreur, 0 ignore** (somme des rapports `.txt` de
-`bootstrap/target/surefire-reports/com.recreo.archi.*.txt`).
+Toutes vertes, **198 tests, 0 echec, 0 erreur, 0 ignore** (blocs du journal du reacteur, methode de la section
+1.1 ; la somme des rapports `.txt` rendrait 190, en perdant les sept tests ArchUnit des trois
+classes mixtes de cette table).
 
 | Classe | Tests | Ce qu'elle a vu de neuf sur les six lots |
 |---|---|---|
-| `AbstractionsCiteesTest` | 1 | rien |
+| `AbstractionsCiteesTest` | 5 | rien - **classe mixte**, section 1.1 |
 | `AccesALEtatDeSessionTest` | 2 | rien |
 | `ArchitectureEnCouchesTest` | 2 | rien - **ArchUnit pur**, aucune classe neuve |
 | `AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest` | 5 | **6 paquets neufs** : aucune cle de schema neuve, section 3.2 |
@@ -137,7 +198,7 @@ Toutes vertes, **190 tests, 0 echec, 0 erreur, 0 ignore** (somme des rapports `.
 | `ChaqueMecaniqueDuDomaineEstAtteignableDepuisLeProduitTest` | 6 | 6 entrees de catalogue neuves |
 | `ChaquePaquetServiDeclareLesLignesDeReferentielQuIlSertTest` | 12 | **6 lignes de referentiel neuves declarees**, section 3.3 |
 | `ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest` | 18 | rien - cliquet a plafond zero intact |
-| `ChargementDuContenuTest` | 1 | rien |
+| `ChargementDuContenuTest` | 2 | rien - **classe mixte**, section 1.1 |
 | `ConcordanceDesTagsDAgentTest` | 1 | rien |
 | `DecouplageMecaniqueContenuTest` | 12 | rien - **ArchUnit pur** |
 | `DifficulteTest` | 3 | rien |
@@ -146,9 +207,9 @@ Toutes vertes, **190 tests, 0 echec, 0 erreur, 0 ignore** (somme des rapports `.
 | `LaMachineVirtuelleDesTestsPorteLaVersionQueLeBuildExigeTest` | 4 | rien |
 | `LeChoixDesJeuxResteDerriereLePortTest` | 1 | rien |
 | `LesGardeFousSontMisALEpreuveTest` | 10 | rien |
-| `LesReglesMordentTest` | 36 | rien - **aucune morsure ajoutee ni retiree**, le fichier n'est pas au diff |
+| `LesReglesMordentTest` | 37 | rien - **aucune morsure ajoutee ni retiree**, le fichier n'est pas au diff. **Classe mixte**, section 1.1 |
 | `LIllustrationDeContenuResoutEtAucuneNeDortTest` | 15 | rien - aucun des six ne porte d'illustration |
-| `LOrdreDesNiveauxResteUneDonneeTest` | 3 | rien |
+| `LOrdreDesNiveauxResteUneDonneeTest` | 5 | rien - **classe mixte**, section 1.1 |
 | `PureteDesCouchesTest` | 2 | rien - **ArchUnit pur** |
 | `ScanDeComposantsTest` | 2 | rien |
 | `ToutesLesReferencesDeDecisionResolventTest` | 3 | les references de `DEC-0095` et des six commentaires d'entete |
@@ -156,7 +217,7 @@ Toutes vertes, **190 tests, 0 echec, 0 erreur, 0 ignore** (somme des rapports `.
 | `UnGardeFouNeBorneJamaisSesTiragesSousLePlusGrandPaquetTest` | 4 | 6 paquets de 11 a 16 items, sous les quatre bornes |
 
 `adapter-web` porte la seule `ArchRule` hors de `bootstrap` :
-`com.recreo.adapter.web.archi.AssertionsWebTest`, **1 test, vert**.
+`com.recreo.adapter.web.archi.AssertionsWebTest`, **2 tests, verts** - **classe mixte**, section 1.1.
 
 ### 2.3 Les six tests de paquet et les trois inventaires partages
 
