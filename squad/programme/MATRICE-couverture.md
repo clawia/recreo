@@ -15,6 +15,19 @@ par competence, l'integralite des dix-neuf referentiels desormais disponibles
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
 
+**Note du 2026-09-24, hors sprint - correction d'un ecart de tenue de la matrice** : `DEC-0097`
+(section 8) signale que `squad/programme/mathematiques/competences-ce1.md` porte dix-huit lignes
+(`MAT-CE1-01` a `MAT-CE1-17`, plus `MAT-CE1-18` - sens de la division - ajoutee le 2026-09-21 sur
+signalement de `nadia-prof` elle-meme) alors que cette matrice, section "Mathematiques - CE1
+(cycle 2)", n'en portait que dix-sept : `MAT-CE1-18` n'avait jamais ete integree. Corrige ici par
+l'ajout d'une ligne `non couvert` (aucun jeu ne la sert) a l'emplacement du referentiel, entre
+`MAT-CE1-08` et `MAT-CE1-09`. Le denominateur atteignable passe de 155 a **156** par le seul effet
+de cet ajout - **ce n'est pas une regression du produit**, le meme raisonnement que la note du
+2026-09-21 ci-dessous pour l'entree du referentiel CE1 lui-meme. Le taux, calcule depuis l'etat de
+sortie de s41 (94 / 155 = 60,6 %, note ci-dessous), passe a **94 / 156 = 60,3 %**. Detail et
+recompte complets dans la section "Mathematiques - CE1 (cycle 2)", sous-section "Correction de
+tenue - ajout de `MAT-CE1-18` (2026-09-24, hors sprint)".
+
 **Note du 2026-09-24 (s41)** : six lignes fermees, aucune ouverture partielle, trois refus leves
 dans le sprint (deux sur le meme lot). **Fermetures (`non couvert` -> `couvert-valide`)** :
 `QLM-CP-04` (hygiene de vie CP, `FICHE-bandit-manchot-hygiene-cp.md`) et `QLM-CP-13` (mois et
@@ -638,6 +651,7 @@ produit ouvert par `DEC-0089`, CM2 restant explicitement differe. Aucune ligne n
 | mathematiques | CE1 | Nombres et calculs | Comprendre le sens de la multiplication (addition reiteree, disposition en lignes et en colonnes) | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4 | - | - | non couvert |
 | mathematiques | CE1 | Nombres et calculs | Resoudre des problemes d'addition, de soustraction et de multiplication a une ou deux etapes | - | - | non couvert |
+| mathematiques | CE1 | Nombres et calculs | Comprendre le sens de la division en resolvant des problemes de partage et de groupement (sans technique operatoire posee) | - | - | non couvert |
 | mathematiques | CE1 | Grandeurs et mesures | Mesurer et comparer des longueurs avec une regle graduee ; utiliser le centimetre et le metre | bandit-manchot-longueurs-ce1 | bandit manchot | **en cours** (2026-09-22, s39) - **couverture partielle.** `nadia-prof` prononce **VALIDE** sur la part servie (`squad/conformite/FICHE-bandit-manchot-longueurs-ce1.md`) : les 14 items exacts, `MES-CE1-1` a `MES-CE1-3` (version amendee) toutes tenues, pour "comparer des longueurs" et "utiliser le centimetre et le metre" (conversions) seuls. **Le verbe "mesurer... avec une regle graduee" n'est pas servi et ne peut pas l'etre par du texte seul** (aucune image de regle, aucune lecture de graduation) : la ligne ne passe pas a `couvert-valide` sur la foi de ce Done seul. |
 | mathematiques | CE1 | Grandeurs et mesures | Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre) | - | - | non couvert |
 | mathematiques | CE1 | Grandeurs et mesures | Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se reperer dans le calendrier (mois, date) | - | - | non couvert |
@@ -652,6 +666,9 @@ produit ouvert par `DEC-0089`, CM2 restant explicitement differe. Aucune ligne n
 `MAT-CE1-01` a `MAT-CE1-17` (aucun doublon, aucun trou) : `grep -oE "MAT-CE1-[0-9]+"
 squad/programme/mathematiques/competences-ce1.md`, sur la branche `s36-nadia` (commit `eaaadb45`,
 2026-09-21) ou `nadia-prof` l'a ecrit - ce fichier n'est pas encore fusionne sur cette branche-ci.
+Ce compte de dix-sept est celui de l'ouverture du referentiel a s36 ; `MAT-CE1-18`, ajoutee au
+referentiel le meme jour, n'y etait pas encore integree - voir la sous-section "Correction de
+tenue - ajout de `MAT-CE1-18` (2026-09-24, hors sprint)" ci-dessous.
 
 **Ce que ce referentiel precise et que cette matrice ne reprend pas en colonne** : deux bornes de
 lisibilite hors competence (`LON-CE1-1`, au plus vingt mots ; `LON-CE1-2`, au plus trois phrases)
@@ -755,6 +772,45 @@ en l'etat 71, total 226, denominateur atteignable 155), pas un chiffre recopie d
 `nadia-prof`, dans les fiches citees ; il ne cree ni ne ferme aucune autre ligne CE1 ; il ne solde
 pas la reserve `SOU-CE1-R1`, routee comme dette a un sprint futur dans `docs/backlog/backlog.md`,
 section "Backlog - sprints suivants (intentions non detaillees)".
+
+### Correction de tenue - ajout de `MAT-CE1-18` (2026-09-24, hors sprint)
+
+`DEC-0097` (section 8) constate que `squad/programme/mathematiques/competences-ce1.md` porte
+dix-huit lignes (`MAT-CE1-01` a `MAT-CE1-17`, plus `MAT-CE1-18` - sens de la division, ajoutee le
+2026-09-21 sur signalement de `nadia-prof` elle-meme, resolution de problemes de partage et de
+groupement sans technique operatoire posee) alors que cette matrice n'en portait que dix-sept :
+`MAT-CE1-18` n'a jamais ete integree ici. Ce n'est pas une ligne candidate d'un sprint - c'est un
+ecart de tenue de la matrice elle-meme, corrige independamment de tout perimetre de sprint
+(`DEC-0097`, section 9). La ligne est ajoutee ci-dessus, domaine "Nombres et calculs", entre
+`MAT-CE1-08` et `MAT-CE1-09`, comme dans le referentiel source. Aucun jeu ne la sert : statut
+`non couvert`.
+
+**Recompte, independant de tout chiffre transmis**, sur le meme patron que les recomptes
+precedents : un seul mouvement, l'entree d'une ligne neuve au denominateur (`non couvert`, elle
+n'existait dans aucun tableau avant ce geste). Base "avant" reprise du recompte verifie a la
+cloture de s41 (section "Synthese apres les verdicts du sprint 41" ci-dessous : couvert-valide 94,
+en cours 2, non couvert 59, non couvrable en l'etat 71, total 226, denominateur atteignable 155),
+pas un chiffre recopie d'un autre document.
+
+| | Avant cette correction (2026-09-24, sortie de s41) | Apres l'ajout de `MAT-CE1-18` |
+|---|---|---|
+| `couvert-valide` | 94 | 94 |
+| `en cours` | 2 | 2 |
+| `non couvert` | 59 | **60** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 226 | **227** |
+| Denominateur atteignable | 155 | **156** |
+| **Taux** | **94 / 155 = 60,6 %** | **94 / 156 = 60,3 %** |
+
+**94 / 156 = 0,602564... : 60,3 % arrondi.** Le taux recule de 0,3 point par le seul effet du
+denominateur, avant qu'aucun jeu ne serve `MAT-CE1-18` - exactement le meme raisonnement que
+l'entree du referentiel CE1 a s36 (section "Mathematiques - CE1 (cycle 2)" ci-dessus, tableau
+"Effet de perimetre"). **Ce recul n'est pas une regression du produit.**
+
+**Ce que cette correction ne fait pas** : elle ne prononce aucun Done ; elle ne cree ni ne ferme
+aucune autre ligne ; elle n'engage aucun perimetre de sprint - `MAT-CE1-18` reste une ligne
+candidate ordinaire pour un sprint futur, au meme titre que toute autre ligne `non couvert` du
+tableau CE1.
 
 ## Francais - CP (cycle 2)
 
