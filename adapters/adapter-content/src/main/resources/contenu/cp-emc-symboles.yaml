@@ -49,7 +49,7 @@ items:
     bonneReponse: "le drapeau"
     distracteurs: ["Marianne", "la fête nationale"]
     indice: "On le porte haut, attaché à un bâton."
-  - enonce: "Cette statue de femme est dans toutes les mairies. Comment s'appelle-t-elle ?"
+  - enonce: "Cette statue de femme est dans presque toutes les mairies. Comment s'appelle-t-elle ?"
     bonneReponse: "Marianne"
     distracteurs: ["le drapeau", "la Marseillaise"]
     indice: "C'est une statue, pas un chant ni un tissu."
@@ -74,16 +74,16 @@ items:
     distracteurs: ["Marianne", "la Marseillaise"]
     indice: "On regarde souvent un feu d'artifice ce soir-là."
   - enonce: "Que représente le drapeau français ?"
-    bonneReponse: "le pays et la République"
+    bonneReponse: "le pays"
     distracteurs: ["la République", "l'hymne de la France"]
     indice: "Il rassemble tous les habitants du pays."
   - enonce: "Que représente Marianne ?"
     bonneReponse: "la République"
-    distracteurs: ["le pays et la République", "un grand jour de fête pour la France"]
+    distracteurs: ["le pays", "un grand jour de fête pour la France"]
     indice: "Elle est le visage que l'on donne à la République."
   - enonce: "Que représente la Marseillaise ?"
     bonneReponse: "l'hymne de la France"
-    distracteurs: ["la République", "le pays et la République"]
+    distracteurs: ["la République", "le pays"]
     indice: "On la chante pour honorer le pays."
   - enonce: "Que représente le 14 juillet ?"
     bonneReponse: "un grand jour de fête pour la France"
