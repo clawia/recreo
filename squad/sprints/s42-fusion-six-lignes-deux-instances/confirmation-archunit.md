@@ -7,6 +7,10 @@
 - **Perimetre mesure** : `round-two` a **`cdf0229f`**, worktree dedie `s42-theo-confirmation`
   branche depuis ce commit (amendement s18 et s21 : une branche dediee nommee pour un agent
   implique un worktree dedie du meme nom ; toute mesure du reacteur depuis son propre worktree).
+  **Remesure apres fusion de `round-two` a `cb07884f`** dans ce meme worktree : le diff apporte est
+  du `squad/` seul - rapport qualite de `yanis-qa` et six fiches de conformite de `camille-po` -,
+  aucun fichier de code ni de contenu, donc tous les verdicts de ce fichier valent sur les deux
+  arbres. Les chiffres cites sont ceux du premier lancement ; la relance est en section 1.1.
 - **Version** : **JDK 21.0.10**, telle que le JDK resolu par l'enveloppe la rapporte, jamais telle
   qu'une entree de toolchain la declare (`ADR-0071`). Premiere ligne de l'enveloppe :
   *"Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10"*. Maven 3.9.9.
@@ -94,6 +98,30 @@ classe) et non recopiees de ce fichier-la.
 `UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest` (9),
 `TexteAccentueExposeParLePortEntrantTest` (5) - ont ete **modifies sans changer de compte**, ce qui
 est la forme attendue d'un inventaire a egalite exacte.
+
+### 1.1 La relance apres fusion de `round-two` a `cb07884f`
+
+Meme commande, meme worktree, sur l'arbre qui porte en plus le rapport qualite de `yanis-qa` et les
+six fiches de conformite de `camille-po` :
+
+```
+[INFO] recreo-domain ...................................... SUCCESS [ 11.644 s]
+[INFO] recreo-application ................................. SUCCESS [  4.124 s]
+[INFO] recreo-adapter-web ................................. SUCCESS [ 51.116 s]
+[INFO] recreo-adapter-content ............................. SUCCESS [ 35.316 s]
+[INFO] recreo-bootstrap ................................... SUCCESS [02:13 min]
+[INFO] BUILD SUCCESS
+[INFO] Total time:  03:56 min
+```
+
+Blocs `[INFO] Results:` : **120 / 17 / 400 / 907 / 277 / 6**, soit **1727**, 0 echec - **identiques
+a ceux du premier lancement**, ce qui est le resultat attendu d'un diff de `squad/` seul, et ce que
+je verifie plutot que de le supposer.
+
+**Et un recoupement que je n'avais pas a s41** : `yanis-qa` annonce **1727** dans
+`rapport-qualite.md`, section 1, sur `s42-yanis` a `cdf0229f`, avec la meme discipline de methode
+(*"jamais la somme des lignes `Tests run:` des fichiers `.txt`"*). Deux agents, deux worktrees,
+cinq methodes au total, un seul chiffre.
 
 ## 2. Question 1 - les tests ArchUnit sur le code neuf des cinq lots
 
@@ -470,9 +498,21 @@ garde-fou, c'est qu'une Javadoc annonce desormais ce garde-fou.** C'est la forme
 numero 7 de la version precedente - *"un garde-fou annonce mais absent"* - a ceci pres qu'elle vit
 ici dans un commentaire de test et non dans un document.
 
-**Ce que je fais et ne fais pas.** Je ne modifie pas le fichier : il appartient a son auteur, et je
-ne propose aucune regle, parce qu'une regle qui pretendrait juger un jugement de valeur serait
-decorative. Les deux corrections possibles sont **soit** renommer le test et sa Javadoc pour ce
+**Ce que cette annonce a deja produit, et c'est la raison pour laquelle je ne me contente pas de la
+signaler.** `rapport-qualite.md` de `yanis-qa`, section 3, porte `hgCm105NePorteAucunJugementDeValeurSurUnRoi`
+dans la colonne **"criteres encodes en test"** avec la mention `(BIA-5)`, et ne range `BIA-5` dans
+aucune des colonnes de ce qui reste garde de `nadia-prof`, contrairement a `HIS-2` et `HIS-3` qui y
+figurent pour ce meme lot. **Sa methode est ecrite et elle est bonne** - *"le fichier de test du
+paquet porte-t-il une methode nommee sur le code, et cette methode l'assertionne-t-elle
+reellement"* - et elle se fait prendre ici par le seul cas qu'elle ne peut pas voir : **une methode
+dont l'assertion est reelle, mais porte sur autre chose que son nom.** Le lire methode par methode
+ne suffit pas ; il faut le muter. C'est le meme mode de defaillance que celui que ce depot a
+sanctionne a s05 sur une de mes propres regles, a ceci pres qu'il traverse cette fois deux agents.
+
+**Ce que je fais et ne fais pas.** Je ne modifie pas le fichier de test : il appartient a son
+auteur, et je ne propose aucune regle, parce qu'une regle qui pretendrait juger un jugement de
+valeur serait decorative. Je ne modifie pas non plus le rapport de `yanis-qa`, qui est son
+livrable ; je nomme l'ecart ici et il lui revient. Les deux corrections possibles sont **soit** renommer le test et sa Javadoc pour ce
 qu'il verifie reellement, **soit** y ecrire que `BIA-5` reste la garde de `nadia-prof`. Le choix
 entre les deux est une question de tenue de test, et je la route a `sofia-sm`. **Le fond -
 l'absence de jugement de valeur sur les quatre rois - est et reste a `nadia-prof`**, qui l'audite
