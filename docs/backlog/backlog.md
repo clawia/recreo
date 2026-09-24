@@ -15032,4 +15032,371 @@ vivier (tarif 1,0), coherent avec sa double casquette de Scrum Master et de troi
   propose a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
   `DEC-0095` section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
 
+## Sprint 42 - Fusion de deux sprints projetes (francais CM1, histoire-geographie CM1, questionner le monde CP, arts plastiques CP, EMC CM1, mathematiques CP), passage a deux instances de `nadia-prof` (`DEC-0098`)
+
+Six lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` a
+l'ouverture du sprint. Objectif et perimetre formalises par `DEC-0097` (chiffrage ligne a ligne des
+six lignes, sections 5 et 6) puis par `DEC-0098` (fusion des deux sprints projetes s42 et s43 en un
+seul sprint a deux instances paralleles de `nadia-prof`, borne recalculee a 8,0, perimetre porte a
+six lots sur deux terrains non chevauchants). Aucun ne rouvre `DEC-0089` (CE1 mathematiques seule,
+CM2 differe) ni les neuf lignes bloquees par `DEC-0075`. Les six lots portent deja un arbitrage
+prealable explicite, cite en entier ci-dessous : `theo-archi` peut rendre un avis de faisabilite
+directement sur chacun, sans arbitrage pedagogique prealable neuf a attendre.
+
+**Note de nommage** : `DEC-0098`, section 5, nomme ces memes six lots `S42-FRA-LECTURE`,
+`S42-HG-ROIS`, `S42-QLM-MATIERE`, `S42-ART-COULEURS`, `S42-EMC-SYMBOLES`, `S42-MAT-QUADRILLAGE`. Ce
+backlog les reprend sous les noms `S42-FR-LECTURE-SILENCIEUSE`, `S42-HG-ROIS`, `S42-QLM-MATIERE`,
+`S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`, `S42-MAT-TEXTUEL` - meme perimetre, meme tarif, meme
+lot, nom different a l'ecriture des stories.
+
+**Deux terrains non chevauchants, un par instance de `nadia-prof`** (`DEC-0098`, section 4 - `PAR-2`
+ne contraint aucune composition possible, les six lignes portant chacune une matiere et un niveau
+distincts des cinq autres ; `CYC-1` ne trouve aucune occurrence a instruire dans ce lot ; aucune
+clause de frontiere n'est due, verifie contre le seul critere que `nadia-prof` a ecrit pour en
+produire une, applique aux quinze paires possibles du lot, `ARBITRAGE-PREALABLE-s32`, section 6.4) :
+
+| Terrain | Instance | Lots | Cout |
+|---|---|---|---|
+| 1 - francais CM1, histoire-geographie CM1, questionner le monde CP | **A** | `S42-FR-LECTURE-SILENCIEUSE`, `S42-HG-ROIS`, `S42-QLM-MATIERE` | 4,0 / 5,0 |
+| 2 - arts plastiques CP, EMC CM1, mathematiques CP | **B** | `S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`, `S42-MAT-TEXTUEL` | 4,0 / 5,0 |
+
+**Point signale, non tranche par cette instruction : le sprint consomme la totalite de la borne, 8,0
+sur 8,0** (`DEC-0098`, section 6). Aucune unite de tarif n'est disponible pour un lot supplementaire
+ou pour un refus qui toucherait les deux terrains a la fois. Une difference reelle avec s41 attenue
+le risque sans l'annuler : chaque terrain conserve ici une marge individuelle de 1,0 sur son propre
+plafond de 5,0 (contre 0,5 sur le terrain le plus charge de s41), absorbant un refus isole sur un
+seul lot sans depasser le plafond de son instance.
+
+**Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
+`sofia-sm`** (`DEC-0098`, section 7, qui route l'ouverture du sprint a `sofia-sm`). Chaque terrain
+porte trois lots, qui ne se divisent pas en deux lots par developpeur sans qu'un developpeur ne
+franchisse les deux terrains - la meme contrainte arithmetique qu'a s41 (3 + 3 lots, quota de deux
+lots par developpeur), ou `lea-dev` avait deja ete la seule a franchir. Ici : `marc-dev` prend les
+deux lots restants du terrain 1 apres le lot le moins cher (`S42-HG-ROIS`, `S42-QLM-MATIERE`) ;
+`sofia-sm` prend les deux lots restants du terrain 2 apres le lot le moins cher
+(`S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`), coherent avec sa double casquette de Scrum Master et
+de troisieme developpeuse ; `lea-dev` est la seule a franchir les deux terrains, avec les deux lots
+les moins chers du sprint (`S42-FR-LECTURE-SILENCIEUSE`, terrain 1, 1,0 ; `S42-MAT-TEXTUEL`,
+terrain 2, 1,0) - le cout du va-et-vient entre les deux worktrees retombe ainsi sur les deux lots
+les plus simples du sprint plutot que sur les plus couteux.
+
+### S42-FR-LECTURE-SILENCIEUSE - Lire silencieusement un texte de longueur croissante et en restituer l'essentiel (`FRA-CM1-01`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux lire silencieusement un texte et repondre a une
+  question sur son sujet principal en jouant au bandit manchot, afin de savoir restituer
+  l'essentiel d'un texte que je lis seul.
+- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Lecture et comprehension de
+  l'ecrit" - `squad/programme/francais/competences-cm1.md`, `FRA-CM1-01`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 1053.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md`, section
+  9.1) : *"Verdict : ACCEPTE SOUS CONDITIONS `LIS-1` a `LIS-10`, avec couverture partielle nommee, et
+  sous une reserve mesuree qui n'est pas de moi."* Les dix conditions, citees mot pour mot :
+  `LIS-1` *"Forme. Le `texteSupport` porte le texte ; l'`enonce` demande de quoi parle le texte - un
+  titre, une phrase qui le resume, ce qu'on en retiendrait. Trois propositions."*
+  `LIS-2` *"Longueur. Le `texteSupport` compte au moins 45 mots et au plus 70, et au plus cinq
+  phrases."*
+  `LIS-3` *"L'`enonce` compte au plus 12 mots."*
+  `LIS-4` *"Aucune proposition n'est une phrase recopiee du texte."*
+  `LIS-5` *"Chaque distracteur est vrai a propos du texte, et partiel."*
+  `LIS-6` *"Texte masque, la question ne se repond pas [...] `LIS` et `SUB` ne peuvent pas etre pris
+  dans le meme sprint."*
+  `LIS-7` *"Le texte est autonome. Aucune connaissance de culture generale n'est requise, aucun nom
+  propre reel, aucun renvoi a un autre item."*
+  `LIS-8` *"Personnages et situations. Prenoms equilibres en genre a un pres ; aucun role, metier ou
+  activite distribue par genre ; aucune situation qui suppose une configuration familiale, un
+  logement ou un depart en vacances."*
+  `LIS-9` *"Indice. Il dit quelle partie du texte relire pour trouver le sujet, jamais le sujet. Dix
+  mots au plus."*
+  `LIS-10` *"Au moins vingt items, et deux items ne partagent jamais le meme `texteSupport`."*
+  La reserve, non levee a ce jour : *"Je ne sais pas si un texte de soixante mots, sa question et ses
+  trois propositions tiennent au-dessus du pli [...] C'est une mesure d'`ines-design`, pas la
+  mienne [...] et elle est due avant qu'on ecrive le paquet, pas apres. Si elle montre que le texte
+  ne tient pas, cette ligne ne s'ouvre pas a s25 et je le dirai sans detour."* Verifie contre le
+  depot : `LIS` n'a pas ete retenue a s25 (`SUB` l'a ete a sa place,
+  `squad/sprints/s25-le-premier-palier-visuel/planning.md`) - **cette mesure d'`ines-design` n'a
+  jamais ete rendue et reste due avant l'ecriture du paquet.**
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors l'`enonce` demande de quoi parle le texte (un
+    titre, une phrase qui le resume, ce qu'on en retiendrait), avec trois propositions (`LIS-1`).
+  - Etant donne le `texteSupport` d'un item, quand on le compte, alors il compte au moins 45 mots,
+    au plus 70 mots, et au plus cinq phrases (`LIS-2`).
+  - Etant donne l'`enonce` d'un item, quand on le compte, alors il compte au plus 12 mots (`LIS-3`).
+  - Etant donne les trois propositions d'un item, quand on les compare au texte, alors aucune n'est
+    une phrase recopiee telle quelle du texte (`LIS-4`).
+  - Etant donne chaque distracteur, quand on le verifie contre le texte, alors il est vrai a propos
+    du texte et partiel - un detail exact promu au rang de sujet, jamais un fait faux ni une
+    proposition absurde (`LIS-5`).
+  - Etant donne un item, quand le `texteSupport` est masque, alors la question ne se repond plus,
+    verifie item par item sur la totalite du paquet (`LIS-6`).
+  - Etant donne le texte d'un item, quand on le lit, alors il est autonome : aucune connaissance de
+    culture generale, aucun nom propre reel, aucun renvoi a un autre item (`LIS-7`).
+  - Etant donne le paquet livre, quand on relit les personnages et situations, alors les prenoms
+    sont equilibres en genre a un pres, aucun role, metier ou activite n'est distribue par genre, et
+    aucune situation ne suppose une configuration familiale, un logement ou un depart en vacances
+    particulier (`LIS-8`).
+  - Etant donne un indice, quand il s'affiche apres une tentative fausse, alors il dit quelle partie
+    du texte relire pour trouver le sujet, jamais le sujet lui-meme, en dix mots au plus (`LIS-9`).
+  - Etant donne le paquet livre, quand on le compte, alors il porte au moins vingt items, et deux
+    items ne partagent jamais le meme `texteSupport` (`LIS-10`).
+  - Etant donne la ligne avant l'ecriture du paquet, quand `ines-design` mesure si un texte de 70
+    mots, sa question et ses trois propositions tiennent au-dessus du pli, alors le paquet n'est
+    ecrit qu'apres cette mesure ; si elle montre que le texte ne tient pas, la ligne ne s'ouvre pas a
+    ce sprint (reserve non levee de `nadia-prof`, section 9.1).
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme `LIS-1` a `LIS-10` tenues et porte sur la matrice la mention *"restituer l'essentiel
+    seul ; la longueur croissante n'est pas servie, le tirage d'une manche etant sans ordre"*.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de recopier une phrase du
+  texte (`LIS-4`) ; elle ne fait pas l'economie de la mesure de pli d'`ines-design`, due avant
+  l'ecriture du paquet ; elle n'ouvre pas la ligne `SUB` dans le meme sprint (`LIS-6`) ; elle ne fixe
+  aucun contenu factuel precis (quels textes, quels personnages) - reste a l'auteur du paquet puis a
+  l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0098`.
+- **Agent pressenti** : `ines-design`, par `sofia-sm`, pour la mesure de pli prealable ; `theo-archi`
+  pour l'avis de faisabilite, une fois cette mesure rendue ; developpement propose a `lea-dev`
+  (proposition de `camille-po`, affectation nominative finale par `sofia-sm`, `DEC-0098` section 7) ;
+  `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S42-HG-ROIS - Nommer et situer dans le temps quelques rois qui ont marque la construction du royaume (`HG-CM1-05`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux nommer et situer dans le temps quelques rois qui ont
+  marque la construction du royaume en jouant au bandit manchot, afin de me reperer dans l'histoire
+  de France.
+- **Competence programme visee** : histoire-geographie, CM1 (cycle 3), domaine "Le temps des rois" -
+  `squad/programme/histoire-geographie/competences-cm1.md`, `HG-CM1-05`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 1610, deja notee "laissee de cote par ce premier paquet (`nadia-prof`,
+  `cm1-histoire-geographie.yaml`) ; a servir dans un paquet ulterieur" - cette story etend le paquet
+  existant, elle n'ouvre pas une forme neuve (`DEC-0077`, section 9).
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.2, ligne 5) : *"5 les
+  rois | oui, choix |"* (motif non renseigne dans le tableau). S'ajoutent les conditions posees pour
+  toute la matiere histoire-geographie CM1, dont la ligne 5 fait explicitement partie, citees mot
+  pour mot :
+  `BIA-5` (section 7.4) : *"Sur les rois et la Revolution (HG 5 a 8) : aucun item ne fait porter un
+  jugement de valeur sur un personnage. 'Louis XIV etait-il un bon roi ?' n'a pas de bonne reponse,
+  et une mecanique de choix en fabriquerait une."*
+  `HIS-1` (section 7.5) : *"Dans un paquet d'histoire, au plus un tiers des items demande une date,
+  un nom ou un chiffre a restituer. Les deux autres tiers demandent d'ordonner deux faits, d'associer
+  un fait a un personnage, ou d'extraire une information d'un document. Comptage a l'item, sur la
+  totalite du paquet."*
+  `HIS-2` : *"Aucun item n'a deux reponses defendables [...] Une question d'histoire dont la reponse
+  est discutable n'entre pas dans un paquet a trois propositions."*
+  `HIS-3` : *"Chaque fait porte sa source dans le commentaire du paquet [...] je ne suis pas la
+  source en histoire comme je le suis en calcul, et une date fausse est un motif de refus a elle
+  seule."*
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur l'un des quatre rois nommes par le
+    libelle (Louis IX, Francois Ier, Henri IV, Louis XIV), sa datation ou sa situation dans le temps
+    par rapport a un autre roi du libelle - jamais un jugement de valeur sur le personnage (par
+    exemple jamais "etait-il un bon roi ?") (`BIA-5`).
+  - Etant donne le paquet livre, quand on compte les items, alors au plus un tiers demande une date,
+    un nom ou un chiffre a restituer seul ; les deux autres tiers demandent d'ordonner deux rois dans
+    le temps, d'associer un roi a un fait, ou d'extraire une information d'un document (`HIS-1`).
+  - Etant donne chaque item, quand on verifie sa reponse, alors une seule des trois propositions est
+    defendable - aucune question dont la reponse serait discutable (`HIS-2`).
+  - Etant donne chaque fait historique du paquet (date, nom, filiation), quand le paquet est livre,
+    alors sa source figure dans le commentaire du paquet, et aucun fait n'est errone (`HIS-3`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les quatre rois du libelle
+    sont chacun en bonne reponse au moins une fois.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres rois ou personnages reels de la
+    meme periode, jamais des elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `HG-CM1-05` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme qu'aucun item ne porte de jugement de valeur sur un roi, que le ratio d'un tiers /
+    deux tiers est tenu, et qu'aucune reponse n'est discutable.
+- **Ce que cette story ne fait pas** : elle ne demande jamais un jugement de valeur sur un roi
+  (`BIA-5`) ; elle n'ouvre pas de paquet neuf, elle etend `cm1-histoire-geographie.yaml` a cette
+  seule ligne ; elle ne fixe aucun contenu factuel precis (quels faits, quelles dates precises) -
+  reste a l'auteur du paquet puis a l'audit de `nadia-prof`, qui verifie l'exactitude de chaque fait
+  cite (`HIS-3`).
+- **Lien decision** : `DEC-0098`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `marc-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0098` section 7) ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S42-QLM-MATIERE - Identifier de quelle matiere un objet est fait et trier des materiaux selon une propriete simple (`QLM-CP-06`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux identifier de quelle matiere un objet est fait et
+  trier des materiaux selon une propriete simple en jouant au bandit manchot, afin de reconnaitre les
+  materiaux qui m'entourent.
+- **Competence programme visee** : questionner le monde, CP (cycle 2), domaine "Le vivant, la matiere
+  et les objets" - `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-06`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1564.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.1, ligne 6) : *"6
+  matiere d'un objet | oui, choix ; plus juste en illustre | Le nom de l'objet dans l'enonce donne
+  souvent la matiere ('une cuillere en bois'). Distracteurs a surveiller."*
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande d'identifier la matiere d'un objet
+    (bois, metal, plastique, verre, tissu...) ou de trier des materiaux selon une propriete simple
+    (dur/mou, qui flotte/qui coule...), sur le patron du libelle.
+  - Etant donne l'enonce d'un item, quand on le relit, alors le nom de l'objet ne revele pas la
+    matiere attendue avant reponse (vigilance posee d'avance par `nadia-prof` : le nom de l'objet
+    donne souvent la matiere, par exemple "une cuillere en bois").
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres materiaux reellement plausibles pour
+    l'objet decrit, jamais des elements sans rapport.
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors plusieurs materiaux
+    distincts (au moins bois, metal, plastique, verre) sont chacun en bonne reponse au moins une
+    fois.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `QLM-CP-06` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme qu'aucun enonce ne revele la matiere par le nom de l'objet et que les distracteurs
+    sont des materiaux plausibles.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de manipuler ou de toucher un
+  materiau reel - hors de portee du palier 1 ; elle ne fixe aucun contenu factuel precis (quels
+  objets, quels materiaux retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0098`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `marc-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0098` section 7) ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S42-ART-COULEURS - Reconnaitre et nommer les couleurs, distinguer les couleurs primaires de celles obtenues par melange (`ART-CP-05`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux reconnaitre et nommer les couleurs et savoir ce que
+  donne un melange de couleurs primaires en jouant au bandit manchot, afin de connaitre les regles de
+  melange des couleurs.
+- **Competence programme visee** : arts plastiques, CP (cycle 2), domaine "L'expression des
+  emotions" - `squad/programme/arts-plastiques/competences-cp.md`, `ART-CP-05`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 1741.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`squad/programme/arts-plastiques/competences-cp.md`, Jugement de faisabilite, `nadia-prof`,
+  2026-09-03, ligne 5) : *"Reconnaitre et nommer les couleurs, primaires et melanges | jouable au
+  choix textuel, sous `ART-1` | Le melange des couleurs est une connaissance : 'Quelle couleur
+  obtient-on en melangeant le bleu et le jaune ?' se pose en trois propositions ecrites, se verifie,
+  et ne demande a l'enfant de percevoir aucune couleur."* La condition opposable associee, citee mot
+  pour mot : `ART-1` *"Aucun item d'arts plastiques ne fait porter la reponse par une couleur
+  percue. Pas de pastille coloree, pas de 'de quelle couleur est... ?' sur une image. La ligne 5 se
+  sert par le nom ecrit des couleurs et par la regle de melange."* Mention exigee d'avance si la
+  ligne bouge : *"vocabulaire et connaissances de la pratique plastique seuls ; aucune production
+  plastique n'est servie par ce produit"*.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors la reponse se porte par le nom ecrit d'une couleur
+    ou par une regle de melange (par exemple "quelle couleur obtient-on en melangeant le bleu et le
+    jaune ?"), jamais par une pastille coloree ni par une question du type "de quelle couleur
+    est... ?" sur une image (`ART-1`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les trois couleurs
+    primaires (bleu, jaune, rouge) et au moins trois melanges reels (par exemple bleu + jaune = vert)
+    sont chacun en bonne reponse au moins une fois.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres couleurs reelles, jamais des
+    elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `ART-CP-05` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme qu'aucune reponse ne se porte par une couleur percue et que la matrice porte la
+    mention *"vocabulaire et connaissances de la pratique plastique seuls ; aucune production
+    plastique n'est servie par ce produit"*.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de percevoir une couleur
+  affichee pour repondre (`ART-1`) ; elle ne fixe aucun contenu factuel precis - reste a l'auteur du
+  paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0098`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `sofia-sm` (proposition de `camille-po`, affectation nominative finale par `sofia-sm` elle-meme,
+  `DEC-0098` section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+### S42-EMC-SYMBOLES-CM1 - Reconnaitre les symboles de la Republique francaise et dire ce qu'ils representent (`EMC-CM1-05`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux reconnaitre les symboles de la Republique francaise
+  et dire ce qu'ils representent en jouant au bandit manchot, afin de savoir les nommer sans me
+  tromper.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine "Acquerir
+  et partager les valeurs de la Republique" -
+  `squad/programme/enseignement-moral-et-civique/competences-cm1.md`, `EMC-CM1-05`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 2002.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 5) : *"Symboles de la Republique | non couvert - jouable au choix
+  textuel, sous `ART-1` | Connaissance exacte et verifiable, terrain sur. La reponse ne se porte
+  jamais par une couleur percue : on demande le nom, la devise, la date, la figure - jamais 'de
+  quelle couleur est... ?', qui exclut un enfant daltonien et ne teste pas le symbole."* S'ajoutent
+  les conditions valables sur toute la matiere, citees mot pour mot (introduction du meme document) :
+  *"`ART-1` (aucune reponse portee par une couleur percue) s'applique a la ligne des symboles. `HIS-2`
+  et `HIS-3` s'appliquent : cette matiere porte des faits institutionnels dont je ne suis pas la
+  source, et une erreur y est un motif de refus a elle seule."*
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors la reponse se porte par le nom, la devise, la
+    date ou la figure du symbole, jamais par une couleur percue (jamais "de quelle couleur est le
+    drapeau ?") (`ART-1`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les cinq symboles du
+    libelle (drapeau, devise, Marianne, hymne, fete nationale) sont chacun en bonne reponse au moins
+    une fois.
+  - Etant donne chaque fait institutionnel du paquet, quand il est livre, alors sa source figure dans
+    le commentaire du paquet, et aucun fait n'est errone (`HIS-3`).
+  - Etant donne chaque item, quand on verifie sa reponse, alors une seule des trois propositions est
+    defendable (`HIS-2`).
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres symboles ou elements reels du
+    registre republicain, jamais des elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CM1-05` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme que les cinq symboles sont chacun servis, qu'aucune reponse ne se porte par une
+    couleur percue, et que la matrice porte la mention *"connaissances civiques et reconnaissance de
+    situations seules ; aucun comportement, aucun engagement et aucune participation a une decision
+    collective ne sont servis par ce produit"*.
+- **Ce que cette story ne fait pas** : elle ne demande jamais une couleur percue en bonne reponse
+  (`ART-1`) ; elle ne fixe aucun contenu factuel precis - reste a l'auteur du paquet puis a l'audit
+  de `nadia-prof`, qui verifie l'exactitude de chaque fait institutionnel cite (`HIS-3`).
+- **Lien decision** : `DEC-0098`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `sofia-sm` (proposition de `camille-po`, affectation nominative finale par `sofia-sm` elle-meme,
+  `DEC-0098` section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+### S42-MAT-TEXTUEL - Se reperer et decrire des deplacements sur un quadrillage simple, moitie textuelle seulement (`MAT-CP-10`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux decrire en mots un deplacement sur un quadrillage
+  simple en jouant au bandit manchot, afin de savoir dire comment on va d'un point a un autre.
+- **Competence programme visee** : mathematiques, CP (cycle 2), domaine "Espace et geometrie" -
+  `squad/programme/mathematiques/competences-cp.md`, `MAT-CP-10`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 227.
+- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
+  (`ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-
+  ligne-marginale.md`, section 17.7) : *"Oui, `MAT-CP-10` demande le palier 2, et pour une moitie
+  seulement. Se reperer et se deplacer sur un quadrillage est une designation sur un dessin et rien
+  d'autre ne la sert ; decrire un deplacement n'est pas une designation et se sert en choix textuel,
+  dans un second paquet. La ligne ne ferme donc pas par le palier 2 seul, et la mention [...] est
+  due."* Repris sans reouverture par `DEC-0097` (section 6) et `DEC-0098` (section 5) : cette story
+  ne couvre que la moitie *decrire un deplacement*, en choix textuel ; la moitie *se reperer et se
+  deplacer* (designation sur quadrillage, palier 2) reste `non couvert`.
+- **Ecart de tenue signale, non corrige par cette story** : `MATRICE-couverture.md`, ligne 227, porte
+  aujourd'hui une mention de couverture partielle dont la formulation inverse les deux moities par
+  rapport a la source citee ci-dessus (elle attribue la couverture a *"se reperer et se deplacer"* et
+  laisse *"decrire un deplacement"* non couverte, alors que `ARBITRAGE-PREALABLE-s32`, section 17.7,
+  dit l'inverse). Cette story suit la direction verifiee dans la source citee, pas celle actuellement
+  ecrite dans la cellule de la matrice ; la correction de cette cellule est hors du perimetre de
+  cette story et n'est pas faite ici.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande de decrire en mots un deplacement sur
+    un quadrillage (par exemple avancer, reculer, tourner a gauche, tourner a droite), en choix
+    textuel, jamais une designation d'une case ou d'un point sur une image (palier 2, hors de portee
+    ici).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors plusieurs formes de
+    deplacement distinctes (avancer, reculer, tourner a gauche, tourner a droite) sont chacune en
+    bonne reponse au moins une fois.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres deplacements plausibles sur un
+    quadrillage, jamais des elements sans rapport.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CP-10` et uniquement elle, avec la mention de couverture partielle exacte portee au Done
+    pedagogique : *"moitie 'decrire un deplacement' seule, en choix textuel ; la moitie 'se reperer
+    et se deplacer' (designation sur quadrillage, palier 2) reste non couverte"* - direction verifiee
+    contre `ARBITRAGE-PREALABLE-s32`, section 17.7.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme qu'aucun item ne demande une designation sur l'image et que la ligne passe de
+    `non couvert` a `en cours`, pas a `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne construit aucune interaction de designation sur un
+  quadrillage (palier 2, hors de portee au palier 1) ; elle ne fait pas passer `MAT-CP-10` a
+  `couvert-valide` - seule la moitie textuelle est servie ; elle ne corrige pas la mention
+  actuellement ecrite dans `MATRICE-couverture.md`, ligne 227, dont la formulation est inversee par
+  rapport a la source citee - signale ci-dessus, pas corrige ici ; elle ne fixe aucun contenu factuel
+  precis - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0098`.
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`, `DEC-0098`
+  section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
+
 
