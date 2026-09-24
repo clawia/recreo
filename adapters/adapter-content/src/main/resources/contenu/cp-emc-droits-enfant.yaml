@@ -1,0 +1,91 @@
+schema: 1
+id: cp-emc-droits-enfant
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à l'école, jouer)."
+lignesDeReferentiel: ["EMC-CP-10"]
+#
+# S41-EMC-DROITS (docs/backlog/backlog.md, sprint 41). Arbitrage prealable deja rendu, aucun
+# arbitrage neuf a router (ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-
+# civique-et-ma-borne.md, ligne 236) : "oui, et c'est le terrain le plus sur des cinq a 1,5. FER-1 :
+# etre protege, etre soigne, aller a l'ecole, jouer. Deux taches : reconnaitre le droit dont parle
+# une situation ; dire ce que le droit garantit. BIA-4 et EMC-1 : aucun item n'interroge l'enfant
+# sur sa propre situation. 'As-tu le droit d'aller a l'ecole ?' est refuse d'avance." Referentiel
+# copie conforme (squad/programme/enseignement-moral-et-civique/competences-cp.md, EMC-CP-10).
+#
+# FER-1 : les quatre droits du libelle (etre protege, etre soigne, aller a l'ecole, jouer) sont
+# chacun en bonne reponse au moins une fois, sur la tache de reconnaissance (items 1 a 8).
+#
+# FER-3 : deux taches distinctes - reconnaitre le droit dont parle une situation decrite (items 1 a
+# 8, deux items par droit, un personnage fictif different a chaque fois) ; dire ce que le droit
+# garantit (items 9 a 12, un item par droit). Jamais uniquement la premiere tache sur tout le
+# paquet.
+#
+# BIA-4, EMC-1 : aucun item ne s'adresse directement a l'enfant sur sa propre situation. Chaque
+# item de la tache de reconnaissance met en scene un personnage fictif (Lea, Hugo, Aya, Malo,
+# repris du registre deja employe par cp-emc-permis-interdit) ; chaque item de la tache de sens
+# reste une question impersonnelle ("que garantit le droit de... ?").
+#
+# Distracteurs : sur les deux taches, les distracteurs sont d'autres droits ou d'autres notions
+# reelles du registre des droits de l'enfant, jamais un element sans rapport.
+#
+# ADR-0089 (LON-1, LON-2) : au CP, chaque enonce compte au plus quinze mots et au plus deux
+# phrases, la seconde etant la question. Tous les enonces de ce paquet sont en dessous de ce
+# plafond.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf,
+# aucune dette heritee.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Un adulte protège Léa quand elle a peur. Quel droit est illustré ?"
+    bonneReponse: "être protégé"
+    distracteurs: ["être soigné", "jouer"]
+    indice: "Personne ne doit lui faire de mal."
+  - enonce: "Personne ne doit faire de mal à Hugo. Quel droit est illustré ?"
+    bonneReponse: "être protégé"
+    distracteurs: ["aller à l'école", "jouer"]
+    indice: "On le met à l'abri du danger."
+  - enonce: "Le médecin examine Aya quand elle est malade. Quel droit est illustré ?"
+    bonneReponse: "être soigné"
+    distracteurs: ["être protégé", "aller à l'école"]
+    indice: "C'est un docteur qui s'occupe d'elle."
+  - enonce: "Malo reçoit des médicaments pour guérir. Quel droit est illustré ?"
+    bonneReponse: "être soigné"
+    distracteurs: ["jouer", "aller à l'école"]
+    indice: "On l'aide à retrouver la santé."
+  - enonce: "Léa va en classe tous les matins avec son cartable. Quel droit est illustré ?"
+    bonneReponse: "aller à l'école"
+    distracteurs: ["être soigné", "jouer"]
+    indice: "Elle y apprend à lire et à compter."
+  - enonce: "Hugo apprend à lire avec sa maîtresse. Quel droit est illustré ?"
+    bonneReponse: "aller à l'école"
+    distracteurs: ["être protégé", "jouer"]
+    indice: "Cela se passe dans une salle de classe."
+  - enonce: "Aya construit une tour avec des cubes pendant la récréation. Quel droit est illustré ?"
+    bonneReponse: "jouer"
+    distracteurs: ["être protégé", "aller à l'école"]
+    indice: "Elle s'amuse librement avec ses jouets."
+  - enonce: "Malo s'amuse avec ses camarades dans la cour. Quel droit est illustré ?"
+    bonneReponse: "jouer"
+    distracteurs: ["être soigné", "être protégé"]
+    indice: "C'est un moment de détente entre enfants."
+  - enonce: "Que garantit le droit d'être protégé ?"
+    bonneReponse: "que personne ne lui fait de mal"
+    distracteurs: ["qu'un médecin s'occupe de lui", "qu'il a du temps pour s'amuser"]
+    indice: "Un adulte veille sur lui."
+  - enonce: "Que garantit le droit d'être soigné ?"
+    bonneReponse: "qu'un médecin s'occupe de lui"
+    distracteurs: ["que personne ne lui fait de mal", "qu'il peut apprendre et grandir"]
+    indice: "Un docteur l'examine quand il est malade."
+  - enonce: "Que garantit le droit d'aller à l'école ?"
+    bonneReponse: "qu'il peut apprendre et grandir"
+    distracteurs: ["qu'un médecin s'occupe de lui", "qu'il a du temps pour s'amuser"]
+    indice: "Il suit une classe avec une maîtresse ou un maître."
+  - enonce: "Que garantit le droit de jouer ?"
+    bonneReponse: "qu'il a du temps pour s'amuser"
+    distracteurs: ["que personne ne lui fait de mal", "qu'il peut apprendre et grandir"]
+    indice: "Il a des moments libres pour s'amuser."

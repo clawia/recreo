@@ -291,6 +291,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-hygiene-cp",
             // S41-QLM-SAISONS (s41) : entree neuve, QLM-CP-13, mois et saisons.
             "bandit-manchot-saisons-cp",
+            // S41-EMC-SYMBOLES (s41) : entree neuve, EMC-CP-08, les symboles de la Republique.
+            "bandit-manchot-symboles-cp",
+            // S41-EMC-DROITS (s41) : entree neuve, EMC-CP-10, les droits de l'enfant.
+            "bandit-manchot-droits-enfant-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -470,6 +474,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les règles d'hygiène de vie",
             // S41-QLM-SAISONS (s41) : titre neuf.
             "Les mois et les saisons",
+            // S41-EMC-SYMBOLES (s41) : titre neuf.
+            "Les symboles de la République",
+            // S41-EMC-DROITS (s41) : titre neuf.
+            "Les droits de l'enfant",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -675,6 +683,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis quelle règle suivre, ou pourquoi elle est bonne pour la santé.",
             // S41-QLM-SAISONS (s41) : consigne neuve.
             "Lis bien, puis nomme le mois ou la saison, ou dis lequel vient avant ou après.",
+            // S41-EMC-SYMBOLES (s41) : consigne neuve.
+            "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
+            // S41-EMC-DROITS (s41) : consigne neuve.
+            "Lis bien, puis dis quel droit c'est, ou ce qu'il garantit.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1046,7 +1058,17 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "et leur effet sur la santé.",
             // S41-QLM-SAISONS (s41) : competence neuve, copiee conforme du referentiel de
             // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne QLM-CP-13).
-            "Nommer et ordonner les mois de l'année et les saisons.");
+            "Nommer et ordonner les mois de l'année et les saisons.",
+            // S41-EMC-SYMBOLES (s41) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
+            // EMC-CP-08).
+            "Reconnaître et nommer les symboles de la République française (drapeau tricolore, "
+                    + "Marianne, La Marseillaise, la fête nationale).",
+            // S41-EMC-DROITS (s41) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
+            // EMC-CP-10).
+            "Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à "
+                    + "l'école, jouer).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
