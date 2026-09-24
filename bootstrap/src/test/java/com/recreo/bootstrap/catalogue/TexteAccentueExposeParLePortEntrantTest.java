@@ -281,6 +281,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-devise-cp",
             // S40-EXTRACTION (s40) : entree neuve, extraction d'information texte et tableau
             "bandit-manchot-sciences-extraire-information-cm1",
+            // S41-EMC-ROLES (s41) : entree neuve, EMC-CP-13, roles et services de l'ecole et de la
+            // commune.
+            "bandit-manchot-roles-ecole-commune-cp",
+            // S41-SCI-CLASSER (s41) : entree neuve, SCI-CM1-06, classer des etres vivants d'apres
+            // un caractere commun observable.
+            "bandit-manchot-classer-etres-vivants-cm1",
             // S41-EMC-SYMBOLES (s41) : entree neuve, EMC-CP-08, les symboles de la Republique.
             "bandit-manchot-symboles-cp",
             // S41-EMC-DROITS (s41) : entree neuve, EMC-CP-10, les droits de l'enfant.
@@ -456,6 +462,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La devise de la France",
             // S40-EXTRACTION (s40) : titre neuf.
             "Lis le document scientifique",
+            // S41-EMC-ROLES (s41) : titre neuf.
+            "Les rôles de l'école et de la commune",
+            // S41-SCI-CLASSER (s41) : titre neuf.
+            "Classer les êtres vivants",
             // S41-EMC-SYMBOLES (s41) : titre neuf.
             "Les symboles de la République",
             // S41-EMC-DROITS (s41) : titre neuf.
@@ -657,6 +667,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis la devise, ou choisis le bon exemple.",
             // S40-EXTRACTION (s40) : consigne neuve.
             "Lis le texte ou le tableau, puis réponds à la question.",
+            // S41-EMC-ROLES (s41) : consigne neuve.
+            "Lis bien, puis dis à qui s'adresser, ou ce que fait cette personne.",
+            // S41-SCI-CLASSER (s41) : consigne neuve.
+            "Lis bien, puis dis lequel des trois ne partage pas le même caractère.",
             // S41-EMC-SYMBOLES (s41) : consigne neuve.
             "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
             // S41-EMC-DROITS (s41) : consigne neuve.
@@ -1017,6 +1031,15 @@ class TexteAccentueExposeParLePortEntrantTest {
             // mot (cm1-sciences-extraire-information.yaml, ligne SCI-CM1-20).
             "Extraire une information explicitement présente dans un document scientifique (texte "
                     + "ou tableau) et la restituer (référentiel CM1, ligne SCI-CM1-20)",
+            // S41-EMC-ROLES (s41) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne EMC-CP-13).
+            "Identifier quelques rôles et services de l'école et de la commune (directeur, mairie, "
+                    + "pompiers, médecin).",
+            // S41-SCI-CLASSER (s41) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
+            // SCI-CM1-06).
+            "Classer des êtres vivants d'après un caractère commun observable, et repérer la "
+                    + "diversité des espèces d'un milieu.",
             // S41-EMC-SYMBOLES (s41) : competence neuve, copiee conforme du referentiel de
             // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
             // EMC-CP-08).

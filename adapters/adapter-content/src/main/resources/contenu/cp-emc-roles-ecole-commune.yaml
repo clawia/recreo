@@ -1,0 +1,85 @@
+schema: 1
+id: cp-emc-roles-ecole-commune
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Construire une culture civique"
+  competence: "Identifier quelques rôles et services de l'école et de la commune (directeur, mairie, pompiers, médecin)."
+lignesDeReferentiel: ["EMC-CP-13"]
+#
+# S41-EMC-ROLES (docs/backlog/backlog.md, sprint 41). Arbitrage prealable deja rendu, aucun arbitrage
+# neuf a router (ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-
+# borne.md, ligne 237) : "oui (lot a 1,5) [...] Connaissance verifiable. Deux taches : a qui
+# s'adresse-t-on pour telle chose ; que fait telle personne ou tel service. EMC-6 : aucun item ne
+# suppose la commune, l'ecole ou le foyer de l'enfant. Le produit ne les connait pas et ne peut pas
+# les connaitre (DEC-0028)." Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cp.md, EMC-CP-13).
+#
+# Avis de faisabilite de theo-archi (squad/sprints/s41-fusion-emc-sciences-qlm/avis-faisabilite.md,
+# section 6.3) : condition EMC-6 non encodable (jugement semantique, garde de nadia-prof).
+#
+# FER-1 : les quatre roles et services du libelle (le directeur ou la directrice de l'ecole, la
+# mairie, les pompiers, le medecin) sont chacun en bonne reponse au moins une fois, tous servis par
+# la tache A (items 1 a 6).
+#
+# FER-3 : deux taches distinctes - tache A, reconnaitre a qui s'adresser selon une situation decrite
+# (items 1 a 6) ; tache B, dire ce que fait un role ou un service nomme (items 7 a 11).
+#
+# EMC-6 : aucun item ne suppose la commune, l'ecole ou le foyer particulier de l'enfant - chaque
+# situation met en scene un enfant, une classe ou un habitant generiques, jamais "ta commune" ou
+# "ton ecole".
+#
+# Distracteurs : sur la tache A, les deux distracteurs sont toujours deux des trois autres roles ou
+# services du libelle, jamais un element sans rapport. Sur la tache B, les deux distracteurs sont
+# des fonctions d'un autre role ou service du libelle, jamais une fonction absurde.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Il y a un début d'incendie dans un bâtiment. Qui doit-on appeler ?"
+    bonneReponse: "les pompiers"
+    distracteurs: ["le médecin", "le directeur de l'école"]
+    indice: "Ce sont eux qui savent éteindre le feu en toute sécurité."
+  - enonce: "Un enfant a une forte fièvre depuis plusieurs jours. Qui consulte-t-on ?"
+    bonneReponse: "le médecin"
+    distracteurs: ["la mairie", "les pompiers"]
+    indice: "Il sait comment soigner une maladie qui dure plusieurs jours."
+  - enonce: "Une classe veut organiser une sortie scolaire. Qui donne son autorisation ?"
+    bonneReponse: "le directeur de l'école"
+    distracteurs: ["la mairie", "le médecin"]
+    indice: "C'est lui ou elle qui organise la vie de l'école."
+  - enonce: "Une rue du quartier a besoin d'un nouveau passage piéton. À qui les habitants s'adressent-ils ?"
+    bonneReponse: "la mairie"
+    distracteurs: ["les pompiers", "le directeur de l'école"]
+    indice: "Elle s'occupe des routes et des espaces du quartier."
+  - enonce: "Un enseignant est absent. Qui organise la classe ce jour-là ?"
+    bonneReponse: "le directeur de l'école"
+    distracteurs: ["le médecin", "la mairie"]
+    indice: "Il ou elle s'occupe de l'organisation de l'école, même ce jour-là."
+  - enonce: "Une personne est bloquée dans un ascenseur. Qui vient la secourir ?"
+    bonneReponse: "les pompiers"
+    distracteurs: ["la mairie", "le médecin"]
+    indice: "Ils viennent en aide aux personnes en danger, même sans incendie."
+  - enonce: "Que fait le directeur ou la directrice de l'école ?"
+    bonneReponse: "il ou elle organise l'école et remplace les enseignants absents"
+    distracteurs: ["il ou elle soigne les blessures", "il ou elle éteint les incendies"]
+    indice: "Il ou elle est responsable de toute l'école, du matin au soir."
+  - enonce: "Que fait la mairie pour l'école ?"
+    bonneReponse: "elle s'occupe des bâtiments et du matériel de l'école"
+    distracteurs: ["elle soigne les élèves malades", "elle éteint les incendies"]
+    indice: "Elle gère aussi les routes et les espaces du quartier."
+  - enonce: "Que font les pompiers en cas d'incendie ?"
+    bonneReponse: "ils éteignent le feu et portent secours aux personnes"
+    distracteurs: ["ils organisent les cours de l'école", "ils soignent les malades à l'hôpital"]
+    indice: "Ils utilisent une grande échelle et un camion rouge pour intervenir vite."
+  - enonce: "Que fait le médecin pour un enfant malade ?"
+    bonneReponse: "il ou elle le soigne et peut lui faire un vaccin"
+    distracteurs: ["il ou elle décide des règles de l'école", "il ou elle organise les sorties scolaires"]
+    indice: "Il ou elle connaît les maladies et sait comment les soigner."
+  - enonce: "Que font aussi les pompiers, en plus d'éteindre les incendies ?"
+    bonneReponse: "ils portent secours aux personnes en danger"
+    distracteurs: ["ils réparent les routes abîmées", "ils décident des règles de l'école"]
+    indice: "Ils aident aussi les personnes bloquées ou blessées, sans aucun feu."
