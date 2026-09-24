@@ -295,6 +295,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-symboles-cp",
             // S41-EMC-DROITS (s41) : entree neuve, EMC-CP-10, les droits de l'enfant.
             "bandit-manchot-droits-enfant-cp",
+            // S42-MAT-TEXTUEL (s42) : entree neuve, MAT-CP-10, moitie textuelle (decrire un
+            // deplacement sur un quadrillage).
+            "bandit-manchot-deplacements-quadrillage-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -478,6 +481,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les symboles de la République",
             // S41-EMC-DROITS (s41) : titre neuf.
             "Les droits de l'enfant",
+            // S42-MAT-TEXTUEL (s42) : titre neuf.
+            "Décrire un déplacement",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -687,6 +692,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le nom du symbole, ou ce qu'il représente.",
             // S41-EMC-DROITS (s41) : consigne neuve.
             "Lis bien, puis dis quel droit c'est, ou ce qu'il garantit.",
+            // S42-MAT-TEXTUEL (s42) : consigne neuve.
+            "Lis bien, puis dis quel geste est décrit.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1068,7 +1075,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
             // EMC-CP-10).
             "Identifier les principaux droits de l'enfant (être protégé, être soigné, aller à "
-                    + "l'école, jouer).");
+                    + "l'école, jouer).",
+            // S42-MAT-TEXTUEL (s42) : competence neuve, libelle entier du referentiel de
+            // nadia-prof (squad/programme/mathematiques/competences-cp.md, ligne MAT-CP-10) ;
+            // couverture partielle nommee, ce paquet ne sert que la moitie "decrire un
+            // deplacement".
+            "Se repérer et décrire des déplacements sur un quadrillage simple");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
