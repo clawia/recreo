@@ -34,7 +34,7 @@ lignesDeReferentiel: ["SCI-CM1-06"]
 # cp-qlm-vivant-non-vivant.yaml (QLM-CP-01) et cp-qlm-cycle-de-vie.yaml (QLM-CP-02) - aucun des
 # etres vivants nommes ici (moineau, pigeon, chauve-souris, fourmi, abeille, araignée, truite,
 # brochet, lapin, serpent, lézard, chat, renard, écureuil, canard, libellule, papillon, poule,
-# chien, grenouille, têtard, poisson rouge, mouche, coccinelle, lion, gazelle, poisson-clown) n'y
+# chien, grenouille, triton, poisson rouge, mouche, coccinelle, lion, gazelle, poisson-clown) n'y
 # est classe comme non-vivant ou objet ; c'est un ajout d'especes au CM1, jamais une contradiction
 # d'un classement deja servi au CP.
 #
@@ -79,16 +79,16 @@ items:
   - enonce: "La libellule, le papillon et la fourmi : lequel de ces trois êtres vivants ne vole pas ?"
     bonneReponse: "la fourmi"
     distracteurs: ["la libellule", "le papillon"]
-    indice: "Cet être vivant marche et grimpe, mais il ne vole pas."
+    indice: "La plupart des fourmis n'ont pas d'ailes et se déplacent en marchant ou en grimpant."
   - enonce: "Le pigeon, la poule et le chien : lequel de ces trois êtres vivants n'a pas deux pattes ?"
     bonneReponse: "le chien"
     distracteurs: ["le pigeon", "la poule"]
     indice: "Cet être vivant marche sur quatre pattes, pas sur deux."
-  - enonce: "Dans une mare vivent la grenouille, le têtard et l'écureuil : lequel de ces trois êtres vivants ne vit pas dans la mare ?"
+  - enonce: "La grenouille, le triton et l'écureuil : lequel de ces trois êtres vivants ne vit pas dans la mare ?"
     bonneReponse: "l'écureuil"
-    distracteurs: ["la grenouille", "le têtard"]
+    distracteurs: ["la grenouille", "le triton"]
     indice: "Cet être vivant vit dans les arbres, loin de l'eau."
-  - enonce: "Dans une forêt vivent le renard, l'écureuil et le poisson rouge : lequel de ces trois êtres vivants ne vit pas dans la forêt ?"
+  - enonce: "Le renard, l'écureuil et le poisson rouge : lequel de ces trois êtres vivants ne vit pas dans la forêt ?"
     bonneReponse: "le poisson rouge"
     distracteurs: ["le renard", "l'écureuil"]
     indice: "Cet être vivant a besoin de vivre dans l'eau, jamais dans les arbres."
@@ -96,7 +96,7 @@ items:
     bonneReponse: "le lézard"
     distracteurs: ["la mouche", "la coccinelle"]
     indice: "Cet être vivant a quatre pattes, pas six."
-  - enonce: "Dans la savane vivent le lion, la gazelle et le poisson-clown : lequel de ces trois êtres vivants ne vit pas dans la savane ?"
+  - enonce: "Le lion, la gazelle et le poisson-clown : lequel de ces trois êtres vivants ne vit pas dans la savane ?"
     bonneReponse: "le poisson-clown"
     distracteurs: ["le lion", "la gazelle"]
     indice: "Cet être vivant vit dans la mer, jamais dans la savane."

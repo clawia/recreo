@@ -43,7 +43,7 @@ items:
     bonneReponse: "les pompiers"
     distracteurs: ["le médecin", "le directeur de l'école"]
     indice: "Ce sont eux qui savent éteindre le feu en toute sécurité."
-  - enonce: "Un enfant a une forte fièvre depuis plusieurs jours. Qui consulte-t-on ?"
+  - enonce: "Un enfant a une forte fièvre depuis plusieurs jours. Qui doit-on aller voir ?"
     bonneReponse: "le médecin"
     distracteurs: ["la mairie", "les pompiers"]
     indice: "Il sait comment soigner une maladie qui dure plusieurs jours."
@@ -64,7 +64,7 @@ items:
     distracteurs: ["la mairie", "le médecin"]
     indice: "Ils viennent en aide aux personnes en danger, même sans incendie."
   - enonce: "Que fait le directeur ou la directrice de l'école ?"
-    bonneReponse: "il ou elle organise l'école et remplace les enseignants absents"
+    bonneReponse: "il ou elle organise l'école et veille au bon déroulement de la journée"
     distracteurs: ["il ou elle soigne les blessures", "il ou elle éteint les incendies"]
     indice: "Il ou elle est responsable de toute l'école, du matin au soir."
   - enonce: "Que fait la mairie pour l'école ?"
