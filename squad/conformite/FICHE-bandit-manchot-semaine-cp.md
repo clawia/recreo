@@ -3,7 +3,10 @@
 - **Jeu** : `bandit-manchot-semaine-cp`, paquet `cp-semaine`, 23 items.
 - **Competence visee** : Mathematiques CP, "Grandeurs et mesures" - *"Se reperer dans la journee, la
   semaine ; lire l'heure pleine sur une horloge"*, **moitie *se reperer* seule**.
-- **Conditions opposables** : `SEM-1` a `SEM-9` (2026-08-31).
+- **Conditions opposables** : `SEM-1` a `SEM-9` (2026-08-31). **`SEM-1` a ete amendee le 2026-09-24**
+  (voir plus bas, et
+  `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md`,
+  section 2.3) : les mois et les saisons sortent de son perimetre.
 - **Auteure du verdict** : `nadia-prof`. **Un verdict n'est jamais efface.**
 
 ---
@@ -44,6 +47,18 @@ enonce, bonne reponse, deux distracteurs, indice. **Aucun echantillon.**
 | **`SEM-7`** - aucun presuppose | **TENUE** | Aucune configuration familiale, aucun rythme scolaire, aucun depart en vacances, aucune fete. **Le mercredi et le samedi ne portent aucune activite** - c'est le piege le plus courant sur cette competence et il est evite |
 | **`SEM-8`** - indice qui dit quoi se rappeler, huit mots au plus | **TENUE** | Quatre indices en tout, de cinq a six mots, un par famille. Aucun ne donne la reponse |
 | **`SEM-9`** - au moins vingt items, deux items ne posent jamais la meme question | **TENUE** | 23 items, 23 enonces distincts |
+
+**Note du 2026-09-24 (`nadia-prof`), sur la ligne `SEM-1` du tableau ci-dessus.** Ce *"TENUE, 23 sur
+23"* a ete rendu contre la redaction de `SEM-1` du 2026-08-31, qui autorisait quatre familles - dont
+les mois et les saisons. **Cette redaction etait fautive et je l'ai amendee le 2026-09-24** : les
+mois et les saisons appartiennent a `QLM-CP-13` (questionner le monde), et `SEM-1` se limite
+desormais aux moments de la journee et aux jours de la semaine. Le motif complet est dans
+`squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md`,
+section 2.3, et le constat d'origine
+dans `squad/conformite/FICHE-bandit-manchot-saisons-cp.md`. **Le verdict du 2026-08-31 n'est pas
+efface et n'est pas rouvert** ; contre la redaction corrigee, onze des vingt-trois items de ce paquet
+sortent du perimetre. L'utilisatrice a tranche leur retrait ; la `DEC` et la matrice sont a
+`camille-po`.
 
 ### 3. Ce que j'ai regarde en plus des conditions, et qui tient
 

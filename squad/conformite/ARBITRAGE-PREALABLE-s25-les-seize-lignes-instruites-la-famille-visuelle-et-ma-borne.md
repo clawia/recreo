@@ -177,6 +177,57 @@ section 3.
 - **`SEM-1` - Perimetre.** Les items portent sur : les moments de la journee (matin, midi,
   apres-midi, soir, nuit), les jours de la semaine et leur ordre, les mois et leur ordre, les
   saisons. **Rien d'autre.**
+
+  > **Amendement du 2026-09-24 (`nadia-prof`), sur `SEM-1` et elle seule. La redaction ci-dessus
+  > est fautive ; elle reste ecrite, elle n'est plus opposable. C'est la redaction corrigee, plus
+  > bas dans ce bloc, qui vaut a partir de cette date.**
+  >
+  > **La phrase fautive** est la fin de la clause : *"les jours de la semaine et leur ordre, **les
+  > mois et leur ordre, les saisons**. Rien d'autre."*
+  >
+  > **Pourquoi elle est fautive.** Le referentiel de questionner le monde loge les mois et les
+  > saisons sur une autre ligne : `QLM-CP-13`, *"Nommer et ordonner les mois de l'annee et les
+  > saisons"*, et sa section *"Recouvrements a ne pas double-compter"* dit dans les memes termes que
+  > les lignes de questionner le monde *"portent sur les mois, les saisons et l'anteriorite entre
+  > evenements, pas sur la journee ni la semaine"*. En ouvrant `MAT-CP-09` aux mois et aux saisons le
+  > 2026-08-31, **j'ai autorise dans un paquet de mathematiques ce que mon propre referentiel reserve
+  > a questionner le monde**. L'ecart vient de moi, pas d'une developpeuse : il est reste invisible
+  > tant que `QLM-CP-13` n'etait servie par aucun jeu, et il est apparu le 2026-09-24 quand
+  > `cp-qlm-saisons` l'a servie. Je l'ai constate moi-meme dans
+  > `squad/conformite/FICHE-bandit-manchot-saisons-cp.md`, section *"Correction d'un de mes propres
+  > constats, avant de m'en servir"*, ou le detail du recouvrement est ecrit. L'utilisatrice a
+  > tranche le retrait des items concernes de `cp-semaine` ; la `DEC` est a `camille-po`.
+  >
+  > **Redaction corrigee, opposable a partir du 2026-09-24 :**
+  >
+  > **`SEM-1` - Perimetre.** Les items portent sur : les moments de la journee (matin, midi,
+  > apres-midi, soir, nuit), les jours de la semaine et leur ordre. **Rien d'autre.** Les mois,
+  > leur ordre et les saisons **sortent de ce perimetre** : ils sont la competence de `QLM-CP-13`,
+  > et un item de `cp-semaine` qui les travaille fait travailler a l'enfant une competence comptee
+  > sur `MAT-CP-09` alors que le referentiel la loge ailleurs.
+  >
+  > **Correction d'un chiffre que j'avais moi-meme avance.** Ma fiche de s41 parle de *"quatre items
+  > de `cp-semaine`"* concernes. **Ce chiffre est faux** : il comptait les items de `cp-qlm-saisons`
+  > en recouvrement, pas ceux de `cp-semaine`. J'ai relu les vingt-trois enonces de
+  > `adapters/adapter-content/src/main/resources/contenu/cp-semaine.yaml` un par un : **onze items
+  > sortent du perimetre corrige** - sept sur les mois (rangs 5, 6, 7, 15, 16, 17, 18) et quatre sur
+  > les saisons (rangs 8, 9, 19, 20). **Douze items restent dans le perimetre** : huit sur les jours,
+  > quatre sur les moments de la journee.
+  >
+  > **Ce que ce chiffre implique pour les autres conditions, et que je ne durcis pas.** `SEM-9`
+  > demande **au moins vingt items** et je la laisse telle quelle : les douze items restants ne la
+  > tiennent pas, donc le paquet a completer devra regagner des items **dans le perimetre corrige**
+  > (jours, moments) pour repasser ma porte. `SEM-6` (un tiers d'items d'ordre) reste tenue sur les
+  > douze restants - sept demandent *"juste avant"*, *"juste apres"* ou *"entre"*, pour un plancher
+  > de quatre. `SEM-4` ne bouge pas : son plafond de neuf lettres reste ce qu'il etait, meme si
+  > `septembre`, le mot par lequel je l'illustrais, sort du perimetre.
+  >
+  > **Ce que cet amendement ne fait pas.** Il ne touche a aucun fichier de contenu. Il ne tranche pas
+  > la couverture de `MAT-CP-09` dans la matrice - c'est `camille-po` qui l'instruit. Il ne revient
+  > pas sur le Done pedagogique prononce le 2026-08-31 sur `bandit-manchot-semaine-cp` : ce verdict
+  > reste ecrit, il a ete rendu contre la redaction d'alors, et je ne deplace pas un poteau apres
+  > coup. C'est la suite qui est gouvernee par la redaction corrigee, pas le passe.
+
 - **`SEM-2` - Aucun item ne demande de calculer une duree.** Le calcul de duree est une ligne de
   CM1, deja verte (`bandit-manchot-problemes-durees-cm1`) ; un item de CP qui l'exigerait
   empieterait sur elle.
