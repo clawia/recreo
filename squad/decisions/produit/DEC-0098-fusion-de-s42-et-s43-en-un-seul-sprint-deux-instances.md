@@ -1,6 +1,6 @@
 # DEC-0098 - Fusion de s42 et s43 en un seul sprint, deux instances paralleles de `nadia-prof`
 
-- **Statut** : Acceptee.
+- **Statut** : Acceptee, amendee le 2026-09-24 (retrait d'un lot - voir section 9).
 - **Date** : 2026-09-24
 - **Auteur** : `camille-po`
 - **Sprint** : s42 (fusionne ; s43 disparait, absorbe dans s42)
@@ -258,3 +258,65 @@ davantage cette fois-ci.
   `theo-archi` et le Done pedagogique final de chaque instance de `nadia-prof` restent a rendre.
 - Il ne tranche pas si le risque de marge nulle au niveau du sprint est acceptable : c'est nomme,
   chiffre et route, pas resolu par moi.
+
+## 9. Amendement du 2026-09-24 - retrait de `S42-FRA-LECTURE`, verdict de la mesure de pli
+
+**Ce que cet amendement change** : le lot `S42-FRA-LECTURE` (francais CM1, *"Lire silencieusement
+[...] et en restituer l'essentiel"*) est retire du perimetre du sprint, sans remplacement. Les
+sections 1 a 8 ci-dessus restent le compte rendu exact de la decision telle qu'acceptee ce meme
+jour ; elles ne sont pas reecrites.
+
+**Motif** : la mesure de pli que la section 5 citait comme prealable technique deja pose par
+`nadia-prof` (`ARBITRAGE-PREALABLE-s25`, section 9.1 - *"une mesure de pli par `ines-design` avant
+l'ecriture du paquet"*) a ete rendue par `ines-design` le meme jour
+(`squad/conformite/mesure-ines-lis-pli-s42.md`). **Verdict : negatif.** Au plafond haut de
+`LIS-2`/`LIS-3` (70 mots, 5 phrases, enonce a 12 mots, trois propositions), le `texteSupport` et
+l'`enonce` tiennent au-dessus du pli de reference (744 x 551 px, `DEC-0040`) avec des marges
+confortables (185 px et 85 px), mais le bloc des trois propositions exige par `LIS-1` deborde de
+357 px : la premiere proposition n'est visible qu'au tiers, les deux autres sont integralement hors
+champ sans defilement. Le critere d'acceptation de la story, cite mot pour mot dans le backlog :
+*"si elle montre que le texte ne tient pas, la ligne ne s'ouvre pas a ce sprint"*. Le constat
+d'`ines-design` declenche donc directement ce que ce critere annoncait.
+
+**Recherche d'un remplacement, faite avant de retirer** : le vivier de `DEC-0097`, section 7 (26
+lignes portant deja un arbitrage pedagogique prealable ecrit, hors les treize lignes CE1 qui
+demanderaient un arbitrage neuf) ne contient aucune ligne de tarif 1,0 (mathematiques ou francais,
+seules matieres ou `nadia-prof` est la source factuelle au sens de la regle de tarif de la section
+2 de `DEC-0097`) qui soit disponible sans arbitrage neuf ni illustration a instruire par
+`theo-archi`. Les candidates restantes du vivier sont toutes tarifees 1,5 : les retenir sur le
+terrain 1 (aux cotes de `S42-HG-ROIS` et `S42-QLM-MATIERE`, deja a 3,0) porterait ce terrain a
+4,5/5,0, soit une marge individuelle de 0,5 - exactement le facteur que la section 6 ci-dessus
+identifie comme la cause directe du risque materialise a s41 (terrain EMC a 4,5/5,0, deux refus sur
+le meme lot le meme jour). Plusieurs de ces candidates portent en outre leur propre reserve de
+risque deja ecrite dans le vivier (`QLM-CP-16` : *"la plus dangereuse du lot"* ; `EMC-CP-04` :
+*"non retenue a s31"*, `FER-3` deja epuisee ; `EMC-CP-14` : piege d'exactitude documente). Aucune
+ligne de remplacement rapide et sure n'existe donc : le retrait sans remplacement est retenu plutot
+que de reproduire un risque deja identifie ailleurs dans ce meme document.
+
+**Perimetre amende - cinq lots, deux terrains** :
+
+| Terrain | Instance | Lots | Cout |
+|---|---|---|---|
+| 1 - histoire-geographie CM1, questionner le monde CP | A | `S42-HG-ROIS`, `S42-QLM-MATIERE` | 3,0 / 5,0 |
+| 2 - arts plastiques CP, EMC CM1, mathematiques CP | B | `S42-ART-COULEURS`, `S42-EMC-SYMBOLES`, `S42-MAT-QUADRILLAGE` | 4,0 / 5,0 |
+| **Total du sprint** | | | **7,0 / 8,0** |
+
+Le risque de marge de rejeu nulle au niveau du sprint, signale sans etre tranche en section 6, est
+attenue par cet amendement sans etre l'objet d'un arbitrage nouveau : la borne totale (8,0) porte
+desormais une marge de 1,0 non allouee, en plus de la marge individuelle de 2,0 du terrain 1 (contre
+1,0 avant amendement) et de 1,0 du terrain 2 (inchangee).
+
+**Ce que cet amendement ne fait pas** : il ne rouvre aucune clause de non-collision (`PAR-2`,
+`CYC-1`, frontiere) verifiee en section 4 - le retrait d'un lot ne peut pas en faire apparaitre une
+la ou aucune n'existait ; il ne juge pas la qualite pedagogique d'un contenu, aucun paquet
+`S42-FRA-LECTURE` n'ayant jamais ete ecrit ; il ne ferme pas la ligne francais CM1 concernee, qui
+reste `non couvert` dans `squad/programme/MATRICE-couverture.md`, ligne 1053, statut deja en vigueur
+et non modifie par cet amendement ; il ne remet pas en cause la reserve elle-meme (`LIS-1` a
+`LIS-10`, `ARBITRAGE-PREALABLE-s25`), qui reste opposable si cette ligne est reproposee avec un texte
+plus court, une autre forme de proposition, ou un gabarit different - aucune de ces pistes n'est
+instruite ici.
+
+**Ce que cet amendement route** : a `sofia-sm`, la mise a jour du dossier de sprint et du backlog
+(`docs/backlog/backlog.md`, section "Sprint 42") pour retirer la story `S42-FR-LECTURE-SILENCIEUSE`
+et refleter le perimetre a cinq lots ci-dessus - geste deja fait dans le meme commit que cet
+amendement, par coherence avec la regle de gouvernance qui interdit une decision non appliquee.

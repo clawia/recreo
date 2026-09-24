@@ -15032,130 +15032,59 @@ vivier (tarif 1,0), coherent avec sa double casquette de Scrum Master et de troi
   propose a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
   `DEC-0095` section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
 
-## Sprint 42 - Fusion de deux sprints projetes (francais CM1, histoire-geographie CM1, questionner le monde CP, arts plastiques CP, EMC CM1, mathematiques CP), passage a deux instances de `nadia-prof` (`DEC-0098`)
+## Sprint 42 - Fusion de deux sprints projetes (histoire-geographie CM1, questionner le monde CP, arts plastiques CP, EMC CM1, mathematiques CP), passage a deux instances de `nadia-prof` (`DEC-0098`)
 
-Six lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` a
+Cinq lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` a
 l'ouverture du sprint. Objectif et perimetre formalises par `DEC-0097` (chiffrage ligne a ligne des
-six lignes, sections 5 et 6) puis par `DEC-0098` (fusion des deux sprints projetes s42 et s43 en un
-seul sprint a deux instances paralleles de `nadia-prof`, borne recalculee a 8,0, perimetre porte a
-six lots sur deux terrains non chevauchants). Aucun ne rouvre `DEC-0089` (CE1 mathematiques seule,
-CM2 differe) ni les neuf lignes bloquees par `DEC-0075`. Les six lots portent deja un arbitrage
-prealable explicite, cite en entier ci-dessous : `theo-archi` peut rendre un avis de faisabilite
-directement sur chacun, sans arbitrage pedagogique prealable neuf a attendre.
+six lignes d'origine, sections 5 et 6) puis par `DEC-0098` (fusion des deux sprints projetes s42 et
+s43 en un seul sprint a deux instances paralleles de `nadia-prof`, borne recalculee a 8,0, perimetre
+porte a six lots sur deux terrains non chevauchants). Aucun ne rouvre `DEC-0089` (CE1 mathematiques
+seule, CM2 differe) ni les neuf lignes bloquees par `DEC-0075`. Les cinq lots restants portent deja
+un arbitrage prealable explicite, cite en entier ci-dessous : `theo-archi` peut rendre un avis de
+faisabilite directement sur chacun, sans arbitrage pedagogique prealable neuf a attendre.
 
-**Note de nommage** : `DEC-0098`, section 5, nomme ces memes six lots `S42-FRA-LECTURE`,
-`S42-HG-ROIS`, `S42-QLM-MATIERE`, `S42-ART-COULEURS`, `S42-EMC-SYMBOLES`, `S42-MAT-QUADRILLAGE`. Ce
-backlog les reprend sous les noms `S42-FR-LECTURE-SILENCIEUSE`, `S42-HG-ROIS`, `S42-QLM-MATIERE`,
-`S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`, `S42-MAT-TEXTUEL` - meme perimetre, meme tarif, meme
-lot, nom different a l'ecriture des stories.
+**Retrait, sans remplacement, du sixieme lot d'origine** (`S42-FR-LECTURE-SILENCIEUSE`, francais
+CM1, `Lire silencieusement...`). `DEC-0098`, amendement du 2026-09-24, retient la mesure de pli
+rendue par `ines-design` (`squad/conformite/mesure-ines-lis-pli-s42.md`) : au plafond haut de
+`LIS-2`/`LIS-3` exige par cette ligne, le `texteSupport` et l'`enonce` tiennent au-dessus du pli du
+gabarit de reference, mais le bloc des trois propositions exige par `LIS-1` deborde de 357 px, deux
+des trois propositions restant integralement hors champ sans defilement. Le critere d'acceptation de
+la story disait explicitement : *"si elle montre que le texte ne tient pas, la ligne ne s'ouvre pas
+a ce sprint"*. Aucune ligne de remplacement satisfaisante (tarif 1,0, matiere ou nadia-prof est la
+source) n'existe dans le vivier deja instruit de `DEC-0097` section 7 : les seules candidates pretes
+sans arbitrage neuf ni illustration a instruire couteraient toutes 1,5, ce qui reproduirait sur le
+terrain 1 la marge individuelle de 0,5 deja identifiee comme le facteur direct du risque materialise
+a s41 (`DEC-0098`, section 6). La ligne francais CM1 reste `non couvert`.
+
+**Note de nommage** : `DEC-0098`, section 5, nommait a l'origine six lots
+(`S42-FRA-LECTURE`, `S42-HG-ROIS`, `S42-QLM-MATIERE`, `S42-ART-COULEURS`, `S42-EMC-SYMBOLES`,
+`S42-MAT-QUADRILLAGE`). Ce backlog reprend les cinq lots restants sous les noms `S42-HG-ROIS`,
+`S42-QLM-MATIERE`, `S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`, `S42-MAT-TEXTUEL` - meme perimetre,
+meme tarif, meme lot, nom different a l'ecriture des stories.
 
 **Deux terrains non chevauchants, un par instance de `nadia-prof`** (`DEC-0098`, section 4 - `PAR-2`
-ne contraint aucune composition possible, les six lignes portant chacune une matiere et un niveau
-distincts des cinq autres ; `CYC-1` ne trouve aucune occurrence a instruire dans ce lot ; aucune
+ne contraint aucune composition possible, les lignes portant chacune une matiere et un niveau
+distincts des autres ; `CYC-1` ne trouve aucune occurrence a instruire dans ce lot ; aucune
 clause de frontiere n'est due, verifie contre le seul critere que `nadia-prof` a ecrit pour en
-produire une, applique aux quinze paires possibles du lot, `ARBITRAGE-PREALABLE-s32`, section 6.4) :
+produire une, applique aux paires possibles du lot, `ARBITRAGE-PREALABLE-s32`, section 6.4) :
 
 | Terrain | Instance | Lots | Cout |
 |---|---|---|---|
-| 1 - francais CM1, histoire-geographie CM1, questionner le monde CP | **A** | `S42-FR-LECTURE-SILENCIEUSE`, `S42-HG-ROIS`, `S42-QLM-MATIERE` | 4,0 / 5,0 |
+| 1 - histoire-geographie CM1, questionner le monde CP | **A** | `S42-HG-ROIS`, `S42-QLM-MATIERE` | 3,0 / 5,0 |
 | 2 - arts plastiques CP, EMC CM1, mathematiques CP | **B** | `S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`, `S42-MAT-TEXTUEL` | 4,0 / 5,0 |
 
-**Point signale, non tranche par cette instruction : le sprint consomme la totalite de la borne, 8,0
-sur 8,0** (`DEC-0098`, section 6). Aucune unite de tarif n'est disponible pour un lot supplementaire
-ou pour un refus qui toucherait les deux terrains a la fois. Une difference reelle avec s41 attenue
-le risque sans l'annuler : chaque terrain conserve ici une marge individuelle de 1,0 sur son propre
-plafond de 5,0 (contre 0,5 sur le terrain le plus charge de s41), absorbant un refus isole sur un
-seul lot sans depasser le plafond de son instance.
+**Total du sprint : 7,0 / 8,0**, marge de 1,0 au niveau du sprint, en plus des marges individuelles
+par terrain (2,0 sur le terrain 1, 1,0 sur le terrain 2) - le retrait du lot francais CM1 remplace le
+risque de marge nulle signale par `DEC-0098` section 6 (8,0 sur 8,0 a l'origine) par une reserve
+reelle, non tranchee davantage ici.
 
 **Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
-`sofia-sm`** (`DEC-0098`, section 7, qui route l'ouverture du sprint a `sofia-sm`). Chaque terrain
-porte trois lots, qui ne se divisent pas en deux lots par developpeur sans qu'un developpeur ne
-franchisse les deux terrains - la meme contrainte arithmetique qu'a s41 (3 + 3 lots, quota de deux
-lots par developpeur), ou `lea-dev` avait deja ete la seule a franchir. Ici : `marc-dev` prend les
-deux lots restants du terrain 1 apres le lot le moins cher (`S42-HG-ROIS`, `S42-QLM-MATIERE`) ;
-`sofia-sm` prend les deux lots restants du terrain 2 apres le lot le moins cher
-(`S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`), coherent avec sa double casquette de Scrum Master et
-de troisieme developpeuse ; `lea-dev` est la seule a franchir les deux terrains, avec les deux lots
-les moins chers du sprint (`S42-FR-LECTURE-SILENCIEUSE`, terrain 1, 1,0 ; `S42-MAT-TEXTUEL`,
-terrain 2, 1,0) - le cout du va-et-vient entre les deux worktrees retombe ainsi sur les deux lots
-les plus simples du sprint plutot que sur les plus couteux.
-
-### S42-FR-LECTURE-SILENCIEUSE - Lire silencieusement un texte de longueur croissante et en restituer l'essentiel (`FRA-CM1-01`)
-
-- **Besoin** : en tant qu'eleve de CM1, je veux lire silencieusement un texte et repondre a une
-  question sur son sujet principal en jouant au bandit manchot, afin de savoir restituer
-  l'essentiel d'un texte que je lis seul.
-- **Competence programme visee** : francais, CM1 (cycle 3), domaine "Lecture et comprehension de
-  l'ecrit" - `squad/programme/francais/competences-cm1.md`, `FRA-CM1-01`. Ligne `non couvert`,
-  `MATRICE-couverture.md` ligne 1053.
-- **Arbitrage pedagogique prealable deja rendu, cite en entier, aucun arbitrage neuf a router**
-  (`ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md`, section
-  9.1) : *"Verdict : ACCEPTE SOUS CONDITIONS `LIS-1` a `LIS-10`, avec couverture partielle nommee, et
-  sous une reserve mesuree qui n'est pas de moi."* Les dix conditions, citees mot pour mot :
-  `LIS-1` *"Forme. Le `texteSupport` porte le texte ; l'`enonce` demande de quoi parle le texte - un
-  titre, une phrase qui le resume, ce qu'on en retiendrait. Trois propositions."*
-  `LIS-2` *"Longueur. Le `texteSupport` compte au moins 45 mots et au plus 70, et au plus cinq
-  phrases."*
-  `LIS-3` *"L'`enonce` compte au plus 12 mots."*
-  `LIS-4` *"Aucune proposition n'est une phrase recopiee du texte."*
-  `LIS-5` *"Chaque distracteur est vrai a propos du texte, et partiel."*
-  `LIS-6` *"Texte masque, la question ne se repond pas [...] `LIS` et `SUB` ne peuvent pas etre pris
-  dans le meme sprint."*
-  `LIS-7` *"Le texte est autonome. Aucune connaissance de culture generale n'est requise, aucun nom
-  propre reel, aucun renvoi a un autre item."*
-  `LIS-8` *"Personnages et situations. Prenoms equilibres en genre a un pres ; aucun role, metier ou
-  activite distribue par genre ; aucune situation qui suppose une configuration familiale, un
-  logement ou un depart en vacances."*
-  `LIS-9` *"Indice. Il dit quelle partie du texte relire pour trouver le sujet, jamais le sujet. Dix
-  mots au plus."*
-  `LIS-10` *"Au moins vingt items, et deux items ne partagent jamais le meme `texteSupport`."*
-  La reserve, non levee a ce jour : *"Je ne sais pas si un texte de soixante mots, sa question et ses
-  trois propositions tiennent au-dessus du pli [...] C'est une mesure d'`ines-design`, pas la
-  mienne [...] et elle est due avant qu'on ecrive le paquet, pas apres. Si elle montre que le texte
-  ne tient pas, cette ligne ne s'ouvre pas a s25 et je le dirai sans detour."* Verifie contre le
-  depot : `LIS` n'a pas ete retenue a s25 (`SUB` l'a ete a sa place,
-  `squad/sprints/s25-le-premier-palier-visuel/planning.md`) - **cette mesure d'`ines-design` n'a
-  jamais ete rendue et reste due avant l'ecriture du paquet.**
-- **Criteres d'acceptation** :
-  - Etant donne un item, quand il s'affiche, alors l'`enonce` demande de quoi parle le texte (un
-    titre, une phrase qui le resume, ce qu'on en retiendrait), avec trois propositions (`LIS-1`).
-  - Etant donne le `texteSupport` d'un item, quand on le compte, alors il compte au moins 45 mots,
-    au plus 70 mots, et au plus cinq phrases (`LIS-2`).
-  - Etant donne l'`enonce` d'un item, quand on le compte, alors il compte au plus 12 mots (`LIS-3`).
-  - Etant donne les trois propositions d'un item, quand on les compare au texte, alors aucune n'est
-    une phrase recopiee telle quelle du texte (`LIS-4`).
-  - Etant donne chaque distracteur, quand on le verifie contre le texte, alors il est vrai a propos
-    du texte et partiel - un detail exact promu au rang de sujet, jamais un fait faux ni une
-    proposition absurde (`LIS-5`).
-  - Etant donne un item, quand le `texteSupport` est masque, alors la question ne se repond plus,
-    verifie item par item sur la totalite du paquet (`LIS-6`).
-  - Etant donne le texte d'un item, quand on le lit, alors il est autonome : aucune connaissance de
-    culture generale, aucun nom propre reel, aucun renvoi a un autre item (`LIS-7`).
-  - Etant donne le paquet livre, quand on relit les personnages et situations, alors les prenoms
-    sont equilibres en genre a un pres, aucun role, metier ou activite n'est distribue par genre, et
-    aucune situation ne suppose une configuration familiale, un logement ou un depart en vacances
-    particulier (`LIS-8`).
-  - Etant donne un indice, quand il s'affiche apres une tentative fausse, alors il dit quelle partie
-    du texte relire pour trouver le sujet, jamais le sujet lui-meme, en dix mots au plus (`LIS-9`).
-  - Etant donne le paquet livre, quand on le compte, alors il porte au moins vingt items, et deux
-    items ne partagent jamais le meme `texteSupport` (`LIS-10`).
-  - Etant donne la ligne avant l'ecriture du paquet, quand `ines-design` mesure si un texte de 70
-    mots, sa question et ses trois propositions tiennent au-dessus du pli, alors le paquet n'est
-    ecrit qu'apres cette mesure ; si elle montre que le texte ne tient pas, la ligne ne s'ouvre pas a
-    ce sprint (reserve non levee de `nadia-prof`, section 9.1).
-  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
-    elle confirme `LIS-1` a `LIS-10` tenues et porte sur la matrice la mention *"restituer l'essentiel
-    seul ; la longueur croissante n'est pas servie, le tirage d'une manche etant sans ordre"*.
-- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de recopier une phrase du
-  texte (`LIS-4`) ; elle ne fait pas l'economie de la mesure de pli d'`ines-design`, due avant
-  l'ecriture du paquet ; elle n'ouvre pas la ligne `SUB` dans le meme sprint (`LIS-6`) ; elle ne fixe
-  aucun contenu factuel precis (quels textes, quels personnages) - reste a l'auteur du paquet puis a
-  l'audit de `nadia-prof`.
-- **Lien decision** : `DEC-0098`.
-- **Agent pressenti** : `ines-design`, par `sofia-sm`, pour la mesure de pli prealable ; `theo-archi`
-  pour l'avis de faisabilite, une fois cette mesure rendue ; developpement propose a `lea-dev`
-  (proposition de `camille-po`, affectation nominative finale par `sofia-sm`, `DEC-0098` section 7) ;
-  `nadia-prof`, instance A, pour le Done pedagogique.
+`sofia-sm`** (`DEC-0098`, section 7, qui route l'ouverture du sprint a `sofia-sm`). Le terrain 1 ne
+porte plus que deux lots : plus besoin qu'un developpeur franchisse les deux terrains pour les
+servir. `marc-dev` prend les deux lots du terrain 1 (`S42-HG-ROIS`, `S42-QLM-MATIERE`) ; `sofia-sm`
+prend les deux lots les moins chers du terrain 2 (`S42-ART-COULEURS`, `S42-EMC-SYMBOLES-CM1`),
+coherent avec sa double casquette de Scrum Master et de troisieme developpeuse ; `lea-dev` prend le
+lot restant du terrain 2 (`S42-MAT-TEXTUEL`).
 
 ### S42-HG-ROIS - Nommer et situer dans le temps quelques rois qui ont marque la construction du royaume (`HG-CM1-05`)
 
