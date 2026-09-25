@@ -15757,6 +15757,11 @@ qu'une seule instance de `nadia-prof`.
 **Total : 4,0/5,0, marge 1,0.** Si les trois lignes ferment integralement, la matrice passe de
 101/156 (64,7 %, etat de sortie de s43) a 104/156 (66,7 %).
 
+**Amendement du 2026-09-25 (`theo-archi`)** : le prealable decrit au paragraphe suivant est leve.
+La frontiere est posee par `nadia-prof` (`DIV-CE1-6`,
+`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 11), fusionnee sur
+`round-two` ; detail dans la story `S44-MAT-DIVISION`.
+
 **Prealable bloquant sur un seul des trois lots, cite ici et non reproduit** : la frontiere entre
 `MAT-CE1-18` (cette ligne) et `MAT-CE1-06` (sens de la multiplication, hors de ce perimetre),
 signalee sans etre tranchee par les lots d'arbitrage pedagogique prealable de mathematiques CE1
@@ -15888,7 +15893,17 @@ independamment.
 - **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
   `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-18` (ligne ajoutee au referentiel le
   2026-09-21). Ligne `non couvert`, `MATRICE-couverture.md` ligne 689.
-- **Prealable bloquant, non leve a ce jour, a lire avant le reste de cette story.** La frontiere
+- **Prealable leve le 2026-09-25, fusionne sur `round-two`.** Amendement du 2026-09-25
+  (`theo-archi`, avis de faisabilite de cette story) : la frontiere est posee par `nadia-prof` sous
+  l'identifiant `DIV-CE1-6`, dans l'addendum
+  `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 11 (commit
+  `5e6f4969`, fusionne sur `round-two` par `b2eba157`), et allouee dans
+  `squad/decisions/REGISTRE-identifiants.md`, section 4. Elle n'est pas routee a `theo-archi`
+  comme l'ecrit la suite de ce paragraphe : ce dernier a decline de la trancher, dire quelle ligne
+  un item sert etant une decision pedagogique, et `nadia-prof` l'a reprise (section 11.1). Elle
+  n'est pas reproduite ici. Les criteres d'acceptation ci-dessous ne citent encore que `DIV-CE1-1`
+  a `DIV-CE1-5` ; leur mise a jour appartient a `camille-po`. Texte d'origine, conserve tel quel :
+  **Prealable bloquant, non leve a ce jour, a lire avant le reste de cette story.** La frontiere
   entre `MAT-CE1-18` (cette ligne) et `MAT-CE1-06` (sens de la multiplication, addition reiteree,
   lignes et colonnes - hors de ce perimetre), est signalee sans etre tranchee par l'arbitrage
   pedagogique prealable (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`,
