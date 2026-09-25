@@ -305,6 +305,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-symboles-cm1",
             // S42-QLM-MATIERE (s42) : entree neuve, QLM-CP-06, la matiere d'un objet.
             "bandit-manchot-matiere-objets-cp",
+            // S43-EPS-EFFETS-ACTIVITE (s43) : entree neuve, EPS-CM1-10, premier paquet
+            // d'education physique et sportive CM1.
+            "bandit-manchot-effets-activite-eps-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -498,6 +501,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "L'histoire des symboles de la République",
             // S42-QLM-MATIERE (s42) : titre neuf.
             "La matière des objets",
+            // S43-EPS-EFFETS-ACTIVITE (s43) : titre neuf.
+            "Les effets de l'activité physique",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -717,6 +722,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S42-QLM-MATIERE (s42) : consigne neuve.
             "Lis bien, puis dis en quelle matière est fait l'objet, ou trie les matières selon "
                     + "leurs propriétés.",
+            // S43-EPS-EFFETS-ACTIVITE (s43) : consigne neuve.
+            "Lis bien, puis dis la cause commune, l'effort qui se distingue, ou la conduite de "
+                    + "sécurité.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -799,6 +807,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (copie conforme du referentiel de nadia-prof,
             // squad/programme/education-physique-et-sportive/competences-cp.md).
             "Entretenir sa santé par la pratique",
+            // S43-EPS-EFFETS-ACTIVITE (s43) : domaine neuf, premier lot d'education physique et
+            // sportive CM1 (copie conforme du referentiel de nadia-prof,
+            // squad/programme/education-physique-et-sportive/competences-cm1.md).
+            "Apprendre à entretenir sa santé",
             // S33-PAL2-1 (s34) : un domaine neuf, premier lot de designation.
             "Se situer dans le temps",
             // S35-QLM11-PLANCLASSE (s35) : domaine neuf, second lot de designation.
@@ -1125,7 +1137,13 @@ class TexteAccentueExposeParLePortEntrantTest {
             // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
             // QLM-CP-06).
             "Identifier de quelle matière un objet est fait et trier des matériaux selon une "
-                    + "propriété simple.");
+                    + "propriété simple.",
+            // S43-EPS-EFFETS-ACTIVITE (s43) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/education-physique-et-sportive/competences-cm1.md, ligne
+            // EPS-CM1-10).
+            "Connaître les effets de l'activité physique sur le corps (échauffement, "
+                    + "essoufflement, récupération, hydratation) et les règles de sécurité qui "
+                    + "l'entourent.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

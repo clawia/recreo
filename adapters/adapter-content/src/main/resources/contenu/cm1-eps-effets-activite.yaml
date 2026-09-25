@@ -1,0 +1,160 @@
+schema: 1
+id: cm1-eps-effets-activite
+type: question
+descripteur:
+  matiere: "Éducation physique et sportive"
+  niveau: "CM1"
+  domaine: "Apprendre à entretenir sa santé"
+  competence: "Connaître les effets de l'activité physique sur le corps (échauffement, essoufflement, récupération, hydratation) et les règles de sécurité qui l'entourent."
+lignesDeReferentiel: ["EPS-CM1-10"]
+#
+# S43-EPS-EFFETS-ACTIVITE (docs/backlog/backlog.md, sprint 43). Premier paquet d'education physique
+# et sportive du produit sur le niveau CM1. Referentiel copie conforme depuis
+# squad/programme/education-physique-et-sportive/competences-cm1.md (EPS-CM1-10, DEC-0074).
+#
+# Frontiere corps-et-effort (DEC-0083, section 9.2 ; jugement de faisabilite du meme referentiel,
+# ligne 10), reprise mot pour mot : l'EPS ne porte que l'effort lui-meme - ce que l'effort fait au
+# corps, ce qui l'entoure (echauffement, hydratation, recuperation) et les regles de securite de la
+# pratique - jamais le sommeil, les repas ou l'hygiene du corps hors effort (SCI-CM1-09, deja
+# servi par cm1-sciences-nutrition). Aucun item de ce paquet ne derive vers ces trois objets.
+#
+# EPS-1 : chaque conduite demandee en reponse a un signal d'alerte du corps (tache 3) reste au
+# registre du bon sens scolaire universel (s'arreter, s'asseoir, boire, prevenir un adulte), jamais
+# une regle supposee connue sans etre donnee par l'enonce lui-meme.
+#
+# EPS-2 : aucun item ne compare des corps, des performances ou des capacites entre enfants ; aucune
+# performance chiffree n'est presentee comme une norme - aucun nombre, aucune duree chiffree et
+# aucune distance chiffree n'apparait dans aucun enonce ni aucune proposition de ce paquet, y
+# compris sur la tache 2 qui distingue deux types d'effort par leur nature, jamais par un chiffre.
+#
+# EPS-3 : aucun item ne fait porter une attitude, une emotion ou une conduite morale par la bonne
+# reponse - chaque item reste au registre factuel (une cause, un effort qui se distingue d'un
+# autre, une conduite de securite), jamais un jugement du type "sage" ou "prudent". Les enonces de
+# la tache 3 sont formules a la troisieme personne impersonnelle ("que doit-on faire"), jamais
+# "que dois-tu faire".
+#
+# BIA-4 : aucun item n'interroge l'enfant sur sa propre pratique ni sur son propre corps - toutes
+# les situations mettent en scene un eleve ou une activite decrits de facon impersonnelle.
+#
+# EPS-9 (nadia-prof, ajout du 2026-09-25 a la story, discriminant CM1/CP pose avant l'ecriture de
+# ce paquet). Les trois taches ci-dessous sont chacune absente de cp-eps-corps-effort.yaml et de
+# cp-eps-regles-de-securite.yaml, lus en entier avant l'ecriture de ce paquet. Elles portent
+# ensemble treize items sur treize (100 %, au-dessus du plancher des deux tiers) et aucune n'en
+# porte moins de trois :
+#
+#   - tache 1, "relier deux effets a une cause unique" (items 1 a 4) : le CP donne une cause par
+#     effet, un effet a la fois, et ne relie jamais deux effets entre eux. Chaque item de cette
+#     tache nomme deux effets et cherche la cause physiologique unique qui les relie tous les deux ;
+#     les deux distracteurs sont toujours deux autres causes reelles du paquet, mais qui expliquent
+#     d'autres effets que ceux de l'enonce ;
+#   - tache 2, "distinguer les effets selon le type d'effort" (items 5 a 9) : le CP traite "un
+#     effort physique" et "un effort physique intense" comme une categorie unique, sans jamais
+#     opposer deux efforts. Chaque item de cette tache compare un effort court et intense (sprint,
+#     saut, lancer) a un effort long et soutenu (course, randonnee, match, natation) sur une seule
+#     dimension - besoin de boire pendant l'effort, duree du retour au rythme cardiaque normal,
+#     besoin d'un ralentissement progressif avant l'arret, ou effet ressenti uniquement (ou aussi
+#     bien) selon la duree. Aucun nombre, aucune duree chiffree et aucune distance chiffree
+#     n'apparait dans aucune des trois propositions ;
+#   - tache 3, "reconnaitre un signal d'alerte du corps pendant l'effort, et la conduite qui lui
+#     repond" (items 10 a 13) : les onze items de securite du CP portent tous un danger exterieur
+#     (un camarade en dessous, la profondeur du bassin, le tour a attendre, le casque), jamais un
+#     signal venu du corps. Chaque item de cette tache donne un signal du corps pendant l'effort
+#     (vertiges, point de cote, crampe, essoufflement qui empeche de se sentir bien) et cherche la
+#     conduite qui y repond - le sens inverse de l'item 22 du CP, qui nomme deja le vertige mais
+#     comme consequence d'un manque d'eau, jamais comme signal a partir duquel chercher une
+#     conduite.
+#
+# EPS-9, clause 2 (ce qui reste interdit de repeter) : aucun item de ce paquet ne demande l'effet
+# immediat d'un effort pris isolement (essoufflement, coeur qui bat vite, chaleur, soif servis seuls
+# - CP, items 1 a 6), la cause d'un seul de ces effets (CP, items 7 a 11), a quel moment on
+# s'echauffe, on boit ou on se repose (CP, items 12 a 17), pourquoi l'une de ces trois regles existe
+# ou ce qu'on risque a ne pas la suivre (CP, items 18 a 22), ni une regle de securite d'agres, de
+# bassin ou d'engin roulant (cp-eps-regles-de-securite, items 1 a 11).
+#
+# EPS-9, clause 3 (CYC-1, dans les deux sens) : aucune bonne reponse d'un item du CP ne devient un
+# distracteur d'un item de ce paquet - verifie item par item avant l'ecriture. Le retour au calme
+# progressif de la tache 2 (items 7 et 8) ne rend jamais fausse la reponse "d'un temps de repos" du
+# CP : aucun item ne cite cette reponse, ni comme bonne reponse ni comme distracteur, pour ne
+# prendre aucun risque de la contredire. Aucun item ne reprend cm1-sciences-nutrition, item 5
+# ("Quand on court vite, quel organe se remplit d'air plus vite ?", SCI-CM1-09, deja servi) : aucun
+# item de ce paquet ne nomme un organe.
+#
+# FER-1 (critere de la story) : plusieurs effets du libelle sont en bonne reponse au moins une fois
+# - "la soif" (item 8) et "l'essoufflement" (item 9), sur la tache 2 - et plusieurs regles de
+# securite du libelle sont en bonne reponse au moins une fois - les quatre conduites de la tache 3
+# (items 10 a 13), chacune une regle de securite factuelle distincte.
+#
+# FER-2 : treize items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# FER-3 : trois taches mentalement distinctes, decrites ci-dessus (EPS-9).
+#
+# BIN-1 : tous les items portent trois propositions (deux distracteurs) ; aucun n'est binaire.
+#
+# ADR-0086 : aucune bonne reponse n'est repetee d'un item a l'autre sous le meme moule de
+# propositions ; aucun distracteur ne partage une amorce de quatre mots avec trois autres
+# distracteurs du paquet sans qu'aucune bonne reponse ne la partage ; aucun mot de la liste des
+# marqueurs de restriction (seulement, uniquement, seul, seule, seuls, seules, sauf) n'est employe.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# BIA-1, BIA-2 : chaque fait de physiologie de l'effort (oxygenation musculaire, production de
+# chaleur, perte d'eau par transpiration, retour progressif au calme, point de cote, crampe) est un
+# fait etabli et non controverse, enseigne des le cycle 2 - verifie par lea-dev avant l'ecriture de
+# ce paquet, a confirmer par nadia-prof a l'audit.
+items:
+  # Tache 1 : relier deux effets a une cause unique.
+  - enonce: "L'essoufflement et le cœur qui bat plus vite pendant un effort ont la même cause. Laquelle ?"
+    bonneReponse: "les muscles ont besoin de plus d'oxygène"
+    distracteurs: ["le corps doit se refroidir", "le corps perd de l'eau en transpirant"]
+    indice: "Le sang et l'air doivent tous les deux circuler plus vite pour nourrir les muscles qui travaillent."
+  - enonce: "Avoir chaud pendant un effort et avoir le visage qui rougit ont la même cause. Laquelle ?"
+    bonneReponse: "les muscles produisent de la chaleur en travaillant"
+    distracteurs: ["les muscles ont besoin de plus d'oxygène", "le corps perd de l'eau en transpirant"]
+    indice: "Le sang qui afflue vers la peau vient évacuer une chaleur produite ailleurs, dans les muscles."
+  - enonce: "Avoir soif pendant un effort et avoir la bouche sèche ont la même cause. Laquelle ?"
+    bonneReponse: "le corps perd de l'eau en transpirant"
+    distracteurs: ["les muscles produisent de la chaleur en travaillant", "les muscles ont besoin de plus d'oxygène"]
+    indice: "Cette eau perdue doit être remplacée, sinon le corps en manque."
+  - enonce: "La respiration qui reste rapide juste après un effort et le cœur qui met du temps à ralentir ont la même cause. Laquelle ?"
+    bonneReponse: "le corps a besoin de temps pour revenir au calme après l'effort"
+    distracteurs: ["les muscles produisent de la chaleur en travaillant", "le corps perd de l'eau en transpirant"]
+    indice: "Rien ne s'arrête d'un coup à la fin d'un effort. Le corps redescend petit à petit."
+  # Tache 2 : distinguer les effets selon le type d'effort, sans aucun nombre.
+  - enonce: "Lequel de ces efforts oblige à boire pendant l'activité ?"
+    bonneReponse: "une course longue qui dure toute la séance"
+    distracteurs: ["un sprint de quelques secondes", "un lancer de balle"]
+    indice: "Le corps perd de l'eau tout au long d'un effort qui dure, pas pendant un effort très bref."
+  - enonce: "Après lequel de ces efforts le cœur met-il le plus de temps à revenir à son rythme normal ?"
+    bonneReponse: "une randonnée à vélo qui dure toute l'après-midi"
+    distracteurs: ["un saut en longueur", "un lancer de poids"]
+    indice: "Plus un effort dure longtemps, plus le cœur met de temps à ralentir ensuite."
+  - enonce: "Lequel de ces efforts a le plus besoin d'un ralentissement progressif avant de s'arrêter complètement ?"
+    bonneReponse: "une longue séance de natation"
+    distracteurs: ["un plongeon", "un saut en hauteur"]
+    indice: "Un effort qui dure longtemps prépare son arrêt petit à petit. Un geste très bref s'arrête de lui-même."
+  - enonce: "Lequel de ces effets ne se ressent que si l'effort dure longtemps, jamais pendant un effort très bref ?"
+    bonneReponse: "la soif"
+    distracteurs: ["l'essoufflement", "le rythme cardiaque plus rapide"]
+    indice: "La soif vient de l'eau perdue peu à peu. Un effort très bref n'a pas le temps de la faire apparaître."
+  - enonce: "Lequel de ces effets apparaît aussi bien pendant un effort très bref que pendant un effort qui dure longtemps ?"
+    bonneReponse: "l'essoufflement"
+    distracteurs: ["la soif", "la fatigue qui pousse à s'arrêter avant la fin"]
+    indice: "Le souffle coupé arrive dès le début d'un effort, court ou long. D'autres effets ont besoin de plus de temps."
+  # Tache 3 : reconnaitre un signal d'alerte du corps pendant l'effort, et la conduite qui y repond.
+  - enonce: "Pendant un effort, un élève est pris de vertiges. Que doit-on faire ?"
+    bonneReponse: "arrêter l'effort, s'asseoir et boire"
+    distracteurs: ["continuer plus lentement jusqu'à la fin", "accélérer pour finir plus vite"]
+    indice: "Le corps envoie un signal d'alerte qu'il faut respecter tout de suite, pas plus tard."
+  - enonce: "Pendant une course, un élève sent une douleur vive sur le côté du ventre. Que doit-on faire ?"
+    bonneReponse: "ralentir l'allure ou s'arrêter jusqu'à ce que la douleur disparaisse"
+    distracteurs: ["accélérer pour que la douleur passe plus vite", "ignorer la douleur et continuer à la même allure"]
+    indice: "Un point de côté est un signal qui demande de réduire l'effort, pas de le forcer."
+  - enonce: "Pendant un effort, un élève sent son mollet se crisper brutalement et ne plus pouvoir bouger normalement. Que doit-on faire ?"
+    bonneReponse: "arrêter l'effort et étirer doucement le muscle"
+    distracteurs: ["continuer à courir sur le muscle qui se crispe", "sauter plus fort pour le détendre"]
+    indice: "Une crampe est un signal du muscle qui demande l'arrêt immédiat de l'effort."
+  - enonce: "Pendant un effort intense, un élève n'arrive plus à retrouver son souffle et se sent mal. Que doit-on faire ?"
+    bonneReponse: "arrêter l'effort et prévenir un adulte"
+    distracteurs: ["continuer en respirant plus fort", "boire beaucoup d'eau d'un coup avant de reprendre"]
+    indice: "Un essoufflement qui empêche de se sentir bien demande d'arrêter et de prévenir un adulte, pas de forcer."

@@ -942,7 +942,18 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " aucune n'est numerique : ce sont des noms de matieres (\"bois\", \"métal\","
                     + " \"le verre\"...), valeurDe rend null sur les trois propositions de chaque"
                     + " item. Mesure du 2026-09-24 sur le paquet servi (\"bonneReponse\" et"
-                    + " \"distracteurs\") : aucune des 33 propositions ne commence par un chiffre"));
+                    + " \"distracteurs\") : aucune des 33 propositions ne commence par un chiffre"),
+            // S43-EPS-EFFETS-ACTIVITE : premier paquet d'education physique et sportive CM1
+            // (EPS-CM1-10).
+            Map.entry("cm1-eps-effets-activite",
+            "13 items sur 13 portent deux distracteurs (trois propositions, 39 au total), mais"
+                    + " aucune n'est numerique : ce sont des causes physiologiques, des descriptions"
+                    + " d'efforts, des noms d'effets ou des conduites de securite en texte libre"
+                    + " (\"les muscles ont besoin de plus d'oxygène\", \"une course longue qui dure"
+                    + " toute la séance\", \"la soif\", \"arrêter l'effort, s'asseoir et boire\"...),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-09-25 sur le paquet servi : aucune des 39 propositions ne commence par"
+                    + " un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
