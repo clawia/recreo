@@ -4,6 +4,8 @@
 section 9). Les sections 1 a 8 restent la trace de l'etat propose avant amendement.**
 **Amendee le 2026-09-25 : voir section 9 - correction de fait sur le palier 2 (section 4 bis) et
 perimetre rechiffre pour s43 et s44 avec les lignes de mathematiques CE1 desormais arbitrees.**
+**Amendee une seconde fois le 2026-09-25 : voir section 10 - le perimetre de s44 (section 9.6),
+propose et non engage par s43, passe a Accepte, engage.**
 
 - **Date** : 2026-09-25
 - **Auteur** : `camille-po`
@@ -446,3 +448,64 @@ conformement a la section 9.8. Il ne rouvre `MAT-CP-10` ni aucune des quatre lig
 section 4 ter. Il ne rend aucun avis de faisabilite technique et ne prononce aucun Done
 pedagogique : les six lignes du perimetre rechiffre restent `non couvert` jusqu'au Done que
 `nadia-prof` prononcera apres avoir joue les paquets livres.
+
+---
+
+## 10. Amendement du 2026-09-25, troisieme passage - engagement du perimetre de s44
+
+**Auteur** : `camille-po`. **Motif** : l'utilisatrice valide l'engagement du perimetre de s44 tel
+que chiffre en section 9.6 (`MUS-CP-11`, `SCI-CM1-13`, `MAT-CE1-18`, cible 4,0/5,0, marge 1,0),
+sans le rouvrir. La section 9.9 n'enregistrait la validation de l'utilisatrice que sur le
+perimetre de s43 ; celui de s44 restait explicitement **propose, non engage**, ce que confirme
+`squad/sprints/s43-trois-lignes-qlm-eps-et-duree-ce1/RAPPORT.md`, tableau des decisions du sprint,
+qui le nomme mot pour mot : *"Propose egalement un perimetre pour s44 (`MUS-CP-11`, `SCI-CM1-13`,
+`MAT-CE1-18`), non engage par ce sprint"*.
+
+### 10.1 Verification faite avant d'enregistrer l'engagement - rien n'a bouge
+
+Je ne reprends pas de confiance l'etat de la section 9.6 ; verifie ce jour, independamment de la
+cloture de s43 :
+
+- `MUS-CP-11` : toujours `non couvert` (`MATRICE-couverture.md`, ligne 1852 - "jouable au choix
+  textuel, sous `MUS-1`"). Aucun refus, aucune reserve nouvelle depuis le jugement de faisabilite
+  du 2026-09-03 (`squad/programme/education-musicale/competences-cp.md`).
+- `SCI-CM1-13` : toujours `non couvert` (`MATRICE-couverture.md`, ligne 2136 - "jouable au choix
+  textuel, sous `BIA-3`"). Meme constat, meme source
+  (`squad/programme/sciences-et-technologie/competences-cm1.md`).
+- `MAT-CE1-18` : toujours `non couvert` (`MATRICE-couverture.md`, ligne 689). Son arbitrage
+  pedagogique prealable - **ACCEPTE SOUS CONDITIONS**, `DIV-CE1-1` a `DIV-CE1-5` - reste celui
+  rendu le 2026-09-25 par `nadia-prof`
+  (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 4), non revise
+  depuis.
+- Le sprint s43, cloture le meme jour, ferme trois autres lignes (`QLM-CP-08`, `EPS-CM1-10`,
+  `MAT-CE1-12`, `RAPPORT.md`) sans toucher a aucune des trois lignes de s44 ni au reste du vivier -
+  verifie contre la matrice et contre le rapport de cloture.
+- Une seule reserve touche ce perimetre, et elle ne l'invalide pas : la frontiere entre
+  `MAT-CE1-18` et `MAT-CE1-06` (section 9.3, cinquieme collision), signalee non tranchee par les
+  lots d'arbitrage prealable et deja routee a `sofia-sm` en section 9.8, reste **ouverte**
+  (`RAPPORT.md`, "Obstacles [...] encore ouverts"). Elle ne remet pas en cause le verdict de
+  `nadia-prof` sur `MAT-CE1-18`, qui demeure ACCEPTE SOUS CONDITIONS ; elle conditionne l'ecriture
+  du paquet, pas l'engagement du perimetre - detail en section 10.2 et dans la story
+  `S44-MAT-DIVISION`. Elle est, au moment ou j'ecris cette section, en cours de resolution
+  (`sofia-sm` vers `theo-archi`), dans un mouvement distinct de celui-ci : je ne la reproduis pas
+  ici, je la cite.
+
+Aucun fait constate ne contredit le chiffrage de la section 9.6. Rien ne justifie de le rouvrir.
+
+### 10.2 Statut
+
+Le perimetre de s44 (section 9.6 : `MUS-CP-11`, `SCI-CM1-13`, `MAT-CE1-18`, cible 4,0/5,0, marge
+1,0) passe de **propose, non engage** a **Accepte, engage**, ce jour, 2026-09-25. L'ecriture des
+trois stories correspondantes est faite par `camille-po` dans le meme mouvement, dans
+`docs/backlog/backlog.md`, section "Sprint 44" - meme geste que celui fait pour s43 en
+section 9.9. La story `S44-MAT-DIVISION` porte explicitement le prealable non leve de la section
+10.1 : le paquet ne s'ecrit pas avant que la frontiere `MAT-CE1-06`/`MAT-CE1-18` soit posee et
+fusionnee dans le depot.
+
+### 10.3 Ce que cet amendement ne fait pas
+
+Il ne rouvre aucune des sept lignes ecartees en section 9.7, ni le vivier restant apres retrait
+des six lignes desormais engagees sur s43 et s44. Il ne tranche pas la frontiere
+`MAT-CE1-06`/`MAT-CE1-18`, qui reste a `theo-archi` via `sofia-sm`. Il ne modifie pas
+`squad/programme/MATRICE-couverture.md` : les trois lignes de s44 restent `non couvert` jusqu'au
+Done pedagogique que `nadia-prof` prononcera apres avoir joue les paquets livres.
