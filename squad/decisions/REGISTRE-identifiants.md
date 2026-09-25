@@ -179,9 +179,32 @@ mon arbre, avant mon diff : 689 identifiants distincts, 112 prefixes distincts, 
 confirme la ligne d'etat courant que l'instance A declarait ; apres mon diff : 697 et 113, 0
 doublon.
 
+**Note de `nadia-prof`, le 2026-09-25, arbitrage prealable de s43, lot 3.** Quinze identifiants
+ajoutes - `DEP-CE1-1` a `-4`, `FIG-CE1-1` a `-3`, `SYM-CE1-1` a `-3`, `DIV-CE1-1` a `-5` - tous
+definis dans `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`. **Deux prefixes
+sont neufs, `SYM` et `DIV`**, verifies libres sur le depot entier avant d'ecrire et pas seulement
+dans cette table ; `DEP` et `FIG` existaient deja, sur les paquets de CP des memes familles. Forme
+reprise a l'identique de `ADD-CE1-1` et `SOU-CE1-2` : trois segments, aucun marqueur de reserve -
+ce sont des conditions, pas des reserves (`ADR-0100`).
+
+Ligne d'etat courant portee de **697 / 113 a 712 / 115**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff, jamais un compte que je refais de tete.**
+`bash outils/mvn-jdk21.sh -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessus, rend :
+*"declare 697 identifiants alloues et 113 prefixes distincts, sa table en porte 712 et 115"*. C'est
+ce 712 / 115 que je recopie.
+
+**Perimetre, dit d'avance.** Deux autres instances arbitrent les deux autres lots de mathematiques
+CE1 en parallele le meme jour et allouent dans ce fichier au meme moment - je l'ai constate sur le
+worktree avant de commiter, ce n'est pas une precaution abstraite. Ce compte est juste sur mon diff
+et sur lui seul ; a l'assemblage des trois lots, la reparation est **arithmetique** - aucune
+allocation ajoutee, aucune retiree, aucun sens touche. C'est la limite structurelle de `PAR-5` deja
+nommee trois fois dans ce fichier, pas une occurrence neuve.
+
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `697` identifiants alloues, `113` prefixes distincts.
+**Compte courant, verifie par la CI** : `712` identifiants alloues, `115` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -889,6 +912,10 @@ clause 2 par une exemption.
 | `DEN-6` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `DEN-7` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `DEN-8` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
+| `DEP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DEP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DEP-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DEP-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `DEP-CP-R1` | `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` |
 | `DEP-CP-R2` | `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` |
 | `DEP-CP-R3` | `squad/conformite/FICHE-bandit-manchot-deplacements-quadrillage-cp.md` |
@@ -902,6 +929,11 @@ clause 2 par une exemption.
 | `DES-7` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md` |
 | `DEV-R1` | `squad/conformite/FICHE-bandit-manchot-etapes-developpement-cm1.md` |
 | `DEV-R2` | `squad/conformite/FICHE-bandit-manchot-etapes-developpement-cm1.md` |
+| `DIV-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DIV-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DIV-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DIV-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DIV-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `DRO-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `DRO-R2` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `DRO-R3` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
@@ -989,6 +1021,9 @@ clause 2 par une exemption.
 | `FIG-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `FIG-3` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `FIG-4` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
+| `FIG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `FIG-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `FIG-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `FOC-1` | `squad/conformite/ARBITRAGE-PREALABLE-s17-indicateur-de-focus-clavier.md` |
 | `FOC-2` | `squad/conformite/ARBITRAGE-PREALABLE-s17-indicateur-de-focus-clavier.md` |
 | `FOC-3` | `squad/conformite/ARBITRAGE-PREALABLE-s17-indicateur-de-focus-clavier.md` |
@@ -1390,6 +1425,9 @@ clause 2 par une exemption.
 | `SYL-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `SYL-3` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
 | `SYL-4` | `squad/conformite/ARBITRAGE-PREALABLE-s19-quatre-proxys-en-attente-depuis-s13.md` |
+| `SYM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `SYM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `SYM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `SYN-1` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `SYN-2` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `SYN-3` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
