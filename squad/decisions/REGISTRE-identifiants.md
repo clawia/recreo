@@ -11,6 +11,43 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s43, le 2026-09-25 (les trois Done pedagogiques de s43).** Sept identifiants
+ajoutes, tous des reserves de mes trois verdicts du jour :
+
+- **`NUQ-CP-R1`, `NUQ-CP-R2`**, ecrits dans
+  `squad/conformite/FICHE-bandit-manchot-objets-numeriques-cp.md` (reserves du
+  `VALIDE SOUS RESERVE` sur `S43-QLM-NUMERIQUE` : un distracteur vrai et un vocabulaire hors du CP
+  sur l'item 11, deux distracteurs de poids sans rapport sur les items 8 et 10) ;
+- **`EPS-CM1-R1` a `EPS-CM1-R4`**, ecrits dans
+  `squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md` (reserves du
+  `VALIDE SOUS RESERVE` sur `S43-EPS-EFFETS-ACTIVITE` : un item qui refait le CP, une bonne reponse
+  circulaire et reconnaissable a sa longueur, l'echauffement absent du paquet, et une bonne reponse
+  designee par le seul mot de duree sur trois items) ;
+- **`DUR-CE1-R1`**, ecrit dans `squad/conformite/FICHE-bandit-manchot-problemes-durees-ce1.md`
+  (reserve du `VALIDE SOUS RESERVE` sur `S43-MAT-DUREE` : l'indice de l'item 3 donne le resultat).
+
+**Un seul prefixe neuf, `NUQ`**, verifie libre **sur le depot entier** avant d'ecrire, et pas
+seulement dans la table de la section 4. Je n'ai repris ni `NUM`, deja alloue a la numeration CE1
+(`NUM-CE1-1` a `-7`), ni `OBJ`, deja alloue aux sciences (`OBJ-R1`, `OBJ-R2`) : un prefixe ne porte
+qu'un sens. **Aucun prefixe neuf du cote `EPS` ni `DUR`** - `EPS-1` a `EPS-9` et `DUR-CE1-1` a
+`DUR-CE1-7` etaient deja alloues, et un identifiant a deux segments ne se collisionne pas avec un
+identifiant a trois segments de meme prefixe.
+
+**Les formes sont copiees, jamais inventees.** `NUQ-CP-R1` et `EPS-CM1-R1` sur `DEP-CP-R1` et
+`EMC-CM1-R1`, alloues le 2026-09-24 ; `DUR-CE1-R1` sur `ADD-CE1-R1` et `SOU-CE1-R1`. **Trois
+segments, marqueur `R` dans le dernier segment** (`ADR-0100`), jamais en tete ni au milieu. **Les
+sept lignes de la section 4 sont dans le meme diff que les trois fiches qui ecrivent ces
+identifiants**, jamais dans un commit de reparation qui suit.
+
+Ligne d'etat courant portee de **776 / 125 a 783 / 126**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff, jamais un compte que je refais de tete.**
+`bash outils/mvn-jdk21.sh -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 776 identifiants alloues et 125 prefixes distincts, sa table en porte 783 et 126"*. C'est
+ce **783 / 126** que je recopie, et rien d'autre. Je n'ai ni recalcule 776 + 7, ni deduit le nombre
+de prefixes de la nouveaute de `NUQ` : les deux chiffres sortent de la commande.
+
 **Note de `nadia-prof`, s43, le 2026-09-25 (les deux discriminants poses avant l'ecriture des deux
 paquets).** Deux identifiants ajoutes, tous deux ecrits dans `docs/backlog/backlog.md`, section
 "Sprint 43" : **`EPS-9`** (discriminant CM1/CP de `S43-EPS-EFFETS-ACTIVITE`, `EPS-CM1-10`) et
@@ -285,7 +322,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `776` identifiants alloues, `125` prefixes distincts.
+**Compte courant, verifie par la CI** : `783` identifiants alloues, `126` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1645,3 +1682,10 @@ clause 2 par une exemption.
 | `SOL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
 | `SOL-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
 | `SOL-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` |
+| `NUQ-CP-R1` | `squad/conformite/FICHE-bandit-manchot-objets-numeriques-cp.md` |
+| `NUQ-CP-R2` | `squad/conformite/FICHE-bandit-manchot-objets-numeriques-cp.md` |
+| `EPS-CM1-R1` | `squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md` |
+| `EPS-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md` |
+| `EPS-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md` |
+| `EPS-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md` |
+| `DUR-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-problemes-durees-ce1.md` |
