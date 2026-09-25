@@ -942,7 +942,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " aucune n'est numerique : ce sont des noms de matieres (\"bois\", \"métal\","
                     + " \"le verre\"...), valeurDe rend null sur les trois propositions de chaque"
                     + " item. Mesure du 2026-09-24 sur le paquet servi (\"bonneReponse\" et"
-                    + " \"distracteurs\") : aucune des 33 propositions ne commence par un chiffre"));
+                    + " \"distracteurs\") : aucune des 33 propositions ne commence par un chiffre"),
+            // S43-QLM-NUMERIQUE : paquet neuf de questionner le monde CP (QLM-CP-08).
+            Map.entry("cp-qlm-objets-numeriques",
+            "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms d'objets (\"une tablette\", \"un"
+                    + " livre\"...) ou des consequences factuelles en texte libre (\"parce que sa"
+                    + " batterie se vide en fonctionnant\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-09-25 sur le paquet servi"
+                    + " (\"bonneReponse\" et \"distracteurs\") : aucune des 33 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

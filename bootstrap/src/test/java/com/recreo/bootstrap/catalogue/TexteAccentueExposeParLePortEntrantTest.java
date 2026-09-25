@@ -308,6 +308,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S43-MAT-DUREE (s43) : entree neuve, MAT-CE1-12, calculer une duree simple en
             // heures entieres ou en demi-heures.
             "bandit-manchot-problemes-durees-ce1",
+            // S43-QLM-NUMERIQUE (s43) : entree neuve, QLM-CP-08, les objets numeriques et leur usage.
+            "bandit-manchot-objets-numeriques-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -505,6 +507,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (CM1, bandit-manchot-problemes-durees-cm1) pour ne pas dupliquer un libelle de
             // bouton entre deux jeux differents ; il ne porte pas son niveau (ADR-0078).
             "Le temps qui passe",
+            // S43-QLM-NUMERIQUE (s43) : titre neuf.
+            "Les objets numériques du quotidien",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -726,6 +730,9 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "leurs propriétés.",
             // S43-MAT-DUREE (s43) : consigne neuve.
             "Trouve combien de temps s'est écoulé.",
+            // S43-QLM-NUMERIQUE (s43) : consigne neuve.
+            "Lis bien, puis dis quel objet est numérique, ou quelle règle simple d'usage "
+                    + "s'applique.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1138,7 +1145,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S43-MAT-DUREE (s43) : competence neuve, libelle du referentiel copie mot pour mot
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-12), sous-partie
             // allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
-            "Calculer une durée simple en heures entières ou en demi-heures");
+            "Calculer une durée simple en heures entières ou en demi-heures",
+            // S43-QLM-NUMERIQUE (s43) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
+            // QLM-CP-08).
+            "Reconnaître les objets numériques du quotidien et quelques règles simples de leur "
+                    + "usage.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
