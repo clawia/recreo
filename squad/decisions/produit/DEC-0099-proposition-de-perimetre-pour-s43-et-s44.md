@@ -1,6 +1,7 @@
 # DEC-0099 - Proposition de perimetre pour s43 et s44
 
-**Statut : Proposee, en attente de validation de l'utilisatrice.**
+**Statut : Acceptee (2026-09-25, validation de l'utilisatrice sur le perimetre rechiffre de la
+section 9). Les sections 1 a 8 restent la trace de l'etat propose avant amendement.**
 **Amendee le 2026-09-25 : voir section 9 - correction de fait sur le palier 2 (section 4 bis) et
 perimetre rechiffre pour s43 et s44 avec les lignes de mathematiques CE1 desormais arbitrees.**
 
@@ -436,10 +437,12 @@ l'estimation, ou si l'utilisatrice prefere assumer la marge nulle en connaissanc
 
 ### 9.9 Ce que cet amendement ne fait pas
 
-Il ne modifie ni `docs/backlog/backlog.md`, ni `squad/sprints/`, ni
-`squad/programme/MATRICE-couverture.md`. Il n'engage aucun perimetre : le statut de ce document
-reste **Proposee, en attente de validation de l'utilisatrice**, sur l'ensemble des sections 1 a 9.
-Il ne rouvre `MAT-CP-10` ni aucune des quatre lignes de la section 4 ter. Il ne rend aucun avis de
-faisabilite technique et ne prononce aucun Done pedagogique : les six lignes du perimetre
-rechiffre restent `non couvert` jusqu'au Done que `nadia-prof` prononcera apres avoir joue les
-paquets livres.
+Il ne modifie ni `squad/sprints/`, ni `squad/programme/MATRICE-couverture.md`. **Amendement du
+2026-09-25, second passage** : le statut de ce document passe d'*"en attente de validation"* a
+**Acceptee**, l'utilisatrice ayant valide le perimetre rechiffre de la section 9 (trois lignes pour
+s43 : `QLM-CP-08`, `EPS-CM1-10`, `MAT-CE1-12`). L'ecriture des stories correspondantes dans
+`docs/backlog/backlog.md` est faite par `camille-po` dans le meme mouvement que cette validation,
+conformement a la section 9.8. Il ne rouvre `MAT-CP-10` ni aucune des quatre lignes de la
+section 4 ter. Il ne rend aucun avis de faisabilite technique et ne prononce aucun Done
+pedagogique : les six lignes du perimetre rechiffre restent `non couvert` jusqu'au Done que
+`nadia-prof` prononcera apres avoir joue les paquets livres.

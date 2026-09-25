@@ -15328,4 +15328,236 @@ lot restant du terrain 2 (`S42-MAT-TEXTUEL`).
   a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`, `DEC-0098`
   section 7) ; `nadia-prof`, instance B, pour le Done pedagogique.
 
+## Sprint 43 - Trois lignes rechiffrees par `DEC-0099` (section 9, amendee) : questionner le monde CP, education physique et sportive CM1, mathematiques CE1
+
+Trois lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` a
+l'ouverture du sprint. Objectif et perimetre formalises par `DEC-0099`, section 9 (amendement du
+2026-09-25, qui rechiffre le perimetre initial de la section 5 apres reception des trois lots
+d'arbitrage pedagogique prealable de mathematiques CE1) : **cible 4,0/5,0, marge 1,0, instance
+unique de `nadia-prof`**, borne inchangee depuis s28 (`ARBITRAGE-PREALABLE-s28`, section 4.1).
+Contrairement a s41 et s42, ce sprint ne fusionne rien et ne mobilise qu'une seule instance de
+`nadia-prof`, aucune demande de fusion ni d'instances paralleles n'ayant ete recue.
+
+| Ligne | Matiere / niveau | Tarif | Source de l'arbitrage prealable |
+|---|---|---|---|
+| `QLM-CP-08` | questionner le monde CP | 1,5 | `ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`, section 4.1 |
+| `EPS-CM1-10` | education physique et sportive CM1 | 1,5 | `squad/programme/education-physique-et-sportive/competences-cm1.md`, Jugement de faisabilite, ligne 10 |
+| `MAT-CE1-12` | mathematiques CE1 | 1,0 | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md`, section 5, conditions `DUR-CE1-1` a `DUR-CE1-6` |
+
+**Total : 4,0/5,0, marge 1,0.** Si les trois lignes ferment integralement, la matrice passe de
+98/156 (62,8 %, etat de sortie de s42) a 101/156 (64,7 %).
+
+**Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
+`sofia-sm`** (`DEC-0099`, section 9.8, qui route l'ouverture du sprint a `sofia-sm`). Trois lots,
+trois developpeurs, un chacun : `sofia-sm` prend `S43-MAT-DUREE` (`MAT-CE1-12`, tarif 1,0, matiere
+dont `nadia-prof` est la source factuelle - le lot le moins expose a un refus d'exactitude,
+coherent avec sa double casquette de Scrum Master et de troisieme developpeuse) ; `marc-dev` prend
+`S43-QLM-NUMERIQUE` (`QLM-CP-08`) ; `lea-dev` prend `S43-EPS-EFFETS-ACTIVITE` (`EPS-CM1-10`).
+
+### S43-QLM-NUMERIQUE - Reconnaitre les objets numeriques du quotidien et quelques regles simples de leur usage (`QLM-CP-08`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux reconnaitre les objets numeriques du quotidien et
+  quelques regles simples de leur usage en jouant au bandit manchot, afin de savoir quels objets
+  sont numeriques et comment les utiliser prudemment.
+- **Competence programme visee** : questionner le monde, CP (cycle 2), domaine "Le vivant, la
+  matiere et les objets" - `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-08`.
+  Ligne `non couvert`, `MATRICE-couverture.md` ligne 1586.
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
+  section 4.1, ligne du tableau) : *"**`QLM-CP-08`** - *objets numeriques et regles d'usage* |
+  moyenne | Les regles d'usage au CP sont peu nombreuses ; risque de moraliser plutot que
+  d'enseigner"*. Repris et precise par `DEC-0099` (section 5) : *"les regles d'usage au CP sont
+  peu nombreuses ; risque de moraliser plutot que d'enseigner"* - a l'auteur du paquet de rester
+  sur des faits verifiables (quel objet est numerique, quelle regle simple s'applique), jamais sur
+  une injonction.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte soit sur la reconnaissance d'un objet
+    numerique du quotidien (par exemple une tablette, un ordinateur, un telephone, une console,
+    face a un objet non numerique), soit sur une regle simple d'usage, sur le patron du libelle.
+  - Etant donne un item de regle d'usage, quand on relit son enonce et sa bonne reponse, alors ils
+    enoncent un fait verifiable (quelle regle simple s'applique dans telle situation), jamais une
+    injonction ni un jugement moral porte sur l'enfant (vigilance posee d'avance par `nadia-prof` :
+    risque de moraliser plutot que d'enseigner).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les deux moities du
+    libelle (objets numeriques du quotidien, regles simples de leur usage) sont chacune servies par
+    plusieurs items distincts.
+  - Etant donne cette manche, quand les propositions s'affichent, alors la bonne reponse y figure
+    exactement une fois, avec des distracteurs qui sont d'autres objets ou d'autres regles
+    plausibles, jamais des elements sans rapport ni une formulation moralisatrice.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `QLM-CP-08` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    qu'aucun item ne moralise et que chaque regle d'usage se lit comme un fait verifiable.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de manipuler un objet
+  numerique reel - hors de portee du palier 1 ; elle ne construit jamais une consigne de securite
+  formulee comme un ordre adresse a l'enfant (vigilance de `nadia-prof` contre la moralisation) ;
+  elle ne fixe aucun contenu factuel precis (quels objets, quelles regles retenues) - reste a
+  l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0099` (section 9.5).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `marc-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0099` section 9.8) ; `nadia-prof` pour le Done pedagogique.
+
+### S43-EPS-EFFETS-ACTIVITE - Connaitre les effets de l'activite physique sur le corps et les regles de securite qui l'entourent (`EPS-CM1-10`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux connaitre les effets de l'activite physique sur le
+  corps et les regles de securite qui l'entourent en jouant au bandit manchot, afin de savoir
+  pourquoi on s'echauffe, on s'hydrate et on recupere apres l'effort.
+- **Competence programme visee** : education physique et sportive, CM1 (cycle 3), domaine
+  "Apprendre a entretenir sa sante" -
+  `squad/programme/education-physique-et-sportive/competences-cm1.md`, `EPS-CM1-10`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1941.
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/education-physique-et-sportive/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 10) : *"10 | Effets de l'activite physique et regles de securite
+  | non couvert - jouable au choix textuel, sous `EPS-2` et `BIA-4` | 'Pourquoi s'echauffe-t-on
+  avant de courir ?' est une connaissance exacte, utile, du niveau du CM1. Frontiere a tenir avec
+  les sciences"*. S'ajoutent les conditions valables sur toute la matiere, citees mot pour mot
+  (meme document) : *"`EPS-1` (la regle d'un jeu n'est interrogee que si elle est rappelee dans
+  l'enonce ou universellement scolaire), `EPS-2` (aucun item ne compare des corps, des
+  performances ou des capacites entre enfants, et aucune performance chiffree n'est presentee
+  comme une norme) et `EPS-3` (aucun item ne fait porter une attitude ou une conduite morale par
+  une bonne reponse) [...] `BIA-4` aussi : aucun item n'interroge l'enfant sur sa propre pratique
+  ni sur son propre corps."* Et la frontiere posee d'avance, section "Recouvrement a ne pas
+  double-compter" du meme document, citee integralement : *"Sciences et technologie CM1 porte
+  deja : 'Relier l'alimentation, l'activite physique, le sommeil et l'hygiene au bon fonctionnement
+  du corps'. La ligne 10 ci-dessus porte sur les effets de l'effort et sur ce qui l'encadre -
+  echauffement, hydratation pendant l'effort, recuperation, securite. Ce sont deux competences
+  distinctes et elles coexistent, a condition que les items d'EPS ne derivent pas vers le sommeil,
+  les repas ou l'hygiene du corps."*
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur un effet de l'activite physique sur
+    le corps (echauffement, essoufflement, recuperation, hydratation pendant l'effort) ou sur une
+    regle de securite qui entoure la pratique, jamais sur le sommeil, les repas ou l'hygiene du
+    corps hors effort (frontiere avec les sciences, section "Recouvrement a ne pas
+    double-compter").
+  - Etant donne un item, quand on verifie sa bonne reponse, alors aucune performance chiffree n'y
+    est presentee comme une norme et aucun item ne compare les corps, les performances ou les
+    capacites de deux enfants (`EPS-2`).
+  - Etant donne un item, quand on relit sa bonne reponse, alors elle ne fait porter aucune attitude
+    ni conduite morale (jamais une reponse qui juge l'enfant "sage" ou "prudent") (`EPS-3`).
+  - Etant donne un item, quand on relit son enonce, alors il n'interroge jamais l'enfant sur sa
+    propre pratique physique ni sur son propre corps (`BIA-4`).
+  - Etant donne un item qui s'appuie sur une regle (par exemple une regle de securite liee a
+    l'effort), quand on verifie l'enonce, alors la regle est rappelee dans l'enonce ou
+    universellement scolaire, jamais supposee connue sans etre donnee (`EPS-1`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors plusieurs effets de
+    l'activite physique et plusieurs regles de securite du libelle sont chacun en bonne reponse au
+    moins une fois.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EPS-CM1-10` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    qu'aucun item ne derive vers le sommeil, les repas ou l'hygiene du corps, et que la matrice
+    porte la mention exigee d'avance par le referentiel : *"connaissances qui entourent la pratique
+    physique seules ; aucune activite physique, aucun geste et aucune performance ne sont servis
+    par ce produit"*.
+- **Ce que cette story ne fait pas** : elle ne fait jamais executer, mesurer ni observer un geste
+  physique de l'enfant - nature irreversible du reste de la matiere, hors de portee du produit ;
+  elle ne derive jamais vers le sommeil, les repas ou l'hygiene du corps - competence deja portee
+  par sciences et technologie CM1 (`SCI-CM1-10`), hors perimetre de cette story ; elle ne fixe
+  aucun contenu factuel precis (quels effets, quelles regles retenues) - reste a l'auteur du paquet
+  puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0099` (section 9.5, tarif et ligne inchanges depuis la section 5).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
+  `DEC-0099` section 9.8) ; `nadia-prof` pour le Done pedagogique.
+
+### S43-MAT-DUREE - Calculer une duree simple en heures entieres ou en demi-heures (`MAT-CE1-12`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux calculer une duree simple en heures entieres ou en
+  demi-heures en jouant au bandit manchot, afin de savoir combien de temps s'est ecoule entre deux
+  moments.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Grandeurs et mesures" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-12`. Ligne `non couvert`,
+  `MATRICE-couverture.md` ligne 678.
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md`, section 5) : *"Verdict :
+  ACCEPTE SOUS CONDITIONS `DUR-CE1-1` a `DUR-CE1-6`. Servable par du texte seul - c'est de
+  l'arithmetique sur des instants, aucun cadran n'est requis - et la ligne peut atteindre
+  `couvert-valide` sur un paquet unique. C'est la ligne la plus nette des cinq [...]"*. Et section
+  5.1, sur la forme unique attendue : *"`MAT-CE1-12` n'en nomme qu'une [forme] : 'calculer une
+  duree'. [...] la seconde forme naturelle - donner l'instant de depart et la duree, demander
+  l'arrivee - n'est pas dans la ligne, elle n'entre pas dans ce paquet, et son absence ne pourra
+  pas m'etre opposee comme un trou de couverture. [...] Un paquet de `MAT-CE1-12` est donc
+  entierement compose d'items de la forme : deux instants donnes, la duree a trouver."* Les six
+  conditions, section 5.3, citees mot pour mot :
+  > `DUR-CE1-1` - une seule forme. Chaque item donne deux instants et demande la duree ecoulee.
+  > Sont exclus : l'horaire d'arrivee et l'heure de depart, la lecture de l'heure (`MAT-CE1-11`),
+  > la conversion d'unite de temps seule ("combien de minutes dans une heure ?"), la comparaison de
+  > durees.
+  >
+  > `DUR-CE1-2` - bornes des instants et des durees. Les deux instants ont des minutes valant `00`
+  > ou `30`, et rien d'autre. Ils sont dans la meme journee ; aucun item ne franchit minuit. Aucune
+  > seconde. La journee s'ecrit sur 24 heures (`14 h 30`), jamais "2 h 30 de l'apres-midi". La
+  > duree cherchee vaut au moins 30 minutes et au plus 4 heures.
+  >
+  > `DUR-CE1-3` - un instant ne s'ecrit pas comme une duree. Les instants et les durees portent deux
+  > ecritures visiblement differentes, constantes dans tout le paquet - par exemple `14 h 30` pour
+  > un instant et "2 heures et demie" ou "2 h 30 min" pour une duree. Dans un meme item, les trois
+  > propositions portent la meme ecriture.
+  >
+  > `DUR-CE1-4` - le franchissement de la demi-heure est present, et il n'est pas partout. Entre un
+  > tiers et deux tiers des items portent deux instants dont les minutes different (l'un a `00`,
+  > l'autre a `30`).
+  >
+  > `DUR-CE1-5` - distracteurs, et les trois rangs. Trois erreurs reelles : (a) la demi-heure
+  > oubliee, (b) le comptage en base 100, (c) l'heure decalee d'un rang, minutes justes. Cette
+  > liste est un plancher de ce qui est permis. Aucune proposition egale a une autre. Sur le paquet
+  > entier, chacun des trois rangs de la bonne reponse porte au moins 10 % et au plus 50 % des
+  > items.
+  >
+  > `DUR-CE1-6` - enonce, situations, indice, volume. `LON-CE1-1` et `LON-CE1-2` s'appliquent - et
+  > non les 25 mots de `D-8`, qui valent pour le CM1 et pour lui seul. Toutes les donnees sont dans
+  > l'enonce. Situations : l'ecole, la recreation, la cantine, un trajet, un film, un match, une
+  > recette, une visite - aucune situation qui suppose que l'enfant prend l'avion, part en
+  > vacances, ou qu'un adulte le conduit quelque part ; prenoms et roles varies et non stereotypes ;
+  > pas de retard dramatise. L'indice donne la methode, jamais le resultat, et il n'est pas
+  > identique sur tout le paquet. Au moins vingt items.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il donne deux instants et demande la duree
+    ecoulee entre eux, jamais un horaire d'arrivee ou de depart a calculer, jamais une lecture
+    d'heure seule, jamais une conversion d'unite de temps isolee, jamais une comparaison de durees
+    (`DUR-CE1-1`).
+  - Etant donne les deux instants d'un item, quand on les relit, alors leurs minutes valent `00` ou
+    `30` uniquement, ils appartiennent a la meme journee sans franchir minuit, aucune seconde
+    n'apparait, l'ecriture est sur 24 heures (jamais "de l'apres-midi"), et la duree a trouver vaut
+    au moins 30 minutes et au plus 4 heures (`DUR-CE1-2`).
+  - Etant donne le paquet livre, quand on compare l'ecriture des instants et celle des durees,
+    alors les deux formes sont visiblement differentes et constantes dans tout le paquet (par
+    exemple `14 h 30` pour un instant contre "2 heures et demie" pour une duree), et dans chaque
+    item les trois propositions partagent la meme ecriture (`DUR-CE1-3`).
+  - Etant donne le paquet livre, quand on compte les items dont les deux instants ont des minutes
+    differentes (`00` et `30`, franchissement d'une demi-heure), alors ils representent entre un
+    tiers et deux tiers du paquet (`DUR-CE1-4`).
+  - Etant donne les distracteurs d'un item, quand on les verifie, alors chacun correspond a une
+    erreur nommee dans le fichier a cote de l'item - au minimum parmi la demi-heure oubliee, le
+    comptage en base 100 ou l'heure decalee d'un rang a minutes justes - et aucune proposition
+    n'egale une autre ; sur le paquet entier, chacun des trois rangs de la bonne reponse porte au
+    moins 10 % et au plus 50 % des items (`DUR-CE1-5`).
+  - Etant donne l'enonce d'un item, quand on le relit, alors il tient dans vingt mots et trois
+    phrases au plus, la derniere etant la question (`LON-CE1-1`, `LON-CE1-2`, reprises par
+    `DUR-CE1-6`), toutes les donnees necessaires y figurent, la situation ne suppose ni avion, ni
+    depart en vacances, ni adulte qui conduit l'enfant quelque part, et aucun retard n'y est
+    dramatise.
+  - Etant donne l'indice d'un item, quand il s'affiche, alors il donne une methode et jamais le
+    resultat, et il n'est pas identique sur tout le paquet (`DUR-CE1-6`).
+  - Etant donne le paquet livre, quand on compte ses items, alors il en porte au moins vingt
+    (`DUR-CE1-6`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-12` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que les six conditions `DUR-CE1-1` a `DUR-CE1-6` sont tenues et que la ligne passe a
+    `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne construit aucun rendu de cadran ni aucune lecture
+  d'heure sur une horloge - c'est `MAT-CE1-11`, hors de son lot et hors de cette story ; elle ne
+  sert jamais la forme "instant de depart + duree -> horaire d'arrivee", explicitement exclue par
+  `nadia-prof` elle-meme et non opposable ulterieurement comme un trou de couverture (section 5.1
+  de l'arbitrage) ; elle ne demande jamais une conversion d'unite de temps isolee ni une
+  comparaison de durees sans calcul ; elle ne fixe aucun contenu factuel precis (quelles
+  situations, quels instants retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0099` (section 9.5).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
+  a `sofia-sm` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`
+  elle-meme, `DEC-0099` section 9.8) ; `nadia-prof` pour le Done pedagogique.
+
 
