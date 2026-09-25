@@ -11,6 +11,24 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, hors sprint avant s44, le 2026-09-25 (frontiere `MAT-CE1-06` /
+`MAT-CE1-18`).** Un identifiant ajoute, **`DIV-CE1-6`**, ecrit dans
+`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 11 : la clause qui
+range le reseau dessine, l'addition reiteree a nombre de termes inconnu et le cas nu *"combien de
+fois 3 dans 12"* entre les deux lignes. **Aucun prefixe neuf** : `DIV-CE1-1` a `DIV-CE1-5` etaient
+alloues ; le rang 6 a ete verifie absent de la table de la section 4, de l'arbre entier et des trois
+branches `hs44-*` en vol avant d'ecrire. **Forme copiee de `DIV-CE1-5`** : trois segments, aucun
+marqueur de reserve (`ADR-0100`), parce que c'est une condition. La ligne de la section 4 est dans
+le meme diff que l'addendum qui ecrit l'identifiant.
+
+Ligne d'etat courant portee de **783 / 126 a 784 / 126**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff, jamais un compte que je refais de tete.**
+`bash outils/mvn-jdk21.sh -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 783 identifiants alloues et 126 prefixes distincts, sa table en porte 784 et 126"*. C'est
+ce **784 / 126** que je recopie.
+
 **Note de `nadia-prof`, s43, le 2026-09-25 (les trois Done pedagogiques de s43).** Sept identifiants
 ajoutes, tous des reserves de mes trois verdicts du jour :
 
@@ -322,7 +340,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `783` identifiants alloues, `126` prefixes distincts.
+**Compte courant, verifie par la CI** : `784` identifiants alloues, `126` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1089,6 +1107,7 @@ clause 2 par une exemption.
 | `DIV-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `DIV-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `DIV-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `DIV-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `DRO-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `DRO-R2` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `DRO-R3` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
