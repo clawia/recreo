@@ -85,7 +85,20 @@ La numérotation ci-dessous suit l'ordre de lecture de la liste de compétences.
 | 7 | Conduire un affrontement collectif | **`non couvrable en l'etat`**, nature **irréversible** | Se placer et coopérer se font en situation, dans une équipe qui n'existe pas ici. **Et je refuse d'avance la contrefaçon tactique** : un item *"où te places-tu quand ton partenaire a le ballon ?"* mesure une réponse d'école, pas un placement en jeu |
 | 8 | Conduire un affrontement interindividuel | **`non couvrable en l'etat`**, nature **irréversible** | Même motif : adapter ses actions à l'adversaire suppose un adversaire |
 | 9 | Tenir les rôles d'arbitre, d'observateur, de marqueur | **`non couvert`** - jouable sur la seule moitié **connaissance**, **sous `EPS-1`** | La règle appliquée à une situation décrite est une connaissance vérifiable, et c'est bien le travail de l'arbitre : *"Le ballon sort sur la ligne de côté, à qui la remise en jeu ?"*. **Tenir le rôle en situation ne l'est pas.** Mention exigée d'avance : *"connaissance et application de la règle seules ; la tenue du rôle en situation reste non couverte"* |
-| 10 | Effets de l'activité physique et règles de sécurité | **`non couvert`** - jouable au choix textuel, **sous `EPS-2` et `BIA-4`** | *"Pourquoi s'échauffe-t-on avant de courir ?"* est une connaissance exacte, utile, du niveau du CM1. **Frontière à tenir avec les sciences** (ci-dessous) |
+| 10 | Effets de l'activité physique et règles de sécurité | **`non couvert`** - jouable au choix textuel, **sous `EPS-2` et `BIA-4`**, et sous `EPS-9` depuis le 2026-09-25 | *"Comment un échauffement doit-il se dérouler ?"*, bonne réponse *"des mouvements doux d'abord, puis de plus en plus vifs"*, est une connaissance exacte, utile, du niveau du CM1 : la progressivité de l'échauffement, que le CP ne sert pas. **Frontière à tenir avec les sciences** (ci-dessous). Exemple remplacé le 2026-09-25 (note ci-dessous) |
+
+**Correction du 2026-09-25 (`nadia-prof`), ligne 10.** L'exemple que j'avais écrit le 2026-09-03 était
+*"'Pourquoi s'échauffe-t-on avant de courir ?' est une connaissance exacte, utile, du niveau du
+CM1."* Il n'était pas jouable au CM1 : cette question est déjà l'item 18 de `cp-eps-corps-effort`
+(*"Pourquoi échauffe-t-on ses muscles avant un effort intense ?"*), et la clause 2 d'`EPS-9`, que
+j'ai écrite le 2026-09-25, interdit au CM1 de demander *"pourquoi l'une de ces trois règles
+existe"*. J'avais donc mis en avant, comme exemple de la ligne, la seule formulation que j'ai ensuite
+interdite, et le paquet de s43 ne sert aucun item d'échauffement (réserve `EPS-CM1-R3`,
+`squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md`, section 4, point b). Le nouvel
+exemple porte sur la progressivité de l'échauffement, précision que la clause 1 d'`EPS-9` admet et
+que le CP ne connaît pas (il ne sert que *"des mouvements légers"*) ; il ne demande ni le moment, ni
+la raison, ni le risque, et aucune de ses propositions n'est une bonne réponse du CP. Cette
+correction ne lève pas `EPS-CM1-R3` : la réserve se lève quand un item d'échauffement est servi.
 
 ### Recouvrement à ne pas double-compter
 
