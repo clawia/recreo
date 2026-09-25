@@ -1,0 +1,89 @@
+schema: 1
+id: cp-qlm-objets-numeriques
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Le vivant, la matière et les objets"
+  competence: "Reconnaître les objets numériques du quotidien et quelques règles simples de leur usage."
+lignesDeReferentiel: ["QLM-CP-08"]
+#
+# S43-QLM-NUMERIQUE (docs/backlog/backlog.md, sprint 43). Neuvieme paquet de la matiere
+# "Questionner le monde" (CP). Referentiel copie conforme depuis
+# squad/programme/questionner-le-monde/competences-cp.md (QLM-CP-08).
+#
+# Arbitrage prealable cite integralement par la story (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-
+# matieres-neuves-et-le-plafond-a-huit-lignes.md, section 4.1) : "moyenne | Les regles d'usage au CP
+# sont peu nombreuses ; risque de moraliser plutot que d'enseigner." Repris par DEC-0099, section 5.
+#
+# Vigilance centrale de la ligne, tenue sur les onze items : chaque enonce de la tache B pose un fait
+# verifiable (quelle consequence a telle pratique) a la troisieme personne impersonnelle ("pourquoi...",
+# jamais "dois-tu..." ni "que fais-tu..."), sans jamais qualifier l'enfant ni lui adresser un ordre. Rien
+# n'est presente comme un jugement moral sur l'enfant ("sage", "prudent" ou equivalent) : seule une
+# consequence factuelle (casse, usure, fatigue des yeux, batterie qui se vide) motive chaque reponse.
+#
+# Les deux moities du libelle sont chacune servies par plusieurs items distincts : la moitie
+# "reconnaitre les objets numeriques du quotidien" par la tache A (items 1 a 5), la moitie
+# "regles simples de leur usage" par la tache B (items 6 a 11).
+#
+# Tache A (items 1 a 5) : reconnaitre un objet numerique parmi des objets non numeriques du
+# quotidien (tablette, ordinateur, telephone, console de jeux), et reconnaitre l'inverse (un objet non
+# numerique parmi des objets numeriques). Les distracteurs sont d'autres objets plausibles du quotidien,
+# jamais un element sans rapport.
+#
+# Tache B (items 6 a 11) : une regle simple d'usage (recharge, aide d'un adulte pour un reglage,
+# volume du casque, luminosite dans le noir, chute, eau) et la consequence factuelle qui la justifie.
+# Les distracteurs sont d'autres consequences plausibles mais fausses, jamais une formulation
+# moralisatrice.
+#
+# FER-2 (densite) : onze items, strictement superieur au plancher de dix manches par defaut
+# (DEC-0064).
+#
+# Cette story ne demande jamais a l'enfant de manipuler un objet numerique reel, ne construit aucune
+# consigne de securite formulee comme un ordre adresse a l'enfant, et ne fixe aucun contenu factuel
+# au-dela de ce que les items ci-dessous portent.
+items:
+  - enonce: "Lequel de ces objets est un objet numérique ?"
+    bonneReponse: "une tablette"
+    distracteurs: ["un livre", "une cuillère"]
+    indice: "Elle a un écran tactile et se transporte facilement."
+  - enonce: "Lequel de ces objets est un objet numérique ?"
+    bonneReponse: "un ordinateur"
+    distracteurs: ["un ballon", "une chaise"]
+    indice: "Il a un écran et un clavier, et reste souvent posé sur un bureau."
+  - enonce: "Lequel de ces objets est un objet numérique ?"
+    bonneReponse: "un téléphone"
+    distracteurs: ["un crayon", "un parapluie"]
+    indice: "Il tient dans une main et sert à appeler ou à envoyer des messages."
+  - enonce: "Lequel de ces objets est un objet numérique ?"
+    bonneReponse: "une console de jeux"
+    distracteurs: ["une poupée", "un vélo"]
+    indice: "Elle a un écran ou des manettes et sert à jouer à des jeux vidéo."
+  - enonce: "Lequel de ces objets n'est pas un objet numérique ?"
+    bonneReponse: "un livre"
+    distracteurs: ["une tablette", "un téléphone"]
+    indice: "Il n'a ni écran ni bouton, on tourne ses pages avec les doigts."
+  - enonce: "Pourquoi une tablette a-t-elle besoin d'être rechargée ?"
+    bonneReponse: "parce que sa batterie se vide en fonctionnant"
+    distracteurs: ["parce que son écran change de couleur avec l'usage", "parce que ses boutons s'usent avec le temps"]
+    indice: "Comme une lampe de poche, elle a besoin d'énergie pour s'allumer."
+  - enonce: "Pourquoi demande-t-on l'aide d'un adulte pour régler un ordinateur ?"
+    bonneReponse: "parce que certains réglages sont compliqués à comprendre"
+    distracteurs: ["parce que l'ordinateur est trop lourd à porter", "parce que l'écran est trop petit à lire"]
+    indice: "Un adulte connaît mieux les menus et les boutons."
+  - enonce: "Pourquoi ne faut-il pas mettre le son d'un casque trop fort ?"
+    bonneReponse: "parce que cela peut abîmer les oreilles"
+    distracteurs: ["parce que la batterie se vide deux fois plus vite", "parce que le casque devient plus lourd à porter"]
+    indice: "Un son trop fort fatigue ce qui permet d'entendre."
+  - enonce: "Pourquoi vaut-il mieux ne pas regarder un écran dans le noir complet ?"
+    bonneReponse: "parce que la lumière de l'écran fatigue les yeux"
+    distracteurs: ["parce que l'écran chauffe davantage dans le noir", "parce que les couleurs paraissent toutes grises"]
+    indice: "Sans lumière autour, les yeux doivent s'adapter davantage."
+  - enonce: "Pourquoi faut-il éviter de faire tomber une tablette ?"
+    bonneReponse: "parce que l'écran peut se casser"
+    distracteurs: ["parce qu'elle met plus longtemps à s'allumer", "parce que son poids augmente à chaque chute"]
+    indice: "Un choc peut abîmer la vitre qui recouvre l'écran."
+  - enonce: "Pourquoi ne faut-il pas mouiller un téléphone ?"
+    bonneReponse: "parce que l'eau peut abîmer ses circuits à l'intérieur"
+    distracteurs: ["parce que son écran devient tout noir", "parce qu'il sonne moins fort après"]
+    indice: "À l'intérieur, il y a des pièces électroniques sensibles à l'eau."
