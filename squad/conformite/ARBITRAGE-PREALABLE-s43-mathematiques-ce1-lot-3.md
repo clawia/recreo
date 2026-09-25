@@ -360,15 +360,25 @@ qu'`ADR-0081` interdit par ailleurs - un item sert une ligne et une seule.
 
 > **`DIV-CE1-5` - Distracteurs.** Au moins un distracteur par item correspond a une erreur
 > identifiable : le **produit** au lieu du quotient (`a x b`), la **difference** au lieu du quotient
-> (`a - b`), ou **le quotient de l'autre sens** (repondre le nombre de parts quand on demande la
-> valeur d'une part, ou l'inverse). Tous les distracteurs sont des entiers strictement positifs,
-> distincts entre eux et de la bonne reponse ; jamais un decimal, jamais un negatif ; si une formule
+> (`a - b`), ou **le diviseur recopié** (`b`, le nombre de l'énoncé qui n'est pas le dividende :
+> le nombre de parts dans un partage, la valeur d'une part dans un groupement). Tous les
+> distracteurs sont des entiers strictement positifs, distincts entre eux et de la bonne reponse ; jamais un decimal, jamais un negatif ; si une formule
 > coincide avec la bonne reponse ou avec un autre distracteur, un distracteur de remplacement est
 > pris parmi les deux autres formes.
 
+*Amendement du 2026-09-25 (section 11.7, Q2 de `theo-archi`).* Le troisième cas s'écrivait *"le
+**quotient de l'autre sens** (repondre le nombre de parts quand on demande la valeur d'une part, ou
+l'inverse)"*. Le nom était faux : lire la situation dans l'autre sens redonne `a / b`, la bonne
+réponse. Ce que je voulais, c'est la parenthèse, et elle désigne `b`. Seul le troisième cas change
+de mots, pas de valeur.
+
 **Motif du troisieme cas** : c'est l'erreur specifique de cette competence. Un enfant qui confond
 partage et groupement repond *"4 paquets"* quand on lui demande *"combien par paquet"* - la confusion
-que `DIV-CE1-2` fait travailler, retournee en distracteur.
+que `DIV-CE1-2` fait travailler, retournee en distracteur. *Amendement du 2026-09-25 : cet exemple
+ne donnait pas sa situation, donc pas sa valeur. Écrit en entier : "12 billes partagées entre 3
+enfants, combien chacun ?" attend 4, et l'enfant qui répond le nombre de parts répond 3 ;
+"12 billes par paquets de 3, combien de paquets ?" attend 4, et l'enfant qui répond la valeur d'une
+part répond 3. Dans les deux sens, le distracteur vaut `b`.*
 
 ---
 
@@ -548,14 +558,22 @@ rétroactivement.
 > **`DIV-CE1-6` - Frontière avec `MAT-CE1-06` : un item de `MAT-CE1-18` est une situation en mots,
 > sans dessin et sans signe.** Trois propriétés, chacune décidable sur l'item seul :
 >
-> 1. **Aucune illustration.** L'item ne porte aucun champ `illustration` : ni réseau en lignes et
->    colonnes, ni paquets dessinés, ni collection d'objets en vrac.
-> 2. **Aucune écriture opératoire, dans l'énoncé, les propositions ou l'indice.** Aucun des signes
->    `+`, `-`, `x`, `×`, `:`, `÷` employé comme opération entre deux nombres, et aucun signe `=`. Une
->    suite de nombres qui compte de 3 en 3 (*"3, 6, 9, 12"*) n'est pas une écriture opératoire et
->    reste permise dans l'indice.
+> 1. **Aucun support visuel.** L'item ne porte ni champ `illustration` ni champ `tableauSupport` :
+>    ni réseau en lignes et colonnes, ni paquets dessinés, ni collection d'objets en vrac, ni
+>    grille, quel que soit le champ qui la porte.
+> 2. **Aucune écriture opératoire, dans aucun texte de l'item** : l'énoncé, la bonne réponse, les
+>    distracteurs, l'indice, l'explication, le texte-support et le texte à voix haute. Aucun des
+>    signes `+`, `-`, `x`, `×`, `:`, `÷` employé comme opération entre deux nombres, et aucun signe
+>    `=`. Une suite de nombres qui compte de 3 en 3 (*"3, 6, 9, 12"*) n'est pas une écriture
+>    opératoire et reste permise dans l'indice et dans l'explication.
 > 3. **Le dividende est une quantité d'objets nommés** (*"12 billes"*, *"20 cartes"*), jamais un
 >    nombre nu.
+
+*Amendement du 2026-09-25 (section 11.7, Q3 de `theo-archi`).* Points 1 et 2 élargis. Leur texte
+d'origine : point 1, *"**Aucune illustration.** L'item ne porte aucun champ `illustration` : ni
+réseau en lignes et colonnes, ni paquets dessinés, ni collection d'objets en vrac."* ; point 2,
+*"**Aucune écriture opératoire, dans l'énoncé, les propositions ou l'indice.**"*, le reste
+inchangé sauf *"reste permise dans l'indice"*, étendu à l'explication. Le point 3 ne change pas.
 
 Ce que la clause range, forme par forme :
 
@@ -626,3 +644,87 @@ aucun garde-fou et aucune story.
 dans le même diff que cet addendum. Forme copiée de `DIV-CE1-5` : trois segments, aucun marqueur
 de réserve, parce que c'est une condition. Le rang 6 a été vérifié libre dans la table de la
 section 4, sur l'arbre entier et sur les trois branches `hs44-*` en vol avant d'écrire.
+
+### 11.7 Addendum du 2026-09-25, suite - `DIV-CE1-5` troisième cas et périmètre de `DIV-CE1-6`
+
+**Ce qui m'est posé.** `theo-archi`, dans son avis de faisabilité de `S44-MAT-DIVISION`
+(`squad/rapports/avis-faisabilite-s44-mat-division.md`, section 7), me route deux questions, Q2 et
+Q3. J'y réponds ici et j'applique la réponse aux deux clauses, en section 4 et en section 11.2.
+Aucun paquet de `MAT-CE1-18` n'existe : aucune barre atteinte ne bouge, et rien de ce qui a été
+admis ne devient refusé.
+
+**Une correction de mon propre constat d'abord.** La section 11.5 dit qu'*"un paquet de
+`MAT-CE1-18` entièrement textuel tient les points 1 et 2 par construction"*. C'est vrai du point 1,
+faux du point 2 : *"3 + 3 + 3 + 3 = 12"* est du texte. Un paquet sans image tient le point 1 par
+construction ; le point 2 se vérifie texte par texte. La phrase de la section 11.5 reste écrite ;
+c'est celle-ci qui la corrige.
+
+#### Q2 - le troisième distracteur de `DIV-CE1-5` vaut `b`
+
+**Réponse : le diviseur recopié tel quel**, c'est-à-dire le nombre de l'énoncé qui n'est pas le
+dividende. Dans un partage, c'est le nombre de parts ; dans un groupement, la valeur d'une part.
+Jamais une autre valeur calculée. La lecture de `theo-archi` est la bonne, et l'ensemble de son
+test, `{a x b, a - b, b}` privé de la bonne réponse, est exactement la condition.
+
+**Pourquoi mon nom était faux.** Dans `a = q x b`, l'enfant manipule deux nombres qui jouent l'un
+contre l'autre : le quotient cherché `q` et le nombre donné `b`. Confondre partage et groupement,
+c'est répondre l'un à la place de l'autre, donc donner `b`. Je l'avais appelé *"quotient"* parce
+que, dans l'item symétrique, `b` serait la réponse ; mais dans cet item-ci, recalculer dans l'autre
+sens redonne `a / b`. La parenthèse de la clause disait la bonne chose, le nom non.
+
+**Deux coïncidences, que la règle de remplacement de la clause couvre déjà** :
+
+- `a = b x b` (4 et 2, 9 et 3, 16 et 4, 25 et 5, 36 et 6, 49 et 7) : `b` est la bonne réponse et ne
+  peut pas être un distracteur. Sur ces items, la confusion des deux sens ne se voit pas ; je ne les
+  interdis pas, faute de les avoir examinés comme items, et je les regarderai à l'audit.
+- `a = 2 x b` : `a - b` vaut `b`, les deux formules ne donnent qu'un distracteur.
+
+**La condition est toujours tenable** : `a x b` est au moins `2 x a`, donc différent de `a / b` et de
+`b` pour tout item qui tient `DIV-CE1-1`. Un item a toujours au moins un distracteur identifiable.
+
+#### Q3 - `DIV-CE1-6` s'étend, l'omission n'était pas voulue
+
+**Réponse : j'étends les points 1 et 2** (texte en section 11.2). Ce n'est pas un choix de prudence :
+c'est la deuxième fois, sur la même ligne, qu'une de mes listes est plus étroite que son titre. Le
+titre de `DIV-CE1-6` dit *"sans dessin et sans signe"*, et j'avais nommé des champs au lieu de nommer
+la situation. `theo-archi` a raison : nommer un champ n'est pas nommer une situation.
+
+**Point 1, `tableauSupport`.** `ADR-0099` en fait une grille en lignes et colonnes. Elle peut
+dessiner le réseau G1, et le motif de la section 11.3 s'y applique tel quel : la réponse s'y compte.
+Une grille de données (une liste d'enfants et de billes, par exemple), je ne l'ai pas examinée pour
+cette ligne, et je n'admets pas une forme que je n'ai pas regardée. Le point 1 exclut donc le champ
+entier ; un item de `MAT-CE1-18` avec un support visuel, quel qu'il soit, est un arbitrage neuf à me
+demander. `illustrationTexteAlternatif` n'a pas besoin d'être nommé : `ADR-0073` clause 5 l'interdit
+sans illustration.
+
+**Point 2, `explication`.** Elle s'affiche après chaque réponse, juste ou fausse (`ADR-0024`) :
+l'enfant la lit. *"12 : 3 = 4"* à cet endroit relie le sens au signe, ce que la section 11.3 réserve à
+un arbitrage futur ; *"4 + 4 + 4 = 12"* y donne la forme G2. Les deux sont exclus. Une explication qui
+dit la situation en mots (*"3 enfants, 4 billes chacun : cela fait bien 12 billes."*) reste admise, et
+une suite qui compte (*"4, 8, 12"*) aussi, comme dans l'indice.
+
+**Point 2, `texteSupport` et `texteAVoixHaute`.** Même motif : ce sont des textes que l'enfant lit ou
+entend, et le signe y ferait le même travail que dans l'énoncé. Le point 2 les couvre s'ils sont
+présents. Je ne dis pas ici s'ils peuvent l'être : un texte à voix haute sur une ligne où la voix
+n'est pas la compétence relève de l'arbitrage de l'utilisatrice du 2026-09-01 (`CLAUDE.md`, section
+*L'enfant de CP n'est jamais seul*), pas de cette clause, et un texte-support n'a aucun usage que
+j'aie examiné sur cette ligne.
+
+**Ce qui reste hors du point 2.** `partDesignee` est une sous-chaîne de l'énoncé (`ADR-0062`) : elle
+est couverte par l'énoncé. Le point 3 ne change pas : il porte sur le dividende, qui vit dans
+l'énoncé.
+
+#### Ce que je route, et ce dont je reste la garde
+
+| Fait | À qui | Pourquoi ce n'est pas à moi |
+|---|---|---|
+| Le test du paquet de `MAT-CE1-18` étend l'assertion du point 1 à `tableauSupport`, et celle du point 2 à `explication`, `texteSupport` et `texteAVoixHaute`, dans le même diff que le paquet | `theo-archi` et le développeur affecté, via `sofia-sm` | La forme du test leur appartient |
+| Les critères d'acceptation de `S44-MAT-DIVISION` citent `DIV-CE1-5` dans sa forme amendée et `DIV-CE1-6` dans son périmètre élargi (Q1 de l'avis, déjà routée) | `camille-po`, via `sofia-sm` | Rédaction de story |
+
+**Ce dont je reste la seule garde sur ces deux clauses, en jouant** : que la marque de sens de
+`DIV-CE1-2` dise le sens réel de l'item (R4 de l'avis), que le mot qui suit le dividende nomme des
+objets (point 3, R5), et que le distracteur `b` soit plausible dans la phrase servie. Tout le reste
+de `DIV-CE1-5` et de `DIV-CE1-6` est encodable, et le sera par le test du paquet.
+
+**Allocation.** Aucun identifiant neuf, aucun renommé : `DIV-CE1-5` et `DIV-CE1-6` sont déjà alloués
+dans `squad/decisions/REGISTRE-identifiants.md`, section 4, et leur texte change, pas leur nom.
