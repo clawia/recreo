@@ -308,6 +308,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S43-MAT-DUREE (s43) : entree neuve, MAT-CE1-12, calculer une duree simple en
             // heures entieres ou en demi-heures.
             "bandit-manchot-problemes-durees-ce1",
+            // S43-QLM-NUMERIQUE (s43) : entree neuve, QLM-CP-08, les objets numeriques et leur usage.
+            "bandit-manchot-objets-numeriques-cp",
             // S43-EPS-EFFETS-ACTIVITE (s43) : entree neuve, EPS-CM1-10, premier paquet
             // d'education physique et sportive CM1.
             "bandit-manchot-effets-activite-eps-cm1",
@@ -508,6 +510,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (CM1, bandit-manchot-problemes-durees-cm1) pour ne pas dupliquer un libelle de
             // bouton entre deux jeux differents ; il ne porte pas son niveau (ADR-0078).
             "Le temps qui passe",
+            // S43-QLM-NUMERIQUE (s43) : titre neuf.
+            "Les objets numériques du quotidien",
             // S43-EPS-EFFETS-ACTIVITE (s43) : titre neuf.
             "Les effets de l'activité physique",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -731,6 +735,9 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "leurs propriétés.",
             // S43-MAT-DUREE (s43) : consigne neuve.
             "Trouve combien de temps s'est écoulé.",
+            // S43-QLM-NUMERIQUE (s43) : consigne neuve.
+            "Lis bien, puis dis quel objet est numérique, ou quelle règle simple d'usage "
+                    + "s'applique.",
             // S43-EPS-EFFETS-ACTIVITE (s43) : consigne neuve.
             "Lis bien, puis dis la cause commune, l'effort qui se distingue, ou la conduite de "
                     + "sécurité.",
@@ -1151,6 +1158,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-12), sous-partie
             // allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
             "Calculer une durée simple en heures entières ou en demi-heures",
+            // S43-QLM-NUMERIQUE (s43) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
+            // QLM-CP-08).
+            "Reconnaître les objets numériques du quotidien et quelques règles simples de leur "
+                    + "usage.",
             // S43-EPS-EFFETS-ACTIVITE (s43) : competence neuve, copiee conforme du referentiel de
             // nadia-prof (squad/programme/education-physique-et-sportive/competences-cm1.md, ligne
             // EPS-CM1-10).

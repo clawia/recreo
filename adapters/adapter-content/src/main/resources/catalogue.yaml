@@ -612,6 +612,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-qlm-matiere
     nombreDeManches: 10
+  - id: bandit-manchot-objets-numeriques-cp
+    titre: "Les objets numériques du quotidien"
+    consigne: "Lis bien, puis dis quel objet est numérique, ou quelle règle simple d'usage s'applique."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-objets-numeriques
+    nombreDeManches: 10
   - id: bandit-manchot-effets-activite-eps-cm1
     titre: "Les effets de l'activité physique"
     consigne: "Lis bien, puis dis la cause commune, l'effort qui se distingue, ou la conduite de sécurité."
