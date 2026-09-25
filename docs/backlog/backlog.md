@@ -15739,4 +15739,227 @@ coherent avec sa double casquette de Scrum Master et de troisieme developpeuse) 
   a `sofia-sm` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`
   elle-meme, `DEC-0099` section 9.8) ; `nadia-prof` pour le Done pedagogique.
 
+## Sprint 44 - Trois lignes engagees par `DEC-0099` (section 9.6, amendement section 10) : education musicale CP, sciences et technologie CM1, mathematiques CE1
+
+Trois lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` au
+moment de l'engagement. Objectif et perimetre formalises par `DEC-0099`, section 9.6 (chiffrage) et
+section 10 (engagement, 2026-09-25, sans reouverture du chiffrage) : **cible 4,0/5,0, marge 1,0,
+instance unique de `nadia-prof`**, borne inchangee depuis s28
+(`ARBITRAGE-PREALABLE-s28`, section 4.1). Comme s43, ce sprint ne fusionne rien et ne mobilise
+qu'une seule instance de `nadia-prof`.
+
+| Ligne | Matiere / niveau | Tarif | Source de l'arbitrage prealable |
+|---|---|---|---|
+| `MUS-CP-11` | education musicale CP | 1,5 | `squad/programme/education-musicale/competences-cp.md`, Jugement de faisabilite, ligne 11 |
+| `SCI-CM1-13` | sciences et technologie CM1 | 1,5 | `squad/programme/sciences-et-technologie/competences-cm1.md`, Jugement de faisabilite, ligne 13 |
+| `MAT-CE1-18` | mathematiques CE1 | 1,0 | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 4, conditions `DIV-CE1-1` a `DIV-CE1-5` |
+
+**Total : 4,0/5,0, marge 1,0.** Si les trois lignes ferment integralement, la matrice passe de
+101/156 (64,7 %, etat de sortie de s43) a 104/156 (66,7 %).
+
+**Prealable bloquant sur un seul des trois lots, cite ici et non reproduit** : la frontiere entre
+`MAT-CE1-18` (cette ligne) et `MAT-CE1-06` (sens de la multiplication, hors de ce perimetre),
+signalee sans etre tranchee par les lots d'arbitrage pedagogique prealable de mathematiques CE1
+(`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 6), est routee a `sofia-sm`, qui la
+route a `theo-archi` (`DEC-0099`, section 9.8) - travail en cours au moment ou ce document est
+ecrit, dans un mouvement distinct de celui-ci. **Le paquet de `S44-MAT-DIVISION` ne s'ecrit pas
+avant que cette frontiere soit posee et fusionnee dans le depot** ; les deux autres lots
+(`S44-MUS-VOCABULAIRE`, `S44-SCI-OBJET-TECHNIQUE`) n'en dependent pas et peuvent s'ouvrir
+independamment.
+
+**Repartition du developpement** : proposee par `camille-po`, affectation nominative finale par
+`sofia-sm` (`DEC-0099`, section 9.8, qui route l'ouverture du sprint a `sofia-sm`).
+
+### S44-MUS-VOCABULAIRE - Nommer quelques reperes du vocabulaire musical rencontre (`MUS-CP-11`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux nommer quelques reperes du vocabulaire musical
+  rencontre (refrain, couplet, pulsation, silence) en jouant au bandit manchot, afin de connaitre
+  les mots qui decrivent une chanson.
+- **Competence programme visee** : education musicale, CP (cycle 2), domaine "Echanger, partager et
+  argumenter" - `squad/programme/education-musicale/competences-cp.md`, `MUS-CP-11`. Ligne
+  `non couvert`, `MATRICE-couverture.md` ligne 1852.
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/education-musicale/competences-cp.md`, Jugement de faisabilite, `nadia-prof`,
+  2026-09-03, ligne 11) : *"Nommer des reperes du vocabulaire musical | jouable au choix textuel,
+  sous `MUS-1` | 'Quelle partie d'une chanson revient apres chaque couplet ?' : connaissance
+  lexicale exacte, courte, du niveau du CP"*. Conditions posees d'avance sur toute la matiere,
+  citees mot pour mot (meme document, section "Conditions opposables") :
+  > `MUS-1` - Aucun item d'education musicale ne suppose que l'enfant a entendu quoi que ce soit.
+  > Ni "ecoute puis reponds", ni un enonce qui decrirait un son a la place de le faire entendre.
+  > C'est `CON-1` transpose : en effacant l'ecoute, la reponse reste-t-elle trouvable ? Si oui,
+  > l'item ne teste pas l'ecoute et ne doit pas etre presente comme le faisant.
+  >
+  > `MUS-2` - Aucun dispositif ou un adulte chanterait, fredonnerait ou frapperait un rythme. La
+  > premisse de l'adulte accompagnant couvre la lecture d'un texte, pas la production d'une hauteur
+  > ni d'une pulsation.
+
+  Et la mention exigee d'avance, citee mot pour mot (meme document, section "Mention exigee
+  d'avance si une ligne bouge") : *"vocabulaire musical et familles d'instruments seuls, sur le nom
+  ecrit ; aucune competence auditive ni vocale n'est servie"* - ecrite pour le cas ou les lignes 5
+  et 11 bougent ensemble ; ici, seule la ligne 11 (`MUS-CP-11`) est engagee, la ligne 5
+  (`MUS-CP-05`) restant `non couvert`.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur un repere de vocabulaire musical
+    (refrain, couplet, pulsation, silence, ou tout autre terme du meme registre du programme),
+    jamais sur la reconnaissance ou la production d'un son, d'une hauteur ou d'un rythme (`MUS-1`,
+    `MUS-2`).
+  - Etant donne un item, quand on relit son enonce apres en avoir efface toute reference auditive,
+    alors la reponse reste trouvable par la seule connaissance du mot - l'item ne suppose jamais que
+    l'enfant a entendu quoi que ce soit, ni "ecoute puis reponds" (`MUS-1`).
+  - Etant donne le paquet livre, quand on le verifie dans son entier, alors aucun dispositif ne
+    demande a un adulte de chanter, fredonner ou frapper un rythme (`MUS-2`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MUS-CP-11` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que la mention exigee d'avance est due et en confirme la formulation exacte adaptee au fait que
+    seule la ligne 11 ferme dans ce sprint (la source presuppose les lignes 5 et 11 ensemble ;
+    l'adaptation au cas d'une fermeture isolee de la ligne 11 revient a `nadia-prof`, pas a
+    `camille-po`).
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de reconnaitre un son, une
+  hauteur, un timbre ou une pulsation entendue - contrainte fondatrice, aucun son fourni, aucun son
+  recu ; elle ne sert jamais `MUS-CP-05` (identifier des instruments et leurs familles), ligne
+  distincte et hors perimetre de cette story ; elle ne fixe aucun contenu factuel precis (quels
+  mots, quels exemples retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0099` (section 9.6, engagement section 10).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof` pour le Done pedagogique.
+
+### S44-SCI-OBJET-TECHNIQUE - Reperer l'evolution d'un objet technique au cours du temps et ce qui a change dans sa fabrication ou dans son usage (`SCI-CM1-13`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux reperer l'evolution d'un objet technique au cours
+  du temps et ce qui a change dans sa fabrication ou dans son usage en jouant au bandit manchot,
+  afin de comprendre comment les objets techniques se transforment.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Materiaux et
+  objets techniques" - `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-13`.
+  Ligne `non couvert`, `MATRICE-couverture.md` ligne 2136.
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/sciences-et-technologie/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 13) : *"jouable au choix textuel, sous `BIA-3` | `BIA-3`
+  s'applique : on decrit un changement de materiau, de fonction ou d'usage. Aucun item ne dit que
+  l'objet ancien etait moins bien"*. `BIA-3`, source originelle citee mot pour mot
+  (`squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`) : *"Sur
+  'autrefois et aujourd'hui' (QLM 15) : la chronologie n'est pas un progres. Aucun item ne qualifie
+  l'ancien de difficile, dur, pauvre ou pas pratique"* - transpose ici a l'objet technique. Trois
+  conditions supplementaires, valables sur toute la matiere, citees mot pour mot (Jugement de
+  faisabilite, section "Conditions opposables") :
+  > `SCI-1` - Apres une reponse fausse, le retour dit pourquoi elle est fausse, en une phrase.
+  >
+  > `SCI-3` - Aucun item ne demande une valeur numerique a restituer (distance, temperature, duree)
+  > au-dela d'un item sur six.
+
+  Et, deja appliquees a l'identique sur cette matiere (meme document, ligne d'introduction) :
+  `HIS-3` (chaque fait porte sa source dans le commentaire du paquet) et `CON-1` (propositions
+  masquees, l'item ne se repond pas sans l'image).
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur un changement constate dans la
+    fabrication ou l'usage d'un objet technique au cours du temps (materiau, fonction ou usage),
+    jamais sur une comparaison de cout, de rarete ou de valeur.
+  - Etant donne un item, quand on relit sa bonne reponse et ses distracteurs, alors aucun ne
+    qualifie l'objet ancien de "difficile", "dur", "pauvre" ou "pas pratique", et aucun n'affirme
+    que l'objet ancien etait moins bien que l'objet recent (`BIA-3`, transpose depuis "autrefois et
+    aujourd'hui").
+  - Etant donne un item auquel l'enfant repond faux, quand le retour s'affiche, alors il dit en une
+    phrase pourquoi la reponse est fausse (`SCI-1`).
+  - Etant donne le paquet livre, quand on compte les items qui demandent une valeur numerique a
+    restituer (une date, une duree), alors ils representent au plus un item sur six (`SCI-3`).
+  - Etant donne un fait porte par un item, quand on verifie le commentaire du paquet, alors ce fait
+    porte sa source (`HIS-3`).
+  - Etant donne les propositions d'un item, quand elles s'affichent, alors elles sont masquees et
+    l'item ne se repond pas sans l'enonce complet (`CON-1`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-13` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    qu'aucun item ne fait de la chronologie un progres et que `BIA-3`, `SCI-1`, `SCI-3`, `HIS-3` et
+    `CON-1` sont tenues.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de designer une zone sur
+  une image (schema d'un objet technique) - palier 2, non exige par cette ligne selon le jugement
+  de faisabilite ; elle ne juge jamais un objet ancien moins bien qu'un objet recent (`BIA-3`) ;
+  elle ne fixe aucun contenu factuel precis (quels objets, quels changements retenus) - reste a
+  l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0099` (section 9.6, engagement section 10).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof` pour le Done pedagogique.
+
+### S44-MAT-DIVISION - Comprendre le sens de la division en resolvant des problemes de partage et de groupement (`MAT-CE1-18`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux comprendre le sens de la division en resolvant des
+  problemes de partage et de groupement en jouant au bandit manchot, afin de savoir partager une
+  quantite en parts egales ou compter combien de groupes elle contient.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-18` (ligne ajoutee au referentiel le
+  2026-09-21). Ligne `non couvert`, `MATRICE-couverture.md` ligne 689.
+- **Prealable bloquant, non leve a ce jour, a lire avant le reste de cette story.** La frontiere
+  entre `MAT-CE1-18` (cette ligne) et `MAT-CE1-06` (sens de la multiplication, addition reiteree,
+  lignes et colonnes - hors de ce perimetre), est signalee sans etre tranchee par l'arbitrage
+  pedagogique prealable (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`,
+  section 6, citee mot pour mot) : *"Le groupement ('combien de paquets de 3 dans 12 ?') est la
+  multiplication a trou ('3 x ? = 12') vue de l'autre cote. Un meme item peut se declarer des deux
+  cotes ; `ADR-0081` n'en verifie que la resolution, jamais la verite. Une frontiere explicite est
+  due entre les deux lots"*. `DEC-0099` (section 9.8) route cette frontiere a `sofia-sm`, qui la
+  route a `theo-archi` - travail en cours au moment ou cette story est ecrite, dans un mouvement
+  distinct de celui-ci. **`camille-po` ne le reproduit pas ici et ne tranche pas la frontiere : ce
+  paquet ne s'ecrit pas avant qu'elle soit posee et fusionnee dans le depot.**
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 4) : *"Verdict :
+  ACCEPTE SOUS CONDITIONS, `DIV-CE1-1` a `DIV-CE1-5`. C'est la seule des quatre lignes de ce lot qui
+  ne demande aucune image et aucune mecanique neuve. Des problemes en mots, trois propositions
+  numeriques : la forme deja servie sept fois au CE1. Elle peut atteindre `couvert-valide` sur un
+  seul paquet, sans mention de couverture partielle."* Les cinq conditions, memes section, citees
+  mot pour mot :
+  > `DIV-CE1-1` - Bornes, et division exacte. Le dividende est un entier de 4 a 60, le diviseur un
+  > entier de 2 a 10, et la division tombe juste : aucun reste.
+  >
+  > `DIV-CE1-2` - Les deux sens sont servis, chacun sur au moins un tiers des items. Partage : le
+  > nombre de parts est donne, on cherche la valeur d'une part ("12 billes partagees entre 3
+  > enfants, combien chacun ?"). Groupement : la valeur d'une part est donnee, on cherche le nombre
+  > de parts ("12 billes par paquets de 3, combien de paquets ?").
+  >
+  > `DIV-CE1-3` - Aucune ecriture operatoire, nulle part. Chaque item est une situation en mots. Ni
+  > ":" ni le signe de division dans l'enonce, dans les propositions ou dans l'indice ; jamais un
+  > item de la forme "12 : 3 = ?".
+  >
+  > `DIV-CE1-4` - Diviseur 2 : au plus un tiers des items, et jamais le meme travail que les
+  > moities. Aucun de ces items n'emploie le mot "moitie" ni ne se reduit au fait de repertoire deja
+  > servi par `bandit-manchot-moities-ce1` (`MAT-CE1-03`, forme "Moitie de n = ?").
+  >
+  > `DIV-CE1-5` - Distracteurs. Au moins un distracteur par item correspond a une erreur
+  > identifiable : le produit au lieu du quotient (`a x b`), la difference au lieu du quotient
+  > (`a - b`), ou le quotient de l'autre sens (repondre le nombre de parts quand on demande la
+  > valeur d'une part, ou l'inverse). Tous les distracteurs sont des entiers strictement positifs,
+  > distincts entre eux et de la bonne reponse ; jamais un decimal, jamais un negatif ; si une
+  > formule coincide avec la bonne reponse ou avec un autre distracteur, un distracteur de
+  > remplacement est pris parmi les deux autres formes.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand on lit le dividende et le diviseur, alors le dividende est un entier
+    de 4 a 60, le diviseur un entier de 2 a 10, et la division tombe juste, sans reste (`DIV-CE1-1`).
+  - Etant donne le paquet livre, quand on classe ses items entre partage (nombre de parts donne,
+    valeur d'une part cherchee) et groupement (valeur d'une part donnee, nombre de parts cherche),
+    alors chacune des deux formes represente au moins un tiers des items (`DIV-CE1-2`).
+  - Etant donne un item, quand on relit son enonce, ses propositions et son indice, alors aucune
+    ecriture operatoire n'y figure - ni le signe ":", ni une forme du type "12 : 3 = ?"
+    (`DIV-CE1-3`).
+  - Etant donne le paquet livre, quand on compte les items dont le diviseur vaut 2, alors ils
+    representent au plus un tiers du paquet, et aucun n'emploie le mot "moitie" ni ne reprend un
+    item de `bandit-manchot-moities-ce1` (`DIV-CE1-4`).
+  - Etant donne les distracteurs d'un item, quand on les verifie, alors au moins un correspond a une
+    erreur nommee (le produit, la difference, ou le quotient de l'autre sens), tous sont des entiers
+    strictement positifs, distincts entre eux et de la bonne reponse, jamais un decimal ni un
+    negatif (`DIV-CE1-5`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-18` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que les cinq conditions `DIV-CE1-1` a `DIV-CE1-5` sont tenues et que la ligne passe a
+    `couvert-valide`, sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne sert jamais un item avec reste (`MAT-CM1-05`, hors
+  de ce libelle) ; elle ne sert jamais une ecriture symbolique de division, exclue par le libelle
+  ("sans technique operatoire posee") ; elle ne sert jamais un item de division par 2 formule comme
+  "moitie de n", deja servi par `MAT-CE1-03` (`bandit-manchot-moities-ce1`) ; elle ne s'ouvre pas
+  tant que le prealable bloquant ci-dessus n'est pas leve ; elle ne fixe aucun contenu factuel
+  precis (quelles situations, quels nombres retenus) - reste a l'auteur du paquet puis a l'audit de
+  `nadia-prof`.
+- **Lien decision** : `DEC-0099` (section 9.6, engagement section 10).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite et pour la frontiere
+  `MAT-CE1-06`/`MAT-CE1-18` (prealable bloquant) ; developpement a affecter par `sofia-sm`, une fois
+  la frontiere posee et fusionnee ; `nadia-prof` pour le Done pedagogique.
+
 
