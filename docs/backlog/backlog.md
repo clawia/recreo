@@ -15902,7 +15902,14 @@ independamment.
   comme l'ecrit la suite de ce paragraphe : ce dernier a decline de la trancher, dire quelle ligne
   un item sert etant une decision pedagogique, et `nadia-prof` l'a reprise (section 11.1). Elle
   n'est pas reproduite ici. Les criteres d'acceptation ci-dessous ne citent encore que `DIV-CE1-1`
-  a `DIV-CE1-5` ; leur mise a jour appartient a `camille-po`. Texte d'origine, conserve tel quel :
+  a `DIV-CE1-5` ; leur mise a jour appartient a `camille-po`.
+
+  **Mise a jour du 2026-09-25 (`camille-po`).** Fait : `DIV-CE1-6` figure desormais dans la liste
+  des conditions citees mot pour mot, dans un critere d'acceptation dedie et dans la section "Ce
+  que cette story ne fait pas", au meme titre que `DIV-CE1-1` a `DIV-CE1-5`. Le fond de `DIV-CE1-6`
+  n'est pas rejuge ici, seulement fait entrer dans la story.
+
+  Texte d'origine, conserve tel quel :
   **Prealable bloquant, non leve a ce jour, a lire avant le reste de cette story.** La frontiere
   entre `MAT-CE1-18` (cette ligne) et `MAT-CE1-06` (sens de la multiplication, addition reiteree,
   lignes et colonnes - hors de ce perimetre), est signalee sans etre tranchee par l'arbitrage
@@ -15919,8 +15926,9 @@ independamment.
   ACCEPTE SOUS CONDITIONS, `DIV-CE1-1` a `DIV-CE1-5`. C'est la seule des quatre lignes de ce lot qui
   ne demande aucune image et aucune mecanique neuve. Des problemes en mots, trois propositions
   numeriques : la forme deja servie sept fois au CE1. Elle peut atteindre `couvert-valide` sur un
-  seul paquet, sans mention de couverture partielle."* Les cinq conditions, memes section, citees
-  mot pour mot :
+  seul paquet, sans mention de couverture partielle."* Les six conditions sont citees mot pour mot :
+  `DIV-CE1-1` a `DIV-CE1-5` depuis la section 4 citee ci-dessus ; `DIV-CE1-6` depuis l'addendum du
+  2026-09-25 (section 11.2), qui pose la frontiere avec `MAT-CE1-06` et leve le prealable ci-dessus.
   > `DIV-CE1-1` - Bornes, et division exacte. Le dividende est un entier de 4 a 60, le diviseur un
   > entier de 2 a 10, et la division tombe juste : aucun reste.
   >
@@ -15944,6 +15952,15 @@ independamment.
   > distincts entre eux et de la bonne reponse ; jamais un decimal, jamais un negatif ; si une
   > formule coincide avec la bonne reponse ou avec un autre distracteur, un distracteur de
   > remplacement est pris parmi les deux autres formes.
+  >
+  > `DIV-CE1-6` - Frontiere avec `MAT-CE1-06` : un item de `MAT-CE1-18` est une situation en mots,
+  > sans dessin et sans signe. Trois proprietes, chacune decidable sur l'item seul : 1. Aucune
+  > illustration - l'item ne porte aucun champ `illustration` : ni reseau en lignes et colonnes, ni
+  > paquets dessines, ni collection d'objets en vrac. 2. Aucune ecriture operatoire, dans l'enonce,
+  > les propositions ou l'indice - aucun des signes `+`, `-`, `x`, `×`, `:`, `÷` employe comme
+  > operation entre deux nombres, et aucun signe `=` ; une suite de nombres qui compte de 3 en 3
+  > ("3, 6, 9, 12") n'est pas une ecriture operatoire et reste permise dans l'indice. 3. Le dividende
+  > est une quantite d'objets nommes ("12 billes", "20 cartes"), jamais un nombre nu.
 - **Criteres d'acceptation** :
   - Etant donne un item, quand on lit le dividende et le diviseur, alors le dividende est un entier
     de 4 a 60, le diviseur un entier de 2 a 10, et la division tombe juste, sans reste (`DIV-CE1-1`).
@@ -15960,18 +15977,25 @@ independamment.
     erreur nommee (le produit, la difference, ou le quotient de l'autre sens), tous sont des entiers
     strictement positifs, distincts entre eux et de la bonne reponse, jamais un decimal ni un
     negatif (`DIV-CE1-5`).
+  - Etant donne un item, quand on verifie sa forme, alors il ne porte aucun champ `illustration`
+    (ni reseau en lignes et colonnes, ni paquets dessines, ni collection d'objets en vrac), aucun
+    des signes `+`, `-`, `x`, `×`, `:`, `÷` ni le signe `=` ne figure dans son enonce, ses
+    propositions ou son indice (une suite qui compte de 3 en 3 restant permise dans l'indice), et
+    son dividende designe une quantite d'objets nommes plutot qu'un nombre nu (`DIV-CE1-6`).
   - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
     `MAT-CE1-18` et uniquement elle.
   - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
-    que les cinq conditions `DIV-CE1-1` a `DIV-CE1-5` sont tenues et que la ligne passe a
+    que les six conditions `DIV-CE1-1` a `DIV-CE1-6` sont tenues et que la ligne passe a
     `couvert-valide`, sans mention de couverture partielle.
 - **Ce que cette story ne fait pas** : elle ne sert jamais un item avec reste (`MAT-CM1-05`, hors
   de ce libelle) ; elle ne sert jamais une ecriture symbolique de division, exclue par le libelle
   ("sans technique operatoire posee") ; elle ne sert jamais un item de division par 2 formule comme
-  "moitie de n", deja servi par `MAT-CE1-03` (`bandit-manchot-moities-ce1`) ; elle ne s'ouvre pas
-  tant que le prealable bloquant ci-dessus n'est pas leve ; elle ne fixe aucun contenu factuel
-  precis (quelles situations, quels nombres retenus) - reste a l'auteur du paquet puis a l'audit de
-  `nadia-prof`.
+  "moitie de n", deja servi par `MAT-CE1-03` (`bandit-manchot-moities-ce1`) ; elle ne sert jamais un
+  item illustre, ni un item portant une ecriture operatoire quelconque dans l'enonce, les
+  propositions ou l'indice, ni un item dont le dividende est un nombre nu plutot qu'une quantite
+  d'objets nommes, frontiere posee avec `MAT-CE1-06` (`DIV-CE1-6`) ; elle ne s'ouvre pas tant que le
+  prealable bloquant ci-dessus n'est pas leve ; elle ne fixe aucun contenu factuel precis (quelles
+  situations, quels nombres retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
 - **Lien decision** : `DEC-0099` (section 9.6, engagement section 10).
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite et pour la frontiere
   `MAT-CE1-06`/`MAT-CE1-18` (prealable bloquant) ; developpement a affecter par `sofia-sm`, une fois
