@@ -11,6 +11,36 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s43, le 2026-09-25 (reparation - les trente-deux identifiants du lot 1,
+ecrits sans atteindre ce fichier).** Trente-deux identifiants ajoutes, tous ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` : `NUM-CE1-1` a `NUM-CE1-7`
+(numeration jusqu'a 1000, `MAT-CE1-01`), `ORD-CE1-1` a `ORD-CE1-6` (comparer, ranger, encadrer,
+ligne graduee, `MAT-CE1-02`), `ADP-CE1-1` a `ADP-CE1-6` (addition posee, `MAT-CE1-04`), `SOP-CE1-1`
+a `SOP-CE1-6` (soustraction posee, `MAT-CE1-05`), `MUL-CE1-1` a `MUL-CE1-7` (sens de la
+multiplication, `MAT-CE1-06`). **Cinq prefixes neufs - `NUM`, `ORD`, `ADP`, `SOP`, `MUL`** -
+verifies absents de la table de la section 4 avant allocation, et verifies absents des codes de
+ligne de referentiel d'`ADR-0081` (les onze prefixes de code de ligne du depot sont `ART`, `EMC`,
+`EPS`, `FRA`, `HDA`, `HG`, `LVE`, `MAT`, `MUS`, `QLM`, `SCI` - aucune collision, clause 6). **La
+forme a trois segments est copiee sur `ADD-CE1-1` et `MOI-CE1-2`**, deja allouees et de la meme
+famille, jamais inventee ; aucun de ces trente-deux jetons ne porte de marqueur de reserve
+(`ADR-0100`). **`ADP` et `SOP` sont volontairement distincts de `ADD` et `SOU`**, qui gouvernent le
+calcul mental de `MAT-CE1-03` : le calcul pose est une autre ligne, et deux familles de conditions
+qui partageraient un prefixe se liraient comme une seule. Les trente-deux sont places a
+l'emplacement alphabetique de leur prefixe dans la table, et non en tete comme le lot 2.
+
+**Le defaut que cette note repare, et il est de moi.** Mon commit `ad6507fc` annonce ces
+trente-deux allocations dans son message et **le diff reellement commite dans ce fichier etait
+celui du lot 2**, pas le mien : trois instances de `nadia-prof` ecrivaient ce fichier sur **le meme
+arbre de travail**, et ma mise a jour a ete perdue entre mon edition et mon commit. `ad6507fc` a
+donc laisse `round-two` **rouge** sur `PAR-5` clause 2 - dix echecs, tous de la forme *"ton document
+ecrit l'identifiant X, que le registre n'alloue pas"*. J'avais nomme ce risque dans le commit perdu,
+en l'appelant un ecart arithmetique reparable a l'assemblage ; **c'etait une mesure trop douce du
+risque que je decrivais** - une perte de mise a jour n'est pas un ecart de comptage, elle efface
+l'allocation entiere. Ce que cet incident ajoute a la liste de mes trois precedents de s40 et s42 :
+lancer le garde-fou **avant** le commit ne suffit pas quand l'arbre est partage, parce que le
+fichier mesure n'est pas celui qui sera commite. **Le compte se lit sur l'outil, et il se relit sur
+le commit.**
+
 **Note de `nadia-prof`, s43, le 2026-09-25 (arbitrage prealable, lot 2 de mathematiques CE1).**
 Trente identifiants ajoutes, tous ecrits dans
 `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` : `TAB-CE1-1` a `TAB-CE1-6`
@@ -230,7 +260,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `742` identifiants alloues, `120` prefixes distincts.
+**Compte courant, verifie par la CI** : `774` identifiants alloues, `125` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -857,6 +887,12 @@ clause 2 par une exemption.
 | `DUR-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `DUR-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `DUR-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `ADP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ADP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ADP-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ADP-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ADP-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ADP-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `AGN-1` | `squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-cm1.md` |
 | `AGN-2` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
 | `AGN-3` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
@@ -1241,6 +1277,13 @@ clause 2 par une exemption.
 | `MON-4` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
 | `MON-5` | `squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md` |
 | `MON-6` | `squad/conformite/FICHE-bandit-manchot-monnaie-cp.md` |
+| `MUL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `MUL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `MUL-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `MUL-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `MUL-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `MUL-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `MUL-CE1-7` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `MUS-1` | `squad/programme/education-musicale/competences-cp.md` |
 | `MUS-2` | `squad/programme/education-musicale/competences-cp.md` |
 | `NAR-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
@@ -1271,10 +1314,23 @@ clause 2 par une exemption.
 | `NAT-10` | `squad/conformite/FICHE-bandit-manchot-nature-mot-cp.md` |
 | `NAT-11` | `squad/conformite/FICHE-bandit-manchot-nature-mot-cp.md` |
 | `NAT-12` | `squad/conformite/FICHE-bandit-manchot-nature-mot-cp.md` |
+| `NUM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `NUM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `NUM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `NUM-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `NUM-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `NUM-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `NUM-CE1-7` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `OBJ-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `OBJ-R2` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `OBT-R1` | `squad/conformite/FICHE-bandit-manchot-objet-technique-cm1.md` |
 | `OBT-R2` | `squad/conformite/FICHE-bandit-manchot-objet-technique-cm1.md` |
+| `ORD-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ORD-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ORD-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ORD-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ORD-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `ORD-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `PAR-0` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `PAR-1` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
 | `PAR-2` | `squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md` |
@@ -1461,6 +1517,12 @@ clause 2 par une exemption.
 | `SEUIL-5` | `squad/conformite/ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md` |
 | `SIG-R1` | `squad/conformite/FICHE-bandit-manchot-signal-information-cm1.md` |
 | `SIG-R2` | `squad/conformite/FICHE-bandit-manchot-signal-information-cm1.md` |
+| `SOP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `SOP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `SOP-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `SOP-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `SOP-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
+| `SOP-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `SOR-1` | `squad/conformite/FICHE-bandit-manchot-comparer-cp.md` |
 | `SOR-2` | `squad/conformite/FICHE-bandit-manchot-reperes-cm1.md` |
 | `SOR-3` | `squad/conformite/FICHE-bandit-manchot-comparer-cp.md` |
