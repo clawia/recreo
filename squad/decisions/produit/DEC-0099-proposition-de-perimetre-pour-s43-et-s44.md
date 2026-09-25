@@ -1,6 +1,8 @@
 # DEC-0099 - Proposition de perimetre pour s43 et s44
 
 **Statut : Proposee, en attente de validation de l'utilisatrice.**
+**Amendee le 2026-09-25 : voir section 9 - correction de fait sur le palier 2 (section 4 bis) et
+perimetre rechiffre pour s43 et s44 avec les lignes de mathematiques CE1 desormais arbitrees.**
 
 - **Date** : 2026-09-25
 - **Auteur** : `camille-po`
@@ -128,6 +130,12 @@ l'une de ces quatorze lignes suppose, comme a chaque sprint CE1 precedent (s37 a
 arbitrage neuf demande a `nadia-prof` avant tout avis de faisabilite de `theo-archi` - un delai
 que le perimetre chiffre de s43/s44 ne prend pas.
 
+**Amendement du 2026-09-25 (section 9.2).** Ce delai est paye : les quatorze lignes ont desormais
+chacune un arbitrage pedagogique prealable ecrit, rendu le 2026-09-25 en trois lots
+(`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, `-lot-2.md`, `-lot-3.md`). Le perimetre
+rechiffre qui en tient compte est en section 9 ; cette section 4 reste inchangee comme trace de
+l'etat qui a motive la demande d'arbitrage.
+
 **Une ligne conditionnelle inchangee** : `LVE-CM1-05` (lire et comprendre un texte court et
 simple, anglais CM1) reste jouable au choix et arbitree (`ARBITRAGE-PREALABLE-s27`, section 7.3),
 mais la condition posee le 2026-09-04 par `nadia-prof` - un second paquet lexical au-dela de celui
@@ -161,6 +169,20 @@ dont l'arbitrage dit deja non, pour un motif d'architecture (mecanique absente) 
 autorite a trancher. Si ce choix devait etre rouvert, ce serait une decision d'investissement sur
 le palier 2 lui-meme, routee a `theo-archi` via `sofia-sm`, et couvrant bien plus qu'une seule
 ligne - pas un geste de ce document.
+
+**Correction de fait, amendement du 2026-09-25 (section 9.1).** Le paragraphe ci-dessus est faux
+sur un point precis et il ne l'etait pas au moment ou je l'ai ecrit. La mecanique de `designation`
+n'est plus *"entierement absente du produit"* : elle est servie par deux entrees de catalogue, et
+`nadia-prof` a prononce le Done pedagogique sur l'une d'elles le 2026-09-21. Le fait est signale
+independamment par les trois lots d'arbitrage prealable de mathematiques CE1 de s43
+(`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, section 0.2, et `-lot-3.md`, section 0.1).
+**Ce que cela ne change pas** - et c'est `nadia-prof` elle-meme qui le dit dans les deux lots : la
+conclusion de cette section sur `MAT-CP-10` tient, la moitie visuelle de cette ligne reste hors
+perimetre de s43/s44, et une decision d'investissement sur le palier 2 comme tel reste a router a
+`theo-archi`. **Ce que cela change** : la mecanique existe deja pour toute ligne qui se contente de
+montrer une image et de faire designer une zone dessus, sans franchir le palier 2 comme
+investissement a part. Plusieurs candidates de mathematiques CE1 en dependent - detail en
+section 9.
 
 ## 4 ter. Quatre lignes du vivier sorties : illustration neuve requise, avis de faisabilite du a `theo-archi`
 
@@ -280,3 +302,144 @@ quatre lignes de la section 4 ter restent a `theo-archi`) et ne juge la qualite 
 d'aucun contenu - les quatre lignes retenues restent `non couvert` jusqu'au Done pedagogique de
 `nadia-prof`. Si l'utilisatrice valide tout ou partie de ce qui precede, l'ecriture des stories et
 l'ouverture des dossiers de sprint reviennent a `sofia-sm`.
+
+---
+
+## 9. Amendement du 2026-09-25 - correction de fait et perimetre rechiffre
+
+**Auteur** : `camille-po`. **Motif** : les quatorze lignes de mathematiques CE1 que la section 4
+rangeait en candidates de second rang, faute d'arbitrage prealable, ont recu cet arbitrage le
+2026-09-25, en trois lots ecrits par `nadia-prof` :
+`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` (`MAT-CE1-01`, `-02`, `-04`,
+`-05`, `-06`), `-lot-2.md` (`MAT-CE1-07`, `-08`, `-10`, `-11`, `-12`), `-lot-3.md` (`MAT-CE1-14`,
+`-15`, `-17`, `-18`). Cette section rechiffre le perimetre de s43 et de s44 en integrant ce qui en
+resulte. **Elle ne reecrit aucune des sections precedentes** : les sections 1 a 8 restent la trace
+de l'etat au moment ou ce document a ete propose ; cette section les complete et, la ou elle les
+contredit, le dit explicitement plutot que de corriger en place.
+
+### 9.1 Correction de fait deja notee en section 4 bis
+
+Deplacee ici pour memoire : la section 4 bis decrivait le palier 2 (mecanique de `designation`)
+comme *"entierement absente du produit a ce jour"*. C'est faux au 2026-09-25 - deux entrees de
+catalogue la servent et `nadia-prof` a prononce un Done pedagogique sur l'une d'elles le
+2026-09-21. La conclusion de la section 4 bis sur `MAT-CP-10` ne bouge pas ; ce qui bouge est la
+nature du manque pour d'autres lignes : plusieurs verbes de mathematiques CE1 qui semblaient
+bloques par une **mecanique absente** ne le sont en realite que par un **materiau absent**
+(un dessin qui n'existe pas encore), ce qui n'est pas la meme nature de manque pour un avis de
+faisabilite a venir. Detail complet en tete de section 4 bis.
+
+### 9.2 Les quatorze lignes, reclassees par ce que l'arbitrage permet d'atteindre
+
+| Groupe | Lignes | Ce que l'arbitrage permet |
+|---|---|---|
+| **A - couvert-valide atteignable, aucune image requise** | `MAT-CE1-04`, `-05`, `-07`, `-08`, `-12`, `-18` | ACCEPTE SOUS CONDITIONS ; un paquet entierement textuel suffit a fermer la ligne |
+| **B - couvert-valide atteignable, image requise (mecanique existante, materiau a produire)** | `MAT-CE1-17` | ACCEPTE SOUS CONDITIONS ; ferme par designation sur un dessin d'axe/de quadrillage, de la meme famille que les dessins de solides deja livres |
+| **C - plafonnees `en cours`, couverture partielle** | `MAT-CE1-01`, `-02`, `-06`, `-10`, `-11`, `-14`, `-15` | un verbe au moins reste hors de portee du produit (denombrer, mesurer, lire l'heure, tracer, coder en production, ou une image non encore instruite) ; mention de couverture partielle exigee mot pour mot dans la matrice si la ligne bouge |
+
+Le groupe A est le plus rapide a engager : aucune depense de mecanique ni de materiau visuel
+neuf, uniquement du texte sur un patron deja rode sept fois au CE1. Le groupe B ferme lui aussi
+`couvert-valide`, au prix d'un materiau (dessins) que je ne chiffre pas - c'est a `theo-archi`.
+Le groupe C n'est pas retenu ce tour-ci (section 9.5) : chacune de ses sept lignes plafonne a
+`en cours` sans un investissement (rendu de cadran, de balance, de recipient gradue, ou une
+interaction de trace qui n'existe dans aucune mecanique du produit a ce jour pour `MAT-CE1-15`),
+et je juge que la couverture partielle qu'elles offriraient ne vaut pas le cout ce tour-ci face a
+six lignes du groupe A qui atteignent `couvert-valide` pour le meme tarif.
+
+### 9.3 Collisions internes verifiees avant de choisir
+
+Trois collisions sont deja signalees par les lots eux-memes, et elles sont deja **fermees par une
+condition ecrite dans l'arbitrage**, pas des blocages :
+
+| Collision | Lignes | Fermee par |
+|---|---|---|
+| `MAT-CE1-04`/`-05` reprendraient `MAT-CE1-03` (bandit-manchot-additions/soustractions-ce1) si le seuil "avec retenue/emprunt" n'est pas tenu | `MAT-CE1-04`, `-05` vs `MAT-CE1-03` | `ADP-CE1-3`, `SOP-CE1-3` (au moins deux tiers des items a trois chiffres ou plus de 100) |
+| La table de 2 de `MAT-CE1-07` est le meme fait numerique que les doubles deja servis | `MAT-CE1-07` vs `MAT-CE1-03` | `TAB-CE1-5` (la formulation par le double est exclue de l'enonce) |
+| Les problemes d'achat de `MAT-CE1-08` reprendraient les items de rendu de monnaie deja exiges par `MON-CE1-3` sur `bandit-manchot-monnaie-ce1` | `MAT-CE1-08` vs `MAT-CE1-13` (`MON-CE1-3`/`PRO-CE1-4`) | `PRO-CE1-4` (aucun achat, prix, piece, billet, euro ni centime) |
+
+Ces trois collisions ne m'ont pas ecartee des lignes concernees : elles disent qu'un paquet doit
+tenir une condition supplementaire, deja ecrite, deja verifiee satisfaisable par `nadia-prof`. Je
+ne retiens pas `MAT-CE1-04`, `-05`, `-07` ni `-08` ce tour-ci (section 9.5), pour une raison de
+marge et non de collision : elles restent au premier rang du vivier pour un prochain sprint.
+
+Une quatrieme collision touche une ligne que je retiens (section 9.5) : `MAT-CE1-18` reprendrait
+le fait "moitie de n" deja servi par `bandit-manchot-moities-ce1` sous `MAT-CE1-03`. Fermee par
+`DIV-CE1-4` (aucun item de division par 2 ne dit *moitie* ni ne se reduit au fait de repertoire
+deja servi). Une cinquieme, non fermee mais sans effet sur ce perimetre parce que la ligne en face
+n'y est pas engagee : `MAT-CE1-18` et `MAT-CE1-06` (sens de la multiplication, hors de ce
+perimetre) se recoupent sur le groupement lu comme une multiplication a trou ; les deux lots le
+signalent sans trancher, et je le route a `sofia-sm` (section 9.7) pour que la frontiere soit
+posee avant que l'une ou l'autre ligne ne soit ecrite, pas seulement avant que les deux le soient
+ensemble.
+
+### 9.4 Marge de rejeu - le calcul, et pourquoi je m'arrete avant le plafond
+
+Tarif des lignes de mathematiques CE1 : **1,0** chacune (section 2, matiere dont `nadia-prof` est
+la source factuelle). Les quatre lignes deja proposees restent a 1,5 chacune, inchangees.
+
+Le plafond mecanique serait d'ajouter deux lignes de mathematiques CE1 par sprint (2,0) aux deux
+lignes deja proposees (3,0), soit une cible de **5,0/5,0, marge 0,0**. Je n'engage pas ce plafond.
+**C'est le meme raisonnement que celui qui a fait ecarter, en section 6 bis, une troisieme ligne a
+1,5 portant le sprint a 4,5/5,0 marge 0,5** - `DEC-0098` attribue a une marge de 0,5 les deux refus
+essuyes le meme jour a s41. Une marge de 0,0 est strictement pire que la marge de 0,5 deja jugee
+insuffisante ; l'appliquer ici contredirait le motif meme que cette section invoque.
+
+**Je retiens donc une seule ligne de mathematiques CE1 par sprint, pas deux.** Cible par sprint :
+1,5 + 1,5 + 1,0 = **4,0/5,0, marge 1,0**. Cette marge egale le tarif de la seule ligne neuve
+ajoutee : si elle est retiree en cours de sprint (le precedent de `S42-FRA-LECTURE` montre que
+cela arrive), le sprint retombe sur les deux lignes deja proposees, jamais a zero contenu ferme -
+exactement la garantie que la marge de 2,0 apportait a la version precedente du perimetre, ici
+recalculee pour un tarif plus bas. La seconde place que le tarif aurait permise reste au vivier
+(section 9.6) : rien n'empeche de la reclamer si `theo-archi` confirme un cout inferieur a
+l'estimation, ou si l'utilisatrice prefere assumer la marge nulle en connaissance de cause.
+
+### 9.5 Perimetre rechiffre pour s43
+
+**Cible : 4,0/5,0, marge 1,0.**
+
+| Ligne | Matiere / niveau | Tarif | Motif du choix |
+|---|---|---|---|
+| `QLM-CP-08` | questionner le monde CP | 1,5 | inchangee (section 5) |
+| `EPS-CM1-10` | education physique et sportive CM1 | 1,5 | inchangee (section 5) |
+| `MAT-CE1-12` Calculer une duree simple en heures entieres ou en demi-heures | mathematiques CE1 | 1,0 | **ACCEPTE SOUS CONDITIONS** `DUR-CE1-1` a `-6`, `couvert-valide` atteignable sur texte seul, **aucune collision signalee** avec les sept jeux CE1 deja servis (lot 2, section 7) - la plus nette des six lignes du groupe A |
+
+### 9.6 Perimetre rechiffre pour s44
+
+**Cible : 4,0/5,0, marge 1,0.**
+
+| Ligne | Matiere / niveau | Tarif | Motif du choix |
+|---|---|---|---|
+| `MUS-CP-11` | education musicale CP | 1,5 | inchangee (section 6) |
+| `SCI-CM1-13` | sciences et technologie CM1 | 1,5 | inchangee (section 6) |
+| `MAT-CE1-18` Comprendre le sens de la division (partage et groupement) | mathematiques CE1 | 1,0 | **ACCEPTE SOUS CONDITIONS** `DIV-CE1-1` a `-5`, `couvert-valide` atteignable sur texte seul, **seule des quatre lignes de son lot a ne demander ni image ni mecanique neuve** ; sa collision avec les moities deja servies est fermee par `DIV-CE1-4` (section 9.3) |
+
+**Si les six lignes ferment integralement sur les deux sprints**, la matrice passe de 98/156
+(62,8 %, etat de sortie de s42) a **104/156 (66,7 %)**.
+
+### 9.7 Lignes CE1 ecartees ce tour-ci, et motif - pour qu'elles ne se reperdent pas au vivier
+
+| Ligne | Verdict de l'arbitrage | Pourquoi elle n'est pas dans le perimetre chiffre |
+|---|---|---|
+| `MAT-CE1-04` Poser et effectuer une addition avec retenue | ACCEPTE SOUS CONDITIONS, `couvert-valide` atteignable | groupe A, ecartee par la marge (section 9.4) seulement ; premiere candidate du prochain sprint |
+| `MAT-CE1-05` Poser et effectuer une soustraction | ACCEPTE SOUS CONDITIONS, `couvert-valide` atteignable | idem |
+| `MAT-CE1-07` Tables de 2, 5, 10, puis 3 et 4 | ACCEPTE SOUS CONDITIONS, `couvert-valide` atteignable | idem |
+| `MAT-CE1-08` Problemes a une ou deux etapes | ACCEPTE SOUS CONDITIONS, `couvert-valide` atteignable | idem, la plus riche en conditions (sept) des six du groupe A |
+| `MAT-CE1-17` Axe de symetrie et completement par symetrie sur quadrillage | ACCEPTE SOUS CONDITIONS, `couvert-valide` atteignable | groupe B : demande un materiau visuel neuf (dessins d'axes et de quadrillages) que je ne chiffre pas ; a proposer avec l'avis de faisabilite de `theo-archi` plutot que dans ce chiffrage textuel |
+| `MAT-CE1-01`, `-02`, `-06`, `-10`, `-11`, `-14`, `-15` | COUVERTURE PARTIELLE ou plafond `en cours` (groupe C) | non retenues : chacune plafonne `en cours` sans un investissement (rendu de cadran, de balance, de recipient gradue, de trace) que je ne juge pas prioritaire face a six lignes qui atteignent `couvert-valide` au meme tarif. Restent au vivier avec leur arbitrage, disponibles si l'utilisatrice preferait la couverture partielle a l'attente |
+
+### 9.8 Ce que cette section route, et a qui
+
+| Fait | A qui | Pourquoi ce n'est pas a moi |
+|---|---|---|
+| La frontiere entre `MAT-CE1-18` (groupement) et `MAT-CE1-06` (sens de la multiplication), signalee par les deux lots sans etre tranchee, doit etre posee avant que l'une des deux lignes ne soit ecrite | `sofia-sm`, qui route a `theo-archi` et a l'instance qui ecrira la story | Je choisis le perimetre, je ne tranche pas ou passe la frontiere entre deux competences voisines |
+| Le materiau visuel de `MAT-CE1-17` (dessins d'axe et de quadrillage) et son cout | `theo-archi` | Decision d'architecture et de charge, hors de ma main |
+| L'ecriture des stories et l'ouverture des dossiers de sprint pour les six lignes retenues (9.5, 9.6), si l'utilisatrice valide | `sofia-sm` | Section 8, inchangee |
+
+### 9.9 Ce que cet amendement ne fait pas
+
+Il ne modifie ni `docs/backlog/backlog.md`, ni `squad/sprints/`, ni
+`squad/programme/MATRICE-couverture.md`. Il n'engage aucun perimetre : le statut de ce document
+reste **Proposee, en attente de validation de l'utilisatrice**, sur l'ensemble des sections 1 a 9.
+Il ne rouvre `MAT-CP-10` ni aucune des quatre lignes de la section 4 ter. Il ne rend aucun avis de
+faisabilite technique et ne prononce aucun Done pedagogique : les six lignes du perimetre
+rechiffre restent `non couvert` jusqu'au Done que `nadia-prof` prononcera apres avoir joue les
+paquets livres.
