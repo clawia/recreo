@@ -1,0 +1,184 @@
+# S43-MAT-DUREE (MAT-CE1-12, DEC-0099 section 9.5). Arbitrage prealable de nadia-prof,
+# conditions DUR-CE1-1 a DUR-CE1-6 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md,
+# section 5.3), et discriminant DUR-CE1-7 pose le 2026-09-25, avant l'ecriture de ce paquet
+# (docs/backlog/backlog.md, section "Sprint 43", ajout du meme jour).
+#
+# DUR-CE1-1 : une seule forme, deux instants donnes, la duree ecoulee a trouver. Jamais un horaire
+# d'arrivee, jamais une lecture de l'heure seule, jamais une conversion d'unite seule, jamais une
+# comparaison de durees.
+#
+# DUR-CE1-2 : les deux instants ont des minutes valant "00" ou "30" uniquement, dans la meme
+# journee (aucun item ne franchit minuit), aucune seconde, ecriture sur 24 heures ("14 h 30",
+# jamais "de l'apres-midi"). La duree cherchee vaut au moins 30 minutes et au plus 4 heures.
+#
+# DUR-CE1-3 : un instant ne s'ecrit jamais comme une duree. Les instants s'ecrivent "H h" ou
+# "H h MM" (jamais le mot "min"). Les durees s'ecrivent toujours "MM min" ou "H h MM min" (le mot
+# "min" y est toujours present, y compris "H h 00 min" sur une duree ronde) : c'est la presence ou
+# l'absence du mot "min" qui distingue les deux ecritures, constante sur tout le paquet. Dans un
+# meme item, les trois propositions portent la meme ecriture.
+#
+# DUR-CE1-4 : le franchissement de la demi-heure (les deux instants d'un item ont des minutes
+# differentes, l'une a "00" et l'autre a "30") porte 12 items sur 24 (50 %), entre le tiers et les
+# deux tiers demandes.
+#
+# DUR-CE1-5 : distracteurs. Trois familles, jamais moins :
+#   - la demi-heure oubliee ou comptee en trop (la bonne reponse +/- 30 minutes) ;
+#   - l'heure decalee d'un rang, minutes justes (la bonne reponse +/- 60 minutes) ;
+#   - le comptage en base 100, sur les items ou l'instant de depart est a la demi-heure et celui
+#     d'arrivee a l'heure ronde (l'enfant emprunte cent minutes au lieu de soixante sans retrancher
+#     l'heure empruntee) : items 1 et 5, "1 h 70 min" et "2 h 70 min", les deux seuls distracteurs
+#     du paquet dont les minutes depassent 59 (DUR-CE1-7 clause 5, au moins deux exiges).
+# Aucune proposition n'egale une autre dans un item. Rang de la bonne reponse sur le paquet entier :
+# la plus petite sur 10 items (41,7 %), intermediaire sur 9 (37,5 %), la plus grande sur 5
+# (20,8 %) - chacun des trois rangs entre 10 % et 50 %, mesure a la main sur les items ci-dessous ;
+# la CI remesure elle-meme (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest).
+#
+# DUR-CE1-6 : LON-CE1-1 et LON-CE1-2 s'appliquent (ADR-0101), jamais les 25 mots de D-8 du CM1.
+# Huit situations : l'ecole, la recreation, la cantine, un trajet (a velo, en bus, en train -
+# jamais un adulte qui conduit), un film, un match, une recette, une visite. Prenoms et roles
+# varies et non stereotypes. Aucun retard dramatise. L'indice donne la methode, jamais le resultat,
+# et il n'est pas identique sur tout le paquet (six variantes, cycliques sur les 24 items).
+# Vingt-quatre items, au-dessus du plancher de vingt.
+#
+# DUR-CE1-7, clause 1 : chaque indice nomme le pas de comptage du CE1 (la demi-heure, l'heure), et
+# aucun ne reprend l'un des quatre indices de calcul de duree deja servis par
+# cm1-problemes-durees ("Compte d'abord jusqu'a l'heure ronde, puis ajoute le reste des minutes.",
+# "Une heure, c'est 60 minutes, pas 100 : compte bien.", "Regarde les deux heures donnees et
+# calcule ce qui les separe.", "Avance minute par minute jusqu'a l'heure ronde, puis compte ce
+# qu'il reste.") : lu et verifie a la main sur le paquet de CM1 avant d'ecrire ce paquet-ci.
+#
+# DUR-CE1-7, clause 2 : neuf items sur vingt-quatre (37,5 %) portent une duree de 2 heures ou plus
+# - items 16 a 24 -, au-dessus du tiers exige, la ou les douze items de calcul de duree du CM1
+# restent tous sous 1 h 30.
+#
+# DUR-CE1-7, clause 3 : aucun enonce ne reprend le couple prenom + situation d'un enonce de
+# cm1-problemes-durees. Les vingt et un prenoms deja servis par ce paquet (Malo, Aya, Hugo, Salma,
+# Elio, Manon, Noah, Iris, Diego, Fatou, Milo, Yasmine, Nils, Chloe, Amir, Kofi, Paul, Nour, Zoe,
+# Adama, Maya) ne sont repris par aucun item ci-dessous ; les huit situations restent, decor
+# commun, avec une phrase et un personnage neufs a chaque fois.
+#
+# DUR-CE1-7, clause 4 : le registre "H h MM min" est celui qui garde l'erreur de base 100
+# ecrivable (voir DUR-CE1-3 ci-dessus) - "2 heures et demie" ne l'aurait pas permis.
+#
+# DUR-CE1-7, clause 5 : deux distracteurs (items 1 et 5) portent des minutes superieures a 59,
+# jamais un seul - voir DUR-CE1-5 ci-dessus.
+#
+# ADR-0098 : la sous-partie de MAT-CE1-12 est allouee dans SousPartieDeMathematiquesCe1
+# ("Calculer une duree simple en heures entieres ou en demi-heures"), et ce paquet declare la
+# ligne qu'elle sert.
+#
+# ADR-0101 : le champ "enonce" de chaque item reste a vingt mots et trois phrases au plus, la
+# derniere etant la question (LON-CE1-1, LON-CE1-2) - ce paquet n'ajoute aucune entree a la dette
+# de longueur du CE1.
+#
+# ADR-0102 : les durees de ce paquet s'ecrivent "H h MM min", deja lues par le lecteur de valeurs
+# du garde-fou de rang.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable (U+00A0). Ce paquet entre a zero
+# occurrence detachable.
+schema: 1
+id: ce1-problemes-durees
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Calculer une durée simple en heures entières ou en demi-heures"
+lignesDeReferentiel: ["MAT-CE1-12"]
+items:
+  - enonce: "Nina est à l'école de 8 h 30 à 9 h. Combien de temps a-t-elle passé à l'école ?"
+    bonneReponse: "30 min"
+    distracteurs: ["1 h 00 min", "1 h 70 min"]
+    indice: "Compte d'abord les heures entières, puis la demi-heure qui reste."
+  - enonce: "La récréation de Sami dure de 10 h 30 à 11 h. Combien de temps dure-t-elle ?"
+    bonneReponse: "30 min"
+    distracteurs: ["1 h 00 min", "1 h 30 min"]
+    indice: "Avance de demi-heure en demi-heure et compte tes pas."
+  - enonce: "Léo est à la cantine de 9 h à 9 h 30. Combien de temps y est-il resté ?"
+    bonneReponse: "30 min"
+    distracteurs: ["1 h 00 min", "1 h 30 min"]
+    indice: "Une demi-heure, c'est 30 minutes, pas 50."
+  - enonce: "Jade roule à vélo de 8 h à 8 h 30. Combien de temps a duré le trajet ?"
+    bonneReponse: "30 min"
+    distracteurs: ["1 h 00 min", "1 h 30 min"]
+    indice: "Compte le nombre d'heures, puis regarde s'il reste une demi-heure."
+  - enonce: "Tom regarde un film de 14 h 30 à 16 h. Combien de temps a duré le film ?"
+    bonneReponse: "1 h 30 min"
+    distracteurs: ["1 h 00 min", "2 h 70 min"]
+    indice: "Pense par pas de 30 minutes pour compter la durée."
+  - enonce: "Lina regarde un match de 16 h 30 à 18 h. Combien de temps a duré le match ?"
+    bonneReponse: "1 h 30 min"
+    distracteurs: ["1 h 00 min", "30 min"]
+    indice: "Une heure, ce sont deux demi-heures. Compte-les toutes."
+  - enonce: "Rayan prépare un gâteau de 17 h à 18 h 30. Combien de temps a duré la préparation ?"
+    bonneReponse: "1 h 30 min"
+    distracteurs: ["2 h 00 min", "2 h 30 min"]
+    indice: "Compte d'abord les heures entières, puis la demi-heure qui reste."
+  - enonce: "Emma visite la bibliothèque de 10 h à 11 h 30. Combien de temps a duré la visite ?"
+    bonneReponse: "1 h 30 min"
+    distracteurs: ["1 h 00 min", "2 h 00 min"]
+    indice: "Avance de demi-heure en demi-heure et compte tes pas."
+  - enonce: "Karim est à l'école de 8 h à 9 h. Combien de temps a-t-il passé à l'école ?"
+    bonneReponse: "1 h 00 min"
+    distracteurs: ["30 min", "1 h 30 min"]
+    indice: "Une demi-heure, c'est 30 minutes, pas 50."
+  - enonce: "La récréation de Lucie dure de 10 h à 11 h. Combien de temps dure-t-elle ?"
+    bonneReponse: "1 h 00 min"
+    distracteurs: ["1 h 30 min", "2 h 00 min"]
+    indice: "Compte le nombre d'heures, puis regarde s'il reste une demi-heure."
+  - enonce: "Yohan est à la cantine de 12 h à 13 h. Combien de temps y est-il resté ?"
+    bonneReponse: "1 h 00 min"
+    distracteurs: ["30 min", "1 h 30 min"]
+    indice: "Pense par pas de 30 minutes pour compter la durée."
+  - enonce: "Sarah prend le bus de 15 h à 16 h. Combien de temps a duré le trajet ?"
+    bonneReponse: "1 h 00 min"
+    distracteurs: ["1 h 30 min", "2 h 00 min"]
+    indice: "Une heure, ce sont deux demi-heures. Compte-les toutes."
+  - enonce: "Bilal regarde un film de 16 h 30 à 17 h 30. Combien de temps a duré le film ?"
+    bonneReponse: "1 h 00 min"
+    distracteurs: ["30 min", "1 h 30 min"]
+    indice: "Compte d'abord les heures entières, puis la demi-heure qui reste."
+  - enonce: "Anna regarde un match de 14 h 30 à 15 h 30. Combien de temps a duré le match ?"
+    bonneReponse: "1 h 00 min"
+    distracteurs: ["1 h 30 min", "2 h 00 min"]
+    indice: "Avance de demi-heure en demi-heure et compte tes pas."
+  - enonce: "Malik prépare une tarte de 9 h 30 à 10 h 30. Combien de temps a duré la préparation ?"
+    bonneReponse: "1 h 00 min"
+    distracteurs: ["30 min", "1 h 30 min"]
+    indice: "Une demi-heure, c'est 30 minutes, pas 50."
+  - enonce: "Rose visite le musée de 9 h à 11 h. Combien de temps a duré la visite ?"
+    bonneReponse: "2 h 00 min"
+    distracteurs: ["1 h 30 min", "1 h 00 min"]
+    indice: "Compte le nombre d'heures, puis regarde s'il reste une demi-heure."
+  - enonce: "Idris regarde un film de 13 h 30 à 15 h 30. Combien de temps a duré le film ?"
+    bonneReponse: "2 h 00 min"
+    distracteurs: ["1 h 30 min", "2 h 30 min"]
+    indice: "Pense par pas de 30 minutes pour compter la durée."
+  - enonce: "Naomi prend le train de 8 h 30 à 11 h. Combien de temps a duré le trajet ?"
+    bonneReponse: "2 h 30 min"
+    distracteurs: ["2 h 00 min", "1 h 30 min"]
+    indice: "Une heure, ce sont deux demi-heures. Compte-les toutes."
+  - enonce: "Victor suit un match de 14 h à 16 h 30. Combien de temps a duré le match ?"
+    bonneReponse: "2 h 30 min"
+    distracteurs: ["3 h 00 min", "3 h 30 min"]
+    indice: "Compte d'abord les heures entières, puis la demi-heure qui reste."
+  - enonce: "Lou est à l'école de 8 h à 11 h. Combien de temps a-t-elle passé à l'école ?"
+    bonneReponse: "3 h 00 min"
+    distracteurs: ["2 h 30 min", "3 h 30 min"]
+    indice: "Avance de demi-heure en demi-heure et compte tes pas."
+  - enonce: "Samir visite la ferme de 9 h 30 à 12 h 30. Combien de temps a duré la visite ?"
+    bonneReponse: "3 h 00 min"
+    distracteurs: ["2 h 30 min", "2 h 00 min"]
+    indice: "Une demi-heure, c'est 30 minutes, pas 50."
+  - enonce: "Alicia prend le train de 7 h 30 à 11 h. Combien de temps a duré le trajet ?"
+    bonneReponse: "3 h 30 min"
+    distracteurs: ["4 h 00 min", "4 h 30 min"]
+    indice: "Compte le nombre d'heures, puis regarde s'il reste une demi-heure."
+  - enonce: "Mateo suit un match de 13 h à 16 h 30. Combien de temps a duré le match ?"
+    bonneReponse: "3 h 30 min"
+    distracteurs: ["3 h 00 min", "4 h 00 min"]
+    indice: "Pense par pas de 30 minutes pour compter la durée."
+  - enonce: "Farah est à l'école de 8 h à 12 h. Combien de temps a-t-elle passé à l'école ?"
+    bonneReponse: "4 h 00 min"
+    distracteurs: ["3 h 30 min", "3 h 00 min"]
+    indice: "Une heure, ce sont deux demi-heures. Compte-les toutes."

@@ -510,6 +510,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-solides
     nombreDeManches: 10
+  - id: bandit-manchot-problemes-durees-ce1
+    titre: "Le temps qui passe"
+    consigne: "Trouve combien de temps s'est écoulé."
+    mecanique: bandit-manchot
+    paquet: ce1-problemes-durees
+    nombreDeManches: 10
   - id: bandit-manchot-histoire-des-arts-relier-contexte-cm1
     titre: "L'art dans son contexte"
     consigne: "Lis bien, puis relie l'œuvre décrite à son époque, sa civilisation ou son usage."
