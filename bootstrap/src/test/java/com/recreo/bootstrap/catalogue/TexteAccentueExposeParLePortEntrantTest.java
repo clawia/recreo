@@ -305,6 +305,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-symboles-cm1",
             // S42-QLM-MATIERE (s42) : entree neuve, QLM-CP-06, la matiere d'un objet.
             "bandit-manchot-matiere-objets-cp",
+            // S43-MAT-DUREE (s43) : entree neuve, MAT-CE1-12, calculer une duree simple en
+            // heures entieres ou en demi-heures.
+            "bandit-manchot-problemes-durees-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -498,6 +501,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "L'histoire des symboles de la République",
             // S42-QLM-MATIERE (s42) : titre neuf.
             "La matière des objets",
+            // S43-MAT-DUREE (s43) : titre neuf, distinct de "Les durées et les horaires"
+            // (CM1, bandit-manchot-problemes-durees-cm1) pour ne pas dupliquer un libelle de
+            // bouton entre deux jeux differents ; il ne porte pas son niveau (ADR-0078).
+            "Le temps qui passe",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -717,6 +724,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S42-QLM-MATIERE (s42) : consigne neuve.
             "Lis bien, puis dis en quelle matière est fait l'objet, ou trie les matières selon "
                     + "leurs propriétés.",
+            // S43-MAT-DUREE (s43) : consigne neuve.
+            "Trouve combien de temps s'est écoulé.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1125,7 +1134,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
             // QLM-CP-06).
             "Identifier de quelle matière un objet est fait et trier des matériaux selon une "
-                    + "propriété simple.");
+                    + "propriété simple.",
+            // S43-MAT-DUREE (s43) : competence neuve, libelle du referentiel copie mot pour mot
+            // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-12), sous-partie
+            // allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
+            "Calculer une durée simple en heures entières ou en demi-heures");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

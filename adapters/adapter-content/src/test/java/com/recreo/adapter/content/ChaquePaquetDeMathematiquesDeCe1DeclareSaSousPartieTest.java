@@ -131,7 +131,12 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         MOITIES("MAT-CE1-03", "Calcul mental - moitiés dans la limite de 100"),
         LONGUEURS("MAT-CE1-09", "Mesurer et comparer des longueurs en centimètres et en mètres"),
         MONNAIE("MAT-CE1-13", "Utiliser la monnaie en euros et en centimes"),
-        SOLIDES("MAT-CE1-16", "Reconnaître et nommer des solides usuels");
+        SOLIDES("MAT-CE1-16", "Reconnaître et nommer des solides usuels"),
+        // S43-MAT-DUREE (s43) : entree neuve, MAT-CE1-12, libelle du referentiel copie mot pour
+        // mot (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-12). Contrairement
+        // aux trois sous-parties precedentes, ce paquet sert la ligne entiere - DUR-CE1-1 exclut
+        // l'horaire d'arrivee, mais le referentiel de MAT-CE1-12 ne le nomme pas non plus.
+        DUREES("MAT-CE1-12", "Calculer une durée simple en heures entières ou en demi-heures");
 
         private final String ligne;
 
