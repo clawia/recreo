@@ -11,6 +11,31 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s43, le 2026-09-25 (les deux discriminants poses avant l'ecriture des deux
+paquets).** Deux identifiants ajoutes, tous deux ecrits dans `docs/backlog/backlog.md`, section
+"Sprint 43" : **`EPS-9`** (discriminant CM1/CP de `S43-EPS-EFFETS-ACTIVITE`, `EPS-CM1-10`) et
+**`DUR-CE1-7`** (discriminant avec `cm1-problemes-durees` de `S43-MAT-DUREE`, `MAT-CE1-12`).
+**Aucun prefixe neuf** : `EPS-1` a `EPS-8` et `DUR-CE1-1` a `DUR-CE1-6` etaient deja alloues,
+verifies dans la table de la section 4 **et** sur le depot entier avant d'ecrire - `EPS-9` et
+`DUR-CE1-7` n'y apparaissaient nulle part. **Les deux formes sont copiees, jamais inventees** :
+`EPS-9` sur `EPS-8` (deux segments), `DUR-CE1-7` sur `DUR-CE1-6` (trois segments). Aucun des deux
+ne porte de marqueur de reserve (`ADR-0100`) : ce sont des conditions, pas des reserves.
+
+**Ce que ces deux allocations couvrent, et pourquoi elles sont dans le backlog et non dans une
+fiche.** Les deux conditions sont posees **avant** que le contenu ne soit ecrit, en reponse aux deux
+conditions que le planning de s43 (sections 5 et 6) m'a transmises. Leur destinataire est le
+developpeur affecte, qui lit la story ; les ecrire ailleurs les aurait separees des criteres
+d'acceptation qu'elles qualifient. Aucune fiche de conformite n'est ouverte : aucun increment
+n'existe, et je ne prononce aucun Done pedagogique dans ce commit.
+
+Ligne d'etat courant portee de **774 / 125 a 776 / 125**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff, jamais un compte que je refais de tete.**
+`bash outils/mvn-jdk21.sh -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessus, rend :
+*"declare 774 identifiants alloues et 125 prefixes distincts, sa table en porte 776 et 125"*. C'est
+ce 776 / 125 que je recopie, et la reexecution apres mise a jour est verte.
+
 **Note de `nadia-prof`, s43, le 2026-09-25 (reparation - les trente-deux identifiants du lot 1,
 ecrits sans atteindre ce fichier).** Trente-deux identifiants ajoutes, tous ecrits dans
 `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` : `NUM-CE1-1` a `NUM-CE1-7`
@@ -260,7 +285,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `774` identifiants alloues, `125` prefixes distincts.
+**Compte courant, verifie par la CI** : `776` identifiants alloues, `125` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -887,6 +912,7 @@ clause 2 par une exemption.
 | `DUR-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `DUR-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `DUR-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `DUR-CE1-7` | `docs/backlog/backlog.md` |
 | `ADP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `ADP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `ADP-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
@@ -1076,6 +1102,7 @@ clause 2 par une exemption.
 | `EPS-6` | `squad/sprints/s32-trois-instances-et-ouverture-de-l-eps/verdicts-nadia-instance-C.md` |
 | `EPS-7` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `EPS-8` | `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-C.md` |
+| `EPS-9` | `docs/backlog/backlog.md` |
 | `ERR-R1` | `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md` |
 | `ETA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |

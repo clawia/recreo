@@ -15457,6 +15457,97 @@ coherent avec sa double casquette de Scrum Master et de troisieme developpeuse) 
   par sciences et technologie CM1 (`SCI-CM1-10`), hors perimetre de cette story ; elle ne fixe
   aucun contenu factuel precis (quels effets, quelles regles retenues) - reste a l'auteur du paquet
   puis a l'audit de `nadia-prof`.
+- **Ajout du 2026-09-25 (`nadia-prof`) - `EPS-9`, le discriminant CM1/CP, pose avant que le paquet
+  ne soit ecrit.** Les criteres d'acceptation ci-dessus ne sont pas reecrits ni remplaces :
+  `EPS-9` s'y ajoute, et il est opposable au Done pedagogique au meme titre qu'eux.
+
+  *Ce bloc n'est pas un audit et ne prononce aucun Done pedagogique : aucun increment n'existe sur
+  cette ligne, il n'y a rien a jouer. C'est un arbitrage prealable, pose dans la seule fenetre ou
+  une barre est gratuite - avant le premier item. Je reponds a la condition que le planning de s43
+  (section 5) et l'avis de faisabilite de `theo-archi` (section 7.2) m'ont transmise.*
+
+  **Ce que j'ai lu, en entier** : `cp-eps-corps-effort.yaml` (22 items, `EPS-CP-10` + `EPS-CP-11`)
+  et `cp-eps-regles-de-securite.yaml` (11 items, `EPS-CP-04`). Le constat de `theo-archi` est
+  exact et je le confirme item par item : **les trois composantes du libelle de `EPS-CM1-10` sont
+  deja servies au CP**, et elles y sont servies sur les quatre taches qu'un paquet de
+  connaissances peut porter sur cet objet :
+
+  | Tache deja servie au CP | Ou | Exemple servi |
+  |---|---|---|
+  | reconnaitre un effet immediat de l'effort | `cp-eps-corps-effort`, items 1 a 6 | *"Pendant un effort physique, que fait le cœur ?"* |
+  | dire la cause d'un de ces effets | idem, items 7 a 11 | *"Pourquoi le cœur bat-il plus vite pendant un effort physique ?"* |
+  | reconnaitre une regle d'echauffement, d'hydratation ou de recuperation, et dire quand elle s'applique | idem, items 12 a 17 | *"Quand doit-on echauffer ses muscles ?"* |
+  | dire pourquoi cette regle existe, ou ce qu'on risque a ne pas la suivre | idem, items 18 a 22 | *"Pourquoi echauffe-t-on ses muscles avant un effort intense ?"* |
+  | reconnaitre une regle de securite de la pratique, et dire pourquoi elle existe | `cp-eps-regles-de-securite`, items 1 a 11 | *"Pourquoi verifie-t-on la profondeur avant de plonger ?"* |
+
+  **Le piege du niveau, et c'est lui qu'il faut lire en premier.** La facon naturelle de rendre un
+  paquet de CM1 plus profond que celui de CP, sur cet objet, est d'allonger l'horizon de temps -
+  les effets de la pratique reguliere sur le corps, le coeur renforce, l'endurance qui progresse.
+  **C'est interdit ici**, et pas pour une raison de forme : *"relier l'activite physique au bon
+  fonctionnement du corps"* est le libelle de `SCI-CM1-10`, et la section *Recouvrement a ne pas
+  double-compter* que la story cite deja interdit exactement cette derive. **La profondeur du CM1
+  se prend dans la precision a l'interieur de l'effort, jamais dans l'allongement de son horizon
+  temporel.** Un paquet qui chercherait sa difference du cote du long terme serait refuse sur la
+  frontiere que la story instruit deja, sans que rien d'automatique ne l'ait signale.
+
+  **`EPS-9`, clause 1 - trois taches, chacune absente du CP, et leur poids dans le paquet.** Le
+  paquet de CM1 porte les trois taches suivantes. Elles portent **ensemble au moins deux tiers des
+  items**, et **aucune n'en porte moins de trois** - pour qu'une partie tiree ne puisse pas se
+  reduire au CP rallonge.
+
+  1. **Relier deux effets a une cause unique.** Le CP donne une cause par effet, un effet a la
+     fois, et ne relie jamais deux effets entre eux. Exemple admis : *"L'essoufflement et le cœur
+     qui bat plus vite pendant un effort ont la meme cause. Laquelle ?"*, bonne reponse *"les
+     muscles ont besoin de plus d'oxygene"*, distracteurs *"le corps doit se refroidir"* et *"le
+     corps perd de l'eau en transpirant"* - deux causes reelles, mais d'autres effets.
+  2. **Distinguer les effets selon le type d'effort.** Le CP traite *"un effort physique"* et
+     *"un effort physique intense"* comme une categorie unique, sans jamais opposer deux efforts.
+     Exemple admis : *"Lequel de ces efforts oblige a boire pendant l'activite ?"*, bonne reponse
+     *"une course longue qui dure toute la seance"*, distracteurs *"un sprint de quelques
+     secondes"* et *"un lancer de balle"*. Autre exemple admis : *"Apres quel effort le cœur
+     met-il le plus longtemps a revenir a son rythme normal ?"* **Aucune duree chiffree, aucune
+     distance chiffree dans l'enonce ni dans les propositions** (`EPS-2`) : l'effort se decrit par
+     sa nature, jamais par un nombre qui deviendrait une norme.
+  3. **Reconnaitre un signal d'alerte du corps pendant l'effort, et la conduite qui lui repond.**
+     Les onze items de securite du CP portent tous un danger **exterieur** - un camarade en
+     dessous, la profondeur du bassin, le tour a attendre, le casque. **Aucun ne porte un signal
+     venu du corps.** Exemple admis : *"Pendant un effort, un eleve est pris de vertiges. Que
+     doit-on faire ?"*, bonne reponse *"arreter l'effort, s'asseoir et boire"*, distracteurs
+     *"continuer plus lentement jusqu'a la fin"* et *"accelerer pour finir plus vite"*.
+     **Precision qui evite une repetition que j'aurais pu manquer** : l'item 22 du CP nomme deja le
+     vertige, mais comme **consequence** (*"Que risque-t-on si l'on ne boit pas assez d'eau pendant
+     un effort qui dure ?"*). La tache du CM1 va dans l'autre sens - le signal est donne, la
+     conduite est cherchee. Un item de CM1 qui demanderait le risque encouru refait le CP.
+
+  Sont egalement admises, dans la meme clause, deux precisions que le CP ne porte pas : la
+  **progressivite** de l'echauffement (le CP ne connait que *"des mouvements legers"*) et le
+  **retour au calme actif** avant l'arret complet (le CP ne connait que *"un temps de repos"*).
+
+  **`EPS-9`, clause 2 - ce qui reste interdit de repeter.** Aucun item du paquet de CM1 ne demande :
+  l'effet immediat d'un effort pris isolement - essoufflement, coeur qui bat vite, chaleur, soif,
+  visage rouge, respiration encore rapide juste apres (CP, items 1 a 6) ; la cause d'un seul de ces
+  effets (CP, items 7 a 11) ; a quel moment on s'echauffe, on boit ou on se repose (CP, items 12 a
+  17) ; pourquoi l'une de ces trois regles existe ou ce qu'on risque a ne pas la suivre (CP, items
+  18 a 22) ; une regle de securite d'agres, de bassin ou d'engin roulant, ni son motif
+  (`cp-eps-regles-de-securite`, items 1 a 11). **Reformuler l'un de ces enonces, le rallonger ou en
+  inverser la syntaxe ne le fait pas sortir de cette interdiction** : c'est la tache demandee a
+  l'enfant qui est comptee, pas la phrase.
+
+  **`EPS-9`, clause 3 - `CYC-1`, dans les deux sens.** Aucune bonne reponse d'un item du CP ne
+  devient un distracteur d'un item du CM1. Le retour au calme actif, en particulier, ne se construit
+  pas en rendant fausse la reponse *"d'un temps de repos"* du CP : il la precise, il ne la dement
+  pas. Et aucun item ne reprend `cm1-sciences-nutrition` item 5 - *"Quand on court vite, quel organe
+  se remplit d'air plus vite ?"* (`SCI-CM1-09`, deja servi) : ce serait le double-compte reel que la
+  frontiere instruit.
+
+  **Ce dont je reste la seule garde sur cette ligne, et l'equipe doit le savoir.** Aucun garde-fou
+  du depot ne compare deux paquets (`theo-archi`, avis de faisabilite, sections 6 et 7.2), et
+  `NIVEAU_BORNE` ne borne que le CP. **La difference reelle avec le CP n'a donc aucun garde
+  executable.** Un test qui mordrait sur des chaines de caracteres ne garderait pas cette propriete
+  - c'est exactement ce qui est arrive a `S42-EMC-SYMBOLES-CM1`, ou
+  `aucunEnonceNeReprendLePatronDejaServiAuCp` etait vert pendant que cinq items sur treize refaisaient
+  le CP (`squad/conformite/FICHE-bandit-manchot-symboles-cm1.md`, reserve `EMC-CM1-R1`). Je verifierai
+  `EPS-9` en lisant les items un par un, pas en lisant un vert.
 - **Lien decision** : `DEC-0099` (section 9.5, tarif et ligne inchanges depuis la section 5).
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
   a `lea-dev` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`,
@@ -15555,6 +15646,94 @@ coherent avec sa double casquette de Scrum Master et de troisieme developpeuse) 
   de l'arbitrage) ; elle ne demande jamais une conversion d'unite de temps isolee ni une
   comparaison de durees sans calcul ; elle ne fixe aucun contenu factuel precis (quelles
   situations, quels instants retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Ajout du 2026-09-25 (`nadia-prof`) - `DUR-CE1-7`, le discriminant avec `cm1-problemes-durees`,
+  pose avant que le paquet ne soit ecrit.** Les criteres d'acceptation ci-dessus ne sont pas
+  reecrits ni remplaces : `DUR-CE1-7` s'y ajoute, et il est opposable au Done pedagogique au meme
+  titre que les six conditions deja citees.
+
+  *Comme pour le lot d'EPS : ce bloc n'est pas un audit et ne prononce aucun Done pedagogique,
+  aucun increment n'existant sur cette ligne. C'est un arbitrage prealable, pose dans la fenetre ou
+  une barre est gratuite. Je reponds a la condition transmise par le planning de s43 (section 6) et
+  par l'avis de faisabilite de `theo-archi` (section 6).*
+
+  **Ce que j'ai lu, en entier** : `cm1-problemes-durees.yaml` (24 items, `MAT-CM1-10`). Le constat
+  de `theo-archi` est exact : ses **douze premiers items** servent la forme meme de `DUR-CE1-1`
+  (deux instants donnes, la duree a trouver), avec la meme conception d'ecriture (`D-2` du CM1 =
+  `DUR-CE1-3`) et les huit situations que `DUR-CE1-6` prescrit.
+
+  **Et je corrige d'abord ce que j'ai moi-meme ecrit.** Les deux indices que `DUR-CE1-6` donne en
+  exemple - *"Va d'abord jusqu'a l'heure ronde, puis compte le reste."* et *"Une heure, c'est 60
+  minutes, pas 100."* - sont, au mot pres, deux des quatre indices que `cm1-problemes-durees` sert
+  deja (*"Compte d'abord jusqu'a l'heure ronde, puis ajoute le reste des minutes."*, *"Une heure,
+  c'est 60 minutes, pas 100 : compte bien."*). Je les avais ecrits comme des exemples, pas comme des
+  prescriptions, et ils restent des exemples - mais ils ne sont pas les bons, et le motif est de
+  fond, pas de forme : **ils decrivent la methode du CM1, pas celle du CE1**.
+
+  **Ce que le CE1 calcule reellement, et c'est la tout le discriminant.** Au CM1, les minutes sont
+  quelconques (`10 h 15` a `10 h 40`) et l'enfant fait une soustraction en base 60 sur des minutes.
+  Au CE1, `DUR-CE1-2` borne les minutes a `00` et `30` : **l'enfant ne soustrait pas des minutes, il
+  compte des pas d'une demi-heure** - *de 9 h 30 a 11 h, une demi-heure jusqu'a 10 h, puis une heure
+  jusqu'a 11 h*. Ce n'est pas le meme geste mental, et ce n'est pas une version facile du meme
+  geste. **`DUR-CE1-2` seul ne suffit donc pas** : un paquet qui reprendrait les douze enonces du
+  CM1 en arrondissant leurs minutes tiendrait `DUR-CE1-2`, passerait tous les garde-fous, et
+  servirait au CE1 une transposition au lieu d'un contenu.
+
+  **`DUR-CE1-7`, clause 1 - l'indice donne la methode du CE1.** Chaque indice du paquet nomme le pas
+  de comptage - la demi-heure, l'heure - et non le passage par l'heure ronde minute par minute.
+  Exemples admis : *"Compte d'abord les heures entieres, puis la demi-heure qui reste."*, *"Avance
+  de demi-heure en demi-heure et compte tes pas."*, *"Une demi-heure, c'est 30 minutes, pas 50."*
+  **Aucun indice du paquet de CE1 ne reprend l'un des quatre indices de calcul de duree deja servis
+  par `cm1-problemes-durees`**, qui sont : *"Compte d'abord jusqu'a l'heure ronde, puis ajoute le
+  reste des minutes."*, *"Une heure, c'est 60 minutes, pas 100 : compte bien."*, *"Regarde les deux
+  heures donnees et calcule ce qui les separe."*, *"Avance minute par minute jusqu'a l'heure ronde,
+  puis compte ce qu'il reste."*
+
+  **`DUR-CE1-7`, clause 2 - l'amplitude de `DUR-CE1-2` est reellement employee.** **Au moins un
+  tiers des items** portent une duree de **2 heures ou plus** (six items sur un paquet de vingt).
+  Motif, mesure et non affirme : sur les douze items de calcul de duree du CM1, **neuf sont sous
+  l'heure** (20, 25, 25, 25, 25, 25, 35, 35, 35 minutes) et **aucun ne depasse 1 h 30**. Un paquet
+  de CE1 qui resterait a 30 minutes et 1 heure ferait compter un ou deux pas et rendrait decoratif
+  le plafond de 4 heures que `DUR-CE1-2` autorise ; il serait alors strictement sous le CM1 sur les
+  deux axes a la fois, et le discriminant ne serait plus que negatif. **C'est le seul endroit ou le
+  CE1 va au-dela du paquet de CM1 deja servi**, et il y va sans sortir de sa ligne.
+
+  **`DUR-CE1-7`, clause 3 - aucune transposition d'enonce.** Aucun enonce du paquet de CE1 ne
+  reprend le couple **prenom + situation** d'un enonce de `cm1-problemes-durees`. Les vingt et un
+  prenoms deja servis par ce paquet, pour qu'ils n'aient pas a etre recherches : Malo, Aya, Hugo,
+  Salma, Elio, Manon, Noah, Iris, Diego, Fatou, Milo, Yasmine, Nils, Chloe, Amir, Kofi, Paul, Nour,
+  Zoe, Adama, Maya. **En revanche, les huit situations ne sont pas interdites** - l'ecole, la
+  recreation, la cantine, un trajet, un film, un match, une recette, une visite sont ce que
+  `DUR-CE1-6` prescrit, et je ne retire pas d'une main ce que j'ai donne de l'autre. C'est la phrase
+  et son personnage qui doivent etre neufs, pas le decor.
+
+  **`DUR-CE1-7`, clause 4 - l'ecriture choisie doit laisser l'erreur de base 100 ecrivable.**
+  `DUR-CE1-3` laisse le choix entre deux registres et je ne le reprends pas. Mais il a une
+  consequence que je n'avais pas vue en l'ecrivant : dans le registre *"2 heures et demie"*,
+  l'erreur (b) de `DUR-CE1-5` - le comptage en base 100, qui produit *"1 h 70 min"* - **n'a pas
+  d'ecriture**, et la clause de `DUR-CE1-3` *"dans un meme item, les trois propositions portent la
+  meme ecriture"* interdit de l'y glisser. Choisir *"et demie"* revient donc a supprimer du paquet
+  l'erreur meme que `DUR-CE1-4` designe comme **la** difficulte de cette competence. **Le paquet
+  ecrit donc ses durees dans le registre `2 h 30 min`**, ou bien il demontre a cote de ses items
+  comment l'erreur de base 100 y reste servie.
+
+  **`DUR-CE1-7`, clause 5 - la valeur superieure a 59 minutes n'est pas une anomalie isolee.** Si le
+  paquet sert un distracteur de la forme *"1 h 70 min"*, **au moins deux items en portent un**. Ce
+  n'est pas une barre neuve : c'est exactement celle que j'ai posee sur le paquet de CM1 le
+  2026-08-30 (reserve A du Done pedagogique, `squad/conformite/FICHE-bandit-manchot-problemes-durees-cm1.md`),
+  ou un unique distracteur superieur a 59 minutes sur 72 propositions designait son item a vue, et
+  ou un second item a suffi a la lever. Meme barre, meme motif, transposee avant l'ecriture au lieu
+  d'apres.
+
+  **Ce dont je reste la seule garde sur cette ligne.** Aucun garde-fou du depot ne compare deux
+  paquets (`theo-archi`, avis de faisabilite, section 6) : `AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest`
+  et `AucunIndiceNeContreditUnAutreItemDuMemePaquetTest` ont le **meme paquet** pour perimetre. Les
+  cinq clauses ci-dessus se verifient en lisant les deux paquets cote a cote, et c'est ainsi que je
+  les verifierai.
+
+  *Une precision qui evite un contresens, et elle reprend celle de `theo-archi` : la ressemblance
+  entre les deux paquets est une ressource autant qu'un risque. Rien de ce qui precede n'interdit
+  au developpeur de s'appuyer sur les familles d'erreur nommees par `D-6` du CM1 - elles sont, a la
+  demi-heure pres, les trois de `DUR-CE1-5`, et elles sont deja validees.*
 - **Lien decision** : `DEC-0099` (section 9.5).
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite, directement ; developpement propose
   a `sofia-sm` (proposition de `camille-po`, affectation nominative finale par `sofia-sm`
