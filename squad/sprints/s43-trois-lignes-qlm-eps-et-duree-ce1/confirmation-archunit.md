@@ -95,6 +95,30 @@ chaque fichier modifie entre `cdf0229f` (arbre final de s42) et `9e1622dc` :
 sous-totaux valent exactement les ecarts mesures par les blocs `Results:`, ce qui est le recoupement
 que je veux avant de citer un ecart.
 
+### 1.1 La relance apres fusion de `round-two` a `e50f0dd7`
+
+`round-two` a avance pendant que je mesurais : `cdf08c0c` (`camille-po`) y a ouvert trois fiches de
+conformite. Diff apporte, verifie et non suppose : **trois fichiers, tous sous `squad/conformite/`,
+258 lignes**, et `git diff --stat` restreint a l'arbre hors `squad/` et `docs/` rend **vide**. Aucun
+fichier de code ni de contenu.
+
+Je relance quand meme le reacteur complet dans ce meme worktree, parce que *"un diff de `squad/` ne
+peut rien casser"* est une deduction et non une mesure :
+
+```
+[INFO] recreo-domain ...................................... SUCCESS [ 23.211 s]
+[INFO] recreo-application ................................. SUCCESS [  9.018 s]
+[INFO] recreo-adapter-web ................................. SUCCESS [01:10 min]
+[INFO] recreo-adapter-content ............................. SUCCESS [ 56.797 s]
+[INFO] recreo-bootstrap ................................... SUCCESS [02:55 min]
+[INFO] BUILD SUCCESS
+[INFO] Total time:  05:36 min
+```
+
+Blocs `[INFO] Results:` : **120 / 17 / 400 / 944 / 288 / 6**, soit **1775**, 0 echec - **identiques**
+a ceux du premier lancement. **Tous les verdicts de ce fichier valent donc sur les deux arbres**, et
+les chiffres cites restent ceux du premier lancement.
+
 ## 2. Question 1 - les tests ArchUnit sur le code neuf des trois lots
 
 ### 2.1 Le fait qui rend la question plus simple qu'elle n'en a l'air
