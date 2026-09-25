@@ -69,7 +69,7 @@ items:
     indice: "Comme une lampe de poche, elle a besoin d'énergie pour s'allumer."
   - enonce: "Pourquoi demande-t-on l'aide d'un adulte pour régler un ordinateur ?"
     bonneReponse: "parce que certains réglages sont compliqués à comprendre"
-    distracteurs: ["parce que l'ordinateur est trop lourd à porter", "parce que l'écran est trop petit à lire"]
+    distracteurs: ["parce que l'ordinateur est trop lourd à porter", "parce que l'écran est trop petit pour être lu"]
     indice: "Un adulte connaît mieux les menus et les boutons."
   - enonce: "Pourquoi ne faut-il pas mettre le son d'un casque trop fort ?"
     bonneReponse: "parce que cela peut abîmer les oreilles"
