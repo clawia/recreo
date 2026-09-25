@@ -153,8 +153,14 @@ class AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest {
     private static final Pattern FIN_DE_PHRASE = Pattern.compile(
             "[.?!](?=" + ESPACES + "*$)|[.?!](?=" + ESPACES + "+\\p{Lu})");
 
-    /** Un enonce servi, avec de quoi le nommer dans un message d'echec. */
-    private record Enonce(String paquet, int rang, String texte) {
+    /**
+     * Un enonce servi, avec de quoi le nommer dans un message d'echec.
+     *
+     * <p>Visible dans le paquet depuis ADR-0101 : la barre du CE1 lit la meme population par
+     * {@link #enonces(List, String)} et compte ses mots par {@link #mots(String)}, plutot que de
+     * recopier une convention de comptage qui rancirait en double (ADR-0061).
+     */
+    record Enonce(String paquet, int rang, String texte) {
     }
 
     private static String lire(Path fichier) {

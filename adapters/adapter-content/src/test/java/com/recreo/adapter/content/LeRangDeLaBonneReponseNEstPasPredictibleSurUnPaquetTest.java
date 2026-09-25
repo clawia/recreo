@@ -255,8 +255,34 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     private static final Pattern DUREE_HEURES = Pattern.compile(
             "^(\\d+)\\s*h(?:eures?)?\\.?(?:\\s+(\\d+)\\s*(?:min(?:utes?)?)?\\.?)?$");
 
+    /**
+     * La demi-heure ecrite en toutes lettres : "2 heures et demie", "1 heure et demie". ADR-0102.
+     *
+     * <p><b>Pourquoi cette ecriture-la et aucune autre.</b> {@code DUR-CE1-3} (nadia-prof, arbitrage
+     * prealable du lot 2 de s43) nomme deux ecritures de duree pour un paquet de {@code MAT-CE1-12} :
+     * <i>"2 heures et demie"</i> ou <i>"2 h 30 min"</i>. La seconde est lue par
+     * {@link #DUREE_HEURES} depuis s13 ; la premiere ne l'etait pas - le motif exige des chiffres
+     * apres les heures, la lecture retombait sur {@link #NOMBRE} et rendait <b>2</b> au lieu de 150,
+     * sans qu'aucune ligne ne le dise. <b>Le quart d'heure n'est pas ajoute</b> : {@code DUR-CE1-2}
+     * borne les minutes a {@code 00} et {@code 30}, aucun contenu servi ne l'ecrit, et une ecriture
+     * ajoutee d'avance serait un motif qui garde une population vide. S'il en naissait une,
+     * {@link #verifierQuAucuneEcritureDeDureeNEchappeALaLecture} la rendrait rouge plutot que muette.
+     */
+    private static final Pattern DUREE_ET_DEMIE =
+            Pattern.compile("^(\\d+)\\s*h(?:eures?)?\\s+et\\s+demie?\\.?$");
+
     /** Une duree en minutes seules : "45 min", "45 minutes". */
     private static final Pattern DUREE_MINUTES = Pattern.compile("^(\\d+)\\s*min(?:utes?)?\\.?$");
+
+    /**
+     * ADR-0102 : ce qui <b>ressemble</b> a une duree ou a un instant - un nombre suivi d'une unite de
+     * temps. Le critere est volontairement plus large que les motifs de lecture : c'est exactement
+     * l'ecart entre les deux qui est le defaut a rendre visible. Une proposition qui entre ici et que
+     * {@link #dureeEnMinutes} ne lit pas serait lue comme un <b>nombre nu</b> - ses heures comparees
+     * aux minutes d'une autre proposition - et le rang mesure ne serait pas celui qui est servi.
+     */
+    private static final Pattern RESSEMBLE_A_UNE_DUREE =
+            Pattern.compile("^\\d+\\s*(?:h|heures?|min|minutes?)\\b.*", Pattern.CASE_INSENSITIVE);
 
     /**
      * Paquets exemptes de ce garde-fou, hors du perimetre de S12-3, avec le taux mesure qui justifie
@@ -995,6 +1021,10 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
             long min = heures.group(2) == null ? 0 : Long.parseLong(heures.group(2));
             return h * 60 + min;
         }
+        Matcher etDemie = DUREE_ET_DEMIE.matcher(texte);
+        if (etDemie.matches()) {
+            return Long.parseLong(etDemie.group(1)) * 60 + 30;
+        }
         Matcher minutes = DUREE_MINUTES.matcher(texte);
         if (minutes.matches()) {
             return Long.valueOf(minutes.group(1));
@@ -1687,6 +1717,149 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
     void leMemePaquetUneFoisSesValeursDistingueesPasseLeGardeFou() {
         verifierQuAucuneValeurNeCoincide(CONTRE_EXEMPLE_VALEURS_EGALES.resolve("corrige"),
                 CONTRE_EXEMPLE_VALEURS_EGALES_CLASSPATH + "/corrige");
+    }
+
+    /**
+     * ADR-0102 : <b>aucune proposition servie qui ressemble a une duree ou a un instant n'est lue
+     * comme un nombre nu.</b>
+     *
+     * <p><b>Le defaut que cette clause existe pour rendre visible, et il a ete mesure avant d'etre
+     * ecrit.</b> {@link #lireValeur} essaie les motifs de duree, puis retombe sur {@link #NOMBRE}.
+     * Sur <i>"2 heures et demie"</i>, le motif de duree echouait, {@link #NOMBRE} lisait <b>2</b>, et
+     * le reste <i>"heures et demie"</i> ne portant aucun chiffre, la clause d'ADR-0068 laissait
+     * passer. L'item restait dans le domaine avec une valeur en <b>heures</b> comparee a des valeurs
+     * en <b>minutes</b> : <i>"1 heure et demie"</i> valait 1 et <i>"1 heure"</i> valait 60, donc la
+     * bonne reponse etait classee <i>la plus petite</i> la ou l'enfant la voit au milieu. Les deux
+     * seuils de ce fichier - {@link #SEUIL_MINIMUM} et {@link #SEUIL_MAJORITE}, qui sont ceux de
+     * {@code DUR-CE1-5} - auraient alors ete <b>verts sur une repartition qui n'est pas celle qui est
+     * servie</b>. Un garde-fou qui passe sans rien prouver est le defaut que ce depot sanctionne le
+     * plus souvent.
+     *
+     * <p><b>Pourquoi une clause plutot qu'un motif de plus.</b> Allonger {@link #DUREE_HEURES} ecriture
+     * par ecriture laisse le mode de defaillance intact : la prochaine forme non prevue retombe en
+     * silence sur le nombre nu. Cette clause <b>inverse la polarite</b> (ADR-0039) - ce qui ressemble
+     * a une duree et n'est pas lu comme telle est rouge, donc la prochaine ecriture neuve arrive comme
+     * un echec nomme, pas comme un chiffre faux.
+     *
+     * <p><b>Population</b> (ADR-0051) : mesure du 2026-09-25 sur le contenu servi, <b>72</b>
+     * propositions entrent dans le critere - les instants et les durees de
+     * {@code cm1-problemes-durees} - et <b>aucune</b> n'echappe a la lecture. La clause s'execute donc
+     * sur du materiau reel des son premier commit, et elle y est verte.
+     */
+    static void verifierQuAucuneEcritureDeDureeNEchappeALaLecture(Path racine,
+            String racineClasspath) {
+        List<String> paquets = paquets(racine);
+        assertThat(paquets)
+                .as("ce garde-fou ne prouve rien s'il ne trouve aucun paquet sous %s", racine)
+                .isNotEmpty();
+
+        List<String> defauts = new ArrayList<>();
+        for (String paquet : paquets) {
+            List<Question> items =
+                    itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet));
+            for (Question item : items) {
+                List<String> propositions = new ArrayList<>();
+                propositions.add(item.bonneReponse());
+                propositions.addAll(item.distracteurs());
+                for (String proposition : propositions) {
+                    String texte = proposition.strip();
+                    if (!RESSEMBLE_A_UNE_DUREE.matcher(texte).matches()
+                            || dureeEnMinutes(texte) != null) {
+                        continue;
+                    }
+                    defauts.add(String.format(
+                            "paquet %s, item %s : la proposition \"%s\" ecrit une duree ou un instant"
+                                    + " que la lecture de valeur ne reconnait pas - elle serait lue"
+                                    + " comme le nombre nu %s, donc comparee a des minutes, et le rang"
+                                    + " mesure ne serait pas celui qui est servi (ADR-0102)",
+                            paquet, item.id().value(), proposition, valeurDe(texte)));
+                }
+            }
+        }
+
+        assertThat(defauts)
+                .as("ADR-0102 : ce qui ressemble a une duree se lit comme une duree, ou est rouge")
+                .isEmpty();
+    }
+
+    @Test
+    void aucuneEcritureDeDureeDeProductionNEchappeALaLecture() {
+        verifierQuAucuneEcritureDeDureeNEchappeALaLecture(CONTENU_DE_PRODUCTION, "");
+    }
+
+    /**
+     * ADR-0102, la lecture elle-meme, sur les deux ecritures que {@code DUR-CE1-3} nomme et sur celles
+     * que le contenu sert deja. Le chiffre de gauche est ce que la lecture rendait avant ce commit
+     * pour les deux dernieres lignes ; c'est la correction, pas une reformulation.
+     */
+    @Test
+    void lesDeuxEcrituresDeDureeSeLisentEnMinutes() {
+        assertThat(valeurDe("2 h 30 min")).isEqualTo(150L);
+        assertThat(valeurDe("2 heures 30 minutes")).isEqualTo(150L);
+        assertThat(valeurDe("14 h 30")).isEqualTo(870L);
+        assertThat(valeurDe("2 h")).isEqualTo(120L);
+        assertThat(valeurDe("45 min")).isEqualTo(45L);
+        assertThat(valeurDe("2 heures et demie")).isEqualTo(150L);
+        assertThat(valeurDe("1 heure et demie")).isEqualTo(90L);
+    }
+
+    /**
+     * <b>La morsure, et elle porte sur l'ordre lu, pas seulement sur une valeur.</b> Sans la lecture
+     * de la demi-heure, les trois propositions de cet item - qui sont celles qu'un paquet de
+     * {@code MAT-CE1-12} ecrira - se lisaient 1, 60 et 120 : la bonne reponse, qui vaut 90 minutes,
+     * etait classee la plus petite des trois. Ce test constate l'ordre rendu, qui est le seul objet
+     * dont le taux de rang depend.
+     */
+    @Test
+    void laDemiHeureEstOrdonneeEntreLesDeuxHeuresQuiLEncadrent() {
+        long uneHeure = valeurDe("1 heure");
+        long uneHeureEtDemie = valeurDe("1 heure et demie");
+        long deuxHeures = valeurDe("2 heures");
+
+        assertThat(uneHeureEtDemie)
+                .as("une heure et demie tombe entre une heure et deux heures, pas en dessous des deux")
+                .isGreaterThan(uneHeure)
+                .isLessThan(deuxHeures);
+    }
+
+    /**
+     * ADR-0013 obligation 3. Le jeu fautif est une ecriture de duree <b>que la lecture ne connait
+     * pas</b> - le quart d'heure, deliberement non ajoute aux motifs (voir {@link #DUREE_ET_DEMIE}).
+     * Il prouve que la clause mord sur la prochaine ecriture neuve quelle qu'elle soit, et pas
+     * seulement sur celle qui a ete corrigee.
+     */
+    @Test
+    void uneEcritureDeDureeInconnueDeLaLectureEstRouge() {
+        assertThat(RESSEMBLE_A_UNE_DUREE.matcher("2 heures et quart").matches())
+                .as("le quart d'heure ressemble a une duree")
+                .isTrue();
+        assertThat(dureeEnMinutes("2 heures et quart"))
+                .as("et la lecture ne le reconnait pas")
+                .isNull();
+        assertThat(valeurDe("2 heures et quart"))
+                .as("il serait donc lu comme le nombre nu 2, compare a des minutes")
+                .isEqualTo(2L);
+    }
+
+    /**
+     * ADR-0051 : la clause dit combien d'objets elle examine, plutot que de l'esperer. Mesure du
+     * 2026-09-25 : <b>72</b> propositions servies ressemblent a une duree ou a un instant. La borne
+     * est large a dessein - le contenu grossit a chaque sprint - mais elle refuse la population vide,
+     * qui rendrait cette clause verte sans avoir rien lu.
+     */
+    @Test
+    void laClauseDeLectureDesDureesExamineUnePopulationReelle() {
+        long ressemblantes = paquets(CONTENU_DE_PRODUCTION).stream()
+                .flatMap(paquet -> itemsTires(new YamlContentPackLoader("").chargerPaquet(paquet))
+                        .stream())
+                .flatMap(item -> Stream.concat(Stream.of(item.bonneReponse()),
+                        item.distracteurs().stream()))
+                .filter(proposition -> RESSEMBLE_A_UNE_DUREE.matcher(proposition.strip()).matches())
+                .count();
+
+        assertThat(ressemblantes)
+                .as("ADR-0051 : des dizaines de propositions servies ecrivent une duree ou un instant")
+                .isGreaterThan(50);
     }
 
     private static void ajouterDefautSiSousLeSeuil(String paquet, String nomDuRang, int effectif,

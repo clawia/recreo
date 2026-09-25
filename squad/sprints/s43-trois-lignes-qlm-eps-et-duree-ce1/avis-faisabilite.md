@@ -30,6 +30,15 @@ tient a ce jour**. Il s'ecrit avec sa regle, dans le meme commit que le paquet. 
 sont des paquets statiques de type `question` joues au bandit manchot, dans des lots de matiere deja
 servis - a une nuance de perimetre pres pour l'EPS, section 3.
 
+**Amendement du 2026-09-25 (`theo-archi`, meme jour) : les deux gestes techniques sont faits, avant
+le developpement et non pendant.** `ADR-0101` encode `LON-CE1-1` et `LON-CE1-2` avec son cliquet
+exact - le chiffre de 4 de la section 4.2 est re-verifie par mutation et rejoue par le garde-fou -
+et `ADR-0102` paie la lecture des durees de la section 5.2. **Ce que cela retire au lot
+`S43-MAT-DUREE`** : sa barre de longueur est desormais tenue par un automate des son premier commit,
+et son ecriture de duree n'est plus un arbitrage technique. **Ce que cela ne retire pas** : le cout
+de la section 5.1 (l'allocation de sous-partie) et les conditions de la section 6, qui restent
+entiers.
+
 ## 2. Verification des citations des stories - ouvertes, pas reprises de confiance
 
 Aucun garde-fou ne verifie un numero de ligne : `ToutesLesReferencesDeDecisionResolventTest`
@@ -207,6 +216,17 @@ prouver.
    meme commit**, avec sa mise a l'epreuve (`ADR-0013` obligation 3), faute de quoi le garde-fou de
    rang mesure autre chose que ce qui est servi. Ce n'est pas un refus : c'est un cout, et il se
    paie avant le paquet, pas apres.
+
+**Amendement du 2026-09-25 (`theo-archi`, meme jour, apres cet avis) : le cout de la voie 2 est
+paye, et les deux voies sont ouvertes.** `ADR-0102` etend la lecture a la demi-heure ecrite en
+toutes lettres - `valeurDe("2 heures et demie")` rend **150** au lieu de 2 - **et** rend rouge toute
+proposition servie qui ressemble a une duree sans etre lue comme telle, pour que la prochaine
+ecriture neuve arrive comme un echec nomme plutot que comme un chiffre faux. **Le lot n'a donc plus
+d'arbitrage technique a rendre sur l'ecriture** : les deux formes que `DUR-CE1-3` nomme se lisent en
+minutes. Ma recommandation de la voie 1 tombe avec son motif ; elle n'etait technique que parce que
+la lecture etait incomplete. *Une correction de fait sur ce que cet avis a fait dire a la voie 1 :
+`2 h 30 min` n'a jamais ete en defaut - il rendait deja 150 avant `ADR-0102`, et c'est verifie par
+execution, pas par lecture.*
 
 *Note sur le reste de `DUR-CE1-5`. La clause "aucune proposition egale a une autre" est tenue en
 deux endroits qui existent : `AucunePropositionNEstEgaleAUneAutreDansUnItemTest` sur le texte, et
