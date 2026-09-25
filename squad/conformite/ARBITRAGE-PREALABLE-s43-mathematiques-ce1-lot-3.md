@@ -504,3 +504,125 @@ retiree, aucun sens touche, exactement le cas que `ADR-0085` clause 5 prevoit et
 deja paye trois fois. **Le chiffre que je porte sur la ligne d'etat courant est celui que le
 garde-fou a affiche sur mon arbre** (`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, dix
 tests, vert apres la mise a jour de la ligne), **jamais un chiffre que je recalcule de tete.**
+
+---
+
+## 11. Addendum du 2026-09-25, avant s44 - la frontière `MAT-CE1-06` / `MAT-CE1-18`, `DIV-CE1-6`
+
+**Ce qui m'est posé.** La frontière que j'ai signalée en section 6, et que le lot de `MAT-CE1-06`
+signale de son côté (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, section 8, ligne
+`MAT-CE1-18`), a été routée par `DEC-0099`, section 9.8, à `sofia-sm`, puis à `theo-archi`. Celui-ci
+décline de la trancher, au motif que dire quelle ligne un item sert est une décision pédagogique.
+Son analyse m'a été transmise par `sofia-sm` ; elle n'est écrite nulle part dans le dépôt, je
+reprends donc ici les trois formes qu'elle laisse ouvertes :
+
+- **G1** : un réseau dessiné en lignes et colonnes, le total donné, un facteur demandé ;
+- **G2** : une addition réitérée écrite dont le nombre de termes est inconnu (*"3 + 3 + 3 + 3 = 12,
+  combien de fois 3 ?"*) ;
+- **le cas nu** : *"Combien de fois 3 dans 12 ?"*, ni signe ni objets.
+
+Je reprends aussi, sans la rejuger, sa lecture des deux cas déjà fermés : `3 x ? = 12` n'est
+admissible nulle part (`DIV-CE1-3`, `MUL-CE1-2`, `TAB-CE1-5`), et le groupement en mots n'est
+admissible que sous `MAT-CE1-18` (`MUL-CE1-2`). Je l'ai vérifiée sur les trois clauses avant de la
+reprendre.
+
+### 11.1 Deux corrections de mes propres textes, faites avant d'arbitrer
+
+**Ma section 8 routait cette frontière au mauvais destinataire.** Elle l'envoyait à `camille-po`
+(*"je produis le motif, elle arbitre le périmètre"*). Le périmètre d'un sprint est à elle ; la ligne
+qu'un item sert ne l'est pas, c'est une question de compétence, donc la mienne. `theo-archi` a
+raison de me la renvoyer. La ligne de la section 8 reste telle quelle ; c'est cette section qui la
+corrige.
+
+**`DIV-CE1-3` dit deux choses de portée différente, et les deux sont de moi.** Son titre dit
+*"Aucune écriture opératoire, nulle part"* ; la liste qui suit ne nomme que `:` et le signe de
+division. Le titre et le motif (*"une écriture symbolique ferait glisser l'item vers un fait de
+table"*) sont ce que je voulais dire : le motif vaut pour `+` autant que pour `:`. La liste était
+plus étroite que le titre parce que je n'avais en vue que les signes de division. `DIV-CE1-6`
+l'écrit en entier. **Ce n'est pas un poteau déplacé** : aucun paquet de `MAT-CE1-18` n'existe, aucune
+équipe n'a atteint la barre de `DIV-CE1-3`, et rien de ce qui était admis ne devient refusé
+rétroactivement.
+
+### 11.2 La clause
+
+> **`DIV-CE1-6` - Frontière avec `MAT-CE1-06` : un item de `MAT-CE1-18` est une situation en mots,
+> sans dessin et sans signe.** Trois propriétés, chacune décidable sur l'item seul :
+>
+> 1. **Aucune illustration.** L'item ne porte aucun champ `illustration` : ni réseau en lignes et
+>    colonnes, ni paquets dessinés, ni collection d'objets en vrac.
+> 2. **Aucune écriture opératoire, dans l'énoncé, les propositions ou l'indice.** Aucun des signes
+>    `+`, `-`, `x`, `×`, `:`, `÷` employé comme opération entre deux nombres, et aucun signe `=`. Une
+>    suite de nombres qui compte de 3 en 3 (*"3, 6, 9, 12"*) n'est pas une écriture opératoire et
+>    reste permise dans l'indice.
+> 3. **Le dividende est une quantité d'objets nommés** (*"12 billes"*, *"20 cartes"*), jamais un
+>    nombre nu.
+
+Ce que la clause range, forme par forme :
+
+| Forme d'item | Sous `MAT-CE1-06` | Sous `MAT-CE1-18` |
+|---|---|---|
+| `3 x ? = 12` | exclue (`MUL-CE1-2`) | exclue (`DIV-CE1-3`, `DIV-CE1-6` point 2) |
+| **G1** - réseau dessiné, total donné, facteur demandé | admise, sous `MUL-CE1-2` et `MUL-CE1-5` | **exclue** (point 1) |
+| **G2** - *"3 + 3 + 3 + 3 = 12, combien de fois 3 ?"* | admise, sous `MUL-CE1-2` et `MUL-CE1-3` | **exclue** (point 2) |
+| **Cas nu** - *"Combien de fois 3 dans 12 ?"* | exclue (`MUL-CE1-2` : ni addition écrite ni dessin) | **exclue** (point 3) |
+| Partage ou groupement en mots - *"12 billes par paquets de 3, combien de paquets ?"* | exclue (`MUL-CE1-2`) | admise |
+
+### 11.3 Motifs
+
+**Point 1, G1.** Dans un réseau dessiné complet, le facteur demandé **se compte sur le dessin** :
+l'enfant lit une disposition, il ne forme aucun paquet et ne distribue rien. C'est le verbe de
+`MAT-CE1-06` (*"disposition en lignes et en colonnes"*), pas celui de `MAT-CE1-18`. Des paquets déjà
+dessinés ont le même défaut : la réponse se compte. **Une collection en vrac, je ne l'ai pas
+examinée** : la mécanique servie ne permet pas d'entourer des objets, et je n'admets pas une forme
+que je n'ai pas regardée. Un item illustré de `MAT-CE1-18` est donc un arbitrage neuf à me demander,
+pas une lecture de cette clause.
+
+**Ce que devient l'exemple du lot 1** (section 8, ligne `MAT-CE1-18` : *"36 gommettes en 6 rangées,
+combien par rangée ?"*). Sur un dessin, il n'est pas de `MAT-CE1-18` (point 1), et sous
+`MAT-CE1-06` il enfreint `MUL-CE1-5`, parce que l'énoncé dit le nombre de rangées. Sans dessin,
+c'est un partage en mots, admis sous `MAT-CE1-18` (36 et 6 tiennent `DIV-CE1-1`). La collision que
+ce lot nommait se ferme donc sur la présence du dessin.
+
+**Point 2, G2.** Compter les termes d'une addition écrite, c'est lire la réitération : la première
+représentation que nomme `MAT-CE1-06`. Sous `MAT-CE1-18`, l'enfant recevrait le paquet déjà fait et
+n'aurait plus qu'à compter des signes, exactement le glissement que le motif de `DIV-CE1-3` nomme.
+
+**Point 3, le cas nu.** *"Combien de fois 3 dans 12 ?"* est la lecture à voix haute de `12 : 3` :
+un fait numérique mis en mots, pas une situation. `DIV-CE1-3` demande une situation ; celle-ci n'en
+est pas une. Elle n'est admissible sous aucune des deux lignes aujourd'hui. Relier ce sens au signe
+est un travail légitime plus tard ; qui voudrait le servir m'ouvre un arbitrage sur la ligne qui le
+porterait, pas une lecture de cette clause.
+
+### 11.4 Les deux côtés sont disjoints par construction
+
+`MUL-CE1-2` impose à tout item de `MAT-CE1-06` de montrer une addition réitérée écrite ou une
+disposition dessinée ; `DIV-CE1-6` interdit l'une et l'autre à tout item de `MAT-CE1-18`. **Aucun
+item ne peut tenir les deux lignes à la fois**, et le discriminant se lit sur l'item sans juger
+l'intention de son auteur : il y a un dessin ou un signe, ou il n'y en a pas. **`DIV-CE1-6`
+n'ajoute aucune contrainte à `MAT-CE1-06`** : un paquet qui tient `MUL-CE1-1` à `MUL-CE1-7` ne s'y
+heurte pas.
+
+### 11.5 Effet sur le paquet de s44, et ce que je route
+
+Un paquet de `MAT-CE1-18` entièrement textuel tient les points 1 et 2 par construction. **Le point 3,
+lui, contraint réellement l'écriture** : *"Combien de paquets de 3 peut-on faire avec 12 ?"* est
+exclu tant que 12 ne compte rien de nommé ; *"Avec 12 billes, combien de paquets de 3 ?"* est admis.
+Je le dis pour que le développeur affecté ne le découvre pas à l'audit.
+
+| Fait | À qui | Pourquoi ce n'est pas à moi |
+|---|---|---|
+| Les points 1 et 2 sont décidables mécaniquement (absence d'un champ, absence de signes entre nombres) ; le point 3 l'est à la lecture, sa forme automatisable reste à trouver | `theo-archi`, via `sofia-sm`, dans le même diff que le premier paquet de `MAT-CE1-18`, comme il l'a proposé | Je dis la propriété ; la forme du test lui appartient |
+
+**Tant que ce garde-fou n'existe pas, c'est moi qui tiens les trois points, en jouant.** Pour le
+point 3, je le resterai tant que `theo-archi` n'aura pas dit s'il sait l'encoder.
+
+### 11.6 Ce que cet addendum ne fait pas
+
+Il ne prononce aucun Done et ne touche ni aux sections 0 à 10 de ce document, ni à
+`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, dont aucune condition ne change. Il n'écrit
+aucun garde-fou et aucune story.
+
+**Allocation.** `DIV-CE1-6` est alloué dans `squad/decisions/REGISTRE-identifiants.md`, section 4,
+dans le même diff que cet addendum. Forme copiée de `DIV-CE1-5` : trois segments, aucun marqueur
+de réserve, parce que c'est une condition. Le rang 6 a été vérifié libre dans la table de la
+section 4, sur l'arbre entier et sur les trois branches `hs44-*` en vol avant d'écrire.
