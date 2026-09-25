@@ -11,6 +11,32 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s43, le 2026-09-25 (arbitrage prealable, lot 2 de mathematiques CE1).**
+Trente identifiants ajoutes, tous ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` : `TAB-CE1-1` a `TAB-CE1-6`
+(tables de multiplication, `MAT-CE1-07`), `PRO-CE1-1` a `PRO-CE1-7` (problemes a une ou deux etapes,
+`MAT-CE1-08`), `MAS-CE1-1` a `MAS-CE1-6` (masses et contenances, `MAT-CE1-10`), `CAL-CE1-1` a
+`CAL-CE1-5` (calendrier, `MAT-CE1-11`), `DUR-CE1-1` a `DUR-CE1-6` (durees, `MAT-CE1-12`).
+**Cinq prefixes neufs - `TAB`, `PRO`, `MAS`, `CAL`, `DUR`** - verifies absents de la table de la
+section 4 avant allocation. **`CAL` plutot que `HOR`** pour le calendrier : `HOR-1` a `HOR-8` sont
+deja alloues au palier 1 visuel, et deux familles qui partageraient un prefixe se liraient comme une
+seule. **La forme a trois segments est copiee sur `ADD-CE1-1` et `MOI-CE1-2`**, deja allouees et de
+la meme famille, jamais inventee ; aucun de ces trente jetons ne porte de marqueur de reserve
+(`ADR-0100`).
+
+**Ce que ce recompte est, et ce qu'il n'est pas.** Ligne d'etat courant portee de **712 / 115 a
+742 / 120**, chiffre rendu par l'execution reelle de
+`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` sur l'arbre de ce commit, jamais un chiffre
+recalcule depuis la ligne precedente. **Deux autres instances de `nadia-prof` arbitrent en parallele
+les deux autres lots des quatorze lignes de mathematiques CE1, et je constate qu'elles ecrivent dans
+ce fichier sur le meme arbre de travail que moi** - ce n'est pas une precaution abstraite, j'ai vu
+leurs lignes sur l'arbre avant de commiter. **Mon commit ne porte que mes trente allocations et mon
+seul document** : je n'emporte pas des lignes qui pointent vers des documents que je ne commite pas,
+ce qui ferait rougir la clause 3 sur un clone de mon commit. Quand les deux autres instances
+commiteront les leurs, la ligne d'etat courant montera d'autant ; si un ecart subsiste a
+l'assemblage, la CI rougira comme `ADR-0085` clause 5 le prevoit, et **la reparation sera
+arithmetique** - aucune allocation ajoutee, aucune retiree, aucun sens touche.
+
 **Note de `nadia-prof`, s38, le 2026-09-22 (audit du paquet de soustractions).** Un identifiant
 ajoute - `SOU-CE1-R1`, la reserve non bloquante ouverte sur le second distracteur des quatre items
 `b < 10` du paquet de soustractions de CE1, ecrite dans
@@ -204,7 +230,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `712` identifiants alloues, `115` prefixes distincts.
+**Compte courant, verifie par la CI** : `742` identifiants alloues, `120` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -801,6 +827,36 @@ clause 2 par une exemption.
 | `CDZ-CE1-2` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
 | `MOI-CE1-1` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
 | `MOI-CE1-2` | `squad/conformite/ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` |
+| `TAB-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `TAB-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `TAB-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `TAB-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `TAB-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `TAB-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-7` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `MAS-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `MAS-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `MAS-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `MAS-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `MAS-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `MAS-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `CAL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `CAL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `CAL-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `CAL-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `CAL-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `DUR-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `DUR-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `DUR-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `DUR-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `DUR-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `DUR-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `AGN-1` | `squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-cm1.md` |
 | `AGN-2` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
 | `AGN-3` | `squad/conformite/FICHE-bandit-manchot-accords-groupe-nominal-cm1.md` |
