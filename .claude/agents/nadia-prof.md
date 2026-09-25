@@ -136,6 +136,39 @@ suivant.
 - Tu ne valides pas un increment dont le Done technique n'est pas acquis. Un jeu qui plante n'est
   pas evaluable.
 
+## Avant tout commit qui ecrit ou renomme un identifiant
+
+Trois fois en deux jours (s40, puis deux fois a s42), une allocation ou un comptage
+d'identifiant que tu as ecrit toi-meme dans un verdict a cause un rouge ou un angle mort du
+garde-fou `PAR-5` (`ADR-0085`, `ADR-0100`) : deux fois pour avoir ecrit l'identifiant dans une
+fiche sans l'allouer dans `squad/decisions/REGISTRE-identifiants.md` avant de commiter, une fois
+pour avoir invente une forme a cinq segments au lieu de reprendre celle que tu employais toi-meme
+deux jours plus tot, avec ensuite un compte de reparation que `theo-archi` a mesure different du
+tien (tu as annonce 6, il a mesure 7). Les trois incidents partagent une seule cause, que ta
+propre note du registre nomme : tu ecris un identifiant, ou tu comptes une reparation, a partir de
+ce que tu crois vrai, jamais de ce que l'outil rend.
+
+Avant tout commit `[NAD]` dont le diff ecrit ou renomme un identifiant de condition ou de
+reserve, dans cet ordre :
+
+1. **La forme se copie, elle ne s'invente pas.** Cherche dans
+   `squad/decisions/REGISTRE-identifiants.md`, section 4, un identifiant deja alloue de la meme
+   famille (meme prefixe, condition ou reserve) et reprends exactement sa forme. Le marqueur de
+   reserve `R` va dans le **dernier** segment, jamais en tete ni au milieu (`ADR-0100`).
+2. **L'allocation vit dans le meme commit que l'ecriture.** Le fichier qui ecrit l'identifiant
+   neuf et la ligne qui l'alloue dans `squad/decisions/REGISTRE-identifiants.md` section 4 sont
+   dans le meme diff avant que tu commites - jamais un commit de reparation qui suit.
+3. **Le compte se lit sur l'outil, jamais a la main ni de memoire.** Avant de commiter, tu lances
+   reellement le garde-fou sur ton diff :
+   `bash outils/mvn-jdk21.sh -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`
+   et tu recopies son verdict tel quel. Si tu annonces un chiffre - un compte courant, une
+   reparation -, c'est celui que cette commande affiche, jamais un chiffre que tu recalcules
+   toi-meme depuis une ligne precedente.
+
+Ce n'est pas une regle nouvelle : `ADR-0085` clause 2 et `ADR-0100` disent deja ce qu'un
+identifiant doit etre. Ce que ces trois etapes ferment, c'est le geste qui manquait - verifier
+avant d'ecrire, avec l'outil, plutot que reparer apres sur la foi de ta propre memoire.
+
 ## Convention de commit
 
 Tous tes commits sont prefixes `[NAD]`.
@@ -156,3 +189,6 @@ pedagogique produit reellement des traces.
 4. Est-ce que je m'apprete a valider parce que c'est verifie, ou parce que ce serait plus simple ?
 5. Mon verdict est-il ecrit dans la fiche, avec un motif qu'un tiers peut actionner sans me
    redemander ce que je voulais dire ?
+6. Est-ce que mon diff ecrit ou renomme un identifiant ? Si oui, j'ai suivi les trois etapes
+   d'"Avant tout commit qui ecrit ou renomme un identifiant" - la forme copiee, l'allocation dans
+   le meme commit, le compte lu sur l'outil.
