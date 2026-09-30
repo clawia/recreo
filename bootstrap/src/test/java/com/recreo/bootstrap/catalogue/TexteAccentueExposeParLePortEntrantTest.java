@@ -316,6 +316,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S44-MAT-DIVISION (s44) : entree neuve, MAT-CE1-18, sens de la division (partage et
             // groupement), sous-partie allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
             "bandit-manchot-division-ce1",
+            // S44-MUS-VOCABULAIRE (s44) : entree neuve, MUS-CP-11, premiere ligne d'education
+            // musicale du produit, matiere neuve.
+            "bandit-manchot-vocabulaire-musical-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -519,6 +522,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les effets de l'activité physique",
             // S44-MAT-DIVISION (s44) : titre neuf.
             "La division",
+            // S44-MUS-VOCABULAIRE (s44) : titre neuf.
+            "Les mots de la musique",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -748,6 +753,8 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "sécurité.",
             // S44-MAT-DIVISION (s44) : consigne neuve.
             "Partage la quantité, ou trouve le nombre de groupes.",
+            // S44-MUS-VOCABULAIRE (s44) : consigne neuve.
+            "Lis bien, puis dis le mot juste, ou ce qu'il veut dire.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -775,6 +782,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Arts plastiques",
             // S40-HDA (s40) : matiere neuve, quatorzieme matiere du corpus servi.
             "Histoire des arts",
+            // S44-MUS-VOCABULAIRE (s44) : matiere neuve, quinzieme matiere du corpus servi,
+            // premiere ligne d'education musicale.
+            "Éducation musicale",
             // niveau (descripteur) : "CP" et "CM1" sont exemptes ci-dessus, "CE1" entre ici.
             // S37-1 (s37) : troisieme niveau du produit. Il n'a pas plus de lettre
             // accentuable que les deux autres, mais l'exemption enumeree qui les couvre est
@@ -852,6 +862,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S40-EXTRACTION (s40) : domaine neuf, sciences et technologie CM1 (copie conforme du
             // referentiel de nadia-prof, squad/programme/sciences-et-technologie/competences-cm1.md).
             "Démarches et langages scientifiques",
+            // S44-MUS-VOCABULAIRE (s44) : domaine neuf, premier paquet d'education musicale (copie
+            // conforme du referentiel de nadia-prof,
+            // squad/programme/education-musicale/competences-cp.md).
+            "Échanger, partager et argumenter",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
@@ -1180,7 +1194,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-18) sans la
             // parenthese finale, sous-partie allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
             "Comprendre le sens de la division en résolvant des problèmes de partage et de "
-                    + "groupement");
+                    + "groupement",
+            // S44-MUS-VOCABULAIRE (s44) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/education-musicale/competences-cp.md, ligne MUS-CP-11).
+            "Nommer quelques repères du vocabulaire musical rencontré (refrain, couplet, "
+                    + "pulsation, silence).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
