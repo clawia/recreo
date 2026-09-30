@@ -61,8 +61,8 @@ story `S44-SCI-OBJET-TECHNIQUE` (lignes 15850-15851 et 15866-15867 au moment de 
 encore *"Apres une reponse fausse, le retour dit pourquoi elle est fausse, en une phrase"* et en tire
 un critere d'acceptation sur "le retour". C'est la formulation de `SCI-1` du 2026-09-03, remplacee
 deux fois depuis - la version en vigueur est celle de
-`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
-reserves.md`, section 1.1 (lignes 83-93) : le porteur de l'explication apres une erreur est
+`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
+section 1.1 (lignes 83-93) : le porteur de l'explication apres une erreur est
 l'**indice** (`BanditManchotSession.indice()`), affiche des la premiere erreur, jamais
 l'**explication** de l'ecran de retour, que `nadia-prof` a mesuree invisible pour la quasi-totalite
 des enfants qui se trompent. La condition ne porte en outre que sur les items a conception fausse,
