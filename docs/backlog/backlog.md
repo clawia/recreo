@@ -16002,20 +16002,23 @@ independamment.
   >
   > `DIV-CE1-5` - Distracteurs. Au moins un distracteur par item correspond a une erreur
   > identifiable : le produit au lieu du quotient (`a x b`), la difference au lieu du quotient
-  > (`a - b`), ou le quotient de l'autre sens (repondre le nombre de parts quand on demande la
-  > valeur d'une part, ou l'inverse). Tous les distracteurs sont des entiers strictement positifs,
-  > distincts entre eux et de la bonne reponse ; jamais un decimal, jamais un negatif ; si une
-  > formule coincide avec la bonne reponse ou avec un autre distracteur, un distracteur de
-  > remplacement est pris parmi les deux autres formes.
+  > (`a - b`), ou le diviseur recopie (`b`, le nombre de l'enonce qui n'est pas le dividende : le
+  > nombre de parts dans un partage, la valeur d'une part dans un groupement). Tous les
+  > distracteurs sont des entiers strictement positifs, distincts entre eux et de la bonne
+  > reponse ; jamais un decimal, jamais un negatif ; si une formule coincide avec la bonne
+  > reponse ou avec un autre distracteur, un distracteur de remplacement est pris parmi les deux
+  > autres formes.
   >
   > `DIV-CE1-6` - Frontiere avec `MAT-CE1-06` : un item de `MAT-CE1-18` est une situation en mots,
-  > sans dessin et sans signe. Trois proprietes, chacune decidable sur l'item seul : 1. Aucune
-  > illustration - l'item ne porte aucun champ `illustration` : ni reseau en lignes et colonnes, ni
-  > paquets dessines, ni collection d'objets en vrac. 2. Aucune ecriture operatoire, dans l'enonce,
-  > les propositions ou l'indice - aucun des signes `+`, `-`, `x`, `×`, `:`, `÷` employe comme
-  > operation entre deux nombres, et aucun signe `=` ; une suite de nombres qui compte de 3 en 3
-  > ("3, 6, 9, 12") n'est pas une ecriture operatoire et reste permise dans l'indice. 3. Le dividende
-  > est une quantite d'objets nommes ("12 billes", "20 cartes"), jamais un nombre nu.
+  > sans dessin et sans signe. Trois proprietes, chacune decidable sur l'item seul : 1. Aucun
+  > support visuel - l'item ne porte ni champ `illustration` ni champ `tableauSupport` : ni reseau
+  > en lignes et colonnes, ni paquets dessines, ni collection d'objets en vrac, ni grille, quel que
+  > soit le champ qui la porte. 2. Aucune ecriture operatoire, dans aucun texte de l'item : l'enonce,
+  > la bonne reponse, les distracteurs, l'indice, l'explication, le texte-support et le texte a voix
+  > haute - aucun des signes `+`, `-`, `x`, `×`, `:`, `÷` employe comme operation entre deux nombres,
+  > et aucun signe `=` ; une suite de nombres qui compte de 3 en 3 ("3, 6, 9, 12") n'est pas une
+  > ecriture operatoire et reste permise dans l'indice et dans l'explication. 3. Le dividende est une
+  > quantite d'objets nommes ("12 billes", "20 cartes"), jamais un nombre nu.
 - **Criteres d'acceptation** :
   - Etant donne un item, quand on lit le dividende et le diviseur, alors le dividende est un entier
     de 4 a 60, le diviseur un entier de 2 a 10, et la division tombe juste, sans reste (`DIV-CE1-1`).
@@ -16029,14 +16032,16 @@ independamment.
     representent au plus un tiers du paquet, et aucun n'emploie le mot "moitie" ni ne reprend un
     item de `bandit-manchot-moities-ce1` (`DIV-CE1-4`).
   - Etant donne les distracteurs d'un item, quand on les verifie, alors au moins un correspond a une
-    erreur nommee (le produit, la difference, ou le quotient de l'autre sens), tous sont des entiers
+    erreur nommee (le produit, la difference, ou le diviseur recopie), tous sont des entiers
     strictement positifs, distincts entre eux et de la bonne reponse, jamais un decimal ni un
     negatif (`DIV-CE1-5`).
-  - Etant donne un item, quand on verifie sa forme, alors il ne porte aucun champ `illustration`
-    (ni reseau en lignes et colonnes, ni paquets dessines, ni collection d'objets en vrac), aucun
-    des signes `+`, `-`, `x`, `×`, `:`, `÷` ni le signe `=` ne figure dans son enonce, ses
-    propositions ou son indice (une suite qui compte de 3 en 3 restant permise dans l'indice), et
-    son dividende designe une quantite d'objets nommes plutot qu'un nombre nu (`DIV-CE1-6`).
+  - Etant donne un item, quand on verifie sa forme, alors il ne porte ni champ `illustration` ni
+    champ `tableauSupport` (ni reseau en lignes et colonnes, ni paquets dessines, ni collection
+    d'objets en vrac, ni grille), aucun des signes `+`, `-`, `x`, `×`, `:`, `÷` ni le signe `=` ne
+    figure dans son enonce, sa bonne reponse, ses distracteurs, son indice, son explication, son
+    texte-support ou son texte a voix haute (une suite qui compte de 3 en 3 restant permise dans
+    l'indice et dans l'explication), et son dividende designe une quantite d'objets nommes plutot
+    qu'un nombre nu (`DIV-CE1-6`).
   - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
     `MAT-CE1-18` et uniquement elle.
   - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
@@ -16046,9 +16051,10 @@ independamment.
   de ce libelle) ; elle ne sert jamais une ecriture symbolique de division, exclue par le libelle
   ("sans technique operatoire posee") ; elle ne sert jamais un item de division par 2 formule comme
   "moitie de n", deja servi par `MAT-CE1-03` (`bandit-manchot-moities-ce1`) ; elle ne sert jamais un
-  item illustre, ni un item portant une ecriture operatoire quelconque dans l'enonce, les
-  propositions ou l'indice, ni un item dont le dividende est un nombre nu plutot qu'une quantite
-  d'objets nommes, frontiere posee avec `MAT-CE1-06` (`DIV-CE1-6`) ; elle ne s'ouvre pas tant que le
+  item portant une illustration ou un tableauSupport, ni un item portant une ecriture operatoire
+  quelconque dans l'enonce, les propositions, l'indice, l'explication, le texte-support ou le texte
+  a voix haute, ni un item dont le dividende est un nombre nu plutot qu'une quantite d'objets
+  nommes, frontiere posee avec `MAT-CE1-06` (`DIV-CE1-6`) ; elle ne s'ouvre pas tant que le
   prealable bloquant ci-dessus n'est pas leve ; elle ne fixe aucun contenu factuel precis (quelles
   situations, quels nombres retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
 - **Lien decision** : `DEC-0099` (section 9.6, engagement section 10).
