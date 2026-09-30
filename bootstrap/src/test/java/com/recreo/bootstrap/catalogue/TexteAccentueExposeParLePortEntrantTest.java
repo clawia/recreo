@@ -316,6 +316,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S44-MAT-DIVISION (s44) : entree neuve, MAT-CE1-18, sens de la division (partage et
             // groupement), sous-partie allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
             "bandit-manchot-division-ce1",
+            // S44-SCI-OBJET-TECHNIQUE (s44) : entree neuve, SCI-CM1-13, evolution d'un objet
+            // technique au cours du temps (fabrication ou usage), distincte de
+            // bandit-manchot-objet-technique-cm1 (SCI-CM1-12).
+            "bandit-manchot-evolution-objet-technique-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -519,6 +523,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les effets de l'activité physique",
             // S44-MAT-DIVISION (s44) : titre neuf.
             "La division",
+            // S44-SCI-OBJET-TECHNIQUE (s44) : titre neuf.
+            "Comment ça a changé ?",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -748,6 +754,8 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "sécurité.",
             // S44-MAT-DIVISION (s44) : consigne neuve.
             "Partage la quantité, ou trouve le nombre de groupes.",
+            // S44-SCI-OBJET-TECHNIQUE (s44) : consigne neuve.
+            "Lis bien, puis dis ce qui a changé, ou ce qui n'a pas changé.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1180,7 +1188,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-18) sans la
             // parenthese finale, sous-partie allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
             "Comprendre le sens de la division en résolvant des problèmes de partage et de "
-                    + "groupement");
+                    + "groupement",
+            // S44-SCI-OBJET-TECHNIQUE (s44) : competence neuve, libelle du referentiel copie mot
+            // pour mot (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
+            // SCI-CM1-13).
+            "Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa "
+                    + "fabrication ou dans son usage.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

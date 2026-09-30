@@ -1,0 +1,113 @@
+schema: 1
+id: cm1-sciences-evolution-objet-technique
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Matériaux et objets techniques"
+  competence: "Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa fabrication ou dans son usage."
+lignesDeReferentiel: ["SCI-CM1-13"]
+#
+# S44-SCI-OBJET-TECHNIQUE (docs/backlog/backlog.md, sprint 44), ligne SCI-CM1-13 de "Sciences et
+# technologie" (CM1). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-13).
+#
+# Arbitrage pedagogique prealable : jugement de faisabilite de nadia-prof du 2026-09-03
+# (squad/programme/sciences-et-technologie/competences-cm1.md, ligne 13), transposant BIA-3
+# (squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md). Avis de
+# faisabilite de theo-archi (squad/rapports/avis-faisabilite-s44-mus-sci.md, section 5). Reponse
+# de nadia-prof aux deux adjacences de sens signalees par theo-archi
+# (squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md, section 3, EVO-1 et EVO-2).
+#
+# Nom de paquet et identifiant de catalogue distincts de "cm1-sciences-objet-technique"
+# (SCI-CM1-12), pour eviter la collision nommee par l'avis de faisabilite, section 3.3.
+#
+# EVO-1 : aucune bonne reponse n'est un terme nu deja servi par SCI-CM1-11 (une famille de
+# materiau seule) ou par SCI-CM1-12 (un composant seul, ou la fonction d'un objet pris
+# isolement). Chaque bonne reponse enonce une relation entre un etat ancien et un etat recent du
+# meme objet - ce qui est passe de l'un a l'autre, ou ce qui est reste.
+#
+# EVO-2 : sur la tache "dire ce qui n'a pas change", chaque distracteur est une caracteristique
+# vraie de l'une des deux versions de l'objet et fausse de l'autre - jamais une fonction fausse.
+# Aucun item de cette tache ne porte sur le velo, la lampe de poche, le taille-crayon ou le
+# ventilateur (les quatre objets de cm1-sciences-objet-technique, SCI-CM1-12), dont la fonction
+# est deja servie en bonne reponse sur cette ligne-la.
+#
+# FER-1 (extension, libelle disjonctif "dans sa fabrication ou dans son usage") : l'evolution est
+# en position de bonne reponse sur chaque item (EVO-1) ; la tache A sert l'element "fabrication"
+# (passage d'une matiere ou d'une source d'energie a une autre).
+#
+# FER-2 (densite) : onze items, au-dessus du plancher de dix (DEC-0064).
+#
+# FER-3 (deux taches) : tache A, "dire ce qui a change" (cinq items, comparaison d'un etat ancien
+# et d'un etat recent, chacun avec un distracteur en ordre inverse) ; tache B, "dire ce qui n'a
+# pas change" (six items, la bonne reponse est l'usage qui persiste malgre le changement de
+# fabrication, les distracteurs sont des caracteristiques de l'etat ancien devenues fausses pour
+# l'etat recent, EVO-2).
+#
+# SCI-1 : chaque indice compte une phrase, ne nomme jamais la bonne reponse de son item et ne dit
+# jamais "ta reponse".
+#
+# SCI-4 : chaque item porte deux distracteurs (trois propositions).
+#
+# SCI-3 : aucune bonne reponse ne porte de valeur numerique a restituer.
+#
+# BIA-3 : aucun texte de ce paquet ne qualifie l'objet ancien de difficile, dur, pauvre ou pas
+# pratique, et aucun n'affirme que l'objet ancien etait moins bien que l'objet recent - la
+# chronologie n'est pas un progres.
+#
+# CON-1 : aucun item ne se resout sans lire l'enonce complet.
+#
+# HIS-3 (chaque fait porte sa source) : marque en commentaire sur chaque ligne d'item. Les onze
+# evolutions retenues (jouet en bois puis en plastique, eclairage a la bougie puis electrique,
+# deplacement a cheval puis en voiture a moteur, conservation au froid par un bloc de glace puis
+# par un refrigerateur electrique, moulin a eau puis electrique, ecriture a la plume d'oie puis au
+# stylo a bille, telephone a cadran puis portable, lavage du linge au lavoir puis en machine,
+# navigation a la voile puis au moteur, mesure du temps au sablier puis a la montre electronique,
+# cuisson au feu de bois puis a la cuisiniere electrique) sont des faits de technologie du
+# quotidien communement enseignes au cycle 3, sans controverse.
+items:
+  - enonce: "Autrefois, de nombreux jouets d'enfant étaient fabriqués en bois. Qu'est-ce qui a changé dans leur fabrication ?"  # HIS-3: fabrication de jouets en plastique generalisee au cours du XXe siecle, fait consensuel de technologie
+    bonneReponse: "le bois a laissé la place au plastique"
+    distracteurs: ["le plastique a laissé la place au bois", "le bois a laissé la place au verre"]
+    indice: "Le bois vient d'un arbre, et la plupart des jouets actuels ne sont plus fabriqués avec cette matière."
+  - enonce: "Autrefois, on s'éclairait le soir avec une bougie allumée. Qu'est-ce qui a changé dans la façon de s'éclairer ?"  # HIS-3: eclairage electrique domestique diffuse a la fin du XIXe et au XXe siecle, fait consensuel
+    bonneReponse: "la flamme a laissé la place au courant électrique"
+    distracteurs: ["le courant électrique a laissé la place à la flamme", "la bougie a laissé la place à la lampe à huile"]
+    indice: "Depuis l'arrivée de l'ampoule, on n'a plus besoin d'allumer une flamme pour avoir de la lumière le soir."
+  - enonce: "Autrefois, pour se déplacer sur de longues distances, on utilisait souvent un cheval. Qu'est-ce qui a changé dans la façon de se déplacer ?"  # HIS-3: generalisation de l'automobile a moteur comme moyen de transport individuel au XXe siecle, fait consensuel
+    bonneReponse: "la force de l'animal a laissé la place à un moteur"
+    distracteurs: ["le moteur a laissé la place à la force de l'animal", "le cheval a laissé la place au vélo"]
+    indice: "Une voiture avance grâce à un mécanisme qui n'a besoin d'aucun animal pour fonctionner."
+  - enonce: "Autrefois, pour garder les aliments au froid, on utilisait un bloc de glace dans une glacière. Qu'est-ce qui a changé dans la conservation des aliments ?"  # HIS-3: remplacement de la glaciere par le refrigerateur electrique au cours du XXe siecle, fait consensuel
+    bonneReponse: "le bloc de glace a laissé la place à un moteur électrique"
+    distracteurs: ["le moteur électrique a laissé la place à un bloc de glace", "la glacière a laissé la place au four"]
+    indice: "Un réfrigérateur produit lui-même du froid, sans qu'il soit nécessaire d'y déposer un bloc de glace."
+  - enonce: "Autrefois, un moulin utilisait la force de l'eau d'une rivière pour tourner. Qu'est-ce qui a changé dans le fonctionnement de nombreuses machines ?"  # HIS-3: remplacement de l'energie hydraulique par l'energie electrique dans de nombreuses machines, fait consensuel
+    bonneReponse: "la force de l'eau a laissé la place à l'électricité"
+    distracteurs: ["l'électricité a laissé la place à la force de l'eau", "la force de l'eau a laissé la place à la force du vent"]
+    indice: "De nombreuses machines actuelles fonctionnent grâce à un courant qui arrive par un câble, sans roue tournée par une rivière."
+  - enonce: "La plume d'oie est devenue le stylo à bille. Qu'est-ce qui n'a pas changé ?"  # HIS-3: usage de la plume d'oie comme instrument d'ecriture avant l'invention du stylo a bille au XXe siecle, fait consensuel
+    bonneReponse: "on s'en sert pour écrire"
+    distracteurs: ["on trempe sa pointe dans l'encre", "sa pointe vient d'une plume d'oiseau"]
+    indice: "Regarde à quoi sert cet objet, plutôt que la matière avec laquelle il est fabriqué."
+  - enonce: "Le téléphone à cadran est devenu le téléphone portable. Qu'est-ce qui n'a pas changé ?"  # HIS-3: usage du telephone fixe a cadran avant la diffusion du telephone portable, fait consensuel de technologie
+    bonneReponse: "on l'utilise pour parler à quelqu'un qui est loin"
+    distracteurs: ["il faut rester à la maison pour s'en servir", "il est relié à un fil électrique"]
+    indice: "Compare à quoi sert cet appareil, plutôt que la façon dont on doit le tenir ou le brancher."
+  - enonce: "Le lavoir est devenu la machine à laver électrique. Qu'est-ce qui n'a pas changé ?"  # HIS-3: usage du lavoir pour laver le linge avant la diffusion de la machine a laver electrique, fait consensuel
+    bonneReponse: "on l'utilise pour nettoyer des vêtements sales"
+    distracteurs: ["il faut frotter le linge à la main pendant longtemps", "on doit se déplacer jusqu'à une rivière ou un bassin"]
+    indice: "Compare ce que ces deux moyens permettent de faire au linge, pas la façon de s'en servir."
+  - enonce: "Le bateau à voile est devenu, pour beaucoup de bateaux, le bateau à moteur. Qu'est-ce qui n'a pas changé ?"  # HIS-3: propulsion des bateaux par la voile avant la diffusion du moteur, fait consensuel de technologie
+    bonneReponse: "on l'utilise pour avancer sur l'eau"
+    distracteurs: ["il faut que le vent souffle pour avancer", "on doit régler la voile selon la direction du vent"]
+    indice: "Compare ce que ces deux bateaux permettent de faire, pas la façon dont ils avancent."
+  - enonce: "Le sablier est devenu la montre électronique. Qu'est-ce qui n'a pas changé ?"  # HIS-3: usage du sablier pour mesurer une duree avant la diffusion de la montre electronique, fait consensuel
+    bonneReponse: "on l'utilise pour savoir combien de temps s'est écoulé"
+    distracteurs: ["il faut le retourner pour qu'il recommence à mesurer", "le sable doit s'écouler d'un compartiment à l'autre"]
+    indice: "Compare à quoi sert cet objet, pas la façon dont il affiche le temps qui passe."
+  - enonce: "Le feu de bois est devenu, dans de nombreuses cuisines, la cuisinière électrique. Qu'est-ce qui n'a pas changé ?"  # HIS-3: cuisson des aliments au feu de bois avant la diffusion de la cuisiniere electrique, fait consensuel
+    bonneReponse: "on l'utilise pour cuire les aliments"
+    distracteurs: ["il faut entretenir une flamme avec du bois", "la chaleur vient d'une flamme que l'on peut voir"]
+    indice: "Compare ce que ces deux moyens permettent de faire aux aliments, pas la source de la chaleur."
