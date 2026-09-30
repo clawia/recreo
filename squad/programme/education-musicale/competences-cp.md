@@ -104,6 +104,11 @@ Si les lignes 5 et 11 passent un jour à `couvert-valide`, la matrice porte cett
 auditive ni vocale n'est servie"*. Sans elle, deux lignes vertes laisseraient croire que le produit
 enseigne la musique.
 
+*Amendement du 2026-09-30 (`nadia-prof`, s44).* La ligne 11 ferme seule, la ligne 5 restant
+`non couvert`. Sa mention propre est fixee dans
+`squad/conformite/FICHE-bandit-manchot-vocabulaire-musical-cp.md`, section 6. La mention ci-dessus
+reste celle des deux lignes le jour ou la ligne 5 fermera aussi.
+
 ### Bilan chiffré - éducation musicale CP
 
 | | Nombre |

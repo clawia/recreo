@@ -11,6 +11,25 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s44, le 2026-09-30 (les trois Done pedagogiques de s44).** Six
+identifiants ajoutes, tous des reserves de mes trois verdicts du jour : **`MUS-CP-R1`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-vocabulaire-musical-cp.md` ; **`EVO-CM1-R1` a
+`EVO-CM1-R4`**, ecrits dans `squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md` ;
+**`DIV-CE1-R1`**, ecrit dans `squad/conformite/FICHE-bandit-manchot-division-ce1.md`. **Aucun
+prefixe neuf** : `MUS`, `EVO` et `DIV` etaient deja alloues. Les six identifiants ont ete cherches
+sur le depot entier et sur les branches locales avant d'ecrire : aucun n'y figurait. **Formes
+copiees** : `MUS-CP-R1` et `EVO-CM1-R1` sur `NUQ-CP-R1` et `EPS-CM1-R1`, `DIV-CE1-R1` sur
+`DUR-CE1-R1` ; trois segments, marqueur `R` dans le dernier (`ADR-0100`). Un identifiant a trois
+segments ne se collisionne pas avec `MUS-3`, `EVO-2` ou `DIV-CE1-6`, comme `EPS-CM1-R1` avec
+`EPS-9`. Les six lignes de la section 4 sont dans le meme diff que les trois fiches.
+
+Ligne d'etat courant portee de **787 / 127 a 793 / 127**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 787 identifiants alloues et 127 prefixes distincts, sa table en porte 793 et 127"*. C'est
+ce **793 / 127** que je recopie.
+
 **Note de `nadia-prof`, s44, le 2026-09-30 (Q1 et Q3 de l'avis de faisabilite
 `avis-faisabilite-s44-mus-sci.md`).** Trois identifiants ajoutes, tous des conditions, ecrits dans
 `squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md` : **`MUS-3`** (forme d'enonce
@@ -358,7 +377,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `787` identifiants alloues, `127` prefixes distincts.
+**Compte courant, verifie par la CI** : `793` identifiants alloues, `127` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1729,3 +1748,9 @@ clause 2 par une exemption.
 | `EPS-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md` |
 | `EPS-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-effets-activite-eps-cm1.md` |
 | `DUR-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-problemes-durees-ce1.md` |
+| `MUS-CP-R1` | `squad/conformite/FICHE-bandit-manchot-vocabulaire-musical-cp.md` |
+| `EVO-CM1-R1` | `squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md` |
+| `EVO-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md` |
+| `EVO-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md` |
+| `EVO-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md` |
+| `DIV-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-division-ce1.md` |
