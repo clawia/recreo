@@ -136,7 +136,14 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // mot (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-12). Contrairement
         // aux trois sous-parties precedentes, ce paquet sert la ligne entiere - DUR-CE1-1 exclut
         // l'horaire d'arrivee, mais le referentiel de MAT-CE1-12 ne le nomme pas non plus.
-        DUREES("MAT-CE1-12", "Calculer une durée simple en heures entières ou en demi-heures");
+        DUREES("MAT-CE1-12", "Calculer une durée simple en heures entières ou en demi-heures"),
+        // S44-MAT-DIVISION (s44) : entree neuve, MAT-CE1-18, libelle du referentiel
+        // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-18) sans la parenthese
+        // finale ("sans technique operatoire posee") : cette clause est verifiee par DIV-CE1-6,
+        // jamais montree a l'enfant, meme convention que MONNAIE et SOLIDES ci-dessus.
+        DIVISION("MAT-CE1-18",
+                "Comprendre le sens de la division en résolvant des problèmes de partage et de"
+                        + " groupement");
 
         private final String ligne;
 

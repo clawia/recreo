@@ -1,0 +1,135 @@
+# S44-MAT-DIVISION (MAT-CE1-18, DEC-0099 section 9.6). Arbitrage prealable de nadia-prof, conditions
+# DIV-CE1-1 a DIV-CE1-5 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md,
+# section 4), et DIV-CE1-6 (meme fichier, addendum du 2026-09-25, section 11.2), qui pose la
+# frontiere avec MAT-CE1-06 (sens de la multiplication).
+#
+# DIV-CE1-1 : dividende entier de 4 a 60, diviseur entier de 2 a 10, division exacte (aucun reste).
+#
+# DIV-CE1-2 : les deux sens sont servis, chacun sur au moins un tiers des items. Partage : le nombre
+# de parts est donne, la valeur d'une part est cherchee ("partage entre"). Groupement : la valeur
+# d'une part est donnee, le nombre de parts est cherche ("range par", "en bouquets de"). Onze items
+# de partage, dix de groupement, sur vingt et un.
+#
+# DIV-CE1-3, elargie par DIV-CE1-6 point 2 : aucune ecriture operatoire nulle part - ni les signes
+# "+", "-", "x", "×", ":", "÷" employes entre deux nombres, ni le signe "=", dans l'enonce, les
+# propositions ou l'indice. Chaque item est une situation en mots.
+#
+# DIV-CE1-4 : six items sur vingt et un ont un diviseur de 2 (28,6 %, sous le tiers), aucun n'emploie
+# le mot "moitie" et aucun ne se reduit au fait de repertoire deja servi par
+# bandit-manchot-moities-ce1 (MAT-CE1-03, forme "Moitie de n = ?") - ce sont des situations en mots,
+# jamais une question arithmetique nue.
+#
+# DIV-CE1-5 : chaque item porte au moins un distracteur correspondant a une erreur identifiable - le
+# produit au lieu du quotient (a x b), la difference au lieu du quotient (a - b), ou le diviseur
+# recopie (b, le nombre de l'enonce qui n'est pas le dividende : le nombre de parts dans un partage,
+# la valeur d'une part dans un groupement - troisieme cas amende le 2026-09-25, section 11.7 de
+# l'arbitrage cite plus haut). Tous les distracteurs sont des entiers strictement positifs, distincts
+# entre eux et de la bonne reponse.
+#
+# DIV-CE1-6 : frontiere avec MAT-CE1-06, elargie le 2026-09-25 (section 11.7, meme arbitrage).
+# Aucun support visuel (ni illustration ni tableauSupport). Aucune ecriture operatoire dans aucun
+# texte de l'item (enonce, bonne reponse, distracteurs, indice - voir DIV-CE1-3 ci-dessus ; ce
+# paquet ne porte ni explication, ni texte-support, ni texte a voix haute). Le dividende est une
+# quantite d'objets nommes ("8 crayons", "45 perles"), jamais un nombre nu : il est toujours suivi,
+# sans ponctuation intercalee, du nom de l'objet compte.
+#
+# ADR-0098 : la sous-partie de MAT-CE1-18 est allouee dans SousPartieDeMathematiquesCe1
+# ("Comprendre le sens de la division en résolvant des problèmes de partage et de groupement"), et ce
+# paquet declare la ligne qu'elle sert.
+#
+# ADR-0101 : le champ "enonce" de chaque item reste a vingt mots et trois phrases au plus (LON-CE1-1,
+# LON-CE1-2) - ce paquet n'ajoute aucune entree a la dette de longueur du CE1.
+schema: 1
+id: ce1-division
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Comprendre le sens de la division en résolvant des problèmes de partage et de groupement"
+lignesDeReferentiel: ["MAT-CE1-18"]
+items:
+  - enonce: "8 crayons sont rangés par 2 dans des trousses. Combien de trousses peut-on faire ?"
+    bonneReponse: "4"
+    distracteurs: ["2", "16"]
+    indice: "Compte de 2 en 2 jusqu'à 8."
+  - enonce: "14 images sont partagées entre 2 amis. Combien chacun en a-t-il ?"
+    bonneReponse: "7"
+    distracteurs: ["2", "28"]
+    indice: "Distribue une image à la fois à chacun des deux amis."
+  - enonce: "20 perles sont rangées par 2 dans des sachets. Combien de sachets peut-on faire ?"
+    bonneReponse: "10"
+    distracteurs: ["2", "40"]
+    indice: "Compte de 2 en 2 jusqu'à 20."
+  - enonce: "16 bonbons sont partagés entre 2 enfants. Combien chacun en a-t-il ?"
+    bonneReponse: "8"
+    distracteurs: ["2", "32"]
+    indice: "Distribue un bonbon à la fois à chacun des deux enfants."
+  - enonce: "18 fleurs sont mises en bouquets de 2. Combien de bouquets peut-on faire ?"
+    bonneReponse: "9"
+    distracteurs: ["2", "36"]
+    indice: "Compte de 2 en 2 jusqu'à 18."
+  - enonce: "6 gâteaux sont partagés entre 2 amis. Combien chacun en a-t-il ?"
+    bonneReponse: "3"
+    distracteurs: ["2", "12"]
+    indice: "Distribue un gâteau à la fois à chacun des deux amis."
+  - enonce: "12 billes sont partagées entre 3 enfants. Combien chacun en a-t-il ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "36"]
+    indice: "Distribue une bille à la fois à chacun des trois enfants."
+  - enonce: "15 images sont partagées entre 5 amis. Combien chacun en a-t-il ?"
+    bonneReponse: "3"
+    distracteurs: ["10", "75"]
+    indice: "Distribue une image à la fois à chacun des cinq amis."
+  - enonce: "24 cartes sont partagées entre 4 joueurs. Combien chacun en a-t-il ?"
+    bonneReponse: "6"
+    distracteurs: ["4", "5"]
+    indice: "Distribue une carte à la fois à chacun des quatre joueurs."
+  - enonce: "27 autocollants sont partagés entre 9 enfants. Combien chacun en a-t-il ?"
+    bonneReponse: "3"
+    distracteurs: ["18", "243"]
+    indice: "Distribue un autocollant à la fois à chacun des neuf enfants."
+  - enonce: "30 billes sont partagées entre 6 amis. Combien chacun en a-t-il ?"
+    bonneReponse: "5"
+    distracteurs: ["24", "180"]
+    indice: "Distribue une bille à la fois à chacun des six amis."
+  - enonce: "36 crayons sont partagés entre 4 classes. Combien chaque classe en a-t-elle ?"
+    bonneReponse: "9"
+    distracteurs: ["4", "8"]
+    indice: "Distribue un crayon à la fois à chacune des quatre classes."
+  - enonce: "40 timbres sont partagés entre 8 collectionneurs. Combien chacun en a-t-il ?"
+    bonneReponse: "5"
+    distracteurs: ["32", "320"]
+    indice: "Distribue un timbre à la fois à chacun des huit collectionneurs."
+  - enonce: "45 perles sont partagées entre 9 enfants. Combien chacun en a-t-il ?"
+    bonneReponse: "5"
+    distracteurs: ["36", "405"]
+    indice: "Distribue une perle à la fois à chacun des neuf enfants."
+  - enonce: "21 pommes sont rangées par 3 dans des paniers. Combien de paniers peut-on faire ?"
+    bonneReponse: "7"
+    distracteurs: ["3", "6"]
+    indice: "Compte de 3 en 3 jusqu'à 21."
+  - enonce: "32 œufs sont rangés par 4 dans des boîtes. Combien de boîtes peut-on faire ?"
+    bonneReponse: "8"
+    distracteurs: ["4", "7"]
+    indice: "Compte de 4 en 4 jusqu'à 32."
+  - enonce: "35 fleurs sont mises en bouquets de 5. Combien de bouquets peut-on faire ?"
+    bonneReponse: "7"
+    distracteurs: ["5", "6"]
+    indice: "Compte de 5 en 5 jusqu'à 35."
+  - enonce: "42 chaises sont rangées par 6 autour des tables. Combien de tables peut-on installer ?"
+    bonneReponse: "7"
+    distracteurs: ["6", "5"]
+    indice: "Compte de 6 en 6 jusqu'à 42."
+  - enonce: "48 biscuits sont rangés par 8 dans des boîtes. Combien de boîtes peut-on faire ?"
+    bonneReponse: "6"
+    distracteurs: ["40", "384"]
+    indice: "Compte de 8 en 8 jusqu'à 48."
+  - enonce: "54 coquillages sont rangés par 9 dans des sacs. Combien de sacs peut-on faire ?"
+    bonneReponse: "6"
+    distracteurs: ["45", "486"]
+    indice: "Compte de 9 en 9 jusqu'à 54."
+  - enonce: "60 jetons sont rangés par 10 dans des pochettes. Combien de pochettes peut-on faire ?"
+    bonneReponse: "6"
+    distracteurs: ["50", "600"]
+    indice: "Compte de 10 en 10 jusqu'à 60."
