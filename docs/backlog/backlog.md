@@ -15844,13 +15844,57 @@ independamment.
   l'objet ancien etait moins bien"*. `BIA-3`, source originelle citee mot pour mot
   (`squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`) : *"Sur
   'autrefois et aujourd'hui' (QLM 15) : la chronologie n'est pas un progres. Aucun item ne qualifie
-  l'ancien de difficile, dur, pauvre ou pas pratique"* - transpose ici a l'objet technique. Trois
-  conditions supplementaires, valables sur toute la matiere, citees mot pour mot (Jugement de
-  faisabilite, section "Conditions opposables") :
-  > `SCI-1` - Apres une reponse fausse, le retour dit pourquoi elle est fausse, en une phrase.
+  l'ancien de difficile, dur, pauvre ou pas pratique"* - transpose ici a l'objet technique.
+
+  **Amendement du 2026-09-30 (`camille-po`, s44), condition bloquante routee par `theo-archi`**
+  (`squad/rapports/avis-faisabilite-s44-mus-sci.md`, section 5.1, Q2) **et reprise par `sofia-sm`**
+  (`squad/sprints/s44-musique-sciences-et-division-ce1/planning.md`, section 5). Cette story citait
+  `SCI-1` dans sa formulation du 2026-09-03 recopiee ci-dessus depuis le Jugement de faisabilite, et
+  en tirait un critere d'acceptation sur "le retour". Cette formulation a ete remplacee le
+  2026-09-05, puis de nouveau le 2026-09-06 dans la version qui vaut aujourd'hui
+  (`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
+  section 1.1, lignes 83 a 93) : le porteur de l'explication est l'`indice`, affiche des la premiere
+  erreur, et non l'`explication` de l'ecran de retour - mesuree invisible pour la quasi-totalite des
+  enfants qui se trompent (meme source, lignes 56 a 77). Le referentiel n'a pas ete amende ; c'est
+  cette story qui avait recopie la version perimee. La citation et le critere sont corriges
+  ci-dessous ; `SCI-4`, qui accompagne `SCI-1` depuis le 2026-09-06 (meme source, section 1.2), et
+  `FER-1` a `FER-3`, absentes de cette story a ce jour
+  (`squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`,
+  section 2), sont ajoutees. Le fond d'aucune de ces conditions n'est rejuge : seules la citation et
+  les criteres qui en decoulent le sont.
+
+  Six conditions supplementaires, valables sur toute la matiere ou sur toute ligne du referentiel,
+  citees mot pour mot :
+  > `SCI-1`, precisee le 2026-09-06 (remplace la formulation du 2026-09-03 recopiee ci-dessus,
+  > elle-meme remplacee le 2026-09-05 ; les trois restent lisibles, c'est celle-ci qui vaut) - Sur
+  > chaque item de sciences dont un distracteur porte une conception fausse courante, l'`indice` dit
+  > pourquoi cette conception est fausse, en une phrase, au present de verite generale, sans nommer
+  > la bonne reponse (`M21`). Il ne commente jamais "ta reponse" : il est ecrit pour etre vrai quel
+  > que soit le bouton presse. L'`explication` reste facultative : la ou un paquet en porte une, elle
+  > tient la meme exigence de fond, elle n'est vue que par l'enfant qui a revele la reponse ou qui
+  > vient de finir la partie, et elle n'est jamais le moyen par lequel `SCI-1` est tenue.
   >
   > `SCI-3` - Aucun item ne demande une valeur numerique a restituer (distance, temperature, duree)
   > au-dela d'un item sur six.
+  >
+  > `SCI-4`, nouvelle le 2026-09-06 - Un item de sciences dont un distracteur porte une conception
+  > fausse courante offre au moins trois propositions. Ecarter la conception fausse laisse alors deux
+  > candidates, et l'indice fait son travail sans etre une revelation. Les items de sciences sans
+  > conception fausse en distracteur ne sont pas concernes : deux propositions y restent permises.
+  >
+  > `FER-1` - extension. Chaque element enumere par le libelle de la competence, et notamment par sa
+  > parenthese, est servi par au moins un item ou il est en position de bonne reponse. Un element
+  > hors de portee du palier 1 ne bloque pas la fermeture, mais la ligne ne ferme alors que sur sa
+  > part servie, avec la mention de couverture partielle ecrite dans la matrice. Sur cette ligne, le
+  > libelle est disjonctif ("dans sa fabrication ou dans son usage") : un seul terme suffit sur cette
+  > sous-liste, donc deux elements exigent la fermeture - l'evolution, et l'un des deux, fabrication
+  > ou usage (lecture d'une parenthese disjonctive, precisee le 2026-09-05, meme source que `SCI-1`,
+  > section 2.1 et tableau 2.2 ligne 13).
+  >
+  > `FER-2` - densite. Au moins dix items servent la ligne, tous paquets confondus.
+  >
+  > `FER-3` - deux taches. Les items qui servent la ligne ne posent pas tous la meme tache. Au moins
+  > deux taches distinctes, la moins servie portant au moins trois items.
 
   Et, deja appliquees a l'identique sur cette matiere (meme document, ligne d'introduction) :
   `HIS-3` (chaque fait porte sa source dans le commentaire du paquet) et `CON-1` (propositions
@@ -15863,19 +15907,30 @@ independamment.
     qualifie l'objet ancien de "difficile", "dur", "pauvre" ou "pas pratique", et aucun n'affirme
     que l'objet ancien etait moins bien que l'objet recent (`BIA-3`, transpose depuis "autrefois et
     aujourd'hui").
-  - Etant donne un item auquel l'enfant repond faux, quand le retour s'affiche, alors il dit en une
-    phrase pourquoi la reponse est fausse (`SCI-1`).
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand l'enfant
+    repond faux pour la premiere fois sur cet item, alors l'`indice`, affiche des ce moment, dit en
+    une phrase pourquoi cette conception est fausse, sans nommer la bonne reponse et sans jamais dire
+    "ta reponse" (`SCI-1`).
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand on compte
+    ses propositions, alors il en porte trois au moins (`SCI-4`).
   - Etant donne le paquet livre, quand on compte les items qui demandent une valeur numerique a
     restituer (une date, une duree), alors ils representent au plus un item sur six (`SCI-3`).
   - Etant donne un fait porte par un item, quand on verifie le commentaire du paquet, alors ce fait
     porte sa source (`HIS-3`).
   - Etant donne les propositions d'un item, quand elles s'affichent, alors elles sont masquees et
     l'item ne se repond pas sans l'enonce complet (`CON-1`).
+  - Etant donne le paquet livre, quand on verifie les elements du libelle disjonctif ("dans sa
+    fabrication ou dans son usage"), alors l'evolution et l'un des deux termes, fabrication ou usage,
+    sont chacun en position de bonne reponse d'au moins un item (`FER-1`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies, la moins servie portant au moins trois items (`FER-3`).
   - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
     `SCI-CM1-13` et uniquement elle.
   - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
-    qu'aucun item ne fait de la chronologie un progres et que `BIA-3`, `SCI-1`, `SCI-3`, `HIS-3` et
-    `CON-1` sont tenues.
+    qu'aucun item ne fait de la chronologie un progres et que `BIA-3`, `SCI-1`, `SCI-3`, `SCI-4`,
+    `FER-1`, `FER-2`, `FER-3`, `HIS-3` et `CON-1` sont tenues.
 - **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de designer une zone sur
   une image (schema d'un objet technique) - palier 2, non exige par cette ligne selon le jugement
   de faisabilite ; elle ne juge jamais un objet ancien moins bien qu'un objet recent (`BIA-3`) ;
