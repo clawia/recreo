@@ -11,6 +11,24 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s44, le 2026-09-30 (Q1 et Q3 de l'avis de faisabilite
+`avis-faisabilite-s44-mus-sci.md`).** Trois identifiants ajoutes, tous des conditions, ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md` : **`MUS-3`** (forme d'enonce
+de `pulsation` et `silence` sur `MUS-CP-11`), **`EVO-1`** et **`EVO-2`** (discriminant entre
+`SCI-CM1-13` et les lignes servies `SCI-CM1-11` et `SCI-CM1-12`). **Forme copiee** : `MUS-3` suit
+`MUS-1` et `MUS-2`, deja alloues ; `EVO` est un prefixe neuf, verifie absent de la table de la
+section 4, de l'arbre entier et des branches locales avant d'ecrire, et sa forme `PREFIXE-<n>` est
+copiee de `HDA-1`, condition posee sur une seule ligne de referentiel. Aucun marqueur de reserve
+(`ADR-0100`) : ce sont des conditions. Les lignes de la section 4 sont dans le meme diff que le
+document qui les ecrit.
+
+Ligne d'etat courant portee de **784 / 126 a 787 / 127**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 784 identifiants alloues et 126 prefixes distincts, sa table en porte 787 et 127"*. C'est
+ce **787 / 127** que je recopie.
+
 **Note de `nadia-prof`, hors sprint avant s44, le 2026-09-25 (frontiere `MAT-CE1-06` /
 `MAT-CE1-18`).** Un identifiant ajoute, **`DIV-CE1-6`**, ecrit dans
 `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 11 : la clause qui
@@ -340,7 +358,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `784` identifiants alloues, `126` prefixes distincts.
+**Compte courant, verifie par la CI** : `787` identifiants alloues, `127` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1185,6 +1203,8 @@ clause 2 par une exemption.
 | `EXC-R12` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R13` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R14` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EVO-1` | `squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md` |
+| `EVO-2` | `squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md` |
 | `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |
 | `FD-1` | `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md` |
 | `FD-2` | `squad/sprints/s34-dernier-sprint-du-plan-2-palier-2-engage/arbitrage-emccp07-nadia.md` |
@@ -1369,6 +1389,7 @@ clause 2 par une exemption.
 | `MUL-CE1-7` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md` |
 | `MUS-1` | `squad/programme/education-musicale/competences-cp.md` |
 | `MUS-2` | `squad/programme/education-musicale/competences-cp.md` |
+| `MUS-3` | `squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md` |
 | `NAR-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `NAR-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `NAR-3` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
