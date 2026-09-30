@@ -624,3 +624,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-eps-effets-activite
     nombreDeManches: 10
+  - id: bandit-manchot-division-ce1
+    titre: "La division"
+    consigne: "Partage la quantité, ou trouve le nombre de groupes."
+    mecanique: bandit-manchot
+    paquet: ce1-division
+    nombreDeManches: 10

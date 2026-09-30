@@ -313,6 +313,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S43-EPS-EFFETS-ACTIVITE (s43) : entree neuve, EPS-CM1-10, premier paquet
             // d'education physique et sportive CM1.
             "bandit-manchot-effets-activite-eps-cm1",
+            // S44-MAT-DIVISION (s44) : entree neuve, MAT-CE1-18, sens de la division (partage et
+            // groupement), sous-partie allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
+            "bandit-manchot-division-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -514,6 +517,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les objets numériques du quotidien",
             // S43-EPS-EFFETS-ACTIVITE (s43) : titre neuf.
             "Les effets de l'activité physique",
+            // S44-MAT-DIVISION (s44) : titre neuf.
+            "La division",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -741,6 +746,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S43-EPS-EFFETS-ACTIVITE (s43) : consigne neuve.
             "Lis bien, puis dis la cause commune, l'effort qui se distingue, ou la conduite de "
                     + "sécurité.",
+            // S44-MAT-DIVISION (s44) : consigne neuve.
+            "Partage la quantité, ou trouve le nombre de groupes.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1168,7 +1175,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // EPS-CM1-10).
             "Connaître les effets de l'activité physique sur le corps (échauffement, "
                     + "essoufflement, récupération, hydratation) et les règles de sécurité qui "
-                    + "l'entourent.");
+                    + "l'entourent.",
+            // S44-MAT-DIVISION (s44) : competence neuve, libelle du referentiel
+            // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-18) sans la
+            // parenthese finale, sous-partie allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
+            "Comprendre le sens de la division en résolvant des problèmes de partage et de "
+                    + "groupement");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
