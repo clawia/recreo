@@ -962,7 +962,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " toute la séance\", \"la soif\", \"arrêter l'effort, s'asseoir et boire\"...),"
                     + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
                     + " 2026-09-25 sur le paquet servi : aucune des 39 propositions ne commence par"
-                    + " un chiffre"));
+                    + " un chiffre"),
+            // S44-MUS-VOCABULAIRE : premier paquet d'education musicale CP (MUS-CP-11).
+            Map.entry("cp-musique-vocabulaire",
+            "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
+                    + " aucune n'est numerique : ce sont les quatre mots du vocabulaire musical"
+                    + " (\"le refrain\", \"le couplet\", \"la pulsation\", \"le silence\") ou leurs"
+                    + " definitions en texte libre, valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-09-30 sur le paquet servi : aucune des 33"
+                    + " propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

@@ -1,0 +1,81 @@
+# MUS-CP-11, "Nommer quelques repères du vocabulaire musical rencontré (refrain, couplet,
+# pulsation, silence)." (S44-MUS-VOCABULAIRE). Referentiel :
+# squad/programme/education-musicale/competences-cp.md, ligne 11, jugement de faisabilite du
+# 2026-09-03. Premier paquet d'education musicale, matiere neuve du produit (avis de faisabilite de
+# s44 de theo-archi, section 3.2).
+#
+# MUS-1 (referentiel, section "Conditions opposables") : aucun item ne suppose que l'enfant a
+# entendu quoi que ce soit - aucun texte ne contient "ecout" ni "entend".
+#
+# MUS-2 (meme section) : aucun dispositif ou un adulte chanterait, fredonnerait ou frapperait un
+# rythme - aucun texte ne contient "adulte", "fredonn", "frapp", ni le verbe "taper" sous aucune
+# forme ; aucun item ne porte de texteAVoixHaute.
+#
+# MUS-3 (nadia-prof, ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md, section 2.2) : sur les
+# items dont la bonne reponse est "la pulsation" ou "le silence", une definition generale de la
+# notion, jamais un cas particulier, jamais un geste, jamais un comptage ; le silence est un
+# silence de musique, situe dans une chanson ou une musique ; les distracteurs sont les autres mots
+# du vocabulaire musical du paquet, jamais "le rythme", "le tempo", "la mesure" (pulsation) ni "la
+# pause", "le soupir" (silence), qui seraient des reponses vraies ou defendables.
+#
+# Onze items, deux taches (FER-3) : huit items "definition -> mot" (items 1 a 8), ou chacun des
+# quatre termes du referentiel (refrain, couplet, pulsation, silence) est servi deux fois en bonne
+# reponse (FER-1), et trois items "mot -> definition" (items 9 a 11), qui ne comptent pas pour
+# FER-1 puisque le terme n'y est jamais en position de bonne reponse (arbitrage cite, section 2.4).
+#
+# ADR-0089 (LON-1, LON-2) : chaque enonce compte au plus quatorze mots et une seule phrase,
+# largement sous le plafond de quinze mots et deux phrases - un paquet neuf entre a zero.
+schema: 1
+id: cp-musique-vocabulaire
+type: question
+descripteur:
+  matiere: "Éducation musicale"
+  niveau: "CP"
+  domaine: "Échanger, partager et argumenter"
+  competence: "Nommer quelques repères du vocabulaire musical rencontré (refrain, couplet, pulsation, silence)."
+lignesDeReferentiel: ["MUS-CP-11"]
+items:
+  - enonce: "Comment s'appelle la partie d'une chanson qui revient après chaque couplet ?"
+    bonneReponse: "le refrain"
+    distracteurs: ["le couplet", "la pulsation"]
+    indice: "C'est la partie que l'on retrouve plusieurs fois dans la chanson."
+  - enonce: "Comment s'appelle la partie d'une chanson qui se répète plusieurs fois ?"
+    bonneReponse: "le refrain"
+    distracteurs: ["le couplet", "le silence"]
+    indice: "Elle revient toujours avec les mêmes mots."
+  - enonce: "Comment s'appelle la partie d'une chanson qui change de texte à chaque fois ?"
+    bonneReponse: "le couplet"
+    distracteurs: ["le refrain", "la pulsation"]
+    indice: "Son texte n'est jamais le même d'une fois à l'autre."
+  - enonce: "Comment s'appelle la partie d'une chanson qui vient juste avant le refrain ?"
+    bonneReponse: "le couplet"
+    distracteurs: ["le refrain", "le silence"]
+    indice: "Elle raconte la suite de l'histoire de la chanson."
+  - enonce: "Comment s'appelle le battement régulier d'une musique ?"
+    bonneReponse: "la pulsation"
+    distracteurs: ["le refrain", "le silence"]
+    indice: "Elle est présente du début à la fin de la musique."
+  - enonce: "Comment s'appelle le battement régulier qui accompagne une musique du début à la fin ?"
+    bonneReponse: "la pulsation"
+    distracteurs: ["le couplet", "le silence"]
+    indice: "Ce battement ne s'arrête jamais pendant la musique."
+  - enonce: "Comment s'appelle le court moment où la musique s'arrête, au milieu d'une chanson ?"
+    bonneReponse: "le silence"
+    distracteurs: ["le refrain", "la pulsation"]
+    indice: "Pendant ce court moment, il n'y a aucun son."
+  - enonce: "Comment s'appelle le moment sans aucun son à l'intérieur d'une musique ?"
+    bonneReponse: "le silence"
+    distracteurs: ["le couplet", "la pulsation"]
+    indice: "Ce moment est très court, puis la musique reprend."
+  - enonce: "Qu'est-ce que le refrain d'une chanson ?"
+    bonneReponse: "la partie qui revient plusieurs fois, presque toujours pareille"
+    distracteurs: ["la partie qui change de texte à chaque fois", "la partie sans aucun son, au milieu de la chanson"]
+    indice: "Pense à la partie que l'on retrouve le plus souvent."
+  - enonce: "Qu'est-ce que le couplet d'une chanson ?"
+    bonneReponse: "la partie qui change de texte à chaque fois qu'elle revient"
+    distracteurs: ["la partie qui revient toujours avec les mêmes mots", "le battement régulier qui accompagne la musique"]
+    indice: "Pense à la partie qui raconte une suite différente."
+  - enonce: "Qu'est-ce que la pulsation d'une musique ?"
+    bonneReponse: "le battement régulier qui accompagne toute la musique"
+    distracteurs: ["le moment où il n'y a aucun son", "la partie qui revient plusieurs fois dans la chanson"]
+    indice: "Pense à ce qui ne s'arrête jamais pendant la musique."

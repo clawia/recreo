@@ -630,3 +630,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-division
     nombreDeManches: 10
+  - id: bandit-manchot-vocabulaire-musical-cp
+    titre: "Les mots de la musique"
+    consigne: "Lis bien, puis dis le mot juste, ou ce qu'il veut dire."
+    mecanique: bandit-manchot
+    paquet: cp-musique-vocabulaire
+    nombreDeManches: 10
