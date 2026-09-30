@@ -970,7 +970,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " (\"le refrain\", \"le couplet\", \"la pulsation\", \"le silence\") ou leurs"
                     + " definitions en texte libre, valeurDe rend null sur les trois propositions de"
                     + " chaque item. Mesure du 2026-09-30 sur le paquet servi : aucune des 33"
-                    + " propositions ne commence par un chiffre"));
+                    + " propositions ne commence par un chiffre"),
+            // S44-SCI-OBJET-TECHNIQUE : paquet neuf, SCI-CM1-13 (evolution d'un objet technique).
+            Map.entry("cm1-sciences-evolution-objet-technique",
+            "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
+                    + " aucune n'est numerique : ce sont des relations entre un etat ancien et un"
+                    + " etat recent d'un objet, en texte libre (\"le bois a laissé la place au"
+                    + " plastique\", \"on s'en sert pour écrire\", \"il faut que le vent souffle pour"
+                    + " avancer\"...), valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-09-30 sur le paquet servi : aucune des 33 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

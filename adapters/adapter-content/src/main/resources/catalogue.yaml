@@ -636,3 +636,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-musique-vocabulaire
     nombreDeManches: 10
+  - id: bandit-manchot-evolution-objet-technique-cm1
+    titre: "Comment ça a changé ?"
+    consigne: "Lis bien, puis dis ce qui a changé, ou ce qui n'a pas changé."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-evolution-objet-technique
+    nombreDeManches: 10
