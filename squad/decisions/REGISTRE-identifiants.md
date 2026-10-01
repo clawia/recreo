@@ -11,6 +11,25 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s45, instance A, le 2026-10-01 (Done pedagogiques de `MAT-CE1-04`,
+`MUS-CP-05` et `EPS-CM1-09`).** Quatre identifiants ajoutes, tous des reserves : **`MUS-CP-R2`** et
+**`MUS-CP-R3`**, ecrits dans `squad/conformite/FICHE-bandit-manchot-instruments-musicaux-cp.md` ;
+**`EPS-CM1-R5`** et **`EPS-CM1-R6`**, ecrits dans
+`squad/conformite/FICHE-bandit-manchot-roles-eps-cm1.md`. **Aucun prefixe neuf** : `MUS-CP-R1` et
+`EPS-CM1-R1` a `EPS-CM1-R4` etaient alloues, et les quatre identifiants ont ete cherches sur l'arbre
+et sur toutes les branches locales avant d'ecrire, absents. **Formes copiees** de `MUS-CP-R1` et
+`EPS-CM1-R4` : trois segments, marqueur `R` dans le dernier (`ADR-0100`). Les quatre lignes de la
+section 4 sont dans le meme diff que les deux fiches. Aucun identifiant n'est ecrit dans la fiche
+de `bandit-manchot-additions-posees-ce1`, validee sans reserve.
+
+Ligne d'etat courant portee de **794 / 127 a 798 / 127**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 794 identifiants alloues et 127 prefixes distincts, sa table en porte 798 et 127"*. C'est
+ce **798 / 127** que je recopie. L'instance B travaille en parallele sur le meme fichier : si elle
+alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, s45, le 2026-10-01 (Q1, Q3, Q4 et Q5 de l'avis de faisabilite
 `avis-faisabilite-s45-cinq-lots.md`).** Un identifiant ajoute, une condition : **`EPS-10`**
 (discriminant CM1/CP de `EPS-CM1-09` face a `cp-eps-regles-jeu-collectif`), ecrit dans
@@ -392,7 +411,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `794` identifiants alloues, `127` prefixes distincts.
+**Compte courant, verifie par la CI** : `798` identifiants alloues, `127` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1770,3 +1789,7 @@ clause 2 par une exemption.
 | `EVO-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md` |
 | `EVO-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md` |
 | `DIV-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-division-ce1.md` |
+| `MUS-CP-R2` | `squad/conformite/FICHE-bandit-manchot-instruments-musicaux-cp.md` |
+| `MUS-CP-R3` | `squad/conformite/FICHE-bandit-manchot-instruments-musicaux-cp.md` |
+| `EPS-CM1-R5` | `squad/conformite/FICHE-bandit-manchot-roles-eps-cm1.md` |
+| `EPS-CM1-R6` | `squad/conformite/FICHE-bandit-manchot-roles-eps-cm1.md` |
