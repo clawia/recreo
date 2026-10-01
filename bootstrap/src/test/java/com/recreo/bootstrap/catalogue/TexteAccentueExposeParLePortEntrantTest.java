@@ -349,6 +349,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-SCI-MOUVEMENT-CM1 (s46) : entree neuve, SCI-CM1-03, decrire un mouvement par sa
             // trajectoire et sa vitesse.
             "bandit-manchot-mouvement-cm1",
+            // S46-MAT-SOUSTRACTION (s46) : entree neuve, MAT-CE1-05, soustraction posee avec
+            // emprunt. Complete ici (fusion de s46) : le lot de marc-dev n'avait mesure que le
+            // module adapter-content, pas le reacteur complet, et ne pouvait donc pas voir ce
+            // garde-fou du module bootstrap rougir.
+            "bandit-manchot-soustractions-posees-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -572,6 +577,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Ressentir et agir",
             // S46-SCI-MOUVEMENT-CM1 (s46) : titre neuf.
             "Trajectoire et vitesse",
+            // S46-MAT-SOUSTRACTION (s46) : titre neuf. Complete ici, voir le motif pres de l'id.
+            "Les soustractions posées",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -1313,7 +1320,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-SCI-MOUVEMENT-CM1 (s46) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/sciences-et-technologie/competences-cm1.md, ligne SCI-CM1-03).
             "Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à "
-                    + "un point de repère donné.");
+                    + "un point de repère donné.",
+            // S46-MAT-SOUSTRACTION (s46) : competence neuve, libelle du referentiel
+            // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-05). Complete ici,
+            // voir le motif pres de l'id.
+            "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
