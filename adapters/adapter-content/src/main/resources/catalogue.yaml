@@ -666,3 +666,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-eps-roles
     nombreDeManches: 10
+  - id: bandit-manchot-emotion-ressentir-agir-cm1
+    titre: "Ressentir et agir"
+    consigne: "Lis bien, puis dis quelle émotion ressent la personne, ou distingue ce qu'elle ressent de ce qu'elle fait."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-emotion-ressentir-agir
+    nombreDeManches: 10

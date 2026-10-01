@@ -1009,7 +1009,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " lit le premier nombre puis trouve un chiffre dans le reste (le second nombre"
                     + " du score), donc rend null, meme motif qu'ADR-0068 sur cp-ranger-nombres."
                     + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
-                    + " 2026-10-01 sur le paquet servi : zero item classe sur douze"));
+                    + " 2026-10-01 sur le paquet servi : zero item classe sur douze"),
+            // S46-EMC-EMOTION-CM1 : paquet neuf, EMC-CM1-01 (identifier une emotion, distinguer
+            // ressentir et agir).
+            Map.entry("cm1-emc-emotion-ressentir-agir",
+            "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms d'emotion (\"de la fierté\", \"de"
+                    + " la colère\"...) ou des gestes decrits en texte libre (\"il range calmement"
+                    + " les pièces du jeu\"...), valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-10-01 sur le paquet servi : aucune des 33"
+                    + " propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

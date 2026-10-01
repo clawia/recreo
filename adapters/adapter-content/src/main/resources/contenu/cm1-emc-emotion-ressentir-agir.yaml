@@ -1,0 +1,116 @@
+schema: 1
+id: cm1-emc-emotion-ressentir-agir
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Respecter autrui"
+  competence: "Identifier et nommer l'émotion d'une personne dans une situation donnée, et distinguer ce que l'on ressent de ce que l'on fait."
+lignesDeReferentiel: ["EMC-CM1-01"]
+#
+# S46-EMC-EMOTION-CM1 (docs/backlog/backlog.md, sprint 46), ligne EMC-CM1-01 de l'enseignement
+# moral et civique (CM1), instance A. Arbitrage prealable cite integralement depuis sa source
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, Jugement de faisabilite,
+# nadia-prof, 2026-09-03, ligne 1) : "non couvert - jouable au choix, sous EMC-1 et EMC-2 | La
+# situation est decrite, l'emotion s'infere. Risque propre : beaucoup de situations admettent deux
+# emotions defendables - HIS-2 transpose, et il mord ici plus fort qu'en histoire. La seconde
+# moitie - distinguer ce que l'on ressent de ce que l'on fait - est la partie utile au CM1 et elle
+# se pose tres bien en trois propositions." Referentiel copie conforme (meme fichier, EMC-CM1-01).
+# Avis de faisabilite de theo-archi (squad/rapports/avis-faisabilite-s46-cinq-lots.md, section 4) :
+# faisable en l'etat, zero code de production.
+#
+# Conditions posees d'avance sur toute la matiere, reprises a l'identique de l'EMC CP, citees mot
+# pour mot (squad/programme/enseignement-moral-et-civique/competences-cp.md) :
+#
+# EMC-1 : aucun item n'interroge l'enfant sur ce que lui ressent, vit, croit ou fait chez lui. Les
+# situations sont celles d'un personnage nomme, exterieur a l'enfant - tenu sur les onze items :
+# Lea, Hugo, Aya, Malo, Tom sont les seuls sujets des phrases, jamais l'enfant qui joue.
+#
+# EMC-2 : un item sur une emotion ne retient que les situations a emotion unique et evidente. Si
+# deux des trois propositions sont defendables devant la situation decrite, l'item est refuse.
+# Reste a l'audit de nadia-prof : non automatisable sur une lecture semantique de chaque situation.
+#
+# EMC-5 : aucun item n'a deux reponses defendables - HIS-2 etendu a cette matiere. Meme reserve que
+# EMC-2, reste a l'audit de nadia-prof.
+#
+# EMC-8 : aucun item ne demande a l'enfant de declarer un comportement (forme "que fais-tu si...",
+# "acceptes-tu de...", "comment reagis-tu quand..."). Les items portent sur ce que la personne
+# decrite ressent ou fait, jamais sur ce que l'enfant declare qu'il ferait - tenu sur les onze
+# items, aucun n'interpelle l'enfant a la deuxieme personne.
+#
+# Mention exigee d'avance si la ligne bouge, reprise mot pour mot (meme fichier, section "Mention
+# exigee d'avance si une ligne bouge") : "connaissances civiques et reconnaissance de situations
+# seules ; aucun comportement, aucun engagement et aucune participation a une decision collective
+# ne sont servis par ce produit." Ce paquet ne demande ni comportement, ni engagement, ni
+# participation a une decision collective.
+#
+# CYC-1 - continuite cycle 2 / cycle 3, lecture obligatoire avant de juger (piege de fabrication
+# signale par sofia-sm, planning s46 section 7) : EMC-CM1-01 partage son objet avec EMC-CP-01
+# (identifier et nommer les emotions d'autrui), couvert-valide depuis s31
+# (bandit-manchot-emotions-autrui-cp). Aucun item de ce paquet ne contredit les quatre emotions
+# deja servies au CP (joie, tristesse, colere, peur) : elles restent des bonnes reponses ou des
+# distracteurs valides ici, sans qu'aucune situation neuve ne leur donne un sens oppose. La
+# seconde moitie de la ligne (distinguer ce que l'on ressent de ce que l'on fait) est une extension
+# propre au CM1, pas une redite du paquet de CP - c'est elle qui porte les cinq items de la tache B.
+# La comparaison semantique avec bandit-manchot-emotions-autrui-cp reste a l'audit de nadia-prof,
+# instance A.
+#
+# Deux taches distinctes (FER-3) :
+# - tache A, "identifier l'emotion" (six items) : une situation vecue par un personnage nomme,
+#   question "Quelle emotion ressent-il/elle ?", les trois propositions sont toujours des noms
+#   d'emotion (joie, tristesse, colere, peur, fierte, deception, honte, soulagement, jalousie).
+# - tache B, "distinguer ce que l'on ressent de ce que l'on fait" (cinq items) : une situation
+#   decrit a la fois ce qu'un personnage ressent et ce qu'il fait ensuite ; la question porte sur
+#   l'un des deux ("Qu'est-ce que ... ressent ?" ou "Qu'est-ce que ... fait ?"), et les propositions
+#   melangent une emotion et un geste decrit dans l'enonce, pour qu'un enfant qui confond les deux
+#   categories se trompe de rang plutot que de contenu.
+#
+# FER-2 : onze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
+# strictement plus d'items que de manches).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+items:
+  - enonce: "Léa remporte le concours de dessin de l'école, et son dessin est affiché dans le couloir devant tous les élèves. Quelle émotion ressent-elle ?"
+    bonneReponse: "de la fierté"
+    distracteurs: ["de la honte", "de la tristesse"]
+    indice: "Elle a réussi quelque chose de difficile, et tout le monde peut maintenant le voir."
+  - enonce: "Hugo attendait un vélo pour son anniversaire, et sa tante lui offre un livre qu'il possède déjà. Quelle émotion ressent-il ?"
+    bonneReponse: "de la déception"
+    distracteurs: ["de la joie", "de la colère"]
+    indice: "Ce qu'il reçoit n'est pas du tout ce qu'il espérait recevoir."
+  - enonce: "Aya a menti à sa maîtresse ce matin, et elle pense que celle-ci va bientôt s'en apercevoir. Quelle émotion ressent-elle ?"
+    bonneReponse: "de la honte"
+    distracteurs: ["de la fierté", "de la joie"]
+    indice: "Elle sait qu'elle a fait quelque chose qu'elle n'aurait pas dû faire."
+  - enonce: "Malo cherchait son chat depuis deux jours, et il le retrouve enfin sain et sauf sous la voiture du voisin. Quelle émotion ressent-il ?"
+    bonneReponse: "du soulagement"
+    distracteurs: ["de la peur", "de la colère"]
+    indice: "Une inquiétude qu'il portait depuis longtemps vient de s'arrêter d'un coup."
+  - enonce: "Léa voit sa meilleure amie inviter une autre fille à son anniversaire, et pas elle. Quelle émotion ressent-elle ?"
+    bonneReponse: "de la jalousie"
+    distracteurs: ["de la fierté", "du soulagement"]
+    indice: "Elle aurait aimé être choisie à la place de l'autre fille."
+  - enonce: "Tom doit traverser seul le sous-sol sombre de l'école pour aller chercher un ballon oublié. Quelle émotion ressent-il ?"
+    bonneReponse: "de la peur"
+    distracteurs: ["de la fierté", "de la déception"]
+    indice: "Il ne voit presque rien autour de lui, et il est tout seul."
+  - enonce: "Léa rate son bus pour la troisième fois ce mois-ci : elle serre les poings et tape du pied par terre, puis elle décide de respirer un grand coup pour se calmer. Qu'est-ce que Léa ressent ?"
+    bonneReponse: "de la colère"
+    distracteurs: ["elle serre les poings et tape du pied par terre", "elle décide de respirer un grand coup pour se calmer"]
+    indice: "Ce qu'elle ressent n'est pas le geste qu'elle fait ensuite pour se calmer."
+  - enonce: "Hugo perd la partie de jeu de société contre son petit frère, et il est déçu du résultat ; il range quand même calmement les pièces du jeu. Qu'est-ce qu'Hugo fait après avoir perdu ?"
+    bonneReponse: "il range calmement les pièces du jeu"
+    distracteurs: ["de la déception", "il se met à pleurer bruyamment"]
+    indice: "La question porte sur son geste, pas sur ce qu'il ressent à l'intérieur."
+  - enonce: "Aya entend toute la classe applaudir son exposé sur les volcans ; elle sourit timidement et baisse un peu les yeux, puis elle range calmement ses feuilles. Qu'est-ce qu'Aya ressent ?"
+    bonneReponse: "de la fierté"
+    distracteurs: ["elle sourit timidement et baisse un peu les yeux", "elle range calmement ses feuilles"]
+    indice: "Ce qu'elle ressent n'est pas le geste qu'elle fait ensuite avec ses feuilles."
+  - enonce: "Malo apprend qu'il n'est pas choisi pour l'équipe de l'école, et il se sent triste ; il applaudit quand même ses camarades sélectionnés. Qu'est-ce que Malo fait après avoir appris la nouvelle ?"
+    bonneReponse: "il applaudit quand même ses camarades sélectionnés"
+    distracteurs: ["de la tristesse", "il quitte le gymnase en courant"]
+    indice: "La question porte sur son geste envers les autres, pas sur ce qu'il ressent."
+  - enonce: "Tom découvre que son ballon préféré a été crevé par accident pendant la récréation : il croise les bras et tourne le dos à ses camarades, puis il va prévenir la maîtresse calmement. Qu'est-ce que Tom ressent ?"
+    bonneReponse: "de la colère"
+    distracteurs: ["il croise les bras et tourne le dos à ses camarades", "il va prévenir la maîtresse calmement"]
+    indice: "Ce qu'il ressent n'est pas ce que son corps fait, ni ce qu'il décide de faire ensuite."

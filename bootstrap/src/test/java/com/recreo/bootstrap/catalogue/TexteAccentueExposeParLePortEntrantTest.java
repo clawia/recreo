@@ -337,6 +337,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S45-EPS-ROLES (s45) : entree neuve, EPS-CM1-09, tenir les roles d'arbitre,
             // d'observateur ou de marqueur dans un jeu.
             "bandit-manchot-roles-eps-cm1",
+            // S46-EMC-EMOTION-CM1 (s46) : entree neuve, EMC-CM1-01, identifier une emotion et
+            // distinguer ce que l'on ressent de ce que l'on fait.
+            "bandit-manchot-emotion-ressentir-agir-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -552,6 +555,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les additions posées",
             // S45-EPS-ROLES (s45) : titre neuf.
             "Arbitre, observateur, marqueur",
+            // S46-EMC-EMOTION-CM1 (s46) : titre neuf.
+            "Ressentir et agir",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -792,6 +797,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S45-EPS-ROLES (s45) : consigne neuve.
             "Lis bien, puis dis ce que décide l'arbitre, ce que relève l'observateur, ou le score "
                     + "que donne le marqueur.",
+            // S46-EMC-EMOTION-CM1 (s46) : consigne neuve.
+            "Lis bien, puis dis quelle émotion ressent la personne, ou distingue ce qu'elle "
+                    + "ressent de ce qu'elle fait.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1265,7 +1273,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/education-physique-et-sportive/competences-cm1.md, ligne
             // EPS-CM1-09).
             "Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer "
-                    + "les règles.");
+                    + "les règles.",
+            // S46-EMC-EMOTION-CM1 (s46) : competence neuve, libelle du referentiel copie mot pour
+            // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-01).
+            "Identifier et nommer l'émotion d'une personne dans une situation donnée, et "
+                    + "distinguer ce que l'on ressent de ce que l'on fait.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
