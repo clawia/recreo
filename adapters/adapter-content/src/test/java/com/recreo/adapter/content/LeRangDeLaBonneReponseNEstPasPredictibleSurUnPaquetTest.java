@@ -1018,7 +1018,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"le conseil municipal\", \"l'école\") ou des descriptions de leur fonction en"
                     + " texte libre, valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-10-01 sur le paquet servi : aucune des 36 propositions ne"
-                    + " commence par un chiffre"));
+                    + " commence par un chiffre"),
+            // S46-SCI-PHENOMENES-CM1 : paquet neuf de sciences et technologie CM1 (SCI-CM1-16).
+            Map.entry("cm1-sciences-phenomenes",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des noms de phenomenes (\"un séisme\","
+                    + " \"une tempête\"...) ou des gestes de protection en texte libre, valeurDe rend"
+                    + " null sur les trois propositions de chaque item. Mesure du 2026-10-01 sur le"
+                    + " paquet servi : aucune des 36 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
