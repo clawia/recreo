@@ -1009,7 +1009,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " lit le premier nombre puis trouve un chiffre dans le reste (le second nombre"
                     + " du score), donc rend null, meme motif qu'ADR-0068 sur cp-ranger-nombres."
                     + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
-                    + " 2026-10-01 sur le paquet servi : zero item classe sur douze"));
+                    + " 2026-10-01 sur le paquet servi : zero item classe sur douze"),
+            // S46-EMC-INSTITUTIONS-CM1 : paquet neuf d'enseignement moral et civique CM1
+            // (EMC-CM1-09).
+            Map.entry("cm1-emc-institutions",
+            "12 items sur 12 portent deux distracteurs (trois propositions), mais aucune des 36"
+                    + " propositions n'est numerique : ce sont des noms d'institution (\"la mairie\","
+                    + " \"le conseil municipal\", \"l'école\") ou des descriptions de leur fonction en"
+                    + " texte libre, valeurDe rend null sur les trois propositions de chaque item."
+                    + " Mesure du 2026-10-01 sur le paquet servi : aucune des 36 propositions ne"
+                    + " commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
