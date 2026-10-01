@@ -1,6 +1,7 @@
 package com.recreo.adapter.content;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
@@ -39,11 +40,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * nadia-prof a mesure sa section 1, et {@link Forme} le declare dans cet ordre.
  *
  * <p><b>Le perimetre est derive, jamais enumere</b> (ADR-0013). La population n'est pas une liste de
- * noms de paquets : c'est l'ensemble des paquets <b>servis</b> dont le descripteur declare le niveau
- * {@code CE1} et dont <b>tous</b> les items sont une addition de deux entiers. Un second paquet
- * d'additions CE1 est donc garde le jour ou il entre, sans qu'une ligne de ce fichier bouge ; un
- * paquet CE1 de soustractions, dont les items ne sont pas des additions, en sort de lui-meme, et
- * c'est correct - {@code ADD-CE1-2} porte sur les additions et le dit dans son intitule.
+ * noms de paquets : c'est l'ensemble des paquets dont le descripteur declare le niveau {@code CE1},
+ * dont <b>tous</b> les items sont une addition de deux entiers, <b>et qui declarent
+ * {@code MAT-CE1-03}</b> dans {@code lignesDeReferentiel} (ADR-0103). Un second paquet d'additions
+ * de {@code MAT-CE1-03} est donc garde le jour ou il entre, sans qu'une ligne de ce fichier bouge ;
+ * un paquet CE1 de soustractions, dont les items ne sont pas des additions, en sort de lui-meme, et
+ * c'est correct - {@code ADD-CE1-2} porte sur les additions et le dit dans son intitule. Un paquet
+ * qui declare honnetement {@code MAT-CE1-04} en sort aussi : la table est celle de l'echelle 100, et
+ * ce paquet ne peut pas en tenir la deuxieme bande, quel que soit son contenu. Le glissement inverse
+ * - servir {@code MAT-CE1-03} sous le code {@code MAT-CE1-04} - n'est pas tenu ici, mais par
+ * {@code ADP-CE1-2} et {@code ADP-CE1-3} dans le test du paquet.
  *
  * <p><b>Ce que ce garde-fou ne dit pas</b>, et nadia-prof l'a ecrit avant moi (section 6) : que le
  * paquet travaille reellement {@code MAT-CE1-03}, que l'ordre des manches d'une partie soit bon, que
@@ -67,6 +73,9 @@ class ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest {
             "src/test/resources/contreexemple/ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest");
 
     private static final String NIVEAU_GARDE = "CE1";
+
+    /** ADR-0103 : ADD-CE1-2 est une condition de cette ligne, et d'elle seule. */
+    private static final String LIGNE_GARDEE = "MAT-CE1-03";
 
     /**
      * Un enonce d'addition, et rien d'autre : deux entiers separes par un plus.
@@ -153,9 +162,10 @@ class ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest {
     }
 
     /**
-     * Le recensement. Un paquet entre dans la population s'il declare le niveau garde et si
-     * <b>tous</b> ses items sont une addition : un paquet mixte n'est pas silencieusement reduit a
-     * ses additions, il sort du perimetre, et le cas est nomme plutot que laisse arriver.
+     * Le recensement. Un paquet entre dans la population s'il declare le niveau garde, s'il declare
+     * la ligne gardee parmi ses lignes (ADR-0103) et si <b>tous</b> ses items sont une addition : un
+     * paquet mixte n'est pas silencieusement reduit a ses additions, il sort du perimetre, et le cas
+     * est nomme plutot que laisse arriver.
      */
     static List<PaquetDAdditions> paquetsDAdditionsDuNiveau(Path catalogue, Path repertoireDeContenu) {
         List<String> servis = AucunTitreDeJeuNePorteSonNiveauTest
@@ -182,6 +192,8 @@ class ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest {
         if (!(new Yaml().load(lire(fichier)) instanceof Map<?, ?> corps)
                 || !(corps.get("descripteur") instanceof Map<?, ?> descripteur)
                 || !NIVEAU_GARDE.equals(String.valueOf(descripteur.get("niveau")).strip())
+                || !(corps.get("lignesDeReferentiel") instanceof List<?> lignes)
+                || lignes.stream().noneMatch(ligne -> LIGNE_GARDEE.equals(String.valueOf(ligne).strip()))
                 || !(corps.get("items") instanceof List<?> items)
                 || items.isEmpty()) {
             return;
@@ -392,6 +404,63 @@ class ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest {
                 CONTRE_EXEMPLE.resolve("contenu")))
                 .extracting(PaquetDAdditions::id)
                 .doesNotContain("paquet-soustractions-ce1");
+    }
+
+    /**
+     * ADR-0103, premier sens : un paquet CE1 d'additions avec retenue qui declare honnetement
+     * {@code MAT-CE1-04} sort de la population. Il est vert ici sans tenir les huit bandes, et la
+     * mise a l'epreuve suivante prouve qu'il ne les tient pas.
+     */
+    @Test
+    void unPaquetDAdditionsDeCe1QuiDeclareMatCe104SortDuPerimetre() {
+        assertThat(paquetsDAdditionsDuNiveau(CONTRE_EXEMPLE.resolve("catalogue.yaml"),
+                CONTRE_EXEMPLE.resolve("contenu")))
+                .extracting(PaquetDAdditions::id)
+                .doesNotContain("paquet-avec-retenue-ce1");
+    }
+
+    /**
+     * ADR-0103, second sens : le meme paquet, dont seule la declaration redevient
+     * {@code MAT-CE1-03}, entre dans la population et rougit. C'est la mise a l'epreuve 3 traversee
+     * par la lecture disque : l'addition avec retenue servie sous le code de {@code MAT-CE1-03}.
+     */
+    @Test
+    void lePaquetDeMatCe104RedeclareMatCe103EntreDansLaPopulationEtRougit(@TempDir Path racine)
+            throws IOException {
+        Path contenu = Files.createDirectories(racine.resolve("contenu"));
+        Files.copy(CONTRE_EXEMPLE.resolve("catalogue.yaml"), racine.resolve("catalogue.yaml"));
+        String paquet = lire(CONTRE_EXEMPLE.resolve("contenu/paquet-avec-retenue-ce1.yaml"));
+        String redeclare = paquet.replace("[\"MAT-CE1-04\"]", "[\"MAT-CE1-03\"]");
+        assertThat(redeclare).as("la mutation doit toucher la declaration").isNotEqualTo(paquet);
+        Files.writeString(contenu.resolve("paquet-avec-retenue-ce1.yaml"), redeclare);
+
+        List<PaquetDAdditions> population = paquetsDAdditionsDuNiveau(
+                racine.resolve("catalogue.yaml"), contenu);
+
+        assertThat(population).extracting(PaquetDAdditions::id)
+                .containsExactly("paquet-avec-retenue-ce1");
+        assertThatThrownBy(() -> verifier(population))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("paquet-avec-retenue-ce1")
+                .hasMessageContaining("somme <= 20")
+                .hasMessageContaining("avec retenue");
+    }
+
+    /**
+     * ADR-0103 sur du materiau reel : le paquet servi, dont seule la declaration devient
+     * {@code MAT-CE1-04}, sort de la population. Le predicat lit donc la cle sous la forme ou le
+     * depot l'ecrit, et non seulement sous celle de ma fixture.
+     */
+    @Test
+    void lePaquetServiRedeclareMatCe104SortDeLaPopulation(@TempDir Path racine) throws IOException {
+        Path contenu = Files.createDirectories(racine.resolve("contenu"));
+        Files.copy(CATALOGUE_SERVI, racine.resolve("catalogue.yaml"));
+        String paquet = lire(CONTENU_SERVI.resolve("ce1-additions-jusqu-a-100.yaml"));
+        String redeclare = paquet.replace("[\"MAT-CE1-03\"]", "[\"MAT-CE1-04\"]");
+        assertThat(redeclare).as("la mutation doit toucher la declaration").isNotEqualTo(paquet);
+        Files.writeString(contenu.resolve("ce1-additions-jusqu-a-100.yaml"), redeclare);
+
+        assertThat(paquetsDAdditionsDuNiveau(racine.resolve("catalogue.yaml"), contenu)).isEmpty();
     }
 
     /**

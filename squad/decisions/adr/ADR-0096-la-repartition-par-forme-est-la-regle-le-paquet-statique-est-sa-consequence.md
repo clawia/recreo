@@ -1,6 +1,6 @@
 # ADR-0096 - Encoder `ADD-CE1-2` comme un garde-fou derive de la forme des items, et servir le premier paquet CE1 par un paquet statique plutot qu'en etendant le seul generateur du depot
 
-- **Statut** : Accepte
+- **Statut** : Accepte, sa decision 1 amendee le 2026-10-01 (s45) par `ADR-0103`
 - **Date** : 2026-09-21
 - **Auteur** : theo-archi
 - **Sprint** : s37
@@ -33,6 +33,10 @@ de la forme des items, pas d'une liste de paquets.** Il juge tout paquet servi q
 niveau `CE1` et dont **tous** les items sont une addition de deux entiers. Un second paquet
 d'additions CE1 est garde le jour ou il entre ; un paquet CE1 de soustractions en sort de lui-meme,
 et c'est correct - `ADD-CE1-2` porte sur les additions et le dit dans son intitule.
+
+> **Amendement du 2026-10-01 (s45, `ADR-0103`)** : la population est restreinte aux paquets qui
+> declarent `MAT-CE1-03` dans `lignesDeReferentiel`. Un paquet de `MAT-CE1-04` ne peut pas tenir la
+> deuxieme bande, quel que soit son contenu ; il sort du perimetre. Le critere est inchange.
 
 **2. Le premier paquet CE1 est un paquet statique de type `question`, et le generateur
 `additions-bornees` n'est pas etendu.**
