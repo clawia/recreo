@@ -3047,6 +3047,170 @@ bloquante et n'a pas retenu la fermeture de `MAT-CE1-03` a s38.
   perimetre de s38 est borne par `DEC-0091` aux quatre lots deja instruits
   (`S38-CORR`, `S38-SOUSTRACTIONS`, `S38-COMPLEMENTS-DIZAINE`, `S38-MOITIES`).
 
+### Story de correction differee, priorite la plus haute des quatre reserves de s44 - `EVO-CM1-R2` : l'item du moulin contredit un autre paquet deja livre
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-evolution-objet-technique-cm1` a s44 et prononce
+**VALIDE SOUS RESERVE** sur `SCI-CM1-13` (`squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md`,
+section 7). L'item 5 (le moulin) fait de la force de l'eau et de l'electricite deux choses qui se
+remplacent - bonne reponse *"la force de l'eau a laissé la place à l'électricité"*, indice *"sans
+roue tournée par une rivière"* - alors que `cm1-sciences-energie.yaml` (ligne deja `couvert-valide`,
+`SCI-CM1-04`), item du barrage hydraulique, enseigne au meme niveau que l'eau **produit** de
+l'electricite via une turbine (*"Quelle transformation d'énergie un barrage hydraulique
+réalise-t-il ?"*, bonne reponse *"le mouvement de l'eau en énergie électrique"*). `nadia-prof` :
+*"Un enfant qui a joue les deux paquets recoit deux messages contraires."* Ce n'est pas un motif de
+refus : le Done pedagogique reste `VALIDE SOUS RESERVE`, mais c'est une erreur de fait dans un
+contenu deja livre aux enfants, et la priorite la plus haute des quatre reserves ouvertes sur ce
+paquet.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Comment ça a changé ?", je veux que l'item du
+  moulin decrive une evolution technique reelle, afin de ne pas apprendre une chose que le jeu sur
+  l'energie me dit fausse juste a cote.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Materiaux et
+  objets techniques", `SCI-CM1-13` (`squad/programme/sciences-et-technologie/competences-cm1.md`) -
+  ligne deja `couvert-valide` depuis s44 (Done pedagogique **VALIDE SOUS RESERVE** sur ce paquet),
+  non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'item du moulin, quand on relit son enonce du debut a la fin, alors l'objet nomme
+    au debut (*"un moulin"*) reste le meme objet jusqu'a la fin de la question - l'enonce ne glisse
+    plus vers *"de nombreuses machines"* (`EVO-1`).
+  - Etant donne la bonne reponse et le distracteur inverse de cet item, quand on les relit, alors
+    ils nomment ce qui fait tourner la meule du moulin (par exemple *"la roue à eau a laissé la
+    place à un moteur électrique"*), jamais l'eau et l'electricite comme deux sources
+    interchangeables.
+  - Etant donne l'indice de cet item, quand on le relit, alors il ne dit pas d'ou vient
+    l'electricite, pour ne pas reouvrir la meme confusion sous une autre forme.
+  - Etant donne l'item corrige et l'item du barrage hydraulique de `cm1-sciences-energie.yaml` lus
+    cote a cote, quand on compare ce qu'ils enseignent sur l'eau et l'electricite, alors ils ne se
+    contredisent plus : aucun des deux ne presente l'eau et l'electricite comme deux sources qui se
+    remplacent.
+  - Etant donne le paquet corrige, quand on relit les criteres deja verifies par `nadia-prof` sur ce
+    paquet (`EVO-1`, `EVO-2`, `SCI-1`, `SCI-3`, `SCI-4`, `BIA-3`, `HIS-3`, `CON-1`, `FER-1` a
+    `FER-3`), alors ils restent tous vrais : cette story ne touche qu'un seul item sur onze.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue l'item corrige et confirme qu'il ne contredit plus
+    `cm1-sciences-energie.yaml`.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-09-30 (`squad/conformite/FICHE-bandit-manchot-evolution-objet-technique-cm1.md`, section 7),
+  identifiant deja alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC`
+  d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur, en priorite sur les
+  trois autres reserves du meme paquet (ci-dessous) : c'est une erreur de fait, pas un defaut de
+  forme.
+
+### Story de correction differee, groupee par paquet - `EVO-CM1-R1`, `EVO-CM1-R3`, `EVO-CM1-R4` : trois defauts restants de "Comment ça a changé ?"
+
+**Contexte.** Memes audit et fiche que ci-dessus. Trois reserves non bloquantes restent sur le
+meme paquet, distinctes de `EVO-CM1-R2` : aucune n'est une erreur de fait qui contredit un autre
+contenu, chacune est bornee a un seul endroit du meme fichier YAML, et `camille-po` les groupe en
+une seule story de correction par paquet plutot que trois stories separees - meme auteur de
+contenu, meme fichier, meme audit, aucune ne depend des autres pour etre corrigee.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Comment ça a changé ?", je veux que chaque
+  manche demande vraiment de comparer deux etats de l'objet, et non de reconnaitre un bouton a sa
+  forme ou de juger l'ancien moins bien, afin que le jeu m'apprenne ce qu'il pretend m'apprendre.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Materiaux et
+  objets techniques", `SCI-CM1-13` - ligne deja `couvert-valide` depuis s44, non rouverte par cette
+  story.
+- **Criteres d'acceptation** :
+  - **`EVO-CM1-R1`** (tache B, six items 6 a 11) : etant donne les six bonnes reponses de la tache
+    B, quand on releve leur premiere amorce, alors elle n'est plus exclusive aux bonnes reponses -
+    soit les douze distracteurs recoivent une amorce de meme forme (par exemple *"on s'en sert en
+    trempant sa pointe dans l'encre"*, *"on l'utilise en restant à la maison"*), soit l'amorce des
+    bonnes reponses varie d'un item a l'autre ; dans les deux cas, aucun distracteur ne devient une
+    fonction fausse (`EVO-2` reste tenue).
+  - **`EVO-CM1-R3`** (item 2, l'eclairage) : etant donne le distracteur *"la bougie a laissé la
+    place à la lampe à huile"*, quand on le relit, alors il est remplace par un passage que
+    l'histoire des techniques n'a pas connu - il ne reste plus historiquement defendable.
+  - **`EVO-CM1-R4`** (item 8, le lavoir) : etant donne le distracteur du lavoir, quand on le relit,
+    alors il se lit *"il faut frotter le linge à la main"*, sans *"pendant longtemps"*.
+  - Etant donne le paquet corrige, quand on relit les criteres deja verifies par `nadia-prof`
+    (`EVO-1`, `EVO-2`, `SCI-1`, `SCI-3`, `SCI-4`, `BIA-3`, `HIS-3`, `CON-1`, `FER-1` a `FER-3`),
+    alors ils restent tous vrais : cette story touche trois items sur onze, sans toucher l'item 5
+    (`EVO-CM1-R2`, story separee et prioritaire).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les trois items corriges et confirme qu'aucune amorce ne designe
+    plus la bonne reponse de la tache B, que le distracteur de l'item 2 n'est plus defendable, et
+    que l'item 8 ne presente plus l'ancien comme penible.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-09-30 (meme fiche, section 7), identifiants deja alloues dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint, apres
+  ou avec `EVO-CM1-R2`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur, apres `EVO-CM1-R2`.
+
+### Story de correction differee - `MUS-CP-R1` : deux items de "Les mots de la musique" se repondent sans connaitre le mot
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-vocabulaire-musical-cp` a s44 et prononce
+**VALIDE SOUS RESERVE** sur `MUS-CP-11` (`squad/conformite/FICHE-bandit-manchot-vocabulaire-musical-cp.md`,
+section 7). Sur les items 1 et 4, l'enonce nomme un des deux distracteurs et l'ecarte par sa propre
+formulation (item 1 : *"...qui revient après chaque couplet ?"*, distracteur `le couplet` deja cite ;
+item 4 : *"...qui vient juste avant le refrain ?"*, distracteur `le refrain` deja cite), et le second
+distracteur de chaque item n'est pas une *partie* de chanson : un enfant qui ne connait aucun des
+quatre mots du paquet trouve la reponse. `nadia-prof` note que le defaut vient de son propre exemple
+de referentiel, que l'item 1 a suivi. Reserve non bloquante, Done pedagogique deja acquis.
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Les mots de la musique", je veux que chaque
+  question me demande vraiment de connaitre le mot, afin de ne pas pouvoir deviner la reponse sans
+  avoir appris ce qu'elle designe.
+- **Competence programme visee** : education musicale, CP (cycle 2), domaine "Echanger, partager
+  et argumenter", `MUS-CP-11` (`squad/programme/education-musicale/competences-cp.md`) - ligne deja
+  `couvert-valide` depuis s44, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'item 1, quand on relit son enonce, alors il ne nomme plus aucun des deux
+    distracteurs proposes - par exemple *"Comment s'appelle la partie d'une chanson qui revient
+    toujours avec les mêmes mots ?"* - et il reste distinct de l'item 2, qui porte deja cette
+    formulation.
+  - Etant donne l'item 4, quand on relit son enonce, alors il ne nomme plus aucun des deux
+    distracteurs proposes.
+  - Etant donne les items 1 et 4 corriges, quand on efface toute connaissance des quatre mots du
+    paquet (refrain, couplet, pulsation, silence), alors la reponse n'est plus trouvable par la
+    seule lecture de l'enonce et de ses propositions.
+  - Etant donne le paquet corrige, quand on relit les criteres deja verifies par `nadia-prof`
+    (`MUS-1` a `MUS-3`, `FER-1` a `FER-3`), alors ils restent tous vrais : cette story touche deux
+    items sur onze.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les deux items corriges et confirme qu'aucun des deux ne se
+    repond plus sans connaitre le mot.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-09-30 (`squad/conformite/FICHE-bandit-manchot-vocabulaire-musical-cp.md`, section 7),
+  identifiant deja alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC`
+  d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee - `DIV-CE1-R1` : huit items de "La division" remplacent le distracteur attendu par un produit incalculable
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-division-ce1` a s44 et prononce **VALIDE SOUS
+RESERVE** sur `MAT-CE1-18` (`squad/conformite/FICHE-bandit-manchot-division-ce1.md`, section 6).
+Sur huit items (8, 10, 11, 13, 14, 19, 20, 21), les distracteurs sont `a - b` et `a x b`, au lieu du
+diviseur recopie `b` que `DIV-CE1-5` nomme comme *"specifique de cette competence"* : le produit
+`a x b` (par exemple `384` pour `48 x 8`) n'est pas une erreur qu'un enfant de CE1 peut avoir
+commise, et il l'ecarte au jugement (plus de boites que de biscuits), ramenant l'item a un choix
+entre deux propositions. Reserve non bloquante, Done pedagogique deja acquis.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "La division", je veux que chaque proposition
+  fausse represente une erreur que je pourrais vraiment faire, afin que la manche m'apprenne
+  autant que les treize autres items du meme paquet.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs",
+  `MAT-CE1-18` (`squad/programme/mathematiques/competences-ce1.md`) - ligne deja `couvert-valide`
+  depuis s44, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne les huit items 8, 10, 11, 13, 14, 19, 20 et 21, quand on relit leurs distracteurs,
+    alors le distracteur `a x b` est remplace par le diviseur recopie `b` (respectivement `5`, `9`,
+    `6`, `8`, `9`, `8`, `9`, `10`), le distracteur `a - b` restant inchange.
+  - Etant donne ces huit items corriges, quand on les verifie contre `DIV-CE1-5`, alors chacun
+    porte toujours au moins un distracteur correspondant a une erreur identifiable (`a - b` ou `b`),
+    tous entiers positifs, distincts entre eux et de la bonne reponse.
+  - Etant donne le paquet corrige, quand on relit les criteres deja verifies par `nadia-prof`
+    (`DIV-CE1-1` a `DIV-CE1-6`), alors ils restent tous vrais : cette story touche huit distracteurs
+    sur vingt et un items, aucun enonce ni aucune bonne reponse n'est modifie.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les huit items corriges et confirme que le second distracteur y
+    est desormais une erreur plausible pour un enfant de CE1.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-09-30 (`squad/conformite/FICHE-bandit-manchot-division-ce1.md`, section 6), identifiant deja
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de
+  sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
