@@ -323,6 +323,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // technique au cours du temps (fabrication ou usage), distincte de
             // bandit-manchot-objet-technique-cm1 (SCI-CM1-12).
             "bandit-manchot-evolution-objet-technique-cm1",
+            // S45-SCI-NUMERIQUE (s45) : entree neuve, SCI-CM1-14, regles d'usage d'un
+            // environnement numerique (identification, courriel, recherche d'information,
+            // protection des donnees).
+            "bandit-manchot-usages-numeriques-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -528,6 +532,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "La division",
             // S44-MUS-VOCABULAIRE (s44) : titre neuf.
             "Les mots de la musique",
+            // S45-SCI-NUMERIQUE (s45) : titre neuf.
+            "Se protéger en ligne",
             // S44-SCI-OBJET-TECHNIQUE (s44) : titre neuf.
             "Comment ça a changé ?",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -763,6 +769,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le mot juste, ou ce qu'il veut dire.",
             // S44-SCI-OBJET-TECHNIQUE (s44) : consigne neuve.
             "Lis bien, puis dis ce qui a changé, ou ce qui n'a pas changé.",
+            // S45-SCI-NUMERIQUE (s45) : consigne neuve.
+            "Lis bien, puis dis la bonne pratique, ou pourquoi c'est risqué.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1211,7 +1219,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // pour mot (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
             // SCI-CM1-13).
             "Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa "
-                    + "fabrication ou dans son usage.");
+                    + "fabrication ou dans son usage.",
+            // S45-SCI-NUMERIQUE (s45) : competence neuve, libelle du referentiel copie mot pour
+            // mot (squad/programme/sciences-et-technologie/competences-cm1.md, ligne SCI-CM1-14).
+            "Connaître quelques règles d'usage d'un environnement numérique (identification, "
+                    + "courriel, recherche d'une information, protection de ses données).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
