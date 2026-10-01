@@ -1,0 +1,54 @@
+# JEU FAUTIF, JAMAIS SERVI (ADR-0103). Ce paquet n est pas fautif ici : il declare honnetement
+# MAT-CE1-04, l addition posee avec retenue, et il sort de la population d ADD-CE1-2. Il ne tient
+# pas les huit bandes (aucune somme jusqu a 20, toutes les additions avec retenue) : redeclare
+# MAT-CE1-03, il y entre et rougit. Les deux sens sont mis a l epreuve par le test.
+schema: 1
+id: paquet-avec-retenue-ce1
+type: question
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Addition posee avec retenue"
+lignesDeReferentiel: ["MAT-CE1-04"]
+items:
+  - enonce: "48 + 26 = ?"
+    bonneReponse: "74"
+    distracteurs: ["64", "84"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "37 + 45 = ?"
+    bonneReponse: "82"
+    distracteurs: ["72", "92"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "59 + 28 = ?"
+    bonneReponse: "87"
+    distracteurs: ["77", "97"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "66 + 57 = ?"
+    bonneReponse: "123"
+    distracteurs: ["113", "133"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "178 + 265 = ?"
+    bonneReponse: "443"
+    distracteurs: ["433", "453"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "247 + 186 = ?"
+    bonneReponse: "433"
+    distracteurs: ["423", "443"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "356 + 127 = ?"
+    bonneReponse: "483"
+    distracteurs: ["473", "493"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "485 + 239 = ?"
+    bonneReponse: "724"
+    distracteurs: ["714", "734"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "168 + 254 = ?"
+    bonneReponse: "422"
+    distracteurs: ["412", "432"]
+    indice: "Pose l operation et n oublie pas la retenue."
+  - enonce: "529 + 194 = ?"
+    bonneReponse: "723"
+    distracteurs: ["713", "733"]
+    indice: "Pose l operation et n oublie pas la retenue."
