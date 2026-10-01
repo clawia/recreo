@@ -62,11 +62,12 @@ class PaquetCm1SciencesUsagesNumeriquesTest {
     /** Bonne reponse des items de la tache A, "reconnaitre la bonne conduite". */
     private static final Set<String> REPONSES_DE_LA_BONNE_CONDUITE = Set.of(
             "demander à un adulte si le site est adapté aux enfants",
-            "à partir de 13 ans",
+            "en dessous de 15 ans",
             "vérifier avec un adulte l'adresse du destinataire",
             "comparer plusieurs sources avant de croire une information",
             "ne pas donner son adresse ou son numéro de téléphone à un inconnu",
-            "un mot de passe d'au moins 8 caractères, avec des lettres et des chiffres");
+            "un mot de passe d'au moins 12 caractères, avec majuscules, minuscules, chiffres et"
+                    + " caractères spéciaux");
 
     /** Bonne reponse des items de la tache B, "dire pourquoi une conduite est risquee". */
     private static final Set<String> REPONSES_DU_POURQUOI_RISQUE = Set.of(

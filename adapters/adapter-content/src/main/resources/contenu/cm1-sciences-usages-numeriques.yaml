@@ -65,9 +65,9 @@ items:
     bonneReponse: "demander à un adulte si le site est adapté aux enfants"
     distracteurs: ["donner son vrai nom et sa vraie adresse pour aller plus vite", "accepter toutes les règles sans les lire, car elles ne changent jamais rien"]
     indice: "Les règles d'un site peuvent changer ce qu'il a le droit de faire avec les informations d'un enfant."
-  - enonce: "À partir de quel âge un service numérique demande-t-il en général l'accord d'un parent ?"  # element: identification # HIS-3: seuil d'age courant pour la creation d'un compte sans accord parental, regle de prudence numerique enseignee au cycle 3
-    bonneReponse: "à partir de 13 ans"
-    distracteurs: ["à partir de 18 ans seulement, jamais avant", "aucun âge n'est jamais demandé"]
+  - enonce: "En dessous de quel âge un service numérique demande-t-il en général l'accord d'un parent pour créer un compte ?"  # element: identification # HIS-3: en France, en dessous de 15 ans, l'accord d'un parent est requis pour la creation d'un compte (loi Informatique et Libertes, article 45, dans sa redaction de la loi du 20 juin 2018)
+    bonneReponse: "en dessous de 15 ans"
+    distracteurs: ["en dessous de 18 ans seulement, jamais avant", "aucun âge n'est jamais demandé"]
     indice: "Un âge minimal existe parce que certains services collectent des informations personnelles."
   - enonce: "Avant d'envoyer un courriel à quelqu'un, quelle est la bonne pratique ?"  # element: courriel # HIS-3: verification du destinataire avant l'envoi d'un courriel, regle de prudence numerique courante au cycle 3
     bonneReponse: "vérifier avec un adulte l'adresse du destinataire"
@@ -81,8 +81,8 @@ items:
     bonneReponse: "ne pas donner son adresse ou son numéro de téléphone à un inconnu"
     distracteurs: ["partager sa photo et son adresse pour se faire plus d'amis", "utiliser le même mot de passe partout, pour ne rien oublier"]
     indice: "Un seul mot de passe percé donne alors accès à tous les comptes qui l'utilisent."
-  - enonce: "Quelle est la bonne pratique pour choisir un mot de passe solide ?"  # element: identification # HIS-3: longueur minimale recommandee pour un mot de passe, regle de prudence numerique courante au cycle 3
-    bonneReponse: "un mot de passe d'au moins 8 caractères, avec des lettres et des chiffres"
+  - enonce: "Quelle est la bonne pratique pour choisir un mot de passe solide ?"  # element: identification # HIS-3: longueur minimale de 12 caracteres et quatre types de caracteres (majuscules, minuscules, chiffres, caracteres speciaux) recommandes pour un mot de passe solide (CNIL, recommandation du 21 juillet 2022)
+    bonneReponse: "un mot de passe d'au moins 12 caractères, avec majuscules, minuscules, chiffres et caractères spéciaux"
     distracteurs: ["un mot de passe très court, car il est plus facile à retenir", "le prénom de l'enfant suivi de son année de naissance"]
     indice: "Un mot de passe court se devine beaucoup plus vite qu'un mot de passe long et varié."
   - enonce: "Pourquoi est-il risqué de donner sa vraie date de naissance sur n'importe quel site ?"  # element: identification # HIS-3: date de naissance comme information facilitant la devinette d'un mot de passe, regle de prudence numerique enseignee au cycle 3
