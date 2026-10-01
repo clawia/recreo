@@ -323,6 +323,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // technique au cours du temps (fabrication ou usage), distincte de
             // bandit-manchot-objet-technique-cm1 (SCI-CM1-12).
             "bandit-manchot-evolution-objet-technique-cm1",
+            // S45-EPS-ROLES (s45) : entree neuve, EPS-CM1-09, tenir les roles d'arbitre,
+            // d'observateur ou de marqueur dans un jeu.
+            "bandit-manchot-roles-eps-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -530,6 +533,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les mots de la musique",
             // S44-SCI-OBJET-TECHNIQUE (s44) : titre neuf.
             "Comment ça a changé ?",
+            // S45-EPS-ROLES (s45) : titre neuf.
+            "Arbitre, observateur, marqueur",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -763,6 +768,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le mot juste, ou ce qu'il veut dire.",
             // S44-SCI-OBJET-TECHNIQUE (s44) : consigne neuve.
             "Lis bien, puis dis ce qui a changé, ou ce qui n'a pas changé.",
+            // S45-EPS-ROLES (s45) : consigne neuve.
+            "Lis bien, puis dis ce que décide l'arbitre, ce que relève l'observateur, ou le score "
+                    + "que donne le marqueur.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -874,6 +882,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // conforme du referentiel de nadia-prof,
             // squad/programme/education-musicale/competences-cp.md).
             "Échanger, partager et argumenter",
+            // S45-EPS-ROLES (s45) : domaine neuf, second lot d'education physique et sportive CM1
+            // (copie conforme du referentiel de nadia-prof,
+            // squad/programme/education-physique-et-sportive/competences-cm1.md).
+            "Conduire et maîtriser un affrontement collectif ou interindividuel",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
@@ -1211,7 +1223,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // pour mot (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
             // SCI-CM1-13).
             "Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa "
-                    + "fabrication ou dans son usage.");
+                    + "fabrication ou dans son usage.",
+            // S45-EPS-ROLES (s45) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/education-physique-et-sportive/competences-cm1.md, ligne
+            // EPS-CM1-09).
+            "Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer "
+                    + "les règles.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

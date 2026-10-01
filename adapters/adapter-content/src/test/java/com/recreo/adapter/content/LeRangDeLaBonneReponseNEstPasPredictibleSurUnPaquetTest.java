@@ -979,7 +979,18 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " plastique\", \"on s'en sert pour écrire\", \"il faut que le vent souffle pour"
                     + " avancer\"...), valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-09-30 sur le paquet servi : aucune des 33 propositions ne"
-                    + " commence par un chiffre"));
+                    + " commence par un chiffre"),
+            // S45-EPS-ROLES : paquet neuf, EPS-CM1-09 (tenir les roles d'arbitre, d'observateur ou
+            // de marqueur).
+            Map.entry("cm1-eps-roles",
+            "12 items sur 12 portent deux distracteurs (trois propositions, 36 au total). Les huit"
+                    + " items d'arbitre et d'observateur portent des propositions en texte libre"
+                    + " (equipes, actes d'observation), aucune numerique. Les quatre items de marqueur"
+                    + " portent un score au format \"X à Y\" (\"4 à 4\", \"10 à 11\"...) : lireValeur y"
+                    + " lit le premier nombre puis trouve un chiffre dans le reste (le second nombre"
+                    + " du score), donc rend null, meme motif qu'ADR-0068 sur cp-ranger-nombres."
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-10-01 sur le paquet servi : zero item classe sur douze"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

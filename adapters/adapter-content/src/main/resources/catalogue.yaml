@@ -642,3 +642,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-evolution-objet-technique
     nombreDeManches: 10
+  - id: bandit-manchot-roles-eps-cm1
+    titre: "Arbitre, observateur, marqueur"
+    consigne: "Lis bien, puis dis ce que décide l'arbitre, ce que relève l'observateur, ou le score que donne le marqueur."
+    mecanique: bandit-manchot
+    paquet: cm1-eps-roles
+    nombreDeManches: 10
