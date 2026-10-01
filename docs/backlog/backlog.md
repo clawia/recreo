@@ -3211,6 +3211,277 @@ entre deux propositions. Reserve non bloquante, Done pedagogique deja acquis.
   sprint.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
 
+### Story de correction differee, priorite la plus haute des reserves de s45 sur ce paquet - `USN-CM1-R9` : la date de source citee par le marqueur `HIS-3` de l'item 2 est fausse
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-usages-numeriques-cm1` a s45, au second passage, et
+prononce **VALIDE SOUS RESERVE** sur `SCI-CM1-14`
+(`squad/conformite/FICHE-bandit-manchot-usages-numeriques-cm1.md`, section B). En corrigeant son
+propre constat du premier passage, elle ecrit : *"loi Informatique et Libertes, article 45, dans sa
+redaction de la loi du 20 juin 2018"* est inexact - le seuil de 15 ans a ete introduit comme article
+7-1 par la loi du 20 juin 2018 ; c'est l'ordonnance du 12 decembre 2018 qui a reecrit la loi et
+numerote la disposition article 45. Le fait enseigne (15 ans) et l'article en vigueur (45) sont
+justes ; seule la date de redaction attachee a ce numero, recopiee dans le marqueur `HIS-3` de
+l'item 2, est fausse - et elle vient d'elle. Non bloquant pour ce Done (le marqueur n'est pas lu par
+l'enfant), mais c'est la seule des neuf reserves de ce paquet qui soit une erreur de fait, et
+`nadia-prof` la signale elle-meme comme telle : `camille-po` la separe du reste et la priorise.
+
+- **Besoin** : en tant qu'eleve de CM1 qui apprend qu'un service numerique demande l'accord d'un
+  parent en dessous de 15 ans, je veux que la source de cette regle, citee dans le code pour que
+  l'ecole puisse la verifier, soit datee correctement, afin que la regle qu'on m'enseigne reste
+  verifiable et ne soit pas corrigee a tort plus tard sur la foi d'une date fausse.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Materiaux et
+  objets techniques", `SCI-CM1-14`
+  (`squad/programme/sciences-et-technologie/competences-cm1.md`) - ligne deja `couvert-valide`
+  depuis s45, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne le marqueur `HIS-3` de l'item 2, quand on le relit, alors il ne cite plus "la loi du
+    20 juin 2018" comme redaction de l'article 45, mais nomme l'ordonnance du 12 decembre 2018 comme
+    source de la renumerotation en article 45, et la loi du 20 juin 2018 comme source de
+    l'introduction du seuil de 15 ans.
+  - Etant donne l'enonce, la bonne reponse, les distracteurs et l'indice de l'item 2, quand on les
+    relit, alors ils restent inchanges par cette story : seule la date de source du marqueur `HIS-3`
+    est corrigee.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`HIS-3`, `SCI-1` a `SCI-4`, `CON-1`, `FER-1` a `FER-3`), alors elles restent toutes tenues.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle relise le marqueur corrige et confirme que la date et la source citees
+    sont exactes.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-01 (`squad/conformite/FICHE-bandit-manchot-usages-numeriques-cm1.md`, section B et section
+  E), identifiant deja alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une
+  `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur, en priorite sur
+  `USN-CM1-R1` a `USN-CM1-R8` ci-dessous - seule erreur de fait du lot, introduite par `nadia-prof`
+  elle-meme et signalee par elle comme telle.
+
+### Story de correction differee, groupee par paquet - `USN-CM1-R1` a `USN-CM1-R8` : huit defauts restants de "Se proteger en ligne"
+
+**Contexte.** Meme audit et meme fiche que ci-dessus. Huit reserves non bloquantes restent sur le
+meme paquet, distinctes de `USN-CM1-R9` (erreur de fait, story separee et prioritaire) : aucune ne
+contredit un fait, chacune est bornee a un ou deux items du meme fichier YAML, et `camille-po` les
+groupe en une seule story de correction par paquet plutot que huit - meme auteure de contenu, meme
+fichier, meme audit, aucune ne depend des autres pour etre corrigee.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Se proteger en ligne", je veux que chaque indice
+  m'aide sans designer la bonne reponse, que chaque distracteur soit une erreur plausible et non une
+  phrase absurde ou hors sujet, et que deux items distincts ne m'enseignent pas deux fois la meme
+  regle, afin que chacun des douze items m'apprenne vraiment quelque chose de nouveau.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Materiaux et
+  objets techniques", `SCI-CM1-14` - ligne deja `couvert-valide` depuis s45, non rouverte par cette
+  story.
+- **Criteres d'acceptation** :
+  - **`USN-CM1-R1`** (items 4 et 9) : etant donne ces deux items, quand on les relit, alors ils
+    enseignent chacun une regle de recherche differente (par exemple l'item 9 porte sur qui a ecrit
+    l'information et sa date, plutot que sur la comparaison de plusieurs sources deja portee par
+    l'item 4), et leurs indices ne redisent plus la meme phrase.
+  - **`USN-CM1-R2`** (indices des items 3, 5 et 6) : etant donne ces trois indices, quand on les
+    relit apres chacun des distracteurs possibles de leur item, alors chacun reste vrai et utile quel
+    que soit le bouton presse par l'enfant (`SCI-1`), sans parler d'un seul distracteur en ignorant
+    les autres.
+  - **`USN-CM1-R3`** (indices des items 7, 8 et 10) : etant donne ces trois indices, quand on les
+    relit face a la bonne reponse de leur item, alors ils n'en redesignent plus le sens, meme sans en
+    reprendre la chaine exacte.
+  - **`USN-CM1-R4`** (lexique du paquet) : etant donne les douze bonnes reponses et les vingt-quatre
+    distracteurs du paquet, quand on releve les mots qu'ils emploient ("peut", "toujours", "jamais",
+    "automatiquement", "aucun", "n'importe quel"), alors aucun de ces mots n'est plus propre aux
+    bonnes reponses ou aux distracteurs.
+  - **`USN-CM1-R5`** (distracteurs des items 7 et 10) : etant donne le distracteur "son ecran affiche
+    une publicite differente" (item 7) et le distracteur "la batterie de l'appareil se vide plus
+    vite" (item 10), quand on les relit, alors ils sont remplaces par des propositions fausses, pas
+    seulement hors sujet par rapport a la question posee.
+  - **`USN-CM1-R6`** (item 7) : etant donne l'item 7, quand on relit son enonce, alors il ne laisse
+    plus entendre que l'alternative en jeu est de donner une vraie ou une fausse date de naissance -
+    reformule sur le fait de la donner ou non.
+  - **`USN-CM1-R7`** (distracteur de l'item 2) : etant donne le distracteur "en dessous de 18 ans
+    seulement, jamais avant", quand on le relit, alors il designe un age coherent - par exemple en
+    retirant "jamais avant", ou en reformulant entierement - sans se contredire lui-meme.
+  - **`USN-CM1-R8`** (item 6) : etant donne les trois propositions de l'item 6, quand on compare leur
+    longueur, alors la bonne reponse n'est plus la plus longue de loin (102 caracteres contre 60 et
+    53) ni la seule a enumerer plusieurs elements.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`SCI-1` a `SCI-4`, `SCI-2`, `HIS-3`, `CON-1`, `FER-1` a `FER-3`), alors elles restent toutes
+    tenues : cette story touche des indices et des distracteurs, elle ne retire ni n'ajoute aucun
+    item, et ne touche pas le marqueur `HIS-3` de l'item 2, objet de la story prioritaire
+    `USN-CM1-R9`.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les huit points corriges et confirme qu'aucun ne reste exploitable
+    comme raccourci ou comme source de confusion.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-10-01 (`squad/conformite/FICHE-bandit-manchot-usages-numeriques-cm1.md`, section E, points
+  reconduits du premier passage et `USN-CM1-R7`/`USN-CM1-R8` neuves), identifiants deja alloues dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint, apres ou
+  avec `USN-CM1-R9`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur, apres `USN-CM1-R9`.
+
+### Story de correction differee - `MUS-CP-R2` : deux indices de "Les instruments de musique" contiennent le mot de la bonne reponse
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-instruments-musicaux-cp` a s45 et prononce
+**VALIDE SOUS RESERVE** sur `MUS-CP-05`
+(`squad/conformite/FICHE-bandit-manchot-instruments-musicaux-cp.md`, section 7). Sur les items 1 et
+2, l'indice contient le mot de la bonne reponse : item 1, *"Elle a des cordes que l'on pince ou que
+l'on gratte."* ; item 2, *"On fait vibrer ses cordes avec un archet."* ; bonne reponse `les cordes`.
+Apres une erreur, il reste deux boutons et l'indice en nomme un : l'enfant trouve sans rien savoir.
+Non bloquant : le premier essai de ces deux items se fait sans indice.
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Les instruments de musique", je veux que l'indice
+  affiche apres une erreur m'aide a comprendre sans me donner directement le mot de la bonne
+  reponse, afin de devoir encore reflechir avant de trouver.
+- **Competence programme visee** : education musicale, CP (cycle 2), domaine "Ecouter, comparer et
+  commenter", `MUS-CP-05`
+  (`squad/programme/education-musicale/competences-cp.md`) - ligne deja `couvert-valide` depuis s45,
+  non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'indice de l'item 1, quand on le relit, alors il ne contient plus le mot "cordes"
+    (par exemple "On la pince ou on la gratte avec les doigts.").
+  - Etant donne l'indice de l'item 2, quand on le relit, alors il ne contient plus le mot "cordes"
+    (par exemple "On le frotte avec un archet.").
+  - Etant donne les indices corriges des items 1 et 2, quand on les relit apres chaque distracteur
+    possible de leur item, alors ils restent vrais et utiles sans nommer la bonne reponse.
+  - Etant donne le paquet corrige, quand on relit les indices des vents et des percussions (souffle,
+    frappe), alors ils restent inchanges par cette story.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`MUS-1`, `MUS-2`, `MUS-CP-R1` et sa reponse a Q3, `FER-1` a `FER-3`), alors elles restent toutes
+    tenues : cette story touche deux indices sur onze items.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les deux items corriges apres une erreur et confirme que l'enfant
+    ne trouve plus sans rien savoir.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-01 (`squad/conformite/FICHE-bandit-manchot-instruments-musicaux-cp.md`, section 7),
+  identifiant deja alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC`
+  d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Signalement technique, a router a `theo-archi` et `yanis-qa`, pas une story de contenu - `MUS-CP-R3` : deux garde-fous de test d'education musicale CP ne mordent pas sur ce qu'ils annoncent
+
+**Contexte.** En auditant `bandit-manchot-instruments-musicaux-cp` a s45, `nadia-prof` applique deux
+mutations au paquet, dans un worktree et sans commit
+(`squad/conformite/FICHE-bandit-manchot-instruments-musicaux-cp.md`, section 5) : l'indice de l'item
+1 reecrit *"Écoute bien, elle a des cordes."*, et l'enonce de l'item 3 reecrit *"La trompette
+est-elle un instrument à cordes ou à vent ?"* - la forme exacte que `MUS-CP-R1`/Q3 refuse. Les deux
+fois, `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test` reste vert (1844 tests, 0 echec). Deux
+causes, lues dans `PaquetCpMusiqueInstrumentsTest` : le lexique interdit cherche `ecout` sans accent
+dans un texte integralement accentue (*écoute* ne le contient pas) - meme defaut dans
+`PaquetCpMusiqueVocabulaireTest` (s44) ; et l'assertion de `MUS-CP-R1` cherche la proposition entiere
+(`les cordes`) dans l'enonce, alors que la forme refusee nomme *cordes* et *vent* sans article ni
+pluriel - elle laisse passer exactement l'exemple que sa Javadoc dit refuser. Le contenu servi est
+sain, c'est la garde annoncee qui ne garde pas : *"je decris le symptome, la forme de la correction
+appartient a `theo-archi` et a l'auteure du test"* (`nadia-prof`). Ce n'est pas un defaut de contenu
+enfant, donc pas une story de contenu : `camille-po` la route directement, sans l'habiller en besoin
+d'eleve.
+
+- **Besoin** : transverse - pas de contenu pedagogique. C'est un defaut de garde-fou technique (le
+  test ne detecte pas ce qu'il annonce detecter), pas un defaut du contenu servi aux enfants.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne un indice du paquet qui contient un mot interdit sous sa forme accentuee (par exemple
+    "écoute" la ou le lexique interdit cherche "ecout"), quand les tests du module s'executent, alors
+    ils echouent.
+  - Etant donne un enonce du paquet qui nomme une famille d'instruments sans son article ni son
+    pluriel (par exemple "cordes ou à vent ?", forme que `MUS-CP-R1` refuse), quand les tests du
+    module s'executent, alors ils echouent.
+  - Etant donne les deux mutations decrites par `nadia-prof` (fiche, section 5), rejouees sur le
+    paquet apres la correction du garde-fou, quand on lance `mvn -pl bootstrap -am test`
+    (perimetre : le reacteur jusqu'a `bootstrap`, `-am` compris), alors les deux font echouer la
+    commande.
+  - Etant donne `PaquetCpMusiqueVocabulaireTest` (s44), quand la meme correction est appliquee, alors
+    il herite de la meme garde - defaut signale identique par `nadia-prof` sur ce test.
+  - Etant donne les paquets deja `couvert-valide` concernes (instruments et vocabulaire musical CP),
+    quand les tests corriges s'executent sur leur contenu actuel, sans mutation, alors ils restent
+    verts : la correction ne doit faire rougir que les formes refusees, pas le contenu deja valide.
+- **Ce que cette story ne tranche pas** : la forme technique de la correction (lexique insensible aux
+  accents, normalisation du texte avant comparaison, ou autre mecanisme) - a `theo-archi` ; elle ne
+  modifie aucun contenu YAML.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; defaut signale par `nadia-prof` le 2026-10-01
+  (`squad/conformite/FICHE-bandit-manchot-instruments-musicaux-cp.md`, section 5), identifiant deja
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de
+  sprint si `theo-archi` le juge necessaire.
+- **Agent pressenti** : `theo-archi` (forme du garde-fou), `yanis-qa` (verification) ; `sofia-sm` pour
+  la planification.
+
+### Story de correction differee, priorite haute sur ce paquet - `EPS-CM1-R5` : deux regles de sport inexactes dans "Arbitre, observateur, marqueur"
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-roles-eps-cm1` a s45 et prononce **VALIDE SOUS
+RESERVE** sur `EPS-CM1-09` (`squad/conformite/FICHE-bandit-manchot-roles-eps-cm1.md`, section 6).
+Item 5 : *"Au volley-ball, l'observateur coche une case à chaque fois qu'une passe est attrapée..."*
+- au volley-ball on ne tient pas le ballon, le "volley attrape" est une etape d'apprentissage, pas le
+jeu, et l'enonce ne le dit pas. Item 6 : *"Au basket-ball, l'observateur note une croix chaque fois
+qu'un joueur avance de plus de trois pas..."* - trois pas sans dribble, c'est la regle du handball
+(item 8) ; au basket-ball enseigne a l'ecole, le marcher est sanctionne des le troisieme pas.
+`nadia-prof` : aucune reponse attendue n'est fausse, mais *"un enfant de CM1 qui joue au basket lit
+que trois pas sont permis, et un enfant qui joue au volley lit qu'on attrape le ballon"*. Non
+bloquant pour ce Done ; priorite haute parmi les deux reserves du paquet, car c'est une erreur de
+regle sportive et non un defaut de forme.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Arbitre, observateur, marqueur" et qui pratique
+  ces sports par ailleurs, je veux que la regle rappelee par chaque item corresponde a la facon dont
+  ce sport se joue vraiment a l'ecole, afin de ne pas apprendre une regle fausse du sport que je
+  pratique a cote du jeu.
+- **Competence programme visee** : education physique et sportive, CM1 (cycle 3), domaine "Conduire
+  et maitriser un affrontement collectif ou interindividuel", `EPS-CM1-09`
+  (`squad/programme/education-physique-et-sportive/competences-cm1.md`) - ligne deja
+  `couvert-valide` depuis s45, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'item 5, quand on le relit, alors le sport qu'il nomme autorise reellement de tenir
+    ou d'attraper le ballon sur l'action decrite (par exemple handball ou balle au capitaine remplace
+    volley-ball), avec un critere d'observateur adapte au sport retenu.
+  - Etant donne l'item 6, quand on le relit, alors il porte sur "plus de deux pas" et non trois, avec
+    une action qui reste sans ambiguite (par exemple trois pas sans dribble), conformement a la regle
+    du basket-ball enseignee a l'ecole.
+  - Etant donne les items 5 et 6 corriges, quand on les relit cote a cote avec l'item 8 (qui porte
+    deja la regle des trois appuis au handball), alors aucun des trois n'attribue plus la meme regle
+    a deux sports differents.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`EPS-1` a `EPS-3`, `EPS-10`, `FER-1` a `FER-3`), alors elles restent toutes tenues : cette story
+    touche deux items sur douze.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les deux items corriges et confirme que la regle rappelee
+    correspond au sport nomme tel qu'il se joue a l'ecole.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-01 (`squad/conformite/FICHE-bandit-manchot-roles-eps-cm1.md`, section 6), identifiant deja
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de
+  sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur, en priorite sur
+  `EPS-CM1-R6` ci-dessous - erreur de regle sportive, pas un defaut de forme.
+
+### Story de correction differee - `EPS-CM1-R6` : trois distracteurs que personne ne choisit dans "Arbitre, observateur, marqueur"
+
+**Contexte.** Meme audit et meme fiche que ci-dessus. Items 1, 4 et 8 : *"le jeu reprend par un
+tirage au sort"* (1), *"le service se tire au sort à chaque point"* (4), *"une faute de pas et une
+touche"* (8, la touche n'a rien a voir avec l'action decrite). Aucun n'est une regle de ces jeux,
+aucun n'est une erreur qu'un enfant ferait : l'item se joue entre deux boutons. Non bloquant : sur
+chacun des trois items, les deux autres propositions restent l'erreur de regle attendue.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Arbitre, observateur, marqueur", je veux que
+  chaque proposition fausse soit une erreur de regle que je pourrais vraiment croire, afin que la
+  manche m'apprenne autant que les neuf autres items du meme paquet, plutot que de se jouer entre
+  deux boutons.
+- **Competence programme visee** : education physique et sportive, CM1 (cycle 3), domaine "Conduire
+  et maitriser un affrontement collectif ou interindividuel", `EPS-CM1-09` - ligne deja
+  `couvert-valide` depuis s45, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'item 1, quand on relit son distracteur "le jeu reprend par un tirage au sort",
+    alors il est remplace par une erreur de regle plausible (par exemple l'equipe fautive qui remet
+    en jeu, sur le modele de l'exemple de `nadia-prof` "l'equipe rouge, au centre du terrain").
+  - Etant donne l'item 4, quand on relit son distracteur "le service se tire au sort a chaque point",
+    alors il est remplace par une erreur de regle plausible du meme ordre.
+  - Etant donne l'item 8, quand on relit son distracteur "une faute de pas et une touche", alors la
+    mention de la touche est retiree ou remplacee par une consequence liee a l'action decrite, sur le
+    modele de l'item 7 ("une touche, et le jeu s'arrete"), que `nadia-prof` juge deja plausible.
+  - Etant donne les trois items corriges, quand on les rejoue, alors les deux autres propositions de
+    chacun restent l'erreur de regle deja attendue (la mauvaise equipe, la faute comptee a tort),
+    inchangees.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`EPS-1` a `EPS-3`, `EPS-10`, `FER-1` a `FER-3`), alors elles restent toutes tenues : cette story
+    touche un distracteur sur chacun de trois items sur douze.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les trois items corriges et confirme qu'aucun distracteur ne
+    s'ecarte plus au jugement entre deux boutons.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-01 (`squad/conformite/FICHE-bandit-manchot-roles-eps-cm1.md`, section 6), identifiant deja
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de
+  sprint, apres ou avec `EPS-CM1-R5`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur, apres `EPS-CM1-R5`.
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
