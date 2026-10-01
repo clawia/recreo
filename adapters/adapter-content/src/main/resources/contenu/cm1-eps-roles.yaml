@@ -1,0 +1,120 @@
+schema: 1
+id: cm1-eps-roles
+type: question
+descripteur:
+  matiere: "Éducation physique et sportive"
+  niveau: "CM1"
+  domaine: "Conduire et maîtriser un affrontement collectif ou interindividuel"
+  competence: "Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer les règles."
+lignesDeReferentiel: ["EPS-CM1-09"]
+#
+# S45-EPS-ROLES (docs/backlog/backlog.md, sprint 45). Premier paquet d'education physique et
+# sportive du produit sur la ligne EPS-CM1-09. Referentiel copie conforme depuis
+# squad/programme/education-physique-et-sportive/competences-cm1.md (EPS-CM1-09).
+#
+# Couverture partielle exigee d'avance par le referentiel (jugement de faisabilite de nadia-prof du
+# 2026-09-03, ligne 9) : ce paquet ne sert que la connaissance et l'application de la regle ; la
+# tenue reelle d'un role en situation n'est pas servie par ce produit (ADR-0008, aucun capteur,
+# aucune observation d'un geste).
+#
+# EPS-10 (nadia-prof, discriminant pose avant l'ecriture du paquet, section 4.2 de l'arbitrage
+# prealable de s45). Quatre exigences :
+#
+#   1) Aucun item ne porte sur un des six jeux de cp-eps-regles-jeu-collectif (1, 2, 3 soleil ; chat
+#      perche ; epervier ; balle au prisonnier ; loup et moutons ; demenageurs). Tous les items
+#      portent sur un jeu collectif a deux equipes qui compte des points ou des buts (handball,
+#      football, basket-ball, volley-ball, relais par equipes) ;
+#
+#   2) la bonne reponse est toujours l'acte du role, jamais ce que devient un joueur :
+#      - arbitre (items 1 a 4) : une decision qui porte sur les equipes - a quelle equipe revient la
+#        remise en jeu, le penalty, le coup franc ou le service suivant ;
+#      - observateur (items 5 a 8) : ce qu'il relève sur une action decrite, selon un critere donne
+#        dans l'enonce - jamais une appreciation, jamais une comparaison entre deux enfants (EPS-2) ;
+#      - marqueur (items 9 a 12) : a quelle equipe va le point ou quel est le score apres une seule
+#        action, selon la regle de marque donnee dans l'enonce. La difficulte posee est toujours la
+#        regle (le bareme, l'equipe creditee, une condition d'annulation du point), jamais le calcul
+#        de l'addition elle-meme ;
+#
+#   3) chacun des trois roles porte au moins trois items (ici quatre chacun, FER-3 tenue par
+#      construction, ce sont trois taches) ;
+#
+#   4) CYC-1 dans les deux sens : verifie ci-dessous (section CYC-1), aucune bonne reponse de
+#      cp-eps-regles-jeu-collectif ne devient un distracteur ici, et inversement.
+#
+# CYC-1 : les bonnes reponses de cp-eps-regles-jeu-collectif sont des consequences pour un joueur
+# nomme ("quand le meneur se retourne", "en montant sur un point en hauteur", "il devient epervier a
+# son tour", "il va dans le camp adverse", "il peut toucher d'autres moutons", "un seul objet",
+# "rien, Hugo est perche", "Malo devient epervier a son tour", "Aya est attrapee", "Hugo doit
+# reposer un des deux objets", "Hugo doit retourner au depart"). Aucune de ces chaines n'apparait
+# dans aucune proposition de ce paquet ; aucune proposition de ce paquet (actes d'arbitre,
+# relevés d'observateur, scores de marqueur) n'apparait dans cp-eps-regles-jeu-collectif.
+#
+# EPS-1 : chaque enonce rappelle la regle qu'il applique avant de poser sa question (marqueur
+# "# EPS-1: rappelee" sur chaque ligne d'item, lu dans le fichier brut).
+#
+# EPS-2 : aucune comparaison de corps ou de performance entre enfants ; les scores comptes par le
+# marqueur portent sur des equipes, jamais sur un enfant nomme contre un autre.
+#
+# EPS-3 : aucun enonce ne contient "que fais-tu" ni "que dois-tu" ; chaque decision se prend sur un
+# fait decrit (ballon sorti, faute commise, action jugee), jamais sur une intention.
+#
+# FER-1 : le role est porte par l'enonce ("l'arbitre", "l'observateur", "le marqueur"), jamais en
+# bonne reponse ; ce qui est en bonne reponse est l'acte du role (EPS-10, clause 2).
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# FER-3 : trois taches mentalement distinctes (arbitre, observateur, marqueur), quatre items chacune.
+#
+# BIN-1 : tous les items portent trois propositions (deux distracteurs) ; aucun n'est binaire.
+items:
+  # Tache 1 : l'arbitre decide sur les equipes.
+  - enonce: "Au handball, un joueur de l'équipe bleue fait sortir le ballon du terrain, sur le côté droit. La règle du jeu veut que l'équipe qui n'a pas touché le ballon en dernier remette en jeu. L'arbitre doit décider : à quelle équipe revient la remise en jeu ?"  # EPS-1: rappelee
+    bonneReponse: "à l'équipe rouge"
+    distracteurs: ["à l'équipe bleue", "le jeu reprend par un tirage au sort"]
+    indice: "Celui qui a fait sortir le ballon n'est jamais celui qui le récupère."
+  - enonce: "Au football, un joueur de l'équipe rouge touche le ballon de la main dans sa propre surface de but. La règle du jeu accorde alors un penalty à l'équipe adverse. Que décide l'arbitre ?"  # EPS-1: rappelee
+    bonneReponse: "un penalty pour l'équipe bleue"
+    distracteurs: ["un penalty pour l'équipe rouge", "le jeu continue sans interruption"]
+    indice: "La faute est commise par les rouges ; la sanction profite toujours à l'autre équipe."
+  - enonce: "Au football, un joueur de l'équipe bleue fait tomber un adversaire. La règle du jeu accorde alors un coup franc, à l'endroit de la faute, à l'équipe qui l'a subie. L'arbitre accorde-t-il ce coup franc à quelle équipe ?"  # EPS-1: rappelee
+    bonneReponse: "à l'équipe rouge"
+    distracteurs: ["à l'équipe bleue", "aucun coup franc, le jeu continue"]
+    indice: "Un coup franc profite toujours à l'équipe qui a subi la faute, jamais à celle qui l'a commise."
+  - enonce: "Au volley-ball, la règle veut que l'équipe qui vient de marquer un point serve ensuite. L'équipe bleue vient de marquer un point. À qui l'arbitre donne-t-il le service suivant ?"  # EPS-1: rappelee
+    bonneReponse: "à l'équipe bleue"
+    distracteurs: ["à l'équipe rouge", "le service se tire au sort à chaque point"]
+    indice: "C'est l'équipe qui vient de gagner le point qui sert ensuite."
+  # Tache 2 : l'observateur releve une action selon un critere donne.
+  - enonce: "Au volley-ball, l'observateur coche une case à chaque fois qu'une passe est attrapée sans que le ballon touche le sol. Le ballon de Léa rebondit une fois au sol, puis Malo l'attrape. Que fait l'observateur ?"  # EPS-1: rappelee
+    bonneReponse: "il ne coche rien"
+    distracteurs: ["il coche une case", "il coche une case pour Léa et une pour Malo"]
+    indice: "Le ballon a touché le sol avant d'être attrapé, la condition n'est pas remplie."
+  - enonce: "Au basket-ball, l'observateur note une croix chaque fois qu'un joueur avance de plus de trois pas sans faire rebondir le ballon. Hugo avance de quatre pas en tenant le ballon sans le faire rebondir. Que note l'observateur ?"  # EPS-1: rappelee
+    bonneReponse: "une croix"
+    distracteurs: ["aucune croix", "une croix pour chaque pas effectué"]
+    indice: "Compare le nombre de pas décrit à la limite donnée par la règle de l'observateur."
+  - enonce: "Au football, l'observateur relève une touche à chaque fois que le ballon sort entièrement des limites du terrain par le côté. Le ballon d'Aya roule et s'arrête juste sur la ligne, sans la dépasser. Que relève l'observateur ?"  # EPS-1: rappelee
+    bonneReponse: "aucune touche"
+    distracteurs: ["une touche", "une touche, et le jeu s'arrête"]
+    indice: "Le ballon doit sortir entièrement du terrain pour que la condition soit remplie."
+  - enonce: "Au handball, l'observateur note une faute de pas chaque fois qu'un joueur fait plus de trois appuis sans faire rebondir le ballon. Malo fait deux appuis, puis fait rebondir le ballon. Que note l'observateur ?"  # EPS-1: rappelee
+    bonneReponse: "aucune faute de pas"
+    distracteurs: ["une faute de pas", "une faute de pas et une touche"]
+    indice: "Deux appuis ne dépassent pas la limite donnée par la règle de l'observateur."
+  # Tache 3 : le marqueur applique une regle de marque.
+  - enonce: "Au handball, chaque but marqué vaut un point à l'équipe qui a tiré. Les rouges mènent 4 à 3, puis les bleus marquent un but. Quel score le marqueur inscrit-il ?"  # EPS-1: rappelee
+    bonneReponse: "4 à 4"
+    distracteurs: ["5 à 3", "4 à 3"]
+    indice: "Un but marque toujours un point de plus pour l'équipe qui vient de marquer."
+  - enonce: "Au basket-ball, un panier marqué derrière la ligne à trois points vaut trois points, un panier marqué devant cette ligne vaut deux points. Les rouges mènent 10 à 8, puis les bleus marquent un panier derrière la ligne à trois points. Quel score le marqueur inscrit-il ?"  # EPS-1: rappelee
+    bonneReponse: "10 à 11"
+    distracteurs: ["10 à 10", "11 à 8"]
+    indice: "Le panier a été marqué derrière la ligne à trois points, il ne vaut pas deux points."
+  - enonce: "Au volley-ball, un point est marqué par l'équipe qui gagne l'échange, même si elle n'est pas en train de servir. Les rouges mènent 9 à 7, puis les bleus gagnent l'échange alors qu'ils ne servaient pas. Quel score le marqueur inscrit-il ?"  # EPS-1: rappelee
+    bonneReponse: "9 à 8"
+    distracteurs: ["9 à 7", "10 à 7"]
+    indice: "La règle du point à chaque échange ne dépend pas de qui sert."
+  - enonce: "Au relais par équipes, chaque équipe marque un point pour une manche gagnée, mais aucun point n'est accordé si un témoin tombe pendant le passage. Les rouges mènent 3 à 2, puis les bleus gagnent la manche mais un témoin tombe pendant leur passage. Quel score le marqueur inscrit-il ?"  # EPS-1: rappelee
+    bonneReponse: "3 à 2"
+    distracteurs: ["3 à 3", "4 à 2"]
+    indice: "Un témoin tombé pendant le passage annule le point de la manche, même si l'équipe est arrivée en tête."

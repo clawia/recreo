@@ -334,6 +334,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // ADR-0103 : ce paquet declare MAT-CE1-04, pas MAT-CE1-03, et sort donc du perimetre
             // du garde-fou de repartition par forme des additions de CE1.
             "bandit-manchot-additions-posees-ce1",
+            // S45-EPS-ROLES (s45) : entree neuve, EPS-CM1-09, tenir les roles d'arbitre,
+            // d'observateur ou de marqueur dans un jeu.
+            "bandit-manchot-roles-eps-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -547,6 +550,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les instruments de musique",
             // S45-MAT-ADDITION (s45) : titre neuf.
             "Les additions posées",
+            // S45-EPS-ROLES (s45) : titre neuf.
+            "Arbitre, observateur, marqueur",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -784,6 +789,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis l'instrument, ou sa famille.",
             // S45-SCI-NUMERIQUE (s45) : consigne neuve.
             "Lis bien, puis dis la bonne pratique, ou pourquoi c'est risqué.",
+            // S45-EPS-ROLES (s45) : consigne neuve.
+            "Lis bien, puis dis ce que décide l'arbitre, ce que relève l'observateur, ou le score "
+                    + "que donne le marqueur.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -899,6 +907,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // conforme du referentiel de nadia-prof,
             // squad/programme/education-musicale/competences-cp.md, ligne MUS-CP-05).
             "Écouter, comparer et commenter",
+            // S45-EPS-ROLES (s45) : domaine neuf, second lot d'education physique et sportive CM1
+            // (copie conforme du referentiel de nadia-prof,
+            // squad/programme/education-physique-et-sportive/competences-cm1.md).
+            "Conduire et maîtriser un affrontement collectif ou interindividuel",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
@@ -1248,7 +1260,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S45-MAT-ADDITION (s45) : competence neuve, libelle du referentiel
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-04), sous-partie
             // allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
-            "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)");
+            "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)",
+            // S45-EPS-ROLES (s45) : competence neuve, copiee conforme du referentiel de nadia-prof
+            // (squad/programme/education-physique-et-sportive/competences-cm1.md, ligne
+            // EPS-CM1-09).
+            "Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer "
+                    + "les règles.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
