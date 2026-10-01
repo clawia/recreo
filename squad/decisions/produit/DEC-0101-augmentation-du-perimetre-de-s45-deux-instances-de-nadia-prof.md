@@ -185,7 +185,16 @@ chiffrage.**
 | A | `MUS-CP-05` Identifier des instruments et leurs familles | education musicale CP | 1,5 | jouable sur la seule moitie connaissance, sous `MUS-1` ; reprise telle quelle de `DEC-0100` section 5 |
 | A | `EPS-CM1-09` Tenir les roles d'arbitre, d'observateur, de marqueur | EPS CM1 | 1,5 | jouable sur la seule moitie connaissance, sous `EPS-1` ; reprise telle quelle de `DEC-0100` section 5 |
 | **Sous-total instance A** | | | **4,0 / 5,0** | marge individuelle 1,0, 3 lots |
-| B | `LVE-CM1-06` Ecrire des mots et des expressions memorises | langues vivantes CM1 | 1,5 | jouable par saisie, sous `ANG-S1` et `ANG-S2` - lexique deja ferme et servi en choix (`LVE-CM1-04`, `LVE-CM1-07`, toutes deux `couvert-valide`) |
+| B | `LVE-CM1-06` Ecrire des mots et des expressions memorises | langues vivantes CM1 | 1,5 | jouable par saisie, sous `ANG-S1` et `ANG-S2` - lexique deja ferme et servi en choix, quinze mots de `LVE-CM1-04` (`couvert-valide`) |
+
+**Amendement du 2026-10-01 (`camille-po`, s45, correction routee par `theo-archi`,
+`squad/rapports/avis-faisabilite-s45-cinq-lots.md`, section 7.2 et Q6).** La ligne ci-dessus
+attribuait le lexique disponible a deux lignes, `LVE-CM1-04` **et** `LVE-CM1-07`. **C'est faux** :
+`LVE-CM1-07`, bien que `couvert-valide`, ne sert aucun mot anglais - ses dix items sont des questions
+de decouverte culturelle en francais, sans aucune competence linguistique servie (`nadia-prof`, s32,
+section 13, refus 8). Seuls les quinze mots de `LVE-CM1-04` composent le lexique ferme sur lequel
+`ANG-S1` se tient. Le tarif (1,5) et le verdict de faisabilite ne changent pas : c'est une correction
+de fait sur la source du lexique, pas une reouverture du chiffrage.
 | B | `SCI-CM1-14` Connaitre quelques regles d'usage d'un environnement numerique | sciences et technologie CM1 | 1,5 | jouable au choix textuel, sur les connaissances seules, sous `SCI-1` a `SCI-3` |
 | **Sous-total instance B** | | | **3,0 / 5,0** | marge individuelle 2,0, 2 lots |
 | **Total du sprint** | | | **7,0 / 8,0** | marge de sprint 1,0 non allouee |

@@ -16271,7 +16271,9 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
   mot :
   > `ADP-CE1-1` - mention exacte exigee dans la matrice, mot pour mot : "le resultat atteste le
   > calcul ; la technique posee elle-meme - disposition en colonnes, retenues - n'est ni montree ni
-  > verifiee par le produit." Sans cette mention ecrite dans la matrice, la ligne ne ferme pas.
+  > verifiee par le produit." Sans cette mention ecrite dans la matrice, la ligne ne ferme pas. Motif
+  > cite mot pour mot : "le produit demande a l'enfant un geste qu'il ne peut pas verifier ; la
+  > consigne de catalogue doit le lui demander quand meme".
   >
   > `ADP-CE1-2` - les deux tailles de nombres de la parenthese (deux chiffres, trois chiffres) sont
   > chacune servies par au moins trois items ; tout item comporte au moins une retenue ; au moins deux
@@ -16286,9 +16288,11 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
   > unites avec la bonne reponse.
   >
   > `ADP-CE1-5` - chaque distracteur est une erreur classique nommee et declaree dans le paquet, parmi
-  > trois formes seulement : retenue oubliee, retenue reportee deux fois, retenue reportee dans la
-  > mauvaise colonne. Tous les distracteurs sont des entiers positifs, distincts entre eux et de la
-  > bonne reponse.
+  > trois formes seulement : retenue oubliee (chaque colonne additionnee separement, le chiffre des
+  > dizaines de la somme d'une colonne etant perdu), retenue reportee deux fois, retenue reportee dans
+  > la mauvaise colonne. Tous les distracteurs sont des entiers positifs, distincts entre eux et de la
+  > bonne reponse ; si une forme coincide avec la bonne reponse ou avec un distracteur deja choisi, une
+  > autre forme de la liste est prise.
   >
   > `ADP-CE1-6` - aucun item n'est habille d'une situation, ni ecrit en unites (ni euros, ni centimes,
   > ni centimetres, ni grammes, ni ecriture decimale) : les items portent des nombres nus.
@@ -16300,8 +16304,12 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
     chiffres, trois chiffres) sont chacune servies par au moins trois items, chaque item comporte au
     moins une retenue, au moins deux items portent une retenue sur la colonne des dizaines et au moins
     un item porte deux retenues (`ADP-CE1-2`).
-  - Etant donne le paquet livre, quand on compte les items dont les deux nombres sont inferieurs a
-    100, alors ils representent au plus un tiers du paquet (`ADP-CE1-3`).
+  - Etant donne le paquet livre, quand on compte les items qui mettent en jeu un nombre de trois
+    chiffres ou produisent une somme superieure a 100, alors ils representent au moins les deux tiers
+    du paquet (`ADP-CE1-3`).
+  - Etant donne l'entree de catalogue du paquet, quand on lit sa consigne, alors elle demande a
+    l'enfant de poser l'operation, meme si le produit ne verifie jamais la technique posee elle-meme
+    (`ADP-CE1-1`).
   - Etant donne les trois propositions d'un item, quand on les compare, alors elles ont le meme nombre
     de chiffres et le meme ordre de grandeur, et au moins l'une d'elles partage le chiffre des unites
     avec la bonne reponse (`ADP-CE1-4`).
@@ -16317,9 +16325,11 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
     `couvert-valide`.
 - **Ce que cette story ne fait pas** : elle ne montre ni ne verifie jamais la technique posee elle-meme
   (disposition en colonnes, retenues) - seul le resultat est verifie (`ADP-CE1-1`) ; elle ne sert
-  jamais un item sous 100 au-dela du tiers autorise, deja servi par `MAT-CE1-03` (`ADP-CE1-3`) ; elle
-  n'habille jamais un item d'une situation ou d'une unite (`ADP-CE1-6`) ; elle ne fixe aucun contenu
-  factuel precis (quels nombres retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+  jamais, au-dela d'un tiers du paquet, un item dont les deux nombres ont moins de trois chiffres et
+  dont la somme ne depasse pas 100, pour ne pas reproduire sous un autre code la meme matiere que
+  `bandit-manchot-additions-ce1`, deja servi par `MAT-CE1-03` (`ADP-CE1-3`) ; elle n'habille jamais un
+  item d'une situation ou d'une unite (`ADP-CE1-6`) ; elle ne fixe aucun contenu factuel precis (quels
+  nombres retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
 - **Lien decision** : `DEC-0101` (section 5, instance A).
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
   `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
@@ -16425,7 +16435,7 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
 ### S45-LVE-ECRITURE - Ecrire des mots et des expressions memorises (`LVE-CM1-06`)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux ecrire des mots et des expressions d'anglais deja
-  memorises en jouant au bandit manchot, afin de savoir les orthographier sans les relire.
+  memorises en les saisissant au clavier, afin de savoir les orthographier sans les relire.
 - **Competence programme visee** : langues vivantes (anglais), CM1 (cycle 3), domaine "Ecrire" -
   `squad/programme/langues-vivantes/competences-cm1.md`, `LVE-CM1-06`. Ligne `non couvert`,
   `MATRICE-couverture.md`, section "Langues vivantes (anglais) - CM1".
@@ -16441,23 +16451,51 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
   > `ANG-S2` - Apres une tentative fausse, l'indice montre la longueur du mot et sa premiere lettre,
   > jamais le mot.
 
+  Deux conditions supplementaires, transposees et valables sur toute ligne du referentiel depuis s28
+  (`squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`),
+  citees mot pour mot :
+  > `FER-1` - extension. Chaque element enumere par le libelle de la competence, et notamment par sa
+  > parenthese, est servi par au moins un item ou il est en position de bonne reponse. Un element hors
+  > de portee ne bloque pas la fermeture, mais la ligne ne ferme alors que sur sa part servie, avec la
+  > mention de couverture partielle ecrite dans la matrice.
+  >
+  > `FER-2` - densite. Au moins dix items servent la ligne, tous paquets confondus.
+  >
+  > `FER-3` - deux taches. Les items qui servent la ligne ne posent pas tous la meme tache. Au moins
+  > deux taches distinctes, la moins servie portant au moins trois items.
+
+  **`FER-1` n'est pas resolue element par element sur ce libelle** ("legender une image, renseigner
+  une fiche") : la question de savoir ce qui est servable par un item de saisie sans illustration
+  reste ouverte, routee a `nadia-prof` (instance B), avant l'ecriture du paquet.
+
   **Lexique disponible, verifie ce jour** : `LVE-CM1-04` (`bandit-manchot-anglais-cm1`,
-  `couvert-valide` depuis s28) sert trois champs lexicaux a cinq mots chacun en choix, valide ;
-  `LVE-CM1-07` (meme jeu, `couvert-valide` depuis s32) sert dix mots supplementaires en choix,
-  valide. `ANG-S1` est donc tenable sans extension du lexique existant.
+  `couvert-valide` depuis s28) sert quinze mots anglais, repartis en trois champs lexicaux de cinq
+  mots chacun, en choix, valide. `LVE-CM1-07` (meme jeu, `couvert-valide` depuis s32) **ne sert aucun
+  mot anglais** : ses dix items sont des questions de decouverte culturelle en francais, sur des
+  aspects culturels (Londres, Big Ben, Thanksgiving), sans aucune competence linguistique servie
+  (`nadia-prof`, s32, section 13, refus 8 : "decouverte culturelle seule, en francais ; aucune
+  competence linguistique n'est servie"). `ANG-S1` est donc tenable sur les quinze mots de
+  `LVE-CM1-04` seuls, sans extension du lexique existant et sans recourir a `LVE-CM1-07`.
 - **Criteres d'acceptation** :
-  - Etant donne un item, quand il s'affiche, alors il demande d'ecrire en anglais un mot ou une
-    expression deja servi en choix dans `bandit-manchot-anglais-cm1` (`LVE-CM1-04` ou `LVE-CM1-07`),
-    jamais un mot qui n'y figure pas (`ANG-S1`).
+  - Etant donne un item, quand il s'affiche, alors il demande d'ecrire en anglais un mot deja servi en
+    choix dans `bandit-manchot-anglais-cm1` sous `LVE-CM1-04`, jamais un mot qui n'y figure pas et
+    jamais un mot de `LVE-CM1-07`, qui ne sert aucun mot anglais (`ANG-S1`).
   - Etant donne une tentative fausse, quand l'indice s'affiche, alors il montre la longueur du mot et
     sa premiere lettre, jamais le mot complet (`ANG-S2`).
   - Etant donne le paquet livre, quand on le relit dans son entier, alors plusieurs mots distincts du
-    lexique ferme (au moins cinq) sont chacun demandes au moins une fois.
+    lexique ferme des quinze mots de `LVE-CM1-04` (au moins cinq) sont chacun demandes au moins une
+    fois.
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies, la moins servie portant au moins trois items (`FER-3`).
   - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
     `LVE-CM1-06` et uniquement elle.
   - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors elle
-    confirme que tous les mots demandes figurent deja dans le lexique en choix valide, et que l'indice
-    ne montre jamais le mot complet.
+    confirme que tous les mots demandes figurent deja dans le lexique en choix valide de `LVE-CM1-04`,
+    que l'indice ne montre jamais le mot complet, et que `FER-1`, `FER-2` et `FER-3` sont tenues (ou
+    que la ligne ferme avec la mention de couverture partielle que `FER-1` exige sur les elements hors
+    de portee).
 - **Ce que cette story ne fait pas** : elle ne demande jamais d'ecrire un mot absent du lexique deja
   servi en choix (`ANG-S1`) ; elle ne montre jamais le mot complet en indice (`ANG-S2`) ; elle ne
   fixe aucun contenu factuel precis (quels mots retenus parmi le lexique) - reste a l'auteur du paquet
@@ -16480,28 +16518,83 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
   L'usage effectif - envoyer, ranger, retrouver - suppose un environnement que le produit ne fournit
   pas et un etat qu'il ne conserve pas. Mention exigee d'avance : 'regles et connaissances d'usage
   seules ; la pratique d'un environnement numerique reste non couverte'"*. Conditions posees d'avance
-  sur toute la matiere, citees mot pour mot (meme document, section "Conditions opposables") :
-  > `SCI-1` - Apres une reponse fausse, le retour dit pourquoi elle est fausse, en une phrase.
+  sur toute la matiere. **Amendement du 2026-10-01 (`camille-po`, s45, correction routee par
+  `theo-archi`, `squad/rapports/avis-faisabilite-s45-cinq-lots.md`, section 8.1 et Q7).** `SCI-1`
+  etait citee ci-dessous dans sa formulation du 2026-09-03, deja remplacee le 2026-09-05 puis le
+  2026-09-06 - le meme defaut, deja route a s44 sur `S44-SCI-OBJET-TECHNIQUE`, jamais corrige dans ce
+  backlog depuis. La version qui vaut, citee mot pour mot
+  (`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
+  section 1.1), et les conditions qui l'accompagnent depuis le 2026-09-06, citees mot pour mot
+  (meme source, sections 1.2 et 2.5) :
+  > `SCI-1`, precisee le 2026-09-06 (remplace la formulation du 2026-09-03 recopiee par erreur dans
+  > une version anterieure de cette story, elle-meme remplacee le 2026-09-05) - Sur
+  > chaque item de sciences dont un distracteur porte une conception fausse courante, l'`indice` dit
+  > pourquoi cette conception est fausse, en une phrase, au present de verite generale, sans nommer la
+  > bonne reponse (`M21`). Il ne commente jamais "ta reponse" : il est ecrit pour etre vrai quel que
+  > soit le bouton presse. L'`explication` reste facultative et n'est jamais le moyen par lequel
+  > `SCI-1` est tenue.
+  >
+  > `SCI-4`, nouvelle le 2026-09-06 - Un item de sciences dont un distracteur porte une conception
+  > fausse courante offre au moins trois propositions.
   >
   > `SCI-2` - Sur les risques naturels et l'impact humain, aucun item ne fait porter une
-  > responsabilite a l'enfant ni a son foyer.
+  > responsabilite a l'enfant ni a son foyer. **Extension, pas une citation exacte sur cette ligne** :
+  > la source (meme document, section 2.5 et tableau 2.2) borne `SCI-2` aux lignes 16 et 18
+  > (phenomenes geologiques et meteorologiques ; effet de l'activite humaine), pas a la ligne 14. Son
+  > application ici est defendable mais reste a confirmer par `nadia-prof`.
   >
   > `SCI-3` - Aucun item ne demande une valeur numerique a restituer au-dela d'un item sur six.
+
+  Deux conditions supplementaires, deja appliquees a l'identique sur cette matiere (meme source,
+  section 2.5), citees mot pour mot : `HIS-3` - chaque fait porte sa source dans le commentaire du
+  paquet. `CON-1` - les propositions sont masquees, l'item ne se repond pas sans l'enonce complet.
+
+  Trois conditions de fermeture de ligne (`FER-1` a `FER-3`), transposees sur cette ligne precise
+  (meme source, tableau 2.2, ligne 14), citees mot pour mot :
+  > `FER-1` sur la ligne 14 - la parenthese du libelle ("identification, courriel, recherche d'une
+  > information, protection des donnees") est **exemplative** ("quelques regles" est un pluriel, il
+  > en faut plus d'une ; la liste reste illustrative) : **deux des quatre elements au moins**, chacun
+  > en position de bonne reponse d'au moins un item.
+  >
+  > `FER-2` - densite. Au moins dix items servent la ligne, tous paquets confondus.
+  >
+  > `FER-3` sur la ligne 14 - couple de taches d'exemple : reconnaitre la bonne conduite / dire
+  > pourquoi une conduite est risquee. Deux taches distinctes au moins, la moins servie portant au
+  > moins trois items.
 - **Criteres d'acceptation** :
   - Etant donne un item, quand il s'affiche, alors il porte sur une regle ou une connaissance d'usage
     d'un environnement numerique (identification, courriel, recherche d'une information, protection
     des donnees), jamais sur une pratique effective a realiser dans un environnement numerique reel.
-  - Etant donne une reponse fausse, quand le retour s'affiche, alors il dit en une phrase pourquoi
-    elle est fausse (`SCI-1`).
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand l'enfant
+    repond faux pour la premiere fois sur cet item, alors l'`indice`, affiche des ce moment, dit en
+    une phrase pourquoi cette conception est fausse, sans nommer la bonne reponse et sans jamais dire
+    "ta reponse" (`SCI-1`).
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand on compte ses
+    propositions, alors il en porte trois au moins (`SCI-4`).
   - Etant donne le paquet livre, quand on le relit dans son entier, alors aucun item ne met en cause
-    l'enfant ou son foyer sur un usage numerique reel (`SCI-2`).
+    l'enfant ou son foyer sur un usage numerique reel (`SCI-2`, applique ici par extension non bornee
+    par la source, qui le reserve aux lignes 16 et 18).
   - Etant donne le paquet livre, quand on compte les items qui demandent une valeur numerique a
     restituer, alors ils representent au plus un item sur six (`SCI-3`).
+  - Etant donne un fait porte par un item, quand on verifie le commentaire du paquet, alors ce fait
+    porte sa source (`HIS-3`).
+  - Etant donne les propositions d'un item, quand elles s'affichent, alors elles sont masquees et
+    l'item ne se repond pas sans l'enonce complet (`CON-1`).
+  - Etant donne le paquet livre, quand on verifie les quatre elements de la parenthese du libelle
+    (identification, courriel, recherche d'une information, protection des donnees), alors deux
+    d'entre eux au moins sont chacun en position de bonne reponse d'au moins un item (`FER-1`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies - reconnaitre la bonne conduite, dire pourquoi une conduite est
+    risquee - la moins servie portant au moins trois items (`FER-3`).
   - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
     `SCI-CM1-14` et uniquement elle.
   - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors elle
-    confirme que la mention de couverture partielle exigee d'avance ("regles et connaissances d'usage
-    seules ; la pratique d'un environnement numerique reste non couverte") est ecrite dans la matrice.
+    confirme que `SCI-1`, `SCI-2` (sur son extension), `SCI-3`, `SCI-4`, `HIS-3`, `CON-1`, `FER-1`,
+    `FER-2` et `FER-3` sont tenues, et que la mention de couverture partielle exigee d'avance ("regles
+    et connaissances d'usage seules ; la pratique d'un environnement numerique reste non couverte")
+    est ecrite dans la matrice.
 - **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de pratiquer reellement un
   geste numerique (envoyer, ranger, retrouver une information) - hors de portee, aucun environnement
   numerique fourni et aucune persistance (`DEC-0028`) ; elle ne met jamais en cause l'enfant ou son
