@@ -16890,6 +16890,480 @@ un jour, une fois le motif de `R6` leve.
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
   `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
 
+## Sprint 46 - Cinq lignes engagees par `DEC-0102` sur un dispositif a deux instances paralleles de
+`nadia-prof` : mathematiques CE1 (instance A), enseignement moral et civique CM1 (instance A),
+sciences et technologie CM1 (instance B)
+
+Cinq lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` au
+moment de l'engagement. Objectif et perimetre formalises par `DEC-0102` (strategie de s46 : deux
+instances paralleles de `nadia-prof`, une ligne de mathematiques CE1 et deux lignes chacune
+d'enseignement moral et civique CM1 et de sciences et technologie CM1). Les cinq lots portent deja
+un arbitrage prealable explicite, cite en entier ci-dessous : `theo-archi` peut rendre un avis de
+faisabilite directement sur chacun, sans arbitrage pedagogique prealable neuf a attendre.
+
+**Deux instances non chevauchantes** (`DEC-0102`, section 5 - `PAR-1`, `PAR-2`, `PAR-7`, `PAR-8` et
+`CYC-1` verifies un par un ; trois couples matiere/niveau distincts, aucun partage entre les deux
+instances ; `CYC-1` due et nommee sur les deux lignes d'EMC CM1, non due sur les deux lignes de
+sciences CM1 ; aucune clause de frontiere due, verifiee sur les six paires croisees entre
+instances) :
+
+| Instance | Lots | Cout |
+|---|---|---|
+| A - mathematiques CE1, enseignement moral et civique CM1 | `S46-MAT-SOUSTRACTION`, `S46-EMC-EMOTION-CM1`, `S46-EMC-INSTITUTIONS-CM1` | 4,0 / 5,0 |
+| B - sciences et technologie CM1 | `S46-SCI-MOUVEMENT-CM1`, `S46-SCI-PHENOMENES-CM1` | 3,0 / 5,0 |
+
+**Total du sprint : 7,0 / 8,0**, marge de sprint 1,0 non allouee des l'ouverture (`DEC-0102`,
+section 6 : le plafond mecanique de 8,0 n'est pas atteignable dans ce vivier sans rouvrir la regle
+"une seule ligne de mathematiques CE1 par sprint", reconduite une quatrieme fois, ni depasser le
+plafond individuel de 5,0 par instance), en plus des marges individuelles par instance (1,0 sur
+l'instance A, 2,0 sur l'instance B).
+
+**Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
+`sofia-sm`** (`DEC-0102`, section 8, qui route l'ouverture du sprint a `sofia-sm`).
+
+### S46-MAT-SOUSTRACTION - Poser et effectuer une soustraction (`MAT-CE1-05`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux poser et effectuer une soustraction en jouant au
+  bandit manchot, afin de savoir calculer des differences de deux ou trois chiffres.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-05`. Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Mathematiques - CE1", ligne "Poser et effectuer une soustraction
+  (nombres a deux ou trois chiffres)".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, section 5.2, `SOP-CE1-5`
+  amendee le 2026-10-01 - `squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`,
+  section 2) : verdict **ACCEPTE SOUS CONDITIONS, avec mention de couverture partielle**. Six
+  conditions, citees mot pour mot dans leur version en vigueur :
+  > `SOP-CE1-1` - mention exacte exigee dans la matrice, mot pour mot : "le resultat atteste le
+  > calcul ; la technique posee elle-meme - disposition en colonnes, emprunts - n'est ni montree ni
+  > verifiee par le produit." Sans cette mention ecrite dans la matrice, la ligne ne ferme pas.
+  >
+  > `SOP-CE1-2` - `FER-1` sur la parenthese, et les deux formes de soustraction sont servies. Les
+  > nombres a deux chiffres et les nombres a trois chiffres sont chacun servis par au moins trois
+  > items. Au moins la moitie des items comportent un emprunt, et au moins un item comporte deux
+  > emprunts. Au moins deux items n'en comportent aucun.
+  >
+  > `SOP-CE1-3` - separation d'avec `MAT-CE1-03`, deja servie. Au moins les deux tiers des items
+  > mettent en jeu un nombre de trois chiffres, ou ont un premier terme superieur a 100.
+  >
+  > `SOP-CE1-4` - l'item ne se repond pas sans poser l'operation. Memes exigences que `ADP-CE1-4` :
+  > meme nombre de chiffres, meme ordre de grandeur, au moins un distracteur partageant le chiffre
+  > des unites avec la bonne reponse.
+  >
+  > `SOP-CE1-5` - chaque distracteur est une erreur classique nommee, declaree dans le paquet. **Les
+  > quatre formes admises, et seulement celles-la** (amendement du 2026-10-01, `nadia-prof`, s46,
+  > apres un constat bloquant de `theo-archi` - les trois formes d'origine donnaient toujours une
+  > valeur superieure a la bonne reponse, ce qui rendait la bonne reponse predictible comme "toujours
+  > la plus petite") :
+  > - **l'emprunt oublie** (soustraction chiffre par chiffre en valeur absolue) ;
+  > - **l'emprunt non reporte** sur la colonne suivante ;
+  > - **la somme au lieu de la difference** (`a + b`) ;
+  > - **l'emprunt reporte deux fois** (forme neuve) : pour un emprunt fait sur la colonne de rang `i`,
+  >   la valeur est `a - b - 10^(i+1)`, toujours **inferieure** a la bonne reponse, le chiffre des
+  >   unites intact. La forme peut porter sur l'un des emprunts d'un item qui en comporte deux, ou sur
+  >   les deux. **Admission sur un item** : la colonne qui recoit l'emprunt en double se calcule sans
+  >   emprunt de plus ni de moins que dans le calcul juste, sinon l'item porterait deux erreurs
+  >   enchainees ; `SOP-CE1-4` s'applique comme aux trois autres formes (une forme qui change le
+  >   nombre de chiffres n'est pas admise sur cet item, une autre forme de la liste est prise).
+  >
+  > Tous les distracteurs sont des entiers positifs, distincts entre eux et de la bonne reponse ; si
+  > une forme coincide avec la bonne reponse ou avec un distracteur deja choisi, une autre forme de la
+  > liste est prise.
+  >
+  > **Le rang, sur le paquet entier** (regle neuve du meme amendement) : sur les items sans emprunt,
+  > seule la somme est disponible - ces items portent deux propositions et le garde-fou de rang ne les
+  > lit pas, acceptable puisque `SOP-CE1-2` les exige. Mais **sur le paquet entier, items a deux
+  > propositions compris, choisir toujours la plus petite proposition ne donne pas la bonne reponse
+  > sur plus de la moitie des items.**
+  >
+  > `SOP-CE1-6` - bornes, resultat jamais negatif, et aucun habillage. `0 <= b <= a <= 1000`. Aucun
+  > item n'est habille d'une situation, ni ecrit en euros, centimes, centimetres, grammes ni en
+  > ecriture decimale.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande de poser et d'effectuer une
+    soustraction sur deux nombres a deux ou trois chiffres nus, sans habillage de situation ni unite,
+    avec un resultat jamais negatif (`SOP-CE1-6`).
+  - Etant donne le paquet livre, quand on compte les items, alors les deux tailles de nombres (deux
+    chiffres, trois chiffres) sont chacune servies par au moins trois items, au moins la moitie des
+    items comportent un emprunt, au moins un item comporte deux emprunts, et au moins deux items
+    n'en comportent aucun (`SOP-CE1-2`).
+  - Etant donne le paquet livre, quand on compte les items qui mettent en jeu un nombre de trois
+    chiffres ou un premier terme superieur a 100, alors ils representent au moins les deux tiers du
+    paquet (`SOP-CE1-3`).
+  - Etant donne l'entree de catalogue du paquet, quand on lit sa consigne, alors elle demande a
+    l'enfant de poser l'operation, meme si le produit ne verifie jamais la technique posee elle-meme
+    (`SOP-CE1-1`).
+  - Etant donne les trois propositions d'un item, quand on les compare, alors elles ont le meme
+    nombre de chiffres et le meme ordre de grandeur, et au moins l'une d'elles partage le chiffre des
+    unites avec la bonne reponse (`SOP-CE1-4`).
+  - Etant donne les distracteurs d'un item, quand on les verifie, alors chacun correspond a l'une des
+    **quatre** erreurs nommees (emprunt oublie, emprunt non reporte, somme au lieu de difference,
+    emprunt reporte deux fois), est un entier positif, et est distinct des deux autres propositions
+    (`SOP-CE1-5`).
+  - Etant donne un item dont un distracteur declare la forme "emprunt reporte deux fois", quand on
+    recalcule la colonne qui recoit l'emprunt en double, alors elle ne comporte ni emprunt de plus ni
+    emprunt de moins que dans le calcul juste (`SOP-CE1-5`, regle d'admission).
+  - Etant donne le paquet livre dans son entier, items a deux propositions (sans emprunt) compris,
+    quand on applique la strategie "choisir toujours la plus petite proposition", alors elle ne donne
+    pas la bonne reponse sur plus de la moitie des items (`SOP-CE1-5`, regle de rang sur le paquet
+    entier).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-05` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors elle
+    confirme que les six conditions `SOP-CE1-1` a `SOP-CE1-6` sont tenues (`SOP-CE1-5` dans sa version
+    a quatre formes et sa regle de rang sur le paquet entier) et que la mention de couverture
+    partielle exigee par `SOP-CE1-1` est ecrite dans la matrice avant que la ligne passe a
+    `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne montre ni ne verifie jamais la technique posee
+  elle-meme (disposition en colonnes, emprunts) - seul le resultat est verifie (`SOP-CE1-1`) ; elle
+  ne sert jamais, au-dela d'un tiers du paquet, un item dont les deux nombres ont moins de trois
+  chiffres et dont le premier terme ne depasse pas 100, pour ne pas reproduire sous un autre code la
+  meme matiere que `bandit-manchot-soustractions-ce1`, deja servi par `MAT-CE1-03` (`SOP-CE1-3`) ;
+  elle n'habille jamais un item d'une situation ou d'une unite, et ne produit jamais de resultat
+  negatif (`SOP-CE1-6`) ; elle n'admet aucun distracteur hors des quatre formes nommees de
+  `SOP-CE1-5`, et ne laisse jamais la strategie "toujours la plus petite proposition" reussir sur
+  plus de la moitie du paquet entier ; elle ne fixe aucun contenu factuel precis (quels nombres
+  retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0102` (section 6, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S46-EMC-EMOTION-CM1 - Identifier une emotion, distinguer ressentir et agir (`EMC-CM1-01`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux identifier l'emotion d'une personne dans une
+  situation donnee et distinguer ce que l'on ressent de ce que l'on fait, en jouant au bandit
+  manchot, afin de mieux comprendre mes propres reactions et celles des autres.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine "Respecter
+  autrui" - `squad/programme/enseignement-moral-et-civique/competences-cm1.md`, `EMC-CM1-01`. Ligne
+  `non couvert`, `MATRICE-couverture.md`, section "Enseignement moral et civique - CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 1) : *"non couvert - jouable au choix, sous `EMC-1` et `EMC-2` |
+  La situation est decrite, l'emotion s'infere. Risque propre : beaucoup de situations admettent deux
+  emotions defendables - `HIS-2` transpose, et il mord ici plus fort qu'en histoire. La seconde
+  moitie - distinguer ce que l'on ressent de ce que l'on fait - est la partie utile au CM1 et elle se
+  pose tres bien en trois propositions"*. Conditions posees d'avance sur toute la matiere (memes que
+  pour l'EMC CP, reprises a l'identique, `EMC-1` a `EMC-7`, plus `EMC-8` et `EMC-9` propres au CM1),
+  citees mot pour mot (`squad/programme/enseignement-moral-et-civique/competences-cp.md`) :
+  > `EMC-1` - Aucun item n'interroge l'enfant sur ce que lui ressent, vit, croit ou fait chez lui.
+  > Les situations sont celles d'un personnage nomme, exterieur a l'enfant.
+  >
+  > `EMC-2` - Un item sur une emotion ne retient que les situations a emotion unique et evidente. Si
+  > deux des trois propositions sont defendables devant la situation decrite, l'item est refuse.
+  >
+  > `EMC-5` - Aucun item n'a deux reponses defendables. C'est `HIS-2` etendu a cette matiere.
+  >
+  > `EMC-8` - Aucun item ne demande a l'enfant de declarer un comportement (forme "que fais-tu si...",
+  > "acceptes-tu de..."). Les items portent sur ce que la personne decrite ressent ou fait, jamais sur
+  > ce que l'enfant declare qu'il ferait.
+
+  Conditions de fermeture de ligne, transposees sur toute ligne du referentiel depuis s28, citees mot
+  pour mot (`squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-
+  lots.md`) :
+  > `FER-2` - densite. Au moins dix items servent la ligne, tous paquets confondus.
+  >
+  > `FER-3` - deux taches. Les items qui servent la ligne ne posent pas tous la meme tache. Au moins
+  > deux taches distinctes, la moins servie portant au moins trois items.
+
+  **Mention exigee d'avance si la ligne bouge, reprise mot pour mot** : "connaissances civiques et
+  reconnaissance de situations seules ; aucun comportement, aucun engagement et aucune participation
+  a une decision collective ne sont servis par ce produit."
+
+  **`CYC-1` - continuite cycle 2 / cycle 3, lecture obligatoire avant de juger.** `EMC-CM1-01`
+  partage son objet avec `EMC-CP-01` (identifier et nommer les emotions d'autrui),
+  `couvert-valide` depuis s31 (`bandit-manchot-emotions-autrui-cp`). L'instance qui audite ce paquet
+  lit `bandit-manchot-emotions-autrui-cp` avant de juger : aucun item de CM1 ne doit contredire les
+  quatre emotions deja servies au CP (joie, tristesse, colere, peur) ; la seconde moitie de la ligne
+  (distinguer ressentir et agir) est une extension, pas une redite.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il decrit une situation vecue par un personnage
+    nomme, exterieur a l'enfant, et demande d'identifier l'emotion ressentie, jamais ce que l'enfant
+    lui-meme ressent, vit, croit ou fait (`EMC-1`).
+  - Etant donne un item sur une emotion, quand on relit la situation decrite, alors une seule
+    emotion est defendable parmi les trois propositions (`EMC-2`, `EMC-5`).
+  - Etant donne un item sur la seconde moitie de la ligne, quand il s'affiche, alors il demande de
+    distinguer ce qu'une personne decrite ressent de ce qu'elle fait, jamais ce que l'enfant
+    declarerait faire (`EMC-8`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies - identifier l'emotion, distinguer ressentir et agir - la moins
+    servie portant au moins trois items (`FER-3`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CM1-01` et uniquement elle.
+  - Etant donne le paquet servi, quand `nadia-prof` l'audite, alors elle a prealablement rejoue
+    `bandit-manchot-emotions-autrui-cp` et verifie qu'aucun item n'entre en contradiction avec les
+    quatre emotions qui y sont servies (`CYC-1`).
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors elle
+    confirme que `EMC-1`, `EMC-2`, `EMC-5`, `EMC-8`, `FER-2`, `FER-3` et `CYC-1` sont tenues, et que
+    la mention exigee d'avance est ecrite dans la matrice.
+- **Ce que cette story ne fait pas** : elle n'interroge jamais l'enfant sur sa propre vie (`EMC-1`) ;
+  elle ne demande jamais une declaration de comportement (`EMC-8`) ; elle ne contredit jamais le
+  paquet d'emotions deja servi au CP (`CYC-1`) ; elle ne fixe aucun contenu factuel precis (quelles
+  situations retenues) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0102` (section 6, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S46-EMC-INSTITUTIONS-CM1 - Identifier le role de quelques institutions proches (`EMC-CM1-09`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux identifier le role de quelques institutions proches
+  (mairie, conseil municipal, ecole) et savoir a qui m'adresser selon la situation, en jouant au
+  bandit manchot, afin de connaitre les institutions de ma vie quotidienne.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine "Construire
+  une culture civique" - `squad/programme/enseignement-moral-et-civique/competences-cm1.md`,
+  `EMC-CM1-09`. Ligne `non couvert`, `MATRICE-couverture.md`, section "Enseignement moral et civique
+  - CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 9) : *"non couvert - jouable au choix, sous `EMC-6` | 'A qui
+  s'adresse-t-on pour signaler un lampadaire casse ?' : connaissance verifiable. Aucun item ne
+  suppose la commune de l'enfant : le produit ne la connait pas et ne peut pas la connaitre
+  (`DEC-0028`)"*. **Precision du 2026-10-01 (`nadia-prof`, s46), reponse a la question Q2 de
+  `theo-archi`** (`squad/rapports/avis-faisabilite-s46-cinq-lots.md`, section 5 ; la precision
+  complete est dans `squad/programme/enseignement-moral-et-civique/competences-cm1.md`, note sous
+  "Conditions opposables") : `EMC-6` ne garde pas seule cette ligne. **`EMC-7` vaut, et ce n'est pas
+  une extension** - elle s'applique a toute la matiere depuis le 2026-09-03, et mord des qu'un numero
+  d'urgence apparait dans un enonce, une proposition, un indice ou une explication. **Un service
+  d'urgence nomme sans numero** ("les pompiers", "le SAMU") n'entre pas dans la lettre d'`EMC-7` ;
+  c'est **`EMC-5`** qui le garde, parce que deux services peuvent porter secours a la meme situation
+  (les pompiers et le SAMU portent tous deux secours a une personne blessee), ce qui rend les deux
+  defendables si l'un sert de distracteur de l'autre. **Le meilleur usage d'un service d'urgence sur
+  cette ligne est en distracteur**, face a une demarche qui releve d'une autre institution (un
+  lampadaire casse n'appelle pas les pompiers) - ce n'est pas une condition, mais la story cite les
+  trois conditions qui s'y appliquent plutot que la seule qui etait nommee a l'ouverture. Trois
+  conditions citees mot pour mot (`squad/programme/enseignement-moral-et-civique/competences-cp.md`) :
+  > `EMC-5` - Aucun item n'a deux reponses defendables. C'est `HIS-2` (2026-09-02) etendu a cette
+  > matiere : les questions morales et civiques admettent naturellement plusieurs reponses justes, et
+  > une mecanique de choix en couronnerait une.
+  >
+  > `EMC-6` - Aucun item ne presuppose un lieu de vie, une commune, un type d'ecole ou une
+  > configuration familiale. Le produit ne conserve rien et ne connait rien de l'enfant (`DEC-0028`) ;
+  > toute donnee de contexte est dans l'enonce ou n'existe pas.
+  >
+  > `EMC-7` - Les items sur les numeros d'urgence sont exacts et sans ambiguite. Chaque numero cite
+  > porte sa source dans le commentaire du paquet, comme `HIS-3` l'exige en histoire. Un item dont
+  > deux propositions sont toutes deux correctes est refuse, sans discussion.
+
+  Conditions de fermeture de ligne, transposees sur toute ligne du referentiel depuis s28, citees mot
+  pour mot (meme source que la story precedente) : `FER-1` (chaque element enumere par le libelle,
+  ici les trois institutions de la parenthese - mairie, conseil municipal, ecole -, en position de
+  bonne reponse d'au moins un item), `FER-2` (au moins dix items), `FER-3` (au moins deux taches
+  distinctes, la moins servie portant au moins trois items - ici, identifier le role d'une
+  institution / dire a qui s'adresser selon la situation decrite).
+
+  **Mention exigee d'avance si la ligne bouge, reprise mot pour mot** : "connaissances civiques et
+  reconnaissance de situations seules ; aucun comportement, aucun engagement et aucune participation
+  a une decision collective ne sont servis par ce produit."
+
+  **`CYC-1` - continuite cycle 2 / cycle 3, lecture obligatoire avant de juger.** `EMC-CM1-09`
+  partage son objet avec `EMC-CP-13` (identifier des roles et services de l'ecole et de la commune -
+  directeur, mairie, pompiers, medecin), `couvert-valide` depuis s41
+  (`bandit-manchot-roles-ecole-commune-cp`). L'instance qui audite ce paquet lit ce paquet avant de
+  juger : aucun item de CM1 ne doit contredire les roles deja servis au CP.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur le role d'une institution proche
+    (mairie, conseil municipal, ecole) ou sur la personne a qui s'adresser selon une situation
+    decrite, sans jamais supposer un lieu de vie, une commune ou une configuration familiale propre a
+    l'enfant (`EMC-6`).
+  - Etant donne un item dont un numero d'urgence apparait dans l'enonce, une proposition, l'indice ou
+    l'explication, quand on le verifie, alors le numero est exact, sa source est dans le commentaire du
+    paquet, et aucun item n'admet deux numeros tous deux corrects pour la meme situation (`EMC-7`,
+    meme piege que la ligne 14 du referentiel CP - incendie, 18 et 112 - refuse sans discussion).
+  - Etant donne un item dont la bonne reponse ou un distracteur nomme un service d'urgence sans
+    numero (par exemple "les pompiers", "le SAMU"), quand on verifie les autres propositions, alors
+    aucune ne nomme un autre service portant secours a la meme situation (`EMC-5` : les pompiers et
+    le SAMU portent tous deux secours a une personne blessee, l'un ne devient jamais le distracteur
+    de l'autre sur un item de secours a personne).
+  - Etant donne le paquet livre, quand on verifie les trois institutions de la parenthese du
+    libelle, alors chacune est en position de bonne reponse d'au moins un item, et aucun item portant
+    un service d'urgence nomme sans numero n'est compte pour l'une des trois (`FER-1`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies - identifier le role d'une institution, dire a qui s'adresser - la
+    moins servie portant au moins trois items (`FER-3`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CM1-09` et uniquement elle.
+  - Etant donne le paquet servi, quand `nadia-prof` l'audite, alors elle a prealablement rejoue
+    `bandit-manchot-roles-ecole-commune-cp` et verifie qu'aucun item n'entre en contradiction avec
+    les roles qui y sont servis, y compris sur un service d'urgence deja servi en bonne reponse au CP
+    (pompiers) (`CYC-1`).
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors elle
+    confirme que `EMC-5`, `EMC-6`, `EMC-7`, `FER-1`, `FER-2`, `FER-3` et `CYC-1` sont tenues, et que
+    la mention exigee d'avance est ecrite dans la matrice.
+- **Ce que cette story ne fait pas** : elle ne suppose jamais la commune, l'ecole ou la configuration
+  familiale reelle de l'enfant (`EMC-6`) ; elle n'ecrit jamais un numero d'urgence inexact, sans
+  source, ou en situation ou deux numeros seraient tous deux corrects (`EMC-7`) ; elle ne met jamais
+  deux services d'urgence equivalents l'un en distracteur de l'autre sur un meme item (`EMC-5`) ;
+  elle ne contredit jamais le paquet de roles deja servi au CP (`CYC-1`) ; elle ne fixe aucun contenu
+  factuel precis (quelles situations retenues) - reste a l'auteur du paquet puis a l'audit de
+  `nadia-prof`.
+- **Lien decision** : `DEC-0102` (section 6, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S46-SCI-MOUVEMENT-CM1 - Decrire un mouvement par sa trajectoire et sa vitesse (`SCI-CM1-03`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux decrire le mouvement d'un objet par sa trajectoire et
+  par sa vitesse, par rapport a un point de repere donne, en jouant au bandit manchot, afin de savoir
+  observer et nommer un mouvement.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Matiere,
+  mouvement, energie, information" - `squad/programme/sciences-et-technologie/competences-cm1.md`,
+  `SCI-CM1-03`. Ligne `non couvert`, `MATRICE-couverture.md`, section "Sciences et technologie -
+  CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-
+  quinze-reserves.md`, section 2.2, ligne 3) : parenthese **conjonctive**, trois elements exiges par
+  `FER-1` - trajectoire, vitesse, point de repere ; deux taches attendues pour `FER-3` - decrire une
+  trajectoire / comparer deux mouvements par leur vitesse ; condition particuliere citee mot pour
+  mot : *"Recouvrement : tout item qui calcule une vitesse est compte sur mathematiques CM1, pas ici
+  (`ADR-0081` clause 5)"*. Refus d'avance, cite mot pour mot (meme source, section 6) : *"Tout item
+  de la ligne 3 qui calcule une vitesse, une duree ou une longueur. Un tel item est compte sur
+  mathematiques CM1 (`ADR-0081` clause 5) : le porter ici gonflerait le compte de sciences sans
+  servir la description du mouvement, qui est ce que la ligne demande."* Verdict repris dans le
+  referentiel (`squad/programme/sciences-et-technologie/competences-cm1.md`, ligne 3) : *"jouable au
+  choix textuel, sur la description seule. Le produit ne montre aucun mouvement : le palier 1 est une
+  image fixe. L'item decrit la situation en texte."*
+
+  Conditions posees d'avance sur toute la matiere, citees mot pour mot (meme source, sections 1.2 et
+  2.5) :
+  > `SCI-1` - Sur chaque item de sciences dont un distracteur porte une conception fausse courante,
+  > l'`indice` dit pourquoi cette conception est fausse, en une phrase, au present de verite
+  > generale, sans nommer la bonne reponse.
+  >
+  > `SCI-3` - Aucun item ne demande une valeur numerique a restituer au-dela d'un item sur six.
+  >
+  > `SCI-4` - Un item de sciences dont un distracteur porte une conception fausse courante offre au
+  > moins trois propositions.
+  >
+  > `HIS-3` - chaque fait porte sa source dans le commentaire du paquet.
+  >
+  > `CON-1` - les propositions sont masquees, l'item ne se repond pas sans l'enonce complet.
+  >
+  > `FER-2` - densite. Au moins dix items servent la ligne, tous paquets confondus.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il decrit en texte une situation de mouvement
+    (trajectoire, vitesse ou point de repere) et demande de la decrire ou de comparer deux
+    mouvements, sans jamais montrer le mouvement lui-meme (palier 1, image fixe).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors aucun item ne demande de
+    calculer une valeur de vitesse, de duree ou de longueur - cette operation reste comptee sur
+    mathematiques CM1 (refus d'avance, `ADR-0081` clause 5).
+  - Etant donne le paquet livre, quand on verifie les trois elements de la parenthese du libelle
+    (trajectoire, vitesse, point de repere), alors chacun est en position de bonne reponse d'au moins
+    un item (`FER-1`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies - decrire une trajectoire, comparer deux mouvements par leur
+    vitesse - la moins servie portant au moins trois items (`FER-3`).
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand l'enfant
+    repond faux pour la premiere fois sur cet item, alors l'`indice` dit en une phrase pourquoi cette
+    conception est fausse, sans nommer la bonne reponse (`SCI-1`), et l'item porte trois propositions
+    au moins (`SCI-4`).
+  - Etant donne le paquet livre, quand on compte les items qui demandent une valeur numerique a
+    restituer, alors ils representent au plus un item sur six (`SCI-3`).
+  - Etant donne un fait porte par un item, quand on verifie le commentaire du paquet, alors ce fait
+    porte sa source (`HIS-3`), et les propositions de l'item sont masquees jusqu'a l'enonce complet
+    (`CON-1`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-03` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors elle
+    confirme que `SCI-1`, `SCI-3`, `SCI-4`, `HIS-3`, `CON-1`, `FER-1`, `FER-2` et `FER-3` sont tenues,
+    et qu'aucun item ne calcule une vitesse, une duree ou une longueur.
+- **Ce que cette story ne fait pas** : elle ne demande jamais de calculer une vitesse, une duree ou
+  une longueur - cette competence reste comptee sur mathematiques CM1 (`ADR-0081` clause 5) ; elle ne
+  montre jamais un mouvement reel, seul le palier 1 (image fixe) est disponible ; elle ne fixe aucun
+  contenu factuel precis (quelles situations de mouvement retenues) - reste a l'auteur du paquet puis
+  a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0102` (section 6, instance B).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+### S46-SCI-PHENOMENES-CM1 - Identifier des phenomenes geologiques et meteorologiques, et les risques
+associes (`SCI-CM1-16`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux identifier quelques phenomenes geologiques et
+  meteorologiques (seisme, eruption, tempete, inondation) et les risques qui leur sont associes, en
+  jouant au bandit manchot, afin de savoir reconnaitre un phenomene et le geste qui protege.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "La planete
+  Terre. Les etres vivants dans leur environnement" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-16`. Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Sciences et technologie - CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-
+  quinze-reserves.md`, section 2.2, ligne 16) : parenthese exemplative ("quelques phenomenes"), le
+  couple "geologiques et meteorologiques" conjonctif ; trois elements exiges par `FER-1` - un
+  phenomene geologique, un phenomene meteorologique, un risque associe ; deux taches attendues pour
+  `FER-3` - reconnaitre le phenomene decrit / dire quel geste protege ; condition particuliere, citee
+  mot pour mot : *"`BIA-2` : un paquet qui situe tous les seismes, toutes les eruptions et toutes les
+  inondations ailleurs enseigne une geographie du malheur, pas de la geologie."* `BIA-2`, definie
+  initialement sur les pays (`ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`) et
+  etendue aux types d'espace puis aux risques naturels, citee mot pour mot dans sa forme generale :
+  *"Un pays [ou un phenomene] n'est jamais represente par un seul trait."*
+
+  Conditions posees d'avance sur toute la matiere, citees mot pour mot (meme source, sections 1.2 et
+  2.5) :
+  > `SCI-1` - Sur chaque item de sciences dont un distracteur porte une conception fausse courante,
+  > l'`indice` dit pourquoi cette conception est fausse, en une phrase, au present de verite
+  > generale, sans nommer la bonne reponse.
+  >
+  > `SCI-2` - Sur les risques naturels et l'impact humain, aucun item ne fait porter une
+  > responsabilite a l'enfant ni a son foyer. **Bornee explicitement aux lignes 16 et 18** (meme
+  > source, section 2.5 et tableau 2.2) : son application ici est directe, pas une extension.
+  >
+  > `SCI-3` - Aucun item ne demande une valeur numerique a restituer au-dela d'un item sur six.
+  >
+  > `SCI-4` - Un item de sciences dont un distracteur porte une conception fausse courante offre au
+  > moins trois propositions.
+  >
+  > `HIS-3` - chaque fait porte sa source dans le commentaire du paquet.
+  >
+  > `CON-1` - les propositions sont masquees, l'item ne se repond pas sans l'enonce complet.
+  >
+  > `FER-2` - densite. Au moins dix items servent la ligne, tous paquets confondus.
+
+  **`CYC-1`** : verifie contre les referentiels de cycle 2 (questionner le monde CP, mathematiques CP
+  et CE1) ce jour par `DEC-0102` section 5 - aucune ligne deja servie n'y porte sur un seisme, une
+  eruption ou une tempete. `CYC-1` ne s'applique donc pas a cette ligne, aucune lecture de paquet de
+  cycle 2 n'est due.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande de reconnaitre un phenomene geologique
+    ou meteorologique decrit, ou de dire quel geste protege du risque associe.
+  - Etant donne le paquet livre, quand on verifie les trois elements exiges par `FER-1`, alors un
+    phenomene geologique, un phenomene meteorologique et un risque associe sont chacun en position de
+    bonne reponse d'au moins un item.
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies - reconnaitre le phenomene decrit, dire quel geste protege - la
+    moins servie portant au moins trois items (`FER-3`).
+  - Etant donne le paquet livre, quand on releve la localisation des phenomenes decrits, alors elle
+    n'est jamais systematiquement situee ailleurs qu'en France ou en Europe (`BIA-2`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors aucun item ne fait porter
+    une responsabilite sur l'enfant ou son foyer face a un risque naturel (`SCI-2`).
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand l'enfant
+    repond faux pour la premiere fois sur cet item, alors l'`indice` dit en une phrase pourquoi cette
+    conception est fausse, sans nommer la bonne reponse (`SCI-1`), et l'item porte trois propositions
+    au moins (`SCI-4`).
+  - Etant donne le paquet livre, quand on compte les items qui demandent une valeur numerique a
+    restituer, alors ils representent au plus un item sur six (`SCI-3`).
+  - Etant donne un fait porte par un item, quand on verifie le commentaire du paquet, alors ce fait
+    porte sa source (`HIS-3`), et les propositions de l'item sont masquees jusqu'a l'enonce complet
+    (`CON-1`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-16` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors elle
+    confirme que `SCI-1`, `SCI-2`, `SCI-3`, `SCI-4`, `HIS-3`, `CON-1`, `BIA-2`, `FER-1`, `FER-2` et
+    `FER-3` sont tenues.
+- **Ce que cette story ne fait pas** : elle ne situe jamais systematiquement les phenomenes decrits
+  loin de l'enfant (`BIA-2`) ; elle ne met jamais en cause l'enfant ou son foyer face a un risque
+  naturel (`SCI-2`) ; elle ne fixe aucun contenu factuel precis (quels phenomenes retenus) - reste a
+  l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0102` (section 6, instance B).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
+
 ## Backlog ouvert pour s46 et au-dela - decouverte retroactive sur `R6`, un contenu deja servi aux
 enfants
 
