@@ -340,6 +340,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-EMC-EMOTION-CM1 (s46) : entree neuve, EMC-CM1-01, identifier une emotion et
             // distinguer ce que l'on ressent de ce que l'on fait.
             "bandit-manchot-emotion-ressentir-agir-cm1",
+            // S46-SCI-MOUVEMENT-CM1 (s46) : entree neuve, SCI-CM1-03, decrire un mouvement par sa
+            // trajectoire et sa vitesse.
+            "bandit-manchot-mouvement-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -557,6 +560,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Arbitre, observateur, marqueur",
             // S46-EMC-EMOTION-CM1 (s46) : titre neuf.
             "Ressentir et agir",
+            // S46-SCI-MOUVEMENT-CM1 (s46) : titre neuf.
+            "Trajectoire et vitesse",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -800,6 +805,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-EMC-EMOTION-CM1 (s46) : consigne neuve.
             "Lis bien, puis dis quelle émotion ressent la personne, ou distingue ce qu'elle "
                     + "ressent de ce qu'elle fait.",
+            // S46-SCI-MOUVEMENT-CM1 (s46) : consigne neuve.
+            "Lis bien, puis dis la trajectoire, le repère, ou qui va le plus vite.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1278,7 +1285,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
             // EMC-CM1-01).
             "Identifier et nommer l'émotion d'une personne dans une situation donnée, et "
-                    + "distinguer ce que l'on ressent de ce que l'on fait.");
+                    + "distinguer ce que l'on ressent de ce que l'on fait.",
+            // S46-SCI-MOUVEMENT-CM1 (s46) : competence neuve, libelle du referentiel copie mot pour
+            // mot (squad/programme/sciences-et-technologie/competences-cm1.md, ligne SCI-CM1-03).
+            "Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à "
+                    + "un point de repère donné.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
