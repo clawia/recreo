@@ -76,7 +76,7 @@ items:
     bonneReponse: "un penalty pour l'équipe bleue"
     distracteurs: ["un penalty pour l'équipe rouge", "le jeu continue sans interruption"]
     indice: "La faute est commise par les rouges ; la sanction profite toujours à l'autre équipe."
-  - enonce: "Au football, un joueur de l'équipe bleue fait tomber un adversaire. La règle du jeu accorde alors un coup franc, à l'endroit de la faute, à l'équipe qui l'a subie. L'arbitre accorde-t-il ce coup franc à quelle équipe ?"  # EPS-1: rappelee
+  - enonce: "Au football, un joueur de l'équipe bleue fait tomber un adversaire. La règle du jeu accorde alors un coup franc, à l'endroit de la faute, à l'équipe qui l'a subie. À quelle équipe l'arbitre accorde-t-il ce coup franc ?"  # EPS-1: rappelee
     bonneReponse: "à l'équipe rouge"
     distracteurs: ["à l'équipe bleue", "aucun coup franc, le jeu continue"]
     indice: "Un coup franc profite toujours à l'équipe qui a subi la faute, jamais à celle qui l'a commise."
