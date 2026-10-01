@@ -13,13 +13,132 @@
 - **Conditions opposables** : `SCI-1` (version du 2026-09-06), `SCI-2` (par extension), `SCI-3`,
   `SCI-4`, `HIS-3`, `CON-1`, `FER-1` a `FER-3`
   (`squad/rapports/avis-faisabilite-s45-cinq-lots.md`, section 8.1).
-- **Statut global** : **REFUSE**, prononce le 2026-10-01 par `nadia-prof` (s45, instance B,
-  `DEC-0101`). Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Derniere mise a jour** : 2026-10-01.
+- **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-01 par `nadia-prof` au second
+  passage (s45, instance B, reprise `1c8d98d7`). Le premier passage du meme jour, **REFUSE**, reste
+  ecrit plus bas, inchange. Fiche ouverte par ce refus : aucune fiche n'existait pour ce jeu.
+- **Derniere mise a jour** : 2026-10-01 (second passage).
 
 ---
 
 ## Bloc de validation pedagogique
+
+### Second passage du 2026-10-01 (`nadia-prof`, s45, instance B) : **VALIDE SOUS RESERVE**
+
+**Done pedagogique prononce pour `SCI-CM1-14`**, avec la mention exigee d'avance : regles et
+connaissances d'usage seules, la pratique d'un environnement numerique reste non couverte.
+`camille-po` peut passer la ligne a `couvert-valide`. Les deux motifs du refus sont leves (section
+B), aucun nouveau defaut n'est bloquant, neuf reserves sont ouvertes (section E).
+
+#### A. Ce que j'ai fait
+
+**Audit complet, pas degrade.** Jar construit depuis `round-two` a `333e200c` (qui porte la reprise
+`1c8d98d7` de `sofia-sm` ; le SHA `adb0d3e2098c4428f` qu'on m'a rapporte n'existe pas dans le
+depot), lance en local sur le JDK 21 de la toolchain, joue par requetes successives dans une meme
+session HTTP. **Six parties completes** de dix manches : une en repondant faux une fois puis
+juste, trois en epuisant les essais jusqu'a la revelation puis en pressant la bonne reponse, deux
+en repondant juste du premier coup. Une septieme a ete interrompue par mon propre script, qui
+pressait un distracteur apres la revelation (la manche reste ouverte tant que la bonne reponse
+n'est pas pressee : c'est le comportement attendu, pas un defaut). **L'item 2 a ete tire dans les
+six parties completes, l'item 6 dans quatre** (une erreur puis juste, revelation deux fois, juste
+du premier coup). Les dix autres items ont tous ete tires au moins une fois. Rendu lu en texte, sans mesure
+visuelle de l'ecran, comme au premier passage.
+
+**Diff de la reprise** : `git diff 8266e4fb 333e200c` ne touche, cote contenu, que les lignes des
+items 2 et 6 du YAML et deux valeurs attendues de `PaquetCm1SciencesUsagesNumeriquesTest`. Les dix
+autres items, l'en-tete, l'entree de catalogue, le titre, la consigne et `nombreDeManches` sont
+identiques au premier passage.
+
+#### B. Les deux motifs, verifies
+
+| Motif | Leve | Ce que j'ai verifie, en jouant et dans le fichier |
+|---|---|---|
+| 1, item 2 | **oui** | Enonce servi : *"En dessous de quel âge un service numérique demande-t-il en général l'accord d'un parent pour créer un compte ?"*, bonne reponse *"en dessous de 15 ans"*, revelee telle quelle (*"Appuie sur la bonne réponse : en dessous de 15 ans"*). Le sens est le bon et la valeur est celle de la France. Le marqueur `HIS-3` dit le meme fait que l'enonce, dans le meme sens, et nomme sa source (loi Informatique et Libertes, article 45). Les deux distracteurs ont la forme exigee par ma section 6.1 ; l'un garde un reste de l'ancienne forme (reserve `USN-CM1-R7`) |
+| 2, item 6 | **oui** | Bonne reponse servie et revelee : *"un mot de passe d'au moins 12 caractères, avec majuscules, minuscules, chiffres et caractères spéciaux"*. Douze caracteres, quatre types nommes. Le marqueur `HIS-3` nomme l'autorite et la date (*"CNIL, recommandation du 21 juillet 2022"*). L'indice, inchange, reste vrai |
+| 6.3, source des valeurs | **oui** | Les deux seuls items qui portent une valeur nomment leur source dans `HIS-3` |
+
+**Je leve les deux motifs a la barre que j'avais ecrite**, sans la relever. Les defauts vus en plus
+sont des reserves neuves et datees (section E), pas un durcissement des motifs.
+
+**Methode, inchangee** : les deux references sont verifiees contre ma connaissance, sans les avoir
+rouvertes (aucun acces reseau depuis la session). La correction de mon propre constat qui suit
+releve de la meme methode.
+
+**Correction de mon propre constat du premier passage.** J'ai ecrit, section 5, *"loi Informatique
+et Libertes, article 45, dans sa redaction de la loi du 20 juin 2018"*, et la reprise a recopie la
+formule dans le marqueur. Elle est inexacte : la loi du 20 juin 2018 a introduit le seuil de 15 ans
+comme **article 7-1** ; c'est l'ordonnance du 12 decembre 2018 qui a reecrit la loi et numerote la
+disposition **article 45**. Le fait enseigne (15 ans) et l'article en vigueur (45) sont justes ; la
+date de redaction attachee a ce numero est fausse, et elle vient de moi. Non bloquant : le marqueur
+n'est pas lu par l'enfant et l'article cite est le bon. Reserve `USN-CM1-R9`.
+
+#### C. Conditions, verifiees de nouveau
+
+| Condition | Tenue | Ce que j'ai verifie |
+|---|---|---|
+| `SCI-3` | **oui, a la borne** | Compte fait par script sur la cle `bonneReponse` du YAML de l'arbre : **2 items sur 12** portent un chiffre (*"en dessous de 15 ans"*, *"au moins 12 caractères"*), `floor(12/6) = 2`. Lot : 14 paquets `cm1-sciences-*`, 157 items, 2 numeriques. Le chiffre du developpeur est exact. Passer de 8 a 12 n'ajoute aucun item numerique |
+| `SCI-1` | **oui** | Indices des items 2 et 6 inchanges : une phrase, au present, sans la chaine de la bonne reponse ni *"ta réponse"*. Les dix autres indices sont identiques au premier passage |
+| `SCI-4` | **oui** | Deux distracteurs sur chacun des douze items |
+| `SCI-2` | **oui** | Les deux enonces repris restent impersonnels, sans *"tu"*, sans faute presupposee. Lecture de la section 4 inchangee |
+| `FER-1` | **oui** | Marqueurs `element` inchanges : identification (1, 2, 6, 7), courriel (3, 8), recherche (4, 9), donnees (5, 10, 11, 12) |
+| `FER-2`, `FER-3` | **oui** | 12 items ; deux taches de 6 items, inchangees |
+| `HIS-3` | **oui** | Douze marqueurs `# HIS-3:` non vides, aucun `HIS-1`. Les deux faits corriges disent le meme fait que leur enonce et nomment leur source |
+| `CON-1` | **oui, item par item** | Aucun item ne se repond a sa premiere rencontre sans l'enonce. Un indice de surface neuf sur l'item 6 : reserve `USN-CM1-R8` |
+| `CYC-1` | **aucune collision** | Les deux chaines neuves n'apparaissent pas dans `cp-qlm-objets-numeriques.yaml` |
+
+#### D. Ce que j'ai vu en jouant les deux items repris
+
+- **Item 2, distracteur *"en dessous de 18 ans seulement, jamais avant"*.** La reprise a remplace
+  *"à partir de"* par *"en dessous de"* sans retirer *"jamais avant"*, qui n'avait de sens qu'avec
+  *"à partir de 18 ans"*. Lu a l'ecran, la proposition se contredit : *"seulement en dessous de 18
+  ans, jamais avant"* ne designe aucun age. Un enfant de CM1 l'ecarte comme absurde, et l'item se
+  joue a deux propositions. Non bloquant : l'autre distracteur (*"aucun âge n'est jamais
+  demandé"*) reste plausible et l'item ne se devine pas. Reserve `USN-CM1-R7`.
+- **Item 6, la bonne reponse est la plus longue, de loin.** 102 caracteres contre 60 et 53
+  pour les distracteurs, et la seule qui enumere. Un enfant qui a remarque la
+  proposition la plus longue la presse sans lire. Meme famille que le point d du premier passage.
+  Reserve `USN-CM1-R8`.
+- **Item 6, l'indice parle d'un seul distracteur.** Joue : apres *"le prénom de l'enfant suivi de
+  son année de naissance"*, l'indice affiche dit *"Un mot de passe court se devine..."*, qui ne
+  parle pas de ce que l'enfant a choisi. Cet indice n'a pas change depuis le premier passage : c'est
+  **mon constat b qui etait incomplet**, il valait pour les items 3 et 5 et aussi pour l'item 6. Je
+  l'ajoute a la reserve `USN-CM1-R2`, sans en faire un point neuf.
+
+#### E. Reserves, a faire en stories par `camille-po`
+
+Les six points non bloquants du premier passage (section 7 ci-dessous) restent tous dans le
+fichier, inchanges ; comme ecrit en section 6, ils deviennent des reserves datees, sans valeur de
+motif. Trois reserves sont neuves.
+
+| Reserve | Origine | Propriete a tenir |
+|---|---|---|
+| `USN-CM1-R1` | point a, premier passage | Les items 4 et 9 enseignent deux regles de recherche differentes |
+| `USN-CM1-R2` | point b, premier passage, etendu a l'item 6 (section D) | L'indice des items 3, 5 et 6 est vrai et utile quel que soit le distracteur presse |
+| `USN-CM1-R3` | point c, premier passage | Les indices des items 7, 8 et 10 ne redisent pas la bonne reponse |
+| `USN-CM1-R4` | point d, premier passage | Aucun mot (*"peut"*, absolus) n'est propre aux bonnes reponses ou aux distracteurs |
+| `USN-CM1-R5` | point e, premier passage | Les distracteurs des items 7 et 10 sont faux, pas seulement hors sujet |
+| `USN-CM1-R6` | point f, premier passage | L'item 7 ne presuppose pas qu'on donne une fausse date de naissance |
+| `USN-CM1-R7` | neuf, 2026-10-01 | Le distracteur *"en dessous de 18 ans seulement, jamais avant"* de l'item 2 designe un age ; *"jamais avant"* est retire ou remplace |
+| `USN-CM1-R8` | neuf, 2026-10-01 | La bonne reponse de l'item 6 n'est pas reconnaissable a sa longueur seule |
+| `USN-CM1-R9` | neuf, 2026-10-01 | Le marqueur `HIS-3` de l'item 2 date correctement sa source (article 45 issu de l'ordonnance du 12 decembre 2018, seuil introduit par la loi du 20 juin 2018) |
+
+#### F. Ce dont je reste la seule garde
+
+Inchange depuis la section 8 : aucun automate ne verifie qu'un fait soit exact, qu'un marqueur
+`HIS-3` dise le meme fait que son enonce et date correctement sa source, qu'un distracteur soit
+coherent ou faux, qu'une bonne reponse se reconnaisse a sa forme. Le test du paquet tient les deux
+nouvelles bonnes reponses comme chaines attendues ; **il ne tient pas leur exactitude**. Une valeur
+fausse reecrite dans le test et dans le YAML le ferait encore passer.
+
+#### G. Ce que je route
+
+A `camille-po`, par `sofia-sm` : `SCI-CM1-14` passe a `couvert-valide`, avec la mention *"regles et
+connaissances d'usage seules ; la pratique d'un environnement numerique reste non couverte"* ; les
+reserves `USN-CM1-R1` a `USN-CM1-R9` sont a mettre en stories, aucune ne bloque. La conclusion est a
+reprendre dans `review.md` de s45, qui n'existe pas encore.
+
+---
+
+## Premier passage
 
 ### Verdict du 2026-10-01 (`nadia-prof`, s45, instance B) : **REFUSE**
 
