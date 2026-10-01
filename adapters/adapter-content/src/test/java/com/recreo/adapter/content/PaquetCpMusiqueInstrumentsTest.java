@@ -7,12 +7,14 @@ import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -80,6 +82,16 @@ class PaquetCpMusiqueInstrumentsTest {
     /** La tache "famille -> instrument" : la bonne reponse est un nom d'instrument, jamais une famille. */
     private static List<Question> itemsFamilleVersInstrument() {
         return items().stream().filter(item -> !FAMILLES.contains(item.bonneReponse())).toList();
+    }
+
+    /**
+     * Minuscules et accents replies, sur le modele de {@code PaquetCm1HistoireGeographieTest} : le
+     * lexique interdit est ecrit sans accent, le contenu servi est integralement accentue
+     * ("Écoute" ne contient pas "ecout" tant que l'accent reste).
+     */
+    private static String replier(String texte) {
+        return Normalizer.normalize(texte, Normalizer.Form.NFD)
+                .replaceAll("\\p{M}", "").toLowerCase(Locale.FRENCH);
     }
 
     /** Tous les textes d'un item : enonce, bonne reponse, distracteurs, indice. */
@@ -168,14 +180,14 @@ class PaquetCpMusiqueInstrumentsTest {
 
     /**
      * MUS-1 et MUS-2 : aucun texte de l'item ne contient l'un des mots interdits, en sous-chaine,
-     * sans tenir compte de la casse. "frapp" et "taper" ne sont pas dans cette liste (voir Javadoc
-     * de {@link #MOTS_INTERDITS_SOUS_CHAINE}).
+     * sans tenir compte de la casse ni des accents. "frapp" et "taper" ne sont pas dans cette
+     * liste (voir Javadoc de {@link #MOTS_INTERDITS_SOUS_CHAINE}).
      */
     @Test
     void mus1EtMus2AucunTexteNePorteLeLexiqueInterdit() {
         for (Question item : items()) {
             for (String texte : tousLesTextes(item)) {
-                String normalise = texte.toLowerCase(Locale.FRENCH);
+                String normalise = replier(texte);
                 for (String motInterdit : MOTS_INTERDITS_SOUS_CHAINE) {
                     assertThat(normalise)
                             .as("item %s : MUS-1/MUS-2, aucun texte ne contient \"%s\"",
@@ -191,18 +203,29 @@ class PaquetCpMusiqueInstrumentsTest {
      * reponse ou distracteur). C'est la famille de forme que l'arbitrage prealable de s45 refuse
      * explicitement ("La guitare est-elle un instrument a cordes ou a vent ?", qui nomme deux des
      * trois propositions).
+     *
+     * <p>Une proposition est nommee par son nom, sans son article et au singulier comme au pluriel :
+     * "les cordes" est nomme par "a cordes", "les vents" par "a vent". Chercher la proposition
+     * entiere laissait passer l'exemple meme que l'arbitrage refuse (MUS-CP-R3).</p>
      */
     @Test
     void musCpR1AucunEnonceNeContientLeTexteDUneDeSesPropresPropositions() {
         for (Question item : items()) {
-            String enonceNormalise = item.enonce().toLowerCase(Locale.FRENCH);
+            String enonceReplie = replier(item.enonce());
             for (String proposition : propositions(item)) {
-                assertThat(enonceNormalise)
-                        .as("item %s : MUS-CP-R1, l'enonce ne nomme pas sa propre proposition \"%s\"",
-                                item.id().value(), proposition)
-                        .doesNotContain(proposition.toLowerCase(Locale.FRENCH));
+                assertThat(nomDeLaProposition(proposition).matcher(enonceReplie).find())
+                        .as("item %s : MUS-CP-R1, l'enonce \"%s\" nomme sa propre proposition \"%s\"",
+                                item.id().value(), item.enonce(), proposition)
+                        .isFalse();
             }
         }
+    }
+
+    /** Le nom d'une proposition, article retire, en mot entier, singulier ou pluriel. */
+    private static Pattern nomDeLaProposition(String proposition) {
+        String nom = replier(proposition).replaceFirst("^(le |la |les |l'|un |une |des )", "");
+        String singulier = nom.endsWith("s") ? nom.substring(0, nom.length() - 1) : nom;
+        return Pattern.compile("\\b" + Pattern.quote(singulier) + "s?\\b");
     }
 
     /** Chaque item propose exactement deux distracteurs. */

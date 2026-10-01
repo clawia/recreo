@@ -7,6 +7,7 @@ import com.recreo.domain.content.Question;
 import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -86,6 +87,16 @@ class PaquetCpMusiqueVocabulaireTest {
                 .filter(item -> !TERMES_DE_LA_PARENTHESE.contains(item.bonneReponse())).toList();
     }
 
+    /**
+     * Minuscules et accents replies, sur le modele de {@code PaquetCm1HistoireGeographieTest} : le
+     * lexique interdit est ecrit sans accent, le contenu servi est integralement accentue
+     * ("Écoute" ne contient pas "ecout" tant que l'accent reste).
+     */
+    private static String replier(String texte) {
+        return Normalizer.normalize(texte, Normalizer.Form.NFD)
+                .replaceAll("\\p{M}", "").toLowerCase(Locale.FRENCH);
+    }
+
     /** Tous les textes d'un item : enonce, bonne reponse, distracteurs, indice. */
     private static List<String> tousLesTextes(Question item) {
         List<String> textes = new ArrayList<>();
@@ -144,13 +155,13 @@ class PaquetCpMusiqueVocabulaireTest {
 
     /**
      * MUS-1 et MUS-2, exigence 6 de MUS-3 : aucun texte de l'item ne contient l'un des mots
-     * interdits, en sous-chaine, sans tenir compte de la casse.
+     * interdits, en sous-chaine, sans tenir compte de la casse ni des accents.
      */
     @Test
     void mus1EtMus2AucunTexteNePorteLeLexiqueInterdit() {
         for (Question item : items()) {
             for (String texte : tousLesTextes(item)) {
-                String normalise = texte.toLowerCase(Locale.FRENCH);
+                String normalise = replier(texte);
                 for (String motInterdit : MOTS_INTERDITS_SOUS_CHAINE) {
                     assertThat(normalise)
                             .as("item %s : MUS-1/MUS-2, aucun texte ne contient \"%s\"",
