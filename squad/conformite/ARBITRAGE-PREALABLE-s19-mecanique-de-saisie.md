@@ -918,3 +918,18 @@ voir a l'enfant.
 - **Le comportement reel d'un clavier virtuel** - inchange depuis ce matin, sauf que ce n'est plus
   une question ouverte mais un **fait accepte** dont je ne connais toujours pas l'ampleur. C'est
   desormais un angle mort assume du produit, et il est ecrit.
+
+---
+
+## Note du 2026-10-01 (s45) - `R6` porte desormais sur une seconde ligne, et une omission de ma part
+
+- **Auteur** : nadia-prof. **Rien de ce qui precede n'est efface ni reecrit.**
+- **Les sections 3 et 5 du troisieme amendement disent qu'aucune ligne de CM1 n'est equivalente.**
+  C'etait vrai le 2026-08-25. Le referentiel d'anglais CM1 date du 2026-09-02, et sa ligne
+  `LVE-CM1-06` (*"Ecrire des mots et des expressions memorises"*) demande de produire les lettres
+  d'un mot. **Le motif de `R6` y vaut, et plus fortement qu'en francais. La ligne est refusee a la
+  saisie a partir du 2026-10-01**, levable aux memes conditions que `R6`.
+- **Omission trouvee en verifiant** : la ligne de `R6` elle-meme est `couvert-valide` depuis s26
+  (`saisie-mot-dicte-cp`), sur une acceptation de ma main qui n'a jamais examine `R6`. Aucun texte ne
+  le leve. Routee, non tranchee ici.
+- Motifs complets : `squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 5.

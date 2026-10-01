@@ -11,6 +11,21 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s45, le 2026-10-01 (Q1, Q3, Q4 et Q5 de l'avis de faisabilite
+`avis-faisabilite-s45-cinq-lots.md`).** Un identifiant ajoute, une condition : **`EPS-10`**
+(discriminant CM1/CP de `EPS-CM1-09` face a `cp-eps-regles-jeu-collectif`), ecrit dans
+`squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`. **Aucun prefixe neuf** : `EPS-1` a `EPS-9`
+etaient alloues, et `EPS-10` a ete cherche sur l'arbre entier avant d'ecrire, absent. **Forme
+copiee** de `EPS-9` (deux segments, aucun marqueur de reserve, `ADR-0100`), rang a deux chiffres
+comme `EMC-10`. La ligne de la section 4 est dans le meme diff que le document.
+
+Ligne d'etat courant portee de **793 / 127 a 794 / 127**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 793 identifiants alloues et 127 prefixes distincts, sa table en porte 794 et 127"*. C'est
+ce **794 / 127** que je recopie.
+
 **Note de `nadia-prof`, s44, le 2026-09-30 (les trois Done pedagogiques de s44).** Six
 identifiants ajoutes, tous des reserves de mes trois verdicts du jour : **`MUS-CP-R1`**, ecrit dans
 `squad/conformite/FICHE-bandit-manchot-vocabulaire-musical-cp.md` ; **`EVO-CM1-R1` a
@@ -377,7 +392,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `793` identifiants alloues, `127` prefixes distincts.
+**Compte courant, verifie par la CI** : `794` identifiants alloues, `127` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1196,6 +1211,7 @@ clause 2 par une exemption.
 | `EPS-7` | `squad/conformite/ARBITRAGE-PREALABLE-s33-le-plan-2-applique-a-s33-le-vivier-que-quatre-refus-ont-realimente-et-ce-que-la-borne-de-douze-ne-finance-pas.md` |
 | `EPS-8` | `squad/sprints/s33-plan-2-tenu-le-palier-2-differe-a-s34/verdicts-nadia-instance-C.md` |
 | `EPS-9` | `docs/backlog/backlog.md` |
+| `EPS-10` | `squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md` |
 | `ERR-R1` | `squad/conformite/PASSE-TRANSVERSE-s30-les-trois-familles-de-portee-depot.md` |
 | `ETA-1` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |
 | `ETA-2` | `squad/conformite/ARBITRAGE-PREALABLE-s23-huit-candidats-six-de-contenu-seul-et-deux-de-niveau-2.md` |

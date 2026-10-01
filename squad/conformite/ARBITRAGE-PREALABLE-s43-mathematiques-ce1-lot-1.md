@@ -379,6 +379,13 @@ precedent de contenu** a reprendre ni a contredire sur ces deux operations : `MA
 > que la technique posee sert a empecher. **Et c'est la reserve `ADD-CE1-R2` que j'ai ouverte puis
 > fait fermer a s38**, sur un item qui n'offrait pas la retenue oubliee ; je l'ecris ici en clause
 > plutot que d'attendre de la rouvrir en reserve.
+>
+> *Correction du 2026-10-01 (`nadia-prof`, s45).* L'exemple `48 + 26 -> 614` du motif ci-dessus est
+> faux : c'est la somme entiere de chaque colonne ecrite cote a cote, pas la retenue oubliee. **La
+> definition de la clause fait foi : `48 + 26 -> 64`.** Les trois formes sont definies colonne par
+> colonne, avec leur portee et leur lecture sous `ADP-CE1-4`, dans
+> `squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 2. Le texte ci-dessus n'est pas
+> efface.
 
 > **`ADP-CE1-6` - aucun item n'est habille d'une situation, ni ecrit en unites.** Les items portent
 > des nombres nus. Ni euros, ni centimes, ni centimetres, ni grammes, ni ecriture decimale.

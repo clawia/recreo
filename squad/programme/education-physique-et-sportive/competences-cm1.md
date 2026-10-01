@@ -100,6 +100,14 @@ que le CP ne connaît pas (il ne sert que *"des mouvements légers"*) ; il ne de
 la raison, ni le risque, et aucune de ses propositions n'est une bonne réponse du CP. Cette
 correction ne lève pas `EPS-CM1-R3` : la réserve se lève quand un item d'échauffement est servi.
 
+**Correction du 2026-10-01 (`nadia-prof`, s45), ligne 9.** L'exemple *"Le ballon sort sur la ligne
+de côté, à qui la remise en jeu ?"* n'a pas de réponse tant que l'énoncé ne dit pas qui a touché le
+ballon en dernier, et il a la forme de la tâche B de `cp-eps-regles-jeu-collectif`, déjà servie au
+CP. Exemple de remplacement : *"Un joueur bleu envoie le ballon hors du terrain, sur le côté. Qui
+remet le ballon en jeu ?"*, bonne réponse *"l'équipe rouge, sur le côté"*. La ligne est désormais
+aussi sous `EPS-10`, le discriminant CM1/CP posé dans
+`squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 4.
+
 ### Recouvrement à ne pas double-compter
 
 Sciences et technologie CM1 porte déjà : *"Relier l'alimentation, l'activité physique, le sommeil
