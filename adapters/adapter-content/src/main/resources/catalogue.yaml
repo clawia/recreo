@@ -648,3 +648,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-musique-instruments
     nombreDeManches: 10
+  - id: bandit-manchot-usages-numeriques-cm1
+    titre: "Se protéger en ligne"
+    consigne: "Lis bien, puis dis la bonne pratique, ou pourquoi c'est risqué."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-usages-numeriques
+    nombreDeManches: 10

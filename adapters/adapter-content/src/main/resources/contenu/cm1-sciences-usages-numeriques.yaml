@@ -1,0 +1,111 @@
+schema: 1
+id: cm1-sciences-usages-numeriques
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Matériaux et objets techniques"
+  competence: "Connaître quelques règles d'usage d'un environnement numérique (identification, courriel, recherche d'une information, protection de ses données)."
+lignesDeReferentiel: ["SCI-CM1-14"]
+#
+# S45-SCI-NUMERIQUE (docs/backlog/backlog.md, sprint 45), ligne SCI-CM1-14 de "Sciences et
+# technologie" (CM1). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-14).
+#
+# Arbitrage pedagogique prealable : jugement de faisabilite de nadia-prof, mention exigee d'avance
+# "regles et connaissances d'usage seules ; la pratique d'un environnement numerique reste non
+# couverte" (squad/programme/sciences-et-technologie/competences-cm1.md, ligne 14). Conditions
+# citees mot pour mot par la story corrigee par camille-po (Q7, avis de faisabilite de theo-archi,
+# squad/rapports/avis-faisabilite-s45-cinq-lots.md, section 8).
+#
+# Aucun item ne demande une pratique effective dans un environnement numerique reel : chaque item
+# porte sur une regle ou une connaissance d'usage, jamais sur un geste a realiser.
+#
+# FER-1 (parenthese exemplative du libelle) : les quatre elements de la parenthese sont chacun
+# marques par item (# element: identification, courriel, recherche, donnees) ; les quatre sont
+# servis ici, largement au-dessus du minimum de deux.
+#
+# FER-2 (densite) : douze items, au-dessus du plancher de dix items et de nombreDeManches + 1 (11).
+#
+# FER-3 (deux taches d'exemple) : tache A, "reconnaitre la bonne conduite" (la bonne reponse nomme
+# la pratique correcte, items 1 a 6) ; tache B, "dire pourquoi une conduite est risquee" (la bonne
+# reponse nomme la raison du risque, items 7 a 12). Aucune des deux ne descend sous trois items.
+#
+# SCI-1 : chaque indice compte une phrase, ne nomme jamais la bonne reponse de son item et ne dit
+# jamais "ta reponse".
+#
+# SCI-4 : chaque item porte deux distracteurs (trois propositions).
+#
+# SCI-2 (extension non bornee par la source, qui la reserve aux lignes 16 et 18, reste a confirmer
+# par nadia-prof) : aucun item ne met en cause l'enfant ou son foyer sur un usage numerique reel -
+# chaque enonce reste impersonnel ("quelle est la bonne pratique", "pourquoi est-il risque de..."),
+# jamais une adresse a la deuxieme personne qui presuppose une faute de l'enfant.
+#
+# SCI-3 : deux bonnes reponses portent une valeur numerique a restituer (l'age d'acces a un service,
+# la longueur minimale d'un mot de passe), sur douze items - au plus floor(12/6) = 2, la borne
+# exacte, ce lot etant plus expose que les precedents (avis de faisabilite, section 8.2).
+#
+# CON-1 : aucun item ne se resout sans lire l'enonce complet.
+#
+# HIS-3 (chaque fait porte sa source) : marque en commentaire sur chaque ligne d'item - jamais le
+# marqueur HIS-1, reserve au lot d'histoire-geographie (piege nomme par l'avis de faisabilite,
+# section 8.2). Les douze regles retenues (prudence avec un inconnu par courriel, verification d'un
+# site avant inscription, age minimal d'acces a un service, mot de passe solide et non reutilise,
+# protection de ses coordonnees, prudence face a un lien ou un message suspect, verification d'une
+# information trouvee en ligne) sont des regles de prudence numerique communement enseignees au
+# cycle 3, sans controverse.
+#
+# Adjacence verticale avec cp-qlm-objets-numeriques (QLM-CP-08) : la ligne de CP porte sur la
+# reconnaissance d'objets numeriques et des regles physiques d'usage (recharge, casse, eau, volume,
+# luminosite) ; cette ligne-ci porte sur l'identification, le courriel, la recherche d'information
+# et la protection des donnees - aucun recouvrement de contenu (CYC-1 verifie, avis de faisabilite,
+# section 8.3).
+items:
+  - enonce: "Avant de s'inscrire sur un nouveau site, quelle est la bonne pratique ?"  # element: identification # HIS-3: verification de l'adaptation d'un site avant inscription, regle de prudence numerique courante au cycle 3
+    bonneReponse: "demander à un adulte si le site est adapté aux enfants"
+    distracteurs: ["donner son vrai nom et sa vraie adresse pour aller plus vite", "accepter toutes les règles sans les lire, car elles ne changent jamais rien"]
+    indice: "Les règles d'un site peuvent changer ce qu'il a le droit de faire avec les informations d'un enfant."
+  - enonce: "À partir de quel âge un service numérique demande-t-il en général l'accord d'un parent ?"  # element: identification # HIS-3: seuil d'age courant pour la creation d'un compte sans accord parental, regle de prudence numerique enseignee au cycle 3
+    bonneReponse: "à partir de 13 ans"
+    distracteurs: ["à partir de 18 ans seulement, jamais avant", "aucun âge n'est jamais demandé"]
+    indice: "Un âge minimal existe parce que certains services collectent des informations personnelles."
+  - enonce: "Avant d'envoyer un courriel à quelqu'un, quelle est la bonne pratique ?"  # element: courriel # HIS-3: verification du destinataire avant l'envoi d'un courriel, regle de prudence numerique courante au cycle 3
+    bonneReponse: "vérifier avec un adulte l'adresse du destinataire"
+    distracteurs: ["envoyer le message à toute une liste de contacts inconnus pour gagner du temps", "répondre immédiatement à n'importe quel courriel reçu, même d'un inconnu"]
+    indice: "Répondre à un inconnu confirme que l'adresse est utilisée par quelqu'un, ce que cette personne peut exploiter."
+  - enonce: "Lors d'une recherche d'information sur internet, quelle est la bonne pratique ?"  # element: recherche # HIS-3: comparaison de plusieurs sources avant de croire une information, regle de prudence numerique enseignee au cycle 3
+    bonneReponse: "comparer plusieurs sources avant de croire une information"
+    distracteurs: ["croire la première réponse affichée, car elle est toujours la meilleure", "copier le premier texte trouvé sans vérifier qui l'a écrit"]
+    indice: "Le classement d'un moteur de recherche ne garantit pas qu'une information est exacte."
+  - enonce: "Pour protéger ses données personnelles sur internet, quelle est la bonne pratique ?"  # element: donnees # HIS-3: non-partage de coordonnees avec un inconnu, regle de prudence numerique courante au cycle 3
+    bonneReponse: "ne pas donner son adresse ou son numéro de téléphone à un inconnu"
+    distracteurs: ["partager sa photo et son adresse pour se faire plus d'amis", "utiliser le même mot de passe partout, pour ne rien oublier"]
+    indice: "Un seul mot de passe percé donne alors accès à tous les comptes qui l'utilisent."
+  - enonce: "Quelle est la bonne pratique pour choisir un mot de passe solide ?"  # element: identification # HIS-3: longueur minimale recommandee pour un mot de passe, regle de prudence numerique courante au cycle 3
+    bonneReponse: "un mot de passe d'au moins 8 caractères, avec des lettres et des chiffres"
+    distracteurs: ["un mot de passe très court, car il est plus facile à retenir", "le prénom de l'enfant suivi de son année de naissance"]
+    indice: "Un mot de passe court se devine beaucoup plus vite qu'un mot de passe long et varié."
+  - enonce: "Pourquoi est-il risqué de donner sa vraie date de naissance sur n'importe quel site ?"  # element: identification # HIS-3: date de naissance comme information facilitant la devinette d'un mot de passe, regle de prudence numerique enseignee au cycle 3
+    bonneReponse: "parce que cette information peut servir à deviner un mot de passe ou un code"
+    distracteurs: ["parce que le site devient alors plus lent à charger", "parce que son écran affiche une publicité différente"]
+    indice: "Une date de naissance connue facilite la devinette d'informations qu'on croit secrètes."
+  - enonce: "Pourquoi est-il risqué d'ouvrir une pièce jointe d'un courriel envoyé par un inconnu ?"  # element: courriel # HIS-3: risque d'un programme nuisible dans une piece jointe inconnue, regle de prudence numerique courante au cycle 3
+    bonneReponse: "parce qu'elle peut contenir un programme qui abîme l'appareil"
+    distracteurs: ["parce que la pièce jointe prend toujours beaucoup de place sur l'appareil", "parce que cet inconnu peut voir si le courriel a été lu seulement"]
+    indice: "Un programme caché dans une pièce jointe peut agir sans qu'on le voie s'installer."
+  - enonce: "Pourquoi est-il risqué de croire la toute première réponse d'une recherche sur un sujet important ?"  # element: recherche # HIS-3: fiabilite non garantie du premier resultat d'une recherche, regle de prudence numerique enseignee au cycle 3
+    bonneReponse: "parce qu'une information peut être fausse ou dépassée, même bien classée"
+    distracteurs: ["parce que les premières réponses sont toujours écrites par des robots", "parce qu'une recherche n'affiche jamais deux fois le même résultat"]
+    indice: "Le classement d'une recherche dépend de nombreux critères, pas de la vérité de l'information."
+  - enonce: "Pourquoi est-il risqué de publier sa localisation en temps réel sur un jeu ou une application ?"  # element: donnees # HIS-3: risque de la localisation en temps reel accessible a autrui, regle de prudence numerique courante au cycle 3
+    bonneReponse: "parce que n'importe qui peut alors savoir où l'on se trouve"
+    distracteurs: ["parce que la batterie de l'appareil se vide plus vite", "parce que cette application devient payante après quelques jours"]
+    indice: "Une localisation visible par tous révèle un endroit précis à des personnes inconnues."
+  - enonce: "Pourquoi est-il risqué de cliquer sur un lien qui promet de gagner un cadeau gratuit ?"  # element: donnees # HIS-3: risque d'un lien promotionnel menant a un site qui collecte des informations, regle de prudence numerique enseignee au cycle 3
+    bonneReponse: "parce que ce lien peut conduire vers un site qui vole des informations"
+    distracteurs: ["parce que le lien affiche toujours une erreur de chargement", "parce que cet ordinateur redémarre automatiquement après le clic"]
+    indice: "Un lien qui promet un cadeau gratuit cherche souvent à faire cliquer avant de réfléchir."
+  - enonce: "Pourquoi est-il risqué de répondre à un message qui demande ses informations personnelles pour confirmer son compte ?"  # element: donnees # HIS-3: risque d'un message d'hameconnage demandant des informations personnelles, regle de prudence numerique enseignee au cycle 3
+    bonneReponse: "parce que ce message peut être une tentative de vol d'informations"
+    distracteurs: ["parce que le compte se ferme automatiquement après un message", "parce que la messagerie devient plus lente à répondre"]
+    indice: "Un vrai service ne redemande jamais un mot de passe par un message surprise."

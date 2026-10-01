@@ -987,7 +987,18 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " cordes\", \"les vents\", \"les percussions\") ou des noms d'instruments (\"la"
                     + " guitare\", \"le violon\", \"la trompette\"...), valeurDe rend null sur les"
                     + " trois propositions de chaque item. Mesure du 2026-10-01 sur le paquet servi :"
-                    + " aucune des 33 propositions ne commence par un chiffre"));
+                    + " aucune des 33 propositions ne commence par un chiffre"),
+            // S45-SCI-NUMERIQUE : paquet neuf, SCI-CM1-14 (regles d'usage d'un environnement
+            // numerique).
+            Map.entry("cm1-sciences-usages-numeriques",
+            "12 items sur 12 portent deux distracteurs (trois propositions, 36 au total), mais"
+                    + " aucune ne commence par un chiffre : deux bonnes reponses portent une valeur"
+                    + " numerique en milieu de texte (\"à partir de 13 ans\", \"un mot de passe"
+                    + " d'au moins 8 caractères...\"), les 34 autres propositions sont du texte"
+                    + " libre sans aucun chiffre, valeurDe rend null sur les trois propositions de"
+                    + " chaque item (le motif NOMBRE est ancre en debut de proposition). Mesure du"
+                    + " 2026-10-01 sur le paquet servi : aucune des 36 propositions ne commence par"
+                    + " un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
