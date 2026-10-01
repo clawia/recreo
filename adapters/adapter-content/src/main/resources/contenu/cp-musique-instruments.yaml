@@ -1,0 +1,82 @@
+# MUS-CP-05, "Identifier quelques instruments de musique et les familles auxquelles ils
+# appartiennent (cordes, vents, percussions)." (S45-MUS-INSTRUMENTS). Referentiel :
+# squad/programme/education-musicale/competences-cp.md, ligne 5, jugement de faisabilite du
+# 2026-09-03, corrige le 2026-10-01 (nadia-prof, s45) : "familles d'instruments sur le nom ecrit
+# seul ; la reconnaissance auditive reste non couverte". Second paquet d'education musicale.
+#
+# MUS-1 (referentiel, section "Conditions opposables") : aucun item ne suppose que l'enfant a
+# entendu quoi que ce soit - aucun texte ne contient "ecout" ni "entend".
+#
+# MUS-2 (meme section) : aucun dispositif ou un adulte chanterait, fredonnerait ou frapperait un
+# rythme - aucun texte ne contient "adulte" ni "fredonn", ni aucun texteAVoixHaute. "frapper" reste
+# autorise ici : une percussion se definit comme un instrument que l'on frappe, et l'interdire
+# rendrait a tort rouge tout indice exact sur cette famille (avis de faisabilite de s45, section 5,
+# risque R4).
+#
+# MUS-CP-R1 (reserve de s44, rendue executable sur ce paquet par l'arbitrage prealable de s45,
+# section 3) : aucun enonce ne nomme une de ses propres propositions. La forme "La guitare est-elle
+# un instrument a cordes ou a vent ?" n'est donc pas utilisee : chaque enonce nomme soit
+# l'instrument (taches "instrument -> famille"), soit un critere de famille qui n'est jamais l'une
+# des propositions d'instruments (taches "famille -> instrument").
+#
+# Onze items, deux taches (FER-3) : six items "instrument -> famille" (items 1 a 6), ou chacune des
+# trois familles du referentiel (cordes, vents, percussions) est servie deux fois en bonne reponse
+# par deux instruments distincts (FER-1), et cinq items "famille -> instrument" (items 7 a 11), qui
+# ne comptent pas pour FER-1 puisque la bonne reponse n'y est jamais un nom de famille.
+#
+# ADR-0089 (LON-1, LON-2) : chaque enonce compte au plus huit mots et une seule phrase, largement
+# sous le plafond de quinze mots et deux phrases.
+schema: 1
+id: cp-musique-instruments
+type: question
+descripteur:
+  matiere: "Éducation musicale"
+  niveau: "CP"
+  domaine: "Écouter, comparer et commenter"
+  competence: "Identifier quelques instruments de musique et les familles auxquelles ils appartiennent (cordes, vents, percussions)."
+lignesDeReferentiel: ["MUS-CP-05"]
+items:
+  - enonce: "De quelle famille d'instruments est la guitare ?"
+    bonneReponse: "les cordes"
+    distracteurs: ["les vents", "les percussions"]
+    indice: "Elle a des cordes que l'on pince ou que l'on gratte."
+  - enonce: "De quelle famille d'instruments est le violon ?"
+    bonneReponse: "les cordes"
+    distracteurs: ["les vents", "les percussions"]
+    indice: "On fait vibrer ses cordes avec un archet."
+  - enonce: "De quelle famille d'instruments est la trompette ?"
+    bonneReponse: "les vents"
+    distracteurs: ["les cordes", "les percussions"]
+    indice: "Pour en jouer, on souffle dedans."
+  - enonce: "De quelle famille d'instruments est la flûte ?"
+    bonneReponse: "les vents"
+    distracteurs: ["les cordes", "les percussions"]
+    indice: "L'air que l'on souffle dedans fait le son."
+  - enonce: "De quelle famille d'instruments est le tambour ?"
+    bonneReponse: "les percussions"
+    distracteurs: ["les cordes", "les vents"]
+    indice: "On le frappe avec les mains ou avec des baguettes."
+  - enonce: "De quelle famille d'instruments est le xylophone ?"
+    bonneReponse: "les percussions"
+    distracteurs: ["les cordes", "les vents"]
+    indice: "On frappe ses lames de bois avec de petits maillets."
+  - enonce: "Lequel de ces instruments est une percussion ?"
+    bonneReponse: "le tambour"
+    distracteurs: ["la guitare", "la flûte"]
+    indice: "C'est celui que l'on frappe pour le faire sonner."
+  - enonce: "Lequel de ces instruments est à cordes ?"
+    bonneReponse: "la guitare"
+    distracteurs: ["la trompette", "le xylophone"]
+    indice: "C'est celui dont on pince ou on gratte les cordes."
+  - enonce: "Lequel de ces instruments est à vent ?"
+    bonneReponse: "la trompette"
+    distracteurs: ["le violon", "le tambour"]
+    indice: "C'est celui dans lequel on souffle pour jouer."
+  - enonce: "Lequel de ces instruments est une percussion ?"
+    bonneReponse: "le xylophone"
+    distracteurs: ["le violon", "la flûte"]
+    indice: "C'est celui dont on frappe les lames avec de petits maillets."
+  - enonce: "Lequel de ces instruments est à cordes ?"
+    bonneReponse: "le violon"
+    distracteurs: ["le tambour", "la flûte"]
+    indice: "C'est celui dont on fait vibrer les cordes avec un archet."
