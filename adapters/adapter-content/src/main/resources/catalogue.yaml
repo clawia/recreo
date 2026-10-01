@@ -660,6 +660,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-additions-posees
     nombreDeManches: 10
+  - id: bandit-manchot-soustractions-posees-ce1
+    titre: "Les soustractions posées"
+    consigne: "Pose l'opération, puis choisis le bon résultat."
+    mecanique: bandit-manchot
+    paquet: ce1-soustractions-posees
+    nombreDeManches: 10
   - id: bandit-manchot-roles-eps-cm1
     titre: "Arbitre, observateur, marqueur"
     consigne: "Lis bien, puis dis ce que décide l'arbitre, ce que relève l'observateur, ou le score que donne le marqueur."

@@ -150,7 +150,15 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // contrairement a MAT-CE1-03, aucun garde-fou derive de la forme des items ne couvre cette
         // ligne - ADP-CE1-2 et ADP-CE1-3 sont encodees dans PaquetCe1AdditionsPoseesTest.
         ADDITIONS_POSEES("MAT-CE1-04",
-                "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)");
+                "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)"),
+        // S46-MAT-SOUSTRACTION (s46) : entree neuve, MAT-CE1-05, libelle du referentiel
+        // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-05) sans le point final,
+        // meme convention que ADDITIONS_POSEES ci-dessus. SOP-CE1-5 est amendee le 2026-10-01
+        // (squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md, section 2) : quatre
+        // formes de distracteur (dont l'emprunt reporte deux fois, neuve) et une regle de rang
+        // etendue au paquet entier, verifiees par PaquetCe1SoustractionsPoseesTest.
+        SOUSTRACTIONS_POSEES("MAT-CE1-05",
+                "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)");
 
         private final String ligne;
 

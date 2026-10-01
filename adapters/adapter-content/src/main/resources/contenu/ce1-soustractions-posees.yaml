@@ -1,0 +1,116 @@
+schema: 1
+id: ce1-soustractions-posees
+type: question
+#
+# S46-MAT-SOUSTRACTION (MAT-CE1-05), arbitrage de nadia-prof cite dans
+# squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md, section 5.2, et amende le
+# 2026-10-01 par squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md (section 2).
+# Verdict : ACCEPTE SOUS CONDITIONS, avec mention de couverture partielle.
+#
+# SOP-CE1-1, mention de couverture partielle exigee d'avance par nadia-prof, a reprendre telle
+# quelle dans la matrice par camille-po - sans elle, la ligne ne ferme pas :
+#   "le resultat atteste le calcul ; la technique posee elle-meme - disposition en colonnes,
+#   emprunts - n'est ni montree ni verifiee par le produit."
+#
+# SOP-CE1-5 (amendee le 2026-10-01, quatre formes et seulement celles-la) : chaque distracteur
+# correspond a une erreur classique nommee et declaree ici :
+#   - oubliee : soustraction colonne par colonne en valeur absolue, sans emprunt (52 - 27 -> 35).
+#   - non-reportee : l'emprunt est pris localement sur sa colonne mais n'est jamais reporte a la
+#     colonne suivante (347 - 129 -> 228).
+#   - somme : l'addition au lieu de la difference (a + b). Seule forme disponible sur un item sans
+#     aucun emprunt ; cet item ne porte alors qu'une seule proposition de plus que la bonne
+#     reponse.
+#   - reportee-deux-fois(colonne) : pour un emprunt reellement fait sur la colonne "unites" ou
+#     "dizaines", la colonne suivante perd 2 au lieu de 1 (valeur = bonne reponse - 10^(rang+1)).
+#     Admise seulement si la colonne qui recoit l'emprunt en double ne change pas de statut
+#     d'emprunt par rapport au calcul juste - sinon l'item porterait deux erreurs enchainees.
+# Chaque marqueur est relu et compare au calcul par PaquetCe1SoustractionsPoseesTest, y compris la
+# regle d'admission de la quatrieme forme.
+#
+# SOP-CE1-5, regle de rang sur le paquet entier (items a deux propositions compris) : choisir
+# toujours la plus petite proposition ne donne pas la bonne reponse sur plus de la moitie des
+# items. Verifiee par PaquetCe1SoustractionsPoseesTest, en plus du garde-fou generique qui ne lit
+# que les items a trois propositions.
+#
+# SOP-CE1-3 : ce paquet declare MAT-CE1-05, pas MAT-CE1-03 - au moins les deux tiers des items
+# mettent en jeu un nombre de trois chiffres ou un premier terme superieur a 100, pour ne pas
+# reproduire sous un autre code la matiere deja servie par ce1-soustractions-jusqu-a-100.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)"
+lignesDeReferentiel: ["MAT-CE1-05"]
+items:
+  - enonce: "85 - 23 = ?"
+    bonneReponse: "62"
+    distracteurs: ["108"]  # SOP-CE1-5: somme
+    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
+  - enonce: "76 - 34 = ?"
+    bonneReponse: "42"
+    distracteurs: ["110"]  # SOP-CE1-5: somme
+    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
+  - enonce: "52 - 27 = ?"
+    bonneReponse: "25"
+    distracteurs: ["35", "15"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(unites)
+    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
+  - enonce: "85 - 57 = ?"
+    bonneReponse: "28"
+    distracteurs: ["38", "18"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(unites)
+    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
+  - enonce: "91 - 68 = ?"
+    bonneReponse: "23"
+    distracteurs: ["33", "37"]  # SOP-CE1-5: non-reportee, oubliee
+    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
+  - enonce: "432 - 178 = ?"
+    bonneReponse: "254"
+    distracteurs: ["244", "154"]  # SOP-CE1-5: reportee-deux-fois(unites), reportee-deux-fois(dizaines)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "613 - 247 = ?"
+    bonneReponse: "366"
+    distracteurs: ["356", "266"]  # SOP-CE1-5: reportee-deux-fois(unites), reportee-deux-fois(dizaines)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "523 - 287 = ?"
+    bonneReponse: "236"
+    distracteurs: ["226", "136"]  # SOP-CE1-5: reportee-deux-fois(unites), reportee-deux-fois(dizaines)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "641 - 375 = ?"
+    bonneReponse: "266"
+    distracteurs: ["256", "166"]  # SOP-CE1-5: reportee-deux-fois(unites), reportee-deux-fois(dizaines)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "452 - 237 = ?"
+    bonneReponse: "215"
+    distracteurs: ["225", "205"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(unites)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "568 - 349 = ?"
+    bonneReponse: "219"
+    distracteurs: ["229", "209"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(unites)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "829 - 563 = ?"
+    bonneReponse: "266"
+    distracteurs: ["366", "166"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(dizaines)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "945 - 671 = ?"
+    bonneReponse: "274"
+    distracteurs: ["374", "174"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(dizaines)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "596 - 278 = ?"
+    bonneReponse: "318"
+    distracteurs: ["328", "308"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(unites)
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "417 - 283 = ?"
+    bonneReponse: "134"
+    distracteurs: ["234", "274"]  # SOP-CE1-5: non-reportee, oubliee
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "674 - 256 = ?"
+    bonneReponse: "418"
+    distracteurs: ["428", "422"]  # SOP-CE1-5: non-reportee, oubliee
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "934 - 618 = ?"
+    bonneReponse: "316"
+    distracteurs: ["326", "324"]  # SOP-CE1-5: non-reportee, oubliee
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
+  - enonce: "895 - 567 = ?"
+    bonneReponse: "328"
+    distracteurs: ["338", "332"]  # SOP-CE1-5: non-reportee, oubliee
+    indice: "Pose la soustraction en colonnes, unités, dizaines puis centaines, et n'oublie pas l'emprunt sur la colonne qui en a besoin."
