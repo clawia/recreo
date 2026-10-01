@@ -642,3 +642,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-evolution-objet-technique
     nombreDeManches: 10
+  - id: bandit-manchot-instruments-musicaux-cp
+    titre: "Les instruments de musique"
+    consigne: "Lis bien, puis dis l'instrument, ou sa famille."
+    mecanique: bandit-manchot
+    paquet: cp-musique-instruments
+    nombreDeManches: 10

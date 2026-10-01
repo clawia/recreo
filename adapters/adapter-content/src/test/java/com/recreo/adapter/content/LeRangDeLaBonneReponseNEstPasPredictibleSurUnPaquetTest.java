@@ -979,7 +979,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " plastique\", \"on s'en sert pour écrire\", \"il faut que le vent souffle pour"
                     + " avancer\"...), valeurDe rend null sur les trois propositions de chaque item."
                     + " Mesure du 2026-09-30 sur le paquet servi : aucune des 33 propositions ne"
-                    + " commence par un chiffre"));
+                    + " commence par un chiffre"),
+            // S45-MUS-INSTRUMENTS : second paquet d'education musicale CP (MUS-CP-05).
+            Map.entry("cp-musique-instruments",
+            "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
+                    + " aucune n'est numerique : ce sont les trois familles d'instruments (\"les"
+                    + " cordes\", \"les vents\", \"les percussions\") ou des noms d'instruments (\"la"
+                    + " guitare\", \"le violon\", \"la trompette\"...), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-10-01 sur le paquet servi :"
+                    + " aucune des 33 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
