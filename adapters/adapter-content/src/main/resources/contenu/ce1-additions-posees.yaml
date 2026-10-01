@@ -1,0 +1,93 @@
+schema: 1
+id: ce1-additions-posees
+type: question
+#
+# S45-MAT-ADDITION (MAT-CE1-04), arbitrage de nadia-prof cite dans
+# squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md, section 4. Verdict : ACCEPTE
+# SOUS CONDITIONS, avec mention de couverture partielle.
+#
+# ADP-CE1-1, mention de couverture partielle exigee d'avance par nadia-prof, a reprendre telle
+# quelle dans la matrice par camille-po - sans elle, la ligne ne ferme pas :
+#   "le resultat atteste le calcul ; la technique posee elle-meme - disposition en colonnes,
+#   retenues - n'est ni montree ni verifiee par le produit."
+#
+# ADP-CE1-5 : chaque distracteur correspond a une erreur classique nommee et declaree ici, parmi
+# trois formes seulement (definition qui fait foi, ARBITRAGE-PREALABLE-s45-cinq-lots.md, section 2) :
+#   - oubliee(retenue) : la retenue n'est pas ajoutee a la colonne suivante (48 + 26 -> 64).
+#   - reportee(retenue) : la retenue est ajoutee deux fois a la colonne suivante.
+#   - mauvaise-colonne : la retenue des unites est ajoutee a la colonne des centaines en sautant
+#     celle des dizaines (items a trois chiffres uniquement).
+# "retenue" vaut "unites", "dizaines" ou "les-deux" quand l'item porte deux retenues distinctes.
+# Chaque marqueur est relu et compare au calcul par PaquetCe1AdditionsPoseesTest.
+#
+# ADR-0103 : ce paquet declare MAT-CE1-04, pas MAT-CE1-03 - il sort donc du perimetre de
+# ChaquePaquetDAdditionsDeCe1TientSaRepartitionParFormeTest (ADD-CE1-2), qui ne porte que sur les
+# paquets d'additions de MAT-CE1-03. La separation d'avec MAT-CE1-03 est tenue par ADP-CE1-2 et
+# ADP-CE1-3, encodees dans le test de ce paquet.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)"
+lignesDeReferentiel: ["MAT-CE1-04"]
+items:
+  - enonce: "48 + 26 = ?"
+    bonneReponse: "74"
+    distracteurs: ["64", "84"]  # ADP-CE1-5: oubliee(unites), reportee(unites)
+    indice: "Pose l'addition en colonnes, calcule les unités puis les dizaines, et n'oublie pas la retenue si besoin."
+  - enonce: "67 + 56 = ?"
+    bonneReponse: "123"
+    distracteurs: ["113", "133"]  # ADP-CE1-5: oubliee(unites), reportee(unites)
+    indice: "Pose l'addition en colonnes, calcule les unités puis les dizaines, et n'oublie pas la retenue si besoin."
+  - enonce: "59 + 68 = ?"
+    bonneReponse: "127"
+    distracteurs: ["117", "137"]  # ADP-CE1-5: oubliee(unites), reportee(unites)
+    indice: "Pose l'addition en colonnes, calcule les unités puis les dizaines, et n'oublie pas la retenue si besoin."
+  - enonce: "247 + 128 = ?"
+    bonneReponse: "375"
+    distracteurs: ["365", "385"]  # ADP-CE1-5: oubliee(unites), reportee(unites)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "253 + 184 = ?"
+    bonneReponse: "437"
+    distracteurs: ["337", "537"]  # ADP-CE1-5: oubliee(dizaines), reportee(dizaines)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "247 + 186 = ?"
+    bonneReponse: "433"
+    distracteurs: ["443", "523"]  # ADP-CE1-5: reportee(unites), mauvaise-colonne
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "356 + 278 = ?"
+    bonneReponse: "634"
+    distracteurs: ["644", "724"]  # ADP-CE1-5: reportee(unites), mauvaise-colonne
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "468 + 275 = ?"
+    bonneReponse: "743"
+    distracteurs: ["843", "753"]  # ADP-CE1-5: reportee(dizaines), reportee(unites)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "359 + 267 = ?"
+    bonneReponse: "626"
+    distracteurs: ["636", "716"]  # ADP-CE1-5: reportee(unites), mauvaise-colonne
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "478 + 346 = ?"
+    bonneReponse: "824"
+    distracteurs: ["924", "834"]  # ADP-CE1-5: reportee(dizaines), reportee(unites)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "178 + 265 = ?"
+    bonneReponse: "443"
+    distracteurs: ["433", "343"]  # ADP-CE1-5: oubliee(unites), oubliee(dizaines)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "384 + 257 = ?"
+    bonneReponse: "641"
+    distracteurs: ["631", "541"]  # ADP-CE1-5: oubliee(unites), oubliee(dizaines)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "275 + 368 = ?"
+    bonneReponse: "643"
+    distracteurs: ["633", "543"]  # ADP-CE1-5: oubliee(unites), oubliee(dizaines)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "476 + 358 = ?"
+    bonneReponse: "834"
+    distracteurs: ["824", "734"]  # ADP-CE1-5: oubliee(unites), oubliee(dizaines)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
+  - enonce: "265 + 379 = ?"
+    bonneReponse: "644"
+    distracteurs: ["634", "544"]  # ADP-CE1-5: oubliee(unites), oubliee(dizaines)
+    indice: "Pose l'addition en colonnes, unités, dizaines puis centaines, et n'oublie pas de reporter chaque retenue à la colonne suivante."
