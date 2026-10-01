@@ -1,0 +1,17 @@
+schema: 1
+id: ce1-additions-posees-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1AdditionsPoseesTest. Un seul item, dont le premier
+# distracteur declare "oubliee(unites)" mais porte une valeur fausse (65 au lieu de 64) : le calcul
+# depuis les operandes doit le refuser.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)"
+lignesDeReferentiel: ["MAT-CE1-04"]
+items:
+  - enonce: "48 + 26 = ?"
+    bonneReponse: "74"
+    distracteurs: ["65", "84"]  # ADP-CE1-5: oubliee(unites), reportee(unites)
+    indice: "Pose l'addition en colonnes, calcule les unités puis les dizaines, et n'oublie pas la retenue si besoin."

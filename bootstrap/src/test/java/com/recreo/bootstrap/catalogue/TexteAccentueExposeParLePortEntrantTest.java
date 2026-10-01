@@ -323,6 +323,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // technique au cours du temps (fabrication ou usage), distincte de
             // bandit-manchot-objet-technique-cm1 (SCI-CM1-12).
             "bandit-manchot-evolution-objet-technique-cm1",
+            // S45-MAT-ADDITION (s45) : entree neuve, MAT-CE1-04, addition posee avec retenue.
+            // ADR-0103 : ce paquet declare MAT-CE1-04, pas MAT-CE1-03, et sort donc du perimetre
+            // du garde-fou de repartition par forme des additions de CE1.
+            "bandit-manchot-additions-posees-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -530,6 +534,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les mots de la musique",
             // S44-SCI-OBJET-TECHNIQUE (s44) : titre neuf.
             "Comment ça a changé ?",
+            // S45-MAT-ADDITION (s45) : titre neuf.
+            "Les additions posées",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -1211,7 +1217,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // pour mot (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
             // SCI-CM1-13).
             "Repérer l'évolution d'un objet technique au cours du temps et ce qui a changé dans sa "
-                    + "fabrication ou dans son usage.");
+                    + "fabrication ou dans son usage.",
+            // S45-MAT-ADDITION (s45) : competence neuve, libelle du referentiel
+            // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-04), sous-partie
+            // allouee dans SousPartieDeMathematiquesCe1 (ADR-0098).
+            "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

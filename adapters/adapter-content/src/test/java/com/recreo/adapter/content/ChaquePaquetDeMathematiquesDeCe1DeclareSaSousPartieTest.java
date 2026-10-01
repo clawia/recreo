@@ -143,7 +143,14 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // jamais montree a l'enfant, meme convention que MONNAIE et SOLIDES ci-dessus.
         DIVISION("MAT-CE1-18",
                 "Comprendre le sens de la division en résolvant des problèmes de partage et de"
-                        + " groupement");
+                        + " groupement"),
+        // S45-MAT-ADDITION (s45) : entree neuve, MAT-CE1-04, libelle du referentiel
+        // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-04) sans le point final,
+        // meme convention que LONGUEURS, MONNAIE, SOLIDES et DIVISION ci-dessus. ADR-0103 :
+        // contrairement a MAT-CE1-03, aucun garde-fou derive de la forme des items ne couvre cette
+        // ligne - ADP-CE1-2 et ADP-CE1-3 sont encodees dans PaquetCe1AdditionsPoseesTest.
+        ADDITIONS_POSEES("MAT-CE1-04",
+                "Poser et effectuer une addition avec retenue (nombres à deux ou trois chiffres)");
 
         private final String ligne;
 

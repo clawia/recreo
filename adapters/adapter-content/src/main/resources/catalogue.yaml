@@ -642,3 +642,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-evolution-objet-technique
     nombreDeManches: 10
+  - id: bandit-manchot-additions-posees-ce1
+    titre: "Les additions posées"
+    consigne: "Pose l'opération, puis choisis le bon résultat."
+    mecanique: bandit-manchot
+    paquet: ce1-additions-posees
+    nombreDeManches: 10
