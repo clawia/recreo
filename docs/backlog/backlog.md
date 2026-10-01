@@ -16247,12 +16247,22 @@ produire une, sur les six paires croisees entre instances) :
 | Instance | Lots | Cout |
 |---|---|---|
 | A - mathematiques CE1, education musicale CP, EPS CM1 | `S45-MAT-ADDITION`, `S45-MUS-INSTRUMENTS`, `S45-EPS-ROLES` | 4,0 / 5,0 |
-| B - langues vivantes CM1, sciences et technologie CM1 | `S45-LVE-ECRITURE`, `S45-SCI-NUMERIQUE` | 3,0 / 5,0 |
+| B - sciences et technologie CM1 | `S45-SCI-NUMERIQUE` | 1,5 / 5,0 |
 
-**Total du sprint : 7,0 / 8,0**, marge de sprint 1,0 non allouee des l'ouverture (`DEC-0101`, section
-6 : le plafond mecanique de 8,0 n'est pas atteignable dans ce vivier sans rouvrir la regle "une seule
-ligne de mathematiques CE1 par sprint" ni depasser le plafond individuel de 5,0 par instance),
-en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'instance B).
+**Amendement du 2026-10-01 (`camille-po`, s45, `DEC-0101` section 10).** `S45-LVE-ECRITURE`
+(`LVE-CM1-06`) est retiree du perimetre : `nadia-prof` a juge que le motif de `R6` (refus de la
+saisie sous correction automatique de clavier) s'applique a cette ligne
+(`squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 5). La story reste ecrite plus bas,
+marquee retiree en tete, pour servir si la ligne est reproposee un jour. Le tableau ci-dessus reflete
+deja le retrait.
+
+**Total du sprint : 5,5 / 8,0** (au lieu de 7,0/8,0 avant retrait), marge de sprint 1,0 non allouee
+des l'ouverture (`DEC-0101`, section 6 : le plafond mecanique de 8,0 n'est pas atteignable dans ce
+vivier sans rouvrir la regle "une seule ligne de mathematiques CE1 par sprint" ni depasser le
+plafond individuel de 5,0 par instance), en plus des marges individuelles par instance (1,0 sur
+l'instance A, 3,5 sur l'instance B apres retrait). **La marge liberee sur l'instance B (2,5 avant la
+borne de sprint de 8,0) n'est pas reallouee dans ce document** : elle reste au vivier pour un geste
+distinct si l'utilisatrice souhaite la combler.
 
 **Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
 `sofia-sm`** (`DEC-0101`, section 8, qui route l'ouverture du sprint a `sofia-sm`).
@@ -16434,6 +16444,11 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
 
 ### S45-LVE-ECRITURE - Ecrire des mots et des expressions memorises (`LVE-CM1-06`)
 
+**RETIRE le 2026-10-01, motif `R6`** - voir
+`squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 5, et `DEC-0101`, section 10. Le
+texte ci-dessous n'est plus engage pour s45 ; il reste ecrit pour servir si la ligne est reproposee
+un jour, une fois le motif de `R6` leve.
+
 - **Besoin** : en tant qu'eleve de CM1, je veux ecrire des mots et des expressions d'anglais deja
   memorises en les saisissant au clavier, afin de savoir les orthographier sans les relire.
 - **Competence programme visee** : langues vivantes (anglais), CM1 (cycle 3), domaine "Ecrire" -
@@ -16603,5 +16618,57 @@ en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'i
 - **Lien decision** : `DEC-0101` (section 5, instance B).
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
   `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+## Backlog ouvert pour s46 et au-dela - decouverte retroactive sur `R6`, un contenu deja servi aux
+enfants
+
+### S46-VERIF-SAISIE-MOT-DICTE-CP - Verifier si `R6` s'applique a `saisie-mot-dicte-cp`, deja `couvert-valide`
+
+- **Besoin** : transverse - pas de contenu pedagogique. Ce n'est pas une story qui ajoute ou modifie
+  un contenu enfant ; elle demande a `nadia-prof` d'examiner un Done pedagogique deja prononce, a la
+  lumiere d'un refus qu'elle a ecrit depuis sur une autre ligne.
+- **Competence programme visee** : francais, CP (cycle 2), domaine "Ecriture" -
+  `squad/programme/francais/competences-cp.md`, ligne "Ecrire de maniere autonome un mot simple en
+  respectant les correspondances grapheme/phoneme connues". Ligne **deja** `couvert-valide`
+  (`squad/programme/MATRICE-couverture.md`, section "Francais - CP", depuis le 2026-09-01, s26), jeu
+  `saisie-mot-dicte-cp`.
+- **Origine** : decouverte retroactive de `nadia-prof`, citee mot pour mot
+  (`squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 5.3) : *"La ligne de CP visee par
+  `R6` est `couvert-valide` depuis s26, sans que `R6` ait jamais ete examine ni leve. Je la signale a
+  `camille-po` via `sofia-sm` sans la trancher ici."* Le Done pedagogique de `saisie-mot-dicte-cp`
+  (`squad/conformite/FICHE-saisie-mot-dicte-cp.md`) a ete prononce en examinant `VOI-12`, jamais `R6`
+  (arbitrage s45, section 5.3, qui cite `ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md`, section
+  4.5, comme la source de l'acceptation). `nadia-prof` ecrit elle-meme n'y voir *"aucune difference
+  qui sauverait la ligne de CP"* : les fautes attendues sur `VOI-9` (mots reguliers) sont des non-mots
+  que la correction automatique de clavier repare, exactement le mecanisme que `R6` refuse sur
+  `LVE-CM1-06` le meme jour. Elle precise aussi qu'*"une omission ne leve pas un refus"* : cette story
+  ne presume donc pas du verdict.
+- **Ce que cette story demande, explicitement** : que `nadia-prof` rejoue `saisie-mot-dicte-cp` et
+  statue si le motif de `R6` (refus de la saisie quand la correction automatique de clavier peut
+  produire ou corriger le mot a la place de l'enfant) s'applique a cette ligne, et si oui, quelle
+  consequence cela a sur le Done pedagogique deja prononce (maintien, retrait de `couvert-valide`,
+  mention nouvelle, ou condition posee). Cette story ne tranche rien elle-meme : aucun agent autre
+  que `nadia-prof` ne prononce le Done pedagogique, et cette story ne le fait pas a sa place.
+- **Criteres d'acceptation** :
+  - Etant donne l'arbitrage pedagogique rendu sur cette story, quand il est publie, alors il dit
+    explicitement si `R6` s'applique ou non a `saisie-mot-dicte-cp`, avec un motif ecrit.
+  - Etant donne que `R6` s'applique, quand l'arbitrage le dit, alors il precise la consequence sur le
+    statut `couvert-valide` de la ligne dans `squad/programme/MATRICE-couverture.md` (maintien avec
+    mention, retrait, ou condition posee), sans que cette story elle-meme modifie la matrice.
+  - Etant donne que `R6` ne s'applique pas, quand l'arbitrage le dit, alors il explique la difference
+    de fond avec `LVE-CM1-06` qui justifie un traitement distinct, puisque `nadia-prof` ecrit elle-meme
+    n'en voir aucune a ce jour.
+  - Etant donne l'arbitrage rendu, quand on le relit, alors il ne prononce aucun Done nouveau sur un
+    contenu non rejoue au-dela de `saisie-mot-dicte-cp`.
+- **Ce que cette story ne fait pas** : elle ne corrige, ne retire, ni ne modifie `saisie-mot-dicte-cp`
+  ou la matrice - c'est a `nadia-prof` de statuer, et a une story distincte de porter la correction si
+  elle en demande une ; elle ne rouvre pas `R6` lui-meme ni son texte source.
+- **Lien decision** : signalement route par `nadia-prof`,
+  `squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 5.3 ; pas de `DEC` dediee, le
+  retrait de `S45-LVE-ECRITURE` est trace par `DEC-0101`, section 10.
+- **Priorite** : haute - porte sur un contenu deja livre et joue par des enfants, pas sur une ligne
+  non encore ouverte.
+- **Agent pressenti** : `nadia-prof` pour l'arbitrage ; `sofia-sm` pour le relais et la planification
+  du sprint qui la porte.
 
 
