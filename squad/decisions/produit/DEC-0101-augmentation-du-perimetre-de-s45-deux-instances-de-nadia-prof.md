@@ -1,6 +1,7 @@
 # DEC-0101 - Augmentation du perimetre de s45, deux instances paralleles de `nadia-prof`
 
-- **Statut** : Acceptee, engagee le 2026-10-01 (section 7).
+- **Statut** : Acceptee, engagee le 2026-10-01 (section 7) ; amendee le 2026-10-01 (section 10,
+  retrait de `S45-LVE-ECRITURE`, total du sprint ramene a 5,5/8,0).
 - **Date** : 2026-10-01
 - **Auteur** : `camille-po`
 - **Sprint** : s45 (deux instances paralleles de `nadia-prof`)
@@ -278,3 +279,42 @@ mouvement qui le redige, exactement comme `DEC-0099` section 10 l'a fait pour l'
   `theo-archi` et le Done pedagogique final de chaque instance de `nadia-prof` restent a rendre.
 - Il ne tranche pas si la marge de sprint non allouee de 1,0 est suffisante : c'est nomme, chiffre et
   route (section 8), pas resolu par moi.
+
+## 10. Amendement du 2026-10-01 (`camille-po`, s45) - retrait de `S45-LVE-ECRITURE` (`LVE-CM1-06`),
+motif `R6`
+
+**Ce qui change** : `nadia-prof` a repondu aux questions bloquantes de `theo-archi`
+(`squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, Q5, section 5) et a tranche que le motif de
+`R6` (`squad/conformite/ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`, le refus de toute saisie qui demande de
+produire les lettres d'un mot sous correction automatique de clavier) s'applique a `LVE-CM1-06` :
+*"Ecrire des mots et des expressions memorises"* demande exactement ce geste, en anglais, sans
+protection ni par `SAI-2b` ni par la premisse de l'adulte accompagnant au CM1. **Verdict : `LVE-CM1-06`
+est refusee a la saisie, au motif de `R6`, et `S45-LVE-ECRITURE` sort du perimetre de s45**
+(arbitrage, section 5.1 et 5.4).
+
+**Cette section amende la composition retenue (section 5) et le total (section 6), sans reecrire les
+sections precedentes.** La ligne B-1 ci-dessous n'est plus engagee :
+
+| Instance | Ligne retiree | Motif | Tarif libere |
+|---|---|---|---|
+| B | `LVE-CM1-06` Ecrire des mots et des expressions memorises | `R6` (saisie sous correction automatique de clavier), arbitrage du 2026-10-01 | 1,5 |
+
+**Composition de l'instance B apres retrait** : `SCI-CM1-14` seule, 1,5/5,0 (au lieu de 3,0/5,0).
+**Total du sprint apres retrait : 5,5/8,0** (au lieu de 7,0/8,0), marge de sprint toujours 1,0 non
+allouee, et une marge nouvelle de 1,5 liberee sur l'instance B par le retrait, qui s'ajoute a la marge
+individuelle deja comptee de 2,0 pour porter la marge individuelle de l'instance B a 3,5/5,0.
+
+**Je ne reengage aucune ligne pour combler l'instance B dans ce document.** Ce n'est pas un geste a
+prendre seule ici : la marge disponible sur l'instance B (3,5 avant plafond de 5,0, ou 2,5 avant la
+borne de sprint de 8,0 si l'instance A reste a 4,0) reste au vivier, a combler dans un geste distinct
+si l'utilisatrice le souhaite.
+
+**Ce que je ne fais pas non plus** : je ne tranche pas la decouverte retroactive de `nadia-prof`
+(arbitrage, section 5.3) sur `saisie-mot-dicte-cp`, `couvert-valide` depuis s26 sans que `R6` y ait
+jamais ete examine. Cette decouverte est hors du perimetre de s45 et routee a part (voir
+`docs/backlog/backlog.md`, section "Backlog ouvert pour s46 et au-dela", story
+`S46-VERIF-SAISIE-MOT-DICTE-CP`).
+
+**Mise a jour de `docs/backlog/backlog.md`** : la story `S45-LVE-ECRITURE` reste ecrite dans la
+section "Sprint 45", marquee en tete comme retiree, motif `R6`, pour servir si la ligne est
+reproposee un jour - elle n'est pas supprimee.
