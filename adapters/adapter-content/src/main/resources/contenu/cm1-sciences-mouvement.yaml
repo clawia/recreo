@@ -1,0 +1,114 @@
+schema: 1
+id: cm1-sciences-mouvement
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Matière, mouvement, énergie, information"
+  competence: "Décrire le mouvement d'un objet par sa trajectoire et par sa vitesse, par rapport à un point de repère donné."
+lignesDeReferentiel: ["SCI-CM1-03"]
+#
+# S46-SCI-MOUVEMENT-CM1 (docs/backlog/backlog.md, sprint 46), ligne SCI-CM1-03 de "Sciences et
+# technologie" (CM1), instance B. Arbitrage prealable cite integralement depuis sa source
+# (squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-
+# quinze-reserves.md, section 2.2, ligne 3) : parenthese conjonctive, trois elements exiges par
+# FER-1 - trajectoire, vitesse, point de repere ; deux taches attendues pour FER-3 - decrire une
+# trajectoire / comparer deux mouvements par leur vitesse ; condition particuliere citee mot pour
+# mot : "Recouvrement : tout item qui calcule une vitesse est compte sur mathematiques CM1, pas ici
+# (ADR-0081 clause 5)". Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-03, qui reprend le meme
+# verdict : "jouable au choix textuel, sur la description seule. Le produit ne montre aucun
+# mouvement : le palier 1 est une image fixe. L'item decrit la situation en texte."). Avis de
+# faisabilite de theo-archi (squad/rapports/avis-faisabilite-s46-cinq-lots.md, section 6) :
+# faisable en l'etat, zero code de production, un piege de fabrication.
+#
+# Refus d'avance, cite mot pour mot (meme source, section 6) : "Tout item de la ligne 3 qui
+# calcule une vitesse, une duree ou une longueur. Un tel item est compte sur mathematiques CM1
+# (ADR-0081 clause 5) : le porter ici gonflerait le compte de sciences sans servir la description
+# du mouvement, qui est ce que la ligne demande." Tenu : aucun enonce de ce paquet ne porte de
+# nombre, ni aucune proposition - la description reste entierement qualitative (circulaire,
+# rectiligne, en zigzag, plus vite, moins vite, a la meme vitesse).
+#
+# Piege de fabrication nomme par theo-archi (avis de faisabilite, section 6) : "une proposition qui
+# commence par un nombre suivi de h, heure, min ou minute est lue comme une duree par le garde-fou
+# de rang (ADR-0102, motif RESSEMBLE_A_UNE_DUREE), et trois propositions numeriques entreraient
+# dans sa population." Evite ici : aucune proposition ne commence par un chiffre, toutes sont du
+# texte libre (noms de personnages, formes de trajectoire, comparaisons de vitesse).
+#
+# Conditions posees d'avance sur toute la matiere, citees mot pour mot (meme source, sections 1.2
+# et 2.5) :
+#
+# SCI-1 : chaque indice compte une phrase, ne nomme jamais la bonne reponse de son item et ne dit
+# jamais "ta reponse".
+#
+# SCI-3 : aucun item ne demande une valeur numerique a restituer - zero ici, au-dela du plancher
+# d'un item sur six.
+#
+# SCI-4 : chaque item porte deux distracteurs (trois propositions).
+#
+# HIS-3 : chaque fait porte sa source, marque en commentaire sur chaque ligne d'item.
+#
+# CON-1 : les propositions sont masquees, l'item ne se repond pas sans l'enonce complet (garde
+# generique de la mecanique, non repetee ici).
+#
+# FER-1 (parenthese conjonctive) : les trois elements du libelle, marques par item
+# (# element: trajectoire, repere ou vitesse). Trajectoire : quatre items (1 a 4). Repere : deux
+# items (5 et 6). Vitesse : six items (7 a 12).
+#
+# FER-3 (deux taches) : tache A, "decrire une trajectoire" (six items, 1 a 6 - quatre sur la forme
+# de la trajectoire, deux sur le repere qui permet de la decrire) ; tache B, "comparer deux
+# mouvements par leur vitesse" (six items, 7 a 12).
+#
+# FER-2 : douze items, au-dessus du plancher de dix (DEC-0064, un paquet de fermeture porte
+# strictement plus d'items que de manches).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+items:
+  - enonce: "Un cheval de manège de fête foraine tourne sans arrêt autour du même point central, toujours à la même distance de lui. Quelle est sa trajectoire ?"  # element: trajectoire # HIS-3: un point qui se deplace a distance constante d'un centre fixe decrit un cercle, fait de geometrie du mouvement enseigne au cycle 3
+    bonneReponse: "une trajectoire circulaire"
+    distracteurs: ["une trajectoire rectiligne", "une trajectoire en zigzag"]
+    indice: "Il revient sans cesse au même endroit, en tournant toujours autour du même point."
+  - enonce: "Un ballon de football, frappé d'un seul coup de pied sur un terrain plat, avance sans jamais changer de direction avant d'être arrêté. Quelle est sa trajectoire sur le sol ?"  # element: trajectoire # HIS-3: un mobile qui n'est devie par aucune force exterieure continue en ligne droite, fait de mecanique elementaire enseigne au cycle 3
+    bonneReponse: "une trajectoire rectiligne"
+    distracteurs: ["une trajectoire circulaire", "une trajectoire en zigzag"]
+    indice: "Rien ne le dévie sur son chemin : il avance toujours dans le même sens."
+  - enonce: "Un skieur descend une piste en enchaînant de nombreux virages à droite puis à gauche pour freiner sa vitesse. Quelle est sa trajectoire sur la piste ?"  # element: trajectoire # HIS-3: la technique du slalom, succession de virages a droite et a gauche pour freiner la vitesse, est une technique de ski couramment enseignee
+    bonneReponse: "une trajectoire en zigzag"
+    distracteurs: ["une trajectoire rectiligne", "une trajectoire circulaire"]
+    indice: "Son chemin change de côté à chaque virage, d'un côté puis de l'autre."
+  - enonce: "Une fusée de feu d'artifice monte tout droit dans le ciel avant d'exploser, sans jamais dévier sur le côté. Quelle est sa trajectoire au moment où elle monte ?"  # element: trajectoire # HIS-3: une fusee de feu d'artifice qui monte verticalement sans deviation est un fait d'observation courante, sans controverse
+    bonneReponse: "une trajectoire rectiligne"
+    distracteurs: ["une trajectoire circulaire", "une trajectoire en zigzag"]
+    indice: "Elle garde la même direction, vers le haut, sans tourner ni changer de côté."
+  - enonce: "Un passager assis dans un train qui roule regarde le quai de la gare s'éloigner par la fenêtre. Par rapport à quel repère peut-on dire que le train avance ?"  # element: repere # HIS-3: le mouvement se decrit toujours par rapport a un repere exterieur, notion de point de repere enseignee au cycle 3
+    bonneReponse: "le quai de la gare"
+    distracteurs: ["le siège du passager", "la fenêtre du train"]
+    indice: "Ce qui compte, c'est ce qui reste immobile dehors, pas ce qui est fixé à l'intérieur du train."
+  - enonce: "Un enfant assis dans une voiture qui roule remarque que les arbres au bord de la route défilent très vite, alors que son petit frère assis à côté de lui ne bouge pas par rapport à lui. Par rapport à quel repère peut-on dire que la voiture est en mouvement ?"  # element: repere # HIS-3: le choix du repere change ce qu'on peut dire en mouvement ou immobile, notion de relativite du mouvement enseignee au cycle 3
+    bonneReponse: "les arbres au bord de la route"
+    distracteurs: ["le petit frère assis à côté de lui", "le siège de la voiture"]
+    indice: "Ce qui ne bouge pas par rapport à l'enfant peut quand même bouger par rapport au sol."
+  - enonce: "Un piéton marche jusqu'à la boulangerie pendant qu'un cycliste parcourt le même trajet sur la route juste à côté, et le cycliste arrive bien avant le piéton. Qui va le plus vite ?"  # element: vitesse # HIS-3: un cycliste parcourt en general un meme trajet plus vite qu'un pieton, fait de culture generale couramment enseigne
+    bonneReponse: "le cycliste"
+    distracteurs: ["le piéton", "ils vont à la même vitesse"]
+    indice: "Celui qui arrive le premier sur le même chemin est celui qui avance le plus vite."
+  - enonce: "Un escargot avance très lentement sur la terrasse, pendant qu'une tortue le dépasse largement avant même qu'il n'ait parcouru la moitié du chemin. Qui va le moins vite ?"  # element: vitesse # HIS-3: l'escargot est reconnu comme l'un des animaux terrestres les plus lents, fait de culture generale couramment enseigne
+    bonneReponse: "l'escargot"
+    distracteurs: ["la tortue", "ils vont à la même vitesse"]
+    indice: "Celui qui se fait dépasser avance moins vite que celui qui le dépasse."
+  - enonce: "Deux coureurs partent en même temps sur la piste du stade et restent côte à côte, sans que l'un ne prenne jamais d'avance sur l'autre jusqu'à l'arrivée. Comment peut-on comparer leur vitesse ?"  # element: vitesse # HIS-3: deux coureurs qui restent cote a cote sans ecart avancent a la meme vitesse, definition de l'egalite de vitesse enseignee au cycle 3
+    bonneReponse: "ils vont à la même vitesse"
+    distracteurs: ["le premier coureur va plus vite", "le second coureur va plus vite"]
+    indice: "Aucun des deux ne prend jamais d'avance sur l'autre pendant toute la course."
+  - enonce: "Une voiture roule sur l'autoroute et double un camion qui roule sur la même route dans le même sens. Qui va le plus vite ?"  # element: vitesse # HIS-3: doubler un autre vehicule qui roule dans le meme sens suppose d'aller plus vite que lui au moment du depassement, fait de circulation routiere couramment enseigne
+    bonneReponse: "la voiture"
+    distracteurs: ["le camion", "ils vont à la même vitesse"]
+    indice: "Celui qui double l'autre avance plus vite que lui, au moment où il le dépasse."
+  - enonce: "Un enfant pense qu'un gros camion va forcément plus vite qu'une petite voiture de sport parce qu'il est plus grand. Sur l'autoroute, la voiture de sport double pourtant largement le camion. Qui va le plus vite sur cette route ?"  # element: vitesse # HIS-3: la taille d'un vehicule ne determine pas sa vitesse, fait de mecanique courante contredisant une conception intuitive frequente au cycle 3
+    bonneReponse: "la voiture de sport"
+    distracteurs: ["le camion, parce qu'il est plus grand", "ils vont à la même vitesse, parce qu'ils roulent sur la même route"]
+    indice: "La taille d'un véhicule ne dit pas à elle seule laquelle de deux vitesses est la plus grande."
+  - enonce: "Un bateau à voile avance grâce au vent, pendant qu'un nageur essaie de le suivre dans l'eau juste à côté. Au bout d'un moment, le bateau a une large avance. Qui va le moins vite ?"  # element: vitesse # HIS-3: un bateau a voile pousse par le vent avance en general plus vite qu'un nageur, fait de culture generale couramment enseigne
+    bonneReponse: "le nageur"
+    distracteurs: ["le bateau à voile", "ils vont à la même vitesse"]
+    indice: "Celui qui se retrouve loin derrière avance moins vite que celui qui prend de l'avance."

@@ -1025,7 +1025,27 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des noms de phenomenes (\"un séisme\","
                     + " \"une tempête\"...) ou des gestes de protection en texte libre, valeurDe rend"
                     + " null sur les trois propositions de chaque item. Mesure du 2026-10-01 sur le"
-                    + " paquet servi : aucune des 36 propositions ne commence par un chiffre"));
+                    + " paquet servi : aucune des 36 propositions ne commence par un chiffre"),
+            // S46-EMC-EMOTION-CM1 : paquet neuf, EMC-CM1-01 (identifier une emotion, distinguer
+            // ressentir et agir).
+            Map.entry("cm1-emc-emotion-ressentir-agir",
+            "11 items sur 11 portent deux distracteurs (trois propositions, 33 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms d'emotion (\"de la fierté\", \"de"
+                    + " la colère\"...) ou des gestes decrits en texte libre (\"il range calmement"
+                    + " les pièces du jeu\"...), valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-10-01 sur le paquet servi : aucune des 33"
+                    + " propositions ne commence par un chiffre"),
+            // S46-SCI-MOUVEMENT-CM1 : paquet neuf, SCI-CM1-03 (decrire un mouvement par sa
+            // trajectoire et sa vitesse). Refus d'avance tenu : aucun item ne calcule une vitesse,
+            // une duree ou une longueur, donc aucune proposition n'est numerique.
+            Map.entry("cm1-sciences-mouvement",
+            "12 items sur 12 portent deux distracteurs (trois propositions, 36 au total), mais"
+                    + " aucune n'est numerique : ce sont des formes de trajectoire (\"une"
+                    + " trajectoire circulaire\"...), des reperes (\"le quai de la gare\"...) ou des"
+                    + " comparaisons de vitesse en texte libre (\"le cycliste\", \"ils vont à la"
+                    + " même vitesse\"...), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-10-01 sur le paquet servi : aucune des 36 propositions"
+                    + " ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
