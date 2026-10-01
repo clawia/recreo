@@ -1,8 +1,17 @@
 # DEC-0100 - Proposition de perimetre pour s45
 
-**Statut : Proposee (2026-09-25). Ce document propose, il n'engage rien** - ni un dossier de
-sprint, ni une story, ni la matrice. Seule une validation explicite de l'utilisatrice, dans un
-geste distinct de celui-ci, engagerait ce perimetre.
+**Statut : perimetre chiffre repris le 2026-10-01** (les trois lignes et leurs tarifs des sections 2
+et 5, reprises telles quelles par `DEC-0101`, qui les affecte a une instance de `nadia-prof`). **Le
+dispositif a instance unique que ce document proposait est remplace par `DEC-0101`**, qui engage le
+perimetre de s45 sur un dispositif a deux instances paralleles, sur instruction directe de
+l'utilisatrice. Ce document reste la source du chiffrage des trois lignes et de la reverification du
+vivier qui les entoure ; il n'ouvre toujours aucun dossier de sprint et n'ecrit toujours aucune story
+- ces gestes sont faits par `DEC-0101`.
+
+**Statut d'origine, non efface : Proposee (2026-09-25). Ce document proposait, il n'engageait rien**
+- ni un dossier de sprint, ni une story, ni la matrice. Seule une validation explicite de
+l'utilisatrice, dans un geste distinct de celui-ci, engagerait ce perimetre - validation recue le
+2026-10-01, sur un dispositif different de celui propose ici (`DEC-0101`, section 1).
 
 - **Date** : 2026-09-25
 - **Auteur** : `camille-po`
