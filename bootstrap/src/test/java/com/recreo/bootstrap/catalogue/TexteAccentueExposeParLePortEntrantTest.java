@@ -337,6 +337,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S45-EPS-ROLES (s45) : entree neuve, EPS-CM1-09, tenir les roles d'arbitre,
             // d'observateur ou de marqueur dans un jeu.
             "bandit-manchot-roles-eps-cm1",
+            // S46-EMC-INSTITUTIONS-CM1 (s46) : entree neuve, EMC-CM1-09, role de quelques
+            // institutions proches (mairie, conseil municipal, ecole).
+            "bandit-manchot-institutions-cm1",
+            // S46-SCI-PHENOMENES-CM1 (s46) : entree neuve, SCI-CM1-16, phenomenes geologiques et
+            // meteorologiques et les risques associes.
+            "bandit-manchot-phenomenes-naturels-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -552,6 +558,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les additions posées",
             // S45-EPS-ROLES (s45) : titre neuf.
             "Arbitre, observateur, marqueur",
+            // S46-EMC-INSTITUTIONS-CM1 (s46) : titre neuf.
+            "Les institutions de ma commune",
+            // S46-SCI-PHENOMENES-CM1 (s46) : titre neuf.
+            "Les risques naturels",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -792,6 +802,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S45-EPS-ROLES (s45) : consigne neuve.
             "Lis bien, puis dis ce que décide l'arbitre, ce que relève l'observateur, ou le score "
                     + "que donne le marqueur.",
+            // S46-EMC-INSTITUTIONS-CM1 (s46) : consigne neuve.
+            "Lis bien, puis dis à quelle institution s'adresser, ou quel est son rôle.",
+            // S46-SCI-PHENOMENES-CM1 (s46) : consigne neuve.
+            "Lis bien, puis dis quel phénomène, ou quel geste protège.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1265,7 +1279,17 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/education-physique-et-sportive/competences-cm1.md, ligne
             // EPS-CM1-09).
             "Tenir les rôles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer "
-                    + "les règles.");
+                    + "les règles.",
+            // S46-EMC-INSTITUTIONS-CM1 (s46) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-09).
+            "Identifier le rôle de quelques institutions proches (mairie, conseil municipal, "
+                    + "école) et à qui s'adresser selon la situation.",
+            // S46-SCI-PHENOMENES-CM1 (s46) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
+            // SCI-CM1-16).
+            "Identifier quelques phénomènes géologiques et météorologiques (séisme, éruption, "
+                    + "tempête, inondation) et les risques associés.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

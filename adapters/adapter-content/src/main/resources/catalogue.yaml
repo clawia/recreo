@@ -672,3 +672,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-eps-roles
     nombreDeManches: 10
+  - id: bandit-manchot-institutions-cm1
+    titre: "Les institutions de ma commune"
+    consigne: "Lis bien, puis dis à quelle institution s'adresser, ou quel est son rôle."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-institutions
+    nombreDeManches: 10
+  - id: bandit-manchot-phenomenes-naturels-cm1
+    titre: "Les risques naturels"
+    consigne: "Lis bien, puis dis quel phénomène, ou quel geste protège."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-phenomenes
+    nombreDeManches: 10

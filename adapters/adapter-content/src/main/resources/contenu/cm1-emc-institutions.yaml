@@ -1,0 +1,111 @@
+schema: 1
+id: cm1-emc-institutions
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Construire une culture civique"
+  competence: "Identifier le rôle de quelques institutions proches (mairie, conseil municipal, école) et à qui s'adresser selon la situation."
+lignesDeReferentiel: ["EMC-CM1-09"]
+#
+# S46-EMC-INSTITUTIONS-CM1 (docs/backlog/backlog.md, sprint 46), ligne EMC-CM1-09 de l'enseignement
+# moral et civique (CM1), domaine "Construire une culture civique". Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-09).
+#
+# Arbitrage pedagogique prealable cite integralement par la story (nadia-prof, 2026-09-03, precise
+# le 2026-10-01 en reponse a la question Q2 de theo-archi) : jouable au choix, sous EMC-5, EMC-6 et
+# EMC-7. Aucun item ne suppose la commune de l'enfant (DEC-0028).
+#
+# FER-1 : les trois institutions de la parenthese du libelle (mairie, conseil municipal, ecole)
+# sont chacune en position de bonne reponse d'au moins un item, sur la tache A ("a qui s'adresser").
+# - la mairie : items 1 et 2 (demarches administratives de la commune) ;
+# - le conseil municipal : items 3 et 4 (vote des decisions qui concernent la commune) ;
+# - l'ecole : items 5 et 6 (organisation de la vie scolaire).
+#
+# FER-3 : deux taches distinctes - tache A, reconnaitre a qui s'adresser selon une situation decrite
+# (items 1 a 6, bonne reponse strictement l'un des trois noms d'institution du libelle) ; tache B,
+# dire ce que fait une institution nommee (items 7 a 12, bonne reponse une fonction, jamais un des
+# trois noms d'institution).
+#
+# EMC-6 : aucun item ne suppose la commune, l'ecole ou la configuration familiale particuliere de
+# l'enfant - chaque situation met en scene des habitants, une classe ou un eleve generiques, jamais
+# "ta commune" ou "ton ecole".
+#
+# EMC-5 : aucun item n'a deux reponses defendables. La distinction mairie / conseil municipal est
+# tenue constante sur tout le paquet : la mairie est le lieu des demarches administratives et de
+# l'entretien courant de la commune, le conseil municipal est l'organe elu qui vote les decisions
+# (budget, projets, reglements). Un item qui nomme un service d'urgence sans numero ("les pompiers",
+# item 1) ne l'oppose jamais a un autre service d'urgence equivalent sur le meme item : il n'y a ici
+# qu'un seul service d'urgence par item, jamais deux face a la meme situation de secours.
+#
+# EMC-7 : aucun numero d'urgence n'est ecrit dans ce paquet (ni enonce, ni proposition, ni indice,
+# ni explication) - la condition ne mord donc sur aucun item, par construction plutot que par
+# omission : le meilleur usage d'un service d'urgence sur cette ligne est en distracteur (item 1,
+# "les pompiers" distracteur d'une demarche de mairie), jamais en bonne reponse chiffree.
+#
+# CYC-1 : continuite avec EMC-CP-13 (bandit-manchot-roles-ecole-commune-cp, couvert-valide depuis
+# s41). Aucun item de ce paquet ne contredit les roles qui y sont servis (le directeur ou la
+# directrice de l'ecole organise l'ecole ; les pompiers portent secours et eteignent les incendies).
+# L'item 1 reprend "les pompiers" en distracteur, dans le meme role que celui deja servi au CP
+# (secours et incendie), jamais une autre fonction.
+#
+# Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, section "Mention exigee
+# d'avance si une ligne bouge") : "connaissances civiques et reconnaissance de situations seules ;
+# aucun comportement, aucun engagement et aucune participation a une decision collective ne sont
+# servis par ce produit." Ce paquet ne demande ni comportement, ni engagement, ni participation a
+# une decision collective.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Un lampadaire de la rue ne s'allume plus le soir. À qui les habitants s'adressent-ils ?"
+    bonneReponse: "la mairie"
+    distracteurs: ["les pompiers", "l'école"]
+    indice: "Ce n'est ni un incendie, ni une question de classe, mais l'entretien de la rue."
+  - enonce: "Une famille veut inscrire son enfant à l'école pour la rentrée prochaine. À qui s'adresse-t-elle d'abord ?"
+    bonneReponse: "la mairie"
+    distracteurs: ["le conseil municipal", "les pompiers"]
+    indice: "C'est elle qui enregistre les enfants de la commune avant leur arrivée à l'école."
+  - enonce: "Les habitants veulent savoir si la commune va construire un nouveau terrain de sport. Qui a voté cette décision ?"
+    bonneReponse: "le conseil municipal"
+    distracteurs: ["la mairie", "l'école"]
+    indice: "Une décision qui engage l'argent et les projets de la commune se vote en réunion."
+  - enonce: "Une nouvelle règle doit limiter la vitesse des voitures dans le centre du village. Qui vote cette règle ?"
+    bonneReponse: "le conseil municipal"
+    distracteurs: ["l'école", "la mairie"]
+    indice: "Une règle qui s'applique à toute la commune est d'abord votée par les élus."
+  - enonce: "Pendant la classe, un élève se dispute violemment avec un camarade. À qui l'enseignant le signale-t-il ?"
+    bonneReponse: "l'école"
+    distracteurs: ["la mairie", "le conseil municipal"]
+    indice: "C'est une situation qui se passe pendant la classe, entre deux élèves."
+  - enonce: "Un élève se blesse pendant la récréation et doit attendre ses parents. Qui s'en occupe en attendant ?"
+    bonneReponse: "l'école"
+    distracteurs: ["le conseil municipal", "la mairie"]
+    indice: "C'est l'établissement qui accueille l'élève pendant la journée qui s'en occupe."
+  - enonce: "Que fait la mairie pour les habitants de la commune ?"
+    bonneReponse: "elle s'occupe des démarches administratives et de l'entretien de la commune"
+    distracteurs: ["elle vote les décisions qui concernent la commune", "elle organise la vie de la classe à l'école"]
+    indice: "C'est le lieu où l'on fait ses papiers et où l'on signale un problème dans la rue."
+  - enonce: "Quel est le rôle du conseil municipal ?"
+    bonneReponse: "il vote les décisions qui concernent la commune, comme le budget ou les projets"
+    distracteurs: ["il s'occupe des démarches administratives des habitants", "il organise la vie de la classe à l'école"]
+    indice: "Ce sont des élus qui se réunissent pour décider ensemble."
+  - enonce: "Que fait le conseil municipal avant qu'un nouveau projet soit lancé dans la commune ?"
+    bonneReponse: "il vote pour décider si le projet se fait"
+    distracteurs: ["il s'occupe des papiers administratifs des habitants", "il surveille la cour de récréation"]
+    indice: "Un projet qui coûte de l'argent à la commune se décide par un vote."
+  - enonce: "Que fait le directeur ou la directrice de l'école au quotidien ?"
+    bonneReponse: "il ou elle organise la vie de l'école et veille à son bon déroulement"
+    distracteurs: ["il ou elle vote les décisions de la commune", "il ou elle s'occupe des démarches administratives des habitants"]
+    indice: "C'est la personne responsable de toute l'école, du matin au soir."
+  - enonce: "Pourquoi une classe doit-elle demander une autorisation avant une sortie scolaire ?"
+    bonneReponse: "parce que le directeur ou la directrice organise et autorise la vie de l'école"
+    distracteurs: ["parce que la mairie vote cette décision en réunion", "parce que le conseil municipal s'occupe des démarches administratives"]
+    indice: "C'est la personne qui connaît l'organisation de l'école qui donne son accord."
+  - enonce: "Que fait la mairie quand un habitant signale un lampadaire cassé dans sa rue ?"
+    bonneReponse: "elle s'occupe de faire réparer le lampadaire"
+    distracteurs: ["elle attend que le conseil municipal vote une décision avant d'agir", "elle demande à l'école de s'en occuper"]
+    indice: "L'entretien courant de la rue est une démarche administrative, pas un vote."

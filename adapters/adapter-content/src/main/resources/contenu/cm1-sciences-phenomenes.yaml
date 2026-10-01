@@ -1,0 +1,114 @@
+schema: 1
+id: cm1-sciences-phenomenes
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "La planète Terre. Les êtres vivants dans leur environnement"
+  competence: "Identifier quelques phénomènes géologiques et météorologiques (séisme, éruption, tempête, inondation) et les risques associés."
+lignesDeReferentiel: ["SCI-CM1-16"]
+#
+# S46-SCI-PHENOMENES-CM1 (docs/backlog/backlog.md, sprint 46), ligne SCI-CM1-16 de "Sciences et
+# technologie" (CM1). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-16). Avis de faisabilite de
+# theo-archi (squad/rapports/avis-faisabilite-s46-cinq-lots.md, section 7) : meme regime que les
+# paquets de sciences CM1 deja fermes, paquet statique de type "question", aucun ADR neuf.
+#
+# Arbitrage pedagogique prealable cite integralement depuis sa source
+# (ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md,
+# section 2.2, ligne 16) : parenthese exemplative ("quelques phenomenes"), le couple "geologiques et
+# meteorologiques" conjonctif ; trois elements exiges par FER-1 - un phenomene geologique, un
+# phenomene meteorologique, un risque associe ; deux taches pour FER-3 - reconnaitre le phenomene
+# decrit / dire quel geste protege.
+#
+# FER-1 : marqueur par item (# element: geologique, meteorologique ou risque), les trois presents.
+# - geologique : items 1, 2, 5 (seisme, eruption volcanique) ;
+# - meteorologique : items 3, 4, 6 (tempete, inondation) ;
+# - risque : items 7 a 12 (geste qui protege).
+#
+# FER-3 : deux taches distinctes - tache A, reconnaitre le phenomene decrit (items 1 a 6, bonne
+# reponse un nom de phenomene) ; tache B, dire quel geste protege du risque associe (items 7 a 12,
+# bonne reponse un geste ou son motif, jamais un nom de phenomene).
+#
+# BIA-2 : marqueur par item (valeur france, europe, ailleurs ou non-situe apres "lieu:"). Items
+# situes : item 2
+# (Italie, Vesuve - europe), item 3 (cotes bretonnes - france), item 4 (sud de la France - france),
+# item 1 (Japon - ailleurs). Les huit autres items sont non-situes (description generique, sans
+# pays). Parmi les quatre items situes, trois sont en France ou en Europe : le paquet ne situe jamais
+# systematiquement les phenomenes decrits ailleurs qu'en France ou en Europe.
+#
+# SCI-2 : aucun item ne fait porter une responsabilite sur l'enfant ou son foyer face a un risque
+# naturel - chaque enonce reste impersonnel ou decrit un geste general, jamais une adresse a la
+# deuxieme personne qui presuppose une faute de l'enfant.
+#
+# SCI-1, simplification assumee (meme patron que cm1-sciences-usages-numeriques) : chaque indice
+# compte une phrase, ne nomme jamais la bonne reponse de son item et ne dit jamais "ta reponse".
+#
+# SCI-3 : aucune bonne reponse ne porte de valeur numerique a restituer (0 item sur 12, largement
+# sous le plafond floor(12/6) = 2).
+#
+# SCI-4 : chaque item porte deux distracteurs (trois propositions).
+#
+# HIS-3 (chaque fait porte sa source) : marque en commentaire sur chaque ligne d'item, jamais le
+# marqueur HIS-1, reserve au lot d'histoire-geographie.
+#
+# CON-1 : les propositions sont masquees par la mecanique bandit-manchot, l'item ne se repond pas
+# sans l'enonce complet.
+#
+# CYC-1 : non due (verifie par DEC-0102, section 5, et repris dans la story) - aucune ligne de cycle
+# 2 deja servie ne porte sur un seisme, une eruption ou une tempete.
+#
+# Adjacence signalee, sans collision (avis de faisabilite, section 7) : cm1-comprehension (francais
+# CM1) porte deja un item d'inference dont la bonne reponse est "une grosse tempete". Un item ne
+# sert qu'une ligne (ADR-0081, clause 5) : rien n'est compte deux fois, rien a corriger ici.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Au Japon, le sol tremble fortement pendant plusieurs secondes et des objets tombent des étagères. Quel phénomène décrit cette situation ?"  # element: geologique # HIS-3: séisme défini par une secousse du sol due à un mouvement des plaques terrestres, le Japon est une région fréquemment touchée par ce phénomène géologique enseigné au cycle 3 # lieu: ailleurs
+    bonneReponse: "un séisme"
+    distracteurs: ["une tempête", "une inondation"]
+    indice: "Les secousses viennent du sol lui-même, pas du ciel."
+  - enonce: "En Italie, près du Vésuve, un volcan rejette de la lave, des cendres et des gaz brûlants. Quel phénomène décrit cette situation ?"  # element: geologique # HIS-3: éruption volcanique définie par l'expulsion de lave, de cendres et de gaz par un volcan, le Vésuve est un volcan actif d'Italie souvent cité au cycle 3 # lieu: europe
+    bonneReponse: "une éruption volcanique"
+    distracteurs: ["une inondation", "une tempête"]
+    indice: "La matière brûlante vient de l'intérieur de la Terre."
+  - enonce: "Sur les côtes bretonnes, le vent souffle très fort, la pluie tombe en abondance et certains arbres se couchent. Quel phénomène décrit cette situation ?"  # element: meteorologique # HIS-3: tempête définie par des vents violents accompagnés de fortes précipitations, les côtes bretonnes sont régulièrement touchées par ce phénomène météorologique enseigné au cycle 3 # lieu: france
+    bonneReponse: "une tempête"
+    distracteurs: ["un séisme", "une éruption volcanique"]
+    indice: "Ce phénomène vient du ciel et de l'air en mouvement."
+  - enonce: "Dans le sud de la France, après plusieurs jours de pluies très abondantes, une rivière sort de son lit et recouvre les rues d'un village. Quel phénomène décrit cette situation ?"  # element: meteorologique # HIS-3: inondation définie par une montée des eaux qui recouvre des terrains habituellement secs, le sud de la France connaît régulièrement des épisodes de ce type après de fortes pluies, phénomène enseigné au cycle 3 # lieu: france
+    bonneReponse: "une inondation"
+    distracteurs: ["un séisme", "une éruption volcanique"]
+    indice: "L'eau monte à cause d'une accumulation de pluie, pas d'un mouvement du sol."
+  - enonce: "Une secousse fait vibrer les vitres des maisons pendant quelques secondes, sans qu'aucun nuage ne soit visible dans le ciel. Quel phénomène décrit le mieux cette situation ?"  # element: geologique # HIS-3: séisme défini par une secousse du sol indépendante des conditions météorologiques, phenomene geologique enseigné au cycle 3 # lieu: non-situe
+    bonneReponse: "un séisme"
+    distracteurs: ["une tempête", "une inondation"]
+    indice: "Un ciel dégagé pendant la secousse écarte une origine météorologique."
+  - enonce: "Le ciel devient très sombre, le vent forcit soudainement et des rafales arrachent des tuiles sur les toits. Quel phénomène décrit cette situation ?"  # element: meteorologique # HIS-3: tempête définie par des vents violents et un assombrissement rapide du ciel, phénomène météorologique enseigné au cycle 3 # lieu: non-situe
+    bonneReponse: "une tempête"
+    distracteurs: ["une éruption volcanique", "un séisme"]
+    indice: "Les rafales et l'assombrissement du ciel sont des signes du vent et de la pluie."
+  - enonce: "Pendant un séisme, quel geste permet de se protéger ?"  # element: risque # HIS-3: s'abriter sous un meuble solide loin des vitres est le geste de protection recommandé pendant un séisme, consigne de sécurité civile enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "s'abriter sous une table solide, loin des fenêtres"
+    distracteurs: ["sortir en courant par l'escalier", "rester debout près d'une fenêtre pour regarder dehors"]
+    indice: "Un meuble solide protège des objets qui tombent, un escalier pendant les secousses est dangereux."
+  - enonce: "Pendant une tempête, quel geste permet de se protéger ?"  # element: risque # HIS-3: rester à l'abri loin des fenêtres et des objets susceptibles de s'envoler est la consigne de sécurité recommandée pendant une tempête, enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "rester à l'intérieur, loin des fenêtres et des objets qui pourraient s'envoler"
+    distracteurs: ["sortir ramasser les objets emportés par le vent", "ouvrir grand les fenêtres pour aérer la maison"]
+    indice: "Rester à l'abri évite d'être blessé par un objet emporté par le vent."
+  - enonce: "En cas d'inondation, quel geste permet de se protéger ?"  # element: risque # HIS-3: monter sur un point haut loin de l'eau qui monte est la consigne de sécurité recommandée en cas d'inondation, enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "monter à l'étage ou sur un point haut, loin de l'eau qui monte"
+    distracteurs: ["descendre à la cave pour mettre les affaires à l'abri", "traverser une rue inondée pour rentrer chez soi"]
+    indice: "L'eau qui monte rend une cave ou une rue inondée dangereuses."
+  - enonce: "Après une éruption volcanique proche, quel geste permet de se protéger des cendres ?"  # element: risque # HIS-3: rester à l'intérieur et fermer portes et fenêtres est la consigne de sécurité recommandée face à des retombées de cendres volcaniques, enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "rester à l'intérieur et fermer portes et fenêtres"
+    distracteurs: ["sortir observer le volcan de près", "ouvrir les fenêtres pour que les cendres s'évacuent"]
+    indice: "Les cendres volcaniques peuvent gêner la respiration si on les respire."
+  - enonce: "Pendant un séisme, pourquoi vaut-il mieux ne pas utiliser l'ascenseur ?"  # element: risque # HIS-3: un ascenseur peut rester bloqué si l'électricité ou la structure du bâtiment est touchée par les secousses, consigne de sécurité enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "parce qu'il peut rester bloqué si l'électricité ou la structure est touchée"
+    distracteurs: ["parce qu'il monte trop lentement", "parce qu'il fait trop de bruit pendant les secousses"]
+    indice: "Un ascenseur dépend d'une alimentation électrique qui peut s'arrêter brutalement."
+  - enonce: "Pourquoi s'éloigne-t-on des cours d'eau pendant de fortes pluies ?"  # element: risque # HIS-3: le niveau d'un cours d'eau peut monter très vite et sans prévenir lors de fortes pluies, consigne de sécurité enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "parce que le niveau de l'eau peut monter très vite et sans prévenir"
+    distracteurs: ["parce que l'eau devient soudainement plus froide", "parce que les poissons remontent le courant à cette période"]
+    indice: "Un cours d'eau peut déborder beaucoup plus vite qu'on ne l'imagine."
