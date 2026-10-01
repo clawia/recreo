@@ -69,49 +69,20 @@ Aucune consommation mesuree.
 
 ## Sprint s19
 
-| Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
-|---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-sonnet-5 | 138 | 276 | 55 407 | 1 296 956 | 26 322 438 |
-| `sofia-sm` | claude-sonnet-5 | 74 | 148 | 25 297 | 996 372 | 16 478 442 |
-| `marc-dev` | claude-sonnet-5 | 83 | 166 | 48 929 | 763 303 | 29 861 766 |
-| `relecteur-pedagogique` | claude-sonnet-5 | 214 | 428 | 57 951 | 708 936 | 50 313 982 |
-| `nadia-prof` | claude-opus-5 | 78 | 156 | 73 254 | 1 006 392 | 31 463 991 |
-| orchestrateur (fil principal) | claude-opus-5 | 25 | 50 | 54 732 | 1 180 821 | 7 048 490 |
-| **Total** | | **612** | **1 224** | **315 570** | **5 952 780** | **161 489 109** |
-
-Aucune invocation mesuree sur cette fenetre pour : `theo-archi`, `lea-dev`, `yanis-qa`, `ines-design`.
+Aucune consommation mesuree.
 
 ## Sprint s20
 
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-sonnet-5 | 338 | 676 | 160 708 | 2 177 012 | 112 401 228 |
-| `sofia-sm` | claude-sonnet-5 | 471 | 942 | 166 042 | 3 179 620 | 102 884 406 |
-| `theo-archi` | claude-opus-5 | 144 | 288 | 75 558 | 1 876 882 | 19 014 605 |
-| `marc-dev` | claude-sonnet-5 | 329 | 658 | 146 693 | 754 583 | 72 806 699 |
-| `lea-dev` | claude-sonnet-5 | 332 | 664 | 203 994 | 2 760 726 | 89 346 905 |
-| `yanis-qa` | claude-sonnet-5 | 109 | 218 | 36 481 | 298 065 | 10 031 897 |
-| `relecteur-pedagogique` | claude-sonnet-5 | 137 | 274 | 40 569 | 579 554 | 22 086 709 |
-| `nadia-prof` | claude-opus-5 | 372 | 744 | 227 411 | 3 371 070 | 68 479 442 |
-| `ines-design` | claude-sonnet-5 | 392 | 784 | 172 802 | 6 378 907 | 147 975 583 |
-| orchestrateur (fil principal) | claude-opus-5 | 178 | 356 | 247 043 | 8 002 261 | 65 995 886 |
-| **Total** | | **2802** | **5 604** | **1 477 301** | **29 378 680** | **711 023 360** |
+| orchestrateur (fil principal) | claude-opus-5 | 31 | 62 | 42 565 | 287 553 | 2 439 031 |
+| **Total** | | **31** | **62** | **42 565** | **287 553** | **2 439 031** |
+
+Aucune invocation mesuree sur cette fenetre pour : `camille-po`, `sofia-sm`, `theo-archi`, `marc-dev`, `lea-dev`, `yanis-qa`, `relecteur-pedagogique`, `nadia-prof`, `ines-design`.
 
 ## Sprint s21
 
-| Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
-|---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-sonnet-5 | 359 | 718 | 189 917 | 1 835 576 | 62 955 290 |
-| `sofia-sm` | claude-sonnet-5 | 815 | 1 630 | 247 530 | 2 095 685 | 83 525 725 |
-| `theo-archi` | claude-opus-5 | 371 | 742 | 232 212 | 3 790 941 | 115 602 611 |
-| `marc-dev` | claude-sonnet-5 | 305 | 610 | 99 796 | 717 291 | 51 065 617 |
-| `lea-dev` | claude-sonnet-5 | 373 | 746 | 152 263 | 1 179 161 | 51 370 568 |
-| `yanis-qa` | claude-sonnet-5 | 100 | 200 | 37 667 | 269 694 | 8 654 587 |
-| `relecteur-pedagogique` | claude-sonnet-5 | 234 | 468 | 65 677 | 503 717 | 27 503 381 |
-| `nadia-prof` | claude-opus-5 | 694 | 1 388 | 511 133 | 8 524 957 | 176 583 704 |
-| `ines-design` | claude-sonnet-5 | 162 | 324 | 37 729 | 364 681 | 19 592 689 |
-| orchestrateur (fil principal) | claude-opus-5 | 121 | 242 | 269 669 | 1 850 806 | 30 829 635 |
-| **Total** | | **3534** | **7 068** | **1 843 593** | **21 132 509** | **627 683 807** |
+Aucune consommation mesuree.
 
 ## Sprint s22
 
@@ -458,20 +429,38 @@ Aucune invocation mesuree sur cette fenetre pour : `relecteur-pedagogique`.
 
 Aucune invocation mesuree sur cette fenetre pour : `relecteur-pedagogique`, `ines-design`.
 
+## Sprint s44
+
+| Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
+|---|---|---|---:|---:|---:|---:|
+| `camille-po` | claude-sonnet-5 | 149 | 298 | 57 574 | 777 844 | 12 384 252 |
+| `sofia-sm` | claude-sonnet-5 | 251 | 502 | 88 650 | 646 148 | 46 767 731 |
+| `theo-archi` | claude-opus-5-5 | 67 | 134 | 20 056 | 157 911 | 3 872 532 |
+| `marc-dev` | claude-sonnet-5 | 259 | 518 | 79 825 | 994 097 | 55 392 057 |
+| `lea-dev` | claude-sonnet-5 | 271 | 542 | 85 273 | 736 471 | 62 007 576 |
+| `yanis-qa` | claude-sonnet-5 | 113 | 226 | 26 996 | 300 299 | 8 426 107 |
+| `relecteur-pedagogique` | claude-sonnet-5 | 64 | 128 | 12 180 | 272 445 | 4 561 516 |
+| `nadia-prof` | claude-opus-5-5 | 191 | 382 | 107 472 | 801 339 | 22 460 822 |
+| orchestrateur (fil principal) | claude-sonnet-5 | 68 | 136 | 112 487 | 550 099 | 11 285 786 |
+| **Total** | | **1433** | **2 866** | **590 513** | **5 236 653** | **227 158 379** |
+
+Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
+
 ## hors sprint
 
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-opus-5  claude-sonnet-5 | 5020 | 10 040 | 2 913 067 | 28 448 398 | 771 137 401 |
-| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 5453 | 10 906 | 2 030 597 | 25 377 189 | 912 114 317 |
-| `theo-archi` | claude-opus-5 | 5612 | 11 224 | 2 937 491 | 23 197 532 | 829 376 056 |
-| `marc-dev` | claude-sonnet-5 | 1162 | 2 324 | 526 718 | 5 232 841 | 183 842 889 |
-| `lea-dev` | claude-sonnet-5 | 2002 | 4 004 | 780 409 | 6 112 630 | 687 018 963 |
-| `yanis-qa` | claude-opus-5  claude-sonnet-5 | 479 | 958 | 171 408 | 1 359 916 | 75 251 247 |
-| `relecteur-pedagogique` | claude-sonnet-5 | 286 | 572 | 92 002 | 1 018 884 | 72 637 092 |
-| `nadia-prof` | claude-opus-5 | 4550 | 9 100 | 3 043 885 | 26 862 819 | 622 508 978 |
-| `ines-design` | claude-opus-5  claude-sonnet-5 | 1794 | 3 588 | 994 948 | 7 681 992 | 305 405 524 |
+| `camille-po` | claude-opus-5  claude-sonnet-5 | 4383 | 8 766 | 2 590 602 | 23 055 845 | 642 821 876 |
+| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 4332 | 8 664 | 1 671 689 | 21 065 447 | 774 357 084 |
+| `theo-archi` | claude-opus-5  claude-opus-5-5 | 4468 | 8 936 | 2 347 362 | 17 348 925 | 641 863 820 |
+| `marc-dev` | claude-sonnet-5 | 780 | 1 560 | 364 250 | 3 737 881 | 116 705 440 |
+| `lea-dev` | claude-sonnet-5 | 1615 | 3 230 | 621 830 | 4 692 267 | 617 471 895 |
+| `yanis-qa` | claude-opus-5  claude-sonnet-5 | 240 | 480 | 60 051 | 722 678 | 29 339 463 |
+| `relecteur-pedagogique` | claude-sonnet-5 | 292 | 584 | 92 663 | 1 009 359 | 72 857 775 |
+| `nadia-prof` | claude-opus-5  claude-opus-5-5 | 3807 | 7 614 | 2 581 843 | 22 003 400 | 516 949 886 |
+| `ines-design` | claude-opus-5  claude-sonnet-5 | 1155 | 2 310 | 679 451 | 4 912 250 | 211 738 125 |
+| `Explore` | claude-opus-5 | 186 | 372 | 61 513 | 878 596 | 8 105 086 |
 | `fork` | claude-sonnet-5 | 373 | 746 | 140 282 | 3 706 006 | 149 497 313 |
-| `general-purpose` | claude-sonnet-5 | 27 | 54 | 10 250 | 354 041 | 1 332 464 |
-| orchestrateur (fil principal) | claude-opus-5  claude-sonnet-5 | 2716 | 5 432 | 4 190 435 | 22 358 012 | 619 203 962 |
-| **Total** | | **29474** | **58 948** | **17 831 492** | **151 710 260** | **5 229 326 206** |
+| `general-purpose` | claude-opus-5  claude-sonnet-5 | 389 | 778 | 126 406 | 2 067 833 | 36 263 441 |
+| orchestrateur (fil principal) | claude-opus-5  claude-sonnet-5 | 2685 | 5 370 | 3 872 505 | 21 331 175 | 570 142 498 |
+| **Total** | | **24705** | **49 410** | **15 210 447** | **126 531 662** | **4 388 113 702** |
