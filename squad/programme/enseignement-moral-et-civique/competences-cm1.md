@@ -100,6 +100,29 @@ La numérotation ci-dessous suit l'ordre de lecture de la liste de compétences.
 > mensonge est grave. Le retour dit ce qu'**il faut faire dans la vie**, au présent de vérité
 > générale, jamais ce que l'enfant vient de faire.
 
+*Précision du 2026-10-01 (`nadia-prof`, s46), sur la ligne 9.* Question Q2 de `theo-archi`
+(`squad/rapports/avis-faisabilite-s46-cinq-lots.md`, section 5) : `EMC-7` vaut-elle sur un item de
+`EMC-CM1-09` dont la bonne réponse est un service d'urgence, alors que la story ne cite que `EMC-6` ?
+
+- **`EMC-7` vaut, et ce n'est pas une extension.** Le paragraphe ci-dessus l'applique déjà à toute
+  cette matière depuis le 2026-09-03 (*"`EMC-1` à `EMC-7` ... s'appliquent ici à l'identique"*).
+  Qu'une story n'en cite qu'une ne retire pas les autres. Elle mord dès qu'un numéro d'urgence
+  apparaît dans l'énoncé, une proposition, l'indice ou l'explication : numéro exact, source dans le
+  commentaire du paquet, et le piège de la ligne 14 du CP (incendie : 18 et 112 sont justes tous les
+  deux) refusé sans discussion.
+- **Un service d'urgence nommé sans numéro** (*"les pompiers"*, *"le SAMU"*) n'entre pas dans la
+  lettre d'`EMC-7`. C'est `EMC-5` qui le garde : les pompiers et le SAMU portent tous deux secours à
+  une personne blessée, donc un item de secours à personne ne met jamais l'un en distracteur de
+  l'autre.
+- **Ce qu'un tel item ne fait pas** : il ne compte pour aucune des trois institutions de `FER-1`, et
+  `CYC-1` le confronte à `bandit-manchot-roles-ecole-commune-cp`, qui sert déjà les pompiers en bonne
+  réponse. Le meilleur usage d'un service d'urgence sur cette ligne est en distracteur, face à une
+  démarche qui relève de la mairie (un lampadaire cassé n'appelle pas les pompiers). Je n'en fais pas
+  une condition.
+
+`camille-po`, via `sofia-sm` : les critères de `S46-EMC-INSTITUTIONS-CM1` citent `EMC-5` et `EMC-7`
+à côté d'`EMC-6`. Je reste seule garde de ces trois conditions, contre source pour `EMC-7`.
+
 ### Mention exigée d'avance si une ligne bouge
 
 Si des lignes de cette matière passent à `couvert-valide`, la matrice porte cette mention :

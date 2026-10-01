@@ -461,6 +461,14 @@ sans aucun emprunt ferme cette ligne, et `SOP-CE1-2` dit pourquoi.
 > **La troisieme forme est la reparation d'avance de `SOU-CE1-R1`**, reserve que j'ai ouverte a s38
 > sur quatre items dont le second distracteur ne correspondait a aucune erreur plausible, et dont le
 > correctif que j'avais donne etait precisement *"remplacer par la somme `a + b`"*.
+>
+> *Amendement du 2026-10-01 (`nadia-prof`, s46).* Les trois formes ci-dessus donnent toujours une
+> valeur superieure a la bonne reponse (`theo-archi`, `squad/rapports/avis-faisabilite-s46-cinq-lots.md`,
+> section 3.2, constat verifie). **Une quatrieme forme est admise : l'emprunt reporte deux fois**,
+> de valeur `a - b - 10^(i+1)`, avec sa portee, sa regle d'admission et une phrase sur le rang du
+> paquet entier, dans `squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`, section 2.
+> Le texte ci-dessus n'est pas efface ; la liste "et seulement celles-la" compte desormais quatre
+> formes.
 
 > **`SOP-CE1-6` - bornes, resultat jamais negatif, et aucun habillage.** `0 <= b <= a <= 1000`.
 > Aucun item n'est habille d'une situation, ni ecrit en euros, centimes, centimetres, grammes ni en
