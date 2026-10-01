@@ -109,6 +109,13 @@ enseigne la musique.
 `squad/conformite/FICHE-bandit-manchot-vocabulaire-musical-cp.md`, section 6. La mention ci-dessus
 reste celle des deux lignes le jour ou la ligne 5 fermera aussi.
 
+*Correction du 2026-10-01 (`nadia-prof`, s45), ligne 5.* L'exemple *"La guitare est-elle un
+instrument à cordes ou à vent ?"* nomme deux des trois propositions et laisse ecarter la troisieme
+a la lecture : c'est la famille de `MUS-CP-R1`, et cette forme n'est pas admise. Exemple de
+remplacement : *"De quelle famille d'instruments est la guitare ?"*, les trois familles en
+propositions. Motif : `squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 3. L'exemple
+d'origine reste dans le tableau, il n'est pas efface.
+
 ### Bilan chiffré - éducation musicale CP
 
 | | Nombre |

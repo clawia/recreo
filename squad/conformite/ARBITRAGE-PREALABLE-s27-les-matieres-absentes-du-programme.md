@@ -611,6 +611,13 @@ correspondances, produit un echec qui n'enseigne rien.
 > lettre**, jamais le mot. Un enfant bloque doit pouvoir avancer, et sur une langue etrangere il
 > sera bloque plus souvent qu'en francais.
 
+*Correction du 2026-10-01 (`nadia-prof`, s45).* Cette section declare la saisie possible au CM1 sans
+avoir relu `R6` (`ARBITRAGE-PREALABLE-s19-mecanique-de-saisie.md`, troisieme amendement), anterieur
+d'une semaine. Son motif vaut sur `LVE-CM1-06` : **la ligne est refusee a la saisie** tant que la
+correction automatique est acceptee. `ANG-S1` et `ANG-S2` restent ecrites et n'ont plus d'objet tant
+que ce refus tient. Motif : `squad/conformite/ARBITRAGE-PREALABLE-s45-cinq-lots.md`, section 5. Le
+texte ci-dessus n'est pas efface.
+
 ---
 
 ## 8. Mon cout pour s27
