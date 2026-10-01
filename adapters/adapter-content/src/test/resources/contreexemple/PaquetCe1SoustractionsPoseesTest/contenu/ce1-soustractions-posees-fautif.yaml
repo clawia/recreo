@@ -1,0 +1,18 @@
+schema: 1
+id: ce1-soustractions-posees-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1SoustractionsPoseesTest. Un seul item, dont le
+# premier distracteur declare "non-reportee" mais porte une valeur fausse (36 au lieu des 35 que
+# l'arithmetique en colonnes calcule depuis 52 et 27) : le calcul depuis les operandes doit le
+# refuser.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)"
+lignesDeReferentiel: ["MAT-CE1-05"]
+items:
+  - enonce: "52 - 27 = ?"
+    bonneReponse: "25"
+    distracteurs: ["36", "15"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(unites)
+    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
