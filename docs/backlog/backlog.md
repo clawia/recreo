@@ -16226,4 +16226,289 @@ independamment.
   `MAT-CE1-06`/`MAT-CE1-18` (prealable bloquant) ; developpement a affecter par `sofia-sm`, une fois
   la frontiere posee et fusionnee ; `nadia-prof` pour le Done pedagogique.
 
+## Sprint 45 - Cinq lignes engagees par `DEC-0101` sur un dispositif a deux instances paralleles de `nadia-prof` : mathematiques CE1, education musicale CP, EPS CM1 (instance A), langues vivantes CM1, sciences et technologie CM1 (instance B)
+
+Cinq lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` au
+moment de l'engagement. Objectif et perimetre formalises par `DEC-0101` (augmentation du perimetre
+de s45, instruction directe de l'utilisatrice - deux instances de `nadia-prof` plutot que le
+dispositif a instance unique propose par `DEC-0100`). Les trois lots de l'instance A reprennent tels
+quels le chiffrage de `DEC-0100` (sections 2 et 5) ; les deux lots de l'instance B sont choisis dans
+le meme vivier hors mathematiques, reverifie ligne par ligne par `DEC-0101` section 3.2. Les cinq
+lots portent deja un arbitrage prealable explicite, cite en entier ci-dessous : `theo-archi` peut
+rendre un avis de faisabilite directement sur chacun, sans arbitrage pedagogique prealable neuf a
+attendre.
+
+**Deux instances non chevauchantes** (`DEC-0101`, section 4 - `PAR-2` verifie : cinq couples
+matiere/niveau distincts, aucun partage entre les deux instances ; `CYC-1` ne trouve aucune
+occurrence a instruire entre les deux lignes de cycle 2 du lot et les trois lignes de cycle 3 ;
+aucune clause de frontiere n'est due, verifiee contre le critere que `nadia-prof` a ecrit pour en
+produire une, sur les six paires croisees entre instances) :
+
+| Instance | Lots | Cout |
+|---|---|---|
+| A - mathematiques CE1, education musicale CP, EPS CM1 | `S45-MAT-ADDITION`, `S45-MUS-INSTRUMENTS`, `S45-EPS-ROLES` | 4,0 / 5,0 |
+| B - langues vivantes CM1, sciences et technologie CM1 | `S45-LVE-ECRITURE`, `S45-SCI-NUMERIQUE` | 3,0 / 5,0 |
+
+**Total du sprint : 7,0 / 8,0**, marge de sprint 1,0 non allouee des l'ouverture (`DEC-0101`, section
+6 : le plafond mecanique de 8,0 n'est pas atteignable dans ce vivier sans rouvrir la regle "une seule
+ligne de mathematiques CE1 par sprint" ni depasser le plafond individuel de 5,0 par instance),
+en plus des marges individuelles par instance (1,0 sur l'instance A, 2,0 sur l'instance B).
+
+**Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
+`sofia-sm`** (`DEC-0101`, section 8, qui route l'ouverture du sprint a `sofia-sm`).
+
+### S45-MAT-ADDITION - Poser et effectuer une addition avec retenue (`MAT-CE1-04`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux poser et effectuer une addition avec retenue en
+  jouant au bandit manchot, afin de savoir calculer des sommes de deux ou trois chiffres.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-04`. Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Mathematiques - CE1", ligne "Poser et effectuer une addition avec
+  retenue (nombres a deux ou trois chiffres)".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, section 4) : verdict
+  **ACCEPTE SOUS CONDITIONS, avec mention de couverture partielle**. Six conditions, citees mot pour
+  mot :
+  > `ADP-CE1-1` - mention exacte exigee dans la matrice, mot pour mot : "le resultat atteste le
+  > calcul ; la technique posee elle-meme - disposition en colonnes, retenues - n'est ni montree ni
+  > verifiee par le produit." Sans cette mention ecrite dans la matrice, la ligne ne ferme pas.
+  >
+  > `ADP-CE1-2` - les deux tailles de nombres de la parenthese (deux chiffres, trois chiffres) sont
+  > chacune servies par au moins trois items ; tout item comporte au moins une retenue ; au moins deux
+  > items portent une retenue sur la colonne des dizaines, et au moins un item porte deux retenues.
+  >
+  > `ADP-CE1-3` - separation d'avec `MAT-CE1-03`, deja servie : au moins les deux tiers des items
+  > mettent en jeu un nombre de trois chiffres ou produisent une somme superieure a 100, pour ne pas
+  > reproduire sous un autre code la meme matiere que `bandit-manchot-additions-ce1`.
+  >
+  > `ADP-CE1-4` - l'item ne se repond pas sans poser l'operation : les trois propositions ont le meme
+  > nombre de chiffres et le meme ordre de grandeur, et au moins un distracteur partage le chiffre des
+  > unites avec la bonne reponse.
+  >
+  > `ADP-CE1-5` - chaque distracteur est une erreur classique nommee et declaree dans le paquet, parmi
+  > trois formes seulement : retenue oubliee, retenue reportee deux fois, retenue reportee dans la
+  > mauvaise colonne. Tous les distracteurs sont des entiers positifs, distincts entre eux et de la
+  > bonne reponse.
+  >
+  > `ADP-CE1-6` - aucun item n'est habille d'une situation, ni ecrit en unites (ni euros, ni centimes,
+  > ni centimetres, ni grammes, ni ecriture decimale) : les items portent des nombres nus.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande de poser et d'effectuer une addition
+    avec retenue sur deux nombres a deux ou trois chiffres nus, sans habillage de situation ni unite
+    (`ADP-CE1-6`).
+  - Etant donne le paquet livre, quand on compte les items, alors les deux tailles de nombres (deux
+    chiffres, trois chiffres) sont chacune servies par au moins trois items, chaque item comporte au
+    moins une retenue, au moins deux items portent une retenue sur la colonne des dizaines et au moins
+    un item porte deux retenues (`ADP-CE1-2`).
+  - Etant donne le paquet livre, quand on compte les items dont les deux nombres sont inferieurs a
+    100, alors ils representent au plus un tiers du paquet (`ADP-CE1-3`).
+  - Etant donne les trois propositions d'un item, quand on les compare, alors elles ont le meme nombre
+    de chiffres et le meme ordre de grandeur, et au moins l'une d'elles partage le chiffre des unites
+    avec la bonne reponse (`ADP-CE1-4`).
+  - Etant donne les distracteurs d'un item, quand on les verifie, alors chacun correspond a l'une des
+    trois erreurs nommees (retenue oubliee, retenue reportee deux fois, retenue reportee dans la
+    mauvaise colonne), est un entier positif, et est distinct des deux autres propositions
+    (`ADP-CE1-5`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-04` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors elle
+    confirme que les six conditions `ADP-CE1-1` a `ADP-CE1-6` sont tenues et que la mention de
+    couverture partielle exigee par `ADP-CE1-1` est ecrite dans la matrice avant que la ligne passe a
+    `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne montre ni ne verifie jamais la technique posee elle-meme
+  (disposition en colonnes, retenues) - seul le resultat est verifie (`ADP-CE1-1`) ; elle ne sert
+  jamais un item sous 100 au-dela du tiers autorise, deja servi par `MAT-CE1-03` (`ADP-CE1-3`) ; elle
+  n'habille jamais un item d'une situation ou d'une unite (`ADP-CE1-6`) ; elle ne fixe aucun contenu
+  factuel precis (quels nombres retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0101` (section 5, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S45-MUS-INSTRUMENTS - Identifier des instruments de musique et les familles auxquelles ils appartiennent (`MUS-CP-05`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux identifier des instruments de musique et nommer les
+  familles auxquelles ils appartiennent (cordes, vents, percussions) en jouant au bandit manchot,
+  afin de connaitre le vocabulaire des instruments.
+- **Competence programme visee** : education musicale, CP (cycle 2), domaine "Ecouter, comparer et
+  commenter" - `squad/programme/education-musicale/competences-cp.md`, `MUS-CP-05`. Ligne
+  `non couvert`, `MATRICE-couverture.md`, section "Education musicale - CP".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/education-musicale/competences-cp.md`, Jugement de faisabilite, `nadia-prof`,
+  2026-09-03, ligne 5) : *"non couvert - jouable sur la seule moitie connaissance | 'La guitare
+  est-elle un instrument a cordes ou a vent ?' se pose en texte, se verifie, est exacte. La
+  reconnaissance a l'oreille, qui est le coeur de la ligne, reste hors de portee. Mention exigee
+  d'avance si la ligne bouge : 'familles d'instruments sur le nom ecrit seul ; la reconnaissance
+  auditive reste non couverte'"*. Conditions posees d'avance sur toute la matiere, citees mot pour
+  mot (meme document, section "Conditions opposables") :
+  > `MUS-1` - Aucun item d'education musicale ne suppose que l'enfant a entendu quoi que ce soit. Ni
+  > "ecoute puis reponds", ni un enonce qui decrirait un son a la place de le faire entendre.
+  >
+  > `MUS-2` - Aucun dispositif ou un adulte chanterait, fredonnerait ou frapperait un rythme. La
+  > premisse de l'adulte accompagnant couvre la lecture d'un texte, pas la production d'une hauteur ni
+  > d'une pulsation.
+
+  Mention exigee d'avance si les lignes 5 et 11 bougent ensemble, deja ecrite par `nadia-prof` et
+  reprise dans `MATRICE-couverture.md` a la fermeture de `MUS-CP-11` : *"vocabulaire musical et
+  familles d'instruments seuls, sur le nom ecrit ; aucune competence auditive ni vocale n'est
+  servie"*. `MUS-CP-11` est deja `couvert-valide` depuis s44 : si cette story ferme, les deux lignes
+  closes du referentiel completent le denominateur atteignable de la matiere, exactement la paire que
+  `nadia-prof` anticipait.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande d'identifier un instrument de musique ou
+    la famille (cordes, vents, percussions) a laquelle il appartient, sur le nom ecrit seul, jamais sur
+    un son entendu (`MUS-1`).
+  - Etant donne un item, quand on relit son enonce apres en avoir efface toute reference auditive,
+    alors la reponse reste trouvable par la seule connaissance du nom de l'instrument et de sa famille
+    (`MUS-1`).
+  - Etant donne le paquet livre, quand on le verifie dans son entier, alors aucun dispositif ne demande
+    a un adulte de chanter, fredonner ou frapper un rythme (`MUS-2`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les trois familles du libelle
+    (cordes, vents, percussions) sont chacune en bonne reponse au moins une fois, avec plusieurs
+    instruments distincts par famille.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MUS-CP-05` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors elle
+    confirme que la mention de couverture partielle est due et que sa formulation integre la fermeture
+    conjointe avec `MUS-CP-11`, deja `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de reconnaitre un instrument
+  ou une famille a l'oreille - contrainte fondatrice, aucun son fourni, aucun son recu ; elle ne sert
+  jamais `MUS-CP-11` (vocabulaire musical), ligne distincte deja fermee ; elle ne fixe aucun contenu
+  factuel precis (quels instruments retenus) - reste a l'auteur du paquet puis a l'audit de
+  `nadia-prof`.
+- **Lien decision** : `DEC-0101` (section 5, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S45-EPS-ROLES - Tenir les roles d'arbitre, d'observateur ou de marqueur dans un jeu, et en appliquer les regles (`EPS-CM1-09`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux connaitre et appliquer la regle d'un jeu pour tenir le
+  role d'arbitre, d'observateur ou de marqueur en jouant au bandit manchot, afin de savoir faire
+  respecter une regle que je connais.
+- **Competence programme visee** : education physique et sportive, CM1 (cycle 3), domaine "Conduire
+  et maitriser un affrontement collectif ou interindividuel" -
+  `squad/programme/education-physique-et-sportive/competences-cm1.md`, `EPS-CM1-09`. Ligne
+  `non couvert`, `MATRICE-couverture.md`, section "Education physique et sportive - CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/education-physique-et-sportive/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 9) : *"non couvert - jouable sur la seule moitie connaissance, sous
+  `EPS-1` | La regle appliquee a une situation decrite est une connaissance verifiable, et c'est bien
+  le travail de l'arbitre : 'Le ballon sort sur la ligne de cote, a qui la remise en jeu ?'. Tenir le
+  role en situation ne l'est pas. Mention exigee d'avance : 'connaissance et application de la regle
+  seules ; la tenue du role en situation reste non couverte'"*. Condition `EPS-1`, posee le
+  2026-09-03 sur l'EPS CP et reprise a l'identique pour le CM1, citee mot pour mot : *"la regle d'un
+  jeu n'est interrogee que si elle est rappelee dans l'enonce ou universellement scolaire"*. `EPS-2`
+  et `EPS-3` s'appliquent aussi a toute la matiere (aucune comparaison de corps ou de performance
+  entre enfants ; aucune attitude ou conduite morale portee par une bonne reponse).
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il decrit une situation de jeu et demande la regle
+    applicable (par exemple quelle equipe beneficie de la remise en jeu), avec la regle elle-meme
+    rappelee dans l'enonce ou universellement scolaire (`EPS-1`), jamais une mise en situation reelle
+    de l'enfant tenant le role.
+  - Etant donne un item, quand on verifie sa reponse, alors elle porte sur l'application d'une regle a
+    une situation decrite, jamais sur une comparaison de corps ou de performance entre enfants
+    (`EPS-2`) ni sur une attitude ou une conduite morale (`EPS-3`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors les trois roles du libelle
+    (arbitre, observateur, marqueur) sont chacun representes par au moins un item.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EPS-CM1-09` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors elle
+    confirme que la mention de couverture partielle exigee d'avance ("connaissance et application de
+    la regle seules ; la tenue du role en situation reste non couverte") est ecrite dans la matrice.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de tenir reellement un role en
+  situation - hors de portee, aucun capteur ni aucune observation d'un geste (`ADR-0008`) ; elle ne
+  compare jamais des enfants entre eux (`EPS-2`) ; elle ne fixe aucun contenu factuel precis (quels
+  jeux, quelles regles retenues) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0101` (section 5, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S45-LVE-ECRITURE - Ecrire des mots et des expressions memorises (`LVE-CM1-06`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux ecrire des mots et des expressions d'anglais deja
+  memorises en jouant au bandit manchot, afin de savoir les orthographier sans les relire.
+- **Competence programme visee** : langues vivantes (anglais), CM1 (cycle 3), domaine "Ecrire" -
+  `squad/programme/langues-vivantes/competences-cm1.md`, `LVE-CM1-06`. Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Langues vivantes (anglais) - CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section sur la
+  mecanique de saisie en anglais) : *"C'est defendable au CM1 sur un lexique ferme et deja joue en
+  choix, et pas avant. Demander a un enfant d'ecrire un mot anglais qu'il n'a jamais vu ecrit, dans
+  une langue dont il ignore les correspondances, produit un echec qui n'enseigne rien."* Deux
+  conditions, citees mot pour mot :
+  > `ANG-S1` - Un paquet de saisie en anglais ne porte que des mots deja servis en choix dans un
+  > paquet valide. Le lexique est ferme et declare.
+  >
+  > `ANG-S2` - Apres une tentative fausse, l'indice montre la longueur du mot et sa premiere lettre,
+  > jamais le mot.
+
+  **Lexique disponible, verifie ce jour** : `LVE-CM1-04` (`bandit-manchot-anglais-cm1`,
+  `couvert-valide` depuis s28) sert trois champs lexicaux a cinq mots chacun en choix, valide ;
+  `LVE-CM1-07` (meme jeu, `couvert-valide` depuis s32) sert dix mots supplementaires en choix,
+  valide. `ANG-S1` est donc tenable sans extension du lexique existant.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande d'ecrire en anglais un mot ou une
+    expression deja servi en choix dans `bandit-manchot-anglais-cm1` (`LVE-CM1-04` ou `LVE-CM1-07`),
+    jamais un mot qui n'y figure pas (`ANG-S1`).
+  - Etant donne une tentative fausse, quand l'indice s'affiche, alors il montre la longueur du mot et
+    sa premiere lettre, jamais le mot complet (`ANG-S2`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors plusieurs mots distincts du
+    lexique ferme (au moins cinq) sont chacun demandes au moins une fois.
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `LVE-CM1-06` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors elle
+    confirme que tous les mots demandes figurent deja dans le lexique en choix valide, et que l'indice
+    ne montre jamais le mot complet.
+- **Ce que cette story ne fait pas** : elle ne demande jamais d'ecrire un mot absent du lexique deja
+  servi en choix (`ANG-S1`) ; elle ne montre jamais le mot complet en indice (`ANG-S2`) ; elle ne
+  fixe aucun contenu factuel precis (quels mots retenus parmi le lexique) - reste a l'auteur du paquet
+  puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0101` (section 5, instance B).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+### S45-SCI-NUMERIQUE - Connaitre quelques regles d'usage d'un environnement numerique (`SCI-CM1-14`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux connaitre quelques regles d'usage d'un environnement
+  numerique (identification, courriel, recherche d'une information, protection de ses donnees) en
+  jouant au bandit manchot, afin de savoir me proteger en ligne.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Materiaux et
+  objets techniques" - `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-14`.
+  Ligne `non couvert`, `MATRICE-couverture.md`, section "Sciences et technologie - CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/sciences-et-technologie/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 14) : *"jouable au choix textuel, sur les connaissances seules |
+  L'usage effectif - envoyer, ranger, retrouver - suppose un environnement que le produit ne fournit
+  pas et un etat qu'il ne conserve pas. Mention exigee d'avance : 'regles et connaissances d'usage
+  seules ; la pratique d'un environnement numerique reste non couverte'"*. Conditions posees d'avance
+  sur toute la matiere, citees mot pour mot (meme document, section "Conditions opposables") :
+  > `SCI-1` - Apres une reponse fausse, le retour dit pourquoi elle est fausse, en une phrase.
+  >
+  > `SCI-2` - Sur les risques naturels et l'impact humain, aucun item ne fait porter une
+  > responsabilite a l'enfant ni a son foyer.
+  >
+  > `SCI-3` - Aucun item ne demande une valeur numerique a restituer au-dela d'un item sur six.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur une regle ou une connaissance d'usage
+    d'un environnement numerique (identification, courriel, recherche d'une information, protection
+    des donnees), jamais sur une pratique effective a realiser dans un environnement numerique reel.
+  - Etant donne une reponse fausse, quand le retour s'affiche, alors il dit en une phrase pourquoi
+    elle est fausse (`SCI-1`).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors aucun item ne met en cause
+    l'enfant ou son foyer sur un usage numerique reel (`SCI-2`).
+  - Etant donne le paquet livre, quand on compte les items qui demandent une valeur numerique a
+    restituer, alors ils representent au plus un item sur six (`SCI-3`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `SCI-CM1-14` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors elle
+    confirme que la mention de couverture partielle exigee d'avance ("regles et connaissances d'usage
+    seules ; la pratique d'un environnement numerique reste non couverte") est ecrite dans la matrice.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de pratiquer reellement un
+  geste numerique (envoyer, ranger, retrouver une information) - hors de portee, aucun environnement
+  numerique fourni et aucune persistance (`DEC-0028`) ; elle ne met jamais en cause l'enfant ou son
+  foyer (`SCI-2`) ; elle ne fixe aucun contenu factuel precis (quelles regles retenues) - reste a
+  l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0101` (section 5, instance B).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
+
 
