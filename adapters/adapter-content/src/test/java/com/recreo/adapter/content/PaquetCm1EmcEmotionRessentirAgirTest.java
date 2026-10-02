@@ -171,7 +171,7 @@ class PaquetCm1EmcEmotionRessentirAgirTest {
         }
     }
 
-    /** Ligne de referentiel : EMC-CM1-01 et elle seule. */
+    /** Ligne de referentiel : EMC-CM1-01 et elle seule, deja tenu par ADR-0081, non repete ici. */
     @Test
     void chaqueItemDeclareUniquementEmcCm101() {
         assertThat(new YamlContentPackLoader("").chargerPaquet(PAQUET).descriptor().competence())
