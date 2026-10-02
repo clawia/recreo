@@ -158,7 +158,7 @@ class PaquetCm1EmcInstitutionsTest {
         }
     }
 
-    /** Ligne de referentiel : EMC-CM1-09 et elle seule. */
+    /** Ligne de referentiel : EMC-CM1-09 et elle seule, deja tenu par ADR-0081, non repete ici. */
     @Test
     void chaqueItemDeclareUniquementEmcCm109() {
         assertThat(new YamlContentPackLoader("").chargerPaquet(PAQUET).descriptor().competence())

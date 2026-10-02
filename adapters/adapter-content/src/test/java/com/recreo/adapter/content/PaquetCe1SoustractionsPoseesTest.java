@@ -285,7 +285,7 @@ class PaquetCe1SoustractionsPoseesTest {
      * autre chose que des chiffres.
      */
     @Test
-    void aucuneLettreNiVirguleEtTouteLePropositionEstNumerique() {
+    void aucuneLettreNiVirguleEtToutePropositionEstNumerique() {
         for (Question item : tousLesItems(paquet(PAQUET))) {
             assertThat(item.bonneReponse()).as("SOP-CE1-6 : bonne reponse de '%s'", item.enonce())
                     .matches(PROPOSITION_NUMERIQUE);
