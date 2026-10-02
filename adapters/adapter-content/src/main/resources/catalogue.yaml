@@ -696,3 +696,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-mouvement
     nombreDeManches: 10
+  - id: bandit-manchot-tables-multiplication-ce1
+    titre: "Mémoriser ses tables de multiplication"
+    consigne: "Quel est le résultat ?"
+    mecanique: bandit-manchot
+    paquet: ce1-tables-multiplication
+    nombreDeManches: 10

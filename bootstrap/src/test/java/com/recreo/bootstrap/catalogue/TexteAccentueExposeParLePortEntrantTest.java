@@ -354,6 +354,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // module adapter-content, pas le reacteur complet, et ne pouvait donc pas voir ce
             // garde-fou du module bootstrap rougir.
             "bandit-manchot-soustractions-posees-ce1",
+            // S47-MAT-TABLES (s47) : entree neuve, MAT-CE1-07, tables de multiplication de 2, 5 et
+            // 10, puis de 3 et 4.
+            "bandit-manchot-tables-multiplication-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -579,6 +582,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Trajectoire et vitesse",
             // S46-MAT-SOUSTRACTION (s46) : titre neuf. Complete ici, voir le motif pres de l'id.
             "Les soustractions posées",
+            // S47-MAT-TABLES (s47) : titre neuf, distinct de celui du CM1 ("Les tables de
+            // multiplication") et sans mention de niveau.
+            "Mémoriser ses tables de multiplication",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -828,6 +834,8 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "ressent de ce qu'elle fait.",
             // S46-SCI-MOUVEMENT-CM1 (s46) : consigne neuve.
             "Lis bien, puis dis la trajectoire, le repère, ou qui va le plus vite.",
+            // S47-MAT-TABLES (s47) : consigne neuve, blanc insecable devant "?" (TYP-1, ADR-0067).
+            "Quel est le résultat ?",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1324,7 +1332,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-MAT-SOUSTRACTION (s46) : competence neuve, libelle du referentiel
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-05). Complete ici,
             // voir le motif pres de l'id.
-            "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)");
+            "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)",
+            // S47-MAT-TABLES (s47) : competence neuve, MAT-CE1-07, libelle fixe par la story
+            // (docs/backlog/backlog.md, section "Sprint 47") et par la fiche de conformite
+            // (squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md).
+            "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

@@ -1,0 +1,18 @@
+schema: 1
+id: ce1-tables-multiplication-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1TablesMultiplicationTest. Un seul item, dont le
+# premier distracteur declare la famille (a) (produit voisin par defaut, a x (b-1)) mais porte une
+# valeur fausse : sur le fait (2, 3), la lecture (2, 3) donne 2 x 2 = 4 et la lecture (3, 2) donne
+# 3 x 1 = 3 ; ni l'une ni l'autre ne vaut 7. Le calcul depuis le fait doit le refuser.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4"
+lignesDeReferentiel: ["MAT-CE1-07"]
+items:
+  - enonce: "2 × 3 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "6"
+    distracteurs: ["7", "8"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
