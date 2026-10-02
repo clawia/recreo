@@ -1055,7 +1055,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " Liberté\"...) ou des descriptions en texte libre (\"de la dinde\", \"on"
                     + " allume de grands feux et des feux d'artifice\"...), valeurDe rend null sur"
                     + " les trois propositions de chaque item. Mesure du 2026-10-02 sur le paquet"
-                    + " servi : aucune des 36 propositions ne commence par un chiffre"));
+                    + " servi : aucune des 36 propositions ne commence par un chiffre"),
+            // S47-EMC-VOTE-CM1 : paquet neuf, EMC-CM1-10 (sens du vote et de la representation).
+            Map.entry("cm1-emc-vote-election",
+            "12 items sur 12 portent deux distracteurs (trois propositions, 36 au total), mais"
+                    + " aucune n'est numerique : ce sont des termes du libelle (\"le délégué de"
+                    + " classe\", \"une élection\", \"le suffrage universel\"), des noms"
+                    + " d'institution (\"le conseil municipal\"...) ou des descriptions en texte"
+                    + " libre, y compris la seule proposition qui porte un nombre ecrit en toutes"
+                    + " lettres (\"six ans\", jamais en chiffres), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-10-02 sur le paquet servi :"
+                    + " aucune des 36 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

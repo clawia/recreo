@@ -357,6 +357,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S47-LVE-CULTURE-CP (s47) : entree neuve, LVE-CP-06, decouverte culturelle des pays
             // anglophones.
             "bandit-manchot-culture-anglophone-cp",
+            // S47-EMC-VOTE-CM1 (s47) : entree neuve, EMC-CM1-10, sens du vote et de la
+            // representation.
+            "bandit-manchot-vote-election-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -584,6 +587,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les soustractions posées",
             // S47-LVE-CULTURE-CP (s47) : titre neuf.
             "Le monde anglophone",
+            // S47-EMC-VOTE-CM1 (s47) : titre neuf.
+            "Le vote et la représentation",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -835,6 +840,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis la trajectoire, le repère, ou qui va le plus vite.",
             // S47-LVE-CULTURE-CP (s47) : consigne neuve.
             "Lis bien, puis dis de quel pays on parle, ou réponds à la question.",
+            // S47-EMC-VOTE-CM1 (s47) : consigne neuve.
+            "Lis bien, puis dis qui vote, qui est élu, ou ce que fait un délégué.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1339,7 +1346,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S47-LVE-CULTURE-CP (s47) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/langues-vivantes/competences-cp.md, ligne LVE-CP-06).
             "Découvrir quelques aspects culturels des pays de la langue étudiée (fêtes, lieux, vie "
-                    + "quotidienne).");
+                    + "quotidienne).",
+            // S47-EMC-VOTE-CM1 (s47) : competence neuve, libelle du referentiel copie mot pour mot
+            // (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-10).
+            "Comprendre le sens du vote et de la représentation (délégué de classe, élection, "
+                    + "suffrage universel).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
