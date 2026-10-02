@@ -78,7 +78,7 @@ items:
     indice: "Ce fleuve passe tout près du Parlement et de sa célèbre tour à horloge."
   - enonce: "Au Royaume-Uni, que fait-on le soir, début novembre ?"  # element: fete
     bonneReponse: "on allume de grands feux et des feux d'artifice"
-    distracteurs: ["on décore un sapin dans le salon", "on cherche des œufs en chocolat dans le jardin"]
+    distracteurs: ["on décore un sapin dans le salon", "on cherche des oeufs en chocolat dans le jardin"]
     indice: "Le ciel s'illumine de couleurs ce soir-là, dans tout le pays."
   - enonce: "Au Royaume-Uni, que portent les élèves pour aller à l'école ?"  # element: quotidien
     bonneReponse: "un uniforme, avec une veste et une cravate"
