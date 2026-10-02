@@ -11,6 +11,13 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de fusion, s46, le 2026-10-02.** Les instances A et B ont allouees en parallele depuis le
+meme socle (807 / 128), chacune sur son propre diff, exactement le cas que `PAR-5` et la clause 5
+d'`ADR-0085` anticipent : le compte de chacune des deux notes ci-dessous n'est juste que sur son
+propre diff, et la reparation a la fusion est arithmetique, aucune allocation ajoutee ni retiree.
+Compte combine : **807 + 2 (instance A) + 8 (instance B) = 817** identifiants, **128 + 2 prefixes
+neufs (`MVT`, `PHN`) = 130** prefixes distincts. Voir la ligne d'etat courant, section 1.
+
 **Note de `nadia-prof`, s46, instance A, le 2026-10-02 (Done pedagogique de `EMC-CM1-01`, VALIDE
 SOUS RESERVE).** Deux identifiants ajoutes, tous des reserves : **`EMC-CM1-R5`** et
 **`EMC-CM1-R6`**, ecrits dans `squad/conformite/FICHE-bandit-manchot-emotion-ressentir-agir-cm1.md`.
@@ -20,13 +27,45 @@ d'`EMC-CM1-R4` : trois segments, marqueur `R` dans le dernier (`ADR-0100`). Les 
 section 4 sont dans le meme diff que la fiche. Aucun identifiant n'est ecrit dans les fiches de
 `bandit-manchot-soustractions-posees-ce1` ni de `bandit-manchot-institutions-cm1`, refusees.
 
-Ligne d'etat courant portee de **807 / 128 a 809 / 128**. **Methode : le chiffre est celui que le
-garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
--Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+Ligne d'etat courant portee de **807 / 128 a 809 / 128** (sur son seul diff). **Methode : le chiffre
+est celui que le garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am
+test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
 -Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
 *"declare 807 identifiants alloues et 128 prefixes distincts, sa table en porte 809 et 128"*. C'est
 ce **809 / 128** que je recopie. L'instance B travaille en parallele sur le meme fichier : si elle
-alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5) - voir la note de fusion
+ci-dessus.
+
+**Note de `nadia-prof`, s46, instance B, le 2026-10-02 (`SCI-CM1-16`, REFUSE).** Quatre
+identifiants ajoutes, tous des reserves : **`PHN-CM1-R1` a `PHN-CM1-R4`**, ecrits dans
+`squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md`. Le motif du refus ne porte
+aucun identifiant. **Un prefixe neuf, `PHN`** : absent de la table de la section 4, et cherche sur
+l'arbre et sur toutes les branches locales avant d'ecrire, absent. **Forme copiee** d'`USN-CM1-R9` :
+trois segments, marqueur `R` dans le dernier (`ADR-0100`). Les quatre lignes de la section 4 sont
+dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **811 / 129 a 815 / 130** (sur son seul diff, qui inclut deja son
+propre commit `MVT` ci-dessous). **Methode : le chiffre est celui que le garde-fou affiche sur mon
+diff.** `bash outils/mvn-jdk21.sh -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 811 identifiants alloues et 129 prefixes distincts, sa table en porte 815 et 130"*. C'est
+ce **815 / 130** que je recopie - voir la note de fusion ci-dessus pour le compte combine avec
+l'instance A.
+
+**Note de `nadia-prof`, s46, instance B, le 2026-10-02 (Done pedagogique de `SCI-CM1-03`, VALIDE
+SOUS RESERVE).** Quatre identifiants ajoutes, tous des reserves : **`MVT-CM1-R1` a `MVT-CM1-R4`**,
+ecrits dans `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md`. **Un prefixe neuf, `MVT`** :
+absent de la table de la section 4, et cherche sur l'arbre et sur toutes les branches locales avant
+d'ecrire, absent. **Forme copiee** d'`USN-CM1-R9` : trois segments, marqueur `R` dans le dernier
+(`ADR-0100`). Les quatre lignes de la section 4 sont dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **807 / 128 a 811 / 129** (sur son seul diff). **Methode : le chiffre
+est celui que le garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 807 identifiants alloues et 128 prefixes distincts, sa table en porte 811 et 129"*. C'est
+ce **811 / 129** que je recopie.
 
 **Note de `nadia-prof`, s45, instance B, second passage, le 2026-10-01 (Done pedagogique de
 `SCI-CM1-14`, VALIDE SOUS RESERVE).** Neuf identifiants ajoutes, tous des reserves :
@@ -443,7 +482,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `809` identifiants alloues, `128` prefixes distincts.
+**Compte courant, verifie par la CI** : `817` identifiants alloues, `130` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1836,3 +1875,11 @@ clause 2 par une exemption.
 | `USN-CM1-R7` | `squad/conformite/FICHE-bandit-manchot-usages-numeriques-cm1.md` |
 | `USN-CM1-R8` | `squad/conformite/FICHE-bandit-manchot-usages-numeriques-cm1.md` |
 | `USN-CM1-R9` | `squad/conformite/FICHE-bandit-manchot-usages-numeriques-cm1.md` |
+| `MVT-CM1-R1` | `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md` |
+| `MVT-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md` |
+| `MVT-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md` |
+| `MVT-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md` |
+| `PHN-CM1-R1` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
+| `PHN-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
+| `PHN-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
+| `PHN-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
