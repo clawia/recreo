@@ -22,7 +22,7 @@ lignesDeReferentiel: ["QLM-CP-02"]
 # sont chacun en bonne reponse au moins une fois, tous servis par la tache A (items 1 a 5).
 #
 # FER-3 (deux taches distinctes) : tache A, reconnaitre le caractere decrit dans une situation
-# ("Un poussin sort de l'oeuf, que fait-il ?" -> "il nait", cinq items, un par caractere) ; tache
+# ("Un poussin sort de l'œuf, que fait-il ?" -> "il nait", cinq items, un par caractere) ; tache
 # B, dire si un etre donne possede ce caractere ("Un caillou peut-il naitre ?" -> "non", six items,
 # sur des etres varies : caillou, enfant, chaise, plante, pierre, poisson - reprend les trois
 # exemples de l'AC (une plante, un caillou, un enfant)).
@@ -42,7 +42,7 @@ lignesDeReferentiel: ["QLM-CP-02"]
 # CON-1 decrit). Enonce remplace mot pour mot par le texte fourni par nadia-prof, bonne reponse,
 # distracteurs et indice inchanges.
 items:
-  - enonce: "Un poussin sort de l'oeuf, que fait-il ?"
+  - enonce: "Un poussin sort de l'œuf, que fait-il ?"
     bonneReponse: "il naît"
     distracteurs: ["il grandit", "il meurt"]
     indice: "C'est le tout début de sa vie."
@@ -85,4 +85,4 @@ items:
   - enonce: "Un poisson peut-il grandir ?"
     bonneReponse: "oui"
     distracteurs: ["non"]
-    indice: "Il est tout petit en sortant de l'oeuf."
+    indice: "Il est tout petit en sortant de l'œuf."
