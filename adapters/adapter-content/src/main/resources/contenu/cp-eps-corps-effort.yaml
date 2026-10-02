@@ -191,7 +191,7 @@ items:
     indice: "L'eau ne nourrit pas les muscles, mais le corps en a besoin pour fonctionner."
     ligneDeReferentiel: "EPS-CP-11"
   - enonce: "Pourquoi le corps a-t-il besoin de repos après un effort physique intense ?"
-    bonneReponse: "pour que les muscles et le coeur récupèrent"
+    bonneReponse: "pour que les muscles et le cœur récupèrent"
     distracteurs: ["pour avoir plus faim au repas suivant", "pour oublier l'effort fourni"]
     indice: "Le corps se répare et se recharge pendant le repos."
     ligneDeReferentiel: "EPS-CP-11"
