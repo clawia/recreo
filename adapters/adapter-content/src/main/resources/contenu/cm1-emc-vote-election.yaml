@@ -82,7 +82,7 @@ items:
     bonneReponse: "une élection"
     distracteurs: ["le délégué de classe", "le suffrage universel"]
     indice: "Ce jour-là, les électeurs votent, puis une seule personne est élue."
-  - enonce: "En France, le droit de vote est réservé aux personnes de nationalité française et majeures, quels que soient leur richesse, leur métier ou leur sexe. Comment appelle-t-on ce droit de vote accordé à tous les citoyens ?"  # HIS-3: Constitution du 4 octobre 1958, article 3 - sont electeurs les nationaux francais majeurs, sans condition de richesse ni de sexe
+  - enonce: "En France, tous les citoyens majeurs ont le droit de vote, quels que soient leur richesse, leur métier ou leur sexe. Comment appelle-t-on ce droit de vote accordé à tous les citoyens ?"  # HIS-3: Constitution du 4 octobre 1958, article 3 - sont electeurs les nationaux francais majeurs, sans condition de richesse ni de sexe
     bonneReponse: "le suffrage universel"
     distracteurs: ["le délégué de classe", "une élection"]
     indice: "Ce droit n'appartient pas seulement à certaines personnes : il appartient à tous les citoyens majeurs."
