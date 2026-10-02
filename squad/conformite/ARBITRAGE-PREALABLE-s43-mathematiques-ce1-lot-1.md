@@ -469,6 +469,12 @@ sans aucun emprunt ferme cette ligne, et `SOP-CE1-2` dit pourquoi.
 > paquet entier, dans `squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`, section 2.
 > Le texte ci-dessus n'est pas efface ; la liste "et seulement celles-la" compte desormais quatre
 > formes.
+>
+> *Amendement du 2026-10-02 (`nadia-prof`, s47, arbitrage de `SOP-CE1-R1`).* **Une cinquieme forme
+> est admise : le decalage des colonnes**, de valeur `a - 10 x b`, **obligatoire sur tout item sans
+> emprunt**, avec sa regle d'admission, dans
+> `squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`, section "Arbitrage de
+> `SOP-CE1-R1`". La liste "et seulement celles-la" compte desormais cinq formes.
 
 > **`SOP-CE1-6` - bornes, resultat jamais negatif, et aucun habillage.** `0 <= b <= a <= 1000`.
 > Aucun item n'est habille d'une situation, ni ecrit en euros, centimes, centimetres, grammes ni en
