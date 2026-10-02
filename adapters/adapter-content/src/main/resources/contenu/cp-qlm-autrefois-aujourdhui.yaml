@@ -34,6 +34,22 @@ lignesDeReferentiel: ["QLM-CP-15"]
 #     telegramme" (mot inconnu d'un enfant de CP) est remplace par "un telephone fixe".
 #   - items 4, 13 : l'indice decrit desormais l'objet, pas l'avantage qu'il procure aujourd'hui.
 #
+# Correction du 2026-10-02 (lea-dev, squad/conformite/FICHE-bandit-manchot-autrefois-aujourdhui-cp.md,
+# Done pedagogique REFUSE une seconde fois le 2026-10-02 par nadia-prof, s47 instance A, motif neuf) :
+# 1) item 9 - le distracteur "un telephone fixe" rejetait une reponse juste : un appel telephonique
+#    est bien un moyen d'aujourd'hui pour donner une nouvelle, et l'indice ("part et arrive presque
+#    aussitot, sans papier ni timbre") le decrit aussi. Remplace par "un messager a cheval", moyen
+#    qui n'est plus en usage aujourd'hui et dont un enfant de CP connait les mots.
+# Trois points non bloquants de la meme fiche, pris dans le meme passage :
+#   - item 14 : "a la pharmacie" et "a la poste" s'ecartaient sans rien savoir de l'epoque, et
+#     l'enonce ne disait pas ou le pain etait cuit. Enonce reecrit ("a la maison" plutot que "au
+#     four a bois", puisque des boulangers cuisent encore au four a bois aujourd'hui) ;
+#     distracteurs remplaces par "a la maison" et "chez le voisin", pour que l'epoque decide seule.
+#   - items 1 et 8 : l'indice de l'item 1 donnait mot pour mot la reponse de l'item 8 ("machines a
+#     laver"). Indice de l'item 1 reformule sans citer cette reponse.
+#   - items 4 et 7 : les indices decrivaient l'objet sans le situer dans le temps. Un marqueur
+#     temporel est ajoute a chacun, sans dire ce que l'objet epargne.
+#
 # BIA-3 : aucun enonce ni aucune proposition ne qualifie une pratique ou un objet d'autrefois de
 # difficile, dur, pauvre ou pas pratique, ni n'en fait une norme de progres. Les deux epoques sont
 # decrites, jamais comparees en bien ou en mal.
@@ -63,7 +79,7 @@ items:
   - enonce: "On lave le linge à la main au lavoir. Est-ce autrefois ou aujourd'hui ?"
     bonneReponse: "autrefois"
     distracteurs: ["aujourd'hui"]
-    indice: "Les lavoirs ont presque disparu depuis l'invention des machines à laver."
+    indice: "Les lavoirs ont presque disparu. On lave le linge chez soi, sans sortir de la maison."
   - enonce: "On réchauffe un plat en quelques minutes au micro-ondes. Est-ce autrefois ou aujourd'hui ?"
     bonneReponse: "aujourd'hui"
     distracteurs: ["autrefois"]
@@ -75,7 +91,7 @@ items:
   - enonce: "On écrit un texte avec un ordinateur. Est-ce autrefois ou aujourd'hui ?"
     bonneReponse: "aujourd'hui"
     distracteurs: ["autrefois"]
-    indice: "Cet appareil a un écran et un clavier."
+    indice: "Cet appareil, avec un écran et un clavier, est une invention récente."
   - enonce: "Un cheval tire la charrue dans le champ. Est-ce autrefois ou aujourd'hui ?"
     bonneReponse: "autrefois"
     distracteurs: ["aujourd'hui"]
@@ -87,14 +103,14 @@ items:
   - enonce: "On va chercher l'eau à un puits. Est-ce autrefois ou aujourd'hui ?"
     bonneReponse: "autrefois"
     distracteurs: ["aujourd'hui"]
-    indice: "Ce puits est un trou profond creusé dans le sol."
+    indice: "Ce puits est un trou profond creusé dans le sol. On y allait chercher l'eau avant d'avoir un robinet."
   - enonce: "Autrefois, on lavait le linge au lavoir. Avec quoi le lave-t-on aujourd'hui ?"
     bonneReponse: "une machine à laver"
     distracteurs: ["une planche à laver", "un baquet"]
     indice: "Cet appareil électrique lave et essore le linge tout seul."
   - enonce: "Autrefois, on envoyait une lettre par la poste. Comment envoie-t-on une nouvelle aujourd'hui ?"
     bonneReponse: "un message électronique"
-    distracteurs: ["un pigeon voyageur", "un téléphone fixe"]
+    distracteurs: ["un pigeon voyageur", "un messager à cheval"]
     indice: "Ce message part et arrive presque aussitôt, sans papier ni timbre."
   - enonce: "Autrefois, on s'éclairait à la bougie. Avec quoi éclaire-t-on une pièce aujourd'hui ?"
     bonneReponse: "une ampoule électrique"
@@ -112,7 +128,7 @@ items:
     bonneReponse: "par un robinet"
     distracteurs: ["par une rivière voisine", "par un camion-citerne"]
     indice: "Ce robinet est relié à des tuyaux sous la terre."
-  - enonce: "Autrefois, on cuisait le pain au four à bois. Où achète-t-on le pain aujourd'hui ?"
+  - enonce: "Autrefois, on cuisait le pain à la maison. Où achète-t-on le pain aujourd'hui ?"
     bonneReponse: "à la boulangerie"
-    distracteurs: ["à la pharmacie", "à la poste"]
+    distracteurs: ["à la maison", "chez le voisin"]
     indice: "C'est un commerce qui vend du pain tous les jours."
