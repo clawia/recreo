@@ -1,9 +1,9 @@
 # Matrice de couverture - recreo
 
 Cette matrice est l'outil de pilotage le plus important de `camille-po`. Elle liste, une ligne
-par competence, l'integralite des dix-neuf referentiels desormais disponibles
+par competence, l'integralite des vingt referentiels desormais disponibles
 (`squad/programme/mathematiques/competences-cp.md`, `competences-cm1.md`, `competences-ce1.md`,
-`squad/programme/francais/competences-cp.md`, `competences-cm1.md`,
+`squad/programme/francais/competences-cp.md`, `competences-cm1.md`, `competences-ce1.md`,
 `squad/programme/questionner-le-monde/competences-cp.md`,
 `squad/programme/histoire-geographie/competences-cm1.md`,
 `squad/programme/langues-vivantes/competences-cp.md`, `competences-cm1.md`,
@@ -14,6 +14,18 @@ par competence, l'integralite des dix-neuf referentiels desormais disponibles
 `squad/programme/histoire-des-arts/competences-cm1.md`,
 `squad/programme/sciences-et-technologie/competences-cm1.md`), et l'etat reel du produit face a
 chacune d'entre elles sur la branche `round-two`.
+
+**Note du 2026-10-02 (hors sprint, `camille-po`, integration routee par `DEC-0103`)** : le
+referentiel francais CE1 (`squad/programme/francais/competences-ce1.md`, ecrit par `nadia-prof` le
+2026-10-01) entre dans cette matrice, section "Francais - CE1 (cycle 2)", vingtieme tableau,
+vingt-six lignes `non couvert`. Aucun jeu de francais CE1 n'existe encore : le denominateur
+atteignable passe de 156 a 182, le taux affiche de 113/156 (72,4 %) a 113/182 (62,1 %), **effet de
+perimetre annonce d'avance, pas une regression**. Deux points signales par `nadia-prof` en ecrivant
+le referentiel sont routes plutot que tranches : l'absence de ligne pour cinq attendus du programme
+(langage oral, lecture a voix haute, dictee, copie manuscrite, production d'ecrit), a la difference
+du precedent du francais CP ; la borne de longueur du texte support des lignes de comprehension
+(`FRA-CE1-04` a `FRA-CE1-07`), non posee. Detail complet et strategie de s47 (cinq lignes
+engagees sur un dispositif a deux instances, aucune de francais CE1) : `DEC-0104`.
 
 **Note du 2026-10-02 (s46, cloture)** : cinq lignes fermees (`non couvert` -> `couvert-valide`),
 aucune ouverture partielle. **Fermetures** : `MAT-CE1-05` (soustraction posee CE1,
@@ -1151,6 +1163,98 @@ lettres"). Sa condition ecrite pour `couvert-valide` (meme fiche, verdict du 202
 couverts par un jeu qui emet un son ; les trois nasales gardent les proprietes deja acquises. Le
 jeu peut rejoindre le catalogue (`DEC-0009` est levee de fait par ce verdict, `sofia-sm` fusionne
 l'entree de catalogue).
+
+## Francais - CE1 (cycle 2)
+
+Source : `squad/programme/francais/competences-ce1.md`, ecrit par `nadia-prof` le 2026-10-01 sur le
+routage de `DEC-0103` (section 3). Vingtieme tableau de cette matrice - deuxieme matiere a porter le
+niveau CE1 apres les mathematiques (`DEC-0089`, s36), et premiere matiere du produit a couvrir ses
+trois niveaux (CP, CE1, CM1) a la fois. Aucune ligne n'est encore `couvert-valide` ni `en cours` :
+aucun paquet de contenu de francais CE1 n'existe.
+
+| Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
+|---|---|---|---|---|---|---|
+| francais | CE1 | Lecture et comprehension de l'ecrit | Lire des mots comportant des graphemes complexes (ain/ein, eil/eille, ill, gn, oin, ien...) et les associer au son qu'ils transcrivent | - | - | non couvert |
+| francais | CE1 | Lecture et comprehension de l'ecrit | Determiner la valeur d'une lettre selon les lettres qui l'entourent (c/ç, g/ge/gu, s/ss entre deux voyelles) | - | - | non couvert |
+| francais | CE1 | Lecture et comprehension de l'ecrit | Reconnaitre les mots frequents, dont les mots-outils et les mots irreguliers les plus courants (femme, monsieur, second...) | - | - | non couvert |
+| francais | CE1 | Lecture et comprehension de l'ecrit | Comprendre un texte narratif court lu seul : personnages, lieu, moment, ordre chronologique des evenements | - | - | non couvert |
+| francais | CE1 | Lecture et comprehension de l'ecrit | Identifier a qui renvoie un pronom personnel (il, elle, ils, elles) ou un substitut simple dans un texte court | - | - | non couvert |
+| francais | CE1 | Lecture et comprehension de l'ecrit | Faire une inference simple a partir d'un texte court (une information non ecrite : un sentiment, un lieu, une cause) | - | - | non couvert |
+| francais | CE1 | Lecture et comprehension de l'ecrit | Comprendre un texte documentaire court ou une consigne ecrite, et y prelever une information | - | - | non couvert |
+| francais | CE1 | Ecriture | Remettre dans l'ordre les mots d'une phrase pour qu'elle ait du sens, majuscule initiale et point final compris | - | - | non couvert |
+| francais | CE1 | Ecriture | Relire une phrase donnee et y reperer une erreur (mot manquant, accord oublie, majuscule ou point absent) | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Reconnaitre une phrase (majuscule, point) et identifier son type (declarative, interrogative, exclamative) par sa ponctuation | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Passer d'une phrase affirmative a une phrase negative (ne... pas) et inversement | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Identifier la classe d'un mot dans une phrase : nom commun, nom propre, verbe, determinant, adjectif | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Identifier le verbe d'une phrase et son sujet (un nom, un groupe nominal court ou un pronom personnel) | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Accorder le verbe avec son sujet au present, quand le sujet est un pronom personnel ou un nom place juste avant le verbe | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Accorder en nombre et en genre dans le groupe nominal (determinant, nom, adjectif) : pluriel en -s et en -x (-eau, -au, -eu), feminin en -e | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Distinguer les homophones grammaticaux a/à et et/est | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Conjuguer au present de l'indicatif etre, avoir, les verbes du premier groupe et quelques verbes frequents (aller, faire, dire, venir) | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Conjuguer au futur etre, avoir et les verbes du premier groupe | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Conjuguer au passe compose etre, avoir et les verbes du premier groupe, avec l'auxiliaire avoir | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Situer une phrase dans le temps (passe, present, futur) a partir de son verbe et des mots qui indiquent le moment (hier, aujourd'hui, demain) | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Orthographier les mots invariables et les mots frequents etudies | - | - | non couvert |
+| francais | CE1 | Orthographe et grammaire | Choisir la graphie d'un son selon la lettre qui suit (m devant m, b, p ; c/ç ; g/ge/gu) | - | - | non couvert |
+| francais | CE1 | Vocabulaire | Ranger des mots dans l'ordre alphabetique (premiere lettre, puis deuxieme lettre) | - | - | non couvert |
+| francais | CE1 | Vocabulaire | Regrouper les mots d'une meme famille et reperer un prefixe ou un suffixe frequent (re-, de-, -eur...) | - | - | non couvert |
+| francais | CE1 | Vocabulaire | Trouver un synonyme ou un contraire d'un mot frequent | - | - | non couvert |
+| francais | CE1 | Vocabulaire | Classer des mots par categorie et trouver le mot qui les designe tous (fruit pour pomme, poire, cerise) | - | - | non couvert |
+
+**Vingt-six lignes**, verifiees contre le referentiel source par recherche des vingt-six codes
+`FRA-CE1-01` a `FRA-CE1-26` (`grep -oE "FRA-CE1-[0-9]+" squad/programme/francais/competences-ce1.md
+| sort -u | wc -l` : 26, aucun doublon, aucun trou).
+
+**Ce que ce referentiel precise et que cette matrice ne reprend pas en colonne** : les deux bornes
+de lisibilite deja posees pour le CE1 (`LON-CE1-1`, au plus vingt mots ; `LON-CE1-2`, au plus trois
+phrases) s'appliquent a tout paquet futur de cette matiere, en plus de la ligne de competence qu'il
+declare.
+
+**Deux points signales par `nadia-prof` dans le referentiel lui-meme** (section "Ce que ce
+referentiel ne dit pas, et ou c'est ecrit"), l'un tranche ici, l'autre route - aucun des deux
+n'ajoute ni ne retranche une ligne de ce tableau :
+
+- **Cinq attendus du programme de CE1 (langage oral, lecture a voix haute, dictee, copie manuscrite,
+  production d'ecrit) ne recoivent aucune ligne ici.** Le precedent du francais CP n'est pas ce
+  silence : `FRA-CP-06` (lire a voix haute) et `FRA-CP-08` (copier un mot) portent chacune un code
+  dans `competences-cp.md` et une ligne dans cette matrice, au statut `non couvrable en l'etat`
+  (`DEC-0046`, `DEC-0066`) - visibles, trackees, exclues du numerateur mais presentes au
+  denominateur. Le referentiel CE1 ne donne aucun code `[FRA-CE1-XX]` a ces cinq attendus : je ne
+  leur en invente pas un moi-meme, allouer un code a une competence programme n'etant pas mon
+  autorite (`DEC-0071`, confirme par `DEC-0089`). **Je route donc a `nadia-prof`** l'ecart entre les
+  deux referentiels qu'elle a elle-meme ecrits : si elle souhaite la meme parite de suivi qu'au CP
+  (cinq lignes codees, `non couvrable en l'etat`, visibles dans cette matrice), l'allocation des
+  cinq codes lui revient ; si elle confirme son choix de les laisser hors ligne, ce tableau reste
+  tel quel et cette note en est la trace. Candidate non engagee a ce jour.
+- **La longueur du texte support de `FRA-CE1-04` a `FRA-CE1-07` n'est bornee par rien** - ni
+  `LON-CE1-1` ni `LON-CE1-2` ne gouvernent un texte narratif ou documentaire, seulement l'enonce.
+  `nadia-prof` ecrit elle-meme que cette borne reste a poser avant le premier paquet de ces quatre
+  lignes. Je ne la pose pas a sa place : signale, non tranche.
+
+**Effet de perimetre, pose d'avance comme `DEC-0071` et `DEC-0089` (section 5) l'exigent** : ce
+vingtieme tableau ajoute vingt-six lignes `non couvert` au denominateur atteignable de cette
+matrice. Aucune n'est `couvert-valide` ni `non couvrable en l'etat` : les 26 entrent entierement
+dans le denominateur, aucune n'entre au numerateur.
+
+| | Avant ce referentiel (2026-10-02, cloture de s46) | Apres l'entree du referentiel francais CE1 |
+|---|---|---|
+| `couvert-valide` | 113 | 113 |
+| `en cours` | 3 | 3 |
+| `non couvert` | 40 | **66** |
+| `non couvrable en l'etat` | 71 | 71 |
+| Total | 227 | **253** |
+| Denominateur atteignable | 156 | **182** |
+| **Taux** | **113 / 156 = 72,4 %** | **113 / 182 = 62,1 %** |
+
+**Methode, recompte independant plutot que recopie** : classement des 227 lignes de donnees
+existantes de cette matrice par leur colonne `Statut` (`couvert-valide` 113, `en cours` 3,
+`non couvert` 40, `non couvrable en l'etat` 71 - total 227, identique au chiffre de cloture de s46,
+`RAPPORT.md` de `s46-soustraction-ce1-emc-et-sciences-cm1`), colonne "Avant". La colonne "Apres"
+ajoute uniquement les vingt-six lignes de ce tableau, aucun autre mouvement n'a lieu dans ce meme
+geste. **113 / 182 = 62,1 %, recalcule depuis ma propre lecture du referentiel plutot que recopie.**
+Le taux affiche recule de 10,3 points par le seul effet du denominateur, avant qu'aucun jeu de
+francais CE1 n'existe, exactement comme `DEC-0103` (section 4) et `planning.md` de s46 (section 10)
+l'annoncaient d'avance. **Ce recul n'est pas une regression du produit.**
 
 ## Francais - CM1 (cycle 3)
 
