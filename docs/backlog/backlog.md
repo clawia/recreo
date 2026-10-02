@@ -17635,4 +17635,345 @@ enfants
 - **Agent pressenti** : `nadia-prof` pour l'arbitrage ; `sofia-sm` pour le relais et la planification
   du sprint qui la porte.
 
+## Sprint 47 - Cinq lignes retenues par `DEC-0104` sur un dispositif a deux instances paralleles de
+`nadia-prof` : mathematiques CE1 (instance A), questionner le monde CP (instance A), langues
+vivantes anglais CP (instance A), enseignement moral et civique CP et CM1 (instance B)
+
+Cinq lots, verifies individuellement `non couvert` dans `squad/programme/MATRICE-couverture.md` au
+moment de l'engagement. Objectif et perimetre formalises par `DEC-0104` (integration du referentiel
+francais CE1 a la matrice, puis strategie de s47 : deux instances paralleles de `nadia-prof`, une
+ligne de mathematiques CE1, une ligne de questionner le monde CP, une ligne de langues vivantes
+anglais CP, et une ligne chacune d'enseignement moral et civique CP et CM1). Les cinq lots portent
+deja un verdict pedagogique prealable, cite en entier ci-dessous.
+
+**Deux instances non chevauchantes** (`DEC-0104`, section 4 - `PAR-1`, `PAR-2`, `PAR-7`, `PAR-8` et
+`CYC-1` verifies un par un ; quatre matieres distinctes, aucune partagee entre les deux instances -
+EMC CP et EMC CM1 comptant pour une seule matiere au sens de `PAR-2` ; `CYC-1` non due, verifie et
+non suppose) :
+
+| Instance | Lots | Cout |
+|---|---|---|
+| A - mathematiques CE1, questionner le monde CP, langues vivantes (anglais) CP | `S47-MAT-TABLES`, `S47-QLM-AUTREFOIS`, `S47-LVE-CULTURE-CP` | 4,0 / 5,0 |
+| B - enseignement moral et civique (CP et CM1) | `S47-EMC-ALERTE-CP`, `S47-EMC-VOTE-CM1` | 3,0 / 5,0 |
+
+**Total du sprint : 7,0 / 8,0**, marge de sprint 1,0 non allouee des l'ouverture (`DEC-0104`,
+section 4 : le plafond mecanique de 8,0 n'est pas atteignable dans le vivier instruit sans rouvrir
+la regle "une seule ligne de mathematiques CE1 par sprint", reconduite une cinquieme fois, ni
+depasser le plafond individuel de 5,0 par instance), en plus des marges individuelles par instance
+(1,0 sur l'instance A, 2,0 sur l'instance B).
+
+**Repartition du developpement, proposee par `camille-po`, affectation nominative finale par
+`sofia-sm`** (`DEC-0104`, section 6, qui route l'ouverture du sprint a `sofia-sm`).
+
+**Hors de ce chiffrage, route separement** : `SOP-CE1-R1` (`docs/backlog/backlog.md`, section
+"Backlog - sprints suivants") reste un arbitrage que `nadia-prof` s'adresse a elle-meme sur sa
+propre condition `SOP-CE1-5` - pas une ligne de contenu a coder. `DEC-0104` section 5 la route a
+`sofia-sm` pour instruction par `nadia-prof`, separement des cinq lots ci-dessous.
+
+### S47-MAT-TABLES - Tables de multiplication de 2, 5 et 10, puis de 3 et 4 (`MAT-CE1-07`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux retrouver le resultat d'une multiplication des
+  tables de 2, 5, 10, 3 et 4 en jouant au bandit manchot, afin de connaitre mes tables par calcul
+  mental.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-07`. Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Mathematiques - CE1", ligne "Calcul mental - tables de
+  multiplication de 2, 5 et 10, puis de 3 et 4".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md`, section 1) : verdict
+  **ACCEPTE SOUS CONDITIONS `TAB-CE1-1` a `TAB-CE1-6`. La ligne est entierement servable par du
+  texte seul, sans rendu visuel, et elle peut atteindre `couvert-valide` sur un paquet unique.**
+  L'espace couvert est *"les produits `a x b` avec `a` dans {2, 3, 4, 5, 10} et `b` entier de 1 a
+  10, soit 50 produits"* - cinq tables nommees par la ligne, pas les dix du CM1. Six conditions,
+  citees mot pour mot :
+  > `TAB-CE1-1` - espace couvert. Chacun des 50 produits `a × b` (`a` dans {2, 3, 4, 5, 10}, `b` de
+  > 1 a 10) apparait au moins une fois dans le paquet.
+  >
+  > `TAB-CE1-2` - l'ordre du *puis*, en proportions. Les items dont le facteur de table est 2, 5 ou
+  > 10 font au moins la moitie du paquet ; ceux dont le facteur de table est 3 font au moins 15 % ;
+  > ceux dont le facteur de table est 4 font au moins 15 %.
+  >
+  > `TAB-CE1-3` - le facteur 1 est un cas degenere. Les items comportant un facteur 1 font au plus
+  > une manche sur cinq. Ce plafond ne vaut pas pour le facteur 10.
+  >
+  > `TAB-CE1-4` - les deux ordres. Pour les produits dont les deux facteurs different et dont aucun
+  > ne vaut 1, le paquet presente au moins un tiers de ses items avec le facteur de table en seconde
+  > position (`7 x 3` et pas seulement `3 x 7`).
+  >
+  > `TAB-CE1-5` - forme de l'enonce, et ce qu'elle exclut. L'enonce est une expression numerique nue
+  > portant le signe multiplie `×` (U+00D7), jamais la lettre minuscule `x`. **Sont exclus** : le
+  > facteur manquant (geste inverse), la division, la mise en situation ("3 sachets de 5 billes" -
+  > c'est `MAT-CE1-06`), l'addition reiteree ecrite comme telle, et toute formulation par le double
+  > ou la moitie ("le double de 7" - c'est `MAT-CE1-03`, deja ferme). L'indice peut nommer le double
+  > comme strategie, il ne definit pas le geste.
+  >
+  > `TAB-CE1-6` - distracteurs, et les trois rangs. Chaque distracteur appartient a l'une des quatre
+  > familles (produit voisin par defaut `a × (b-1)` ; produit voisin par exces `a × (b+1)` ; somme
+  > des facteurs `a+b`, uniquement si `a+b < a×b` et `a+b > (a×b)/2` ; produit de la table voisine
+  > `(a-1) × b` ou `(a+1) × b`, le facteur restant dans {2, 3, 4, 5, 10}), et le fichier nomme la
+  > famille a cote de l'item. Sur le paquet entier, chacun des trois rangs de la bonne reponse porte
+  > au moins 10 % et au plus 50 % des items.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il demande le resultat d'un produit `a × b`
+    nu, `a` dans {2, 3, 4, 5, 10} et `b` entier de 1 a 10, sans situation ni unite (`TAB-CE1-5`).
+  - Etant donne le paquet livre, quand on verifie les 50 produits de l'espace couvert, alors
+    chacun apparait au moins une fois (`TAB-CE1-1`).
+  - Etant donne le paquet livre, quand on classe ses items par facteur de table, alors ceux de 2,
+    5 ou 10 font au moins la moitie du paquet, ceux de 3 au moins 15 %, ceux de 4 au moins 15 %
+    (`TAB-CE1-2`).
+  - Etant donne le paquet livre, quand on compte les items comportant un facteur 1, alors ils font
+    au plus une manche sur cinq, sans plafond sur le facteur 10 (`TAB-CE1-3`).
+  - Etant donne les items dont les deux facteurs different et dont aucun ne vaut 1, quand on les
+    compte, alors au moins un tiers presente le facteur de table en seconde position (`TAB-CE1-4`).
+  - Etant donne l'enonce d'un item, quand on le relit, alors il porte le signe `×` (jamais `x`), et
+    aucun item ne porte un facteur manquant, une division, une mise en situation, une addition
+    reiteree ecrite comme telle, ou une formulation par le double ou la moitie (`TAB-CE1-5`).
+  - Etant donne les distracteurs d'un item, quand on les verifie, alors chacun appartient a l'une
+    des quatre familles nommees, la famille est declaree a cote de l'item, et sur le paquet entier
+    chacun des trois rangs de la bonne reponse porte au moins 10 % et au plus 50 % des items
+    (`TAB-CE1-6`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `MAT-CE1-07` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme que `TAB-CE1-1` a `TAB-CE1-6` sont tenues et que la ligne ferme sans mention de
+    couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne sert jamais un facteur manquant, une division, une
+  mise en situation, une addition reiteree ecrite comme telle, ni une formulation par le double ou
+  la moitie - ces formes servent d'autres lignes deja fermees ou non engagees (`TAB-CE1-5`) ; elle
+  ne plafonne jamais le facteur 10 comme un cas degenere (section 1.1 de la source) ; elle ne fixe
+  aucun contenu factuel precis (quels produits repetes) - reste a l'auteur du paquet puis a l'audit
+  de `nadia-prof`.
+- **Lien decision** : `DEC-0104` (section 4, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S47-QLM-AUTREFOIS - Comparer des modes de vie d'autrefois et d'aujourd'hui (`QLM-CP-15`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux comparer un mode de vie d'autrefois et un mode de
+  vie d'aujourd'hui a partir d'un objet ou d'une image du quotidien, en jouant au bandit manchot,
+  afin de reconnaitre ce qui a change et ce qui n'a pas change.
+- **Competence programme visee** : questionner le monde, CP (cycle 2), domaine "Se situer dans le
+  temps" - `squad/programme/questionner-le-monde/competences-cp.md`, `QLM-CP-15`. Ligne `non
+  couvert`, `MATRICE-couverture.md`, section "Questionner le monde - CP", ligne "Comparer des modes
+  de vie d'autrefois et d'aujourd'hui a partir d'objets et d'images du quotidien".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-
+  huit-lignes.md`, ligne 374) : *"oui, choix ; plus juste en illustre. Piege de biais : 'autrefois'
+  ne veut pas dire 'moins bien'. `BIA-3`"*. Condition posee d'avance, citee mot pour mot (meme
+  source) :
+  > `BIA-3` - Sur "autrefois et aujourd'hui" (QLM 15) : la chronologie n'est pas un progres. Aucun
+  > item ne qualifie l'ancien de difficile, dur, pauvre ou pas pratique.
+
+  Conditions de fermeture de ligne, posees a s28, citees mot pour mot
+  (`squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`) :
+  > `FER-1` - extension. Chaque element enumere par le libelle de la competence est servi par au
+  > moins un item ou il est en position de bonne reponse.
+  >
+  > `FER-2` - densite. Au moins dix items servent la ligne, tous paquets confondus.
+  >
+  > `FER-3` - deux taches. Les items qui servent la ligne ne posent pas tous la meme tache. Au
+  > moins deux taches distinctes, la moins servie portant au moins trois items.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il decrit un objet ou une image du quotidien et
+    demande de le rattacher a autrefois ou a aujourd'hui, ou de comparer les deux.
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors aucun item ne qualifie
+    l'ancien de difficile, dur, pauvre ou pas pratique, ni n'en fait une norme de progres (`BIA-3`).
+  - Etant donne le paquet livre, quand on verifie l'element "objets et images du quotidien", alors
+    il est en position de bonne reponse d'au moins un item (`FER-1`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies - rattacher un objet a une epoque, comparer deux usages - la
+    moins servie portant au moins trois items (`FER-3`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `QLM-CP-15` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme que `BIA-3`, `FER-1`, `FER-2` et `FER-3` sont tenues.
+- **Ce que cette story ne fait pas** : elle ne qualifie jamais l'ancien de moins bien que
+  l'actuel (`BIA-3`) ; elle ne fixe aucun contenu factuel precis (quels objets retenus) - reste a
+  l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0104` (section 4, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S47-LVE-CULTURE-CP - Decouvrir quelques aspects culturels des pays de la langue etudiee
+(`LVE-CP-06`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux decouvrir une fete, un lieu ou un aspect de la vie
+  quotidienne d'un pays ou l'on parle anglais, en jouant au bandit manchot, afin de connaitre
+  quelques aspects culturels de ce pays.
+- **Competence programme visee** : langues vivantes (anglais), CP (cycle 2), domaine "Decouverte
+  culturelle" - `squad/programme/langues-vivantes/competences-cp.md`, `LVE-CP-06`. Ligne `non
+  couvert`, `MATRICE-couverture.md`, section "Langues vivantes (anglais) - CP", ligne "Decouvrir
+  quelques aspects culturels des pays de la langue etudiee".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/MATRICE-couverture.md`, section "Langues vivantes (anglais) - CP", ligne du
+  domaine "Decouverte culturelle") : *"jouable en francais seulement (decouverte culturelle, aucune
+  competence linguistique). Mention exigee d'avance : 'decouverte culturelle seule, en francais ;
+  aucune competence linguistique n'est servie'. Conditions `BIA-1`, `BIA-2` opposables."* Conditions
+  citees mot pour mot
+  (`squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`) :
+  > `BIA-1` - Sur "aspects culturels" (anglais CP 6) : aucun item ne compare un ailleurs a un ici en
+  > position de norme. La forme "chez nous on fait X, chez eux on fait Y" est refusee. On decrit, on
+  > ne compare pas a un centre.
+  >
+  > `BIA-2` - Un pays n'est jamais represente par un seul trait. Si un item dit qu'on mange telle
+  > chose dans tel pays, un autre item du meme paquet montre autre chose du meme pays.
+
+  Conditions de fermeture de ligne (`ARBITRAGE-PREALABLE-s28`, deja citees ci-dessus pour
+  `S47-QLM-AUTREFOIS`) : `FER-1`, `FER-2`, `FER-3` s'appliquent a l'identique.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur une fete, un lieu ou un aspect de la
+    vie quotidienne d'un pays anglophone, redige entierement en francais, sans demander de lire ou
+    de produire un mot d'anglais (mention exigee d'avance).
+  - Etant donne le paquet livre, quand on le relit dans son entier, alors aucun item ne compare un
+    aspect culturel du pays etudie a un aspect francais en position de norme ("chez nous... chez
+    eux...") (`BIA-1`).
+  - Etant donne le paquet livre, quand on verifie les faits culturels attribues a un meme pays,
+    alors au moins deux aspects distincts sont servis pour ce pays, aucun n'etant represente par un
+    seul trait (`BIA-2`).
+  - Etant donne le paquet livre, quand on verifie les trois aspects de la parenthese du libelle
+    (fetes, lieux, vie quotidienne), alors chacun est en position de bonne reponse d'au moins un
+    item (`FER-1`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies, la moins servie portant au moins trois items (`FER-3`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `LVE-CP-06` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
+    elle confirme que `BIA-1`, `BIA-2`, `FER-1`, `FER-2`, `FER-3` sont tenues, et que la mention de
+    couverture partielle exigee d'avance est ecrite dans la matrice avant que la ligne passe a
+    `couvert-valide`.
+- **Ce que cette story ne fait pas** : elle ne demande jamais a l'enfant de lire ou de produire un
+  mot d'anglais - elle reste en francais seul (mention exigee d'avance) ; elle ne compare jamais un
+  aspect culturel a une norme francaise (`BIA-1`) ; elle ne fixe aucun contenu factuel precis (quel
+  pays, quels aspects retenus) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0104` (section 4, instance A).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance A, pour le Done pedagogique.
+
+### S47-EMC-ALERTE-CP - Connaitre les gestes d'alerte et savoir donner l'alerte (`EMC-CP-14`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux connaitre les gestes d'alerte les plus simples
+  (prevenir un adulte, numero d'urgence) en jouant au bandit manchot, afin de savoir reagir face a
+  un danger.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine "Respecter
+  autrui" - `squad/programme/enseignement-moral-et-civique/competences-cp.md`, `EMC-CP-14`. Ligne
+  `non couvert`, `MATRICE-couverture.md`, section "Enseignement moral et civique - CP".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/enseignement-moral-et-civique/competences-cp.md`, Jugement de faisabilite,
+  `nadia-prof`, ligne 14) : *"non couvert - jouable au choix, sous `EMC-7`. Connaissance utile et
+  exacte. Piege d'exactitude que je pose d'avance : 'quel numero appelle-t-on en cas d'incendie ?'
+  admet deux reponses defendables, 18 et 112. Un item qui n'en couronnerait qu'une serait faux.
+  C'est `HIS-2` applique a un contenu ou l'erreur ne coute pas un point mais un reflexe."* Conditions
+  posees d'avance sur toute la matiere, citees mot pour mot (meme source) :
+  > `EMC-1` - Aucun item n'interroge l'enfant sur ce que lui ressent, vit, croit ou fait chez lui.
+  >
+  > `EMC-2` - Un item ne retient que les situations a reponse unique et evidente.
+  >
+  > `EMC-5` - Aucun item n'a deux reponses defendables. C'est `HIS-2` etendu a cette matiere.
+  >
+  > `EMC-7` - Les items sur les numeros d'urgence sont exacts et sans ambiguite. Chaque numero est
+  > exact, sa source est dans le commentaire du paquet, et aucun item n'admet deux numeros tous deux
+  > corrects pour la meme situation - le piege de l'incendie (18 et 112) est refuse sans discussion.
+
+  Conditions de fermeture de ligne (`ARBITRAGE-PREALABLE-s28`, deja citees ci-dessus) : `FER-1`,
+  `FER-2`, `FER-3` s'appliquent a l'identique.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur un geste d'alerte (prevenir un
+    adulte, composer un numero d'urgence), jamais sur ce que l'enfant lui-meme ressent, vit, croit
+    ou fait chez lui (`EMC-1`).
+  - Etant donne un item sur un numero d'urgence, quand on le verifie, alors le numero est exact, sa
+    source est dans le commentaire du paquet, et aucun item n'admet deux numeros tous deux corrects
+    pour la meme situation - en particulier aucun item n'oppose 18 et 112 sur un incendie sans
+    trancher (`EMC-7`).
+  - Etant donne un item, quand on relit la situation decrite, alors une seule reponse est defendable
+    parmi les propositions (`EMC-2`, `EMC-5`).
+  - Etant donne le paquet livre, quand on verifie les deux elements du libelle (prevenir un adulte,
+    numero d'urgence), alors chacun est en position de bonne reponse d'au moins un item (`FER-1`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies, la moins servie portant au moins trois items (`FER-3`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CP-14` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme que `EMC-1`, `EMC-2`, `EMC-5`, `EMC-7`, `FER-1`, `FER-2`, `FER-3` sont tenues, et
+    que la mention exigee d'avance sur toute ligne d'EMC est ecrite dans la matrice.
+- **Ce que cette story ne fait pas** : elle n'interroge jamais l'enfant sur sa propre vie (`EMC-1`) ;
+  elle n'ecrit jamais un numero d'urgence inexact, sans source, ou en situation ou deux numeros
+  seraient tous deux corrects (`EMC-7`) ; elle ne fixe aucun contenu factuel precis (quelles
+  situations retenues) - reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0104` (section 4, instance B).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
+
+### S47-EMC-VOTE-CM1 - Comprendre le sens du vote et de la representation (`EMC-CM1-10`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux comprendre le sens du vote et de la representation
+  (delegue de classe, election, suffrage universel) en jouant au bandit manchot, afin de connaitre
+  le principe par lequel on choisit des representants.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine
+  "Construire une culture civique" -
+  `squad/programme/enseignement-moral-et-civique/competences-cm1.md`, `EMC-CM1-10`. Ligne `non
+  couvert`, `MATRICE-couverture.md`, section "Enseignement moral et civique - CM1".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`, Jugement de faisabilite,
+  `nadia-prof`, 2026-09-03, ligne 10) : *"non couvert - jouable au choix, sur la connaissance seule.
+  Point a ne pas lire comme une contradiction avec le CP, et je l'ecris avant qu'on me le demande :
+  sur l'EMC de CP, j'ai classe 'participer a une decision collective par un vote' en `non couvrable
+  en l'etat`, irreversible, et j'ai refuse d'ecrire a cote une ligne de connaissance qui l'aurait
+  maquillee. Ici, c'est le programme du cycle 3 lui-meme qui porte la connaissance du vote et de la
+  representation comme un attendu propre : l'ecrire est fidele, pas maquille."* **Mention exigee
+  d'avance** : *"connaissance du vote et de la representation seule ; participer a une decision
+  collective reste non couvrable."* Conditions posees d'avance sur toute la matiere, citees mot
+  pour mot (`squad/programme/enseignement-moral-et-civique/competences-cp.md`, reprises a
+  l'identique, plus `EMC-8`/`EMC-9` propres au CM1) :
+  > `EMC-1` - Aucun item n'interroge l'enfant sur ce que lui ressent, vit, croit ou fait chez lui.
+  >
+  > `EMC-2` - Un item ne retient que les situations a reponse unique et evidente.
+  >
+  > `EMC-5` - Aucun item n'a deux reponses defendables.
+  >
+  > `EMC-8` - Aucun item ne demande a l'enfant de declarer un comportement ("que fais-tu si...",
+  > "acceptes-tu de..."). Les items portent sur ce qui est permis, prevu par la regle, ou sur ce
+  > qu'une election ou un vote decide - jamais sur ce que l'enfant declare qu'il ferait.
+
+  Conditions de fermeture de ligne (`ARBITRAGE-PREALABLE-s28`, deja citees ci-dessus) : `FER-1`,
+  `FER-2`, `FER-3` s'appliquent a l'identique. **`CYC-1` - continuite cycle 2 / cycle 3, verifiee et
+  non due** (`DEC-0104`, section 4.5) : l'objet miroir de cette ligne au CP ("participer a une
+  decision collective par un vote") est `non couvrable en l'etat`, aucun paquet ne le sert - aucune
+  lecture croisee n'est due, et cette absence est verifiee, pas supposee.
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte sur la connaissance du vote et de la
+    representation (delegue de classe, election, suffrage universel), jamais sur la participation
+    reelle de l'enfant a une decision collective (mention exigee d'avance).
+  - Etant donne un item, quand on relit la situation decrite, alors une seule reponse est
+    defendable parmi les propositions, et aucun item n'interroge l'enfant sur sa propre vie
+    (`EMC-1`, `EMC-2`, `EMC-5`).
+  - Etant donne un item, quand on le relit, alors il ne demande jamais a l'enfant de declarer un
+    comportement ou une intention de vote personnelle (`EMC-8`).
+  - Etant donne le paquet livre, quand on verifie les elements du libelle (delegue de classe,
+    election, suffrage universel), alors chacun est en position de bonne reponse d'au moins un item
+    (`FER-1`).
+  - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
+    taches distinctes sont servies, la moins servie portant au moins trois items (`FER-3`).
+  - Etant donne le paquet livre, quand on compte les items qui servent cette ligne, tous paquets
+    confondus, alors ils sont au moins dix (`FER-2`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `EMC-CM1-10` et uniquement elle.
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance B) le joue, alors
+    elle confirme que `EMC-1`, `EMC-2`, `EMC-5`, `EMC-8`, `FER-1`, `FER-2`, `FER-3` sont tenues, et
+    que les deux mentions exigees d'avance (celle de toute ligne d'EMC, et celle propre a cette
+    ligne sur la connaissance seule du vote) sont ecrites dans la matrice.
+- **Ce que cette story ne fait pas** : elle ne fait jamais participer l'enfant a une decision
+  collective reelle - cette competence reste `non couvrable en l'etat` au CP et n'est pas
+  maquillee ici (mention exigee d'avance) ; elle n'interroge jamais l'enfant sur sa propre vie
+  (`EMC-1`) ; elle ne fixe aucun contenu factuel precis (quelles situations retenues) - reste a
+  l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0104` (section 4, instance B).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
+
 
