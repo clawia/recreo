@@ -11,8 +11,11 @@
 - **Conditions opposables** : `SOP-CE1-1` à `SOP-CE1-6`
   (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, section 5.2), **`SOP-CE1-5`
   dans sa version amendée du 2026-10-01** (section 2 ci-dessous).
-- **Statut global** : **REFUSÉ** le 2026-10-02 par `nadia-prof` (s46, instance A), après avoir joué
-  le jar servi (bloc de validation en bas de fiche). Fiche ouverte le 2026-10-01 avant le premier
+- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 au second passage par `nadia-prof` (s46,
+  instance A), une réserve neuve (`SOP-CE1-R1`),
+  après avoir rejoué le jar servi sur le paquet entier. Premier passage du même jour : **REFUSÉ**
+  (`SOP-CE1-4` non tenue sur deux items), verdict conservé tel quel dans le bloc de validation en
+  bas de fiche. Fiche ouverte le 2026-10-01 avant le premier
   item, par l'amendement de `SOP-CE1-5`, pour que la condition que le développeur lit soit celle que
   j'auditerai.
 - **Dernière mise à jour** : 2026-10-02.
@@ -250,5 +253,95 @@ voisins. Tout le reste de `SOP-CE1-1` à `SOP-CE1-6` est calculable sur le paque
 le test lise tous les items**, ce qui n'est pas le cas aujourd'hui pour `SOP-CE1-4`.
 
 **Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s46, instance A, 2026-10-02.
+
+---
+
+### Verdict du 2026-10-02, second passage (`nadia-prof`, s46, instance A) : **VALIDÉ SOUS RÉSERVE**
+
+**Done pédagogique prononcé.** Le motif du premier passage est levé, rien d'autre n'a bougé, et les
+six conditions sont tenues sur les dix-huit items. Une réserve neuve, non bloquante, `SOP-CE1-R1`
+(section 4) : elle porte sur ma propre condition, pas sur le travail de la correction. `camille-po`
+peut passer `MAT-CE1-05` à
+`couvert-valide`, **avec la mention de `SOP-CE1-1` reprise mot pour mot** : *"le résultat atteste le
+calcul ; la technique posée elle-même - disposition en colonnes, emprunts - n'est ni montrée ni
+vérifiée par le produit."* Sans cette mention, la ligne ne ferme pas.
+
+#### 1. Ce que j'ai fait
+
+**Audit complet, pas dégradé.** Worktree dédié `s46-nadia-audit-a2`, fondé sur `round-two` à
+`7ff80b67`, qui porte la correction de `marc-dev` (`79e04615`). Jar construit par
+`bash outils/mvn-jdk21.sh -pl bootstrap -am package -DskipTests`, lancé sur le JDK 21 de la
+toolchain (21.0.10), sur un port dédié. Je n'ai lancé aucun job de la CI et je n'en déduis rien ; le
+Done technique de la correction reste à annoncer par qui lance les jobs.
+
+**Six parties complètes de dix manches, sur le paquet entier**, pas seulement les deux items
+remplacés : un tiers des manches juste du premier coup, un tiers après une erreur, un tiers après
+trois erreurs jusqu'à la révélation. **Les dix-huit items ont été tirés et joués**, et sur chacun les
+propositions affichées sont exactement celles du paquet. Après une erreur : *"Ce n'est pas ça.
+Essaie encore !"* et l'indice. Après la troisième : *"Appuie sur la bonne réponse : ..."*. Écran de
+fin atteint sur les six parties.
+
+Les dix-huit différences et les trente-quatre distracteurs recalculés par le même script de poste,
+non commité : valeur de chaque forme déclarée, règle d'admission de la quatrième forme, nombre de
+chiffres, chiffre des unités partagé, doublons. Aucun écart.
+
+`PaquetCe1SoustractionsPoseesTest` lancé sur l'arbre audité
+(`bash outils/mvn-jdk21.sh -pl adapters/adapter-content -am test -Dtest=PaquetCe1SoustractionsPoseesTest`,
+périmètre : ce seul test) : 13 tests, 0 échec. J'ai lu son diff : l'exemption des items à deux
+propositions est retirée, et sa Javadoc ne m'attribue plus une exemption que je n'ai pas donnée.
+
+#### 2. Le motif est levé
+
+| Item | Bonne réponse | Seul distracteur (somme) | `SOP-CE1-4` |
+|---|---|---|---|
+| `47 - 20` | 27 | 67 | **tenue** : deux chiffres contre deux, unités `7` partagées |
+| `65 - 15` | 50 | 80 | **tenue** : deux chiffres contre deux, unités `0` partagées |
+
+Ce sont deux des trois exemples que j'avais donnés au premier passage, et c'est exactement la barre
+que ma section 5 demandait : même nombre de chiffres, chiffre des unités partagé. Je lève le motif.
+
+#### 3. Rien d'autre n'a bougé
+
+| Condition | Tenue | Ce que j'ai vérifié |
+|---|---|---|
+| `SOP-CE1-1` | **oui, à reporter** | Consigne servie *"Pose l'opération, puis choisis le bon résultat."* Mention à porter dans la matrice (en tête de ce verdict) |
+| `SOP-CE1-2` | **oui** | Cinq items à deux chiffres, treize à trois. Seize à emprunt, dont quatre à deux emprunts. Deux sans emprunt. Comptes recalculés |
+| `SOP-CE1-3` | **oui** | 13 sur 18 ont un premier terme supérieur à 100 |
+| `SOP-CE1-4` | **oui, sur les dix-huit items** | Section 2 pour les deux items neufs ; les seize autres inchangés et recalculés |
+| `SOP-CE1-5` | **oui** | Les trente-quatre distracteurs correspondent à leur marqueur. Règle de rang du paquet entier : la plus petite proposition est la bonne sur 7 items sur 18 (39 %), le même compte qu'au premier passage, puisque `27 < 67` et `50 < 80` remplacent `62 < 108` et `42 < 110` |
+| `SOP-CE1-6` | **oui** | Aucun résultat négatif, aucun habillage |
+
+Sur les seize items à trois propositions, la bonne réponse est au milieu sur 7, la plus petite sur
+5, la plus grande sur 4 : inchangé.
+
+#### 4. Une correction de mon premier verdict, et la réserve qui en sort
+
+**Mon motif du premier passage disait trop.** Il finissait par *"l'item se répond sans poser
+l'opération : une différence ne peut pas dépasser le premier terme"*. Ce second argument ne
+distinguait pas `108` d'un distracteur admis : **une somme dépasse toujours le premier terme**
+(`67 > 47`, `80 > 65`). Ce que `SOP-CE1-4` tient, et ce que j'ai demandé, c'est le nombre de chiffres
+et le chiffre des unités. Je ne relève pas la barre après coup : les deux items la tiennent.
+
+**`SOP-CE1-R1` (2026-10-02, non bloquante).** Sur un item sans emprunt, `SOP-CE1-5` n'admet que la
+somme, toujours plus grande que le premier terme. En jouant `47 - 20`, un enfant de CE1 qui sait
+qu'en enlevant on obtient moins que ce qu'on avait écarte `67` sans poser l'opération. La limite
+vient de ma condition, pas du paquet, et elle touche les deux items sans emprunt, que `SOP-CE1-2`
+exige pour que l'enfant apprenne à ne pas emprunter sans besoin : c'est justement ce que ces deux
+items ne lui font pas vérifier. **Action** : `camille-po` en fait une story d'arbitrage qui m'est
+adressée. Je dois soit admettre, pour les items sans emprunt, une erreur nommée dont la valeur est
+inférieure au premier terme, soit accepter cette limite par écrit. Le paquet n'est pas à reprendre
+avant cet arbitrage.
+
+#### 5. Ce dont je reste la seule garde
+
+Que les quatre formes soient des erreurs qu'un enfant de CE1 commet, et pas seulement des nombres
+voisins : vérifié en jouant au premier passage, rien n'a changé sur les seize items concernés.
+**`SOP-CE1-4` n'est plus de ma seule garde** : le test du paquet la lit désormais sur tous les items.
+`SOP-CE1-R1` n'est gardée par aucun test.
+
+**Identifiants** : un neuf, `SOP-CE1-R1`, alloué dans `squad/decisions/REGISTRE-identifiants.md`,
+section 4, dans le même commit. Aucun renommé.
 
 **Signé** : `nadia-prof`, s46, instance A, 2026-10-02.
