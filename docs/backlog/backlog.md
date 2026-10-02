@@ -3645,6 +3645,185 @@ seule story plutot que quatre, aucune ne dependant des autres pour etre corrigee
   `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
 
+### Story de correction differee - `TAB-CE1-R1` : l'indice du facteur 1 de "Memoriser ses tables de multiplication" n'enseigne pas l'erreur
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-tables-multiplication-ce1` a s47 et prononce
+**VALIDE SOUS RESERVE** sur `MAT-CE1-07`
+(`squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`, verdict du 2026-10-02,
+section 4). Sur les cinq items a facteur 1 (`2 × 1`, `3 × 1`, `4 × 1`, `5 × 1`, `10 × 1`), l'indice
+servi porte sur la table du second facteur (par exemple "prends le double du nombre, puis ajoute le
+nombre une fois" sur `3 × 1`) et non sur le facteur 1 lui-meme : un enfant qui a confondu `× 1` avec
+`+ 1` ne lit rien qui lui dise son erreur.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Memoriser ses tables de multiplication" et se
+  trompe sur un calcul par 1, je veux que l'indice qui m'aide m'explique l'erreur que je viens de
+  faire (confondre multiplier par 1 avec ajouter 1), afin de comprendre pourquoi ma reponse etait
+  fausse plutot que de simplement retrouver la bonne reponse par la table.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs",
+  `MAT-CE1-07` (`squad/programme/mathematiques/competences-ce1.md`) - ligne deja `couvert-valide`
+  depuis s47, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne les cinq items a facteur 1, quand on relit leur indice servi apres une premiere
+    erreur, alors il porte sur le facteur 1 et non plus sur la table du second facteur - forme deja
+    validee au CM1, reprise mot pour mot : "Multiplier par 1, le nombre ne change pas."
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`TAB-CE1-1` a `TAB-CE1-4`, `TAB-CE1-6`), alors elles restent toutes tenues : cette story ne
+    touche que l'indice des cinq items, ni leur produit ni leurs distracteurs.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les cinq items corriges et confirme que l'indice aide l'enfant a
+    comprendre l'erreur du facteur 1, pas seulement a retrouver la reponse par la table.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-02 (meme fiche, section 4), identifiant deja alloue dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee - `AUT-CP-R1` : deux indices de "Autrefois et aujourd'hui" redonnent la reponse de l'item 13
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-autrefois-aujourdhui-cp` a s47 et prononce
+**VALIDE SOUS RESERVE** sur `QLM-CP-15`, au troisieme passage
+(`squad/conformite/FICHE-bandit-manchot-autrefois-aujourdhui-cp.md`, verdict du troisieme passage,
+section 4). L'indice neuf de l'item 7, "avant d'avoir un robinet", redonne mot pour mot la reponse
+de l'item 13 ("par un robinet"), et l'indice de l'item 13 lui-meme nomme deja sa propre reponse
+("Ce robinet est relie a des tuyaux sous la terre.").
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Autrefois et aujourd'hui" et se trompe sur l'item
+  qui demande d'ou vient l'eau aujourd'hui, je veux que l'indice qui m'aide ne me donne pas
+  directement le mot de la reponse, afin que je la retrouve en comprenant la situation et non en
+  reconnaissant un mot deja lu ailleurs.
+- **Competence programme visee** : questionner le monde, CP (cycle 2), domaine "Se situer dans le
+  temps", `QLM-CP-15` (`squad/programme/questionner-le-monde/competences-cp.md`) - ligne deja
+  `couvert-valide` depuis s47, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'indice de l'item 13, quand on le relit, alors il ne contient plus le mot
+    "robinet" - exemple de forme donne par `nadia-prof` : "L'eau arrive dans la maison par des
+    tuyaux sous la terre."
+  - Etant donne l'indice de l'item 7, quand on le relit, alors il ne contient plus le mot
+    "robinet" - exemple de forme donne par `nadia-prof` : "On y allait chercher l'eau avant qu'elle
+    arrive dans les maisons."
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`BIA-3`, `FER-1` a `FER-3`, `LON-1`, `LON-2`, `TYP-1`), alors elles restent toutes tenues :
+    cette story ne touche que les deux indices, ni les enonces ni les propositions des items 7 et 13.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les items 7 et 13 et confirme qu'aucun des deux indices ne nomme
+    plus la reponse de l'autre.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-02 (meme fiche, verdict du troisieme passage, section 4), identifiant deja alloue dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee, groupee par paquet - `ANG-CP-R1`, `ANG-CP-R2` : deux defauts de "Le monde anglophone"
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-culture-anglophone-cp` a s47 et prononce
+**VALIDE SOUS RESERVE** sur `LVE-CP-06`
+(`squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md`, verdict du 2026-10-02,
+section 4). Deux reserves non bloquantes, distinctes mais sur le meme paquet et le meme audit :
+`camille-po` les groupe en une seule story plutot que deux.
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Le monde anglophone", je veux que chaque question
+  se reponde en sachant quelque chose du pays plutot qu'en reconnaissant un mot de l'enonce, et que
+  chaque indice reste en mots simples, afin que le jeu m'apprenne vraiment une decouverte
+  culturelle.
+- **Competence programme visee** : langues vivantes (anglais), CP (cycle 2), domaine "Decouverte
+  culturelle", `LVE-CP-06` (`squad/programme/langues-vivantes/competences-cp.md`) - ligne deja
+  `couvert-valide` depuis s47, non rouverte par cette story. Mention de couverture partielle
+  inchangee : "decouverte culturelle seule, en francais ; aucune competence linguistique n'est
+  servie".
+- **Criteres d'acceptation** :
+  - **`ANG-CP-R1`** (items 10, 12) : etant donne l'item 10, quand on relit ses deux distracteurs,
+    alors ce sont aussi des statues ou des monuments a personnage, et non plus des monuments qui ne
+    sont pas des statues ("le Colisee", "la Grande Muraille") ; etant donne l'item 12, quand on
+    relit ses deux distracteurs, alors chacun decrit un autre geste qu'on peut faire face a un
+    drapeau, sans etre aussi vrai des Etats-Unis.
+  - **`ANG-CP-R2`** (items 1, 2) : etant donne les indices des items 1 et 2, quand on les relit,
+    alors ils sont courts, en mots de CP, et aident a trouver la reponse sans phrase longue ni mot
+    au-dessus du CP ("mis a execution", "elus").
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`BIA-1`, `BIA-2`, Q5, `FER-1` a `FER-3`, `LON-1`, `LON-2`), alors elles restent toutes tenues :
+    cette story touche quatre items sur douze (1, 2, 10, 12).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les quatre items corriges et confirme qu'aucune question ne se
+    repond plus par la seule lecture de l'enonce, et que les deux indices restent lisibles par un
+    enfant de CP.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-10-02 (meme fiche, verdict du 2026-10-02, section 4), identifiants deja alloues dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee, groupee par paquet - deux reserves de "Donner l'alerte" (`EMC-CP-14`)
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-alerte-cp` a s47 et prononce **VALIDE SOUS
+RESERVE** sur `EMC-CP-14`, au second passage
+(`squad/conformite/FICHE-bandit-manchot-alerte-cp.md`, verdict du second passage, section 5). Deux
+reserves non bloquantes, neuves a ce passage, sur le meme paquet et le meme audit, sans identifiant
+dedie alloue par la fiche : `camille-po` les groupe en une seule story plutot que deux.
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Donner l'alerte", je veux que l'indice d'un objet
+  trouve me dise la bonne conduite sans ambiguite, et que le vocabulaire des indices reste a ma
+  portee, afin de savoir exactement quoi faire plutot que de deviner un geste.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine
+  "Construire une culture civique", `EMC-CP-14`
+  (`squad/programme/enseignement-moral-et-civique/competences-cp.md`) - ligne deja `couvert-valide`
+  depuis s47, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **Item 7** : etant donne l'indice servi apres une premiere erreur, quand on le relit, alors il
+    ne prescrit plus de montrer l'objet trouve mais de ne pas y toucher et de prevenir un adulte -
+    exemple de forme donne par `nadia-prof` : "Un sac oublie, on n'y touche pas : on previent un
+    adulte."
+  - **Item 11** : etant donne l'enonce, quand on le relit, alors il n'emploie plus le mot "apeure" -
+    exemple de forme donne par `nadia-prof` : "Hugo voit dans la rue un chien perdu qui a peur."
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (decision Q4, `EMC-1`, `EMC-2`, `EMC-5`, `EMC-6`, `EMC-7`, `FER-1` a `FER-3`), alors elles
+    restent toutes tenues : cette story touche deux items sur onze (7, 11), sans toucher ni leur
+    bonne reponse ni leurs distracteurs.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les items 7 et 11 corriges et confirme que l'indice de l'item 7 ne
+    prete plus a confusion et que le vocabulaire de l'item 11 reste a la portee d'un enfant de CP.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-10-02 (`squad/conformite/FICHE-bandit-manchot-alerte-cp.md`, verdict du second passage,
+  section 5), sans identifiant dedie alloue par la fiche. A router par une `DEC` d'ouverture de
+  sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee, groupee par paquet - deux reserves de "Le vote et la representation" (`EMC-CM1-10`)
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-vote-election-cm1` a s47 et prononce **VALIDE
+SOUS RESERVE** sur `EMC-CM1-10`, au troisieme passage
+(`squad/conformite/FICHE-bandit-manchot-vote-election-cm1.md`, verdict du troisieme passage,
+section 4). Deux reserves non bloquantes, reconduites sans changement depuis le second passage
+(meme fiche, verdict du second passage, section 7), sur le meme paquet, sans identifiant dedie
+alloue par la fiche.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Le vote et la representation", je veux que
+  chaque distracteur reste dans la categorie que la question demande et que chaque question soit
+  formulee correctement, afin que le jeu m'apprenne vraiment le vote et la representation plutot
+  qu'a ecarter un intrus ou une question mal posee.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine
+  "Construire une culture civique", `EMC-CM1-10`
+  (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`) - ligne deja
+  `couvert-valide` depuis s47, non rouverte par cette story. Mention de couverture partielle
+  inchangee : "connaissance du vote et de la representation seule ; participer a une decision
+  collective reste non couvrable".
+- **Criteres d'acceptation** :
+  - **Items 3 a 6** : etant donne le distracteur "le delegue de classe" present dans les quatre
+    items, quand on le relit, alors il est remplace par une proposition qui reste dans la
+    categorie demandee par la question (un vote ou un droit), et non plus par une personne.
+  - **Item 11** : etant donne la question "Qui le suffrage universel permet-il de faire voter ?",
+    quand on la relit, alors elle est reformulee pour demander qui a le droit de voter plutot que
+    qui est "fait voter" - exemple de forme donne par `nadia-prof` : "Avec le suffrage universel,
+    qui a le droit de voter ?"
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (decision Q6 regles 1 a 5, `EMC-5`, `EMC-6`, `EMC-8`, `HIS-2`, `HIS-3`, `FER-1` a `FER-3`),
+    alors elles restent toutes tenues : cette story touche cinq items sur douze (3, 4, 5, 6, 11),
+    sans changer aucun fait de droit electoral deja valide.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les cinq items corriges et confirme qu'aucun distracteur ne sort
+    plus de sa categorie et que la question de l'item 11 se lit correctement.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-10-02 (`squad/conformite/FICHE-bandit-manchot-vote-election-cm1.md`, verdict du second
+  passage, section 7, reconduites au verdict du troisieme passage, section 4), sans identifiant
+  dedie alloue par la fiche. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
