@@ -300,8 +300,9 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " ajoutent cp-qlm-hygiene (QLM-CP-04) et cp-qlm-saisons (QLM-CP-13), soit 9"
                         + " fichiers ; S42-QLM-MATIERE (s42) ajoute cp-qlm-matiere (QLM-CP-06), soit"
                         + " 10 fichiers ; S43-QLM-NUMERIQUE (s43) ajoute cp-qlm-objets-numeriques"
-                        + " (QLM-CP-08), soit 11 fichiers")
-                .hasSize(11);
+                        + " (QLM-CP-08), soit 11 fichiers ; S47-QLM-AUTREFOIS (s47) ajoute"
+                        + " cp-qlm-autrefois-aujourdhui (QLM-CP-15), soit 12 fichiers")
+                .hasSize(12);
         assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")).stream().mapToInt(Paquet::items).sum())
                 .as("S28-1 (ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-"
                         + "lots.md, section 3.1) : 24 items a la cloture de s27, +6 par ligne pour"
@@ -316,8 +317,10 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " soit 96 items ; S41-QLM-SAISONS (s41) ajoute seize items (cp-qlm-saisons,"
                         + " QLM-CP-13), soit 112 items ; S42-QLM-MATIERE (s42) ajoute onze items"
                         + " (cp-qlm-matiere, QLM-CP-06), soit 123 items ; S43-QLM-NUMERIQUE (s43)"
-                        + " ajoute onze items (cp-qlm-objets-numeriques, QLM-CP-08), soit 134 items")
-                .isEqualTo(134);
+                        + " ajoute onze items (cp-qlm-objets-numeriques, QLM-CP-08), soit 134 items ;"
+                        + " S47-QLM-AUTREFOIS (s47) ajoute quatorze items (cp-qlm-autrefois-"
+                        + "aujourdhui, QLM-CP-15), soit 148 items")
+                .isEqualTo(148);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("1 fichier a la cloture de s27, inchange a S28-1 qui n'a touche que la matiere"
                         + " questionner le monde ; S28-2 et S29-2 etendent ce meme fichier, motif"

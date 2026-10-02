@@ -708,3 +708,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-emc-vote-election
     nombreDeManches: 10
+  - id: bandit-manchot-autrefois-aujourdhui-cp
+    titre: "Autrefois et aujourd'hui"
+    consigne: "Lis bien, puis dis si c'est autrefois ou aujourd'hui, ou par quoi c'est remplacé."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-autrefois-aujourdhui
+    nombreDeManches: 10
+  - id: bandit-manchot-alerte-cp
+    titre: "Donner l'alerte"
+    consigne: "Lis bien, puis dis le bon numéro, ou ce qu'il faut faire."
+    mecanique: bandit-manchot
+    paquet: cp-emc-alerte
+    nombreDeManches: 10
