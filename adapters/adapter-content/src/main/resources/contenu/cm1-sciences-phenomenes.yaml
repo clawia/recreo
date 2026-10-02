@@ -28,14 +28,16 @@ lignesDeReferentiel: ["SCI-CM1-16"]
 #
 # FER-3 : deux taches distinctes - tache A, reconnaitre le phenomene decrit (items 1 a 6, bonne
 # reponse un nom de phenomene) ; tache B, dire quel geste protege du risque associe (items 7 a 12,
-# bonne reponse un geste ou son motif, jamais un nom de phenomene).
+# bonne reponse un geste, jamais un nom de phenomene).
 #
 # BIA-2 : marqueur par item (valeur france, europe, ailleurs ou non-situe apres "lieu:"). Items
-# situes : item 2
-# (Italie, Vesuve - europe), item 3 (cotes bretonnes - france), item 4 (sud de la France - france),
-# item 1 (Japon - ailleurs). Les huit autres items sont non-situes (description generique, sans
-# pays). Parmi les quatre items situes, trois sont en France ou en Europe : le paquet ne situe jamais
-# systematiquement les phenomenes decrits ailleurs qu'en France ou en Europe.
+# situes : item 1 (Japon - ailleurs), item 2 (La Reunion, piton de la Fournaise - france), item 3
+# (cotes bretonnes - france), item 4 (sud de la France - france). Les huit autres items sont
+# non-situes (description generique, sans pays). Parmi les quatre items situes, trois sont en
+# France : le paquet ne situe jamais systematiquement les phenomenes decrits ailleurs qu'en France
+# ou en Europe. PHN-CM1-R3 (nadia-prof, 2026-10-02, refus du 2026-10-02) : au moins un phenomene
+# geologique situe en France - tenu par l'item 2, qui remplace aussi le Vesuve par un volcan dont
+# les eruptions sont bien actuelles (motif du refus).
 #
 # SCI-2 : aucun item ne fait porter une responsabilite sur l'enfant ou son foyer face a un risque
 # naturel - chaque enonce reste impersonnel ou decrit un geste general, jamais une adresse a la
@@ -63,12 +65,31 @@ lignesDeReferentiel: ["SCI-CM1-16"]
 # sert qu'une ligne (ADR-0081, clause 5) : rien n'est compte deux fois, rien a corriger ici.
 #
 # FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# Reprise S46 (squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md, refus
+# nadia-prof du 2026-10-02) : un motif de refus et quatre reserves, corriges dans le meme diff.
+# - Motif : l'item 2 presentait le Vesuve comme un lieu distinct du volcan en eruption, et l'enonce
+#   au present suggerait une eruption actuelle alors que le Vesuve n'est pas entre en eruption
+#   depuis 1944. Remplace par le piton de la Fournaise (La Reunion), volcan aux eruptions
+#   frequentes et bien actuelles.
+# - PHN-CM1-R1 : les indices des items 7, 8, 9, 11 et 12 donnaient la reponse par paraphrase ou en
+#   ecartant nommement les distracteurs. Reecrits sur le modele de l'item 10 : ils disent pourquoi
+#   le geste faux est dangereux, sans reprendre les mots de la bonne reponse.
+# - PHN-CM1-R2 : les distracteurs des items 11 et 12 n'etaient pas plausibles pour un enfant de 9
+#   ans. Remplaces par des comportements qu'un enfant curieux pourrait reellement avoir (prendre
+#   l'ascenseur pour aller plus vite, s'approcher de l'eau qui monte pour regarder).
+# - PHN-CM1-R3 : aucun phenomene geologique n'etait situe en France. Tenu par le nouvel item 2
+#   (La Reunion).
+# - PHN-CM1-R4 : la consigne ("quel phenomene, ou quel geste protege") ne couvrait pas les
+#   questions "pourquoi" des items 11 et 12. Les deux items sont reformules en choix de geste
+#   plutot que la consigne modifiee, pour rester dans ce fichier (la consigne est declaree dans
+#   catalogue.yaml).
 items:
   - enonce: "Au Japon, le sol tremble fortement pendant plusieurs secondes et des objets tombent des étagères. Quel phénomène décrit cette situation ?"  # element: geologique # HIS-3: séisme défini par une secousse du sol due à un mouvement des plaques terrestres, le Japon est une région fréquemment touchée par ce phénomène géologique enseigné au cycle 3 # lieu: ailleurs
     bonneReponse: "un séisme"
     distracteurs: ["une tempête", "une inondation"]
     indice: "Les secousses viennent du sol lui-même, pas du ciel."
-  - enonce: "En Italie, près du Vésuve, un volcan rejette de la lave, des cendres et des gaz brûlants. Quel phénomène décrit cette situation ?"  # element: geologique # HIS-3: éruption volcanique définie par l'expulsion de lave, de cendres et de gaz par un volcan, le Vésuve est un volcan actif d'Italie souvent cité au cycle 3 # lieu: europe
+  - enonce: "À La Réunion, le piton de la Fournaise entre en éruption et rejette de la lave, des cendres et des gaz brûlants. Quel phénomène décrit cette situation ?"  # element: geologique # HIS-3: éruption volcanique définie par l'expulsion de lave, de cendres et de gaz par un volcan, le piton de la Fournaise à La Réunion est l'un des volcans les plus actifs au monde avec des éruptions fréquentes, phénomène enseigné au cycle 3 # lieu: france
     bonneReponse: "une éruption volcanique"
     distracteurs: ["une inondation", "une tempête"]
     indice: "La matière brûlante vient de l'intérieur de la Terre."
@@ -91,24 +112,24 @@ items:
   - enonce: "Pendant un séisme, quel geste permet de se protéger ?"  # element: risque # HIS-3: s'abriter sous un meuble solide loin des vitres est le geste de protection recommandé pendant un séisme, consigne de sécurité civile enseignée au cycle 3 # lieu: non-situe
     bonneReponse: "s'abriter sous une table solide, loin des fenêtres"
     distracteurs: ["sortir en courant par l'escalier", "rester debout près d'une fenêtre pour regarder dehors"]
-    indice: "Un meuble solide protège des objets qui tombent, un escalier pendant les secousses est dangereux."
+    indice: "Pendant les secousses, des objets peuvent tomber et un escalier devient dangereux à descendre."
   - enonce: "Pendant une tempête, quel geste permet de se protéger ?"  # element: risque # HIS-3: rester à l'abri loin des fenêtres et des objets susceptibles de s'envoler est la consigne de sécurité recommandée pendant une tempête, enseignée au cycle 3 # lieu: non-situe
     bonneReponse: "rester à l'intérieur, loin des fenêtres et des objets qui pourraient s'envoler"
     distracteurs: ["sortir ramasser les objets emportés par le vent", "ouvrir grand les fenêtres pour aérer la maison"]
-    indice: "Rester à l'abri évite d'être blessé par un objet emporté par le vent."
+    indice: "Un objet emporté par le vent peut blesser une personne qu'il touche."
   - enonce: "En cas d'inondation, quel geste permet de se protéger ?"  # element: risque # HIS-3: monter sur un point haut loin de l'eau qui monte est la consigne de sécurité recommandée en cas d'inondation, enseignée au cycle 3 # lieu: non-situe
     bonneReponse: "monter à l'étage ou sur un point haut, loin de l'eau qui monte"
     distracteurs: ["descendre à la cave pour mettre les affaires à l'abri", "traverser une rue inondée pour rentrer chez soi"]
-    indice: "L'eau qui monte rend une cave ou une rue inondée dangereuses."
+    indice: "L'eau qui monte peut piéger ou emporter une personne prise au dépourvu."
   - enonce: "Après une éruption volcanique proche, quel geste permet de se protéger des cendres ?"  # element: risque # HIS-3: rester à l'intérieur et fermer portes et fenêtres est la consigne de sécurité recommandée face à des retombées de cendres volcaniques, enseignée au cycle 3 # lieu: non-situe
     bonneReponse: "rester à l'intérieur et fermer portes et fenêtres"
     distracteurs: ["sortir observer le volcan de près", "ouvrir les fenêtres pour que les cendres s'évacuent"]
     indice: "Les cendres volcaniques peuvent gêner la respiration si on les respire."
-  - enonce: "Pendant un séisme, pourquoi vaut-il mieux ne pas utiliser l'ascenseur ?"  # element: risque # HIS-3: un ascenseur peut rester bloqué si l'électricité ou la structure du bâtiment est touchée par les secousses, consigne de sécurité enseignée au cycle 3 # lieu: non-situe
-    bonneReponse: "parce qu'il peut rester bloqué si l'électricité ou la structure est touchée"
-    distracteurs: ["parce qu'il monte trop lentement", "parce qu'il fait trop de bruit pendant les secousses"]
-    indice: "Un ascenseur dépend d'une alimentation électrique qui peut s'arrêter brutalement."
-  - enonce: "Pourquoi s'éloigne-t-on des cours d'eau pendant de fortes pluies ?"  # element: risque # HIS-3: le niveau d'un cours d'eau peut monter très vite et sans prévenir lors de fortes pluies, consigne de sécurité enseignée au cycle 3 # lieu: non-situe
-    bonneReponse: "parce que le niveau de l'eau peut monter très vite et sans prévenir"
-    distracteurs: ["parce que l'eau devient soudainement plus froide", "parce que les poissons remontent le courant à cette période"]
-    indice: "Un cours d'eau peut déborder beaucoup plus vite qu'on ne l'imagine."
+  - enonce: "Pendant un séisme, un immeuble se met à trembler. Quel geste faut-il adopter avec l'ascenseur ?"  # element: risque # HIS-3: ne pas utiliser l'ascenseur et emprunter l'escalier est la consigne de sécurité recommandée pendant un séisme, un ascenseur pouvant rester bloqué si l'électricité ou la structure du bâtiment est touchée, consigne enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "ne pas le prendre, et utiliser l'escalier"
+    distracteurs: ["le prendre pour descendre plus vite", "rester à l'intérieur en attendant que ça passe"]
+    indice: "Un bâtiment secoué peut perdre son électricité du jour au lendemain."
+  - enonce: "De fortes pluies font monter le niveau d'un cours d'eau. Quel geste faut-il adopter près de l'eau ?"  # element: risque # HIS-3: s'éloigner d'un cours d'eau et de ses berges pendant de fortes pluies est la consigne de sécurité recommandée, le niveau pouvant monter très vite et sans prévenir, consigne enseignée au cycle 3 # lieu: non-situe
+    bonneReponse: "s'éloigner du cours d'eau et de ses berges"
+    distracteurs: ["s'approcher pour observer la montée de l'eau", "rester sur la berge pour surveiller le niveau"]
+    indice: "Une personne surprise près de l'eau peut être entraînée sans avoir le temps de réagir."
