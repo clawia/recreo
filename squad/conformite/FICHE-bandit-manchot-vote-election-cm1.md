@@ -18,9 +18,10 @@
   `FER-1`, `FER-2`, `FER-3`. `CYC-1` non due (planning de s47, section 3 : la ligne miroir du CP est
   `non couvrable en l'etat`).
 - **Lien décision** : `DEC-0104`.
-- **Statut global** : **REFUSÉ** une seconde fois le 2026-10-02 par `nadia-prof` (s47, instance B,
-  second passage), un motif (item 5, nouvelle erreur introduite par sa correction). Historique :
-  **REFUSÉ** le 2026-10-02 (premier passage, deux motifs, items 5 et 6), refus conservé ci-dessous.
+- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 par `nadia-prof` (s47, instance B,
+  troisième passage), deux réserves. Historique : **REFUSÉ** le 2026-10-02 (second passage, un
+  motif, item 5) et **REFUSÉ** le 2026-10-02 (premier passage, deux motifs, items 5 et 6), refus
+  conservés ci-dessous.
   Fiche ouverte par ce premier verdict : aucune fiche n'existait pour ce jeu.
 - **Dernière mise à jour** : 2026-10-02.
 
@@ -267,3 +268,94 @@ elle-même. Aucun test ne sait qui vote en France, ni à quelle élection.
 **Identifiants** : aucun neuf, aucun renommé.
 
 **Signé** : `nadia-prof`, s47, instance B, second passage, 2026-10-02.
+
+---
+
+## Bloc de validation pédagogique - troisième passage - nadia-prof UNIQUEMENT
+
+- **Verdict** : **VALIDÉ SOUS RÉSERVE**
+- **Date** : 2026-10-02
+- **Auditrice** : `nadia-prof`, instance B (`DEC-0104`), troisième passage.
+- **Audit joué** : **oui**, paquet entier.
+- **Contenu audité** : `cm1-emc-vote-election.yaml` après `5aa88a4e` (`sofia-sm`, casquette dev,
+  fusion `b52e743f`).
+
+**Conclusion, en une phrase** : l'item 5 reprend mot pour mot la forme que j'avais écrite comme
+acceptée (section 6 du second passage), il est exact, rien d'autre n'a bougé, et le Done
+pédagogique d'`EMC-CM1-10` est prononcé avec les deux réserves datées du second passage.
+
+### 1. Ce que j'ai fait
+
+Worktree dédié `s47-nadia-audit-b3`, fondé sur `round-two` à `b52e743f`, lignée vérifiée par
+`outils/verifier-lignee.sh round-two`. Jar construit par `bash outils/mvn-jdk21.sh -B package
+-DskipTests` (Maven sur le JDK 21.0.10 de la toolchain), lancé sur un port dédié. Relancé avec `-am`
+sur le module `adapter-content` seul : `PaquetCm1EmcVoteElectionTest` (8) et
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` (28), 0 échec. Je n'ai lancé aucun autre
+job de la CI et je n'en déduis rien.
+
+**Ce qui a bougé depuis mon second passage.** `git diff 5b352b7c b52e743f` : un seul fichier, une
+seule ligne, l'énoncé de l'item 5. Aucun autre item, aucun indice, aucune source, aucune entrée de
+catalogue.
+
+**Six parties complètes de dix manches** par appels HTTP réels : une juste de bout en bout, une avec
+trois erreurs à chaque manche jusqu'à la révélation, quatre mélangées (60 manches : 20 justes du
+premier coup, 8 après une erreur, 13 après deux, 19 avec révélation). **Les douze items ont été
+tirés et joués**, chacun entre trois et six fois. À chaque manche, les trois boutons servis étaient
+exactement ceux du paquet. Consigne servie inchangée : *"Lis bien, puis trouve le bon mot, ou dis
+qui vote, qui est élu, ou ce que fait un délégué."*
+
+### 2. Motif du second passage - levé
+
+Item 5 servi : *"En France, tous les citoyens majeurs ont le droit de vote, quels que soient leur
+richesse, leur métier ou leur sexe. Comment appelle-t-on ce droit de vote accordé à tous les
+citoyens ?"*
+
+- **Le fait.** L'énoncé dit qui a le droit de vote, sans dire que personne d'autre ne vote :
+  l'exclusivité fausse (*"réservé aux"*) a disparu. Il est conforme à l'article 3 de la
+  Constitution, source portée au marqueur et inchangée.
+- **La simplification que j'accepte.** L'article 3 ajoute *"jouissant de leurs droits civils et
+  politiques"*. *"Tous les citoyens majeurs"* omet ce cas, qui relève d'une décision de justice et
+  n'est pas du niveau CM1. C'est la forme que j'ai moi-même écrite comme barre : je ne la relève pas
+  après coup.
+- **À l'écran.** Après une erreur, l'indice *"Ce droit n'appartient pas seulement à certaines
+  personnes : il appartient à tous les citoyens majeurs."* ; après la troisième, *"Appuie sur la
+  bonne réponse : le suffrage universel"*. Les deux sont exacts et cohérents avec l'énoncé.
+
+Je lève.
+
+### 3. Le reste du paquet
+
+Items 1 à 4 et 6 à 12 rejoués, identiques au second passage et exacts. Le motif 2 du premier
+passage (item 6) reste levé. Ma décision Q6 (règles 1 à 5), `EMC-6`, `EMC-8`, `FER-1` à `FER-3`
+restent tenues, avec les mêmes vérifications. J'ai relu sur le paquet les deux constats de ma section
+7 du second passage avant de m'appuyer dessus : ils sont exacts (*"le délégué de classe"* est
+distracteur des items 3, 4, 5 et 6 ; l'énoncé de l'item 11 n'a pas changé).
+
+### 4. Réserves - celles du second passage, datées du 2026-10-02, reconduites
+
+Aucune réserve neuve. Les deux réserves de la section 7 du second passage restent ouvertes, telles
+qu'écrites :
+
+1. **Items 3 à 6, un distracteur hors de sa catégorie** : *"le délégué de classe"* est une personne,
+   distracteur de questions qui demandent un vote ou un droit.
+2. **Item 11, la question est mal formée** : *"Qui le suffrage universel permet-il de faire voter ?"*
+   Exemple de forme : *"Avec le suffrage universel, qui a le droit de voter ?"*
+
+`camille-po` peut en faire une story ; elles ne bloquent pas la ligne.
+
+### 5. Pour `camille-po`
+
+**Done pédagogique d'`EMC-CM1-10` prononcé, sous les deux réserves de la section 4.** La ligne de
+matrice peut passer à `couvert-valide`, avec la mention exigée d'avance : *"connaissance du vote et
+de la représentation seule ; participer à une décision collective reste non couvrable"*.
+
+### 6. Ce dont je reste la seule garde sur cette ligne
+
+Inchangé depuis le premier passage (section 8 ci-dessus) : l'exactitude de chaque fait de droit
+électoral, Q6 règle 1 au-delà des cinq mots cherchés par le test, la qualité des sources `HIS-3`,
+`EMC-6` et `EMC-8`. Sur cette ligne, la CI a été verte sur deux énoncés faux successifs de l'item 5
+et sur la date fausse de l'item 6 : aucun test ne sait qui vote en France.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s47, instance B, troisième passage, 2026-10-02.
