@@ -632,6 +632,25 @@ registres partages, est le module aval le plus souvent concerne par ce defaut pr
 toute mesure partielle d'un commit qui touche l'un de ces fichiers transverses inclut `bootstrap`
 dans son perimetre (`-pl <module>,bootstrap -am`), en plus du module modifie.
 
+**A la soumission d'une correction de contenu en reponse a un refus pedagogique, deux gestes
+reduisent le risque qu'elle introduise un defaut neuf plutot que de lever le motif refuse**
+(amendement s47, retro de s47). Deux refus en seconde instance du meme sprint venaient d'un
+defaut cree par la correction elle-meme, pas de l'erreur d'origine : sur `EMC-CM1-10`, la
+correction a paraphrase une formulation que `nadia-prof` avait pourtant ecrite mot pour mot comme
+forme acceptee au passage precedent, et la paraphrase s'est revelee fausse pour une raison que la
+formulation d'origine evitait - *"si la correction avait repris l'une des deux formes que j'avais
+ecrites, je l'aurais acceptee"* ; sur `QLM-CP-15` (reserve `AUT-CP-R1`, non bloquante), la
+correction d'un indice a reutilise le mot qui est la bonne reponse d'un autre item du meme paquet,
+rouvrant une fuite de reponse deja fermee a un passage anterieur. Les deux ont ete vus uniquement
+parce que `nadia-prof` rejoue le paquet entier a chaque passage, jamais seulement l'item corrige -
+pratique deja en place, pas neuve ici. Desormais, avant de soumettre une correction de contenu :
+**toute formulation que `nadia-prof` a ecrite comme forme acceptee ("exemple de forme") est
+reprise verbatim, sauf motif ecrit explicite de s'en ecarter** ; et **toute correction d'un indice
+ou d'un enonce est suivie d'une recherche du mot de la bonne reponse qu'elle vient d'y placer dans
+le reste du fichier du paquet**, pour verifier qu'aucun autre item n'a ce mot pour bonne reponse.
+Aucun des deux n'est un garde-fou automatisable a ce jour : la seule garde reste la discipline du
+developpeur avant soumission, en plus du rejeu complet deja fait par `nadia-prof`.
+
 **3. Daily.** Sofia collecte et route. Pas de fichier.
 
 **A chaque daily, Sofia demande explicitement a chaque agent en cours de lot de confirmer que son
