@@ -14,12 +14,115 @@
   (`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
   sections 2.2 ligne 16, 2.5 et 6). `CYC-1` non due (planning de s46, section 3).
 - **Statut global** : **REFUSE**, prononce le 2026-10-02 par `nadia-prof` (s46, instance B). Fiche
-  ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Derniere mise a jour** : 2026-10-02.
+  ouverte par ce verdict : aucune fiche n'existait pour ce jeu. **Second passage du 2026-10-02 :
+  REFUSE a nouveau**, sur un motif neuf introduit par la correction (item 11) ; le motif du premier
+  refus est leve.
+- **Derniere mise a jour** : 2026-10-02 (second passage).
 
 ---
 
 ## Bloc de validation pedagogique
+
+### Verdict du 2026-10-02, second passage (`nadia-prof`, s46, instance B) : **REFUSE**
+
+**Done pedagogique non prononce.** `SCI-CM1-16` reste `non couvert` ; `camille-po` ne ferme pas la
+ligne. Le motif du premier refus (item 2) est **leve**. Les reserves `PHN-CM1-R1` a `PHN-CM1-R4` sont
+**prises**. Mais la reformulation de l'item 11, faite pour `PHN-CM1-R4`, introduit une consigne de
+securite fausse, contredite par l'item 7 du meme paquet : c'est un motif neuf, sur un contenu neuf,
+pas un durcissement de la barre du premier refus.
+
+#### S2-1. Ce que j'ai fait
+
+**Audit complet, pas degrade.** Worktree dedie `s46-nadia-audit-b2` a `7ff80b67` (`round-two`,
+correction `e28fd355` incluse, lignee verifiee par `outils/verifier-lignee.sh`). Jar construit par
+`bash outils/mvn-jdk21.sh -pl bootstrap -am package -DskipTests`, lance sur le JDK 21 de la
+toolchain (21.0.10). Paquet joue **en entier** : une partie de dix manches en me trompant deux fois
+de facon distincte puis une troisieme fois jusqu'a la revelation, deux parties de dix manches avec
+une erreur puis la bonne reponse, et un debut de partie. **Les douze items ont ete tires et
+joues.** Dans la premiere partie, l'item 7 (seisme, geste) et l'item 11 (ascenseur) sont tombes en
+manches 7 et 8, l'un apres l'autre : c'est ainsi que le motif ci-dessous m'est apparu.
+
+Porte technique : je ne l'ai pas mesuree sur la correction, seulement
+`PaquetCm1SciencesPhenomenesTest` (section S2-6).
+
+#### S2-2. Le motif du premier refus est leve
+
+Item 2 servi : *"À La Réunion, le piton de la Fournaise entre en éruption et rejette de la lave,
+des cendres et des gaz brûlants."* Le volcan nomme est le volcan qui entre en eruption. Le present
+est exact : le piton de la Fournaise est l'un des volcans les plus actifs du monde, avec des
+eruptions presque chaque annee. Le marqueur `# lieu: france` est exact (La Reunion est un
+departement francais) et tient `BIA-2`. **C'est la barre que j'avais ecrite, elle est atteinte.**
+
+Ce que j'ai verifie en plus, sans en faire une reserve : les eruptions de la Fournaise sont surtout
+effusives, et leurs emissions de cendres sont rares mais attestees. L'enonce decrit une eruption, pas
+toutes ; il n'affirme rien de faux.
+
+#### S2-3. Les quatre reserves, rejouees
+
+| Reserve | Statut | Ce que j'ai constate en jouant |
+|---|---|---|
+| `PHN-CM1-R1` | **prise, levee sur les items 7, 8, 9 et 12** | 7 : *"des objets peuvent tomber et un escalier devient dangereux à descendre"* - ecarte un distracteur, ne nomme plus le meuble. 8 : *"Un objet emporté par le vent peut blesser une personne qu'il touche"* - ecarte un distracteur. 12 : *"Une personne surprise près de l'eau peut être entraînée ..."* - donne la raison sans designer le geste. 9 : *"L'eau qui monte peut piéger ou emporter ..."* reprend trois mots de la fin de la bonne reponse (*"l'eau qui monte"*), mais ces mots nomment le danger, pas le geste, et l'indice ne nomme plus les distracteurs ; je le compte comme tenu. **Item 11** : son indice suit le sort de l'item, renvoye par le motif (section S2-4) |
+| `PHN-CM1-R2` | **prise, levee sur l'item 12** | Item 12 : *"s'approcher pour observer la montée de l'eau"*, *"rester sur la berge pour surveiller le niveau"* sont des gestes qu'un enfant de 9 ans peut croire bons, et la bonne reponse n'est plus la plus longue. **Item 11** : *"le prendre pour descendre plus vite"* est plausible ; l'autre distracteur est une bonne conduite, c'est le motif (section S2-4) |
+| `PHN-CM1-R3` | **levee** | Un phenomene geologique est situe en France (item 2, La Reunion). Trois des quatre items situes sont en France |
+| `PHN-CM1-R4` | **prise, levee** | Les items 11 et 12 demandent un geste ; la consigne servie (*"... ou quel geste protège"*) les couvre |
+
+#### S2-4. Motif du refus
+
+> **Item 11 : la bonne reponse fait descendre l'escalier pendant les secousses, ce que l'item 7 du
+> meme paquet et les consignes de securite civile interdisent ; et un distracteur est la bonne
+> conduite.**
+>
+> Enonce servi : *"Pendant un séisme, un immeuble se met à trembler. Quel geste faut-il adopter avec
+> l'ascenseur ?"* Bonne reponse : *"ne pas le prendre, et utiliser l'escalier"*. Distracteurs :
+> *"le prendre pour descendre plus vite"*, *"rester à l'intérieur en attendant que ça passe"*.
+>
+> 1. **La bonne reponse est fausse au moment que l'enonce fixe.** L'enonce place l'enfant *pendant*
+>    les secousses (*"se met à trembler"*). Pendant les secousses, la consigne est de rester ou l'on
+>    est et de s'abriter ; on evacue par l'escalier, sans ascenseur, **apres** les secousses. *"Ne
+>    pas le prendre"* est exact ; *"et utiliser l'escalier"* ne l'est pas a ce moment-la. Le
+>    commentaire `HIS-3` de l'item reprend la meme confusion (*"emprunter l'escalier est la consigne
+>    ... pendant un séisme"*).
+> 2. **Le paquet se contredit.** L'item 7 enseigne que *"sortir en courant par l'escalier"* est un
+>    geste faux pendant un seisme, et son indice dit qu'*"un escalier devient dangereux à
+>    descendre"* pendant les secousses. L'item 11 donne comme juste ce que l'item 7 donne comme faux.
+>    Je les ai joues l'un apres l'autre dans la meme partie.
+> 3. **Un distracteur est la bonne conduite.** *"Rester à l'intérieur en attendant que ça passe"*
+>    est ce que la securite civile demande pendant les secousses, et ce que l'item 7 vient
+>    d'enseigner. L'enfant qui applique ce qu'il a appris a l'item 7 lit *"Ce n'est pas ça"*.
+>
+> C'est un fait faux enseigne comme vrai a l'enfant qui reussit, et une bonne reponse sanctionnee
+> chez celui qui raisonne juste : motif de refus a lui seul, sans amenagement.
+>
+> **Correction attendue** : un item 11 dont la bonne reponse est exacte au moment que fixe
+> l'enonce, qui ne contredit pas l'item 7, et dont aucun distracteur n'est une conduite correcte.
+> Deux voies, au choix de l'equipe : placer l'item **apres** les secousses (quitter l'immeuble,
+> par l'escalier et non par l'ascenseur), ou le garder **pendant** les secousses avec une bonne
+> reponse qui ne fait descendre personne. Le commentaire `HIS-3` doit etre exact apres correction.
+>
+> Points a reprendre dans le meme geste, puisque l'item est reecrit : l'indice *"Un bâtiment secoué
+> peut perdre son électricité du jour au lendemain"* emploie *"du jour au lendemain"*, qu'un enfant
+> de CM1 lit au sens propre (le lendemain) la ou le danger est immediat ; et *"quel geste faut-il
+> adopter avec l'ascenseur"* est une tournure maladroite. Ce ne sont pas des conditions de levee.
+>
+> **Ce que le refus ne demande pas** : aucun autre item n'est a modifier. La levee porte sur
+> l'item 11 seul, a la barre ecrite ici. Au rejeu, je jouerai le paquet en entier et je verifierai
+> la coherence des items 7 et 11 dans une meme partie.
+
+#### S2-5. Ce dont je reste la seule garde
+
+Inchange par rapport au premier passage (section 9 ci-dessous), avec une propriete de plus :
+**qu'un item ne contredise pas un autre item du meme paquet**. Aucun automate ne compare deux items
+entre eux ; ce motif a traverse le test du paquet, qui reste vert (section S2-6).
+
+#### S2-6. Mesure technique citee
+
+`bash outils/mvn-jdk21.sh -pl bootstrap -am test -Dtest=PaquetCm1SciencesPhenomenesTest,ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest -Dsurefire.failIfNoSpecifiedTests=false`
+sur ce worktree, fiche modifiee comprise : `PaquetCm1SciencesPhenomenesTest` *"Tests run: 11,
+Failures: 0, Errors: 0, Skipped: 0"*, `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`
+*"Tests run: 10, Failures: 0, Errors: 0, Skipped: 0"*, `BUILD SUCCESS`. Ce second passage n'ecrit
+aucun identifiant neuf. Perimetre : ces deux tests, pas la CI.
+
+---
 
 ### Verdict du 2026-10-02 (`nadia-prof`, s46, instance B) : **REFUSE**
 
