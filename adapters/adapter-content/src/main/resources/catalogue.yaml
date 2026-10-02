@@ -696,3 +696,15 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-mouvement
     nombreDeManches: 10
+  - id: bandit-manchot-culture-anglophone-cp
+    titre: "Le monde anglophone"
+    consigne: "Lis bien, puis dis de quel pays on parle, ou réponds à la question."
+    mecanique: bandit-manchot
+    paquet: cp-anglais-culture
+    nombreDeManches: 10
+  - id: bandit-manchot-vote-election-cm1
+    titre: "Le vote et la représentation"
+    consigne: "Lis bien, puis dis qui vote, qui est élu, ou ce que fait un délégué."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-vote-election
+    nombreDeManches: 10

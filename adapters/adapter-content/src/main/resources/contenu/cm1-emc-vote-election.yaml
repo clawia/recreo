@@ -1,0 +1,116 @@
+schema: 1
+id: cm1-emc-vote-election
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Construire une culture civique"
+  competence: "Comprendre le sens du vote et de la représentation (délégué de classe, élection, suffrage universel)."
+lignesDeReferentiel: ["EMC-CM1-10"]
+#
+# S47-EMC-VOTE-CM1 (docs/backlog/backlog.md, sprint 47), ligne EMC-CM1-10 de l'enseignement moral
+# et civique (CM1), domaine "Construire une culture civique". Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-10).
+#
+# Arbitrage pedagogique prealable cite integralement par la story
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, Jugement de faisabilite,
+# nadia-prof, 2026-09-03, ligne 10) : jouable au choix, sur la connaissance seule. Mention exigee
+# d'avance, propre a cette ligne : "connaissance du vote et de la representation seule ; participer
+# a une decision collective reste non couvrable".
+#
+# Q6 (nadia-prof, squad/conformite/ARBITRAGE-PREALABLE-s47-trois-questions-de-theo-archi.md) : la
+# frontiere avec EMC-CM1-09 (cm1-emc-institutions.yaml, fermee a s46) passe par l'objet de la
+# question - EMC-CM1-09 porte sur ce que fait l'institution (le vote DU conseil municipal) ;
+# EMC-CM1-10 porte sur la facon de choisir ses representants (le vote POUR le conseil, la duree du
+# mandat, le role du delegue). Aucune bonne reponse de ce paquet ne decrit ce que decide le conseil
+# municipal (budget, projets, nom des rues) ; aucune situation de cm1-emc-institutions.yaml n'est
+# reprise (terrain de sport, nom de rue, lampadaire).
+#
+# Piege d'exactitude (Q6, regle 2) : le maire n'est pas elu par les habitants mais par le conseil
+# municipal, parmi ses membres (CGCT, article L2122-4). Aucun item de ce paquet ne dit ni ne laisse
+# entendre que les habitants elisent le maire.
+#
+# Piege d'exactitude (Q6, regle 3) : "les electeurs de la commune" est le corps electoral, jamais
+# "les habitants" - ecrit ainsi sur chaque item qui en parle.
+#
+# HIS-3 : chaque fait institutionnel porte sa source en commentaire, a cote de l'item.
+#
+# EMC-6 : le delegue de classe se sert dans une classe decrite a la troisieme personne ("une
+# classe", "ses camarades"), jamais "ta classe".
+#
+# EMC-8 : aucun item ne demande a l'enfant pour qui il voterait ni ce qu'il ferait - toutes les
+# questions portent sur le mecanisme (qui vote, qui elit, que fait un delegue), jamais sur une
+# intention personnelle de l'enfant.
+#
+# CYC-1 : continuite cycle 2 / cycle 3 verifiee non due (DEC-0104, section 4.5) - l'objet miroir de
+# cette ligne au CP ("participer a une decision collective par un vote") est non couvrable en
+# l'etat, aucun paquet ne le sert, aucune lecture croisee n'est due.
+#
+# Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, section "Mention exigee
+# d'avance si une ligne bouge") : "connaissances civiques et reconnaissance de situations seules ;
+# aucun comportement, aucun engagement et aucune participation a une decision collective ne sont
+# servis par ce produit." Ce paquet ne demande ni comportement, ni engagement, ni participation a
+# une decision collective.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf,
+# aucune dette heritee.
+#
+# FER-1 : les trois elements de la parenthese du libelle (delegue de classe, election, suffrage
+# universel) sont chacun en bonne reponse d'au moins un item, sur la tache A (items 1 a 6).
+#
+# FER-3 : deux taches distinctes - tache A, reconnaitre quel terme correspond a une situation
+# decrite (items 1 a 6, bonne reponse strictement l'un des trois termes du libelle) ; tache B, dire
+# qui elit, qui est elu, ou ce que fait un delegue (items 7 a 12, bonne reponse ne nomme jamais un
+# des trois termes du libelle).
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Dans une classe, les élèves votent pour choisir un camarade qui va les représenter auprès des adultes de l'école. Comment appelle-t-on ce camarade, une fois élu ?"  # HIS-3: l'election d'un delegue par ses camarades est un fonctionnement ordinaire d'une classe enseigne au cycle 3
+    bonneReponse: "le délégué de classe"
+    distracteurs: ["le suffrage universel", "une élection"]
+    indice: "C'est un élève de la classe, choisi par un vote de ses camarades."
+  - enonce: "Un élève, une fois choisi par ses camarades pour les représenter, doit porter leur avis auprès du directeur ou de la directrice. Qui est cet élève ?"  # HIS-3: le role de representation d'un delegue aupres de l'ecole est un fonctionnement ordinaire d'une classe enseigne au cycle 3
+    bonneReponse: "le délégué de classe"
+    distracteurs: ["une élection", "le suffrage universel"]
+    indice: "Il ou elle parle au nom de ses camarades, sans décider à leur place."
+  - enonce: "Dans une commune, les électeurs votent pour choisir les membres du conseil municipal qui vont les représenter. Comment appelle-t-on ce vote ?"  # HIS-3: l'election des membres du conseil municipal par les electeurs de la commune est prevue par le code electoral (elections municipales au suffrage universel direct)
+    bonneReponse: "une élection"
+    distracteurs: ["le délégué de classe", "le suffrage universel"]
+    indice: "Chaque électeur dépose son choix, puis les voix sont comptées."
+  - enonce: "Pour choisir le président de la République, tous les électeurs du pays sont appelés à voter le même jour. Comment appelle-t-on ce moment ?"  # HIS-3: l'election du president de la Republique au suffrage universel direct est prevue par la Constitution de 1958, article 6
+    bonneReponse: "une élection"
+    distracteurs: ["le délégué de classe", "le suffrage universel"]
+    indice: "C'est un vote qui concerne tout le pays, pas seulement une commune."
+  - enonce: "En France, toute personne majeure peut voter, quels que soient sa richesse, son métier ou son sexe. Comment appelle-t-on ce droit de vote accordé à tous ?"  # HIS-3: le principe du suffrage universel, sans condition de richesse ni de sexe, est un fait de droit electoral enseigne au cycle 3
+    bonneReponse: "le suffrage universel"
+    distracteurs: ["le délégué de classe", "une élection"]
+    indice: "Ce droit n'appartient pas seulement à certaines personnes : il appartient à tous les citoyens majeurs."
+  - enonce: "Depuis 1944, les femmes votent en France au même titre que les hommes. Comment appelle-t-on ce principe, qui donne le droit de vote à tous les citoyens majeurs ?"  # HIS-3: ordonnance du 21 avril 1944, droit de vote des femmes en France
+    bonneReponse: "le suffrage universel"
+    distracteurs: ["le délégué de classe", "une élection"]
+    indice: "Avant cette date, ce droit était réservé aux hommes."
+  - enonce: "Que fait le délégué de classe, une fois élu ?"  # HIS-3: le role de representation sans pouvoir de decision seul est un fonctionnement ordinaire d'une classe enseigne au cycle 3
+    bonneReponse: "il ou elle représente les élèves et porte leur avis auprès des adultes de l'école"
+    distracteurs: ["il ou elle décide seul des règles de la classe", "il ou elle corrige les cahiers des autres élèves"]
+    indice: "Il ou elle parle au nom de ses camarades, sans décider à leur place."
+  - enonce: "Dans une classe, qui choisit le délégué de classe ?"  # HIS-3: l'election du delegue par ses camarades est un fonctionnement ordinaire d'une classe enseigne au cycle 3
+    bonneReponse: "les élèves de la classe, par un vote"
+    distracteurs: ["le maître ou la maîtresse", "le directeur ou la directrice"]
+    indice: "Ce sont les camarades eux-mêmes qui votent pour choisir qui les représentera."
+  - enonce: "Dans une commune, qui élit les membres du conseil municipal ?"  # HIS-3: code electoral, elections municipales au suffrage universel direct
+    bonneReponse: "les électeurs de la commune"
+    distracteurs: ["le maire", "le conseil municipal lui-même"]
+    indice: "Ce sont les personnes inscrites sur les listes électorales qui votent, lors d'une élection municipale."
+  - enonce: "Dans une commune, qui élit le maire ?"  # HIS-3: CGCT, article L2122-4 - le maire est elu par le conseil municipal, parmi ses membres
+    bonneReponse: "le conseil municipal"
+    distracteurs: ["les électeurs de la commune", "le préfet"]
+    indice: "Ce sont les conseillers municipaux eux-mêmes qui le choisissent, parmi leurs membres."
+  - enonce: "Qui le suffrage universel permet-il de faire voter ?"  # HIS-3: le principe du suffrage universel, sans condition de richesse ni de sexe, est un fait de droit electoral enseigne au cycle 3
+    bonneReponse: "tous les citoyens majeurs, quels que soient leur richesse ou leur sexe"
+    distracteurs: ["seulement les citoyens les plus riches", "seulement les hommes"]
+    indice: "Ce droit ne dépend ni de la fortune, ni du sexe de la personne."
+  - enonce: "Combien de temps dure, en général, le mandat des conseillers municipaux élus en France ?"  # HIS-3: CGCT, duree du mandat municipal fixee a six ans
+    bonneReponse: "six ans"
+    distracteurs: ["un an", "vingt ans"]
+    indice: "C'est une durée de plusieurs années, renouvelée par une nouvelle élection."

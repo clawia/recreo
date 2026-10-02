@@ -354,6 +354,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // module adapter-content, pas le reacteur complet, et ne pouvait donc pas voir ce
             // garde-fou du module bootstrap rougir.
             "bandit-manchot-soustractions-posees-ce1",
+            // S47-LVE-CULTURE-CP (s47) : entree neuve, LVE-CP-06, decouverte culturelle des pays
+            // anglophones.
+            "bandit-manchot-culture-anglophone-cp",
+            // S47-EMC-VOTE-CM1 (s47) : entree neuve, EMC-CM1-10, sens du vote et de la
+            // representation.
+            "bandit-manchot-vote-election-cm1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -579,6 +585,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Trajectoire et vitesse",
             // S46-MAT-SOUSTRACTION (s46) : titre neuf. Complete ici, voir le motif pres de l'id.
             "Les soustractions posées",
+            // S47-LVE-CULTURE-CP (s47) : titre neuf.
+            "Le monde anglophone",
+            // S47-EMC-VOTE-CM1 (s47) : titre neuf.
+            "Le vote et la représentation",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -828,6 +838,10 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "ressent de ce qu'elle fait.",
             // S46-SCI-MOUVEMENT-CM1 (s46) : consigne neuve.
             "Lis bien, puis dis la trajectoire, le repère, ou qui va le plus vite.",
+            // S47-LVE-CULTURE-CP (s47) : consigne neuve.
+            "Lis bien, puis dis de quel pays on parle, ou réponds à la question.",
+            // S47-EMC-VOTE-CM1 (s47) : consigne neuve.
+            "Lis bien, puis dis qui vote, qui est élu, ou ce que fait un délégué.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -947,6 +961,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (copie conforme du referentiel de nadia-prof,
             // squad/programme/education-physique-et-sportive/competences-cm1.md).
             "Conduire et maîtriser un affrontement collectif ou interindividuel",
+            // S47-LVE-CULTURE-CP (s47) : domaine neuf, premier paquet de langues vivantes anglais
+            // au CP (le domaine combine de cm1-anglais, "Lire et comprendre ; découverte
+            // culturelle", est une chaine distincte, deja listee plus haut).
+            "Découverte culturelle",
             // competence (descripteur)
             "Calcul mental - additions dans la limite de 10",
             // S37-1 (s37) : competence neuve, MAT-CE1-03 sous-partie "additions".
@@ -1324,7 +1342,16 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-MAT-SOUSTRACTION (s46) : competence neuve, libelle du referentiel
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-05). Complete ici,
             // voir le motif pres de l'id.
-            "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)");
+            "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)",
+            // S47-LVE-CULTURE-CP (s47) : competence neuve, libelle du referentiel copie mot pour
+            // mot (squad/programme/langues-vivantes/competences-cp.md, ligne LVE-CP-06).
+            "Découvrir quelques aspects culturels des pays de la langue étudiée (fêtes, lieux, vie "
+                    + "quotidienne).",
+            // S47-EMC-VOTE-CM1 (s47) : competence neuve, libelle du referentiel copie mot pour mot
+            // (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-10).
+            "Comprendre le sens du vote et de la représentation (délégué de classe, élection, "
+                    + "suffrage universel).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
