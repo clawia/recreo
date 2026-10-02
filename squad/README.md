@@ -616,6 +616,22 @@ meme sprint : l'un accentuait deja ses phrases candidates en respectant `DEC-000
 Une phrase qui va devenir du contenu servi gagne a etre ecrite une seule fois sous sa forme finale
 plutot que reecrite a la validation.
 
+**Une mesure partielle qui touche `catalogue.yaml`, `squad/decisions/REGISTRE-identifiants.md`, ou
+tout autre fichier de contenu servi, inclut `bootstrap` dans son perimetre, meme mesure partielle**
+(amendement s46, retro de s46). A s46, `marc-dev` a mesure son lot (`MAT-CE1-05`) avec
+`-pl adapter-content -am`, qui construit les dependances amont du module mesure (`domain`,
+`application`) mais jamais les modules avals qui dependent de lui, comme `bootstrap`.
+`TexteAccentueExposeParLePortEntrantTest`, dans `bootstrap`, verifie que chaque chaine exposee par
+le catalogue reel est inventoriee ; il n'a rougi qu'a la fusion complete des cinq lots du sprint,
+trouve par `yanis-qa` puis corrige par `sofia-sm` avant la mesure de cloture (commit `346274c8`).
+**`-am` seul ne protege pas de ce defaut** : il construit ce dont le module mesure a besoin, jamais
+ce qui a besoin de lui - la regle deja ecrite dans `CLAUDE.md` ("toute mesure partielle du reacteur
+porte `-am`") reste necessaire mais ne suffit pas ici, puisque le module qui aurait vu le rouge est
+en aval, pas en amont, du module mesure. `bootstrap`, qui balaie le catalogue reel et plusieurs
+registres partages, est le module aval le plus souvent concerne par ce defaut precis. Desormais,
+toute mesure partielle d'un commit qui touche l'un de ces fichiers transverses inclut `bootstrap`
+dans son perimetre (`-pl <module>,bootstrap -am`), en plus du module modifie.
+
 **3. Daily.** Sofia collecte et route. Pas de fichier.
 
 **A chaque daily, Sofia demande explicitement a chaque agent en cours de lot de confirmer que son
