@@ -84,6 +84,17 @@ lignesDeReferentiel: ["SCI-CM1-16"]
 #   questions "pourquoi" des items 11 et 12. Les deux items sont reformules en choix de geste
 #   plutot que la consigne modifiee, pour rester dans ce fichier (la consigne est declaree dans
 #   catalogue.yaml).
+#
+# Second passage S46 (squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md, refus
+# nadia-prof du 2026-10-02, instance B) : motif neuf introduit par la reformulation de l'item 11
+# pour PHN-CM1-R4. L'item placait la bonne reponse (prendre l'escalier) pendant les secousses, ce
+# que l'item 7 et les consignes de securite civile interdisent, et un distracteur ("rester a
+# l'interieur en attendant que ca passe") etait la bonne conduite a ce moment-la. Corrige en
+# deplacant l'item apres les secousses, au moment de l'evacuation d'un immeuble endommage : il ne
+# contredit plus l'item 7 et aucun distracteur n'est une conduite correcte. L'indice ne dit plus
+# "du jour au lendemain" (lu au sens propre par un enfant de CM1 alors que le danger est immediat)
+# et la question n'est plus "quel geste faut-il adopter avec l'ascenseur" (tournure maladroite) ;
+# HIS-3 corrige en consequence.
 items:
   - enonce: "Au Japon, le sol tremble fortement pendant plusieurs secondes et des objets tombent des étagères. Quel phénomène décrit cette situation ?"  # element: geologique # HIS-3: séisme défini par une secousse du sol due à un mouvement des plaques terrestres, le Japon est une région fréquemment touchée par ce phénomène géologique enseigné au cycle 3 # lieu: ailleurs
     bonneReponse: "un séisme"
@@ -125,10 +136,10 @@ items:
     bonneReponse: "rester à l'intérieur et fermer portes et fenêtres"
     distracteurs: ["sortir observer le volcan de près", "ouvrir les fenêtres pour que les cendres s'évacuent"]
     indice: "Les cendres volcaniques peuvent gêner la respiration si on les respire."
-  - enonce: "Pendant un séisme, un immeuble se met à trembler. Quel geste faut-il adopter avec l'ascenseur ?"  # element: risque # HIS-3: ne pas utiliser l'ascenseur et emprunter l'escalier est la consigne de sécurité recommandée pendant un séisme, un ascenseur pouvant rester bloqué si l'électricité ou la structure du bâtiment est touchée, consigne enseignée au cycle 3 # lieu: non-situe
+  - enonce: "Après un séisme, les secousses sont terminées et les habitants doivent quitter un immeuble endommagé. Que faut-il faire avec l'ascenseur ?"  # element: risque # HIS-3: ne pas utiliser l'ascenseur et emprunter l'escalier est la consigne de sécurité recommandée après un séisme pour quitter un immeuble endommagé, un ascenseur pouvant rester bloqué par une panne d'électricité ou des dégâts de structure, consigne enseignée au cycle 3 # lieu: non-situe
     bonneReponse: "ne pas le prendre, et utiliser l'escalier"
-    distracteurs: ["le prendre pour descendre plus vite", "rester à l'intérieur en attendant que ça passe"]
-    indice: "Un bâtiment secoué peut perdre son électricité du jour au lendemain."
+    distracteurs: ["le prendre pour descendre plus vite", "attendre qu'il remarche pour sortir"]
+    indice: "Même après les secousses, un ascenseur peut rester bloqué à cause d'une panne d'électricité ou de dégâts dans le bâtiment."
   - enonce: "De fortes pluies font monter le niveau d'un cours d'eau. Quel geste faut-il adopter près de l'eau ?"  # element: risque # HIS-3: s'éloigner d'un cours d'eau et de ses berges pendant de fortes pluies est la consigne de sécurité recommandée, le niveau pouvant monter très vite et sans prévenir, consigne enseignée au cycle 3 # lieu: non-situe
     bonneReponse: "s'éloigner du cours d'eau et de ses berges"
     distracteurs: ["s'approcher pour observer la montée de l'eau", "rester sur la berge pour surveiller le niveau"]
