@@ -108,14 +108,14 @@ items:
     bonneReponse: "il vote pour décider si le projet se fait"
     distracteurs: ["il s'occupe des papiers administratifs des habitants", "il surveille la cour de récréation"]
     indice: "Un projet qui coûte de l'argent à la commune se décide par un vote."
-  - enonce: "Qui organise la vie quotidienne de l'école, sans que le conseil municipal ait à voter ?"  # HIS-3: le directeur ou la directrice organise seul ou seule la vie quotidienne de l'ecole, sans vote des elus - fonctionnement ordinaire d'une ecole enseigne au cycle 3
-    bonneReponse: "le directeur ou la directrice de l'école, seul ou seule"
-    distracteurs: ["le conseil municipal, qui vote cette organisation en réunion", "la mairie, qui s'en occupe comme d'une démarche administrative"]
-    indice: "C'est la personne responsable de toute l'école, du matin au soir, et ce n'est pas un vote des élus."
-  - enonce: "Une sortie scolaire ne passe pas par un vote du conseil municipal. Pourquoi est-elle quand même autorisée ?"  # HIS-3: le directeur ou la directrice autorise seul ou seule une sortie scolaire ordinaire, sans vote du conseil municipal - fonctionnement ordinaire d'une ecole enseigne au cycle 3
-    bonneReponse: "parce que le directeur ou la directrice de l'école l'autorise seul ou seule"
-    distracteurs: ["parce que la mairie organise un vote à la place du conseil municipal", "parce que le conseil municipal l'autorise en dehors d'un vote"]
-    indice: "C'est la personne qui connaît l'organisation de l'école qui donne son accord, sans réunion des élus."
+  - enonce: "Que fait le directeur ou la directrice de l'école au quotidien ?"  # HIS-3: le directeur ou la directrice organise la vie quotidienne de l'ecole et veille a son bon deroulement - fonctionnement ordinaire d'une ecole enseigne au cycle 3
+    bonneReponse: "il ou elle organise la vie de l'école et veille à son bon déroulement"
+    distracteurs: ["il ou elle vote les décisions de la commune", "il ou elle s'occupe des démarches administratives des habitants"]
+    indice: "C'est la personne responsable de toute l'école, du matin au soir."
+  - enonce: "Pourquoi une classe doit-elle demander une autorisation avant une sortie scolaire ?"  # HIS-3: le directeur ou la directrice organise et autorise la vie de l'ecole, y compris une sortie scolaire ordinaire - fonctionnement ordinaire d'une ecole enseigne au cycle 3
+    bonneReponse: "parce que le directeur ou la directrice organise et autorise la vie de l'école"
+    distracteurs: ["parce que la mairie vote cette décision en réunion", "parce que le conseil municipal s'occupe des démarches administratives"]
+    indice: "C'est la personne qui connaît l'organisation de l'école qui donne son accord."
   - enonce: "Que fait la mairie quand un habitant signale un lampadaire cassé dans sa rue ?"  # HIS-3: la reparation d'un equipement de la voirie communale est un service rendu par la commune, pas une demarche administrative ni un vote - fonctionnement ordinaire d'une collectivite locale enseigne au cycle 3
     bonneReponse: "elle s'occupe de faire réparer le lampadaire"
     distracteurs: ["elle attend que le conseil municipal vote une décision avant d'agir", "elle demande à l'école de s'en occuper"]
