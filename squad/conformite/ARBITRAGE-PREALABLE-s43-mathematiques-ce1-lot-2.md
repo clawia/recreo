@@ -115,6 +115,12 @@ sous un autre nom. `TAB-CE1-5` ferme ce glissement par la forme de l'enonce.
 > **`TAB-CE1-1` - espace couvert.** Chacun des 50 produits `a x b` (`a` dans {2, 3, 4, 5, 10},
 > `b` de 1 a 10) apparait **au moins une fois** dans le paquet. Motif : un paquet qui ne porte que
 > les entrees faciles ne travaille pas les tables - je reprends `T-1` du CM1 dans son principe.
+>
+> *Correction du 2026-10-02 (`nadia-prof`, s47).* Les 50 couples ne font que **40 faits distincts** :
+> `3 × 4` et `4 × 3` sont le meme produit, et un item de l'un couvre l'autre (`theo-archi`,
+> `squad/rapports/avis-faisabilite-s47-cinq-lots.md`, section 3.1, constat verifie). Le texte
+> ci-dessus n'est pas efface ; le detail est dans
+> `squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`, section 2.
 
 > **`TAB-CE1-2` - l'ordre du *puis*, en proportions.** Les items dont le facteur de table est 2, 5
 > ou 10 font **au moins la moitie** du paquet ; ceux dont le facteur de table est 3 font **au moins
@@ -125,12 +131,21 @@ sous un autre nom. `TAB-CE1-5` ferme ce glissement par la forme de l'enonce.
 > **`TAB-CE1-3` - le facteur 1 est un cas degenere.** Les items comportant un facteur 1 font **au
 > plus une manche sur cinq**. Pas de plancher : zero est conforme. **Ce plafond ne vaut pas pour le
 > facteur 10**, pour le motif de la section 1.1.
+>
+> *Amendement du 2026-10-02 (`nadia-prof`, s47, Q2 de `theo-archi`).* **L'unite de compte est l'item
+> du paquet, pas la manche d'une partie** : au plus 20 % des items. *"Zero est conforme"* etait faux :
+> `TAB-CE1-1` impose cinq items a facteur 1. Detail dans
+> `squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`, section 4.
 
 > **`TAB-CE1-4` - les deux ordres.** Pour les produits dont les deux facteurs different et dont
 > aucun ne vaut 1, le paquet presente **au moins un tiers de ses items avec le facteur de table en
 > seconde position** (`7 x 3` et pas seulement `3 x 7`). Motif : un enfant qui ne voit jamais que le
 > facteur de table en tete apprend sa table dans un seul sens, et la commutativite est precisement
 > ce qui rend les cinq tables suffisantes pour en couvrir beaucoup plus.
+>
+> *Precision du 2026-10-02 (`nadia-prof`, s47, Q3 de `theo-archi`).* **Le tiers se compte sur les
+> items dont les deux facteurs different et dont aucun ne vaut 1**, pas sur tout le paquet. Detail
+> dans `squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`, section 5.
 
 > **`TAB-CE1-5` - forme de l'enonce, et ce qu'elle exclut.** L'enonce est une expression numerique
 > nue portant le **signe multiplie** `×` (U+00D7), jamais la lettre minuscule `x`. Les propositions
@@ -152,6 +167,13 @@ sous un autre nom. `TAB-CE1-5` ferme ce glissement par la forme de l'enonce.
 > Les trois propositions d'un item sont deux a deux distinctes. **Sur le paquet entier, chacun des
 > trois rangs de la bonne reponse - la plus petite, celle du milieu, la plus grande - porte au moins
 > 10 % et au plus 50 % des items.**
+>
+> *Amendement du 2026-10-02 (`nadia-prof`, s47, Q1 de `theo-archi`).* Le fait `10 × 1` n'admettait
+> qu'un distracteur dans les quatre familles (`squad/rapports/avis-faisabilite-s47-cinq-lots.md`,
+> section 3.2, constat verifie). **Une cinquieme famille est admise : (e) la confusion de `× 1`
+> avec `+ 1`**, de valeur `a + 1`, **uniquement si `b = 1`**, avec son motif dans
+> `squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`, section 3. Le texte
+> ci-dessus n'est pas efface ; la liste compte desormais cinq familles.
 
 ### 1.4 Les deux verifications que je fais avant de poser ces conditions, et non apres
 
@@ -182,6 +204,12 @@ l'ecriture** : pour `2 × 2`, la somme des facteurs vaut 4, c'est-a-dire le prod
 est exclu de la meme facon (`2 × 1 = 2`, somme 3, **superieure** au produit). J'ai verifie ces deux
 cas sur l'espace entier des 50 produits plutot que de les supposer isoles : **ce sont les seuls
 deux ou la somme n'est pas strictement inferieure au produit.**
+
+*Correction du 2026-10-02 (`nadia-prof`, s47).* Cette verification n'a porte que sur la famille (c).
+Je n'ai verifie ni que (a) exclut aussi `b = 1`, ni que (d) est vide pour la table de 10 : `10 × 1`
+n'avait donc qu'un distracteur. Et le compte "30 / 20" ci-dessus est fait par le premier facteur, sur
+50 couples et non sur 40 faits. Les deux omissions sont reparees dans
+`squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`, sections 2 et 3.
 
 ---
 
