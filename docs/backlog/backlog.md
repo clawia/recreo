@@ -3482,6 +3482,169 @@ chacun des trois items, les deux autres propositions restent l'erreur de regle a
   sprint, apres ou avec `EPS-CM1-R5`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur, apres `EPS-CM1-R5`.
 
+### Story d'arbitrage differee, adressee a `nadia-prof` - `SOP-CE1-R1` : les items sans emprunt se repondent sans poser l'operation
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-soustractions-posees-ce1` a s46 et prononce
+**VALIDE SOUS RESERVE** sur `MAT-CE1-05`
+(`squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`, verdict du second passage,
+section 4). Sur les deux items sans emprunt du paquet (`47 - 20`, `65 - 15`), `SOP-CE1-5` n'admet
+que la somme comme distracteur, et une somme depasse toujours le premier terme - un enfant qui sait
+qu'en enlevant on obtient moins que ce qu'on avait ecarte ce distracteur sans poser l'operation.
+`nadia-prof` ecrit elle-meme que la limite vient de sa propre condition, pas du paquet, et qu'elle
+touche precisement les deux items que `SOP-CE1-2` exige pour que l'enfant apprenne a ne pas
+emprunter sans besoin. **Ce n'est pas une story de correction de contenu** : `nadia-prof` demande
+elle-meme un arbitrage qui lui revient, entre deux sorties qu'elle a ecrites, avant toute reprise du
+paquet.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Les soustractions posees" sur un item sans
+  emprunt, je veux que le distracteur propose soit une erreur que je pourrais vraiment croire,
+  afin que la manche m'apprenne autant que celles qui comportent un emprunt plutot que de se
+  repondre par un simple sens de grandeur.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs",
+  `MAT-CE1-05` (`squad/programme/mathematiques/competences-ce1.md`) - ligne deja `couvert-valide`
+  depuis s46 (Done pedagogique **VALIDE SOUS RESERVE** sur ce paquet), non rouverte par cette
+  story.
+- **Criteres d'acceptation** : les deux sorties que `nadia-prof` a ecrites elle-meme comme seules
+  recevables (meme fiche, section `SOP-CE1-R1`), au choix de son seul arbitrage :
+  - Etant donne les items sans emprunt du paquet, quand `nadia-prof` instruit cet arbitrage, alors
+    elle admet par ecrit, pour ces items, une cinquieme forme de distracteur nommee dont la valeur
+    est inferieure au premier terme et correspond a une erreur de soustraction plausible, et
+    `SOP-CE1-5` est amendee en consequence ;
+  - ou alors elle accepte par ecrit, sur ces deux items precisement, la limite qu'elle a constatee,
+    sans reprise du paquet.
+  - Dans les deux cas, le paquet n'est pas repris avant que cet arbitrage soit rendu (motif de
+    `nadia-prof`, meme fiche, section `SOP-CE1-R1` : "le paquet n'est pas a reprendre avant cet
+    arbitrage").
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-02 (`squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`, verdict du
+  second passage, section 4), identifiant deja alloue dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : `nadia-prof` elle-meme, pour l'arbitrage ; aucun developpement n'est
+  affecte tant que l'arbitrage n'est pas rendu.
+
+### Story de correction differee, groupee par paquet - `EMC-CM1-R5`, `EMC-CM1-R6` : deux defauts de "Ressentir et agir"
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-emotion-ressentir-agir-cm1` a s46 et prononce
+**VALIDE SOUS RESERVE** sur `EMC-CM1-01`
+(`squad/conformite/FICHE-bandit-manchot-emotion-ressentir-agir-cm1.md`, section 4). Deux reserves
+non bloquantes, distinctes mais sur le meme paquet et le meme audit : `camille-po` les groupe en
+une seule story plutot que deux.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Ressentir et agir", je veux que chaque situation
+  n'admette qu'une seule emotion evidente et que chaque geste bienveillant doive vraiment etre lu
+  pour etre reconnu, afin que le jeu m'apprenne a distinguer les emotions plutot qu'a deviner par
+  elimination ou par ton.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine
+  "Respecter autrui", `EMC-CM1-01`
+  (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`) - ligne deja
+  `couvert-valide` depuis s46, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`EMC-CM1-R5`** (items 3, 5, 11) : etant donne l'item 3 (Aya), quand on le relit, alors la
+    situation decrit ce qu'Aya ressent apres avoir ete decouverte, et non plus une peur d'etre
+    decouverte qui rend la honte moins evidente que la peur ; etant donne l'item 5 (Lea), quand on
+    le relit, alors la situation ecarte la tristesse comme emotion la plus evidente, pour que la
+    jalousie le reste ; etant donne l'item 11 (le ballon), quand on le relit, alors "par accident"
+    est retire ou l'emotion visee est changee pour que la colere reste la plus evidente ; et sur les
+    items 3 et 5, quand on relit leurs distracteurs, alors chacun est de la meme valence que la
+    bonne reponse sans etre defendable devant la situation decrite.
+  - **`EMC-CM1-R6`** (items 8, 10) : etant donne un item "fait" de la tache B, quand on relit ses
+    trois propositions, alors la bonne reponse n'est plus la seule conduite calme ou bienveillante
+    parmi les trois.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`EMC-1`, `EMC-2`, `EMC-5`, `EMC-8`, `FER-2`, `FER-3`, `CYC-1`), alors elles restent toutes
+    tenues : cette story touche cinq items sur onze.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les cinq items corriges et confirme qu'une seule emotion reste
+    evidente par situation, et qu'un geste bienveillant ne se devine plus sans lire.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-10-02 (meme fiche, section 4), identifiants deja alloues dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee - `EMC-CM1-R7` : deux items de "Les institutions de ma commune" redisent le CP
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-institutions-cm1` a s46 et prononce **VALIDE
+SOUS RESERVE** sur `EMC-CM1-09`, au troisieme passage
+(`squad/conformite/FICHE-bandit-manchot-institutions-cm1.md`, verdict du troisieme passage,
+section 5). Les items 10 et 11, revenus a leur version du premier passage apres deux tentatives de
+reformulation refusees, redisent presque mot pour mot deux items deja servis par
+`bandit-manchot-roles-ecole-commune-cp`. `nadia-prof` : "le Done est ouvert sans attendre", ce
+n'est pas un motif de refus, mais le gain reel de cycle 3 de cette ligne - le conseil municipal et
+le maire - n'est pas encore porte par ces deux items.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Les institutions de ma commune", je veux que
+  chaque item m'apprenne quelque chose que je ne savais pas deja au CP, afin que le jeu serve
+  reellement le cycle 3 sur toute sa tache B.
+- **Competence programme visee** : enseignement moral et civique, CM1 (cycle 3), domaine
+  "Construire une culture civique", `EMC-CM1-09`
+  (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`) - ligne deja
+  `couvert-valide` depuis s46, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne les items 10 et 11, quand on les remplace, alors les deux items neufs portent un
+    fait de cycle 3 absent du paquet de CP - par exemple ce que decide le conseil municipal du
+    budget de la commune, ou ce que le maire decide seul sans vote (un arrete, CGCT L2213-1).
+  - Etant donne chaque fait porte par les deux items neufs, quand on relit le commentaire du
+    paquet, alors ce fait porte sa source dans son marqueur (`HIS-3`), et aucune formulation
+    exclusive ("seul ou seule", "sans vote") n'est ajoutee sans source verifiable.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`EMC-5`, `EMC-6`, `EMC-7`, `HIS-3`, `FER-1` a `FER-3`, `CYC-1`), alors elles restent toutes
+    tenues : `FER-1` reste tenue sans changer le nombre d'items, et aucune des trois institutions
+    de la parenthese du libelle ne perd sa bonne reponse.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les deux items corriges et confirme qu'ils n'entrent en
+    contradiction avec aucun role deja servi au CP, et qu'ils apportent reellement le gain de
+    cycle 3 de la ligne.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-02 (meme fiche, verdict du troisieme passage, section 5), identifiant deja alloue dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee, groupee par paquet - `MVT-CM1-R1` a `MVT-CM1-R4` : quatre defauts de "Trajectoire et vitesse"
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-mouvement-cm1` a s46 et prononce **VALIDE SOUS
+RESERVE** sur `SCI-CM1-03` (`squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md`, section 7).
+Quatre reserves non bloquantes sur le meme paquet et le meme audit : `camille-po` les groupe en une
+seule story plutot que quatre, aucune ne dependant des autres pour etre corrigee.
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Trajectoire et vitesse", je veux que chaque
+  indice explique sans designer la reponse, que chaque comparaison de vitesse m'oblige a lire
+  l'observation decrite, et que la consigne couvre vraiment ce que chaque question me demande,
+  afin que le jeu m'apprenne a observer un mouvement plutot qu'a deviner.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Matiere,
+  mouvement, energie, information", `SCI-CM1-03`
+  (`squad/programme/sciences-et-technologie/competences-cm1.md`) - ligne deja `couvert-valide`
+  depuis s46, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`MVT-CM1-R1`** (item 5, le train) : etant donne l'indice servi apres une premiere erreur,
+    quand on le relit, alors il explique pourquoi le siege et la fenetre ne conviennent pas comme
+    repere sans les ecarter tous deux par une seule categorie ("ce qui est fixe a l'interieur"), sur
+    le modele de l'indice de l'item 6.
+  - **`MVT-CM1-R2`** (tache B, items 7, 8, 9, 10, 11, 12) : etant donne les items de la tache B,
+    quand on en compte au moins deux dont l'observation decrite va contre le classement habituel (le
+    mobile qu'on croit le plus rapide arrive le second sur le meme trajet), alors ils existent dans
+    le paquet corrige ; et etant donne l'item 10 (voiture et camion), quand on le relit, alors il
+    decrit une scene differente de l'item 11 (voilier et nageur).
+  - **`MVT-CM1-R3`** (consigne) : etant donne la consigne servie, quand on la relit, alors elle
+    nomme la tache de comparaison de vitesse sans la restreindre au mobile le plus rapide, de sorte
+    que les items 8, 9 et 12 (qui demandent "le moins vite" ou une egalite) y restent couverts.
+  - **`MVT-CM1-R4`** (items 3 et 9) : etant donne l'item 9, quand on le relit, alors sa question
+    demande ce qu'on peut dire de la vitesse des deux coureurs, et ses distracteurs ("le premier
+    coureur", "le second coureur") sont remplaces par des propositions que l'enonce permet de
+    distinguer ; etant donne l'item 3, quand on le relit, alors il emploie "pour ralentir" a la
+    place de "pour freiner sa vitesse".
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (refus d'avance 11, piege `ADR-0102`, `SCI-1`, `SCI-3`, `SCI-4`, `HIS-3`, `CON-1`, `FER-1` a
+    `FER-3`), alors elles restent toutes tenues : cette story touche six items sur douze (3, 5, 8,
+    9, 10, 12), sans toucher au nombre d'items ni a la repartition des taches.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les items corriges et confirme qu'aucun indice n'ecarte plus les
+    deux distracteurs a la fois, qu'au moins deux items de la tache B exigent reellement de lire
+    l'observation, et que la consigne couvre chaque question du paquet.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-10-02 (meme fiche, section 7), identifiants deja alloues dans
+  `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
