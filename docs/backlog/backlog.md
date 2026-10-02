@@ -17684,10 +17684,21 @@ propre condition `SOP-CE1-5` - pas une ligne de contenu a coder. `DEC-0104` sect
   **ACCEPTE SOUS CONDITIONS `TAB-CE1-1` a `TAB-CE1-6`. La ligne est entierement servable par du
   texte seul, sans rendu visuel, et elle peut atteindre `couvert-valide` sur un paquet unique.**
   L'espace couvert est *"les produits `a x b` avec `a` dans {2, 3, 4, 5, 10} et `b` entier de 1 a
-  10, soit 50 produits"* - cinq tables nommees par la ligne, pas les dix du CM1. Six conditions,
-  citees mot pour mot :
+  10, soit 50 produits"* - cinq tables nommees par la ligne, pas les dix du CM1.
+
+  **Correction du 2026-10-02 (`nadia-prof`, s47)**
+  (`squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`, section 2) : les 50
+  couples ne comptent que **40 faits distincts** - `3 × 4` et `4 × 3` sont le meme produit, et un
+  item de l'un couvre l'autre. Le paquet couvre les 40 faits ; quand les deux facteurs d'un fait
+  sont tous deux dans {2, 3, 4, 5, 10}, le couple peut etre lu dans l'un ou l'autre ordre (par
+  exemple `5 × 10` ou `10 × 5`).
+
+  Six conditions, citees mot pour mot, avec les amendements et corrections du 2026-10-02 :
   > `TAB-CE1-1` - espace couvert. Chacun des 50 produits `a × b` (`a` dans {2, 3, 4, 5, 10}, `b` de
   > 1 a 10) apparait au moins une fois dans le paquet.
+  >
+  > *Correction du 2026-10-02* : les 50 couples ne font que 40 faits distincts (`3 × 4` et `4 × 3`
+  > sont le meme produit, un item de l'un couvre l'autre).
   >
   > `TAB-CE1-2` - l'ordre du *puis*, en proportions. Les items dont le facteur de table est 2, 5 ou
   > 10 font au moins la moitie du paquet ; ceux dont le facteur de table est 3 font au moins 15 % ;
@@ -17695,6 +17706,10 @@ propre condition `SOP-CE1-5` - pas une ligne de contenu a coder. `DEC-0104` sect
   >
   > `TAB-CE1-3` - le facteur 1 est un cas degenere. Les items comportant un facteur 1 font au plus
   > une manche sur cinq. Ce plafond ne vaut pas pour le facteur 10.
+  >
+  > *Amendement du 2026-10-02 (Q2 de `theo-archi`)* : l'unite de compte est l'item du paquet, pas la
+  > manche d'une partie - au plus 20 % des items. "Zero est conforme" etait faux : `TAB-CE1-1`
+  > impose cinq items a facteur 1.
   >
   > `TAB-CE1-4` - les deux ordres. Pour les produits dont les deux facteurs different et dont aucun
   > ne vaut 1, le paquet presente au moins un tiers de ses items avec le facteur de table en seconde
@@ -17713,25 +17728,37 @@ propre condition `SOP-CE1-5` - pas une ligne de contenu a coder. `DEC-0104` sect
   > `(a-1) × b` ou `(a+1) × b`, le facteur restant dans {2, 3, 4, 5, 10}), et le fichier nomme la
   > famille a cote de l'item. Sur le paquet entier, chacun des trois rangs de la bonne reponse porte
   > au moins 10 % et au plus 50 % des items.
+  >
+  > *Amendement du 2026-10-02 (Q1 de `theo-archi`)* : une cinquieme famille est admise - (e) la
+  > confusion de `× 1` avec `+ 1`, de valeur `a + 1`, **uniquement si `b = 1`** (quel que soit
+  > l'ordre d'ecriture, `10 × 1` ou `1 × 10`). La liste compte desormais **cinq familles, et
+  > seulement celles-la**. Quand les deux facteurs d'un fait sont dans {2, 3, 4, 5, 10}, les
+  > familles (a) a (d) se calculent sur l'une ou l'autre lecture du couple : le marqueur nomme la
+  > famille, le test la recalcule sur l'une des deux lectures.
 - **Criteres d'acceptation** :
   - Etant donne un item, quand il s'affiche, alors il demande le resultat d'un produit `a × b`
     nu, `a` dans {2, 3, 4, 5, 10} et `b` entier de 1 a 10, sans situation ni unite (`TAB-CE1-5`).
-  - Etant donne le paquet livre, quand on verifie les 50 produits de l'espace couvert, alors
-    chacun apparait au moins une fois (`TAB-CE1-1`).
+  - Etant donne le paquet livre, quand on verifie les 40 faits distincts de l'espace couvert
+    (`a × b`, `a` dans {2, 3, 4, 5, 10}, `b` entier de 1 a 10, `3 × 4` et `4 × 3` comptant pour un
+    seul fait), alors chacun apparait au moins une fois (`TAB-CE1-1`).
   - Etant donne le paquet livre, quand on classe ses items par facteur de table, alors ceux de 2,
     5 ou 10 font au moins la moitie du paquet, ceux de 3 au moins 15 %, ceux de 4 au moins 15 %
     (`TAB-CE1-2`).
   - Etant donne le paquet livre, quand on compte les items comportant un facteur 1, alors ils font
-    au plus une manche sur cinq, sans plafond sur le facteur 10 (`TAB-CE1-3`).
+    au plus 20 % des items du paquet, sans plafond sur le facteur 10 (`TAB-CE1-3`).
   - Etant donne les items dont les deux facteurs different et dont aucun ne vaut 1, quand on les
     compte, alors au moins un tiers presente le facteur de table en seconde position (`TAB-CE1-4`).
   - Etant donne l'enonce d'un item, quand on le relit, alors il porte le signe `×` (jamais `x`), et
     aucun item ne porte un facteur manquant, une division, une mise en situation, une addition
     reiteree ecrite comme telle, ou une formulation par le double ou la moitie (`TAB-CE1-5`).
   - Etant donne les distracteurs d'un item, quand on les verifie, alors chacun appartient a l'une
-    des quatre familles nommees, la famille est declaree a cote de l'item, et sur le paquet entier
-    chacun des trois rangs de la bonne reponse porte au moins 10 % et au plus 50 % des items
+    des cinq familles nommees - dont la famille (e), confusion de `× 1` avec `+ 1` (valeur `a + 1`),
+    reservee aux items ou `b = 1` -, la famille est declaree a cote de l'item, et sur le paquet
+    entier chacun des trois rangs de la bonne reponse porte au moins 10 % et au plus 50 % des items
     (`TAB-CE1-6`).
+  - Etant donne un fait dont les deux facteurs sont dans {2, 3, 4, 5, 10}, quand on verifie ses
+    distracteurs des familles (a) a (d), alors ils peuvent etre calcules sur l'une ou l'autre
+    lecture du couple (par exemple `5 × 10` ou `10 × 5`) (`TAB-CE1-6`, amendement du 2026-10-02).
   - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
     `MAT-CE1-07` et uniquement elle.
   - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors
