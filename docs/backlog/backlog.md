@@ -16996,6 +16996,18 @@ l'instance A, 2,0 sur l'instance B).
   - Etant donne les trois propositions d'un item, quand on les compare, alors elles ont le meme
     nombre de chiffres et le meme ordre de grandeur, et au moins l'une d'elles partage le chiffre des
     unites avec la bonne reponse (`SOP-CE1-4`).
+  - Etant donne les deux items actuellement servis sous la forme `85 - 23` et `76 - 34`, quand on les
+    relit, alors ils sont remplaces par deux items sans emprunt dont le seul distracteur (la somme
+    `a + b`) a le meme nombre de chiffres que la difference et en partage le chiffre des unites
+    (`SOP-CE1-4` appliquee aux items sans emprunt ; exemples : `47 - 20` somme `67`, `65 - 15` somme
+    `80`, `368 - 125` somme `493`), et le paquet continue de porter au moins deux items sans emprunt et
+    au moins trois items a deux chiffres (`SOP-CE1-2`) (motif du refus, `squad/conformite/FICHE-
+    bandit-manchot-soustractions-posees-ce1.md`, section REFUSE, sous-sections 3 et 4).
+  - Etant donne `PaquetCe1SoustractionsPoseesTest`, quand on lit la methode qui verifie `SOP-CE1-4`,
+    alors elle s'applique a tous les items du paquet sans aucune exemption pour les items a deux
+    propositions (sans emprunt), et sa Javadoc ne cite plus la section 3 de la fiche de conformite
+    comme source d'une exemption qu'elle ne donne pas (meme fiche, section REFUSE, sous-sections 4 et
+    5).
   - Etant donne les distracteurs d'un item, quand on les verifie, alors chacun correspond a l'une des
     **quatre** erreurs nommees (emprunt oublie, emprunt non reporte, somme au lieu de difference,
     emprunt reporte deux fois), est un entier positif, et est distinct des deux autres propositions
@@ -17183,6 +17195,28 @@ l'instance A, 2,0 sur l'instance B).
   - Etant donne le paquet livre, quand on classe ses items par tache demandee, alors au moins deux
     taches distinctes sont servies - identifier le role d'une institution, dire a qui s'adresser - la
     moins servie portant au moins trois items (`FER-3`).
+  - Etant donne chaque fait institutionnel servi par un item du paquet, quand on lit le commentaire du
+    paquet, alors ce fait porte sa source, item par item (`HIS-3` ; motif du refus, section 4 de
+    `squad/conformite/FICHE-bandit-manchot-institutions-cm1.md`).
+  - Etant donne l'item actuellement en position 4 (le vote d'une limitation de vitesse par le conseil
+    municipal), quand on le relit, alors il est remplace soit par une decision reellement votee par le
+    conseil municipal (par exemple le budget, la construction d'un equipement, ou le nom d'une rue),
+    soit par un item sur ce que decide seul le maire (par exemple un arrete de police municipale sur
+    la circulation), avec un indice corrige en consequence qui ne generalise plus a tort qu'une regle
+    qui s'applique a toute la commune est toujours votee par les elus (motif du refus, section 3 de
+    la meme fiche).
+  - Etant donne le commentaire du paquet qui fixe la convention de redaction (mairie / conseil
+    municipal), quand on le relit, alors il place le maire a cote de la mairie et du conseil
+    municipal, en nommant son role propre et distinct du conseil municipal qui vote (sections 3 et 7
+    de la meme fiche).
+  - Non bloquant pour la levee du refus, a corriger si possible dans le meme passage (section 6 de la
+    meme fiche) : l'item 3 (contradiction entre l'enonce, qui ne presuppose aucune decision prise, et
+    la question, qui en presuppose une votee), l'item 5 (question sans sens telle qu'ecrite - "a qui
+    l'enseignant le signale-t-il", reponse "l'ecole", alors que l'enseignant fait partie de l'ecole),
+    l'indice de l'item 12 (l'entretien d'un lampadaire n'est pas une demarche administrative, c'est un
+    service de la commune), et les redites des items 10 et 11 avec
+    `bandit-manchot-roles-ecole-commune-cp` (`CYC-1` tenue a la lettre mais ces deux items n'apportent
+    rien de neuf a un CM1).
   - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
     `EMC-CM1-09` et uniquement elle.
   - Etant donne le paquet servi, quand `nadia-prof` l'audite, alors elle a prealablement rejoue
@@ -17190,8 +17224,8 @@ l'instance A, 2,0 sur l'instance B).
     les roles qui y sont servis, y compris sur un service d'urgence deja servi en bonne reponse au CP
     (pompiers) (`CYC-1`).
   - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` (instance A) le joue, alors elle
-    confirme que `EMC-5`, `EMC-6`, `EMC-7`, `FER-1`, `FER-2`, `FER-3` et `CYC-1` sont tenues, et que
-    la mention exigee d'avance est ecrite dans la matrice.
+    confirme que `EMC-5`, `EMC-6`, `EMC-7`, `HIS-3`, `FER-1`, `FER-2`, `FER-3` et `CYC-1` sont tenues,
+    et que la mention exigee d'avance est ecrite dans la matrice.
 - **Ce que cette story ne fait pas** : elle ne suppose jamais la commune, l'ecole ou la configuration
   familiale reelle de l'enfant (`EMC-6`) ; elle n'ecrit jamais un numero d'urgence inexact, sans
   source, ou en situation ou deux numeros seraient tous deux corrects (`EMC-7`) ; elle ne met jamais
@@ -17338,6 +17372,28 @@ associes (`SCI-CM1-16`)
     moins servie portant au moins trois items (`FER-3`).
   - Etant donne le paquet livre, quand on releve la localisation des phenomenes decrits, alors elle
     n'est jamais systematiquement situee ailleurs qu'en France ou en Europe (`BIA-2`).
+  - Etant donne l'item actuellement en position 2 (le Vesuve), quand on le relit, alors le volcan
+    nomme dans l'enonce est bien celui qui entre en eruption - ce n'est pas un lieu distinct d'un
+    volcan voisin -, l'enonce est exact au temps employe (pas de presentation au present d'une
+    eruption qui n'a pas lieu depuis 1944), et le marqueur `# lieu:` reste exact apres correction
+    (motif du refus, section 7 de `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md`).
+  - Etant donne le paquet livre, quand on releve a nouveau la localisation des phenomenes
+    geologiques decrits, alors au moins un est situe en France (par exemple un seisme dans les
+    Pyrenees, les Alpes ou aux Antilles, ou un volcan actif a La Reunion ou en Martinique) - la
+    correction de l'item 2 est l'occasion d'y pourvoir (reserve `PHN-CM1-R3`, section 8 de la meme
+    fiche).
+  - Etant donne les indices des items 7, 8, 9, 11 et 12 de la tache B, quand l'enfant se trompe une
+    premiere fois, alors l'indice dit pourquoi le geste faux est dangereux en ecartant au plus un
+    distracteur, sans reprendre les mots exacts de la bonne reponse ni la designer par paraphrase -
+    le meme modele que l'indice de l'item 10 (reserve `PHN-CM1-R1`, section 8 de la meme fiche).
+  - Etant donne les distracteurs des items 11 et 12, quand on les relit, alors chacun est une raison
+    plausible et fausse qu'un enfant de 9 ans pourrait avancer, et la bonne reponse n'est pas
+    systematiquement la plus longue des trois propositions (reserve `PHN-CM1-R2`, section 8 de la
+    meme fiche).
+  - Etant donne la consigne servie, quand on la relit, alors elle couvre aussi la tache qui demande
+    une raison ("pourquoi"), portee par les items 11 et 12 - par une formulation de consigne qui la
+    nomme, ou par une reformulation de ces deux items en choix de geste (reserve `PHN-CM1-R4`,
+    section 8 de la meme fiche).
   - Etant donne le paquet livre, quand on le relit dans son entier, alors aucun item ne fait porter
     une responsabilite sur l'enfant ou son foyer face a un risque naturel (`SCI-2`).
   - Etant donne un item dont un distracteur porte une conception fausse courante, quand l'enfant
