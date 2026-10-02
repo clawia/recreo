@@ -856,8 +856,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis la trajectoire, le repère, ou qui va le plus vite.",
             // S47-LVE-CULTURE-CP (s47) : consigne neuve.
             "Lis bien, puis dis de quel pays on parle, ou réponds à la question.",
-            // S47-EMC-VOTE-CM1 (s47) : consigne neuve.
-            "Lis bien, puis dis qui vote, qui est élu, ou ce que fait un délégué.",
+            // S47-EMC-VOTE-CM1 (s47) : consigne neuve ; corrigee en s47 (lot F, nadia-prof,
+            // FICHE-bandit-manchot-vote-election-cm1.md, section 6 point 4) pour couvrir la tache A.
+            "Lis bien, puis trouve le bon mot, ou dis qui vote, qui est élu, ou ce que fait un"
+                    + " délégué.",
             // S47-QLM-AUTREFOIS (s47) : consigne neuve.
             "Lis bien, puis dis si c'est autrefois ou aujourd'hui, ou par quoi c'est remplacé.",
             // S47-EMC-ALERTE-CP (s47) : consigne neuve.
