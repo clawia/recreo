@@ -354,6 +354,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // module adapter-content, pas le reacteur complet, et ne pouvait donc pas voir ce
             // garde-fou du module bootstrap rougir.
             "bandit-manchot-soustractions-posees-ce1",
+            // S47-QLM-AUTREFOIS (s47) : entree neuve, QLM-CP-15, comparer des modes de vie
+            // d'autrefois et d'aujourd'hui a partir d'objets et d'images du quotidien.
+            "bandit-manchot-autrefois-aujourdhui-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -579,6 +582,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Trajectoire et vitesse",
             // S46-MAT-SOUSTRACTION (s46) : titre neuf. Complete ici, voir le motif pres de l'id.
             "Les soustractions posées",
+            // S47-QLM-AUTREFOIS (s47) : titre neuf.
+            "Autrefois et aujourd'hui",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -828,6 +833,8 @@ class TexteAccentueExposeParLePortEntrantTest {
                     + "ressent de ce qu'elle fait.",
             // S46-SCI-MOUVEMENT-CM1 (s46) : consigne neuve.
             "Lis bien, puis dis la trajectoire, le repère, ou qui va le plus vite.",
+            // S47-QLM-AUTREFOIS (s47) : consigne neuve.
+            "Lis bien, puis dis si c'est autrefois ou aujourd'hui, ou par quoi c'est remplacé.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1324,7 +1331,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-MAT-SOUSTRACTION (s46) : competence neuve, libelle du referentiel
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-05). Complete ici,
             // voir le motif pres de l'id.
-            "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)");
+            "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)",
+            // S47-QLM-AUTREFOIS (s47) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
+            // QLM-CP-15).
+            "Comparer des modes de vie d'autrefois et d'aujourd'hui à partir d'objets et "
+                    + "d'images du quotidien.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

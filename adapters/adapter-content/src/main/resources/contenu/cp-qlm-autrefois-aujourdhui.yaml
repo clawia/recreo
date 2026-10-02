@@ -1,0 +1,101 @@
+schema: 1
+id: cp-qlm-autrefois-aujourdhui
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Se situer dans le temps"
+  competence: "Comparer des modes de vie d'autrefois et d'aujourd'hui à partir d'objets et d'images du quotidien."
+lignesDeReferentiel: ["QLM-CP-15"]
+#
+# S47-QLM-AUTREFOIS (docs/backlog/backlog.md, sprint 47). Arbitrage prealable deja rendu
+# (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md, ligne
+# 374) : "oui, choix ; plus juste en illustre. Piege de biais : 'autrefois' ne veut pas dire 'moins
+# bien'." Condition posee d'avance, citee mot pour mot (meme source) :
+#   BIA-3 - Sur "autrefois et aujourd'hui" (QLM 15) : la chronologie n'est pas un progres. Aucun item
+#   ne qualifie l'ancien de difficile, dur, pauvre ou pas pratique.
+# Referentiel copie conforme depuis squad/programme/questionner-le-monde/competences-cp.md
+# (QLM-CP-15).
+#
+# BIA-3 : aucun enonce ni aucune proposition ne qualifie une pratique ou un objet d'autrefois de
+# difficile, dur, pauvre ou pas pratique, ni n'en fait une norme de progres. Les deux epoques sont
+# decrites, jamais comparees en bien ou en mal.
+#
+# FER-3 : deux taches distinctes, chacune sur des items propres :
+#   - rattacher un objet a une epoque (items 1 a 7) : l'enonce decrit une pratique du quotidien et
+#     demande s'il releve d'autrefois ou d'aujourd'hui (forme binaire) ;
+#   - comparer deux usages (items 8 a 14) : l'enonce decrit une pratique d'une epoque et demande par
+#     quel objet ou quelle pratique elle est remplacee, ou ce qu'elle remplace, dans l'autre epoque.
+#
+# FER-1 : l'element "objets et images du quotidien" est servi par la tache de comparaison, dont la
+# bonne reponse nomme toujours un objet ou une pratique concrete (jamais "autrefois"/"aujourd'hui").
+#
+# FER-2 : quatorze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# Les propositions de la tache de rattachement ("autrefois", "aujourd'hui") sont hors du domaine
+# numerique (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest,
+# PAQUETS_HORS_DU_DOMAINE_NUMERIQUE), de meme que les noms d'objets et de pratiques de la tache de
+# comparaison.
+#
+# LON-1, LON-2 (ADR-0089) : chaque enonce compte au plus quinze mots et au plus deux phrases, la
+# seconde etant toujours la question.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "On lavait le linge à la main au lavoir. Est-ce autrefois ou aujourd'hui ?"
+    bonneReponse: "autrefois"
+    distracteurs: ["aujourd'hui"]
+    indice: "Les lavoirs ont presque disparu depuis l'invention des machines à laver."
+  - enonce: "On réchauffe un plat en quelques minutes au micro-ondes. Est-ce autrefois ou aujourd'hui ?"
+    bonneReponse: "aujourd'hui"
+    distracteurs: ["autrefois"]
+    indice: "Le four à micro-ondes est un appareil électrique récent."
+  - enonce: "On s'éclairait le soir avec une lampe à huile. Est-ce autrefois ou aujourd'hui ?"
+    bonneReponse: "autrefois"
+    distracteurs: ["aujourd'hui"]
+    indice: "L'éclairage électrique a remplacé la lampe à huile."
+  - enonce: "On écrit un texte avec un ordinateur. Est-ce autrefois ou aujourd'hui ?"
+    bonneReponse: "aujourd'hui"
+    distracteurs: ["autrefois"]
+    indice: "L'ordinateur permet d'effacer et de recommencer en un instant."
+  - enonce: "Une charrue était tirée par un cheval. Est-ce autrefois ou aujourd'hui ?"
+    bonneReponse: "autrefois"
+    distracteurs: ["aujourd'hui"]
+    indice: "Le tracteur a remplacé le cheval pour labourer les champs."
+  - enonce: "On roule en ville à vélo électrique. Est-ce autrefois ou aujourd'hui ?"
+    bonneReponse: "aujourd'hui"
+    distracteurs: ["autrefois"]
+    indice: "L'assistance électrique du vélo est une invention récente."
+  - enonce: "On allait chercher l'eau à un puits. Est-ce autrefois ou aujourd'hui ?"
+    bonneReponse: "autrefois"
+    distracteurs: ["aujourd'hui"]
+    indice: "L'eau arrive aujourd'hui directement par un robinet."
+  - enonce: "Autrefois, on lavait le linge au lavoir. Avec quoi le lave-t-on aujourd'hui ?"
+    bonneReponse: "une machine à laver"
+    distracteurs: ["un four", "un réfrigérateur"]
+    indice: "Cet appareil électrique lave et essore le linge tout seul."
+  - enonce: "Autrefois, on envoyait une lettre par la poste. Comment envoie-t-on un message aujourd'hui ?"
+    bonneReponse: "un message électronique"
+    distracteurs: ["un pigeon voyageur", "un télégramme"]
+    indice: "Ce message part et arrive presque aussitôt, sans papier ni timbre."
+  - enonce: "Autrefois, on s'éclairait à la bougie. Avec quoi éclaire-t-on une pièce aujourd'hui ?"
+    bonneReponse: "une ampoule électrique"
+    distracteurs: ["une bougie", "un feu de cheminée"]
+    indice: "Il suffit d'appuyer sur un interrupteur pour l'allumer."
+  - enonce: "Aujourd'hui, un tracteur laboure le champ. Avec quoi labourait-on autrefois ?"
+    bonneReponse: "une charrue tirée par un cheval"
+    distracteurs: ["une pelle mécanique", "un camion"]
+    indice: "Un animal fournissait la force nécessaire pour tirer l'outil."
+  - enonce: "Aujourd'hui, on se déplace en voiture. Comment se déplaçait-on autrefois dans un village ?"
+    bonneReponse: "à pied ou à cheval"
+    distracteurs: ["en avion", "en métro"]
+    indice: "Les villages n'avaient alors ni route goudronnée ni moteur."
+  - enonce: "Autrefois, on allait chercher l'eau au puits. Comment l'eau arrive-t-elle aujourd'hui ?"
+    bonneReponse: "par un robinet"
+    distracteurs: ["par une rivière voisine", "par un camion-citerne"]
+    indice: "L'eau circule maintenant sans que personne n'ait à la porter."
+  - enonce: "Autrefois, un enfant lisait un livre d'images. Que regarde-t-il souvent aujourd'hui ?"
+    bonneReponse: "une tablette"
+    distracteurs: ["un poste de radio", "un appareil photo"]
+    indice: "Cet objet a un écran qui s'allume."

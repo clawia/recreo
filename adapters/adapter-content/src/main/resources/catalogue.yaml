@@ -696,3 +696,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-mouvement
     nombreDeManches: 10
+  - id: bandit-manchot-autrefois-aujourdhui-cp
+    titre: "Autrefois et aujourd'hui"
+    consigne: "Lis bien, puis dis si c'est autrefois ou aujourd'hui, ou par quoi c'est remplacé."
+    mecanique: bandit-manchot
+    paquet: cp-qlm-autrefois-aujourdhui
+    nombreDeManches: 10

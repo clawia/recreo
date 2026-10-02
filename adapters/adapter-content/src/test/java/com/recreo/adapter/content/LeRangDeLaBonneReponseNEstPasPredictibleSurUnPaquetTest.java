@@ -1045,7 +1045,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " comparaisons de vitesse en texte libre (\"le cycliste\", \"ils vont à la"
                     + " même vitesse\"...), valeurDe rend null sur les trois propositions de chaque"
                     + " item. Mesure du 2026-10-01 sur le paquet servi : aucune des 36 propositions"
-                    + " ne commence par un chiffre"));
+                    + " ne commence par un chiffre"),
+            // S47-QLM-AUTREFOIS : paquet neuf de questionner le monde CP (QLM-CP-15).
+            Map.entry("cp-qlm-autrefois-aujourdhui",
+            "14 items, 35 propositions : sept items (tache de rattachement) portent un seul"
+                    + " distracteur (deux propositions, les deux epoques \"autrefois\"/\"aujourd'hui\"),"
+                    + " sept items (tache de comparaison) portent deux distracteurs (trois"
+                    + " propositions, des noms d'objets et de pratiques du quotidien). Aucune"
+                    + " proposition n'est numerique. Mesure du 2026-10-02, comptage direct sur le"
+                    + " paquet servi (\"bonneReponse\" et \"distracteurs\")"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE
