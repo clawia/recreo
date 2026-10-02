@@ -31,12 +31,23 @@ lignesDeReferentiel: ["EMC-CM1-09"]
 # l'enfant - chaque situation met en scene des habitants, une classe ou un eleve generiques, jamais
 # "ta commune" ou "ton ecole".
 #
-# EMC-5 : aucun item n'a deux reponses defendables. La distinction mairie / conseil municipal est
-# tenue constante sur tout le paquet : la mairie est le lieu des demarches administratives et de
-# l'entretien courant de la commune, le conseil municipal est l'organe elu qui vote les decisions
-# (budget, projets, reglements). Un item qui nomme un service d'urgence sans numero ("les pompiers",
-# item 1) ne l'oppose jamais a un autre service d'urgence equivalent sur le meme item : il n'y a ici
-# qu'un seul service d'urgence par item, jamais deux face a la meme situation de secours.
+# EMC-5 : aucun item n'a deux reponses defendables. La distinction mairie / conseil municipal / maire
+# est tenue constante sur tout le paquet : la mairie est le lieu des demarches administratives et de
+# l'entretien courant de la commune ; le conseil municipal est l'organe elu qui vote les decisions
+# (budget, projets, reglements, nom des rues - CGCT, article L2121-29) ; le maire execute les
+# decisions du conseil et detient en plus des pouvoirs propres, notamment les arretes de police qui
+# fixent par exemple une limitation de vitesse (CGCT, articles L2213-1 et L2213-1-1) - sans vote du
+# conseil municipal. Aucun item de ce paquet ne porte le maire en bonne reponse ; cette ligne est
+# ecrite pour qu'un futur item sur un pouvoir propre du maire ne le confonde plus avec un vote du
+# conseil municipal, erreur que portait l'item 4 d'origine (refus nadia-prof du 2026-10-02). Un item
+# qui nomme un service d'urgence sans numero ("les pompiers", item 1) ne l'oppose jamais a un autre
+# service d'urgence equivalent sur le meme item : il n'y a ici qu'un seul service d'urgence par item,
+# jamais deux face a la meme situation de secours.
+#
+# HIS-3 : chaque ligne d'item porte, en commentaire, la source du fait institutionnel qu'elle sert -
+# le code general des collectivites territoriales (CGCT) pour les faits relatifs a la mairie, au
+# conseil municipal et au maire, le fonctionnement ordinaire de l'ecole pour les faits relatifs au
+# directeur ou a la directrice.
 #
 # EMC-7 : aucun numero d'urgence n'est ecrit dans ce paquet (ni enonce, ni proposition, ni indice,
 # ni explication) - la condition ne mord donc sur aucun item, par construction plutot que par
@@ -61,51 +72,51 @@ lignesDeReferentiel: ["EMC-CM1-09"]
 #
 # FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
 items:
-  - enonce: "Un lampadaire de la rue ne s'allume plus le soir. À qui les habitants s'adressent-ils ?"
+  - enonce: "Un lampadaire de la rue ne s'allume plus le soir. À qui les habitants s'adressent-ils ?"  # HIS-3: l'entretien de la voirie communale releve de la commune, signale en mairie - fonctionnement ordinaire d'une collectivite locale enseigne au cycle 3
     bonneReponse: "la mairie"
     distracteurs: ["les pompiers", "l'école"]
     indice: "Ce n'est ni un incendie, ni une question de classe, mais l'entretien de la rue."
-  - enonce: "Une famille veut inscrire son enfant à l'école pour la rentrée prochaine. À qui s'adresse-t-elle d'abord ?"
+  - enonce: "Une famille veut inscrire son enfant à l'école pour la rentrée prochaine. À qui s'adresse-t-elle d'abord ?"  # HIS-3: l'inscription scolaire d'un enfant de la commune se fait d'abord en mairie, avant la demarche aupres de l'ecole - fonctionnement ordinaire d'une collectivite locale enseigne au cycle 3
     bonneReponse: "la mairie"
     distracteurs: ["le conseil municipal", "les pompiers"]
     indice: "C'est elle qui enregistre les enfants de la commune avant leur arrivée à l'école."
-  - enonce: "Les habitants veulent savoir si la commune va construire un nouveau terrain de sport. Qui a voté cette décision ?"
+  - enonce: "La commune va construire un nouveau terrain de sport pour les habitants. Qui a voté cette décision ?"  # HIS-3: le conseil municipal, assemblee elue, vote les projets et equipements collectifs de la commune (CGCT, competence generale du conseil municipal, article L2121-29)
     bonneReponse: "le conseil municipal"
     distracteurs: ["la mairie", "l'école"]
     indice: "Une décision qui engage l'argent et les projets de la commune se vote en réunion."
-  - enonce: "Une nouvelle règle doit limiter la vitesse des voitures dans le centre du village. Qui vote cette règle ?"
+  - enonce: "La commune doit choisir le nom d'une nouvelle rue. Qui vote cette décision ?"  # HIS-3: le nom des rues de la commune est une decision du conseil municipal, assemblee elue (CGCT, competence generale du conseil municipal, article L2121-29)
     bonneReponse: "le conseil municipal"
     distracteurs: ["l'école", "la mairie"]
-    indice: "Une règle qui s'applique à toute la commune est d'abord votée par les élus."
-  - enonce: "Pendant la classe, un élève se dispute violemment avec un camarade. À qui l'enseignant le signale-t-il ?"
+    indice: "Donner un nom à une rue est une décision qui revient aux élus de la commune, réunis en conseil."
+  - enonce: "Un élève est témoin d'une dispute violente entre deux camarades pendant la récréation. À qui le signale-t-il ?"  # HIS-3: un incident entre eleves pendant le temps scolaire est traite par l'ecole, sous la responsabilite du directeur ou de la directrice - fonctionnement ordinaire d'une ecole enseigne au cycle 3
     bonneReponse: "l'école"
     distracteurs: ["la mairie", "le conseil municipal"]
-    indice: "C'est une situation qui se passe pendant la classe, entre deux élèves."
-  - enonce: "Un élève se blesse pendant la récréation et doit attendre ses parents. Qui s'en occupe en attendant ?"
+    indice: "C'est pendant la journée scolaire, c'est donc à l'école de s'en occuper."
+  - enonce: "Un élève se blesse pendant la récréation et doit attendre ses parents. Qui s'en occupe en attendant ?"  # HIS-3: la surveillance et la prise en charge d'un eleve pendant le temps scolaire relevent de l'ecole - fonctionnement ordinaire d'une ecole enseigne au cycle 3
     bonneReponse: "l'école"
     distracteurs: ["le conseil municipal", "la mairie"]
     indice: "C'est l'établissement qui accueille l'élève pendant la journée qui s'en occupe."
-  - enonce: "Que fait la mairie pour les habitants de la commune ?"
+  - enonce: "Que fait la mairie pour les habitants de la commune ?"  # HIS-3: la mairie assure les demarches administratives et l'entretien courant de la commune - fonctionnement ordinaire d'une collectivite locale enseigne au cycle 3
     bonneReponse: "elle s'occupe des démarches administratives et de l'entretien de la commune"
     distracteurs: ["elle vote les décisions qui concernent la commune", "elle organise la vie de la classe à l'école"]
     indice: "C'est le lieu où l'on fait ses papiers et où l'on signale un problème dans la rue."
-  - enonce: "Quel est le rôle du conseil municipal ?"
+  - enonce: "Quel est le rôle du conseil municipal ?"  # HIS-3: le conseil municipal, assemblee elue, vote les decisions qui engagent la commune (CGCT, competence generale du conseil municipal, article L2121-29)
     bonneReponse: "il vote les décisions qui concernent la commune, comme le budget ou les projets"
     distracteurs: ["il s'occupe des démarches administratives des habitants", "il organise la vie de la classe à l'école"]
     indice: "Ce sont des élus qui se réunissent pour décider ensemble."
-  - enonce: "Que fait le conseil municipal avant qu'un nouveau projet soit lancé dans la commune ?"
+  - enonce: "Que fait le conseil municipal avant qu'un nouveau projet soit lancé dans la commune ?"  # HIS-3: un projet qui engage la commune est vote par le conseil municipal avant d'etre lance (CGCT, competence generale du conseil municipal, article L2121-29)
     bonneReponse: "il vote pour décider si le projet se fait"
     distracteurs: ["il s'occupe des papiers administratifs des habitants", "il surveille la cour de récréation"]
     indice: "Un projet qui coûte de l'argent à la commune se décide par un vote."
-  - enonce: "Que fait le directeur ou la directrice de l'école au quotidien ?"
-    bonneReponse: "il ou elle organise la vie de l'école et veille à son bon déroulement"
-    distracteurs: ["il ou elle vote les décisions de la commune", "il ou elle s'occupe des démarches administratives des habitants"]
-    indice: "C'est la personne responsable de toute l'école, du matin au soir."
-  - enonce: "Pourquoi une classe doit-elle demander une autorisation avant une sortie scolaire ?"
-    bonneReponse: "parce que le directeur ou la directrice organise et autorise la vie de l'école"
-    distracteurs: ["parce que la mairie vote cette décision en réunion", "parce que le conseil municipal s'occupe des démarches administratives"]
-    indice: "C'est la personne qui connaît l'organisation de l'école qui donne son accord."
-  - enonce: "Que fait la mairie quand un habitant signale un lampadaire cassé dans sa rue ?"
+  - enonce: "Qui organise la vie quotidienne de l'école, sans que le conseil municipal ait à voter ?"  # HIS-3: le directeur ou la directrice organise seul ou seule la vie quotidienne de l'ecole, sans vote des elus - fonctionnement ordinaire d'une ecole enseigne au cycle 3
+    bonneReponse: "le directeur ou la directrice de l'école, seul ou seule"
+    distracteurs: ["le conseil municipal, qui vote cette organisation en réunion", "la mairie, qui s'en occupe comme d'une démarche administrative"]
+    indice: "C'est la personne responsable de toute l'école, du matin au soir, et ce n'est pas un vote des élus."
+  - enonce: "Une sortie scolaire ne passe pas par un vote du conseil municipal. Pourquoi est-elle quand même autorisée ?"  # HIS-3: le directeur ou la directrice autorise seul ou seule une sortie scolaire ordinaire, sans vote du conseil municipal - fonctionnement ordinaire d'une ecole enseigne au cycle 3
+    bonneReponse: "parce que le directeur ou la directrice de l'école l'autorise seul ou seule"
+    distracteurs: ["parce que la mairie organise un vote à la place du conseil municipal", "parce que le conseil municipal l'autorise en dehors d'un vote"]
+    indice: "C'est la personne qui connaît l'organisation de l'école qui donne son accord, sans réunion des élus."
+  - enonce: "Que fait la mairie quand un habitant signale un lampadaire cassé dans sa rue ?"  # HIS-3: la reparation d'un equipement de la voirie communale est un service rendu par la commune, pas une demarche administrative ni un vote - fonctionnement ordinaire d'une collectivite locale enseigne au cycle 3
     bonneReponse: "elle s'occupe de faire réparer le lampadaire"
     distracteurs: ["elle attend que le conseil municipal vote une décision avant d'agir", "elle demande à l'école de s'en occuper"]
-    indice: "L'entretien courant de la rue est une démarche administrative, pas un vote."
+    indice: "L'entretien courant de la rue est un service rendu par la commune, pas une démarche administrative ni un vote."
