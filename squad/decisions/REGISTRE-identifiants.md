@@ -11,6 +11,21 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s46, instance A, troisieme passage, le 2026-10-02 (Done pedagogique de
+`EMC-CM1-09`, VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`EMC-CM1-R7`**, ecrit
+dans `squad/conformite/FICHE-bandit-manchot-institutions-cm1.md`. **Aucun prefixe neuf** :
+`EMC-CM1-R1` a `EMC-CM1-R6` etaient alloues. L'identifiant a ete cherche sur l'arbre et sur toutes
+les branches locales avant d'ecrire, absent. **Forme copiee** d'`EMC-CM1-R6` : trois segments,
+marqueur `R` dans le dernier (`ADR-0100`). La ligne de la section 4 est dans le meme diff que la
+fiche.
+
+Ligne d'etat courant portee de **818 / 130 a 819 / 130**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 818 identifiants alloues et 130 prefixes distincts, sa table en porte 819 et 130"*. C'est
+ce **819 / 130** que je recopie.
+
 **Note de `nadia-prof`, s46, instance A, second passage, le 2026-10-02 (Done pedagogique de
 `MAT-CE1-05`, VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`SOP-CE1-R1`**, ecrit
 dans `squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`. **Aucun prefixe neuf** :
@@ -498,7 +513,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `818` identifiants alloues, `130` prefixes distincts.
+**Compte courant, verifie par la CI** : `819` identifiants alloues, `130` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1307,6 +1322,7 @@ clause 2 par une exemption.
 | `EMC-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-symboles-cm1.md` |
 | `EMC-CM1-R5` | `squad/conformite/FICHE-bandit-manchot-emotion-ressentir-agir-cm1.md` |
 | `EMC-CM1-R6` | `squad/conformite/FICHE-bandit-manchot-emotion-ressentir-agir-cm1.md` |
+| `EMC-CM1-R7` | `squad/conformite/FICHE-bandit-manchot-institutions-cm1.md` |
 | `EMO-R1` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R2` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R3` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
