@@ -11,6 +11,24 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s47, instance A, le 2026-10-02 (Done pedagogique de `MAT-CE1-07` et de
+`LVE-CP-06`, VALIDES SOUS RESERVE ; `QLM-CP-15` REFUSE).** Trois identifiants ajoutes, des
+reserves : **`TAB-CE1-R1`**, ecrit dans `squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`,
+et **`ANG-CP-R1`**, **`ANG-CP-R2`**, ecrits dans
+`squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md`. **Forme copiee** : `TAB-CE1-R1`
+de `SOP-CE1-R1`, `ANG-CP-R1` et `ANG-CP-R2` de `MUS-CP-R1` - trois segments, niveau au milieu,
+marqueur `R` dans le dernier (`ADR-0100`). Les trois ont ete cherches sur l'arbre et sur toutes les
+branches locales avant d'ecrire, absents. Les trois lignes de la section 4 sont dans le meme diff que
+les fiches. Aucun identifiant n'est ecrit dans la fiche de `bandit-manchot-autrefois-aujourdhui-cp`,
+refusee.
+
+Ligne d'etat courant portee de **821 / 130 a 824 / 130**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 821 identifiants alloues et 130 prefixes distincts, sa table en porte 824 et 130"*. C'est
+ce **824 / 130** que je recopie.
+
 **Note de `nadia-prof`, s47, le 2026-10-02 (borne du texte support au CE1, point B2 de
 `DEC-0104`).** Deux identifiants ajoutes, des conditions : **`LON-CE1-3`** et **`LON-CE1-4`**, ecrits
 dans `squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`. **Aucun prefixe neuf** :
@@ -530,7 +548,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `821` identifiants alloues, `130` prefixes distincts.
+**Compte courant, verifie par la CI** : `824` identifiants alloues, `130` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1133,6 +1151,7 @@ clause 2 par une exemption.
 | `TAB-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `TAB-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `TAB-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `TAB-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md` |
 | `PRO-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `PRO-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `PRO-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
@@ -1176,6 +1195,8 @@ clause 2 par une exemption.
 | `ANG-R5` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANG-R6` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANG-R7` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
+| `ANG-CP-R1` | `squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md` |
+| `ANG-CP-R2` | `squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md` |
 | `ANG-R8` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANT-1` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `ANT-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
