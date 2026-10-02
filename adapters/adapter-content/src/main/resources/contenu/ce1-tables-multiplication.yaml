@@ -1,0 +1,203 @@
+# S47-MAT-TABLES (MAT-CE1-07, DEC-0104 section 4, instance A). Arbitrage prealable de s43
+# (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md, section 1.3) :
+# TAB-CE1-1 a TAB-CE1-6, corrigees et amendees le 2026-10-02
+# (squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md).
+#
+# TAB-CE1-1 : l'espace couvert est les 50 produits a x b (a dans {2, 3, 4, 5, 10}, b entier de 1 a
+# 10), qui ne font que 40 faits distincts - 3 x 4 et 4 x 3 sont le meme produit, un item de l'un
+# couvre l'autre. Les 40 faits sont tous servis, un item par fait.
+#
+# TAB-CE1-2 : "facteur de table" d'un fait est le membre de {2, 3, 4, 5, 10} dont la table est
+# exercee - quand les deux facteurs sont dans cet ensemble, c'est le plus petit (fiche, section 5).
+# Sur les 40 items : 23 de facteur de table 2, 5 ou 10 (57,5 %, plancher 50 %), 9 de facteur de
+# table 3 (22,5 %, plancher 15 %), 8 de facteur de table 4 (20 %, plancher 15 %).
+#
+# TAB-CE1-3 : cinq items portent un facteur 1 (2 x 1, 3 x 1, 4 x 1, 5 x 1, 10 x 1 - imposes par
+# TAB-CE1-1), soit 12,5 % des 40 items, sous le plafond de 20 %.
+#
+# TAB-CE1-4 : sur les 30 items dont les deux facteurs different et dont aucun ne vaut 1, quinze
+# (50 %, plancher un tiers) ecrivent le facteur de table en seconde position ("7 × 3", pas
+# seulement "3 × 7").
+#
+# TAB-CE1-5 : chaque enonce est une expression numerique nue, signe "×" (jamais "x"), sans
+# situation ni unite. TYP-1 (ADR-0067) : l'espace devant le "?" final est insecable (U+00A0).
+#
+# TAB-CE1-6 : chaque distracteur appartient a l'une des cinq familles, nommee en commentaire sur la
+# ligne de l'item ("# TAB-CE1-6: <famille du premier distracteur>,<famille du second>") - (a) produit
+# voisin par defaut (a x (b-1)), (b) produit voisin par exces (a x (b+1)), (c) somme des facteurs
+# (a+b, sous condition), (d) produit de la table voisine ((a-1) x b ou (a+1) x b, le facteur restant
+# dans {2, 3, 4, 5, 10}), (e) confusion de "x 1" avec "+ 1" (a+1, uniquement quand un facteur vaut
+# 1). Quand les deux facteurs du fait sont dans {2, 3, 4, 5, 10}, les familles (a) a (d) sont
+# recalculees sur l'une ou l'autre lecture du couple. Sur le paquet entier, la bonne reponse est la
+# plus petite sur 14 items (35 %), la mediane sur 13 (32,5 %), la plus grande sur 13 (32,5 %) -
+# chaque rang entre 10 % et 50 %.
+schema: 1
+id: ce1-tables-multiplication
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4"
+lignesDeReferentiel: ["MAT-CE1-07"]
+items:
+  - enonce: "2 × 1 = ?"  # TAB-CE1-6: e,b
+    bonneReponse: "2"
+    distracteurs: ["3", "4"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "2 × 2 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "4"
+    distracteurs: ["2", "6"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "2 × 3 = ?"  # TAB-CE1-6: a,a
+    bonneReponse: "6"
+    distracteurs: ["3", "4"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "4 × 2 = ?"  # TAB-CE1-6: a,a
+    bonneReponse: "8"
+    distracteurs: ["4", "6"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "2 × 5 = ?"  # TAB-CE1-6: a,c
+    bonneReponse: "10"
+    distracteurs: ["5", "7"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "6 × 2 = ?"  # TAB-CE1-6: c,a
+    bonneReponse: "12"
+    distracteurs: ["8", "10"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "2 × 7 = ?"  # TAB-CE1-6: c,a
+    bonneReponse: "14"
+    distracteurs: ["9", "12"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "8 × 2 = ?"  # TAB-CE1-6: c,a
+    bonneReponse: "16"
+    distracteurs: ["10", "14"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "2 × 9 = ?"  # TAB-CE1-6: c,a
+    bonneReponse: "18"
+    distracteurs: ["11", "16"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "10 × 2 = ?"  # TAB-CE1-6: a,c
+    bonneReponse: "20"
+    distracteurs: ["10", "12"]
+    indice: "Table de 2 : additionne le nombre avec lui-même."
+  - enonce: "3 × 1 = ?"  # TAB-CE1-6: d,e
+    bonneReponse: "3"
+    distracteurs: ["2", "4"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 3 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "9"
+    distracteurs: ["6", "12"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 4 = ?"  # TAB-CE1-6: c,a
+    bonneReponse: "12"
+    distracteurs: ["7", "8"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "5 × 3 = ?"  # TAB-CE1-6: c,b
+    bonneReponse: "15"
+    distracteurs: ["8", "18"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 6 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "18"
+    distracteurs: ["21", "24"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "7 × 3 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "21"
+    distracteurs: ["24", "28"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 8 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "24"
+    distracteurs: ["27", "32"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "9 × 3 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "27"
+    distracteurs: ["30", "36"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "3 × 10 = ?"  # TAB-CE1-6: b,b
+    bonneReponse: "30"
+    distracteurs: ["33", "40"]
+    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+  - enonce: "4 × 1 = ?"  # TAB-CE1-6: d,e
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 4 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "16"
+    distracteurs: ["12", "20"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "5 × 4 = ?"  # TAB-CE1-6: b,b
+    bonneReponse: "20"
+    distracteurs: ["24", "25"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 6 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "24"
+    distracteurs: ["28", "30"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "7 × 4 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "28"
+    distracteurs: ["32", "35"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 8 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "32"
+    distracteurs: ["36", "40"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "9 × 4 = ?"  # TAB-CE1-6: b,d
+    bonneReponse: "36"
+    distracteurs: ["40", "45"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "4 × 10 = ?"  # TAB-CE1-6: b,b
+    bonneReponse: "40"
+    distracteurs: ["44", "50"]
+    indice: "Table de 4 : prends le double du double du nombre."
+  - enonce: "5 × 1 = ?"  # TAB-CE1-6: d,e
+    bonneReponse: "5"
+    distracteurs: ["4", "6"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 5 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "25"
+    distracteurs: ["20", "30"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "6 × 5 = ?"  # TAB-CE1-6: d,a
+    bonneReponse: "30"
+    distracteurs: ["24", "25"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 7 = ?"  # TAB-CE1-6: d,a
+    bonneReponse: "35"
+    distracteurs: ["28", "30"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "8 × 5 = ?"  # TAB-CE1-6: d,a
+    bonneReponse: "40"
+    distracteurs: ["32", "35"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "5 × 9 = ?"  # TAB-CE1-6: d,a
+    bonneReponse: "45"
+    distracteurs: ["36", "40"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "10 × 5 = ?"  # TAB-CE1-6: b,b
+    bonneReponse: "50"
+    distracteurs: ["55", "60"]
+    indice: "Table de 5 : prends la moitié de la table de 10."
+  - enonce: "10 × 1 = ?"  # TAB-CE1-6: e,b
+    bonneReponse: "10"
+    distracteurs: ["11", "20"]
+    indice: "Table de 10 : ajoute un zéro à la fin du nombre."
+  - enonce: "10 × 6 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "60"
+    distracteurs: ["50", "70"]
+    indice: "Table de 10 : ajoute un zéro à la fin du nombre."
+  - enonce: "7 × 10 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "70"
+    distracteurs: ["60", "80"]
+    indice: "Table de 10 : ajoute un zéro à la fin du nombre."
+  - enonce: "10 × 8 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "80"
+    distracteurs: ["70", "90"]
+    indice: "Table de 10 : ajoute un zéro à la fin du nombre."
+  - enonce: "9 × 10 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "90"
+    distracteurs: ["80", "100"]
+    indice: "Table de 10 : ajoute un zéro à la fin du nombre."
+  - enonce: "10 × 10 = ?"  # TAB-CE1-6: a,b
+    bonneReponse: "100"
+    distracteurs: ["90", "110"]
+    indice: "Table de 10 : ajoute un zéro à la fin du nombre."

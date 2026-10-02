@@ -158,7 +158,13 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // formes de distracteur (dont l'emprunt reporte deux fois, neuve) et une regle de rang
         // etendue au paquet entier, verifiees par PaquetCe1SoustractionsPoseesTest.
         SOUSTRACTIONS_POSEES("MAT-CE1-05",
-                "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)");
+                "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)"),
+        // S47-MAT-TABLES (s47) : entree neuve, MAT-CE1-07, libelle fixe par la story
+        // (docs/backlog/backlog.md, section "Sprint 47") et par la fiche de conformite
+        // (squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md) - sans point final,
+        // meme convention que les entrees precedentes.
+        TABLES_DE_MULTIPLICATION("MAT-CE1-07",
+                "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4");
 
         private final String ligne;
 
