@@ -42,13 +42,13 @@ descripteur:
   competence: "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)"
 lignesDeReferentiel: ["MAT-CE1-05"]
 items:
-  - enonce: "85 - 23 = ?"
-    bonneReponse: "62"
-    distracteurs: ["108"]  # SOP-CE1-5: somme
+  - enonce: "47 - 20 = ?"
+    bonneReponse: "27"
+    distracteurs: ["67"]  # SOP-CE1-5: somme
     indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
-  - enonce: "76 - 34 = ?"
-    bonneReponse: "42"
-    distracteurs: ["110"]  # SOP-CE1-5: somme
+  - enonce: "65 - 15 = ?"
+    bonneReponse: "50"
+    distracteurs: ["80"]  # SOP-CE1-5: somme
     indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
   - enonce: "52 - 27 = ?"
     bonneReponse: "25"
