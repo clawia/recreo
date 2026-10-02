@@ -120,10 +120,15 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
      * ecartes : les 7 items du verbe "lire" (bonne reponse et distracteurs en designation
      * litterale, par exemple "soixante-douze"), memes motif et forme que les items "lire" de
      * {@code cm1-grands-nombres} ci-dessus. Mesure du 2026-09-22, sur le paquet servi.</p>
+     *
+     * <p>{@code cp-emc-alerte} (S47-EMC-ALERTE-CP) porte 11 items a trois propositions dont 3 dans
+     * le domaine (la tache "service nomme" : "15", "17", "18", les trois numeros nus) et 8 ecartes
+     * (la tache "situation decrite" : bonne reponse et distracteurs en texte libre, "prévenir un
+     * adulte", "continuer à jouer sans rien dire"...). Mesure du 2026-10-02, sur le paquet servi.</p>
      */
     private static final Map<String, Integer> PAQUETS_A_ITEMS_ECARTES =
             Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14, "cm1-fractions", 18,
-                    "cp-nombres-jusqu-a-100", 7);
+                    "cp-nombres-jusqu-a-100", 7, "cp-emc-alerte", 8);
 
     /** Un item a trois propositions, vu par la lecture de valeur. */
     private record Lecture(List<String> propositions, List<Lue> lues) {

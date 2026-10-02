@@ -1,0 +1,103 @@
+schema: 1
+id: cp-emc-alerte
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Construire une culture civique"
+  competence: "Connaître les gestes d'alerte les plus simples et savoir donner l'alerte (prévenir un adulte, numéro d'urgence)."
+lignesDeReferentiel: ["EMC-CP-14"]
+#
+# S47-EMC-ALERTE-CP (docs/backlog/backlog.md, sprint 47). Referentiel copie conforme depuis
+# squad/programme/enseignement-moral-et-civique/competences-cp.md (EMC-CP-14). Conditions posees
+# d'avance sur toute la matiere, citees mot pour mot (meme source) :
+#   EMC-1 - Aucun item n'interroge l'enfant sur ce que lui ressent, vit, croit ou fait chez lui.
+#   EMC-2 - Un item ne retient que les situations a reponse unique et evidente.
+#   EMC-5 - Aucun item n'a deux reponses defendables. C'est HIS-2 etendu a cette matiere.
+#   EMC-7 - Les items sur les numeros d'urgence sont exacts et sans ambiguite. Chaque numero est
+#   exact, sa source est dans le commentaire du paquet, et aucun item n'admet deux numeros tous deux
+#   corrects pour la meme situation - le piege de l'incendie (18 et 112) est refuse sans discussion.
+#
+# Arbitrage prealable du 2026-10-02 (nadia-prof, Q4 de theo-archi,
+# squad/conformite/ARBITRAGE-PREALABLE-s47-trois-questions-de-theo-archi.md) : le 112 n'apparait nulle
+# part dans ce paquet - ni enonce, ni proposition, ni indice. Un item a numero porte exactement trois
+# propositions nues, "15", "17" et "18" (jamais "le 18"). L'enonce nomme le service ("Quel est le
+# numero des pompiers ?"), jamais une situation (le piege de l'incendie, refuse sans discussion par
+# EMC-7). Une situation decrite ne se sert que sur l'element "prevenir un adulte".
+#
+# Correspondances exactes (source : page "Numeros d'urgence" de service-public.fr) : 15 pour le SAMU
+# (urgence medicale), 17 pour la police (police secours), 18 pour les pompiers. Chaque item a numero
+# porte un marqueur "# EMC-7:" citant cette source.
+#
+# FER-1 : les deux elements du libelle (prevenir un adulte, numero d'urgence) sont chacun en bonne
+# reponse d'au moins un item - le numero d'urgence par la tache "service nomme" (items 1 a 3),
+# "prevenir un adulte" par la tache "situation decrite" (items 4 a 11, dont l'item 4 et l'item 11
+# portent la formulation exacte du libelle).
+#
+# FER-3 : deux taches distinctes - "service nomme" (items 1 a 3, l'enonce nomme directement un
+# service et demande son numero) ; "situation decrite" (items 4 a 11, une situation est decrite et
+# demande ce qu'un enfant doit faire, toujours en repondant par l'alerte a un adulte).
+#
+# Piege de rang (avis de faisabilite de s47, section 6) : les trois items a numero portent chacun
+# "15", "17" et "18" comme bonne reponse une fois chacun, ce qui equilibre les trois rangs a parts
+# egales sur le sous-ensemble numerique (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest).
+# Les huit items de situation, textuels, entrent dans PAQUETS_A_ITEMS_ECARTES de
+# LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest (ADR-0041) : le paquet melange items
+# numeriques et textuels.
+#
+# FER-2 : onze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# Adjacence, sans collision (ADR-0081, clause 5) : cp-emc-roles-ecole-commune (EMC-CP-13) sert deja
+# "les pompiers" en bonne reponse, sans numero - cette ligne-ci porte le numero et le geste d'alerte,
+# jamais le role du service.
+#
+# LON-1, LON-2 (ADR-0089) : chaque enonce compte au plus quinze mots et au plus deux phrases, la
+# seconde etant toujours la question.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "Quel est le numéro du SAMU ?"  # EMC-7: numero exact (SAMU, urgence medicale), source service-public.fr, page "Numeros d'urgence"
+    bonneReponse: "15"
+    distracteurs: ["17", "18"]
+    indice: "Le SAMU s'occupe des urgences médicales."
+  - enonce: "Quel est le numéro de la police secours ?"  # EMC-7: numero exact (police secours), source service-public.fr, page "Numeros d'urgence"
+    bonneReponse: "17"
+    distracteurs: ["15", "18"]
+    indice: "La police secours intervient en cas de danger ou d'agression."
+  - enonce: "Quel est le numéro des pompiers ?"  # EMC-7: numero exact (pompiers), source service-public.fr, page "Numeros d'urgence"
+    bonneReponse: "18"
+    distracteurs: ["15", "17"]
+    indice: "Les pompiers interviennent en cas d'incendie ou d'accident."
+  - enonce: "Léa voit une camarade tomber et se blesser. Que doit-elle faire ?"
+    bonneReponse: "prévenir un adulte"
+    distracteurs: ["continuer à jouer sans rien dire", "essayer de la soigner elle-même"]
+    indice: "Un adulte sait quoi faire face à une blessure."
+  - enonce: "Un inconnu parle aux enfants devant l'école. Que doit faire un enfant qui le voit ?"
+    bonneReponse: "le dire tout de suite à un adulte"
+    distracteurs: ["s'approcher pour mieux entendre", "ne rien dire à personne"]
+    indice: "Une personne inconnue qui s'adresse aux enfants doit toujours être signalée."
+  - enonce: "Hugo voit son petit frère grimper sur un meuble qui penche. Que doit-il faire ?"
+    bonneReponse: "avertir un adulte sans attendre"
+    distracteurs: ["grimper avec lui pour le retenir", "le laisser continuer sans rien dire"]
+    indice: "Un meuble qui penche peut tomber à tout moment."
+  - enonce: "Léa trouve un sac oublié sous un banc. Que doit-elle faire ?"
+    bonneReponse: "prévenir un adulte"
+    distracteurs: ["ouvrir le sac pour regarder dedans", "garder le sac pour elle"]
+    indice: "Un objet inconnu trouvé à l'école doit toujours être signalé."
+  - enonce: "Aya a un saignement de nez qui ne s'arrête pas. Que doit-elle faire ?"
+    bonneReponse: "aller voir un adulte"
+    distracteurs: ["attendre sans rien dire", "continuer à jouer quand même"]
+    indice: "Un saignement qui dure doit être montré à un adulte."
+  - enonce: "Malo sent une forte odeur de gaz dans la cuisine. Que doit-il faire ?"
+    bonneReponse: "prévenir un adulte tout de suite"
+    distracteurs: ["allumer la lumière pour mieux voir", "ouvrir le four pour vérifier"]
+    indice: "Une odeur de gaz est un signe de danger."
+  - enonce: "Léa ne retrouve plus ses parents dans un magasin. Que doit-elle faire ?"
+    bonneReponse: "demander de l'aide à un adulte du magasin"
+    distracteurs: ["sortir pour chercher dehors", "attendre assise sans parler à personne"]
+    indice: "Un adulte du magasin peut aider à retrouver sa famille."
+  - enonce: "Hugo voit un chien perdu et apeuré dans la rue. Que doit-il faire ?"
+    bonneReponse: "prévenir un adulte"
+    distracteurs: ["s'approcher pour le caresser", "essayer de l'attraper tout seul"]
+    indice: "Un animal perdu peut réagir de façon imprévisible."

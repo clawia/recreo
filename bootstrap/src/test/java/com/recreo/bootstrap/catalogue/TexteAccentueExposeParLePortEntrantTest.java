@@ -357,6 +357,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S47-QLM-AUTREFOIS (s47) : entree neuve, QLM-CP-15, comparer des modes de vie
             // d'autrefois et d'aujourd'hui a partir d'objets et d'images du quotidien.
             "bandit-manchot-autrefois-aujourdhui-cp",
+            // S47-EMC-ALERTE-CP (s47) : entree neuve, EMC-CP-14, connaitre les gestes d'alerte les
+            // plus simples et savoir donner l'alerte.
+            "bandit-manchot-alerte-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -584,6 +587,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les soustractions posées",
             // S47-QLM-AUTREFOIS (s47) : titre neuf.
             "Autrefois et aujourd'hui",
+            // S47-EMC-ALERTE-CP (s47) : titre neuf.
+            "Donner l'alerte",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -835,6 +840,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis la trajectoire, le repère, ou qui va le plus vite.",
             // S47-QLM-AUTREFOIS (s47) : consigne neuve.
             "Lis bien, puis dis si c'est autrefois ou aujourd'hui, ou par quoi c'est remplacé.",
+            // S47-EMC-ALERTE-CP (s47) : consigne neuve.
+            "Lis bien, puis dis le bon numéro, ou ce qu'il faut faire.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1336,7 +1343,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // nadia-prof (squad/programme/questionner-le-monde/competences-cp.md, ligne
             // QLM-CP-15).
             "Comparer des modes de vie d'autrefois et d'aujourd'hui à partir d'objets et "
-                    + "d'images du quotidien.");
+                    + "d'images du quotidien.",
+            // S47-EMC-ALERTE-CP (s47) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/enseignement-moral-et-civique/competences-cp.md, ligne
+            // EMC-CP-14).
+            "Connaître les gestes d'alerte les plus simples et savoir donner l'alerte "
+                    + "(prévenir un adulte, numéro d'urgence).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

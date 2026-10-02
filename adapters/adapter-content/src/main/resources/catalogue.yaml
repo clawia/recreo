@@ -702,3 +702,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-qlm-autrefois-aujourdhui
     nombreDeManches: 10
+  - id: bandit-manchot-alerte-cp
+    titre: "Donner l'alerte"
+    consigne: "Lis bien, puis dis le bon numéro, ou ce qu'il faut faire."
+    mecanique: bandit-manchot
+    paquet: cp-emc-alerte
+    nombreDeManches: 10
