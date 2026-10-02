@@ -1045,7 +1045,17 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " comparaisons de vitesse en texte libre (\"le cycliste\", \"ils vont à la"
                     + " même vitesse\"...), valeurDe rend null sur les trois propositions de chaque"
                     + " item. Mesure du 2026-10-01 sur le paquet servi : aucune des 36 propositions"
-                    + " ne commence par un chiffre"));
+                    + " ne commence par un chiffre"),
+            // S47-LVE-CULTURE-CP : paquet neuf, LVE-CP-06 (decouverte culturelle, langues vivantes
+            // anglais CP). Lot textuel en francais seul (Q5) : aucune proposition n'est numerique.
+            Map.entry("cp-anglais-culture",
+            "12 items sur 12 portent deux distracteurs (trois propositions, 36 au total), mais"
+                    + " aucune n'est numerique : ce sont des noms de pays (\"le Royaume-Uni\","
+                    + " \"les États-Unis\"...), des noms de lieux (\"la Tamise\", \"la statue de la"
+                    + " Liberté\"...) ou des descriptions en texte libre (\"de la dinde\", \"on"
+                    + " allume de grands feux et des feux d'artifice\"...), valeurDe rend null sur"
+                    + " les trois propositions de chaque item. Mesure du 2026-10-02 sur le paquet"
+                    + " servi : aucune des 36 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

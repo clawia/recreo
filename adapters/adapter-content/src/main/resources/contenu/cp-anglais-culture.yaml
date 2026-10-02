@@ -1,0 +1,98 @@
+schema: 1
+id: cp-anglais-culture
+type: question
+descripteur:
+  matiere: "Langues vivantes (anglais)"
+  niveau: "CP"
+  domaine: "Découverte culturelle"
+  competence: "Découvrir quelques aspects culturels des pays de la langue étudiée (fêtes, lieux, vie quotidienne)."
+lignesDeReferentiel: ["LVE-CP-06"]
+#
+# S47-LVE-CULTURE-CP (docs/backlog/backlog.md, sprint 47), ligne LVE-CP-06 des langues vivantes
+# (anglais) au CP, domaine "Decouverte culturelle". Referentiel copie conforme
+# (squad/programme/langues-vivantes/competences-cp.md, LVE-CP-06).
+#
+# Arbitrage pedagogique prealable cite integralement par la story
+# (squad/programme/MATRICE-couverture.md, section "Langues vivantes (anglais) - CP") : jouable en
+# francais seulement (decouverte culturelle, aucune competence linguistique). Conditions BIA-1,
+# BIA-2 opposables (squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md).
+#
+# Mention exigee d'avance, due dans la matrice avant que la ligne passe a couvert-valide :
+# "découverte culturelle seule, en français ; aucune compétence linguistique n'est servie".
+#
+# Q5 (nadia-prof, squad/conformite/ARBITRAGE-PREALABLE-s47-trois-questions-de-theo-archi.md) :
+# au CP, contrairement au CM1 (cm1-anglais.yaml), aucun mot ecrit a l'anglaise n'apparait dans un
+# texte que l'enfant lit - ni enonce, ni proposition, ni indice. Aucun nom de fete anglais
+# ("Halloween", "Thanksgiving") n'est ecrit : chaque fete se sert par ce qu'on y fait, jamais par
+# son nom. Seuls les noms francais de pays, de villes et de fleuves sont admis ("le Royaume-Uni",
+# "les Etats-Unis", "la Tamise"). Un trait attribue a un pays n'est pas aussi vrai des pays proposes
+# en distracteur - verifie fait par fait a la redaction : aucun des pays distracteurs (l'Espagne, le
+# Japon, l'Allemagne, le Portugal, l'Italie, les Etats-Unis) ne partage le trait decrit.
+#
+# BIA-1 : aucun item ne compare un aspect culturel du pays etudie a un aspect francais en position
+# de norme - aucun item ne mentionne la France.
+#
+# BIA-2 : un pays n'est jamais represente par un seul trait. Le Royaume-Uni est servi par trois
+# traits distincts (un lieu, une fete, un usage scolaire), les Etats-Unis par trois traits distincts
+# (un lieu, une fete, un usage scolaire) - marqueur # element: a cote de chaque item.
+#
+# FER-1 : les trois elements de la parenthese du libelle (fetes, lieux, vie quotidienne) sont
+# chacun servis, marques par item (# element: fete, # element: lieu, # element: quotidien).
+#
+# FER-3 : deux taches distinctes - tache A, decrire un aspect sans le nommer et demander le pays
+# (items 1 a 6, bonne reponse un nom de pays) ; tache B, le pays est nomme dans l'enonce et l'item
+# demande un detail (items 7 a 12, bonne reponse ne nomme jamais un pays).
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# LON-1, LON-2 (ADR-0089, nadia-prof) : au CP, un enonce compte au plus quinze mots et au plus deux
+# phrases, la seconde etant la question. Chaque enonce de ce paquet est tenu sous cette barre.
+items:
+  - enonce: "Un grand fleuve traverse la capitale, près d'une tour à horloge. Quel est ce pays ?"  # element: lieu
+    bonneReponse: "le Royaume-Uni"
+    distracteurs: ["l'Espagne", "le Japon"]
+    indice: "Sa capitale est traversée par un fleuve connu, près d'un grand bâtiment où se réunissent les élus du pays."
+  - enonce: "Début novembre, des feux d'artifice illuminent le ciel le soir. Quel est ce pays ?"  # element: fete
+    bonneReponse: "le Royaume-Uni"
+    distracteurs: ["l'Allemagne", "le Portugal"]
+    indice: "Cette tradition rappelle un projet secret découvert avant qu'il ne soit mis à exécution, il y a très longtemps."
+  - enonce: "De nombreux élèves portent un uniforme avec veste et cravate. Quel est ce pays ?"  # element: quotidien
+    bonneReponse: "le Royaume-Uni"
+    distracteurs: ["les États-Unis", "l'Italie"]
+    indice: "Cette tenue est la même pour tous les élèves d'une même école."
+  - enonce: "Une grande statue porte une torche sur une île d'un port. Quel est ce pays ?"  # element: lieu
+    bonneReponse: "les États-Unis"
+    distracteurs: ["l'Espagne", "le Japon"]
+    indice: "Cette statue est devenue un symbole d'accueil pour de nombreux voyageurs arrivant par bateau."
+  - enonce: "Fin novembre, les familles se réunissent pour un grand repas. Quel est ce pays ?"  # element: fete
+    bonneReponse: "les États-Unis"
+    distracteurs: ["l'Allemagne", "l'Italie"]
+    indice: "Cette fête remercie pour les récoltes de l'année, un peu avant l'hiver."
+  - enonce: "Chaque matin, face au drapeau, des élèves récitent un texte. Quel est ce pays ?"  # element: quotidien
+    bonneReponse: "les États-Unis"
+    distracteurs: ["l'Allemagne", "le Japon"]
+    indice: "Ce moment a lieu juste avant le début des cours, dans de nombreuses écoles de ce pays."
+  - enonce: "Au Royaume-Uni, comment s'appelle le fleuve qui traverse Londres ?"  # element: lieu
+    bonneReponse: "la Tamise"
+    distracteurs: ["la Seine", "le Rhône"]
+    indice: "Ce fleuve passe tout près du Parlement et de sa célèbre tour à horloge."
+  - enonce: "Au Royaume-Uni, que fait-on le soir, début novembre ?"  # element: fete
+    bonneReponse: "on allume de grands feux et des feux d'artifice"
+    distracteurs: ["on décore un sapin dans le salon", "on cherche des œufs en chocolat dans le jardin"]
+    indice: "Le ciel s'illumine de couleurs ce soir-là, dans tout le pays."
+  - enonce: "Au Royaume-Uni, que portent les élèves pour aller à l'école ?"  # element: quotidien
+    bonneReponse: "un uniforme, avec une veste et une cravate"
+    distracteurs: ["des vêtements de sport", "aucune tenue particulière"]
+    indice: "Cette tenue est la même pour tous les élèves d'une même école."
+  - enonce: "Aux États-Unis, comment s'appelle la statue qui porte une torche ?"  # element: lieu
+    bonneReponse: "la statue de la Liberté"
+    distracteurs: ["le Colisée", "la Grande Muraille"]
+    indice: "Son nom rappelle une valeur importante : être libre."
+  - enonce: "Aux États-Unis, que mange-t-on souvent fin novembre, en famille ?"  # element: fete
+    bonneReponse: "de la dinde"
+    distracteurs: ["des crêpes", "une galette des rois"]
+    indice: "C'est une grosse volaille, souvent servie rôtie, au centre de la table."
+  - enonce: "Aux États-Unis, que font les élèves chaque matin, face au drapeau ?"  # element: quotidien
+    bonneReponse: "ils récitent un texte de fidélité au pays"
+    distracteurs: ["ils chantent une chanson d'anniversaire", "ils lisent la météo du jour"]
+    indice: "Ce moment a lieu juste avant le début des cours, dans de nombreuses écoles de ce pays."
