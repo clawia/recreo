@@ -17,7 +17,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -56,6 +57,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  * (espace, "&amp;", "=", "+", "%"), mais chaque caractere accentue est pose tel quel et encode en
  * Latin-1 par le publisher du corps - jamais en UTF-8, jamais pourcent-encode. Aucun octet n'est
  * fabrique a la main : chaque proposition vient, comme avant, du catalogue reel.</p>
+ *
+ * <p>s47 (arbitrage prealable de nadia-prof, A1) : le corps est encode en Windows-1252, comme le
+ * poste un navigateur regle sur ce jeu de caracteres, et non plus en Latin-1 strict. Les deux
+ * coincident sur U+00A0..U+00FF ; Windows-1252 couvre en plus, sur un octet de 0x80..0x9F,
+ * U+0153 (0x9C), U+0152 (0x8C), les guillemets et tirets typographiques. La table est celle du JDK
+ * (charset "windows-1252"), jamais une table recopiee ici. Un caractere absent de Windows-1252
+ * leve toujours : aucun navigateur ne saurait le poster en un octet, et cette IT ne le
+ * reproduit pas.</p>
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PropositionsAccentueesJouablesIT {
@@ -63,6 +72,7 @@ class PropositionsAccentueesJouablesIT {
     private static final String ECRAN_ERREUR = "Oups ! Le jeu a un souci.";
     /** application/x-www-form-urlencoded : ces cinq octets restent structurants, tout le reste passe brut. */
     private static final String OCTETS_ASCII_A_ENCODER = " &=+%";
+    private static final Charset WINDOWS_1252 = Charset.forName("windows-1252");
 
     @Value("${local.server.port}")
     private int port;
@@ -73,19 +83,25 @@ class PropositionsAccentueesJouablesIT {
     @Test
     void chaqueRepresentationAccentueeDuCatalogueEstJouableSansPlanterLaManche() throws Exception {
         List<GameDefinition> jeux = partie.jeuxDisponibles();
-        int propositionsVerifiees = 0;
+        Set<String> propositionsVerifiees = new HashSet<>();
 
         for (GameDefinition jeu : jeux) {
             for (String proposition : propositionsNonAscii(jeu.contenu())) {
                 verifierJouable(jeu.id(), proposition);
-                propositionsVerifiees++;
+                propositionsVerifiees.add(proposition);
             }
         }
 
         assertThat(propositionsVerifiees)
                 .as("ADR-0013 : le catalogue reel doit porter au moins une proposition accentuee"
                         + " (cm1-homophones.yaml), sinon cette IT ne verifie rien")
-                .isPositive();
+                .isNotEmpty();
+        assertThat(propositionsVerifiees)
+                .as("s47, A1 : les deux propositions a ligature du catalogue reel (cp-anglais-culture.yaml,"
+                        + " cp-eps-corps-effort.yaml) doivent etre jouees, sinon le chemin Windows-1252"
+                        + " hors Latin-1 n'est exerce par rien")
+                .contains("on cherche des œufs en chocolat dans le jardin",
+                        "pour que les muscles et le cœur récupèrent");
     }
 
     private void verifierJouable(String jeuId, String proposition) throws Exception {
@@ -96,11 +112,11 @@ class PropositionsAccentueesJouablesIT {
                         .build(),
                 HttpResponse.BodyHandlers.discarding());
 
-        String corps = corpsFormulaireAvecUnCaractereAccentueEnLatin1(proposition);
+        byte[] corps = corpsFormulaireEncodeEnWindows1252(proposition);
         HttpResponse<String> coup = client.send(
                 HttpRequest.newBuilder(URI.create(base() + "/parties/" + jeuId + "/coups"))
                         .header("Content-Type", "application/x-www-form-urlencoded")
-                        .POST(HttpRequest.BodyPublishers.ofString(corps, StandardCharsets.ISO_8859_1))
+                        .POST(HttpRequest.BodyPublishers.ofByteArray(corps))
                         .build(),
                 HttpResponse.BodyHandlers.ofString());
 
@@ -124,25 +140,27 @@ class PropositionsAccentueesJouablesIT {
     }
 
     /**
-     * Pourcent-encode les seuls octets structurants du format ; pose chaque caractere accentue tel
-     * quel, pour que HttpRequest.BodyPublishers.ofString(..., ISO_8859_1) l'encode en un unique
-     * octet Latin-1 - jamais en UTF-8, jamais pourcent-encode. C'est cet unique octet, invalide en
-     * UTF-8, que le decodeur strict de Tomcat refuse.
+     * Pourcent-encode les seuls octets structurants du format ; encode chaque caractere accentue
+     * tel quel en un unique octet Windows-1252 - jamais en UTF-8, jamais pourcent-encode. C'est cet
+     * unique octet, invalide en UTF-8, que le decodeur strict de Tomcat refuse. L'encodeur rapporte
+     * un caractere non representable au lieu de le remplacer par "?" : sans cela, un caractere hors
+     * Windows-1252 partirait en silence comme un autre texte que la proposition.
      */
-    private static String corpsFormulaireAvecUnCaractereAccentueEnLatin1(String proposition) {
+    private static byte[] corpsFormulaireEncodeEnWindows1252(String proposition) {
+        CharsetEncoder windows1252 = WINDOWS_1252.newEncoder();
         StringBuilder corps = new StringBuilder("propositionChoisie=");
         for (int i = 0; i < proposition.length(); i++) {
             char caractere = proposition.charAt(i);
             if (caractere < 128 && OCTETS_ASCII_A_ENCODER.indexOf(caractere) >= 0) {
                 corps.append('%').append(String.format("%02X", (int) caractere));
-            } else if (caractere <= 0xFF) {
+            } else if (windows1252.canEncode(caractere)) {
                 corps.append(caractere);
             } else {
                 throw new IllegalStateException(
-                        "caractere hors Latin-1, cette IT ne sait pas le reproduire : \"" + proposition + "\"");
+                        "caractere hors Windows-1252, cette IT ne sait pas le reproduire : \"" + proposition + "\"");
             }
         }
-        return corps.toString();
+        return corps.toString().getBytes(WINDOWS_1252);
     }
 
     private String base() {
