@@ -11,6 +11,21 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s46, instance B, le 2026-10-02 (`SCI-CM1-16`, REFUSE).** Quatre
+identifiants ajoutes, tous des reserves : **`PHN-CM1-R1` a `PHN-CM1-R4`**, ecrits dans
+`squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md`. Le motif du refus ne porte
+aucun identifiant. **Un prefixe neuf, `PHN`** : absent de la table de la section 4, et cherche sur
+l'arbre et sur toutes les branches locales avant d'ecrire, absent. **Forme copiee** d'`USN-CM1-R9` :
+trois segments, marqueur `R` dans le dernier (`ADR-0100`). Les quatre lignes de la section 4 sont
+dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **811 / 129 a 815 / 130**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne ci-dessous, rend :
+*"declare 811 identifiants alloues et 129 prefixes distincts, sa table en porte 815 et 130"*. C'est
+ce **815 / 130** que je recopie.
+
 **Note de `nadia-prof`, s46, instance B, le 2026-10-02 (Done pedagogique de `SCI-CM1-03`, VALIDE
 SOUS RESERVE).** Quatre identifiants ajoutes, tous des reserves : **`MVT-CM1-R1` a `MVT-CM1-R4`**,
 ecrits dans `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md`. **Un prefixe neuf, `MVT`** :
@@ -440,7 +455,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `811` identifiants alloues, `129` prefixes distincts.
+**Compte courant, verifie par la CI** : `815` identifiants alloues, `130` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1835,3 +1850,7 @@ clause 2 par une exemption.
 | `MVT-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md` |
 | `MVT-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md` |
 | `MVT-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-mouvement-cm1.md` |
+| `PHN-CM1-R1` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
+| `PHN-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
+| `PHN-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
+| `PHN-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
