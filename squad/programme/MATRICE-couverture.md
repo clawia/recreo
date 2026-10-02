@@ -1200,6 +1200,11 @@ aucun paquet de contenu de francais CE1 n'existe.
 | francais | CE1 | Vocabulaire | Regrouper les mots d'une meme famille et reperer un prefixe ou un suffixe frequent (re-, de-, -eur...) | - | - | non couvert |
 | francais | CE1 | Vocabulaire | Trouver un synonyme ou un contraire d'un mot frequent | - | - | non couvert |
 | francais | CE1 | Vocabulaire | Classer des mots par categorie et trouver le mot qui les designe tous (fruit pour pomme, poire, cerise) | - | - | non couvert |
+| francais | CE1 | Langage oral | Ecouter et comprendre un texte lu par l'adulte, et s'exprimer a l'oral | - | - | **non couvrable en l'etat** (2026-10-02, s47, `nadia-prof`) - **ecouter : nature reversible** - la voix est celle de l'adulte, et la premisse de DEC-0046 et DEC-0068 n'est arbitree que pour le CP ; **s'exprimer : nature irreversible** - production orale de l'enfant, qu'aucun dispositif ne verifie |
+| francais | CE1 | Lecture et comprehension de l'ecrit | Lire a voix haute un texte court avec fluidite | - | - | **non couvrable en l'etat** (2026-10-02, s47, `nadia-prof`) - **nature irreversible** : la voix est celle de l'enfant, et aucun dispositif ne verifie ce qu'il prononce - meme motif que la ligne CP "Lire a voix haute un texte court et simple avec fluidite croissante" |
+| francais | CE1 | Ecriture | Ecrire sous la dictee des mots et des phrases courtes | - | - | **non couvrable en l'etat** (2026-10-02, s47, `nadia-prof`) - **nature reversible** : la dictee demande la voix de l'adulte, et la premisse de DEC-0046 et DEC-0068 n'est arbitree que pour le CP. Au CP, le mot dicte est servi par saisie (`saisie-mot-dicte-cp`) ; l'etendre au CE1 est une decision de l'utilisatrice |
+| francais | CE1 | Ecriture | Copier un texte court de maniere lisible, sans erreur | - | - | **non couvrable en l'etat** (2026-10-02, s47, `nadia-prof`) - **contrainte fondatrice** : la competence est graphomotrice, et DEC-0046 a ecarte tout geste de trace - meme motif que la ligne CP "Copier un mot, une phrase courte sans erreur" |
+| francais | CE1 | Ecriture | Produire un ecrit court (quelques phrases) | - | - | **non couvrable en l'etat** (2026-10-02, s47, `nadia-prof`) - **nature irreversible** : jugement humain sur une production libre (ADR-0008) - meme motif que la ligne CM1 "Rediger un texte narratif court et coherent" |
 
 **Vingt-six lignes**, verifiees contre le referentiel source par recherche des vingt-six codes
 `FRA-CE1-01` a `FRA-CE1-26` (`grep -oE "FRA-CE1-[0-9]+" squad/programme/francais/competences-ce1.md
@@ -1255,6 +1260,34 @@ geste. **113 / 182 = 62,1 %, recalcule depuis ma propre lecture du referentiel p
 Le taux affiche recule de 10,3 points par le seul effet du denominateur, avant qu'aucun jeu de
 francais CE1 n'existe, exactement comme `DEC-0103` (section 4) et `planning.md` de s46 (section 10)
 l'annoncaient d'avance. **Ce recul n'est pas une regression du produit.**
+
+**Note du 2026-10-02 (s47, `nadia-prof`, point B1 de `DEC-0104`)** : les cinq attendus hors ligne
+recoivent les codes `FRA-CE1-27` a `FRA-CE1-31` dans `squad/programme/francais/competences-ce1.md`
+et cinq lignes de ce tableau, au statut `non couvrable en l'etat`, motif ecrit sur chaque ligne.
+**Motif de la decision** : une competence du programme qui n'est pas une ligne de cette matrice n'est
+pas suivie, et un taux de couverture du francais CE1 calcule sans elles serait faux. Parite avec le
+CP (`FRA-CP-06`, `FRA-CP-08`). La phrase ci-dessus *"aucun des deux n'ajoute ni ne retranche une
+ligne de ce tableau"* est vraie a la date de `camille-po` et ne l'est plus depuis cette note ; je ne
+l'efface pas. Le second point (texte support) est tranche le meme jour :
+`squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`.
+
+**Effet sur le denominateur** : aucun. Les cinq lignes entrent au total, pas au denominateur
+atteignable.
+
+| | Avant (2026-10-02, apres l'entree du referentiel) | Apres les cinq lignes |
+|---|---|---|
+| `couvert-valide` | 113 | 113 |
+| `en cours` | 3 | 3 |
+| `non couvert` | 66 | 66 |
+| `non couvrable en l'etat` | 71 | **76** |
+| Total | 253 | **258** |
+| Denominateur atteignable | 182 | 182 |
+| **Taux** | **113 / 182 = 62,1 %** | **113 / 182 = 62,1 %** |
+
+**Methode** : colonne "Avant" recomptee par un script de poste non commite, qui classe chaque ligne
+de donnees de cette matrice par le debut de sa colonne `Statut` (113, 3, 66, 71, total 253 -
+identique au chiffre de `DEC-0104`). Colonne "Apres" recomptee par le meme script sur l'arbre qui
+porte cette note.
 
 ## Francais - CM1 (cycle 3)
 

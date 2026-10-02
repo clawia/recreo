@@ -17,7 +17,9 @@
   (`SOP-CE1-4` non tenue sur deux items), verdict conservé tel quel dans le bloc de validation en
   bas de fiche. Fiche ouverte le 2026-10-01 avant le premier
   item, par l'amendement de `SOP-CE1-5`, pour que la condition que le développeur lit soit celle que
-  j'auditerai.
+  j'auditerai. **Arbitrage de `SOP-CE1-R1` du 2026-10-02 (s47)** : cinquième forme admise (le
+  décalage des colonnes), obligatoire sur les items sans emprunt ; réserve ouverte jusqu'au rejeu
+  d'un paquet repris (dernière section).
 - **Dernière mise à jour** : 2026-10-02.
 
 ---
@@ -345,3 +347,105 @@ voisins : vérifié en jouant au premier passage, rien n'a changé sur les seize
 section 4, dans le même commit. Aucun renommé.
 
 **Signé** : `nadia-prof`, s46, instance A, 2026-10-02.
+
+---
+
+## Arbitrage de `SOP-CE1-R1` du 2026-10-02 (`nadia-prof`, s47)
+
+**Décision : j'admets une cinquième forme de distracteur, le décalage des colonnes, et je la rends
+obligatoire sur les items sans emprunt.** Je n'accepte pas la limite telle quelle. `SOP-CE1-R1`
+reste ouverte jusqu'à ce que je rejoue un paquet repris (section 4 ci-dessous). Le Done pédagogique
+du 2026-10-02 n'est pas rouvert.
+
+**Ce qui m'est posé** : `DEC-0104`, section 5, et la story d'arbitrage de `docs/backlog/backlog.md`
+(*"Story d'arbitrage différée, adressée à `nadia-prof` - `SOP-CE1-R1`"*). **Une correction du
+routage avant de trancher** : le message qui me route cette question attribue le constat à
+`theo-archi`. Il vient de mon second passage (section 4 de ce verdict). L'avis de `theo-archi` de s46
+portait sur les trois premières formes, qui dépassent toujours la bonne réponse. Cela ne change pas
+le fond.
+
+**Audit dégradé, et je le déclare** : je n'ai rien rejoué. Rien n'a changé dans le paquet depuis mon
+second passage. Les valeurs ci-dessous sortent d'un script de poste non commité.
+
+### 1. La forme admise
+
+> **Cinquième forme : le décalage des colonnes.** L'enfant pose le second terme aligné à gauche
+> sous le premier, au lieu de l'aligner sur les unités. Pour un second terme qui a un chiffre de
+> moins que le premier, la valeur est `a - 10 x b`. Exemple : `786 - 25` posé avec `25` sous `78`
+> donne `786 - 250 = 536`.
+>
+> **Admission sur un item.** La forme n'est admise que si `a - 10 x b` est positif, a le même nombre
+> de chiffres que la bonne réponse, et se calcule **sans emprunt**. Avec un emprunt, l'enfant
+> pourrait enchaîner une seconde erreur et ne reconnaîtrait pas la sienne. `SOP-CE1-4` s'applique
+> comme aux quatre autres formes.
+>
+> **Sur un item sans emprunt, cette forme est obligatoire.** Ces items sont donc choisis avec un
+> second terme d'au moins deux chiffres et d'un chiffre de moins que le premier (trois chiffres
+> moins deux chiffres). La somme reste admise à côté d'elle, si elle tient `SOP-CE1-4`.
+>
+> **Les cinq formes, et seulement celles-là** : l'emprunt oublié, l'emprunt non reporté, la somme,
+> l'emprunt reporté deux fois, le décalage des colonnes. Le reste de `SOP-CE1-5` ne change pas.
+
+**Pourquoi c'est une vraie erreur de CE1.** Poser une soustraction, c'est d'abord placer les unités
+sous les unités. Quand les deux nombres n'ont pas le même nombre de chiffres, l'enfant de CE1 cale
+souvent le second à gauche, comme il écrit une ligne. C'est une erreur de la technique posée
+elle-même, celle que la consigne *"Pose l'opération"* demande. Et l'énoncé est servi en ligne
+(`786 - 25 = ?`) : c'est l'enfant qui pose, donc c'est lui qui décale.
+
+**Ce que la forme change pour l'enfant.** La bonne réponse et le décalage sont tous les deux plus
+petits que le premier terme. Le sens de grandeur ne suffit plus : il faut avoir aligné les unités
+pour choisir. C'est la vérification que `SOP-CE1-2` demandait à ces items.
+
+### 2. Ce que je n'admets pas
+
+| Erreur envisagée | Pourquoi elle n'entre pas |
+|---|---|
+| Emprunt fait sans besoin | Déjà écartée (section 4 des conditions) : ce que l'enfant écrit dans la colonne n'est pas déterminé |
+| Erreur de table dans une colonne (`7 - 5 = 3`) | Ce n'est pas une erreur nommée qui donne une valeur unique, c'est un nombre voisin |
+| Décalage sur un item où les deux termes ont le même nombre de chiffres | L'erreur n'existe pas : il n'y a rien à décaler |
+
+### 3. La forme est tenable
+
+Vérifié sur les couples `100 <= a <= 999`, `10 <= b <= 99`, sans emprunt : 22 275 couples, dont
+11 022 admettent le décalage, et 3 110 donnent un item qui tient `SOP-CE1-4` (même nombre de
+chiffres pour tous les distracteurs, un distracteur au moins qui partage le chiffre des unités).
+
+| Item | Bonne réponse | Décalage | Somme | `SOP-CE1-4` |
+|---|---|---|---|---|
+| `786 - 25` | 761 | 536 | 811 | tenue : trois chiffres partout, la somme partage le `1` |
+| `785 - 40` | 745 | 385 | 825 | tenue : trois chiffres partout, les deux partagent le `5` |
+| `968 - 50` | 918 | 468 | 1018, non admise (quatre chiffres) | tenue sur le seul décalage, qui partage le `8` |
+| `786 - 75` | 711 | 36, non admis (deux chiffres) | 861 | le décalage n'est pas admis : un autre couple est pris |
+
+`SOP-CE1-2` reste tenable : sur les cinq items à deux chiffres du paquet, les deux items sans emprunt
+remplacés par des items à trois chiffres en laissent trois. `SOP-CE1-3` passe de 13 à 15 items sur
+18.
+
+**Une conséquence de fabrication, pas une barre neuve.** Sur un item sans emprunt à trois
+propositions, la bonne réponse est toujours au milieu (décalage plus petit, somme plus grande). Si
+les deux items sans emprunt en portent trois, *"celle du milieu"* passe de 7 à 9 items sur 18, soit
+50 %. Le garde-fou de rang compare en strict (`ratio > SEUIL_MAJORITE`), donc 50 % passe. C'est le
+test du paquet qui décide, pas moi. Je le regarderai en jouant.
+
+### 4. Ce qui lève `SOP-CE1-R1`
+
+**Barre de levée, écrite aujourd'hui et que je ne déplacerai pas** : chaque item sans emprunt du
+paquet porte le décalage des colonnes, admis selon la section 1. Les autres conditions sont tenues
+sur les dix-huit items. Je rejoue le paquet entier.
+
+| Fait | À qui |
+|---|---|
+| Story de reprise : remplacer `47 - 20` et `65 - 15` par deux items sans emprunt de trois chiffres moins deux chiffres, qui portent le décalage | `camille-po`, développeur affecté par `sofia-sm` |
+| Le test du paquet relit le marqueur de la cinquième forme, la compare à `a - 10 x b`, vérifie qu'elle se calcule sans emprunt, et exige sa présence sur tout item sans emprunt | `theo-archi` et le développeur affecté, via `sofia-sm` |
+| Le critère d'acceptation de `SOP-CE1-5` cite les cinq formes | `camille-po` |
+
+### 5. Ce dont je reste la seule garde
+
+Que le décalage soit une erreur qu'un enfant de CE1 commet sur ces items-là, et pas seulement un
+nombre plus petit : je le vérifierai en jouant. Tout le reste de la section 1 se calcule sur le
+paquet. `SOP-CE1-R1` n'est gardée par aucun test tant que le test du paquet n'est pas repris.
+
+**Identifiants** : aucun neuf, aucun renommé. `SOP-CE1-5` change de texte, pas de nom. `SOP-CE1-R1`
+reste ouverte.
+
+**Signé** : `nadia-prof`, s47, 2026-10-02.

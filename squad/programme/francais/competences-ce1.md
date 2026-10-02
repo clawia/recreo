@@ -79,15 +79,31 @@ reprendre, et il s'arrête avant ce que `squad/programme/francais/competences-cm
 - [FRA-CE1-26] Classer des mots par catégorie et trouver le mot qui les désigne tous (`fruit` pour
   `pomme`, `poire`, `cerise`).
 
+## Cinq attendus du programme que le produit ne sert pas en l'état
+
+Ajoutés par `nadia-prof` le 2026-10-02 (s47, `DEC-0104`, section 1.1, point B1). Ils portent un
+code pour être suivis dans `squad/programme/MATRICE-couverture.md`, au statut `non couvrable en
+l'état`, comme `FRA-CP-06` et `FRA-CP-08` au CP. Le motif de chacun est écrit dans la matrice.
+
+- [FRA-CE1-27] Écouter et comprendre un texte lu par l'adulte, et s'exprimer à l'oral.
+- [FRA-CE1-28] Lire à voix haute un texte court avec fluidité.
+- [FRA-CE1-29] Écrire sous la dictée des mots et des phrases courtes.
+- [FRA-CE1-30] Copier un texte court de manière lisible, sans erreur.
+- [FRA-CE1-31] Produire un écrit court (quelques phrases).
+
 ## Ce que ce référentiel ne dit pas, et où c'est écrit
 
-**Cinq attendus réels du programme de CE1 n'ont pas de ligne ici, et ce n'est pas un oubli** : le
-langage oral (écouter, comprendre un texte lu par l'adulte, s'exprimer), la lecture à voix haute
-et sa fluence, la dictée, la copie manuscrite et la production d'un écrit. Chacun exige une voix,
-un geste d'écriture ou un texte libre qu'aucun système sans persistance ne peut vérifier. La
-prémisse qui fait jouer la voix d'un adulte présent (`DEC-0046`, `DEC-0068`, `CLAUDE.md` racine)
-est arbitrée **pour le CP** et n'a pas été étendue au CE1 : je ne l'étends pas par ce document. Une
-couverture complète de ce référentiel ne vaudra donc **pas** couverture du français de CE1.
+**Les cinq attendus de la section précédente n'avaient pas de ligne** dans la version du
+2026-10-01, qui disait : *"Cinq attendus réels du programme de CE1 n'ont pas de ligne ici, et ce
+n'est pas un oubli"*. Ils en ont une depuis le 2026-10-02. **Une correction de mon propre motif** :
+j'écrivais que chacun exigeait *"une voix, un geste d'écriture ou un texte libre qu'aucun système
+sans persistance ne peut vérifier"*. La persistance n'y est pour rien : au CP, un mot dicté est
+servi sans persistance (`saisie-mot-dicte-cp`). Le vrai motif est l'un des trois suivants, selon la
+ligne : la voix de l'adulte, que la prémisse de `DEC-0046` et `DEC-0068` n'ouvre que pour le CP ;
+la voix ou le geste de l'enfant, qu'aucun dispositif ne vérifie ; un texte libre, qui demande un
+jugement humain (`ADR-0008`). Je n'étends pas la prémisse au CE1 par ce document. Une couverture
+complète des lignes `FRA-CE1-01` à `FRA-CE1-26` ne vaudra donc **pas** couverture du français de
+CE1.
 
 **La longueur d'un énoncé de CE1 est déjà bornée**, quelle que soit la matière :
 `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md` pose `LON-CE1-1` (au plus vingt mots)
@@ -96,6 +112,9 @@ paquet dont le descripteur porte `CE1`. Un paquet de français de CE1 tient ces 
 de la ligne qu'il déclare. **La longueur du texte support des lignes `FRA-CE1-04` à `FRA-CE1-07`
 n'est bornée par rien** : un texte narratif ne tient pas dans vingt mots, et ces deux bornes ne le
 gouvernent pas. Cette borne reste à poser, par moi, avant le premier paquet de ces quatre lignes.
+*Posée le 2026-10-02* : `squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`,
+`LON-CE1-3` (au plus trente mots) et `LON-CE1-4` (au plus quatre phrases, aucune de plus de douze
+mots).
 
 **Aucun intitulé ci-dessus ne devient un titre de jeu.** Un titre de jeu ne porte jamais le niveau
 de son paquet (`ADR-0078`) ; ces intitulés nomment une compétence pour l'adulte qui pilote la

@@ -11,6 +11,23 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s47, le 2026-10-02 (borne du texte support au CE1, point B2 de
+`DEC-0104`).** Deux identifiants ajoutes, des conditions : **`LON-CE1-3`** et **`LON-CE1-4`**, ecrits
+dans `squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`. **Aucun prefixe neuf** :
+`LON-CE1-1` et `LON-CE1-2` etaient alloues. Les deux identifiants ont ete cherches sur toutes les
+branches locales avant d'ecrire, absents. **Forme copiee** de `LON-CE1-2` : trois segments, niveau au
+milieu. Les deux lignes de la section 4 sont dans le meme diff que l'arbitrage. Les codes
+`FRA-CE1-27` a `FRA-CE1-31`, ecrits dans le meme commit, sont des codes de ligne alloues par leur
+referentiel (section 2), pas par ce registre. L'arbitrage de `SOP-CE1-R1` du meme jour n'ecrit aucun
+identifiant neuf.
+
+Ligne d'etat courant portee de **819 / 130 a 821 / 130**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 819 identifiants alloues et 130 prefixes distincts, sa table en porte 821 et 130"*. C'est
+ce **821 / 130** que je recopie.
+
 **Note de `nadia-prof`, s46, instance A, troisieme passage, le 2026-10-02 (Done pedagogique de
 `EMC-CM1-09`, VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`EMC-CM1-R7`**, ecrit
 dans `squad/conformite/FICHE-bandit-manchot-institutions-cm1.md`. **Aucun prefixe neuf** :
@@ -513,7 +530,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `819` identifiants alloues, `130` prefixes distincts.
+**Compte courant, verifie par la CI** : `821` identifiants alloues, `130` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1510,6 +1527,8 @@ clause 2 par une exemption.
 | `LON-2` | `squad/conformite/ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md` |
 | `LON-CE1-1` | `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md` |
 | `LON-CE1-2` | `squad/conformite/ARBITRAGE-s36-longueur-d-enonce-au-ce1.md` |
+| `LON-CE1-3` | `squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md` |
+| `LON-CE1-4` | `squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md` |
 | `MAT-R1` | `squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md` |
 | `MAT-R2` | `squad/conformite/FICHE-bandit-manchot-familles-materiaux-cm1.md` |
 | `MD-1` | `squad/conformite/ARBITRAGE-PREALABLE-s13-multiplications-divisions-et-durees-cm1.md` |
