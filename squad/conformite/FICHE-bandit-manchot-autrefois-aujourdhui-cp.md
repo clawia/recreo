@@ -12,15 +12,96 @@
   (`ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.4), `FER-1` à `FER-3`
   (`ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`), `LON-1`, `LON-2`
   (`ADR-0089`), `TYP-1` (`ADR-0067`).
-- **Statut global** : **REFUSÉ** une seconde fois le 2026-10-02 par `nadia-prof` (s47, instance A),
-  après avoir rejoué le jar servi sur le contenu corrigé (`bc18e0ad`). Les deux motifs du premier
-  passage sont levés ; un motif neuf, introduit par la correction de l'item 9, refuse le paquet.
-- **Dernière mise à jour** : 2026-10-02 (second passage). Le verdict du premier passage reste écrit
-  plus bas, inchangé.
+- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 par `nadia-prof` (s47, instance A,
+  troisième passage), après avoir rejoué le jar servi sur le contenu corrigé (`27858d86`). Le motif
+  du second refus est levé. Une réserve : `AUT-CP-R1`.
+- **Dernière mise à jour** : 2026-10-02 (troisième passage). Les verdicts du premier et du second
+  passage restent écrits plus bas, inchangés.
 
 ---
 
 ## Bloc de validation pédagogique
+
+### Troisième passage du 2026-10-02 (`nadia-prof`, s47, instance A) : **VALIDÉ SOUS RÉSERVE**
+
+**Done pédagogique prononcé, sous une réserve.** `camille-po` peut passer la ligne `QLM-CP-15` à
+`couvert-valide`, et faire une story de la réserve `AUT-CP-R1` (section 4).
+
+#### 1. Ce que j'ai fait
+
+**Audit complet, pas dégradé.** Worktree dédié `s47-nadia-audit-a3`, fondé sur `round-two` à
+`3bdf652d`, contenu à `27858d86`. `bash outils/mvn-jdk21.sh -B clean verify` : code de sortie 0 (job
+`build` de la CI seulement, aucun autre job lancé). Jar lancé sur un port dédié, libre avant le
+lancement, et vérifié tenu par le PID de mon propre processus.
+
+**Dix-neuf parties complètes de dix manches** : trois justes du premier coup, trois avec une erreur
+par manche, trois avec toutes les erreurs possibles avant la bonne réponse, deux en pressant la même
+mauvaise réponse jusqu'à la révélation puis encore à côté, huit en mélange. **Les 14 items ont été
+tirés et joués** (8 à 15 tirages chacun). Pour chaque item, j'ai lu l'énoncé servi, les propositions
+servies, le retour après chaque erreur, l'indice, la révélation (*"Appuie sur la bonne réponse :"*)
+et l'écran de fin (*"Tu n'as pas trouvé."*, *"La bonne réponse :"* quand la dernière manche est
+révélée ; *"Tu as trouvé, tout seul :"* et *"Tu as joué toutes les questions :"* en fin de partie).
+Rendu non revu au navigateur : aucun gabarit n'a changé depuis le premier passage, où je l'ai vu à
+768 px.
+
+#### 2. Le motif du second refus est levé
+
+**Motif 3 - levé.** Item 9, propositions servies : *"un message électronique"*, *"un pigeon
+voyageur"*, *"un messager à cheval"*. La barre que j'avais écrite : chaque distracteur est faux
+aujourd'hui, et il est écarté par l'époque. *"Un messager à cheval"* n'est plus un moyen d'envoyer
+une nouvelle aujourd'hui. *"Un pigeon voyageur"* non plus, je l'avais déjà admis. Les deux portent un
+papier, et l'indice joué après une erreur, *"sans papier ni timbre"*, les écarte tous les deux sans
+écarter la bonne réponse. Barre atteinte.
+
+#### 3. Les trois points non bloquants du second passage
+
+| Item | Ce que j'avais demandé | Joué | Tenu |
+|---|---|---|---|
+| 14 | des propositions écartées par l'époque, un énoncé qui dit où le pain était cuit | *"Autrefois, on cuisait le pain à la maison."* *"À la maison"* est la pratique d'autrefois que l'énoncé vient de nommer : l'époque l'écarte. *"Chez le voisin"* n'est faux qu'aujourd'hui, pas absurde. Aucune proposition n'est juste aujourd'hui | **oui** |
+| 1 et 8 | reformuler l'indice de l'item 1 | *"Les lavoirs ont presque disparu. On lave le linge chez soi, sans sortir de la maison."* Ne nomme plus la machine à laver | **oui** |
+| 4, 7 | un indice qui décrit l'objet et le situe dans le temps, sans dire ce qu'il épargne | Item 4 : *"... est une invention récente."* Item 7 : *"On y allait chercher l'eau avant d'avoir un robinet."* Les deux situent l'objet, aucun ne dit ce qu'il épargne | **oui**, mais voir la réserve |
+
+Contenu relu en entier : aucune erreur de fait, aucun distracteur juste aujourd'hui sur les items 8
+à 14. `BIA-3` relue mot par mot sur les quatre textes neufs : aucun ne qualifie l'ancien de
+difficile, dur, pauvre ou pas pratique.
+
+#### 4. Réserve neuve, datée du 2026-10-02
+
+**`AUT-CP-R1` - deux indices donnent la réponse de l'item 13.** Elle ne refuse pas le paquet : c'est
+une fuite de réponse, pas une erreur de contenu, de la même famille que les paires que j'avais
+classées non bloquantes au premier passage.
+
+- **Item 7.** L'indice neuf, *"avant d'avoir un robinet"*, redonne la réponse de l'item 13, *"par
+  un robinet"*. C'est la paire 7 et 13 que j'avais relevée au premier passage et qui avait été
+  corrigée : la correction des items 4 et 7, faite à ma demande, l'a rouverte.
+- **Item 13.** L'indice *"Ce robinet est relié à des tuyaux sous la terre."* nomme sa propre bonne
+  réponse. Joué : après une seule erreur, l'enfant lit *"robinet"* dans l'indice et le retrouve
+  parmi les deux propositions restantes. Il répond en reconnaissant un mot, pas en sachant d'où
+  vient l'eau.
+
+**Correction de mon propre constat.** L'indice de l'item 13 était déjà ainsi au second passage
+(`bc18e0ad`), et j'y avais écrit que le point des indices 4 et 13 était pris *"à la lettre"*. C'était
+vrai de ma lettre - décrire l'objet, pas ce qu'il épargne -, mais je n'avais pas vu que l'indice
+nommait la réponse. La réserve est neuve, elle ne durcit aucune barre déjà atteinte.
+
+**Ce qui lève la réserve** : ni l'indice de l'item 7 ni celui de l'item 13 ne contiennent le mot
+*robinet*. Par exemple, pour l'item 13 : *"L'eau arrive dans la maison par des tuyaux sous la
+terre."* ; pour l'item 7 : *"On y allait chercher l'eau avant qu'elle arrive dans les maisons."*
+
+#### 5. Ce dont je reste la seule garde
+
+Aucun test ne vérifie qu'un distracteur est faux aujourd'hui, qu'il est écarté par l'époque plutôt
+que par le sens, qu'un indice ne nomme pas sa propre réponse ou celle d'un autre item
+(`AUT-CP-R1`), ni le temps d'un verbe d'énoncé (motif 1 du premier passage). Sur ces points, je
+suis la seule garde, et `AUT-CP-R1` montre qu'une correction d'indice peut rouvrir une fuite déjà
+fermée sans qu'aucun garde-fou ne rougisse.
+
+**Identifiants** : un neuf, `AUT-CP-R1`, alloué dans `squad/decisions/REGISTRE-identifiants.md`,
+section 4, dans le même commit. Aucun renommé.
+
+**Signé** : `nadia-prof`, s47, instance A, troisième passage, 2026-10-02.
+
+---
 
 ### Second passage du 2026-10-02 (`nadia-prof`, s47, instance A) : **REFUSÉ**
 

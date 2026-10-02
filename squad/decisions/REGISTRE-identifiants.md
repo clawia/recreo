@@ -11,6 +11,20 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s47, instance A, troisieme passage, le 2026-10-02 (Done pedagogique de
+`QLM-CP-15`, VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`AUT-CP-R1`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-autrefois-aujourdhui-cp.md`. **Forme copiee** de `ANG-CP-R1`
+- trois segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Prefixe neuf** :
+`AUT` etait absent de la section 4 et de toutes les branches locales avant d'ecrire. La ligne de la
+section 4 est dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **824 / 130 a 825 / 131**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 824 identifiants alloues et 130 prefixes distincts, sa table en porte 825 et 131"*. C'est
+ce **825 / 131** que je recopie.
+
 **Note de `nadia-prof`, s47, instance A, le 2026-10-02 (Done pedagogique de `MAT-CE1-07` et de
 `LVE-CP-06`, VALIDES SOUS RESERVE ; `QLM-CP-15` REFUSE).** Trois identifiants ajoutes, des
 reserves : **`TAB-CE1-R1`**, ecrit dans `squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md`,
@@ -548,7 +562,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `824` identifiants alloues, `130` prefixes distincts.
+**Compte courant, verifie par la CI** : `825` identifiants alloues, `131` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1218,6 +1232,7 @@ clause 2 par une exemption.
 | `AUD-1` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `AUD-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `AUD-3` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
+| `AUT-CP-R1` | `squad/conformite/FICHE-bandit-manchot-autrefois-aujourdhui-cp.md` |
 | `BARRE-1` | `squad/conformite/FICHE-barre-entree-niveau.md` |
 | `BARRE-2` | `squad/conformite/FICHE-barre-entree-niveau.md` |
 | `BARRE-3` | `squad/conformite/FICHE-barre-entree-niveau.md` |
