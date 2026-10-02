@@ -17,10 +17,11 @@
   et une erreur y est un motif de refus à elle seule"*, introduction du jugement de faisabilité),
   `FER-1`, `FER-2`, `FER-3`, `CYC-1` contre `bandit-manchot-roles-ecole-commune-cp`.
 - **Lien décision** : `DEC-0102`.
-- **Statut global** : **REFUSÉ** le 2026-10-02 au second passage par `nadia-prof` (s46, instance A),
-  sur un motif neuf introduit par la correction (items 10 et 11). Les deux motifs du premier passage
-  du même jour sont levés. Les deux verdicts sont conservés dans le bloc de validation. Fiche ouverte
-  par le premier verdict : aucune fiche n'existait pour ce jeu.
+- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 au troisième passage par `nadia-prof`
+  (s46, instance A), une réserve non bloquante (`EMC-CM1-R7`). Deux refus le précèdent le même jour :
+  au premier passage (item 4, `HIS-3`), puis au second (items 10 et 11). Les trois verdicts sont
+  conservés dans le bloc de validation. Fiche ouverte par le premier verdict : aucune fiche
+  n'existait pour ce jeu.
 - **Dernière mise à jour** : 2026-10-02.
 
 ---
@@ -271,5 +272,107 @@ le paquet entier à son retour.
 3. **La différence réelle avec le CP** (`CYC-1`).
 
 **Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s46, instance A, 2026-10-02.
+
+---
+
+## Bloc de validation pédagogique, troisième passage - nadia-prof UNIQUEMENT
+
+- **Verdict** : **VALIDÉ SOUS RÉSERVE**
+- **Date** : 2026-10-02
+- **Auditrice** : `nadia-prof`, instance A (`DEC-0102`).
+- **Audit joué** : **oui**, paquet entier.
+
+**Motif, en une phrase** : les items 10 et 11 sont revenus mot pour mot à leur version du premier
+passage, que j'avais jugée exacte, aucun autre item n'a bougé, et les douze items passent toutes les
+conditions. Il reste une réserve non bloquante, `EMC-CM1-R7` : ces deux items redisent le CP.
+
+### 1. Ce que j'ai fait
+
+Worktree dédié `s46-nadia-audit-a3`, fondé sur `round-two` à `a49dfb61`, qui porte la correction de
+`sofia-sm` (`f2793332`). Lignée vérifiée par `bash outils/verifier-lignee.sh round-two`. Jar construit
+par `bash outils/mvn-jdk21.sh -pl bootstrap -am package -DskipTests`, lancé sur le JDK 21 de la
+toolchain (21.0.10), sur un port dédié. Je n'ai lancé aucun job de la CI et je n'en déduis rien.
+
+**Six parties complètes de dix manches, sur le paquet entier**, par appels HTTP réels : un tiers des
+manches juste du premier coup, un tiers après une erreur, un tiers après trois erreurs jusqu'à la
+révélation. **Les douze items ont été tirés**, chacun entre quatre et six fois. Sur chaque manche,
+les trois propositions affichées sont celles du paquet, et l'indice du paquet s'affiche après la
+première erreur. Les items 10 et 11 ont été joués jusqu'à la révélation : *"Appuie sur la bonne
+réponse : il ou elle organise la vie de l'école et veille à son bon déroulement"* et *"Appuie sur la
+bonne réponse : parce que le directeur ou la directrice organise et autorise la vie de l'école"*.
+Écran de fin atteint sur les six parties.
+
+**`CYC-1`** : je n'ai pas rejoué `bandit-manchot-roles-ecole-commune-cp`. Son paquet n'a pas changé
+depuis mon second passage (`git diff 7ff80b67 a49dfb61` ne le touche pas), où je l'ai rejoué en
+entier.
+
+### 2. Ce qui a changé, vérifié sur le texte et non sur l'annonce
+
+| Vérification | Résultat |
+|---|---|
+| Items 10 et 11 comparés à `daded833`, version du premier passage | **identiques** : énoncé, bonne réponse, distracteurs et indice. Seul s'ajoute le marqueur `HIS-3` de chaque ligne |
+| Items 1 à 9 et 12 comparés à `6f27d1e9`, version de mon second passage | **identiques**. `git diff 6f27d1e9 a49dfb61` sur le paquet ne touche que les lignes des items 10 et 11 |
+| Commentaire d'en-tête du paquet | **inchangé**, et de nouveau juste : la tâche B (items 7 à 12) a six items, comme il le dit |
+| Entrée de catalogue | **inchangée** depuis mon second passage |
+
+### 3. Le motif du second passage est levé
+
+| Motif | Levé | Ce que j'ai vérifié |
+|---|---|---|
+| Items 10 et 11 : *"seul ou seule"*, *"sans vote"* | **oui** | Plus aucune formulation exclusive. Item 10 : le directeur ou la directrice *"organise la vie de l'école et veille à son bon déroulement"*, ce qui reste vrai même si le conseil d'école vote le règlement intérieur. Item 11 : la réponse *"organise et autorise la vie de l'école"* est assez large pour rester juste, et je l'ai écrit au second passage. Je ne la refuse pas aujourd'hui |
+| `HIS-3` sur les items 10 et 11 | **oui** | Les marqueurs parlent du *"fonctionnement ordinaire d'une école enseigné au cycle 3"*. Sans formulation exclusive, ce sont des faits de manuel (famille a de la précision du 2026-09-03), et ce marqueur suffit, comme sur les items 5 et 6 |
+| Section 4 du second passage (distracteurs de la version réécrite) | **sans objet** | La version réécrite n'existe plus. Les distracteurs rétablis sont ceux que j'avais acceptés au premier passage. Ils restent plausibles : confondre l'école avec la mairie ou le conseil municipal, c'est l'erreur que le paquet travaille |
+
+**Une précision sur mon second passage.** À la section 6, j'écrivais que *"les items 1 à 9 et 12
+passent toutes les conditions"*. Je l'ai revérifié sur le texte, et c'est toujours vrai : ces dix
+items n'ont pas bougé d'un caractère.
+
+### 4. Conditions, vérifiées une par une
+
+| Condition | Tenue | Ce que j'ai vérifié |
+|---|---|---|
+| Exactitude (`HIS-3`, motif) | **oui** | Douze items exacts, dont le 4 (nom d'une rue voté par le conseil municipal, CGCT, L2121-29) et les 10 et 11 rétablis |
+| `HIS-3` | **oui** | Chaque item porte un marqueur. Les sources CGCT sont sur les items 3, 4, 8 et 9. Les autres items portent des faits de manuel sans formulation exclusive |
+| `EMC-5`, `HIS-2` | **oui** | Une seule réponse défendable par item, dans la convention mairie / conseil municipal / maire du commentaire |
+| `EMC-6` | **oui** | Aucun *"ta commune"* ni *"ton école"* |
+| `EMC-7` | **oui, sans objet** | Aucun numéro d'urgence |
+| `FER-1` | **oui** | Mairie (items 1, 2), conseil municipal (3, 4), école (5, 6) |
+| `FER-2`, `FER-3` | **oui** | Douze items. Six en tâche A, six en tâche B |
+| `CYC-1` | **oui, à la lettre** | Aucun rôle servi au CP n'est contredit. Voir la réserve `EMC-CM1-R7` |
+
+### 5. La réserve
+
+**`EMC-CM1-R7`, items 10 et 11, redites du CP.** Ce n'est pas une barre nouvelle. Je l'ai écrit au
+premier passage, section 6, point 4, *"sans être un motif de refus"*, et je l'ai confirmé au second
+passage. L'item 10 reprend presque mot pour mot l'item 7 du paquet de CP (le rôle du directeur ou de
+la directrice), l'item 11 reprend l'item 3 du CP (l'autorisation d'une sortie scolaire). Un enfant de
+CM1 n'y apprend rien de neuf. Ce que cette ligne apporte au cycle 3, c'est le conseil municipal et le
+maire. **Ce qui lève la réserve** : remplacer ces deux items par deux items de tâche B qui portent un
+fait de cycle 3. Par exemple, ce que fait le conseil municipal avec le budget de la commune, ou ce que
+le maire décide sans vote (un arrêté, CGCT L2213-1). Chaque fait garde sa source dans son marqueur
+(`HIS-3`) et aucune formulation exclusive n'est ajoutée sans source. La réserve ne demande pas de
+changer `FER-1` ni le nombre d'items. `camille-po` en fait une story si elle le souhaite. Le Done
+est ouvert sans attendre.
+
+### 6. Verdict
+
+**Done pédagogique prononcé sous réserve** pour `EMC-CM1-09`, jeu `bandit-manchot-institutions-cm1`,
+le 2026-10-02. `camille-po` peut passer la ligne `EMC-CM1-09` de la matrice à `couvert-valide`, en
+portant la réserve `EMC-CM1-R7`.
+
+### 7. Ce dont je reste la seule garde sur cette ligne
+
+1. **L'exactitude institutionnelle de chaque item.** Aucun test ne sait qui vote le nom d'une rue,
+   qui fixe une limitation de vitesse ou qui autorise une sortie scolaire. La CI est restée verte sur
+   les deux erreurs que j'ai refusées aujourd'hui.
+2. **La qualité des sources `HIS-3`.** Aucun test ne lit le commentaire. Un marqueur non vide n'est
+   pas une source.
+3. **La différence réelle avec le CP** (`CYC-1`, `EMC-CM1-R7`). Aucun garde-fou ne compare les deux
+   paquets.
+
+**Identifiants** : un neuf, `EMC-CM1-R7`, alloué dans `squad/decisions/REGISTRE-identifiants.md`,
+section 4, dans le même commit. Aucun renommé.
 
 **Signé** : `nadia-prof`, s46, instance A, 2026-10-02.
