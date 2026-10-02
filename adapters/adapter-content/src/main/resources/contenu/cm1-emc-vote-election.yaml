@@ -68,11 +68,11 @@ lignesDeReferentiel: ["EMC-CM1-10"]
 items:
   - enonce: "Dans une classe, les élèves votent pour choisir un camarade qui va les représenter auprès des adultes de l'école. Comment appelle-t-on ce camarade, une fois élu ?"  # HIS-3: l'election d'un delegue par ses camarades est un fonctionnement ordinaire d'une classe enseigne au cycle 3
     bonneReponse: "le délégué de classe"
-    distracteurs: ["le suffrage universel", "une élection"]
+    distracteurs: ["le maire", "le conseil municipal"]
     indice: "C'est un élève de la classe, choisi par un vote de ses camarades."
   - enonce: "Un élève, une fois choisi par ses camarades pour les représenter, doit porter leur avis auprès du directeur ou de la directrice. Qui est cet élève ?"  # HIS-3: le role de representation d'un delegue aupres de l'ecole est un fonctionnement ordinaire d'une classe enseigne au cycle 3
     bonneReponse: "le délégué de classe"
-    distracteurs: ["une élection", "le suffrage universel"]
+    distracteurs: ["le conseil municipal", "le maire"]
     indice: "Il ou elle parle au nom de ses camarades, sans décider à leur place."
   - enonce: "Dans une commune, les électeurs votent pour choisir les membres du conseil municipal qui vont les représenter. Comment appelle-t-on ce vote ?"  # HIS-3: l'election des membres du conseil municipal par les electeurs de la commune est prevue par le code electoral (elections municipales au suffrage universel direct)
     bonneReponse: "une élection"
@@ -81,12 +81,12 @@ items:
   - enonce: "Pour choisir le président de la République, tous les électeurs du pays sont appelés à voter le même jour. Comment appelle-t-on ce moment ?"  # HIS-3: l'election du president de la Republique au suffrage universel direct est prevue par la Constitution de 1958, article 6
     bonneReponse: "une élection"
     distracteurs: ["le délégué de classe", "le suffrage universel"]
-    indice: "C'est un vote qui concerne tout le pays, pas seulement une commune."
-  - enonce: "En France, toute personne majeure peut voter, quels que soient sa richesse, son métier ou son sexe. Comment appelle-t-on ce droit de vote accordé à tous ?"  # HIS-3: le principe du suffrage universel, sans condition de richesse ni de sexe, est un fait de droit electoral enseigne au cycle 3
+    indice: "Ce jour-là, les électeurs votent, puis une seule personne est élue."
+  - enonce: "En France, le droit de vote est réservé aux personnes de nationalité française et majeures, quels que soient leur richesse, leur métier ou leur sexe. Comment appelle-t-on ce droit de vote accordé à tous les citoyens ?"  # HIS-3: Constitution du 4 octobre 1958, article 3 - sont electeurs les nationaux francais majeurs, sans condition de richesse ni de sexe
     bonneReponse: "le suffrage universel"
     distracteurs: ["le délégué de classe", "une élection"]
     indice: "Ce droit n'appartient pas seulement à certaines personnes : il appartient à tous les citoyens majeurs."
-  - enonce: "Depuis 1944, les femmes votent en France au même titre que les hommes. Comment appelle-t-on ce principe, qui donne le droit de vote à tous les citoyens majeurs ?"  # HIS-3: ordonnance du 21 avril 1944, droit de vote des femmes en France
+  - enonce: "Depuis 1944, les femmes ont le droit de vote en France au même titre que les hommes. Comment appelle-t-on ce principe, qui donne le droit de vote à tous les citoyens majeurs ?"  # HIS-3: ordonnance du 21 avril 1944, article 17 - droit de vote des femmes en France
     bonneReponse: "le suffrage universel"
     distracteurs: ["le délégué de classe", "une élection"]
     indice: "Avant cette date, ce droit était réservé aux hommes."
@@ -110,7 +110,7 @@ items:
     bonneReponse: "tous les citoyens majeurs, quels que soient leur richesse ou leur sexe"
     distracteurs: ["seulement les citoyens les plus riches", "seulement les hommes"]
     indice: "Ce droit ne dépend ni de la fortune, ni du sexe de la personne."
-  - enonce: "Combien de temps dure, en général, le mandat des conseillers municipaux élus en France ?"  # HIS-3: CGCT, duree du mandat municipal fixee a six ans
+  - enonce: "Combien de temps dure, en général, le mandat des conseillers municipaux élus en France ?"  # HIS-3: code electoral, article L227 - duree du mandat des conseillers municipaux fixee a six ans
     bonneReponse: "six ans"
     distracteurs: ["un an", "vingt ans"]
     indice: "C'est une durée de plusieurs années, renouvelée par une nouvelle élection."

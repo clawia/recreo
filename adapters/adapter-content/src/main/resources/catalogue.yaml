@@ -704,7 +704,7 @@ jeux:
     nombreDeManches: 10
   - id: bandit-manchot-vote-election-cm1
     titre: "Le vote et la représentation"
-    consigne: "Lis bien, puis dis qui vote, qui est élu, ou ce que fait un délégué."
+    consigne: "Lis bien, puis trouve le bon mot, ou dis qui vote, qui est élu, ou ce que fait un délégué."
     mecanique: bandit-manchot
     paquet: cm1-emc-vote-election
     nombreDeManches: 10
