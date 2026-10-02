@@ -56,7 +56,7 @@ lignesDeReferentiel: ["SCI-CM1-08"]
 #   etaient un seul item sous deux noms d'animal - meme question, meme bonne reponse, memes deux
 #   distracteurs. Sous les deux seuils de la clause 1 d'ADR-0086 (trois items, trois mots), donc
 #   invisible du garde-fou. L'item de la chenille est reecrit sur une autre transition (la
-#   naissance, a la sortie de l'oeuf) avec des distracteurs differents, pour ne plus etre l'item du
+#   naissance, a la sortie de l'œuf) avec des distracteurs differents, pour ne plus etre l'item du
 #   tetard sous un autre nom.
 items:
   - enonce: "Un chaton vient de naître ; il ne voit pas encore et tète sa mère. Quelle étape suivra bientôt dans sa vie ?"
@@ -75,14 +75,14 @@ items:
     bonneReponse: "la mort"
     distracteurs: ["la naissance", "la reproduction"]
     indice: "Après le vieillissement vient la fin de la vie d'un être vivant."
-  - enonce: "Un oeuf de poule se trouve dans le nid depuis plusieurs jours. Quelle étape commence quand le poussin sort de l'oeuf ?"
+  - enonce: "Un œuf de poule se trouve dans le nid depuis plusieurs jours. Quelle étape commence quand le poussin sort de l'œuf ?"
     bonneReponse: "la naissance"
     distracteurs: ["la croissance", "la reproduction"]
-    indice: "Sortir de l'oeuf ou du ventre de sa mère marque le tout début de la vie."
-  - enonce: "Une chenille vient tout juste de sortir de son oeuf. Quelle étape de sa vie vient de commencer ?"
+    indice: "Sortir de l'œuf ou du ventre de sa mère marque le tout début de la vie."
+  - enonce: "Une chenille vient tout juste de sortir de son œuf. Quelle étape de sa vie vient de commencer ?"
     bonneReponse: "la naissance"
     distracteurs: ["le vieillissement", "la mort"]
-    indice: "C'est la sortie de l'oeuf qui marque le tout début de la vie de la chenille."
+    indice: "C'est la sortie de l'œuf qui marque le tout début de la vie de la chenille."
   - enonce: "Pendant l'étape de la croissance, que se passe-t-il dans le corps d'un être vivant ?"
     bonneReponse: "il grandit et se développe"
     distracteurs: ["il donne naissance à des petits", "il cesse de se nourrir"]
@@ -96,7 +96,7 @@ items:
     distracteurs: ["il grandit de plus en plus vite", "il se reproduit pour la première fois"]
     indice: "Vieillir, c'est voir ses capacités diminuer progressivement avec le temps."
   - enonce: "À l'étape de la naissance, que vient-il de se passer pour un être vivant ?"
-    bonneReponse: "il vient de commencer à exister, en dehors de l'oeuf ou du ventre de sa mère"
+    bonneReponse: "il vient de commencer à exister, en dehors de l'œuf ou du ventre de sa mère"
     distracteurs: ["il vient de donner naissance à des petits", "il vient de cesser de vivre"]
     indice: "Naître, c'est le tout début de la vie d'un être vivant."
   - enonce: "À l'étape de la mort, qu'est-ce qui caractérise un être vivant ?"
