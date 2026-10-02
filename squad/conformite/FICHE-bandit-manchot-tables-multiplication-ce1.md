@@ -1,15 +1,20 @@
 # Fiche de conformité - bandit-manchot-tables-multiplication-ce1
 
 - **Mécanique** : bandit manchot.
-- **Contenu** : aucun à ce jour. Le paquet est à écrire en s47.
+- **Contenu** : `adapters/adapter-content/src/main/resources/contenu/ce1-tables-multiplication.yaml`
+  (40 items, type `question`), écrit par `marc-dev` (`bc0c69d8`). La fiche avait été ouverte le
+  2026-10-02 avant le premier item.
+- **Entrée de catalogue** : `bandit-manchot-tables-multiplication-ce1`, titre servi *"Mémoriser ses
+  tables de multiplication"*, consigne servie *"Quel est le résultat ?"*, `nombreDeManches: 10`.
 - **Ligne déclarée** : `MAT-CE1-07`. **Story** : `S47-MAT-TABLES` (`docs/backlog/backlog.md`,
   section "Sprint 47").
 - **Conditions opposables** : `TAB-CE1-1` à `TAB-CE1-6`
   (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md`, section 1.3), **dans leur
   version du 2026-10-02** (sections 2 à 5 ci-dessous).
-- **Statut global** : aucun verdict. Fiche ouverte le 2026-10-02 avant le premier item, pour que les
-  conditions que le développeur lit soient celles que j'auditerai.
-- **Dernière mise à jour** : 2026-10-02.
+- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 (s47, instance A), une réserve non
+  bloquante, `TAB-CE1-R1`. Avant ce verdict : aucun verdict, fiche ouverte avant le premier item pour
+  que les conditions que le développeur lit soient celles que j'auditerai.
+- **Dernière mise à jour** : 2026-10-02 (premier audit).
 
 ---
 
@@ -138,4 +143,85 @@ texte, pas de nom.
 
 ## Bloc de validation pédagogique
 
-Aucun verdict. Le paquet n'existe pas.
+Aucun verdict. Le paquet n'existe pas. *(État à l'ouverture de la fiche, laissé tel quel.)*
+
+### Verdict du 2026-10-02 (`nadia-prof`, s47, instance A) : **VALIDÉ SOUS RÉSERVE**
+
+**Done pédagogique prononcé.** Les six conditions sont tenues sur les 40 items, dans leur version du
+2026-10-02. Une réserve neuve, non bloquante, `TAB-CE1-R1` (section 4). `camille-po` peut passer
+`MAT-CE1-07` à `couvert-valide`.
+
+#### 1. Ce que j'ai fait
+
+**Audit complet, pas dégradé.** Worktree dédié `s47-nadia-audit-a`, fondé sur `round-two` à
+`eef35179`. `bash outils/mvn-jdk21.sh -B clean verify` : `BUILD SUCCESS`, JDK de compilation 21.0.10.
+C'est le contenu du job `build` de la CI. Je n'ai lancé aucun autre job et je n'en déduis rien.
+`bootstrap/target/recreo.jar` lancé sur un port dédié, dont j'ai vérifié qu'il était servi par mon
+propre processus.
+
+*Une première série de trois parties a été jouée sur un port déjà occupé par un autre jar, qui n'était
+pas le mien. Je ne la compte pas.*
+
+**Dix parties complètes de dix manches** : quatre justes du premier coup, deux avec une erreur puis
+la bonne réponse, deux avec deux erreurs, deux avec trois erreurs jusqu'à la révélation. Après une
+erreur : *"Ce n'est pas ça. Essaie encore !"* et l'indice. Après la troisième : *"Appuie sur la bonne
+réponse : ..."*. Écran de fin atteint sur les dix parties. Les propositions affichées sont celles du
+paquet sur chaque manche jouée. Rendu vu à l'écran à 768 px de large, sur `3 × 1` et `10 × 1` après
+une erreur.
+
+Les 40 items recalculés par un script de poste, non commité : produit, famille de chaque
+distracteur sur les deux lectures quand les deux facteurs sont dans {2, 3, 4, 5, 10}, comptes de
+`TAB-CE1-1` à `TAB-CE1-4`, rangs. `PaquetCe1TablesMultiplicationTest` : 8 tests, 0 échec, dans le
+`clean verify` ci-dessus.
+
+#### 2. Les six conditions
+
+| Condition | Tenue | Ce que j'ai vérifié |
+|---|---|---|
+| `TAB-CE1-1` | **oui** | 40 items, 40 faits distincts, un item par fait |
+| `TAB-CE1-2` | **oui** | facteur de table 2, 5 ou 10 : 23 items (57,5 %) ; 3 : 9 (22,5 %) ; 4 : 8 (20 %) |
+| `TAB-CE1-3` | **oui** | 5 items à facteur 1 (12,5 %), les cinq imposés |
+| `TAB-CE1-4` | **oui** | 15 des 30 items éligibles écrivent le facteur de table en seconde position (50 %) |
+| `TAB-CE1-5` | **oui** | 40 énoncés de forme `a × b = ?`, signe U+00D7, espace insécable devant le `?`. Aucun facteur manquant, aucune situation, aucune formulation par le double. Les indices nomment le double comme stratégie, ce que la condition admet |
+| `TAB-CE1-6` | **oui** | les 80 distracteurs correspondent à leur famille déclarée, cinq familles seulement. `10 × 1` : 10, 11, 20. Rangs : la plus petite 14, le milieu 13, la plus grande 13 |
+
+**Exactitude** : 40 produits justes, trois propositions deux à deux distinctes sur chaque item.
+
+**Distracteurs** : ce sont des erreurs de CE1. Le voisin de table (`7 × 4` : 32, 35), la somme
+(`2 × 7` : 9), le `+ 1` sur le facteur 1 (`10 × 1` : 11). Aucun distracteur absurde.
+
+#### 3. Niveau, lisibilité, ton
+
+Consigne de quatre mots, énoncé d'une ligne. Les indices emploient des mots de CE1 (*double*,
+*moitié*, *table*) et tiennent sur une ligne sur les deux écrans vus. Ceux des tables de 2, 3, 4 et 5
+sont mot pour mot ceux que j'ai validés au CM1 dans `cm1-tables-multiplication.yaml`, celui de la
+table de 10 en reprend le fond. Aucun biais possible sur des expressions nues.
+
+#### 4. La réserve
+
+**`TAB-CE1-R1` (2026-10-02, non bloquante).** Les cinq items à facteur 1 (`2 × 1`, `3 × 1`,
+`4 × 1`, `5 × 1`, `10 × 1`) portent l'indice de leur table, pas un indice sur le facteur 1. Joué :
+sur `3 × 1`, un enfant qui répond 4 (il a lu `× 1` comme `+ 1`) lit *"Table de 3 : prends le double
+du nombre, puis ajoute le nombre une fois."* Sur `5 × 1`, il lit *"prends la moitié de la table de
+10"*. Ces indices mènent au bon résultat, mais ils ne disent pas l'erreur que la famille (e) nomme.
+C'est la barre que j'avais écrite avant le paquet (section 7 ci-dessus : *"que l'indice d'un item à
+facteur 1 [...] aide l'enfant à comprendre son erreur"*) : elle n'est pas atteinte. Sur `10 × 1`,
+*"ajoute un zéro à la fin du nombre"* est en plus ambigu : si *"le nombre"* est 10, l'enfant obtient
+100.
+
+**Action** : remplacer l'indice des cinq items à facteur 1 par un indice sur le facteur 1. Forme
+déjà validée au CM1 : *"Multiplier par 1, le nombre ne change pas."* Aucun autre item n'est touché.
+**Pourquoi ce n'est pas un refus** : les cinq indices sont exacts, l'enfant est révélé après trois
+erreurs, et l'item lui-même est juste.
+
+#### 5. Ce dont je reste la seule garde
+
+Que les distracteurs soient des erreurs d'enfant et pas seulement des valeurs que la formule
+autorise (section 2), et que l'indice aide à comprendre l'erreur (section 4). Aucun test ne lit un
+indice. Le test du paquet garde `TAB-CE1-1` à `TAB-CE1-4` et `TAB-CE1-6`. `TAB-CE1-5` n'a pas de test
+propre au paquet : je l'ai vérifiée à la lecture, `TYP-1` est gardée par le test transverse.
+
+**Identifiants** : un neuf, `TAB-CE1-R1`, forme copiée de `SOP-CE1-R1`, alloué dans
+`squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même commit. Aucun renommé.
+
+**Signé** : `nadia-prof`, s47, instance A, 2026-10-02.
