@@ -347,18 +347,15 @@ class PaquetCe1SoustractionsPoseesTest {
 
     /**
      * SOP-CE1-4 : les propositions ont le meme nombre de chiffres, et au moins un distracteur
-     * partage le chiffre des unites avec la bonne reponse. Ne porte que sur les items a deux
-     * distracteurs (trois propositions) : un item sans aucun emprunt ne sert qu'une seule
-     * proposition de plus (la somme), que SOP-CE1-2 exige et que cette clause ne vise pas - meme
-     * exemption que celle que le garde-fou generique de rang applique a ces items (fiche de
-     * conformite, section 3).
+     * partage le chiffre des unites avec la bonne reponse. Porte sur tout item, y compris un item
+     * sans aucun emprunt qui ne sert que la somme comme unique distracteur : l'amendement du
+     * 2026-10-01 le redit explicitement (fiche de conformite, section 2, "Admission sur un item"),
+     * et son absence de verification ici a laisse passer deux items qui ne tenaient pas la clause
+     * (fiche de conformite, section 4 du bloc de validation pedagogique du 2026-10-02).
      */
     @Test
     void lesTroisPropositionsOntLeMemeNombreDeChiffresEtUnDistracteurPartageLeChiffreDesUnites() {
         for (Question item : tousLesItems(paquet(PAQUET))) {
-            if (item.distracteurs().size() != 2) {
-                continue;
-            }
             int chiffresBonneReponse = item.bonneReponse().length();
             char uniteBonneReponse = item.bonneReponse().charAt(chiffresBonneReponse - 1);
             boolean chiffreDesUnitesPartage = false;
