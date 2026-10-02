@@ -16,12 +16,86 @@
 - **Statut global** : **REFUSE**, prononce le 2026-10-02 par `nadia-prof` (s46, instance B). Fiche
   ouverte par ce verdict : aucune fiche n'existait pour ce jeu. **Second passage du 2026-10-02 :
   REFUSE a nouveau**, sur un motif neuf introduit par la correction (item 11) ; le motif du premier
-  refus est leve.
-- **Derniere mise a jour** : 2026-10-02 (second passage).
+  refus est leve. **Troisieme passage du 2026-10-02 : VALIDE**, Done pedagogique prononce ; les
+  deux refus precedents restent ecrits ci-dessous.
+- **Derniere mise a jour** : 2026-10-02 (troisieme passage).
 
 ---
 
 ## Bloc de validation pedagogique
+
+### Verdict du 2026-10-02, troisieme passage (`nadia-prof`, s46, instance B) : **VALIDE**
+
+**Done pedagogique prononce le 2026-10-02.** `camille-po` peut passer `SCI-CM1-16` a
+`couvert-valide`. Le motif du second refus (item 11) est **leve**, a la barre ecrite en section
+S2-4 et sans la relever. Aucune reserve ouverte : `PHN-CM1-R1` a `PHN-CM1-R4` sont levees sur les
+douze items.
+
+#### S3-1. Ce que j'ai fait
+
+**Audit complet, pas degrade.** Worktree dedie `s46-nadia-audit-b3` a `f2e02b35` (`round-two`,
+correction `1be572a6` incluse, lignee verifiee par `outils/verifier-lignee.sh`). Jar construit par
+`bash outils/mvn-jdk21.sh -pl bootstrap -am package -DskipTests`, lance sur le JDK 21 de la
+toolchain (21.0.10), joue par les routes servies (demarrage de partie, coups). Quatre parties de dix
+manches : deux en me trompant deux fois a chaque manche avant la bonne reponse, une avec une erreur
+par manche, une sans erreur. **Les douze items ont ete tires et joues** (l'item 1 seulement a la
+quatrieme partie). Les items 7 et 11 sont tombes dans la meme partie deux fois (manches 5 et 1 ;
+manches 8 et 7, l'item 11 juste avant l'item 7).
+
+Le diff de `1be572a6` ne touche que l'item 11 et le commentaire d'en-tete du paquet : aucun autre
+item n'a bouge depuis le second passage.
+
+#### S3-2. Le motif du second refus est leve
+
+Item 11 servi : *"Après un séisme, les secousses sont terminées et les habitants doivent quitter un
+immeuble endommagé. Que faut-il faire avec l'ascenseur ?"*
+
+1. **La bonne reponse est exacte au moment que fixe l'enonce.** L'enonce place l'enfant apres les
+   secousses, au moment d'evacuer. *"Ne pas le prendre, et utiliser l'escalier"* est la consigne de
+   securite civile a ce moment-la. Le commentaire `HIS-3` dit la meme chose (*"apres un seisme pour
+   quitter un immeuble endommage"*) : il est exact.
+2. **L'item ne contredit plus l'item 7.** L'item 7 dit *pendant* (l'escalier est un geste faux),
+   l'item 11 dit *apres, les secousses sont terminées* (l'escalier est le geste juste). Le moment est
+   ecrit en toutes lettres dans les deux enonces, et l'indice de l'item 11 (*"Même après les
+   secousses, ..."*) pose lui-meme la distinction. Joues l'un apres l'autre dans les deux ordres,
+   les deux items se lisent comme une paire : on ne descend pas pendant, on descend a pied apres.
+3. **Aucun distracteur n'est une bonne conduite.** *"Le prendre pour descendre plus vite"* : faux,
+   l'ascenseur peut se bloquer. *"Attendre qu'il remarche pour sortir"* : faux, c'est rester dans un
+   immeuble endommage au lieu de l'evacuer. Les deux sont des idees qu'un enfant de 9 ans peut
+   avoir. La bonne reponse n'est pas nettement la plus longue (41 signes contre 35 et 35, compte par l'interpreteur sur les chaines du YAML).
+
+Les deux points a reprendre dans le meme geste sont repris : l'indice ne dit plus *"du jour au
+lendemain"*, la question n'est plus *"quel geste faut-il adopter avec l'ascenseur"*.
+
+#### S3-3. Les reserves, sur l'item 11
+
+| Reserve | Statut | Ce que j'ai constate en jouant |
+|---|---|---|
+| `PHN-CM1-R1` | **levee sur les douze items** | Indice de l'item 11 : *"Même après les secousses, un ascenseur peut rester bloqué à cause d'une panne d'électricité ou de dégâts dans le bâtiment."* Il dit pourquoi le geste faux est dangereux, sans reprendre les mots de la bonne reponse (ni *prendre*, ni *escalier*). Une phrase, sans *"ta réponse"*. Items 7, 8, 9 et 12 rejoues : inchanges, tenus comme au second passage |
+| `PHN-CM1-R2` | **levee sur les deux items** | Item 11 : les deux distracteurs sont plausibles et faux (section S3-2, point 3). Item 12 inchange |
+| `PHN-CM1-R3` | **levee** (inchange) | Item 2, La Reunion, rejoue |
+| `PHN-CM1-R4` | **levee** (inchange) | *"Que faut-il faire avec l'ascenseur ?"* demande un geste ; la consigne servie le couvre |
+
+Rejoues sans changement : tache A (items 1 a 6) et items 8, 9, 10 et 12, exacts comme aux passages
+precedents ; `SCI-2` tenu (l'item 11 reste a l'impersonnel, *"les habitants"*).
+
+#### S3-4. Ce dont je reste la seule garde
+
+Inchange (sections S2-5 et 9) : l'exactitude d'une consigne de securite **au moment que fixe
+l'enonce**, la coherence entre deux items du meme paquet, la paraphrase dans un indice, la
+plausibilite d'un distracteur, `SCI-2`, et qu'un pays ne soit represente que par un trait. Aucun
+automate ne les tient ; le second refus a traverse le test du paquet vert. Elles n'ont ete
+verifiees qu'ici, en jouant.
+
+#### S3-5. Mesure technique citee
+
+`bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=PaquetCm1SciencesPhenomenesTest,ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest -Dsurefire.failIfNoSpecifiedTests=false`
+sur ce worktree, fiche modifiee comprise : `PaquetCm1SciencesPhenomenesTest` *"Tests run: 11,
+Failures: 0, Errors: 0, Skipped: 0"*, `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`
+*"Tests run: 10, Failures: 0, Errors: 0, Skipped: 0"*, `BUILD SUCCESS`. Ce troisieme passage n'ecrit aucun identifiant neuf. Perimetre : ces deux tests, pas la CI ; la porte
+technique de la CI reste a juger sur ses jobs.
+
+---
 
 ### Verdict du 2026-10-02, second passage (`nadia-prof`, s46, instance B) : **REFUSE**
 
