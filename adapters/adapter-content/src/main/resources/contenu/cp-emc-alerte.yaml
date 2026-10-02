@@ -60,31 +60,31 @@ items:
   - enonce: "Quel est le numéro du SAMU ?"  # EMC-7: numero exact (SAMU, urgence medicale), source service-public.fr, page "Numeros d'urgence"
     bonneReponse: "15"
     distracteurs: ["17", "18"]
-    indice: "Le SAMU s'occupe des urgences médicales."
+    indice: "Le SAMU aide les personnes très malades ou très blessées."
   - enonce: "Quel est le numéro de la police secours ?"  # EMC-7: numero exact (police secours), source service-public.fr, page "Numeros d'urgence"
     bonneReponse: "17"
     distracteurs: ["15", "18"]
-    indice: "La police secours intervient en cas de danger ou d'agression."
+    indice: "La police secours vient aider en cas de danger."
   - enonce: "Quel est le numéro des pompiers ?"  # EMC-7: numero exact (pompiers), source service-public.fr, page "Numeros d'urgence"
     bonneReponse: "18"
     distracteurs: ["15", "17"]
-    indice: "Les pompiers interviennent en cas d'incendie ou d'accident."
+    indice: "Les pompiers viennent aider en cas d'incendie ou d'accident."
   - enonce: "Léa voit une camarade tomber et se blesser. Que doit-elle faire ?"
     bonneReponse: "prévenir un adulte"
     distracteurs: ["continuer à jouer sans rien dire", "essayer de la soigner elle-même"]
     indice: "Un adulte sait quoi faire face à une blessure."
-  - enonce: "Un inconnu parle aux enfants devant l'école. Que doit faire un enfant qui le voit ?"
-    bonneReponse: "le dire tout de suite à un adulte"
-    distracteurs: ["s'approcher pour mieux entendre", "ne rien dire à personne"]
-    indice: "Une personne inconnue qui s'adresse aux enfants doit toujours être signalée."
+  - enonce: "Un inconnu propose à Hugo de le suivre. Que doit-il faire ?"
+    bonneReponse: "refuser et le dire à un adulte"
+    distracteurs: ["le suivre pour voir où il va", "ne rien dire à personne"]
+    indice: "Suivre un inconnu est dangereux, même s'il semble gentil."
   - enonce: "Hugo voit son petit frère grimper sur un meuble qui penche. Que doit-il faire ?"
     bonneReponse: "avertir un adulte sans attendre"
     distracteurs: ["grimper avec lui pour le retenir", "le laisser continuer sans rien dire"]
     indice: "Un meuble qui penche peut tomber à tout moment."
-  - enonce: "Léa trouve un sac oublié sous un banc. Que doit-elle faire ?"
+  - enonce: "Léa trouve un sac oublié sous un banc dans la cour. Que doit-elle faire ?"
     bonneReponse: "prévenir un adulte"
     distracteurs: ["ouvrir le sac pour regarder dedans", "garder le sac pour elle"]
-    indice: "Un objet inconnu trouvé à l'école doit toujours être signalé."
+    indice: "Un objet qu'on ne connaît pas doit être montré à un adulte."
   - enonce: "Aya a un saignement de nez qui ne s'arrête pas. Que doit-elle faire ?"
     bonneReponse: "aller voir un adulte"
     distracteurs: ["attendre sans rien dire", "continuer à jouer quand même"]
@@ -100,4 +100,4 @@ items:
   - enonce: "Hugo voit un chien perdu et apeuré dans la rue. Que doit-il faire ?"
     bonneReponse: "prévenir un adulte"
     distracteurs: ["s'approcher pour le caresser", "essayer de l'attraper tout seul"]
-    indice: "Un animal perdu peut réagir de façon imprévisible."
+    indice: "Un animal perdu peut mordre si on s'approche trop près."
