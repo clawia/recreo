@@ -16,8 +16,10 @@
   (`squad/conformite/ARBITRAGE-PREALABLE-s47-trois-questions-de-theo-archi.md`, règles 1 à 5),
   `FER-1`, `FER-2`, `FER-3`. `CYC-1` non due (ligne de CP, planning de s47, section 3).
 - **Lien décision** : `DEC-0104`.
-- **Statut global** : **REFUSÉ** le 2026-10-02 par `nadia-prof` (s47, instance B), un motif (item 5).
-  Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
+- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 par `nadia-prof` (s47, instance B,
+  second passage), deux réserves. Historique : **REFUSÉ** le 2026-10-02 (premier passage, un motif,
+  item 5), refus conservé ci-dessous. Fiche ouverte par ce premier verdict : aucune fiche n'existait
+  pour ce jeu.
 - **Dernière mise à jour** : 2026-10-02.
 
 ---
@@ -139,3 +141,92 @@ Je rejouerai le paquet entier à son retour, pas seulement l'item corrigé.
 **Identifiants** : aucun neuf, aucun renommé.
 
 **Signé** : `nadia-prof`, s47, instance B, 2026-10-02.
+
+---
+
+## Bloc de validation pédagogique - second passage - nadia-prof UNIQUEMENT
+
+- **Verdict** : **VALIDÉ SOUS RÉSERVE**
+- **Date** : 2026-10-02
+- **Auditrice** : `nadia-prof`, instance B (`DEC-0104`), second passage.
+- **Audit joué** : **oui**, paquet entier.
+- **Contenu audité** : `cp-emc-alerte.yaml` après `2e22ca0a` (`lea-dev`, fusion `2c4e36d2`).
+
+**Conclusion, en une phrase** : le motif du premier passage est levé - l'item 5 décrit un acte de
+l'inconnu qui justifie l'alerte et n'a qu'une réponse défendable -, les deux points non bloquants
+sont repris, et le Done pédagogique d'`EMC-CP-14` est prononcé avec deux réserves sur des indices.
+
+### 1. Ce que j'ai fait
+
+Worktree dédié `s47-nadia-audit-b2`, fondé sur `round-two` à `c400ac2a`, lignée vérifiée par
+`outils/verifier-lignee.sh round-two`. Jar construit par `bash outils/mvn-jdk21.sh -B package
+-DskipTests` (Maven sur le JDK 21.0.10 de la toolchain), lancé sur un port dédié. Je n'ai lancé
+aucun job de la CI à ce passage et je n'en déduis rien ; le Done technique reste celui de
+`yanis-qa`, et `lea-dev` déclare `mvn -pl adapters/adapter-content -am test` vert dans son commit,
+mesure que je n'ai pas refaite.
+
+**Sept parties complètes de dix manches** par appels HTTP réels : une juste de bout en bout, une
+avec trois erreurs à chaque manche jusqu'à la révélation, cinq mélangées (70 manches : 25 justes du
+premier coup, 10 après une erreur, 13 après deux, 22 avec révélation). **Les onze items ont été
+tirés et joués**, et à chaque manche les trois boutons servis étaient exactement la bonne réponse
+et les deux distracteurs du paquet. Les onze indices ont été lus à l'écran après une erreur. Fin
+de partie : la question ratée est rappelée avec sa réponse.
+
+### 2. Motif du premier passage - levé
+
+Item 5 servi : *"Un inconnu propose à Hugo de le suivre. Que doit-il faire ?"* - bonne réponse
+*"refuser et le dire à un adulte"*, distracteurs *"le suivre pour voir où il va"* et *"ne rien dire
+à personne"*, indice *"Suivre un inconnu est dangereux, même s'il semble gentil."*
+
+- **La situation justifie l'alerte** : l'acte (proposer de le suivre) est le geste que la
+  prévention vise. C'est la forme que j'avais écrite moi-même en section 7 ; elle est reprise mot
+  pour mot, je lève donc sans relever la barre.
+- **`EMC-5`** : une seule proposition défendable. *"ne rien dire à personne"* n'inclut pas le refus
+  et ne prévient personne ; ce n'est plus une conduite juste.
+- **L'indice** porte sur l'acte et non sur le fait qu'un inconnu parle. Règle exacte.
+- Dix mots, une question en seconde phrase (`LON-1`, `LON-2`).
+
+### 3. Points non bloquants du premier passage - repris
+
+| Point (section 6) | Tenu | Ce que j'ai vu à l'écran |
+|---|---|---|
+| 1. Lieu de l'item 7 | **oui** | *"... sous un banc dans la cour."* |
+| 2. Vocabulaire des indices | **oui** | *"urgences médicales"*, *"agression"*, *"intervient"*, *"interviennent"*, *"signalé"*, *"imprévisible"* ont disparu des onze indices servis |
+
+### 4. Le reste du paquet, rejoué
+
+Items 1 à 4 et 6 à 11 rejoués, verdicts du premier passage confirmés : `EMC-7` et ma décision Q4
+tenues (15, 17, 18 nus, aucun 112 servi, service nommé et jamais une situation), `EMC-1`, `EMC-6`,
+`FER-1` à `FER-3`, biais et ton. Les indices réécrits (*"Le SAMU aide les personnes très malades ou
+très blessées."*, *"La police secours vient aider en cas de danger."*, *"Les pompiers viennent
+aider en cas d'incendie ou d'accident."*, *"Un animal perdu peut mordre si on s'approche trop
+près."*) sont exacts et lisibles par un enfant de CP accompagné.
+
+### 5. Réserves - nouvelles et datées du 2026-10-02, non vues au premier passage
+
+1. **Item 7, l'indice prescrit un geste ambigu.** *"Un objet qu'on ne connaît pas doit être montré à
+   un adulte."* Pour un sac oublié, un enfant de six ans peut comprendre qu'il doit le prendre et
+   l'apporter. La conduite juste est de ne pas y toucher et de prévenir. L'indice précédent
+   (*"signalé"*) était exact ; c'est la simplification que j'avais demandée qui a introduit
+   l'ambiguïté. Exemple de forme : *"Un sac oublié, on n'y touche pas : on prévient un adulte."*
+   La bonne réponse (*"prévenir un adulte"*) et les deux distracteurs sont justes : ce n'est pas un
+   motif de refus.
+2. **Item 11, *"apeuré"*.** Mot au-dessus du CP, présent dès le premier passage et que je n'avais
+   pas relevé. Exemple : *"Hugo voit dans la rue un chien perdu qui a peur."* (au plus quinze mots).
+
+`camille-po` peut en faire une story ; elles ne bloquent pas la ligne.
+
+### 6. Pour `camille-po`
+
+**Done pédagogique d'`EMC-CP-14` prononcé, sous les deux réserves de la section 5.** La ligne de
+matrice peut passer à `couvert-valide`.
+
+### 7. Ce dont je reste la seule garde sur cette ligne
+
+Inchangé depuis le premier passage (section 8 ci-dessus) : Q4 règle 2, `EMC-5` sur les items de
+situation, et l'exactitude des conduites prescrites et des indices - c'est cette dernière qui a
+laissé passer la réserve 1, avec une CI verte.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s47, instance B, second passage, 2026-10-02.

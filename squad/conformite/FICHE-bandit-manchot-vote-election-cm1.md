@@ -18,8 +18,10 @@
   `FER-1`, `FER-2`, `FER-3`. `CYC-1` non due (planning de s47, section 3 : la ligne miroir du CP est
   `non couvrable en l'etat`).
 - **Lien décision** : `DEC-0104`.
-- **Statut global** : **REFUSÉ** le 2026-10-02 par `nadia-prof` (s47, instance B), deux motifs (items
-  5 et 6). Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
+- **Statut global** : **REFUSÉ** une seconde fois le 2026-10-02 par `nadia-prof` (s47, instance B,
+  second passage), un motif (item 5, nouvelle erreur introduite par sa correction). Historique :
+  **REFUSÉ** le 2026-10-02 (premier passage, deux motifs, items 5 et 6), refus conservé ci-dessous.
+  Fiche ouverte par ce premier verdict : aucune fiche n'existait pour ce jeu.
 - **Dernière mise à jour** : 2026-10-02.
 
 ---
@@ -145,3 +147,123 @@ Je rejouerai le paquet entier à son retour, pas seulement les items corrigés.
 **Identifiants** : aucun neuf, aucun renommé.
 
 **Signé** : `nadia-prof`, s47, instance B, 2026-10-02.
+
+---
+
+## Bloc de validation pédagogique - second passage - nadia-prof UNIQUEMENT
+
+- **Verdict** : **REFUSÉ**
+- **Date** : 2026-10-02
+- **Auditrice** : `nadia-prof`, instance B (`DEC-0104`), second passage.
+- **Audit joué** : **oui**, paquet entier.
+- **Contenu audité** : `cm1-emc-vote-election.yaml` et consigne du catalogue après `923bf998`
+  (`sofia-sm`, casquette dev).
+
+**Motif, en une phrase** : l'item 5 corrigé dit *"En France, le droit de vote est réservé aux
+personnes de nationalité française et majeures"*, ce qui est faux - les citoyens de l'Union
+européenne qui résident en France votent aux élections municipales et européennes (Constitution,
+article 88-3) - et ce paquet parle lui-même des élections municipales (items 3 et 9).
+
+### 1. Ce que j'ai fait
+
+Worktree dédié `s47-nadia-audit-b2`, fondé sur `round-two` à `c400ac2a`, lignée vérifiée par
+`outils/verifier-lignee.sh round-two`. Jar construit par `bash outils/mvn-jdk21.sh -B package
+-DskipTests` (Maven sur le JDK 21.0.10 de la toolchain), lancé sur un port dédié. Je n'ai lancé
+aucun job de la CI à ce passage et je n'en déduis rien.
+
+**Six parties complètes de dix manches** par appels HTTP réels : une juste de bout en bout, une
+avec trois erreurs à chaque manche jusqu'à la révélation, quatre mélangées (60 manches : 19 justes
+du premier coup, 11 après une erreur, 8 après deux, 22 avec révélation). **Les douze items ont été
+tirés et joués** ; à chaque manche, les trois boutons servis étaient exactement ceux du paquet. Les
+douze indices ont été lus à l'écran. Consigne servie : *"Lis bien, puis trouve le bon mot, ou dis
+qui vote, qui est élu, ou ce que fait un délégué."*
+
+### 2. Les sources, vérifiées par moi
+
+Je n'ai aucun outil de consultation en ligne à ce passage : je vérifie sur ma connaissance du texte
+des articles, que je cite, et non sur le résumé de la correction.
+
+- **Constitution du 4 octobre 1958, article 3, alinéa 4** : *"Sont électeurs, dans les conditions
+  déterminées par la loi, tous les nationaux français majeurs des deux sexes, jouissant de leurs
+  droits civils et politiques."* L'article dit qui est électeur ; il ne dit pas que le droit de
+  vote leur est réservé.
+- **Constitution, article 88-3** : le droit de vote et d'éligibilité aux élections municipales peut
+  être accordé aux seuls citoyens de l'Union résidant en France. C'est le cas (loi organique du 25
+  mai 1998). Les mêmes citoyens votent en France aux élections européennes. Je l'avais moi-même
+  écrit en section 4 du premier passage.
+- **Ordonnance du 21 avril 1944, article 17** : *"Les femmes sont électrices et éligibles dans les
+  mêmes conditions que les hommes."* Premier vote le 29 avril 1945 (municipales).
+- **Code électoral, article L227** : les conseillers municipaux sont élus pour six ans.
+
+### 3. Motif - l'item 5 corrigé est faux
+
+*"En France, le droit de vote est réservé aux personnes de nationalité française et majeures, quels
+que soient leur richesse, leur métier ou leur sexe. Comment appelle-t-on ce droit de vote accordé à
+tous les citoyens ?"*
+
+**Le fait.** *"Réservé aux"* affirme que personne d'autre ne vote. Un adulte portugais, italien ou
+belge qui vit en France vote aux élections municipales et européennes. L'item 3 et l'item 9 de ce
+paquet parlent des électeurs de la commune, qui comptent ces citoyens.
+
+**Ce que l'enfant apprend.** Des enfants de CM1 ont un parent européen qui vote aux municipales :
+l'énoncé leur dit que ce parent n'a pas le droit de vote. C'est le même dommage que celui que j'ai
+nommé pour la formulation du premier passage, dans l'autre sens.
+
+**Pourquoi je ne déplace pas mon poteau.** Ma barre (section 7 du premier passage) proposait *"tous
+les citoyens majeurs"* ou *"toute personne majeure de nationalité française"* : deux formulations
+qui disent qui vote, sans dire que personne d'autre ne vote. La correction n'a repris aucune des
+deux ; elle a ajouté une exclusivité, et c'est cette exclusivité qui est fausse. Si la correction
+avait repris l'une des deux formes que j'avais écrites, je l'aurais acceptée. **Une erreur
+factuelle dans un contenu scolaire est un motif de refus à elle seule** (`HIS-3`).
+
+**Le marqueur.** *"Constitution du 4 octobre 1958, article 3"* est la bonne source pour *"sont
+électeurs les nationaux français majeurs"*. Elle ne soutient pas *"réservé"*.
+
+### 4. Motif 2 du premier passage - levé
+
+Item 6 servi : *"Depuis 1944, les femmes ont le droit de vote en France au même titre que les
+hommes."* Exact (ordonnance du 21 avril 1944, article 17). Indice *"Avant cette date, ce droit
+était réservé aux hommes."* exact. Je lève.
+
+### 5. Points non bloquants du premier passage
+
+| Point (section 6) | Tenu | Ce que j'ai vu à l'écran |
+|---|---|---|
+| 1. Items 1 et 2, distracteurs qui ne sont pas des personnes | **oui** | *"le maire"*, *"le conseil municipal"* : la barre que j'avais écrite (des personnes) est atteinte, je lève |
+| 2. Item 4, l'indice pousse vers le distracteur | **oui** | *"Ce jour-là, les électeurs votent, puis une seule personne est élue."* : porte sur ce qui distingue une élection |
+| 3. Item 12, source | **oui** | `code electoral, article L227`, exacte |
+| 4. Consigne servie | **oui** | *"trouve le bon mot"* couvre la tâche A |
+
+Le reste du paquet (items 1 à 4, 7 à 12) est rejoué et exact ; ma décision Q6 (règles 1 à 5),
+`EMC-6`, `EMC-8`, `FER-1` à `FER-3` restent tenues, avec les mêmes vérifications qu'au premier
+passage.
+
+### 6. Ce qui doit changer pour que le lot repasse
+
+| Fait | À qui |
+|---|---|
+| Item 5 : retirer l'exclusivité. Forme acceptée, par exemple : *"En France, tous les citoyens majeurs ont le droit de vote, quels que soient leur richesse, leur métier ou leur sexe."* Garder la source (Constitution, article 3) | `camille-po` en fait la story, développeur affecté par `sofia-sm` |
+
+Je rejouerai le paquet entier à son retour. Aucun autre item n'est en cause.
+
+### 7. Réserves nouvelles, datées du 2026-10-02, sans être des motifs de refus
+
+Elles n'étaient pas dans ma barre du premier passage ; je ne les y ajoute pas.
+
+1. **Items 3 à 6, un distracteur hors de sa catégorie.** *"le délégué de classe"* est une personne,
+   et il est distracteur de questions qui demandent un vote (*"Comment appelle-t-on ce vote ?"*,
+   *"ce moment ?"*) ou un droit (*"ce droit de vote"*, *"ce principe"*). C'est le défaut que j'ai
+   relevé aux items 1 et 2, dans l'autre sens, et que je n'avais pas vu sur ces quatre items.
+2. **Item 11, la question est mal formée.** *"Qui le suffrage universel permet-il de faire voter ?"*
+   Le suffrage universel ne fait voter personne : il donne le droit de voter. Exemple : *"Avec le
+   suffrage universel, qui a le droit de voter ?"*
+
+### 8. Ce dont je reste la seule garde sur cette ligne
+
+Inchangé depuis le premier passage (section 8 ci-dessus). Le point 1 a encore mordu : **la CI est
+verte sur un fait électoral faux pour la seconde fois**, introduit cette fois par la correction
+elle-même. Aucun test ne sait qui vote en France, ni à quelle élection.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s47, instance B, second passage, 2026-10-02.
