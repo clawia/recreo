@@ -55,7 +55,7 @@ items:
   - enonce: "Début novembre, des feux d'artifice illuminent le ciel le soir. Quel est ce pays ?"  # element: fete
     bonneReponse: "le Royaume-Uni"
     distracteurs: ["l'Allemagne", "le Portugal"]
-    indice: "Ces feux d'artifice ont lieu dans le pays de Londres."
+    indice: "Ces feux d'artifice ont lieu dans le pays où se trouve Londres."
   - enonce: "De nombreux élèves portent un uniforme avec veste et cravate. Quel est ce pays ?"  # element: quotidien
     bonneReponse: "le Royaume-Uni"
     distracteurs: ["les États-Unis", "l'Italie"]
