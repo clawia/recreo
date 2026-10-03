@@ -76,19 +76,19 @@ items:
     indice: "Il ou elle parle au nom de ses camarades, sans décider à leur place."
   - enonce: "Dans une commune, les électeurs votent pour choisir les membres du conseil municipal qui vont les représenter. Comment appelle-t-on ce vote ?"  # HIS-3: l'election des membres du conseil municipal par les electeurs de la commune est prevue par le code electoral (elections municipales au suffrage universel direct)
     bonneReponse: "une élection"
-    distracteurs: ["le délégué de classe", "le suffrage universel"]
+    distracteurs: ["un référendum", "le suffrage universel"]
     indice: "Chaque électeur dépose son choix, puis les voix sont comptées."
   - enonce: "Pour choisir le président de la République, tous les électeurs du pays sont appelés à voter le même jour. Comment appelle-t-on ce moment ?"  # HIS-3: l'election du president de la Republique au suffrage universel direct est prevue par la Constitution de 1958, article 6
     bonneReponse: "une élection"
-    distracteurs: ["le délégué de classe", "le suffrage universel"]
+    distracteurs: ["un sondage d'opinion", "le suffrage universel"]
     indice: "Ce jour-là, les électeurs votent, puis une seule personne est élue."
   - enonce: "En France, tous les citoyens majeurs ont le droit de vote, quels que soient leur richesse, leur métier ou leur sexe. Comment appelle-t-on ce droit de vote accordé à tous les citoyens ?"  # HIS-3: Constitution du 4 octobre 1958, article 3 - sont electeurs les nationaux francais majeurs, sans condition de richesse ni de sexe
     bonneReponse: "le suffrage universel"
-    distracteurs: ["le délégué de classe", "une élection"]
+    distracteurs: ["le droit de pétition", "une élection"]
     indice: "Ce droit n'appartient pas seulement à certaines personnes : il appartient à tous les citoyens majeurs."
   - enonce: "Depuis 1944, les femmes ont le droit de vote en France au même titre que les hommes. Comment appelle-t-on ce principe, qui donne le droit de vote à tous les citoyens majeurs ?"  # HIS-3: ordonnance du 21 avril 1944, article 17 - droit de vote des femmes en France
     bonneReponse: "le suffrage universel"
-    distracteurs: ["le délégué de classe", "une élection"]
+    distracteurs: ["le vote obligatoire", "une élection"]
     indice: "Avant cette date, ce droit était réservé aux hommes."
   - enonce: "Que fait le délégué de classe, une fois élu ?"  # HIS-3: le role de representation sans pouvoir de decision seul est un fonctionnement ordinaire d'une classe enseigne au cycle 3
     bonneReponse: "il ou elle représente les élèves et porte leur avis auprès des adultes de l'école"
@@ -106,7 +106,7 @@ items:
     bonneReponse: "le conseil municipal"
     distracteurs: ["les électeurs de la commune", "le préfet"]
     indice: "Ce sont les conseillers municipaux eux-mêmes qui le choisissent, parmi leurs membres."
-  - enonce: "Qui le suffrage universel permet-il de faire voter ?"  # HIS-3: le principe du suffrage universel, sans condition de richesse ni de sexe, est un fait de droit electoral enseigne au cycle 3
+  - enonce: "Avec le suffrage universel, qui a le droit de voter ?"  # HIS-3: le principe du suffrage universel, sans condition de richesse ni de sexe, est un fait de droit electoral enseigne au cycle 3
     bonneReponse: "tous les citoyens majeurs, quels que soient leur richesse ou leur sexe"
     distracteurs: ["seulement les citoyens les plus riches", "seulement les hommes"]
     indice: "Ce droit ne dépend ni de la fortune, ni du sexe de la personne."
