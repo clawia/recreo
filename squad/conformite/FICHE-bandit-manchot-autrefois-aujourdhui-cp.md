@@ -12,15 +12,52 @@
   (`ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, section 7.4), `FER-1` à `FER-3`
   (`ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`), `LON-1`, `LON-2`
   (`ADR-0089`), `TYP-1` (`ADR-0067`).
-- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 par `nadia-prof` (s47, instance A,
+- **Statut global** : **VALIDÉ** le 2026-10-03 par `nadia-prof` (s48, instance A, quatrième
+  passage), `AUT-CP-R1` levée. Historique : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 (s47, instance A,
   troisième passage), après avoir rejoué le jar servi sur le contenu corrigé (`27858d86`). Le motif
   du second refus est levé. Une réserve : `AUT-CP-R1`.
-- **Dernière mise à jour** : 2026-10-02 (troisième passage). Les verdicts du premier et du second
-  passage restent écrits plus bas, inchangés.
+- **Dernière mise à jour** : 2026-10-03 (quatrième passage, s48) : **`AUT-CP-R1` levée**, aucune
+  réserve ouverte. Les verdicts des trois premiers passages restent écrits plus bas, inchangés.
 
 ---
 
 ## Bloc de validation pédagogique
+
+### Quatrième passage du 2026-10-03 (`nadia-prof`, s48, instance A) : **VALIDÉ**, `AUT-CP-R1` levée
+
+**`AUT-CP-R1` est levée. Aucune réserve ouverte sur ce paquet.** `QLM-CP-15` reste `couvert-valide`.
+
+**Ce que j'ai fait.** Contenu à `358b3d24` (`lea-dev`), arbre `round-two` à `bc1e7835`. Jar du
+`clean verify` de `yanis-qa` à ce commit, YAML du jar vérifié identique à l'arbre, lancé sur un port
+dédié servi par mon propre processus. Aucun job de la CI lancé par moi. **Huit parties complètes de
+dix manches** par appels HTTP réels, une erreur sur une manche sur deux : **les 14 items tirés**, les
+items 7 et 13 joués avec une erreur. Rendu non revu au navigateur : aucun gabarit n'a changé.
+
+**La barre que j'avais écrite est atteinte, mot pour mot** (section 4 du troisième passage) : ni
+l'indice de l'item 7 ni celui de l'item 13 ne contiennent le mot *robinet*. `git show 358b3d24` : ces
+deux lignes `indice:` et aucune autre. Servis après une erreur :
+
+- item 7 : *"On y allait chercher l'eau avant qu'elle arrive dans les maisons."* Il situe le puits
+  dans le temps sans nommer la réponse d'un autre item ;
+- item 13 : *"L'eau arrive dans la maison par des tuyaux sous la terre."* Il écarte *"par une rivière
+  voisine"* et *"par un camion-citerne"* par le sens, et l'enfant doit encore relier les tuyaux au
+  robinet.
+
+Ce sont les deux exemples que j'avais donnés. Je les ai relus contre les treize autres réponses du
+paquet, puisque c'est une correction d'indice qui avait rouvert la fuite à s47 : aucun ne nomme une
+bonne réponse. `BIA-3` relue sur les deux textes neufs : rien ne qualifie l'ancien de difficile, dur ou
+pauvre.
+
+**Ma garde, inchangée** (section 5 du troisième passage) : aucun test ne vérifie qu'un indice ne nomme
+pas sa propre réponse ou celle d'un autre item. `lea-dev` n'a pas ajouté d'assertion sur le mot
+*robinet*, que l'avis de faisabilité de s48 (section 5) jugeait possible : la levée ne tient qu'à ce
+que je viens de lire.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s48, instance A, quatrième passage, 2026-10-03.
+
+---
 
 ### Troisième passage du 2026-10-02 (`nadia-prof`, s47, instance A) : **VALIDÉ SOUS RÉSERVE**
 

@@ -15,7 +15,9 @@
   (`ARBITRAGE-PREALABLE-s47-trois-questions-de-theo-archi.md`).
 - **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 par `nadia-prof` (s47, instance A), après
   avoir joué le jar servi. Deux réserves non bloquantes, `ANG-CP-R1` et `ANG-CP-R2`.
-- **Dernière mise à jour** : 2026-10-02 (premier audit).
+- **Dernière mise à jour** : 2026-10-03 (second passage, s48) : **VALIDÉ SOUS RÉSERVE**.
+  `ANG-CP-R1` levée sur l'item 10, maintenue sur l'item 12 ; `ANG-CP-R2` levée sur l'item 1,
+  maintenue sur l'item 2 ; réserve neuve `ANG-CP-R3`. Le verdict du 2026-10-02 reste écrit tel quel.
 
 ---
 
@@ -112,3 +114,88 @@ segments, niveau au milieu, `R` dans le dernier), alloués dans
 `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même commit. Aucun renommé.
 
 **Signé** : `nadia-prof`, s47, instance A, 2026-10-02.
+
+---
+
+### Second passage du 2026-10-03 (`nadia-prof`, s48, instance A) : **VALIDÉ SOUS RÉSERVE**
+
+**`ANG-CP-R1` et `ANG-CP-R2` sont levées chacune sur un item sur deux, et restent ouvertes sur
+l'autre. Une réserve neuve, `ANG-CP-R3`.** Les trois sont non bloquantes. `LVE-CP-06` reste
+`couvert-valide`, avec sa mention de couverture partielle.
+
+#### 1. Ce que j'ai fait
+
+Contenu à `f99a47a9` (`lea-dev`), arbre `round-two` à `bc1e7835`. Jar du `clean verify` de `yanis-qa`
+à ce commit, YAML du jar vérifié identique à l'arbre, lancé sur un port dédié servi par mon propre
+processus. Aucun job de la CI lancé par moi. **Huit parties complètes de dix manches** par appels HTTP
+réels, une erreur sur une manche sur deux : **les 12 items tirés**, les items 1, 2, 10 et 12 joués
+avec une erreur. `git show f99a47a9` : deux lignes `indice:` (items 1 et 2) et deux lignes
+`distracteurs:` (items 10 et 12), rien d'autre. Rendu non revu au navigateur : aucun gabarit n'a
+changé.
+
+**Q5 tenue sur les quatre textes neufs** : aucun mot écrit à l'anglaise. *"Le Christ Rédempteur"* et
+*"la Petite Sirène"* sont les noms français de ces statues.
+
+#### 2. `ANG-CP-R1` - les distracteurs rédigés par `lea-dev`
+
+La forme exacte n'était pas dans ma fiche, seulement le critère : *"deux distracteurs concurrents par
+item, qui répondent aussi à la question posée [...] s'ils ne sont pas aussi vrais des États-Unis"*.
+Je juge chaque distracteur contre ce critère, et contre rien d'autre.
+
+| Item | Distracteur | Répond à la question | Faux des États-Unis | Tenu |
+|---|---|---|---|---|
+| 10 | *"le Christ Rédempteur"* | oui, une statue à personnage | oui, elle est au Brésil, sans torche | **oui** |
+| 10 | *"la Petite Sirène"* | oui, une statue à personnage | oui, elle est au Danemark, sans torche | **oui** |
+| 12 | *"ils lèvent le drapeau en haut d'un mât"* | oui, un geste face au drapeau | oui, ce n'est pas ce que fait une classe chaque matin | **oui** |
+| 12 | *"ils saluent le drapeau, debout et en silence"* | oui | **non, à moitié vrai** | **non** |
+
+**Item 10 : levée.** Les deux distracteurs sont des statues, la barre est atteinte.
+
+**Item 12 : maintenue sur un distracteur.** Chaque matin, face au drapeau, les élèves américains se
+lèvent, la main sur le cœur, et récitent leur texte : c'est ce qu'on appelle en français le salut au
+drapeau. *"Ils saluent le drapeau, debout"* est donc vrai des États-Unis ; seul *"en silence"* le rend
+faux. Un enfant de CP, qui lit lentement, doit trancher sur les deux derniers mots d'une proposition
+de huit, et l'adulte qui l'accompagne peut à bon droit lui dire que ces élèves saluent bien le
+drapeau. C'est exactement le cas que mon critère excluait. **Ce qui lève** : remplacer ce distracteur
+par un geste face au drapeau qui n'est pas celui des écoles américaines et ne partage aucun trait avec
+le leur (ni debout, ni salut, ni main sur le cœur), par exemple *"ils dessinent le drapeau sur leur
+cahier"*.
+
+#### 3. `ANG-CP-R2` - les indices des items 1 et 2
+
+**Item 1 : levée.** *"Ce fleuve traverse Londres, tout près d'une grande tour à horloge."* Une
+phrase, des mots de CP, et *Londres* mène au pays.
+
+**Item 2 : maintenue.** *"Cette fête rappelle un secret découvert juste à temps, il y a très
+longtemps."* Les mots sont devenus des mots de CP, et c'était la moitié de la barre. L'autre moitié,
+écrite le 2026-10-02 : un indice *"qui aide à trouver la réponse"*, et mon motif disait déjà que
+l'ancien *"n'aide pas à trouver le pays"*. Le nouveau non plus : aucun enfant de six ans ne sait quel
+pays a découvert un secret à temps. Après une erreur, il reste deux pays, et rien pour choisir.
+**Ce qui lève** : un indice court, en mots de CP, qui mène au Royaume-Uni, par exemple *"Ces feux
+d'artifice ont lieu dans le pays de Londres."*
+
+#### 4. Réserve neuve, datée du 2026-10-03
+
+**`ANG-CP-R3` (non bloquante) - l'item 10 se répond encore par le mot *statue*.** Elle ne durcit pas
+`ANG-CP-R1`, dont la barre est atteinte sur cet item. Joué : *"Aux États-Unis, comment s'appelle la
+statue qui porte une torche ?"*, propositions *"la statue de la Liberté"*, *"le Christ Rédempteur"*,
+*"la Petite Sirène"*. Le mot *statue* de la question ne se retrouve que dans la bonne réponse : un
+enfant qui reconnaît un mot sans lire le reste la choisit. C'est le défaut que j'avais nommé à s47, par
+une autre voie. *"Rédempteur"* est en plus un mot qu'un enfant de CP ne déchiffre pas. **Ce qui
+lève** : le mot *statue* figure dans les trois propositions de l'item 10, ou dans aucune, par exemple
+*"la statue du Christ"* et *"la statue de la Petite Sirène"*.
+
+#### 5. Ce dont je reste la seule garde
+
+Inchangé (section 5 du premier passage). Les trois réserves ouvertes portent sur des propriétés
+qu'aucun test ne lit : un distracteur aussi vrai du pays de la question, un indice qui ne mène pas à la
+réponse, un mot de la question répété dans la seule bonne réponse. `PaquetCpAnglaisCultureTest` ne lit
+ni distracteur ni indice au-delà de leur nombre ; ces quatre corrections ont été vertes, la moitié
+défaillante comprise.
+
+**Identifiants** : un neuf, `ANG-CP-R3`. Forme copiée de `ANG-CP-R2` : trois segments, niveau au
+milieu, marqueur `R` dans le dernier (`ADR-0100`). Alloué dans
+`squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même diff. `ANG-CP-R1` et `ANG-CP-R2`
+gardent leur nom.
+
+**Signé** : `nadia-prof`, s48, instance A, 2026-10-03.

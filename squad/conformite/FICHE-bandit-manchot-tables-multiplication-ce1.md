@@ -11,10 +11,12 @@
 - **Conditions opposables** : `TAB-CE1-1` à `TAB-CE1-6`
   (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md`, section 1.3), **dans leur
   version du 2026-10-02** (sections 2 à 5 ci-dessous).
-- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 (s47, instance A), une réserve non
+- **Statut global** : **VALIDÉ** le 2026-10-03 (s48, instance A, second passage), `TAB-CE1-R1`
+  levée. Historique : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 (s47, instance A), une réserve non
   bloquante, `TAB-CE1-R1`. Avant ce verdict : aucun verdict, fiche ouverte avant le premier item pour
   que les conditions que le développeur lit soient celles que j'auditerai.
-- **Dernière mise à jour** : 2026-10-02 (premier audit).
+- **Dernière mise à jour** : 2026-10-03 (second passage, s48) : **`TAB-CE1-R1` levée**, aucune
+  réserve ouverte. Le verdict du 2026-10-02 reste écrit tel quel.
 
 ---
 
@@ -225,3 +227,31 @@ propre au paquet : je l'ai vérifiée à la lecture, `TYP-1` est gardée par le 
 `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même commit. Aucun renommé.
 
 **Signé** : `nadia-prof`, s47, instance A, 2026-10-02.
+
+### Second passage du 2026-10-03 (`nadia-prof`, s48, instance A) : **VALIDÉ**, `TAB-CE1-R1` levée
+
+**`TAB-CE1-R1` est levée. Aucune réserve ouverte sur ce paquet.** `MAT-CE1-07` reste `couvert-valide`.
+
+**Ce que j'ai fait.** Contenu à `b29c900b` (`lea-dev`), arbre `round-two` à `bc1e7835`. Jar du
+`clean verify` de `yanis-qa` à ce commit, YAML du jar vérifié identique à l'arbre, lancé sur un port
+dédié servi par mon propre processus. Aucun job de la CI lancé par moi. **Dix-huit parties complètes de
+dix manches** par appels HTTP réels : quatorze avec une erreur sur une manche sur deux, quatre avec une
+erreur sur chaque item à facteur 1 jusqu'à les avoir tous tirés. Les 40 items ont été tirés ; chacun
+des cinq items à facteur 1 a été joué au moins une fois avec une erreur (sur `3 × 1`, la réponse 4 ;
+sur `10 × 1`, la réponse 11). Rendu non revu au navigateur : aucun
+gabarit n'a changé.
+
+**La barre que j'avais écrite est atteinte, mot pour mot.** `git show b29c900b` : cinq lignes
+`indice:`, celles des items `2 × 1`, `3 × 1`, `4 × 1`, `5 × 1` et `10 × 1`, et aucune autre. Après une
+erreur sur chacun, l'enfant lit *"Multiplier par 1, le nombre ne change pas."*, la forme validée au
+CM1. Sur `3 × 1`, l'enfant qui a répondu 4 (il a lu `× 1` comme `+ 1`) lit désormais ce que son erreur
+appelle. L'ambiguïté de *"ajoute un zéro"* sur `10 × 1` a disparu avec l'ancien indice.
+
+**Ce qui change dans ma garde.** `PaquetCe1TablesMultiplicationTest` lit maintenant l'indice des items
+à facteur 1 (`tabR1ToutItemAFacteur1PorteLIndiceSurLeFacteur1`) : `TAB-CE1-R1` n'est plus de ma seule
+garde. Reste à moi : que les distracteurs soient des erreurs d'enfant, et que les indices des 35
+autres items aident à comprendre l'erreur.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s48, instance A, 2026-10-03.

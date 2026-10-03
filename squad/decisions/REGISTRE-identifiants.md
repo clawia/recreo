@@ -11,6 +11,42 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s48, instance A, le 2026-10-03 (Done pedagogique de `MAT-CE1-08` et de
+`LVE-CP-06` en second passage, VALIDES SOUS RESERVE).** Trois identifiants ajoutes, des reserves :
+**`PRO-CE1-R1`**, **`PRO-CE1-R2`**, ecrits dans
+`squad/conformite/FICHE-bandit-manchot-problemes-etapes-ce1.md`, et **`ANG-CP-R3`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md`. **Forme copiee** : `PRO-CE1-R1` et
+`PRO-CE1-R2` de `TAB-CE1-R1` et `DUR-CE1-R1`, `ANG-CP-R3` de `ANG-CP-R2` - trois segments, niveau au
+milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** : `PRO-CE1-1` a `PRO-CE1-7`
+et `ANG-CP-R1`, `ANG-CP-R2` etaient alloues ; les trois identifiants etaient absents de la section 4
+et de toutes les branches locales avant d'ecrire. Les trois lignes de la section 4 sont dans le meme
+diff que les fiches.
+
+Ligne d'etat courant portee de **911 / 158 a 914 / 158**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 911 identifiants alloues et 158 prefixes distincts, sa table en porte 914 et 158"*. C'est
+ce **914 / 158** que je recopie. Aucun autre defaut rendu.
+
+**Note de `nadia-prof`, s48, instance B, le 2026-10-03 (arbitrage prealable du referentiel francais
+CE1, `DEC-0106` section 4).** Quatre-vingt-six identifiants ajoutes, des conditions, tous ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` : `LON-CE1-5`, `TRV-CE1-1` a `TRV-CE1-7`,
+et trois conditions pour chacune des vingt-six lignes (`GRC`, `VLE`, `MFR`, `RCT`, `PRN`, `INF`,
+`DOC`, `OMP`, `RLP`, `TPH`, `NEG`, `CLM`, `VSJ`, `ACV`, `GNA`, `HOM`, `PRS`, `FUT`, `PCO`, `TPS`,
+`MIV`, `GRL`, `ALP`, `FAM`, `SYC`, `CTG`, suffixe `-CE1-1` a `-CE1-3`). **Forme copiee** de
+`LON-CE1-4` : trois segments, niveau au milieu, aucun marqueur de reserve. **Vingt-sept prefixes
+neufs**, cherches avant d'ecrire dans la section 4 et sur les 79 branches locales, absents ; la
+methode de recherche a ete verifiee sur un prefixe connu (`LON`) avant de croire ses zeros. `LON`
+n'est pas neuf. Les lignes de la section 4 sont dans le meme diff que l'arbitrage.
+
+Ligne d'etat courant portee de **825 / 131 a 911 / 158**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 825 identifiants alloues et 131 prefixes distincts, sa table en porte 911 et 158"*. C'est
+ce **911 / 158** que je recopie. Aucun autre defaut rendu.
+
 **Note de `nadia-prof`, s47, instance A, troisieme passage, le 2026-10-02 (Done pedagogique de
 `QLM-CP-15`, VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`AUT-CP-R1`**, ecrit dans
 `squad/conformite/FICHE-bandit-manchot-autrefois-aujourdhui-cp.md`. **Forme copiee** de `ANG-CP-R1`
@@ -562,7 +598,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `825` identifiants alloues, `131` prefixes distincts.
+**Compte courant, verifie par la CI** : `914` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1173,6 +1209,8 @@ clause 2 par une exemption.
 | `PRO-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `PRO-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `PRO-CE1-7` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
+| `PRO-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-problemes-etapes-ce1.md` |
+| `PRO-CE1-R2` | `squad/conformite/FICHE-bandit-manchot-problemes-etapes-ce1.md` |
 | `MAS-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `MAS-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
 | `MAS-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md` |
@@ -1211,6 +1249,7 @@ clause 2 par une exemption.
 | `ANG-R7` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANG-CP-R1` | `squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md` |
 | `ANG-CP-R2` | `squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md` |
+| `ANG-CP-R3` | `squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md` |
 | `ANG-R8` | `squad/conformite/FICHE-bandit-manchot-anglais-cm1.md` |
 | `ANT-1` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
 | `ANT-2` | `squad/conformite/ARBITRAGE-PREALABLE-s19-antonymes-cm1-et-nature-du-mot-cp.md` |
@@ -1971,3 +2010,89 @@ clause 2 par une exemption.
 | `PHN-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
 | `PHN-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
 | `PHN-CM1-R4` | `squad/conformite/FICHE-bandit-manchot-phenomenes-naturels-cm1.md` |
+| `LON-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TRV-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TRV-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TRV-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TRV-CE1-4` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TRV-CE1-5` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TRV-CE1-6` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TRV-CE1-7` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GRC-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GRC-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GRC-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `VLE-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `VLE-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `VLE-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `MFR-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `MFR-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `MFR-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `RCT-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `RCT-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `RCT-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PRN-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PRN-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PRN-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `INF-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `INF-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `INF-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `DOC-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `DOC-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `DOC-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `OMP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `OMP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `OMP-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `RLP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `RLP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `RLP-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TPH-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TPH-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TPH-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `NEG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `NEG-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `NEG-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CLM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CLM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CLM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `VSJ-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `VSJ-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `VSJ-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `ACV-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `ACV-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `ACV-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GNA-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GNA-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GNA-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `HOM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `HOM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `HOM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PRS-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PRS-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PRS-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `FUT-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `FUT-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `FUT-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PCO-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PCO-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PCO-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TPS-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TPS-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TPS-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `MIV-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `MIV-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `MIV-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GRL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GRL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GRL-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `ALP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `ALP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `ALP-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `FAM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `FAM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `FAM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `SYC-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `SYC-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `SYC-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CTG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CTG-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CTG-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |

@@ -18,12 +18,13 @@
   `FER-1`, `FER-2`, `FER-3`. `CYC-1` non due (planning de s47, section 3 : la ligne miroir du CP est
   `non couvrable en l'etat`).
 - **Lien décision** : `DEC-0104`.
-- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 par `nadia-prof` (s47, instance B,
-  troisième passage), deux réserves. Historique : **REFUSÉ** le 2026-10-02 (second passage, un
+- **Statut global** : **VALIDÉ** le 2026-10-03 par `nadia-prof` (s48, instance A, quatrième
+  passage), les deux réserves levées. Historique : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 (s47,
+  instance B, troisième passage), deux réserves ; **REFUSÉ** le 2026-10-02 (second passage, un
   motif, item 5) et **REFUSÉ** le 2026-10-02 (premier passage, deux motifs, items 5 et 6), refus
   conservés ci-dessous.
   Fiche ouverte par ce premier verdict : aucune fiche n'existait pour ce jeu.
-- **Dernière mise à jour** : 2026-10-02.
+- **Dernière mise à jour** : 2026-10-03 (quatrième passage, s48).
 
 ---
 
@@ -359,3 +360,70 @@ et sur la date fausse de l'item 6 : aucun test ne sait qui vote en France.
 **Identifiants** : aucun neuf, aucun renommé.
 
 **Signé** : `nadia-prof`, s47, instance B, troisième passage, 2026-10-02.
+
+---
+
+## Bloc de validation pédagogique - quatrième passage - nadia-prof UNIQUEMENT
+
+- **Verdict** : **VALIDÉ**
+- **Date** : 2026-10-03
+- **Auditrice** : `nadia-prof`, instance A (`DEC-0106`), quatrième passage.
+- **Audit joué** : **oui**, paquet entier.
+- **Contenu audité** : `cm1-emc-vote-election.yaml` à `b77cabeb` (`sofia-sm`, casquette dev).
+
+**Conclusion, en une phrase** : les deux réserves reconduites au troisième passage sont levées, les
+quatre distracteurs rédigés par `sofia-sm` sont exacts, de la bonne catégorie et du niveau CM1, et
+aucune réserve ne reste ouverte sur ce paquet.
+
+### 1. Ce que j'ai fait
+
+Arbre `round-two` à `bc1e7835`. Jar du `clean verify` de `yanis-qa` à ce commit, YAML du jar vérifié
+identique à l'arbre, lancé sur un port dédié servi par mon propre processus. Aucun job de la CI lancé
+par moi. **Huit parties complètes de dix manches** par appels HTTP réels, une erreur sur une manche sur
+deux : **les douze items tirés**, les items 3 à 6 et 11 servis plusieurs fois chacun, propositions dans
+un ordre qui change. `git show b77cabeb` : quatre lignes `distracteurs:` (items 3 à 6) et l'énoncé de
+l'item 11, rien d'autre. Rendu non revu au navigateur : aucun gabarit n'a changé.
+
+### 2. Réserve 1 - les quatre distracteurs rédigés par `sofia-sm`
+
+Ma fiche ne donnait que la catégorie : la question demande un vote ou un droit, le distracteur doit en
+être un, et non une personne. Je juge chacun contre ce critère, contre l'exactitude, et contre le
+niveau CM1.
+
+| Item | Question | Distracteur neuf | Catégorie | Faux ici, et pourquoi | Tenu |
+|---|---|---|---|---|---|
+| 3 | le vote qui choisit le conseil municipal | *"un référendum"* | un vote | un référendum fait répondre à une question, il ne choisit personne ; l'énoncé dit *"choisir les membres"* | **oui** |
+| 4 | le moment où tous les électeurs choisissent le président | *"un sondage d'opinion"* | une manière de recueillir des avis | un sondage interroge une partie des gens, il n'élit personne et ne compte pas les voix de tous | **oui** |
+| 5 | le droit de vote accordé à tous | *"le droit de pétition"* | un droit | il permet de demander, pas de voter | **oui** |
+| 6 | le principe qui donne le droit de vote à tous | *"le vote obligatoire"* | un principe sur le vote | il oblige à voter, il ne donne pas le droit ; les citoyens français n'y sont pas soumis | **oui** |
+
+Les quatre sont exacts, aucun n'est aussi vrai de la situation décrite, aucun n'est absurde : ce sont
+des confusions réelles d'un élève de CM1 entre des mots de la vie civique qu'il entend. *Référendum*,
+*sondage*, *pétition* et *vote obligatoire* sont des mots du cycle 3, que l'enseignement moral et
+civique rencontre. Le plus éloigné de la catégorie est *"un sondage d'opinion"*, qui n'est pas un
+vote ; je le tiens pour juste parce que c'est la confusion la plus fréquente à cet âge entre les
+chiffres annoncés avant une élection et l'élection elle-même. Placer le référendum sur l'item 3 et non
+sur l'item 4 est juste : *"tous les électeurs du pays sont appelés à voter le même jour"* serait aussi
+vrai d'un référendum national. **Levée.**
+
+### 3. Réserve 2 - l'item 11 - levée
+
+Servi : *"Avec le suffrage universel, qui a le droit de voter ?"*, la forme que j'avais donnée, mot
+pour mot. La question ne prête plus au suffrage universel de *faire voter* : il donne un droit, et
+c'est ce qu'elle demande. Bonne réponse et distracteurs inchangés et exacts. **Levée.**
+
+### 4. Pour `camille-po`
+
+**`EMC-CM1-10` reste `couvert-valide`, sans réserve ouverte**, avec la mention exigée d'avance
+(troisième passage, section 5).
+
+### 5. Ce dont je reste la seule garde sur cette ligne
+
+Inchangé (section 8 du premier passage) : l'exactitude de chaque fait de droit électoral, et
+maintenant de chaque distracteur. Les clauses 2 et 3 de
+`LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` ont vérifié la forme des quatre
+distracteurs ; aucune ne sait qu'un sondage n'élit personne.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s48, instance A, quatrième passage, 2026-10-03.

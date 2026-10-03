@@ -11,7 +11,9 @@
 - **Conditions opposables** : `SOP-CE1-1` à `SOP-CE1-6`
   (`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, section 5.2), **`SOP-CE1-5`
   dans sa version amendée du 2026-10-01** (section 2 ci-dessous).
-- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 au second passage par `nadia-prof` (s46,
+- **Statut global** : **VALIDÉ** le 2026-10-03 au troisième passage par `nadia-prof` (s48, instance
+  A), `SOP-CE1-R1` levée sur le paquet repris. Historique : **VALIDÉ SOUS RÉSERVE** le 2026-10-02 au
+  second passage (s46,
   instance A), une réserve neuve (`SOP-CE1-R1`),
   après avoir rejoué le jar servi sur le paquet entier. Premier passage du même jour : **REFUSÉ**
   (`SOP-CE1-4` non tenue sur deux items), verdict conservé tel quel dans le bloc de validation en
@@ -20,7 +22,7 @@
   j'auditerai. **Arbitrage de `SOP-CE1-R1` du 2026-10-02 (s47)** : cinquième forme admise (le
   décalage des colonnes), obligatoire sur les items sans emprunt ; réserve ouverte jusqu'au rejeu
   d'un paquet repris (dernière section).
-- **Dernière mise à jour** : 2026-10-02.
+- **Dernière mise à jour** : 2026-10-03 (troisième passage, s48).
 
 ---
 
@@ -449,3 +451,67 @@ paquet. `SOP-CE1-R1` n'est gardée par aucun test tant que le test du paquet n'e
 reste ouverte.
 
 **Signé** : `nadia-prof`, s47, 2026-10-02.
+
+---
+
+## Troisième passage du 2026-10-03 (`nadia-prof`, s48, instance A) : **VALIDÉ**, `SOP-CE1-R1` levée
+
+**`SOP-CE1-R1` est levée. Aucune réserve ouverte sur ce paquet.** `MAT-CE1-05` reste `couvert-valide`.
+
+### 1. Ce que j'ai fait
+
+Contenu à `bc1e7835` (`sofia-sm`, casquette dev), arbre `round-two` au même commit. Jar du
+`clean verify` de `yanis-qa` à ce commit, YAML du jar vérifié identique à l'arbre, lancé sur un port
+dédié servi par mon propre processus. Aucun job de la CI lancé par moi : le rapport qualité de s48
+compte `PaquetCe1SoustractionsPoseesTest` à 16 tests, contre 13. **Neuf parties complètes de dix
+manches** par appels HTTP réels : huit avec une erreur sur une manche sur deux, une en pressant la même
+mauvaise réponse jusqu'à la révélation. **Les 18 items tirés** ; `786 - 25` et `785 - 40` joués avec
+une erreur. Rendu non revu au navigateur : aucun gabarit n'a changé.
+
+### 2. Les deux items neufs sont ceux de mon arbitrage
+
+`git show bc1e7835` : `47 - 20` et `65 - 15` sont remplacés par `786 - 25` et `785 - 40`, les deux
+premières lignes du tableau de la section 3 de mon arbitrage, avec les valeurs que j'y avais écrites :
+
+| Item | Bonne réponse | Décalage | Somme | Servi |
+|---|---|---|---|---|
+| `786 - 25` | 761 | 536 | 811 | 761, 536, 811 |
+| `785 - 40` | 745 | 385 | 825 | 745, 385, 825 |
+
+Recalculés avant de m'appuyer sur mon propre tableau : `786 - 250 = 536` et `785 - 400 = 385`, sans
+emprunt ; `786 - 25` et `785 - 40` se posent sans emprunt ; trois chiffres partout ; la somme partage
+le `1` de 761, les deux distracteurs partagent le `5` de 745 (`SOP-CE1-4`). Mon tableau était exact.
+
+### 3. La barre de levée, atteinte
+
+Ma barre (section 4 de l'arbitrage) : chaque item sans emprunt porte le décalage des colonnes, admis
+selon la section 1, et les autres conditions sont tenues sur les dix-huit items.
+
+- **Le décalage sur chaque item sans emprunt** : les deux seuls items sans emprunt sont les deux neufs,
+  et tous deux le portent. Les seize autres portent un emprunt et n'ont pas changé.
+- **`SOP-CE1-2`** : trois items à deux nombres de deux chiffres (`52 - 27`, `85 - 57`, `91 - 68`),
+  plancher de trois. **`SOP-CE1-3`** : quinze items à trois chiffres sur dix-huit.
+- **Rangs**, comptés sur les dix-huit items servis : la plus petite 5, le milieu 9, la plus grande 4.
+  Le milieu tient exactement 50 %, ce que j'avais annoncé comme une conséquence de fabrication et non
+  une barre ; le garde-fou de rang passe, la règle propre au paquet aussi (5 sur 18).
+- **Ce que je m'étais réservé de vérifier en jouant** : que le décalage soit une erreur qu'un enfant
+  de CE1 commet sur ces items-là. Joué sur `786 - 25` : l'enfant qui pose `25` sous `78` obtient 536,
+  la proposition est là ; celui qui ajoute obtient 811. La bonne réponse et le décalage sont tous deux
+  plus petits que 786 : le sens de grandeur ne suffit plus, il faut avoir aligné les unités. C'est ce
+  que `SOP-CE1-2` demandait à ces items.
+- **L'indice neuf** de ces deux items, *"Pose la soustraction en colonnes, aligne bien le second
+  nombre sous les unités, puis calcule les unités et les dizaines."*, nomme exactement l'erreur que le
+  décalage décrit. Il ne cite pas la colonne des centaines, où il n'y a rien à soustraire : il reste
+  exact.
+
+### 4. Ce qui change dans ma garde
+
+`PaquetCe1SoustractionsPoseesTest` relit désormais le marqueur `decalage`, le recalcule en
+`a - 10 × b`, vérifie sa règle d'admission, exige sa présence sur tout item sans emprunt et mord sur un
+jeu fautif commité (`ce1-soustractions-posees-fautif-decalage.yaml`) : **`SOP-CE1-R1` n'est plus de ma
+seule garde.** Reste à moi : que les cinq formes soient des erreurs qu'un enfant de CE1 commet, et pas
+seulement des valeurs que la formule autorise.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s48, instance A, troisième passage, 2026-10-03.

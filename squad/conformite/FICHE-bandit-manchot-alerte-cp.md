@@ -20,7 +20,9 @@
   second passage), deux réserves. Historique : **REFUSÉ** le 2026-10-02 (premier passage, un motif,
   item 5), refus conservé ci-dessous. Fiche ouverte par ce premier verdict : aucune fiche n'existait
   pour ce jeu.
-- **Dernière mise à jour** : 2026-10-02.
+- **Dernière mise à jour** : 2026-10-03 (troisième passage, s48, instance A) : **VALIDÉ SOUS
+  RÉSERVE**. Les deux réserves du second passage sont levées ; une réserve neuve, ouverte par ma
+  propre forme de l'indice de l'item 7. Les verdicts précédents restent écrits tels quels.
 
 ---
 
@@ -230,3 +232,63 @@ laissé passer la réserve 1, avec une CI verte.
 **Identifiants** : aucun neuf, aucun renommé.
 
 **Signé** : `nadia-prof`, s47, instance B, second passage, 2026-10-02.
+
+---
+
+## Bloc de validation pédagogique - troisième passage - nadia-prof UNIQUEMENT
+
+- **Verdict** : **VALIDÉ SOUS RÉSERVE**
+- **Date** : 2026-10-03
+- **Auditrice** : `nadia-prof`, instance A (`DEC-0106`), troisième passage.
+- **Audit joué** : **oui**, paquet entier.
+- **Contenu audité** : `cp-emc-alerte.yaml` à `4b6a6294` (`sofia-sm`, casquette dev).
+
+**Conclusion, en une phrase** : les deux réserves du second passage sont levées, chacune par la forme
+que j'avais écrite, et l'une de ces formes, la mienne, ouvre une réserve neuve que je date et que je
+m'impute.
+
+### 1. Ce que j'ai fait
+
+Arbre `round-two` à `bc1e7835`. Jar du `clean verify` de `yanis-qa` à ce commit, YAML du jar vérifié
+identique à l'arbre, lancé sur un port dédié servi par mon propre processus. Aucun job de la CI lancé
+par moi. **Huit parties complètes de dix manches** par appels HTTP réels, une erreur sur une manche sur
+deux : **les onze items tirés**, les items 7 et 11 joués plusieurs fois, avec et sans erreur.
+`git show 4b6a6294` : l'indice de l'item 7 et l'énoncé de l'item 11, rien d'autre. Rendu non revu au
+navigateur : aucun gabarit n'a changé.
+
+### 2. Les deux réserves du second passage - levées
+
+| Réserve | Barre écrite le 2026-10-02 | Servi | Tenu |
+|---|---|---|---|
+| 1. Item 7, geste ambigu | *"Un sac oublié, on n'y touche pas : on prévient un adulte."* | mot pour mot, deux-points précédé d'un blanc insécable | **oui** |
+| 2. Item 11, *"apeuré"* | *"Hugo voit dans la rue un chien perdu qui a peur."* | mot pour mot, suivi de *"Que doit-il faire ?"* : quatorze mots, deux phrases | **oui** |
+
+L'enfant ne peut plus comprendre qu'il doit prendre le sac pour l'apporter : *"on n'y touche pas"*
+écarte les deux distracteurs (*"ouvrir le sac"*, *"garder le sac"*). Je lève les deux.
+
+### 3. Réserve neuve, datée du 2026-10-03 - et c'est ma forme qui l'ouvre
+
+**Item 7, l'indice nomme la bonne réponse.** Bonne réponse servie : *"prévenir un adulte"*. Indice
+servi après une erreur : *"... on prévient un adulte."* C'est la forme que j'ai écrite moi-même comme
+exemple au second passage, et elle a ce défaut : après une seule erreur, l'enfant retrouve les mots de
+l'indice dans une des deux propositions restantes. C'est la fuite que j'ai relevée le 2026-10-02 sur
+`AUT-CP-R1` (*"il répond en reconnaissant un mot"*) ; je me l'applique. **Je ne la reproche pas au
+paquet** : `sofia-sm` a recopié ce que je demandais. **Ce qui lève** : l'indice de l'item 7 ne
+contient plus *prévenir* ni *prévient* ; la première moitié suffit, *"Un sac oublié, on n'y touche
+pas."* Non bloquante : la conduite est juste, l'indice aussi.
+
+### 4. Pour `camille-po`
+
+**`EMC-CP-14` reste `couvert-valide`.** Les deux réserves du second passage sont fermées ; une
+réserve neuve, section 3, à faire en story.
+
+### 5. Ce dont je reste la seule garde sur cette ligne
+
+Inchangé (section 8 du premier passage), plus un point que ce passage démontre : **qu'un indice ne
+nomme pas sa propre réponse**. Aucun test ne le lit, et cette fois c'est la forme de l'auditrice qui
+l'a introduit.
+
+**Identifiants** : aucun neuf, aucun renommé. La réserve de la section 3 suit la convention de cette
+fiche, qui n'en a jamais numéroté.
+
+**Signé** : `nadia-prof`, s48, instance A, troisième passage, 2026-10-03.
