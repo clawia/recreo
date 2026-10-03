@@ -3879,6 +3879,125 @@ alloue par la fiche.
   dedie alloue par la fiche. A router par une `DEC` d'ouverture de sprint.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
 
+### Story de correction differee, groupee par paquet - `PRO-CE1-R1`, `PRO-CE1-R2` : deux defauts de "Les problemes a etapes"
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-problemes-etapes-ce1` a s48 et prononce **VALIDE
+SOUS RESERVE** sur `MAT-CE1-08`, premier passage
+(`squad/conformite/FICHE-bandit-manchot-problemes-etapes-ce1.md`, section 5). Deux reserves non
+bloquantes, distinctes mais sur le meme paquet et le meme audit : `camille-po` les groupe en une
+seule story plutot que deux.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Les problemes a etapes", je veux que chaque
+  distracteur de la famille (c) soit une erreur que je pourrais vraiment faire en lisant l'enonce,
+  et que l'item sur le magasin scolaire ne porte plus de vente, afin que le jeu m'apprenne
+  vraiment a resoudre le probleme plutot qu'a ecarter une erreur impossible ou un contexte qui
+  n'est pas le sien.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs",
+  `MAT-CE1-08` (`squad/programme/mathematiques/competences-ce1.md`) - ligne deja `couvert-valide`
+  depuis s48, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`PRO-CE1-R1`** (items 9, 10, 11) : etant donne ces trois items, quand on les relit, alors
+    chacun declare deux autres familles de distracteur que (a) et (b), et non plus une famille (c)
+    qui soustrait la seconde arrivee de la premiere ("de plus") ; et etant donne l'ensemble du
+    paquet corrige, quand on recompte le rang de la bonne reponse sur les vingt-quatre items, alors
+    la plus petite vaut 7, le milieu 8, la plus grande reste 9 - les bornes que `nadia-prof` a
+    verifiees d'avance. Les indices des items 9 et 11, qui emploient *arrivee* comme nom, sont
+    reformules sur le modele de l'item 10 (*"les deux livraisons de pommes"*).
+  - **`PRO-CE1-R2`** (item 8) : etant donne l'item 8, quand on le relit, alors il ne porte plus ni
+    magasin ni vente, par exemple *"La reserve a 2 lots de 10 gommes. Elle en donne 9."*
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`PRO-CE1-1` a `PRO-CE1-7`), alors elles restent toutes tenues : cette story touche quatre
+    items sur vingt-quatre (8, 9, 10, 11), sans toucher au resultat d'aucun item.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les quatre items corriges et confirme que chaque distracteur de
+    famille (c) reste une erreur plausible pour un enfant de CE1, et que l'item 8 ne sert plus
+    aucun achat ni aucune vente.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserves ouvertes par `nadia-prof` le
+  2026-10-03 (`squad/conformite/FICHE-bandit-manchot-problemes-etapes-ce1.md`, section 5),
+  identifiants deja alloues dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC`
+  d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee, groupee par paquet - `ANG-CP-R3`, et l'item non leve de `ANG-CP-R1` et de `ANG-CP-R2` : trois defauts de "Le monde anglophone"
+
+**Contexte.** `nadia-prof` reaudite `bandit-manchot-culture-anglophone-cp` a s48, second passage,
+et prononce **VALIDE SOUS RESERVE** sur `LVE-CP-06`
+(`squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md`, second passage, sections 2 a
+4). `ANG-CP-R1` et `ANG-CP-R2` (ouvertes a s47,
+`docs/backlog/backlog.md`, story "`ANG-CP-R1`, `ANG-CP-R2`") sont chacune levees sur un item et
+restent ouvertes sur l'autre ; une reserve neuve, `ANG-CP-R3`, s'ajoute sur un troisieme item du
+meme paquet. Trois defauts sur le meme paquet et le meme audit : `camille-po` les groupe en une
+seule story plutot que trois.
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Le monde anglophone", je veux que l'item sur le
+  salut au drapeau se reponde en sachant un fait des Etats-Unis et non par un geste a moitie vrai,
+  que l'indice de la fete du 5 novembre m'aide vraiment a trouver le pays, et que l'item sur la
+  statue ne se reponde plus en reconnaissant le seul mot "statue", afin que le jeu m'apprenne
+  vraiment une decouverte culturelle plutot qu'a deviner par un mot repete ou un indice trop
+  difficile.
+- **Competence programme visee** : langues vivantes (anglais), CP (cycle 2), domaine "Decouverte
+  culturelle", `LVE-CP-06` (`squad/programme/langues-vivantes/competences-cp.md`) - ligne deja
+  `couvert-valide` depuis s47, non rouverte par cette story. Mention de couverture partielle
+  inchangee : "decouverte culturelle seule, en francais ; aucune competence linguistique n'est
+  servie".
+- **Criteres d'acceptation** :
+  - **`ANG-CP-R1`, item 12** : etant donne le distracteur *"ils saluent le drapeau, debout et en
+    silence"*, quand on le relit, alors il est remplace par un geste face au drapeau qui ne
+    partage aucun trait avec le salut au drapeau des ecoles americaines (ni debout, ni salut, ni
+    main sur le coeur), par exemple *"ils dessinent le drapeau sur leur cahier"*.
+  - **`ANG-CP-R2`, item 2** : etant donne l'indice de l'item 2, quand on le relit, alors il est
+    court, en mots de CP, et mene au Royaume-Uni, par exemple *"Ces feux d'artifice ont lieu dans
+    le pays de Londres."*
+  - **`ANG-CP-R3`, item 10** : etant donne les trois propositions de l'item 10, quand on les
+    relit, alors le mot "statue" figure dans les trois ou dans aucune, par exemple *"la statue du
+    Christ"* et *"la statue de la Petite Sirene"*.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`BIA-1`, `BIA-2`, Q5, `FER-1` a `FER-3`, `LON-1`, `LON-2`, `ANG-CP-R1` deja levee sur l'item
+    10, `ANG-CP-R2` deja levee sur l'item 1), alors elles restent toutes tenues : cette story
+    touche trois items sur douze (2, 10, 12).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les items 2, 10 et 12 corriges et confirme qu'aucun des trois ne
+    se repond plus par un mot reconnu, un geste a moitie vrai ou un indice qui ne mene pas au
+    pays.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; `ANG-CP-R1` et `ANG-CP-R2` maintenues et
+  `ANG-CP-R3` ouverte par `nadia-prof` le 2026-10-03
+  (`squad/conformite/FICHE-bandit-manchot-culture-anglophone-cp.md`, second passage, sections 2 a
+  4), identifiant neuf deja alloue dans `squad/decisions/REGISTRE-identifiants.md`, les deux
+  identifiants existants inchanges. A router par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
+### Story de correction differee - reserve sans identifiant d'"Donner l'alerte" (`EMC-CP-14`) : l'indice de l'item 7 nomme la bonne reponse
+
+**Contexte.** `nadia-prof` reaudite `bandit-manchot-alerte-cp` a s48, troisieme passage, et
+prononce **VALIDE SOUS RESERVE** sur `EMC-CP-14`
+(`squad/conformite/FICHE-bandit-manchot-alerte-cp.md`, troisieme passage, section 3). La reserve
+est ouverte par sa propre forme d'indice, ecrite au second passage et reprise mot pour mot par le
+developpeur ; elle ne porte pas d'identifiant dedie, comme les autres reserves de cette fiche.
+
+- **Besoin** : en tant qu'eleve de CP qui joue a "Donner l'alerte" et se trompe sur l'item du sac
+  oublie, je veux que l'indice qui m'aide ne me redonne pas directement les mots de la bonne
+  reponse, afin de la retrouver en comprenant la situation plutot qu'en reconnaissant un mot deja
+  lu dans l'indice.
+- **Competence programme visee** : enseignement moral et civique, CP (cycle 2), domaine
+  "Construire une culture civique", `EMC-CP-14`
+  (`squad/programme/enseignement-moral-et-civique/competences-cp.md`) - ligne deja `couvert-valide`
+  depuis s47, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - Etant donne l'indice de l'item 7 servi apres une premiere erreur, quand on le relit, alors il
+    ne contient plus "previenir" ni "previent", par exemple *"Un sac oublie, on n'y touche pas."*
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`EMC-1`, `EMC-2`, `EMC-5`, `EMC-6`, `EMC-7`, `FER-1` a `FER-3`), alors elles restent toutes
+    tenues : cette story ne touche que l'indice d'un item sur onze (7), ni sa bonne reponse ni ses
+    distracteurs.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue l'item 7 corrige et confirme que l'indice n'ecarte plus les deux
+    distracteurs par la seule reconnaissance d'un mot deja lu.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-03 (`squad/conformite/FICHE-bandit-manchot-alerte-cp.md`, troisieme passage, section 3),
+  sans identifiant dedie, convention deja suivie par les autres reserves de cette fiche. A router
+  par une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
