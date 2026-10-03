@@ -242,6 +242,12 @@ a fixer la charge du sprint a la place de `camille-po`.
 demande a `camille-po`, via `sofia-sm`, de l'inscrire au perimetre de s49. Je rendrai l'`ADR` et sa
 regle a l'ouverture du sprint qui l'inscrit.
 
+**Correction du 2026-10-03 (`theo-archi`, s49).** Cette section est fausse sur un point : l'`ADR` et
+sa regle existaient deja. `ADR-0082` (Accepte, 2026-09-05, commit `4f594d64`) repond aux quatre
+questions de `DEC-0077` section 4, et la regle proposee ci-dessus est
+`ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest`. Detail et reste a faire :
+`squad/rapports/avis-faisabilite-s49-quatre-stories.md`, section 7.
+
 ## 12. Questions et routages, via `sofia-sm`
 
 | Code | Point | A qui | Bloquant ? |
