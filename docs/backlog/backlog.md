@@ -18356,4 +18356,108 @@ propre condition `SOP-CE1-5` - pas une ligne de contenu a coder. `DEC-0104` sect
 - **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
   `sofia-sm` ; `nadia-prof`, instance B, pour le Done pedagogique.
 
+## Sprint 49 - `FRA-CE1-01`, premiere ligne construite du vivier francais CE1, trois corrections
+## differees de s48, chantier de sourcing du corpus d'oeuvres du domaine public inscrit
+
+Objectif et perimetre formalises par `DEC-0107`. Instance unique de `nadia-prof` (Done pedagogique) :
+
+| Story | Tarif | Nature |
+|---|---|---|
+| "Story de correction differee, groupee par paquet - `PRO-CE1-R1`, `PRO-CE1-R2`" (section "Backlog - sprints suivants") | 0,5 | correction, paquet deja `couvert-valide` |
+| "Story de correction differee, groupee par paquet - `ANG-CP-R3`, et l'item non leve de `ANG-CP-R1` et de `ANG-CP-R2`" (section "Backlog - sprints suivants") | 0,5 | correction, paquet deja `couvert-valide` |
+| "Story de correction differee - reserve sans identifiant d'\"Donner l'alerte\" (`EMC-CP-14`) : l'indice de l'item 7 nomme la bonne reponse" (section "Backlog - sprints suivants") | 0,5 | correction, paquet deja `couvert-valide` |
+| `S49-FRA-GRAPHEMES` (ci-dessous) | 1,0 | ligne neuve, `FRA-CE1-01` |
+| **Total** | **2,5 / 5,0** | marge 2,5 |
+
+Hors chiffrage de cette borne : le chantier de sourcing du corpus d'oeuvres du domaine public
+(`DEC-0077`, `DEC-0105`) entre au perimetre de s49 sur demande explicite de `theo-archi`
+(`squad/rapports/avis-faisabilite-s48-sept-stories.md`, section 11). Il ouvre par l'`ADR` et sa
+regle ArchUnit, que `theo-archi` rend dans le meme mouvement que ce document. Aucun Done
+pedagogique n'est attendu sur ce chantier a s49, et aucun tarif en lots ne lui est applique (motif,
+`DEC-0107` section 4).
+
+### S49-FRA-GRAPHEMES - Lire des mots a graphemes complexes et les associer a leur son (`FRA-CE1-01`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux reconnaitre, parmi trois mots proposes, celui qui se
+  lit avec le meme son qu'un mot que je connais deja, meme quand ce son s'ecrit avec des lettres que
+  j'ai deja vues ailleurs pour un autre son, afin de ne plus me tromper devant un mot comme "plein"
+  ou "maison".
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Lecture et comprehension de
+  l'ecrit" - `squad/programme/francais/competences-ce1.md`, `FRA-CE1-01` : "Lire des mots comportant
+  des graphemes complexes (`ain`/`ein`, `eil`/`eille`, `ill`, `gn`, `oin`, `ien`...) et les associer
+  au son qu'ils transcrivent." Ligne `non couvert`, `MATRICE-couverture.md`, section "Francais -
+  CE1 (cycle 2)".
+- **Arbitrage pedagogique prealable cite integralement depuis sa source**
+  (`squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 3.1) : verdict **ACCEPTE SOUS
+  CONDITIONS `GRC-CE1-1` a `GRC-CE1-3`. Plafond : `couvert-valide`.**
+
+  > `GRC-CE1-1` - perimetre. Le grapheme cible de chaque item appartient a l'une des six familles de
+  > la ligne : `ain`/`ein`, `eil`/`eille`, `ill`, `gn`, `oin`, `ien`. Chaque famille est cible d'au
+  > moins un dixieme des items. Les graphemes servis au CP (`an`, `en`, `on`, `in`, `ou`, `oi`, `ch`)
+  > ne sont jamais la cible ; ils peuvent figurer dans un distracteur.
+  >
+  > `GRC-CE1-2` - une seule proposition porte le son. Exactement une proposition contient le son du
+  > mot de reference. Jamais deux propositions qui le portent sous deux graphies (*pain* et *plein*
+  > ensemble). Sont exclus les mots ou le grapheme n'a pas sa valeur ordinaire : `ill` lu comme dans
+  > *ville*, *mille*, *village*, *tranquille* ; la terminaison verbale `-ient` (*ils etudient*).
+  >
+  > `GRC-CE1-3` - distracteurs. Trois familles : (a) les memes lettres suivies d'une voyelle qui
+  > change la lecture (*plaine*, *reine*, *chienne*) ; (b) un grapheme visuellement voisin (*ai* dans
+  > *maison* pour `ain`, *oi* dans *roi* pour `oin`) ; (c) l'inversion de lettres (*lion* face a
+  > *loin*, *chien* face a *plein*). La famille (a) figure dans au moins un tiers des items.
+
+  Sept conditions transverses s'ajoutent, valables pour toute ligne de francais CE1 (meme source,
+  section 2) : `TRV-CE1-1` (descripteur `niveau: "CE1"`, une seule ligne `FRA-CE1-nn` par item, aucun
+  champ a voix haute) ; `TRV-CE1-2` (trois propositions, deux a deux distinctes, une seule
+  acceptable, chaque distracteur nomme sa famille a cote de l'item) ; `TRV-CE1-3` (un son se designe
+  toujours par un mot de reference entre guillemets, jamais par une notation phonetique ni un
+  grapheme isole, aucun item ne depend d'une prononciation qui varie selon les regions) ;
+  `TRV-CE1-4` (les mots de grammaire exclus de ce que l'enfant lit) ; `TRV-CE1-5` (l'indice donne une
+  methode ou dit ou regarder, jamais la reponse, douze mots au plus, pas identique sur tout le
+  paquet) ; `TRV-CE1-6` (prenoms equilibres en genre et varies, aucun role ni activite distribues par
+  genre si le paquet nomme des personnages) ; `TRV-CE1-7` (au moins vingt items par paquet). Les
+  bornes de lisibilite s'appliquent telles quelles (`ARBITRAGE-s36-longueur-d-enonce-au-ce1.md`,
+  section 1.1 de l'arbitrage de s48) : `LON-CE1-1` (un enonce compte au plus vingt mots), `LON-CE1-2`
+  (au plus trois phrases, la derniere etant la question), `LON-CE1-5` (une proposition compte au
+  plus six mots et une seule phrase).
+
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il pose la question sous la forme "Quel mot
+    contient le meme son que « [mot de reference] » ?" ou une forme equivalente, avec trois
+    propositions (`TRV-CE1-2`).
+  - Etant donne le grapheme cible d'un item, quand on le verifie, alors il appartient a l'une des
+    six familles `ain`/`ein`, `eil`/`eille`, `ill`, `gn`, `oin`, `ien`, et jamais a un grapheme deja
+    servi au CP (`an`, `en`, `on`, `in`, `ou`, `oi`, `ch`) (`GRC-CE1-1`).
+  - Etant donne le paquet livre, quand on classe ses items par famille de grapheme cible, alors
+    chacune des six familles est cible d'au moins un dixieme des items (`GRC-CE1-1`).
+  - Etant donne les trois propositions d'un item, quand on les relit, alors exactement une porte le
+    son du mot de reference, jamais deux propositions sous deux graphies differentes, et aucun mot
+    ou le grapheme n'a pas sa valeur ordinaire (*ville*, *mille*, *village*, *tranquille*, la
+    terminaison `-ient`) n'est employe comme porteur du son (`GRC-CE1-2`).
+  - Etant donne les distracteurs d'un item, quand on les verifie, alors chacun appartient a l'une
+    des trois familles nommees ((a) memes lettres suivies d'une voyelle qui change la lecture ; (b)
+    grapheme visuellement voisin ; (c) inversion de lettres), la famille est declaree a cote de
+    l'item, et la famille (a) figure dans au moins un tiers des items du paquet (`GRC-CE1-3`).
+  - Etant donne un item, quand on relit le son qu'il cible, alors il est designe par un mot de
+    reference entre guillemets que l'enfant lit, jamais par une notation phonetique ou un grapheme
+    isole, et aucun item ne depend d'une prononciation qui varie selon les regions (`TRV-CE1-3`).
+  - Etant donne l'enonce d'un item, quand on le relit, alors il compte au plus vingt mots et au plus
+    trois phrases, la derniere etant la question (`LON-CE1-1`, `LON-CE1-2`) ; etant donne une
+    proposition, quand on la relit, alors elle compte au plus six mots et une seule phrase
+    (`LON-CE1-5`).
+  - Etant donne le paquet livre, quand on le compte, alors il porte au moins vingt items
+    (`TRV-CE1-7`).
+  - Etant donne chaque item du paquet, quand il declare sa ligne de referentiel, alors il porte
+    `FRA-CE1-01` et uniquement elle, et son descripteur porte `niveau: "CE1"` (`TRV-CE1-1`).
+  - Etant donne le Done pedagogique de ce paquet, quand `nadia-prof` le joue, alors elle confirme
+    que `GRC-CE1-1` a `GRC-CE1-3`, les sept conditions transverses et les trois bornes de lisibilite
+    sont tenues, et que la ligne ferme sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne sert jamais un grapheme deja cible au CP (`an`, `en`,
+  `on`, `in`, `ou`, `oi`, `ch`) ; elle ne designe jamais un son par une notation phonetique ou un
+  grapheme isole (`TRV-CE1-3`) ; elle ne fixe aucun contenu factuel precis (quels mots retenus) -
+  reste a l'auteur du paquet puis a l'audit de `nadia-prof`.
+- **Lien decision** : `DEC-0107` (section 3).
+- **Agent pressenti** : `theo-archi` pour l'avis de faisabilite ; developpement a affecter par
+  `sofia-sm` ; `nadia-prof` pour le Done pedagogique.
+
 

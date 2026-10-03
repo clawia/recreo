@@ -123,6 +123,15 @@ cloture de s48, en reprenant les bornes de lisibilite deja posees pour le CE1
 (`ARBITRAGE-s36-longueur-d-enonce-au-ce1.md`, a reverifier pour ce niveau) et en statuant sur la
 borne de longueur du texte support que `DEC-0104` section 1.1 signale non posee.
 
+**Correction factuelle du 2026-10-03** (`camille-po`, routee par `nadia-prof`,
+`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 0.1) : la phrase ci-dessus etait exacte au
+moment ou elle a ete ecrite, le 2026-10-03 au matin. `nadia-prof` a pose cette borne le jour meme
+(`LON-CE1-3`, au plus 30 mots ; `LON-CE1-4`, au plus quatre phrases, aucune de plus de 12 mots -
+`ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`), avant de rendre son instruction des 26 lignes
+du referentiel. Cette section ne decrit donc plus une borne a poser, mais une borne deja posee
+qu'elle a reverifiee pour chaque ligne qui porte un `texteSupport` (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`,
+section 1.2).
+
 ## 5. Ce que je decide
 
 1. Le perimetre de s48 est gele : `MAT-CE1-08`, `TAB-CE1-R1`, `AUT-CP-R1`,
