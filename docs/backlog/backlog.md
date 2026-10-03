@@ -3521,6 +3521,61 @@ paquet.
   `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de sprint.
 - **Agent pressenti** : `nadia-prof` elle-meme, pour l'arbitrage ; aucun developpement n'est
   affecte tant que l'arbitrage n'est pas rendu.
+- **Mise a jour du 2026-10-03 (`camille-po`, s48)** : l'arbitrage est rendu (meme fiche, section
+  "Arbitrage de `SOP-CE1-R1` du 2026-10-02 (`nadia-prof`, s47)") - cinquieme forme admise, le
+  decalage des colonnes, obligatoire sur tout item sans emprunt. Cette story reste l'historique de
+  la question posee ; le travail de reprise qui en decoule est ecrit ci-dessous, story
+  `SOP-CE1-R1` - reprise.
+
+### Story de correction differee - `SOP-CE1-R1` : les deux items sans emprunt de "Les soustractions posees" portent la cinquieme forme de distracteur (le decalage des colonnes)
+
+**Contexte.** `nadia-prof` arbitre `SOP-CE1-R1` le 2026-10-02 (s47)
+(`squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`, section "Arbitrage de
+`SOP-CE1-R1`") : elle admet une cinquieme forme de distracteur sur `SOP-CE1-5`, le decalage des
+colonnes (l'enfant pose le second terme aligne a gauche au lieu de l'aligner sur les unites, valeur
+`a - 10 x b`), et la rend **obligatoire sur tout item sans emprunt**. Le paquet
+`ce1-soustractions-posees` ne porte aujourd'hui que la somme sur ses deux items sans emprunt
+(`47 - 20`, `65 - 15`) - la forme que l'arbitrage juge insuffisante, puisqu'une somme depasse
+toujours le premier terme et se reconnait sans poser l'operation. L'arbitrage borne lui-meme la
+reprise a ces deux items (section 4, "Ce qui leve `SOP-CE1-R1`") : les seize autres items du paquet
+ne sont pas repris.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Les soustractions posees" sur un item sans
+  emprunt, je veux que le distracteur propose soit une erreur que je pourrais vraiment faire en
+  posant l'operation (un decalage des colonnes), et non plus un nombre toujours plus grand que
+  l'operation de depart, afin que la manche m'apprenne a verifier l'alignement des chiffres plutot
+  que de deviner par le seul sens de grandeur.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs",
+  `MAT-CE1-05` (`squad/programme/mathematiques/competences-ce1.md`) - ligne deja `couvert-valide`
+  depuis s46 (Done pedagogique **VALIDE SOUS RESERVE**, reserve `SOP-CE1-R1`) ; cette story leve la
+  reserve, elle ne rouvre pas la ligne.
+- **Criteres d'acceptation** :
+  - Etant donne les deux items sans emprunt du paquet (`47 - 20`, `65 - 15`), quand on les
+    remplace, alors ce sont deux items sans emprunt dont le second terme a un chiffre de moins que
+    le premier (un second terme a deux chiffres pour un premier a trois chiffres), et dont un
+    distracteur porte le decalage des colonnes, de valeur `a - 10 x b`, admis selon la regle de
+    l'arbitrage : positif, de meme nombre de chiffres que la bonne reponse, et se calculant sans
+    emprunt.
+  - Etant donne le paquet corrige, quand on relit `SOP-CE1-5`, alors son texte cite les cinq
+    formes et seulement elles - l'emprunt oublie, l'emprunt non reporte, la somme, l'emprunt
+    reporte deux fois, le decalage des colonnes - et precise que le decalage est obligatoire sur
+    tout item sans emprunt.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`SOP-CE1-2`, `SOP-CE1-3`, `SOP-CE1-4`, `SOP-CE1-6`), alors elles restent toutes tenues sur les
+    dix-huit items : cette story touche deux items sur dix-huit, ni les seize autres ni leurs
+    distracteurs.
+  - Etant donne les deux items neufs, quand on relit `SOP-CE1-4` sur chacun, alors la bonne
+    reponse et chaque distracteur partagent le meme nombre de chiffres, et au moins un distracteur
+    partage le chiffre des unites de la bonne reponse.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue le paquet entier et confirme, comme elle l'ecrit dans son
+    arbitrage, que le decalage des colonnes est une erreur qu'un enfant de CE1 commet reellement
+    sur ces deux items, et pas seulement un nombre plus petit que la bonne reponse.
+- **Lien decision** : arbitrage de `nadia-prof` du 2026-10-02
+  (`squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md`, section "Arbitrage de
+  `SOP-CE1-R1`", section 4 "Ce qui leve `SOP-CE1-R1`"), identifiant deja alloue dans
+  `squad/decisions/REGISTRE-identifiants.md`. Perimetre et tarif geles par `DEC-0106`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, s48.
 
 ### Story de correction differee, groupee par paquet - `EMC-CM1-R5`, `EMC-CM1-R6` : deux defauts de "Ressentir et agir"
 
