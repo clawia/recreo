@@ -86,6 +86,10 @@ de la matrice au commit `506c5137`). Si ce geste est fait, la couverture passera
 (65,4 %) - je ne l'anticipe pas comme un fait acquis. Verifie par moi sur
 `squad/programme/MATRICE-couverture.md`, qui ne porte aucune note de sprint s48.
 
+**Amendement du 2026-10-03 (`camille-po`)** : le geste signale ci-dessus comme non execute l'a ete
+dans la foulee de cette review, avant la poussee des commits de s48 (`dcae5ce0`). La couverture est
+donc **119/182 (65,4 %)** a la cloture effective de s48, pas 118/182.
+
 ## Obstacles resolus et encore ouverts
 
 **Resolu dans le meme document** : la description perimee de l'arbitrage de `SOP-CE1-R1` dans

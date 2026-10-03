@@ -152,7 +152,7 @@ lui-meme.
 | Chronologie des commits : les sept developpements precedent `DEC-0106` et l'avis de faisabilite de `theo-archi` (section 4) | Process / sequencement du sprint | moi-meme, `camille-po` | **Signale, non tranche** - traite en lecon de process dans `retro.md`, section 1 |
 | Aucune affectation nominative finale ecrite dans `planning.md` malgre un sprint entierement livre et audite (section 4) | Process / tenue de la ceremonie de planning | moi-meme | **Ouvert** - ne peut pas etre corrige par un ajout a `planning.md` (regle : jamais a la suite d'un fichier existant) ; a traiter comme lecon de process, `retro.md` section 1 |
 | `squad/programme/MATRICE-couverture.md` ne reflete pas encore le Done pedagogique de `MAT-CE1-08` (reste `non couvert`), et ne porte aucune note de cloture de s48 | Produit / tenue de la matrice | `camille-po` | **Ouvert** - geste de cloture de `camille-po` non execute a ce jour, a la difference du patron de s47 (`506c5137`) |
-| Six reserves fermees, quatre restent ouvertes : `PRO-CE1-R1`, `PRO-CE1-R2`, `ANG-CP-R3` (neuves), l'item non leve de `ANG-CP-R1` (item 12) et de `ANG-CP-R2` (item 2), la reserve sans identifiant sur l'indice de l'item 7 d'`EMC-CP-14` | Pedagogie / correction differee de contenu, non bloquante | `camille-po` (stories a ecrire), developpeur a affecter par `sofia-sm` | **Ouvert** - aucune story n'existe a ce jour dans `docs/backlog/backlog.md` pour ces quatre reserves |
+| Six reserves fermees, quatre restent ouvertes : `PRO-CE1-R1`, `PRO-CE1-R2`, `ANG-CP-R3` (neuves), l'item non leve de `ANG-CP-R1` (item 12) et de `ANG-CP-R2` (item 2), la reserve sans identifiant sur l'indice de l'item 7 d'`EMC-CP-14` | Pedagogie / correction differee de contenu, non bloquante | `camille-po` (stories a ecrire), developpeur a affecter par `sofia-sm` | **Ferme (amendement du 2026-10-03, `camille-po`)** - trois stories ecrites dans `docs/backlog/backlog.md` (`dcae5ce0`), groupees par paquet ; developpeur encore a affecter |
 | `EMC-CM1-10` touche en realite cinq items sur douze et non les trois que `DEC-0106` section 2 decrivait (Q4 de l'avis de faisabilite) | Produit / precision d'un chiffrage | `camille-po` | **Signale, non bloquant** - tarif confirme inchange par l'avis lui-meme |
 | Le chantier de sourcing du corpus d'oeuvres du domaine public (`DEC-0077`), en souffrance depuis s29, refuse explicitement pour s48 par `theo-archi` | Technique / architecture, charge | `theo-archi` (refus ecrit), `camille-po` (inscription a s49) | **Ouvert, hors perimetre de s48** - `theo-archi` demande son inscription explicite au perimetre de s49 |
 
@@ -164,6 +164,10 @@ son Done pedagogique **VALIDE SOUS RESERVE** prononce par `nadia-prof` (section 
 sprint s48 n'y a ete ajoutee. Cette review ne deplace aucun statut - ce n'est pas son role, c'est
 celui de `camille-po`, qui ne l'a pas encore execute a ce jour (section 7). Si et quand ce geste est
 fait, la couverture passerait a 119/182 (65,4 %) : je ne l'anticipe pas comme un fait acquis.
+
+**Amendement du 2026-10-03 (`camille-po`)** : le geste est execute dans la foulee de cette review,
+avant la poussee des commits de s48 (`dcae5ce0`). La couverture a la cloture effective de s48 est
+**119/182 (65,4 %)**.
 
 ## 9. Ce que cette review ne fait pas
 
