@@ -596,6 +596,20 @@ pendant toute leur duree de vie en production, decouvert seulement en regularisa
 fin ; et **`planning.md` nomme ce mode en clair** au lieu de fabriquer, avec le recul, un objectif
 gele qui n'a jamais existe.
 
+**Une fois la `DEC` d'ouverture et l'avis de faisabilite ecrits, Sofia reconcilie le planning qui
+les precedait avec eux avant la cloture du sprint - pas en l'editant, mais en le constatant dans
+`review.md`** (amendement s48, retro de s48). A s48, les sept developpements du sprint ont tous ete
+commites avant `DEC-0106` (qui gele le perimetre) et avant l'avis de faisabilite de `theo-archi` qui
+en confirme la faisabilite technique - sans consequence reelle ce sprint, parce que six des sept
+stories citaient deja, mot pour mot, la forme pedagogique attendue. `planning.md`, commite en
+dernier, portait pourtant encore une phrase conditionnant l'affectation nominative a l'existence
+future d'un avis de faisabilite deja ecrit une minute plus tot : aucun document du depot n'a fini
+par porter cette affectation. La regle ne consiste pas a interdire un developpement engage avant sa
+propre `DEC` - cela reste parfois legitime, section ci-dessus - mais a ce que la ceremonie de cloture
+dise explicitement, dans `review.md`, si et comment le planning a ete rattrape par les decisions et
+avis qui devaient le suivre, plutot que de laisser une phrase du planning parler d'un futur
+entre-temps devenu le passe sans que personne ne le signale.
+
 **2. Developpement.** Marc, Lea et Sofia codent, tests dans le meme commit. Yanis traduit les
 criteres d'acceptation en tests et fait tourner la suite. Tout obstacle va a Sofia, qui classe,
 route, attend la decision **ecrite**, debloque.
