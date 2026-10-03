@@ -514,12 +514,29 @@ Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 
 Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 
+## Sprint s49
+
+| Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
+|---|---|---|---:|---:|---:|---:|
+| `camille-po` | claude-sonnet-5 | 202 | 404 | 95 010 | 945 743 | 20 087 775 |
+| `sofia-sm` | claude-sonnet-5 | 96 | 192 | 64 251 | 1 096 157 | 14 751 812 |
+| `theo-archi` | claude-opus-5-5 | 132 | 264 | 57 507 | 433 049 | 18 556 218 |
+| `marc-dev` | claude-sonnet-5 | 317 | 634 | 169 523 | 2 180 756 | 62 033 656 |
+| `lea-dev` | claude-sonnet-5 | 144 | 288 | 46 837 | 755 358 | 16 783 712 |
+| `yanis-qa` | claude-sonnet-5 | 77 | 154 | 19 947 | 279 424 | 4 228 224 |
+| `relecteur-pedagogique` | claude-sonnet-5 | 47 | 94 | 6 288 | 225 144 | 2 661 391 |
+| `nadia-prof` | claude-opus-5-5 | 201 | 402 | 104 943 | 757 152 | 16 824 202 |
+| orchestrateur (fil principal) | claude-sonnet-5 | 69 | 138 | 75 919 | 108 247 | 18 795 296 |
+| **Total** | | **1285** | **2 570** | **640 225** | **6 781 030** | **174 722 286** |
+
+Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
+
 ## hors sprint
 
 | Agent | Modele | Tours | Input | Output | Cache cree | Cache lu |
 |---|---|---|---:|---:|---:|---:|
-| `camille-po` | claude-opus-5  claude-sonnet-5 | 4896 | 9 792 | 2 825 580 | 25 039 027 | 710 815 986 |
-| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 4913 | 9 826 | 1 877 143 | 24 430 009 | 848 788 454 |
+| `camille-po` | claude-opus-5  claude-sonnet-5 | 4959 | 9 918 | 2 845 386 | 25 318 540 | 714 601 837 |
+| `sofia-sm` | claude-opus-5  claude-sonnet-5 | 5013 | 10 026 | 1 912 171 | 25 456 635 | 859 827 347 |
 | `theo-archi` | claude-opus-5  claude-opus-5-5 | 4884 | 9 768 | 2 540 570 | 18 899 367 | 701 697 915 |
 | `marc-dev` | claude-sonnet-5 | 780 | 1 560 | 364 250 | 3 737 881 | 116 705 440 |
 | `lea-dev` | claude-sonnet-5 | 1615 | 3 230 | 621 830 | 4 692 267 | 617 471 895 |
@@ -529,6 +546,6 @@ Aucune invocation mesuree sur cette fenetre pour : `ines-design`.
 | `ines-design` | claude-opus-5  claude-sonnet-5 | 1155 | 2 310 | 679 451 | 4 912 250 | 211 738 125 |
 | `Explore` | claude-opus-5 | 186 | 372 | 61 513 | 878 596 | 8 105 086 |
 | `fork` | claude-sonnet-5 | 373 | 746 | 140 282 | 3 706 006 | 149 497 313 |
-| `general-purpose` | claude-opus-5  claude-sonnet-5 | 389 | 778 | 126 406 | 2 067 833 | 36 263 441 |
-| orchestrateur (fil principal) | claude-opus-5  claude-sonnet-5 | 2807 | 5 614 | 3 999 952 | 22 648 887 | 615 133 334 |
-| **Total** | | **26557** | **53 114** | **16 085 706** | **135 581 871** | **4 659 541 057** |
+| `general-purpose` | claude-opus-5  claude-sonnet-5 | 421 | 842 | 131 563 | 2 435 542 | 38 582 881 |
+| orchestrateur (fil principal) | claude-opus-5  claude-sonnet-5 | 2842 | 5 684 | 4 026 786 | 22 683 949 | 623 717 542 |
+| **Total** | | **26787** | **53 574** | **16 172 531** | **137 290 781** | **4 685 269 449** |
