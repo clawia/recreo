@@ -39,23 +39,32 @@ dette intentionnelle.** Motif :
 - **Ce n'est pas un rouge silencieux.** `ADR-0082` section 7 a arme cette alarme a l'avance, dans sa
   propre decision, pour exactement ce moment : *"le rouge de ce garde-fou lui-meme, le jour ou un
   paquet declare une reproduction : il ne resoudra pas"* - les vingt-cinq fichiers reels entrent au
-  registre et au repertoire `static/oeuvres/` avant que l'amendement d'`ADR-0073` (deux taches `T2`,
-  `T3` restant dues selon la meme section) n'etende la clause *"aucune ne dort"* aux deux repertoires
-  et avant qu'aucun paquet ne declare un identifiant `oeuvre-`. L'echec est le comportement concu, pas
-  une regression trouvee apres coup.
+  registre et au repertoire `static/oeuvres/` et aucun paquet ne declare encore un identifiant
+  `oeuvre-`. L'echec est le comportement concu, pas une regression trouvee apres coup.
+
+  **Note du 2026-10-03 (`camille-po`), correction factuelle signalee par la coordination.** Cette
+  section et la section 7 point 1 ecrivaient que l'amendement d'`ADR-0073` (`T2`, `T3`) restait du et
+  devenait "la priorite de developpement de s50". **C'est faux, verifie au disque** : `90c36ab0`
+  (`[SOF]`, s49, deja pousse sur `round-two`) a deja fait T2 (`LIllustrationDeContenuResoutEtAucuneNeDortTest`
+  resout un identifiant `oeuvre-` dans `static/oeuvres/` en plus de `static/illustrations/`, clause
+  "aucune ne dort" sur les deux repertoires) et T3 (`fragments/manche.html` porte la seconde branche
+  d'image, `RessourcesTiercesTest` a sa seconde exemption etroite) ; `8f6ee008` (`[THEO]`) a fait T4
+  (cliquet releve sur 25 reproductions, 620 639 octets, materiau reel). **T2 a T4 sont donc clos**, pas
+  a refaire. Les deux echecs de `mvn verify` (`LIllustrationDeContenuResoutEtAucuneNeDortTest`, "aucune
+  ne dort") ne se ferment ni par T2 ni par T3 : ils se ferment uniquement quand un paquet reel declare
+  au moins un identifiant `oeuvre-`, c'est-a-dire par `T6` - que je laisse a juste titre hors perimetre
+  de s50 (section 2). **Il n'y a donc aucune tache de developpement a affecter en priorite pour fermer
+  ces deux echecs a s50** : c'est une dette qui reste ouverte jusqu'a l'ouverture effective de `T6`,
+  pas une tache executable ce sprint.
 - **Le precedent existe deja dans ce meme chantier.** `DEC-0107` (sections 5 et 6) a deja accepte
   T2 a T5 au perimetre de s49 hors chiffrage, sur le modele du palier 2 de `DEC-0074` (chantier de
   mecanique seul, porte en developpeur affecte, jamais en unite comptee). Refuser aujourd'hui le
   commit qui livre le materiau que T5 devait produire reviendrait a accepter la tache en principe et
   a la refuser dans les faits.
 - **Ce que j'exige en echange, et qui n'est pas negociable.** Le commit nomme explicitement, dans son
-  message, les deux tests qui restent rouges et la raison exacte (`ADR-0082` section 7, ligne 1 :
-  amendement d'`ADR-0073` non encore ecrit) ; **aucune story ni ligne de `MATRICE-couverture.md`
-  n'est close par ce commit** - il ne pretend a aucun Done, technique ou pedagogique ; et **T2/T3
-  (l'amendement d'`ADR-0073` et la seconde exemption de `RessourcesTiercesTest`) deviennent la
-  priorite de developpement de s50**, avant tout engagement sur un lot de contenu neuf, pour que
-  `mvn verify` redevienne vert avant la cloture de s50 - ce n'est pas une dette qui s'installe sans
-  echeance, c'est une dette qui porte sa date de paiement dans le sprint qui l'ouvre.
+  message, les deux tests qui restent rouges et la raison exacte (`ADR-0082` section 7 : dette ouverte
+  jusqu'a `T6`, voir la note ci-dessus) ; **aucune story ni ligne de `MATRICE-couverture.md` n'est
+  close par ce commit** - il ne pretend a aucun Done, technique ou pedagogique.
 - **Je ne commite pas ces fichiers moi-meme** : ils vivent sous `adapters/` et `bootstrap/`, hors de
   mon mandat. Le commit est route a `theo-archi`, proprietaire du cliquet de poids et de la regle
   ArchUnit qu'il a deja reverifiee sur l'etat a 25 oeuvres (planning, section 3), ou a un developpeur
@@ -195,9 +204,15 @@ volume engageable ce sprint ne le demande pas.
 1. Le chantier de sourcing du corpus d'oeuvres (`ADR-0082`) entre au perimetre de s50 par le commit
    qui livre les 25 oeuvres verifiees (registre, fichiers, cliquet de poids, correction du registre
    d'identifiants), avec deux echecs de `mvn verify` nommes et assumes comme dette intentionnelle
-   (section 1). Ce commit ne ferme aucune story ni aucun Done. T2/T3 (amendement d'`ADR-0073`,
-   seconde exemption de `RessourcesTiercesTest`) sont la priorite de developpement de s50, pour que
-   `mvn verify` soit vert avant la cloture.
+   (section 1). Ce commit ne ferme aucune story ni aucun Done.
+
+   **Note du 2026-10-03 (`camille-po`), correction factuelle.** Ce point ecrivait que T2/T3
+   devenaient "la priorite de developpement de s50". **Faux, verifie au disque** : `90c36ab0`
+   (`[SOF]`, s49) et `8f6ee008` (`[THEO]`) ont deja clos T2, T3 et T4 - voir la note de la section 1.
+   Les deux echecs restants ne se ferment ni par T2 ni par T3, deja faits ; ils ne se ferment que par
+   `T6` (un paquet reel declarant un identifiant `oeuvre-`), laisse hors perimetre de s50 (section 2).
+   **Aucune tache de developpement n'est donc a affecter ce sprint pour les fermer** : la dette reste
+   ouverte jusqu'a l'ouverture effective de `T6`, point final.
 2. T6 (arts plastiques CP, lignes 9 et 10) reste hors perimetre de s50, bloque par un fournisseur,
    non par la squad (section 2). Signal explicite d'un besoin de recuperation manuelle de trois
    fichiers.
@@ -213,8 +228,9 @@ volume engageable ce sprint ne le demande pas.
    neuve de mathematiques CE1 rendent une seconde instance couteuse sans gain proportionne.
 7. `squad/programme/MATRICE-couverture.md` n'est pas modifiee par ce document : les lignes restent
    `non couvert` jusqu'au Done pedagogique de l'instance.
-8. Developpeurs a affecter nominativement par `sofia-sm` au planning, y compris l'ordre entre le
-   commit du chantier de sourcing (T2/T3 en priorite) et les lignes de francais CE1.
+8. Developpeurs a affecter nominativement par `sofia-sm` au planning : le commit du chantier de
+   sourcing (T2 a T4 deja clos, voir note de la section 1) et les deux lignes de francais CE1,
+   sans tache de developpement due sur T2/T3.
 
 ## 8. Ce que cette decision ne fait pas
 
