@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -180,6 +181,22 @@ class PaquetCpEmcAlerteTest {
         assertThat(lignesMarquees)
                 .as("EMC-7 : les trois items a numero portent chacun un marqueur avec leur source")
                 .isEqualTo(3);
+    }
+
+    /**
+     * Reserve datee du 2026-10-03 (fiche de conformite, troisieme passage, section 3) : aucun
+     * indice du paquet ne contient de forme de "prevenir" - sinon, apres une erreur, l'enfant
+     * retrouve les mots de l'indice dans la bonne reponse plutot que de comprendre la situation.
+     */
+    @Test
+    void aucunIndiceNeContientUneFormeDePrevenir() {
+        Pattern formeDePrevenir = Pattern.compile("pr[ée]v(en|ien)", Pattern.CASE_INSENSITIVE);
+        for (Question item : items()) {
+            item.indice().ifPresent(indice -> assertThat(formeDePrevenir.matcher(indice).find())
+                    .as("item %s : l'indice ne contient pas de forme de 'prevenir'",
+                            item.id().value())
+                    .isFalse());
+        }
     }
 
     /** Le texte brut du paquet, tel qu'ecrit sur le classpath - commentaires compris. */

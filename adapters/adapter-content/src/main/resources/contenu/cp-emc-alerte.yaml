@@ -84,7 +84,7 @@ items:
   - enonce: "Léa trouve un sac oublié sous un banc dans la cour. Que doit-elle faire ?"
     bonneReponse: "prévenir un adulte"
     distracteurs: ["ouvrir le sac pour regarder dedans", "garder le sac pour elle"]
-    indice: "Un sac oublié, on n'y touche pas : on prévient un adulte."
+    indice: "Un sac oublié, on n'y touche pas."
   - enonce: "Aya a un saignement de nez qui ne s'arrête pas. Que doit-elle faire ?"
     bonneReponse: "aller voir un adulte"
     distracteurs: ["attendre sans rien dire", "continuer à jouer quand même"]
