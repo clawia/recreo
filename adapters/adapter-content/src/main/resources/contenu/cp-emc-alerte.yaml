@@ -84,7 +84,7 @@ items:
   - enonce: "Léa trouve un sac oublié sous un banc dans la cour. Que doit-elle faire ?"
     bonneReponse: "prévenir un adulte"
     distracteurs: ["ouvrir le sac pour regarder dedans", "garder le sac pour elle"]
-    indice: "Un objet qu'on ne connaît pas doit être montré à un adulte."
+    indice: "Un sac oublié, on n'y touche pas : on prévient un adulte."
   - enonce: "Aya a un saignement de nez qui ne s'arrête pas. Que doit-elle faire ?"
     bonneReponse: "aller voir un adulte"
     distracteurs: ["attendre sans rien dire", "continuer à jouer quand même"]
@@ -97,7 +97,7 @@ items:
     bonneReponse: "demander de l'aide à un adulte du magasin"
     distracteurs: ["sortir pour chercher dehors", "attendre assise sans parler à personne"]
     indice: "Un adulte du magasin peut aider à retrouver sa famille."
-  - enonce: "Hugo voit un chien perdu et apeuré dans la rue. Que doit-il faire ?"
+  - enonce: "Hugo voit dans la rue un chien perdu qui a peur. Que doit-il faire ?"
     bonneReponse: "prévenir un adulte"
     distracteurs: ["s'approcher pour le caresser", "essayer de l'attraper tout seul"]
     indice: "Un animal perdu peut mordre si on s'approche trop près."
