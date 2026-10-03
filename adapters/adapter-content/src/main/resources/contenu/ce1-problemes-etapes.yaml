@@ -23,13 +23,13 @@
 # division, aucun mot d'achat, de monnaie, de partage ou de groupement.
 # PRO-CE1-5 : chaque item declare sa derivation en commentaire ("# PRO-CE1: etape(s);fam=x,y"),
 # relue et recalculee integralement par PaquetCe1ProblemesEtapesTest - rien n'est recopie du YAML
-# pour la verifier. Rangs sur le paquet entier : la plus petite sur 4 (16,7 %), intermediaire sur
-# 11 (45,8 %), la plus grande sur 9 (37,5 %) - chacun entre 10 % et 50 %.
+# pour la verifier. Rangs sur le paquet entier : la plus petite sur 7 (29,2 %), intermediaire sur
+# 8 (33,3 %), la plus grande sur 9 (37,5 %) - chacun entre 10 % et 50 %.
 # PRO-CE1-6 : LON-CE1-1 et LON-CE1-2 sont deja tenues par
 # AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest (ADR-0101), dette nulle pour ce paquet
 # neuf. Aucune situation ne suppose un jardin, une piscine, une chambre a soi, un animal, des
 # vacances, de l'argent de poche ni une voiture ; les sujets sont des collectifs (la classe,
-# l'ecole, la bibliotheque, la cantine, le club, l'atelier, la reserve, le magasin scolaire),
+# l'ecole, la bibliotheque, la cantine, le club, l'atelier, la reserve),
 # jamais un enfant nomme, pour ecarter tout role distribue par genre.
 # PRO-CE1-7 : vingt-quatre items, au-dessus du plancher de vingt. Chaque indice donne la methode
 # de la premiere etape seule, jamais un resultat, en douze mots au plus, et il n'est identique
@@ -79,22 +79,22 @@ items:
     bonneReponse: "28"
     distracteurs: ["40", "52"]
     indice: "Multiplie d'abord le nombre de cartons par les cahiers de chacun."
-  - enonce: "Le magasin scolaire a 2 lots de 10 gommes. Il en vend 9. Combien de gommes lui reste-t-il ?"  # PRO-CE1: mul(2,10);sub(R,9);fam=a,b
+  - enonce: "La réserve a 2 lots de 10 gommes. Elle en donne 9. Combien de gommes lui reste-t-il ?"  # PRO-CE1: mul(2,10);sub(R,9);fam=a,b
     bonneReponse: "11"
     distracteurs: ["20", "29"]
     indice: "Multiplie d'abord le nombre de lots par les gommes de chacun."
-  - enonce: "La classe reçoit 40 images, puis 10 images de plus. Elle en donne 15. Combien d'images lui reste-t-il ?"  # PRO-CE1: add(40,10);sub(R,15);fam=a,c
+  - enonce: "La classe reçoit 40 images, puis 10 images de plus. Elle en donne 15. Combien d'images lui reste-t-il ?"  # PRO-CE1: add(40,10);sub(R,15);fam=a,b
     bonneReponse: "35"
-    distracteurs: ["50", "15"]
-    indice: "Additionne d'abord les deux arrivées d'images."
-  - enonce: "La cantine reçoit 38 pommes, puis 14 pommes de plus. Elle en distribue 18. Combien de pommes reste-t-il ?"  # PRO-CE1: add(38,14);sub(R,18);fam=a,c
+    distracteurs: ["50", "65"]
+    indice: "Additionne d'abord les deux livraisons d'images."
+  - enonce: "La cantine reçoit 38 pommes, puis 14 pommes de plus. Elle en distribue 18. Combien de pommes reste-t-il ?"  # PRO-CE1: add(38,14);sub(R,18);fam=a,b
     bonneReponse: "34"
-    distracteurs: ["52", "6"]
+    distracteurs: ["52", "70"]
     indice: "Additionne d'abord les deux livraisons de pommes."
-  - enonce: "L'atelier reçoit 44 perles, puis 16 perles de plus. Il en utilise 22. Combien de perles lui reste-t-il ?"  # PRO-CE1: add(44,16);sub(R,22);fam=a,c
+  - enonce: "L'atelier reçoit 44 perles, puis 16 perles de plus. Il en utilise 22. Combien de perles lui reste-t-il ?"  # PRO-CE1: add(44,16);sub(R,22);fam=a,b
     bonneReponse: "38"
-    distracteurs: ["60", "6"]
-    indice: "Additionne d'abord les deux arrivées de perles."
+    distracteurs: ["60", "82"]
+    indice: "Additionne d'abord les deux livraisons de perles."
   - enonce: "Le club a 30 ballons, en perd 12. Il en reçoit 9 de plus. Combien de ballons a-t-il ?"  # PRO-CE1: sub(30,12);add(R,9);fam=a,c
     bonneReponse: "27"
     distracteurs: ["18", "51"]

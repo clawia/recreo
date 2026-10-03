@@ -101,11 +101,13 @@ class PaquetCe1ProblemesEtapesTest {
      * la division sont des formes d'une autre ligne (section 2.1 et 2.3 de l'arbitrage).
      */
     private static final List<String> LEXIQUE_PRO_CE1_4 = List.of(
-            "achat", "achats", "acheter", "achete", "achetee", "achetees", "achetes",
-            "prix", "piece", "pieces", "billet", "billets", "euro", "euros", "centime",
-            "centimes", "partage", "partager", "partageant", "partagee", "partagees", "partages",
-            "groupement", "groupements", "grouper", "groupe", "groupes",
-            "division", "diviser", "divise", "divisee", "divisees", "divises");
+            "achat", "achats", "acheter", "acheté", "achetée", "achetées", "achetés",
+            "prix", "pièce", "pièces", "billet", "billets", "euro", "euros", "centime",
+            "centimes", "partage", "partager", "partageant", "partagé", "partagée", "partagées",
+            "partagés", "groupement", "groupements", "grouper", "groupe", "groupes",
+            "division", "diviser", "divise", "divisé", "divisée", "divisées", "divisés",
+            "magasin", "magasins", "vente", "ventes", "vendre", "vend", "vendent", "vendu",
+            "vendue", "vendus", "vendues");
 
     /**
      * PRO-CE1-6 : aucune situation ne suppose un jardin, une piscine, une chambre a soi, un
