@@ -164,3 +164,66 @@ tour Eiffel, dont les auteurs sont morts apres 1900). Elles bornent T6 a T8, pas
 **Ce dont je reste la seule garde sur ce vivier** : l'exactitude de chaque attribution et de chaque
 date une fois la fiche lue, la fidelite de la reproduction retenue, et `ART-5` paquet par paquet.
 Aucun garde-fou ne le verifie ; le registre en tient la forme, pas la verite.
+
+## 8. Ajout du 2026-10-03 : decisions sur les six candidates non retenues
+
+Ajout date, apres lecture de `squad/rapports/sourcing-oeuvres-s49-verification.md`. Les sections 4
+et 5 ci-dessus restent telles que je les ai ecrites, pour que l'ecart entre ma proposition et la
+verification reste lisible ; **ce sont les tableaux de cette section-ci qui font foi** pour les
+oeuvres 8, 27 et 28 et pour les lignes qu'elles touchent.
+
+### 8.1 Une correction, avant de decider
+
+Le rapport de verification (section 3.2) et la commande qui m'a ete transmise placent
+`oeuvre-laitiere` dans `ART-CM1-07`, `ART-CM1-08` et `HDA-CM1-01`. **Ma section 5 la place dans
+`ART-CP-09`, `ART-CP-10` et `ART-CM1-08`** : elle n'est ni dans `ART-CM1-07` (1, 5, 9, 12, 13, 14,
+16) ni dans `HDA-CM1-01` (1, 2, 5, 6, 12, 15, 17, 20). L'ecart compte : la perte touche le CP, et
+surtout `ART-CP-10`, dont la paire 8 et 11 (meme peintre, meme lumiere de fenetre a gauche) est
+cassee. C'est ce qui decide de la remplacer.
+
+### 8.2 Decisions
+
+| # | Candidate | Decision |
+|---|---|---|
+| 3, 7, 13 | `oeuvre-chambre`, `oeuvre-rue-sous-la-pluie`, `oeuvre-grande-jatte` | **Gardees, pas de remplacante.** Le blocage est un telechargement manuel, pas un probleme de licence ni de choix. Consequence a connaitre : tant que les trois fichiers manquent, `ART-CP-09` n'a que 5 oeuvres sur 8 au registre, et `ART-CP-10` perd la paire 3 et 9. Le lot d'arts plastiques CP ne se joue pas avant leur entree |
+| 8 | `oeuvre-laitiere` | **Remplacee par 29**, un autre Vermeer, pour garder la paire de `ART-CP-10` |
+| 27 | `oeuvre-photo-notre-dame` | **Gardee comme repere, objet a choisir sur image** (8.3). Repli si aucune vue nette n'est trouvee : une autre cathedrale gothique |
+| 28 | `oeuvre-photo-acropole` | **James Robertson accepte a la place de Felix Bonfils.** Rien dans mon choix ne tenait a Bonfils : je cherchais une vue de l'Acropole par un photographe mort avant 1900, ecrite de memoire. La fiche du Met est verifiee, celle du Getty ne l'est pas. Condition : je choisis sur image, parmi les trois objets `2005.100.1352` a `.1354`, celui ou le Parthenon est le sujet principal reconnaissable a 352 px. Si aucun ne l'est, on revient a la verification du Getty |
+
+### 8.3 Candidates nouvelles ou modifiees
+
+Comme en section 4 : **de memoire, a verifier sur la fiche**. Je ne garantis aucune licence.
+
+| # | Identifiant propose | Oeuvre | Auteur | Mort | Date | Institution (piste) | Piste d'inventaire |
+|---|---|---|---|---|---|---|---|
+| 29 | `oeuvre-femme-au-luth` | Femme au luth | Johannes Vermeer | 1675 | vers 1662-1663 | Metropolitan Museum of Art | 25.110.24 |
+| 29 bis | (repli de 29) | Jeune femme endormie | Johannes Vermeer | 1675 | vers 1656-1657 | Metropolitan Museum of Art | 14.40.611 |
+| 27 | `oeuvre-photo-notre-dame` | photographie de la facade de Notre-Dame de Paris | a choisir : Charles Marville (1879), Edouard Baldus (1889) ou Henri Le Secq (1882) | voir auteur | avant 1900 | Metropolitan Museum of Art ou National Gallery of Art | a choisir |
+| 28 | `oeuvre-photo-acropole` | [Acropolis, Athens, Greece] | James Robertson | 1888 | annees 1850 | Metropolitan Museum of Art | 2005.100.1352 a .1354, un des trois |
+
+- **29** : sujet nommable par un enfant de six ans ("une dame qui joue de la musique"), lumiere
+  d'une fenetre a gauche comme 11, pas de texte lisible a 352 px (la carte murale ne se lit pas a
+  cette taille, a confirmer sur l'image). Le tableau est sombre et use : si le luth ne se reconnait
+  pas en vignette, 29 bis le remplace, au prix d'une paire moins nette avec 11 (lumiere differente).
+- **27** : un **type d'objet**, comme les lignes "a choisir" de la section 4. Critere : la facade
+  vue de face, les deux tours visibles, la cathedrale occupant plus de la moitie de l'image. Le
+  developpeur propose deux ou trois objets de ce type avec leur fiche, je choisis sur image.
+  **Ecarter les freres Bisson** : Auguste-Rosalie Bisson est mort en 1900, ce qui ne satisfait pas
+  "mort avant 1900". **Repli** si aucune vue nette n'existe : la facade d'une autre cathedrale
+  gothique (Reims, Chartres, Amiens), meme critere ; le repere vise par la ligne est "une
+  cathedrale gothique", Notre-Dame n'etait que la plus connue a l'ecole.
+
+### 8.4 Repartition des lignes touchees
+
+Seules les lignes qui changent. Les autres restent celles de la section 5.
+
+| Ligne | Oeuvres | Nombre |
+|---|---|---|
+| `ART-CP-09` | 1, 2, 3, 4, 5, 6, 7, 29 ("une dame qui joue de la musique" remplace "une femme qui verse du lait") | **8** |
+| `ART-CP-10` | les 8 de `ART-CP-09`, plus 9, 10, 11 ; la paire 29 et 11 remplace la paire 8 et 11 | **11** |
+| `ART-CM1-08` | 1, 2, 5, 12, 15, 17, 29 ; format vertical : 15, et 29 a confirmer sur l'image (proche du carre) | **7** |
+| `HDA-CM1-06` | 1, 2, 5, 19, 26, 27, 28 ; 27 a choisir sur image, 28 par James Robertson | **7** |
+
+**`ART-5`** : les comptes de la section 5 ne changent pas (Vermeer remplace Vermeer, un photographe
+europeen du XIXe siecle en remplace un autre). Une perte a nommer : la laitiere etait la seule
+figure de travail domestique du vivier de CP ; le travail reste represente par 2 (moissonneurs).

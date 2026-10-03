@@ -70,14 +70,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@link #verifier(List, Map, Set, Set)}, qui ne lit ni disque ni classpath : c'est ce qui permet
  * de le mordre sur du materiau mute en memoire.</p>
  *
- * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement</b> (ADR-0051). Le repertoire
- * {@code static/oeuvres/} n'existe dans aucun module et le registre ne declare aucune oeuvre :
- * <b>la population est vide</b>, et toutes les clauses portant sur une entree ou sur un fichier
- * portent donc sur rien. Ce n'est pas cache dans un vert -
- * {@link #laPopulationDeReproductionsEstVideEtCeGardeFouLeDeclare()} l'affirme, et le <b>cliquet a
- * plafond zero</b> rend cet etat intenable en silence : le jour ou une premiere reproduction entre,
- * ce fichier rougit, et le lot qui la livre releve le plafond sur la valeur qu'il installe, dans
- * son propre diff.</p>
+ * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement</b> (ADR-0051). Depuis le 2026-10-03,
+ * vingt-cinq reproductions reelles et leurs vingt-cinq entrees :
+ * {@link #laPopulationDeReproductionsEstLueEtCeGardeFouLExamine()} affirme que cette population est
+ * lue et non vide, et le <b>cliquet exact</b> rend tout changement de sa taille ou de son poids
+ * visible dans le diff qui le fait.</p>
  *
  * <p><b>Ce que ce garde-fou ne juge pas</b>, ecrit avant qu'on le lui reproche : que l'attribution
  * soit exacte - qu'un tableau soit bien de qui on le dit -, que la reproduction soit fidele a
@@ -88,13 +85,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * <p><b>T4 d'ADR-0082 (sofia-sm, s49) : le plafond de pixels paie la dette nommee sans alarme a la
  * section 7 de l'ADR.</b> {@link #dimensionsJpeg(byte[])} lit le segment SOFn d'un JPEG pour en tirer
  * sa largeur et sa hauteur declarees, et le juge refuse tout fichier dont le plus grand cote depasse
- * {@link #PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS} px. <b>Ce que T4 ne paie pas, et c'est ecrit plutot
- * que tu</b> : le remplacement du materiau de reference des morsures de ce fichier par du materiau
- * reel reste du, parce qu'aucune reproduction reelle n'existe encore a verifier - ce fichier n'a
- * aucun acces web, et T5 (choix verifie par nadia-prof, sourcing par un developpeur) n'est pas livre.
- * Les deux morsures de pixels ci-dessous mordent donc, comme les treize morsures existantes, sur un
- * en-tete JPEG synthetique fabrique pour exercer le lecteur de dimensions - jamais sur un fichier
- * qui pretendrait representer une oeuvre reelle ni sur une preuve de domaine public inventee.</p>
+ * {@link #PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS} px.</p>
+ *
+ * <p><b>Le materiau des morsures est le depot reel, mute en memoire</b> (ADR-0082 section 7, dette
+ * payee le 2026-10-03). Les onze morsures en memoire partent du registre, des reproductions, des
+ * dessins et du decor tels que le depot les porte, et chacune mute une copie : une entree reelle
+ * choisie par son genre (auteur nomme ou anonyme), un fichier reel retire ou ajoute, un nom reel
+ * renomme. Seul l'en-tete JPEG de la morsure de pixels reste synthetique, parce qu'aucun fichier du
+ * depot ne depasse le plafond qu'elle exerce.</p>
  */
 class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest {
 
@@ -157,14 +155,16 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
             CHAMP_LICENCE);
 
     /**
-     * Cliquet exact, ADR-0082 decision 6 : la taille de la population servie au 2026-09-05, qui est
-     * zero. Ce n'est pas un plafond de confort - un cliquet dont le plafond depasse la dette ne
-     * cliquette rien. Le lot qui livre les premieres reproductions releve ces deux nombres sur la
-     * valeur qu'il installe, et <b>mesure</b> le poids au lieu de l'estimer.
+     * Cliquet exact, ADR-0082 decision 6 : la population servie au 2026-10-03. Ce n'est pas un
+     * plafond de confort - un cliquet dont le plafond depasse la dette ne cliquette rien, et
+     * {@link #leCliquetVautExactementLaTailleDeLaPopulationServie()} exige l'egalite. Methode du
+     * poids : somme des tailles en octets des fichiers de {@code static/oeuvres/} de tous les modules
+     * declares, mesuree sur le disque par {@code wc -c} et par {@code find -printf '%s'}, qui
+     * concordent ; aucune exclusion.
      */
-    private static final int REPRODUCTIONS_SERVIES = 0;
+    private static final int REPRODUCTIONS_SERVIES = 25;
 
-    private static final int POIDS_TOTAL_MAXIMUM = 0;
+    private static final int POIDS_TOTAL_MAXIMUM = 620_639;
 
     /**
      * T4 d'ADR-0082 (sofia-sm, s49) : l'analogue matriciel du {@code viewBox} des dessins -
@@ -454,75 +454,89 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
         return fichiersIndexesParNom(repertoires(racine, REPRODUCTIONS));
     }
 
-    /** Deux entrees saines, l'une a auteur nomme, l'autre anonyme : la reference des morsures. */
-    private static List<Map<String, Object>> registreSain() {
-        Map<String, Object> nommee = new LinkedHashMap<>();
-        nommee.put(CHAMP_IDENTIFIANT, "oeuvre-sujet-nomme");
-        nommee.put("titre", "Titre de reference");
-        nommee.put(CHAMP_AUTEUR, "Auteur De Reference");
-        nommee.put(CHAMP_ANNEE_DE_L_OEUVRE, 1831);
-        nommee.put(CHAMP_ANNEE_DE_MORT, 1849);
-        nommee.put("lieuDeConservation", "Institution de reference");
-        nommee.put("identifiantDObjet", "REF-1");
-        nommee.put("urlDeLaSource", "https://exemple.invalid/collection/reference-un");
-        nommee.put(CHAMP_LICENCE, LICENCE_ADMISE);
-
-        Map<String, Object> anonyme = new LinkedHashMap<>();
-        anonyme.put(CHAMP_IDENTIFIANT, "oeuvre-sujet-anonyme");
-        anonyme.put("titre", "Autre titre de reference");
-        anonyme.put(CHAMP_AUTEUR, AUTEUR_ANONYME);
-        anonyme.put(CHAMP_ANNEE_DE_L_OEUVRE, 1450);
-        anonyme.put("lieuDeConservation", "Autre institution de reference");
-        anonyme.put("identifiantDObjet", "REF-2");
-        anonyme.put("urlDeLaSource", "https://exemple.invalid/collection/reference-deux");
-        anonyme.put(CHAMP_LICENCE, LICENCE_ADMISE);
-
-        return new ArrayList<>(List.of(nommee, anonyme));
+    /**
+     * Le materiau de reference des morsures est le depot lui-meme, relu a chaque appel pour que
+     * chaque morsure mute sa propre copie. ADR-0082 section 7 : il remplace les deux entrees que
+     * l'auteur de la regle avait ecrites de sa main faute de corpus reel.
+     */
+    private static List<Map<String, Object>> registreReel() {
+        return registre(LesGardeFousSontMisALEpreuveTest.racineDuDepot().resolve(REGISTRE));
     }
 
-    /** Les octets d'un debut de JPEG : ce que la clause de format juge, et rien de plus. */
-    private static Map<String, byte[]> reproductionsSaines() {
-        byte[] jpeg = {(byte) 0xFF, (byte) 0xD8, (byte) 0xFF, (byte) 0xE0, 0x00, 0x10};
-        Map<String, byte[]> fichiers = new LinkedHashMap<>();
-        fichiers.put("oeuvre-sujet-nomme" + EXTENSION, jpeg);
-        fichiers.put("oeuvre-sujet-anonyme" + EXTENSION, jpeg);
-        return fichiers;
+    private static Map<String, byte[]> reproductionsReelles() {
+        return reproductionsDuDepot(LesGardeFousSontMisALEpreuveTest.racineDuDepot());
+    }
+
+    private static Set<String> illustrationsReelles() {
+        return nomsDeBase(repertoires(LesGardeFousSontMisALEpreuveTest.racineDuDepot(),
+                ILLUSTRATIONS_DE_CONTENU));
+    }
+
+    private static Set<String> decorReel() {
+        return nomsDeBase(repertoires(LesGardeFousSontMisALEpreuveTest.racineDuDepot(), DECOR));
+    }
+
+    /**
+     * La premiere entree reelle du genre que la morsure mute. Si le registre n'en porte plus
+     * aucune, la morsure le dit au lieu de passer sur rien.
+     */
+    private static Map<String, Object> premiereEntree(List<Map<String, Object>> registre,
+                                                      boolean anonyme) {
+        return registre.stream()
+                .filter(entree -> AUTEUR_ANONYME.equals(entree.get(CHAMP_AUTEUR)) == anonyme)
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("ADR-0082 : le registre reel ne porte plus"
+                        + " aucune oeuvre " + (anonyme ? "anonyme" : "a auteur nomme")
+                        + " ; cette morsure n'a plus de materiau reel a muter"));
+    }
+
+    private static String nomDuFichier(Map<String, Object> entree) {
+        return entree.get(CHAMP_IDENTIFIANT) + EXTENSION;
     }
 
     @Test
     void leDepotReelTientLaRegle() {
-        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
-
-        verifier(registre(racine.resolve(REGISTRE)),
-                reproductionsDuDepot(racine),
-                nomsDeBase(repertoires(racine, ILLUSTRATIONS_DE_CONTENU)),
-                nomsDeBase(repertoires(racine, DECOR)));
+        verifier(registreReel(), reproductionsReelles(), illustrationsReelles(), decorReel());
     }
 
+    /**
+     * ADR-0051 : ce fichier declare ce qu'il examine. Depuis le lot de s49, la population n'est plus
+     * vide, et c'est ce que ce test affirme : sans lui, un registre ou un repertoire qui cesserait
+     * d'etre lu rendrait {@link #leDepotReelTientLaRegle()} vert sur rien, et toutes les morsures
+     * echoueraient sur l'absence de materiau plutot que sur leur mutation.
+     */
     @Test
-    void laPopulationDeReproductionsEstVideEtCeGardeFouLeDeclare() {
-        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+    void laPopulationDeReproductionsEstLueEtCeGardeFouLExamine() {
+        Set<String> declarees = new LinkedHashSet<>();
+        registreReel().forEach(entree -> declarees.add(nomDuFichier(entree)));
 
-        assertThat(reproductionsDuDepot(racine))
-                .as("ADR-0051 : aucune reproduction n'est servie au 2026-09-05, donc toutes les"
-                        + " clauses portant sur un fichier portent sur une population vide. Le"
-                        + " cliquet a plafond zero est ce qui empeche cet etat de changer en"
-                        + " silence")
-                .isEmpty();
-        assertThat(registre(racine.resolve(REGISTRE)))
-                .as("ADR-0051 : le registre existe, il se lit, et il ne declare aucune oeuvre")
-                .isEmpty();
+        assertThat(reproductionsReelles().keySet())
+                .as("ADR-0051 : le garde-fou examine une population reelle, lue sur le disque, et"
+                        + " le registre declare exactement les fichiers servis")
+                .isNotEmpty()
+                .containsExactlyInAnyOrderElementsOf(declarees);
     }
 
     @Test
     void leCliquetVautExactementLaTailleDeLaPopulationServie() {
-        verifierLeCliquet(reproductionsDuDepot(LesGardeFousSontMisALEpreuveTest.racineDuDepot()),
-                REPRODUCTIONS_SERVIES, POIDS_TOTAL_MAXIMUM);
+        Map<String, byte[]> reproductions = reproductionsReelles();
+
+        verifierLeCliquet(reproductions, REPRODUCTIONS_SERVIES, POIDS_TOTAL_MAXIMUM);
+        assertThat(reproductions)
+                .as("ADR-0082 decision 6 : un plafond au-dessus de la population ne cliquette rien ;"
+                        + " le lot qui retire une reproduction redescend ce plafond")
+                .hasSize(REPRODUCTIONS_SERVIES);
+        assertThat(reproductions.values().stream().mapToInt(octets -> octets.length).sum())
+                .as("ADR-0082 decision 6 : le plafond de poids vaut le poids mesure, a l'octet")
+                .isEqualTo(POIDS_TOTAL_MAXIMUM);
     }
 
     @Test
     void uneReproductionDePlusQueLePlafondFaitRougirLeCliquet() {
-        assertThatThrownBy(() -> verifierLeCliquet(reproductionsSaines(), REPRODUCTIONS_SERVIES,
+        Map<String, byte[]> mute = reproductionsReelles();
+        mute.put("oeuvre-surnumeraire" + EXTENSION, mute.values().iterator().next());
+
+        assertThatThrownBy(() -> verifierLeCliquet(mute, REPRODUCTIONS_SERVIES,
                 POIDS_TOTAL_MAXIMUM))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("reproductions servies");
@@ -530,112 +544,128 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
 
     @Test
     void unMaterielSainPasse() {
-        verifier(registreSain(), reproductionsSaines(), Set.of("figure-carre-droit"),
-                Set.of("cabinet-fronton"));
+        verifier(registreReel(), reproductionsReelles(), illustrationsReelles(), decorReel());
     }
 
     @Test
     void uneEntreeSansFichierEstRefusee() {
-        Map<String, byte[]> ampute = new LinkedHashMap<>(reproductionsSaines());
-        ampute.remove("oeuvre-sujet-anonyme" + EXTENSION);
+        List<Map<String, Object>> registre = registreReel();
+        Map<String, byte[]> ampute = reproductionsReelles();
+        ampute.remove(nomDuFichier(premiereEntree(registre, true)));
 
-        assertThatThrownBy(() -> verifier(registreSain(), ampute, Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(registre, ampute, illustrationsReelles(), decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("une preuve sans image est une entree morte");
     }
 
     @Test
     void unFichierSansEntreeEstRefuse() {
-        List<Map<String, Object>> ampute = new ArrayList<>(registreSain());
-        ampute.remove(1);
+        List<Map<String, Object>> ampute = registreReel();
+        ampute.remove(premiereEntree(ampute, true));
 
-        assertThatThrownBy(() -> verifier(ampute, reproductionsSaines(), Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(ampute, reproductionsReelles(), illustrationsReelles(),
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("n'a aucune entree");
     }
 
     @Test
     void unChampDePreuveVideEstRefuse() {
-        List<Map<String, Object>> mute = registreSain();
-        mute.get(0).put("identifiantDObjet", "   ");
+        List<Map<String, Object>> mute = registreReel();
+        premiereEntree(mute, false).put("identifiantDObjet", "   ");
 
-        assertThatThrownBy(() -> verifier(mute, reproductionsSaines(), Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(mute, reproductionsReelles(), illustrationsReelles(),
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("une preuve incomplete ne prouve rien");
     }
 
     @Test
     void unAuteurMortApresLePivotEstRefuse() {
-        List<Map<String, Object>> mute = registreSain();
-        mute.get(0).put(CHAMP_ANNEE_DE_MORT, 1954);
+        List<Map<String, Object>> mute = registreReel();
+        premiereEntree(mute, false).put(CHAMP_ANNEE_DE_MORT, 1954);
 
-        assertThatThrownBy(() -> verifier(mute, reproductionsSaines(), Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(mute, reproductionsReelles(), illustrationsReelles(),
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("est mort en 1954");
     }
 
     @Test
     void unAuteurNommeSansAnneeDeMortEstRefuse() {
-        List<Map<String, Object>> mute = registreSain();
-        mute.get(0).remove(CHAMP_ANNEE_DE_MORT);
+        List<Map<String, Object>> mute = registreReel();
+        premiereEntree(mute, false).remove(CHAMP_ANNEE_DE_MORT);
 
-        assertThatThrownBy(() -> verifier(mute, reproductionsSaines(), Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(mute, reproductionsReelles(), illustrationsReelles(),
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("nomme son auteur sans");
     }
 
     @Test
     void uneOeuvreAnonymePosterieureAuPivotEstRefusee() {
-        List<Map<String, Object>> mute = registreSain();
-        mute.get(1).put(CHAMP_ANNEE_DE_L_OEUVRE, 1930);
+        List<Map<String, Object>> mute = registreReel();
+        premiereEntree(mute, true).put(CHAMP_ANNEE_DE_L_OEUVRE, 1930);
 
-        assertThatThrownBy(() -> verifier(mute, reproductionsSaines(), Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(mute, reproductionsReelles(), illustrationsReelles(),
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("l'oeuvre anonyme");
     }
 
     @Test
     void uneLicenceQuiNEstPasUneRenonciationEstRefusee() {
-        List<Map<String, Object>> mute = registreSain();
-        mute.get(0).put(CHAMP_LICENCE, "domaine public");
+        List<Map<String, Object>> mute = registreReel();
+        premiereEntree(mute, false).put(CHAMP_LICENCE, "domaine public");
 
-        assertThatThrownBy(() -> verifier(mute, reproductionsSaines(), Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(mute, reproductionsReelles(), illustrationsReelles(),
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ne rend pas libre la photographie");
     }
 
     @Test
     void unIdentifiantSansSonPrefixeEstRefuse() {
-        List<Map<String, Object>> mute = registreSain();
-        mute.get(0).put(CHAMP_IDENTIFIANT, "grande-vague");
+        List<Map<String, Object>> mute = registreReel();
+        Map<String, Object> entree = premiereEntree(mute, false);
+        entree.put(CHAMP_IDENTIFIANT,
+                String.valueOf(entree.get(CHAMP_IDENTIFIANT)).substring(PREFIXE.length()));
 
-        assertThatThrownBy(() -> verifier(mute, reproductionsSaines(), Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(mute, reproductionsReelles(), illustrationsReelles(),
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("sort de l'alphabet");
     }
 
     @Test
     void unDessinMaisonQuiPorteLePrefixeDesReproductionsEstRefuse() {
-        assertThatThrownBy(() -> verifier(registreSain(), reproductionsSaines(),
-                Set.of("oeuvre-sujet-tiers"), Set.of()))
+        Set<String> mute = illustrationsReelles();
+        assertThat(mute).as("aucun dessin maison reel a renommer").isNotEmpty();
+        mute.add(PREFIXE + mute.iterator().next());
+
+        assertThatThrownBy(() -> verifier(registreReel(), reproductionsReelles(), mute,
+                decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("le rendu lit la population sur le prefixe");
     }
 
     @Test
     void unNomDeBasePartageParDeuxPopulationsEstRefuse() {
-        assertThatThrownBy(() -> verifier(registreSain(), reproductionsSaines(), Set.of(),
-                Set.of("oeuvre-sujet-nomme")))
+        List<Map<String, Object>> registre = registreReel();
+        Set<String> mute = decorReel();
+        mute.add(String.valueOf(premiereEntree(registre, false).get(CHAMP_IDENTIFIANT)));
+
+        assertThatThrownBy(() -> verifier(registre, reproductionsReelles(), illustrationsReelles(),
+                mute))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("deux populations");
     }
 
     /**
-     * T4 d'ADR-0082, morsure sur du materiau synthetique en memoire : un JPEG dont le segment SOF0
-     * declare 1000x1000 px, au-dessus du plafond de 352 px. Le fichier n'est pas une fixture qui
-     * pretend representer une oeuvre - ce sont les quinze octets minimaux d'un en-tete JPEG valide,
-     * construits pour exercer le lecteur de dimensions, jamais pour simuler une preuve de domaine
-     * public.
+     * T4 d'ADR-0082 : le fichier reel d'une oeuvre reelle est remplace par un en-tete JPEG dont le
+     * segment SOF0 declare 1000x1000 px, au-dessus du plafond de 352 px. Ces quinze octets ne
+     * pretendent representer aucune oeuvre : ils exercent le lecteur de dimensions sur une taille
+     * qu'aucun fichier du depot ne porte, puisque le depot tient ce plafond.
      */
     @Test
     void uneReproductionAuDelaDuPlafondDePixelsEstRefusee() {
@@ -643,29 +673,29 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
                 (byte) 0xFF, (byte) 0xD8, (byte) 0xFF, (byte) 0xC0,
                 0x00, 0x0B, 0x08, 0x03, (byte) 0xE8, 0x03, (byte) 0xE8,
                 0x01, 0x01, 0x11, 0x00};
-        Map<String, byte[]> reproductions = new LinkedHashMap<>(reproductionsSaines());
-        reproductions.put("oeuvre-sujet-nomme" + EXTENSION, grandJpeg);
+        List<Map<String, Object>> registre = registreReel();
+        Map<String, byte[]> mute = reproductionsReelles();
+        mute.put(nomDuFichier(premiereEntree(registre, false)), grandJpeg);
 
-        assertThatThrownBy(() -> verifier(registreSain(), reproductions, Set.of(), Set.of()))
+        assertThatThrownBy(() -> verifier(registre, mute, illustrationsReelles(), decorReel()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("plafond de " + PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS);
     }
 
     /**
-     * T4 d'ADR-0082, preuve positive sur le meme materiau synthetique : un en-tete JPEG declarant
-     * 100x100 px, sous le plafond, passe la clause sans la declencher. Sans cette moitie, la morsure
-     * precedente pourrait etre verte parce que le lecteur de dimensions ne lirait jamais rien.
+     * T4 d'ADR-0082, preuve positive : chaque fichier reel declare des dimensions lisibles, sous le
+     * plafond. Sans cette moitie, la morsure precedente pourrait etre verte alors que le lecteur de
+     * dimensions ne lirait rien sur les fichiers que le depot sert reellement.
      */
     @Test
     void uneReproductionSousLePlafondDePixelsPasseLaClause() {
-        byte[] petitJpeg = {
-                (byte) 0xFF, (byte) 0xD8, (byte) 0xFF, (byte) 0xC0,
-                0x00, 0x0B, 0x08, 0x00, 0x64, 0x00, 0x64,
-                0x01, 0x01, 0x11, 0x00};
-        Map<String, byte[]> reproductions = new LinkedHashMap<>(reproductionsSaines());
-        reproductions.put("oeuvre-sujet-nomme" + EXTENSION, petitJpeg);
-
-        verifier(registreSain(), reproductions, Set.of(), Set.of());
+        reproductionsReelles().forEach((nom, octets) -> {
+            int[] dimensions = dimensionsJpeg(octets);
+            assertThat(dimensions).as(nom + " : en-tete SOFn lisible").hasSize(2);
+            assertThat(Math.max(dimensions[0], dimensions[1]))
+                    .as(nom + " : plus grand cote sous le plafond")
+                    .isBetween(1, PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS);
+        });
     }
 
     @Test

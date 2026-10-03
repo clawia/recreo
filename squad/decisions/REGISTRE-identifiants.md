@@ -11,6 +11,22 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `theo-archi`, s49, le 2026-10-03 (dette d'`ADR-0082` section 7).** Deux allocations
+retirees : les deux seules du prefixe **`REF`**, numeros un et deux. Elles ne sont pas ecrites ici
+sous leur forme complete, parce que ce garde-fou exigerait alors leur allocation. C'etaient les
+identifiants d'objet du materiau de reference
+ecrit a la main dans
+`bootstrap/src/test/java/com/recreo/archi/ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest.java`,
+que ce lot remplace par le registre reel des oeuvres : le fichier ne les ecrit plus, et le prefixe
+`REF` n'a plus aucune ligne. Aucun sens touche, aucune allocation ajoutee.
+
+Ligne d'etat courant portee de **915 / 158 a 913 / 157**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, apres retrait des deux lignes et avant la mise a jour de la
+ligne d'etat, rend : *"declare 915 identifiants alloues et 158 prefixes distincts, sa table en porte
+913 et 157"*. C'est ce **913 / 157** que je recopie. Aucun autre defaut rendu.
+
 **Note de `nadia-prof`, s49, instance A, le 2026-10-03 (Done pedagogique de `FRA-CE1-01` en second
 passage, VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`GRC-CE1-R1`**, ecrit dans
 `squad/conformite/FICHE-bandit-manchot-graphemes-complexes-ce1.md`. **Forme copiee** de `PRO-CE1-R1` :
@@ -612,7 +628,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `915` identifiants alloues, `158` prefixes distincts.
+**Compte courant, verifie par la CI** : `913` identifiants alloues, `157` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1792,8 +1808,6 @@ clause 2 par une exemption.
 | `REC-4` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `REC-5` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
 | `REC-6` | `squad/conformite/ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md` |
-| `REF-1` | `bootstrap/src/test/java/com/recreo/archi/ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest.java` |
-| `REF-2` | `bootstrap/src/test/java/com/recreo/archi/ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest.java` |
 | `REG-R1` | `squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md` |
 | `REG-R2` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
 | `REG-R3` | `squad/conformite/FICHE-bandit-manchot-regles-de-vie-cp.md` |
