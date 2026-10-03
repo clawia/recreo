@@ -11,6 +11,20 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s49, instance A, le 2026-10-03 (Done pedagogique de `FRA-CE1-01` en second
+passage, VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`GRC-CE1-R1`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-graphemes-complexes-ce1.md`. **Forme copiee** de `PRO-CE1-R1` :
+trois segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** :
+`GRC-CE1-1` a `GRC-CE1-3` etaient alloues ; `GRC-CE1-R1` etait absent de la section 4 et des branches
+locales avant d'ecrire. La ligne de la section 4 est dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **914 / 158 a 915 / 158**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 914 identifiants alloues et 158 prefixes distincts, sa table en porte 915 et 158"*. C'est
+ce **915 / 158** que je recopie. Aucun autre defaut rendu.
+
 **Note de `nadia-prof`, s48, instance A, le 2026-10-03 (Done pedagogique de `MAT-CE1-08` et de
 `LVE-CP-06` en second passage, VALIDES SOUS RESERVE).** Trois identifiants ajoutes, des reserves :
 **`PRO-CE1-R1`**, **`PRO-CE1-R2`**, ecrits dans
@@ -598,7 +612,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `914` identifiants alloues, `158` prefixes distincts.
+**Compte courant, verifie par la CI** : `915` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2021,6 +2035,7 @@ clause 2 par une exemption.
 | `GRC-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `GRC-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `GRC-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `GRC-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-graphemes-complexes-ce1.md` |
 | `VLE-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `VLE-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `VLE-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
