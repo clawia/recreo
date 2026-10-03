@@ -348,6 +348,25 @@ class PaquetCe1TablesMultiplicationTest {
     }
 
     /**
+     * TAB-CE1-R1 (fiche, section 4 du verdict du 2026-10-02) : tout item dont le facteur de table
+     * vaut 1 sert un indice sur le facteur 1 lui-meme, et non sur la table du second facteur. Forme
+     * deja validee au CM1 ({@code cm1-tables-multiplication.yaml}), reprise mot pour mot.
+     */
+    @Test
+    void tabR1ToutItemAFacteur1PorteLIndiceSurLeFacteur1() {
+        String indiceAttendu = "Multiplier par 1, le nombre ne change pas.";
+        List<ItemAnalyse> analyses = itemsAnalyses();
+        List<ItemAnalyse> aFacteur1 = analyses.stream()
+                .filter(a -> a.fait().other() == 1).toList();
+        assertThat(aFacteur1).as("TAB-CE1-R1 : cinq items a facteur 1").hasSize(5);
+        for (ItemAnalyse analyse : aFacteur1) {
+            assertThat(analyse.question().indice())
+                    .as("TAB-CE1-R1 : indice de '%s'", analyse.question().enonce())
+                    .contains(indiceAttendu);
+        }
+    }
+
+    /**
      * ADR-0013 obligation 3 : le jeu fautif de ce garde-fou, traverse par la lecture disque, le
      * chargeur de contenu reel et le recensement des marqueurs - pas seulement par un objet mute en
      * memoire. Son seul item declare la famille (a) pour son premier distracteur, qui ne correspond

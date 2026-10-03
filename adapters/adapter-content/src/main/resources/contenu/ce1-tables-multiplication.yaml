@@ -44,7 +44,7 @@ items:
   - enonce: "2 × 1 = ?"  # TAB-CE1-6: e,b
     bonneReponse: "2"
     distracteurs: ["3", "4"]
-    indice: "Table de 2 : additionne le nombre avec lui-même."
+    indice: "Multiplier par 1, le nombre ne change pas."
   - enonce: "2 × 2 = ?"  # TAB-CE1-6: a,b
     bonneReponse: "4"
     distracteurs: ["2", "6"]
@@ -84,7 +84,7 @@ items:
   - enonce: "3 × 1 = ?"  # TAB-CE1-6: d,e
     bonneReponse: "3"
     distracteurs: ["2", "4"]
-    indice: "Table de 3 : prends le double du nombre, puis ajoute le nombre une fois."
+    indice: "Multiplier par 1, le nombre ne change pas."
   - enonce: "3 × 3 = ?"  # TAB-CE1-6: a,b
     bonneReponse: "9"
     distracteurs: ["6", "12"]
@@ -120,7 +120,7 @@ items:
   - enonce: "4 × 1 = ?"  # TAB-CE1-6: d,e
     bonneReponse: "4"
     distracteurs: ["3", "5"]
-    indice: "Table de 4 : prends le double du double du nombre."
+    indice: "Multiplier par 1, le nombre ne change pas."
   - enonce: "4 × 4 = ?"  # TAB-CE1-6: a,b
     bonneReponse: "16"
     distracteurs: ["12", "20"]
@@ -152,7 +152,7 @@ items:
   - enonce: "5 × 1 = ?"  # TAB-CE1-6: d,e
     bonneReponse: "5"
     distracteurs: ["4", "6"]
-    indice: "Table de 5 : prends la moitié de la table de 10."
+    indice: "Multiplier par 1, le nombre ne change pas."
   - enonce: "5 × 5 = ?"  # TAB-CE1-6: a,b
     bonneReponse: "25"
     distracteurs: ["20", "30"]
@@ -180,7 +180,7 @@ items:
   - enonce: "10 × 1 = ?"  # TAB-CE1-6: e,b
     bonneReponse: "10"
     distracteurs: ["11", "20"]
-    indice: "Table de 10 : ajoute un zéro à la fin du nombre."
+    indice: "Multiplier par 1, le nombre ne change pas."
   - enonce: "10 × 6 = ?"  # TAB-CE1-6: a,b
     bonneReponse: "60"
     distracteurs: ["50", "70"]
