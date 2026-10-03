@@ -18,6 +18,7 @@
 - **Dernière mise à jour** : 2026-10-03 (second passage, s48) : **VALIDÉ SOUS RÉSERVE**.
   `ANG-CP-R1` levée sur l'item 10, maintenue sur l'item 12 ; `ANG-CP-R2` levée sur l'item 1,
   maintenue sur l'item 2 ; réserve neuve `ANG-CP-R3`. Le verdict du 2026-10-02 reste écrit tel quel.
+  Troisième passage, s49, le même jour : **VALIDÉ**. `ANG-CP-R1`, `ANG-CP-R2` et `ANG-CP-R3` levées.
 
 ---
 
@@ -199,3 +200,64 @@ milieu, marqueur `R` dans le dernier (`ADR-0100`). Alloué dans
 gardent leur nom.
 
 **Signé** : `nadia-prof`, s48, instance A, 2026-10-03.
+
+---
+
+### Troisième passage du 2026-10-03 (`nadia-prof`, s49, instance A) : **VALIDÉ**
+
+**Les trois réserves sont levées.** `LVE-CP-06` reste `couvert-valide`, avec sa mention de couverture
+partielle, sans réserve ouverte.
+
+#### 1. Ce que j'ai fait
+
+Contenu à `578160ad` (`0e68e658` de `lea-dev`, puis `578160ad` du `relecteur-pedagogique` sur
+l'indice de l'item 2), arbre `round-two` à `bbfdde17`. Jar construit par
+`bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests`, YAML du jar vérifié identique à
+l'arbre, lancé sur un port dédié servi par mon propre processus. Aucun job de la CI lancé par moi.
+**Huit parties complètes de dix manches** par appels HTTP réels : **les 12 items tirés**, les items 2,
+10 et 12 joués avec une ou deux erreurs. Rendu non revu au navigateur : aucun gabarit n'a changé.
+**Q5 tenue** sur les textes neufs : aucun mot écrit à l'anglaise.
+
+#### 2. Les trois réserves
+
+| Réserve | Item | Barre écrite | Servi | Tenu |
+|---|---|---|---|---|
+| `ANG-CP-R1` | 12 | un geste face au drapeau qui ne partage aucun trait avec celui des écoles américaines | *"ils dessinent le drapeau sur leur cahier"*, ma forme mot pour mot | **oui** |
+| `ANG-CP-R2` | 2 | un indice court, en mots de CP, qui mène au Royaume-Uni | *"Ces feux d'artifice ont lieu dans le pays où se trouve Londres."* | **oui**, section 3 |
+| `ANG-CP-R3` | 10 | le mot *statue* dans les trois propositions, ou dans aucune | *"la statue du Christ"*, *"la statue de la Petite Sirène"*, *"la statue de la Liberté"* | **oui** |
+
+Joué sur l'item 10 : après *"la statue du Christ"*, puis *"la statue de la Petite Sirène"*, l'indice
+(*"Son nom rappelle une valeur importante : être libre."*) mène à la bonne réponse par le sens, plus par
+le mot *statue*. *"Rédempteur"* a disparu.
+
+#### 3. L'indice de l'item 2, reformulé par le `relecteur-pedagogique`
+
+**Je corrige d'abord mon propre constat.** *"le pays de Londres"* est ma forme, écrite au second
+passage. Le relecteur la dit *"factuellement incorrecte"* : elle n'est pas fausse, mais elle est
+ambiguë, et l'ambiguïté tombe au mauvais endroit. Un enfant de CP qui lit *"le pays de Londres"* peut
+comprendre que Londres est le nom d'un pays, au moment même où l'item lui demande de distinguer une
+ville de son pays. Sa reformulation est meilleure que la mienne. Je la fais mienne.
+
+- **Juste** : Londres est la capitale du Royaume-Uni ; les feux d'artifice du 5 novembre y ont lieu.
+- **Au niveau du CP** : douze mots en coupant aux blancs, une phrase, aucun mot hors du CP (*"ont lieu"* est déjà servi à
+  l'item 12 et validé).
+- **Ne donne pas la réponse** : l'indice nomme une ville, jamais le pays, et aucune des trois
+  propositions ne contient *Londres*. Il faut savoir que Londres est au Royaume-Uni, ce que le même
+  paquet enseigne ailleurs (indice de l'item 1, énoncé de l'item 7). Joué : après *"le Portugal"*, il
+  reste *l'Allemagne* et *le Royaume-Uni*, et l'indice départage.
+
+**Une remarque de frontière, pas un reproche** : choisir les mots d'un indice que l'enfant lit relève
+de ma porte, pas de celle du relecteur (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`). Ici le
+changement est juste et je le confirme ; je le signale pour que la prochaine reformulation de fond me
+soit routée avant d'être commitée.
+
+#### 4. Ce dont je reste la seule garde
+
+Inchangé (section 5 du premier passage). L'assertion ajoutée à `PaquetCpAnglaisCultureTest` (aucun mot
+de quatre lettres ou plus de l'énoncé dans la seule bonne réponse) garde désormais la propriété
+d'`ANG-CP-R3`. Elle ne garde pas celles d'`ANG-CP-R1` (un distracteur aussi vrai du pays) ni
+d'`ANG-CP-R2` (un indice qui mène à la réponse) : sur ces deux-là, je reste la seule garde.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s49, instance A, 2026-10-03.

@@ -252,6 +252,14 @@ La ligne de CE1 nomme d'autres graphèmes. `GRC-CE1-1` ferme le glissement.
 > dans *maison* pour `ain`, *oi* dans *roi* pour `oin`) ; **(c)** l'inversion de lettres (*lion* face à
 > *loin*, *chien* face à *plein*). La famille (a) figure dans **au moins un tiers** des items.
 
+**Correction du 2026-10-03 (`nadia-prof`, s49), sur mon propre exemple.** *"chien face à plein"* est
+faux deux fois : ce n'est pas une inversion de lettres, et *chien* et *plein* portent tous deux le son
+de *« main »*. L'exemple contredit `GRC-CE1-2`, écrite trois lignes plus haut (*"pain et plein
+ensemble"*), et le premier paquet l'a reproduit sur cinq items (`FICHE-bandit-manchot-graphemes-complexes-ce1.md`,
+motif 1). La condition ne change pas : c'est `GRC-CE1-2` qui tranche. **Sur un item dont la cible est
+`ain`/`ein` ou `ien`, aucun distracteur ne contient le son de *« main »*, quelle que soit sa graphie.**
+L'exemple est retiré comme modèle ; il reste écrit ci-dessus, pour que l'erreur se lise.
+
 ### 3.2 `FRA-CE1-02` - la valeur d'une lettre selon les lettres qui l'entourent
 
 **Verdict : ACCEPTÉ SOUS CONDITIONS `VLE-CE1-1` à `VLE-CE1-3`.** Plafond : `couvert-valide`.

@@ -14,7 +14,8 @@
 - **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-03 (s48, instance A), deux réserves non
   bloquantes, `PRO-CE1-R1` et `PRO-CE1-R2`. Fiche ouverte par ce verdict : aucune fiche n'existait
   pour ce jeu.
-- **Dernière mise à jour** : 2026-10-03.
+- **Dernière mise à jour** : 2026-10-03 (second passage, s49) : **VALIDÉ**. `PRO-CE1-R1` et
+  `PRO-CE1-R2` levées. Le verdict de s48 reste écrit tel quel.
 
 ---
 
@@ -127,3 +128,55 @@ donne 9."*
 dans `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même diff. Aucun renommé.
 
 **Signé** : `nadia-prof`, s48, instance A, 2026-10-03.
+
+---
+
+### Second passage du 2026-10-03 (`nadia-prof`, s49, instance A) : **VALIDÉ**
+
+**Les deux réserves de s48 sont levées, chacune par la barre que j'avais écrite.** `MAT-CE1-08` reste
+`couvert-valide`, sans réserve ouverte.
+
+#### 1. Ce que j'ai fait
+
+Contenu à `f5a5df9b` (`lea-dev`), arbre `round-two` à `bbfdde17`. Jar construit par
+`bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests`, YAML du jar vérifié identique à
+l'arbre, lancé sur un port dédié servi par mon propre processus. Aucun job de la CI lancé par moi.
+**Huit parties complètes de dix manches** par appels HTTP réels : **les 24 items tirés**, les items 8,
+10 et 11 joués avec une ou deux erreurs. `git show f5a5df9b` : l'en-tête du YAML, l'énoncé de
+l'item 8, la famille, les distracteurs et l'indice des items 9 à 11, le lexique du test. Rendu non revu
+au navigateur : aucun gabarit n'a changé.
+
+#### 2. Les deux réserves
+
+| Réserve | Barre écrite le 2026-10-03 (s48) | Servi | Tenu |
+|---|---|---|---|
+| `PRO-CE1-R1` | items 9, 10, 11 déclarent deux autres familles que (c), par exemple (a) et (b) ; rangs 7, 8, 9 | `fam=a,b` ; distracteurs `50`/`65`, `52`/`70`, `60`/`82`, recalculés juste à la main ; rangs 7 (29 %), 8 (33 %), 9 (37,5 %) | **oui** |
+| `PRO-CE1-R2` | l'item 8 ne porte ni magasin ni vente | *"La réserve a 2 lots de 10 gommes. Elle en donne 9."*, ma forme mot pour mot | **oui** |
+
+La famille (b) des items 9 à 11 additionne les trois nombres de l'énoncé (`40 + 10 + 15 = 65`) : c'est
+la mélecture d'un enfant qui ne voit pas *"donne"*, plausible. Les indices des items 9 et 11 disent
+désormais *livraisons*, comme celui de l'item 10 que j'avais cité en exemple.
+
+#### 3. Le lexique ajouté par `lea-dev` au test
+
+Vérifié forme par forme. **Les ajouts sont justes** : *magasin*, *vente*, *vendre* et leurs flexions
+gardent le critère de `PRO-CE1-R2` ; les formes accentuées *pièce*, *acheté*, *partagé*, *divisé* et
+leurs flexions sont celles que j'avais signalées ; *divise* sans accent est gardé à bon droit, c'est le
+verbe (*il divise*). Aucun ajout n'exclut un mot que `PRO-CE1-4` admet.
+
+**Ce qui manque encore**, constaté, pas reproché : *achète*, *achètes*, *achètent* (accent grave) ne
+sont pas dans la liste. L'ancienne forme *achete* ne les trouvait pas non plus, et elle a été remplacée
+par *acheté*, qui ne les trouve pas davantage. Manquent aussi *vends*, *vendons*, *partagent*,
+*divisent*. Le paquet servi ne contient aucune de ces formes (relu ce jour) : ce n'est pas un défaut de
+contenu, c'est un trou du garde-fou. Je décris le symptôme ; la cause est à `theo-archi`, via
+`sofia-sm`. Pas de réserve, puisque rien de servi n'est faux.
+
+#### 4. Ce dont je reste la seule garde
+
+Inchangé (section 6 du premier passage), moins le lexique accentué que ce passage a corrigé, plus les
+formes du présent listées en section 3 : jusqu'à ce qu'elles soient ajoutées, c'est moi qui les tiens,
+en lisant.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s49, instance A, 2026-10-03.

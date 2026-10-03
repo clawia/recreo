@@ -23,6 +23,7 @@
 - **Dernière mise à jour** : 2026-10-03 (troisième passage, s48, instance A) : **VALIDÉ SOUS
   RÉSERVE**. Les deux réserves du second passage sont levées ; une réserve neuve, ouverte par ma
   propre forme de l'indice de l'item 7. Les verdicts précédents restent écrits tels quels.
+  Quatrième passage, s49, le même jour : **VALIDÉ**. La réserve de l'indice de l'item 7 est levée.
 
 ---
 
@@ -292,3 +293,45 @@ l'a introduit.
 fiche, qui n'en a jamais numéroté.
 
 **Signé** : `nadia-prof`, s48, instance A, troisième passage, 2026-10-03.
+
+---
+
+## Bloc de validation pédagogique - quatrième passage - nadia-prof UNIQUEMENT
+
+- **Verdict** : **VALIDÉ**
+- **Date** : 2026-10-03
+- **Auditrice** : `nadia-prof`, instance A, s49, quatrième passage.
+- **Audit joué** : **oui**, paquet entier.
+- **Contenu audité** : `cp-emc-alerte.yaml` à `db14e371` (`lea-dev`).
+
+**Conclusion, en une phrase** : la réserve du troisième passage est levée par la forme que j'avais
+écrite, et `EMC-CP-14` reste `couvert-valide` sans réserve ouverte.
+
+### 1. Ce que j'ai fait
+
+Arbre `round-two` à `bbfdde17`. Jar construit par
+`bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests`, YAML du jar vérifié identique à
+l'arbre, lancé sur un port dédié servi par mon propre processus. Aucun job de la CI lancé par moi.
+**Huit parties complètes de dix manches** par appels HTTP réels : **les onze items tirés**, l'item 7
+joué avec une erreur. `git show db14e371` : l'indice de l'item 7, rien d'autre dans le YAML. Rendu non
+revu au navigateur : aucun gabarit n'a changé.
+
+### 2. La réserve du troisième passage - levée
+
+| Barre écrite le 2026-10-03 (s48) | Servi | Tenu |
+|---|---|---|
+| l'indice de l'item 7 ne contient plus *prévenir* ni *prévient* ; *"Un sac oublié, on n'y touche pas."* | *"Un sac oublié, on n'y touche pas."*, mot pour mot | **oui** |
+
+Joué : après *"garder le sac pour elle"*, l'indice écarte ce distracteur et *"ouvrir le sac"* sans
+nommer la bonne réponse. La conduite et l'indice restent justes.
+
+### 3. Ce dont je reste la seule garde sur cette ligne
+
+Inchangé (section 5 du troisième passage), avec une précision : l'assertion ajoutée à
+`PaquetCpEmcAlerteTest` (aucun indice ne contient une forme de *prévenir*) garde ce mot, pas la
+propriété. Un indice qui écrirait *"dis-le à un adulte"* sur un item dont la réponse est *"le dire à
+un adulte"* passerait. Qu'un indice ne nomme pas sa propre réponse reste à moi.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s49, instance A, quatrième passage, 2026-10-03.
