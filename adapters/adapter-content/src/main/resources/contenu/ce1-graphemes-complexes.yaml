@@ -60,8 +60,8 @@ items:
     indice: "Écoute le son, pas seulement les lettres."
   - enonce: "Quel mot contient le même son que « pain » ?"  # GRC-CE1: cible=ain/ein;fam=a,c
     bonneReponse: "grain"
-    distracteurs: ["graine", "chien"]
-    indice: "Lis bien les deux mots avant de choisir."
+    distracteurs: ["graine", "garni"]
+    indice: "Dis les trois mots tout bas."
   - enonce: "Quel mot contient le même son que « train » ?"  # GRC-CE1: cible=ain/ein;fam=a,b
     bonneReponse: "frein"
     distracteurs: ["freine", "fraise"]
@@ -73,80 +73,80 @@ items:
   - enonce: "Quel mot contient le même son que « coin » ?"  # GRC-CE1: cible=oin;fam=a,c
     bonneReponse: "foin"
     distracteurs: ["moine", "lion"]
-    indice: "Compare le son du mot de référence aux trois mots."
+    indice: "Compare le son du mot entre guillemets aux trois mots."
   - enonce: "Quel mot contient le même son que « loin » ?"  # GRC-CE1: cible=oin;fam=a,b
     bonneReponse: "soin"
-    distracteurs: ["moine", "roi"]
-    indice: "Ne choisis pas le mot qui te semble familier."
+    distracteurs: ["moineau", "roi"]
+    indice: "Dis les trois mots tout bas."
   - enonce: "Quel mot contient le même son que « point » ?"  # GRC-CE1: cible=oin;fam=a,c
     bonneReponse: "témoin"
     distracteurs: ["moine", "lion"]
     indice: "Écoute le son, pas seulement les lettres."
   - enonce: "Quel mot contient le même son que « moins » ?"  # GRC-CE1: cible=oin;fam=a,b
     bonneReponse: "groin"
-    distracteurs: ["moine", "roi"]
-    indice: "Lis bien les deux mots avant de choisir."
+    distracteurs: ["moineau", "roi"]
+    indice: "Dis les trois mots tout bas."
   - enonce: "Quel mot contient le même son que « chien » ?"  # GRC-CE1: cible=ien;fam=a,c
     bonneReponse: "ancien"
-    distracteurs: ["chienne", "plein"]
+    distracteurs: ["chienne", "canine"]
     indice: "Pense au son que tu entends, pas à l'écriture."
   - enonce: "Quel mot contient le même son que « bien » ?"  # GRC-CE1: cible=ien;fam=a,b
     bonneReponse: "musicien"
-    distracteurs: ["chienne", "copain"]
+    distracteurs: ["ancienne", "cuisine"]
     indice: "Certains mots se ressemblent mais ne sonnent pas pareil."
   - enonce: "Quel mot contient le même son que « rien » ?"  # GRC-CE1: cible=ien;fam=a,c
     bonneReponse: "gardien"
-    distracteurs: ["chienne", "plein"]
-    indice: "Compare le son du mot de référence aux trois mots."
+    distracteurs: ["chienne", "racine"]
+    indice: "Compare le son du mot entre guillemets aux trois mots."
   - enonce: "Quel mot contient le même son que « combien » ?"  # GRC-CE1: cible=ien;fam=a,b
     bonneReponse: "parisien"
-    distracteurs: ["chienne", "copain"]
-    indice: "Ne choisis pas le mot qui te semble familier."
+    distracteurs: ["ancienne", "farine"]
+    indice: "Dis les trois mots tout bas."
   - enonce: "Quel mot contient le même son que « soleil » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
     bonneReponse: "réveil"
     distracteurs: ["reine", "ciel"]
     indice: "Écoute le son, pas seulement les lettres."
   - enonce: "Quel mot contient le même son que « abeille » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
     bonneReponse: "corbeille"
-    distracteurs: ["neige", "ciel"]
-    indice: "Lis bien les deux mots avant de choisir."
+    distracteurs: ["neige", "hier"]
+    indice: "Dis les trois mots tout bas."
   - enonce: "Quel mot contient le même son que « oreille » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
     bonneReponse: "merveille"
     distracteurs: ["reine", "ciel"]
     indice: "Pense au son que tu entends, pas à l'écriture."
   - enonce: "Quel mot contient le même son que « bouteille » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
     bonneReponse: "orteil"
-    distracteurs: ["neige", "ciel"]
+    distracteurs: ["neige", "hier"]
     indice: "Certains mots se ressemblent mais ne sonnent pas pareil."
   - enonce: "Quel mot contient le même son que « fille » ?"  # GRC-CE1: cible=ill;fam=b,c
     bonneReponse: "papillon"
     distracteurs: ["fusil", "colline"]
-    indice: "Compare le son du mot de référence aux trois mots."
+    indice: "Compare le son du mot entre guillemets aux trois mots."
   - enonce: "Quel mot contient le même son que « bille » ?"  # GRC-CE1: cible=ill;fam=b,c
     bonneReponse: "chenille"
-    distracteurs: ["fusil", "colline"]
-    indice: "Ne choisis pas le mot qui te semble familier."
+    distracteurs: ["filet", "colline"]
+    indice: "Dis les trois mots tout bas."
   - enonce: "Quel mot contient le même son que « quille » ?"  # GRC-CE1: cible=ill;fam=b,c
     bonneReponse: "coquille"
     distracteurs: ["fusil", "colline"]
     indice: "Écoute le son, pas seulement les lettres."
   - enonce: "Quel mot contient le même son que « vanille » ?"  # GRC-CE1: cible=ill;fam=b,c
     bonneReponse: "brindille"
-    distracteurs: ["fusil", "colline"]
-    indice: "Lis bien les deux mots avant de choisir."
+    distracteurs: ["filet", "colline"]
+    indice: "Dis les trois mots tout bas."
   - enonce: "Quel mot contient le même son que « montagne » ?"  # GRC-CE1: cible=gn;fam=b,c
     bonneReponse: "araignée"
     distracteurs: ["guitare", "singe"]
     indice: "Pense au son que tu entends, pas à l'écriture."
   - enonce: "Quel mot contient le même son que « campagne » ?"  # GRC-CE1: cible=gn;fam=b,c
     bonneReponse: "peigne"
-    distracteurs: ["guitare", "singe"]
+    distracteurs: ["guépard", "linge"]
     indice: "Certains mots se ressemblent mais ne sonnent pas pareil."
   - enonce: "Quel mot contient le même son que « signe » ?"  # GRC-CE1: cible=gn;fam=b,c
     bonneReponse: "oignon"
     distracteurs: ["guitare", "singe"]
-    indice: "Compare le son du mot de référence aux trois mots."
+    indice: "Compare le son du mot entre guillemets aux trois mots."
   - enonce: "Quel mot contient le même son que « vigne » ?"  # GRC-CE1: cible=gn;fam=b,c
     bonneReponse: "agneau"
-    distracteurs: ["guitare", "singe"]
-    indice: "Ne choisis pas le mot qui te semble familier."
+    distracteurs: ["guépard", "linge"]
+    indice: "Dis les trois mots tout bas."
