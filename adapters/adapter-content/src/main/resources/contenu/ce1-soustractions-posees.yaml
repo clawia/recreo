@@ -12,25 +12,28 @@ type: question
 #   "le resultat atteste le calcul ; la technique posee elle-meme - disposition en colonnes,
 #   emprunts - n'est ni montree ni verifiee par le produit."
 #
-# SOP-CE1-5 (amendee le 2026-10-01, quatre formes et seulement celles-la) : chaque distracteur
-# correspond a une erreur classique nommee et declaree ici :
+# SOP-CE1-5 (amendee le 2026-10-01 puis le 2026-10-02 par l'arbitrage de SOP-CE1-R1, cinq formes et
+# seulement celles-la) : chaque distracteur correspond a une erreur classique nommee et declaree
+# ici :
 #   - oubliee : soustraction colonne par colonne en valeur absolue, sans emprunt (52 - 27 -> 35).
 #   - non-reportee : l'emprunt est pris localement sur sa colonne mais n'est jamais reporte a la
 #     colonne suivante (347 - 129 -> 228).
-#   - somme : l'addition au lieu de la difference (a + b). Seule forme disponible sur un item sans
-#     aucun emprunt ; cet item ne porte alors qu'une seule proposition de plus que la bonne
-#     reponse.
+#   - somme : l'addition au lieu de la difference (a + b).
 #   - reportee-deux-fois(colonne) : pour un emprunt reellement fait sur la colonne "unites" ou
 #     "dizaines", la colonne suivante perd 2 au lieu de 1 (valeur = bonne reponse - 10^(rang+1)).
 #     Admise seulement si la colonne qui recoit l'emprunt en double ne change pas de statut
 #     d'emprunt par rapport au calcul juste - sinon l'item porterait deux erreurs enchainees.
-# Chaque marqueur est relu et compare au calcul par PaquetCe1SoustractionsPoseesTest, y compris la
-# regle d'admission de la quatrieme forme.
+#   - decalage : le second terme est pose aligne a gauche au lieu d'etre aligne sur les unites
+#     (valeur = a - 10 x b). Admise seulement si la valeur est positive, porte le meme nombre de
+#     chiffres que la bonne reponse, et se calcule sans emprunt. Obligatoire sur tout item sans
+#     aucun emprunt (arbitrage de SOP-CE1-R1).
+# Chaque marqueur est relu et compare au calcul par PaquetCe1SoustractionsPoseesTest, y compris les
+# regles d'admission de la quatrieme et de la cinquieme forme.
 #
-# SOP-CE1-5, regle de rang sur le paquet entier (items a deux propositions compris) : choisir
-# toujours la plus petite proposition ne donne pas la bonne reponse sur plus de la moitie des
-# items. Verifiee par PaquetCe1SoustractionsPoseesTest, en plus du garde-fou generique qui ne lit
-# que les items a trois propositions.
+# SOP-CE1-5, regle de rang sur le paquet entier : choisir toujours la plus petite proposition ne
+# donne pas la bonne reponse sur plus de la moitie des items. Verifiee par
+# PaquetCe1SoustractionsPoseesTest, en plus du garde-fou generique qui lit deja le paquet entier
+# depuis l'arbitrage de SOP-CE1-R1 (tous les items portent desormais trois propositions).
 #
 # SOP-CE1-3 : ce paquet declare MAT-CE1-05, pas MAT-CE1-03 - au moins les deux tiers des items
 # mettent en jeu un nombre de trois chiffres ou un premier terme superieur a 100, pour ne pas
@@ -42,14 +45,14 @@ descripteur:
   competence: "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)"
 lignesDeReferentiel: ["MAT-CE1-05"]
 items:
-  - enonce: "47 - 20 = ?"
-    bonneReponse: "27"
-    distracteurs: ["67"]  # SOP-CE1-5: somme
-    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
-  - enonce: "65 - 15 = ?"
-    bonneReponse: "50"
-    distracteurs: ["80"]  # SOP-CE1-5: somme
-    indice: "Pose la soustraction en colonnes, calcule les unités puis les dizaines, et n'oublie pas l'emprunt si besoin."
+  - enonce: "786 - 25 = ?"
+    bonneReponse: "761"
+    distracteurs: ["536", "811"]  # SOP-CE1-5: decalage, somme
+    indice: "Pose la soustraction en colonnes, aligne bien le second nombre sous les unités, puis calcule les unités et les dizaines."
+  - enonce: "785 - 40 = ?"
+    bonneReponse: "745"
+    distracteurs: ["385", "825"]  # SOP-CE1-5: decalage, somme
+    indice: "Pose la soustraction en colonnes, aligne bien le second nombre sous les unités, puis calcule les unités et les dizaines."
   - enonce: "52 - 27 = ?"
     bonneReponse: "25"
     distracteurs: ["35", "15"]  # SOP-CE1-5: non-reportee, reportee-deux-fois(unites)

@@ -1,0 +1,18 @@
+schema: 1
+id: ce1-soustractions-posees-fautif-decalage
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1SoustractionsPoseesTest, clause neuve de la
+# cinquieme forme (arbitrage de SOP-CE1-R1). Un seul item, dont le premier distracteur declare
+# "decalage" mais porte une valeur fausse (535 au lieu des 536 que a - 10 x b calcule depuis 786 et
+# 25) : le calcul depuis les operandes doit le refuser.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Poser et effectuer une soustraction (nombres à deux ou trois chiffres)"
+lignesDeReferentiel: ["MAT-CE1-05"]
+items:
+  - enonce: "786 - 25 = ?"
+    bonneReponse: "761"
+    distracteurs: ["535", "811"]  # SOP-CE1-5: decalage, somme
+    indice: "Pose la soustraction en colonnes, aligne bien le second nombre sous les unités, puis calcule les unités et les dizaines."

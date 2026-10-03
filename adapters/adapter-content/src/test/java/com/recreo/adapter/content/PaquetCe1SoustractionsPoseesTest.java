@@ -30,28 +30,35 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@code ce1-soustractions-posees}, ligne {@code MAT-CE1-05} - soustraction posee avec emprunt.
  * Arbitrage pedagogique prealable cite dans la story
  * ({@code squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md}, section 5.2),
- * amende le 2026-10-01 par
- * {@code squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md} (section 2) : une
- * quatrieme forme de distracteur (l'emprunt reporte deux fois) et une regle de rang sur le paquet
- * entier, items sans emprunt compris.
+ * amende le 2026-10-01 puis le 2026-10-02 par
+ * {@code squad/conformite/FICHE-bandit-manchot-soustractions-posees-ce1.md} (section 2, puis
+ * section "Arbitrage de {@code SOP-CE1-R1}") : une quatrieme forme de distracteur (l'emprunt
+ * reporte deux fois), une cinquieme forme (le decalage des colonnes, obligatoire sur tout item sans
+ * emprunt), et une regle de rang sur le paquet entier.
  *
  * <p>Les proprietes generiques (indice non vide, aucune proposition egale a une autre, rang de la
  * bonne reponse non predictible <b>sur les items a trois propositions</b>) sont deja gardees par
  * les garde-fous derives du repertoire de contenu ; ce fichier verifie les conditions
  * {@code SOP-CE1-1} a {@code SOP-CE1-6} qu'aucun garde-fou generique ne connait, dont la regle de
- * rang <b>etendue au paquet entier</b> que le garde-fou generique ne lit pas (il ignore les items
- * a deux propositions, voir {@link #laStrategieToujoursLaPlusPetitePropositionNeGagnePasSurPlusDeLaMoitieDuPaquetEntier}).</p>
+ * rang <b>etendue au paquet entier</b> - depuis l'arbitrage de {@code SOP-CE1-R1}, tous les items
+ * du paquet portent trois propositions, et le garde-fou generique les lit donc tous ; cette clause
+ * reste ecrite pour tout paquet futur qui porterait encore un item a deux propositions (voir
+ * {@link #laStrategieToujoursLaPlusPetitePropositionNeGagnePasSurPlusDeLaMoitieDuPaquetEntier}).</p>
  *
- * <p><b>{@code SOP-CE1-5}</b> : chaque distracteur est l'une des quatre erreurs nommees, calculee
- * a partir des operandes - {@link #oubliee}, {@link #nonReportee}, {@link #somme} et
- * {@link #reporteeDeuxFois} traduisent litteralement l'arithmetique en colonnes decrite par
- * l'amendement. La declaration dans le paquet se fait par un marqueur en commentaire sur la ligne
- * {@code distracteurs}, relu par {@link #marqueursParEnonce} et compare au calcul : un distracteur
- * dont le marqueur ne correspond pas a la valeur chargee, ou dont aucun marqueur n'est trouve, fait
- * rougir ce test plutot que de passer sans etre verifie. Sur un item marque
- * {@code reportee-deux-fois}, {@link #admissionReporteeDeuxFois} rejoue la regle d'admission : la
- * colonne qui recoit l'emprunt en double ne doit changer de statut d'emprunt ni dans un sens ni
- * dans l'autre par rapport au calcul juste.</p>
+ * <p><b>{@code SOP-CE1-5}</b> : chaque distracteur est l'une des cinq erreurs nommees, calculee
+ * a partir des operandes - {@link #oubliee}, {@link #nonReportee}, {@link #somme},
+ * {@link #reporteeDeuxFois} et {@link #decalage} traduisent litteralement l'arithmetique en
+ * colonnes decrite par l'amendement. La declaration dans le paquet se fait par un marqueur en
+ * commentaire sur la ligne {@code distracteurs}, relu par {@link #marqueursParEnonce} et compare au
+ * calcul : un distracteur dont le marqueur ne correspond pas a la valeur chargee, ou dont aucun
+ * marqueur n'est trouve, fait rougir ce test plutot que de passer sans etre verifie. Sur un item
+ * marque {@code reportee-deux-fois}, {@link #admissionReporteeDeuxFois} rejoue la regle
+ * d'admission : la colonne qui recoit l'emprunt en double ne doit changer de statut d'emprunt ni
+ * dans un sens ni dans l'autre par rapport au calcul juste. Sur un item marque {@code decalage},
+ * {@link #admissionDecalage} verifie que la valeur est positive, porte le meme nombre de chiffres
+ * que la bonne reponse et se calcule sans emprunt, et
+ * {@link #toutItemSansEmpruntPorteLeDecalageDesColonnes} verifie son obligation sur tout item sans
+ * emprunt.</p>
  */
 class PaquetCe1SoustractionsPoseesTest {
 
@@ -91,6 +98,8 @@ class PaquetCe1SoustractionsPoseesTest {
     private static final String MARQUEUR_NON_REPORTEE = "non-reportee";
 
     private static final String MARQUEUR_SOMME = "somme";
+
+    private static final String MARQUEUR_DECALAGE = "decalage";
 
     private enum ColonneEmprunt {
         UNITES, DIZAINES
@@ -144,6 +153,14 @@ class PaquetCe1SoustractionsPoseesTest {
     }
 
     /**
+     * SOP-CE1-5, cinquieme forme (arbitrage de SOP-CE1-R1 du 2026-10-02) : le second terme est
+     * pose aligne a gauche sous le premier, au lieu d'etre aligne sur les unites.
+     */
+    static int decalage(int a, int b) {
+        return a - 10 * b;
+    }
+
+    /**
      * SOP-CE1-5, quatrieme forme (amendement du 2026-10-01) : pour un emprunt fait sur la colonne
      * de rang {@code i}, la valeur est {@code bonneReponse - 10^(i+1)}, toujours inferieure a la
      * bonne reponse.
@@ -186,6 +203,21 @@ class PaquetCe1SoustractionsPoseesTest {
         boolean empruntVrai = chiffre(a, colonneSuivante) - 1 < chiffre(b, colonneSuivante);
         boolean empruntAvecDoubleDebit = chiffre(a, colonneSuivante) - 2 < chiffre(b, colonneSuivante);
         return empruntVrai == empruntAvecDoubleDebit;
+    }
+
+    /**
+     * SOP-CE1-5, regle d'admission de la cinquieme forme (arbitrage de SOP-CE1-R1) : la valeur
+     * {@code a - 10 x b} est admise seulement si elle est positive, si elle porte le meme nombre
+     * de chiffres que la bonne reponse, et si elle se calcule sans emprunt - colonne des dizaines
+     * de {@code a} face au chiffre des unites de {@code b} decale, colonne des centaines de
+     * {@code a} face au chiffre des dizaines de {@code b} decale.
+     */
+    static boolean admissionDecalage(int a, int b, int bonne) {
+        int valeur = decalage(a, b);
+        if (valeur <= 0 || chiffresDe(valeur) != chiffresDe(bonne)) {
+            return false;
+        }
+        return chiffre(a, 1) >= chiffre(b, 0) && chiffre(a, 2) >= chiffre(b, 1);
     }
 
     private record ItemAnalyse(Question question, int a, int b, int bonne) {
@@ -433,6 +465,41 @@ class PaquetCe1SoustractionsPoseesTest {
     }
 
     /**
+     * SOP-CE1-5, regle d'admission de la cinquieme forme : sur chaque item marque
+     * {@code decalage}, la valeur {@code a - 10 x b} est positive, porte le meme nombre de
+     * chiffres que la bonne reponse, et se calcule sans emprunt.
+     */
+    @Test
+    void chaqueFormeDecalageTientLaRegleDAdmission() {
+        Map<String, List<String>> marqueurs = marqueursParEnonce(FICHIER_CONTENU);
+        for (ItemAnalyse analyse : itemsAnalyses()) {
+            List<String> tokens = marqueurs.get(analyse.question().enonce());
+            if (tokens.contains(MARQUEUR_DECALAGE)) {
+                assertThat(admissionDecalage(analyse.a(), analyse.b(), analyse.bonne()))
+                        .as("SOP-CE1-5 : '%s', regle d'admission de decalage",
+                                analyse.question().enonce()).isTrue();
+            }
+        }
+    }
+
+    /**
+     * SOP-CE1-5, arbitrage de {@code SOP-CE1-R1} : la cinquieme forme (decalage) est obligatoire
+     * sur tout item sans aucun emprunt.
+     */
+    @Test
+    void toutItemSansEmpruntPorteLeDecalageDesColonnes() {
+        Map<String, List<String>> marqueurs = marqueursParEnonce(FICHIER_CONTENU);
+        for (ItemAnalyse analyse : itemsAnalyses()) {
+            if (nombreDEmprunts(analyse) == 0) {
+                List<String> tokens = marqueurs.get(analyse.question().enonce());
+                assertThat(tokens).as("SOP-CE1-5 : '%s' n'a aucun emprunt et doit porter le"
+                        + " marqueur 'decalage' (arbitrage de SOP-CE1-R1)",
+                        analyse.question().enonce()).contains(MARQUEUR_DECALAGE);
+            }
+        }
+    }
+
+    /**
      * ADR-0013 obligation 3 : le jeu fautif de ce garde-fou, traverse par la lecture disque, le
      * chargeur de contenu reel et le recensement des marqueurs - pas seulement par un objet mute en
      * memoire. Le premier distracteur de son seul item declare "non-reportee" mais porte 36 au lieu
@@ -450,6 +517,27 @@ class PaquetCe1SoustractionsPoseesTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("SOP-CE1-5")
                 .hasMessageContaining("52 - 27");
+    }
+
+    /**
+     * ADR-0013 obligation 3 : le jeu fautif de la clause neuve, la cinquieme forme (decalage,
+     * arbitrage de SOP-CE1-R1). Son premier distracteur declare "decalage" mais porte 535 au lieu
+     * des 536 que a - 10 x b calcule depuis 786 et 25 : le calcul depuis les operandes doit le
+     * refuser.
+     */
+    @Test
+    void leJeuFautifDuDecalageEstRefuseSurSaValeurErronee() {
+        Path fichierFautif =
+                CONTRE_EXEMPLE.resolve("contenu/ce1-soustractions-posees-fautif-decalage.yaml");
+        ContentSource source = new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-soustractions-posees-fautif-decalage");
+        List<ItemAnalyse> analyses = itemsAnalyses(source);
+        Map<String, List<String>> marqueurs = marqueursParEnonce(fichierFautif);
+
+        assertThatThrownBy(() -> verifierMarqueurs(analyses, marqueurs))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("SOP-CE1-5")
+                .hasMessageContaining("786 - 25");
     }
 
     /**
@@ -541,6 +629,9 @@ class PaquetCe1SoustractionsPoseesTest {
         }
         if (MARQUEUR_SOMME.equals(token)) {
             return somme(a, b);
+        }
+        if (MARQUEUR_DECALAGE.equals(token)) {
+            return decalage(a, b);
         }
         Matcher matcher = MARQUEUR_REPORTEE_DEUX_FOIS.matcher(token);
         assertThat(matcher.matches()).as("marqueur SOP-CE1-5 inconnu : '%s'", token).isTrue();
