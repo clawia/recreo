@@ -33,8 +33,8 @@ Instance unique de `nadia-prof` (Done pedagogique) :
 | **Total** | **2,5 / 5,0** | marge 2,5 |
 
 Hors chiffrage de cette borne : le chantier de sourcing du corpus d'oeuvres du domaine public
-(section 4) - aucun Done pedagogique n'est attendu dessus a s49, et aucune unite en lots ne le
-mesure.
+(section 5, perimetre complete en section 9 - T2 a T5 inclus) - aucun Done pedagogique n'est
+attendu dessus a s49, et aucune unite en lots ne le mesure.
 
 ## 2. Tarif des trois corrections differees : 0,5 chacune, meme precedent `PAR-10` que `DEC-0106`
 
@@ -139,7 +139,46 @@ l'eleve, exactement comme le palier 2 n'en a jamais porte une. La story de const
 (quelles oeuvres, sur quelles lignes) restera a ecrire une fois le corpus sourcee, au moment ou une
 ligne d'histoire des arts ou d'arts plastiques sera effectivement engagee.
 
-## 6. Correction factuelle de `DEC-0106`, section 4
+## 6. Amendement du 2026-10-03 (meme jour) : l'`ADR` existait deja, T2 a T5 entrent au perimetre
+
+La section 5 engage `theo-archi` a "rendre l'`ADR` et sa regle ArchUnit avant la cloture de s49",
+sur la foi de son propre avis de s48 (section 11) qui affirmait l'`ADR` manquant. **Cette
+affirmation est fausse.** `ADR-0082` (Accepte, 2026-09-05, commit `4f594d64`) existe depuis la
+decision meme de `DEC-0077` et repond deja aux quatre questions de sa section 4 ; sa regle
+(`ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest`, 18 tests verts)
+tourne. `theo-archi` corrige son propre avis dans celui de s49
+(`squad/rapports/avis-faisabilite-s49-quatre-stories.md`, section 7 ; `DEC-0105`, section 2 bis).
+La borne de forme que la section 5 lui fixait est donc deja tenue, depuis le 2026-09-05.
+
+**Consequence sur le perimetre : le travail restant n'est plus architectural, il est concret.**
+`theo-archi` le decrit en deux lots (`ADR-0082`, decision 7 et taches ; avis de s49, section 7) :
+
+- **T2, T3, T4** : brancher la resolution d'un identifiant `oeuvre-` dans les garde-fous et le
+  gabarit de rendu, poser un plafond de pixels. Environ deux jours de developpeur, aucune decision
+  d'architecture neuve (`DecouplageMecaniqueContenuTest` et les regles de couches n'ont rien de
+  neuf a interdire).
+- **T5** : constituer le corpus commence par le choix des oeuvres par `nadia-prof` (`DEC-0077`
+  section 4). Un developpeur seul ne peut pas l'engager.
+
+**Je decide : T2 a T4 et T5 entrent au perimetre de s49, hors chiffrage en lots**, sur le meme
+precedent deja applique en section 5 a l'`ADR` lui-meme (palier 2, `DEC-0074` section 1.2 :
+chantier porte en developpeur affecte, jamais en unite comptee contre la borne de 5,0 de
+`nadia-prof`). Le perimetre chiffre de la section 1 (2,5/5,0, marge 2,5) ne bouge pas : T2 a T4 ne
+produisent aucun contenu pedagogique a auditer, et T5 est un choix d'oeuvres par `nadia-prof`, pas
+un Jugement de faisabilite ni un Done pedagogique - ni l'un ni l'autre ne consomme la borne de
+lots.
+
+**Ce que je nomme sans le chiffrer** : T5 consomme du temps reel de `nadia-prof`, hors de sa borne
+d'audit en lots - point que `theo-archi` releve explicitement (avis de s49, section 7). Ne pas le
+chiffrer en lots n'est pas le declarer gratuit : `sofia-sm` en tient compte au planning comme
+d'une charge de `nadia-prof` distincte des 2,5/5,0 d'instance.
+
+**Ce que je ne fais pas.** Je n'affecte aucun developpeur nominativement ni aucun ordre entre T5
+et T2-T4 : `sofia-sm` et `theo-archi` le font au planning (section 7, point 6 de ce document,
+inchange), y compris la question de savoir si T2-T4 peuvent commencer sur un materiau provisoire
+avant que T5 ne livre le materiau reel.
+
+## 7. Correction factuelle de `DEC-0106`, section 4
 
 `DEC-0106` (section 4) cite "la borne de longueur du texte support que `DEC-0104` section 1.1
 signale non posee". C'etait exact le 2026-10-02 au matin ; `nadia-prof` l'a posee le jour meme
@@ -150,7 +189,7 @@ apportee directement dans `DEC-0106` (note ajoutee en fin de section 4, datee de
 pas une nouvelle decision, c'est une correction factuelle d'un etat qui a change le jour meme de
 l'ecriture du document qu'elle corrige.
 
-## 7. Ce que je decide
+## 8. Ce que je decide
 
 1. Le perimetre de s49 est gele : `PRO-CE1-R1`/`PRO-CE1-R2`, `ANG-CP-R3` + l'item non leve
    d'`ANG-CP-R1`/`ANG-CP-R2`, la reserve sans identifiant d'`EMC-CP-14` (item 7), `FRA-CE1-01` -
@@ -161,22 +200,26 @@ l'ecriture du document qu'elle corrige.
    source du referentiel), sur le verdict deja ecrit (`GRC-CE1-1` a `GRC-CE1-3`). `FRA-CE1-02` reste
    au vivier ouvert, non engagee ce sprint.
 4. Le chantier de sourcing du corpus d'oeuvres du domaine public entre au perimetre de s49, hors
-   chiffrage de la borne d'audit : `theo-archi` rend l'`ADR` et sa regle ArchUnit avant la cloture de
-   s49, comme il s'y est engage ; aucun Done pedagogique, aucun tarif en lots.
+   chiffrage de la borne d'audit. `ADR-0082` existe deja (section 6) : ce qui reste, T2 a T4
+   (branchement technique, environ deux jours de developpeur) et T5 (choix des oeuvres par
+   `nadia-prof`), entre lui aussi au perimetre de s49, hors chiffrage en lots, sur le precedent du
+   palier 2 (section 6). Aucun Done pedagogique, aucun tarif en lots ; T5 consomme du temps de
+   `nadia-prof` hors de sa borne d'audit, nomme sans etre chiffre.
 5. La reference perimee de `DEC-0106`, section 4, est corrigee directement dans ce document (section
-   6 ci-dessus).
+   7 ci-dessus).
 6. Les developpeurs restent a affecter nominativement par `sofia-sm` au planning, une fois cette
-   decision lue.
+   decision lue - y compris celui de T2 a T4.
 
-## 8. Ce que cette decision ne fait pas
+## 9. Ce que cette decision ne fait pas
 
 - Elle ne deplace aucun statut de `squad/programme/MATRICE-couverture.md` et ne ferme aucune ligne :
   les statuts ne bougent qu'au verdict de `nadia-prof`.
 - Elle ne prononce aucun Done, technique ou pedagogique.
-- Elle ne rend pas l'avis de faisabilite technique dedie a s49 que `theo-archi` doit encore ecrire
-  sur les trois corrections et sur `FRA-CE1-01` (planning, section 5) : cette decision gele le
-  perimetre produit, elle ne confirme pas la faisabilite technique.
-- Elle n'ecrit pas l'`ADR` ni la regle ArchUnit du chantier de sourcing : routes a `theo-archi`, qui
-  s'y est deja engage.
-- Elle ne fixe l'affectation nominative d'aucun developpeur ni d'aucune instance : travail du
-  planning de s49, par `sofia-sm`.
+- Elle ne rend pas l'avis de faisabilite technique dedie a s49 que `theo-archi` a deja rendu sur les
+  trois corrections, sur `FRA-CE1-01` et sur le chantier de sourcing
+  (`squad/rapports/avis-faisabilite-s49-quatre-stories.md`) : cette decision gele le perimetre
+  produit, elle ne rejuge pas la faisabilite technique.
+- Elle n'ecrit aucun `ADR` ni aucune regle ArchUnit : `ADR-0082` est deja ecrit et n'est pas a
+  reecrire (section 6).
+- Elle ne fixe l'affectation nominative d'aucun developpeur ni d'aucune instance, ni l'ordre entre
+  T5 et T2-T4 : travail du planning de s49, par `sofia-sm` et `theo-archi`.

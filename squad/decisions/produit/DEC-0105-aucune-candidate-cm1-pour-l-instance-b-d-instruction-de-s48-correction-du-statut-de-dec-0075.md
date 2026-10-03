@@ -77,6 +77,22 @@ explicitement par ecrit, le chantier de sourcing du corpus d'oeuvres du domaine 
 d'integration. Ce n'est ni une instruction pedagogique (l'instance B n'a rien a y faire, les lignes
 sont deja jugees) ni un arbitrage produit neuf (deja fait).
 
+## 2 bis. Amendement du 2026-10-03 (meme jour) : correction factuelle sur l'ADR du chantier de
+sourcing
+
+La section 2 ci-dessus affirme que le chantier "n'a laisse aucune trace d'engagement dans le
+depot - aucun ADR, aucune story, aucun paquet". **C'est faux sur le premier point.** `theo-archi`
+a ecrit `ADR-0082` (Accepte) le jour meme de `DEC-0077`, le 2026-09-05, commit `4f594d64` : il
+repond aux quatre questions de `DEC-0077` section 4 (la source, la preuve de domaine public par
+oeuvre, le format d'integration, qui verifie) et porte sa regle executable en garde-fou de test
+(`ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest`, 18 tests verts).
+`theo-archi` l'avait lui-meme omis de son avis de s48 (section 11) et corrige dans son avis de s49
+(`squad/rapports/avis-faisabilite-s49-quatre-stories.md`, section 7).
+
+Ce qui reste vrai de la section 2 : aucune story et aucun paquet n'existent, et la recherche de
+sources elle-meme n'a pas commence. C'est l'execution de l'`ADR` qui a manque quatre sprints
+durant, pas sa redaction. Consequences sur le perimetre de s49 : `DEC-0107`, section 9.
+
 ## 3. Ce que ce document ne fait pas
 
 - Il n'ouvre aucune ligne CM1 a l'instance B de `nadia-prof` pour s48.
