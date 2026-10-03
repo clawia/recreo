@@ -164,7 +164,13 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // (squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md) - sans point final,
         // meme convention que les entrees precedentes.
         TABLES_DE_MULTIPLICATION("MAT-CE1-07",
-                "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4");
+                "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4"),
+        // S48-MAT-PROBLEMES (s48) : entree neuve, MAT-CE1-08, libelle du referentiel copie mot
+        // pour mot (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-08) sans le
+        // point final, meme convention que les entrees precedentes.
+        PROBLEMES_ETAPES("MAT-CE1-08",
+                "Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou"
+                        + " deux étapes");
 
         private final String ligne;
 

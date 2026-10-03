@@ -369,6 +369,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S47-MAT-TABLES (s47) : entree neuve, MAT-CE1-07, tables de multiplication de 2, 5 et
             // 10, puis de 3 et 4.
             "bandit-manchot-tables-multiplication-ce1",
+            // S48-MAT-PROBLEMES (s48) : entree neuve, MAT-CE1-08, problemes d'addition, de
+            // soustraction et de multiplication a une ou deux etapes.
+            "bandit-manchot-problemes-etapes-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -605,6 +608,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S47-MAT-TABLES (s47) : titre neuf, distinct de celui du CM1 ("Les tables de
             // multiplication") et sans mention de niveau.
             "Mémoriser ses tables de multiplication",
+            // S48-MAT-PROBLEMES (s48) : titre neuf.
+            "Les problèmes à étapes",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -866,6 +871,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis le bon numéro, ou ce qu'il faut faire.",
             // S47-MAT-TABLES (s47) : consigne neuve, blanc insecable devant "?" (TYP-1, ADR-0067).
             "Quel est le résultat ?",
+            // S48-MAT-PROBLEMES (s48) : consigne neuve, blanc insecable devant "!" (TYP-1,
+            // ADR-0067) - distincte de "Lis bien, puis trouve la réponse !"
+            // (cp-problemes-additifs), deja dans la table de dette de TYP-1 avec son espace
+            // ordinaire.
+            "Lis bien, puis trouve la réponse !",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1389,7 +1399,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S47-MAT-TABLES (s47) : competence neuve, MAT-CE1-07, libelle fixe par la story
             // (docs/backlog/backlog.md, section "Sprint 47") et par la fiche de conformite
             // (squad/conformite/FICHE-bandit-manchot-tables-multiplication-ce1.md).
-            "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4");
+            "Calcul mental - tables de multiplication de 2, 5 et 10, puis de 3 et 4",
+            // S48-MAT-PROBLEMES (s48) : competence neuve, MAT-CE1-08, libelle du referentiel
+            // copie mot pour mot (squad/programme/mathematiques/competences-ce1.md, ligne
+            // MAT-CE1-08) sans le point final.
+            "Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou deux étapes");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

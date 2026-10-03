@@ -1,0 +1,18 @@
+schema: 1
+id: ce1-problemes-etapes-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1ProblemesEtapesTest. Un seul item, dont le
+# premier distracteur declare la famille (b) (inversion de l'operation de l'unique etape) mais
+# porte une valeur fausse : sur sub(32,9), la famille (b) vaut 32 + 9 = 41, jamais 99. Le
+# calcul depuis la derivation declaree doit le refuser.
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou deux étapes"
+lignesDeReferentiel: ["MAT-CE1-08"]
+items:
+  - enonce: "Le club a 32 billes. Il en utilise 9. Combien de billes lui reste-t-il ?"  # PRO-CE1: sub(32,9);fam=b,d
+    bonneReponse: "23"
+    distracteurs: ["99", "9"]
+    indice: "Soustrais le nombre de billes utilisées."

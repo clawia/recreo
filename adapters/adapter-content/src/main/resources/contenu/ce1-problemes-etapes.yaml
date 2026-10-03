@@ -1,0 +1,149 @@
+# S48-MAT-PROBLEMES (s48, DEC-0106). Arbitrage prealable de nadia-prof, conditions PRO-CE1-1 a
+# PRO-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md, section 2), et
+# avis de faisabilite de theo-archi (squad/rapports/avis-faisabilite-s48-sept-stories.md,
+# section 3), dont les quatre pieges de fabrication sont repris sans changement par
+# PaquetCe1ProblemesEtapesTest.
+#
+# Choix non bloquants tranches ici pour avancer (section 12 de l'avis, Q1 et Q2, routes a
+# nadia-prof, non repondues a ce jour) :
+#   - Q1 : "aucune operation qui exigerait une technique posee" (PRO-CE1-4) est lue comme les
+#     bornes deja fermees de MAT-CE1-03 (addition/soustraction dans la limite de 100) et de
+#     MAT-CE1-07 (tables de 2, 3, 4, 5, 10) - tous les nombres de ce paquet restent sous 100, et
+#     toute multiplication est un fait de ces cinq tables.
+#   - Q2 : aucune duree n'est servie ici (adjacence avec MAT-CE1-12, deja ferme par
+#     ce1-problemes-durees), et le mot "voiture" n'est employe dans aucun item, par prudence.
+#
+# PRO-CE1-1 : items a deux etapes >= un tiers (14/24, 58 %), items a une etape >= un quart
+# (10/24, 42 %), aucun item a trois etapes.
+# PRO-CE1-2 : addition (15/24), soustraction (15/24) et multiplication (8/24) sont chacune une
+# etape d'au moins un cinquieme des items.
+# PRO-CE1-3 : la multiplication n'est jamais l'unique etape d'un item a une etape - les dix items
+# a une etape portent tous une addition ou une soustraction seule.
+# PRO-CE1-4 : aucun nombre ni resultat intermediaire au-dela de 1000 (le plus grand est 85), aucune
+# division, aucun mot d'achat, de monnaie, de partage ou de groupement.
+# PRO-CE1-5 : chaque item declare sa derivation en commentaire ("# PRO-CE1: etape(s);fam=x,y"),
+# relue et recalculee integralement par PaquetCe1ProblemesEtapesTest - rien n'est recopie du YAML
+# pour la verifier. Rangs sur le paquet entier : la plus petite sur 4 (16,7 %), intermediaire sur
+# 11 (45,8 %), la plus grande sur 9 (37,5 %) - chacun entre 10 % et 50 %.
+# PRO-CE1-6 : LON-CE1-1 et LON-CE1-2 sont deja tenues par
+# AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest (ADR-0101), dette nulle pour ce paquet
+# neuf. Aucune situation ne suppose un jardin, une piscine, une chambre a soi, un animal, des
+# vacances, de l'argent de poche ni une voiture ; les sujets sont des collectifs (la classe,
+# l'ecole, la bibliotheque, la cantine, le club, l'atelier, la reserve, le magasin scolaire),
+# jamais un enfant nomme, pour ecarter tout role distribue par genre.
+# PRO-CE1-7 : vingt-quatre items, au-dessus du plancher de vingt. Chaque indice donne la methode
+# de la premiere etape seule, jamais un resultat, en douze mots au plus, et il n'est identique
+# nulle part sur le paquet.
+#
+# ADR-0098 : la sous-partie de MAT-CE1-08 est allouee dans SousPartieDeMathematiquesCe1
+# ("Resoudre des problemes d'addition, de soustraction et de multiplication a une ou deux
+# etapes"), et ce paquet declare la seule ligne qu'il sert.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable (U+00A0). Ce paquet entre a zero
+# occurrence detachable.
+schema: 1
+id: ce1-problemes-etapes
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou deux étapes"
+lignesDeReferentiel: ["MAT-CE1-08"]
+items:
+  - enonce: "La classe range 3 boîtes de 5 crayons. Elle reçoit 4 crayons de plus. Combien de crayons a-t-elle en tout ?"  # PRO-CE1: mul(3,5);add(R,4);fam=a,b
+    bonneReponse: "19"
+    distracteurs: ["15", "11"]
+    indice: "Multiplie d'abord le nombre de boîtes par les crayons de chacune."
+  - enonce: "La bibliothèque reçoit 4 cartons de 10 livres. Elle reçoit ensuite 6 livres offerts. Combien de livres a-t-elle en tout ?"  # PRO-CE1: mul(4,10);add(R,6);fam=a,b
+    bonneReponse: "46"
+    distracteurs: ["40", "34"]
+    indice: "Multiplie d'abord le nombre de cartons par les livres de chacun."
+  - enonce: "La cantine prépare 5 plateaux de 4 yaourts. Elle reçoit 3 yaourts en plus. Combien de yaourts a-t-elle en tout ?"  # PRO-CE1: mul(5,4);add(R,3);fam=a,b
+    bonneReponse: "23"
+    distracteurs: ["20", "17"]
+    indice: "Multiplie d'abord le nombre de plateaux par les yaourts de chacun."
+  - enonce: "Le club prépare 2 paniers de 10 médailles. Il reçoit 5 médailles en plus. Combien de médailles a-t-il en tout ?"  # PRO-CE1: mul(2,10);add(R,5);fam=a,b
+    bonneReponse: "25"
+    distracteurs: ["20", "15"]
+    indice: "Multiplie d'abord le nombre de paniers par les médailles de chacun."
+  - enonce: "La classe a 4 paquets de 10 images. Elle en donne 7. Combien d'images lui reste-t-il ?"  # PRO-CE1: mul(4,10);sub(R,7);fam=a,b
+    bonneReponse: "33"
+    distracteurs: ["40", "47"]
+    indice: "Multiplie d'abord le nombre de paquets par les images de chacun."
+  - enonce: "L'atelier a 3 boîtes de 10 perles. Il en utilise 8. Combien de perles lui reste-t-il ?"  # PRO-CE1: mul(3,10);sub(R,8);fam=a,b
+    bonneReponse: "22"
+    distracteurs: ["30", "38"]
+    indice: "Multiplie d'abord le nombre de boîtes par les perles de chacune."
+  - enonce: "La réserve a 5 cartons de 8 cahiers. Elle en distribue 12. Combien de cahiers lui reste-t-il ?"  # PRO-CE1: mul(5,8);sub(R,12);fam=a,b
+    bonneReponse: "28"
+    distracteurs: ["40", "52"]
+    indice: "Multiplie d'abord le nombre de cartons par les cahiers de chacun."
+  - enonce: "Le magasin scolaire a 2 lots de 10 gommes. Il en vend 9. Combien de gommes lui reste-t-il ?"  # PRO-CE1: mul(2,10);sub(R,9);fam=a,b
+    bonneReponse: "11"
+    distracteurs: ["20", "29"]
+    indice: "Multiplie d'abord le nombre de lots par les gommes de chacun."
+  - enonce: "La classe reçoit 40 images, puis 10 images de plus. Elle en donne 15. Combien d'images lui reste-t-il ?"  # PRO-CE1: add(40,10);sub(R,15);fam=a,c
+    bonneReponse: "35"
+    distracteurs: ["50", "15"]
+    indice: "Additionne d'abord les deux arrivées d'images."
+  - enonce: "La cantine reçoit 38 pommes, puis 14 pommes de plus. Elle en distribue 18. Combien de pommes reste-t-il ?"  # PRO-CE1: add(38,14);sub(R,18);fam=a,c
+    bonneReponse: "34"
+    distracteurs: ["52", "6"]
+    indice: "Additionne d'abord les deux livraisons de pommes."
+  - enonce: "L'atelier reçoit 44 perles, puis 16 perles de plus. Il en utilise 22. Combien de perles lui reste-t-il ?"  # PRO-CE1: add(44,16);sub(R,22);fam=a,c
+    bonneReponse: "38"
+    distracteurs: ["60", "6"]
+    indice: "Additionne d'abord les deux arrivées de perles."
+  - enonce: "Le club a 30 ballons, en perd 12. Il en reçoit 9 de plus. Combien de ballons a-t-il ?"  # PRO-CE1: sub(30,12);add(R,9);fam=a,c
+    bonneReponse: "27"
+    distracteurs: ["18", "51"]
+    indice: "Soustrais d'abord les ballons perdus."
+  - enonce: "La réserve a 40 cahiers, en perd 15. Elle en reçoit 14 de plus. Combien de cahiers reste-t-il ?"  # PRO-CE1: sub(40,15);add(R,14);fam=a,c
+    bonneReponse: "39"
+    distracteurs: ["25", "69"]
+    indice: "Soustrais d'abord les cahiers perdus."
+  - enonce: "L'école a 50 chaises, en perd 22. Elle en reçoit 10 de plus. Combien de chaises reste-t-il ?"  # PRO-CE1: sub(50,22);add(R,10);fam=a,c
+    bonneReponse: "38"
+    distracteurs: ["28", "82"]
+    indice: "Soustrais d'abord les chaises perdues."
+  - enonce: "Le club a 32 billes. Il en utilise 9. Combien de billes lui reste-t-il ?"  # PRO-CE1: sub(32,9);fam=b,d
+    bonneReponse: "23"
+    distracteurs: ["41", "9"]
+    indice: "Soustrais le nombre de billes utilisées."
+  - enonce: "La bibliothèque a 45 livres. Elle en prête 18. Combien de livres lui reste-t-il ?"  # PRO-CE1: sub(45,18);fam=b,d
+    bonneReponse: "27"
+    distracteurs: ["63", "18"]
+    indice: "Soustrais le nombre de livres prêtés."
+  - enonce: "La cantine a 50 yaourts. Elle en distribue 21. Combien de yaourts lui reste-t-il ?"  # PRO-CE1: sub(50,21);fam=b,d
+    bonneReponse: "29"
+    distracteurs: ["71", "21"]
+    indice: "Soustrais le nombre de yaourts distribués."
+  - enonce: "L'atelier a 60 perles. Il en utilise 25. Combien de perles lui reste-t-il ?"  # PRO-CE1: sub(60,25);fam=b,d
+    bonneReponse: "35"
+    distracteurs: ["85", "25"]
+    indice: "Soustrais le nombre de perles utilisées."
+  - enonce: "La classe a 48 crayons. Elle en donne 20. Combien de crayons lui reste-t-il ?"  # PRO-CE1: sub(48,20);fam=b,d
+    bonneReponse: "28"
+    distracteurs: ["68", "20"]
+    indice: "Soustrais le nombre de crayons donnés."
+  - enonce: "Le club a 15 jetons. Il en reçoit 9 de plus. Combien de jetons a-t-il en tout ?"  # PRO-CE1: add(15,9);fam=b,d
+    bonneReponse: "24"
+    distracteurs: ["6", "9"]
+    indice: "Additionne les jetons déjà présents et les nouveaux."
+  - enonce: "La bibliothèque a 20 albums. Elle en reçoit 15 de plus. Combien d'albums a-t-elle en tout ?"  # PRO-CE1: add(20,15);fam=b,d
+    bonneReponse: "35"
+    distracteurs: ["5", "15"]
+    indice: "Additionne les albums déjà présents et les nouveaux."
+  - enonce: "La cantine a 18 yaourts. Elle en reçoit 12 de plus. Combien de yaourts a-t-elle en tout ?"  # PRO-CE1: add(18,12);fam=b,d
+    bonneReponse: "30"
+    distracteurs: ["6", "12"]
+    indice: "Additionne les yaourts déjà présents et les nouveaux."
+  - enonce: "L'atelier a 25 perles. Il en reçoit 14 de plus. Combien de perles a-t-il en tout ?"  # PRO-CE1: add(25,14);fam=b,d
+    bonneReponse: "39"
+    distracteurs: ["11", "14"]
+    indice: "Additionne les perles déjà présentes et les nouvelles."
+  - enonce: "La classe a 22 cahiers. Elle en reçoit 19 de plus. Combien de cahiers a-t-elle en tout ?"  # PRO-CE1: add(22,19);fam=b,d
+    bonneReponse: "41"
+    distracteurs: ["3", "19"]
+    indice: "Additionne les cahiers déjà présents et les nouveaux."

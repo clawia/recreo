@@ -726,3 +726,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-tables-multiplication
     nombreDeManches: 10
+  - id: bandit-manchot-problemes-etapes-ce1
+    titre: "Les problèmes à étapes"
+    consigne: "Lis bien, puis trouve la réponse !"
+    mecanique: bandit-manchot
+    paquet: ce1-problemes-etapes
+    nombreDeManches: 10
