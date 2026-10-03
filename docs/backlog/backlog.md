@@ -3998,6 +3998,38 @@ developpeur ; elle ne porte pas d'identifiant dedie, comme les autres reserves d
   par une `DEC` d'ouverture de sprint.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
 
+### Story de correction differee - reserve `GRC-CE1-R1` : le distracteur "colline" revient sur les quatre items `ill` de "Le meme son"
+
+**Contexte.** `nadia-prof` reaudite `bandit-manchot-graphemes-complexes-ce1` a s49, second passage,
+et prononce **VALIDE SOUS RESERVE** sur `FRA-CE1-01`
+(`squad/conformite/FICHE-bandit-manchot-graphemes-complexes-ce1.md`, second passage, section 4).
+Reserve neuve, non bloquante, ouverte sur ce seul passage.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Le meme son" sur les items de la famille `ill`, je
+  veux que le meme mot ne revienne pas a chaque fois en face de la bonne reponse, afin de devoir lire
+  le mot plutot que l'ecarter sans le lire des la deuxieme fois que je le vois.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Lecture et comprehension de
+  l'ecrit", `FRA-CE1-01` (`squad/programme/francais/competences-ce1.md`) - ligne deja
+  `couvert-valide` depuis s49, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`GRC-CE1-R1`** : etant donne les quatre items `ill` du paquet, quand on les relit, alors
+    *colline* figure sur deux d'entre eux au plus (items 17 a 20) ; et etant donne le mot qui le
+    remplace sur les items ou il est retire, quand on le relit, alors il ne porte pas le son de
+    *« fille »* et n'appartient pas au lexique de *ville* (`GRC-CE1-2`).
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`GRC-CE1-1` a `GRC-CE1-3`, `TRV-CE1-1` a `TRV-CE1-7`, `LON-CE1-1`, `LON-CE1-2`, `LON-CE1-5`),
+    alors elles restent toutes tenues : cette story ne touche que le ou les distracteurs de la
+    famille `ill` concernes, sans toucher aux autres items ni a aucune bonne reponse.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue les quatre items `ill` corriges et confirme que le mot qui
+    remplace *colline* reste un distracteur de la meme famille, plausible pour un enfant de CE1,
+    sans reproduire le defaut sur un autre mot.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-03 (`squad/conformite/FICHE-bandit-manchot-graphemes-complexes-ce1.md`, second passage,
+  section 4), identifiant deja alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par
+  une `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
