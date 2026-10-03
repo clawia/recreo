@@ -2007,7 +2007,9 @@ ligne qui l'attend est `non couvert`, jamais `non couvrable en l'etat`.
 produit ni par un choix ni par une saisie. Les deux lignes jouables des aujourd'hui (5, 11) portent
 sur le vocabulaire et les connaissances de la pratique, jamais sur la pratique elle-meme. Les deux
 lignes restantes (9, 10) exigent une image d'oeuvre que le depot ne sert pas - **question de droits
-d'usage non instruite, ouverte formellement en `DEC-0075`, non tranchee.**
+d'usage tranchee en `DEC-0077` (corpus de reproductions du domaine public retenu, 2026-09-05) ;
+le chantier de sourcing et de verification des oeuvres, route a `theo-archi`, n'est pas engage a ce
+jour.**
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
 |---|---|---|---|---|---|---|
@@ -2019,7 +2021,8 @@ d'usage non instruite, ouverte formellement en `DEC-0075`, non tranchee.**
 | arts plastiques | CP | L'expression des emotions | Dire ce que l'on ressent devant une image ou une œuvre et écouter ce que d'autres en disent. | - | - | **non couvrable en l'etat**, nature irreversible - aucune bonne reponse : une mecanique dont le contrat est une bonne reponse parmi trois sanctionnerait le ressenti d'un enfant. |
 | arts plastiques | CP | La narration et le temoignage par les images | Raconter une histoire ou un événement par une suite d'images. | - | - | **non couvrable en l'etat**, nature irreversible - production plastique et narrative ; ordonner des images deja faites demanderait une manipulation de collection (palier 3), refusee par `V3`. |
 | arts plastiques | CP | La narration et le temoignage par les images | Transformer une image existante (découpage, ajout, association) pour en modifier le sens. | - | - | **non couvrable en l'etat**, nature irreversible - production plastique, memes deux motifs que la ligne 1. |
-| arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Décrire une œuvre : dire ce qu'on y voit (sujet, couleurs, formes, matériaux). | - | - | non couvert - palier 1 illustre, image d'oeuvre requise. La forme existe (image fixe, propositions en texte, `ADR-0073`), mais aucune reproduction d'oeuvre n'est servie par le depot ; un item textuel qui decrirait l'oeuvre serait une contrefacon (`CON-1`). Question de droits d'usage ouverte en `DEC-0075`, non tranchee. |
+| arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Décrire une œuvre : dire ce qu'on y voit (sujet, couleurs, formes, matériaux). | - | - | non couvert - palier 1 illustre, image d'oeuvre requise. La forme existe (image fixe, propositions en texte, `ADR-0073`), mais aucune reproduction d'oeuvre n'est servie par le depot ; un item textuel qui decrirait l'oeuvre serait une contrefacon (`CON-1`). Question de droits d'usage tranchee en `DEC-0077` (corpus du
+domaine public) ; chantier de sourcing non engage a ce jour. |
 | arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres. | - | - | non couvert - meme motif que la ligne precedente (image d'oeuvre requise, `DEC-0075`). Un quiz de noms ("qui a peint la Joconde ?") servirait la culture generale, pas la reconnaissance d'une oeuvre. |
 | arts plastiques | CP | Se reperer dans les domaines lies aux arts plastiques | Nommer quelques outils, supports et gestes du travail plastique (pinceau, craie, argile, esquisse). | bandit-manchot-outils-arts-cp | bandit manchot | **couvert-valide** (2026-09-22, s39) - **`ART-CP-11` ferme.** Done pedagogique **VALIDE, sans reserve**, prononce par `nadia-prof` apres avoir joue le jar servi (`squad/conformite/FICHE-bandit-manchot-outils-arts-cp.md`). Les quatre termes de la parenthese (pinceau, craie, argile, esquisse) chacun servis en bonne reponse sur les 12 items, `ART-1` et `ART-2` tenues, `ADR-0089` (lisibilite CP) verifie a l'ecran. |
 
@@ -2051,7 +2054,8 @@ produit), c'est le motif irreversible qui donne la nature de la ligne.
 | arts plastiques | CM1 | Les fabrications et la relation entre l'objet et l'espace | Fabriquer un objet ou une construction en volume et adapter sa réalisation à l'espace où elle sera vue. | - | - | **non couvrable en l'etat**, nature irreversible - geste materiel hors de tout ecran, juge par un adulte qui regarde l'objet. |
 | arts plastiques | CM1 | Les fabrications et la relation entre l'objet et l'espace | Prendre en compte le lieu et le spectateur dans la présentation d'une production (accrochage, mise en espace). | - | - | **non couvrable en l'etat**, nature irreversible - suppose une production et un lieu reels (`ADR-0008`). |
 | arts plastiques | CM1 | La materialite de la production plastique | Choisir et employer une matière, un outil ou un geste en fonction de l'effet plastique recherché. | - | - | **non couvrable en l'etat**, nature irreversible - l'effet recherche est celui de l'enfant, personne d'autre ne peut dire si le choix le sert. |
-| arts plastiques | CM1 | La materialite de la production plastique | Repérer, dans une œuvre observée, les effets produits par la matière, la couleur, le geste et le support. | - | - | non couvert - palier 1 illustre, image d'oeuvre requise. Conditions `ART-1` a `ART-5` ; `ART-1` mord en premier (la couleur ne porte jamais seule la reponse). Question de droits d'usage ouverte en `DEC-0075`, non tranchee. |
+| arts plastiques | CM1 | La materialite de la production plastique | Repérer, dans une œuvre observée, les effets produits par la matière, la couleur, le geste et le support. | - | - | non couvert - palier 1 illustre, image d'oeuvre requise. Conditions `ART-1` a `ART-5` ; `ART-1` mord en premier (la couleur ne porte jamais seule la reponse). Question de droits d'usage tranchee en `DEC-0077`
+(corpus du domaine public) ; chantier de sourcing non engage a ce jour. |
 | arts plastiques | CM1 | S'exprimer, analyser sa pratique et celle des artistes | Décrire une œuvre d'art avec un lexique élémentaire (support, format, matière, couleur, sujet, composition). | - | - | non couvert - meme motif que la ligne precedente (`DEC-0075`). Mention exigee d'avance si la ligne bouge : "support, format, matiere, couleur et sujet seuls ; la composition et le cadrage restent non couverts" - les decrire suppose de designer une zone de l'image (palier 2). |
 | arts plastiques | CM1 | S'exprimer, analyser sa pratique et celle des artistes | Exprimer ce qu'on perçoit d'une œuvre, formuler un avis et écouter celui des autres. | - | - | **non couvrable en l'etat**, nature irreversible - jugement humain sur une production libre (`ADR-0008`), aucune bonne reponse unique (`ART-2`). |
 | arts plastiques | CM1 | S'exprimer, analyser sa pratique et celle des artistes | Établir un lien entre sa propre production et des œuvres d'artistes rencontrées. | - | - | **non couvrable en l'etat**, nature irreversible - suppose une production de l'enfant, que le produit ne recueille ni ne conserve (`DEC-0028`). Recouvrement a ne pas double-compter avec histoire des arts (reconnaissance et situation d'oeuvres sans lien a une pratique personnelle). |
@@ -2059,7 +2063,8 @@ produit), c'est le motif irreversible qui donne la nature de la ligne.
 **Conditions opposables, posees le 2026-09-03** (numerotation continuee depuis les arts plastiques
 CP, `ART-1` et `ART-2` s'appliquant a l'identique) : `ART-3` (toute oeuvre servie en image est
 identifiee dans le commentaire du paquet - titre, auteur, date, lieu de conservation ; question des
-droits d'usage signalee et non tranchee, `DEC-0075`) ; `ART-4` (`CON-1` applique au corpus
+droits d'usage tranchee en `DEC-0077` (corpus du domaine public), chantier de sourcing non engage a
+ce jour) ; `ART-4` (`CON-1` applique au corpus
 d'oeuvres - l'item ne se repond pas sans regarder l'image) ; `ART-5` (le corpus d'un paquet ne se
 compose ni d'une seule epoque, ni d'une seule aire culturelle, ni d'artistes d'un seul genre).
 
@@ -2310,7 +2315,8 @@ l'identique ; `HIS-2` et `HIS-3` s'appliquent (`nadia-prof` n'est pas la source 
 d'histoire de l'art).
 
 **Sept lignes sur dix entrent au denominateur, mais six d'entre elles exigent une image d'oeuvre
-que le depot ne sert pas - meme question de droits d'usage, non tranchee, ouverte en `DEC-0075`.**
+que le depot ne sert pas - meme question de droits d'usage, tranchee en `DEC-0077` (corpus du
+domaine public), chantier de sourcing non engage a ce jour.**
 Une seule (ligne 5) est jouable des aujourd'hui, sans rien construire de neuf.
 
 | Matiere | Niveau | Domaine | Competence | Jeu(x) couvrant | Mecanique | Statut |
