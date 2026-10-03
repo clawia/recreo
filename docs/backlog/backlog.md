@@ -3025,24 +3025,36 @@ bloquante et n'a pas retenu la fermeture de `MAT-CE1-03` a s38.
   RESERVE** sur ce paquet), non rouverte par cette story.
 - **Criteres d'acceptation** :
   - Etant donne l'item `45 - 3` (bonne reponse 42), quand le paquet corrige est charge, alors ses
-    deux distracteurs sont `3` et `48` (`48` remplace `20`).
+    deux distracteurs sont `3` et `15` (`15` remplace `20`).
   - Etant donne l'item `57 - 4` (bonne reponse 53), quand le paquet corrige est charge, alors ses
-    deux distracteurs sont `4` et `61` (`61` remplace `25`).
+    deux distracteurs sont `4` et `17` (`17` remplace `25`).
   - Etant donne l'item `68 - 5` (bonne reponse 63), quand le paquet corrige est charge, alors ses
-    deux distracteurs sont `5` et `73` (`73` remplace `30`).
+    deux distracteurs sont `5` et `18` (`18` remplace `30`).
   - Etant donne l'item `79 - 6` (bonne reponse 73), quand le paquet corrige est charge, alors ses
-    deux distracteurs sont `6` et `85` (`85` remplace `35`).
+    deux distracteurs sont `6` et `19` (`19` remplace `35`).
+  - Etant donne les quatre distracteurs corriges (`15`, `17`, `18`, `19`), quand on les relit
+    contre l'enonce de leur item, alors chacun vaut `a - 10 x b` : l'erreur qu'ils representent est
+    celle d'un enfant qui recule de `b` dizaines au lieu de `b` unites, la meme confusion
+    unites-dizaines que la forme admise sur "Les grandes soustractions posees" (`SOP-CE1-R1`).
   - Etant donne le paquet corrige, quand on relit les criteres deja verifies par `nadia-prof` sur ce
     paquet (`SOU-CE1-1`, `SOU-CE1-2`, exactitude des 32 differences, ancrage sur `MAT-CE1-03`),
     alors ils restent tous vrais : cette story ne touche qu'un champ (le second distracteur) sur
     quatre items sur 32, rien d'autre.
+  - Etant donne le paquet corrige, quand le garde-fou de rang
+    (`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`) est lance, alors il reste vert : la
+    repartition des rangs (15 plus petite, 13 intermediaire, 4 plus grande) est inchangee par cette
+    correction.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
-    `nadia-prof` : qu'elle rejoue les quatre items corriges et confirme que le second distracteur y
-    est desormais aussi plausible que sur leurs trois freres de la meme bande.
+    `nadia-prof` : qu'elle rejoue les quatre items corriges et confirme que `a - 10 x b` y est une
+    erreur plausible pour un enfant de CE1.
 - **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
   2026-09-22 (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, section 4), identifiant
-  alloue dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC` d'ouverture de
-  sprint, sur le meme patron que `DEC-0091` pour `ADD-CE1-R1`/`ADD-CE1-R2`.
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`. Correctif initial (la somme `a + b`)
+  reconnu infaisable par `theo-archi` le 2026-10-03 (`squad/rapports/avis-faisabilite-s50-cinq-
+  stories.md`, section 6) - il rougit le garde-fou de rang - et remplace par l'arbitrage de
+  `nadia-prof` du meme jour (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`,
+  section "Arbitrage de `SOU-CE1-R1` du 2026-10-03"), repris ci-dessus. A router par une `DEC`
+  d'ouverture de sprint, sur le meme patron que `DEC-0091` pour `ADD-CE1-R1`/`ADD-CE1-R2`.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur. Non engagee a s38 - le
   perimetre de s38 est borne par `DEC-0091` aux quatre lots deja instruits
   (`S38-CORR`, `S38-SOUSTRACTIONS`, `S38-COMPLEMENTS-DIZAINE`, `S38-MOITIES`).
@@ -3199,6 +3211,13 @@ entre deux propositions. Reserve non bloquante, Done pedagogique deja acquis.
   - Etant donne ces huit items corriges, quand on les verifie contre `DIV-CE1-5`, alors chacun
     porte toujours au moins un distracteur correspondant a une erreur identifiable (`a - b` ou `b`),
     tous entiers positifs, distincts entre eux et de la bonne reponse.
+  - Etant donne le paquet `ce1-division` corrige dans son ensemble (21 items), quand on relit les
+    distracteurs de chaque item, alors chacun porte le diviseur recopie `b` parmi ses distracteurs -
+    assertion confirmee par `nadia-prof` le 2026-10-03
+    (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, section "Arbitrage de
+    `SOU-CE1-R1` du 2026-10-03", point 4), portee uniquement dans le test du paquet
+    `ce1-division` : elle ne modifie pas `DIV-CE1-5`, qui reste "au moins une erreur parmi `a x b`,
+    `a - b`, `b`" pour tout autre paquet.
   - Etant donne le paquet corrige, quand on relit les criteres deja verifies par `nadia-prof`
     (`DIV-CE1-1` a `DIV-CE1-6`), alors ils restent tous vrais : cette story touche huit distracteurs
     sur vingt et un items, aucun enonce ni aucune bonne reponse n'est modifie.
@@ -4016,6 +4035,12 @@ Reserve neuve, non bloquante, ouverte sur ce seul passage.
     *colline* figure sur deux d'entre eux au plus (items 17 a 20) ; et etant donne le mot qui le
     remplace sur les items ou il est retire, quand on le relit, alors il ne porte pas le son de
     *« fille »* et n'appartient pas au lexique de *ville* (`GRC-CE1-2`).
+  - Etant donne le paquet corrige dans son ensemble (24 items, pas seulement les quatre `ill`),
+    quand on compte les occurrences de chaque distracteur, alors aucun distracteur ne figure sur
+    plus de deux items du paquet - assertion confirmee par `nadia-prof` le 2026-10-03
+    (`squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, section "Arbitrage de
+    `SOU-CE1-R1` du 2026-10-03", point 4) comme la propriete qu'elle a deja constatee au second
+    passage sur ce paquet, pas une barre neuve.
   - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
     (`GRC-CE1-1` a `GRC-CE1-3`, `TRV-CE1-1` a `TRV-CE1-7`, `LON-CE1-1`, `LON-CE1-2`, `LON-CE1-5`),
     alors elles restent toutes tenues : cette story ne touche que le ou les distracteurs de la
