@@ -738,3 +738,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-graphemes-complexes
     nombreDeManches: 10
+  - id: bandit-manchot-valeur-lettre-ce1
+    titre: "Une lettre, deux sons"
+    consigne: "Lis bien, puis choisis le bon mot."
+    mecanique: bandit-manchot
+    paquet: ce1-valeur-lettre
+    nombreDeManches: 10

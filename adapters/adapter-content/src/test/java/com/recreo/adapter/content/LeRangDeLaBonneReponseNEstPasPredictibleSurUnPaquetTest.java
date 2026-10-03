@@ -1080,7 +1080,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " propositions n'est numerique : ce sont des mots a lire (la bonne reponse et"
                     + " deux distracteurs), valeurDe rend null sur les trois propositions de chaque"
                     + " item. Mesure du 2026-10-03 sur le paquet servi : aucune des 72 propositions"
-                    + " ne commence par un chiffre"));
+                    + " ne commence par un chiffre"),
+            // S50-FRA-VALEUR-LETTRE : second paquet de francais CE1 (FRA-CE1-02).
+            Map.entry("ce1-valeur-lettre",
+            "24 items sur 24 portent un seul distracteur (deux propositions, forme binaire de"
+                    + " TRV-CE1-2), soit 48 propositions, mais aucune n'est numerique : ce sont les"
+                    + " six mots de reference de VLE-CE1-2 (\"car\", \"cerise\", \"gare\","
+                    + " \"girafe\", \"sel\", \"rose\"), valeurDe rend null sur les deux"
+                    + " propositions de chaque item. Mesure du 2026-10-03 sur le paquet servi :"
+                    + " aucune des 48 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

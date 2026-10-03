@@ -1,0 +1,19 @@
+schema: 1
+id: ce1-valeur-lettre-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1ValeurLettreTest. Un seul item, dont le
+# marqueur declare valeur=douce pour "carotte" alors que "c" devant "a" se calcule dure
+# (piege 1, regle de VLE-CE1-1) : la bonne reponse "cerise" ne correspond pas a la valeur
+# calculee depuis le mot. La verification doit le refuser.
+# VLE-CE1-2: c=car,cerise; g=gare,girafe; s=sel,rose
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Déterminer la valeur d'une lettre selon les lettres qui l'entourent (c, g/ge/gu, s/ss entre deux voyelles)."
+lignesDeReferentiel: ["FRA-CE1-02"]
+items:
+  - enonce: "Dans « carotte », le c se lit comme dans quel mot ?"  # VLE-CE1: lettre=c;valeur=douce;graphie=c
+    bonneReponse: "cerise"
+    distracteurs: ["car"]
+    indice: "Écoute bien le son de la lettre."

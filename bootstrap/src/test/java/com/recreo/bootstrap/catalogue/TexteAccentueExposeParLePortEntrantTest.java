@@ -376,6 +376,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 3.1).
             "bandit-manchot-graphemes-complexes-ce1",
+            // S50-FRA-VALEUR-LETTRE (s50) : entree neuve, FRA-CE1-02, deuxieme ligne du
+            // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
+            // section 3.2).
+            "bandit-manchot-valeur-lettre-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -617,6 +621,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S49-FRA-GRAPHEMES (s49) : titre neuf. Il ne porte pas son niveau (ADR-0078) et ne
             // reprend pas "Le bon son" (CP, bandit-manchot-le-bon-son-cp).
             "Le même son",
+            // S50-FRA-VALEUR-LETTRE (s50) : titre neuf, sans niveau (ADR-0078).
+            "Une lettre, deux sons",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -886,6 +892,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S49-FRA-GRAPHEMES (s49) : consigne neuve, generique - elle ne nomme ni le mot de
             // reference ni aucune proposition d'aucun item.
             "Lis bien, puis choisis le mot qui a le même son.",
+            // S50-FRA-VALEUR-LETTRE (s50) : consigne neuve, generique - elle ne nomme ni la
+            // lettre, ni le mot cible, ni aucun des six mots de reference d'aucun item.
+            "Lis bien, puis choisis le bon mot.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1417,7 +1426,15 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S49-FRA-GRAPHEMES (s49) : competence neuve, FRA-CE1-01, libelle du referentiel
             // copie mot pour mot (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-01).
             "Lire des mots comportant des graphèmes complexes (ain/ein, eil/eille, ill, gn, oin, "
-                    + "ien...) et les associer au son qu'ils transcrivent.");
+                    + "ien...) et les associer au son qu'ils transcrivent.",
+            // S50-FRA-VALEUR-LETTRE (s50) : competence neuve, FRA-CE1-02. Le libelle du
+            // referentiel (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-02) nomme
+            // "c/ç" ; "ç" seul n'est pas servi ici, parce qu'une lettre isolee en texte accentue
+            // sans forme ASCII sœur fait rougir AucunMotServiNeSEcarteDeSonAccentTest ("ç" n'est
+            // pas une forme reconnue du lexique, alors que "c" l'est) - question non bloquante
+            // routee a camille-po/nadia-prof (ce1-valeur-lettre.yaml, en-tete).
+            "Déterminer la valeur d'une lettre selon les lettres qui l'entourent (c, g/ge/gu, "
+                    + "s/ss entre deux voyelles).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
