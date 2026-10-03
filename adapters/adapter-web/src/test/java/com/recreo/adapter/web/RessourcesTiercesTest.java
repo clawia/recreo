@@ -148,6 +148,33 @@ class RessourcesTiercesTest {
                 && nom.chars().allMatch(c -> CARACTERES_D_UN_TERME_CALCULE.indexOf(c) >= 0);
     }
 
+    /**
+     * ADR-0082 decision 2, T3 (sofia-sm, s49). <b>Seconde exemption etroite, meme forme au caractere
+     * pres que celle d'ADR-0073</b> : prefixe litteral exactement egal au repertoire des reproductions,
+     * un unique terme calcule, extension litterale. La preuve qu'une reproduction declaree resout et
+     * qu'aucun fichier ne dort change de source de la meme maniere qu'une illustration de contenu -
+     * elle se lit sur la donnee, dans {@code LIllustrationDeContenuResoutEtAucuneNeDortTest}, jamais
+     * ici.
+     */
+    private static final String PREFIXE_D_UNE_REPRODUCTION_DE_CONTENU = "'/oeuvres/' + ";
+
+    private static final String SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU = " + '.jpg'";
+
+    private static boolean estUneReproductionDeContenu(String valeur) {
+        if (!valeur.startsWith(PREFIXE_D_UNE_REPRODUCTION_DE_CONTENU)
+                || !valeur.endsWith(SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU)) {
+            return false;
+        }
+        String terme = valeur.substring(PREFIXE_D_UNE_REPRODUCTION_DE_CONTENU.length(),
+                valeur.length() - SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU.length()).strip();
+        if (!terme.startsWith("${") || !terme.endsWith("}")) {
+            return false;
+        }
+        String nom = terme.substring(2, terme.length() - 1);
+        return !nom.isEmpty()
+                && nom.chars().allMatch(c -> CARACTERES_D_UN_TERME_CALCULE.indexOf(c) >= 0);
+    }
+
     private record Ressource(String chemin, String origine, String cheminSource, String empreinte) {
     }
 
@@ -360,10 +387,11 @@ class RessourcesTiercesTest {
             for (Element reference : referencesDeRessource(document)) {
                 String chemin = cheminDeGabarit(gabarit, reference);
                 if (chemin == null) {
-                    // ADR-0073 clause 3 : une illustration de contenu ne designe pas un fichier
-                    // connu du gabarit. Qu'elle resolve vers un fichier reellement servi, et
-                    // qu'aucun fichier servi ne dorme, est verifie sur la donnee par
-                    // LIllustrationDeContenuResoutEtAucuneNeDortTest, dans les deux sens.
+                    // ADR-0073 clause 3 et ADR-0082 decision 2 : une illustration de contenu ou une
+                    // reproduction d'oeuvre ne designe pas un fichier connu du gabarit. Qu'elle
+                    // resolve vers un fichier reellement servi, et qu'aucun fichier servi ne dorme,
+                    // est verifie sur la donnee par LIllustrationDeContenuResoutEtAucuneNeDortTest,
+                    // dans les deux sens, sur les deux populations.
                     continue;
                 }
                 verifierCibleLocale(racine, gabarit, chemin, gabarit.toString());
@@ -423,16 +451,18 @@ class RessourcesTiercesTest {
         if (valeur.startsWith("@{") && valeur.endsWith("}")) {
             valeur = valeur.substring(2, valeur.length() - 1).strip();
         }
-        if (estUneIllustrationDeContenu(valeur)) {
+        if (estUneIllustrationDeContenu(valeur) || estUneReproductionDeContenu(valeur)) {
             return null;
         }
         assertThat(estUneCibleLitterale(valeur))
                 .as("ADR-0014 : %s reference une ressource par une expression calculee (%s) ; une "
                         + "ressource de page s'ecrit en chemin litteral, sinon rien ne prouve "
-                        + "qu'elle est servie hors ligne. La seule exception est l'illustration de "
-                        + "contenu d'ADR-0073, dont la forme est bornee au terme pres : %s${...}%s, "
-                        + "et dont la preuve se lit sur la donnee et non ici", gabarit, brut,
-                        PREFIXE_D_UNE_ILLUSTRATION_DE_CONTENU, SUFFIXE_D_UNE_ILLUSTRATION_DE_CONTENU)
+                        + "qu'elle est servie hors ligne. Les deux seules exceptions sont "
+                        + "l'illustration de contenu d'ADR-0073 (%s${...}%s) et la reproduction "
+                        + "d'ADR-0082 (%s${...}%s), dont la forme est bornee au terme pres et dont la "
+                        + "preuve se lit sur la donnee et non ici", gabarit, brut,
+                        PREFIXE_D_UNE_ILLUSTRATION_DE_CONTENU, SUFFIXE_D_UNE_ILLUSTRATION_DE_CONTENU,
+                        PREFIXE_D_UNE_REPRODUCTION_DE_CONTENU, SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU)
                 .isTrue();
         return valeur;
     }
@@ -666,9 +696,17 @@ class RessourcesTiercesTest {
      * designation ne montre rien d'autre que l'image que le contenu declare, et {@code ZoneADesigner}
      * la rend meme obligatoire (ADR-0080, decision 1). Ce n'est pas une decision neuve a tracer ; c'est
      * la meme regle, exercee une seconde fois.
+     *
+     * <p><b>Porte de 2 a 3 (ADR-0082, T3, sofia-sm, s49) : la seconde branche de
+     * fragments/manche.html.</b> Le gabarit porte desormais deux {@code <img>} exclusifs l'un de
+     * l'autre pour la meme illustration d'item - un pour {@code static/illustrations/}, un pour
+     * {@code static/oeuvres/} -, parce que le gabarit ne peut pas lire un repertoire pour choisir : les
+     * deux coexistent dans le balisage, et jsoup en voit deux la ou il n'y en avait qu'un. Ce n'est pas
+     * une troisieme reference qui emprunte l'exemption sans decision, c'est la meme reference qui se
+     * dedouble en une forme bornee pour chacune des deux populations.
      */
     @Test
-    void deuxReferencesDeLaProductionSontDesIllustrationsDeContenu() {
+    void troisReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu() {
         List<String> admises = new ArrayList<>();
         for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
@@ -680,10 +718,11 @@ class RessourcesTiercesTest {
         }
 
         assertThat(admises)
-                .as("ADR-0051 et ADR-0073 clause 3 : cette exemption ne prouve rien tant qu'aucune "
-                        + "reference de production ne l'emprunte, et elle cesse d'etre etroite des "
-                        + "qu'une troisieme l'emprunte sans qu'on l'ait decide")
-                .hasSize(2);
+                .as("ADR-0051, ADR-0073 clause 3 et ADR-0082 decision 2 : ces exemptions ne prouvent "
+                        + "rien tant qu'aucune reference de production ne les empruntent, et elles "
+                        + "cessent d'etre etroites des qu'une reference de plus les emprunte sans "
+                        + "qu'on l'ait decide")
+                .hasSize(3);
     }
 
     /**
@@ -712,6 +751,38 @@ class RessourcesTiercesTest {
                 + "contenu, les morsures de la clause 3 ne s'exercent alors sur rien");
     }
 
+    /** La valeur brute d'une reference, avant retrait de l'enveloppe @{...} - meme lecture que
+     * {@link #cheminDeGabarit(Path, Element)}, extraite pour etre reutilisee sans re-asserter. */
+    private static String valeurBruteDeReference(Element reference) {
+        String brut = reference.hasAttr("th:href") ? reference.attr("th:href")
+                : reference.hasAttr("th:src") ? reference.attr("th:src")
+                : reference.hasAttr("href") ? reference.attr("href")
+                : reference.attr("src");
+        String valeur = brut.strip();
+        if (valeur.startsWith("@{") && valeur.endsWith("}")) {
+            valeur = valeur.substring(2, valeur.length() - 1).strip();
+        }
+        return valeur;
+    }
+
+    /**
+     * ADR-0082 decision 2, T3 : le gabarit de production qui porte la forme admise de reproduction,
+     * distinct de celui qui porte l'illustration de contenu des que les deux coexistent dans le meme
+     * fichier (fragments/manche.html, depuis T3).
+     */
+    private static Path gabaritQuiPorteUneReproductionDeContenu() {
+        for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
+            Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
+            for (Element reference : referencesDeRessource(document)) {
+                if (estUneReproductionDeContenu(valeurBruteDeReference(reference))) {
+                    return gabarit;
+                }
+            }
+        }
+        throw new AssertionError("ADR-0082 : aucun gabarit de production ne porte de reproduction de "
+                + "contenu, les morsures de la seconde exemption ne s'exercent alors sur rien");
+    }
+
     /**
      * <b>ADR-0073 clause 3, seconde moitie, et c'est elle qui compte.</b> La moitie precedente prouve
      * que l'exemption existe ; celle-ci prouve qu'elle est <b>etroite</b>. Chaque mutation pose une
@@ -738,6 +809,34 @@ class RessourcesTiercesTest {
             assertThatThrownBy(() -> verifierLesReferencesDe(gabarit, mute))
                     .as("une seconde forme calculee (%s) posee a cote de la forme admise doit rester "
                             + "refusee", secondeForme)
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("expression calculee");
+        }
+    }
+
+    /**
+     * <b>ADR-0082 decision 2, T3, seconde exemption, meme motif que la precedente.</b> Chaque mutation
+     * pose une seconde forme calculee <b>dans le gabarit qui porte deja la forme admise de
+     * reproduction</b>, et chacune doit rester rouge : un repertoire lui-meme construit, deux termes
+     * calcules la ou un seul est admis, et une extension calculee. Sans cette morsure, l'exemption de
+     * reproduction prouverait qu'elle existe, pas qu'elle est etroite - exactement le risque
+     * qu'ADR-0082 nomme pour sa propre decision 2.
+     */
+    @Test
+    void uneSecondeFormeCalculeeDeReproductionPoseeDansLeMemeGabaritResteRefusee() {
+        Path gabarit = gabaritQuiPorteUneReproductionDeContenu();
+        String source = lire(gabarit);
+        verifierLesReferencesDe(gabarit, source);
+
+        for (String secondeForme : List.of(
+                "@{'/' + ${repertoire} + '/' + ${illustration} + '.jpg'}",
+                "@{'/oeuvres/' + ${famille} + '-' + ${illustration} + '.jpg'}",
+                "@{'/oeuvres/' + ${illustration} + ${extension}}")) {
+            String mute = source.replace("</body>",
+                    "<img th:src=\"" + secondeForme + "\" alt=\"\"></body>");
+            assertThatThrownBy(() -> verifierLesReferencesDe(gabarit, mute))
+                    .as("une seconde forme calculee de reproduction (%s) posee a cote de la forme "
+                            + "admise doit rester refusee", secondeForme)
                     .isInstanceOf(AssertionError.class)
                     .hasMessageContaining("expression calculee");
         }

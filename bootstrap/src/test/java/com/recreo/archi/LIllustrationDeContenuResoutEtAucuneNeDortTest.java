@@ -10,8 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -77,6 +79,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * figure legendee est pedagogiquement souhaitable. Le jour ou nadia-prof en demande une, cette clause
  * cede - et les garde-fous de texte apprennent a lire un SVG dans le meme geste, sans quoi le texte
  * de l'enfant sortirait du controle.
+ *
+ * <p><b>T2 d'ADR-0082 (sofia-sm, s49) : la resolution porte desormais sur deux repertoires.</b> Un
+ * identifiant declare par un item resout soit dans {@code static/illustrations/} (un dessin maison),
+ * soit dans {@code static/oeuvres/} (une reproduction, prefixe {@code oeuvre-}) - l'un ou l'autre,
+ * jamais aucun des deux. La clause <i>"aucune ne dort"</i> vaut desormais sur les deux repertoires :
+ * une reproduction qu'aucun item ne declare est du poids mort au meme titre qu'un dessin oublie.
+ * Seule la population de reproductions est indexee par son <b>nom de fichier</b>, jamais par son
+ * contenu : {@code Files.readString} leverait une {@code MalformedInputException} sur les premiers
+ * octets d'un JPEG, exactement le refus que ce fichier documentait deja pour {@code static/illustrations/}
+ * avant qu'ADR-0082 n'ouvre un second repertoire. La population reste vide a s49 - aucune reproduction
+ * reelle n'entre par ce commit (T5 d'ADR-0082, qui attend le choix verifie de nadia-prof) -, donc ce
+ * qui suit se mord sur du materiau mute en memoire, jamais sur un fichier reel.
  */
 class LIllustrationDeContenuResoutEtAucuneNeDortTest {
 
@@ -87,6 +101,11 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     private static final String ILLUSTRATIONS_DE_CONTENU = "src/main/resources/static/illustrations";
 
     private static final String DECOR = "src/main/resources/static/images";
+
+    /** ADR-0082 decision 2 : la troisieme population d'images, les reproductions d'oeuvres. */
+    private static final String REPRODUCTIONS = "src/main/resources/static/oeuvres";
+
+    private static final String EXTENSION_REPRODUCTION = ".jpg";
 
     /** La cle par laquelle un item declare l'illustration qu'il montre (ADR-0073 clause 1). */
     private static final String CLE_ILLUSTRATION = "illustration";
@@ -170,6 +189,26 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
             }
         }
         return trouves;
+    }
+
+    /**
+     * T2 d'ADR-0082 : les identifiants d'un repertoire de reproductions, par <b>nom de fichier</b>
+     * seul - jamais par contenu, qui est binaire (JPEG) et ferait echouer {@link #lire(Path)}.
+     */
+    static Set<String> identifiantsDeReproductions(List<Path> repertoires) {
+        Set<String> identifiants = new LinkedHashSet<>();
+        for (Path repertoire : repertoires) {
+            try (Stream<Path> arborescence = Files.walk(repertoire)) {
+                arborescence.filter(Files::isRegularFile).sorted().forEach(fichier -> {
+                    String nom = fichier.getFileName().toString();
+                    int point = nom.lastIndexOf('.');
+                    identifiants.add(point < 0 ? nom : nom.substring(0, point));
+                });
+            } catch (IOException echec) {
+                throw new UncheckedIOException(echec);
+            }
+        }
+        return identifiants;
     }
 
     /** Les fichiers d'un repertoire d'images, avec leur nom de base comme cle. */
@@ -393,7 +432,7 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * plutot qu'en fabriquant un depot fautif qui ressemblerait a ce que j'imagine (lecon de s05).
      */
     static void verifier(List<IllustrationDeclaree> declarees, Map<String, String> illustrations,
-                          Map<String, String> decor) {
+                          Map<String, String> decor, Set<String> reproductions) {
         if (decor.isEmpty()) {
             throw new AssertionError("ADR-0051 : le perimetre du decor est vide - la separation des"
                     + " deux populations d'images n'est prouvee sur rien");
@@ -408,10 +447,13 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
                         + " l'adapter decide ou le fichier est servi (ADR-0073 clause 1)");
                 continue;
             }
-            if (!illustrations.containsKey(declaree.identifiant())) {
+            if (!illustrations.containsKey(declaree.identifiant())
+                    && !reproductions.contains(declaree.identifiant())) {
                 fautes.add(ou + " : aucun fichier " + declaree.identifiant() + EXTENSION + " sous "
-                        + ILLUSTRATIONS_DE_CONTENU + ". L'enfant recoit une image cassee et rien ne"
-                        + " le dit (ADR-0073 clause 2)");
+                        + ILLUSTRATIONS_DE_CONTENU + ", ni " + declaree.identifiant()
+                        + EXTENSION_REPRODUCTION + " sous " + REPRODUCTIONS + ". L'enfant recoit une"
+                        + " image cassee et rien ne le dit (ADR-0073 clause 2, etendue aux"
+                        + " reproductions par ADR-0082 decision 2)");
             }
             if (!CLE_ENONCE.equals(declaree.premiereCle())) {
                 fautes.add(ou + " : sa premiere cle est '" + declaree.premiereCle() + "' et non '"
@@ -440,6 +482,17 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
                 fautes.add(illustration.getKey() + EXTENSION + " : du texte pose dans le dessin"
                         + " echappe a tous les garde-fous qui jugent le texte lu par l'enfant"
                         + " (ADR-0073 clause 4)");
+            }
+        }
+
+        for (String identifiantReproduction : reproductions) {
+            boolean declaree = declarees.stream()
+                    .anyMatch(candidate -> identifiantReproduction.equals(candidate.identifiant()));
+            if (!declaree) {
+                fautes.add(identifiantReproduction + EXTENSION_REPRODUCTION + " : aucun item d'aucun"
+                        + " paquet servi ne le declare. Une reproduction que personne ne montre est"
+                        + " du poids mort dans le fat jar, au meme titre qu'un dessin oublie"
+                        + " (ADR-0073 clause 2, ADR-0082 decision 2)");
             }
         }
 
@@ -472,10 +525,16 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         return fichiersIndexesParNomDeBase(repertoires(racine, DECOR));
     }
 
+    /** T2 d'ADR-0082 : la population de reproductions, vide a s49 (aucune n'est encore sourcee). */
+    private static Set<String> reproductionsDuDepot(Path racine) {
+        return identifiantsDeReproductions(repertoires(racine, REPRODUCTIONS));
+    }
+
     @Test
     void chaqueIllustrationDeclareeParUnPaquetServiResoutEtAucunFichierNeDort() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
-        verifier(declareesDuDepot(racine), illustrationsDuDepot(racine), decorDuDepot(racine));
+        verifier(declareesDuDepot(racine), illustrationsDuDepot(racine), decorDuDepot(racine),
+                reproductionsDuDepot(racine));
     }
 
     /**
@@ -557,7 +616,8 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-absente",
                 "Une figure geometrique a reconnaitre.", CLE_ENONCE));
 
-        assertThatThrownBy(() -> verifier(declarees, illustrationsDuDepot(racine), decorDuDepot(racine)))
+        assertThatThrownBy(() -> verifier(declarees, illustrationsDuDepot(racine), decorDuDepot(racine),
+                reproductionsDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("figure-absente")
                 .hasMessageContaining("cp-mutation-en-memoire.yaml");
@@ -570,7 +630,8 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         Map<String, String> illustrations = new LinkedHashMap<>(illustrationsDuDepot(racine));
         illustrations.put("figure-oubliee", "<svg xmlns=\"http://www.w3.org/2000/svg\"></svg>");
 
-        assertThatThrownBy(() -> verifier(declareesDuDepot(racine), illustrations, decorDuDepot(racine)))
+        assertThatThrownBy(() -> verifier(declareesDuDepot(racine), illustrations, decorDuDepot(racine),
+                reproductionsDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("figure-oubliee");
     }
@@ -584,13 +645,14 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
         Map<String, String> illustrations = illustrationsDuDepot(racine);
         Map<String, String> decor = decorDuDepot(racine);
+        Set<String> reproductions = reproductionsDuDepot(racine);
 
         for (String echappee : List.of("../images/cabinet-fronton", "https://exemple.org/figure.png",
                 "figure-carre.svg")) {
             List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
             declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", echappee, "Une figure.", CLE_ENONCE));
 
-            assertThatThrownBy(() -> verifier(declarees, illustrations, decor))
+            assertThatThrownBy(() -> verifier(declarees, illustrations, decor, reproductions))
                     .isInstanceOf(AssertionError.class)
                     .hasMessageContaining(echappee)
                     .hasMessageContaining(ALPHABET);
@@ -606,7 +668,8 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
         declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-muette", null, CLE_ENONCE));
 
-        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine)))
+        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine),
+                reproductionsDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining(CLE_TEXTE_ALTERNATIF);
     }
@@ -622,7 +685,8 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-legendee",
                 "Une figure geometrique.", CLE_ENONCE));
 
-        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine)))
+        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine),
+                reproductionsDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("figure-legendee");
     }
@@ -654,8 +718,9 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
                         + " declaration d'illustration")
                 .hasSize(3);
 
-        assertThatThrownBy(() -> verifier(declarees, illustrations,
-                decorDuDepot(LesGardeFousSontMisALEpreuveTest.racineDuDepot())))
+        Path racineDuDepot = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racineDuDepot),
+                reproductionsDuDepot(racineDuDepot)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("figure-absente")
                 .hasMessageContaining(CLE_TEXTE_ALTERNATIF)
@@ -683,7 +748,8 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "figure-mal-ordonnee",
                 "Une figure geometrique.", CLE_ILLUSTRATION));
 
-        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine)))
+        assertThatThrownBy(() -> verifier(declarees, illustrations, decorDuDepot(racine),
+                reproductionsDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("figure-mal-ordonnee")
                 .hasMessageContaining(CLE_ENONCE);
@@ -692,9 +758,59 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     /** Morsure 6 : la clause de non-vacuite mord elle aussi (ADR-0051). */
     @Test
     void unPerimetreDeDecorVideFaitEchouerLeGardeFou() {
-        assertThatThrownBy(() -> verifier(List.of(), Map.of(), Map.of()))
+        assertThatThrownBy(() -> verifier(List.of(), Map.of(), Map.of(), Set.of()))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ADR-0051");
+    }
+
+    /**
+     * T2 d'ADR-0082, morsure due a son propre amendement : un identifiant {@code oeuvre-} qui ne
+     * resout ni dans les illustrations, ni dans les reproductions, reste rouge.
+     */
+    @Test
+    void unIdentifiantDOeuvreInconnuDesDeuxRepertoiresFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
+        declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "oeuvre-inconnue",
+                "Une reproduction absente.", CLE_ENONCE));
+
+        assertThatThrownBy(() -> verifier(declarees, illustrationsDuDepot(racine), decorDuDepot(racine),
+                reproductionsDuDepot(racine)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("oeuvre-inconnue");
+    }
+
+    /**
+     * T2 d'ADR-0082, preuve positive : un identifiant {@code oeuvre-} resout des qu'un fichier de
+     * meme nom existe dans la population de reproductions, sans qu'aucun fichier d'illustration ne
+     * le porte. Fixture synthetique en memoire, jamais un fichier reel.
+     */
+    @Test
+    void unIdentifiantDOeuvreResoutDesQueLeFichierDeReproductionExiste() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        List<IllustrationDeclaree> declarees = new ArrayList<>(declareesDuDepot(racine));
+        declarees.add(new IllustrationDeclaree("cp-mutation-en-memoire.yaml", "oeuvre-fixture-test",
+                "Une reproduction de fixture.", CLE_ENONCE));
+        Set<String> reproductions = new LinkedHashSet<>(reproductionsDuDepot(racine));
+        reproductions.add("oeuvre-fixture-test");
+
+        verifier(declarees, illustrationsDuDepot(racine), decorDuDepot(racine), reproductions);
+    }
+
+    /**
+     * T2 d'ADR-0082 : la clause "aucune ne dort" vaut aussi sur le second repertoire - une
+     * reproduction que personne ne declare est du poids mort, au meme titre qu'un dessin oublie.
+     */
+    @Test
+    void uneReproductionQueAucunItemNeDeclareFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        Set<String> reproductions = new LinkedHashSet<>(reproductionsDuDepot(racine));
+        reproductions.add("oeuvre-oubliee");
+
+        assertThatThrownBy(() -> verifier(declareesDuDepot(racine), illustrationsDuDepot(racine),
+                decorDuDepot(racine), reproductions))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("oeuvre-oubliee");
     }
 
     /**

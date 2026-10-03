@@ -106,9 +106,23 @@
          pres - prefixe litteral, un unique terme calcule, extension litterale.
          alt vient du modele, jamais du gabarit : un alt ecrit ici serait le meme pour tous les
          dessins d'un paquet, donc n'en decrirait aucun (clause 5). Ce que ce texte dit appartient a
-         nadia-prof (CON-5), jamais a ce fichier. -->
+         nadia-prof (CON-5), jamais a ce fichier.
+         T3 d'ADR-0082 (sofia-sm, s49) : une reproduction d'oeuvre est une troisieme population
+         d'images (static/oeuvres/, JPEG), et le gabarit ne peut pas lire un repertoire pour savoir
+         a laquelle des deux appartient l'identifiant recu - la population se lit donc sur le
+         prefixe de l'identifiant lui-meme (ADR-0082 decision 2), par #strings.startsWith, jamais
+         par une cle de contenu dediee (ADR-0082, alternative "illustrationEstUneOeuvre" ecartee).
+         Deux <img> exclusifs l'un de l'autre, jamais un seul avec une extension calculee : chacun
+         reste un chemin litteral borne a un unique terme calcule, forme que RessourcesTiercesTest
+         exige des deux cotes. La population de reproductions est vide a s49 (T5 non livre) : cette
+         seconde branche ne rend donc jamais rien en l'etat, elle est prete a recevoir la premiere
+         reproduction sourcee. -->
     <div class="illustration" th:if="${illustration != null}">
-        <img class="image-item" th:src="@{'/illustrations/' + ${illustration} + '.svg'}"
+        <img class="image-item" th:if="${!#strings.startsWith(illustration, 'oeuvre-')}"
+             th:src="@{'/illustrations/' + ${illustration} + '.svg'}"
+             th:alt="${illustrationTexteAlternatif}">
+        <img class="image-item" th:if="${#strings.startsWith(illustration, 'oeuvre-')}"
+             th:src="@{'/oeuvres/' + ${illustration} + '.jpg'}"
              th:alt="${illustrationTexteAlternatif}">
     </div>
     <!-- S18, S17-C : tabindex="-1" est declare ici, jamais pose par recreo.js. Un <p> n'est pas

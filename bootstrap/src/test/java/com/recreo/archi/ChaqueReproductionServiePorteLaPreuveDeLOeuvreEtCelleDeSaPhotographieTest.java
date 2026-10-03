@@ -84,6 +84,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * l'oeuvre, et que le corpus tienne ART-5 (ni une seule epoque, ni une seule aire culturelle, ni
  * des artistes d'un seul genre). Une entree qui ment passe. Ces trois-la sont la main de
  * {@code nadia-prof}, elle l'a ecrit elle-meme, et aucun automate ne les verifie a sa place.</p>
+ *
+ * <p><b>T4 d'ADR-0082 (sofia-sm, s49) : le plafond de pixels paie la dette nommee sans alarme a la
+ * section 7 de l'ADR.</b> {@link #dimensionsJpeg(byte[])} lit le segment SOFn d'un JPEG pour en tirer
+ * sa largeur et sa hauteur declarees, et le juge refuse tout fichier dont le plus grand cote depasse
+ * {@link #PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS} px. <b>Ce que T4 ne paie pas, et c'est ecrit plutot
+ * que tu</b> : le remplacement du materiau de reference des morsures de ce fichier par du materiau
+ * reel reste du, parce qu'aucune reproduction reelle n'existe encore a verifier - ce fichier n'a
+ * aucun acces web, et T5 (choix verifie par nadia-prof, sourcing par un developpeur) n'est pas livre.
+ * Les deux morsures de pixels ci-dessous mordent donc, comme les treize morsures existantes, sur un
+ * en-tete JPEG synthetique fabrique pour exercer le lecteur de dimensions - jamais sur un fichier
+ * qui pretendrait representer une oeuvre reelle ni sur une preuve de domaine public inventee.</p>
  */
 class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest {
 
@@ -154,6 +165,17 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
     private static final int REPRODUCTIONS_SERVIES = 0;
 
     private static final int POIDS_TOTAL_MAXIMUM = 0;
+
+    /**
+     * T4 d'ADR-0082 (sofia-sm, s49) : l'analogue matriciel du {@code viewBox} des dessins -
+     * {@code ADR-0082}, section "Le cout et le decoupage en taches", table du poids : "Reproduction
+     * servie, plus grand cote : 352 px vise (deux fois le plafond, pour un ecran a double densite)".
+     * Un JPEG ne declare pas ses dimensions dans un attribut lisible comme un SVG ; elles vivent dans
+     * son segment SOFn, lu par {@link #dimensionsJpeg(byte[])}. Ce plafond evite qu'un fichier a la
+     * resolution ou les musees le publient (3 000 a 6 000 px selon l'ADR) n'entre dans le fat jar :
+     * c'est lui qui separe 2 Mo de 200 pour le corpus complet.
+     */
+    private static final int PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS = 352;
 
     /** ADR-0013 : le jeu fautif de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
@@ -290,6 +312,17 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
                 throw new AssertionError("ADR-0082 : '" + nom + "' n'est pas une image JPEG ; ses"
                         + " premiers octets ne sont pas ceux d'un JPEG");
             }
+            int[] dimensions = dimensionsJpeg(fichier.getValue());
+            if (dimensions.length == 2) {
+                int plusGrandCote = Math.max(dimensions[0], dimensions[1]);
+                if (plusGrandCote > PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS) {
+                    throw new AssertionError("ADR-0082 : '" + nom + "' declare " + dimensions[0] + "x"
+                            + dimensions[1] + " px, au-dessus du plafond de "
+                            + PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS + " px sur son plus grand cote ;"
+                            + " un fichier a une resolution de musee pese cent fois plus et n'apporte"
+                            + " rien a un rendu qui ne depasse jamais ce plafond");
+                }
+            }
             if (illustrations.contains(base) || decor.contains(base)) {
                 throw new AssertionError("ADR-0082 : '" + base + "' appartient a deux populations"
                         + " d'images a la fois ; les trois repertoires restent disjoints, sinon un"
@@ -363,6 +396,42 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
                 && (octets[0] & 0xFF) == 0xFF
                 && (octets[1] & 0xFF) == 0xD8
                 && (octets[2] & 0xFF) == 0xFF;
+    }
+
+    /**
+     * T4 d'ADR-0082 : la largeur et la hauteur intrinseques d'un JPEG, lues dans son segment SOFn
+     * (Start Of Frame - les marqueurs 0xC0 a 0xCF, hors 0xC4, 0xC8 et 0xCC qui ne sont pas des
+     * marqueurs de trame). Balayage de segments depuis l'octet qui suit le marqueur SOI (0xFFD8), sans
+     * aucune bibliotheque d'image : ce depot ne decode jamais un JPEG, il lit seulement l'en-tete qui
+     * declare sa taille. Renvoie un tableau vide si aucun segment SOFn n'est trouve, ce que le juge
+     * traite comme "rien a comparer au plafond" plutot que comme une faute - un fichier dont l'en-tete
+     * ne se laisse pas lire est deja refuse par {@link #estUnJpeg(byte[])} ou par la clause JPEG
+     * ci-dessus s'il n'en est pas un ; cette methode ne juge que la taille d'un JPEG par ailleurs
+     * valide.
+     */
+    static int[] dimensionsJpeg(byte[] octets) {
+        int position = 2;
+        while (position + 4 <= octets.length) {
+            if ((octets[position] & 0xFF) != 0xFF) {
+                position++;
+                continue;
+            }
+            int marqueur = octets[position + 1] & 0xFF;
+            if (marqueur == 0xD8 || marqueur == 0xD9 || (marqueur >= 0xD0 && marqueur <= 0xD7)) {
+                position += 2;
+                continue;
+            }
+            boolean estUnSof = marqueur >= 0xC0 && marqueur <= 0xCF
+                    && marqueur != 0xC4 && marqueur != 0xC8 && marqueur != 0xCC;
+            if (estUnSof && position + 9 <= octets.length) {
+                int hauteur = ((octets[position + 5] & 0xFF) << 8) | (octets[position + 6] & 0xFF);
+                int largeur = ((octets[position + 7] & 0xFF) << 8) | (octets[position + 8] & 0xFF);
+                return new int[] {largeur, hauteur};
+            }
+            int longueurSegment = ((octets[position + 2] & 0xFF) << 8) | (octets[position + 3] & 0xFF);
+            position += 2 + longueurSegment;
+        }
+        return new int[0];
     }
 
     /** Cliquet exact : ni la population ni son poids ne grandissent sans un diff qui le dit. */
@@ -559,6 +628,44 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
                 Set.of("oeuvre-sujet-nomme")))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("deux populations");
+    }
+
+    /**
+     * T4 d'ADR-0082, morsure sur du materiau synthetique en memoire : un JPEG dont le segment SOF0
+     * declare 1000x1000 px, au-dessus du plafond de 352 px. Le fichier n'est pas une fixture qui
+     * pretend representer une oeuvre - ce sont les quinze octets minimaux d'un en-tete JPEG valide,
+     * construits pour exercer le lecteur de dimensions, jamais pour simuler une preuve de domaine
+     * public.
+     */
+    @Test
+    void uneReproductionAuDelaDuPlafondDePixelsEstRefusee() {
+        byte[] grandJpeg = {
+                (byte) 0xFF, (byte) 0xD8, (byte) 0xFF, (byte) 0xC0,
+                0x00, 0x0B, 0x08, 0x03, (byte) 0xE8, 0x03, (byte) 0xE8,
+                0x01, 0x01, 0x11, 0x00};
+        Map<String, byte[]> reproductions = new LinkedHashMap<>(reproductionsSaines());
+        reproductions.put("oeuvre-sujet-nomme" + EXTENSION, grandJpeg);
+
+        assertThatThrownBy(() -> verifier(registreSain(), reproductions, Set.of(), Set.of()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("plafond de " + PLAFOND_DE_PLUS_GRAND_COTE_EN_PIXELS);
+    }
+
+    /**
+     * T4 d'ADR-0082, preuve positive sur le meme materiau synthetique : un en-tete JPEG declarant
+     * 100x100 px, sous le plafond, passe la clause sans la declencher. Sans cette moitie, la morsure
+     * precedente pourrait etre verte parce que le lecteur de dimensions ne lirait jamais rien.
+     */
+    @Test
+    void uneReproductionSousLePlafondDePixelsPasseLaClause() {
+        byte[] petitJpeg = {
+                (byte) 0xFF, (byte) 0xD8, (byte) 0xFF, (byte) 0xC0,
+                0x00, 0x0B, 0x08, 0x00, 0x64, 0x00, 0x64,
+                0x01, 0x01, 0x11, 0x00};
+        Map<String, byte[]> reproductions = new LinkedHashMap<>(reproductionsSaines());
+        reproductions.put("oeuvre-sujet-nomme" + EXTENSION, petitJpeg);
+
+        verifier(registreSain(), reproductions, Set.of(), Set.of());
     }
 
     @Test
