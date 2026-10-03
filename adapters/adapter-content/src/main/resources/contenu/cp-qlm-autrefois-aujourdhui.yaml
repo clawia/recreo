@@ -103,7 +103,7 @@ items:
   - enonce: "On va chercher l'eau à un puits. Est-ce autrefois ou aujourd'hui ?"
     bonneReponse: "autrefois"
     distracteurs: ["aujourd'hui"]
-    indice: "Ce puits est un trou profond creusé dans le sol. On y allait chercher l'eau avant d'avoir un robinet."
+    indice: "On y allait chercher l'eau avant qu'elle arrive dans les maisons."
   - enonce: "Autrefois, on lavait le linge au lavoir. Avec quoi le lave-t-on aujourd'hui ?"
     bonneReponse: "une machine à laver"
     distracteurs: ["une planche à laver", "un baquet"]
@@ -127,7 +127,7 @@ items:
   - enonce: "Autrefois, on allait chercher l'eau au puits. Comment l'eau arrive-t-elle aujourd'hui ?"
     bonneReponse: "par un robinet"
     distracteurs: ["par une rivière voisine", "par un camion-citerne"]
-    indice: "Ce robinet est relié à des tuyaux sous la terre."
+    indice: "L'eau arrive dans la maison par des tuyaux sous la terre."
   - enonce: "Autrefois, on cuisait le pain à la maison. Où achète-t-on le pain aujourd'hui ?"
     bonneReponse: "à la boulangerie"
     distracteurs: ["à la maison", "chez le voisin"]
