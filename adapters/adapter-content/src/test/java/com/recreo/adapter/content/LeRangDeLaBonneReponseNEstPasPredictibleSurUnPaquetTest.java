@@ -1073,7 +1073,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " sept items (tache de comparaison) portent deux distracteurs (trois"
                     + " propositions, des noms d'objets et de pratiques du quotidien). Aucune"
                     + " proposition n'est numerique. Mesure du 2026-10-02, comptage direct sur le"
-                    + " paquet servi (\"bonneReponse\" et \"distracteurs\")"));
+                    + " paquet servi (\"bonneReponse\" et \"distracteurs\")"),
+            // S49-FRA-GRAPHEMES : premier paquet de francais CE1 (FRA-CE1-01).
+            Map.entry("ce1-graphemes-complexes",
+            "24 items sur 24 portent deux distracteurs (trois propositions), mais aucune des 72"
+                    + " propositions n'est numerique : ce sont des mots a lire (la bonne reponse et"
+                    + " deux distracteurs), valeurDe rend null sur les trois propositions de chaque"
+                    + " item. Mesure du 2026-10-03 sur le paquet servi : aucune des 72 propositions"
+                    + " ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

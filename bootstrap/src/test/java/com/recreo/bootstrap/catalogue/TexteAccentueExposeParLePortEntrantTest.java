@@ -372,6 +372,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S48-MAT-PROBLEMES (s48) : entree neuve, MAT-CE1-08, problemes d'addition, de
             // soustraction et de multiplication a une ou deux etapes.
             "bandit-manchot-problemes-etapes-ce1",
+            // S49-FRA-GRAPHEMES (s49) : entree neuve, FRA-CE1-01, premiere ligne du referentiel
+            // de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
+            // section 3.1).
+            "bandit-manchot-graphemes-complexes-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -610,6 +614,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Mémoriser ses tables de multiplication",
             // S48-MAT-PROBLEMES (s48) : titre neuf.
             "Les problèmes à étapes",
+            // S49-FRA-GRAPHEMES (s49) : titre neuf. Il ne porte pas son niveau (ADR-0078) et ne
+            // reprend pas "Le bon son" (CP, bandit-manchot-le-bon-son-cp).
+            "Le même son",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -876,6 +883,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (cp-problemes-additifs), deja dans la table de dette de TYP-1 avec son espace
             // ordinaire.
             "Lis bien, puis trouve la réponse !",
+            // S49-FRA-GRAPHEMES (s49) : consigne neuve, generique - elle ne nomme ni le mot de
+            // reference ni aucune proposition d'aucun item.
+            "Lis bien, puis choisis le mot qui a le même son.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1403,7 +1413,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S48-MAT-PROBLEMES (s48) : competence neuve, MAT-CE1-08, libelle du referentiel
             // copie mot pour mot (squad/programme/mathematiques/competences-ce1.md, ligne
             // MAT-CE1-08) sans le point final.
-            "Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou deux étapes");
+            "Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou deux étapes",
+            // S49-FRA-GRAPHEMES (s49) : competence neuve, FRA-CE1-01, libelle du referentiel
+            // copie mot pour mot (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-01).
+            "Lire des mots comportant des graphèmes complexes (ain/ein, eil/eille, ill, gn, oin, "
+                    + "ien...) et les associer au son qu'ils transcrivent.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

@@ -732,3 +732,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-problemes-etapes
     nombreDeManches: 10
+  - id: bandit-manchot-graphemes-complexes-ce1
+    titre: "Le même son"
+    consigne: "Lis bien, puis choisis le mot qui a le même son."
+    mecanique: bandit-manchot
+    paquet: ce1-graphemes-complexes
+    nombreDeManches: 10

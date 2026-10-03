@@ -1,0 +1,19 @@
+schema: 1
+id: ce1-graphemes-complexes-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1GraphemesComplexesTest. Un seul item, dont le
+# premier distracteur declare la famille (a) (GRC-CE1-3 : memes lettres suivies d'une voyelle qui
+# change la lecture) mais ne contient aucune graphie de la cible "ain/ein" suivie d'un n puis
+# d'une voyelle : "chaton" ne porte ni "ain", ni "ein". La verification depuis la famille declaree
+# doit le refuser.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Lire des mots comportant des graphèmes complexes (ain/ein, eil/eille, ill, gn, oin, ien...) et les associer au son qu'ils transcrivent."
+lignesDeReferentiel: ["FRA-CE1-01"]
+items:
+  - enonce: "Quel mot contient le même son que « pain » ?"  # GRC-CE1: cible=ain/ein;fam=a,b
+    bonneReponse: "copain"
+    distracteurs: ["chaton", "maison"]
+    indice: "Écoute le son, pas seulement les lettres."

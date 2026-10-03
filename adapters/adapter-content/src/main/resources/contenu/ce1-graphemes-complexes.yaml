@@ -1,0 +1,152 @@
+# S49-FRA-GRAPHEMES (s49, DEC-0107). Arbitrage prealable de nadia-prof, conditions GRC-CE1-1 a
+# GRC-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 3.1) et sept
+# conditions transverses TRV-CE1-1 a TRV-CE1-7 (meme source, section 2). Avis de faisabilite de
+# theo-archi (squad/rapports/avis-faisabilite-s49-quatre-stories.md, section 6), dont les six
+# pieges de fabrication sont repris sans changement par PaquetCe1GraphemesComplexesTest.
+#
+# Choix non bloquants tranches ici pour avancer (section 8 de l'avis, Q1 et Q2, routes a
+# nadia-prof, non repondues a ce jour) :
+#   - Q1 : aucun indice de ce paquet ne nomme une lettre ni ne dit ou regarder dans le mot -
+#     chaque indice reste generique ("ecoute le son", "compare les mots") pour ne pas trancher par
+#     ricochet si nommer une lettre reviendrait a designer une graphie comme nom d'un son
+#     (TRV-CE1-3). Plus prudent que necessaire si nadia-prof repond oui, jamais fautif si elle
+#     repond non.
+#   - Q2 : la longueur d'une proposition (TRV-CE1-2, "strictement la plus longue") est comptee en
+#     lettres, comme l'avis le propose par defaut faute de reponse.
+#
+# GRC-CE1-1 : six familles (ain/ein, oin, ien, eil/eille, ill, gn), quatre items chacune sur
+# vingt-quatre (16,7 %, au-dessus du dixieme). Aucun grapheme du CP (an, en, on, in, ou, oi, ch)
+# n'est jamais la cible ; "oi" (roi) figure seulement en distracteur (famille b, GRC-CE1-3),
+# comme la condition l'autorise.
+# GRC-CE1-2 : aucune bonne reponse n'appartient au lexique d'exclusion (ville, mille, village,
+# tranquille et leurs flexions) - verifie par PaquetCe1GraphemesComplexesTest, mot entier.
+# GRC-CE1-3 : chaque distracteur declare sa famille en commentaire ("# GRC-CE1: cible=x;fam=y,z"),
+# relue et verifiee par PaquetCe1GraphemesComplexesTest. La famille (a) n'existe que sur les trois
+# familles nasales (ain/ein, oin, ien ; piege 4 de l'avis) : douze items nasals sur vingt-quatre,
+# chacun porte un distracteur de famille (a), soit 50 % du paquet, au-dessus du tiers exige.
+# TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-01), aucun champ a
+# voix haute, trois propositions distinctes par item (la bonne reponse n'est strictement la plus
+# longue que sur douze items sur vingt-quatre, soit la moitie exacte), un seul mot entre guillemets
+# dans l'enonce portant une graphie de la famille cible, le lexique de grammaire de TRV-CE1-4 exclu
+# en mots entiers et accentues, un indice present sur chaque item (douze mots au plus, six formes
+# distinctes sur le paquet, jamais la bonne reponse en mot entier), vingt-quatre items au-dessus du
+# plancher de vingt.
+# LON-CE1-1 et LON-CE1-2 sont deja tenues par AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest
+# (ADR-0101), dette nulle pour ce paquet neuf (chaque enonce compte neuf mots, une seule phrase).
+# LON-CE1-5 : chaque proposition est un seul mot, donc au plus six mots et une seule phrase.
+#
+# Piege 1 de l'avis (lexiques en mots entiers et accentues) : evite par construction, aucun mot du
+# lexique de TRV-CE1-4 n'est servi, et le lexique d'exclusion de GRC-CE1-2 est ecrit accentue
+# (village, tranquille) dans PaquetCe1GraphemesComplexesTest.
+# Piege 2 (indice par sous-chaine) : indiceNeRevelePasLaBonneReponse compare des mots entiers.
+# Piege 3 (terminaison -ient) : aucun item ne cible un verbe en -ient ; laisse a nadia-prof.
+# Piege 5 (guillemets et point d'interrogation) : « et » encadrent un espace insecable (ADR-0060,
+# clause 2) et l'espace qui precede "?" est insecable (TYP-1, ADR-0067) - zero occurrence
+# detachable dans ce paquet neuf.
+# Piege 6 (titre) : "Le meme son" ne porte pas le niveau et ne reprend pas "Le bon son" (CP).
+schema: 1
+id: ce1-graphemes-complexes
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Lire des mots comportant des graphèmes complexes (ain/ein, eil/eille, ill, gn, oin, ien...) et les associer au son qu'ils transcrivent."
+lignesDeReferentiel: ["FRA-CE1-01"]
+items:
+  - enonce: "Quel mot contient le même son que « main » ?"  # GRC-CE1: cible=ain/ein;fam=a,b
+    bonneReponse: "plein"
+    distracteurs: ["pleine", "maison"]
+    indice: "Écoute le son, pas seulement les lettres."
+  - enonce: "Quel mot contient le même son que « pain » ?"  # GRC-CE1: cible=ain/ein;fam=a,c
+    bonneReponse: "grain"
+    distracteurs: ["graine", "chien"]
+    indice: "Lis bien les deux mots avant de choisir."
+  - enonce: "Quel mot contient le même son que « train » ?"  # GRC-CE1: cible=ain/ein;fam=a,b
+    bonneReponse: "frein"
+    distracteurs: ["freine", "fraise"]
+    indice: "Pense au son que tu entends, pas à l'écriture."
+  - enonce: "Quel mot contient le même son que « bain » ?"  # GRC-CE1: cible=ain/ein;fam=a,b
+    bonneReponse: "romain"
+    distracteurs: ["romaine", "balai"]
+    indice: "Certains mots se ressemblent mais ne sonnent pas pareil."
+  - enonce: "Quel mot contient le même son que « coin » ?"  # GRC-CE1: cible=oin;fam=a,c
+    bonneReponse: "foin"
+    distracteurs: ["moine", "lion"]
+    indice: "Compare le son du mot de référence aux trois mots."
+  - enonce: "Quel mot contient le même son que « loin » ?"  # GRC-CE1: cible=oin;fam=a,b
+    bonneReponse: "soin"
+    distracteurs: ["moine", "roi"]
+    indice: "Ne choisis pas le mot qui te semble familier."
+  - enonce: "Quel mot contient le même son que « point » ?"  # GRC-CE1: cible=oin;fam=a,c
+    bonneReponse: "témoin"
+    distracteurs: ["moine", "lion"]
+    indice: "Écoute le son, pas seulement les lettres."
+  - enonce: "Quel mot contient le même son que « moins » ?"  # GRC-CE1: cible=oin;fam=a,b
+    bonneReponse: "groin"
+    distracteurs: ["moine", "roi"]
+    indice: "Lis bien les deux mots avant de choisir."
+  - enonce: "Quel mot contient le même son que « chien » ?"  # GRC-CE1: cible=ien;fam=a,c
+    bonneReponse: "ancien"
+    distracteurs: ["chienne", "plein"]
+    indice: "Pense au son que tu entends, pas à l'écriture."
+  - enonce: "Quel mot contient le même son que « bien » ?"  # GRC-CE1: cible=ien;fam=a,b
+    bonneReponse: "musicien"
+    distracteurs: ["chienne", "copain"]
+    indice: "Certains mots se ressemblent mais ne sonnent pas pareil."
+  - enonce: "Quel mot contient le même son que « rien » ?"  # GRC-CE1: cible=ien;fam=a,c
+    bonneReponse: "gardien"
+    distracteurs: ["chienne", "plein"]
+    indice: "Compare le son du mot de référence aux trois mots."
+  - enonce: "Quel mot contient le même son que « combien » ?"  # GRC-CE1: cible=ien;fam=a,b
+    bonneReponse: "parisien"
+    distracteurs: ["chienne", "copain"]
+    indice: "Ne choisis pas le mot qui te semble familier."
+  - enonce: "Quel mot contient le même son que « soleil » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
+    bonneReponse: "réveil"
+    distracteurs: ["reine", "ciel"]
+    indice: "Écoute le son, pas seulement les lettres."
+  - enonce: "Quel mot contient le même son que « abeille » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
+    bonneReponse: "corbeille"
+    distracteurs: ["neige", "ciel"]
+    indice: "Lis bien les deux mots avant de choisir."
+  - enonce: "Quel mot contient le même son que « oreille » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
+    bonneReponse: "merveille"
+    distracteurs: ["reine", "ciel"]
+    indice: "Pense au son que tu entends, pas à l'écriture."
+  - enonce: "Quel mot contient le même son que « bouteille » ?"  # GRC-CE1: cible=eil/eille;fam=b,c
+    bonneReponse: "orteil"
+    distracteurs: ["neige", "ciel"]
+    indice: "Certains mots se ressemblent mais ne sonnent pas pareil."
+  - enonce: "Quel mot contient le même son que « fille » ?"  # GRC-CE1: cible=ill;fam=b,c
+    bonneReponse: "papillon"
+    distracteurs: ["fusil", "colline"]
+    indice: "Compare le son du mot de référence aux trois mots."
+  - enonce: "Quel mot contient le même son que « bille » ?"  # GRC-CE1: cible=ill;fam=b,c
+    bonneReponse: "chenille"
+    distracteurs: ["fusil", "colline"]
+    indice: "Ne choisis pas le mot qui te semble familier."
+  - enonce: "Quel mot contient le même son que « quille » ?"  # GRC-CE1: cible=ill;fam=b,c
+    bonneReponse: "coquille"
+    distracteurs: ["fusil", "colline"]
+    indice: "Écoute le son, pas seulement les lettres."
+  - enonce: "Quel mot contient le même son que « vanille » ?"  # GRC-CE1: cible=ill;fam=b,c
+    bonneReponse: "brindille"
+    distracteurs: ["fusil", "colline"]
+    indice: "Lis bien les deux mots avant de choisir."
+  - enonce: "Quel mot contient le même son que « montagne » ?"  # GRC-CE1: cible=gn;fam=b,c
+    bonneReponse: "araignée"
+    distracteurs: ["guitare", "singe"]
+    indice: "Pense au son que tu entends, pas à l'écriture."
+  - enonce: "Quel mot contient le même son que « campagne » ?"  # GRC-CE1: cible=gn;fam=b,c
+    bonneReponse: "peigne"
+    distracteurs: ["guitare", "singe"]
+    indice: "Certains mots se ressemblent mais ne sonnent pas pareil."
+  - enonce: "Quel mot contient le même son que « signe » ?"  # GRC-CE1: cible=gn;fam=b,c
+    bonneReponse: "oignon"
+    distracteurs: ["guitare", "singe"]
+    indice: "Compare le son du mot de référence aux trois mots."
+  - enonce: "Quel mot contient le même son que « vigne » ?"  # GRC-CE1: cible=gn;fam=b,c
+    bonneReponse: "agneau"
+    distracteurs: ["guitare", "singe"]
+    indice: "Ne choisis pas le mot qui te semble familier."
