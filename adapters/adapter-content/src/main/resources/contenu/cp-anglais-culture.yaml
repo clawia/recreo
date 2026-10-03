@@ -55,7 +55,7 @@ items:
   - enonce: "Début novembre, des feux d'artifice illuminent le ciel le soir. Quel est ce pays ?"  # element: fete
     bonneReponse: "le Royaume-Uni"
     distracteurs: ["l'Allemagne", "le Portugal"]
-    indice: "Cette fête rappelle un secret découvert juste à temps, il y a très longtemps."
+    indice: "Ces feux d'artifice ont lieu dans le pays de Londres."
   - enonce: "De nombreux élèves portent un uniforme avec veste et cravate. Quel est ce pays ?"  # element: quotidien
     bonneReponse: "le Royaume-Uni"
     distracteurs: ["les États-Unis", "l'Italie"]
@@ -86,7 +86,7 @@ items:
     indice: "Cette tenue est la même pour tous les élèves d'une même école."
   - enonce: "Aux États-Unis, comment s'appelle la statue qui porte une torche ?"  # element: lieu
     bonneReponse: "la statue de la Liberté"
-    distracteurs: ["le Christ Rédempteur", "la Petite Sirène"]
+    distracteurs: ["la statue du Christ", "la statue de la Petite Sirène"]
     indice: "Son nom rappelle une valeur importante : être libre."
   - enonce: "Aux États-Unis, que mange-t-on souvent fin novembre, en famille ?"  # element: fete
     bonneReponse: "de la dinde"
@@ -94,5 +94,5 @@ items:
     indice: "C'est une grosse volaille, souvent servie rôtie, au centre de la table."
   - enonce: "Aux États-Unis, que font les élèves chaque matin, face au drapeau ?"  # element: quotidien
     bonneReponse: "ils récitent un texte de fidélité au pays"
-    distracteurs: ["ils lèvent le drapeau en haut d'un mât", "ils saluent le drapeau, debout et en silence"]
+    distracteurs: ["ils lèvent le drapeau en haut d'un mât", "ils dessinent le drapeau sur leur cahier"]
     indice: "Ce moment a lieu juste avant le début des cours, dans de nombreuses écoles de ce pays."

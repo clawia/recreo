@@ -233,4 +233,33 @@ class PaquetCpAnglaisCultureTest {
                 .contains("découverte culturelle seule, en français ; aucune compétence"
                         + " linguistique n'est servie");
     }
+
+    /**
+     * ANG-CP-R3 (fiche de conformite, second passage, section 4) : un mot de quatre lettres ou
+     * plus de l'enonce ne figure dans la seule bonne reponse - sinon l'enfant la reconnait sans
+     * lire le reste. Mots extraits par {@code \w{4,}} sous
+     * {@link Pattern#UNICODE_CHARACTER_CLASS} (sinon "Etats" serait coupe en "tats"), compares en
+     * mot entier, insensible a la casse.
+     */
+    @Test
+    void angCpR3AucunMotDeQuatreLettresDeLEnonceNeFigureQueDansLaBonneReponse() {
+        Pattern mot = Pattern.compile("\\w{4,}", Pattern.UNICODE_CHARACTER_CLASS);
+        for (Question item : items()) {
+            Matcher mots = mot.matcher(item.enonce());
+            while (mots.find()) {
+                String motTrouve = mots.group();
+                Pattern motEntier = Pattern.compile("\\b" + Pattern.quote(motTrouve) + "\\b",
+                        Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS);
+                if (!motEntier.matcher(item.bonneReponse()).find()) {
+                    continue;
+                }
+                boolean dansUnDistracteur = item.distracteurs().stream()
+                        .anyMatch(distracteur -> motEntier.matcher(distracteur).find());
+                assertThat(dansUnDistracteur)
+                        .as("item %s : '%s' de l'enonce ne figure que dans la bonne reponse"
+                                + " (ANG-CP-R3)", item.id().value(), motTrouve)
+                        .isTrue();
+            }
+        }
+    }
 }
