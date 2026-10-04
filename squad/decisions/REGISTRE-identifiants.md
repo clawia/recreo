@@ -11,6 +11,22 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s50, instance A, le 2026-10-04 (Done pedagogique de `FRA-CE1-16`, VALIDE
+SOUS RESERVE).** Un identifiant ajoute, une reserve : **`HOM-CE1-R1`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-homophones-ce1.md`. **Forme copiee** de `GRC-CE1-R1` : trois
+segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** :
+`HOM-CE1-1` a `HOM-CE1-3` etaient alloues ; `HOM-CE1-R1` etait absent de la section 4 et du depot
+avant d'ecrire. La ligne de la section 4 est dans le meme diff que la fiche. Les quatre autres
+verdicts de ce jour (`FRA-CE1-02` refuse, `GRC-CE1-R1`, `DIV-CE1-R1`, `SOU-CE1-R1` levees) n'ecrivent
+aucun identifiant neuf.
+
+Ligne d'etat courant portee de **913 / 157 a 914 / 157**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 913 identifiants alloues et 157 prefixes distincts, sa table en porte 914 et 157"*. C'est
+ce **914 / 157** que je recopie. Aucun autre defaut rendu.
+
 **Note de `theo-archi`, s49, le 2026-10-03 (dette d'`ADR-0082` section 7).** Deux allocations
 retirees : les deux seules du prefixe **`REF`**, numeros un et deux. Elles ne sont pas ecrites ici
 sous leur forme complete, parce que ce garde-fou exigerait alors leur allocation. C'etaient les
@@ -628,7 +644,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `913` identifiants alloues, `157` prefixes distincts.
+**Compte courant, verifie par la CI** : `914` identifiants alloues, `157` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2095,6 +2111,7 @@ clause 2 par une exemption.
 | `HOM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `HOM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `HOM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `HOM-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-homophones-ce1.md` |
 | `PRS-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `PRS-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `PRS-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
