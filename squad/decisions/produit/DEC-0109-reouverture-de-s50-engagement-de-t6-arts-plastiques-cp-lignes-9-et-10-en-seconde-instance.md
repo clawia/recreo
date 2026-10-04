@@ -217,3 +217,78 @@ clean verify` sur le reacteur complet rend `BUILD SUCCESS` - ce qui leve le roug
 - Elle ne prononce aucun Done, technique ou pedagogique.
 - Elle ne revient pas sur l'acceptation du commit de sourcing ni sur le perimetre deja engage de
   `DEC-0108` (sections 1 a 8, qui tiennent).
+
+## 9. Amendement du 2026-10-04 : Q3 de l'avis de faisabilite (`theo-archi`, `squad/rapports/avis-faisabilite-s50-art-cp.md`, commit `4ea72382`) - les 17 reproductions hors vivier sortent de l'arbre, restaurables a l'octet, pas d'`ADR`
+
+**Le trou chiffre par `theo-archi`, reverifie par moi au disque avant de trancher.**
+`squad/corpus/oeuvres-domaine-public.yaml` porte 28 entrees (`grep -c "identifiant: oeuvre-"`,
+2026-10-04). Le vivier retenu en section 1 ci-dessus (11 identifiants, section 0) en couvre 11. Les
+17 autres - `oeuvre-licorne-captive`, `oeuvre-grande-jatte`, `oeuvre-autoportrait-leyster`,
+`oeuvre-autoportrait-deux-eleves`, `oeuvre-rhinoceros`, `oeuvre-belles-heures`, `oeuvre-vitrail`,
+`oeuvre-fresque-romaine`, `oeuvre-vase-ming`, `oeuvre-vase-shang`, `oeuvre-carreau-iznik`,
+`oeuvre-bateau-egyptien`, `oeuvre-amphore-grecque`, `oeuvre-amerique-ancienne`,
+`oeuvre-photo-pyramides`, `oeuvre-photo-notre-dame`, `oeuvre-photo-acropole` - sont le vivier de
+`ART-CM1-07`, `ART-CM1-08` et des quatre lignes `HDA-CM1-*` (`CHOIX-oeuvres-candidates-T5.md`,
+section 5 et 8.4), `T7`/`T8` d'`ADR-0082`, hors perimetre de s50. Le paquet `S50-ART` ne les
+declarerait pas : `LIllustrationDeContenuResoutEtAucuneNeDortTest` resterait rouge sur ces 17 noms
+apres l'ecriture complete du paquet, mesure par `theo-archi` en simulation et confirme par la
+lecture de la clause elle-meme (boucle sur **chaque** reproduction, pas "au moins une").
+
+**Ce que je verifie moi-meme avant de choisir, sans reprendre le chiffrage de confiance** : le cout
+reel d'O1 depend de si les 17 sont deja verifiees ou non. Lu dans
+`squad/rapports/sourcing-oeuvres-s49-verification.md`, section 2 (tableau oeuvre par oeuvre) et
+section 4 (remplacantes) : les 17 identifiants y figurent tous, chacun avec un verdict **retenue**
+(licence `CC0-1.0` confirmee programmatiquement contre l'API ou le jeu de donnees ouvert de
+l'institution, auteur, date, numero d'inventaire) - y compris `oeuvre-grande-jatte` (bloquee
+uniquement par Cloudflare pour le telechargement du fichier, licence deja verifiee section 3.1, et
+le fichier est entre depuis par `56b6b77c`) et `oeuvre-photo-notre-dame` / `oeuvre-photo-acropole`
+(remplacantes verifiees en section 4 apres le premier passage). **Aucun des 17 ne porte une
+verification restant a faire.** Le cout d'O1 est donc exactement celui que `theo-archi` nomme sans
+le trancher : un cout de mecanique Git pur (retrait puis `git checkout <sha> --` au moment de
+`T7`/`T8`, meme blob, aucun travail de verification perdu ni a refaire).
+
+**Ma decision : O1.** Le commit qui livre `S50-ART` retire du registre et du disque les 17 fichiers
+et entrees hors vivier ; ils sont restaures a l'octet depuis l'historique Git (`56b6b77c` et les
+commits anterieurs du chantier de sourcing) le jour ou `T7` ou `T8` s'ouvre reellement. Motifs :
+
+- **Le cout que je redoutais avant verification (travail de verification perdu) n'existe pas** : je
+  viens de le verifier au disque, pas de le supposer. O2 n'achete donc aucune garantie que n'achete
+  pas deja l'historique Git.
+- **O2 contredit le motif meme pour lequel j'ai engage `T6` en seconde instance** (section 6 :
+  *"ce qui leve le rouge [...] pour l'ensemble du sprint"*). O2 demande un `ADR` prealable
+  (amendement d'`ADR-0073` clause 2) avant que le paquet ne puisse meme s'ecrire, et laisse `build`
+  rouge plus longtemps - exactement le cout que `DEC-0108` section 9 vient de nommer comme bloquant
+  pour les cinq autres stories du sprint. Je ne rouvre pas ce rouge que je viens de decider de
+  fermer.
+- **Zero piece mobile nouvelle** : O1 ne touche aucune regle, aucun garde-fou, aucun `ADR`. C'est la
+  clause 2 d'`ADR-0073` telle qu'ecrite (*"toute reproduction posee a son entree, toute entree
+  designe un fichier qui existe"*) qui ferme, sans amendement.
+
+**Ce que j'accepte explicitement par ce choix, en reponse a la reserve que `theo-archi` nomme avant
+de me la router** : O1 retire de l'arbre, jusqu'a `T7`/`T8`, une partie du livrable du chantier de
+sourcing que j'ai accepte en `DEC-0108` section 1 (25 oeuvres verifiees, puis 28 apres `56b6b77c`).
+Je l'accepte parce que rien n'est perdu - l'historique Git porte les 17 fichiers et leurs entrees a
+l'identique - et parce que la seule alternative (O2) couterait un `ADR` et un rouge plus long pour
+une garantie que la verification au disque, ci-dessus, rend sans objet.
+
+**Correction du chiffrage de `DEC-0109` section 6, et de `DEC-0108` section 1, sur la lecture de la
+clause (Q6 de l'avis).** Les deux ecrivaient que le rouge de `build` se fermerait "des qu'un paquet
+reel declare un identifiant `oeuvre-`", au singulier. **C'est inexact**, verifie par `theo-archi`
+dans le code du garde-fou et reverifie par moi dans cette section : la clause porte sur **chaque**
+reproduction servie, pas sur l'existence d'au moins une declaration. Le sixieme critere de la story
+`S50-ART` (*"`BUILD SUCCESS`, zero echec"*) n'est donc pas tenu par le paquet seul : il demande, en
+plus de l'ecriture du paquet, A1 (redimensionnement des trois fichiers de l'Art Institute of
+Chicago et relevement du cliquet, route a `theo-archi`) et A2 (le retrait O1 decide ici, route au
+developpeur affecte).
+
+**Ce que ca change pour le developpeur qui ecrira `S50-ART`** : le commit du paquet, en plus de ce
+qu'il touche deja (section 7, avis de `theo-archi`, point 8), retire les 17 entrees hors vivier de
+`squad/corpus/oeuvres-domaine-public.yaml` et leurs 17 fichiers sous `static/oeuvres/`, et ramene
+`REPRODUCTIONS_SERVIES` et `POIDS_TOTAL_MAXIMUM` aux 11 fichiers du vivier, mesures apres A1 (pas
+estimes). Les deux garde-fous de l'avis (section 0) sont a relancer apres ce retrait, pas seulement
+apres l'ecriture du contenu.
+
+**Ce que cet amendement ne fait pas.** Il ne tranche aucune des questions pedagogiques routees a
+`nadia-prof` (Q1, Q2, Q4, Q5 de l'avis). Il ne prononce aucun Done. Il n'effectue pas lui-meme le
+retrait des fichiers : c'est le developpeur affecte par `sofia-sm` qui l'execute, dans le commit du
+paquet (A2).
