@@ -11,10 +11,12 @@
 - **Arbitrage préalable de `nadia-prof`** : `ARBITRAGE-PREALABLE-s50-art-cp.md` (2026-10-04) - Q4
   (sans couleurs, règles pour le développeur), Q2 (texte visible dans une reproduction),
   transposition de `REC-1` à `REC-4`, cadre du marché aux chevaux.
-- **Statut global** : **REFUSÉ**, premier passage, le 2026-10-04, par `nadia-prof` (instance B,
-  `DEC-0109` section 3), **après avoir joué le jar servi**. Trois motifs, tous corrigeables dans le
-  seul fichier de contenu (section 9).
-- **Dernière mise à jour** : 2026-10-04 (premier audit, s50).
+- **Statut global** : **REFUSÉ**, second passage, le 2026-10-04, par `nadia-prof`, **après avoir
+  joué le jar servi** à `371218de`. Trois des quatre motifs du premier passage sont levés, et le
+  point (d) aussi ; le motif 2 (`oeuvre-quatre-saisons`) ne l'est pas : la nouvelle réponse attendue
+  est fausse pour ce tableau (section 12). Le premier passage (REFUSÉ, même jour, `655b319b`) reste
+  lisible ci-dessous, sections 1 à 11.
+- **Dernière mise à jour** : 2026-10-04 (second passage, s50).
 
 ---
 
@@ -89,6 +91,11 @@ fruits (raisin, pommes, cerises), des branches. Un item qui **dit** que c'est un
 **avec quoi il est fait** passerait mon test (ma première réponse serait *"avec des fruits"*), et
 ne se répond pas sans l'image (`ART-4`) : rien ne permet de deviner qu'un visage est fait de
 fruits plutôt que de pierres. Je ne rédige pas l'item : la barre est la section 9, motif 2.
+
+*Correction du 2026-10-04, second passage (section 12.2) : le paragraphe ci-dessus est inexact, et
+c'est le mien. Le visage de ce tableau n'est pas fait de fruits : il est fait d'un tronc d'arbre.
+Les fruits forment le haut de la tête. Je l'avais pourtant noté deux paragraphes plus haut (*"un
+tronc sombre"*). Je laisse le texte tel quel, parce que c'est lui qui a orienté la réécriture.*
 
 **Le retirer est aussi recevable pour moi, mais il a un coût que je ne résous pas.** Sept items
 pour sept manches rompt l'inégalité stricte d'`ADR-0023`
@@ -240,6 +247,120 @@ de mots qu'il porte. **Aucun automate ne vérifie**, et je reste la seule garde,
 
 ---
 
+## 12. Second passage - 2026-10-04, arbre à `371218de`
+
+### 12.1 Ce que j'ai joué, et comment
+
+**Audit non dégradé.** Jar construit à `371218de` par
+`bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests` (JDK 21.0.10 rapporté par
+l'enveloppe), lancé sur un port dédié par mon propre processus. Le paquet YAML et les huit
+`static/oeuvres/*.jpg` contenus dans le jar sont identiques à l'octet à ceux de l'arbre. Depuis
+`655b319b`, le seul fichier servi de ce jeu qui a changé est `cp-decrire-une-oeuvre.yaml` (items 1,
+4, 7 et 8, libellé, commentaires) : ni gabarit, ni feuille de style, ni image, ni entrée de
+catalogue. Aucun job de la CI lancé par moi.
+
+**Parties jouées : 20, soit 140 manches**, chaque œuvre tirée entre 15 et 19 fois. Deux parties
+sans faute, deux avec une erreur volontaire à chaque manche, deux avec deux erreurs volontaires à
+chaque manche, quatorze au hasard entre ces trois conduites : 136 propositions fausses pressées. J'ai
+lu l'écran après chaque coup. Aucun écran ne plante, chaque partie s'achève sur l'écran de fin
+(7 questions jouées), chaque erreur affiche *"Ce n'est pas ça. Essaie encore !"* et l'indice de
+l'item, identique après la première et la seconde erreur.
+
+**176 px.** Même méthode qu'au premier passage : écran réellement servi, navigateur sans interface,
+1280 px à densité 1 et 820 px à densité 2, pour l'écran d'arrivée et l'écran après une erreur des
+huit items. Chaque reproduction est rendue à 176 px CSS de haut (largeurs mesurées : 129 px pour
+l'Arcimboldo, 132 px pour l'hippopotame, 154 px pour la femme au luth, 226 px pour la rue, jusqu'à
+344 px pour le marché aux chevaux). Les faits sur ce que montre un tableau, je les ai vérifiés sur
+le fichier servi agrandi deux fois.
+
+### 12.2 Je corrige d'abord mon propre constat
+
+En section 3, j'ai écrit qu'un item demandant *"avec quoi ce visage est-il fait ?"* passerait mon
+test, *"ma première réponse serait 'avec des fruits'"*, et que l'enfant ne pourrait pas deviner
+qu'un visage est fait *"de fruits plutôt que de pierres"*. **C'est faux, et l'erreur est la mienne.**
+Dans *Les Quatre Saisons en une tête*, le visage est un **tronc d'arbre** : écorce, nœuds, moignons
+de branches coupées. Les fruits (raisin, pommes, cerises) et le lierre forment le **haut de la tête**.
+Le vêtement est fait de gerbes de paille et de fleurs. **Aucun légume n'est peint.** Je l'avais pourtant
+écrit dans la même section (*"un tronc sombre ... des branches en haut, des grappes de raisin et des
+pommes, deux bottes de paille en bas"*) : j'ai confondu ce qui se voit dans l'image avec ce dont le
+visage est fait. `camille-po` (`DEC-0109` section 11, motif 3) et `lea-dev` ont travaillé sur ce que
+j'avais écrit. La réponse *"des fruits et des légumes"* vient de mon erreur, pas de la leur.
+
+### 12.3 Les quatre motifs et le point (d)
+
+| Motif | Item | Ce qui est servi à `371218de` | Constat, à 176 px | Levé ? |
+|---|---|---|---|---|
+| 1 | `oeuvre-femme-au-luth` | Indice : *"Regarde la personne assise près de la fenêtre."* | Exact. La jeune femme est assise derrière une chaise et une table, la fenêtre est à sa gauche. Vérifié à 176 px et sur le fichier agrandi | **Oui** |
+| 2 | `oeuvre-quatre-saisons` | *"Cette œuvre montre un visage. Avec quoi ce visage est-il fait ?"* - *des fruits et des légumes* ; *des pierres*, *du papier*. Indice : *"Regarde bien les fruits et les légumes qui forment ce visage."* | Ma première réponse, propositions masquées : **"avec du bois, un tronc d'arbre"**. La réponse attendue est fausse pour ce tableau (le visage n'est pas fait de fruits, il n'y a aucun légume). L'indice affirme la même chose fausse. *Du papier* est absent de l'image | **Non** |
+| 3 | `oeuvre-hippopotame` | *"Cet hippopotame, est-ce une statue, une peinture ou un dessin ?"* - *une statue* ; *une peinture*, *un dessin*. Indice : *"Regarde l'ombre sous les pattes de l'hippopotame, qui montre un objet posé."* | L'énoncé pose la question à laquelle les propositions répondent, en une ligne. *"Un hippopotame"* n'est plus une réponse possible. Ma première réponse : *une statue* (volume, fond de studio, ombre portée). L'ombre sous les pattes se voit à 176 px. L'indice n'apparaît qu'après une erreur et l'enfant doit encore relier *objet posé* à *statue* : il oriente, il ne dévoile pas d'emblée | **Oui** |
+| 4 | libellé | *"Décrire une œuvre : dire ce qu'on y voit (sujet et matériaux)."* | *Sujet* : servi par six items qui tiennent. *Matériaux* : servi par l'item 1, qui tient désormais. *Formes* : aucun item ne le sert, il est donc juste de l'avoir retiré. Le motif est levé même si l'item 4 reste refusé, puisque l'item 1 suffit à servir *matériaux*. La mention de matrice que j'avais écrite en Q4 est corrigée dans le même geste (`ARBITRAGE-PREALABLE-s50-art-cp.md`, Q4, amendement daté) | **Oui** |
+| (d) | `oeuvre-rue-sous-la-pluie` | Indice : *"Regarde les maisons et le trottoir de chaque côté de la rue."* | Les immeubles et le trottoir se voient à 176 px, et une plage n'a ni l'un ni l'autre : l'enfant qui a pressé *une plage* est détrompé. Le trottoir n'est nettement peint qu'à droite, mais *"de chaque côté"* se rattache sans gêne aux maisons. Ce n'est pas une erreur que je retiens | **Oui** |
+
+**Pourquoi le motif 2 reste un refus, sans relever ma barre.** La barre écrite en section 9 était :
+propositions masquées, à 176 px, ma première réponse est la réponse attendue, et chaque distracteur
+est absent. Ma première réponse n'est pas *"des fruits et des légumes"*. Et indépendamment de cette
+barre, une réponse attendue fausse et un indice faux sont une erreur factuelle, motif de refus à eux
+seuls. Je n'ajoute aucune exigence : c'est la même barre, appliquée cette fois à un constat corrigé.
+
+### 12.4 Les cinq items déjà tenus
+
+Items `oeuvre-moissonneurs`, `oeuvre-chambre`, `oeuvre-grande-vague`, `oeuvre-marche-aux-chevaux`,
+plus `oeuvre-rue-sous-la-pluie` hors son indice : énoncé, bonne réponse, distracteurs et image
+inchangés depuis `655b319b` (même octet pour les images, mêmes lignes YAML). Rejoués quand même, 15
+à 19 fois chacun : mêmes écrans, mêmes indices, aucun défaut nouveau. L'absence de couleur (`ART-1`)
+et mes deux conditions de Q2 sur le texte visible restent tenues : les quatre textes réécrits ne
+contiennent ni couleur, ni mention du cartouche ou de la signature.
+
+### 12.5 Fidélité, reste du premier passage
+
+- `oeuvre-marche-aux-chevaux` : **confrontée et tenue.** Méthode : notice du Metropolitan Museum
+  (objet `87.25`, interface publique de la collection, image `DP-23550-001`) mise à côté du fichier
+  servi, à la même largeur. Même sens, même cadrage, et le cadre doré figure aussi sur l'image de
+  l'institution.
+- `oeuvre-quatre-saisons` : **non confrontée.** La page de la National Gallery of Art n'a rendu, à
+  mon outil, qu'une page vide de contenu. Le sens que je vois (visage tourné vers la gauche, raisin
+  en haut à gauche, pommes à droite) correspond à mon souvenir de l'œuvre, mais je ne le donne pas
+  pour vérifié. À faire si l'œuvre reste au paquet.
+
+### 12.6 Motif du refus, et la barre qui le lève
+
+**Motif 2 (maintenu, motif reformulé) - `oeuvre-quatre-saisons` : la réponse attendue et l'indice
+disent du tableau une chose fausse.** Le visage est un tronc d'arbre. Aucun légume n'est peint.
+
+**Barre**, la même qu'en section 9, plus l'exactitude :
+
+1. la bonne réponse nomme ce que l'item demande tel que le tableau le montre, et, propositions
+   masquées, à 176 px, ma première réponse est celle-là ;
+2. chaque distracteur est absent de l'image ;
+3. l'indice dit du tableau une chose exacte.
+
+Formes recevables, non imposées. Garder l'énoncé et attendre *"du bois"* ou *"un tronc d'arbre"*,
+qui tient le point 1 : c'est ma première réponse. Dans ce cas, je jugerai *des pierres* à l'écran,
+parce que l'écorce noueuse est, à 176 px, la chose la plus proche d'une pierre dans l'image.
+*Du papier* reste absent. Autre forme : porter la question sur le haut de la tête, qui est bien
+fait de fruits et de feuilles. L'item servirait alors *sujet* plutôt que *matériaux*, ce qui ne
+change rien au libellé, puisque l'item 1 sert *matériaux*. Le retrait reste ouvert aussi, avec le
+coût que j'ai décrit en section 10, point 2. Ce choix revient à `camille-po`.
+
+### 12.7 Remontées
+
+| # | Point | À qui |
+|---|---|---|
+| 1 | Réécrire ou retirer `oeuvre-quatre-saisons` selon la barre 12.6. Une réécriture se fait dans le seul fichier `cp-decrire-une-oeuvre.yaml`, sans code. Le troisième passage ne rejugera que cet item, plus le fichier s'il change ailleurs | `camille-po`, puis le développeur |
+| 2 | `DEC-0109` section 11, motif 3, s'appuie sur ma section 3, qui est fausse (12.2). La décision de garder l'œuvre ne dépendait pas de ce seul motif, mais la phrase *"un visage est fait de fruits plutôt que de pierres"* ne doit pas être recopiée ailleurs | `camille-po` |
+| 3 | `docs/backlog/backlog.md` (story `S50-ART`) cite encore la mention *"sujet, formes et matériaux seuls"*. Elle devient *"sujet et matériaux seuls"* | `camille-po` |
+| 4 | `ART-CP-09` reste `non couvert` | `camille-po` |
+
+### 12.8 Ce dont je reste la seule garde
+
+Inchangé depuis la section 11. Ce second passage montre que la garde ne porte pas seulement sur le
+travail des autres : une erreur factuelle est passée de ma propre fiche au contenu, avec une CI
+verte et un développeur qui a suivi ma barre à la lettre. Aucun automate ne vérifie qu'un indice ou
+une réponse attendue dit vrai sur une œuvre, et je ne peux pas le vérifier de mémoire. Je le
+vérifie en regardant le tableau.
+
+---
+
 ## Bloc de validation
 
 > **Done pédagogique : REFUSÉ** (premier passage).
@@ -262,3 +383,26 @@ de mots qu'il porte. **Aucun automate ne vérifie**, et je reste la seule garde,
 >
 > **Mouvement de ligne** : aucun. `ART-CP-09` reste `non couvert`. Le mouvement, quand il viendra,
 > est écrit par `camille-po`, pas par moi.
+
+> **Done pédagogique : REFUSÉ** (second passage).
+>
+> **Prononcé le 2026-10-04 par `nadia-prof`, instance B, après avoir joué le jar servi** (arbre à
+> `371218de`, 20 parties, 140 manches, 136 erreurs volontaires, chaque œuvre vue au moins quinze fois
+> à 176 px, écrans d'erreur des quatre items corrigés lus à chaque passage).
+>
+> **Levés** : motif 1 (indice exact, *assise*), motif 3 (l'énoncé pose la question statue,
+> peinture ou dessin, et l'indice montre l'ombre), motif 4 (*sujet et matériaux*, tous deux servis
+> par des items qui tiennent), point (d) (maisons et trottoir).
+>
+> **Maintenu** : motif 2. Pour `oeuvre-quatre-saisons`, la réponse attendue *"des fruits et des
+> légumes"* et l'indice sont faux : le visage de ce tableau est un tronc d'arbre, et aucun légume
+> n'est peint. Cette erreur vient de ma propre fiche du premier passage (section 3), que je corrige
+> en section 12.2. Barre : section 12.6.
+>
+> **Ce qui ne sera pas rejugé au troisième passage, sauf si le fichier change à ces lignes** : les
+> sept autres items, le libellé, l'absence de couleur, le texte visible, le cadre doré et la
+> fidélité du marché aux chevaux. Reste à faire : l'item `oeuvre-quatre-saisons` et la fidélité de
+> sa reproduction, s'il reste au paquet.
+>
+> **Mouvement de ligne** : aucun. `ART-CP-09` reste `non couvert`. Ce verdict n'est pas un premier
+> Done pédagogique de cette ligne.

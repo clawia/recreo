@@ -117,6 +117,11 @@ alors qu'il n'avait aucun moyen de savoir. Je le refuserais à la porte ; je le 
 change pas. Si la ligne est validée, elle l'est avec la mention : *"sujet, formes et matériaux seuls
 ; les couleurs d'une œuvre ne sont pas servies (`ART-1`)"*. Elle ne sera pas déclarée ligne entière.
 
+*Amendement du 2026-10-04 (second passage de `S50-ART`, `FICHE-bandit-manchot-decrire-une-oeuvre-cp.md`,
+section 12.3, motif 4) : aucun item du paquet ne sert les formes. La mention devient "sujet et
+matériaux seuls ; les couleurs d'une œuvre ne sont pas servies (`ART-1`)". Le texte d'origine
+reste ci-dessus.*
+
 ### Motif
 
 1. **La méthode de `ART-CP-05` ne se transpose pas.** Là-bas, la compétence était une connaissance :
