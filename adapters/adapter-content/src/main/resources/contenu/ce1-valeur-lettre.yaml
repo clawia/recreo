@@ -18,12 +18,15 @@
 # VLE-CE1-3 : aucun mot ne porte sc, cc, ch ni gn sur la lettre cible ; aucun s final muet ni s
 # apres une consonne n'est teste ; le lexique des exceptions (second, gageure) est absent.
 #
-# Question non bloquante routee a camille-po / nadia-prof (VLE-CE1-1 nomme "c et ç ensemble") :
-# ce paquet ne cible jamais ç. Servir "le ç" comme lettre isolee de l'enonce fait rougir
-# AucunMotServiNeSEcarteDeSonAccentTest - mesure sur LexiqueFrancais, "ç" seul n'y est pas une
-# forme reconnue alors que "c" (lettre ASCII) l'est, le garde-fou lit donc un defaut d'accent la ou
-# il n'y en a pas. Je ne contourne pas ce garde-fou par un mot invente : je laisse ç hors du
-# perimetre de ce paquet plutot que de decider seul une autre forme d'affichage.
+# Reprise s50 (second passage), motif 1 de squad/conformite/FICHE-bandit-manchot-valeur-lettre-ce1.md,
+# section 4 : ce paquet sert desormais le c cedille (ç), sur un item neuf ("garcon"/cerise) qui
+# remplace l'ancien item "cinq". Le remplacement (pas un ajout) garde le compte de c lu comme dans
+# cerise a douze items sur vingt-quatre (VLE-CE1-1) et la bonne reponse strictement la plus longue a
+# douze items sur vingt-quatre au plus (TRV-CE1-2), la ou un ajout serait passe a treize sur
+# vingt-cinq. La forme d'enonce nomme "le c" (lettre ASCII, comme les sept autres items de c) et
+# ecrit "une cedille" en toutes lettres plutot que d'isoler "ç" comme mot a lui seul, ce qui evite
+# AucunMotServiNeSEcarteDeSonAccentTest : "garcon" et "cedille" sont des mots entiers et accentues,
+# relus comme tels par le lexique.
 # TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-02), aucun champ a
 # voix haute ni texteSupport, deux propositions distinctes par item (un seul distracteur, forme
 # binaire deja servie par cm1-homophones), un seul mot entre guillemets par enonce portant la
@@ -74,10 +77,10 @@ items:
     bonneReponse: "cerise"
     distracteurs: ["car"]
     indice: "Pense à la lettre qui suit."
-  - enonce: "Dans « cinq », le c se lit comme dans quel mot ?"  # VLE-CE1: lettre=c;valeur=douce;graphie=c
+  - enonce: "Dans « garçon », le c avec une cédille se lit comme dans quel mot ?"  # VLE-CE1: lettre=c;valeur=douce;graphie=cedille
     bonneReponse: "cerise"
     distracteurs: ["car"]
-    indice: "Prononce doucement pour entendre le son."
+    indice: "Écoute bien le son de la lettre."
   - enonce: "Dans « cube », le c se lit comme dans quel mot ?"  # VLE-CE1: lettre=c;valeur=dure;graphie=c
     bonneReponse: "car"
     distracteurs: ["cerise"]
@@ -137,7 +140,7 @@ items:
   - enonce: "Dans « salade », le s se lit comme dans quel mot ?"  # VLE-CE1: lettre=s;valeur=dure;graphie=s
     bonneReponse: "sel"
     distracteurs: ["rose"]
-    indice: "Pense à la lettre qui suit."
+    indice: "Regarde les lettres avant et après le s."
   - enonce: "Dans « maison », le s se lit comme dans quel mot ?"  # VLE-CE1: lettre=s;valeur=douce;graphie=s
     bonneReponse: "rose"
     distracteurs: ["sel"]
@@ -145,7 +148,7 @@ items:
   - enonce: "Dans « cuisine », le s se lit comme dans quel mot ?"  # VLE-CE1: lettre=s;valeur=douce;graphie=s
     bonneReponse: "rose"
     distracteurs: ["sel"]
-    indice: "Regarde les lettres juste après."
+    indice: "Dis le mot à voix basse."
   - enonce: "Dans « fraise », le s se lit comme dans quel mot ?"  # VLE-CE1: lettre=s;valeur=douce;graphie=s
     bonneReponse: "rose"
     distracteurs: ["sel"]
@@ -153,4 +156,4 @@ items:
   - enonce: "Dans « voisin », le s se lit comme dans quel mot ?"  # VLE-CE1: lettre=s;valeur=douce;graphie=s
     bonneReponse: "rose"
     distracteurs: ["sel"]
-    indice: "Écoute si le son est doux ou dur."
+    indice: "Regarde les lettres avant et après le s."

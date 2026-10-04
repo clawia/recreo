@@ -195,15 +195,24 @@ class PaquetCe1ValeurLettreTest {
     /**
      * Piege 1 : la valeur de "c", calculee depuis le mot. VLE-CE1-3 : exclusion de "sc", "cc".
      *
-     * <p>Ce paquet ne cible jamais "ç" (en-tete du YAML servi, question non bloquante routee a
-     * camille-po/nadia-prof) : une lettre isolee sans forme ASCII sœur accentuee fait rougir
-     * {@code AucunMotServiNeSEcarteDeSonAccentTest}, qui reconnait "c" (lettre ASCII) mais pas "ç"
-     * seul comme forme du francais.
+     * <p>Reprise s50 (second passage, motif 1 de
+     * {@code squad/conformite/FICHE-bandit-manchot-valeur-lettre-ce1.md}, section 4) : ce paquet
+     * sert desormais "ç", toujours douce, jamais devant "e" ni "i" (VLE-CE1-3). Verifiee en
+     * premier, car "ç" n'est pas "c" au sens de {@link String#indexOf(int)}.
      */
     private static String valeurCalculeePourC(String mot) {
         String minu = mot.toLowerCase(Locale.FRENCH);
         assertThat(minu).as("'%s' : 'sc' ou 'cc' exclus pour la lettre c (VLE-CE1-3)", mot)
                 .doesNotContain("sc").doesNotContain("cc");
+        int idxCedille = minu.indexOf('ç');
+        if (idxCedille >= 0) {
+            assertThat(minu.indexOf('ç', idxCedille + 1))
+                    .as("'%s' : plus d'un ç trouve (VLE-CE1-3, piege 2)", mot).isEqualTo(-1);
+            char suivantCedille = idxCedille + 1 < minu.length() ? minu.charAt(idxCedille + 1) : ' ';
+            assertThat(estVoyelleDouce(suivantCedille))
+                    .as("'%s' : ç jamais devant e ou i (VLE-CE1-3)", mot).isFalse();
+            return "douce";
+        }
         int idx = minu.indexOf('c');
         assertThat(idx).as("'%s' : aucun c trouve", mot).isGreaterThanOrEqualTo(0);
         assertThat(minu.indexOf('c', idx + 1))
@@ -318,7 +327,8 @@ class PaquetCe1ValeurLettreTest {
             assertThat(item.enonce())
                     .as("'%s' : la lettre '%s' du marqueur doit etre nommee en toutes lettres"
                             + " (TRV-CE1-3, piege 4)", item.enonce(), marqueur.lettre())
-                    .contains(", le " + marqueur.lettre() + " se lit comme dans quel mot");
+                    .containsPattern(", le " + marqueur.lettre() + "\\b")
+                    .contains("se lit comme dans quel mot");
 
             String valeurCalculee = valeurCalculee(marqueur.lettre(), motCible);
             assertThat(valeurCalculee)
