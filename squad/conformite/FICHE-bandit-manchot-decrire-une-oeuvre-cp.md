@@ -361,6 +361,100 @@ vérifie en regardant le tableau.
 
 ---
 
+## 13. Troisième passage - 2026-10-04, arbre à `ec711904`
+
+### 13.1 Ce que j'ai joué, et comment
+
+**Audit non dégradé, limité à l'item `oeuvre-quatre-saisons`**, comme je l'avais annoncé en 12.7.
+Depuis `371218de`, le commit `ec711904` ne change que deux fichiers : dans
+`cp-decrire-une-oeuvre.yaml`, la bonne réponse, l'indice et le commentaire de cet item seul, et
+`docs/backlog/backlog.md`. Aucune image, aucun gabarit, aucune feuille de style ne change (diff
+vide sur ces chemins). Les sept autres items ne sont donc pas rejugés.
+
+Jar construit à `ec711904` dans un répertoire de travail qui m'est propre, depuis une extraction de
+l'arbre de ce commit, par `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests` (JDK
+21.0.10 rapporté par l'enveloppe), lancé sur un port dédié par mon propre processus, arrêté par son
+identifiant de processus. Aucun job de la CI lancé par moi.
+
+**Parties jouées : 26, soit 182 manches, toutes achevées sur l'écran de fin (7 questions jouées).
+`oeuvre-quatre-saisons` tiré 21 fois.** Sur ces 21 tirages : 7 réussis du premier coup, 6 avec une
+erreur volontaire, 8 avec deux erreurs volontaires, soit 22 propositions fausses pressées (8 fois
+*des pierres*, 14 fois *du papier*). Après chaque erreur, l'écran affiche *"Ce n'est pas ça. Essaie
+encore !"*, barre la proposition pressée et affiche l'indice, identique après la première et la
+seconde erreur. *Du bois* reste pressable et clôt la manche. Aucun écran ne plante.
+
+**176 px.** Écran réellement servi, navigateur sans interface, 1280 px à densité 1 et 820 px à
+densité 2, écran d'arrivée et écran après une erreur. La reproduction est rendue à 129 x 176 px CSS.
+J'ai regardé l'image **d'abord avec les propositions masquées**, l'énoncé seul visible, puis
+l'écran entier.
+
+### 13.2 Les trois points de la barre 12.6
+
+| Point | Ce qui est servi à `ec711904` | Constat | Tenu ? |
+|---|---|---|---|
+| 1 - la bonne réponse nomme ce que le tableau montre, et c'est ma première réponse | Énoncé inchangé, *"Cette œuvre montre un visage. Avec quoi ce visage est-il fait ?"* ; bonne réponse *du bois* | Propositions masquées, à 176 px : sous les branches nues qui sortent du crâne, le visage est une masse brune, noueuse, qui continue le tronc jusqu'au cou. Ma première réponse : **"avec du bois, un tronc d'arbre"**, la même qu'au second passage sur la même image. *Du bois* la couvre, comme il couvre *un arbre* ou *des branches*, ce qu'un enfant dira aussi. C'est la forme que j'avais écrite moi-même en 12.6, je ne déplace pas ce poteau | **Oui** |
+| 2 - chaque distracteur est absent de l'image | *des pierres*, *du papier* | Aucune pierre n'est peinte, aucun papier non plus. J'avais annoncé que je jugerais *des pierres* à l'écran : à 176 px, la barbe et les joues sont faites de bosses brun-gris qui peuvent évoquer des cailloux à un enfant. C'est ce qui en fait un distracteur plausible, pas une réponse défendable : ce n'est pas ce que le tableau montre, et l'indice détrompe l'enfant qui l'a pressé. *Des fruits*, qui forment le haut de la tête et seraient une réponse défendable pour un enfant de six ans, ne sont pas proposés | **Oui** |
+| 3 - l'indice dit du tableau une chose exacte | *"Regarde bien l'écorce, les nœuds et les branches coupées de ce visage."* | Exact sur le fichier servi et sur l'image de l'institution (13.3) : le visage est couvert d'écorce, les nœuds se voient à la joue et autour de l'œil, le nez est un moignon de branche coupée, et d'autres moignons sortent du menton. L'écorce et le nez se voient à 176 px. L'indice tient sur une ligne aux deux largeurs | **Oui** |
+
+**L'indice aide sans dévoiler d'emblée.** Il n'apparaît qu'après une erreur. Il nomme ce que
+l'enfant doit regarder, jamais la réponse : l'enfant doit encore relier *écorce* à *bois*. Après
+une erreur, il reste deux propositions, et l'indice rend la bonne évidente : c'est son rôle, et
+c'est le même degré que l'indice de l'hippopotame, que j'ai levé au second passage. *Écorce* est un
+mot de CP (questionner le monde, le vivant). *Nœuds* au sens du bois est moins courant ; il est
+porté par les deux autres mots de la phrase et par l'adulte qui accompagne l'enfant au CP. Ce n'est
+pas un motif, ni une réserve.
+
+### 13.3 Fidélité de la reproduction, reste des passages précédents
+
+**Confrontée et tenue.** La page de la National Gallery of Art refuse toujours mon outil (code 403).
+Méthode : image versée par la National Gallery of Art elle-même à Wikimedia Commons dans son
+programme d'accès ouvert (fichier *"Giuseppe Arcimboldo, Four Seasons in One Head, c. 1590, NGA
+142008.jpg"*, même identifiant `142008` que l'URL de source du registre), mise à côté du fichier
+servi, à la même hauteur de 352 px. Même sens (visage tourné vers la gauche, raisin en haut à
+gauche, pommes à droite, gerbes de paille en bas), même cadrage (rapports largeur sur hauteur 0,733
+et 0,726, soit moins de 1 %). Le fichier servi est plus clair que celui de l'institution ; cela ne
+change ni le sens ni le cadrage, et rend le visage plus lisible à 176 px.
+
+### 13.4 Les deux documents que j'avais signalés (12.7, points 2 et 3)
+
+- **`docs/backlog/backlog.md` - fermé.** Dans la story `S50-ART`, la mention de fermeture est
+  désormais *"sujet et matériaux seuls ; les couleurs d'une œuvre ne sont pas servies (`ART-1`)"*,
+  avec la date et le motif du retrait de *formes*. C'est la mention que j'ai validée au motif 4.
+  Reste, dans la même story, la ligne **Besoin** (*"dire ce que j'y vois - le sujet, les formes, la
+  matière -"*) : c'est la formulation de la story, pas la mention qui ferme la ligne, et elle ne
+  bloque rien. Je la signale à `camille-po` pour cohérence.
+- **`DEC-0109` section 11, motif 3 - toujours ouvert.** La phrase *"rien ne permet de deviner qu'un
+  visage est fait de fruits plutôt que de pierres"* y est encore, attribuée à ma section 3, qui est
+  fausse (12.2). Ce fichier est une décision de `camille-po` : je ne l'écris pas, je le signale de
+  nouveau. La décision de garder l'œuvre reste juste, puisque l'item tient désormais, mais la phrase
+  ne doit pas être recopiée.
+
+### 13.5 Verdict sur la ligne
+
+**Motif 2 levé. Les quatre motifs du premier passage et le point (d) sont levés. Aucune réserve
+neuve.** C'est le **premier Done pédagogique complet de `ART-CP-09`**, sans réserve bloquante : la
+ligne peut passer à `couvert-valide` avec la mention *"sujet et matériaux seuls ; les couleurs
+d'une œuvre ne sont pas servies (`ART-1`)"*. Le mouvement est écrit par `camille-po`, pas par moi.
+
+### 13.6 Remontées
+
+| # | Point | À qui |
+|---|---|---|
+| 1 | Passer `ART-CP-09` à `couvert-valide` dans `MATRICE-couverture.md`, avec la mention de 13.5 | `camille-po` |
+| 2 | `DEC-0109` section 11, motif 3 : la phrase sur les fruits et les pierres reste fausse (12.2, 13.4) | `camille-po` |
+| 3 | `docs/backlog/backlog.md`, story `S50-ART`, ligne **Besoin** : *"le sujet, les formes, la matière"* ne correspond plus à ce qui est servi. Non bloquant | `camille-po` |
+| 4 | Le sprint s50 n'a pas encore de `review.md` : ce verdict y sera repris quand la revue sera écrite | `sofia-sm` |
+
+### 13.7 Ce dont je reste la seule garde
+
+Inchangé depuis la section 11, et ce troisième passage le confirme : aucun automate ne vérifie
+qu'une réponse attendue ou un indice dit vrai sur une œuvre, qu'elle se voit à 176 px, ni qu'un
+distracteur est absent de l'image. `PaquetCpDecrireUneOeuvreTest` vérifie le vivier, les mots de
+couleur et le texte visible, pas ce que montre le tableau. Toute réécriture future d'un item de ce
+paquet, ou tout changement d'image, repasse devant moi en jouant.
+
+---
+
 ## Bloc de validation
 
 > **Done pédagogique : REFUSÉ** (premier passage).
@@ -406,3 +500,24 @@ vérifie en regardant le tableau.
 >
 > **Mouvement de ligne** : aucun. `ART-CP-09` reste `non couvert`. Ce verdict n'est pas un premier
 > Done pédagogique de cette ligne.
+
+> **Done pédagogique : VALIDÉ** (troisième passage).
+>
+> **Prononcé le 2026-10-04 par `nadia-prof`, après avoir joué le jar servi** (arbre à `ec711904`,
+> 26 parties, 182 manches, `oeuvre-quatre-saisons` tiré 21 fois, 22 erreurs volontaires sur cet
+> item, image regardée à 176 px propositions masquées avant l'écran entier).
+>
+> **Levé** : motif 2. Ma première réponse est *du bois*, *des pierres* et *du papier* sont absents
+> de l'image, l'indice (écorce, nœuds, branches coupées) est exact et ne donne pas la réponse
+> d'emblée. Fidélité de la reproduction confrontée à l'image de l'institution et tenue. Barre :
+> section 12.6, appliquée sans ajout. Détail : section 13.
+>
+> **Ce qui tient depuis le second passage, non rejugé (fichier inchangé à ces lignes)** : les sept
+> autres items, le libellé *"sujet et matériaux"*, l'absence de couleur, le texte visible, le cadre
+> doré, `ART-5`, la fidélité du marché aux chevaux.
+>
+> **Premier Done pédagogique complet de `ART-CP-09`, sans réserve.** `camille-po` peut passer la
+> ligne à `couvert-valide`, avec la mention *"sujet et matériaux seuls ; les couleurs d'une œuvre
+> ne sont pas servies (`ART-1`)"*. Restent ouverts, sans bloquer ce Done : `DEC-0109` section 11,
+> motif 3 (phrase fausse issue de ma section 3) et la ligne **Besoin** de la story `S50-ART`
+> (section 13.6).
