@@ -344,6 +344,21 @@ class PaquetCe1GraphemesComplexesTest {
                 .isGreaterThanOrEqualTo(SEUIL_FAMILLE_A_MINIMUM);
     }
 
+    /** GRC-CE1-R1 : reserve levee le 2026-10-03 (fiche de conformite, second passage, section 4). */
+    @Test
+    void grcR1AucunDistracteurNeFigureSurPlusDeDeuxItemsDuPaquet() {
+        Map<String, Integer> comptes = new TreeMap<>();
+        for (Question item : tousLesItems(paquet(PAQUET))) {
+            for (String distracteur : item.distracteurs()) {
+                comptes.merge(distracteur, 1, Integer::sum);
+            }
+        }
+        comptes.forEach((distracteur, compte) -> assertThat(compte)
+                .as("GRC-CE1-R1 : le distracteur '%s' figure sur %d items du paquet, au plus deux"
+                        + " attendus", distracteur, compte)
+                .isLessThanOrEqualTo(2));
+    }
+
     @Test
     void trv2LaBonneReponseNestStrictementLaPlusLongueQueSurLaMoitieDesItemsAuPlus() {
         List<ItemAnalyse> analyses = itemsAnalyses();
