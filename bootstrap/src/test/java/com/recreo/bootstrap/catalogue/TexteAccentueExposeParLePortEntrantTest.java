@@ -380,6 +380,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 3.2).
             "bandit-manchot-valeur-lettre-ce1",
+            // S50-FRA-HOMOPHONES (s50) : entree neuve, FRA-CE1-16, troisieme ligne du referentiel
+            // de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
+            // section 5.7).
+            "bandit-manchot-homophones-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -623,6 +627,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le même son",
             // S50-FRA-VALEUR-LETTRE (s50) : titre neuf, sans niveau (ADR-0078).
             "Une lettre, deux sons",
+            // S50-FRA-HOMOPHONES (s50) : titre neuf, sans niveau (ADR-0078), distinct de "Le bon
+            // petit mot" (CM1, bandit-manchot-homophones-cm1).
+            "Les bons mots",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -895,6 +902,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-FRA-VALEUR-LETTRE (s50) : consigne neuve, generique - elle ne nomme ni la
             // lettre, ni le mot cible, ni aucun des six mots de reference d'aucun item.
             "Lis bien, puis choisis le bon mot.",
+            // S50-FRA-HOMOPHONES (s50) : consigne neuve, generique - elle ne nomme aucun des
+            // quatre homophones d'aucun item.
+            "Lis bien, puis choisis le mot qui convient.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1434,7 +1444,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // pas une forme reconnue du lexique, alors que "c" l'est) - question non bloquante
             // routee a camille-po/nadia-prof (ce1-valeur-lettre.yaml, en-tete).
             "Déterminer la valeur d'une lettre selon les lettres qui l'entourent (c, g/ge/gu, "
-                    + "s/ss entre deux voyelles).");
+                    + "s/ss entre deux voyelles).",
+            // S50-FRA-HOMOPHONES (s50) : competence neuve, FRA-CE1-16, libelle du referentiel
+            // copie mot pour mot (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-16),
+            // sans les guillemets inverses.
+            "Distinguer les homophones grammaticaux a/à et et/est.");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

@@ -744,3 +744,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-valeur-lettre
     nombreDeManches: 10
+  - id: bandit-manchot-homophones-ce1
+    titre: "Les bons mots"
+    consigne: "Lis bien, puis choisis le mot qui convient."
+    mecanique: bandit-manchot
+    paquet: ce1-homophones
+    nombreDeManches: 10

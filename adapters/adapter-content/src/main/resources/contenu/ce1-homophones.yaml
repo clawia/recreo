@@ -1,0 +1,135 @@
+# S50-FRA-HOMOPHONES (s50, DEC-0108). Arbitrage prealable de nadia-prof, conditions HOM-CE1-1 a
+# HOM-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.7) et sept
+# conditions transverses TRV-CE1-1 a TRV-CE1-7 (meme source, section 2). Avis de faisabilite de
+# theo-archi (squad/rapports/avis-faisabilite-s50-cinq-stories.md, section 4, V2), dont les trois
+# pieges de fabrication sont repris par PaquetCe1HomophonesTest.
+#
+# HOM-CE1-1 : deux paires fermees, {a, à} et {et, est}, chacune sur la moitie du paquet (douze
+# items sur vingt-quatre, au-dessus du tiers exige). Dans chaque paire, chaque forme est la bonne
+# reponse de six items sur douze (au-dessus du tiers exige).
+# HOM-CE1-2 : un seul trou "___" par enonce, verifie par comptage exact (pas seulement sa presence).
+# HOM-CE1-3 : l'indice donne la methode de substitution ("avait" pour la paire a/à, "était" pour
+# la paire et/est), jamais la bonne reponse en mot entier.
+#
+# Piege 1 de l'avis (l'indice ne recopie pas la phrase entiere, a la difference de cm1-homophones) :
+# chaque indice est court (moins de dix mots), il nomme la methode sans reciter l'enonce.
+# Piege 2 (le mot-test contient la reponse) : aucun indice ne contient "et", "est", "a" ni "à" en
+# dehors du mot de substitution lui-meme ("avait", "était"), verifie en mots entiers.
+# TRV-CE1-2 est tenu par construction : "a" et "à" comptent une lettre chacun (jamais l'un
+# strictement plus long que l'autre) ; "est" (quatre lettres) n'est strictement plus long que "et"
+# (deux lettres) que sur les six items ou "est" est la bonne reponse, soit un quart du paquet,
+# sous le plafond de la moitie.
+# TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-16), aucun champ a
+# voix haute ni texteSupport, deux propositions distinctes par item (un seul distracteur, forme
+# binaire deja servie par cm1-homophones), le lexique de grammaire de TRV-CE1-4 exclu, un indice
+# present sur chaque item (douze mots au plus, vingt-quatre formes distinctes sur le paquet, jamais
+# la bonne reponse en mot entier), vingt-quatre items au-dessus du plancher de vingt.
+# LON-CE1-1 et LON-CE1-2 sont deja tenues par AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest
+# (ADR-0101) : chaque enonce compte entre quatre et six mots, une seule phrase. LON-CE1-5 : chaque
+# proposition est un seul mot.
+schema: 1
+id: ce1-homophones
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Distinguer les homophones grammaticaux a/à et et/est."
+lignesDeReferentiel: ["FRA-CE1-16"]
+items:
+  - enonce: "Léa ___ trouvé son cahier."
+    bonneReponse: "a"
+    distracteurs: ["à"]
+    indice: "Remplace par avait : la phrase reste juste."
+  - enonce: "Tom va ___ la piscine le mardi."
+    bonneReponse: "à"
+    distracteurs: ["a"]
+    indice: "Remplace par avait : la phrase ne marche plus."
+  - enonce: "Le chat ___ bu tout son lait."
+    bonneReponse: "a"
+    distracteurs: ["à"]
+    indice: "Essaie avait : ça fonctionne encore."
+  - enonce: "Nina pense ___ son anniversaire."
+    bonneReponse: "à"
+    distracteurs: ["a"]
+    indice: "Essaie avait : la phrase devient fausse."
+  - enonce: "Le chien ___ creusé un grand trou."
+    bonneReponse: "a"
+    distracteurs: ["à"]
+    indice: "Remplace par avait : la phrase tient debout."
+  - enonce: "Hugo parle ___ voix basse."
+    bonneReponse: "à"
+    distracteurs: ["a"]
+    indice: "Remplace par avait : le sens disparaît."
+  - enonce: "Ma sœur ___ perdu sa gomme."
+    bonneReponse: "a"
+    distracteurs: ["à"]
+    indice: "Avec avait, la phrase garde son sens."
+  - enonce: "Jade court ___ toute vitesse."
+    bonneReponse: "à"
+    distracteurs: ["a"]
+    indice: "Avec avait, la phrase ne veut plus rien dire."
+  - enonce: "Mon cousin ___ fermé le portail."
+    bonneReponse: "a"
+    distracteurs: ["à"]
+    indice: "Teste avait : la phrase reste correcte."
+  - enonce: "Lucas joue ___ la balle."
+    bonneReponse: "à"
+    distracteurs: ["a"]
+    indice: "Teste avait : ça ne fonctionne pas."
+  - enonce: "Mon voisin ___ corrigé son erreur."
+    bonneReponse: "a"
+    distracteurs: ["à"]
+    indice: "Change en avait : la phrase reste bonne."
+  - enonce: "Zoé donne sa main ___ sa mère."
+    bonneReponse: "à"
+    distracteurs: ["a"]
+    indice: "Change en avait : la phrase devient bizarre."
+  - enonce: "Léa ___ son frère jouent dehors."
+    bonneReponse: "et"
+    distracteurs: ["est"]
+    indice: "Remplace par était : la phrase ne tient plus."
+  - enonce: "Le ciel ___ très bleu aujourd'hui."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+    indice: "Remplace par était : la phrase reste juste."
+  - enonce: "Tom ___ sa sœur partent en vélo."
+    bonneReponse: "et"
+    distracteurs: ["est"]
+    indice: "Essaie était : ça ne fonctionne pas."
+  - enonce: "Mon chat ___ caché sous le lit."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+    indice: "Essaie était : la phrase garde son sens."
+  - enonce: "Hugo ___ Nina rangent la classe."
+    bonneReponse: "et"
+    distracteurs: ["est"]
+    indice: "Avec était, la phrase devient fausse."
+  - enonce: "Le gâteau ___ encore un peu chaud."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+    indice: "Avec était, la phrase reste correcte."
+  - enonce: "Ma sœur ___ mon cousin arrivent demain."
+    bonneReponse: "et"
+    distracteurs: ["est"]
+    indice: "Teste était : le sens disparaît."
+  - enonce: "Ce livre ___ vraiment passionnant."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+    indice: "Teste était : la phrase reste bonne."
+  - enonce: "Jade ___ son voisin discutent longtemps."
+    bonneReponse: "et"
+    distracteurs: ["est"]
+    indice: "Change en était : ça ne marche plus."
+  - enonce: "Le jardin ___ plein de fleurs."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+    indice: "Change en était : la phrase tient debout."
+  - enonce: "Lucas ___ son ami partagent un gâteau."
+    bonneReponse: "et"
+    distracteurs: ["est"]
+    indice: "Avec était, la phrase perd son sens."
+  - enonce: "Ce chemin ___ assez long."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+    indice: "Avec était, la phrase reste exacte."

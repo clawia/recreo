@@ -1088,7 +1088,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " six mots de reference de VLE-CE1-2 (\"car\", \"cerise\", \"gare\","
                     + " \"girafe\", \"sel\", \"rose\"), valeurDe rend null sur les deux"
                     + " propositions de chaque item. Mesure du 2026-10-03 sur le paquet servi :"
-                    + " aucune des 48 propositions ne commence par un chiffre"));
+                    + " aucune des 48 propositions ne commence par un chiffre"),
+            // S50-FRA-HOMOPHONES : troisieme paquet de francais CE1 (FRA-CE1-16).
+            Map.entry("ce1-homophones",
+            "24 items sur 24 portent un seul distracteur (deux propositions, forme binaire de"
+                    + " TRV-CE1-2), soit 48 propositions, mais aucune n'est numerique : ce sont les"
+                    + " quatre homophones de HOM-CE1-1 (\"a\", \"à\", \"et\", \"est\"), valeurDe"
+                    + " rend null sur les deux propositions de chaque item. Mesure du 2026-10-04 sur"
+                    + " le paquet servi : aucune des 48 propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

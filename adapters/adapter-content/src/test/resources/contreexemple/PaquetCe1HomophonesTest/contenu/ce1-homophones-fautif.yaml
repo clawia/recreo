@@ -1,0 +1,17 @@
+schema: 1
+id: ce1-homophones-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1HomophonesTest. La paire {et, est} est valide
+# (HOM-CE1-1), mais l'indice ne donne jamais la methode de substitution par "etait" (HOM-CE1-3) :
+# il se contente de dire de regarder, sans donner la methode. La verification doit le refuser.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Distinguer les homophones grammaticaux a/à et et/est."
+lignesDeReferentiel: ["FRA-CE1-16"]
+items:
+  - enonce: "Le chat ___ noir."
+    bonneReponse: "est"
+    distracteurs: ["et"]
+    indice: "Regarde bien les mots autour du trou."
