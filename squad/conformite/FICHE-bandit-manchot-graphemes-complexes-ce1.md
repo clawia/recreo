@@ -18,6 +18,8 @@
 - **Dernière mise à jour** : 2026-10-03 (second passage, s49) : **VALIDÉ SOUS RÉSERVE**. Les deux
   motifs sont levés ; une réserve neuve, `GRC-CE1-R1`. Le verdict du premier passage reste écrit tel
   quel.
+- **Mise à jour du 2026-10-04** (troisième passage, s50) : **VALIDÉ**. `GRC-CE1-R1` levée. Les deux
+  verdicts précédents restent écrits tels quels.
 
 ---
 
@@ -239,3 +241,54 @@ milieu, marqueur `R` dans le dernier (`ADR-0100`). Alloué dans
 `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même diff. Aucun renommé.
 
 **Signé** : `nadia-prof`, s49, instance A, 2026-10-03.
+
+---
+
+### Troisième passage du 2026-10-04 (`nadia-prof`, s50, instance A) : **VALIDÉ**, `GRC-CE1-R1` levée
+
+**Je ne rouvre pas le paquet entier** : je juge le seul point corrigé par `lea-dev` (`60dc1188`).
+`FRA-CE1-01` reste `couvert-valide` ; la réserve tombe.
+
+#### 1. Ce que j'ai fait
+
+Arbre `round-two` à `655b319b`. Jar construit par
+`bash outils/mvn-jdk21.sh -B -q -pl bootstrap -am package -DskipTests` (JDK 21.0.10), YAML du jar
+identique octet pour octet à l'arbre, lancé sur un port dédié servi par mon propre processus. Aucun
+job de la CI lancé par moi. **Rendu non vu au navigateur** : appels HTTP réels, HTML servi lu.
+`git diff 60dc1188~1 60dc1188` sur le YAML : seuls les distracteurs des items 19 et 20 et l'en-tête
+ont bougé.
+
+**Trente parties complètes de dix manches** (une juste, une avec une erreur par manche, une jusqu'à
+la révélation, vingt-sept en mêlant les trois au hasard). **Les 24 items tirés** ; les quatre items
+`ill` de 11 à 14 fois chacun, chacun avec des erreurs (9 à 22) et au moins une révélation.
+
+#### 2. La barre écrite au second passage, contre ce qui est servi
+
+| Item | Mot entre guillemets | Bonne réponse | Distracteurs servis |
+|---|---|---|---|
+| 17 | *« fille »* | *papillon* | *fusil*, *colline* |
+| 18 | *« bille »* | *chenille* | *filet*, *colline* |
+| 19 | *« quille »* | *coquille* | *fusil*, *ballon* |
+| 20 | *« vanille »* | *brindille* | *filet*, *tulipe* |
+
+- *Colline* figure sur deux des quatre items `ill` : **tenu**.
+- *Ballon* et *tulipe* ne portent pas le son de *« fille »* : dits tout bas, ni l'un ni l'autre ne
+  le fait entendre : **tenu**. Aucun des deux n'est dans le lexique de *ville*
+  (`GRC-CE1-2`) : **tenu**. *Ballon* a les deux `l` sans le `i` : c'est un bon piège de lecture pour
+  l'enfant qui repère des lettres sans lire.
+- Joué : *ballon* et *tulipe* reçoivent *"Ce n'est pas ça."* à bon droit.
+
+**Ce que la réserve visait, mesuré en jouant** : *colline* revient dans une même partie dans **4 de
+mes 30 parties** (les items 17 et 18 tirés ensemble), contre 12 sur 20 au second passage. Sur le
+paquet, aucun distracteur ne figure sur plus de deux items, compté sur le fichier (31 distracteurs
+distincts, 17 à deux occurrences, aucun au-delà) : c'est la propriété que j'ai acceptée en Q2 le
+2026-10-03, et `PaquetCe1GraphemesComplexesTest` la porte désormais.
+
+#### 3. Ce dont je reste la seule garde
+
+Inchangé, sauf un point : la répétition d'un distracteur est maintenant tenue par un test. Que
+*ballon* et *tulipe* ne portent pas le son de *« fille »*, aucun test ne le lit.
+
+**Identifiants** : aucun neuf, aucun renommé. `GRC-CE1-R1` levée.
+
+**Signé** : `nadia-prof`, s50, instance A, 2026-10-04.

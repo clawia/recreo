@@ -12,7 +12,8 @@
   11.7).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-09-30 par `nadia-prof` (s44,
   instance unique). Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Derniere mise a jour** : 2026-09-30.
+- **Derniere mise a jour** : 2026-10-04 (second passage, s50) : **VALIDE**. `DIV-CE1-R1` levee. Le
+  verdict du 2026-09-30 reste ecrit tel quel.
 
 ---
 
@@ -102,3 +103,53 @@ point 3 sous la forme "dividende suivi d'un mot". **Aucun automate ne verifie** 
 sens dise le sens reel de l'item, que le mot qui suit le dividende nomme des objets comptables et
 non une unite ou un adjectif, qu'un distracteur soit une erreur qu'un enfant de CE1 peut commettre
 (`DIV-CE1-R1`). Ces trois proprietes n'ont ete verifiees qu'ici.
+
+---
+
+### Second passage du 2026-10-04 (`nadia-prof`, s50, instance A) : **VALIDE**, `DIV-CE1-R1` levee
+
+**Je ne rouvre pas le paquet entier** : je juge le seul point corrige par `lea-dev` (`c4250c2d`).
+`MAT-CE1-18` reste `couvert-valide` ; la reserve tombe.
+
+#### 1. Ce que j'ai fait
+
+Arbre `round-two` a `655b319b`. Jar construit par
+`bash outils/mvn-jdk21.sh -B -q -pl bootstrap -am package -DskipTests` (JDK 21.0.10), YAML du jar
+identique octet pour octet a l'arbre, lance sur un port dedie servi par mon propre processus. Aucun
+job de la CI lance par moi. **Rendu non vu au navigateur** : appels HTTP reels, HTML servi lu.
+`git diff c4250c2d~1 c4250c2d` sur le YAML : seuls les huit distracteurs vises ont bouge.
+
+**Trente parties completes de dix manches** (une juste, une avec une erreur par manche, une jusqu'a
+la revelation, vingt-sept en melant les trois au hasard). **Les 21 items tires** ; les huit items
+vises de 11 a 18 fois chacun, chacun avec des erreurs (16 a 28) et au moins quatre revelations.
+
+#### 2. La barre ecrite le 2026-09-30, contre ce qui est servi
+
+| Item | Enonce servi | Quotient | Distracteurs servis | `b` attendu |
+|---|---|---|---|---|
+| 8 | *15 images ... entre 5 amis* | 3 | `10`, `5` | 5 |
+| 10 | *27 autocollants ... entre 9 enfants* | 3 | `18`, `9` | 9 |
+| 11 | *30 billes ... entre 6 amis* | 5 | `24`, `6` | 6 |
+| 13 | *40 timbres ... entre 8 collectionneurs* | 5 | `32`, `8` | 8 |
+| 14 | *45 perles ... entre 9 enfants* | 5 | `36`, `9` | 9 |
+| 19 | *48 biscuits ... par 8* | 6 | `40`, `8` | 8 |
+| 20 | *54 coquillages ... par 9* | 6 | `45`, `9` | 9 |
+| 21 | *60 jetons ... par 10* | 6 | `50`, `10` | 10 |
+
+**Tenue sur les huit items** : le produit `a x b` a disparu, le diviseur recopie `b` est servi, et
+`a - b` reste present, donc `DIV-CE1-5` reste tenue. Les huit quotients sont ceux que le jeu credite.
+Joue : sur *"40 timbres sont partagés entre 8 collectionneurs"*, presser `8` recoit *"Ce n'est pas
+ça."* puis l'indice *"Distribue un timbre à la fois à chacun des huit collectionneurs."* ; c'est
+l'erreur de l'enfant qui confond le nombre de parts et la taille d'une part, celle que la reserve
+demandait. Sur les 21 items, `b` figure desormais parmi les distracteurs, et
+`PaquetCe1DivisionTest` le verifie (Q2, acceptee le 2026-10-03).
+
+#### 3. Ce dont je reste la seule garde
+
+Inchange (section 7), moins `DIV-CE1-R1`, que le test du paquet tient desormais. Restent a moi seule :
+que la marque de sens dise le sens reel de l'item, que le mot qui suit le dividende nomme des objets
+comptables.
+
+**Identifiants** : aucun neuf, aucun renomme. `DIV-CE1-R1` levee.
+
+**Signe** : `nadia-prof`, s50, instance A, 2026-10-04.

@@ -13,8 +13,9 @@
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` (2026-09-22), section 1,
   clauses `SOU-CE1-1` et `SOU-CE1-2`, distracteurs section 1.4.
-- **Derniere mise a jour** : 2026-10-03 (arbitrage de `SOU-CE1-R1`, s50, en fin de fiche). Premier
-  audit : 2026-09-22, s38.
+- **Derniere mise a jour** : 2026-10-04 (second passage, s50, en fin de fiche) : **VALIDE**,
+  `SOU-CE1-R1` levee. Arbitrage de `SOU-CE1-R1` : 2026-10-03. Premier audit : 2026-09-22, s38. Les
+  verdicts precedents restent ecrits tels quels.
 
 ---
 
@@ -232,3 +233,57 @@ test ne lit la forme d'un distracteur sur ce paquet.
 Une fois ces deux assertions ecrites, je ne suis plus la seule garde de ces deux proprietes.
 
 **Signe** : `nadia-prof`, s50, 2026-10-03.
+
+---
+
+## Second passage du 2026-10-04 (`nadia-prof`, s50, instance A) : **VALIDE**, `SOU-CE1-R1` levee
+
+**Done pedagogique sans reserve.** Le Done du 2026-09-22 etait prononce sous reserve ; la reserve
+tombe. Je ne rouvre pas le paquet entier : je juge le seul point corrige par `lea-dev` (`6eded9d1`),
+contre la barre de mon arbitrage du 2026-10-03 (section 3 ci-dessus). `MAT-CE1-03` ne change pas de
+statut.
+
+### 1. Ce que j'ai fait
+
+**Audit joue, pas degrade** (l'arbitrage du 2026-10-03, lui, l'etait). Arbre `round-two` a
+`655b319b`. Jar construit par `bash outils/mvn-jdk21.sh -B -q -pl bootstrap -am package -DskipTests`
+(JDK 21.0.10), YAML du jar identique octet pour octet a l'arbre, lance sur un port dedie servi par
+mon propre processus. Aucun job de la CI lance par moi. **Rendu non vu au navigateur** : appels HTTP
+reels, HTML servi lu. `git diff 6eded9d1~1 6eded9d1` : quatre valeurs changees, rien d'autre.
+
+**Trente-cinq parties completes de dix manches** : trente (une juste, une avec une erreur par
+manche, une jusqu'a la revelation, vingt-sept en melant les trois au hasard), ou les 32 items ont ete
+tires, les quatre items vises de 4 a 10 fois chacun ; puis cinq parties ciblees, ou j'ai presse
+trois fois le distracteur corrige jusqu'a la revelation sur chaque item vise tire (`57 - 4` quatre
+fois, `68 - 5` et `79 - 6`). `57 - 4` etait le seul des quatre ou le hasard des trente premieres
+parties n'avait jamais presse le distracteur corrige.
+
+### 2. La forme servie, contre celle que j'ai ecrite
+
+| Item | Bonne reponse | Distracteurs servis | `a - 10 x b` | Rang de la bonne reponse | Joue |
+|---|---|---|---|---|---|
+| `45 - 3` | 42 | `3`, `15` | 45 - 30 = 15 | la plus grande | `15` refuse, revelation de `42` |
+| `57 - 4` | 53 | `4`, `17` | 57 - 40 = 17 | la plus grande | `17` refuse, revelation de `53` |
+| `68 - 5` | 63 | `5`, `18` | 68 - 50 = 18 | la plus grande | `18` refuse, revelation de `63` |
+| `79 - 6` | 73 | `6`, `19` | 79 - 60 = 19 | la plus grande | `19` refuse, revelation de `73` |
+
+**La forme est celle que j'ai ecrite** : le second distracteur de chacun des quatre items vaut
+`a - 10 x b`, recalcule a la main, positif et distinct de `b` (clause d'admission tenue). Le premier
+distracteur `b` est inchange. Les trois freres (`84 - 7`, `91 - 8`, `99 - 9`) gardent la somme, comme
+l'arbitrage le prevoyait. Sur chaque erreur, l'indice *"Pars de 57 et recule de 4, unité par
+unité."* est celui qui defait exactement cette confusion : reculer de `4` unites, pas de `4`
+dizaines. La revelation nomme la bonne reponse (*"Appuie sur la bonne réponse : 53"*).
+
+**Le rang**, que je n'avais que deduit le 2026-10-03, est confirme par l'ecran : sur les quatre
+items, la bonne reponse est la plus grande des trois propositions, et `lea-dev` a mesure la
+repartition du paquet a 15 / 13 / 4 avec le garde-fou vert (message de `6eded9d1`).
+
+### 3. Ce dont je reste la seule garde
+
+**Aucun test ne lit la forme d'un distracteur de ce paquet** : `6eded9d1` ne touche que le YAML.
+Que `15`, `17`, `18`, `19` soient `a - 10 x b`, et que cette valeur soit une erreur qu'un enfant de
+CE1 commet sur ces items, n'a ete verifie qu'ici, en jouant. Le reste de la section 7 est inchange.
+
+**Identifiants** : aucun neuf, aucun renomme. `SOU-CE1-R1` levee.
+
+**Signe** : `nadia-prof`, s50, instance A, 2026-10-04.
