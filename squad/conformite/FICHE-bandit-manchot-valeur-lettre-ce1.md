@@ -14,13 +14,120 @@
   `LON-CE1-2`, `LON-CE1-5` (même fichier, section 1), `FER-1` et `FER-2`
   (`squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`,
   section 2).
-- **Statut global** : **REFUSÉ** le 2026-10-04 par `nadia-prof` (s50, instance A), deux motifs.
-  Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
+- **Statut global** : **VALIDÉ** le 2026-10-04 par `nadia-prof` (s50, second passage), après le
+  correctif `15efbcca` de `marc-dev`. Premier passage **REFUSÉ** le même jour (s50, instance A),
+  deux motifs, conservé plus bas. Fiche ouverte par ce refus : aucune fiche n'existait pour ce jeu.
 - **Dernière mise à jour** : 2026-10-04.
 
 ---
 
 ## Bloc de validation pédagogique - nadia-prof UNIQUEMENT
+
+### Verdict du 2026-10-04 (`nadia-prof`, s50, second passage) : **VALIDÉ**
+
+**Done pédagogique prononcé pour `FRA-CE1-02`.** Les deux motifs du refus ci-dessous sont levés,
+chacun contre la barre « Ce qui lève » que j'avais écrite, sans qu'elle soit relevée. `camille-po`
+peut passer la ligne à `couvert-valide`.
+
+#### 1. Ce que j'ai fait
+
+**Audit joué.** Arbre `round-two` à `371218de` (correctif `15efbcca` inclus). Jar construit par
+`bash outils/mvn-jdk21.sh -B -q -pl bootstrap -am package -DskipTests` (Maven sur JDK 21.0.10) ;
+`contenu/ce1-valeur-lettre.yaml` et `catalogue.yaml` contenus dans le jar sont identiques octet pour
+octet à ceux de l'arbre (`cmp`). Jar lancé sur un port dédié, servi par mon propre processus, arrêté
+par son PID. **Rendu non vu au navigateur** : j'ai joué par appels HTTP réels et lu le HTML servi,
+comme au premier passage.
+
+**Trente parties complètes de dix manches**, mêmes conduites qu'au premier passage : une juste du
+premier coup, une avec une erreur par manche, une en pressant trois fois le distracteur jusqu'à la
+révélation, vingt-sept en tirant l'une de ces trois conduites au hasard à chaque manche. **Les 24
+items tirés et joués**, de 8 à 18 fois chacun, avec 5 à 22 erreurs par item. Sur les 300 manches :
+les deux propositions servies sont exactement celles du fichier, aucun distracteur n'est crédité
+juste, la bonne réponse est créditée, l'indice servi après une erreur est celui du fichier, et sur
+les 81 révélations la réponse affichée après *"Appuie sur la bonne réponse :"* est la bonne réponse
+de l'item. Écran de fin (*"C'est fini !"*, les deux nombres) atteint sur les trente parties.
+
+**Porte technique** : `bash outils/mvn-jdk21.sh -B verify` lancé par moi sur la racine à `371218de`,
+`BUILD SUCCESS`, aucun échec. C'est le contenu du job `build` seulement : je n'ai lancé ni le job des
+préfixes de commit, ni `chemins` hors de mon propre diff, ni les juges purs des outils.
+
+#### 2. Motif 1 - `ç` : levé
+
+Item 5 servi : *"Dans « garçon », le c avec une cédille se lit comme dans quel mot ?"* -
+**cerise** / car, indice *"Écoute bien le son de la lettre."* Joué 9 fois, dont 5 avec erreur : *car*
+reçoit *"Ce n'est pas ça. Essaie encore !"* et l'indice ; la révélation nomme *cerise*.
+
+Contre ma barre : la lettre visée est `ç`, la bonne réponse est le repère de *cerise* ; `ç` est
+devant `o`, jamais devant `e` ou `i` (`VLE-CE1-3`) ; *garçon* ne porte qu'un `c`, le cédillé. L'item
+**remplace** *cinq* : `c` garde huit items, quatre lus comme dans *car* (*carotte*, *costume*,
+*cube*, *camion*), quatre comme dans *cerise* (*citron*, *cinéma*, *garçon*, *cigale*) ;
+`VLE-CE1-1` tenue, et la bonne réponse strictement la plus longue reste à 12 items sur 24
+(`TRV-CE1-2`). `FER-1` est désormais tenue : `c`, `ç`, `g`, `ge`, `gu`, `s`, `ss` sont chacun en
+position de bonne réponse. L'énoncé fait treize mots, une phrase (`LON-CE1-1`, `-2`) ; *cédille* est
+un mot de CE1.
+
+L'indice est un indice de méthode : il ne dit rien de faux et ne donne pas la réponse. Il ne parle
+pas de la cédille, que l'énoncé nomme déjà ; ce n'est pas une condition que j'avais posée.
+
+#### 3. Motif 2 - indices de `s` : levé
+
+Vérifié dans le YAML actuel et servi au jeu, sur les trois items du motif :
+
+| Item | Mot | Indice servi au second passage | Joué |
+|---|---|---|---|
+| 20 | *salade* | *"Regarde les lettres avant et après le s."* | 18 fois, 8 erreurs |
+| 22 | *cuisine* | *"Dis le mot à voix basse."* | 11 fois, 13 erreurs |
+| 24 | *voisin* | *"Regarde les lettres avant et après le s."* | 15 fois, 18 erreurs |
+
+Le développeur a bien mis la forme « où regarder » sur *salade* et *voisin*, la forme de méthode sur
+*cuisine*. Sur *salade*, l'indice mène maintenant à la règle : rien avant le `s`, donc pas entre deux
+voyelles, donc *sel*. Sur *voisin*, `i` avant, `i` après, donc *rose*.
+
+Contre ma barre, sur les **huit** items de `s` et pas seulement les trois corrigés : aucun indice ne
+dit ni ne laisse entendre que la lecture du `s` dépend de la seule lettre qui suit, aucun n'emploie
+*doux* ou *dur*. *"Pense à la lettre qui suit."*, *"Regarde les lettres juste après."* et *"Écoute si
+le son est doux ou dur."* ne restent que sur des items de `c` et de `g` (4, 6, 8, 12, 14, 16), où
+c'est la bonne méthode. *"Prononce doucement pour entendre le son."* (item 21, *maison*) était déjà
+servi au premier passage et je ne l'avais pas retenu : *doucement* y dit comment prononcer, pas quel
+son la lettre fait. Je ne l'ajoute pas après coup.
+
+#### 4. Exactitude, niveau, ton : rien ne s'est dégradé
+
+**Les 24 items sont justes**, relus un par un : les 23 items inchangés sont ceux de mon relevé du
+premier passage (section 5 ci-dessous), à *cinq* près, remplacé par *garçon* ; chaque mot ne porte
+qu'une lecture de la lettre visée, chaque item n'a qu'une réponse acceptable. Le diff de `15efbcca`
+ne touche dans le YAML que l'item *cinq* devenu *garçon*, trois indices et l'en-tête de commentaires
+(qui ne sont pas servis). `TRV-CE1-5` tenue sur tout le paquet : neuf formes d'indice, douze mots au
+plus, aucune ne contient la bonne réponse. Aucun biais, aucun ton condescendant.
+
+#### 5. Ce qui reste ouvert, sans être une réserve
+
+Les deux points de la section 6 du premier passage n'étaient pas des motifs ; ils ne deviennent pas
+des réserves parce qu'ils n'ont pas été repris.
+
+1. *poisson* et *tasse* (items 18 et 19, et non *poisson* seul comme ma phrase le laissait lire) :
+   *"le s se lit"* pour deux `s`. `marc-dev` ne l'a pas repris : la forme *"les deux s se lisent"*
+   ferait rougir l'assertion du piège 4 de `PaquetCe1ValeurLettreTest`. Symptôme technique, cause à
+   `theo-archi` si `camille-po` en fait une story.
+2. Les items de `c` lu comme dans *cerise* sont maintenant trois `ci` et un `ç`, toujours aucun `ce`
+   ni `cy`.
+
+Remarque pour `marc-dev`, hors de mon périmètre et non servie à l'enfant : le `descripteur.competence`
+du YAML énumère *"(c, g/ge/gu, s/ss entre deux voyelles)"*, sans `ç`, alors que le paquet le sert
+désormais.
+
+#### 6. Ce dont je reste la seule garde sur cette ligne
+
+`PaquetCe1ValeurLettreTest` garde désormais aussi `ç` : il le calcule doux et refuse un `ç` devant
+`e` ou `i`. **Aucun test ne lit `FER-1`** : si l'item *garçon* disparaissait, la CI resterait verte.
+**Aucun test ne lit le sens d'un indice** au-delà de sa longueur et de la fuite de réponse : qu'un
+indice de `s` ne réintroduise pas la règle de la lettre qui suit, c'est moi qui le garde, en jouant.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s50, second passage, 2026-10-04.
+
+---
 
 ### Verdict du 2026-10-04 (`nadia-prof`, s50, instance A) : **REFUSÉ**
 
