@@ -21,7 +21,7 @@
 # reussie - chaque item porte sur ce qui est observable (sujet, forme ou materiau).
 #
 # Trois types d'items, jamais une couleur :
-#   - sujet (cinq items) : ce que l'oeuvre montre (un champ de ble, une chambre, une vague, des
+#   - sujet (six items) : ce que l'oeuvre montre (un champ de ble, une chambre, une vague, des
 #     chevaux, une rue, une femme) ;
 #   - forme (un item, oeuvre-quatre-saisons) : la forme d'ensemble reconnue (un visage), plutot que
 #     le detail des fruits et legumes qui le composent ;

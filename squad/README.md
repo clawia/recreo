@@ -408,9 +408,11 @@ ceremonie.
 
 ## 7. Le double Done
 
-**Done technique** : `mvn verify` vert - compilation, tests unitaires, tests d'integration Spring
-Boot, ArchUnit. C'est **la CI qui juge**, pas un agent. Yanis et Theo en sont les garants : ils
-rendent le jugement fiable et le rapportent honnetement.
+**Done technique** : CI verte, c'est-a-dire tous les jobs de `.github/workflows/ci.yml`
+(`prefixes`, `chemins`, `outils`, `build` - ce dernier seul porte `mvn verify` : compilation,
+tests unitaires, tests d'integration Spring Boot, ArchUnit). C'est **la CI qui juge**, pas un
+agent. Yanis et Theo en sont les garants : ils rendent le jugement fiable et le rapportent
+honnetement.
 
 **Done pedagogique** : prononce par **`nadia-prof`**, et par elle seule, avec un motif ecrit dans
 `squad/conformite/FICHE-<jeu>.md`. Trois verdicts : `VALIDE`, `VALIDE SOUS RESERVE`, `REFUSE`.
@@ -678,10 +680,11 @@ sans qu'aucune n'ait jamais ete detectee au daily : la regle relue au planning n
 et la verifier plus tot dans le cycle - avant que le travail ne s'accumule sur la mauvaise branche
 - coute moins cher que de la verifier seulement a la fusion.
 
-**4. Porte technique.** `mvn verify` vert. Yanis produit le rapport qualite, Theo confirme
-ArchUnit avec le resultat de la commande. **Un garde-fou cite comme fermant un refus pedagogique ou
-une dette nommee n'est declare complet, dans le `review.md` qui le cite, qu'une fois la preuve de
-morsure decrite explicitement** (amendement s06, retro de s05) - mutation reelle du code, relecture
+**4. Porte technique.** Les quatre jobs de la CI verts (`prefixes`, `chemins`, `outils`, `build`).
+Yanis produit le rapport qualite, Theo confirme ArchUnit avec le resultat de la commande.
+**Un garde-fou cite comme fermant un refus pedagogique ou une dette nommee n'est declare complet,
+dans le `review.md` qui le cite, qu'une fois la preuve de morsure decrite explicitement**
+(amendement s06, retro de s05) - mutation reelle du code, relecture
 adverse de l'inegalite qu'il verifie, ou tout autre moyen nomme. "Il est vert" ne suffit jamais
 comme preuve de morsure, y compris quand l'auteur lui-meme le croit.
 

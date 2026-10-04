@@ -4116,7 +4116,7 @@ reellement.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
     `nadia-prof` : le choix des distracteurs et `REC-1`/`REC-2` transposees (nommer chaque image,
     propositions masquees et chaque distracteur absent de l'image, ce qui est demande se
-    reconnaissant sans hesiter a 176 px) ; le texte visible dans trois reproductions
+    reconnaissant sans hesiter a 176 px) ; le texte visible dans deux reproductions
     (`oeuvre-grande-vague`, `oeuvre-rue-sous-la-pluie` - une signature en alphabet latin illisible
     a la taille de rendu) - recevable sous deux conditions ecrites par elle (aucun enonce,
     proposition, indice ou texte alternatif n'en parle ; le fichier n'est pas recadre pour
