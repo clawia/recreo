@@ -294,3 +294,33 @@ oeuvres:
     identifiantDObjet: "2005.100.1353"
     urlDeLaSource: "https://www.metmuseum.org/art/collection/search/814612"
     licenceDeLaReproduction: CC0-1.0
+
+  - identifiant: oeuvre-chambre
+    titre: "The Bedroom (La Chambre)"
+    auteur: "Vincent van Gogh"
+    anneeDeLOeuvre: 1889
+    anneeDeMortDeLAuteur: 1890
+    lieuDeConservation: "Art Institute of Chicago"
+    identifiantDObjet: "1926.417"
+    urlDeLaSource: "https://www.artic.edu/artworks/28560/the-bedroom"
+    licenceDeLaReproduction: CC0-1.0
+
+  - identifiant: oeuvre-rue-sous-la-pluie
+    titre: "Paris Street; Rainy Day (Rue de Paris, temps de pluie)"
+    auteur: "Gustave Caillebotte"
+    anneeDeLOeuvre: 1877
+    anneeDeMortDeLAuteur: 1894
+    lieuDeConservation: "Art Institute of Chicago"
+    identifiantDObjet: "1964.336"
+    urlDeLaSource: "https://www.artic.edu/artworks/20684/paris-street-rainy-day"
+    licenceDeLaReproduction: CC0-1.0
+
+  - identifiant: oeuvre-grande-jatte
+    titre: "A Sunday on La Grande Jatte - 1884 (Un dimanche apres-midi a l'ile de la Grande Jatte)"
+    auteur: "Georges Seurat"
+    anneeDeLOeuvre: 1886
+    anneeDeMortDeLAuteur: 1891
+    lieuDeConservation: "Art Institute of Chicago"
+    identifiantDObjet: "1926.224"
+    urlDeLaSource: "https://www.artic.edu/artworks/27992/a-sunday-on-la-grande-jatte-1884"
+    licenceDeLaReproduction: CC0-1.0
