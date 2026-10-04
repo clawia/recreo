@@ -4055,6 +4055,66 @@ Reserve neuve, non bloquante, ouverte sur ce seul passage.
   une `DEC` d'ouverture de sprint.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
 
+### Story neuve - `S50-ART` : decrire une oeuvre et reconnaitre des oeuvres deja rencontrees (`ART-CP-09`, `ART-CP-10`)
+
+**Contexte.** `DEC-0109` engage `T6` (`ADR-0082`) : le registre de 28 oeuvres est complet
+(`squad/corpus/oeuvres-domaine-public.yaml`, commit `56b6b77c`), aucun paquet ne declare encore
+d'identifiant `oeuvre-`. Un seul paquet ferme les deux lignes, sur le vivier de 11 oeuvres de
+`squad/corpus/CHOIX-oeuvres-candidates-T5.md` (section 8.4) : `oeuvre-hippopotame`,
+`oeuvre-moissonneurs`, `oeuvre-chambre`, `oeuvre-quatre-saisons`, `oeuvre-grande-vague`,
+`oeuvre-marche-aux-chevaux`, `oeuvre-rue-sous-la-pluie`, `oeuvre-femme-au-luth` (`ART-CP-09`), plus
+`oeuvre-champ-de-ble`, `oeuvre-averse-sur-le-pont`, `oeuvre-jeune-femme-aiguiere` (`ART-CP-10`,
+qui reutilise integralement le vivier de `ART-CP-09`).
+
+- **Besoin (`ART-CP-09`)** : en tant qu'eleve de CP, je veux regarder une reproduction d'oeuvre et
+  dire ce que j'y vois - le sujet, les couleurs, les formes, la matiere -, afin d'apprendre a
+  decrire une oeuvre d'art avec mes propres mots.
+- **Besoin (`ART-CP-10`)** : en tant qu'eleve de CP, je veux retrouver une oeuvre que j'ai deja
+  regardee et la rapprocher d'une autre qui lui ressemble, afin d'apprendre a reconnaitre des
+  oeuvres et a voir ce qu'elles ont en commun.
+- **Competence programme visee** : arts plastiques, CP (cycle 2), domaine "Se reperer dans les
+  domaines lies aux arts plastiques", `ART-CP-09` et `ART-CP-10`
+  (`squad/programme/arts-plastiques/competences-cp.md`, lignes 45-46) - lignes `non couvert`
+  dans `squad/programme/MATRICE-couverture.md` (lignes 2053 et 2055).
+- **Criteres d'acceptation** :
+  - Etant donne le paquet servi, quand on lit ses items, alors la mecanique est
+    `bandit-manchot` et la forme d'item est `question` (choix parmi des propositions en texte) :
+    aucune forme d'item ni mecanique nouvelle (`ADR-0082` decision 5, `ADR-0058`).
+  - Etant donne chacun des huit items qui portent sur `ART-CP-09`, quand on lit sa cle
+    `illustration`, alors elle vaut l'un des huit identifiants de la section "Contexte"
+    ci-dessus, et chacun des huit identifiants est utilise par au moins un item du paquet (aucune
+    des huit oeuvres n'est absente).
+  - Etant donne un item qui declare `illustration`, quand on lit le paquet, alors il declare
+    aussi `illustrationTexteAlternatif` (non vide) et porte `enonce` comme premiere cle
+    (`ADR-0073` clauses 5 et 6, deja mordues par
+    `LIllustrationDeContenuResoutEtAucuneNeDortTest`).
+  - Etant donne au moins trois items qui portent sur `ART-CP-10`, quand on les lit, alors chacun
+    presente une paire d'oeuvres deja etablie par `nadia-prof` (`oeuvre-chambre` /
+    `oeuvre-champ-de-ble` ; `oeuvre-grande-vague` / `oeuvre-averse-sur-le-pont` ;
+    `oeuvre-femme-au-luth` / `oeuvre-jeune-femme-aiguiere`), et l'une des deux oeuvres de chaque
+    paire est aussi celle d'un item de `ART-CP-09` dans le meme paquet (condition "deja
+    rencontree").
+  - Etant donne tout identifiant `illustration` du paquet, quand on le cherche dans
+    `squad/corpus/oeuvres-domaine-public.yaml`, alors il y figure, et le fichier
+    `<identifiant>.jpg` correspondant existe sous
+    `adapters/adapter-web/src/main/resources/static/oeuvres/`.
+  - Etant donne le reacteur complet apres le commit du paquet, quand on lance `mvn -B clean
+    verify`, alors le resultat est `BUILD SUCCESS`, et en particulier
+    `LIllustrationDeContenuResoutEtAucuneNeDortTest` et
+    `ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest` passent au vert
+    (zero echec) - ce qui leve le rouge nomme par `DEC-0108` section 9 pour l'ensemble du sprint.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : le choix des distracteurs, `REC-1` (nommer chaque image, propositions
+    masquees, et retrouver la reponse attendue), la transposition de `REC-1` a `REC-4` a une
+    reproduction (non confirmee, `DEC-0109` section 4), la recevabilite pour un enfant de CP d'un
+    texte visible dans une reproduction (cartouche de titre japonais potentiellement visible sur
+    `oeuvre-grande-vague`, point a signaler a `nadia-prof` avant l'ecriture complete du paquet),
+    `ART-1` (aucune propriete choisie qui ne se voit qu'a la couleur) et `ART-5` (diversite
+    d'epoques, d'aires culturelles, de genres).
+- **Lien decision** : `DEC-0109-reouverture-de-s50-engagement-de-t6-arts-plastiques-cp-lignes-9-et-10-en-seconde-instance.md`.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, seconde instance de `nadia-prof`
+  dediee (`DEC-0109` section 3).
+
 ## Sprint 10 - La machine est redessinee sur les references de l'utilisatrice, le veto sur la manette est leve, l'ecran intermediaire reste a arbitrer
 
 **Contexte et decision de perimetre** : `DEC-0022` avait acte un manche dessine sur le fronton,
