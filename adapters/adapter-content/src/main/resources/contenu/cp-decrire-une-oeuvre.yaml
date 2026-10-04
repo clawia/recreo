@@ -1,0 +1,105 @@
+# S50-ART (ART-CP-09). DEC-0109 engage T6 (ADR-0082), reduit a ART-CP-09 seule par son amendement
+# du 2026-10-04 (section 10.1), sur l'arbitrage prealable de nadia-prof
+# (squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md) : ART-CP-10 (rapprocher deux oeuvres) exige
+# une vue simultanee de deux oeuvres, mecanique non engagee dans T6, et sort de ce paquet.
+#
+# Vivier retenu, huit oeuvres (docs/backlog/backlog.md, story S50-ART ; DEC-0109 section 10.3) :
+# oeuvre-hippopotame, oeuvre-moissonneurs, oeuvre-chambre, oeuvre-quatre-saisons,
+# oeuvre-grande-vague, oeuvre-marche-aux-chevaux, oeuvre-rue-sous-la-pluie, oeuvre-femme-au-luth.
+# Chacune est utilisee exactement une fois.
+#
+# Q4 de l'arbitrage prealable (ART-1) : la ligne ferme sans les couleurs - aucun enonce, aucune
+# proposition, aucun indice et aucun texte alternatif ne porte un mot de couleur. L'intitule du
+# referentiel ("sujet, couleurs, formes, materiaux") ne change pas ; seule la mention qui
+# accompagnera la ligne dans la matrice, si elle ferme, est corrigee ("sujet, formes et materiaux
+# seuls ; les couleurs d'une oeuvre ne sont pas servies (ART-1)"). Le descripteur ci-dessous reprend
+# cette meme restriction plutot que l'intitule integral du referentiel, pour ne pas annoncer au
+# joueur une competence que le paquet ne sert pas : point signale, non tranche par moi seul,
+# nadia-prof jugera a l'audit.
+#
+# ART-2 : aucun item ne demande ce que l'enfant ressent ni ne qualifie une oeuvre de belle ou
+# reussie - chaque item porte sur ce qui est observable (sujet, forme ou materiau).
+#
+# Trois types d'items, jamais une couleur :
+#   - sujet (cinq items) : ce que l'oeuvre montre (un champ de ble, une chambre, une vague, des
+#     chevaux, une rue, une femme) ;
+#   - forme (un item, oeuvre-quatre-saisons) : la forme d'ensemble reconnue (un visage), plutot que
+#     le detail des fruits et legumes qui le composent ;
+#   - materiau (un item, oeuvre-hippopotame) : la distinction recevable au CP est celle qui se voit
+#     - un objet qu'on peut tenir ou poser contre une image peinte (arbitrage prealable, Q4, regle 3
+#     pour le developpeur) - jamais "faience", "toile" ni "estampe", hors vocabulaire de CP.
+#
+# Q2 de l'arbitrage prealable (texte visible dans une reproduction) : oeuvre-grande-vague et
+# oeuvre-rue-sous-la-pluie portent un texte visible (cartouche japonais, trace de signature) jugé
+# recevable par nadia-prof sous deux conditions - aucun enonce, proposition, indice ou texte
+# alternatif n'en parle, et le fichier n'est pas recadre pour l'effacer. Ce paquet ne nomme ce texte
+# nulle part ; le fichier servi est celui du registre, non modifie.
+#
+# REC-1 et REC-2 transposees (arbitrage prealable) : chaque distracteur est choisi absent de
+# l'image, et ce qui est demande se reconnait, au jugement du redacteur, sans hesiter a la taille de
+# rendu (176 px) - verification visuelle finale a la seule main de nadia-prof, qu'aucun automate ne
+# remplace ici.
+#
+# illustrationTexteAlternatif identique sur les huit items et ne nommant rien (CON-5, meme regime
+# que ce1-solides) : une image qui porterait son sujet dans le texte alternatif donnerait la reponse
+# a un lecteur d'ecran.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable.
+schema: 1
+id: cp-decrire-une-oeuvre
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CP"
+  domaine: "Se repérer dans les domaines liés aux arts plastiques"
+  competence: "Décrire une œuvre : dire ce qu'on y voit (sujet, formes et matériaux)."
+lignesDeReferentiel: ["ART-CP-09"]
+items:
+  - enonce: "Cette œuvre, qu'est-ce que c'est ?"
+    illustration: oeuvre-hippopotame
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "une statue"
+    distracteurs: ["une peinture", "un dessin"]
+    indice: "Regarde si tu peux la tenir dans la main, ou si elle est plate comme une image."
+  - enonce: "Que vois-tu sur cette œuvre ?"
+    illustration: oeuvre-moissonneurs
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "un champ de blé"
+    distracteurs: ["une plage", "un désert"]
+    indice: "Regarde ce grand terrain qui occupe presque toute l'image."
+  - enonce: "Que vois-tu sur cette œuvre ?"
+    illustration: oeuvre-chambre
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "une chambre"
+    distracteurs: ["une cuisine", "une salle de classe"]
+    indice: "Observe les meubles et le lit installés dans cette pièce."
+  - enonce: "Quelle forme reconnais-tu sur cette œuvre ?"
+    illustration: oeuvre-quatre-saisons
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "un visage"
+    distracteurs: ["une maison", "un bateau"]
+    indice: "Regarde l'ensemble de l'image, de haut en bas, sans t'arrêter aux détails."
+  - enonce: "Que vois-tu sur cette œuvre ?"
+    illustration: oeuvre-grande-vague
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "une vague"
+    distracteurs: ["un désert", "une forêt"]
+    indice: "Observe l'eau qui se soulève très haut au-dessus des petits bateaux."
+  - enonce: "Que vois-tu sur cette œuvre ?"
+    illustration: oeuvre-marche-aux-chevaux
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "des chevaux"
+    distracteurs: ["des vaches", "des moutons"]
+    indice: "Regarde bien les animaux et leurs longues crinières."
+  - enonce: "Que vois-tu sur cette œuvre ?"
+    illustration: oeuvre-rue-sous-la-pluie
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "une rue"
+    distracteurs: ["une plage", "une montagne"]
+    indice: "Observe les personnes qui marchent sous leurs parapluies."
+  - enonce: "Que vois-tu sur cette œuvre ?"
+    illustration: oeuvre-femme-au-luth
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "une femme"
+    distracteurs: ["un homme", "un enfant"]
+    indice: "Regarde la personne debout près de la fenêtre."

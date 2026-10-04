@@ -384,6 +384,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 5.7).
             "bandit-manchot-homophones-ce1",
+            // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
+            // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
+            "bandit-manchot-decrire-une-oeuvre-cp",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -630,6 +633,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-FRA-HOMOPHONES (s50) : titre neuf, sans niveau (ADR-0078), distinct de "Le bon
             // petit mot" (CM1, bandit-manchot-homophones-cm1).
             "Les bons mots",
+            // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
+            "Décrire une œuvre",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -905,6 +910,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-FRA-HOMOPHONES (s50) : consigne neuve, generique - elle ne nomme aucun des
             // quatre homophones d'aucun item.
             "Lis bien, puis choisis le mot qui convient.",
+            // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
+            // ni aucun materiau d'aucun item.
+            "Regarde l'œuvre, puis dis ce que tu vois.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1448,7 +1456,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-FRA-HOMOPHONES (s50) : competence neuve, FRA-CE1-16, libelle du referentiel
             // copie mot pour mot (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-16),
             // sans les guillemets inverses.
-            "Distinguer les homophones grammaticaux a/à et et/est.");
+            "Distinguer les homophones grammaticaux a/à et et/est.",
+            // S50-ART (s50) : competence neuve, ART-CP-09. Le libelle du referentiel
+            // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-09) nomme
+            // "couleurs" ; aucune couleur n'est servie par ce paquet (ART-1, arbitrage prealable
+            // de nadia-prof du 2026-10-04, Q4) et ce champ, lu par l'enfant, ne promet pas une
+            // competence que le paquet ne sert pas - meme motif que la correction du 2026-09-02 sur
+            // "Calcul CP" citee plus haut. Point signale, non tranche par moi seul.
+            "Décrire une œuvre : dire ce qu'on y voit (sujet, formes et matériaux).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

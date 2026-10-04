@@ -157,8 +157,13 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * <p><b>41 vers 56, lea-dev, s39, S39-SOLIDES</b> : {@code ce1-solides} (MAT-CE1-16) declare
      * quinze items de type {@code question}, chacun avec une illustration - les quinze items
      * s'ajoutent tous.</p>
+     *
+     * <p><b>56 vers 64, marc-dev, s50, S50-ART</b> : {@code cp-decrire-une-oeuvre} (ART-CP-09)
+     * declare huit items, chacun avec une illustration qui resout desormais dans
+     * {@code static/oeuvres/} (T2 d'ADR-0082) plutot que dans {@code static/illustrations/} - les
+     * huit items s'ajoutent a cette population, {@link #FICHIERS_D_ILLUSTRATION} ne bouge pas.</p>
      */
-    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 56;
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 64;
 
     /**
      * <b>24 vers 26, lea-dev, s34, S33-PAL2-1</b> : les deux dessins du premier paquet de

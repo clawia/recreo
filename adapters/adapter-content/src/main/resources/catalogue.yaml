@@ -750,3 +750,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-homophones
     nombreDeManches: 10
+  - id: bandit-manchot-decrire-une-oeuvre-cp
+    titre: "Décrire une œuvre"
+    consigne: "Regarde l'œuvre, puis dis ce que tu vois."
+    mecanique: bandit-manchot
+    paquet: cp-decrire-une-oeuvre
+    nombreDeManches: 7

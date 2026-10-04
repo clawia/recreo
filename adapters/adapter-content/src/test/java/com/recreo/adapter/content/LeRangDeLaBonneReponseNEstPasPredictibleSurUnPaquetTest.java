@@ -1095,7 +1095,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " TRV-CE1-2), soit 48 propositions, mais aucune n'est numerique : ce sont les"
                     + " quatre homophones de HOM-CE1-1 (\"a\", \"à\", \"et\", \"est\"), valeurDe"
                     + " rend null sur les deux propositions de chaque item. Mesure du 2026-10-04 sur"
-                    + " le paquet servi : aucune des 48 propositions ne commence par un chiffre"));
+                    + " le paquet servi : aucune des 48 propositions ne commence par un chiffre"),
+            // S50-ART : paquet neuf d'arts plastiques CP, deuxieme ligne de cette matiere
+            // (ART-CP-09), premier paquet a declarer une reproduction d'oeuvre (T6 d'ADR-0082).
+            Map.entry("cp-decrire-une-oeuvre",
+            "8 items sur 8 portent deux distracteurs (trois propositions), soit 24 propositions,"
+                    + " mais aucune n'est numerique : ce sont des noms de sujets, de formes ou de"
+                    + " materiaux observes sur une reproduction d'oeuvre (\"une chambre\", \"un"
+                    + " visage\", \"une statue\"...), valeurDe rend null sur les trois propositions"
+                    + " de chaque item. Mesure du 2026-10-04 sur le paquet servi : aucune des 24"
+                    + " propositions ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

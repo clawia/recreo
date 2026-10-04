@@ -105,6 +105,30 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
 
     private static final String EXTENSION_SERVIE = ".svg";
 
+    /**
+     * T2/T3 d'ADR-0082 (s49) : une seconde population d'images, les reproductions d'oeuvres, resolue
+     * par le meme adapter dans un autre repertoire et sous une autre extension des que l'identifiant
+     * porte le prefixe {@code oeuvre-} (ADR-0082 decision 2 - la population se lit sur le prefixe,
+     * jamais sur une cle de contenu dediee). Cette classe ne l'avait pas encore joue : la population
+     * de reproductions etait vide jusqu'a S50-ART (marc-dev, s50), premier paquet a declarer un
+     * identifiant {@code oeuvre-} atteignant cet ecran. Sans cette seconde branche, {@link #manquements}
+     * attendrait {@code /illustrations/<id>.svg} pour une reproduction reellement servie sous
+     * {@code /oeuvres/<id>.jpg} - un faux rouge, pas une regle neuve : le gabarit pose deja les deux
+     * cibles exclusives l'une de l'autre (voir le fragment de manche, commentaire T3 d'ADR-0082).
+     */
+    private static final String PREFIXE_REPRODUCTION = "oeuvre-";
+
+    private static final String REPERTOIRE_REPRODUCTIONS_SERVI = "/oeuvres/";
+
+    private static final String EXTENSION_REPRODUCTION_SERVIE = ".jpg";
+
+    /** La cible que l'adapter web pose pour un identifiant declare, selon sa population (ci-dessus). */
+    private static String cibleAttendue(String identifiant) {
+        return identifiant.startsWith(PREFIXE_REPRODUCTION)
+                ? REPERTOIRE_REPRODUCTIONS_SERVI + identifiant + EXTENSION_REPRODUCTION_SERVIE
+                : REPERTOIRE_SERVI + identifiant + EXTENSION_SERVIE;
+    }
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -290,7 +314,7 @@ class LIllustrationDUnItemServiAtteintLEcranDeMancheTest {
             return defauts;
         }
         Element image = images.get(0);
-        String cibleAttendue = REPERTOIRE_SERVI + item.illustration().orElseThrow() + EXTENSION_SERVIE;
+        String cibleAttendue = cibleAttendue(item.illustration().orElseThrow());
         if (!cibleAttendue.equals(image.attr("src"))) {
             defauts.add(ou + " : l'image sert \"" + image.attr("src") + "\", attendu exactement \""
                     + cibleAttendue + "\". Le contenu declare un identifiant, l'adapter web pose le"

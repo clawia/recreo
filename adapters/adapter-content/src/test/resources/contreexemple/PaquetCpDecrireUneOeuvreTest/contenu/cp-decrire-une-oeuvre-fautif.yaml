@@ -1,0 +1,19 @@
+# ADR-0013 obligation 3 : jeu fautif de PaquetCpDecrireUneOeuvreTest. Son seul item porte un mot de
+# couleur ("bleu") en bonne reponse, exactement ce que Q4 de l'arbitrage prealable de nadia-prof
+# refuse (ART-1).
+schema: 1
+id: cp-decrire-une-oeuvre-fautif
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CP"
+  domaine: "Se repérer dans les domaines liés aux arts plastiques"
+  competence: "Décrire une œuvre : dire ce qu'on y voit (sujet, formes et matériaux)."
+lignesDeReferentiel: ["ART-CP-09"]
+items:
+  - enonce: "Cette œuvre, qu'est-ce que c'est ?"
+    illustration: oeuvre-hippopotame
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "un hippopotame bleu"
+    distracteurs: ["un éléphant", "un dessin"]
+    indice: "Regarde bien l'animal."

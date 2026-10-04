@@ -70,8 +70,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@link #verifier(List, Map, Set, Set)}, qui ne lit ni disque ni classpath : c'est ce qui permet
  * de le mordre sur du materiau mute en memoire.</p>
  *
- * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement</b> (ADR-0051). Depuis le 2026-10-04,
- * vingt-huit reproductions reelles et leurs vingt-huit entrees :
+ * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement</b> (ADR-0051). Depuis le 2026-10-04
+ * (S50-ART, marc-dev), huit reproductions reelles et leurs huit entrees - le vivier final
+ * d'ART-CP-09, apres le retrait O1 des vingt reproductions hors de ce vivier (voir
+ * {@link #POIDS_TOTAL_MAXIMUM}) :
  * {@link #laPopulationDeReproductionsEstLueEtCeGardeFouLExamine()} affirme que cette population est
  * lue et non vide, et le <b>cliquet exact</b> rend tout changement de sa taille ou de son poids
  * visible dans le diff qui le fait.</p>
@@ -155,18 +157,23 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
             CHAMP_LICENCE);
 
     /**
-     * Cliquet exact, ADR-0082 decision 6 : la population servie au 2026-10-03. Ce n'est pas un
+     * Cliquet exact, ADR-0082 decision 6 : la population servie au 2026-10-04. Ce n'est pas un
      * plafond de confort - un cliquet dont le plafond depasse la dette ne cliquette rien, et
      * {@link #leCliquetVautExactementLaTailleDeLaPopulationServie()} exige l'egalite. Methode du
      * poids : somme des tailles en octets des fichiers de {@code static/oeuvres/} de tous les modules
      * declares, mesuree sur le disque par {@code wc -c} et par {@code find -printf '%s'}, qui
      * concordent ; aucune exclusion. Releve le 2026-10-04 (s50, T6) de 25 fichiers et 620 639
-     * octets a 28 fichiers et 692 809 octets, meme methode, apres redimensionnement a 352 px des
-     * trois fichiers que 56b6b77c avait entres a leur resolution source.
+     * octets a 28 fichiers et 692 809 octets (A1, redimensionnement a 352 px des trois fichiers que
+     * 56b6b77c avait entres a leur resolution source), puis redescendu le meme jour (s50,
+     * S50-ART, marc-dev) a <b>8 fichiers et 176 474 octets</b> : O1 de l'amendement du 2026-10-04 a
+     * DEC-0109 (sections 9 et 10.3) retire du registre et du disque les vingt reproductions hors du
+     * vivier final d'ART-CP-09 - dix-sept destinees a T7/T8 et trois propres a ART-CP-10, refusee en
+     * texte par nadia-prof - restaurables a l'octet depuis l'historique Git (56b6b77c et les commits
+     * anterieurs) le jour ou ces lignes s'ouvrent reellement.
      */
-    private static final int REPRODUCTIONS_SERVIES = 28;
+    private static final int REPRODUCTIONS_SERVIES = 8;
 
-    private static final int POIDS_TOTAL_MAXIMUM = 692_809;
+    private static final int POIDS_TOTAL_MAXIMUM = 176_474;
 
     /**
      * T4 d'ADR-0082 (sofia-sm, s49) : l'analogue matriciel du {@code viewBox} des dessins -

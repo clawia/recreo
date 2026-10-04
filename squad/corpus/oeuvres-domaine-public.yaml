@@ -42,16 +42,18 @@
 # des artistes d'un seul genre). Ces deux-la restent la main de nadia-prof, elle l'a ecrit, et
 # aucun automate ne les verifie a sa place.
 #
-# CE QUE CETTE ENTREE DE 22 OEUVRES EST, ET N'EST PAS. Chaque entree a ete verifiee le 2026-10-03
-# directement sur la fiche publiee par l'institution (API ou page de collection), pas sur la
-# proposition de squad/corpus/CHOIX-oeuvres-candidates-T5.md recopiee de memoire par nadia-prof :
-# les ecarts trouves (numero d'inventaire, titre exact, parfois l'institution) sont corriges ici et
-# non dans sa proposition. Ce n'est PAS un Done pedagogique ni une confirmation d'ART-5 ou de la
-# plausibilite des choix pour les neuf lignes : nadia-prof reste seule a juger si ces 22 oeuvres
-# conviennent aux lignes, et seule a verifier que l'attribution est juste. Voir
-# squad/rapports/sourcing-oeuvres-s49-verification.md pour la methode, les six candidates ecartees
-# ou non retenues (une licence refusee, trois bloquees par une protection technique du fournisseur,
-# une composition illisible a 352 px, une non verifiee) et les questions qui restent ouvertes.
+# CE QUE CES 8 OEUVRES SONT, ET NE SONT PAS. Chaque entree a ete verifiee le 2026-10-03 directement
+# sur la fiche publiee par l'institution (API ou page de collection), pas sur la proposition de
+# squad/corpus/CHOIX-oeuvres-candidates-T5.md recopiee de memoire par nadia-prof : les ecarts
+# trouves (numero d'inventaire, titre exact, parfois l'institution) sont corriges ici et non dans sa
+# proposition. Ce n'est PAS un Done pedagogique ni une confirmation d'ART-5 ou de la plausibilite
+# des choix : nadia-prof reste seule a juger si ces 8 oeuvres conviennent a ART-CP-09, et seule a
+# verifier que l'attribution est juste. Voir squad/rapports/sourcing-oeuvres-s49-verification.md
+# pour la methode de verification initiale des 28 oeuvres alors sourcees, et DEC-0109 (sections 9 et
+# 10.3) pour le retrait, sous ce commit, des vingt reproductions hors du vivier final d'ART-CP-09 -
+# dix-sept destinees a T7/T8, trois propres a ART-CP-10 refusee en texte par nadia-prof -,
+# restaurables a l'octet depuis l'historique Git (56b6b77c et les commits anterieurs) le jour ou ces
+# lignes s'ouvrent reellement.
 
 schema: 1
 oeuvres:
@@ -104,167 +106,6 @@ oeuvres:
     urlDeLaSource: "https://www.metmuseum.org/art/collection/search/435702"
     licenceDeLaReproduction: CC0-1.0
 
-  - identifiant: oeuvre-champ-de-ble
-    titre: "Wheat Field with Cypresses (Champ de ble avec cypres)"
-    auteur: "Vincent van Gogh"
-    anneeDeLOeuvre: 1889
-    anneeDeMortDeLAuteur: 1890
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "1993.132"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/436535"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-averse-sur-le-pont
-    titre: "Sudden Shower over Shin-Ohashi Bridge and Atake (Averse soudaine sur le pont Shin-Ohashi)"
-    auteur: "Utagawa Hiroshige"
-    anneeDeLOeuvre: 1857
-    anneeDeMortDeLAuteur: 1858
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "JP2522"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/55433"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-jeune-femme-aiguiere
-    titre: "Young Woman with a Water Pitcher (Jeune femme a l'aiguiere)"
-    auteur: "Johannes Vermeer"
-    anneeDeLOeuvre: 1662
-    anneeDeMortDeLAuteur: 1675
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "89.15.21"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/437881"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-licorne-captive
-    titre: "The Unicorn Rests in a Garden (la tapisserie dite 'la Licorne captive')"
-    auteur: "anonyme"
-    anneeDeLOeuvre: 1505
-    lieuDeConservation: "Metropolitan Museum of Art, The Cloisters, New York"
-    identifiantDObjet: "37.80.6"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/467642"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-autoportrait-leyster
-    titre: "Self-Portrait (Autoportrait)"
-    auteur: "Judith Leyster"
-    anneeDeLOeuvre: 1630
-    anneeDeMortDeLAuteur: 1660
-    lieuDeConservation: "National Gallery of Art, Washington"
-    identifiantDObjet: "1949.6.1"
-    urlDeLaSource: "https://www.nga.gov/collection/art-object-page.37003.html"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-autoportrait-deux-eleves
-    titre: "Self-Portrait with Two Pupils (Autoportrait avec deux eleves)"
-    auteur: "Adelaide Labille-Guiard"
-    anneeDeLOeuvre: 1785
-    anneeDeMortDeLAuteur: 1803
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "53.225.5"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/436840"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-rhinoceros
-    titre: "The Rhinoceros (Le Rhinoceros), gravure sur bois"
-    auteur: "Albrecht Durer"
-    anneeDeLOeuvre: 1515
-    anneeDeMortDeLAuteur: 1528
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "19.73.159"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/356497"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-belles-heures
-    titre: "The Belles Heures of Jean de France, duc de Berry (une page)"
-    auteur: "freres de Limbourg"
-    anneeDeLOeuvre: 1409
-    anneeDeMortDeLAuteur: 1416
-    lieuDeConservation: "Metropolitan Museum of Art, The Cloisters, New York"
-    identifiantDObjet: "54.1.1a, b"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/470306"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-vitrail
-    titre: "Stained Glass Panel (panneau de vitrail), France"
-    auteur: "anonyme"
-    anneeDeLOeuvre: 1270
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "29.156.49"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/26846"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-fresque-romaine
-    titre: "Cubiculum (bedroom) from the Villa of P. Fannius Synistor at Boscoreale (fresques d'une chambre)"
-    auteur: "anonyme"
-    anneeDeLOeuvre: -40
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "03.14.13a-g"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/247017"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-vase-ming
-    titre: "Vase with rabbits (vase en porcelaine bleu et blanc)"
-    auteur: "anonyme"
-    anneeDeLOeuvre: 1580
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "24.80.168"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/49857"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-vase-shang
-    titre: "Ritual tripod cauldron (Ding) (vase rituel en bronze)"
-    auteur: "anonyme"
-    anneeDeLOeuvre: -1046
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "49.135.10"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/61239"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-carreau-iznik
-    titre: "Tile Panel (panneau de carreaux d'Iznik)"
-    auteur: "anonyme"
-    anneeDeLOeuvre: 1620
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "17.190.2087"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/447017"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-bateau-egyptien
-    titre: "Model boat (maquette de bateau en bois peint, tombe de Meketre)"
-    auteur: "anonyme"
-    anneeDeLOeuvre: -1802
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "12.183.4"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/544260"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-amphore-grecque
-    titre: "Terracotta amphora (jar) (amphore attique)"
-    auteur: "anonyme"
-    anneeDeLOeuvre: -510
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "41.162.174"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/254345"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-amerique-ancienne
-    titre: "Chicomecoatl goddess (figure azteque)"
-    auteur: "anonyme"
-    anneeDeLOeuvre: 1521
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "00.5.28"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/307633"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-photo-pyramides
-    titre: "The Great Pyramid and The Great Sphinx (photographie des pyramides de Gizeh)"
-    auteur: "Francis Frith"
-    anneeDeLOeuvre: 1858
-    anneeDeMortDeLAuteur: 1898
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "2005.100.555"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/286141"
-    licenceDeLaReproduction: CC0-1.0
-
   - identifiant: oeuvre-femme-au-luth
     titre: "Young Woman with a Lute (Jeune femme au luth), remplace oeuvre-laitiere (licence refusee)"
     auteur: "Johannes Vermeer"
@@ -273,26 +114,6 @@ oeuvres:
     lieuDeConservation: "Metropolitan Museum of Art, New York"
     identifiantDObjet: "25.110.24"
     urlDeLaSource: "https://www.metmuseum.org/art/collection/search/437880"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-photo-notre-dame
-    titre: "Notre-Dame (facade), photographie"
-    auteur: "Edouard Baldus"
-    anneeDeLOeuvre: 1869
-    anneeDeMortDeLAuteur: 1889
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "1978.671.9.3"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/262468"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-photo-acropole
-    titre: "[Acropolis, Athens, Greece] (vue frontale du Parthenon), photographie"
-    auteur: "James Robertson"
-    anneeDeLOeuvre: 1855
-    anneeDeMortDeLAuteur: 1881
-    lieuDeConservation: "Metropolitan Museum of Art, New York"
-    identifiantDObjet: "2005.100.1353"
-    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/814612"
     licenceDeLaReproduction: CC0-1.0
 
   - identifiant: oeuvre-chambre
@@ -313,14 +134,4 @@ oeuvres:
     lieuDeConservation: "Art Institute of Chicago"
     identifiantDObjet: "1964.336"
     urlDeLaSource: "https://www.artic.edu/artworks/20684/paris-street-rainy-day"
-    licenceDeLaReproduction: CC0-1.0
-
-  - identifiant: oeuvre-grande-jatte
-    titre: "A Sunday on La Grande Jatte - 1884 (Un dimanche apres-midi a l'ile de la Grande Jatte)"
-    auteur: "Georges Seurat"
-    anneeDeLOeuvre: 1886
-    anneeDeMortDeLAuteur: 1891
-    lieuDeConservation: "Art Institute of Chicago"
-    identifiantDObjet: "1926.224"
-    urlDeLaSource: "https://www.artic.edu/artworks/27992/a-sunday-on-la-grande-jatte-1884"
     licenceDeLaReproduction: CC0-1.0
