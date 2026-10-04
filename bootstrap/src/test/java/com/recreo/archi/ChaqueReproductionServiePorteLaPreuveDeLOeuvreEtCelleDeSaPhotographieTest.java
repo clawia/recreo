@@ -70,8 +70,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * {@link #verifier(List, Map, Set, Set)}, qui ne lit ni disque ni classpath : c'est ce qui permet
  * de le mordre sur du materiau mute en memoire.</p>
  *
- * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement</b> (ADR-0051). Depuis le 2026-10-03,
- * vingt-cinq reproductions reelles et leurs vingt-cinq entrees :
+ * <p><b>Ce que ce garde-fou examine aujourd'hui, honnetement</b> (ADR-0051). Depuis le 2026-10-04,
+ * vingt-huit reproductions reelles et leurs vingt-huit entrees :
  * {@link #laPopulationDeReproductionsEstLueEtCeGardeFouLExamine()} affirme que cette population est
  * lue et non vide, et le <b>cliquet exact</b> rend tout changement de sa taille ou de son poids
  * visible dans le diff qui le fait.</p>
@@ -160,11 +160,13 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
      * {@link #leCliquetVautExactementLaTailleDeLaPopulationServie()} exige l'egalite. Methode du
      * poids : somme des tailles en octets des fichiers de {@code static/oeuvres/} de tous les modules
      * declares, mesuree sur le disque par {@code wc -c} et par {@code find -printf '%s'}, qui
-     * concordent ; aucune exclusion.
+     * concordent ; aucune exclusion. Releve le 2026-10-04 (s50, T6) de 25 fichiers et 620 639
+     * octets a 28 fichiers et 692 809 octets, meme methode, apres redimensionnement a 352 px des
+     * trois fichiers que 56b6b77c avait entres a leur resolution source.
      */
-    private static final int REPRODUCTIONS_SERVIES = 25;
+    private static final int REPRODUCTIONS_SERVIES = 28;
 
-    private static final int POIDS_TOTAL_MAXIMUM = 620_639;
+    private static final int POIDS_TOTAL_MAXIMUM = 692_809;
 
     /**
      * T4 d'ADR-0082 (sofia-sm, s49) : l'analogue matriciel du {@code viewBox} des dessins -
