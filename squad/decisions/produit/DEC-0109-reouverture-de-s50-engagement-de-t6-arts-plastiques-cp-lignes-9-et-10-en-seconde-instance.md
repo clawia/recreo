@@ -442,3 +442,35 @@ dans `cp-decrire-une-oeuvre.yaml`, en meme temps que les motifs 1, 3 et le point
 `theo-archi`. Le vivier reste a huit oeuvres, le paquet a huit items, `nombreDeManches` reste a 7.
 Aucune ligne de matrice ne bouge (`ART-CP-09` reste `non couvert` jusqu'au Done pedagogique du
 second passage).
+
+## 12. Amendement du 2026-10-04 (`camille-po`) : correction d'une citation fautive en section 11, point 3 - le motif reel du visage de l'Arcimboldo
+
+**Ce qui m'est signale.** `nadia-prof` a signale deux fois, au second passage puis au troisieme
+passage (`squad/conformite/FICHE-bandit-manchot-decrire-une-oeuvre-cp.md`, sections 12.7 point 2 et
+13.4), que le point 3 de la section 11 ci-dessus cite sa propre phrase du premier passage sur
+`oeuvre-quatre-saisons` (*"rien ne permet de deviner qu'un visage est fait de fruits plutot que de
+pierres"*) alors qu'elle l'a elle-meme corrigee comme fausse dans sa section 12.2 : **le visage de
+ce tableau n'est pas fait de fruits, il est fait d'un tronc d'arbre** (ecorce, noeuds, moignons de
+branches coupees) ; les fruits (raisin, pommes, cerises) et le lierre forment le haut de la tete ;
+aucun legume n'est peint. Sa fiche, troisieme passage, confirme ce fait en jouant (section 13,
+indice servi *"Regarde bien l'ecorce, les noeuds et les branches coupees de ce visage."*, verifie
+exact).
+
+**Je corrige la citation, sans effacer le texte original du point 3 ci-dessus** (section 11), pour
+que la trajectoire de l'erreur reste lisible, meme convention que les amendements precedents de ce
+depot. Le fait exact, a lire a sa place : *"`nadia-prof` avait deja teste une forme de remplacement
+et l'avait jugee recevable : sa fiche (section 3 du premier passage) ecrivait qu'un item demandant
+'avec quoi ce visage est-il fait ?' passerait son test de premiere reponse. Cette phrase du premier
+passage reposait sur un constat errone (le visage serait fait de fruits) que `nadia-prof` a
+elle-meme corrige en section 12.2 de sa fiche : le visage est en realite fait d'un tronc d'arbre, et
+aucun legume n'est peint."*
+
+**Ce que cette correction ne change pas.** Ma decision de la section 11 (l'Arcimboldo reste au
+paquet, reecrit, plutot que retire) reste valide : elle ne dependait pas du detail de ce dont le
+visage est fait, mais du cout nul de la reecriture (motif 1), du risque sur `ART-5` (motif 2) et de
+la recevabilite de principe d'une question sur les materiaux (motif 3, dont seule la justification
+etait erronee). L'item finalement servi et valide au troisieme passage demande *"avec quoi ce
+visage est-il fait ?"*, reponse *"du bois"*, exactement la forme que cette section engageait, avec
+un contenu exact plutot que la citation fautive.
+
+**Identifiants** : aucun neuf, aucun renomme.

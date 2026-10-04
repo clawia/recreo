@@ -4055,6 +4055,43 @@ Reserve neuve, non bloquante, ouverte sur ce seul passage.
   une `DEC` d'ouverture de sprint.
 - **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
 
+### Story de correction differee - reserve `HOM-CE1-R1` : les prenoms de "Les bons mots" viennent tous du meme repertoire
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-homophones-ce1` a s50, instance A, et prononce
+**VALIDE SOUS RESERVE** sur `FRA-CE1-16`
+(`squad/conformite/FICHE-bandit-manchot-homophones-ce1.md`, section 4). Reserve neuve, non
+bloquante, ouverte sur ce premier passage : les sept prenoms du paquet (*Léa*, *Tom*, *Nina*,
+*Hugo*, *Jade*, *Lucas*, *Zoé*) viennent tous du repertoire des prenoms les plus donnes en France
+depuis vingt ans ; un enfant qui s'appelle Inès, Moussa ou Yanis ne se retrouve dans aucune phrase.
+L'equilibre de genre (sept occurrences, six masculins et sept feminins a un pres) et l'absence de
+role distribue par genre sont deja tenus et ne sont pas en cause.
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Les bons mots", je veux que les phrases mettent
+  en scene des enfants aux prenoms d'origines variees, afin de pouvoir m'y retrouver quel que soit
+  mon propre prenom.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Orthographe et grammaire",
+  `FRA-CE1-16` (`squad/programme/francais/competences-ce1.md`) - ligne deja `couvert-valide` depuis
+  s50, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`HOM-CE1-R1`** : etant donne les sept prenoms du paquet, quand on les relit, alors au moins
+    trois d'entre eux sont remplaces par des prenoms d'autres origines (exemples non imposes :
+    *Inès*, *Moussa*, *Mei*, *Yanis*, *Kofi*, *Salma*), et l'equilibre de genre du paquet reste a un
+    pres.
+  - Etant donne les phrases dont le prenom a change, quand on les relit, alors elles ne changent pas
+    autrement : meme trou, meme forme attendue, meme indice, aucun role nouveau distribue par genre.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`HOM-CE1-1` a `HOM-CE1-3`, `TRV-CE1-1` a `TRV-CE1-5`, `TRV-CE1-7`, `LON-CE1-1`, `LON-CE1-2`,
+    `LON-CE1-5`, `FER-1`, `FER-2`), alors elles restent toutes tenues : cette story ne touche que les
+    prenoms des phrases, sans toucher le trou, la forme attendue ni la substitution.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'elle rejoue le paquet corrige et confirme qu'aucun stereotype n'est introduit
+    par les prenoms nouveaux et qu'aucun role n'est distribue par genre.
+- **Lien decision** : aucune `DEC` dediee a ce jour ; reserve ouverte par `nadia-prof` le
+  2026-10-04 (`squad/conformite/FICHE-bandit-manchot-homophones-ce1.md`, instance A, section 4),
+  identifiant alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4. A router par une
+  `DEC` d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning par `sofia-sm`, sprint futur.
+
 ### Story neuve - `S50-ART` : decrire une oeuvre (`ART-CP-09`)
 
 **Contexte.** `DEC-0109` engage `T6` (`ADR-0082`). Le registre de 28 oeuvres est complet
@@ -4075,8 +4112,11 @@ a l'octet depuis l'historique Git le jour ou `ART-CM1-07`, `HDA-CM1-02` ou `ART-
 reellement.
 
 - **Besoin** : en tant qu'eleve de CP, je veux regarder une reproduction d'oeuvre et dire ce que
-  j'y vois - le sujet, les formes, la matiere -, afin d'apprendre a decrire une oeuvre d'art avec
-  mes propres mots.
+  j'y vois - le sujet et la matiere -, afin d'apprendre a decrire une oeuvre d'art avec mes propres
+  mots. *Correction du 2026-10-04 : cette ligne disait "le sujet, les formes, la matiere", signale
+  comme non bloquant mais a corriger par `nadia-prof` (troisieme passage,
+  `squad/conformite/FICHE-bandit-manchot-decrire-une-oeuvre-cp.md`, section 13.4) - "formes" ne
+  correspond plus a ce que le paquet sert.*
 - **Competence programme visee** : arts plastiques, CP (cycle 2), domaine "Se reperer dans les
   domaines lies aux arts plastiques", `ART-CP-09` (*"Decrire une oeuvre : dire ce qu'on y voit
   (sujet, couleurs, formes, materiaux)"*, `squad/programme/arts-plastiques/competences-cp.md`,
