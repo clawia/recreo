@@ -292,3 +292,99 @@ apres l'ecriture du contenu.
 `nadia-prof` (Q1, Q2, Q4, Q5 de l'avis). Il ne prononce aucun Done. Il n'effectue pas lui-meme le
 retrait des fichiers : c'est le developpeur affecte par `sofia-sm` qui l'execute, dans le commit du
 paquet (A2).
+
+## 10. Amendement du 2026-10-04 : reponse a l'arbitrage prealable de `nadia-prof` sur `S50-ART` (`squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md`) - perimetre reduit a `ART-CP-09` seule, vivier final a huit oeuvres, tarif inchange
+
+**Ce qui m'est pose.** `nadia-prof` a rendu son arbitrage prealable (`dd98cfe8`) : `ART-CP-10` est
+refusee sous forme texte (Q1 - rapprocher deux oeuvres exige de les voir en meme temps, une
+mecanique neuve hors du perimetre deja chiffre de `T6`) ; `ART-CP-09` reste faisable sans le mot
+"couleurs" dans son critere (Q4) ; elle me route deux points (section "Ce qui bloque encore", lignes
+1 et 2) : reduire formellement le perimetre, et decider du sort des trois oeuvres propres a
+`ART-CP-10`.
+
+### 10.1 Perimetre - `S50-ART` ne porte plus que `ART-CP-09`
+
+**`ART-CP-10` sort du perimetre engage par la section 1 ci-dessus.** Elle reste `non couvert`
+(constructible, jamais `non couvrable en l'etat` - `nadia-prof` le redit elle-meme dans son
+arbitrage). Motif : la mecanique qui montre deux oeuvres en meme temps n'existe pas et n'est pas
+chiffree dans `T6` (`ADR-0082`) ; l'engager demanderait un `ADR` prealable de `theo-archi`, que je
+ne demande pas aujourd'hui. Le besoin et les criteres d'acceptation de `S50-ART` sont corriges en
+consequence dans `docs/backlog/backlog.md` (section 11 ci-dessous).
+
+### 10.2 Tarif - inchange a 2,0, sur le meme principe que celui qui avait fait fusionner les deux lignes
+
+**Je ne baisse pas le tarif.** La section 1 de ce document justifiait deja de ne pas separer les
+deux lignes par le fait que *"le cout [...] est identique a engager une ligne ou les deux, parce que
+l'unite de tarif est le lot de matiere et de niveau, pas la ligne"* (`ARBITRAGE-PREALABLE-s28`,
+section 4.1 : *"le nombre de fichiers ne compte pas"* ; section 4.4, exemple verifie : le second lot
+de questionner le monde CP ferme trois lignes au meme tarif qu'un lot qui n'en fermerait qu'une).
+**Ce principe joue dans les deux sens** : une ligne en moins dans le lot ne baisse pas son prix, de
+la meme maniere que deux lignes au lieu d'une ne l'augmentaient pas. Le lot reste un seul paquet
+d'arts plastiques CP, jusqu'a vingt items, matiere non source : **1,5 + 0,5 (lot illustre, `REC-1`)
+= 2,0**, inchange.
+
+### 10.3 Sort des trois oeuvres propres a `ART-CP-10` - retirees avec les dix-sept, meme regime `O1`
+
+**Fait verifie avant de trancher, pas repris de confiance.** `nadia-prof` admet les trois oeuvres
+(`oeuvre-champ-de-ble`, `oeuvre-averse-sur-le-pont`, `oeuvre-jeune-femme-aiguiere`) dans le vivier
+de `ART-CP-09` : elle le dit explicitement, c'est une permission pedagogique, pas une obligation -
+*"les garder dans le paquet ou les retirer avec les dix-sept autres est le choix de `camille-po` ;
+les deux sont recevables pour moi"*. J'ai verifie, dans `squad/corpus/CHOIX-oeuvres-candidates-T5.md`
+(sections 5 et 8.4), si ces trois oeuvres servent une autre ligne que `ART-CP-10` :
+
+- `oeuvre-averse-sur-le-pont` et `oeuvre-jeune-femme-aiguiere` ne figurent dans **aucune** autre
+  ligne du tableau de repartition (`ART-CM1-07`, `ART-CM1-08`, `HDA-CM1-01` a `HDA-CM1-06`) : leur
+  seul usage prevu etait la paire de `ART-CP-10`.
+- `oeuvre-champ-de-ble` figure aussi dans `ART-CM1-07` et `HDA-CM1-02`, deux lignes de CM1 hors
+  perimetre de s50 - **mais cela ne la distingue pas des dix-sept deja retirees sous `O1`** :
+  `oeuvre-grande-jatte`, par exemple, figure elle aussi dans `ART-CM1-07` et a ete retiree quand meme
+  (section 9 ci-dessus). Le critere d'`O1` n'a jamais ete "aucun usage futur ailleurs", il a ete "pas
+  d'usage dans le paquet qui s'ecrit maintenant" : un usage a `T7` ou `T8` se sert alors, par le meme
+  geste de restauration Git, que l'oeuvre ait dormi un sprint ou vingt.
+
+**Ma decision : les trois oeuvres suivent le regime `O1` de la section 9, pas d'exception.** Je ne
+les admets pas dans le vivier de `ART-CP-09`. Motifs :
+
+1. **Le vivier de huit oeuvres d'`ART-CP-09` est deja complet par la conception meme de
+   `nadia-prof`** : trois continents, du Moyen Empire egyptien a 1889, une artiste femme
+   (`CHOIX-oeuvres-candidates-T5.md`, section 5, ligne `ART-CP-09`). Les trois oeuvres en question
+   n'ont pas ete choisies pour completer cette ligne : elles ont ete choisies **pour la propriete de
+   paire** qu'exige `ART-CP-10` (meme touche, meme maniere de dessiner l'eau, meme lumiere de
+   fenetre) - une propriete sans objet des lors que la mecanique de rapprochement n'est pas engagee.
+   Les ajouter gonflerait le vivier sans servir un besoin non couvert de la ligne.
+2. **Traiter les trois a part des dix-sept creerait une exception non justifiee.** Rien ne distingue
+   leur statut : comme les dix-sept, elles sont hors du paquet qui s'ecrit aujourd'hui, et comme pour
+   `oeuvre-grande-jatte`, un usage futur dans une autre matiere ne les a pas sauvees de la retraite.
+   Une regle qui ferait une exception pour trois noms sur vingt, au seul motif qu'ils figuraient
+   dans un decompte provisoire avant que le perimetre ne change, ne serait pas une regle.
+3. **Le cout de la retraite est nul**, deja mesure en section 9 pour les dix-sept : restauration a
+   l'octet depuis l'historique Git (`56b6b77c` et les commits anterieurs du chantier de sourcing),
+   aucune verification de licence perdue ni a refaire, aucun `ADR`, aucun garde-fou nouveau.
+
+**Consequence chiffree.** Le commit qui livre `S50-ART` retire **vingt** fichiers et entrees (les
+dix-sept de la section 9, plus ces trois) au lieu de dix-sept, et le registre comme le disque
+reviennent a **huit** entrees apres ce commit - exactement le vivier d'`ART-CP-09`. `theo-archi`
+recalcule `REPRODUCTIONS_SERVIES` et `POIDS_TOTAL_MAXIMUM` sur ces huit fichiers, comme la section 9
+le demandait deja pour les dix-sept (la mecanique ne change pas, seul le compte change).
+
+### 10.4 Marge de l'instance B - inchangee, 2,0/5,0, marge 3,0
+
+Le tarif ne bouge pas (10.2) : la marge de l'instance B ouverte en section 3 reste **2,0/5,0, marge
+3,0**. Une seule ligne au lieu de deux, un vivier de huit oeuvres au lieu de onze, ne changent rien
+au prix du lot ni, par consequent, a cette marge. Je le verifie explicitement parce que
+`nadia-prof` me le demandait implicitement en reduisant le perimetre, pas parce qu'un calcul
+different etait plausible.
+
+### 10.5 Matrice - motif de la ligne `ART-CP-10` corrige
+
+`squad/programme/MATRICE-couverture.md` (ligne concernant `ART-CP-10`) est corrigee pour reprendre
+le motif exact de `nadia-prof` (vue simultanee requise), a la place de l'ancien motif ("meme motif
+que la ligne precedente") qu'elle a elle-meme qualifie d'inexact. Aucun statut ne bouge : la ligne
+reste `non couvert`, aucun Done n'est prononce par ce document.
+
+### 10.6 Ce que cet amendement ne fait pas
+
+Il ne rouvre aucune question pedagogique deja tranchee par `nadia-prof` (le refus d'`ART-CP-10` en
+texte tient, sa permission d'admettre les trois oeuvres dans le vivier d'`ART-CP-09` reste une
+permission que je choisis de ne pas exercer, pour les motifs de 10.3). Il ne prononce aucun Done,
+technique ou pedagogique. Il ne modifie aucun code, aucun test.
