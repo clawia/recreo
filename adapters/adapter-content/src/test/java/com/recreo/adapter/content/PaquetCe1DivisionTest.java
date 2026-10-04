@@ -224,6 +224,20 @@ class PaquetCe1DivisionTest {
         }
     }
 
+    /** DIV-CE1-R1 : reserve levee le 2026-10-03 (avis de faisabilite s50, section 7, Q2). */
+    @Test
+    void chaqueItemPorteLeDiviseurRecopieParmiSesDistracteurs() {
+        for (Question item : tousLesItems()) {
+            DividendeEtDiviseur nombres = dividendeEtDiviseur(item);
+            List<Integer> distracteurs =
+                    item.distracteurs().stream().map(Integer::parseInt).toList();
+            assertThat(distracteurs)
+                    .as("item '%s' : le diviseur recopie '%d' figure parmi les distracteurs"
+                            + " (DIV-CE1-R1)", item.enonce(), nombres.b())
+                    .contains(nombres.b());
+        }
+    }
+
     @Test
     void aucunItemNePorteDeSupportVisuelEtLeDividendeDesigneUneQuantiteDObjetsNommes() {
         for (Question item : tousLesItems()) {

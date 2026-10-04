@@ -79,7 +79,7 @@ items:
     indice: "Distribue une bille à la fois à chacun des trois enfants."
   - enonce: "15 images sont partagées entre 5 amis. Combien chacun en a-t-il ?"
     bonneReponse: "3"
-    distracteurs: ["10", "75"]
+    distracteurs: ["10", "5"]
     indice: "Distribue une image à la fois à chacun des cinq amis."
   - enonce: "24 cartes sont partagées entre 4 joueurs. Combien chacun en a-t-il ?"
     bonneReponse: "6"
@@ -87,11 +87,11 @@ items:
     indice: "Distribue une carte à la fois à chacun des quatre joueurs."
   - enonce: "27 autocollants sont partagés entre 9 enfants. Combien chacun en a-t-il ?"
     bonneReponse: "3"
-    distracteurs: ["18", "243"]
+    distracteurs: ["18", "9"]
     indice: "Distribue un autocollant à la fois à chacun des neuf enfants."
   - enonce: "30 billes sont partagées entre 6 amis. Combien chacun en a-t-il ?"
     bonneReponse: "5"
-    distracteurs: ["24", "180"]
+    distracteurs: ["24", "6"]
     indice: "Distribue une bille à la fois à chacun des six amis."
   - enonce: "36 crayons sont partagés entre 4 classes. Combien chaque classe en a-t-elle ?"
     bonneReponse: "9"
@@ -99,11 +99,11 @@ items:
     indice: "Distribue un crayon à la fois à chacune des quatre classes."
   - enonce: "40 timbres sont partagés entre 8 collectionneurs. Combien chacun en a-t-il ?"
     bonneReponse: "5"
-    distracteurs: ["32", "320"]
+    distracteurs: ["32", "8"]
     indice: "Distribue un timbre à la fois à chacun des huit collectionneurs."
   - enonce: "45 perles sont partagées entre 9 enfants. Combien chacun en a-t-il ?"
     bonneReponse: "5"
-    distracteurs: ["36", "405"]
+    distracteurs: ["36", "9"]
     indice: "Distribue une perle à la fois à chacun des neuf enfants."
   - enonce: "21 pommes sont rangées par 3 dans des paniers. Combien de paniers peut-on faire ?"
     bonneReponse: "7"
@@ -123,13 +123,13 @@ items:
     indice: "Compte de 6 en 6 jusqu'à 42."
   - enonce: "48 biscuits sont rangés par 8 dans des boîtes. Combien de boîtes peut-on faire ?"
     bonneReponse: "6"
-    distracteurs: ["40", "384"]
+    distracteurs: ["40", "8"]
     indice: "Compte de 8 en 8 jusqu'à 48."
   - enonce: "54 coquillages sont rangés par 9 dans des sacs. Combien de sacs peut-on faire ?"
     bonneReponse: "6"
-    distracteurs: ["45", "486"]
+    distracteurs: ["45", "9"]
     indice: "Compte de 9 en 9 jusqu'à 54."
   - enonce: "60 jetons sont rangés par 10 dans des pochettes. Combien de pochettes peut-on faire ?"
     bonneReponse: "6"
-    distracteurs: ["50", "600"]
+    distracteurs: ["50", "10"]
     indice: "Compte de 10 en 10 jusqu'à 60."
