@@ -4083,8 +4083,11 @@ reellement.
   ligne 45) - ligne `non couvert` dans `squad/programme/MATRICE-couverture.md` (ligne 2053).
   **Les couleurs ne sont pas servies** : `ART-1` (aucun item ne fait porter la reponse par une
   couleur percue) l'emporte ici sur l'intitule du referentiel, arbitrage de `nadia-prof` du
-  2026-10-04 (Q4 de l'arbitrage prealable) - si la ligne ferme, elle ferme avec la mention *"sujet,
-  formes et materiaux seuls ; les couleurs d'une oeuvre ne sont pas servies (`ART-1`)"*.
+  2026-10-04 (Q4 de l'arbitrage prealable) - si la ligne ferme, elle ferme avec la mention *"sujet
+  et materiaux seuls ; les couleurs d'une oeuvre ne sont pas servies (`ART-1`)"*. *"Formes"* est
+  retiree de cette mention au second passage
+  (`squad/conformite/FICHE-bandit-manchot-decrire-une-oeuvre-cp.md`, motif 4) : aucun item ne sert
+  plus cette forme de reconnaissance.
 - **Criteres d'acceptation** :
   - Etant donne le paquet servi, quand on lit ses items, alors la mecanique est
     `bandit-manchot` et la forme d'item est `question` (choix parmi des propositions en texte) :

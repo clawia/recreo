@@ -28,10 +28,12 @@
 #   - materiau (deux items) : oeuvre-hippopotame porte la distinction recevable au CP - celle qui se
 #     voit, un objet qu'on peut tenir ou poser contre une image peinte (arbitrage prealable, Q4,
 #     regle 3 pour le developpeur) - jamais "faience", "toile" ni "estampe", hors vocabulaire de CP ;
-#     oeuvre-quatre-saisons porte, le visage deja nomme dans l'enonce, avec quoi il est fait (des
-#     fruits et des legumes). Reecriture du second passage (DEC-0109 section 11, fiche de
-#     nadia-prof, motif 2) : la forme seule (un visage trouve par elimination) ne se voyait pas a
-#     176 px.
+#     oeuvre-quatre-saisons porte, le visage deja nomme dans l'enonce, avec quoi il est fait (du
+#     bois). Reecriture du troisieme passage
+#     (squad/conformite/FICHE-bandit-manchot-decrire-une-oeuvre-cp.md, section 12.6 - motif 2,
+#     maintenu au second passage, leve ici) : la reponse "des fruits et des legumes" du second
+#     passage etait fausse pour ce tableau - le visage est fait d'un tronc d'arbre (ecorce, noeuds,
+#     branches coupees), seul le haut de la tete est fait de fruits, et aucun legume n'y est peint.
 #
 # Q2 de l'arbitrage prealable (texte visible dans une reproduction) : oeuvre-grande-vague et
 # oeuvre-rue-sous-la-pluie portent un texte visible (cartouche japonais, trace de signature) jugé
@@ -80,9 +82,9 @@ items:
   - enonce: "Cette œuvre montre un visage. Avec quoi ce visage est-il fait ?"
     illustration: oeuvre-quatre-saisons
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
-    bonneReponse: "des fruits et des légumes"
+    bonneReponse: "du bois"
     distracteurs: ["des pierres", "du papier"]
-    indice: "Regarde bien les fruits et les légumes qui forment ce visage."
+    indice: "Regarde bien l'écorce, les nœuds et les branches coupées de ce visage."
   - enonce: "Que vois-tu sur cette œuvre ?"
     illustration: oeuvre-grande-vague
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
