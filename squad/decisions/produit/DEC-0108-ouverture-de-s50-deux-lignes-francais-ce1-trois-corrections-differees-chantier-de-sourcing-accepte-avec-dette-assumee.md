@@ -244,3 +244,73 @@ volume engageable ce sprint ne le demande pas.
   corrections : travail de `theo-archi`.
 - Elle ne rouvre pas le refus de `nadia-prof` sur le remplacement des trois oeuvres bloquees : il
   tient (section 2).
+
+## 9. Amendement du 2026-10-04 (cloture de s50) : le rouge de `T6` bloque la porte technique de
+## l'ensemble du sprint, pas seulement du chantier de sourcing
+
+**Fait mesure**, verifie au disque avant d'ecrire cette section, pas repris de confiance :
+
+- `yanis-qa` (`squad/sprints/s50-francais-ce1-sourcing-bloque-par-cloudflare/rapport-qualite.md`,
+  commit `06508d48`) mesure trois jobs verts (`prefixes`, `chemins`, `outils`) et un job rouge
+  (`build`), avec exactement les deux echecs de la dette `T6` deja nommee en section 1, rien
+  d'autre. Son verdict litteral : *"Le Done technique de s50 n'est pas prononce vert [...] La porte
+  technique de s50 n'est pas verte : un job sur quatre (`build`) est rouge."*
+- `theo-archi` (`confirmation-archunit.md`, commit `ce72dc03`) confirme qu'aucun des cinq commits de
+  contenu et de correction de s50 (`FRA-CE1-02`, `FRA-CE1-16`, `GRC-CE1-R1`, `SOU-CE1-R1`,
+  `DIV-CE1-R1`) ne touche `domain`, `application` ni aucun `src/main/java` : `git diff --name-only`
+  entre `03d152b0` et `6eded9d1` sur ces perimetres est vide. Aucun des cinq ne cause le rouge.
+- Chronologie verifiee par `git log` : le commit qui fait apparaitre les deux echecs (`8f6ee008`,
+  T4 - cliquet releve sur les 25 reproductions) precede l'ouverture formelle de s50 (`1dc095ea`,
+  ce document) d'un seul commit, le meme jour. Le rapport de cloture de s49
+  (`squad/sprints/s49-corrections-s48-sourcing-oeuvres-et-ouverture-francais-ce1/rapport-qualite.md`,
+  ligne 23) mesure **`BUILD SUCCESS`** a la cloture de s49, avant `8f6ee008`. Le rouge est donc
+  apparu dans l'intervalle entre la cloture de s49 et l'ouverture de s50, par un commit qu'aucune des
+  cinq stories de s50 n'a produit - confirme, pas suppose.
+
+**Ce que la section 1 avait deja tranche, et ce qu'elle n'avait pas tranche.** La section 1 accepte
+que *le commit du chantier de sourcing lui-meme* ne pretende a aucun Done : *"aucune story ni ligne
+de `MATRICE-couverture.md` n'est close par ce commit"*. Elle ne dit rien, et je n'ai pas le mandat
+de le dire a sa place, sur le sort des **cinq autres stories** qui partagent la meme tete de branche
+que ce commit au moment ou la CI les mesure.
+
+**Ma decision : le rouge de `T6` n'est pas cantonne au chantier de sourcing, il bloque la porte
+technique de l'ensemble du sprint**, tant qu'il reste rouge. Motifs :
+
+- `CLAUDE.md` definit le Done technique comme *"CI verte, c'est-a-dire tous les jobs"*, sans
+  exception nommee pour une dette deja assumee ailleurs dans l'arbre. Le job `build` mesure le
+  reacteur complet a une tete de branche donnee ; il n'existe dans ce depot aucun mecanisme de
+  Done technique decompose par story a l'interieur d'un meme `mvn verify`. Je ne peux pas inventer
+  un tel decoupage sans redefinir une regle que je ne detiens pas seule - cette meme regle a deja ete
+  resserree une fois, par `sofia-sm` en s31, exactement pour empecher qu'un agent restreigne "CI
+  verte" a sa propre commodite.
+- Le mandat de `nadia-prof` conditionne litteralement son intervention : *"Elle intervient apres le
+  Done technique (CI verte)"* (`.claude/agents/nadia-prof.md`, ligne 8), sans clause d'exception pour
+  une dette nommee et acceptee par ailleurs.
+- Le precedent existe deja dans ce depot, dans l'autre sens : `DEC-0008` (section citee dans
+  `docs/backlog/backlog.md`) traite un increment qui n'atteint pas encore le Done technique comme un
+  increment qui **attend** avant l'audit de `nadia-prof`, pas comme un increment dont on invente un
+  Done partiel pour le faire passer quand meme.
+
+**Le cout reel de cette decision, nomme plutot que tu.** Les cinq stories de s50
+(`FRA-CE1-02`, `FRA-CE1-16`, `GRC-CE1-R1`, `SOU-CE1-R1`, `DIV-CE1-R1`) sont techniquement propres -
+aucune n'introduit de regression, confirme par `theo-archi` - mais elles ne peuvent pas, en l'etat,
+etre presentees a `nadia-prof` comme ayant franchi le Done technique prealable que son propre mandat
+exige. Tant que `T6` reste rouge, c'est vrai de n'importe quel contenu futur sur cette branche, pas
+seulement de s50 : la dette assumee en section 1 bloque la porte technique de tout increment tant
+qu'elle n'est pas levee. Ce cout n'est pas cree par ce document, il est une consequence mecanique de
+l'alarme qu'`ADR-0082` section 7 a armee a l'avance et que la section 1 a deja acceptee ; ce document
+se contente de la nommer au lieu de la laisser decouverte au moment de la review.
+
+**Ce que je route, parce que ce n'est pas une question que je tranche.** Si la squad veut que des
+stories propres puissent atteindre leur Done technique et passer devant `nadia-prof` sans attendre la
+levee de `T6` (elle-meme hors du controle de la squad, bloquee par Cloudflare - section 2), la
+question de savoir **comment** scoper ou isoler cette dette dans la CI (profil distinct, perimetre de
+test reduit, tout autre mecanisme) sans rouvrir l'alarme qu'`ADR-0082` a voulue est une question
+d'architecture. Je ne la tranche pas : je la route a `sofia-sm`, qui route a `theo-archi`. Tant
+qu'aucune reponse technique n'existe, le rouge de `build` reste bloquant pour l'ensemble du sprint,
+au meme titre que pour le chantier de sourcing lui-meme.
+
+**Ce que cet amendement ne fait pas.** Il ne revient pas sur l'acceptation du commit de sourcing
+(section 1), ni sur le report de `T6` hors perimetre de s50 (section 2) : les deux tiennent. Il ne
+prononce aucun Done, technique ou pedagogique, sur aucune des cinq stories. Il ne decide d'aucune
+solution technique : il nomme le besoin et le route.
