@@ -199,3 +199,15 @@ cycle 3) n'est pas due : aucune ligne de CM1 n'entre dans cette composition.
 Aucune. Ce planning est une proposition ; le perimetre de s50 reste a geler par une `DEC` de
 `camille-po`, suivie d'un avis de faisabilite de `theo-archi`. Je reviens affecter nominativement
 les developpeurs des que ces deux documents existent dans le depot.
+
+## Amendement du 2026-10-04 (`sofia-sm`, cloture) : horodatage de debut precise a l'heure
+
+La section 0 ne portait que la date (*"2026-10-03 (UTC+02:00)"*), sans heure : insuffisant pour
+`outils/rapport-tokens.py`, qui exige une heure sur la ligne *"Horodatage de debut"* pour situer la
+fenetre du sprint (`RE_HORODATAGE`, groupe `HH:MM` obligatoire). Verifie au disque, pas invente :
+`git log --follow --format=%H %ad --date=iso-strict -- squad/sprints/s50-francais-ce1-sourcing-bloque-par-cloudflare/planning.md`
+rend un seul commit, `343f86c7`, horodate `2026-10-03T21:53:14+02:00` - le commit qui a cree ce
+fichier. Je ne touche pas au texte original ci-dessus : cette ligne complete la mesure, elle ne la
+corrige pas.
+
+**Horodatage de debut : 2026-10-03 21:53 (UTC+02:00).**

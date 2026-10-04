@@ -924,6 +924,24 @@ Trace, pour qui voudrait rapprocher une autre occurrence de celle-ci : `invalid_
 occurrence a ce jour, non reproduite ; elle est ecrite ici parce qu'une seule occurrence suffit a
 faire perdre un lot de travail a qui ne sait pas ou le retrouver.
 
+**Chiffrer un chantier contre un garde-fou existant verifie chaque clause opposable du garde-fou,
+pas seulement la plus visible** (amendement s50, retro de s50). A s50, `camille-po` a engage `T6`
+(arts plastiques CP) en sous-estimant son cout reel a deux reprises, sur deux clauses distinctes du
+meme garde-fou et de la meme ligne de competence : une fois en lisant *"aucune reproduction ne
+dort"* comme *"au moins un identifiant declare"*, quand le code boucle sur **chaque** reproduction
+servie - decouvert par `theo-archi` en rendant son avis de faisabilite, pas avant ; une fois en
+supposant que `ART-CP-10` reutilisait la forme d'item existante, quand elle exigeait en realite de
+montrer deux oeuvres a la fois, une mecanique non engagee - decouvert par l'arbitrage prealable de
+`nadia-prof`, pas avant. Les deux ecarts partagent un motif : l'estimation initiale s'est arretee a
+la lecture la plus naturelle d'une regle ou d'un libelle, sans la confronter au code qui l'applique
+(pour un garde-fou) ou a l'autorite qui l'a ecrite (pour une competence pedagogique). **Avant de
+chiffrer un contenu contre un garde-fou technique, on relit le garde-fou dans le code, pas dans sa
+paraphrase** - au meme titre qu'un chiffre de test se reverifie et ne se relaie pas
+(`squad/README.md`, lecon deja ecrite pour les chiffres, etendue ici aux clauses d'un garde-fou).
+Le cout de ce sprint est reste maitrisable (retrait d'un vivier restaurable a l'octet, reduction de
+perimetre avant tout code) ; rien ne garantit qu'il le reste si la clause manquee touchait un
+chantier deja code plutot qu'un registre de contenu.
+
 ## 10. Frontieres entre agents
 
 - Camille ne decide pas la technique. Theo ne decide pas le produit ni la pedagogie.
