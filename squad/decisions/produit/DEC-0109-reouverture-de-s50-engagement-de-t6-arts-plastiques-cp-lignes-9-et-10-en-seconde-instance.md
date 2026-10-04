@@ -388,3 +388,57 @@ Il ne rouvre aucune question pedagogique deja tranchee par `nadia-prof` (le refu
 texte tient, sa permission d'admettre les trois oeuvres dans le vivier d'`ART-CP-09` reste une
 permission que je choisis de ne pas exercer, pour les motifs de 10.3). Il ne prononce aucun Done,
 technique ou pedagogique. Il ne modifie aucun code, aucun test.
+
+## 11. Amendement du 2026-10-04 : reponse au refus pedagogique de premier passage sur `S50-ART` (`squad/conformite/FICHE-bandit-manchot-decrire-une-oeuvre-cp.md`, section 10, point 2) - l'Arcimboldo reste au paquet, reecrit
+
+**Ce qui m'est pose.** `nadia-prof` refuse le premier passage (`DEC-0109` section 3, `655b319b`),
+quatre motifs, tous correctifs dans le seul fichier de contenu. Le motif 2 porte sur
+`oeuvre-quatre-saisons` : la reponse attendue (*un visage*) ne se voit pas a 176 px, l'enfant la
+trouve par elimination. Elle route deux options sans trancher (fiche section 10, point 2) :
+reecrire l'item sous la forme *"avec quoi ce visage est-il fait ?"* (reponse : fruits et legumes,
+visibles a 176 px - forme qu'elle a deja testee et qui passerait son audit, fiche section 3), ou
+retirer l'oeuvre, ce qui romprait l'inegalite stricte d'`ADR-0023`
+(`ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest`) et le critere "huit items, huit oeuvres" de
+`S50-ART`, et demanderait de choisir entre baisser `nombreDeManches` a 6, remplacer l'oeuvre
+(a repasser devant elle), ou ajouter un second item sur une oeuvre deja servie - avec un
+recalcul des cliquets de poids et d'illustrations par `theo-archi` dans les trois cas.
+
+**Ma decision : l'Arcimboldo reste au paquet, reecrit (option A du routage).** Aucune des trois
+sous-options du retrait n'est engagee.
+
+Motifs :
+
+1. **Cout nul contre cout non nul.** La reecriture se fait dans le seul fichier
+   `cp-decrire-une-oeuvre.yaml` deja en jeu pour les trois autres motifs du meme refus (fiche
+   section 10, point 1) : un seul passage du developpeur, aucun fichier de poids ni de cliquet ne
+   bouge, le vivier reste a huit oeuvres et le paquet a huit items pour sept manches. Le retrait
+   n'est gratuit sur aucune de ses trois formes : les deux premieres chiffrent un geste de
+   `theo-archi` (recalcul de `REPRODUCTIONS_SERVIES`, `POIDS_TOTAL_MAXIMUM`,
+   `ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION`) et, pour le remplacement, un second passage complet de
+   `nadia-prof` sur une oeuvre neuve (fidelite, 176 px, `ART-5`) ; la troisieme change la forme du
+   jeu (une oeuvre revue deux fois) sans qu'aucune des deux parties n'ait demande cette forme.
+2. **Le retrait met en risque une propriete du vivier que `nadia-prof` elle-meme signale comme
+   fragile.** Sa fiche (section 8) note que le vivier actuel tient `ART-5` "au plus juste", avec
+   une seule artiste femme et l'Egyptienne et la Japonaise comme seuls representants hors Europe -
+   et qu'"une oeuvre retiree ou remplacee ne doit pas oter l'egyptienne, la japonaise ni celle de
+   Rosa Bonheur". L'Arcimboldo n'est aucune des trois, mais reduire le vivier a sept ou le
+   completer d'une oeuvre non choisie pour cette ligne (section 10.3 ci-dessus : les candidates
+   disponibles ont ete choisies pour une autre propriete, celle de la paire d'`ART-CP-10`, sans
+   objet ici) rouvre une question de composition que l'option A ne pose pas.
+3. **`nadia-prof` a deja teste la forme de remplacement et l'a jugee recevable.** Sa fiche
+   (section 3) ecrit explicitement qu'un item demandant *"avec quoi ce visage est-il fait ?"*
+   passerait son test de premiere reponse, et que ce n'est pas une devinette : rien ne permet de
+   deviner qu'un visage est fait de fruits plutot que de pierres sans regarder l'image (`ART-4`).
+   Elle ajoute (motif 4 de son refus) que cette forme sert alors *materiaux* et *formes* du
+   libelle de competence, ce qui leve d'elle-meme une partie du motif 4 sans intervention de ma
+   part.
+
+**Ce que je ne tranche pas.** La recevabilite exacte de la reformulation reste au second passage de
+`nadia-prof`, comme pour les trois autres motifs du meme refus (fiche section 10, point 1) : je ne
+juge aucun contenu, je choisis uniquement de ne pas faire bouger le perimetre ni les cliquets.
+
+**Consequence.** Le developpeur affecte au second passage reecrit l'item `oeuvre-quatre-saisons`
+dans `cp-decrire-une-oeuvre.yaml`, en meme temps que les motifs 1, 3 et le point (d), sans solliciter
+`theo-archi`. Le vivier reste a huit oeuvres, le paquet a huit items, `nombreDeManches` reste a 7.
+Aucune ligne de matrice ne bouge (`ART-CP-09` reste `non couvert` jusqu'au Done pedagogique du
+second passage).
