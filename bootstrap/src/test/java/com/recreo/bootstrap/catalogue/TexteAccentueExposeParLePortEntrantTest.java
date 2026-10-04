@@ -1463,7 +1463,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // de nadia-prof du 2026-10-04, Q4) et ce champ, lu par l'enfant, ne promet pas une
             // competence que le paquet ne sert pas - meme motif que la correction du 2026-09-02 sur
             // "Calcul CP" citee plus haut. Point signale, non tranche par moi seul.
-            "Décrire une œuvre : dire ce qu'on y voit (sujet, formes et matériaux).");
+            // Second passage (DEC-0109 section 11, fiche de nadia-prof, motif 4 du refus du premier
+            // passage) : "formes" retiree a son tour, aucun item ne la servant plus apres la
+            // reecriture d'oeuvre-quatre-saisons (motif 2).
+            "Décrire une œuvre : dire ce qu'on y voit (sujet et matériaux).");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

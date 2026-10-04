@@ -11,23 +11,27 @@
 # Q4 de l'arbitrage prealable (ART-1) : la ligne ferme sans les couleurs - aucun enonce, aucune
 # proposition, aucun indice et aucun texte alternatif ne porte un mot de couleur. L'intitule du
 # referentiel ("sujet, couleurs, formes, materiaux") ne change pas ; seule la mention qui
-# accompagnera la ligne dans la matrice, si elle ferme, est corrigee ("sujet, formes et materiaux
-# seuls ; les couleurs d'une oeuvre ne sont pas servies (ART-1)"). Le descripteur ci-dessous reprend
-# cette meme restriction plutot que l'intitule integral du referentiel, pour ne pas annoncer au
-# joueur une competence que le paquet ne sert pas : point signale, non tranche par moi seul,
-# nadia-prof jugera a l'audit.
+# accompagnera la ligne dans la matrice, si elle ferme, est corrigee ("sujet et materiaux seuls ;
+# les couleurs d'une oeuvre ne sont pas servies (ART-1)"). Le descripteur ci-dessous reprend cette
+# meme restriction plutot que l'intitule integral du referentiel, pour ne pas annoncer au joueur une
+# competence que le paquet ne sert pas : point signale, non tranche par moi seul, nadia-prof jugera
+# a l'audit. "Formes" est retiree au second passage (DEC-0109 section 11, motif 4 du refus du
+# premier passage) : apres reecriture de oeuvre-quatre-saisons, aucun item ne sert plus cette forme
+# de reconnaissance.
 #
 # ART-2 : aucun item ne demande ce que l'enfant ressent ni ne qualifie une oeuvre de belle ou
-# reussie - chaque item porte sur ce qui est observable (sujet, forme ou materiau).
+# reussie - chaque item porte sur ce qui est observable (sujet ou materiau).
 #
-# Trois types d'items, jamais une couleur :
+# Deux types d'items, jamais une couleur :
 #   - sujet (six items) : ce que l'oeuvre montre (un champ de ble, une chambre, une vague, des
 #     chevaux, une rue, une femme) ;
-#   - forme (un item, oeuvre-quatre-saisons) : la forme d'ensemble reconnue (un visage), plutot que
-#     le detail des fruits et legumes qui le composent ;
-#   - materiau (un item, oeuvre-hippopotame) : la distinction recevable au CP est celle qui se voit
-#     - un objet qu'on peut tenir ou poser contre une image peinte (arbitrage prealable, Q4, regle 3
-#     pour le developpeur) - jamais "faience", "toile" ni "estampe", hors vocabulaire de CP.
+#   - materiau (deux items) : oeuvre-hippopotame porte la distinction recevable au CP - celle qui se
+#     voit, un objet qu'on peut tenir ou poser contre une image peinte (arbitrage prealable, Q4,
+#     regle 3 pour le developpeur) - jamais "faience", "toile" ni "estampe", hors vocabulaire de CP ;
+#     oeuvre-quatre-saisons porte, le visage deja nomme dans l'enonce, avec quoi il est fait (des
+#     fruits et des legumes). Reecriture du second passage (DEC-0109 section 11, fiche de
+#     nadia-prof, motif 2) : la forme seule (un visage trouve par elimination) ne se voyait pas a
+#     176 px.
 #
 # Q2 de l'arbitrage prealable (texte visible dans une reproduction) : oeuvre-grande-vague et
 # oeuvre-rue-sous-la-pluie portent un texte visible (cartouche japonais, trace de signature) jugé
@@ -52,15 +56,15 @@ descripteur:
   matiere: "Arts plastiques"
   niveau: "CP"
   domaine: "Se repérer dans les domaines liés aux arts plastiques"
-  competence: "Décrire une œuvre : dire ce qu'on y voit (sujet, formes et matériaux)."
+  competence: "Décrire une œuvre : dire ce qu'on y voit (sujet et matériaux)."
 lignesDeReferentiel: ["ART-CP-09"]
 items:
-  - enonce: "Cette œuvre, qu'est-ce que c'est ?"
+  - enonce: "Cet hippopotame, est-ce une statue, une peinture ou un dessin ?"
     illustration: oeuvre-hippopotame
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
     bonneReponse: "une statue"
     distracteurs: ["une peinture", "un dessin"]
-    indice: "Regarde si tu peux la tenir dans la main, ou si elle est plate comme une image."
+    indice: "Regarde l'ombre sous les pattes de l'hippopotame, qui montre un objet posé."
   - enonce: "Que vois-tu sur cette œuvre ?"
     illustration: oeuvre-moissonneurs
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
@@ -73,12 +77,12 @@ items:
     bonneReponse: "une chambre"
     distracteurs: ["une cuisine", "une salle de classe"]
     indice: "Observe les meubles et le lit installés dans cette pièce."
-  - enonce: "Quelle forme reconnais-tu sur cette œuvre ?"
+  - enonce: "Cette œuvre montre un visage. Avec quoi ce visage est-il fait ?"
     illustration: oeuvre-quatre-saisons
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
-    bonneReponse: "un visage"
-    distracteurs: ["une maison", "un bateau"]
-    indice: "Regarde l'ensemble de l'image, de haut en bas, sans t'arrêter aux détails."
+    bonneReponse: "des fruits et des légumes"
+    distracteurs: ["des pierres", "du papier"]
+    indice: "Regarde bien les fruits et les légumes qui forment ce visage."
   - enonce: "Que vois-tu sur cette œuvre ?"
     illustration: oeuvre-grande-vague
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
@@ -96,10 +100,10 @@ items:
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
     bonneReponse: "une rue"
     distracteurs: ["une plage", "une montagne"]
-    indice: "Observe les personnes qui marchent sous leurs parapluies."
+    indice: "Regarde les maisons et le trottoir de chaque côté de la rue."
   - enonce: "Que vois-tu sur cette œuvre ?"
     illustration: oeuvre-femme-au-luth
     illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
     bonneReponse: "une femme"
     distracteurs: ["un homme", "un enfant"]
-    indice: "Regarde la personne debout près de la fenêtre."
+    indice: "Regarde la personne assise près de la fenêtre."
