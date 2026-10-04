@@ -13,7 +13,8 @@
 - **Arbitrage prealable de `nadia-prof`** :
   `ARBITRAGE-s38-soustractions-complements-dizaine-et-moities-ce1.md` (2026-09-22), section 1,
   clauses `SOU-CE1-1` et `SOU-CE1-2`, distracteurs section 1.4.
-- **Derniere mise a jour** : 2026-09-22 (premier audit, s38).
+- **Derniere mise a jour** : 2026-10-03 (arbitrage de `SOU-CE1-R1`, s50, en fin de fiche). Premier
+  audit : 2026-09-22, s38.
 
 ---
 
@@ -90,6 +91,10 @@ leurs trois freres de la meme bande (`84 - 7`, `91 - 8`, `99 - 9`) et sur toutes
 non-emprunt du paquet (formes 3, 4 et 6). Aucune autre valeur n'est necessaire : la coherence
 interne a la forme 5 suffit a fermer la reserve.
 
+*Amendement du 2026-10-03 (`nadia-prof`, s50).* Ce correctif est infaisable : il rougit le garde-fou
+de rang. Il est remplace, sans etre efface, par celui de la section "Arbitrage de `SOU-CE1-R1` du
+2026-10-03" en fin de fiche.
+
 ## 5. Ancrage sur `MAT-CE1-03` et non sur une ligne voisine
 
 Le paquet couvre `a - b`, `0 <= b <= a <= 100`, avec les sept bandes de `SOU-CE1-2` qui font
@@ -136,3 +141,94 @@ depot ne lit.
 > la voie a un passage de `MAT-CE1-03` a `couvert-valide` - une reserve non bloquante etant un
 > Done pedagogique ouvert, pas un Done refuse. Le mouvement lui-meme est ecrit par `camille-po`,
 > pas par moi.
+
+---
+
+## Arbitrage de `SOU-CE1-R1` du 2026-10-03 (`nadia-prof`, s50)
+
+**Ce qui m'est pose** : `squad/rapports/avis-faisabilite-s50-cinq-stories.md`, section 6 et
+question Q1. Le correctif de la section 4 (la somme `a + b`) rend la bonne reponse intermediaire sur
+les quatre items. Le rang "la plus grande" tombe a 0 % (plancher 10 %) et le rang du milieu monte a
+53,1 % (plafond 50 %). Aucune exemption n'est ouvrable. **Le Done pedagogique du 2026-09-22 n'est
+pas rouvert. `SOU-CE1-R1` reste ouverte.**
+
+**Audit degrade, et je le declare** : je n'ai rien rejoue. Le paquet n'a pas change depuis s38. Les
+valeurs ci-dessous sont calculees a la main sur le YAML a `10198d28`.
+
+### 1. Deux corrections de mes propres constats
+
+- **La section 4 dit que le second distracteur ne correspond a aucune forme "autorisee par ma
+  clause".** C'est inexact. La section 1.4 de l'arbitrage exige **au moins un** distracteur
+  identifiable par item, et `b` est present sur les quatre items : la clause etait tenue. Le motif de
+  la reserve est la plausibilite du second distracteur, pas une violation de clause.
+- **J'ai ecrit "aucune autre valeur n'est necessaire" sans regarder le rang.** Les quatre items vises
+  etaient les seuls du paquet ou la bonne reponse est la plus grande. `theo-archi` l'a mesure, pas
+  moi.
+
+### 2. La forme admise
+
+> **Le chiffre soustrait compte comme des dizaines**, de valeur `a - 10 x b`. L'enfant recule de
+> `b` dizaines au lieu de `b` unites : `45 - 3` donne `45, 35, 25, 15`, donc `15`.
+>
+> **Portee** : items de forme 5 (*"un chiffre soustrait"*, section 1.3 de l'arbitrage) uniquement.
+> **Admission** : `a - 10 x b` est positif et distinct de `b`. Sinon, remplacement selon la regle
+> generale de la section 1.4.
+
+**Pourquoi c'est une vraie erreur de CE1, dans ce paquet-ci.** Le paquet alterne la forme 4
+(`87 - 30`, *"enleve-le d'un coup"*) et la forme 5 (`45 - 3`, *"recule de 3, unite par unite"*).
+Distinguer `3` de `30` est exactement le point de numeration que ces deux formes travaillent. C'est
+la valeur que j'ai admise a s47 sous le nom de "decalage des colonnes" sur le paquet de soustractions
+posees (`FICHE-bandit-manchot-soustractions-posees-ce1.md`, section "Arbitrage de `SOP-CE1-R1`") :
+la meme confusion unites-dizaines, ici en calcul mental.
+
+**Ce que je n'admets pas** : `a - b - 10` (une dizaine en trop). Proche de la bonne reponse, mais
+c'est un emprunt fait sans besoin, que j'ai ecarte a s47 parce qu'il ne donne pas une valeur unique.
+Je ne l'admets pas ici pour un motif de rang.
+
+**Ce que la forme ne regle pas, et je le dis.** Un enfant qui estime l'ordre de grandeur ecarte
+`19` sur `79 - 6` comme il ecartait `35`. La difference : `35` ne correspondait a aucune erreur,
+`19` correspond a une erreur nommee. Il attrape l'enfant qui confond unites et dizaines.
+
+### 3. Ce qui leve `SOU-CE1-R1`
+
+**Barre de levee, qui remplace celle de la section 4 au meme cout (un champ, quatre items)** : le
+second distracteur des quatre items est `a - 10 x b`.
+
+| Item | Bonne reponse | Distracteurs corriges | Rang de la bonne reponse |
+|---|---|---|---|
+| `45 - 3` | 42 | `3`, `15` (remplace `20`) | la plus grande, inchange |
+| `57 - 4` | 53 | `4`, `17` (remplace `25`) | la plus grande, inchange |
+| `68 - 5` | 63 | `5`, `18` (remplace `30`) | la plus grande, inchange |
+| `79 - 6` | 73 | `6`, `19` (remplace `35`) | la plus grande, inchange |
+
+**Rang du paquet : deduit, pas mesure.** Aucun item ne change de rang : 15 / 13 / 4, la repartition
+que `theo-archi` a mesuree verte a `03d152b0`. Le developpeur affecte lance
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` sur le YAML corrige avant de commiter.
+Les trois freres (`84 - 7`, `91 - 8`, `99 - 9`) gardent la somme : la coherence que demandait la
+section 4 n'est plus une exigence.
+
+| Fait | A qui |
+|---|---|
+| Criteres d'acceptation de la story `SOU-CE1-R1` : `15`, `17`, `18`, `19` au lieu de `48`, `61`, `73`, `85` | `camille-po`, via `sofia-sm` |
+| Correction du YAML et mesure du garde-fou de rang | developpeur affecte par `sofia-sm` |
+| Rejouer les quatre items corriges | `nadia-prof` |
+
+**Ce dont je reste la seule garde** : que `a - 10 x b` soit une erreur commise sur ces items. Aucun
+test ne lit la forme d'un distracteur sur ce paquet.
+
+**Identifiants** : aucun neuf, aucun renomme. `SOU-CE1-R1` reste ouverte.
+
+### 4. Q2 de `theo-archi` (avis de s50, sections 5 et 7)
+
+- **`GRC-CE1-R1`, *aucun distracteur sur plus de deux items du paquet* : oui.** C'est la propriete
+  que j'ai constatee au second passage (*"ne reviennent plus que deux fois"*), pas une barre neuve :
+  a `03d152b0`, seul *colline* la viole. La barre de levee de `GRC-CE1-R1` ne change pas. Un mot de
+  remplacement qui reviendrait sur trois items reproduirait le defaut que la reserve nomme.
+- **`DIV-CE1-R1`, *le diviseur `b` sur chaque item* : oui, dans le test du paquet `ce1-division`
+  seulement.** Apres la correction, les 21 items le portent. L'assertion empeche la reserve de
+  revenir. Elle ne modifie pas `DIV-CE1-5`, qui reste *"au moins une erreur parmi `a x b`, `a - b`,
+  `b`"* pour tout autre paquet.
+
+Une fois ces deux assertions ecrites, je ne suis plus la seule garde de ces deux proprietes.
+
+**Signe** : `nadia-prof`, s50, 2026-10-03.

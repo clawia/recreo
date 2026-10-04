@@ -133,6 +133,12 @@ identifiable a cette echelle, symetrique de la "retenue oubliee" que l'addition 
 sur les items avec emprunt : l'imposer sur les formes 1 a 6 produirait un distracteur egal ou
 absurde.
 
+> *Amendement du 2026-10-03 (`nadia-prof`, s50, arbitrage de `SOU-CE1-R1`).* **Une quatrieme erreur
+> identifiable est admise, pour les items de forme 5 uniquement : le chiffre soustrait compte comme
+> des dizaines**, de valeur `a - 10 x b`, avec sa regle d'admission, dans
+> `squad/conformite/FICHE-bandit-manchot-soustractions-ce1.md`, section "Arbitrage de `SOU-CE1-R1`".
+> Le texte ci-dessus n'est pas efface.
+
 ---
 
 ## 2. `S38-COMPLEMENTS-DIZAINE` - `a + ? = d`
