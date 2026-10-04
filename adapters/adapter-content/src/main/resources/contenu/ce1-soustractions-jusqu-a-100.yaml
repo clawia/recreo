@@ -63,19 +63,19 @@ items:
     indice: "40 est un nombre rond : enlève-le d'un coup à 90."
   - enonce: "45 - 3 = ?"
     bonneReponse: "42"
-    distracteurs: ["3", "20"]
+    distracteurs: ["3", "15"]
     indice: "Pars de 45 et recule de 3, unité par unité."
   - enonce: "57 - 4 = ?"
     bonneReponse: "53"
-    distracteurs: ["4", "25"]
+    distracteurs: ["4", "17"]
     indice: "Pars de 57 et recule de 4, unité par unité."
   - enonce: "68 - 5 = ?"
     bonneReponse: "63"
-    distracteurs: ["5", "30"]
+    distracteurs: ["5", "18"]
     indice: "Pars de 68 et recule de 5, unité par unité."
   - enonce: "79 - 6 = ?"
     bonneReponse: "73"
-    distracteurs: ["6", "35"]
+    distracteurs: ["6", "19"]
     indice: "Pars de 79 et recule de 6, unité par unité."
   - enonce: "84 - 7 = ?"
     bonneReponse: "77"
