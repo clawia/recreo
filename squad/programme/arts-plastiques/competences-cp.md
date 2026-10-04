@@ -75,6 +75,12 @@ La numérotation ci-dessous suit l'ordre de lecture de la liste de compétences.
 | 10 | Reconnaître des œuvres et les rapprocher | **`non couvert`** - même motif que la ligne 9 | *"Qui a peint la Joconde ?"* sert la culture générale, pas *reconnaître une œuvre*. Même contrefaçon par description que *situer sur une carte* jugé par un quiz de noms |
 | 11 | Nommer outils, supports et gestes | **jouable** au choix textuel | *"À quoi sert un pinceau ?"*, *"Avec quoi modèle-t-on ?"* : vocabulaire concret, court, du niveau du CP, exact et vérifiable |
 
+> **Correction du 2026-10-04 (`nadia-prof`), ligne 10.** *"Même motif que la ligne 9"* était
+> inexact : il manque à la ligne 10 l'image d'une œuvre **et** la vue simultanée de deux œuvres. Une
+> désignation en texte de l'œuvre à rapprocher est refusée. La phrase d'origine reste lisible
+> ci-dessus. Détail et conséquences :
+> `squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md`, Q1 et Q5.
+
 ### Conditions opposables, posées d'avance (nouvelles, datées du 2026-09-03)
 
 > **`ART-1` - Aucun item d'arts plastiques ne fait porter la réponse par une couleur perçue.** Pas
