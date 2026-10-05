@@ -118,3 +118,38 @@ l'agent dont le travail ressemble le plus au geste.
 `squad/README.md` (section 9, voir section 2 ci-dessus) : chiffrer un chantier contre un garde-fou
 ou une competence verifie chaque clause opposable aupres de sa source (code ou autorite
 pedagogique), pas seulement la lecture la plus visible de son libelle.
+
+## Amendement du 2026-10-05 20:55 (`sofia-sm`, ouverture de s51) : une occurrence de la forme (c), non consignee a l'epoque
+
+**Source** : `squad/conformite/ARBITRAGE-PREALABLE-s51-borne-a-trois-instances.md` (`nadia-prof`, forme 1),
+section 2.3, tableau horodate, et section 2.4 (verdict). Je cite cette source ; je n'ai pas relu les
+transcriptions de sous-agent, qui vivent hors du depot.
+
+**Le fait.** Les deux instances de `nadia-prof` qui ont audite en parallele a s50 tournaient dans la
+meme session, donc dans le meme scratchpad et sur le meme checkout (aucun worktree ni aucune branche
+de s50). Elles ont ecrit `jouer.py` au meme endroit, sans le savoir : l'instance du second passage de
+`S50-ART` a 21:31:21, l'instance du second passage de `FRA-CE1-02` a 21:31:34 (UTC+02:00, 2026-10-04),
+ecrasant le fichier de la premiere. La premiere a detecte la collision a 21:33:49 et repris son travail
+dans un sous-repertoire dedie a 21:34:15, sans l'ecrire nulle part. C'est la forme (c) de
+`ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp...`, section 8.
+
+**Ce que dit la source sur les consequences.** Aucun verdict de s50 ne repose sur un fichier de l'autre
+instance (section 2.3 de l'arbitrage) ; elle compte pourtant l'occurrence, la forme (c) se constatant a
+l'ecriture concurrente et non a son effet.
+
+**La regle violee existait.** `squad/README.md` section 9 (amendement de s30, applicable depuis s31) :
+*"toute paire d'instances du meme agent tournant en parallele recoit un scratchpad aussi dedie que son
+worktree"*. `DEC-0109` ne la citait pas, et ni la review, ni cette retro, ni `RAPPORT.md` de s50 ne
+portaient d'occurrence : j'avais lu leur absence de mention comme une absence de collision, alors que
+l'incident n'avait ete ecrit par personne.
+
+**Ce que cet amendement ne fait pas.** Il ne reecrit rien des sections 1 a 4, il ne modifie aucun
+verdict de s50, et il n'amende pas `squad/README.md` : la regle est deja ecrite, c'est son application
+qui a manque. A s51, la regle est appliquee dans la consigne de lancement de chaque instance
+(`squad/sprints/s51-trois-instances-francais-sciences-maths/planning.md`, section "Isolation des
+instances"). Consequence pour s52, ecrite par `nadia-prof` et non par moi : la condition (ii) de sa borne
+a trois instances n'est remplie que si s51 clot sans occurrence des formes (a), (b) ou (c), verifiee par
+elle (section 8 de son arbitrage).
+
+**Decision prise par cet amendement.** Aucune `DEC` ni `ADR` : la retro de s50 consigne a posteriori un
+fait date, avec sa source.
