@@ -4,6 +4,7 @@ import com.tngtech.archunit.base.DescribedPredicate;
 import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.domain.JavaField;
 import com.tngtech.archunit.core.domain.JavaMethod;
+import com.tngtech.archunit.core.domain.JavaMethodCall;
 import com.tngtech.archunit.core.domain.JavaModifier;
 import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
@@ -28,6 +29,8 @@ class DecouplageMecaniqueContenuTest {
     private static final String CONTRAT_CONTENU = "com.recreo.domain.content";
     private static final String CONTRAT_MECANIQUE = "com.recreo.domain.mechanic";
     private static final String MECANIQUES = "com.recreo.domain.mechanics..";
+    /** ADR-0104, clause (13) : la seule mecanique dont le verdict est une lecture de texte (ADR-0058). */
+    private static final String SAISIE = "com.recreo.domain.mechanics.saisie..";
     private static final String ADAPTATEUR_DE_RENDU = "com.recreo.adapter.web..";
 
     /**
@@ -266,6 +269,55 @@ class DecouplageMecaniqueContenuTest {
                     + " fin d'une partie la manche courante n'existe plus, et ce verdict est la seule"
                     + " trace de l'item joue : sans enonce, l'ecran de fin nomme une reponse sans la"
                     + " question qu'elle commente");
+
+    /**
+     * (13) ADR-0104 : <b>une mecanique qui fait choisir entre des propositions ne lit jamais ce
+     * qu'une proposition ecrit.</b> Elle la tire, la melange, la transporte et la compare par
+     * {@code equals} a la bonne reponse ; rien d'autre.
+     *
+     * <p><b>Ce qu'elle interdit reellement.</b> ADR-0104 sert la vue simultanee de deux oeuvres par
+     * des propositions qui sont des identifiants de reproduction ({@code oeuvre-...}), et laisse la
+     * mecanique {@code bandit-manchot} inchangee. La tentation exacte que cette clause ferme est de
+     * faire distinguer a la session une proposition-image d'une proposition-texte -
+     * {@code proposition.startsWith("oeuvre-")} pour reveler autrement, compter autrement ou
+     * melanger autrement. C'est le geste qui ferait entrer une population d'images, donc un fait de
+     * rendu, dans une mecanique : la population se lit dans l'adaptateur web (ADR-0082 decision 2,
+     * ADR-0104 decision 3) et nulle part ailleurs. Une expression reguliere est la seconde forme du
+     * meme geste, d'ou la seconde condition.
+     *
+     * <p><b>Perimetre : toutes les mecaniques, sauf la saisie, et l'exclusion est nommee avec son
+     * motif.</b> Le verdict de la saisie <i>est</i> une lecture du texte ecrit par l'enfant, normalise
+     * avant comparaison (ADR-0058, {@code NormalisationDeSaisie}) : l'y soumettre la rendrait rouge
+     * par construction. L'inclusion est le cas par defaut : une quatrieme mecanique y entre sans
+     * qu'on y pense, et si elle lit du texte, elle doit le justifier par un ADR plutot que par un
+     * silence. Population au 2026-10-05 : les classes de production de
+     * {@code mechanics.banditmanchot} et de {@code mechanics.designation}, verte sans exemption.
+     *
+     * <p><b>Ce qu'elle ne voit pas.</b> Un {@code +} de concatenation est compile en
+     * {@code invokedynamic} et n'est pas un appel de methode de {@code String} : composer un message
+     * d'exception reste permis, et ne lit rien. Une lecture faite a travers une methode de
+     * {@code CharSequence} appelee sur un type declare {@code CharSequence} echappe a la premiere
+     * condition ; elle est nommee ici plutot que decouverte.
+     */
+    @ArchTest
+    static final ArchRule uneMecaniqueAPropositionsNeLitJamaisCeQuUnePropositionEcrit = noClasses()
+            .that().resideInAPackage(MECANIQUES)
+            .and().resideOutsideOfPackage(SAISIE)
+            .should().callMethodWhere(uneLectureDeTexte())
+            .orShould().dependOnClassesThat().resideInAPackage("java.util.regex..")
+            .allowEmptyShould(false)
+            .as("ADR-0104 : une mecanique a propositions ne lit jamais ce qu'une proposition ecrit."
+                    + " Elle la transporte et la compare par equals ; distinguer une proposition-image"
+                    + " d'une proposition-texte est un fait de rendu, qui vit dans l'adaptateur web");
+
+    /** Tout appel d'une methode de {@code String} qui n'est ni {@code equals} ni {@code hashCode}. */
+    private static DescribedPredicate<JavaMethodCall> uneLectureDeTexte() {
+        return DescribedPredicate.describe(
+                "une methode de java.lang.String autre que equals et hashCode",
+                appel -> appel.getTargetOwner().isEquivalentTo(String.class)
+                        && !appel.getName().equals("equals")
+                        && !appel.getName().equals("hashCode"));
+    }
 
     /** Un champ de ce nom et de ce type, ou rien. */
     private static boolean declare(JavaClass classe, String nom, String typeAttendu) {

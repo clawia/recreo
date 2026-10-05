@@ -436,6 +436,21 @@ class LesReglesMordentTest {
     }
 
     /**
+     * ADR-0104, clause 13 : une mecanique a propositions qui lit le prefixe d'une proposition, ou qui
+     * la passe a une expression reguliere. Les deux formes doivent mordre, chacune nommee.
+     */
+    @Test
+    void uneMecaniqueAPropositionsQuiLitUnePropositionEstRefusee() {
+        assertThatThrownBy(() -> DecouplageMecaniqueContenuTest
+                .uneMecaniqueAPropositionsNeLitJamaisCeQuUnePropositionEcrit
+                .check(contreExemples("com.recreo.domain.mechanics.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("MecaniqueQuiLitSesPropositionsContreExemple")
+                .hasMessageContaining("String.startsWith")
+                .hasMessageContaining("java.util.regex");
+    }
+
+    /**
      * ADR-0080, clause 11 : un record du contrat de contenu qui ecrit a la main le predicat que la
      * clause 10 existe pour interdire ailleurs.
      */
