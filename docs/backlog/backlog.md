@@ -18632,3 +18632,614 @@ pedagogique n'est attendu sur ce chantier a s49, et aucun tarif en lots ne lui e
   `sofia-sm` ; `nadia-prof` pour le Done pedagogique.
 
 
+
+## Sprint 51 - Trois instances de `nadia-prof` (francais CE1, sciences et technologie CM1,
+## mathematiques CE1), six lignes engagees, l'instance C non engagee et reportee a s52
+
+Objectif et perimetre formalises par `DEC-0110`, **amendee le 2026-10-05 (section 14)** : `nadia-prof`
+a refuse la borne a trois instances (`squad/conformite/ARBITRAGE-PREALABLE-s51-borne-a-trois-instances.md`),
+la condition (ii) de sa borne n'etant pas remplie, et le refus est accepte. **s51 ouvre a deux
+instances, A et B, 8,0**, une matiere et un niveau chacune (`PAR-2`), deux branches, deux worktrees et
+deux scratchpads dedies (`squad/README.md` section 9, un scratchpad par instance depuis s31). **L'instance
+C est non engagee a s51, reportee a s52** ; ses trois stories restent ecrites ci-dessous. Objectif gele :
+au mieux six fermetures, 123/182 a 129/182 (70,9 %) ; `MAT-CE1-02` ne passe pas a `en cours`. Tableau
+tel qu'il etait avant l'amendement, la colonne C etant lue avec sa mention :
+
+| Instance | Story | Tarif | Nature |
+|---|---|---|---|
+| A (francais CE1) | `S51-FRA-GRAPHIE` (ci-dessous) | 1,0 | ligne neuve, `FRA-CE1-22` |
+| A | `S51-FRA-TEMPS` (ci-dessous) | 1,0 | ligne neuve, `FRA-CE1-20` |
+| A | `S51-FRA-ALPHABETIQUE` (ci-dessous) | 1,0 | ligne neuve, `FRA-CE1-23` |
+| A | "Story de correction differee - reserve `HOM-CE1-R1`" (section "Backlog - sprints suivants") | 0,5 | correction, paquet deja `couvert-valide` |
+| **Total A** | | **3,5 / 5,0** | marge 1,5 dont rejeu 0,5, 3 lots |
+| B (sciences et technologie CM1) | `S51-SCI-CORPS-CM1` (ci-dessous) | 1,5 | ligne neuve, `SCI-CM1-10` |
+| B | `S51-SCI-TERRE-CM1` (ci-dessous) | 1,5 | ligne neuve, `SCI-CM1-15` |
+| B | `S51-SCI-ACTIVITE-HUMAINE-CM1` (ci-dessous) | 1,5 | ligne neuve, `SCI-CM1-18` |
+| **Total B** | | **4,5 / 5,0** | marge 0,5 = rejeu, 3 lots |
+| C (mathematiques CE1), **non engagee a s51, reportee a s52** (`DEC-0110` section 14) | `S51-MAT-SYMETRIE` (ci-dessous) | 1,0 | ligne neuve, `MAT-CE1-17` ; hors total de s51 |
+| C | `S51-MAT-MULTIPLICATION` (ci-dessous) | 1,0 | ligne neuve, `MAT-CE1-06` ; hors total de s51 |
+| C | `S51-MAT-COMPARER-RANGER` (ci-dessous) | 1,0 | moitie textuelle de `MAT-CE1-02` ; hors total de s51 |
+| **Total C** | | **3,0 libere, non engage** | `PAR-16` : budget libere, report a s52 |
+
+**Total du sprint : 8,0** (A 3,5 + B 4,5 ; 11,0 avant l'amendement). Hors perimetre, motifs dans `DEC-0110` section 6 : `ART-CP-10` (un `ADR`
+de `theo-archi` seulement), questionner le monde CP et histoire-geographie CM1 "palier 2",
+`HDA-CM1-*` et `ART-CM1-*` (en attente de `T7`).
+
+**Conditions transverses communes aux trois stories de francais CE1** (source :
+`squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 2, transcrites sans accents) :
+`TRV-CE1-1` (le descripteur porte `niveau: "CE1"` ; chaque item declare une ligne `FRA-CE1-nn` et une
+seule ; aucun item ne porte de champ a voix haute ; seules `FRA-CE1-04` a `FRA-CE1-07` portent un
+`texteSupport`) ; `TRV-CE1-2` (trois propositions, ou deux la ou la ligne est un choix binaire par
+nature ; deux a deux distinctes, une seule acceptable ; chaque distracteur appartient a une famille
+nommee par la condition de sa ligne et le fichier la nomme a cote de l'item ; sur le paquet entier,
+la bonne reponse n'est la proposition strictement la plus longue que dans la moitie des items au
+plus) ; `TRV-CE1-3` (un son se designe par un mot de reference entre guillemets, jamais par une
+notation phonetique) ; `TRV-CE1-4` (les mots *graphème*, *phonème*, *préfixe*, *suffixe*, *radical*,
+*participe*, *auxiliaire*, *complément*, *antonyme*, *homophone*, *inférence* n'apparaissent ni dans
+l'enonce, ni dans l'indice, ni dans les propositions) ; `TRV-CE1-5` (l'indice donne une methode ou dit
+ou regarder, jamais la reponse, douze mots au plus, pas identique sur tout le paquet) ;
+`TRV-CE1-6` (prenoms equilibres en genre a un pres et varies dans leurs origines ; aucun role, aucune
+activite, aucune emotion distribues par genre ; rien de ce qui s'adresse a l'enfant ne suppose une
+configuration familiale, un logement, un jardin, un animal, des vacances ou un objet possede) ;
+`TRV-CE1-7` (au moins vingt items par paquet). Bornes de lisibilite : `LON-CE1-1` (un enonce compte
+au plus vingt mots), `LON-CE1-2` (au plus trois phrases, la derniere etant la question), `LON-CE1-5`
+(une proposition compte au plus six mots et une seule phrase).
+
+**Conditions transverses communes aux trois stories de sciences et technologie CM1** (source :
+`squad/conformite/ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
+sections 1.1, 2.3 et 2.5) : `FER-1` (chaque element du libelle que la colonne *elements* de la
+section 2.2 compte occupe la position de bonne reponse dans au moins un item) ; `FER-2` (au moins
+dix items servent la ligne) ; `FER-3` (deux taches distinctes, la moins servie portant au moins trois
+items) ; `DEC-0064` (un paquet porte strictement plus d'items que de manches) ; `SCI-1` (sur chaque
+item dont un distracteur porte une conception fausse courante, l'`indice` dit pourquoi cette
+conception est fausse, en une phrase, au present de verite generale, sans nommer la bonne reponse, sans
+jamais dire *"ta reponse"*) ; `SCI-4` (un tel item offre au moins trois propositions) ; `SCI-3` (au
+plus un item sur six demande une valeur numerique a restituer) ; `HIS-3` (chaque fait porte sa source
+dans le commentaire du paquet) ; `CON-1` (aucun item ne se repond sans lire ce qu'il faut lire).
+
+**Conditions de forme communes aux trois stories de mathematiques CE1** (source :
+`squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`, section 0.1) : `LON-CE1-1`
+(au plus vingt mots), `LON-CE1-2` (au plus trois phrases, la derniere etant la question, une fin de
+phrase se derivant d'un `.`, `?` ou `!` suivi d'une majuscule ou de la fin du texte), `FER-1`, `FER-2`
+et `FER-3` sans clause supplementaire, `DEC-0064`.
+
+### S51-FRA-GRAPHIE - Choisir la graphie d'un son selon la lettre qui suit (`FRA-CE1-22`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux choisir, entre deux ecritures d'un meme mot, celle qui
+  est juste, afin d'ecrire sans me tromper des mots comme "jambe", "garçon" ou "guitare".
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Orthographe et grammaire" -
+  `squad/programme/francais/competences-ce1.md`, `FRA-CE1-22` : "Choisir la graphie d'un son selon la
+  lettre qui suit (`m` devant `m`, `b`, `p` ; `c`/`ç` ; `g`/`ge`/`gu`)." Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Francais - CE1 (cycle 2)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 5.13) :
+  verdict **ACCEPTE SOUS CONDITIONS `GRL-CE1-1` a `GRL-CE1-3`. Plafond : `couvert-valide`.**
+
+  > `GRL-CE1-1` - les trois regles. `m` devant `m`, `b`, `p` ; `c`/`ç` ; `g`/`ge`/`gu` : chacune dans
+  > au moins un quart des items.
+  >
+  > `GRL-CE1-2` - forme. Deux propositions : le meme mot frequent ecrit deux fois, ne differant que
+  > par la graphie que la regle decide (*une jambe* / *une janbe*, *un garçon* / *un garcon*).
+  >
+  > `GRL-CE1-3` - exclusions et frontiere. Les exceptions a la regle du `m` (*bonbon*, *néanmoins*)
+  > sont exclues. Frontiere avec `FRA-CE1-02` : la, l'enfant lit un mot entierement ecrit ; ici, il
+  > choisit comment l'ecrire.
+
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte exactement deux propositions, deux a deux
+    distinctes, qui sont le meme mot ecrit deux fois et ne different que par la graphie que la regle
+    decide (`GRL-CE1-2`, `TRV-CE1-2`).
+  - Etant donne le paquet livre, quand on classe ses items par regle (`m` devant `m`, `b` ou `p` ;
+    `c`/`ç` ; `g`/`ge`/`gu`), alors chacune des trois regles est decidee par au moins un quart des
+    items (`GRL-CE1-1`).
+  - Etant donne les mots du paquet, quand on les relit, alors aucune exception a la regle du `m`
+    (*bonbon*, *néanmoins*) n'y figure (`GRL-CE1-3`).
+  - Etant donne un item dont la bonne reponse est une graphie en `ç`, quand on lit ses deux
+    propositions, alors la proposition fautive est la meme ecriture sans cedille (*garcon* pour
+    *garçon*) (`GRL-CE1-2`).
+  - Etant donne chaque item, quand il declare sa ligne de referentiel, alors il porte `FRA-CE1-22` et
+    uniquement elle, et le descripteur porte `niveau: "CE1"` (`TRV-CE1-1`).
+  - Etant donne le paquet entier, quand on compare la longueur des deux propositions de chaque item,
+    alors la bonne reponse n'est la proposition strictement la plus longue que dans la moitie des
+    items au plus (`TRV-CE1-2`) ; quand on le compte, alors il porte au moins vingt items
+    (`TRV-CE1-7`).
+  - Etant donne l'enonce de chaque item, quand on le relit, alors il compte au plus vingt mots et au
+    plus trois phrases (`LON-CE1-1`, `LON-CE1-2`) ; et chaque proposition au plus six mots
+    (`LON-CE1-5`).
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les trois
+    conditions de la ligne, les sept transverses et les bornes de lisibilite, et que la ligne ferme
+    sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne lit pas de mot entierement ecrit (`FRA-CE1-02`) ; elle
+  ne sert aucune exception ; elle ne fixe aucun mot precis - reste a l'auteur du paquet puis a
+  l'audit. *Lecon de s50, citee et non reprise comme critere nouveau* : `FRA-CE1-02` a ete refusee au
+  premier passage sur le `c`/`ç` (`RAPPORT.md` de s50, table des verdicts).
+- **Lien decision** : `DEC-0110` (section 3).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance A de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite).
+
+### S51-FRA-TEMPS - Situer une phrase dans le temps (`FRA-CE1-20`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux dire si ce qui est raconte dans une phrase s'est
+  passe, se passe ou se passera, afin de bien choisir le passe, le present ou le futur quand j'ecris.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Orthographe et grammaire" -
+  `squad/programme/francais/competences-ce1.md`, `FRA-CE1-20` : "Situer une phrase dans le temps
+  (passe, present, futur) a partir de son verbe et des mots qui indiquent le moment (`hier`,
+  `aujourd'hui`, `demain`)." Ligne `non couvert`, `MATRICE-couverture.md`, section "Francais - CE1
+  (cycle 2)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 5.11) :
+  verdict **ACCEPTE SOUS CONDITIONS `TPS-CE1-1` a `TPS-CE1-3`. Plafond : `couvert-valide`.**
+
+  > `TPS-CE1-1` - propositions. Toujours *passé*, *présent*, *futur* ; chacun bonne reponse d'au moins
+  > un quart des items.
+  >
+  > `TPS-CE1-2` - le verbe decide. Au moins la moitie des items ne portent aucun mot de temps : sinon
+  > *hier* repond a la place du verbe. Les mots de temps admis sont *hier*, *aujourd'hui*, *demain*,
+  > *maintenant*, toujours coherents avec le verbe.
+  >
+  > `TPS-CE1-3` - les temps. Passe : passe compose seul. Futur : futur simple seul ; jamais le futur
+  > proche, qu'un enfant de CE1 lit comme un present (*je vais nager*).
+
+- **Criteres d'acceptation** :
+  - Etant donne un item, quand il s'affiche, alors il porte trois propositions qui sont, dans cet
+    ordre ou un autre, *passé*, *présent* et *futur* (`TPS-CE1-1`, `TRV-CE1-2`).
+  - Etant donne le paquet livre, quand on compte les bonnes reponses, alors chacun des trois temps
+    est la bonne reponse d'au moins un quart des items (`TPS-CE1-1`).
+  - Etant donne le paquet livre, quand on compte les items dont la phrase ne contient aucun des mots
+    *hier*, *aujourd'hui*, *demain*, *maintenant*, alors ils sont au moins la moitie ; et dans les
+    autres, le mot de temps est coherent avec le temps du verbe (`TPS-CE1-2`).
+  - Etant donne un item de passe, quand on lit son verbe, alors il est au passe compose ; un item de
+    futur est au futur simple ; aucune phrase n'emploie le futur proche (*je vais* + infinitif), ni
+    l'imparfait (`TPS-CE1-3`).
+  - Etant donne que *présent* est strictement la plus longue des trois propositions, quand on compte
+    les items dont c'est la bonne reponse, alors ils sont au plus la moitie du paquet (consequence de
+    `TRV-CE1-2` sur ces trois propositions fixes, a concilier avec le minimum d'un quart de
+    `TPS-CE1-1`).
+  - Etant donne les prenoms du paquet, quand on les relit, alors ils sont equilibres en genre a un
+    pres et varies dans leurs origines, sans role ni activite distribues par genre (`TRV-CE1-6`).
+  - Etant donne chaque item, quand il declare sa ligne, alors il porte `FRA-CE1-20` et uniquement
+    elle ; le paquet porte au moins vingt items (`TRV-CE1-1`, `TRV-CE1-7`) ; l'enonce, les
+    propositions et l'indice respectent `LON-CE1-1`, `LON-CE1-2`, `LON-CE1-5`, `TRV-CE1-4` et
+    `TRV-CE1-5`.
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les trois
+    conditions de la ligne, les sept transverses et les bornes de lisibilite, et que la ligne ferme
+    sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne conjugue pas (`FRA-CE1-17` a `FRA-CE1-19`) ; elle ne
+  demande jamais d'ecrire une forme verbale ; elle ne fixe aucune phrase precise.
+- **Lien decision** : `DEC-0110` (section 3).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance A de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite).
+
+### S51-FRA-ALPHABETIQUE - Ranger des mots dans l'ordre alphabetique (`FRA-CE1-23`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux ranger des mots dans l'ordre de l'alphabet, meme
+  quand ils commencent par la meme lettre, afin de retrouver un mot dans une liste ou un dictionnaire.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Vocabulaire" -
+  `squad/programme/francais/competences-ce1.md`, `FRA-CE1-23` : "Ranger des mots dans l'ordre
+  alphabetique (premiere lettre, puis deuxieme lettre)." Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Francais - CE1 (cycle 2)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 6.1) :
+  verdict **ACCEPTE SOUS CONDITIONS `ALP-CE1-1` a `ALP-CE1-3`. Plafond : `couvert-valide`**, sur le
+  meme precedent que `FRA-CE1-08` (choisir parmi trois listes ordonnees vaut *ranger*, a condition que
+  les distracteurs soient des erreurs reelles).
+
+  > `ALP-CE1-1` - formes. *Quel mot vient en premier* dans au moins la moitie des items ; trois listes
+  > des trois memes mots, sur la forme de `cp-ranger-nombres`, dans les autres.
+  >
+  > `ALP-CE1-2` - deuxieme lettre. Des mots de meme premiere lettre dans au moins un tiers des items.
+  > Jamais de decision a la troisieme lettre : la ligne s'arrete a la deuxieme. Aucun mot dont les
+  > deux premieres lettres portent un accent, une apostrophe, un trait d'union ou une majuscule.
+  >
+  > `ALP-CE1-3` - distracteurs des listes. (a) l'ordre inverse ; (b) l'ordre juste sur la premiere
+  > lettre et faux sur la deuxieme.
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on classe ses items, alors la question *"Quel mot vient en
+    premier dans l'ordre alphabetique ?"* (ou une forme equivalente) en porte au moins la moitie, et
+    les autres proposent trois listes des trois memes mots (`ALP-CE1-1`).
+  - Etant donne le paquet livre, quand on regarde la premiere lettre des mots d'un item, alors au
+    moins un tiers des items portent des mots de meme premiere lettre (`ALP-CE1-2`).
+  - Etant donne un item, quand on cherche ce qui decide son ordre, alors c'est la premiere ou la
+    deuxieme lettre, jamais la troisieme ; aucun mot de l'item n'a ses deux premieres lettres portant
+    un accent, une apostrophe, un trait d'union ou une majuscule (`ALP-CE1-2`).
+  - Etant donne les deux listes fausses d'un item de rangement, quand on les relit, alors chacune
+    est (a) l'ordre inverse ou (b) un ordre juste sur la premiere lettre et faux sur la deuxieme, et
+    la famille est declaree a cote de l'item (`ALP-CE1-3`, `TRV-CE1-2`).
+  - Etant donne chaque item, quand il declare sa ligne, alors il porte `FRA-CE1-23` et uniquement
+    elle ; le paquet porte au moins vingt items (`TRV-CE1-1`, `TRV-CE1-7`) ; la bonne reponse n'est
+    la proposition strictement la plus longue que dans la moitie des items au plus (`TRV-CE1-2`) ;
+    une liste de trois mots compte au plus six mots (`LON-CE1-5`).
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les trois
+    conditions de la ligne, les sept transverses et les bornes de lisibilite, et que la ligne ferme
+    sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne range jamais sur la troisieme lettre ; elle ne sert pas
+  les mots a accent initial ; elle ne fixe aucun mot precis.
+- **Lien decision** : `DEC-0110` (section 3).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance A de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite).
+
+### S51-SCI-CORPS-CM1 - Relier l'alimentation, l'activite physique, le sommeil et l'hygiene au bon fonctionnement du corps (`SCI-CM1-10`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux savoir ce qui est bon pour le corps - bien manger,
+  bouger, dormir, se laver - et a quoi cela sert, afin de comprendre pourquoi on en prend soin.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Le vivant, sa
+  diversite et les fonctions qui le caracterisent" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-10` : "Relier l'alimentation,
+  l'activite physique, le sommeil et l'hygiene au bon fonctionnement du corps." Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Sciences et technologie - CM1 (cycle 3)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s30...`, section 2.2, ligne 10) :
+  enumeration conjonctive, **quatre elements** (alimentation, activite physique, sommeil, hygiene),
+  taches de `FER-3` : *dire ce qui est bon pour le corps / dire a quoi sert un de ces quatre*.
+  Condition particuliere :
+
+  > `BIA-4` - aucun item n'interroge l'enfant sur sa propre vie - ce qu'il mange, ou il dort, qui
+  > l'accompagne. Les questions portent sur ce qui est bon pour le corps. (formulation de
+  > `ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md`, reconduite par s28 et appliquee a
+  > cette ligne par s30)
+
+  Frontieres ecrites ailleurs : `EPS-9` (le discriminant CM1/CP de `S43-EPS-EFFETS-ACTIVITE`) interdit
+  l'allongement de l'horizon de temps des effets de l'activite physique, qui tomberait dans cette ligne
+  ; `FICHE-bandit-manchot-effets-activite-eps-cm1.md` (paragraphe sur la frontiere avec les
+  sciences) et `FICHE-bandit-manchot-nutrition-cm1.md` (section 4) renvoient a `SCI-CM1-10` ce qui touche
+  l'alimentation, le sommeil et l'hygiene.
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on classe ses items par element du libelle, alors chacun des
+    quatre (alimentation, activite physique, sommeil, hygiene) est la bonne reponse d'au moins un item
+    (`FER-1`), le paquet compte au moins dix items qui servent la ligne et strictement plus d'items
+    que de manches (`FER-2`, `DEC-0064`).
+  - Etant donne le paquet livre, quand on classe ses items par tache, alors *dire ce qui est bon pour
+    le corps* et *dire a quoi sert un de ces quatre* portent chacune au moins trois items (`FER-3`),
+    ou toute autre paire de taches que `nadia-prof` juge distinctes.
+  - Etant donne chaque enonce, proposition, indice et explication, quand on les relit, alors aucun ne
+    demande a l'enfant ce qu'il mange, ou il dort, qui l'accompagne, ni ne suppose un repas, un lit ou
+    une routine (`BIA-4`).
+  - Etant donne l'ensemble du paquet, quand on cherche l'effet a long terme de la pratique reguliere
+    d'une activite physique (le coeur renforce, l'endurance qui progresse), alors il n'y figure pas
+    (`EPS-9`) ; et aucun item ne reprend l'item 5 de `cm1-sciences-nutrition`.
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand on le lit,
+    alors il a au moins trois propositions et un indice qui dit pourquoi elle est fausse sans nommer la
+    bonne reponse (`SCI-1`, `SCI-4`) ; au plus un item sur six demande une valeur numerique (`SCI-3`).
+  - Etant donne chaque fait du paquet, quand on lit le commentaire du paquet, alors il porte sa source
+    (`HIS-3`) ; aucun item ne se repond sans lire ce qu'il faut lire (`CON-1`).
+  - Etant donne `cp-qlm-hygiene`, `cp-qlm-corps-sens` et `cp-eps-corps-effort`, quand on les lit a cote
+    du paquet livre, alors aucun item de CM1 n'en contredit un de CP sur le meme objet (`CYC-1`).
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les
+    conditions ci-dessus et que la ligne ferme sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne sert pas les effets de l'activite physique deja servis
+  par `EPS-CM1-10`, ni les fonctions de nutrition de `SCI-CM1-09` ; elle ne fixe aucun fait precis.
+- **Lien decision** : `DEC-0110` (section 4).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance B de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite).
+
+### S51-SCI-TERRE-CM1 - Situer la Terre dans le systeme solaire et relier ses mouvements au jour, a la nuit et aux saisons (`SCI-CM1-15`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux comprendre pourquoi il y a le jour et la nuit et
+  pourquoi il y a des saisons, afin de savoir ce que fait la Terre autour du Soleil.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "La planete
+  Terre. Les etres vivants dans leur environnement" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-15` : "Situer la Terre dans
+  le systeme solaire et relier les mouvements de la Terre au jour, a la nuit et aux saisons." Ligne
+  `non couvert`, `MATRICE-couverture.md`, section "Sciences et technologie - CM1 (cycle 3)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s30...`, section 2.2, ligne 15, et
+  section 2.5) : enumeration conjonctive, **quatre elements** (situer la Terre dans le systeme
+  solaire ; le jour ; la nuit ; les saisons), taches de `FER-3` : *expliquer le jour et la nuit /
+  expliquer les saisons*. *"`SCI-1` mord ici plus qu'ailleurs. La cause des saisons est l'inclinaison de
+  l'axe, pas la distance au Soleil. `SCI-4` s'applique : trois propositions au moins."* Exemple de
+  l'arbitrage : bonne reponse *l'inclinaison de l'axe de la Terre*, distracteur *la Terre est plus
+  pres du Soleil en ete*, indice *"La distance de la Terre au Soleil change tres peu au cours de
+  l'annee."*
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on classe ses items par element du libelle, alors chacun des
+    quatre est la bonne reponse d'au moins un item (`FER-1`) ; au moins dix items servent la ligne et
+    le paquet porte strictement plus d'items que de manches (`FER-2`, `DEC-0064`).
+  - Etant donne le paquet livre, quand on classe ses items par tache, alors *expliquer le jour et la
+    nuit* et *expliquer les saisons* portent chacune au moins trois items (`FER-3`), ou toute autre
+    paire de taches que `nadia-prof` juge distinctes.
+  - Etant donne un item sur la cause des saisons, quand on lit sa bonne reponse, alors c'est
+    l'inclinaison de l'axe de la Terre, jamais la distance au Soleil ; si un distracteur porte la
+    conception *la Terre est plus pres du Soleil en ete*, l'item a au moins trois propositions et son
+    indice dit pourquoi cette conception est fausse sans nommer la bonne reponse (`SCI-1`, `SCI-4`).
+  - Etant donne l'ensemble du paquet, quand on compte les items qui demandent une valeur numerique a
+    restituer (distance, duree, temperature), alors ils sont au plus un sixieme (`SCI-3`).
+  - Etant donne chaque fait, quand on lit le commentaire du paquet, alors il porte sa source
+    (`HIS-3`) ; aucun item ne se repond sans lire ce qu'il faut lire (`CON-1`).
+  - Etant donne `cp-qlm-saisons` (`QLM-CP-13`), quand on le lit a cote du paquet livre, alors aucun
+    item de CM1 ne contredit un item de CP sur les saisons : l'ajout de la cause est permis, la
+    contradiction ne l'est pas (`CYC-1`, ligne nouvelle pour cet objet depuis s41).
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les
+    conditions ci-dessus et que la ligne ferme sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne fixe aucun fait precis hors la cause des saisons ;
+  elle ne sert pas de schema ni de designation sur dessin.
+- **Lien decision** : `DEC-0110` (section 4).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance B de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite).
+
+### S51-SCI-ACTIVITE-HUMAINE-CM1 - Identifier un effet de l'activite humaine sur l'environnement et un geste de preservation (`SCI-CM1-18`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux savoir ce que les activites des gens changent pour la
+  nature et quels gestes la protegent, afin de comprendre comment on peut en prendre soin.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "La planete
+  Terre. Les etres vivants dans leur environnement" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-18` : "Identifier un effet de
+  l'activite humaine sur l'environnement et un geste de preservation des ressources." Ligne
+  `non couvert`, `MATRICE-couverture.md`, section "Sciences et technologie - CM1 (cycle 3)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s30...`, section 2.2, ligne 18 :
+  *"`SCI-2`. La ligne la plus dangereuse du lot"*, et section 2.5) : enumeration conjonctive,
+  **deux elements** (un effet, un geste), taches de `FER-3` : *reconnaitre l'effet d'une activite /
+  choisir le geste qui preserve*.
+
+  > `SCI-2` - sur les lignes 16 et 18 : aucun item ne fait porter une responsabilite a l'enfant ni a
+  > son foyer - chauffage, voiture, voyages, dechets, courses ; aucun item ne demande a l'enfant ce
+  > qu'il fait, ce que sa famille fait, ni ce qu'il faudrait qu'ils fassent ; l'item decrit un
+  > mecanisme et un geste possible, a la troisieme personne ou a l'impersonnel.
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on classe ses items, alors un effet de l'activite humaine et
+    un geste de preservation sont chacun la bonne reponse d'au moins un item (`FER-1`) ; au moins dix
+    items servent la ligne et le paquet porte strictement plus d'items que de manches (`FER-2`,
+    `DEC-0064`).
+  - Etant donne le paquet livre, quand on classe ses items par tache, alors *reconnaitre l'effet
+    d'une activite* et *choisir le geste qui preserve* portent chacune au moins trois items
+    (`FER-3`), ou toute autre paire de taches que `nadia-prof` juge distinctes.
+  - Etant donne chaque enonce, proposition, indice et explication, quand on les relit, alors aucun ne
+    s'adresse a l'enfant (*"tu"*, *"ta famille"*), ne demande ce qu'il fait ou ce que sa famille fait
+    ou devrait faire, ni ne cite le chauffage, la voiture, les voyages, les dechets ou les courses
+    comme une responsabilite de l'enfant ou de son foyer (`SCI-2`).
+  - Etant donne chaque item, quand on le lit, alors il decrit un mecanisme et un geste possible, a la
+    troisieme personne ou a l'impersonnel (`SCI-2`).
+  - Etant donne un item dont un distracteur porte une conception fausse courante, quand on le lit,
+    alors il a au moins trois propositions et un indice qui dit pourquoi elle est fausse sans nommer
+    la bonne reponse (`SCI-1`, `SCI-4`) ; au plus un item sur six demande une valeur numerique
+    (`SCI-3`).
+  - Etant donne chaque fait, quand on lit le commentaire du paquet, alors il porte sa source
+    (`HIS-3`) ; aucun item ne se repond sans lire ce qu'il faut lire (`CON-1`).
+  - Etant donne les paquets de cycle 2 sur l'environnement, quand on les cherche dans
+    `adapters/adapter-content/src/main/resources/contenu`, alors `nadia-prof` confirme qu'il n'en
+    existe pas sur le meme objet, ou les lit (`CYC-1`).
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les
+    conditions ci-dessus et que la ligne ferme sans mention de couverture partielle.
+- **Ce que cette story ne fait pas** : elle ne demande aucun engagement personnel de l'enfant ; elle
+  ne sert pas les risques geologiques et meteorologiques de `SCI-CM1-16`, deja fermee.
+- **Lien decision** : `DEC-0110` (section 4).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance B de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite).
+
+### S51-MAT-SYMETRIE - Reconnaitre un axe de symetrie et completer une figure par symetrie sur quadrillage (`MAT-CE1-17`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux reconnaitre la ligne qui coupe une figure en deux
+  moities qui se superposent quand on plie, et completer une figure de l'autre cote de cette ligne,
+  afin de comprendre ce qu'est la symetrie.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Espace et geometrie" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-17` : "Reconnaitre un axe de symetrie et
+  completer une figure par symetrie sur quadrillage." Ligne `non couvert`, `MATRICE-couverture.md`,
+  section "Mathematiques - CE1 (cycle 2)". **Non engagee a s51, reportee a s52** (`DEC-0110`
+  section 14 : refus de la borne a trois instances par `nadia-prof`). `MAT-CE1-17` aura attendu neuf
+  sprints sans engagement, s43 a s51.
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`,
+  section 3) : verdict **ACCEPTE SOUS CONDITIONS `SYM-CE1-1` a `SYM-CE1-3`** ; `couvert-valide`
+  atteignable avec une mention.
+
+  > `SYM-CE1-1` - L'axe se reconnait sur un dessin, jamais sur un texte. Un item de reconnaissance
+  > d'axe montre une figure et des lignes candidates tracees dessus ; l'enfant designe celle qui est
+  > un axe de symetrie. Aucune formulation verbale ne remplace ce dessin.
+  >
+  > `SYM-CE1-2` - Au moins une ligne candidate coupe la figure en deux parties de meme aire sans etre
+  > un axe de symetrie - la diagonale d'un rectangle non carre est le cas type. Cette ligne est
+  > presente sur au moins la moitie des items de reconnaissance d'axe.
+  >
+  > `SYM-CE1-3` - Completer par symetrie : une seule case manque par item, et elle ne se trouve pas par
+  > voisinage. L'axe est trace sur le quadrillage, la figure est dessinee d'un cote et incomplete de
+  > l'autre, et il manque exactement une case. La case attendue n'est jamais la seule case vide
+  > touchant la figure. Bornes de grille : celles de `DEP-CE1-2`.
+
+  `DEP-CE1-2` (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`, section 1) : grille d'au moins 4 x 4 et d'au plus 6 x 6 cases, toutes de meme
+  taille et toutes designables.
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on lit ses items, alors la mecanique est `designation`, la
+    forme d'item est `ZoneADesigner`, et aucune mecanique ni forme d'item neuve n'est ajoutee ; chaque
+    item declare `illustration` et `illustrationTexteAlternatif` non vide.
+  - Etant donne un item de reconnaissance d'axe, quand on lit son enonce, alors il ne decrit pas la
+    propriete (*"qui partage la figure en deux parties superposables"*) : la reponse est entierement
+    dans le dessin (`SYM-CE1-1`).
+  - Etant donne les items de reconnaissance d'axe, quand on regarde leurs dessins, alors au moins la
+    moitie portent une ligne candidate qui coupe la figure en deux parties de meme aire sans etre un
+    axe (`SYM-CE1-2`).
+  - Etant donne un item de completion, quand on regarde son dessin, alors l'axe est trace sur un
+    quadrillage de 4 x 4 a 6 x 6 cases de meme taille, il manque exactement une case de l'autre cote de
+    l'axe, et la case attendue n'est pas la seule case vide touchant la figure (`SYM-CE1-3`,
+    `DEP-CE1-2`).
+  - Etant donne `FER-3`, quand on compte, alors *reconnaitre un axe* et *completer par symetrie*
+    portent chacun au moins trois items ; au moins dix items servent la ligne, et le paquet porte
+    strictement plus d'items que de manches (`FER-2`, `DEC-0064`).
+  - Etant donne chaque item, quand on compte ses zones, alors il en porte au moins trois (`ZON-8`) ;
+    quand on compare deux zones d'un meme item, alors elles ne se chevauchent pas (`ZON-13`) ;
+    quand on lit les libelles de zone du paquet, alors ils sont tous de la meme forme (nommante ou
+    positionnelle, jamais les deux) et aucun ne nomme la cible que l'enonce demande (`ZON-10`) ;
+    quand on lit l'enonce, alors il demande une seule designation (`ZON-14`).
+  - Etant donne l'ensemble du paquet, quand on lit l'identifiant de la bonne zone de chaque item,
+    alors elle n'est ni toujours la premiere ni toujours la derniere declaree ; l'enonce ne nomme
+    pas le libelle de la bonne zone ; l'indice ne le nomme pas non plus.
+  - Etant donne le reacteur complet apres le commit du paquet, quand on lance `mvn -B clean verify`,
+    alors le resultat est `BUILD SUCCESS`, y compris les garde-fous de designation (dont le plafond de
+    paquets de designation en production, mis au compte reel).
+  - Etant donne la matrice apres le Done, quand `MAT-CE1-17` ferme, alors sa cellule porte mot pour
+    mot : *"reconnaitre un axe de symetrie, et completer une figure par symetrie a raison d'une case
+    par item ; completer une figure a plusieurs cases reste non couvert, aucune mecanique ne recoit une
+    suite de gestes dans une meme manche"*.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que l'axe ou la case se trouve sur le dessin seul, a la taille de rendu, zones
+    masquees, puis que la zone declaree bonne couvre l'endroit trouve (`ZON-9`) ; la lisibilite des
+    dessins ; l'exactitude de chaque symetrie.
+- **Ce que cette story ne fait pas** : elle ne demande jamais de completer plusieurs cases dans une
+  meme manche ; elle ne sert ni les figures planes nommees (`MAT-CE1-15`) ni le codage de deplacement
+  (`MAT-CE1-14`) ; elle ne fixe aucune figure precise. **Deux points sont rendus a `theo-archi`, pas
+  tranches ici** : la pose de zones qui ne se chevauchent pas sur des lignes candidates qui se croisent
+  (`ZON-13`), et le cout du materiau (`DEC-0110` section 1.5).
+- **Lien decision** : `DEC-0110` (sections 1 et 5).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance C de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite ; `ines-design` pour les contraintes de
+  dessin).
+
+### S51-MAT-MULTIPLICATION - Comprendre le sens de la multiplication (`MAT-CE1-06`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux voir qu'une multiplication, c'est la meme quantite
+  comptee en rangees ou en colonnes, ou une meme addition repetee, afin de comprendre ce que veut dire
+  "3 fois 5" avant de l'apprendre par coeur.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-06` : "Comprendre le sens de la
+  multiplication (addition reiteree, disposition en lignes et en colonnes)." Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Mathematiques - CE1 (cycle 2)". **Non engagee a s51, reportee a
+  s52** (`DEC-0110` section 14).
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`,
+  section 6) : verdict **ACCEPTE SOUS CONDITIONS `MUL-CE1-1` a `MUL-CE1-7`** ; `couvert-valide`
+  atteignable avec les dessins de `MUL-CE1-5`, `en cours` sinon.
+
+  > `MUL-CE1-1` - bornes. Les deux facteurs sont des entiers de 2 a 10 inclus ; le produit est au plus
+  > 100.
+  >
+  > `MUL-CE1-2` - aucun item ne se presente comme un produit nu. Aucun item de cette ligne n'a pour
+  > enonce `a x b = ?` seul. Chaque item montre soit l'addition reiteree ecrite, soit une disposition
+  > dessinee.
+  >
+  > `MUL-CE1-3` - les deux sens de l'addition reiteree, et ce sont deux taches. Au moins trois items
+  > vont de la somme repetee vers le produit, et au moins trois items vont du produit vers la somme
+  > repetee.
+  >
+  > `MUL-CE1-4` - la commutativite est servie, et par la disposition. Au moins deux items portent sur
+  > une meme disposition lue dans les deux sens - rangees fois colonnes et colonnes fois rangees - et
+  > l'enonce ou l'explication dit que les deux comptes donnent le meme total.
+  >
+  > `MUL-CE1-5` - si une disposition est dessinee, elle l'est reellement. Les elements sont identiques
+  > entre eux (meme forme, meme taille, meme couleur) et alignes en un reseau rectangulaire regulier ;
+  > au plus dix rangees et dix colonnes ; chaque element reste distinguable de son voisin a la taille
+  > reelle de rendu. Les elements ne sont ni des solides, ni des figures planes nommees par le
+  > programme : un rond plein ou un point. L'enonce ne dit jamais le nombre de rangees ni le nombre de
+  > colonnes.
+  >
+  > `MUL-CE1-6` - distracteurs, et les trois rangs de la bonne reponse sont atteignables. Les formes
+  > admises, et seulement celles-la : la somme des deux facteurs (`a + b`) ; une rangee oubliee
+  > (`a x (b - 1)`) ; une rangee de trop (`a x (b + 1)`) ; une colonne de trop (`(a + 1) x b`), et,
+  > quand `a = b`, `a x (b + 2)` a sa place. Tous les distracteurs sont des entiers positifs, distincts
+  > entre eux et de la bonne reponse. `a + b` egale `a x b` exactement quand `a = b = 2` : cette forme
+  > est alors interdite sur cet item.
+  >
+  > `MUL-CE1-7` - couverture partielle, mention exacte exigee dans la matrice tant que les
+  > dispositions ne sont pas dessinees. Si le paquet livre ne porte que de l'addition reiteree
+  > ecrite : *"addition reiteree seule ; la disposition en lignes et en colonnes n'est servie par aucun
+  > jeu et ne peut pas l'etre par du texte"*, et la ligne reste `en cours`. Si les dispositions sont
+  > dessinees et que `MUL-CE1-4` et `MUL-CE1-5` sont tenues, aucune mention n'est due.
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on lit ses items, alors la mecanique est `bandit-manchot`, la
+    forme d'item est `question` avec `illustration` et `illustrationTexteAlternatif` sur les items a
+    disposition dessinee (meme forme que `ce1-solides`, `ADR-0073`) ; aucune mecanique ni forme d'item
+    neuve.
+  - Etant donne chaque item, quand on lit son enonce, alors il n'est pas un produit nu `a x b = ?`
+    (`MUL-CE1-2`) ; et les deux facteurs sont des entiers de 2 a 10 de produit au plus 100
+    (`MUL-CE1-1`).
+  - Etant donne le paquet, quand on classe ses items, alors au moins trois vont de la somme repetee
+    vers le produit et au moins trois du produit vers la somme repetee (`MUL-CE1-3`) ; au moins deux
+    items portent sur une meme disposition lue dans les deux sens et disent que les deux comptes
+    donnent le meme total (`MUL-CE1-4`).
+  - Etant donne un dessin de disposition, quand on le regarde a la taille de rendu, alors ses
+    elements sont des ronds pleins ou des points identiques alignes en reseau regulier de au plus dix
+    rangees et dix colonnes, et l'enonce ne donne ni le nombre de rangees ni celui de colonnes
+    (`MUL-CE1-5`).
+  - Etant donne un item, quand on lit ses deux distracteurs, alors chacun est d'une des formes
+    admises, positif, distinct de l'autre et de la bonne reponse, la famille etant declaree a cote de
+    l'item ; la bonne reponse occupe, sur le paquet, chacun des trois rangs (plus petite, intermediaire,
+    plus grande des trois propositions) (`MUL-CE1-6`).
+  - Etant donne le paquet livre, quand on lit ses enonces, alors aucun n'a la forme `3 x ? = 12`, ne
+    pose un partage ou un groupement en mots, ni ne pose le cas nu *"Combien de fois 3 dans 12 ?"*
+    (`MUL-CE1-2` ; table de la section 11.2 de `ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md`,
+    colonne `MAT-CE1-06`) ; et aucun item n'est un rappel de table (`bandit-manchot-tables-multiplication-ce1`,
+    `MAT-CE1-07`) sous un autre habillage (`MUL-CE1-2`).
+  - Etant donne `FER-3` et `FER-2`, quand on compte, alors au moins dix items servent la ligne et le
+    paquet porte strictement plus d'items que de manches ; chaque enonce respecte `LON-CE1-1` et
+    `LON-CE1-2`.
+  - Etant donne le reacteur complet apres le commit du paquet, quand on lance `mvn -B clean verify`,
+    alors le resultat est `BUILD SUCCESS`, y compris `LIllustrationDeContenuResoutEtAucuneNeDortTest`.
+  - Etant donne la matrice apres le Done, quand la ligne bouge, alors elle porte la mention de
+    `MUL-CE1-7` si aucune disposition n'est dessinee, et `en cours` dans ce cas ; sinon elle peut
+    atteindre `couvert-valide` sans mention.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : qu'un reseau se compte a l'oeil sans se confondre, l'exactitude de chaque produit,
+    la vraisemblance de chaque distracteur.
+- **Ce que cette story ne fait pas** : elle ne sert pas le rappel automatise des tables ; elle ne
+  dessine ni solide ni figure plane nommee ; elle ne fixe aucun dessin precis. **Le cout du materiau
+  est rendu a `theo-archi`** (`DEC-0110` section 1.4).
+- **Lien decision** : `DEC-0110` (sections 1 et 5).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance C de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite ; `ines-design` pour les contraintes de
+  dessin).
+
+### S51-MAT-COMPARER-RANGER - Comparer, ranger et encadrer les nombres jusqu'a 1000 (`MAT-CE1-02`, moitie textuelle)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux comparer des nombres jusqu'a 1000, les ranger du plus
+  petit au plus grand et dire entre quelles dizaines ou quelles centaines se trouve un nombre, afin de
+  savoir lequel est le plus grand et ou il se place.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs" -
+  `squad/programme/mathematiques/competences-ce1.md`, `MAT-CE1-02` : "Comparer, ranger et encadrer les
+  nombres jusqu'a 1000, et les placer sur une ligne graduee." Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Mathematiques - CE1 (cycle 2)". **Cette story ne sert que les trois
+  premiers verbes. La ligne passe a `en cours` et ne peut pas fermer dans ce sprint** ; la moitie
+  "placer sur une ligne graduee" (paquet de designation) est reportee a s52 (`DEC-0110` section 5,
+  premier report). **Cette story entiere est non engagee a s51, reportee a s52** (`DEC-0110` section
+  14) : la ligne ne passe pas a `en cours` a s51.
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md`,
+  section 3) : **COUVERTURE PARTIELLE nommee sur texte seul**, `ORD-CE1-1` a `ORD-CE1-6`.
+
+  > `ORD-CE1-1` - bornes et echelle. Les nombres compares, ranges ou encadres sont des entiers de 0 a
+  > 1000 inclus, deux a deux distincts a l'interieur d'un meme item. Au moins la moitie des items
+  > mettent en jeu au moins un nombre de trois chiffres.
+  >
+  > `ORD-CE1-2` - *ranger* reprend `RAN-1` a `RAN-8`, avec deux valeurs changees et rien d'autre :
+  > `RAN-2` devient des entiers de 0 a 1000 au lieu de 0 a 100 ; `RAN-3` devient au plus 16
+  > caracteres, espaces comprises, au lieu de 12.
+  >
+  > `ORD-CE1-3` - *comparer* garde ses items propres, et ils ne sont pas des items de rangement a trois
+  > nombres. Au moins trois items posent une comparaison de deux nombres (`<`, `>`, `=`, ou *"lequel
+  > est le plus grand"*), distincts des items de rangement.
+  >
+  > `ORD-CE1-4` - *encadrer* a des items a lui, aux deux echelles. Au moins quatre items
+  > d'encadrement. Les deux echelles sont servies : encadrer a la dizaine (`340 < 347 < 350`) et
+  > encadrer a la centaine (`300 < 347 < 400`), chacune par au moins un item. L'enonce nomme
+  > explicitement l'echelle demandee.
+  >
+  > `ORD-CE1-5` - couverture partielle, mention exacte exigee dans la matrice tant que la ligne
+  > graduee n'est pas dessinee : *"comparer, ranger et encadrer seuls ; le verbe 'placer sur une ligne
+  > graduee' n'est servi par aucun jeu et ne peut pas l'etre par du texte"*. La ligne reste `en cours`.
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on lit ses items, alors la mecanique est `bandit-manchot`, la
+    forme d'item est `question`, sans illustration ; aucun item ne demande de placer un nombre sur une
+    ligne graduee ni ne donne dans l'enonce la position d'un nombre sur une ligne
+    (*"entre quelles graduations se trouve 450 ?"* est un encadrement deguise et sert `ORD-CE1-4`, pas
+    le quatrieme verbe).
+  - Etant donne les nombres de chaque item, quand on les relit, alors ils sont des entiers de 0 a 1000,
+    deux a deux distincts dans un meme item, et au moins la moitie des items en portent un de trois
+    chiffres (`ORD-CE1-1`).
+  - Etant donne les items de rangement, quand on les relit, alors ils respectent `RAN-1` a `RAN-8`
+    avec `RAN-2` a 1000 et chaque proposition de trois nombres de au plus 16 caracteres, espaces
+    comprises (`ORD-CE1-2`).
+  - Etant donne le paquet, quand on classe ses items, alors au moins trois posent une comparaison de
+    deux nombres, distincte d'un rangement (`ORD-CE1-3`) ; au moins quatre sont des encadrements dont
+    l'enonce nomme l'echelle, la dizaine et la centaine etant chacune servie par au moins un item, et
+    dont la bonne reponse est un encadrement, jamais un complement (`ORD-CE1-4`).
+  - Etant donne `FER-3` et `FER-2`, quand on compte, alors comparer, ranger et encadrer portent chacun
+    au moins trois items, au moins dix items servent la ligne, et le paquet porte strictement plus
+    d'items que de manches ; chaque enonce respecte `LON-CE1-1` et `LON-CE1-2`.
+  - Etant donne la matrice apres le Done, quand `MAT-CE1-02` bouge, alors sa cellule porte mot pour
+    mot la mention de `ORD-CE1-5` et le statut est `en cours`, jamais `couvert-valide`.
+  - Etant donne le paquet de `bandit-manchot-complements-dizaine-ce1`, quand on le lit a cote du
+    paquet livre, alors aucun item d'encadrement n'a pour reponse un complement (`ORD-CE1-4`).
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
+    `nadia-prof` : que le paquet travaille reellement `MAT-CE1-02` et non `MAT-CP-02` (borne a 100)
+    ni `MAT-CE1-03` ; l'exactitude arithmetique de chaque enonce et de chaque distracteur.
+- **Ce que cette story ne fait pas** : elle ne sert pas "placer sur une ligne graduee", qui demande un
+  paquet de designation et un materiau dessine, non engages (`DEC-0110` section 5) ; elle ne ferme pas
+  la ligne.
+- **Lien decision** : `DEC-0110` (sections 1 et 5).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance C de `nadia-prof` pour le Done
+  pedagogique ; `theo-archi` pour l'avis de faisabilite).
