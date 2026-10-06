@@ -119,13 +119,22 @@ class LesFiguresDeSymetrieMontrentCeQueLeursItemsAffirmentTest {
         }
     }
 
+    /**
+     * Fins de ligne normalisees en LF : un depot extrait sous core.autocrlf=true ecrit les dessins en
+     * CRLF, et une mutation ou un motif qui suppose un saut de ligne seul devient alors un no-op muet.
+     */
+    private static String enLf(String source) {
+        return source.replace("\r\n", "\n");
+    }
+
     private static Map<String, String> dessinsDe(Path racine) {
         Map<String, String> dessins = new LinkedHashMap<>();
         for (String module : LesGardeFousSontMisALEpreuveTest.modulesDeclares(racine)) {
             Path repertoire = racine.resolve(module).resolve(ILLUSTRATIONS_DE_CONTENU);
             if (Files.isDirectory(repertoire)) {
-                dessins.putAll(LIllustrationDeContenuResoutEtAucuneNeDortTest
-                        .fichiersIndexesParNomDeBase(List.of(repertoire)));
+                LIllustrationDeContenuResoutEtAucuneNeDortTest
+                        .fichiersIndexesParNomDeBase(List.of(repertoire))
+                        .forEach((nom, source) -> dessins.put(nom, enLf(source)));
             }
         }
         return dessins;
@@ -628,7 +637,10 @@ class LesFiguresDeSymetrieMontrentCeQueLeursItemsAffirmentTest {
         List<ItemDeSymetrie> items = recensement(racine);
         ItemDeSymetrie grille = items.stream().filter(item -> !dessins.get(item.dessin()).contains("<polygon"))
                 .findFirst().orElseThrow();
-        dessins.put(grille.dessin(), dessins.get(grille.dessin()).replaceFirst("<rect [^>]*/>\n", ""));
+        String avant = dessins.get(grille.dessin());
+        dessins.put(grille.dessin(), avant.replaceFirst("<rect [^>]*/>\n", ""));
+        assertThat(dessins.get(grille.dessin())).as("la mutation retire bien une case pleine")
+                .isNotEqualTo(avant);
 
         assertThat(defauts(items, dessins)).anyMatch(defaut -> defaut.contains(grille.dessin())
                 && defaut.contains("SYM-CE1-3"));

@@ -117,13 +117,22 @@ class LesReseauxDePointsMontrentCeQueLeursItemsAffirmentTest {
         }
     }
 
+    /**
+     * Fins de ligne normalisees en LF : un depot extrait sous core.autocrlf=true ecrit les dessins en
+     * CRLF, et une mutation ou un motif qui suppose un saut de ligne seul devient alors un no-op muet.
+     */
+    private static String enLf(String source) {
+        return source.replace("\r\n", "\n");
+    }
+
     private static Map<String, String> dessinsDe(Path racine) {
         Map<String, String> dessins = new LinkedHashMap<>();
         for (String module : LesGardeFousSontMisALEpreuveTest.modulesDeclares(racine)) {
             Path repertoire = racine.resolve(module).resolve(ILLUSTRATIONS_DE_CONTENU);
             if (Files.isDirectory(repertoire)) {
-                dessins.putAll(LIllustrationDeContenuResoutEtAucuneNeDortTest
-                        .fichiersIndexesParNomDeBase(List.of(repertoire)));
+                LIllustrationDeContenuResoutEtAucuneNeDortTest
+                        .fichiersIndexesParNomDeBase(List.of(repertoire))
+                        .forEach((nom, source) -> dessins.put(nom, enLf(source)));
             }
         }
         return dessins;
