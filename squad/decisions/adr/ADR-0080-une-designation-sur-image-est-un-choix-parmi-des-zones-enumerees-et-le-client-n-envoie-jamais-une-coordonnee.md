@@ -1090,6 +1090,11 @@ derniere 1/11 et 1/6. Les deux clauses sont vertes aujourd'hui et mordent au pre
   production depuis s34. L'avis de s51 placait sa correction dans le diff de A2 ; elle n'y est pas,
   ce lot etant borne aux garde-fous que A2 encode. Elle reste due par `theo-archi`, au plus tard dans
   le diff qui monte ce cliquet de 2 a 3 avec le premier paquet de `MAT-CE1-17`.
+  **Soldee le 2026-10-06 (s52, A1)**, plafond inchange a 2 : le message dit que les trois balayages
+  lisent la production depuis s34 et doivent etre verts sur le paquet neuf. Sa morsure 1 exige
+  desormais l'absence de *"Etendre le balayage"* ; elle est rouge sur le message precedent (mesure :
+  `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
+  -Dsurefire.failIfNoSpecifiedTests=false`, 6 tests, 1 echec, celui de la morsure 1).
 
 ### 4. Consequences
 
@@ -1097,11 +1102,46 @@ derniere 1/11 et 1/6. Les deux clauses sont vertes aujourd'hui et mordent au pre
   deux zones, la bonne est toujours premiere ou derniere, donc un nombre impair d'items a deux zones
   est rouge quelle que soit la repartition. `ZON-8` pose un plancher de trois zones ; ce cas n'existe
   pas en production.
-- **Le plancher de taille se lit en unites entieres.** `CadreDeZone` porte des pourcentages entiers,
-  et le garde-fou 3 rend 12,5 % du cote d'une image de 352 px egal a 44 px : **13 unites au moins**
-  par zone, et, pour que deux zones de 13 unites posees au bout de deux lignes voisines ne se
-  chevauchent pas, des extremites separees d'au moins 13 unites le long du bord ou elles se posent.
-  Les *"12,5 unites"* de l'avis de s51 (section 5.3) ne sont pas representables.
+- **Le plancher de taille se lit en unites entieres, et il se derive de la largeur servie la plus
+  etroite, pas de la taille declaree.** `CadreDeZone` porte des pourcentages entiers ; sur un dessin
+  carre (`viewBox` 0 0 100 100, declare 352 x 352, ceux de `MAT-CE1-17`), une unite vaut 1 % du cote
+  rendu. Le cote rendu le plus etroit mesure est **296 px**, a 320 px de fenetre (`ines-design`,
+  `squad/design/contrainte-ines-s52-dessins-de-l-instance-c-mathematiques-ce1.md`, section 1.2,
+  rendu reel du jar). Le plancher arithmetique y vaut 44 / 2,96 = 14,9, soit 15 unites (44,4 px) ;
+  **le plancher retenu est 16 unites** (47,4 px a 296, 56,3 px a 352), `ines-design` ayant ecarte
+  15 pour sa marge de 0,4 px (meme document, section 1.3). Pour que deux zones de 16 unites posees
+  au bout de deux lignes voisines ne se chevauchent pas, leurs extremites sont separees d'au moins
+  16 unites le long du bord ou elles se posent.
+
+**Amendement du 2026-10-06 (s52, `theo-archi`, A2bis) - ce point disait 13 unites, et c'etait
+faux a 320 px de fenetre.** Il derivait le plancher du calcul du garde-fou 3, qui juge a 352 px
+(`.image-designation { max-height: 22rem }`) : *"13 unites au moins par zone"*. A 296 px, 13 unites
+rendent 38,5 px, sous les 44 px, et le garde-fou 3 ne le voit pas. Trouve par la mesure
+d'`ines-design`, route par l'avis de faisabilite de s52 (F3, action A2bis). **Le garde-fou 3 n'est
+pas modifie** : deriver sa taille rendue de la largeur servie est A3, et cet amendement ne le fait
+pas.
+
+**Regle executable de A2bis : aucune, et le motif.** Un test de contenu *"tout cadre fait au moins
+16 unites"* serait faux dans les deux sens.
+
+1. **Il recopierait une mesure de rendu dans une constante que rien n'epingle.** 296 px est le
+   produit de la feuille de style, du gabarit et du conteneur a 320 px de fenetre ; un litteral 16
+   ou 296 ecrit dans un test ne rougit pas le jour ou l'un d'eux bouge. C'est le membre de
+   comparaison ecrit a la main qu'`ADR-0055` refuse.
+2. **Il rougirait sur des cadres qui tiennent le plancher.** Mesure du 2026-10-06, script de poste
+   non commite, motif `cadre: { x, y, largeur, hauteur }` sur les deux paquets servis, a
+   `b4ce7d93` : 94 cadres (`cp-frise-de-la-journee` 58, `cp-plan-de-la-classe` 36), **48 sous 16
+   unites** (42 largeurs de la frise et 6 hauteurs du plan, toutes a 15), **aucun sous 15**. Sur le
+   plan (`plan-classe.svg`, carre 352), 15 unites rendent 44,4 px a 296 : au-dessus du plancher.
+   La frise (`640 x 320`, non carree) n'a pas ete mesuree au rendu ; c'est le cas qu'A3 doit juger.
+   Seize unites sont une contrainte de dessin avec sa marge, pas un plancher d'accessibilite.
+
+**Ce qui la garde aujourd'hui** : rien d'automatique entre 13 et 15 unites. Le plancher se tient a
+la redaction (refus 5 de la section 2.7 des contraintes d'`ines-design`) et a l'audit
+(`nadia-prof`). **Le mecanisme automatique est A3** : le garde-fou 3 derivant la taille rendue de la
+largeur servie et jugeant chaque item. **Ce qui me ferait changer d'avis** : A3 livre, ce paragraphe
+cesse d'etre une regle de redaction et devient la valeur que le garde-fou derive. Compte des
+`ArchRule` : inchange.
 
 ### 5. Alternatives considerees
 
@@ -1126,5 +1166,6 @@ A3 (garde-fou 3 sur une image non carree, juge sur la seule premiere manche) **n
 dessins de `MAT-CE1-17` sont carres a 352 px, ou le calcul du garde-fou est exact. **Ce qui reste
 vrai sur `MAT-CE1-17`** : `LEcranDeMancheDuJeuDeDesignationReelEstServiTest` ne juge que l'ecran de
 la premiere manche de chaque jeu, donc une zone de 12 unites sur un autre item passe ce garde-fou.
-C'est un faux vert possible, pas un blocage ; le plancher de 13 unites de la section 4 se tient a la
-redaction et a l'audit jusqu'a A3.
+C'est un faux vert possible, pas un blocage ; le plancher de 16 unites de la section 4 (A2bis) se
+tient a la redaction et a l'audit jusqu'a A3. Le juge calculant a 352 px, une zone de 13 ou 14
+unites passe aussi sur la premiere manche, et rend moins de 44 px a 296.
