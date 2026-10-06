@@ -190,3 +190,15 @@ comprise**, ou elle écrit l'écart et son motif. `PAR-11` n'est pas tranchée i
 | Q3 : règle de lecture des homographes | `marc-dev` | sha obligatoire, liste demandée |
 | C5 clause 1 sur `ADR-0104` | `theo-archi` | le statut de l'`ADR` dépend de cette seule réponse |
 | `PAR-9` maintenue | `camille-po`, `sofia-sm` | s'applique à la `DEC` d'ouverture de s53 |
+
+## Amendement du 2026-10-06 (`nadia-prof`, s52, instance A) : l'explication de Q2 n'est pas exigée
+
+Le texte de la section 2 est inchangé. Sa puce *"L'explication nomme la relation sur le mot de l'item"*
+cesse d'être une exigence.
+
+Je l'ai écrite sans relire le garde-fou des explications (`ChaquePaquetExpliqueSesItemsAVariationTest`,
+`ADR-0024`), qui lie toute explication à une clé `graphie` sans objet dans un paquet de vocabulaire.
+C'est la même erreur que sur `FRA-CE1-22` à s51. Au jeu, l'écran de révélation montre déjà la question,
+qui nomme la relation et le mot cible, la bonne réponse et l'indice qui donne le sens de la relation :
+une explication n'y ajouterait rien. Décision et vérification :
+`FICHE-bandit-manchot-synonymes-contraires-ce1.md`, verdict du 2026-10-06, section 4.

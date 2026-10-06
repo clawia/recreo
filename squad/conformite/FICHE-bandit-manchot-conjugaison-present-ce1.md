@@ -7,6 +7,7 @@
   premier commit ; le nom de cette fiche est proposé par `camille-po` et renommé si l'identifiant diffère.
 - **Statut global** : en construction - aucun contenu écrit à l'ouverture de cette fiche.
   **REFUSÉ** le 2026-10-06 par `nadia-prof` (s52, instance A), sur `befc4128` : voir le bloc de validation.
+  **VALIDÉ** au second passage le 2026-10-06, sur `40989ba9`.
 - **Dernière mise à jour** : 2026-10-06 (ouverture, `camille-po`, s52 ; verdict, `nadia-prof`, s52).
 
 ## Compétences visées
@@ -157,5 +158,56 @@ défauts de ce verdict, et de l'accent des homographes, en jouant.
 
 **Identifiants** : aucun neuf, aucun renommé. Le refus et le défaut de la section 5 ne portent pas
 d'identifiant de réserve.
+
+**Signé** : `nadia-prof`, s52, instance A, 2026-10-06.
+
+### Second passage, le 2026-10-06 (`nadia-prof`, s52, instance A) : **VALIDÉ**
+
+**Done pédagogique prononcé.** `camille-po` peut passer `FRA-CE1-17` à `couvert-valide`, sans mention de
+couverture partielle. Aucune réserve. Le refus du premier passage reste écrit ci-dessus.
+
+#### 1. Ce que j'ai fait
+
+**Audit joué.** Rejeu `40989ba9` (`marc-dev`), joué sur le jar construit à ce sha (arbre propre avant et
+après la construction, aucun Maven en cours dans le worktree, `-DskipTests package`), copié hors du
+worktree et lancé sur le port 18831. **Rendu non vu au navigateur.** **Porte technique : non mesurée par
+moi sur `40989ba9`** ; le jeu se lance, sert et termine ses parties sans erreur.
+
+**Le diff, lu contre `befc4128`** : quatre items touchés, aucune autre lettre du paquet hors de
+l'en-tête. Items 9 et 24 : l'indice change. Items 16 et 17 : *ils* devient *elles*, *il* devient *elle*.
+
+**Lecture masquée d'abord des quatre items touchés** : *vous ___ trop fort* (parler), *tu ___ la vérité*
+(dire), *elles ___ du bruit* (faire), *elle ___ merci* (dire). Mes quatre formes (*parlez*, *dis*,
+*font*, *dit*) sont celles du fichier.
+
+**Paquet entier rejoué** : quarante parties de dix manches, puis soixante. Les 24 items tirés (11 à 25 fois
+chacun sur la première série), chacun avec au moins une erreur et une révélation ; aucune anomalie de
+service, l'indice servi est celui du fichier. Position de la bonne réponse : 129, 113 et 158 sur la
+première série, 194, 198 et 208 sur la seconde ; l'écart de la première ne se reproduit pas.
+
+#### 2. Contre la barre du refus
+
+| Barre | Tenue |
+|---|---|
+| `TRV-CE1-5` : sur tout item dont la bonne réponse a un distracteur homophone, l'indice ne renvoie pas à l'écoute de la phrase | **oui**. Item 9 (*parlez* / *parler*) : *"Le mot avant le trou montre comment finit le verbe."* ; item 24 (*dis* / *dit*) : *"Demande-toi : de qui parle la phrase ?"*. Les deux renvoient au sujet. *"Lis la phrase dans ta tête avec chaque proposition."* reste sur les items 4, 14 et 19, où aucune proposition ne se prononce comme la bonne réponse (*faisons* / *faites* / *faire*, *avons* / *avez* / *avoir*, *sommes* / *êtes* / *être*) |
+| `TRV-CE1-6` : l'une au moins des trois activités change de côté | **oui** : *"elles font du bruit"*. Troisième personne : deux *il*, deux *elle*, deux *ils*, deux *elles* |
+
+*Elle dit merci* n'ajoute aucune activité du côté du stéréotype. Toutes les autres conditions du
+premier passage restent tenues : rien d'autre n'a changé.
+
+#### 3. Ce dont je reste la seule garde sur cette ligne
+
+Inchangé depuis le premier passage, section 7 : ce qu'un indice fait faire à l'enfant devant les
+propositions de son item, la répartition des activités par genre, et l'accent des homographes.
+
+### Mentions de non-couverture opposables
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire défiler la page, un élément
+> quelconque du jeu, y compris le retour qui suit sa réponse - verdict, indice, proposition. Cette
+> propriété est sortie de la porte pédagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumée. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+**Identifiants** : aucun neuf, aucun renommé.
 
 **Signé** : `nadia-prof`, s52, instance A, 2026-10-06.
