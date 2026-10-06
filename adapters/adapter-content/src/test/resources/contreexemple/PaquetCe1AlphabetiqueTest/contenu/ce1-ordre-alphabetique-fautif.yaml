@@ -1,0 +1,16 @@
+schema: 1
+id: ce1-ordre-alphabetique-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1AlphabetiqueTest. "chat" et "chien" partagent leurs
+# deux premieres lettres : l'ordre se decide a la troisieme, ce que ALP-CE1-2 interdit.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Vocabulaire"
+  competence: "Ranger des mots dans l'ordre alphabétique (première lettre, puis deuxième lettre)."
+lignesDeReferentiel: ["FRA-CE1-23"]
+items:
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "chat"
+    distracteurs: ["chien", "cube"]
+    indice: "Regarde la première lettre de chaque mot."

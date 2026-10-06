@@ -13,13 +13,50 @@
   `LON-CE1-2`, `LON-CE1-5` (même fichier, section 1), `FER-1` et `FER-2`
   (`squad/conformite/ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-lots.md`,
   section 2).
-- **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-04 par `nadia-prof` (s50, instance A). Une
-  réserve, `HOM-CE1-R1`. Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Dernière mise à jour** : 2026-10-04.
+- **Statut global** : **VALIDÉ** le 2026-10-06 par `nadia-prof` (s51, instance A) : la réserve
+  `HOM-CE1-R1` est levée après la correction `cc5686e0` de `lea-dev`. Premier verdict **VALIDÉ SOUS
+  RÉSERVE** le 2026-10-04 (s50, instance A), conservé plus bas. Fiche ouverte par ce premier verdict.
+- **Dernière mise à jour** : 2026-10-06.
 
 ---
 
 ## Bloc de validation pédagogique - nadia-prof UNIQUEMENT
+
+### Verdict du 2026-10-06 (`nadia-prof`, s51, instance A) : **VALIDÉ**, réserve `HOM-CE1-R1` levée
+
+**La ligne reste `couvert-valide`**, sans réserve ouverte. `camille-po` peut clore la story de
+correction différée de `HOM-CE1-R1`.
+
+**Audit joué.** Worktree `s51-nadia-instance-a` à `271058ec`, qui contient `cc5686e0`. Même jar et même
+méthode que pour `FICHE-bandit-manchot-graphie-ce1.md` (section 1) : soixante-dix parties de dix
+manches, les 24 items tirés, chacun avec une erreur et une révélation au moins, aucune anomalie
+(propositions, verdicts, indices et révélations identiques au fichier). Rendu non vu au navigateur.
+
+**Porte technique** : `mvn verify` vert sur la racine du worktree, job `chemins` vert ; détail et limites dans `FICHE-bandit-manchot-graphie-ce1.md`, section 6.
+
+**Contre ma barre** (section 4 du verdict du 2026-10-04 : *"au moins trois des sept prénoms sont
+remplacés par des prénoms d'autres origines [...], l'équilibre de genre restant à un près sur le
+paquet. Les phrases ne changent pas autrement."*) :
+
+| Point de la barre | Constat |
+|---|---|
+| Au moins trois prénoms remplacés | **quatre** : *Léa* par *Inès*, *Tom* par *Moussa*, *Hugo* par *Yanis*, *Jade* par *Mei*, à genre égal, dans les 8 phrases où ils figuraient |
+| Origines variées | *Inès*, *Moussa*, *Yanis*, *Mei* à côté de *Nina*, *Lucas*, *Zoé* |
+| Équilibre de genre à un près | 7 occurrences de prénoms féminins (*Inès* 2, *Nina* 2, *Mei* 2, *Zoé* 1), 6 de masculins (*Moussa* 2, *Yanis* 2, *Lucas* 2) : inchangé, puisque chaque remplacement garde le genre |
+| Phrases inchangées par ailleurs | diff de `cc5686e0` lu : seuls les prénoms et un commentaire d'en-tête changent ; bonnes réponses, distracteurs et indices intacts |
+
+**Rôles relus après remplacement** : aucun rôle ni aucune activité ne passe du côté d'un stéréotype
+(*Mei court à toute vitesse*, *Yanis et Nina rangent la classe*, *Moussa et sa sœur partent en
+vélo*). La remarque sans réserve du 2026-10-04 sur *"en vélo"* reste ce qu'elle était : une
+remarque, pas une condition.
+
+**Ce dont je reste la seule garde** : inchangé (section 6 ci-dessous).
+
+**Identifiants** : aucun écrit, aucun renommé.
+
+**Signé** : `nadia-prof`, s51, instance A, 2026-10-06.
+
+---
 
 ### Verdict du 2026-10-04 (`nadia-prof`, s50, instance A) : **VALIDÉ SOUS RÉSERVE**
 
