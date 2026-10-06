@@ -280,6 +280,55 @@ class PaquetCe1TempsTest {
                 .hasSizeGreaterThan(1);
     }
 
+    /**
+     * TRV-CE1-6 et TPS-CE1-R1 : chaque activite du stereotype (ballon, linge, chant) est portee au
+     * moins une fois par un sujet de l'autre genre ou sans genre, et les prenoms restent equilibres
+     * a un pres. La table des prenoms est celle du paquet ; un prenom neuf s'y ajoute.
+     */
+    private static final Map<String, String> GENRE_DU_PRENOM = Map.ofEntries(
+            Map.entry("Inès", "F"), Map.entry("Nina", "F"), Map.entry("Salma", "F"),
+            Map.entry("Mei", "F"), Map.entry("Aïcha", "F"), Map.entry("Zoé", "F"),
+            Map.entry("Lucas", "M"), Map.entry("Moussa", "M"), Map.entry("Samir", "M"),
+            Map.entry("Yanis", "M"), Map.entry("Kofi", "M"), Map.entry("Hugo", "M"));
+
+    private static final Map<String, String> GENRE_DU_STEREOTYPE = Map.of(
+            "ballon", "M", "lavé", "F", "chant", "F");
+
+    private static Optional<String> prenomDe(Question item) {
+        return GENRE_DU_PRENOM.keySet().stream()
+                .filter(prenom -> Pattern.compile("(?<!\\p{L})" + prenom + "(?!\\p{L})", FLAGS)
+                        .matcher(item.enonce()).find())
+                .findFirst();
+    }
+
+    @Test
+    void tpsR1ChaqueActiviteDuStereotypeEstPorteParUnSujetDeLAutreGenreOuSansGenre() {
+        List<Question> items = items();
+        GENRE_DU_STEREOTYPE.forEach((activite, genreDuStereotype) -> {
+            List<Question> portees = items.stream()
+                    .filter(i -> i.enonce().toLowerCase(Locale.FRENCH).contains(activite))
+                    .toList();
+            assertThat(portees).as("TPS-CE1-R1 : l'activité '%s' figure dans le paquet", activite)
+                    .isNotEmpty();
+            assertThat(portees.stream().anyMatch(i -> prenomDe(i)
+                    .map(prenom -> !genreDuStereotype.equals(GENRE_DU_PRENOM.get(prenom)))
+                    .orElse(true)))
+                    .as("TPS-CE1-R1 : l'activité '%s' est portée au moins une fois par un sujet de"
+                            + " l'autre genre ou sans genre : %s", activite, portees)
+                    .isTrue();
+        });
+    }
+
+    @Test
+    void trv6LesPrenomsSontEquilibresEnGenreAUnPres() {
+        Map<String, Long> parGenre = new TreeMap<>();
+        items().forEach(i -> prenomDe(i)
+                .ifPresent(prenom -> parGenre.merge(GENRE_DU_PRENOM.get(prenom), 1L, Long::sum)));
+        assertThat(Math.abs(parGenre.get("F") - parGenre.get("M")))
+                .as("TRV-CE1-6 : prénoms par genre %s, écart d'au plus un", parGenre)
+                .isLessThanOrEqualTo(1L);
+    }
+
     @Test
     void lon5ChaquePropositionCompteAuPlusSixMots() {
         for (Question item : items()) {

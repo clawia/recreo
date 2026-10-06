@@ -39,7 +39,7 @@ items:
     bonneReponse: "futur"
     distracteurs: ["passé", "présent"]
     indice: "Ne te fie pas qu'au mot de temps : lis le verbe."
-  - enonce: "Moussa a joué au ballon hier."
+  - enonce: "Zoé a joué au ballon hier."
     bonneReponse: "passé"
     distracteurs: ["présent", "futur"]
     indice: "Le verbe décide, pas seulement le petit mot de temps."
@@ -51,7 +51,7 @@ items:
     bonneReponse: "futur"
     distracteurs: ["passé", "présent"]
     indice: "Le verbe décide, pas seulement le petit mot de temps."
-  - enonce: "Hier, Salma a lavé son pull."
+  - enonce: "Hier, Samir a lavé son pull."
     bonneReponse: "passé"
     distracteurs: ["présent", "futur"]
     indice: "Regarde le verbe, c'est lui qui décide."
@@ -59,7 +59,7 @@ items:
     bonneReponse: "présent"
     distracteurs: ["passé", "futur"]
     indice: "Cherche le verbe et regarde sa fin."
-  - enonce: "Demain, Mei chantera avec la classe."
+  - enonce: "Demain, Hugo chantera avec la classe."
     bonneReponse: "futur"
     distracteurs: ["passé", "présent"]
     indice: "Ne te fie pas qu'au mot de temps : lis le verbe."
@@ -71,7 +71,7 @@ items:
     bonneReponse: "présent"
     distracteurs: ["passé", "futur"]
     indice: "Le verbe change selon le moment."
-  - enonce: "Yanis dessinera un bateau."
+  - enonce: "Salma dessinera un bateau."
     bonneReponse: "futur"
     distracteurs: ["passé", "présent"]
     indice: "Regarde le verbe, c'est lui qui décide."
