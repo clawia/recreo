@@ -323,3 +323,38 @@ relevent d'aucun autre role :
    et `S51-FRA-TEMPS` et `S51-FRA-ALPHABETIQUE` demarrent sans attendre.
 3. **Isolation** : un worktree, une branche et un scratchpad dedies pour A et pour B, ecrits dans la
    consigne de lancement de chaque instance ; aucun pour C.
+
+## Amendement du 2026-10-06 (`sofia-sm`, cloture) : elements du planning devenus perimes
+
+Le texte ci-dessus est inchange : il dit ce que le planning savait le 2026-10-05. Le
+`relecteur-pedagogique` a signale cinq elements que les faits du sprint ont rendus faux. Cet amendement
+les met a jour, sources a l'appui. Il n'ouvre ni ne ferme aucun obstacle, ne prononce aucun Done et ne
+change aucun statut de la matrice.
+
+| # | Element perime | Ce que le planning disait | A la cloture | Source |
+|---|---|---|---|---|
+| 1 | Objectif (section "Objectif du sprint") | *"129/182 au mieux (70,9 %)"*, six fermetures | **127/182 (69,8 %)**, quatre fermetures : `FRA-CE1-22`, `FRA-CE1-20`, `FRA-CE1-23`, `SCI-CM1-10`. `SCI-CM1-15` et `SCI-CM1-18` restent `non couvert` (refusees). L'objectif gele n'est pas modifie : il est mesure, et il n'est pas atteint | `DEC-0110` section 16.7 ; commande de `MATRICE-couverture.md` relancee par moi : `couvert-valide` 123 a `e4d8ba3b`, 127 a la cloture |
+| 2 | Tarif de B (section "Stories retenues", paragraphe Tarifs) | B = 4,5 / 5,0, *"marge 0,5 = rejeu"* | **B = 4,5 + rejeu de `SCI-CM1-18` 0,5 = 5,0 : la marge est consommee**, et le plafond de `PAR-8` est atteint sans etre depasse. Meme geste pour A : 3,5 + rejeu de `FRA-CE1-22` 0,5 = **4,0**, marge de 1,0 non consommee. Engage 8,0, consomme 9,0 (deux rejeux, chacun pris sur la marge de son instance) | `DEC-0110` section 16.2 |
+| 3 | `SCI-CM1-15` (tableaux "Stories retenues" et "Verification poste/story") | `S51-SCI-TERRE-CM1` : *"engage"* | Engagee et auditee, **REFUSEE** au premier passage (items 4 et 11). **Aucun rejeu n'est engage** : la marge de B a ete employee au rejeu de `SCI-CM1-18` (section 15.3 de la `DEC`). Ligne `non couvert`. Story `S51-SCI-TERRE-CM1-REPRISE` : non engagee a s51, reportee a s52 | `FICHE-bandit-manchot-terre-cm1.md` ; `DEC-0110` sections 15.3 et 16.5 |
+| 4 | `S51-FRA-GRAPHIE` (section "Blocage a router" et tableaux) | engagement **sous condition suspensive** (R1, R2) | **Plus sous condition.** R1 : A1 existe, `ADR-0065` amende (section "Amendement du 2026-10-06 (s51, `theo-archi`) - A1"), commits `c2802a32` et `02ba9e80`. R2 : l'avis ecrit de `nadia-prof` existe, `ARBITRAGE-PREALABLE-s51-fra-ce1-22-graphie-cedille.md` (commit `0ce82262`, 13:52, avant le commit du paquet `271058ec`, 14:13). R3 : sans objet, la ligne n'a pas ete remplacee. Premier passage **REFUSE** (deux items sur 24), rejeu paye 0,5 (`df608669`), second passage **VALIDE** sans reserve (`7efcb400`) | `squad/decisions/adr/ADR-0065-...md` ; fiche `FICHE-bandit-manchot-graphie-ce1.md` ; `git log --format='%h %ad %s' --date=format:'%H:%M'` |
+| 5 | Numeros de ligne des stories `S51-*` (tableau "Verification poste/story") | `grep -n "^### S51-" docs/backlog/backlog.md` : voir ci-dessous | Decales de **+14** pour les neuf stories. `HOM-CE1-R1` (ligne 4058) n'a pas bouge | `grep -n "^### S51-" docs/backlog/backlog.md`, relance a `46c30a89` |
+
+Numeros de ligne, avant (planning) puis a la cloture :
+
+| Story | Ligne au planning | Ligne a la cloture |
+|---|---|---|
+| `S51-FRA-GRAPHIE` | 18706 | 18720 |
+| `S51-FRA-TEMPS` | 18759 | 18773 |
+| `S51-FRA-ALPHABETIQUE` | 18811 | 18825 |
+| `S51-SCI-CORPS-CM1` | 18859 | 18873 |
+| `S51-SCI-TERRE-CM1` | 18913 | 18927 |
+| `S51-SCI-ACTIVITE-HUMAINE-CM1` | 18957 | 18971 |
+| `S51-MAT-SYMETRIE` | 19007 | 19021 |
+| `S51-MAT-MULTIPLICATION` | 19084 | 19098 |
+| `S51-MAT-COMPARER-RANGER` | 19177 | 19191 |
+
+Les numeros de ligne d'un fichier de 19 000 lignes qui grossit a chaque sprint ne sont pas stables : le
+titre de la story fait foi, pas son numero.
+
+**Decision prise par cet amendement.** Aucune `ADR` ni `DEC` : il met a jour un planning avec des faits
+deja ecrits ailleurs.
