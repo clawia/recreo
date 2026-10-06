@@ -529,3 +529,93 @@ qui suit et je le dis.
 
 Aucun. L'amendement A.1 corrige une consigne (ce que le retrait touche) ; l'avis de `theo-archi` est deja
 celui que suit `marc-dev` (B1). Proprietaire du retrait : `marc-dev`, story `S52-RETRAIT-SCIENCES-CM1`.
+
+---
+
+## Amendement du 2026-10-06 (s52, `camille-po`, consigne U4) : `MAT-CE1-17` re-engagee, plancher de zone
+
+**Methode.** Les sections 1 a 12 et les amendements A.1 a A.4 ne sont pas reecrits. Sources lues sur le disque
+de la branche `s52-camille-amendements`, lignee de `round-two` a `bb0d6f94` : `ADR-0080` (A2, A2bis), le
+test `AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest`, les contraintes
+d'`ines-design` (section 4), l'avis de faisabilite (sections 4.1, 5), le planning de s52 (sections
+"Conditions de l'instance C", "Affectations nominatives"), et, par `git show`, les reponses de `nadia-prof`
+(U3) sur la branche `s52-nadia-instance-c`.
+
+### A.5 Les trois conditions de la section 5.2, lues avec la condition (1) de A.2
+
+| Condition | Verification (commande) | Etat |
+|---|---|---|
+| (1) moitie A2 | `edf15763`, `ZON-13` et rang de la bonne zone : avis 4.1, verts a `7350fb07` | remplie |
+| (1) moitie message du cliquet, etat demande par A.2 : commit sur `round-two`, et message qui ne demande plus d'etendre un balayage de production | (a) `git branch --contains ceffde66` rend `round-two` ; (b) `grep -rni "etendre le balayage de production" bootstrap/src/test/java/com/recreo/archi/` ne rend aucune ligne ; le message du test cite `BALAYAGES_DE_PRODUCTION` (trois noms de tests, lignes 67 a 70) et dit de monter `PLAFOND_DE_DESIGNATION_EN_PRODUCTION` *"dans le diff qui sert ce paquet"* ; la ligne 201 du test asserte `hasMessageNotContaining("Etendre le balayage")` | **remplie** |
+| (2) contraintes d'`ines-design`, quadrillage inclus | `git branch --contains 44ac6c02` rend `round-two` ; la section 4 est ecrite (4.1 mesures et commandes, 4.2 grille, 4.3 `SYM-CE1-3`, 4.5 poids) ; `git show s52-nadia-instance-c:squad/conformite/ARBITRAGE-PREALABLE-s52-instance-c-reponses.md` : section 2, Q4 *"oui, pour la partie pedagogique"*, section 3.2 cases candidates en sous-ensemble | **remplie** |
+| (3) developpeur de dessin affecte | planning, section "Affectations nominatives" : `lea-dev`, seule ecrivaine de C | **remplie** |
+
+**Deux ecarts de lettre, dits.** (i) La condition (2) de la section 5.2 nommait une *"legende a 36 libelles"*.
+`ines-design` la remplace par des zones sur les seules cases candidates (4.3) et `nadia-prof` l'admet (3.2) :
+il n'y a plus de legende a 36 libelles a ecrire, et la condition est lue comme remplie sur ce remplacement,
+pas sur l'ecriture d'une legende. Le texte des trois a cinq libelles qui reste (`ines-design`, section 5
+"Pour `nadia-prof`", point 8) et le choix de `n` par item (point 9) sont du contenu : `lea-dev` les ecrit,
+`nadia-prof` les juge a l'audit ; ses reponses ne les traitent pas et je ne les lui prete pas. Les points 6 et
+7 de la meme section portent sur `DEP-CE1-2`, qui est `MAT-CE1-14`, non engagee. (ii) La reponse de
+`nadia-prof` vit sur la branche `s52-nadia-instance-c`, non fusionnee dans `round-two` : elle **existe** et se
+lit par `git show`, ce que la condition demande. Sa fusion est un geste de `sofia-sm`, a faire avant le
+premier commit du paquet de symetrie.
+
+### A.6 `MAT-CE1-17` est re-engagee a 1,5
+
+Les trois conditions sont remplies : `MAT-CE1-17` est **engagee**, `S51-MAT-SYMETRIE`, tarif 1,5 (1,0 plus 0,5
+de lot illustre, `REC-1`), `lea-dev`, apres `S51-MAT-MULTIPLICATION` (planning, section "Affectations").
+Le budget de 1,5 que le planning avait libere vers s53 **n'est plus libere** : la destination s53 est annulee.
+
+**Compte des reports.** Neuf sprints de report (s43 a s51, `DEC-0110` 14.5). Le planning a ecrit *"non
+engage, budget libere"* a sa cloture, ce qui portait le compte a dix ; cet amendement engage le poste dans
+s52, et **le compte s'arrete a neuf**, comme la section 5.2 le prevoyait pour un poste engage a s52. Le
+delai entre la cloture du planning et cet engagement est celui de U1 a U3, et il est ecrit ici pour que le
+compte ne soit pas lu comme l'absence de tout report a s52.
+
+**Arithmetique de capacite (`PAR-8` : plafond individuel 5,0, trois lots au plus par instance).**
+
+| Instance C | Tarif | Cumul |
+|---|---|---|
+| `S51-MAT-MULTIPLICATION` (`MAT-CE1-06`), lot | 1,5 | 1,5 |
+| `S51-MAT-COMPARER-RANGER` (`MAT-CE1-02`, moitie textuelle), lot, ne ferme pas | 1,0 | 2,5 |
+| `S51-MAT-SYMETRIE` (`MAT-CE1-17`), lot | 1,5 | **4,0** |
+| rejeu nomme (`PAR-10`) | 0,5 | **4,5** |
+
+Trois lots, le maximum de `PAR-8`. **Correction d'un chiffre repris par la consigne U4 : 4,0 est le total de C
+avec `MAT-CE1-17`** (section 2 et decision 2 de cette decision : 1,5 + 1,5 + 1,0), pas un total auquel ajouter
+1,5. A la cloture du planning, C engageait 2,5 sans elle ; re-engagee, C revient a 4,0. Le plafond tient :
+4,0 engages, 4,5 avec le rejeu, 0,5 de marge sous 5,0 (deux rejeux : 5,0, au plafond, pas au-dela). Total du
+sprint : A 4,0 plus C 4,0 = **8,0 engages**, la borne de `DEC-0098` section 3 ; avec un rejeu par instance,
+9,0 au plus. Le risque ecrit en section 2 (C porte 0,5 de rejeu au lieu des 1,5 que `PAR-11` demanderait) est
+inchange ; il pese sur `MAT-CE1-17`, que `lea-dev` ecrit en dernier.
+
+### A.7 Plancher de zone : la barre de refus est celle de `nadia-prof`, 16 unites est une marge de dessin
+
+Trois textes disent trois choses. `ADR-0080` A2bis (section 4) et les contraintes d'`ines-design` (2.7
+point 5) retiennent 16 unites ; `nadia-prof` (U3, section 6) **ne retient pas 16 comme exigence
+pedagogique** : sa barre est un rendu d'**au moins 44 px a 296 px de large** (la largeur servie a 320 px de
+fenetre), soit 15 unites sur un dessin carre de 100 unites (44,4 px). A2bis mesure 48 cadres a 15 unites dans
+les deux paquets servis et aucun sous 15 ; une exigence a 16 les rendrait non conformes apres coup.
+
+**Arbitrage de `camille-po`.** Pour `MAT-CE1-17` et `MAT-CE1-06` :
+
+1. **La regle de refus d'une zone est la barre de `nadia-prof`** : une zone rendue sous 44 px a 296 px est
+   refusee ; une zone qui s'y tient ne l'est pas, quel que soit son chiffre en unites (U3, section 6,
+   motif 2 : *"une zone qui se rate au doigt est refusee, quel que soit son chiffre"*).
+2. **16 unites est la marge de dessin** : `lea-dev` dessine a 16 unites et plus (47,4 px a 296 sur un carre
+   de 100 unites), et un cadre de 15 unites n'est pas refuse pour cela.
+3. Un cadre sous 15 unites sur un carre de 100 est sous la barre ; sur un dessin non carre, la taille rendue
+   se mesure (la frise 640 x 320 n'a pas ete mesuree, A2bis point 2).
+
+**Cet amendement ne change pas `ADR-0080`**, qui est a `theo-archi`. **Ecart route.** A2bis ecrit *"le plancher
+se tient a la redaction (refus 5 de la section 2.7 des contraintes d'`ines-design`)"*, et ce refus 5 dit
+*"un cadre de zone sous 16 unites (sous 44 px a 296 px de large)"* : les deux textes presentent la marge
+comme le plancher de refus. Les remettre en accord avec l'arbitrage ci-dessus est a `theo-archi` (`ADR-0080`)
+et a `ines-design` (contraintes), par `sofia-sm` ; je ne reecris ni l'un ni l'autre.
+
+### A.8 Changement de code et routage
+
+Aucun changement de code dans cet amendement. Proprietaire de ce qu'il declenche : `lea-dev`, story
+`S51-MAT-SYMETRIE`, apres `S51-MAT-MULTIPLICATION`. Routage a `sofia-sm` dans le message de retour de
+`camille-po` : mise a jour du planning, fusion de la reponse de `nadia-prof`, ecart de A.7 a `theo-archi`.
