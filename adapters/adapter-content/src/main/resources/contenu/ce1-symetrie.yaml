@@ -41,27 +41,27 @@ items:
     bonneZone: ligne-b
     indice: "Imagine que tu plies la figure le long de chaque ligne."
     zones:
-      - id: ligne-a
-        libelle: "la ligne qui finit au milieu, à droite"
-        cadre: { x: 82, y: 66, largeur: 16, hauteur: 16 }
       - id: ligne-b
         libelle: "la ligne qui finit en haut"
         cadre: { x: 42, y: 0, largeur: 16, hauteur: 16 }
       - id: ligne-c
         libelle: "la ligne qui finit au milieu, à gauche"
         cadre: { x: 0, y: 50, largeur: 16, hauteur: 16 }
+      - id: ligne-a
+        libelle: "la ligne qui finit au milieu, à droite"
+        cadre: { x: 82, y: 66, largeur: 16, hauteur: 16 }
   - enonce: "Touche le numéro de l'axe de symétrie."  # figure b
     illustration: symetrie-figure-b
     illustrationTexteAlternatif: "Une figure traversée par des lignes en pointillés."
     bonneZone: ligne-c
     indice: "Imagine que tu plies la figure le long de chaque ligne."
     zones:
-      - id: ligne-a
-        libelle: "la ligne qui finit en bas, à gauche"
-        cadre: { x: 4, y: 76, largeur: 16, hauteur: 16 }
       - id: ligne-b
         libelle: "la ligne qui finit au milieu, à droite"
         cadre: { x: 84, y: 60, largeur: 16, hauteur: 16 }
+      - id: ligne-a
+        libelle: "la ligne qui finit en bas, à gauche"
+        cadre: { x: 4, y: 76, largeur: 16, hauteur: 16 }
       - id: ligne-c
         libelle: "la ligne qui finit en bas"
         cadre: { x: 42, y: 84, largeur: 16, hauteur: 16 }
@@ -71,27 +71,27 @@ items:
     bonneZone: ligne-a
     indice: "Imagine que tu plies la figure le long de chaque ligne."
     zones:
-      - id: ligne-a
-        libelle: "la ligne qui finit en bas"
-        cadre: { x: 42, y: 84, largeur: 16, hauteur: 16 }
-      - id: ligne-b
-        libelle: "la ligne qui finit au milieu, à droite"
-        cadre: { x: 82, y: 52, largeur: 16, hauteur: 16 }
       - id: ligne-c
         libelle: "la ligne qui finit en haut"
         cadre: { x: 28, y: 0, largeur: 16, hauteur: 16 }
+      - id: ligne-b
+        libelle: "la ligne qui finit au milieu, à droite"
+        cadre: { x: 82, y: 52, largeur: 16, hauteur: 16 }
+      - id: ligne-a
+        libelle: "la ligne qui finit en bas"
+        cadre: { x: 42, y: 84, largeur: 16, hauteur: 16 }
   - enonce: "Touche le numéro de l'axe de symétrie."  # figure d
     illustration: symetrie-figure-d
     illustrationTexteAlternatif: "Une figure traversée par des lignes en pointillés."
     bonneZone: ligne-b
     indice: "Imagine que tu plies la figure le long de chaque ligne."
     zones:
-      - id: ligne-a
-        libelle: "la ligne qui finit au milieu, à droite"
-        cadre: { x: 84, y: 52, largeur: 16, hauteur: 16 }
       - id: ligne-b
         libelle: "la ligne qui finit en haut"
         cadre: { x: 42, y: 0, largeur: 16, hauteur: 16 }
+      - id: ligne-a
+        libelle: "la ligne qui finit au milieu, à droite"
+        cadre: { x: 84, y: 52, largeur: 16, hauteur: 16 }
       - id: ligne-c
         libelle: "la ligne qui finit en bas, à droite"
         cadre: { x: 82, y: 76, largeur: 16, hauteur: 16 }
@@ -101,15 +101,15 @@ items:
     bonneZone: ligne-c
     indice: "Imagine que tu plies la figure le long de chaque ligne."
     zones:
-      - id: ligne-a
-        libelle: "la ligne qui finit en bas, à droite"
-        cadre: { x: 69, y: 78, largeur: 16, hauteur: 16 }
       - id: ligne-b
         libelle: "la ligne qui finit en haut"
         cadre: { x: 50, y: 0, largeur: 16, hauteur: 16 }
       - id: ligne-c
         libelle: "la ligne qui finit au milieu, à gauche"
         cadre: { x: 0, y: 42, largeur: 16, hauteur: 16 }
+      - id: ligne-a
+        libelle: "la ligne qui finit en bas, à droite"
+        cadre: { x: 69, y: 78, largeur: 16, hauteur: 16 }
   - enonce: "Touche le numéro de l'axe de symétrie."  # figure f
     illustration: symetrie-figure-f
     illustrationTexteAlternatif: "Une figure traversée par des lignes en pointillés."
@@ -119,27 +119,27 @@ items:
       - id: ligne-a
         libelle: "la ligne qui finit en haut"
         cadre: { x: 36, y: 0, largeur: 16, hauteur: 16 }
-      - id: ligne-b
-        libelle: "la ligne qui finit au milieu, à gauche"
-        cadre: { x: 0, y: 42, largeur: 16, hauteur: 16 }
       - id: ligne-c
         libelle: "la ligne qui finit au milieu, à droite"
         cadre: { x: 84, y: 28, largeur: 16, hauteur: 16 }
+      - id: ligne-b
+        libelle: "la ligne qui finit au milieu, à gauche"
+        cadre: { x: 0, y: 42, largeur: 16, hauteur: 16 }
   - enonce: "Touche le numéro de la case qui complète la figure."  # grille a
     illustration: symetrie-grille-a
     illustrationTexteAlternatif: "Une figure en cases noires sur un quadrillage, avec un trait épais au milieu."
     bonneZone: case-1-4
     indice: "Compte les cases entre la case pleine et le trait épais, puis compte autant de l'autre côté."
     zones:
-      - id: case-1-6
-        libelle: "colonne 6, ligne 1"
-        cadre: { x: 82, y: 2, largeur: 16, hauteur: 16 }
       - id: case-1-4
         libelle: "colonne 4, ligne 1"
         cadre: { x: 50, y: 2, largeur: 16, hauteur: 16 }
       - id: case-1-5
         libelle: "colonne 5, ligne 1"
         cadre: { x: 66, y: 2, largeur: 16, hauteur: 16 }
+      - id: case-1-6
+        libelle: "colonne 6, ligne 1"
+        cadre: { x: 82, y: 2, largeur: 16, hauteur: 16 }
       - id: case-2-6
         libelle: "colonne 6, ligne 2"
         cadre: { x: 82, y: 18, largeur: 16, hauteur: 16 }
@@ -149,69 +149,69 @@ items:
     bonneZone: case-4-2
     indice: "Compte les cases entre la case pleine et le trait épais, puis compte autant de l'autre côté."
     zones:
-      - id: case-6-2
-        libelle: "colonne 2, ligne 6"
-        cadre: { x: 18, y: 82, largeur: 16, hauteur: 16 }
-      - id: case-5-2
-        libelle: "colonne 2, ligne 5"
-        cadre: { x: 18, y: 66, largeur: 16, hauteur: 16 }
       - id: case-4-2
         libelle: "colonne 2, ligne 4"
         cadre: { x: 18, y: 50, largeur: 16, hauteur: 16 }
       - id: case-5-1
         libelle: "colonne 1, ligne 5"
         cadre: { x: 2, y: 66, largeur: 16, hauteur: 16 }
+      - id: case-5-2
+        libelle: "colonne 2, ligne 5"
+        cadre: { x: 18, y: 66, largeur: 16, hauteur: 16 }
+      - id: case-6-2
+        libelle: "colonne 2, ligne 6"
+        cadre: { x: 18, y: 82, largeur: 16, hauteur: 16 }
   - enonce: "Touche le numéro de la case qui complète la figure."  # grille c
     illustration: symetrie-grille-c
     illustrationTexteAlternatif: "Une figure en cases noires sur un quadrillage, avec un trait épais au milieu."
     bonneZone: case-4-3
     indice: "Compte les cases entre la case pleine et le trait épais, puis compte autant de l'autre côté."
     zones:
-      - id: case-4-4
-        libelle: "colonne 4, ligne 4"
-        cadre: { x: 74, y: 74, largeur: 24, hauteur: 24 }
-      - id: case-4-3
-        libelle: "colonne 3, ligne 4"
-        cadre: { x: 50, y: 74, largeur: 24, hauteur: 24 }
-      - id: case-3-3
-        libelle: "colonne 3, ligne 3"
-        cadre: { x: 50, y: 50, largeur: 24, hauteur: 24 }
       - id: case-1-4
         libelle: "colonne 4, ligne 1"
         cadre: { x: 74, y: 2, largeur: 24, hauteur: 24 }
+      - id: case-3-3
+        libelle: "colonne 3, ligne 3"
+        cadre: { x: 50, y: 50, largeur: 24, hauteur: 24 }
+      - id: case-4-3
+        libelle: "colonne 3, ligne 4"
+        cadre: { x: 50, y: 74, largeur: 24, hauteur: 24 }
+      - id: case-4-4
+        libelle: "colonne 4, ligne 4"
+        cadre: { x: 74, y: 74, largeur: 24, hauteur: 24 }
   - enonce: "Touche le numéro de la case qui complète la figure."  # grille d
     illustration: symetrie-grille-d
     illustrationTexteAlternatif: "Une figure en cases noires sur un quadrillage, avec un trait épais au milieu."
     bonneZone: case-4-4
     indice: "Compte les cases entre la case pleine et le trait épais, puis compte autant de l'autre côté."
     zones:
-      - id: case-4-4
-        libelle: "colonne 4, ligne 4"
-        cadre: { x: 50, y: 50, largeur: 16, hauteur: 16 }
-      - id: case-4-6
-        libelle: "colonne 6, ligne 4"
-        cadre: { x: 82, y: 50, largeur: 16, hauteur: 16 }
-      - id: case-4-5
-        libelle: "colonne 5, ligne 4"
-        cadre: { x: 66, y: 50, largeur: 16, hauteur: 16 }
       - id: case-1-4
         libelle: "colonne 4, ligne 1"
         cadre: { x: 50, y: 2, largeur: 16, hauteur: 16 }
+      - id: case-4-4
+        libelle: "colonne 4, ligne 4"
+        cadre: { x: 50, y: 50, largeur: 16, hauteur: 16 }
+      - id: case-4-5
+        libelle: "colonne 5, ligne 4"
+        cadre: { x: 66, y: 50, largeur: 16, hauteur: 16 }
+      - id: case-4-6
+        libelle: "colonne 6, ligne 4"
+        cadre: { x: 82, y: 50, largeur: 16, hauteur: 16 }
   - enonce: "Touche le numéro de la case qui complète la figure."  # grille e
     illustration: symetrie-grille-e
     illustrationTexteAlternatif: "Une figure en cases noires sur un quadrillage, avec un trait épais au milieu."
     bonneZone: case-4-3
     indice: "Compte les cases entre la case pleine et le trait épais, puis compte autant de l'autre côté."
     zones:
-      - id: case-3-3
-        libelle: "colonne 3, ligne 3"
-        cadre: { x: 50, y: 50, largeur: 24, hauteur: 24 }
-      - id: case-4-4
-        libelle: "colonne 4, ligne 4"
-        cadre: { x: 74, y: 74, largeur: 24, hauteur: 24 }
-      - id: case-4-3
-        libelle: "colonne 3, ligne 4"
-        cadre: { x: 50, y: 74, largeur: 24, hauteur: 24 }
       - id: case-3-1
         libelle: "colonne 1, ligne 3"
         cadre: { x: 2, y: 50, largeur: 24, hauteur: 24 }
+      - id: case-3-3
+        libelle: "colonne 3, ligne 3"
+        cadre: { x: 50, y: 50, largeur: 24, hauteur: 24 }
+      - id: case-4-3
+        libelle: "colonne 3, ligne 4"
+        cadre: { x: 50, y: 74, largeur: 24, hauteur: 24 }
+      - id: case-4-4
+        libelle: "colonne 4, ligne 4"
+        cadre: { x: 74, y: 74, largeur: 24, hauteur: 24 }
