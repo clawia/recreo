@@ -1,0 +1,181 @@
+# S51-MAT-COMPARER-RANGER (MAT-CE1-02, moitie textuelle, DEC-0110 sections 1 et 5, DEC-0111
+# sections 5.1 et 5.4, instance C). Arbitrage prealable de s43 (squad/conformite/ARBITRAGE-
+# PREALABLE-s43-mathematiques-ce1-lot-1.md, section 3) : ORD-CE1-1 a ORD-CE1-6, couverture partielle
+# nommee sur texte seul. Le verbe "placer sur une ligne graduee" n'est servi par aucun item : aucun
+# enonce ne demande de placer un nombre et aucun ne donne la position d'un nombre sur une ligne.
+#
+# Trois taches dans un paquet, reconnues a la premiere phrase de l'enonce : ranger (20 items, "Range
+# du plus petit au plus grand"), comparer (6 items, "Quel signe faut-il mettre entre ..."),
+# encadrer (8 items, "Entre quelles deux dizaines / centaines se trouve ..."). Le libelle de
+# competence est la mention d'ORD-CE1-5 (DEC-0111 section 5.4, point 7), accentuee ici parce que ce
+# champ traverse le port entrant (DEC-0002) et avec l'espace insecable devant le point-virgule
+# (ADR-0067).
+#
+# ORD-CE1-1 : entiers de 0 a 1000, deux a deux distincts dans un item ; plus de la moitie des items
+# portent un nombre de trois chiffres ou plus.
+#
+# ORD-CE1-2 (ranger, RAN-1 a RAN-8 avec RAN-2 a 1000 et RAN-3 a 16 caracteres) : un seul sens, le
+# croissant ; deux distracteurs derives des trois nombres, (a) l'ordre decroissant et (b) l'ordre
+# obtenu en ne comparant que le chiffre des unites (RAN-4b : les trois chiffres des unites sont deux
+# a deux distincts, et (b) ne reproduit ni (a) ni la bonne reponse) ; RAN-5b : 11 items sur 20 ont un
+# distracteur qui commence par le meme nombre que la bonne reponse (plancher 10) ; RAN-6 : 9 items
+# sur 20 opposent deux nombres de la meme dizaine (plancher 6) ; RAN-7 : l'indice est l'un des trois
+# textes surs de RAN-1 et RAN-4, dix mots au plus, jamais la liste ; RAN-8 : vingt triplets distincts.
+#
+# ORD-CE1-3 (comparer) : deux nombres distincts, trois signes proposes, "=" n'est donc jamais la
+# bonne reponse. L'indice est choisi pour son item : "Les centaines sont les memes" seulement quand
+# elles le sont, "Compte les chiffres" seulement quand les nombres n'en ont pas autant.
+#
+# ORD-CE1-4 (encadrer) : l'enonce nomme l'echelle, quatre items a la dizaine et quatre a la centaine ;
+# la bonne reponse est un encadrement ("340 et 350"), jamais un complement ; les deux distracteurs
+# sont deux autres encadrements de meme largeur, jamais le bon.
+#
+# ADR-0068 : aucune proposition n'a de valeur numerique lisible (liste de trois nombres, signe,
+# encadrement), le paquet est donc declare hors du domaine numerique des garde-fous de rang.
+# TYP-1 (ADR-0067) : l'espace devant ":" et "?" est insecable.
+schema: 1
+id: ce1-comparer-ranger
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "comparer, ranger et encadrer seuls ; le verbe 'placer sur une ligne graduée' n'est servi par aucun jeu et ne peut pas l'être par du texte"
+lignesDeReferentiel: ["MAT-CE1-02"]
+items:
+  - enonce: "Range du plus petit au plus grand : 547, 533, 159."
+    bonneReponse: "159, 533, 547"
+    distracteurs: ["547, 533, 159", "533, 547, 159"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "Range du plus petit au plus grand : 827, 828, 1000."
+    bonneReponse: "827, 828, 1000"
+    distracteurs: ["1000, 828, 827", "1000, 827, 828"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "Range du plus petit au plus grand : 624, 459, 455."
+    bonneReponse: "455, 459, 624"
+    distracteurs: ["624, 459, 455", "624, 455, 459"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "Range du plus petit au plus grand : 308, 305, 611."
+    bonneReponse: "305, 308, 611"
+    distracteurs: ["611, 308, 305", "611, 305, 308"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "Range du plus petit au plus grand : 479, 516, 134."
+    bonneReponse: "134, 479, 516"
+    distracteurs: ["516, 479, 134", "134, 516, 479"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "Range du plus petit au plus grand : 654, 707, 833."
+    bonneReponse: "654, 707, 833"
+    distracteurs: ["833, 707, 654", "833, 654, 707"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "Range du plus petit au plus grand : 865, 408, 14."
+    bonneReponse: "14, 408, 865"
+    distracteurs: ["865, 408, 14", "14, 865, 408"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "Range du plus petit au plus grand : 368, 171, 515."
+    bonneReponse: "171, 368, 515"
+    distracteurs: ["515, 368, 171", "171, 515, 368"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "Range du plus petit au plus grand : 310, 502, 314."
+    bonneReponse: "310, 314, 502"
+    distracteurs: ["502, 314, 310", "310, 502, 314"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "Range du plus petit au plus grand : 689, 504, 787."
+    bonneReponse: "504, 689, 787"
+    distracteurs: ["787, 689, 504", "504, 787, 689"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "Range du plus petit au plus grand : 318, 253, 615."
+    bonneReponse: "253, 318, 615"
+    distracteurs: ["615, 318, 253", "253, 615, 318"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "Range du plus petit au plus grand : 55, 406, 341."
+    bonneReponse: "55, 341, 406"
+    distracteurs: ["406, 341, 55", "341, 55, 406"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "Range du plus petit au plus grand : 925, 368, 362."
+    bonneReponse: "362, 368, 925"
+    distracteurs: ["925, 368, 362", "362, 925, 368"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "Range du plus petit au plus grand : 895, 653, 658."
+    bonneReponse: "653, 658, 895"
+    distracteurs: ["895, 658, 653", "653, 895, 658"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "Range du plus petit au plus grand : 772, 778, 896."
+    bonneReponse: "772, 778, 896"
+    distracteurs: ["896, 778, 772", "772, 896, 778"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "Range du plus petit au plus grand : 188, 491, 146."
+    bonneReponse: "146, 188, 491"
+    distracteurs: ["491, 188, 146", "491, 146, 188"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "Range du plus petit au plus grand : 520, 852, 523."
+    bonneReponse: "520, 523, 852"
+    distracteurs: ["852, 523, 520", "520, 852, 523"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "Range du plus petit au plus grand : 91, 412, 156."
+    bonneReponse: "91, 156, 412"
+    distracteurs: ["412, 156, 91", "91, 412, 156"]
+    indice: "Compare les nombres deux à deux avant de ranger."
+  - enonce: "Range du plus petit au plus grand : 548, 1000, 276."
+    bonneReponse: "276, 548, 1000"
+    distracteurs: ["1000, 548, 276", "1000, 276, 548"]
+    indice: "Cherche d'abord le plus petit des trois."
+  - enonce: "Range du plus petit au plus grand : 625, 297, 620."
+    bonneReponse: "297, 620, 625"
+    distracteurs: ["625, 620, 297", "620, 625, 297"]
+    indice: "Repère d'abord le nombre le plus grand."
+  - enonce: "Quel signe faut-il mettre entre 347 et 374 ?"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Les centaines sont les mêmes : compare les dizaines."
+  - enonce: "Quel signe faut-il mettre entre 620 et 602 ?"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Les centaines sont les mêmes : compare les dizaines."
+  - enonce: "Quel signe faut-il mettre entre 508 et 580 ?"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Les centaines sont les mêmes : compare les dizaines."
+  - enonce: "Quel signe faut-il mettre entre 328 et 285 ?"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Compare d'abord les centaines."
+  - enonce: "Quel signe faut-il mettre entre 999 et 1000 ?"
+    bonneReponse: "<"
+    distracteurs: [">", "="]
+    indice: "Compte les chiffres de chaque nombre."
+  - enonce: "Quel signe faut-il mettre entre 451 et 415 ?"
+    bonneReponse: ">"
+    distracteurs: ["<", "="]
+    indice: "Les centaines sont les mêmes : compare les dizaines."
+  - enonce: "Entre quelles deux dizaines se trouve 347 ?"
+    bonneReponse: "340 et 350"
+    distracteurs: ["330 et 340", "350 et 360"]
+    indice: "Cherche la dizaine juste avant, puis la dizaine juste après."
+  - enonce: "Entre quelles deux centaines se trouve 256 ?"
+    bonneReponse: "200 et 300"
+    distracteurs: ["100 et 200", "300 et 400"]
+    indice: "Cherche la centaine juste avant, puis la centaine juste après."
+  - enonce: "Entre quelles deux dizaines se trouve 802 ?"
+    bonneReponse: "800 et 810"
+    distracteurs: ["810 et 820", "820 et 830"]
+    indice: "Cherche la dizaine juste avant, puis la dizaine juste après."
+  - enonce: "Entre quelles deux centaines se trouve 481 ?"
+    bonneReponse: "400 et 500"
+    distracteurs: ["500 et 600", "600 et 700"]
+    indice: "Cherche la centaine juste avant, puis la centaine juste après."
+  - enonce: "Entre quelles deux dizaines se trouve 519 ?"
+    bonneReponse: "510 et 520"
+    distracteurs: ["490 et 500", "500 et 510"]
+    indice: "Cherche la dizaine juste avant, puis la dizaine juste après."
+  - enonce: "Entre quelles deux centaines se trouve 738 ?"
+    bonneReponse: "700 et 800"
+    distracteurs: ["500 et 600", "600 et 700"]
+    indice: "Cherche la centaine juste avant, puis la centaine juste après."
+  - enonce: "Entre quelles deux dizaines se trouve 673 ?"
+    bonneReponse: "670 et 680"
+    distracteurs: ["660 et 670", "680 et 690"]
+    indice: "Cherche la dizaine juste avant, puis la dizaine juste après."
+  - enonce: "Entre quelles deux centaines se trouve 905 ?"
+    bonneReponse: "900 et 1000"
+    distracteurs: ["700 et 800", "800 et 900"]
+    indice: "Cherche la centaine juste avant, puis la centaine juste après."

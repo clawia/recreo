@@ -162,8 +162,16 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * declare huit items, chacun avec une illustration qui resout desormais dans
      * {@code static/oeuvres/} (T2 d'ADR-0082) plutot que dans {@code static/illustrations/} - les
      * huit items s'ajoutent a cette population, {@link #FICHIERS_D_ILLUSTRATION} ne bouge pas.</p>
+     *
+     * <p><b>64 vers 70, lea-dev, s52, S51-MAT-MULTIPLICATION</b> : {@code ce1-sens-multiplication}
+     * (MAT-CE1-06) declare six items illustres, deux par reseau de points (lecture par lignes, lecture
+     * par colonnes) - les six items s'ajoutent tous.</p>
+     *
+     * <p><b>70 vers 81, lea-dev, s52, S51-MAT-SYMETRIE</b> : {@code ce1-symetrie} (MAT-CE1-17) declare
+     * onze items de designation, un dessin par item, et {@code ZoneADesigner} rend l'illustration
+     * obligatoire sur chacun - les onze items s'ajoutent tous.</p>
      */
-    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 64;
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 81;
 
     /**
      * <b>24 vers 26, lea-dev, s34, S33-PAL2-1</b> : les deux dessins du premier paquet de
@@ -174,8 +182,14 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      *
      * <p><b>27 vers 42, lea-dev, s39, S39-SOLIDES</b> : les quinze dessins {@code solide-*.svg}
      * (cube, pave droit, boule, cylindre, cone, trois exemples chacun).</p>
+     *
+     * <p><b>42 vers 45, lea-dev, s52, S51-MAT-MULTIPLICATION</b> : les trois reseaux de points
+     * {@code reseau-points-*.svg}, chacun montre par deux items (un fichier, deux items).</p>
+     *
+     * <p><b>45 vers 56, lea-dev, s52, S51-MAT-SYMETRIE</b> : les onze dessins {@code symetrie-*.svg}
+     * (six figures, cinq quadrillages), un par item.</p>
      */
-    private static final int FICHIERS_D_ILLUSTRATION = 42;
+    private static final int FICHIERS_D_ILLUSTRATION = 56;
 
     private static String lire(Path fichier) {
         try {

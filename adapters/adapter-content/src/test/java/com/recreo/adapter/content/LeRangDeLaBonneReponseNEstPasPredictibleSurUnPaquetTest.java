@@ -1165,6 +1165,23 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " (\"joyeux\", \"basse\", \"vite\"...), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-10-06 sur le paquet servi :"
                     + " aucune des 72 propositions ne commence par un chiffre"),
+            // S51-MAT-SYMETRIE : quatrieme paquet de designation servi, MAT-CE1-17.
+            Map.entry("ce1-symetrie",
+            "11 items sur 11 sont des items de designation (ADR-0080) : ils ne presentent aucune"
+                    + " proposition en texte, mais des zones posees sur une figure ou sur un quadrillage -"
+                    + " il n'y a ni distracteur ni rang de bonne reponse au sens de cette propriete. La"
+                    + " garantie qu'un enfant ne gagne pas en ignorant l'enonce est portee par le"
+                    + " garde-fou 4 d'ADR-0080 (LaBonneZoneNEstPasPredictibleSurUnPaquetTest)"),
+            // S51-MAT-COMPARER-RANGER : paquet neuf de mathematiques CE1 (MAT-CE1-02, moitie
+            // textuelle).
+            Map.entry("ce1-comparer-ranger",
+            "34 items sur 34 portent deux distracteurs (trois propositions), soit 102 propositions,"
+                    + " mais aucune n'est numerique : ce sont des listes de trois nombres (\"159, 533,"
+                    + " 547\"), l'un des trois signes de comparaison (\"<\", \">\", \"=\") ou un"
+                    + " encadrement (\"340 et 350\"), valeurDe rend null sur les trois propositions de"
+                    + " chaque item (ADR-0068 : un chiffre reste apres le premier nombre). Mesure du"
+                    + " 2026-10-06 sur le paquet servi : aucune des 102 propositions n'a de valeur"
+                    + " scalaire"),
             // S50-ART : paquet neuf d'arts plastiques CP, deuxieme ligne de cette matiere
             // (ART-CP-09), premier paquet a declarer une reproduction d'oeuvre (T6 d'ADR-0082).
             Map.entry("cp-decrire-une-oeuvre",

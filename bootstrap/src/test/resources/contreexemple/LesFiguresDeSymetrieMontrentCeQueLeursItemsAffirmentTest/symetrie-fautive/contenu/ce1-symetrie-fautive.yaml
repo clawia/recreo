@@ -1,0 +1,45 @@
+# Jeu fautif de LesFiguresDeSymetrieMontrentCeQueLeursItemsAffirmentTest. Ce paquet n'est servi par rien : il
+# vit sous contreexemple/ et le recensement de production ne le voit pas. Deux fautes, une par genre de
+# dessin : sur la figure, aucune des trois lignes candidates n'est un axe de symetrie du rectangle ; sur le
+# quadrillage, la figure n'est pas symetrique (trois cases n'ont pas de symetrique).
+schema: 1
+id: ce1-symetrie-fautive
+type: designation
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Espace et géométrie"
+  competence: "Reconnaître un axe de symétrie et compléter une figure par symétrie sur quadrillage"
+lignesDeReferentiel: ["MAT-CE1-17"]
+emplacementDuLibelleDeZone: hors-de-la-boite
+items:
+  - enonce: "Touche le numéro de l'axe de symétrie."
+    illustration: figure-fautive
+    illustrationTexteAlternatif: "Une figure traversée par des lignes en pointillés."
+    bonneZone: ligne-a
+    indice: "Imagine que tu plies la figure le long de chaque ligne."
+    zones:
+      - id: ligne-a
+        libelle: "la ligne qui finit au milieu, à droite"
+        cadre: { x: 82, y: 66, largeur: 16, hauteur: 16 }
+      - id: ligne-b
+        libelle: "la ligne qui finit au milieu, à gauche"
+        cadre: { x: 0, y: 50, largeur: 16, hauteur: 16 }
+      - id: ligne-c
+        libelle: "la ligne qui finit en haut"
+        cadre: { x: 28, y: 0, largeur: 16, hauteur: 16 }
+  - enonce: "Touche le numéro de la case qui complète la figure."
+    illustration: grille-fautive
+    illustrationTexteAlternatif: "Une figure en cases noires sur un quadrillage, avec un trait épais au milieu."
+    bonneZone: case-1-3
+    indice: "Compte les cases entre la case pleine et le trait épais, puis compte autant de l'autre côté."
+    zones:
+      - id: case-1-3
+        libelle: "colonne 3, ligne 1"
+        cadre: { x: 50, y: 2, largeur: 24, hauteur: 24 }
+      - id: case-3-3
+        libelle: "colonne 3, ligne 3"
+        cadre: { x: 50, y: 50, largeur: 24, hauteur: 24 }
+      - id: case-4-4
+        libelle: "colonne 4, ligne 4"
+        cadre: { x: 74, y: 74, largeur: 24, hauteur: 24 }

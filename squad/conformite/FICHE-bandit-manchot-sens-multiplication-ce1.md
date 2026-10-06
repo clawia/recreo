@@ -55,3 +55,127 @@ dessins de `MUL-CE1-5`, `en cours` sinon.
 ## Bloc de validation pédagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pré-rempli ni anticipé par un autre agent.
+
+### Verdict du 2026-10-06 (`nadia-prof`, s52, instance C) : **VALIDE SOUS RESERVE**
+
+**Done pedagogique prononce.** Les dispositions sont dessinees et `MUL-CE1-4` et `MUL-CE1-5` sont
+tenues : **aucune mention de couverture n'est due** (`MUL-CE1-7`), et `camille-po` peut passer
+`MAT-CE1-06` a `couvert-valide`. La reserve `MUL-CE1-R1` ne bloque pas le mouvement de ligne.
+
+#### 1. Ce que j'ai fait
+
+**Audit joue.** Meme jar que pour `bandit-manchot-comparer-ranger-ce1` : construit une fois depuis ce
+worktree a `92344c23` (`bash outils/mvn-jdk21.sh -B -DskipTests package`, aucun Maven d'un autre agent en
+cours), copie dans mon scratchpad, lance depuis la copie sur JDK 21, port 18870.
+
+**Douze parties completes de dix manches, appels HTTP reels** : les **16 items** ont tous ete tires, de 5
+a 10 fois chacun. Sur chaque manche je presse les propositions dans l'ordre servi jusqu'a la resolution :
+erreur, deuxieme erreur et revelation sont vues sur tout le paquet. **Les 16 reponses que j'ai etablies
+sont celles que le jeu credite.**
+
+**Propositions masquees, tenues sur onze parties et pas sur la premiere.** Ma premiere partie
+exploratoire affichait les propositions avec l'enonce : dix items y ont ete vus propositions ouvertes.
+Les onze parties suivantes n'affichaient que les enonces, et j'ai ecrit les 16 reponses avant de lire
+les propositions. **Pour les trois dessins, mon comptage n'est pas aveugle** : j'avais lu l'en-tete
+commente des fichiers SVG, qui donne lignes et colonnes, avant de compter sur le rendu. Je le dis plutot
+que de le taire ; le recompte sur le rendu concorde.
+
+**Dessins lus a leur taille de rendu.** Trois manches de reseau captees dans la page reelle (gabarit,
+feuille de style et fragment servis par le jar), a 320 px de fenetre (`outils/mesurer-rendu.sh 320`,
+Chrome headless) : les dessins sont servis a 1:1 (`.image-item`, `width: auto`, plafond 176 px), soit
+80 x 48, 64 x 96 et 128 x 80 px. Sans zone (item illustre, pas de designation), `ZON-9` ne s'applique
+pas.
+
+#### 2. Ancrage au programme
+
+`MAT-CE1-06` : *"Comprendre le sens de la multiplication (addition réitérée, disposition en lignes et en
+colonnes)."* Les deux representations de la parenthese sont servies : l'addition reiteree dans les deux
+sens (10 items) et la disposition dessinee lue dans les deux sens (6 items sur 3 reseaux). **C'est bien
+cette competence** : aucun item ne demande un produit (`MAT-CE1-07`), aucun ne pose un partage
+(`MAT-CE1-18`).
+
+#### 3. `MUL-CE1-1` a `MUL-CE1-7`, et les doutes de `lea-dev`
+
+| Condition | Tenue | Ce que j'ai verifie |
+|---|---|---|
+| `MUL-CE1-1` | **oui** | Facteurs de 3 a 8 dans les enonces et les reseaux, de 2 a 9 dans les distracteurs ; bonne reponse au plus 40, distracteur au plus 45 |
+| `MUL-CE1-2` | **oui** | Aucun produit nu ; les reponses sont des ecritures (*"3 × 4"*, *"6 + 6 + 6 + 6"*), jamais un nombre |
+| `MUL-CE1-3` | **oui** | 4 items de la somme vers le produit, 6 du produit vers la somme |
+| `MUL-CE1-4` | **oui** | Chacun des trois reseaux est lu ligne par ligne et colonne par colonne, et l'enonce de chacun des six items dit que *"les deux façons de compter donnent le même total"*. Voir `MUL-CE1-R1` |
+| `MUL-CE1-5` | **oui** | Disques identiques de 10 px, pas de 16 px, reseaux 3 x 5, 6 x 4 et 5 x 8 ; chaque point separe de ses voisins sur le rendu 1:1 ; aucune forme nommee ; aucun enonce ne dit le nombre de lignes ou de colonnes ; texte alternatif *"Des points rangés en lignes et en colonnes."*, celui que j'avais propose |
+| `MUL-CE1-6` | **oui** | Chaque distracteur a la valeur d'une forme admise (*"une ligne oubliee"*, *"une de trop"*, *"un terme plus grand"*, `a + b` sur les seules additions, `a x (b + 2)` sur 5 x 5). Rangs de la bonne reponse **comptes sur la valeur de l'ecriture** sur les 16 items : plus petite 7, intermediaire 7, plus grande 2 ; les trois au-dessus de 10 %, aucun majoritaire |
+| `MUL-CE1-7` | **sans objet** | Dispositions dessinees, `-4` et `-5` tenues : aucune mention |
+
+**Convention "n × m" = "n fois m"** (lignes x points par ligne, colonnes x points par colonne) : je la
+retiens. C'est la lecture de la classe (*"3 × 5, c'est 3 fois 5"*), l'indice la dit a l'enfant (*"Le
+premier nombre dit combien de fois écrire le deuxième."*), et elle est tenue partout, y compris sur les
+dessins (*3 lignes de 5* : *"3 × 5"* ; *5 colonnes de 3* : *"5 × 3"*). **Le point qui la rend juste** :
+l'ecriture commutee n'est jamais proposee dans un item. Pour *"4 + 4 + 4"*, *"4 × 3"* n'est pas un
+distracteur ; il aurait ete une bonne reponse comptee fausse. Je l'ai verifie sur les 16 items.
+
+**Rangs comptes sur la valeur** : c'est ainsi que `MUL-CE1-6` les definit (*"position de la bonne
+reponse"*, calculee sur des valeurs dans ma table de s43). Une ecriture *"3 × 4"* vaut 12 pour l'enfant
+qui comprend la multiplication. Que le garde-fou de rang ecarte ces items (`ADR-0068`) est un choix
+d'architecture ; la propriete pedagogique, elle, est tenue sur le paquet entier.
+
+**Phrase dans l'enonce au lieu d'une explication** : recevable. `MUL-CE1-4` dit *"l'enonce ou
+l'explication"*. Dans l'enonce, chaque enfant la lit ; dans l'explication, seul celui qui se trompe
+l'aurait vue.
+
+#### 4. Niveau reel
+
+Consigne : *"Lis bien ou regarde le dessin, puis choisis la bonne écriture."* Enonces d'addition et de
+multiplication de 5 a 8 mots (le signe seul ne compte pas), une phrase. Enonces de reseau : 17 mots, trois phrases, la derniere est la
+question (`LON-CE1-1`, `LON-CE1-2`). Sur une erreur, *"Ce n'est pas ça. Essaie encore !"* et l'indice ; a
+la revelation, *"Appuie sur la bonne réponse : 8 × 5"* et l'indice, qui dit quoi compter (*"Regarde
+combien il y a de points dans une colonne, et combien de colonnes."*). L'enfant bloque avance.
+
+Sur le rendu a 320 px, l'enonce de reseau occupe sept lignes en gros caracteres sous un dessin de
+48 a 96 px de haut. Le dessin reste lisible ; la longueur de l'enonce vient pour un tiers de sa premiere
+phrase, qui est l'objet de la reserve.
+
+#### 5. Exactitude, biais et ton
+
+16 reponses exactes, distracteurs distincts entre eux et de la bonne reponse, entiers positifs. Aucun
+personnage, aucun contexte social. Ton neutre.
+
+#### 6. La reserve
+
+> **`MUL-CE1-R1` - La premiere phrase des six enonces de reseau parle de "deux façons" avant de les
+> nommer.** *"Les deux façons de compter donnent le même total. Compte les points ligne par ligne.
+> Quelle multiplication ?"* L'enfant de CE1 lit d'abord une affirmation sur deux facons qu'on ne lui a pas
+> encore montrees ; la seconde n'est nommee nulle part dans l'item. Sur une partie de dix manches, il ne
+> voit souvent qu'un des deux items d'un meme reseau (sur ma premiere partie masquee : le reseau a et le
+> reseau b lus dans un seul sens chacun) ; la phrase reste alors une affirmation sans support.
+>
+> **Correction a faire** : sur les six items, nommer l'autre facon dans la phrase et la placer apres la
+> consigne de comptage. Par exemple : *"Compte les points ligne par ligne. Colonne par colonne, le total
+> est le même. Quelle multiplication ?"* (16 mots, trois phrases, la derniere est la question), et
+> symetriquement sur les items *colonne par colonne*. `MUL-CE1-4` reste tenue, l'enonce disant toujours
+> que les deux comptes donnent le meme total.
+>
+> **Ce n'est pas un durcissement** : `MUL-CE1-4` demande que l'enonce le dise, et il le dit. C'est une
+> reserve neuve et datee, trouvee en jouant, qui porte sur la lisibilite.
+>
+> **Pourquoi elle n'empeche pas `couvert-valide`** : la tache demandee (compter par lignes ou par
+> colonnes, ecrire la multiplication) est juste et faisable sur chaque item ; la phrase gene la lecture,
+> elle ne fausse pas l'exercice.
+
+#### 7. Ce dont je reste la seule garde
+
+`PaquetCe1SensMultiplicationTest` et `LesReseauxDePointsMontrentCeQueLeursItemsAffirmentTest` portent,
+d'apres leurs noms de methodes (lus, non executes par moi), les comptes de `MUL-CE1-1` a `-6` et l'accord
+entre chaque dessin et ce que ses items affirment (nombre de points, rayon, lignes). **Aucun automate ne
+verifie** : qu'un point se distingue de son voisin a la taille servie et qu'un reseau se compte sans se
+perdre (`MUL-CE1-5`), que l'ecriture commutee ne soit jamais un distracteur, et qu'un enonce se lise
+dans l'ordre ou il est ecrit (`MUL-CE1-R1`). Ces proprietes n'ont ete verifiees qu'ici.
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+**Porte technique** : non lancee par moi (le job `build` ferait un `clean` dans un worktree ou `lea-dev`
+construit). Ce Done pedagogique suppose la CI verte sur l'arbre fusionne ; `sofia-sm` la verifie a la
+fusion.

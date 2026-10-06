@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S51-MAT-MULTIPLICATION (MUL-CE1-5). Reseau regulier de points : 5 lignes, 8 colonnes, un cercle
+     par point (avis de faisabilite s52, 4.2), disque de 10 unites, pas de 16, 1 unite = 1 px
+     (contrainte-ines-s52, section 3). Aucune ligne ni colonne n'est mise en evidence. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 80" width="128" height="80" role="img" fill="#1c2733" stroke="none">
+  <circle cx="8" cy="8" r="5"/> <circle cx="24" cy="8" r="5"/> <circle cx="40" cy="8" r="5"/> <circle cx="56" cy="8" r="5"/> <circle cx="72" cy="8" r="5"/> <circle cx="88" cy="8" r="5"/> <circle cx="104" cy="8" r="5"/> <circle cx="120" cy="8" r="5"/>
+  <circle cx="8" cy="24" r="5"/> <circle cx="24" cy="24" r="5"/> <circle cx="40" cy="24" r="5"/> <circle cx="56" cy="24" r="5"/> <circle cx="72" cy="24" r="5"/> <circle cx="88" cy="24" r="5"/> <circle cx="104" cy="24" r="5"/> <circle cx="120" cy="24" r="5"/>
+  <circle cx="8" cy="40" r="5"/> <circle cx="24" cy="40" r="5"/> <circle cx="40" cy="40" r="5"/> <circle cx="56" cy="40" r="5"/> <circle cx="72" cy="40" r="5"/> <circle cx="88" cy="40" r="5"/> <circle cx="104" cy="40" r="5"/> <circle cx="120" cy="40" r="5"/>
+  <circle cx="8" cy="56" r="5"/> <circle cx="24" cy="56" r="5"/> <circle cx="40" cy="56" r="5"/> <circle cx="56" cy="56" r="5"/> <circle cx="72" cy="56" r="5"/> <circle cx="88" cy="56" r="5"/> <circle cx="104" cy="56" r="5"/> <circle cx="120" cy="56" r="5"/>
+  <circle cx="8" cy="72" r="5"/> <circle cx="24" cy="72" r="5"/> <circle cx="40" cy="72" r="5"/> <circle cx="56" cy="72" r="5"/> <circle cx="72" cy="72" r="5"/> <circle cx="88" cy="72" r="5"/> <circle cx="104" cy="72" r="5"/> <circle cx="120" cy="72" r="5"/>
+</svg>

@@ -798,3 +798,21 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-corps
     nombreDeManches: 10
+  - id: bandit-manchot-comparer-ranger-ce1
+    titre: "Comparer, ranger, encadrer"
+    consigne: "Lis bien les nombres, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-comparer-ranger
+    nombreDeManches: 10
+  - id: bandit-manchot-sens-multiplication-ce1
+    titre: "Le sens de la multiplication"
+    consigne: "Lis bien ou regarde le dessin, puis choisis la bonne écriture."
+    mecanique: bandit-manchot
+    paquet: ce1-sens-multiplication
+    nombreDeManches: 10
+  - id: designation-symetrie-ce1
+    titre: "La symétrie"
+    consigne: "Regarde bien le dessin, puis touche le bon numéro."
+    mecanique: designation
+    paquet: ce1-symetrie
+    nombreDeManches: 8
