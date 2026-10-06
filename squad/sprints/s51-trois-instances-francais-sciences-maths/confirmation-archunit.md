@@ -105,9 +105,14 @@ Verifications, chacune sur `e4d8ba3b..ca4c934a` :
   est **vide** : aucun fichier de `domain`, d'`application` ni d'`adapter-web`, aucun `pom.xml`,
   aucun gabarit, aucun script de CI ou d'outil.
 - `git diff --numstat ... -- '*/src/main/java/**'` : **0 ligne**.
-- **A1 d'`ADR-0065`** : livre deux fois a l'identique, `c2802a32` (instance A) et `02ba9e80`
-  (instance B), meme `git patch-id --stable`, fusionnes par `84d5b509` et `7716be0e`. Les deux ne
-  touchent que l'`ADR`, l'index, `AucunMotServiNeSEcarteDeSonAccentTest` et son jeu fautif.
+- **A1 d'`ADR-0065`** : livre deux fois a l'identique, `c2802a32` (sur `round-two`) et `02ba9e80`
+  (sur la branche de l'instance A), meme `git patch-id --stable`. Les deux entrent par la seule
+  fusion `84d5b509` (instance A) : `c2802a32` sur son premier parent, `02ba9e80` sur son second ;
+  aucun n'est sur le second parent de `7716be0e` (instance B), `git merge-base --is-ancestor` rendant
+  1 pour les deux. Les deux ne touchent que l'`ADR`, l'index, `AucunMotServiNeSEcarteDeSonAccentTest`
+  et son jeu fautif.
+  *Corrige le 2026-10-06 en s52 (A3 de la retro de s51) : cette ligne placait `02ba9e80` sur
+  l'instance B et citait `7716be0e` comme sa fusion.*
 - Imports ajoutes par le diff Java (lignes `+import`, sortie brute) : `com.recreo.domain.content`,
   `java.io`, `java.nio.charset`, `java.nio.file`, `java.text`, `java.util`, `java.util.regex`,
   `org.assertj.core.api`, `org.junit.jupiter.api`, `org.yaml.snakeyaml`. **Aucune ligne ajoutee ne
