@@ -58,7 +58,7 @@ mention. Bornes de grille `DEP-CE1-2` (même fichier, section 1).
 
 > Ce bloc n'est jamais pré-rempli ni anticipé par un autre agent.
 
-### Verdict du 2026-10-06 (`nadia-prof`, s52, instance C) : **VALIDE SOUS RESERVE**
+### Verdict du 2026-10-06 (`nadia-prof`, s52, instance C) : **VALIDE SOUS RESERVE** - historique : `SYM-CE1-R1` levee au second passage ci-dessous
 
 **Done pedagogique prononce.** `camille-po` peut passer `MAT-CE1-17` a `couvert-valide`, avec la mention
 fixee d'avance (arbitrage de s43, lot 3, section 3), mot pour mot dans la matrice : *"reconnaitre un axe
@@ -213,6 +213,70 @@ que l'axe se trouve sur le dessin seul a la taille servie et que la bonne zone l
 leurre se distingue de l'axe sans mesurer, qu'une candidate soit une erreur qu'un enfant fait, que
 l'ordre de declaration soit l'ordre de lecture (`ZON-11`), et que le plancher de 44 px tienne sur les
 items autres que la premiere manche (jusqu'a A3). Ces proprietes n'ont ete verifiees qu'ici, en jouant.
+
+> **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
+> quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
+> propriete est sortie de la porte pedagogique par arbitrage de l'utilisatrice du 2026-08-28
+> (`DEC-0053`) ; sa dette est ouverte, croissante et assumee. Aucune mesure ne l'a instruite sur ce
+> paquet.
+
+**Porte technique** : non lancee par moi. Ce Done pedagogique suppose la CI verte sur l'arbre fusionne ;
+`sofia-sm` la verifie a la fusion.
+
+---
+
+### Second passage du 2026-10-06 (`nadia-prof`, s52, instance C) : **VALIDE**, `SYM-CE1-R1` levee
+
+**Je ne rouvre pas le paquet entier** : je juge la correction de `lea-dev` (`bc7cf6a0`) contre la barre
+que j'ai ecrite dans `SYM-CE1-R1`, et je verifie que rien d'autre n'a bouge. `MAT-CE1-17` reste
+`couvert-valide` ; la mention de couverture est inchangee, mot pour mot celle du premier passage. La
+reserve tombe. Le premier verdict et le texte de `SYM-CE1-R1` restent ci-dessus, en historique.
+
+#### 1. Ce que j'ai fait
+
+Arbre `s52-nadia-instance-c` a `bc7cf6a0`, aucun processus Java ni Maven en cours avant la construction.
+Jar construit une fois (`bash outils/mvn-jdk21.sh -B -DskipTests package`), copie dans mon scratchpad sous
+un nom portant le sha, lance depuis la copie sur le JDK 21, port 18872.
+
+**Ce qui a change, lu sur le depot** : `git diff --stat HEAD~2 HEAD` touche `ce1-symetrie.yaml` et deux
+tests (`173b48f7`, fins de ligne) ; **aucun SVG**. Comparaison item par item du YAML de `HEAD~2` et de
+`HEAD`, par script de poste : en-tete identique ; sur les 11 items, enonce, illustration, texte
+alternatif, `bonneZone` et indice identiques, et **le meme ensemble de zones** (identifiant, libelle,
+cadre). Seul l'ordre de declaration a change.
+
+**Sept parties completes de huit manches** sur le jar a `bc7cf6a0`, zones pressees dans l'ordre servi
+jusqu'a la resolution : les 11 items tires, de 3 a 6 fois chacun. Chaque manche captee et rendue a 320 px
+de fenetre, zones masquees puis revelees.
+
+**Limite, dite** : les dessins sont les memes octets qu'au premier passage, et je connaissais les
+reponses. Mon second regard zones masquees n'est donc pas aveugle ; il confirme que les dessins servis
+sont ceux que j'ai juges. **Sur les 11 items, la bonne zone servie est celle que j'avais trouvee au
+premier passage**, et le jeu la credite.
+
+#### 2. La barre de `SYM-CE1-R1`, contre ce qui est servi
+
+| Propriete | Tenue | Ce que j'ai verifie |
+|---|---|---|
+| Numeros vus dans l'ordre de lecture | **oui, 11 items sur 11** | Sur le fragment servi, les numeros 1 a 3 (figures) ou 1 a 4 (grilles) suivent l'ordre du haut vers le bas puis de la gauche vers la droite des cadres. Grille a : *1, 2, 3* de gauche a droite sur la premiere rangee, *4* en dessous. Figure a : *1* en haut, *2* a gauche, *3* en bas a droite |
+| Ordre de tabulation | **oui** | Les boutons de zone n'ont pas de `tabindex` : la tabulation suit leur ordre dans le document, qui est celui des numeros |
+| Legende | **oui** | Les libelles de la legende sont, dans l'ordre, ceux des boutons 1, 2, 3 (4) |
+| Cadres, libelles, identifiants, dessins | **inchanges** | Voir la section 1 |
+
+**Rang de la bonne zone**, recompte sur le paquet servi : premiere 4 fois sur 11, derniere 3 fois sur 11,
+le chiffre que j'avais annonce dans la reserve. Ni toujours la premiere ni toujours la derniere.
+
+#### 3. Mes autres conditions
+
+Rien de ce qu'elles jugent n'a bouge : memes dessins, memes cadres, memes libelles, memes enonces, memes
+indices, memes bonnes zones. `SYM-CE1-1` a `-3`, `DEP-CE1-2`, `ZON-8`, `-10`, `-13`, `-14`, le plancher de
+zone et `FER-2`/`FER-3` tiennent comme au premier passage. `ZON-11` tient desormais.
+
+#### 4. Ce dont je reste la seule garde
+
+Inchange par rapport au premier passage. **`ZON-11` n'est toujours pas encodee** (`ADR-0080`, A2, section 3). Le jour ou un item est ajoute ou
+reordonne, rien d'automatique ne verra un ordre de declaration qui n'est plus l'ordre de lecture. Je
+reste la seule garde de cette propriete, avec `ZON-9`, les leurres, les candidates et le plancher de
+44 px hors de la premiere manche.
 
 > **`MNC-1`** - Ce Done ne couvre pas que l'enfant voie, sans faire defiler la page, un element
 > quelconque du jeu, y compris le retour qui suit sa reponse - verdict, indice, proposition. Cette
