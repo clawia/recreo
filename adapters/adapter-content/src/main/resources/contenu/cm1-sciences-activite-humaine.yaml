@@ -1,0 +1,109 @@
+schema: 1
+id: cm1-sciences-activite-humaine
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "La planète Terre. Les êtres vivants dans leur environnement"
+  competence: "Identifier un effet de l'activité humaine sur l'environnement et un geste de préservation des ressources."
+lignesDeReferentiel: ["SCI-CM1-18"]
+#
+# S51-SCI-ACTIVITE-HUMAINE-CM1 (docs/backlog/backlog.md, sprint 51), ligne SCI-CM1-18 de "Sciences
+# et technologie" (CM1). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-18). Paquet statique de
+# type "question", meme regime que les paquets de sciences CM1 deja fermes.
+#
+# Arbitrage pedagogique prealable cite (ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-
+# et-le-prix-des-quinze-reserves.md, section 2.2, ligne 18) : enumeration conjonctive, deux elements
+# exiges par FER-1 (un effet, un geste) ; deux taches pour FER-3 (reconnaitre l'effet d'une activite
+# / choisir le geste qui preserve).
+#
+# FER-1 : marqueur par item (# element: effet ou geste), les deux presents.
+# - effet : items 1 a 6 (tache A, reconnaitre l'effet d'une activite, bonne reponse un effet) ;
+# - geste : items 7 a 12 (tache B, choisir le geste qui preserve, bonne reponse un geste).
+#
+# SCI-2 (ligne 18, "la plus dangereuse du lot") : aucun item ne fait porter une responsabilite a
+# l'enfant ni a son foyer. Aucun enonce, aucune proposition ni aucun indice ne s'adresse a l'enfant
+# (aucun jeton d'adresse), aucun ne demande ce que l'enfant ou sa famille fait ou devrait faire, et
+# aucun ne nomme le chauffage, la voiture, les voyages, les dechets ou les courses. Chaque item decrit
+# un mecanisme (une foret coupee, une eau polluee, une espece pechee) et un geste possible a la
+# troisieme personne ou a l'impersonnel, porte par une collectivite, un metier ou une regle commune
+# (commune, station d'epuration, reglement de peche, canalisations, eclairage public).
+#
+# SCI-1 : chaque item dont un distracteur porte une conception fausse courante (plus de place libre
+# aide les animaux, deplacer une eau sale la nettoie, une energie fossile en remplace une autre) a un
+# indice qui dit pourquoi elle est fausse sans nommer la bonne reponse. Simplification assumee, meme
+# patron que cm1-sciences-usages-numeriques : chaque indice compte une phrase, ne nomme jamais la
+# bonne reponse de son item et ne dit jamais "ta reponse".
+#
+# SCI-3 : aucune bonne reponse ne porte de valeur numerique (0 item sur 12, plafond floor(12/6) = 2).
+#
+# SCI-4 : chaque item porte deux distracteurs (trois propositions).
+#
+# HIS-3 (chaque fait porte sa source) : marque en commentaire sur chaque ligne d'item. Les faits sont
+# des faits de sciences du cycle 3 (programme de sciences et technologie, theme "Les etres vivants
+# dans leur environnement"), sans controverse.
+#
+# CON-1 : les propositions sont masquees par la mecanique bandit-manchot, l'item ne se repond pas sans
+# l'enonce complet.
+#
+# CYC-1 : aucun paquet de cycle 2 n'a pour objet l'effet de l'activite humaine sur l'environnement
+# (ls adapters/adapter-content/src/main/resources/contenu, aucun nom portant environnement, dechet,
+# planete ou ecologie) ; a confirmer par nadia-prof.
+#
+# Frontiere : les risques geologiques et meteorologiques relevent de SCI-CM1-16
+# (cm1-sciences-phenomenes), ferme. Aucun item de ce paquet n'en reprend un.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "De grandes surfaces de forêt sont coupées. Quel effet cela a-t-il sur les animaux qui y vivent ?"  # element: effet # HIS-3: la destruction d'un milieu fait disparaître l'abri et la nourriture des animaux qui en dépendent, fait enseigné au cycle 3 (les êtres vivants dépendent de leur milieu)
+    bonneReponse: "ils perdent leur abri et leur nourriture"
+    distracteurs: ["ils trouvent plus de place pour vivre", "ils deviennent plus nombreux"]
+    indice: "La place libre ne remplace pas les plantes et les arbres dont ces animaux se servent."
+  - enonce: "Une usine rejette de l'eau chargée de produits chimiques dans une rivière. Quel effet cela peut-il avoir ?"  # element: effet # HIS-3: un polluant rejeté dans l'eau peut intoxiquer les êtres vivants de la rivière, fait enseigné au cycle 3 (pollution de l'eau)
+    bonneReponse: "les poissons et les plantes peuvent être intoxiqués"
+    distracteurs: ["l'eau devient plus propre", "l'eau s'évapore plus vite"]
+    indice: "Un produit mélangé à l'eau reste dans l'eau où vivent les êtres vivants."
+  - enonce: "Des bateaux pêchent chaque année plus de poissons que l'espèce n'en fait naître. Que se passe-t-il à la longue ?"  # element: effet # HIS-3: une espèce prélevée plus vite qu'elle ne se renouvelle voit ses effectifs diminuer, fait enseigné au cycle 3 (renouvellement d'une espèce)
+    bonneReponse: "le nombre de poissons de cette espèce diminue"
+    distracteurs: ["la mer se remplit de poissons plus gros", "les poissons font plus de petits pour compenser"]
+    indice: "Une espèce ne se renouvelle que par les jeunes qui naissent, et leur nombre est limité."
+  - enonce: "Une ville s'étend et recouvre des prairies de béton et de goudron. Quel effet cela a-t-il sur l'eau de pluie ?"  # element: effet # HIS-3: une surface imperméable empêche l'eau de pluie de s'infiltrer dans le sol, fait enseigné au cycle 3 (l'eau dans l'environnement)
+    bonneReponse: "elle s'infiltre moins dans le sol"
+    distracteurs: ["le sol en absorbe davantage qu'avant", "la pluie tombe moins souvent"]
+    indice: "Une surface en béton est dure et sans trou, contrairement à la terre."
+  - enonce: "Brûler du charbon, du pétrole ou du gaz libère un gaz appelé dioxyde de carbone. Quel effet cela a-t-il à long terme sur le climat de la Terre ?"  # element: effet # HIS-3: la combustion des énergies fossiles augmente la quantité de dioxyde de carbone de l'atmosphère, gaz qui retient la chaleur (effet de serre) et réchauffe le climat, fait enseigné au cycle 3 (activité humaine et climat)
+    bonneReponse: "l'air retient davantage la chaleur et le climat se réchauffe"
+    distracteurs: ["l'air retient moins la chaleur et le climat se refroidit", "l'air devient plus riche en oxygène et plus pur"]
+    indice: "Les gaz libérés dans l'air n'en disparaissent pas aussitôt."
+  - enonce: "L'éclairage des rues et des bâtiments reste allumé toute la nuit dans une grande ville. Quel effet cela peut-il avoir sur des oiseaux qui voyagent la nuit ?"  # element: effet # HIS-3: la lumière artificielle nocturne désoriente certains oiseaux migrateurs, fait enseigné au cycle 3 (effet de l'activité humaine sur les animaux)
+    bonneReponse: "certains perdent leurs repères et changent de route"
+    distracteurs: ["ils voyagent plus vite sans se fatiguer", "ils se reposent mieux pendant le trajet"]
+    indice: "Ces oiseaux s'orientent la nuit avec des repères naturels, comme les étoiles."
+  - enonce: "Une forêt a été fortement coupée. Quel geste permet de l'aider à se reconstituer ?"  # element: geste # HIS-3: replanter des arbres sur une surface déboisée est un geste de reconstitution d'un milieu forestier, geste cité au cycle 3 (préserver les ressources)
+    bonneReponse: "y planter de jeunes arbres"
+    distracteurs: ["y enlever les derniers arbres restants", "y répandre un produit contre les herbes"]
+    indice: "Enlever les derniers arbres rend le sol encore plus nu et plus fragile."
+  - enonce: "Les eaux sales des égouts d'une commune risquent de polluer une rivière. Quel geste permet de limiter cette pollution ?"  # element: geste # HIS-3: une station d'épuration nettoie les eaux usées avant leur retour dans le milieu naturel, fait enseigné au cycle 3 (traitement de l'eau)
+    bonneReponse: "les nettoyer dans une station d'épuration avant de les rejeter"
+    distracteurs: ["les rejeter plus loin le long de la rivière", "les mélanger à beaucoup d'eau pour les diluer"]
+    indice: "Déplacer une eau sale ne change pas ce qu'elle contient."
+  - enonce: "Le nombre d'une espèce de poissons diminue dans une mer. Quel geste permet de la préserver ?"  # element: geste # HIS-3: limiter la pêche pendant la reproduction et épargner les jeunes poissons permet à une espèce de se renouveler, fait enseigné au cycle 3 (préserver une ressource vivante)
+    bonneReponse: "limiter la pêche quand les poissons se reproduisent"
+    distracteurs: ["pêcher surtout les plus jeunes poissons", "pêcher davantage pour libérer de la place"]
+    indice: "Un poisson pêché avant d'être adulte n'aura jamais de petits."
+  - enonce: "Dans une région, l'eau manque en été. Quel geste permet de préserver cette ressource ?"  # element: geste # HIS-3: réparer les fuites des canalisations évite de perdre de l'eau potable, geste de préservation d'une ressource enseigné au cycle 3 (l'eau, ressource limitée)
+    bonneReponse: "réparer les canalisations qui fuient"
+    distracteurs: ["arroser les cultures en plein midi", "laisser couler les fontaines nuit et jour"]
+    indice: "Une eau qui coule sans servir est une eau perdue."
+  - enonce: "Le pétrole et le charbon ne se renouvellent pas à l'échelle humaine. Quel geste préserve ces ressources ?"  # element: geste # HIS-3: le pétrole et le charbon sont des énergies fossiles qui mettent des millions d'années à se former, le vent et le soleil sont des sources renouvelables, produire de l'électricité avec elles préserve les ressources fossiles, fait enseigné au cycle 3 (sources d'énergie, SCI-CM1-04)
+    bonneReponse: "produire de l'électricité avec le vent et le soleil"
+    distracteurs: ["produire de l'électricité avec plus de gaz naturel", "extraire plus vite ce qu'il en reste dans le sous-sol"]
+    indice: "Le gaz naturel, comme le pétrole et le charbon, met des millions d'années à se former."
+  - enonce: "L'éclairage public d'une ville dérange les animaux de la nuit. Quel geste permet de limiter cet effet ?"  # element: geste # HIS-3: éteindre l'éclairage inutile la nuit réduit la gêne faite aux animaux nocturnes et aux oiseaux migrateurs, geste cité au cycle 3 (limiter l'effet de l'activité humaine)
+    bonneReponse: "éteindre les lampes inutiles pendant la nuit"
+    distracteurs: ["installer des lampes encore plus puissantes", "éclairer davantage les zones de nature"]
+    indice: "Une lampe plus puissante éclaire plus fort et plus loin."

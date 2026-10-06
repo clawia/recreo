@@ -1,0 +1,113 @@
+schema: 1
+id: cm1-sciences-corps
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "Le vivant, sa diversité et les fonctions qui le caractérisent"
+  competence: "Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon fonctionnement du corps."
+lignesDeReferentiel: ["SCI-CM1-10"]
+#
+# S51-SCI-CORPS-CM1 (docs/backlog/backlog.md, sprint 51), ligne SCI-CM1-10 de "Sciences et
+# technologie" (CM1). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-10). Paquet statique de type
+# "question", meme regime que les paquets de sciences CM1 deja fermes.
+#
+# Arbitrage pedagogique prealable cite (ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-
+# et-le-prix-des-quinze-reserves.md, section 2.2, ligne 10) : enumeration conjonctive, quatre
+# elements exiges par FER-1 (alimentation, activite physique, sommeil, hygiene) ; deux taches pour
+# FER-3 (dire ce qui est bon pour le corps / dire a quoi sert un de ces quatre).
+#
+# FER-1 et FER-3 : deux marqueurs par item, "# tache: A ou B" et "# element: alimentation,
+# activite, sommeil ou hygiene".
+# - tache A, dire ce qui est bon pour le corps (items 1 a 6) : la bonne reponse est une conduite ou
+#   une chose qui releve de l'element ; les quatre elements sont chacun en bonne reponse d'au moins
+#   un item de cette tache (alimentation 1 et 5, activite 2, sommeil 3, hygiene 4 et 6) ;
+# - tache B, dire a quoi sert un de ces quatre (items 7 a 12) : la bonne reponse est la fonction
+#   d'un element dans le corps.
+#
+# BIA-4 : aucun enonce, aucune proposition, aucun indice n'interroge l'enfant sur sa propre vie ni ne
+# suppose un repas, un lit ou une routine. Chaque enonce porte sur le corps en general ou sur une
+# situation decrite a la troisieme personne.
+#
+# Frontieres (CYC-1 lue avant l'ecriture : cp-qlm-hygiene, cp-qlm-corps-sens, cp-eps-corps-effort) :
+# - EPS-9 : aucun item ne sert l'effet a long terme de la pratique reguliere d'une activite physique
+#   (le coeur renforce, l'endurance qui progresse) ni un effet immediat de l'effort (essoufflement,
+#   soif, chaleur), qui relevent de cm1-eps-effets-activite ;
+# - SCI-CM1-09 (cm1-sciences-nutrition) : aucun item ne nomme un organe de nutrition comme bonne
+#   reponse et aucun ne reprend l'item 5 de ce paquet ; aucun item ne sert les regimes alimentaires
+#   ni "a quoi sert la nourriture" d'une espece (cm1-sciences-regimes-alimentaires) ;
+# - CP : aucun item ne contredit le CP. Les items d'hygiene des mains ajoutent la transmission des
+#   microbes que le CP pose deja ; le sommeil reste "repos et recuperation", complete par la
+#   croissance et la reparation ; aucun item ne dit que le sucre fait grandir.
+#
+# SCI-1 : chaque item dont un distracteur porte une conception fausse courante (un seul aliment
+# suffit, rester immobile garde les forces, l'eau seule lave les mains, tousser dans la main) a un
+# indice qui dit pourquoi elle est fausse. Simplification assumee, meme patron que
+# cm1-sciences-usages-numeriques : chaque indice compte une phrase, ne nomme jamais la bonne reponse
+# de son item et ne dit jamais "ta reponse".
+#
+# SCI-3 : aucune bonne reponse ne porte de valeur numerique (0 item sur 12, plafond floor(12/6)=2).
+#
+# SCI-4 : chaque item porte deux distracteurs (trois propositions).
+#
+# HIS-3 (chaque fait porte sa source) : marque en commentaire sur chaque ligne d'item. Les faits sont
+# des faits de sciences du cycle 3 (programme de sciences et technologie, theme "Le vivant, sa
+# diversite et les fonctions qui le caracterisent"), sans controverse.
+#
+# CON-1 : les propositions sont masquees par la mecanique bandit-manchot, aucun item ne se repond
+# sans l'enonce complet.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Le corps a besoin de matériaux pour grandir et d'énergie pour fonctionner. Que doit-il recevoir pour cela ?"  # tache: A # element: alimentation # HIS-3: aucun aliment ne contient à lui seul tout ce dont le corps a besoin, une alimentation variée apporte des éléments différents, fait enseigné au cycle 3 (besoins du corps)
+    bonneReponse: "des aliments variés"
+    distracteurs: ["toujours le même aliment", "des boissons sucrées à la place de l'eau"]
+    indice: "Aucun aliment ne contient à lui seul tout ce dont le corps a besoin."
+  - enonce: "Les muscles et les articulations du corps sont faits pour se mouvoir. Quelle conduite est bonne pour eux ?"  # tache: A # element: activite # HIS-3: les muscles et les articulations sont faits pour le mouvement, l'activité physique est une des conditions de la bonne santé enseignée au cycle 3 (fonctionnement du corps), sans effet à long terme énoncé
+    bonneReponse: "bouger souvent, en marchant, en courant ou en jouant"
+    distracteurs: ["rester immobile pour garder ses forces", "rester assis le plus longtemps possible"]
+    indice: "Les muscles et les articulations servent à bouger, pas à rester en réserve."
+  - enonce: "Le corps grandit et se répare surtout quand il est au repos la nuit. Que lui faut-il pour cela ?"  # tache: A # element: sommeil # HIS-3: la croissance et la réparation de l'organisme se font en grande partie pendant le sommeil, fait enseigné au cycle 3 (fonctionnement du corps), compatible avec le CP (le corps se repose et récupère)
+    bonneReponse: "assez de sommeil"
+    distracteurs: ["rester éveillé le plus tard possible", "boire des boissons qui empêchent de dormir"]
+    indice: "Réparer et grandir demande du temps pendant lequel le corps ne fait rien d'autre."
+  - enonce: "Des microbes se déposent sur les mains. Quel geste limite le plus la transmission de maladies ?"  # tache: A # element: hygiene # HIS-3: se laver les mains avec du savon élimine la majorité des microbes et limite la transmission des maladies, fait enseigné au cycle 3 (hygiène), prolonge le CP (cp-qlm-hygiene)
+    bonneReponse: "se laver les mains avec du savon"
+    distracteurs: ["se frotter les mains sur ses vêtements", "se passer les mains sous l'eau très vite"]
+    indice: "L'eau seule emporte mal ce qui colle à la peau."
+  - enonce: "Le corps est fait en grande partie d'eau et en perd sans cesse. Quelle boisson lui convient le mieux ?"  # tache: A # element: alimentation # HIS-3: l'eau est la boisson adaptée aux besoins du corps, le corps humain adulte est composé d'environ 60 pour cent d'eau, fait enseigné au cycle 3 (besoins du corps)
+    bonneReponse: "l'eau"
+    distracteurs: ["les jus de fruits sucrés", "les sodas"]
+    indice: "Les boissons sucrées contiennent beaucoup de sucre, que le corps n'utilise pas en grande quantité."
+  - enonce: "Un enfant malade tousse près d'une autre personne. Quel geste évite de lui transmettre ses microbes ?"  # tache: A # element: hygiene # HIS-3: tousser dans le pli du coude évite de déposer des microbes sur les mains puis sur les objets et les personnes, geste d'hygiène enseigné au cycle 3
+    bonneReponse: "tousser dans son coude"
+    distracteurs: ["tousser dans sa main", "tousser en se tenant bien droit"]
+    indice: "Les mains touchent ensuite des objets et d'autres personnes."
+  - enonce: "À quoi sert l'activité physique pour le fonctionnement du corps ?"  # tache: B # element: activite # HIS-3: l'activité physique fait travailler les muscles et les articulations, fait enseigné au cycle 3 (fonctionnement du corps), aucun effet à long terme énoncé
+    bonneReponse: "à faire travailler les muscles et les articulations"
+    distracteurs: ["à remplacer le sommeil", "à se passer de manger"]
+    indice: "Aucun exercice ne tient lieu de repos."
+  - enonce: "À quoi sert le sommeil pour le corps ?"  # tache: B # element: sommeil # HIS-3: le sommeil permet la croissance et la réparation de l'organisme, fait enseigné au cycle 3 (fonctionnement du corps)
+    bonneReponse: "à lui permettre de grandir et de se réparer"
+    distracteurs: ["à faire travailler les muscles plus vite", "à remplacer l'eau que le corps perd"]
+    indice: "Pendant que le corps dort, il ne dépense presque rien pour bouger."
+  - enonce: "À quoi sert le calcium contenu dans le lait et dans le fromage ?"  # tache: B # element: alimentation # HIS-3: le calcium est un constituant des os et des dents, apporté par les produits laitiers, fait enseigné au cycle 3 (alimentation et croissance)
+    bonneReponse: "à construire des os et des dents solides"
+    distracteurs: ["à rendre le sang plus rouge", "à donner sa couleur à la peau"]
+    indice: "Ce n'est pas dans le sang que cet élément est le plus utile."
+  - enonce: "À quoi sert le savon quand on lave le corps ?"  # tache: B # element: hygiene # HIS-3: le savon dissout les graisses et entraîne la saleté et une partie des microbes avec l'eau de rinçage, fait enseigné au cycle 3 (hygiène), prolonge le CP (cp-qlm-hygiene)
+    bonneReponse: "à enlever la saleté et une partie des microbes"
+    distracteurs: ["à rendre la peau plus épaisse", "à protéger la peau du froid"]
+    indice: "Le savon se rince, il ne reste pas sur la peau."
+  - enonce: "À quoi servent les fibres des fruits, des légumes et des céréales complètes ?"  # tache: B # element: alimentation # HIS-3: les fibres alimentaires favorisent le transit intestinal et ne sont presque pas absorbées, fait enseigné au cycle 3 (alimentation)
+    bonneReponse: "à aider le ventre à digérer"
+    distracteurs: ["à fabriquer les os", "à donner de l'énergie tout de suite"]
+    indice: "Les fibres ne sont presque pas absorbées par le corps."
+  - enonce: "À quoi sert le fer contenu dans la viande rouge et dans les lentilles ?"  # tache: B # element: alimentation # HIS-3: le fer entre dans la composition de l'hémoglobine qui transporte l'oxygène dans le sang, fait enseigné au cycle 3 (alimentation)
+    bonneReponse: "à transporter l'oxygène dans le sang"
+    distracteurs: ["à durcir les os", "à digérer les aliments"]
+    indice: "Ce n'est pas dans les os que le fer est utile."

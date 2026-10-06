@@ -1,0 +1,106 @@
+schema: 1
+id: cm1-sciences-terre
+type: question
+descripteur:
+  matiere: "Sciences et technologie"
+  niveau: "CM1"
+  domaine: "La planète Terre. Les êtres vivants dans leur environnement"
+  competence: "Situer la Terre dans le système solaire et relier les mouvements de la Terre au jour, à la nuit et aux saisons."
+lignesDeReferentiel: ["SCI-CM1-15"]
+#
+# S51-SCI-TERRE-CM1 (docs/backlog/backlog.md, sprint 51), ligne SCI-CM1-15 de "Sciences et
+# technologie" (CM1). Referentiel copie conforme
+# (squad/programme/sciences-et-technologie/competences-cm1.md, SCI-CM1-15). Paquet statique de type
+# "question", meme regime que les paquets de sciences CM1 deja fermes. Aucun schema ni dessin.
+#
+# Arbitrage pedagogique prealable cite (ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-
+# et-le-prix-des-quinze-reserves.md, section 2.2, ligne 15, et section 2.5) : enumeration
+# conjonctive, quatre elements exiges par FER-1 (situer la Terre dans le systeme solaire ; le jour ;
+# la nuit ; les saisons) ; deux taches pour FER-3 (expliquer le jour et la nuit / expliquer les
+# saisons). SCI-1 mord ici plus qu'ailleurs : la cause des saisons est l'inclinaison de l'axe de la
+# Terre, jamais la distance au Soleil, et SCI-4 s'applique (trois propositions).
+#
+# FER-1 et FER-3 : deux marqueurs par item, "# tache: A, B ou C" et "# element: systeme, jour,
+# nuit ou saisons".
+# - tache C, situer la Terre dans le systeme solaire (items 1 et 2, element systeme) ;
+# - tache A, expliquer le jour et la nuit (items 3 a 6 et 12, elements jour et nuit) ;
+# - tache B, expliquer les saisons (items 7 a 11, element saisons).
+#
+# SCI-1 : l'item 7 (la cause des saisons) a pour bonne reponse l'inclinaison de l'axe de la Terre.
+# Son distracteur "la Terre est plus pres du Soleil en ete" est la conception fausse courante ; son
+# indice est celui de l'arbitrage, mot pour mot, et ne nomme pas la bonne reponse. Les items 3 et 9
+# portent aussi une conception fausse en distracteur et un indice qui dit pourquoi elle est fausse.
+# Simplification assumee, meme patron que cm1-sciences-usages-numeriques : chaque indice compte une
+# phrase, ne nomme jamais la bonne reponse de son item et ne dit jamais "ta reponse".
+#
+# SCI-3 : un seul item demande une duree (item 6, "environ vingt-quatre heures"), pour un plafond de
+# floor(12/6) = 2 ; aucune bonne reponse ne porte de chiffre.
+#
+# SCI-4 : chaque item porte deux distracteurs (trois propositions).
+#
+# HIS-3 (chaque fait porte sa source) : marque en commentaire sur chaque ligne d'item. Les faits sont
+# des faits d'astronomie du cycle 3 (programme de sciences et technologie, theme "La planete Terre"),
+# sans controverse.
+#
+# CON-1 : les propositions sont masquees par la mecanique bandit-manchot, aucun item ne se repond
+# sans l'enonce complet.
+#
+# CYC-1 : cp-qlm-saisons (QLM-CP-13) lu avant l'ecriture. Il nomme et ordonne les mois et les saisons
+# (l'hiver est la saison la plus froide, l'ete la plus chaude, printemps, ete, automne, hiver). Ce
+# paquet ajoute la cause et ne contredit aucun item du CP : les saisons sont nommees comme au CP,
+# l'hiver reste le plus froid, l'ete le plus chaud, et les jours courts ou longs de l'item 11 sont
+# ceux de la France.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+items:
+  - enonce: "Quel astre est au centre du système solaire ?"  # tache: C # element: systeme # HIS-3: le Soleil est l'étoile au centre du système solaire, les planètes tournent autour de lui, fait enseigné au cycle 3 (le système solaire)
+    bonneReponse: "le Soleil"
+    distracteurs: ["la Terre", "la Lune"]
+    indice: "Les planètes tournent autour de cet astre, qui est une étoile."
+  - enonce: "Autour de quel astre la Terre tourne-t-elle en une année ?"  # tache: C # element: systeme # HIS-3: la Terre est une planète qui tourne autour du Soleil, la Lune tourne autour de la Terre, fait enseigné au cycle 3 (le système solaire)
+    bonneReponse: "autour du Soleil"
+    distracteurs: ["autour de la Lune", "autour d'une autre planète"]
+    indice: "Un petit astre ne peut pas faire tourner autour de lui un astre bien plus gros."
+  - enonce: "Pourquoi y a-t-il le jour et la nuit sur Terre ?"  # tache: A # element: jour # HIS-3: l'alternance du jour et de la nuit vient de la rotation de la Terre sur elle-même, fait enseigné au cycle 3 (mouvements de la Terre)
+    bonneReponse: "la Terre tourne sur elle-même"
+    distracteurs: ["le Soleil tourne autour de la Terre", "la Terre s'éloigne du Soleil la nuit"]
+    indice: "La distance de la Terre au Soleil ne change pas entre le jour et la nuit."
+  - enonce: "Dans une région de la Terre, c'est le jour. Dans quelle position est cette région ?"  # tache: A # element: jour # HIS-3: il fait jour dans la partie de la Terre tournée vers le Soleil, fait enseigné au cycle 3 (mouvements de la Terre)
+    bonneReponse: "elle est tournée vers le Soleil"
+    distracteurs: ["elle est cachée par la Lune", "elle est plus proche du Soleil que le reste de la Terre"]
+    indice: "Le Soleil éclaire la partie de la Terre qui lui fait face."
+  - enonce: "Dans une région de la Terre, c'est la nuit. Pourquoi cette région n'est-elle pas éclairée ?"  # tache: A # element: nuit # HIS-3: il fait nuit dans la partie de la Terre tournée à l'opposé du Soleil, fait enseigné au cycle 3 (mouvements de la Terre)
+    bonneReponse: "elle est tournée du côté opposé au Soleil"
+    distracteurs: ["le Soleil s'éteint pendant la nuit", "la Lune éteint la lumière du Soleil"]
+    indice: "Le Soleil brille tout le temps, de nuit comme de jour."
+  - enonce: "En combien de temps la Terre fait-elle un tour sur elle-même ?"  # tache: A # element: jour # HIS-3: la rotation de la Terre sur elle-même dure environ vingt-quatre heures, c'est la durée d'un jour, fait enseigné au cycle 3 (mouvements de la Terre)
+    bonneReponse: "environ vingt-quatre heures"
+    distracteurs: ["environ une semaine", "environ une année"]
+    indice: "Ce tour sur elle-même correspond à l'alternance d'un jour et d'une nuit."
+  - enonce: "Pourquoi y a-t-il des saisons sur Terre ?"  # tache: B # element: saisons # HIS-3: les saisons viennent de l'inclinaison de l'axe de la Terre pendant son tour autour du Soleil, la distance Terre-Soleil change très peu au cours de l'année, fait enseigné au cycle 3 (mouvements de la Terre), exemple de l'arbitrage prealable de s30, section 2.5
+    bonneReponse: "l'inclinaison de l'axe de la Terre"
+    distracteurs: ["la Terre est plus près du Soleil en été", "la Terre tourne plus vite en hiver"]
+    indice: "La distance de la Terre au Soleil change très peu au cours de l'année."
+  - enonce: "La Terre tourne autour du Soleil avec son axe incliné. Que se passe-t-il pour une région donnée au fil de l'année ?"  # tache: B # element: saisons # HIS-3: en raison de l'inclinaison de l'axe, une région reçoit plus ou moins de lumière du Soleil selon la position de la Terre sur son trajet, fait enseigné au cycle 3 (mouvements de la Terre)
+    bonneReponse: "elle reçoit tantôt plus, tantôt moins de lumière"
+    distracteurs: ["elle reçoit toujours la même lumière", "elle s'éloigne puis se rapproche beaucoup du Soleil"]
+    indice: "Les saisons ne viennent pas d'un éloignement ou d'un rapprochement important."
+  - enonce: "Pourquoi fait-il plus chaud en été qu'en hiver en France ?"  # tache: B # element: saisons # HIS-3: en été le Soleil monte plus haut dans le ciel et les jours sont plus longs en France, la chaleur reçue est plus grande, fait enseigné au cycle 3 (saisons)
+    bonneReponse: "le Soleil est plus haut dans le ciel et les jours sont plus longs"
+    distracteurs: ["la Terre est plus près du Soleil", "le Soleil brille plus fort en été"]
+    indice: "Le Soleil brille de la même façon toute l'année."
+  - enonce: "Quand c'est l'été en France, quelle saison est-ce dans l'hémisphère sud ?"  # tache: B # element: saisons # HIS-3: les saisons sont inversées entre l'hémisphère nord et l'hémisphère sud à cause de l'inclinaison de l'axe, fait enseigné au cycle 3 (mouvements de la Terre)
+    bonneReponse: "l'hiver"
+    distracteurs: ["l'été aussi", "le printemps"]
+    indice: "Les deux moitiés de la Terre ne sont pas tournées vers le Soleil en même temps."
+  - enonce: "Quelle saison a les jours les plus longs en France ?"  # tache: B # element: saisons # HIS-3: les jours sont les plus longs en été dans l'hémisphère nord, au solstice de juin, fait enseigné au cycle 3 (saisons), cohérent avec cp-qlm-saisons
+    bonneReponse: "l'été"
+    distracteurs: ["l'hiver", "le printemps"]
+    indice: "Plus le Soleil monte haut dans le ciel, plus il reste longtemps au-dessus de l'horizon."
+  - enonce: "Quand il est midi à un endroit de la Terre, que se passe-t-il à l'endroit opposé ?"  # tache: A # element: nuit # HIS-3: deux endroits diamétralement opposés de la Terre ne peuvent pas faire face au Soleil en même temps, fait enseigné au cycle 3 (mouvements de la Terre)
+    bonneReponse: "il y fait nuit"
+    distracteurs: ["il y fait aussi jour", "il y fait jour mais plus sombre"]
+    indice: "La Terre est une boule, et le Soleil n'en éclaire qu'une moitié à la fois."

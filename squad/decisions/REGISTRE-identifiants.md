@@ -29,6 +29,25 @@ garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am
 ce **916 / 157** que je recopie. Ce compte vaut sur ma branche ; l'instance B ecrit sur la sienne,
 et la fusion le reverifie (`ADR-0085`, clause 5).
 
+**Note de `nadia-prof`, s51, instance B, le 2026-10-06 (Done pedagogique de `SCI-CM1-10`, VALIDE
+SOUS RESERVE ; `SCI-CM1-15` et `SCI-CM1-18` REFUSES).** Trois identifiants ajoutes, des reserves :
+**`CRP-CM1-R1`** a **`CRP-CM1-R3`**, ecrits dans
+`squad/conformite/FICHE-bandit-manchot-corps-cm1.md`. **Forme copiee** de `PHN-CM1-R1` : trois
+segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Un prefixe neuf, `CRP`** :
+absent de la section 4, et cherche avant d'ecrire sur l'arbre et sur les 81 branches locales
+(`git grep`), zero occurrence ; la methode a ete verifiee sur un identifiant connu (`PHN-CM1-R1`,
+trouve) avant de croire ce zero. Les trois lignes de la section 4 sont dans le meme diff que la
+fiche. Les fiches de `bandit-manchot-activite-humaine-cm1` et de `bandit-manchot-terre-cm1`, refusees,
+n'ecrivent aucun identifiant neuf.
+
+Ligne d'etat courant portee de **914 / 157 a 917 / 158** (sur son seul diff). **Methode : le chiffre
+est celui que le garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am
+test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 914 identifiants alloues et 157 prefixes distincts, sa table en porte 917 et 158"*. C'est
+ce **917 / 158** que je recopie. Aucun autre defaut rendu. L'instance A travaille en parallele sur le
+meme fichier : si elle alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, s50, instance A, le 2026-10-04 (Done pedagogique de `FRA-CE1-16`, VALIDE
 SOUS RESERVE).** Un identifiant ajoute, une reserve : **`HOM-CE1-R1`**, ecrit dans
 `squad/conformite/FICHE-bandit-manchot-homophones-ce1.md`. **Forme copiee** de `GRC-CE1-R1` : trois
@@ -662,7 +681,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `916` identifiants alloues, `157` prefixes distincts.
+**Compte courant, verifie par la CI** : `919` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2162,3 +2181,6 @@ clause 2 par une exemption.
 | `CTG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `CTG-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `CTG-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CRP-CM1-R1` | `squad/conformite/FICHE-bandit-manchot-corps-cm1.md` |
+| `CRP-CM1-R2` | `squad/conformite/FICHE-bandit-manchot-corps-cm1.md` |
+| `CRP-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-corps-cm1.md` |
