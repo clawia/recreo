@@ -7,13 +7,12 @@
   (section 5). Développeur de paquet et de dessin : `lea-dev` (planning de s52). Nom de fichier de contenu et
   identifiant d'entrée de catalogue fixés par le développeur au premier commit ; le nom de cette fiche est
   proposé par `camille-po` et renommé si l'identifiant diffère.
-- **Statut global** : en construction - **non engagée à s52** : `MAT-CE1-17` est non engagée (budget 1,5
-  libéré, destination s53, `squad/sprints/s52-deux-instances-ce1-francais-maths/planning.md`). Cette fiche
-  est ouverte pour qu'une première livraison, si U4 la permet, ne trouve pas le dépôt sans fiche. Elle ne
-  re-engage rien. Conditions suspensives non remplies à l'ouverture : condition (1) moitié message du
-  cliquet (U1) et condition (2) quadrillage 6 x 6 et légende à 36 libellés (U2, U3), `DEC-0111` section 5.2
-  et son amendement A.2.
-- **Dernière mise à jour** : 2026-10-06 (ouverture, `camille-po`, s52).
+- **Statut global** : en construction - **engagée à s52** : `MAT-CE1-17` est re-engagée à 1,5 par
+  l'amendement du 2026-10-06 (U4, sections A.5 et A.6) de `DEC-0111`, les trois conditions de la section 5.2
+  étant remplies. À l'ouverture de cette fiche elle était non engagée (budget libéré par le planning de
+  `squad/sprints/s52-deux-instances-ce1-francais-maths/planning.md`, destination s53, annulée).
+  Aucun paquet n'existe encore ; bloc de validation vide.
+- **Dernière mise à jour** : 2026-10-06 (re-engagement, `camille-po`, s52, U4).
 
 ## Compétences visées
 
@@ -44,8 +43,9 @@ mention. Bornes de grille `DEP-CE1-2` (même fichier, section 1).
   seule désignation (`ZON-14`).
 - [ ] La bonne zone n'est ni toujours la première ni toujours la dernière déclarée ; ni l'énoncé ni
   l'indice ne nomment le libellé de la bonne zone.
-- [ ] Zones de désignation d'au moins 16 unités de côté (plancher d'`ines-design`, 296 px à 320 px de
-  fenêtre ; amendement A2bis d'`ADR-0080` attendu, U1).
+- [ ] Zones de désignation rendues à 44 px au moins à 296 px de large (320 px de fenêtre) : c'est la barre de
+  refus de `nadia-prof` ; 16 unités sur un carré de 100 est la marge de dessin d'`ines-design` et
+  d'`ADR-0080` A2bis (`DEC-0111`, amendement A.7).
 - [ ] Mention de couverture reprise mot pour mot dans la matrice : *"reconnaitre un axe de symetrie, et
   completer une figure par symetrie a raison d'une case par item ; completer une figure a plusieurs cases
   reste non couvert, aucune mecanique ne recoit une suite de gestes dans une meme manche"* (graphie de la
