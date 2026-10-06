@@ -170,7 +170,14 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // point final, meme convention que les entrees precedentes.
         PROBLEMES_ETAPES("MAT-CE1-08",
                 "Résoudre des problèmes d'addition, de soustraction et de multiplication à une ou"
-                        + " deux étapes");
+                        + " deux étapes"),
+        // S51-MAT-COMPARER-RANGER (s52) : entree neuve, MAT-CE1-02, moitie textuelle. Le libelle est
+        // la mention d'ORD-CE1-5 (DEC-0111 section 5.4, point 7 : aucun libelle n'est invente),
+        // accentuee parce qu'une competence traverse le port entrant (DEC-0002) et ecrite avec
+        // l'espace insecable devant le point-virgule (ADR-0067).
+        COMPARER_RANGER_ENCADRER("MAT-CE1-02",
+                "comparer, ranger et encadrer seuls ; le verbe 'placer sur une ligne graduée'"
+                        + " n'est servi par aucun jeu et ne peut pas l'être par du texte");
 
         private final String ligne;
 

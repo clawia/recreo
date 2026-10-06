@@ -780,3 +780,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-corps
     nombreDeManches: 10
+  - id: bandit-manchot-comparer-ranger-ce1
+    titre: "Comparer, ranger, encadrer"
+    consigne: "Lis bien les nombres, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-comparer-ranger
+    nombreDeManches: 10

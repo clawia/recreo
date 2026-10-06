@@ -400,6 +400,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
             // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
             "bandit-manchot-decrire-une-oeuvre-cp",
+            // S51-MAT-COMPARER-RANGER (s52) : entree neuve, MAT-CE1-02, moitie textuelle.
+            "bandit-manchot-comparer-ranger-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -658,6 +660,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Comment ça s'écrit ?",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
             "Décrire une œuvre",
+            // S51-MAT-COMPARER-RANGER (s52) : titre neuf, sans niveau (ADR-0078).
+            "Comparer, ranger, encadrer",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -946,6 +950,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
+            // S51-MAT-COMPARER-RANGER (s52) : consigne neuve, generique - elle ne nomme ni la tache
+            // ni aucun nombre d'aucun item.
+            "Lis bien les nombres, puis choisis la bonne réponse.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1517,7 +1524,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // Second passage (DEC-0109 section 11, fiche de nadia-prof, motif 4 du refus du premier
             // passage) : "formes" retiree a son tour, aucun item ne la servant plus apres la
             // reecriture d'oeuvre-quatre-saisons (motif 2).
-            "Décrire une œuvre : dire ce qu'on y voit (sujet et matériaux).");
+            "Décrire une œuvre : dire ce qu'on y voit (sujet et matériaux).",
+            // S51-MAT-COMPARER-RANGER (s52) : competence neuve, MAT-CE1-02. Libelle = la mention
+            // d'ORD-CE1-5 (DEC-0111 section 5.4, point 7), accentuee, avec l'espace insecable devant
+            // le point-virgule (ADR-0067).
+            "comparer, ranger et encadrer seuls ; le verbe 'placer sur une ligne graduée' "
+                    + "n'est servi par aucun jeu et ne peut pas l'être par du texte");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
