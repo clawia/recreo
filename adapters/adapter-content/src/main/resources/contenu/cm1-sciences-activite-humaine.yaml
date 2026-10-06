@@ -75,9 +75,9 @@ items:
     bonneReponse: "elle s'infiltre moins dans le sol"
     distracteurs: ["le sol en absorbe davantage qu'avant", "la pluie tombe moins souvent"]
     indice: "Une surface en béton est dure et sans trou, contrairement à la terre."
-  - enonce: "Brûler du charbon, du pétrole ou du gaz libère un gaz appelé dioxyde de carbone. Quel effet cela a-t-il sur l'air qui entoure la Terre ?"  # element: effet # HIS-3: la combustion des énergies fossiles augmente la quantité de dioxyde de carbone de l'atmosphère, gaz qui renforce l'effet de serre, fait enseigné au cycle 3 (activité humaine et climat)
-    bonneReponse: "il contient de plus en plus de ce gaz"
-    distracteurs: ["il contient de plus en plus d'oxygène", "il devient de plus en plus froid"]
+  - enonce: "Brûler du charbon, du pétrole ou du gaz libère un gaz appelé dioxyde de carbone. Quel effet cela a-t-il à long terme sur le climat de la Terre ?"  # element: effet # HIS-3: la combustion des énergies fossiles augmente la quantité de dioxyde de carbone de l'atmosphère, gaz qui retient la chaleur (effet de serre) et réchauffe le climat, fait enseigné au cycle 3 (activité humaine et climat)
+    bonneReponse: "l'air retient davantage la chaleur et le climat se réchauffe"
+    distracteurs: ["l'air retient moins la chaleur et le climat se refroidit", "l'air devient plus riche en oxygène et plus pur"]
     indice: "Les gaz libérés dans l'air n'en disparaissent pas aussitôt."
   - enonce: "L'éclairage des rues et des bâtiments reste allumé toute la nuit dans une grande ville. Quel effet cela peut-il avoir sur des oiseaux qui voyagent la nuit ?"  # element: effet # HIS-3: la lumière artificielle nocturne désoriente certains oiseaux migrateurs, fait enseigné au cycle 3 (effet de l'activité humaine sur les animaux)
     bonneReponse: "certains perdent leurs repères et changent de route"
@@ -90,7 +90,7 @@ items:
   - enonce: "Les eaux sales des égouts d'une commune risquent de polluer une rivière. Quel geste permet de limiter cette pollution ?"  # element: geste # HIS-3: une station d'épuration nettoie les eaux usées avant leur retour dans le milieu naturel, fait enseigné au cycle 3 (traitement de l'eau)
     bonneReponse: "les nettoyer dans une station d'épuration avant de les rejeter"
     distracteurs: ["les rejeter plus loin le long de la rivière", "les mélanger à beaucoup d'eau pour les diluer"]
-    indice: "Déplacer ou diluer une eau sale ne change pas ce qu'elle contient."
+    indice: "Déplacer une eau sale ne change pas ce qu'elle contient."
   - enonce: "Le nombre d'une espèce de poissons diminue dans une mer. Quel geste permet de la préserver ?"  # element: geste # HIS-3: limiter la pêche pendant la reproduction et épargner les jeunes poissons permet à une espèce de se renouveler, fait enseigné au cycle 3 (préserver une ressource vivante)
     bonneReponse: "limiter la pêche quand les poissons se reproduisent"
     distracteurs: ["pêcher surtout les plus jeunes poissons", "pêcher davantage pour libérer de la place"]
@@ -98,12 +98,12 @@ items:
   - enonce: "Dans une région, l'eau manque en été. Quel geste permet de préserver cette ressource ?"  # element: geste # HIS-3: réparer les fuites des canalisations évite de perdre de l'eau potable, geste de préservation d'une ressource enseigné au cycle 3 (l'eau, ressource limitée)
     bonneReponse: "réparer les canalisations qui fuient"
     distracteurs: ["arroser les cultures en plein midi", "laisser couler les fontaines nuit et jour"]
-    indice: "Une eau qui s'évapore au soleil ou qui coule sans servir est perdue."
-  - enonce: "Une commune veut garder du pétrole pour plus tard. Quel geste lui permet d'en utiliser moins ?"  # element: geste # HIS-3: les énergies du vent et du soleil sont renouvelables, le pétrole et le charbon sont des ressources fossiles qui ne se renouvellent pas à l'échelle humaine, fait enseigné au cycle 3 (sources d'énergie, SCI-CM1-04)
+    indice: "Une eau qui coule sans servir est une eau perdue."
+  - enonce: "Le pétrole et le charbon ne se renouvellent pas à l'échelle humaine. Quel geste préserve ces ressources ?"  # element: geste # HIS-3: le pétrole et le charbon sont des énergies fossiles qui mettent des millions d'années à se former, le vent et le soleil sont des sources renouvelables, produire de l'électricité avec elles préserve les ressources fossiles, fait enseigné au cycle 3 (sources d'énergie, SCI-CM1-04)
     bonneReponse: "produire de l'électricité avec le vent et le soleil"
-    distracteurs: ["produire de l'électricité avec plus de charbon", "stocker davantage de pétrole dans des réservoirs"]
-    indice: "Le charbon, comme le pétrole, met des millions d'années à se former."
+    distracteurs: ["produire de l'électricité avec plus de gaz naturel", "extraire plus vite ce qu'il en reste dans le sous-sol"]
+    indice: "Le gaz naturel, comme le pétrole et le charbon, met des millions d'années à se former."
   - enonce: "L'éclairage public d'une ville dérange les animaux de la nuit. Quel geste permet de limiter cet effet ?"  # element: geste # HIS-3: éteindre l'éclairage inutile la nuit réduit la gêne faite aux animaux nocturnes et aux oiseaux migrateurs, geste cité au cycle 3 (limiter l'effet de l'activité humaine)
     bonneReponse: "éteindre les lampes inutiles pendant la nuit"
     distracteurs: ["installer des lampes encore plus puissantes", "éclairer davantage les zones de nature"]
-    indice: "Plus il y a de lumière dans la nuit, plus les repères naturels des animaux disparaissent."
+    indice: "Une lampe plus puissante éclaire plus fort et plus loin."
