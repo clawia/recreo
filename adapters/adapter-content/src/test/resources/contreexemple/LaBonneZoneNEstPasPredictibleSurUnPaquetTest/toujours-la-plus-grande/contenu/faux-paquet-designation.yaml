@@ -45,9 +45,9 @@ items:
     illustrationTexteAlternatif: "Plan de la classe vue de dessus."
     bonneZone: armoire
     zones:
-      - id: armoire
-        libelle: "un endroit"
-        cadre: { x: 5, y: 5, largeur: 10, hauteur: 10 }
       - id: porte
         libelle: "un autre endroit"
-        cadre: { x: 60, y: 60, largeur: 40, hauteur: 40 }
+        cadre: { x: 5, y: 5, largeur: 40, hauteur: 40 }
+      - id: armoire
+        libelle: "un endroit"
+        cadre: { x: 60, y: 60, largeur: 10, hauteur: 10 }

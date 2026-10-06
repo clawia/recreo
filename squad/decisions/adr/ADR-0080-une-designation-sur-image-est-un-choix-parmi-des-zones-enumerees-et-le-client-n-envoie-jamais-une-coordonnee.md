@@ -1010,3 +1010,121 @@ son module).
   de l'amendement de s34 le nommait sans le tenir ; `ADR-0092` le **borne** par un cliquet et le
   laisse ouvert pour un futur paquet. Un cadre plus grand couvre plus de dessin, pas moins.
 - **Il ne ferme aucune ligne de matrice** : c'est le travail de `camille-po` et de `nadia-prof`.
+
+---
+
+## Amendement du 2026-10-06 (s52, `theo-archi`) - A2 : `ZON-13` et le rang de declaration de la bonne zone deviennent des garde-fous
+
+**Motif.** Deux proprietes derivables d'un paquet m'ont ete routees par `nadia-prof` le 2026-09-05
+(`ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md`, sections 7 et
+12) et n'ont pas ete ecrites pendant trente jours : `ZON-13` (deux zones d'un item ne se chevauchent
+pas) et le rang de declaration de la bonne zone (*"la bonne zone n'est pas
+toujours la premiere ni la derniere declaree"*). L'avis de faisabilite de s51 (`squad/sprints/s51-trois-instances-francais-sciences-maths/avis-faisabilite.md`,
+V8 et action A2) en fait la condition du premier paquet de designation de CE1 (`MAT-CE1-17`), et
+l'arbitrage de s51 (section 6.3) refuse de relacher `ZON-13` pour les lignes candidates qui se
+croisent. Cet amendement les ecrit ; il ne change aucune decision de cet `ADR`.
+
+**Arbre mesure** : `round-two` a `4aad468b`, arbre principal. **JDK 21.0.10**, version que
+l'enveloppe `outils/mvn-jdk21.sh` rapporte pour le JDK qu'elle a resolu (`ADR-0071`).
+
+### 1. Ce qui est decide
+
+1. **`ZON-13`, moitie derivable.** Dans un item de designation, aucune paire de zones n'a de cadres
+   qui se chevauchent. Deux cadres se chevauchent quand leurs projections se recouvrent
+   **strictement** sur les deux axes. **Deux cadres qui partagent un bord ne se chevauchent pas** :
+   les cases voisines d'un quadrillage sont bord a bord. La comparaison se fait **dans un item**,
+   jamais entre items : les items d'un plan reprennent les memes cadres.
+2. **Rang de declaration, troisieme clause du garde-fou 4.** Sur un paquet de designation, la bonne
+   zone n'est pas la premiere zone declaree de son item sur une majorite stricte d'items, et elle
+   n'est pas la derniere sur une majorite stricte d'items. Chaque rang est juge seul. Le seuil est
+   celui des deux clauses soeurs (la moitie pile n'echoue pas) : l'ordre de declaration est l'ordre
+   de tabulation (7.1), et presser toujours le premier ou le dernier bouton est une strategie qui
+   ignore le contenu, comme presser la plus grande zone.
+
+### 2. Regle executable
+
+ArchUnit ne voit ni un cadre de zone ni un rang de declaration dans un fichier YAML : ce sont des
+garde-fous de contenu (JUnit), dans `adapter-content`, comme les garde-fous 4 et 5. **Compte des
+`ArchRule` : inchange.**
+
+| Clause | Fichier | Jeu fautif et jeu sain | Ce qu'elle interdit reellement |
+|---|---|---|---|
+| `ZON-13` | `adapters/adapter-content/src/test/java/com/recreo/adapter/content/DeuxZonesDUnItemNeSeChevauchentJamaisTest.java` | `contreexemple/DeuxZonesDUnItemNeSeChevauchentJamaisTest/` : `recouvrement-d-une-unite` (rouge, un coin d'une unite sur un item de lignes candidates) et `bord-a-bord` (vert, cases bord a bord, memes cadres repris d'un item a l'autre) | une zone posee sur une ligne candidate a moins d'une largeur de zone de sa voisine, et le cadre recopie d'une zone a l'autre |
+| rang | `adapters/adapter-content/src/test/java/com/recreo/adapter/content/LaBonneZoneNEstPasPredictibleSurUnPaquetTest.java`, troisieme clause | `contreexemple/LaBonneZoneNEstPasPredictibleSurUnPaquetTest/` : `toujours-la-premiere` et `toujours-la-derniere` (rouges, 3 items sur 4) ; `varie` reste vert | un paquet ou la bonne zone est le plus souvent le premier ou le dernier arret de tabulation |
+
+Les deux clauses balaient la production par la chaine reelle (`YamlContentPackLoader`, chaque jeu
+dont les items sont des designations) avec leur clause de non-vacuite (`ADR-0051`). Chaque jeu
+fautif ne fait rougir que sa clause : les deux jeux fautifs anterieurs du garde-fou 4 ont ete
+reordonnes (une zone deplacee dans un item de chacun, ordre de lecture `ZON-11` conserve) pour que
+la clause de rang ne s'y declenche pas, et leurs tests l'assertent.
+
+**Mise a l'epreuve sur le materiau reel, en plus des jeux fautifs.**
+
+- **Dans le test**, permanent : le premier item de designation de production recoit, sur sa
+  deuxieme zone, le cadre de la premiere. Rouge, et le message nomme le paquet reel et la zone.
+- **Sur le disque**, mesure du 2026-10-06, fichiers sauvegardes puis restaures (`git status` propre
+  sur `contenu/` ensuite) : dans `cp-frise-de-la-journee.yaml`, la zone `lever` du premier item
+  elargie de 15 a 18 unites (sa voisine commence a x = 17) ; dans `cp-plan-de-la-classe.yaml`, la
+  bonne zone placee en tete de ses zones sur les items 2 a 4. `bash outils/mvn-jdk21.sh -B -pl
+  adapters/adapter-content -am test -Dtest=LaBonneZoneNEstPasPredictibleSurUnPaquetTest,DeuxZonesDUnItemNeSeChevauchentJamaisTest
+  -Dsurefire.failIfNoSpecifiedTests=false` : **10 tests, 2 echecs, exactement les deux balayages de
+  production** - *"les zones "lever" { x: 0, y: 10, largeur: 18, hauteur: 75 } et "petit-dejeuner"
+  [...] se chevauchent"* et *"la bonne zone est la premiere zone declaree de son item sur 4 items
+  sur 6"*. Sans mutation, meme commande : 10 tests, 0 echec.
+
+**Etat sur les deux paquets servis**, script de poste sur les YAML de `contenu/`, critere
+d'intersection stricte ci-dessus : `cp-frise-de-la-journee` (11 items, 129 paires de zones) et
+`cp-plan-de-la-classe` (6 items, 90 paires), **0 chevauchement** ; bonne zone premiere 3/11 et 1/6,
+derniere 1/11 et 1/6. Les deux clauses sont vertes aujourd'hui et mordent au premier defaut.
+
+### 3. Ce que ces clauses ne gardent pas
+
+- **La moitie debordement de `ZON-13`** et **une zone qui contient un segment d'une autre ligne** :
+  les deux demandent la geometrie du dessin, qui vit dans le SVG et pas dans le paquet. Elles
+  restent a `nadia-prof`, en jouant (arbitrage de s52, section 9).
+- **`ZON-11`** (l'ordre de declaration suit l'ordre de lecture des cadres), routee le meme jour,
+  **n'est pas encodee par cet amendement** : l'avis de s51 n'en fait pas une condition de
+  `MAT-CE1-17`, et elle reste a `nadia-prof` jusqu'a un amendement qui l'ecrive.
+- **Le message du cliquet** `AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest`
+  demande encore d'*"etendre le balayage de production"* (T6), alors que les balayages lisent la
+  production depuis s34. L'avis de s51 placait sa correction dans le diff de A2 ; elle n'y est pas,
+  ce lot etant borne aux garde-fous que A2 encode. Elle reste due par `theo-archi`, au plus tard dans
+  le diff qui monte ce cliquet de 2 a 3 avec le premier paquet de `MAT-CE1-17`.
+
+### 4. Consequences
+
+- **Un paquet d'items a deux zones ne tient les deux clauses de rang qu'a la moitie exacte** : avec
+  deux zones, la bonne est toujours premiere ou derniere, donc un nombre impair d'items a deux zones
+  est rouge quelle que soit la repartition. `ZON-8` pose un plancher de trois zones ; ce cas n'existe
+  pas en production.
+- **Le plancher de taille se lit en unites entieres.** `CadreDeZone` porte des pourcentages entiers,
+  et le garde-fou 3 rend 12,5 % du cote d'une image de 352 px egal a 44 px : **13 unites au moins**
+  par zone, et, pour que deux zones de 13 unites posees au bout de deux lignes voisines ne se
+  chevauchent pas, des extremites separees d'au moins 13 unites le long du bord ou elles se posent.
+  Les *"12,5 unites"* de l'avis de s51 (section 5.3) ne sont pas representables.
+
+### 5. Alternatives considerees
+
+1. **Compter le bord commun comme un chevauchement.** Ecartee : chaque quadrillage serait rouge, et
+   le garde-fou serait desactive le premier jour ou il gene.
+2. **Lire la clause de rang au pied de la lettre** (*"toujours"*, c'est-a-dire tous les items).
+   Ecartee : une clause qui ne rougit que sur l'unanimite laisse passer un paquet ou presser le
+   premier bouton gagne dix manches sur onze. Le seuil retenu est celui des deux formes soeurs de la
+   meme contrefacon (`S12-3`, 64,6 %). Le relacher serait une decision de `nadia-prof`.
+3. **Poser `ZON-13` en quatrieme clause du garde-fou 4.** Ecartee : le garde-fou 4 juge une
+   strategie qui ignore le contenu, `ZON-13` juge une ambiguite du geste. Deux proprietes, deux
+   fichiers, deux messages.
+
+**Ce qui me ferait changer d'avis** : une zone non rectangulaire. Le jour ou une zone se pose
+autrement que par quatre nombres, le critere d'intersection de la section 1 cesse d'etre le
+chevauchement reel et se reecrit avec elle.
+
+### 6. A3 pour s52
+
+A3 (garde-fou 3 sur une image non carree, juge sur la seule premiere manche) **ne bloque ni
+`MAT-CE1-17` ni `MAT-CE1-06`** : `MAT-CE1-06` est un paquet `question`, hors du garde-fou 3 ; les
+dessins de `MAT-CE1-17` sont carres a 352 px, ou le calcul du garde-fou est exact. **Ce qui reste
+vrai sur `MAT-CE1-17`** : `LEcranDeMancheDuJeuDeDesignationReelEstServiTest` ne juge que l'ecran de
+la premiere manche de chaque jeu, donc une zone de 12 unites sur un autre item passe ce garde-fou.
+C'est un faux vert possible, pas un blocage ; le plancher de 13 unites de la section 4 se tient a la
+redaction et a l'audit jusqu'a A3.

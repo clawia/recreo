@@ -31,6 +31,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * le meme</b> : une strategie qui ignore le contenu ne doit jamais etre majoritaire (plus de la
  * moitie des items), la moitie pile n'echouant pas - meme comparaison stricte que la clause soeur.</p>
  *
+ * <p><b>Troisieme clause, amendement A2 du 2026-10-06 (s52)</b> : la bonne zone n'est pas la
+ * premiere zone declaree de son item sur une majorite d'items, ni la derniere. L'ordre de
+ * declaration est l'ordre de tabulation des boutons (ADR-0080, 7.1) : une strategie qui presse
+ * toujours le premier ou le dernier bouton ignore le contenu comme les deux autres. Demande de
+ * {@code nadia-prof} (arbitrage prealable de s29, section 7 : "la troisieme forme de la meme
+ * contrefacon"), verifiee a la main par elle jusqu'a cet amendement. Chaque rang est juge seul,
+ * avec le meme seuil.</p>
+ *
  * <p><b>Cablee sur le contenu de production depuis S33-PAL2-1 (s34).</b> Le premier paquet de
  * designation servi ({@code cp-frise-de-la-journee}) donne enfin une population reelle a la clause
  * ci-dessous, ecrite et eprouvee sur des paquets fictifs depuis s28 en attendant ce jour.</p>
@@ -79,8 +87,8 @@ class LaBonneZoneNEstPasPredictibleSurUnPaquetTest {
     }
 
     /**
-     * Les deux moities de la clause, chacune avec son propre defaut - une seule des deux depassant le
-     * seuil ne doit pas etre masquee par l'autre.
+     * Les quatre formes de la clause, chacune avec son propre defaut - une seule depassant le seuil
+     * ne doit pas etre masquee par une autre.
      */
     static List<String> verifierQueLaBonneZoneNEstPasPredictible(String paquetId,
                                                                    List<ZoneADesigner> items) {
@@ -90,10 +98,18 @@ class LaBonneZoneNEstPasPredictibleSurUnPaquetTest {
         }
         Map<String, Integer> occurrencesParIdentifiant = new HashMap<>();
         int plusGrande = 0;
+        int premiere = 0;
+        int derniere = 0;
         for (ZoneADesigner item : items) {
             occurrencesParIdentifiant.merge(item.bonneZone(), 1, Integer::sum);
             if (bonneZoneEstLaPlusGrande(item)) {
                 plusGrande++;
+            }
+            if (item.zones().get(0).id().equals(item.bonneZone())) {
+                premiere++;
+            }
+            if (item.zones().get(item.zones().size() - 1).id().equals(item.bonneZone())) {
+                derniere++;
             }
         }
         int maxMemeIdentifiant = occurrencesParIdentifiant.values().stream()
@@ -111,13 +127,26 @@ class LaBonneZoneNEstPasPredictibleSurUnPaquetTest {
                     + " designerait toujours la plus grande zone, sans lire l'enonce, gagnerait plus"
                     + " de la moitie des manches");
         }
+        if (premiere * 2 > items.size()) {
+            defauts.add("paquet " + paquetId + " : la bonne zone est la premiere zone declaree de son"
+                    + " item sur " + premiere + " items sur " + items.size() + " - une strategie qui"
+                    + " presserait toujours le premier bouton, sans lire l'enonce, gagnerait plus de"
+                    + " la moitie des manches");
+        }
+        if (derniere * 2 > items.size()) {
+            defauts.add("paquet " + paquetId + " : la bonne zone est la derniere zone declaree de son"
+                    + " item sur " + derniere + " items sur " + items.size() + " - une strategie qui"
+                    + " presserait toujours le dernier bouton, sans lire l'enonce, gagnerait plus de"
+                    + " la moitie des manches");
+        }
         return defauts;
     }
 
     private static void verifier(List<String> defauts) {
         assertThat(defauts)
                 .as("ADR-0080, garde-fou 4 : la bonne zone d'un paquet de designation n'est"
-                        + " predictible ni par son identifiant, ni par sa taille")
+                        + " predictible ni par son identifiant, ni par sa taille, ni par son rang de"
+                        + " declaration")
                 .isEmpty();
     }
 
@@ -139,7 +168,8 @@ class LaBonneZoneNEstPasPredictibleSurUnPaquetTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("meme identifiant")
                 .hasMessageContaining("3 items sur 4")
-                .hasMessageNotContaining("plus grande zone");
+                .hasMessageNotContaining("plus grande zone")
+                .hasMessageNotContaining("zone declaree");
     }
 
     @Test
@@ -153,7 +183,40 @@ class LaBonneZoneNEstPasPredictibleSurUnPaquetTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("plus grande zone")
                 .hasMessageContaining("3 items sur 4")
-                .hasMessageNotContaining("meme identifiant");
+                .hasMessageNotContaining("meme identifiant")
+                .hasMessageNotContaining("zone declaree");
+    }
+
+    @Test
+    void laBonneZoneLaPlusSouventPremiereDeclareeFaitEchouerLeGardeFou() {
+        List<ZoneADesigner> items = itemsDuPaquetFixture("toujours-la-premiere",
+                "faux-paquet-designation");
+        assertThat(items).hasSize(4);
+
+        assertThatThrownBy(() -> verifier(
+                verifierQueLaBonneZoneNEstPasPredictible("faux-paquet-designation", items)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("premiere zone declaree")
+                .hasMessageContaining("3 items sur 4")
+                .hasMessageNotContaining("derniere zone declaree")
+                .hasMessageNotContaining("meme identifiant")
+                .hasMessageNotContaining("plus grande zone");
+    }
+
+    @Test
+    void laBonneZoneLaPlusSouventDerniereDeclareeFaitEchouerLeGardeFou() {
+        List<ZoneADesigner> items = itemsDuPaquetFixture("toujours-la-derniere",
+                "faux-paquet-designation");
+        assertThat(items).hasSize(4);
+
+        assertThatThrownBy(() -> verifier(
+                verifierQueLaBonneZoneNEstPasPredictible("faux-paquet-designation", items)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("derniere zone declaree")
+                .hasMessageContaining("3 items sur 4")
+                .hasMessageNotContaining("premiere zone declaree")
+                .hasMessageNotContaining("meme identifiant")
+                .hasMessageNotContaining("plus grande zone");
     }
 
     /**

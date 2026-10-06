@@ -1,0 +1,65 @@
+schema: 1
+id: faux-paquet-designation
+type: designation
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Espace"
+  competence: "Jeu fautif d'ADR-0080 (rang de declaration), jamais servi"
+items:
+  - enonce: "Montre le tableau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: tableau
+    zones:
+      - id: porte
+        libelle: "un endroit 1"
+        cadre: { x: 5, y: 5, largeur: 15, hauteur: 15 }
+      - id: fenetre
+        libelle: "un endroit 2"
+        cadre: { x: 42, y: 5, largeur: 15, hauteur: 15 }
+      - id: tableau
+        libelle: "un endroit 3"
+        cadre: { x: 80, y: 5, largeur: 15, hauteur: 15 }
+  - enonce: "Montre la porte."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: porte
+    zones:
+      - id: armoire
+        libelle: "un endroit 1"
+        cadre: { x: 5, y: 5, largeur: 15, hauteur: 15 }
+      - id: bureau
+        libelle: "un endroit 2"
+        cadre: { x: 42, y: 5, largeur: 15, hauteur: 15 }
+      - id: porte
+        libelle: "un endroit 3"
+        cadre: { x: 80, y: 5, largeur: 15, hauteur: 15 }
+  - enonce: "Montre la fenetre."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: fenetre
+    zones:
+      - id: tableau
+        libelle: "un endroit 1"
+        cadre: { x: 5, y: 5, largeur: 15, hauteur: 15 }
+      - id: armoire
+        libelle: "un endroit 2"
+        cadre: { x: 42, y: 5, largeur: 15, hauteur: 15 }
+      - id: fenetre
+        libelle: "un endroit 3"
+        cadre: { x: 80, y: 5, largeur: 15, hauteur: 15 }
+  - enonce: "Montre le bureau."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Plan de la classe vue de dessus."
+    bonneZone: bureau
+    zones:
+      - id: armoire
+        libelle: "un endroit 1"
+        cadre: { x: 5, y: 5, largeur: 15, hauteur: 15 }
+      - id: bureau
+        libelle: "un endroit 2"
+        cadre: { x: 42, y: 5, largeur: 15, hauteur: 15 }
+      - id: porte
+        libelle: "un endroit 3"
+        cadre: { x: 80, y: 5, largeur: 15, hauteur: 15 }

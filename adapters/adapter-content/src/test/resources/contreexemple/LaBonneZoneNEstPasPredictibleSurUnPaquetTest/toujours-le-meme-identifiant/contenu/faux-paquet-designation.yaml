@@ -34,12 +34,12 @@ items:
     illustrationTexteAlternatif: "Plan de la classe vue de dessus."
     bonneZone: tableau
     zones:
-      - id: tableau
-        libelle: "un endroit"
-        cadre: { x: 5, y: 5, largeur: 20, hauteur: 20 }
       - id: coin-lecture
         libelle: "un autre endroit"
-        cadre: { x: 60, y: 60, largeur: 30, hauteur: 30 }
+        cadre: { x: 5, y: 5, largeur: 30, hauteur: 30 }
+      - id: tableau
+        libelle: "un endroit"
+        cadre: { x: 60, y: 60, largeur: 20, hauteur: 20 }
   - enonce: "Montre la porte."
     illustration: plan-classe
     illustrationTexteAlternatif: "Plan de la classe vue de dessus."

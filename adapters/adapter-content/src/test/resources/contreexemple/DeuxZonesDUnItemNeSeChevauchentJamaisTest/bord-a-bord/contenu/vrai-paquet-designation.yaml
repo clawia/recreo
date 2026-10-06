@@ -1,0 +1,37 @@
+schema: 1
+id: vrai-paquet-designation
+type: designation
+descripteur:
+  matiere: "Mathematiques"
+  niveau: "CE1"
+  domaine: "Espace et geometrie"
+  competence: "Jeu sain d'ADR-0080 (ZON-13), jamais servi"
+items:
+  - enonce: "Montre la case qui complete la figure."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Un quadrillage, un axe et une figure a completer."
+    bonneZone: b1
+    zones:
+      - id: a1
+        libelle: "une case"
+        cadre: { x: 2, y: 2, largeur: 16, hauteur: 16 }
+      - id: b1
+        libelle: "une autre case"
+        cadre: { x: 18, y: 2, largeur: 16, hauteur: 16 }
+      - id: a2
+        libelle: "une troisieme case"
+        cadre: { x: 2, y: 18, largeur: 16, hauteur: 16 }
+  - enonce: "Montre la case qui complete l'autre figure."
+    illustration: plan-classe
+    illustrationTexteAlternatif: "Un quadrillage, un axe et une autre figure a completer."
+    bonneZone: a2
+    zones:
+      - id: a1
+        libelle: "une case"
+        cadre: { x: 2, y: 2, largeur: 16, hauteur: 16 }
+      - id: b1
+        libelle: "une autre case"
+        cadre: { x: 18, y: 2, largeur: 16, hauteur: 16 }
+      - id: a2
+        libelle: "une troisieme case"
+        cadre: { x: 2, y: 18, largeur: 16, hauteur: 16 }
