@@ -403,6 +403,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S52-FRA-PRESENT (s52) : entree neuve, FRA-CE1-17, huitieme ligne du referentiel de
             // francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.8).
             "bandit-manchot-conjugaison-present-ce1",
+            // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
+            // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
+            // section 6.3).
+            "bandit-manchot-synonymes-contraires-ce1",
             // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
             // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
             "bandit-manchot-decrire-une-oeuvre-cp",
@@ -666,6 +670,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les mots d'un même groupe",
             // S52-FRA-PRESENT (s52) : titre neuf, sans niveau (ADR-0078).
             "Les verbes au présent",
+            // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
+            "Même sens ou sens contraire",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
             "Décrire une œuvre",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -1534,6 +1540,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // inverses.
             "Conjuguer au présent de l'indicatif être, avoir, les verbes du premier groupe et "
                     + "quelques verbes fréquents (aller, faire, dire, venir).",
+            // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
+            // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
+            "Trouver un synonyme ou un contraire d'un mot fréquent.",
             // S50-ART (s50) : competence neuve, ART-CP-09. Le libelle du referentiel
             // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-09) nomme
             // "couleurs" ; aucune couleur n'est servie par ce paquet (ART-1, arbitrage prealable

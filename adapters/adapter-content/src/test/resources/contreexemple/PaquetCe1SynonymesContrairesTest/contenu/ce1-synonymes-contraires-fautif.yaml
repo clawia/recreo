@@ -1,0 +1,17 @@
+schema: 1
+id: ce1-synonymes-contraires-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1SynonymesContrairesTest. "impossible" est un
+# contraire forme par prefixe : SYC-CE1-3.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Vocabulaire"
+  competence: "Trouver un synonyme ou un contraire d'un mot fréquent."
+lignesDeReferentiel: ["FRA-CE1-25"]
+items:
+  # SYC-CE1-2: a, b
+  - enonce: "« Ce travail est possible. » Quel mot est le contraire de « possible » ?"
+    bonneReponse: "impossible"
+    distracteurs: ["faisable", "long"]
+    indice: "Un contraire dit l'inverse du mot."

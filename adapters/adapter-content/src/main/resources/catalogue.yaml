@@ -780,6 +780,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-conjugaison-present
     nombreDeManches: 10
+  - id: bandit-manchot-synonymes-contraires-ce1
+    titre: "Même sens ou sens contraire"
+    consigne: "Lis bien, puis choisis le bon mot."
+    mecanique: bandit-manchot
+    paquet: ce1-synonymes-contraires
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."
