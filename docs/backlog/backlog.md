@@ -18667,10 +18667,10 @@ marge de rejeu de son instance.
 | B | `S51-SCI-ACTIVITE-HUMAINE-CM1` (ci-dessous) | 1,5 | `SCI-CM1-18` **REFUSE** au premier passage |
 | B | `S51-SCI-ACTIVITE-HUMAINE-CM1-REJEU` (ci-dessous) | 0,5 | **REFUSE** au second passage, motif de l'item 11 maintenu ; reprise `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE` reportee a s52 |
 | **Total B** | | **5,0 / 5,0** consomme | marge 0 ; 3 lots plus un rejeu |
-| C (mathematiques CE1), **non engagee a s51, reportee a s52** (`DEC-0110` section 14) | `S51-MAT-SYMETRIE` (ci-dessous) | 1,0 | ligne neuve, `MAT-CE1-17` ; hors total de s51 |
-| C | `S51-MAT-MULTIPLICATION` (ci-dessous) | 1,0 | ligne neuve, `MAT-CE1-06` ; hors total de s51 |
+| C (mathematiques CE1), **non engagee a s51, reportee a s52** (`DEC-0110` section 14) | `S51-MAT-SYMETRIE` (ci-dessous) | 1,0 a s51 ; **1,5 a s52** | ligne neuve, `MAT-CE1-17` ; hors total de s51 ; tarif porte a 1,5 (`DEC-0111` section 2) |
+| C | `S51-MAT-MULTIPLICATION` (ci-dessous) | 1,0 a s51 ; **1,5 a s52** | ligne neuve, `MAT-CE1-06` ; hors total de s51 ; tarif porte a 1,5 (`DEC-0111` section 2) |
 | C | `S51-MAT-COMPARER-RANGER` (ci-dessous) | 1,0 | moitie textuelle de `MAT-CE1-02` ; hors total de s51 |
-| **Total C** | | **3,0 libere, non engage** | `PAR-16` : budget libere, report a s52 |
+| **Total C** | | **3,0 libere, non engage** a s51 ; **4,0 engage a s52** (`DEC-0111`) | `PAR-16` : budget libere, report a s52 |
 
 **Total du sprint : 8,0 engages, 9,0 consommes** (A 4,0 + B 5,0 ; 11,0 avant l'amendement de la section
 14). Stories reportees a s52, non engagees a s51 : `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`,
@@ -19085,6 +19085,12 @@ et `FER-3` sans clause supplementaire, `DEC-0064`.
     `nadia-prof` : que l'axe ou la case se trouve sur le dessin seul, a la taille de rendu, zones
     masquees, puis que la zone declaree bonne couvre l'endroit trouve (`ZON-9`) ; la lisibilite des
     dessins ; l'exactitude de chaque symetrie.
+- **Tarif a s52** : **1,5** (1,0 + 0,5 lot illustre, `REC-1`), pas 1,0. Source : `nadia-prof`,
+  `squad/conformite/ARBITRAGE-PREALABLE-s52-instances-ce1.md`, section 1.2 (application de son tarif de s28,
+  section 4.3, a chaque dessin qui se nomme propositions masquees). Engagee a s52 sous la condition
+  suspensive de `DEC-0111` section 5.2 : `ADR-0080` A2, contraintes de dessin d'`ines-design`, developpeur de
+  dessin affecte. `nombreDeManches` : 8 (`DEC-0111` section 5.4). `MAT-CE1-17` : neuf sprints de report si
+  engagee, dix sinon.
 - **Ce que cette story ne fait pas** : elle ne demande jamais de completer plusieurs cases dans une
   meme manche ; elle ne sert ni les figures planes nommees (`MAT-CE1-15`) ni le codage de deplacement
   (`MAT-CE1-14`) ; elle ne fixe aucune figure precise. **Deux points sont rendus a `theo-archi`, pas
@@ -19180,6 +19186,11 @@ et `FER-3` sans clause supplementaire, `DEC-0064`.
   - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de
     `nadia-prof` : qu'un reseau se compte a l'oeil sans se confondre, l'exactitude de chaque produit,
     la vraisemblance de chaque distracteur.
+- **Tarif a s52** : **1,5** (1,0 + 0,5 lot illustre, `REC-1`), pas 1,0. Source : `nadia-prof`,
+  `squad/conformite/ARBITRAGE-PREALABLE-s52-instances-ce1.md`, section 1.2. Engagee a s52 sous la condition
+  suspensive de `DEC-0111` section 5.2 : contraintes de dessin d'`ines-design` (reseaux de points) et
+  developpeur de dessin affecte ; `ADR-0080` A2 n'est pas requis. Sans les dessins de `MUL-CE1-5`, la ligne
+  reste `en cours` avec la mention de `MUL-CE1-7`.
 - **Ce que cette story ne fait pas** : elle ne sert pas le rappel automatise des tables ; elle ne
   dessine ni solide ni figure plane nommee ; elle ne fixe aucun dessin precis. **Le cout du materiau
   est rendu a `theo-archi`** (`DEC-0110` section 1.4).
@@ -19562,3 +19573,242 @@ Le journal commite n'est pas touche par cette story.
 - **Lien decision** : `DEC-0110` section 17. Routage : `theo-archi` (decision sur l'outil, hors de mon
   perimetre).
 - **Agent pressenti** : a affecter par `sofia-sm`.
+
+## Sprint 52 - Deux instances de `nadia-prof` pour le CE1 (francais, mathematiques), retrait du catalogue
+## des deux paquets de sciences CM1 refuses
+
+Objectif et perimetre formalises par `DEC-0111`. **Deux instances** (`PAR-2` : un couple matiere/niveau
+chacune), plus un couloir de developpement sans instance (retrait). Trois branches, trois worktrees, un
+repertoire temporaire et un port de serveur par agent (`DEC-0111` section 8). Objectif gele : au mieux cinq
+fermetures (`FRA-CE1-17`, `-25`, `-26`, `MAT-CE1-17`, `-06`), `MAT-CE1-02` a `en cours`, deux corrections
+levees, deux paquets retires ; 127/182 a 132/182 (72,5 %). Lecture du plafond : pratique depuis s41 (decision
+de l'utilisatrice du 2026-10-06, `DEC-0111` section 0).
+
+| Instance | Story | Tarif | Remarque |
+|---|---|---|---|
+| Retrait | `S52-RETRAIT-SCIENCES-CM1` (ci-dessous) | non chiffre, a chiffrer par `theo-archi` via `sofia-sm` | hors capacite de `nadia-prof` ; premiere a fusionner |
+| A (francais CE1) | `S52-FRA-PRESENT` (ci-dessous) | 1,0 | `FRA-CE1-17`, un lot |
+| A | `S52-FRA-SYNONYMES-CONTRAIRES` (ci-dessous) | 1,0 | `FRA-CE1-25`, un lot |
+| A | `S52-FRA-CATEGORIES` (ci-dessous) | 1,0 | `FRA-CE1-26`, un lot |
+| A | "Story de correction differee - reserve `TPS-CE1-R1`" (section "Sprint 51") | 0,5 | correction, pas un lot ; premier report : s51 |
+| A | "Story de correction differee - reserve `ALP-CE1-R1`" (section "Sprint 51") | 0,5 | correction, pas un lot ; premier report : s51 |
+| **Total A** | | **4,0 engage**, 4,5 / 5,0 avec un rejeu | 3 lots |
+| C (mathematiques CE1) | `S51-MAT-SYMETRIE` (section "Sprint 51") | **1,5** | `MAT-CE1-17`, lot illustre ; condition suspensive (`DEC-0111` 5.2) |
+| C | `S51-MAT-MULTIPLICATION` (section "Sprint 51") | **1,5** | `MAT-CE1-06`, lot illustre ; condition suspensive |
+| C | `S51-MAT-COMPARER-RANGER` (section "Sprint 51") | 1,0 | `MAT-CE1-02`, moitie textuelle ; ne ferme pas ; aucune condition |
+| **Total C** | | **4,0 engage**, 4,5 / 5,0 avec un rejeu | 3 lots |
+
+**Total du sprint : 8,0 engages.** Stories non engagees, reportees (`DEC-0111` section 9) :
+`S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`, `S51-SCI-TERRE-CM1-REPRISE`, `S51-SCI-CORPS-CM1-RESERVES` (seconds
+reports), `S51-OUTIL-JOURNAL-TOKENS` (non chiffree). Passe transverse `PAR-4` : non engagee, aucune story.
+
+**Conditions transverses communes aux trois stories de francais CE1** : celles du paragraphe du meme nom de
+la section "Sprint 51" (source `ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 2), reprises sans
+modification : `TRV-CE1-1` a `TRV-CE1-7`, `LON-CE1-1`, `LON-CE1-2`, `LON-CE1-5`. Chaque story les cite par
+identifiant dans ses criteres. Aucune des trois ne porte de `texteSupport` (`TRV-CE1-1`).
+
+### S52-RETRAIT-SCIENCES-CM1 - Retirer du catalogue servi les deux paquets de sciences CM1 refuses (transverse)
+
+**Contexte.** `nadia-prof` a refuse `bandit-manchot-terre-cm1` (`FICHE-bandit-manchot-terre-cm1.md`, section 7,
+items 4 et 11) et `bandit-manchot-activite-humaine-cm1` (`FICHE-bandit-manchot-activite-humaine-cm1.md`,
+section 7, item 11) le 2026-10-06. Les deux refus portent sur une cle de reponse fausse. Les deux entrees sont
+dans `catalogue.yaml` (lignes 777 et 789 au 2026-10-06). Decision de l'utilisatrice du 2026-10-06 : *"Retirer
+du catalogue (Recommandé)"* (`DEC-0111` section 3). Precedent : `DEC-0009`, story `S5-1`.
+
+- **Besoin** : en tant qu'eleve de CM1, je ne veux pas trouver dans la liste des jeux deux jeux de sciences
+  qui me disent "Ce n'est pas ça." sur une reponse vraie, afin de ne pas apprendre un fait vrai comme faux.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. `SCI-CM1-15` et `SCI-CM1-18`
+  restent `non couvert` : le statut suit le verdict de `nadia-prof`, pas la presence du jeu au catalogue.
+- **Criteres d'acceptation** :
+  - Etant donne le catalogue servi apres la story, quand on liste les jeux de l'accueil, alors
+    *"L'activité humaine et la nature"* et *"La Terre, le jour et les saisons"* n'y figurent pas.
+    Aujourd'hui les deux y figurent : rouge sur l'existant.
+  - Etant donne `catalogue.yaml`, quand on cherche `bandit-manchot-activite-humaine-cm1` et
+    `bandit-manchot-terre-cm1`, alors aucune entree ne les porte. Aujourd'hui deux entrees : rouge sur
+    l'existant. L'absence d'entree reste le seul retrait (`ADR-0061`).
+  - Etant donne les autres jeux du catalogue, quand on les liste apres la story, alors ils y sont tous, dont
+    *"Prendre soin de son corps"* (`bandit-manchot-corps-cm1`) : le retrait ne touche aucun autre jeu.
+  - Etant donne le depot apres la story, quand on le consulte, alors
+    `contenu/cm1-sciences-activite-humaine.yaml`, `contenu/cm1-sciences-terre.yaml`,
+    `PaquetCm1SciencesActiviteHumaineTest`, `PaquetCm1SciencesTerreTest` et les deux fiches de conformite
+    existent, **inchanges** (`git diff` vide sur les quatre premiers).
+  - Etant donne les tests qui comptent ou inventorient les entrees de catalogue ou les paquets servis (au
+    moins `TexteAccentueExposeParLePortEntrantTest` et
+    `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` nomment ces deux entrees ou ces deux paquets,
+    `grep` du 2026-10-06), quand on lance le reacteur apres la story, alors ils passent sur le catalogue
+    retire, **sans qu'une exemption nouvelle serve a les faire passer** et sans recopier en constantes
+    l'association entree-paquet (`ADR-0061`).
+  - Etant donne une partie ouverte sur l'un des deux jeux avant le retrait, quand l'application a ete
+    redemarree sur le catalogue retire, alors la partie n'existe plus (l'etat vit dans la session HTTP,
+    `DEC-0028`) et aucun ecran ne sert une question de ces deux paquets ; sans redemarrage, la reponse envoyee
+    n'aboutit a aucun resultat juste ou faux sur le contenu retire (meme comportement que `S5-1`, ecran
+    d'erreur ; aucun ecran neuf n'est choisi ici).
+  - Etant donne la matrice apres la story, quand on lit `SCI-CM1-15` et `SCI-CM1-18`, alors les deux lignes
+    sont `non couvert`, comme avant.
+  - Etant donne le diff de la story, quand on l'envoie, alors les quatre jobs de `.github/workflows/ci.yml`
+    (`prefixes`, `chemins`, `outils`, `build`, dont `mvn -B clean verify` sur la racine et le package du fat
+    jar) sont verts, et le rapport nomme les quatre jobs lances.
+  - Ce qui n'est pas testable par un automate : rien de pedagogique. `nadia-prof` ne joue pas cette story.
+- **Ce que cette story ne fait pas** : elle ne supprime aucun fichier de contenu, de test ni de fiche ; elle ne
+  reprend aucun des deux paquets (`S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE` et `S51-SCI-TERRE-CM1-REPRISE` restent
+  non engagees) ; elle ne choisit pas l'ecran d'une partie perdue.
+- **Lien decision** : `DEC-0111` (section 3) ; `DEC-0110` (16.9, 16.10) ; `DEC-0009`.
+- **Agent pressenti** : a affecter par `sofia-sm`. Chiffrage : `theo-archi`, via `sofia-sm`.
+
+### S52-FRA-PRESENT - Conjuguer au present (`FRA-CE1-17`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux choisir la bonne forme d'un verbe au present quand ce qui
+  fait l'action change (je, tu, il, nous, vous, ils), afin d'ecrire le verbe juste dans mes phrases.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Orthographe et grammaire" -
+  `squad/programme/francais/competences-ce1.md`, `FRA-CE1-17` : "Conjuguer au present de l'indicatif `etre`,
+  `avoir`, les verbes du premier groupe et quelques verbes frequents (`aller`, `faire`, `dire`, `venir`)."
+  Ligne `non couvert`, `MATRICE-couverture.md`, section "Francais - CE1 (cycle 2)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 5.8) : verdict
+  **ACCEPTE SOUS CONDITIONS `PRS-CE1-1` a `PRS-CE1-3`. Plafond : `couvert-valide`.**
+
+  > `PRS-CE1-1` - verbes. *Être*, *avoir*, les verbes du premier groupe, *aller*, *faire*, *dire*, *venir*.
+  > Les six verbes nommes dans au moins la moitie des items. Exclus : les verbes du premier groupe a
+  > modification orthographique (`-ger`, `-cer`, `-eler`, `-eter`, `-yer`, *acheter*, *lever*).
+  >
+  > `PRS-CE1-2` - sujets. Toujours un pronom personnel ; chacune des six personnes dans au moins un
+  > dixieme des items.
+  >
+  > `PRS-CE1-3` - distracteurs. (a) le meme verbe a une autre personne ; (b) la forme regularisee d'un verbe
+  > irregulier (*vous disez*, *ils allent*) ; (c) l'infinitif.
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on lit ses items, alors la mecanique est `bandit-manchot`, la forme
+    d'item est `question`, sans illustration ni `texteSupport` ni champ a voix haute (`TRV-CE1-1`).
+  - Etant donne les verbes des items, quand on les compte, alors *etre*, *avoir*, *aller*, *faire*, *dire*,
+    *venir* sont la cible d'au moins la moitie des items ; aucun verbe en `-ger`, `-cer`, `-eler`, `-eter`,
+    `-yer`, ni *acheter* ni *lever* (`PRS-CE1-1`).
+  - Etant donne le sujet de chaque item, quand on le lit, alors c'est un pronom personnel, jamais un nom ni un
+    prenom ; chacune des six personnes est le sujet d'au moins un dixieme des items (`PRS-CE1-2`).
+  - Etant donne un item, quand on lit ses propositions, alors elles sont trois (`TRV-CE1-2`), deux a deux
+    distinctes, une seule acceptable, et chaque distracteur est de la famille (a), (b) ou (c), declaree a cote
+    de l'item (`PRS-CE1-3`, `TRV-CE1-2`).
+  - Etant donne le paquet, quand on compte les items dont la bonne reponse est strictement la plus longue des
+    trois propositions, alors ils sont au plus la moitie (`TRV-CE1-2`).
+  - Etant donne chaque item, quand il declare sa ligne, alors il porte `FRA-CE1-17` et uniquement elle ; le
+    paquet porte au moins vingt items (`TRV-CE1-1`, `TRV-CE1-7`) ; l'enonce, les propositions et l'indice
+    respectent `LON-CE1-1`, `LON-CE1-2`, `LON-CE1-5`, `TRV-CE1-4` et `TRV-CE1-5` ; aucun indice ne donne la
+    reponse.
+  - Etant donne l'ensemble du paquet, quand on lit ses sujets, alors aucun n'est un nom ni un groupe nominal :
+    ce serait servir `FRA-CE1-14` (frontiere, `ACV-CE1-3`).
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les trois
+    conditions de la ligne, les sept transverses et les bornes de lisibilite, et que la ligne ferme sans
+    mention de couverture partielle.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof` :
+    l'exactitude de chaque forme conjuguee et de chaque distracteur, la vraisemblance d'un distracteur comme
+    erreur reelle d'un enfant de CE1 (s48, section 9, points 4 et 5), que le paquet travaille `FRA-CE1-17` et
+    non `FRA-CE1-14` ou `FRA-CE1-18` (section 9, point 7).
+- **Ce que cette story ne fait pas** : elle ne sert ni le futur ni le passe compose (`FRA-CE1-18`, `-19`) ; elle
+  ne demande jamais d'ecrire une forme ; elle ne fixe aucune phrase precise.
+- **Lien decision** : `DEC-0111` (section 4).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance A de `nadia-prof` pour le Done pedagogique ;
+  `theo-archi` pour l'avis de faisabilite).
+
+### S52-FRA-SYNONYMES-CONTRAIRES - Trouver un synonyme ou un contraire d'un mot frequent (`FRA-CE1-25`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux trouver un mot qui veut dire presque la meme chose, ou le
+  contraire, d'un mot que je connais, afin de choisir le mot juste quand je lis et quand j'ecris.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Vocabulaire" -
+  `squad/programme/francais/competences-ce1.md`, `FRA-CE1-25` : "Trouver un synonyme ou un contraire d'un mot
+  frequent." Ligne `non couvert`, `MATRICE-couverture.md`, section "Francais - CE1 (cycle 2)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 6.3) : verdict
+  **ACCEPTE SOUS CONDITIONS `SYC-CE1-1` a `SYC-CE1-3`. Plafond : `couvert-valide`.** Collision verifiee avec
+  `FRA-CM1-11` : `cm1-synonymes` et `cm1-antonymes` emploient la meme forme avec un vocabulaire de CM1 ; au CE1,
+  des mots frequents.
+
+  > `SYC-CE1-1` - les deux relations. Synonymes et contraires chacun dans au moins un tiers des items. La
+  > question nomme la relation demandee. Le mot cible est frequent et place dans une phrase courte qui fixe
+  > son sens.
+  >
+  > `SYC-CE1-2` - distracteurs. (a) la relation inverse (le contraire quand on demande un synonyme, et
+  > l'inverse), dans au moins un tiers des items ; (b) un mot du meme theme, de sens different. Aucun
+  > distracteur qu'un dictionnaire donnerait aussi comme reponse.
+  >
+  > `SYC-CE1-3` - frontiere. Aucun contraire forme par prefixe (`FRA-CE1-24`).
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on lit ses items, alors la mecanique est `bandit-manchot`, la forme
+    d'item est `question`, sans illustration ni `texteSupport` ni champ a voix haute (`TRV-CE1-1`).
+  - Etant donne chaque question, quand on la lit, alors elle nomme la relation demandee (synonyme ou
+    contraire) ; les items de synonyme et les items de contraire sont chacun au moins un tiers du paquet
+    (`SYC-CE1-1`).
+  - Etant donne un item, quand on lit sa phrase, alors le mot cible y est place dans une phrase courte
+    (`LON-CE1-1`, `LON-CE1-2`) qui fixe son sens (`SYC-CE1-1`).
+  - Etant donne les distracteurs du paquet, quand on les classe, alors au moins un tiers des items portent la
+    relation inverse parmi leurs distracteurs, la famille (a) ou (b) est declaree a cote de l'item, et aucun
+    distracteur n'est donne comme reponse par un dictionnaire (`SYC-CE1-2`, `TRV-CE1-2`).
+  - Etant donne les contraires du paquet, quand on lit leur bonne reponse, alors aucun n'est forme par prefixe
+    (*defaire*, *impossible*) (`SYC-CE1-3`).
+  - Etant donne chaque item, quand il declare sa ligne, alors il porte `FRA-CE1-25` et uniquement elle ; le
+    paquet porte au moins vingt items (`TRV-CE1-1`, `TRV-CE1-7`) ; trois propositions, la bonne reponse
+    strictement la plus longue dans la moitie des items au plus (`TRV-CE1-2`) ; chaque proposition compte au
+    plus six mots et une phrase (`LON-CE1-5`) ; l'indice respecte `TRV-CE1-5`, les prenoms eventuels
+    `TRV-CE1-6`.
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les trois
+    conditions de la ligne, les sept transverses et les bornes de lisibilite, et que la ligne ferme sans
+    mention de couverture partielle.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof` :
+    qu'une seule reponse soit acceptable sur chaque item, qu'aucun distracteur ne soit un synonyme ou un
+    contraire reconnu par un dictionnaire, que le mot cible soit frequent au CE1 (s48, section 9, points 2, 4
+    et 5).
+- **Ce que cette story ne fait pas** : elle ne sert pas les contraires formes par prefixe ni les familles de
+  mots (`FRA-CE1-24`) ; elle ne fixe aucun mot precis.
+- **Lien decision** : `DEC-0111` (section 4).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance A de `nadia-prof` pour le Done pedagogique ;
+  `theo-archi` pour l'avis de faisabilite).
+
+### S52-FRA-CATEGORIES - Classer des mots par categorie et trouver le mot qui les designe tous (`FRA-CE1-26`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux trouver le mot qui regroupe plusieurs mots (pomme, poire,
+  cerise : des fruits) et dire lequel n'est pas du groupe, afin de ranger les mots et d'en retrouver le sens.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Vocabulaire" -
+  `squad/programme/francais/competences-ce1.md`, `FRA-CE1-26` : "Classer des mots par categorie et trouver le
+  mot qui les designe tous (`fruit` pour `pomme`, `poire`, `cerise`)." Ligne `non couvert`,
+  `MATRICE-couverture.md`, section "Francais - CE1 (cycle 2)".
+- **Arbitrage pedagogique prealable cite** (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 6.4) : verdict
+  **ACCEPTE SOUS CONDITIONS `CTG-CE1-1` a `CTG-CE1-3`. Plafond : `couvert-valide`.**
+
+  > `CTG-CE1-1` - formes. *Le mot qui les designe tous*, trois mots donnes, dans au moins la moitie des
+  > items ; *classer* (lequel est un vetement, lequel n'en est pas un) dans les autres.
+  >
+  > `CTG-CE1-2` - categories. Categories de la vie courante, liste fermee declaree en tete (fruits, legumes,
+  > animaux, vetements, meubles, outils, instruments de musique...). Aucune classification scientifique :
+  > vivant et non vivant, classement des etres vivants relevent de questionner le monde et des sciences.
+  > Aucun membre discute (*tomate*, *champignon*, *baleine*).
+  >
+  > `CTG-CE1-3` - distracteurs. (a) la categorie soeur (*legume*) ; (b) un mot trop etroit ou l'un des mots
+  > donnes ; (c) un mot associe qui n'est pas une categorie (*arbre*, *marche*).
+
+- **Criteres d'acceptation** :
+  - Etant donne le paquet livre, quand on lit ses items, alors la mecanique est `bandit-manchot`, la forme
+    d'item est `question`, sans illustration ni `texteSupport` ni champ a voix haute (`TRV-CE1-1`).
+  - Etant donne le paquet, quand on classe ses items, alors au moins la moitie demandent le mot qui designe
+    trois mots donnes, et les autres demandent lequel est (ou n'est pas) de la categorie (`CTG-CE1-1`).
+  - Etant donne l'en-tete du fichier de contenu, quand on le lit, alors il declare la liste fermee des
+    categories ; chaque item en utilise une et une seule, de la vie courante (`CTG-CE1-2`).
+  - Etant donne les mots et les categories du paquet, quand on les lit, alors aucune n'est une classification
+    scientifique (vivant et non vivant, classement des etres vivants) et aucun membre n'est discute (*tomate*,
+    *champignon*, *baleine*) (`CTG-CE1-2`).
+  - Etant donne les distracteurs, quand on les classe, alors chacun est de la famille (a) categorie soeur, (b)
+    mot trop etroit ou l'un des mots donnes, ou (c) mot associe qui n'est pas une categorie, declaree a cote
+    de l'item (`CTG-CE1-3`, `TRV-CE1-2`).
+  - Etant donne chaque item, quand il declare sa ligne, alors il porte `FRA-CE1-26` et uniquement elle ; le
+    paquet porte au moins vingt items (`TRV-CE1-1`, `TRV-CE1-7`) ; trois propositions, la bonne reponse
+    strictement la plus longue dans la moitie des items au plus (`TRV-CE1-2`) ; chaque proposition compte au
+    plus six mots (`LON-CE1-5`) ; l'indice respecte `TRV-CE1-5`.
+  - Etant donne le Done pedagogique, quand `nadia-prof` joue le paquet, alors elle confirme les trois
+    conditions de la ligne, les sept transverses et les bornes de lisibilite, et que la ligne ferme sans
+    mention de couverture partielle.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof` :
+    qu'une seule reponse soit acceptable (aucun membre discute), l'exactitude de chaque categorie, la
+    vraisemblance de chaque distracteur (s48, section 9, points 2, 4 et 5).
+- **Ce que cette story ne fait pas** : elle ne classe jamais le vivant ni le non vivant, ni les etres vivants
+  (questionner le monde, sciences) ; elle ne sert pas les familles de mots ni les synonymes (`FRA-CE1-24`,
+  `-25`) ; elle ne fixe aucune categorie ni aucun mot precis.
+- **Lien decision** : `DEC-0111` (section 4).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance A de `nadia-prof` pour le Done pedagogique ;
+  `theo-archi` pour l'avis de faisabilite).
