@@ -384,6 +384,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 5.7).
             "bandit-manchot-homophones-ce1",
+            // S51-FRA-TEMPS (s51) : entree neuve, FRA-CE1-20, quatrieme ligne du referentiel de
+            // francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.11).
+            "bandit-manchot-temps-ce1",
             // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
             // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
             "bandit-manchot-decrire-une-oeuvre-cp",
@@ -633,6 +636,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-FRA-HOMOPHONES (s50) : titre neuf, sans niveau (ADR-0078), distinct de "Le bon
             // petit mot" (CM1, bandit-manchot-homophones-cm1).
             "Les bons mots",
+            // S51-FRA-TEMPS (s51) : titre neuf, sans niveau (ADR-0078), avec l'espace insecable
+            // d'ADR-0067 devant le point d'interrogation.
+            "Quand ça se passe ?",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
             "Décrire une œuvre",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -910,6 +916,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-FRA-HOMOPHONES (s50) : consigne neuve, generique - elle ne nomme aucun des
             // quatre homophones d'aucun item.
             "Lis bien, puis choisis le mot qui convient.",
+            // S51-FRA-TEMPS (s51) : consigne neuve, generique - elle ne nomme aucun des trois
+            // temps proposes.
+            "Lis bien, puis choisis quand la phrase se passe.",
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
@@ -1457,6 +1466,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // copie mot pour mot (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-16),
             // sans les guillemets inverses.
             "Distinguer les homophones grammaticaux a/à et et/est.",
+            // S51-FRA-TEMPS (s51) : competence neuve, FRA-CE1-20, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-20) sans les guillemets
+            // inverses.
+            "Situer une phrase dans le temps (passé, présent, futur) à partir de son verbe et des "
+                    + "mots qui indiquent le moment (hier, aujourd'hui, demain).",
             // S50-ART (s50) : competence neuve, ART-CP-09. Le libelle du referentiel
             // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-09) nomme
             // "couleurs" ; aucune couleur n'est servie par ce paquet (ART-1, arbitrage prealable

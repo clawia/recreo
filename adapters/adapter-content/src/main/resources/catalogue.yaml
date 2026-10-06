@@ -750,6 +750,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-homophones
     nombreDeManches: 10
+  - id: bandit-manchot-temps-ce1
+    titre: "Quand ça se passe ?"
+    consigne: "Lis bien, puis choisis quand la phrase se passe."
+    mecanique: bandit-manchot
+    paquet: ce1-temps
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."

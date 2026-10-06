@@ -1,0 +1,125 @@
+# S51-FRA-TEMPS (s51, DEC-0110 section 3). Arbitrage prealable de nadia-prof, conditions TPS-CE1-1 a
+# TPS-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.11) et sept
+# conditions transverses TRV-CE1-1 a TRV-CE1-7 (meme source, section 2). Avis de faisabilite de
+# theo-archi (squad/sprints/s51-trois-instances-francais-sciences-maths/avis-faisabilite.md, V2).
+#
+# TPS-CE1-1 : les trois propositions sont toujours passé, présent, futur ; huit items chacune sur
+# vingt-quatre (un tiers, au-dessus du quart exige).
+# TRV-CE1-2 : "présent" est strictement la plus longue des trois propositions, donc strictement la
+# plus longue quand c'est la bonne reponse : huit items sur vingt-quatre (un tiers), sous la moitie.
+# TPS-CE1-2 : huit items sur vingt-quatre portent un mot de temps (hier, aujourd'hui, demain,
+# maintenant), toujours coherent avec le verbe ; seize n'en portent aucun, au-dessus de la moitie.
+# TPS-CE1-3 : passé composé avec avoir seul, futur simple seul, present de l'indicatif ; ni futur
+# proche, ni imparfait.
+# TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-20), aucun champ a
+# voix haute ni texteSupport, trois propositions de un mot, le lexique de grammaire de TRV-CE1-4
+# exclu, un indice sur chaque item (douze mots au plus, jamais un nom de temps), vingt-quatre items
+# au-dessus du plancher de vingt, prenoms equilibres en genre (neuf et neuf) et d'origines variees,
+# aucun role ni activite distribue par genre. La question est portee par la consigne du jeu
+# (LON-CE1-2 : un enonce d'une seule phrase peut etre la phrase objet).
+schema: 1
+id: ce1-temps
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Situer une phrase dans le temps (passé, présent, futur) à partir de son verbe et des mots qui indiquent le moment (hier, aujourd'hui, demain)."
+lignesDeReferentiel: ["FRA-CE1-20"]
+items:
+  - enonce: "Hier, Inès a mangé une pomme."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Ne te fie pas qu'au mot de temps : lis le verbe."
+  - enonce: "Aujourd'hui, Lucas lit un livre."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Ne te fie pas qu'au mot de temps : lis le verbe."
+  - enonce: "Demain, Inès ira à la piscine."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Ne te fie pas qu'au mot de temps : lis le verbe."
+  - enonce: "Moussa a joué au ballon hier."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Le verbe décide, pas seulement le petit mot de temps."
+  - enonce: "Nina mange une orange maintenant."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Le verbe décide, pas seulement le petit mot de temps."
+  - enonce: "Moussa lira cette histoire demain."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Le verbe décide, pas seulement le petit mot de temps."
+  - enonce: "Hier, Salma a lavé son pull."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Regarde le verbe, c'est lui qui décide."
+  - enonce: "Samir ouvre la porte."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Cherche le verbe et regarde sa fin."
+  - enonce: "Demain, Mei chantera avec la classe."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Ne te fie pas qu'au mot de temps : lis le verbe."
+  - enonce: "Yanis a dessiné un grand chat."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Lis le verbe : que dit-il du moment ?"
+  - enonce: "Aïcha chante dans la classe."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Le verbe change selon le moment."
+  - enonce: "Yanis dessinera un bateau."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Regarde le verbe, c'est lui qui décide."
+  - enonce: "Mei a cassé son crayon."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Cherche le verbe et regarde sa fin."
+  - enonce: "Le chat dort sur le lit."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Repère le verbe avant de choisir."
+  - enonce: "Salma ouvrira la porte."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Cherche le verbe et regarde sa fin."
+  - enonce: "Kofi a trouvé une clé dans la cour."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Repère le verbe avant de choisir."
+  - enonce: "Les enfants jouent dans la cour."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Regarde le verbe, c'est lui qui décide."
+  - enonce: "Kofi mangera une orange."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Lis le verbe : que dit-il du moment ?"
+  - enonce: "Le chat a bu toute l'eau."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Demande-toi : quand a lieu ce que fait le verbe ?"
+  - enonce: "Le vent souffle très fort."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Demande-toi : quand a lieu ce que fait le verbe ?"
+  - enonce: "Le chat dormira sur le lit."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Demande-toi : quand a lieu ce que fait le verbe ?"
+  - enonce: "Zoé a ouvert la fenêtre."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Le verbe change selon le moment."
+  - enonce: "Hugo range sa trousse."
+    bonneReponse: "présent"
+    distracteurs: ["passé", "futur"]
+    indice: "Lis le verbe : que dit-il du moment ?"
+  - enonce: "Les enfants joueront dans la cour."
+    bonneReponse: "futur"
+    distracteurs: ["passé", "présent"]
+    indice: "Repère le verbe avant de choisir."

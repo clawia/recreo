@@ -1096,6 +1096,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " quatre homophones de HOM-CE1-1 (\"a\", \"à\", \"et\", \"est\"), valeurDe"
                     + " rend null sur les deux propositions de chaque item. Mesure du 2026-10-04 sur"
                     + " le paquet servi : aucune des 48 propositions ne commence par un chiffre"),
+            // S51-FRA-TEMPS : quatrieme paquet de francais CE1 (FRA-CE1-20).
+            Map.entry("ce1-temps",
+            "24 items sur 24 portent deux distracteurs (trois propositions), soit 72 propositions,"
+                    + " mais aucune n'est numerique : ce sont les trois noms de temps de TPS-CE1-1"
+                    + " (\"passé\", \"présent\", \"futur\"), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-10-06 sur le paquet servi :"
+                    + " aucune des 72 propositions ne commence par un chiffre"),
             // S50-ART : paquet neuf d'arts plastiques CP, deuxieme ligne de cette matiere
             // (ART-CP-09), premier paquet a declarer une reproduction d'oeuvre (T6 d'ADR-0082).
             Map.entry("cp-decrire-une-oeuvre",

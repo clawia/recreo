@@ -1,0 +1,16 @@
+schema: 1
+id: ce1-temps-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1TempsTest. Le mot de temps "demain" est incoherent
+# avec le verbe (passe compose) et la bonne reponse "passé" : TPS-CE1-2 doit le refuser.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Situer une phrase dans le temps (passé, présent, futur) à partir de son verbe et des mots qui indiquent le moment (hier, aujourd'hui, demain)."
+lignesDeReferentiel: ["FRA-CE1-20"]
+items:
+  - enonce: "Demain, Inès a mangé une pomme."
+    bonneReponse: "passé"
+    distracteurs: ["présent", "futur"]
+    indice: "Lis le verbe : que dit-il du moment ?"
