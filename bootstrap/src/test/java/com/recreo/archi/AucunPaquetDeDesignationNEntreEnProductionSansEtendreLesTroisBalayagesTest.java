@@ -41,6 +41,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * reellement, ce garde-fou ne fait que constater que le moment est venu, dans le geste meme qui
  * fait entrer le premier paquet.
  *
+ * <p><b>Amendement du 2026-10-06 (s52, A1).</b> T6 est livre depuis s34 : les trois balayages lisent
+ * la production. Le message ne demande donc plus de les etendre ; il dit qu'ils doivent etre verts
+ * sur le paquet neuf et que le plafond monte dans le diff qui le sert. Le nom de la classe garde la
+ * trace de sa dette d'origine.
+ *
  * <p>ADR-0013, les trois obligations : perimetre derive - les repertoires de contenu viennent de
  * {@link AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest#repertoiresDeContenu}, jamais d'une
  * liste ecrite ici ; derivation totale - chaque fichier YAML de chaque repertoire est charge par
@@ -55,11 +60,11 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
     private static final String TYPE_DESIGNATION = "designation";
 
     /**
-     * Les trois garde-fous de production qui devront etendre leur balayage a cette population le
-     * jour ou elle n'est plus vide. Nommes ici pour que le message d'echec dise quoi faire, pas
-     * seulement que quelque chose ne va pas.
+     * Les trois garde-fous qui jugent cette population. Ils balaient la production depuis s34 (T6) :
+     * ils sont nommes ici pour que le message d'echec dise lesquels doivent etre verts sur le paquet
+     * neuf, pas seulement qu'un compte a change.
      */
-    private static final List<String> BALAYAGES_A_ETENDRE = List.of(
+    private static final List<String> BALAYAGES_DE_PRODUCTION = List.of(
             "LaBonneZoneNEstPasPredictibleSurUnPaquetTest",
             "AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest",
             "ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest");
@@ -141,10 +146,11 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
         long compte = paquetsDeDesignation(corpsCharges);
         if (compte > plafond) {
             throw new AssertionError(compte + " paquet(s) de type '" + TYPE_DESIGNATION
-                    + "' servi(s) sous src/main/resources, contre " + plafond + " tolere(s) : la"
-                    + " dette d'ADR-0080 (amendement du 2026-09-04) est due. Etendre le balayage"
-                    + " de production de " + BALAYAGES_A_ETENDRE + " (T6), puis monter"
-                    + " PLAFOND_DE_DESIGNATION_EN_PRODUCTION a " + compte + " dans le meme diff.");
+                    + "' servi(s) sous src/main/resources, contre " + plafond + " tolere(s). "
+                    + BALAYAGES_DE_PRODUCTION + " lisent la production depuis s34 (T6, ADR-0080) :"
+                    + " le paquet neuf y entre sans toucher a leur code, et ils doivent etre verts"
+                    + " sur lui dans ce build. Monter PLAFOND_DE_DESIGNATION_EN_PRODUCTION a "
+                    + compte + " dans le diff qui sert ce paquet.");
         }
         if (compte < plafond) {
             throw new AssertionError("PLAFOND_DE_DESIGNATION_EN_PRODUCTION vaut " + plafond
@@ -191,7 +197,8 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
                 .hasMessageContaining("LaBonneZoneNEstPasPredictibleSurUnPaquetTest")
                 .hasMessageContaining("AucunEnonceDeDesignationNeNommeLeLibelleDeSaBonneZoneTest")
                 .hasMessageContaining("ChaqueCleFacultativeDItemEstLueParLaFabriqueDeSonTypeTest")
-                .hasMessageContaining("balayage de production");
+                .hasMessageContaining("lisent la production depuis s34")
+                .hasMessageNotContaining("Etendre le balayage");
     }
 
     /**
