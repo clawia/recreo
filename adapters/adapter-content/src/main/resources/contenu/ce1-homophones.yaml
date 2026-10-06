@@ -27,6 +27,9 @@
 # LON-CE1-1 et LON-CE1-2 sont deja tenues par AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest
 # (ADR-0101) : chaque enonce compte entre quatre et six mots, une seule phrase. LON-CE1-5 : chaque
 # proposition est un seul mot.
+#
+# Correction HOM-CE1-R1 (s51, reserve de nadia-prof, fiche du paquet, section 4) : quatre prenoms sur
+# sept sont remplaces a genre egal (Inès, Moussa, Mei, Yanis), phrases inchangees par ailleurs.
 schema: 1
 id: ce1-homophones
 type: question
@@ -37,11 +40,11 @@ descripteur:
   competence: "Distinguer les homophones grammaticaux a/à et et/est."
 lignesDeReferentiel: ["FRA-CE1-16"]
 items:
-  - enonce: "Léa ___ trouvé son cahier."
+  - enonce: "Inès ___ trouvé son cahier."
     bonneReponse: "a"
     distracteurs: ["à"]
     indice: "Remplace par avait : la phrase reste juste."
-  - enonce: "Tom va ___ la piscine le mardi."
+  - enonce: "Moussa va ___ la piscine le mardi."
     bonneReponse: "à"
     distracteurs: ["a"]
     indice: "Remplace par avait : la phrase ne marche plus."
@@ -57,7 +60,7 @@ items:
     bonneReponse: "a"
     distracteurs: ["à"]
     indice: "Remplace par avait : la phrase tient debout."
-  - enonce: "Hugo parle ___ voix basse."
+  - enonce: "Yanis parle ___ voix basse."
     bonneReponse: "à"
     distracteurs: ["a"]
     indice: "Remplace par avait : le sens disparaît."
@@ -65,7 +68,7 @@ items:
     bonneReponse: "a"
     distracteurs: ["à"]
     indice: "Avec avait, la phrase garde son sens."
-  - enonce: "Jade court ___ toute vitesse."
+  - enonce: "Mei court ___ toute vitesse."
     bonneReponse: "à"
     distracteurs: ["a"]
     indice: "Avec avait, la phrase ne veut plus rien dire."
@@ -85,7 +88,7 @@ items:
     bonneReponse: "à"
     distracteurs: ["a"]
     indice: "Change en avait : la phrase devient bizarre."
-  - enonce: "Léa ___ son frère jouent dehors."
+  - enonce: "Inès ___ son frère jouent dehors."
     bonneReponse: "et"
     distracteurs: ["est"]
     indice: "Remplace par était : la phrase ne tient plus."
@@ -93,7 +96,7 @@ items:
     bonneReponse: "est"
     distracteurs: ["et"]
     indice: "Remplace par était : la phrase reste juste."
-  - enonce: "Tom ___ sa sœur partent en vélo."
+  - enonce: "Moussa ___ sa sœur partent en vélo."
     bonneReponse: "et"
     distracteurs: ["est"]
     indice: "Essaie était : ça ne fonctionne pas."
@@ -101,7 +104,7 @@ items:
     bonneReponse: "est"
     distracteurs: ["et"]
     indice: "Essaie était : la phrase garde son sens."
-  - enonce: "Hugo ___ Nina rangent la classe."
+  - enonce: "Yanis ___ Nina rangent la classe."
     bonneReponse: "et"
     distracteurs: ["est"]
     indice: "Avec était, la phrase devient fausse."
@@ -117,7 +120,7 @@ items:
     bonneReponse: "est"
     distracteurs: ["et"]
     indice: "Teste était : la phrase reste bonne."
-  - enonce: "Jade ___ son voisin discutent longtemps."
+  - enonce: "Mei ___ son voisin discutent longtemps."
     bonneReponse: "et"
     distracteurs: ["est"]
     indice: "Change en était : ça ne marche plus."
