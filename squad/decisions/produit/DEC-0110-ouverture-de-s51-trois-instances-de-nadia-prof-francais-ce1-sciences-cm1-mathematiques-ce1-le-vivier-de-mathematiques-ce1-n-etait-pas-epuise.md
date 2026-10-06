@@ -963,18 +963,48 @@ reecrite.
 n'en ai recu que les quatre plages de lignes ci-dessus, la citation de la ligne 789 et la ligne 781. Si la
 liste en porte d'autres, ils ne sont pas traites ici.
 
-### 16.9 Point ouvert, hors de la demande : deux paquets refuses sont dans le catalogue
+### 16.9 Deux paquets refuses restent dans le catalogue jusqu'a s52 (decision de l'utilisatrice du 2026-10-06)
 
 `catalogue.yaml` porte les entrees `bandit-manchot-activite-humaine-cm1` et `bandit-manchot-terre-cm1`
 (`grep -n "activite-humaine-cm1\|terre-cm1" adapters/adapter-content/src/main/resources/catalogue.yaml` :
 deux entrees). Deux paquets que `nadia-prof` a refuses le 2026-10-06 sont donc dans le catalogue servi. Les
 deux refus portent sur une cle de reponse fausse : l'enfant est dit en faute sur une reponse vraie ou
-acceptable. C'est la situation de `DEC-0009` (`bandit-manchot-le-bon-son-cp`, s04). Je n'ai pas pris de
-decision de retrait : elle change le contenu servi, elle n'etait pas dans la consigne, et le retrait (dans
-`ADR-0061`, l'absence d'entree reste le seul retrait) touche des tests que je ne mesure pas. **Question Q1,
-a l'utilisatrice : retire-t-on les deux entrees jusqu'a la reprise de s52 ?** Je recommande le retrait. Si
-oui, la decision et sa story vont a `sofia-sm` dans le meme geste. Tant que Q1 n'a pas de reponse, ce point
-n'est pas traite.
+acceptable. Je n'avais pas pris de decision de retrait : elle change le contenu servi, elle n'etait pas dans
+la consigne, et le retrait (dans `ADR-0061`, l'absence d'entree reste le seul retrait) touche des tests que je
+ne mesure pas. J'ai pose la question a l'utilisatrice et recommande le retrait.
+
+**Decision de l'utilisatrice, 2026-10-06.** Question : *"Retirer du catalogue servi les deux paquets refuses
+par nadia-prof (activite-humaine-cm1 et terre-cm1) ?"* Reponse de l'utilisatrice : *"Garder jusqu'a s52"*.
+Elle est citee mot pour mot, en forme 3 de `squad/README.md` section 2 bis : recu de MASTER, sans source dans
+le depot, le 2026-10-06. Cette forme ne vaut pas motif sans ecriture prealable : c'est cette section qui l'ecrit, et la
+`DEC` de s52 s'appuie sur elle et non sur l'enonce de MASTER.
+
+**Decision : les deux entrees restent dans le catalogue servi jusqu'a s52.** Aucun changement de code, de
+catalogue ni de test n'en decoule, donc aucune story de retrait : `sofia-sm` n'a rien a executer au titre de
+cette section, et la recommandation de retrait que j'avais faite n'est pas suivie.
+
+**Le risque que cette decision accepte, et que `nadia-prof` a ecrit dans ses fiches.** Jusqu'a s52, un enfant
+qui lance l'application peut jouer ces deux paquets dans l'etat refuse. Sa phrase, dans
+`squad/conformite/FICHE-bandit-manchot-terre-cm1.md`, section 7, motif 1 (item 4) : *"L'enfant qui la choisit
+recoit "Ce n'est pas ça." : il apprend comme faux un fait vrai. C'est une cle de reponse fausse."* Et dans
+`squad/conformite/FICHE-bandit-manchot-activite-humaine-cm1.md`, section 7, motif de l'item 11 : *"L'enfant
+qui raisonne juste sur la question ecrite et choisit le charbon recoit "Ce n'est pas ça." - je l'ai fait a
+l'ecran."* Le risque n'est pas theorique : elle l'a observe a l'ecran. Il porte sur `terre-cm1` aux items 4 et
+11 et sur `activite-humaine-cm1` a l'item 11, soit les items nommes par ses motifs et aucun autre.
+
+**Difference avec `DEC-0009`, et la correction de ma comparaison.** Dans la premiere redaction de cette
+section, j'ecrivais que c'etait *"la situation de `DEC-0009`"* (`bandit-manchot-le-bon-son-cp`, s04). Le
+defaut est de la meme famille, une cle fausse qui dit l'enfant en faute. Les deux situations different sur
+ce qui a ete decide : `DEC-0009` retirait le jeu du catalogue, par une decision de produit, pour cinq motifs
+cumules (dont 23 items sur 24 qui se reussissaient sans le phoneme vise) ; ici l'utilisatrice a arbitre le
+contraire, garder, pour une duree bornee a s52, sur des paquets dont `nadia-prof` nomme un ou deux items.
+**Je ne tire de cette difference aucun jugement sur la gravite pedagogique des defauts : ce jugement est celui
+de `nadia-prof`.** Je ne dis pas non plus que `DEC-0009` s'applique ici ou ne s'applique pas : la regle que
+ce depot a tiree de s04 (une decision de retrait sans proprietaire fait croire que le probleme est traite)
+reste vraie, et c'est pourquoi la borne ci-dessous est ecrite comme une obligation et non comme une intention.
+
+**Report compte.** Premier report du retrait de ces deux paquets : ecarte le 2026-10-06, cloture de s51,
+garde jusqu'a s52. Un second report a s52 serait le deuxieme et s'ecrirait comme tel.
 
 ### 16.10 Perimetre propose pour s52, non ouvert
 
@@ -996,6 +1026,13 @@ conditionne. **Aucune borne a trois instances n'est supposee** : sa derivation e
 
 Le vivier de sciences et technologie CM1 se reduit aux trois premiers postes (2 `non couvert` au disque) :
 une instance de sciences a s52 porterait 2,0 au plus, sans lot neuf a ajouter.
+
+**Exigence de s52 sur les deux paquets gardes (16.9).** La `DEC` d'ouverture de s52 tranche, **avant tout
+autre poste touchant `bandit-manchot-activite-humaine-cm1` ou `bandit-manchot-terre-cm1`**, entre deux
+issues : le retrait du catalogue servi, ou la reprise (`S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`,
+`S51-SCI-TERRE-CM1-REPRISE`) qui les repasse devant `nadia-prof`. Un poste de reprise ne s'ouvre pas tant
+que cette tranche n'est pas ecrite, et la `DEC` ne s'ouvre pas en les laissant servis sans le dire. La
+decision de l'utilisatrice court jusqu'a s52 : elle n'est pas reconduite par defaut.
 
 **Questions deja ouvertes, a trancher par la `DEC` de s52** : `PAR-4` (passe transverse) a deux instances et
 ecart `PAR-9` / pratique (14.7) ; ecart *"palier 2"* des cellules de la matrice (`DEC-0110` section 6, point
