@@ -33,7 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * geste). Elles se lisent par le marqueur {@code # element:} de chaque item, dans le fichier brut.
  *
  * <p><b>SCI-2</b> s'encode ici sur des jetons : la liste des jetons d'adresse a l'enfant est celle
- * que ce test declare ({@link #JETONS_D_ADRESSE}), ecrite par le developpeur en attendant la liste de
+ * que ce test declare ({@link #JETONS_D_ADRESSE}), fixee par
  * {@code nadia-prof} (question Q2 de s51), et non une regle d'architecture. Ce test ne juge pas
  * qu'un item decrive un mecanisme exact ni que son geste soit possible : c'est la garde de
  * {@code nadia-prof}, en jouant.
@@ -57,11 +57,11 @@ class PaquetCm1SciencesActiviteHumaineTest {
     private static final Pattern MARQUEUR_ELEMENT = Pattern.compile("# element: (\\w+)");
 
     /**
-     * SCI-2 : jetons d'adresse a l'enfant ou a son foyer, en mot entier. Liste du developpeur, a
-     * remplacer par celle de nadia-prof quand elle l'ecrit (Q2).
+     * SCI-2 : jetons d'adresse a l'enfant ou a son foyer, en mot entier. Liste de nadia-prof (Q2) : tu, te,
+     * toi, ta, ton, tes, l'elision t', vous, votre, vos, nous, notre, nos ; "on" reste admis.
      */
     private static final Pattern JETONS_D_ADRESSE = Pattern.compile(
-            "\\b(tu|ta|ton|tes|toi|te|vous|votre|vos|nous|notre|nos)\\b",
+            "\\b(tu|ta|ton|tes|toi|te|vous|votre|vos|nous|notre|nos)\\b|\\bt['’]",
             Pattern.UNICODE_CHARACTER_CLASS | Pattern.CASE_INSENSITIVE);
 
     /** SCI-2 : les cinq objets que la condition interdit de presenter comme une responsabilite. */
@@ -238,6 +238,8 @@ class PaquetCm1SciencesActiviteHumaineTest {
     void sci2LesDeuxMotifsMordentUnTexteFautif() {
         assertThat(JETONS_D_ADRESSE.matcher("Que fais-tu chez toi ?").find()).isTrue();
         assertThat(JETONS_D_ADRESSE.matcher("Ta famille choisit").find()).isTrue();
+        assertThat(JETONS_D_ADRESSE.matcher("Que t'a-t-on dit").find()).isTrue();
+        assertThat(JETONS_D_ADRESSE.matcher("on peut le faire").find()).isFalse();
         assertThat(JETONS_D_ADRESSE.matcher("une station d'épuration").find()).isFalse();
         assertThat(OBJETS_DU_FOYER.matcher("Les déchets de la maison").find()).isTrue();
         assertThat(OBJETS_DU_FOYER.matcher("réparer les canalisations").find()).isFalse();
