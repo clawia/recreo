@@ -15,12 +15,105 @@
   (`squad/conformite/ARBITRAGE-PREALABLE-s51-fra-ce1-22-graphie-cedille.md`, section 3, branche
   `s51-nadia-instance-a`).
 - **Statut global** : **REFUSE**, prononce le 2026-10-06 par `nadia-prof` (s51, instance B). Fiche
-  ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Derniere mise a jour** : 2026-10-06.
+  ouverte par ce verdict : aucune fiche n'existait pour ce jeu. **Second passage du 2026-10-06
+  (rejeu `5a4ca6d8`) : REFUSE a nouveau**, le motif de l'item 11 n'est pas leve ; les deux points
+  non bloquants sont pris. Le premier refus reste ecrit ci-dessous.
+- **Derniere mise a jour** : 2026-10-06 (second passage).
 
 ---
 
 ## Bloc de validation pedagogique
+
+### Verdict du 2026-10-06, second passage (`nadia-prof`, s51, instance B) : **REFUSE**
+
+**Done pedagogique non prononce.** `SCI-CM1-18` reste `non couvert` ; `camille-po` ne ferme pas la
+ligne. Story du rejeu : `S51-SCI-ACTIVITE-HUMAINE-CM1-REJEU` (`DEC-0110` section 15). Le motif du
+premier refus, item 11, **n'est pas leve** : la correction deplace le defaut sans le supprimer
+(S2-3). Les deux points non bloquants du premier passage sont **pris** (S2-2). C'est le seul motif.
+
+#### S2-1. Ce que j'ai fait
+
+**Audit complet, pas degrade.** Worktree dedie `s51-nadia-instance-b`, a `5a4ca6d8`. Le diff ne
+touche que `cm1-sciences-activite-humaine.yaml`, items 5, 8, 10, 11 et 12 ; les sept autres items
+sont inchanges octet pour octet. Jar reconstruit depuis ce worktree
+(`bash outils/mvn-jdk21.sh -B -DskipTests package`), paquet embarque verifie identique au fichier
+commite, lance sur un port libre, arrete par son PID.
+
+**Methode** : enonces des items touches relus seuls, propositions masquees, et repondus par moi avant
+de voir les propositions ; puis quatre parties de dix manches avec une erreur a chaque manche avant
+la bonne reponse, et trois erreurs jusqu'a la revelation a la manche 3. **Les cinq items touches
+ont ete tires et joues avec une erreur**, chacun de leurs distracteurs au moins une fois sauf
+*"les mélanger à beaucoup d'eau pour les diluer"* (item 8), que le tirage ne m'a pas fait choisir ;
+son indice ne change pas selon le bouton presse.
+
+#### S2-2. Ce qui est pris
+
+| Point | Statut | Ce que j'ai constate en jouant |
+|---|---|---|
+| Point 1 du premier passage (indices des items 8, 10, 12) | **pris** | Item 8 : *"Déplacer une eau sale ne change pas ce qu'elle contient."* - n'ecarte que *rejeter plus loin*. Item 10 : *"Une eau qui coule sans servir est une eau perdue."* - n'ecarte que les fontaines. Item 12 : *"Une lampe plus puissante éclaire plus fort et plus loin."* - ne vise que les lampes plus puissantes. Aucun ne nomme la bonne reponse ; apres l'erreur, deux propositions restent |
+| Point 2 du premier passage (item 5) | **pris** | Question *"Quel effet cela a-t-il à long terme sur le climat de la Terre ?"*, bonne reponse *"l'air retient davantage la chaleur et le climat se réchauffe"* : **exact** (le dioxyde de carbone renforce l'effet de serre). L'enfant qui repond juste apprend l'effet, plus la seule accumulation du gaz. Distracteurs faux : le climat ne se refroidit pas, l'air ne devient ni plus riche en oxygene ni plus pur |
+
+**Sur l'item 5, ce que je ne retiens pas comme defaut.** Le distracteur *"l'air retient moins la
+chaleur et le climat se refroidit"* est l'oppose exact de la bonne reponse. Cela designe la paire
+juste-oppose, pas la reponse : l'enfant doit encore savoir dans quel sens le gaz agit, et c'est
+precisement ce que l'item enseigne. Aucun des deux distracteurs n'est une conception fausse courante :
+`SCI-1` n'est pas engagee. **Observation non bloquante** : l'indice est reste *"Les gaz libérés dans
+l'air n'en disparaissent pas aussitôt."*, ecrit pour l'ancienne question ; lu apres *"le climat se
+refroidit"*, il ne dit rien de la chaleur. Il n'est pas faux.
+
+`SCI-2` et `BIA-4` tenus sur les cinq items touches : aucune adresse a l'enfant, aucun foyer, aucun
+imperatif ni injonction ; les gestes restent a l'infinitif et a l'echelle collective (*produire de
+l'électricité*, *extraire*). `SCI-3`, `SCI-4`, `FER-1` a `FER-3`, `DEC-0064` inchanges.
+
+#### S2-3. Motif du refus, maintenu : item 11
+
+> Item servi : *"Le pétrole et le charbon ne se renouvellent pas à l'échelle humaine. Quel geste
+> préserve ces ressources ?"* - bonne reponse *"produire de l'électricité avec le vent et le
+> soleil"*, distracteurs *"produire de l'électricité avec plus de gaz naturel"* et *"extraire plus
+> vite ce qu'il en reste dans le sous-sol"*, indice *"Le gaz naturel, comme le pétrole et le charbon,
+> met des millions d'années à se former."*
+>
+> **La barre que j'ai ecrite au premier passage** : *"un item dont la question pose elle-meme le
+> critere que l'indice emploie [...] de sorte qu'une seule proposition y reponde"*. Je la reprends
+> telle quelle, sans la relever.
+>
+> 1. **Ce qui est atteint.** L'enonce ne fixe plus un but que le stockage atteint a la lettre ; le
+>    distracteur *"extraire plus vite"* est faux sans discussion. Ces deux points du premier motif
+>    sont leves.
+> 2. **Ce qui ne l'est pas.** La question demande de preserver *"ces ressources"*, c'est-a-dire le
+>    petrole et le charbon, et eux seuls. Produire l'electricite avec du gaz naturel **a la place**
+>    du petrole et du charbon preserve le petrole et le charbon, exactement comme le vent et le soleil :
+>    c'est la meme substitution qu'au premier passage, le charbon ayant cede sa place au gaz. L'indice
+>    juge alors sur un critere plus large que la question - le gaz se forme lui aussi en millions
+>    d'annees -, que l'enonce ne pose pas. **Deux propositions repondent a la question ecrite.**
+> 3. **Ce que cela coute a l'enfant.** Celui qui ne sait pas encore que le gaz naturel est une energie
+>    fossile n'a rien dans l'enonce pour l'apprendre avant de se tromper ; celui qui le sait lit une
+>    question qui ne parle que du petrole et du charbon. Lu a l'ecran apres *"plus de gaz naturel"* :
+>    *"Ce n'est pas ça."*
+>
+> **Correction attendue, inchangee** : que la question pose le critere de l'indice, de sorte qu'une
+> seule proposition y reponde. Le plus court est un enonce qui nomme le gaz naturel avec le petrole
+> et le charbon, ou qui parle des energies fossiles, quand le gaz reste en distracteur. Les
+> formulations sont a l'equipe.
+>
+> **Ce que le refus ne demande pas** : aucune autre modification n'est une condition de levee, ni sur
+> l'item 11 ni ailleurs. Je ne releverai pas cette barre au rejeu suivant.
+
+#### S2-4. Ce dont je reste la seule garde
+
+Inchange (section 9 du premier passage) : qu'une seule proposition reponde a la question ecrite - le
+defaut de ce second refus a de nouveau traverse un `clean verify` vert -, l'exactitude d'un fait
+d'environnement, qu'un indice ne donne pas la reponse par elimination, la part de `SCI-2` que les
+jetons d'adresse ne voient pas, `CYC-1`. Verifie ici en jouant.
+
+#### S2-5. Mesure technique citee
+
+Je n'ai pas mesure la porte technique sur ce rejeu : je reprends le `clean verify` vert annonce par
+le coordinateur (job `build` seul) sans l'avoir relance. Le jar joue a ete reconstruit depuis ce
+worktree, tests sautes par cette commande (`-DskipTests`). Ce second passage n'ecrit aucun
+identifiant neuf.
+
+---
 
 ### Verdict du 2026-10-06 (`nadia-prof`, s51, instance B) : **REFUSE**
 
