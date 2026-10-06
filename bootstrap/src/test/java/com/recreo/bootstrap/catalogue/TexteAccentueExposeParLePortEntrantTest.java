@@ -400,6 +400,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S52-FRA-CATEGORIES (s52) : entree neuve, FRA-CE1-26, septieme ligne du referentiel de
             // francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 6.4).
             "bandit-manchot-categories-ce1",
+            // S52-FRA-PRESENT (s52) : entree neuve, FRA-CE1-17, huitieme ligne du referentiel de
+            // francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.8).
+            "bandit-manchot-conjugaison-present-ce1",
             // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
             // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
             "bandit-manchot-decrire-une-oeuvre-cp",
@@ -661,6 +664,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Comment ça s'écrit ?",
             // S52-FRA-CATEGORIES (s52) : titre neuf, sans niveau (ADR-0078).
             "Les mots d'un même groupe",
+            // S52-FRA-PRESENT (s52) : titre neuf, sans niveau (ADR-0078).
+            "Les verbes au présent",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
             "Décrire une œuvre",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -951,6 +956,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S52-FRA-CATEGORIES (s52) : consigne neuve, generique - elle ne nomme aucune
             // categorie ni aucun mot d'aucun item.
             "Lis bien, puis choisis la bonne réponse.",
+            // S52-FRA-PRESENT (s52) : consigne neuve, generique - elle ne nomme aucun verbe ni
+            // aucune forme.
+            "Lis bien, puis choisis la bonne forme du verbe.",
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
@@ -1521,6 +1529,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // inverses.
             "Classer des mots par catégorie et trouver le mot qui les désigne tous (fruit pour "
                     + "pomme, poire, cerise).",
+            // S52-FRA-PRESENT (s52) : competence neuve, FRA-CE1-17, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-17) sans les guillemets
+            // inverses.
+            "Conjuguer au présent de l'indicatif être, avoir, les verbes du premier groupe et "
+                    + "quelques verbes fréquents (aller, faire, dire, venir).",
             // S50-ART (s50) : competence neuve, ART-CP-09. Le libelle du referentiel
             // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-09) nomme
             // "couleurs" ; aucune couleur n'est servie par ce paquet (ART-1, arbitrage prealable

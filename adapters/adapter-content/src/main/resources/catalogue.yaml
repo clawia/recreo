@@ -774,6 +774,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-categories
     nombreDeManches: 10
+  - id: bandit-manchot-conjugaison-present-ce1
+    titre: "Les verbes au présent"
+    consigne: "Lis bien, puis choisis la bonne forme du verbe."
+    mecanique: bandit-manchot
+    paquet: ce1-conjugaison-present
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."

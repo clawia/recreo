@@ -1,0 +1,17 @@
+schema: 1
+id: ce1-conjugaison-present-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1ConjugaisonPresentTest. "est" est declare de famille
+# "c" (l'infinitif) alors qu'il n'est pas l'infinitif d'etre : PRS-CE1-3.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Conjuguer au présent de l'indicatif être, avoir, les verbes du premier groupe et quelques verbes fréquents (aller, faire, dire, venir)."
+lignesDeReferentiel: ["FRA-CE1-17"]
+items:
+  # PRS-CE1-3: a, c
+  - enonce: "« être » : je ___ en classe."
+    bonneReponse: "suis"
+    distracteurs: ["es", "est"]
+    indice: "Regarde le petit mot juste avant le trou."

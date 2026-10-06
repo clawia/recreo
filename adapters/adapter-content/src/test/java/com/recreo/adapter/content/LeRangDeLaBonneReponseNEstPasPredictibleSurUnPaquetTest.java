@@ -1151,6 +1151,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
                     + " 2026-10-06 sur le paquet servi : aucune des 72 propositions ne commence par"
                     + " un chiffre"),
+            // S52-FRA-PRESENT : huitieme paquet de francais CE1 (FRA-CE1-17).
+            Map.entry("ce1-conjugaison-present",
+            "24 items sur 24 portent deux distracteurs (trois propositions), soit 72 propositions,"
+                    + " mais aucune n'est numerique : ce sont des formes conjuguees (\"suis\","
+                    + " \"viennent\"...) ou des infinitifs (\"aller\"...), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-10-06 sur le paquet servi :"
+                    + " aucune des 72 propositions ne commence par un chiffre"),
             // S50-ART : paquet neuf d'arts plastiques CP, deuxieme ligne de cette matiere
             // (ART-CP-09), premier paquet a declarer une reproduction d'oeuvre (T6 d'ADR-0082).
             Map.entry("cp-decrire-une-oeuvre",
