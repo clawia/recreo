@@ -11,6 +11,20 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s52, instance C, le 2026-10-06, phase 3 (Done pedagogique de `MAT-CE1-17`,
+VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve : **`SYM-CE1-R1`**, ecrit dans
+`squad/conformite/FICHE-designation-symetrie-ce1.md`. **Forme copiee** de `MUL-CE1-R1` : trois segments,
+niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** : `SYM-CE1-1` a `-3`
+etaient alloues ; `SYM-CE1-R1` etait absent de la section 4 et du depot avant d'ecrire (`git grep`, zero
+occurrence). La ligne de la section 4 est dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **920 / 158 a 921 / 158**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 920 identifiants alloues et 158 prefixes distincts, sa table en porte 921 et 158"*. C'est
+ce **921 / 158** que je recopie. Aucun autre defaut rendu.
+
 **Note de `nadia-prof`, s52, instance C, le 2026-10-06 (Done pedagogique de `MAT-CE1-06`, VALIDE SOUS
 RESERVE ; `MAT-CE1-02` moitie textuelle, VALIDE).** Un identifiant ajoute, une reserve : **`MUL-CE1-R1`**,
 ecrit dans `squad/conformite/FICHE-bandit-manchot-sens-multiplication-ce1.md`. **Forme copiee** de
@@ -696,7 +710,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `920` identifiants alloues, `158` prefixes distincts.
+**Compte courant, verifie par la CI** : `921` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2001,6 +2015,7 @@ clause 2 par une exemption.
 | `SYM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `SYM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
 | `SYM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md` |
+| `SYM-CE1-R1` | `squad/conformite/FICHE-designation-symetrie-ce1.md` |
 | `SYN-1` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `SYN-2` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
 | `SYN-3` | `squad/conformite/ARBITRAGE-PREALABLE-s17-francais-cm1-et-resurrection.md` |
