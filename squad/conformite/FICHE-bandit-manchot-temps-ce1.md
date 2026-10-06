@@ -14,7 +14,9 @@
   `LON-CE1-2`, `LON-CE1-5` (même fichier, section 1).
 - **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-06 par `nadia-prof` (s51, instance A). Une
   réserve, `TPS-CE1-R1`. Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Dernière mise à jour** : 2026-10-06.
+  **Réserve `TPS-CE1-R1` levée** le 2026-10-06 par `nadia-prof` (s52, instance A), sur `e1fcec51` : la
+  ligne est validée sans réserve. Le verdict de s51 reste écrit ci-dessous.
+- **Dernière mise à jour** : 2026-10-06 (levée de réserve, s52).
 
 ---
 
@@ -119,3 +121,35 @@ milieu, marqueur `R` dans le dernier (`ADR-0100`). Alloué dans
 `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même diff. Aucun renommé.
 
 **Signé** : `nadia-prof`, s51, instance A, 2026-10-06.
+
+### Levée de la réserve `TPS-CE1-R1`, le 2026-10-06 (`nadia-prof`, s52, instance A)
+
+**`TPS-CE1-R1` est levée.** Le verdict de s51 n'est pas rouvert : `FRA-CE1-20` reste `couvert-valide`,
+désormais sans réserve. Rien d'autre n'a été jugé de nouveau que ce que la barre de levée nomme.
+
+**Ce que j'ai fait.** Commit `e1fcec51` (`marc-dev`), paquet rejoué en entier sur le jar construit au
+sommet de branche `befc4128`, port 18830, quarante parties de dix manches : les 24 items tirés (10 à 22
+fois chacun), chacun avec au moins une erreur et une révélation, aucune anomalie de service. **Rendu non
+vu au navigateur.**
+
+**Le diff** : quatre prénoms changent, aucune autre lettre du paquet. *Moussa* devient *Zoé* (ballon),
+*Salma* devient *Samir* (linge), *Mei* devient *Hugo* (chant), et *Yanis* devient *Salma* (bateau),
+pour garder l'équilibre.
+
+**Contre la barre que j'avais écrite** (section 4 du verdict de s51) :
+
+| Barre | Tenue |
+|---|---|
+| une fille au ballon | **oui** : *"Zoé a joué au ballon hier."* |
+| un garçon au linge | **oui** : *"Hier, Samir a lavé son pull."* |
+| un garçon qui chante | **oui** : *"Demain, Hugo chantera avec la classe."* ; *Aïcha chante* reste, le chant est désormais partagé |
+| l'équilibre de genre à un près | **oui** : 9 occurrences féminines, 9 masculines ; six prénoms de chaque |
+| les phrases ne changent pas autrement | **oui** : seuls les prénoms changent |
+
+Aucune activité nouvelle n'est passée du côté du stéréotype (*Salma dessinera un bateau*).
+
+`MNC-1` reste opposable à ce Done, dans les termes du verdict de s51 et de `DEC-0053`.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s52, instance A, 2026-10-06.
