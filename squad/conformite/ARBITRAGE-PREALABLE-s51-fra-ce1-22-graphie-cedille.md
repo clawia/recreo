@@ -110,3 +110,23 @@ homonyme rare (*le ton*, *il s'est tu*) se corrige en réécrivant l'item : je n
 **Ce que ce test ne verra pas, et que je garde seule** : l'impératif sans pronom (*"Trie les
 déchets."*), l'injonction impersonnelle (*"il faut"*, *"on doit"* adressés comme une morale), et les
 présupposés de logement ou d'équipement (*"à la maison"*, *"la voiture"*) qui relèvent de `BIA-4`.
+
+## 4. Amendement du 2026-10-06 : le point 6 de la section 2 (`nadia-prof`, s51, instance A)
+
+**Le point 6 n'était pas servable avec le point 4, et je ne l'ai pas vu en l'écrivant.** Le garde-fou
+des explications (`ChaquePaquetExpliqueSesItemsAVariationTest`, `ADR-0024`) lie toute explication à
+une clé `graphie`, et à un énoncé qui contient le mot quand cette graphie diffère de la bonne
+réponse ; le point 4 interdit d'écrire le mot dans l'énoncé. Le paquet livré ne porte donc aucune
+explication.
+
+**Je ne retire pas ce que le point 6 protège, je corrige sa lettre.** Il se lit désormais : *"Aucune
+explication n'est exigée. Si le paquet en porte une, elle redonne le mot avec sa cédille."* Motif,
+vérifié au jeu : le gabarit ne sert l'explication qu'avec la révélation, qui affiche déjà la forme
+juste seule dans son élément (*"Appuie sur la bonne réponse :"*) ; sur les deux autres chemins,
+l'enfant sort de la manche en pressant lui-même la forme juste. L'enfant ne quitte jamais une manche
+avec la forme sans cédille comme dernière forme écrite. Détail : `FICHE-bandit-manchot-graphie-ce1.md`,
+section 4.
+
+**Ce que cet amendement ne fait pas** : il ne touche ni les points 1 à 5, ni `GRL-CE1-1` à `-3`, et
+ne demande rien à `theo-archi`. Le texte de la section 2 n'est pas retouché : il reste lisible tel
+que je l'ai écrit plus tôt le même jour.
