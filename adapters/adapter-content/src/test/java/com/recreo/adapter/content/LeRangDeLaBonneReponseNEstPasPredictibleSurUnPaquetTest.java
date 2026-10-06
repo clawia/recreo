@@ -1143,6 +1143,28 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " mot et sa graphie fautive (\"une jambe\" et \"une janbe\"...), valeurDe"
                     + " rend null sur les deux propositions de chaque item. Mesure du 2026-10-06 sur"
                     + " le paquet servi : aucune des 48 propositions ne commence par un chiffre"),
+            // S52-FRA-CATEGORIES : septieme paquet de francais CE1 (FRA-CE1-26).
+            Map.entry("ce1-categories",
+            "24 items sur 24 portent deux distracteurs (trois propositions), soit 72 propositions,"
+                    + " mais aucune n'est numerique : ce sont des noms de categories (\"fruit\","
+                    + " \"meuble\"...), des mots de la vie courante (\"une fraise\", \"un jardin\"...),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-10-06 sur le paquet servi : aucune des 72 propositions ne commence par"
+                    + " un chiffre"),
+            // S52-FRA-PRESENT : huitieme paquet de francais CE1 (FRA-CE1-17).
+            Map.entry("ce1-conjugaison-present",
+            "24 items sur 24 portent deux distracteurs (trois propositions), soit 72 propositions,"
+                    + " mais aucune n'est numerique : ce sont des formes conjuguees (\"suis\","
+                    + " \"viennent\"...) ou des infinitifs (\"aller\"...), valeurDe rend null sur les"
+                    + " trois propositions de chaque item. Mesure du 2026-10-06 sur le paquet servi :"
+                    + " aucune des 72 propositions ne commence par un chiffre"),
+            // S52-FRA-SYNONYMES-CONTRAIRES : neuvieme paquet de francais CE1 (FRA-CE1-25).
+            Map.entry("ce1-synonymes-contraires",
+            "24 items sur 24 portent deux distracteurs (trois propositions), soit 72 propositions,"
+                    + " mais aucune n'est numerique : ce sont des mots de la vie courante"
+                    + " (\"joyeux\", \"basse\", \"vite\"...), valeurDe rend null sur les trois"
+                    + " propositions de chaque item. Mesure du 2026-10-06 sur le paquet servi :"
+                    + " aucune des 72 propositions ne commence par un chiffre"),
             // S50-ART : paquet neuf d'arts plastiques CP, deuxieme ligne de cette matiere
             // (ART-CP-09), premier paquet a declarer une reproduction d'oeuvre (T6 d'ADR-0082).
             Map.entry("cp-decrire-une-oeuvre",

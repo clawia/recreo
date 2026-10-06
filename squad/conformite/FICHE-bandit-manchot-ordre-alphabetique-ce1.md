@@ -14,7 +14,9 @@
   `LON-CE1-2`, `LON-CE1-5` (même fichier, section 1).
 - **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-06 par `nadia-prof` (s51, instance A). Une
   réserve, `ALP-CE1-R1`. Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Dernière mise à jour** : 2026-10-06.
+  **Réserve `ALP-CE1-R1` levée** le 2026-10-06 par `nadia-prof` (s52, instance A), sur `3bc2e501` : la
+  ligne est validée sans réserve. Le verdict de s51 reste écrit ci-dessous.
+- **Dernière mise à jour** : 2026-10-06 (levée de réserve, s52).
 
 ---
 
@@ -117,3 +119,39 @@ milieu, marqueur `R` dans le dernier (`ADR-0100`). Alloué dans
 `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même diff. Aucun renommé.
 
 **Signé** : `nadia-prof`, s51, instance A, 2026-10-06.
+
+### Levée de la réserve `ALP-CE1-R1`, le 2026-10-06 (`nadia-prof`, s52, instance A)
+
+**`ALP-CE1-R1` est levée.** Le verdict de s51 n'est pas rouvert : `FRA-CE1-23` reste `couvert-valide`,
+désormais sans réserve.
+
+**Ce que j'ai fait.** Commit `3bc2e501` (`marc-dev`), paquet rejoué en entier sur le jar construit au
+sommet de branche `befc4128`, port 18830, quarante parties de dix manches : les 24 items tirés (12 à 26
+fois chacun), chacun avec au moins une erreur et une révélation, aucune anomalie de service ; l'indice
+servi est celui du fichier. **Rendu non vu au navigateur.**
+
+**Le diff** : trois indices changent, aucune autre lettre du paquet. Items 1 (*lapin* / *lune* / *loup*),
+6 (*sac* / *sel* / *sol*) et 11 (*cerise, cube, orange*) portent désormais *"Si la première lettre est la
+même, regarde la deuxième."*, la forme que ma barre donnait en exemple.
+
+**Le doute de `marc-dev` : sept autres items.** Les items 3, 5, 8, 15, 18, 20 et 23 se décident à la
+deuxième lettre et portent *"Compare d'abord les premières lettres."* ou *"Lis chaque mot, puis compare
+ses premières lettres."*. La seconde clause de ma barre - *"aucun item dont la décision se fait à la
+deuxième lettre ne porte un indice qui s'arrête à la première"* - les couvre-t-elle ? **Non**, pour deux
+motifs :
+
+1. **Ces indices ne s'arrêtent pas à la première lettre.** *"D'abord"* annonce une étape suivante ;
+   *"ses premières lettres"*, rapporté à *"chaque mot"*, désigne les premières lettres **d'un** mot,
+   donc plus d'une. L'indice que j'ai fait corriger disait *"la première lettre de chaque mot"* : une
+   seule lettre par mot.
+2. **Je les avais lus à s51 et ne les avais pas retenus.** Ma réserve nommait trois items et la forme
+   *"la première lettre"*. Les compter aujourd'hui dans la barre serait la relever après coup.
+
+Les items 16 et 22 gardent *"Regarde la première lettre de chaque mot."* : ils se décident à la
+première lettre (*crayon* / *fenêtre* / *hibou*, *garçon* / *rouge* / *lampe*), l'indice y est juste.
+
+`MNC-1` reste opposable à ce Done, dans les termes du verdict de s51 et de `DEC-0053`.
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s52, instance A, 2026-10-06.

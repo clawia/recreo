@@ -30,7 +30,7 @@ items:
   - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
     bonneReponse: "lapin"
     distracteurs: ["lune", "loup"]
-    indice: "Regarde la première lettre de chaque mot."
+    indice: "Si la première lettre est la même, regarde la deuxième."
   # ALP-CE1-3: inverse, deuxieme-lettre
   - enonce: "Quelle liste est dans l'ordre alphabétique ?"
     bonneReponse: "lapin, loup, lune"
@@ -52,7 +52,7 @@ items:
   - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
     bonneReponse: "sac"
     distracteurs: ["sel", "sol"]
-    indice: "Regarde la première lettre de chaque mot."
+    indice: "Si la première lettre est la même, regarde la deuxième."
   - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
     bonneReponse: "dent"
     distracteurs: ["fleur", "mouton"]
@@ -74,7 +74,7 @@ items:
   - enonce: "Quelle liste est dans l'ordre alphabétique ?"
     bonneReponse: "cerise, cube, orange"
     distracteurs: ["orange, cube, cerise", "cube, cerise, orange"]
-    indice: "Regarde la première lettre de chaque mot."
+    indice: "Si la première lettre est la même, regarde la deuxième."
   - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
     bonneReponse: "pain"
     distracteurs: ["pomme", "puce"]

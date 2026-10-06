@@ -1,0 +1,157 @@
+# S52-FRA-SYNONYMES-CONTRAIRES (s52, DEC-0111 section 4). Arbitrage prealable de nadia-prof,
+# conditions SYC-CE1-1 a SYC-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
+# section 6.3), reponse a Q2 (squad/conformite/ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md,
+# section 2) et sept conditions transverses TRV-CE1-1 a TRV-CE1-7 (s48, section 2). Avis de
+# faisabilite de theo-archi (squad/sprints/s52-deux-instances-ce1-francais-maths/avis-faisabilite.md,
+# V3).
+#
+# SYC-CE1-1 : douze items de synonyme et douze items de contraire, soit la moitie chacun (au-dessus
+# du tiers exige). La question nomme la relation, dans les formes acceptees par Q2 : "un synonyme",
+# "le contraire", jamais "le synonyme" ; la phrase courte qui fixe le sens precede la question.
+# Les prenoms sont absents des phrases.
+# SYC-CE1-2 : chaque item declare, juste au-dessus, la famille de chacun de ses deux distracteurs,
+# dans l'ordre du fichier : "a" la relation inverse (le contraire d'un item de synonyme, un synonyme
+# d'un item de contraire), "b" un mot du meme theme de sens different. Vingt et un items sur
+# vingt-quatre portent au moins un distracteur "a" (au-dessus du tiers exige). Relu par
+# PaquetCe1SynonymesContrairesTest.
+# SYC-CE1-3 : aucun contraire forme par prefixe (in-, im-, de-, mal-...).
+# Q2 : l'indice des items de synonyme donne le sens du mot, celui des items de contraire est autre.
+# L'explication que Q2 demande n'est pas ecrite : ChaquePaquetExpliqueSesItemsAVariationTest lie toute
+# explication a la cle "graphie" (ADR-0024), qu'un paquet de vocabulaire n'a pas a porter. Ecart
+# route a sofia-sm, a l'arbitrage de theo-archi.
+# TRV-CE1-2 : la bonne reponse est strictement la plus longue des trois propositions dans sept
+# items sur vingt-quatre.
+# TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-25), aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse), vingt-quatre items au-dessus du plancher de vingt. LON-CE1-5 : un mot par
+# proposition.
+schema: 1
+id: ce1-synonymes-contraires
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Vocabulaire"
+  competence: "Trouver un synonyme ou un contraire d'un mot fréquent."
+lignesDeReferentiel: ["FRA-CE1-25"]
+items:
+  # SYC-CE1-2: a, b
+  - enonce: "« Le chat est content. » Quel mot est un synonyme de « content » ?"
+    bonneReponse: "joyeux"
+    distracteurs: ["triste", "fatigué"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« La tour est haute. » Quel mot est le contraire de « haute » ?"
+    bonneReponse: "basse"
+    distracteurs: ["grande", "large"]
+    indice: "Un contraire dit l'inverse du mot."
+  # SYC-CE1-2: a, b
+  - enonce: "« Le voisin est gentil. » Quel mot est un synonyme de « gentil » ?"
+    bonneReponse: "aimable"
+    distracteurs: ["méchant", "drôle"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Il fait chaud. » Quel mot est le contraire de « chaud » ?"
+    bonneReponse: "froid"
+    distracteurs: ["brûlant", "humide"]
+    indice: "Cherche le mot qui dit tout le contraire."
+  # SYC-CE1-2: a, b
+  - enonce: "« Le jardin est beau. » Quel mot est un synonyme de « beau » ?"
+    bonneReponse: "joli"
+    distracteurs: ["laid", "grand"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Le sac est lourd. » Quel mot est le contraire de « lourd » ?"
+    bonneReponse: "léger"
+    distracteurs: ["pesant", "plein"]
+    indice: "Un contraire dit l'inverse du mot."
+  # SYC-CE1-2: a, b
+  - enonce: "« Ce gâteau est bon. » Quel mot est un synonyme de « bon » ?"
+    bonneReponse: "délicieux"
+    distracteurs: ["mauvais", "chaud"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Le jour est long. » Quel mot est le contraire de « long » ?"
+    bonneReponse: "court"
+    distracteurs: ["interminable", "large"]
+    indice: "Cherche le mot qui dit tout le contraire."
+  # SYC-CE1-2: a, b
+  - enonce: "« Il finit son dessin. » Quel mot est un synonyme de « finit » ?"
+    bonneReponse: "termine"
+    distracteurs: ["commence", "colorie"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Elle est petite. » Quel mot est le contraire de « petite » ?"
+    bonneReponse: "grande"
+    distracteurs: ["minuscule", "jolie"]
+    indice: "Un contraire dit l'inverse du mot."
+  # SYC-CE1-2: b, b
+  - enonce: "« L'auto roule dans la rue. » Quel mot est un synonyme de « auto » ?"
+    bonneReponse: "voiture"
+    distracteurs: ["camion", "vélo"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: b, b
+  - enonce: "« La porte est ouverte. » Quel mot est le contraire de « ouverte » ?"
+    bonneReponse: "fermée"
+    distracteurs: ["cassée", "peinte"]
+    indice: "Cherche le mot qui dit tout le contraire."
+  # SYC-CE1-2: a, b
+  - enonce: "« Elle rit avec ses amis. » Quel mot est un synonyme de « rit » ?"
+    bonneReponse: "rigole"
+    distracteurs: ["pleure", "chante"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Il monte l'escalier. » Quel mot est le contraire de « monte » ?"
+    bonneReponse: "descend"
+    distracteurs: ["grimpe", "tourne"]
+    indice: "Un contraire dit l'inverse du mot."
+  # SYC-CE1-2: a, b
+  - enonce: "« Ce travail est difficile. » Quel mot est un synonyme de « difficile » ?"
+    bonneReponse: "dur"
+    distracteurs: ["facile", "long"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Il arrive à l'école. » Quel mot est le contraire de « arrive » ?"
+    bonneReponse: "part"
+    distracteurs: ["vient", "marche"]
+    indice: "Cherche le mot qui dit tout le contraire."
+  # SYC-CE1-2: a, b
+  - enonce: "« La voiture roule vite. » Quel mot est un synonyme de « vite » ?"
+    bonneReponse: "rapidement"
+    distracteurs: ["lentement", "souvent"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Elle est rapide. » Quel mot est le contraire de « rapide » ?"
+    bonneReponse: "lente"
+    distracteurs: ["vive", "forte"]
+    indice: "Un contraire dit l'inverse du mot."
+  # SYC-CE1-2: b, b
+  - enonce: "« Il lance le ballon. » Quel mot est un synonyme de « lance » ?"
+    bonneReponse: "jette"
+    distracteurs: ["pousse", "pose"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« Le cahier est neuf. » Quel mot est le contraire de « neuf » ?"
+    bonneReponse: "vieux"
+    distracteurs: ["nouveau", "propre"]
+    indice: "Cherche le mot qui dit tout le contraire."
+  # SYC-CE1-2: a, b
+  - enonce: "« Le chien est triste. » Quel mot est un synonyme de « triste » ?"
+    bonneReponse: "malheureux"
+    distracteurs: ["heureux", "fâché"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« La mer est calme. » Quel mot est le contraire de « calme » ?"
+    bonneReponse: "agitée"
+    distracteurs: ["tranquille", "bleue"]
+    indice: "Un contraire dit l'inverse du mot."
+  # SYC-CE1-2: a, b
+  - enonce: "« Cet homme est fort. » Quel mot est un synonyme de « fort » ?"
+    bonneReponse: "costaud"
+    distracteurs: ["faible", "vieux"]
+    indice: "Un synonyme veut dire presque la même chose."
+  # SYC-CE1-2: a, b
+  - enonce: "« La rue est large. » Quel mot est le contraire de « large » ?"
+    bonneReponse: "étroite"
+    distracteurs: ["vaste", "longue"]
+    indice: "Cherche le mot qui dit tout le contraire."

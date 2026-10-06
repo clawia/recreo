@@ -285,6 +285,57 @@ class PaquetCe1AlphabetiqueTest {
         }
     }
 
+    /**
+     * ALP-CE1-R1 : la decision se fait a la deuxieme lettre quand deux mots partagent la premiere
+     * lettre qui decide : la plus petite premiere lettre pour un item "en premier", deux mots
+     * voisins de la bonne liste pour un item de listes.
+     */
+    private static boolean decideALaDeuxiemeLettre(Question item) {
+        if (estUnItemPremier(item)) {
+            List<String> mots = motsDeLItem(item);
+            char plusPetite = mots.stream().map(m -> m.charAt(0)).min(Character::compare).orElseThrow();
+            return mots.stream().filter(m -> m.charAt(0) == plusPetite).count() > 1;
+        }
+        List<String> bonne = liste(item.bonneReponse());
+        for (int i = 0; i + 1 < bonne.size(); i++) {
+            if (bonne.get(i).charAt(0) == bonne.get(i + 1).charAt(0)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** ALP-CE1-R1 : "la premiere lettre" au singulier, sans la deuxieme : l'indice s'y arrete. */
+    private static final Pattern INDICE_QUI_S_ARRETE_A_LA_PREMIERE = Pattern.compile(
+            "^(?!.*deuxième).*la première lettre", FLAGS);
+
+    private static void verifierQueLIndiceMeneALaDeuxiemeLettre(List<Question> items) {
+        for (Question item : items) {
+            if (decideALaDeuxiemeLettre(item)) {
+                String indice = item.indice().orElseThrow();
+                assertThat(INDICE_QUI_S_ARRETE_A_LA_PREMIERE.matcher(indice).find())
+                        .as("'%s' : la decision se fait a la deuxieme lettre, l'indice '%s' s'arrete"
+                                + " a la premiere (ALP-CE1-R1)", item.bonneReponse(), indice)
+                        .isFalse();
+            }
+        }
+    }
+
+    @Test
+    void alpR1AucunItemDecidantALaDeuxiemeLettreNePorteUnIndiceArreteALaPremiere() {
+        verifierQueLIndiceMeneALaDeuxiemeLettre(items());
+    }
+
+    @Test
+    void leJeuFautifCommiteEstRefuseSurSonIndiceQuiArreteALaPremiereLettre() {
+        List<Question> items = tousLesItems(new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-ordre-alphabetique-fautif"));
+
+        assertThatThrownBy(() -> verifierQueLIndiceMeneALaDeuxiemeLettre(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ALP-CE1-R1");
+    }
+
     @Test
     void trv2LaBonneReponseNEstStrictementLaPlusLongueQueSurLaMoitieDesItemsAuPlus() {
         List<Question> items = items();

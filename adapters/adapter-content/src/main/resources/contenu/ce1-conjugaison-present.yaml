@@ -1,0 +1,157 @@
+# S52-FRA-PRESENT (s52, DEC-0111 section 4). Arbitrage prealable de nadia-prof, conditions PRS-CE1-1
+# a PRS-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.8), reponse a Q1
+# (squad/conformite/ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md, section 1) et sept
+# conditions transverses TRV-CE1-1 a TRV-CE1-7 (s48, section 2). Avis de faisabilite de theo-archi
+# (squad/sprints/s52-deux-instances-ce1-francais-maths/avis-faisabilite.md, V2).
+#
+# PRS-CE1-1 : dix-huit items sur vingt-quatre ont pour cible un des six verbes (etre, avoir, aller,
+# faire, dire, venir), au-dessus de la moitie ; six items portent un verbe du premier groupe sans
+# modification orthographique (ecouter, regarder, parler, dessiner, travailler, laver).
+# PRS-CE1-2 : le sujet est toujours un pronom personnel ; chacune des six personnes est le sujet de
+# quatre items sur vingt-quatre (au-dessus du dixieme exige).
+# PRS-CE1-3 : chaque item declare, juste au-dessus, la famille de chacun de ses deux distracteurs,
+# dans l'ordre du fichier : "a" le meme verbe a une autre personne, "b" la forme regularisee d'un
+# verbe irregulier (seulement vous disez, vous faisez, ils faisent, ils allent, ils venent, admises
+# d'avance par nadia-prof, Q1), "c" l'infinitif. Ni "alle" ni "alles" (Q1), aucun participe passe.
+# Relu par PaquetCe1ConjugaisonPresentTest contre la table des formes du present.
+# TRV-CE1-2 : la bonne reponse est strictement la plus longue des trois propositions dans cinq items
+# sur vingt-quatre, sous la moitie.
+# TRV-CE1-6 : aucun prenom, aucune possession ni situation familiale dans les phrases a "tu" et a
+# "vous" ; deux "il", deux "elle", deux "ils" et deux "elles" a la troisieme personne, et "faire du
+# bruit" est porte par "elles".
+# TRV-CE1-5 : aucun indice ne renvoie a l'ecoute de la phrase sur un item dont un distracteur se
+# prononce comme la bonne reponse (parlez / parler, dis / dit).
+# TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-17), aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse), vingt-quatre items au-dessus du plancher de vingt. LON-CE1-5 : un mot par
+# proposition. La question est portee par la consigne du jeu.
+schema: 1
+id: ce1-conjugaison-present
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Conjuguer au présent de l'indicatif être, avoir, les verbes du premier groupe et quelques verbes fréquents (aller, faire, dire, venir)."
+lignesDeReferentiel: ["FRA-CE1-17"]
+items:
+  # PRS-CE1-3: a, c
+  - enonce: "« être » : je ___ en classe."
+    bonneReponse: "suis"
+    distracteurs: ["es", "être"]
+    indice: "Regarde le petit mot juste avant le trou."
+  # PRS-CE1-3: a, c
+  - enonce: "« avoir » : tu ___ soif."
+    bonneReponse: "as"
+    distracteurs: ["a", "avoir"]
+    indice: "Le verbe change avec le petit mot devant."
+  # PRS-CE1-3: a, c
+  - enonce: "« aller » : il ___ à l'école."
+    bonneReponse: "va"
+    distracteurs: ["vas", "aller"]
+    indice: "Demande-toi : de qui parle la phrase ?"
+  # PRS-CE1-3: a, c
+  - enonce: "« faire » : nous ___ du sport."
+    bonneReponse: "faisons"
+    distracteurs: ["faites", "faire"]
+    indice: "Lis la phrase dans ta tête avec chaque proposition."
+  # PRS-CE1-3: b, c
+  - enonce: "« dire » : vous ___ bonjour."
+    bonneReponse: "dites"
+    distracteurs: ["disez", "dire"]
+    indice: "Le mot avant le trou montre comment finit le verbe."
+  # PRS-CE1-3: b, a
+  - enonce: "« venir » : ils ___ avec nous."
+    bonneReponse: "viennent"
+    distracteurs: ["venent", "vient"]
+    indice: "Regarde le petit mot juste avant le trou."
+  # PRS-CE1-3: a, c
+  - enonce: "« écouter » : elle ___ l'histoire."
+    bonneReponse: "écoute"
+    distracteurs: ["écoutes", "écouter"]
+    indice: "Le verbe change avec le petit mot devant."
+  # PRS-CE1-3: a, c
+  - enonce: "« regarder » : nous ___ un film."
+    bonneReponse: "regardons"
+    distracteurs: ["regardez", "regarder"]
+    indice: "Demande-toi : de qui parle la phrase ?"
+  # PRS-CE1-3: a, c
+  - enonce: "« parler » : vous ___ trop fort."
+    bonneReponse: "parlez"
+    distracteurs: ["parlent", "parler"]
+    indice: "Le mot avant le trou montre comment finit le verbe."
+  # PRS-CE1-3: a, c
+  - enonce: "« dessiner » : je ___ un arbre."
+    bonneReponse: "dessine"
+    distracteurs: ["dessines", "dessiner"]
+    indice: "Le mot avant le trou montre comment finit le verbe."
+  # PRS-CE1-3: a, c
+  - enonce: "« travailler » : tu ___ bien."
+    bonneReponse: "travailles"
+    distracteurs: ["travaille", "travailler"]
+    indice: "Regarde le petit mot juste avant le trou."
+  # PRS-CE1-3: a, c
+  - enonce: "« laver » : ils ___ les verres."
+    bonneReponse: "lavent"
+    distracteurs: ["lave", "laver"]
+    indice: "Le verbe change avec le petit mot devant."
+  # PRS-CE1-3: a, c
+  - enonce: "« être » : tu ___ à l'heure."
+    bonneReponse: "es"
+    distracteurs: ["est", "être"]
+    indice: "Demande-toi : de qui parle la phrase ?"
+  # PRS-CE1-3: a, c
+  - enonce: "« avoir » : nous ___ un jeu."
+    bonneReponse: "avons"
+    distracteurs: ["avez", "avoir"]
+    indice: "Lis la phrase dans ta tête avec chaque proposition."
+  # PRS-CE1-3: a, c
+  - enonce: "« aller » : vous ___ au parc."
+    bonneReponse: "allez"
+    distracteurs: ["allons", "aller"]
+    indice: "Le mot avant le trou montre comment finit le verbe."
+  # PRS-CE1-3: b, c
+  - enonce: "« faire » : elles ___ du bruit."
+    bonneReponse: "font"
+    distracteurs: ["faisent", "faire"]
+    indice: "Regarde le petit mot juste avant le trou."
+  # PRS-CE1-3: a, c
+  - enonce: "« dire » : elle ___ merci."
+    bonneReponse: "dit"
+    distracteurs: ["dis", "dire"]
+    indice: "Le verbe change avec le petit mot devant."
+  # PRS-CE1-3: a, c
+  - enonce: "« venir » : je ___ du parc."
+    bonneReponse: "viens"
+    distracteurs: ["vient", "venir"]
+    indice: "Demande-toi : de qui parle la phrase ?"
+  # PRS-CE1-3: a, c
+  - enonce: "« être » : nous ___ dans la cour."
+    bonneReponse: "sommes"
+    distracteurs: ["êtes", "être"]
+    indice: "Lis la phrase dans ta tête avec chaque proposition."
+  # PRS-CE1-3: b, c
+  - enonce: "« aller » : elles ___ à la bibliothèque."
+    bonneReponse: "vont"
+    distracteurs: ["allent", "aller"]
+    indice: "Le mot avant le trou montre comment finit le verbe."
+  # PRS-CE1-3: a, c
+  - enonce: "« aller » : je ___ à la piscine."
+    bonneReponse: "vais"
+    distracteurs: ["va", "aller"]
+    indice: "Regarde le petit mot juste avant le trou."
+  # PRS-CE1-3: a, c
+  - enonce: "« faire » : il ___ ses devoirs."
+    bonneReponse: "fait"
+    distracteurs: ["fais", "faire"]
+    indice: "Le verbe change avec le petit mot devant."
+  # PRS-CE1-3: b, c
+  - enonce: "« faire » : vous ___ un puzzle."
+    bonneReponse: "faites"
+    distracteurs: ["faisez", "faire"]
+    indice: "Demande-toi : de qui parle la phrase ?"
+  # PRS-CE1-3: a, c
+  - enonce: "« dire » : tu ___ la vérité."
+    bonneReponse: "dis"
+    distracteurs: ["dit", "dire"]
+    indice: "Demande-toi : de qui parle la phrase ?"

@@ -768,6 +768,24 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-graphie
     nombreDeManches: 10
+  - id: bandit-manchot-categories-ce1
+    titre: "Les mots d'un même groupe"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-categories
+    nombreDeManches: 10
+  - id: bandit-manchot-conjugaison-present-ce1
+    titre: "Les verbes au présent"
+    consigne: "Lis bien, puis choisis la bonne forme du verbe."
+    mecanique: bandit-manchot
+    paquet: ce1-conjugaison-present
+    nombreDeManches: 10
+  - id: bandit-manchot-synonymes-contraires-ce1
+    titre: "Même sens ou sens contraire"
+    consigne: "Lis bien, puis choisis le bon mot."
+    mecanique: bandit-manchot
+    paquet: ce1-synonymes-contraires
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."
