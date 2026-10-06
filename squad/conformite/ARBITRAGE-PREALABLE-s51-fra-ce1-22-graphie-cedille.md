@@ -86,7 +86,8 @@ levée pour V1.
 
 ## 3. Q2 : les jetons d'adresse pour un test de `SCI-2`
 
-`SCI-2` (`ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`, section 2.5) demande que l'item soit écrit à la troisième
+`SCI-2` (`ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-reserves.md`,
+section 2.5) demande que l'item soit écrit à la troisième
 personne ou à l'impersonnel, sans responsabilité portée par l'enfant ou par son foyer. Je fixe la liste
 maintenant.
 
