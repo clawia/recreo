@@ -40,8 +40,12 @@ class AucunPaquetDeDesignationNEntreEnProductionSansLaDetteDeLisibiliteDuLibelle
      * <p><b>Ce que ce cliquet fait donc reellement</b> : il oblige un diff qui sert un paquet de
      * designation de plus a toucher ce chiffre, ce qui route la question de l'audit. Il ne verifie
      * pas qu'un audit a eu lieu, et il ne bloque pas un paquet dont l'audit est en attente.</p>
+     *
+     * <p><b>Elle passe a 3 avec {@code ce1-symetrie}</b> (S51-MAT-SYMETRIE, s52, lea-dev) : les libelles
+     * de ce paquet se lisent hors de la boite (ADR-0094), dans une legende de trois a cinq lignes, et
+     * leur lisibilite a l'ecran reste l'oeil de nadia-prof.</p>
      */
-    private static final int PAQUETS_DE_DESIGNATION_PORTANT_LA_DETTE_DE_LISIBILITE = 2;
+    private static final int PAQUETS_DE_DESIGNATION_PORTANT_LA_DETTE_DE_LISIBILITE = 3;
 
     @Test
     void aucunPaquetDeDesignationDePlusNEntreEnProductionSansQueCetteDetteSoitPayee() {

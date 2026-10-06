@@ -792,3 +792,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-sens-multiplication
     nombreDeManches: 10
+  - id: designation-symetrie-ce1
+    titre: "La symétrie"
+    consigne: "Regarde bien le dessin, puis touche le bon numéro."
+    mecanique: designation
+    paquet: ce1-symetrie
+    nombreDeManches: 8

@@ -183,7 +183,12 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // meme convention que les entrees precedentes.
         SENS_DE_LA_MULTIPLICATION("MAT-CE1-06",
                 "Comprendre le sens de la multiplication (addition réitérée, disposition en lignes"
-                        + " et en colonnes)");
+                        + " et en colonnes)"),
+        // S51-MAT-SYMETRIE (s52) : entree neuve, MAT-CE1-17, libelle du referentiel
+        // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-17) sans le point final.
+        SYMETRIE("MAT-CE1-17",
+                "Reconnaître un axe de symétrie et compléter une figure par symétrie sur"
+                        + " quadrillage");
 
         private final String ligne;
 

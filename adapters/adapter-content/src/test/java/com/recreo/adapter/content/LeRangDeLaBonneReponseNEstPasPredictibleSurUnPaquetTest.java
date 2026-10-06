@@ -1143,6 +1143,13 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " mot et sa graphie fautive (\"une jambe\" et \"une janbe\"...), valeurDe"
                     + " rend null sur les deux propositions de chaque item. Mesure du 2026-10-06 sur"
                     + " le paquet servi : aucune des 48 propositions ne commence par un chiffre"),
+            // S51-MAT-SYMETRIE : quatrieme paquet de designation servi, MAT-CE1-17.
+            Map.entry("ce1-symetrie",
+            "11 items sur 11 sont des items de designation (ADR-0080) : ils ne presentent aucune"
+                    + " proposition en texte, mais des zones posees sur une figure ou sur un quadrillage -"
+                    + " il n'y a ni distracteur ni rang de bonne reponse au sens de cette propriete. La"
+                    + " garantie qu'un enfant ne gagne pas en ignorant l'enonce est portee par le"
+                    + " garde-fou 4 d'ADR-0080 (LaBonneZoneNEstPasPredictibleSurUnPaquetTest)"),
             // S51-MAT-COMPARER-RANGER : paquet neuf de mathematiques CE1 (MAT-CE1-02, moitie
             // textuelle).
             Map.entry("ce1-comparer-ranger",

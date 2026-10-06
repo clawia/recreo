@@ -208,7 +208,21 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
             "frise-soir-routine.svg",
             // S35-QLM11-PLANCLASSE (s35) : plan-classe.svg (QLM-CP-11) entre en production dans ce
             // meme lot, avec les deux cadres agrandis par ines-design (armoire, porte).
-            "plan-classe.svg");
+            "plan-classe.svg",
+            // S51-MAT-SYMETRIE (s52) : les onze dessins de ce1-symetrie (MAT-CE1-17), carres de 352 px,
+            // figures a lignes candidates et quadrillages. Chaque entree nomme le paquet de designation
+            // qui reference ce dessin.
+            "symetrie-figure-a.svg",
+            "symetrie-figure-b.svg",
+            "symetrie-figure-c.svg",
+            "symetrie-figure-d.svg",
+            "symetrie-figure-e.svg",
+            "symetrie-figure-f.svg",
+            "symetrie-grille-a.svg",
+            "symetrie-grille-b.svg",
+            "symetrie-grille-c.svg",
+            "symetrie-grille-d.svg",
+            "symetrie-grille-e.svg");
 
     /**
      * DES-3, plancher de trait : <i>"le trait rend au moins 2 px"</i>, la plus fine ligne que recreo
@@ -330,9 +344,15 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       3 905 octets fins de ligne normalisees en LF, mesure exacte sur l'arbre du lot. Aucun ne
      *       devient le plus gros dessin du repertoire : {@code frise-journee-ecole.svg} le reste
      *       (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
+     *   <li><b>55 212 vers 69 203</b>, lea-dev, s52, {@code S51-MAT-SYMETRIE} : onze dessins neufs
+     *       de designation sous {@code symetrie-*.svg} (six figures a lignes candidates de 740 a 751
+     *       octets, cinq quadrillages de 1 442 a 2 215 octets), soit 13 991 octets fins de ligne
+     *       normalisees en LF, mesure exacte sur l'arbre du lot. Aucun ne devient le plus gros dessin
+     *       du repertoire : {@code frise-journee-ecole.svg} le reste (voir
+     *       {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 55212;
+    private static final int POIDS_TOTAL_MAXIMUM = 69203;
 
     /**
      * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour

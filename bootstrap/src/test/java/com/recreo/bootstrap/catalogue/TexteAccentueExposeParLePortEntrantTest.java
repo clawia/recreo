@@ -404,6 +404,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "bandit-manchot-comparer-ranger-ce1",
             // S51-MAT-MULTIPLICATION (s52) : entree neuve, MAT-CE1-06, sens de la multiplication.
             "bandit-manchot-sens-multiplication-ce1",
+            // S51-MAT-SYMETRIE (s52) : entree neuve, MAT-CE1-17, quatrieme paquet de designation.
+            "designation-symetrie-ce1",
             // titres (catalogue.yaml, GameDefinition.titre) : lus par l'enfant sous th:text
             // (accueil.html, le bouton "Jouer" de chaque jeu), deja arbitres au fil des sprints qui
             // ont livre chaque jeu.
@@ -666,6 +668,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Comparer, ranger, encadrer",
             // S51-MAT-MULTIPLICATION (s52) : titre neuf, sans niveau (ADR-0078).
             "Le sens de la multiplication",
+            // S51-MAT-SYMETRIE (s52) : titre neuf, sans niveau (ADR-0078).
+            "La symétrie",
             // consignes (catalogue.yaml, GameDefinition.consigne)
             "Combien ça fait ?",
             // S37-1 (s37) : consigne neuve, et elle n'est pas la meme chaine que celle du CP
@@ -960,6 +964,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S51-MAT-MULTIPLICATION (s52) : consigne neuve, generique - elle ne nomme aucun nombre
             // ni aucune forme d'item.
             "Lis bien ou regarde le dessin, puis choisis la bonne écriture.",
+            // S51-MAT-SYMETRIE (s52) : consigne neuve, generique - elle ne nomme ni axe ni case.
+            "Regarde bien le dessin, puis touche le bon numéro.",
             // mecanique (catalogue.yaml, GameDefinition.mecanique().value()) : identifiant technique.
             // S24 : deux valeurs depuis que la saisie est servie, la premiere seconde mecanique du
             // produit (ADR-0058). Comptees sur catalogue.yaml, jamais recopiees.
@@ -1541,7 +1547,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-06) sans le point
             // final.
             "Comprendre le sens de la multiplication (addition réitérée, disposition en lignes et "
-                    + "en colonnes)");
+                    + "en colonnes)",
+            // S51-MAT-SYMETRIE (s52) : competence neuve, MAT-CE1-17, libelle du referentiel
+            // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-17) sans le point
+            // final.
+            "Reconnaître un axe de symétrie et compléter une figure par symétrie sur quadrillage");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {

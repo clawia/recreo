@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S51-MAT-SYMETRIE (SYM-CE1-3, DEP-CE1-2). Quadrillage de 4 x 4, axe plein de 2,4 sur la ligne centrale, cases pleines
+     retrecies de 2 unites ; une case manque de l'autre cote de l'axe (contraintes d'ines-design, s52, section 4). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="352" height="352" role="img" fill="none" stroke="#1c2733">
+  <g stroke-width="0.7">
+    <line x1="2" y1="2" x2="98" y2="2"/> <line x1="2" y1="2" x2="2" y2="98"/>
+    <line x1="2" y1="26" x2="98" y2="26"/> <line x1="26" y1="2" x2="26" y2="98"/>
+    <line x1="2" y1="50" x2="98" y2="50"/> <line x1="50" y1="2" x2="50" y2="98"/>
+    <line x1="2" y1="74" x2="98" y2="74"/> <line x1="74" y1="2" x2="74" y2="98"/>
+    <line x1="2" y1="98" x2="98" y2="98"/> <line x1="98" y1="2" x2="98" y2="98"/>
+  </g>
+  <rect x="28" y="4" width="20" height="20" fill="#1c2733" stroke="none"/>
+  <rect x="52" y="4" width="20" height="20" fill="#1c2733" stroke="none"/>
+  <rect x="4" y="28" width="20" height="20" fill="#1c2733" stroke="none"/>
+  <rect x="28" y="28" width="20" height="20" fill="#1c2733" stroke="none"/>
+  <rect x="52" y="28" width="20" height="20" fill="#1c2733" stroke="none"/>
+  <rect x="76" y="28" width="20" height="20" fill="#1c2733" stroke="none"/>
+  <rect x="28" y="76" width="20" height="20" fill="#1c2733" stroke="none"/>
+  <line x1="50" y1="2" x2="50" y2="98" stroke-width="2.4"/>
+</svg>

@@ -81,8 +81,12 @@ class AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest
      * `ines-design`, et le recouvrement du dessin par le libelle cesse d'etre gardable par une
      * arithmetique (`ADR-0092`) - il reste tenu a l'oeil par `nadia-prof`, paquet par paquet, et par
      * le cliquet exact d'{@code AucunPaquetDeDesignationNEntreEnProductionSansLaDetteDeLisibiliteDuLibelleTest}.
+     *
+     * <p><b>Il monte a trois avec {@code ce1-symetrie} (MAT-CE1-17, S51-MAT-SYMETRIE, s52,
+     * lea-dev)</b> : les trois balayages nommes ci-dessus sont verts sur le paquet neuf dans le meme
+     * build, et l'avis de faisabilite de s52 (4.3) demandait exactement cette valeur.
      */
-    private static final int PLAFOND_DE_DESIGNATION_EN_PRODUCTION = 2;
+    private static final int PLAFOND_DE_DESIGNATION_EN_PRODUCTION = 3;
 
     /** ADR-0013 obligation 3 : le jeu fautif commite de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
