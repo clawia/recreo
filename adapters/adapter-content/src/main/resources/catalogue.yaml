@@ -786,3 +786,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-comparer-ranger
     nombreDeManches: 10
+  - id: bandit-manchot-sens-multiplication-ce1
+    titre: "Le sens de la multiplication"
+    consigne: "Lis bien ou regarde le dessin, puis choisis la bonne écriture."
+    mecanique: bandit-manchot
+    paquet: ce1-sens-multiplication
+    nombreDeManches: 10

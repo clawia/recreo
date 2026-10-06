@@ -177,7 +177,13 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // l'espace insecable devant le point-virgule (ADR-0067).
         COMPARER_RANGER_ENCADRER("MAT-CE1-02",
                 "comparer, ranger et encadrer seuls ; le verbe 'placer sur une ligne graduée'"
-                        + " n'est servi par aucun jeu et ne peut pas l'être par du texte");
+                        + " n'est servi par aucun jeu et ne peut pas l'être par du texte"),
+        // S51-MAT-MULTIPLICATION (s52) : entree neuve, MAT-CE1-06, libelle du referentiel
+        // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-06) sans le point final,
+        // meme convention que les entrees precedentes.
+        SENS_DE_LA_MULTIPLICATION("MAT-CE1-06",
+                "Comprendre le sens de la multiplication (addition réitérée, disposition en lignes"
+                        + " et en colonnes)");
 
         private final String ligne;
 

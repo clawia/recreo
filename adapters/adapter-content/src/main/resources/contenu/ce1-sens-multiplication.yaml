@@ -1,0 +1,116 @@
+# S51-MAT-MULTIPLICATION (MAT-CE1-06, DEC-0110 sections 1 et 5, DEC-0111 section 5, instance C).
+# Arbitrage prealable de s43 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md,
+# section 6) : MUL-CE1-1 a MUL-CE1-7. Contraintes de dessin : squad/design/contrainte-ines-s52-dessins-
+# de-l-instance-c-mathematiques-ce1.md, section 3 ; densite admise par nadia-prof jusqu'a 10 x 10
+# (ARBITRAGE-PREALABLE-s52-instance-c-reponses.md, section 1).
+#
+# Seize items, trois formes : K1, une addition reiteree ecrite et la multiplication qui la dit (4 items) ;
+# K2, une multiplication et l'addition reiteree qui la dit (6 items) ; K4, un reseau de points lu ligne par
+# ligne puis colonne par colonne (3 reseaux, 6 items). Aucun enonce n'est un produit nu (MUL-CE1-2).
+#
+# Convention d'ecriture, a lire avant les items : "n x m" se lit "n fois m", donc "3 x 5" est
+# "5 + 5 + 5" ; sur un reseau, "lignes x points par ligne" et "colonnes x points par colonne". Les deux
+# ecritures d'un meme produit ("3 x 5" et "5 x 3") ne sont jamais proposees ensemble dans un item.
+#
+# MUL-CE1-6 : chaque distracteur est de l'une des formes admises, notee en commentaire sur la ligne de
+# l'item (a = terme repete ou nombre de colonnes, b = nombre de termes ou de lignes) : 1 = a + b ;
+# 2 = a x (b - 1), un terme ou une ligne oublie ; 3 = a x (b + 1), un de trop ; 4 = (a + 1) x b, un
+# terme plus grand ou une colonne de trop ; 5 = a x (b + 2), quand a = b. La forme 1 n'est employee
+# que sur les additions (K2) : sur une multiplication elle se lirait au signe. Les trois rangs de la
+# bonne reponse (valeur de la proposition) sont atteints sur le paquet.
+#
+# MUL-CE1-4 : les trois reseaux sont lus dans les deux sens, et l'enonce des deux items dit que les deux
+# comptes donnent le meme total (la cle explication est reservee au regime de la graphie, ADR-0024). MUL-CE1-5 : un cercle par point, aucun enonce ne dit le nombre de
+# lignes ni de colonnes, le texte alternatif ne le dit pas non plus (nadia-prof, section 5).
+#
+# ADR-0068 : une multiplication "3 x 5" n'a pas de valeur numerique lisible, une somme "5 + 5 + 5" en a
+# une. Dix items sur seize sont donc ecartes du calcul de rang (PAQUETS_A_ITEMS_ECARTES), les six
+# additions y restent, avec la bonne reponse deux fois plus grande, deux fois intermediaire et deux fois
+# plus petite.
+# TYP-1 (ADR-0067) : l'espace devant "?" et ":" est insecable.
+schema: 1
+id: ce1-sens-multiplication
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Comprendre le sens de la multiplication (addition réitérée, disposition en lignes et en colonnes)"
+lignesDeReferentiel: ["MAT-CE1-06"]
+items:
+  - enonce: "Les deux façons de compter donnent le même total. Compte les points ligne par ligne. Quelle multiplication ?"  # MUL-CE1-6: 2,3 (K4 lignes)
+    illustration: "reseau-points-a"
+    illustrationTexteAlternatif: "Des points rangés en lignes et en colonnes."
+    bonneReponse: "3 × 5"
+    distracteurs: ["2 × 5", "4 × 5"]
+    indice: "Regarde combien il y a de points sur une ligne, et combien de lignes."
+  - enonce: "Les deux façons de compter donnent le même total. Compte les points colonne par colonne. Quelle multiplication ?"  # MUL-CE1-6: 4,3 (K4 colonnes)
+    illustration: "reseau-points-a"
+    illustrationTexteAlternatif: "Des points rangés en lignes et en colonnes."
+    bonneReponse: "5 × 3"
+    distracteurs: ["6 × 3", "5 × 4"]
+    indice: "Regarde combien il y a de points dans une colonne, et combien de colonnes."
+  - enonce: "Les deux façons de compter donnent le même total. Compte les points ligne par ligne. Quelle multiplication ?"  # MUL-CE1-6: 3,4 (K4 lignes)
+    illustration: "reseau-points-b"
+    illustrationTexteAlternatif: "Des points rangés en lignes et en colonnes."
+    bonneReponse: "6 × 4"
+    distracteurs: ["7 × 4", "6 × 5"]
+    indice: "Regarde combien il y a de points sur une ligne, et combien de lignes."
+  - enonce: "Les deux façons de compter donnent le même total. Compte les points colonne par colonne. Quelle multiplication ?"  # MUL-CE1-6: 2,4 (K4 colonnes)
+    illustration: "reseau-points-b"
+    illustrationTexteAlternatif: "Des points rangés en lignes et en colonnes."
+    bonneReponse: "4 × 6"
+    distracteurs: ["4 × 5", "5 × 6"]
+    indice: "Regarde combien il y a de points dans une colonne, et combien de colonnes."
+  - enonce: "Les deux façons de compter donnent le même total. Compte les points ligne par ligne. Quelle multiplication ?"  # MUL-CE1-6: 2,4 (K4 lignes)
+    illustration: "reseau-points-c"
+    illustrationTexteAlternatif: "Des points rangés en lignes et en colonnes."
+    bonneReponse: "5 × 8"
+    distracteurs: ["4 × 8", "5 × 9"]
+    indice: "Regarde combien il y a de points sur une ligne, et combien de lignes."
+  - enonce: "Les deux façons de compter donnent le même total. Compte les points colonne par colonne. Quelle multiplication ?"  # MUL-CE1-6: 3,4 (K4 colonnes)
+    illustration: "reseau-points-c"
+    illustrationTexteAlternatif: "Des points rangés en lignes et en colonnes."
+    bonneReponse: "8 × 5"
+    distracteurs: ["8 × 6", "9 × 5"]
+    indice: "Regarde combien il y a de points dans une colonne, et combien de colonnes."
+  - enonce: "4 + 4 + 4, c'est quelle multiplication ?"  # MUL-CE1-6: 3,4 (K1)
+    bonneReponse: "3 × 4"
+    distracteurs: ["4 × 4", "3 × 5"]
+    indice: "Compte combien de fois le même nombre revient."
+  - enonce: "6 + 6 + 6 + 6, c'est quelle multiplication ?"  # MUL-CE1-6: 2,3 (K1)
+    bonneReponse: "4 × 6"
+    distracteurs: ["3 × 6", "5 × 6"]
+    indice: "Compte combien de fois le même nombre revient."
+  - enonce: "7 + 7 + 7, c'est quelle multiplication ?"  # MUL-CE1-6: 3,4 (K1)
+    bonneReponse: "3 × 7"
+    distracteurs: ["4 × 7", "3 × 8"]
+    indice: "Compte combien de fois le même nombre revient."
+  - enonce: "5 + 5 + 5 + 5 + 5, c'est quelle multiplication ?"  # MUL-CE1-6: 2,5 (K1)
+    bonneReponse: "5 × 5"
+    distracteurs: ["4 × 5", "7 × 5"]
+    indice: "Compte combien de fois le même nombre revient."
+  - enonce: "3 × 5, c'est quelle addition ?"  # MUL-CE1-6: 1,2 (K2)
+    bonneReponse: "5 + 5 + 5"
+    distracteurs: ["5 + 3", "5 + 5"]
+    indice: "Le premier nombre dit combien de fois écrire le deuxième."
+  - enonce: "4 × 6, c'est quelle addition ?"  # MUL-CE1-6: 1,2 (K2)
+    bonneReponse: "6 + 6 + 6 + 6"
+    distracteurs: ["6 + 4", "6 + 6 + 6"]
+    indice: "Le premier nombre dit combien de fois écrire le deuxième."
+  - enonce: "5 × 4, c'est quelle addition ?"  # MUL-CE1-6: 2,3 (K2)
+    bonneReponse: "4 + 4 + 4 + 4 + 4"
+    distracteurs: ["4 + 4 + 4 + 4", "4 + 4 + 4 + 4 + 4 + 4"]
+    indice: "Le premier nombre dit combien de fois écrire le deuxième."
+  - enonce: "3 × 7, c'est quelle addition ?"  # MUL-CE1-6: 2,4 (K2)
+    bonneReponse: "7 + 7 + 7"
+    distracteurs: ["7 + 7", "8 + 8 + 8"]
+    indice: "Le premier nombre dit combien de fois écrire le deuxième."
+  - enonce: "6 × 3, c'est quelle addition ?"  # MUL-CE1-6: 3,4 (K2)
+    bonneReponse: "3 + 3 + 3 + 3 + 3 + 3"
+    distracteurs: ["3 + 3 + 3 + 3 + 3 + 3 + 3", "4 + 4 + 4 + 4 + 4 + 4"]
+    indice: "Le premier nombre dit combien de fois écrire le deuxième."
+  - enonce: "4 × 8, c'est quelle addition ?"  # MUL-CE1-6: 3,4 (K2)
+    bonneReponse: "8 + 8 + 8 + 8"
+    distracteurs: ["8 + 8 + 8 + 8 + 8", "9 + 9 + 9 + 9"]
+    indice: "Le premier nombre dit combien de fois écrire le deuxième."

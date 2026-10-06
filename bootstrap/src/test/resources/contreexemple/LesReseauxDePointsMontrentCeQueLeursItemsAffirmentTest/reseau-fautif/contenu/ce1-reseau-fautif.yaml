@@ -1,0 +1,20 @@
+# Jeu fautif de LesReseauxDePointsMontrentCeQueLeursItemsAffirmentTest. Ce paquet n'est servi par rien :
+# il vit sous contreexemple/ et le recensement de production ne le voit pas. Trois fautes sur le dessin
+# nomme par l'item : l'item affirme 3 lignes de 5 points, le dessin n'en trace que 14 ; un point a un
+# autre rayon ; un rectangle est trace en plus des points.
+schema: 1
+id: ce1-reseau-fautif
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Comprendre le sens de la multiplication (addition réitérée, disposition en lignes et en colonnes)"
+lignesDeReferentiel: ["MAT-CE1-06"]
+items:
+  - enonce: "Les deux façons de compter donnent le même total. Compte les points ligne par ligne. Quelle multiplication ?"
+    illustration: "reseau-fautif"
+    illustrationTexteAlternatif: "Des points rangés en lignes et en colonnes."
+    bonneReponse: "3 × 5"
+    distracteurs: ["2 × 5", "4 × 5"]
+    indice: "Regarde combien il y a de points sur une ligne, et combien de lignes."

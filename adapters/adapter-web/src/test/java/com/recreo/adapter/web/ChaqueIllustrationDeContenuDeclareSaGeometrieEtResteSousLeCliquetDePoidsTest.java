@@ -324,9 +324,15 @@ class ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTe
      *       8 971 octets fins de ligne normalisees en LF, mesure exacte sur l'arbre du lot. Aucun ne
      *       devient le plus gros dessin du repertoire : {@code frise-journee-ecole.svg} le reste
      *       (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
+     *   <li><b>51 307 vers 55 212</b>, lea-dev, s52, {@code S51-MAT-MULTIPLICATION} : trois reseaux
+     *       de points neufs sous {@code reseau-points-*.svg} (un {@code <circle>} par point, jamais
+     *       un chemin unique : avis de faisabilite de s52, 4.2), 934, 1 226 et 1 745 octets, soit
+     *       3 905 octets fins de ligne normalisees en LF, mesure exacte sur l'arbre du lot. Aucun ne
+     *       devient le plus gros dessin du repertoire : {@code frise-journee-ecole.svg} le reste
+     *       (voir {@link #POIDS_D_UN_DESSIN_MAXIMUM}, inchange).</li>
      * </ol>
      */
-    private static final int POIDS_TOTAL_MAXIMUM = 51307;
+    private static final int POIDS_TOTAL_MAXIMUM = 55212;
 
     /**
      * Les deux teintes d'ines-design, employees ici <b>comme materiau de mutation</b> et pour
