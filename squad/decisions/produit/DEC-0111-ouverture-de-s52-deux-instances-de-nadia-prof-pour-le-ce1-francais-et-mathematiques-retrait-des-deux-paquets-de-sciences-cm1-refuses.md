@@ -438,3 +438,94 @@ sont depuis s43. Les stories portent des identifiants de story, qui ne sont pas 
 10. Trois branches, trois worktrees, un repertoire temporaire et un port par agent (section 8).
 11. Fin de la decision de l'utilisatrice sur `DEC-0110` 16.9 (*"Garder jusqu'a s52"*) : remplacee par la
     decision 3, non reconduite par defaut.
+
+---
+
+## Amendement du 2026-10-06 (s52, `camille-po`, consigne B8) : ecart F2 du retrait et condition (1) de `MAT-CE1-17`
+
+**Methode.** Les sections 1 a 12 ci-dessus ne sont pas reecrites : cet amendement dit ce qu'elles n'ont pas
+su et ce qui les remplace. Sources lues sur le disque de la branche `s52-camille-amendements` (lignee de
+`round-two` a `b4ce7d93`) : `squad/sprints/s52-deux-instances-ce1-francais-maths/avis-faisabilite.md`
+(sections 3.1 a 3.3, 4.1, 5), `squad/sprints/s52-deux-instances-ce1-francais-maths/planning.md` (section
+"Points routes", R1 et R3), `ADR-0080` (amendement A2, section 3).
+
+### A.1 Section 8 point 2 : le retrait ne touche pas `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` (R1)
+
+**Ce que la section 8 point 2 disait.** Que `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` est un
+des fichiers partages que le retrait *"touche a son tour (retrait d'entrees, ajustement des tests)"*. Je l'ai
+ecrit sans avoir mesure le retrait.
+
+**Ce que l'avis de `theo-archi` a mesure** (sections 3.1 a 3.3) :
+
+| Fichier | Sous le retrait seul | Edition due |
+|---|---|---|
+| `catalogue.yaml` | - | retirer les deux entrees (12 lignes) |
+| `TexteAccentueExposeParLePortEntrantTest` | **rouge** | retirer 8 chaines : les deux identifiants, les deux titres, les deux consignes, les deux competences |
+| `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` | **vert** | **aucune : ne pas le toucher** |
+
+Le garde-fou de rang balaie `contenu/`, pas le catalogue. Les deux fichiers de paquet restent ; retirer
+leurs deux entrees de `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` les rendrait *"ni juges ni declares"*, le mecanisme
+mesure sur les sondes de l'avis (section 1.1) a l'envers. Le mot *"servi"* de leurs deux motifs devient
+inexact : l'avis ne demande pas de le corriger (un commentaire, dans un fichier que A et C editent aussi) et
+je ne le demande pas non plus.
+
+**Cet amendement remplace le point 2 de la section 8 par** : *le retrait touche deux fichiers,
+`catalogue.yaml` et `TexteAccentueExposeParLePortEntrantTest` ; il ne touche pas
+`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, qui reste partage entre les couloirs pour les
+paquets neufs de A et de C.* La verification a la fusion de la section 8 point 2 (aucune ligne ajoutee par un
+couloir n'est perdue) reste d'application aux fichiers partages.
+
+Le critere de la story `S52-RETRAIT-SCIENCES-CM1` est amende au backlog dans le meme geste.
+
+### A.2 Condition (1) de la section 5.2, lue contre `ADR-0080` A2 section 3 (R3)
+
+**Les trois textes.**
+
+- `DEC-0111` 5.2 (1), que j'ai ecrit : A2 ecrit, **et** le message de
+  `AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest` corrige *"dans le meme diff"*.
+- `ADR-0080` A2 section 3 : le message *"reste due par `theo-archi`, au plus tard dans le diff qui monte ce
+  cliquet de 2 a 3 avec le premier paquet de `MAT-CE1-17`"*. A2 (`edf15763`) est commite sans la correction,
+  par une borne ecrite par son auteur (lot limite aux garde-fous).
+- Avis, section 5, A1 : correction bloquante *"pour le premier commit du paquet de `MAT-CE1-17`, pas pour
+  son engagement"*.
+
+**Lecture.** La lettre *"dans le meme diff"* **ne peut plus etre remplie** : `edf15763` existe et ne porte
+pas le message. Ce n'est pas un defaut de `theo-archi`, dont l'ADR ecrit la borne : j'ai formule la
+condition comme un moyen (un diff) alors que ce qu'elle protege est un etat. Aucun paquet de designation de
+CE1 n'entre tant que le message du cliquet demande d'*"etendre le balayage de production"*, alors que les
+balayages lisent la production depuis s34. Le motif est dans ma citation d'origine, *"avant le premier
+paquet de designation de CE1"*, et c'est celui d'`ADR-0080` et de l'avis.
+
+**La condition (1) devient** : A2 est ecrit (rempli : `edf15763`, avis 4.1, verts a `7350fb07`) **et** le
+message du cliquet est corrige sur le disque de `round-two`, dans un commit qui precede le premier commit du
+paquet de symetrie ou qui est le diff meme qui monte le cliquet de 2 a 3. Cela se verifie en lisant le
+fichier de test a la ligne du message, pas en lisant un rapport.
+
+**Etat de la condition (1) a l'ecriture de cet amendement.** Moitie A2 : remplie. Moitie message :
+**non remplie**, le fichier dit encore *"etendre le balayage de production"* (avis, section 4.1 ; planning,
+section "Conditions de l'instance C"). **U1 de `theo-archi` la remplit, a deux conditions** : (a) son commit
+existe sur `round-two` et non sur une branche non fusionnee ; (b) le message qu'il porte ne demande plus
+d'etendre un balayage de production. Je ne declare ni (a) ni (b) acquises : U1 n'est pas sur mon disque et
+la confirmation de `sofia-sm` que U1, U2 et U3 existent n'est pas arrivee. Verifier (a) et (b) est le
+premier geste de U4.
+
+**Ce que cet amendement ne fait pas.** Il ne re-engage pas `MAT-CE1-17` et ne dit pas si le report s'arrete
+a neuf sprints : le decompte reste celui de la section 5.2 (non engagee : dix), tel que le planning l'a
+applique (1,5 libere, destination s53). Ces deux points sont U4, qui attend la confirmation de `sofia-sm`.
+Il ne touche ni la condition (2) ni la condition (3) de la section 5.2.
+
+### A.3 Fiches de conformite (R4)
+
+Six fiches ouvertes dans ce geste, avant la premiere livraison de chacune, sans bloc de validation rempli :
+`squad/conformite/FICHE-bandit-manchot-conjugaison-present-ce1.md`,
+`FICHE-bandit-manchot-synonymes-contraires-ce1.md`, `FICHE-bandit-manchot-categories-ce1.md`,
+`FICHE-bandit-manchot-sens-multiplication-ce1.md`, `FICHE-bandit-manchot-comparer-ranger-ce1.md`,
+`FICHE-designation-symetrie-ce1.md`. Ouvrir la fiche de la symetrie ne la re-engage pas.
+**Les noms sont ceux que je propose** : le nom de jeu est l'identifiant d'entree de catalogue, que le
+developpeur fixe au premier commit du paquet. S'il en choisit un autre, je renomme la fiche dans le commit
+qui suit et je le dis.
+
+### A.4 Changement de code
+
+Aucun. L'amendement A.1 corrige une consigne (ce que le retrait touche) ; l'avis de `theo-archi` est deja
+celui que suit `marc-dev` (B1). Proprietaire du retrait : `marc-dev`, story `S52-RETRAIT-SCIENCES-CM1`.

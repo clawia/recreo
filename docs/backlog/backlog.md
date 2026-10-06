@@ -19632,12 +19632,22 @@ du catalogue (Recommandé)"* (`DEC-0111` section 3). Precedent : `DEC-0009`, sto
     `contenu/cm1-sciences-activite-humaine.yaml`, `contenu/cm1-sciences-terre.yaml`,
     `PaquetCm1SciencesActiviteHumaineTest`, `PaquetCm1SciencesTerreTest` et les deux fiches de conformite
     existent, **inchanges** (`git diff` vide sur les quatre premiers).
-  - Etant donne les tests qui comptent ou inventorient les entrees de catalogue ou les paquets servis (au
-    moins `TexteAccentueExposeParLePortEntrantTest` et
-    `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` nomment ces deux entrees ou ces deux paquets,
-    `grep` du 2026-10-06), quand on lance le reacteur apres la story, alors ils passent sur le catalogue
-    retire, **sans qu'une exemption nouvelle serve a les faire passer** et sans recopier en constantes
-    l'association entree-paquet (`ADR-0061`).
+  - Etant donne les tests qui nomment ces deux entrees ou ces deux paquets, quand on lance le reacteur apres
+    la story, alors ils passent sur le catalogue retire, **sans qu'une exemption nouvelle serve a les faire
+    passer** et sans recopier en constantes l'association entree-paquet (`ADR-0061`).
+    **Amendement du 2026-10-06 (`camille-po`, `DEC-0111` amendement A.1, ecart F2 de l'avis de
+    `theo-archi`, sections 3.1 a 3.3)** : le critere d'origine rangeait
+    `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` parmi les tests a ajuster, ce que l'avis a
+    mesure faux.
+    - `TexteAccentueExposeParLePortEntrantTest` est rouge sous le retrait seul (*"but could not find the
+      following element(s)"*) : les 8 chaines orphelines (deux identifiants, deux titres, deux consignes,
+      deux competences) y sont retirees, et aucune autre. Avant la story ce test est vert : le critere ne
+      mord que sur le retrait.
+    - `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` est vert sous le retrait et **n'est pas
+      touche** : `git diff` vide sur ce fichier. Son balayage lit `contenu/`, ou les deux fichiers restent ;
+      retirer leurs deux entrees les rendrait *"ni juges ni declares"*. Ce point est deja vert sur
+      l'existant : il n'a de force que contre un diff qui toucherait le fichier. C'est un garde sur le diff,
+      pas un test du produit.
   - Etant donne une partie ouverte sur l'un des deux jeux avant le retrait, quand l'application a ete
     redemarree sur le catalogue retire, alors la partie n'existe plus (l'etat vit dans la session HTTP,
     `DEC-0028`) et aucun ecran ne sert une question de ces deux paquets ; sans redemarrage, la reponse envoyee
