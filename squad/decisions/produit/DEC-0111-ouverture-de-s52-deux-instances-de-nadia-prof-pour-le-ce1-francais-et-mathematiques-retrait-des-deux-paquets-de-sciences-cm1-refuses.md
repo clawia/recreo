@@ -761,8 +761,8 @@ ne tranche pas entre les deux ici ; c'est la question que je pose a l'ouverture.
 traite dans `MATRICE-couverture.md`.** Preuve par commande, ecrite dans les cellules : (1)
 `grep -c 'mecanique: designation' adapters/adapter-content/src/main/resources/catalogue.yaml` rend 3
 (`designation-frise-de-la-journee`, `designation-plan-de-la-classe`, `designation-symetrie-ce1`) : le palier 2
-existe ; (2) `ls adapters/adapter-web/src/main/resources/static/illustrations | grep -ci 'carte\|globe\|planisph\|france\|monde'`
-rend 0 sur 56 illustrations : **la limite reelle est le materiau, pas la mecanique**. Cellules modifiees :
+existe ; (2) `find adapters/adapter-web/src/main/resources/static/illustrations -iname '*carte*' -o -iname '*globe*' -o -iname '*planisph*' -o -iname '*france*' -o -iname '*monde*'`
+ne rend aucun fichier sur 56 illustrations : **la limite reelle est le materiau, pas la mecanique**. Cellules modifiees :
 `QLM-CP-12` et `HG-CM1-09` (*"palier 2 requis, non construit"* devient *"le palier 2 existe, la carte manque"*),
 `HG-CM1-10` (meme limite de materiau, plus `DEC-0028`), `QLM-CP-10` (aucun motif auparavant : jouable, palier 1
 illustre requis, `ADR-0073`, cout 2,0, `DEC-0099` section 4 ter). **Aucun statut ne change.** Je n'ai pas verifie
