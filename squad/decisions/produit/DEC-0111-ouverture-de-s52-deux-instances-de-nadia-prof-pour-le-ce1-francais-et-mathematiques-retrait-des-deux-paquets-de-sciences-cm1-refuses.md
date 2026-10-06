@@ -619,3 +619,174 @@ et a `ines-design` (contraintes), par `sofia-sm` ; je ne reecris ni l'un ni l'au
 Aucun changement de code dans cet amendement. Proprietaire de ce qu'il declenche : `lea-dev`, story
 `S51-MAT-SYMETRIE`, apres `S51-MAT-MULTIPLICATION`. Routage a `sofia-sm` dans le message de retour de
 `camille-po` : mise a jour du planning, fusion de la reponse de `nadia-prof`, ecart de A.7 a `theo-archi`.
+
+---
+
+## Amendement du 2026-10-06 (s52, `camille-po`, cloture produit) : etat final de s52, reports, perimetre de s53 propose
+
+**Methode.** Les sections 1 a 12 et les amendements A.1 a A.8 ne sont pas reecrits : cet amendement fait foi
+sur eux pour l'etat final (meme geste que `DEC-0110` section 16). Sources lues sur le disque de la branche
+`s52-camille-amendements`, lignee de `round-two` a `40daa419` (retrait, instance A et instance C fusionnes) : les
+huit fiches de conformite citees en A.10, relues une a une pour leur verdict et non reprises de la consigne ;
+`squad/conformite/ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md` (sections 4.2 et 4.3) ;
+`squad/conformite/ARBITRAGE-PREALABLE-s30-...` section 3.2 (`PAR-10`) ; `PAR-14` dans l'arbitrage de s33
+(ligne 596). Comptes de la matrice par la commande ecrite en tete de `MATRICE-couverture.md`, lancee apres
+mon edit : `couvert-valide` 132, `en cours` 4, `non couvert` 46, `non couvrable en l'etat` 76, total 258,
+denominateur 182 ; la meme commande a `40daa419` rendait 127, 3, 52, 76, 258. Perimetre : la matrice entiere.
+**Ce que je n'ai pas lu** : aucun rapport de CI, aucun journal de mesure de `yanis-qa`, ni l'etat des jobs de
+`ci.yml` au sha de fusion ; les fiches disent que `nadia-prof` n'a pas mesure la porte technique, et cet
+amendement ne la declare pas verte.
+
+### A.9 Objectif gele de la section 1 : atteint
+
+Cinq lignes fermees sur cinq, `MAT-CE1-02` a `en cours`, `TPS-CE1-R1` et `ALP-CE1-R1` levees, les deux paquets
+de sciences retires (`grep -c 'activite-humaine-cm1\|terre-cm1' adapters/adapter-content/src/main/resources/catalogue.yaml`
+rend 0 ; il en rendait 2 entrees a la section 0). **127 / 182 = 69,8 % a 132 / 182 = 72,5 %** (72,53 %), le
+meilleur cas de la section 1. Je n'ai pas ecrit de plancher et je n'en ecris pas apres coup.
+
+### A.10 Les lignes, verdict par verdict
+
+| Ligne | Fiche | Verdict de `nadia-prof` | Matrice | Reserve restante |
+|---|---|---|---|---|
+| `FRA-CE1-17` | `FICHE-bandit-manchot-conjugaison-present-ce1.md` | premier passage **REFUSE** (`TRV-CE1-5`, indices des items 9 et 24), second passage **VALIDE** | `couvert-valide`, sans mention | aucune |
+| `FRA-CE1-25` | `FICHE-bandit-manchot-synonymes-contraires-ce1.md` | **VALIDE SOUS RESERVE** | `couvert-valide`, sans mention | **`SYC-CE1-R1`** (ouverte) |
+| `FRA-CE1-26` | `FICHE-bandit-manchot-categories-ce1.md` | **VALIDE** | `couvert-valide`, sans mention | aucune |
+| `MAT-CE1-06` | `FICHE-bandit-manchot-sens-multiplication-ce1.md` | **VALIDE SOUS RESERVE** ; dispositions dessinees, `MUL-CE1-4` et `MUL-CE1-5` tenues, aucune mention due (`MUL-CE1-7`) | `couvert-valide`, sans mention | **`MUL-CE1-R1`** (ouverte) |
+| `MAT-CE1-17` | `FICHE-designation-symetrie-ce1.md` | premier passage **VALIDE SOUS RESERVE** (`SYM-CE1-R1`), second passage **VALIDE**, `SYM-CE1-R1` levee | `couvert-valide`, mention de l'arbitrage de s43 (lot 3, section 3) mot pour mot | aucune ; `ZON-11` non encodee, `nadia-prof` seule garde |
+| `MAT-CE1-02` | `FICHE-bandit-manchot-comparer-ranger-ce1.md` | **VALIDE** sur la moitie textuelle | **`en cours`**, mention d'`ORD-CE1-5` mot pour mot | aucune |
+| `FRA-CE1-20` | `FICHE-bandit-manchot-temps-ce1.md` | levee de `TPS-CE1-R1` | inchangee, deja `couvert-valide` | aucune |
+| `FRA-CE1-23` | `FICHE-bandit-manchot-ordre-alphabetique-ce1.md` | levee de `ALP-CE1-R1` | inchangee, deja `couvert-valide` | aucune |
+
+Un refus en s52, sur `FRA-CE1-17`, un seul motif, ecrit dans la fiche et corrige dans le meme sprint (rejeu
+`40989ba9`, second passage `VALIDE`) : le refus n'est pas classe sans suite.
+
+### A.11 Budget reel par instance
+
+| Instance | Engage | Rejeu paye | Total | Plafond (`PAR-8`) |
+|---|---|---|---|---|
+| A (francais CE1) | 4,0 : `FRA-CE1-17`, `-25`, `-26` a 1,0, `TPS-CE1-R1` et `ALP-CE1-R1` a 0,5 | 0,5 : rejeu de `FRA-CE1-17` (refus `4965fe7a`, rejeu `40989ba9`, second passage `ed90a523`) | **4,5** | 5,0 |
+| C (mathematiques CE1) | 4,0 : `MAT-CE1-17` 1,5, `MAT-CE1-06` 1,5, `MAT-CE1-02` 1,0 | 0,5 : second passage de `MAT-CE1-17` sur `SYM-CE1-R1` (correction `bc7cf6a0`, verdict `3c97a87a`) | **4,5** | 5,0 |
+
+**Total du sprint : 8,0 engages, 9,0 consommes**, soit le "9,0 au plus" de A.6. Aucune instance ne depasse 5,0 ;
+chacune a consomme son seul rejeu nomme et garde 0,5 de marge non depensee.
+
+**Question posee par la consigne : le rejeu de la symetrie est-il un rejeu pedagogique paye ou une correction de
+reserve ?** Les deux, et la comptabilite ne les separe pas. `SYM-CE1-R1` est une reserve, non un refus
+(`MAT-CE1-17` est passee `couvert-valide` au premier passage). Sa correction est un travail de `lea-dev` que le
+tarif de `MAT-CE1-17` (1,5) ne couvre pas, et `nadia-prof` a rejoue le paquet pour la lever : sept parties
+completes de huit manches, comparaison item par item du YAML avant et apres, onze items sur onze. Selon `PAR-10`
+(arbitrage de s30, section 3.2), *"un rejeu borne se paie par paquet rejoue"*, a 0,5 quand la propriete a tenir
+est nommee par ecrit dans la reserve, ce qu'est `SYM-CE1-R1` (*"declarer les zones de haut en bas puis de
+gauche a droite"*). **Je le compte donc sur le rejeu nomme de C, a 0,5.** Deux reserves a dire : (1) `nadia-prof`
+n'a ecrit aucun prix dans la fiche ; ce 0,5 est mon application de `PAR-10`, pas son tarif, et elle fixe le
+prix ; (2) la lettre de `PAR-14` (arbitrage de s33, ligne 596) paie au tarif d'un lot une reprise qui touche plus
+de la moitie des items, et ici l'ordre de declaration change sur onze items sur onze. Je ne l'applique pas : son
+motif est que *"l'audit precedent ne couvre plus rien"*, et elle a montre que le meme ensemble de zones, de
+cadres, de libelles et de dessins est servi. Si elle lit `PAR-14` autrement, C est a 5,5 et le plafond de 5,0
+est franchi ; elle le dit, et j'amende. Le rejeu de `FRA-CE1-17`, lui, est un refus rejoue : 0,5, sans ambiguite.
+
+**Le risque ecrit en section 2 s'est realise sans dommage.** `PAR-11` aurait demande 1,5 de marge ; A et C
+portaient 0,5. Chacune a eu un seul evenement a payer (un refus pour A, une correction rejouee pour C). Un
+second evenement sur la meme instance n'aurait trouve aucun rejeu.
+
+### A.12 Report de `MAT-CE1-17` : clos
+
+**Neuf sprints de report** (s43 a s51, `DEC-0110` 14.5), comme A.6 l'avait arrete en re-engageant la ligne.
+**Fermee a s52, au dixieme sprint depuis son instruction** (s43 a s52 inclus). Le planning avait ecrit *"non
+engage, budget libere"* a sa cloture, ce qui portait le compte a dix ; A.6 l'a ramene a neuf, et la fermeture le
+confirme. Le compte ne se lit pas "dix reports" : la ligne a attendu neuf sprints et s'est fermee dans le
+dixieme.
+
+### A.13 Reserves restantes, non engagees a s52
+
+Les deux reserves ne bloquent aucune ligne : `MAT-CE1-06` et `FRA-CE1-25` sont `couvert-valide`.
+
+- **`SYC-CE1-R1`** (`FRA-CE1-25`). Critere de levee, mot pour mot de la fiche, section 5 : *"le ballon et la
+  force sont chacun portes par un sujet feminin ou sans genre (Elle lance le ballon. ; Cette femme est forte.
+  avec costaude, ou Ce cheval est fort.). Les reponses ne changent pas, sauf l'accord. Rien d'autre ne
+  change."* Items 19 et 23. Tarif 0,5 (`PAR-10`).
+- **`MUL-CE1-R1`** (`MAT-CE1-06`). Critere de levee, mot pour mot de la fiche, section 6 : *"sur les six items,
+  nommer l'autre facon dans la phrase et la placer apres la consigne de comptage. Par exemple : Compte les
+  points ligne par ligne. Colonne par colonne, le total est le meme. Quelle multiplication ? (16 mots, trois
+  phrases, la derniere est la question), et symetriquement sur les items colonne par colonne."* Six items sur
+  seize. Tarif 0,5 (`PAR-10`).
+
+Stories au backlog, section "Cloture de s52" : "Story de correction differee - reserve `SYC-CE1-R1`" et "Story
+de correction differee - reserve `MUL-CE1-R1`".
+
+**Une correction de 0,5 tient-elle sous 5,0 ? Arithmetiquement, oui, a pile : A 4,5 + 0,5 = 5,0, C 4,5 + 0,5 =
+5,0. Je ne l'engage pas.** Trois motifs. (1) A 5,0 est le plafond, marge zero : une correction refusee se
+rejoue a 0,5 de plus, soit 5,5, et le rejeu est impossible. La regle que `nadia-prof` a maintenue le jour meme
+(`PAR-9`, A.14) dit, pour s53, que la marge de rejeu est dans le budget, pas apres lui ; s52 reste dans la
+pratique, mais je n'ouvre pas une correction que la regle de s53 refuserait. (2) Les deux instances ont
+chacune depense leur rejeu nomme (A.11) : engager une correction a 5,0, c'est l'engager sans rejeu. (3) Aucune
+ligne ne ferme dessus et rien n'est faux pour l'enfant : `SYC-CE1-R1` est un partage de genre sur deux items,
+`MUL-CE1-R1` une phrase qui gene la lecture sans fausser l'exercice. **Report compte : premier report des deux, a
+s53.** Un second serait a la charge de la `DEC` de s53.
+
+### A.14 Perimetre de s53 : propose, non ouvert
+
+Ouvrir s53 est une decision a part, qui attend l'utilisatrice. Ce qui suit est ce que je lui proposerai, avec
+le compte des reports tel qu'il serait si s53 n'engage rien. **Une regle nouvelle s'y applique** :
+`nadia-prof` a maintenu `PAR-9` le 2026-10-06 (`ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md`,
+section 4.3, commit `2205270c`) : *"a partir de l'ouverture de s53, une `DEC` qui ouvre deux instances compte 4,0
+par instance marge de rejeu comprise, ou elle ecrit l'ecart et son motif."* La lecture "pratique depuis s41"
+(8,0 de lots, rejeu en plus) ne vaut plus pour s53, et `PAR-11` reste non tranchee.
+
+| Poste | Etat | Report s53 si non engage |
+|---|---|---|
+| Reprises `SCI-CM1-18` et `SCI-CM1-15` (paquets retires, entree a remettre apres un Done) : stories `S52-SCI-ACTIVITE-HUMAINE-CM1-REPRISE-APRES-RETRAIT` (0,5) et `S52-SCI-TERRE-CM1-REPRISE-APRES-RETRAIT` (1,0) | `PAR-2` : instance de sciences CM1 | **troisieme** (s51, s52) |
+| `CRP-CM1-R1` a `R3` (0,5) | meme instance | **troisieme** |
+| `SYC-CE1-R1` et `MUL-CE1-R1` (0,5 chacune) | A.13 | premier |
+| Lignes de francais CE1 : 15 instruites et atteignables (`FRA-CE1-04` a `-15`, `-18`, `-19`, `-24`) ; `FRA-CE1-03` et `-21` plafonnees `en cours` | vivier, une instance A ; `PAR-13` | sans report (aucune story) |
+| `MAT-CE1-14` (deux paquets, deux lots, `DEP-CE1-1` a `-4`) et moitie designation de `MAT-CE1-02` (`A3` d'`ADR-0080`) | instance C ; `MAT-CE1-02` moitie designation : s51, s52 | `MAT-CE1-02` : **troisieme** |
+| `ART-CP-10` | `ADR-0104` (statut `Propose` sur le disque) ; `nadia-prof` a repondu a `C5` clause 1 le 2026-10-06 : *"C5 clause 1 ne mord pas sur une reproduction d'oeuvre qui constitue la proposition entiere, dans un item d'`ART-CP-10`"*, decision 1 tenue, repli non appele ; ses points 2 a 5 *"se tranchent sur un paquet, en jouant"* | s50, s51, s52 : **trois** deja ; la section 9 impose une issue a l'ouverture de s53 |
+| Passe transverse `PAR-4` | non engagee | s51 puis s52 : **troisieme** ; la section 7 impose engagement ou abandon |
+| `S51-OUTIL-JOURNAL-TOKENS` | non chiffree, `theo-archi` | **troisieme** |
+
+**Ce que je propose de ne pas faire : trois reports d'affilee de plus.** Les cinq postes marques *troisieme*
+(sciences, `CRP`, `MAT-CE1-02` designation, `PAR-4`, journal de tokens) et `ART-CP-10` ne se reportent plus
+sans decision : a l'ouverture de s53, chacun est engage ou ecrit abandonne, avec son motif. **`ART-CP-10` : le
+motif exterieur de sa suspension est leve** (reponse de `nadia-prof` a `C5`), il ne reste que le statut
+d'`ADR-0104`, qui est a `theo-archi`. La seconde issue de la section 9 (*non couvrable en l'etat*) ne tient
+plus sur ce motif ; je ne la reecris pas, et je ne chiffre pas ligne sans avis de faisabilite. Reprises de
+sciences : deux stories, **2,0 au total avec `CRP`**, a mettre en regard de la condition (i) que `nadia-prof` a
+opposee a une troisieme instance (4,0 requis) : une instance de sciences a 2,0 est sous la barre, ce qui veut
+dire que les reprises sont soit portees par une des deux instances CE1 au prix de `PAR-2`, soit abandonnees. Je
+ne tranche pas entre les deux ici ; c'est la question que je pose a l'ouverture.
+
+### A.15 Ecarts a mon nom : traite, et ce qui reste
+
+**Ecart "palier 2" de la matrice (`DEC-0110` section 6, `R10` du planning de s51, section 9 de cette decision) :
+traite dans `MATRICE-couverture.md`.** Preuve par commande, ecrite dans les cellules : (1)
+`grep -c 'mecanique: designation' adapters/adapter-content/src/main/resources/catalogue.yaml` rend 3
+(`designation-frise-de-la-journee`, `designation-plan-de-la-classe`, `designation-symetrie-ce1`) : le palier 2
+existe ; (2) `find adapters/adapter-web/src/main/resources/static/illustrations -iname '*carte*' -o -iname '*globe*' -o -iname '*planisph*' -o -iname '*france*' -o -iname '*monde*'`
+ne rend aucun fichier sur 56 illustrations : **la limite reelle est le materiau, pas la mecanique**. Cellules modifiees :
+`QLM-CP-12` et `HG-CM1-09` (*"palier 2 requis, non construit"* devient *"le palier 2 existe, la carte manque"*),
+`HG-CM1-10` (meme limite de materiau, plus `DEC-0028`), `QLM-CP-10` (aucun motif auparavant : jouable, palier 1
+illustre requis, `ADR-0073`, cout 2,0, `DEC-0099` section 4 ter). **Aucun statut ne change.** Je n'ai pas verifie
+qu'un avis de `theo-archi` chiffre aujourd'hui une carte ou un globe : `DEC-0099` section 4 ter disait l'avis du a
+`theo-archi` ; je n'en ai pas trouve de reponse. La huitieme cellule du meme ecart, `HDA-CM1-09`, dit *"palier 2 ... constructible"*
+et n'affirme pas qu'il manque : non modifiee.
+
+**Ecarts que je vois et ne traite pas**, par la consigne (je n'edite aucune autre ligne) : (a) les cellules de
+`FRA-CE1-20` et `FRA-CE1-23` decrivent encore `TPS-CE1-R1` et `ALP-CE1-R1` comme ouvertes ; elles sont levees
+(A.10). La note de tete l'ecrit, la cellule non. (b) L'introduction du tableau de mathematiques CE1 dit
+*"Aucune ligne n'est encore `couvert-valide` ni `en cours`"*, fausse depuis s38. (c) A.7 : l'accord de
+`ADR-0080` A2bis et des contraintes d'`ines-design` avec la barre de refus de `nadia-prof` n'a pas ete relu sur
+le disque par moi.
+
+### A.16 Changement de code et routage
+
+**Aucun changement de code dans cet amendement.** Ce qu'il declenche, avec son proprietaire :
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Rendre compte de la cloture ; porter A.14 a l'utilisatrice pour l'ouverture de s53 ; affecter les quatre stories de la section "Cloture de s52" du backlog quand s53 s'ouvre |
+| `nadia-prof` | Confirmer ou corriger le prix de 0,5 du rejeu de `SYM-CE1-R1` et la lecture de `PAR-14` (A.11) ; fixer le prix des deux reprises de sciences |
+| `theo-archi` | Statut d'`ADR-0104` apres la reponse a `C5` ; comment `nadia-prof` joue un paquet sans entree de catalogue (stories de reprise) ; avis de faisabilite d'une carte ou d'un globe, si une ligne de la matrice doit s'y appuyer |
+| `yanis-qa` | Criteres testables des quatre stories de la section "Cloture de s52" |
+
+Statuts : la matrice est a jour pour les cinq fermetures et `MAT-CE1-02` (A.10) ; elle ne l'est pas pour les
+deux cellules citees en A.15 (a).
