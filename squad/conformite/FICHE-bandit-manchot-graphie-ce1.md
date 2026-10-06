@@ -2,7 +2,7 @@
 
 - **Mécanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/ce1-graphie.yaml`
-  (24 items, type `question`), écrit par `lea-dev` (`271058ec`).
+  (24 items, type `question`), écrit par `lea-dev` (`271058ec`), corrigé par `lea-dev` (`df608669`).
 - **Entrée de catalogue** : `bandit-manchot-graphie-ce1`, titre servi *"Comment ça s'écrit ?"*,
   consigne servie *"Lis bien, puis choisis le mot bien écrit."*, `nombreDeManches: 10`.
 - **Ligne déclarée** : `FRA-CE1-22`. **Story** : `S51-FRA-GRAPHIE`. **Décision** : `DEC-0110`.
@@ -13,13 +13,81 @@
   (`squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md`, sections 2 et 5.13), `LON-CE1-1`,
   `LON-CE1-2`, `LON-CE1-5` (même fichier, section 1), points 1 à 6 de la section 2 de
   `squad/conformite/ARBITRAGE-PREALABLE-s51-fra-ce1-22-graphie-cedille.md`.
-- **Statut global** : **REFUSÉ** le 2026-10-06 par `nadia-prof` (s51, instance A). Un motif. Fiche
-  ouverte par ce refus : aucune fiche n'existait pour ce jeu.
+- **Statut global** : **VALIDÉ** le 2026-10-06 par `nadia-prof` (s51, second passage), après le
+  correctif `df608669` de `lea-dev`. Premier passage **REFUSÉ** le même jour (s51, instance A), un
+  motif, conservé plus bas. Fiche ouverte par ce refus : aucune fiche n'existait pour ce jeu.
 - **Dernière mise à jour** : 2026-10-06.
 
 ---
 
 ## Bloc de validation pédagogique - nadia-prof UNIQUEMENT
+
+### Verdict du 2026-10-06 (`nadia-prof`, s51, second passage) : **VALIDÉ**
+
+**Done pédagogique prononcé pour `FRA-CE1-22`.** Le motif 1 du refus ci-dessous est levé, contre la
+barre « Ce qui lève le motif » que j'avais écrite, sans qu'elle soit relevée. `camille-po` peut
+passer la ligne à `couvert-valide`, sans mention de couverture partielle (`DEC-0110`, section 10).
+
+#### 1. Ce que j'ai fait
+
+**Lecture masquée d'abord**, sur les deux items touchés : *une trompette* / *une tronpette*, *un
+champion* / *un chanpion*, propositions triées, sans la bonne réponse.
+
+**Audit joué.** Worktree `s51-nadia-instance-a` à `df608669`. Jar reconstruit depuis ce worktree par
+`bash outils/mvn-jdk21.sh -B -q -DskipTests package` (Maven sur JDK 21.0.10). `contenu/ce1-graphie.yaml`
+et `catalogue.yaml` contenus dans le jar sont identiques octet pour octet à ceux de l'arbre (`cmp`).
+Jar lancé sur un port dédié par mon propre processus, arrêté par son PID. **Rendu non vu au
+navigateur** : appels HTTP réels, HTML servi lu.
+
+**Soixante parties complètes de dix manches**, mêmes conduites qu'au premier passage. **Les 24 items
+tirés et joués**, de 15 à 33 fois chacun, chacun avec une erreur et une révélation au moins. Sur les
+600 manches : aucune anomalie (propositions, verdicts, indices et révélations identiques au
+fichier, aucune explication servie) ; bonne réponse 300 fois à gauche, 300 fois à droite. *une
+trompette* : 29 tirages, 47 erreurs, 12 révélations ; *un champion* : 22 tirages, 26 erreurs, 7
+révélations ; chacun servi des deux côtés. *pomme* et *flamme* ne sont plus servis.
+
+#### 2. Motif 1 : levé
+
+| Point de la barre | Constat |
+|---|---|
+| Aucun item n'oppose deux formes qui se lisent différemment | *tronpette* se lit « tron-pette » comme *trompette* ; *chanpion* se lit « chan-pion » comme *champion*. L'enfant ne peut plus trouver en lisant : seule la règle décide |
+| Chaque item du `m` porte un son « on », « an » ou « in » écrit `m` devant `b`, `p` ou `m` | les 8 items, relus un par un : *jambe*, *lampe*, *champion*, *chambre* (« an ») ; *tombe*, *trompette*, *nombre* (« on ») ; *timbre* (« in »), chacun `m` devant `b` ou `p` après une voyelle |
+| `GRL-CE1-1` et `TRV-CE1-2` tenues | 8 items par règle sur 24 ; deux remplacements de même longueur, la bonne réponse reste strictement la plus longue sur les 8 items de `g`, un tiers |
+
+**Vérifié aussi** : *tronpette* et *chanpion* ne sont pas des mots (section 2, point 2) ; *trompette*
+et *champion* sont des mots que l'enfant de CE1 rencontre (point 3) ; aucun n'est une exception de
+`GRL-CE1-3` ; aucun n'était déjà servi par un autre item ; l'énoncé reste *"Quel mot est bien écrit
+?"* et les deux indices (*"Compare la lettre après le m."*, *"Pense à la lettre qui vient après le
+m."*) n'écrivent pas le mot cible (point 4). Ces deux indices, que j'avais rangés dans le motif sur
+*pomme*, sont justes sur *trompette* et *champion* : la lettre qui suit le `m` y est un `p`.
+
+**Le cas *devant `m`*** n'est pas servi par le paquet. Je l'avais dit non exigé au premier passage ;
+je ne le réclame pas maintenant.
+
+**Le reste du premier passage tient** : le correctif ne touche que ces deux items et un commentaire
+d'en-tête. Le point 6 reste réglé par la décision (a) du premier passage (section 4 plus bas).
+
+#### 3. Ce dont je reste la seule garde sur cette ligne
+
+`PaquetCe1GraphieTest` exige désormais, pour la règle du `m`, une voyelle avant le `m` et un `b` ou
+un `p` après (diff de `df608669` lu), et refuse un contre-exemple neuf en consonne double (*pomme* /
+*ponme*). **Il juge des lettres, pas un son** : que ce qu'on entend soit « on », « an » ou « in »,
+c'est moi qui le vérifie, avec les points 2 et 3 et la plausibilité de chaque erreur, en jouant.
+
+**Un écart sans effet aujourd'hui, nommé pour qu'on ne le découvre pas plus tard.** Le test refuse
+aussi tout `m` devant `m`, donc *emmener* / *enmener*, que mon premier passage déclarait recevable
+(motif 1, correction attendue). Le paquet ne sert pas ce cas et je ne l'exige pas. Un item de ce
+genre demanderait d'adapter le test d'abord.
+
+**Porte technique** : `bash outils/mvn-jdk21.sh -B verify` lancé par moi sur la racine du worktree à
+`df608669` plus cette fiche, `BUILD SUCCESS`, aucun échec ; job `chemins` lancé sur l'arbre : vert.
+Je n'ai lancé ni les juges purs des outils, ni le job des préfixes sur d'autres commits que le mien.
+
+**Identifiants** : aucun écrit, aucun renommé.
+
+**Signé** : `nadia-prof`, s51, second passage, 2026-10-06.
+
+---
 
 ### Verdict du 2026-10-06 (`nadia-prof`, s51, instance A) : **REFUSÉ**
 
