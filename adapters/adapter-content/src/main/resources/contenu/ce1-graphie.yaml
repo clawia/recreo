@@ -1,0 +1,126 @@
+# S51-FRA-GRAPHIE (s51, DEC-0110 section 3). Arbitrage prealable de nadia-prof, conditions GRL-CE1-1 a
+# GRL-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.13), sept
+# conditions transverses TRV-CE1-1 a TRV-CE1-7 (meme source, section 2), et conditions 1 a 6 de la
+# section 2 de squad/conformite/ARBITRAGE-PREALABLE-s51-fra-ce1-22-graphie-cedille.md. Le
+# distracteur sans cedille n'est servi que dans la forme admise par l'amendement A1 d'ADR-0065 :
+# meme mot, meme determinant, seule la cedille manque.
+#
+# GRL-CE1-1 : trois regles, huit items chacune sur vingt-quatre (un tiers, au-dessus du quart) :
+# m devant m, b, p ; c/ç ; g, ge, gu (quatre items en gu, quatre en ge).
+# GRL-CE1-2 : deux propositions, le meme mot ecrit deux fois, ne differant que par la graphie que
+# la regle decide. Section 2, point 1 : la bonne reponse porte ç devant a, o ou u, jamais l'inverse.
+# GRL-CE1-3 : aucune exception a la regle du m (bonbon, néanmoins).
+# Section 2, points 2 et 3 : mots frequents, le distracteur n'est pas un mot. Point 4 : le mot cible
+# n'est ni dans l'enonce ni dans l'indice. Point 5 : l'indice donne une methode, jamais le mot.
+# Point 6 : aucune explication (voir PaquetCe1GraphieTest, section2Point6) : ChaquePaquetExpliqueSesItemsAVariationTest
+# lie toute explication a une graphie et a un enonce qui nomme le mot, ce que le point 4 interdit ici.
+# TRV-CE1-2 : les distracteurs des regles m et c/ç ont la meme longueur que la bonne reponse ; ceux de
+# la regle g sont plus courts, soit huit items sur vingt-quatre ou la bonne reponse est strictement la
+# plus longue, sous la moitie. TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule
+# ligne (FRA-CE1-22), aucun champ a voix haute ni texteSupport, vingt-quatre items.
+schema: 1
+id: ce1-graphie
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Choisir la graphie d'un son selon la lettre qui suit (m devant m, b, p ; c avec ou sans cédille ; g, ge, gu)."
+lignesDeReferentiel: ["FRA-CE1-22"]
+items:
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une jambe"
+    distracteurs: ["une janbe"]
+    indice: "Regarde la lettre qui suit le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un garçon"
+    distracteurs: ["un garcon"]
+    indice: "Regarde la lettre qui suit le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une guitare"
+    distracteurs: ["une gitare"]
+    indice: "Regarde la lettre qui suit le g."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une lampe"
+    distracteurs: ["une lanpe"]
+    indice: "Compare la lettre après le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une leçon"
+    distracteurs: ["une lecon"]
+    indice: "Compare la lettre après le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une bague"
+    distracteurs: ["une bage"]
+    indice: "Compare les lettres après le g."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une tombe"
+    distracteurs: ["une tonbe"]
+    indice: "Pense à la lettre qui vient après le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un glaçon"
+    distracteurs: ["un glacon"]
+    indice: "Pense à la lettre qui vient après le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une vague"
+    distracteurs: ["une vage"]
+    indice: "Pense aux lettres qui viennent après le g."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un timbre"
+    distracteurs: ["un tinbre"]
+    indice: "Regarde la lettre qui suit le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un maçon"
+    distracteurs: ["un macon"]
+    indice: "Regarde la lettre qui suit le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un guide"
+    distracteurs: ["un gide"]
+    indice: "Regarde la lettre qui suit le g."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une pomme"
+    distracteurs: ["une ponme"]
+    indice: "Compare la lettre après le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une balançoire"
+    distracteurs: ["une balancoire"]
+    indice: "Compare la lettre après le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un pigeon"
+    distracteurs: ["un pigon"]
+    indice: "Compare les lettres après le g."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une flamme"
+    distracteurs: ["une flanme"]
+    indice: "Pense à la lettre qui vient après le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "le français"
+    distracteurs: ["le francais"]
+    indice: "Pense à la lettre qui vient après le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une nageoire"
+    distracteurs: ["une nagoire"]
+    indice: "Pense aux lettres qui viennent après le g."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un nombre"
+    distracteurs: ["un nonbre"]
+    indice: "Regarde la lettre qui suit le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un reçu"
+    distracteurs: ["un recu"]
+    indice: "Regarde la lettre qui suit le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "un plongeon"
+    distracteurs: ["un plongon"]
+    indice: "Regarde la lettre qui suit le g."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une chambre"
+    distracteurs: ["une chanbre"]
+    indice: "Compare la lettre après le m."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "déçu"
+    distracteurs: ["décu"]
+    indice: "Compare la lettre après le c."
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une mangeoire"
+    distracteurs: ["une mangoire"]
+    indice: "Compare les lettres après le g."

@@ -762,6 +762,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-ordre-alphabetique
     nombreDeManches: 10
+  - id: bandit-manchot-graphie-ce1
+    titre: "Comment ça s'écrit ?"
+    consigne: "Lis bien, puis choisis le mot bien écrit."
+    mecanique: bandit-manchot
+    paquet: ce1-graphie
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."
