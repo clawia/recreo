@@ -19530,3 +19530,35 @@ pas).
   alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4. A router par une `DEC` d'ouverture de
   sprint.
 - **Agent pressenti** : a affecter au planning de s52 par `sofia-sm`.
+
+### S51-OUTIL-JOURNAL-TOKENS - L'outil de rapport de tokens ne remplace plus une mesure ecrite par "Aucune consommation mesuree" (transverse)
+
+Story ecrite a la cloture de s51, **non chiffree et non engagee a s52** (`PAR-16` : un poste sans story
+n'existe pas, une story sans engagement non plus). Origine : `squad/sprints/s51-trois-instances-francais-sciences-maths/RAPPORT.md`
+(paragraphe "Cumul dans `squad/rapports/JOURNAL-tokens.md` : non mis a jour"), `retro.md` et `review.md`
+(ligne 16). La regeneration de `squad/rapports/JOURNAL-tokens.md` par `outils/rapport-tokens.py` remplacerait
+par *"Aucune consommation mesuree"* les sections de s22 a s27 et presque tout s22, qui portent des chiffres.
+Cause non verifiee : les transcriptions de ces sprints ont probablement disparu du poste. De l'utilisatrice,
+2026-10-06, a la question de ne pas commiter la version regeneree : *"ok pour 1,2 et 3"* (recu de MASTER, sans
+source dans le depot, le 2026-10-06 : cette forme ne vaut pas motif, `DEC-0110` section 17 l'ecrit).
+Le journal commite n'est pas touche par cette story.
+
+- **Besoin** : transverse, ce n'est pas un besoin d'eleve. Besoin de la squad : que le cumul de tokens
+  commite ne perde plus de mesure quand le poste qui regenere n'a plus les transcriptions.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne un journal cumulatif dont la section d'un sprint porte des chiffres, et un repertoire de
+    transcriptions ou ce sprint n'a aucune transcription, quand l'outil regenere le journal, alors la section
+    de ce sprint est conservee telle quelle, chiffres compris. Aujourd'hui elle devient *"Aucune consommation
+    mesuree"* : rouge sur l'existant.
+  - Etant donne le meme cas, quand l'outil termine, alors il nomme sur sa sortie les sprints dont les
+    transcriptions manquent et dont la section a ete conservee.
+  - Etant donne un sprint dont les transcriptions sont presentes, quand l'outil regenere, alors sa section
+    est recalculee comme aujourd'hui (aucune regression sur le cas nominal).
+  - Etant donne un sprint dont la section ne porte pas de chiffres et dont les transcriptions manquent, quand
+    l'outil regenere, alors la section reste *"Aucune consommation mesuree"* : l'outil n'invente rien.
+  - Chaque cas est couvert par un test d'outil execute par la CI, au meme titre que
+    `outils/rapport-tokens-test.sh`.
+- **Lien decision** : `DEC-0110` section 17. Routage : `theo-archi` (decision sur l'outil, hors de mon
+  perimetre).
+- **Agent pressenti** : a affecter par `sofia-sm`.

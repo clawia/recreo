@@ -1042,7 +1042,7 @@ R10 du planning de s51), que cette cloture ne traite pas.
 
 | A qui | Quoi |
 |---|---|
-| `sofia-sm` | Porter a la cloture de s51 le budget reel de 16.2 (A 4,0, B 5,0) ; `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`, `S51-SCI-TERRE-CM1-REPRISE`, `S51-SCI-CORPS-CM1-RESERVES` et les deux stories de correction `TPS-CE1-R1` et `ALP-CE1-R1` comme *"non engagees, reportees a s52"* (`PAR-16`). Q1 (16.9) des qu'elle a une reponse |
+| `sofia-sm` | Porter a la cloture de s51 le budget reel de 16.2 (A 4,0, B 5,0) ; `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`, `S51-SCI-TERRE-CM1-REPRISE`, `S51-SCI-CORPS-CM1-RESERVES` et les deux stories de correction `TPS-CE1-R1` et `ALP-CE1-R1` comme *"non engagees, reportees a s52"* (`PAR-16`). Rien au titre de Q1 (16.9), tranchee : aucun changement de catalogue a executer |
 | `nadia-prof` | Fixer le prix de `S51-SCI-TERRE-CM1-REPRISE` et du troisieme passage de `SCI-CM1-18` ; repondre a la question de 16.4 ; la verification des formes (a), (b), (c) de s51 (R12 du planning) ; sa reponse a `C5` clause 1 pour `ADR-0104` |
 | `theo-archi` | Aucun avis nouveau pour les reprises : YAML seul. Avis sur C et `ADR-0080` A2 pour s52 (14.8, inchange) |
 | `yanis-qa` | Criteres des cinq stories ecrits en entree/sortie ; ce qu'aucun automate ne voit est liste dans chacune pour `nadia-prof` |
@@ -1059,5 +1059,83 @@ R10 du planning de s51), que cette cloture ne traite pas.
     report).
 24. La section 15 est lue avec la section 16 (16.8), citation de la ligne 789 corrigee.
 25. Perimetre de s52 propose en 16.10, non ouvert ; l'ouverture est une `DEC` de s52.
-26. Q1 (16.9) est ouverte : deux paquets refuses restent dans le catalogue tant que l'utilisatrice n'a pas
-    repondu.
+26. Q1 (16.9) est tranchee par l'utilisatrice (*"Garder jusqu'a s52"*) : deux paquets refuses restent dans le
+    catalogue servi jusqu'a s52 ; la `DEC` de s52 tranche retrait ou reprise avant tout autre poste les touchant
+    (16.9, 16.10).
+
+## 17. Amendement du 2026-10-06 (derniere mise a jour de cloture de s51) : journal de tokens, erratum sur Q1, valeur du trailer `Co-Authored-By`
+
+### 17.1 Provenance
+
+`sofia-sm` et moi avons route trois points a l'utilisatrice. Sa reponse, citee mot pour mot, en forme 3 de
+`squad/README.md` section 2 bis : *"ok pour 1,2 et 3"*, recu de MASTER, sans source dans le depot, le
+2026-10-06. Cette forme ne vaut pas motif : elle ne fonde rien par elle-meme, et ce sont les sections 17.2 a
+17.4, ecrites ici, qui fondent les trois points.
+
+### 17.2 Journal de tokens : la version regeneree n'est pas commitee, l'outil est route
+
+Le journal commite `squad/rapports/JOURNAL-tokens.md` reste tel quel. La version regeneree par
+`outils/rapport-tokens.py` remplacerait par *"Aucune consommation mesuree"* les sections de s23 a s27 et
+presque tout s22 (`RAPPORT.md` de s51, paragraphe "Cumul dans `squad/rapports/JOURNAL-tokens.md`", et
+`review.md` ligne 16). Cause non verifiee : les transcriptions de ces sprints ont probablement disparu du
+poste. Je n'ai pas relance l'outil.
+
+Le changement de l'outil a un proprietaire a la signature de cette section : `theo-archi`, via `sofia-sm`, par
+la story `S51-OUTIL-JOURNAL-TOKENS` (`docs/backlog/backlog.md`, fin de fichier). Elle est **non chiffree et non engagee a s52** : l'engagement et le tarif
+sont une decision de l'ouverture de s52. Premier report du sujet, s51.
+
+### 17.3 Erratum : Q1 (16.9) n'est plus ouverte
+
+L'item 26 des *"Decisions prises (amendement de cloture)"* et la ligne `sofia-sm` de 16.11 la disaient
+ouverte alors que 16.9 la tranche (*"Garder jusqu'a s52"*). Les deux sont reecrits en place ; le fond de 16.9
+ne change pas.
+
+### 17.4 Valeur du trailer `Co-Authored-By` d'un commit d'agent
+
+Constat (`retro.md` de s51, ligne 88 et action A7 ; `review.md` ligne 159) : huit commits de s51 (`[THEO]`
+quatre, `[NAD]` quatre) portent *"Claude Opus 5.5"*, un `[NAD]` (`0ce82262`) porte *"Claude Sonnet 5.5"*. Le
+rapport de tokens de s51 (`squad/sprints/s51-trois-instances-francais-sciences-maths/RAPPORT-tokens.md`) place
+`theo-archi` et `nadia-prof` sur `claude-opus-5-5`, les autres agents sur `claude-sonnet-5-5`.
+
+**Verification que la CI ne controle pas cette valeur.** `grep -rIl "Co-Authored" --exclude-dir=.git .` ne
+renvoie que `retro.md` et `review.md` de s51 : aucun fichier de `.github/workflows/`, `.github/scripts/`,
+`outils/` ni `CLAUDE.md` ou `squad/README.md` n'en parle. `.github/workflows/ci.yml` lit les commits par
+`git log --no-merges --format=%s` (sujets seulement) vers `.github/scripts/verifier-prefixes.sh`, qui ne juge
+que le tag.
+
+**Regle.**
+
+1. La valeur du trailer est **le modele reellement execute** par l'agent qui commite, sourcee par le rapport de
+   tokens du sprint (colonne modele). Les briefs de lancement ne la dictent pas : un brief qui nomme un modele
+   different de celui qui tourne ne change pas ce que l'agent doit ecrire.
+2. **Aucun commit existant n'est reecrit**, ni pour `0ce82262` ni pour les huit autres : meme logique que
+   l'obstacle 7 de s50 (reecrire l'historique pour un champ que rien ne lit coute plus que l'ecart).
+3. **La CI ne verifie pas cette valeur** et cette decision ne demande pas qu'elle la verifie. Une regle non
+   executable est un souhait (`CLAUDE.md`) : celle-ci est assumee comme telle, parce que son enjeu est une
+   attribution informative et non un garde-fou. Si l'utilisatrice veut un controle, c'est une story a ecrire,
+   pas une consequence de cette regle.
+4. L'ecart de `0ce82262` est une instance de l'absence de regle avant cette section, pas une faute a
+   corriger apres coup.
+
+**Amendement de `squad/README.md` : oui, la section 8 en manque une phrase.** Elle dit ce que la CI rejette
+(le tag) et se tait sur le trailer. Le README est amende par `sofia-sm` (retro, section 9, point 9) ; je ne
+l'edite pas. Texte propose, a ajouter a la fin de la section 8 :
+
+> Le trailer `Co-Authored-By` d'un commit d'agent nomme le modele que cet agent a execute, tel que le rapport
+> de tokens du sprint le donne (`claude-opus-5-5` s'ecrit "Claude Opus 5.5"). Un brief de lancement ne le
+> dicte pas. La CI ne le verifie pas : elle ne lit que le sujet. Un trailer errone n'est pas reecrit
+> (`DEC-0110` section 17.4).
+
+### 17.5 Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Amender `squad/README.md` section 8 avec le texte de 17.4 ; affecter `S51-OUTIL-JOURNAL-TOKENS` (non chiffree, non engagee a s52) a `theo-archi` ; clore l'action A7 de `retro.md` par cette section |
+| `theo-archi` | Avis sur la story de l'outil de rapport de tokens quand elle est engagee |
+
+## Decisions prises (section 17)
+
+27. Journal de tokens commite inchange ; story `S51-OUTIL-JOURNAL-TOKENS` ecrite, non chiffree, non engagee.
+28. Item 26 et ligne `sofia-sm` de 16.11 corriges : Q1 est tranchee par 16.9.
+29. Trailer `Co-Authored-By` : modele reellement execute, sourcee par le rapport de tokens ; aucune
+    reecriture d'historique ; non verifie par la CI. Phrase proposee pour `squad/README.md` section 8.
