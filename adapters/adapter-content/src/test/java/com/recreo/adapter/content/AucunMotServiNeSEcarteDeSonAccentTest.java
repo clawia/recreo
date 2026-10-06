@@ -5,6 +5,7 @@ import com.recreo.domain.content.ContentDescriptor;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -62,8 +63,49 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
     private static final String CONTRE_EXEMPLE_CLASSPATH =
             "/contreexemple/AucunMotServiNeSEcarteDeSonAccentTest";
 
-    /** Une chaine telle qu'elle est servie, avec l'origine qui l'a produite (pour le message). */
-    record ChaineServie(String origine, String valeur) {
+    private static final char C_CEDILLE = (char) 0x00E7;
+
+    private static final char C_CEDILLE_MAJUSCULE = (char) 0x00C7;
+
+    /**
+     * Une chaine telle qu'elle est servie, avec l'origine qui l'a produite (pour le message).
+     * {@code bonneReponseDeLItem} n'est renseignee que pour un distracteur : c'est la bonne reponse du
+     * meme item, seule source de l'admission de l'amendement A1.
+     */
+    record ChaineServie(String origine, String valeur, String bonneReponseDeLItem) {
+
+        ChaineServie(String origine, String valeur) {
+            this(origine, valeur, null);
+        }
+    }
+
+    /**
+     * Amendement A1 d'ADR-0065 (s51), la forme de GRL-CE1-2 : vrai si et seulement si les deux
+     * propositions ont la meme longueur, different en au moins une position, et ne different qu'en
+     * des positions ou la bonne reponse porte la cedille et le distracteur la lettre nue. Toute autre
+     * difference, y compris une autre marque ("zero" pour la forme accentuee), rend faux.
+     */
+    static boolean neDiffereQueParLaCedille(String distracteur, String bonneReponse) {
+        String sansMarque = Normalizer.normalize(distracteur, Normalizer.Form.NFC);
+        String marquee = Normalizer.normalize(bonneReponse, Normalizer.Form.NFC);
+        if (sansMarque.length() != marquee.length()) {
+            return false;
+        }
+        boolean uneCedille = false;
+        for (int rang = 0; rang < marquee.length(); rang++) {
+            char nue = sansMarque.charAt(rang);
+            char attendue = marquee.charAt(rang);
+            if (nue == attendue) {
+                continue;
+            }
+            if ((attendue == C_CEDILLE && nue == 'c')
+                    || (attendue == C_CEDILLE_MAJUSCULE && nue == 'C')) {
+                uneCedille = true;
+                continue;
+            }
+            return false;
+        }
+        return uneCedille;
     }
 
     /**
@@ -133,10 +175,17 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
      * <p>La borne n'est pas un trou : ces chaines restent jugees par la clause 1 de
      * {@link LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest} - une notation d'echappement y
      * rend la tolerance morte, et rien ne le dirait.</p>
+     *
+     * <p><b>Amendement A1 (s51).</b> Un distracteur porte la bonne reponse de son item, retrouvee par
+     * le texte servi "bonneReponse" qui le precede pour le meme paquet et le meme enonce. Le
+     * rapprochement tient a l'ordre et au nom du champ que produit {@code textesServis} : s'il cessait
+     * de tenir, aucun distracteur ne serait plus admis et ce garde-fou rougirait. Le mode de
+     * defaillance est bruyant, jamais silencieux.</p>
      */
     static List<ChaineServie> textesDesItems(Path racine, String racineClasspath) {
         List<ChaineServie> textes = new ArrayList<>();
         int compares = 0;
+        LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.TexteServi bonneReponse = null;
         for (LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.TexteServi texte
                 : LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.textesServis(
                         racine, racineClasspath)) {
@@ -144,7 +193,15 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
                 compares++;
                 continue;
             }
-            textes.add(new ChaineServie(texte.origine(), texte.valeur()));
+            if (texte.champ().equals("bonneReponse")) {
+                bonneReponse = texte;
+            }
+            boolean distracteurDeLItem = bonneReponse != null
+                    && texte.champ().startsWith("distracteur ")
+                    && texte.paquet().equals(bonneReponse.paquet())
+                    && texte.enonceDeLItem().equals(bonneReponse.enonceDeLItem());
+            textes.add(new ChaineServie(texte.origine(), texte.valeur(),
+                    distracteurDeLItem ? bonneReponse.valeur() : null));
         }
         assertThat(textes)
                 .as("%s : ce garde-fou ecarte %d chaine(s) comparee(s) et n'en garde aucune a lire."
@@ -189,8 +246,14 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
         List<String> defauts = new ArrayList<>();
         Set<String> motsExamines = new LinkedHashSet<>();
         for (ChaineServie texte : textes) {
-            defauts.addAll(defautsDe(texte.origine(), texte.valeur(), lexique));
             motsExamines.addAll(motsDe(texte.valeur()));
+            // Amendement A1 : hors les positions de la cedille, ce distracteur est la bonne reponse
+            // lettre pour lettre, et la bonne reponse est jugee pour son propre compte.
+            if (texte.bonneReponseDeLItem() != null
+                    && neDiffereQueParLaCedille(texte.valeur(), texte.bonneReponseDeLItem())) {
+                continue;
+            }
+            defauts.addAll(defautsDe(texte.origine(), texte.valeur(), lexique));
         }
 
         assertThat(motsExamines)
@@ -224,6 +287,47 @@ class AucunMotServiNeSEcarteDeSonAccentTest {
                 .hasMessageContaining("le mot " + guillemets("ecrire") + " n'est pas une forme")
                 .hasMessageContaining("le mot " + guillemets("zero") + " n'est pas une forme")
                 .hasMessageContaining("le mot " + guillemets("zeros") + " n'est pas une forme");
+    }
+
+    /**
+     * Amendement A1 d'ADR-0065, mise a l'epreuve. L'item admis est l'exemple de GRL-CE1-2 tel que
+     * nadia-prof l'a ecrit (arbitrage prealable de s48, section 5.13) ; chacun des autres items est une
+     * facon de sortir de sa forme, et chacun doit rester rouge. Une admission qui laisserait passer
+     * l'un d'eux serait une exemption, plus la forme d'un item.
+     */
+    @Test
+    void leDistracteurSansCedilleNEstAdmisQueDansLaFormeDeGrlCe1Deux() {
+        String paquet = "paquet ce1-graphie-cedille, item ";
+        String mot = " : le mot ";
+        assertThatThrownBy(() -> verifierQueChaqueMotServiPorteSonAccent(
+                textesDesItems(CONTRE_EXEMPLE.resolve("cedille"),
+                        CONTRE_EXEMPLE_CLASSPATH + "/cedille")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageNotContaining(guillemets("Item 1"))
+                .hasMessageContaining(paquet + guillemets("Item 2")
+                        + ", champ distracteur 1" + mot + guillemets("garcon"))
+                .hasMessageContaining(paquet + guillemets("Item 3")
+                        + ", champ distracteur 1" + mot + guillemets("garcons"))
+                .hasMessageContaining(paquet + guillemets("Item 4 un garcon")
+                        + ", champ enonce" + mot + guillemets("garcon"))
+                .hasMessageContaining(paquet + guillemets("Item 5")
+                        + ", champ distracteur 1" + mot + guillemets("zero"))
+                .hasMessageContaining(paquet + guillemets("Item 6")
+                        + ", champ bonneReponse" + mot + guillemets("garcon"));
+    }
+
+    @Test
+    void laFormeDeGrlCe1DeuxSeJugeSurLesDeuxPropositionsEntieres() {
+        String garcon = "un garcon";
+        String garconCedille = "un gar" + C_CEDILLE + "on";
+        assertThat(neDiffereQueParLaCedille(garcon, garconCedille)).isTrue();
+        assertThat(neDiffereQueParLaCedille("Garcon", "Gar" + C_CEDILLE + "on")).isTrue();
+        assertThat(neDiffereQueParLaCedille(garcon, garcon)).isFalse();
+        assertThat(neDiffereQueParLaCedille(garconCedille, garcon)).isFalse();
+        assertThat(neDiffereQueParLaCedille("une garcon", garconCedille)).isFalse();
+        assertThat(neDiffereQueParLaCedille("un zero", "un z" + (char) 0x00E9 + "ro")).isFalse();
+        assertThat(neDiffereQueParLaCedille(garcon,
+                Normalizer.normalize(garconCedille, Normalizer.Form.NFD))).isTrue();
     }
 
     /**
