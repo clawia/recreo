@@ -4066,6 +4066,11 @@ depuis vingt ans ; un enfant qui s'appelle Inès, Moussa ou Yanis ne se retrouve
 L'equilibre de genre (sept occurrences, six masculins et sept feminins a un pres) et l'absence de
 role distribue par genre sont deja tenus et ne sont pas en cause.
 
+**Levee le 2026-10-06 (s51, instance A).** Engagee a s51 a 0,5, corrigee par `lea-dev` (`cc5686e0`),
+rejouee par `nadia-prof` : quatre prenoms remplaces a genre egal (*Inès*, *Moussa*, *Yanis*, *Mei*),
+reserve levee contre sa barre, aucun statut ne bouge
+(`squad/conformite/FICHE-bandit-manchot-homophones-ce1.md`, verdict du 2026-10-06). Story close.
+
 - **Besoin** : en tant qu'eleve de CE1 qui joue a "Les bons mots", je veux que les phrases mettent
   en scene des enfants aux prenoms d'origines variees, afin de pouvoir m'y retrouver quel que soit
   mon propre prenom.
@@ -18633,35 +18638,44 @@ pedagogique n'est attendu sur ce chantier a s49, et aucun tarif en lots ne lui e
 
 
 
-## Sprint 51 - Trois instances de `nadia-prof` (francais CE1, sciences et technologie CM1,
-## mathematiques CE1), six lignes engagees, l'instance C non engagee et reportee a s52
+## Sprint 51 - Deux instances de `nadia-prof` (francais CE1, sciences et technologie CM1) :
+## six lignes engagees, quatre fermees ; l'instance C (mathematiques CE1) non engagee, reportee a s52
 
 Objectif et perimetre formalises par `DEC-0110`, **amendee le 2026-10-05 (section 14)** : `nadia-prof`
 a refuse la borne a trois instances (`squad/conformite/ARBITRAGE-PREALABLE-s51-borne-a-trois-instances.md`),
 la condition (ii) de sa borne n'etant pas remplie, et le refus est accepte. **s51 ouvre a deux
 instances, A et B, 8,0**, une matiere et un niveau chacune (`PAR-2`), deux branches, deux worktrees et
 deux scratchpads dedies (`squad/README.md` section 9, un scratchpad par instance depuis s31). **L'instance
-C est non engagee a s51, reportee a s52** ; ses trois stories restent ecrites ci-dessous. Objectif gele :
-au mieux six fermetures, 123/182 a 129/182 (70,9 %) ; `MAT-CE1-02` ne passe pas a `en cours`. Tableau
-tel qu'il etait avant l'amendement, la colonne C etant lue avec sa mention :
+C est non engagee a s51, reportee a s52** ; ses trois stories restent ecrites plus bas. Objectif gele :
+au mieux six fermetures, 123/182 a 129/182 (70,9 %) ; `MAT-CE1-02` ne passe pas a `en cours`.
 
-| Instance | Story | Tarif | Nature |
+**Etat final, cloture du 2026-10-06 (`DEC-0110` section 16)** : quatre fermetures sur six, couverture
+**127/182 (69,8 %)** (commande en tete de `MATRICE-couverture.md`). Budget reel : A 4,0, B 5,0, soit 9,0
+pour 8,0 engages, l'ecart etant deux rejeux (`FRA-CE1-22` pour A, `SCI-CM1-18` pour B), chacun pris sur la
+marge de rejeu de son instance.
+
+| Instance | Story | Tarif | Issue au 2026-10-06 |
 |---|---|---|---|
-| A (francais CE1) | `S51-FRA-GRAPHIE` (ci-dessous) | 1,0 | ligne neuve, `FRA-CE1-22` |
-| A | `S51-FRA-TEMPS` (ci-dessous) | 1,0 | ligne neuve, `FRA-CE1-20` |
-| A | `S51-FRA-ALPHABETIQUE` (ci-dessous) | 1,0 | ligne neuve, `FRA-CE1-23` |
-| A | "Story de correction differee - reserve `HOM-CE1-R1`" (section "Backlog - sprints suivants") | 0,5 | correction, paquet deja `couvert-valide` |
-| **Total A** | | **3,5 / 5,0** | marge 1,5 dont rejeu 0,5, 3 lots |
-| B (sciences et technologie CM1) | `S51-SCI-CORPS-CM1` (ci-dessous) | 1,5 | ligne neuve, `SCI-CM1-10` |
-| B | `S51-SCI-TERRE-CM1` (ci-dessous) | 1,5 | ligne neuve, `SCI-CM1-15` |
-| B | `S51-SCI-ACTIVITE-HUMAINE-CM1` (ci-dessous) | 1,5 | ligne neuve, `SCI-CM1-18` |
-| **Total B** | | **4,5 / 5,0** | marge 0,5 = rejeu, 3 lots |
+| A (francais CE1) | `S51-FRA-GRAPHIE` (ci-dessous) | 1,0 | `FRA-CE1-22` **VALIDE** au second passage, sans reserve ; premier passage REFUSE |
+| A | rejeu de `S51-FRA-GRAPHIE` | 0,5 | pris sur la marge de rejeu de A |
+| A | `S51-FRA-TEMPS` (ci-dessous) | 1,0 | `FRA-CE1-20` **VALIDE SOUS RESERVE** (`TPS-CE1-R1`) |
+| A | `S51-FRA-ALPHABETIQUE` (ci-dessous) | 1,0 | `FRA-CE1-23` **VALIDE SOUS RESERVE** (`ALP-CE1-R1`) |
+| A | "Story de correction differee - reserve `HOM-CE1-R1`" (section "Backlog - sprints suivants") | 0,5 | `HOM-CE1-R1` **levee**, aucun statut ne bouge |
+| **Total A** | | **4,0 / 5,0** consomme | marge non consommee 1,0 ; 3 lots |
+| B (sciences et technologie CM1) | `S51-SCI-CORPS-CM1` (ci-dessous) | 1,5 | `SCI-CM1-10` **VALIDE SOUS RESERVE** (`CRP-CM1-R1` a `R3`) |
+| B | `S51-SCI-TERRE-CM1` (ci-dessous) | 1,5 | `SCI-CM1-15` **REFUSE**, aucun rejeu finance ; reprise `S51-SCI-TERRE-CM1-REPRISE` reportee a s52 |
+| B | `S51-SCI-ACTIVITE-HUMAINE-CM1` (ci-dessous) | 1,5 | `SCI-CM1-18` **REFUSE** au premier passage |
+| B | `S51-SCI-ACTIVITE-HUMAINE-CM1-REJEU` (ci-dessous) | 0,5 | **REFUSE** au second passage, motif de l'item 11 maintenu ; reprise `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE` reportee a s52 |
+| **Total B** | | **5,0 / 5,0** consomme | marge 0 ; 3 lots plus un rejeu |
 | C (mathematiques CE1), **non engagee a s51, reportee a s52** (`DEC-0110` section 14) | `S51-MAT-SYMETRIE` (ci-dessous) | 1,0 | ligne neuve, `MAT-CE1-17` ; hors total de s51 |
 | C | `S51-MAT-MULTIPLICATION` (ci-dessous) | 1,0 | ligne neuve, `MAT-CE1-06` ; hors total de s51 |
 | C | `S51-MAT-COMPARER-RANGER` (ci-dessous) | 1,0 | moitie textuelle de `MAT-CE1-02` ; hors total de s51 |
 | **Total C** | | **3,0 libere, non engage** | `PAR-16` : budget libere, report a s52 |
 
-**Total du sprint : 8,0** (A 3,5 + B 4,5 ; 11,0 avant l'amendement). Hors perimetre, motifs dans `DEC-0110` section 6 : `ART-CP-10` (un `ADR`
+**Total du sprint : 8,0 engages, 9,0 consommes** (A 4,0 + B 5,0 ; 11,0 avant l'amendement de la section
+14). Stories reportees a s52, non engagees a s51 : `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`,
+`S51-SCI-TERRE-CM1-REPRISE`, `S51-SCI-CORPS-CM1-RESERVES`, et les deux corrections `TPS-CE1-R1` et
+`ALP-CE1-R1` (fin de cette section). Hors perimetre, motifs dans `DEC-0110` section 6 : `ART-CP-10` (un `ADR`
 de `theo-archi` seulement), questionner le monde CP et histoire-geographie CM1 "palier 2",
 `HDA-CM1-*` et `ART-CM1-*` (en attente de `T7`).
 
@@ -19249,7 +19263,10 @@ et `FER-3` sans clause supplementaire, `DEC-0064`.
 **Contexte.** `nadia-prof` refuse `bandit-manchot-activite-humaine-cm1` le 2026-10-06 (s51, instance B,
 `squad/conformite/FICHE-bandit-manchot-activite-humaine-cm1.md`, section 7) sur **un seul motif**,
 l'item 11. `SCI-2` est tenue sur les douze items. **Rejeu engage a s51**, tarif **0,5** (`PAR-10`) :
-l'instance B passe de 4,5 a 5,0, marge 0 (`DEC-0110` section 15.2).
+l'instance B est passee de 4,5 a 5,0, marge 0 (`DEC-0110` section 15.2). **Joue le 2026-10-06 sur
+`5a4ca6d8` : REFUSE au second passage** (`81908b7d`). Les deux points non bloquants sont pris, le motif de
+l'item 11 n'est pas leve (fiche, verdict du second passage, S2-3). Suite : `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`,
+ci-dessous (`DEC-0110` section 16.4).
 
 - **Besoin** : en tant qu'eleve de CM1, je veux que la question sur le petrole n'ait qu'une seule
   bonne reponse possible, afin de ne pas etre dit en faute quand j'ai bien lu la question.
@@ -19290,6 +19307,50 @@ l'instance B passe de 4,5 a 5,0, marge 0 (`DEC-0110` section 15.2).
 - **Lien decision** : `DEC-0110` (section 15).
 - **Agent pressenti** : a affecter par `sofia-sm` (instance B de `nadia-prof` pour le rejeu).
 
+### S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE - Une seule proposition repond a l'item 11 de "L'activite humaine et la nature", troisieme passage (`SCI-CM1-18`)
+
+**Contexte.** `nadia-prof` refuse `bandit-manchot-activite-humaine-cm1` une seconde fois le 2026-10-06 (s51,
+instance B, rejeu `5a4ca6d8`, verdict `81908b7d`,
+`squad/conformite/FICHE-bandit-manchot-activite-humaine-cm1.md`, verdict du second passage, S2-3). **Un seul
+motif, maintenu : l'item 11.** Le rejeu a pris les deux points non bloquants du premier passage (S2-2) et leve
+deux points du premier motif (l'enonce ne fixe plus un but que le stockage atteint a la lettre ; *"extraire
+plus vite"* est faux sans discussion), mais *"la correction deplace le defaut sans le supprimer"*. **Non
+engagee a s51** : l'instance B est a 5,0, marge 0 (`DEC-0110` section 16.2). Candidate a s52, troisieme
+passage. Tarif prevu **0,5** (`PAR-10`, un seul item touche), a confirmer par `nadia-prof`, qui fixe le prix.
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que la question sur le petrole et le charbon n'ait qu'une
+  seule bonne reponse possible, afin de ne pas etre dit en faute quand j'ai bien lu la question.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "La planete Terre.
+  Les etres vivants dans leur environnement" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-18` ; ligne `non couvert`,
+  `MATRICE-couverture.md`.
+- **Criteres d'acceptation** (le motif est repris mot pour mot de la fiche, S2-3) :
+  - **Motif maintenu, item 11** : etant donne l'item 11, quand on le lit, alors *"la question pose le critere
+    de l'indice, de sorte qu'une seule proposition y reponde"*. Aujourd'hui la question demande de preserver
+    *"ces ressources"*, c'est-a-dire le petrole et le charbon, et eux seuls ; *"produire de l'électricité avec
+    plus de gaz naturel"* les preserve comme *"produire de l'électricité avec le vent et le soleil"* : deux
+    propositions repondent a la question ecrite, rouge sur l'existant. L'indice (*"Le gaz naturel, comme le
+    pétrole et le charbon, met des millions d'années à se former."*) juge sur un critere plus large que la
+    question.
+  - **Voie la plus courte designee par la fiche, non imposee** (*"Les formulations sont a l'equipe"*) : *"un
+    énoncé qui nomme le gaz naturel avec le pétrole et le charbon, ou qui parle des énergies fossiles, quand
+    le gaz reste en distracteur"*. L'item reste en tache B (un geste qui preserve).
+  - Etant donne le paquet corrige, quand on relit les conditions deja tenues (`FER-1` a `FER-3`, `DEC-0064`,
+    `SCI-1` a `SCI-4`, `HIS-3`, `CON-1`, `CYC-1`), alors elles restent toutes tenues, `SCI-2` et `BIA-4`
+    comprises : douze items, aucune adresse a l'enfant, aucun imperatif, aucun presuppose de foyer.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof`
+    (fiche, S2-4) : qu'une seule proposition reponde a la question ecrite, *"le defaut de ce second refus a de
+    nouveau traverse un `clean verify` vert"* ; l'exactitude d'un fait d'environnement ; qu'un indice ne donne
+    pas la reponse par elimination. Elle rejoue le paquet a l'ecran.
+- **Ce que cette story ne fait pas** : *"aucune autre modification n'est une condition de levee, ni sur
+  l'item 11 ni ailleurs"*, et *"Je ne releverai pas cette barre au rejeu suivant"*. Les items 5, 8, 10 et 12,
+  pris au rejeu, ne sont pas rouverts. L'indice de l'item 5, ecrit pour l'ancienne question, ne dit rien de la
+  chaleur apres *"le climat se refroidit"* ; la fiche le note comme observation non bloquante (*"Il n'est pas
+  faux"*), pas comme une condition. Elle ne ferme pas la ligne, c'est `nadia-prof` qui prononce.
+- **Lien decision** : `DEC-0110` (section 16.4).
+- **Agent pressenti** : a affecter au planning de s52 par `sofia-sm` (instance de `nadia-prof` pour le
+  troisieme passage).
+
 ### S51-SCI-TERRE-CM1-REPRISE - Les distracteurs des items 4 et 11 de "La Terre, le jour et les saisons" ne sont plus vrais (`SCI-CM1-15`)
 
 **Contexte.** `nadia-prof` refuse `bandit-manchot-terre-cm1` le 2026-10-06 (s51, instance B,
@@ -19297,7 +19358,8 @@ l'instance B passe de 4,5 a 5,0, marge 0 (`DEC-0110` section 15.2).
 reste est juste : la cause des saisons (item 7) est exacte. **Non engagee a s51, reportee a s52** : le
 rejeu ne tient pas dans le plafond de 5,0 de l'instance B (`DEC-0110` section 15.2). Premier report du
 rejeu. Tarif prevu a s52 : **1,0** si les six points ci-dessous sont repris dans le meme diff (7 items
-sur 12, `PAR-14`), **0,5** si seuls les deux motifs sont rejoues ; prix fixe par `nadia-prof`.
+sur 12, `PAR-14`), **0,5** si seuls les deux motifs sont rejoues ; prix fixe par `nadia-prof`. **Lecture retenue (`DEC-0110`
+section 16.5) : 1,0, les quatre points non bloquants repris dans le meme diff que les deux motifs.**
 
 - **Besoin** : en tant qu'eleve de CM1, je veux que les reponses que le jeu dit fausses le soient
   vraiment, afin d'apprendre pourquoi il y a le jour et la nuit et des saisons sans retenir un fait
@@ -19336,9 +19398,11 @@ sur 12, `PAR-14`), **0,5** si seuls les deux motifs sont rejoues ; prix fixe par
     (fiche, section 9) : qu'un distracteur ne soit pas vrai ; qu'un indice ne decrive pas la bonne
     reponse ; l'exactitude d'un fait d'astronomie dans un indice ; qu'une formulation geographique
     vaille pour tous les enfants qui suivent le programme. Elle rejoue le paquet a l'ecran.
-- **Ce que cette story ne fait pas** : la levee porte sur les items 4 et 11, *"a la barre ecrite
-  ici"* ; les quatre points non bloquants, laisses en l'etat, deviennent des reserves datees de
-  `nadia-prof`. Elle ne ferme pas la ligne.
+- **Ce que cette story ne fait pas** : la levee des deux motifs (items 4 et 11) se juge *"a la barre
+  ecrite ici"* (fiche, section 7) ; elle ne ferme pas la ligne. **Les quatre points non bloquants ne sont
+  pas laisses en l'etat par defaut** (`DEC-0110` section 16.5) : ils sont repris dans le meme diff, ce sont
+  les criteres ci-dessus, et le tarif est 1,0. Si un point est laisse en l'etat, `nadia-prof` l'ouvre en
+  reserve datee (fiche, section 8) ; c'est le cas de repli a 0,5, si elle fixe ce prix au rejeu.
 - **Lien decision** : `DEC-0110` (section 15).
 - **Agent pressenti** : a affecter au planning de s52 par `sofia-sm` (instance de `nadia-prof` pour le
   rejeu).
@@ -19384,4 +19448,85 @@ de `SCI-CM1-18` (`DEC-0110` section 15.2).
 - **Lien decision** : `DEC-0110` (section 15) ; reserves ouvertes par `nadia-prof` le 2026-10-06,
   identifiants alloues dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC`
   d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning de s52 par `sofia-sm`.
+
+### Story de correction differee - reserve `TPS-CE1-R1` : trois activites de "Quand ça se passe ?" sont servies du cote du stereotype
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-temps-ce1` a s51, instance A, et prononce **VALIDE SOUS
+RESERVE** sur `FRA-CE1-20` (`squad/conformite/FICHE-bandit-manchot-temps-ce1.md`, section 4). Reserve neuve,
+non bloquante, ouverte sur ce premier passage (`TRV-CE1-6`) : *"Moussa a joué au ballon hier."* (item 4),
+*"Hier, Salma a lavé son pull."* (item 7), *"Demain, Mei chantera avec la classe."* et *"Aïcha chante dans la
+classe."* (items 9 et 11). Le ballon est donne a un garcon, le linge a une fille, et le chant deux fois a des
+filles, jamais a un garcon. Le reste de `TRV-CE1-6` est tenu : neuf occurrences de prenoms feminins, neuf de
+masculins, origines variees, aucun *"tu"*. Le defaut se repare en changeant des prenoms, sans toucher une
+reponse. **Non engagee a s51, reportee a s52** : premier report (`DEC-0110` section 16.3). Tarif **0,5**
+(`PAR-10`, quatre items sur vingt-quatre : `PAR-14` ne s'applique pas).
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Quand ça se passe ?", je veux que le ballon, le linge et
+  le chant soient faits tantot par des filles, tantot par des garcons, afin de ne pas y lire que certaines
+  activites sont pour les unes et pas pour les autres.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Orthographe et grammaire",
+  `FRA-CE1-20` (`squad/programme/francais/competences-ce1.md`) - ligne `couvert-valide` a la cloture de s51,
+  non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`TPS-CE1-R1`** : etant donne les phrases du paquet, quand on relit qui fait quoi, alors *"le ballon, le
+    linge et le chant sont chacun portés au moins une fois par un personnage de l'autre genre que celui du
+    stéréotype (une fille au ballon, un garçon au linge, un garçon qui chante), ou par un sujet sans genre
+    (Les enfants)"*. Aujourd'hui le ballon est a Moussa, le linge a Salma, le chant a Mei et a Aïcha, jamais
+    a un garcon : rouge sur l'existant.
+  - Etant donne les prenoms apres correction, quand on les compte par genre, alors *"l'équilibre de genre
+    reste à un près"* (aujourd'hui neuf et neuf : tenu, et doit le rester).
+  - Etant donne les phrases dont le prenom ou le sujet a change, quand on les relit, alors *"les phrases ne
+    changent pas autrement"* : meme verbe, meme mot de temps ou meme absence de mot de temps, meme bonne
+    reponse, memes distracteurs, meme indice.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`TPS-CE1-1` a `TPS-CE1-3`, `TRV-CE1-1` a `TRV-CE1-5`, `TRV-CE1-7`, `LON-CE1-1`, `LON-CE1-2`,
+    `LON-CE1-5`), alors elles restent toutes tenues : cette story ne touche que des prenoms ou des sujets.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof` :
+    `PaquetCe1TempsTest` *"ne lit ni le sens d'une phrase ni l'activité d'un personnage"* (fiche, section 6).
+    Elle rejoue le paquet corrige et confirme qu'aucune activite n'est replacee du cote d'un stereotype par
+    les prenoms nouveaux, et qu'une seule reponse reste acceptable sur chaque item.
+- **Lien decision** : `DEC-0110` (section 16.3) ; reserve ouverte par `nadia-prof` le 2026-10-06, identifiant
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4. A router par une `DEC` d'ouverture de
+  sprint.
+- **Agent pressenti** : a affecter au planning de s52 par `sofia-sm`.
+
+### Story de correction differee - reserve `ALP-CE1-R1` : trois indices de "Comme dans le dictionnaire" montrent la premiere lettre la ou seule la deuxieme decide
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-ordre-alphabetique-ce1` a s51, instance A, et prononce
+**VALIDE SOUS RESERVE** sur `FRA-CE1-23`
+(`squad/conformite/FICHE-bandit-manchot-ordre-alphabetique-ce1.md`, section 4). Reserve neuve, non bloquante,
+ouverte sur ce premier passage (`TRV-CE1-5`) : trois items, 1 (*lapin* / *lune* / *loup*), 6 (*sac* / *sel* /
+*sol*) et 11 (trois listes de *cerise*, *cube*, *orange*), portent l'indice *"Regarde la première lettre de
+chaque mot."* alors que seule la deuxieme lettre decide. L'indice ne dit rien de faux, mais il arrete
+l'enfant a l'etage que la ligne ajoute au CP. **Non engagee a s51, reportee a s52** : premier report
+(`DEC-0110` section 16.3). Tarif **0,5** (`PAR-10`, trois items sur vingt-quatre : `PAR-14` ne s'applique
+pas).
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Comme dans le dictionnaire", je veux que l'indice me mene
+  jusqu'a la lettre qui decide quand plusieurs mots commencent pareil, afin de ne pas rester bloque sur des
+  mots qui ont la meme premiere lettre.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Vocabulaire", `FRA-CE1-23`
+  (`squad/programme/francais/competences-ce1.md`) - ligne `couvert-valide` a la cloture de s51, non rouverte
+  par cette story.
+- **Criteres d'acceptation** :
+  - **`ALP-CE1-R1`** : etant donne les items 1, 6 et 11, quand on lit leur indice apres une erreur, alors
+    *"l'indice mène jusqu'à la deuxième lettre, par exemple 'Si la première lettre est la même, regarde la
+    deuxième.', forme déjà servie par le paquet"*. Aujourd'hui les trois portent *"Regarde la première
+    lettre de chaque mot."* : rouge sur l'existant.
+  - Etant donne tout item du paquet dont la decision se fait a la deuxieme lettre, quand on lit son indice,
+    alors *"aucun item dont la décision se fait à la deuxième lettre ne porte un indice qui s'arrête à la
+    première"*. Aujourd'hui les items 1, 6 et 11 : rouge sur l'existant.
+  - Etant donne le paquet corrige, quand on compare les autres champs, alors *"rien d'autre ne change"* :
+    les items dont la premiere lettre decide gardent leur indice, aucune bonne reponse ni aucun distracteur ne
+    bouge.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`ALP-CE1-1` a `ALP-CE1-3`, `TRV-CE1-1` a `TRV-CE1-7`, `LON-CE1-1`, `LON-CE1-2`, `LON-CE1-5`), alors elles
+    restent toutes tenues.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof` :
+    `PaquetCe1AlphabetiqueTest` *"ne lit pas l'indice contre l'item"* (fiche, section 6). Elle rejoue les
+    trois items corriges et confirme que chaque indice mene a la lettre qui decide.
+- **Lien decision** : `DEC-0110` (section 16.3) ; reserve ouverte par `nadia-prof` le 2026-10-06, identifiant
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4. A router par une `DEC` d'ouverture de
+  sprint.
 - **Agent pressenti** : a affecter au planning de s52 par `sofia-sm`.
