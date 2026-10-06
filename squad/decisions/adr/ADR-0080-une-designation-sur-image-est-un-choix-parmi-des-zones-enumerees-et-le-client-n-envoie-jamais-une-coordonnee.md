@@ -1169,3 +1169,36 @@ la premiere manche de chaque jeu, donc une zone de 12 unites sur un autre item p
 C'est un faux vert possible, pas un blocage ; le plancher de 16 unites de la section 4 (A2bis) se
 tient a la redaction et a l'audit jusqu'a A3. Le juge calculant a 352 px, une zone de 13 ou 14
 unites passe aussi sur la premiere manche, et rend moins de 44 px a 296.
+
+## Amendement du 2026-10-06 (s52, `theo-archi`, A2ter) - la barre de refus est 15 unites, 16 est la marge de dessin
+
+**Ce qui etait faux.** A2bis (section 4 de l'amendement A2, et section 6) ecrit *"le plancher retenu
+est 16 unites"* et *"le plancher de 16 unites ... se tient a la redaction et a l'audit"*. Il presente
+donc la marge de dessin d'`ines-design` comme la barre de refus d'une zone. Son propre point 2 disait
+deja le contraire (*"Seize unites sont une contrainte de dessin avec sa marge, pas un plancher
+d'accessibilite"*) : l'`ADR` se contredisait. Ecart route par `camille-po`, `DEC-0111` A.7.
+
+**Ce qui est decide, en accord avec `DEC-0111` A.7.**
+
+1. **La barre de refus d'une zone est celle de la porte pedagogique** (`nadia-prof`) : une zone rendue
+   sous 44 px a 296 px de large (largeur servie a 320 px de fenetre) est refusee, une zone qui s'y tient
+   ne l'est pas, quel que soit son chiffre en unites. Sur un dessin carre de 100 unites, cette barre
+   vaut **15 unites** (44,4 px a 296).
+2. **16 unites est la marge de dessin d'`ines-design`** (47,4 px a 296) : la valeur a laquelle on
+   dessine, pas celle sous laquelle on refuse. Un cadre de 15 unites sur un carre de 100 n'est pas
+   refuse pour cela ; les 48 cadres a 15 unites mesures par A2bis point 2 tiennent la barre.
+3. Sur un dessin non carre, la taille rendue se mesure ; la frise `640 x 320` reste non mesuree.
+4. Partout ou A2bis et la section 6 ecrivent *"plancher de 16 unites"*, lire *"barre de refus de 15
+   unites sur un carre de 100, marge de dessin de 16"*. Le texte de A2bis n'est pas reecrit.
+
+**Regle executable de A2ter : aucune, pour le motif deja ecrit par A2bis point 1**, qui vaut a 15
+comme a 16 : un litteral d'unites ou de pixels ecrit dans un test recopierait une mesure de rendu que
+rien n'epingle. **Ce qui garde la barre** : l'audit de `nadia-prof` et, comme mecanisme automatique,
+A3 (garde-fou 3 derivant la taille rendue de la largeur servie). Rien d'automatique entre 13 et 14
+unites aujourd'hui, inchange. Compte des `ArchRule` : inchange.
+
+**Ce qui reste a d'autres** : le refus 5 de la section 2.7 des contraintes d'`ines-design` presente
+encore 16 unites comme seuil de refus ; sa mise en accord est a `ines-design` (`DEC-0111` A.7).
+
+**Ce qui me ferait changer d'avis** : `nadia-prof` releve sa barre au-dessus de 44 px, ou A3 livre une
+taille rendue derivee qui remplace la conversion faite ici a la main.
