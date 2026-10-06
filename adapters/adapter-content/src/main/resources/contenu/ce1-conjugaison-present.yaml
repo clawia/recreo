@@ -17,7 +17,10 @@
 # TRV-CE1-2 : la bonne reponse est strictement la plus longue des trois propositions dans cinq items
 # sur vingt-quatre, sous la moitie.
 # TRV-CE1-6 : aucun prenom, aucune possession ni situation familiale dans les phrases a "tu" et a
-# "vous".
+# "vous" ; deux "il", deux "elle", deux "ils" et deux "elles" a la troisieme personne, et "faire du
+# bruit" est porte par "elles".
+# TRV-CE1-5 : aucun indice ne renvoie a l'ecoute de la phrase sur un item dont un distracteur se
+# prononce comme la bonne reponse (parlez / parler, dis / dit).
 # TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-17), aucun champ a
 # voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
 # la reponse), vingt-quatre items au-dessus du plancher de vingt. LON-CE1-5 : un mot par
@@ -76,7 +79,7 @@ items:
   - enonce: "« parler » : vous ___ trop fort."
     bonneReponse: "parlez"
     distracteurs: ["parlent", "parler"]
-    indice: "Lis la phrase dans ta tête avec chaque proposition."
+    indice: "Le mot avant le trou montre comment finit le verbe."
   # PRS-CE1-3: a, c
   - enonce: "« dessiner » : je ___ un arbre."
     bonneReponse: "dessine"
@@ -108,12 +111,12 @@ items:
     distracteurs: ["allons", "aller"]
     indice: "Le mot avant le trou montre comment finit le verbe."
   # PRS-CE1-3: b, c
-  - enonce: "« faire » : ils ___ du bruit."
+  - enonce: "« faire » : elles ___ du bruit."
     bonneReponse: "font"
     distracteurs: ["faisent", "faire"]
     indice: "Regarde le petit mot juste avant le trou."
   # PRS-CE1-3: a, c
-  - enonce: "« dire » : il ___ merci."
+  - enonce: "« dire » : elle ___ merci."
     bonneReponse: "dit"
     distracteurs: ["dis", "dire"]
     indice: "Le verbe change avec le petit mot devant."
@@ -151,4 +154,4 @@ items:
   - enonce: "« dire » : tu ___ la vérité."
     bonneReponse: "dis"
     distracteurs: ["dit", "dire"]
-    indice: "Lis la phrase dans ta tête avec chaque proposition."
+    indice: "Demande-toi : de qui parle la phrase ?"

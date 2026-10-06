@@ -303,6 +303,59 @@ class PaquetCe1ConjugaisonPresentTest {
         }
     }
 
+    /**
+     * TRV-CE1-5, refus de nadia-prof du 2026-10-06 : la bonne reponse et un distracteur qui se
+     * prononcent de meme ne se departagent pas a l'oreille. La table est celle des paires du paquet ;
+     * une paire neuve s'y ajoute.
+     */
+    private static final List<Set<String>> HOMOPHONES = List.of(
+            Set.of("parlez", "parler", "parle", "parlent"), Set.of("dis", "dit"),
+            Set.of("es", "est"), Set.of("a", "as"), Set.of("va", "vas"),
+            Set.of("fais", "fait"), Set.of("viens", "vient"), Set.of("allez", "aller"),
+            Set.of("regardez", "regarder"), Set.of("dessine", "dessines", "dessinent"),
+            Set.of("écoute", "écoutes", "écoutent"), Set.of("lave", "laves", "lavent"),
+            Set.of("travaille", "travailles", "travaillent"));
+
+    private static final String INDICE_A_L_OREILLE =
+            "Lis la phrase dans ta tête avec chaque proposition.";
+
+    @Test
+    void trv5AucunIndiceNeRenvoieALEcouteSurUnItemQuiADesDistracteursHomophones() {
+        for (Question item : items()) {
+            boolean homophone = HOMOPHONES.stream().anyMatch(paire -> paire.contains(item.bonneReponse())
+                    && item.distracteurs().stream().anyMatch(paire::contains));
+            if (homophone) {
+                assertThat(item.indice().orElseThrow())
+                        .as("'%s' : la bonne réponse '%s' a un distracteur qui se prononce de même,"
+                                + " l'indice ne renvoie pas à l'écoute (TRV-CE1-5)", item.enonce(),
+                                item.bonneReponse())
+                        .isNotEqualTo(INDICE_A_L_OREILLE);
+            }
+        }
+    }
+
+    /** TRV-CE1-6 : une activite du stereotype au moins change de cote, la table dit de quel cote. */
+    private static final Map<String, String> COTE_DU_STEREOTYPE = Map.of(
+            "l'histoire", "F", "bibliothèque", "F", "bruit", "M");
+
+    @Test
+    void trv6UneActiviteAuMoinsDesTroisDuStereotypeChangeDeCoteDeGenre() {
+        boolean uneChange = false;
+        for (Question item : items()) {
+            for (Map.Entry<String, String> activite : COTE_DU_STEREOTYPE.entrySet()) {
+                if (item.enonce().contains(activite.getKey())) {
+                    String sujet = sujetDe(item);
+                    String genre = sujet.equals("elle") || sujet.equals("elles") ? "F" : "M";
+                    uneChange |= !genre.equals(activite.getValue());
+                }
+            }
+        }
+        assertThat(uneChange)
+                .as("TRV-CE1-6 : écouter l'histoire, aller à la bibliothèque et faire du bruit sont"
+                        + " servis chacun du côté du stéréotype ; l'une change de côté")
+                .isTrue();
+    }
+
     @Test
     void q1AucuneFormeAlleNiAllesEtAucunParticipePasseDansLesPropositions() {
         for (Question item : items()) {

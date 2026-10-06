@@ -13,8 +13,8 @@
 # dans l'ordre du fichier : "a" categorie soeur (une autre categorie de la liste, ou un membre de
 # la categorie soeur dans un item "Lequel est un"), "b" un des mots donnes, "c" un mot associe qui
 # n'est pas une categorie. Relu par PaquetCe1CategoriesTest.
-# TRV-CE1-2 : la bonne reponse est strictement la plus longue des trois propositions dans huit items
-# sur vingt-quatre (un tiers), sous la moitie.
+# TRV-CE1-2 : la bonne reponse est strictement la plus longue des trois propositions dans neuf items
+# sur vingt-quatre (plus d'un tiers), sous la moitie.
 # TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-26), aucun champ a
 # voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
 # la reponse), vingt-quatre items au-dessus du plancher de vingt. LON-CE1-5 : au plus six mots par
