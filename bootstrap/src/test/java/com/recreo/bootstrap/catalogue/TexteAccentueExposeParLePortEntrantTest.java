@@ -397,6 +397,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S51-FRA-GRAPHIE (s51) : entree neuve, FRA-CE1-22, sixieme ligne du referentiel de
             // francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.13).
             "bandit-manchot-graphie-ce1",
+            // S52-FRA-CATEGORIES (s52) : entree neuve, FRA-CE1-26, septieme ligne du referentiel de
+            // francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 6.4).
+            "bandit-manchot-categories-ce1",
             // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
             // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
             "bandit-manchot-decrire-une-oeuvre-cp",
@@ -656,6 +659,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S51-FRA-GRAPHIE (s51) : titre neuf, sans niveau (ADR-0078), avec l'espace insecable
             // d'ADR-0067 devant le point d'interrogation.
             "Comment ça s'écrit ?",
+            // S52-FRA-CATEGORIES (s52) : titre neuf, sans niveau (ADR-0078).
+            "Les mots d'un même groupe",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
             "Décrire une œuvre",
             // consignes (catalogue.yaml, GameDefinition.consigne)
@@ -943,6 +948,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis les mots, puis choisis la bonne réponse.",
             // S51-FRA-GRAPHIE (s51) : consigne neuve, generique - elle ne nomme aucun mot.
             "Lis bien, puis choisis le mot bien écrit.",
+            // S52-FRA-CATEGORIES (s52) : consigne neuve, generique - elle ne nomme aucune
+            // categorie ni aucun mot d'aucun item.
+            "Lis bien, puis choisis la bonne réponse.",
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
@@ -1508,6 +1516,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // inverses et avec l'espace insecable devant le point-virgule (ADR-0067).
             "Choisir la graphie d'un son selon la lettre qui suit (m devant m, b, p ; c avec ou sans "
                     + "cédille ; g, ge, gu).",
+            // S52-FRA-CATEGORIES (s52) : competence neuve, FRA-CE1-26, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-26) sans les guillemets
+            // inverses.
+            "Classer des mots par catégorie et trouver le mot qui les désigne tous (fruit pour "
+                    + "pomme, poire, cerise).",
             // S50-ART (s50) : competence neuve, ART-CP-09. Le libelle du referentiel
             // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-09) nomme
             // "couleurs" ; aucune couleur n'est servie par ce paquet (ART-1, arbitrage prealable

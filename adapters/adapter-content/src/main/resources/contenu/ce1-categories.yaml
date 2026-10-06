@@ -1,0 +1,175 @@
+# S52-FRA-CATEGORIES (s52, DEC-0111 section 4). Arbitrage prealable de nadia-prof, conditions
+# CTG-CE1-1 a CTG-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 6.4) et
+# sept conditions transverses TRV-CE1-1 a TRV-CE1-7 (meme source, section 2). Avis de faisabilite de
+# theo-archi (squad/sprints/s52-deux-instances-ce1-francais-maths/avis-faisabilite.md, V4).
+#
+# CTG-CE1-1 : quatorze items "Quel mot designe" sur vingt-quatre (au-dessus de la moitie), dix items
+# "Lequel est un ..." (classer).
+# CTG-CE1-2 : la liste fermee des categories, de la vie courante, est declaree ci-dessous ; chaque
+# item en declare une et une seule juste au-dessus de lui. Aucune classification scientifique,
+# aucun membre discute (tomate, champignon, baleine).
+# CTG-CE1-2 liste fermee : fruit, légume, animal, vêtement, meuble, outil, instrument de musique, moyen de transport
+# CTG-CE1-3 : chaque item declare, juste au-dessus, la famille de chacun de ses deux distracteurs,
+# dans l'ordre du fichier : "a" categorie soeur (une autre categorie de la liste, ou un membre de
+# la categorie soeur dans un item "Lequel est un"), "b" un des mots donnes, "c" un mot associe qui
+# n'est pas une categorie. Relu par PaquetCe1CategoriesTest.
+# TRV-CE1-2 : la bonne reponse est strictement la plus longue des trois propositions dans huit items
+# sur vingt-quatre (un tiers), sous la moitie.
+# TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-26), aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse), vingt-quatre items au-dessus du plancher de vingt. LON-CE1-5 : au plus six mots par
+# proposition.
+schema: 1
+id: ce1-categories
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Vocabulaire"
+  competence: "Classer des mots par catégorie et trouver le mot qui les désigne tous (fruit pour pomme, poire, cerise)."
+lignesDeReferentiel: ["FRA-CE1-26"]
+items:
+  # CTG-CE1-2: fruit
+  # CTG-CE1-3: a, c
+  - enonce: "Quel mot désigne : pomme, poire, cerise ?"
+    bonneReponse: "fruit"
+    distracteurs: ["légume", "arbre"]
+    indice: "Cherche ce que ces trois mots ont en commun."
+  # CTG-CE1-2: fruit
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un fruit ?"
+    bonneReponse: "une fraise"
+    distracteurs: ["une carotte", "un panier"]
+    indice: "Lis chaque mot : un seul entre dans le groupe."
+  # CTG-CE1-2: animal
+  # CTG-CE1-3: b, c
+  - enonce: "Quel mot désigne : chat, chien, cheval ?"
+    bonneReponse: "animal"
+    distracteurs: ["chien", "ferme"]
+    indice: "Trouve le mot qui les range tous ensemble."
+  # CTG-CE1-2: vêtement
+  # CTG-CE1-3: a, c
+  - enonce: "Quel mot désigne : pull, jupe, manteau ?"
+    bonneReponse: "vêtement"
+    distracteurs: ["meuble", "magasin"]
+    indice: "Le bon mot convient aux trois, pas à un seul."
+  # CTG-CE1-2: légume
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un légume ?"
+    bonneReponse: "un poireau"
+    distracteurs: ["une cerise", "un jardin"]
+    indice: "Demande-toi : de quel groupe parle la question ?"
+  # CTG-CE1-2: meuble
+  # CTG-CE1-3: a, c
+  - enonce: "Quel mot désigne : chaise, table, lit ?"
+    bonneReponse: "meuble"
+    distracteurs: ["vêtement", "maison"]
+    indice: "Pense au groupe où l'on range ces trois mots."
+  # CTG-CE1-2: instrument de musique
+  # CTG-CE1-3: a, c
+  - enonce: "Quel mot désigne : guitare, flûte, tambour ?"
+    bonneReponse: "instrument de musique"
+    distracteurs: ["outil", "musique"]
+    indice: "Cherche ce que ces trois mots ont en commun."
+  # CTG-CE1-2: vêtement
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un vêtement ?"
+    bonneReponse: "un pantalon"
+    distracteurs: ["une chaise", "un magasin"]
+    indice: "Écarte les mots qui sont d'un autre groupe."
+  # CTG-CE1-2: outil
+  # CTG-CE1-3: a, c
+  - enonce: "Quel mot désigne : marteau, scie, tournevis ?"
+    bonneReponse: "outil"
+    distracteurs: ["meuble", "atelier"]
+    indice: "Trouve le mot qui les range tous ensemble."
+  # CTG-CE1-2: moyen de transport
+  # CTG-CE1-3: b, c
+  - enonce: "Quel mot désigne : vélo, bus, train ?"
+    bonneReponse: "moyen de transport"
+    distracteurs: ["vélo", "route"]
+    indice: "Le bon mot convient aux trois, pas à un seul."
+  # CTG-CE1-2: meuble
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un meuble ?"
+    bonneReponse: "une armoire"
+    distracteurs: ["une chemise", "une maison"]
+    indice: "Pense à ce que tu sais de chaque mot."
+  # CTG-CE1-2: fruit
+  # CTG-CE1-3: a, b
+  - enonce: "Quel mot désigne : banane, orange, fraise ?"
+    bonneReponse: "fruit"
+    distracteurs: ["légume", "orange"]
+    indice: "Pense au groupe où l'on range ces trois mots."
+  # CTG-CE1-2: animal
+  # CTG-CE1-3: c, c
+  - enonce: "Lequel est un animal ?"
+    bonneReponse: "une poule"
+    distracteurs: ["un nid", "une ferme"]
+    indice: "Lis chaque mot : un seul entre dans le groupe."
+  # CTG-CE1-2: légume
+  # CTG-CE1-3: a, c
+  - enonce: "Quel mot désigne : haricot, chou, salade ?"
+    bonneReponse: "légume"
+    distracteurs: ["fruit", "marché"]
+    indice: "Cherche ce que ces trois mots ont en commun."
+  # CTG-CE1-2: outil
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un outil ?"
+    bonneReponse: "une pelle"
+    distracteurs: ["une table", "un jardin"]
+    indice: "Demande-toi : de quel groupe parle la question ?"
+  # CTG-CE1-2: animal
+  # CTG-CE1-3: b, c
+  - enonce: "Quel mot désigne : vache, lapin, mouton ?"
+    bonneReponse: "animal"
+    distracteurs: ["mouton", "champ"]
+    indice: "Trouve le mot qui les range tous ensemble."
+  # CTG-CE1-2: instrument de musique
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un instrument de musique ?"
+    bonneReponse: "une guitare"
+    distracteurs: ["un marteau", "un concert"]
+    indice: "Écarte les mots qui sont d'un autre groupe."
+  # CTG-CE1-2: vêtement
+  # CTG-CE1-3: b, c
+  - enonce: "Quel mot désigne : robe, short, écharpe ?"
+    bonneReponse: "vêtement"
+    distracteurs: ["écharpe", "armoire"]
+    indice: "Le bon mot convient aux trois, pas à un seul."
+  # CTG-CE1-2: moyen de transport
+  # CTG-CE1-3: c, c
+  - enonce: "Lequel est un moyen de transport ?"
+    bonneReponse: "un camion"
+    distracteurs: ["une route", "un voyage"]
+    indice: "Pense à ce que tu sais de chaque mot."
+  # CTG-CE1-2: moyen de transport
+  # CTG-CE1-3: b, c
+  - enonce: "Quel mot désigne : avion, bateau, voiture ?"
+    bonneReponse: "moyen de transport"
+    distracteurs: ["avion", "voyage"]
+    indice: "Pense au groupe où l'on range ces trois mots."
+  # CTG-CE1-2: fruit
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un fruit ?"
+    bonneReponse: "une prune"
+    distracteurs: ["un chou", "un marché"]
+    indice: "Lis chaque mot : un seul entre dans le groupe."
+  # CTG-CE1-2: instrument de musique
+  # CTG-CE1-3: b, c
+  - enonce: "Quel mot désigne : piano, trompette, violon ?"
+    bonneReponse: "instrument de musique"
+    distracteurs: ["piano", "orchestre"]
+    indice: "Cherche ce que ces trois mots ont en commun."
+  # CTG-CE1-2: vêtement
+  # CTG-CE1-3: a, c
+  - enonce: "Lequel est un vêtement ?"
+    bonneReponse: "une veste"
+    distracteurs: ["un lit", "une valise"]
+    indice: "Demande-toi : de quel groupe parle la question ?"
+  # CTG-CE1-2: légume
+  # CTG-CE1-3: a, c
+  - enonce: "Quel mot désigne : carotte, poireau, radis ?"
+    bonneReponse: "légume"
+    distracteurs: ["fruit", "jardin"]
+    indice: "Trouve le mot qui les range tous ensemble."

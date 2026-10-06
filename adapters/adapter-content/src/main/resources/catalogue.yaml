@@ -768,6 +768,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-graphie
     nombreDeManches: 10
+  - id: bandit-manchot-categories-ce1
+    titre: "Les mots d'un même groupe"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-categories
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."
