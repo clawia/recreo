@@ -47,7 +47,7 @@ de `bootstrap` ; ce n'est **pas** le reacteur complet, et aucun autre test n'est
 **Les +2 sont expliques** : le seul commit qui touche `bootstrap/src/test/java/com/recreo/archi`
 entre `1db6348f` et `ca4c934a` est `3ade55cb` (`ADR-0104`, avant le planning de s51), qui ajoute deux
 lignes `@Test`/`@ArchTest` et n'en retire aucune : la regle 13 de `DecouplageMecaniqueContenuTest`
-(13 tests) et sa morsure dans `LesReglesMordentTest` (38 tests). Methode : `grep -cE` sur la sortie
+(13 tests) et sa morsure dans `LesReglesMordentTest` (37 tests). Methode : `grep -cE` sur la sortie
 brute de `git diff 1db6348f ca4c934a -- bootstrap/src/test/java/com/recreo/archi`. **Aucun commit de
 s51 ne touche ce paquetage.**
 
