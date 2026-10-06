@@ -1,0 +1,135 @@
+# S51-FRA-ALPHABETIQUE (s51, DEC-0110 section 3). Arbitrage prealable de nadia-prof, conditions
+# ALP-CE1-1 a ALP-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 6.1) et
+# sept conditions transverses TRV-CE1-1 a TRV-CE1-7 (meme source, section 2). Avis de faisabilite de
+# theo-archi (squad/sprints/s51-trois-instances-francais-sciences-maths/avis-faisabilite.md, V3).
+#
+# ALP-CE1-1 : quatorze items "Quel mot vient en premier" sur vingt-quatre (au-dessus de la moitie),
+# dix items de trois listes des trois memes mots.
+# ALP-CE1-2 : dix-sept items sur vingt-quatre portent au moins deux mots de meme premiere lettre
+# (au-dessus du tiers exige). Deux mots d'un meme item different toujours par leurs deux premieres
+# lettres, jamais par la troisieme ; ces deux lettres sont des minuscules sans accent. Aucun mot ne
+# porte d'apostrophe ni de trait d'union.
+# ALP-CE1-3 : chaque item de listes declare, juste au-dessus, la famille de chacun de ses deux
+# distracteurs, dans l'ordre du fichier : "inverse" (a) et "deuxieme-lettre" (b, ordre juste sur la
+# premiere lettre, faux sur la deuxieme). Relu par PaquetCe1AlphabetiqueTest.
+# TRV-CE1-2 : la bonne reponse n'est jamais la liste strictement la plus longue (trois mots, memes
+# lettres) et n'est le mot strictement le plus long que dans cinq items sur vingt-quatre.
+# TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-23), aucun champ a
+# voix haute ni texteSupport, un indice sur chaque item (douze mots au plus, jamais la reponse),
+# vingt-quatre items au-dessus du plancher de vingt. LON-CE1-5 : au plus trois mots par proposition.
+schema: 1
+id: ce1-ordre-alphabetique
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Vocabulaire"
+  competence: "Ranger des mots dans l'ordre alphabétique (première lettre, puis deuxième lettre)."
+lignesDeReferentiel: ["FRA-CE1-23"]
+items:
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "lapin"
+    distracteurs: ["lune", "loup"]
+    indice: "Regarde la première lettre de chaque mot."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "lapin, loup, lune"
+    distracteurs: ["lune, loup, lapin", "loup, lapin, lune"]
+    indice: "Si la première lettre est la même, regarde la deuxième."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "ballon"
+    distracteurs: ["bol", "bureau"]
+    indice: "Compare d'abord les premières lettres."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "arbre"
+    distracteurs: ["vache", "rose"]
+    indice: "Pense à l'ordre des lettres de l'alphabet."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "ballon, bol, table"
+    distracteurs: ["table, bol, ballon", "bol, ballon, table"]
+    indice: "Lis chaque mot, puis compare ses premières lettres."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "sac"
+    distracteurs: ["sel", "sol"]
+    indice: "Regarde la première lettre de chaque mot."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "dent"
+    distracteurs: ["fleur", "mouton"]
+    indice: "Si la première lettre est la même, regarde la deuxième."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "sac, sel, vase"
+    distracteurs: ["vase, sel, sac", "sel, sac, vase"]
+    indice: "Compare d'abord les premières lettres."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "marron"
+    distracteurs: ["mouton", "mur"]
+    indice: "Pense à l'ordre des lettres de l'alphabet."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "ballon"
+    distracteurs: ["nuage", "jardin"]
+    indice: "Lis chaque mot, puis compare ses premières lettres."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "cerise, cube, orange"
+    distracteurs: ["orange, cube, cerise", "cube, cerise, orange"]
+    indice: "Regarde la première lettre de chaque mot."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "pain"
+    distracteurs: ["pomme", "puce"]
+    indice: "Si la première lettre est la même, regarde la deuxième."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "girafe"
+    distracteurs: ["zoo", "kiwi"]
+    indice: "Compare d'abord les premières lettres."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "marron, mouton, zoo"
+    distracteurs: ["zoo, mouton, marron", "mouton, marron, zoo"]
+    indice: "Pense à l'ordre des lettres de l'alphabet."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "table"
+    distracteurs: ["tigre", "tomate"]
+    indice: "Lis chaque mot, puis compare ses premières lettres."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "crayon"
+    distracteurs: ["fenêtre", "hibou"]
+    indice: "Regarde la première lettre de chaque mot."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "ami, avion, robe"
+    distracteurs: ["robe, avion, ami", "avion, ami, robe"]
+    indice: "Si la première lettre est la même, regarde la deuxième."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "cerise"
+    distracteurs: ["chat", "cube"]
+    indice: "Compare d'abord les premières lettres."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "ours"
+    distracteurs: ["singe", "tortue"]
+    indice: "Pense à l'ordre des lettres de l'alphabet."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "jupe, table, tigre"
+    distracteurs: ["tigre, table, jupe", "jupe, tigre, table"]
+    indice: "Lis chaque mot, puis compare ses premières lettres."
+  - enonce: "Quel mot vient en premier dans l'ordre alphabétique ?"
+    bonneReponse: "garçon"
+    distracteurs: ["rouge", "lampe"]
+    indice: "Regarde la première lettre de chaque mot."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "nez, pain, pomme"
+    distracteurs: ["pomme, pain, nez", "nez, pomme, pain"]
+    indice: "Si la première lettre est la même, regarde la deuxième."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "dent, doigt, fleur"
+    distracteurs: ["fleur, doigt, dent", "doigt, dent, fleur"]
+    indice: "Compare d'abord les premières lettres."
+  # ALP-CE1-3: inverse, deuxieme-lettre
+  - enonce: "Quelle liste est dans l'ordre alphabétique ?"
+    bonneReponse: "bus, gare, girafe"
+    distracteurs: ["girafe, gare, bus", "bus, girafe, gare"]
+    indice: "Pense à l'ordre des lettres de l'alphabet."

@@ -756,6 +756,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-temps
     nombreDeManches: 10
+  - id: bandit-manchot-ordre-alphabetique-ce1
+    titre: "Comme dans le dictionnaire"
+    consigne: "Lis les mots, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-ordre-alphabetique
+    nombreDeManches: 10
   - id: bandit-manchot-decrire-une-oeuvre-cp
     titre: "Décrire une œuvre"
     consigne: "Regarde l'œuvre, puis dis ce que tu vois."

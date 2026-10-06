@@ -1103,6 +1103,14 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " (\"passé\", \"présent\", \"futur\"), valeurDe rend null sur les trois"
                     + " propositions de chaque item. Mesure du 2026-10-06 sur le paquet servi :"
                     + " aucune des 72 propositions ne commence par un chiffre"),
+            // S51-FRA-ALPHABETIQUE : cinquieme paquet de francais CE1 (FRA-CE1-23).
+            Map.entry("ce1-ordre-alphabetique",
+            "24 items sur 24 portent deux distracteurs (trois propositions), soit 72 propositions,"
+                    + " mais aucune n'est numerique : ce sont des mots a ranger (\"lapin\","
+                    + " \"ballon\"...) ou des listes de trois mots (\"lapin, loup, lune\"),"
+                    + " valeurDe rend null sur les trois propositions de chaque item. Mesure du"
+                    + " 2026-10-06 sur le paquet servi : aucune des 72 propositions ne commence par"
+                    + " un chiffre"),
             // S50-ART : paquet neuf d'arts plastiques CP, deuxieme ligne de cette matiere
             // (ART-CP-09), premier paquet a declarer une reproduction d'oeuvre (T6 d'ADR-0082).
             Map.entry("cp-decrire-une-oeuvre",
