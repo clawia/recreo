@@ -762,3 +762,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-activite-humaine
     nombreDeManches: 10
+  - id: bandit-manchot-corps-cm1
+    titre: "Prendre soin de son corps"
+    consigne: "Lis bien, puis dis ce qui est bon pour le corps, ou à quoi cela sert."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-corps
+    nombreDeManches: 10
