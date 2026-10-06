@@ -774,21 +774,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-decrire-une-oeuvre
     nombreDeManches: 7
-  - id: bandit-manchot-activite-humaine-cm1
-    titre: "L'activité humaine et la nature"
-    consigne: "Lis bien, puis dis quel est l'effet, ou quel geste préserve."
-    mecanique: bandit-manchot
-    paquet: cm1-sciences-activite-humaine
-    nombreDeManches: 10
   - id: bandit-manchot-corps-cm1
     titre: "Prendre soin de son corps"
     consigne: "Lis bien, puis dis ce qui est bon pour le corps, ou à quoi cela sert."
     mecanique: bandit-manchot
     paquet: cm1-sciences-corps
-    nombreDeManches: 10
-  - id: bandit-manchot-terre-cm1
-    titre: "La Terre, le jour et les saisons"
-    consigne: "Lis bien, puis dis pourquoi il y a le jour et la nuit, ou les saisons."
-    mecanique: bandit-manchot
-    paquet: cm1-sciences-terre
     nombreDeManches: 10
