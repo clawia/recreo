@@ -477,6 +477,14 @@ Ce n'est pas une convention declarative : la CI **rejette** un commit dont le me
 pas par un tag connu (voir `.github/workflows/ci.yml`). Sur la version precedente, ce garde-fou
 etait annonce dans la documentation et n'existait pas dans le workflow.
 
+Le trailer `Co-Authored-By` d'un commit d'agent nomme le modele que cet agent a execute, tel que le rapport
+de tokens du sprint le donne (`claude-opus-5-5` s'ecrit "Claude Opus 5.5"). Un brief de lancement ne le
+dicte pas. La CI ne le verifie pas : elle ne lit que le sujet. Un trailer errone n'est pas reecrit
+(`DEC-0110` section 17.4).
+Amendement du 2026-10-06 (`sofia-sm`, s52) : ce paragraphe transcrit le texte que `DEC-0110` section 17.4
+propose pour cette section et confie a `sofia-sm` (action A7 de la retro de s51). En cas d'ecart, la `DEC` fait
+foi. Il ne ferme aucun garde-fou : une regle non executable est un souhait, celle-ci est assumee comme telle.
+
 ## 9. Derouler un sprint
 
 **1. Planning.** Camille ecrit ou affine les stories et met a jour la matrice. Theo donne un avis
