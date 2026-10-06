@@ -25,7 +25,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * <b>S51-SCI-TERRE-CM1, le paquet {@code cm1-sciences-terre}, ligne {@code SCI-CM1-15} de "Sciences
  * et technologie" (CM1).</b> Conditions : arbitrage prealable de s30, sections 2.2 (ligne 15) et
- * 2.5, {@code squad/conformite/ARBITRAGE-PREALABLE-s30-...md}, dont {@code SCI-1} et {@code SCI-4}.
+ * 2.5, {@code ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
+ * reserves.md}, dont {@code SCI-1} et {@code SCI-4}.
  *
  * <p>Taches lues par le marqueur {@code # tache:} de chaque item, dans le fichier brut : A,
  * "expliquer le jour et la nuit" ; B, "expliquer les saisons" (FER-3, au moins trois items chacune) ;

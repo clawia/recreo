@@ -26,7 +26,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <b>S51-SCI-ACTIVITE-HUMAINE-CM1, le paquet {@code cm1-sciences-activite-humaine}, ligne
  * {@code SCI-CM1-18} de "Sciences et technologie" (CM1).</b> Referentiel :
  * {@code docs/backlog/backlog.md}, section "Sprint 51" ; conditions : arbitrage prealable de s30,
- * sections 2.2 (ligne 18) et 2.5, {@code squad/conformite/ARBITRAGE-PREALABLE-s30-...md}.
+ * sections 2.2 (ligne 18) et 2.5, {@code ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
+ * reserves.md}.
  *
  * <p><b>Deux taches distinctes (FER-3)</b> : <b>"reconnaitre l'effet d'une activite"</b> (la bonne
  * reponse nomme un effet) et <b>"choisir le geste qui preserve"</b> (la bonne reponse nomme un

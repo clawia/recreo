@@ -25,7 +25,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * <b>S51-SCI-CORPS-CM1, le paquet {@code cm1-sciences-corps}, ligne {@code SCI-CM1-10} de "Sciences
  * et technologie" (CM1).</b> Conditions : arbitrage prealable de s30, sections 2.2 (ligne 10) et
- * 2.5, {@code squad/conformite/ARBITRAGE-PREALABLE-s30-...md}, et {@code BIA-4}.
+ * 2.5, {@code ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
+ * reserves.md}, et {@code BIA-4}.
  *
  * <p><b>Deux taches distinctes (FER-3)</b>, lues par le marqueur {@code # tache:} de chaque item,
  * dans le fichier brut : A, "dire ce qui est bon pour le corps" ; B, "dire a quoi sert un de ces

@@ -13,7 +13,8 @@
 - **Statut** : Acceptee. **Amendee le 2026-10-05 (section 14)** : `nadia-prof` a refuse la borne a
   trois instances ; l'instance C est *non engagee*, report a s52. s51 ouvre a deux instances, A et B,
   8,0. Les sections 2, 5, 7, 8, 9 et 11 sont conservees telles qu'ecrites et se lisent avec la
-  section 14, qui fait foi en cas d'ecart.
+  section 14, qui fait foi en cas d'ecart. **Amendee de nouveau le 2026-10-06 (section 15)** :
+  verdicts de l'instance B.
 - **Lien** : `DEC-0108` (sections 3, 4, 6 ; section 6 corrigee ici) ; `DEC-0109` ;
   `DEC-0107` (section 4) ; `DEC-0104` (section 2.1) ; `DEC-0102` (section 2) ; `DEC-0099`
   (section 9.2) ; `DEC-0098` (section 3) ;
@@ -689,7 +690,7 @@ refus : il en tire les consequences.
 - **`PAR-8`** (`ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
   section 13) : plafond individuel de 5,0 par instance. La section 2 de cette decision et la section 14
   nomment la marge de B, 0,5, comme etant le rejeu.
-- **`PAR-10`** : un rejeu coute 0,5 **par paquet** (application : `DEC-0106` section 2 pour `HOM-CE1-R1`, ligne 2 du tableau de la section 2 de cette decision).
+- **`PAR-10`** : un rejeu coute 0,5 **par paquet** (application : `DEC-0106` section 2 pour `HOM-CE1-R1`, ligne `HOM-CE1-R1` du tableau de la section 2 de cette decision).
 - **`PAR-14`** (`ARBITRAGE-PREALABLE-s33...`, section 5.5) : *"Une reprise dont les corrections touchent
   plus de la moitie des items d'un paquet se paie au tarif d'un lot - 1,0 quand je suis la source des
   motifs, 1,5 sinon - et non au tarif d'un rejeu (0,5)."*
