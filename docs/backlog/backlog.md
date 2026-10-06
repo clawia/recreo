@@ -19822,3 +19822,156 @@ du catalogue (Recommandé)"* (`DEC-0111` section 3). Precedent : `DEC-0009`, sto
 - **Lien decision** : `DEC-0111` (section 4).
 - **Agent pressenti** : a affecter par `sofia-sm` (instance A de `nadia-prof` pour le Done pedagogique ;
   `theo-archi` pour l'avis de faisabilite).
+
+## Cloture de s52 - stories ecrites et non engagees, proposees pour s53
+
+Quatre stories ecrites par `camille-po` a la cloture de s52 (`DEC-0111` amendement A.9 a A.15). **Aucune n'est
+engagee a s52** : les deux instances sont a 4,5 sur 5,0 (`DEC-0111` A.11) et le perimetre de s53 n'est pas
+ouvert. Les tarifs sont ceux du bareme de `PAR-10` ou ceux que `nadia-prof` a deja ecrits ; elle fixe le prix.
+
+### Story de correction differee - reserve `SYC-CE1-R1` : le ballon et la force de "Même sens ou sens contraire" sont servis du cote du stereotype
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-synonymes-contraires-ce1` a s52, instance A, et prononce
+**VALIDE SOUS RESERVE** sur `FRA-CE1-25` (`squad/conformite/FICHE-bandit-manchot-synonymes-contraires-ce1.md`,
+section 5). Reserve neuve, non bloquante, ouverte sur ce premier passage (`TRV-CE1-6`) : item 19 *"Il lance le
+ballon."*, item 23 *"Cet homme est fort."*. *"Le ballon est donné à un garçon, la force à un homme."* Les 24
+reponses sont justes, les distracteurs tiennent `SYC-CE1-2`, aucun indice n'est faux : le defaut se repare en
+changeant deux sujets. **Non engagee a s52** : premier report. Tarif **0,5** (`PAR-10` : un rejeu borne, la
+propriete a tenir est nommee par ecrit dans la reserve ; deux items sur vingt-quatre, `PAR-14` ne s'applique
+pas).
+
+- **Besoin** : en tant qu'eleve de CE1 qui joue a "Même sens ou sens contraire", je veux que lancer le ballon et
+  etre fort soient dits de filles comme de garcons, d'hommes comme de femmes ou d'animaux, afin de ne pas y
+  lire que ces choses sont pour les uns et pas pour les autres.
+- **Competence programme visee** : francais, CE1 (cycle 2), domaine "Vocabulaire", `FRA-CE1-25`
+  (`squad/programme/francais/competences-ce1.md`) - ligne `couvert-valide` a la cloture de s52, non rouverte
+  par cette story.
+- **Criteres d'acceptation** :
+  - **`SYC-CE1-R1`**, mot pour mot de la fiche : etant donne les phrases des items 19 et 23, quand on relit qui
+    fait quoi, alors *"le ballon et la force sont chacun portés par un sujet féminin ou sans genre
+    ('Elle lance le ballon.' ; 'Cette femme est forte.' avec costaude, ou 'Ce cheval est fort.')"*.
+    Aujourd'hui le ballon est a *il* et la force a *cet homme* : rouge sur l'existant.
+  - Etant donne les memes deux items, quand on compare les reponses avant et apres, alors *"les réponses ne
+    changent pas, sauf l'accord. Rien d'autre ne change."*
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`SYC-CE1-1` a `SYC-CE1-3`, `TRV-CE1-1` a `TRV-CE1-7`, `LON-CE1-1`, `LON-CE1-2`, `LON-CE1-5`), alors elles
+    restent toutes tenues.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof` :
+    `PaquetCe1SynonymesContrairesTest` *"ne lit pas le sens"* (fiche, section 6). Elle rejoue le paquet corrige
+    et confirme qu'aucune activite n'est replacee du cote d'un stereotype par les sujets nouveaux et qu'une
+    seule reponse reste acceptable sur chaque item.
+- **Ce que cette story ne fait pas** : elle ne touche que les sujets des items 19 et 23 ; elle ne change aucun
+  statut de la matrice.
+- **Lien decision** : `DEC-0111` (amendement A.13) ; reserve ouverte par `nadia-prof` le 2026-10-06, identifiant
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4.
+- **Agent pressenti** : a affecter au planning de s53 par `sofia-sm` (instance A de `nadia-prof` pour le
+  rejeu ; `marc-dev` a ecrit le paquet).
+
+### Story de correction differee - reserve `MUL-CE1-R1` : la premiere phrase des six enonces de reseau de "Le sens de la multiplication" parle de "deux façons" avant de les nommer
+
+**Contexte.** `nadia-prof` audite `bandit-manchot-sens-multiplication-ce1` a s52, instance C, et prononce
+**VALIDE SOUS RESERVE** sur `MAT-CE1-06` (`squad/conformite/FICHE-bandit-manchot-sens-multiplication-ce1.md`,
+section 6). Reserve neuve, non bloquante, datee du 2026-10-06 : *"Les deux façons de compter donnent le même
+total. Compte les points ligne par ligne. Quelle multiplication ?"* L'enfant lit d'abord une affirmation sur
+deux facons qu'on ne lui a pas montrees, et la seconde n'est nommee nulle part dans l'item. **Non engagee a
+s52** : premier report. Tarif **0,5** (`PAR-10`, rejeu borne ; six items sur seize, moins de la moitie :
+`PAR-14` ne s'applique pas).
+
+- **Besoin** : en tant qu'eleve de CE1 qui compte des points en lignes ou en colonnes, je veux que l'enonce
+  me dise tout de suite les deux facons de compter, afin de ne pas lire une phrase dont je n'ai pas encore le
+  sens.
+- **Competence programme visee** : mathematiques, CE1 (cycle 2), domaine "Nombres et calculs", `MAT-CE1-06`
+  (`squad/programme/mathematiques/competences-ce1.md`) - ligne `couvert-valide` a la cloture de s52, sans
+  mention de couverture (`MUL-CE1-7`), non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`MUL-CE1-R1`**, mot pour mot de la fiche : etant donne les six enonces de reseau, quand on les lit, alors
+    *"sur les six items, nommer l'autre facon dans la phrase et la placer apres la consigne de comptage. Par
+    exemple : 'Compte les points ligne par ligne. Colonne par colonne, le total est le même. Quelle
+    multiplication ?' (16 mots, trois phrases, la derniere est la question), et symetriquement sur les items
+    colonne par colonne"*. Aujourd'hui la premiere phrase est *"Les deux façons de compter donnent le même total."*, placee
+    avant la consigne : rouge sur l'existant.
+  - Etant donne les memes enonces apres correction, quand on relit `MUL-CE1-4`, alors *"`MUL-CE1-4` reste
+    tenue, l'enonce disant toujours que les deux comptes donnent le meme total"*.
+  - Etant donne le paquet corrige, quand on relit les conditions deja verifiees par `nadia-prof`
+    (`MUL-CE1-1` a `MUL-CE1-7`), alors elles restent toutes tenues ; les trois dessins ne changent pas.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof`
+    (fiche, section 7) : *"qu'un enonce se lise dans l'ordre ou il est ecrit (`MUL-CE1-R1`)"*. Elle rejoue le
+    paquet corrige a l'ecran.
+- **Ce que cette story ne fait pas** : *"Ce n'est pas un durcissement"* (fiche) : elle ne touche ni les
+  reponses, ni les distracteurs, ni les dessins ; elle ne change aucun statut de la matrice.
+- **Lien decision** : `DEC-0111` (amendement A.13) ; reserve ouverte par `nadia-prof` le 2026-10-06, identifiant
+  alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4.
+- **Agent pressenti** : a affecter au planning de s53 par `sofia-sm` (instance C de `nadia-prof` pour le
+  rejeu ; `lea-dev` a ecrit le paquet).
+
+### S52-SCI-TERRE-CM1-REPRISE-APRES-RETRAIT - Remettre au catalogue "La Terre, le jour et les saisons" une fois ses deux motifs leves (`SCI-CM1-15`)
+
+**Contexte.** Le paquet `cm1-sciences-terre` est refuse a s51 (`FICHE-bandit-manchot-terre-cm1.md`, section 7,
+deux motifs) et son entree de catalogue `bandit-manchot-terre-cm1` est retiree a s52 (`DEC-0111` section 3,
+`S52-RETRAIT-SCIENCES-CM1`). Le fichier de contenu, son test de paquet et sa fiche restent. **Cette story est la
+reprise, a part de la correction du contenu** : la correction est ecrite dans `S51-SCI-TERRE-CM1-REPRISE`
+(section "Sprint 51") ; cette story ajoute ce que le retrait a change, le retour au catalogue. Report compte :
+la reprise du contenu est reportee a s51 puis a s52 (`DEC-0111` section 9, second report) ; **a s53 sans
+engagement, ce serait le troisieme**, et la `DEC` d'ouverture de s53 l'engage ou ecrit qu'elle est abandonnee.
+Tarif : celui de `S51-SCI-TERRE-CM1-REPRISE`, 1,0, prix fixe par `nadia-prof`.
+
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver le jeu sur la Terre, le jour, la nuit et les
+  saisons, sans qu'une reponse vraie me soit dite fausse, afin d'apprendre pourquoi il y a des saisons.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), `SCI-CM1-15`
+  (`squad/programme/sciences-et-technologie/competences-cm1.md`) ; ligne `non couvert`, `MATRICE-couverture.md`.
+- **Criteres d'acceptation** :
+  - **Contenu** : les criteres d'acceptation de `S51-SCI-TERRE-CM1-REPRISE` (motifs 1 et 2, points 1 a 4,
+    conditions deja tenues), repris **sans modification** : ce sont ceux de la fiche, et je ne les reformule
+    pas.
+  - **Catalogue, avant le Done** : etant donne le catalogue, quand on cherche `bandit-manchot-terre-cm1`, alors
+    il n'y est pas tant que `nadia-prof` n'a pas prononce le Done pedagogique (`DEC-0111` section 3 ;
+    `ADR-0061` : l'absence d'entree reste le seul retrait). Vrai aujourd'hui.
+  - **Catalogue, apres le Done** : etant donne le Done pedagogique prononce, quand on cherche
+    `bandit-manchot-terre-cm1`, alors **une seule** entree existe, qui pointe vers le paquet `cm1-sciences-terre`.
+    Aujourd'hui `grep -c "terre-cm1" adapters/adapter-content/src/main/resources/catalogue.yaml` rend 0 :
+    rouge sur l'existant.
+  - Etant donne le retour au catalogue, quand on lance `PaquetCm1SciencesTerreTest` et le garde-fou d'inventaire
+    des entrees du catalogue, alors ils sont verts, et aucun test n'a ete edite pour le leur permettre sans
+    que ce soit dit dans le diff.
+- **Question technique routee, non tranchee ici** : `nadia-prof` juge un paquet en le jouant, et le paquet n'a
+  plus d'entree. **Comment elle le joue sans qu'un enfant puisse le jouer** (entree sur une branche d'audit,
+  retiree avant la fusion si le Done est refuse) est a `theo-archi` via `sofia-sm`. Je n'ai pas lu de
+  precedent dans `DEC-0009`.
+- **Ce que cette story ne fait pas** : elle ne ferme pas la ligne (c'est `nadia-prof`), elle ne retouche aucun
+  autre paquet de sciences.
+- **Lien decision** : `DEC-0111` (sections 3 et 9, amendement A.14) ; `DEC-0110` (section 15).
+- **Agent pressenti** : a affecter au planning de s53 par `sofia-sm` (instance de sciences CM1 de
+  `nadia-prof`, `PAR-2`).
+
+### S52-SCI-ACTIVITE-HUMAINE-CM1-REPRISE-APRES-RETRAIT - Remettre au catalogue "L'activite humaine et la nature" une fois l'item 11 corrige (`SCI-CM1-18`)
+
+**Contexte.** Le paquet `cm1-sciences-activite-humaine` est refuse deux fois a s51
+(`FICHE-bandit-manchot-activite-humaine-cm1.md`, verdict du second passage, un seul motif maintenu : l'item
+11) et son entree `bandit-manchot-activite-humaine-cm1` est retiree a s52 (`DEC-0111` section 3). **Cette story
+est la reprise, a part de la correction du contenu** : elle est ecrite dans
+`S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE` (section "Sprint 51", troisieme passage) ; cette story ajoute le retour
+au catalogue. Report compte : le meme que ci-dessus, **troisieme a s53 sans engagement**. Tarif : celui de
+`S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`, 0,5 (`PAR-10`, un seul item touche), a confirmer par `nadia-prof`.
+
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver le jeu sur l'activite humaine et la nature, avec une
+  seule bonne reponse a la question du petrole et du charbon, afin de ne pas etre dit en faute quand j'ai bien
+  lu la question.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), `SCI-CM1-18`
+  (`squad/programme/sciences-et-technologie/competences-cm1.md`) ; ligne `non couvert`, `MATRICE-couverture.md`.
+- **Criteres d'acceptation** :
+  - **Contenu** : les criteres d'acceptation de `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE` (motif maintenu de
+    l'item 11, conditions deja tenues), repris **sans modification**.
+  - **Catalogue, avant le Done** : etant donne le catalogue, quand on cherche `bandit-manchot-activite-humaine-cm1`,
+    alors il n'y est pas tant que `nadia-prof` n'a pas prononce le Done pedagogique. Vrai aujourd'hui.
+  - **Catalogue, apres le Done** : etant donne le Done pedagogique prononce, quand on cherche
+    `bandit-manchot-activite-humaine-cm1`, alors **une seule** entree existe, qui pointe vers le paquet
+    `cm1-sciences-activite-humaine`. Aujourd'hui `grep -c "activite-humaine-cm1"
+    adapters/adapter-content/src/main/resources/catalogue.yaml` rend 0 : rouge sur l'existant.
+  - Etant donne le retour au catalogue, quand on lance `PaquetCm1SciencesActiviteHumaineTest` et le garde-fou
+    d'inventaire des entrees du catalogue, alors ils sont verts.
+- **Question technique routee** : la meme que pour `S52-SCI-TERRE-CM1-REPRISE-APRES-RETRAIT`, a `theo-archi`.
+- **Ce que cette story ne fait pas** : *"aucune autre modification n'est une condition de levee"* (fiche) ; elle
+  ne ferme pas la ligne.
+- **Lien decision** : `DEC-0111` (sections 3 et 9, amendement A.14) ; `DEC-0110` (section 16.4).
+- **Agent pressenti** : a affecter au planning de s53 par `sofia-sm` (instance de sciences CM1 de
+  `nadia-prof`, `PAR-2`).
