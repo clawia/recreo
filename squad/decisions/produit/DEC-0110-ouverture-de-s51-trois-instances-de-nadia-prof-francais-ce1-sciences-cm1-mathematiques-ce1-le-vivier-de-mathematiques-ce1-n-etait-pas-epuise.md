@@ -13,8 +13,8 @@
 - **Statut** : Acceptee. **Amendee le 2026-10-05 (section 14)** : `nadia-prof` a refuse la borne a
   trois instances ; l'instance C est *non engagee*, report a s52. s51 ouvre a deux instances, A et B,
   8,0. Les sections 2, 5, 7, 8, 9 et 11 sont conservees telles qu'ecrites et se lisent avec la
-  section 14, qui fait foi en cas d'ecart. **Amendee de nouveau le 2026-10-06 (section 15)** :
-  verdicts de l'instance B.
+  section 14, qui fait foi en cas d'ecart. **Amendee le 2026-10-06** : section 15 (verdicts de
+  l'instance B), puis section 16 (cloture de s51, etat final, fait foi sur la section 15).
 - **Lien** : `DEC-0108` (sections 3, 4, 6 ; section 6 corrigee ici) ; `DEC-0109` ;
   `DEC-0107` (section 4) ; `DEC-0104` (section 2.1) ; `DEC-0102` (section 2) ; `DEC-0099`
   (section 9.2) ; `DEC-0098` (section 3) ;
@@ -805,3 +805,222 @@ sont pas des identifiants de condition, et `CRP-CM1-R1` a `-R3` sont ceux de `na
 17. `SCI-CM1-10` passe a `couvert-valide`, sans mention, a la cloture de s51, sur le verdict de
     `nadia-prof`.
 18. Couverture au mieux : 128/182 (70,3 %), cinq fermetures.
+
+
+---
+
+## 16. Amendement du 2026-10-06 (cloture de s51) : etat final, budget reel, reprises reportees a s52, perimetre propose pour s52
+
+- **Auteur** : `camille-po`.
+- **Sources** : les sept fiches de `nadia-prof` du 2026-10-06, relues en entier pour cet amendement, sous
+  `squad/conformite/` : `FICHE-bandit-manchot-graphie-ce1.md` (`FRA-CE1-22`), `-temps-ce1.md`
+  (`FRA-CE1-20`), `-ordre-alphabetique-ce1.md` (`FRA-CE1-23`), `-homophones-ce1.md` (`HOM-CE1-R1`),
+  `-corps-cm1.md` (`SCI-CM1-10`), `-terre-cm1.md` (`SCI-CM1-15`), `-activite-humaine-cm1.md`
+  (`SCI-CM1-18`). Commits des verdicts : `c886a0fd` (instance A, premier passage), `7efcb400` (instance A,
+  second passage de `FRA-CE1-22`), `438f0d1e` (instance B), `81908b7d` (instance B, second passage de
+  `SCI-CM1-18`, rejeu `5a4ca6d8`). Porte technique : `rapport-qualite.md` de `yanis-qa` dans le dossier de
+  s51 (quatre jobs de la CI lances sur `ca4c934a`, 2076 tests, 0 echec), cite et non relance par moi.
+- **Ce que cet amendement tranche** : l'etat final de s51, le budget reel des deux instances, le sort des
+  reserves de l'instance A, de `SCI-CM1-18` et de `SCI-CM1-15`, ce qui est perime dans la section 15, et un
+  perimetre propose pour s52. **Ce qu'il ne fait pas** : il ne prononce aucun Done, ne juge aucun contenu et
+  n'ouvre pas s52. Les sections 1 a 15 sont inchangees ; en cas d'ecart, la section 16 fait foi.
+
+### 16.1 Etat final des sept postes
+
+Chaque verdict est lu dans la fiche, pas repris de la consigne de cloture.
+
+| Poste | Verdict de `nadia-prof` (2026-10-06) | Statut de la matrice | Reserve ou motif |
+|---|---|---|---|
+| `FRA-CE1-22` | **REFUSE** au premier passage (items 13 et 16), **VALIDE sans reserve** au second (`df608669`, `7efcb400`) | `couvert-valide` | aucune |
+| `FRA-CE1-20` | **VALIDE SOUS RESERVE** | `couvert-valide` | `TPS-CE1-R1` |
+| `FRA-CE1-23` | **VALIDE SOUS RESERVE** | `couvert-valide` | `ALP-CE1-R1` |
+| `HOM-CE1-R1` (`FRA-CE1-16`) | **VALIDE**, reserve levee (`cc5686e0`) | inchange, deja `couvert-valide` | levee |
+| `SCI-CM1-10` | **VALIDE SOUS RESERVE**, *"sans mention de couverture"* | `couvert-valide` | `CRP-CM1-R1` a `CRP-CM1-R3` |
+| `SCI-CM1-15` | **REFUSE**, premier passage, aucun rejeu finance | `non couvert` | items 4 et 11 |
+| `SCI-CM1-18` | **REFUSE** au premier passage, **REFUSE** au second (rejeu `5a4ca6d8`) | `non couvert` | item 11, maintenu |
+
+Quatre fermetures sur six lignes engagees ; aucune mention de couverture partielle n'est due (section 10).
+La matrice est mise a jour dans le meme geste (`MATRICE-couverture.md`, note du 2026-10-06).
+
+**Ce que le choix de 15.3 a donne.** J'avais retenu le rejeu de `SCI-CM1-18` sur le prix et sur la chance de
+fermer (motif 2 de 15.3 : un seul motif, `SCI-2` tenue). Le rejeu n'a pas ferme : ce motif etait un pari, et
+il a ete perdu. Je ne sais pas ce qu'aurait donne le rejeu de `SCI-CM1-15` a sa place.
+
+### 16.2 Budget reel des deux instances
+
+| Instance | Poste | Montant | Cumul |
+|---|---|---|---|
+| A | `FRA-CE1-22`, `FRA-CE1-20`, `FRA-CE1-23`, un lot chacune | 3,0 | 3,0 |
+| A | `HOM-CE1-R1`, correction | 0,5 | 3,5 |
+| A | rejeu `FRA-CE1-22` (`PAR-10` ; 2 items sur 24 touches, `PAR-14` ne s'applique pas) | 0,5 | **4,0** |
+| A | marge non consommee (plafond 5,0) | 1,0 | |
+| B | `SCI-CM1-10`, `SCI-CM1-15`, `SCI-CM1-18`, un lot chacune | 4,5 | 4,5 |
+| B | rejeu `SCI-CM1-18` (`PAR-10`) | 0,5 | **5,0** |
+| B | marge non consommee | 0 | |
+
+**Engage au planning : 8,0. Consomme : 9,0** (A 4,0 + B 5,0). L'ecart de 1,0 est celui des deux rejeux, pris
+chacun sur la marge de rejeu nommee en sections 2 et 14 (A : 1,5 dont 0,5 ; B : 0,5). Aucun plafond de
+`PAR-8` n'est depasse. B ferme une ligne sur trois pour 5,0.
+
+### 16.3 Reserves de l'instance A : `TPS-CE1-R1` et `ALP-CE1-R1`, non engagees a s51
+
+**Elles tiennent dans le budget, et je ne les engage pas.** Arithmetique : 4,0 + 0,5 + 0,5 = 5,0, le plafond
+de `PAR-8`, marge 0 (comme B en 15.2). `PAR-14` ne s'applique pas : quatre items sur vingt-quatre pour
+`TPS-CE1-R1` (4, 7, 9, 11), trois pour `ALP-CE1-R1` (1, 6, 11). Trois motifs de ne pas les engager :
+
+1. **`PAR-16`** : un poste n'est engage que s'il porte une story et une affectation nominative au planning ;
+   le planning de s51 est clos et ne les porte pas. Les engager a la cloture serait un arbitrage de planning
+   que personne n'a ecrit.
+2. **La porte technique est mesuree.** Toute correction de YAML apres `ca4c934a` oblige a une nouvelle
+   mesure des quatre jobs et a un rejeu par l'instance A. Je juge qu'une reserve non bloquante ne vaut pas de
+   rouvrir la mesure de cloture.
+3. **Marge 0.** Engagees ensemble, elles laissent A sans rejeu si l'une des deux corrections est refusee.
+
+Aucune des deux reserves ne rouvre sa ligne : `FRA-CE1-20` et `FRA-CE1-23` sont `couvert-valide`. Deux
+stories de correction differee sont ecrites au backlog (`docs/backlog/backlog.md`, fin de la section "Sprint
+51"), au format et au tarif de `HOM-CE1-R1` (0,5 chacune), **non engagees a s51, reportees a s52 : premier
+report**, avec les criteres de levee de `nadia-prof` mot pour mot. `HOM-CE1-R1`, ouverte a s50, a ete engagee
+a s51 : meme delai vise.
+
+### 16.4 `SCI-CM1-18` : deux refus, motif maintenu, reprise a s52
+
+`nadia-prof` maintient un seul motif, l'item 11 : *"la correction deplace le defaut sans le supprimer"*
+(fiche, second passage, S2-3). La question demande de preserver *"ces ressources"*, le petrole et le charbon,
+et *"produire de l'électricité avec plus de gaz naturel"* y repond comme la bonne reponse. Deux points
+du premier motif sont leves (l'enonce ne fixe plus un but que le stockage atteint a la lettre ; *"extraire
+plus vite"* est faux sans discussion) ; les deux points non bloquants du premier passage sont pris (S2-2). Je ne
+conteste pas le motif et je ne le reformule pas.
+
+**Correction la plus courte, celle de la fiche** : *"un énoncé qui nomme le gaz naturel avec le pétrole et le
+charbon, ou qui parle des énergies fossiles, quand le gaz reste en distracteur"*, formulations laissees a
+l'equipe. Barre inchangee : *"Je ne releverai pas cette barre au rejeu suivant."* Aucune autre modification
+n'est une condition de levee, ni sur l'item 11 ni ailleurs.
+
+Story : `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`, ecrite au backlog, **non engagee a s51** (B est a 5,0),
+candidate a s52, troisieme passage. Tarif prevu 0,5 (`PAR-10`, un seul item touche), a confirmer par
+`nadia-prof`, qui fixe le prix. Precedent de la ligne voisine : `SCI-CM1-16` a ferme au troisieme passage a
+s46 (section 4).
+
+**Si le troisieme passage refuse encore**, je n'ecris pas ici de quatrieme passage : la suite est une decision
+de s52. Question posee a `nadia-prof`, sans que j'y reponde : retirer l'item 11 du paquet leve-t-il le motif ?
+Elle a ecrit cette voie recevable pour `FRA-CE1-22` (*"Supprimer les deux items sans les remplacer est aussi
+recevable"*), pas pour cette fiche.
+
+### 16.5 `SCI-CM1-15` : reprise a s52, et laquelle des deux lectures vaut pour les quatre points
+
+Le backlog portait deux lectures contradictoires dans la meme story. La premiere (tarif prevu) : 1,0 si les
+six points sont repris dans le meme diff, 0,5 si seuls les deux motifs le sont. La seconde (paragraphe *"Ce que
+cette story ne fait pas"*) : les quatre points non bloquants, *"laisses en l'etat"*, deviennent des reserves
+datees. **La lecture qui vaut est la premiere : les quatre points sont repris dans le meme diff, sept items
+sur douze, 1,0 (`PAR-14`, `nadia-prof` source des motifs).** C'est celle que preferait 15.3 (un audit au lieu
+de deux, pour le meme prix) et celle que les criteres de la story ecrivent deja. Le second paragraphe decrit
+le cas de repli, et le backlog est corrige en ce sens. **Ce qui reste a `nadia-prof`** : fixer le prix au
+rejeu et, si un point est laisse en l'etat, l'ouvrir en reserve datee (fiche, section 8).
+
+`SCI-CM1-15` reste `non couvert`. **Premier report du rejeu : s51**, motif le plafond de `PAR-8` (15.2).
+Story : `S51-SCI-TERRE-CM1-REPRISE`, non engagee a s51, candidate a s52.
+
+### 16.6 `SCI-CM1-10` et ses trois reserves
+
+`SCI-CM1-10` est `couvert-valide` dans la matrice, sans mention de couverture, sur le seul verdict de
+`nadia-prof`. Les trois reserves ne la rouvrent pas. La story unique `S51-SCI-CORPS-CM1-RESERVES` (15.4) est
+maintenue telle quelle : tarif 0,5 (`PAR-10`), cinq items sur douze (`PAR-14` ne s'applique pas), non
+engagee a s51, candidate a s52, premier report.
+
+### 16.7 Couverture finale
+
+**127 / 182 = 69,8 %**, au lieu des 128 / 182 de 15.6 (cinq fermetures au mieux) et des 129 / 182 de 14.3
+(six). Compte par la commande ecrite en tete de `MATRICE-couverture.md` (note du 2026-10-06), lancee sur la
+matrice modifiee : `couvert-valide` 127, `en cours` 3, `non couvert` 52, `non couvrable en l'etat` 76, total
+258, denominateur 182. Avant ce geste, la meme commande rendait 123 et 56 : +4 sur le numerateur, -4 sur les
+`non couvert`. Le plancher de 15.6 (124 / 182) n'est pas atteint : A a ferme ses trois lignes.
+
+### 16.8 Section 15 : ce qui est perime, et deux corrections
+
+Lignes comptees sur la version de la section 15 a `db1fc6ed`, avant cet amendement. La section 15 n'est pas
+reecrite.
+
+- **15.2, tableau et paragraphe qui le suit (lignes 699 a 709)** : perimes. Le budget de B y est un budget
+  prevu, avec un seul rejeu tenable ; le budget reel est en 16.2.
+- **15.3 (lignes 711 a 749)** : le *choix* du rejeu de `SCI-CM1-18` est un fait date et reste lisible. Le
+  tarif prevu de `SCI-CM1-15` (*"a fixer par `nadia-prof`"*, avec ma preference) est remplace par 16.5, et le
+  garde-fou *"sept ou plus"* est sans objet : le rejeu a touche cinq items et a ete refuse.
+- **15.6 (lignes 776 a 782)** : perimee, remplacee par 16.7. La phrase *"ce que je n'ai pas lu"*, ligne 781,
+  qui portait sur l'instance A, **n'est plus vraie** : j'ai lu les fiches de l'instance A (16.1), et A a
+  ferme ses trois lignes.
+- **Decisions prises 14 a 18 (lignes 799 a 807)** : a lire comme historique, chacune reprise ici. 14 (rejeu de
+  `SCI-CM1-18`, B a 5,0) : executee, issue en 16.4. 15 (`SCI-CM1-15` reportee, tarif 1,0 ou 0,5) : lecture
+  fixee en 16.5. 16 (`S51-SCI-CORPS-CM1-RESERVES`) : maintenue (16.6). 17 (`SCI-CM1-10` `couvert-valide`) :
+  executee dans la matrice. 18 (128 / 182) : remplacee par 127 / 182 (16.7).
+- **Erratum de citation, ligne 789 (15.7, ligne `nadia-prof`)** : la phrase *"une correction se verifie a
+  l'ecran, pas au diff"* y est citee comme *"fiche, section 7"*. **Elle n'est pas dans la section 7 de
+  `FICHE-bandit-manchot-activite-humaine-cm1.md`** : elle est dans le paragraphe d'en-tete du premier verdict,
+  avant la section 1 (*"Le lot repasse devant moi apres correction, et je le rejoue avant de juger : une
+  correction se verifie a l'ecran, pas au diff."*). La section 7 porte le motif de l'item 11. Le sens de la
+  ligne 789 est inchange.
+
+**Une limite sur ce que j'ai recu.** La consigne de cloture annoncait une liste de defauts du relecteur ; je
+n'en ai recu que les quatre plages de lignes ci-dessus, la citation de la ligne 789 et la ligne 781. Si la
+liste en porte d'autres, ils ne sont pas traites ici.
+
+### 16.9 Point ouvert, hors de la demande : deux paquets refuses sont dans le catalogue
+
+`catalogue.yaml` porte les entrees `bandit-manchot-activite-humaine-cm1` et `bandit-manchot-terre-cm1`
+(`grep -n "activite-humaine-cm1\|terre-cm1" adapters/adapter-content/src/main/resources/catalogue.yaml` :
+deux entrees). Deux paquets que `nadia-prof` a refuses le 2026-10-06 sont donc dans le catalogue servi. Les
+deux refus portent sur une cle de reponse fausse : l'enfant est dit en faute sur une reponse vraie ou
+acceptable. C'est la situation de `DEC-0009` (`bandit-manchot-le-bon-son-cp`, s04). Je n'ai pas pris de
+decision de retrait : elle change le contenu servi, elle n'etait pas dans la consigne, et le retrait (dans
+`ADR-0061`, l'absence d'entree reste le seul retrait) touche des tests que je ne mesure pas. **Question Q1,
+a l'utilisatrice : retire-t-on les deux entrees jusqu'a la reprise de s52 ?** Je recommande le retrait. Si
+oui, la decision et sa story vont a `sofia-sm` dans le meme geste. Tant que Q1 n'a pas de reponse, ce point
+n'est pas traite.
+
+### 16.10 Perimetre propose pour s52, non ouvert
+
+L'ouverture de s52 est une `DEC` de s52. Cette section liste les candidats, leur tarif et ce qui les
+conditionne. **Aucune borne a trois instances n'est supposee** : sa derivation est un document de
+`nadia-prof`, et la verification des formes (a), (b) et (c) qu'elle a annoncee pour la cloture de s51
+(`ARBITRAGE-PREALABLE-s51-borne-a-trois-instances.md`, section 8) n'existe pas dans le depot a cette date
+(`ls squad/conformite` : aucun fichier de derivation ni de s52).
+
+| Candidat | Couple matiere/niveau (`PAR-2`) | Tarif prevu | Conditions |
+|---|---|---|---|
+| `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE` (`SCI-CM1-18`, troisieme passage) | sciences et technologie CM1 | 0,5 | prix fixe par `nadia-prof` ; question de 16.4 |
+| `S51-SCI-TERRE-CM1-REPRISE` (`SCI-CM1-15`) | sciences et technologie CM1 | 1,0 (ou 0,5) | prix fixe par `nadia-prof` (16.5) |
+| `S51-SCI-CORPS-CM1-RESERVES` (`CRP-CM1-R1` a `R3`) | sciences et technologie CM1 | 0,5 | aucune |
+| `TPS-CE1-R1`, `ALP-CE1-R1` | francais CE1 | 0,5 chacune | aucune ; premier report |
+| nouveaux lots de francais CE1 | francais CE1 | 1,0 par ligne | 20 `non couvert` au disque, dont 18 atteignables et 2 plafonnees (`FRA-CE1-03`, `-21`) selon `DEC-0110` section 6 ; choix des lignes et avis de `theo-archi` a la `DEC` d'ouverture |
+| instance C : `MAT-CE1-17`, `MAT-CE1-06`, `MAT-CE1-02` (moitie textuelle) | mathematiques CE1 | 3,0 | a rouvrir **sous la condition de `nadia-prof`** : document de derivation et verification des formes (a), (b), (c) a la cloture de s51 ; `ADR-0080` A2 ecrit avant le premier paquet de designation de CE1 ; materiau et contraintes de dessin (`ines-design`) ; arbitrages de 14.6 acquis. **Report compte : `MAT-CE1-17` en est a neuf sprints (s43 a s51) ; sans engagement a s52, dix** |
+| `ART-CP-10` | arts plastiques CP | non chiffre | `ADR-0104` est `Propose`, suspendu a `C5` clause 1 de `nadia-prof` ; **aucun budget avant sa reponse**. Exclue de s50 (`DEC-0109`, 10.1) puis de s51 (section 6) : deux sprints |
+
+Le vivier de sciences et technologie CM1 se reduit aux trois premiers postes (2 `non couvert` au disque) :
+une instance de sciences a s52 porterait 2,0 au plus, sans lot neuf a ajouter.
+
+**Questions deja ouvertes, a trancher par la `DEC` de s52** : `PAR-4` (passe transverse) a deux instances et
+ecart `PAR-9` / pratique (14.7) ; ecart *"palier 2"* des cellules de la matrice (`DEC-0110` section 6, point
+R10 du planning de s51), que cette cloture ne traite pas.
+
+### 16.11 Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Porter a la cloture de s51 le budget reel de 16.2 (A 4,0, B 5,0) ; `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`, `S51-SCI-TERRE-CM1-REPRISE`, `S51-SCI-CORPS-CM1-RESERVES` et les deux stories de correction `TPS-CE1-R1` et `ALP-CE1-R1` comme *"non engagees, reportees a s52"* (`PAR-16`). Q1 (16.9) des qu'elle a une reponse |
+| `nadia-prof` | Fixer le prix de `S51-SCI-TERRE-CM1-REPRISE` et du troisieme passage de `SCI-CM1-18` ; repondre a la question de 16.4 ; la verification des formes (a), (b), (c) de s51 (R12 du planning) ; sa reponse a `C5` clause 1 pour `ADR-0104` |
+| `theo-archi` | Aucun avis nouveau pour les reprises : YAML seul. Avis sur C et `ADR-0080` A2 pour s52 (14.8, inchange) |
+| `yanis-qa` | Criteres des cinq stories ecrits en entree/sortie ; ce qu'aucun automate ne voit est liste dans chacune pour `nadia-prof` |
+
+## Decisions prises (amendement de cloture du 2026-10-06)
+
+19. s51 clot a quatre fermetures : `FRA-CE1-22`, `FRA-CE1-20`, `FRA-CE1-23`, `SCI-CM1-10`. Couverture
+    127 / 182 (69,8 %), commande ecrite dans la matrice.
+20. Budget reel : A 4,0, B 5,0, total 9,0 pour 8,0 engages (deux rejeux). `TPS-CE1-R1` et `ALP-CE1-R1` tiennent
+    dans le plafond de A a 5,0 et ne sont pas engagees a s51.
+21. `SCI-CM1-18` : motif maintenu, reprise a s52 par `S51-SCI-ACTIVITE-HUMAINE-CM1-REPRISE`, 0,5 prevu.
+22. `SCI-CM1-15` : reprise a s52, les quatre points non bloquants repris dans le meme diff, 1,0 prevu.
+23. Stories de correction differee `TPS-CE1-R1` et `ALP-CE1-R1`, 0,5 chacune, reportees a s52 (premier
+    report).
+24. La section 15 est lue avec la section 16 (16.8), citation de la ligne 789 corrigee.
+25. Perimetre de s52 propose en 16.10, non ouvert ; l'ouverture est une `DEC` de s52.
+26. Q1 (16.9) est ouverte : deux paquets refuses restent dans le catalogue tant que l'utilisatrice n'a pas
+    repondu.
