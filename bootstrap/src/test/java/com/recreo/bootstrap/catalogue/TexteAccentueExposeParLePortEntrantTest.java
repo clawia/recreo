@@ -343,6 +343,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S46-SCI-PHENOMENES-CM1 (s46) : entree neuve, SCI-CM1-16, phenomenes geologiques et
             // meteorologiques et les risques associes.
             "bandit-manchot-phenomenes-naturels-cm1",
+            // S51-SCI-ACTIVITE-HUMAINE-CM1 (s51) : entree neuve, SCI-CM1-18, effet de l'activite
+            // humaine sur l'environnement et geste de preservation.
+            "bandit-manchot-activite-humaine-cm1",
             // S46-EMC-EMOTION-CM1 (s46) : entree neuve, EMC-CM1-01, identifier une emotion et
             // distinguer ce que l'on ressent de ce que l'on fait.
             "bandit-manchot-emotion-ressentir-agir-cm1",
@@ -606,6 +609,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les institutions de ma commune",
             // S46-SCI-PHENOMENES-CM1 (s46) : titre neuf.
             "Les risques naturels",
+            // S51-SCI-ACTIVITE-HUMAINE-CM1 (s51) : titre neuf.
+            "L'activité humaine et la nature",
             // S46-EMC-EMOTION-CM1 (s46) : titre neuf.
             "Ressentir et agir",
             // S46-SCI-MOUVEMENT-CM1 (s46) : titre neuf.
@@ -879,6 +884,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis à quelle institution s'adresser, ou quel est son rôle.",
             // S46-SCI-PHENOMENES-CM1 (s46) : consigne neuve.
             "Lis bien, puis dis quel phénomène, ou quel geste protège.",
+            // S51-SCI-ACTIVITE-HUMAINE-CM1 (s51) : consigne neuve.
+            "Lis bien, puis dis quel est l'effet, ou quel geste préserve.",
             // S46-EMC-EMOTION-CM1 (s46) : consigne neuve.
             "Lis bien, puis dis quelle émotion ressent la personne, ou distingue ce qu'elle "
                     + "ressent de ce qu'elle fait.",
@@ -1401,6 +1408,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // SCI-CM1-16).
             "Identifier quelques phénomènes géologiques et météorologiques (séisme, éruption, "
                     + "tempête, inondation) et les risques associés.",
+            // S51-SCI-ACTIVITE-HUMAINE-CM1 (s51) : competence neuve, copiee conforme du referentiel
+            // de nadia-prof (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
+            // SCI-CM1-18).
+            "Identifier un effet de l'activité humaine sur l'environnement et un geste de "
+                    + "préservation des ressources.",
             // S46-EMC-EMOTION-CM1 (s46) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
             // EMC-CM1-01).

@@ -1026,6 +1026,15 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " \"une tempête\"...) ou des gestes de protection en texte libre, valeurDe rend"
                     + " null sur les trois propositions de chaque item. Mesure du 2026-10-01 sur le"
                     + " paquet servi : aucune des 36 propositions ne commence par un chiffre"),
+            // S51-SCI-ACTIVITE-HUMAINE-CM1 : paquet neuf de sciences et technologie CM1
+            // (SCI-CM1-18).
+            Map.entry("cm1-sciences-activite-humaine",
+            "12 items sur 12 portent deux distracteurs (trois propositions, 36 au total), mais"
+                    + " aucune n'est numerique : ce sont des effets (\"ils perdent leur abri et leur"
+                    + " nourriture\"...) ou des gestes (\"réparer les canalisations qui fuient\"...)"
+                    + " en texte libre, sans chiffre, valeurDe rend null sur les trois propositions de"
+                    + " chaque item. Mesure du 2026-10-06 sur le paquet servi : aucune des 36"
+                    + " propositions ne commence par un chiffre"),
             // S46-EMC-EMOTION-CM1 : paquet neuf, EMC-CM1-01 (identifier une emotion, distinguer
             // ressentir et agir).
             Map.entry("cm1-emc-emotion-ressentir-agir",

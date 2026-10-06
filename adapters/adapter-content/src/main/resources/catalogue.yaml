@@ -756,3 +756,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-decrire-une-oeuvre
     nombreDeManches: 7
+  - id: bandit-manchot-activite-humaine-cm1
+    titre: "L'activité humaine et la nature"
+    consigne: "Lis bien, puis dis quel est l'effet, ou quel geste préserve."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-activite-humaine
+    nombreDeManches: 10
