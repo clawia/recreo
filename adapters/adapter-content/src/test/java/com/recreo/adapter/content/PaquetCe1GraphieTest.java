@@ -134,7 +134,11 @@ class PaquetCe1GraphieTest {
                 char juste = bonne.charAt(i);
                 char faux = fautive.charAt(i);
                 char suivante = i + 1 < bonne.length() ? bonne.charAt(i + 1) : ' ';
-                if (juste == 'm' && faux == 'n' && "bpm".indexOf(suivante) >= 0) {
+                char precedente = i > 0 ? bonne.charAt(i - 1) : ' ';
+                // Fiche de nadia-prof du 2026-10-06 : la regle du m decide un son nasal, donc m devant b
+                // ou p apres une voyelle ; une consonne double (pomme, flamme) n'en porte aucun.
+                if (juste == 'm' && faux == 'n' && "bp".indexOf(suivante) >= 0
+                        && "aeiouyéè".indexOf(precedente) >= 0) {
                     return REGLE_M;
                 }
                 if (juste == 'ç' && faux == 'c' && "aou".indexOf(suivante) >= 0) {
@@ -271,6 +275,20 @@ class PaquetCe1GraphieTest {
                         .hasSizeLessThanOrEqualTo(6);
             }
         }
+    }
+
+    /**
+     * Rejeu de s51 (fiche de nadia-prof) : "pomme" / "ponme" oppose deux formes sans son nasal, que
+     * l'enfant departage en lisant. La regle du m n'est decidee que devant b ou p, apres une voyelle.
+     */
+    @Test
+    void leJeuFautifDeLaConsonneDoubleEstRefuse() {
+        List<Question> items = tousLesItems(new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-graphie-fautif-consonne-double"));
+
+        assertThatThrownBy(() -> reglesDe(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("GRL-CE1-2");
     }
 
     /**

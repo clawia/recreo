@@ -9,6 +9,8 @@
 # m devant m, b, p ; c/ç ; g, ge, gu (quatre items en gu, quatre en ge).
 # GRL-CE1-2 : deux propositions, le meme mot ecrit deux fois, ne differant que par la graphie que
 # la regle decide. Section 2, point 1 : la bonne reponse porte ç devant a, o ou u, jamais l'inverse.
+# Precision de nadia-prof du 2026-10-06 (FICHE-bandit-manchot-graphie-ce1.md) : la regle du m decide un son
+# nasal, m devant b ou p apres une voyelle ; aucune consonne double (pomme, flamme).
 # GRL-CE1-3 : aucune exception a la regle du m (bonbon, néanmoins).
 # Section 2, points 2 et 3 : mots frequents, le distracteur n'est pas un mot. Point 4 : le mot cible
 # n'est ni dans l'enonce ni dans l'indice. Point 5 : l'indice donne une methode, jamais le mot.
@@ -77,8 +79,8 @@ items:
     distracteurs: ["un gide"]
     indice: "Regarde la lettre qui suit le g."
   - enonce: "Quel mot est bien écrit ?"
-    bonneReponse: "une pomme"
-    distracteurs: ["une ponme"]
+    bonneReponse: "une trompette"
+    distracteurs: ["une tronpette"]
     indice: "Compare la lettre après le m."
   - enonce: "Quel mot est bien écrit ?"
     bonneReponse: "une balançoire"
@@ -89,8 +91,8 @@ items:
     distracteurs: ["un pigon"]
     indice: "Compare les lettres après le g."
   - enonce: "Quel mot est bien écrit ?"
-    bonneReponse: "une flamme"
-    distracteurs: ["une flanme"]
+    bonneReponse: "un champion"
+    distracteurs: ["un chanpion"]
     indice: "Pense à la lettre qui vient après le m."
   - enonce: "Quel mot est bien écrit ?"
     bonneReponse: "le français"

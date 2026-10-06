@@ -1,0 +1,16 @@
+schema: 1
+id: ce1-graphie-fautif-consonne-double
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1GraphieTest. "pomme" / "ponme" ne portent aucun son
+# nasal (consonne double) : la regle du m ne les decide pas, GRL-CE1-2 doit les refuser.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Choisir la graphie d'un son selon la lettre qui suit (m devant m, b, p ; c/ç ; g/ge/gu)."
+lignesDeReferentiel: ["FRA-CE1-22"]
+items:
+  - enonce: "Quel mot est bien écrit ?"
+    bonneReponse: "une pomme"
+    distracteurs: ["une ponme"]
+    indice: "Regarde la lettre qui suit le m."

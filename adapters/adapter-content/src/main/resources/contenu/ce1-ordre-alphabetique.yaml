@@ -13,7 +13,7 @@
 # distracteurs, dans l'ordre du fichier : "inverse" (a) et "deuxieme-lettre" (b, ordre juste sur la
 # premiere lettre, faux sur la deuxieme). Relu par PaquetCe1AlphabetiqueTest.
 # TRV-CE1-2 : la bonne reponse n'est jamais la liste strictement la plus longue (trois mots, memes
-# lettres) et n'est le mot strictement le plus long que dans cinq items sur vingt-quatre.
+# lettres) et n'est le mot strictement le plus long que dans quatre items sur vingt-quatre.
 # TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-23), aucun champ a
 # voix haute ni texteSupport, un indice sur chaque item (douze mots au plus, jamais la reponse),
 # vingt-quatre items au-dessus du plancher de vingt. LON-CE1-5 : au plus trois mots par proposition.
