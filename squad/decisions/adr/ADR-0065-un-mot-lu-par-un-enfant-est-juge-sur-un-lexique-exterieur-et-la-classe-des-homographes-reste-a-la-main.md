@@ -206,3 +206,94 @@ d'etre payee quand l'historique porte deja le materiau.
   visible dans le paquet, pour que le perimetre servi ne soit pas ecrit deux fois. Aucun changement
   de critere, aucun changement de verdict.
 - `squad/decisions/adr/ADR-index.md` : ligne `ADR-0065` ajoutee.
+
+## Amendement du 2026-10-06 (s51, `theo-archi`) - A1, le distracteur sans cedille dans la forme de `GRL-CE1-2`
+
+Le texte ci-dessus est inchange. Cet amendement ajoute une admission et deux clauses.
+
+**Ce qui a joue.** `GRL-CE1-1` et `GRL-CE1-2` (`squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md`,
+section 5.13, ligne `FRA-CE1-22`) imposent des items en `c`/`ç` dont le distracteur est le meme mot sans
+cedille : *un garçon* / *un garcon*. `LexiqueFrancais.squelette` retire la cedille comme tout signe
+diacritique, *garcon* n'est pas au lexique et *garçon* l'est sous le meme squelette : le critere de la
+decision 1 refuse ce distracteur, et le paquet de la ligne est rouge par construction. Mesure de
+l'avis de faisabilite de s51 (section 1), sur une sonde de 12 items dont 4 en `ç` : 4 defauts, un par
+item en `ç`, et 0 defaut quand ces quatre items sont remplaces par des mots sans cedille.
+
+**Decision.** Un distracteur est admis sans etre juge si et seulement si, **compare a la bonne
+reponse du meme item** :
+
+1. les deux chaines ont la meme longueur apres normalisation NFC ;
+2. elles different en au moins une position ;
+3. a chaque position ou elles different, la bonne reponse porte `ç` (ou `Ç`) et le distracteur `c`
+   (ou `C`).
+
+Hors des positions de la cedille, un distracteur admis est donc la bonne reponse lettre pour lettre,
+et la bonne reponse est jugee pour son propre compte : l'admission ne soustrait au critere aucun
+autre mot.
+
+Ce qui reste rouge, chaque cas etant une clause de mise a l'epreuve : le mot sans cedille dans un
+enonce, un indice, une explication ou une bonne reponse ; un distracteur dont la bonne reponse ne
+porte pas la forme marquee ; deux propositions qui different par autre chose que la cedille (*un
+garçon* / *des garcons*) ; **toute autre marque** (*un zéro* / *un zero* reste refuse).
+
+**Pourquoi la cedille seule, et pas "la forme marquee".** L'avis de s51 proposait *la forme
+marquee*. Je retiens la forme la plus etroite : la seule regle qui demande aujourd'hui un mot
+francais prive de sa marque est `GRL-CE1-2`, et sa seule marque est la cedille. Etendre l'admission
+aux accents ouvrirait au paquet suivant la porte que cet `ADR` a ete ecrit pour fermer - *zero* pour
+*zéro* dans un distracteur dont la bonne reponse est accentuee - sans qu'aucune decision
+pedagogique ne l'ait demande.
+
+**Ce que l'admission ne derive pas d'une liste.** Elle ne nomme aucun mot et aucun paquet : elle est
+derivee de la forme de l'item. Le rapprochement du distracteur et de sa bonne reponse tient a
+l'ordre et au nom des champs que produit `LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest.textesServis`
+(la bonne reponse precede ses distracteurs, meme paquet, meme enonce). S'il cessait de tenir, aucun
+distracteur ne serait plus admis et le garde-fou rougirait : le mode de defaillance est bruyant.
+
+### Regle executable
+
+`adapters/adapter-content/src/test/java/com/recreo/adapter/content/AucunMotServiNeSEcarteDeSonAccentTest.java`,
+fonction pure `neDiffereQueParLaCedille(distracteur, bonneReponse)`, appelee dans
+`verifierQueChaqueMotServiPorteSonAccent` pour toute chaine portant la bonne reponse de son item.
+Les trois clauses de la decision restent ; deux s'ajoutent :
+
+4. `leDistracteurSansCedilleNEstAdmisQueDansLaFormeDeGrlCe1Deux` - sur le paquet
+   `src/test/resources/contreexemple/AucunMotServiNeSEcarteDeSonAccentTest/cedille/`, l'item 1 est
+   l'exemple de `GRL-CE1-2` tel que `nadia-prof` l'a ecrit et n'est pas nomme ; les items 2 a 6
+   sortent chacun de cette forme d'une seule facon et chacun est nomme.
+5. `laFormeDeGrlCe1DeuxSeJugeSurLesDeuxPropositionsEntieres` - la fonction pure, y compris une bonne
+   reponse en NFD.
+
+**Morsure mesuree**, `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test
+-Dtest=AucunMotServiNeSEcarteDeSonAccentTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre :
+le module `adapter-content` et ses amonts, `-am` porte, l'enveloppe rapporte 21.0.10 :
+
+| Etat du test | Resultat |
+|---|---|
+| tel que commite | 5 tests, 0 echec |
+| mutation : tout distracteur admis des que sa bonne reponse est connue | 5 tests, 1 echec, clause 4 (l'item 2 n'est plus nomme) |
+| mutation : aucune admission | 5 tests, 1 echec, clause 4 (l'item 1 est nomme) ; clause 1 verte |
+
+La derniere ligne dit aussi qu'**aucun distracteur du contenu servi au 2026-10-06 ne depend de
+l'admission** : sans elle, le contenu de production reste sans defaut.
+
+**Ce n'est pas une regle ArchUnit**, pour le motif de la decision : l'objet juge est le contenu rendu
+par le chargeur reel. Le compte de regles ArchUnit du depot est inchange.
+
+### Consequences
+
+- **Bonne** : la ligne `FRA-CE1-22` devient ecrivable dans la forme que `GRL-CE1-2` demande, sans
+  table d'exemption ni cliquet.
+- **Mauvaise** : un distracteur sans cedille est desormais servi a un enfant de CE1, par
+  construction. C'est l'objet meme de l'item, et c'est a `nadia-prof` de dire si cette forme tient sa
+  condition ; la porte technique ne le tranche pas.
+- **Mauvaise** : le rapprochement depend de l'ordre de production d'un autre test. Le defaut serait
+  bruyant, pas silencieux, mais il couplerait deux garde-fous.
+
+### Ce qui me ferait changer d'avis plus tard
+
+- Une regle pedagogique ecrite qui demande un distracteur prive d'une **autre** marque : elle
+  appellerait un nouvel amendement, nommant cette marque, et non l'elargissement de celui-ci a toute
+  marque.
+- Le refus par `nadia-prof` de la forme *un garçon* / *un garcon* au profit d'une autre forme d'item
+  (*gar_on*, propositions `c` / `ç`) : l'admission deviendrait sans objet, et cet amendement serait a
+  retirer avec ses deux clauses plutot qu'a laisser dormir.

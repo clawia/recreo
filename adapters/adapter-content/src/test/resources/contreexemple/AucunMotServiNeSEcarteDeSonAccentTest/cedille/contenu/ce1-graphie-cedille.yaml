@@ -1,0 +1,36 @@
+# Mise a l'epreuve de l'amendement A1 d'ADR-0065 (s51). L'item 1 reprend l'exemple de GRL-CE1-2
+# (arbitrage prealable de s48, section 5.13) : il est admis. Les items 2 a 6 sortent chacun de cette
+# forme d'une seule facon, et chacun doit rester rouge :
+#   2 - la bonne reponse ne porte pas la forme marquee ;
+#   3 - les deux propositions different par autre chose que la cedille ;
+#   4 - le mot sans cedille est dans l'enonce, pas dans un distracteur ;
+#   5 - la marque manquante n'est pas une cedille ;
+#   6 - c'est la bonne reponse qui porte le mot sans cedille.
+# Texte de fixture, jamais affiche a un enfant.
+schema: 1
+id: ce1-graphie-cedille
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Domaine de fixture"
+  competence: "Compétence de fixture"
+items:
+  - enonce: "Item 1"
+    bonneReponse: "un garçon"
+    distracteurs: ["un garcon"]
+  - enonce: "Item 2"
+    bonneReponse: "un gamin"
+    distracteurs: ["un garcon"]
+  - enonce: "Item 3"
+    bonneReponse: "un garçon"
+    distracteurs: ["des garcons"]
+  - enonce: "Item 4 un garcon"
+    bonneReponse: "un garçon"
+    distracteurs: ["un garcon"]
+  - enonce: "Item 5"
+    bonneReponse: "un zéro"
+    distracteurs: ["un zero"]
+  - enonce: "Item 6"
+    bonneReponse: "un garcon"
+    distracteurs: ["un garçon"]
