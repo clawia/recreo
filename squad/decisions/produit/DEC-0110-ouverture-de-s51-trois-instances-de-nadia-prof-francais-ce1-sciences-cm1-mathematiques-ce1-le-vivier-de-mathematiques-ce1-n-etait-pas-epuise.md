@@ -669,3 +669,138 @@ refus : il en tire les consequences.
     reportees a s52, non supprimees. `MAT-CE1-17` : neuf sprints (s43 a s51).
 12. Arbitrages de `nadia-prof` sur `ZON-13` et sur les zones d'une ligne graduee : acquis pour s52.
 13. Deux points ouverts pour s52, non tranches : `PAR-4` a deux instances, ecart `PAR-9`/pratique.
+
+---
+
+## 15. Amendement du 2026-10-06 : verdicts de l'instance B, un seul rejeu engage (`SCI-CM1-18`), `SCI-CM1-15` reportee a s52
+
+- **Auteur** : `camille-po`.
+- **Sources** : les trois fiches de `nadia-prof` du 2026-10-06 (s51, instance B) :
+  `squad/conformite/FICHE-bandit-manchot-corps-cm1.md` (`SCI-CM1-10`, VALIDE SOUS RESERVE, reserves
+  `CRP-CM1-R1` a `CRP-CM1-R3`), `FICHE-bandit-manchot-terre-cm1.md` (`SCI-CM1-15`, REFUSE, motifs
+  items 4 et 11, quatre points non bloquants), `FICHE-bandit-manchot-activite-humaine-cm1.md`
+  (`SCI-CM1-18`, REFUSE, motif item 11, deux points non bloquants). Les motifs sont les siens et ne
+  sont pas reformules ici ; les criteres des stories les reprennent mot pour mot.
+- **Ce que cet amendement tranche** : quel rejeu s51 engage, ce que deviennent les trois reserves de
+  `SCI-CM1-10`, et la couverture au mieux. Les sections 1 a 14 sont inchangees.
+
+### 15.1 Regles lues, avec leur texte
+
+- **`PAR-8`** (`ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-a-huit-lignes.md`,
+  section 13) : plafond individuel de 5,0 par instance. La section 2 de cette decision et la section 14
+  nomment la marge de B, 0,5, comme etant le rejeu.
+- **`PAR-10`** : un rejeu coute 0,5 **par paquet** (application : `DEC-0106` section 2 pour `HOM-CE1-R1`, ligne 2 du tableau de la section 2 de cette decision).
+- **`PAR-14`** (`ARBITRAGE-PREALABLE-s33...`, section 5.5) : *"Une reprise dont les corrections touchent
+  plus de la moitie des items d'un paquet se paie au tarif d'un lot - 1,0 quand je suis la source des
+  motifs, 1,5 sinon - et non au tarif d'un rejeu (0,5)."*
+- **`PAR-16`** : un poste n'est engage que s'il porte une story au backlog.
+
+### 15.2 Budget de l'instance B, chiffre
+
+| Poste | Montant | Cumul |
+|---|---|---|
+| Trois premiers passages (`SCI-CM1-10`, `-15`, `-18`), consommes le 2026-10-06 | 4,5 | 4,5 |
+| Rejeu `SCI-CM1-18`, 0,5 (`PAR-10`) | 0,5 | **5,0 = plafond de `PAR-8`, marge 0** |
+| Rejeu `SCI-CM1-15`, 0,5 | 0,5 | 5,5, **refuse** : depasse 5,0 |
+| Correction `CRP-CM1-R1` a `-R3`, 0,5 | 0,5 | 5,5, **refuse** : depasse 5,0 |
+
+Au plus un des deux postes de 0,5 tient, et le rejeu d'un refus passe avant la correction d'une
+reserve. Je n'eleve pas le plafond : c'est une clause de `nadia-prof`, et la marge de 0,5 est,
+dans les sections 2 et 14, le rejeu.
+
+### 15.3 Rejeu retenu : `SCI-CM1-18`. `SCI-CM1-15` est reportee a s52
+
+**Comptes, verifies dans les fiches.**
+
+| Ligne | Items a corriger pour lever le refus | Points non bloquants | Items touches si tout est pris | Plus de la moitie (plus de 6 sur 12) ? |
+|---|---|---|---|---|
+| `SCI-CM1-18` | 1 (item 11) | 2 points : items 8, 10, 12 (indices) et item 5 | **5** : 5, 8, 10, 11, 12 | **non** : `PAR-14` ne s'applique pas, 0,5 |
+| `SCI-CM1-15` | 2 (items 4 et 11) | 4 points : item 10 (indice et *"en France metropolitaine"*, avec les items 9 et 11), item 7, items 3 et 9, item 2 | **7** : 2, 3, 4, 7, 9, 10, 11 | **oui** si tout est pris : `PAR-14`, 1,0 (`nadia-prof` est source des motifs) |
+
+**Motifs du choix, par ordre de poids.**
+
+1. **Le prix.** Le rejeu de `SCI-CM1-18` prend ses deux points non bloquants dans le meme diff et reste
+   a 0,5. Celui de `SCI-CM1-15` ne tient a 0,5 que si les quatre points non bloquants sont laisses de
+   cote, c'est-a-dire ouverts ensuite en reserves datees (fiche, section 8) : un second passage a
+   payer. Pris ensemble, ils passent le seuil de `PAR-14` et coutent 1,0, ce qui ne tient pas dans le
+   plafond de 5,0.
+2. **La chance de fermer a s51.** `SCI-CM1-18` n'a plus qu'un motif, sur un item ; `nadia-prof` ecrit que
+   `SCI-2`, *"la condition la plus dangereuse du lot"*, est tenue sur les douze items. Le rejeu a une
+   seule chose a tenir. `SCI-CM1-15` porte deux motifs bloquants, dont une cle fausse sur le jour et la
+   nuit et une sur les saisons, plus un indice faux (item 10) qui n'est pas bloquant.
+3. **Le risque nomme en section 4 est leve en grande partie.** Cette decision gardait `SCI-CM1-18` comme
+   la ligne la plus risquee : `SCI-2` n'avait jamais ete tenue sur sa ligne native. Elle l'est
+   desormais, et la reprise ne la rouvre pas.
+
+**Ce que ce choix ne dit pas.** Il ne dit rien de la valeur pedagogique des deux paquets. Il tient au
+prix, a la distance a la fermeture et au plafond, qui sont des grandeurs de planning.
+
+**Garde-fou du rejeu de `SCI-CM1-18`.** Le rejeu touche les items 5, 8, 10, 11 et 12 et aucun autre. Si
+l'ecriture en touchait sept ou plus, `PAR-14` s'appliquerait (1,0) et le plafond serait depasse : les
+deux points non bloquants sortent alors du rejeu et sont ouverts par `nadia-prof` en reserves datees ;
+l'item 11 reste, lui, dans le rejeu.
+
+**Report de `SCI-CM1-15`, compte.** Premier report du rejeu : s51, motif le plafond de `PAR-8`
+(15.2). `SCI-CM1-15` reste `non couvert`. Story : `S51-SCI-TERRE-CM1-REPRISE`, ecrite ce jour, **non
+engagee a s51, reportee a s52**. Tarif prevu a s52 : **1,0** si les six points (deux motifs, quatre
+non bloquants) sont repris dans le meme diff (`PAR-14`, 7 items sur 12), a fixer par `nadia-prof` au
+rejeu ; **0,5** si elle ne rejoue que les deux motifs, auquel cas les quatre points deviennent des
+reserves datees a payer ensuite. Je prefere un seul passage a 1,0 : le meme prix, un audit au lieu de
+deux. Ce choix est a confirmer par `nadia-prof`, qui fixe le prix.
+
+### 15.4 Reserves de `SCI-CM1-10` : une story, non engagee a s51
+
+`CRP-CM1-R1`, `-R2` et `-R3` sont ecrites en **une seule story de correction differee, groupee par
+paquet** : `S51-SCI-CORPS-CM1-RESERVES`. **Tarif 0,5** (`PAR-10`), non engagee a s51 (15.2), reportee a
+s52.
+
+**Motif de la story unique.** `PAR-10` fixe le rejeu au paquet, pas a la reserve. Les trois reserves
+touchent cinq items sur douze (3, 5, 6, 7, 11) du meme fichier, sont issues du meme audit et se rejouent
+en un seul passage ; trois stories a 0,5 feraient 1,5 pour un paquet que la regle fixe a 0,5. Precedent :
+`USN-CM1-R1` a `USN-CM1-R8`, groupees en une story. Cinq items sur douze ne passent pas le seuil de
+`PAR-14`.
+
+**Rang.** Ces reserves ne sont pas des motifs de refus (fiche, section 7) :
+aucune bonne reponse n'est fausse, aucun distracteur n'est vrai. Elles sont dues au meme titre que
+`HOM-CE1-R1`, au rang d'une correction differee.
+
+### 15.5 `SCI-CM1-10` passe a `couvert-valide` sans mention de couverture
+
+Confirme. A la cloture de s51, je ferai passer la ligne de `non couvert` a `couvert-valide` sur la
+seule base du verdict de `nadia-prof` du 2026-10-06 (`FICHE-bandit-manchot-corps-cm1.md`, bloc de
+validation : *"Done pedagogique prononce le 2026-10-06"*, *"sans mention de couverture"*, `DEC-0110`
+section 10). Les trois reserves ouvertes ne la rouvrent pas. Cette decision ne juge pas la porte
+technique : elle reste a juger sur les jobs de `.github/workflows/ci.yml`, que je n'ai pas lances, et
+la matrice n'est pas modifiee ici.
+
+### 15.6 Couverture au mieux
+
+Avant l'amendement : 129/182 (70,9 %), six fermetures (section 14.3). **Apres : 128/182 (70,3 %), cinq
+fermetures** : `FRA-CE1-22`, `-20`, `-23` (instance A), `SCI-CM1-10` (verdict rendu), `SCI-CM1-18`
+(sous le rejeu). `SCI-CM1-15` sort du numerateur de s51. Le calcul suppose que l'instance A ferme ses
+trois lignes, ce que je n'ai pas lu : si le rejeu de `SCI-CM1-18` est refuse a son tour, le plancher de
+B est 124/182 (une seule fermeture, `SCI-CM1-10`) avant le resultat de A. Ce n'est pas une promesse.
+
+### 15.7 Routage (une decision sans proprietaire n'est pas prise)
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Affecter `S51-SCI-ACTIVITE-HUMAINE-CM1-REJEU` dans s51 (developpeur, puis instance B de `nadia-prof` pour le rejeu) ; porter au planning de s51 que le poste est engage a 0,5 et que B est a 5,0 ; porter `S51-SCI-TERRE-CM1-REPRISE` et `S51-SCI-CORPS-CM1-RESERVES` comme *"non engagees, reportees a s52"* (controle `PAR-16`). Les trois stories sont ecrites au backlog, section "Sprint 51" |
+| `nadia-prof` | Rejouer `SCI-CM1-18` apres correction (fiche, section 7 : *"une correction se verifie a l'ecran, pas au diff"*) ; confirmer ou fixer le prix de `S51-SCI-TERRE-CM1-REPRISE` (15.3) |
+| `theo-archi` | Aucun avis nouveau : les trois stories modifient des paquets YAML existants, sans mecanique ni schema neufs |
+| `yanis-qa` | Les criteres du rejeu et des deux stories reportees sont ecrits en entree/sortie ; ce qu'aucun automate ne voit est liste dans chaque story pour `nadia-prof` |
+
+**Ce que cet amendement ne fait pas.** Il ne modifie ni la matrice, ni les fiches, ni le registre, ne
+prononce aucun Done et ne juge aucun contenu. Il n'ecrit aucun identifiant neuf : les codes `S51-*` ne
+sont pas des identifiants de condition, et `CRP-CM1-R1` a `-R3` sont ceux de `nadia-prof`.
+
+## Decisions prises (amendement du 2026-10-06)
+
+14. Le rejeu de s51 est `SCI-CM1-18` (0,5), l'instance B atteint son plafond : 5,0, marge 0.
+15. `SCI-CM1-15` reste `non couvert` ; `S51-SCI-TERRE-CM1-REPRISE` est non engagee, reportee a s52
+    (premier report du rejeu), tarif prevu 1,0 (`PAR-14`) ou 0,5 selon le perimetre que `nadia-prof`
+    rejoue.
+16. `CRP-CM1-R1` a `-R3` : une story, `S51-SCI-CORPS-CM1-RESERVES`, 0,5 (`PAR-10`), non engagee, reportee a s52.
+17. `SCI-CM1-10` passe a `couvert-valide`, sans mention, a la cloture de s51, sur le verdict de
+    `nadia-prof`.
+18. Couverture au mieux : 128/182 (70,3 %), cinq fermetures.

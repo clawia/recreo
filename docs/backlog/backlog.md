@@ -19243,3 +19243,145 @@ et `FER-3` sans clause supplementaire, `DEC-0064`.
 - **Lien decision** : `DEC-0110` (sections 1 et 5).
 - **Agent pressenti** : a affecter par `sofia-sm` (instance C de `nadia-prof` pour le Done
   pedagogique ; `theo-archi` pour l'avis de faisabilite).
+
+### S51-SCI-ACTIVITE-HUMAINE-CM1-REJEU - Une seule proposition repond a l'item 11 de "L'activite humaine et la nature" (`SCI-CM1-18`)
+
+**Contexte.** `nadia-prof` refuse `bandit-manchot-activite-humaine-cm1` le 2026-10-06 (s51, instance B,
+`squad/conformite/FICHE-bandit-manchot-activite-humaine-cm1.md`, section 7) sur **un seul motif**,
+l'item 11. `SCI-2` est tenue sur les douze items. **Rejeu engage a s51**, tarif **0,5** (`PAR-10`) :
+l'instance B passe de 4,5 a 5,0, marge 0 (`DEC-0110` section 15.2).
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que la question sur le petrole n'ait qu'une seule
+  bonne reponse possible, afin de ne pas etre dit en faute quand j'ai bien lu la question.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "La planete Terre.
+  Les etres vivants dans leur environnement" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-18` ; ligne `non couvert`,
+  `MATRICE-couverture.md`.
+- **Criteres d'acceptation** (le motif est repris mot pour mot de la fiche) :
+  - **Motif, item 11** : etant donne l'item 11, quand on le lit, alors la question pose elle-meme le
+    critere que l'indice emploie - *"preserver une ressource qui ne se renouvelle pas, ou qui met des
+    millions d'annees a se former"* - *"de sorte qu'une seule proposition y reponde"*. Aujourd'hui la
+    question demande *"d'en utiliser moins"* et *"produire de l'électricité avec plus de charbon"* y
+    repond comme la bonne reponse : le critere est rouge sur l'existant.
+  - **Motif, item 11** : etant donne l'enonce de l'item 11, quand on le lit, alors il ne fixe pas *"un
+    but atteint a la lettre par un distracteur"*. Aujourd'hui *"garder du pétrole pour plus tard"* est
+    *"stocker davantage de pétrole dans des réservoirs"* : rouge sur l'existant. L'item reste en tache
+    B (un geste qui preserve).
+  - **Point non bloquant 1, items 8, 10 et 12** : etant donne l'indice de chacun, quand on le lit apres
+    une erreur, alors il n'ecarte qu'un distracteur au plus. Aujourd'hui les trois ecartent les deux a la
+    fois : rouge sur l'existant.
+  - **Point non bloquant 2, item 5** : etant donne la bonne reponse de l'item 5, quand on la lit, alors
+    elle porte l'effet (*"l'air retient davantage la chaleur, le climat se rechauffe"*) et non la seule
+    accumulation du gaz ; l'item ne se repond plus en relisant la premiere phrase. Aujourd'hui la bonne
+    reponse est *"il contient de plus en plus de ce gaz"* : rouge sur l'existant.
+  - Etant donne le diff du rejeu, quand on compte les items modifies, alors il y en a au plus six (5, 8,
+    10, 11, 12 en font cinq) : a sept ou plus, `PAR-14` s'applique, le plafond de 5,0 est depasse, et
+    les deux points non bloquants sortent du rejeu (l'item 11 reste).
+  - Etant donne le paquet corrige, quand on relit les conditions deja tenues (`FER-1` a `FER-3`,
+    `DEC-0064`, `SCI-1` a `SCI-4`, `HIS-3`, `CON-1`, `CYC-1`), alors elles restent toutes tenues, `SCI-2`
+    comprise : douze items, aucun imperatif sans pronom, aucune injonction impersonnelle, aucun
+    presuppose de foyer.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof`
+    (fiche, section 9) : qu'une seule proposition reponde a la question ecrite ; l'exactitude des faits
+    ; qu'un indice ne donne pas la reponse par elimination. Elle rejoue le paquet a l'ecran et ne releve
+    pas sa barre au rejeu.
+- **Ce que cette story ne fait pas** : aucune autre modification n'est une condition de levee (fiche,
+  section 7) ; elle ne ferme pas la ligne, c'est `nadia-prof` qui prononce.
+- **Lien decision** : `DEC-0110` (section 15).
+- **Agent pressenti** : a affecter par `sofia-sm` (instance B de `nadia-prof` pour le rejeu).
+
+### S51-SCI-TERRE-CM1-REPRISE - Les distracteurs des items 4 et 11 de "La Terre, le jour et les saisons" ne sont plus vrais (`SCI-CM1-15`)
+
+**Contexte.** `nadia-prof` refuse `bandit-manchot-terre-cm1` le 2026-10-06 (s51, instance B,
+`squad/conformite/FICHE-bandit-manchot-terre-cm1.md`, section 7) sur **deux motifs**, items 4 et 11. Le
+reste est juste : la cause des saisons (item 7) est exacte. **Non engagee a s51, reportee a s52** : le
+rejeu ne tient pas dans le plafond de 5,0 de l'instance B (`DEC-0110` section 15.2). Premier report du
+rejeu. Tarif prevu a s52 : **1,0** si les six points ci-dessous sont repris dans le meme diff (7 items
+sur 12, `PAR-14`), **0,5** si seuls les deux motifs sont rejoues ; prix fixe par `nadia-prof`.
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que les reponses que le jeu dit fausses le soient
+  vraiment, afin d'apprendre pourquoi il y a le jour et la nuit et des saisons sans retenir un fait
+  faux.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "La planete Terre.
+  Les etres vivants dans leur environnement" -
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, `SCI-CM1-15` ; ligne `non couvert`,
+  `MATRICE-couverture.md`.
+- **Criteres d'acceptation** (motifs repris mot pour mot de la fiche) :
+  - **Motif 1, item 4** : etant donne l'item 4, quand on lit ses distracteurs, alors *"un second
+    distracteur faux, qui porte la conception de la distance sans etre vrai a la lettre"*. Aujourd'hui
+    *"elle est plus proche du Soleil que le reste de la Terre"* est vrai de la moitie ou il fait jour :
+    rouge sur l'existant. L'indice dit pourquoi la distance est fausse (`SCI-1`) sans decrire la position
+    attendue ; aujourd'hui *"Le Soleil éclaire la partie de la Terre qui lui fait face"* la decrit.
+  - **Motif 2, item 11** : etant donne l'item 11, quand on compare les trois saisons proposees, alors
+    une seule a les jours les plus longs (par exemple *"l'automne"* a la place de *"le printemps"*).
+    Aujourd'hui *"le printemps"* a les memes durees de jour que *"l'été"* : rouge sur l'existant.
+  - **Point 1, item 10** : etant donne l'indice de l'item 10, quand on le lit, alors il est vrai et dit
+    l'inclinaison (quand une moitie de la Terre penche vers le Soleil, l'autre penche a l'oppose) ;
+    l'enonce dit *"en France métropolitaine"* (ou une ville nommee), de meme que les items 9 et 11.
+    Aujourd'hui l'indice dit que les deux moities *"ne sont pas tournées vers le Soleil en même temps"* :
+    rouge sur l'existant.
+  - **Point 2, item 7** : etant donne le distracteur *"la Terre tourne plus vite en hiver"*, quand on le
+    lit, alors il est remplace par *"un distracteur faux dans les deux lectures de 'tourner'"* (par
+    exemple *"en été"*). Rouge sur l'existant.
+  - **Point 3, items 3 et 9** : etant donne l'indice de l'item 9, quand on le lit apres *"la Terre est
+    plus près du Soleil"*, alors il dit pourquoi la distance n'explique pas la chaleur de l'ete. Rouge
+    sur l'existant (il dit *"Le Soleil brille de la même façon toute l'année"*).
+  - **Point 4, item 2** : etant donne l'indice de l'item 2, quand on le lit apres *"autour d'une autre
+    planète"*, alors il ecarte la Lune ou une autre planete *"sans s'appuyer sur la seule taille"*.
+    Rouge sur l'existant.
+  - Etant donne le paquet corrige, quand on relit les conditions deja tenues (`FER-1` a `FER-3`,
+    `DEC-0064`, `SCI-1`, `SCI-3`, `SCI-4`, `HIS-3`, `CON-1`, `CYC-1` contre `cp-qlm-saisons`), alors
+    elles restent toutes tenues, dont la cause des saisons en bonne reponse de l'item 7.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof`
+    (fiche, section 9) : qu'un distracteur ne soit pas vrai ; qu'un indice ne decrive pas la bonne
+    reponse ; l'exactitude d'un fait d'astronomie dans un indice ; qu'une formulation geographique
+    vaille pour tous les enfants qui suivent le programme. Elle rejoue le paquet a l'ecran.
+- **Ce que cette story ne fait pas** : la levee porte sur les items 4 et 11, *"a la barre ecrite
+  ici"* ; les quatre points non bloquants, laisses en l'etat, deviennent des reserves datees de
+  `nadia-prof`. Elle ne ferme pas la ligne.
+- **Lien decision** : `DEC-0110` (section 15).
+- **Agent pressenti** : a affecter au planning de s52 par `sofia-sm` (instance de `nadia-prof` pour le
+  rejeu).
+
+### S51-SCI-CORPS-CM1-RESERVES - `CRP-CM1-R1` a `CRP-CM1-R3` : deux indices faux, deux formulations trop larges et des distracteurs implausibles dans "Prendre soin de son corps"
+
+**Contexte.** `nadia-prof` prononce **VALIDE SOUS RESERVE** sur `SCI-CM1-10` le 2026-10-06 (s51, instance
+B, `squad/conformite/FICHE-bandit-manchot-corps-cm1.md`, section 8). Trois reserves non bloquantes,
+groupees en une seule story par paquet (cinq items sur douze : 3, 5, 6, 7, 11 ; `PAR-10`, precedent
+`USN-CM1-R1` a `-R8`). Tarif **0,5**. **Non engagee a s51, reportee a s52** : B est a 5,0 apres le rejeu
+de `SCI-CM1-18` (`DEC-0110` section 15.2).
+
+- **Besoin** : en tant qu'eleve de CM1 qui joue a "Prendre soin de son corps", je veux que chaque
+  indice dise vrai et que chaque mauvaise reponse soit une idee qu'on pourrait croire, afin de ne pas
+  retenir une phrase fausse ni de repondre a une devinette.
+- **Competence programme visee** : sciences et technologie, CM1 (cycle 3), domaine "Le vivant, sa
+  diversite et les fonctions qui le caracterisent", `SCI-CM1-10` - ligne `couvert-valide` a la cloture de
+  s51, non rouverte par cette story.
+- **Criteres d'acceptation** :
+  - **`CRP-CM1-R1`** : etant donne les indices des items 3 et 5, quand on les relit, alors chacun est
+    *"un indice vrai, d'une phrase, qui dit pourquoi la conception fausse l'est, sans nommer la bonne
+    reponse"*. Aujourd'hui l'item 3 dit que le corps *"ne fait rien d'autre"* pendant le sommeil et
+    l'item 5 que le corps n'utilise pas le sucre *"en grande quantité"* : rouges sur l'existant.
+  - **`CRP-CM1-R2`, item 6** : etant donne la question et la bonne reponse de l'item 6, quand on les lit,
+    alors elles *"disent la portee exacte du geste"* : tousser dans son coude limite la transmission, il
+    ne l'evite pas, et l'autre personne est nommee. Aujourd'hui *"évite de lui transmettre"* : rouge.
+  - **`CRP-CM1-R2`, item 11** : etant donne la bonne reponse de l'item 11, quand on la lit, alors elle
+    dit *"le role exact des fibres"* (elles aident l'intestin a bien fonctionner, elles ne sont pas
+    digerees). Aujourd'hui *"à aider le ventre à digérer"* : rouge.
+  - **`CRP-CM1-R3`, item 7** : etant donne les distracteurs de l'item 7, quand on les lit, alors ce sont
+    *"des idees plausibles et fausses sur ce que fait l'activite physique"*, et l'indice repond a
+    chacun. Aujourd'hui *"à remplacer le sommeil"* et *"à se passer de manger"* : rouges.
+  - Etant donne le paquet corrige, quand on relit les conditions deja tenues (`FER-1` a `FER-3`,
+    `DEC-0064`, `SCI-1`, `SCI-3`, `SCI-4`, `BIA-4`, `HIS-3`, `CON-1`, `CYC-1`, `EPS-9` et la frontiere
+    avec `SCI-CM1-09`), alors elles restent toutes tenues : la story touche des indices et des
+    formulations, elle ne retire ni n'ajoute aucun item.
+  - Ce qui n'est pas testable par un automate et releve de la seule porte pedagogique de `nadia-prof`
+    (fiche, section 9) : l'exactitude d'un fait dans un indice, la portee exacte d'une bonne reponse, la
+    plausibilite d'un distracteur. Elle rejoue les cinq items et leve les reserves *"a la barre ecrite
+    ici"*.
+- **Ce que cette story ne fait pas** : aucune autre modification n'est une condition de levee ; elle ne
+  rouvre pas le Done de `SCI-CM1-10`.
+- **Lien decision** : `DEC-0110` (section 15) ; reserves ouvertes par `nadia-prof` le 2026-10-06,
+  identifiants alloues dans `squad/decisions/REGISTRE-identifiants.md`. A router par une `DEC`
+  d'ouverture de sprint.
+- **Agent pressenti** : a affecter au planning de s52 par `sofia-sm`.
