@@ -2,6 +2,10 @@
 
 - **Auteure** : `ines-design`. **Date** : 2026-10-06. **Sprint** : s52.
 - **Arbre** : `round-two`, HEAD `4aad468b`, arbre de travail propre a l'ouverture.
+- **Amendement du 2026-10-06 (s52, U2)** : la section 4 est reecrite en entier (elle n'etait qu'une
+  esquisse) et deux erreurs de ce document sont corrigees plus bas, dites la ou elles etaient :
+  la table de la section 1.2 (largeur servie, deux conditions de defilement melangees) et les
+  cadres a decimale des sections 2.4 a 2.6 (`CadreDeZone` est un record d'entiers).
 - **Ce qui m'est pose** : `sofia-sm`, question Q3 de l'avis de faisabilite de s51 (section 7) et
   ligne `ines-design` de l'arbitrage de `nadia-prof` du 2026-10-06 (section 8) - *"Contraintes de
   dessin des figures a lignes candidates, des quadrillages 6 x 6 et des reseaux de points, avant
@@ -36,16 +40,27 @@ Rien ci-dessous n'est lu dans un fichier seul. Trois mesures sur rendu reel :
 
 ### 1.2 Largeur servie : la mesure qui change les cadres
 
-| Largeur de fenetre | Image de designation (declaree 352 x 352) |
-|---|---|
-| 320 px | **296 x 296** |
-| 360 px | 321 x 321 |
-| 390 px | 351 x 351 |
-| 412 px et plus | 352 x 352 (aucun debordement horizontal mesure de 320 a 1280) |
+| Largeur de fenetre | Image servie, defilement superposable (telephone, tablette) | Image servie, barre de defilement classique de 15 px |
+|---|---|---|
+| 320 px | **296 x 296** | 281 x 281 |
+| 360 px | 336 x 336 | 321 x 321 |
+| 390 px | 352 x 352 | 351 x 351 |
+| 412 px et plus | 352 x 352 | 352 x 352 |
 
-**L, la largeur servie la plus etroite mesuree, vaut donc 296 px**, et non 352. Le garde-fou 3
-d'`ADR-0080` calcule a 352 (`avis de faisabilite s51`, section 5.4) : un cadre de 14 % y passe
-(49,3 px) et tombe a 41,4 px a 320 px de fenetre. Tout ce qui suit est derive de 296.
+Commande de la mesure (s52, U2) : jar de `bootstrap/target` construit depuis ce worktree, fragment
+reel de `designation` (`POST /parties/designation-plan-de-la-classe`) rendu dans l'accueil reel,
+puis iframes `srcdoc` de 320 a 992 px, `getBoundingClientRect()` ; la colonne de gauche est une
+iframe plus haute que la page, celle de droite une iframe plus courte, qui fait apparaitre la barre.
+
+**Correction.** La table de la premiere version melangeait les deux colonnes : la ligne 320 etait
+lue sans barre de defilement, les lignes 360 et 390 avec (321 et 351). Elle ne changeait pas le
+resultat qui compte, mais elle n'etait pas une mesure unique.
+
+**L, la largeur servie la plus etroite, vaut 296 px** sur un appareil a defilement superposable, et
+**281 px** si une barre classique est affichee a 320 px (cas que seule une fenetre de bureau etroite
+produirait). Le garde-fou 3 d'`ADR-0080` calcule a 352 (`avis de faisabilite s51`, section 5.4) :
+un cadre de 14 % y passe (49,3 px) et tombe a 41,4 px a 296. Tout ce qui suit est derive de 296 et
+reverifie a 281.
 
 ### 1.3 Tailles minimales de cible tactile
 
@@ -59,9 +74,12 @@ L mesuree en 1.2.
 
 > **Consequence, et c'est ma seule arithmetique** : le cadre d'une zone vaut **au moins 16 unites**
 > sur un cadre de vue de 100 (352 x 352 declare, un pourcentage de `CadreDeZone` est alors une
-> unite du dessin, convention de l'avis s51 section 5.2). 16 unites rendent 56,3 px a 352 px et
-> **47,4 px a 296 px**. 15 unites rendraient 44,4 px a 296 : au-dessus du plancher de 0,4 px, donc
-> sans marge ; j'ecarte 15.
+> unite du dessin, convention de l'avis s51 section 5.2). 16 unites rendent 56,3 px a 352 px,
+> **47,4 px a 296 px** et 45,0 px a 281 px (mesure 1.2, colonne de droite). 15 unites rendraient
+> 44,4 px a 296 et 42,2 px a 281 : sous le plancher a 281, au ras a 296 ; j'ecarte 15.
+> **Un cadre est un entier** : `CadreDeZone` est un record de quatre `int`
+> (`domain/content/CadreDeZone.java`, ADR-0080 decision 2). Toute valeur a decimale de ce
+> document, y compris dans sa premiere version, se lit comme un entier.
 
 ### 1.4 Palette et contrastes
 
@@ -161,7 +179,8 @@ Calcul sur les coordonnees du fichier, rejouable avec un script de poste de quel
 1. **Zone / zone** : aucune paire de cadres ne se chevauche, et l'ecart est d'au moins 5 unites.
    Mesure sur le modele : 34 unites.
 2. **Zone / ligne etrangere** : la distance de chaque ligne a la zone d'une autre ligne est d'au
-   moins **5 unites** (17,6 px a 352, 14,8 px a 296). Mesure sur le modele : 7,8 unites. Seuil
+   moins **5 unites** (17,6 px a 352, 14,8 px a 296). Mesure sur le modele : 8,0 unites (recalculee avec les cadres entiers de 2.6 ; 7,8 avec le cadre
+   a decimale de la premiere version). Seuil
    propose par moi, a mesurer sur enfant par `nadia-prof` si elle le juge utile : il est la
    moitie d'une zone moins la marge d'un doigt, pas une valeur etablie.
 3. **Points singuliers** (croisement de deux lignes, ligne qui coupe le contour, coin de la
@@ -173,8 +192,9 @@ Calcul sur les coordonnees du fichier, rejouable avec un script de poste de quel
    horizontale decalee de la mediane de moins de 6 unites (21 px) se lit comme l'axe. Mesure sur
    le modele : 8 unites. **C'est un jugement pedagogique** (quel leurre est loyal) : le seuil
    n'est qu'une borne de lisibilite, `nadia-prof` garde la question.
-5. **Cadre en pourcentage = unites**, a la decimale pres (`x`, `y`, `largeur`, `hauteur` du
-   `CadreDeZone`).
+5. **Cadre en pourcentage = unites, en entiers** (`x`, `y`, `largeur`, `hauteur` du `CadreDeZone`).
+   La premiere version disait "a la decimale pres" : c'etait faux, le record ne porte que des
+   `int`. Un cadre a decimale ne se construit pas.
 
 Je n'ai pas verifie de **quatrieme ligne** : a tester avec les controles 1 a 3 avant d'en mettre
 une. Un item de trois lignes tient.
@@ -190,15 +210,16 @@ Rectangle 60 x 34, axe = mediane verticale, une diagonale de coin a coin, une ho
   <rect x="20" y="33" width="60" height="34" stroke-width="2.2" stroke-linejoin="round"/>
   <!-- ligne 1 (l'axe) : s'arrete au bord du cadre 42,0,16,16 -->
   <line x1="50" y1="92" x2="50" y2="16" stroke-width="1.4" stroke-dasharray="5 3.5"/>
-  <!-- ligne 2 (la diagonale, prolongee) : s'arrete au bord du cadre 84,65.8,16,16 -->
+  <!-- ligne 2 (la diagonale, prolongee) : s'arrete au bord du cadre 84,66,16,16 -->
   <line x1="8" y1="26.2" x2="84" y2="69.27" stroke-width="1.4" stroke-dasharray="5 3.5"/>
   <!-- ligne 3 (decalee de 8 unites de la mediane horizontale) : cadre 0,50,16,16 -->
   <line x1="93" y1="58" x2="16" y2="58" stroke-width="1.4" stroke-dasharray="5 3.5"/>
 </svg>
 ```
 
-Cadres de zone correspondants (`x`, `y`, `largeur`, `hauteur`, en %) : `42, 0, 16, 16` ; `84, 65.8,
-16, 16` ; `0, 50, 16, 16`. Numeros 1, 2, 3 dans l'onglet, libelle complet dans la legende
+Cadres de zone correspondants (`x`, `y`, `largeur`, `hauteur`, en %, entiers) : `42, 0, 16, 16` ;
+`84, 66, 16, 16` ; `0, 50, 16, 16`. La diagonale entre dans le cadre 2 a y = 69,27, dans l'intervalle
+66 a 82 du cadre. Numeros 1, 2, 3 dans l'onglet, libelle complet dans la legende
 (`hors-de-la-boite`, `ADR-0094`).
 
 **Mesures sur ce modele, rendu a 352 et a 296 px** : trois lignes lisibles, aucun numero ne couvre
@@ -321,27 +342,199 @@ Mesure sur fichiers generes (en-tete non commente) :
 
 ---
 
-## 4. Ce que ce document ne couvre qu'en esquisse - le quadrillage 6 x 6 (`SYM-CE1-3`)
+## 4. Quadrillage - `SYM-CE1-3` (completer par symetrie) et `DEP-CE1-2` (se reperer, se deplacer)
 
-La consigne de cette tache nomme deux types, mais l'avis s51 et la ligne `ines-design` de
-l'arbitrage de s52 rangent le quadrillage parmi les trois familles. Une maquette a trouve **un defaut que la
-description n'aurait pas montre** :
+Cette section remplace l'esquisse de la premiere version. Elle couvre les deux usages d'une grille
+dessinee sous une designation : `SYM-CE1-3` (figure a completer, une case manque) et `DEP-CE1-2`
+(grille de 4 x 4 a 6 x 6, "toutes de meme taille et toutes designables"). Les bornes de grille de
+`SYM-CE1-3` sont celles de `DEP-CE1-2`, que `nadia-prof` ne recopie pas.
 
-- **Axe trace sur une case pleine : il disparait.** Une figure de cases pleines `#1c2733`
-  contre l'axe `#1c2733` : la ou deux cases pleines se touchent de part et d'autre de l'axe, le
-  trait n'existe plus.
-- **Forme qui tient (rendu a 352 et 296 px)** : cases de 16 unites en partant de 2 (`2 + 16 k`),
-  trait de grille de **0,7 unite** (2,07 px a 296, au-dessus du plancher de 2 px ; 0,6 donnerait
-  1,8 px), cases pleines **retrecies a 12 unites** et centrees (marge de 2 unites : la grille et
-  l'axe restent visibles entre elles), axe **plein de 2,4 unites** sur la ligne de grille centrale
-  (rapport de 3,4 contre la grille). Un axe tirete sur une ligne de grille se lit comme un trait
-  plein irregulier : refuse.
-- **Zone = une case de 16 unites** (47,4 px a 296), qui touche sa voisine sans la recouvrir. Seules
-  les cases vides candidates sont des zones (3 au moins) : pas trente-six arrets de tabulation.
-- Mesure non faite : la **legende de 36 libelles** que l'avis demandait. Elle n'est pas
-  necessaire si seules les cases candidates sont des zones. A trancher avec `nadia-prof` (5.3).
+**Les reponses de `nadia-prof` (U3) n'existaient pas a la date de ce commit** (aucune branche
+`s52-nadia-instance-c` dans `git branch -a`). Tout ce qui touche a ce qu'un dessin *montre* est donc
+range en section 5, "Pour `nadia-prof`" : ici, seule la forme est proposee.
 
----
+### 4.1 Mesures faites, commandes
+
+Toutes depuis le worktree `s52-ines-contraintes`, jar `bootstrap/target/recreo.jar` construit par
+`bash outils/mvn-jdk21.sh -B clean verify` (build vert, aucun fichier de production touche), lance par
+`java -jar` sur un port libre. Les modeles de grille sont des SVG jetables ecrits hors du depot ; ils
+ne sont jamais sous `adapters/`.
+
+| # | Mesure | Commande et perimetre |
+|---|---|---|
+| M1 | Taille rendue de chaque zone, chevauchement, debordement, texte hors de la boite | fragment reel de `designation` (`POST /parties/designation-plan-de-la-classe`) pris comme gabarit, dessin et zones remplaces par ceux du modele, rendu dans l'accueil reel avec `recreo.css` et la feuille tierce servies par le jar ; iframes `srcdoc` de 320, 360, 390, 412, 744 et 992 px (la fenetre headless ne descend pas sous 516 px, `outils/mesurer-rendu.sh` ; l'iframe contourne le plancher) ; `getBoundingClientRect()` sur l'image, chaque zone et le texte de chaque zone ; Chrome `--headless=new --dump-dom`. Six pages : 3 zones, 36 zones hors de la boite, 36 zones a libelle en boite, 36 zones de deplacement hors de la boite, 4 x 4 et 5 x 5 en boite |
+| M2 | Axe, grille et cases pleines en pixels | quatre variantes du dessin rendues a 296 px de large, `--screenshot`, lecture des pixels d'une ligne a travers l'axe (seuil sombre : moyenne des canaux sous 128) |
+| M3 | Axe sous une zone, et sous 36 zones | page a un seul bloc (`.illustration-designation` de la feuille reelle, image de 296 puis 352 px de large), capture, lecture de pixels sur la ligne de la zone |
+| M4 | Contraste d'une encre sous une zone | pixel lu dans la capture (`#989da3` sous le voile, `#fafbfd` pour une case vide), puis calcul WCAG 2.x comme en 1.1 |
+| M5 | Poids | taille des fichiers generes, sans en-tete |
+| M6 | Garde-fou de poids et de geometrie | deux dessins du modele copies sous `static/illustrations/`, `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test -Dtest=ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest -Dsurefire.failIfNoSpecifiedTests=false`, puis fichiers retires (`git status` propre) |
+
+### 4.2 La grille, commune aux deux usages
+
+- `viewBox="0 0 100 100"`, `width="352" height="352"`. Une grille de `n x n` cases, **cote de case et
+  marge entiers** (un `CadreDeZone` est un record d'entiers, 1.3) :
+
+| n | cote de case (unites) | marge (unites) | case rendue, image de 296 px | de 336 px | de 352 px |
+|---|---|---|---|---|---|
+| 4 | 24 | 2 | 71,0 px | 80,6 px | 84,5 px |
+| 5 | 18 | 5 | 53,3 px | 60,5 px | 63,4 px |
+| 6 | 16 | 2 | **47,4 px** | 53,8 px | 56,3 px |
+
+  Mesure M1 sur les six largeurs (320 a 992 px), grilles completes a zones de la taille d'une case :
+  les valeurs du tableau sont les minimales relevees, **aucune zone ne sort de l'image, aucune paire
+  de zones ne se recouvre sur plus de 0,5 px dans les deux sens**, aucun debordement horizontal de la
+  page. A 281 px d'image (barre classique, 1.2) la case de 16 unites rend 45,0 px (page a 3 zones,
+  iframe courte).
+- **Le 5 x 5 est ecrit a 18 unites et non a 19,2** : un cadre decimal ne se construit pas ; 18 garde
+  des marges egales (5 de chaque cote) et une case de 53,3 px.
+- Une case = une zone du meme cote, **cadre egal a la case**, deux cases voisines bord a bord. Le
+  critere de `DeuxZonesDUnItemNeSeChevauchentJamaisTest` est strict (les interieurs se coupent, cases
+  bord a bord admises) : ce rangement passe.
+- **Trait de grille : 0,7 unite**, plein, `stroke="#1c2733"`. 2,07 px a 296, 2,46 px a 352 (le
+  garde-fou lit la hauteur declaree) : au-dessus du plancher de 2 px. 0,6 donnerait 1,8 px a 296.
+- Rien d'ecrit dans le dessin : ni lettre, ni chiffre (`DES-7`). Un repere de case est un libelle de
+  zone, servi par le gabarit.
+
+### 4.3 `SYM-CE1-3` - figure a completer
+
+**Cases pleines** : carres de `#1c2733`, `stroke="none"`, **retrecis de 2 unites de chaque cote**
+(12 unites sur une case de 16, 20 sur une case de 24), centres dans la case.
+
+**Axe** : un trait plein de **2,4 unites** sur la ligne de grille centrale, un seul trait d'un bord a
+l'autre de la grille. Il suppose un `n` pair : un axe sur une grille de 5 coupe des cases par le
+milieu, **le 5 x 5 est donc exclu pour `SYM-CE1-3`** (il reste permis pour `DEP-CE1-2`). Un axe
+horizontal est la meme regle par transposition ; lequel est utilise est un choix de contenu.
+
+Mesure M2, ligne a travers la rangee 2 (cases pleines de part et d'autre de l'axe), image de 296 px :
+
+| Variante | Pixels, de gauche a droite, entre les deux colonnes centrales (case / lacune / axe / lacune / case) | Verdict |
+|---|---|---|
+| a. cases de 12, axe plein de 2,4 (retenue) | 35 / 3 / **6** / 3 / 35 | l'axe se voit, separe des cases |
+| b. cases de 16 jointives | **94 px sombres d'un seul tenant** | l'axe n'existe plus (le defaut que la premiere version avait trouve) |
+| c. axe de 0,7 unite | 35 / 5 / 2 / 5 / 35 | l'axe a l'epaisseur d'un trait de grille (2 px) : rien ne le designe |
+| d. axe de 2,4 en tirete `5 3.5` | meme rangee : axe 2 px (la lacune du tirete y tombe) ; rangee vide : 6 px | l'axe change d'epaisseur le long de son trace, se lit comme un trait irregulier |
+
+Dans la variante retenue, l'axe rend 6 px au seuil de lecture (7,1 px theoriques) contre 2 px pour un
+trait de grille : rapport 3 ou plus. L'ecart entre une case et l'axe est de 0,8 unite (2,4 px, mesure
+3 px).
+
+**Zones : les seules cases vides candidates** (`ZON-8` : trois au moins). Une zone est une case,
+cadre egal a la case. Une case pleine n'est jamais une zone. Justification mesuree (M3 et M4) :
+
+1. **Sous un voile de zone, une case pleine perd son contraste.** Le fond d'une zone est du blanc a
+   55 % (`.zone`, `recreo.css`) : l'encre `#1c2733` y devient `#989da3` (lu dans la capture) contre
+   `#fafbfd` pour une case vide, soit **2,62:1**, sous le seuil de 3:1 pris en 1.4. Les cases pleines
+   d'une figure a 36 zones se lisent comme des cases grisees.
+2. **Sous 36 zones, l'axe disparait.** Sur les deux rangees lues (2 et 6), entre les deux colonnes
+   centrales, a 296 px : **0 px d'encre d'axe**, remplace par la jonction de deux bordures de zone
+   (4 px bleus).
+3. **Une zone contre l'axe en recouvre la moitie.** A 296 px : 3 px d'encre restent a cote de 2 px de
+   bordure bleue (4 px a 352 px). C'est lisible, et c'est pourquoi l'axe ne descend pas sous 2,4
+   unites : a 0,7 unite il ne resterait qu'un pixel.
+4. **36 zones, c'est 36 arrets de tabulation** (M1 : 36 boutons) et, hors de la boite, une legende de
+   **1 220 px** de haut (36 libelles, identique aux six largeurs), contre 98 px pour trois libelles.
+
+**Legende** : celle de 36 libelles n'est pas necessaire quand seules les cases candidates sont des
+zones. Le gabarit existant suffit : `hors-de-la-boite` (`ADR-0094`), un numero de repere dans la case
+(1, 2, 3...) et une legende de trois a cinq lignes sous le dessin. Le texte des libelles est du
+contenu (section 5).
+
+**Exemple annote conforme (modele de contrainte, `viewBox` 100, figure de neuf cases, la case
+attendue est en colonne 4, rangee 3)** :
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="352" height="352" role="img"
+     fill="none" stroke="#1c2733">
+  <!-- grille : 7 horizontales et 7 verticales de 0,7, de 2 a 98, pas de 16 -->
+  <g stroke-width="0.7">
+    <line x1="2" y1="2" x2="98" y2="2"/> <!-- ... y = 18, 34, 50, 66, 82, 98 -->
+    <line x1="2" y1="2" x2="2" y2="98"/> <!-- ... x = 18, 34, 50, 66, 82, 98 -->
+  </g>
+  <!-- cases pleines : 12 x 12, retrecies de 2 dans leur case -->
+  <rect x="20" y="20" width="12" height="12" fill="#1c2733" stroke="none"/> <!-- colonne 2, rangee 2 -->
+  <!-- ... huit autres cases -->
+  <!-- axe : plein, 2,4, sur la ligne x = 50 -->
+  <line x1="50" y1="2" x2="50" y2="98" stroke-width="2.4"/>
+</svg>
+```
+
+Fichier complet mesure : **1 401 octets**, sans en-tete. Cadres de zone correspondants (`x`, `y`,
+`largeur`, `hauteur`, en %) : `50, 34, 16, 16` (la case attendue, contre l'axe) ; `66, 34, 16, 16` ;
+`82, 18, 16, 16`. Le choix des cases candidates est pedagogique, pas le mien. Ce modele repond a un
+point de `SYM-CE1-3` que je lis en geometrie : la case attendue n'est pas la seule case vide qui
+touche la figure, la case (colonne 5, rangee 3) la touche aussi.
+
+**Refuse, `SYM-CE1-3`** :
+
+1. Des zones sur les 36 cases, ou sur une case pleine (points 1 et 2 ci-dessus).
+2. Des cases pleines de la taille de la case, jointives (variante b).
+3. Un axe tirete, ou de moins de 2,4 unites, ou qui ne suit pas une ligne de grille (variantes c, d).
+4. Un `n` impair, ou un axe qui coupe une case.
+5. Une couleur ou un niveau de gris different pour les cases pleines, l'axe ou la grille : un seul
+   niveau, `#1c2733`.
+6. Une legende de plus de cinq libelles : la legende repond a des zones, pas a des cases. Seuil
+   propose, non mesure comme limite (98 px pour trois, 1 220 px pour 36).
+7. Un trait de grille de moins de 0,7 unite.
+
+### 4.4 `DEP-CE1-2` - se reperer et se deplacer
+
+La clause demande des cases "toutes designables" : **la grille porte donc `n x n` zones**, ce que la
+mesure ci-dessus rend ici admissible (le dessin n'a pas de cases pleines a proteger). Ce que la mesure
+a trouve de specifique :
+
+1. **Le dessin de la grille est presque entierement couvert.** Avec 36 zones, chaque case est une
+   boite blanche a 55 % bordee de bleu ; du trait de grille il ne reste qu'une jonction bleue de 4 px.
+   Le quadrillage "montre" (`DEP-CE1-2`) est alors porte par les zones, et le dessin porte **la case
+   de depart seule**. La grille reste dessinee dans le fichier (0,7 unite, 4.2) : elle est ce que le
+   fichier montre si une case n'est pas une zone.
+2. **Marque de depart : un disque plein de 10 unites de diametre** (rayon 5), `#1c2733`,
+   `stroke="none"`, centre dans sa case, soit 29,6 px a 296. Sous le voile d'une zone il devient
+   `#999ea3`, **2,61:1 contre le fond de zone** (calcul ; 2,62:1 au pixel) : sous 3:1, et aucune encre
+   `#1c2733` voilee n'atteint 3:1 (le noir pur y fait 3,25:1, hors palette). Il se reconnait donc par
+   **sa forme et sa taille**, pas par son contraste. Regle : pas de marque sous 10 unites de diametre,
+   une seule marque par item, une marque qui est un disque plein.
+3. **Libelle de case : dans la boite, deux caracteres au plus.** Mesure M1 : le plus large des
+   libelles essayes (A1 a F6) fait **26,3 px** de large et 27 px de haut dans une case de 47,4 px, a
+   20 px de police (le plancher de `.zone`) ; aucun libelle ne depasse sa boite, aux six largeurs, pour
+   les grilles de 4, 5 et 6. Trois caracteres ne sont pas mesures. Le mode `hors-de-la-boite` a 36
+   cases est **refuse** : numeros de 1 a 36 dans les cases et legende de 1 220 px a faire lire a un
+   lecteur debutant. Que le libelle soit une coordonnee, un numero ou autre chose est a `nadia-prof`
+   (`DEP-CE1-3`, section 5).
+4. **Libelle sur la case de depart** : le libelle (`#1c2733`) sur le disque voile (`#999ea3`) fait
+   **5,60:1** (calcul 1.4) ; a la capture, le libelle se lit sur le disque.
+5. Poids du modele de 6 x 6 avec sa marque : **747 octets**, sans en-tete.
+
+**Refuse, `DEP-CE1-2`** :
+
+1. Un `n` hors de 4 a 6, des cases de tailles differentes, une case du quadrillage qui n'est pas une
+   zone (sans que `nadia-prof` l'ait dit, section 5).
+2. Un libelle de plus de deux caracteres dans la boite ; le mode `hors-de-la-boite` au-dela de cinq
+   zones (seuil propose, 4.3).
+3. Une marque qui n'est pas un disque plein de 10 unites au moins ; deux marques ; une marque
+   distinguee par sa teinte.
+4. Un chemin, une fleche, un trait de deplacement dans le dessin (`DEP-CE1-3` : l'enonce ne contient
+   pas sa reponse, le dessin non plus).
+5. Un chiffre ou une lettre dans le dessin (`DES-7`).
+
+### 4.5 Poids et garde-fou (mesures M5 et M6)
+
+| Dessin | Octets, sans en-tete |
+|---|---|
+| grille 6 x 6 seule (enveloppe comprise) | 687 |
+| grille 4 x 4 seule (enveloppe comprise) | 535 |
+| modele `SYM-CE1-3` de 6 x 6, neuf cases pleines | **1 401** |
+| 6 x 6, dix-huit cases pleines (une moitie entiere) et axe, cas extreme | 2 049 |
+| modele `DEP-CE1-2` de 6 x 6 | **747** |
+
+Tous sous le cliquet de 4 633 octets par dessin, avec plus de 2 500 octets pour l'en-tete le plus
+long. **Garde-fou, essai M6** : les deux modeles (1 401 + 747 = 2 148 octets) copies sous
+`static/illustrations/`, sous des noms qu'aucune liste ne connait, font echouer trois tests pour deux
+motifs seulement : la hauteur declaree de 352 px au-dessus du plafond de 176 px (`DES-3` : le nom
+n'est pas dans `DESSINS_DE_DESIGNATION`, ce que l'inscription du dessin regle) et le cliquet total de
+poids (51 307 attendus, 53 455 mesures : exactement 2 148 de plus). **Aucune autre faute** : ni sur le
+trait de grille de 0,7 unite, ni sur les remplissages `#1c2733` a `stroke="none"` (la forme que
+`frise-journee-ecole.svg` emploie deja), ni sur une seconde couleur de trait, ni sur l'unicite d'un
+dessin (`COU-2`). Les fichiers d'essai sont retires, aucun n'est livre.
 
 ## 5. Points ouverts
 
@@ -354,10 +547,23 @@ description n'aurait pas montre** :
 2. **Texte alternatif** (`th:alt`) : il ne doit ni nommer l'axe, ni donner le nombre de rangees et
    de colonnes. Contenu, donc a elle.
 3. **Leurre loyal** (2.5 point 4) : un ecart de 8 unites a la mediane est une borne de lisibilite,
-   pas un jugement sur la difficulte. **Cases candidates du quadrillage** : toutes les cases vides
-   ou un sous-ensemble ? Je propose un sous-ensemble.
+   pas un jugement sur la difficulte.
 4. **Densite du reseau** (3.2) : diametre 10 px, ecart 6 px, rendu 1:1. Qu'un enfant de CE1 compte
    a l'oeil un 10 x 10 a ce pas est un jugement qu'elle seule peut faire en jouant.
+5. **Quadrillage de `SYM-CE1-3` : zones sur toutes les cases ou sur les cases candidates seules** (4.3).
+   Je propose les candidates seules : sur 36 zones, une case pleine tombe a 2,62:1 sous le voile et
+   l'axe disparait. Le nombre de candidates (trois au moins, `ZON-8`) et leur choix sont a elle.
+   La meme question se pose pour la lettre de `DEP-CE1-2` ("toutes designables") : je la lis comme
+   `n x n` zones sur une grille de deplacement et je ne la generalise pas a la symetrie.
+6. **Case de depart d'une grille de deplacement : zone ou non** (4.4). Zone, elle est voilee (2,61:1,
+   reconnue par sa forme). Non-zone, elle garde ses 14,09:1 mais la grille compte `n x n - 1` zones.
+7. **Libelle visible des cases d'une grille de deplacement** (4.4, `DEP-CE1-3`) : coordonnee ("B3"),
+   numero, ou autre. Deux caracteres au plus mesures. C'est elle qui juge si un libelle sur la case
+   fait de la tache une lecture de libelle.
+8. **Libelles de la legende de `SYM-CE1-3`** (trois a cinq lignes) : leur texte, et s'ils sont
+   positionnels ("colonne 4, ligne 3"). Contenu, donc a elle.
+9. **Axe vertical, horizontal ou les deux, et `n`** (4.3) : 4 x 4 et 6 x 6 pour la symetrie (un axe
+   central suppose `n` pair), 4 a 6 pour le deplacement. Quelle taille sert quel item est a elle.
 
 ### Pour `theo-archi`
 
@@ -373,10 +579,20 @@ description n'aurait pas montre** :
    Les points 2 et 3 (ligne etrangere dans une zone, croisement) sont a `nadia-prof` en jouant
    (`ZON-9`) ; si `theo-archi` veut en encoder un, le script de poste existe, a lui de decider.
 
+5. **Un voile de zone propre aux grilles** (4.3, 4.4) : toutes les zones recoivent le meme fond
+   blanc a 55 % (`.zone`). Si `nadia-prof` veut des cases pleines ou une marque sans voile sur 36
+   zones, il faut un indicateur de vue du genre de `libelleDeZoneHorsDeLaBoite` : c'est une donnee que
+   le controleur ne fournit pas, je ne la cree pas, et je ne touche pas `.zone` pour tous les paquets
+   de designation.
+6. **Cadre entier** (1.3, 4.2) : le 5 x 5 s'ecrit a 18 unites (marge 5), pas 19,2.
+
 ### Pour `sofia-sm`
 
 1. Q5 : le dessinateur de ces dessins reste a affecter ; ce document est ce qu'il doit lire.
 2. Aucun fichier de production, aucun test n'est modifie par ce commit.
+3. U2 est ecrit : la section 4 est complete (mesures, cases candidates, legende ou son remplacement).
+   Je ne declare pas la condition (2) de `DEC-0111` remplie, c'est a `camille-po` (U4) et a
+   `nadia-prof` (U3, section 5, points 5 a 9).
 
 ---
 
@@ -390,3 +606,7 @@ description n'aurait pas montre** :
 - Il ne mesure pas les ecrans de manche, de reponse, de fin de partie ni d'erreur : aucun paquet
   de C n'existe, il n'y a encore rien a mesurer. A la livraison des dessins, ces ecrans
   se mesurent a quatre largeurs au moins (320, 360, 744, 992), comme en 1.2.
+- Les mesures de la section 4 sont celles d'un Chrome headless sur des modeles jetables dans le
+  gabarit reel : pas d'enfant, pas d'appareil tactile, pas de dessin rendu pour les grilles de 4 x 4
+  et de 5 x 5 (leurs zones sont mesurees, leur dessin est calcule). L'axe d'une grille de 4 x 4
+  (2,4 unites sur une case de 24) est calcule, non mesure.
