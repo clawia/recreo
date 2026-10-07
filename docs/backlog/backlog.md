@@ -19860,8 +19860,17 @@ pas).
     `PaquetCe1SynonymesContrairesTest` *"ne lit pas le sens"* (fiche, section 6). Elle rejoue le paquet corrige
     et confirme qu'aucune activite n'est replacee du cote d'un stereotype par les sujets nouveaux et qu'une
     seule reponse reste acceptable sur chaque item.
-- **Ce que cette story ne fait pas** : elle ne touche que les sujets des items 19 et 23 ; elle ne change aucun
-  statut de la matrice.
+  - **Item 16, observation 1 de `nadia-prof`** (fiche, section 4, ni reserve ni condition, "a considerer au
+    prochain passage") : etant donne l'item 16, dont l'enonce est *"Il arrive a l'ecole."* avec la reponse
+    *part*, quand on remet la reponse dans la phrase, alors l'enonce est remplace par *"Le train arrive."*
+    selon la fiche, parce que *"Il part a l'ecole"* veut dire qu'il y va et qu'un enfant qui verifie par
+    substitution peut douter. Aujourd'hui l'enonce porte *"Il arrive a l'ecole."* : rouge sur l'existant
+    (`ce1-synonymes-contraires.yaml`). **Cette modification change le sens d'un item** : elle exige un
+    re-audit, et **l'item 16 se re-audite avec les items 19 et 23**, dans le meme rejeu de `nadia-prof`. Ajoutee
+    aux criteres de la correction le 2026-10-07 (`DEC-0111`, amendement du 2026-10-07), **sans l'engager** :
+    la story reste non engagee a s52.
+- **Ce que cette story ne fait pas** : elle ne touche que les sujets des items 19 et 23, plus l'enonce de
+  l'item 16 ; elle ne change aucun statut de la matrice.
 - **Lien decision** : `DEC-0111` (amendement A.13) ; reserve ouverte par `nadia-prof` le 2026-10-06, identifiant
   alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4.
 - **Agent pressenti** : a affecter au planning de s53 par `sofia-sm` (instance A de `nadia-prof` pour le
