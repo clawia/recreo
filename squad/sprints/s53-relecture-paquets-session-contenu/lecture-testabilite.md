@@ -197,12 +197,21 @@ Aucun garde-fou existant ne porte un critere specifique ci-dessous : les garde-f
 - **Testable, et le chiffre du planning est reproduit.** `grep -l ' competence: ".* :' *.yaml | wc -l` rend **13** sur 182
   fichiers. Le motif exige une espace avant `competence`, donc une cle indentee : mesure sans cette espace
   (`'^competence: ".* :'`) : 0 ; avec `^\s*` : 13, memes fichiers.
-- **Ecart "9 contre 11" : une cause est ecartee.** Si le chiffre de `camille-po` contait des espaces insecables, la
-  recherche d'octets `C2 A0` (`grep -lP '\xC2\xA0'`) rend **0 fichier sur 182** : aucun fichier de `contenu/` n'en porte. Piege
-  mesure : `grep -P '\x{00A0}'` sans mode UTF-8 rend 4 fichiers, par fausse concordance avec l'octet `A0` de "à" (`C3 A0`) ;
-  ne pas l'utiliser. L'ecart de 2 reste sans explication.
-- Apres une convention "espace insecable" : la recherche d'octets doit rendre exactement les fichiers declares, et
-  l'espace ordinaire 0. Apres une convention "espace ordinaire" : aucun diff.
+- **Ecart "9 contre 11" : la cause "espace insecable" n'est pas ecartee.** Correction de s54 (A10 de la retro de s53). Cette
+  ligne disait que la recherche d'octets `grep -lP '\xC2\xA0'` rend "0 fichier sur 182", donc qu'aucun fichier n'en porte, et que
+  `grep -P '\x{00A0}'` rendrait 4 fichiers par fausse concordance avec l'octet `A0` de "à". **Les deux affirmations sont fausses
+  sur le poste de s54** (locale `en_US.UTF-8`, `grep -P` actif) : en mode UTF-8, `\xC2\xA0` designe les deux caracteres U+00C2
+  et U+00A0, pas les deux octets de l'espace insecable, et ne trouve rien. Le "0" etait un artefact de la commande, pas une
+  propriete des fichiers. Mesures de s54 sur les 182 fichiers de `contenu/` : `grep -lP '\x{00A0}'` rend **161**,
+  `grep -l $'\xc2\xa0'` rend **161**, une recherche d'octets Python (`b"\xc2\xa0" in fichier`) rend **161**. L'espace insecable
+  figure donc dans 161 fichiers sur 182. Sur le seul champ `competence`, une espace insecable avant ":" figure dans **4**
+  fichiers (`ce1-accord-groupe-nominal`, `ce1-classes-de-mots`, `ce1-inference`, `ce1-texte-narratif`, le nombre de `DEC-0112`
+  amendement A.1) et une espace ordinaire avant ":" dans 13 autres (intersection vide). Je n'ai pas reproduit le "4" que cette
+  ligne donnait pour `\x{00A0}` : la meme commande rend 161 ici, et la locale de la mesure de s53 n'est pas connue. L'ecart de
+  2 entre 9 et 11 reste sans explication : je n'ai pas relu `relecture-p11.md` section 3 pour le recompter.
+- Apres une convention "espace insecable" : la recherche d'octets (`grep -lP '\x{00A0}'`, 161 fichiers aujourd'hui) doit rendre
+  exactement les fichiers declares ; sur le seul champ `competence`, `grep -lP '^\s*competence: ".*\x{00A0}:'` rend 4 fichiers
+  aujourd'hui. Apres la meme convention, l'espace ordinaire doit rendre 0. Apres une convention "espace ordinaire" : aucun diff.
 - **Aucun garde-fou existant ne lit `competence` pour sa typographie** (les tests qui citent `competence` la lisent comme
   valeur, ils ne verifient pas l'espace). Le planning note que ce champ n'est affiche par aucun gabarit : si c'est exact, le
   critere n'a aucun effet visible a tester en rendu.
@@ -249,7 +258,7 @@ lectures de `nadia-prof` ou de l'auteur, a l'audit futur.
 3. **`S53-REL-5`** : le planning cite "ne contient pas la bonne reponse" comme critere ; aucun garde-fou ne le porte.
 4. **`S53-REL-6`** : la ligne 15 du paquet nomme aussi le pont du Gard.
 5. **`S53-REL-7`** : la ligne 114 est une troisieme occurrence hors des deux exemples du point.
-6. **`S53-REL-9`** : le motif d'espace insecable ne peut pas expliquer 9 contre 11 (0 fichier en porte).
+6. **`S53-REL-9`** : la commande qui annoncait "0 fichier sur 182" ne cherchait pas l'espace insecable : corrige en section 3.9 (161 fichiers sur 182 en portent, 4 en `competence` avant ":").
 7. **C6** : le job `outils` choisit `python3` ; un poste ou `python3` est un faux binaire ne peut pas le lancer tel quel.
 
 ## 6. Ce que cette lecture n'a pas fait
