@@ -780,6 +780,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-conjugaison-present
     nombreDeManches: 10
+  - id: bandit-manchot-futur-ce1
+    titre: "Les verbes au futur"
+    consigne: "Lis bien, puis choisis le verbe au futur."
+    mecanique: bandit-manchot
+    paquet: ce1-futur
+    nombreDeManches: 10
   - id: bandit-manchot-synonymes-contraires-ce1
     titre: "Même sens ou sens contraire"
     consigne: "Lis bien, puis choisis le bon mot."

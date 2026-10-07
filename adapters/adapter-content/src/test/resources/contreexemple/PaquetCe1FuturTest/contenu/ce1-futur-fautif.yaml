@@ -1,0 +1,17 @@
+schema: 1
+id: ce1-futur-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1FuturTest. "chante" est declare de famille "a"
+# (le futur a une autre personne) alors qu'il est le present : FUT-CE1-3.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Conjuguer au futur être, avoir et les verbes du premier groupe."
+lignesDeReferentiel: ["FRA-CE1-18"]
+items:
+  # FUT-CE1-3: a, a
+  - enonce: "« chanter » : demain, je ___ une chanson."
+    bonneReponse: "chanterai"
+    distracteurs: ["chante", "chanteras"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."

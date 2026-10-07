@@ -1,0 +1,9 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1FuturTest. La consigne du jeu ne nomme pas
+# le futur : TRV-CE1-2.
+jeux:
+  - id: bandit-manchot-futur-fautif
+    titre: "Les verbes"
+    consigne: "Lis bien, puis choisis la bonne forme du verbe."
+    mecanique: bandit-manchot
+    paquet: ce1-futur
+    nombreDeManches: 10
