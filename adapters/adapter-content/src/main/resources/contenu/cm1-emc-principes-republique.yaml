@@ -80,7 +80,7 @@ items:
     indice: "Ces élèves se soutiennent les uns les autres."
   - enonce: "Quel principe de la République garantit que l'école publique ne favorise aucune religion ?"
     bonneReponse: "la laïcité"
-    distracteurs: ["la fraternité", "la liberté"]
+    distracteurs: ["la fraternité", "la démocratie"]
     indice: "Ce principe dit comment l'école et l'État se comportent envers les croyances."
   - enonce: "Un employeur n'a pas le droit de refuser un emploi à quelqu'un à cause de son origine : la loi l'interdit. Quel principe de la République cela protège-t-il ?"
     bonneReponse: "le refus des discriminations"
