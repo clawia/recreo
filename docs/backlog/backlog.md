@@ -19420,6 +19420,9 @@ section 16.5) : 1,0, les quatre points non bloquants repris dans le meme diff qu
 
 ### S51-SCI-CORPS-CM1-RESERVES - `CRP-CM1-R1` a `CRP-CM1-R3` : deux indices faux, deux formulations trop larges et des distracteurs implausibles dans "Prendre soin de son corps"
 
+**Etat au 2026-10-07 : ENGAGEE a s53** (`DEC-0112` section 5.2), troisieme report arrete. Motif : l'indice de l'item 3 est
+faux et le jeu est servi. Criteres inchanges ; meme instance de `nadia-prof`, 0,5.
+
 **Contexte.** `nadia-prof` prononce **VALIDE SOUS RESERVE** sur `SCI-CM1-10` le 2026-10-06 (s51, instance
 B, `squad/conformite/FICHE-bandit-manchot-corps-cm1.md`, section 8). Trois reserves non bloquantes,
 groupees en une seule story par paquet (cinq items sur douze : 3, 5, 6, 7, 11 ; `PAR-10`, precedent
@@ -19543,6 +19546,9 @@ pas).
 - **Agent pressenti** : a affecter au planning de s52 par `sofia-sm`.
 
 ### S51-OUTIL-JOURNAL-TOKENS - L'outil de rapport de tokens ne remplace plus une mesure ecrite par "Aucune consommation mesuree" (transverse)
+
+**Etat au 2026-10-07 : ENGAGEE a s53** (`DEC-0112` section 5.5), troisieme report arrete. Le prix est a rendre par
+`theo-archi` dans son avis de faisabilite de s53 ; criteres inchanges.
 
 Story ecrite a la cloture de s51, **non chiffree et non engagee a s52** (`PAR-16` : un poste sans story
 n'existe pas, une story sans engagement non plus). Origine : `squad/sprints/s51-trois-instances-francais-sciences-maths/RAPPORT.md`
@@ -19831,6 +19837,8 @@ ouvert. Les tarifs sont ceux du bareme de `PAR-10` ou ceux que `nadia-prof` a de
 
 ### Story de correction differee - reserve `SYC-CE1-R1` : le ballon et la force de "Même sens ou sens contraire" sont servis du cote du stereotype
 
+**Etat au 2026-10-07 : non engagee a s53, second report** (`DEC-0112` section 6). La `DEC` de s54 l'engage ou la retire.
+
 **Contexte.** `nadia-prof` audite `bandit-manchot-synonymes-contraires-ce1` a s52, instance A, et prononce
 **VALIDE SOUS RESERVE** sur `FRA-CE1-25` (`squad/conformite/FICHE-bandit-manchot-synonymes-contraires-ce1.md`,
 section 5). Reserve neuve, non bloquante, ouverte sur ce premier passage (`TRV-CE1-6`) : item 19 *"Il lance le
@@ -19878,6 +19886,8 @@ pas).
 
 ### Story de correction differee - reserve `MUL-CE1-R1` : la premiere phrase des six enonces de reseau de "Le sens de la multiplication" parle de "deux façons" avant de les nommer
 
+**Etat au 2026-10-07 : non engagee a s53, second report** (`DEC-0112` section 6). La `DEC` de s54 l'engage ou la retire.
+
 **Contexte.** `nadia-prof` audite `bandit-manchot-sens-multiplication-ce1` a s52, instance C, et prononce
 **VALIDE SOUS RESERVE** sur `MAT-CE1-06` (`squad/conformite/FICHE-bandit-manchot-sens-multiplication-ce1.md`,
 section 6). Reserve neuve, non bloquante, datee du 2026-10-06 : *"Les deux façons de compter donnent le même
@@ -19914,6 +19924,9 @@ s52** : premier report. Tarif **0,5** (`PAR-10`, rejeu borne ; six items sur sei
   rejeu ; `lea-dev` a ecrit le paquet).
 
 ### S52-SCI-TERRE-CM1-REPRISE-APRES-RETRAIT - Remettre au catalogue "La Terre, le jour et les saisons" une fois ses deux motifs leves (`SCI-CM1-15`)
+
+**Etat au 2026-10-07 : RETIREE des postes de sprint** (`DEC-0112` section 5.1), troisieme report arrete. `SCI-CM1-15`
+reste `non couvert`. Rouverte par une `DEC` qui nomme son porteur. Texte conserve ci-dessous.
 
 **Contexte.** Le paquet `cm1-sciences-terre` est refuse a s51 (`FICHE-bandit-manchot-terre-cm1.md`, section 7,
 deux motifs) et son entree de catalogue `bandit-manchot-terre-cm1` est retiree a s52 (`DEC-0111` section 3,
@@ -19954,6 +19967,9 @@ Tarif : celui de `S51-SCI-TERRE-CM1-REPRISE`, 1,0, prix fixe par `nadia-prof`.
 
 ### S52-SCI-ACTIVITE-HUMAINE-CM1-REPRISE-APRES-RETRAIT - Remettre au catalogue "L'activite humaine et la nature" une fois l'item 11 corrige (`SCI-CM1-18`)
 
+**Etat au 2026-10-07 : RETIREE des postes de sprint** (`DEC-0112` section 5.1), troisieme report arrete. `SCI-CM1-18`
+reste `non couvert`. Rouverte par une `DEC` qui nomme son porteur. Texte conserve ci-dessous.
+
 **Contexte.** Le paquet `cm1-sciences-activite-humaine` est refuse deux fois a s51
 (`FICHE-bandit-manchot-activite-humaine-cm1.md`, verdict du second passage, un seul motif maintenu : l'item
 11) et son entree `bandit-manchot-activite-humaine-cm1` est retiree a s52 (`DEC-0111` section 3). **Cette story
@@ -19988,7 +20004,8 @@ au catalogue. Report compte : le meme que ci-dessus, **troisieme a s53 sans enga
 
 ## Session hors sprint "s53 special" - Points de relecture a traiter au prochain sprint
 
-**Contexte.** Session de contenu seul du 2026-10-07 : 51 paquets YAML ecrits pour les 45 lignes `non couvert` de la
+**Contexte.** Session de contenu seul du 2026-10-07 : 45 paquets YAML (45 fichiers ajoutes, `git diff --name-status
+9d44d510 76a50e8b -- adapters/adapter-content/src/main/resources/contenu`) ecrits pour les 45 lignes `non couvert` de la
 matrice (CP, CE1, CM1), **non branches au catalogue**, sans verdict de `nadia-prof`. Le relecteur a laisse onze points
 non modifies, parce que le changement sort de la redaction. Ils sont a traiter avant tout branchement. Aucun paquet
 n'est fusionne dans `catalogue.yaml` par cette session. Le suivi de matrice reste inchange (aucune ligne ne change de
@@ -20025,5 +20042,69 @@ statut).
   - `P11` `cm1-arts-decrire-une-oeuvre-lexique.yaml`, `cm1-emc-principes-republique.yaml`,
     `cm1-hda-caracteristiques-techniques.yaml`, `cm1-hda-decrire-lexique.yaml` : dans `competence`, l'espace avant ":"
     est ordinaire (onze paquets plus anciens font de meme). Decision de convention.
-- **Lien** : commits `5059098f` (relecture) et `70b1cdc1` (garde-fous de test) de `s53-contenu-special`.
-- **Agent pressenti** : a affecter au planning du prochain sprint par `sofia-sm`.
+- **Lien** : commits `5059098f` (relecture) et `70b1cdc1` (garde-fous de test) de `s53-contenu-special` ; `DEC-0112`.
+- **Erratum du 2026-10-07 (`DEC-0112` section 3, Q2)** : le chiffre "51 paquets" etait faux, il y a 45 fichiers de paquet ; le
+  sujet du commit `76a50e8b`, pousse, dit encore 51 et n'est pas reecrit.
+- **Agent pressenti** : decoupee et affectee au planning de s53, voir la sous-section suivante.
+
+### Decoupage de `S53SPE-RELECTURE` au planning de s53 - neuf stories, statut engage a s53
+
+**Etat au 2026-10-07 (`DEC-0112`).** La story ci-dessus est decoupee en neuf stories par `sofia-sm`
+(`squad/sprints/s53-relecture-paquets-session-contenu/planning.md`) et **engagee a s53**. Le critere de decoupage est un
+fichier de paquet ecrit par une seule main. **Competence programme visee, pour les neuf : transverse - pas de contenu
+pedagogique** (les matieres des paquets sont donnees pour information). **Besoin de l'enfant**, commun aux neuf :
+en tant qu'eleve, je veux que le jeu que je jouerai un jour ne m'enseigne rien de faux et ne me donne pas la reponse,
+afin de ne pas retenir une erreur ni de repondre sans chercher. **Aucun paquet n'est branche, aucune ligne de matrice ne
+change de statut** (`DEC-0112` section 1). Q8 : **sur P1, P3 et P5, l'auteur propose et `nadia-prof` decide.**
+
+**Criteres communs aux neuf stories** (planning, section "Criteres d'acceptation") :
+
+- **C1** - un point non decide n'est pas edite : le fichier de decision qui le tranche existe sur `round-two`
+  (`git show round-two:<fichier>`) et nomme le point, l'issue (corriger, accepter avec motif, retirer) et le motif.
+- **C2** - issue *accepter avec motif* : `git diff round-two -- <paquet>` est vide pour ce point.
+- **C3** - `git diff round-two --name-only | grep -c catalogue.yaml` rend 0 sur chaque branche de s53.
+- **C4** - `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content,bootstrap -am test` est vert, `-am` obligatoire ;
+  sur l'arbre fusionne, `mvn -B clean verify` de la racine.
+- **C5** - un garde-fou de `70b1cdc1` n'est modifie que si le diff le dit et que le developpeur ecrit pourquoi ; une
+  assertion n'est jamais affaiblie.
+- **C6** - chaque livraison nomme les jobs de `.github/workflows/ci.yml` qu'elle a lances (`prefixes`, `chemins`,
+  `outils`, `build`).
+
+| Story | Point | Paquet(s) | Decideur | Dev | Critere specifique ; "rouge" = ce que la commande rend aujourd'hui |
+|---|---|---|---|---|---|
+| `S53-REL-1` | P1 | `ce1-accord-groupe-nominal.yaml` | `nadia-prof` | `marc-dev` | Si *corriger* : `grep -c 'bonneReponse: "des beaux chapeaux"'` rend 0 (rouge : 1), la forme retenue par `nadia-prof` y figure, aucun distracteur de l'item n'est egal a la bonne reponse |
+| `S53-REL-2` | P2 | `ce1-pronoms.yaml` | l'auteur | `lea-dev` | Items 10, 13, 14 reecrits ou reclasses ; le compte de l'en-tete (lignes 19 a 21) et la liste d'items egalent la classification relue item par item, ecrite dans la decision. Non automatisable |
+| `S53-REL-3` | P3, P4 | `cm1-emc-principes-republique.yaml` | `nadia-prof` | `marc-dev` | P3 : l'en-tete et l'item 4 disent la meme chose (rouge : "la liberte" est en distracteur de l'item 4 ligne 83 et l'en-tete dit le contraire). P4 : pour chacun des items 5, 6, 7, 8, 10, 11, la decision ecrit *garde* ou *reecrit* avec motif ; un indice reecrit a douze mots au plus (`TRV-CE1-5`, applicabilite a l'EMC CM1 a confirmer par `nadia-prof`) |
+| `S53-REL-4` | P5, P10 | `cp-qlm-vocabulaire-de-position.yaml`, `cp-qlm-situer-la-france.yaml` | P5 `nadia-prof` ; P10 `theo-archi` | `lea-dev` | P5 : `grep -c "le chien est loin"` rend 0 (rouge : 1). P10 : le nombre d'items a un seul distracteur est ecrit pour les deux fichiers (rouge : 2) et, si l'issue est *au moins deux*, `awk '/distracteurs: \["[^"]*"\]$/'` ne rend rien. Ordre : P5 avant P10 |
+| `S53-REL-5` | P6 | `ce1-masses-contenances.yaml` | `nadia-prof` | `marc-dev` | `grep -c "Le mot kilo veut dire mille"` rend 0 ou la decision accepte avec motif (rouge : **2**, le backlog n'en decrit qu'un) ; la decision se prononce sur les deux items ; un indice reecrit a douze mots au plus et ne contient pas la bonne reponse |
+| `S53-REL-6` | P7 | `cm1-hda-epoque-civilisation.yaml` | l'auteur | `lea-dev` | Si *retirer le nom* : aucune ligne `enonce:` ne contient "pont du Gard" (rouge : 1) ; si *garder* : la phrase d'en-tete ne dit plus qu'aucune oeuvre n'est nommee, ou le motif de l'ecart est ecrit. La decision ecrit la commande qui a cherche d'autres noms d'oeuvre |
+| `S53-REL-7` | P8 | `ce1-texte-documentaire.yaml` | `nadia-prof` | `lea-dev` | La decision lit `TRV-CE1-6` sur `ton`, `ta`, `tes`, `mon`, `ma`, `mes`, `notre`, `nos`, `votre`, `vos` dans `enonce`, `texteSupport` et propositions, liste chaque occurrence avec sa commande ; apres correction la meme recherche rend la liste de la decision (rouge : au moins les lignes 120 a 122) |
+| `S53-REL-8` | P9 | `cm1-emc-atteinte-autrui.yaml`, `cm1-emc-respect-differences.yaml`, `cm1-emc-principes-republique.yaml` | `camille-po` | aucun | **Soldee par `DEC-0112` section 4 : la mention exigee d'avance n'est pas equivalente a une ligne `DEGRADE`, aucun fichier ne change.** Critere de non-regression, vert aujourd'hui par construction (decision *accepter*, C2) : `grep -c '^# DEGRADE'` rend 0 sur les trois paquets et `git diff round-two -- <les trois>` est vide pour ce point. Le critere de remplacement du planning, "rend 1 si non equivalente", est caduc |
+| `S53-REL-9` | P11 | `cm1-arts-decrire-une-oeuvre-lexique.yaml`, `cm1-emc-principes-republique.yaml`, `cm1-hda-caracteristiques-techniques.yaml`, `cm1-hda-decrire-lexique.yaml` | `nadia-prof`, sur les faits du `relecteur-pedagogique` | `marc-dev` (`principes`), `lea-dev` (les trois autres) | La decision de convention est sur le disque et ecrit le perimetre retenu (quatre fichiers ou treize ; 9 ou 11 anciens, ma mesure rend 13 dont 9 anciens). Apres application, `grep -l ' competence: ".* :'` rend exactement la liste que la decision declare conforme a l'espace ordinaire, ou rien si elle impose l'espace insecable (rouge : 13). Ordre sur `principes` : P3, P4, P11, puis le reste |
+
+**Ce que `yanis-qa` doit dire avant la premiere livraison** : lesquels de ces criteres un automate ne juge pas (lectures
+de `sofia-sm` : `S53-REL-2` en entier, `S53-REL-3` P4, `S53-REL-4` P5 sur "la reponse n'est plus dans l'enonce").
+
+### S53-PASSE-TRANSVERSE - Passe transverse sur le depot servi entier (`PAR-4`), engagee a s53 (transverse)
+
+**Contexte.** `PAR-4` (arbitrage de s29, section 13.3) : la passe sur les proprietes de portee **D** (section 13.2) est
+une tache nommee, 0,5, affectee a l'instance qui porte l'accumulation. Elle a ete portee a trois `DEC` d'ouverture
+(s51, s52, s53) sans engagement ; `DEC-0112` section 5.4 l'engage. Dernieres passes ecrites sur le depot :
+`PASSE-TRANSVERSE-s29-...` et `PASSE-TRANSVERSE-s30-...` (2026-09-06).
+
+- **Besoin** : en tant qu'eleve qui enchaine plusieurs jeux, je veux qu'un meme mot, une meme consigne et une meme
+  regle disent partout la meme chose, afin de ne pas devoir reapprendre le jeu a chaque ecran.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne `round-two` a la fin de s53, quand on cherche `squad/conformite/PASSE-TRANSVERSE-s53-*.md`, alors un
+    fichier existe. Aujourd'hui `find squad -iname 'PASSE-TRANSVERSE-s53*'` ne rend rien : rouge sur l'existant.
+  - Le fichier nomme l'arbre mesure (sha), la commande ou le geste de chaque mesure, et traite **chaque propriete de
+    la portee D de la section 13.2 de l'arbitrage de s29** (une ligne par propriete : tenue, non tenue avec les
+    paquets concernes, ou non mesuree avec le motif).
+  - Chaque propriete non tenue est routee : une story au backlog ou un motif ecrit de ne pas en faire une.
+  - Le prix reellement depense est ecrit dans le fichier, a cote des 0,5 poses par `PAR-4`.
+  - Aucun Done pedagogique, aucun statut de matrice, aucun branchement.
+- **Ce qu'aucun automate ne voit** : tout. La passe est un jugement de `nadia-prof` ; `yanis-qa` ne verifie que
+  l'existence du fichier et le traitement de chaque propriete.
+- **Lien decision** : `DEC-0112` (section 5.4).
+- **Agent pressenti** : `nadia-prof`, meme instance que son passage de decision.
