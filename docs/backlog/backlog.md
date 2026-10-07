@@ -19420,8 +19420,10 @@ section 16.5) : 1,0, les quatre points non bloquants repris dans le meme diff qu
 
 ### S51-SCI-CORPS-CM1-RESERVES - `CRP-CM1-R1` a `CRP-CM1-R3` : deux indices faux, deux formulations trop larges et des distracteurs implausibles dans "Prendre soin de son corps"
 
-**Etat au 2026-10-07 : ENGAGEE a s53** (`DEC-0112` section 5.2), troisieme report arrete. Motif : l'indice de l'item 3 est
-faux et le jeu est servi. Criteres inchanges ; meme instance de `nadia-prof`, 0,5.
+**Etat au 2026-10-07 (s54) : ENGAGEE a s54** (`DEC-0114` sections 1 et 4), `marc-dev`, **premiere a fusionner**, instance B, 0,5. Engagee a s53
+(`DEC-0112` section 5.2) et non livree : quatrieme sprint. Verifie contre l'existant le 2026-10-07 : `cm1-sciences-corps.yaml` ligne 77 porte
+encore *"ne fait rien d'autre"* et `grep -c "corps-cm1"` sur `catalogue.yaml` rend 1 : le critere de l'item 3 est rouge.
+Motif : l'indice de l'item 3 est faux et le jeu est servi. Criteres inchanges.
 
 **Contexte.** `nadia-prof` prononce **VALIDE SOUS RESERVE** sur `SCI-CM1-10` le 2026-10-06 (s51, instance
 B, `squad/conformite/FICHE-bandit-manchot-corps-cm1.md`, section 8). Trois reserves non bloquantes,
@@ -19547,8 +19549,11 @@ pas).
 
 ### S51-OUTIL-JOURNAL-TOKENS - L'outil de rapport de tokens ne remplace plus une mesure ecrite par "Aucune consommation mesuree" (transverse)
 
-**Etat au 2026-10-07 : ENGAGEE a s53** (`DEC-0112` section 5.5), troisieme report arrete. Le prix est a rendre par
-`theo-archi` dans son avis de faisabilite de s53 ; criteres inchanges.
+**Etat au 2026-10-07 (s54) : ENGAGEE a s54** (`DEC-0114` sections 1 et 4), proprietaire `sofia-sm` (casquette developpeuse, tache separee). Prix de
+`theo-archi` : `confirmation-archunit.md` de s53, section 5 (une fonction de 20 a 30 lignes et un fichier de test). **Criteres etendus** (la section 5
+du meme document, de `theo-archi`, montre que `ecrire_rapport_sprint` et `main` sans `--sprint` ont le meme defaut ; les six `RAPPORT-tokens.md` de
+s22 a s27 portent des chiffres, `grep -c "Aucune consommation mesuree"` rend 0) : trois criteres s'ajoutent a la fin de la liste. `T4` (le geste
+couvre-t-il `main` sans `--sprint` ?) reste a `theo-archi`.
 
 Story ecrite a la cloture de s51, **non chiffree et non engagee a s52** (`PAR-16` : un poste sans story
 n'existe pas, une story sans engagement non plus). Origine : `squad/sprints/s51-trois-instances-francais-sciences-maths/RAPPORT.md`
@@ -19576,7 +19581,14 @@ Le journal commite n'est pas touche par cette story.
     l'outil regenere, alors la section reste *"Aucune consommation mesuree"* : l'outil n'invente rien.
   - Chaque cas est couvert par un test d'outil execute par la CI, au meme titre que
     `outils/rapport-tokens-test.sh`.
-- **Lien decision** : `DEC-0110` section 17. Routage : `theo-archi` (decision sur l'outil, hors de mon
+  - Ajout de s54 : etant donne un rapport de sprint dont les chiffres sont ecrits et dont les transcriptions manquent, quand
+    `ecrire_rapport_sprint` regenere ce rapport, alors les chiffres sont conserves, comme pour le journal. Aujourd'hui le texte
+    *"Aucune consommation mesuree sur cette fenetre."* le remplace (ligne 353 de `outils/rapport-tokens.py`) : rouge sur l'existant.
+  - Ajout de s54 : etant donne le depot a `round-two`, quand `python outils/rapport-tokens.py` est lance sans `--sprint`, alors `git status --short`
+    ne montre aucune modification des `RAPPORT-tokens.md` de s22 a s27.
+  - Ajout de s54 : un fichier `outils/rapport-tokens-journal-test.py` existe et le job `outils` de `.github/workflows/ci.yml` le lance (`outils/*-test.py`
+    par motif, d'apres `confirmation-archunit.md` s53 section 5).
+- **Lien decision** : `DEC-0110` section 17 ; `DEC-0114` (sections 1, 4). Routage : `theo-archi` (decision sur l'outil, hors de mon
   perimetre).
 - **Agent pressenti** : a affecter par `sofia-sm`.
 
@@ -19837,7 +19849,8 @@ ouvert. Les tarifs sont ceux du bareme de `PAR-10` ou ceux que `nadia-prof` a de
 
 ### Story de correction differee - reserve `SYC-CE1-R1` : le ballon et la force de "Même sens ou sens contraire" sont servis du cote du stereotype
 
-**Etat au 2026-10-07 : non engagee a s53, second report** (`DEC-0112` section 6). La `DEC` de s54 l'engage ou la retire.
+**Etat au 2026-10-07 (s54) : ENGAGEE a s54** (`DEC-0114` section 3), avec l'item 16 de `FRA-CE1-25`, instance A, 0,5, `marc-dev`, un seul re-audit
+des trois items (19, 23, 16). Second report arrete. Critere de la fiche inchange (mot pour mot, plus bas) ; non automatisable, `nadia-prof` rejoue.
 
 **Contexte.** `nadia-prof` audite `bandit-manchot-synonymes-contraires-ce1` a s52, instance A, et prononce
 **VALIDE SOUS RESERVE** sur `FRA-CE1-25` (`squad/conformite/FICHE-bandit-manchot-synonymes-contraires-ce1.md`,
@@ -19886,7 +19899,9 @@ pas).
 
 ### Story de correction differee - reserve `MUL-CE1-R1` : la premiere phrase des six enonces de reseau de "Le sens de la multiplication" parle de "deux façons" avant de les nommer
 
-**Etat au 2026-10-07 : non engagee a s53, second report** (`DEC-0112` section 6). La `DEC` de s54 l'engage ou la retire.
+**Etat au 2026-10-07 (s54) : RETIREE des postes de sprint** (`DEC-0114` section 3), second report arrete par le retrait, pas par un troisieme report.
+La reserve reste ecrite dans la fiche (section 6) et ici. Rouverte par la `DEC` d'ouverture du premier sprint qui porte une instance de
+mathematiques CE1, qui l'engage ou la retire a son tour. Compte : s52, s53, retrait s54.
 
 **Contexte.** `nadia-prof` audite `bandit-manchot-sens-multiplication-ce1` a s52, instance C, et prononce
 **VALIDE SOUS RESERVE** sur `MAT-CE1-06` (`squad/conformite/FICHE-bandit-manchot-sens-multiplication-ce1.md`,
@@ -19925,8 +19940,10 @@ s52** : premier report. Tarif **0,5** (`PAR-10`, rejeu borne ; six items sur sei
 
 ### S52-SCI-TERRE-CM1-REPRISE-APRES-RETRAIT - Remettre au catalogue "La Terre, le jour et les saisons" une fois ses deux motifs leves (`SCI-CM1-15`)
 
-**Etat au 2026-10-07 : RETIREE des postes de sprint** (`DEC-0112` section 5.1), troisieme report arrete. `SCI-CM1-15`
-reste `non couvert`. Rouverte par une `DEC` qui nomme son porteur. Texte conserve ci-dessous.
+**Etat au 2026-10-07 (s54) : REPRISE** par `DEC-0114` (instance B, sciences et EMC CM1, comptee a 4,0), sur la remise a s54 de `DEC-0113` section 9.
+Portee par `S54-BR-SCI-CM1-15` (section "Sprint 54"), qui branche le paquet `cm1-sciences-terre-jour-nuit-saisons`, reprise corrigee du paquet
+refuse. `SCI-CM1-15` reste `non couvert` jusqu'au verdict de `nadia-prof`. Etat a la cloture de s53 : **RETIREE des postes de sprint**
+(`DEC-0112` section 5.1). Texte conserve ci-dessous.
 
 **Contexte.** Le paquet `cm1-sciences-terre` est refuse a s51 (`FICHE-bandit-manchot-terre-cm1.md`, section 7,
 deux motifs) et son entree de catalogue `bandit-manchot-terre-cm1` est retiree a s52 (`DEC-0111` section 3,
@@ -19967,8 +19984,10 @@ Tarif : celui de `S51-SCI-TERRE-CM1-REPRISE`, 1,0, prix fixe par `nadia-prof`.
 
 ### S52-SCI-ACTIVITE-HUMAINE-CM1-REPRISE-APRES-RETRAIT - Remettre au catalogue "L'activite humaine et la nature" une fois l'item 11 corrige (`SCI-CM1-18`)
 
-**Etat au 2026-10-07 : RETIREE des postes de sprint** (`DEC-0112` section 5.1), troisieme report arrete. `SCI-CM1-18`
-reste `non couvert`. Rouverte par une `DEC` qui nomme son porteur. Texte conserve ci-dessous.
+**Etat au 2026-10-07 (s54) : REPRISE** par `DEC-0114` (instance B), sur la remise a s54 de `DEC-0113` section 9. Portee par `S54-BR-SCI-CM1-18`
+(section "Sprint 54"), qui branche le paquet `cm1-sciences-environnement-activite-humaine`, reprise corrigee du paquet refuse deux fois.
+`SCI-CM1-18` reste `non couvert` jusqu'au verdict de `nadia-prof`. Etat a la cloture de s53 : **RETIREE des postes de sprint**
+(`DEC-0112` section 5.1). Texte conserve ci-dessous.
 
 **Contexte.** Le paquet `cm1-sciences-activite-humaine` est refuse deux fois a s51
 (`FICHE-bandit-manchot-activite-humaine-cm1.md`, verdict du second passage, un seul motif maintenu : l'item
@@ -20045,6 +20064,9 @@ statut).
 - **Lien** : commits `5059098f` (relecture) et `70b1cdc1` (garde-fous de test) de `s53-contenu-special` ; `DEC-0112`.
 - **Erratum du 2026-10-07 (`DEC-0112` section 3, Q2)** : le chiffre "51 paquets" etait faux, il y a 45 fichiers de paquet ; le
   sujet du commit `76a50e8b`, pousse, dit encore 51 et n'est pas reecrit.
+- **Erratum du 2026-10-07 (`DEC-0114` section 8, R5)** : "onze paquets plus anciens" n'est pas reconcilie avec la mesure : **neuf** fichiers
+  plus anciens portent une espace ordinaire avant ":" dans `competence` (`relecture-p11.md` section 3), quatre autres une espace insecable ;
+  9 + 4 = 13, pas 11. L'ecart n'est pas explique. Le chiffre "onze" ci-dessus n'est pas corrige dans sa phrase : il est marque ici.
 - **Agent pressenti** : decoupee et affectee au planning de s53, voir la sous-section suivante.
 
 ### Decoupage de `S53SPE-RELECTURE` au planning de s53 - neuf stories, statut engage a s53
@@ -20087,6 +20109,9 @@ de `sofia-sm` : `S53-REL-2` en entier, `S53-REL-3` P4, `S53-REL-4` P5 sur "la re
 
 ### S53-PASSE-TRANSVERSE - Passe transverse sur le depot servi entier (`PAR-4`), engagee a s53 (transverse)
 
+**Etat au 2026-10-07 (s54) : ENGAGEE a s54** (`DEC-0114` sections 1 et 4), `nadia-prof`, instance A (`PAR-7`), 0,5. Engagee a s53 et non livree : quatrieme
+sprint. Le fichier s'appelle `PASSE-TRANSVERSE-s54-*.md` ; le critere `find squad -iname 'PASSE-TRANSVERSE-s54*'` rend 0 fichier aujourd'hui (rouge).
+
 **Contexte.** `PAR-4` (arbitrage de s29, section 13.3) : la passe sur les proprietes de portee **D** (section 13.2) est
 une tache nommee, 0,5, affectee a l'instance qui porte l'accumulation. Elle a ete portee a trois `DEC` d'ouverture
 (s51, s52, s53) sans engagement ; `DEC-0112` section 5.4 l'engage. Dernieres passes ecrites sur le depot :
@@ -20110,14 +20135,20 @@ une tache nommee, 0,5, affectee a l'instance qui porte l'accumulation. Elle a et
 - **Agent pressenti** : `nadia-prof`, meme instance que son passage de decision.
 
 
-## Reports de s53 - proposes pour s54, non engages
+## Reports de s53 - proposes pour s54, engages par `DEC-0114` (2026-10-07, s54)
 
-**Statut de cette section.** Ecrite par `sofia-sm` a la cloture de s53 (`squad/sprints/s53-relecture-paquets-session-contenu/review.md`,
+**Etat au 2026-10-07 (s54).** `DEC-0114` (statut `Proposee`, section 0.4) engage a s54 les postes de cette section, un par un ; chaque
+sous-section dit son issue. Le texte d'origine est conserve ; les criteres et stories de branchement sont dans la section "Sprint 54".
+
+**Statut de cette section a la cloture de s53.** Ecrite par `sofia-sm` a la cloture de s53 (`squad/sprints/s53-relecture-paquets-session-contenu/review.md`,
 obstacles 3 a 10 et section 9). **Rien n'est engage ici** : le perimetre de s54 est a `camille-po` et a l'utilisatrice
 (`DEC` d'ouverture). Les stories sont a reprendre, reformuler ou rejeter par `camille-po`, qui tient ce fichier. Aucune
 ligne de matrice ne change de statut par cette section.
 
 ### S53-REPORT-GRANDS-NOMBRES - Une espace insecable avant ":" dans les 14 enonces de `cm1-grands-nombres`, et les deux constantes du test qui les classe
+
+**Etat au 2026-10-07 : ENGAGEE a s54** (`DEC-0114` section 1), `lea-dev`. Criteres inchanges ; verifies contre l'existant le 2026-10-07 :
+`grep -cE '^ *- enonce: ".* :'` rend 14 sur `cm1-grands-nombres.yaml` (rouge). Prix chez `nadia-prof` (`Q5`), pas chez moi.
 
 - **Besoin** : en tant qu'eleve de CM1, je veux que la consigne "Ecris en chiffres : ..." ne coupe pas la ligne entre le mot et
   les deux-points, afin de lire une consigne correcte (`DEC-0002`, amendement du 2026-08-04).
@@ -20134,8 +20165,7 @@ ligne de matrice ne change de statut par cette section.
 - **Fait voisin, non engage** (`relecture-cloture.md` section 2, "Corollaire") : 13 fichiers portent " :" avec une espace ordinaire
   dans un `indice` et au moins 9 fichiers une espace ordinaire avant "?" dans un `enonce`, paquets d'avant s53 qui relevent du
   cliquet de `TYP-1` (`ADR-0067`). Cette story n'y touche pas.
-- **Agent pressenti** : a affecter au planning de s54 par `sofia-sm` ; le relecteur route le geste a `theo-archi` ou au
-  developpeur du test.
+- **Agent pressenti** : `lea-dev` (planning de s54, justification 3 : elle n'est pas l'auteure du paquet) ; question `T5` a `theo-archi`.
 
 ### S53-REPORT-REDACTION - Quatre chiffres et une provenance a corriger dans les decisions de s53
 
@@ -20149,7 +20179,17 @@ Ce sont des corrections de texte, routees par la relecture de cloture (`relectur
 | R5 | story `S53SPE-RELECTURE`, point P11 : "onze paquets plus anciens" | 9 mesures (`relecture-p11.md` section 3), ecart non explique | `camille-po` (erratum, comme pour "51 paquets") |
 | - | `S53-REL-10` (base rouge de s53, trois commits de contenu) absente du planning, du backlog et de `DEC-0112` | `review.md` obstacle 3 | `camille-po` (amendement de `DEC-0112`) |
 
-### Trois postes de `DEC-0112` section 5, non livres a s53 : arbitrage de l'utilisatrice en attente
+**Etat au 2026-10-07 (s54, `DEC-0114` section 8).** R1 : **solde** (`DEC-0112` amendement A.1, 4 fichiers, cause du premier resultat non etablie).
+R2 : **solde** (amendement A.2). `S53-REL-10` : **solde** (amendement A.3, tenue, entree ci-dessous dans "Sprint 54"). R5 : **solde**, erratum
+ecrit dans `S53SPE-RELECTURE`. **R3 : reste a `nadia-prof`**, qui corrige la section 11 de son arbitrage ; je ne reecris pas le document d'un autre agent.
+Critere : `grep -n "six fichiers"` sur `ARBITRAGE-PREALABLE-s53-points-de-relecture-p1-a-p11.md` ne rend plus la phrase de la section 11
+(rend la ligne 315 aujourd'hui : rouge sur l'existant).
+
+### Trois postes de `DEC-0112` section 5, non livres a s53 : engages a s54 par `DEC-0114`
+
+**Etat au 2026-10-07 (s54).** Les trois sont **engages a s54 avec un proprietaire** (`DEC-0114` section 4) : `CRP` a `marc-dev`, `PAR-4` a
+`nadia-prof` (instance A), journal a `sofia-sm` (casquette developpeuse). Un engagement non livre compte comme un report ; non livres a la cloture de s54,
+ils vont a l'utilisatrice. L'etat ci-dessous est celui de la cloture de s53.
 
 Les trois stories existent plus haut dans ce fichier. **Etat au 2026-10-07, cloture de s53 : non livrees**, `DEC-0112` les avait
 engagees a s53 hors du perimetre P1 a P11 (`review.md` section 3, preuves par commande).
@@ -20167,7 +20207,11 @@ silence.
 
 ### S53-BRANCHEMENT-45-PAQUETS - Brancher au catalogue les 45 paquets de la session de contenu (proposition, non engagee)
 
-- **Etat** : proposition `P-BR` du planning de s53 et `DEC-0112` section 8, **non engagee, non decidee**. La decision est a
+**Etat au 2026-10-07 (s54).** **Cinq paquets engages a s54** (`DEC-0114` section 1, stories `S54-BR-*` de la section "Sprint 54") ; les 40 autres ne
+sont pas engages (planning de s54, "Ce qui est reporte"). L'ordre des matieres est consigne en `DEC-0114` section 7 (forme 3). Les criteres de la
+sous-section "Criteres d'acceptation" ci-dessous restent a ecrire pour les 40 autres.
+
+- **Etat a la cloture de s53** : proposition `P-BR` du planning de s53 et `DEC-0112` section 8, **non engagee, non decidee**. La decision est a
   l'utilisatrice (`DEC-0112` : *"brancher, et dans quel ordre de matieres ?"*).
 - **Ce que brancher demande, par paquet** (planning de s53) : une entree de `catalogue.yaml`, ses declarations dans les garde-fous de
   test, l'audit et la fiche de `nadia-prof`, la mention `MNC-1` dans tout Done, un passage de matrice.
@@ -20183,6 +20227,9 @@ silence.
 - **Critere d'acceptation, a ecrire par `camille-po`** apres l'arbitrage de l'utilisatrice : il ne peut pas l'etre avant.
 
 ### S53-REPORT-TROIS-LIGNES - `ART-CP-10`, `SCI-CM1-15`, `SCI-CM1-18` : reportees a s54, de nouveau `non couvert` (non engagees)
+
+**Etat au 2026-10-07 (s54, `DEC-0114`).** `SCI-CM1-15` et `SCI-CM1-18` : **engagees** par `S54-BR-SCI-CM1-15` et `-18`. `ART-CP-10` : **engagee au prix
+seul** (`S54-ART-CP-10-PRIX`), rien n'est construit. Aucune des trois n'est reportee en silence ; aucune ne change de statut de matrice.
 
 - **Origine** : l'utilisatrice, le 2026-10-07, a la question Q1 de `DEC-0113` : *"remets les 3 lignes à s54 si Aucune des trois
   lignes n'est une impossibilité"* (`DEC-0113` section 9, forme 2 de `DEC-0062`). Aucune des trois n'est une impossibilite
@@ -20204,3 +20251,108 @@ silence.
   met devant l'utilisatrice avec une question qui ne se resolve pas par "pas maintenant".
 - **Criteres d'acceptation** : a ecrire par `camille-po` quand s54 engage l'une des trois, avec le motif de la fiche repris mot pour
   mot ; ils ne peuvent pas l'etre avant.
+
+
+## Sprint 54 - Branchement des cinq premiers paquets de la session de contenu et reports de s53
+
+Perimetre, instances et reports : `DEC-0114` (statut `Proposee`, section 0.4). Planning :
+`squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/planning.md`. **Deux instances de `nadia-prof`**, comptees a 4,0 chacune :
+A (francais CE1), B (sciences et EMC CM1). Un dev tient un seul worktree a la fois.
+
+| Instance | Story | Tarif propose (a confirmer par `nadia-prof`) | Dev |
+|---|---|---|---|
+| B | `S51-SCI-CORPS-CM1-RESERVES` (section "Sprint 51") | 0,5 | `marc-dev`, premiere a fusionner |
+| A | `S54-BR-FRA-CE1-18` | 1,0 | `marc-dev` |
+| A | `S54-BR-FRA-CE1-19` | 1,0 | `marc-dev` |
+| A | `SYC-CE1-R1` + item 16 de `FRA-CE1-25` | 0,5 | `marc-dev` |
+| A | `S53-PASSE-TRANSVERSE` | 0,5 | `nadia-prof` |
+| B | `S54-BR-SCI-CM1-15` | 1,0 | `lea-dev` |
+| B | `S54-BR-SCI-CM1-18` | 0,5 | `lea-dev` |
+| B | `S54-BR-EMC-CM1-02` | 1,0 | `lea-dev` |
+| - | `S51-OUTIL-JOURNAL-TOKENS` | aucun | `sofia-sm`, casquette developpeuse |
+| - | `S53-REPORT-GRANDS-NOMBRES` | `Q5` : `nadia-prof` | `lea-dev` |
+| - | `S53-REPORT-REDACTION` (R3 seul reste) | - | `nadia-prof` (R3) |
+| - | `S54-ART-CP-10-PRIX` | aucun | `theo-archi`, `nadia-prof` |
+
+### Criteres communs aux cinq stories de branchement (`S54-BR-*`)
+
+Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
+
+- **C3** : `grep -c "paquet: <nom>$" adapters/adapter-content/src/main/resources/catalogue.yaml` rend 1 apres livraison. **Il rend 0 aujourd'hui pour les
+  cinq noms** : rouge sur l'existant. Pour les 40 autres paquets, il rend 0 a la cloture (`git diff round-two -- catalogue.yaml` ne les nomme pas).
+- **C2** : `git diff round-two --stat` d'une story de branchement ne montre que l'entree de `catalogue.yaml`, le test du paquet (si `T1` le confirme),
+  son inventaire de chaines et les declarations des garde-fous ; aucun YAML de paquet, sauf correction decidee par `nadia-prof`.
+- **C4** : suite verte, perimetre nomme ; `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content,bootstrap -am test` (`-am` obligatoire) en mesure
+  partielle ; la porte est `mvn -B clean verify` de la racine, jobs de `ci.yml` nommes.
+- **C7** : un branchement s'arrete au verdict. Aucune ligne de matrice ne change avant le verdict ecrit de `nadia-prof` dans la fiche ; la mention
+  `MNC-1` est reproduite mot pour mot quand elle est due. **Aucun garde-fou n'est assoupli.**
+
+### S54-BR-FRA-CE1-18 et S54-BR-FRA-CE1-19 - Brancher `ce1-futur` et `ce1-passe-compose` (`FRA-CE1-18`, `FRA-CE1-19`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux jouer a un jeu ou je dis ce qui se passera demain (`FRA-CE1-18`) et ce qui s'est passe hier
+  (`FRA-CE1-19`), afin de reconnaitre le futur et le passe compose dans une phrase.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, comme les paquets de francais CE1 deja au catalogue (`T3` du planning : un des cinq demande-t-il autre chose ?).
+- **Competence programme visee** : francais, CE1, `FRA-CE1-18` et `FRA-CE1-19` (`squad/programme/francais/competences-ce1.md`, lignes de ces numeros).
+  Paquets `ce1-futur` (24 items) et `ce1-passe-compose` (24 items), tous deux ecrits par `marc-dev`.
+- **Criteres d'acceptation** : C2, C3, C4, C7 ; plus : la regle `TRV-CE1-5` (aucun indice ne renvoie a l'oreille) est relue par le developpeur sur les 24 items
+  de chaque paquet, **resultat ecrit dans son rapport** (non automatisable ; `yanis-qa` le dira). La defaillance connue de la famille (un indice qui
+  renvoie a l'oreille, refus au premier passage de `FRA-CE1-17`, rejoue et leve a s52) est nommee dans la fiche de `FRA-CE1-17`, que le developpeur lit avant.
+- **Lien decision** : `DEC-0114` sections 1 et 5 ; `DEC-0112` section 8. **Instance** A, lot 1,0 chacun. **Agent** : `marc-dev`.
+
+### S54-BR-SCI-CM1-15 - Brancher `cm1-sciences-terre-jour-nuit-saisons`, reprise du paquet refuse a s51 (`SCI-CM1-15`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux jouer a un jeu sur la Terre, le jour, la nuit et les saisons ou chaque mauvaise reponse est fausse et ou
+  une seule proposition repond a la question, afin de comprendre pourquoi les jours changent de longueur.
+- **Competence programme visee** : sciences et technologie, CM1, `SCI-CM1-15` (`squad/programme/sciences-et-technologie/competences-cm1.md`). Paquet de 12
+  items, ecrit par `lea-dev`.
+- **Criteres d'acceptation** : C2, C3, C4, C7 ; plus, **en reprenant les mots des refus** (`FICHE-bandit-manchot-terre-cm1.md` section 7) : (1) item 4 :
+  *"le distracteur de la distance est une affirmation vraie"* ; (2) item 11 : *"le printemps"* a d'aussi longs jours que *"l'ete"*. `nadia-prof` rejoue en
+  premier ces deux items et les quatre points non bloquants de la fiche, que l'en-tete du paquet dit pris. **Le critere de refus (1) et (2) est le sien, pas le
+  mien** : je ne le reformule pas en propriete plus commode a tester.
+- **Lien decision** : `DEC-0114` ; `DEC-0113` section 9 (remise a s54). **Instance** B, 1,0. **Agent** : `lea-dev`.
+- **Ce que la story n'engage pas** : le branchement n'engage pas la fermeture. Le paquet a ete refuse a s51 ; un refus reste un refus.
+
+### S54-BR-SCI-CM1-18 - Brancher `cm1-sciences-environnement-activite-humaine`, reprise du paquet refuse deux fois (`SCI-CM1-18`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux jouer a un jeu sur ce que l'activite des humains change dans la nature et sur un geste pour la proteger,
+  ou une seule proposition repond a la question, afin de choisir un geste utile.
+- **Competence programme visee** : sciences et technologie, CM1, `SCI-CM1-18` (meme referentiel). Paquet de 12 items, ecrit par `lea-dev`.
+- **Criteres d'acceptation** : C2, C3, C4, C7 ; plus, mot pour mot du refus (`FICHE-bandit-manchot-activite-humaine-cm1.md`, S2-3) : *"Deux propositions
+  repondent a la question ecrite"* (item 11, refuse au premier passage puis au rejeu `5a4ca6d8`). `nadia-prof` rejoue cet item en premier.
+- **Lien decision** : `DEC-0114` ; `DEC-0113` section 9. **Instance** B, 0,5 (tarif de la reprise, a confirmer, `Q4`). **Agent** : `lea-dev`.
+
+### S54-BR-EMC-CM1-02 - Brancher `cm1-emc-atteinte-autrui` (`EMC-CM1-02`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux jouer a un jeu ou je reconnais ce qui fait du mal a quelqu'un et ou je sais a qui m'adresser, afin de savoir
+  quand et vers qui chercher de l'aide.
+- **Competence programme visee** : enseignement moral et civique, CM1, `EMC-CM1-02` (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`).
+  Paquet de 11 items, ecrit par `marc-dev` ; **branche par `lea-dev`**, qui lit le paquet avant d'editer (planning, justification 3). Un seul paquet d'EMC
+  est engage : le moins touche par s53 (P9, accepte sans changement).
+- **Criteres d'acceptation** : C2, C3, C4, C7 ; plus : `EMC-9` (aucun item ne laisse croire a l'enfant qu'il vient d'alerter quelqu'un) relue par le
+  developpeur sur les 11 items, resultat ecrit dans son rapport. **Mention exigee d'avance** (`competences-cm1.md`, section "Mention exigee d'avance si une
+  ligne bouge") : due a la fermeture, par `nadia-prof`, mot pour mot ; elle n'est pas due au branchement. Aucune ligne `DEGRADE` n'est attendue (`DEC-0112` section 4).
+- **Lien decision** : `DEC-0114` ; `DEC-0112` section 4. **Instance** B, lot 1,0. **Agent** : `lea-dev`.
+
+### S54-ART-CP-10-PRIX - Le prix de la mecanique qui montre deux oeuvres ensemble et le plafond du paquet `DEGRADE` (`ART-CP-10`)
+
+- **Besoin** : en tant qu'eleve de CP, je veux, un jour, voir deux oeuvres que j'ai deja rencontrees et dire laquelle ressemble a laquelle, afin de
+  commencer a rapprocher des oeuvres par ce que je vois. **Rien de cela n'est construit a s54.**
+- **Competence programme visee** : arts plastiques, CP, `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 10).
+- **Criteres d'acceptation** (deux fichiers a lire, aucune construction) : (1) un avis de `theo-archi` donne, en tailles, le prix de la mecanique
+  d'une presentation de deux oeuvres ensemble et le statut d'`ADR-0104` (aujourd'hui `Propose`) : rouge sur l'existant, aucun prix n'est ecrit ; (2) une
+  ligne de `nadia-prof` donne le plafond d'un paquet `DEGRADE` pour la ligne ; (3) aucune ligne de matrice ne change, `catalogue.yaml` et les paquets
+  ne sont pas touches (`git diff round-two --stat` n'en montre aucun).
+- **Lien decision** : `DEC-0114` section 6 ; `DEC-0113` section 3.1. **Arbitrage** : *"sur art-cp go pour le 1"*, recu de MASTER, sans source dans le
+  depot, le 2026-10-07 (forme 3 de `DEC-0062` : il fonde l'ordre, pas la raison). **Agents** : `theo-archi`, `nadia-prof`. La decision de financer la mecanique
+  se prend a s55 apres lecture des deux prix.
+
+### S53-REL-10 - La base de s53 redevient verte sans assouplir de garde-fou (transverse) - entree ajoutee apres coup
+
+- **Statut** : **tenue a s53**, absorbee sans acte d'ouverture ; actee par `DEC-0112` amendement A.3 (`DEC-0114` section 4 : la regle d'absorption).
+- **Besoin** : transverse, ce n'est pas un besoin d'eleve. Besoin de la squad : que `mvn verify` ne soit pas rouge sur le tronc.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Les quatre paquets recrits : `cp-emc-personnes-differentes`,
+  `cp-qlm-modes-de-vie`, `cp-qlm-vocabulaire-de-position` (items 12 a 14), `ce1-mots-invariables` (item 7).
+- **Critere d'acceptation, tel que mesure** : `AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest`, `AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest`
+  et `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` : 5 echecs sur `5c1353a9`, 0 sur `54953faa`, meme commande (`rapport-qualite.md` de s53,
+  section 3). Commits `32262d3b`, `c2531df6`, `90d3532c`.
+- **Ce qui reste ouvert** : `nadia-prof` n'a pas relu ces reecritures ; elle les lit au branchement de chacun des quatre paquets.

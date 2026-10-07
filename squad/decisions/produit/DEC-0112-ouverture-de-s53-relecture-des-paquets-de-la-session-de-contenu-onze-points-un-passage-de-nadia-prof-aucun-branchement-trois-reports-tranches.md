@@ -42,7 +42,7 @@ cette decision est amendee.
    toutes `A` (45 fichiers ajoutes, aucun modifie, aucun supprime).
 2. `grep -c` sur les points constates, rendus par commande en section 2.
 3. `grep -l ' competence: ".* :'` sur `contenu/*.yaml` : 13 fichiers ; la meme recherche avec l'espace insecable
-   (`\xC2\xA0:`) : 0.
+   (`\xC2\xA0:`) : **4 fichiers** [corrige le 2026-10-07, s54, amendement A.1 ci-dessous ; cette mesure etait fausse].
 4. Matrice : les lignes `sciences et technologie | CM1` sont 20 ; **deux** sont `non couvert`, `SCI-CM1-15` et
    `SCI-CM1-18`, une est `non couvrable en l'etat` (`SCI-CM1-19`, demarche d'investigation).
 
@@ -101,20 +101,20 @@ sans l'elucider, et la mesure ci-dessus le tranche pour les fichiers seulement. 
 fichier hors de ces 45.
 
 **Q4 - qui decide P11 (espace avant ":" dans `competence`).** **`nadia-prof` decide ; `relecteur-pedagogique`
-fournit les faits** (liste des fichiers, nature de l'espace, commande). Relaye de l'utilisatrice, 2026-10-07 ;
+fournit les faits** (liste des fichiers, nature de l'espace, commande). Message de l'agent lanceur, qui le donne comme arbitrage de l'utilisatrice du 2026-10-07 : je n'ai pas ses mots, il ne fonde pas ce choix [corrige le 2026-10-07, s54, amendement A.2] ;
 mon motif : une espace ordinaire avant ":" est une faute de typographie francaise, et les textes que lit l'enfant sont
 gouvernes par la porte pedagogique, pas par le registre de redaction (`CLAUDE.md`, `DEC-0002`). Reste un fait que ni
 elle ni moi n'avons : **`competence` est-il lu par un enfant ?** `theo-archi` n'a trouve aucun gabarit de `adapter-web`
 qui l'affiche et n'a pas cherche plus loin (`planning.md`). Si personne ne l'affiche, c'est un champ de metadonnee et
 `nadia-prof` peut accepter l'espace ordinaire avec un motif d'une ligne. **Perimetre** : ma mesure rend **13
 fichiers, dont les 4 du point et 9 plus anciens ; le backlog dit onze plus anciens.** Neuf mesures, onze ecrits, ecart
-non explique ; l'espace insecable n'est pas la cause (0 fichier). Le decideur refait la mesure avec la commande de la
+non explique ; l'espace insecable ne l'explique pas non plus : 4 fichiers la portent, 9 + 4 = 13 et non 11 [corrige le 2026-10-07, s54, amendement A.1]. Le decideur refait la mesure avec la commande de la
 section 0 avant de decider, et le chiffre qu'il retient est ecrit dans sa decision.
 
 **Q6 - P9.** Section 4.
 
-**Q8 - P1, P3, P5 : qui l'emporte ?** **L'auteur propose, `nadia-prof` decide.** Relaye de l'utilisatrice,
-2026-10-07 ; mon motif : la table de routage de ce depot donne la pedagogie a `nadia-prof`, et un point a deux
+**Q8 - P1, P3, P5 : qui l'emporte ?** **L'auteur propose, `nadia-prof` decide.** Message de l'agent lanceur, qui le donne comme
+arbitrage de l'utilisatrice du 2026-10-07 : je n'ai pas ses mots, il ne fonde pas ce choix [corrige le 2026-10-07, s54, amendement A.2] ; mon motif : la table de routage de ce depot donne la pedagogie a `nadia-prof`, et un point a deux
 decideurs nommes sans ordre est un point sans decideur le jour ou ils different. Meme regle pour P1, P3, P5 et
 elle corrige la lecture "auteur / `nadia-prof`" du backlog.
 
@@ -352,3 +352,38 @@ dans la meme passe que cette decision, via `sofia-sm`.
    par `theo-archi` dans son avis.
 10. **Seconds reports comptes** (`SYC-CE1-R1`, `MUL-CE1-R1`, item 16 de `FRA-CE1-25`) et **quatrieme sprint hors
     perimetre d'`ART-CP-10`**, avec la question posee a l'utilisatrice.
+
+---
+
+## Amendement du 2026-10-07 (s54, `camille-po`) : deux corrections de provenance et de mesure, une story absorbee
+
+Les corrections ci-dessus sont marquees dans le texte, pas effacees (`DEC-0062`, amendement B.3). Provenance : `relecture-cloture.md` de
+s53, points R1 et R2 (de `relecteur-pedagogique`), et l'obstacle 3 de `review.md` de s53 (de `sofia-sm`). L'amendement arrive apres la
+fusion de s53 : la retro de s53 et le planning de s54 le constatent, et je ne le date pas en arriere.
+
+### A.1 R1 - la mesure de la section 0 (point 3) et de la section 3 (Q4) etait fausse
+
+Ce que la section 0 ecrivait : la recherche des lignes `competence` avec une espace insecable avant ":" ne rendait aucun fichier. Mesure
+refaite le 2026-10-07 sur `round-two` a `4bb4dbd5`, script Python de lecture seule (`python -I`), lignes dont le debut, espaces
+d'indentation retirees, est `competence:` et qui contiennent U+00A0 suivie de ":" : **4 fichiers**, `ce1-accord-groupe-nominal`,
+`ce1-classes-de-mots`, `ce1-inference`, `ce1-texte-narratif`. C'est le compte de `relecture-p11.md` section 2 et de `relecture-cloture.md` R1.
+**La cause du premier resultat n'est pas etablie** : la ligne `competence` est indentee de deux espaces dans les YAML (`cat -A` sur
+`ce1-inference.yaml`), ce qui est compatible avec une recherche ancree en debut de ligne, mais je n'ai pas la commande d'origine. Sur Q4 :
+"neuf plus anciens contre onze ecrits" tient, et 13 ne se reconcilie toujours pas avec 11 (`relecture-p11.md` section 3). `nadia-prof` a decide
+P11 sur ses propres faits ; cet amendement ne change aucune de ses decisions.
+
+### A.2 R2 - "Relaye de l'utilisatrice" n'etait pas l'une des trois formes de `DEC-0062`
+
+Les deux occurrences de la section 3 (Q4, Q8) disent maintenant ce que la section 0 disait deja : message de l'agent lanceur, sans les mots de
+l'utilisatrice, qui ne fonde rien. Les deux motifs sont les miens et restent inchanges. `relecture-p11.md` lignes 7 a 9 reste a
+`relecteur-pedagogique`, qui l'a ecrit.
+
+### A.3 `S53-REL-10` - la base rouge de s53, story absorbee sans acte d'ouverture
+
+`S53-REL-10` est nommee dans trois commits de contenu (`32262d3b`, `c2531df6`, `90d3532c`) et dans les rapports de cloture ; ni le planning, ni
+le backlog, ni cette decision ne la portaient (`review.md` de s53, obstacle 3). **Elle est ajoutee aux stories de s53, statut tenue** : meme
+commande sur deux arbres, 5 echecs sur `5c1353a9`, 0 sur `54953faa` (`rapport-qualite.md` de s53 section 3, de `yanis-qa`), aucun garde-fou
+assoupli. Les quatre paquets recrits sont `cp-emc-personnes-differentes`, `cp-qlm-modes-de-vie`, `cp-qlm-vocabulaire-de-position` (items 12 a 14)
+et `ce1-mots-invariables` (item 7). **Ce que cet amendement ne dit pas** : qu'ils sont bons. `nadia-prof` n'a rien ecrit apres ces
+reecritures (`review.md`, obstacle 1) ; elle les lit au branchement de chacun. Aucune ligne de matrice, aucun Done. La regle que ce retard
+viole, une story absorbee en cours de sprint s'acte dans le meme geste que sa fusion, est reprise par `DEC-0114` section 4.
