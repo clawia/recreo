@@ -42,7 +42,7 @@ items:
     bonneReponse: "la Rome antique"
     distracteurs: ["la Grèce antique", "l'Égypte antique"]
     indice: "Pense à la langue parlée par ce peuple."
-  - enonce: "Un aqueduc en pierre, à plusieurs étages d'arches, transporte l'eau comme le pont du Gard. À quelle civilisation appartient-il ?"
+  - enonce: "Un aqueduc en pierre, à plusieurs étages d'arches, transporte l'eau sur de longues distances. À quelle civilisation appartient-il ?"
     bonneReponse: "la Rome antique"
     distracteurs: ["la Grèce antique", "l'Égypte antique"]
     indice: "Ce peuple a construit des aqueducs jusqu'en Gaule."
