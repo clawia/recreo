@@ -80,7 +80,7 @@ items:
     indice: "Ces élèves se soutiennent les uns les autres."
   - enonce: "Quel principe de la République garantit que l'école publique ne favorise aucune religion ?"
     bonneReponse: "la laïcité"
-    distracteurs: ["la fraternité", "la liberté"]
+    distracteurs: ["la fraternité", "la démocratie"]
     indice: "Ce principe dit comment l'école et l'État se comportent envers les croyances."
   - enonce: "Un employeur n'a pas le droit de refuser un emploi à quelqu'un à cause de son origine : la loi l'interdit. Quel principe de la République cela protège-t-il ?"
     bonneReponse: "le refus des discriminations"
@@ -89,24 +89,24 @@ items:
   - enonce: "Jusqu'où va la liberté de chacun dans la République ?"
     bonneReponse: "jusqu'à ce qu'elle nuise à autrui"
     distracteurs: ["jusqu'à ce qu'un adulte la refuse", "jusqu'à ce que la majorité ne soit pas d'accord"]
-    indice: "La liberté d'une personne s'arrête là où commencent les droits des autres."
+    indice: "Teste chaque phrase avec un exemple pris dans la classe."
   - enonce: "Que veut dire l'égalité dans la devise de la République ?"
     bonneReponse: "tous ont les mêmes droits, sans distinction"
     distracteurs: ["tous doivent être pareils", "tous doivent gagner la même somme"]
-    indice: "Les personnes sont différentes, mais leurs droits sont les mêmes."
+    indice: "Pense à une règle de la classe qui vaut pour chaque élève."
   - enonce: "Que veut dire la fraternité dans la devise de la République ?"
     bonneReponse: "se soutenir et s'entraider entre citoyens"
     distracteurs: ["avoir les mêmes idées que les autres", "faire partie de la même famille"]
-    indice: "Ce mot parle de solidarité entre des personnes qui ne se connaissent pas toutes."
+    indice: "Pense à des personnes qui apportent leur aide après une tempête."
   - enonce: "Que garantit la laïcité à chaque élève de l'école publique ?"
     bonneReponse: "la liberté de croire ou de ne pas croire"
     distracteurs: ["l'enseignement de la même religion à tous les élèves", "le droit de choisir les règles de l'école"]
-    indice: "Chaque élève décide pour lui-même, et l'école ne choisit pas à sa place."
+    indice: "Pense à des élèves d'une même classe aux croyances différentes."
   - enonce: "Que veut dire refuser les discriminations ?"
     bonneReponse: "ne pas traiter quelqu'un moins bien à cause de ce qu'il est ou de ce qu'il croit"
     distracteurs: ["ne jamais remarquer les différences entre les personnes", "éviter de parler aux personnes différentes de soi"]
-    indice: "Remarquer une différence n'est pas la faute, mais en faire une raison de traiter mal, si."
+    indice: "Pense à un club de sport qui refuse un enfant pour son origine."
   - enonce: "Que veut dire « la République est laïque » ?"
     bonneReponse: "elle respecte toutes les croyances sans en favoriser aucune"
     distracteurs: ["elle impose à tous la religion de la majorité", "elle demande à chaque citoyen de choisir une religion"]
-    indice: "La République ne prend parti pour aucune croyance."
+    indice: "Pense à un arbitre de match, qui ne joue pour aucune équipe."

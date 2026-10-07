@@ -71,11 +71,11 @@ items:
   - enonce: "1 kg, combien de g ?"
     bonneReponse: "1000 g"
     distracteurs: ["100 g", "10 g"]
-    indice: "Le mot kilo veut dire mille."
+    indice: "Cherche ce que veut dire le mot kilo dans le mot kilogramme."
   - enonce: "1000 g, combien de kg ?"
     bonneReponse: "1 kg"
     distracteurs: ["10 kg", "100 kg"]
-    indice: "Le mot kilo veut dire mille."
+    indice: "Pense au mot kilogramme : que veut dire kilo ?"
   - enonce: "Un demi-kilogramme, combien de g ?"
     bonneReponse: "500 g"
     distracteurs: ["100 g", "1000 g"]

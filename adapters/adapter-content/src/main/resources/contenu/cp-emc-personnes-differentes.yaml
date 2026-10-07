@@ -36,6 +36,14 @@ lignesDeReferentiel: ["EMC-CP-04"]
 # de vraies raisons (la cloche, le tour, une partie finie). CAT-1 : aucune proposition ne se
 # reconnait a son ton.
 #
+# LON-1 et LON-2 : la tache A tient en quinze mots et deux phrases, ce que les deux enfants ont en
+# commun et ce qui les distingue dans la premiere, la question dans la seconde.
+#
+# FOP-R4 (ADR-0086, clause 2) : le debut d'une proposition de la tache B ne departage pas. Des
+# raisons de jeu ouvrent sur l'enfant ("parce qu'il a deja eu son tour") comme des raisons tirees de
+# ce qu'est l'enfant ("parce qu'il porte des lunettes") ; les deux ouvrent aussi sur "parce que".
+# Le sens departage, jamais un mot de tete.
+#
 # EMC-1 et EMC-8 : tous les enfants sont des personnages nommes, aucun item ne demande a l'enfant
 # ce qu'il ressent ou ce qu'il ferait.
 #
@@ -53,47 +61,47 @@ lignesDeReferentiel: ["EMC-CP-04"]
 #
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 items:
-  - enonce: "Léa et Tom sont dans la même classe. Léa aime le foot. Tom aime le dessin. Qu'est-ce qui est différent ?"
-    bonneReponse: "ce qu'ils aiment"
+  - enonce: "Léa et Tom sont dans la même classe : Léa lit, Tom dessine. Qu'est-ce qui change ?"
+    bonneReponse: "ce qu'ils font"
     distracteurs: ["leur classe", "leur école"]
     indice: "Ils sont ensemble dans la classe, cela ne change pas."
-  - enonce: "Aya et Malo ont le même âge et vont à la même école. Aya parle doucement. Malo parle fort. Qu'est-ce qui est différent ?"
+  - enonce: "Aya et Malo habitent la même rue : Aya parle doucement, Malo fort. Qu'est-ce qui change ?"
     bonneReponse: "leur façon de parler"
-    distracteurs: ["leur âge", "leur école"]
-    indice: "L'âge et l'école sont les mêmes pour les deux."
-  - enonce: "Hugo et Lina sont dans la même classe et ont le même âge. Hugo est grand. Lina est petite. Qu'est-ce qui est différent ?"
+    distracteurs: ["leur rue", "leur ville"]
+    indice: "La rue et la ville sont les mêmes pour les deux."
+  - enonce: "Hugo et Lina jouent en équipe : Hugo est grand, Lina petite. Qu'est-ce qui change ?"
     bonneReponse: "leur taille"
-    distracteurs: ["leur âge", "leur classe"]
-    indice: "La classe et l'âge sont les mêmes pour les deux."
-  - enonce: "Tom et Aya jouent dans la même équipe. Tom écrit de la main gauche. Aya écrit de la main droite. Qu'est-ce qui est différent ?"
-    bonneReponse: "la main avec laquelle ils écrivent"
     distracteurs: ["leur équipe", "leur jeu"]
-    indice: "Ils jouent ensemble, au même jeu."
+    indice: "L'équipe et le jeu sont les mêmes pour les deux."
+  - enonce: "Tom et Aya jouent ensemble : Tom a des lunettes, Aya non. Qu'est-ce qui change ?"
+    bonneReponse: "les lunettes"
+    distracteurs: ["leur jeu", "leur récréation"]
+    indice: "Ils jouent ensemble, au même jeu, à la même récréation."
   - enonce: "Trois enfants ne peuvent pas jouer au ballon. Pour qui la raison n'est-elle pas juste ?"
     bonneReponse: "Tom, parce qu'il porte des lunettes"
-    distracteurs: ["Léa, parce que le jeu est fini", "Aya, parce que la cloche a sonné"]
+    distracteurs: ["Léa, parce qu'elle est déjà dans l'autre équipe", "Aya, parce que la cloche a sonné"]
     indice: "Cherche la raison qui ne parle pas du jeu."
-  - enonce: "Trois enfants ne peuvent pas jouer à la corde. Pour qui la raison n'est-elle pas juste ?"
+  - enonce: "Trois enfants ne jouent pas à la corde. Pour qui la raison n'est-elle pas juste ?"
     bonneReponse: "Malo, parce qu'il est plus petit que les autres"
-    distracteurs: ["Lina, parce que c'est l'heure de ranger", "Hugo, parce que le jeu se joue à deux"]
-    indice: "Une raison juste parle du jeu, pas de l'enfant."
+    distracteurs: ["Lina, parce que c'est l'heure de ranger", "Hugo, parce qu'il doit voir la maîtresse"]
+    indice: "Une raison juste parle de ce qui se passe, pas de ce qu'est l'enfant."
   - enonce: "Trois enfants ne peuvent pas jouer aux billes. Pour qui la raison n'est-elle pas juste ?"
     bonneReponse: "Aya, parce qu'elle écrit de la main gauche"
-    distracteurs: ["Tom, parce que c'est le tour d'un autre", "Léa, parce que la maîtresse l'appelle"]
+    distracteurs: ["Tom, parce qu'il a déjà eu son tour", "Léa, parce qu'elle doit voir la maîtresse"]
     indice: "Une différence n'est pas une raison de laisser quelqu'un de côté."
   - enonce: "Trois enfants ne peuvent pas jouer à chat. Pour qui la raison n'est-elle pas juste ?"
-    bonneReponse: "Hugo, parce qu'il parle doucement"
+    bonneReponse: "Hugo, parce que sa voix est douce"
     distracteurs: ["Aya, parce que l'équipe est déjà pleine", "Malo, parce que la récréation est finie"]
-    indice: "Cherche la raison qui parle de l'enfant, pas du jeu."
+    indice: "Cherche la raison tirée de ce qu'est l'enfant, pas de ce qui se passe."
   - enonce: "Trois enfants ne peuvent pas jouer à cache-cache. Pour qui la raison n'est-elle pas juste ?"
     bonneReponse: "Lina, parce qu'elle n'aime pas les mêmes jeux que les autres"
     distracteurs: ["Tom, parce que le jeu se joue à quatre", "Aya, parce que c'est l'heure d'aller en classe"]
     indice: "Aucune différence ne donne le droit de laisser quelqu'un de côté."
   - enonce: "Trois enfants ne peuvent pas jouer au loup. Pour qui la raison n'est-elle pas juste ?"
     bonneReponse: "Tom, parce qu'il porte un pull que personne d'autre n'a"
-    distracteurs: ["Malo, parce que c'est l'heure de rentrer", "Léa, parce que le jeu est fini"]
+    distracteurs: ["Malo, parce qu'il doit rentrer en classe", "Léa, parce que le jeu est fini"]
     indice: "Une raison juste parle du jeu ou de l'heure."
-  - enonce: "Trois enfants ne peuvent pas jouer à la marelle. Pour qui la raison n'est-elle pas juste ?"
-    bonneReponse: "Aya, parce qu'elle a les cheveux très longs"
-    distracteurs: ["Hugo, parce que c'est le tour de Lina", "Malo, parce que la cloche a sonné"]
-    indice: "Une raison juste parle de ce qui se passe, pas de l'enfant."
+  - enonce: "Trois enfants ne jouent pas à la marelle. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Aya, parce que ses cheveux sont très longs"
+    distracteurs: ["Hugo, parce que c'est le tour de Lina", "Malo, parce qu'il a déjà eu son tour"]
+    indice: "Une raison juste vient de ce qui se passe, pas de ce qu'est l'enfant."

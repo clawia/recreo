@@ -56,7 +56,7 @@ items:
     distracteurs: ["devent", "devan"]
     indice: "Un seul des trois mots s'écrit comme dans les livres."
   # MIV-CE1-2: graphies fautives lues comme le mot
-  - enonce: "La boîte est ouverte. Un jouet est ___."
+  - enonce: "La boîte est ouverte et un jouet est ___."
     bonneReponse: "dedans"
     distracteurs: ["dedant", "dedan"]
     indice: "Compare la fin des trois mots."
