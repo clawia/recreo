@@ -1,0 +1,146 @@
+# S53-FRA-FUTUR (s53, generation de contenu seul, brouillon soumis a nadia-prof). Conditions FUT-CE1-1 a
+# FUT-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.9).
+#
+# FUT-CE1-1 : etre et avoir dans huit items sur vingt-quatre (au-dessus du quart) ; seize items de premier
+# groupe sans modification orthographique (chanter, jouer, dessiner, regarder, parler, laver, ecouter,
+# travailler, danser).
+# FUT-CE1-2 : le sujet est toujours un pronom personnel ; chacune des six personnes est le sujet de quatre
+# items sur vingt-quatre.
+# FUT-CE1-3 : chaque item declare, juste au-dessus, la famille de ses deux distracteurs dans l'ordre du
+# fichier : (a) le futur a une autre personne, (b) le present du meme verbe, (c) un radical regularise pour
+# etre ou avoir. Jamais conditionnel, futur proche ni imparfait.
+# Chaque phrase porte un mot de temps (demain, bientot, plus tard) : sans lui le present serait aussi juste.
+# TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
+# par proposition. La question est portee par la consigne du jeu quand l'enonce ne la porte pas.
+schema: 1
+id: ce1-futur
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Conjuguer au futur être, avoir et les verbes du premier groupe."
+lignesDeReferentiel: ["FRA-CE1-18"]
+items:
+  # FUT-CE1-3: b, a
+  - enonce: "« chanter » : demain, je ___ une chanson."
+    bonneReponse: "chanterai"
+    distracteurs: ["chante", "chanteras"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: b, a
+  - enonce: "« jouer » : demain, je ___ au ballon."
+    bonneReponse: "jouerai"
+    distracteurs: ["joue", "jouerons"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« dessiner » : bientôt, je ___ un arbre."
+    bonneReponse: "dessinerai"
+    distracteurs: ["dessine", "dessinerons"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
+  # FUT-CE1-3: b, c
+  - enonce: "« être » : demain, je ___ en classe."
+    bonneReponse: "serai"
+    distracteurs: ["suis", "êtrai"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: b, a
+  - enonce: "« regarder » : demain, tu ___ un film."
+    bonneReponse: "regarderas"
+    distracteurs: ["regardes", "regarderez"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« parler » : plus tard, tu ___ à la maîtresse."
+    bonneReponse: "parleras"
+    distracteurs: ["parles", "parlerons"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« laver » : demain, tu ___ les verres."
+    bonneReponse: "laveras"
+    distracteurs: ["laves", "laverez"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: a, c
+  - enonce: "« avoir » : demain, tu ___ un nouveau jeu."
+    bonneReponse: "auras"
+    distracteurs: ["aura", "avras"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« écouter » : demain, il ___ la radio."
+    bonneReponse: "écoutera"
+    distracteurs: ["écoute", "écouteras"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« travailler » : bientôt, elle ___ dans le jardin."
+    bonneReponse: "travaillera"
+    distracteurs: ["travaille", "travaillerons"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: b, a
+  - enonce: "« chanter » : demain, nous ___ en classe."
+    bonneReponse: "chanterons"
+    distracteurs: ["chantons", "chanteront"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: a, c
+  - enonce: "« être » : demain, elle ___ à l'école."
+    bonneReponse: "sera"
+    distracteurs: ["seras", "êtra"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« jouer » : plus tard, nous ___ dehors."
+    bonneReponse: "jouerons"
+    distracteurs: ["jouons", "jouerez"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: b, a
+  - enonce: "« regarder » : bientôt, nous ___ les étoiles."
+    bonneReponse: "regarderons"
+    distracteurs: ["regardons", "regarderai"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« dessiner » : demain, vous ___ une maison."
+    bonneReponse: "dessinerez"
+    distracteurs: ["dessinez", "dessineront"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
+  # FUT-CE1-3: a, b
+  - enonce: "« avoir » : plus tard, il ___ faim."
+    bonneReponse: "aura"
+    distracteurs: ["auras", "a"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: b, a
+  - enonce: "« parler » : plus tard, vous ___ doucement."
+    bonneReponse: "parlerez"
+    distracteurs: ["parlez", "parlerons"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« laver » : demain, vous ___ la voiture."
+    bonneReponse: "laverez"
+    distracteurs: ["lavez", "laveront"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« chanter » : bientôt, ils ___ en chœur."
+    bonneReponse: "chanteront"
+    distracteurs: ["chantent", "chanterez"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: a, b
+  - enonce: "« être » : bientôt, nous ___ dans la cour."
+    bonneReponse: "serons"
+    distracteurs: ["serez", "sommes"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: b, a
+  - enonce: "« danser » : demain, elles ___ sur la scène."
+    bonneReponse: "danseront"
+    distracteurs: ["dansent", "dansera"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
+  # FUT-CE1-3: a, b
+  - enonce: "« avoir » : bientôt, vous ___ un cadeau."
+    bonneReponse: "aurez"
+    distracteurs: ["aurons", "avez"]
+    indice: "Le verbe change selon le moment : regarde le début de la phrase."
+  # FUT-CE1-3: b, c
+  - enonce: "« être » : plus tard, ils ___ au parc."
+    bonneReponse: "seront"
+    distracteurs: ["sont", "êtront"]
+    indice: "Qui fait l'action ? Regarde le petit mot devant le trou."
+  # FUT-CE1-3: a, c
+  - enonce: "« avoir » : demain, elles ___ de la chance."
+    bonneReponse: "auront"
+    distracteurs: ["aura", "avront"]
+    indice: "Lis le mot de temps, puis le petit mot devant le trou."
