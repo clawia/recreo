@@ -32,7 +32,7 @@ code n'a ete fusionne depuis ; ce 0 n'est pas une preuve que les futurs branchem
 l'entree d'un paquet au catalogue ne cree aucun test, seul le test du paquet en ajoute). **Je ne cite pas ce total comme un
 total de s54** : `sofia-sm` l'etablit sur l'arbre fusionne.
 
-Contraste avec s53 : C4 est atteignable, la base ne porte aucun des cinq rouges de la lecture de s53 (`REL-10` les a soldes).
+Contraste avec s53 : C4 est atteignable, la base ne porte aucun des cinq rouges de la lecture de s53 (`S53-REL-10` les a soldes).
 
 ### Les quatre jobs de `.github/workflows/ci.yml`
 
