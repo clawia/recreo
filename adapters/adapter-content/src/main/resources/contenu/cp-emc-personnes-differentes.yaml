@@ -1,0 +1,99 @@
+schema: 1
+id: cp-emc-personnes-differentes
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CP"
+  domaine: "Respecter autrui"
+  competence: "Reconnaître que les personnes sont différentes et qu'aucune différence ne justifie de traiter quelqu'un moins bien."
+lignesDeReferentiel: ["EMC-CP-04"]
+#
+# S53 (session de contenu seul, hors sprint). Paquet ecrit pour la ligne EMC-CP-04, sans arbitrage
+# prealable specifique a cette session : il applique les conditions deja ecrites. Aucun Done n'est
+# prononce ici, tout est a juger par nadia-prof.
+#
+# POINT D'ATTENTION POUR L'AUDIT. ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md
+# (section 3.1) a ecrit trois fois que cette ligne ne se sert pas : EMC-4 ne laisse que la forme de
+# l'interdit (une seule tache), et la premiere moitie du libelle ("les personnes sont differentes")
+# ne se sert pas sans enumerer des differences, donc FER-1 echoue. Ce paquet applique la seule porte
+# que nadia-prof y a laissee ouverte, "une seconde tache portant sur des differences individuelles
+# nommees dans l'enonce (deux enfants qui n'aiment pas le meme jeu), jamais sur une categorie de
+# personnes", et ne pretend pas lever le refus : il est ecrit pour etre juge item par item.
+#
+# EMC-4 : aucune proposition n'attribue un trait, un gout ou une capacite a une categorie de
+# personnes, distracteurs compris. Chaque difference est celle d'un enfant nomme (lunettes, taille,
+# main d'ecriture, facon de parler, pull, cheveux, gout pour un autre jeu), jamais d'un groupe.
+#
+# FER-3 : deux taches distinctes - dire ce qui est different entre deux enfants nommes dont
+# l'enonce donne ce qu'ils ont en commun (tache A, items 1 a 4), et reconnaitre, parmi trois enfants
+# qui ne peuvent pas jouer, celui pour qui la raison est une difference et non une raison de jeu
+# (tache B, items 5 a 11).
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# FAB-1 : onze bonnes reponses distinctes. Les trois propositions de la tache B ont la meme forme
+# ("Prenom, parce que ..."), la meme longueur a quelques mots pres, et les deux raisons de jeu sont
+# de vraies raisons (la cloche, le tour, une partie finie). CAT-1 : aucune proposition ne se
+# reconnait a son ton.
+#
+# EMC-1 et EMC-8 : tous les enfants sont des personnages nommes, aucun item ne demande a l'enfant
+# ce qu'il ressent ou ce qu'il ferait.
+#
+# EMC-3 : la tache B decrit un enfant ecarte d'un jeu, une seule fois et sans repetition ni
+# violence. Aucun item ne decrit une moquerie repetee ni une exclusion durable, qui sont la ligne
+# EMC-CP-03. A juger par nadia-prof si la tache B est trop proche de cette ligne.
+#
+# EMC-5 : chaque raison de jeu est sans ambiguite (aucune ne peut passer pour un pretexte), et la
+# raison tiree d'une difference n'est jamais valable.
+#
+# EMC-10 : aucun nom de personne reelle. Prenoms fictifs repris des paquets voisins du CP.
+#
+# CYC-1 : a confronter par nadia-prof a cp-emc-permis-interdit.yaml et a cp-emc-exclusion.yaml
+# (memes personnages, aucune situation reprise).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+items:
+  - enonce: "Léa et Tom sont dans la même classe. Léa aime le foot. Tom aime le dessin. Qu'est-ce qui est différent ?"
+    bonneReponse: "ce qu'ils aiment"
+    distracteurs: ["leur classe", "leur école"]
+    indice: "Ils sont ensemble dans la classe, cela ne change pas."
+  - enonce: "Aya et Malo ont le même âge et vont à la même école. Aya parle doucement. Malo parle fort. Qu'est-ce qui est différent ?"
+    bonneReponse: "leur façon de parler"
+    distracteurs: ["leur âge", "leur école"]
+    indice: "L'âge et l'école sont les mêmes pour les deux."
+  - enonce: "Hugo et Lina sont dans la même classe et ont le même âge. Hugo est grand. Lina est petite. Qu'est-ce qui est différent ?"
+    bonneReponse: "leur taille"
+    distracteurs: ["leur âge", "leur classe"]
+    indice: "La classe et l'âge sont les mêmes pour les deux."
+  - enonce: "Tom et Aya jouent dans la même équipe. Tom écrit de la main gauche. Aya écrit de la main droite. Qu'est-ce qui est différent ?"
+    bonneReponse: "la main avec laquelle ils écrivent"
+    distracteurs: ["leur équipe", "leur jeu"]
+    indice: "Ils jouent ensemble, au même jeu."
+  - enonce: "Trois enfants ne peuvent pas jouer au ballon. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Tom, parce qu'il porte des lunettes"
+    distracteurs: ["Léa, parce que le jeu est fini", "Aya, parce que la cloche a sonné"]
+    indice: "Cherche la raison qui ne parle pas du jeu."
+  - enonce: "Trois enfants ne peuvent pas jouer à la corde. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Malo, parce qu'il est plus petit que les autres"
+    distracteurs: ["Lina, parce que c'est l'heure de ranger", "Hugo, parce que le jeu se joue à deux"]
+    indice: "Une raison juste parle du jeu, pas de l'enfant."
+  - enonce: "Trois enfants ne peuvent pas jouer aux billes. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Aya, parce qu'elle écrit de la main gauche"
+    distracteurs: ["Tom, parce que c'est le tour d'un autre", "Léa, parce que la maîtresse l'appelle"]
+    indice: "Une différence n'est pas une raison de laisser quelqu'un de côté."
+  - enonce: "Trois enfants ne peuvent pas jouer à chat. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Hugo, parce qu'il parle doucement"
+    distracteurs: ["Aya, parce que l'équipe est déjà pleine", "Malo, parce que la récréation est finie"]
+    indice: "Cherche la raison qui parle de l'enfant, pas du jeu."
+  - enonce: "Trois enfants ne peuvent pas jouer à cache-cache. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Lina, parce qu'elle n'aime pas les mêmes jeux que les autres"
+    distracteurs: ["Tom, parce que le jeu se joue à quatre", "Aya, parce que c'est l'heure d'aller en classe"]
+    indice: "Aucune différence ne donne le droit de laisser quelqu'un de côté."
+  - enonce: "Trois enfants ne peuvent pas jouer au loup. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Tom, parce qu'il porte un pull que personne d'autre n'a"
+    distracteurs: ["Malo, parce que la corde est cassée", "Léa, parce que le jeu est fini"]
+    indice: "Une raison juste parle du jeu ou de l'heure."
+  - enonce: "Trois enfants ne peuvent pas jouer à la marelle. Pour qui la raison n'est-elle pas juste ?"
+    bonneReponse: "Aya, parce qu'elle a les cheveux très longs"
+    distracteurs: ["Hugo, parce que c'est le tour de Lina", "Malo, parce que la cloche a sonné"]
+    indice: "Une raison juste parle de ce qui se passe, pas de l'enfant."

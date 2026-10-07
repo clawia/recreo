@@ -1,0 +1,107 @@
+# DEGRADE : la saisie d'un mot anglais est refusee (ARBITRAGE-PREALABLE-s45-cinq-lots.md, section 5, motif R6), donc ce paquet fait choisir la bonne ecriture parmi trois et l'enfant ne produit aucune lettre.
+schema: 1
+id: cm1-anglais-ecrire-mots
+type: question
+descripteur:
+  matiere: "Langues vivantes (anglais)"
+  niveau: "CM1"
+  domaine: "Écrire"
+  competence: "Écrire des mots et des expressions mémorisés (légender une image, renseigner une fiche)."
+lignesDeReferentiel: ["LVE-CM1-06"]
+#
+# S53 (session de contenu seul, hors sprint). Referentiel copie conforme
+# (squad/programme/langues-vivantes/competences-cm1.md, LVE-CM1-06). Aucun Done n'est prononce
+# ici, tout est a juger par nadia-prof.
+#
+# CE QUE CE PAQUET NE SERT PAS, et que la matrice ne doit pas lire comme une couverture. La ligne
+# demande de produire les lettres d'un mot de memoire. Au choix, l'enfant reconnait une ecriture
+# exacte, il ne l'ecrit pas ; c'est le meilleur voisinage faisable avec le type question actuel.
+# nadia-prof a ecrit (arbitrage s45, section 5.1) qu'"au choix, l'enfant reconnait le mot, il ne
+# l'ecrit pas : c'est LVE-CM1-04, deja servie" et qu'aucune autre mecanique du produit ne sert cette
+# ligne. Ce paquet ne la ferme pas ; il fournit de la matiere a une mecanique de saisie si le motif
+# R6 est un jour leve.
+#
+# ANG-S1 : lexique ferme et declare, mots tous deja servis en choix par cm1-anglais.yaml
+# (LVE-CM1-04) : house, friend, bedroom, bridge, castle, ghost, witch, field (items 1 a 8, bonne
+# reponse) ; street, fairy, morning, hill (items 9 a 12, bonne reponse) ; town, dans les ecritures
+# fausses seulement. Aucun mot nouveau.
+#
+# ANG-S2, transpose : l'indice donne la premiere lettre et la longueur du mot, jamais le mot. Sur
+# trois propositions ecrites, la longueur ecarte parfois une ecriture fausse ; cela reste dans
+# l'esprit de la clause (aider un enfant bloque sans montrer le mot).
+#
+# POINT D'ATTENTION POUR L'AUDIT, propre a ce format : un distracteur est une ecriture fausse, et
+# l'enfant lit des ecritures fausses meme quand il ne les choisit pas. Toutes les ecritures fausses
+# sont des non-mots (aucune n'est un mot francais ni un mot anglais existant), construites sur les
+# fautes d'un eleve francophone (lettres doublees ou omises, e final, ordre des lettres, "ie" /
+# "ei"). nadia-prof dit si l'exposition est acceptable ou si le format doit etre refuse.
+#
+# FER-1 : la parenthese du libelle ("legender une image, renseigner une fiche") est servie dans la
+# forme etiquette (items 1 a 8, "sur l'etiquette d'une fiche") et dans la forme fiche remplie
+# (items 9 a 12, "un seul de ces mots est bien ecrit"). Ce n'est pas la production d'un mot.
+#
+# FER-3 : deux taches distinctes - choisir l'ecriture exacte d'un mot francais donne (items 1 a 8)
+# et reperer l'ecriture exacte parmi trois mots anglais sans traduction donnee (items 9 a 12).
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# REC-5 : aucune bonne reponse n'est transparente ; les huit mots des items 1 a 8 et les quatre
+# des items 9 a 12 sont identiques a ceux verifies dans cm1-anglais.yaml (aucune paire ne se
+# ressemble avec son equivalent francais). REC-6 : sur les items 9 a 12, les trois propositions
+# sont du meme champ lexical, que l'enonce nomme par son contexte (ville, conte, vie de tous les
+# jours, campagne).
+#
+# Aucun dispositif ni aucun indice ne demande a un adulte de prononcer un mot d'anglais : ce paquet
+# se joue par lecture.
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final ; les guillemets
+# francais portent des espaces insecables.
+items:
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « maison » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "house"
+    distracteurs: ["hous", "howse"]
+    indice: "Le mot commence par « h » et compte cinq lettres."
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « ami » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "friend"
+    distracteurs: ["freind", "frend"]
+    indice: "Le mot commence par « f » et compte six lettres."
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « chambre » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "bedroom"
+    distracteurs: ["bedrum", "bedroome"]
+    indice: "Le mot commence par « b » et compte sept lettres."
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « pont » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "bridge"
+    distracteurs: ["brige", "bridg"]
+    indice: "Le mot commence par « b » et compte six lettres."
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « château » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "castle"
+    distracteurs: ["castel", "casle"]
+    indice: "Le mot commence par « c » et compte six lettres."
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « fantôme » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "ghost"
+    distracteurs: ["gost", "goast"]
+    indice: "Le mot commence par « g » et compte cinq lettres."
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « sorcière » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "witch"
+    distracteurs: ["wich", "witsh"]
+    indice: "Le mot commence par « w » et compte cinq lettres."
+  - enonce: "Sur l'étiquette d'une fiche, on écrit « champ » en anglais. Quelle écriture est la bonne ?"
+    bonneReponse: "field"
+    distracteurs: ["feild", "fiel"]
+    indice: "Le mot commence par « f » et compte cinq lettres."
+  - enonce: "Sur le plan d'une ville, un seul de ces mots anglais est bien écrit. Lequel ?"
+    bonneReponse: "street"
+    distracteurs: ["twon", "brige"]
+    indice: "Le mot commence par « s » et compte six lettres."
+  - enonce: "Dans un conte, un seul de ces mots anglais est bien écrit. Lequel ?"
+    bonneReponse: "fairy"
+    distracteurs: ["gost", "wich"]
+    indice: "Le mot commence par « f » et compte cinq lettres."
+  - enonce: "Sur une fiche de la vie de tous les jours, un seul de ces mots anglais est bien écrit. Lequel ?"
+    bonneReponse: "morning"
+    distracteurs: ["frend", "hous"]
+    indice: "Le mot commence par « m » et compte sept lettres."
+  - enonce: "Sur une carte de la campagne, un seul de ces mots anglais est bien écrit. Lequel ?"
+    bonneReponse: "hill"
+    distracteurs: ["feild", "tonw"]
+    indice: "Le mot commence par « h » et compte quatre lettres."

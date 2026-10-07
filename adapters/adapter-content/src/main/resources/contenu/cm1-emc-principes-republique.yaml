@@ -1,0 +1,112 @@
+schema: 1
+id: cm1-emc-principes-republique
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Comprendre le sens des principes de la République : liberté, égalité, fraternité, laïcité, refus des discriminations."
+lignesDeReferentiel: ["EMC-CM1-06"]
+#
+# S53 (session de contenu seul, hors sprint). Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-06). Aucun Done n'est
+# prononce ici, tout est a juger par nadia-prof.
+#
+# Ligne la plus dangereuse de la matiere (referentiel, jugement de faisabilite, ligne 6) : EMC-4,
+# EMC-5 et BIA-5 mordent. Un item faux sur cette ligne fait plus de degats qu'une absence.
+#
+# BIA-5 et EMC-4 : aucun item ne fait porter un jugement sur une conviction. La laicite est toujours
+# definie comme ce que l'ecole et la Republique garantissent (liberte de croire ou de ne pas croire,
+# aucune croyance favorisee), jamais comme un interdit visant un groupe ni une pratique. Aucun
+# distracteur n'enonce un interdit de croire, de pratiquer ou de parler de religion : le malentendu
+# le plus courant sur la laicite n'est volontairement pas ecrit en proposition, parce qu'un enfant
+# lit les distracteurs meme quand il ne les choisit pas.
+#
+# EMC-5 : la distinction des principes est portee par l'enonce. Un distracteur n'est jamais le
+# principe voisin que l'enonce permettrait aussi de nommer : "l'egalite" n'est pas proposee contre
+# "le refus des discriminations" (item 5), ni "la liberte" contre "la laicite" (item 4). A juger par
+# nadia-prof, qui reste seule garde de cette propriete.
+#
+# FER-1 : les cinq principes de la liste sont chacun en bonne reponse - liberte (items 1, 6),
+# egalite (items 2, 7), fraternite (items 3, 8), laicite (items 4, 9, 11), refus des discriminations
+# (items 5, 10).
+#
+# FER-3 : deux taches distinctes - nommer le principe qu'illustre une situation concrete (items 1 a
+# 5) et dire le sens d'un principe (items 6 a 11).
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# HIS-3 (sources a verifier par nadia-prof, je ne suis pas la source) :
+#   - item 6 : Declaration des droits de l'homme et du citoyen de 1789, article 4 ("La liberte
+#     consiste a pouvoir faire tout ce qui ne nuit pas a autrui") ;
+#   - items 2 et 7 : Declaration de 1789, article 1er ("Les hommes naissent et demeurent libres et
+#     egaux en droits"), et Constitution du 4 octobre 1958, article 1er (egalite devant la loi) ;
+#   - items 4, 9 et 11 : Constitution, article 1er ("La France est une Republique indivisible,
+#     laique, democratique et sociale [...] Elle respecte toutes les croyances"), et loi du 9
+#     decembre 1905, article 1er (liberte de conscience), deja verifiee a l'ecriture de
+#     cm1-emc-regle-loi.yaml ;
+#   - item 5 et 10 : code penal, articles 225-1 et 225-2 (la discrimination, dont le refus
+#     d'embauche, est un delit) ;
+#   - devise : Constitution, article 2 ("Liberte, Egalite, Fraternite").
+# Ces references vivent ici, jamais dans un enonce.
+#
+# Les items 3 et 8 decrivent une situation de solidarite (une collecte) ou le sens du mot : ils ne
+# demandent pas a l'enfant de s'engager (EMC-8) et ne servent pas EMC-CM1-12, non couvrable.
+#
+# EMC-8 : aucun item ne demande ce que l'enfant fait ou ferait. EMC-10 : aucune personne reelle
+# vivante, aucun parti, aucune organisation. EMC-6 : aucun item ne presuppose un lieu ni une famille.
+#
+# CYC-1 : a confronter par nadia-prof a cp-emc-devise.yaml (meme devise) et a
+# cm1-emc-symboles.yaml (la devise y est un symbole, ici un principe).
+#
+# Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md) : "connaissances civiques et
+# reconnaissance de situations seules ; aucun comportement, aucun engagement et aucune
+# participation a une decision collective ne sont servis par ce produit."
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+items:
+  - enonce: "Pendant un débat en classe, chaque élève peut donner son avis, même quand il pense autrement que les autres. Quel principe de la République cela respecte-t-il ?"
+    bonneReponse: "la liberté"
+    distracteurs: ["la laïcité", "la fraternité"]
+    indice: "Chacun peut s'exprimer sans être puni pour ce qu'il pense."
+  - enonce: "Quelle que soit leur famille, tous les enfants ont accès à l'école publique. Quel principe de la République cela respecte-t-il ?"
+    bonneReponse: "l'égalité"
+    distracteurs: ["la liberté", "la fraternité"]
+    indice: "Tous les enfants ont les mêmes droits devant l'école."
+  - enonce: "Des élèves d'une classe organisent une collecte de jouets pour des enfants qui en ont besoin. Quel principe de la République cela illustre-t-il ?"
+    bonneReponse: "la fraternité"
+    distracteurs: ["la laïcité", "la liberté"]
+    indice: "Ces élèves se soutiennent les uns les autres."
+  - enonce: "Quel principe de la République garantit que l'école publique ne favorise aucune religion ?"
+    bonneReponse: "la laïcité"
+    distracteurs: ["la fraternité", "la liberté"]
+    indice: "Ce principe dit comment l'école et l'État se comportent envers les croyances."
+  - enonce: "Un employeur n'a pas le droit de refuser un emploi à quelqu'un à cause de son origine : la loi l'interdit. Quel principe de la République cela protège-t-il ?"
+    bonneReponse: "le refus des discriminations"
+    distracteurs: ["la laïcité", "la fraternité"]
+    indice: "La loi punit le fait de traiter quelqu'un moins bien à cause de ce qu'il est."
+  - enonce: "Jusqu'où va la liberté de chacun dans la République ?"
+    bonneReponse: "jusqu'à ce qu'elle nuise à autrui"
+    distracteurs: ["jusqu'à ce qu'un adulte la refuse", "jusqu'à ce que la majorité ne soit pas d'accord"]
+    indice: "La liberté d'une personne s'arrête là où commencent les droits des autres."
+  - enonce: "Que veut dire l'égalité dans la devise de la République ?"
+    bonneReponse: "tous ont les mêmes droits, sans distinction"
+    distracteurs: ["tous doivent être pareils", "tous doivent gagner la même somme"]
+    indice: "Les personnes sont différentes, mais leurs droits sont les mêmes."
+  - enonce: "Que veut dire la fraternité dans la devise de la République ?"
+    bonneReponse: "se soutenir et s'entraider entre citoyens"
+    distracteurs: ["avoir les mêmes idées que les autres", "faire partie de la même famille"]
+    indice: "Ce mot parle de solidarité entre des personnes qui ne se connaissent pas toutes."
+  - enonce: "Que garantit la laïcité à chaque élève de l'école publique ?"
+    bonneReponse: "la liberté de croire ou de ne pas croire"
+    distracteurs: ["l'enseignement de la même religion à tous les élèves", "le droit de choisir les règles de l'école"]
+    indice: "Chaque élève décide pour lui-même, et l'école ne choisit pas à sa place."
+  - enonce: "Que veut dire refuser les discriminations ?"
+    bonneReponse: "ne pas traiter quelqu'un moins bien à cause de ce qu'il est ou de ce qu'il croit"
+    distracteurs: ["ne jamais remarquer les différences entre les personnes", "éviter de parler aux personnes différentes de soi"]
+    indice: "Remarquer une différence n'est pas la faute, mais en faire une raison de traiter mal, si."
+  - enonce: "Que veut dire « la République est laïque » ?"
+    bonneReponse: "elle respecte toutes les croyances sans en favoriser aucune"
+    distracteurs: ["elle impose à tous la religion de la majorité", "elle demande à chaque citoyen de choisir une religion"]
+    indice: "La République ne prend parti pour aucune croyance."

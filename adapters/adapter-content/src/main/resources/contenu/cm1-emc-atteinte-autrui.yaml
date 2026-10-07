@@ -1,0 +1,117 @@
+schema: 1
+id: cm1-emc-atteinte-autrui
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Respecter autrui"
+  competence: "Reconnaître ce qui porte atteinte à la personne d'autrui (moquerie, insulte, mise à l'écart, harcèlement) et savoir à qui s'adresser."
+lignesDeReferentiel: ["EMC-CM1-02"]
+#
+# S53 (session de contenu seul, hors sprint). Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-02). Aucun Done n'est
+# prononce ici, tout est a juger par nadia-prof.
+#
+# Ligne delicate, avec EMC-CM1-06 : EMC-3 et EMC-9 mordent (referentiel, jugement de faisabilite, lignes 2 et 6).
+#
+# EMC-3 : la bonne reponse des items "a qui s'adresser" (7 a 11) est toujours un adulte, jamais une
+# solution que l'enfant appliquerait seul. Les solutions seules (parler a celui qui se moque, deux
+# camarades qui reglent cela entre eux, un eleve plus grand qui defend) sont en distracteur. Aucun
+# item ne met l'enfant lui-meme en position de victime ou d'auteur : tous les personnages sont
+# nommes ou designes a la troisieme personne ("un eleve"). Aucune violence physique n'est detaillee.
+#
+# EMC-9 : aucun item, aucune proposition ni aucun indice ne dit ou ne laisse croire que l'enfant
+# vient d'alerter quelqu'un. Les enonces posent une question de vie ("a qui est-il important d'en
+# parler ?") et les indices sont au present de verite generale. Le produit ne transmet rien (DEC-0028).
+#
+# EMC-7 : aucun numero d'urgence ni de ligne d'ecoute n'est cite, a dessein. Aucun item ne nomme un
+# service d'urgence.
+#
+# EMC-8 : aucun item ne demande ce que l'enfant ferait ou ressent ; ils portent sur la nature d'un
+# comportement decrit et sur la personne a qui il est important de s'adresser.
+#
+# FER-1 : les quatre termes de la parenthese sont chacun en bonne reponse - "une moquerie" (item 1),
+# "une insulte" (item 2), "une mise a l'ecart" (item 3), "du harcelement" (item 4). Deux items de
+# contraste (5, 6) montrent ce qui n'est pas une atteinte : "un accident", "un simple desaccord".
+#
+# FER-3 : deux taches distinctes - nommer un comportement decrit (items 1 a 6), dire a qui il est
+# important de s'adresser (items 7 a 11).
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# Aucun enonce ne nomme le mot-reponse (lecon de S40-LOI-FIX) : "moquerie", "insulte", "mise a
+# l'ecart" et "harcelement" ne sont ecrits que dans les propositions. Les situations decrivent le
+# comportement (imiter une voix pour faire rire, lancer un mot grossier, tourner le dos, plusieurs
+# semaines de messages et de mise de cote).
+#
+# Distinction moquerie / harcelement, a juger par nadia-prof (EMC-5) : le critere retenu est la
+# repetition sur la duree et la pluralite des actes ("depuis plusieurs semaines", moqueries, mise de
+# cote, messages). L'item 1 decrit un acte unique, et le distracteur "une moquerie isolee" de
+# l'item 4 est ecartable par la duree donnee dans l'enonce.
+#
+# EMC-5 a surveiller sur les distracteurs des items 7 a 11 : "a l'eleve qui se moque, pour lui
+# demander d'arreter" et "a un eleve plus grand" sont des gestes que des enfants envisagent
+# sincerement ; ils ne sont pas la reponse retenue par le programme, qui renvoie a un adulte.
+# Source a verifier par nadia-prof : aucune disposition juridique n'est affirmee dans ce paquet,
+# donc aucun fait institutionnel n'est a sourcer (HIS-3 sans objet).
+#
+# EMC-6 : aucun item ne presuppose une configuration familiale ; l'adulte de confiance est un
+# adulte de l'ecole.
+#
+# EMC-10 : aucun nom de personne reelle. Prenoms fictifs repris des paquets voisins.
+#
+# CYC-1 : a confronter par nadia-prof a cp-emc-exclusion.yaml, cp-emc-permis-interdit.yaml et
+# cm1-emc-institutions.yaml (cet autre paquet fait de l'ecole l'institution a qui signaler un
+# incident entre eleves ; ce paquet-ci dit "un adulte de l'ecole", sans contradiction).
+#
+# Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md) : "connaissances civiques et
+# reconnaissance de situations seules ; aucun comportement, aucun engagement et aucune
+# participation a une decision collective ne sont servis par ce produit."
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+items:
+  - enonce: "Pendant la leçon, Hugo imite la voix d'Aya pour faire rire la classe. Comment appelle-t-on ce comportement ?"
+    bonneReponse: "une moquerie"
+    distracteurs: ["une mise à l'écart", "une insulte"]
+    indice: "Hugo cherche à faire rire aux dépens d'Aya."
+  - enonce: "Dans la cour, Malo lance à Lina un mot grossier et blessant devant ses camarades. Comment appelle-t-on ce comportement ?"
+    bonneReponse: "une insulte"
+    distracteurs: ["une mise à l'écart", "un simple désaccord"]
+    indice: "Ce sont des mots grossiers qui visent directement la personne."
+  - enonce: "Pour un travail de groupe, trois élèves tournent le dos à Aya et refusent de lui parler. Comment appelle-t-on ce comportement ?"
+    bonneReponse: "une mise à l'écart"
+    distracteurs: ["une moquerie", "un simple désaccord"]
+    indice: "On laisse volontairement quelqu'un en dehors du groupe."
+  - enonce: "Depuis plusieurs semaines, des élèves se moquent de Tom, le laissent de côté et lui envoient des messages méchants. Comment appelle-t-on cette situation ?"
+    bonneReponse: "du harcèlement"
+    distracteurs: ["une moquerie isolée", "un accident"]
+    indice: "Cela dure et cela se répète de plusieurs façons."
+  - enonce: "En se levant, Sam fait tomber la trousse de Léa et s'excuse aussitôt. Comment appelle-t-on cela ?"
+    bonneReponse: "un accident"
+    distracteurs: ["une moquerie", "une mise à l'écart"]
+    indice: "Sam n'a pas voulu faire de peine à Léa."
+  - enonce: "Aya et Hugo ne sont pas d'accord sur le choix d'un jeu et en discutent calmement. Comment appelle-t-on cela ?"
+    bonneReponse: "un simple désaccord"
+    distracteurs: ["une insulte", "du harcèlement"]
+    indice: "Chacun donne son avis, sans chercher à blesser l'autre."
+  - enonce: "Un élève subit des moqueries répétées pendant la récréation. À qui est-il important d'en parler ?"
+    bonneReponse: "à un adulte de l'école, comme un enseignant ou un surveillant"
+    distracteurs: ["à un camarade, en lui demandant de garder le secret", "à l'élève qui se moque, pour lui demander d'arrêter"]
+    indice: "Un adulte de l'école peut agir pour que cela cesse."
+  - enonce: "Un élève est insulté chaque midi à la cantine. À qui est-il important d'en parler ?"
+    bonneReponse: "à l'adulte qui surveille la cantine ou à son enseignant"
+    distracteurs: ["à un élève plus grand qui pourrait le défendre", "à ses camarades, pour qu'ils règlent cela entre eux"]
+    indice: "Un adulte a le pouvoir de faire respecter la règle."
+  - enonce: "Un élève reçoit des messages méchants d'un camarade sur un téléphone. À qui est-il important d'en parler ?"
+    bonneReponse: "à un adulte de confiance, par exemple un enseignant"
+    distracteurs: ["à l'auteur des messages, en lui répondant", "à toute la classe, en montrant les messages"]
+    indice: "Un adulte sait comment faire cesser ces messages."
+  - enonce: "Un élève est écarté de tous les jeux depuis plusieurs jours. À qui est-il important d'en parler ?"
+    bonneReponse: "à son enseignant ou à un adulte de l'école"
+    distracteurs: ["à un autre élève, pour qu'il joue à sa place avec les autres", "à ceux qui l'écartent, pour qu'ils changent d'avis"]
+    indice: "Une situation qui dure demande l'aide d'un adulte."
+  - enonce: "Une élève a vu un camarade subir des moqueries répétées. À qui est-il important d'en parler ?"
+    bonneReponse: "à un adulte de l'école, même sans en être la cible"
+    distracteurs: ["à d'autres élèves, pour savoir s'ils ont vu la même chose", "à celui qui se moque, pour lui demander de s'arrêter"]
+    indice: "Un témoin peut prévenir un adulte qui peut agir."
