@@ -72,11 +72,15 @@ Je ne calcule aucun plafond de zones : les deux familles de designation ci-desso
 besoin (zones posees sur le pourtour, ou une case = une zone). J'applique seulement la valeur de
 L mesuree en 1.2.
 
-> **Consequence, et c'est ma seule arithmetique** : le cadre d'une zone vaut **au moins 16 unites**
+> **Consequence, et c'est ma seule arithmetique** : la **barre de refus** est de **15 unites**
+> (44,4 px a 296 px de large), arbitrage de `nadia-prof` (`ARBITRAGE-PREALABLE-s52-instance-c-reponses.md`),
+> repris par `DEC-0111` amendement A.7 et `ADR-0080` A2ter. **16 unites est ma marge de dessin**,
+> ma proposition, que `lea-dev` a tenue : le cadre d'une zone vaut **au moins 16 unites**
 > sur un cadre de vue de 100 (352 x 352 declare, un pourcentage de `CadreDeZone` est alors une
 > unite du dessin, convention de l'avis s51 section 5.2). 16 unites rendent 56,3 px a 352 px,
 > **47,4 px a 296 px** et 45,0 px a 281 px (mesure 1.2, colonne de droite). 15 unites rendraient
-> 44,4 px a 296 et 42,2 px a 281 : sous le plancher a 281, au ras a 296 ; j'ecarte 15.
+> 44,4 px a 296 et 42,2 px a 281 : au ras de la barre a 296, sous le plancher a 281. Je garde 16
+> comme marge, sans en faire un seuil de refus.
 > **Un cadre est un entier** : `CadreDeZone` est un record de quatre `int`
 > (`domain/content/CadreDeZone.java`, ADR-0080 decision 2). Toute valeur a decimale de ce
 > document, y compris dans sa premiere version, se lit comme un entier.
@@ -233,7 +237,7 @@ qui couvrait un coin de la figure : les deux sont corriges ici.
 2. Une zone posee sur sa ligne : numero centre sur le trait et bordure a 2,00:1.
 3. Une zone qui contient un segment d'une autre ligne, un coin de la figure ou son contour.
 4. Des zones de tailles differentes dans un item.
-5. Un cadre de zone sous 16 unites (sous 44 px a 296 px de large) ou depassant le cadre de vue.
+5. Un cadre de zone sous la barre de 15 unites (sous 44 px a 296 px de large ; ma marge de dessin est 16) ou depassant le cadre de vue.
 6. Un remplissage de la figure, un degrade, une ombre : un seul niveau de gris, trait seul.
 7. Un segment de tirete sous 10,56 px ou un intervalle sous 8,8 px a 296 px de large ; des bouts
    `round` sur un tirete.
@@ -568,7 +572,7 @@ dessin (`COU-2`). Les fichiers d'essai sont retires, aucun n'est livre.
 ### Pour `theo-archi`
 
 1. **Garde-fou 3 d'`ADR-0080` calcule a 352 px** : a 320 px de fenetre l'image fait 296 px (1.2) ; un
-   cadre de 14 % passe le garde-fou et rend 41,4 px. Mon plancher de 16 unites est sur. La
+   cadre de 14 % passe le garde-fou et rend 41,4 px. Ma marge de dessin de 16 unites tient ; la barre de refus est 15 (`nadia-prof`). La
    derivation de la taille rendue a partir de la largeur servie est la meme question que A3.
 2. **Variante `<path>` en disques a bout rond** (3.4) : que dit le calcul de population de
    `FIG-4` d'un fichier a une seule forme sans remplissage ?
