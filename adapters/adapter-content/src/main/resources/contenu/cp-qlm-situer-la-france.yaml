@@ -25,10 +25,11 @@ lignesDeReferentiel: ["QLM-CP-12"]
 # autres espaces distincts sont en bonne reponse (Europe, Espagne, Belgique, Allemagne, Mediterranee,
 # ocean Atlantique). Le support est disjonctif : un item sur le globe (item 1) et un sur la carte
 # (item 2) ne remplacent pas un dessin.
-# FER-3 : trois taches, chacune sur des items propres :
+# FER-3 : quatre taches, chacune sur des items propres :
 #   - nommer le support, globe ou carte (items 1 et 2) ;
 #   - lire l'orientation d'une carte, haut, bas, gauche, droite (items 3 et 4) ;
-#   - situer un espace par son point cardinal par rapport a la France (items 5 a 12).
+#   - situer un espace par son point cardinal par rapport a la France (items 5 a 11) ;
+#   - situer un espace dans un plus grand, par emboitement (item 12).
 # FER-2 : douze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
 #
 # Exactitude, fait par fait (a verifier contre une carte, nadia-prof n'est pas la source) : la
@@ -90,5 +91,5 @@ items:
     indice: "La carte de ce pays a presque six côtés."
   - enonce: "La France fait partie de l'Europe. Qu'est-ce qui est le plus grand ?"
     bonneReponse: "l'Europe"
-    distracteurs: ["la France"]
+    distracteurs: ["la France", "Paris"]
     indice: "Un pays est à l'intérieur d'un continent."

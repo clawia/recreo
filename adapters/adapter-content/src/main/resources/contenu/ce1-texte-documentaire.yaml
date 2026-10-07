@@ -117,9 +117,9 @@ items:
     indice: "Cherche le mot « rond » dans la consigne."
   # consigne
   - enonce: "Que faut-il mettre sous la table ?"
-    texteSupport: "Range ton cahier. Ferme ta trousse. Mets ta chaise sous la table."
-    bonneReponse: "ta chaise"
-    distracteurs: ["ta trousse", "ton cahier"]
+    texteSupport: "Range le cahier. Ferme la trousse. Mets la chaise sous la table."
+    bonneReponse: "la chaise"
+    distracteurs: ["la trousse", "le cahier"]
     indice: "Relis la dernière instruction."
   # consigne
   - enonce: "Que faut-il faire en dernier ?"
