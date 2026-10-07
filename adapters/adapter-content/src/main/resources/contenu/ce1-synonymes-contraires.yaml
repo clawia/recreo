@@ -16,9 +16,10 @@
 # PaquetCe1SynonymesContrairesTest.
 # SYC-CE1-3 : aucun contraire forme par prefixe (in-, im-, de-, mal-...).
 # Q2 : l'indice des items de synonyme donne le sens du mot, celui des items de contraire est autre.
-# L'explication que Q2 demande n'est pas ecrite : ChaquePaquetExpliqueSesItemsAVariationTest lie toute
-# explication a la cle "graphie" (ADR-0024), qu'un paquet de vocabulaire n'a pas a porter. Ecart
-# route a sofia-sm, a l'arbitrage de theo-archi.
+# L'explication que Q2 demandait n'est pas ecrite : ChaquePaquetExpliqueSesItemsAVariationTest lie toute
+# explication a la cle "graphie" (ADR-0024), qu'un paquet de vocabulaire n'a pas a porter, et
+# nadia-prof a retire cette exigence (amendement de
+# squad/conformite/ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md, fin du fichier).
 # TRV-CE1-2 : la bonne reponse est strictement la plus longue des trois propositions dans sept
 # items sur vingt-quatre.
 # TRV-CE1-1 a TRV-CE1-7 : niveau CE1, une seule ligne de referentiel (FRA-CE1-25), aucun champ a

@@ -19,9 +19,11 @@
 # que sur les additions (K2) : sur une multiplication elle se lirait au signe. Les trois rangs de la
 # bonne reponse (valeur de la proposition) sont atteints sur le paquet.
 #
-# MUL-CE1-4 : les trois reseaux sont lus dans les deux sens, et l'enonce des deux items dit que les deux
-# comptes donnent le meme total (la cle explication est reservee au regime de la graphie, ADR-0024). MUL-CE1-5 : un cercle par point, aucun enonce ne dit le nombre de
-# lignes ni de colonnes, le texte alternatif ne le dit pas non plus (nadia-prof, section 5).
+# MUL-CE1-4 : les trois reseaux sont lus dans les deux sens, et l'enonce des deux items de chaque reseau
+# dit que les deux comptes donnent le meme total (la cle explication est reservee au regime de la
+# graphie, ADR-0024).
+# MUL-CE1-5 : un cercle par point, aucun enonce ne dit le nombre de lignes ni de colonnes, le texte
+# alternatif ne le dit pas non plus (nadia-prof, section 5).
 #
 # ADR-0068 : une multiplication "3 x 5" n'a pas de valeur numerique lisible, une somme "5 + 5 + 5" en a
 # une. Dix items sur seize sont donc ecartes du calcul de rang (PAQUETS_A_ITEMS_ECARTES), les six

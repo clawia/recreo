@@ -7,7 +7,7 @@
 # Trois taches dans un paquet, reconnues a la premiere phrase de l'enonce : ranger (20 items, "Range
 # du plus petit au plus grand"), comparer (6 items, "Quel signe faut-il mettre entre ..."),
 # encadrer (8 items, "Entre quelles deux dizaines / centaines se trouve ..."). Le libelle de
-# competence est la mention d'ORD-CE1-5 (DEC-0111 section 5.4, point 7), accentuee ici parce que ce
+# competence est la mention d'ORD-CE1-5 (DEC-0111 section 5.4, point 2), accentuee ici parce que ce
 # champ traverse le port entrant (DEC-0002) et avec l'espace insecable devant le point-virgule
 # (ADR-0067).
 #

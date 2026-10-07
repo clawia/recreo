@@ -38,9 +38,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * ({@code squad/sprints/s52-deux-instances-ce1-francais-maths/avis-faisabilite.md}, V3).
  *
  * <p>Ce test lit la forme : la relation nommee, le mot cible present dans sa phrase, les familles
- * declarees, l'absence de prefixe et l'indice de Q2. L'explication que Q2 demande n'est pas servie :
+ * declarees, l'absence de prefixe et l'indice de Q2. L'explication que Q2 demandait n'est pas servie :
  * {@code ChaquePaquetExpliqueSesItemsAVariationTest} lie toute explication a la cle
- * {@code graphie} (ADR-0024), et ce test garde son absence ({@code trv1}). Il ne lit pas le sens : qu'un
+ * {@code graphie} (ADR-0024), nadia-prof a retire cette exigence, et ce test garde son absence
+ * ({@code trv1}). Il ne lit pas le sens : qu'un
  * distracteur soit donne comme reponse par un dictionnaire, ou qu'un mot soit frequent au CE1,
  * reste a la lecture de nadia-prof.
  */

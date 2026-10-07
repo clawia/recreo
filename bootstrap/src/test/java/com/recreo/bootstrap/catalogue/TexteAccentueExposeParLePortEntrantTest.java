@@ -1574,7 +1574,7 @@ class TexteAccentueExposeParLePortEntrantTest {
             // reecriture d'oeuvre-quatre-saisons (motif 2).
             "Décrire une œuvre : dire ce qu'on y voit (sujet et matériaux).",
             // S51-MAT-COMPARER-RANGER (s52) : competence neuve, MAT-CE1-02. Libelle = la mention
-            // d'ORD-CE1-5 (DEC-0111 section 5.4, point 7), accentuee, avec l'espace insecable devant
+            // d'ORD-CE1-5 (DEC-0111 section 5.4, point 2), accentuee, avec l'espace insecable devant
             // le point-virgule (ADR-0067).
             "comparer, ranger et encadrer seuls ; le verbe 'placer sur une ligne graduée' "
                     + "n'est servi par aucun jeu et ne peut pas l'être par du texte",

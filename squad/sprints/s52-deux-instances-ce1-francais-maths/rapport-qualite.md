@@ -194,7 +194,7 @@ verifie critere par critere que chaque critere testable a un test qui le nomme.
 ## 8. Couvert, non couvert
 
 - Chaque module a des tests (domain 120, application 17, adapter-web 401, adapter-content 1318, bootstrap 316
-  au tip). Aucun module sans test.
+  dont 6 d'integration, au tip). Aucun module sans test.
 - Non lances : le pas `package` du job `build`. Aucun serveur de jeu n'a ete demarre (aucun port de la plage
   18930-18949 utilise) : tout est passe par `MockMvc` et le reacteur.
 - Tests instables : aucun constate. Chaque suite a tourne deux fois sur ce poste (tip puis tip + 1 test) sans
