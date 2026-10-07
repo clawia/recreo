@@ -694,3 +694,62 @@ d'aucun autre role :
 6. **Isolation** : un worktree, une branche et un scratchpad **par agent** dans chaque couloir, un port par agent,
    ecrits dans le bloc commun de chaque consigne.
 7. **Amendement de `squad/README.md` section 8** sur la valeur du trailer `Co-Authored-By` (A7).
+
+---
+
+## Amendement de cloture du 2026-10-07 (sofia-sm)
+
+**Methode.** Les sections ci-dessus ne sont pas reecrites : elles disent ce que je savais a 20:51. Cet amendement
+dit ce qui est devenu faux depuis, avec la source de chaque correction. Il ne decide rien ; l'etat final est dans
+`review.md` et `RAPPORT.md`. Il n'ajoute aucune ligne d'heure de debut ou de fin : celles du debut de ce fichier et
+de `review.md` restent les seules que `outils/rapport-tokens.py` lit.
+
+| # | Ce que le planning disait | Ce qui est vrai a la cloture | Source |
+|---|---|---|---|
+| 1 | Objectif : `MAT-CE1-17` *"n'est pas engagee"*, au mieux **quatre fermetures, 131/182**, cinq seulement si `camille-po` re-engage par amendement ecrit | `camille-po` a re-engage `MAT-CE1-17` a 1,5 (21:38, `ee3ff6cf`) ; la ligne est **fermee** au second passage (`3c97a87a`). Cinq fermetures, **132/182 (72,5 %)** : `couvert-valide` 127 a `b4ce7d93`, 132 a `509552f0`, par la commande de la matrice | `DEC-0111` A.5, A.6, A.9 ; `review.md` section 1 |
+| 2 | Tarifs : C engage a la cloture du planning = **2,5** (3,0 / 5,0 avec rejeu), *"avec `MAT-CE1-17` ce serait 4,0 et 4,5 / 5,0"* ; **engage 6,5**, **1,5 libere**, destination s53 | C engage **4,0** (1,5 + 1,5 + 1,0), 4,5 / 5,0 ; **engage 8,0, rien de libere**. Budget reel : A 4,5, C 4,5, soit **9,0 consommes** pour 8,0 engages, plafond de 5,0 tenu | `DEC-0111` A.6 et A.11 |
+| 3 | Decision 3 du planning : `MAT-CE1-17` *"non engagee, budget libere, 1,5, destination s53"*, report a dix sprints | Annulee. Report de neuf sprints (s43 a s51), ligne fermee au dixieme | `DEC-0111` A.6, A.12 |
+| 4 | Section "Conditions de l'instance C" : condition (1) moitie message **non remplie**, condition (2) quadrillage **non remplie**, lettre *"dans le meme diff"* impossible (ecart R3) | Les trois conditions sont remplies a l'amendement U4. (1) message corrige : `ceffde66`, fusionne par `5b199825`. (2) section 4 d'`ines-design` : `44ac6c02`, fusionne par `bb0d6f94` ; reponses de `nadia-prof` (U3) : `48716e62`, sur la branche de C, arrivees sur `round-two` avec la fusion de C. (3) `lea-dev`. La lettre *"dans le meme diff"* est remplacee par un etat verifiable sur le disque | `DEC-0111` A.2, A.5 |
+| 5 | Table "Stories retenues" : `S51-MAT-SYMETRIE` *"non engagee a la cloture de ce planning"* | Engagee, livree (`fb1c7ad3`), corrigee sur `SYM-CE1-R1` (`bc7cf6a0`), VALIDE (`3c97a87a`) | `FICHE-designation-symetrie-ce1.md` |
+| 6 | Affectations : `lea-dev` `S51-MAT-COMPARER-RANGER`, `S51-MAT-MULTIPLICATION`, *puis `S51-MAT-SYMETRIE` si elle est re-engagee* | `lea-dev` a livre **les trois**, dans cet ordre : `4fb9afc4`, `92344c23`, `fb1c7ad3`, plus les dessins de C. `marc-dev` : retrait (`2278bdfb`) puis A (`e1fcec51`, `3bc2e501`, `bd56d39b`, `befc4128`, `46e69b13`, rejeu `40989ba9`). Aucune reaffectation, lue au tag des commits | `git log --no-merges b4ce7d93..40daa419` |
+| 7 | Table "Verification poste/story", ligne `MAT-CE1-17` : *non engage, budget libere* ; *"Resultat : engage 6,5 sur 8,0 ; libere 1,5"* | Ligne `MAT-CE1-17` : **engage**, `lea-dev` / instance C. **Engage 8,0 sur 8,0, libere 0.** La passe transverse `PAR-4` reste non engagee (deuxieme report) | `DEC-0111` A.6, section 7 |
+| 8 | Le rejeu de 0,5 par instance, nomme | Consomme par les deux instances : A, rejeu de `FRA-CE1-17` (`40989ba9`) ; C, second passage de `MAT-CE1-17` (`bc7cf6a0`, `3c97a87a`). **Le rejeu de la symetrie compte 0,5 par `PAR-10`**, lecture de `camille-po` que `nadia-prof` n'a pas confirmee ; la lettre de `PAR-14` ferait payer ce passage au tarif d'un lot (C a 5,5). A confirmer par `nadia-prof` | `DEC-0111` A.11 ; `review.md` obstacle 9 |
+| 9 | `SYC-CE1-R1`, `MUL-CE1-R1` : absentes du planning ; *"Aucun identifiant neuf n'est attendu"* (bloc commun, point 5, et section "Fichiers partages") | Trois identifiants alloues en cours de sprint dans `REGISTRE-identifiants.md` : `SYC-CE1-R1`, `MUL-CE1-R1`, `SYM-CE1-R1` (registre : 919 au planning, **922** a la cloture, 158 prefixes). `SYC-CE1-R1` et `MUL-CE1-R1` : reserves non engagees, 0,5 chacune, premier report. `SYM-CE1-R1` : levee | `DEC-0111` amendement du 2026-10-07, point 1 ; backlog, section "Cloture de s52" |
+| 10 | Section "Isolation", tableau des couloirs : worktree du retrait `../recreo-s52-retrait-sciences-cm1` | **`../recreo-s52-retrait`**, branche `s52-retrait-sciences-cm1` inchangee. Le chemin suivi le plus long du depot fait 219 caracteres ; le prefixe du dossier de worktrees ajoute 41 caracteres avec le nom du planning (**260**), 28 avec le nom retenu (247). Le worktree de C (`../recreo-s52-nadia-instance-c`) est a 256. Worktrees ouverts a la cloture : `../recreo-s52-yanis-qualite`, `../recreo-s52-theo-archunit`, scratchpad `cloture/<agent>` | `git worktree list` ; `git ls-files` et `awk` sur la longueur des chemins |
+| 11 | *"Conflit de fusion previsible, que j'assume"* sur `catalogue.yaml`, `TexteAccentueExposeParLePortEntrantTest`, `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` | Les conflits ont eu lieu a la fusion de C, dans `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` et `REGISTRE-identifiants.md` (pas dans `catalogue.yaml`) ; ajouts des deux cotes gardes, aucune assertion affaiblie | `review.md` obstacle 3 |
+| 12 | *"Ordre de fusion : retrait, puis A, puis C"*, un reacteur complet sur chaque commit ; *"Si C livre en deux temps"* | **Tenu**, et C a livre en un seul temps. Retrait `789af8a9` (2084 tests), instance A `d06ea52f` (2125), instance C `40daa419` (2172 apres `173b48f7` ; 2166 et 1 echec a la premiere tentative), cloture 2174. Entre eux : `e5ec4456` (amendements de `DEC-0111`, fiches), U1 `5b199825`, U2 `bb0d6f94`, U4 `fbcf4bf3` | `review.md` section 2.2 et obstacle 2 |
+| 13 | Avis de faisabilite : *"2082 tests ... je le remesurerai moi-meme sur l'arbre fusionne a la review"* ; *"le compte d'`ArchRule` est inchange par s52"* | Remesure : **2174** tests (`509552f0`, reacteur complet) ; ArchUnit 229 tests, 39 / 36 regles, compte inchange | `review.md` sections 2 et 3 |
+
+### Comptage des trailers `Co-Authored-By` (lignes 21 a 29 de ce planning)
+
+Le **568** de la ligne 26 additionne **quatre variantes** : la commande `--grep='^Co-Authored-By: Claude Opus'` est un
+prefixe. Ventilation exacte, par variante complete, a `93aade92` (etat que le paragraphe decrivait) puis a la cloture :
+
+| Libelle du trailer | `93aade92` | `509552f0` |
+|---|---:|---:|
+| `Claude Opus 5.5` | 63 | 73 |
+| `Claude Opus 5` | 369 | 369 |
+| `Claude Opus 5 (1M context)` | 132 | 132 |
+| `Claude Opus 5.5 (1M context)` | 4 | 4 |
+| **Total, prefixe `Claude Opus`** | **568** | **578** |
+| `Claude Sonnet 5.5` | 29 | 64 |
+
+Commande, une par ligne du tableau : `git rev-list --count --grep='^Co-Authored-By: <libelle> <' <sha>` (le `<` final
+evite que `Opus 5` capte `Opus 5.5` et `Opus 5 (1M context)`). Le total en prefixe : `git rev-list --count
+--grep='^Co-Authored-By: Claude Opus' <sha>` rend 568 et 578 ; avec `Sonnet`, 338 et 373. **Le comparable du
+paragraphe**, les trailers *"Opus 5.5"* seuls, est **67** a `93aade92` (63 + 4, par `--grep='^Co-Authored-By: Claude
+Opus 5.5'`, qui capte les deux variantes) et **77** a la cloture. Le chiffre de 11 de la plage `e4d8ba3b..93aade92`
+et celui de 25 pour `Sonnet` sont retrouves ; le chiffre de **18** transmis par la consigne de l'epoque reste sans
+source au depot.
+
+**Regle appliquee** (`DEC-0110` section 17.4, `squad/README.md` section 8) : sur `93aade92..509552f0`, 45 commits dont
+13 fusions de moi, **aucun ecart** entre le trailer et le modele du rapport de tokens (`theo-archi` et `nadia-prof` sur
+`claude-opus-5-5` : 10 commits en "Opus 5.5" ; les autres agents sur `claude-sonnet-5-5` : 35 commits en "Sonnet
+5.5"). La CI ne verifie pas le trailer.
+
+### Ce qui reste exact
+
+Objectif gele, repartition des couloirs, ports, ordre des lancements, consignes B1 a B10, section "Porte technique",
+section "Ce que ce planning ne fait pas" (ce planning n'a prononce aucun Done), amendement du README : inchanges.
+Les points routes R1 a R17 sont tous soldes ou reportes ; leur etat est au tableau d'obstacles de `review.md`
+(obstacle 14).
