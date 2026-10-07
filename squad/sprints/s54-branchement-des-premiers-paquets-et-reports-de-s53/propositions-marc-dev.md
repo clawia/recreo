@@ -27,7 +27,7 @@ Contrainte de forme de `sci1ChaqueIndice...` : une seule phrase, terminee par un
 
 ## Item 5 - `CRP-CM1-R1` (indice inexact)
 
-- **Constat** : `grep -n "n'utilise pas en grande quantité" cm1-sciences-corps.yaml` rend la ligne 89. Le corps utilise beaucoup de sucres.
+- **Constat** : `grep -n "n'utilise pas en grande quantité" cm1-sciences-corps.yaml` rend la ligne 85. Le corps utilise beaucoup de sucres.
 - **Issue proposee** : reecrire l'indice. Reste de l'item inchange.
 - **YAML propose** :
   `indice: "Le corps tire déjà le sucre dont il a besoin des féculents, et les boissons sucrées en ajoutent trop."`
@@ -37,7 +37,7 @@ Contrainte de forme de `sci1ChaqueIndice...` : une seule phrase, terminee par un
 
 ## Item 6 - `CRP-CM1-R2` (portee du geste)
 
-- **Constat** : `grep -n "évite de lui transmettre" cm1-sciences-corps.yaml` rend la ligne 91. "Evite" est trop large, "lui" est ambigu.
+- **Constat** : `grep -n "évite de lui transmettre" cm1-sciences-corps.yaml` rend la ligne 86. "Evite" est trop large, "lui" est ambigu.
 - **Issue proposee** : reecrire la question (et le commentaire `HIS-3` de la ligne, qui dit aussi "evite"). Bonne reponse,
   distracteurs et indice inchanges.
 - **YAML propose** :
@@ -49,7 +49,7 @@ Contrainte de forme de `sci1ChaqueIndice...` : une seule phrase, terminee par un
 
 ## Item 7 - `CRP-CM1-R3` (distracteurs implausibles)
 
-- **Constat** : `grep -n "remplacer le sommeil\|se passer de manger" cm1-sciences-corps.yaml` rend la ligne 99. Aucun enfant de 9 ans ne les croit.
+- **Constat** : `grep -n "remplacer le sommeil\|se passer de manger" cm1-sciences-corps.yaml` rend la ligne 92. Aucun enfant de 9 ans ne les croit.
 - **Issue proposee** : remplacer les deux distracteurs et l'indice. Enonce et bonne reponse inchanges.
 - **YAML propose** :
   `distracteurs: ["à faire travailler seulement les jambes", "à user les articulations"]`
