@@ -1,0 +1,103 @@
+# DEGRADE : aucun dessin de carte de France ni de planisphere n'existe (le palier 2 designation est construit, le materiau manque), ce paquet est textuel et ne fait pas designer un lieu sur une image.
+schema: 1
+id: cm1-histoire-geographie-carte-et-planisphere
+type: question
+descripteur:
+  matiere: "Histoire-géographie"
+  niveau: "CM1"
+  domaine: "Se repérer dans l'espace"
+  competence: "Se repérer sur une carte de France et sur un planisphère (océans, continents, quelques repères physiques, quelques grandes villes)."
+lignesDeReferentiel: ["HG-CM1-09"]
+#
+# S53 session hors sprint, ligne HG-CM1-09 (squad/programme/histoire-geographie/competences-cm1.md).
+# Referentiel copie conforme. Paquet statique de type "question", sans image.
+#
+# Ce qui manque, et ce que ce paquet n'est donc pas. nadia-prof (ARBITRAGE-PREALABLE-s27, section
+# 7.2, ligne 9) : "se reperer sur une carte est du palier 2. Un quiz de noms n'est pas se reperer." ;
+# ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md, section 4.5 :
+# deux dessins au minimum, une carte de France et un planisphere ; ZON-4 : aucune ligne ne verdit par
+# un quiz de noms. Le materiau n'existe pas (DEC-0111, section sur le materiau carte et globe). Ce
+# paquet ne ferme pas la ligne et ne s'y substitue pas. Pour ne pas etre un quiz de noms, chaque
+# item donne une position ou une relation (au sud, a l'ouest, entre, a la frontiere de, au bord de)
+# et demande ce qui s'y trouve, ou donne le nom et demande la position : l'enfant doit avoir la
+# carte en tete.
+#
+# FER-1 (s29, section 4.5), les deux supports et les quatre categories de la parenthese, chacun
+# servi :
+#   - planisphere : items 2, 3 et 4 ; carte de France : items 1 et 5 a 14 ;
+#   - oceans : items 1 et 2 (bonne reponse) ; continents : items 3 et 4 (bonne reponse) ;
+#   - reperes physiques : items 5 a 10 (mers, montagnes, fleuves) ;
+#   - grandes villes : items 11 a 14.
+# FER-3 : deux taches : retrouver un espace par sa position ou sa relation (items 1 a 4, 7, 8, 11 et
+# 12), situer un espace dont le nom est donne (items 5, 6, 9, 10, 13 et 14).
+# FER-2 : quatorze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# HIS-1 (lot histoire-geographie CM1, au plus un tiers du lot en restitution) : marqueur sur chaque
+# item. Six items sur quatorze sont marques restitution (un nom a retrouver : items 1 a 4, 11, 12),
+# les huit autres demandent d'associer ou de situer un espace dont le nom est donne. HIS-2 : aucun
+# item n'a deux reponses defendables. Les voisins de la France qui touchent deux points cardinaux
+# (Italie, Suisse) ne sont jamais la bonne reponse d'une question de point cardinal. HIS-3 : chaque
+# fait porte sa source, marquee sur la ligne de l'item. BIA-5 sans objet.
+#
+# Les propositions sont des noms et des groupes de mots, hors du domaine numerique
+# (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest, PAQUETS_HORS_DU_DOMAINE_NUMERIQUE).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "Sur une carte de France, quel océan est à l'ouest  ?"  # HIS-1: restitution ; HIS-3: l'Atlantique borde la France a l'ouest, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "l'océan Atlantique"
+    distracteurs: ["l'océan Pacifique", "l'océan Indien"]
+    indice: "Sur une carte, l'ouest est à gauche."
+  - enonce: "Sur un planisphère, quel océan est entre l'Asie et l'Amérique  ?"  # HIS-1: restitution ; HIS-3: le Pacifique separe l'Asie des Ameriques, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "l'océan Pacifique"
+    distracteurs: ["l'océan Atlantique", "l'océan Indien"]
+    indice: "L'Atlantique sépare l'Amérique de l'Europe et de l'Afrique."
+  - enonce: "Sur un planisphère, quel continent touche l'Europe à l'est  ?"  # HIS-1: restitution ; HIS-3: l'Asie est reliee a l'Europe par la terre, a l'est, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "l'Asie"
+    distracteurs: ["l'Afrique", "l'Amérique du Nord"]
+    indice: "Sur la plupart des planisphères, l'est est à droite."
+  - enonce: "Sur un planisphère, quel continent est juste au sud de l'Europe  ?"  # HIS-1: restitution ; HIS-3: l'Afrique est au sud de l'Europe, de l'autre cote de la Mediterranee, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "l'Afrique"
+    distracteurs: ["l'Amérique du Nord", "l'Antarctique"]
+    indice: "Sur un planisphère, le sud est en bas."
+  - enonce: "Sur une carte de France, où est la mer Méditerranée  ?"  # HIS-1: association ; HIS-3: la Mediterranee borde la France au sud-est, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "au sud-est"
+    distracteurs: ["au nord-ouest", "au nord-est"]
+    indice: "Sur la carte, le sud est en bas."
+  - enonce: "Sur une carte de France, où est la Manche  ?"  # HIS-1: association ; HIS-3: la Manche borde la France au nord, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "au nord"
+    distracteurs: ["au sud", "à l'est"]
+    indice: "Sur la carte, le nord est en haut."
+  - enonce: "Les Pyrénées séparent la France de quel pays  ?"  # HIS-1: association ; HIS-3: les Pyrenees forment la frontiere entre la France et l'Espagne, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "l'Espagne"
+    distracteurs: ["l'Italie", "l'Allemagne"]
+    indice: "Cette chaîne de montagnes est au sud de la France."
+  - enonce: "Les Alpes sont près de quel pays  ?"  # HIS-1: association ; HIS-3: les Alpes sont a l'est de la France, a la frontiere de l'Italie, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "l'Italie"
+    distracteurs: ["l'Espagne", "la Belgique"]
+    indice: "Sur la carte, les Alpes sont à l'est de la France."
+  - enonce: "La Seine traverse Paris. Dans quelle mer se jette-t-elle  ?"  # HIS-1: association ; HIS-3: la Seine traverse Paris et se jette dans la Manche, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "la Manche"
+    distracteurs: ["la Méditerranée", "la mer du Nord"]
+    indice: "La Seine coule vers le nord-ouest de la France."
+  - enonce: "Dans quelle mer se jette le Rhône  ?"  # HIS-1: association ; HIS-3: le Rhone se jette dans la Mediterranee, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "la mer Méditerranée"
+    distracteurs: ["la Manche", "la mer du Nord"]
+    indice: "Le Rhône coule vers le sud de la France."
+  - enonce: "Quelle grande ville est au bord de la Méditerranée  ?"  # HIS-1: restitution ; HIS-3: Marseille est sur la cote mediterraneenne, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "Marseille"
+    distracteurs: ["Strasbourg", "Lille"]
+    indice: "Cette ville est dans le sud de la France."
+  - enonce: "Quelle grande ville est tout au nord de la France  ?"  # HIS-1: restitution ; HIS-3: Lille est dans le nord de la France, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "Lille"
+    distracteurs: ["Marseille", "Bordeaux"]
+    indice: "Sur la carte, le nord est en haut."
+  - enonce: "Bordeaux est dans quelle partie de la France  ?"  # HIS-1: association ; HIS-3: Bordeaux est dans le sud-ouest de la France, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "le sud-ouest"
+    distracteurs: ["le nord-est", "le sud-est"]
+    indice: "Bordeaux est près de l'océan Atlantique."
+  - enonce: "Strasbourg est dans quelle partie de la France  ?"  # HIS-1: association ; HIS-3: Strasbourg est a l'est de la France, a la frontiere de l'Allemagne, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+    bonneReponse: "l'est"
+    distracteurs: ["l'ouest", "le sud-ouest"]
+    indice: "Strasbourg est près de l'Allemagne."

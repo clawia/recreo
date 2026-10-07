@@ -1,0 +1,99 @@
+schema: 1
+id: cp-qlm-modes-de-vie
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Explorer les organisations du monde"
+  competence: "Comparer des modes de vie ici et ailleurs (habitat, alimentation, école, déplacements)."
+lignesDeReferentiel: ["QLM-CP-16"]
+#
+# S53 session hors sprint, ligne QLM-CP-16 (squad/programme/questionner-le-monde/competences-cp.md).
+# Referentiel copie conforme. Paquet statique de type "question".
+#
+# Ligne signalee "la plus dangereuse du lot" (ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-
+# programme.md, section 7.1 et 7.4), et notee "ecartee pour motif de fond" par DEC-0102 (section 3) et
+# ARBITRAGE-PREALABLE-s46 (section 2.2). Ce paquet est ecrit sur demande de la session hors sprint,
+# sans que ce motif ait ete leve par ecrit. Il n'a aucun statut tant que nadia-prof ne l'a pas joue.
+#
+# Conditions posees d'avance et opposables (section 7.4 de l'arbitrage s27) :
+#   BIA-1 - aucun item ne compare un ailleurs a un ici en position de norme. La forme "chez nous
+#   on fait X, chez eux on fait Y" est refusee. On decrit, on ne compare pas a un centre.
+#   BIA-2 - un pays n'est jamais represente par un seul trait.
+# Construction retenue pour les tenir : aucun pays, aucun peuple, aucune region du monde n'est nomme
+# dans ce paquet. Chaque item decrit une maniere de vivre rattachee a un TYPE de lieu (un fleuve qui
+# deborde, une region tres chaude, une ville a canaux, la campagne), jamais a un pays. Une maniere de
+# vivre est expliquee par le lieu, pas par ceux qui y vivent : aucun distracteur n'attribue une
+# incapacite, un gout ou une valeur a un groupe. Aucun item ne demande ce que l'enfant fait, mange ou
+# possede (BIA-4 reconduit), et aucun ne suppose un foyer.
+#
+# FER-1 : les quatre domaines de la parenthese sont chacun servis par trois items :
+#   - habitat (items 1 a 3) ; alimentation (items 4 a 6) ; ecole (items 7 a 9) ;
+#   - deplacements (items 10 a 12).
+# FER-3 : deux taches distinctes :
+#   - expliquer une maniere de vivre par le lieu (items 1 a 11) ;
+#   - comparer deux manieres de vivre et dire d'ou vient la difference (item 12).
+# Le verbe "comparer" du referentiel n'est servi que par l'item 12 : c'est une limite du paquet, pas
+# une couverture.
+# FER-2 : douze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# Exactitude : chaque maniere de vivre decrite existe (maisons sur pilotis, murs epais en terre dans
+# les regions tres chaudes, toits inclines sous la pluie, riz cultive en champs inondes, bananiers
+# des regions chaudes et humides, ports de peche, ecoles ou l'on se dechausse, uniforme, classe
+# unique de petit village, bateau-bus des villes a canaux, metro, voiture a la campagne). A verifier
+# par nadia-prof, qui reste seule juge des presupposes de foyer et des biais.
+#
+# Les propositions sont des groupes de mots, hors du domaine numerique
+# (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest, PAQUETS_HORS_DU_DOMAINE_NUMERIQUE).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "Des maisons sont sur pilotis au bord d'un fleuve. À quoi servent les pilotis  ?"
+    bonneReponse: "à garder la maison hors de l'eau"
+    distracteurs: ["à garder la maison plus chaude", "à cacher la maison des voisins"]
+    indice: "Regarde où la maison est construite."
+  - enonce: "Dans une région très chaude, des maisons ont des murs épais en terre. Pourquoi  ?"
+    bonneReponse: "pour garder la fraîcheur dedans"
+    distracteurs: ["pour garder la chaleur dedans", "pour attirer la pluie"]
+    indice: "Les murs protègent du climat de l'endroit."
+  - enonce: "Là où il pleut beaucoup, les toits sont souvent penchés. Pourquoi  ?"
+    bonneReponse: "pour que l'eau de pluie coule"
+    distracteurs: ["pour garder l'eau sur le toit", "pour voir plus loin"]
+    indice: "Pense à ce que devient l'eau sur un toit penché."
+  - enonce: "Où pousse le riz  ?"
+    bonneReponse: "dans des champs remplis d'eau"
+    distracteurs: ["dans du sable très sec", "sous la neige"]
+    indice: "Cette plante n'aime pas le sable sec."
+  - enonce: "Où poussent les bananiers  ?"
+    bonneReponse: "dans une région chaude et humide"
+    distracteurs: ["dans une région couverte de glace", "dans un désert très sec"]
+    indice: "Cette plante ne supporte pas le gel."
+  - enonce: "Dans un port de pêche, que vend-on sur le quai  ?"
+    bonneReponse: "du poisson frais"
+    distracteurs: ["des moutons", "des skis"]
+    indice: "Pense à ce que rapportent les bateaux qui partent en mer."
+  - enonce: "Dans certaines écoles, on enlève ses chaussures avant d'entrer en classe. Pourquoi  ?"
+    bonneReponse: "pour garder le sol propre"
+    distracteurs: ["pour courir plus vite", "pour mieux voir le tableau"]
+    indice: "Pense à ce que les chaussures ont touché dehors."
+  - enonce: "Dans certaines écoles, tous les enfants portent le même vêtement. Comment s'appelle-t-il  ?"
+    bonneReponse: "un uniforme"
+    distracteurs: ["un pyjama", "un déguisement"]
+    indice: "Ce n'est pas un vêtement pour dormir."
+  - enonce: "Dans un petit village, une seule classe accueille des enfants de plusieurs âges. Pourquoi  ?"
+    bonneReponse: "parce qu'il y a peu d'enfants"
+    distracteurs: ["parce qu'il y a trop de maîtres", "parce que l'école est immense"]
+    indice: "Pense au nombre d'enfants dans ce village."
+  - enonce: "Dans une ville avec des canaux, un bateau-bus remplace parfois le bus. Où circule-t-il  ?"
+    bonneReponse: "sur l'eau des canaux"
+    distracteurs: ["sur des rails", "dans le ciel"]
+    indice: "Un canal est une rivière creusée par les humains."
+  - enonce: "Dans une grande ville, le métro roule sous la terre. Pourquoi  ?"
+    bonneReponse: "pour laisser la place aux rues"
+    distracteurs: ["pour voir les étoiles", "pour aller sous l'eau"]
+    indice: "Pense à la place qu'il y a dans une grande ville."
+  - enonce: "En ville, on prend le métro. À la campagne, on prend souvent la voiture. Pourquoi cette différence  ?"
+    bonneReponse: "parce que les lieux sont éloignés"
+    distracteurs: ["parce qu'il n'y a pas de maisons en ville", "parce qu'il n'y a aucune route à la campagne"]
+    indice: "Pense à la distance entre les lieux."

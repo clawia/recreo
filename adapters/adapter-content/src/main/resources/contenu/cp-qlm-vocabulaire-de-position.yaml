@@ -1,0 +1,102 @@
+# DEGRADE : le palier 1 illustre que la ligne exige (l'image porte la position, CON-2) n'est pas servable, aucune illustration de position n'existe, ce paquet est textuel.
+schema: 1
+id: cp-qlm-vocabulaire-de-position
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Se situer dans l'espace"
+  competence: "Utiliser le vocabulaire de position pour décrire l'espace proche (devant/derrière, gauche/droite, au-dessus/au-dessous, près/loin)."
+lignesDeReferentiel: ["QLM-CP-10"]
+#
+# S53 session hors sprint, ligne QLM-CP-10 (squad/programme/questionner-le-monde/competences-cp.md).
+# Referentiel copie conforme. Paquet statique de type "question", meme regime que les paquets de
+# questionner le monde CP deja fermes (cp-qlm-saisons, cp-qlm-autrefois-aujourdhui).
+#
+# Arbitrage prealable cite (ARBITRAGE-PREALABLE-s27-les-matieres-absentes-du-programme.md, section
+# 7.1, ligne 10) : "oui, choix ; bien meilleur en illustre. Une image a deux objets et 'ou est le
+# chat ?' est du palier 1 : l'image porte la donnee. CON-2 interdit que l'enonce decrive la
+# position." Et nadia-prof (ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-
+# apporter.md, section 4.1) : "gauche/droite sans image est la difficulte classique du CP".
+#
+# Ce que ce paquet degrade et comment. Faute d'image, la position est donnee par l'enonce, ce que
+# CON-2 interdit sur un paquet illustre. Pour que l'enonce ne contienne pas la reponse, aucun item
+# ne demande la position qu'il decrit : il demande la relation inverse (A est devant B, ou est B
+# par rapport a A ?), le contraire d'un mot de position, ou l'extremite d'un alignement de trois
+# elements. L'enfant doit employer le mot juste, il ne le recopie pas. Les deux elements d'un item
+# sont toujours vus du meme point de vue, de sorte que la reponse ne depend pas de l'observateur.
+#
+# FER-1 : les huit termes de la parenthese sont chacun en bonne reponse au moins une fois
+# (devant item 2, derriere items 1 et 8, gauche item 4, droite items 3 et 11, au-dessus item 5,
+# au-dessous item 6, pres item 10, loin item 9).
+# FER-3 : trois taches, chacune sur des items propres :
+#   - relation inverse entre deux elements (items 1 a 7) ;
+#   - contraire d'un mot de position (items 8 a 11) ;
+#   - extremite d'un alignement de trois elements (items 12 a 14).
+# FER-2 : quatorze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# L'enfant de CP est accompagne par un adulte, mais l'enonce reste ecrit pour un enfant qui lit peu :
+# phrases courtes, mots du quotidien, la derniere phrase est la question.
+#
+# Les propositions sont des mots et des groupes de mots, hors du domaine numerique
+# (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest, PAQUETS_HORS_DU_DOMAINE_NUMERIQUE).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "Léa est devant Tom dans la file. Où est Tom par rapport à Léa  ?"
+    bonneReponse: "derrière Léa"
+    distracteurs: ["devant Léa", "à côté de Léa"]
+    indice: "Dessine la file dans ta tête."
+  - enonce: "Le vélo est derrière la maison. Où est la maison par rapport au vélo  ?"
+    bonneReponse: "devant le vélo"
+    distracteurs: ["derrière le vélo", "à côté du vélo"]
+    indice: "Fais un petit dessin avec la maison et le vélo."
+  - enonce: "Le livre est à gauche du cahier. Où est le cahier par rapport au livre  ?"
+    bonneReponse: "à droite du livre"
+    distracteurs: ["à gauche du livre", "devant le livre"]
+    indice: "Pose le livre et le cahier sur un dessin."
+  - enonce: "Sam est à droite de Maya. Où est Maya par rapport à Sam  ?"
+    bonneReponse: "à gauche de Sam"
+    distracteurs: ["à droite de Sam", "derrière Sam"]
+    indice: "Place les deux enfants côte à côte dans ta tête."
+  - enonce: "Le chat est sous la table. Où est la table par rapport au chat  ?"
+    bonneReponse: "au-dessus du chat"
+    distracteurs: ["au-dessous du chat", "devant le chat"]
+    indice: "Regarde qui est en bas et qui est en haut."
+  - enonce: "L'oiseau est au-dessus de la fleur. Où est la fleur par rapport à l'oiseau  ?"
+    bonneReponse: "au-dessous de l'oiseau"
+    distracteurs: ["au-dessus de l'oiseau", "derrière l'oiseau"]
+    indice: "Pense à qui est tout en haut."
+  - enonce: "Le chat est près de la porte, le chien est loin. Qui est le plus loin  ?"
+    bonneReponse: "le chien"
+    distracteurs: ["le chat"]
+    indice: "Compare la distance entre chaque animal et la porte."
+  - enonce: "Quel est le contraire de devant  ?"
+    bonneReponse: "derrière"
+    distracteurs: ["à côté", "loin"]
+    indice: "Pense à une file d'enfants."
+  - enonce: "Quel est le contraire de près  ?"
+    bonneReponse: "loin"
+    distracteurs: ["devant", "à gauche"]
+    indice: "Pense à la distance entre deux enfants."
+  - enonce: "Quel est le contraire de loin  ?"
+    bonneReponse: "près"
+    distracteurs: ["dessous", "derrière"]
+    indice: "Pense à un objet que tu peux toucher."
+  - enonce: "Quel est le contraire de gauche  ?"
+    bonneReponse: "droite"
+    distracteurs: ["devant", "dessus"]
+    indice: "Pense à tes deux mains."
+  - enonce: "Léa est devant Tom. Tom est devant Sam. Qui est tout derrière  ?"
+    bonneReponse: "Sam"
+    distracteurs: ["Léa", "Tom"]
+    indice: "Dessine les trois enfants en file."
+  - enonce: "Le livre est à gauche du jeu. Le jeu est à gauche de la boîte. Qu'est-ce qui est tout à droite  ?"
+    bonneReponse: "la boîte"
+    distracteurs: ["le jeu", "le livre"]
+    indice: "Pense à la ligne des trois objets."
+  - enonce: "Le nuage est au-dessus de l'arbre. L'arbre est au-dessus de la maison. Qu'est-ce qui est tout en bas  ?"
+    bonneReponse: "la maison"
+    distracteurs: ["l'arbre", "le nuage"]
+    indice: "Pense à la hauteur des trois choses."
