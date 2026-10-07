@@ -1,0 +1,182 @@
+# S53-FRA-VERBE-SUJET (s53, generation de contenu seul, brouillon soumis a nadia-prof). Conditions
+# VSJ-CE1-1 a VSJ-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.4).
+#
+# VSJ-CE1-1 : quinze items demandent le sujet d'un verbe cite (au moins la moitie), neuf le verbe ; les
+# propositions sont des mots ou groupes copies de la phrase.
+# VSJ-CE1-2 : sujet pronom personnel 5, nom seul 5, groupe nominal de trois mots au plus 5 (au moins un
+# cinquieme chacun) ; le sujet precede le verbe, un seul verbe conjugue par phrase, aucun sujet coordonne.
+# VSJ-CE1-3 : (a) le groupe place apres le verbe, (b) un autre nom de la phrase, (c) pour les items de
+# verbe, un nom ou un adjectif de la phrase ; chaque item declare ses familles dans l'ordre du fichier.
+# TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
+# par proposition. La question est portee par la consigne du jeu quand l'enonce ne la porte pas.
+schema: 1
+id: ce1-verbe-sujet
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Identifier le verbe d'une phrase et son sujet (un nom, un groupe nominal court ou un pronom personnel)."
+lignesDeReferentiel: ["FRA-CE1-13"]
+items:
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: pronom
+  # VSJ-CE1-3: a, b
+  - enonce: "« Elle pose le livre sur la table. » Quel est le sujet du verbe « pose » ?"
+    bonneReponse: "Elle"
+    distracteurs: ["le livre", "la table"]
+    indice: "Demande-toi : qui fait l'action du verbe cité ?"
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: pronom
+  # VSJ-CE1-3: a, b
+  - enonce: "« Ils mangent des fraises au parc. » Quel est le sujet du verbe « mangent » ?"
+    bonneReponse: "Ils"
+    distracteurs: ["des fraises", "parc"]
+    indice: "Pose la question « Qui est-ce qui ? » avant le verbe."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Le petit chat boit du lait. » Quel est le verbe de la phrase ?"
+    bonneReponse: "boit"
+    distracteurs: ["chat", "petit"]
+    indice: "Cherche le mot qui dit ce que fait quelqu'un."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: pronom
+  # VSJ-CE1-3: a, b
+  - enonce: "« Il lit une histoire à Mia. » Quel est le sujet du verbe « lit » ?"
+    bonneReponse: "Il"
+    distracteurs: ["une histoire", "Mia"]
+    indice: "Le sujet est avant le verbe : regarde les mots devant."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: pronom
+  # VSJ-CE1-3: a, b
+  - enonce: "« Elles rangent les jouets dans le sac. » Quel est le sujet du verbe « rangent » ?"
+    bonneReponse: "Elles"
+    distracteurs: ["les jouets", "le sac"]
+    indice: "Demande-toi : qui fait l'action du verbe cité ?"
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: pronom
+  # VSJ-CE1-3: a, b
+  - enonce: "« Il coupe le pain avec un couteau. » Quel est le sujet du verbe « coupe » ?"
+    bonneReponse: "Il"
+    distracteurs: ["le pain", "un couteau"]
+    indice: "Pose la question « Qui est-ce qui ? » avant le verbe."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Léa range ses crayons. » Quel est le verbe de la phrase ?"
+    bonneReponse: "range"
+    distracteurs: ["crayons", "Léa"]
+    indice: "Le verbe dit une action ou un état."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: nom seul
+  # VSJ-CE1-3: a, b
+  - enonce: "« Léa lance le ballon à Karim. » Quel est le sujet du verbe « lance » ?"
+    bonneReponse: "Léa"
+    distracteurs: ["le ballon", "Karim"]
+    indice: "Le sujet est avant le verbe : regarde les mots devant."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: nom seul
+  # VSJ-CE1-3: a, b
+  - enonce: "« Tom cherche son livre sous le lit. » Quel est le sujet du verbe « cherche » ?"
+    bonneReponse: "Tom"
+    distracteurs: ["son livre", "le lit"]
+    indice: "Demande-toi : qui fait l'action du verbe cité ?"
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: nom seul
+  # VSJ-CE1-3: a, b
+  - enonce: "« Inès peint un arbre sur la feuille. » Quel est le sujet du verbe « peint » ?"
+    bonneReponse: "Inès"
+    distracteurs: ["un arbre", "la feuille"]
+    indice: "Pose la question « Qui est-ce qui ? » avant le verbe."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Les enfants jouent dans la cour. » Quel est le verbe de la phrase ?"
+    bonneReponse: "jouent"
+    distracteurs: ["enfants", "cour"]
+    indice: "Cherche le mot qui dit ce qui se passe."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: nom seul
+  # VSJ-CE1-3: a, b
+  - enonce: "« Noé écoute la radio dans la cuisine. » Quel est le sujet du verbe « écoute » ?"
+    bonneReponse: "Noé"
+    distracteurs: ["la radio", "la cuisine"]
+    indice: "Le sujet est avant le verbe : regarde les mots devant."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: nom seul
+  # VSJ-CE1-3: a, b
+  - enonce: "« Sofia pousse la porte avec le pied. » Quel est le sujet du verbe « pousse » ?"
+    bonneReponse: "Sofia"
+    distracteurs: ["la porte", "le pied"]
+    indice: "Demande-toi : qui fait l'action du verbe cité ?"
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: groupe nominal
+  # VSJ-CE1-3: a, b
+  - enonce: "« Le chat boit le lait dans la cuisine. » Quel est le sujet du verbe « boit » ?"
+    bonneReponse: "Le chat"
+    distracteurs: ["le lait", "la cuisine"]
+    indice: "Pose la question « Qui est-ce qui ? » avant le verbe."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Tom porte un sac bleu. » Quel est le verbe de la phrase ?"
+    bonneReponse: "porte"
+    distracteurs: ["sac", "bleu"]
+    indice: "Cherche le mot qui dit ce que fait quelqu'un."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: groupe nominal
+  # VSJ-CE1-3: a, b
+  - enonce: "« Les oiseaux mangent des graines sur le toit. » Quel est le sujet du verbe « mangent » ?"
+    bonneReponse: "Les oiseaux"
+    distracteurs: ["des graines", "le toit"]
+    indice: "Le sujet est avant le verbe : regarde les mots devant."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: groupe nominal
+  # VSJ-CE1-3: a, b
+  - enonce: "« Le facteur apporte une lettre à Mia. » Quel est le sujet du verbe « apporte » ?"
+    bonneReponse: "Le facteur"
+    distracteurs: ["une lettre", "Mia"]
+    indice: "Demande-toi : qui fait l'action du verbe cité ?"
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: groupe nominal
+  # VSJ-CE1-3: a, b
+  - enonce: "« La maîtresse lit une histoire aux élèves. » Quel est le sujet du verbe « lit » ?"
+    bonneReponse: "La maîtresse"
+    distracteurs: ["une histoire", "élèves"]
+    indice: "Pose la question « Qui est-ce qui ? » avant le verbe."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Elle dessine une grande maison. » Quel est le verbe de la phrase ?"
+    bonneReponse: "dessine"
+    distracteurs: ["maison", "grande"]
+    indice: "Le verbe dit une action ou un état."
+  # VSJ-CE1-1: sujet
+  # VSJ-CE1-2: groupe nominal
+  # VSJ-CE1-3: a, b
+  - enonce: "« Un grand bus emmène les élèves à l'école. » Quel est le sujet du verbe « emmène » ?"
+    bonneReponse: "Un grand bus"
+    distracteurs: ["les élèves", "l'école"]
+    indice: "Le sujet est avant le verbe : regarde les mots devant."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Le vent froid souffle fort. » Quel est le verbe de la phrase ?"
+    bonneReponse: "souffle"
+    distracteurs: ["vent", "froid"]
+    indice: "Cherche le mot qui dit ce qui se passe."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Karim ouvre la boîte rouge. » Quel est le verbe de la phrase ?"
+    bonneReponse: "ouvre"
+    distracteurs: ["boîte", "rouge"]
+    indice: "Cherche le mot qui dit ce que fait quelqu'un."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Les oiseaux chantent le matin. » Quel est le verbe de la phrase ?"
+    bonneReponse: "chantent"
+    distracteurs: ["oiseaux", "matin"]
+    indice: "Le verbe dit une action ou un état."
+  # VSJ-CE1-1: verbe
+  # VSJ-CE1-3: c
+  - enonce: "« Mia regarde la grande lune. » Quel est le verbe de la phrase ?"
+    bonneReponse: "regarde"
+    distracteurs: ["lune", "grande"]
+    indice: "Cherche le mot qui dit ce qui se passe."

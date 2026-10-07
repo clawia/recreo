@@ -1,0 +1,159 @@
+# S53-FRA-NEGATION (s53, generation de contenu seul, brouillon soumis a nadia-prof). Conditions NEG-CE1-1 a
+# NEG-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.2).
+#
+# NEG-CE1-1 : "ne... pas" seul, verbe au present ; quatorze items vers la negative (au moins la moitie),
+# dix vers l'affirmative (au moins le quart).
+# NEG-CE1-2 : elision (n') dans quatorze items sur vingt-quatre (au moins le cinquieme).
+# NEG-CE1-3 : chaque item declare la famille de ses deux distracteurs, dans l'ordre du fichier : (a) le ne
+# omis, (b) pas mal place, (c) elision absente, (d) vers l'affirmative un ne ou un pas reste. Hors de la
+# negation, les trois propositions reprennent les memes mots.
+# TRV-CE1-2 : vers l'affirmative la bonne reponse est toujours la plus courte des trois (le distracteur
+# garde un mot de la negation) ; elle n'est jamais strictement la plus longue.
+# TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
+# par proposition. La question est portee par la consigne du jeu quand l'enonce ne la porte pas.
+schema: 1
+id: ce1-negation
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Passer d'une phrase affirmative à une phrase négative (ne... pas) et inversement."
+lignesDeReferentiel: ["FRA-CE1-11"]
+items:
+  # NEG-CE1-3: a, c
+  # NEG-CE1-2: elision
+  - enonce: "« Léo aime les épinards. » Quelle est la phrase négative ?"
+    bonneReponse: "Léo n'aime pas les épinards."
+    distracteurs: ["Léo aime pas les épinards.", "Léo ne aime pas les épinards."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  # NEG-CE1-3: a, b
+  # NEG-CE1-2: elision
+  - enonce: "« Inès écoute la radio. » Quelle est la phrase négative ?"
+    bonneReponse: "Inès n'écoute pas la radio."
+    distracteurs: ["Inès écoute pas la radio.", "Inès n'écoute la radio pas."]
+    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+  # NEG-CE1-3: a, b
+  - enonce: "« Rex garde la maison. » Quelle est la phrase négative ?"
+    bonneReponse: "Rex ne garde pas la maison."
+    distracteurs: ["Rex garde pas la maison.", "Rex ne garde la maison pas."]
+    indice: "Lis les trois phrases et compare où sont les petits mots."
+  # NEG-CE1-3: d, d
+  - enonce: "« Zoé ne mange pas la soupe. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Zoé mange la soupe."
+    distracteurs: ["Zoé ne mange la soupe.", "Zoé mange pas la soupe."]
+    indice: "Enlève les petits mots qui disent non."
+  # NEG-CE1-3: d, d
+  # NEG-CE1-2: elision
+  - enonce: "« Le chat n'aime pas la pluie. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Le chat aime la pluie."
+    distracteurs: ["Le chat n'aime la pluie.", "Le chat aime pas la pluie."]
+    indice: "Une phrase affirmative dit que quelque chose a lieu."
+  # NEG-CE1-3: a, c
+  # NEG-CE1-2: elision
+  - enonce: "« Tom ouvre la fenêtre. » Quelle est la phrase négative ?"
+    bonneReponse: "Tom n'ouvre pas la fenêtre."
+    distracteurs: ["Tom ouvre pas la fenêtre.", "Tom ne ouvre pas la fenêtre."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  # NEG-CE1-3: a, b
+  - enonce: "« Mia ferme la porte. » Quelle est la phrase négative ?"
+    bonneReponse: "Mia ne ferme pas la porte."
+    distracteurs: ["Mia ferme pas la porte.", "Mia ne ferme la porte pas."]
+    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+  # NEG-CE1-3: a, c
+  # NEG-CE1-2: elision
+  - enonce: "« Karim habite ici. » Quelle est la phrase négative ?"
+    bonneReponse: "Karim n'habite pas ici."
+    distracteurs: ["Karim habite pas ici.", "Karim ne habite pas ici."]
+    indice: "Lis les trois phrases et compare où sont les petits mots."
+  # NEG-CE1-3: d, d
+  - enonce: "« Tom ne ferme pas la porte. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Tom ferme la porte."
+    distracteurs: ["Tom ne ferme la porte.", "Tom ferme pas la porte."]
+    indice: "Enlève les petits mots qui disent non."
+  # NEG-CE1-3: d, d
+  # NEG-CE1-2: elision
+  - enonce: "« Inès n'ouvre pas la boîte. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Inès ouvre la boîte."
+    distracteurs: ["Inès n'ouvre la boîte.", "Inès ouvre pas la boîte."]
+    indice: "Une phrase affirmative dit que quelque chose a lieu."
+  # NEG-CE1-3: a, b
+  # NEG-CE1-2: elision
+  - enonce: "« Sofia attend le bus. » Quelle est la phrase négative ?"
+    bonneReponse: "Sofia n'attend pas le bus."
+    distracteurs: ["Sofia attend pas le bus.", "Sofia n'attend le bus pas."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  # NEG-CE1-3: a, b
+  - enonce: "« Le vent souffle fort. » Quelle est la phrase négative ?"
+    bonneReponse: "Le vent ne souffle pas fort."
+    distracteurs: ["Le vent souffle pas fort.", "Le vent ne souffle fort pas."]
+    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+  # NEG-CE1-3: b, a
+  - enonce: "« Yanis range ses crayons. » Quelle est la phrase négative ?"
+    bonneReponse: "Yanis ne range pas ses crayons."
+    distracteurs: ["Yanis ne range ses pas crayons.", "Yanis range pas ses crayons."]
+    indice: "Lis les trois phrases et compare où sont les petits mots."
+  # NEG-CE1-3: d, d
+  - enonce: "« Les oiseaux ne chantent pas. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Les oiseaux chantent."
+    distracteurs: ["Les oiseaux ne chantent.", "Les oiseaux chantent pas."]
+    indice: "Enlève les petits mots qui disent non."
+  # NEG-CE1-3: d, d
+  # NEG-CE1-2: elision
+  - enonce: "« Karim n'attend pas le train. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Karim attend le train."
+    distracteurs: ["Karim n'attend le train.", "Karim attend pas le train."]
+    indice: "Une phrase affirmative dit que quelque chose a lieu."
+  # NEG-CE1-3: a, b
+  - enonce: "« Les enfants chantent. » Quelle est la phrase négative ?"
+    bonneReponse: "Les enfants ne chantent pas."
+    distracteurs: ["Les enfants chantent pas.", "Les enfants ne pas chantent."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  # NEG-CE1-3: a, c
+  # NEG-CE1-2: elision
+  - enonce: "« Elle utilise le crayon. » Quelle est la phrase négative ?"
+    bonneReponse: "Elle n'utilise pas le crayon."
+    distracteurs: ["Elle utilise pas le crayon.", "Elle ne utilise pas le crayon."]
+    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+  # NEG-CE1-3: a, b
+  # NEG-CE1-2: elision
+  - enonce: "« Léa oublie son cartable. » Quelle est la phrase négative ?"
+    bonneReponse: "Léa n'oublie pas son cartable."
+    distracteurs: ["Léa oublie pas son cartable.", "Léa n'oublie son cartable pas."]
+    indice: "Lis les trois phrases et compare où sont les petits mots."
+  # NEG-CE1-3: d, d
+  - enonce: "« Mia ne dessine pas la maison. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Mia dessine la maison."
+    distracteurs: ["Mia ne dessine la maison.", "Mia dessine pas la maison."]
+    indice: "Enlève les petits mots qui disent non."
+  # NEG-CE1-3: d, d
+  # NEG-CE1-2: elision
+  - enonce: "« Il n'écoute pas la maîtresse. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Il écoute la maîtresse."
+    distracteurs: ["Il n'écoute la maîtresse.", "Il écoute pas la maîtresse."]
+    indice: "Une phrase affirmative dit que quelque chose a lieu."
+  # NEG-CE1-3: a, c
+  # NEG-CE1-2: elision
+  - enonce: "« Le train arrive ici. » Quelle est la phrase négative ?"
+    bonneReponse: "Le train n'arrive pas ici."
+    distracteurs: ["Le train arrive pas ici.", "Le train ne arrive pas ici."]
+    indice: "Cherche les deux petits mots qui entourent le verbe."
+  # NEG-CE1-3: a, c
+  # NEG-CE1-2: elision
+  - enonce: "« Noé aime la pluie. » Quelle est la phrase négative ?"
+    bonneReponse: "Noé n'aime pas la pluie."
+    distracteurs: ["Noé aime pas la pluie.", "Noé ne aime pas la pluie."]
+    indice: "Une phrase négative dit que quelque chose n'a pas lieu."
+  # NEG-CE1-3: d, d
+  - enonce: "« Le vent ne souffle pas. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Le vent souffle."
+    distracteurs: ["Le vent ne souffle.", "Le vent souffle pas."]
+    indice: "Enlève les petits mots qui disent non."
+  # NEG-CE1-3: d, d
+  # NEG-CE1-2: elision
+  - enonce: "« Noé n'habite pas ici. » Quelle est la phrase affirmative ?"
+    bonneReponse: "Noé habite ici."
+    distracteurs: ["Noé n'habite ici.", "Noé habite pas ici."]
+    indice: "Une phrase affirmative dit que quelque chose a lieu."

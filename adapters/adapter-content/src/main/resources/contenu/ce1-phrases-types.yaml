@@ -1,0 +1,143 @@
+# S53-FRA-PHRASES-TYPES (s53, generation de contenu seul, brouillon soumis a nadia-prof). Conditions TPH-CE1-1 a
+# TPH-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.1).
+#
+# TPH-CE1-1 : neuf items "reconnaitre une phrase" sur vingt-quatre (au-dessus du tiers), quinze items
+# "type" (au-dessus de la moitie), cinq par type (au-dessus du sixieme).
+# TPH-CE1-2 : trois groupes de mots, un seul a la majuscule initiale, le point final et un sens ; les
+# distracteurs sont (a) sans majuscule, (b) sans ponctuation finale, dans cet ordre, memes mots.
+# TPH-CE1-3 : propositions = les trois noms de type, aucune phrase imperative, jamais deux signes combines.
+# Le type se lit au signe final seul : "." declarative, "?" interrogative, "!" exclamative.
+# TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
+# par proposition. La question est portee par la consigne du jeu quand l'enonce ne la porte pas.
+schema: 1
+id: ce1-phrases-types
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Reconnaître une phrase (majuscule, point) et identifier son type (déclarative, interrogative, exclamative) par sa ponctuation."
+lignesDeReferentiel: ["FRA-CE1-10"]
+items:
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Le soleil brille. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Regarde le signe tout à la fin de la phrase."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Le chat boit du lait."
+    distracteurs: ["le chat boit du lait.", "Le chat boit du lait"]
+    indice: "Regarde comment commence et comment finit chaque groupe de mots."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Mia lit un livre. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Le signe final aide à trouver le type de la phrase."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Les oiseaux chantent dans l'arbre. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Lis la phrase, puis regarde son dernier signe."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Inès range ses crayons."
+    distracteurs: ["inès range ses crayons.", "Inès range ses crayons"]
+    indice: "Une phrase a un début, une fin et un sens."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Noé a faim. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Regarde le signe tout à la fin de la phrase."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Le train part à midi. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Le signe final aide à trouver le type de la phrase."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Les enfants jouent dehors."
+    distracteurs: ["les enfants jouent dehors.", "Les enfants jouent dehors"]
+    indice: "Regarde comment commence et comment finit chaque groupe de mots."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Où est le crayon ? » Quel est le type de cette phrase ?"
+    bonneReponse: "interrogative"
+    distracteurs: ["déclarative", "exclamative"]
+    indice: "Lis la phrase, puis regarde son dernier signe."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Tu viens jouer avec nous ? » Quel est le type de cette phrase ?"
+    bonneReponse: "interrogative"
+    distracteurs: ["déclarative", "exclamative"]
+    indice: "Regarde le signe tout à la fin de la phrase."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Karim mange une pomme."
+    distracteurs: ["karim mange une pomme.", "Karim mange une pomme"]
+    indice: "Une phrase a un début, une fin et un sens."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Quelle heure est-il ? » Quel est le type de cette phrase ?"
+    bonneReponse: "interrogative"
+    distracteurs: ["déclarative", "exclamative"]
+    indice: "Le signe final aide à trouver le type de la phrase."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Qui a ouvert la porte ? » Quel est le type de cette phrase ?"
+    bonneReponse: "interrogative"
+    distracteurs: ["déclarative", "exclamative"]
+    indice: "Lis la phrase, puis regarde son dernier signe."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Le bus arrive devant l'école."
+    distracteurs: ["le bus arrive devant l'école.", "Le bus arrive devant l'école"]
+    indice: "Regarde comment commence et comment finit chaque groupe de mots."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Combien coûte ce livre ? » Quel est le type de cette phrase ?"
+    bonneReponse: "interrogative"
+    distracteurs: ["déclarative", "exclamative"]
+    indice: "Regarde le signe tout à la fin de la phrase."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Quelle belle journée ! » Quel est le type de cette phrase ?"
+    bonneReponse: "exclamative"
+    distracteurs: ["déclarative", "interrogative"]
+    indice: "Le signe final aide à trouver le type de la phrase."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "La maîtresse lit une histoire."
+    distracteurs: ["la maîtresse lit une histoire.", "La maîtresse lit une histoire"]
+    indice: "Une phrase a un début, une fin et un sens."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Comme il fait chaud ! » Quel est le type de cette phrase ?"
+    bonneReponse: "exclamative"
+    distracteurs: ["déclarative", "interrogative"]
+    indice: "Lis la phrase, puis regarde son dernier signe."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Quel grand gâteau ! » Quel est le type de cette phrase ?"
+    bonneReponse: "exclamative"
+    distracteurs: ["déclarative", "interrogative"]
+    indice: "Regarde le signe tout à la fin de la phrase."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Mia dessine un grand arbre."
+    distracteurs: ["mia dessine un grand arbre.", "Mia dessine un grand arbre"]
+    indice: "Regarde comment commence et comment finit chaque groupe de mots."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Comme ce chien est rapide ! » Quel est le type de cette phrase ?"
+    bonneReponse: "exclamative"
+    distracteurs: ["déclarative", "interrogative"]
+    indice: "Le signe final aide à trouver le type de la phrase."
+  # TPH-CE1-3: type, deux autres noms de type
+  - enonce: "« Comme le sable est chaud ! » Quel est le type de cette phrase ?"
+    bonneReponse: "exclamative"
+    distracteurs: ["déclarative", "interrogative"]
+    indice: "Lis la phrase, puis regarde son dernier signe."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Le vent souffle fort."
+    distracteurs: ["le vent souffle fort.", "Le vent souffle fort"]
+    indice: "Une phrase a un début, une fin et un sens."
+  # TPH-CE1-2: a, b
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Noé lave les verres."
+    distracteurs: ["noé lave les verres.", "Noé lave les verres"]
+    indice: "Regarde comment commence et comment finit chaque groupe de mots."

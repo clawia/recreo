@@ -1,0 +1,147 @@
+# DEGRADE : la saisie alphabetique d'un mot (l'ecrire sans modele) manque, le type question ne sert que la reconnaissance de la graphie juste parmi trois.
+# Plafond "en cours" fixe par l'arbitrage prealable, section 5.12 : la saisie alphabetique au CE1 n'est pas arbitree.
+#
+# S53-FRA-MOTS-INVARIABLES (s53, generation de contenu seul, brouillon soumis a nadia-prof). Conditions
+# MIV-CE1-1 a MIV-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.12).
+#
+# MIV-CE1-1 : mots cibles, vingt-quatre mots distincts : souvent, toujours, jamais, aujourd'hui, maintenant,
+# devant, dedans, dehors, pourquoi, alors, aussi, vraiment, pendant, depuis, presque, parfois, partout, autour,
+# ailleurs, pourtant, ensuite, enfin, surtout, seulement. Aucun mot decide par une regle d'une autre ligne
+# (a et a accent grave, et/est, m devant m b p, c et c cedille, g/ge/gu).
+# MIV-CE1-2 : les deux graphies fautives se prononcent comme le mot ; aucune n'est un mot du francais.
+# MIV-CE1-3 : chaque mot cible est bonne reponse d'un seul item ; une graphie fautive n'apparait que parmi
+# les propositions, jamais dans un indice. Aucune explication.
+# TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
+# voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
+# la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
+# par proposition. La question est portee par la consigne du jeu quand l'enonce ne la porte pas.
+schema: 1
+id: ce1-mots-invariables
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Orthographier les mots invariables et les mots fréquents étudiés."
+lignesDeReferentiel: ["FRA-CE1-21"]
+items:
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il pleut ___ en novembre."
+    bonneReponse: "souvent"
+    distracteurs: ["souvant", "souvens"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Le soleil se lève ___ à l'est."
+    bonneReponse: "toujours"
+    distracteurs: ["toujour", "toujourt"]
+    indice: "Prends ton temps : compare les trois mots lettre par lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Ce chat ne mord ___ personne."
+    bonneReponse: "jamais"
+    distracteurs: ["jamai", "jamet"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "___, nous allons au parc."
+    bonneReponse: "Aujourd'hui"
+    distracteurs: ["Aujourd'ui", "Aujourdhui"]
+    indice: "Les trois mots se disent pareil : regarde bien chaque lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Le film commence ___."
+    bonneReponse: "maintenant"
+    distracteurs: ["maintenent", "maintenan"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Le bus s'arrête ___ l'école."
+    bonneReponse: "devant"
+    distracteurs: ["devent", "devan"]
+    indice: "Un seul des trois mots s'écrit comme dans les livres."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "La boîte est ouverte. Un jouet est ___."
+    bonneReponse: "dedans"
+    distracteurs: ["dedant", "dedan"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il fait beau, les enfants jouent ___."
+    bonneReponse: "dehors"
+    distracteurs: ["dehor", "dehord"]
+    indice: "Prends ton temps : compare les trois mots lettre par lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "___ le ciel est-il bleu ?"
+    bonneReponse: "Pourquoi"
+    distracteurs: ["Pourquoit", "Pourkoi"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il pleut, ___ Tom ouvre son parapluie."
+    bonneReponse: "alors"
+    distracteurs: ["alor", "alore"]
+    indice: "Les trois mots se disent pareil : regarde bien chaque lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Léa aime le chocolat, Karim en aime ___."
+    bonneReponse: "aussi"
+    distracteurs: ["ossi", "aussy"]
+    indice: "Prends ton temps : compare les trois mots lettre par lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Ce gâteau est ___ délicieux."
+    bonneReponse: "vraiment"
+    distracteurs: ["vraimant", "vrèment"]
+    indice: "Un seul des trois mots s'écrit comme dans les livres."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Tom lit ___ la récréation."
+    bonneReponse: "pendant"
+    distracteurs: ["pendent", "pendan"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il pleut ___ ce matin."
+    bonneReponse: "depuis"
+    distracteurs: ["depui", "depuit"]
+    indice: "Prends ton temps : compare les trois mots lettre par lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Le verre est ___ plein."
+    bonneReponse: "presque"
+    distracteurs: ["presqu", "preske"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Le vent est ___ très fort."
+    bonneReponse: "parfois"
+    distracteurs: ["parfoi", "parfoit"]
+    indice: "Les trois mots se disent pareil : regarde bien chaque lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il y a des feuilles ___ dans la cour."
+    bonneReponse: "partout"
+    distracteurs: ["partou", "partoux"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Les enfants dansent ___ de l'arbre."
+    bonneReponse: "autour"
+    distracteurs: ["otour", "autours"]
+    indice: "Un seul des trois mots s'écrit comme dans les livres."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il n'est pas ici, il est ___."
+    bonneReponse: "ailleurs"
+    distracteurs: ["ailleur", "ayeurs"]
+    indice: "Les trois mots se disent pareil : regarde bien chaque lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il fait froid, ___ Inès ne porte pas de manteau."
+    bonneReponse: "pourtant"
+    distracteurs: ["pourtent", "pourtan"]
+    indice: "Prends ton temps : compare les trois mots lettre par lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "On se lave les mains, ___ on mange."
+    bonneReponse: "ensuite"
+    distracteurs: ["ansuite", "ensuit"]
+    indice: "Un seul des trois mots s'écrit comme dans les livres."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Après un long voyage, le train arrive ___."
+    bonneReponse: "enfin"
+    distracteurs: ["enfain", "anfin"]
+    indice: "Les trois mots se disent pareil : regarde bien chaque lettre."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Elle aime les fruits, ___ les cerises."
+    bonneReponse: "surtout"
+    distracteurs: ["surtou", "surtoux"]
+    indice: "Compare la fin des trois mots."
+  # MIV-CE1-2: graphies fautives lues comme le mot
+  - enonce: "Il reste ___ une part de gâteau."
+    bonneReponse: "seulement"
+    distracteurs: ["seulemant", "seulemen"]
+    indice: "Un seul des trois mots s'écrit comme dans les livres."
