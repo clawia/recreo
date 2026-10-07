@@ -1,0 +1,77 @@
+# DEGRADE : aucune image d'oeuvre n'est servie ; le paquet ne verifie que le sens des mots du lexique
+# (support, format, matiere, sujet), pas le fait de decrire une oeuvre que l'on regarde.
+#
+# S53 (session hors sprint, contenu seul). Ligne ART-CM1-08 de squad/programme/MATRICE-couverture.md,
+# non couvert : palier 1 illustre, image d'oeuvre requise ; un item textuel qui decrirait l'oeuvre
+# serait une contrefacon (ART-4, CON-1). Aucune oeuvre n'est nommee ni decrite ici : chaque item pose
+# un cas generique (une statue de pierre, un dessin sur papier) et demande le mot du lexique.
+# Mention de la matrice pour cette ligne : support, format, matiere et sujet seuls ; la couleur et la
+# composition ne sont pas servies (la composition reste non couverte, palier 2 ; la couleur ne porte
+# jamais seule la reponse, ART-1). ART-2 : aucune question de gout.
+# Faits (HIS-3) : definitions courantes du lexique des arts plastiques ; le support est la surface
+# sur laquelle on peint ou dessine, la matiere ce dont l'oeuvre est faite. Le papier n'est jamais
+# propose comme matiere et la pierre jamais comme support, pour qu'aucun item n'ait deux lectures.
+# A confirmer par nadia-prof, seule autorite sur le Done pedagogique.
+# Treize items, au-dessus des dix manches par defaut.
+schema: 1
+id: cm1-arts-decrire-une-oeuvre-lexique
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CM1"
+  domaine: "S'exprimer, analyser sa pratique et celle des artistes"
+  competence: "Décrire une œuvre d'art avec un lexique élémentaire : support, format, matière, sujet (référentiel CM1, ligne ART-CM1-08)."
+lignesDeReferentiel: ["ART-CM1-08"]
+items:
+  - enonce: "Comment appelle-t-on la surface sur laquelle une œuvre est peinte ou dessinée ?"
+    bonneReponse: "le support"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à la surface qui reçoit la peinture ou le trait."
+  - enonce: "Dans le lexique de l'art, que désigne le mot sujet ?"
+    bonneReponse: "ce que l'œuvre représente"
+    distracteurs: ["la surface sur laquelle elle est faite", "le métal dont elle est faite"]
+    indice: "Pense à ce que l'on reconnaît dans l'œuvre."
+  - enonce: "Que désigne le format d'une œuvre ?"
+    bonneReponse: "ses dimensions"
+    distracteurs: ["ce qu'elle représente", "ce dont elle est faite"]
+    indice: "Pense à ce que l'on mesure avec une règle."
+  - enonce: "Une œuvre est plus haute que large. Que dit-on de son format ?"
+    bonneReponse: "il est vertical"
+    distracteurs: ["il est horizontal", "il est carré"]
+    indice: "Compare la hauteur et la largeur."
+  - enonce: "Une œuvre est plus large que haute. Que dit-on de son format ?"
+    bonneReponse: "il est horizontal"
+    distracteurs: ["il est vertical", "il est carré"]
+    indice: "Compare la largeur et la hauteur."
+  - enonce: "Une statue est taillée dans du marbre. Que désigne le marbre ?"
+    bonneReponse: "la matière"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce dont la statue est faite."
+  - enonce: "Un dessin est fait sur une feuille de papier. Que désigne le papier ?"
+    bonneReponse: "le support"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce qui reçoit les traits du dessin."
+  - enonce: "Un tableau montre un bateau sur la mer. Que désigne le bateau ?"
+    bonneReponse: "le sujet"
+    distracteurs: ["le support", "le format"]
+    indice: "Pense à ce qu'on reconnaît dans le tableau."
+  - enonce: "Quel mot désigne ce dont une œuvre est faite : bronze, bois ou argile ?"
+    bonneReponse: "la matière"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Ces trois mots disent de quoi sont faites des œuvres."
+  - enonce: "Lequel peut servir de support à une peinture ?"
+    bonneReponse: "un panneau de bois"
+    distracteurs: ["un paysage", "un pinceau"]
+    indice: "C'est une surface plate qui reçoit la peinture."
+  - enonce: "Pour décrire une œuvre, quelle question porte sur le sujet ?"
+    bonneReponse: "Que représente-t-elle ?"
+    distracteurs: ["Sur quoi est-elle faite ?", "Quelles sont ses dimensions ?"]
+    indice: "Cette question demande ce que l'on reconnaît."
+  - enonce: "Pour décrire une œuvre, quelle question porte sur le support ?"
+    bonneReponse: "Sur quoi est-elle faite ?"
+    distracteurs: ["Que représente-t-elle ?", "Quelles sont ses dimensions ?"]
+    indice: "Cette question demande la surface qui porte l'œuvre."
+  - enonce: "Pour décrire une œuvre, quelle question porte sur la matière ?"
+    bonneReponse: "De quoi est-elle faite ?"
+    distracteurs: ["Que représente-t-elle ?", "Quelles sont ses dimensions ?"]
+    indice: "Cette question demande ce qui la compose."
