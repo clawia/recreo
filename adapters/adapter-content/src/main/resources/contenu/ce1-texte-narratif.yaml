@@ -1,0 +1,148 @@
+schema: 1
+id: ce1-texte-narratif
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte narratif court lu seul : personnages, lieu, moment, ordre chronologique des événements."
+lignesDeReferentiel: ["FRA-CE1-04"]
+# S53-FRA-TEXTE-NARRATIF (session hors sprint "s53 special", contenu seul). Redige par lea-dev sur
+# les conditions RCT-CE1-1 a RCT-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7 de
+# squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 3.4), sous LON-CE1-3 et
+# LON-CE1-4 (squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md). Aucun Done n'est
+# prononce ici : ce paquet attend l'audit de nadia-prof.
+#
+# RCT-CE1-1 : les quatre questions, marquees au-dessus de chaque item. Personnages 4, lieu 4
+# (huit sur vingt, sous la moitie), moment 5 (au moins un cinquieme), ordre 7 (au moins un quart).
+# La reponse est ecrite dans le texte : aucune inference.
+# RCT-CE1-2 : les trois propositions de chaque item sont des suites de mots copiees du texteSupport.
+# RCT-CE1-3 : au plus trois personnages nommes par texte ; chaque texte d'une question d'ordre porte
+# trois evenements ; aucun passe simple.
+# LON-CE1-3 et LON-CE1-4 : texte de 30 mots au plus, quatre phrases au plus, aucune de plus de
+# douze mots. LON-CE1-1 et LON-CE1-2 sur l'enonce, LON-CE1-5 sur les propositions (six mots au plus).
+# TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute. TRV-CE1-5 : un indice par
+# item, douze mots au plus, jamais la reponse. TRV-CE1-6 : dix-sept prenoms masculins et dix-sept
+# prenoms feminins, origines variees, aucune activite distribuee par genre.
+# TRV-CE1-7 : vingt items, vingt textes distincts.
+items:
+  # personnage
+  - enonce: "Qui a oublié son cartable ?"
+    texteSupport: "Malo, Alice et Tom arrivent à l'école. Malo a oublié son cartable. Alice lui prête un cahier."
+    bonneReponse: "Malo"
+    distracteurs: ["Alice", "Tom"]
+    indice: "Relis la deuxième phrase."
+  # personnage
+  - enonce: "Qui regarde les autres jouer ?"
+    texteSupport: "Lola et Théo jouent au ballon dans la cour. Yanis les regarde. Puis tous les trois rentrent en classe."
+    bonneReponse: "Yanis"
+    distracteurs: ["Lola", "Théo"]
+    indice: "Relis la phrase qui parle de regarder."
+  # personnage
+  - enonce: "Qui trouve un marron ?"
+    texteSupport: "Lina trouve un marron. Émile ramasse des feuilles dans le parc. Zoé n'a rien trouvé."
+    bonneReponse: "Lina"
+    distracteurs: ["Émile", "Zoé"]
+    indice: "Cherche le mot « marron » dans le texte."
+  # personnage
+  - enonce: "Qui goûte la pâte ?"
+    texteSupport: "Samir et Jade font un gâteau. Samir casse les œufs. Jade mélange la farine. Nina goûte la pâte."
+    bonneReponse: "Nina"
+    distracteurs: ["Samir", "Jade"]
+    indice: "Relis la dernière phrase."
+  # lieu
+  - enonce: "Où Adam achète-t-il des pommes ?"
+    texteSupport: "Adam passe la matinée à l'école. Ensuite, il va au marché et achète des pommes. Le soir, il est à la maison."
+    bonneReponse: "au marché"
+    distracteurs: ["à l'école", "à la maison"]
+    indice: "Cherche le mot « pommes » dans le texte."
+  # lieu
+  - enonce: "Où joue Noé ?"
+    texteSupport: "Mila dessine dans la classe. Hugo lit dans la bibliothèque. Noé joue dans la cour."
+    bonneReponse: "dans la cour"
+    distracteurs: ["dans la classe", "dans la bibliothèque"]
+    indice: "Cherche le mot « joue » dans le texte."
+  # lieu
+  - enonce: "Où Léa trouve-t-elle sa casquette ?"
+    texteSupport: "Léa a perdu sa casquette. Elle la cherche sous le lit, puis derrière la porte. Elle la trouve dans son sac."
+    bonneReponse: "dans son sac"
+    distracteurs: ["sous le lit", "derrière la porte"]
+    indice: "Relis la dernière phrase."
+  # lieu
+  - enonce: "Où achètent-ils du pain ?"
+    texteSupport: "Karim et Maëlle sont à la gare. Ils achètent du pain à la boulangerie. Ensuite, ils arrivent au parc."
+    bonneReponse: "à la boulangerie"
+    distracteurs: ["à la gare", "au parc"]
+    indice: "Cherche le mot « pain » dans le texte."
+  # moment
+  - enonce: "Quand Salomé mange-t-elle à la cantine ?"
+    texteSupport: "Ce matin, Salomé met son manteau. À midi, elle mange à la cantine. Le soir, elle lit une histoire."
+    bonneReponse: "à midi"
+    distracteurs: ["ce matin", "le soir"]
+    indice: "Cherche le mot « cantine » dans le texte."
+  # moment
+  - enonce: "Quand Louis range-t-il ses affaires ?"
+    texteSupport: "Le soir, Louis lit un livre. Pendant la récréation, il joue aux billes. Après la classe, il range ses affaires."
+    bonneReponse: "après la classe"
+    distracteurs: ["le soir", "pendant la récréation"]
+    indice: "Cherche le mot « affaires » dans le texte."
+  # moment
+  - enonce: "Quel jour Aya va-t-elle à la piscine ?"
+    texteSupport: "Aya va à la piscine le lundi. Le mercredi, elle dessine. Le samedi, elle joue au foot."
+    bonneReponse: "le lundi"
+    distracteurs: ["le mercredi", "le samedi"]
+    indice: "Cherche le mot « piscine » dans le texte."
+  # moment
+  - enonce: "Quand Elias cueille-t-il des fleurs ?"
+    texteSupport: "En hiver, Elias porte un bonnet. Au printemps, il cueille des fleurs. En été, il se baigne."
+    bonneReponse: "au printemps"
+    distracteurs: ["en hiver", "en été"]
+    indice: "Cherche le mot « fleurs » dans le texte."
+  # moment
+  - enonce: "Quand Sami partage-t-il la compote ?"
+    texteSupport: "Ce matin, Sami cueille des pommes. Ce midi, il fait une compote. Ce soir, il la partage avec Élise."
+    bonneReponse: "ce soir"
+    distracteurs: ["ce matin", "ce midi"]
+    indice: "Cherche le mot « partage » dans le texte."
+  # ordre
+  - enonce: "Que fait Inès en dernier ?"
+    texteSupport: "Inès enfile ses bottes. Elle sort dehors. Puis elle saute dans une flaque."
+    bonneReponse: "elle saute dans une flaque"
+    distracteurs: ["Inès enfile ses bottes", "elle sort dehors"]
+    indice: "Relis le texte jusqu'à la fin."
+  # ordre
+  - enonce: "Que fait Sara avant de couper la pomme ?"
+    texteSupport: "Sara pèle une pomme. Elle la coupe en morceaux. Puis elle la mange."
+    bonneReponse: "Sara pèle une pomme"
+    distracteurs: ["elle la coupe en morceaux", "elle la mange"]
+    indice: "Pense à ce qu'on fait avant de couper un fruit."
+  # ordre
+  - enonce: "Que se passe-t-il après l'arrivée de la vague ?"
+    texteSupport: "Paul fait un château de sable. Une vague arrive. Le château s'écroule."
+    bonneReponse: "le château s'écroule"
+    distracteurs: ["Paul fait un château", "une vague arrive"]
+    indice: "Relis ce qui vient juste après la vague."
+  # ordre
+  - enonce: "Que fait Nour en premier ?"
+    texteSupport: "Nour range ses jouets. Ensuite, elle se lave les mains. Enfin, elle se met à table."
+    bonneReponse: "Nour range ses jouets"
+    distracteurs: ["elle se lave les mains", "elle se met à table"]
+    indice: "Relis la première phrase."
+  # ordre
+  - enonce: "Que fait Ibrahim en dernier ?"
+    texteSupport: "Ibrahim attend le bus. Le bus arrive et il monte. Il s'assoit près de la fenêtre."
+    bonneReponse: "il s'assoit près de la fenêtre"
+    distracteurs: ["Ibrahim attend le bus", "le bus arrive"]
+    indice: "Relis la dernière phrase."
+  # ordre
+  - enonce: "Que se passe-t-il à la fin ?"
+    texteSupport: "Chloé plante une graine. Elle l'arrose chaque jour. Un jour, une fleur pousse."
+    bonneReponse: "une fleur pousse"
+    distracteurs: ["Chloé plante une graine", "elle l'arrose chaque jour"]
+    indice: "Cherche ce qui arrive en dernier."
+  # ordre
+  - enonce: "Qui passe en dernier ?"
+    texteSupport: "Les enfants font la queue. Rayan passe en premier. Ensuite, Aïcha passe, puis Léo."
+    bonneReponse: "Léo"
+    distracteurs: ["Rayan", "Aïcha"]
+    indice: "Relis la dernière phrase du texte."

@@ -1,0 +1,153 @@
+# DEGRADE : la longueur croissante n'est pas servie (le tirage d'une manche est sans ordre) et la restitution libre de l'essentiel n'existe pas ; l'enfant choisit le titre qui resume un texte de 45 a 70 mots, et le pli d'un texte de cette longueur n'a pas ete mesure.
+schema: 1
+id: cm1-lire-et-restituer
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CM1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Lire silencieusement un texte de longueur croissante et en restituer l'essentiel."
+lignesDeReferentiel: ["FRA-CM1-01"]
+# S53-FRA-LIRE-ET-RESTITUER (session hors sprint "s53 special", contenu seul). Redige par lea-dev
+# sur les conditions LIS-1 a LIS-10 de
+# squad/conformite/ARBITRAGE-PREALABLE-s25-les-seize-lignes-instruites-la-famille-visuelle-et-ma-borne.md
+# (section 9.1). Aucun Done n'est prononce ici : ce paquet attend l'audit de nadia-prof, et la
+# mesure de pli d'ines-design, que LIS-2 pose comme prealable, n'a pas ete faite.
+#
+# Mention exigee par nadia-prof sur cette ligne : "restituer l'essentiel seul ; la longueur
+# croissante n'est pas servie, le tirage d'une manche etant sans ordre".
+#
+# LIS-1 : le texteSupport porte le texte, l'enonce demande de quoi il parle, trois propositions.
+# LIS-2 : chaque texte compte de 45 a 70 mots et cinq phrases au plus. LIS-3 : l'enonce compte cinq
+# mots. LIS-4 : aucune proposition n'est une phrase recopiee du texte.
+# LIS-5 : chaque distracteur est un detail exact du texte promu au rang de sujet, vrai et partiel ;
+# la bonne reponse est le titre qui couvre le texte entier. Dix textes narratifs, dix documentaires.
+# LIS-6 (texte masque, la question ne se repond pas) : "De quoi parle ce texte ?" n'a aucune reponse
+# sans le texte, mais la verification item par item reste a faire par nadia-prof, aucun automate ne
+# la voit.
+# LIS-7 : textes autonomes, aucun nom propre reel. LIS-8 : dix prenoms masculins et neuf prenoms
+# feminins, aucun role ni aucune activite distribue par genre, aucune configuration familiale,
+# aucun logement, aucun depart en vacances.
+# LIS-9 : l'indice dit quelle partie relire, jamais le sujet, dix mots au plus.
+# LIS-10 : vingt items, vingt textes distincts.
+items:
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Léa veut construire une cabane dans la cour de l'école. Elle demande de l'aide à Karim, qui apporte des planches et un marteau. Ensemble, ils clouent les murs pendant la récréation. Le toit tient mal, alors ils le consolident avec des cordes. À la fin de la semaine, la cabane est enfin terminée."
+    bonneReponse: "La construction d'une cabane"
+    distracteurs: ["Un marteau et des planches", "Un toit qui tient mal"]
+    indice: "Relis le début et la fin du texte."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Dans une ruche, chaque abeille a un travail précis. Les ouvrières cherchent le nectar des fleurs, d'autres gardent l'entrée et la reine pond les œufs. Grâce à cette organisation, la ruche fonctionne bien toute l'année. Les abeilles fabriquent aussi du miel pour pouvoir passer l'hiver."
+    bonneReponse: "L'organisation d'une ruche"
+    distracteurs: ["La fabrication du miel", "Le travail de la reine"]
+    indice: "Relis la première phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Le jour du grand match de football, la pluie tombe sans arrêt. Nina et Ilyes hésitent, puis leur équipe décide de jouer quand même. Le terrain devient glissant et tout le monde finit couvert de boue. Personne ne gagne, mais tous rentrent à l'école en riant."
+    bonneReponse: "Un match joué sous la pluie"
+    distracteurs: ["Un terrain glissant", "Nina et Ilyes qui hésitent"]
+    indice: "Cherche ce qui revient dans chaque phrase."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Le papier usagé peut servir à fabriquer du papier neuf. On le trie, puis on le plonge dans l'eau pour le transformer en pâte. Cette pâte est ensuite étalée, séchée, puis pressée en feuilles très fines. Recycler le papier permet aussi de couper beaucoup moins d'arbres."
+    bonneReponse: "Le recyclage du papier"
+    distracteurs: ["La pâte à papier", "Les arbres que l'on coupe"]
+    indice: "Relis la première et la dernière phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Ce soir-là, toutes les lumières de la rue s'éteignent d'un seul coup. Yanis prend une lampe de poche et guide les voisins jusqu'à la place. Là, chacun apporte une bougie et la nuit devient très douce. Quand le courant revient, personne ne veut éteindre ses bougies."
+    bonneReponse: "Une panne de courant"
+    distracteurs: ["Une lampe de poche", "Des bougies sur la place"]
+    indice: "Relis le début et la fin du texte."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Un volcan est une montagne par laquelle sort de la roche très chaude. Cette roche fondue, qui coule le long de la pente, s'appelle la lave. Quand un volcan se réveille, il peut cracher de la fumée et des cendres. Certains volcans dorment pendant des siècles avant de se réveiller."
+    bonneReponse: "Le fonctionnement d'un volcan"
+    distracteurs: ["La lave qui coule", "Les volcans endormis"]
+    indice: "Relis la première phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Mila trouve un petit chat tremblant de froid sous un banc du parc. Elle le prend dans ses bras et cherche son propriétaire. Un collier porte un numéro de téléphone, que Mila recopie. Le soir même, un monsieur vient chercher son chat et la remercie."
+    bonneReponse: "Mila retrouve le propriétaire d'un chat"
+    distracteurs: ["Un collier avec un numéro", "Un petit chat qui tremble"]
+    indice: "Cherche ce qui revient dans chaque phrase."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "L'eau de la mer chauffée par le soleil monte dans le ciel sous forme de vapeur. En montant, elle refroidit peu à peu et forme des nuages. Quand les nuages sont trop lourds, l'eau retombe en pluie. Cette pluie finit par rejoindre la mer, et tout recommence."
+    bonneReponse: "Le cycle de l'eau"
+    distracteurs: ["La formation des nuages", "La pluie qui tombe"]
+    indice: "Relis la dernière phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Hugo et Aya passent toute la matinée au marché de la ville. Ils comparent les prix des pommes, goûtent un fromage et choisissent des tomates bien rouges. Au moment de payer, Hugo s'aperçoit qu'il a oublié son porte-monnaie. Aya sort alors quelques pièces de sa poche pour le dépanner."
+    bonneReponse: "Des courses au marché"
+    distracteurs: ["Un porte-monnaie oublié", "Des tomates bien rouges"]
+    indice: "Relis le début du texte."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Au fil de l'année, un arbre change complètement d'aspect. Au printemps, ses bourgeons s'ouvrent et de petites feuilles apparaissent. En été, il donne beaucoup d'ombre et porte souvent des fruits. En automne, les feuilles changent de couleur puis tombent, et l'arbre se repose en hiver."
+    bonneReponse: "Un arbre au fil des saisons"
+    distracteurs: ["Les feuilles qui tombent", "Les fruits de l'été"]
+    indice: "Relis la première phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Pour la course d'orientation, Paul et Zoé reçoivent une carte et une boussole. Ils suivent le chemin jusqu'à un grand rocher, puis se trompent de direction. Zoé remarque alors une balise cachée derrière un buisson. Grâce à elle, ils retrouvent la bonne piste et arrivent les premiers."
+    bonneReponse: "Une course d'orientation"
+    distracteurs: ["Une carte et une boussole", "Une balise cachée"]
+    indice: "Relis le début et la fin du texte."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Pendant la nuit, le corps se repose et se prépare pour le lendemain. Le sommeil dure plusieurs heures, avec des moments légers et d'autres très profonds. Un enfant a besoin de dormir plus longtemps qu'un adulte. Bien dormir aide aussi à mieux apprendre à l'école et à rester en forme."
+    bonneReponse: "L'importance du sommeil"
+    distracteurs: ["Les besoins des enfants", "Le sommeil profond"]
+    indice: "Cherche ce qui revient dans chaque phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "La classe prépare un grand spectacle de marionnettes pour la fête. Noé écrit l'histoire, Lina fabrique les personnages avec des chaussettes et Tom installe le décor. Le jour de la représentation, un fil casse et une marionnette tombe. Le public rit, et les enfants continuent sans se décourager."
+    bonneReponse: "Un spectacle de marionnettes"
+    distracteurs: ["Une marionnette qui tombe", "Des personnages en chaussettes"]
+    indice: "Relis la première phrase."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Il y a très longtemps, des animaux géants vivaient sur la Terre. Les scientifiques les appellent des dinosaures et étudient leurs os retrouvés dans le sol. Certains mangeaient des plantes vertes, d'autres chassaient de plus petits animaux. Ils ont disparu bien avant l'arrivée des premiers hommes."
+    bonneReponse: "Des animaux géants disparus"
+    distracteurs: ["Des os retrouvés dans le sol", "Des animaux qui chassaient"]
+    indice: "Relis le début et la fin du texte."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Anna et Samir plantent des radis dans le coin du jardin de l'école. Chaque jour, ils arrosent bien la terre et arrachent les mauvaises herbes. Au bout de quelques semaines, les premiers radis pointent leur nez. Ils les cueillent pour les partager avec toute la classe."
+    bonneReponse: "Des radis cultivés puis partagés"
+    distracteurs: ["L'arrosage de la terre", "Les mauvaises herbes"]
+    indice: "Relis la première et la dernière phrase."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Le vélo est un moyen de transport qui ne pollue pas. Il avance grâce à la force des jambes, sans carburant. En ville, il permet souvent d'aller plus vite qu'en voiture quand la circulation est dense. Mais il faut toujours porter un casque pour rouler en sécurité."
+    bonneReponse: "Les avantages du vélo"
+    distracteurs: ["Le port du casque", "La circulation en ville"]
+    indice: "Cherche ce qui revient dans chaque phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Alors qu'ils marchent sur un sentier, Malo et Inès entendent le tonnerre gronder. Le ciel devient noir et le vent se lève. Ils se réfugient dans une petite cabane de berger jusqu'à la fin de l'orage. Quand le soleil revient, un arc-en-ciel apparaît au-dessus de la vallée."
+    bonneReponse: "Un orage pendant une marche"
+    distracteurs: ["Une cabane de berger", "Un arc-en-ciel dans la vallée"]
+    indice: "Relis le début et la fin du texte."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Les dents servent à couper et à broyer les aliments. Un enfant a d'abord vingt dents de lait, qui tombent l'une après l'autre. Elles sont remplacées par des dents définitives, plus grandes et plus solides. Se brosser les dents après chaque repas les protège des caries."
+    bonneReponse: "Les dents d'un enfant"
+    distracteurs: ["Les dents de lait", "Le brossage des dents"]
+    indice: "Relis la première phrase."
+  # narratif
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Pour la fête de l'école, Léo prépare un gâteau au chocolat. Au moment de le sortir du four, il s'aperçoit qu'il est brûlé d'un côté. Jade propose de couper la partie noire et de la cacher sous de la crème. Tout le monde adore le gâteau et personne ne remarque rien."
+    bonneReponse: "Un gâteau brûlé sauvé par Jade"
+    distracteurs: ["La fête de l'école", "De la crème sur le gâteau"]
+    indice: "Relis le début et la fin du texte."
+  # documentaire
+  - enonce: "De quoi parle ce texte ?"
+    texteSupport: "Les nuages sont faits de millions de gouttes d'eau minuscules. Selon leur forme et leur hauteur, ils annoncent le beau temps ou la pluie. Les gros nuages sombres apportent souvent un orage. Les nuages légers et très hauts, eux, sont faits de petits cristaux de glace."
+    bonneReponse: "Ce que sont les nuages"
+    distracteurs: ["Les nuages d'orage", "Les cristaux de glace"]
+    indice: "Relis la première phrase."

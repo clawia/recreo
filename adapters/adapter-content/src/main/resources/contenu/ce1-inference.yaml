@@ -1,0 +1,147 @@
+schema: 1
+id: ce1-inference
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Faire une inférence simple à partir d'un texte court (une information non écrite : un sentiment, un lieu, une cause)."
+lignesDeReferentiel: ["FRA-CE1-06"]
+# S53-FRA-INFERENCE (session hors sprint "s53 special", contenu seul). Redige par lea-dev sur les
+# conditions INF-CE1-1 a INF-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7 de
+# squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 3.6), sous LON-CE1-3 et
+# LON-CE1-4 (squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md). Aucun Done n'est
+# prononce ici : ce paquet attend l'audit de nadia-prof.
+#
+# INF-CE1-1 : une inference par item, la reponse relie au plus deux faits du texte. Trois sortes,
+# marquees au-dessus de chaque item : sentiment 7, lieu 6, cause 7 (chacune au-dessus du cinquieme).
+# Les sentiments sont pris parmi content, triste, en colere, avoir peur.
+# INF-CE1-2 : la bonne reponse n'est jamais une suite de mots du texte.
+# INF-CE1-3 : familles de distracteurs, nommees dans l'ordre du fichier :
+#   a = un element present dans le texte qui ne repond pas a la question ;
+#   b = une reponse vraisemblable en general que le texte contredit.
+# TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute. TRV-CE1-5 : un indice par item,
+# douze mots au plus, jamais la reponse. TRV-CE1-6 : onze prenoms masculins et onze prenoms feminins,
+# origines variees, aucune emotion ni activite distribuee par genre.
+# TRV-CE1-7 : vingt items, vingt textes distincts. LON-CE1-5 : au plus six mots par proposition.
+items:
+  # sentiment ; b, b
+  - enonce: "Comment se sent Malo ?"
+    texteSupport: "Malo regarde son ballon crevé. Il baisse la tête et ne dit rien."
+    bonneReponse: "il est triste"
+    distracteurs: ["il est content", "il a peur"]
+    indice: "Regarde ce que fait le personnage."
+  # sentiment ; b, b
+  - enonce: "Comment se sent Lina ?"
+    texteSupport: "Lina ouvre un grand paquet. C'est le jouet qu'elle voulait. Elle saute et applaudit."
+    bonneReponse: "elle est contente"
+    distracteurs: ["elle est triste", "elle a peur"]
+    indice: "Pense à ce qu'elle voulait."
+  # sentiment ; b, b
+  - enonce: "Comment se sent Sami ?"
+    texteSupport: "Il fait nuit. Sami entend un grand bruit. Il serre sa couverture et ferme les yeux."
+    bonneReponse: "il a peur"
+    distracteurs: ["il est content", "il est en colère"]
+    indice: "Relis la dernière phrase et pense à ses gestes."
+  # sentiment ; b, b
+  - enonce: "Comment se sent Hugo ?"
+    texteSupport: "Hugo a fini sa tour de cubes. Louna passe et la renverse. Hugo tape du pied et crie fort."
+    bonneReponse: "il est en colère"
+    distracteurs: ["il est content", "il a peur"]
+    indice: "Regarde ce que fait le personnage."
+  # sentiment ; b, b
+  - enonce: "Comment se sent Paul ?"
+    texteSupport: "Après le match, Paul tient une grande coupe. Tout le monde l'applaudit. Il sourit de toutes ses dents."
+    bonneReponse: "il est content"
+    distracteurs: ["il est triste", "il a peur"]
+    indice: "Relis la dernière phrase et pense à ses gestes."
+  # sentiment ; b, b
+  - enonce: "Comment se sent Mila ?"
+    texteSupport: "Mila a dessiné toute la matinée. La pluie tombe sur sa feuille. Les couleurs coulent, et elle pleure."
+    bonneReponse: "elle est triste"
+    distracteurs: ["elle est contente", "elle est en colère"]
+    indice: "Pense à ce qui arrive à son dessin."
+  # sentiment ; b, b
+  - enonce: "Comment se sent Karim ?"
+    texteSupport: "Karim est au bord de la piscine. Il regarde l'eau très profonde. Il recule de deux pas."
+    bonneReponse: "il a peur"
+    distracteurs: ["il est content", "il est triste"]
+    indice: "Regarde ce que fait le personnage."
+  # lieu ; a, b
+  - enonce: "Où est Nina maintenant ?"
+    texteSupport: "Nina quitte l'école avec son sac. Elle met son maillot et nage dans un grand bassin. L'eau est chaude."
+    bonneReponse: "à la piscine"
+    distracteurs: ["à l'école", "à la plage"]
+    indice: "Les objets du texte te disent où l'on est."
+  # lieu ; a, b
+  - enonce: "Où est Adrien ?"
+    texteSupport: "Adrien regarde un grand lion derrière une grille. Un singe grimpe à un arbre. Des gens prennent des photos."
+    bonneReponse: "au zoo"
+    distracteurs: ["dans un arbre", "à la ferme"]
+    indice: "Cherche les indices : qu'y voit-on ?"
+  # lieu ; b, b
+  - enonce: "Où est Emma ?"
+    texteSupport: "Emma sent une bonne odeur de pain chaud. Elle donne deux euros. La dame lui tend une baguette."
+    bonneReponse: "à la boulangerie"
+    distracteurs: ["au cinéma", "à la poste"]
+    indice: "Les objets du texte te disent où l'on est."
+  # lieu ; b, b
+  - enonce: "Où est Samir ?"
+    texteSupport: "Samir parle tout bas. Il cherche un livre sur une grande étagère. On lui demande de ne pas faire de bruit."
+    bonneReponse: "à la bibliothèque"
+    distracteurs: ["au stade", "à la cantine"]
+    indice: "Cherche les indices : qu'y fait-on ?"
+  # lieu ; b, b
+  - enonce: "Où sont Eva et Théo ?"
+    texteSupport: "Eva et Théo s'assoient dans le noir. Un grand écran s'allume devant eux. Ils mangent du maïs soufflé."
+    bonneReponse: "au cinéma"
+    distracteurs: ["à l'école", "au restaurant"]
+    indice: "Cherche les indices : qu'y voit-on ?"
+  # lieu ; b, b
+  - enonce: "Où est Nolan ?"
+    texteSupport: "Nolan attend sur le quai. Un train arrive en sifflant. Une voix annonce un retard."
+    bonneReponse: "à la gare"
+    distracteurs: ["à l'aéroport", "au supermarché"]
+    indice: "Les objets du texte te disent où l'on est."
+  # cause ; a, b
+  - enonce: "Pourquoi Inès ouvre-t-elle son parapluie au-dessus de lui ?"
+    texteSupport: "Ce matin, Inès part à l'école avec son frère. Il se met à pleuvoir. Inès ouvre son parapluie au-dessus de lui. Ils arrivent tout secs."
+    bonneReponse: "pour qu'il ne soit pas mouillé"
+    distracteurs: ["pour aller à l'école", "parce qu'il fait nuit"]
+    indice: "Demande-toi ce qui se passe juste avant."
+  # cause ; b, b
+  - enonce: "Pourquoi Tidiane met-il une écharpe ?"
+    texteSupport: "Tidiane met un gros pull et une écharpe. Il souffle dans ses mains avant de sortir."
+    bonneReponse: "parce qu'il a froid"
+    distracteurs: ["parce qu'il a chaud", "parce qu'il a faim"]
+    indice: "Pense à ce qu'il fait avec ses mains."
+  # cause ; a, b
+  - enonce: "Pourquoi Sara ouvre-t-elle sa boîte ?"
+    texteSupport: "Sara n'a rien mangé depuis ce matin. Son ventre gargouille. Elle ouvre sa boîte à goûter."
+    bonneReponse: "parce qu'elle a faim"
+    distracteurs: ["parce que c'est le matin", "parce qu'elle a sommeil"]
+    indice: "Relis ce qui arrive à son ventre."
+  # cause ; a, b
+  - enonce: "Pourquoi Ilan éteint-il la lumière ?"
+    texteSupport: "Ilan bâille et se frotte les yeux. Il met son pyjama et éteint la lumière."
+    bonneReponse: "parce qu'il va dormir"
+    distracteurs: ["parce qu'il met son pyjama", "parce qu'il a faim"]
+    indice: "Demande-toi ce qui se passe juste avant."
+  # cause ; a, b
+  - enonce: "Pourquoi Sofia court-elle ?"
+    texteSupport: "Sofia court vers l'arrêt. Le bus démarre. Elle arrive trop tard."
+    bonneReponse: "pour attraper le bus"
+    distracteurs: ["pour trouver l'arrêt", "pour aller jouer"]
+    indice: "Pense à ce que fait le bus."
+  # cause ; a, b
+  - enonce: "Pourquoi Nour verse-t-elle de l'eau ?"
+    texteSupport: "Nour pose une graine dans la terre. Chaque jour, elle verse un peu d'eau. Une petite tige sort de terre."
+    bonneReponse: "pour que la graine pousse"
+    distracteurs: ["pour poser une graine", "pour laver la terre"]
+    indice: "Relis ce qui sort de terre à la fin."
+  # cause ; a, b
+  - enonce: "Pourquoi Zoé montre-t-elle sa feuille ?"
+    texteSupport: "Zoé revient de l'école avec une grande feuille. Elle la montre à tout le monde, les yeux brillants. Elle a une étoile en haut de la page."
+    bonneReponse: "parce qu'elle est fière"
+    distracteurs: ["parce qu'elle revient de l'école", "parce qu'elle a peur"]
+    indice: "Regarde ses yeux et ce qu'il y a sur la page."
