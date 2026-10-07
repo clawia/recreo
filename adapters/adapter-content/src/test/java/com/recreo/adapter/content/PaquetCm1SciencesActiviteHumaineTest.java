@@ -23,8 +23,8 @@ import java.util.regex.Pattern;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * <b>S51-SCI-ACTIVITE-HUMAINE-CM1, le paquet {@code cm1-sciences-activite-humaine}, ligne
- * {@code SCI-CM1-18} de "Sciences et technologie" (CM1).</b> Referentiel :
+ * <b>S51-SCI-ACTIVITE-HUMAINE-CM1, le paquet {@code cm1-sciences-environnement-activite-humaine},
+ * ligne {@code SCI-CM1-18} de "Sciences et technologie" (CM1).</b> Referentiel :
  * {@code docs/backlog/backlog.md}, section "Sprint 51" ; conditions : arbitrage prealable de s30,
  * sections 2.2 (ligne 18) et 2.5, {@code ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
  * reserves.md}.
@@ -41,7 +41,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class PaquetCm1SciencesActiviteHumaineTest {
 
-    private static final String PAQUET = "cm1-sciences-activite-humaine";
+    private static final String PAQUET = "cm1-sciences-environnement-activite-humaine";
 
     /** FER-2 : au moins nombreDeManches + 1 items (nombreDeManches = 10, catalogue.yaml). */
     private static final int NOMBRE_DE_MANCHES = 10;

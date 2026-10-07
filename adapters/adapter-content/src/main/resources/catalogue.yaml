@@ -816,3 +816,9 @@ jeux:
     mecanique: designation
     paquet: ce1-symetrie
     nombreDeManches: 8
+  - id: bandit-manchot-environnement-cm1
+    titre: "L'être humain et l'environnement"
+    consigne: "Lis bien, puis dis quel est l'effet, ou quel geste préserve."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-environnement-activite-humaine
+    nombreDeManches: 10

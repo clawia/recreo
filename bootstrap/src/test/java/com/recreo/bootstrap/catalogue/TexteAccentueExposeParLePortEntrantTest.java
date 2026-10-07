@@ -346,6 +346,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S51-SCI-CORPS-CM1 (s51) : entree neuve, SCI-CM1-10, alimentation, activite physique,
             // sommeil et hygiene reliees au fonctionnement du corps.
             "bandit-manchot-corps-cm1",
+            // S54-BR-SCI-CM1-18 (s54) : entree neuve, SCI-CM1-18, effet de l'activite humaine sur
+            // l'environnement et geste de preservation ; reprise corrigee, identifiant neuf.
+            "bandit-manchot-environnement-cm1",
             // S46-EMC-EMOTION-CM1 (s46) : entree neuve, EMC-CM1-01, identifier une emotion et
             // distinguer ce que l'on ressent de ce que l'on fait.
             "bandit-manchot-emotion-ressentir-agir-cm1",
@@ -637,6 +640,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les risques naturels",
             // S51-SCI-CORPS-CM1 (s51) : titre neuf.
             "Prendre soin de son corps",
+            // S54-BR-SCI-CM1-18 (s54) : titre neuf, sans niveau (ADR-0078).
+            "L'être humain et l'environnement",
             // S46-EMC-EMOTION-CM1 (s46) : titre neuf.
             "Ressentir et agir",
             // S46-SCI-MOUVEMENT-CM1 (s46) : titre neuf.
@@ -932,6 +937,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Lis bien, puis dis quel phénomène, ou quel geste protège.",
             // S51-SCI-CORPS-CM1 (s51) : consigne neuve.
             "Lis bien, puis dis ce qui est bon pour le corps, ou à quoi cela sert.",
+            // S54-BR-SCI-CM1-18 (s54) : consigne neuve.
+            "Lis bien, puis dis quel est l'effet, ou quel geste préserve.",
             // S46-EMC-EMOTION-CM1 (s46) : consigne neuve.
             "Lis bien, puis dis quelle émotion ressent la personne, ou distingue ce qu'elle "
                     + "ressent de ce qu'elle fait.",
@@ -1481,6 +1488,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // SCI-CM1-10).
             "Relier l'alimentation, l'activité physique, le sommeil et l'hygiène au bon "
                     + "fonctionnement du corps.",
+            // S54-BR-SCI-CM1-18 (s54) : competence neuve, copiee conforme du referentiel de
+            // nadia-prof (squad/programme/sciences-et-technologie/competences-cm1.md, ligne
+            // SCI-CM1-18).
+            "Identifier un effet de l'activité humaine sur l'environnement et un geste de "
+                    + "préservation des ressources.",
             // S46-EMC-EMOTION-CM1 (s46) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
             // EMC-CM1-01).
