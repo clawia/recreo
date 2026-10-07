@@ -1,0 +1,124 @@
+# DEGRADE : le verbe "mesurer" n'est servi par aucun item, aucune balance ni aucun recipient gradue n'est rendu (seuls "comparer" et "utiliser le gramme, le kilogramme, le litre" le sont, par du texte).
+#
+# S53-G1-MASSES (MAT-CE1-10). Paquet de contenu seul, hors sprint. Arbitrage prealable de nadia-prof,
+# conditions MAS-CE1-1 a MAS-CE1-6 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-2.md,
+# section 3) : couverture partielle nommee, la ligne reste "en cours" tant que "mesurer" n'est servi
+# par aucun jeu. Ce paquet ne declare aucune conformite pedagogique : le Done est a nadia-prof.
+#
+# MAS-CE1-1 : 12 items de masse et 9 items de contenance sur 21 (plancher : un tiers chacun, soit 7).
+# MAS-CE1-2 : seuls "g", "kg" et "L" (majuscule) sont ecrits ; aucun milligramme, aucune tonne, aucun
+# centilitre.
+# MAS-CE1-3 : chaque item de comparaison donne, dans l'enonce, la masse ou la contenance chiffree de
+# chacun des trois objets ; aucun item ne compare des objets par leur seule nature.
+# MAS-CE1-4 : aucun nombre au-dessus de 1000 ; seules conversions : 1 kg = 1000 g et 500 g = un demi-
+# kilogramme (trois items). Valeurs plausibles pour un objet connu d'un enfant de CE1.
+# MAS-CE1-5 : un item de comparaison porte trois objets dans une meme unite ; un item de choix d'unite
+# propose trois noms d'unite sans nombre ; un item de conversion garde "g" ou "kg" dans les trois
+# propositions.
+# MAS-CE1-6 : distracteurs = erreur de facteur (conversions), objet le plus lourd ou le plus leger a
+# la place du bon (comparaisons), unites voisines (choix d'unite). Aucun indice n'enseigne que la
+# taille donne la masse. Rang de la bonne reponse sur les 13 items de comparaison et de conversion :
+# 5 hauts (plus lourd, plus de contenance, 1000 g), 5 bas (plus leger, moins de contenance, 1 kg) et
+# 3 du milieu, soit 38 %, 38 % et 23 % (plancher 10 %, plafond 50 %).
+# LON-CE1-1 et LON-CE1-2 : 20 mots au plus, trois phrases au plus, la derniere est la question.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable.
+schema: 1
+id: ce1-masses-contenances
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Grandeurs et mesures"
+  competence: "Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre)"
+lignesDeReferentiel: ["MAT-CE1-10"]
+items:
+  # Choix de l'unite, masses
+  - enonce: "Pour peser une pomme, quelle unité choisis-tu ?"
+    bonneReponse: "le gramme"
+    distracteurs: ["le kilogramme", "le litre"]
+    indice: "Un kilogramme, c'est mille grammes."
+  - enonce: "Pour peser un sac de pommes de terre, quelle unité choisis-tu ?"
+    bonneReponse: "le kilogramme"
+    distracteurs: ["le gramme", "le litre"]
+    indice: "Un kilogramme, c'est mille grammes."
+  - enonce: "Pour peser une gomme, quelle unité choisis-tu ?"
+    bonneReponse: "le gramme"
+    distracteurs: ["le kilogramme", "le litre"]
+    indice: "Choisis l'unité qui sert à peser."
+  - enonce: "Pour peser un enfant de CE1, quelle unité choisis-tu ?"
+    bonneReponse: "le kilogramme"
+    distracteurs: ["le gramme", "le litre"]
+    indice: "Choisis l'unité qui sert à peser."
+  # Choix de l'unite, contenances
+  - enonce: "Pour mesurer l'eau d'un seau, quelle unité choisis-tu ?"
+    bonneReponse: "le litre"
+    distracteurs: ["le gramme", "le kilogramme"]
+    indice: "Cherche l'unité qui sert à mesurer ce qu'on verse."
+  - enonce: "Pour mesurer le jus d'une bouteille, quelle unité choisis-tu ?"
+    bonneReponse: "le litre"
+    distracteurs: ["le kilogramme", "le gramme"]
+    indice: "Cherche l'unité qui sert à mesurer ce qu'on verse."
+  - enonce: "Pour mesurer l'eau d'une baignoire, quelle unité choisis-tu ?"
+    bonneReponse: "le litre"
+    distracteurs: ["le gramme", "le kilogramme"]
+    indice: "Cherche l'unité qui sert à mesurer ce qu'on verse."
+  - enonce: "Pour mesurer l'eau d'un aquarium, quelle unité choisis-tu ?"
+    bonneReponse: "le litre"
+    distracteurs: ["le kilogramme", "le gramme"]
+    indice: "Cherche l'unité qui sert à mesurer ce qu'on verse."
+  # Conversions admises (MAS-CE1-4), erreur de facteur (MAS-CE1-6)
+  - enonce: "1 kg, combien de g ?"
+    bonneReponse: "1000 g"
+    distracteurs: ["100 g", "10 g"]
+    indice: "Le mot kilo veut dire mille."
+  - enonce: "1000 g, combien de kg ?"
+    bonneReponse: "1 kg"
+    distracteurs: ["10 kg", "100 kg"]
+    indice: "Le mot kilo veut dire mille."
+  - enonce: "Un demi-kilogramme, combien de g ?"
+    bonneReponse: "500 g"
+    distracteurs: ["100 g", "1000 g"]
+    indice: "Un demi, c'est la moitié."
+  # Comparaison de masses, en g puis en kg
+  - enonce: "Une pomme pèse 150 g, une poire 180 g, une banane 120 g. Quel fruit est le plus lourd ?"
+    bonneReponse: "la poire"
+    distracteurs: ["la pomme", "la banane"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Un melon pèse 2 kg, une pastèque 6 kg, un ananas 1 kg. Lequel est le plus léger ?"
+    bonneReponse: "l'ananas"
+    distracteurs: ["le melon", "la pastèque"]
+    indice: "Le plus léger a le plus petit nombre."
+  - enonce: "Un chat pèse 4 kg, un chien 20 kg, un lapin 2 kg. Lequel a la masse du milieu ?"
+    bonneReponse: "le chat"
+    distracteurs: ["le chien", "le lapin"]
+    indice: "Cherche le nombre entre le plus petit et le plus grand."
+  - enonce: "Un cartable pèse 5 kg, une valise 12 kg, un panier 3 kg. Quel objet est le plus lourd ?"
+    bonneReponse: "la valise"
+    distracteurs: ["le cartable", "le panier"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Un stylo pèse 10 g, une règle 30 g, une gomme 5 g. Quel objet est le plus léger ?"
+    bonneReponse: "la gomme"
+    distracteurs: ["le stylo", "la règle"]
+    indice: "Le plus léger a le plus petit nombre."
+  # Comparaison de contenances, en L
+  - enonce: "Un seau contient 10 L, un arrosoir 5 L, une bouteille 2 L. Quel objet contient le plus ?"
+    bonneReponse: "le seau"
+    distracteurs: ["l'arrosoir", "la bouteille"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Une casserole contient 3 L, une marmite 8 L, une gourde 1 L. Quel objet contient le moins ?"
+    bonneReponse: "la gourde"
+    distracteurs: ["la casserole", "la marmite"]
+    indice: "Le plus petit nombre est celui qui contient le moins."
+  - enonce: "Une baignoire contient 150 L, un aquarium 50 L, un évier 20 L. Quel objet contient le plus ?"
+    bonneReponse: "la baignoire"
+    distracteurs: ["l'aquarium", "l'évier"]
+    indice: "Compare bien les trois nombres avant de répondre."
+  - enonce: "Un bidon contient 5 L, un seau 10 L, une carafe 2 L. Lequel a la contenance du milieu ?"
+    bonneReponse: "le bidon"
+    distracteurs: ["le seau", "la carafe"]
+    indice: "Cherche le nombre entre le plus petit et le plus grand."
+  - enonce: "Un évier contient 20 L, un seau 10 L, un bidon 5 L. Quel objet contient le moins ?"
+    bonneReponse: "le bidon"
+    distracteurs: ["l'évier", "le seau"]
+    indice: "Le plus petit nombre est celui qui contient le moins."

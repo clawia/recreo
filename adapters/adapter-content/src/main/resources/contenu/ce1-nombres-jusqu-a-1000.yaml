@@ -1,0 +1,125 @@
+# DEGRADE : le verbe "denombrer" n'est servi par aucun item, aucune collection dessinee n'existe dans ce paquet (seuls "lire", "ecrire" et "decomposer" le sont).
+#
+# S53-G1-NOMBRES (MAT-CE1-01). Paquet de contenu seul, hors sprint. Arbitrage prealable de nadia-prof,
+# conditions NUM-CE1-1 a NUM-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-1.md,
+# section 2) : couverture partielle nommee, la ligne reste "en cours" tant que "denombrer" n'est servi
+# par aucun jeu. Ce paquet ne declare aucune conformite pedagogique : le Done est a nadia-prof.
+#
+# NUM-CE1-1 : entiers de 0 a 1000, aucun nombre au-dessus ; les 22 items portent un nombre de trois
+# chiffres (ou 1000) dans l'enonce ou la bonne reponse.
+# NUM-CE1-3 : "lire" (chiffres vers lettres, 7 items) et "ecrire" (lettres vers chiffres, 7 items) dans
+# le meme paquet. Les distracteurs de "lire" different par la valeur designee, jamais par l'orthographe
+# d'un mot-nombre. Convention classique constante : traits d'union sous cent seulement, "et" sur
+# 21/31/41/51/61/71, "cents" au pluriel seulement quand il termine le nombre.
+# NUM-CE1-4 : 8 items de decomposition, dont 5 avec le vocabulaire centaines/dizaines/unites (plancher
+# 4) et 8 sur un nombre de trois chiffres (plancher 4) ; 3 en ecriture additive.
+# NUM-CE1-5 : le mot "decomposer" n'apparait dans aucun enonce, aucune proposition ni aucun indice.
+# NUM-CE1-6 : zero intercalaire ou final sur 305, 407, 620, 800, 604, 806, 500, 605, 430, 20 (plancher
+# 2) ; tranche 60-99 sur 372, 497, 771, 990, 183 (plancher 1).
+# NUM-CE1-7 : les trois propositions d'un item "ecrire" ou de decomposition ont le meme nombre de
+# chiffres ; les trois ecritures litterales d'un item "lire" ont le meme nombre de mots.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede ":" et "?" est insecable.
+schema: 1
+id: ce1-nombres-jusqu-a-1000
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Nombres et calculs"
+  competence: "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 1000 (unités, dizaines, centaines)"
+lignesDeReferentiel: ["MAT-CE1-01"]
+items:
+  # Verbe "lire" (ecriture chiffree donnee, designation litterale a trouver)
+  - enonce: "Lis ce nombre : 305."
+    bonneReponse: "trois cent cinq"
+    distracteurs: ["trois cent cinquante", "trois cent quinze"]
+    indice: "Dis la centaine, puis ce qui reste."
+  - enonce: "Lis ce nombre : 407."
+    bonneReponse: "quatre cent sept"
+    distracteurs: ["quatre cent soixante-dix", "quatre cent dix-sept"]
+    indice: "Regarde bien le chiffre du milieu."
+  - enonce: "Lis ce nombre : 620."
+    bonneReponse: "six cent vingt"
+    distracteurs: ["six cent deux", "six cent douze"]
+    indice: "Dis la centaine, puis la dizaine."
+  - enonce: "Lis ce nombre : 800."
+    bonneReponse: "huit cents"
+    distracteurs: ["sept cents", "neuf cents"]
+    indice: "Il n'y a ni dizaine ni unité à dire."
+  - enonce: "Lis ce nombre : 372."
+    bonneReponse: "trois cent soixante-douze"
+    distracteurs: ["trois cent soixante-deux", "trois cent quatre-vingt-douze"]
+    indice: "Après la centaine, lis les deux derniers chiffres."
+  - enonce: "Lis ce nombre : 497."
+    bonneReponse: "quatre cent quatre-vingt-dix-sept"
+    distracteurs: ["quatre cent soixante-dix-sept", "quatre cent quatre-vingt-sept"]
+    indice: "Lis la centaine, puis les deux derniers chiffres ensemble."
+  - enonce: "Lis ce nombre : 1000."
+    bonneReponse: "mille"
+    distracteurs: ["cent", "dix"]
+    indice: "Compte les chiffres du nombre."
+  # Verbe "ecrire" (designation litterale donnee, ecriture chiffree a trouver)
+  - enonce: "Écris en chiffres : deux cent quarante-sept."
+    bonneReponse: "247"
+    distracteurs: ["274", "427"]
+    indice: "Écris la centaine d'abord, puis la dizaine."
+  - enonce: "Écris en chiffres : six cent quatre."
+    bonneReponse: "604"
+    distracteurs: ["640", "614"]
+    indice: "Il n'y a pas de dizaine à dire."
+  - enonce: "Écris en chiffres : neuf cent quatre-vingt-dix."
+    bonneReponse: "990"
+    distracteurs: ["980", "910"]
+    indice: "Attention, quatre-vingt-dix ne s'écrit pas comme quatre-vingts."
+  - enonce: "Écris en chiffres : cent quatre-vingt-trois."
+    bonneReponse: "183"
+    distracteurs: ["163", "193"]
+    indice: "Cherche d'abord la place des centaines."
+  - enonce: "Écris en chiffres : huit cent six."
+    bonneReponse: "806"
+    distracteurs: ["860", "816"]
+    indice: "Une place du nombre reste vide."
+  - enonce: "Écris en chiffres : cinq cents."
+    bonneReponse: "500"
+    distracteurs: ["550", "505"]
+    indice: "Après la centaine, rien à ajouter."
+  - enonce: "Écris en chiffres : sept cent soixante et onze."
+    bonneReponse: "771"
+    distracteurs: ["761", "781"]
+    indice: "Soixante et onze commence par soixante, mais vaut plus."
+  # Verbe "decomposer" (jamais nomme a l'enfant - NUM-CE1-5), avec le vocabulaire centaines,
+  # dizaines et unites (NUM-CE1-4)
+  - enonce: "Quel nombre s'écrit 3 centaines, 4 dizaines et 7 unités ?"
+    bonneReponse: "347"
+    distracteurs: ["374", "437"]
+    indice: "Écris les centaines, puis les dizaines, puis les unités."
+  - enonce: "Quel nombre s'écrit 6 centaines et 5 unités ?"
+    bonneReponse: "605"
+    distracteurs: ["650", "615"]
+    indice: "Chaque place du nombre doit avoir un chiffre."
+  - enonce: "Dans 582, quel est le chiffre des dizaines ?"
+    bonneReponse: "8"
+    distracteurs: ["5", "2"]
+    indice: "Les dizaines sont la place du milieu."
+  - enonce: "Dans 745, combien de centaines ?"
+    bonneReponse: "7 centaines"
+    distracteurs: ["4 centaines", "5 centaines"]
+    indice: "Les centaines sont la première place."
+  - enonce: "Quel nombre s'écrit 4 centaines et 3 dizaines ?"
+    bonneReponse: "430"
+    distracteurs: ["403", "340"]
+    indice: "Pense à la place des unités."
+  # Verbe "decomposer", ecriture additive
+  - enonce: "358 = 300 + 50 + ?"
+    bonneReponse: "8"
+    distracteurs: ["5", "3"]
+    indice: "Regarde le chiffre des unités."
+  - enonce: "724 = 700 + ? + 4"
+    bonneReponse: "20"
+    distracteurs: ["70", "40"]
+    indice: "Cherche ce qui manque entre la centaine et l'unité."
+  - enonce: "Quel nombre est égal à 800 + 60 + 9 ?"
+    bonneReponse: "869"
+    distracteurs: ["896", "689"]
+    indice: "Chaque terme donne un chiffre à sa place."

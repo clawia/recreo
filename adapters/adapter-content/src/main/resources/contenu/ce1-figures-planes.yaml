@@ -1,0 +1,112 @@
+# DEGRADE : aucune figure n'est dessinee, l'enfant ne reconnait aucune figure sur un dessin et ne trace rien (aucune mecanique du produit ne recoit un trace) ; seule la description de figures nommees est servie, par du texte.
+#
+# S53-G1-FIGURES (MAT-CE1-15). Paquet de contenu seul, hors sprint. Arbitrage prealable de nadia-prof,
+# conditions FIG-CE1-1 a FIG-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-ce1-lot-3.md,
+# section 2) : couverture partielle nommee, la ligne ne peut pas depasser "en cours". Ce paquet ne
+# declare aucune conformite pedagogique : le Done est a nadia-prof.
+#
+# FIG-CE1-1 : "reconnaitre" seul ne sert pas cette ligne ; chacun des 20 items porte soit le triangle
+# rectangle (items 6, 9, 13, 16, 19), soit une propriete d'une figure nommee (nombre de cotes, egalite
+# des cotes, angles droits), c'est-a-dire le verbe "decrire". Aucun item ne demande "Quelle est cette
+# figure ?".
+# FIG-CE1-2 : quand la bonne reponse est "un triangle rectangle" (items 9 et 13), les deux autres
+# propositions excluent la figure (un rectangle, un carre) ; "un triangle" n'y figure jamais.
+# FIG-CE1-3 : les proprietes servies sont le nombre de cotes, l'egalite des cotes et les angles
+# droits. Aucun dessin n'est montre, donc aucune proportion d'angle n'est declaree.
+# Formes : 10 items "combien" (cotes, angles droits, cotes egaux), 5 items qui decrivent une figure
+# pour en trouver le nom, 5 items "quelle phrase est vraie pour ...". Le distracteur "un carre" n'est
+# jamais une bonne reponse cachee : il ne figure que devant des proprietes qu'un carre n'a pas.
+# Rang de la bonne reponse sur les 10 items "combien" : 3 bas, 4 du milieu, 3 hauts.
+# LON-CE1-1 et LON-CE1-2 : 20 mots au plus, trois phrases au plus, la derniere est la question.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable.
+schema: 1
+id: ce1-figures-planes
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Espace et géométrie"
+  competence: "Reconnaître, décrire et tracer des figures planes (carré, rectangle, triangle, triangle rectangle, cercle) à la règle et sur quadrillage"
+lignesDeReferentiel: ["MAT-CE1-15"]
+items:
+  - enonce: "Combien de côtés a un triangle ?"
+    bonneReponse: "3"
+    distracteurs: ["4", "5"]
+    indice: "Imagine la figure et compte ses côtés un par un."
+  - enonce: "Combien de côtés a un rectangle ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Imagine la figure et compte ses côtés un par un."
+  - enonce: "Combien de côtés a un carré ?"
+    bonneReponse: "4"
+    distracteurs: ["2", "3"]
+    indice: "Imagine la figure et compte ses côtés un par un."
+  - enonce: "Combien d'angles droits a un carré ?"
+    bonneReponse: "4"
+    distracteurs: ["3", "5"]
+    indice: "Un angle droit est un coin comme celui d'une feuille."
+  - enonce: "Combien d'angles droits a un rectangle ?"
+    bonneReponse: "4"
+    distracteurs: ["1", "2"]
+    indice: "Un angle droit est un coin comme celui d'une feuille."
+  - enonce: "Combien d'angles droits a un triangle rectangle ?"
+    bonneReponse: "1"
+    distracteurs: ["0", "2"]
+    indice: "Pense au coin d'une équerre dans la figure."
+  - enonce: "Combien de côtés de même longueur a un carré ?"
+    bonneReponse: "4"
+    distracteurs: ["2", "3"]
+    indice: "Pense à un carré dessiné sur ton cahier."
+  - enonce: "Un rectangle a deux grands côtés. Combien a-t-il de petits côtés ?"
+    bonneReponse: "2"
+    distracteurs: ["3", "4"]
+    indice: "Les côtés se comptent par groupes de même longueur."
+  - enonce: "Quelle figure a trois côtés et un angle droit ?"
+    bonneReponse: "un triangle rectangle"
+    distracteurs: ["un rectangle", "un carré"]
+    indice: "Compte d'abord les côtés, puis cherche l'angle droit."
+  - enonce: "Quelle figure a quatre côtés égaux et quatre angles droits ?"
+    bonneReponse: "un carré"
+    distracteurs: ["un triangle", "un cercle"]
+    indice: "Lis chaque propriété, puis écarte les figures qui ne vont pas."
+  - enonce: "Quelle figure a quatre angles droits et deux grands côtés ?"
+    bonneReponse: "un rectangle"
+    distracteurs: ["un carré", "un triangle rectangle"]
+    indice: "Lis chaque propriété, puis écarte les figures qui ne vont pas."
+  - enonce: "Quelle figure a un bord rond et aucun angle ?"
+    bonneReponse: "un cercle"
+    distracteurs: ["un carré", "un triangle"]
+    indice: "Lis chaque propriété, puis écarte les figures qui ne vont pas."
+  - enonce: "Un triangle a un angle droit. Comment s'appelle-t-il ?"
+    bonneReponse: "un triangle rectangle"
+    distracteurs: ["un rectangle", "un carré"]
+    indice: "Un triangle qui a un angle droit a un nom à part."
+  - enonce: "Quelle phrase est vraie pour un carré ?"
+    bonneReponse: "Il a quatre côtés égaux"
+    distracteurs: ["Il a trois côtés égaux", "Il n'a aucun angle droit"]
+    indice: "Vérifie chaque phrase avec la figure dans ta tête."
+  - enonce: "Quelle phrase est vraie pour un rectangle ?"
+    bonneReponse: "Il a quatre angles droits"
+    distracteurs: ["Il a trois côtés", "Il n'a aucun angle droit"]
+    indice: "Vérifie chaque phrase avec la figure dans ta tête."
+  - enonce: "Quelle phrase est vraie pour un triangle rectangle ?"
+    bonneReponse: "Il a un angle droit"
+    distracteurs: ["Il a quatre angles droits", "Il a quatre côtés"]
+    indice: "Vérifie chaque phrase avec la figure dans ta tête."
+  - enonce: "Quelle phrase est vraie pour un cercle ?"
+    bonneReponse: "Il n'a aucun angle"
+    distracteurs: ["Il a trois angles", "Il a quatre côtés égaux"]
+    indice: "Vérifie chaque phrase avec la figure dans ta tête."
+  - enonce: "Quelle phrase est vraie pour un triangle ?"
+    bonneReponse: "Il a trois côtés"
+    distracteurs: ["Il a quatre côtés", "Il a quatre angles droits"]
+    indice: "Vérifie chaque phrase avec la figure dans ta tête."
+  - enonce: "Combien de côtés a un triangle rectangle ?"
+    bonneReponse: "3"
+    distracteurs: ["2", "4"]
+    indice: "Imagine la figure et compte ses côtés un par un."
+  - enonce: "Combien d'angles a un triangle ?"
+    bonneReponse: "3"
+    distracteurs: ["4", "6"]
+    indice: "Un angle est un coin de la figure."
