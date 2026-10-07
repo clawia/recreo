@@ -79,7 +79,7 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
             Map.entry("cm1-conjugaison-present", 31),
             Map.entry("cm1-homophones", 27),
             Map.entry("cp-soustractions", 27),
-            Map.entry("cm1-grands-nombres", 26),
+            Map.entry("cm1-grands-nombres", 12),
             Map.entry("cm1-accords-groupe-nominal", 25),
             Map.entry("cm1-mesures", 24),
             Map.entry("cp-comparer-nombres", 24),
@@ -96,7 +96,7 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
             Map.entry(CATALOGUE, 23)));
 
     /** Le total, ecrit une fois pour que la somme ne puisse pas deriver de la table sans le dire. */
-    private static final int DETTE_TOTALE = 516;
+    private static final int DETTE_TOTALE = 502;
 
     static int occurrencesDe(String valeur) {
         int compte = 0;

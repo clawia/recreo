@@ -57,8 +57,8 @@ class PaquetCm1GrandsNombresTest {
 
     private static final String PAQUET = "cm1-grands-nombres";
 
-    private static final String PREFIXE_ECRIRE = "Écris en chiffres : ";
-    private static final String PREFIXE_LIRE = "Lis ce nombre : ";
+    private static final String PREFIXE_ECRIRE = "Écris en chiffres : ";
+    private static final String PREFIXE_LIRE = "Lis ce nombre : ";
     private static final String PREFIXE_DECOMPOSE = "Décompose ";
     private static final String PREFIXE_COMPARER = "Compare ";
     private static final String MARQUEUR_COMPARER = " et ";
