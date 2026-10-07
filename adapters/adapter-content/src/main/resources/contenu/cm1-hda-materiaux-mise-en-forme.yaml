@@ -1,0 +1,73 @@
+# DEGRADE : aucune image d'oeuvre n'est servie ; le paquet ne verifie que le lien entre un materiau et sa
+# mise en forme dans l'abstrait, pas l'identification du materiau d'une oeuvre que l'on regarde.
+#
+# S53 (session hors sprint, contenu seul). Ligne HDA-CM1-03 de squad/programme/MATRICE-couverture.md,
+# non couvert : meme motif que HDA-CM1-01 (DEC-0075). Le risque propre a la ligne, un titre qui porte le
+# materiau (ART-4), est ecarte ici autrement : aucune oeuvre n'est nommee, et l'enonce decrit le
+# materiau par un trait propre (transparent, cuivre et etain, peau d'animal, tiges d'une plante) sans
+# jamais le nommer ; le mot n'apparait que dans les propositions.
+# Faits (HIS-3), connaissances courantes du cycle 3 : le verre des vitraux est transparent ; le marbre
+# est une pierre dure qui se polit et sert aux statues de l'Antiquite ; le bronze est un alliage de cuivre
+# et d'etain ; le parchemin est une peau d'animal preparee ; le papyrus est fait de tiges d'une plante
+# d'Egypte ; l'argile durcit a la cuisson ; une tapisserie est tissee de fils ; les morceaux d'un vitrail
+# sont tenus par du plomb ; une statue de bronze est coulee dans un moule. A confirmer par nadia-prof,
+# seule autorite sur le Done pedagogique.
+# Douze items, au-dessus des dix manches par defaut.
+schema: 1
+id: cm1-hda-materiaux-mise-en-forme
+type: question
+descripteur:
+  matiere: "Histoire des arts"
+  niveau: "CM1"
+  domaine: "Décrire une œuvre et en dégager les caractéristiques"
+  competence: "Identifier les matériaux d'une œuvre et la manière dont l'artiste leur a donné forme (référentiel CM1, ligne HDA-CM1-03)."
+lignesDeReferentiel: ["HDA-CM1-03"]
+items:
+  - enonce: "De quelle matière transparente sont faits les vitraux des cathédrales ?"
+    bonneReponse: "le verre"
+    distracteurs: ["le marbre", "le papier"]
+    indice: "La lumière du jour passe à travers cette matière."
+  - enonce: "Quelle pierre, dure et brillante une fois polie, a servi à tailler de nombreuses statues de l'Antiquité ?"
+    bonneReponse: "le marbre"
+    distracteurs: ["l'argile", "le verre"]
+    indice: "Cette pierre prend un bel éclat quand on la polit."
+  - enonce: "Quel métal, fait de cuivre et d'étain mélangés, sert à couler des statues ?"
+    bonneReponse: "le bronze"
+    distracteurs: ["l'or", "le fer"]
+    indice: "Ce métal est un mélange de deux autres."
+  - enonce: "Comment appelle-t-on la peau d'animal préparée sur laquelle on peignait des images au Moyen Âge ?"
+    bonneReponse: "le parchemin"
+    distracteurs: ["le papyrus", "le papier"]
+    indice: "Cette matière vient d'un animal."
+  - enonce: "Comment appelle-t-on la matière faite avec les tiges d'une plante d'Égypte et utilisée pour écrire ?"
+    bonneReponse: "le papyrus"
+    distracteurs: ["le parchemin", "le marbre"]
+    indice: "Cette matière vient d'une plante qui pousse près du Nil."
+  - enonce: "Quelle matière, molle avant d'être cuite au four, sert à fabriquer des vases ?"
+    bonneReponse: "l'argile"
+    distracteurs: ["le verre", "le marbre"]
+    indice: "Elle durcit quand on la chauffe."
+  - enonce: "De quoi est faite une tapisserie ?"
+    bonneReponse: "de fils tissés"
+    distracteurs: ["de morceaux de verre", "de blocs de pierre"]
+    indice: "Pense à un tissu décoré."
+  - enonce: "Qu'est-ce qui relie les morceaux de verre d'un vitrail ?"
+    bonneReponse: "des bandes de plomb"
+    distracteurs: ["de la colle", "des clous"]
+    indice: "Ces bandes dessinent des lignes sombres entre les morceaux."
+  - enonce: "Comment donne-t-on sa forme durable à un vase d'argile après l'avoir modelé ?"
+    bonneReponse: "en le cuisant dans un four"
+    distracteurs: ["en le tissant", "en le gravant"]
+    indice: "Cette étape le rend dur."
+  - enonce: "Comment un sculpteur donne-t-il sa forme à un bloc de marbre ?"
+    bonneReponse: "en le taillant"
+    distracteurs: ["en le tissant", "en le cuisant"]
+    indice: "Il enlève de la matière avec un ciseau."
+  - enonce: "Comment donne-t-on sa forme à de l'argile molle avec les mains ?"
+    bonneReponse: "en la modelant"
+    distracteurs: ["en la taillant", "en la tissant"]
+    indice: "Les doigts la façonnent."
+  - enonce: "Comment fabrique-t-on une statue de bronze ?"
+    bonneReponse: "en versant le métal fondu dans un moule"
+    distracteurs: ["en le tissant", "en le gravant"]
+    indice: "Le métal est liquide avant de se solidifier."

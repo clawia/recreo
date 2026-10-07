@@ -1,0 +1,78 @@
+# DEGRADE : aucune image d'oeuvre n'est servie ; le paquet ne verifie que la definition d'une technique,
+# d'un geste ou d'un genre, pas le fait de les reconnaitre dans une oeuvre observee.
+#
+# S53 (session hors sprint, contenu seul). Ligne HDA-CM1-02 de squad/programme/MATRICE-couverture.md,
+# non couvert : meme motif que HDA-CM1-01 (DEC-0075). Mention exigee d'avance si la ligne bouge :
+# oeuvres visuelles seules ; l'oeuvre ecoutee reste non couvrable, faute de son. Aucune oeuvre n'est
+# nommee : chaque item definit une technique (fresque, mosaique, tapisserie, vitrail, gravure,
+# enluminure), un geste (tailler, modeler, tisser, graver) ou un genre (portrait, paysage, nature morte).
+# Chaque definition ecarte les distracteurs par un trait propre (plomb du vitrail, planche de la gravure,
+# livre copie a la main de l'enluminure), jamais par un trait que deux techniques partagent.
+# Faits (HIS-3), definitions courantes du cycle 3 : la fresque est peinte sur un mur ; la mosaique
+# assemble de petits morceaux ; la tapisserie est tissee ; le vitrail relie du verre par du plomb ; la
+# gravure imprime une image a partir d'une planche creusee ; l'enluminure orne un livre copie a la main ;
+# tailler enleve de la matiere, modeler faconne une matiere molle. A confirmer par nadia-prof, seule
+# autorite sur le Done pedagogique.
+# Treize items, au-dessus des dix manches par defaut.
+schema: 1
+id: cm1-hda-caracteristiques-techniques
+type: question
+descripteur:
+  matiere: "Histoire des arts"
+  niveau: "CM1"
+  domaine: "Décrire une œuvre et en dégager les caractéristiques"
+  competence: "Dégager d'une œuvre observée ses principales caractéristiques techniques et formelles : technique, geste, genre (référentiel CM1, ligne HDA-CM1-02)."
+lignesDeReferentiel: ["HDA-CM1-02"]
+items:
+  - enonce: "Quelle technique consiste à peindre directement sur un mur ?"
+    bonneReponse: "la fresque"
+    distracteurs: ["la tapisserie", "la gravure"]
+    indice: "Le support de cette peinture est une paroi."
+  - enonce: "Quelle technique assemble de petits morceaux de pierre ou de verre pour faire une image ?"
+    bonneReponse: "la mosaïque"
+    distracteurs: ["la fresque", "la gravure"]
+    indice: "L'image se compose de très nombreux petits éléments."
+  - enonce: "Quelle technique fabrique une image en tissant des fils ?"
+    bonneReponse: "la tapisserie"
+    distracteurs: ["la fresque", "la gravure"]
+    indice: "Cette technique utilise un métier à tisser."
+  - enonce: "Quelle technique relie des morceaux de verre colorés avec des bandes de plomb ?"
+    bonneReponse: "le vitrail"
+    distracteurs: ["la tapisserie", "la fresque"]
+    indice: "Cette œuvre se place dans une fenêtre."
+  - enonce: "Quelle technique imprime plusieurs fois une même image à partir d'une planche creusée ?"
+    bonneReponse: "la gravure"
+    distracteurs: ["la fresque", "la mosaïque"]
+    indice: "La planche sert de modèle pour chaque épreuve."
+  - enonce: "Comment appelle-t-on les images peintes à la main pour décorer un livre copié à la main ?"
+    bonneReponse: "l'enluminure"
+    distracteurs: ["la mosaïque", "le vitrail"]
+    indice: "Ces images ornent les pages d'un manuscrit."
+  - enonce: "Un sculpteur enlève de la matière à un bloc de pierre avec un ciseau. Quel est ce geste ?"
+    bonneReponse: "tailler"
+    distracteurs: ["modeler", "tisser"]
+    indice: "Le bloc devient plus petit à chaque coup."
+  - enonce: "Un sculpteur façonne de l'argile molle avec ses mains. Quel est ce geste ?"
+    bonneReponse: "modeler"
+    distracteurs: ["tailler", "tisser"]
+    indice: "Les doigts donnent la forme à la matière."
+  - enonce: "Quel geste fait-on pour fabriquer une tapisserie avec des fils ?"
+    bonneReponse: "tisser"
+    distracteurs: ["tailler", "graver"]
+    indice: "Les fils s'entrecroisent."
+  - enonce: "Quel geste creuse un dessin dans une planche de bois ?"
+    bonneReponse: "graver"
+    distracteurs: ["tisser", "modeler"]
+    indice: "On creuse la planche avec un outil pointu."
+  - enonce: "Quel genre d'œuvre montre surtout des objets immobiles, comme des fruits ou des fleurs ?"
+    bonneReponse: "une nature morte"
+    distracteurs: ["un portrait", "un paysage"]
+    indice: "Rien ne bouge dans ce genre d'œuvre."
+  - enonce: "Comment appelle-t-on une œuvre qui montre le visage d'une personne ?"
+    bonneReponse: "un portrait"
+    distracteurs: ["un paysage", "une nature morte"]
+    indice: "Elle fait connaître les traits de quelqu'un."
+  - enonce: "Comment appelle-t-on une œuvre qui montre un décor de campagne, de montagne ou de mer ?"
+    bonneReponse: "un paysage"
+    distracteurs: ["un portrait", "une nature morte"]
+    indice: "Ce genre d'œuvre montre un lieu en plein air."
