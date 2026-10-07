@@ -339,8 +339,41 @@ AVERTISSEMENT = (
 )
 
 
+def agents_perdus(texte, resultats, sprint):
+    """Agents qui ont une ligne chiffree dans `texte` et aucune mesure dans `resultats`.
+
+    Des transcriptions effacees en partie donnent une mesure non vide mais plus basse : la
+    regenerer ecraserait des chiffres plus complets. Un agent chiffre hier et introuvable
+    aujourd'hui est le signe que la matiere a disparu, pas que la consommation a baisse.
+    """
+    chiffres = set()
+    for ligne in texte.splitlines():
+        cellule = ligne.split("|")[1].strip().strip("`") if ligne.startswith("| ") else ""
+        if cellule and cellule not in ("Agent", "**Total**"):
+            chiffres.add(cellule)
+    return chiffres - {agent for (identifiant, agent) in resultats if identifiant == sprint}
+
+
+def sections_du_journal(texte):
+    """Decoupe un journal en {titre de section: corps}, sur les lignes `## `."""
+    sections, titre = {}, None
+    for ligne in texte.splitlines():
+        if ligne.startswith("## "):
+            titre = ligne[3:].strip()
+            sections[titre] = []
+        elif titre is not None:
+            sections[titre].append(ligne)
+    return {cle: chr(10).join(lignes).strip(chr(10)) for cle, lignes in sections.items()}
+
+
 def ecrire_rapport_sprint(fenetre, resultats, dry_run):
     corps, mesure = tableau(resultats, fenetre["id"])
+    cible = fenetre["dossier"] / "RAPPORT-tokens.md"
+    ancien = cible.read_text(encoding="utf-8") if cible.exists() else ""
+    if agents_perdus(ancien, resultats, fenetre["id"]):
+        # Transcriptions absentes ou partielles : un rapport chiffre n'est pas remplace par moins.
+        print(f"conserve (transcriptions absentes ou partielles, chiffres ecrits) : {cible}")
+        return
     etat = " (sprint en cours, fenetre ouverte jusqu'a maintenant)" if fenetre["en_cours"] else ""
     texte = (
         f"# [Sprint {fenetre['id']}] Consommation de tokens\n\n"
@@ -352,7 +385,6 @@ def ecrire_rapport_sprint(fenetre, resultats, dry_run):
     if not mesure:
         texte += "\nAucune consommation mesuree sur cette fenetre.\n"
 
-    cible = fenetre["dossier"] / "RAPPORT-tokens.md"
     if dry_run:
         print(f"--- {cible} ---\n{texte}")
     else:
@@ -375,9 +407,16 @@ def ecrire_journal(repo, fenetres, resultats, dry_run):
     if any(identifiant == HORS_SPRINT for (identifiant, _) in resultats):
         identifiants.append(HORS_SPRINT)
 
+    cible = repo / "squad" / "rapports" / "JOURNAL-tokens.md"
+    anciennes = sections_du_journal(cible.read_text(encoding="utf-8")) if cible.exists() else {}
+    conservees = []
+
     for identifiant in identifiants:
         corps, mesure = tableau(resultats, identifiant)
         titre = identifiant if identifiant == HORS_SPRINT else f"Sprint {identifiant}"
+        if agents_perdus(anciennes.get(titre, ""), resultats, identifiant):
+            corps, mesure = anciennes[titre], True
+            conservees.append(identifiant)
         sections.append(f"## {titre}")
         sections.append("")
         sections.append(corps if mesure else "Aucune consommation mesuree.")
@@ -388,7 +427,8 @@ def ecrire_journal(repo, fenetres, resultats, dry_run):
         sections.append("")
 
     texte = "\n".join(sections)
-    cible = repo / "squad" / "rapports" / "JOURNAL-tokens.md"
+    if conservees:
+        print("sections conservees (transcriptions absentes ou partielles, chiffres ecrits) : " + ", ".join(conservees))
     if dry_run:
         print(f"--- {cible} ---\n{texte}")
     else:
