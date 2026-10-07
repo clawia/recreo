@@ -406,6 +406,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S54-BR-FRA-CE1-18 (s54) : entree neuve, FRA-CE1-18, conjuguer au futur
             // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.9).
             "bandit-manchot-futur-ce1",
+            // S54-BR-FRA-CE1-19 (s54) : entree neuve, FRA-CE1-19, conjuguer au passe compose
+            // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.10).
+            "bandit-manchot-passe-compose-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -681,6 +684,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les verbes au présent",
             // S54-BR-FRA-CE1-18 (s54) : titre neuf, sans niveau (ADR-0078).
             "Les verbes au futur",
+            // S54-BR-FRA-CE1-19 (s54) : titre neuf, sans niveau (ADR-0078).
+            "Les verbes au passé composé",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
@@ -1573,6 +1578,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-18) sans les guillemets
             // inverses.
             "Conjuguer au futur être, avoir et les verbes du premier groupe.",
+            // S54-BR-FRA-CE1-19 (s54) : competence neuve, FRA-CE1-19, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-19) sans les guillemets
+            // inverses.
+            "Conjuguer au passé composé être, avoir et les verbes du premier groupe, avec "
+                    + "l'auxiliaire avoir.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

@@ -786,6 +786,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-futur
     nombreDeManches: 10
+  - id: bandit-manchot-passe-compose-ce1
+    titre: "Les verbes au passé composé"
+    consigne: "Lis bien, puis choisis la bonne forme du verbe."
+    mecanique: bandit-manchot
+    paquet: ce1-passe-compose
+    nombreDeManches: 10
   - id: bandit-manchot-synonymes-contraires-ce1
     titre: "Même sens ou sens contraire"
     consigne: "Lis bien, puis choisis le bon mot."

@@ -8,7 +8,8 @@
 # PCO-CE1-3 : chaque item declare la famille de ses deux distracteurs dans l'ordre du fichier : (a)
 # l'infinitif a la place du participe, (b) l'auxiliaire a une autre personne avec le meme pronom, (c) le
 # present du verbe. Jamais l'imparfait.
-# Aucun indice ne renvoie a l'ecoute : participe et infinitif en -e/-er se prononcent de meme.
+# Aucun indice ne donne un critere qu'un distracteur de son item satisfait (ni "deux mots", ni "parle du passe") :
+# participe et infinitif en -e/-er se prononcent de meme, et "j'ai chanter" a deux mots.
 # TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
 # voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
 # la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
@@ -27,7 +28,7 @@ items:
   - enonce: "« chanter » : hier, ___ une chanson."
     bonneReponse: "j'ai chanté"
     distracteurs: ["j'ai chanter", "je chante"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, b
   - enonce: "« regarder » : hier soir, ___ un film."
     bonneReponse: "tu as regardé"
@@ -37,12 +38,12 @@ items:
   - enonce: "« laver » : hier, ___ les verres."
     bonneReponse: "il a lavé"
     distracteurs: ["il a laver", "il lave"]
-    indice: "Cherche la forme qui parle de ce qui s'est passé."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« chanter » : hier soir, ___ ensemble."
     bonneReponse: "nous avons chanté"
     distracteurs: ["nous avons chanter", "nous chantons"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« regarder » : hier, ___ les étoiles."
     bonneReponse: "vous avez regardé"
@@ -52,12 +53,12 @@ items:
   - enonce: "« danser » : hier soir, ___ sur la scène."
     bonneReponse: "ils ont dansé"
     distracteurs: ["ils ont danser", "ils dansent"]
-    indice: "Cherche la forme qui parle de ce qui s'est passé."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, b
   - enonce: "« jouer » : hier, ___ au ballon."
     bonneReponse: "j'ai joué"
     distracteurs: ["j'ai jouer", "j'as joué"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« dessiner » : ce matin, ___ une maison."
     bonneReponse: "tu as dessiné"
@@ -67,12 +68,12 @@ items:
   - enonce: "« avoir » : hier, ___ de la chance."
     bonneReponse: "il a eu"
     distracteurs: ["il a avoir", "il as eu"]
-    indice: "Cherche la forme qui parle de ce qui s'est passé."
+    indice: "Avec ce sujet, comment s'écrit « avoir » au présent ?"
   # PCO-CE1-3: b, c
   - enonce: "« jouer » : hier, ___ dehors."
     bonneReponse: "nous avons joué"
     distracteurs: ["nous avez joué", "nous jouons"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Avec ce sujet, comment s'écrit « avoir » au présent ?"
   # PCO-CE1-3: a, b
   - enonce: "« dessiner » : ce matin, ___ un arbre."
     bonneReponse: "vous avez dessiné"
@@ -82,12 +83,12 @@ items:
   - enonce: "« avoir » : hier, ___ un cadeau."
     bonneReponse: "ils ont eu"
     distracteurs: ["ils ont avoir", "ils a eu"]
-    indice: "Cherche la forme qui parle de ce qui s'est passé."
+    indice: "Avec ce sujet, comment s'écrit « avoir » au présent ?"
   # PCO-CE1-3: a, c
-  - enonce: "« être » : hier, ___ en classe."
+  - enonce: "« être » : hier, ___ en retard."
     bonneReponse: "j'ai été"
     distracteurs: ["j'ai être", "je suis"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: b, c
   - enonce: "« être » : hier, ___ à l'heure."
     bonneReponse: "tu as été"
@@ -97,14 +98,14 @@ items:
   - enonce: "« écouter » : ce matin, ___ la radio."
     bonneReponse: "elle a écouté"
     distracteurs: ["elle a écouter", "elle écoute"]
-    indice: "Cherche la forme qui parle de ce qui s'est passé."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, b
   - enonce: "« travailler » : la semaine dernière, ___ beaucoup."
     bonneReponse: "nous avons travaillé"
     distracteurs: ["nous avons travailler", "nous avez travaillé"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: b, c
-  - enonce: "« être » : hier, ___ au parc."
+  - enonce: "« être » : hier, ___ en avance."
     bonneReponse: "vous avez été"
     distracteurs: ["vous avons été", "vous êtes"]
     indice: "Le temps du verbe se lit au début de la phrase."
@@ -112,19 +113,19 @@ items:
   - enonce: "« aider » : hier, ___ en classe."
     bonneReponse: "elles ont aidé"
     distracteurs: ["elles ont aider", "elles a aidé"]
-    indice: "Cherche la forme qui parle de ce qui s'est passé."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, b
   - enonce: "« avoir » : hier, ___ très faim."
     bonneReponse: "j'ai eu"
     distracteurs: ["j'ai avoir", "j'as eu"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« parler » : hier, ___ à la maîtresse."
     bonneReponse: "tu as parlé"
     distracteurs: ["tu as parler", "tu parles"]
     indice: "Le temps du verbe se lit au début de la phrase."
   # PCO-CE1-3: a, c
-  - enonce: "« être » : hier, ___ dans la cour."
+  - enonce: "« être » : hier, ___ la première."
     bonneReponse: "elle a été"
     distracteurs: ["elle a être", "elle est"]
     indice: "Cherche la forme qui parle de ce qui s'est passé."
@@ -132,7 +133,7 @@ items:
   - enonce: "« avoir » : hier, ___ une bonne idée."
     bonneReponse: "nous avons eu"
     distracteurs: ["nous avons avoir", "nous avez eu"]
-    indice: "Un verbe au passé composé a deux mots : cherche-les."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« parler » : hier, ___ trop fort."
     bonneReponse: "vous avez parlé"
@@ -142,4 +143,4 @@ items:
   - enonce: "« laver » : ce matin, ___ la voiture."
     bonneReponse: "elles ont lavé"
     distracteurs: ["elles a lavé", "elles lavent"]
-    indice: "Cherche la forme qui parle de ce qui s'est passé."
+    indice: "Avec ce sujet, comment s'écrit « avoir » au présent ?"
