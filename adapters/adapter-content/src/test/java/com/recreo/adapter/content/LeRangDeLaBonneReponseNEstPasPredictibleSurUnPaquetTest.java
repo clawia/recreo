@@ -485,7 +485,7 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
                     + " aucune proposition ne commence par un chiffre"),
             Map.entry("cp-qlm-situer-la-france",
-            "12 items sur 12 portent des propositions textuelles (certains items portent un seul distracteur, donc deux propositions) : aucune des 35 propositions n'est numerique,"
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
                     + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
                     + " aucune proposition ne commence par un chiffre"),
             Map.entry("cp-qlm-vocabulaire-de-position",
