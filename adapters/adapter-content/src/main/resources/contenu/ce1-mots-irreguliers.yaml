@@ -1,0 +1,130 @@
+# DEGRADE : la reconnaissance immediate d'un mot frequent (une question de vitesse) n'est pas servable, le produit ne mesure pas le temps ; seule la lecture exacte du mot irregulier l'est, par la rime, sans voix.
+schema: 1
+id: ce1-mots-irreguliers
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Reconnaître les mots fréquents, dont les mots-outils et les mots irréguliers les plus courants (femme, monsieur, second...)."
+lignesDeReferentiel: ["FRA-CE1-03"]
+# S53-FRA-MOTS-IRREGULIERS (session hors sprint "s53 special", contenu seul). Redige par lea-dev
+# sur les conditions MFR-CE1-1 a MFR-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7
+# de squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 3.3). Aucun Done n'est
+# prononce ici : ce paquet attend l'audit de nadia-prof.
+#
+# MFR-CE1-1 : douze mots cibles distincts, tous des mots frequents que le dechiffrage regulier lit
+# faux : femme, monsieur, paon, faon, os, plomb, temps, doigt, porc, sept, oeil, second.
+# MFR-CE1-2 : le mot cible rime avec exactement une proposition (un mot regulier et frequent).
+# Familles de distracteurs, nommees au-dessus de chaque item dans l'ordre du fichier :
+#   a = un mot qui rime avec la lecture reguliere fautive du mot cible (crème pour femme) ;
+#   b = un mot visuellement proche du mot cible.
+# La famille a figure sur dix-sept items sur vingt, au-dessus de la moitie exigee.
+# MFR-CE1-3 : aucun mot dont la lecture varie selon les locuteurs, aucun mot que FRA-CE1-01 ou
+# FRA-CE1-02 sert par sa regle.
+# TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute, aucun texteSupport.
+# TRV-CE1-2 : trois propositions ; la bonne reponse n'est strictement la plus longue que dans la
+# moitie des items au plus. TRV-CE1-4 : seul "rime" est employe, admis par la ligne elle-meme.
+# TRV-CE1-5 : un indice par item, douze mots au plus, jamais la reponse, plusieurs formulations.
+# TRV-CE1-7 : vingt items. LON-CE1-5 : au plus six mots par proposition.
+items:
+  # mot=femme ; a, b
+  - enonce: "Quel mot rime avec « femme » ?"
+    bonneReponse: "dame"
+    distracteurs: ["crème", "ferme"]
+    indice: "Ce mot ne se lit pas comme il s'écrit."
+  # mot=femme ; a, b
+  - enonce: "Quel mot rime avec « femme » ?"
+    bonneReponse: "flamme"
+    distracteurs: ["poème", "fumée"]
+    indice: "Cherche le mot dont la fin sonne pareil."
+  # mot=monsieur ; a, b
+  - enonce: "Quel mot rime avec « monsieur » ?"
+    bonneReponse: "lieu"
+    distracteurs: ["fleur", "monstre"]
+    indice: "Ne te fie pas aux lettres, écoute le mot."
+  # mot=monsieur ; a, b
+  - enonce: "Quel mot rime avec « monsieur » ?"
+    bonneReponse: "bleu"
+    distracteurs: ["peur", "montre"]
+    indice: "Écoute la fin du mot dans ta tête."
+  # mot=paon ; a, b
+  - enonce: "Quel mot rime avec « paon » ?"
+    bonneReponse: "vent"
+    distracteurs: ["ballon", "pain"]
+    indice: "Ce mot ne se lit pas comme il s'écrit."
+  # mot=paon ; a, b
+  - enonce: "Quel mot rime avec « paon » ?"
+    bonneReponse: "grand"
+    distracteurs: ["melon", "pion"]
+    indice: "Redis chaque proposition tout bas, puis compare."
+  # mot=faon ; a, b
+  - enonce: "Quel mot rime avec « faon » ?"
+    bonneReponse: "dent"
+    distracteurs: ["salon", "fond"]
+    indice: "Attention : certaines lettres ne se prononcent pas."
+  # mot=os ; a, b
+  - enonce: "Quel mot rime avec « os » ?"
+    bonneReponse: "gosse"
+    distracteurs: ["gros", "ours"]
+    indice: "Lis le mot en entier avant de répondre."
+  # mot=os ; a, b
+  - enonce: "Quel mot rime avec « os » ?"
+    bonneReponse: "bosse"
+    distracteurs: ["chaud", "oser"]
+    indice: "Écoute la fin du mot dans ta tête."
+  # mot=plomb ; a, b
+  - enonce: "Quel mot rime avec « plomb » ?"
+    bonneReponse: "pont"
+    distracteurs: ["tombe", "plume"]
+    indice: "Attention : certaines lettres ne se prononcent pas."
+  # mot=plomb ; a, b
+  - enonce: "Quel mot rime avec « plomb » ?"
+    bonneReponse: "long"
+    distracteurs: ["bombe", "plombier"]
+    indice: "Ne te fie pas aux lettres, écoute le mot."
+  # mot=temps ; a, b
+  - enonce: "Quel mot rime avec « temps » ?"
+    bonneReponse: "gant"
+    distracteurs: ["lampe", "tempête"]
+    indice: "Cherche le mot dont la fin sonne pareil."
+  # mot=temps ; a, b
+  - enonce: "Quel mot rime avec « temps » ?"
+    bonneReponse: "enfant"
+    distracteurs: ["rampe", "tente"]
+    indice: "Ce mot ne se lit pas comme il s'écrit."
+  # mot=doigt ; a, b
+  - enonce: "Quel mot rime avec « doigt » ?"
+    bonneReponse: "roi"
+    distracteurs: ["bague", "doux"]
+    indice: "Attention : certaines lettres ne se prononcent pas."
+  # mot=doigt ; a, b
+  - enonce: "Quel mot rime avec « doigt » ?"
+    bonneReponse: "moi"
+    distracteurs: ["vague", "dos"]
+    indice: "Redis chaque proposition tout bas, puis compare."
+  # mot=porc ; a, b
+  - enonce: "Quel mot rime avec « porc » ?"
+    bonneReponse: "dort"
+    distracteurs: ["orque", "parc"]
+    indice: "Lis le mot en entier avant de répondre."
+  # mot=porc ; b, b
+  - enonce: "Quel mot rime avec « porc » ?"
+    bonneReponse: "mort"
+    distracteurs: ["porte", "pomme"]
+    indice: "Écoute la fin du mot dans ta tête."
+  # mot=sept ; b, b
+  - enonce: "Quel mot rime avec « sept » ?"
+    bonneReponse: "baguette"
+    distracteurs: ["sec", "sac"]
+    indice: "Attention : certaines lettres ne se prononcent pas."
+  # mot=oeil ; b, b
+  - enonce: "Quel mot rime avec « œil » ?"
+    bonneReponse: "feuille"
+    distracteurs: ["œuf", "huile"]
+    indice: "Ne te fie pas aux lettres, écoute le mot."
+  # mot=second ; a, b
+  - enonce: "Quel mot rime avec « second » ?"
+    bonneReponse: "dragon"
+    distracteurs: ["ronde", "seconde"]
+    indice: "Cherche le mot dont la fin sonne pareil."

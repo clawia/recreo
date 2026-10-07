@@ -1,0 +1,130 @@
+# DEGRADE : aucune mecanique ne fait deplacer des mots ; l'enfant choisit la phrase bien ordonnee parmi trois, il ne remet pas les mots dans l'ordre lui-meme (forme retenue par OMP-CE1, section 4.1).
+schema: 1
+id: ce1-ordre-des-mots
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Écriture"
+  competence: "Remettre dans l'ordre les mots d'une phrase pour qu'elle ait du sens, majuscule initiale et point final compris."
+lignesDeReferentiel: ["FRA-CE1-08"]
+# S53-FRA-ORDRE-DES-MOTS (session hors sprint "s53 special", contenu seul). Redige par lea-dev sur
+# les conditions OMP-CE1-1 a OMP-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7 de
+# squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 4.1). Aucun Done n'est
+# prononce ici : ce paquet attend l'audit de nadia-prof.
+#
+# OMP-CE1-1 : l'enonce est une liste de mots separes par " / ", le mot a majuscule et le point
+# compris, de quatre a six mots, sans virgule ; les mots donnes n'admettent qu'un seul ordre qui
+# fasse une phrase correcte et sensee. OMP-CE1-3 : l'enonce est toujours une liste, jamais une
+# phrase ecrite.
+# OMP-CE1-2 : familles de distracteurs, notees au-dessus de chaque item dans l'ordre du fichier :
+#   a = deux groupes echanges, phrase correcte mais absurde (quinze items sur vingt, au-dessus du
+#       tiers exige) ;
+#   b = le mot a majuscule ailleurs qu'en tete ;
+#   c = un adjectif mal place.
+# Jamais une suite de mots sans aucune construction.
+# TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute. TRV-CE1-2 : trois propositions,
+# la bonne reponse n'est jamais strictement la plus longue (les trois phrases ont les memes mots).
+# TRV-CE1-5 : un indice par item, douze mots au plus, jamais la reponse. TRV-CE1-7 : vingt items.
+# LON-CE1-5 : au plus six mots par proposition.
+items:
+  # a, b
+  - enonce: "dort / chat / Le / lit / le / sur / ."
+    bonneReponse: "Le chat dort sur le lit."
+    distracteurs: ["Le lit dort sur le chat.", "le chat dort sur Le lit."]
+    indice: "Lis chaque phrase : elle doit avoir du sens."
+  # a, c
+  - enonce: "mange / Tom / une / grosse / pomme / ."
+    bonneReponse: "Tom mange une grosse pomme."
+    distracteurs: ["Une grosse pomme mange Tom.", "Tom mange une pomme grosse."]
+    indice: "Demande-toi : qui fait l'action ?"
+  # a, b
+  - enonce: "lait / boit / Le / bébé / du / ."
+    bonneReponse: "Le bébé boit du lait."
+    distracteurs: ["Du lait boit le bébé.", "le bébé boit du Lait."]
+    indice: "Cherche le mot qui prend la majuscule."
+  # a, c
+  - enonce: "sac / Lina / porte / rouge / un / ."
+    bonneReponse: "Lina porte un sac rouge."
+    distracteurs: ["Un sac rouge porte Lina.", "Lina porte un rouge sac."]
+    indice: "Lis la phrase à voix basse : sonne-t-elle juste ?"
+  # a, b
+  - enonce: "brille / Le / soleil / ciel / dans / le / ."
+    bonneReponse: "Le soleil brille dans le ciel."
+    distracteurs: ["Le ciel brille dans le soleil.", "le soleil brille dans Le ciel."]
+    indice: "La phrase commence par une majuscule."
+  # a, b
+  - enonce: "l'herbe / mange / vache / La / ."
+    bonneReponse: "La vache mange l'herbe."
+    distracteurs: ["L'herbe mange la vache.", "la vache mange L'herbe."]
+    indice: "Demande-toi : qui fait l'action ?"
+  # a, b
+  - enonce: "pousse / vent / Le / nuage / le / ."
+    bonneReponse: "Le vent pousse le nuage."
+    distracteurs: ["Le nuage pousse le vent.", "le vent pousse Le nuage."]
+    indice: "Le point se met à la fin de la phrase."
+  # a, b
+  - enonce: "garde / chien / Le / maison / la / ."
+    bonneReponse: "Le chien garde la maison."
+    distracteurs: ["La maison garde le chien.", "le chien garde La maison."]
+    indice: "Lis chaque phrase : elle doit avoir du sens."
+  # b, c
+  - enonce: "chante / fille / La / petite / ."
+    bonneReponse: "La petite fille chante."
+    distracteurs: ["La fille petite chante.", "la petite fille Chante."]
+    indice: "Lis la phrase à voix basse : sonne-t-elle juste ?"
+  # b, c
+  - enonce: "roule / gros / Un / vite / camion / ."
+    bonneReponse: "Un gros camion roule vite."
+    distracteurs: ["Un camion gros roule vite.", "un gros camion roule Vite."]
+    indice: "Cherche le mot qui prend la majuscule."
+  # a, b
+  - enonce: "apporte / Le / lettre / facteur / la / ."
+    bonneReponse: "Le facteur apporte la lettre."
+    distracteurs: ["La lettre apporte le facteur.", "le facteur apporte La lettre."]
+    indice: "Demande-toi : qui fait l'action ?"
+  # a, b
+  - enonce: "mouille / La / route / pluie / la / ."
+    bonneReponse: "La pluie mouille la route."
+    distracteurs: ["La route mouille la pluie.", "la pluie mouille La route."]
+    indice: "Lis chaque phrase : elle doit avoir du sens."
+  # a, c
+  - enonce: "lance / Anna / ballon / rouge / le / ."
+    bonneReponse: "Anna lance le ballon rouge."
+    distracteurs: ["Le ballon rouge lance Anna.", "Anna lance le rouge ballon."]
+    indice: "Lis la phrase à voix basse : sonne-t-elle juste ?"
+  # a, b
+  - enonce: "brûle / feu / Le / bois / le / ."
+    bonneReponse: "Le feu brûle le bois."
+    distracteurs: ["Le bois brûle le feu.", "le feu brûle Le bois."]
+    indice: "La phrase commence par une majuscule."
+  # a, b
+  - enonce: "fait / boulanger / Le / pain / du / ."
+    bonneReponse: "Le boulanger fait du pain."
+    distracteurs: ["Du pain fait le boulanger.", "le boulanger fait Du pain."]
+    indice: "Demande-toi : qui fait l'action ?"
+  # b, c
+  - enonce: "aboie / petit / Un / fort / chien / ."
+    bonneReponse: "Un petit chien aboie fort."
+    distracteurs: ["Un chien petit aboie fort.", "un petit chien aboie Fort."]
+    indice: "Le point se met à la fin de la phrase."
+  # a, c
+  - enonce: "vieux / lit / Nina / livre / un / ."
+    bonneReponse: "Nina lit un vieux livre."
+    distracteurs: ["Un vieux livre lit Nina.", "Nina lit un livre vieux."]
+    indice: "Lis chaque phrase : elle doit avoir du sens."
+  # b, c
+  - enonce: "bon / sent / Le / gâteau / ."
+    bonneReponse: "Le gâteau sent bon."
+    distracteurs: ["le gâteau sent Bon.", "Le gâteau bon sent."]
+    indice: "Cherche le mot qui prend la majuscule."
+  # b, c
+  - enonce: "s'ouvre / grande / La / porte / ."
+    bonneReponse: "La grande porte s'ouvre."
+    distracteurs: ["La porte grande s'ouvre.", "la grande porte S'ouvre."]
+    indice: "Lis la phrase à voix basse : sonne-t-elle juste ?"
+  # a, b
+  - enonce: "tire / tracteur / Le / remorque / la / ."
+    bonneReponse: "Le tracteur tire la remorque."
+    distracteurs: ["La remorque tire le tracteur.", "le tracteur tire La remorque."]
+    indice: "Demande-toi : qui fait l'action ?"

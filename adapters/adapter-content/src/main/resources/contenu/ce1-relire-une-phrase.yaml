@@ -1,0 +1,131 @@
+# DEGRADE : l'enfant nomme l'erreur d'une phrase parmi trois propositions, il ne la corrige pas ; l'explication qui redonne la phrase juste (RLP-CE1-3, TRV-CE1-5) n'est pas servable, le garde-fou ChaquePaquetExpliqueSesItemsAVariationTest lie toute explication a la cle graphie et a un enonce qui est le mot lui-meme.
+schema: 1
+id: ce1-relire-une-phrase
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Écriture"
+  competence: "Relire une phrase donnée et y repérer une erreur (mot manquant, accord oublié, majuscule ou point absent)."
+lignesDeReferentiel: ["FRA-CE1-09"]
+# S53-FRA-RELIRE-UNE-PHRASE (session hors sprint "s53 special", contenu seul). Redige par lea-dev
+# sur les conditions RLP-CE1-1 a RLP-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7
+# de squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 4.2). Aucun Done n'est
+# prononce ici : ce paquet attend l'audit de nadia-prof.
+#
+# RLP-CE1-1 : l'enonce cite une phrase qui porte exactement une erreur. Quatre sortes, cinq items
+# chacune sur vingt (au moins un cinquieme) : mot manquant (items 1 a 5), accord oublie (6 a 10 :
+# trois sujet-verbe, deux groupe nominal), majuscule initiale absente (11 a 15), point final
+# absent (16 a 20). Une erreur d'accord n'est jamais en meme temps une faute
+# d'orthographe d'usage.
+# RLP-CE1-2 : deux formes de question. "Quelle erreur ?" avec trois etiquettes prises dans la liste
+# fermee suivante, et seulement elle :
+#   "Il manque un mot." / "Il manque la majuscule." / "Il manque le point." / "Un mot est mal accordé."
+# Ou "Quel mot est mal écrit ?" avec trois mots de la phrase, pour les accords (items 6, 7, 8).
+# TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute. TRV-CE1-2 : trois propositions,
+# la bonne reponse n'est strictement la plus longue que dans la moitie des items au plus.
+# TRV-CE1-4 : aucun mot de grammaire exclu. TRV-CE1-5 : un indice par item, douze mots au plus,
+# jamais la reponse. TRV-CE1-7 : vingt items. LON-CE1-1 et LON-CE1-2 : phrase citee et question
+# tiennent en vingt mots, la question etant la derniere phrase. LON-CE1-5 : au plus six mots par
+# proposition.
+items:
+  # mot manquant
+  - enonce: "« Le chat sur le tapis. » Quelle erreur ?"
+    bonneReponse: "Il manque un mot."
+    distracteurs: ["Il manque la majuscule.", "Il manque le point."]
+    indice: "Relis la phrase : dit-elle ce que fait le chat ?"
+  # mot manquant
+  - enonce: "« Les enfants dans la cour. » Quelle erreur ?"
+    bonneReponse: "Il manque un mot."
+    distracteurs: ["Un mot est mal accordé.", "Il manque le point."]
+    indice: "Relis la phrase : dit-elle ce que font les enfants ?"
+  # mot manquant
+  - enonce: "« Le soleil dans le ciel. » Quelle erreur ?"
+    bonneReponse: "Il manque un mot."
+    distracteurs: ["Il manque la majuscule.", "Un mot est mal accordé."]
+    indice: "Relis la phrase mot après mot."
+  # mot manquant
+  - enonce: "« Elle mange une grosse. » Quelle erreur ?"
+    bonneReponse: "Il manque un mot."
+    distracteurs: ["Il manque la majuscule.", "Il manque le point."]
+    indice: "Une grosse quoi ? Relis la phrase."
+  # mot manquant
+  - enonce: "« Samir joue ballon dans la cour. » Quelle erreur ?"
+    bonneReponse: "Il manque un mot."
+    distracteurs: ["Il manque la majuscule.", "Un mot est mal accordé."]
+    indice: "Lis la phrase à voix basse : sonne-t-elle juste ?"
+  # accord sujet-verbe, forme "mot mal ecrit"
+  - enonce: "« Les enfants joue dans la cour. » Quel mot est mal écrit ?"
+    bonneReponse: "joue"
+    distracteurs: ["enfants", "cour"]
+    indice: "Cherche qui fait l'action, puis relis le verbe."
+  # accord sujet-verbe, forme "mot mal ecrit"
+  - enonce: "« Les chats boit du lait. » Quel mot est mal écrit ?"
+    bonneReponse: "boit"
+    distracteurs: ["chats", "lait"]
+    indice: "Combien de chats y a-t-il ? Regarde le verbe."
+  # accord dans le groupe nominal, forme "mot mal ecrit"
+  - enonce: "« Lola a deux chat noirs. » Quel mot est mal écrit ?"
+    bonneReponse: "chat"
+    distracteurs: ["Lola", "noirs"]
+    indice: "Regarde le mot qui suit « deux »."
+  # accord dans le groupe nominal
+  - enonce: "« La petit fille chante. » Quelle erreur ?"
+    bonneReponse: "Un mot est mal accordé."
+    distracteurs: ["Il manque un mot.", "Il manque le point."]
+    indice: "Regarde les mots qui vont avec « fille »."
+  # accord sujet-verbe
+  - enonce: "« Ils mange une glace. » Quelle erreur ?"
+    bonneReponse: "Un mot est mal accordé."
+    distracteurs: ["Il manque la majuscule.", "Il manque un mot."]
+    indice: "Cherche qui mange, puis relis le verbe."
+  # majuscule initiale absente
+  - enonce: "« le chat dort sur le tapis. » Quelle erreur ?"
+    bonneReponse: "Il manque la majuscule."
+    distracteurs: ["Il manque le point.", "Il manque un mot."]
+    indice: "Regarde le premier mot de la phrase."
+  # majuscule initiale absente
+  - enonce: "« les enfants jouent dans la cour. » Quelle erreur ?"
+    bonneReponse: "Il manque la majuscule."
+    distracteurs: ["Un mot est mal accordé.", "Il manque le point."]
+    indice: "Regarde comment la phrase commence."
+  # majuscule initiale absente
+  - enonce: "« mon ami lit un livre. » Quelle erreur ?"
+    bonneReponse: "Il manque la majuscule."
+    distracteurs: ["Il manque un mot.", "Un mot est mal accordé."]
+    indice: "Regarde la première lettre de la phrase."
+  # majuscule initiale absente
+  - enonce: "« il fait beau aujourd'hui. » Quelle erreur ?"
+    bonneReponse: "Il manque la majuscule."
+    distracteurs: ["Il manque le point.", "Un mot est mal accordé."]
+    indice: "Regarde le premier mot de la phrase."
+  # majuscule initiale absente
+  - enonce: "« inès range ses livres. » Quelle erreur ?"
+    bonneReponse: "Il manque la majuscule."
+    distracteurs: ["Il manque un mot.", "Il manque le point."]
+    indice: "Regarde comment la phrase commence."
+  # point final absent
+  - enonce: "« Le chien aboie très fort » Quelle erreur ?"
+    bonneReponse: "Il manque le point."
+    distracteurs: ["Il manque la majuscule.", "Il manque un mot."]
+    indice: "Regarde la fin de la phrase."
+  # point final absent
+  - enonce: "« Nous allons à la piscine » Quelle erreur ?"
+    bonneReponse: "Il manque le point."
+    distracteurs: ["Un mot est mal accordé.", "Il manque la majuscule."]
+    indice: "Regarde le dernier signe de la phrase."
+  # point final absent
+  - enonce: "« Léa mange une orange » Quelle erreur ?"
+    bonneReponse: "Il manque le point."
+    distracteurs: ["Il manque un mot.", "Il manque la majuscule."]
+    indice: "Regarde la fin de la phrase."
+  # point final absent
+  - enonce: "« Les oiseaux chantent le matin » Quelle erreur ?"
+    bonneReponse: "Il manque le point."
+    distracteurs: ["Un mot est mal accordé.", "Il manque un mot."]
+    indice: "Regarde le dernier signe de la phrase."
+  # point final absent
+  - enonce: "« Tom range ses affaires » Quelle erreur ?"
+    bonneReponse: "Il manque le point."
+    distracteurs: ["Il manque la majuscule.", "Un mot est mal accordé."]
+    indice: "Regarde la fin de la phrase."

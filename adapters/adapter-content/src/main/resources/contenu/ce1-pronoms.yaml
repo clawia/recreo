@@ -1,0 +1,149 @@
+schema: 1
+id: ce1-pronoms
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Identifier à qui renvoie un pronom personnel (il, elle, ils, elles) ou un substitut simple dans un texte court."
+lignesDeReferentiel: ["FRA-CE1-05"]
+# S53-FRA-PRONOMS (session hors sprint "s53 special", contenu seul). Redige par lea-dev sur les
+# conditions PRN-CE1-1 a PRN-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7 de
+# squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 3.5), sous LON-CE1-3 et
+# LON-CE1-4 (squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md). Aucun Done n'est
+# prononce ici : ce paquet attend l'audit de nadia-prof.
+#
+# PRN-CE1-1 : la question cite le mot entre guillemets et demande ce qu'il designe. Pronoms il (5),
+# elle (5), ils (4), elles (3) : ils et elles reunis font sept items sur vingt, au-dessus du
+# cinquieme exige. Substituts simples (le garcon, l'animal, la fille) : trois, sous le tiers.
+# PRN-CE1-2 : dix items sur vingt ont deux candidats du texte du meme genre et du meme nombre que le
+# pronom, de sorte que le sens decide (items 1, 2, 4, 5, 7, 8, 11, 12, 15, 20) ; les dix autres se
+# resolvent par l'accord, indice legitime au CE1.
+# PRN-CE1-3 : le mot cite n'apparait qu'une fois dans le texte, son referent est dans la meme phrase
+# ou la precedente, aucun il impersonnel. Chaque proposition designe un personnage ou un objet du
+# texte avec les mots du texte.
+# TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute. TRV-CE1-5 : un indice par item,
+# douze mots au plus, jamais la reponse. TRV-CE1-6 : vingt prenoms masculins et vingt prenoms
+# feminins, origines variees, aucun role ni aucune activite distribue par genre.
+# TRV-CE1-7 : vingt items, vingt textes distincts. LON-CE1-5 : au plus six mots par proposition.
+items:
+  # il, le sens decide
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Tom tombe devant Malo. Il l'aide à se relever. Adam sourit."
+    bonneReponse: "Malo"
+    distracteurs: ["Tom", "Adam"]
+    indice: "Demande-toi : qui peut faire cette action ?"
+  # il, le sens decide
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Karim et Sacha attendent le bus. Il arrive en retard."
+    bonneReponse: "le bus"
+    distracteurs: ["Karim", "Sacha"]
+    indice: "Remplace le mot par chaque proposition et relis."
+  # elle, l'accord
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Zoé range le jeu de Paul. Elle ferme la boîte."
+    bonneReponse: "Zoé"
+    distracteurs: ["Paul", "le jeu"]
+    indice: "Cherche qui fait l'action dans la phrase d'avant."
+  # elle, le sens decide
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Lina prend Aya en photo avec un appareil. Elle sourit devant l'appareil."
+    bonneReponse: "Aya"
+    distracteurs: ["Lina", "un appareil"]
+    indice: "Le sens de la phrase aide à choisir."
+  # ils, le sens decide
+  - enonce: "Que désigne « ils » dans le texte ?"
+    texteSupport: "Noé et Hugo regardent les oiseaux. Ils volent très haut."
+    bonneReponse: "les oiseaux"
+    distracteurs: ["Noé et Hugo", "Noé"]
+    indice: "Demande-toi : qui peut faire cette action ?"
+  # ils, l'accord
+  - enonce: "Que désigne « ils » dans le texte ?"
+    texteSupport: "Samir et Lucie construisent une cabane. Ils la peignent en vert."
+    bonneReponse: "Samir et Lucie"
+    distracteurs: ["Samir", "une cabane"]
+    indice: "Relis la phrase d'avant pour trouver qui agit."
+  # elles, le sens decide
+  - enonce: "Que désigne « elles » dans le texte ?"
+    texteSupport: "Nina et Lola cueillent des fraises. Elles les mettent dans un panier."
+    bonneReponse: "Nina et Lola"
+    distracteurs: ["Nina", "des fraises"]
+    indice: "Remplace le mot par chaque proposition et relis."
+  # elles, le sens decide
+  - enonce: "Que désigne « elles » dans le texte ?"
+    texteSupport: "Jade et Anna jouent avec des cartes. Elles rient fort."
+    bonneReponse: "Jade et Anna"
+    distracteurs: ["Jade", "des cartes"]
+    indice: "Le sens de la phrase aide à choisir."
+  # il, l'accord
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Bastien ouvre la porte à Maëlle. Il entre dans la classe."
+    bonneReponse: "Bastien"
+    distracteurs: ["Maëlle", "la classe"]
+    indice: "Cherche qui fait l'action dans la phrase d'avant."
+  # elle, l'accord
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Ilyes donne une pomme à Sofia. Elle dit merci."
+    bonneReponse: "Sofia"
+    distracteurs: ["Ilyes", "une pomme"]
+    indice: "Relis la phrase d'avant pour trouver qui agit."
+  # il, le sens decide
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Rayan lance le ballon à Yanis. Il l'attrape."
+    bonneReponse: "Yanis"
+    distracteurs: ["Rayan", "le ballon"]
+    indice: "Demande-toi : qui peut faire cette action ?"
+  # elle, le sens decide
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Inès aide Kenza à porter la table. Elle est très lourde."
+    bonneReponse: "la table"
+    distracteurs: ["Inès", "Kenza"]
+    indice: "Remplace le mot par chaque proposition et relis."
+  # elle, l'accord
+  - enonce: "Que désigne « elle » dans le texte ?"
+    texteSupport: "Léo lit une histoire à Rose. Elle écoute bien."
+    bonneReponse: "Rose"
+    distracteurs: ["Léo", "une histoire"]
+    indice: "Cherche qui fait l'action dans la phrase d'avant."
+  # ils, l'accord
+  - enonce: "Que désigne « ils » dans le texte ?"
+    texteSupport: "Enzo et Maya rangent leurs livres. Ils les posent sur l'étagère."
+    bonneReponse: "Enzo et Maya"
+    distracteurs: ["Enzo", "leurs livres"]
+    indice: "Relis la phrase d'avant pour trouver qui agit."
+  # il, le sens decide
+  - enonce: "Que désigne « il » dans le texte ?"
+    texteSupport: "Le chat voit Elias. Il lui donne un biscuit."
+    bonneReponse: "Elias"
+    distracteurs: ["le chat", "un biscuit"]
+    indice: "Le sens de la phrase aide à choisir."
+  # substitut simple : le garcon
+  - enonce: "Que désigne « le garçon » dans le texte ?"
+    texteSupport: "Mina et Hamza regardent un chien. Le garçon lui donne de l'eau."
+    bonneReponse: "Hamza"
+    distracteurs: ["Mina", "un chien"]
+    indice: "Cherche qui est un garçon dans la phrase d'avant."
+  # substitut simple : l'animal
+  - enonce: "Que désigne « l'animal » dans le texte ?"
+    texteSupport: "Nour joue avec son chat. L'animal saute sur une chaise."
+    bonneReponse: "son chat"
+    distracteurs: ["Nour", "une chaise"]
+    indice: "Cherche qui est un animal dans la phrase d'avant."
+  # substitut simple : la fille
+  - enonce: "Que désigne « la fille » dans le texte ?"
+    texteSupport: "Adrien parle à Manon. La fille lui répond avec un sourire."
+    bonneReponse: "Manon"
+    distracteurs: ["Adrien", "un sourire"]
+    indice: "Cherche qui est une fille dans la phrase d'avant."
+  # ils, l'accord
+  - enonce: "Que désigne « ils » dans le texte ?"
+    texteSupport: "Nael et Eva cueillent des fleurs. Ils les offrent à Clément."
+    bonneReponse: "Nael et Eva"
+    distracteurs: ["Eva", "Clément"]
+    indice: "Demande-toi : qui peut faire cette action ?"
+  # elles, le sens decide
+  - enonce: "Que désigne « elles » dans le texte ?"
+    texteSupport: "Mila et Jeanne dessinent deux maisons. Elles les colorient."
+    bonneReponse: "Mila et Jeanne"
+    distracteurs: ["Jeanne", "deux maisons"]
+    indice: "Remplace le mot par chaque proposition et relis."
