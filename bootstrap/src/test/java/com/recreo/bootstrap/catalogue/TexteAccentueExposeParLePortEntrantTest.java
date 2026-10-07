@@ -352,6 +352,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S54-BR-SCI-CM1-15 (s54) : entree neuve, SCI-CM1-15, la Terre dans le systeme solaire,
             // le jour, la nuit et les saisons ; reprise corrigee, identifiant neuf.
             "bandit-manchot-jour-nuit-saisons-cm1",
+            // S54-BR-EMC-CM1-02 (s54) : entree neuve, EMC-CM1-02, reconnaitre ce qui porte atteinte
+            // a la personne d'autrui et savoir a qui s'adresser.
+            "bandit-manchot-atteinte-autrui-cm1",
             // S46-EMC-EMOTION-CM1 (s46) : entree neuve, EMC-CM1-01, identifier une emotion et
             // distinguer ce que l'on ressent de ce que l'on fait.
             "bandit-manchot-emotion-ressentir-agir-cm1",
@@ -647,6 +650,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "L'être humain et l'environnement",
             // S54-BR-SCI-CM1-15 (s54) : titre neuf, sans niveau (ADR-0078).
             "Le jour, la nuit et les saisons",
+            // S54-BR-EMC-CM1-02 (s54) : titre neuf, sans niveau (ADR-0078).
+            "Ce qui blesse les autres",
             // S46-EMC-EMOTION-CM1 (s46) : titre neuf.
             "Ressentir et agir",
             // S46-SCI-MOUVEMENT-CM1 (s46) : titre neuf.
@@ -1505,6 +1510,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // SCI-CM1-15).
             "Situer la Terre dans le système solaire et relier les mouvements de la Terre au "
                     + "jour, à la nuit et aux saisons.",
+            // S54-BR-EMC-CM1-02 (s54) : competence neuve, libelle du referentiel copie mot pour
+            // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-02).
+            "Reconnaître ce qui porte atteinte à la personne d'autrui (moquerie, insulte, mise à "
+                    + "l'écart, harcèlement) et savoir à qui s'adresser.",
             // S46-EMC-EMOTION-CM1 (s46) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
             // EMC-CM1-01).

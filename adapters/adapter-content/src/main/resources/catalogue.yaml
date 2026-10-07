@@ -828,3 +828,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-terre-jour-nuit-saisons
     nombreDeManches: 10
+  - id: bandit-manchot-atteinte-autrui-cm1
+    titre: "Ce qui blesse les autres"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-atteinte-autrui
+    nombreDeManches: 10
