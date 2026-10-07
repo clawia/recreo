@@ -31,8 +31,8 @@ lignesDeReferentiel: ["QLM-CP-10"]
 # (devant item 2, derriere items 1 et 8, gauche item 4, droite items 3 et 11, au-dessus item 5,
 # au-dessous item 6, pres item 10, loin item 9).
 # FER-3 : trois taches, chacune sur des items propres :
-#   - relation inverse entre deux elements (items 1 a 7) ;
-#   - contraire d'un mot de position (items 8 a 11) ;
+#   - relation inverse entre deux elements (items 1 a 6) ;
+#   - contraire d'un mot de position (items 7 a 11) ;
 #   - extremite d'un alignement de trois elements (items 12 a 14).
 # FER-2 : quatorze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
 #
@@ -69,10 +69,10 @@ items:
     bonneReponse: "au-dessous de l'oiseau"
     distracteurs: ["au-dessus de l'oiseau", "derrière l'oiseau"]
     indice: "Pense à qui est tout en haut."
-  - enonce: "Le chat est près de la porte, le chien est loin. Qui est le plus loin ?"
-    bonneReponse: "le chien"
-    distracteurs: ["le chat"]
-    indice: "Compare la distance entre chaque animal et la porte."
+  - enonce: "Le chien n'est pas près de la porte. Où est le chien ?"
+    bonneReponse: "loin de la porte"
+    distracteurs: ["près de la porte"]
+    indice: "Pense à la distance entre le chien et la porte."
   - enonce: "Quel est le contraire de devant ?"
     bonneReponse: "derrière"
     distracteurs: ["à côté", "loin"]
