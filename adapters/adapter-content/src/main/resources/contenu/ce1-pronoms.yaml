@@ -83,9 +83,9 @@ items:
     indice: "Cherche qui fait l'action dans la phrase d'avant."
   # elle, l'accord
   - enonce: "Que désigne « elle » dans le texte ?"
-    texteSupport: "Ilyes donne une pomme à Sofia. Elle dit merci."
+    texteSupport: "Ilyes donne un gâteau à Sofia. Elle dit merci."
     bonneReponse: "Sofia"
-    distracteurs: ["Ilyes", "une pomme"]
+    distracteurs: ["Ilyes", "un gâteau"]
     indice: "Relis la phrase d'avant pour trouver qui agit."
   # il, le sens decide
   - enonce: "Que désigne « il » dans le texte ?"
@@ -101,15 +101,15 @@ items:
     indice: "Remplace le mot par chaque proposition et relis."
   # elle, l'accord
   - enonce: "Que désigne « elle » dans le texte ?"
-    texteSupport: "Léo lit une histoire à Rose. Elle écoute bien."
+    texteSupport: "Léo lit un livre à Rose. Elle écoute bien."
     bonneReponse: "Rose"
-    distracteurs: ["Léo", "une histoire"]
+    distracteurs: ["Léo", "un livre"]
     indice: "Cherche qui fait l'action dans la phrase d'avant."
   # ils, l'accord
   - enonce: "Que désigne « ils » dans le texte ?"
-    texteSupport: "Enzo et Maya rangent leurs livres. Ils les posent sur l'étagère."
+    texteSupport: "Enzo et Maya rangent leurs affaires. Ils les posent sur l'étagère."
     bonneReponse: "Enzo et Maya"
-    distracteurs: ["Enzo", "leurs livres"]
+    distracteurs: ["Enzo", "leurs affaires"]
     indice: "Relis la phrase d'avant pour trouver qui agit."
   # il, le sens decide
   - enonce: "Que désigne « il » dans le texte ?"
