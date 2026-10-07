@@ -20108,3 +20108,76 @@ une tache nommee, 0,5, affectee a l'instance qui porte l'accumulation. Elle a et
   l'existence du fichier et le traitement de chaque propriete.
 - **Lien decision** : `DEC-0112` (section 5.4).
 - **Agent pressenti** : `nadia-prof`, meme instance que son passage de decision.
+
+
+## Reports de s53 - proposes pour s54, non engages
+
+**Statut de cette section.** Ecrite par `sofia-sm` a la cloture de s53 (`squad/sprints/s53-relecture-paquets-session-contenu/review.md`,
+obstacles 3 a 10 et section 9). **Rien n'est engage ici** : le perimetre de s54 est a `camille-po` et a l'utilisatrice
+(`DEC` d'ouverture). Les stories sont a reprendre, reformuler ou rejeter par `camille-po`, qui tient ce fichier. Aucune
+ligne de matrice ne change de statut par cette section.
+
+### S53-REPORT-GRANDS-NOMBRES - Une espace insecable avant ":" dans les 14 enonces de `cm1-grands-nombres`, et les deux constantes du test qui les classe
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que la consigne "Ecris en chiffres : ..." ne coupe pas la ligne entre le mot et
+  les deux-points, afin de lire une consigne correcte (`DEC-0002`, amendement du 2026-08-04).
+- **Constat** (`relecture-cloture.md` section 2, point R4) : 14 `enonce` de `cm1-grands-nombres.yaml`, 7 "Ecris en chiffres : ..."
+  et 7 "Lis ce nombre : ...", portent une espace ordinaire avant ":". Remplacer l'espace dans les 14 lignes seules fait echouer
+  `chacunDesQuatreVerbesEstRepresenteParAuMoinsUnQuartDuPaquet` (28 attendus, 14 obtenus) : `PaquetCm1GrandsNombresTest` classe les
+  items par `startsWith` sur `PREFIXE_ECRIRE` et `PREFIXE_LIRE`, deux constantes (lignes 60 et 61) qui portent l'espace ordinaire.
+- **Criteres d'acceptation** :
+  - Etant donne `round-two`, quand on lance `grep -cE '^ *- enonce: ".* :' adapters/adapter-content/src/main/resources/contenu/cm1-grands-nombres.yaml`,
+    alors la sortie est 0. Aujourd'hui elle est 14 : rouge sur l'existant.
+  - **Les 14 lignes et les deux constantes changent dans un seul commit** ; un commit qui ne change que l'un des deux est rouge.
+  - `bash outils/mvn-jdk21.sh -B clean verify` sur la racine est vert, aucune assertion de `PaquetCm1GrandsNombresTest` n'est
+    affaiblie, le compte de tests ne change pas.
+- **Fait voisin, non engage** (`relecture-cloture.md` section 2, "Corollaire") : 13 fichiers portent " :" avec une espace ordinaire
+  dans un `indice` et au moins 9 fichiers une espace ordinaire avant "?" dans un `enonce`, paquets d'avant s53 qui relevent du
+  cliquet de `TYP-1` (`ADR-0067`). Cette story n'y touche pas.
+- **Agent pressenti** : a affecter au planning de s54 par `sofia-sm` ; le relecteur route le geste a `theo-archi` ou au
+  developpeur du test.
+
+### S53-REPORT-REDACTION - Quatre chiffres et une provenance a corriger dans les decisions de s53
+
+Ce sont des corrections de texte, routees par la relecture de cloture (`relecture-cloture.md` section 3). Chacune est a son auteur.
+
+| Point | Ce qui est ecrit | Ce que la mesure donne | A qui |
+|---|---|---|---|
+| R1 | `DEC-0112` section 0 mesure 3 et section 3 Q4 : l'espace insecable n'est pas la cause, "0 fichier" | 4 fichiers (`ce1-accord-groupe-nominal`, `ce1-classes-de-mots`, `ce1-inference`, `ce1-texte-narratif`), `relecture-p11.md` section 2 | `camille-po` (amendement de `DEC-0112`), `yanis-qa` pour sa lecture de testabilite |
+| R2 | `DEC-0112` section 3, Q4 et Q8 : "Relaye de l'utilisatrice" | ce n'est pas l'une des trois formes de `DEC-0062` ; meme remarque pour `relecture-p11.md` lignes 7 a 9 | `camille-po`, `relecteur-pedagogique` |
+| R3 | arbitrage s53 section 11 : "six fichiers portent une espace ordinaire avant ':' dans un `enonce`" | un seul fichier, `cm1-grands-nombres` ; les cinq autres noms viennent de commentaires | `nadia-prof` |
+| R5 | story `S53SPE-RELECTURE`, point P11 : "onze paquets plus anciens" | 9 mesures (`relecture-p11.md` section 3), ecart non explique | `camille-po` (erratum, comme pour "51 paquets") |
+| - | `S53-REL-10` (base rouge de s53, trois commits de contenu) absente du planning, du backlog et de `DEC-0112` | `review.md` obstacle 3 | `camille-po` (amendement de `DEC-0112`) |
+
+### Trois postes de `DEC-0112` section 5, non livres a s53 : arbitrage de l'utilisatrice en attente
+
+Les trois stories existent plus haut dans ce fichier. **Etat au 2026-10-07, cloture de s53 : non livrees**, `DEC-0112` les avait
+engagees a s53 hors du perimetre P1 a P11 (`review.md` section 3, preuves par commande).
+
+- `S51-SCI-CORPS-CM1-RESERVES` (`CRP-CM1-R1` a `R3`, 0,5) : `cm1-sciences-corps.yaml` est inchange depuis `9d44d510` ; le jeu est
+  toujours servi (`grep -c "corps-cm1"` sur `catalogue.yaml` rend 1).
+- `S53-PASSE-TRANSVERSE` (`PAR-4`, 0,5) : `find squad -iname 'PASSE-TRANSVERSE-s53*'` ne rend rien.
+- `S51-OUTIL-JOURNAL-TOKENS` : `outils/` inchange. Prix rendu par `theo-archi` (`confirmation-archunit.md` section 5) : une
+  fonction de 20 a 30 lignes et un fichier de test, aucun changement de CI. Ce que le prix ajoute : `ecrire_rapport_sprint` a le meme
+  defaut que le journal, et `outils/rapport-tokens.py` lance sans `--sprint` reecrit le `RAPPORT-tokens.md` de chaque sprint ; les criteres
+  de la story ne visent que le journal. **Poste sans proprietaire.**
+
+La `DEC` de s54 les engage avec un proprietaire, ou les retire avec un motif : `DEC-0112` section 5.5 interdit de les reporter en
+silence.
+
+### S53-BRANCHEMENT-45-PAQUETS - Brancher au catalogue les 45 paquets de la session de contenu (proposition, non engagee)
+
+- **Etat** : proposition `P-BR` du planning de s53 et `DEC-0112` section 8, **non engagee, non decidee**. La decision est a
+  l'utilisatrice (`DEC-0112` : *"brancher, et dans quel ordre de matieres ?"*).
+- **Ce que brancher demande, par paquet** (planning de s53) : une entree de `catalogue.yaml`, ses declarations dans les garde-fous de
+  test, l'audit et la fiche de `nadia-prof`, la mention `MNC-1` dans tout Done, un passage de matrice.
+- **Ordre de grandeur, borne basse, hypothese non verifiee** : 45,0 au tarif de 1,0 par paquet, soit au moins six sprints a 8,0.
+  **Le tarif reel est a `nadia-prof`.**
+- **Ce que s53 a rendu possible** : les onze points de relecture sont decides et appliques ; un paquet corrige avant son
+  branchement se paie au premier passage, pas au tarif de rejeu (`PAR-10`, `PAR-14`).
+- **Ce qu'il reste a lire au branchement** (faits ecrits par s53) : six points que `nadia-prof` ne peut juger qu'en jouant
+  (arbitrage s53 section 13) ; 53 items de quatre paquets neufs hors du calcul de rang automatique, sans paragraphe de motif date
+  (`confirmation-archunit.md` section 3.2) ; le motif de `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` non eprouve par mutation
+  (`rapport-qualite.md` section 4) ; les reecritures de la base rouge (`cp-emc-personnes-differentes`, `cp-qlm-modes-de-vie`,
+  `cp-qlm-vocabulaire-de-position` items 12 a 14, `ce1-mots-invariables` item 7) que `nadia-prof` n'a pas relues apres coup.
+- **Critere d'acceptation, a ecrire par `camille-po`** apres l'arbitrage de l'utilisatrice : il ne peut pas l'etre avant.
