@@ -20181,3 +20181,26 @@ silence.
   (`rapport-qualite.md` section 4) ; les reecritures de la base rouge (`cp-emc-personnes-differentes`, `cp-qlm-modes-de-vie`,
   `cp-qlm-vocabulaire-de-position` items 12 a 14, `ce1-mots-invariables` item 7) que `nadia-prof` n'a pas relues apres coup.
 - **Critere d'acceptation, a ecrire par `camille-po`** apres l'arbitrage de l'utilisatrice : il ne peut pas l'etre avant.
+
+### S53-REPORT-TROIS-LIGNES - `ART-CP-10`, `SCI-CM1-15`, `SCI-CM1-18` : reportees a s54, de nouveau `non couvert` (non engagees)
+
+- **Origine** : l'utilisatrice, le 2026-10-07, a la question Q1 de `DEC-0113` : *"remets les 3 lignes à s54 si Aucune des trois
+  lignes n'est une impossibilité"* (`DEC-0113` section 9, forme 2 de `DEC-0062`). Aucune des trois n'est une impossibilite
+  (`DEC-0113` sections 2 et 3) : `DEC-0113` est `Refusee`, les trois lignes sont `non couvert` dans la matrice, denominateur 182.
+- **Aucun besoin d'enfant n'est reecrit ici** : chaque ligne garde sa competence programme et ses motifs.
+
+| Ligne | Etat | Compte de report (sprints hors perimetre) | Ou est le motif |
+|---|---|---|---|
+| `ART-CP-10` (rapprocher deux oeuvres, arts plastiques CP) | jamais construite, jamais refusee ; attend une mecanique qui montre deux oeuvres ensemble | **quatre** : s50, s51, s52, s53 | `squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md`, Q1 (pas de fiche : aucun jeu n'a existe) |
+| `SCI-CM1-15` (la Terre, le jour, la nuit, les saisons) | paquet `S51-SCI-TERRE-CM1` **REFUSE** le 2026-10-06, deux motifs (items 4 et 11), hors catalogue | **trois** : s51, s52, s53 | `FICHE-bandit-manchot-terre-cm1.md`, verdict du 2026-10-06 |
+| `SCI-CM1-18` (effet de l'activite humaine, geste de preservation) | paquet `S51-SCI-ACTIVITE-HUMAINE-CM1` **REFUSE deux fois**, motif de l'item 11, hors catalogue | **trois** : s51, s52, s53 | `FICHE-bandit-manchot-activite-humaine-cm1.md`, S2-3 |
+
+- **Rappel sur les motifs de refus** : les motifs des deux paquets de sciences sont ecrits dans leurs fiches de conformite ; celui
+  d'`ART-CP-10` ne l'est pas, parce qu'elle n'a jamais ete refusee, et vit dans l'arbitrage prealable de `nadia-prof`. Une story
+  corrective reprend les mots de ces motifs, elle ne les traduit pas.
+- **Ce que s54 doit en faire** : un quatrieme report des lignes de sciences et un cinquieme d'`ART-CP-10` ne sont pas un arbitrage,
+  c'est une direction que personne n'a choisie (`DEC-0112` sections 5.1 et 6). La `DEC` d'ouverture de s54 les engage avec un
+  proprietaire et un financement (`DEC-0112` 5.1 : le vivier de sciences CM1 pese 2,0 contre 4,0 exiges d'une instance), ou les
+  met devant l'utilisatrice avec une question qui ne se resolve pas par "pas maintenant".
+- **Criteres d'acceptation** : a ecrire par `camille-po` quand s54 engage l'une des trois, avec le motif de la fiche repris mot pour
+  mot ; ils ne peuvent pas l'etre avant.

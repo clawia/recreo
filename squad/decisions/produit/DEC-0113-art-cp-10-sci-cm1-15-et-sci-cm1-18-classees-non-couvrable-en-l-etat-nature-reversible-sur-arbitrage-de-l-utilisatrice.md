@@ -9,8 +9,9 @@
 - **Competences programme visees** : `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 10),
   `SCI-CM1-15` et `SCI-CM1-18` (`squad/programme/sciences-et-technologie/competences-cm1.md`). Les trois passent de
   `non couvert` a `non couvrable en l'etat` ; aucune ne ferme.
-- **Statut** : **Proposee**. Raison en section 1 : l'arbitrage sur lequel elle repose n'est pas ecrit dans le depot
-  avec les mots de l'utilisatrice. Passe a `Acceptee` des que ses mots sont cites en forme 2 (section 8).
+- **Statut** : **Refusee** le 2026-10-07 (meme jour que sa redaction). Elle n'a jamais ete `Acceptee`. La reponse de
+  l'utilisatrice a la question Q1 remet les trois lignes a s54 : voir section 9. Le texte des sections 1 a 8 est conserve
+  tel qu'ecrit, comme historique.
 - **Lien** : `DEC-0042` (statut `non couvrable en l'etat`, amendement du 2026-08-24) ; `DEC-0046` section 4.1
   (nature reversible) ; `DEC-0062` (trois formes d'attribution) ; `DEC-0066` (precedent de reclassement sur
   arbitrage) ; `DEC-0109` section 10.1, `DEC-0111` section 9 et amendement du 2026-10-06, `DEC-0112` sections 5.1 et 6 ;
@@ -145,3 +146,42 @@ font passer cette decision a `Acceptee`.
 2. Troisieme motif ajoute a la definition du statut dans la matrice.
 3. Denominateur atteignable 182 -> 179, taux 72,53 % -> 73,74 %, effet de denominateur seul.
 4. Statut `Proposee` jusqu'a la citation des mots de l'utilisatrice.
+
+## 9. Retrait du 2026-10-07 : la reponse de l'utilisatrice a Q1
+
+**Ses mots (`DEC-0062`, forme 2), de l'utilisatrice, le 2026-10-07** : *"remets les 3 lignes à s54 si Aucune des trois
+lignes n'est une impossibilité"*. Cet enonce m'est parvenu dans le message de l'agent qui m'a lance, qui le donne comme
+la reponse de l'utilisatrice a Q1 ; je le cite tel que recu, majuscule de "Aucune" comprise, et je n'ai pas le message
+d'origine.
+
+**La condition est remplie, par la section 3 de cette decision** : `ART-CP-10` *"n'est pas impossible"* (3.1, reponse de
+`nadia-prof` a `C5` clause 1) ; `SCI-CM1-15` et `SCI-CM1-18` sont des paquets refuses, pas inconstructibles (matrice,
+cellules de statut) ; la section 2 ecrit elle-meme que *"Aucune de ces lignes n'est impossible"* et que le motif est un
+arbitrage de ne pas construire. La reponse retire donc au classement sa raison d'etre.
+
+**Ce qui en decoule**, applique dans le meme commit :
+
+1. **Statut `Refusee`**. Le depot n'emploie pas "Retiree" : `DEC-index.md` n'a que `Proposee`, `Acceptee`, `Refusee` et
+   `Remplacee par DEC-YYYY`. `Remplacee` suppose une decision de remplacement, il n'y en a pas. `Refusee` dit ce qui s'est
+   passe : le classement propose n'a pas ete retenu. Le numero `DEC-0113` n'est pas reutilise.
+2. **Matrice** : `ART-CP-10`, `SCI-CM1-15` et `SCI-CM1-18` redeviennent `non couvert` (le classement reste ecrit dans leurs
+   cellules, avec sa date). Le troisieme motif ajoute a la definition du statut `non couvrable en l'etat` est retire : il
+   n'a servi qu'a ces trois lignes. Denominateur atteignable 182, **132 / 182 = 72,53 %**, par la commande de la "Methode du
+   compte" lancee le 2026-10-07 sur la matrice de ce commit. Le gain de 1,21 point de la section 4 n'existe plus.
+3. **Backlog** : les trois lignes sont reportees a s54 (`docs/backlog/backlog.md`, "Reports de s53"), avec leur compte :
+   **quatre sprints** de report pour `ART-CP-10` (s50 a s53), **trois** pour les deux lignes de sciences (s51 a s53). Un
+   report en s54 serait le cinquieme, respectivement le quatrieme ; la `DEC` d'ouverture de s54 tranche, elle ne reporte pas
+   en silence (`DEC-0111` section 9, `DEC-0112` sections 5.1 et 6).
+4. **La contradiction avec `nadia-prof` disparait.** La section 3.1 nommait une contradiction : le 2026-10-04 elle avait
+   ecrit `ART-CP-10` *"jamais non couvrable en l'etat"*. Avec le classement retire, la matrice redit ce qu'elle ecrit ; sa
+   phrase n'a plus besoin d'etre reconciliee.
+5. **Routage de la section 7 caduc.** Rien a faire pour `theo-archi` sur `ADR-0104` du fait de cette decision (la ligne qu'il
+   servait n'est plus classee), pour les trois oeuvres propres a `ART-CP-10` (elles restent dormantes sous `O1`) ni pour
+   `nadia-prof` sur ses fiches. `sofia-sm` retire la mention "taux 132/179" de la cloture de s53 si elle y a ete ecrite.
+
+**Aucun paquet touche, aucun code, aucun catalogue.**
+
+## Decisions prises (retrait)
+
+5. `DEC-0113` est `Refusee` ; les decisions 1 a 4 ci-dessus ne s'appliquent pas.
+6. Les trois lignes sont `non couvert` et reportees a s54, taux 132 / 182 = 72,53 %.
