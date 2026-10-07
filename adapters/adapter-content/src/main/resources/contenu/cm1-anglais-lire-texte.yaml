@@ -1,0 +1,114 @@
+schema: 1
+id: cm1-anglais-lire-texte
+type: question
+descripteur:
+  matiere: "Langues vivantes (anglais)"
+  niveau: "CM1"
+  domaine: "Lire et comprendre"
+  competence: "Lire et comprendre un texte court et simple (consigne, message, courte description)."
+lignesDeReferentiel: ["LVE-CM1-05"]
+#
+# S53 (session de contenu seul, hors sprint). Referentiel copie conforme
+# (squad/programme/langues-vivantes/competences-cm1.md, LVE-CM1-05). Aucun Done n'est prononce ici,
+# tout est a juger par nadia-prof.
+#
+# CONDITION NON TENUE PAR CE FICHIER, a trancher par nadia-prof : la matrice et la fiche
+# squad/conformite/FICHE-bandit-manchot-anglais-cm1.md (section 8) disent que cette ligne "s'ouvre
+# quand un lexique valide existe sur plus d'un paquet" et qu'il faut un second paquet lexical. Ce
+# fichier n'en est pas un : il reutilise le seul lexique deja servi, celui de cm1-anglais.yaml, et
+# il est ecrit pour que nadia-prof dise si cela suffit ou si un second paquet lexical doit le
+# preceder. Ce fichier ne prejuge pas de sa reponse.
+#
+# LEXIQUE FERME ET DECLARE (principe d'ANG-S1 transpose a la lecture). Noms, tous deja servis en
+# choix par cm1-anglais.yaml (LVE-CM1-04) : house, dog, friend, morning, bedroom, street, bridge,
+# hill, town, field, witch, castle, fairy, king, ghost. Mots-outils, que ce fichier utilise sans
+# qu'aucun paquet du depot ne les ait servis en choix : hello, good, this, is, my, a, in, on,
+# and, look, at. Ces onze mots sont la part du texte que l'enfant doit deviner ou connaitre ; ils
+# sont declares ici pour que nadia-prof les juge un par un (un texte suppose des verbes et des
+# determinants, ARBITRAGE-PREALABLE-s28, section 6.3, et ANG-5 interdit seulement d'evaluer une
+# forme grammaticale non enseignee : ici aucune reponse n'est une forme grammaticale).
+#
+# Le mot anglais the est lu comme le mot francais the accentue par AucunMotServiNeSEcarteDeSonAccentTest
+# (ADR-0065), qui juge tout enonce comme du francais ; aucun texte de ce paquet ne le contient, et les
+# determinants sont a, my et this. Ce garde-fou n'a pas de porte pour un texte en langue etrangere dans
+# un enonce.
+#
+# ANG-5 : aucune bonne reponse n'est une forme grammaticale. Toutes les reponses sont des mots ou
+# des groupes francais (un lieu, un personnage, une consigne, une nature de texte). Aucune saisie.
+#
+# Sens de traduction : le texte est en anglais, la question et les reponses en francais. Aucun item
+# n'est anglais -> anglais.
+#
+# FER-1 : les trois natures de texte de la parenthese sont chacune en bonne reponse (items 10, 11 et
+# 12 : une consigne, un message, une description), et chacune est lue dans au moins deux items
+# d'information (consignes : items 6 et 7 ; messages : items 1 et 5 ; descriptions : items 2, 3, 4,
+# 8 et 9).
+#
+# FER-3 : deux taches distinctes - trouver une information dans le texte (items 1 a 9) et dire de
+# quelle nature est un texte (items 10 a 12).
+#
+# FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# FAB-1 : douze bonnes reponses distinctes. Chaque texte d'information porte deux faits, afin que
+# la bonne reponse ne soit pas le seul mot reconnaissable : le distracteur est pris soit dans
+# l'autre fait du texte, soit dans un autre mot du lexique, jamais dans un champ different
+# (REC-6, transpose : trois propositions du meme champ lexical et de longueur voisine).
+#
+# Aucune consigne a l'adulte et aucun indice ne demande de prononcer un mot d'anglais : le paquet
+# se joue par lecture seule (reserve du 2026-09-02, reconduite par cm1-anglais.yaml).
+#
+# Lisibilite : aucun texte anglais ne depasse trois courtes phrases, aucune question francaise ne
+# depasse huit mots. Texte purement textuel, aucune illustration : REC-1 a REC-4 ne s'appliquent
+# pas (elles ne valent que sur un paquet illustre).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final ; les guillemets
+# francais autour du texte anglais portent des espaces insecables (SYN-9, ANT-5).
+items:
+  - enonce: "Voici un message : « Good morning! This is my house. My dog is in my bedroom. » Où est le chien ?"
+    bonneReponse: "dans la chambre"
+    distracteurs: ["dans la rue", "dans le champ"]
+    indice: "Cherche le lieu cité dans la dernière phrase."
+  - enonce: "Voici une description : « A king is in a castle. A ghost is in a bedroom. » Où est le roi ?"
+    bonneReponse: "dans le château"
+    distracteurs: ["dans la chambre", "dans la ville"]
+    indice: "Le roi est le premier personnage cité."
+  - enonce: "Voici une description : « A bridge is in a town. A witch is on a hill. » Où est le pont ?"
+    bonneReponse: "dans la ville"
+    distracteurs: ["sur la colline", "dans le champ"]
+    indice: "Lis la phrase qui parle du pont."
+  - enonce: "Voici une description : « A witch is on a hill. A fairy is in a field. » Qui est sur la colline ?"
+    bonneReponse: "la sorcière"
+    distracteurs: ["la fée", "le roi"]
+    indice: "Les deux personnages du texte ne sont pas au même endroit."
+  - enonce: "Voici un message : « Hello! My friend is in a town. A king is in a castle. » Qui est dans la ville ?"
+    bonneReponse: "l'ami"
+    distracteurs: ["le roi", "la fée"]
+    indice: "Lis la phrase qui parle de la ville."
+  - enonce: "Voici une consigne : « Look at this bridge. » Que demande-t-elle ?"
+    bonneReponse: "de regarder le pont"
+    distracteurs: ["de regarder la colline", "de regarder la rue"]
+    indice: "Cherche l'endroit cité dans la consigne."
+  - enonce: "Voici une consigne : « Look at this castle and this hill. » Que faut-il regarder ?"
+    bonneReponse: "le château et la colline"
+    distracteurs: ["le château et le pont", "la colline et le champ"]
+    indice: "La consigne cite deux endroits, les deux comptent."
+  - enonce: "Voici une description : « A ghost is in a street. A witch is in a castle. » Où est le fantôme ?"
+    bonneReponse: "dans la rue"
+    distracteurs: ["dans le château", "dans le champ"]
+    indice: "Le fantôme et la sorcière ne sont pas au même endroit."
+  - enonce: "Voici une description : « A fairy is in a field. A king is on a hill. » Où est la fée ?"
+    bonneReponse: "dans le champ"
+    distracteurs: ["sur la colline", "dans la maison"]
+    indice: "Lis la phrase qui parle de la fée."
+  - enonce: "Quelle est la nature de ce texte : « Look at this dog. » ?"
+    bonneReponse: "une consigne"
+    distracteurs: ["un message", "une description"]
+    indice: "Ce texte dit quoi faire."
+  - enonce: "Quelle est la nature de ce texte : « Hello! Good morning, my friend! » ?"
+    bonneReponse: "un message"
+    distracteurs: ["une consigne", "une description"]
+    indice: "Ce texte s'adresse à quelqu'un."
+  - enonce: "Quelle est la nature de ce texte : « A witch is in a castle. A dog is in a field. » ?"
+    bonneReponse: "une description"
+    distracteurs: ["une consigne", "un message"]
+    indice: "Ce texte dit où sont des personnages et un animal."

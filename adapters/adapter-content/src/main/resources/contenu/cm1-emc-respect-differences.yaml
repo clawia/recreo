@@ -1,0 +1,111 @@
+schema: 1
+id: cm1-emc-respect-differences
+type: question
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Respecter autrui"
+  competence: "Identifier ce qu'interdit le respect d'autrui dans ses différences (apparence, origine, convictions, situation de handicap)."
+lignesDeReferentiel: ["EMC-CM1-03"]
+#
+# S53 (session de contenu seul, hors sprint). Referentiel copie conforme
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md, EMC-CM1-03). Aucun Done n'est
+# prononce ici, tout est a juger par nadia-prof.
+#
+# Conditions posees d'avance sur cette ligne : EMC-4, BIA-1, BIA-2 (matrice, ligne EMC-CM1-03) -
+# "seulement sous la forme de l'interdit, jamais sous celle de l'enumeration des differences".
+#
+# EMC-4 : aucune proposition ne decrit un groupe de personnes ni n'attribue un trait, un gout ou une
+# capacite a une categorie. Chaque difference est celle d'un personnage nomme, formulee comme le
+# motif d'un traitement ("parce que ses croyances ne sont pas celles des autres"), jamais comme une
+# description de ce que sont les gens. Aucune religion, aucun pays, aucun handicap particulier
+# n'est nomme ; le fauteuil roulant (item 4) est le seul element concret de la ligne handicap.
+#
+# BIA-1 et BIA-2 : aucun item ne compare un ailleurs a un ici en position de norme ; l'origine
+# n'est servie qu'en motif de traitement ("sa famille vient d'un autre pays"), jamais comme un
+# trait attribue a un pays.
+#
+# FER-1 : les quatre termes de la parenthese sont chacun en bonne reponse - apparence (items 1 et 5),
+# origine (item 2), convictions (item 3), situation de handicap (item 4).
+#
+# FER-3 : trois formes distinctes, deux taches au sens de FER-3 - reconnaitre le cas ou le respect
+# d'autrui n'est pas respecte (items 1 a 5), dire ce que veut dire ou ce que fonde le respect des
+# differences (items 6 a 8), reconnaitre le seul motif qui peut valablement ecarter un eleve (items
+# 9 a 11).
+#
+# FER-2 : onze items, strictement superieur aux dix manches par defaut (DEC-0064).
+#
+# CAT-1 et PLA-1 : sur les items 1 a 5, les trois propositions ont la meme forme ("Prenom, parce que
+# ..."), deux sont de vraies raisons d'organisation (complet, date limite, tour de role) et une est
+# un motif tire d'une difference. Sur les items 6 a 8, les distracteurs sont des malentendus reels
+# (respecter, c'est ressembler ; respecter, c'est toujours etre d'accord) et non des fautes
+# evidentes ; ils sont au meme registre que la bonne reponse.
+#
+# EMC-5 a juger par nadia-prof : l'item 4 (fauteuil roulant) est le plus expose, car un enfant peut
+# defendre un motif d'accessibilite. Le motif retenu ("les autres refusent de l'attendre") est un
+# motif d'attitude, pas de lieu, pour ne laisser qu'une lecture. L'item 8 (distracteurs sur la
+# disparition ou l'egalite exacte des differences) est le plus proche d'un distracteur faible au
+# sens de PLA-1.
+#
+# HIS-3 (faits institutionnels) : l'item 8 s'appuie sur l'article 1er de la Declaration des droits
+# de l'homme et du citoyen de 1789 ("Les hommes naissent et demeurent libres et egaux en droits") et
+# sur le principe de non-discrimination des articles 225-1 et suivants du code penal. Aucune
+# disposition n'est citee dans l'enonce. Source a verifier par nadia-prof.
+#
+# EMC-1 et EMC-8 : tous les personnages sont nommes ou designes a la troisieme personne ; aucun item
+# ne demande ce que l'enfant ferait, ressent ou croit. EMC-10 : aucun nom de personne reelle.
+#
+# CYC-1 : a confronter par nadia-prof a cp-emc-personnes-differentes.yaml (meme famille de motifs a
+# un niveau de lecture plus simple) et a cp-emc-regle-souhait-loi.yaml.
+#
+# Mention exigee d'avance sur toute ligne d'EMC CM1 qui bouge
+# (squad/programme/enseignement-moral-et-civique/competences-cm1.md) : "connaissances civiques et
+# reconnaissance de situations seules ; aucun comportement, aucun engagement et aucune
+# participation a une decision collective ne sont servis par ce produit."
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
+items:
+  - enonce: "Trois élèves ne sont pas pris dans une équipe de ballon. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
+    bonneReponse: "Hugo, parce que ses vêtements ne ressemblent pas à ceux des autres"
+    distracteurs: ["Aya, parce que l'équipe a déjà douze joueurs", "Malo, parce que la récréation est terminée"]
+    indice: "Une raison juste parle du jeu, pas de la personne."
+  - enonce: "Trois enfants ne sont pas inscrits à l'atelier théâtre de l'école. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
+    bonneReponse: "Lina, parce que sa famille vient d'un autre pays"
+    distracteurs: ["Tom, parce qu'il a rendu son inscription après la date limite", "Aya, parce que l'atelier est déjà complet"]
+    indice: "La raison doit venir de l'atelier, pas de la personne."
+  - enonce: "Trois élèves ne sont pas invités à rejoindre un groupe de travail. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
+    bonneReponse: "Sam, parce que ses croyances ne sont pas celles des autres"
+    distracteurs: ["Léa, parce qu'elle travaille déjà dans un autre groupe", "Hugo, parce qu'il est absent ce jour-là"]
+    indice: "Cherche la raison qui parle de la personne, pas du groupe de travail."
+  - enonce: "Trois élèves ne sont pas pris pour un jeu de relais. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
+    bonneReponse: "Aya, parce qu'elle utilise un fauteuil roulant et que les autres refusent de l'attendre"
+    distracteurs: ["Tom, parce que l'équipe a déjà quatre joueurs et qu'il n'y a plus de place", "Léa, parce que la cloche a sonné et que la récréation est terminée"]
+    indice: "Cherche la raison qui écarte quelqu'un à cause de ce qu'il est."
+  - enonce: "Trois élèves ne sont pas choisis pour distribuer les feuilles. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
+    bonneReponse: "Tom, parce qu'il est plus petit que les autres"
+    distracteurs: ["Malo, parce qu'il a déjà distribué les feuilles hier", "Léa, parce que c'est le tour d'un autre élève"]
+    indice: "Cherche la raison qui parle de la personne, pas de la tâche."
+  - enonce: "Que veut dire respecter les différences des autres ?"
+    bonneReponse: "ne pas traiter quelqu'un moins bien parce qu'il est différent"
+    distracteurs: ["penser et agir exactement comme les autres", "éviter de parler aux personnes différentes de soi"]
+    indice: "Respecter ne veut pas dire devenir semblable."
+  - enonce: "Quelle phrase sur le respect d'autrui est juste ?"
+    bonneReponse: "on peut ne pas être d'accord avec un camarade sans lui manquer de respect"
+    distracteurs: ["respecter quelqu'un, c'est toujours être d'accord avec lui sur tout", "pour être respecté, il faut cacher ce qui nous rend différent des autres"]
+    indice: "On peut penser autrement sans manquer de respect."
+  - enonce: "Pourquoi le respect d'autrui interdit-il de traiter quelqu'un moins bien à cause d'une différence ?"
+    bonneReponse: "parce que chaque personne a la même valeur et les mêmes droits"
+    distracteurs: ["parce que tous les élèves sont exactement pareils", "parce que les différences disparaissent avec le temps"]
+    indice: "Cela concerne la valeur et les droits de chaque personne."
+  - enonce: "Une classe forme des groupes pour un atelier. Lequel de ces motifs peut justifier de ne pas prendre un élève dans un groupe ?"
+    bonneReponse: "le groupe est déjà complet"
+    distracteurs: ["ses vêtements sont différents de ceux des autres", "sa famille vient d'un autre pays"]
+    indice: "Un motif valable vient de la situation, pas de la personne."
+  - enonce: "Dans la cour, un jeu commence. Lequel de ces motifs peut justifier de ne pas laisser un élève y entrer ?"
+    bonneReponse: "le jeu se joue à deux et les deux places sont prises"
+    distracteurs: ["il a des croyances différentes de celles des autres", "il porte des lunettes épaisses"]
+    indice: "Cherche le motif qui parle du jeu."
+  - enonce: "On choisit des élèves pour ranger le matériel. Lequel de ces motifs peut justifier de ne pas choisir un élève ?"
+    bonneReponse: "il a déjà été choisi la veille"
+    distracteurs: ["sa façon de parler est différente de celle des autres", "il est plus petit que les autres"]
+    indice: "Cherche le motif qui parle de ce qui s'est déjà passé."
