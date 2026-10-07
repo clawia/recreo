@@ -403,6 +403,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S52-FRA-PRESENT (s52) : entree neuve, FRA-CE1-17, huitieme ligne du referentiel de
             // francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.8).
             "bandit-manchot-conjugaison-present-ce1",
+            // S54-BR-FRA-CE1-18 (s54) : entree neuve, FRA-CE1-18, conjuguer au futur
+            // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.9).
+            "bandit-manchot-futur-ce1",
+            // S54-BR-FRA-CE1-19 (s54) : entree neuve, FRA-CE1-19, conjuguer au passe compose
+            // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.10).
+            "bandit-manchot-passe-compose-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -676,6 +682,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les mots d'un même groupe",
             // S52-FRA-PRESENT (s52) : titre neuf, sans niveau (ADR-0078).
             "Les verbes au présent",
+            // S54-BR-FRA-CE1-18 (s54) : titre neuf, sans niveau (ADR-0078).
+            "Les verbes au futur",
+            // S54-BR-FRA-CE1-19 (s54) : titre neuf, sans niveau (ADR-0078).
+            "Les verbes au passé composé",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
@@ -977,6 +987,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S52-FRA-PRESENT (s52) : consigne neuve, generique - elle ne nomme aucun verbe ni
             // aucune forme.
             "Lis bien, puis choisis la bonne forme du verbe.",
+            // S54-BR-FRA-CE1-18 (s54) : consigne neuve, elle nomme le temps demande et aucun verbe ni
+            // aucune forme (squad/conformite/ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md,
+            // section 5).
+            "Lis bien, puis choisis le verbe au futur.",
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
@@ -1560,6 +1574,15 @@ class TexteAccentueExposeParLePortEntrantTest {
             // inverses.
             "Conjuguer au présent de l'indicatif être, avoir, les verbes du premier groupe et "
                     + "quelques verbes fréquents (aller, faire, dire, venir).",
+            // S54-BR-FRA-CE1-18 (s54) : competence neuve, FRA-CE1-18, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-18) sans les guillemets
+            // inverses.
+            "Conjuguer au futur être, avoir et les verbes du premier groupe.",
+            // S54-BR-FRA-CE1-19 (s54) : competence neuve, FRA-CE1-19, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-19) sans les guillemets
+            // inverses.
+            "Conjuguer au passé composé être, avoir et les verbes du premier groupe, avec "
+                    + "l'auxiliaire avoir.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

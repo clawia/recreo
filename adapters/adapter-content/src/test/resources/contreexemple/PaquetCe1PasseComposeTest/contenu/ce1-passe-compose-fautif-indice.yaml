@@ -1,0 +1,17 @@
+schema: 1
+id: ce1-passe-compose-fautif-indice
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1PasseComposeTest. Les familles sont justes, l'indice
+# donne le critere "deux mots" que "j'ai chanter" satisfait : TRV-CE1-5.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Conjuguer au passé composé être, avoir et les verbes du premier groupe, avec l'auxiliaire avoir."
+lignesDeReferentiel: ["FRA-CE1-19"]
+items:
+  # PCO-CE1-3: a, c
+  - enonce: "« chanter » : hier, ___ une chanson."
+    bonneReponse: "j'ai chanté"
+    distracteurs: ["j'ai chanter", "je chante"]
+    indice: "Un verbe au passé composé a deux mots : cherche-les."

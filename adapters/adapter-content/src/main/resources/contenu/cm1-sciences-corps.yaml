@@ -74,7 +74,7 @@ items:
   - enonce: "Le corps grandit et se répare surtout quand il est au repos la nuit. Que lui faut-il pour cela ?"  # tache: A # element: sommeil # HIS-3: la croissance et la réparation de l'organisme se font en grande partie pendant le sommeil, fait enseigné au cycle 3 (fonctionnement du corps), compatible avec le CP (le corps se repose et récupère)
     bonneReponse: "assez de sommeil"
     distracteurs: ["rester éveillé le plus tard possible", "boire des boissons qui empêchent de dormir"]
-    indice: "Réparer et grandir demande du temps pendant lequel le corps ne fait rien d'autre."
+    indice: "Rester éveillé tard ou boire ce qui empêche de dormir raccourcit le temps où le corps grandit et se répare."
   - enonce: "Des microbes se déposent sur les mains. Quel geste limite le plus la transmission de maladies ?"  # tache: A # element: hygiene # HIS-3: se laver les mains avec du savon élimine la majorité des microbes et limite la transmission des maladies, fait enseigné au cycle 3 (hygiène), prolonge le CP (cp-qlm-hygiene)
     bonneReponse: "se laver les mains avec du savon"
     distracteurs: ["se frotter les mains sur ses vêtements", "se passer les mains sous l'eau très vite"]
@@ -82,15 +82,15 @@ items:
   - enonce: "Le corps est fait en grande partie d'eau et en perd sans cesse. Quelle boisson lui convient le mieux ?"  # tache: A # element: alimentation # HIS-3: l'eau est la boisson adaptée aux besoins du corps, le corps humain adulte est composé d'environ 60 pour cent d'eau, fait enseigné au cycle 3 (besoins du corps)
     bonneReponse: "l'eau"
     distracteurs: ["les jus de fruits sucrés", "les sodas"]
-    indice: "Les boissons sucrées contiennent beaucoup de sucre, que le corps n'utilise pas en grande quantité."
-  - enonce: "Un enfant malade tousse près d'une autre personne. Quel geste évite de lui transmettre ses microbes ?"  # tache: A # element: hygiene # HIS-3: tousser dans le pli du coude évite de déposer des microbes sur les mains puis sur les objets et les personnes, geste d'hygiène enseigné au cycle 3
+    indice: "Les boissons sucrées apportent du sucre en trop, car le corps tire déjà des aliments les sucres dont il a besoin."
+  - enonce: "Un enfant malade tousse près d'une autre personne. Quel geste limite le plus la transmission de ses microbes à cette personne ?"  # tache: A # element: hygiene # HIS-3: tousser dans le pli du coude évite de déposer des microbes sur les mains puis sur les objets et les personnes, geste d'hygiène enseigné au cycle 3
     bonneReponse: "tousser dans son coude"
     distracteurs: ["tousser dans sa main", "tousser en se tenant bien droit"]
     indice: "Les mains touchent ensuite des objets et d'autres personnes."
   - enonce: "À quoi sert l'activité physique pour le fonctionnement du corps ?"  # tache: B # element: activite # HIS-3: l'activité physique fait travailler les muscles et les articulations, fait enseigné au cycle 3 (fonctionnement du corps), aucun effet à long terme énoncé
     bonneReponse: "à faire travailler les muscles et les articulations"
-    distracteurs: ["à remplacer le sommeil", "à se passer de manger"]
-    indice: "Aucun exercice ne tient lieu de repos."
+    distracteurs: ["à user les muscles et les articulations", "à remplacer une alimentation variée"]
+    indice: "Bouger souvent n'use pas le corps, et aucun exercice ne remplace une alimentation variée."
   - enonce: "À quoi sert le sommeil pour le corps ?"  # tache: B # element: sommeil # HIS-3: le sommeil permet la croissance et la réparation de l'organisme, fait enseigné au cycle 3 (fonctionnement du corps)
     bonneReponse: "à lui permettre de grandir et de se réparer"
     distracteurs: ["à faire travailler les muscles plus vite", "à remplacer l'eau que le corps perd"]
@@ -104,7 +104,7 @@ items:
     distracteurs: ["à rendre la peau plus épaisse", "à protéger la peau du froid"]
     indice: "Le savon se rince, il ne reste pas sur la peau."
   - enonce: "À quoi servent les fibres des fruits, des légumes et des céréales complètes ?"  # tache: B # element: alimentation # HIS-3: les fibres alimentaires favorisent le transit intestinal et ne sont presque pas absorbées, fait enseigné au cycle 3 (alimentation)
-    bonneReponse: "à aider le ventre à digérer"
+    bonneReponse: "à aider l'intestin à bien fonctionner"
     distracteurs: ["à fabriquer les os", "à donner de l'énergie tout de suite"]
     indice: "Les fibres ne sont presque pas absorbées par le corps."
   - enonce: "À quoi sert le fer contenu dans la viande rouge et dans les lentilles ?"  # tache: B # element: alimentation # HIS-3: le fer entre dans la composition de l'hémoglobine qui transporte l'oxygène dans le sang, fait enseigné au cycle 3 (alimentation)

@@ -112,7 +112,7 @@ items:
     distracteurs: ["facile", "long"]
     indice: "Un synonyme veut dire presque la même chose."
   # SYC-CE1-2: a, b
-  - enonce: "« Il arrive à l'école. » Quel mot est le contraire de « arrive » ?"
+  - enonce: "« Le train arrive. » Quel mot est le contraire de « arrive » ?"
     bonneReponse: "part"
     distracteurs: ["vient", "marche"]
     indice: "Cherche le mot qui dit tout le contraire."
@@ -127,7 +127,7 @@ items:
     distracteurs: ["vive", "forte"]
     indice: "Un contraire dit l'inverse du mot."
   # SYC-CE1-2: b, b
-  - enonce: "« Il lance le ballon. » Quel mot est un synonyme de « lance » ?"
+  - enonce: "« Elle lance le ballon. » Quel mot est un synonyme de « lance » ?"
     bonneReponse: "jette"
     distracteurs: ["pousse", "pose"]
     indice: "Un synonyme veut dire presque la même chose."
@@ -147,7 +147,7 @@ items:
     distracteurs: ["tranquille", "bleue"]
     indice: "Un contraire dit l'inverse du mot."
   # SYC-CE1-2: a, b
-  - enonce: "« Cet homme est fort. » Quel mot est un synonyme de « fort » ?"
+  - enonce: "« Ce cheval est fort. » Quel mot est un synonyme de « fort » ?"
     bonneReponse: "costaud"
     distracteurs: ["faible", "vieux"]
     indice: "Un synonyme veut dire presque la même chose."
