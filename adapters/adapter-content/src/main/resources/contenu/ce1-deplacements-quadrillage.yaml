@@ -1,0 +1,120 @@
+# DEGRADE : aucun quadrillage n'est montre (aucune illustration), l'enfant ne se repere ni ne se deplace par designation sur un dessin ; seuls des items en texte sont servis (case nommee par une lettre et un nombre, choix d'un code parmi trois).
+#
+# S53-G1-DEPLACEMENTS (MAT-CE1-14). Paquet de contenu seul, hors sprint. Arbitrage prealable de
+# nadia-prof, conditions DEP-CE1-1 a DEP-CE1-4 (squad/conformite/ARBITRAGE-PREALABLE-s43-mathematiques-
+# ce1-lot-3.md, section 1) : un paquet purement textuel, sans quadrillage montre, ne ferme pas cette
+# ligne et plafonne a "en cours". Ce paquet ne declare aucune conformite pedagogique : le Done est a
+# nadia-prof. "Coder" est servi du cote reception seulement (choix d'un code parmi trois).
+#
+# Convention de lecture, la meme sur les vingt items : quadrillage de 4 cases sur 4, colonnes A a D de
+# la gauche vers la droite, lignes 1 a 4 du bas vers le haut (comme au jeu de bataille navale). Les
+# enonces ne la repetent pas (LON-CE1-1) ; l'indice de quatre items sur vingt la rappelle.
+#
+# DEP-CE1-1 : deux axes distincts, jamais une bande de cases numerotees ; 17 items sur 20 portent un
+# chemin qui change d'axe (plancher : un tiers), 3 portent un seul axe (Nina, Ali, et le code de A1 a
+# D1) pour que l'enfant distingue encore les deux axes.
+# DEP-CE1-2 : toute case citee, de depart, d'arrivee ou de passage, est dans le quadrillage de 4 x 4 ;
+# aucun chemin ne sort de la grille, verifie pas a pas pour la bonne reponse et pour chaque
+# distracteur.
+# DEP-CE1-3 : l'enonce ne nomme jamais la case d'arrivee des dix premiers items (arrivee a trouver) ni
+# le code des dix derniers ; l'enfant part d'une case donnee et tient le deplacement en tete.
+# DEP-CE1-4 : les trois codes d'un item ont la meme longueur, sont formes des quatre mots droite,
+# gauche, haut, bas, different par le sens d'au moins un pas et menent chacun a une case reelle ; la
+# bonne reponse n'est pas toujours rangee "horizontal d'abord".
+# Distracteurs d'arrivee : axes echanges, sens d'un pas inverse, un pas oublie. Distracteurs de code :
+# sens d'un pas inverse, nombre de pas change.
+# LON-CE1-1 et LON-CE1-2 : 20 mots au plus, trois phrases au plus, la derniere est la question.
+#
+# TYP-1 (ADR-0067) : l'espace qui precede "?" est insecable.
+schema: 1
+id: ce1-deplacements-quadrillage
+type: question
+descripteur:
+  matiere: "Mathématiques"
+  niveau: "CE1"
+  domaine: "Espace et géométrie"
+  competence: "Se repérer, se déplacer et coder un déplacement sur un quadrillage"
+lignesDeReferentiel: ["MAT-CE1-14"]
+items:
+  # Se deplacer (arrivee a trouver), puis se reperer sur le quadrillage
+  - enonce: "Zoé est en B2 et va 2 cases à droite, puis 1 case en haut. Où arrive-t-elle ?"
+    bonneReponse: "D3"
+    distracteurs: ["C4", "D1"]
+    indice: "Les lettres vont vers la droite, les nombres vers le haut."
+  - enonce: "Malo est en C3 et va 2 cases à gauche, puis 1 case en bas. Où arrive-t-il ?"
+    bonneReponse: "A2"
+    distracteurs: ["B1", "A4"]
+    indice: "Fais chaque déplacement l'un après l'autre."
+  - enonce: "Nina est en A1 et va 3 cases en haut. Où arrive-t-elle ?"
+    bonneReponse: "A4"
+    distracteurs: ["D1", "A3"]
+    indice: "Dessine le quadrillage, puis avance case par case."
+  - enonce: "Hugo est en D4 et va 2 cases en bas, puis 3 cases à gauche. Où arrive-t-il ?"
+    bonneReponse: "A2"
+    distracteurs: ["B1", "B2"]
+    indice: "Les lettres vont vers la droite, les nombres vers le haut."
+  - enonce: "Iris est en A3 et va 3 cases à droite, puis 2 cases en bas. Où arrive-t-elle ?"
+    bonneReponse: "D1"
+    distracteurs: ["D4", "D2"]
+    indice: "Fais chaque déplacement l'un après l'autre."
+  - enonce: "Tom est en D1 et va 2 cases à gauche, puis 2 cases en haut. Où arrive-t-il ?"
+    bonneReponse: "B3"
+    distracteurs: ["C3", "B2"]
+    indice: "Dessine le quadrillage, puis avance case par case."
+  - enonce: "Léa est en A4 et va 1 case en bas, puis 3 cases à droite. Où arrive-t-elle ?"
+    bonneReponse: "D3"
+    distracteurs: ["B1", "D4"]
+    indice: "Les lettres vont vers la droite, les nombres vers le haut."
+  - enonce: "Ali est en C1 et va 3 cases en haut. Où arrive-t-il ?"
+    bonneReponse: "C4"
+    distracteurs: ["C3", "D1"]
+    indice: "Fais chaque déplacement l'un après l'autre."
+  - enonce: "Elsa est en B4 et va 2 cases en bas, puis 1 case à droite. Où arrive-t-elle ?"
+    bonneReponse: "C2"
+    distracteurs: ["D3", "A2"]
+    indice: "Dessine le quadrillage, puis avance case par case."
+  - enonce: "Ivan est en D3 et va 3 cases à gauche, puis 2 cases en bas. Où arrive-t-il ?"
+    bonneReponse: "A1"
+    distracteurs: ["A4", "B1"]
+    indice: "Les lettres vont vers la droite, les nombres vers le haut."
+  # Coder un deplacement, du cote reception (trois codes complets)
+  - enonce: "Quel code mène de la case B1 à la case D3 ?"
+    bonneReponse: "droite, droite, haut, haut"
+    distracteurs: ["droite, droite, haut, bas", "droite, haut, haut, haut"]
+    indice: "Suis chaque pas du code à partir de la case de départ."
+  - enonce: "Quel code mène de la case A4 à la case C2 ?"
+    bonneReponse: "droite, droite, bas, bas"
+    distracteurs: ["droite, droite, bas, haut", "droite, bas, bas, bas"]
+    indice: "Teste chaque code en partant de la case de départ."
+  - enonce: "Quel code mène de la case D2 à la case A3 ?"
+    bonneReponse: "gauche, gauche, gauche, haut"
+    distracteurs: ["gauche, gauche, gauche, bas", "gauche, gauche, haut, haut"]
+    indice: "Compte les cases en largeur, puis en hauteur."
+  - enonce: "Quel code mène de la case C4 à la case A1 ?"
+    bonneReponse: "gauche, gauche, bas, bas, bas"
+    distracteurs: ["gauche, gauche, bas, bas, haut", "gauche, bas, bas, bas, haut"]
+    indice: "Suis chaque pas du code à partir de la case de départ."
+  - enonce: "Quel code mène de la case A1 à la case D1 ?"
+    bonneReponse: "droite, droite, droite"
+    distracteurs: ["droite, droite, haut", "haut, haut, haut"]
+    indice: "Teste chaque code en partant de la case de départ."
+  - enonce: "Quel code mène de la case B4 à la case D3 ?"
+    bonneReponse: "bas, droite, droite"
+    distracteurs: ["bas, droite, gauche", "bas, bas, droite"]
+    indice: "Compte les cases en largeur, puis en hauteur."
+  - enonce: "Quel code mène de la case D1 à la case B4 ?"
+    bonneReponse: "gauche, gauche, haut, haut, haut"
+    distracteurs: ["gauche, gauche, haut, haut, bas", "gauche, gauche, gauche, haut, haut"]
+    indice: "Suis chaque pas du code à partir de la case de départ."
+  - enonce: "Quel code mène de la case C2 à la case D4 ?"
+    bonneReponse: "haut, droite, haut"
+    distracteurs: ["haut, gauche, haut", "haut, droite, bas"]
+    indice: "Teste chaque code en partant de la case de départ."
+  - enonce: "Quel code mène de la case A2 à la case C3 ?"
+    bonneReponse: "droite, droite, haut"
+    distracteurs: ["droite, droite, bas", "haut, haut, droite"]
+    indice: "Compte les cases en largeur, puis en hauteur."
+  - enonce: "Quel code mène de la case B3 à la case A1 ?"
+    bonneReponse: "bas, gauche, bas"
+    distracteurs: ["bas, gauche, haut", "bas, droite, bas"]
+    indice: "Suis chaque pas du code à partir de la case de départ."
