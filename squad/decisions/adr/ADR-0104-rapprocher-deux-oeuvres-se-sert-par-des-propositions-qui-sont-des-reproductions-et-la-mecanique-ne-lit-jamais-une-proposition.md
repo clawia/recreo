@@ -1,9 +1,16 @@
 # ADR-0104 - Rapprocher deux oeuvres se sert par des propositions qui sont des reproductions, sans mecanique ni forme d'item neuve, et la mecanique ne lit jamais une proposition
 
-- **Statut** : Propose. **Passe a `Accepte` sur une seule reponse, celle de `nadia-prof` sur sa
-  condition `C5` clause 1** (aucune image dans une boite de proposition), qui ferme aujourd'hui la
-  decision 1 sur sa lettre (section "Ce que je route", point 1). La regle executable de cet `ADR` est
-  en vigueur des maintenant : elle tient dans toutes les formes envisagees, y compris le repli
+- **Statut** : **Accepte le 2026-10-07 (s54).** La seule condition de passage etait la reponse de
+  `nadia-prof` sur sa condition `C5` clause 1. Elle est ecrite dans
+  `squad/conformite/ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md`, section 4.2, datee du
+  2026-10-06 : *"C5 clause 1 ne mord pas sur une reproduction d'oeuvre qui constitue la proposition
+  entière, dans un item d'`ART-CP-10`"* ; la decision 1 tient, le repli du point 6 n'est pas appele.
+  Elle confirme aussi la lecture de la clause 2. Ses points 2 a 5 *"se tranchent sur un paquet, en
+  jouant"* : ils ne conditionnent pas ce statut. **Accepter cet `ADR` n'engage ni la construction ni
+  `ART-CP-10`** (decision de produit, Q6 du planning de s54). Prix reverifie le 2026-10-07 sur
+  `4bb4dbd5` : `squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/avis-faisabilite.md`,
+  section T6. Statut precedent : `Propose` (2026-10-05). La regle executable est en vigueur depuis
+  le 2026-10-05 et tient dans toutes les formes envisagees, y compris le repli
 - **Date** : 2026-10-05
 - **Sprint** : hors-sprint, instruction prealable (obstacle 13 de la review de s50)
 - **Auteur** : `theo-archi`

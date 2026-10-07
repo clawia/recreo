@@ -675,6 +675,18 @@ le reste du fichier du paquet**, pour verifier qu'aucun autre item n'a ce mot po
 Aucun des deux n'est un garde-fou automatisable a ce jour : la seule garde reste la discipline du
 developpeur avant soumission, en plus du rejeu complet deja fait par `nadia-prof`.
 
+**Avant tout `git push`, y compris d'un commit de contenu seul, l'agent qui pousse lance sur la racine
+du depot `bash outils/mvn-jdk21.sh -B clean verify`, sans `-pl`, et les juges des jobs `prefixes`,
+`chemins` et `outils` de `.github/workflows/ci.yml` ; il nomme dans son rapport les jobs lances et leur
+code de sortie** (amendement s54, action A8 de la retro de s53, section 3). Motif : des garde-fous de
+`bootstrap` (`AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest`,
+`AucunEnonceDeCe1NeDepasseVingtMotsNiTroisPhrasesTest`, `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest`)
+jugent tout paquet present dans `contenu/`, branche ou non ; `mvn -pl adapters/adapter-content test` ne les
+charge pas, et c'est ainsi que la base de s53 est partie rouge. Une mesure partielle, meme avec `-am` et
+`bootstrap` dans son perimetre, ne tient jamais lieu de cette commande. **Ce que rien n'execute** : aucun
+crochet de pre-push n'est installe par le depot, et la CI juge apres le push. Cette regle est une
+discipline ; le mecanisme automatique qui la rattrape est la CI elle-meme, apres coup.
+
 **3. Daily.** Sofia collecte et route. Pas de fichier.
 
 **A chaque daily, Sofia demande explicitement a chaque agent en cours de lot de confirmer que son
