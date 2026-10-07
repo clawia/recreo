@@ -94,7 +94,7 @@ items:
     bonneReponse: "pour laisser la place aux rues"
     distracteurs: ["pour voir les étoiles", "pour aller sous l'eau"]
     indice: "Pense à la place qu'il y a dans une grande ville."
-  - enonce: "En ville, on prend le métro. À la campagne, on prend souvent la voiture. Pourquoi cette différence ?"
+  - enonce: "En ville, on prend le métro et à la campagne, la voiture. Pourquoi cette différence ?"
     bonneReponse: "parce que les lieux sont éloignés"
     distracteurs: ["parce qu'il n'y a pas de maisons en ville", "parce qu'il n'y a aucune route à la campagne"]
     indice: "Pense à la distance entre les lieux."

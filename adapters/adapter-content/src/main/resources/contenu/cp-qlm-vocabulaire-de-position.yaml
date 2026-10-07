@@ -89,15 +89,15 @@ items:
     bonneReponse: "droite"
     distracteurs: ["devant", "dessus"]
     indice: "Pense à tes deux mains."
-  - enonce: "Léa est devant Tom. Tom est devant Sam. Qui est tout derrière ?"
+  - enonce: "Léa est devant Tom et Tom est devant Sam. Qui est tout derrière ?"
     bonneReponse: "Sam"
     distracteurs: ["Léa", "Tom"]
     indice: "Dessine les trois enfants en file."
-  - enonce: "Le livre est à gauche du jeu. Le jeu est à gauche de la boîte. Qu'est-ce qui est tout à droite ?"
-    bonneReponse: "la boîte"
-    distracteurs: ["le jeu", "le livre"]
-    indice: "Pense à la ligne des trois objets."
-  - enonce: "Le nuage est au-dessus de l'arbre. L'arbre est au-dessus de la maison. Qu'est-ce qui est tout en bas ?"
-    bonneReponse: "la maison"
-    distracteurs: ["l'arbre", "le nuage"]
-    indice: "Pense à la hauteur des trois choses."
+  - enonce: "Max est derrière Noé et Pia est derrière Max. Qui est tout devant ?"
+    bonneReponse: "Noé"
+    distracteurs: ["Max", "Pia"]
+    indice: "Pense à une file de trois enfants."
+  - enonce: "Malo habite au-dessus de Jade et Nina au-dessus de Malo. Qui habite tout en bas ?"
+    bonneReponse: "Jade"
+    distracteurs: ["Malo", "Nina"]
+    indice: "Pense à un immeuble de trois étages."
