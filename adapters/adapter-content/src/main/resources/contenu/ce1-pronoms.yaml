@@ -86,7 +86,7 @@ items:
     texteSupport: "Ilyes donne un gâteau à Sofia. Elle dit merci."
     bonneReponse: "Sofia"
     distracteurs: ["Ilyes", "un gâteau"]
-    indice: "Relis la phrase d'avant pour trouver qui agit."
+    indice: "Elle désigne un mot féminin : cherche-le dans la phrase d'avant."
   # il, le sens decide
   - enonce: "Que désigne « il » dans le texte ?"
     texteSupport: "Rayan lance le ballon à Yanis. Il l'attrape."
@@ -104,7 +104,7 @@ items:
     texteSupport: "Léo lit un livre à Rose. Elle écoute bien."
     bonneReponse: "Rose"
     distracteurs: ["Léo", "un livre"]
-    indice: "Cherche qui fait l'action dans la phrase d'avant."
+    indice: "Elle désigne un mot féminin : cherche-le dans la phrase d'avant."
   # ils, l'accord
   - enonce: "Que désigne « ils » dans le texte ?"
     texteSupport: "Enzo et Maya rangent leurs affaires. Ils les posent sur l'étagère."
