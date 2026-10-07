@@ -28,8 +28,8 @@ lignesDeReferentiel: ["QLM-CP-12"]
 # FER-3 : quatre taches, chacune sur des items propres :
 #   - nommer le support, globe ou carte (items 1 et 2) ;
 #   - lire l'orientation d'une carte, haut, bas, gauche, droite (items 3 et 4) ;
-#   - situer un espace par son point cardinal par rapport a la France (items 5 a 11) ;
-#   - situer un espace dans un plus grand, par emboitement (item 12).
+#   - situer un espace par son point cardinal par rapport a la France (items 6 a 10) ;
+#   - situer un espace dans un plus grand, par emboitement (items 5, 11 et 12).
 # FER-2 : douze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
 #
 # Exactitude, fait par fait (a verifier contre une carte, nadia-prof n'est pas la source) : la

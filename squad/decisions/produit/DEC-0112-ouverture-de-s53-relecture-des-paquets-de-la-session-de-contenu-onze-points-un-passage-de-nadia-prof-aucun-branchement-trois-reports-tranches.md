@@ -102,7 +102,7 @@ fichier hors de ces 45.
 
 **Q4 - qui decide P11 (espace avant ":" dans `competence`).** **`nadia-prof` decide ; `relecteur-pedagogique`
 fournit les faits** (liste des fichiers, nature de l'espace, commande). Relaye de l'utilisatrice, 2026-10-07 ;
-mon motif : un espace ordinaire avant ":" est une faute de typographie francaise, et les textes que lit l'enfant sont
+mon motif : une espace ordinaire avant ":" est une faute de typographie francaise, et les textes que lit l'enfant sont
 gouvernes par la porte pedagogique, pas par le registre de redaction (`CLAUDE.md`, `DEC-0002`). Reste un fait que ni
 elle ni moi n'avons : **`competence` est-il lu par un enfant ?** `theo-archi` n'a trouve aucun gabarit de `adapter-web`
 qui l'affiche et n'a pas cherche plus loin (`planning.md`). Si personne ne l'affiche, c'est un champ de metadonnee et

@@ -70,7 +70,7 @@ pour information.
 **Mesure de P11** : `grep -l ' competence: ".* :' adapters/adapter-content/src/main/resources/contenu/*.yaml` rend 13
 fichiers, les quatre du point et **neuf autres** (`cm1-accord-sujet-verbe`, `cm1-histoire-geographie-*` x4,
 `cm1-sciences-chaine-alimentaire`, `cp-decrire-une-oeuvre`, `cp-qlm-cycle-de-vie`, `cp-texte-narratif`). Le backlog dit
-*onze paquets plus anciens* : **neuf mesures, onze ecrits**, ecart non explique (le motif peut etre un espace insecable
+*onze paquets plus anciens* : **neuf mesures, onze ecrits**, ecart non explique (le motif peut etre une espace insecable
 dans certains cas, un grep different du leur). Je ne tranche pas lequel des deux chiffres est juste ; le decideur le
 refait avec sa commande.
 
