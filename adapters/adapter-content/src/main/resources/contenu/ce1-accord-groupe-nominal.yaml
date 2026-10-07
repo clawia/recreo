@@ -27,8 +27,8 @@ items:
   # GNA-CE1-3: a, c
   # GNA-CE1-1: pluriel en -x
   - enonce: "Quel groupe de mots est bien écrit ?"
-    bonneReponse: "des beaux chapeaux"
-    distracteurs: ["des beaux chapeau", "des beaux chapeaus"]
+    bonneReponse: "les beaux chapeaux"
+    distracteurs: ["les beaux chapeau", "les beaux chapeaus"]
     indice: "Compare la fin de chaque mot entre les trois groupes."
   # GNA-CE1-3: b, c
   # GNA-CE1-1: pluriel en -x
