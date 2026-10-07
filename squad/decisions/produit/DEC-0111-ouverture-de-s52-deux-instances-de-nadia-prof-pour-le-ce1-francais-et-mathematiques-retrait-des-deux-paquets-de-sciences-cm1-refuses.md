@@ -27,7 +27,7 @@
 
 ## 0. Provenance et methode
 
-**Instruction recue, citee mot pour mot** (forme 3, `squad/README.md` section 2 bis) : *recue de MASTER,
+**Instruction recue, citee mot pour mot** (forme 3, `squad/README.md` section 2 bis) : *recu de MASTER,
 sans source dans le depot*, le 2026-10-06 : *"créée plusieurs instances de nadia pour couvrir le CE1"*.
 **Cet enonce ne fonde rien** (premiere borne de la forme 3) : ni le nombre d'instances, ni une ligne, ni un
 tarif. Le nombre vient de `nadia-prof` (section 6) ; cette decision ecrit chaque motif en entier.
@@ -546,7 +546,7 @@ d'`ines-design` (section 4), l'avis de faisabilite (sections 4.1, 5), le plannin
 | Condition | Verification (commande) | Etat |
 |---|---|---|
 | (1) moitie A2 | `edf15763`, `ZON-13` et rang de la bonne zone : avis 4.1, verts a `7350fb07` | remplie |
-| (1) moitie message du cliquet, etat demande par A.2 : commit sur `round-two`, et message qui ne demande plus d'etendre un balayage de production | (a) `git branch --contains ceffde66` rend `round-two` ; (b) `grep -rni "etendre le balayage de production" bootstrap/src/test/java/com/recreo/archi/` ne rend aucune ligne ; le message du test cite `BALAYAGES_DE_PRODUCTION` (trois noms de tests, lignes 67 a 70) et dit de monter `PLAFOND_DE_DESIGNATION_EN_PRODUCTION` *"dans le diff qui sert ce paquet"* ; la ligne 201 du test asserte `hasMessageNotContaining("Etendre le balayage")` | **remplie** |
+| (1) moitie message du cliquet, etat demande par A.2 : commit sur `round-two`, et message qui ne demande plus d'etendre un balayage de production | (a) `git branch --contains ceffde66` rend `round-two` ; (b) `grep -rni "etendre le balayage de production" bootstrap/src/test/java/com/recreo/archi/` ne rend aucune ligne ; le message du test cite `BALAYAGES_DE_PRODUCTION` (trois noms de tests, lignes 67 a 70) et dit de monter `PLAFOND_DE_DESIGNATION_EN_PRODUCTION` *"dans le diff qui sert ce paquet"* ; la ligne 205 du test asserte `hasMessageNotContaining("Etendre le balayage")` | **remplie** |
 | (2) contraintes d'`ines-design`, quadrillage inclus | `git branch --contains 44ac6c02` rend `round-two` ; la section 4 est ecrite (4.1 mesures et commandes, 4.2 grille, 4.3 `SYM-CE1-3`, 4.5 poids) ; `git show s52-nadia-instance-c:squad/conformite/ARBITRAGE-PREALABLE-s52-instance-c-reponses.md` : section 2, Q4 *"oui, pour la partie pedagogique"*, section 3.2 cases candidates en sous-ensemble | **remplie** |
 | (3) developpeur de dessin affecte | planning, section "Affectations nominatives" : `lea-dev`, seule ecrivaine de C | **remplie** |
 
@@ -790,3 +790,36 @@ le disque par moi.
 
 Statuts : la matrice est a jour pour les cinq fermetures et `MAT-CE1-02` (A.10) ; elle ne l'est pas pour les
 deux cellules citees en A.15 (a).
+
+---
+
+## Amendement du 2026-10-07 (s52, `camille-po`, correctifs de cloture) : section 11, identifiants, et renvoi A.5
+
+Trois ecarts rendus par le `relecteur-pedagogique`, verifies un par un avant correction. Les sections
+precedentes ne sont pas reecrites, sauf les deux corrections de lettre notees en 2 et 3.
+
+1. **La section 11 ("Aucun identifiant neuf") est contredite par la suite de s52.** Elle decrivait l'etat
+   a l'ouverture, et elle est restee vraie jusqu'aux phases de Done pedagogique. Trois identifiants ont
+   ensuite ete alloues dans `squad/decisions/REGISTRE-identifiants.md`, section 4, chacun dans le meme diff que
+   la fiche qui le definit : **`SYC-CE1-R1`** (`FRA-CE1-25`), **`MUL-CE1-R1`** (`MAT-CE1-06`) et
+   **`SYM-CE1-R1`** (`MAT-CE1-17`), trois reserves de `nadia-prof`, aucun prefixe neuf. La lecture a retenir :
+   **la section 11 vaut pour l'ouverture, trois identifiants se sont ajoutes en cours de sprint.** Compte du
+   registre au 2026-10-07, avec la commande qui le rend :
+
+   ```
+   grep -c '^| `[A-Z0-9a-z-]*` | `[^`|]*` |$' squad/decisions/REGISTRE-identifiants.md
+   ```
+
+   Elle rend **922** (lancee le 2026-10-07 sur ce depot). La ligne *"Compte courant, verifie par la CI"*
+   du registre porte **922** identifiants et **158** prefixes distincts, et le garde-fou
+   `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` verifie ces deux nombres (le 158 n'est pas
+   recompte a la main ici).
+2. **Forme 3 (section 0).** La formule de la forme 3 s'ecrit *"recu de MASTER, sans source dans le
+   depot"*, comme le fait le planning de s52. La section 0 portait *"recue"* : corrigee, la citation de
+   l'enonce n'est pas changee.
+3. **Renvoi de A.5, condition (1).** Le test
+   `AucunPaquetDeDesignationNEntreEnProductionSansEtendreLesTroisBalayagesTest` asserte
+   `hasMessageNotContaining("Etendre le balayage")` a la **ligne 205** sur `round-two` (lu le 2026-10-07),
+   pas a la 201 ; les lignes 67 a 70 (`BALAYAGES_DE_PRODUCTION`) sont justes. Corrige dans la cellule de A.5.
+
+**Cet amendement ne change aucun code ni aucun statut de la matrice.**
