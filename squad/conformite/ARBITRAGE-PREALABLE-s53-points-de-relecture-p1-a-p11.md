@@ -62,7 +62,7 @@ histoire"), mais la correction a touche ces items et l'a laisse. Sur ces deux it
 nommer l'accord. Texte a appliquer, identique sur les deux items, enonce, texte, propositions inchanges :
 
 ```yaml
-    indice: " Elle  désigne un mot féminin : cherche-le dans la phrase d'avant."
+    indice: "Elle désigne un mot féminin : cherche-le dans la phrase d'avant."
 ```
 
 Dix mots sous la convention de comptage (section 4.2). Il dit une methode, l'accord, que l'en-tete du paquet declare
