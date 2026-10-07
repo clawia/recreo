@@ -49,7 +49,7 @@ lignesDeReferentiel: ["LVE-CM1-05"]
 #
 # FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
 #
-# FAB-1 : douze bonnes reponses distinctes. Chaque texte d'information porte deux faits, afin que
+# FAB-1 : douze bonnes reponses distinctes. Chaque texte d'information porte deux faits (sauf la consigne de l'item 6, qui n'en porte qu'un), afin que
 # la bonne reponse ne soit pas le seul mot reconnaissable : le distracteur est pris soit dans
 # l'autre fait du texte, soit dans un autre mot du lexique, jamais dans un champ different
 # (REC-6, transpose : trois propositions du meme champ lexical et de longueur voisine).

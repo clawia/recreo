@@ -55,51 +55,51 @@ lignesDeReferentiel: ["SCI-CM1-15"]
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final.
 # FER-2 : douze items, strictement superieur aux dix manches par defaut (DEC-0064).
 items:
-  - enonce: "Quel astre est au centre du système solaire  ?"  # tache: C # element: systeme # HIS-3: le Soleil est l'etoile au centre du systeme solaire, fait enseigne au cycle 3
+  - enonce: "Quel astre est au centre du système solaire ?"  # tache: C # element: systeme # HIS-3: le Soleil est l'etoile au centre du systeme solaire, fait enseigne au cycle 3
     bonneReponse: "le Soleil"
     distracteurs: ["la Terre", "la Lune"]
     indice: "Cet astre éclaire et réchauffe toutes les planètes."
-  - enonce: "Autour de quel astre la Terre tourne-t-elle en une année  ?"  # tache: C # element: systeme # HIS-3: la Terre est une planete qui tourne autour du Soleil en une annee, fait enseigne au cycle 3
+  - enonce: "Autour de quel astre la Terre tourne-t-elle en une année ?"  # tache: C # element: systeme # HIS-3: la Terre est une planete qui tourne autour du Soleil en une annee, fait enseigne au cycle 3
     bonneReponse: "autour du Soleil"
     distracteurs: ["autour de la Lune", "autour d'une autre planète"]
     indice: "La Lune tourne autour de la Terre, pas l'inverse."
-  - enonce: "Pourquoi y a-t-il le jour et la nuit sur Terre  ?"  # tache: A # element: jour # HIS-3: l'alternance du jour et de la nuit vient de la rotation de la Terre sur elle-meme, fait enseigne au cycle 3
+  - enonce: "Pourquoi y a-t-il le jour et la nuit sur Terre ?"  # tache: A # element: jour # HIS-3: l'alternance du jour et de la nuit vient de la rotation de la Terre sur elle-meme, fait enseigne au cycle 3
     bonneReponse: "la Terre tourne sur elle-même"
     distracteurs: ["le Soleil tourne autour de la Terre", "la Terre s'éloigne du Soleil la nuit"]
     indice: "Dans le système solaire, ce sont les planètes qui tournent autour du Soleil."
-  - enonce: "Dans une région de la Terre, c'est le jour. Dans quelle position est cette région  ?"  # tache: A # element: jour # HIS-3: il fait jour dans la partie de la Terre tournee vers le Soleil, la distance Terre-Soleil ne change pas au cours d'une journee, fait enseigne au cycle 3
+  - enonce: "Dans une région de la Terre, c'est le jour. Dans quelle position est cette région ?"  # tache: A # element: jour # HIS-3: il fait jour dans la partie de la Terre tournee vers le Soleil, la distance Terre-Soleil ne change pas au cours d'une journee, fait enseigne au cycle 3
     bonneReponse: "elle est tournée vers le Soleil"
     distracteurs: ["elle est cachée par la Lune", "le Soleil s'est rapproché de cette région"]
     indice: "La distance entre la Terre et le Soleil reste la même toute la journée."
-  - enonce: "Dans une région de la Terre, c'est la nuit. Pourquoi cette région n'est-elle pas éclairée  ?"  # tache: A # element: nuit # HIS-3: il fait nuit dans la partie de la Terre tournee a l'oppose du Soleil, fait enseigne au cycle 3
+  - enonce: "Dans une région de la Terre, c'est la nuit. Pourquoi cette région n'est-elle pas éclairée ?"  # tache: A # element: nuit # HIS-3: il fait nuit dans la partie de la Terre tournee a l'oppose du Soleil, fait enseigne au cycle 3
     bonneReponse: "elle est tournée du côté opposé au Soleil"
     distracteurs: ["le Soleil s'éteint pendant la nuit", "la Lune éteint la lumière du Soleil"]
     indice: "Le Soleil brille tout le temps, de nuit comme de jour."
-  - enonce: "En combien de temps la Terre fait-elle un tour sur elle-même  ?"  # tache: A # element: jour # HIS-3: la rotation de la Terre sur elle-meme dure environ vingt-quatre heures, fait enseigne au cycle 3
+  - enonce: "En combien de temps la Terre fait-elle un tour sur elle-même ?"  # tache: A # element: jour # HIS-3: la rotation de la Terre sur elle-meme dure environ vingt-quatre heures, fait enseigne au cycle 3
     bonneReponse: "environ vingt-quatre heures"
     distracteurs: ["environ une semaine", "environ une année"]
     indice: "Ce tour sur elle-même correspond à l'alternance d'un jour et d'une nuit."
-  - enonce: "Pourquoi y a-t-il des saisons sur Terre  ?"  # tache: B # element: saisons # HIS-3: les saisons viennent de l'inclinaison de l'axe de la Terre pendant son tour autour du Soleil, fait enseigne au cycle 3, exemple de l'arbitrage prealable de s30, section 2.5
+  - enonce: "Pourquoi y a-t-il des saisons sur Terre ?"  # tache: B # element: saisons # HIS-3: les saisons viennent de l'inclinaison de l'axe de la Terre pendant son tour autour du Soleil, fait enseigne au cycle 3, exemple de l'arbitrage prealable de s30, section 2.5
     bonneReponse: "l'inclinaison de l'axe de la Terre"
     distracteurs: ["la Terre est plus près du Soleil en été", "la Lune cache le Soleil en hiver"]
     indice: "La distance de la Terre au Soleil change très peu au cours de l'année."
-  - enonce: "La Terre tourne autour du Soleil avec son axe incliné. Que se passe-t-il pour une région au fil de l'année  ?"  # tache: B # element: saisons # HIS-3: en raison de l'inclinaison de l'axe, une region recoit plus ou moins de lumiere du Soleil selon la position de la Terre sur son trajet, fait enseigne au cycle 3
+  - enonce: "La Terre tourne autour du Soleil avec son axe incliné. Que se passe-t-il pour une région au fil de l'année ?"  # tache: B # element: saisons # HIS-3: en raison de l'inclinaison de l'axe, une region recoit plus ou moins de lumiere du Soleil selon la position de la Terre sur son trajet, fait enseigne au cycle 3
     bonneReponse: "elle reçoit parfois plus de lumière, parfois moins"
     distracteurs: ["elle reçoit toujours la même lumière", "elle s'éloigne puis se rapproche beaucoup du Soleil"]
     indice: "Les saisons ne viennent pas d'un éloignement ou d'un rapprochement important."
-  - enonce: "Pourquoi fait-il plus chaud en été qu'en hiver en France métropolitaine  ?"  # tache: B # element: saisons # HIS-3: en ete le Soleil monte plus haut et les jours sont plus longs en France metropolitaine, la Terre est au plus loin du Soleil debut juillet, fait enseigne au cycle 3
+  - enonce: "Pourquoi fait-il plus chaud en été qu'en hiver en France métropolitaine ?"  # tache: B # element: saisons # HIS-3: en ete le Soleil monte plus haut et les jours sont plus longs en France metropolitaine, la Terre est au plus loin du Soleil debut juillet, fait enseigne au cycle 3
     bonneReponse: "le Soleil est plus haut dans le ciel et les jours sont plus longs"
     distracteurs: ["la Terre est plus près du Soleil", "le Soleil brille plus fort en été"]
     indice: "En juillet, la Terre est même un peu plus loin du Soleil qu'en janvier."
-  - enonce: "Quand c'est l'été en France métropolitaine, quelle saison est-ce dans l'hémisphère sud  ?"  # tache: B # element: saisons # HIS-3: les saisons sont inversees entre l'hemisphere nord et l'hemisphere sud a cause de l'inclinaison de l'axe, fait enseigne au cycle 3
+  - enonce: "Quand c'est l'été en France métropolitaine, quelle saison est-ce dans l'hémisphère sud ?"  # tache: B # element: saisons # HIS-3: les saisons sont inversees entre l'hemisphere nord et l'hemisphere sud a cause de l'inclinaison de l'axe, fait enseigne au cycle 3
     bonneReponse: "l'hiver"
     distracteurs: ["l'été aussi", "le printemps"]
     indice: "Quand une moitié de la Terre penche vers le Soleil, l'autre penche à l'opposé."
-  - enonce: "Quelle saison a les jours les plus longs en France métropolitaine  ?"  # tache: B # element: saisons # HIS-3: les jours sont les plus longs en ete dans l'hemisphere nord, plus courts en automne et en hiver, fait enseigne au cycle 3, coherent avec cp-qlm-saisons
+  - enonce: "Quelle saison a les jours les plus longs en France métropolitaine ?"  # tache: B # element: saisons # HIS-3: les jours sont les plus longs en ete dans l'hemisphere nord, plus courts en automne et en hiver, fait enseigne au cycle 3, coherent avec cp-qlm-saisons
     bonneReponse: "l'été"
     distracteurs: ["l'hiver", "l'automne"]
     indice: "Plus le Soleil monte haut dans le ciel, plus il reste longtemps au-dessus de l'horizon."
-  - enonce: "Quand il est midi à un endroit de la Terre, que se passe-t-il à l'endroit opposé  ?"  # tache: A # element: nuit # HIS-3: deux endroits diametralement opposes de la Terre ne peuvent pas faire face au Soleil en meme temps, fait enseigne au cycle 3
+  - enonce: "Quand il est midi à un endroit de la Terre, que se passe-t-il à l'endroit opposé ?"  # tache: A # element: nuit # HIS-3: deux endroits diametralement opposes de la Terre ne peuvent pas faire face au Soleil en meme temps, fait enseigne au cycle 3
     bonneReponse: "il y fait nuit"
     distracteurs: ["il y fait aussi jour", "il y fait jour mais plus sombre"]
     indice: "La Terre est une boule, et le Soleil n'en éclaire qu'une moitié à la fois."

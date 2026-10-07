@@ -15,7 +15,7 @@ lignesDeReferentiel: ["QLM-CP-12"]
 # Ce qui manque, et ce que ce paquet n'est donc pas. ARBITRAGE-PREALABLE-s27 (section 7.1, ligne 12)
 # et ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md (section
 # 4.3) font de cette ligne une ligne de designation : l'enfant montre la France sur une carte. Le
-# materiau n'existe pas (DEC-0111, section sur le materiau carte et globe) : ce paquet ne ferme
+# materiau n'existe pas (DEC-0111, amendement A.15) : ce paquet ne ferme
 # pas la ligne et ne s'y substitue pas. ZON-4 (s28) refuse le quiz de noms ("dans quel pays est la
 # tour Eiffel ?") ; ce paquet n'en pose qu'un seul (item 11, la France en bonne reponse) et fait
 # porter les autres items sur la lecture de l'orientation d'une carte et sur la position relative
@@ -44,51 +44,51 @@ lignesDeReferentiel: ["QLM-CP-12"]
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
 # dette heritee.
 items:
-  - enonce: "Sur un globe, comment voit-on la Terre  ?"
+  - enonce: "Sur un globe, comment voit-on la Terre ?"
     bonneReponse: "en forme de boule"
     distracteurs: ["à plat", "en forme de cube"]
     indice: "Un globe se pose sur un pied et tourne."
-  - enonce: "Sur une carte, comment voit-on la Terre ou un pays  ?"
+  - enonce: "Sur une carte, comment voit-on la Terre ou un pays ?"
     bonneReponse: "dessiné à plat"
     distracteurs: ["en forme de boule", "en forme de cube"]
     indice: "Une carte se déplie ou se pose sur une table."
-  - enonce: "Sur une carte, le nord est souvent en haut. Où est le sud  ?"
+  - enonce: "Sur une carte, le nord est souvent en haut. Où est le sud ?"
     bonneReponse: "en bas"
     distracteurs: ["à gauche", "à droite"]
     indice: "Le sud est le contraire du nord."
-  - enonce: "Sur une carte, l'ouest est à gauche. Où est l'est  ?"
+  - enonce: "Sur une carte, l'ouest est à gauche. Où est l'est ?"
     bonneReponse: "à droite"
     distracteurs: ["en haut", "en bas"]
     indice: "L'est est le contraire de l'ouest."
-  - enonce: "La France est dans quel continent  ?"
+  - enonce: "La France est dans quel continent ?"
     bonneReponse: "l'Europe"
     distracteurs: ["l'Afrique", "l'Asie"]
     indice: "Ce continent est au nord de l'Afrique."
-  - enonce: "Quel pays est au sud de la France  ?"
+  - enonce: "Quel pays est au sud de la France ?"
     bonneReponse: "l'Espagne"
     distracteurs: ["la Belgique", "l'Allemagne"]
     indice: "Sur la carte, le sud est en bas."
-  - enonce: "Quel pays est au nord de la France  ?"
+  - enonce: "Quel pays est au nord de la France ?"
     bonneReponse: "la Belgique"
     distracteurs: ["l'Espagne", "l'Italie"]
     indice: "Sur la carte, le nord est en haut."
-  - enonce: "Quel pays est à l'est de la France  ?"
+  - enonce: "Quel pays est à l'est de la France ?"
     bonneReponse: "l'Allemagne"
     distracteurs: ["l'Espagne", "le Portugal"]
     indice: "Sur la carte, l'est est à droite."
-  - enonce: "Quelle mer est au sud de la France  ?"
+  - enonce: "Quelle mer est au sud de la France ?"
     bonneReponse: "la Méditerranée"
     distracteurs: ["la Manche", "la mer du Nord"]
     indice: "Sur la carte, le sud est en bas."
-  - enonce: "Quel océan est à l'ouest de la France  ?"
+  - enonce: "Quel océan est à l'ouest de la France ?"
     bonneReponse: "l'océan Atlantique"
     distracteurs: ["l'océan Indien", "l'océan Pacifique"]
     indice: "Sur la carte, l'ouest est à gauche."
-  - enonce: "Paris est dans quel pays  ?"
+  - enonce: "Paris est dans quel pays ?"
     bonneReponse: "la France"
     distracteurs: ["l'Espagne", "la Belgique"]
     indice: "La carte de ce pays a presque six côtés."
-  - enonce: "La France fait partie de l'Europe. Qu'est-ce qui est le plus grand  ?"
+  - enonce: "La France fait partie de l'Europe. Qu'est-ce qui est le plus grand ?"
     bonneReponse: "l'Europe"
     distracteurs: ["la France"]
     indice: "Un pays est à l'intérieur d'un continent."

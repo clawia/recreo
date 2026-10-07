@@ -75,7 +75,7 @@ items:
     indice: "Le mot commence par « b » et compte six lettres."
   - enonce: "Sur l'étiquette d'une fiche, on écrit « château » en anglais. Quelle écriture est la bonne ?"
     bonneReponse: "castle"
-    distracteurs: ["castel", "casle"]
+    distracteurs: ["castl", "casle"]
     indice: "Le mot commence par « c » et compte six lettres."
   - enonce: "Sur l'étiquette d'une fiche, on écrit « fantôme » en anglais. Quelle écriture est la bonne ?"
     bonneReponse: "ghost"
@@ -87,7 +87,7 @@ items:
     indice: "Le mot commence par « w » et compte cinq lettres."
   - enonce: "Sur l'étiquette d'une fiche, on écrit « champ » en anglais. Quelle écriture est la bonne ?"
     bonneReponse: "field"
-    distracteurs: ["feild", "fiel"]
+    distracteurs: ["feild", "fild"]
     indice: "Le mot commence par « f » et compte cinq lettres."
   - enonce: "Sur le plan d'une ville, un seul de ces mots anglais est bien écrit. Lequel ?"
     bonneReponse: "street"

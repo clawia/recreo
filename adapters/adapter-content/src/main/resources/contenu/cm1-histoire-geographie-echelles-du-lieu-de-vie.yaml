@@ -20,13 +20,13 @@ lignesDeReferentiel: ["HG-CM1-10"]
 # commune. Ce que le paquet fait travailler est l'emboitement des six echelles (commune, departement,
 # region, France, Europe, monde), pas la competence d'un enfant a situer le lieu ou il habite.
 # Ce paquet ne ferme pas la ligne et ne s'y substitue pas : le materiau carte manque (DEC-0111,
-# section sur le materiau carte et globe).
+# amendement A.15).
 #
 # FER-1 : les six echelles de la parenthese sont chacune presentes en bonne reponse, seule ou dans
 # une chaine :
 #   - commune : items 9 et 10 (premier terme de la chaine) ;
 #   - departement : items 1 et 9 a 10 ; region : items 2 a 4, 8, 12 ;
-#   - France : items 6, 13 ; Europe : items 11, 14 ; monde : items 7 et 14.
+#   - France : items 6, 13 ; Europe : items 7 et 9 a 11 ; monde : items 7 et 14.
 # FER-3 : deux taches :
 #   - situer une commune dans son departement ou sa region (items 1 a 4, 8 et 12) ;
 #   - ordonner ou enchainer les echelles (items 5 a 7, 9 a 11, 13 et 14).
@@ -43,59 +43,59 @@ lignesDeReferentiel: ["HG-CM1-10"]
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
 # dette heritee.
 items:
-  - enonce: "Bordeaux est une commune. Dans quel département se trouve-t-elle  ?"  # HIS-1: restitution ; HIS-3: Bordeaux est dans la Gironde, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Bordeaux est une commune. Dans quel département se trouve-t-elle ?"  # HIS-1: restitution ; HIS-3: Bordeaux est dans la Gironde, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "la Gironde"
     distracteurs: ["le Rhône", "le Nord"]
     indice: "Bordeaux est une grande ville du sud-ouest de la France."
-  - enonce: "Lyon est une commune du département du Rhône. Dans quelle région est-elle  ?"  # HIS-1: restitution ; HIS-3: Lyon est en Auvergne-Rhone-Alpes, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Lyon est une commune du département du Rhône. Dans quelle région est-elle ?"  # HIS-1: restitution ; HIS-3: Lyon est en Auvergne-Rhone-Alpes, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "Auvergne-Rhône-Alpes"
     distracteurs: ["Bretagne", "Grand Est"]
     indice: "Cette région est dans le sud-est de la France."
-  - enonce: "Rennes est dans le département d'Ille-et-Vilaine. Dans quelle région est-elle  ?"  # HIS-1: restitution ; HIS-3: Rennes est en Bretagne, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Rennes est dans le département d'Ille-et-Vilaine. Dans quelle région est-elle ?"  # HIS-1: restitution ; HIS-3: Rennes est en Bretagne, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "Bretagne"
     distracteurs: ["Normandie", "Occitanie"]
     indice: "Cette région est à l'ouest de la France."
-  - enonce: "Marseille est dans le département des Bouches-du-Rhône. Dans quelle région est-elle  ?"  # HIS-1: restitution ; HIS-3: Marseille est en Provence-Alpes-Cote d'Azur, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Marseille est dans le département des Bouches-du-Rhône. Dans quelle région est-elle ?"  # HIS-1: restitution ; HIS-3: Marseille est en Provence-Alpes-Cote d'Azur, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "Provence-Alpes-Côte d'Azur"
     distracteurs: ["Bretagne", "Hauts-de-France"]
     indice: "Cette région est dans le sud-est de la France."
-  - enonce: "Une commune est dans un département, qui est dans une région. Qu'est-ce qui est le plus grand  ?"  # HIS-1: ordonner ; HIS-3: l'emboitement commune, departement, region, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Une commune est dans un département, qui est dans une région. Qu'est-ce qui est le plus grand ?"  # HIS-1: ordonner ; HIS-3: l'emboitement commune, departement, region, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "la région"
     distracteurs: ["la commune", "le département"]
     indice: "Un espace est plus grand que ceux qu'il contient."
-  - enonce: "Quel est l'ordre du plus petit au plus grand  ?"  # HIS-1: ordonner ; HIS-3: l'emboitement commune, departement, region, France, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Quel est l'ordre du plus petit au plus grand ?"  # HIS-1: ordonner ; HIS-3: l'emboitement commune, departement, region, France, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "commune, département, région, France"
     distracteurs: ["département, commune, région, France", "commune, région, département, France"]
     indice: "Une commune est dans un département."
-  - enonce: "Quel est l'ordre du plus grand au plus petit  ?"  # HIS-1: ordonner ; HIS-3: la region est dans la France, la France en Europe, l'Europe dans le monde, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Quel est l'ordre du plus grand au plus petit ?"  # HIS-1: ordonner ; HIS-3: la region est dans la France, la France en Europe, l'Europe dans le monde, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "le monde, l'Europe, la France, la région"
     distracteurs: ["l'Europe, le monde, la France, la région", "le monde, la France, l'Europe, la région"]
     indice: "La France fait partie de l'Europe."
-  - enonce: "Toulouse est dans le département de la Haute-Garonne. Dans quelle région est-elle  ?"  # HIS-1: restitution ; HIS-3: Toulouse est en Occitanie, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Toulouse est dans le département de la Haute-Garonne. Dans quelle région est-elle ?"  # HIS-1: restitution ; HIS-3: Toulouse est en Occitanie, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "Occitanie"
     distracteurs: ["Nouvelle-Aquitaine", "Bretagne"]
     indice: "Cette région est dans le sud de la France."
-  - enonce: "Léa habite à Lille. Quelle suite la situe du plus petit au plus grand  ?"  # HIS-1: ordonner ; HIS-3: Lille, departement du Nord, region Hauts-de-France, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Léa habite à Lille. Quelle suite la situe du plus petit au plus grand ?"  # HIS-1: ordonner ; HIS-3: Lille, departement du Nord, region Hauts-de-France, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "Lille, Nord, Hauts-de-France, France, Europe"
     distracteurs: ["Hauts-de-France, Lille, Nord, France, Europe", "Lille, Hauts-de-France, Nord, Europe, France"]
     indice: "Commence par la commune, puis le département."
-  - enonce: "Tom habite à Rennes. Quelle suite le situe du plus petit au plus grand  ?"  # HIS-1: ordonner ; HIS-3: Rennes, departement d'Ille-et-Vilaine, region Bretagne, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Tom habite à Rennes. Quelle suite le situe du plus petit au plus grand ?"  # HIS-1: ordonner ; HIS-3: Rennes, departement d'Ille-et-Vilaine, region Bretagne, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "Rennes, Ille-et-Vilaine, Bretagne, France, Europe"
     distracteurs: ["Rennes, Bretagne, Ille-et-Vilaine, France, Europe", "Ille-et-Vilaine, Rennes, Bretagne, France, Europe"]
     indice: "Un département est plus petit qu'une région."
-  - enonce: "Sur un planisphère, la France est dans quel continent  ?"  # HIS-1: restitution ; HIS-3: la France est en Europe, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
+  - enonce: "Sur un planisphère, la France est dans quel continent ?"  # HIS-1: restitution ; HIS-3: la France est en Europe, fait de geographie de cycle 3, verifiable sur une carte physique ou administrative de la France et sur un planisphere
     bonneReponse: "l'Europe"
     distracteurs: ["l'Afrique", "l'Asie"]
     indice: "Ce continent est au nord de l'Afrique."
-  - enonce: "Brest est dans le département du Finistère. Dans quelle région est-elle  ?"  # HIS-1: restitution ; HIS-3: Brest est dans le Finistere, en Bretagne, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Brest est dans le département du Finistère. Dans quelle région est-elle ?"  # HIS-1: restitution ; HIS-3: Brest est dans le Finistere, en Bretagne, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "Bretagne"
     distracteurs: ["Normandie", "Pays de la Loire"]
     indice: "Brest est tout à l'ouest de la France."
-  - enonce: "Quelle échelle vient juste après la région  ?"  # HIS-1: ordonner ; HIS-3: apres la region vient la France, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Quelle échelle vient juste après la région ?"  # HIS-1: ordonner ; HIS-3: apres la region vient la France, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "la France"
     distracteurs: ["le département", "la commune"]
     indice: "Les échelles vont du plus petit au plus grand."
-  - enonce: "Quelle échelle vient juste après l'Europe  ?"  # HIS-1: ordonner ; HIS-3: apres l'Europe vient le monde, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
+  - enonce: "Quelle échelle vient juste après l'Europe ?"  # HIS-1: ordonner ; HIS-3: apres l'Europe vient le monde, decoupage administratif de la France (commune, departement, region), verifiable sur une carte administrative
     bonneReponse: "le monde"
     distracteurs: ["la France", "la région"]
     indice: "Les échelles vont du plus petit au plus grand."

@@ -88,7 +88,7 @@ items:
   # MIV-CE1-2: graphies fautives lues comme le mot
   - enonce: "Tom lit ___ la récréation."
     bonneReponse: "pendant"
-    distracteurs: ["pendent", "pendan"]
+    distracteurs: ["pandant", "pendan"]
     indice: "Compare la fin des trois mots."
   # MIV-CE1-2: graphies fautives lues comme le mot
   - enonce: "Il pleut ___ ce matin."
@@ -128,7 +128,7 @@ items:
   # MIV-CE1-2: graphies fautives lues comme le mot
   - enonce: "On se lave les mains, ___ on mange."
     bonneReponse: "ensuite"
-    distracteurs: ["ansuite", "ensuit"]
+    distracteurs: ["ansuite", "ensuitte"]
     indice: "Un seul des trois mots s'écrit comme dans les livres."
   # MIV-CE1-2: graphies fautives lues comme le mot
   - enonce: "Après un long voyage, le train arrive ___."

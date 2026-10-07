@@ -1,3 +1,4 @@
+# DEGRADE : le verbe "comparer" du referentiel n'est servi que par l'item 12 ; les onze autres items expliquent une maniere de vivre par son lieu, sans comparer deux manieres de vivre.
 schema: 1
 id: cp-qlm-modes-de-vie
 type: question
@@ -49,51 +50,51 @@ lignesDeReferentiel: ["QLM-CP-16"]
 # TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
 # dette heritee.
 items:
-  - enonce: "Des maisons sont sur pilotis au bord d'un fleuve. À quoi servent les pilotis  ?"
+  - enonce: "Des maisons sont sur pilotis au bord d'un fleuve. À quoi servent les pilotis ?"
     bonneReponse: "à garder la maison hors de l'eau"
     distracteurs: ["à garder la maison plus chaude", "à cacher la maison des voisins"]
     indice: "Regarde où la maison est construite."
-  - enonce: "Dans une région très chaude, des maisons ont des murs épais en terre. Pourquoi  ?"
+  - enonce: "Dans une région très chaude, des maisons ont des murs épais en terre. Pourquoi ?"
     bonneReponse: "pour garder la fraîcheur dedans"
     distracteurs: ["pour garder la chaleur dedans", "pour attirer la pluie"]
     indice: "Les murs protègent du climat de l'endroit."
-  - enonce: "Là où il pleut beaucoup, les toits sont souvent penchés. Pourquoi  ?"
+  - enonce: "Là où il pleut beaucoup, les toits sont souvent penchés. Pourquoi ?"
     bonneReponse: "pour que l'eau de pluie coule"
     distracteurs: ["pour garder l'eau sur le toit", "pour voir plus loin"]
     indice: "Pense à ce que devient l'eau sur un toit penché."
-  - enonce: "Où pousse le riz  ?"
+  - enonce: "Où pousse le riz ?"
     bonneReponse: "dans des champs remplis d'eau"
     distracteurs: ["dans du sable très sec", "sous la neige"]
     indice: "Cette plante n'aime pas le sable sec."
-  - enonce: "Où poussent les bananiers  ?"
+  - enonce: "Où poussent les bananiers ?"
     bonneReponse: "dans une région chaude et humide"
     distracteurs: ["dans une région couverte de glace", "dans un désert très sec"]
     indice: "Cette plante ne supporte pas le gel."
-  - enonce: "Dans un port de pêche, que vend-on sur le quai  ?"
+  - enonce: "Dans un port de pêche, que vend-on sur le quai ?"
     bonneReponse: "du poisson frais"
     distracteurs: ["des moutons", "des skis"]
     indice: "Pense à ce que rapportent les bateaux qui partent en mer."
-  - enonce: "Dans certaines écoles, on enlève ses chaussures avant d'entrer en classe. Pourquoi  ?"
+  - enonce: "Dans certaines écoles, on enlève ses chaussures avant d'entrer en classe. Pourquoi ?"
     bonneReponse: "pour garder le sol propre"
     distracteurs: ["pour courir plus vite", "pour mieux voir le tableau"]
     indice: "Pense à ce que les chaussures ont touché dehors."
-  - enonce: "Dans certaines écoles, tous les enfants portent le même vêtement. Comment s'appelle-t-il  ?"
+  - enonce: "Dans certaines écoles, tous les enfants portent le même vêtement. Comment s'appelle-t-il ?"
     bonneReponse: "un uniforme"
     distracteurs: ["un pyjama", "un déguisement"]
     indice: "Ce n'est pas un vêtement pour dormir."
-  - enonce: "Dans un petit village, une seule classe accueille des enfants de plusieurs âges. Pourquoi  ?"
+  - enonce: "Dans un petit village, une seule classe accueille des enfants de plusieurs âges. Pourquoi ?"
     bonneReponse: "parce qu'il y a peu d'enfants"
     distracteurs: ["parce qu'il y a trop de maîtres", "parce que l'école est immense"]
     indice: "Pense au nombre d'enfants dans ce village."
-  - enonce: "Dans une ville avec des canaux, un bateau-bus remplace parfois le bus. Où circule-t-il  ?"
+  - enonce: "Dans une ville avec des canaux, un bateau-bus remplace parfois le bus. Où circule-t-il ?"
     bonneReponse: "sur l'eau des canaux"
     distracteurs: ["sur des rails", "dans le ciel"]
     indice: "Un canal est une rivière creusée par les humains."
-  - enonce: "Dans une grande ville, le métro roule sous la terre. Pourquoi  ?"
+  - enonce: "Dans une grande ville, le métro roule sous la terre. Pourquoi ?"
     bonneReponse: "pour laisser la place aux rues"
     distracteurs: ["pour voir les étoiles", "pour aller sous l'eau"]
     indice: "Pense à la place qu'il y a dans une grande ville."
-  - enonce: "En ville, on prend le métro. À la campagne, on prend souvent la voiture. Pourquoi cette différence  ?"
+  - enonce: "En ville, on prend le métro. À la campagne, on prend souvent la voiture. Pourquoi cette différence ?"
     bonneReponse: "parce que les lieux sont éloignés"
     distracteurs: ["parce qu'il n'y a pas de maisons en ville", "parce qu'il n'y a aucune route à la campagne"]
     indice: "Pense à la distance entre les lieux."

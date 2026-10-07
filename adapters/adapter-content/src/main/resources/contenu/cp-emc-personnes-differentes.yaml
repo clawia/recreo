@@ -91,7 +91,7 @@ items:
     indice: "Aucune différence ne donne le droit de laisser quelqu'un de côté."
   - enonce: "Trois enfants ne peuvent pas jouer au loup. Pour qui la raison n'est-elle pas juste ?"
     bonneReponse: "Tom, parce qu'il porte un pull que personne d'autre n'a"
-    distracteurs: ["Malo, parce que la corde est cassée", "Léa, parce que le jeu est fini"]
+    distracteurs: ["Malo, parce que c'est l'heure de rentrer", "Léa, parce que le jeu est fini"]
     indice: "Une raison juste parle du jeu ou de l'heure."
   - enonce: "Trois enfants ne peuvent pas jouer à la marelle. Pour qui la raison n'est-elle pas juste ?"
     bonneReponse: "Aya, parce qu'elle a les cheveux très longs"

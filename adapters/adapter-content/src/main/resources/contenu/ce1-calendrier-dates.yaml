@@ -114,15 +114,15 @@ items:
   - enonce: "Écris en chiffres : le vingt et un mai."
     bonneReponse: "le 21 mai"
     distracteurs: ["le 12 mai", "le 21 mars"]
-    indice: "Écoute le nombre, puis regarde bien le mois."
+    indice: "Lis le nombre, puis regarde bien le mois."
   - enonce: "Écris en chiffres : le trente juin."
     bonneReponse: "le 30 juin"
     distracteurs: ["le 13 juin", "le 30 juillet"]
-    indice: "Écoute le nombre, puis regarde bien le mois."
+    indice: "Lis le nombre, puis regarde bien le mois."
   - enonce: "Écris en chiffres : le quatorze avril."
     bonneReponse: "le 14 avril"
     distracteurs: ["le 4 avril", "le 14 août"]
-    indice: "Écoute le nombre, puis regarde bien le mois."
+    indice: "Lis le nombre, puis regarde bien le mois."
   - enonce: "Lis cette date : le 1er juin."
     bonneReponse: "le premier juin"
     distracteurs: ["le onze juin", "le premier juillet"]
