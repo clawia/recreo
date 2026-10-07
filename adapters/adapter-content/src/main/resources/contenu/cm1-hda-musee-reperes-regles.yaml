@@ -1,0 +1,74 @@
+# DEGRADE : aucun plan de lieu sur lequel designer une salle (palier 2) ; le paquet ne verifie que le
+# vocabulaire d'un musee et les regles de comportement, pas le fait de se reperer.
+#
+# S53 (session hors sprint, contenu seul). Ligne HDA-CM1-09 de squad/programme/MATRICE-couverture.md,
+# non couvert : se reperer suppose de designer un lieu sur un plan, palier 2, constructible. La matrice
+# refuse d'avance la contrefacon d'un quiz de comportement (que fait-on dans un musee ?) : ce paquet y
+# ressemble par la moitie des items et ne ferme pas la ligne. Ce qu'il apporte au plus : le vocabulaire
+# (cartel, vitrine, salle, plan, audioguide), la lecture d'une indication fleche et des regles
+# qui valent dans tout musee. Mention exigee d'avance : reconnaissance et situation d'oeuvres seules ;
+# aucun avis argumente ni aucune frequentation d'un lieu d'art n'est servi par ce produit.
+# Regles retenues (HIS-3), universelles : on ne touche pas les oeuvres, on se deplace calmement, on
+# suit les consignes et on ne rapporte rien d'un site ancien. Aucune regle qui varie d'un lieu a l'autre
+# (photo, flash, sac) n'est servie. Vocabulaire : le cartel est l'etiquette pres d'une oeuvre qui donne
+# son titre et son auteur ; l'audioguide diffuse des explications. A confirmer par nadia-prof, seule
+# autorite sur le Done pedagogique.
+# Douze items, au-dessus des dix manches par defaut.
+schema: 1
+id: cm1-hda-musee-reperes-regles
+type: question
+descripteur:
+  matiere: "Histoire des arts"
+  niveau: "CM1"
+  domaine: "Fréquenter les lieux d'art et le patrimoine"
+  competence: "Se repérer dans un musée, un lieu d'art ou un site patrimonial, et en respecter les règles (référentiel CM1, ligne HDA-CM1-09)."
+lignesDeReferentiel: ["HDA-CM1-09"]
+items:
+  - enonce: "Comment appelle-t-on la petite étiquette placée près d'une œuvre, qui donne son titre et le nom de l'artiste ?"
+    bonneReponse: "un cartel"
+    distracteurs: ["une vitrine", "un plan"]
+    indice: "On la lit pour en savoir plus sur l'œuvre."
+  - enonce: "Que consulte-t-on dans un musée pour trouver la salle qu'on cherche ?"
+    bonneReponse: "le plan du musée"
+    distracteurs: ["le billet d'entrée", "le cartel d'une œuvre"]
+    indice: "Il montre toutes les salles dessinées d'en haut."
+  - enonce: "Comment appelle-t-on la boîte à parois transparentes qui protège de petits objets exposés ?"
+    bonneReponse: "une vitrine"
+    distracteurs: ["un cartel", "un plan"]
+    indice: "On voit les objets sans pouvoir les toucher."
+  - enonce: "Comment appelle-t-on les grandes pièces d'un musée où sont exposées les œuvres ?"
+    bonneReponse: "des salles"
+    distracteurs: ["des cartels", "des vitrines"]
+    indice: "On passe de l'une à l'autre pendant la visite."
+  - enonce: "Que fait-on devant une œuvre exposée dans un musée ?"
+    bonneReponse: "on la regarde sans la toucher"
+    distracteurs: ["on la touche pour mieux la sentir", "on la déplace pour mieux la voir"]
+    indice: "Les œuvres sont fragiles et doivent durer."
+  - enonce: "Comment se déplace-t-on dans un musée ?"
+    bonneReponse: "calmement, en parlant doucement"
+    distracteurs: ["en courant entre les salles", "en criant pour s'appeler"]
+    indice: "Les autres visiteurs veulent regarder tranquillement."
+  - enonce: "Un objet est dans une vitrine fermée. Que fait-on ?"
+    bonneReponse: "on le regarde à travers la vitre"
+    distracteurs: ["on ouvre la vitrine", "on tape sur la vitre"]
+    indice: "La vitre est là pour le protéger."
+  - enonce: "Un panneau porte le mot « Sortie » et une flèche. Que montre-t-il ?"
+    bonneReponse: "le chemin pour quitter le lieu"
+    distracteurs: ["l'entrée d'une salle", "le nom d'un artiste"]
+    indice: "Ce panneau sert à s'orienter dans le lieu."
+  - enonce: "Sur le plan d'un musée, un point indique « Vous êtes ici ». Que montre-t-il ?"
+    bonneReponse: "l'endroit où l'on se trouve"
+    distracteurs: ["la sortie du musée", "la salle la plus visitée"]
+    indice: "Ce point sert de départ pour chercher son chemin."
+  - enonce: "Que doit-on respecter en visitant un château ou une abbaye très anciens ?"
+    bonneReponse: "les chemins et les consignes indiqués"
+    distracteurs: ["les murs sur lesquels on peut grimper", "les pierres qu'on peut emporter"]
+    indice: "Ce lieu doit rester intact pour les visiteurs suivants."
+  - enonce: "Peut-on emporter un petit morceau de pierre d'un site ancien comme souvenir ?"
+    bonneReponse: "non, il doit rester là pour tous"
+    distracteurs: ["oui, un petit morceau ne se remarque pas", "oui, si personne ne regarde"]
+    indice: "Ce lieu appartient à tous les visiteurs, aujourd'hui et demain."
+  - enonce: "Comment appelle-t-on l'appareil qu'on porte à l'oreille pour écouter des explications pendant une visite ?"
+    bonneReponse: "un audioguide"
+    distracteurs: ["un cartel", "une vitrine"]
+    indice: "Il parle à la place d'un guide."

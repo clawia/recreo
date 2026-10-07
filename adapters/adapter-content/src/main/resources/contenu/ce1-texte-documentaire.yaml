@@ -1,0 +1,147 @@
+schema: 1
+id: ce1-texte-documentaire
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte documentaire court ou une consigne écrite, et y prélever une information."
+lignesDeReferentiel: ["FRA-CE1-07"]
+# S53-FRA-TEXTE-DOCUMENTAIRE (session hors sprint "s53 special", contenu seul). Redige par lea-dev
+# sur les conditions DOC-CE1-1 a DOC-CE1-3 et les sept conditions transverses TRV-CE1-1 a TRV-CE1-7
+# de squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md (sections 2 et 3.7), sous LON-CE1-3 et
+# LON-CE1-4 (squad/conformite/ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md). Aucun Done n'est
+# prononce ici : ce paquet attend l'audit de nadia-prof. La verification du texte masque (un enfant
+# qui sait deja repondrait sans lire) reste a faire par elle : aucun compteur ne la voit.
+#
+# DOC-CE1-1 : les deux genres, marques au-dessus de chaque item. Onze textes documentaires (plus de
+# la moitie) et neuf consignes ecrites de trois ou quatre instructions (plus du quart) ; chaque
+# question de consigne porte sur l'ordre ou sur le contenu d'une instruction.
+# DOC-CE1-2 : la bonne reponse figure dans le texte, et au moins un distracteur aussi : prelever,
+# c'est choisir. DOC-CE1-3 : chaque fait est exact et verifiable dans un ouvrage de reference
+# general, aucun nombre superieur a 1000, un etre, un objet ou un geste qu'un enfant de CE1 connait.
+# TRV-CE1-1 : niveau CE1, une seule ligne, aucun champ a voix haute. TRV-CE1-5 : un indice par item,
+# douze mots au plus, jamais la reponse. TRV-CE1-6 : aucune situation qui suppose un logement, un
+# animal possede ou des vacances. TRV-CE1-7 : vingt items, vingt textes distincts.
+# LON-CE1-5 : au plus six mots par proposition.
+items:
+  # documentaire
+  - enonce: "Que mange le renard ?"
+    texteSupport: "Le renard mange de la viande. Le lapin mange de l'herbe. Le hibou chasse la nuit."
+    bonneReponse: "de la viande"
+    distracteurs: ["de l'herbe", "des graines"]
+    indice: "Cherche le mot « renard » dans le texte."
+  # documentaire
+  - enonce: "Où pousse la carotte ?"
+    texteSupport: "La pomme pousse sur un pommier. La carotte pousse sous la terre. La fraise pousse près du sol."
+    bonneReponse: "sous la terre"
+    distracteurs: ["sur un pommier", "près du sol"]
+    indice: "Cherche le mot « carotte » dans le texte."
+  # documentaire
+  - enonce: "Où le crocodile pond-il ses œufs ?"
+    texteSupport: "Le crocodile vit près de l'eau. Il a de grandes dents. Il pond ses œufs dans le sable."
+    bonneReponse: "dans le sable"
+    distracteurs: ["près de l'eau", "dans un arbre"]
+    indice: "Cherche le mot « pond » dans le texte."
+  # documentaire
+  - enonce: "Autour de quoi tourne la Lune ?"
+    texteSupport: "La Lune tourne autour de la Terre. La Terre tourne autour du Soleil. Le Soleil est une étoile."
+    bonneReponse: "de la Terre"
+    distracteurs: ["du Soleil", "d'un nuage"]
+    indice: "Relis la première phrase."
+  # documentaire
+  - enonce: "Avec quoi fabrique-t-on le papier ?"
+    texteSupport: "Le verre se fabrique avec du sable. Le papier se fabrique avec du bois. Le pull se fabrique avec de la laine."
+    bonneReponse: "du bois"
+    distracteurs: ["du sable", "de la laine"]
+    indice: "Cherche le mot « papier » dans le texte."
+  # documentaire
+  - enonce: "Comment les poissons respirent-ils ?"
+    texteSupport: "Les baleines remontent à la surface pour respirer. Les poissons respirent sous l'eau avec des branchies."
+    bonneReponse: "avec des branchies"
+    distracteurs: ["à la surface", "avec des poumons"]
+    indice: "Cherche le mot « poissons » dans le texte."
+  # documentaire
+  - enonce: "Que mange la chenille ?"
+    texteSupport: "La chenille mange des feuilles. Le papillon boit du nectar sur les fleurs."
+    bonneReponse: "des feuilles"
+    distracteurs: ["du nectar", "du miel"]
+    indice: "Cherche le mot « chenille » dans le texte."
+  # documentaire
+  - enonce: "Où le soleil se couche-t-il ?"
+    texteSupport: "Le soleil se lève à l'est. À midi, il est très haut dans le ciel. Il se couche à l'ouest."
+    bonneReponse: "à l'ouest"
+    distracteurs: ["à l'est", "au nord"]
+    indice: "Relis la dernière phrase."
+  # documentaire
+  - enonce: "Quand la chauve-souris sort-elle ?"
+    texteSupport: "La chauve-souris dort la tête en bas. Le jour, elle reste cachée. Elle sort la nuit et mange des insectes."
+    bonneReponse: "la nuit"
+    distracteurs: ["le jour", "à midi"]
+    indice: "Cherche le mot « sort » dans le texte."
+  # documentaire
+  - enonce: "À quelle température l'eau gèle-t-elle ?"
+    texteSupport: "L'eau gèle à zéro degré. Elle bout à cent degrés. Quand il fait chaud, la glace fond."
+    bonneReponse: "à zéro degré"
+    distracteurs: ["à cent degrés", "à dix degrés"]
+    indice: "Relis la dernière phrase."
+  # documentaire
+  - enonce: "Que mange le koala ?"
+    texteSupport: "Le koala vit en Australie. Le koala mange des feuilles d'eucalyptus. Le panda vit en Chine et mange du bambou."
+    bonneReponse: "des feuilles d'eucalyptus"
+    distracteurs: ["du bambou", "de la viande"]
+    indice: "Cherche le mot « koala » dans le texte."
+  # consigne
+  - enonce: "Que faut-il faire en premier ?"
+    texteSupport: "Prends une feuille. Plie-la en deux. Dessine un cœur sur le pli. Découpe-le."
+    bonneReponse: "Prends une feuille"
+    distracteurs: ["Plie-la en deux", "Découpe-le"]
+    indice: "Relis la première instruction."
+  # consigne
+  - enonce: "Que faut-il faire après le savon ?"
+    texteSupport: "Lave-toi les mains avec du savon. Rince-les à l'eau claire. Sèche-les avec une serviette."
+    bonneReponse: "Rince-les à l'eau claire"
+    distracteurs: ["Sèche-les avec une serviette", "Lave-toi les mains"]
+    indice: "Relis l'instruction qui vient juste après le savon."
+  # consigne
+  - enonce: "Que faut-il poser sur la terre ?"
+    texteSupport: "Pour planter une graine, remplis un pot de terre. Pose la graine dessus. Arrose un peu."
+    bonneReponse: "la graine"
+    distracteurs: ["un pot", "un peu d'eau"]
+    indice: "Cherche le mot « pose » dans la consigne."
+  # consigne
+  - enonce: "De quelle couleur faut-il colorier le rond ?"
+    texteSupport: "Trace un trait en rouge. Colorie le rond en bleu. Écris ton prénom en haut."
+    bonneReponse: "en bleu"
+    distracteurs: ["en rouge", "en vert"]
+    indice: "Cherche le mot « rond » dans la consigne."
+  # consigne
+  - enonce: "Que faut-il mettre sous la table ?"
+    texteSupport: "Range ton cahier. Ferme ta trousse. Mets ta chaise sous la table."
+    bonneReponse: "ta chaise"
+    distracteurs: ["ta trousse", "ton cahier"]
+    indice: "Relis la dernière instruction."
+  # consigne
+  - enonce: "Que faut-il faire en dernier ?"
+    texteSupport: "Casse deux œufs dans un bol. Ajoute du sucre. Mélange bien."
+    bonneReponse: "Mélange bien"
+    distracteurs: ["Casse deux œufs", "Ajoute du sucre"]
+    indice: "Les instructions se lisent dans l'ordre."
+  # consigne
+  - enonce: "Avec quoi faut-il découper le rond ?"
+    texteSupport: "Trace un rond avec un crayon. Découpe-le avec des ciseaux. Colle-le sur une feuille."
+    bonneReponse: "des ciseaux"
+    distracteurs: ["un crayon", "de la colle"]
+    indice: "Cherche le mot « découpe » dans la consigne."
+  # consigne
+  - enonce: "Où faut-il s'arrêter ?"
+    texteSupport: "Marche jusqu'à la grille. Tourne à gauche. Arrête-toi devant la porte rouge."
+    bonneReponse: "devant la porte rouge"
+    distracteurs: ["jusqu'à la grille", "à gauche"]
+    indice: "Cherche le mot « arrête-toi » dans la consigne."
+  # consigne
+  - enonce: "Que met-on dans le verre en premier ?"
+    texteSupport: "Mets de l'eau dans un verre. Ajoute du sirop. Mélange avec une cuillère."
+    bonneReponse: "de l'eau"
+    distracteurs: ["du sirop", "une cuillère"]
+    indice: "Relis la première instruction."

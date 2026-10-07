@@ -1,0 +1,80 @@
+# DEGRADE : aucune image d'oeuvre n'est servie ; les elements a partir desquels on situe une oeuvre sont
+# decrits par des mots au lieu d'etre observes, ce qui n'est pas ce que la ligne demande.
+#
+# S53 (session hors sprint, contenu seul). Ligne HDA-CM1-04 de squad/programme/MATRICE-couverture.md,
+# non couvert : sans image l'item devient un quiz de titres (DEC-0075, ART-4). Le paquet evite le quiz
+# de titres : aucune oeuvre individuelle n'est nommee (HDA-1 de
+# squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md), l'enonce donne
+# deux elements d'un type de vestige et demande l'epoque ou la civilisation. Il reste donc de la
+# classification, pas de l'observation. Distracteurs (HDA-3) : toujours une autre civilisation ou une
+# autre epoque reelle, ecartee par un marqueur propre (hieroglyphes, inscription en latin, dieu grec).
+# ART-5 transpose (HDA-4) : Prehistoire, Egypte antique, Grece antique, Rome antique, Moyen Age, Temps
+# modernes, epoque contemporaine. Periodes : Prehistoire, Antiquite, Moyen Age, Temps modernes, epoque
+# contemporaine (HG-CM1-01, squad/programme/histoire-geographie/competences-cm1.md).
+# Faits (HIS-3) : hieroglyphes, momies et tombeaux de pharaons, Egypte antique ; Zeus, dieu grec ;
+# inscription en latin et honneur a l'empereur, Rome antique ; aqueduc du pont du Gard et gladiateurs,
+# Rome antique (cm1-histoire-geographie-nommer-en-histoire.yaml) ; enluminures, vitraux gothiques et
+# chateaux forts, Moyen Age (cm1-histoire-des-arts-relier-contexte.yaml) ; Versailles et Louis XIV, Temps
+# modernes (cm1-histoire-geographie-situer-dans-le-temps.yaml) ; peintures de grotte de chasseurs,
+# Prehistoire ; tour de fer de l'Exposition universelle de 1889 a Paris, epoque contemporaine
+# (contenu-repris/frise/cm1-histoire.yml place la tour Eiffel apres la Revolution). A confirmer par
+# nadia-prof, seule autorite sur le Done pedagogique.
+# Douze items, au-dessus des dix manches par defaut.
+schema: 1
+id: cm1-hda-epoque-civilisation
+type: question
+descripteur:
+  matiere: "Histoire des arts"
+  niveau: "CM1"
+  domaine: "Situer une œuvre dans le temps et dans son contexte"
+  competence: "Associer une œuvre à une époque et à une civilisation à partir d'éléments décrits (référentiel CM1, ligne HDA-CM1-04)."
+lignesDeReferentiel: ["HDA-CM1-04"]
+items:
+  - enonce: "Un objet couvert d'hiéroglyphes est déposé dans le tombeau d'un pharaon. À quelle civilisation appartient-il ?"
+    bonneReponse: "l'Égypte antique"
+    distracteurs: ["la Grèce antique", "la Rome antique"]
+    indice: "Ce type d'écriture est celui des anciens habitants des bords du Nil."
+  - enonce: "Un vase est décoré d'une scène avec Zeus, le dieu de la foudre. À quelle civilisation appartient-il ?"
+    bonneReponse: "la Grèce antique"
+    distracteurs: ["l'Égypte antique", "la Rome antique"]
+    indice: "Pense au peuple qui a imaginé ce dieu."
+  - enonce: "Une pierre porte une inscription en latin qui honore l'empereur. À quelle civilisation appartient-elle ?"
+    bonneReponse: "la Rome antique"
+    distracteurs: ["la Grèce antique", "l'Égypte antique"]
+    indice: "Pense à la langue parlée par ce peuple."
+  - enonce: "Un aqueduc en pierre, à plusieurs étages d'arches, transporte l'eau comme le pont du Gard. À quelle civilisation appartient-il ?"
+    bonneReponse: "la Rome antique"
+    distracteurs: ["la Grèce antique", "l'Égypte antique"]
+    indice: "Ce peuple a construit des aqueducs jusqu'en Gaule."
+  - enonce: "Une immense arène en pierre accueille des combats de gladiateurs. À quelle époque appartient-elle ?"
+    bonneReponse: "l'Antiquité"
+    distracteurs: ["le Moyen Âge", "les Temps modernes"]
+    indice: "Ces combats ont lieu bien avant les châteaux forts."
+  - enonce: "Un livre copié à la main par des moines est orné d'enluminures. À quelle époque appartient-il ?"
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["l'Antiquité", "l'époque contemporaine"]
+    indice: "L'imprimerie n'existe pas encore."
+  - enonce: "Un grand vitrail raconte la vie de saints dans une cathédrale gothique. À quelle époque appartient-il ?"
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["la Préhistoire", "l'Antiquité"]
+    indice: "Ce style de cathédrale vient après les temples antiques."
+  - enonce: "Un château entouré de murailles épaisses et de douves protège ses habitants. À quelle époque appartient-il ?"
+    bonneReponse: "le Moyen Âge"
+    distracteurs: ["la Préhistoire", "l'époque contemporaine"]
+    indice: "Pense aux seigneurs et aux chevaliers."
+  - enonce: "Des animaux sont peints sur la paroi d'une grotte par des chasseurs. À quelle époque appartiennent ces peintures ?"
+    bonneReponse: "la Préhistoire"
+    distracteurs: ["l'Antiquité", "le Moyen Âge"]
+    indice: "Ces chasseurs vivaient avant l'invention de l'écriture."
+  - enonce: "Un château décoré d'une galerie de miroirs est construit pour Louis XIV. À quelle période appartient-il ?"
+    bonneReponse: "les Temps modernes"
+    distracteurs: ["le Moyen Âge", "l'époque contemporaine"]
+    indice: "Ce roi règne après le Moyen Âge, avant la Révolution française."
+  - enonce: "Une haute tour en fer est élevée à Paris pour l'Exposition universelle de 1889. À quelle période appartient-elle ?"
+    bonneReponse: "l'époque contemporaine"
+    distracteurs: ["le Moyen Âge", "l'Antiquité"]
+    indice: "Elle est construite après la Révolution française."
+  - enonce: "Un sarcophage peint contient une momie. À quelle civilisation appartient-il ?"
+    bonneReponse: "l'Égypte antique"
+    distracteurs: ["la Grèce antique", "la Rome antique"]
+    indice: "Cette civilisation préparait ainsi le corps de ses défunts."

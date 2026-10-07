@@ -1,0 +1,108 @@
+# DEGRADE : la lecture a voix haute qui prouve l'assemblage n'est pas servable (VOI-1, ARBITRAGE-PREALABLE-s26, section 4.4) ; l'enfant apparie des syllabes ecrites a un mot ecrit, sans aucune proposition sonore.
+schema: 1
+id: cp-assemblage-syllabique
+type: question
+descripteur:
+  matiere: "Français"
+  niveau: "CP"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Décoder un mot régulier inconnu par assemblage syllabique."
+lignesDeReferentiel: ["FRA-CP-05"]
+# S53-FRA-ASSEMBLAGE-SYLLABIQUE (session hors sprint "s53 special", contenu seul). Redige par
+# lea-dev. La ligne FRA-CP-05 a ete REFUSEE par nadia-prof le 2026-09-01 sur la forme sonore
+# (squad/conformite/ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md, section 4.4) : trois
+# propositions entendues, prononcees par l'adulte qui connait la bonne, c'est VOI-1. Ce paquet
+# n'est pas la forme qu'elle a refusee et n'en leve pas le refus : il n'emploie aucun champ a voix
+# haute, aucune consigne a l'adulte, aucune proposition sonore. Aucun Done n'est prononce ici ; la
+# question de savoir si cette forme ecrite sert la competence ou seulement un appariement visuel
+# est a juger par nadia-prof.
+#
+# Forme : l'enonce montre les syllabes d'un mot regulier separees par des tirets, et l'enfant choisit
+# le mot qu'elles forment parmi trois mots ecrits. Les vingt mots sont reguliers (syllabes
+# consonne-voyelle ; finales en e muet, on, in, al ou ol ; aucun autre digraphe), sans lettre accentuee.
+# Distracteurs, deux par item, ce ne sont jamais des mots :
+#   premier distracteur : deux syllabes echangees ;
+#   second distracteur : une lettre remplacee par une autre lettre de forme ou de son voisin (par exemple b/d, m/n, f/v, p/b, t/d).
+# Un enfant qui ne lirait que la premiere lettre ne gagne pas : le second distracteur la garde, sauf aux items 3, 4, 7, 9 et 15 ou la lettre remplacee est la premiere.
+# Indices : plusieurs formulations, aucun ne nomme la reponse.
+items:
+  - enonce: "Quel mot lis-tu : TO - MA - TE ?"
+    bonneReponse: "TOMATE"
+    distracteurs: ["MATOTE", "TOMADE"]
+    indice: "Lis chaque syllabe, puis assemble-les dans l'ordre."
+  - enonce: "Quel mot lis-tu : SA - LA - DE ?"
+    bonneReponse: "SALADE"
+    distracteurs: ["LASADE", "SALABE"]
+    indice: "Mets ton doigt sous chaque syllabe, une par une."
+  - enonce: "Quel mot lis-tu : PI - RA - TE ?"
+    bonneReponse: "PIRATE"
+    distracteurs: ["RAPITE", "BIRATE"]
+    indice: "Les syllabes se lisent de gauche à droite."
+  - enonce: "Quel mot lis-tu : BA - NA - NE ?"
+    bonneReponse: "BANANE"
+    distracteurs: ["NABANE", "DANANE"]
+    indice: "Regarde bien chaque lettre avant de choisir."
+  - enonce: "Quel mot lis-tu : LI - MO - NA - DE ?"
+    bonneReponse: "LIMONADE"
+    distracteurs: ["MOLINADE", "LIMONABE"]
+    indice: "Lis la première syllabe, puis la suivante."
+  - enonce: "Quel mot lis-tu : MA - CA - RON ?"
+    bonneReponse: "MACARON"
+    distracteurs: ["CAMARON", "MACANON"]
+    indice: "Lis chaque syllabe, puis assemble-les dans l'ordre."
+  - enonce: "Quel mot lis-tu : DO - MI - NO ?"
+    bonneReponse: "DOMINO"
+    distracteurs: ["MIDONO", "BOMINO"]
+    indice: "Mets ton doigt sous chaque syllabe, une par une."
+  - enonce: "Quel mot lis-tu : PA - RA - SOL ?"
+    bonneReponse: "PARASOL"
+    distracteurs: ["RAPASOL", "PARASOP"]
+    indice: "Les syllabes se lisent de gauche à droite."
+  - enonce: "Quel mot lis-tu : RA - DI - O ?"
+    bonneReponse: "RADIO"
+    distracteurs: ["DIRAO", "RABIO"]
+    indice: "Regarde bien chaque lettre avant de choisir."
+  - enonce: "Quel mot lis-tu : LA - PIN ?"
+    bonneReponse: "LAPIN"
+    distracteurs: ["PINLA", "LABIN"]
+    indice: "Lis la première syllabe, puis la suivante."
+  - enonce: "Quel mot lis-tu : MI - NU - TE ?"
+    bonneReponse: "MINUTE"
+    distracteurs: ["NUMITE", "MINUPE"]
+    indice: "Lis chaque syllabe, puis assemble-les dans l'ordre."
+  - enonce: "Quel mot lis-tu : MA - LA - DE ?"
+    bonneReponse: "MALADE"
+    distracteurs: ["LAMADE", "MALABE"]
+    indice: "Mets ton doigt sous chaque syllabe, une par une."
+  - enonce: "Quel mot lis-tu : LA - VA - BO ?"
+    bonneReponse: "LAVABO"
+    distracteurs: ["VALABO", "LAVADO"]
+    indice: "Les syllabes se lisent de gauche à droite."
+  - enonce: "Quel mot lis-tu : PI - LO - TE ?"
+    bonneReponse: "PILOTE"
+    distracteurs: ["LOPITE", "PILODE"]
+    indice: "Regarde bien chaque lettre avant de choisir."
+  - enonce: "Quel mot lis-tu : ME - LON ?"
+    bonneReponse: "MELON"
+    distracteurs: ["LONME", "NELON"]
+    indice: "Lis la première syllabe, puis la suivante."
+  - enonce: "Quel mot lis-tu : VO - LU - ME ?"
+    bonneReponse: "VOLUME"
+    distracteurs: ["LUVOME", "VOLUNE"]
+    indice: "Lis chaque syllabe, puis assemble-les dans l'ordre."
+  - enonce: "Quel mot lis-tu : SA - VON ?"
+    bonneReponse: "SAVON"
+    distracteurs: ["VONSA", "SAFON"]
+    indice: "Mets ton doigt sous chaque syllabe, une par une."
+  - enonce: "Quel mot lis-tu : RA - VI - O - LI ?"
+    bonneReponse: "RAVIOLI"
+    distracteurs: ["VIRAOLI", "RAVIOLO"]
+    indice: "Les syllabes se lisent de gauche à droite."
+  - enonce: "Quel mot lis-tu : A - NI - MAL ?"
+    bonneReponse: "ANIMAL"
+    distracteurs: ["NIAMAL", "ANIMOL"]
+    indice: "Regarde bien chaque lettre avant de choisir."
+  - enonce: "Quel mot lis-tu : MO - TO ?"
+    bonneReponse: "MOTO"
+    distracteurs: ["TOMO", "MOPO"]
+    indice: "Lis la première syllabe, puis la suivante."

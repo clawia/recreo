@@ -135,7 +135,9 @@ class LaValeurDUnePropositionEstDeriveeDeCeQuElleEcritTest {
      */
     private static final Map<String, Integer> PAQUETS_A_ITEMS_ECARTES =
             Map.of("cm1-perimetre", 2, "cm1-grands-nombres", 14, "cm1-fractions", 18,
-                    "cp-nombres-jusqu-a-100", 7, "cp-emc-alerte", 8, "ce1-sens-multiplication", 10);
+                    "cp-nombres-jusqu-a-100", 7, "cp-emc-alerte", 8, "ce1-sens-multiplication", 10,
+                    "ce1-nombres-jusqu-a-1000", 7, "ce1-masses-contenances", 18,
+                    "ce1-calendrier-dates", 18, "ce1-figures-planes", 10);
 
     /** Un item a trois propositions, vu par la lecture de valeur. */
     private record Lecture(List<String> propositions, List<Lue> lues) {

@@ -1,0 +1,94 @@
+# DEGRADE : aucun dessin de carte, de globe ou de planisphere n'existe (le palier 2 designation est construit, le materiau manque), ce paquet est textuel et ne fait pas designer un lieu sur une image.
+schema: 1
+id: cp-qlm-situer-la-france
+type: question
+descripteur:
+  matiere: "Questionner le monde"
+  niveau: "CP"
+  domaine: "Se situer dans l'espace"
+  competence: "Situer la France et quelques espaces étudiés sur une carte ou sur un globe."
+lignesDeReferentiel: ["QLM-CP-12"]
+#
+# S53 session hors sprint, ligne QLM-CP-12 (squad/programme/questionner-le-monde/competences-cp.md).
+# Referentiel copie conforme. Paquet statique de type "question", sans image.
+#
+# Ce qui manque, et ce que ce paquet n'est donc pas. ARBITRAGE-PREALABLE-s27 (section 7.1, ligne 12)
+# et ARBITRAGE-PREALABLE-s29-le-palier-2-ce-qu-un-paquet-de-designation-doit-apporter.md (section
+# 4.3) font de cette ligne une ligne de designation : l'enfant montre la France sur une carte. Le
+# materiau n'existe pas (DEC-0111, amendement A.15) : ce paquet ne ferme
+# pas la ligne et ne s'y substitue pas. ZON-4 (s28) refuse le quiz de noms ("dans quel pays est la
+# tour Eiffel ?") ; ce paquet n'en pose qu'un seul (item 11, la France en bonne reponse) et fait
+# porter les autres items sur la lecture de l'orientation d'une carte et sur la position relative
+# de la France, de ses voisins et de ses mers, dite par le point cardinal.
+#
+# FER-1 (s29, section 4.3) : la France est la bonne reponse d'un item (item 11) ; au moins trois
+# autres espaces distincts sont en bonne reponse (Europe, Espagne, Belgique, Allemagne, Mediterranee,
+# ocean Atlantique). Le support est disjonctif : un item sur le globe (item 1) et un sur la carte
+# (item 2) ne remplacent pas un dessin.
+# FER-3 : trois taches, chacune sur des items propres :
+#   - nommer le support, globe ou carte (items 1 et 2) ;
+#   - lire l'orientation d'une carte, haut, bas, gauche, droite (items 3 et 4) ;
+#   - situer un espace par son point cardinal par rapport a la France (items 5 a 12).
+# FER-2 : douze items, au-dessus du plancher de dix items par ligne fermee (DEC-0064).
+#
+# Exactitude, fait par fait (a verifier contre une carte, nadia-prof n'est pas la source) : la
+# France est en Europe ; l'Espagne est au sud de la France, la Belgique au nord, l'Allemagne a l'est ;
+# la Mediterranee borde le sud, la Manche et la mer du Nord le nord, l'ocean Atlantique l'ouest ;
+# sur une carte, le nord est le plus souvent en haut, l'ouest a gauche. Les voisins qui touchent deux
+# points cardinaux de facon defendable (Italie, Suisse, Luxembourg) ne sont jamais la bonne reponse
+# d'une question de point cardinal, et le Royaume-Uni n'est dans aucune proposition.
+#
+# Les propositions sont des noms et des groupes de mots, hors du domaine numerique
+# (LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest, PAQUETS_HORS_DU_DOMAINE_NUMERIQUE).
+#
+# TYP-1 (ADR-0067) : chaque enonce pose l'espace insecable devant son "?" final. Paquet neuf, aucune
+# dette heritee.
+items:
+  - enonce: "Sur un globe, comment voit-on la Terre ?"
+    bonneReponse: "en forme de boule"
+    distracteurs: ["à plat", "en forme de cube"]
+    indice: "Un globe se pose sur un pied et tourne."
+  - enonce: "Sur une carte, comment voit-on la Terre ou un pays ?"
+    bonneReponse: "dessiné à plat"
+    distracteurs: ["en forme de boule", "en forme de cube"]
+    indice: "Une carte se déplie ou se pose sur une table."
+  - enonce: "Sur une carte, le nord est souvent en haut. Où est le sud ?"
+    bonneReponse: "en bas"
+    distracteurs: ["à gauche", "à droite"]
+    indice: "Le sud est le contraire du nord."
+  - enonce: "Sur une carte, l'ouest est à gauche. Où est l'est ?"
+    bonneReponse: "à droite"
+    distracteurs: ["en haut", "en bas"]
+    indice: "L'est est le contraire de l'ouest."
+  - enonce: "La France est dans quel continent ?"
+    bonneReponse: "l'Europe"
+    distracteurs: ["l'Afrique", "l'Asie"]
+    indice: "Ce continent est au nord de l'Afrique."
+  - enonce: "Quel pays est au sud de la France ?"
+    bonneReponse: "l'Espagne"
+    distracteurs: ["la Belgique", "l'Allemagne"]
+    indice: "Sur la carte, le sud est en bas."
+  - enonce: "Quel pays est au nord de la France ?"
+    bonneReponse: "la Belgique"
+    distracteurs: ["l'Espagne", "l'Italie"]
+    indice: "Sur la carte, le nord est en haut."
+  - enonce: "Quel pays est à l'est de la France ?"
+    bonneReponse: "l'Allemagne"
+    distracteurs: ["l'Espagne", "le Portugal"]
+    indice: "Sur la carte, l'est est à droite."
+  - enonce: "Quelle mer est au sud de la France ?"
+    bonneReponse: "la Méditerranée"
+    distracteurs: ["la Manche", "la mer du Nord"]
+    indice: "Sur la carte, le sud est en bas."
+  - enonce: "Quel océan est à l'ouest de la France ?"
+    bonneReponse: "l'océan Atlantique"
+    distracteurs: ["l'océan Indien", "l'océan Pacifique"]
+    indice: "Sur la carte, l'ouest est à gauche."
+  - enonce: "Paris est dans quel pays ?"
+    bonneReponse: "la France"
+    distracteurs: ["l'Espagne", "la Belgique"]
+    indice: "La carte de ce pays a presque six côtés."
+  - enonce: "La France fait partie de l'Europe. Qu'est-ce qui est le plus grand ?"
+    bonneReponse: "l'Europe"
+    distracteurs: ["la France"]
+    indice: "Un pays est à l'intérieur d'un continent."

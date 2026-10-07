@@ -1,0 +1,83 @@
+# DEGRADE : aucune image d'oeuvre n'est servie ; les reperes sont identifies par une phrase et non par ce que
+# l'on voit, et le placement sur une frise n'est pas servi (palier 2).
+#
+# S53 (session hors sprint, contenu seul). Ligne HDA-CM1-06 de squad/programme/MATRICE-couverture.md,
+# non couvert : palier 1 illustre sur la moitie identification seulement (DEC-0075). Mention exigee
+# d'avance si la ligne bouge : identification et ordre entre deux oeuvres seuls ; le placement sur une
+# frise reste non couvert. Huit items identifient un repere, quatre ordonnent deux ou trois reperes.
+# L'identification par phrase est le risque de quiz de noms que la matrice a refuse pour une oeuvre a
+# voir ; ici elle porte sur des monuments dont l'enonce donne un trait propre, et la ligne reste non
+# couvrable en l'etat tant que l'image manque.
+# Reperes (ART-5, une civilisation ou une epoque chacun) : grotte de Lascaux (Prehistoire), pyramides de
+# Gizeh (Egypte antique), Acropole d'Athenes (Grece antique), Colisee de Rome et pont du Gard (Rome
+# antique), Notre-Dame de Paris (Moyen Age), chateau de Versailles (Temps modernes), tour Eiffel
+# (epoque contemporaine). Ordres entre reperes, jamais entre deux dates disputees.
+# Faits (HIS-3) : Lascaux est une grotte ornee de peintures prehistoriques, en Dordogne ; les pyramides de
+# Gizeh sont des tombeaux de pharaons, pres du Caire ; l'Acropole est la colline d'Athenes qui porte le
+# Parthenon ; le Colisee est l'arene de Rome ou combattaient des gladiateurs ; le pont du Gard est un
+# aqueduc romain a trois etages d'arches ; Notre-Dame est une cathedrale gothique de l'ile de la Cite, a
+# Paris ; Versailles est le chateau de Louis XIV avec sa galerie des Glaces ; la tour Eiffel date de 1889
+# (sources du depot : cm1-histoire-geographie-nommer-en-histoire.yaml,
+# cm1-histoire-geographie-situer-dans-le-temps.yaml, contenu-repris/frise/cm1-histoire.yml et
+# contenu-repris/quiz/cm1-histoire.yml). Je n'ai pas d'outil de recherche en ligne : nadia-prof confirme
+# chaque fait, seule autorite sur le Done pedagogique. Aucune date precise n'est servie, seulement
+# l'ordre Antiquite, Moyen Age, Temps modernes, epoque contemporaine.
+# Douze items, au-dessus des dix manches par defaut.
+schema: 1
+id: cm1-hda-reperes-patrimoine
+type: question
+descripteur:
+  matiere: "Histoire des arts"
+  niveau: "CM1"
+  domaine: "Situer une œuvre dans le temps et dans son contexte"
+  competence: "Identifier quelques œuvres et quelques repères majeurs du patrimoine, et les situer les uns par rapport aux autres (référentiel CM1, ligne HDA-CM1-06)."
+lignesDeReferentiel: ["HDA-CM1-06"]
+items:
+  - enonce: "Quelle grotte de Dordogne est célèbre pour ses peintures d'animaux datant de la Préhistoire ?"
+    bonneReponse: "la grotte de Lascaux"
+    distracteurs: ["le Colisée", "l'Acropole"]
+    indice: "Ses parois portent des chevaux et des bisons peints."
+  - enonce: "Quels célèbres tombeaux de pharaons se dressent à Gizeh, en Égypte ?"
+    bonneReponse: "les pyramides"
+    distracteurs: ["le Colisée", "l'Acropole"]
+    indice: "Ces monuments se trouvent près du Caire."
+  - enonce: "Quelle colline d'Athènes porte le Parthénon et d'autres monuments de la Grèce antique ?"
+    bonneReponse: "l'Acropole"
+    distracteurs: ["le Colisée", "le pont du Gard"]
+    indice: "Ce nom désigne la ville haute d'Athènes."
+  - enonce: "Quel grand monument de Rome servait aux combats de gladiateurs ?"
+    bonneReponse: "le Colisée"
+    distracteurs: ["le pont du Gard", "la tour Eiffel"]
+    indice: "C'est une immense arène ovale en pierre."
+  - enonce: "Quel aqueduc romain à trois étages d'arches traverse une rivière dans le sud de la France ?"
+    bonneReponse: "le pont du Gard"
+    distracteurs: ["le Colisée", "Notre-Dame de Paris"]
+    indice: "Il transportait l'eau sur de grandes distances."
+  - enonce: "Quelle cathédrale gothique de Paris se trouve sur l'île de la Cité ?"
+    bonneReponse: "Notre-Dame de Paris"
+    distracteurs: ["le château de Versailles", "la tour Eiffel"]
+    indice: "Elle possède deux grandes tours et de grands vitraux."
+  - enonce: "Quel château, bâti pour Louis XIV, possède une galerie des Glaces ?"
+    bonneReponse: "le château de Versailles"
+    distracteurs: ["la tour Eiffel", "le Colisée"]
+    indice: "Ce roi s'y installe avec sa cour."
+  - enonce: "Quel monument en fer, élevé à Paris pour l'Exposition universelle de 1889, est célèbre dans le monde entier ?"
+    bonneReponse: "la tour Eiffel"
+    distracteurs: ["Notre-Dame de Paris", "le château de Versailles"]
+    indice: "Il est plus récent que tous les autres monuments proposés."
+  - enonce: "Quel monument est le plus ancien : le Colisée, Versailles ou la tour Eiffel ?"
+    bonneReponse: "le Colisée"
+    distracteurs: ["le château de Versailles", "la tour Eiffel"]
+    indice: "L'un a été construit dans l'Antiquité, les autres bien plus tard."
+  - enonce: "Quel monument est le plus récent : le Colisée, Notre-Dame de Paris ou la tour Eiffel ?"
+    bonneReponse: "la tour Eiffel"
+    distracteurs: ["le Colisée", "Notre-Dame de Paris"]
+    indice: "Elle date d'après la Révolution française."
+  - enonce: "Quel monument est plus ancien que Notre-Dame de Paris ?"
+    bonneReponse: "le Colisée"
+    distracteurs: ["le château de Versailles", "la tour Eiffel"]
+    indice: "Il a été construit dans l'Antiquité."
+  - enonce: "Quel monument a été construit après le château de Versailles ?"
+    bonneReponse: "la tour Eiffel"
+    distracteurs: ["le Colisée", "Notre-Dame de Paris"]
+    indice: "Il date de l'époque contemporaine."

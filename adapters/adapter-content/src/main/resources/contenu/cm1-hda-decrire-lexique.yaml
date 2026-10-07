@@ -1,0 +1,74 @@
+# DEGRADE : aucune image d'oeuvre n'est servie ; le paquet ne verifie que le sens des mots du lexique
+# (support, format, matiere, couleur, sujet) sur des types d'oeuvres, pas la description d'une oeuvre vue.
+#
+# S53 (session hors sprint, contenu seul). Ligne HDA-CM1-01 de squad/programme/MATRICE-couverture.md,
+# non couvert : palier 1 illustre, image d'oeuvre requise (DEC-0075) ; un item textuel qui decrirait
+# une oeuvre serait une contrefacon (ART-4, CON-1). Aucune oeuvre individuelle n'est nommee (meme
+# regime que HDA-1 de squad/conformite/ARBITRAGE-PREALABLE-s40-relier-une-oeuvre-a-son-contexte-hda-cm1-05.md) :
+# chaque item part d'un type d'oeuvre (fresque, vitrail, mosaique, tapisserie, estampe, statue).
+# ART-5 transpose : types d'oeuvres de l'Egypte antique, de Rome, du Moyen Age et du Japon.
+# Le mot couleur n'est servi que comme mot de lexique (un seul item), jamais comme reponse percue (ART-1).
+# Faits (HIS-3), definitions courantes : la fresque est peinte sur un mur ; le vitrail est fait de morceaux
+# de verre assembles ; l'enluminure est une image peinte a la main dans un livre ; la mosaique est faite de
+# petits morceaux de pierre ou de verre ; la tapisserie est tissee de fils ; l'estampe japonaise est
+# imprimee sur du papier ; des statues egyptiennes sont taillees dans la pierre. A confirmer par
+# nadia-prof, seule autorite sur le Done pedagogique.
+# Douze items, au-dessus des dix manches par defaut.
+schema: 1
+id: cm1-hda-decrire-lexique
+type: question
+descripteur:
+  matiere: "Histoire des arts"
+  niveau: "CM1"
+  domaine: "Décrire une œuvre et en dégager les caractéristiques"
+  competence: "Décrire une œuvre d'art en employant un lexique simple et adapté : support, format, matière, couleur, sujet (référentiel CM1, ligne HDA-CM1-01)."
+lignesDeReferentiel: ["HDA-CM1-01"]
+items:
+  - enonce: "Une fresque est peinte directement sur un mur. Que désigne le mur dans cette œuvre ?"
+    bonneReponse: "le support"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce qui reçoit la peinture."
+  - enonce: "Un vitrail est fait de morceaux de verre assemblés. Que désigne le verre ?"
+    bonneReponse: "la matière"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce dont le vitrail est fait."
+  - enonce: "Une enluminure est une image peinte à la main dans un livre du Moyen Âge. Que désigne la page ?"
+    bonneReponse: "le support"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce qui reçoit l'image."
+  - enonce: "Une mosaïque est faite de petits morceaux de pierre ou de verre. Que désignent ces morceaux ?"
+    bonneReponse: "la matière"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce qui compose l'œuvre."
+  - enonce: "Une tapisserie est un tissu tissé avec des fils de laine ou de soie. Que désignent ces fils ?"
+    bonneReponse: "la matière"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce dont le tissu est fait."
+  - enonce: "Une estampe japonaise est imprimée sur du papier. Que désigne le papier ?"
+    bonneReponse: "le support"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce qui reçoit l'impression."
+  - enonce: "Une statue de bronze représente un cheval. Que désigne le cheval ?"
+    bonneReponse: "le sujet"
+    distracteurs: ["la matière", "le support"]
+    indice: "Pense à ce que l'on reconnaît dans la statue."
+  - enonce: "Une peinture est plus haute que large. Que dit-on de son format ?"
+    bonneReponse: "il est vertical"
+    distracteurs: ["il est horizontal", "il est carré"]
+    indice: "Compare la hauteur et la largeur."
+  - enonce: "Une œuvre est plus large que haute. Que dit-on de son format ?"
+    bonneReponse: "il est horizontal"
+    distracteurs: ["il est vertical", "il est carré"]
+    indice: "Compare la largeur et la hauteur."
+  - enonce: "Une mosaïque représente des poissons. Quel mot désigne les poissons ?"
+    bonneReponse: "le sujet"
+    distracteurs: ["la matière", "le support"]
+    indice: "Pense à ce que l'on reconnaît dans la mosaïque."
+  - enonce: "Pour décrire une mosaïque, quel mot désigne le rouge, le bleu ou le jaune qu'on y voit ?"
+    bonneReponse: "la couleur"
+    distracteurs: ["le format", "la matière"]
+    indice: "Ces trois mots nomment des teintes."
+  - enonce: "Une statue égyptienne est taillée dans la pierre. Que désigne la pierre ?"
+    bonneReponse: "la matière"
+    distracteurs: ["le sujet", "le format"]
+    indice: "Pense à ce que le sculpteur a taillé."

@@ -301,8 +301,10 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " fichiers ; S42-QLM-MATIERE (s42) ajoute cp-qlm-matiere (QLM-CP-06), soit"
                         + " 10 fichiers ; S43-QLM-NUMERIQUE (s43) ajoute cp-qlm-objets-numeriques"
                         + " (QLM-CP-08), soit 11 fichiers ; S47-QLM-AUTREFOIS (s47) ajoute"
-                        + " cp-qlm-autrefois-aujourdhui (QLM-CP-15), soit 12 fichiers")
-                .hasSize(12);
+                        + " cp-qlm-autrefois-aujourdhui (QLM-CP-15), soit 12 fichiers ; la session de contenu"
+                        + " s53 ajoute cp-qlm-vocabulaire-de-position (QLM-CP-10), cp-qlm-situer-la-"
+                        + "france (QLM-CP-12) et cp-qlm-modes-de-vie (QLM-CP-16), soit 15 fichiers")
+                .hasSize(15);
         assertThat(lots.get(normalise("Questionner le monde") + " / " + normalise("CP")).stream().mapToInt(Paquet::items).sum())
                 .as("S28-1 (ARBITRAGE-PREALABLE-s28-ce-qui-ferme-une-ligne-et-le-prix-des-quatre-"
                         + "lots.md, section 3.1) : 24 items a la cloture de s27, +6 par ligne pour"
@@ -319,8 +321,10 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " (cp-qlm-matiere, QLM-CP-06), soit 123 items ; S43-QLM-NUMERIQUE (s43)"
                         + " ajoute onze items (cp-qlm-objets-numeriques, QLM-CP-08), soit 134 items ;"
                         + " S47-QLM-AUTREFOIS (s47) ajoute quatorze items (cp-qlm-autrefois-"
-                        + "aujourdhui, QLM-CP-15), soit 148 items")
-                .isEqualTo(148);
+                        + "aujourdhui, QLM-CP-15), soit 148 items ; la session de contenu s53 ajoute"
+                        + " quatorze, douze et douze items (QLM-CP-10, QLM-CP-12, QLM-CP-16), soit"
+                        + " 186 items")
+                .isEqualTo(186);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")))
                 .as("1 fichier a la cloture de s27, inchange a S28-1 qui n'a touche que la matiere"
                         + " questionner le monde ; S28-2 et S29-2 etendent ce meme fichier, motif"
@@ -328,8 +332,10 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " camille-po) ; S35-CONS-4 (DEC-0088) scinde ce fichier unique en quatre"
                         + " paquets, un par tache reellement distincte, sans changer le lot de"
                         + " matiere ni son total d'items (ADR-0081 alternative E, decision de grain"
-                        + " qui appartient a nadia-prof et camille-po, pas a un decoupage technique)")
-                .hasSize(4);
+                        + " qui appartient a nadia-prof et camille-po, pas a un decoupage technique) ;"
+                        + " la session de contenu s53 ajoute deux fichiers (HG-CM1-09, HG-CM1-10),"
+                        + " soit 6 fichiers")
+                .hasSize(6);
         assertThat(lots.get(normalise("Histoire-géographie") + " / " + normalise("CM1")).stream().mapToInt(Paquet::items).sum())
                 .as("S29-2 (ARBITRAGE-PREALABLE-s29-le-prix-des-quatre-matieres-neuves-et-le-plafond-"
                         + "a-huit-lignes.md, section 3.3) : 37 items a la cloture de s28, +6 sur"
@@ -341,8 +347,9 @@ class UneConditionDeLotSeCompteSurLeLotDeMatiereEtNonSurUnFichierTest {
                         + " neuf items sur HG-CM1-08 et neuf sur HG-CM1-12, soit 110 items ;"
                         + " S42-HG-ROIS (s42) ajoute cinq items sur HG-CM1-05, repartis sur les deux"
                         + " paquets qui servent la ligne conjonctive (trois sur \"nommer, en"
-                        + " histoire\", deux sur \"situer dans le temps\"), soit 115 items")
-                .isEqualTo(115);
+                        + " histoire\", deux sur \"situer dans le temps\"), soit 115 items ; la session de contenu s53 ajoute"
+                        + " quatorze items sur HG-CM1-09 et quatorze sur HG-CM1-10, soit 143 items")
+                .isEqualTo(143);
     }
 
     /** Le paquet servi qui porte les marqueurs de HIS-1, choisi par le calcul et non par son nom. */

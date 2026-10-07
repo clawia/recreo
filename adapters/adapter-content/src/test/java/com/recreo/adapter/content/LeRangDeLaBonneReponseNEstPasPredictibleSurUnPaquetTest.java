@@ -327,6 +327,171 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
      * ajoute mesure la part du contenu servi sur laquelle cette propriete n'est gardee par rien.</p>
      */
     private static final Map<String, String> PAQUETS_HORS_DU_DOMAINE_NUMERIQUE = Map.ofEntries(
+            // s53 (session de contenu hors sprint) : paquets non branches au catalogue, propositions textuelles.
+            Map.entry("ce1-accord-groupe-nominal",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-accord-sujet-verbe",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-classes-de-mots",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-deplacements-quadrillage",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-familles-de-mots",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-futur",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-inference",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-mots-invariables",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-mots-irreguliers",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-negation",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-ordre-des-mots",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-passe-compose",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-phrases-types",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-pronoms",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-relire-une-phrase",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-texte-documentaire",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-texte-narratif",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("ce1-verbe-sujet",
+            "24 items sur 24 portent des propositions textuelles : aucune des 72 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-anglais-ecrire-mots",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-anglais-lire-texte",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-arts-decrire-une-oeuvre-lexique",
+            "13 items sur 13 portent des propositions textuelles : aucune des 39 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-emc-atteinte-autrui",
+            "11 items sur 11 portent des propositions textuelles : aucune des 33 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-emc-principes-republique",
+            "11 items sur 11 portent des propositions textuelles : aucune des 33 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-emc-respect-differences",
+            "11 items sur 11 portent des propositions textuelles : aucune des 33 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-hda-caracteristiques-techniques",
+            "13 items sur 13 portent des propositions textuelles : aucune des 39 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-hda-decrire-lexique",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-hda-epoque-civilisation",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-hda-materiaux-mise-en-forme",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-hda-musee-reperes-regles",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-hda-reperes-patrimoine",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-carte-et-planisphere",
+            "14 items sur 14 portent des propositions textuelles : aucune des 42 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-histoire-geographie-echelles-du-lieu-de-vie",
+            "14 items sur 14 portent des propositions textuelles : aucune des 42 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-lire-et-restituer",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-sciences-environnement-activite-humaine",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cm1-sciences-terre-jour-nuit-saisons",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cp-arts-oeuvres-familles",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cp-assemblage-syllabique",
+            "20 items sur 20 portent des propositions textuelles : aucune des 60 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cp-emc-personnes-differentes",
+            "11 items sur 11 portent des propositions textuelles : aucune des 33 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cp-qlm-modes-de-vie",
+            "12 items sur 12 portent des propositions textuelles : aucune des 36 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cp-qlm-situer-la-france",
+            "12 items sur 12 portent des propositions textuelles (certains items portent un seul distracteur, donc deux propositions) : aucune des 35 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
+            Map.entry("cp-qlm-vocabulaire-de-position",
+            "14 items sur 14 portent des propositions textuelles (certains items portent un seul distracteur, donc deux propositions) : aucune des 41 propositions n'est numerique,"
+                    + " valeurDe rend null sur chacune. Mesure du 2026-10-07 sur le paquet du depot :"
+                    + " aucune proposition ne commence par un chiffre"),
             Map.entry("cp-complements-10-saisie",
             "11 items sur 11 sont des items de saisie : ils ne presentent aucune proposition, donc"
                     + " aucun rang. Lot 5a de s24, decision 10 - la propriete decrit une strategie de"

@@ -19984,3 +19984,46 @@ au catalogue. Report compte : le meme que ci-dessus, **troisieme a s53 sans enga
 - **Lien decision** : `DEC-0111` (sections 3 et 9, amendement A.14) ; `DEC-0110` (section 16.4).
 - **Agent pressenti** : a affecter au planning de s53 par `sofia-sm` (instance de sciences CM1 de
   `nadia-prof`, `PAR-2`).
+
+
+## Session hors sprint "s53 special" - Points de relecture a traiter au prochain sprint
+
+**Contexte.** Session de contenu seul du 2026-10-07 : 51 paquets YAML ecrits pour les 45 lignes `non couvert` de la
+matrice (CP, CE1, CM1), **non branches au catalogue**, sans verdict de `nadia-prof`. Le relecteur a laisse onze points
+non modifies, parce que le changement sort de la redaction. Ils sont a traiter avant tout branchement. Aucun paquet
+n'est fusionne dans `catalogue.yaml` par cette session. Le suivi de matrice reste inchange (aucune ligne ne change de
+statut).
+
+### S53SPE-RELECTURE - Instruire les onze points de relecture des paquets de la session s53 special
+
+- **Besoin** : en tant que `camille-po`, je veux que chaque point ci-dessous soit tranche avant qu'un paquet de la
+  session soit branche, afin qu'aucun paquet ne parte chez `nadia-prof` avec un defaut deja connu.
+- **Criteres d'acceptation** : chaque point P1 a P11 a une decision ecrite (corriger, accepter avec motif, ou retirer le
+  paquet), et les paquets corriges repassent `mvn -B -am -pl adapters/adapter-content test` vert.
+- **Points** :
+  - `P1` `ce1-accord-groupe-nominal.yaml` : "des beaux chapeaux", la norme est "de beaux chapeaux". Changer la bonne
+    reponse. Decideur : `nadia-prof` / auteur.
+  - `P2` `ce1-pronoms.yaml` : items 10, 13 et 14 classes "l'accord", mais un candidat de meme genre et de meme nombre
+    est dans le texte ; le sens decide, ce qui fausse le decompte "dix par le sens, dix par l'accord". Decideur : auteur.
+  - `P3` `cm1-emc-principes-republique.yaml` : l'en-tete dit que "la liberte" n'est pas proposee contre "la laicite" a
+    l'item 4, or elle y figure en distracteur. Decideur : auteur / `nadia-prof`.
+  - `P4` `cm1-emc-principes-republique.yaml` : les indices des items 5, 6, 7, 8, 10 et 11 reformulent presque la
+    bonne reponse. Decideur : `nadia-prof`.
+  - `P5` `cp-qlm-vocabulaire-de-position.yaml` : item 7, l'enonce dit "le chien est loin" et demande qui est le plus
+    loin ; la reponse est dans l'enonce. Decideur : auteur / `nadia-prof`.
+  - `P6` `ce1-masses-contenances.yaml` : l'indice "Le mot kilo veut dire mille" accompagne les conversions dont la
+    reponse est 1000 g. Decideur : `nadia-prof`.
+  - `P7` `cm1-hda-epoque-civilisation.yaml` : l'item 4 nomme "le pont du Gard" alors que l'en-tete affirme qu'aucune
+    oeuvre individuelle n'est nommee. Decideur : auteur.
+  - `P8` `ce1-texte-documentaire.yaml` : "ton cahier", "ta trousse" ; `TRV-CE1-6` ecarte un objet possede suppose.
+    Decideur : `nadia-prof`.
+  - `P9` `cm1-emc-atteinte-autrui.yaml`, `cm1-emc-respect-differences.yaml`, `cm1-emc-principes-republique.yaml` : pas
+    de ligne DEGRADE, mais chacun porte la mention exigee d'avance (ni comportement ni engagement servis). Equivalence a
+    decider. Decideur : `camille-po`.
+  - `P10` `cp-qlm-situer-la-france.yaml` (item 12), `cp-qlm-vocabulaire-de-position.yaml` (item 7) : items a un seul
+    distracteur. Decideur : `theo-archi` (chargeur).
+  - `P11` `cm1-arts-decrire-une-oeuvre-lexique.yaml`, `cm1-emc-principes-republique.yaml`,
+    `cm1-hda-caracteristiques-techniques.yaml`, `cm1-hda-decrire-lexique.yaml` : dans `competence`, l'espace avant ":"
+    est ordinaire (onze paquets plus anciens font de meme). Decision de convention.
+- **Lien** : commits `5059098f` (relecture) et `70b1cdc1` (garde-fous de test) de `s53-contenu-special`.
+- **Agent pressenti** : a affecter au planning du prochain sprint par `sofia-sm`.
