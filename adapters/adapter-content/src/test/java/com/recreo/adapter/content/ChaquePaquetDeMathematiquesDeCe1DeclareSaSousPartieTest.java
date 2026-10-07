@@ -188,7 +188,24 @@ class ChaquePaquetDeMathematiquesDeCe1DeclareSaSousPartieTest {
         // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-17) sans le point final.
         SYMETRIE("MAT-CE1-17",
                 "Reconnaître un axe de symétrie et compléter une figure par symétrie sur"
-                        + " quadrillage");
+                        + " quadrillage"),
+        // S53 (session de contenu hors sprint) : entrees neuves, libelles du referentiel copies mot
+        // pour mot (squad/programme/mathematiques/competences-ce1.md, lignes MAT-CE1-01, -10, -11,
+        // -14 et -15), sans point final, meme convention que les entrees precedentes. Les cinq
+        // paquets sont degrades et non branches au catalogue.
+        NOMBRES_JUSQU_A_1000("MAT-CE1-01",
+                "Dénombrer, lire, écrire et décomposer les nombres jusqu'à 1000 (unités, dizaines,"
+                        + " centaines)"),
+        MASSES_ET_CONTENANCES("MAT-CE1-10",
+                "Comparer et mesurer des masses et des contenances (gramme, kilogramme, litre)"),
+        HORLOGE_ET_CALENDRIER("MAT-CE1-11",
+                "Lire l'heure sur une horloge (heures, demi-heures, quarts d'heure) et se repérer"
+                        + " dans le calendrier (mois, date)"),
+        DEPLACEMENTS_SUR_QUADRILLAGE("MAT-CE1-14",
+                "Se repérer, se déplacer et coder un déplacement sur un quadrillage"),
+        FIGURES_PLANES("MAT-CE1-15",
+                "Reconnaître, décrire et tracer des figures planes (carré, rectangle, triangle,"
+                        + " triangle rectangle, cercle) à la règle et sur quadrillage");
 
         private final String ligne;
 
