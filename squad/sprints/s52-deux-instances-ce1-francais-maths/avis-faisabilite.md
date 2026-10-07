@@ -220,6 +220,27 @@ L'absence d'entree est le seul mecanisme de retrait (`ADR-0061`, decision 3). Ce
 d'avis selon cet `ADR` - plusieurs retraits dont le motif demande cinq `DEC` a lire - n'est pas realise :
 les deux retraits ont une seule `DEC`, `DEC-0111`.
 
+### 3.6 Le niveau de journal d'un coup sur un jeu retire (F1 de `yanis-qa`, ajoute le 2026-10-07)
+
+**Ce n'est pas un defaut, et le critere *"meme comportement que `S5-1`"* est tenu, journal compris.** Le cas de
+`S5-1` est une reponse envoyee sur une manche du jeu retire, pas un demarrage : `POST /parties/{id}/coups`,
+lu dans `PartieController.jouer`, qui n'appelle pas `jeuOuEchec` et va de `EtatDePartieEnSession.jouer` a
+`PartieService.trouver`. C'est le chemin exact du test de `yanis-qa`, donc la meme
+`NoSuchElementException` et le meme `ERROR` avec pile. La comparaison de F1 porte sur `POST /parties/{inconnu}`,
+qui est le demarrage, autre situation. Lu dans le code, non execute sur le cas de `S5-1`.
+
+**Le classement en `ERROR` est celui d'`ADR-0018`, point 2.** Une session dont le jeu n'est pas au catalogue
+est inatteignable en production : l'identifiant n'entre en session qu'apres `jeuOuEchec`, et le catalogue
+est fixe pour la vie du processus (3.3). L'atteindre veut dire qu'un invariant est casse ; le passer en `INFO`
+masquerait ce defaut-la. Router cette exception vers `PartieIndisponible` demanderait en outre soit un type
+d'`application` capture par l'adaptateur, soit un controle en double dans les quatre routes de coup : des
+pieces mobiles pour un cas sans occurrence.
+
+**Ce qui me ferait changer d'avis** : un catalogue rechargeable sans redemarrage, ou des sessions qui survivent
+a un redemarrage (declencheurs (1), (2) et (4) de la note de `S5-1`). La situation devient alors prevue et
+passe en `INFO` par `PartieIndisponible`, dans le diff qui introduit le declencheur. D'ici la, epingler
+`ERROR` dans `UnePartieOuverteSurUnJeuRetireNeServeAucunResultatTest` est a `yanis-qa`, pas a moi.
+
 ---
 
 ## 4. Instance C - mathematiques CE1
@@ -332,8 +353,13 @@ le verifie. Le retrait fusionnant le premier, A et C partent de lui.
   mesure et supprimes ensuite ; journaux et sondes hors depot.
 - **Sondes** : trois YAML et trois entrees de catalogue, ecrits par un script de poste non commite ; le retrait,
   par le meme script ; aucun fichier du depot n'a ete modifie hors des deux worktrees.
-- **Lexique** : liste de 266 mots, classe de test jetable dans le worktree, supprimee avant le reacteur
-  complet ; verdicts de `defautsDe`, la fonction du garde-fou, et non d'une copie.
+- **Lexique** : liste de 273 entrees, classe de test jetable dans le worktree, supprimee avant le reacteur
+  complet ; verdicts de `defautsDe`, la fonction du garde-fou, et non d'une copie. Methode du compte : lignes
+  non vides et hors en-tetes `#` de la liste d'entree, et lignes de verdict de la sortie, 273 des deux cotes
+  (8 en-tetes de population). 273 entrees font 268 mots distincts : *vas*, *disent*, *venez*, *écoutes* et
+  *aller* y figurent deux fois. Les comptes de la section 1.2 sont des entrees.
+  *Corrige le 2026-10-07 (`theo-archi`, relecture de cloture de s52) : cette ligne disait 266, chiffre
+  qu'aucun des deux comptes ne reproduit ; la section 1.2 etait exacte.*
 - **Cite sans execution** : `FIG-4` sur un chemin unique (4.2), le double sens de
   `LIllustrationDeContenuResoutEtAucuneNeDortTest` entre deux branches (4.4), le chargement du catalogue au
   demarrage (3.3). Lus dans le code, pas mesures.
