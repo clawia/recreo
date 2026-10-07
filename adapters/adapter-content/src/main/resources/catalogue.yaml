@@ -822,3 +822,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-sciences-environnement-activite-humaine
     nombreDeManches: 10
+  - id: bandit-manchot-jour-nuit-saisons-cm1
+    titre: "Le jour, la nuit et les saisons"
+    consigne: "Lis bien, puis dis pourquoi il y a le jour et la nuit, ou les saisons."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-terre-jour-nuit-saisons
+    nombreDeManches: 10
