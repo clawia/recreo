@@ -441,7 +441,7 @@ def main():
     analyseur = argparse.ArgumentParser(
         description="Consommation de tokens de la squad, par agent et par sprint."
     )
-    analyseur.add_argument("--sprint", help="identifiant du sprint, par exemple s03")
+    analyseur.add_argument("--sprint", help="identifiant du sprint, obligatoire, par exemple s03")
     analyseur.add_argument(
         "--repo",
         type=Path,

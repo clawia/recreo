@@ -191,6 +191,17 @@ lignesDeReferentiel: ["EMC-CP-03"]
 # Ce qui ne bouge pas : les cinq enonce, bonneReponse et distracteurs "en parler a ..." de la tache
 # B (deja bons, EXC-R7, EXC-R8, C-1, C-2 tenus a l'identique) ; les six items de la tache A ; TYP-1,
 # LON-1, LON-2 (qui ne portent pas sur l'indice).
+#
+# S55 (EXC-R15 et EXC-R16, marc-dev, textes de nadia-prof :
+# squad/conformite/ARBITRAGE-QC4-s55.md et squad/conformite/FICHE-bandit-manchot-exclusion-cp.md).
+# Quatre points de ce qui precede ont change :
+# - les bonnes reponses des items 1 et 3 nomment la categorie "mise a l'ecart" et non plus
+#   "moquerie" ; celle de l'item 2 garde "moquerie". Le paquet compte 6 bonnes reponses distinctes
+#   sur 11 items, et non 5 comme le point 2 le disait avant ;
+# - la consigne du jeu au catalogue, citee a EXC-R1, n'est plus celle-la : elle ne nomme plus la
+#   moquerie (voir catalogue.yaml) ;
+# - l'indice de l'item 4 ne parle plus de moquerie (EXC-R16) ;
+# - le titre du jeu au catalogue n'a pas ete modifie.
 items:
   - enonce: "Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe. Qu'est-ce que c'est ?"
     bonneReponse: "une mise à l'écart qui se répète"

@@ -914,7 +914,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Compte la somme, ou trouve ce qui est rendu.",
             // S39-OUTILS (s39) : consigne neuve.
             "Dis quel outil, quel support ou quel geste convient.",
-            // S54-BR-ART-CP-10 (s54) : consigne neuve.
+            // S54-BR-ART-CP-10 (s54) : consigne neuve ; remplacee a s55 par celle-ci (S54-ART-RES-R1),
+            // deja inventoriee pour d'autres jeux.
             "Lis bien, puis choisis la bonne réponse.",
             // S38-MOITIES (s38) : consigne neuve.
             "Quelle est la moitié ?",

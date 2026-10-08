@@ -23,7 +23,9 @@
 # manque.
 #
 # Ce que ce script n'affirme plus depuis le 2026-08-29 (obstacle 23) : que le JDK qu'il a resolu
-# est un 21. Il le constate en le lui demandant, et sa premiere ligne dit ce que ce JDK rapporte.
+# est un 21. Il le constate en le lui demandant, et la premiere ligne de sa sortie qui contient
+# `version "` dit ce que ce JDK rapporte (depuis s55 : la JVM peut imprimer avant elle une ligne
+# "Picked up JAVA_TOOL_OPTIONS").
 #
 # Ce qu'il ne fait plus depuis le 2026-08-31 (s25, lot F) : lancer Maven quand ce constat le
 # dement. La dette est ouverte par S21-1 le 2026-08-27 - "il doit refuser au lieu d'imprimer" - et
