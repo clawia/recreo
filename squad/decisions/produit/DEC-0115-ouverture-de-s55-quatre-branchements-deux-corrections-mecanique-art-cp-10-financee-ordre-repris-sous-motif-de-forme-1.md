@@ -480,3 +480,39 @@ Annotation datee. **Rien au-dessus n'est reecrit.** Sources lues : `lecture-test
 **Questions de `yanis-qa` non tranchees ici, routees** : Q-Y5(b) ("jamais la reponse", item 6, `va`) a `nadia-prof` par `sofia-sm` (ecart `E1` du rapport de `marc-dev`) ; Q-Y14 (`alt` d'une image de proposition) a `nadia-prof` par `sofia-sm`, avec la proposition d'`ines-design` (`alt=""`) ; la forme du cas fabrique de Q-Y8 a `theo-archi`.
 
 **Ne fait pas** : ne touche ni catalogue, ni code, ni paquet, ni matrice, ni le planning (ses lignes de la section D que ce texte remplace restent ecrites la-bas ; le backlog fait foi pour le produit, et `sofia-sm` aligne le planning si elle le veut). Ne prononce aucun Done. Statut de la `DEC` inchange (`Proposee`). Aucun tarif change : `EXC-R15` reste a 0,25, `nadia-prof` n'ayant fourni aucun texte de remplacement.
+
+
+---
+
+## Amendement du 2026-10-08 (s55, cloture, `camille-po`, quatrieme) : etat a la cloture, reports comptes, statut inchange
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Sources lues : les blocs de verdict des six fiches, `audit-nadia-a.md`, `audit-nadia-b-emc.md`, `audit-nadia-b-exc.md`, `ARBITRAGE-COMPLEMENT-s55-instance-a.md`, `rapport-lea-dev-mecanique.md`, `git log` de `round-two` a `af8b326e`. Le detail, story par story, est dans le backlog ("Cloture de s55") ; la matrice porte sa note de s55.
+
+### A.14 Ce que la cloture constate
+
+- **Quatre lignes ferment**, sur les verdicts ecrits de `nadia-prof` (tous **VALIDE SOUS RESERVE**, reserves non bloquantes) : `FRA-CE1-14`, `FRA-CE1-12`, `EMC-CM1-03`, `EMC-CM1-06`. **137 / 182 (75,27 %) a 141 / 182 (77,47 %)**, par la commande de la "Methode du compte" de la matrice sur ses 258 lignes de donnees : `couvert-valide` 141, `en cours` 4, `non couvert` 37, `non couvrable en l'etat` 76. L'objectif gele de la section 1 ("au mieux quatre lignes") est atteint a quatre sur quatre.
+- **Les deux jeux servis corriges sont rejoues** : `S54-ART-RES-R1` a `R3` **VALIDE** (trois reserves levees), `S54-EXC-CATEGORIE` **VALIDE SOUS RESERVE** (`EXC-R15` levee, `EXC-R16` neuve). Aucun mouvement de matrice sur `ART-CP-10` (reste `non couvert`) ni sur `EMC-CP-03` (reste `couvert-valide`).
+- **Six reserves restent ouvertes** (`ACV-CE1-R1`, `ACV-CE1-R2`, `CLM-CE1-R1`, `EMC-CM1-R8`, `EMC-CM1-R9`, `EXC-R16`), **2,5 de rejeu** selon les prix ecrits dans les fiches (A 1,75, B 0,75). `ACV-CE1-R1` et `EXC-R16` ont leur texte applique mais ne sont pas levees tant que `nadia-prof` n'a pas rejoue. Stories : backlog, "Cloture de s55".
+- **Mecanique d'`ART-CP-10`** : T2 et T3 livrees (`dfd2f107`, `363793e3`). **Pas un report** (la section 4 de cette `DEC` et A.5 point 1 ne comptaient comme report qu'une T3 non livree). Rien n'a ete joue sur le jar, aucun paquet n'est au catalogue, l'enfant ne voit rien (section 5.3, inchangee). Le paquet (T5), T4 et le choix des oeuvres distractrices ne sont pas engages : Q-U1 reste ouverte.
+
+### A.15 Reports comptes a la cloture (section 4, mise a jour)
+
+| Poste | Reports avant | Issue a la cloture de s55 |
+|---|---|---|
+| `S54-OBS-SCI-CONSIGNE` | aucun | **non engagee : premier report (s55)**, motif de A.10 inchange. Second report a s56 seulement par acte ecrit dans la `DEC` d'ouverture de s56, qui cite ce premier report ; troisieme interdit (`DEC-0112` section 6) |
+| `S54-ASCII-APOSTROPHES-TESTS`, A7, A8 | aucun (engages par A.9) | **livres** (`51c81763`, `8541cffc`, `69d9d6a2`) : pas de report |
+| `S54-PONCT-GN-INDICES`, `S54-EXC-CATEGORIE`, `S54-ART-RES-R1` a `R3` | aucun | **livrees** : pas de report. La relecture de ponctuation de `PONCT` par le `relecteur-pedagogique` n'est pas faite a cette date |
+| `S55-ART-CP-10-MECANIQUE` | financee a s55 | **T2 et T3 livrees** : pas de report ; story non close |
+| Paquet a reproductions (T5), T4, `S55-BR-FRA-CE1-L3` | non engages | pas un report a s55 (option ouverte, A.3, A.4) ; **la `DEC` d'ouverture de s56 les engage ou les compte** |
+| `ART-CP-10` (la ligne) | s50 a s53 : quatre ; engagee a s54 et a s55 | engagee ; ni fermee ni reportee |
+
+### A.16 Questions a l'utilisatrice, etat
+
+- **Q6 (financement du dispositif seul d'`ART-CP-10`, Q-U3 de la section 5.5) : toujours ouverte.** Le financement de s55 reste de forme 3 (message relaye) ; **cette `DEC` reste `Proposee` jusqu'a ses propres mots, ecrits dans le depot en forme 2 avec leur date** (section 0.5). Ce n'est pas ma decision de la passer a `Acceptee`.
+- **Q-U1 (moment du paquet a reproductions) : ouverte**, defaut propose par le planning : s56.
+- **Q-U4 (emploi des 0,25 de A) : devenue un fait.** `nadia-prof` les a consommes en `A10` (complement, section 4) ; A est a 4,0 sur 4,0. L'utilisatrice n'a rien a trancher sur ce point ; je ne l'ecris pas comme sa decision.
+
+### A.17 Routage et limites
+
+- **Aucun changement de code ni de contenu n'est decide par cet amendement** : pas de routage a `sofia-sm` au sens de la regle des decisions qui impliquent du code. La composition de s56 est une proposition (`squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/proposition-s56.md`), pas une `DEC` d'ouverture.
+- Ne touche ni catalogue, ni paquet, ni fiche, ni code. Ne prononce aucun Done : les quatre fermetures de la matrice reprennent les verdicts de `nadia-prof`. Statut de la `DEC` inchange : **`Proposee`**.
