@@ -32,15 +32,15 @@ items:
     indice: "Elle prend de la place dans la pièce, comme un objet."
   - enonce: "Qui fait des tableaux ?"
     bonneReponse: "un peintre"
-    distracteurs: ["un sculpteur", "un photographe"]
+    distracteurs: ["un sculpteur", "une photographe"]
     indice: "Cette personne travaille avec de la peinture."
   - enonce: "Qui fait des photographies ?"
-    bonneReponse: "un photographe"
+    bonneReponse: "une photographe"
     distracteurs: ["un peintre", "un sculpteur"]
     indice: "Cette personne fait des images qu'on peut imprimer."
   - enonce: "Qui fait des statues ?"
     bonneReponse: "un sculpteur"
-    distracteurs: ["un peintre", "un photographe"]
+    distracteurs: ["un peintre", "une photographe"]
     indice: "Cette personne travaille avec ses mains, debout devant un gros bloc."
   - enonce: "Avec quel outil fait-on une photographie ?"
     bonneReponse: "un appareil photo"
@@ -69,7 +69,7 @@ items:
   - enonce: "Quelle œuvre peinte accroche-t-on au mur ?"
     bonneReponse: "un tableau"
     distracteurs: ["une statue", "une photographie"]
-    indice: "On la voit sur le mur, avec un cadre autour."
+    indice: "Cette œuvre est faite avec de la peinture."
   - enonce: "Dans quel lieu peut-on voir des œuvres célèbres ?"
     bonneReponse: "dans un musée"
     distracteurs: ["dans une bibliothèque", "dans un zoo"]

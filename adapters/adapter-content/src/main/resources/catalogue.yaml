@@ -848,7 +848,7 @@ jeux:
     nombreDeManches: 10
   - id: bandit-manchot-familles-d-oeuvres-cp
     titre: "Les familles d'œuvres"
-    consigne: "Choisis le mot qui va avec la statue, le tableau ou la photographie."
+    consigne: "Lis bien, puis choisis la bonne réponse."
     mecanique: bandit-manchot
     paquet: cp-arts-oeuvres-familles
     nombreDeManches: 10
