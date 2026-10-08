@@ -15,6 +15,9 @@
 - **Statut global** : **REFUSE**, prononce le 2026-10-06 par `nadia-prof` (s51, instance B). Fiche
   ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
 - **Derniere mise a jour** : 2026-10-06.
+- **Suite du 2026-10-08 (s54, instance B)** : ce jeu reste retire et ce refus reste ecrit. La reprise,
+  paquet distinct `cm1-sciences-terre-jour-nuit-saisons`, est **VALIDE**, les deux motifs leves a la
+  barre de la section 7 : `squad/conformite/FICHE-bandit-manchot-jour-nuit-saisons-cm1.md`.
 
 ---
 

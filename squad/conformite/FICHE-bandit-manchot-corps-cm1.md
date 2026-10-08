@@ -14,12 +14,56 @@
   sections 2.2 ligne 10, 2.3, 2.5 et 2.6), `DEC-0064`, la frontiere `EPS-9` et la frontiere avec
   `SCI-CM1-09` (`DEC-0110` section 4, criteres de la story).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-06 par `nadia-prof` (s51, instance
-  B). Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu.
-- **Derniere mise a jour** : 2026-10-06.
+  B). Fiche ouverte par ce verdict : aucune fiche n'existait pour ce jeu. **Le 2026-10-08 (s54,
+  instance B) : VALIDE**, les trois reserves `CRP-CM1-R1` a `CRP-CM1-R3` sont levees au rejeu. Le
+  verdict du 2026-10-06 reste ecrit ci-dessous.
+- **Derniere mise a jour** : 2026-10-08.
 
 ---
 
 ## Bloc de validation pedagogique
+
+### Verdict du 2026-10-08 (`nadia-prof`, s54, instance B) : **VALIDE**, reserves levees
+
+**Done pedagogique maintenu, sans reserve.** Story `S51-SCI-CORPS-CM1-RESERVES`, commit `e9dd4d21`
+(`marc-dev`). `SCI-CM1-10` reste `couvert-valide` ; `camille-po` peut retirer de la cellule de matrice
+la mention des reserves ouvertes. Aucune mention de couverture due (inchange).
+
+**Ce que j'ai fait.** Worktree `s54-nadia-b`, a `5cad6650`. `bash outils/mvn-jdk21.sh -B clean verify`
+sur ce worktree : `BUILD SUCCESS` (job `build` seul ; `prefixes`, `chemins`, `outils` non lances).
+Jar `bootstrap/target/recreo.jar` de ce build, paquet et catalogue embarques identiques octet pour octet
+aux fichiers commites (`cmp`), lance sur un port dedie a l'instance B, arrete par son PID. Joue par les
+routes servies. Cinq parties de dix manches : une premiere avec une erreur, une revelation ou une bonne
+reponse du premier coup selon la manche ; puis quatre ou les items 3, 5, 6, 7 et 11 ont ete joues a
+chaque tirage avec les deux distracteurs presses puis la revelation. **Les douze
+items ont ete tires.** Le diff de `e9dd4d21` ne touche que ces cinq items ; il reprend mot pour mot les
+blocs de mon arbitrage prealable de s54 (section 2), verifie champ par champ.
+
+**Levee, reserve par reserve, a la barre de la section 8 ci-dessous (inchangee) :**
+
+| Reserve | Barre | Constate a l'ecran |
+|---|---|---|
+| `CRP-CM1-R1`, item 3 | un indice vrai, une phrase, qui dit pourquoi la conception fausse l'est, sans nommer la reponse | *"Rester éveillé tard ou boire ce qui empêche de dormir raccourcit le temps où le corps grandit et se répare."*, lu apres chacun des deux distracteurs. Vrai au niveau du CM1 (l'enonce dit *"surtout"*) ; ne dit plus que le corps ne fait rien la nuit. **Levee** |
+| `CRP-CM1-R1`, item 5 | idem | *"Les boissons sucrées apportent du sucre en trop, car le corps tire déjà des aliments les sucres dont il a besoin."*, lu apres *"les sodas"* et *"les jus de fruits sucrés"*. Exact. **Levee** |
+| `CRP-CM1-R2`, item 6 | la portee exacte du geste | *"Quel geste limite le plus la transmission de ses microbes à cette personne ?"* : *"limite le plus"* comme l'item 4, *"cette personne"* au lieu de *"lui"*. **Levee** |
+| `CRP-CM1-R2`, item 11 | le role exact des fibres | Bonne reponse *"à aider l'intestin à bien fonctionner"*. L'intestin est dans le role, pas en reponse a *"quel organe"* : frontiere `SCI-CM1-09` tenue. **Levee** |
+| `CRP-CM1-R3`, item 7 | des distracteurs plausibles et faux sur ce que fait l'activite physique | *"à user les muscles et les articulations"*, *"à remplacer une alimentation variée"* ; l'indice repond aux deux. **Levee** |
+
+**Sur l'item 3, une relecture de mon propre texte.** *"Le temps où le corps grandit et se répare"*
+peut se lire comme si le corps ne grandissait que la nuit. Je ne le compte pas comme inexact : l'enonce
+du meme item dit *"surtout"*, et l'enfant lit l'indice juste apres lui. Je le dis parce que c'est mon
+texte qui est servi.
+
+**Ce que je n'ai pas releve, et pourquoi.** L'indice de l'item 6 ne repond pas a *"tousser en se tenant
+bien droit"*, et ceux des items 9 et 12 ne repondent qu'a un distracteur. Ces items etaient servis tels
+quels au verdict du 2026-10-06, et aucune reserve ne les nommait : je ne releve pas ma barre au rejeu.
+
+**Seule garde, inchange (section 9)** : l'exactitude d'un fait dans un indice, la portee d'une bonne
+reponse, la plausibilite d'un distracteur, `BIA-4` hors des jetons d'adresse, les frontieres `EPS-9` et
+`SCI-CM1-09`. Verifie ici en jouant. Tarif reel : **0,25** (texte repris mot pour mot, `PAR-10`).
+Aucun identifiant neuf.
+
+---
 
 ### Verdict du 2026-10-06 (`nadia-prof`, s51, instance B) : **VALIDE SOUS RESERVE**
 
