@@ -20391,6 +20391,7 @@ premier passage. `EMC-CM1-02` **`couvert-valide`**, avec la mention de couvertur
 - **Lien decision** : `DEC-0114` section 6 et amendement A.1 ; `DEC-0113` section 3.1. **Arbitrages** : *"sur art-cp go pour le 1"* (2026-10-07), puis
   *"on BRANCHE LE PAQUET DEGRADE sans fermer la ligne"* (2026-10-08), tous deux recus d'un agent, sans source dans le depot (forme 3 de `DEC-0062` : l'ordre,
   pas la raison). **Agents** : `theo-archi`, `nadia-prof`. La decision de financer la mecanique se prend a s55 apres lecture des deux prix.
+  **Etat au 2026-10-08 (s55) : les deux prix sont lus, la decision est prise dans `DEC-0115` section 5** (dispositif finance, paquet et audit non finances) ; story `S55-ART-CP-10-MECANIQUE`, section "Sprint 55".
 
 ### S54-BR-ART-CP-10 - Brancher `cp-arts-oeuvres-familles` sans fermer `ART-CP-10` (paquet `DEGRADE`, vocabulaire des familles d'oeuvres)
 
@@ -20585,3 +20586,97 @@ ligne 65 contiennent le motif `\bt[...]`, le caractere U+2019 (apostrophe typogr
   et `LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest` : 5 echecs sur `5c1353a9`, 0 sur `54953faa`, meme commande (`rapport-qualite.md` de s53,
   section 3). Commits `32262d3b`, `c2531df6`, `90d3532c`.
 - **Ce qui reste ouvert** : `nadia-prof` n'a pas relu ces reecritures ; elle les lit au branchement de chacun des quatre paquets.
+
+
+## Sprint 55 - Quatre branchements (francais CE1, EMC CM1), deux corrections de jeux servis, le dispositif d'`ART-CP-10`
+
+Perimetre, financement et ordre : `DEC-0115` (statut `Proposee`, section 0.5). Planning : `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/planning.md`. **Deux instances de `nadia-prof`**, comptees selon `PAR-9` telle qu'ecrite
+(borne de 8,0, aucun ecart, aucune troisieme instance, `DEC-0114` A.20) : A (francais CE1), B (EMC CM1, EMC CP, arts plastiques CP si Q5). Un dev tient un seul worktree a la fois. **Tarifs proposes par le planning, a confirmer par `nadia-prof`
+dans son arbitrage prealable de s55, qui n'existe pas.** Rien ne s'edite avant que `DEC-0115` soit fusionnee sur `round-two` (C1).
+
+| Instance | Story | Tarif propose | Dev propose |
+|---|---|---|---|
+| B | `S54-EXC-CATEGORIE` (`EXC-R15`, section "Sprint 54") | 0,25 | `marc-dev`, premiere a fusionner |
+| B (sous Q5) | `S54-ART-RES-R1` a `R3` (section "Sprint 54") | 0,5 | `lea-dev` |
+| A | `S55-BR-FRA-CE1-L1` | 1,0 | `marc-dev` |
+| A | `S55-BR-FRA-CE1-L2` | 1,0 | `marc-dev` |
+| B | `S55-BR-EMC-CM1-03` | 1,0 | `lea-dev` |
+| B | `S55-BR-EMC-CM1-06` | 1,0 | `lea-dev` |
+| - | `S54-PONCT-GN-INDICES` (section "Sprint 54") | 0,0 | `lea-dev`, derniere de sa file |
+| a decider (voir la story) | `S55-ART-CP-10-MECANIQUE` | aucun budget `PAR` identifie ; arbitrage de forme de `nadia-prof` : prix inconnu | non affecte (`DEC-0115` 5.4) |
+
+**Engagements de s54 repris sans reecriture** : leurs criteres, ecrits et mesures rouges a s54, restent ceux de la section "Sprint 54". Je les ai relances le 2026-10-08 sur `98e4bbcd` : `EXC-R15` rend 3, 0, 1 ; `ART-RES` rend 1 et 0 ; ils sont toujours rouges.
+**Non engagees, premier report (s55)** : `S54-ASCII-APOSTROPHES-TESTS`, `S54-OBS-SCI-CONSIGNE`, `S55-OUTIL-TOKENS-SANS-SPRINT` (A8), `S55-OUTIL-JDK-JAVA-TOOL-OPTIONS` (A7) : ni forme, ni prix, ni proprietaire (`DEC-0115` section 4).
+**Non engagee, option ouverte** : `S55-BR-FRA-CE1-L3` (O1), non tranchee (`DEC-0115` section 2).
+
+### Criteres communs aux quatre stories de branchement (`S55-BR-*`)
+
+Repris du planning de s55, section "Criteres d'acceptation", C1 a C9, verifies contre l'existant le 2026-10-08 sur `98e4bbcd` :
+
+- **C1** : aucune edition avant que `DEC-0115` existe sur `round-two` (`git show round-two:<fichier>`) et nomme le poste.
+- **C2** : `git diff round-two --stat` d'une story de branchement ne montre que l'entree de `catalogue.yaml`, le test du paquet, ses fixtures fautives, l'inventaire de chaines et les declarations des garde-fous ; aucun YAML de paquet, sauf correction decidee par `nadia-prof`.
+- **C3** : `grep -c "paquet: <nom>$" adapters/adapter-content/src/main/resources/catalogue.yaml` rend 1 apres livraison. **Il rend 0 aujourd'hui pour les quatre noms** (mesure du 2026-10-08) : rouge sur l'existant. Pour les autres paquets : 0 a la cloture.
+- **C4** : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content,bootstrap -am test` (`-am` obligatoire) en mesure partielle ; la porte est `mvn -B clean verify` de la racine.
+- **C5** : aucun garde-fou assoupli ; un cliquet ne monte jamais.
+- **C6** : chaque livraison nomme les jobs de `ci.yml` qu'elle a lances (`prefixes`, `chemins`, `outils`, `build`) et ne deduit pas les autres.
+- **C7** : `rapport-marc-dev.md` et `rapport-lea-dev.md` existent a la cloture dans le dossier de sprint (**rouge aujourd'hui** : `ls` ne les rend pas) ; chacun porte, par paquet branche, une ligne "relu" ou "non relu" pour `TRV-CE1-5` (francais CE1) ou `EMC-9` (EMC), avec le resultat.
+- **C8** : chaque motif de refus ecrit mot pour mot par `nadia-prof` a un test qui le mord, ou une ligne "non garde : <motif>" dans le rapport du dev (`theo-archi` dit si la regle est due, T2 du planning).
+- **C9** : un branchement s'arrete au verdict. Aucune ligne de matrice ne change avant le verdict ecrit de `nadia-prof` dans la fiche ; `MNC-1` reproduite mot pour mot quand elle est due. **Les fiches s'ouvrent au debut de chaque branchement (`camille-po`), pas avant : l'identifiant du jeu est celui de l'entree de catalogue.**
+
+### S55-BR-FRA-CE1-L1 et S55-BR-FRA-CE1-L2 - Brancher `ce1-accord-sujet-verbe` et `ce1-classes-de-mots` (`FRA-CE1-14`, `FRA-CE1-12`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux jouer a un jeu ou je choisis la forme du verbe qui va avec celui qui fait l'action (`FRA-CE1-14`), et a un jeu ou je dis si un mot est un nom, un verbe, un determinant ou un adjectif (`FRA-CE1-12`),
+  afin d'accorder mes verbes et de savoir ce que fait chaque mot de ma phrase.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, comme les paquets de francais CE1 deja au catalogue.
+- **Competence programme visee** : francais, CE1, `FRA-CE1-14` et `FRA-CE1-12` (`squad/programme/francais/competences-ce1.md`). Paquets `ce1-accord-sujet-verbe` et `ce1-classes-de-mots`, 24 items chacun (`grep -c '^ *- enonce:'`), tous deux de `marc-dev`.
+  **Le choix des deux paquets est une proposition du planning** : `nadia-prof` peut les remplacer dans son arbitrage prealable (`PAR-13`, Q3) ; la story change de nom, l'affectation et le tarif restent.
+- **Criteres d'acceptation** : C1 a C9 ; plus : `PaquetCe1<Nom>Test` ajoute au moins un test par paquet ; `TRV-CE1-5` (aucun indice ne renvoie a l'oreille), **lue avec la barre de l'arbitrage du 2026-10-08 telle que `nadia-prof` la relit** (un indice ne presente pas comme ce qui fait la bonne
+  reponse un critere qu'un distracteur remplit), relue par le developpeur sur les 24 items de chaque paquet, **resultat ecrit dans son rapport**. Non automatisable : `yanis-qa` le dit.
+- **Ordre propose, a elle** : `-14` precede `relire-une-phrase` (`RLP-CE1-1` renvoie a `-14` et `-15`) ; la frontiere `-12`/`-13` (`VSJ-CE1-1`) se juge avec `ce1-verbe-sujet` : la paire ensemble ou separee est Q3.
+- **Lien decision** : `DEC-0115` sections 1 et 3 ; `DEC-0114` section 7. **Instance** A, 1,0 chacun. **Agent** : `marc-dev`.
+
+### S55-BR-EMC-CM1-03 et S55-BR-EMC-CM1-06 - Brancher `cm1-emc-respect-differences` et `cm1-emc-principes-republique` (`EMC-CM1-03`, `EMC-CM1-06`)
+
+- **Besoin** : en tant qu'eleve de CM1, je veux jouer a un jeu ou je reconnais ce qui ne respecte pas quelqu'un qui est different de moi (`EMC-CM1-03`), et a un jeu ou je dis ce que veulent dire liberte, egalite, fraternite et laicite (`EMC-CM1-06`),
+  afin de savoir ce que le respect interdit et de comprendre les principes de la Republique.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`.
+- **Competence programme visee** : enseignement moral et civique, CM1, `EMC-CM1-03` et `EMC-CM1-06` (`squad/programme/enseignement-moral-et-civique/competences-cm1.md`). Paquets de 11 items chacun, de `marc-dev` ; **branches par `lea-dev`**, qui lit le paquet et son test avant d'editer.
+  `-03` d'abord : accepte sans changement a s53 (P9), le moins touche. `-06` ensuite : six indices corriges a s53 (P3, P4), six points que `nadia-prof` ne juge qu'en jouant.
+- **Criteres d'acceptation** : C1 a C9 ; plus : `EMC-9` (aucun item ne laisse croire a l'enfant qu'il vient d'alerter quelqu'un) relue par le developpeur sur les 11 items de chaque paquet, resultat ecrit dans son rapport ; pour `-06`, les six indices de P3 et P4 sont lus et **le rapport dit lesquels**.
+  **Mention exigee d'avance** (`competences-cm1.md`, section "Mention exigee d'avance si une ligne bouge") : due a la fermeture, par `nadia-prof`, mot pour mot ; elle n'est pas due au branchement. Aucune ligne `DEGRADE` n'est attendue (`DEC-0112` section 4).
+- **Lien decision** : `DEC-0115` ; `DEC-0112` section 4. **Instance** B, 1,0 chacun. **Agent** : `lea-dev`. **`cp-emc-personnes-differentes` (`EMC-CP-04`) n'est pas un lot** : sous refus (`DEC-0081` section 7).
+
+### S55-ART-CP-10-MECANIQUE - Montrer une oeuvre et trois autres sur le meme ecran : le dispositif d'`ADR-0104` (T2, T3), sans paquet ni audit (`ART-CP-10`)
+
+**Etat au 2026-10-08 (s55) : OUVERTE, engagee par `DEC-0115` section 5 sous reserve de ses trois questions a l'utilisatrice.** Financement : message de l'agent qui m'a lance (forme 3 de `DEC-0062`, l'ordre, pas la raison).
+
+- **Besoin** : en tant qu'eleve de CP, je veux, un jour, voir une oeuvre et d'autres oeuvres sur le meme ecran, et appuyer sur celle qui lui ressemble par ce que je vois (la touche, la lumiere), afin de commencer a rapprocher des oeuvres.
+  **A la fin de s55 je ne verrai encore rien** : aucun jeu du catalogue n'en sert tant qu'un paquet a reproductions n'est pas ecrit ni branche.
+- **Mecanique demandee** : `bandit-manchot` existant, `type: question`, dont les propositions sont des reproductions. `ADR-0104` decisions 1 et 2 : **aucune mecanique neuve, aucune forme d'item neuve, rien dans `domain` ni `application`** ; le fait nouveau est un fait de rendu dans `adapter-web`.
+  Le mot "mecanique" de la demande de l'utilisatrice designe ce dispositif.
+- **Competence programme visee** : arts plastiques, CP, `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 10). **La ligne ne ferme pas** et reste `non couvert` : la fermer demande un paquet et un audit, que cette story ne finance pas (`DEC-0115` 5.3).
+- **Ce que cette story ne decide pas** : la conception (`theo-archi`, `ADR-0104`), la mise en page et la marque de revelation (`ines-design`), les mots lus par l'enfant, les paires, le plafond de la ligne et le tarif d'audit (`nadia-prof`).
+- **Perimetre** : T2 (garde-fous 1 a 3 de la decision 7) et T3 (rendu, revelation, ecran de fin, garde-fou 4, cliquet 3 -> 4). **T4** (trois reproductions, constantes 8 -> 11 et 176 474 -> 250 915) : **sous avis de `theo-archi`** (`DEC-0115` 5, point 4) : la clause *"aucune ne dort"*
+  de `LIllustrationDeContenuResoutEtAucuneNeDortTest` ferait rougir des reproductions qu'aucun item ne declare ; T4 voyage avec le paquet si son avis le confirme.
+- **Criteres d'acceptation**, mesures sur `98e4bbcd` (2026-10-08). Les commandes qui reprennent la forme d'`ADR-0104` sont celles de l'`ADR` ; si l'avis de `theo-archi` retient une autre forme, **il reecrit la commande, le critere d'observation reste** :
+  1. **Une proposition-image est une image, pas un texte.** Pour une manche dont toutes les propositions sont des identifiants `oeuvre-<id>` des huit oeuvres servies : la page rendue porte autant de balises `img` de proposition que de propositions, chacune dont la source se termine par `/oeuvres/<id>.jpg`,
+     et zero bouton de proposition dont le texte est un identifiant. Commande : `grep -c "oeuvres/' + \${proposition}" adapters/adapter-web/src/main/resources/templates/fragments/manche.html` rend **0 aujourd'hui** (rouge) et doit rendre au moins 1 ;
+     `grep -c 'th:text="${proposition}"'` rend 1 aujourd'hui : un identifiant en proposition serait ecrit tel quel a l'enfant (`ADR-0104`, Contexte).
+  2. **Aucun identifiant en clair sur aucun ecran.** Sur les quatre ecrans (manche fraiche, apres une mauvaise reponse, revelation, fin de partie), pour un item a propositions-images : zero occurrence de `oeuvre-` dans un noeud de texte, un `alt`, un `aria-label` ou un `title` ; chaque bouton de proposition a un nom accessible non vide ;
+     aucun element `.reponse-attendue` n'est rendu. **Rouge aujourd'hui** : `reponseAttendueVisible` vaut `!verdict.juste()` dans `PartieController` (lignes 686 et 746) et `retour.html` ligne 98 rend `th:text="${bonneReponse}"` : apres une mauvaise reponse, l'identifiant serait ecrit a l'enfant.
+  3. **Les jeux a propositions en texte ne changent pas.** `PartieControllerTest` garde au moins ses 42 `@Test` (`grep -c '@Test'` rend 42 aujourd'hui) et aucune assertion existante n'est modifiee ni affaiblie (C5). Critere de borne : vert aujourd'hui, il ne prouve rien seul.
+  4. **Les garde-fous 1 a 4 de la decision 7 d'`ADR-0104` existent et mordent**, chacun avec une morsure qui rend rouge sur la mutation de la colonne "Changement" : (1) une proposition `oeuvre-inconnue` est rouge, et une oeuvre servie seulement en proposition n'est pas declaree dormante
+     (aujourd'hui seul le mutant sur une `illustration` existe : `LIllustrationDeContenuResoutEtAucuneNeDortTest` ligne 793) ; (2) les trois invariants (tout ou rien, la reference existe et est une reproduction, la reference n'est pas une proposition) sont mordus **en mutant un item reel** de `cp-decrire-une-oeuvre` en memoire, pas sur une fixture ;
+     (3) un identifiant declare lu par l'enfant fait rougir le garde-fou d'accent sur `oeuvre-champ-de-ble` ; (4) le gabarit reel mute en `th:text="${proposition}"` fait rougir le garde-fou de rendu de `bootstrap/rendu`. Le rapport du dev nomme le test de chaque morsure ; `yanis-qa` rejoue la mutation.
+  5. **Le cliquet de references de `RessourcesTiercesTest` passe de 3 a 4, exact.** `sed -n '709,730p'` : la methode `troisReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu` porte `hasSize(3)` (1 occurrence aujourd'hui) ; elle doit porter `hasSize(4)`. Pas de `hasSizeLessThanOrEqualTo`.
+  6. **Les mots et la mise en page existent avant le rendu.** Le nom accessible du bouton, la phrase qui accompagne la revelation et la reponse a *"l'ecran de fin revoit-il l'oeuvre ?"* sont ecrits par `nadia-prof` dans un fichier de `squad/conformite/` (`ls squad/conformite | grep -ci s55` rend 0 aujourd'hui) ;
+     la mise en page et la marque de revelation, par `ines-design`, dans `squad/design/` (aucun fichier pour cette forme aujourd'hui). `git log --format=%ad --follow` sur ces fichiers precede le premier commit de rendu. **Le developpeur n'ecrit aucun de ces mots** (`CON-5`).
+  7. **Perimetre de code.** `git diff round-two --name-only | grep -E '^(domain|application)/|^adapters/adapter-content/src/main/java|^bootstrap/src/main|(^|/)pom\.xml$|^\.github/'` ne rend **aucune ligne**. Compte d'`ArchRule` et d'`@ArchTest` (methode d'`ADR-0104`, `git ls-files '*.java'`) inchange : **39 et 36**.
+     Critere de borne : vert sur un diff vide, il borne les criteres 1 a 6 et ne les remplace pas.
+  8. **Ni catalogue, ni matrice, ni paquet.** `git diff round-two --stat` ne nomme ni `MATRICE-couverture.md`, ni `catalogue.yaml`, ni un fichier de `contenu/`. `ART-CP-10` reste `non couvert`.
+  9. **Porte.** `bash outils/mvn-jdk21.sh -B clean verify` sur la racine ; jobs de `ci.yml` nommes (C6).
+- **Ce qui n'est pas automatisable** : que la propriete rapprochee se voie a 176 px CSS (plafond de `.image-item`, `ADR-0104` 4.3), le nom accessible, la phrase de revelation, la lisibilite de la mise en page. `yanis-qa` le dit dans sa lecture de testabilite.
+- **Capacite** (`DEC-0115` 5.1) : le developpement (environ 1,75 j pour T2 a T4, estimation de `theo-archi`) ne compte pas dans les budgets `PAR`. L'arbitrage de forme de `nadia-prof` est sans prix publie : **a 0,5 hypothese de calcul, pas son tarif**, A passe a 3,5 sur 4,0
+  et B ne peut pas la porter (4,25). Somme 7,25 sur 8,0. Au-dela de 1,0 sur A, un ecart serait exige. **L'audit du paquet a s55 depasserait la borne** (6,75 + 2,0 = 8,75) : question a l'utilisatrice, non tranchee.
+- **Ce qui manque pour que le planning la porte** : proprietaire du dev, tache d'`ines-design`, prix et instance de l'arbitrage de forme, avis de `theo-archi` (T6 reconfirme, T4), correction de la phrase du planning sur le budget d'audit (`DEC-0115` 5.4).
+- **Lien decision** : `DEC-0115` section 5 ; `DEC-0114` section 6 point 4 ; `DEC-0113` section 3.1 ; `ADR-0104`. **Report** : `ART-CP-10` compte quatre sprints hors perimetre (s50 a s53), engagee a s54, financee a s55 : pas un report.
