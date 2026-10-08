@@ -17,8 +17,10 @@ lignesDeReferentiel: ["SCI-CM1-15"]
 # du catalogue servi par DEC-0111. Ce fichier est un paquet distinct : il ne remplace ni ne modifie
 # l'ancien. Les deux motifs et les quatre points non bloquants de la fiche sont pris ici :
 #   - motif 1 (item 4 de l'ancien paquet) : le distracteur "plus proche du Soleil que le reste de la
-#     Terre" etait vrai. Le jour (item 4 ici) porte maintenant "le Soleil s'est rapproche de cette
-#     region", faux, et un indice qui ne decrit pas la position attendue ;
+#     Terre" etait vrai. Le jour (item 4 ici) porte maintenant "le Soleil s'est beaucoup rapproche de
+#     cette region", faux dans tous les reperes (texte de nadia-prof, arbitrage prealable de s54, D2,
+#     apres un premier texte juge vrai a la lettre), et un indice qui ne decrit pas la position
+#     attendue ;
 #   - motif 2 (item 11 de l'ancien paquet) : "le printemps" avait des jours aussi longs que "l'ete".
 #     Remplace par "l'automne" (item 11 ici), dont les jours sont plus courts que ceux de l'ete ;
 #   - point 1 (item 10) : indice vrai (l'inclinaison de l'axe), et "France metropolitaine" dans
@@ -67,10 +69,10 @@ items:
     bonneReponse: "la Terre tourne sur elle-même"
     distracteurs: ["le Soleil tourne autour de la Terre", "la Terre s'éloigne du Soleil la nuit"]
     indice: "Dans le système solaire, ce sont les planètes qui tournent autour du Soleil."
-  - enonce: "Dans une région de la Terre, c'est le jour. Dans quelle position est cette région ?"  # tache: A # element: jour # HIS-3: il fait jour dans la partie de la Terre tournee vers le Soleil, la distance Terre-Soleil ne change pas au cours d'une journee, fait enseigne au cycle 3
+  - enonce: "Dans une région de la Terre, c'est le jour. Dans quelle position est cette région ?"  # tache: A # element: jour # HIS-3: il fait jour dans la partie de la Terre tournee vers le Soleil, la distance au Soleil change tres peu entre la nuit et le jour, fait enseigne au cycle 3
     bonneReponse: "elle est tournée vers le Soleil"
-    distracteurs: ["elle est cachée par la Lune", "le Soleil s'est rapproché de cette région"]
-    indice: "La distance entre la Terre et le Soleil reste la même toute la journée."
+    distracteurs: ["elle est cachée par la Lune", "le Soleil s'est beaucoup rapproché de cette région"]
+    indice: "Entre la nuit et le jour, la distance au Soleil ne change presque pas."
   - enonce: "Dans une région de la Terre, c'est la nuit. Pourquoi cette région n'est-elle pas éclairée ?"  # tache: A # element: nuit # HIS-3: il fait nuit dans la partie de la Terre tournee a l'oppose du Soleil, fait enseigne au cycle 3
     bonneReponse: "elle est tournée du côté opposé au Soleil"
     distracteurs: ["le Soleil s'éteint pendant la nuit", "la Lune éteint la lumière du Soleil"]

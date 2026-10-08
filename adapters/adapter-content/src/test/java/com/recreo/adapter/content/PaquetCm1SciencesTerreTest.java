@@ -23,8 +23,8 @@ import java.util.regex.Pattern;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * <b>S51-SCI-TERRE-CM1, le paquet {@code cm1-sciences-terre}, ligne {@code SCI-CM1-15} de "Sciences
- * et technologie" (CM1).</b> Conditions : arbitrage prealable de s30, sections 2.2 (ligne 15) et
+ * <b>S51-SCI-TERRE-CM1, le paquet {@code cm1-sciences-terre-jour-nuit-saisons}, ligne
+ * {@code SCI-CM1-15} de "Sciences et technologie" (CM1).</b> Conditions : arbitrage prealable de s30, sections 2.2 (ligne 15) et
  * 2.5, {@code ARBITRAGE-PREALABLE-s30-ce-qui-ferme-une-ligne-de-sciences-et-le-prix-des-quinze-
  * reserves.md}, dont {@code SCI-1} et {@code SCI-4}.
  *
@@ -38,7 +38,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class PaquetCm1SciencesTerreTest {
 
-    private static final String PAQUET = "cm1-sciences-terre";
+    private static final String PAQUET = "cm1-sciences-terre-jour-nuit-saisons";
 
     private static final int NOMBRE_DE_MANCHES = 10;
 

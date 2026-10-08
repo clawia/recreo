@@ -828,3 +828,21 @@ jeux:
     mecanique: designation
     paquet: ce1-symetrie
     nombreDeManches: 8
+  - id: bandit-manchot-environnement-cm1
+    titre: "L'être humain et l'environnement"
+    consigne: "Lis bien, puis dis quel est l'effet, ou quel geste préserve."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-environnement-activite-humaine
+    nombreDeManches: 10
+  - id: bandit-manchot-jour-nuit-saisons-cm1
+    titre: "Le jour, la nuit et les saisons"
+    consigne: "Lis bien, puis dis pourquoi il y a le jour et la nuit, ou les saisons."
+    mecanique: bandit-manchot
+    paquet: cm1-sciences-terre-jour-nuit-saisons
+    nombreDeManches: 10
+  - id: bandit-manchot-atteinte-autrui-cm1
+    titre: "Ce qui blesse les autres"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-atteinte-autrui
+    nombreDeManches: 10

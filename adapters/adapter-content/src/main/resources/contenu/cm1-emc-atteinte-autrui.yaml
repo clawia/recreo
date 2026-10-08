@@ -75,11 +75,11 @@ items:
     bonneReponse: "une moquerie"
     distracteurs: ["une mise à l'écart", "une insulte"]
     indice: "Hugo cherche à faire rire aux dépens d'Aya."
-  - enonce: "Dans la cour, Malo lance à Lina un mot grossier et blessant devant ses camarades. Comment appelle-t-on ce comportement ?"
+  - enonce: "Dans la cour, Lina lance à Malo un mot grossier et blessant devant ses camarades. Comment appelle-t-on ce comportement ?"
     bonneReponse: "une insulte"
     distracteurs: ["une mise à l'écart", "un simple désaccord"]
     indice: "Ce sont des mots grossiers qui visent directement la personne."
-  - enonce: "Pour un travail de groupe, trois élèves tournent le dos à Aya et refusent de lui parler. Comment appelle-t-on ce comportement ?"
+  - enonce: "Pour un travail de groupe, trois élèves tournent le dos à Jade et refusent de lui parler. Comment appelle-t-on ce comportement ?"
     bonneReponse: "une mise à l'écart"
     distracteurs: ["une moquerie", "un simple désaccord"]
     indice: "On laisse volontairement quelqu'un en dehors du groupe."
@@ -106,10 +106,10 @@ items:
   - enonce: "Un élève reçoit des messages méchants d'un camarade sur un téléphone. À qui est-il important d'en parler ?"
     bonneReponse: "à un adulte de confiance, par exemple un enseignant"
     distracteurs: ["à l'auteur des messages, en lui répondant", "à toute la classe, en montrant les messages"]
-    indice: "Un adulte sait comment faire cesser ces messages."
+    indice: "Un adulte peut agir pour faire cesser ces messages."
   - enonce: "Un élève est écarté de tous les jeux depuis plusieurs jours. À qui est-il important d'en parler ?"
     bonneReponse: "à son enseignant ou à un adulte de l'école"
-    distracteurs: ["à un autre élève, pour qu'il joue à sa place avec les autres", "à ceux qui l'écartent, pour qu'ils changent d'avis"]
+    distracteurs: ["à personne, en attendant que cela passe", "à ceux qui l'écartent, pour qu'ils changent d'avis"]
     indice: "Une situation qui dure demande l'aide d'un adulte."
   - enonce: "Une élève a vu un camarade subir des moqueries répétées. À qui est-il important d'en parler ?"
     bonneReponse: "à un adulte de l'école, même sans en être la cible"
