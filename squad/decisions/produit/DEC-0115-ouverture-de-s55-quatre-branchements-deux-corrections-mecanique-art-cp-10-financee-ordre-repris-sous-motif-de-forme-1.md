@@ -409,3 +409,53 @@ Le backlog marque le critere **"non tenable tel qu'ecrit, a reecrire apres QC4"*
 - **Ne fait pas** : ne touche ni `catalogue.yaml`, ni un paquet, ni du code, ni la matrice (137 / 182, aucun statut ne bouge), ni le planning de `sofia-sm` ; ne prononce aucun Done ; ne fixe aucun tarif (ils sont ceux de `nadia-prof`) ; n'engage ni `S54-ASCII-APOSTROPHES-TESTS`
   (forme et agent ecrits par `theo-archi`, T4 de l'avis : engagement non decide ici), ni `S55-BR-FRA-CE1-L3`.
 - **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison. `build` et `outils` ne sont pas lances (aucun code, contenu ni outil modifie), hors la classe nommee en A.5.
+
+---
+
+## Amendement du 2026-10-08 (s55, `camille-po`, second) : engagements de `S54-ASCII-APOSTROPHES-TESTS`, A7, A8, report de `S54-OBS-SCI-CONSIGNE`, fiches des quatre branchements
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Cet amendement remplace trois lignes de la section 4 (A.9) et ferme l'attente que `sofia-sm` a ecrite a son amendement de planning
+(*"l'engagement revient a camille-po, `DEC-0115` section 4 ; sans amendement de sa part, ils comptent comme premier report"*). Sources lues : `DEC-0115` section 4 et A.8 ;
+`avis-faisabilite.md` de `theo-archi`, T4 et T7 ; `planning.md` de s55 (amendement de `sofia-sm`, sections D et E) ; backlog (`S54-OBS-SCI-CONSIGNE`) ; `DEC-0112` section 6 ; `DEC-0111` A.13.
+
+### A.9 Engages : `S54-ASCII-APOSTROPHES-TESTS`, A7, A8
+
+La condition que la section 4 posait etait *"engageable par amendement des que `theo-archi` a ecrit la forme et designe l'agent"* (ASCII) et *"le prix de `theo-archi` manque"* (A7, A8).
+`theo-archi` a ecrit les deux : T4 (forme, agent) et T7 (formes, prix) de l'avis. Les trois sont **engages a s55**. Le "premier report (s55)" de la section 4 pour ces trois lignes est **remplace** :
+engages et non livres a la cloture, ils compteraient comme un premier report (`DEC-0114` section 4) ; livres, aucun.
+
+| Poste | Proprietaire | Taille (avis de `theo-archi`) | Tarif `PAR` | Rang | Critere, commande et valeurs |
+|---|---|---|---|---|---|
+| `S54-ASCII-APOSTROPHES-TESTS` | `marc-dev`, un commit a part, apres `L1`, `EXC-R15`, `L2` (planning, section E) | 2 fichiers, 1 ligne chacun (T4) | 0,0 | 5 | `grep -cP '[\x{2018}\x{2019}]'` sur `PaquetCm1EmcAtteinteAutruiTest.java` et `PaquetCm1SciencesActiviteHumaineTest.java` : **1 et 1 aujourd'hui, 0 et 0 attendus** ; les deux tests restent verts ; forme : echappement `\u2019` (T4) |
+| `S55-OUTIL-JDK-JAVA-TOOL-OPTIONS` (A7) | `sofia-sm`, casquette developpeuse, tache separee qui annonce la casquette | 1 ligne de production, 15 a 25 lignes de test (T7) | 0,0 | 6 | `JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 bash outils/mvn-jdk21.sh -v` : **sort 1 aujourd'hui (relance par moi), doit sortir 0** ; un cas neuf dans `outils/mvn-jdk21-test.sh` ; `bash outils/mvn-jdk21-test.sh` sort 0 |
+| `S55-OUTIL-TOKENS-SANS-SPRINT` (A8) | `sofia-sm`, meme casquette | 5 a 8 lignes de production, 15 a 30 lignes de test (T7) | 0,0 | 6 | `python outils/rapport-tokens.py` sans `--sprint` : **modifie des fichiers suivis aujourd'hui (mesure de `theo-archi`, non relancee par moi : la commande ecrit), doit sortir 2 et laisser `git status --short` vide** ; `test_6` de `outils/rapport-tokens-journal-test.py` reecrit en "refuse et n'ecrit rien" |
+
+- Les criteres "ASCII" et "A7" sont **rouges sur l'arbre actuel** : je les ai mesures sur `2d0d10e7` avant de les ecrire (regle du backlog sur les criteres correctifs). Celui d'A8 repose sur la mesure de `theo-archi`.
+- Un tarif de 0,0 ne veut pas dire sans proprietaire : chacun en a un, nomme ci-dessus. C'est la lecon de `S51-OUTIL-JOURNAL-TOKENS` (section 4).
+- Aucune `ArchRule` neuve (T7) ; le job `outils` de la CI lance deja `outils/*-test.sh` (T7). Ces trois postes ne touchent ni `PAR-8` ni `PAR-9`.
+- **Routage** : `sofia-sm` ouvre `s55-sofia-outils` (planning, section E) pour A7 et A8, et ajoute `ASCII` a la file de `marc-dev`. Le backlog porte l'etat (annotation datee a "Sprint 55").
+
+### A.10 `S54-OBS-SCI-CONSIGNE` : non engagee, premier report (s55)
+
+Non engagee. Elle n'a ni criteres ni prix : le backlog dit *"a ecrire quand une instance l'engage, avec les mots de `nadia-prof`"*, et les criteres reprennent les mots de la passe transverse, que je n'ecris pas moi-meme.
+Sciences CM1 est a l'instance B (`PAR-2`), qui n'a aucun lot de sciences a s55 et est a 3,75 sur 4,0 : un audit de plus ne lui est pas demande. Rien n'est faux pour l'enfant : la consigne est dite deux fois, elle n'est pas fausse.
+
+**Report compte : premier report (s55).** Elle avait ete ouverte a s54 sans report.
+
+**Regle appliquee** (verifiee dans les textes, et non recopiee de memoire) : `DEC-0111` A.13 est l'endroit ou le premier report de `SYC-CE1-R1` et `MUL-CE1-R1` est compte ; la regle elle-meme est a `DEC-0112` section 6, citee par
+`DEC-0114` section 4 : *"Un troisieme report n'est plus permis"*, et un second report n'est permis qu'avec un acte ecrit. Consequences pour ce poste :
+1. **s56** : second report possible seulement avec un acte ecrit dans la `DEC` d'ouverture de s56, qui cite ce premier report (s55) et son motif.
+2. **s57** : un troisieme report est interdit. La `DEC` de s57 l'engage (criteres de `nadia-prof`, proprietaire, prix) ou le retire, par une issue ecrite que `DEC-0112` section 6 nomme.
+3. Pour sortir de l'attente avant : une instance de sciences CM1 qui l'engage et ecrit ses criteres avec ses mots.
+
+### A.11 Fiches de conformite des quatre branchements : non ouvertes, identifiant non fixe
+
+Les quatre paquets (`ce1-accord-sujet-verbe`, `ce1-classes-de-mots`, `cm1-emc-respect-differences`, `cm1-emc-principes-republique`) **n'ont pas d'entree de catalogue** : `grep -c "paquet: ce1-accord-sujet-verbe$"` et les trois autres rendent 0 sur `catalogue.yaml`
+(l'arbitrage de l'instance A le dit pour les deux premiers). Les arbitrages de `nadia-prof` (A, B) et l'avis de `theo-archi` ne nomment aucun identifiant de jeu pour eux (ils nomment les ids de `bandit-manchot-homophones-ce1`,
+`-passe-compose-ce1`, `-atteinte-autrui-cm1`, qui sont d'autres paquets). La convention est `FICHE-<id du jeu au catalogue>` : **l'id est choisi par le developpeur au branchement** (`marc-dev` pour les deux premiers, `lea-dev` pour les deux autres) ;
+je ne l'invente pas. **Les fiches s'ouvrent apres le commit de branchement de chacun**, avec les valeurs avant/apres du planning (section D) et les conditions `K1` a `K5` de A et les sections 2 et 3 de B comme criteres.
+Aucune fiche n'est ecrite par cet amendement. Le critere d'`EXC-R15` n'est pas ecrit non plus : il attend la reponse de `nadia-prof` a QC4.
+
+### A.12 Ce que cet amendement ne fait pas
+
+Statut de la `DEC` inchange (`Proposee`). Ne touche ni catalogue, ni code, ni paquet, ni matrice (aucun statut ne bouge). Ne prononce aucun Done. Ne fixe aucun tarif.

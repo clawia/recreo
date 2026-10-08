@@ -415,6 +415,8 @@ par l'utilisatrice sur l'arbitrage E (une puce gardait sa couleur apres un retou
 complet) n'y entre pas comme un arbitrage distinct : il corrige une non-conformite a une condition
 pedagogique deja posee (S15-5), pas une decision produit neuve.
 
+Amendement (pas une nouvelle reference) : `DEC-0115` a ete amendee une seconde fois le 2026-10-08 (s55, `camille-po`, sections A.9 a A.12, statut `Proposee` inchange) : `S54-ASCII-APOSTROPHES-TESTS`, A7 et A8 engages (tarif 0,0, proprietaires nommes) ; `S54-OBS-SCI-CONSIGNE` non engagee, premier report (s55) ; fiches des quatre branchements non ouvertes tant que le catalogue n'a pas leur identifiant.
+
 Amendement (pas une nouvelle reference) : `DEC-0115` a ete amendee le 2026-10-08 (s55, `camille-po`, sections A.1 a A.8, statut `Proposee` inchange). Toutes les arts plastiques CP vont a l'instance A de `nadia-prof`
 (`PAR-2` ; message relaye de l'utilisatrice, forme 3, cite en A.1 : il fonde le choix, pas sa raison) : `S54-ART-RES-R1` a `R3` (0,25) et la forme d'`ART-CP-10` (0,25) ; `EXC-R15` reste a B (EMC CP et EMC CM1 : une matiere). Avec les tarifs de `nadia-prof`,
 A 3,75 et B 3,75 sur 4,0 chacune, somme 7,5 sur 8,0 (`PAR-9` respectee, `PAR-11` non appliquee : 4,25 chacune dans sa lecture amendee) ; la somme de 6,75 de la `DEC` est caduque. Reserve de A (0,25) : O1 ne tient pas (4,75 sur 4,0), O3 est fait (0,25),
