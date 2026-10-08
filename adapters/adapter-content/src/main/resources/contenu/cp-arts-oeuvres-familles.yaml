@@ -1,12 +1,16 @@
 # DEGRADE : aucune image d'oeuvre ni vue simultanee de deux oeuvres ; ce paquet ne sert ni la reconnaissance
-# ni le rapprochement d'oeuvres, seulement le vocabulaire de leurs familles (statue, tableau, photographie).
+# ni le rapprochement d'oeuvres, seulement le vocabulaire de leurs familles (statue, tableau, photographie,
+# dessin).
 #
 # S53 (session hors sprint, contenu seul). Ligne ART-CP-10 de squad/programme/MATRICE-couverture.md,
 # non couvert : une designation en texte d'une oeuvre est une contrefacon par description (CON-1), et
 # reconnaitre des oeuvres deja rencontrees n'est servi par aucune forme existante
 # (squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md, Q1 et Q5). Aucune oeuvre n'est nommee ici, aucun
 # item ne suppose d'avoir vu une oeuvre plus tot dans la partie (Q5). Ce paquet ne ferme pas la ligne :
-# ce que le jeu verifie est la famille d'une oeuvre, par son metier, son outil ou sa facon d'etre vue.
+# ce que le jeu verifie est la famille d'une oeuvre, par son metier, son outil ou sa facon d'etre vue,
+# et aussi des matieres (pierre, argile) et un lieu (le musee). Les bonnes reponses de famille sont
+# "statue", "dessin" et "tableau" (ce dernier depuis la correction de s54, arbitrage-nadia-c.md,
+# section 6) ; "photographie" n'est jamais la bonne reponse, elle n'est servie que comme distracteur.
 #
 # ART-1 : aucun mot de couleur. ART-2 : aucune question de gout ni de ressenti.
 # Faits (HIS-3) : connaissances courantes du vocabulaire de CP, meme registre que cp-arts-outils ;
@@ -19,7 +23,7 @@ descripteur:
   matiere: "Arts plastiques"
   niveau: "CP"
   domaine: "Se repérer dans les domaines liés aux arts plastiques"
-  competence: "Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres (famille d'œuvre, métier, outil)."
+  competence: "Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres."
 lignesDeReferentiel: ["ART-CP-10"]
 items:
   - enonce: "Quelle œuvre se regarde en tournant tout autour ?"
@@ -29,15 +33,15 @@ items:
   - enonce: "Qui fait des tableaux ?"
     bonneReponse: "un peintre"
     distracteurs: ["un sculpteur", "un photographe"]
-    indice: "Cette personne utilise des pinceaux."
+    indice: "Cette personne travaille avec de la peinture."
   - enonce: "Qui fait des photographies ?"
     bonneReponse: "un photographe"
     distracteurs: ["un peintre", "un sculpteur"]
-    indice: "Cette personne regarde dans un appareil."
+    indice: "Cette personne fait des images qu'on peut imprimer."
   - enonce: "Qui fait des statues ?"
     bonneReponse: "un sculpteur"
     distracteurs: ["un peintre", "un photographe"]
-    indice: "Cette personne travaille la pierre ou l'argile."
+    indice: "Cette personne travaille avec ses mains, debout devant un gros bloc."
   - enonce: "Avec quel outil fait-on une photographie ?"
     bonneReponse: "un appareil photo"
     distracteurs: ["un pinceau", "des ciseaux"]
@@ -46,27 +50,27 @@ items:
     bonneReponse: "un pinceau"
     distracteurs: ["un appareil photo", "des ciseaux"]
     indice: "Cet outil a un manche et des poils doux."
-  - enonce: "Avec quel outil fait-on un dessin ?"
+  - enonce: "Avec quel outil trace-t-on des traits sur une feuille ?"
     bonneReponse: "un crayon"
     distracteurs: ["un appareil photo", "un marteau"]
-    indice: "On le tient dans la main et on trace sur une feuille."
+    indice: "On le tient dans la main."
   - enonce: "Dans quelle matière dure peut-on tailler une statue ?"
     bonneReponse: "la pierre"
-    distracteurs: ["l'eau", "le papier"]
+    distracteurs: ["la pâte à modeler", "la laine"]
     indice: "Cette matière est très solide et ne se plie pas."
   - enonce: "Quelle matière molle sert à modeler une petite statue ?"
     bonneReponse: "l'argile"
-    distracteurs: ["le papier", "le carton"]
+    distracteurs: ["le bois", "le fer"]
     indice: "Les mains lui donnent la forme qu'on veut."
-  - enonce: "Quelle œuvre est faite sur une feuille avec un crayon ?"
+  - enonce: "Quelle œuvre fait-on sur une feuille, à la main ?"
     bonneReponse: "un dessin"
     distracteurs: ["une statue", "une photographie"]
-    indice: "On trace des traits avec la pointe."
-  - enonce: "Quelle œuvre n'est pas plate : on peut la toucher de tous les côtés ?"
-    bonneReponse: "une statue"
-    distracteurs: ["un tableau", "un dessin"]
-    indice: "Elle a un devant, un derrière et deux côtés."
+    indice: "On trace des traits, un peu comme pour écrire."
+  - enonce: "Quelle œuvre peinte accroche-t-on au mur ?"
+    bonneReponse: "un tableau"
+    distracteurs: ["une statue", "une photographie"]
+    indice: "On la voit sur le mur, avec un cadre autour."
   - enonce: "Dans quel lieu peut-on voir des œuvres célèbres ?"
     bonneReponse: "dans un musée"
-    distracteurs: ["dans une boulangerie", "dans un garage"]
+    distracteurs: ["dans une bibliothèque", "dans un zoo"]
     indice: "Ce lieu garde des œuvres pour les montrer à tous."
