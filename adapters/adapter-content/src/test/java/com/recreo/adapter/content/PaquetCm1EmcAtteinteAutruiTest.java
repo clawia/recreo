@@ -181,4 +181,10 @@ class PaquetCm1EmcAtteinteAutruiTest {
                 .isEqualTo("Reconnaître ce qui porte atteinte à la personne d'autrui (moquerie, insulte,"
                         + " mise à l'écart, harcèlement) et savoir à qui s'adresser.");
     }
+
+    @Test
+    void lElisionDeTuEstReconnueAvecLApostropheDroiteEtLApostropheTypographique() {
+        assertThat(ADRESSE_A_L_ENFANT.matcher("Quand t'appelle-t-on ?").find()).isTrue();
+        assertThat(ADRESSE_A_L_ENFANT.matcher("Quand t\u2019appelle-t-on ?").find()).isTrue();
+    }
 }

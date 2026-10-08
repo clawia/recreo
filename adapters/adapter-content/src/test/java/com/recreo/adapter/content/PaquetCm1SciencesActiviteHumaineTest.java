@@ -270,4 +270,10 @@ class PaquetCm1SciencesActiviteHumaineTest {
                         + " geste de préservation des ressources.");
         assertThat(texteBrutDuPaquet()).contains("lignesDeReferentiel: [\"SCI-CM1-18\"]");
     }
+
+    @Test
+    void lElisionDeTuEstReconnueAvecLApostropheDroiteEtLApostropheTypographique() {
+        assertThat(JETONS_D_ADRESSE.matcher("Quand t'appelle-t-on ?").find()).isTrue();
+        assertThat(JETONS_D_ADRESSE.matcher("Quand t\u2019appelle-t-on ?").find()).isTrue();
+    }
 }
