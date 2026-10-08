@@ -11,6 +11,22 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s54, instance A, le 2026-10-08 (Done pedagogique de `FRA-CE1-19`, VALIDE SOUS
+RESERVE ; `FRA-CE1-18` VALIDE ; `SYC-CE1-R1` levee).** Un identifiant ajoute, une reserve : **`PCO-CE1-R1`**,
+ecrit dans `squad/conformite/FICHE-bandit-manchot-passe-compose-ce1.md`. **Forme copiee** de `SYC-CE1-R1` :
+trois segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** :
+`PCO-CE1-1` a `-3` etaient alloues ; `PCO-CE1-R1` etait absent de la section 4 et du depot avant d'ecrire
+(`git grep`, zero occurrence). La ligne de la section 4 est dans le meme diff que la fiche. La levee de
+`SYC-CE1-R1` et le verdict de `FRA-CE1-18` n'ecrivent aucun identifiant.
+
+Ligne d'etat courant portee de **922 / 158 a 923 / 158**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 922 identifiants alloues et 158 prefixes distincts, sa table en porte 923 et 158"*. C'est
+ce **923 / 158** que je recopie. **Limite connue** : l'instance B de s54 audite en parallele et n'a encore
+rien commite a cette heure ; si elle alloue aussi, la reparation a la fusion est arithmetique.
+
 **Note de `nadia-prof`, s52, instance A, le 2026-10-06 (Done pedagogique de `FRA-CE1-25`, VALIDE SOUS
 RESERVE).** Un identifiant ajoute, une reserve : **`SYC-CE1-R1`**, ecrit dans
 `squad/conformite/FICHE-bandit-manchot-synonymes-contraires-ce1.md`. **Forme copiee** de `TPS-CE1-R1` :
@@ -717,7 +733,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `922` identifiants alloues, `158` prefixes distincts.
+**Compte courant, verifie par la CI** : `923` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2196,6 +2212,7 @@ clause 2 par une exemption.
 | `PCO-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `PCO-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `PCO-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `PCO-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-passe-compose-ce1.md` |
 | `TPS-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `TPS-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `TPS-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
