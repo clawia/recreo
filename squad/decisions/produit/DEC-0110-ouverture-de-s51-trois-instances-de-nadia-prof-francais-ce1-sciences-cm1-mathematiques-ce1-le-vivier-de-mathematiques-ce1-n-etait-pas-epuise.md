@@ -1136,6 +1136,21 @@ changent pas.
   reste le texte ecrit, et un agent dont la session impose un autre trailer le signale dans son rapport au lieu de
   choisir.
 
+**Annotation du 2026-10-08 (`camille-po`, s54) : reponse de l'utilisatrice a la question ouverte ci-dessus.**
+Forme : message relaye par l'agent qui lance `camille-po`, cite comme recu, non mot pour mot de l'utilisatrice.
+Ce qui est relaye : la regle devient *"Sonnet 5.5"* si les agents sont lances avec Sonnet 5.5 ; selon elle, le
+depot n'a pas besoin de Sonnet, on peut rester sur Opus. Lecture consignee :
+
+- Le point 1 de 17.4 (le trailer est le modele reellement execute) **reste la regle pour l'avenir**.
+- La reecriture des 7 commits de s54 est **un geste ponctuel**. Elle n'etablit pas "Sonnet 5.5 partout".
+- Un agent dont la session impose un autre trailer que son modele execute le signale dans son rapport.
+- Les commits Opus deja pousses ne sont pas reecrits : le message relaye ne demande pas leur reecriture.
+- **Lecture a confirmer** : que "on peut rester sur Opus" ne demande pas de changer le modele de lancement des
+  agents `theo-archi` et `nadia-prof`. Le message relaye ne dit pas ce choix ; il releve de l'utilisatrice et de
+  `sofia-sm`, pas de ce depot de decisions.
+
+La question ouverte ci-dessus est tranchee par cette annotation. L'amendement precedent n'est pas reecrit.
+
 **Amendement de `squad/README.md` : oui, la section 8 en manque une phrase.** Elle dit ce que la CI rejette
 (le tag) et se tait sur le trailer. Le README est amende par `sofia-sm` (retro, section 9, point 9) ; je ne
 l'edite pas. Texte propose, a ajouter a la fin de la section 8 :
