@@ -20208,7 +20208,7 @@ silence.
 ### S53-BRANCHEMENT-45-PAQUETS - Brancher au catalogue les 45 paquets de la session de contenu (proposition, non engagee)
 
 **Etat au 2026-10-07 (s54).** **Cinq paquets engages a s54** (`DEC-0114` section 1, stories `S54-BR-*` de la section "Sprint 54") ; les 40 autres ne
-sont pas engages (planning de s54, "Ce qui est reporte"). L'ordre des matieres est consigne en `DEC-0114` section 7 (forme 3). Les criteres de la
+sont pas engages (planning de s54, "Ce qui est reporte"). L'ordre des matieres est consigne en `DEC-0114` section 7 (forme 3). Ordre retenu le 2026-10-08 (`DEC-0114` A.3, forme 3) : `G1`/`G2`, `G6`/`G5`, arbitrage de `nadia-prof` sur `G7` a `G11`, `G3`/`G4` ; `G8` d'abord ecartee. Les criteres de la
 sous-section "Criteres d'acceptation" ci-dessous restent a ecrire pour les 40 autres.
 
 - **Etat a la cloture de s53** : proposition `P-BR` du planning de s53 et `DEC-0112` section 8, **non engagee, non decidee**. La decision est a
@@ -20229,7 +20229,7 @@ sous-section "Criteres d'acceptation" ci-dessous restent a ecrire pour les 40 au
 ### S53-REPORT-TROIS-LIGNES - `ART-CP-10`, `SCI-CM1-15`, `SCI-CM1-18` : reportees a s54, de nouveau `non couvert` (non engagees)
 
 **Etat au 2026-10-07 (s54, `DEC-0114`).** `SCI-CM1-15` et `SCI-CM1-18` : **engagees** par `S54-BR-SCI-CM1-15` et `-18`. `ART-CP-10` : **engagee au prix
-seul** (`S54-ART-CP-10-PRIX`), rien n'est construit. Aucune des trois n'est reportee en silence ; aucune ne change de statut de matrice.
+seul** (`S54-ART-CP-10-PRIX`), puis, le 2026-10-08, **au branchement du paquet `DEGRADE` sans fermer la ligne** (`S54-BR-ART-CP-10`, `DEC-0114` A.1) ; la mecanique n'est pas construite. Aucune des trois n'est reportee en silence ; aucune ne change de statut de matrice.
 
 - **Origine** : l'utilisatrice, le 2026-10-07, a la question Q1 de `DEC-0113` : *"remets les 3 lignes à s54 si Aucune des trois
   lignes n'est une impossibilité"* (`DEC-0113` section 9, forme 2 de `DEC-0062`). Aucune des trois n'est une impossibilite
@@ -20273,6 +20273,7 @@ A (francais CE1), B (sciences et EMC CM1). Un dev tient un seul worktree a la fo
 | - | `S53-REPORT-GRANDS-NOMBRES` | `Q5` : `nadia-prof` | `lea-dev` |
 | - | `S53-REPORT-REDACTION` (R3 seul reste) | - | `nadia-prof` (R3) |
 | - | `S54-ART-CP-10-PRIX` | aucun | `theo-archi`, `nadia-prof` |
+| a decider (`DEC-0114` A.5) | `S54-BR-ART-CP-10` | 1,0 propose, **non finance** | `lea-dev` (proposition, affectation a `sofia-sm`) |
 
 ### Criteres communs aux cinq stories de branchement (`S54-BR-*`)
 
@@ -20335,16 +20336,46 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
 
 ### S54-ART-CP-10-PRIX - Le prix de la mecanique qui montre deux oeuvres ensemble et le plafond du paquet `DEGRADE` (`ART-CP-10`)
 
+**Etat au 2026-10-08 (`DEC-0114` amendement A.1).** Cette story est **maintenue telle quelle** ; elle n'est plus la seule a porter `ART-CP-10` a s54 : le paquet
+`DEGRADE` est branche par `S54-BR-ART-CP-10` (ci-dessous). Le plafond de la ligne 2 devient ce que cette story livre **avant** l'audit de ce paquet (`DEC-0114` A.3, point 2).
+
 - **Besoin** : en tant qu'eleve de CP, je veux, un jour, voir deux oeuvres que j'ai deja rencontrees et dire laquelle ressemble a laquelle, afin de
   commencer a rapprocher des oeuvres par ce que je vois. **Rien de cela n'est construit a s54.**
 - **Competence programme visee** : arts plastiques, CP, `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 10).
 - **Criteres d'acceptation** (deux fichiers a lire, aucune construction) : (1) un avis de `theo-archi` donne, en tailles, le prix de la mecanique
   d'une presentation de deux oeuvres ensemble et le statut d'`ADR-0104` (aujourd'hui `Propose`) : rouge sur l'existant, aucun prix n'est ecrit ; (2) une
-  ligne de `nadia-prof` donne le plafond d'un paquet `DEGRADE` pour la ligne ; (3) aucune ligne de matrice ne change, `catalogue.yaml` et les paquets
-  ne sont pas touches (`git diff round-two --stat` n'en montre aucun).
-- **Lien decision** : `DEC-0114` section 6 ; `DEC-0113` section 3.1. **Arbitrage** : *"sur art-cp go pour le 1"*, recu de MASTER, sans source dans le
-  depot, le 2026-10-07 (forme 3 de `DEC-0062` : il fonde l'ordre, pas la raison). **Agents** : `theo-archi`, `nadia-prof`. La decision de financer la mecanique
-  se prend a s55 apres lecture des deux prix.
+  ligne de `nadia-prof` donne le plafond d'un paquet `DEGRADE` pour la ligne ; (3) aucune ligne de matrice ne change, et **la mecanique n'est pas construite** :
+  `git diff round-two --stat` ne montre, pour cette story, ni fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/`, ni ligne de matrice (le
+  fichier de paquet et le catalogue sont touches par `S54-BR-ART-CP-10`, pas par celle-ci).
+- **Lien decision** : `DEC-0114` section 6 et amendement A.1 ; `DEC-0113` section 3.1. **Arbitrages** : *"sur art-cp go pour le 1"* (2026-10-07), puis
+  *"on BRANCHE LE PAQUET DEGRADE sans fermer la ligne"* (2026-10-08), tous deux recus d'un agent, sans source dans le depot (forme 3 de `DEC-0062` : l'ordre,
+  pas la raison). **Agents** : `theo-archi`, `nadia-prof`. La decision de financer la mecanique se prend a s55 apres lecture des deux prix.
+
+### S54-BR-ART-CP-10 - Brancher `cp-arts-oeuvres-familles` sans fermer `ART-CP-10` (paquet `DEGRADE`, vocabulaire des familles d'oeuvres)
+
+- **Besoin** : en tant qu'eleve de CP, je veux jouer a un jeu ou je dis si une chose se regarde en tournant autour, au mur ou dans un album, afin de connaitre
+  les mots qui rangent les oeuvres (statue, tableau, photographie). **Ce jeu ne montre aucune oeuvre et ne rapproche rien** : c'est ce que dit l'en-tete du paquet.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, comme les autres paquets de CP (`T3` du planning).
+- **Competence programme visee** : arts plastiques, CP, `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 10). **La ligne ne ferme pas**
+  et reste `non couvert` : ce paquet ne sert que le vocabulaire, pas *"reconnaitre quelques oeuvres deja rencontrees et les rapprocher"*.
+- **Paquet** : `adapters/adapter-content/src/main/resources/contenu/cp-arts-oeuvres-familles.yaml`, 12 items (`grep -c '^ *- enonce:'`), ecrit par `lea-dev`.
+- **Criteres d'acceptation** :
+  1. **`C3`** : `grep -c "paquet: cp-arts-oeuvres-familles$" adapters/adapter-content/src/main/resources/catalogue.yaml` rend 1 apres livraison. **Il rend 0
+     aujourd'hui** (mesure du 2026-10-08) : rouge sur l'existant.
+  2. **`C2`, `C4`, `C7`** du planning, tels que repris dans "Criteres communs" ci-dessus. `C7` : aucune ligne de matrice ne change avant le verdict ecrit de `nadia-prof`.
+  3. **Le titre et la consigne de l'entree ne promettent pas ce que l'en-tete du paquet dit qu'il ne fait pas** : ni "reconnaitre" ni "rapprocher" des oeuvres, ni
+     le nom d'une oeuvre (`grep -inE "reconna|rapproch" ` sur les lignes d'`id`, `titre` et `consigne` de l'entree : rien). Mots de l'en-tete : *"ne sert ni la reconnaissance
+     ni le rapprochement d'oeuvres"*. Verifie contre l'existant : aucune entree, donc rien a corriger ; le critere vaut pour la premiere ecriture. Que le titre
+     et la consigne soient justes pour un enfant de CP est le jugement de `nadia-prof`, pas un test.
+  4. **`MATRICE-couverture.md` est inchangee** par cette story (`git diff round-two --stat` ne la nomme pas) ; `ART-CP-10` reste `non couvert`.
+  5. **Le texte de l'entree est accentue** et ses espaces avant `? ! : ;` sont insecables (`DEC-0002`, amendement du 2026-08-04 ; meme regle que les cinq autres branchements).
+- **Ce qui n'est pas automatisable** : le critere 3 (ce que l'enfant comprend du titre), et tout ce qui touche a la validite des faits de l'en-tete (*"a confirmer par nadia-prof"*).
+  `yanis-qa` le dit dans sa lecture de testabilite.
+- **Capacite** : **non financee**. Audit propose a 1,0 (tarif du depot, `Q3`), plus 0,5 de rejeu en cas de refus ; ni l'instance A (4,5 sur 4,0) ni l'instance B (4,5, quatre lots
+  si les reprises comptent) ne le portent dans `PAR-9` et `PAR-8`. Issues (a) a (d) en `DEC-0114` A.5 ; **le choix est a `nadia-prof` et a l'utilisatrice, via `sofia-sm`**.
+- **Ce qui reste a `nadia-prof`** : plafond d'une ligne, tarif, instance, `PAR-13` (arts CP terrain neuf ?), faits du paquet, verdict (`DEC-0114` A.6).
+- **Lien decision** : `DEC-0114` amendement A.1 ; `DEC-0113` section 3.1. **Agent** : `lea-dev` (proposition de `camille-po`, affectation a `sofia-sm`).
+  **Report** : `ART-CP-10` compte quatre sprints hors perimetre (s50 a s53) ; si le paquet n'est ni branche ni audite a la cloture de s54, `DEC-0114` section 4 s'applique.
 
 ### S53-REL-10 - La base de s53 redevient verte sans assouplir de garde-fou (transverse) - entree ajoutee apres coup
 

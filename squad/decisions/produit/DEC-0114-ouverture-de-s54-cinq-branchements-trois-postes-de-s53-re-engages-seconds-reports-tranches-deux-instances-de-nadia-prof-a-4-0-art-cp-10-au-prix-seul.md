@@ -242,6 +242,8 @@ l'arbitrage prealable de s54 coute 0,0 ou 0,5 (a 0,5, A est a 4,0 alloues, toujo
 
 ## 6. `ART-CP-10` : prix et plafond, rien n'est construit (Q6 tranchee)
 
+> **Amende le 2026-10-08 (A.1, A.5, A.6) :** `ART-CP-10` est aussi engagee au branchement du paquet `DEGRADE` `cp-arts-oeuvres-familles`, sans fermer la ligne. Le point 3 ci-dessous ("aucun developpeur") ne vaut plus pour ce paquet ; il vaut toujours pour la mecanique.
+
 **Source de l'ordre** : *"sur art-cp go pour le 1"*, recu de MASTER (section 0.1, point 4). **Ce qui fonde le contenu de l'option, lui, est de forme 1** :
 le planning (section "Les trois lignes" : *"Ce que s54 engage : le prix de la mecanique (`theo-archi`) et le plafond du paquet (`nadia-prof`, une
 ligne). Ce que s54 n'engage pas : la construction"*) ; `DEC-0113` 3.1 (la ligne n'est pas impossible : `nadia-prof` a repondu a `C5` clause 1
@@ -268,6 +270,8 @@ la confirme. Aucune autre issue de `DEC-0111` section 9 (declarer la ligne `non 
 ## 7. Ordre des matieres (forme 3 seule) et decoupage du francais CE1 (Q8)
 
 ### 7.1 L'ordre
+
+> **Amende le 2026-10-08 (A.3) :** ordre retenu, `G3` au dernier rang avec `G4`, `G8` d'abord ecartee ; toujours de forme 3.
 
 **Ordre recu de MASTER** (section 0.1, point 1) : francais CE1, puis sciences et EMC CM1, puis arbitrage de `nadia-prof` sur les 17 paquets sans
 plafond, puis mathematiques CE1. Il est celui de la `Q10` du planning (forme 1), dont les mesures sont : le francais CE1 est le chemin critique
@@ -363,7 +367,128 @@ sprint-la, ce qui est sa decision. **Cela exige aussi l'avis de `theo-archi` sur
    (tenue). Erratum R5 au backlog. R3 reste a `nadia-prof`.
 7. **Deux instances de `nadia-prof` ouvertes, comptees a 4,0 chacune** (3,5 alloues + 0,5 non alloue), sans ecart a `PAR-9` ; tarifs, barre de B et
    `PAR-13` restent a `nadia-prof`.
-8. **`ART-CP-10` : prix et plafond seulement, rien n'est construit** ; `Q6` tranchee par l'arbitrage de MASTER (forme 3, option 1) ; la decision de
+8. **`ART-CP-10` : prix et plafond seulement, rien n'est construit** [amende le 2026-10-08, A.1 : le paquet `DEGRADE` est aussi branche] ; `Q6` tranchee par l'arbitrage de MASTER (forme 3, option 1) ; la decision de
    financer se prend a s55 apres lecture des deux prix ; s54 n'est pas un cinquieme report.
 9. **Ordre des matieres consigne** (forme 3) : francais CE1, sciences et EMC CM1, arbitrage de `nadia-prof` sur G7 a G11, mathematiques CE1 ;
    decoupage du francais CE1 en deux groupes X et Y propose, non engage.
+
+---
+
+## Amendement du 2026-10-08 (s54, `camille-po`) : `ART-CP-10` passe du prix seul au branchement du paquet `DEGRADE` ; verdict de CI ; ordre des matieres
+
+Les passages amendes sont marques dans le texte, pas effaces (`DEC-0062`, amendement B.3). Cet amendement arrive apres l'ouverture de s54 et apres la
+fusion de `s54-marc-branchement` et de `s54-lea-branchement` : je ne le date pas en arriere. Une seule `DEC`, un seul amendement, pour les trois
+arbitrages recus le meme jour ; **le statut de `DEC-0114` reste `Proposee`** (A.4).
+
+### A.0 Ce que j'ai recu, cite tel que recu et fige a la reception (`DEC-0062` regle 3.5)
+
+Un message de l'agent qui m'a lance, le 2026-10-08, **sans source dans le depot**. Il dit que l'utilisatrice a tranche ce jour les questions `Q6`, `Q9` et
+`Q10` du planning. Je n'ai pas ses mots. Les formules entre guillemets sont celles du message de l'agent, pas les siennes :
+
+1. `Q6` : *"ART-CP-10, on BRANCHE LE PAQUET DEGRADE sans fermer la ligne (issue 'brancher sans fermer' de DEC-0111 section 9)"* ; l'agent precise qu'elle
+   *"n'engage pas la construction de la mecanique 'deux oeuvres ensemble'"*.
+2. `Q9` : *"la CI est verte sur GitHub pour round-two"* (l'agent : verdict donne par l'utilisatrice).
+3. `Q10` : *"ordre propose par sofia-sm retenu : G1/G2, puis G6/G5, puis arbitrage de nadia-prof sur G7 a G11, puis G3/G4"* ; *"l'alternative G8 d'abord
+   est ecartee"*.
+
+**Borne de la forme 3 (`DEC-0062` section 3.2), la meme qu'en section 0.1 : ces messages fondent l'ordre dans lequel le travail se fait, jamais sa raison.**
+Chaque decision ci-dessous porte son motif de forme 1.
+
+**Une precision sur la reference de `Q6`.** `DEC-0111` section 9 ne nomme que deux issues pour `ART-CP-10` : allouer le budget, ou declarer la ligne
+*non couvrable en l'etat*. L'issue *"brancher sans fermer"* est la deuxieme option de `Q6` du planning de s54, pas un texte de `DEC-0111`. Le sens du
+message est clair ; je corrige la reference pour qu'un lecteur ne cherche pas une phrase qui n'y est pas.
+
+### A.1 `Q6` : `ART-CP-10` est engagee au branchement du paquet `DEGRADE` (amende : sections 1 et 6, decision 8)
+
+**Decision.** `cp-arts-oeuvres-familles` (12 items, auteure `lea-dev`, `lignesDeReferentiel: ["ART-CP-10"]`) est branche au catalogue par une story neuve,
+`S54-BR-ART-CP-10` (backlog, section "Sprint 54"). **La ligne ne ferme pas** : `ART-CP-10` reste `non couvert`, la matrice n'est pas touchee.
+**Rien de la mecanique "deux oeuvres ensemble" n'est construit** : `ADR-0104` reste `Propose`, aucune story de developpement ne la porte.
+`S54-ART-CP-10-PRIX` reste engagee telle que la section 6 l'ecrit (prix de `theo-archi`, plafond de `nadia-prof`) : le message ne la retire pas, et je ne
+retire pas sans ordre un poste que cette `DEC` a engage. La decision de financer la mecanique reste a s55 (section 6, point 4) ; elle n'est pas prise ici.
+
+**Motifs, de forme 1.**
+
+1. **La ligne n'est pas impossible** (`DEC-0113` 3.1 : reponse de `nadia-prof` a `C5` clause 1, le 2026-10-06), et le paquet existe. Son en-tete dit
+   *"Ce paquet ne ferme pas la ligne"* et *"ne sert ni la reconnaissance ni le rapprochement d'oeuvres, seulement le vocabulaire de leurs familles"*.
+   Le brancher sert l'enfant sur ce vocabulaire, pas sur la competence de la ligne.
+2. **Le report se compte.** `ART-CP-10` : s50, s51, s52, s53, soit quatre sprints hors perimetre (section 4). Un paquet branche est une issue que `Q6`
+   nomme ; elle sort la ligne du silence sans pretendre la couvrir.
+3. **Meme regime que les cinq autres branchements** : criteres `C1` a `C7` du planning ; un branchement s'arrete au verdict.
+
+**Ce que ce branchement ne dit pas.** Il ne dit pas que le paquet est bon, ni que la ligne est a moitie couverte. Si la ligne passe un jour a `en cours`, c'est un
+plafond que `nadia-prof` ecrit (A.6), pas une consequence du branchement. Le titre et la consigne de l'entree de catalogue ne promettent pas ce que l'en-tete du
+paquet dit qu'il ne fait pas (critere dans la story).
+
+**Report.** `ART-CP-10` est engagee par cet amendement ; s54 n'est pas un cinquieme report. **Si le paquet n'est ni branche ni audite a la cloture de s54, la
+regle de la section 4 s'applique** : `sofia-sm` le porte a l'utilisatrice avec la question *"engage-t-elle, retire-t-elle"*.
+
+### A.2 `Q9` : le verdict de CI recu de l'utilisatrice, cite comme tel
+
+Le message dit que l'utilisatrice a donne le verdict : la CI est verte sur GitHub pour `round-two`. **Ce verdict est le sien, relaye ; je ne l'ai pas lu sur la
+CI**, et je n'en tire ni nom de job ni commit : le message n'en nomme aucun, et le planning posait `Q9` pour un commit precis que le verdict recu ne cite pas.
+Je ne l'etends ni au sommet actuel de `round-two`, ni a un job en particulier. **Il ne dispense personne de nommer les jobs qu'il a lances** (`C6` du
+planning ; `CLAUDE.md`, amendement du 2026-09-08). `Q9` est close comme question posee a l'utilisatrice ; elle ne devient pas une mesure.
+
+### A.3 `Q10` : l'ordre de `sofia-sm` est retenu, `G8` d'abord est ecartee (amende : section 7.1)
+
+Ordre recu : `G1`/`G2`, puis `G6`/`G5`, puis arbitrage de `nadia-prof` sur `G7` a `G11`, puis `G3`/`G4`. **Deux points qui ne sont pas evidents.**
+
+1. **La precision que la section 7.1 laissait ouverte** (`G3` est du francais CE1, les mots recus le 2026-10-07 disaient *"mathematiques CE1"*) **est levee dans ce message** :
+   `G3` est au dernier rang avec `G4`, comme le planning. Source de forme 3 : elle fonde l'ordre ; la `DEC` de s55 le reprend sous son propre motif.
+2. **L'ordre et `Q6` se touchent.** `cp-arts-oeuvres-familles` est dans `G11`, que l'ordre place derriere un arbitrage de `nadia-prof` sur un plafond ecrit
+   *"avant qu'un lot soit achete"* (planning, "Ce qui est reporte"). Le branchement d'`ART-CP-10` est donc le seul lot de `G7` a `G11` achete avant cet
+   arbitrage, **par le choix de `Q6`, pas par oubli**. Ce qui garde la coherence : le plafond d'une ligne pour `ART-CP-10` (`S54-ART-CP-10-PRIX`) est le
+   premier acte de son arbitrage sur `G11`, et il dit ce que l'audit du paquet peut juger. Qu'il precede l'audit est a elle ; je le demande, je ne l'ordonne pas.
+
+L'ordre de s55 et suivants reste a la `DEC` d'ouverture de chaque sprint (section 7.1). **Section 0.4 inchangee** : le message de `Q10` arrive de nouveau par un
+agent, sans les mots de l'utilisatrice ; il ne promeut pas la section 7 en motif.
+
+### A.4 Statut
+
+`Proposee`, sur le motif de la section 0.4, inchange : la seule decision qui n'a que la forme 3 pour source est toujours l'ordre au-dela de s54. A.1 a un motif de
+forme 1 et s'applique des maintenant ; A.2 et A.3 sont des consignations de forme 3.
+
+### A.5 Capacite : ce que le branchement coute, et ce que je ne decide pas
+
+Le planning disait `ART-CP-10` *"non financee dans les 8,0 de s54 sans retirer un lot"*. **Cet amendement l'engage sans la financer** : aucune instance ne l'audite aujourd'hui.
+Chiffres du planning et de la section 5 ; tarifs *proposes, a confirmer par `nadia-prof`* (`Q3`).
+
+| | Instance A (francais CE1) | Instance B (sciences et EMC CM1) |
+|---|---|---|
+| Alloue avant cet amendement | 3,5 (2 lots) | 3,5 (3 lots) |
+| Avec un audit de `cp-arts-oeuvres-familles` a 1,0 (tarif du depot) | **4,5** : 0,5 au-dessus de `PAR-9`, plus de marge de rejeu non allouee ; 5,0 si l'arbitrage prealable est chiffre a 0,5 (plafond dur de `PAR-8`) | **4,5**, et **quatre lots** si les deux reprises comptent pour des lots (`Q4`) : au-dessus de `PAR-8` |
+| Si le paquet est refuse | +0,5 de rejeu, sans marge | idem |
+
+Issues possibles, **que `nadia-prof` et l'utilisatrice choisissent ; je n'en retiens aucune** : (a) l'instance A prend l'audit, avec un ecart a `PAR-9` ecrit par une `DEC`
+(precedent : la variante `P3` du planning, ecartee par la section 5) ; (b) une instance prend l'audit et un de ses lots sort du sprint, ce qui est un report de plus pour le poste
+retire ; (c) une troisieme instance, hors des 8,0 de `PAR-9` ; (d) le paquet est branche a s54 et audite a s55. **(d) appelle d'abord une reponse de `sofia-sm` et `theo-archi`** :
+un paquet au catalogue sans verdict est-il jouable par un enfant ? C'est la situation que `DEC-0009` a coutee a s04 ; les cinq autres branchements de s54 posent la meme question.
+
+**Cout de developpement, chiffre du planning** : environ 590 lignes en six fichiers pour un branchement (une entree de catalogue, un test de paquet si `T1` le confirme, un
+inventaire de chaines, des declarations de garde-fous), dont les deux tiers pour le test du paquet. L'affectation est a `sofia-sm` ; je propose `lea-dev`, auteure du paquet.
+**Cout pour `nadia-prof`** : 1,0 propose pour l'audit, 0,5 de rejeu en cas de refus, plus la ligne de plafond, proposee a 0,0.
+
+### A.6 Ce qui reste a `nadia-prof` (rien de cela n'est ecrit par moi)
+
+1. **Le plafond d'un paquet `DEGRADE` pour `ART-CP-10`**, en une ligne : ce que le paquet atteint au plus sur la ligne. L'en-tete du paquet ecrit qu'il ne la ferme pas ;
+   la matrice ecrit qu'une designation textuelle d'une oeuvre est une contrefacon (`CON-1`, `ART-4`). Que ce paquet-ci, qui ne nomme aucune oeuvre, y echappe est son jugement.
+2. **Le tarif** d'audit de ce paquet (`Q3`) et l'instance qui le porte (A.5).
+3. **`PAR-13`** : arts plastiques CP est-il un terrain neuf pour elle ? S'il l'est, il s'ajoute au francais CE1 de l'instance A.
+4. **Le verdict**, et le bloc de validation de la fiche, que j'ouvre quand le jeu entre en construction et que je ne remplis pas.
+5. **Les faits du paquet** : son en-tete les dit *"a confirmer par nadia-prof, seule autorite sur le Done pedagogique"*.
+6. **`Q7` pour `G11`** : traite-t-elle `cp-arts-oeuvres-familles` avec les deux autres paquets de `G11` ou a part ?
+
+### A.7 Routage (dans la meme passe que l'amendement)
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Affecter `S54-BR-ART-CP-10` (je propose `lea-dev`) ; porter a l'utilisatrice, avec la table A.5, le choix de l'instance et du financement, et la question (d) ; fusionner cet amendement avant d'ouvrir le worktree (`C1` du planning) |
+| `nadia-prof` | A.6 |
+| `theo-archi` | Prix de la mecanique et statut d'`ADR-0104` (`T6`), inchange ; avis sur (d) |
+| `yanis-qa` | Lecture de testabilite des criteres de `S54-BR-ART-CP-10`, en disant lesquels un automate ne juge pas |
+| `camille-po` | Backlog et `DEC-index.md` (ce commit). Matrice, fiche, `catalogue.yaml` : non touches |
+
+### A.8 Ce que cet amendement ne fait pas
+
+Il ne touche ni `catalogue.yaml`, ni un paquet, ni une fiche, ni `MATRICE-couverture.md` (qui reste a 132 / 182 ; le mieux que s54 produit reste 137 / 182, `ART-CP-10` n'y
+entre pas). Il ne prononce aucun Done, ne fixe aucun plafond ni tarif, ne tranche pas l'instance et ne decide pas de financer la mecanique.
