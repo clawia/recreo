@@ -33,7 +33,7 @@ items:
   - enonce: "« regarder » : hier soir, ___ un film."
     bonneReponse: "tu as regardé"
     distracteurs: ["tu as regarder", "tu a regardé"]
-    indice: "Le temps du verbe se lit au début de la phrase."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« laver » : hier, ___ les verres."
     bonneReponse: "il a lavé"
@@ -48,7 +48,7 @@ items:
   - enonce: "« regarder » : hier, ___ les étoiles."
     bonneReponse: "vous avez regardé"
     distracteurs: ["vous avez regarder", "vous regardez"]
-    indice: "Le temps du verbe se lit au début de la phrase."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« danser » : hier soir, ___ sur la scène."
     bonneReponse: "ils ont dansé"
@@ -63,12 +63,12 @@ items:
   - enonce: "« dessiner » : ce matin, ___ une maison."
     bonneReponse: "tu as dessiné"
     distracteurs: ["tu as dessiner", "tu dessines"]
-    indice: "Le temps du verbe se lit au début de la phrase."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, b
   - enonce: "« avoir » : hier, ___ de la chance."
     bonneReponse: "il a eu"
     distracteurs: ["il a avoir", "il as eu"]
-    indice: "Avec ce sujet, comment s'écrit « avoir » au présent ?"
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: b, c
   - enonce: "« jouer » : hier, ___ dehors."
     bonneReponse: "nous avons joué"
@@ -78,12 +78,12 @@ items:
   - enonce: "« dessiner » : ce matin, ___ un arbre."
     bonneReponse: "vous avez dessiné"
     distracteurs: ["vous avez dessiner", "vous avons dessiné"]
-    indice: "Le temps du verbe se lit au début de la phrase."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, b
   - enonce: "« avoir » : hier, ___ un cadeau."
     bonneReponse: "ils ont eu"
     distracteurs: ["ils ont avoir", "ils a eu"]
-    indice: "Avec ce sujet, comment s'écrit « avoir » au présent ?"
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« être » : hier, ___ en retard."
     bonneReponse: "j'ai été"
@@ -123,7 +123,7 @@ items:
   - enonce: "« parler » : hier, ___ à la maîtresse."
     bonneReponse: "tu as parlé"
     distracteurs: ["tu as parler", "tu parles"]
-    indice: "Le temps du verbe se lit au début de la phrase."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: a, c
   - enonce: "« être » : hier, ___ la première."
     bonneReponse: "elle a été"
@@ -138,7 +138,7 @@ items:
   - enonce: "« parler » : hier, ___ trop fort."
     bonneReponse: "vous avez parlé"
     distracteurs: ["vous avez parler", "vous parlez"]
-    indice: "Le temps du verbe se lit au début de la phrase."
+    indice: "Ne recopie pas le verbe écrit au début : il change."
   # PCO-CE1-3: b, c
   - enonce: "« laver » : ce matin, ___ la voiture."
     bonneReponse: "elles ont lavé"
