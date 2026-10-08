@@ -846,3 +846,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-emc-atteinte-autrui
     nombreDeManches: 10
+  - id: bandit-manchot-familles-d-oeuvres-cp
+    titre: "Les familles d'œuvres"
+    consigne: "Choisis le mot qui va avec la statue, le tableau ou la photographie."
+    mecanique: bandit-manchot
+    paquet: cp-arts-oeuvres-familles
+    nombreDeManches: 10
