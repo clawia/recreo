@@ -290,7 +290,7 @@ Sections conservees (chiffres ecrits, transcriptions absentes ou partielles) : s
 | U1 | `ART-CP-10` : financer la mecanique "deux oeuvres ensemble" (`ADR-0104` `Accepte`, prix en tailles ecrit), ou non, et a quel sprint | section 11 |
 | U2 | Redire ses mots sur l'ordre des matieres et sur `Q12` (forme 2 de `DEC-0062`) : c'est ce qui passe `DEC-0114` a `Acceptee` | obstacle 14, `DEC-0114` A.22 |
 | U3 | Pousser s53 et s54 (60 commits) ; relire la CI sur le sommet pousse (`Q9` n'a nomme aucun commit) | obstacle 19 |
-| U4 | Trailers `Opus 5.5` sur `[NAD]` et `[THEO]` : la regle de `DEC-0110` 17.4 (modele execute) est-elle celle voulue | F6 | **Tranchee le 2026-10-08** pour s54 (reecriture faite). Portee future **tranchee le 2026-10-08** : le point 1 de 17.4 reste la regle, la reecriture est ponctuelle (`DEC-0110` 17.4, annotation) ; commits Opus pousses non reecrits ; lecture a confirmer sur le modele de lancement de `theo-archi` et `nadia-prof` |
+| U4 | Trailers `Opus 5.5` sur `[NAD]` et `[THEO]` : la regle de `DEC-0110` 17.4 (modele execute) est-elle celle voulue. **Tranchee le 2026-10-08** pour s54 (reecriture faite). Portee future **tranchee le 2026-10-08** : le point 1 de 17.4 reste la regle, la reecriture est ponctuelle (`DEC-0110` 17.4, annotation) ; commits Opus pousses non reecrits ; lecture a confirmer sur le modele de lancement de `theo-archi` et `nadia-prof` | F6 |
 | U5 | Poste avec deux `toolchains.xml` : lequel est le bon pour la squad | F5 |
 
 ---
