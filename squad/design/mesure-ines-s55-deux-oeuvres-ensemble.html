@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mesure - deux oeuvres ensemble (ines-design, s55)</title>
+<!--
+  Outil de mesure, jamais servi. Il ouvre le prototype dans une iframe de largeur exacte par cas
+  (une iframe contourne le plancher de fenetre de Chrome headless, ADR-0025) et ecrit un JSON
+  dans l'element de sortie, lu ensuite sur le DOM imprime.
+
+  Lancement (CHROME designe un Chrome ou Chromium ; l'option file-access est requise pour lire
+  le document des iframes depuis file://) :
+
+    "$CHROME" --headless=new --disable-gpu --allow-file-access-from-files \
+      --user-data-dir=<profil-isole-jetable> --virtual-time-budget=60000 \
+      --dump-dom file:///<racine-du-depot>/squad/design/mesure-ines-s55-deux-oeuvres-ensemble.html
+
+  Les iframes ont une hauteur de 1600 px : aucune barre de defilement ne vient retrecir la largeur,
+  et le pli se lit en comparant "basContenu" aux hauteurs de reference (551, 640, 1024).
+-->
+<style>iframe { border: 0; display: block; }</style>
+</head>
+<body>
+<pre id="sortie">en cours</pre>
+<div id="cases"></div>
+<script>
+(function () {
+    var LARGEURS = [360, 390, 576, 640, 720, 744, 768, 992, 1200, 1440];
+    var ETATS = ["fraiche", "juste", "echec", "revelation"];
+    var CAS = [];
+    LARGEURS.forEach(function (l) {
+        var dispositions = l >= 720 ? ["empilee", "cote"] : ["empilee"];
+        dispositions.forEach(function (d) {
+            ["cabinet", "nu"].forEach(function (v) {
+                ETATS.forEach(function (e) { CAS.push({ l: l, v: v, d: d, e: e, nb: "3", rev: "normal" }); });
+                CAS.push({ l: l, v: v, d: d, e: "revelation", nb: "3", rev: "grand" });
+            });
+        });
+        ["cabinet", "nu"].forEach(function (v) {
+            ETATS.forEach(function (e) { CAS.push({ l: l, v: v, d: "empilee", e: e, nb: "2", rev: "normal" }); });
+        });
+    });
+
+    var SELECTEURS = [".entete", ".entete-contenu", ".zone-jeu", ".score", ".consigne",
+        ".illustration .image-item", ".enonce", ".cabinet", ".propositions", ".message-jeu",
+        ".signal", ".indice", ".reponse-revelee", ".explication"];
+
+    function boite(el) {
+        var r = el.getBoundingClientRect();
+        return { gauche: +r.left.toFixed(2), droite: +r.right.toFixed(2), haut: +r.top.toFixed(2),
+                 bas: +r.bottom.toFixed(2), largeur: +r.width.toFixed(2), hauteur: +r.height.toFixed(2) };
+    }
+
+    function mesurer(doc, win) {
+        var actif = doc.querySelector(".ecran-de-jeu:not([style*='none'])");
+        var visibles = Array.prototype.filter.call(doc.querySelectorAll(".ecran-de-jeu"), function (n) {
+            return win.getComputedStyle(n).display !== "none";
+        });
+        var ecran = visibles[0];
+        var m = { boites: {}, propositionsOeuvres: [], debordement: [] };
+        SELECTEURS.forEach(function (s) {
+            var el = s === ".entete" || s === ".entete-contenu" || s === ".zone-jeu"
+                ? doc.querySelector(s) : ecran.querySelector(s);
+            if (el && win.getComputedStyle(el).display !== "none") { m.boites[s] = boite(el); }
+        });
+        Array.prototype.forEach.call(ecran.querySelectorAll(".proposition-oeuvre"), function (b) {
+            if (win.getComputedStyle(b).display === "none") { return; }
+            var img = b.querySelector("img");
+            m.propositionsOeuvres.push({ case: boite(b), image: boite(img),
+                naturelle: img.naturalWidth + "x" + img.naturalHeight,
+                bordure: win.getComputedStyle(b).borderTopStyle,
+                fond: win.getComputedStyle(b).backgroundColor,
+                contour: win.getComputedStyle(b).outlineStyle + " " + win.getComputedStyle(b).outlineWidth });
+        });
+        var bas = 0;
+        Array.prototype.forEach.call(ecran.querySelectorAll("*"), function (n) {
+            if (win.getComputedStyle(n).display === "none") { return; }
+            var r = n.getBoundingClientRect();
+            if (r.height > 0 && r.bottom > bas && !n.classList.contains("cabinet-levier")
+                && !n.classList.contains("cabinet-levier-embase")) { bas = r.bottom; }
+        });
+        m.basContenu = +bas.toFixed(2);
+        m.basContenuAvecRembourrage = +(bas + 32).toFixed(2);
+        var zone = m.boites[".zone-jeu"], ent = m.boites[".entete-contenu"];
+        m.ecartLateralZoneEntete = { gauche: +(zone.gauche - ent.gauche).toFixed(2), droite: +(zone.droite - ent.droite).toFixed(2) };
+        var largeurDoc = doc.documentElement.clientWidth;
+        m.largeurDocument = largeurDoc;
+        m.defilementHorizontal = doc.documentElement.scrollWidth > largeurDoc;
+        Array.prototype.forEach.call(ecran.querySelectorAll(".proposition-oeuvre, .illustration .image-item, .cabinet"), function (n) {
+            if (win.getComputedStyle(n).display === "none") { return; }
+            var r = n.getBoundingClientRect();
+            if (r.left < -0.01 || r.right > largeurDoc + 0.01) { m.debordement.push(n.className); }
+        });
+        // anneau de revelation : bord exterieur de l'outline, a verifier contre la case voisine
+        var rev = ecran.querySelector(".oeuvre-revelee");
+        if (rev && win.getComputedStyle(rev).display !== "none") {
+            var cs = win.getComputedStyle(rev);
+            var w = parseFloat(cs.outlineWidth) + parseFloat(cs.outlineOffset);
+            var r = rev.getBoundingClientRect();
+            var voisines = Array.prototype.filter.call(ecran.querySelectorAll(".proposition-oeuvre"), function (n) {
+                return n !== rev && win.getComputedStyle(n).display !== "none";
+            }).map(function (n) { return n.getBoundingClientRect(); });
+            var jour = Infinity;
+            voisines.forEach(function (v) {
+                var g = v.right <= r.left ? r.left - v.right : (v.left >= r.right ? v.left - r.right : Infinity);
+                if (g < jour) { jour = g; }
+            });
+            m.anneau = { epaisseurExterieure: w, jourVersLaVoisine: +jour.toFixed(2),
+                gaucheAnneau: +(r.left - w).toFixed(2), droiteAnneau: +(r.right + w).toFixed(2) };
+        }
+        return m;
+    }
+
+    var sortie = [];
+    var conteneur = document.getElementById("cases");
+    function suivant(i) {
+        if (i >= CAS.length) {
+            document.getElementById("sortie").textContent = JSON.stringify({ hauteurDeReference: 551, cas: sortie });
+            return;
+        }
+        var c = CAS[i];
+        var f = document.createElement("iframe");
+        f.width = c.l; f.height = 1600;
+        f.src = "prototype-ines-s55-deux-oeuvres-ensemble.html?etat=" + c.e + "&variante=" + c.v + "&disposition=" + c.d + "&nb=" + c.nb + "&rev=" + c.rev;
+        f.onload = function () {
+            setTimeout(function () {
+                var m = mesurer(f.contentDocument, f.contentWindow);
+                m.largeur = c.l; m.etat = c.e; m.variante = c.v; m.disposition = c.d; m.nb = c.nb; m.rev = c.rev;
+                sortie.push(m);
+                conteneur.removeChild(f);
+                suivant(i + 1);
+            }, 60);
+        };
+        conteneur.appendChild(f);
+    }
+    suivant(0);
+})();
+</script>
+</body>
+</html>
