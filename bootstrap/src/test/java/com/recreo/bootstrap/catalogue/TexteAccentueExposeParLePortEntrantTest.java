@@ -1531,9 +1531,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // SCI-CM1-15).
             "Situer la Terre dans le système solaire et relier les mouvements de la Terre au "
                     + "jour, à la nuit et aux saisons.",
-            // S54-BR-ART-CP-10 (s54) : competence du paquet, copiee telle quelle (non modifiee ici).
-            "Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres "
-                    + "(famille d'œuvre, métier, outil).",
+            // S54-BR-ART-CP-10 (s54) : competence du paquet = libelle du referentiel ART-CP-10,
+            // parenthese retiree (arbitrage-nadia-c.md, section 5).
+            "Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres.",
             // S54-BR-EMC-CM1-02 (s54) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
             // EMC-CM1-02).
