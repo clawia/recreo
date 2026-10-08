@@ -41,16 +41,25 @@ lignesDeReferentiel: ["EMC-CM1-03"]
 # (respecter, c'est ressembler ; respecter, c'est toujours etre d'accord) et non des fautes
 # evidentes ; ils sont au meme registre que la bonne reponse.
 #
-# EMC-5 a juger par nadia-prof : l'item 4 (fauteuil roulant) est le plus expose, car un enfant peut
-# defendre un motif d'accessibilite. Le motif retenu ("les autres refusent de l'attendre") est un
-# motif d'attitude, pas de lieu, pour ne laisser qu'une lecture. L'item 8 (distracteurs sur la
-# disparition ou l'egalite exacte des differences) est le plus proche d'un distracteur faible au
-# sens de PLA-1.
+# EMC-5 a juger par nadia-prof : l'item 4 (fauteuil roulant) est le plus expose. Corrige a s55
+# (arbitrage prealable de s55, instance B, section 2.1) : la partie de cartes est une activite ou le
+# handicap n'a aucune incidence, donc le seul motif est la personne ; aucun enfant ne peut defendre
+# un motif d'accessibilite ni lire une raison de vitesse (le relais, retire, ouvrait cette lecture),
+# et la proposition ne dit rien de ce que l'enfant en fauteuil peut ou ne peut pas faire (EMC-4).
+# L'item 8, corrige a la meme date (section 2.3) : le distracteur que personne ne croit (la
+# disparition des differences) est remplace par la raison qu'un enfant de cet age donne
+# reellement (c'est interdit parce qu'on est puni), rendue fausse sans discussion par "si un adulte
+# le voit" (PLA-1). Les indices des items 7 et 8 sont aussi ceux de nadia-prof (sections 2.2, 2.3).
+# Ecart au texte de nadia-prof, item 4 : le distracteur de Tom dit "cette partie" et non "la partie".
+# Avec "la partie", quatre distracteurs du paquet partageaient l'amorce "Prenom, parce que la" et
+# ADR-0086 (clause 2, LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest) rougissait. A rejuger.
 #
 # HIS-3 (faits institutionnels) : l'item 8 s'appuie sur l'article 1er de la Declaration des droits
 # de l'homme et du citoyen de 1789 ("Les hommes naissent et demeurent libres et egaux en droits") et
 # sur le principe de non-discrimination des articles 225-1 et suivants du code penal. Aucune
-# disposition n'est citee dans l'enonce. Source a verifier par nadia-prof.
+# disposition n'est citee dans l'enonce. La "meme valeur" est l'egale dignite de la
+# Declaration universelle des droits de l'homme de 1948, article 1er (la Declaration de 1789 ne
+# dit que "egaux en droits"). Source a verifier par nadia-prof.
 #
 # EMC-1 et EMC-8 : tous les personnages sont nommes ou designes a la troisieme personne ; aucun item
 # ne demande ce que l'enfant ferait, ressent ou croit. EMC-10 : aucun nom de personne reelle.
@@ -77,10 +86,10 @@ items:
     bonneReponse: "Sam, parce que ses croyances ne sont pas celles des autres"
     distracteurs: ["Léa, parce qu'elle travaille déjà dans un autre groupe", "Hugo, parce qu'il est absent ce jour-là"]
     indice: "Cherche la raison qui parle de la personne, pas du groupe de travail."
-  - enonce: "Trois élèves ne sont pas pris pour un jeu de relais. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
-    bonneReponse: "Aya, parce qu'elle utilise un fauteuil roulant et que les autres refusent de l'attendre"
-    distracteurs: ["Tom, parce que l'équipe a déjà quatre joueurs et qu'il n'y a plus de place", "Léa, parce que la cloche a sonné et que la récréation est terminée"]
-    indice: "Cherche la raison qui écarte quelqu'un à cause de ce qu'il est."
+  - enonce: "Trois élèves ne sont pas pris pour un jeu de cartes. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
+    bonneReponse: "Aya, parce qu'elle utilise un fauteuil roulant"
+    distracteurs: ["Tom, parce que cette partie a déjà quatre joueurs", "Léa, parce que la récréation est terminée"]
+    indice: "Une raison juste parle de la partie, pas de la personne."
   - enonce: "Trois élèves ne sont pas choisis pour distribuer les feuilles. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
     bonneReponse: "Tom, parce qu'il est plus petit que les autres"
     distracteurs: ["Malo, parce qu'il a déjà distribué les feuilles hier", "Léa, parce que c'est le tour d'un autre élève"]
@@ -92,11 +101,11 @@ items:
   - enonce: "Quelle phrase sur le respect d'autrui est juste ?"
     bonneReponse: "on peut ne pas être d'accord avec un camarade sans lui manquer de respect"
     distracteurs: ["respecter quelqu'un, c'est toujours être d'accord avec lui sur tout", "pour être respecté, il faut cacher ce qui nous rend différent des autres"]
-    indice: "On peut penser autrement sans manquer de respect."
+    indice: "Pense à deux amis qui n'aiment pas les mêmes livres."
   - enonce: "Pourquoi le respect d'autrui interdit-il de traiter quelqu'un moins bien à cause d'une différence ?"
     bonneReponse: "parce que chaque personne a la même valeur et les mêmes droits"
-    distracteurs: ["parce que tous les élèves sont exactement pareils", "parce que les différences disparaissent avec le temps"]
-    indice: "Cela concerne la valeur et les droits de chaque personne."
+    distracteurs: ["parce que tous les élèves sont exactement pareils", "parce qu'on risque d'être puni si un adulte le voit"]
+    indice: "Pense à deux élèves très différents que la loi protège de la même façon."
   - enonce: "Une classe forme des groupes pour un atelier. Lequel de ces motifs peut justifier de ne pas prendre un élève dans un groupe ?"
     bonneReponse: "le groupe est déjà complet"
     distracteurs: ["ses vêtements sont différents de ceux des autres", "sa famille vient d'un autre pays"]

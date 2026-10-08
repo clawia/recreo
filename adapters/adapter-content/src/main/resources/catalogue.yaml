@@ -858,6 +858,18 @@ jeux:
     mecanique: bandit-manchot
     paquet: cm1-emc-atteinte-autrui
     nombreDeManches: 10
+  - id: bandit-manchot-respect-differences-cm1
+    titre: "Ce que le respect interdit"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-respect-differences
+    nombreDeManches: 10
+  - id: bandit-manchot-principes-republique-cm1
+    titre: "Les principes de la République"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: cm1-emc-principes-republique
+    nombreDeManches: 10
   - id: bandit-manchot-familles-d-oeuvres-cp
     titre: "Les familles d'œuvres"
     consigne: "Lis bien, puis choisis la bonne réponse."
