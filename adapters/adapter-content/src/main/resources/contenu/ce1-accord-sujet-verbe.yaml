@@ -52,7 +52,7 @@ items:
   - enonce: "« aller » : il ___ au marché."
     bonneReponse: "va"
     distracteurs: ["vont", "vas"]
-    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
+    indice: "Lis le sujet avec chaque verbe proposé : lequel est le bon ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« avoir » : Léo ___ un ballon rouge."
     bonneReponse: "a"

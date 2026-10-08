@@ -182,6 +182,24 @@ class PaquetCe1AccordSujetVerbeTest {
     }
 
     /**
+     * ACV-CE1-R1, TRV-CE1-5 ("jamais la reponse") : un indice qui contient, en mot entier, une des
+     * propositions de son item laisse l'enfant repondre en retrouvant le mot sans lire le sujet.
+     */
+    private static void verifierQueAucunIndiceNeContientUneDeSesPropositions(List<Question> items) {
+        for (Question item : items) {
+            String indice = item.indice().orElseThrow();
+            for (String proposition : propositions(item)) {
+                Pattern motEntier = Pattern.compile(
+                        "(?<![\\p{L}\\p{N}])" + Pattern.quote(proposition) + "(?![\\p{L}\\p{N}])", FLAGS);
+                assertThat(motEntier.matcher(indice).find())
+                        .as("'%s' : l'indice '%s' contient la proposition '%s' (ACV-CE1-R1, TRV-CE1-5)",
+                                item.enonce(), indice, proposition)
+                        .isFalse();
+            }
+        }
+    }
+
+    /**
      * K2, arbitrage prealable de s55 instance A, section 4 : les activites de courses et de cuisine
      * ne vont pas toutes du cote feminin (TRV-CE1-6). Les items du marche et du gateau portent
      * "il". Aucun item ne porte "tu" (TRV-CE1-6).
@@ -317,6 +335,11 @@ class PaquetCe1AccordSujetVerbeTest {
     }
 
     @Test
+    void trv5AucunIndiceNeContientUnePropositionDeSonItem() {
+        verifierQueAucunIndiceNeContientUneDeSesPropositions(items());
+    }
+
+    @Test
     void k1DouzeItemsPortentLIndiceDeSubstitutionEtCinqCeluiDeRelecture() {
         List<Question> items = items();
         long substitution = items.stream()
@@ -364,6 +387,20 @@ class PaquetCe1AccordSujetVerbeTest {
         assertThatThrownBy(() -> verifierQueLeNombreNEstUnCritereQueOuIlDepartage(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("TRV-CE1-5");
+    }
+
+    /**
+     * ADR-0013 obligation 3 : le meme jeu fautif, sur ACV-CE1-R1. Son troisieme item porte la bonne
+     * reponse "va" dans son indice.
+     */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurSonIndiceQuiContientUneProposition() {
+        List<Question> items = tousLesItems(new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-accord-sujet-verbe-fautif"));
+
+        assertThatThrownBy(() -> verifierQueAucunIndiceNeContientUneDeSesPropositions(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ACV-CE1-R1");
     }
 
     /** ADR-0013 obligation 3 : le meme jeu fautif, sur K2. Son second item : "elle ___ au marche". */
