@@ -11,7 +11,10 @@
   de `FRA-CE1-25`, `TRV-CE1-4` ; R6 du planning).
   **VALIDÉ SOUS RÉSERVE** le 2026-10-06 par `nadia-prof` (s52, instance A), sur `46e69b13` : une réserve,
   `SYC-CE1-R1`. Voir le bloc de validation.
-- **Dernière mise à jour** : 2026-10-06 (ouverture, `camille-po`, s52 ; verdict, `nadia-prof`, s52).
+  **`SYC-CE1-R1` levée** le 2026-10-08 par `nadia-prof` (s54, instance A), sur `0a1f2b80` ; observation 1
+  (item 16) traitée le même jour. Aucune réserve ouverte.
+- **Dernière mise à jour** : 2026-10-08 (ouverture, `camille-po`, s52 ; verdict, `nadia-prof`, s52 ; rejeu,
+  `nadia-prof`, s54).
 
 ## Compétences visées
 
@@ -187,3 +190,56 @@ milieu, marqueur `R` dans le dernier (`ADR-0100`). Préfixe `SYC-CE1` déjà all
 Alloué dans `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même diff. Aucun renommé.
 
 **Signé** : `nadia-prof`, s52, instance A, 2026-10-06.
+
+### Rejeu du 2026-10-08 (`nadia-prof`, s54, instance A) : **`SYC-CE1-R1` levée**
+
+Le Done du 2026-10-06 reste prononcé ; la ligne `FRA-CE1-25` reste `couvert-valide` et n'a pas été rouverte.
+Le verdict devient **VALIDÉ**, sans réserve ouverte. La réserve et l'observation 1 restent écrites ci-dessus.
+
+#### 1. Ce que j'ai fait
+
+**Le diff, lu contre `46e69b13`** : `0a1f2b80` (`marc-dev`) change trois lignes `enonce` et rien d'autre
+(3 insertions, 3 suppressions, un fichier). Item 16 : *"« Le train arrive. »"* ; item 19 : *"« Elle lance le
+ballon. »"* ; item 23 : *"« Ce cheval est fort. »"*. C'est mot pour mot le texte de
+`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 7 (`K5`, `K6`). Bonnes réponses, distracteurs,
+familles et indices inchangés.
+
+**Joué** sur le jar construit au sommet de ma branche `5cad6650` (qui contient `0a1f2b80`), port 18854, JDK
+21.0.10, HTML servi lu, rendu non vu au navigateur. **Quarante parties complètes de dix manches**, mêmes
+conduites qu'au premier passage : les 24 items tirés (13 à 20 fois chacun), aucune anomalie de service sur
+les 400 manches, aucune révélation avant la troisième erreur. Les trois items touchés tirés 17, 20 et 20
+fois, avec 25, 40 et 34 erreurs et 5, 8 et 7 révélations. Écran de révélation de l'item 16 : *"« Le train
+arrive. » Quel mot est le contraire de « arrive » ?"* / *"Appuie sur la bonne réponse : part"* / l'indice.
+
+**Lecture masquée des trois items touchés** : mes trois réponses (*part*, *jette*, *costaud*) sont celles du
+fichier.
+
+#### 2. Contre la barre de la réserve
+
+| Barre (section 5, mot pour mot) | Tenue |
+|---|---|
+| *"le ballon et la force sont chacun portés par un sujet féminin ou sans genre"* | **oui** : *Elle lance le ballon.* ; *Ce cheval est fort.* |
+| *"Les réponses ne changent pas, sauf l'accord."* | **oui** : *jette*, *costaud* ; aucun accord ne bouge (*cheval* est masculin) |
+| *"Rien d'autre ne change."* | **oui** : trois lignes au diff, dont l'item 16, que l'observation 1 nommait |
+
+**Observation 1, item 16** : remise dans la phrase, *part* donne *"Le train part."*, qui dit l'inverse de
+*"Le train arrive."* sans autre lecture possible. Le doute que je décrivais disparaît. *Vient* (a) et
+*marche* (b) restent des distracteurs justes : *"Le train vient"* n'est pas un contraire, *"Le train marche"*
+non plus.
+
+**Exactitude** : les trois phrases sont correctes, *Ce cheval est costaud* aussi. **Personnages** : avec
+*Elle lance le ballon*, le ballon est porté par un sujet féminin ; aucune autre activité du paquet n'a
+changé de côté.
+
+L'élision *de « arrive »* reste au `relecteur-pedagogique` (observation 2), je ne la tranche pas.
+
+#### 3. Ce dont je reste la seule garde
+
+Inchangé depuis le premier passage, section 6 : le sens d'un distracteur dans la phrase de son item, la
+phrase qui fixe le sens du mot, l'accent des homographes et la répartition des activités par genre.
+
+**Prix** : 0,25 (`PAR-10`, correction reprise mot pour mot d'un texte que j'ai fourni, puis revérification).
+
+**Identifiants** : aucun neuf, aucun renommé.
+
+**Signé** : `nadia-prof`, s54, instance A, 2026-10-08.
