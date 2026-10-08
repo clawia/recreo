@@ -1,0 +1,9 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1ClassesDeMotsTest. La consigne du jeu dit
+# "classe", que le CE1 lit d'abord comme la salle (K5 de s55).
+jeux:
+  - id: bandit-manchot-classes-fautif
+    titre: "Quelle sorte de mot"
+    consigne: "Lis bien, puis dis quelle est la classe du mot entre guillemets."
+    mecanique: bandit-manchot
+    paquet: ce1-classes-de-mots
+    nombreDeManches: 10

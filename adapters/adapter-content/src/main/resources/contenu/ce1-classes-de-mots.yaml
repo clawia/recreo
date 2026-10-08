@@ -121,7 +121,7 @@ items:
     indice: "Compare ce mot aux autres mots de la phrase."
     partDesignee: "soleil"
   # CLM-CE1-1: verbe
-  - enonce: "Tom « range » ses crayons."
+  - enonce: "Fatou « range » ses crayons."
     bonneReponse: "verbe"
     distracteurs: ["nom commun", "déterminant"]
     indice: "Cherche à quoi sert ce mot dans la phrase."
@@ -139,7 +139,7 @@ items:
     indice: "Cherche à quoi sert ce mot dans la phrase."
     partDesignee: "Karim"
   # CLM-CE1-1: déterminant
-  - enonce: "Karim aime « cette » histoire."
+  - enonce: "Lina aime « cette » histoire."
     bonneReponse: "déterminant"
     distracteurs: ["adjectif", "nom commun"]
     indice: "Relis la phrase en pensant au mot entre guillemets."

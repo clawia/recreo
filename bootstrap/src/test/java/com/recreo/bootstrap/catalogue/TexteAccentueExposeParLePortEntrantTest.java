@@ -421,6 +421,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S54-BR-FRA-CE1-19 (s54) : entree neuve, FRA-CE1-19, conjuguer au passe compose
             // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.10).
             "bandit-manchot-passe-compose-ce1",
+            // S55-BR-FRA-CE1-L1 (s55) : entree neuve, FRA-CE1-14, accorder le verbe avec son sujet
+            // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.5).
+            "bandit-manchot-accord-sujet-verbe-ce1",
+            // S55-BR-FRA-CE1-L2 (s55) : entree neuve, FRA-CE1-12, identifier la classe d'un mot
+            // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.3).
+            "bandit-manchot-classes-de-mots-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -706,6 +712,12 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les verbes au futur",
             // S54-BR-FRA-CE1-19 (s54) : titre neuf, sans niveau (ADR-0078).
             "Les verbes au passé composé",
+            // S55-BR-FRA-CE1-L1 (s55) : titre neuf, sans niveau (ADR-0078). L'espace avant le point
+            // d'interrogation est insecable (ADR-0067).
+            "Un ou plusieurs ?",
+            // S55-BR-FRA-CE1-L2 (s55) : titre neuf, sans niveau (ADR-0078). L'espace avant le point
+            // d'interrogation est insecable (ADR-0067).
+            "Quelle sorte de mot ?",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
@@ -1017,6 +1029,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // aucune forme (squad/conformite/ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md,
             // section 5).
             "Lis bien, puis choisis le verbe au futur.",
+            // S55-BR-FRA-CE1-L2 (s55) : consigne neuve, elle nomme "sorte" et non "classe" (au CE1,
+            // la classe est d'abord la salle) et aucune des cinq classes
+            // (squad/conformite/ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md, section 5, K5).
+            "Lis bien, puis dis quelle sorte de mot est entre guillemets.",
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
@@ -1627,6 +1643,14 @@ class TexteAccentueExposeParLePortEntrantTest {
             // inverses.
             "Conjuguer au passé composé être, avoir et les verbes du premier groupe, avec "
                     + "l'auxiliaire avoir.",
+            // S55-BR-FRA-CE1-L1 (s55) : competence neuve, FRA-CE1-14, libelle du descripteur du paquet
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-14).
+            "Accorder le verbe avec son sujet au présent, quand le sujet est un pronom personnel "
+                    + "ou un nom placé juste avant le verbe.",
+            // S55-BR-FRA-CE1-L2 (s55) : competence neuve, FRA-CE1-12, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-12).
+            "Identifier la classe d'un mot dans une phrase : nom commun, nom propre, verbe, "
+                    + "déterminant, adjectif.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

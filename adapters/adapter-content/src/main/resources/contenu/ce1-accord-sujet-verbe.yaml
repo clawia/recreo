@@ -7,7 +7,8 @@
 # ACV-CE1-2 : trois formes du present du meme verbe ; verbes de PRS-CE1-1 seulement (etre, avoir, aller,
 # faire, dire, venir et premier groupe sans modification orthographique).
 # ACV-CE1-3 : le nombre se lit sur le sujet, surtout un nom (frontiere avec FRA-CE1-17, sujet toujours pronom).
-# Aucun indice ne renvoie a l'ecoute : les formes en -e, -es, -ent se prononcent de meme.
+# Aucun indice ne donne un critere qu'un distracteur de son item satisfait : le nombre seul (un ou plusieurs) est
+# satisfait par la forme d'une autre personne (joues, ecoutons). Les formes en -e, -es, -ent se prononcent de meme.
 # TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
 # voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
 # la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
@@ -26,12 +27,12 @@ items:
   - enonce: "« jouer » : le chat ___ dans le jardin."
     bonneReponse: "joue"
     distracteurs: ["jouent", "joues"]
-    indice: "Regarde le sujet : un seul ou plusieurs ?"
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« écouter » : les élèves ___ la maîtresse."
     bonneReponse: "écoutent"
     distracteurs: ["écoute", "écoutons"]
-    indice: "Demande-toi qui agit, un seul ou plusieurs."
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet pronom pluriel
   - enonce: "« venir » : ils ___ de l'école."
     bonneReponse: "viennent"
@@ -41,22 +42,22 @@ items:
   - enonce: "« être » : la maîtresse ___ dans la classe."
     bonneReponse: "est"
     distracteurs: ["sont", "es"]
-    indice: "Cherche qui agit, puis compte-les."
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« être » : les chats ___ sur le toit."
     bonneReponse: "sont"
     distracteurs: ["est", "es"]
     indice: "Regarde le sujet : un seul ou plusieurs ?"
   # ACV-CE1-1: sujet pronom singulier
-  - enonce: "« aller » : elle ___ au marché."
+  - enonce: "« aller » : il ___ au marché."
     bonneReponse: "va"
     distracteurs: ["vont", "vas"]
-    indice: "Demande-toi qui agit, un seul ou plusieurs."
+    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« avoir » : Léo ___ un ballon rouge."
     bonneReponse: "a"
     distracteurs: ["ont", "as"]
-    indice: "Le sujet se trouve juste avant le trou : combien en voit-on ?"
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« avoir » : les écoliers ___ un nouveau jeu."
     bonneReponse: "ont"
@@ -66,12 +67,12 @@ items:
   - enonce: "« parler » : elles ___ doucement."
     bonneReponse: "parlent"
     distracteurs: ["parle", "parlons"]
-    indice: "Regarde le sujet : un seul ou plusieurs ?"
+    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« aller » : Mia ___ à la piscine."
     bonneReponse: "va"
     distracteurs: ["vont", "vas"]
-    indice: "Demande-toi qui agit, un seul ou plusieurs."
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« aller » : les oiseaux ___ vers le sud."
     bonneReponse: "vont"
@@ -81,12 +82,12 @@ items:
   - enonce: "« être » : il ___ dans la cour."
     bonneReponse: "est"
     distracteurs: ["sont", "es"]
-    indice: "Cherche qui agit, puis compte-les."
+    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« faire » : la boulangère ___ du pain."
     bonneReponse: "fait"
     distracteurs: ["font", "fais"]
-    indice: "Regarde le sujet : un seul ou plusieurs ?"
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« faire » : les ouvriers ___ du bruit."
     bonneReponse: "font"
@@ -101,44 +102,44 @@ items:
   - enonce: "« dessiner » : Inès ___ un arbre."
     bonneReponse: "dessine"
     distracteurs: ["dessinent", "dessines"]
-    indice: "Cherche qui agit, puis compte-les."
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« dire » : les voisins ___ bonjour."
     bonneReponse: "disent"
     distracteurs: ["dit", "dis"]
     indice: "Regarde le sujet : un seul ou plusieurs ?"
   # ACV-CE1-1: sujet pronom singulier
-  - enonce: "« faire » : elle ___ un gâteau."
+  - enonce: "« faire » : il ___ un gâteau."
     bonneReponse: "fait"
     distracteurs: ["font", "fais"]
-    indice: "Demande-toi qui agit, un seul ou plusieurs."
+    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« venir » : le facteur ___ à pied."
     bonneReponse: "vient"
     distracteurs: ["viennent", "viens"]
-    indice: "Le sujet se trouve juste avant le trou : combien en voit-on ?"
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« travailler » : les médecins ___ à l'hôpital."
     bonneReponse: "travaillent"
     distracteurs: ["travaille", "travaillons"]
-    indice: "Cherche qui agit, puis compte-les."
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet pronom pluriel
   - enonce: "« dessiner » : ils ___ des étoiles."
     bonneReponse: "dessinent"
     distracteurs: ["dessine", "dessinons"]
-    indice: "Regarde le sujet : un seul ou plusieurs ?"
+    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« parler » : la directrice ___ aux élèves."
     bonneReponse: "parle"
     distracteurs: ["parlent", "parles"]
-    indice: "Demande-toi qui agit, un seul ou plusieurs."
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
   - enonce: "« laver » : les enfants ___ les verres."
     bonneReponse: "lavent"
     distracteurs: ["lave", "lavons"]
-    indice: "Le sujet se trouve juste avant le trou : combien en voit-on ?"
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« regarder » : Karim ___ la lune."
     bonneReponse: "regarde"
     distracteurs: ["regardent", "regardes"]
-    indice: "Cherche qui agit, puis compte-les."
+    indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
