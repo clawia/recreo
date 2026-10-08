@@ -11,6 +11,19 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s54, instance A, le 2026-10-08, cloture (`S54-EXC-CATEGORIE`).** Un identifiant
+ajoute, une reserve : **`EXC-R15`**, ecrit dans `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md`. **Forme
+copiee** de `EXC-R14`, alloue au meme fichier : deux segments, marqueur `R` dans le dernier (`ADR-0100`).
+**Aucun prefixe neuf**. `git grep -c 'EXC-R15'` ne rendait rien avant d'ecrire. La ligne de la section 4 est dans le
+meme diff que la fiche. La levee de `PCO-CE1-R1` n'ecrit aucun identifiant.
+
+Ligne d'etat courant portee de **923 / 158 a 924 / 158**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 923 identifiants alloues et 158 prefixes distincts, sa table en porte 924 et 158"*. C'est
+ce **924 / 158** que je recopie.
+
 **Note de `nadia-prof`, s54, instance A, le 2026-10-08 (Done pedagogique de `FRA-CE1-19`, VALIDE SOUS
 RESERVE ; `FRA-CE1-18` VALIDE ; `SYC-CE1-R1` levee).** Un identifiant ajoute, une reserve : **`PCO-CE1-R1`**,
 ecrit dans `squad/conformite/FICHE-bandit-manchot-passe-compose-ce1.md`. **Forme copiee** de `SYC-CE1-R1` :
@@ -733,7 +746,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `923` identifiants alloues, `158` prefixes distincts.
+**Compte courant, verifie par la CI** : `924` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1589,6 +1602,7 @@ clause 2 par une exemption.
 | `EXC-R12` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R13` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EXC-R14` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
+| `EXC-R15` | `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md` |
 | `EVO-1` | `squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md` |
 | `EVO-2` | `squad/conformite/ARBITRAGE-PREALABLE-s44-musique-et-sciences-cm1.md` |
 | `FAB-1` | `squad/conformite/ARBITRAGE-PREALABLE-s31-ce-qui-ferme-une-ligne-d-emc-cp-le-catechisme-civique-et-ma-borne.md` |

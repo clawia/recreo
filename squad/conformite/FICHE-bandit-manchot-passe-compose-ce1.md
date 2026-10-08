@@ -11,7 +11,9 @@
   (`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 6).
 - **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-08 par `nadia-prof` (s54, instance A), sur
   `5cad6650` : une réserve, `PCO-CE1-R1`. Voir le bloc de validation.
-- **Dernière mise à jour** : 2026-10-08 (ouverture de la fiche et verdict, `nadia-prof`, s54). Aucune fiche
+- **État au 2026-10-08, après rejeu** : **`PCO-CE1-R1` LEVÉE** sur `c876fadc` (`marc-dev`), joué au sommet
+  `e9c3ec52`. Plus aucune réserve ouverte. Bloc de rejeu en fin de fiche.
+- **Dernière mise à jour** : 2026-10-08 (rejeu de `PCO-CE1-R1`, `nadia-prof`, s54, instance A). Aucune fiche
   n'avait été ouverte avant le branchement ; la section des critères de `camille-po` est écrite le
   2026-10-08 par `camille-po` (routage de l'arbitrage de s54, section 12 : `K3`, `K4` comme critères).
 
@@ -208,5 +210,55 @@ et de la répartition des activités par genre, en jouant. L'équipe ne doit pas
 **Identifiants** : un neuf, `PCO-CE1-R1`. Forme copiée de `SYC-CE1-R1` : trois segments, niveau au milieu,
 marqueur `R` dans le dernier (`ADR-0100`). Préfixe `PCO-CE1` déjà alloué (`PCO-CE1-1` à `-3`). Alloué dans
 `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le même diff. Aucun renommé.
+
+**Signé** : `nadia-prof`, s54, instance A, 2026-10-08.
+
+---
+
+## Bloc de rejeu du 2026-10-08 - `PCO-CE1-R1` - nadia-prof UNIQUEMENT
+
+### Verdict : **`PCO-CE1-R1` LEVÉE**
+
+La ligne `FRA-CE1-19` reste `couvert-valide`, sans mention de couverture partielle. Le statut de la fiche
+passe à **VALIDÉ**, sans réserve ouverte. Le verdict du 2026-10-08 au-dessus reste écrit tel quel.
+
+### 1. Le diff, lu contre ma barre
+
+Commit `c876fadc` (`marc-dev`), contenu dans `e9c3ec52` (`git merge-base --is-ancestor`). `git show -U0` : huit
+blocs, lignes 36, 51, 66, 71, 81, 86, 126, 141 du fichier, et rien d'autre. Ce sont les lignes `indice` des items
+**2, 5, 8, 9, 11, 12, 20, 23**, vérifié en lisant l'énoncé, la bonne réponse et les distracteurs au-dessus de
+chacune : ce sont les huit phrases de mon tableau de la section 4. Énoncés, bonnes réponses, distracteurs,
+familles déclarées et en-tête inchangés.
+
+Sur le fichier : `grep -c 'indice: "Ne recopie pas le verbe'` rend **19**, `grep -c 'indice: "Avec ce sujet,
+comment'` rend **2** (items 10 et 24). I2 reste sur 14 et 17, I3 sur 21. `TRV-CE1-5` (*"pas identique sur tout le
+paquet"*) reste tenue : quatre indices distincts.
+
+**L'espace insécable.** Les huit lignes portent U+00A0 avant les deux-points, octet pour octet comme les items
+1, 3, 4 (`cat -A` : `M-BM- :` sur les onze lignes déjà en place et sur les huit nouvelles). Ma barre disait : la
+ligne devient *"celle que portent déjà les items 1, 3, 4"*. C'est donc le mot pour mot de ma barre, pas un
+écart, et je l'accepte. L'insécable elle-même relève du `relecteur-pedagogique` (`DEC-0002`, amendement du
+2026-08-04) ; je constate seulement que les huit lignes sont identiques aux trois de référence.
+
+### 2. Ce que j'ai joué
+
+Jar construit au sommet `e9c3ec52` (`-DskipTests package`), copié hors du worktree, lancé sur le JDK 21.0.10,
+appels HTTP réels, HTML servi lu, rendu non vu au navigateur. **Deux séries de 150 parties**, sur chaque
+manche le bouton de l'infinitif quand il est servi. **Les huit items tirés** dans chaque série, de 2 à 11 fois
+chacun, et un seul indice distinct par item sur l'ensemble des tirages. Après *tu as regarder*,
+*vous avez regarder*, *tu as dessiner*, *il a avoir*, *vous avez dessiner*, *ils ont avoir*, *tu as parler*,
+*vous avez parler* : l'indice servi est chaque fois *"Ne recopie pas le verbe écrit au début : il change."*,
+le même à chaque tirage. L'enfant qui recopie l'infinitif lit désormais ce qu'il a raté.
+
+**Le prix que j'avais annoncé est payé comme annoncé** : sur 2, 9, 11 et 12, l'enfant qui choisit l'auxiliaire
+faux lit un indice qui ne lui parle pas de l'auxiliaire. Ce n'est pas un motif nouveau ; je l'avais écrit.
+
+### 3. Ce dont je reste la seule garde
+
+Inchangé par ce rejeu : `PaquetCe1PasseComposeTest` ne lit pas ce qu'un indice fait faire à l'enfant devant les
+propositions de son item, ni qu'il parle de l'erreur (a). **Je reste la seule garde de ces deux propriétés.**
+Les deux comptes de `grep` ci-dessus sont des mesures, pas un garde-fou : aucun test ne les tient.
+
+**Identifiants** : aucun écrit, aucun renommé. **Régime** : mot pour mot, 0,25 (`PAR-10`), comme annoncé.
 
 **Signé** : `nadia-prof`, s54, instance A, 2026-10-08.

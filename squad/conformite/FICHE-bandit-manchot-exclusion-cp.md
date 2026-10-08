@@ -23,7 +23,12 @@
   la tache B font 19 a 24 mots contre 10 a 12 sur la tache A, et la cause est dans ma propre
   condition). **La ligne `EMC-CP-03` n'est pas rouverte** et reste `couvert-valide`. Troisieme bloc
   de validation en fin de fiche.
-- **Derniere mise a jour** : 2026-09-11 (s35)
+- **Etat au 2026-10-08 (s54, `S54-EXC-CATEGORIE`)** : **une reserve neuve, `EXC-R15`, non bloquante** :
+  les items 1 et 3 decrivent une exclusion et la nomment *"une moquerie qui se répète"*. **La ligne
+  `EMC-CP-03` n'est pas rouverte** et reste `couvert-valide`. Je corrige au passage deux de mes propres
+  constats (le credit de `FER-1` du 2026-09-08, et ma phrase de `CYC-1` du 2026-10-08). Bloc du 2026-10-08
+  en fin de fiche.
+- **Derniere mise a jour** : 2026-10-08 (s54, `nadia-prof`, instance A)
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -1145,3 +1150,99 @@ condition a produit cette longueur.** Je ne la reproche a personne.
 | **`EXC-R14`** - la longueur des cinq indices de la tache B | `camille-po`, et `theo-archi` pour la seconde sortie | Non bloquante. **La cause est dans ma propre condition et je l'ecris** |
 | **La famille du bouton au rabais, faux vert demontre par `yanis-qa`** | `theo-archi` | La forme du garde-fou n'est pas de mon ressort. **Ce que je demande est qu'on cesse d'ecrire que cette clause couvre la famille** : elle couvre un incident |
 | **Le mouvement de matrice** | `camille-po` | **Aucun.** `EMC-CP-03` reste `couvert-valide` |
+
+---
+
+## Bloc du 2026-10-08 - `S54-EXC-CATEGORIE`, reserve neuve `EXC-R15` - nadia-prof UNIQUEMENT
+
+**Audit degrade** : je n'ai pas rejoue ce paquet ; j'ai lu les onze items de `cp-emc-exclusion.yaml`, l'entree du
+catalogue et `PaquetCpEmcExclusionTest` au sommet `e9c3ec52`. Ce bloc ne prononce aucun Done et ne rouvre pas la ligne.
+
+### 1. Ma reponse a la question de `camille-po`
+
+*"Le constat appelle-t-il une reserve neuve avec sa barre de levee, une condition de paquet, ou aucune suite ?"* -
+**une reserve neuve, `EXC-R15`, non bloquante, datee du 2026-10-08.** Pas une condition de paquet : le defaut est dans
+ce paquet-ci, pas dans une regle que les paquets futurs devraient tenir. Pas "aucune suite" : l'enfant y apprend un
+mot faux.
+
+### 2. Deux corrections de mes propres constats, avant de m'en servir
+
+- **Ma phrase de `CYC-1` du 2026-10-08** (`FICHE-bandit-manchot-atteinte-autrui-cm1.md`, section 6) disait que *"la
+  categorie du CP est plus large que le fait"*. C'est inexact. *Une moquerie* n'est pas une categorie qui contient
+  l'exclusion : se moquer, c'est rire de quelqu'un ; ecarter quelqu'un du jeu, c'est autre chose. **Le nom donne a
+  l'exclusion est faux, il n'est pas trop large.** Le referentiel le dit lui-meme : *"moquerie répétée ou
+  d'exclusion"*, deux choses.
+- **Mon credit de `FER-1` du 2026-09-08** (reaudit, motif 1) : *"moquerie repetee, exclusion (empecher de
+  s'asseoir, ecarter du jeu) et l'adulte sont chacun servis en bonne reponse"*. Pour l'exclusion, c'est vrai de la
+  situation, pas de la bonne reponse : les items 1 et 3 servent une exclusion et la bonne reponse ecrite est *"une
+  moquerie qui se répète"*. J'avais credite la situation la ou ma clause parle de la bonne reponse.
+
+### 3. Le constat
+
+| Item | Enonce | Bonne reponse servie | Ce que la situation est |
+|---|---|---|---|
+| 1 | *"Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe."* | *une moquerie qui se répète* | une mise a l'ecart qui se repete |
+| 3 | *"Depuis plusieurs jours, Malo écarte Tom du jeu à chaque récréation."* | *une moquerie qui se répète* | une mise a l'ecart qui se repete |
+
+L'enfant qui appuie sur ce bouton a bien reconnu ce que la tache A lui demande de distinguer (ce qui se repete
+contre ce qui arrive une fois) : **le classement est juste, le mot qui le confirme ne l'est pas.** La consigne du
+catalogue redit le meme mot sur chaque manche : *"Lis bien, puis dis si c'est une moquerie qui se répète, ou à quel
+adulte en parler."*
+
+**Pourquoi une reserve et non un refus.** Une reponse attendue fausse est un motif de refus. Ici, ce que l'item
+demande de decider (repete ou isole) a une seule reponse juste, et c'est celle qu'il attend ; ce qui est faux est le
+nom de la classe. La conduite que la tache B enseigne pour une exclusion (item 10, en parler a un adulte) est juste.
+L'enfant ne sort pas du jeu avec une conduite fausse ; il en sort avec le mot *moquerie* colle sur une exclusion. Je
+l'ai laisse passer le 2026-09-08 et le 2026-09-11 : c'est a mon debit.
+
+### 4. `EXC-R15` - ce qui la leve, mot pour mot
+
+**Objet** : *une exclusion servie par la tache A est nommee par son nom.* Quatre lignes changent, et elles seules :
+
+1. Item 1 : `bonneReponse: "une mise à l'écart qui se répète"`.
+2. Item 3 : `bonneReponse: "une mise à l'écart qui se répète"`.
+3. Item 4 : `distracteurs: ["une mise à l'écart qui se répète", "une bagarre"]` (le nouveau nom est aussi faux
+   quelque part ; chaque accident garde un seul distracteur *"qui se répète"*).
+4. Catalogue, entree `bandit-manchot-exclusion-cp` : `consigne: "Lis bien, puis dis ce qui se passe, ou à quel adulte
+   en parler."` (14 mots au lieu de 17 ; la seconde moitie ne change pas).
+
+Le reste ne bouge pas : enonces, indices, items 2, 5, 6, la tache B, le titre. *Mise a l'ecart* est le terme du
+paquet de CM1 (`cm1-emc-atteinte-autrui`) ; au CP, *ecarte* est deja dans l'enonce de l'item 3.
+
+**Sorties observables**, sur `adapters/adapter-content/src/main/resources/contenu/cp-emc-exclusion.yaml` au
+2026-10-08 (`e9c3ec52`), puis apres correction :
+
+| Commande | Aujourd'hui | Apres |
+|---|---|---|
+| `grep -c 'bonneReponse: "une moquerie qui se répète"'` | 3 | 1 |
+| `grep -c "bonneReponse: \"une mise à l'écart qui se répète\""` | 0 | 2 |
+| `grep -c "une mise à l'écart qui se répète"` | 0 | 3 |
+| `grep -c "dis si c'est une moquerie qui se répète"` sur `catalogue.yaml` | 1 | 0 |
+
+`git diff` du paquet : trois lignes ; de `catalogue.yaml` : une ligne. `PaquetCpEmcExclusionTest` reste vert.
+
+**Symptome technique, pour le developpeur et `theo-archi`, sans en decider la forme** : le test identifie la tache A
+par ses bonnes reponses (`"une moquerie qui se répète", "un accident isolé"`, ligne 82) et definit la tache B comme
+son complement. Une troisieme bonne reponse de classement non declaree ferait compter les items 1 et 3 dans la tache
+B. L'inventaire de `TexteAccentueExposeParLePortEntrantTest` porte la consigne actuelle et change avec elle.
+
+**Regime et prix** : mot pour mot, **0,25** (`PAR-10`). Le rejeu verifie le diff, puis rejoue les items 1, 3, 4 et la
+consigne a l'ecran.
+
+### 5. Ce dont je reste la seule garde
+
+Qu'une bonne reponse de classement nomme ce que la situation est, et non une situation voisine : **aucun garde-fou**.
+Les comptes de `grep` ci-dessus mesurent cette correction-ci, ils ne gardent pas la propriete.
+
+### 6. Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| `EXC-R15` | `camille-po` | Les criteres ci-dessus dans `S54-EXC-CATEGORIE`, sans reformulation ; je les y ai ecrits |
+| Le mouvement de matrice | `camille-po` | **Aucun.** `EMC-CP-03` reste `couvert-valide` |
+
+**Identifiants** : un neuf, `EXC-R15`. Forme copiee de `EXC-R14`, deja alloue dans ce fichier : deux segments,
+marqueur `R` dans le dernier (`ADR-0100`). Absent du depot avant d'ecrire (`git grep -c 'EXC-R15'` : aucun resultat).
+Alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le meme diff.
+
+**Signe** : `nadia-prof`, s54, instance A, 2026-10-08.

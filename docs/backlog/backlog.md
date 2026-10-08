@@ -20506,6 +20506,19 @@ juge pas ce constat : c'est le sien. Cette entree le rend visible dans le backlo
   et c'est a elle de dire ce qui doit etre vrai du paquet pour que ce ne le soit plus, ou si rien n'est du (le referentiel CP dit lui-meme *"moquerie répétée ou d'exclusion"*).
   Question a lui poser via `sofia-sm` : *le constat appelle-t-il une reserve neuve avec sa barre de levee, une condition de paquet, ou aucune suite ?* Tant qu'elle n'a pas
   repondu, l'entree n'est pas estimable et n'est pas engageable.
+- **Reponse de `nadia-prof`, 2026-10-08 (s54, instance A)** : **une reserve neuve, `EXC-R15`, non bloquante** (`FICHE-bandit-manchot-exclusion-cp.md`, bloc du 2026-10-08).
+  Elle corrige sa propre phrase : le nom donne a l'exclusion n'est pas *"plus large que le fait"*, il est faux (une moquerie ne contient pas l'exclusion). La ligne n'est pas rouverte.
+- **Criteres d'acceptation** (ecrits par `nadia-prof`, mot pour mot ; elle rejoue) : quatre lignes changent, et elles seules.
+  1. Item 1 de `cp-emc-exclusion.yaml` : `bonneReponse: "une mise à l'écart qui se répète"`.
+  2. Item 3 : `bonneReponse: "une mise à l'écart qui se répète"`.
+  3. Item 4 : `distracteurs: ["une mise à l'écart qui se répète", "une bagarre"]`.
+  4. `catalogue.yaml`, entree `bandit-manchot-exclusion-cp` : `consigne: "Lis bien, puis dis ce qui se passe, ou à quel adulte en parler."`.
+  Enonces, indices, items 2, 5, 6, tache B et titre ne changent pas. Sorties observables sur le fichier du paquet : `grep -c 'bonneReponse: "une moquerie qui se répète"'`
+  rend **3 aujourd'hui** (`e9c3ec52`, rouge) et doit rendre **1** ; `grep -c "une mise à l'écart qui se répète"` rend **0** et doit rendre **3** ; sur `catalogue.yaml`,
+  `grep -c "dis si c'est une moquerie qui se répète"` rend **1** et doit rendre **0**. `git diff` : trois lignes du paquet, une du catalogue. `PaquetCpEmcExclusionTest` reste vert.
+  Symptome technique nomme par `nadia-prof`, forme a `theo-archi` : le test identifie la tache A par ses deux bonnes reponses (ligne 82), la tache B est son complement ;
+  l'inventaire de `TexteAccentueExposeParLePortEntrantTest` porte la consigne actuelle.
+- **Prix** : mot pour mot, **0,25** (`PAR-10`), rejeu par `nadia-prof` (items 1, 3, 4 et la consigne a l'ecran).
 - **Lien decision** : aucune. **Report** : aucun (premiere entree).
 
 ### S54-OBS-SCI-CONSIGNE et S54-OBS-ART-ALT - deux observations de la passe transverse, routees a `camille-po` (hors portee D)
@@ -20513,13 +20526,20 @@ juge pas ce constat : c'est le sien. Cette entree le rend visible dans le backlo
 **Etat au 2026-10-08 (s54) : OUVERTES, non engagees.** `PASSE-TRANSVERSE-s54-*.md`, section 4 : `nadia-prof` les ecrit *"pour ne pas les avoir vues sans les dire"* ; ce ne sont pas des
 reserves, et elles ne sont pas de son lot (`PAR-2`).
 
-- `S54-OBS-SCI-CONSIGNE` - *"Lis le texte ou le tableau, puis reponds a la question."* (consigne) et *"Lis ce tableau, puis reponds a la question."* (enonce) disent deux fois
-  la meme chose a l'ecran, dans `bandit-manchot-sciences-extraire-information-cm1` (`SCI-CM1-20`, ligne `couvert-valide` avec couverture partielle, non rouverte). Besoin : en
+**Relecture de `nadia-prof`, 2026-10-08 (s54, instance A)** : les deux textes ci-dessous reprennent fidelement sa passe transverse ; c'est la passe qui etait incomplete sur le premier point et fausse sur le second.
+Elle corrige sa passe (`PASSE-TRANSVERSE-s54-*.md`, section 4, note du 2026-10-08) et les deux entrees ci-dessous.
+
+- `S54-OBS-SCI-CONSIGNE` - la consigne *"Lis le texte ou le tableau, puis réponds à la question."* et la premiere phrase de chacun des **12 enonces** (*"Lis ce tableau, puis
+  réponds à la question."* sur les items 1 a 6, *"Lis ce texte, puis réponds à la question."* sur les items 7 a 12) disent deux fois *"puis réponds à la question"* a l'ecran ;
+  la premiere phrase de l'enonce n'ajoute que le document a lire. *Texte corrige le 2026-10-08 par `nadia-prof` : il citait une seule forme d'enonce, sans accents, et disait
+  "la meme chose" la ou l'enonce nomme le document.* Jeu `bandit-manchot-sciences-extraire-information-cm1` (`SCI-CM1-20`, ligne `couvert-valide` avec couverture partielle, non rouverte). Besoin : en
   tant qu'eleve de CM1, je veux lire une consigne une seule fois, afin de ne pas chercher ce que la seconde phrase ajoute. Instance qui porte cette ligne : B.
-- `S54-OBS-ART-ALT` - le texte alternatif de l'oeuvre servie par `bandit-manchot-decrire-une-oeuvre-cp` est *"Une reproduction d'oeuvre a regarder attentivement avant de repondre."*,
-  qui ne decrit pas l'oeuvre (`CON-5`). Besoin : en tant qu'eleve de CP qui ne voit pas l'image, je veux un texte qui me dise ce qu'elle montre, afin de pouvoir repondre.
-  `CON-1` interdit une contrefacon par description : ce que le texte alternatif peut dire sans donner la reponse est un jugement de `nadia-prof`, pas le mien. Ligne `ART-CP-09`,
-  `couvert-valide`, non rouverte.
+- `S54-OBS-ART-ALT` - **retiree par `nadia-prof` le 2026-10-08, sans suite.** Le texte alternatif *"Une reproduction d'œuvre à regarder attentivement avant de répondre."*,
+  identique sur les huit items de `bandit-manchot-decrire-une-oeuvre-cp`, est celui que `CON-5` demande : il *"decrit ce qu'il y a a regarder, jamais la reponse ni ce qui
+  permet de la deduire"*. Sur ce jeu, decrire l'oeuvre est la competence (`ART-CP-09`) : un texte qui dirait ce qu'elle montre donnerait la reponse (`CON-1`). `nadia-prof`
+  l'avait juge tenu (`FICHE-bandit-manchot-decrire-une-oeuvre-cp.md`, section 6) ; sa passe de s54 l'a cite a tort comme un defaut. *L'ancien texte de cette entree disait
+  "qui ne decrit pas l'oeuvre (`CON-5`)" et portait un besoin ("un texte qui me dise ce qu'elle montre") que `CON-1` interdit.* Ligne `ART-CP-09`, `couvert-valide`, non rouverte.
+  Aucun critere a ecrire.
 - **Criteres d'acceptation** : a ecrire quand une instance engage l'une des deux ; pour `S54-OBS-ART-ALT`, le critere repose sur ce que `nadia-prof` admet comme texte alternatif, et je
   ne l'invente pas. Les deux phrases citees sont celles de la passe transverse ; je n'ai pas relu les deux paquets.
 
