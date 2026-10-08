@@ -1,0 +1,18 @@
+# Jeu fautif d'ADR-0104 decision 7, garde-fou 1. Ce paquet n'est servi par rien : il vit sous
+# contreexemple/ et le recensement de production ne le voit pas. Un seul item, trois propositions
+# prefixees "oeuvre-", chacune fautive : deux ne resolvent aucun fichier de reproduction, la
+# troisieme sort de l'alphabet d'un identifiant. Les mots de cet item ne sont lus par aucun enfant.
+schema: 1
+id: cp-propositions-fautif
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CP"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif d'un garde-fou, jamais servi"
+items:
+  - enonce: "Jeu fautif."
+    illustration: "oeuvre-introuvable-reference"
+    illustrationTexteAlternatif: "Jeu fautif."
+    bonneReponse: "oeuvre-introuvable"
+    distracteurs: ["oeuvre-introuvable-aussi", "oeuvre-avec.point"]

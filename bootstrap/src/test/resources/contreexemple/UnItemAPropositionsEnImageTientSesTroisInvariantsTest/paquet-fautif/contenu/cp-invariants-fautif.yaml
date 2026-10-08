@@ -1,0 +1,29 @@
+# Jeu fautif d'ADR-0104 decision 5 (garde-fou 2 de la decision 7). Ce paquet n'est servi par rien : il
+# vit sous contreexemple/ et le recensement de production ne le voit pas. Trois items, un par
+# invariant, chacun ne tenant que la faute de sa clause. Les mots de ces items ne sont lus par aucun
+# enfant.
+schema: 1
+id: cp-invariants-fautif
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CP"
+  domaine: "Jeu fautif"
+  competence: "Jeu fautif d'un garde-fou, jamais servi"
+items:
+  # Faute 1, tout ou rien : un distracteur est un texte parmi des reproductions.
+  - enonce: "Jeu fautif, tout ou rien."
+    illustration: "oeuvre-reference-a"
+    illustrationTexteAlternatif: "Jeu fautif."
+    bonneReponse: "oeuvre-proposition-a"
+    distracteurs: ["oeuvre-proposition-b", "un texte"]
+  # Faute 2, la reference existe : aucune illustration n'est declaree.
+  - enonce: "Jeu fautif, reference absente."
+    bonneReponse: "oeuvre-proposition-a"
+    distracteurs: ["oeuvre-proposition-b", "oeuvre-proposition-c"]
+  # Faute 3, la reference n'est pas une proposition : l'illustration est aussi un distracteur.
+  - enonce: "Jeu fautif, reference parmi les propositions."
+    illustration: "oeuvre-reference-c"
+    illustrationTexteAlternatif: "Jeu fautif."
+    bonneReponse: "oeuvre-proposition-a"
+    distracteurs: ["oeuvre-reference-c", "oeuvre-proposition-b"]

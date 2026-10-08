@@ -72,6 +72,11 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
      * <p><b>Remesure le 2026-08-30</b> (s23, lea-dev, reserve B de {@code FICHE-bandit-manchot-
      * problemes-durees-cm1.md}) : {@code cm1-problemes-durees} baisse de 27 a 3, seule baisse de ce
      * sprint. Le total ({@link #DETTE_TOTALE}) baisse d'autant, de 540 a 516.
+     *
+     * <p><b>Remesure le 2026-10-08</b> (s55, lea-dev, S54-PONCT-GN-INDICES) : {@code cm1-grands-nombres}
+     * sort de la table, de 12 a 0 - les douze indices posent l'espace insecable devant leur signe
+     * double. Une entree a 0 est refusee par {@link #detteMesuree} : la ligne est retiree, et le total
+     * baisse d'autant, de 502 a 490.
      */
     private static final Map<String, Integer> DETTE_PAR_FICHIER = new TreeMap<>(Map.ofEntries(
             Map.entry("cm1-tables-multiplication", 179),
@@ -79,7 +84,6 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
             Map.entry("cm1-conjugaison-present", 31),
             Map.entry("cm1-homophones", 27),
             Map.entry("cp-soustractions", 27),
-            Map.entry("cm1-grands-nombres", 12),
             Map.entry("cm1-accords-groupe-nominal", 25),
             Map.entry("cm1-mesures", 24),
             Map.entry("cp-comparer-nombres", 24),
@@ -96,7 +100,7 @@ class AucunSigneDoubleNEstDetachableDeSonMotTest {
             Map.entry(CATALOGUE, 23)));
 
     /** Le total, ecrit une fois pour que la somme ne puisse pas deriver de la table sans le dire. */
-    private static final int DETTE_TOTALE = 502;
+    private static final int DETTE_TOTALE = 490;
 
     static int occurrencesDe(String valeur) {
         int compte = 0;

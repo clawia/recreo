@@ -1,0 +1,18 @@
+schema: 1
+# ADR-0104 decision 6 : jeu de preuve du garde-fou 3, jamais servi, jamais inscrit au catalogue.
+# Toutes les propositions de l'item sont des identifiants de reproduction, dont oeuvre-champ-de-ble :
+# l'enfant ne les lit pas, il regarde des images. Aucun mot de cet item n'est destine a un enfant.
+id: paquet-a-propositions-images
+type: question
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+items:
+  - enonce: "Voici une phrase de preuve."
+    illustration: "oeuvre-reference-de-preuve"
+    illustrationTexteAlternatif: "Voici un texte de preuve."
+    bonneReponse: "oeuvre-champ-de-ble"
+    distracteurs: ["oeuvre-chambre", "oeuvre-grande-vague"]
+    indice: "Indice de preuve."

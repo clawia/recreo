@@ -110,6 +110,19 @@ public class PartieController {
      */
     private static final String FOCUS_BOUTON = "bouton";
 
+    /**
+     * ADR-0082 decision 2, etendue aux propositions par ADR-0104 decision 3 : le prefixe d'un
+     * identifiant de reproduction. Le lire est un fait de rendu, donc d'ici : une mecanique ne lit
+     * jamais ce qu'une proposition ecrit (ADR-0104, regle 13).
+     */
+    private static final String PREFIXE_DE_REPRODUCTION = "oeuvre-";
+
+    /** ADR-0104 decision 3 : vrai si et seulement si toutes les propositions de la manche sont des reproductions. */
+    private static boolean propositionsEnImage(List<String> propositions) {
+        return !propositions.isEmpty()
+                && propositions.stream().allMatch(proposition -> proposition.startsWith(PREFIXE_DE_REPRODUCTION));
+    }
+
     private final PartieUseCase partie;
 
     public PartieController(PartieUseCase partie) {
@@ -438,6 +451,12 @@ public class PartieController {
                 session.illustrationTexteAlternatifManche().orElse(null));
         modele.addAttribute("segmentsEnonce", segmentsEnonce(session));
         modele.addAttribute("propositions", session.propositions());
+        boolean propositionsEnImage = propositionsEnImage(session.propositions());
+        modele.addAttribute("propositionsEnImage", propositionsEnImage);
+        // ADR-0104 decision 4, point 4 : le gabarit ne peut pas distinguer une revelation d'un echec
+        // par focusCibles (la derniere proposition pressee, ou la bonne) ; il lui faut ce booleen
+        // pour poser la marque de la bonne oeuvre (proposition d'ines-design, section 6).
+        modele.addAttribute("mancheRevelee", session.revelee());
         modele.addAttribute("score", session.score());
         modele.addAttribute("indice", session.indice().orElse(null));
         // M10 : le produit des deux facteurs, jamais le seul geste. Retirer "&& fraiche" rend a
@@ -463,7 +482,9 @@ public class PartieController {
         if (session.revelee()) {
             String reponse = session.reponseRevelee().orElseThrow();
             message = MESSAGE_REVELATION;
-            reponseRevelee = reponse;
+            // ADR-0104 decision 4, point 4 : jamais un identifiant en texte ; la bonne oeuvre est
+            // deja designee par focusCibles et par mancheRevelee.
+            reponseRevelee = propositionsEnImage ? null : reponse;
             explication = session.explicationRevelee().orElse(null);
             focus = FOCUS_BOUTON;
             focusCibles = Set.of(reponse);
@@ -734,7 +755,10 @@ public class PartieController {
         modele.addAttribute("jeuId", jeuId);
         modele.addAttribute("score", session.score());
         modele.addAttribute("juste", verdict.juste());
-        modele.addAttribute("bonneReponse", verdict.bonneReponse());
+        // ADR-0104 decision 3 et 4, point 5 : quand la bonne reponse est une reproduction, ni
+        // l'identifiant ni un libelle n'apprend rien a cet ecran (precedent d'ADR-0088, trou B).
+        boolean reponseEnImage = verdict.bonneReponse().startsWith(PREFIXE_DE_REPRODUCTION);
+        modele.addAttribute("bonneReponse", reponseEnImage ? null : verdict.bonneReponse());
         // ADR-0084, REV-3 : l'enonce de la manche que ce verdict commente, appose au modele a cote
         // de sa reponse et jamais dedans. Il vient du verdict et de nulle part ailleurs, parce qu'a
         // cet instant la session n'a plus de manche courante - c'est exactement pourquoi la reponse
@@ -743,7 +767,7 @@ public class PartieController {
         modele.addAttribute("explication", verdict.explication().orElse(null));
         // S33-PAL2-TROU-A, S33-PAL2-TROU-B : voir le commentaire de retourDeDesignation.
         modele.addAttribute("questionRappeleeVisible", !verdict.juste());
-        modele.addAttribute("reponseAttendueVisible", !verdict.juste());
+        modele.addAttribute("reponseAttendueVisible", !verdict.juste() && !reponseEnImage);
         return "fragments/retour :: retour";
     }
 

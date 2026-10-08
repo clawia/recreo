@@ -91,6 +91,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * avant qu'ADR-0082 n'ouvre un second repertoire. La population reste vide a s49 - aucune reproduction
  * reelle n'entre par ce commit (T5 d'ADR-0082, qui attend le choix verifie de nadia-prof) -, donc ce
  * qui suit se mord sur du materiau mute en memoire, jamais sur un fichier reel.
+ *
+ * <p><b>ADR-0104, decision 7, garde-fou 1 (s55) : une proposition prefixee {@code oeuvre-} est une
+ * declaration.</b> Un item de la vue simultanee d'ART-CP-10 propose des reproductions : {@code
+ * bonneReponse} et chaque {@code distracteurs} sont des identifiants de reproduction. Chacun resout
+ * dans {@code static/oeuvres/} comme une {@code illustration}, et compte pour <i>"aucune ne dort"</i> :
+ * une oeuvre servie seulement en proposition n'est pas du poids mort. La population reelle de
+ * propositions-images est vide a s55 (aucun paquet n'en declare) : les morsures mutent un item reel,
+ * lu dans le depot, en memoire.
  */
 class LIllustrationDeContenuResoutEtAucuneNeDortTest {
 
@@ -114,6 +122,13 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     private static final String CLE_TEXTE_ALTERNATIF = "illustrationTexteAlternatif";
 
     private static final String EXTENSION = ".svg";
+
+    /** ADR-0082 decision 2, etendue aux propositions par ADR-0104 decision 3 : la population se lit sur le prefixe. */
+    static final String PREFIXE_DE_REPRODUCTION = "oeuvre-";
+
+    private static final String CLE_BONNE_REPONSE = "bonneReponse";
+
+    private static final String CLE_DISTRACTEURS = "distracteurs";
 
     /**
      * La cle a laquelle le comptage textuel partage reconnait un item enumere (ADR-0064, lot 5a de
@@ -302,6 +317,72 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
     }
 
     /**
+     * Un item tel que le YAML le declare, avec le paquet qui le porte. Offert aux garde-fous voisins
+     * (ADR-0104 decision 5) : un seul balayage des paquets servis, jamais un second ecrit ailleurs.
+     */
+    record ItemDeclare(String paquet, Map<?, ?> champs) {
+    }
+
+    static List<ItemDeclare> itemsDeclares(List<Path> repertoiresDeContenu) {
+        List<ItemDeclare> declares = new ArrayList<>();
+        for (Path repertoire : repertoiresDeContenu) {
+            try (Stream<Path> arborescence = Files.walk(repertoire)) {
+                List<Path> paquets = arborescence.filter(Files::isRegularFile)
+                        .filter(fichier -> fichier.getFileName().toString().endsWith(".yaml"))
+                        .sorted().toList();
+                for (Path paquet : paquets) {
+                    if (new Yaml().load(lire(paquet)) instanceof Map<?, ?> corps
+                            && corps.get("items") instanceof List<?> items) {
+                        for (Object item : items) {
+                            if (item instanceof Map<?, ?> champs) {
+                                declares.add(new ItemDeclare(paquet.getFileName().toString(), champs));
+                            }
+                        }
+                    }
+                }
+            } catch (IOException echec) {
+                throw new UncheckedIOException(echec);
+            }
+        }
+        return declares;
+    }
+
+    /**
+     * ADR-0104 decision 3 : les propositions d'un item, la bonne reponse puis les distracteurs, dans
+     * l'ordre du fichier. Une valeur qui n'est pas une chaine est ecartee ici : sa faute est celle du
+     * chargeur de production, pas de ce garde-fou.
+     */
+    static List<String> propositionsDe(Map<?, ?> item) {
+        List<String> propositions = new ArrayList<>();
+        if (item.get(CLE_BONNE_REPONSE) instanceof String bonneReponse) {
+            propositions.add(bonneReponse);
+        }
+        if (item.get(CLE_DISTRACTEURS) instanceof List<?> distracteurs) {
+            for (Object distracteur : distracteurs) {
+                if (distracteur instanceof String proposition) {
+                    propositions.add(proposition);
+                }
+            }
+        }
+        return propositions;
+    }
+
+    /** Une proposition qui porte le prefixe d'une reproduction, avec le paquet qui la declare. */
+    record PropositionDeclaree(String paquet, String identifiant) {
+    }
+
+    static List<PropositionDeclaree> propositionsEnReproductionDe(ItemDeclare item) {
+        return propositionsDe(item.champs()).stream()
+                .filter(proposition -> proposition.startsWith(PREFIXE_DE_REPRODUCTION))
+                .map(proposition -> new PropositionDeclaree(item.paquet(), proposition))
+                .toList();
+    }
+
+    static List<PropositionDeclaree> propositionsDeclarees(List<ItemDeclare> items) {
+        return items.stream().flatMap(item -> propositionsEnReproductionDe(item).stream()).toList();
+    }
+
+    /**
      * SOL-CE1-1 et SOL-CE1-4 (nadia-prof, arbitrage prealable du 2026-09-22, section 4) : un solide
      * n'est pas une figure plane. La derivation d'ADR-0077 - un dessin qui ne trace qu'une seule
      * forme rendue <b>est</b> cette forme - dit qu'une boule livree en cercle nu est un cercle, et
@@ -452,6 +533,17 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      */
     static void verifier(List<IllustrationDeclaree> declarees, Map<String, String> illustrations,
                           Map<String, String> decor, Set<String> reproductions) {
+        verifier(declarees, List.of(), illustrations, decor, reproductions);
+    }
+
+    /**
+     * ADR-0104 decision 7, garde-fou 1 : les propositions prefixees {@code oeuvre-} sont jugees comme
+     * des declarations. Meme alphabet, meme resolution (dans les reproductions seules : le prefixe dit
+     * la population), et elles comptent pour la clause <i>"aucune ne dort"</i>.
+     */
+    static void verifier(List<IllustrationDeclaree> declarees, List<PropositionDeclaree> propositions,
+                          Map<String, String> illustrations, Map<String, String> decor,
+                          Set<String> reproductions) {
         if (decor.isEmpty()) {
             throw new AssertionError("ADR-0051 : le perimetre du decor est vide - la separation des"
                     + " deux populations d'images n'est prouvee sur rien");
@@ -489,6 +581,21 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
             }
         }
 
+        for (PropositionDeclaree proposition : propositions) {
+            String ou = proposition.paquet() + ", proposition '" + proposition.identifiant() + "'";
+            if (!proposition.identifiant().matches(ALPHABET)) {
+                fautes.add(ou + " : un identifiant de reproduction s'ecrit " + ALPHABET
+                        + ", jamais un chemin ni une adresse (ADR-0073 clause 1, ADR-0104 decision 7)");
+                continue;
+            }
+            if (!reproductions.contains(proposition.identifiant())) {
+                fautes.add(ou + " : aucun fichier " + proposition.identifiant()
+                        + EXTENSION_REPRODUCTION + " sous " + REPRODUCTIONS + ". Une proposition-image"
+                        + " qui ne resout rien rend un bouton sans image (ADR-0104 decision 7,"
+                        + " garde-fou 1)");
+            }
+        }
+
         for (Map.Entry<String, String> illustration : illustrations.entrySet()) {
             boolean declaree = declarees.stream()
                     .anyMatch(candidate -> illustration.getKey().equals(candidate.identifiant()));
@@ -506,6 +613,8 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
 
         for (String identifiantReproduction : reproductions) {
             boolean declaree = declarees.stream()
+                    .anyMatch(candidate -> identifiantReproduction.equals(candidate.identifiant()))
+                    || propositions.stream()
                     .anyMatch(candidate -> identifiantReproduction.equals(candidate.identifiant()));
             if (!declaree) {
                 fautes.add(identifiantReproduction + EXTENSION_REPRODUCTION + " : aucun item d'aucun"
@@ -549,11 +658,15 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         return identifiantsDeReproductions(repertoires(racine, REPRODUCTIONS));
     }
 
+    static List<ItemDeclare> itemsDuDepot(Path racine) {
+        return itemsDeclares(AucuneCleDUnPaquetServiNEstIgnoreeDeToutLeDepotTest.repertoiresDeContenu(racine));
+    }
+
     @Test
     void chaqueIllustrationDeclareeParUnPaquetServiResoutEtAucunFichierNeDort() {
         Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
-        verifier(declareesDuDepot(racine), illustrationsDuDepot(racine), decorDuDepot(racine),
-                reproductionsDuDepot(racine));
+        verifier(declareesDuDepot(racine), propositionsDeclarees(itemsDuDepot(racine)),
+                illustrationsDuDepot(racine), decorDuDepot(racine), reproductionsDuDepot(racine));
     }
 
     /**
@@ -830,6 +943,114 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
                 decorDuDepot(racine), reproductions))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("oeuvre-oubliee");
+    }
+
+    /**
+     * ADR-0104 decision 7, materiau des morsures du garde-fou 1 : le premier item reel du depot dont
+     * l'illustration est une reproduction (aujourd'hui un item de {@code cp-decrire-une-oeuvre}).
+     * Derive, jamais nomme (ADR-0013 obligation 1) ; s'invalide de lui-meme si le depot n'en sert plus.
+     */
+    static ItemDeclare unItemReelQuiMontreUneReproduction(Path racine) {
+        return itemsDuDepot(racine).stream()
+                .filter(item -> item.champs().get(CLE_ILLUSTRATION) instanceof String illustration
+                        && illustration.startsWith(PREFIXE_DE_REPRODUCTION))
+                .findFirst()
+                .orElseThrow(() -> new AssertionError("plus aucun item reel ne montre une reproduction :"
+                        + " ces morsures ne mutent plus rien de reel"));
+    }
+
+    /** Une copie de l'item, ordre des cles conserve, dont la bonne reponse est mutee en memoire. */
+    private static ItemDeclare avecLaBonneReponse(ItemDeclare reel, String bonneReponse) {
+        Map<Object, Object> mute = new LinkedHashMap<>(reel.champs());
+        mute.put(CLE_BONNE_REPONSE, bonneReponse);
+        return new ItemDeclare(reel.paquet(), mute);
+    }
+
+    /** Morsure 1 d'ADR-0104 : une proposition {@code oeuvre-inconnue} est rouge, nommee avec son paquet. */
+    @Test
+    void unePropositionEnOeuvreInconnueFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        ItemDeclare mute = avecLaBonneReponse(unItemReelQuiMontreUneReproduction(racine), "oeuvre-inconnue");
+
+        assertThat(propositionsEnReproductionDe(mute))
+                .as("la lecture des propositions doit trouver la proposition mutee, sans quoi cette"
+                        + " morsure ne prouve rien")
+                .extracting(PropositionDeclaree::identifiant)
+                .containsExactly("oeuvre-inconnue");
+        assertThatThrownBy(() -> verifier(declareesDuDepot(racine), propositionsEnReproductionDe(mute),
+                illustrationsDuDepot(racine), decorDuDepot(racine), reproductionsDuDepot(racine)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("oeuvre-inconnue")
+                .hasMessageContaining(mute.paquet());
+    }
+
+    /**
+     * Morsure 2 d'ADR-0104, et c'est celle de la colonne "Changement" : une oeuvre servie seulement
+     * en proposition n'est pas declaree dormante. L'item reel est retire des declarations
+     * d'illustration (la reproduction n'est plus montree par aucune) : le garde-fou la dit dormante.
+     * Le meme item, mute pour la proposer, la fait vivre.
+     */
+    @Test
+    void uneOeuvreServieSeulementEnPropositionNEstPasDormante() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        ItemDeclare reel = unItemReelQuiMontreUneReproduction(racine);
+        String reproduction = String.valueOf(reel.champs().get(CLE_ILLUSTRATION));
+        List<IllustrationDeclaree> sansElle = declareesDuDepot(racine).stream()
+                .filter(declaree -> !reproduction.equals(declaree.identifiant()))
+                .toList();
+        assertThat(sansElle)
+                .as("la reproduction doit etre declaree par au moins une illustration reelle")
+                .hasSizeLessThan(declareesDuDepot(racine).size());
+
+        assertThatThrownBy(() -> verifier(sansElle, List.of(), illustrationsDuDepot(racine),
+                decorDuDepot(racine), reproductionsDuDepot(racine)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(reproduction + EXTENSION_REPRODUCTION)
+                .hasMessageContaining("aucun item d'aucun paquet servi ne le declare");
+
+        verifier(sansElle, propositionsEnReproductionDe(avecLaBonneReponse(reel, reproduction)),
+                illustrationsDuDepot(racine), decorDuDepot(racine), reproductionsDuDepot(racine));
+    }
+
+    /** Une proposition dont l'identifiant est un chemin sort de l'alphabet, comme une illustration. */
+    @Test
+    void unePropositionQuiEstUnCheminFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        ItemDeclare reel = unItemReelQuiMontreUneReproduction(racine);
+
+        for (String echappee : List.of("oeuvre-../images/cabinet-fronton", "oeuvre-champ.jpg")) {
+            ItemDeclare mute = avecLaBonneReponse(reel, echappee);
+            assertThatThrownBy(() -> verifier(declareesDuDepot(racine), propositionsEnReproductionDe(mute),
+                    illustrationsDuDepot(racine), decorDuDepot(racine), reproductionsDuDepot(racine)))
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining(echappee)
+                    .hasMessageContaining(ALPHABET);
+        }
+    }
+
+    /**
+     * ADR-0013 obligation 3, jeu fautif commite : traverse la lecture du YAML et celle des cles
+     * {@code bonneReponse} et {@code distracteurs}, ce qu'aucune mutation en memoire n'exerce.
+     */
+    @Test
+    void leJeuFautifAPropositionsEnImageEstRefuse() {
+        Path jeuFautif = CONTRE_EXEMPLE.resolve("paquet-propositions-fautif");
+        List<PropositionDeclaree> propositions =
+                propositionsDeclarees(itemsDeclares(List.of(jeuFautif.resolve("contenu"))));
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+
+        assertThat(propositions)
+                .as("ADR-0051 : ce jeu fautif ne prouve rien si le recensement n'y lit aucune"
+                        + " proposition prefixee")
+                .extracting(PropositionDeclaree::identifiant)
+                .containsExactly("oeuvre-introuvable", "oeuvre-introuvable-aussi", "oeuvre-avec.point");
+        assertThatThrownBy(() -> verifier(declareesDuDepot(racine), propositions,
+                illustrationsDuDepot(racine), decorDuDepot(racine), reproductionsDuDepot(racine)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("oeuvre-introuvable")
+                .hasMessageContaining("oeuvre-introuvable-aussi")
+                .hasMessageContaining("oeuvre-avec.point")
+                .hasMessageContaining(ALPHABET);
     }
 
     /**
