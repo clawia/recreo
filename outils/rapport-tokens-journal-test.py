@@ -12,7 +12,7 @@ Les sept cas (les six de l'avis de faisabilite de s54, plus le cas partiel) :
   3. un sprint dont les transcriptions sont presentes est recalcule ;
   4. une section sans chiffres reste "Aucune consommation mesuree." ;
   5. un rapport de sprint chiffre est conserve quand rien n'est mesure ;
-  6. un lancement sans `--sprint` ne modifie aucun rapport chiffre ;
+  6. un lancement sans `--sprint` est refuse (code 2) et n'ecrit rien ;
   7. une mesure partielle (un agent chiffre n'a plus aucune transcription) ne remplace pas la
      section plus complete : c'est le cas de s22, dont seul le fil principal a survecu.
 
@@ -128,7 +128,7 @@ class LeJournalEtLesRapportsConserventUneMesureEcrite(unittest.TestCase):
         self.assertEqual(original, rapport.read_text(encoding="utf-8"))
         self.assertIn("conserve", sortie.getvalue())
 
-    def test_6_un_lancement_sans_sprint_ne_modifie_aucun_rapport_chiffre(self):
+    def test_6_un_lancement_sans_sprint_est_refuse_et_n_ecrit_rien(self):
         dossier = self.repo / "squad" / "sprints" / "s22-exemple"
         dossier.mkdir(parents=True)
         (dossier / "planning.md").write_text("- **Horodatage de debut** : 2026-01-01 10:00\n", encoding="utf-8")
@@ -136,27 +136,34 @@ class LeJournalEtLesRapportsConserventUneMesureEcrite(unittest.TestCase):
         rapport = dossier / "RAPPORT-tokens.md"
         original = f"# [Sprint s22] Consommation de tokens\n\n{SECTION_CHIFFREE}\n"
         rapport.write_text(original, encoding="utf-8")
-        self.journal.write_text(journal_existant(("Sprint s22", SECTION_CHIFFREE)), encoding="utf-8")
+        journal_original = journal_existant(("Sprint s22", SECTION_CHIFFREE))
+        self.journal.write_text(journal_original, encoding="utf-8")
 
-        # Un dossier de transcriptions non vide, dont aucun message ne tombe dans la fenetre de s22.
+        # Un dossier de transcriptions utilisable, dont un message tombe dans la fenetre de s22 :
+        # sans le refus, l'outil recalculerait s22 et le remplacerait.
         transcriptions = self.repo / "transcriptions"
         transcriptions.mkdir()
         message = {
-            "timestamp": "2030-01-01T00:00:00Z",
+            "timestamp": "2026-01-01T12:00:00Z",
             "message": {"model": "m", "usage": {"input_tokens": 1, "output_tokens": 1}},
         }
         (transcriptions / "session.jsonl").write_text(json.dumps(message) + "\n", encoding="utf-8")
+        avant = sorted(str(p.relative_to(self.repo)) for p in self.repo.rglob("*") if p.is_file())
 
         argv = sys.argv
         sys.argv = ["rapport-tokens.py", "--repo", str(self.repo), "--projects-dir", str(transcriptions)]
+        erreur = io.StringIO()
         try:
-            with contextlib.redirect_stdout(io.StringIO()):
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(erreur):
                 code = MODULE.main()
         finally:
             sys.argv = argv
-        self.assertEqual(0, code)
+        self.assertEqual(2, code)
+        self.assertIn("--sprint", erreur.getvalue())
         self.assertEqual(original, rapport.read_text(encoding="utf-8"))
-        self.assertIn(LIGNE_TOTAL, self.journal.read_text(encoding="utf-8"))
+        self.assertEqual(journal_original, self.journal.read_text(encoding="utf-8"))
+        apres = sorted(str(p.relative_to(self.repo)) for p in self.repo.rglob("*") if p.is_file())
+        self.assertEqual(avant, apres)
 
     def test_7_une_mesure_partielle_ne_remplace_pas_une_section_plus_complete(self):
         deux_agents = "\n".join(
