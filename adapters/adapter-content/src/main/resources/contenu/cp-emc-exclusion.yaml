@@ -207,7 +207,7 @@ items:
   - enonce: "En courant, Tom bouscule Malo une seule fois et s'excuse aussitôt. Qu'est-ce que c'est ?"
     bonneReponse: "un accident isolé"
     distracteurs: ["une mise à l'écart qui se répète", "une bagarre"]
-    indice: "Une excuse immédiate après un geste involontaire n'est pas de la moquerie."
+    indice: "Une excuse immédiate après un geste involontaire n'est pas une mise à l'écart."
   - enonce: "Aya marche sur le pied de Hugo une seule fois, par accident. Qu'est-ce que c'est ?"
     bonneReponse: "un accident isolé"
     distracteurs: ["une moquerie qui se répète", "un jeu de récréation"]
