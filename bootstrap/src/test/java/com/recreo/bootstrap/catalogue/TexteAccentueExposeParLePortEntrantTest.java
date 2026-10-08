@@ -893,7 +893,7 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S39-OUTILS (s39) : consigne neuve.
             "Dis quel outil, quel support ou quel geste convient.",
             // S54-BR-ART-CP-10 (s54) : consigne neuve.
-            "Choisis le mot qui va avec la statue, le tableau ou la photographie.",
+            "Lis bien, puis choisis la bonne réponse.",
             // S38-MOITIES (s38) : consigne neuve.
             "Quelle est la moitié ?",
             // S39-DEN (s39) : consigne neuve.
