@@ -11,6 +11,20 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s55, instance B, le 2026-10-08 (Done pedagogique de `EMC-CM1-03` et `EMC-CM1-06`,
+VALIDE SOUS RESERVE).** Deux identifiants ajoutes, des reserves : **`EMC-CM1-R8`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-respect-differences-cm1.md`, et **`EMC-CM1-R9`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-principes-republique-cm1.md`. **Forme copiee** d'`EMC-CM1-R7` : trois
+segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** : `EMC-CM1-R1` a
+`EMC-CM1-R7` etaient alloues ; `git grep` sur `EMC-CM1-R8` et `EMC-CM1-R9`, sur toutes les branches locales, ne
+rendait rien avant d'ecrire. Les deux lignes de la section 4 sont dans le meme diff que les fiches.
+
+Ligne d'etat courant portee de **928 / 158 a 930 / 158**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend : *"declare 928 identifiants
+alloues et 158 prefixes distincts, sa table en porte 930 et 158"*. C'est ce **930 / 158** que je recopie. Si une autre
+branche de s55 alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, s55, instance B, le 2026-10-08 (rejeu de `S54-EXC-CATEGORIE`, `EXC-R15` levee, VALIDE
 SOUS RESERVE).** Un identifiant ajoute, une reserve : **`EXC-R16`**, ecrit dans
 `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md`. **Forme copiee** de `EXC-R15`, alloue au meme fichier : deux
@@ -776,7 +790,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `928` identifiants alloues, `158` prefixes distincts.
+**Compte courant, verifie par la CI** : `930` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -1593,6 +1607,8 @@ clause 2 par une exemption.
 | `EMC-CM1-R5` | `squad/conformite/FICHE-bandit-manchot-emotion-ressentir-agir-cm1.md` |
 | `EMC-CM1-R6` | `squad/conformite/FICHE-bandit-manchot-emotion-ressentir-agir-cm1.md` |
 | `EMC-CM1-R7` | `squad/conformite/FICHE-bandit-manchot-institutions-cm1.md` |
+| `EMC-CM1-R8` | `squad/conformite/FICHE-bandit-manchot-respect-differences-cm1.md` |
+| `EMC-CM1-R9` | `squad/conformite/FICHE-bandit-manchot-principes-republique-cm1.md` |
 | `EMO-R1` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R2` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
 | `EMO-R3` | `squad/conformite/FICHE-bandit-manchot-emotions-autrui-cp.md` |
