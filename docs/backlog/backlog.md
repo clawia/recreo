@@ -19425,7 +19425,7 @@ section 16.5) : 1,0, les quatre points non bloquants repris dans le meme diff qu
 encore *"ne fait rien d'autre"* et `grep -c "corps-cm1"` sur `catalogue.yaml` rend 1 : le critere de l'item 3 est rouge.
 Motif : l'indice de l'item 3 est faux et le jeu est servi. Criteres inchanges.
 
-**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B) : LIVREE, `CRP-CM1-R1` a `CRP-CM1-R3` levees.** Commit `e9dd4d21` (`marc-dev`), textes de
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B) : LIVREE, `CRP-CM1-R1` a `CRP-CM1-R3` levees.** Commit `9618b974` (`marc-dev`), textes de
 l'arbitrage prealable de s54 repris mot pour mot ; **VALIDE, sans reserve** (`FICHE-bandit-manchot-corps-cm1.md`, verdict du 2026-10-08). Tarif reel 0,25.
 `SCI-CM1-10` reste `couvert-valide`, la mention des reserves est retiree de sa cellule de matrice. Engagee a s54 et livree a s54 : aucun report de plus.
 
@@ -19856,7 +19856,7 @@ ouvert. Les tarifs sont ceux du bareme de `PAR-10` ou ceux que `nadia-prof` a de
 **Etat au 2026-10-07 (s54) : ENGAGEE a s54** (`DEC-0114` section 3), avec l'item 16 de `FRA-CE1-25`, instance A, 0,5, `marc-dev`, un seul re-audit
 des trois items (19, 23, 16). Second report arrete. Critere de la fiche inchange (mot pour mot, plus bas) ; non automatisable, `nadia-prof` rejoue.
 
-**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance A) : LIVREE, `SYC-CE1-R1` levee.** Commit `0a1f2b80` (`marc-dev`), trois lignes `enonce` (items 16, 19,
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance A) : LIVREE, `SYC-CE1-R1` levee.** Commit `915de585` (`marc-dev`), trois lignes `enonce` (items 16, 19,
 23), textes de `K5` et `K6` repris mot pour mot ; **VALIDE, sans reserve** (`FICHE-bandit-manchot-synonymes-contraires-ce1.md`, rejeu du 2026-10-08), observation 1
 (item 16) traitee. Prix reel 0,25. `FRA-CE1-25` reste `couvert-valide`. Second report arrete a s54 : aucun troisieme.
 
@@ -20163,7 +20163,7 @@ ligne de matrice ne change de statut par cette section.
 **Etat au 2026-10-07 : ENGAGEE a s54** (`DEC-0114` section 1), `lea-dev`. Criteres inchanges ; verifies contre l'existant le 2026-10-07 :
 `grep -cE '^ *- enonce: ".* :'` rend 14 sur `cm1-grands-nombres.yaml` (rouge). Prix chez `nadia-prof` (`Q5`), pas chez moi.
 
-**Etat au 2026-10-08 (s54) : LIVREE, `Q5` repondue.** Commit `d958cfc6` (`lea-dev`). Meme commande, meme critere : `grep -cE '^ *- enonce: ".* :'` sur
+**Etat au 2026-10-08 (s54) : LIVREE, `Q5` repondue.** Commit `8b15e3ba` (`lea-dev`). Meme commande, meme critere : `grep -cE '^ *- enonce: ".* :'` sur
 `cm1-grands-nombres.yaml` rend **0** (mesure du 2026-10-08, sommet de la branche ; 14 le 2026-10-07). `nadia-prof` (`FICHE-bandit-manchot-grands-nombres-cm1.md`,
 note du 2026-10-08) : la correction ne passe pas par sa porte, la ponctuation du texte de l'enfant releve du `relecteur-pedagogique` ; aucun verdict, tarif 0,0.
 Je n'ai pas verifie si cette relecture est tracee dans le depot : a router par `sofia-sm` si elle ne l'est pas.
@@ -20320,7 +20320,7 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
   renvoie a l'oreille, refus au premier passage de `FRA-CE1-17`, rejoue et leve a s52) est nommee dans la fiche de `FRA-CE1-17`, que le developpeur lit avant.
 - **Lien decision** : `DEC-0114` sections 1 et 5 ; `DEC-0112` section 8. **Instance** A, lot 1,0 chacun. **Agent** : `marc-dev`.
 
-**Etat au 2026-10-08 (s54, verdicts de `nadia-prof`, instance A, sur `5cad6650`).**
+**Etat au 2026-10-08 (s54, verdicts de `nadia-prof`, instance A, sur `95214218`).**
 - `S54-BR-FRA-CE1-18` : **VALIDE, sans reserve** (`FICHE-bandit-manchot-futur-ce1.md`), `FRA-CE1-18` **`couvert-valide`**, aucune mention de couverture partielle.
 - `S54-BR-FRA-CE1-19` : **VALIDE SOUS RESERVE** (`FICHE-bandit-manchot-passe-compose-ce1.md`), `FRA-CE1-19` **`couvert-valide`**, aucune mention de couverture
   partielle ; reserve neuve non bloquante `PCO-CE1-R1`, story ci-dessous. **Levee le meme jour au rejeu** : fiche au statut VALIDE, plus aucune reserve ouverte.
@@ -20342,7 +20342,7 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
 - **Lien decision** : `DEC-0114` ; `DEC-0113` section 9 (remise a s54). **Instance** B, 1,0. **Agent** : `lea-dev`.
 - **Ce que la story n'engage pas** : le branchement n'engage pas la fermeture. Le paquet a ete refuse a s51 ; un refus reste un refus.
 
-**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `5cad6650`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-jour-nuit-saisons-cm1.md`).
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `95214218`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-jour-nuit-saisons-cm1.md`).
 Les deux motifs du refus de s51 (item 4, item 11) sont leves a la barre de `nadia-prof`, les quatre points non bloquants sont pris. `SCI-CM1-15`
 **`couvert-valide`**, aucune mention de couverture due. Trois sprints de report (s51 a s53) clos.
 
@@ -20355,7 +20355,7 @@ Les deux motifs du refus de s51 (item 4, item 11) sont leves a la barre de `nadi
   repondent a la question ecrite"* (item 11, refuse au premier passage puis au rejeu `5a4ca6d8`). `nadia-prof` rejoue cet item en premier.
 - **Lien decision** : `DEC-0114` ; `DEC-0113` section 9. **Instance** B, 0,5 (tarif de la reprise, a confirmer, `Q4`). **Agent** : `lea-dev`.
 
-**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `5cad6650`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-environnement-cm1.md`).
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `95214218`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-environnement-cm1.md`).
 Le motif de l'item 11 (*"Deux propositions repondent a la question ecrite"*), maintenu deux fois a s51, est leve a la barre ecrite alors. `SCI-CM1-18`
 **`couvert-valide`**, aucune mention de couverture due. Trois sprints de report (s51 a s53) clos.
 
@@ -20371,7 +20371,7 @@ Le motif de l'item 11 (*"Deux propositions repondent a la question ecrite"*), ma
   ligne bouge") : due a la fermeture, par `nadia-prof`, mot pour mot ; elle n'est pas due au branchement. Aucune ligne `DEGRADE` n'est attendue (`DEC-0112` section 4).
 - **Lien decision** : `DEC-0114` ; `DEC-0112` section 4. **Instance** B, lot 1,0. **Agent** : `lea-dev`.
 
-**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `5cad6650`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-atteinte-autrui-cm1.md`), au
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `95214218`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-atteinte-autrui-cm1.md`), au
 premier passage. `EMC-CM1-02` **`couvert-valide`**, avec la mention de couverture exigee d'avance, reprise mot pour mot dans la ligne.
 **Constat route a `camille-po`** : voir `S54-EXC-CATEGORIE` plus bas.
 
@@ -20425,7 +20425,7 @@ premier passage. `EMC-CM1-02` **`couvert-valide`**, avec la mention de couvertur
 - **Lien decision** : `DEC-0114` amendement A.1 et A.9 a A.16 ; `DEC-0113` section 3.1. **Agent** : `lea-dev` (proposition de `camille-po`, A.15, affectation a `sofia-sm`).
   **Report** : `ART-CP-10` compte quatre sprints hors perimetre (s50 a s53) ; si le paquet n'est ni branche ni audite a la cloture de s54, `DEC-0114` section 4 s'applique.
 
-**Etat au 2026-10-08 (s54) : LIVREE, verdict rendu.** Paquet **branche** (`c7d56d60`, corrections de `nadia-prof` instance C avant branchement `ffbd2157`, test de paquet) : critere 1 vert.
+**Etat au 2026-10-08 (s54) : LIVREE, verdict rendu.** Paquet **branche** (`920e19e2`, corrections de `nadia-prof` instance C avant branchement `9a0011b1`, test de paquet) : critere 1 vert.
 Critere 4 tenu : `ART-CP-10` reste `non couvert`. **Verdict de l'instance C** (`FICHE-bandit-manchot-familles-d-oeuvres-cp.md`, bloc de validation) : **VALIDE SOUS RESERVE** pour
 `cp-arts-oeuvres-familles`, **aucun mouvement de ligne** ; le verdict dit que le paquet peut rester au catalogue et ne vaut pour aucune ligne de la matrice (le paquet *"ne travaille pas cette competence"*,
 fiche section 3). Trois reserves non bloquantes, ouvertes ci-dessous et non engagees. **Ecart de matrice traite** : le bilan d'arts plastiques CP rangeait encore la ligne en
@@ -20475,12 +20475,12 @@ fiche section 3). Trois reserves non bloquantes, ouvertes ci-dessous et non enga
 **Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Reserve neuve, non bloquante, de `nadia-prof` sur `FRA-CE1-19` (`FICHE-bandit-manchot-passe-compose-ce1.md`,
 section 5). La ligne est `couvert-valide`, non rouverte. Report : aucun (ouverte le jour du verdict). Engagement : `DEC` d'ouverture de s55.
 
-**Etat au 2026-10-08 (s54, annotation du `relecteur-pedagogique`) : LIVREE par `c876fadc` (`marc-dev`), rejeu de `nadia-prof` non ecrit.** Le geste a eu lieu le jour de l'ouverture
+**Etat au 2026-10-08 (s54, annotation du `relecteur-pedagogique`) : LIVREE par `7d32c1e3` (`marc-dev`), rejeu de `nadia-prof` non ecrit.** Le geste a eu lieu le jour de l'ouverture
 de la reserve, sans engagement ni `DEC`. Verifie sur le sommet courant : `grep -c 'indice: "Ne recopie pas le verbe'` rend 19, `grep -c 'indice: "Avec ce sujet, comment'` rend 2 ;
 le commit change 8 lignes dans `ce1-passe-compose.yaml`. La levee de la reserve appartient a `nadia-prof` (critere ci-dessous : "rejeu par `nadia-prof`") ; la fiche n'est pas modifiee.
 Le texte "OUVERTE, non engagee" ci-dessus decrit l'etat a l'ouverture.
 
-**Etat au 2026-10-08 (s54, rejeu de `nadia-prof`, instance A) : LEVEE.** Verdict ecrit dans `FICHE-bandit-manchot-passe-compose-ce1.md`, "Bloc de rejeu du 2026-10-08" : *"`PCO-CE1-R1` LEVEE"*, rejeu sur `c876fadc` (`marc-dev`), joue au sommet `e9c3ec52`. Le diff ne touche que les lignes `indice` des items 2, 5, 8, 9, 11, 12, 20 et 23 ; `grep -c 'indice: "Ne recopie pas le verbe'` rend 19 et `grep -c 'indice: "Avec ce sujet, comment'` rend 2 (comptes de `nadia-prof`, non remesures ici). La fiche passe a VALIDE ; `FRA-CE1-19` reste `couvert-valide`, la mention de reserve est retiree de la ligne de matrice. Prix reel : 0,25, comme annonce. Story close ; rien a engager a s55.
+**Etat au 2026-10-08 (s54, rejeu de `nadia-prof`, instance A) : LEVEE.** Verdict ecrit dans `FICHE-bandit-manchot-passe-compose-ce1.md`, "Bloc de rejeu du 2026-10-08" : *"`PCO-CE1-R1` LEVEE"*, rejeu sur `7d32c1e3` (`marc-dev`), joue au sommet `0fc1e45d`. Le diff ne touche que les lignes `indice` des items 2, 5, 8, 9, 11, 12, 20 et 23 ; `grep -c 'indice: "Ne recopie pas le verbe'` rend 19 et `grep -c 'indice: "Avec ce sujet, comment'` rend 2 (comptes de `nadia-prof`, non remesures ici). La fiche passe a VALIDE ; `FRA-CE1-19` reste `couvert-valide`, la mention de reserve est retiree de la ligne de matrice. Prix reel : 0,25, comme annonce. Story close ; rien a engager a s55.
 
 - **Besoin** : en tant qu'eleve de CE1 qui ecrit *"tu as regarder"* au lieu de *"tu as regarde"*, je veux que l'indice me dise que j'ai recopie le verbe au lieu
   de le changer, afin de comprendre ce que j'ai rate et pas seulement d'ecarter une proposition.
@@ -20522,7 +20522,7 @@ juge pas ce constat : c'est le sien. Cette entree le rend visible dans le backlo
   3. Item 4 : `distracteurs: ["une mise à l'écart qui se répète", "une bagarre"]`.
   4. `catalogue.yaml`, entree `bandit-manchot-exclusion-cp` : `consigne: "Lis bien, puis dis ce qui se passe, ou à quel adulte en parler."`.
   Enonces, indices, items 2, 5, 6, tache B et titre ne changent pas. Sorties observables sur le fichier du paquet : `grep -c 'bonneReponse: "une moquerie qui se répète"'`
-  rend **3 aujourd'hui** (`e9c3ec52`, rouge) et doit rendre **1** ; `grep -c "une mise à l'écart qui se répète"` rend **0** et doit rendre **3** ; sur `catalogue.yaml`,
+  rend **3 aujourd'hui** (`0fc1e45d`, rouge) et doit rendre **1** ; `grep -c "une mise à l'écart qui se répète"` rend **0** et doit rendre **3** ; sur `catalogue.yaml`,
   `grep -c "dis si c'est une moquerie qui se répète"` rend **1** et doit rendre **0**. `git diff` : trois lignes du paquet, une du catalogue. `PaquetCpEmcExclusionTest` reste vert.
   Symptome technique nomme par `nadia-prof`, forme a `theo-archi` : le test identifie la tache A par ses deux bonnes reponses (ligne 82), la tache B est son complement ;
   l'inventaire de `TexteAccentueExposeParLePortEntrantTest` porte la consigne actuelle.
@@ -20554,7 +20554,7 @@ Elle corrige sa passe (`PASSE-TRANSVERSE-s54-*.md`, section 4, note du 2026-10-0
 ### S54-PONCT-GN-INDICES - Les 12 indices de `cm1-grands-nombres` portent une espace ordinaire avant un signe double (transverse redactionnelle)
 
 **Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Signalee par le `relecteur-pedagogique` (`FICHE-bandit-manchot-grands-nombres-cm1.md`, "Passage du 2026-10-08 (s54)") : la correction
-`d958cfc6` a traite les 14 `enonce`, les 12 espaces restantes sont dans des champs `indice`, dette cliquetee de `TYP-1` (26 passe a 12) et non traitee. Premier report : aucun.
+`8b15e3ba` a traite les 14 `enonce`, les 12 espaces restantes sont dans des champs `indice`, dette cliquetee de `TYP-1` (26 passe a 12) et non traitee. Premier report : aucun.
 
 - **Besoin** : en tant qu'eleve de CM1, je veux que le signe double d'un indice ne passe pas seul a la ligne suivante, afin de lire la phrase d'un seul tenant.
 - **Competence programme visee** : transverse - pas de contenu pedagogique (ponctuation d'un contenu deja `couvert-valide`). Paquet `cm1-grands-nombres`, ligne de matrice non rouverte.

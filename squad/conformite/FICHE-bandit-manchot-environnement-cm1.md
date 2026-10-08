@@ -3,7 +3,7 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-sciences-environnement-activite-humaine.yaml`
   (12 items, type `question`), ecrit par `lea-dev` (commit `7854d8d3`, session de contenu de s53), non
-  modifie au branchement (commit `8edb4bb9`).
+  modifie au branchement (commit `fb42d5f1`).
 - **Entree de catalogue** : `bandit-manchot-environnement-cm1`, titre servi *"L'être humain et
   l'environnement"*, consigne servie *"Lis bien, puis dis quel est l'effet, ou quel geste préserve."*,
   `nombreDeManches: 10`.
@@ -29,7 +29,7 @@ leve, a la barre ecrite alors et reprise sans changement. Aucune reserve.
 
 #### 1. Ce que j'ai fait
 
-**Audit complet, pas degrade.** Worktree `s54-nadia-b`, a `5cad6650`. `bash outils/mvn-jdk21.sh -B clean
+**Audit complet, pas degrade.** Worktree `s54-nadia-b`, a `95214218`. `bash outils/mvn-jdk21.sh -B clean
 verify` : `BUILD SUCCESS` (job `build` seul ; `prefixes`, `chemins`, `outils` non lances). Jar de ce
 build, paquet et catalogue embarques identiques octet pour octet aux fichiers commites (`cmp`), lance
 sur un port dedie a l'instance B, arrete par son PID. Joue par les routes servies.
@@ -74,7 +74,7 @@ competence**, sur les deux taches ecrites d'avance. Le titre neuf ne reprend pas
 
 #### 5. Ce dont je reste la seule garde
 
-`PaquetCm1SciencesActiviteHumaineTest` (recible sur ce paquet par `8edb4bb9`) tient la forme. **Aucun
+`PaquetCm1SciencesActiviteHumaineTest` (recible sur ce paquet par `fb42d5f1`) tient la forme. **Aucun
 automate ne verifie** qu'une seule proposition reponde a la question ecrite (le defaut de s51 a traverse
 deux `clean verify` verts), l'exactitude d'un fait d'environnement, qu'un indice ne donne pas la reponse
 par elimination, la part de `SCI-2` que les jetons d'adresse ne voient pas, `CYC-1`. Verifie ici en jouant.

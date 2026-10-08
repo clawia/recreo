@@ -12,12 +12,12 @@
 |---|---|---|---|
 | W1 | **La decision a precede chaque branchement.** `5b759d1d` (`DEC-0114`) est ancetre des six commits de branchement | 6 sur 6 | `rapport-qualite.md` s.3, C1 |
 | W2 | **Les conditions de `nadia-prof` ecrites avant branchement ont change le taux de refus.** Aucun REFUSE a s54 sur six audits premier passage ou reprise ; s52 : 1 sur 6, s51 B : 2 sur 3 | 0 refus, 2 verdicts sous reserve, l'une levee le jour meme | fiches de s54 ; `planning.md` ("Taux de refus") |
-| W3 | **Plafond ecrit avant audit, branchement avant audit** pour `ART-CP-10` : ordre lisible dans l'historique | `b59e5150` (21:31) avant `89910897` (2026-10-08 12:14) ; `c7d56d60` ancetre de `89910897` | `rapport-qualite.md` s.4, criteres 6 et 8 |
+| W3 | **Plafond ecrit avant audit, branchement avant audit** pour `ART-CP-10` : ordre lisible dans l'historique | `a3819bcd` (21:31) avant `c5c2d50f` (2026-10-08 12:14) ; `920e19e2` ancetre de `c5c2d50f` | `rapport-qualite.md` s.4, criteres 6 et 8 |
 | W4 | **La capacite a tenu sous trois instances.** Consommation reelle 8,0 pour une borne de 9,5 ; l'ecart n'a pas ete consomme ; aucune instance n'a franchi 4,0 | A 3,75, B 3,25, C 1,0 | `DEC-0114` A.26 |
-| W5 | **Un garde-fou s'est resserre.** Cliquet de `TYP-1` pour `cm1-grands-nombres` : 26 a 12 ; total 516 a 502 ; aucune assertion affaiblie | `rapport-qualite.md` s.3, C5 | `d958cfc6` |
-| W6 | **Un chiffre faux d'une retro precedente a ete refute par un temoin positif.** Le "0 sur 182" de s53 devient 161 (meme motif, temoin : les 4 fichiers de `competence`) | `lecture-testabilite.md` section 4 | `cd4891bd` |
+| W5 | **Un garde-fou s'est resserre.** Cliquet de `TYP-1` pour `cm1-grands-nombres` : 26 a 12 ; total 516 a 502 ; aucune assertion affaiblie | `rapport-qualite.md` s.3, C5 | `8b15e3ba` |
+| W6 | **Un chiffre faux d'une retro precedente a ete refute par un temoin positif.** Le "0 sur 182" de s53 devient 161 (meme motif, temoin : les 4 fichiers de `competence`) | `lecture-testabilite.md` section 4 | `31458c0f` |
 | W7 | **Le test du paquet a ete ecrit avec le branchement** pour quatre des six, ce qui est la regle du depot. `theo-archi` l'a tenu pour *du* (T1) parce que les conditions comptables ne vivent que dans ces tests | +42 tests, 4 classes | `avis-faisabilite.md` T1 ; `rapport-qualite.md` s.2 |
-| W8 | **Les annotations ont corrige sans effacer** : `f220546c` marque `Accepte` aux endroits qui disaient `Propose`, le texte d'origine reste | `git show f220546c` | `review.md` section 6 |
+| W8 | **Les annotations ont corrige sans effacer** : `b5779885` marque `Accepte` aux endroits qui disaient `Propose`, le texte d'origine reste | `git show b5779885` | `review.md` section 6 |
 | W9 | **Chaque agent a nomme les jobs qu'il a lances** (`prefixes`, `chemins`, `outils`, `build`), conformement a l'amendement du 2026-09-08 de `CLAUDE.md` | `rapport-qualite.md` s.1, `confirmation-archunit.md` s.6, `avis-faisabilite.md` s.7 | - |
 
 ## 2. Ce qui a coute, mesure
@@ -25,8 +25,8 @@
 | # | Constat | Mesure | Source |
 |---|---|---|---|
 | C1 | **`DEC-0114` a double en un jour.** 369 lignes a la creation (2026-10-07 21:02), 734 a la cloture, 26 sections d'amendement `A.1` a `A.26` ; **trois arbitrages relayes par message d'agent** (`Q6`, `Q11`, `Q12`) ont chacun appele un amendement, plus deux annotations de correction (A.25 point 5, A.26) | +365 lignes | `wc -l` ; `git show 5b759d1d:<DEC-0114>` |
-| C2 | **Les cinq divergences de texte que le sprint a produites et que `yanis-qa` ou le relecteur ont trouvees apres coup** : statut d'`ADR-0104` (`Propose` partout, `Accepte` dans le fichier) ; cellule de matrice d'`ART-CP-10` (*"aucun verdict n'est prononce"* une minute apres le verdict) ; `PCO-CE1-R1` (`OUVERTE` au backlog alors que `c876fadc` l'avait livree) ; A.25 (3,25 pour A, reel 3,75) ; section 11 de l'arbitrage de s53 (R3) | 5 | `rapport-qualite.md` s.7 ; `confirmation-archunit.md` s.4 ; `DEC-0114` A.26 ; `review.md` obstacles 4, 10, 11 |
-| C3 | **Le rapport qualite porte sur un arbre en retard sur le depot.** `yanis-qa` a mesure `542c1c6e` ; 16 fichiers ont change ensuite (tous `docs/` ou `squad/`), dont la correction de R3, qui rend perimee sa ligne *"R3 non tenu"* | 16 fichiers, 0 de code | `review.md` section 4.2 |
+| C2 | **Les cinq divergences de texte que le sprint a produites et que `yanis-qa` ou le relecteur ont trouvees apres coup** : statut d'`ADR-0104` (`Propose` partout, `Accepte` dans le fichier) ; cellule de matrice d'`ART-CP-10` (*"aucun verdict n'est prononce"* une minute apres le verdict) ; `PCO-CE1-R1` (`OUVERTE` au backlog alors que `7d32c1e3` l'avait livree) ; A.25 (3,25 pour A, reel 3,75) ; section 11 de l'arbitrage de s53 (R3) | 5 | `rapport-qualite.md` s.7 ; `confirmation-archunit.md` s.4 ; `DEC-0114` A.26 ; `review.md` obstacles 4, 10, 11 |
+| C3 | **Le rapport qualite porte sur un arbre en retard sur le depot.** `yanis-qa` a mesure `db69bbc6` ; 16 fichiers ont change ensuite (tous `docs/` ou `squad/`), dont la correction de R3, qui rend perimee sa ligne *"R3 non tenu"* | 16 fichiers, 0 de code | `review.md` section 4.2 |
 | C4 | **La charge de `nadia-prof`.** 752 tours sur 2364 (31,8 %), 32,8 % de l'output, sur trois instances ; `camille-po` 17,4 % des tours. Comparaison : s53, 1167 tours en tout ; s52, 2529 | 2364 tours | `RAPPORT-tokens.md` ; `JOURNAL-tokens.md`. La fenetre de s54 est ouverte jusqu'a l'outil : elle contient cette cloture |
 | C5 | **Le sprint a produit 9 entrees de backlog apres les verdicts, dont 7 ouvertes et non engagees** (`PCO-CE1-R1` close, `EXC-R15`, `S54-ART-RES-R1` a `R3`, `S54-OBS-SCI-CONSIGNE`, `S54-PONCT-GN-INDICES`, `S54-ASCII-APOSTROPHES-TESTS`, `S54-OBS-ART-ALT` retiree) : le travail de lecture de `nadia-prof` et du relecteur alimente la file plus vite que le sprint ne la vide | 7 ouvertes, 1 retiree (`S54-OBS-ART-ALT`), 1 close (`PCO-CE1-R1`) | backlog "Sprint 54" |
 | C6 | **Un critere non automatisable, sans rapport ecrit.** `TRV-CE1-5` et `EMC-9` demandaient un resultat *"dans son rapport"* ; aucun fichier ne le porte | 2 criteres sur 2 | `rapport-qualite.md` s.4 |
@@ -68,7 +68,7 @@
 |---|---|---|---|
 | 4 (`PAR-16`) et 9 | Ajouter a la regle de l'amendement de planning : *"y figurent les noms de worktree, de branche et de scratchpad de toute instance ouverte apres le planning"* | s54 : instance C sans nom ecrit au planning, isolation non verifiable (obstacle 22) | `camille-po`, `sofia-sm` |
 | 4 | Un critere "relu par le developpeur" nomme le fichier du resultat | `TRV-CE1-5`, `EMC-9` : aucun fichier (C6) | `camille-po`, `sofia-sm` |
-| 9 (porte technique) | Quand un rapport qualite mesure un arbre anterieur au sommet de la cloture, la review dit **les fichiers qui ont change depuis** et refait la commande qui touche ce qui a change | 16 fichiers depuis `542c1c6e`, dont R3 | `yanis-qa`, `sofia-sm` |
+| 9 (porte technique) | Quand un rapport qualite mesure un arbre anterieur au sommet de la cloture, la review dit **les fichiers qui ont change depuis** et refait la commande qui touche ce qui a change | 16 fichiers depuis `db69bbc6`, dont R3 | `yanis-qa`, `sofia-sm` |
 
 ## 6. Une ligne sur les ceremonies
 

@@ -3,16 +3,16 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cp-arts-oeuvres-familles.yaml`
   (12 items, type `question`), paquet `DEGRADE` ecrit en s53, corrige par `lea-dev` le 2026-10-08
-  (commit `ffbd2157`) sur les six points de mon arbitrage prealable.
+  (commit `9a0011b1`) sur les six points de mon arbitrage prealable.
 - **Entree de catalogue** : `bandit-manchot-familles-d-oeuvres-cp`, titre servi *"Les familles
   d'œuvres"*, consigne servie *"Choisis le mot qui va avec la statue, le tableau ou la
-  photographie."*, `nombreDeManches: 10` (commit `c7d56d60`).
+  photographie."*, `nombreDeManches: 10` (commit `920e19e2`).
 - **Ligne declaree** : `ART-CP-10`. **La ligne ne ferme pas et reste `non couvert`**, quel que soit
   ce verdict (plafond ecrit par l'instance A, confirme dans mon arbitrage prealable, section 1).
 - **Story** : `S54-BR-ART-CP-10` (`docs/backlog/backlog.md`).
 - **Arbitrage prealable** :
   `squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/arbitrage-nadia-c.md`
-  (instance C, 2026-10-08, commit `89910897`).
+  (instance C, 2026-10-08, commit `c5c2d50f`).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-08 par `nadia-prof`
   (instance C, s54), apres avoir joue le jar servi.
 - **Derniere mise a jour** : 2026-10-08 (premier audit).
@@ -25,7 +25,7 @@ jeu. Ecart signale a `camille-po`, la fiche n'est pas dupliquee.
 
 ## 1. Ce que j'ai joue
 
-Arbre : branche `s54-nadia-c` a `621d23dd` (round-two fusionne, branchement et corrections de
+Arbre : branche `s54-nadia-c` a `5cdadef3` (round-two fusionne, branchement et corrections de
 `lea-dev` compris). `bash outils/mvn-jdk21.sh -B clean verify` : sortie 0, tests lances sur
 Java 21.0.10. Je n'ai lance que le job `build` de la CI ; les autres jobs de `ci.yml` ne sont pas
 lances par moi.
@@ -153,7 +153,7 @@ que `build`.
 > **Done pedagogique : VALIDE SOUS RESERVE.**
 >
 > **Prononce le 2026-10-08 par `nadia-prof` (instance C, s54), apres avoir joue le jar construit
-> sur `621d23dd`**, quatre parties, douze items sur douze, erreurs volontaires jusqu'a la
+> sur `5cdadef3`**, quatre parties, douze items sur douze, erreurs volontaires jusqu'a la
 > revelation.
 >
 > **Ce que j'ai verifie** : les six corrections de mon arbitrage prealable (toutes tenues), les

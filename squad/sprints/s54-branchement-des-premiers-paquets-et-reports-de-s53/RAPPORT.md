@@ -17,26 +17,26 @@ ce qui porte la couverture de 132/182 (72,53 %) a **137/182 (75,27 %)** ; un six
 |---|---|---|---|
 | `DEC-0114` | Ouverture de s54 : cinq branchements au catalogue, trois postes de s53 re-engages, seconds reports tranches, deux instances de `nadia-prof` a 4,0 par instance, `ART-CP-10` au prix seul | Produit, **creee** le 2026-10-07 (`5b759d1d`, `[CAM]`) | **`Proposee`** (section 0.4 : l'ordre des matieres au-dela de s54 n'a que la forme 3 pour source). **Amendements A.1 a A.26** du 2026-10-08, dont trois par arbitrage relaye (`Q6`, `Q11`, `Q12`) et une annotation (A.26 : tarif reel de A 3,75, somme 8,0) |
 | `DEC-0112` | Ouverture de s53 : onze points de relecture des paquets de la session de contenu... | Produit, **amendee** le 2026-10-07 (`5b759d1d`) : A.1 (R1, mesure "0 fichier"), A.2 (R2, provenance), A.3 (`S53-REL-10` absorbee) | `Acceptee`, inchange |
-| `ADR-0104` | Rapprocher deux oeuvres se sert par des propositions qui sont des reproductions, sans mecanique ni forme d'item neuve, et la mecanique ne lit jamais une proposition | Architecture, **statut modifie** le 2026-10-07 (`3f46e90d`, `[THEO]`) | `Propose` -> **`Accepte`** ; l'acceptation n'engage ni la construction ni `ART-CP-10`. `ADR-index.md` mis a jour |
+| `ADR-0104` | Rapprocher deux oeuvres se sert par des propositions qui sont des reproductions, sans mecanique ni forme d'item neuve, et la mecanique ne lit jamais une proposition | Architecture, **statut modifie** le 2026-10-07 (`4e8ae7b4`, `[THEO]`) | `Propose` -> **`Accepte`** ; l'acceptation n'engage ni la construction ni `ART-CP-10`. `ADR-index.md` mis a jour |
 
 **`ADR` creees : aucune. `DEC` creees : une (`DEC-0114`).** Index tenus : `DEC-index.md`, `ADR-index.md`. `REGISTRE-identifiants.md` est modifie
-(16 lignes de diff, `git diff --stat 542c1c6e HEAD`) : le message de `daaaa253` dit *"EXC-R15 alloue, compte 924 / 158 lu sur le garde-fou PAR-5"* ; je n'ai pas relu le diff.
-`squad/README.md` section 9 amende par `theo-archi` (`3f46e90d`, +12 lignes : regle du push, **non executable**, `avis-faisabilite.md` T7).
+(16 lignes de diff, `git diff --stat db69bbc6 HEAD`) : le message de `78da0199` dit *"EXC-R15 alloue, compte 924 / 158 lu sur le garde-fou PAR-5"* ; je n'ai pas relu le diff.
+`squad/README.md` section 9 amende par `theo-archi` (`4e8ae7b4`, +12 lignes : regle du push, **non executable**, `avis-faisabilite.md` T7).
 Pas une decision : arbitrages prealables de `nadia-prof` (instances A, B, C : `ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, `-instance-b-sciences-emc-cm1.md`, `arbitrage-nadia-c.md`), et correction de la section 11 de l'arbitrage de s53 (R3).
 
 ## Etat des deux Done
 
-### Technique - `yanis-qa` sur `542c1c6e` ; ce que j'ai lance sur le sommet
+### Technique - `yanis-qa` sur `db69bbc6` ; ce que j'ai lance sur le sommet
 
-Ce que `yanis-qa` a mesure (`rapport-qualite.md`, arbre `542c1c6e`) : `prefixes` vert, `chemins` vert, `outils` vert (10 juges), `build` vert
+Ce que `yanis-qa` a mesure (`rapport-qualite.md`, arbre `db69bbc6`) : `prefixes` vert, `chemins` vert, `outils` vert (10 juges), `build` vert
 (`bash outils/mvn-jdk21.sh -B clean verify`, reacteur complet, `BUILD SUCCESS`, **2216 tests**, 0 echec, 0 erreur, 0 ignore ; `package` aussi vert). Delta +42 sur 2174,
 quatre classes de test de paquet. Il ne lit pas la CI distante.
 
-**Ce qui a change depuis `542c1c6e`** : 16 fichiers, tous sous `docs/` ou `squad/` (backlog, fiches, arbitrages, matrice, `DEC-0114`, passe transverse,
-rapports de cloture) ; **aucun fichier de contenu, de catalogue, de Java ou d'outil**. La correction de 8 lignes de contenu (`c876fadc`, `PCO-CE1-R1`) est **anterieure** a
-`542c1c6e`.
+**Ce qui a change depuis `db69bbc6`** : 16 fichiers, tous sous `docs/` ou `squad/` (backlog, fiches, arbitrages, matrice, `DEC-0114`, passe transverse,
+rapports de cloture) ; **aucun fichier de contenu, de catalogue, de Java ou d'outil**. La correction de 8 lignes de contenu (`7d32c1e3`, `PCO-CE1-R1`) est **anterieure** a
+`db69bbc6`.
 
-**Ce que j'ai lance moi-meme sur le sommet** (`919d908e` plus les fichiers de cloture ; commandes et detail : `review.md` section 4.3) :
+**Ce que j'ai lance moi-meme sur le sommet** (`731aac5a` plus les fichiers de cloture ; commandes et detail : `review.md` section 4.3) :
 
 | Job | Resultat |
 |---|---|
@@ -45,7 +45,7 @@ rapports de cloture) ; **aucun fichier de contenu, de catalogue, de Java ou d'ou
 | `outils` | vert, 10 juges, 10 codes 0 |
 | `build` | `bash outils/mvn-jdk21.sh -B clean verify`, racine : `BUILD SUCCESS`, 4 min 53 s, **2216 tests** (domain 120, application 17, adapter-web 401, adapter-content 1360, bootstrap 312 et 6 d'integration), 0 echec, 0 erreur, 0 ignore ; JDK 21.0.10 rapporte par la machine virtuelle des tests |
 
-Le pas `package` du job `build` n'est **pas relance par moi** : `yanis-qa` l'a lance sur `542c1c6e` (vert) et aucun code ne differe depuis. Total identique a celui de `yanis-qa` et de `theo-archi` : l'ecart avec les 2174 de s53 est de +42, quatre classes de test de paquet.
+Le pas `package` du job `build` n'est **pas relance par moi** : `yanis-qa` l'a lance sur `db69bbc6` (vert) et aucun code ne differe depuis. Total identique a celui de `yanis-qa` et de `theo-archi` : l'ecart avec les 2174 de s53 est de +42, quatre classes de test de paquet.
 
 **La CI distante n'a rien rendu sur ces commits** : `origin/round-two` est `52e2b0cd`, 60 commits en arriere. Le verdict *"la CI est verte sur GitHub pour round-two"*
 (`Q9`, relaye, `DEC-0114` A.2) ne nomme aucun commit ni aucun job.
@@ -87,10 +87,10 @@ Vingt-deux lignes au tableau de `review.md` section 8.
 |---|---|---|---|
 | Perimetre sans acte d'ouverture | `camille-po` | `DEC-0114` (statut `Proposee`, voir ci-dessus) | 2026-10-07 |
 | Trois engagements ajoutes en cours de sprint, capacite | `camille-po`, utilisatrice | `DEC-0114` A.1 a A.22 | 2026-10-08 |
-| Statut d'`ADR-0104` contradictoire entre fichiers | `theo-archi`, `relecteur-pedagogique` | `ADR-0104` (`Accepte`), annotations `f220546c` | 2026-10-08 |
+| Statut d'`ADR-0104` contradictoire entre fichiers | `theo-archi`, `relecteur-pedagogique` | `ADR-0104` (`Accepte`), annotations `b5779885` | 2026-10-08 |
 | Critere `TRV-CE1-5` mal cite | `nadia-prof` | arbitrage prealable de A section 12 ; fiche passe-compose section 4 | 2026-10-08 |
-| R3 : "six fichiers" de l'arbitrage de s53 | `nadia-prof` | arbitrage de s53 corrige (`daaaa253`) ; `grep -c` rend 0 | 2026-10-08 |
-| Textes qui contredisaient les fiches (matrice, backlog) | `camille-po`, `relecteur-pedagogique` | `87019d9d`, `f220546c`, `d98a67f6` | 2026-10-08 |
+| R3 : "six fichiers" de l'arbitrage de s53 | `nadia-prof` | arbitrage de s53 corrige (`78da0199`) ; `grep -c` rend 0 | 2026-10-08 |
+| Textes qui contredisaient les fiches (matrice, backlog) | `camille-po`, `relecteur-pedagogique` | `c1763f41`, `b5779885`, `a46220ab` | 2026-10-08 |
 | `ART-CP-10` : branchement et audit | `camille-po`, `nadia-prof` | `DEC-0114` A.1, A.25 ; fiche | 2026-10-08 |
 
 **Encore ouverts** :

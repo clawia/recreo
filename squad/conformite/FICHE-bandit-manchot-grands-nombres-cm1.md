@@ -885,7 +885,7 @@ pas recopie ici pour qu'il ne puisse pas y pourrir a moitie.
 
 ## Note du 2026-10-08 (s54, instance B) - `nadia-prof`, question `Q5` : la correction `S53-REPORT-GRANDS-NOMBRES` ne passe pas par ma porte
 
-**Aucun verdict pedagogique n'est rendu ici, et aucun n'est du.** Le commit `d958cfc6` (`lea-dev`) remplace,
+**Aucun verdict pedagogique n'est rendu ici, et aucun n'est du.** Le commit `8b15e3ba` (`lea-dev`) remplace,
 dans les 14 `enonce` de `cm1-grands-nombres`, l'espace ordinaire devant `:` par une espace insecable, et
 rien d'autre : diff relu caractere par caractere, aucun mot, aucun nombre, aucune proposition ni aucun
 indice ne change. C'est de la ponctuation du texte de l'enfant, dont le controle appartient au
@@ -898,6 +898,6 @@ mesure a l'ecran. Tarif : **0,0**. Les verdicts anterieurs de cette fiche resten
 
 ## Passage du 2026-10-08 (s54) - `relecteur-pedagogique`, ponctuation de `S53-REPORT-GRANDS-NOMBRES`
 
-Controle de la correction `d958cfc6` (`lea-dev`), porte de la ponctuation (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`), au titre de la condition posee par `nadia-prof` ci-dessus (le commit ne change que l'espace devant `:`).
+Controle de la correction `8b15e3ba` (`lea-dev`), porte de la ponctuation (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`), au titre de la condition posee par `nadia-prof` ci-dessus (le commit ne change que l'espace devant `:`).
 **Tenu.** Les 14 lignes `enonce` qui portent un deux-points l'ecrivent desormais avec une espace insecable avant `:` (14 sur 14) ; comparaison ligne a ligne du diff du YAML, avant et apres : seule cette espace change, aucun mot ni nombre.
 Les deux constantes `PREFIXE_ECRIRE` et `PREFIXE_LIRE` de `PaquetCm1GrandsNombresTest` portent la meme espace. Le cliquet de `TYP-1` passe de 26 a 12 pour ce paquet : les 12 restantes sont d'autres champs que `enonce` (indices), dette cliquetee et non traitee par ce commit. Aucune faute d'orthographe ni d'accent relevee sur les 14 enonces. Aucun verdict pedagogique n'est rendu ici.

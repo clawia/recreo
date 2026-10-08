@@ -1156,7 +1156,7 @@ condition a produit cette longueur.** Je ne la reproche a personne.
 ## Bloc du 2026-10-08 - `S54-EXC-CATEGORIE`, reserve neuve `EXC-R15` - nadia-prof UNIQUEMENT
 
 **Audit degrade** : je n'ai pas rejoue ce paquet ; j'ai lu les onze items de `cp-emc-exclusion.yaml`, l'entree du
-catalogue et `PaquetCpEmcExclusionTest` au sommet `e9c3ec52`. Ce bloc ne prononce aucun Done et ne rouvre pas la ligne.
+catalogue et `PaquetCpEmcExclusionTest` au sommet `0fc1e45d`. Ce bloc ne prononce aucun Done et ne rouvre pas la ligne.
 
 ### 1. Ma reponse a la question de `camille-po`
 
@@ -1210,7 +1210,7 @@ Le reste ne bouge pas : enonces, indices, items 2, 5, 6, la tache B, le titre. *
 paquet de CM1 (`cm1-emc-atteinte-autrui`) ; au CP, *ecarte* est deja dans l'enonce de l'item 3.
 
 **Sorties observables**, sur `adapters/adapter-content/src/main/resources/contenu/cp-emc-exclusion.yaml` au
-2026-10-08 (`e9c3ec52`), puis apres correction :
+2026-10-08 (`0fc1e45d`), puis apres correction :
 
 | Commande | Aujourd'hui | Apres |
 |---|---|---|

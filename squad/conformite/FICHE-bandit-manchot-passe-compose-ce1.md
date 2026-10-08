@@ -2,7 +2,7 @@
 
 - **Mécanique** : bandit manchot (mécanique générique, partagée avec les autres jeux du catalogue).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/ce1-passe-compose.yaml` (24 items, type
-  `question`), branché par `marc-dev` (`b9e9b9b3`, story `S54-BR-FRA-CE1-19`). Entrée de catalogue
+  `question`), branché par `marc-dev` (`557ebd8a`, story `S54-BR-FRA-CE1-19`). Entrée de catalogue
   `bandit-manchot-passe-compose-ce1`, titre servi *"Les verbes au passé composé"*, consigne servie *"Lis bien,
   puis choisis la bonne forme du verbe."*, `nombreDeManches: 10`.
 - **Ligne déclarée** : `FRA-CE1-19`. **Décision** : `DEC-0114`.
@@ -10,9 +10,9 @@
   5.10), `TRV-CE1-1` à `TRV-CE1-7`, `LON-CE1-1`, `-2`, `-5` ; conditions avant branchement `K3`, `K4`
   (`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 6).
 - **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-08 par `nadia-prof` (s54, instance A), sur
-  `5cad6650` : une réserve, `PCO-CE1-R1`. Voir le bloc de validation.
-- **État au 2026-10-08, après rejeu** : **`PCO-CE1-R1` LEVÉE** sur `c876fadc` (`marc-dev`), joué au sommet
-  `e9c3ec52`. Plus aucune réserve ouverte. Bloc de rejeu en fin de fiche.
+  `95214218` : une réserve, `PCO-CE1-R1`. Voir le bloc de validation.
+- **État au 2026-10-08, après rejeu** : **`PCO-CE1-R1` LEVÉE** sur `7d32c1e3` (`marc-dev`), joué au sommet
+  `0fc1e45d`. Plus aucune réserve ouverte. Bloc de rejeu en fin de fiche.
 - **Dernière mise à jour** : 2026-10-08 (rejeu de `PCO-CE1-R1`, `nadia-prof`, s54, instance A). Aucune fiche
   n'avait été ouverte avant le branchement ; la section des critères de `camille-po` est écrite le
   2026-10-08 par `camille-po` (routage de l'arbitrage de s54, section 12 : `K3`, `K4` comme critères).
@@ -72,14 +72,14 @@ couverture partielle, et faire une story de la réserve `PCO-CE1-R1` (section 5)
 
 #### 1. Ce que j'ai fait
 
-**Audit joué.** Jar construit au sommet de ma branche `5cad6650` (qui contient `b9e9b9b3`), arbre propre
+**Audit joué.** Jar construit au sommet de ma branche `95214218` (qui contient `557ebd8a`), arbre propre
 avant et après la construction, `-DskipTests package`, copié hors du worktree et lancé sur le JDK 21.0.10,
 port 18854. **Rendu non vu au navigateur** : appels HTTP réels, HTML servi lu.
 
 **Porte technique : non mesurée par moi.** Le jeu se lance, sert et termine ses parties sans erreur. Le Done
 technique reste à juger par la CI au sha de fusion.
 
-**Le diff de `b9e9b9b3`, lu contre mon arbitrage** : quinze indices remplacés, `N1` sur les items 1, 3, 4, 6, 7,
+**Le diff de `557ebd8a`, lu contre mon arbitrage** : quinze indices remplacés, `N1` sur les items 1, 3, 4, 6, 7,
 13, 15, 16, 18, 19, 22, `N2` sur 9, 10, 12, 24 ; l'indice *"deux mots"* a disparu ; énoncés des items 13, 17, 21
 au texte de `K4` ; en-tête remplacé. Mot pour mot. `L2` et `L3` non appliquées (recommandations).
 
@@ -224,7 +224,7 @@ passe à **VALIDÉ**, sans réserve ouverte. Le verdict du 2026-10-08 au-dessus 
 
 ### 1. Le diff, lu contre ma barre
 
-Commit `c876fadc` (`marc-dev`), contenu dans `e9c3ec52` (`git merge-base --is-ancestor`). `git show -U0` : huit
+Commit `7d32c1e3` (`marc-dev`), contenu dans `0fc1e45d` (`git merge-base --is-ancestor`). `git show -U0` : huit
 blocs, lignes 36, 51, 66, 71, 81, 86, 126, 141 du fichier, et rien d'autre. Ce sont les lignes `indice` des items
 **2, 5, 8, 9, 11, 12, 20, 23**, vérifié en lisant l'énoncé, la bonne réponse et les distracteurs au-dessus de
 chacune : ce sont les huit phrases de mon tableau de la section 4. Énoncés, bonnes réponses, distracteurs,
@@ -242,7 +242,7 @@ ligne devient *"celle que portent déjà les items 1, 3, 4"*. C'est donc le mot 
 
 ### 2. Ce que j'ai joué
 
-Jar construit au sommet `e9c3ec52` (`-DskipTests package`), copié hors du worktree, lancé sur le JDK 21.0.10,
+Jar construit au sommet `0fc1e45d` (`-DskipTests package`), copié hors du worktree, lancé sur le JDK 21.0.10,
 appels HTTP réels, HTML servi lu, rendu non vu au navigateur. **Deux séries de 150 parties**, sur chaque
 manche le bouton de l'infinitif quand il est servi. **Les huit items tirés** dans chaque série, de 2 à 11 fois
 chacun, et un seul indice distinct par item sur l'ensemble des tirages. Après *tu as regarder*,

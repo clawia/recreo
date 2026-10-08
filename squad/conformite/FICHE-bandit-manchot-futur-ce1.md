@@ -2,14 +2,14 @@
 
 - **Mécanique** : bandit manchot (mécanique générique, partagée avec les autres jeux du catalogue).
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/ce1-futur.yaml` (24 items, type
-  `question`), branché par `marc-dev` (`3c52821a`, story `S54-BR-FRA-CE1-18`). Entrée de catalogue
+  `question`), branché par `marc-dev` (`95aa8f39`, story `S54-BR-FRA-CE1-18`). Entrée de catalogue
   `bandit-manchot-futur-ce1`, titre servi *"Les verbes au futur"*, consigne servie *"Lis bien, puis choisis le
   verbe au futur."*, `nombreDeManches: 10`.
 - **Ligne déclarée** : `FRA-CE1-18`. **Décision** : `DEC-0114`.
 - **Conditions opposables** : `FUT-CE1-1` à `FUT-CE1-3` (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section
   5.9), `TRV-CE1-1` à `TRV-CE1-7`, `LON-CE1-1`, `-2`, `-5` ; conditions avant branchement `K1`, `K2`
   (`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 5).
-- **Statut global** : **VALIDÉ** le 2026-10-08 par `nadia-prof` (s54, instance A), sur `5cad6650`. Aucune
+- **Statut global** : **VALIDÉ** le 2026-10-08 par `nadia-prof` (s54, instance A), sur `95214218`. Aucune
   réserve.
 - **Dernière mise à jour** : 2026-10-08 (ouverture de la fiche et verdict, `nadia-prof`, s54). Aucune fiche
   n'avait été ouverte avant le branchement ; la section des critères de `camille-po` est écrite le
@@ -59,14 +59,14 @@ couverture partielle. Aucune réserve.
 
 #### 1. Ce que j'ai fait
 
-**Audit joué.** Jar construit au sommet de ma branche `5cad6650` (qui contient `3c52821a`), arbre propre
+**Audit joué.** Jar construit au sommet de ma branche `95214218` (qui contient `95aa8f39`), arbre propre
 avant et après la construction, `-DskipTests package`, copié hors du worktree et lancé sur le JDK 21.0.10,
 port 18854. **Rendu non vu au navigateur** : appels HTTP réels, HTML servi lu.
 
 **Porte technique : non mesurée par moi.** Le jeu se lance, sert et termine ses parties sans erreur. Le Done
 technique reste à juger par la CI au sha de fusion.
 
-**Le diff de `3c52821a`, lu contre mon arbitrage** : consigne de l'entrée au texte de `K1`, en-tête de
+**Le diff de `95aa8f39`, lu contre mon arbitrage** : consigne de l'entrée au texte de `K1`, en-tête de
 `ce1-futur.yaml` remplacé par le mien, énoncé de l'item 8 au texte de `K2` (*"tu ___ une dictée"*). Aucune
 autre lettre des 24 items ne change.
 

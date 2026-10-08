@@ -1,7 +1,7 @@
 # Propositions de marc-dev - S51-SCI-CORPS-CM1-RESERVES (`CRP-CM1-R1` a `R3`)
 
 Paquet : `adapters/adapter-content/src/main/resources/contenu/cm1-sciences-corps.yaml`, jeu servi (`bandit-manchot-corps-cm1`).
-Base de mesure : commit `dc2870eb` (`round-two`), worktree `s54-marc-branchement`.
+Base de mesure : commit `e6024e98` (`round-two`), worktree `s54-marc-branchement`.
 
 ## Statut
 

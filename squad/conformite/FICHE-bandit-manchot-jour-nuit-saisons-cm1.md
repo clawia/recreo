@@ -3,7 +3,7 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-sciences-terre-jour-nuit-saisons.yaml`
   (12 items, type `question`), ecrit par `lea-dev` (commit `7854d8d3`, session de contenu de s53), item 4
-  remplace au branchement (commit `1e10ad3c`, texte de mon arbitrage prealable de s54, section 3.2).
+  remplace au branchement (commit `269ce5ce`, texte de mon arbitrage prealable de s54, section 3.2).
 - **Entree de catalogue** : `bandit-manchot-jour-nuit-saisons-cm1`, titre servi *"Le jour, la nuit et
   les saisons"*, consigne servie *"Lis bien, puis dis pourquoi il y a le jour et la nuit, ou les
   saisons."*, `nombreDeManches: 10`.
@@ -29,7 +29,7 @@ leves a la barre ecrite le 2026-10-06, et les quatre points non bloquants sont p
 
 #### 1. Ce que j'ai fait
 
-**Audit complet, pas degrade.** Worktree `s54-nadia-b`, a `5cad6650`. `bash outils/mvn-jdk21.sh -B clean
+**Audit complet, pas degrade.** Worktree `s54-nadia-b`, a `95214218`. `bash outils/mvn-jdk21.sh -B clean
 verify` : `BUILD SUCCESS` (job `build` seul ; `prefixes`, `chemins`, `outils` non lances). Jar de ce
 build, paquet et catalogue embarques identiques octet pour octet aux fichiers commites (`cmp`), lance
 sur un port dedie a l'instance B, arrete par son PID. Joue par les routes servies.
@@ -85,7 +85,7 @@ contenu a un enfant de 9 ans et ne reprend pas celui du jeu retire.
 
 #### 7. Ce dont je reste la seule garde
 
-`PaquetCm1SciencesTerreTest` (recible sur ce paquet par `1e10ad3c`) tient les marqueurs `FER-1` et de
+`PaquetCm1SciencesTerreTest` (recible sur ce paquet par `269ce5ce`) tient les marqueurs `FER-1` et de
 tache, le nombre d'items, la forme de `SCI-1`, `SCI-3`, `SCI-4` et le marqueur `HIS-3`. **Aucun automate
 ne verifie** qu'un distracteur n'est pas vrai (les deux motifs de s51 avaient traverse ce test vert),
 qu'un indice ne decrit pas la bonne reponse, l'exactitude d'un fait d'astronomie, la portee

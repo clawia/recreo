@@ -2,8 +2,8 @@
 
 **Auteur** : `nadia-prof`, instance A (celle qui porte l'accumulation, `PAR-7`).
 **Date** : 2026-10-08.
-**Arbre** : branche `s54-nadia-a`, issue de `round-two` a `5cad6650`, qui contient les fusions des branchements
-de `marc-dev` (`f6bcb4e3`) et de `lea-dev` (`b91532aa`). C'est le depot que l'enfant aura apres ces deux fusions.
+**Arbre** : branche `s54-nadia-a`, issue de `round-two` a `95214218`, qui contient les fusions des branchements
+de `marc-dev` (`4786248d`) et de `lea-dev` (`194e018c`). C'est le depot que l'enfant aura apres ces deux fusions.
 **Prix contre ma borne** : **0,5**, le poste nomme d'avance (`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`,
 section 8).
 **Statut** : ce document ne prononce aucun Done pedagogique. Il mesure les proprietes de portee **D**
@@ -13,7 +13,7 @@ precedentes : s29, s30, s35 ; aucune entre s35 et celle-ci.
 
 ## 0. Conditions
 
-Jar construit depuis mon worktree a `5cad6650` (`-DskipTests package`), copie hors du worktree, lance sur le JDK
+Jar construit depuis mon worktree a `95214218` (`-DskipTests package`), copie hors du worktree, lance sur le JDK
 21.0.10, port 18854. Parties jouees par requetes HTTP reelles : **HTML servi lu, rendu non vu au navigateur**.
 Rien de ce document ne repose sur la couleur, la taille ou la position. Porte technique non mesuree par moi.
 
@@ -23,7 +23,7 @@ Rien de ce document ne repose sur la couleur, la taille ou la position. Porte te
 |---|---|---|---|
 | `D1` | la dette des paquets a voix | `git log --since=2026-09-11` sur chaque paquet qui porte un champ `texteAVoixHaute:` ; `git blame` des `consigneAdulte` du catalogue | **population vide.** Six paquets portent une voix (`cp-digraphe-du-son`, `cp-lettre-du-son`, `cp-mot-dicte`, `cp-position-syllabe`, `cp-son-dans-mot`, `cp-voyelle-du-son`) : aucun modifie depuis la passe de s35. Les six `consigneAdulte` datent des 2026-09-01 et 2026-09-02. Les deux paquets de musique ajoutes depuis (`cp-musique-vocabulaire`, `cp-musique-instruments`) ne nomment `texteAVoixHaute` qu'en commentaire, pour dire qu'ils n'en portent pas. Rien a relire |
 | `D2` | ce qu'un indice ou une consigne demande a l'adulte, contre `VOI-3`, `VOI-5`, `VOI-8` | recherche de *adulte* dans tous les indices et consignes servis | **population inchangee.** Les seuls indices qui demandent quelque chose a l'adulte sont ceux des six paquets a voix (un indice par paquet, inchange). Les autres occurrences (`cp-emc-alerte`, `cp-eps-regles-de-securite`, `cm1-emc-*`, `cm1-sciences-*`) parlent d'un adulte comme contenu (*prevenir un adulte*), et ne demandent rien a l'adulte qui accompagne |
-| `D3` | l'unicite de sens d'un identifiant de condition | garde-fou `PAR-5` lance sur l'arbre ; lecture a la main des 16 fichiers de `squad/` touches par s54 contre la section 4 du registre | **tenue.** Garde-fou sur `5cad6650` avant mon diff : 10 tests, 0 echec. Lecture a la main : aucun identifiant de condition ou de reserve non alloue ; les seuls motifs hors table sont des codes de ligne (`HG-CM1-nn`). Mon diff ajoute `PCO-CE1-R1` ; voir section 3 |
+| `D3` | l'unicite de sens d'un identifiant de condition | garde-fou `PAR-5` lance sur l'arbre ; lecture a la main des 16 fichiers de `squad/` touches par s54 contre la section 4 du registre | **tenue.** Garde-fou sur `95214218` avant mon diff : 10 tests, 0 echec. Lecture a la main : aucun identifiant de condition ou de reserve non alloue ; les seuls motifs hors table sont des codes de ligne (`HG-CM1-nn`). Mon diff ajoute `PCO-CE1-R1` ; voir section 3 |
 | `D4` | la coherence de mes conditions entre elles | lecture deux a deux, sur les populations partagees, de `LON-CE1-1` a `-5`, `TRV-CE1-1` a `-7`, des conditions de ligne de s48 servies (`PRS`, `FUT`, `PCO`, `TPS`, `SYC`) et de `PRO-CE1-6`, `-7`, `DUR-CE1-6`, `CAL-CE1-5` de s43 | **deux ecarts, tous deux de moi, aucun ne demande d'amender une condition** ; section 2 |
 | `D5` | l'homogeneite de registre entre jeux qu'un meme enfant enchaine | les 27 entrees CE1 du catalogue : titre, consigne, presence d'une question dans les enonces | **tenue sur la famille de `K1`.** Les cinq jeux de francais CE1 dont aucun enonce ne pose de question (`homophones`, `temps`, `conjugaison-present`, `futur`, `passe-compose`) ont une consigne qui la pose. Les trois jeux de conjugaison ont des titres paralleles (*Les verbes au present / au futur / au passe compose*) ; seule la consigne du futur nomme le temps, ce que `K1` exigeait et que rien n'exige ailleurs. **Deux observations**, sans reserve : *"Memoriser ses tables de multiplication"* est le seul titre CE1 a l'infinitif avec un possessif, il se lit comme la ligne du programme et non comme un nom de jeu ; *"Lis bien, puis trouve la reponse !"* est la seule consigne CE1 qui finit par un point d'exclamation |
 | `D6` | un gabarit qui compose une phrase autour d'un champ de contenu (famille de `REV-1`) | relecture des gabarits modifies depuis le 2026-09-11 ; toutes les expressions `th:text` qui concatenent ; regles `content:` de `recreo.css` ; jeu des ecrans touches | **tenue, aucune composition neuve.** Quatre commits, et non trois comme l'ecrivait mon arbitrage : `a6a0b9f0` est l'ecran de fin de s35, date du jour meme de cette passe-la et jugee par elle. Les trois autres : `776cb642` (tableau support), `8d29e726` (libelle de zone hors de la boite), `90c36ab0` (reproduction d'oeuvre). Chacun rend une valeur seule et entiere dans son element. Les compositions du depot sont les cinq deja relevees a s30 ; *"Pour le "* + niveau a desormais trois valeurs (CP, CE1, CM1), toutes compatibles avec *le* (vu : *"Pour le CE1"*). Les trois ecrans touches joues : `bandit-manchot-sciences-extraire-information-cm1` (tableau), `designation-symetrie-ce1` (legende hors de la boite, erreur et indice), `bandit-manchot-decrire-une-oeuvre-cp` (oeuvre). `saisie.html` n'a pas change depuis s30 : `SAI-R1` reste ouverte, non remesuree |
@@ -101,7 +101,7 @@ sans les dire.
 
 - `D7`, en entier.
 - Le rendu : couleur, contraste, taille, position, defilement (`MNC-1`).
-- Les branches de `s54-nadia-b`, `s54-nadia-c`, `s54-lea-art` non fusionnees a `5cad6650` : le depot qu'elles
+- Les branches de `s54-nadia-b`, `s54-nadia-c`, `s54-lea-art` non fusionnees a `95214218` : le depot qu'elles
   ajouteront n'est pas lu ici.
 - La continuite cycle 2 / cycle 3 (`CYC-1`) : portee **C**, pas **D**.
 

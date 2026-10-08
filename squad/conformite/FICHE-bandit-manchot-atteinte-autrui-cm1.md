@@ -3,7 +3,7 @@
 - **Mecanique** : bandit manchot.
 - **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-emc-atteinte-autrui.yaml`
   (11 items, type `question`), ecrit par `marc-dev` (commit `d27ba381`, session de contenu de s53), items
-  2, 3, 9 et 10 remplaces au branchement par `lea-dev` (commit `ce6614db`, texte de mon arbitrage
+  2, 3, 9 et 10 remplaces au branchement par `lea-dev` (commit `ecf34b10`, texte de mon arbitrage
   prealable de s54, section 5).
 - **Entree de catalogue** : `bandit-manchot-atteinte-autrui-cm1`, titre servi *"Ce qui blesse les
   autres"*, consigne servie *"Lis bien, puis choisis la bonne réponse."*, `nombreDeManches: 10`.
@@ -28,7 +28,7 @@ decision collective ne sont servis par ce produit."* Aucune reserve.
 
 #### 1. Ce que j'ai fait
 
-**Audit complet, pas degrade.** Worktree `s54-nadia-b`, a `5cad6650`. `bash outils/mvn-jdk21.sh -B clean
+**Audit complet, pas degrade.** Worktree `s54-nadia-b`, a `95214218`. `bash outils/mvn-jdk21.sh -B clean
 verify` : `BUILD SUCCESS` (job `build` seul ; `prefixes`, `chemins`, `outils` non lances). Jar de ce
 build, paquet et catalogue embarques identiques octet pour octet aux fichiers commites (`cmp`), lance
 sur un port dedie a l'instance B, arrete par son PID. Joue par les routes servies.
@@ -106,7 +106,7 @@ Lus a cote du paquet : `cp-emc-exclusion`, `cp-emc-permis-interdit`, `cm1-emc-in
 
 #### 7. Ce dont je reste la seule garde
 
-`PaquetCm1EmcAtteinteAutruiTest` (ecrit au branchement, `ce6614db`) tient la forme de `FER-1` a `FER-3`,
+`PaquetCm1EmcAtteinteAutruiTest` (ecrit au branchement, `ecf34b10`) tient la forme de `FER-1` a `FER-3`,
 `EMC-1`, `EMC-8`, `EMC-3`, `EMC-7`, et `EMC-9` sur la forme du texte du paquet. **Aucun automate ne
 verifie** `EMC-9` sur les ecrans que la mecanique ecrit (retour, revelation, fin de partie), `EMC-5` (une
 seule reponse defendable), `BIA-1` et `BIA-2` sur la repartition des roles entre prenoms, la promesse

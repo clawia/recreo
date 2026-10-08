@@ -138,11 +138,11 @@ branchements ci-dessus (6 lignes, 3 ou 4 chaines, un test) ; s'il sert la ligne 
 
 **Amendement du 2026-10-08 (cloture, `theo-archi`) : le prix de T6 en tailles.** `DEC-0114` section 6 demande ce prix *"en tailles
 (le depot n'a pas de tarif de developpement, `DEC-0112` section 7)"*. Les jours ci-dessus sont mon estimation, pas un tarif du depot ; le
-prix qui repond a la demande est celui-ci. **Methode** : nombre de lignes des fichiers a toucher par `wc -l` sur `542c1c6e` ; tailles
+prix qui repond a la demande est celui-ci. **Methode** : nombre de lignes des fichiers a toucher par `wc -l` sur `db69bbc6` ; tailles
 d'ajout estimees sur le precedent mesure d'`ADR-0082`, T2 a T4, commit `90c36ab0` (4 fichiers, +366 -30, dont 18 lignes de gabarit de
 production) et sur la taille des garde-fous existants de meme forme. Les plages sont des estimations sur precedent, pas des mesures.
 
-| Poste | Module | Fichier (lignes a `542c1c6e`) | Production | Tests |
+| Poste | Module | Fichier (lignes a `db69bbc6`) | Production | Tests |
 |---|---|---|---|---|
 | T2, garde-fou 1 | `bootstrap` (test) | `LIllustrationDeContenuResoutEtAucuneNeDortTest` (907) | 0 | modifie, +1 a 2 tests, +100 a 150 lignes (precedent +144), 1 YAML de contre-exemple (20 a 33 lignes, precedents) |
 | T2, garde-fou 2 | `adapter-content` ou `bootstrap` (test) | **neuf**, trois invariants de la decision 5 | 0 | 1 fichier, 4 tests (3 clauses, population non vide), 200 a 380 lignes (precedents `AucunePropositionNEstEgale...` 215, `AuPlusTroisPropositions...` 381) |

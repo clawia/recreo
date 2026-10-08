@@ -4,7 +4,7 @@
 - **Objet** : confirmer, pour la cloture de s54, que les regles ArchUnit sont vertes sur l'arbre fusionne, que leur compte
   n'a pas bouge et que le diff du sprint ne touche aucune frontiere ; rendre le prix en tailles de `S54-ART-CP-10-PRIX` et
   dire si T6 ou T7 appellent une regle.
-- **Arbre juge** : `round-two` a **`542c1c6e`** (fusion de `s54-camille-matrice`), worktree dedie, branche `s54-theo-cloture`,
+- **Arbre juge** : `round-two` a **`db69bbc6`** (fusion de `s54-camille-matrice`), worktree dedie, branche `s54-theo-cloture`,
   `git status --short` vide avant mesure. **Base** : `5e1332ca`, fin de s53.
 - **Version** : **JDK 21.0.10**, propriete `java.version` des 282 rapports `TEST-*.xml` du reacteur complet (section 1),
   seule valeur trouvee (`ADR-0071`).
@@ -16,7 +16,7 @@
 | Les regles ArchUnit sont-elles vertes ? | **oui**, 229 tests de `com.recreo.archi`, 0 echec ; reacteur complet `BUILD SUCCESS` (section 1) |
 | Le compte de regles a-t-il change ? | **non** : 37 `static final ArchRule` et 36 `@ArchTest` hors contre-exemples (section 2) |
 | Le diff du sprint touche-t-il une frontiere ? | **non** : aucune ligne de `src/main/java`, aucun POM, aucun workflow (section 3) |
-| `ADR-0104` | **`Accepte` depuis le 2026-10-07** (`3f46e90d`), regle (13) verte a la cloture ; il n'y a pas de statut a changer (section 4) |
+| `ADR-0104` | **`Accepte` depuis le 2026-10-07** (`4e8ae7b4`), regle (13) verte a la cloture ; il n'y a pas de statut a changer (section 4) |
 | T6, T7 appellent-ils une regle ArchUnit ? | **non** (section 5) |
 
 ## 1. Commandes et resultats
@@ -57,7 +57,7 @@ absents du diff, aucun POM, aucun workflow, aucun garde-fou d'architecture modif
 ## 4. `ADR-0104` et le prix de `S54-ART-CP-10-PRIX`
 
 **Statut.** Le lancement, le planning (lignes de `S54-ART-CP-10-PRIX`) et `DEC-0114` (section 6, A.1, A.10) disent `Propose`. Le
-fichier de l'`ADR` et `ADR-index.md` disent **`Accepte` le 2026-10-07**, par `3f46e90d` (mon avis de faisabilite de s54, T6), sur la
+fichier de l'`ADR` et `ADR-index.md` disent **`Accepte` le 2026-10-07**, par `4e8ae7b4` (mon avis de faisabilite de s54, T6), sur la
 seule condition ecrite (reponse de `nadia-prof` sur `C5` clause 1, 2026-10-06). La regle (13) est ecrite depuis la creation de
 l'`ADR` (2026-10-05) et reste verte et mordue a la cloture (section 1). **Je ne change aucun statut.** L'ecart est dans des fichiers
 qui ne sont pas a moi : `DEC-0114` a `camille-po`, le planning a `sofia-sm`.
@@ -80,7 +80,7 @@ octets) et 30 lignes de registre ; tests **3 fichiers neufs, 5 modifies, 15 a 18
 
 | Job | Commande | Resultat |
 |---|---|---|
-| `build` | section 1, reacteur complet, sur `542c1c6e` (ce commit n'ajoute que deux fichiers de `squad/`) | `BUILD SUCCESS` |
+| `build` | section 1, reacteur complet, sur `db69bbc6` (ce commit n'ajoute que deux fichiers de `squad/`) | `BUILD SUCCESS` |
 | `chemins` | `bash .github/scripts/verifier-chemins-test.sh`, puis `git ls-files -- . ':!.github/scripts/verifier-chemins-test.sh' \| bash .github/scripts/verifier-chemins.sh` | rendu dans le compte rendu de la tache |
 | `prefixes` | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, puis le sujet de ce commit dans `verifier-prefixes.sh` | rendu dans le compte rendu de la tache |
 | `outils` | non lance : aucun outil touche par ce commit | - |

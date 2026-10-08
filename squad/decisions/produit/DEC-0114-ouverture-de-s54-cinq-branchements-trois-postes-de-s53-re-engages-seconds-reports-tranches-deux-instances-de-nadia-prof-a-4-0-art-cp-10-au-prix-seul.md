@@ -668,7 +668,7 @@ Il ne touche ni `catalogue.yaml`, ni un paquet, ni une fiche, ni `MATRICE-couver
 ## Amendement du 2026-10-08 (s54, `camille-po`, apres les verdicts de `nadia-prof`) : cinq lignes ferment
 
 Motif de forme 1 : les verdicts sont ecrits dans les fiches de conformite (`FICHE-bandit-manchot-futur-ce1.md`, `-passe-compose-ce1.md`, `-jour-nuit-saisons-cm1.md`,
-`-environnement-cm1.md`, `-atteinte-autrui-cm1.md`), sur `5cad6650`. Cet amendement ne decide rien de neuf : il consigne ce que les verdicts changent et ce qui en decoule.
+`-environnement-cm1.md`, `-atteinte-autrui-cm1.md`), sur `95214218`. Cet amendement ne decide rien de neuf : il consigne ce que les verdicts changent et ce qui en decoule.
 
 ### A.23 Ce que les verdicts changent
 

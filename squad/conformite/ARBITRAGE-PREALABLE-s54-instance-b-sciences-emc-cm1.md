@@ -1,7 +1,7 @@
 # Arbitrage prealable - s54, instance B : sciences CM1 et EMC CM1
 
 `nadia-prof`, instance B, le 2026-10-07 (21:21, UTC+02:00, lu par `date`). Arbre : branche `s54-nadia-instance-b`, issue de
-`round-two` a `dc2870eb`. Worktree et scratchpad propres a l'instance B.
+`round-two` a `e6024e98`. Worktree et scratchpad propres a l'instance B.
 
 **Audit sans jeu.** Aucun des quatre paquets n'est joue ici : trois n'ont pas d'entree de catalogue, et je ne joue pas
 `cm1-sciences-corps` avant sa correction. Je decide sur la lecture des fichiers de paquet, de mes fiches de s51, de

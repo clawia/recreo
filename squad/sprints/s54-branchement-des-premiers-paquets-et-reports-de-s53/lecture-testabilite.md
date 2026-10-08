@@ -1,6 +1,6 @@
 # [Sprint s54] Lecture de testabilite des criteres - yanis-qa - 2026-10-07
 
-Base : `dc2870eb` (tip de `round-two`, fusion de l'avis de faisabilite), branche `s54-yanis-qualite`, arbre propre au depart
+Base : `e6024e98` (tip de `round-two`, fusion de l'avis de faisabilite), branche `s54-yanis-qualite`, arbre propre au depart
 (`git status --short` vide). Sources lues en entier : `planning.md` (criteres C1 a C7 et tableau "Specifiques"),
 `avis-faisabilite.md`, `DEC-0114` (statut `Proposee`), la section "Sprint 54" du backlog et les sous-sections
 `S51-SCI-CORPS-CM1-RESERVES`, `S51-OUTIL-JOURNAL-TOKENS`, `S53-PASSE-TRANSVERSE`. Aucun YAML ni Java edite. Ce fichier ne
@@ -43,14 +43,14 @@ Contraste avec s53 : C4 est atteignable, la base ne porte aucun des cinq rouges 
 | `outils` | oui, avec un ecart | boucle de l'etape, motifs `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py`, interpreteur `python` | 9 juges lances (5 + 2 + 2), 9 sorties 0, aucun motif vide. **Ecart** : le job prend `python3` s'il existe ; sur ce poste `python3` est un faux binaire, j'ai passe `python` (3.14.0). Le juge est le meme, l'interpreteur n'est pas celui de la CI |
 | `build` | etape `mvn -B verify` : oui, via l'equivalent portable `clean verify` ci-dessus. Etape `mvn -B -pl bootstrap -am package` : **non lancee** | voir ci-dessus | `BUILD SUCCESS`. L'etape de package n'a pas ete lancee ; je ne la deduis pas |
 
-**Porte technique a `dc2870eb`, telle que mesuree ici : verte sur les trois jobs lances en entier et sur l'etape `verify` du
+**Porte technique a `e6024e98`, telle que mesuree ici : verte sur les trois jobs lances en entier et sur l'etape `verify` du
 job `build`.** L'etape de package du job `build` n'est pas mesuree. Je ne conclus pas sur la CI distante (`gh run list` rend 404
 depuis ce poste, question `Q9` du planning).
 
 ## 2. Lecture de testabilite, critere par critere
 
 Un critere est **testable** s'il se juge par une commande et un resultat attendu ; **juge a la main** s'il demande une lecture.
-"Rouge aujourd'hui" = la commande lancee par moi sur `dc2870eb` rend le contraire du resultat attendu. Aucun garde-fou existant
+"Rouge aujourd'hui" = la commande lancee par moi sur `e6024e98` rend le contraire du resultat attendu. Aucun garde-fou existant
 ne porte un critere specifique de s54 : les garde-fous generiques qui s'appliquent sont au 2.9, ils servent de filet.
 
 ### 2.1 Criteres communs C1 a C7
@@ -66,7 +66,7 @@ ne porte un critere specifique de s54 : les garde-fous generiques qui s'applique
 | C7 arret au verdict | oui, pour le statut ; pour `MNC-1`, par comparaison de chaine | `git diff round-two --stat -- squad/programme/MATRICE-couverture.md` doit rendre vide avant le verdict ; `MNC-1` : `grep -F "<phrase de la matrice>" <fiche>` | vide aujourd'hui. La phrase `MNC-1` exacte est a nommer (la matrice la decrit en prose, ligne 3940, sans citation figee a comparer) |
 
 Dans ce tableau, `\|` est une barre verticale ecrite avec l'echappement de tableau Markdown : a lancer avec `|`. Les commandes de C2, C3
-et C5 ont ete lancees telles quelles sur `dc2870eb` (sorties 0 ligne, 0, 0), ce qui les rend vertes ou vides, pas rouges.
+et C5 ont ete lancees telles quelles sur `e6024e98` (sorties 0 ligne, 0, 0), ce qui les rend vertes ou vides, pas rouges.
 
 ### 2.2 `S51-SCI-CORPS-CM1-RESERVES` (`CRP-CM1-R1` a `R3`)
 

@@ -1,6 +1,6 @@
 # Arbitrage prealable - s54, instance A : francais CE1 (`FRA-CE1-18`, `FRA-CE1-19`, `SYC-CE1-R1` et item 16 de `FRA-CE1-25`), passe `PAR-4`
 
-`nadia-prof`, instance A, le 2026-10-07 (21:25, UTC+02:00, lu par `date`). Arbre lu : `dc2870eb` (tip de `round-two`,
+`nadia-prof`, instance A, le 2026-10-07 (21:25, UTC+02:00, lu par `date`). Arbre lu : `e6024e98` (tip de `round-two`,
 branche `s54-nadia-instance-a`).
 
 **Audit sans jeu.** Aucun des deux paquets n'est branche au catalogue (`grep -c "paquet: ce1-futur$"` et `"paquet: ce1-passe-compose$"`
@@ -63,7 +63,7 @@ sur `FRA-CE1-17` (les indices du sujet ne departagent pas l'infinitif).
 
 ### 1.3 R3 : "six fichiers" a la section 11 de mon arbitrage de s53 est faux, un seul fichier
 
-Recompte sur `dc2870eb` : `grep -cE '^ *- enonce: "[^"]* :'` rend 14 sur `cm1-grands-nombres.yaml` et 0 sur `cm1-anglais`,
+Recompte sur `e6024e98` : `grep -cE '^ *- enonce: "[^"]* :'` rend 14 sur `cm1-grands-nombres.yaml` et 0 sur `cm1-anglais`,
 `cm1-comprehension`, `cm1-fractions`, `cm1-histoire-geographie-nommer-en-geographie`, `cm1-histoire-geographie-nommer-en-histoire` ;
 `grep -lE` du meme motif sur tout `contenu/` ne rend que `cm1-grands-nombres.yaml`. **Cause, retrouvee** : mon motif de s53 (`".* :"`)
 debordait de la chaine et comptait le commentaire de fin de ligne (`# COMP-3 : ...`). Le `relecteur-pedagogique` avait raison. La

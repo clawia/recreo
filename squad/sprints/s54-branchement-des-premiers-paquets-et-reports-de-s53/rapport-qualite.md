@@ -1,6 +1,6 @@
 # Rapport qualite de cloture - s54
 
-**Auteur** : `yanis-qa`. **Date** : 2026-10-08. **Arbre mesure** : `round-two` a `542c1c6e` (hash complet
+**Auteur** : `yanis-qa`. **Date** : 2026-10-08. **Arbre mesure** : `round-two` a `db69bbc6` (hash complet
 `542c1c6ea943085835dd0ca8b5c8b75809585982`), sommet fusionne de s54, mesure dans le worktree de la branche
 `s54-yanis-cloture`. `git status --porcelain` vide avant et apres les mesures.
 
@@ -13,7 +13,7 @@ Adaptations de ce poste, sans effet sur le verdict : `mvn -B verify` est lance p
 `outils/mvn-jdk21.sh -B clean verify` (JDK de la toolchain, `clean` en plus) ; dans le job `outils`, la sortie des
 juges n'a pas ete conservee, seul leur code de sortie l'a ete.
 
-## 1. Les quatre jobs, sur `542c1c6e`
+## 1. Les quatre jobs, sur `db69bbc6`
 
 ### `prefixes` : vert
 
@@ -73,16 +73,16 @@ Methode : lignes `Tests run: N, Failures: F, Errors: E, Skipped: S` de fin de mo
 
 | Branchement | Commit | Classe | Tests |
 |---|---|---|---|
-| `S54-BR-FRA-CE1-18` | `3c52821a` | `PaquetCe1FuturTest` | 13 |
-| `S54-BR-FRA-CE1-19` | `b9e9b9b3` | `PaquetCe1PasseComposeTest` | 13 |
-| `S54-BR-EMC-CM1-02` | `ce6614db` | `PaquetCm1EmcAtteinteAutruiTest` | 10 |
-| `S54-BR-ART-CP-10` | `c7d56d60` | `PaquetCpArtsOeuvresFamillesTest` | 6 |
+| `S54-BR-FRA-CE1-18` | `95aa8f39` | `PaquetCe1FuturTest` | 13 |
+| `S54-BR-FRA-CE1-19` | `557ebd8a` | `PaquetCe1PasseComposeTest` | 13 |
+| `S54-BR-EMC-CM1-02` | `ecf34b10` | `PaquetCm1EmcAtteinteAutruiTest` | 10 |
+| `S54-BR-ART-CP-10` | `920e19e2` | `PaquetCpArtsOeuvresFamillesTest` | 6 |
 | | | **Total** | **42** |
 
 Aucun autre test n'est ajoute ni retire. Les classes modifiees n'ont aucun `@Test` ni `@ParameterizedTest` en plus
 ou en moins (`git diff` filtre sur ces annotations : vide) : `PaquetCm1SciencesTerreTest` et
-`PaquetCm1SciencesActiviteHumaineTest` (nom du paquet cible, `8edb4bb9`, `1e10ad3c`), `PaquetCm1GrandsNombresTest` et
-`AucunSigneDoubleNEstDetachableDeSonMotTest` (`d958cfc6`), `TexteAccentueExposeParLePortEntrantTest` (5 tests a la
+`PaquetCm1SciencesActiviteHumaineTest` (nom du paquet cible, `fb42d5f1`, `269ce5ce`), `PaquetCm1GrandsNombresTest` et
+`AucunSigneDoubleNEstDetachableDeSonMotTest` (`8b15e3ba`), `TexteAccentueExposeParLePortEntrantTest` (5 tests a la
 base et a `HEAD`, 67 lignes d'inventaire ajoutees, 0 supprimee). Les deux branchements de sciences (`SCI-CM1-15`,
 `SCI-CM1-18`) n'ajoutent aucun test : ils recible des classes existantes. `theo-archi` avait annonce "le total ne bouge
 pas" pour les cinq entrees seules (avis de faisabilite, passage 2) ; le total bouge parce que les developpeurs ont
@@ -92,13 +92,13 @@ ecrit un test de paquet pour quatre des six branchements (question `T1`). Delta 
 ## 3. Criteres communs
 
 - **C1, decision d'abord : tenu.** `git merge-base --is-ancestor 5b759d1d <commit>` (`5b759d1d` ajoute `DEC-0114`,
-  2026-10-07 21:02) rend OUI pour les six commits de branchement (`8edb4bb9`, `1e10ad3c`, `3c52821a`, `b9e9b9b3`,
-  `ce6614db`, `c7d56d60`). `DEC-0114` a le statut `Proposee` ; je ne juge pas ce que cela change.
+  2026-10-07 21:02) rend OUI pour les six commits de branchement (`fb42d5f1`, `269ce5ce`, `95aa8f39`, `557ebd8a`,
+  `ecf34b10`, `920e19e2`). `DEC-0114` a le statut `Proposee` ; je ne juge pas ce que cela change.
 - **C2, diff borne : tenu, avec quatre YAML de paquet touches.** Chaque commit de branchement touche
   `catalogue.yaml`, un test de paquet (quatre cas) et l'inventaire du test d'accent. Les YAML de paquet touches avec
-  leur diff (`git diff --numstat`) : `ce1-futur` 3/2 (`3c52821a`, K1 et K2 de `nadia-prof`), `ce1-passe-compose` 20/19
-  (`b9e9b9b3`, K3 et K4), `cm1-sciences-terre-jour-nuit-saisons` 7/5 (`1e10ad3c`, item 4), `cm1-emc-atteinte-autrui` 4/4
-  (`ce6614db`, items 2, 3, 9, 10), `cp-arts-oeuvres-familles` 21/17 (`ffbd2157`, corrections de l'instance C). Que
+  leur diff (`git diff --numstat`) : `ce1-futur` 3/2 (`95aa8f39`, K1 et K2 de `nadia-prof`), `ce1-passe-compose` 20/19
+  (`557ebd8a`, K3 et K4), `cm1-sciences-terre-jour-nuit-saisons` 7/5 (`269ce5ce`, item 4), `cm1-emc-atteinte-autrui` 4/4
+  (`ecf34b10`, items 2, 3, 9, 10), `cp-arts-oeuvres-familles` 21/17 (`9a0011b1`, corrections de l'instance C). Que
   chacune soit "decidee par `nadia-prof`" : `K1` a `K4` figurent dans son arbitrage prealable d'instance A
   (`grep -c` rend 1 pour chacune) ; pour les trois autres, la decision est citee dans le message de commit, je ne
   l'ai pas relue.
@@ -116,7 +116,7 @@ ecrit un test de paquet pour quatre des six branchements (question `T1`). Delta 
 - **C6 : tenu.** Les quatre jobs sont nommes avec leur commande en section 1.
 - **C7, un branchement s'arrete au verdict : tenu.** `MATRICE-couverture.md` change sur cinq lignes entre `52e2b0cd` et
   `HEAD` : `FRA-CE1-18`, `FRA-CE1-19`, `SCI-CM1-15`, `SCI-CM1-18`, `EMC-CM1-02` passent a `couvert-valide`, chacune apres
-  un verdict ecrit dans sa fiche (commits de `nadia-prof` `cd886512`, `aec2d9e2`, avant le commit de matrice `292763f7`) ;
+  un verdict ecrit dans sa fiche (commits de `nadia-prof` `df9386ee`, `0e271cfd`, avant le commit de matrice `58c0befa`) ;
   deux lignes sont reecrites sans changer de statut (`FRA-CE1-25`, `corps-cm1`) et `ART-CP-10` reste `non couvert`.
   Commande de la "Methode du compte" de la matrice, lancee sur les deux arbres : base 132 `couvert-valide`, 4 `en cours`,
   46 `non couvert`, 76 `non couvrable`, 258 lignes ; `HEAD` **137**, 4, **41**, 76, 258. 137 / 182 = 75,27 %, comme
@@ -131,7 +131,7 @@ automate peut juger est tenu ; ce qu'aucun ne juge est dit ligne par ligne.
 
 - **`S51-SCI-CORPS-CM1-RESERVES` : tenu pour le mesurable.** `grep -c "ne fait rien d'autre"` sur
   `cm1-sciences-corps.yaml` : base 1, `HEAD` 0. `grep -c '^ *- enonce:'` : 12 et 12. Le diff touche cinq items
-  (3, 5, 6, 7, 11, commit `e9dd4d21`). Les six chaines ajoutees sont, une a une, dans l'arbitrage prealable de
+  (3, 5, 6, 7, 11, commit `9618b974`). Les six chaines ajoutees sont, une a une, dans l'arbitrage prealable de
   l'instance B (comparaison par script) ; le texte d'enonce de l'item 11 y est aussi (`grep -c` 1). Le backlog ne
   recopie pas les textes des items : "comme ecrits au backlog" se lit donc contre l'arbitrage, pas contre le backlog.
 - **`S54-BR-SCI-CM1-15` et `-18` : C3 tenu, motifs en en-tete tenus, motifs de refus non gardes.** Les en-tetes de
@@ -147,24 +147,24 @@ automate peut juger est tenu ; ce qu'aucun ne juge est dit ligne par ligne.
   de branchement. `nadia-prof` applique `TRV-CE1-5` dans les deux fiches. Je ne conclus pas que la relecture n'a pas eu
   lieu : je dis qu'aucun fichier ne la porte.
 - **`S54-BR-EMC-CM1-02` : C3 tenu ; `EMC-9` relue par le developpeur, resultat ecrit : partiel.** Le message de
-  `ce6614db` dit "EMC-9 sur la forme seulement" et renvoie la lecture de l'ecran entier a `nadia-prof`. Pas de rapport
+  `ecf34b10` dit "EMC-9 sur la forme seulement" et renvoie la lecture de l'ecran entier a `nadia-prof`. Pas de rapport
   de `lea-dev` dans le repertoire. Mention de couverture : section 3, C7.
 - **`S54-BR-ART-CP-10` : criteres 1, 3, 4, 5, 6, 8 tenus ; 2 et 7 en partie.**
   1. `grep -c "paquet: cp-arts-oeuvres-familles$"` : base 0, `HEAD` 1.
-  2. C2 : le paquet est touche par `ffbd2157`, corrections de l'instance C (messages de commit), non relues ici.
+  2. C2 : le paquet est touche par `9a0011b1`, corrections de l'instance C (messages de commit), non relues ici.
   3. `grep -inE "reconna|rapproch"` sur les lignes `id`, `titre`, `consigne` de l'entree : rien (code 1).
-  4. Les commits `c7d56d60` et `ffbd2157` ne nomment pas `MATRICE-couverture.md` ; `ART-CP-10` est `non couvert` a `HEAD`.
+  4. Les commits `920e19e2` et `9a0011b1` ne nomment pas `MATRICE-couverture.md` ; `ART-CP-10` est `non couvert` a `HEAD`.
   5. Aucune espace ordinaire avant `? ! : ;` dans le bloc de l'entree ; titre accentue (`Les familles d'œuvres`).
-  6. Plafond avant l'audit : la ligne de plafond (`Q6`) est dans l'arbitrage d'instance A, commit `b59e5150`, 2026-10-07
-     21:31 ; l'arbitrage de l'instance C est `89910897`, 2026-10-08 12:14. Ordre tenu. `nadia-prof` y confirme la ligne
+  6. Plafond avant l'audit : la ligne de plafond (`Q6`) est dans l'arbitrage d'instance A, commit `a3819bcd`, 2026-10-07
+     21:31 ; l'arbitrage de l'instance C est `c5c2d50f`, 2026-10-08 12:14. Ordre tenu. `nadia-prof` y confirme la ligne
      au lieu d'en ecrire une seconde.
-  7. Isolation de C : `89910897` ne touche qu'un fichier (`arbitrage-nadia-c.md`) et `46e3651c` qu'un fichier (la fiche).
+  7. Isolation de C : `c5c2d50f` ne touche qu'un fichier (`arbitrage-nadia-c.md`) et `d6660a70` qu'un fichier (la fiche).
      La branche `s54-nadia-c` est entierement fusionnee, je n'ai pas reconstitue son diff complet ni les noms de
      worktree et de scratchpad : non verifie.
-  8. `c7d56d60` est ancetre de `89910897` : branchement avant audit, tenu.
-  Fiche de l'audit : `46e3651c`, **VALIDE SOUS RESERVE**, la ligne reste `non couvert` (la fiche le dit, section "Mouvement de ligne : aucun").
+  8. `920e19e2` est ancetre de `c5c2d50f` : branchement avant audit, tenu.
+  Fiche de l'audit : `d6660a70`, **VALIDE SOUS RESERVE**, la ligne reste `non couvert` (la fiche le dit, section "Mouvement de ligne : aucun").
 - **`S53-REPORT-GRANDS-NOMBRES` : tenu.** `grep -cE '^ *- enonce: ".* :'` sur `cm1-grands-nombres.yaml` : base 14,
-  `HEAD` 0. Un seul commit (`d958cfc6`) touche le fichier et change les 14 lignes (14/14) et les deux constantes de
+  `HEAD` 0. Un seul commit (`8b15e3ba`) touche le fichier et change les 14 lignes (14/14) et les deux constantes de
   `PaquetCm1GrandsNombresTest` (2/2) ; la constante de `AucunSigneDoubleNEstDetachableDeSonMotTest` descend dans le meme
   commit. `clean verify` vert, aucun `@Test` ajoute ou retire dans ces classes.
 - **`S51-OUTIL-JOURNAL-TOKENS` : tenu.** `outils/rapport-tokens-journal-test.py` : 7 tests, OK, lance par le job `outils`
@@ -179,8 +179,8 @@ automate peut juger est tenu ; ce qu'aucun ne juge est dit ligne par ligne.
   "Aucune consommation mesuree"` sur les six rapports s22 a s27 : 0.
 - **`S53-PASSE-TRANSVERSE` : tenu.** `find squad -iname 'PASSE-TRANSVERSE-s54*'` rend un fichier. Il porte sept lignes
   `D1` a `D7` (je n'ai pas recompte les proprietes de la section 13.2 de l'arbitrage de s29 : `D1` a `D7` sont celles
-  que la passe annonce), l'arbre `5cad6650`, le prix `0,5`.
-- **`SYC-CE1-R1` et item 16 : non automatisable.** Commit `0a1f2b80` : un fichier, 3 lignes. Le rejeu est ecrit par
+  que la passe annonce), l'arbre `95214218`, le prix `0,5`.
+- **`SYC-CE1-R1` et item 16 : non automatisable.** Commit `915de585` : un fichier, 3 lignes. Le rejeu est ecrit par
   `nadia-prof` dans la fiche de `FRA-CE1-25` ("`SYC-CE1-R1` levee", items 16, 19, 23). Non juge ici.
 - **`S53-REPORT-REDACTION` : partiel, R3 non tenu.** R1 : `grep -c "0 fichier"` sur `DEC-0112` : base 1, `HEAD` 0.
   R5 : l'erratum est au backlog (`S53SPE-RELECTURE`). **R3 : `grep -n "six fichiers"` sur l'arbitrage de s53 rend la
@@ -191,7 +191,7 @@ automate peut juger est tenu ; ce qu'aucun ne juge est dit ligne par ligne.
   (2) le plafond est la ligne `Q6` de l'arbitrage d'instance A ; (3) `git diff --name-only 52e2b0cd HEAD` ne nomme
   hors `squad/`, `docs/`, tests, `contenu/` et `catalogue.yaml` que `outils/rapport-tokens.py` et son test : aucun
   fichier sous `domain/`, `application/`, `adapters/*/src/main/java` ni `bootstrap/src/main`.
-- **`PCO-CE1-R1`, hors engagement.** Le commit `c876fadc` (`marc-dev`) applique la reserve : `grep -c 'indice: "Ne
+- **`PCO-CE1-R1`, hors engagement.** Le commit `7d32c1e3` (`marc-dev`) applique la reserve : `grep -c 'indice: "Ne
   recopie pas le verbe'` sur `ce1-passe-compose.yaml` rend **19** et `'indice: "Avec ce sujet, comment'` rend **2**, les
   chiffres du critere ; 8 lignes d'indice changent (8/8). Le backlog dit pourtant `OUVERTE, non engagee`.
 
@@ -241,15 +241,15 @@ automate peut juger est tenu ; ce qu'aucun ne juge est dit ligne par ligne.
 - Aucun module n'est sans test : domain 120, application 17, adapter-web 401, adapter-content 1360, bootstrap 318 dont 6
   d'integration.
 - **Ecarts de texte trouves, non corriges (hors de ma tache)** : la cellule de matrice de `ART-CP-10` dit "aucun verdict
-  n'est prononce" et le backlog dit que la fiche n'existe pas, alors que `46e3651c` (12:42) la porte avec un verdict ; la
+  n'est prononce" et le backlog dit que la fiche n'existe pas, alors que `d6660a70` (12:42) la porte avec un verdict ; la
   matrice (12:43) a ete ecrite une minute apres. Le backlog place `PCO-CE1-R1` a `OUVERTE, non engagee` alors que
-  `c876fadc` l'a livree.
+  `7d32c1e3` l'a livree.
 - Verification apres commit : `prefixes` sur ce commit et `chemins` sur l'arbre avec ce rapport, rendues dans le compte rendu
   de la tache, pas dans ce fichier.
 
 ## 8. Verdict
 
-- **Done technique** : les quatre jobs sont verts sur `542c1c6e`, tels que lances ici : `prefixes`, `chemins`, `outils`,
+- **Done technique** : les quatre jobs sont verts sur `db69bbc6`, tels que lances ici : `prefixes`, `chemins`, `outils`,
   `build` (y compris le pas de package et les six tests d'integration). Jugement de la CI distante : a la CI.
 - **Criteres de s54** : tenus, `S51-SCI-CORPS-CM1-RESERVES` (mesurable), `S54-BR-*` (C1 a C7, criteres 1 a 8 de
   `S54-BR-ART-CP-10` sauf 7 non verifie), `S53-REPORT-GRANDS-NOMBRES`, `S51-OUTIL-JOURNAL-TOKENS`, `S53-PASSE-TRANSVERSE`,

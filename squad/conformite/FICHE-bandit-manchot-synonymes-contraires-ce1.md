@@ -11,7 +11,7 @@
   de `FRA-CE1-25`, `TRV-CE1-4` ; R6 du planning).
   **VALIDÉ SOUS RÉSERVE** le 2026-10-06 par `nadia-prof` (s52, instance A), sur `46e69b13` : une réserve,
   `SYC-CE1-R1`. Voir le bloc de validation.
-  **`SYC-CE1-R1` levée** le 2026-10-08 par `nadia-prof` (s54, instance A), sur `0a1f2b80` ; observation 1
+  **`SYC-CE1-R1` levée** le 2026-10-08 par `nadia-prof` (s54, instance A), sur `915de585` ; observation 1
   (item 16) traitée le même jour. Aucune réserve ouverte.
 - **Dernière mise à jour** : 2026-10-08 (ouverture, `camille-po`, s52 ; verdict, `nadia-prof`, s52 ; rejeu,
   `nadia-prof`, s54).
@@ -198,13 +198,13 @@ Le verdict devient **VALIDÉ**, sans réserve ouverte. La réserve et l'observat
 
 #### 1. Ce que j'ai fait
 
-**Le diff, lu contre `46e69b13`** : `0a1f2b80` (`marc-dev`) change trois lignes `enonce` et rien d'autre
+**Le diff, lu contre `46e69b13`** : `915de585` (`marc-dev`) change trois lignes `enonce` et rien d'autre
 (3 insertions, 3 suppressions, un fichier). Item 16 : *"« Le train arrive. »"* ; item 19 : *"« Elle lance le
 ballon. »"* ; item 23 : *"« Ce cheval est fort. »"*. C'est mot pour mot le texte de
 `ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 7 (`K5`, `K6`). Bonnes réponses, distracteurs,
 familles et indices inchangés.
 
-**Joué** sur le jar construit au sommet de ma branche `5cad6650` (qui contient `0a1f2b80`), port 18854, JDK
+**Joué** sur le jar construit au sommet de ma branche `95214218` (qui contient `915de585`), port 18854, JDK
 21.0.10, HTML servi lu, rendu non vu au navigateur. **Quarante parties complètes de dix manches**, mêmes
 conduites qu'au premier passage : les 24 items tirés (13 à 20 fois chacun), aucune anomalie de service sur
 les 400 manches, aucune révélation avant la troisième erreur. Les trois items touchés tirés 17, 20 et 20

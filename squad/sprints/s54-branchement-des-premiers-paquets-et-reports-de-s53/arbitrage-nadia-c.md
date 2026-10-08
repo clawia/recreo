@@ -1,7 +1,7 @@
 # Arbitrage prealable de s54, instance C - `cp-arts-oeuvres-familles` (`ART-CP-10`, arts plastiques CP)
 
 - **Auteure** : `nadia-prof`, instance C (`DEC-0114` A.10 et A.18). **Date** : 2026-10-08. **Sprint** : s54, phase 1.
-- **Arbre** : branche `s54-nadia-c`, issue de `round-two` a `5cad6650`. Le paquet est lu a ce sha ; `s54-lea-art` ne le modifie pas encore
+- **Arbre** : branche `s54-nadia-c`, issue de `round-two` a `95214218`. Le paquet est lu a ce sha ; `s54-lea-art` ne le modifie pas encore
   (`git diff --stat round-two...s54-lea-art` : vide).
 - **Ce qui m'est pose** : `DEC-0114` A.6, A.11, A.12, A.13 et A.19, points 1 a 5 ; planning de s54, `Q3`.
 - **Ce document ne prononce aucun Done.** Le paquet n'est pas branche : je n'ai rien joue. **Audit degrade pour tout ce qui suit, et je le declare** :
@@ -21,7 +21,7 @@
 
 ## 1. (a) Le plafond
 
-La ligne de l'instance A (`squad/conformite/ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 9, `Q6`, commit `b59e5150` du 2026-10-07),
+La ligne de l'instance A (`squad/conformite/ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 9, `Q6`, commit `a3819bcd` du 2026-10-07),
 reprise mot pour mot :
 
 > *`cp-arts-oeuvres-familles`, branche tel quel, laisse `ART-CP-10` a `non couvert` : il ne sert ni la reconnaissance ni le rapprochement d'oeuvres

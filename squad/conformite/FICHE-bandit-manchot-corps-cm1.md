@@ -25,18 +25,18 @@
 
 ### Verdict du 2026-10-08 (`nadia-prof`, s54, instance B) : **VALIDE**, reserves levees
 
-**Done pedagogique maintenu, sans reserve.** Story `S51-SCI-CORPS-CM1-RESERVES`, commit `e9dd4d21`
+**Done pedagogique maintenu, sans reserve.** Story `S51-SCI-CORPS-CM1-RESERVES`, commit `9618b974`
 (`marc-dev`). `SCI-CM1-10` reste `couvert-valide` ; `camille-po` peut retirer de la cellule de matrice
 la mention des reserves ouvertes. Aucune mention de couverture due (inchange).
 
-**Ce que j'ai fait.** Worktree `s54-nadia-b`, a `5cad6650`. `bash outils/mvn-jdk21.sh -B clean verify`
+**Ce que j'ai fait.** Worktree `s54-nadia-b`, a `95214218`. `bash outils/mvn-jdk21.sh -B clean verify`
 sur ce worktree : `BUILD SUCCESS` (job `build` seul ; `prefixes`, `chemins`, `outils` non lances).
 Jar `bootstrap/target/recreo.jar` de ce build, paquet et catalogue embarques identiques octet pour octet
 aux fichiers commites (`cmp`), lance sur un port dedie a l'instance B, arrete par son PID. Joue par les
 routes servies. Cinq parties de dix manches : une premiere avec une erreur, une revelation ou une bonne
 reponse du premier coup selon la manche ; puis quatre ou les items 3, 5, 6, 7 et 11 ont ete joues a
 chaque tirage avec les deux distracteurs presses puis la revelation. **Les douze
-items ont ete tires.** Le diff de `e9dd4d21` ne touche que ces cinq items ; il reprend mot pour mot les
+items ont ete tires.** Le diff de `9618b974` ne touche que ces cinq items ; il reprend mot pour mot les
 blocs de mon arbitrage prealable de s54 (section 2), verifie champ par champ.
 
 **Levee, reserve par reserve, a la barre de la section 8 ci-dessous (inchangee) :**
