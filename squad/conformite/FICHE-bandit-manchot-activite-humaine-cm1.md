@@ -19,6 +19,9 @@
   (rejeu `5a4ca6d8`) : REFUSE a nouveau**, le motif de l'item 11 n'est pas leve ; les deux points
   non bloquants sont pris. Le premier refus reste ecrit ci-dessous.
 - **Derniere mise a jour** : 2026-10-06 (second passage).
+- **Suite du 2026-10-08 (s54, instance B)** : ce jeu reste retire et ces deux refus restent ecrits. La
+  reprise, paquet distinct `cm1-sciences-environnement-activite-humaine`, est **VALIDE**, le motif leve a
+  la barre de S2-3 : `squad/conformite/FICHE-bandit-manchot-environnement-cm1.md`.
 
 ---
 

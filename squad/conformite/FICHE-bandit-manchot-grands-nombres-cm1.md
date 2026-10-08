@@ -882,3 +882,16 @@ decoupage d'un paquet dont la consigne annonce quatre taches.
 Le texte complet, avec les commandes de mesure, les releves et les conditions numerotees, est dans
 `FICHE-bandit-manchot-reperes-cm1.md`, section "Arbitrage du 2026-08-27 (s21) - `S21-3`". Il n'est
 pas recopie ici pour qu'il ne puisse pas y pourrir a moitie.
+
+## Note du 2026-10-08 (s54, instance B) - `nadia-prof`, question `Q5` : la correction `S53-REPORT-GRANDS-NOMBRES` ne passe pas par ma porte
+
+**Aucun verdict pedagogique n'est rendu ici, et aucun n'est du.** Le commit `d958cfc6` (`lea-dev`) remplace,
+dans les 14 `enonce` de `cm1-grands-nombres`, l'espace ordinaire devant `:` par une espace insecable, et
+rien d'autre : diff relu caractere par caractere, aucun mot, aucun nombre, aucune proposition ni aucun
+indice ne change. C'est de la ponctuation du texte de l'enfant, dont le controle appartient au
+`relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`). Mon jugement porte sur le
+vocabulaire, le ton, le fond et le niveau : aucun des quatre n'est touche. `TYP-1` est une propriete de
+rendu (aucun signe seul sur sa ligne) ; la correction la sert sans rien changer a ce que l'enfant lit.
+L'espace qui suit `:` reste secable : le plus long bloc insecable que la correction cree est *"chiffres
+:"*, ce qui n'ouvre aucun risque de debordement du type de mon refus du 2026-08-16. Je ne l'ai pas
+mesure a l'ecran. Tarif : **0,0**. Les verdicts anterieurs de cette fiche restent inchanges.
