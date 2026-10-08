@@ -54,7 +54,7 @@ class PaquetCm1EmcAtteinteAutruiTest {
 
     /** EMC-1, EMC-8 : aucune adresse a l'enfant, en mot entier. */
     private static final Pattern ADRESSE_A_L_ENFANT = Pattern.compile(
-            "\\b(tu|ton|ta|tes|toi|te|vous|votre|vos)\\b|\\bt['’]",
+            "\\b(tu|ton|ta|tes|toi|te|vous|votre|vos)\\b|\\bt['\\u2019]",
             Pattern.UNICODE_CHARACTER_CLASS | Pattern.CASE_INSENSITIVE);
 
     /** EMC-9 : aucun texte ne dit que l'enfant vient d'alerter quelqu'un. */

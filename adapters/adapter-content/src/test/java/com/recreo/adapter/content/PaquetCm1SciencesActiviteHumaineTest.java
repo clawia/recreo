@@ -62,7 +62,7 @@ class PaquetCm1SciencesActiviteHumaineTest {
      * toi, ta, ton, tes, l'elision t', vous, votre, vos, nous, notre, nos ; "on" reste admis.
      */
     private static final Pattern JETONS_D_ADRESSE = Pattern.compile(
-            "\\b(tu|ta|ton|tes|toi|te|vous|votre|vos|nous|notre|nos)\\b|\\bt['’]",
+            "\\b(tu|ta|ton|tes|toi|te|vous|votre|vos|nous|notre|nos)\\b|\\bt['\\u2019]",
             Pattern.UNICODE_CHARACTER_CLASS | Pattern.CASE_INSENSITIVE);
 
     /** SCI-2 : les cinq objets que la condition interdit de presenter comme une responsabilite. */

@@ -193,7 +193,7 @@ lignesDeReferentiel: ["EMC-CP-03"]
 # LON-1, LON-2 (qui ne portent pas sur l'indice).
 items:
   - enonce: "Chaque midi cette semaine, Malo empêche Aya de s'asseoir avec le groupe. Qu'est-ce que c'est ?"
-    bonneReponse: "une moquerie qui se répète"
+    bonneReponse: "une mise à l'écart qui se répète"
     distracteurs: ["un accident isolé", "une bousculade"]
     indice: "Une seule fois serait un hasard ; là, cela recommence chaque jour."
   - enonce: "Presque tous les jours, Hugo se moque de la façon dont parle Tom. Qu'est-ce que c'est ?"
@@ -201,12 +201,12 @@ items:
     distracteurs: ["un accident isolé", "une blague entre amis"]
     indice: "Une moquerie qui revient aussi souvent n'est plus un hasard."
   - enonce: "Depuis plusieurs jours, Malo écarte Tom du jeu à chaque récréation. Qu'est-ce que c'est ?"
-    bonneReponse: "une moquerie qui se répète"
+    bonneReponse: "une mise à l'écart qui se répète"
     distracteurs: ["un accident isolé", "un jeu de récréation"]
     indice: "Écarter quelqu'un plusieurs jours de suite n'est pas un jeu ordinaire."
   - enonce: "En courant, Tom bouscule Malo une seule fois et s'excuse aussitôt. Qu'est-ce que c'est ?"
     bonneReponse: "un accident isolé"
-    distracteurs: ["une moquerie qui se répète", "une bagarre"]
+    distracteurs: ["une mise à l'écart qui se répète", "une bagarre"]
     indice: "Une excuse immédiate après un geste involontaire n'est pas de la moquerie."
   - enonce: "Aya marche sur le pied de Hugo une seule fois, par accident. Qu'est-ce que c'est ?"
     bonneReponse: "un accident isolé"
