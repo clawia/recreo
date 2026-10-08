@@ -154,7 +154,7 @@ Competence visee entre parentheses ; "transverse" pour les corrections. Tarifs d
 | `S53-REPORT-GRANDS-NOMBRES` | Les 14 `enonce` de `cm1-grands-nombres` (espace insecable avant `:`) **et** `PREFIXE_ECRIRE`, `PREFIXE_LIRE` de `PaquetCm1GrandsNombresTest` (lignes 60 et 61), **dans un seul commit** | CM1 / mathematiques / ligne deja `couvert-valide`, non rouverte | `DEC-0002` amendement du 2026-08-04 ; `ADR-0067` | lea-dev (voir justification 3) | **question Q5** : correction de typographie d'un jeu servi, `nadia-prof` dit si elle la voit (0,0 propose) |
 | `S53-REPORT-REDACTION` : R1, R2, R5 et `S53-REL-10` | Amendement de `DEC-0112` (acter `S53-REL-10`, corriger "0 fichier" par 4, la provenance "Relaye de l'utilisatrice") ; erratum de "onze paquets plus anciens" au backlog (9 mesures) | transverse | `DEC-0112` ; `DEC-0062` | camille-po (aucun dev) | aucune |
 | `S53-REPORT-REDACTION` : R3 | Corriger "six fichiers" de la section 11 de l'arbitrage de s53 (un seul fichier, `cm1-grands-nombres`) | transverse | - | nadia-prof, **non chiffre** (Q3) | A, 0,0 propose |
-| `S54-ART-CP-10-PRIX` | **Pas de construction.** Le prix de la mecanique qui montre deux oeuvres ensemble (`theo-archi`, statut d'`ADR-0104`, `Propose`) et le plafond d'un paquet DEGRADE (`nadia-prof`, une ligne) | arts plastiques / CP / `ART-CP-10` | `DEC-0113` section 9 ; Q6 | aucun dev | A, 0,0 propose |
+| `S54-ART-CP-10-PRIX` | **Pas de construction.** Le prix de la mecanique qui montre deux oeuvres ensemble (`theo-archi`, statut d'`ADR-0104`, `Propose` a l'ouverture, `Accepte` le 2026-10-07, voir `ADR-0104`) et le plafond d'un paquet DEGRADE (`nadia-prof`, une ligne) | arts plastiques / CP / `ART-CP-10` | `DEC-0113` section 9 ; Q6 | aucun dev | A, 0,0 propose |
 
 Deux actions de redaction de la retro de s53 (A9 : provenance de `relecture-p11.md` lignes 7 a 9 ; A10 : "0 sur 182" de la lecture de testabilite)
 vont a `relecteur-pedagogique` et `yanis-qa`, sans prix, au meme titre que s53.
@@ -227,7 +227,7 @@ libererait 0,5 sans acheter un lot (1,0).
   **Point a ecrire par `camille-po` (Q1)** : `DEC-0112` 5.1 retirait ces postes parce qu'une instance de sciences CM1 ne reunit pas la barre de 4,0 que `nadia-prof` a exigee (1,5 de reprises plus `CRP` 0,5 = 2,0).
   B porte 3,5 avec un lot d'EMC : la `DEC` d'ouverture dit si cela remplit la barre ou si `nadia-prof` l'amende (Q4).
 - **`ART-CP-10`** : cinquieme sprint de report si elle n'est pas engagee, **ce que `DEC-0112` 6 et `DEC-0113` 9.3 interdisent de faire en silence**. Le fait : le paquet de la session
-  (`cp-arts-oeuvres-familles`) est DEGRADE et son en-tete dit qu'il *"ne ferme pas la ligne"* ; `ADR-0104` est `Propose`, la mecanique n'existe pas ; `nadia-prof` a repondu le 2026-10-06 que `C5` clause 1 ne mord pas sur une
+  (`cp-arts-oeuvres-familles`) est DEGRADE et son en-tete dit qu'il *"ne ferme pas la ligne"* ; `ADR-0104` est `Propose` (a l'ouverture ; `Accepte` le 2026-10-07), la mecanique n'existe pas ; `nadia-prof` a repondu le 2026-10-06 que `C5` clause 1 ne mord pas sur une
   reproduction qui constitue la proposition entiere (`DEC-0113` section 3.1, qui cite `DEC-0111` A.14). **Ce que s54 engage** : le prix de la mecanique (`theo-archi`) et le plafond du paquet (`nadia-prof`, une ligne). **Ce que s54 n'engage pas** : la construction,
   qui retirerait des lots a A ou B. L'utilisatrice choisit (Q6).
 
@@ -335,7 +335,7 @@ est 2174 (s53, cloture), a remesurer. Lignee verifiee avant chaque fusion (`bash
 | `S51-SCI-CORPS-CM1-RESERVES` | a rendre | non attendu | contenu seul |
 | `S51-OUTIL-JOURNAL-TOKENS` | **prix deja rendu** (`confirmation-archunit.md` s53 section 5) ; a confirmer avec `ecrire_rapport_sprint` et le defaut de `main` sans `--sprint` (lignes 462 a 464) | non | **T4** : le geste couvre-t-il aussi `main` sans `--sprint` ? |
 | `S53-REPORT-GRANDS-NOMBRES` | a rendre | non | **T5** : les deux constantes en espace insecable suffisent-elles, ou le `startsWith` doit-il changer de forme ? |
-| `S54-ART-CP-10-PRIX` | prix a rendre | **`ADR-0104`, statut** : `Propose` ; sa condition de passage a `Accepte` etait la reponse de `nadia-prof` a `C5` clause 1 (donnee le 2026-10-06 selon `DEC-0113` 3.1) | **T6** : statut d'`ADR-0104`, et prix d'une mecanique qui montre deux oeuvres ensemble, en tailles (le depot n'a pas de tarif de developpement) |
+| `S54-ART-CP-10-PRIX` | prix a rendre | **`ADR-0104`, statut** : `Propose` a l'ouverture (`Accepte` le 2026-10-07, voir `ADR-0104`) ; sa condition de passage a `Accepte` etait la reponse de `nadia-prof` a `C5` clause 1 (donnee le 2026-10-06 selon `DEC-0113` 3.1) | **T6** : statut d'`ADR-0104`, et prix d'une mecanique qui montre deux oeuvres ensemble, en tailles (le depot n'a pas de tarif de developpement) |
 | README, section 9 | a rendre | amendement | **T7** : ecrire la regle du push (A8 de la retro de s53) |
 
 ## Verification poste/story (`PAR-16`, `squad/README.md` section 4)

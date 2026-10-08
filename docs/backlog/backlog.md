@@ -20167,6 +20167,7 @@ ligne de matrice ne change de statut par cette section.
 `cm1-grands-nombres.yaml` rend **0** (mesure du 2026-10-08, sommet de la branche ; 14 le 2026-10-07). `nadia-prof` (`FICHE-bandit-manchot-grands-nombres-cm1.md`,
 note du 2026-10-08) : la correction ne passe pas par sa porte, la ponctuation du texte de l'enfant releve du `relecteur-pedagogique` ; aucun verdict, tarif 0,0.
 Je n'ai pas verifie si cette relecture est tracee dans le depot : a router par `sofia-sm` si elle ne l'est pas.
+**Relecture tracee le 2026-10-08 (`relecteur-pedagogique`)** : tenue, 14 enonces sur 14, seule l'espace change ; trace dans `FICHE-bandit-manchot-grands-nombres-cm1.md`, section "Passage du 2026-10-08 (s54)". Les 12 espaces ordinaires restantes avant un signe double sont dans des `indice`, hors du perimetre de la story (cliquet de `TYP-1`).
 
 - **Besoin** : en tant qu'eleve de CM1, je veux que la consigne "Ecris en chiffres : ..." ne coupe pas la ligne entre le mot et
   les deux-points, afin de lire une consigne correcte (`DEC-0002`, amendement du 2026-08-04).
@@ -20383,7 +20384,7 @@ premier passage. `EMC-CM1-02` **`couvert-valide`**, avec la mention de couvertur
   commencer a rapprocher des oeuvres par ce que je vois. **Rien de cela n'est construit a s54.**
 - **Competence programme visee** : arts plastiques, CP, `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 10).
 - **Criteres d'acceptation** (deux fichiers a lire, aucune construction) : (1) un avis de `theo-archi` donne, en tailles, le prix de la mecanique
-  d'une presentation de deux oeuvres ensemble et le statut d'`ADR-0104` (aujourd'hui `Propose`) : rouge sur l'existant, aucun prix n'est ecrit ; (2) une
+  d'une presentation de deux oeuvres ensemble et le statut d'`ADR-0104` (`Propose` a l'ouverture de s54, `Accepte` le 2026-10-07 selon `ADR-0104`) : rouge sur l'existant, aucun prix n'est ecrit ; (2) une
   ligne de `nadia-prof` donne le plafond d'un paquet `DEGRADE` pour la ligne ; (3) aucune ligne de matrice ne change, et **la mecanique n'est pas construite** :
   `git diff round-two --stat` ne montre, pour cette story, ni fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/`, ni ligne de matrice (le
   fichier de paquet et le catalogue sont touches par `S54-BR-ART-CP-10`, pas par celle-ci).
@@ -20473,6 +20474,11 @@ fiche section 3). Trois reserves non bloquantes, ouvertes ci-dessous et non enga
 
 **Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Reserve neuve, non bloquante, de `nadia-prof` sur `FRA-CE1-19` (`FICHE-bandit-manchot-passe-compose-ce1.md`,
 section 5). La ligne est `couvert-valide`, non rouverte. Report : aucun (ouverte le jour du verdict). Engagement : `DEC` d'ouverture de s55.
+
+**Etat au 2026-10-08 (s54, annotation du `relecteur-pedagogique`) : LIVREE par `c876fadc` (`marc-dev`), rejeu de `nadia-prof` non ecrit.** Le geste a eu lieu le jour de l'ouverture
+de la reserve, sans engagement ni `DEC`. Verifie sur le sommet courant : `grep -c 'indice: "Ne recopie pas le verbe'` rend 19, `grep -c 'indice: "Avec ce sujet, comment'` rend 2 ;
+le commit change 8 lignes dans `ce1-passe-compose.yaml`. La levee de la reserve appartient a `nadia-prof` (critere ci-dessous : "rejeu par `nadia-prof`") ; la fiche n'est pas modifiee.
+Le texte "OUVERTE, non engagee" ci-dessus decrit l'etat a l'ouverture.
 
 - **Besoin** : en tant qu'eleve de CE1 qui ecrit *"tu as regarder"* au lieu de *"tu as regarde"*, je veux que l'indice me dise que j'ai recopie le verbe au lieu
   de le changer, afin de comprendre ce que j'ai rate et pas seulement d'ecarter une proposition.

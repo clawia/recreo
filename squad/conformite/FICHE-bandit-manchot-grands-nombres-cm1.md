@@ -895,3 +895,9 @@ rendu (aucun signe seul sur sa ligne) ; la correction la sert sans rien changer 
 L'espace qui suit `:` reste secable : le plus long bloc insecable que la correction cree est *"chiffres
 :"*, ce qui n'ouvre aucun risque de debordement du type de mon refus du 2026-08-16. Je ne l'ai pas
 mesure a l'ecran. Tarif : **0,0**. Les verdicts anterieurs de cette fiche restent inchanges.
+
+## Passage du 2026-10-08 (s54) - `relecteur-pedagogique`, ponctuation de `S53-REPORT-GRANDS-NOMBRES`
+
+Controle de la correction `d958cfc6` (`lea-dev`), porte de la ponctuation (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`), au titre de la condition posee par `nadia-prof` ci-dessus (le commit ne change que l'espace devant `:`).
+**Tenu.** Les 14 lignes `enonce` qui portent un deux-points l'ecrivent desormais avec une espace insecable avant `:` (14 sur 14) ; comparaison ligne a ligne du diff du YAML, avant et apres : seule cette espace change, aucun mot ni nombre.
+Les deux constantes `PREFIXE_ECRIRE` et `PREFIXE_LIRE` de `PaquetCm1GrandsNombresTest` portent la meme espace. Le cliquet de `TYP-1` passe de 26 a 12 pour ce paquet : les 12 restantes sont d'autres champs que `enonce` (indices), dette cliquetee et non traitee par ce commit. Aucune faute d'orthographe ni d'accent relevee sur les 14 enonces. Aucun verdict pedagogique n'est rendu ici.
