@@ -19,7 +19,7 @@
 |---|---|---|
 | `JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 bash outils/mvn-jdk21.sh -v` | code 1, "ce JDK rapporte inconnue" | code 0, Maven lance |
 | `bash outils/mvn-jdk21-test.sh` | code 0 (le cas n'existait pas) | code 0 |
-| Cas neuf, correction retiree (ADR-0013) | - | 2 ECHEC : `attendu 0|mvn lance, obtenu 1|mvn non lance` et version annoncee absente ; code 1 |
+| Cas neuf, correction retiree (ADR-0013) | - | 2 ECHEC : `attendu 0 (mvn lance), obtenu 1 (mvn non lance)` et version annoncee absente ; code 1 |
 
 Version rapportee par l'enveloppe apres correction : **21.0.10** ("Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10"), Maven 3.9.9, `Java version: 21.0.10`.
 
