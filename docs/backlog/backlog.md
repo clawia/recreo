@@ -20418,16 +20418,56 @@ premier passage. `EMC-CM1-02` **`couvert-valide`**, avec la mention de couvertur
   6. **Plafond avant l'audit** : la ligne de plafond de `S54-ART-CP-10-PRIX` (critere 2) est ecrite par `nadia-prof` **avant** que l'instance C ouvre son arbitrage prealable ; ordre lisible
      par `git log --format=%ad --follow` sur les deux fichiers. Rouge sur l'existant : aucune ligne de plafond n'est ecrite, aucun arbitrage de l'instance C n'existe.
   7. **Isolation de l'instance C** : worktree, branche et scratchpad dedies, distincts de ceux de A et de B (noms a `sofia-sm`) ; `git diff --name-only` de la branche de C ne nomme que
-     la fiche `FICHE-cp-arts-oeuvres-familles.md` et son arbitrage prealable. Rouge sur l'existant : aucune branche de C n'existe.
+     la fiche `FICHE-bandit-manchot-familles-d-oeuvres-cp.md` (nom de la convention du depot, corrige le 2026-10-08 : le critere citait `FICHE-cp-arts-oeuvres-familles.md`, nom qui n'existe pas) et son arbitrage prealable. Rouge sur l'existant : aucune branche de C n'existe.
   8. **Ordre** : `S54-BR-ART-CP-10` est fusionnee avant l'ouverture de l'audit ; l'ordre de fusion avec les autres branches est a `sofia-sm`.
 - **Ce qui reste a `nadia-prof`** : plafond d'une ligne, tarif, `PAR-13` (arts CP terrain neuf ? si oui, C et A ne tiennent pas `PAR-13` ensemble), conditions (i) a (iii) de la borne a trois instances, faits du paquet, verdict (`DEC-0114` A.6, A.11 a A.13).
 - **Lien decision** : `DEC-0114` amendement A.1 et A.9 a A.16 ; `DEC-0113` section 3.1. **Agent** : `lea-dev` (proposition de `camille-po`, A.15, affectation a `sofia-sm`).
   **Report** : `ART-CP-10` compte quatre sprints hors perimetre (s50 a s53) ; si le paquet n'est ni branche ni audite a la cloture de s54, `DEC-0114` section 4 s'applique.
 
-**Etat au 2026-10-08 (s54).** Paquet **branche** (`c7d56d60`, corrections de `nadia-prof` instance C avant branchement `ffbd2157`, test de paquet) : critere 1 vert. Critere 4
-tenu : `ART-CP-10` reste `non couvert` dans la matrice (motif et regle citee dans la ligne). **L'audit de l'instance C est en cours, aucun verdict** ; la ligne ne bouge pas
-avant lui. La fiche `FICHE-cp-arts-oeuvres-familles.md` n'existe pas encore dans le depot : je ne l'ouvre pas dans ce geste, la branche de C la porte (critere 7). **Ecart de
-matrice traite** : le bilan d'arts plastiques CP rangeait encore la ligne en `non couvrable en l'etat` (classement retire le 2026-10-07) ; corrige.
+**Etat au 2026-10-08 (s54) : LIVREE, verdict rendu.** Paquet **branche** (`c7d56d60`, corrections de `nadia-prof` instance C avant branchement `ffbd2157`, test de paquet) : critere 1 vert.
+Critere 4 tenu : `ART-CP-10` reste `non couvert`. **Verdict de l'instance C** (`FICHE-bandit-manchot-familles-d-oeuvres-cp.md`, bloc de validation) : **VALIDE SOUS RESERVE** pour
+`cp-arts-oeuvres-familles`, **aucun mouvement de ligne** ; le verdict dit que le paquet peut rester au catalogue et ne vaut pour aucune ligne de la matrice (le paquet *"ne travaille pas cette competence"*,
+fiche section 3). Trois reserves non bloquantes, ouvertes ci-dessous et non engagees. **Ecart de matrice traite** : le bilan d'arts plastiques CP rangeait encore la ligne en
+`non couvrable en l'etat` (classement retire le 2026-10-07) ; corrige.
+
+### S54-ART-RES-R1 - La consigne du jeu des familles d'oeuvres decrit la tache des douze items, ou redevient generique (`ART-CP-10`, reserve 1)
+
+**Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Reserve non bloquante de `nadia-prof` (instance C), `FICHE-bandit-manchot-familles-d-oeuvres-cp.md`, section 5, point 1. Report : aucun (ouverte le jour du verdict).
+
+- **Besoin** : en tant qu'eleve de CP qui lit la consigne avant de jouer, je veux qu'elle me dise ce qu'on me demande, afin de ne pas chercher un mot "qui va avec" la statue quand la question est tout autre.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, inchangee (texte de catalogue seul).
+- **Competence programme visee** : arts plastiques, CP, `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 10). La ligne reste `non couvert` ; cette story ne la ferme pas et ne la fait pas bouger.
+- **Motif de `nadia-prof`, repris** : la consigne *"Choisis le mot qui va avec la statue, le tableau ou la photographie"* est servie sur chaque manche ; elle est *"fausse"* pour les items 7 et 10, *"incoherente"* pour les items 1 et 11, et *"ne dit rien de la question de lieu"* a l'item 12.
+- **Critere d'acceptation, ses mots** : *"la consigne nomme la tache que les douze items demandent, ou redevient generique, puisque chaque enonce nomme la sienne"*. Elle le juge en rejouant ; le texte est a `lea-dev`, je ne le propose pas.
+  Sortie observable, depuis la racine : `grep -c 'va avec la statue, le tableau ou la photographie' adapters/adapter-content/src/main/resources/catalogue.yaml` rend **1 aujourd'hui** (mesure du 2026-10-08, rouge) et doit rendre **0** ;
+  l'entree `bandit-manchot-familles-d-oeuvres-cp` garde `paquet: cp-arts-oeuvres-familles` et ni son titre ni sa consigne ne contiennent `reconna` ou `rapproch` (critere 3 de `S54-BR-ART-CP-10`, toujours tenu). Que la consigne soit juste est son jugement, pas un test.
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev` (auteure du paquet, affectation a `sofia-sm`). **Lien decision** : `DEC-0114` A.25.
+
+### S54-ART-RES-R2 - L'indice de l'item 11 dit ce qui distingue un tableau d'une photographie (`ART-CP-10`, reserve 2)
+
+**Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Reserve non bloquante de `nadia-prof` (instance C), meme fiche, section 5, point 2. Report : aucun.
+
+- **Besoin** : en tant qu'eleve de CP qui s'est trompe sur *"une statue"* a la question *"Quelle œuvre peinte accroche-t-on au mur ?"*, je veux que l'indice m'aide a choisir entre un tableau et une photographie, afin de ne pas retomber sur une devinette.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, inchangee (contenu seul).
+- **Competence programme visee** : arts plastiques, CP, `ART-CP-10`. La ligne reste `non couvert`.
+- **Motif de `nadia-prof`, repris** : *"On la voit sur le mur, avec un cadre autour."* vaut aussi pour une photographie encadree, et *"sur le mur"* repete l'enonce.
+- **Critere d'acceptation, ses mots** : *"l'indice de l'item 11 dit ce qui distingue un tableau d'une photographie (la peinture), sans nommer le peintre ni le pinceau (items 2 et 6)"*.
+  Sorties observables, sur `adapters/adapter-content/src/main/resources/contenu/cp-arts-oeuvres-familles.yaml` : la ligne `indice` de l'item 11 (celle qui suit `bonneReponse: "un tableau"`) contient `peinture` ou `peint` **0 fois aujourd'hui** (rouge) et doit le contenir 1 fois ;
+  la meme ligne ne contient ni `peintre` ni `pinceau` (0 aujourd'hui, doit rester 0) ; le `git diff` du fichier ne touche que cette ligne. Que l'indice departage reellement les deux est son jugement en rejouant.
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev`. **Lien decision** : `DEC-0114` A.25.
+
+### S54-ART-RES-R3 - Au moins un des trois metiers du jeu des familles d'oeuvres est servi au feminin (`ART-CP-10`, reserve 3)
+
+**Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Reserve non bloquante de `nadia-prof` (instance C), meme fiche, section 5, point 3. Meme motif que les metiers tous masculins de `FICHE-bandit-manchot-problemes-additifs-cp.md`. Report : aucun.
+
+- **Besoin** : en tant qu'eleve de CP, fille ou garcon, je veux que les metiers des artistes soient ecrits aussi bien au feminin qu'au masculin, afin de ne pas lire que ces metiers sont ceux des hommes.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, inchangee (contenu seul).
+- **Competence programme visee** : arts plastiques, CP, `ART-CP-10`. La ligne reste `non couvert`.
+- **Motif de `nadia-prof`, repris** : *"un peintre"*, *"un sculpteur"*, *"un photographe"* sont les bonnes reponses et les distracteurs des items 2, 3 et 4.
+- **Critere d'acceptation, ses mots** : *"au moins un metier sur trois est servi au feminin (une photographe, une peintre, une sculptrice), la meme forme partout ou il apparait dans le paquet"*.
+  Sorties observables, sur le fichier du paquet : `grep -cE "une peintre|une photographe|une sculptrice"` rend **0 aujourd'hui** (rouge) et doit rendre au moins **1** ;
+  pour chaque metier passe au feminin, sa forme masculine n'apparait plus nulle part dans le fichier (`grep -c "un peintre"`, `"un sculpteur"` ou `"un photographe"` rend 0 pour ce metier), distracteurs des items 2, 3 et 4 compris.
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev`. **Lien decision** : `DEC-0114` A.25.
 
 ### PCO-CE1-R1 - Sur les huit items ou l'infinitif remplace le participe, l'indice parle de cette erreur (`FRA-CE1-19`)
 
