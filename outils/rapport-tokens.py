@@ -23,9 +23,9 @@ grandeur. Aucune conversion en euros n'est faite ici, ce sont des compteurs de
 tokens.
 
 Usage :
-    python outils/rapport-tokens.py                 tous les sprints
-    python outils/rapport-tokens.py --sprint s03    un sprint, plus le journal
-    python outils/rapport-tokens.py --dry-run       affiche sans rien ecrire
+    python outils/rapport-tokens.py --sprint s03             un sprint, plus le journal
+    python outils/rapport-tokens.py --sprint s03 --dry-run   affiche sans rien ecrire
+    Sans --sprint l'outil refuse (code 2) et n'ecrit rien.
 """
 
 import argparse
@@ -460,6 +460,15 @@ def main():
     )
     options = analyseur.parse_args()
 
+    if not options.sprint:
+        print(
+            "Refus : --sprint est obligatoire (par exemple --sprint s03). Sans lui, l'outil "
+            "recalculerait la fenetre de chaque sprint et modifierait des rapports deja livres. "
+            "Aucun fichier n'est ecrit.",
+            file=sys.stderr,
+        )
+        return 2
+
     repo = options.repo.resolve()
     # Le depot principal, jamais le worktree : les transcriptions vivent sous le chemin du depot
     # d'origine. Les fenetres de sprint, elles, restent lues dans `repo` - ce sont les fichiers de
@@ -492,16 +501,12 @@ def main():
 
     resultats = collecter(dossier_projet, fenetres)
 
-    if options.sprint:
-        choisies = [f for f in fenetres if f["id"] == options.sprint]
-        if not choisies:
-            print(f"Sprint inconnu : {options.sprint}", file=sys.stderr)
-            return 1
-        for fenetre in choisies:
-            ecrire_rapport_sprint(fenetre, resultats, options.dry_run)
-    else:
-        for fenetre in fenetres:
-            ecrire_rapport_sprint(fenetre, resultats, options.dry_run)
+    choisies = [f for f in fenetres if f["id"] == options.sprint]
+    if not choisies:
+        print(f"Sprint inconnu : {options.sprint}", file=sys.stderr)
+        return 1
+    for fenetre in choisies:
+        ecrire_rapport_sprint(fenetre, resultats, options.dry_run)
 
     ecrire_journal(repo, fenetres, resultats, options.dry_run)
     return 0
