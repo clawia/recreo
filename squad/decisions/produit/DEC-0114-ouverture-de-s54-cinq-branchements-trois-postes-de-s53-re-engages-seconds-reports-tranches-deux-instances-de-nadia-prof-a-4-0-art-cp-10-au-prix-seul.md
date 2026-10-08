@@ -568,6 +568,7 @@ est applique tel quel, c'est a elle de dire sur quel texte, et je le consigne.
 La derniere occurrence de la forme (c) est celle de s50 : deux instances ont ecrit le meme fichier dans le meme scratchpad, sans le savoir (`ARBITRAGE-PREALABLE-s51-borne-a-trois-instances.md`,
 section 2.3). **Je demande trois isolations ; leurs noms et leur mecanique sont a `sofia-sm`** : (1) un worktree dedie a l'instance C ; (2) une branche dediee ; (3) un scratchpad dedie, distinct de
 ceux de A et de B. Ce que C ecrit se limite a sa section de `FICHE-cp-arts-oeuvres-familles.md` et a son arbitrage prealable ; aucun fichier de A ou de B.
+*[Annote le 2026-10-08 (A.26) : le nom reel de la fiche est `FICHE-bandit-manchot-familles-d-oeuvres-cp.md` ; `FICHE-cp-arts-oeuvres-familles.md` n'a jamais existe. Voir A.25 point 5.]*
 **Ordre de fusion** : a `sofia-sm`. Une seule contrainte de produit : le branchement `S54-BR-ART-CP-10` et la ligne de plafond de A.12 sont fusionnes avant que C ouvre l'audit (rien a auditer avant).
 Les fichiers partages avec A et B (`DEC-index.md`, backlog, journal de tokens) sont a elle.
 
@@ -717,3 +718,17 @@ Motif de forme 1 : le verdict est ecrit dans `FICHE-bandit-manchot-familles-d-oe
 
 Statut : `Proposee`, inchange (A.21). Routage : `sofia-sm` affecte `S54-ART-RES-R1` a `-R3` (proprietaire propose : `lea-dev`, auteure du paquet) et propose leur prix ; `nadia-prof` rejoue.
 Il ne touche ni `catalogue.yaml`, ni un paquet, ni du code. Il ne prononce aucun Done.
+
+### A.26 Annotation de A.25 point 3 : le tarif reel de l'instance A est 3,75, la somme est 8,0
+
+Motif de forme 1 : `ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md` ecrit un total reel de A de **3,75 / 4,0** (tableau des complements de cloture : rejeu de `PCO-CE1-R1` 0,25 et
+`S54-EXC-CATEGORIE` 0,25, sur les 3,25 d'avant complements) et dit : *"L'ecart avec A.25 de `DEC-0114` (3,25) est a `camille-po`"*. A.25 point 3 portait 3,25 pour A : c'etait le tarif d'avant les complements de cloture.
+Le texte de A.25 n'est pas reecrit ; cette annotation le corrige.
+
+1. **Somme comptee** : A **3,75** + B **3,25** + C **1,0** = **8,0** (arithmetique relue ; B est le chiffre de A.25, repris de `sofia-sm` et non recompte ici, forme 3 de `DEC-0062`). Contre la borne de **9,5** de A.18 : 1,5 de marge.
+2. **Ecart de `PAR-9`** : A.18 accordait un ecart de +1,5 a la borne de 8,0 de `PAR-8`. **Il n'a pas ete consomme au-dela de `PAR-8`** : 8,0 est la borne de `PAR-8`, pas un depassement. Le poste "ecart de `PAR-9`"
+   est donc **non consomme** (0,0 sur 1,5), et non "sous 8,0" comme A.25 point 4 l'ecrivait : la somme **atteint** 8,0, elle ne reste pas en dessous. Sans l'ecart accorde, la somme tenait deja a la borne exacte, sans marge.
+3. **Ce qui ne change pas** : A.20 (l'ecart n'est pas une jurisprudence pour s55, la `DEC` d'ouverture de s55 compte selon `PAR-9` telle qu'ecrite) vaut toujours.
+   Aucun verdict, aucune ligne de matrice, aucun statut de `DEC` ne bouge ; la matrice reste a 137 / 182.
+
+Statut : `Proposee`, inchange. Pas de changement de code ; aucun routage.

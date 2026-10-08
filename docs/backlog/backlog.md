@@ -20123,7 +20123,7 @@ sprint. Le fichier s'appelle `PASSE-TRANSVERSE-s54-*.md` ; le critere `find squa
 **Etat au 2026-10-08 (s54) : LIVREE**, `nadia-prof` instance A, `squad/conformite/PASSE-TRANSVERSE-s54-portee-depot-apres-les-branchements-de-francais-ce1.md`
 (`find squad -iname 'PASSE-TRANSVERSE-s54*'` rend 1 fichier). Prix reel 0,5. Aucune propriete de la portee D n'est non tenue ; `D7` (contrefacon par tirage) reste
 **non cherchee**, `nadia-prof` le dit et route a `sofia-sm` l'engagement d'un poste distinct. Ce qu'elle route a `camille-po` est ouvert plus bas dans "Sprint 54"
-(`PCO-CE1-R1`, `S54-OBS-SCI-CONSIGNE`, `S54-OBS-ART-ALT`).
+(`PCO-CE1-R1`, `S54-OBS-SCI-CONSIGNE`, `S54-OBS-ART-ALT`). Etat de cloture : `PCO-CE1-R1` levee, `S54-OBS-ART-ALT` retiree sans suite (voir leurs entrees).
 
 **Contexte.** `PAR-4` (arbitrage de s29, section 13.3) : la passe sur les proprietes de portee **D** (section 13.2) est
 une tache nommee, 0,5, affectee a l'instance qui porte l'accumulation. Elle a ete portee a trois `DEC` d'ouverture
@@ -20323,7 +20323,7 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
 **Etat au 2026-10-08 (s54, verdicts de `nadia-prof`, instance A, sur `5cad6650`).**
 - `S54-BR-FRA-CE1-18` : **VALIDE, sans reserve** (`FICHE-bandit-manchot-futur-ce1.md`), `FRA-CE1-18` **`couvert-valide`**, aucune mention de couverture partielle.
 - `S54-BR-FRA-CE1-19` : **VALIDE SOUS RESERVE** (`FICHE-bandit-manchot-passe-compose-ce1.md`), `FRA-CE1-19` **`couvert-valide`**, aucune mention de couverture
-  partielle ; reserve neuve non bloquante `PCO-CE1-R1`, story ci-dessous.
+  partielle ; reserve neuve non bloquante `PCO-CE1-R1`, story ci-dessous. **Levee le meme jour au rejeu** : fiche au statut VALIDE, plus aucune reserve ouverte.
 - **Correction du critere "aucun indice ne renvoie a l'oreille"** (routage de `nadia-prof`, arbitrage prealable section 12) : ce critere se lit avec la barre de
   l'arbitrage du 2026-10-08, **telle que `nadia-prof` la relit elle-meme** (`FICHE-bandit-manchot-passe-compose-ce1.md`, section 4) : un indice ne presente pas
   comme ce qui fait la bonne reponse un critere qu'un distracteur remplit ; une interdiction ou une condition necessaire qu'un distracteur respecte n'est pas
@@ -20480,6 +20480,8 @@ de la reserve, sans engagement ni `DEC`. Verifie sur le sommet courant : `grep -
 le commit change 8 lignes dans `ce1-passe-compose.yaml`. La levee de la reserve appartient a `nadia-prof` (critere ci-dessous : "rejeu par `nadia-prof`") ; la fiche n'est pas modifiee.
 Le texte "OUVERTE, non engagee" ci-dessus decrit l'etat a l'ouverture.
 
+**Etat au 2026-10-08 (s54, rejeu de `nadia-prof`, instance A) : LEVEE.** Verdict ecrit dans `FICHE-bandit-manchot-passe-compose-ce1.md`, "Bloc de rejeu du 2026-10-08" : *"`PCO-CE1-R1` LEVEE"*, rejeu sur `c876fadc` (`marc-dev`), joue au sommet `e9c3ec52`. Le diff ne touche que les lignes `indice` des items 2, 5, 8, 9, 11, 12, 20 et 23 ; `grep -c 'indice: "Ne recopie pas le verbe'` rend 19 et `grep -c 'indice: "Avec ce sujet, comment'` rend 2 (comptes de `nadia-prof`, non remesures ici). La fiche passe a VALIDE ; `FRA-CE1-19` reste `couvert-valide`, la mention de reserve est retiree de la ligne de matrice. Prix reel : 0,25, comme annonce. Story close ; rien a engager a s55.
+
 - **Besoin** : en tant qu'eleve de CE1 qui ecrit *"tu as regarder"* au lieu de *"tu as regarde"*, je veux que l'indice me dise que j'ai recopie le verbe au lieu
   de le changer, afin de comprendre ce que j'ai rate et pas seulement d'ecarter une proposition.
 - **Mecanique demandee** : `bandit-manchot`, `type: question`, inchangee (contenu seul).
@@ -20527,9 +20529,9 @@ juge pas ce constat : c'est le sien. Cette entree le rend visible dans le backlo
 - **Prix** : mot pour mot, **0,25** (`PAR-10`), rejeu par `nadia-prof` (items 1, 3, 4 et la consigne a l'ecran).
 - **Lien decision** : aucune. **Report** : aucun (premiere entree).
 
-### S54-OBS-SCI-CONSIGNE et S54-OBS-ART-ALT - deux observations de la passe transverse, routees a `camille-po` (hors portee D)
+### S54-OBS-SCI-CONSIGNE - une observation de la passe transverse, routee a `camille-po` (hors portee D) ; `S54-OBS-ART-ALT` retiree
 
-**Etat au 2026-10-08 (s54) : OUVERTES, non engagees.** `PASSE-TRANSVERSE-s54-*.md`, section 4 : `nadia-prof` les ecrit *"pour ne pas les avoir vues sans les dire"* ; ce ne sont pas des
+**Etat au 2026-10-08 (s54) : `S54-OBS-SCI-CONSIGNE` OUVERTE, non engagee ; `S54-OBS-ART-ALT` RETIREE, sans suite.** `PASSE-TRANSVERSE-s54-*.md`, section 4 : `nadia-prof` les ecrivait *"pour ne pas les avoir vues sans les dire"* ; ce n'etaient pas des
 reserves, et elles ne sont pas de son lot (`PAR-2`).
 
 **Relecture de `nadia-prof`, 2026-10-08 (s54, instance A)** : les deux textes ci-dessous reprennent fidelement sa passe transverse ; c'est la passe qui etait incomplete sur le premier point et fausse sur le second.
@@ -20540,14 +20542,38 @@ Elle corrige sa passe (`PASSE-TRANSVERSE-s54-*.md`, section 4, note du 2026-10-0
   la premiere phrase de l'enonce n'ajoute que le document a lire. *Texte corrige le 2026-10-08 par `nadia-prof` : il citait une seule forme d'enonce, sans accents, et disait
   "la meme chose" la ou l'enonce nomme le document.* Jeu `bandit-manchot-sciences-extraire-information-cm1` (`SCI-CM1-20`, ligne `couvert-valide` avec couverture partielle, non rouverte). Besoin : en
   tant qu'eleve de CM1, je veux lire une consigne une seule fois, afin de ne pas chercher ce que la seconde phrase ajoute. Instance qui porte cette ligne : B.
-- `S54-OBS-ART-ALT` - **retiree par `nadia-prof` le 2026-10-08, sans suite.** Le texte alternatif *"Une reproduction d'œuvre à regarder attentivement avant de répondre."*,
+- `S54-OBS-ART-ALT` - **RETIREE du backlog, motif de `nadia-prof` (2026-10-08) : sans suite : le texte est celui que `CON-5` demande.** Le texte alternatif *"Une reproduction d'œuvre à regarder attentivement avant de répondre."*,
   identique sur les huit items de `bandit-manchot-decrire-une-oeuvre-cp`, est celui que `CON-5` demande : il *"decrit ce qu'il y a a regarder, jamais la reponse ni ce qui
   permet de la deduire"*. Sur ce jeu, decrire l'oeuvre est la competence (`ART-CP-09`) : un texte qui dirait ce qu'elle montre donnerait la reponse (`CON-1`). `nadia-prof`
   l'avait juge tenu (`FICHE-bandit-manchot-decrire-une-oeuvre-cp.md`, section 6) ; sa passe de s54 l'a cite a tort comme un defaut. *L'ancien texte de cette entree disait
   "qui ne decrit pas l'oeuvre (`CON-5`)" et portait un besoin ("un texte qui me dise ce qu'elle montre") que `CON-1` interdit.* Ligne `ART-CP-09`, `couvert-valide`, non rouverte.
   Aucun critere a ecrire.
-- **Criteres d'acceptation** : a ecrire quand une instance engage l'une des deux ; pour `S54-OBS-ART-ALT`, le critere repose sur ce que `nadia-prof` admet comme texte alternatif, et je
-  ne l'invente pas. Les deux phrases citees sont celles de la passe transverse ; je n'ai pas relu les deux paquets.
+- **Criteres d'acceptation** (`S54-OBS-SCI-CONSIGNE` seule) : a ecrire quand une instance l'engage, avec les mots de `nadia-prof`. Les phrases citees sont celles de la passe transverse ; je n'ai pas relu le paquet.
+  `S54-OBS-ART-ALT` n'a ni critere ni suite : aucun identifiant a retirer du registre, elle n'en a jamais porte.
+
+### S54-PONCT-GN-INDICES - Les 12 indices de `cm1-grands-nombres` portent une espace ordinaire avant un signe double (transverse redactionnelle)
+
+**Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Signalee par le `relecteur-pedagogique` (`FICHE-bandit-manchot-grands-nombres-cm1.md`, "Passage du 2026-10-08 (s54)") : la correction
+`d958cfc6` a traite les 14 `enonce`, les 12 espaces restantes sont dans des champs `indice`, dette cliquetee de `TYP-1` (26 passe a 12) et non traitee. Premier report : aucun.
+
+- **Besoin** : en tant qu'eleve de CM1, je veux que le signe double d'un indice ne passe pas seul a la ligne suivante, afin de lire la phrase d'un seul tenant.
+- **Competence programme visee** : transverse - pas de contenu pedagogique (ponctuation d'un contenu deja `couvert-valide`). Paquet `cm1-grands-nombres`, ligne de matrice non rouverte.
+- **Critere d'acceptation, mesure sur l'existant le 2026-10-08** : `grep -cP '^ *indice: ".* [:;!?]'` sur `cm1-grands-nombres.yaml` rend **12 aujourd'hui** (rouge) et doit rendre **0** ;
+  `grep -cP '^ *indice: ".*\x{00A0}[:;!?]'` doit rendre 12. `git diff` : seule l'espace change dans ces 12 lignes, aucun mot ni nombre. Cliquet de `TYP-1` : de 12 a 0 pour ce paquet.
+- **Ce que la story ne fait pas** : elle ne juge pas le sens des indices ; la relecture de la ponctuation est celle du `relecteur-pedagogique`, `nadia-prof` ne l'a pas jouee (tarif 0,0 pour la ponctuation, note du 2026-10-08).
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev`, auteure de la correction des enonces. **Lien decision** : aucun ; origine `S53-REPORT-GRANDS-NOMBRES`.
+
+### S54-ASCII-APOSTROPHES-TESTS - Deux tests de paquet portent une apostrophe typographique litterale (transverse technique, a router a `theo-archi`)
+
+**Etat au 2026-10-08 (s54) : OUVERTE, non engagee, a router a `theo-archi` par `sofia-sm`.** Signalee par le `relecteur-pedagogique` : `PaquetCm1EmcAtteinteAutruiTest` ligne 57 et `PaquetCm1SciencesActiviteHumaineTest`
+ligne 65 contiennent le motif `\bt[...]`, le caractere U+2019 (apostrophe typographique) en litteral dans un fichier de code. Les identifiants et le code restent en ASCII (`CLAUDE.md`, conventions de redaction).
+
+- **Besoin** : transverse, pas un besoin d'eleve. Besoin de la squad : que le code source reste en ASCII sans que le test cesse de reconnaitre l'apostrophe typographique du contenu.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Critere d'acceptation, mesure sur l'existant le 2026-10-08** : `grep -cP '[\x{2018}\x{2019}]'` rend **1 sur chacun des deux fichiers** (rouge) et doit rendre **0**. Les deux tests restent verts et
+  reconnaissent toujours l'apostrophe typographique ET l'apostrophe droite dans le texte du paquet : la forme de l'ecriture (echappement ou autre) est a `theo-archi`, je ne la choisis pas.
+- **Question a `theo-archi`** : la lecture des paquets accepte-t-elle les deux apostrophes ? Si oui, quel est le test qui prouve que l'echappement reconnait la meme chose que le litteral ?
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : celui que `theo-archi` designe. **Lien decision** : aucun.
 
 ### S53-REL-10 - La base de s53 redevient verte sans assouplir de garde-fou (transverse) - entree ajoutee apres coup
 
