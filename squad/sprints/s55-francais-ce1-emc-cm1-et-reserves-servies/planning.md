@@ -616,3 +616,43 @@ Voir le message de livraison de ce commit : `chemins` et `prefixes` sont lances 
 4. Une branche par file de poste, fusion par commit, ordre de fusion et zone de conflit ecrits (E).
 5. `ASCII`, A7, A8 : lignes dans un couloir, engagement a camille-po ; A9 : ligne.
 6. Aucune `ADR`, aucune `DEC` creee ou amendee. Aucun worktree ouvert, rien fusionne, rien pousse.
+
+---
+
+## Amendement du 2026-10-08 (`sofia-sm`, cloture de s55) : criteres qui ne valent plus, formule de la forme 3
+
+Le texte ci-dessus, amendement de 16:20 compris, est inchange. Cet amendement est ecrit **a la cloture, apres la livraison** : il ne date aucun poste d'avant, il dit
+quels textes de ce planning ne valent plus et ce qui vaut a leur place. Il n'ouvre aucun poste, ne decide ni produit, ni architecture, ni pedagogie, ne prononce aucun Done
+et ne touche ni le backlog, ni la matrice, ni une fiche, ni `catalogue.yaml`. Il n'ajoute aucune ligne d'heure de debut ou de fin : celles du debut de ce fichier et de `review.md`
+restent les seules que `outils/rapport-tokens.py` lit.
+
+- **Heure de l'amendement** : 2026-10-08 21:56 (UTC+02:00), lue par `date`.
+- **Sources** : `relecture-cloture.md` (`relecteur-pedagogique`, points `R1` et `R2`), `rapport-camille-criteres.md` et son bilan Q-Y1 a Q-Y14, `rapport-camille-relecture.md`,
+  `rapport-qualite.md` section 4 (`yanis-qa`), `DEC-0115` amendements A.13 et A.18, backlog ("Sprint 55" et "Cloture de s55").
+- **Mesure** : `grep -n` des quatre motifs ci-dessous sur ce fichier, avant cet amendement, rend les lignes 154, 267, 481, 483, 494 et 496.
+
+### R2 du relecteur : quatre criteres que le backlog declare insatisfiables ou remplaces
+
+Le backlog dit que ses lignes l'emportent pour le produit (`rapport-camille-criteres.md`, section 3). Ce planning ne le disait pas ; il le dit ici.
+
+| Ce que le planning ecrit (lignes) | Pourquoi il ne vaut plus | Ce qui vaut |
+|---|---|---|
+| `grep -c "mise . l.cart"` sur `PaquetCpEmcExclusionTest.java`, au moins 1 (ligne 481) | Deux caracteres separent `l` et `cart` : la commande rend 0 meme sur le texte correct (`rapport-marc-dev-exc.md` E1 ; Q-Y1) | `grep -c "mise à l'écart"` rend au moins 1 ; `yanis-qa` mesure 3 sur `af8b326e` |
+| `il ___ un g.teau`, `Pense . deux amis`, `Cette .uvre` (ligne 483, et les chaines equivalentes du poste `-03` et d'`ART-RES`) | Un `.` pour une lettre accentuee ne matche rien en locale `C` (Q-Y7) | La lettre litterale : 1 en `LC_ALL=C` et en `LC_ALL=C.UTF-8` (mesure de `yanis-qa`, Q-Y7) |
+| 42 `@Test` de `PartieControllerTest` (ligne 494) | Une ligne est `@TestConfiguration` : 41 tests (Q-Y4) | `grep -cE '^\s*@Test\s*$'` rend 41 |
+| cliquet de `TYP-1` "de 12 a 0" (lignes 154, 267, 496) | La forme verte n'est pas une entree a 0 : la table et le total sont redescendus ensemble (Q-Y3, rejoue par `camille-po`) | L'entree `cm1-grands-nombres` est retiree de la table, `DETTE_TOTALE` passe de 502 a 490 ; livre par `08cb05fd` |
+
+### R1 du relecteur : la forme 3 sans sa formule, lignes 27 et 395
+
+Les lignes 27 (l'ordre des matieres) et 395 (les reponses relayees : CI verte, arts plastiques CP a l'instance A, le sprint demarre) disent "forme 3" sans la formule que `DEC-0062`
+(amendement A.2) et `squad/README.md` section 2 bis exigent. Elles resument aussi des enonces que la regle veut cites mot pour mot. Cette tache de cloture n'a pas assiste au planning
+et **ne reconstitue pas de mot pour mot** : le seul texte fige dans le depot est celui de `DEC-0115` sections 0.1 et A.1, que `DEC-0115` A.18 range sous la formule.
+
+**Formule appliquee a ces deux lignes : `recu de MASTER, sans source dans le depot`**, date de reception 2026-10-08. Elle ne fait de ces enonces ni des mots de l'utilisatrice, ni un motif.
+Rien de ce planning ne repose sur eux : l'ordre est repris par `DEC-0115` section 3 sous un motif de forme 1, et la CI relayee "verte" est contredite par la mesure locale de `theo-archi`
+(`avis-faisabilite.md` section 0) puis soldee par `8f740977`.
+
+### Ce que cet amendement ne fait pas
+
+Il ne reecrit aucune ligne ci-dessus, ne decide pas quelle regle de relecture vaut pour l'EMC (le critere C7 et `EMC-9` : arbitrage B section 1.2, deja porte par l'amendement de 16:20, et laisse au backlog par
+`camille-po`) et ne cree ni `ADR`, ni `DEC`.
