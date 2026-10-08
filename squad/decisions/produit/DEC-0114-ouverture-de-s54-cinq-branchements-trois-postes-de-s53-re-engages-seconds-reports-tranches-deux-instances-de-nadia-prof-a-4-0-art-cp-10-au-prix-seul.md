@@ -254,7 +254,7 @@ le 2026-10-06) ; le paquet `cp-arts-oeuvres-familles`, qui dit dans son en-tete 
 **Decision.**
 
 1. **`theo-archi`** ecrit le **prix de la mecanique qui montre deux oeuvres ensemble**, en tailles (le depot n'a pas de tarif de developpement,
-   `DEC-0112` section 7), et le **statut d'`ADR-0104`** (`Propose`). C'est son geste, pas le mien : question `T6` du planning.
+   `DEC-0112` section 7), et le **statut d'`ADR-0104`** (`Propose` a l'ouverture ; annotation du `relecteur-pedagogique`, 2026-10-08 : `ADR-0104` est `Accepte` depuis le 2026-10-07, `theo-archi`, T6). C'est son geste, pas le mien : question `T6` du planning.
 2. **`nadia-prof`** ecrit **en une ligne le plafond d'un paquet `DEGRADE` pour `ART-CP-10`** (ce que le paquet atteint au plus sur la ligne). Je
    n'ecris pas ce plafond.
 3. **Rien n'est construit** : aucun developpeur, aucun `ADR` accepte par moi, aucune ligne de matrice touchee. `ART-CP-10` reste `non couvert`.
@@ -404,7 +404,7 @@ message est clair ; je corrige la reference pour qu'un lecteur ne cherche pas un
 
 **Decision.** `cp-arts-oeuvres-familles` (12 items, auteure `lea-dev`, `lignesDeReferentiel: ["ART-CP-10"]`) est branche au catalogue par une story neuve,
 `S54-BR-ART-CP-10` (backlog, section "Sprint 54"). **La ligne ne ferme pas** : `ART-CP-10` reste `non couvert`, la matrice n'est pas touchee.
-**Rien de la mecanique "deux oeuvres ensemble" n'est construit** : `ADR-0104` reste `Propose`, aucune story de developpement ne la porte.
+**Rien de la mecanique "deux oeuvres ensemble" n'est construit** : `ADR-0104` reste `Propose` (a la date de A.1 ; `Accepte` le 2026-10-07, annotation du `relecteur-pedagogique`), aucune story de developpement ne la porte.
 `S54-ART-CP-10-PRIX` reste engagee telle que la section 6 l'ecrit (prix de `theo-archi`, plafond de `nadia-prof`) : le message ne la retire pas, et je ne
 retire pas sans ordre un poste que cette `DEC` a engage. La decision de financer la mecanique reste a s55 (section 6, point 4) ; elle n'est pas prise ici.
 
@@ -522,7 +522,7 @@ ses mots est ce qui le ferait (section 0.4).
    (la situation que `DEC-0009` a coutee a s04).
 2. **Le report se compte.** `ART-CP-10` : s50 a s53, quatre sprints hors perimetre (section 4). L'issue (d) en aurait fait un cinquieme sprint sans verdict sur un paquet deja branche.
 
-**Ce que cette instance ne fait pas.** Elle ne ferme pas la ligne, ne juge pas la mecanique "deux oeuvres ensemble" (`ADR-0104` reste `Propose`, A.1) et ne dispense pas d'un verdict ecrit
+**Ce que cette instance ne fait pas.** Elle ne ferme pas la ligne, ne juge pas la mecanique "deux oeuvres ensemble" (`ADR-0104` reste `Propose`, A.1 ; `Accepte` le 2026-10-07, annotation du `relecteur-pedagogique`) et ne dispense pas d'un verdict ecrit
 par `nadia-prof` dans le bloc de validation de la fiche, que j'ouvre quand le jeu entre en construction.
 
 ### A.11 Tarif, a confirmer par `nadia-prof` (`Q3`)
