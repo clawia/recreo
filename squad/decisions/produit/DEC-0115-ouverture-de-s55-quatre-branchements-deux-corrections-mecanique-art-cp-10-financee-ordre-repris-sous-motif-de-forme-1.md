@@ -459,3 +459,24 @@ Aucune fiche n'est ecrite par cet amendement. Le critere d'`EXC-R15` n'est pas e
 ### A.12 Ce que cet amendement ne fait pas
 
 Statut de la `DEC` inchange (`Proposee`). Ne touche ni catalogue, ni code, ni paquet, ni matrice (aucun statut ne bouge). Ne prononce aucun Done. Ne fixe aucun tarif.
+
+---
+
+## Amendement du 2026-10-08 (s55, `camille-po`, troisieme) : criteres corriges apres la lecture de testabilite de `yanis-qa`
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Sources lues : `lecture-testabilite.md` (`yanis-qa`, base `2d0d10e7`), `ARBITRAGE-QC4-s55.md` (`nadia-prof`), `avis-faisabilite.md` section 7 (`theo-archi`). Chaque defaut a ete remesure par moi sur `fa4ddc7e` ; mesures, refus et commandes : `rapport-camille-criteres.md` du dossier de sprint. Les textes de criteres sont dans le backlog, section "Sprint 55" et sous les entrees de "Sprint 54" concernees.
+
+### A.13 Ce que cet amendement remplace ou retire
+
+| Ligne de la `DEC` | Devient |
+|---|---|
+| A.6, "critere non tenable tel qu'ecrit, a reecrire apres QC4" | **Reecrit** (backlog, `S54-EXC-CATEGORIE`). `nadia-prof` a repondu a QC4 : seuil de `FAB-1a` sur deux categories, quatre lignes inchangees, prix 0,25. La clause "`PaquetCpEmcExclusionTest` reste vert" est remplacee par le tableau de commandes de sa section 6 |
+| A.6, "`CLASSEMENTS_VALIDES` ne connait pas la categorie neuve et les items 1 et 3 basculent en silence dans la tache B (faux vert)" | **Retire, inexact.** `PaquetCpEmcExclusionTest` identifie la tache de classement par son enonce (`estDeTacheClassement`), pas par ses bonnes reponses ; `nadia-prof` l'a corrige (QC4, section 1). Ce que A.6 reprenait de l'avis de `theo-archi` 7.1 etait sa phrase. Le garde-fou aveugle est celui de la tache B (mutation M2) |
+| A.5, point 1 (critere 6 de la mecanique) | Les commandes `ls squad/conformite \| grep -ci s55` et `ls squad/design \| grep -c s55` sont remplacees par des commandes qui nomment les mots et le fichier ; `QC4` et `G-NADIA-A` sont fermees ; l'ordre se juge par `git merge-base --is-ancestor`. Ma phrase "0 aujourd'hui" n'etait vraie qu'a `98e4bbcd` |
+| A.9, ligne `S54-ASCII-APOSTROPHES-TESTS` | Ajout d'un cas fabrique (`t` suivi de U+2019 puis `as` rejete, sans U+2019 litteral dans le test) : "les deux tests restent verts" est vrai que la reconnaissance soit gardee ou perdue |
+| A.9, ligne A8 | "sort 2" est rendu avant tout controle du dossier des transcriptions, trois cas (dossier vide, inexistant, reel) |
+| A.11, "le critere d'`EXC-R15` n'est pas ecrit non plus : il attend la reponse de `nadia-prof` a QC4" | Ecrit, voir la premiere ligne |
+
+**Questions de `yanis-qa` non tranchees ici, routees** : Q-Y5(b) ("jamais la reponse", item 6, `va`) a `nadia-prof` par `sofia-sm` (ecart `E1` du rapport de `marc-dev`) ; Q-Y14 (`alt` d'une image de proposition) a `nadia-prof` par `sofia-sm`, avec la proposition d'`ines-design` (`alt=""`) ; la forme du cas fabrique de Q-Y8 a `theo-archi`.
+
+**Ne fait pas** : ne touche ni catalogue, ni code, ni paquet, ni matrice, ni le planning (ses lignes de la section D que ce texte remplace restent ecrites la-bas ; le backlog fait foi pour le produit, et `sofia-sm` aligne le planning si elle le veut). Ne prononce aucun Done. Statut de la `DEC` inchange (`Proposee`). Aucun tarif change : `EXC-R15` reste a 0,25, `nadia-prof` n'ayant fourni aucun texte de remplacement.
