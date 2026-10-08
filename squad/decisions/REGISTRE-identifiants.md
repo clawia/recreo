@@ -11,6 +11,24 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s55, instance A, le 2026-10-08 (Done pedagogique de `FRA-CE1-14` et
+`FRA-CE1-12`, VALIDE SOUS RESERVE ; reserves 1 a 3 de `bandit-manchot-familles-d-oeuvres-cp` levees).**
+Trois identifiants ajoutes, des reserves : **`ACV-CE1-R1`** et **`ACV-CE1-R2`**, ecrits dans
+`squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-ce1.md`, et **`CLM-CE1-R1`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-classes-de-mots-ce1.md`. **Forme copiee** de `PCO-CE1-R1` : trois
+segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). **Aucun prefixe neuf** :
+`ACV-CE1-1` a `-3` et `CLM-CE1-1` a `-3` etaient alloues ; `git grep` sur `ACV-CE1-R` et `CLM-CE1-R` ne
+rendait rien avant d'ecrire. Les trois lignes de la section 4 sont dans le meme diff que les fiches. La
+levee des reserves du jeu des familles d'oeuvres n'ecrit aucun identifiant.
+
+Ligne d'etat courant portee de **924 / 158 a 927 / 158**. **Methode : le chiffre est celui que le
+garde-fou affiche sur mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test
+-Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend :
+*"declare 924 identifiants alloues et 158 prefixes distincts, sa table en porte 927 et 158"*. C'est
+ce **927 / 158** que je recopie. Aucun autre defaut rendu. L'instance B de s55 ecrit sur sa propre
+branche ; si elle alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, s54, instance A, le 2026-10-08, cloture (`S54-EXC-CATEGORIE`).** Un identifiant
 ajoute, une reserve : **`EXC-R15`**, ecrit dans `squad/conformite/FICHE-bandit-manchot-exclusion-cp.md`. **Forme
 copiee** de `EXC-R14`, alloue au meme fichier : deux segments, marqueur `R` dans le dernier (`ADR-0100`).
@@ -746,7 +764,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `924` identifiants alloues, `158` prefixes distincts.
+**Compte courant, verifie par la CI** : `927` identifiants alloues, `158` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2204,12 +2222,15 @@ clause 2 par une exemption.
 | `CLM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `CLM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `CLM-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `CLM-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-classes-de-mots-ce1.md` |
 | `VSJ-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `VSJ-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `VSJ-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `ACV-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `ACV-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `ACV-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `ACV-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-ce1.md` |
+| `ACV-CE1-R2` | `squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-ce1.md` |
 | `GNA-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `GNA-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `GNA-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |

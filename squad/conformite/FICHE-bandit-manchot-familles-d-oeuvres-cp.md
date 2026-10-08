@@ -5,17 +5,20 @@
   (12 items, type `question`), paquet `DEGRADE` ecrit en s53, corrige par `lea-dev` le 2026-10-08
   (commit `9a0011b1`) sur les six points de mon arbitrage prealable.
 - **Entree de catalogue** : `bandit-manchot-familles-d-oeuvres-cp`, titre servi *"Les familles
-  d'œuvres"*, consigne servie *"Choisis le mot qui va avec la statue, le tableau ou la
-  photographie."*, `nombreDeManches: 10` (commit `920e19e2`).
+  d'œuvres"*, consigne servie *"Lis bien, puis choisis la bonne réponse."* depuis `f53f5c47`
+  (etait *"Choisis le mot qui va avec la statue, le tableau ou la photographie."*, commit
+  `920e19e2`), `nombreDeManches: 10`.
 - **Ligne declaree** : `ART-CP-10`. **La ligne ne ferme pas et reste `non couvert`**, quel que soit
   ce verdict (plafond ecrit par l'instance A, confirme dans mon arbitrage prealable, section 1).
 - **Story** : `S54-BR-ART-CP-10` (`docs/backlog/backlog.md`).
 - **Arbitrage prealable** :
   `squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/arbitrage-nadia-c.md`
   (instance C, 2026-10-08, commit `c5c2d50f`).
-- **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-08 par `nadia-prof`
-  (instance C, s54), apres avoir joue le jar servi.
-- **Derniere mise a jour** : 2026-10-08 (premier audit).
+- **Statut global** : **VALIDE**, prononce le 2026-10-08 par `nadia-prof` (instance A, s55),
+  apres avoir rejoue le jar servi : les trois reserves du premier verdict sont levees (bloc de
+  validation, verdict du 2026-10-08, s55). Premier verdict **VALIDE SOUS RESERVE** le 2026-10-08
+  (instance C, s54), conserve plus bas.
+- **Derniere mise a jour** : 2026-10-08 (rejeu des reserves 1 a 3, s55).
 
 Nom de cette fiche : la convention du depot (`FICHE-<id de l'entree de catalogue>`). Le critere 7
 de la story la nomme `FICHE-cp-arts-oeuvres-familles.md` ; c'est le nom du paquet, pas celui du
@@ -149,6 +152,51 @@ que `build`.
 ---
 
 ## Bloc de validation
+
+### Verdict du 2026-10-08 (`nadia-prof`, s55, instance A) : **VALIDE**, reserves 1 a 3 levees
+
+> **Done pedagogique : VALIDE.** Les trois reserves de la section 5 sont levees. `camille-po` peut
+> clore `S54-ART-RES-R1` a `R3`.
+>
+> **Mouvement de ligne : aucun.** `ART-CP-10` reste `non couvert` (section 3) ; ce verdict dit que le
+> paquet reste au catalogue sans reserve ouverte.
+
+**Audit joue.** Worktree `s55-nadia-audit-a` a `fa4ddc7e` (`round-two`, qui contient `f53f5c47`).
+`bash outils/mvn-jdk21.sh -B clean verify` : BUILD SUCCESS, Java 21.0.10 ; job `build` seul lance par
+moi. `catalogue.yaml` et le paquet extraits du jar, `cmp` contre l'arbre : identiques. Jar servi par mon
+propre processus, port dedie, arrete par son PID. **Trente parties de dix manches** (memes conduites que
+`FICHE-bandit-manchot-accord-sujet-verbe-ce1.md`, section 1) : les douze items tires de 21 a 28 fois,
+chacun avec au moins 26 erreurs et 2 revelations ; consigne, propositions et indices servis identiques au
+fichier, aucun distracteur credite juste. Le jeu est liste au niveau CP sous son titre. Rendu non vu au
+navigateur.
+
+**Regime** : `PAR-10`, mot pour mot. Les textes sont ceux de l'arbitrage de l'instance B
+(`ARBITRAGE-PREALABLE-s55-instance-b-emc-cm1.md`, section 4.2), que je rejoue sous `DEC-0115`,
+amendement A.2.
+
+| Reserve | Texte de l'arbitrage | Servi | Contre la propriete de la section 5 | Verdict |
+|---|---|---|---|---|
+| 1, consigne | *"Lis bien, puis choisis la bonne réponse."* | identique | la consigne redevient generique, chaque enonce porte sa question ; ni *reconna* ni *rapproch* dans l'entree | **levee** |
+| 2, indice de l'item 11 | *"Cette œuvre est faite avec de la peinture."* | identique | apres une erreur sur *une statue*, il ecarte *une photographie* ; ni *peintre* ni *pinceau* | **levee** |
+| 3, metiers | *"une photographe"* aux items 2, 3, 4 | identique, 3 occurrences, aucune *"un photographe"* | un metier sur trois au feminin, meme forme partout | **levee** |
+
+**Ce que je note sans reserve.** L'indice de l'item 11 reprend le mot *peinte* de l'enonce : il renvoie
+l'enfant au mot a lire, c'est ce que ma propriete demandait. *"Une photographe"*, bonne reponse de
+l'item 3, reste la plus longue des trois propositions, comme *"un photographe"* avant : rien de change
+sur ce point, que j'avais deja lu a s54 (famille de mots, pas une devinette).
+
+**Ce dont je reste la seule garde** : inchange (section 6). Aucun test ne porte la consigne generique,
+le pouvoir de l'indice de l'item 11 de departager, ni le genre des metiers.
+
+**Identifiants** : aucun ecrit, aucun renomme.
+
+**Tarif consomme** : 0,25 (`PAR-10`, mot pour mot), instance A.
+
+**Signe** : `nadia-prof`, s55, instance A, 2026-10-08.
+
+---
+
+### Verdict du 2026-10-08 (`nadia-prof`, s54, instance C) : **VALIDE SOUS RESERVE**
 
 > **Done pedagogique : VALIDE SOUS RESERVE.**
 >
