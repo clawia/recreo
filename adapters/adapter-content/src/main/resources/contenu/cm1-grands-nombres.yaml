@@ -12,19 +12,19 @@ items:
   - enonce: "Écris en chiffres : quarante mille sept cent cinq."
     bonneReponse: "40 705"
     distracteurs: ["407 050", "400 705"]
-    indice: "Repère le mot 'mille' : tout ce qui précède donne les milliers, le reste donne les unités simples."
+    indice: "Repère le mot 'mille' : tout ce qui précède donne les milliers, le reste donne les unités simples."
   - enonce: "Écris en chiffres : trois cent cinq mille quatre cent vingt-et-un."
     bonneReponse: "305 421"
     distracteurs: ["350 421", "3 521"]
-    indice: "Repère le groupe avant 'mille' et le groupe après : ce sont les deux classes du nombre."
+    indice: "Repère le groupe avant 'mille' et le groupe après : ce sont les deux classes du nombre."
   - enonce: "Écris en chiffres : cent vingt-huit mille."
     bonneReponse: "128 000"
     distracteurs: ["182 000", "820 000"]
-    indice: "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
+    indice: "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
   - enonce: "Écris en chiffres : six cent mille quarante."
     bonneReponse: "600 040"
     distracteurs: ["60 040", "600 400"]
-    indice: "Aucune dizaine de mille, aucun millier, aucune centaine ni unité ici : seulement des centaines de mille et des dizaines."
+    indice: "Aucune dizaine de mille, aucun millier, aucune centaine ni unité ici : seulement des centaines de mille et des dizaines."
   - enonce: "Écris en chiffres : quatre-vingt-dix mille quatre-vingt-dix."
     bonneReponse: "90 090"
     distracteurs: ["9 090", "90 900"]
@@ -32,7 +32,7 @@ items:
   - enonce: "Écris en chiffres : quatre cent cinquante-deux mille."
     bonneReponse: "452 000"
     distracteurs: ["45 200", "425 000"]
-    indice: "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
+    indice: "Rien n'est écrit après 'mille' : le nombre se termine par trois zéros."
   - enonce: "Écris en chiffres : un million."
     bonneReponse: "1 000 000"
     distracteurs: ["100 000", "10 000"]
@@ -57,7 +57,7 @@ items:
   - enonce: "Lis ce nombre : 213 500."
     bonneReponse: "deux cent treize mille cinq cents"
     distracteurs: ["deux cent treize mille cinquante", "deux cent treize mille cinq"]
-    indice: "Repère si un zéro se cache au milieu du nombre : il ne s'entend pas mais il compte."
+    indice: "Repère si un zéro se cache au milieu du nombre : il ne s'entend pas mais il compte."
   - enonce: "Lis ce nombre : 32 010."
     bonneReponse: "trente-deux mille dix"
     distracteurs: ["trois mille deux cent dix", "trente-deux mille cent"]
@@ -70,7 +70,7 @@ items:
   - enonce: "Décompose 40 705 en valeurs de position."
     bonneReponse: "40 000 + 700 + 5"
     distracteurs: ["40 000 + 70 + 5", "40 000 + 700"]
-    indice: "Chaque chiffre vaut sa position : compte les zéros qui suivent."
+    indice: "Chaque chiffre vaut sa position : compte les zéros qui suivent."
   - enonce: "Décompose 305 421 en valeurs de position."
     bonneReponse: "300 000 + 5 000 + 400 + 20 + 1"
     distracteurs: ["300 000 + 5 000 + 400 + 2 + 1", "300 000 + 50 000 + 400 + 20 + 1"]
@@ -78,11 +78,11 @@ items:
   - enonce: "Décompose 128 000 en valeurs de position."
     bonneReponse: "100 000 + 20 000 + 8 000"
     distracteurs: ["100 000 + 2 000 + 8 000", "100 000 + 20 000 + 800"]
-    indice: "Rien après 'mille' : les trois derniers chiffres sont des zéros."
+    indice: "Rien après 'mille' : les trois derniers chiffres sont des zéros."
   - enonce: "Décompose 600 040 en valeurs de position."
     bonneReponse: "600 000 + 40"
     distracteurs: ["600 000 + 4", "600 000 + 400"]
-    indice: "Aucune dizaine de mille, aucun millier, aucune centaine ni unité dans ce nombre : il ne reste que des centaines de mille et des dizaines."
+    indice: "Aucune dizaine de mille, aucun millier, aucune centaine ni unité dans ce nombre : il ne reste que des centaines de mille et des dizaines."
   - enonce: "Décompose 90 090 en valeurs de position."
     bonneReponse: "90 000 + 90"
     distracteurs: ["90 000 + 9", "90 000 + 900"]
@@ -107,7 +107,7 @@ items:
   - enonce: "Compare 600 400 et 600 040."
     bonneReponse: ">"
     distracteurs: ["<", "="]
-    indice: "Les deux nombres ont les mêmes chiffres : compare les positions un à un."
+    indice: "Les deux nombres ont les mêmes chiffres : compare les positions un à un."
   - enonce: "Compare 816 203 et 816 023."
     bonneReponse: ">"
     distracteurs: ["<", "="]
@@ -115,7 +115,7 @@ items:
   - enonce: "Compare 452 000 et 425 000."
     bonneReponse: ">"
     distracteurs: ["<", "="]
-    indice: "Un seul chiffre change de position : repère lequel."
+    indice: "Un seul chiffre change de position : repère lequel."
   - enonce: "Compare 70 018 et 78 000."
     bonneReponse: "<"
     distracteurs: [">", "="]
@@ -123,4 +123,4 @@ items:
   - enonce: "Compare 213 500 et 213 050."
     bonneReponse: ">"
     distracteurs: ["<", "="]
-    indice: "Les centaines de mille et les dizaines de mille sont les mêmes : regarde les chiffres suivants."
+    indice: "Les centaines de mille et les dizaines de mille sont les mêmes : regarde les chiffres suivants."
