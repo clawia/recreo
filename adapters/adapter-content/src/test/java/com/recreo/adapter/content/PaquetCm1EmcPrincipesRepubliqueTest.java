@@ -259,4 +259,10 @@ class PaquetCm1EmcPrincipesRepubliqueTest {
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("EMC-1");
     }
+
+    @Test
+    void lElisionDeTuEstReconnueAvecLApostropheDroiteEtLApostropheTypographique() {
+        assertThat(ADRESSE_A_L_ENFANT.matcher("Quand t'appelle-t-on ?").find()).isTrue();
+        assertThat(ADRESSE_A_L_ENFANT.matcher("Quand t\u2019appelle-t-on ?").find()).isTrue();
+    }
 }
