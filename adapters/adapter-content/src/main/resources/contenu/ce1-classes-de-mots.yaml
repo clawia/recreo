@@ -7,7 +7,7 @@
 # CLM-CE1-2 : le mot cible n'ouvre jamais la phrase ; aucun pronom, adverbe, preposition ni conjonction
 # n'est designe.
 # CLM-CE1-3 : trois noms communs sur cinq suivent un adjectif et non un determinant ; l'adjectif est place
-# avant le nom dans deux items sur cinq, apres dans trois.
+# avant le nom dans deux items sur cinq, apres le nom dans deux, apres le verbe etre dans un.
 # L'enonce est la phrase seule ; la question (la classe du mot entre guillemets) est portee par la consigne
 # du jeu. Chaque item declare sa classe juste au-dessus de lui.
 # TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
@@ -126,7 +126,7 @@ items:
     distracteurs: ["nom commun", "déterminant"]
     indice: "Cherche à quoi sert ce mot dans la phrase."
     partDesignee: "range"
-  # CLM-CE1-1: adjectif après le nom
+  # CLM-CE1-1: adjectif attribut, apres le verbe etre
   - enonce: "L'eau est « froide »."
     bonneReponse: "adjectif"
     distracteurs: ["nom commun", "verbe"]
