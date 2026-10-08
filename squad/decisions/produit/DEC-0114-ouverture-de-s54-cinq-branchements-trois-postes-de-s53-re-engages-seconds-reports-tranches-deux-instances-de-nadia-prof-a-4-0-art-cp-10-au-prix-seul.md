@@ -590,3 +590,74 @@ l'arbitrage de la charge est a `sofia-sm` (A.5 : environ 590 lignes en six fichi
 
 Il ne touche ni `catalogue.yaml`, ni un paquet, ni une fiche, ni `MATRICE-couverture.md` (inchangee, 132 / 182 ; `ART-CP-10` reste `non couvert`). Il ne prononce aucun Done, ne fixe aucun
 tarif ni plafond et n'ecrit ni l'ecart ni l'amendement de `PAR-9`.
+
+---
+
+## Amendement du 2026-10-08 (s54, `camille-po`), seconde suite : `Q12`, la borne de `PAR-9` pour s54 est ecrite a 9,5
+
+Meme regime : passages amendes marques, pas effaces ; arrive apres l'ouverture de s54. **Cet amendement leve la condition de A.13 sur le point de l'ecart** ; il ne la leve pas sur les conditions de `nadia-prof` (A.19).
+
+### A.17 Ce que j'ai recu, cite tel que recu et fige a la reception (`DEC-0062` regle 3.5)
+
+Un message de l'agent qui m'a lance, le 2026-10-08, **sans source dans le depot**. Il dit que l'utilisatrice a repondu a `Q12` : elle *"accepte l'ecart"*, demande *"d'ECRIRE LA NOUVELLE BORNE de PAR-9 pour s54"*
+(somme des budgets par instance de 9,5 : A 4,0, B 4,0, C 1,5 pour l'audit de `cp-arts-oeuvres-familles`) et *"autorise explicitement l'ouverture de l'instance C et cet ecart"*. Je n'ai pas ses mots ; les formules entre
+guillemets sont celles du message de l'agent. **Forme 3 de `DEC-0062` (section 3.2) : elle fonde le fait que l'ecart s'ecrit, jamais sa raison.** Le motif est de forme 1, en A.18.
+
+### A.18 Decision : borne de `PAR-9` pour s54 (amende : A.10, A.13, A.16 sur le point de l'ecart)
+
+Format de `PAR-9` pour un ecart : *l'ecart et son motif*. Les voici.
+
+| | Valeur |
+|---|---|
+| Borne de `PAR-9` pour s54 : somme des budgets par instance | **9,5** (contre 8,0, `PAR-8`) |
+| Ecart a la borne de 8,0 | **+1,5** |
+| Instance A (francais CE1) | 4,0 (3,5 alloues + 0,5 de rejeu), inchangee |
+| Instance B (sciences et EMC CM1) | 4,0 (3,5 alloues + 0,5 de rejeu), inchangee |
+| Instance C (audit de `cp-arts-oeuvres-familles` seul, A.10) | 1,5 (1,0 alloue + 0,5 de rejeu), tarif propose, a confirmer (A.11) |
+| Plafond d'une instance (`PAR-8`) | 5,0, jamais franchi : A, B et C sont chacune en dessous |
+
+**Motifs, de forme 1.**
+
+1. **Q6 de l'utilisatrice** : brancher le paquet `DEGRADE` de `ART-CP-10` sans fermer la ligne (A.1). Un paquet branche sans verdict est la situation que `DEC-0009` a coutee a s04 ; l'audit est donc
+   le cout du branchement et non une option.
+2. **Q11** : A.5 a chiffre les issues. Sur A ou sur B, l'audit les portait a 4,5, au-dessus de `PAR-9` et sans marge de rejeu non allouee, ou a quatre lots sur B, au-dessus de `PAR-8`. L'instance C est la seule issue qui ne touche
+   ni un lot de A ni un lot de B (A.10, motif 1).
+3. **Le report se compte** : `ART-CP-10`, quatre sprints hors perimetre (s50 a s53, section 4). Un cinquieme sprint sans verdict sur un paquet branche aurait ete un report sans decision.
+
+**Ce que l'ecart ne change pas : `PAR-9` n'est pas amendee.** Son texte reste celui de s30 ; ce paragraphe est l'ecart qu'elle prevoit, et non une nouvelle regle.
+
+### A.19 Ce que cette autorisation couvre, et ce qu'elle ne couvre pas
+
+**Elle couvre** : (1) l'ouverture de l'instance C pour un paquet ; (2) la somme de 9,5 pour s54, et elle seule.
+
+**Elle ne couvre pas, et ces points restent a `nadia-prof`, qui les lit et les ecrit ; je ne les tranche pas a sa place** :
+
+1. **`PAR-8`** : le plafond de 5,0 par instance n'est ni leve ni touche. La borne totale de 8,0 est depassee par cet ecart ; que 9,5 soit une borne qu'elle tient pour opposable est de son ressort, pas du mien.
+2. **`PAR-13`** : arts plastiques CP est-il un terrain neuf pour elle ? S'il l'est, C et A (francais CE1, terrain neuf de A, `PAR-7`) ne tiennent pas `PAR-13` ensemble. L'ecart ne repond pas a cette question.
+3. **Les conditions (i) a (iii)** d'une borne a trois instances (A.13, point 3) : vivier instruit, dernier sprint parallele clos sans occurrence des formes (a), (b) ou (c) (se lit sur s53), `PAR-13`. Je ne les declare ni remplies ni inapplicables a une instance de 1,5.
+4. **La question de la barre de 4,0** (A.13, point 4, `DEC-0112` section 5.1) : si C, a 1,5, est sous la barre qu'elle a exigee d'une instance, le message ne dit pas si la question a ete posee sous cette forme. Elle reste ouverte tant que `nadia-prof` ne l'ecrit pas.
+5. **Le tarif** (A.11), **le plafond d'une ligne** pour `ART-CP-10` (A.12, avant l'audit), le verdict et le bloc de validation de la fiche.
+
+Si `nadia-prof` refuse l'un de ces points, l'instance C ne s'ouvre pas, ou s'ouvre sur ses mots, et cet amendement est amende ; **s54 n'est pas touche au-dela de C**.
+
+### A.20 Duree : s54 seulement, aucune jurisprudence pour s55
+
+La borne de 9,5 vaut pour s54 et pour aucun autre sprint. **La `DEC` d'ouverture de s55 compte ses instances selon `PAR-9` telle qu'ecrite (somme egale a la borne de 8,0), sans s'appuyer sur ce precedent.** Une troisieme instance a
+un sprint ulterieur demande son propre ecart, son propre motif de forme 1 et sa propre autorisation. Je ne ferai pas de 9,5 un chiffre de depart.
+
+### A.21 Statut : `Proposee`, inchange
+
+La regle du depot (section 0.4) fait passer `DEC-0114` a `Acceptee` quand (a) les mots de l'utilisatrice sur l'ordre des matieres au-dela de s54 sont ecrits dans le depot en forme 2 avec leur date, ou (b) la `DEC` d'ouverture de s55
+reprend cet ordre sous son propre motif. **Ni (a) ni (b) n'est vrai** : l'ordre (section 7, A.3) n'a toujours que la forme 3 pour source, et `Q12` arrive par le meme canal (message d'agent, sans ses mots). Je ne promeus pas
+la section 7 en motif en passant la `DEC` a `Acceptee` : meme geste que section 0.4. L'ecart de A.18 a un motif de forme 1 et s'applique des maintenant ; il n'a pas besoin du statut pour valoir.
+
+### A.22 Routage
+
+| A qui | Quoi |
+|---|---|
+| utilisatrice, via `sofia-sm` | Redire ses mots sur `Q12` et sur l'ordre (forme 2) : c'est ce qui passe la `DEC` a `Acceptee` |
+| `nadia-prof` | A.19, points 1 a 5, avant d'ouvrir l'instance C |
+| `sofia-sm` | Isolation et ordre de fusion (A.14) ; fusion de cet amendement avant le worktree de `S54-BR-ART-CP-10` (`C1`) |
+| `camille-po` | Backlog et `DEC-index.md` (ce commit) |
+
+Il ne touche ni `catalogue.yaml`, ni un paquet, ni une fiche, ni `MATRICE-couverture.md` (inchangee, 132 / 182). Il ne prononce aucun Done et ne fixe ni tarif ni plafond.

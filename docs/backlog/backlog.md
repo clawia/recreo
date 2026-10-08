@@ -20257,8 +20257,8 @@ seul** (`S54-ART-CP-10-PRIX`), puis, le 2026-10-08, **au branchement du paquet `
 
 Perimetre, instances et reports : `DEC-0114` (statut `Proposee`, section 0.4). Planning :
 `squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/planning.md`. **Deux instances de `nadia-prof`**, comptees a 4,0 chacune :
-A (francais CE1), B (sciences et EMC CM1). **Une troisieme, C, demandee le 2026-10-08 pour un seul paquet** (`DEC-0114` A.9 a A.16), sous la condition de A.13 (ecart ou
-amendement de `PAR-9` a ecrire par l'utilisatrice et `nadia-prof`). Un dev tient un seul worktree a la fois.
+A (francais CE1), B (sciences et EMC CM1). **Une troisieme, C, demandee le 2026-10-08 pour un seul paquet** (`DEC-0114` A.9 a A.16), avec l'ecart a `PAR-9` ecrit le 2026-10-08 (`DEC-0114` A.17 a A.22) : **borne de s54 a 9,5**
+(A 4,0, B 4,0, C 1,5), pour s54 seulement. `PAR-8`, `PAR-13` et les conditions (i) a (iii) restent a `nadia-prof` (A.19). Un dev tient un seul worktree a la fois.
 
 | Instance | Story | Tarif propose (a confirmer par `nadia-prof`) | Dev |
 |---|---|---|---|
@@ -20274,7 +20274,7 @@ amendement de `PAR-9` a ecrire par l'utilisatrice et `nadia-prof`). Un dev tient
 | - | `S53-REPORT-GRANDS-NOMBRES` | `Q5` : `nadia-prof` | `lea-dev` |
 | - | `S53-REPORT-REDACTION` (R3 seul reste) | - | `nadia-prof` (R3) |
 | - | `S54-ART-CP-10-PRIX` | aucun | `theo-archi`, `nadia-prof` |
-| C (`DEC-0114` A.10) | `S54-BR-ART-CP-10` (audit) | 1,0 propose + 0,5 de rejeu = 1,5, **sous la condition de A.13** | `lea-dev` (proposition, affectation a `sofia-sm`) |
+| C (`DEC-0114` A.10) | `S54-BR-ART-CP-10` (audit) | 1,0 propose + 0,5 de rejeu = 1,5, **ecart de `PAR-9` ecrit (A.18), reste a `nadia-prof` : A.19** | `lea-dev` (proposition, affectation a `sofia-sm`) |
 
 ### Criteres communs aux cinq stories de branchement (`S54-BR-*`)
 
