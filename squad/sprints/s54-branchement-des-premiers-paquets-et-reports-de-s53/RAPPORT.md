@@ -107,7 +107,7 @@ Vingt-deux lignes au tableau de `review.md` section 8.
 | Defaut de `rapport-tokens.py` sans `--sprint` (cinq fichiers suivis modifies) | `theo-archi`, `sofia-sm` | s51 | correction ou `--sprint` toujours explicite |
 | Pas de fichier de relecture de cloture | `relecteur-pedagogique` | s54 | fichier ou liste de corrections |
 | Condition (ii) de `nadia-prof` (verification de s52) | `nadia-prof` | s52 | sa verification |
-| Trailers `Opus 5.5` sur 7 commits `[NAD]` et `[THEO]` | utilisatrice | s54 | choix de la regle de `DEC-0110` 17.4 |
+| Trailers `Opus 5.5` sur 7 commits `[NAD]` et `[THEO]` | utilisatrice | s54 | **Tranche le 2026-10-08, 7 commits reecrits.** Reste : portee pour l'avenir (`DEC-0110` 17.4, amendement) |
 | Actions de la retro de s53 non traitees : A2 (push), A9 (`relecture-p11.md`), A11 | leurs proprietaires | s53 | voir `retro.md` |
 | Stories non engagees : `EXC-R15`, `S54-ART-RES-R1` a `R3`, `S54-OBS-SCI-CONSIGNE`, `S54-PONCT-GN-INDICES`, `S54-ASCII-APOSTROPHES-TESTS` | `camille-po` | s54 | `DEC` d'ouverture de s55 (prix : `review.md` section 12) |
 

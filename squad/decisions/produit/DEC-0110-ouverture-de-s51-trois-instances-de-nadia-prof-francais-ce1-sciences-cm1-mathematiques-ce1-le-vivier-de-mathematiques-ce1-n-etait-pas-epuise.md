@@ -1117,6 +1117,25 @@ que le tag.
 4. L'ecart de `0ce82262` est une instance de l'absence de regle avant cette section, pas une faute a
    corriger apres coup.
 
+**Amendement du 2026-10-08 (`camille-po`, s54) : l'arbitrage de l'utilisatrice contredit les points 1 et 2.**
+Forme : message relaye par l'agent qui lance `camille-po`, non cite mot pour mot de l'utilisatrice. Elle a
+tranche U4 de `review.md` de s54 le 2026-10-08. Ce qui est relaye : *"la configuration de session impose ce
+trailer a tous les agents"*, et le trailer de ce depot est *"Claude Sonnet 5.5"* quel que soit le modele
+execute. Les 7 commits de s54 signes *"Claude Opus 5.5"* (`[NAD]` cinq, `[THEO]` deux) ont ete reecrits en
+*"Claude Sonnet 5.5"* par `git filter-branch` du message sur la plage non poussee ; tag de sauvegarde
+`s54-avant-reecriture-trailers` ; arbre identique avant et apres ; les references de hashes des documents ont ete
+remappees par `b76ec8dc`. Effet sur 17.4 : le point 1 (valeur = modele execute) n'a pas ete suivi pour ces 7
+commits, et le point 2 (aucun commit existant n'est reecrit) a ete ecarte pour eux. Les points 3 et 4 ne
+changent pas.
+
+- **Non reecrits : les 43 commits environ signes *"Claude Opus 5.5"* deja pousses (s51 et sprints anterieurs).**
+  Le message relaye ne porte que sur la plage non poussee de s54.
+- **Question ouverte a l'utilisatrice, non tranchee ici.** Le message relaye dit ce qui a ete fait pour s54 et ce
+  que fait la configuration de session ; il ne dit pas si "Claude Sonnet 5.5 quel que soit le modele" devient la
+  regle des sprints suivants, ni si les commits pousses doivent etre reecrits. D'ici sa reponse, le point 1 de 17.4
+  reste le texte ecrit, et un agent dont la session impose un autre trailer le signale dans son rapport au lieu de
+  choisir.
+
 **Amendement de `squad/README.md` : oui, la section 8 en manque une phrase.** Elle dit ce que la CI rejette
 (le tag) et se tait sur le trailer. Le README est amende par `sofia-sm` (retro, section 9, point 9) ; je ne
 l'edite pas. Texte propose, a ajouter a la fin de la section 8 :

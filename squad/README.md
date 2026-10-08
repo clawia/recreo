@@ -481,6 +481,11 @@ Le trailer `Co-Authored-By` d'un commit d'agent nomme le modele que cet agent a 
 de tokens du sprint le donne (`claude-opus-5-5` s'ecrit "Claude Opus 5.5"). Un brief de lancement ne le
 dicte pas. La CI ne le verifie pas : elle ne lit que le sujet. Un trailer errone n'est pas reecrit
 (`DEC-0110` section 17.4).
+Amendement du 2026-10-08 (`camille-po`, s54) : pour les 7 commits de s54 signes "Claude Opus 5.5", l'utilisatrice a
+arbitre que la configuration de session impose "Claude Sonnet 5.5" a tous les agents ; ils ont ete reecrits (plage
+non poussee). Les commits Opus deja pousses ne le sont pas. Que cette valeur vaille pour les sprints suivants est
+une question ouverte a l'utilisatrice (`DEC-0110` section 17.4, amendement du 2026-10-08) ; le texte ci-dessus reste
+en vigueur d'ici la.
 Amendement du 2026-10-06 (`sofia-sm`, s52) : ce paragraphe transcrit le texte que `DEC-0110` section 17.4
 propose pour cette section et confie a `sofia-sm` (action A7 de la retro de s51). En cas d'ecart, la `DEC` fait
 foi. Il ne ferme aucun garde-fou : une regle non executable est un souhait, celle-ci est assumee comme telle.
