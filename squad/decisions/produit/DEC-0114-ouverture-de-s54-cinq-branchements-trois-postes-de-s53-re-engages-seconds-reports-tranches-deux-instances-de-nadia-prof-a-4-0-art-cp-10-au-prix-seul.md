@@ -10,9 +10,9 @@
   `couvert-valide`, non rouverte) pour `CRP-CM1-R1` a `R3` ; `FRA-CE1-25` (idem) pour `SYC-CE1-R1` ; `ART-CP-10`
   pour le prix seul. Les autres postes sont transverses - pas de contenu pedagogique. **Aucune ligne de matrice ne
   change de statut par cette decision** : elle n'ouvre que des audits.
-- **Statut** : **Proposee**. Une seule decision de cette `DEC` n'a que la forme 3 de `DEC-0062` pour source :
-  l'ordre des matieres au-dela de s54 (section 7). Toutes les autres portent un motif de forme 1 ou 2, s'appliquent
-  des maintenant et sont routees en section 9. Passage a `Acceptee` : voir section 0.4.
+- **Statut** : **Acceptee le 2026-10-08 (amendement A.27, s55)**, `Proposee` du 2026-10-07 au 2026-10-08. Une seule decision de cette `DEC` n'avait que la forme 3 de `DEC-0062` pour source :
+  l'ordre des matieres au-dela de s54 (section 7) ; `DEC-0115` section 3 le reprend sous un motif de forme 1 par rang, ce que la section 0.4 (b) exige. Toutes les autres portent un motif de forme 1 ou 2, s'appliquent
+  des maintenant et sont routees en section 9. Passage a `Acceptee` : voir section 0.4 et A.27.
 - **Lien** : `DEC-0112` (sections 5, 6, 8 ; amendee le 2026-10-07) ; `DEC-0113` (`Refusee`, section 9) ; `DEC-0111`
   (A.13, A.14) ; `DEC-0110` (sections 14.7, 17.2) ; `DEC-0062` (formes de citation, regles 3.2 et 3.5) ; `DEC-0002` ;
   `squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/planning.md` ;
@@ -73,6 +73,8 @@ Ce que je n'ai pas lu : aucun avis de `theo-archi` pour s54 (il n'existe pas), a
 aucun verdict de CI (le planning dit qu'aucun n'est lisible depuis ce poste, `Q9`). Le jugement pedagogique d'aucun paquet n'est porte ici.
 
 ### 0.4 Pourquoi `Proposee`, et ce qui la fait passer a `Acceptee`
+
+> **Amende le 2026-10-08 (A.27) :** `Acceptee` par la lecture (b), sur le motif de forme 1 de `DEC-0115` section 3 ; (a) n'est pas satisfaite, `ok` n'est pas un motif.
 
 La seule decision qui n'a pas d'autre source que la forme 3 est l'**ordre des matieres au-dela de s54** (section 7). `DEC-0112` section 8
 ecrivait *"Je n'ecris pas cet ordre sans son arbitrage"* ; son arbitrage m'arrive par un canal qui ne vaut jamais motif. Je ne le promeus pas
@@ -732,3 +734,19 @@ Le texte de A.25 n'est pas reecrit ; cette annotation le corrige.
    Aucun verdict, aucune ligne de matrice, aucun statut de `DEC` ne bouge ; la matrice reste a 137 / 182.
 
 Statut : `Proposee`, inchange. Pas de changement de code ; aucun routage.
+
+---
+
+## Amendement du 2026-10-08 (s55, `camille-po`) : `DEC-0114` passe a `Acceptee`, par la section 0.4 (b), sur le motif de forme 1 de `DEC-0115` section 3
+
+Meme regime : passages amendes marques, pas effaces. Aucun fait de s54 n'est touche. Motif de forme 1 : `DEC-0115` section 3 (un motif mesure ou cite d'un auteur par rang de l'ordre).
+
+### A.27 Statut : `Proposee` devient `Acceptee`
+
+1. **Ce que j'ai recu** (`DEC-0115` section 0.1, cite tel que recu, forme 3) : a la question Q1 du planning de s55, l'utilisatrice repond `"ok"`, selon l'agent qui m'a lance, qui precise qu'elle valide l'ordre `G1`/`G2`, puis `G6`/`G5`, puis arbitrage de `nadia-prof` sur `G7` a `G11`, puis `G3`/`G4`. Je n'ai pas le message d'origine.
+2. **Lecture de la section 0.4.** (a) *"ses mots sont ecrits dans le depot en forme 2 (avec la date)"* : **non satisfaite** ; `ok` est relaye, pas cite de sa main. (b) *"la `DEC` d'ouverture de s55 reprend l'ordre sous son propre motif de forme 1"* : **satisfaite**, parce que `DEC-0115` section 3 donne, pour chacun des quatre rangs, un motif que j'ai mesure ou que je cite d'un auteur du depot. **`ok` n'est pas ce motif** : il fonde que l'ordre est suivi (forme 3, `DEC-0062` section 3.2), pas pourquoi il est defendable.
+3. **La limite que je nomme.** Le rang 4 (`G3`/`G4`) repose sur le planning de s54 et `proposition-s55.md`, que je n'ai pas remesures ; il est cite, pas mesure. Le placement de `G3` avec `G4`, que la section 7.1 laissait a la decision de s55, est tranche par ce motif seul. Si `nadia-prof` lit autrement le plafond de `G3`, ce rang est amende, pas la decision.
+4. **Si ses mots divergent un jour** de la section 7 (la section 0.4 le prevoit), la section 7 est amendee ; ce qui est livre a s54 et a s55 ne l'est pas.
+5. **Ce qui ne change pas** : A.20 (la borne de 9,5 de s54 n'est pas une jurisprudence ; `DEC-0115` compte selon `PAR-9` telle qu'ecrite, 8,0) ; A.21 est amende sur son seul statut, ses constats d'alors restent ecrits ; aucune ligne de matrice ne bouge (137 / 182) ; aucun verdict n'est prononce.
+
+Statut : `Acceptee`. Routage : `DEC-index.md` (ce commit). Pas de changement de code ; aucun autre routage.

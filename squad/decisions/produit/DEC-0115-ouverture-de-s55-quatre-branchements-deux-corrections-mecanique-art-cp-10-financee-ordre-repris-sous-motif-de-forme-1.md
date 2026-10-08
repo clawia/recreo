@@ -1,0 +1,284 @@
+# DEC-0115 - Ouverture de s55 : quatre branchements (deux de francais CE1, deux d'EMC CM1), deux corrections de jeux servis,
+# la mecanique d'`ART-CP-10` financee (dispositif seul, sans paquet ni audit), ordre des matieres repris sous motif de forme 1
+
+- **Type** : decision d'ouverture de sprint (perimetre, financement, ordre, reports, routage)
+- **Date** : 2026-10-08
+- **Auteur** : `camille-po`
+- **Sprint** : s55
+- **Competences programme visees** : `FRA-CE1-14`, `FRA-CE1-12` (francais CE1, paquets proposes par le planning, substituables par
+  `nadia-prof`, section 2), `EMC-CM1-03`, `EMC-CM1-06` (EMC CM1) pour les quatre branchements ; `EMC-CP-03` (`couvert-valide`, non rouverte)
+  pour `S54-EXC-CATEGORIE` ; `ART-CP-10` pour `S54-ART-RES-R1` a `R3` (la ligne reste `non couvert`) et pour la mecanique (section 5, la ligne ne
+  ferme pas). Les autres postes sont transverses - pas de contenu pedagogique. **Aucune ligne de matrice ne change de statut par cette decision** :
+  elle n'ouvre que des audits ; la matrice reste a 137 / 182.
+- **Statut** : **Proposee**. Un seul point n'a que la forme 3 de `DEC-0062` pour source : le financement de la mecanique d'`ART-CP-10` (section 5,
+  point 1), qui est un choix de l'utilisatrice et non une mesure. Tout le reste porte un motif de forme 1. Passage a `Acceptee` : section 0.5.
+- **Lien** : `DEC-0114` (sections 0.4, 6, 7 ; A.20, A.21 ; amendee par A.27, ce commit) ; `DEC-0113` (`Refusee`, section 9) ; `DEC-0112` section 6 ;
+  `DEC-0111` A.14 ; `DEC-0110` 17.4 ; `DEC-0062` (regles 3.2 et 3.5) ; `ADR-0104` (`Accepte`) ;
+  `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/planning.md` ;
+  `squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/avis-faisabilite.md` (T6 et amendement de cloture), `proposition-s55.md`,
+  `review.md` ; `squad/conformite/ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md` (Q6, Q7) ; `docs/backlog/backlog.md` ("Sprint 55")
+
+---
+
+## 0. Provenance et methode
+
+### 0.1 Ce que j'ai recu de l'agent qui m'a lance, cite tel que recu et fige a la reception (`DEC-0062` regle 3.5)
+
+Un message de l'agent qui m'a lance, le 2026-10-08, **sans source dans le depot**. Il les donne comme des reponses de l'utilisatrice, "messages relayes".
+Je n'ai pas le message d'origine. Seul le mot `ok` est donne entre guillemets ; le reste est le texte de l'agent, que je ne mets pas dans sa bouche.
+
+1. **CI** : *"CI verte sur fbe07d79"*. Aucun job n'est nomme, aucun lien. Je ne l'ai pas verifiee (le planning de s55 note que `gh run list --branch round-two`
+   rend `HTTP 404` depuis le poste de `sofia-sm`). Elle fonde le fait qu'elle a ete annoncee, pas que les quatre jobs de `ci.yml` (`prefixes`, `chemins`, `outils`, `build`) sont verts.
+2. **Q1** : l'utilisatrice repond `"ok"` ; l'agent precise qu'elle valide l'ordre des matieres au-dela de s54 propose : `G1`/`G2` (francais CE1), puis `G6`/`G5`
+   (sciences et EMC CM1), puis arbitrage de `nadia-prof` sur `G7` a `G11`, puis `G3`/`G4`. Ce que `ok` valide est ce que `proposition-s55.md` section 3 et la section 7 de `DEC-0114`
+   ecrivent ; il ne dit aucun motif.
+3. **Q2** : *"la mecanique d'ART-CP-10 est financee DANS CE SPRINT (s55)"*, texte de l'agent, majuscules comprises. Je ne sais pas lesquels de ces mots sont les siens.
+
+**Borne de la forme 3 (`DEC-0062` section 3.2) : ces trois messages fondent l'ordre dans lequel le travail se fait, jamais sa raison.**
+
+### 0.2 Sources de forme 1, par auteur
+
+`sofia-sm` : `planning.md` de s55 (constats, mesures, tarifs proposes), `proposition-s55.md`, `review.md` et `retro.md` de s54 ; `camille-po` : `DEC-0114`,
+`DEC-0113`, backlog "Sprint 54", matrice ; `nadia-prof` : `ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md` (Q6, Q7), `PAR-8`, `PAR-9`, `PAR-11`, `PAR-13`
+(arbitrages de s29, s30, s31, s32, lus en citation dans le planning) ; `theo-archi` : `avis-faisabilite.md` de s54 (T6, amendement de cloture), `ADR-0104`.
+Je n'ai pas relu les 39 paquets restants ; je cite le planning pour ce que je n'ai pas mesure et je le dis.
+
+### 0.3 Mesures lancees pour cette decision (arbre `round-two` a `98e4bbcd`, worktree `s55-camille-dec`, 2026-10-08)
+
+| Mesure | Resultat |
+|---|---|
+| `grep -c "paquet: <nom>$"` sur `catalogue.yaml`, pour `ce1-accord-sujet-verbe`, `ce1-classes-de-mots`, `cm1-emc-respect-differences`, `cm1-emc-principes-republique` | **0, 0, 0, 0** (rouge : C3 du planning) |
+| Les 13 paquets de `G1`/`G2` : fichier dans `contenu/` et entree de catalogue | **13 fichiers, 0 entree** |
+| Items et ligne de referentiel des quatre | 24 (`FRA-CE1-14`), 24 (`FRA-CE1-12`), 11 (`EMC-CM1-03`), 11 (`EMC-CM1-06`) |
+| `EXC-R15` : `grep -c 'bonneReponse: "une moquerie qui se répète"'` sur `cp-emc-exclusion.yaml` ; `grep -c "une mise à l'écart qui se répète"` ; `grep -c "dis si c'est une moquerie qui se répète"` sur `catalogue.yaml` | **3, 0, 1** (rouge) |
+| `ART-RES` : `grep -c 'va avec la statue, le tableau ou la photographie'` sur `catalogue.yaml` ; `grep -cE 'une peintre\|une photographe\|une sculptrice'` sur le paquet | **1, 0** (rouge) |
+| `manche.html` : `grep -c "oeuvres/' + \${proposition}"` ; `grep -c "oeuvres/' + \${illustration}"` ; `grep -c 'th:text="${proposition}"'` | **0, 1, 1** |
+| `git grep -l propositionsEnImage` dans `adapters`, `bootstrap`, `domain`, `application` | **0 fichier** (le nom n'existe que dans `ADR-0104` et l'avis) |
+| `RessourcesTiercesTest`, methode `troisReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu` : `hasSize(3)` | **1** |
+| Compte d'`ArchRule` et d'`@ArchTest` (methode d'`ADR-0104`, `git ls-files '*.java'`) | **39 et 36** |
+| `ls squad/conformite \| grep -ci s55` | **0** : aucun arbitrage prealable de `nadia-prof` pour s55 |
+| Matrice, commande de la "Methode du compte" | 137 / 182, relue dans la matrice, non relancee |
+
+Ces mesures ne sont pas des mesures de la CI. Jobs lances pour ce commit : voir section 8.
+
+### 0.4 Ce que `DEC-0114` section 0.4 exige, et ce que `ok` en satisfait
+
+La section 0.4 dit : `Acceptee` quand **(a)** les mots de l'utilisatrice sur l'ordre sont ecrits dans le depot en forme 2 avec leur date, ou **(b)** *"la `DEC` d'ouverture
+de s55 reprend l'ordre sous son propre motif de forme 1"*.
+
+- **(a) n'est pas satisfaite.** `ok` m'arrive par un relais, sous la forme 3 ; je n'ai ni le message d'origine ni une date de sa main. Je ne le cite pas en forme 2.
+- **`ok` n'est pas un motif, et je ne l'utilise pas comme tel.** Il valide l'ordre ; il ne dit pas pourquoi. Lire (b) comme *"sous le motif de la reponse relayee"*
+  reviendrait a promouvoir la forme 3 en motif, ce que la section 0.4 interdit en toutes lettres.
+- **(b) est satisfaite si, et seulement si, chaque rang de l'ordre porte ci-dessous un motif de forme 1 que je peux verifier** : section 3. Le motif de chaque rang
+  est mesure ou cite d'un auteur ; `ok` fonde que l'ordre est suivi, la section 3 fonde pourquoi il est defendable. **Ce que (b) ne couvre pas** : un rang dont le motif
+  ne serait que mon assertion. Je nomme en section 3 le seul rang dont je n'ai pas remesure la source (rang 4).
+
+### 0.5 Statut de cette decision
+
+`Proposee`, parce que la section 5 point 1 (financement de la mecanique) n'a que la forme 3 pour source : un financement est un choix, aucune mesure ne le motive.
+Elle passe a `Acceptee` quand les mots de l'utilisatrice sur ce financement sont ecrits dans le depot en forme 2 avec leur date, ou quand elle l'a confirme sur le prix de la section 5.
+Le point ne bloque rien : la section 5 s'applique des maintenant (meme regime que `DEC-0114` pour l'ordre, s54). Si ses mots divergent, la section 5 est amendee et les sections 1 a 4 ne sont pas touchees.
+
+---
+
+## 1. Perimetre : ce que s55 engage
+
+**Objectif gele du planning, repris** : brancher quatre paquets au catalogue et les presenter a `nadia-prof` (deux de francais CE1 sur l'instance A, deux d'EMC CM1 sur l'instance B),
+solder deux jeux servis dont un texte est faux, financer le dispositif d'`ART-CP-10`. Au mieux quatre lignes de matrice ferment : 137/182 (75,27 %) a 141/182 (77,47 %). Ce n'est pas une promesse :
+un Done refuse reste un refus, et aucune ligne ne bouge avant le verdict de `nadia-prof` dans la fiche (C9 du planning). **Les tarifs ci-dessous sont proposes par le planning ; `nadia-prof` ecrit les siens dans son arbitrage
+prealable de s55, qui n'existe pas encore.**
+
+| Story | Competence | Fondement (forme) | Instance, tarif propose | Dev propose (planning) |
+|---|---|---|---|---|
+| `S54-EXC-CATEGORIE` (`EXC-R15`) | `EMC-CP-03`, `couvert-valide`, non rouverte | un texte servi est *faux*, mot pour mot de `nadia-prof` ; backlog ; criteres rouges (3, 0, 1) | B, 0,25 | `marc-dev`, premiere a fusionner |
+| `S54-ART-RES-R1` a `R3` | `ART-CP-10`, reste `non couvert` | fiche de l'instance C ; consigne fausse pour les items 7 et 10 ; criteres rouges (1, 0) ; `PAR-14` (sous la moitie des items) | **sous Q5** : B, 0,5 ; sans instance, report numero 1 | `lea-dev`, avec `EXC-R15` en tete de file |
+| `S55-BR-FRA-CE1-L1` | `FRA-CE1-14` (`ce1-accord-sujet-verbe`) | planning (forme 1) ; chemin critique, section 3 | A, 1,0 | `marc-dev` |
+| `S55-BR-FRA-CE1-L2` | `FRA-CE1-12` (`ce1-classes-de-mots`) | idem | A, 1,0 | `marc-dev` |
+| `S55-BR-EMC-CM1-03` | `EMC-CM1-03` (`cm1-emc-respect-differences`) | planning ; accepte sans changement a s53 (P9) | B, 1,0 | `lea-dev` |
+| `S55-BR-EMC-CM1-06` | `EMC-CM1-06` (`cm1-emc-principes-republique`) | planning ; six indices corriges a s53 (P3, P4) | B, 1,0 | `lea-dev` |
+| `S54-PONCT-GN-INDICES` | transverse - pas de contenu pedagogique (ligne `cm1-grands-nombres` non rouverte) | `DEC-0002`, amendement du 2026-08-04 : espaces insecables avant `? ! : ;` ; 12 indices servis ne la tiennent pas | aucun (0,0 pour `nadia-prof`) | `lea-dev`, derniere de sa file |
+| `S55-ART-CP-10-MECANIQUE` | `ART-CP-10` (la ligne ne ferme pas) | section 5 | aucun budget `PAR` identifie, voir 5.3 | non affecte (5.4) |
+
+**Deux choix du planning que je reprends et que `nadia-prof` peut defaire.** (1) Les deux paquets de francais CE1 sont ceux que le planning propose (`-14`, `-12`) ; elle peut les remplacer dans son arbitrage
+prealable (`PAR-13` sur `RCT`, `PRN`, `INF`, `DOC`, `OMP`, `RLP`, `FAM` est a elle) : **la story change de nom, l'affectation et le tarif restent**, sans amender cette `DEC`. (2) La paire `-12`/`-13` : auditer `classes-de-mots` seul ou avec `verbe-sujet` (Q3) est a elle.
+
+**`PONCT` est engagee, contrairement au planning qui la proposait** : elle a un proprietaire, des criteres rouges (`grep -cP '^ *indice: ".* [:;!?]'` rend 12, doit rendre 0), un prix de 0,0 pour `nadia-prof` et elle corrige un
+texte servi a l'enfant contre une exigence ecrite (`DEC-0002`). Le planning ne la retenait pas pour une raison de file de `lea-dev` ; si cette file devient le chemin critique, `sofia-sm` la deplace et l'ecrit.
+
+**Criteres d'acceptation** : C1 a C9 du planning et tableau "Specifiques", repris dans les stories du backlog, section "Sprint 55". **Chacun a ete verifie contre l'existant** (section 0.3) : aucun n'est vert sur ce qu'il corrige.
+Pour `EXC-R15` et `ART-RES`, les criteres reprennent les mots de `nadia-prof`, pas une propriete plus commode a tester.
+
+### Capacite, telle que le planning la compte (`PAR-9`, A.20 de `DEC-0114`)
+
+| | A (francais CE1) | B (EMC CM1, EMC CP, arts plastiques CP si Q5) |
+|---|---|---|
+| Lots | 1,0 + 1,0 | 1,0 + 1,0 |
+| Arbitrage prealable | 0,5 | 0,5 |
+| Corrections et reserves | - | `EXC-R15` 0,25 + `ART-RES` 0,5 |
+| Marge de rejeu nommee, allouee a aucun lot | 0,5 | 0,5 |
+| **Total / 4,0** | **3,0** | **3,75** |
+| Reserve non allouee | 1,0 | 0,25 |
+
+**6,75 sur la borne de 8,0 de `PAR-8`, comptee selon `PAR-9` telle qu'ecrite, deux instances.** Aucune troisieme instance : A.20 vaut, le 9,5 de s54 n'est pas un chiffre de depart ; une troisieme instance
+demanderait son propre ecart, son propre motif et sa propre autorisation. Je n'ai recompte aucun de ces tarifs : ce sont ceux du bareme, par le planning.
+
+---
+
+## 2. Ce que cette decision ne tranche pas : O1, O2, O3 et les questions du planning
+
+**O1, O2, O3 ne sont pas tranchees ici.** Elles dependent de ce que `nadia-prof` ecrit (Q3, Q4) et, depuis la section 5, de ce que son arbitrage sur la forme de la mecanique prend dans la reserve de A.
+
+| Question du planning | Etat apres cette decision | Route |
+|---|---|---|
+| Q3 : emploi de la reserve de 1,0 de A (O1 : un troisieme lot, O2 : rien, O3 : arbitrage sur `G7` a `G11`) ; lecture de `PAR-13` ; choix des paquets ; paire `-12`/`-13` | **ouverte.** Aucune story `L3` n'est engagee. La reserve de A reste non allouee jusqu'a un amendement de cette `DEC`, signe de `camille-po`, ecrit apres son arbitrage prealable et avant l'ouverture de tout worktree concerne (regle de `DEC-0114` section 4) | `nadia-prof`, puis `camille-po` |
+| Q4 : prix et place de l'arbitrage sur `G7` a `G11` | **ouverte** : le seul repere du depot est 0,5 pour 51 items lus (A, s54) ; je n'extrapole pas a 216 items | `nadia-prof` |
+| Q5 : instance qui relit `S54-ART-RES-R1` a `R3` | **ouverte** ; sans instance, report numero 1 de ces trois reserves (section 4) | `nadia-prof` |
+| Q6 : deux instances de francais CE1 (`DEC-0114` 7.2) | **non engagee** : exige l'accord de `nadia-prof` sur `PAR-2` et l'avis de `theo-archi` sur `ADR-0065` | `nadia-prof`, `theo-archi` |
+| Q7 : passe `PAR-4` due a s55 ; verification A10 | **ouverte** | `nadia-prof` |
+
+**Un fait de composition que je ne decide pas** : l'ordre de l'utilisatrice (section 3) place l'arbitrage sur `G7` a `G11` au rang 3, derriere le francais CE1. Il n'en suit pas qu'O1 precede O3 : le planning le lit ainsi,
+sous la forme 3, sans le trancher. Si `nadia-prof` ecrit pour l'arbitrage un prix qui ne tient pas dans la reserve de A, c'est son chiffre qui commande.
+
+---
+
+## 3. Ordre des matieres : repris sous un motif de forme 1 par rang (satisfait `DEC-0114` 0.4 (b))
+
+Ordre valide par `ok` (section 0.1, point 2), repris ici **sous les motifs suivants, qui sont de forme 1**. Ce sont les motifs de la section 7.1 de `DEC-0114`, remesures au 2026-10-08.
+
+| Rang | Groupe | Motif de forme 1 | Source, mesure |
+|---|---|---|---|
+| 1 | `G1`/`G2` francais CE1 | chemin critique : 13 paquets, 13 fichiers de contenu, 0 entree de catalogue ; une instance (`PAR-2`), trois lots au plus par instance (`PAR-8`) : **5 sprints a trois lots, s55 a s59** ; chaque paquet ferme une ligne selon `proposition-s55.md` section 1 (un Done refuse reste un refus) | mesure du 2026-10-08 (section 0.3) ; `proposition-s55.md` section 1 pour le nombre de sprints ; arithmetique relue : 13 lots a 3 par sprint = 5 sprints |
+| 2 | `G6`/`G5` sciences et EMC CM1 | `G6` est fait (`SCI-CM1-15` et `-18` fermees a s54, 137/182) ; `G5` : deux paquets branchables (0 entree de catalogue chacun, 11 items), motifs de refus ecrits par paquet (P3, P4 pour `principes`) ; le troisieme (`cp-emc-personnes-differentes`, `EMC-CP-04`) est sous refus (`DEC-0081` section 7) et n'est **pas un lot** | mesure de la section 0.3 ; `proposition-s55.md` section 3, rang 2 |
+| 3 | arbitrage de `nadia-prof` sur `G7` a `G11` (16 paquets, 216 items) | **aucun plafond ecrit** pour un paquet `DEGRADE` texte seul : *"un chiffre que je ne donne pas sans avoir lu les 17 en-tetes et les cellules de matrice"* (`nadia-prof`, Q7, arbitrage prealable de A, s54) ; acheter des lots avant de savoir si la ligne ferme reproduirait s51 (`DEC-0114` 7.1) | citation de `nadia-prof` ; 16 paquets : `proposition-s55.md`, non relus ici |
+| 4 | `G3`/`G4` (7 paquets : francais CE1 plafonne `en cours` x 2, mathematiques CE1 x 5) | ne ferment aucune ligne ; `MUL-CE1-R1` se rouvre a la `DEC` du premier sprint qui porte une instance de mathematiques CE1 (`DEC-0114` section 3, inchange) | **planning de s54 et `proposition-s55.md`, non remesure par moi** : je le dis, c'est le seul rang dont le motif est cite sans mesure |
+
+**Le point que `DEC-0114` 7.1 laissait a cette decision** : `G3` (francais CE1, deux paquets) est classe au dernier rang **avec `G4`**, comme le planning, parce qu'il ne ferme aucune ligne (motif ci-dessus, rang 4).
+Les mots recus disent *"mathematiques CE1"* ; `G3` est du francais CE1 : **le motif est le seul fondement de ce placement, `ok` ne le dit pas.** Si `nadia-prof` lit autrement le plafond de `G3`, le rang est amende.
+
+**Ce que cette section ne fait pas** : elle ne tranche pas O1/O2/O3 (section 2), n'engage rien au-dela de s55, et n'engage pas le decoupage du francais CE1 en deux instances.
+
+---
+
+## 4. Reports comptes
+
+Un poste engage par une `DEC` d'ouverture et non livre a la cloture compte comme un report (`DEC-0114` section 4). Un second report n'est permis qu'avec un acte ecrit (`DEC-0112` section 6).
+
+| Poste | Reports avant | Issue a s55 |
+|---|---|---|
+| `ART-CP-10` (la ligne) | s50, s51, s52, s53 : quatre ; engagee a s54 (prix, paquet `DEGRADE` branche) | **engagee a s55 : dispositif et reserves**, section 5 ; pas un report |
+| `S54-ART-RES-R1` a `R3` | ouvertes a s54, aucun report | engagees ; **sans instance (Q5), premier report**, a ecrire a l'amendement de cette `DEC` |
+| `S54-EXC-CATEGORIE` | ouverte a s54, aucun report | engagee |
+| `S54-PONCT-GN-INDICES` | ouverte a s54, aucun report | engagee |
+| `S54-ASCII-APOSTROPHES-TESTS` | ouverte a s54 : aucun report | **non engagee** : la forme est a `theo-archi` et aucun proprietaire n'est designe ; **premier report (s55)**. Engageable par amendement des que `theo-archi` a ecrit la forme et designe l'agent |
+| `S55-OUTIL-TOKENS-SANS-SPRINT` (A8), `S55-OUTIL-JDK-JAVA-TOOL-OPTIONS` (A7) | proposees par le planning, jamais engagees : aucun report | **non engagees** : le prix de `theo-archi` manque ; **premier report (s55)**. `--sprint` explicite tant qu'A8 n'est pas fait |
+| `S54-OBS-SCI-CONSIGNE` | ouverte a s54 : aucun report | **non engagee** : criteres non ecrits (*"a ecrire quand une instance l'engage"*) ; **premier report (s55)** |
+| `S55-BR-FRA-CE1-L3` (O1) | - | non engagee (section 2) ; ce n'est pas un report, c'est une option ouverte |
+
+**Rien n'est engage sans proprietaire ni prix** : c'est la lecon de `S51-OUTIL-JOURNAL-TOKENS` (engagee sans proprietaire a s53, non livree, trois reports). Les cinq postes non engages ci-dessus n'ont ni forme ni prix.
+
+---
+
+## 5. La mecanique d'`ART-CP-10` ("deux oeuvres ensemble", `ADR-0104`) : financee a s55, dispositif seul
+
+**Fondement.** `DEC-0114` section 6, point 4 : *"la decision de financer la mecanique se prend apres lecture des deux prix, a l'ouverture de s55 (...) elle ne se reporte pas sans compte"*. Les deux prix sont lus :
+le prix en tailles de `theo-archi` (`avis-faisabilite.md` de s54, amendement de cloture : production 2 fichiers d'`adapter-web`, 20 a 38 lignes ; tests 3 fichiers neufs, 5 modifies, 15 a 18 tests, 680 a 1 400 lignes ;
+zero ligne dans `domain`, `application`, le chargeur, les POM et la CI ; zero regle ArchUnit neuve ; `ADR-0104` `Accepte`) et le plafond de `nadia-prof` (`cp-arts-oeuvres-familles` laisse la ligne a `non couvert`).
+
+**Decision.**
+
+1. **Financement** (forme 3 seule, section 0.5) : la mecanique est financee a s55, selon le message de l'agent (section 0.1, point 3). Je la porte comme story `S55-ART-CP-10-MECANIQUE`, criteres au backlog ("Sprint 55").
+2. **Ce qui est finance** : les taches T2 (garde-fous 1 a 3 de la decision 7) et T3 (rendu, revelation, ecran de fin, garde-fou 4, cliquet 3 -> 4) d'`ADR-0104`. **Ce que je ne decide pas** : la conception. La forme du rendu, le nom des variables, la place des gardes sont a `theo-archi` (`ADR-0104`) ; la mise en page et la marque de revelation sont a `ines-design` ; les mots lus par l'enfant sont a `nadia-prof` (`CON-5`).
+3. **Ce qui n'est pas finance par cette decision** : le **paquet** a reproductions (T5 : *"n'existe pas"* ; `cp-arts-oeuvres-familles` ne la sert pas, 0 `illustration`) et **l'audit** de ce paquet (2,0, ou 2,5 sous `PAR-11` ; tarif de `nadia-prof`, a elle). Sans paquet au catalogue, **l'enfant ne voit rien changer a la fin de s55**, et `ART-CP-10` reste `non couvert`.
+4. **T4** (restauration de trois reproductions, constantes 8 -> 11 et 176 474 -> 250 915) : **question a `theo-archi`, non tranchee par moi**. Constat de lecture : `LIllustrationDeContenuResoutEtAucuneNeDortTest` porte une clause *"aucune ne dort"* (la clause vaut sur `static/oeuvres/`, test lu, non lance) ; trois reproductions restaurees qu'aucun item ne declare la feraient rougir. Si cette lecture est juste, T4 ne peut pas etre verte sans le paquet, et T4 voyage avec lui. L'avis de `theo-archi` dit si T4 est dans cette story ou dans celle du paquet.
+
+### 5.1 Ce que ce financement change a la capacite du planning
+
+La borne de 8,0 de `PAR-8` et le budget de 4,0 par instance de `PAR-9` comptent le travail de `nadia-prof` (arbitrage, lots, rejeux). Le developpement n'y entre pas.
+
+| Poste | Charge | Source |
+|---|---|---|
+| Developpement T2 et T3 | **0,0 pour `nadia-prof`**. Charge de dev : environ 1,75 j pour T2 a T4 (estimation de `theo-archi`, pas un tarif du depot) | `ADR-0104`, "Cout et decoupage" ; avis s54, T6 |
+| Arbitrage de `nadia-prof` sur la forme (nom accessible, phrase de revelation, ecran de fin, choix des paires, `C5`) | **prix inconnu** : `ADR-0104` ecrit qu'il *"n'est dans aucune ligne publiee de son tarif"* | `ADR-0104`, "Cout" |
+| Arbitrage de `ines-design` (mise en page, marque de revelation) | hors `PAR` ; **le planning ne lui donne aucune tache** ("ines-design : aucune") : ecart a corriger | planning, "Affectations" ; `ADR-0104` T3 |
+
+**Hypothese de calcul, que je marque comme telle** : si l'arbitrage de forme prend 0,5 (le prix de l'arbitrage prealable de A et de B a s54, qui n'est **pas** son tarif pour cette forme) :
+
+| | Avant | Avec 0,5 | Lecture |
+|---|---|---|---|
+| A | 3,0 / 4,0, reserve 1,0 | **3,5 / 4,0**, reserve 0,5 | tient ; ferme O1 (+1,0 = 4,5) et O3 (+1,0) tels que le planning les chiffre |
+| B | 3,75 / 4,0, reserve 0,25 | **4,25 / 4,0** | **depasse `PAR-9`** : B ne peut pas la porter |
+| Somme | 6,75 / 8,0 | **7,25 / 8,0** | tient sous la borne |
+
+**Conclusion sur le seul dispositif : aucun ecart a `PAR-8`, `PAR-9` ni a leurs plafonds n'est exige tant que le prix de l'arbitrage de forme est au plus 1,0 sur A**, et A porterait alors la forme (ce qui pose `PAR-13` : une forme jamais jugee et les sept conditions de francais CE1 non lues sur la meme instance ; **c'est a `nadia-prof`**). Au-dela de 1,0 sur A, ou sur B a quelque prix que ce soit au-dessus de 0,25, un ecart serait exige : **je l'ecris comme question a l'utilisatrice (Q-U2), pas comme fait.**
+
+### 5.2 L'audit du paquet, s'il etait fait a s55 : ecart exige
+
+Avec l'audit au prix de `theo-archi` (2,0) : **6,75 + 2,0 = 8,75 sur 8,0**, soit +0,75 ; a 2,5 (`PAR-11`) : 9,25, soit +1,25. Par instance : A 3,0 + 2,0 = **5,0**, au plafond dur de `PAR-8`, au-dessus de 4,0 (`PAR-9`) ; B 3,75 + 2,0 = 5,75, **au-dessus du plafond dur de 5,0**.
+**Aucune des deux instances ne peut le porter sans ecart a `PAR-9`**, et B pas du tout ; une troisieme demande son propre ecart (`DEC-0114` A.20). **C'est donc une question a l'utilisatrice, pas un fait** (Q-U1, Q-U2).
+
+**Correction a signaler a `sofia-sm`** : le planning (section "Stories proposees", apres le tableau) ecrit qu'un budget d'audit *"tient sous 8,0 uniquement si O1 et O3 ne sont pas pris"*. Avec les chiffres de `theo-archi` (2,0) c'est faux meme sans O1 ni O3 : 6,75 + 2,0 = 8,75. Le planning est a elle ; je ne le modifie pas.
+
+### 5.3 Ce que ce financement ne fait pas
+
+Il ne ferme pas la ligne, ne branche aucun paquet, n'ouvre aucune instance, n'ecrit aucun tarif ni plafond, ne prononce aucun Done, ne touche ni `catalogue.yaml`, ni un paquet, ni la matrice (`git diff` de ce commit : la matrice n'y est pas), ni le planning.
+
+### 5.4 Ce qui reste a faire pour que le planning de `sofia-sm` la porte
+
+Amendement du planning par `sofia-sm`, avant l'ouverture du worktree concerne (action A5) :
+
+1. **Proprietaire du developpement** : non designe. Un dev tient un seul worktree ; `marc-dev` et `lea-dev` portent trois ou quatre postes chacun ; `sofia-sm` (casquette developpeuse) n'a aucun poste engage depuis que A7 et A8 ne le sont pas (section 4). **C'est a elle de designer** ; branche, worktree et scratchpad avec.
+2. **`ines-design`** : ajouter la tache (mise en page de trois boutons-images et d'une reference ; marque visuelle de la revelation), **avant T3**.
+3. **`nadia-prof`** : ajouter a son arbitrage prealable de s55 les points 2 a 5 de `ADR-0104` ("Ce que je route") **et leur prix**, et dire sur quelle instance (`PAR-2`, `PAR-13`).
+4. **`theo-archi`** : T6 du planning reconfirme que son prix vaut pour l'arbre de s55 ; **ajouter la question T4 ci-dessus** (le corpus est-il vert sans paquet ?) ; la forme de l'avis fixe les commandes des criteres 1 et 7 de la story.
+5. **Ordre de fusion** : T3 attend les mots de `nadia-prof` et la mise en page d'`ines-design` (dependance d'`ADR-0104`, T3) ; ecrire ce que fait le dev tant qu'ils manquent, ou ne pas ouvrir le worktree.
+6. **Chiffres** : corriger la phrase citee en 5.2 ; porter 7,25 (hypothese 5.1) ou le prix de `nadia-prof` au tableau de capacite.
+7. **Objectif de sprint** : il ne dit rien de la mecanique ; l'amendement du planning l'ajoute, avec la mention que l'enfant ne voit rien tant qu'aucun paquet n'est au catalogue.
+
+### 5.5 Questions a l'utilisatrice
+
+| Code | Question |
+|---|---|
+| Q-U1 | Le **paquet** a reproductions (T5) s'ecrit-il a s55, a s56 ou plus tard ? Son ecriture est une charge de developpement, pas un budget `PAR` ; son arbitrage et son audit sont a `nadia-prof`. Un dispositif sans paquet ne sert aucun enfant. |
+| Q-U2 | L'**audit** du paquet (2,0 propose par `theo-archi`, tarif de `nadia-prof` a confirmer) s'il avait lieu a s55 depasserait la borne de 8,0 de +0,75 (ou +1,25 sous `PAR-11`) et exigerait un ecart ecrit (5.2). **Accorde-t-elle un ecart pour s55, ou l'audit va-t-il a s56 ?** Je ne l'ecris pas comme accorde. Si la reponse est s56, l'audit est une charge de s56 dans la borne de 8,0 de ce sprint-la. |
+| Q-U3 | Confirmer, **par ses mots**, que le financement du dispositif seul est bien ce qu'elle a decide (la formule du message est celle de l'agent, section 0.1, point 3). Ses mots en forme 2 passent cette `DEC` a `Acceptee`. |
+
+---
+
+## 6. `DEC-0114` : statut
+
+Voir l'amendement A.27 de `DEC-0114` (ce commit) : **`Acceptee`**, par la lecture (b) de la section 0.4, conditionnee a la section 3 de cette decision. Ce que cette lecture ne fait pas : elle ne remplace pas les mots de l'utilisatrice,
+et elle ne transforme pas `ok` en motif (section 0.4).
+
+---
+
+## 7. Routage (changement de fichiers et de code)
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Fusionner cette decision et l'amendement A.27 avant tout worktree (C1) ; amender le planning selon 5.4 (proprietaire, `ines-design`, capacite, correction de la phrase 5.2, objectif) ; branche, worktree et scratchpad de toute nouvelle instance ou de tout nouveau dev avant son premier edit (A5) ; **aucune troisieme instance** |
+| `nadia-prof` | Arbitrage prealable de s55 : tarifs de chaque story, Q3 (`PAR-13`, choix des paquets, paire `-12`/`-13`), Q4, Q5, Q7 ; les points 2 a 5 de `ADR-0104` et leur prix sur la forme ; lecture du plafond de `G3` (section 3) ; je n'ecris aucun de ces points |
+| `theo-archi` | Avis de faisabilite de s55 (T1 a T7 du planning) ; T6 reconfirme et la question T4 de 5 ; forme de `S54-ASCII-APOSTROPHES-TESTS` (premier report) ; prix d'A7, A8 |
+| `ines-design` | Mise en page et marque de revelation, avant T3 (5.4, point 2) ; propose, ne tranche pas |
+| `marc-dev`, `lea-dev` | Aucun edit avant la fusion de cette decision sur `round-two` (C1) ; `S54-EXC-CATEGORIE` et `S54-ART-RES-R1` a `R3` d'abord ; rapports `rapport-marc-dev.md` et `rapport-lea-dev.md` (C7) |
+| `yanis-qa` | Lecture de testabilite des criteres du backlog "Sprint 55", dont ceux de la mecanique, avant la premiere livraison |
+| `camille-po` | Backlog, `DEC-index.md` (ce commit) ; fiches de conformite des quatre jeux a l'ouverture de leur branchement ; matrice au verdict seulement |
+| Utilisatrice | Q-U1 a Q-U3 (section 5.5) |
+
+---
+
+## 8. Ce que cette decision ne fait pas
+
+- Elle ne prononce aucun Done pedagogique, ne fixe aucun tarif ni aucun plafond, ne tranche ni O1/O2/O3, ni la lecture de `PAR-13`, ni la conception de la mecanique.
+- Elle ne touche ni `catalogue.yaml`, ni un paquet, ni du code, ni la matrice, ni le planning de `sofia-sm`.
+- Elle n'ouvre aucun worktree d'agent, ne fusionne rien, ne pousse rien.
+- Elle ne dit pas que la CI est verte : *"CI verte sur fbe07d79"* est un message recu (0.1), non verifie.
+- **Jobs de `ci.yml` lances pour ce commit** : `chemins` (`.github/scripts/verifier-chemins.sh` sur les fichiers suivis) et `prefixes` (`.github/scripts/verifier-prefixes.sh` sur le sujet du commit), resultats dans le message de livraison. **`outils` et `build` ne sont pas lances** : ce commit ne modifie ni code, ni contenu, ni outil ; je ne deduis pas leur resultat.
+
+## Decisions prises
+
+1. Quatre branchements (`S55-BR-FRA-CE1-L1`, `-L2`, `S55-BR-EMC-CM1-03`, `-06`), `S54-EXC-CATEGORIE`, `S54-ART-RES-R1` a `R3` (sous Q5) et `S54-PONCT-GN-INDICES` engages a s55 ; tarifs proposes, 6,75 sur 8,0 (`PAR-9`, deux instances, aucun ecart).
+2. O1, O2, O3 et Q3 a Q7 du planning **non tranchees** : routees a `nadia-prof` ; aucune `L3` engagee.
+3. Ordre des matieres repris sous un motif de forme 1 par rang (section 3) ; `G3` au dernier rang avec `G4` ; `DEC-0114` passe a `Acceptee` (A.27).
+4. Mecanique d'`ART-CP-10` : dispositif (T2, T3) finance a s55, story `S55-ART-CP-10-MECANIQUE` ; paquet et audit non finances, deux questions a l'utilisatrice ; T4 sous avis de `theo-archi`.
+5. Cinq postes non engages (`ASCII-APOSTROPHES`, A7, A8, `OBS-SCI-CONSIGNE`, et `ART-RES` sans instance) : premier report compte, motif ecrit.
+6. Statut de cette decision : `Proposee` jusqu'aux mots de l'utilisatrice sur le financement (section 0.5).
