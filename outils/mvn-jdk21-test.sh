@@ -153,6 +153,28 @@ verifier_egal "le cas nominal annonce la version confirmee" \
   "trouve" \
   "$(grep -q "Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10" "${BAC}/sortie" && echo trouve || echo absent)"
 
+# --- JAVA_TOOL_OPTIONS : la JVM imprime une ligne avant la version (s55, A7) ---
+#
+# Quand JAVA_TOOL_OPTIONS est positionnee, java -version commence par "Picked up
+# JAVA_TOOL_OPTIONS: ..." sur stderr. L'enveloppe lisait la premiere ligne et rendait "inconnue" :
+# refus d'un JDK 21 conforme. Le JDK jetable imprime cette ligne avant la version.
+
+jdk_21_bavard="${BAC}/jdk-21-bavard"
+mkdir -p "${jdk_21_bavard}/bin"
+{
+  echo '#!/usr/bin/env bash'
+  echo 'echo "Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8" >&2'
+  echo 'echo "openjdk version \"21.0.10\" 2026-01-01" >&2'
+} > "${jdk_21_bavard}/bin/java"
+chmod +x "${jdk_21_bavard}/bin/java"
+: > "${jdk_21_bavard}/bin/javac"
+chmod +x "${jdk_21_bavard}/bin/javac"
+maison_bavarde="$(fabriquer_home bavarde "21" "${jdk_21_bavard}")"
+
+verifier_egal "un JDK 21 conforme qui imprime Picked up JAVA_TOOL_OPTIONS avant sa version laisse passer"   "0|mvn lance"   "$(jouer "${maison_bavarde}")"
+
+verifier_egal "la version annoncee est celle du JDK et non la ligne Picked up"   "trouve"   "$(grep -q "Maven lance sur le JDK de la toolchain jdk 21 : 21.0.10" "${BAC}/sortie" && echo trouve || echo absent)"
+
 # --- les deux refus qui existaient deja, verifies pour qu'ils ne partent pas avec le changement ---
 
 maison_sans_21="$(fabriquer_home sans-21 "17" "${jdk_21}")"

@@ -77,7 +77,7 @@ if [ ! -e "${jdk_home}/bin/javac" ] && [ ! -e "${jdk_home}/bin/javac.exe" ]; the
   exit 1
 fi
 
-version_jdk="$(extraire_version_java "$("${jdk_home}/bin/java" -version 2>&1 | head -n1)")"
+version_jdk="$(extraire_version_java "$("${jdk_home}/bin/java" -version 2>&1 | grep -m1 'version "')")"
 
 # L'enveloppe verifie ce qu'elle affiche, ou elle n'affiche rien : la ligne ci-dessous est derivee
 # de ce que le JDK rapporte, jamais de ce que la toolchain declare (obstacle 23, ADR-0009).
