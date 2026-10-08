@@ -312,10 +312,13 @@ Motifs :
 s'y applique sur les dix-sept fichiers ; c'est a `theo-archi` de faire entrer le champ dans la population du garde-fou
 dans le meme geste.
 
-**Hors de P11, route sans decision** : six fichiers portent une espace ordinaire avant ":" dans un `enonce`, ce qui est du
-texte d'enfant (`cm1-anglais`, `cm1-comprehension`, `cm1-fractions`, `cm1-grands-nombres`,
-`cm1-histoire-geographie-nommer-en-geographie`, `cm1-histoire-geographie-nommer-en-histoire`, releve par script sur les
-lignes `enonce`). La ponctuation du texte d'enfant est au `relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ;
+**Hors de P11, route sans decision** : un seul fichier, `cm1-grands-nombres`, porte une espace ordinaire avant ":" dans un
+`enonce` (14 lignes), ce qui est du texte d'enfant. *Corrige le 2026-10-08 (s54, `S53-REPORT-REDACTION` R3) : cette phrase
+en comptait six, dont cinq a tort (`cm1-anglais`, `cm1-comprehension`, `cm1-fractions`,
+`cm1-histoire-geographie-nommer-en-geographie`, `cm1-histoire-geographie-nommer-en-histoire`). Mon motif debordait de la
+chaine et comptait le commentaire de fin de ligne ; restreint a la chaine (`'^\s*-?\s*enonce:\s*"[^"]*\x20:'`), il rend 14
+lignes de `cm1-grands-nombres` et rien d'autre sur `f454f76f`, le commit de cette section. Cause etablie dans
+`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 1.3.* La ponctuation du texte d'enfant est au `relecteur-pedagogique` (`DEC-0002`, amendement du 2026-08-04 ;
 `DEC-0056`) et au cliquet de `TYP-1` ; je ne la tranche pas.
 
 ## 12. Base rouge de s53 : ce qui doit rester vrai quand l'auteur raccourcit

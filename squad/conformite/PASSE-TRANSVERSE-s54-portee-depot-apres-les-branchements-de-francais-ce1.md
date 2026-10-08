@@ -85,6 +85,18 @@ sans les dire.
    d'oeuvre a regarder attentivement avant de repondre."*, qui ne decrit pas l'oeuvre (`CON-5`). Arts
    plastiques CP.
 
+*Corrige le 2026-10-08 (s54, `nadia-prof`, instance A, relecture des deux observations routees au backlog).*
+- **Observation 1, incomplete.** Les textes servis sont accentues : consigne *"Lis le texte ou le tableau, puis
+  réponds à la question."* ; enonce *"Lis ce tableau, puis réponds à la question."* sur les items 1 a 6 et *"Lis ce
+  texte, puis réponds à la question."* sur les items 7 a 12. La repetition porte donc sur les 12 items, pas sur
+  ceux du tableau seuls. La premiere phrase de l'enonce ajoute une chose a la consigne : le document a lire. Ce
+  qui se dit deux fois est *"puis réponds à la question"*.
+- **Observation 2, retiree.** Elle se trompe sur ma propre condition. `CON-5` veut que le texte alternatif
+  *"decrit ce qu'il y a a regarder, jamais la reponse ni ce qui permet de la deduire"*, avec un texte neutre
+  pour exemple. Sur un jeu ou decrire l'oeuvre est la competence (`ART-CP-09`), un texte alternatif qui decrirait
+  l'oeuvre donnerait la reponse (`CON-1`). J'ai juge ce texte tenu, identique sur les huit items, dans
+  `FICHE-bandit-manchot-decrire-une-oeuvre-cp.md` (section 6). Le citer comme un defaut de `CON-5` etait faux.
+
 ## 5. Ce que cette passe ne couvre pas
 
 - `D7`, en entier.

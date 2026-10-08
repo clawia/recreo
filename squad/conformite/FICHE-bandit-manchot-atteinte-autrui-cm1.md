@@ -100,6 +100,9 @@ Lus a cote du paquet : `cp-emc-exclusion`, `cp-emc-permis-interdit`, `cm1-emc-in
   decrit un acte unique, et le CM1 donne le terme du programme la ou le CP regroupait. Je note pour
   `camille-po` que la categorie du CP est plus large que le fait ; ce constat porte sur le paquet de CP,
   il n'ouvre ni reserve ni identifiant ici.
+  *Corrige le 2026-10-08 (s54, `nadia-prof`, instance A) : "plus large que le fait" est inexact. Une moquerie ne
+  contient pas l'exclusion ; le nom donne a l'exclusion au CP est faux, pas trop large. Le constat devient la
+  reserve `EXC-R15` de `FICHE-bandit-manchot-exclusion-cp.md`. Ce verdict-ci n'en change pas.*
 
 #### 7. Ce dont je reste la seule garde
 

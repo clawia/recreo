@@ -87,6 +87,20 @@ phrase de s53 se corrige dans son fichier, par moi, dans un commit distinct (une
 
 Lots : deux sur trois (`PAR-8`). Le reste de 0,25 ne paie aucun lot ni un second rejeu (0,5) ; il ne paie pas non plus `Q7` (section 9).
 
+**Consommation reelle de l'instance A, ecrite le 2026-10-08 a la cloture de s54.** Unites de mon bareme, pas des tokens
+mesures. Avant les complements de cloture : **3,25** (`FRA-CE1-18` 1,0, `FRA-CE1-19` 1,0, `SYC-CE1-R1` 0,25, `PAR-4` 0,5,
+cet arbitrage 0,5) ; c'est le chiffre que `DEC-0114` A.25 porte. Complements de cloture :
+
+| Poste | Prix | Motif |
+|---|---|---|
+| Correction R3 (arbitrage de s53, section 11) | **0,0** | comme annonce plus haut : une phrase de mon fichier |
+| Rejeu de `PCO-CE1-R1` | **0,25** | mot pour mot (`PAR-10`), joue, levee |
+| `S54-EXC-CATEGORIE` : lecture de `cp-emc-exclusion`, reserve `EXC-R15` et ses criteres | **0,25** | onze items lus, quatre lignes ecrites mot pour mot ; poste hors de ma table, constat venu de l'instance B |
+| Relecture de `S54-OBS-SCI-CONSIGNE` et `S54-OBS-ART-ALT` | **0,0** | correction de mes propres phrases de la passe `PAR-4` |
+| **Total reel de A** | **3,75 / 4,0** | `PAR-9` tenu. Les 0,5 de complements occupent la place de la marge de rejeu ; aucun refus n'a ete paye |
+
+L'ecart avec A.25 de `DEC-0114` (3,25) est a `camille-po` ; je ne reecris pas sa `DEC`.
+
 ## 3. `PAR-13` - le francais CE1 n'est pas un terrain neuf, et `FUT`, `PCO` sont des cousines de `PRS`
 
 Je juge `PAR-13` au niveau du terrain, comme a s51 et s52 (`ARBITRAGE-PREALABLE-s52-instances-ce1.md`, section 3 : *"A, francais CE1 :
