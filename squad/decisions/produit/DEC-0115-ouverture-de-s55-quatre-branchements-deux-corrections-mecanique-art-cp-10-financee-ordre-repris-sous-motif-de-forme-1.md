@@ -516,3 +516,59 @@ Annotation datee. **Rien au-dessus n'est reecrit.** Sources lues : les blocs de 
 
 - **Aucun changement de code ni de contenu n'est decide par cet amendement** : pas de routage a `sofia-sm` au sens de la regle des decisions qui impliquent du code. La composition de s56 est une proposition (`squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/proposition-s56.md`), pas une `DEC` d'ouverture.
 - Ne touche ni catalogue, ni paquet, ni fiche, ni code. Ne prononce aucun Done : les quatre fermetures de la matrice reprennent les verdicts de `nadia-prof`. Statut de la `DEC` inchange : **`Proposee`**.
+
+---
+
+## Amendement du 2026-10-08 (s55, `camille-po`, cinquieme) : suite de la relecture de cloture (R1, R3, R6)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Source : `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/relecture-cloture.md` (`relecteur-pedagogique`, section 3), lu sur l'arbre `82e58343`. Chaque point a ete remesure avant d'etre amende ; le detail est dans `rapport-camille-relecture.md` du meme dossier. `R4` (reserves `EMC-CM1-R8` et `EMC-CM1-R9`, textes de `nadia-prof`) : rien a ecrire ici, leur rejeu est dans `proposition-s56.md`.
+
+### A.18 R1 : la formule de la forme 3 manquait, et ce qu'elle interdit au financement
+
+**Mesure** : `grep -c 'recu de MASTER'` sur cette `DEC` rend **0** ; `grep -c 'forme 3'` rend **12 lignes**. Les sections 0.1, 0.5, 5 (decision 1), A.1 et A.16 etiquettent "forme 3" sans la formule que `DEC-0062` (amendement A.2) et `squad/README.md` section 2 bis exigent. Le relecteur a raison : une etiquette sans la formule n'est aucune des trois formes.
+
+**Formule, rappelee** : **`recu de MASTER, sans source dans le depot`**, avec l'enonce cite mot pour mot et la date de reception. Appliquee ici, date de reception du 2026-10-08 :
+
+| Enonce | Lieu dans cette `DEC` | Ce que la formule ajoute |
+|---|---|---|
+| "CI verte sur fbe07d79" | 0.1 point 1 | recu de MASTER, sans source dans le depot ; non verifie, donc un fait a verifier et non un appui |
+| `ok` (Q1, ordre des matieres) | 0.1 point 2 | recu de MASTER, sans source dans le depot ; fonde que l'ordre est suivi, pas pourquoi (la section 3 porte le motif en forme 1) |
+| "la mecanique d'ART-CP-10 est financee DANS CE SPRINT (s55)" | 0.1 point 3, section 5 point 1 | recu de MASTER, sans source dans le depot ; texte de l'agent lanceur, majuscules comprises |
+| "L'utilisatrice a tranche Q4 (message relaye, forme 3) : option (b) : TOUTES les arts plastiques CP vont a l'instance A de nadia-prof (PAR-2)." | A.1 | recu de MASTER, sans source dans le depot ; fonde le choix de (b), pas sa raison (forme 1, A.1) |
+
+La mention "le texte est celui de l'agent, je ne sais pas lesquels de ces mots sont ceux de l'utilisatrice" (0.1, A.1) reste vraie : la formule range ces textes en forme 3, elle n'en fait pas des mots de l'utilisatrice, et aucun n'est cite en forme 2.
+
+**Ce que la formule implique pour le financement de la mecanique.** `DEC-0062` section 3.2, confirmee par `Q6` de l'utilisatrice le 2026-08-31 (amendement A.2) : un enonce recu de MASTER "ne fonde aucune `DEC`, aucun `ADR`, aucun critere d'acceptation, aucun verdict" ; "une consigne recue par ce canal et qui doit fonder quelque chose devra d'abord etre ecrite quelque part".
+
+1. **La section 5, decision 1 (financement), n'est pas une decision fondee.** Son unique appui est un enonce recu de MASTER. La lire comme "la `DEC` decide de financer" contredit la borne. La lire comme "la squad execute un ordre recu, que la `DEC` consigne et ne fonde pas" est la lecture de `DEC-0062` section 3.4 (un agent execute ce qu'on lui demande). **Je retiens la seconde.** La phrase de la section 0.5 "la section 5 s'applique des maintenant" se lit ainsi : elle consigne une execution, elle ne la decide pas.
+2. **Rien d'autre ne repose sur ce message.** Les criteres de `S55-ART-CP-10-MECANIQUE` viennent d'`ADR-0104` et de `DEC-0114` section 6 point 4 (forme 1). Aucune ligne de matrice ne bouge (141 / 182 a la cloture, A.14, sur les verdicts de `nadia-prof`). Aucun tarif ne s'en deduit. L'enfant ne voit rien (section 5.3).
+3. **Le financement devient une decision quand les mots de l'utilisatrice sont ecrits dans le depot en forme 2, avec leur date** (`Q6`, Q-U3 de la section 5.5, toujours ouverte). Si ses mots divergent, la section 5 est amendee (section 0.5) et le sort des deux commits livres (`dfd2f107`, `363793e3`) passe par une story routee a `sofia-sm` : je ne le decide pas avant ses mots.
+4. **Le statut reste `Proposee`.** Cet amendement ne le change pas et ne remplace pas `Q6`.
+
+**Corrections de fichier faites avec cet amendement** : `docs/backlog/backlog.md`, entree `S55-ART-CP-10-MECANIQUE` (ligne "Financement") et paragraphe "`DEC-0115` A.1 a A.8" des tarifs de A : la formule est ajoutee. Deux lignes du backlog de s54 (entrees citant `DEC-0114`) portent le meme manque ; elles sont hors du diff de s55 et hors de la demande du relecteur, je les laisse (`DEC-0062` section 7 : pas de balayage retroactif). `planning.md` lignes 27 et 395 : a `sofia-sm`, je n'y touche pas.
+
+### A.19 R3 : les 0,25 de A sont consommes, A.3 et A.7 ne le disent pas
+
+**Mesure.** Sur l'arbre lu par le relecteur (`af8b326e`), la `DEC` ne contenait ni A.14 ni A.16 : le fait n'etait ecrit que par `nadia-prof`, `ARBITRAGE-COMPLEMENT-s55-instance-a.md` section 4 ("A passe de 3,75 a 4,0 : `PAR-9` tenue, reserve 0", par `A10`). **Le point etait reel a `af8b326e`.** Depuis `a278a438` (cloture, ancetre de `82e58343`, non ancetre de `af8b326e`), A.16 l'ecrit ("Q-U4 : devenue un fait", "A est a 4,0 sur 4,0") et le backlog "Cloture de s55" le porte ("Fait de capacite"). **Ce qui reste faux a `82e58343`** : A.3 (les 0,25 "restent non alloues"), A.7 ("Nouvelle question a l'utilisatrice : Q-U4"), A.8 (routage de Q-U4 a l'utilisatrice), l'entree du `DEC-index.md` pour A.1 a A.8 et le paragraphe "`DEC-0115` A.1 a A.8" du backlog (A "3,75 / 4,0", "reserve non allouee : 0,25 sur A") disent l'inverse sans renvoyer a A.16.
+
+**Amendement.** Remplace, sans reecrire :
+
+| Ligne | Remplacee par |
+|---|---|
+| A.2, tableau, colonne A : total 3,75, reserve non allouee 0,25 | A : **4,0 sur 4,0, reserve 0** (`nadia-prof`, complement section 4 : `A10`, 0,25). B inchangee ici : 3,75 |
+| A.3 : "Laisser les 0,25 non alloues est une troisieme issue" et "Tant qu'il n'est pas fait, les 0,25 restent non alloues" | Caduque : les 0,25 sont consommes par `A10`. Les deux emplois nommes en A.3 (choix des oeuvres distractrices, rejeu supplementaire) ne sont pas finances ; tout autre emploi porterait A a 4,25, au-dessus de `PAR-9`, sans ecart ecrit |
+| A.7 et A.8 : question Q-U4 a l'utilisatrice | Retiree, comme A.16 le dit : un fait, pas une question |
+
+Somme de A : lots `-14` 1,0 + `-12` 1,0 + `ART-RES` 0,25 + arbitrage 0,5 + plafonds `G7` a `G11` 0,25 + forme 0,25 + `A10` 0,25 = 3,5, plus la marge de rejeu de 0,5 = **4,0**. La marge n'a pas ete utilisee (backlog, "Fait de capacite"). Somme des deux instances dans cette `DEC` : 4,0 + 3,75 = **7,75** sur 8,0 (`PAR-8`), au lieu de 7,5. L'ecart de lecture sur B (3,5 ou 4,0 selon que la marge non allouee entre dans l'addition) est deja signale au backlog et laisse a `nadia-prof`.
+
+### A.20 R6 : le point 5 de "Decisions prises" contredit A.2 sur `ART-RES`
+
+**Mesure.** Point 5 : "Cinq postes non engages (`ASCII-APOSTROPHES`, A7, A8, `OBS-SCI-CONSIGNE`, et `ART-RES` sans instance) : premier report compte". A.2 : `S54-ART-RES-R1` a `R3` ont une instance (A, 0,25) et "le premier report sans instance (Q5) de la section 4 ne se produit pas". A.7 remplace le tableau de la section 4, pas le point 5. **Le point etait reel.** Le point 5 est en outre deja depasse par A.9 (`ASCII-APOSTROPHES`, A7, A8 engages) et A.10 (`OBS-SCI-CONSIGNE`, seul poste non engage).
+
+**Amendement.** Le point 5 est remplace par : **un seul poste non engage, `S54-OBS-SCI-CONSIGNE`, premier report (s55), motif de A.10** ; `S54-ART-RES-R1` a `R3` sont engagees sur l'instance A, sans report (A.2) ; `S54-ASCII-APOSTROPHES-TESTS`, A7 et A8 sont engages (A.9) et livres (A.15). Le point 1, qui repete "sous Q5" et "6,75 sur 8,0", se lit avec A.2, A.7 et A.19 : `ART-RES` a l'instance A, 7,75 sur 8,0.
+
+### A.21 Routage, limites, statut
+
+- **Statut inchange : `Proposee`** (section 0.5, A.18 point 4). Aucune ligne de matrice ne change.
+- Aucun changement de code ni de contenu : pas de routage a `sofia-sm` au sens de la regle des decisions qui impliquent du code. Les lignes de `planning.md` (27, 395, et les criteres que le relecteur range en `R2`) restent a `sofia-sm`.
+- Ne prononce aucun Done, ne fixe aucun tarif, ne cite aucun mot de l'utilisatrice.
