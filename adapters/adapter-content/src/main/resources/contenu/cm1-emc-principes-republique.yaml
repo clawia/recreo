@@ -47,6 +47,10 @@ lignesDeReferentiel: ["EMC-CM1-06"]
 #     cm1-emc-regle-loi.yaml ;
 #   - item 5 et 10 : code penal, articles 225-1 et 225-2 (la discrimination, dont le refus
 #     d'embauche, est un delit) ;
+#   - item 8 : decision du Conseil constitutionnel no 2018-717/718 QPC du 6 juillet 2018 : du principe
+#     de fraternite decoule la liberte d'aider autrui, sans consideration de la regularite de son
+#     sejour. La fraternite n'est donc pas reservee aux citoyens (arbitrage prealable de s55,
+#     instance B, section 3.2) ;
 #   - devise : Constitution, article 2 ("Liberte, Egalite, Fraternite").
 # Ces references vivent ici, jamais dans un enonce.
 #
@@ -88,14 +92,14 @@ items:
     indice: "La loi punit le fait de traiter quelqu'un moins bien à cause de ce qu'il est."
   - enonce: "Jusqu'où va la liberté de chacun dans la République ?"
     bonneReponse: "jusqu'à ce qu'elle nuise à autrui"
-    distracteurs: ["jusqu'à ce qu'un adulte la refuse", "jusqu'à ce que la majorité ne soit pas d'accord"]
+    distracteurs: ["jusqu'à pouvoir faire tout ce que l'on veut", "jusqu'à ce que la majorité ne soit pas d'accord"]
     indice: "Teste chaque phrase avec un exemple pris dans la classe."
   - enonce: "Que veut dire l'égalité dans la devise de la République ?"
     bonneReponse: "tous ont les mêmes droits, sans distinction"
     distracteurs: ["tous doivent être pareils", "tous doivent gagner la même somme"]
     indice: "Pense à une règle de la classe qui vaut pour chaque élève."
   - enonce: "Que veut dire la fraternité dans la devise de la République ?"
-    bonneReponse: "se soutenir et s'entraider entre citoyens"
+    bonneReponse: "se soutenir et s'entraider les uns les autres"
     distracteurs: ["avoir les mêmes idées que les autres", "faire partie de la même famille"]
     indice: "Pense à des personnes qui apportent leur aide après une tempête."
   - enonce: "Que garantit la laïcité à chaque élève de l'école publique ?"

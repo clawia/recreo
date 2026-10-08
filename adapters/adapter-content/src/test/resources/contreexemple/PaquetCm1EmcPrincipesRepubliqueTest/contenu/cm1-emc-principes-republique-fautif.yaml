@@ -1,0 +1,32 @@
+schema: 1
+id: cm1-emc-principes-republique-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCm1EmcPrincipesRepubliqueTest. Quatre items, chacun
+# porte un defaut que le test doit refuser : l'item 4 avec "la liberte" en distracteur, le principe
+# voisin que l'enonce permettrait aussi de nommer (P3 de s53, EMC-5), les textes des items 6 et 8
+# d'avant les corrections de s55 (arbitrage prealable de s55, instance B, sections 3.1 et 3.2), et
+# un texte qui s'adresse a l'enfant (EMC-1, EMC-8). Le refus des discriminations n'y est bonne
+# reponse que d'un item (FER-1) et la tache "sens" y est servie deux fois (FER-3).
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Acquérir et partager les valeurs de la République"
+  competence: "Comprendre le sens des principes de la République : liberté, égalité, fraternité, laïcité, refus des discriminations."
+lignesDeReferentiel: ["EMC-CM1-06"]
+items:
+  - enonce: "Quel principe de la République garantit que l'école publique ne favorise aucune religion ?"
+    bonneReponse: "la laïcité"
+    distracteurs: ["la fraternité", "la liberté"]
+    indice: "Ce principe dit comment l'école et l'État se comportent envers les croyances."
+  - enonce: "Jusqu'où va la liberté de chacun dans la République ?"
+    bonneReponse: "jusqu'à ce qu'elle nuise à autrui"
+    distracteurs: ["jusqu'à ce qu'un adulte la refuse", "jusqu'à ce que la majorité ne soit pas d'accord"]
+    indice: "Teste chaque phrase avec un exemple pris dans la classe."
+  - enonce: "Que veut dire la fraternité dans la devise de la République ?"
+    bonneReponse: "se soutenir et s'entraider entre citoyens"
+    distracteurs: ["avoir les mêmes idées que les autres", "faire partie de la même famille"]
+    indice: "Pense à des personnes qui apportent leur aide après une tempête."
+  - enonce: "Tu as vu un camarade être exclu. Quel principe de la République peux-tu invoquer ?"
+    bonneReponse: "le refus des discriminations"
+    distracteurs: ["la laïcité", "la fraternité"]
+    indice: "Pense à ce que tu ferais."
