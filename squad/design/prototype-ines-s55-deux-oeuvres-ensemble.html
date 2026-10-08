@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototype - deux oeuvres ensemble (ines-design, s55)</title>
+    <!--
+      VEHICULE DE MESURE, JAMAIS DU CODE SERVI. Meme statut que prototype-ines-s26-ecran-voix.html.
+
+      Il charge les deux feuilles reelles de l'application dans l'ordre d'ADR-0014, recopie la
+      coquille de templates/accueil.html et la structure de templates/fragments/manche.html (cabinet
+      compris), et pose les regles candidates dans un <style> unique APRES la feuille maison, comme
+      elles s'appliqueraient si elles y etaient ajoutees. Aucune n'est dans recreo.css.
+
+      Parametres d'URL, lus par le petit script de fin de page (le vehicule seul en porte) :
+        etat      = fraiche | juste | echec | revelation
+        variante  = cabinet (le meuble entoure les trois images) | nu (pas de meuble)
+        disposition = empilee | cote (cote : reference a gauche, meuble a droite, des 720 px seulement)
+        nb        = 3 | 2 (nombre de propositions, 2 pour mesurer le repli de la regle 4 de nadia-prof)
+        rev       = normal | grand (taille de la phrase de revelation : 1,25rem ou 2rem gras)
+
+      LES TEXTES SONT DES MARQUEURS DE LONGUEUR, PAS DU CONTENU. Les phrases entre crochets ne
+      sont pas des mots proposes : elles donnent une hauteur realiste (deux lignes a 360 px) aux
+      blocs que le contenu remplira. Les deux seuls mots lus par l'enfant qui ne sont pas des
+      marqueurs sont ceux que nadia-prof a ecrits (ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md,
+      section 3.2, M4 et M5) et ils sont recopies tels quels.
+
+      LES IMAGES sont des reproductions deja servies, choisies pour leur rapport largeur/hauteur
+      (portrait pour la reference, puis un portrait, un paysage moyen et un paysage tres allonge
+      parmi les propositions) afin de mesurer le pire cas de cases egales. Aucune paire n'est
+      proposee : nadia-prof choisit les paires.
+    -->
+    <link rel="stylesheet" href="../../adapters/adapter-web/src/main/resources/static/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../../adapters/adapter-web/src/main/resources/static/css/recreo.css">
+    <style>
+        /* ================================================================================
+           REGLES CANDIDATES - proposition-ines-s55-deux-oeuvres-ensemble.md, section 4.
+           Deux classes de gabarit, posees par le gabarit quand propositionsEnImage est vrai :
+             .propositions-oeuvres  sur form.propositions
+             .proposition-oeuvre    sur chaque button.proposition
+           et deux marques d'etat :
+             .deja-essayee (existante) et .oeuvre-revelee (neuve, la bonne oeuvre a la revelation).
+           ================================================================================ */
+
+        /* Trois cases carrees et egales (M1, X6). Une case ne depasse jamais le plafond
+           existant de l'image (.image-item : 11rem) plus son propre cadre. */
+        .propositions-oeuvres {
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin: 0;
+        }
+
+        .propositions .proposition.proposition-oeuvre {
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: calc(11rem + 0.5rem + 0.25rem);
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem;
+            border: 0.125rem solid var(--recreo-accent);
+            background-color: var(--recreo-fond);
+            color: var(--recreo-texte);
+        }
+
+        /* Le meme fond pour les trois, quelle que soit la position : la teinte cyclique des
+           boutons-texte (4n+1 .. 4n+4) est neutralisee ici, parce qu'une teinte qui change d'une
+           case a l'autre est une difference de presentation avant le geste (X6) et un aplat
+           derriere une reproduction (C5 clause 1). */
+        .propositions .proposition.proposition-oeuvre:active {
+            background-color: var(--recreo-accent);
+        }
+
+        /* Pas de voile glissant sur une reproduction : il l'assombrirait a l'arrivee. */
+        .proposition-oeuvre::after {
+            display: none;
+        }
+
+        .proposition-oeuvre img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Etat d'echec (M3) : un mot barre n'existe pas sur une image. Second canal sans couleur :
+           cadre en tirets, et reproduction a demi attenuee. Le cadre garde son epaisseur (rien ne
+           bouge). Aucun pictogramme dans la case (X3). */
+        .propositions .proposition.proposition-oeuvre.deja-essayee {
+            border-style: dashed;
+            text-decoration: none;
+        }
+
+        .proposition-oeuvre.deja-essayee img {
+            opacity: 0.5;
+        }
+
+        /* Revelation (M4) : un double cadre autour de la bonne oeuvre, hors de la case (X3). La
+           forme porte le sens, pas la couleur : un anneau plein, separe de la case par un jour. */
+        .proposition-oeuvre.oeuvre-revelee {
+            outline: 0.25rem solid #ffffff;
+            outline-offset: 0.25rem;
+        }
+
+        html[data-variante="nu"] .proposition-oeuvre.oeuvre-revelee {
+            outline-color: var(--recreo-texte);
+        }
+
+        /* La phrase de revelation (M4) : le gabarit reprend .reponse-revelee, aucune taille neuve. */
+        html[data-rev="grand"] .reponse-revelee.phrase-oeuvre {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Variante "nu" : emulation CSS d'un th:unless qui retirerait les cinq freres du meuble.
+           Les boites obtenues sont celles qu'un gabarit sans ces elements rendrait. */
+        html[data-variante="nu"] .cabinet {
+            background: none;
+            border: 0;
+            box-shadow: none;
+            border-radius: 0;
+        }
+        html[data-variante="nu"] .cabinet-bandeau,
+        html[data-variante="nu"] .cabinet-levier,
+        html[data-variante="nu"] .cabinet-socle {
+            display: none;
+        }
+
+        html[data-nb="2"] .proposition-oeuvre:nth-child(3) { display: none; }
+
+        /* Disposition "cote" : sans element de gabarit en plus, la grille du parent place la
+           reference dans la colonne de gauche, sur deux rangees, face a l'enonce et au meuble. L'ordre
+           du document ne change pas (la reference reste avant l'enonce pour une lecture d'ecran). Sous
+           720 px la regle ne s'applique pas : la disposition reste empilee. */
+        @media (min-width: 720px) {
+            html[data-disposition="cote"] .ecran-de-jeu {
+                display: grid;
+                grid-template-columns: 11rem minmax(0, 1fr);
+                column-gap: 1.5rem;
+                align-items: start;
+                grid-template-areas:
+                    "score score"
+                    "consigne consigne"
+                    "ref enonce"
+                    "ref jeu"
+                    "msg msg";
+            }
+            html[data-disposition="cote"] .ecran-de-jeu > .score { grid-area: score; }
+            html[data-disposition="cote"] .ecran-de-jeu > .consigne { grid-area: consigne; }
+            html[data-disposition="cote"] .ecran-de-jeu > .illustration { grid-area: ref; margin-top: 0.5rem; }
+            html[data-disposition="cote"] .ecran-de-jeu > .enonce { grid-area: enonce; }
+            html[data-disposition="cote"] .ecran-de-jeu > .cabinet { grid-area: jeu; }
+            html[data-disposition="cote"] .ecran-de-jeu > .message-jeu { grid-area: msg; }
+        }
+
+        /* --- hors proposition : commutateur d'etat du vehicule de mesure --- */
+        [data-etat] { display: none; }
+        :where(html[data-etat-actif="fraiche"]) [data-etat="fraiche"],
+        :where(html[data-etat-actif="juste"]) [data-etat="juste"],
+        :where(html[data-etat-actif="echec"]) [data-etat="echec"],
+        :where(html[data-etat-actif="revelation"]) [data-etat="revelation"] { display: block; }
+        html[data-etat-actif="fraiche"] [data-etat]:not([data-etat="fraiche"]),
+        html[data-etat-actif="juste"] [data-etat]:not([data-etat="juste"]),
+        html[data-etat-actif="echec"] [data-etat]:not([data-etat="echec"]),
+        html[data-etat-actif="revelation"] [data-etat]:not([data-etat="revelation"]) { display: none !important; }
+    </style>
+</head>
+<body>
+<header class="entete">
+    <nav class="container entete-contenu">
+        <img src="../../adapters/adapter-web/src/main/resources/static/favicon.ico" alt="" class="icone-entete">
+        <h1 class="nom-site">Recreo</h1>
+        <a class="btn chip-niveau" data-role="entree" href="#">CP</a>
+        <a class="btn chip-niveau" data-role="entree" href="#">CM1</a>
+        <a class="btn lien-accueil" data-role="sortie" href="#">Les jeux</a>
+    </nav>
+</header>
+<main id="jeu" class="container zone-jeu">
+
+    <!-- ETAT fraiche : manche neuve. La reference (.illustration, inchangee) puis le meuble. -->
+    <div data-etat="fraiche" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">[Consigne du jeu.]</p>
+        <div class="illustration">
+            <img class="image-item" alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-femme-au-luth.jpg">
+        </div>
+        <p class="enonce" tabindex="-1">[Énoncé de la question.]</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions propositions-oeuvres">
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-hippopotame.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-grande-vague.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-marche-aux-chevaux.jpg"></button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <!-- ETAT juste : le signal juste seul sous le meuble, aucun indice, aucune revelation. -->
+    <div data-etat="juste" class="ecran-de-jeu">
+        <p class="score">Score : 3</p>
+        <p class="consigne">[Consigne du jeu.]</p>
+        <div class="illustration">
+            <img class="image-item" alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-femme-au-luth.jpg">
+        </div>
+        <p class="enonce" tabindex="-1">[Énoncé de la question.]</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions propositions-oeuvres">
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-hippopotame.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-grande-vague.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-marche-aux-chevaux.jpg"></button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-juste">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">[Message du jeu.]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ETAT echec : une oeuvre pressee a cote (deja-essayee), signal faux, indice du contenu (M3). -->
+    <div data-etat="echec" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">[Consigne du jeu.]</p>
+        <div class="illustration">
+            <img class="image-item" alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-femme-au-luth.jpg">
+        </div>
+        <p class="enonce" tabindex="-1">[Énoncé de la question.]</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions propositions-oeuvres">
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-hippopotame.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre deja-essayee" data-role="action" data-focus-cible="true" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-grande-vague.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-marche-aux-chevaux.jpg"></button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">[Message du jeu.]</p>
+            </div>
+            <p class="indice">[Indice de l'item sur deux lignes à 360 px.]</p>
+        </div>
+    </div>
+
+    <!-- ETAT revelation : la bonne oeuvre est marquee, la reference reste visible, la phrase de
+         M4 remplace "Appuie sur la bonne reponse :" et la reponse en texte, puis l'explication (M6).
+         Les deux autres oeuvres sont deja essayees ou non : seul le double cadre dit "celle-ci". -->
+    <div data-etat="revelation" class="ecran-de-jeu">
+        <p class="score">Score : 2</p>
+        <p class="consigne">[Consigne du jeu.]</p>
+        <div class="illustration">
+            <img class="image-item" alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-femme-au-luth.jpg">
+        </div>
+        <p class="enonce" tabindex="-1">[Énoncé de la question.]</p>
+        <div class="cabinet">
+            <div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+            <form class="propositions propositions-oeuvres">
+                <button type="button" class="btn proposition proposition-oeuvre deja-essayee" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-hippopotame.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre deja-essayee" data-role="action" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-grande-vague.jpg"></button>
+                <button type="button" class="btn proposition proposition-oeuvre oeuvre-revelee" data-role="action" data-focus-cible="true" aria-label="Choisir cette œuvre"><img alt="" src="../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-marche-aux-chevaux.jpg"></button>
+            </form>
+            <div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div>
+            <div class="cabinet-socle" aria-hidden="true"></div>
+        </div>
+        <div class="message-jeu" role="status">
+            <div class="signal est-faux">
+                <span class="icone-signal" aria-hidden="true"></span>
+                <p class="verdict">[Message du jeu.]</p>
+            </div>
+            <p class="reponse-revelee phrase-oeuvre">C'est cette œuvre qui va avec. Appuie dessus.</p>
+            <p class="explication">[Explication de l'item sur deux lignes à 360 px.]</p>
+        </div>
+    </div>
+</main>
+<script>
+    (function () {
+        var p = new URLSearchParams(location.search);
+        var h = document.documentElement;
+        h.setAttribute("data-etat-actif", p.get("etat") || "fraiche");
+        h.setAttribute("data-variante", p.get("variante") || "cabinet");
+        h.setAttribute("data-nb", p.get("nb") || "3");
+        h.setAttribute("data-disposition", p.get("disposition") || "empilee");
+        h.setAttribute("data-rev", p.get("rev") || "normal");
+    })();
+</script>
+</body>
+</html>
