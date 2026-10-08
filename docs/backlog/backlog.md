@@ -20443,7 +20443,7 @@ fiche section 3). Trois reserves non bloquantes, ouvertes ci-dessous et non enga
 - **Critere d'acceptation, ses mots** : *"la consigne nomme la tache que les douze items demandent, ou redevient generique, puisque chaque enonce nomme la sienne"*. Elle le juge en rejouant ; le texte est a `lea-dev`, je ne le propose pas.
   Sortie observable, depuis la racine : `grep -c 'va avec la statue, le tableau ou la photographie' adapters/adapter-content/src/main/resources/catalogue.yaml` rend **1 aujourd'hui** (mesure du 2026-10-08, rouge) et doit rendre **0** ;
   l'entree `bandit-manchot-familles-d-oeuvres-cp` garde `paquet: cp-arts-oeuvres-familles` et ni son titre ni sa consigne ne contiennent `reconna` ou `rapproch` (critere 3 de `S54-BR-ART-CP-10`, toujours tenu). Que la consigne soit juste est son jugement, pas un test.
-- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev` (auteure du paquet, affectation a `sofia-sm`). **Lien decision** : `DEC-0114` A.25.
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev` (auteure du paquet, affectation a `sofia-sm`). **Lien decision** : `DEC-0114` A.25. **Amendement du 2026-10-08 (`DEC-0115` A.2) : instance A, 0,25 mot pour mot pour R1 a R3** (textes de l'arbitrage de l'instance B, section 4.2, que A rejoue).
 
 ### S54-ART-RES-R2 - L'indice de l'item 11 dit ce qui distingue un tableau d'une photographie (`ART-CP-10`, reserve 2)
 
@@ -20456,7 +20456,7 @@ fiche section 3). Trois reserves non bloquantes, ouvertes ci-dessous et non enga
 - **Critere d'acceptation, ses mots** : *"l'indice de l'item 11 dit ce qui distingue un tableau d'une photographie (la peinture), sans nommer le peintre ni le pinceau (items 2 et 6)"*.
   Sorties observables, sur `adapters/adapter-content/src/main/resources/contenu/cp-arts-oeuvres-familles.yaml` : la ligne `indice` de l'item 11 (celle qui suit `bonneReponse: "un tableau"`) contient `peinture` ou `peint` **0 fois aujourd'hui** (rouge) et doit le contenir 1 fois ;
   la meme ligne ne contient ni `peintre` ni `pinceau` (0 aujourd'hui, doit rester 0) ; le `git diff` du fichier ne touche que cette ligne. Que l'indice departage reellement les deux est son jugement en rejouant.
-- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev`. **Lien decision** : `DEC-0114` A.25.
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev`. **Lien decision** : `DEC-0114` A.25. **Amendement du 2026-10-08 (`DEC-0115` A.2) : instance A, tarif commun aux trois reserves (0,25 mot pour mot).**
 
 ### S54-ART-RES-R3 - Au moins un des trois metiers du jeu des familles d'oeuvres est servi au feminin (`ART-CP-10`, reserve 3)
 
@@ -20469,7 +20469,7 @@ fiche section 3). Trois reserves non bloquantes, ouvertes ci-dessous et non enga
 - **Critere d'acceptation, ses mots** : *"au moins un metier sur trois est servi au feminin (une photographe, une peintre, une sculptrice), la meme forme partout ou il apparait dans le paquet"*.
   Sorties observables, sur le fichier du paquet : `grep -cE "une peintre|une photographe|une sculptrice"` rend **0 aujourd'hui** (rouge) et doit rendre au moins **1** ;
   pour chaque metier passe au feminin, sa forme masculine n'apparait plus nulle part dans le fichier (`grep -c "un peintre"`, `"un sculpteur"` ou `"un photographe"` rend 0 pour ce metier), distracteurs des items 2, 3 et 4 compris.
-- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev`. **Lien decision** : `DEC-0114` A.25.
+- **Prix** : non estime ; a proposer par `sofia-sm`. **Agent pressenti** : `lea-dev`. **Lien decision** : `DEC-0114` A.25. **Amendement du 2026-10-08 (`DEC-0115` A.2) : instance A, tarif commun aux trois reserves (0,25 mot pour mot).**
 
 ### PCO-CE1-R1 - Sur les huit items ou l'infinitif remplace le participe, l'indice parle de cette erreur (`FRA-CE1-19`)
 
@@ -20527,6 +20527,7 @@ juge pas ce constat : c'est le sien. Cette entree le rend visible dans le backlo
   `grep -c "dis si c'est une moquerie qui se répète"` rend **1** et doit rendre **0**. `git diff` : trois lignes du paquet, une du catalogue. `PaquetCpEmcExclusionTest` reste vert.
   Symptome technique nomme par `nadia-prof`, forme a `theo-archi` : le test identifie la tache A par ses deux bonnes reponses (ligne 82), la tache B est son complement ;
   l'inventaire de `TexteAccentueExposeParLePortEntrantTest` porte la consigne actuelle.
+  **Amendement du 2026-10-08 (`DEC-0115` A.6) : critere non tenable tel qu'ecrit, a reecrire apres QC4.** `theo-archi` a mesure (avis de s55, section 7, point 1) que les quatre lignes ne tiennent pas avec "`PaquetCpEmcExclusionTest` reste vert" : la categorie "une moquerie qui se répète" tombe a 1 bonne reponse sous le minimum de 3 de `FAB-1a`, et `CLASSEMENTS_VALIDES` fait basculer en silence les items 1 et 3 dans la tache B (faux vert). Le critere n'est pas reecrit ici : il reprend les mots de `nadia-prof`. **QC4, a `nadia-prof`** : le seuil de `FAB-1a` se lit-il sur deux categories (il tient a 3) ou sur trois (la moquerie n'a qu'un item) ? Prix : 0,25 mot pour mot, 0,5 si reecrit.
 - **Prix** : mot pour mot, **0,25** (`PAR-10`), rejeu par `nadia-prof` (items 1, 3, 4 et la consigne a l'ecran).
 - **Lien decision** : aucune. **Report** : aucun (premiere entree).
 
@@ -20597,17 +20598,19 @@ dans son arbitrage prealable de s55, qui n'existe pas.** Rien ne s'edite avant q
 | Instance | Story | Tarif propose | Dev propose |
 |---|---|---|---|
 | B | `S54-EXC-CATEGORIE` (`EXC-R15`, section "Sprint 54") | 0,25 | `marc-dev`, premiere a fusionner |
-| B (sous Q5) | `S54-ART-RES-R1` a `R3` (section "Sprint 54") | 0,5 | `lea-dev` |
+| **A** (`DEC-0115` A.2, etait "B sous Q5") | `S54-ART-RES-R1` a `R3` (section "Sprint 54") | **0,25** mot pour mot (0,5 si reecrit) | `lea-dev` |
 | A | `S55-BR-FRA-CE1-L1` | 1,0 | `marc-dev` |
 | A | `S55-BR-FRA-CE1-L2` | 1,0 | `marc-dev` |
 | B | `S55-BR-EMC-CM1-03` | 1,0 | `lea-dev` |
-| B | `S55-BR-EMC-CM1-06` | 1,0 | `lea-dev` |
+| B | `S55-BR-EMC-CM1-06` | **1,5** (tarif de `nadia-prof`, B 6 ; le planning disait 1,0) | `lea-dev` |
 | - | `S54-PONCT-GN-INDICES` (section "Sprint 54") | 0,0 | `lea-dev`, derniere de sa file |
-| a decider (voir la story) | `S55-ART-CP-10-MECANIQUE` | aucun budget `PAR` identifie ; arbitrage de forme de `nadia-prof` : prix inconnu | non affecte (`DEC-0115` 5.4) |
+| **A** pour la forme (`DEC-0115` A.2) | `S55-ART-CP-10-MECANIQUE` | forme : **0,25**, deja dans les 3,75 de A ; developpement hors `PAR` | non affecte (`DEC-0115` 5.4) |
 
 **Engagements de s54 repris sans reecriture** : leurs criteres, ecrits et mesures rouges a s54, restent ceux de la section "Sprint 54". Je les ai relances le 2026-10-08 sur `98e4bbcd` : `EXC-R15` rend 3, 0, 1 ; `ART-RES` rend 1 et 0 ; ils sont toujours rouges.
 **Non engagees, premier report (s55)** : `S54-ASCII-APOSTROPHES-TESTS`, `S54-OBS-SCI-CONSIGNE`, `S55-OUTIL-TOKENS-SANS-SPRINT` (A8), `S55-OUTIL-JDK-JAVA-TOOL-OPTIONS` (A7) : ni forme, ni prix, ni proprietaire (`DEC-0115` section 4).
-**Non engagee, option ouverte** : `S55-BR-FRA-CE1-L3` (O1), non tranchee (`DEC-0115` section 2).
+**Non engagee, option ouverte** : `S55-BR-FRA-CE1-L3` (O1), non tranchee (`DEC-0115` section 2). **Amendement du 2026-10-08 : O1 ne tient pas sous `PAR-9` (3,75 + 1,0 = 4,75 sur 4,0 pour A) ; `L3` n'est pas engagee.**
+
+**Amendement du 2026-10-08 (`DEC-0115` A.1 a A.8)** : toutes les arts plastiques CP vont a l'instance A (`PAR-2` ; message relaye de l'utilisatrice, forme 3, cite en A.1 : il fonde le choix, pas sa raison). Tarifs de `nadia-prof` : **A 3,75 / 4,0** (lots 2,0 + arbitrage 0,5 + plafonds `G7` a `G11` 0,25 + forme 0,25 + `ART-RES` 0,25 + marge 0,5), **B 3,75 / 4,0** (lots 1,0 + 1,5 + arbitrage 0,5 + `EXC-R15` 0,25 + marge 0,5), **somme 7,5 / 8,0** (`PAR-8`). `PAR-9` respectee ; `PAR-11` non appliquee (lecture amendee : 4,25 chacune). Reserve non allouee : 0,25 sur A, 0,25 sur B. Ce qui reste a decider par l'utilisatrice : emploi des 0,25 de A (Q-U4), moment du paquet illustre (Q-U1). Audit du paquet illustre : **2,5, s56 au plus tot**. La ligne "A (francais CE1), B (EMC CM1, EMC CP, arts plastiques CP si Q5)" du premier paragraphe de ce sprint est remplacee par : A (francais CE1, arts plastiques CP), B (EMC CM1, EMC CP).
 
 ### Criteres communs aux quatre stories de branchement (`S55-BR-*`)
 
@@ -20667,15 +20670,20 @@ Repris du planning de s55, section "Criteres d'acceptation", C1 a C9, verifies c
   3. **Les jeux a propositions en texte ne changent pas.** `PartieControllerTest` garde au moins ses 42 `@Test` (`grep -c '@Test'` rend 42 aujourd'hui) et aucune assertion existante n'est modifiee ni affaiblie (C5). Critere de borne : vert aujourd'hui, il ne prouve rien seul.
   4. **Les garde-fous 1 a 4 de la decision 7 d'`ADR-0104` existent et mordent**, chacun avec une morsure qui rend rouge sur la mutation de la colonne "Changement" : (1) une proposition `oeuvre-inconnue` est rouge, et une oeuvre servie seulement en proposition n'est pas declaree dormante
      (aujourd'hui seul le mutant sur une `illustration` existe : `LIllustrationDeContenuResoutEtAucuneNeDortTest` ligne 793) ; (2) les trois invariants (tout ou rien, la reference existe et est une reproduction, la reference n'est pas une proposition) sont mordus **en mutant un item reel** de `cp-decrire-une-oeuvre` en memoire, pas sur une fixture ;
+     **Corrige le 2026-10-08 (`DEC-0115` A.5, QC3) : la population reelle de reproductions vaut exactement 0 a s55** (forme d'`ADR-0051`, `LIllustrationDeContenuResoutEtAucuneNeDortTest` lignes 586 a 592) ; le commit du premier paquet a reproductions releve ce nombre ; "non vide" serait rouge.
      (3) un identifiant declare lu par l'enfant fait rougir le garde-fou d'accent sur `oeuvre-champ-de-ble` ; (4) le gabarit reel mute en `th:text="${proposition}"` fait rougir le garde-fou de rendu de `bootstrap/rendu`. Le rapport du dev nomme le test de chaque morsure ; `yanis-qa` rejoue la mutation.
   5. **Le cliquet de references de `RessourcesTiercesTest` passe de 3 a 4, exact.** `sed -n '709,730p'` : la methode `troisReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu` porte `hasSize(3)` (1 occurrence aujourd'hui) ; elle doit porter `hasSize(4)`. Pas de `hasSizeLessThanOrEqualTo`.
   6. **Les mots et la mise en page existent avant le rendu.** Le nom accessible du bouton, la phrase qui accompagne la revelation et la reponse a *"l'ecran de fin revoit-il l'oeuvre ?"* sont ecrits par `nadia-prof` dans un fichier de `squad/conformite/` (`ls squad/conformite | grep -ci s55` rend 0 aujourd'hui) ;
      la mise en page et la marque de revelation, par `ines-design`, dans `squad/design/` (aucun fichier pour cette forme aujourd'hui). `git log --format=%ad --follow` sur ces fichiers precede le premier commit de rendu. **Le developpeur n'ecrit aucun de ces mots** (`CON-5`).
+     **Corrige le 2026-10-08 (`DEC-0115` A.5, QC1) : le critere vaut pour les points 3 et 4 d'`ADR-0104` seuls** (nom accessible, phrase de revelation, ecran de fin) : les mots sont ecrits (`ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md`, section 3, sous l'issue (b) retenue), la mise en page d'`ines-design` manque. **Les points 2 et 5 "se tranchent sur un paquet, en jouant"** (`nadia-prof`, 2026-10-06) : le critere ne les demande plus et la story ne les ferme pas. T3 ne se close pas a s55 au sens de la forme ; son jugement est a l'audit de s56 au plus tot. Decoupage : T2 livrable seul ; T3 en code si `ines-design` livre avant l'ouverture du worktree ; T3 non livree a la cloture = premier report, compte.
   7. **Perimetre de code.** `git diff round-two --name-only | grep -E '^(domain|application)/|^adapters/adapter-content/src/main/java|^bootstrap/src/main|(^|/)pom\.xml$|^\.github/'` ne rend **aucune ligne**. Compte d'`ArchRule` et d'`@ArchTest` (methode d'`ADR-0104`, `git ls-files '*.java'`) inchange : **39 et 36**.
      Critere de borne : vert sur un diff vide, il borne les criteres 1 a 6 et ne les remplace pas.
   8. **Ni catalogue, ni matrice, ni paquet.** `git diff round-two --stat` ne nomme ni `MATRICE-couverture.md`, ni `catalogue.yaml`, ni un fichier de `contenu/`. `ART-CP-10` reste `non couvert`.
+     **Corrige le 2026-10-08 (`DEC-0115` A.5, QC2) : le chemin est `adapters/adapter-content/src/main/resources/contenu/`**, pas tout `contenu/` : le contre-exemple du garde-fou 1 vit sous `bootstrap/src/test/resources/contreexemple/.../contenu/` et un `grep contenu/` le compterait.
   9. **Porte.** `bash outils/mvn-jdk21.sh -B clean verify` sur la racine ; jobs de `ci.yml` nommes (C6).
+     **Corrige le 2026-10-08 (`DEC-0115` A.5) : F0 de l'avis de `theo-archi` est paye par `8f740977`** (ligne `U4` de `review.md` de s54, 3 cellules). Mesure sur `ca425c17`, perimetre `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest` avec `-am` : 5 tests, 0 echec. Le critere est tenable ; `clean verify` de la racine non lance par `camille-po`.
 - **Ce qui n'est pas automatisable** : que la propriete rapprochee se voie a 176 px CSS (plafond de `.image-item`, `ADR-0104` 4.3), le nom accessible, la phrase de revelation, la lisibilite de la mise en page. `yanis-qa` le dit dans sa lecture de testabilite.
+- **Amendement du 2026-10-08 (`DEC-0115` A.2 a A.4)** : la forme est a l'instance A, 0,25 (sa section 3, issue (b)) ; **audit du paquet illustre 2,5, s56 au plus tot** (A 3,75 + 2,5 = 6,25 ; B idem : aucune instance ne le porte a s55) ; T4 sort de la story et voyage avec le fichier du paquet (T5, avis de `theo-archi` section 4). Paquet : Q-U1 ouverte. Les chiffres de la ligne suivante sont ceux de `DEC-0115` 5.1, remplaces par A.2.
 - **Capacite** (`DEC-0115` 5.1) : le developpement (environ 1,75 j pour T2 a T4, estimation de `theo-archi`) ne compte pas dans les budgets `PAR`. L'arbitrage de forme de `nadia-prof` est sans prix publie : **a 0,5 hypothese de calcul, pas son tarif**, A passe a 3,5 sur 4,0
   et B ne peut pas la porter (4,25). Somme 7,25 sur 8,0. Au-dela de 1,0 sur A, un ecart serait exige. **L'audit du paquet a s55 depasserait la borne** (6,75 + 2,0 = 8,75) : question a l'utilisatrice, non tranchee.
 - **Ce qui manque pour que le planning la porte** : proprietaire du dev, tache d'`ines-design`, prix et instance de l'arbitrage de forme, avis de `theo-archi` (T6 reconfirme, T4), correction de la phrase du planning sur le budget d'audit (`DEC-0115` 5.4).
