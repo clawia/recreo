@@ -12,8 +12,8 @@
 - **Statut global** : **VALIDÉ** le 2026-10-08 par `nadia-prof` (s54, instance A), sur `5cad6650`. Aucune
   réserve.
 - **Dernière mise à jour** : 2026-10-08 (ouverture de la fiche et verdict, `nadia-prof`, s54). Aucune fiche
-  n'avait été ouverte avant le branchement ; la section des critères de `camille-po` reste à écrire par
-  elle (routage de mon arbitrage de s54, section 12 : `K1`, `K2` comme critères).
+  n'avait été ouverte avant le branchement ; la section des critères de `camille-po` est écrite le
+  2026-10-08 par `camille-po` (routage de l'arbitrage de s54, section 12 : `K1`, `K2` comme critères).
 
 ## Compétences visées
 
@@ -23,7 +23,28 @@
 
 ## Critères pédagogiques attendus - camille-po
 
-*Non écrits à la date du verdict. Ce bloc n'est pas rempli par moi.*
+Écrits par `camille-po` le 2026-10-08 (s54), après le verdict, à partir des conditions de `nadia-prof`
+(`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 5, routage de la section 12). Une condition pédagogique
+générale (`FUT-CE1-1` à `FUT-CE1-3`, `TRV-CE1-1` à `TRV-CE1-7`, `LON-CE1-1`, `-2`, `-5`) n'est pas recopiée ici : elle vit dans
+`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 5.9. Ci-dessous, les deux critères propres à ce branchement, dans les mots
+de `nadia-prof`. La colonne "Avant" est mesurée sur `34fdd167` (paquet de s53, avant branchement), la colonne "Aujourd'hui" sur
+le sommet de la branche, avec la commande indiquée, lancée depuis la racine du dépôt.
+
+**Compétence** : `FRA-CE1-18`, conjuguer au futur *être*, *avoir* et les verbes du premier groupe. **Mécanique** : bandit manchot,
+`type: question`, 24 items, 10 manches.
+
+| # | Critère (entrée / sortie observable) | Commande | Avant | Aujourd'hui |
+|---|---|---|---|---|
+| `K1` | La consigne servie par l'entrée de catalogue `bandit-manchot-futur-ce1` contient le mot *futur* : *"Lis bien, puis choisis le verbe au futur."* (`TRV-CE1-4` admet *futur*). Sinon, avec un mot de temps, le présent du même verbe (*"demain, je chante"*) est une phrase juste et l'item a deux réponses (`TRV-CE1-2`) | `grep -A3 'id: bandit-manchot-futur-ce1' adapters/adapter-content/src/main/resources/catalogue.yaml \| grep -c 'consigne:.*futur'` | 0 (entrée absente) | 1 |
+| `K1` (écran) | La consigne est affichée sur chaque écran de manche, y compris l'écran qui suit une erreur et l'écran de révélation : un enfant qui choisit *chante* après *demain, je* relit une question qui demande le futur | partie jouée par requêtes HTTP, HTML lu (`nadia-prof`) : 400 manches sur 40 parties | sans objet | consigne présente sur les 400 manches |
+| `K2` | L'item 8 ne suppose aucun objet possédé par l'enfant : l'énoncé est *"« avoir » : demain, tu ___ une dictée."* ; l'ancien énoncé (*"un nouveau jeu"*) a disparu. Bonne réponse, distracteurs, familles et indice de l'item ne changent pas (`TRV-CE1-6`) | `grep -c 'nouveau jeu' adapters/adapter-content/src/main/resources/contenu/ce1-futur.yaml` doit rendre 0, et `grep -c 'tu ___ une dictée'` doit rendre 1 | 1 et 0 | 0 et 1 |
+
+**Ce que ces critères ne font pas** : ils ne disent pas que les 24 réponses sont justes ni que chaque indice sert l'enfant qui vient
+de se tromper. Ce jugement est celui de `nadia-prof`, et la fiche dit en section 6 du bloc de validation ce qu'aucun test ne garde
+(sens d'un indice devant les propositions de son item, objet possédé supposé, répartition des activités par genre, accent des
+homographes). `PaquetCe1FuturTest` lit la consigne du catalogue : elle ne peut plus perdre le mot *futur* sans que la CI rougisse.
+
+**Mention de couverture** : aucune n'est due. `MNC-1` est reproduite par `nadia-prof` dans le bloc de validation.
 
 ---
 

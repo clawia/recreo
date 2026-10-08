@@ -12,8 +12,8 @@
 - **Statut global** : **VALIDÉ SOUS RÉSERVE** le 2026-10-08 par `nadia-prof` (s54, instance A), sur
   `5cad6650` : une réserve, `PCO-CE1-R1`. Voir le bloc de validation.
 - **Dernière mise à jour** : 2026-10-08 (ouverture de la fiche et verdict, `nadia-prof`, s54). Aucune fiche
-  n'avait été ouverte avant le branchement ; la section des critères de `camille-po` reste à écrire par
-  elle (routage de mon arbitrage de s54, section 12 : `K3`, `K4` comme critères).
+  n'avait été ouverte avant le branchement ; la section des critères de `camille-po` est écrite le
+  2026-10-08 par `camille-po` (routage de l'arbitrage de s54, section 12 : `K3`, `K4` comme critères).
 
 ## Compétences visées
 
@@ -23,7 +23,39 @@
 
 ## Critères pédagogiques attendus - camille-po
 
-*Non écrits à la date du verdict. Ce bloc n'est pas rempli par moi.*
+Écrits par `camille-po` le 2026-10-08 (s54), après le verdict, à partir des conditions de `nadia-prof`
+(`ARBITRAGE-PREALABLE-s54-instance-a-francais-ce1.md`, section 6, routage de la section 12) et de la réserve de son verdict.
+Une condition pédagogique générale (`PCO-CE1-1` à `PCO-CE1-3`, `TRV-CE1-1` à `TRV-CE1-7`, `LON-CE1-1`, `-2`, `-5`) n'est pas
+recopiée ici : elle vit dans `ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 5.10. La colonne "Avant" est mesurée sur `34fdd167`
+(paquet de s53, avant branchement), la colonne "Aujourd'hui" sur le sommet de la branche, avec la commande indiquée, lancée
+depuis la racine du dépôt, sur `adapters/adapter-content/src/main/resources/contenu/ce1-passe-compose.yaml`.
+
+**Compétence** : `FRA-CE1-19`, conjuguer au passé composé *être*, *avoir* et les verbes du premier groupe, avec l'auxiliaire
+*avoir*. **Mécanique** : bandit manchot, `type: question`, 24 items, 10 manches.
+
+| # | Critère (entrée / sortie observable) | Commande | Avant | Aujourd'hui |
+|---|---|---|---|---|
+| `K3` | Aucun indice ne dit *"deux mots"* : un indice qui présente comme ce qui fait la bonne réponse un critère qu'un distracteur remplit confirme l'enfant qui s'est trompé (`TRV-CE1-5`, motif de `nadia-prof` du 2026-10-06) | `grep -c 'indice:.*deux mots'` | 8 | 0 |
+| `K3` | Onze items portent l'indice *"Ne recopie pas le verbe écrit au début : il change."* (items 1, 3, 4, 6, 7, 13, 15, 16, 18, 19, 22) | `grep -c 'indice: "Ne recopie pas le verbe'` | 0 | 11 |
+| `K3` | Quatre items portent l'indice *"Avec ce sujet, comment s'écrit « avoir » au présent ?"* (items 9, 10, 12, 24) | `grep -c 'indice: "Avec ce sujet, comment'` | 0 | 4 |
+| `K4` | Les trois énoncés d'*être* qui faisaient suivre *avoir été* d'un lieu (emploi familier pour *aller*, que la classe corrige) deviennent *"« être » : hier, ___ en retard."* (item 13), *"... en avance."* (item 17), *"... la première."* (item 21) ; bonne réponse et distracteurs ne changent pas, le présent reste faux avec *hier* | `grep -cE 'enonce: .*hier, ___ (en retard\|en avance\|la premi.re)\.'` | 0 | 3 |
+
+**Critère de levée de la réserve `PCO-CE1-R1`** (non bloquante, ouverte le 2026-10-08, mots de `nadia-prof`, section 5 du bloc de
+validation, repris sans reformulation) : *"sur tout item qui sert l'infinitif à la place du participe, l'indice parle de cette
+erreur"*. Ce qui la lève, mot pour mot : sur les items **2, 5, 8, 9, 11, 12, 20, 23**, et sur eux seuls, la ligne `indice` devient
+`indice: "Ne recopie pas le verbe écrit au début : il change."`. Énoncés, bonnes réponses, distracteurs, familles déclarées et
+en-tête ne changent pas. Mesure d'entrée : `grep -c 'indice: "Ne recopie pas le verbe'` rend **11 aujourd'hui** et doit rendre
+**19** ; `grep -c 'indice: "Avec ce sujet, comment'` rend **4 aujourd'hui** et doit rendre **2** (items 10 et 24) ; le diff ne
+touche que ces huit lignes. Rouge sur l'existant : 11 et 4. Régime et prix : mot pour mot, 0,25 (`PAR-10`), rejeu par `nadia-prof`.
+Story : `PCO-CE1-R1` (`docs/backlog/backlog.md`, "Sprint 54").
+
+**Ce que ces critères ne font pas** : ils ne disent pas que les 24 réponses sont justes ni qu'un indice sert l'enfant devant les
+propositions de son item. `PaquetCe1PasseComposeTest` refuse la chaîne *"deux mots"* dans un indice ; il ne lit ni ce qu'un indice
+fait faire à l'enfant ni qu'il parle de l'erreur de l'infinitif (`PCO-CE1-R1`). `nadia-prof` reste la seule garde de ces deux
+propriétés, de la correction d'un emploi que la classe corrige (`K4`), de l'accent des participes et de la répartition des
+activités par genre.
+
+**Mention de couverture** : aucune n'est due. `MNC-1` est reproduite par `nadia-prof` dans le bloc de validation.
 
 ---
 

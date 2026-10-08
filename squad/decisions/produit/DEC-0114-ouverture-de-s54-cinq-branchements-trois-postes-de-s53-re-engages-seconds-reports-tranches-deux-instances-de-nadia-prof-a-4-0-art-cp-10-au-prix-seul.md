@@ -661,3 +661,37 @@ la section 7 en motif en passant la `DEC` a `Acceptee` : meme geste que section 
 | `camille-po` | Backlog et `DEC-index.md` (ce commit) |
 
 Il ne touche ni `catalogue.yaml`, ni un paquet, ni une fiche, ni `MATRICE-couverture.md` (inchangee, 132 / 182). Il ne prononce aucun Done et ne fixe ni tarif ni plafond.
+
+---
+
+## Amendement du 2026-10-08 (s54, `camille-po`, apres les verdicts de `nadia-prof`) : cinq lignes ferment
+
+Motif de forme 1 : les verdicts sont ecrits dans les fiches de conformite (`FICHE-bandit-manchot-futur-ce1.md`, `-passe-compose-ce1.md`, `-jour-nuit-saisons-cm1.md`,
+`-environnement-cm1.md`, `-atteinte-autrui-cm1.md`), sur `5cad6650`. Cet amendement ne decide rien de neuf : il consigne ce que les verdicts changent et ce qui en decoule.
+
+### A.23 Ce que les verdicts changent
+
+1. **L'en-tete de cette `DEC` dit *"aucune ligne de matrice ne change de statut par cette decision"*** : vrai a l'ouverture, car elle n'ouvrait que des audits. Ce n'est plus l'etat
+   du depot, par les verdicts et non par cette `DEC`. Cinq lignes passent `non couvert` -> `couvert-valide` : `FRA-CE1-18` (VALIDE), `FRA-CE1-19` (VALIDE SOUS RESERVE,
+   `PCO-CE1-R1`), `SCI-CM1-15` (VALIDE), `SCI-CM1-18` (VALIDE), `EMC-CM1-02` (VALIDE, avec la mention de couverture exigee d'avance). **Commande de la "Methode du compte" de la matrice,
+   lancee le 2026-10-08 : `couvert-valide` 137, `en cours` 4, `non couvert` 41, `non couvrable en l'etat` 76, total 258, denominateur 182, 137 / 182 = 75,27 %** ; avant : 132, 4, 46, 76,
+   132 / 182 = 72,53 %. Perimetre : les 258 lignes, aucune mesure partielle.
+2. **Reserves levees, aucun statut change** : `CRP-CM1-R1` a `R3` (`SCI-CM1-10`) et `SYC-CE1-R1` (`FRA-CE1-25`). Le journal de tokens (`S51-OUTIL-JOURNAL-TOKENS`) n'est pas traite ici.
+3. **`ART-CP-10` reste `non couvert`** (section A.1, appliquee) : le paquet `DEGRADE` est branche, son audit est en cours, aucun verdict. La matrice porte la regle citee. Un ecart de la
+   matrice, signale par `nadia-prof`, est corrige : le bilan d'arts plastiques CP rangeait encore la ligne en `non couvrable en l'etat`, classement retire le 2026-10-07.
+4. **Postes engages par cette `DEC` et livres a s54** : `S51-SCI-CORPS-CM1-RESERVES`, `S53-PASSE-TRANSVERSE` (`PAR-4`), `SYC-CE1-R1` et item 16, `S53-REPORT-GRANDS-NOMBRES` (`Q5` : hors porte de
+   `nadia-prof`, relecture de ponctuation au `relecteur-pedagogique`). Un engagement non livre aurait compte comme un report (clause de `DEC-0111` A.14, section 4 de cette `DEC`) : ces quatre-la sont livres, aucun n'en est un.
+5. **Stories ouvertes par les verdicts, aucune engagee** (backlog, "Sprint 54") : `PCO-CE1-R1` (0,25, mot pour mot) ; `S54-EXC-CATEGORIE` (constat de `nadia-prof` B sur `cp-emc-exclusion`,
+   criteres non ecrits : ce sont les siens) ; `S54-OBS-SCI-CONSIGNE` et `S54-OBS-ART-ALT` (observations de la passe transverse). Premier report de chacune : aucun.
+
+### A.24 Statut et routage
+
+Statut : `Proposee`, inchange (A.21) ; la section 0.4 n'est pas touchee.
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Affecter `PCO-CE1-R1` (proprietaire propose : `marc-dev`) ; porter a `nadia-prof` la question de `S54-EXC-CATEGORIE` ; verifier que la relecture de ponctuation de `S53-REPORT-GRANDS-NOMBRES` est tracee |
+| `nadia-prof` | Verdict sur `cp-arts-oeuvres-familles` ; reponse a `S54-EXC-CATEGORIE` ; la fiche de ce paquet |
+| `camille-po` | La matrice ne bouge pour `ART-CP-10` que sur le plafond ecrit ou le verdict |
+
+Il ne touche ni `catalogue.yaml`, ni un paquet, ni du code. Il ne prononce aucun Done.
