@@ -164,7 +164,7 @@ noms de fichiers - et sont verifiees par le `relecteur-pedagogique` :
   depot est pousse sur GitHub : `C:\...`, `/c/...`, `/home/...`, `/Users/...`, un chemin
   d'interpreteur ou de JDK, un nom de compte n'ont rien a y faire, y compris dans un rapport de
   ceremonie qui cite la commande qu'un agent a lancee. Ecrire la commande sous sa forme portable
-  (`mvn -B verify`, `python outils/rapport-tokens.py`) et nommer le prerequis plutot que son
+  (`mvn -B verify`, `python outils/rapport-tokens.py --sprint sNN`) et nommer le prerequis plutot que son
   emplacement (`JAVA_HOME` sur un JDK 21, et non le repertoire ou il est installe sur telle
   machine). Les secrets vivent dans `.env`, jamais dans un fichier commite.
   Le critere est **la portabilite, pas la presence d'un separateur** : un emplacement qui vaut
