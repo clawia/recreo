@@ -3,19 +3,24 @@ package com.recreo.adapter.content;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.domain.mechanic.GameMechanic;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.FileTime;
 import java.security.CodeSource;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.jar.JarOutputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
@@ -82,6 +87,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * commande de la porte technique. Ce qui est corrige, c'est le <b>message</b> : il nomme desormais
  * les deux causes possibles, pour qu'un lecteur qui le rencontre ne cherche pas une modification de
  * source qui n'existe pas.
+ *
+ * <p><b>Jar d'un build reproductible (s55, CI rouge du 2026-10-08).</b> L'entree d'un jar ne porte
+ * pas toujours l'horodatage de compilation : quand {@code project.build.outputTimestamp} est fixe,
+ * ou, a defaut, quand la variable d'environnement {@code SOURCE_DATE_EPOCH} l'est (repli lu dans
+ * {@code maven-archiver} 3.6.5, que tire {@code maven-jar-plugin} 3.5.0 de
+ * {@code spring-boot-dependencies} 4.1.0), toutes les entrees recoivent ce meme horodatage fixe,
+ * vers 1980. Comparee au {@code .java} du checkout, une telle entree rougit sur un jar frais. Ce cas
+ * se reconnait a sa propriete definitoire - toutes les entrees du jar portent le meme horodatage -
+ * et non a une valeur : la date lue depend de la valeur fixee et du fuseau de la machine virtuelle.
+ * La comparaison se fait alors sur l'horodatage du fichier jar, que l'archiveur ne fixe pas. Elle
+ * reste une comparaison classe contre source, rouge sur un jar plus ancien que son source. Ce
+ * qu'elle perd : un {@code target/classes} perime reempaquete apres la modification du source
+ * passerait, puisque l'horodatage du jar dit quand il a ete empaquete, pas quand ses classes ont
+ * ete compilees - un jar reproductible n'expose plus cette information.
  */
 class ProvenanceDesClassesAmontEstLeDepotTest {
 
@@ -138,7 +157,8 @@ class ProvenanceDesClassesAmontEstLeDepotTest {
     /**
      * Lit l'horodatage du {@code .class} compile, que la provenance soit un repertoire
      * {@code target/classes} (execution de tests) ou un jar packaged (phase {@code package}
-     * atteinte) : les deux portent l'horodatage de compilation de l'entree elle-meme.
+     * atteinte). Dans un jar dont toutes les entrees portent le meme horodatage - build
+     * reproductible, voir la Javadoc de la classe - c'est l'horodatage du fichier jar qui est rendu.
      */
     private static FileTime horodatageDeLaClasseCompilee(Path provenance, String cheminBinaire)
             throws IOException {
@@ -150,6 +170,9 @@ class ProvenanceDesClassesAmontEstLeDepotTest {
             assertThat(entree)
                     .as("%s absente de %s", cheminBinaire, provenance)
                     .isNotNull();
+            if (jar.stream().map(JarEntry::getLastModifiedTime).distinct().count() == 1) {
+                return Files.getLastModifiedTime(provenance);
+            }
             return entree.getLastModifiedTime();
         }
     }
@@ -178,7 +201,9 @@ class ProvenanceDesClassesAmontEstLeDepotTest {
                         + "contenu change (touch, enregistrement a vide, git checkout) alors que la "
                         + "compilation a ete supprimee - un mvn -B clean verify, qui compile, ne peut "
                         + "pas produire ce second cas. Dans les deux cas la mesure en cours ne "
-                        + "prouve rien : un clean en amont reste la seule garantie de fraicheur",
+                        + "prouve rien : un clean en amont reste la seule garantie de fraicheur. "
+                        + "Pour un jar dont toutes les entrees portent le meme horodatage (build "
+                        + "reproductible), l'horodatage compare est celui du fichier jar",
                         nomClasse, moduleAmont, provenance, horodatageClasse, sourceJava,
                         horodatageSource)
                 .isFalse();
@@ -226,5 +251,69 @@ class ProvenanceDesClassesAmontEstLeDepotTest {
                 // Un rouge dont la cause peut etre un horodatage avance sans modification de contenu
                 // doit le dire la ou le lecteur le rencontre, pas seulement dans une Javadoc.
                 .hasMessageContaining("Deux causes possibles");
+    }
+
+    /**
+     * s55, ADR-0013 : le jeu fautif du cas "jar d'un build reproductible", trois jars construits ici
+     * parce que git ne conserve aucun horodatage. Chacun ferme une regression distincte : le
+     * premier, une exemption du jar reproductible ; le deuxieme, la lecture de l'entree fixe qui a
+     * rougi la CI ; le troisieme, un repli sur le fichier jar etendu a un jar ordinaire, ou il
+     * masquerait une classe perimee.
+     */
+    @Test
+    void unJarReproductibleEstJugeSurSonFichierEtUnJarOrdinaireSurSonEntree(@TempDir Path dossier)
+            throws IOException {
+        Path sourceJava = FIXTURE_FRAICHEUR.resolve("Perimee.java");
+        byte[] classe = Files.readAllBytes(FIXTURE_FRAICHEUR.resolve("Perimee.class"));
+        Instant maintenant = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        FileTime fixe = FileTime.from(Instant.parse("1980-02-01T00:00:00Z"));
+        FileTime avant = FileTime.from(maintenant.minusSeconds(120));
+        FileTime apres = FileTime.from(maintenant.plusSeconds(120));
+        Files.setLastModifiedTime(sourceJava, FileTime.from(maintenant));
+
+        Path reproAncien = jar(dossier.resolve("repro-ancien.jar"), classe, fixe, fixe, avant);
+        assertThatThrownBy(() -> juger(reproAncien, sourceJava))
+                .as("un jar reproductible plus ancien que son .java source doit faire rougir le "
+                        + "garde-fou")
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("plus ancien");
+
+        Path reproFrais = jar(dossier.resolve("repro-frais.jar"), classe, fixe, fixe, apres);
+        assertThatCode(() -> juger(reproFrais, sourceJava))
+                .as("un jar reproductible frais ne doit pas rougir sur l'horodatage fixe de ses "
+                        + "entrees")
+                .doesNotThrowAnyException();
+
+        Path ordinairePerime = jar(dossier.resolve("ordinaire.jar"), classe, avant, apres, apres);
+        assertThatThrownBy(() -> juger(ordinairePerime, sourceJava))
+                .as("un jar ordinaire frais dont l'entree de classe est plus ancienne que son .java "
+                        + "doit faire rougir le garde-fou : le repli sur le fichier ne vaut que pour "
+                        + "un jar reproductible")
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("plus ancien");
+    }
+
+    private static void juger(Path jar, Path sourceJava) throws IOException {
+        verifierFraicheur("Perimee", "fixture", jar, sourceJava,
+                horodatageDeLaClasseCompilee(jar, "Perimee.class"),
+                Files.getLastModifiedTime(sourceJava));
+    }
+
+    private static Path jar(Path chemin, byte[] classe, FileTime entreeClasse,
+            FileTime entreeManifeste, FileTime fichier) throws IOException {
+        try (JarOutputStream sortie = new JarOutputStream(Files.newOutputStream(chemin))) {
+            JarEntry manifeste = new JarEntry("META-INF/MANIFEST.MF");
+            manifeste.setLastModifiedTime(entreeManifeste);
+            sortie.putNextEntry(manifeste);
+            sortie.write("Manifest-Version: 1.0\r\n".getBytes(StandardCharsets.US_ASCII));
+            sortie.closeEntry();
+            JarEntry entree = new JarEntry("Perimee.class");
+            entree.setLastModifiedTime(entreeClasse);
+            sortie.putNextEntry(entree);
+            sortie.write(classe);
+            sortie.closeEntry();
+        }
+        Files.setLastModifiedTime(chemin, fichier);
+        return chemin;
     }
 }
