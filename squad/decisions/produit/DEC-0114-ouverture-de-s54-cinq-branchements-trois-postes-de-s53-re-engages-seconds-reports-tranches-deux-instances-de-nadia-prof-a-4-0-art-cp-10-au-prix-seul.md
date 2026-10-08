@@ -695,3 +695,25 @@ Statut : `Proposee`, inchange (A.21) ; la section 0.4 n'est pas touchee.
 | `camille-po` | La matrice ne bouge pour `ART-CP-10` que sur le plafond ecrit ou le verdict |
 
 Il ne touche ni `catalogue.yaml`, ni un paquet, ni du code. Il ne prononce aucun Done.
+
+---
+
+## Amendement du 2026-10-08 (s54, `camille-po`, apres le verdict de l'instance C) : `cp-arts-oeuvres-familles` valide sous reserve, `ART-CP-10` inchangee
+
+Motif de forme 1 : le verdict est ecrit dans `FICHE-bandit-manchot-familles-d-oeuvres-cp.md` (bloc de validation, `nadia-prof` instance C, 2026-10-08). Cet amendement ne decide rien de neuf.
+
+### A.25 Verdict de C et consommation reelle des budgets
+
+1. **Verdict** : `cp-arts-oeuvres-familles` **VALIDE SOUS RESERVE**, trois reserves non bloquantes (`R1` consigne de catalogue, `R2` indice de l'item 11, `R3` metiers au masculin). **Mouvement de ligne : aucun.**
+   `ART-CP-10` reste `non couvert` : la fiche dit que le paquet *"ne travaille pas cette competence"* et que le verdict *"ne vaut pour aucune ligne de la matrice"* (section 3 et bloc de validation).
+   A.1 est appliquee, pas modifiee. La matrice porte la mention du paquet branche et valide sous reserve (A.24 : elle ne bouge que sur le plafond ecrit ou le verdict) ; **les totaux ne changent pas : 137 / 182**.
+2. **Reserves en backlog, non engagees, premier report de chacune : aucun** : `S54-ART-RES-R1`, `S54-ART-RES-R2`, `S54-ART-RES-R3` (criteres repris des mots de la fiche, mesures rouges sur l'existant le 2026-10-08). Engagement : `DEC` d'ouverture de s55.
+3. **Consommation reelle des budgets de s54** (A.18 en posait la borne) : instance A **3,25**, instance B **3,25**, instance C **1,0** (fiche : audit 1,0, rejeu 0,5 non consomme). **Somme : 7,5**, contre la borne de **9,5** ecrite en A.18.
+   Les chiffres de A et de B sont ceux que le message de `sofia-sm` m'a donnes ; je n'ai pas relu leurs rapports pour les recompter (forme 3 de `DEC-0062` : ils fondent le fait qu'ils ont ete annonces, pas leur exactitude).
+4. **L'ecart de A.18 n'a pas ete consomme.** A.18 ecrivait un ecart de +1,5 a la borne de 8,0 de `PAR-8`. Avec 7,5 la somme reelle est **sous 8,0** : elle n'a pas eu besoin de l'ecart, meme en partie.
+   Ce qui avait ete compte (9,5) etait un budget, pas une consommation. **A.20 vaut toujours** : cet ecart n'est pas une jurisprudence pour s55, et la `DEC` d'ouverture de s55 compte selon `PAR-9` telle qu'ecrite.
+5. **Correction de reference** : la story `S54-BR-ART-CP-10` (critere 7, et A.14 de cet amendement-ci par renvoi) citait `FICHE-cp-arts-oeuvres-familles.md` ; la fiche porte le nom de la convention du depot,
+   `FICHE-bandit-manchot-familles-d-oeuvres-cp.md`. Corrige dans le backlog ; le texte de A.14 n'est pas reecrit, cette phrase le corrige.
+
+Statut : `Proposee`, inchange (A.21). Routage : `sofia-sm` affecte `S54-ART-RES-R1` a `-R3` (proprietaire propose : `lea-dev`, auteure du paquet) et propose leur prix ; `nadia-prof` rejoue.
+Il ne touche ni `catalogue.yaml`, ni un paquet, ni du code. Il ne prononce aucun Done.
