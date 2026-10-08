@@ -282,3 +282,130 @@ et elle ne transforme pas `ok` en motif (section 0.4).
 4. Mecanique d'`ART-CP-10` : dispositif (T2, T3) finance a s55, story `S55-ART-CP-10-MECANIQUE` ; paquet et audit non finances, deux questions a l'utilisatrice ; T4 sous avis de `theo-archi`.
 5. Cinq postes non engages (`ASCII-APOSTROPHES`, A7, A8, `OBS-SCI-CONSIGNE`, et `ART-RES` sans instance) : premier report compte, motif ecrit.
 6. Statut de cette decision : `Proposee` jusqu'aux mots de l'utilisatrice sur le financement (section 0.5).
+
+---
+
+## Amendement du 2026-10-08 (s55, `camille-po`) : arts plastiques CP entier sur l'instance A, reserve de A, forme et audit d'`ART-CP-10`, criteres corriges
+
+Annotation datee. **Rien au-dessus n'est reecrit** : les lignes que cet amendement remplace sont nommees en A.7. Sources lues avant d'ecrire :
+`ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md` (A, 15:44) et `ARBITRAGE-PREALABLE-s55-instance-b-emc-cm1.md` (B, 15:35) de `nadia-prof` ;
+`squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/avis-faisabilite.md` de `theo-archi` (15:42) ; `planning.md`.
+
+### A.1 Ce que j'ai recu, cite tel que recu (forme 3, `DEC-0062` regle 3.5)
+
+Message de l'agent qui m'a lance, 2026-10-08, relayant l'utilisatrice, **sans source dans le depot** (je n'ai pas le message d'origine) :
+"L'utilisatrice a tranche Q4 (message relaye, forme 3) : option (b) : TOUTES les arts plastiques CP vont a l'instance A de nadia-prof (PAR-2)."
+Le texte est celui de l'agent. **Ce "Q4" n'est pas le Q4 du planning** (prix et place de l'arbitrage sur `G7` a `G11`, que `nadia-prof` a traite en section 6 de A) : il designe
+le choix entre les issues (a) et (b) de A 2.3 et de B 4.1.
+
+**Borne de la forme 3 : ce message fonde le choix de (b) contre (a), jamais sa raison.** La raison est de forme 1, et elle est celle des deux instances : `PAR-2` interdit de partager
+une matiere et un niveau dans un sprint ; le critere de `ART-RES` (ni titre ni consigne du jeu des familles ne contiennent `reconna` ou `rapproch`) est la frontiere entre ce paquet et
+`ART-CP-10` ; "tenue par deux instances, elle est tenue par moitie" (A 2.3, qui confirme la lecture de B 4.1). (b) met les deux cotes de la frontiere chez la meme instance.
+B 4.1 posait comme condition que (b) soit un amendement de cette `DEC` accepte par l'instance A : A l'a chiffre dans son propre arbitrage (2.3, ligne (b), 3,75) ; cet amendement est le mien.
+
+### A.2 Decision 1 : affectation et arithmetique
+
+- `S54-ART-RES-R1` a `R3` : **instance A**, **0,25** (textes de B 4.2, que A rejoue mot pour mot ; 0,5 si reecrits). Developpement : `lea-dev`, inchange, en tete de sa file.
+- La forme d'`ART-CP-10` (points 2 a 5 d'`ADR-0104`) : **instance A**, 0,25, deja comptee dans les 3,5 de A.
+- `S54-EXC-CATEGORIE` (`EXC-R15`) : **reste a l'instance B**, 0,25 (B 5). `PAR-2` : l'EMC CP et l'EMC CM1 sont une seule matiere et B porte l'EMC CM1 ; le fait que l'instance A de s54 ait ecrit la reserve n'y change rien (A 2.1 : 0,0 sur A).
+
+Arithmetique, avec les tarifs que `nadia-prof` a ecrits (A 2.1 et 2.3, B 6). Je ne recompte aucun tarif, je les additionne.
+
+| Poste | A | B |
+|---|---|---|
+| Deux lots (A : `-14`, `-12` ; B : `EMC-CM1-03` 1,0 et `EMC-CM1-06` 1,5) | 2,0 | 2,5 |
+| Arbitrage prealable | 0,5 | 0,5 |
+| Plafonds de `G7` a `G11` | 0,25 | - |
+| Forme d'`ART-CP-10` | 0,25 | - |
+| `S54-ART-RES-R1` a `R3` | **0,25** (etait chez B) | **0** (etait 0,25) |
+| `S54-EXC-CATEGORIE` | - | 0,25 |
+| Marge de rejeu, allouee a aucun lot | 0,5 | 0,5 |
+| **Total / 4,0** | **3,75** (3,5 avant) | **3,75** (4,0 avant) |
+| Reserve non allouee | **0,25** | **0,25** |
+
+A : 2,0 + 0,5 + 0,25 + 0,25 + 0,25 + 0,5 = 3,75. B : 2,5 + 0,5 + 0,25 + 0,5 = 3,75. **Somme 7,5 sur 8,0** (`PAR-8`), inchangee par le deplacement (0,25 passe de B a A).
+
+- **`PAR-9` (4,0 par instance, marge comprise) : respectee** par les deux, 3,75 chacune. **`PAR-8`** : deux lots par instance (au plus trois), plafond dur de 5,0 non approche.
+- **`PAR-11` : non appliquee, comme a s52** (`DEC-0111`), et toujours non tranchee. **Je donne les deux lectures** : dans sa lecture amendee (0,5 de marge par lot neuf, par instance),
+  A et B portent chacune deux lots neufs, soit 1,0 de marge demandee pour 0,5 allouee : **4,25 chacune, 8,5 en somme, au-dessus de `PAR-9` et de la borne de 8,0**. Le risque est celui que B 6 ecrit pour B (un seul lot rejouable) ; il vaut aussi pour A.
+- **Ecart a la `DEC` d'origine, a ne pas confondre avec le deplacement** : sa section 1 comptait 6,75 sur 8,0 avec les tarifs du planning. Les tarifs de `nadia-prof` donnent **7,5** : A +0,5 (plafonds 0,25, forme 0,25), B +0,25
+  (`EMC-CM1-06` a 1,5 au lieu de 1,0, `ART-RES` a 0,25 au lieu de 0,5, avant deplacement). Aucun ecart a `PAR-9` ni a `PAR-8` n'est exige ; **la somme de 6,75 est caduque**.
+- Si `EXC-R15` est reecrite au lieu d'etre appliquee mot pour mot (A.6) : B 3,75 - 0,25 + 0,5 = **4,0**, encore dans `PAR-9`, reserve 0.
+
+**Reports** : `S54-ART-RES-R1` a `R3` ont une instance, donc **le "premier report sans instance (Q5)" de la section 4 ne se produit pas.** Engagees a s55 et non livrees a la cloture, elles compteraient pour un premier report (`DEC-0114` section 4).
+
+### A.3 La reserve de A : O1 ne tient pas, O3 est fait, O2 reste a l'utilisatrice
+
+La reserve de A etait de 1,0 au planning, de 0,5 avec les prix de `nadia-prof`, elle est de **0,25** apres A.2.
+
+| Emploi | Etat | Preuve |
+|---|---|---|
+| **O1** : un troisieme lot (`-13`, 1,0) | **ne tient pas sous `PAR-9`** : 3,75 + 1,0 = **4,75 sur 4,0** (A 2.2 : 4,5 avant le deplacement) | arithmetique ci-dessus. Il exigerait un ecart ecrit de l'utilisatrice ; **personne ne le demande**, `S55-BR-FRA-CE1-L3` n'est pas engagee |
+| **O3** : arbitrage sur `G7` a `G11` | **fait par `nadia-prof`, 0,25** (A section 6), et non 1,0 | 15 paquets sur 16 plafonnes `non couvert` ; seul `cm1-lire-et-restituer` (`FRA-CM1-01`) peut fermer, apres une mesure de pli d'`ines-design` qui n'est pas faite, puis un lot a 1,0. Le rang 3 de l'ordre (section 3) **achete au plus une ligne** ; l'ordre est celui de l'utilisatrice, je n'y touche pas |
+| **O2** : ne rien ajouter | **ouvert : decision de l'utilisatrice** | voir ci-dessous |
+
+**Ce qui reste a decider, sans que je le tranche (Q-U4)** : l'emploi des **0,25** restants de A. Deux usages nommes par `nadia-prof`, qui ne tiennent pas ensemble (0,25 + 0,25 = 0,5 > 0,25) :
+
+1. **Le choix des oeuvres distractrices** du paquet illustre (A 3.5, regles 2 et 3), 0,25 : il precede l'ecriture du paquet. Il n'a de valeur a s55 que si le paquet s'ecrit a s55 (Q-U1, toujours ouverte).
+2. **Un rejeu mot pour mot** (A 2.2), 0,25, en plus de la marge de 0,5 : la marge paie un rejeu ; un second refus a s55 (`-14`, `-12` ou une reserve d'`ART-RES`) n'est finance que par cette ligne.
+
+Laisser les 0,25 non alloues est une troisieme issue : A ferme a 3,75, sans rien de plus. **Le choix est celui de l'utilisatrice ; cet amendement ne l'ecrit pas.** Tant qu'il n'est pas fait, les 0,25 restent non alloues.
+
+### A.4 La forme d'`ART-CP-10` et l'audit du paquet illustre
+
+- **La forme est a l'instance A.** Sa section 3 est ecrite et, (b) etant retenue, c'est elle qui vaut : ce que le dispositif montre (`M1` a `M6`), ce qu'il ne montre pas (`X1` a `X7`, dont l'ecran de fin sans oeuvre),
+  le nom accessible et la phrase de revelation (3.2), les regles de paires (3.4). **Je ne recopie aucun mot lu par l'enfant** : ils sont a elle (`CON-5`) et vivent dans son fichier.
+- **Ce que sa forme laisse expressement "au paquet, en jouant"** (3.1, 3.4, point 6) : ce que la forme vaut sur des paires reelles, la visibilite de chaque propriete a 176 px CSS, la regle "le sujet ne suffit jamais", un recadrage de la reference (`X5`). **Rien de cela ne se tranche a s55.**
+- **L'audit du paquet illustre : 2,5 (tarif de `nadia-prof`, A 3.5 : lot d'arts plastiques CP dont elle n'est pas la source 1,5, illustre +0,5, forme sans contenu +0,5), a s56 au plus tot.** Le 2,0 de ma section 5.2 etait celui de `theo-archi` ; le tarif est celui de `nadia-prof` et il l'emporte.
+  A s55 il ne tiendrait sur aucune instance : A 3,75 + 2,5 = 6,25 et B 3,75 + 2,5 = 6,25, tous deux au-dessus du plafond dur de 5,0 ; somme 10,0 sur 8,0. **Q-U2 (ecart a s55 ou audit a s56) n'a plus a etre posee : aucun ecart n'est demande, l'audit va a s56 au plus tot.**
+- **Ce que l'audit impose a s56** (A 3.5), que la `DEC` d'ouverture de s56 comptera : l'instance qui l'audite garde 4,0 - 0,5 (arbitrage) - 0,5 (marge) - 2,5 = **0,5**, donc **aucun autre lot** ; la forme n'a aucune cousine, c'est le terrain neuf de s56 au sens de `PAR-13` ;
+  un lot sans cousine (`-08`, `-09`) n'est jamais dans le sprint ou une autre instance audite ce paquet. **Consequence de produit, nommee sans etre tranchee** : `PAR-2` met tout le francais CE1 (rang 1 de l'ordre, section 3) chez A ; si A audite le paquet a s56, le francais CE1 n'avance pas a s56.
+- **Ce que s55 construit de la mecanique** (avis de `theo-archi`, sections 3 et 4) : **T2** (garde-fous 1 a 3) ne depend d'aucun mot et se livre seul ; **T3** (rendu, revelation, ecran de fin, garde-fou 4, cliquet 3 vers 4) attend les mots (ecrits, A 3.2)
+  et la mise en page d'`ines-design` (**non ecrite, toujours sans tache au planning**) ; **T4 sort de la story** et voyage avec le fichier du paquet a reproductions (T5) : sans item qui declare les trois reproductions, `LIllustrationDeContenuResoutEtAucuneNeDortTest` est rouge (simulation B de l'avis, 2 tests sur 18).
+  Le paquet (T5) n'est ni finance ni date : **Q-U1 reste ouverte** (s55 ou s56 ; l'audit de s56 en depend).
+
+### A.5 Criteres de `S55-ART-CP-10-MECANIQUE` corriges (backlog, "Sprint 55")
+
+Corrections de `theo-archi` (QC1 a QC3 et critere 9). Verifie par moi contre l'arbre : le chemin du critere 8 (le contre-exemple vit bien sous `bootstrap/src/test/resources/contreexemple/`, des repertoires `contenu` y existent) et le critere 9 (ci-dessous). Les autres sont ses mesures, que je ne reconteste pas et dont je n'ai pas relance les commandes.
+Le backlog les porte sous chaque critere concerne.
+
+1. **Critere 6.** Les mots et la mise en page existent avant le rendu, **pour les points 3 et 4** d'`ADR-0104` (nom accessible, phrase de revelation, ecran de fin) : les mots sont ecrits (A 3.2, 3.3), la mise en page manque. **Les points 2 et 5 se tranchent "sur un paquet, en jouant"** (`nadia-prof`, 2026-10-06,
+   `ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md`, fin de la section 4.2) : le critere ne les demande plus, et **la story ne les ferme pas**. T3 ne peut donc pas etre close a s55 au sens de la forme : la valeur de la forme est jugee a l'audit de s56 au plus tot.
+   Reponse a **QC1** : la story se decoupe en T2 (livrable seul) et T3 (code possible a s55 si `ines-design` livre avant l'ouverture du worktree, jugement a s56) ; T3 non livree a la cloture de s55 est un **premier report**, compte.
+2. **Critere 8.** Le chemin vise est `adapters/adapter-content/src/main/resources/contenu/`, et non tout `contenu/` : un `grep contenu/` compte le contre-exemple du garde-fou 1 (QC2).
+3. **Critere 9.** F0 de l'avis (ligne `U4` de `review.md` de s54, 4 cellules pour 3 colonnes) est corrige par `8f740977`. Mesure du 2026-10-08 sur `ca425c17` : la ligne 293 a 3 cellules ;
+   `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest -Dsurefire.failIfNoSpecifiedTests=false` (perimetre : cette classe, `-am`) : 5 tests, 0 echec.
+   Le critere 9 redevient tenable ; **je n'ai pas lance `mvn -B clean verify` sur la racine**.
+4. **Garde-fou 2 (critere 4, point 2).** La population reelle de reproductions vaut **exactement 0** a s55, forme d'`ADR-0051` deja pratiquee par `LIllustrationDeContenuResoutEtAucuneNeDortTest` (QC3) ;
+   le commit du premier paquet a reproductions releve ce nombre. "Population non vide" serait rouge.
+
+### A.6 Critere de `S54-EXC-CATEGORIE` : non tenable tel qu'ecrit
+
+Mesure de `theo-archi` (avis, section 7, point 1, simulation C), que je ne conteste pas : **les quatre lignes de `nadia-prof` ne tiennent pas avec "`PaquetCpEmcExclusionTest` reste vert".**
+Avec elles seules, la categorie "une moquerie qui se répète" tombe a 1 bonne reponse, sous le minimum de 3 de `FAB-1a` ; `CLASSEMENTS_VALIDES` ne connait pas la categorie neuve et les items 1 et 3 basculent en silence dans la tache B (**faux vert**) ; l'inventaire porte l'ancienne consigne.
+
+**Je ne reecris pas le critere** : il reprend les mots de `nadia-prof` (regle de la story). **QC4 est routee a `nadia-prof`** : le seuil de `FAB-1a` se lit-il sur deux categories (moquerie ou mise a l'ecart, contre accident), auquel cas il tient a 3, ou sur trois, auquel cas la moquerie n'a qu'un item ?
+Le backlog marque le critere **"non tenable tel qu'ecrit, a reecrire apres QC4"**. La story reste engagee ; sa livraison attend la reponse.
+
+### A.7 Ce que cet amendement remplace dans la `DEC`
+
+| Ligne | Remplacee par |
+|---|---|
+| Section 1, tableau : `ART-RES` "sous Q5 : B, 0,5" | A.2 : instance A, 0,25 |
+| Section 1, tableau : `EMC-CM1-06` 1,0 | 1,5 (B 6) |
+| Section 1, "Capacite" (3,0 / 3,75, 6,75 sur 8,0) | A.2 : 3,75 / 3,75, 7,5 sur 8,0 |
+| Section 2, Q3, Q4, Q5 "ouvertes" | Q3 : O1 ne tient pas, O3 fait, O2 en A.3 ; Q4 (`G7` a `G11`) : fait, 0,25 ; Q5 : instance A |
+| Section 4, `ART-RES` "sans instance, premier report" | A.2 : une instance, pas de report |
+| Sections 5.1 (hypothese 0,5, B a 4,25) et 5.2 (2,0) | A.4 : forme 0,25 sur A, audit 2,5 a s56 au plus tot |
+| Section 5.5, Q-U2 | A.4 : caduque ; Q-U1 ouverte ; Q-U3 inchangee |
+
+**Nouvelle question a l'utilisatrice** : Q-U4 (emploi des 0,25 de A, A.3).
+
+### A.8 Statut, routage, ce que cet amendement ne fait pas
+
+- **Statut inchange : `Proposee`** (section 0.5). Le message de A.1 est de forme 3 et ne remplace pas les mots de l'utilisatrice.
+- **Routage** : `sofia-sm` (planning : `ART-RES` et forme chez A, capacite 3,75 / 3,75, proprietaire du dev de la mecanique, tache d'`ines-design` avant T3, composition de s56 de A.4 ; aucune troisieme instance) ;
+  `nadia-prof` (QC4 sur `FAB-1a`, A.6 ; confirmer par une ligne que sa section 3 vaut sous (b)) ; `theo-archi` (rien de neuf : QC1 a QC3 sont repris en A.5, QC4 est a `nadia-prof`) ; `ines-design` (mise en page, avant T3) ; utilisatrice (Q-U1, Q-U3, Q-U4).
+- **Ne fait pas** : ne touche ni `catalogue.yaml`, ni un paquet, ni du code, ni la matrice (137 / 182, aucun statut ne bouge), ni le planning de `sofia-sm` ; ne prononce aucun Done ; ne fixe aucun tarif (ils sont ceux de `nadia-prof`) ; n'engage ni `S54-ASCII-APOSTROPHES-TESTS`
+  (forme et agent ecrits par `theo-archi`, T4 de l'avis : engagement non decide ici), ni `S55-BR-FRA-CE1-L3`.
+- **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison. `build` et `outils` ne sont pas lances (aucun code, contenu ni outil modifie), hors la classe nommee en A.5.
