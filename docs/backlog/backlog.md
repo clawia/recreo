@@ -20722,3 +20722,60 @@ Source : `lecture-testabilite.md` de `yanis-qa` (base `2d0d10e7`), questions Q-Y
   et B ne peut pas la porter (4,25). Somme 7,25 sur 8,0. Au-dela de 1,0 sur A, un ecart serait exige. **L'audit du paquet a s55 depasserait la borne** (6,75 + 2,0 = 8,75) : question a l'utilisatrice, non tranchee.
 - **Ce qui manque pour que le planning la porte** : proprietaire du dev, tache d'`ines-design`, prix et instance de l'arbitrage de forme, avis de `theo-archi` (T6 reconfirme, T4), correction de la phrase du planning sur le budget d'audit (`DEC-0115` 5.4).
 - **Lien decision** : `DEC-0115` section 5 ; `DEC-0114` section 6 point 4 ; `DEC-0113` section 3.1 ; `ADR-0104`. **Report** : `ART-CP-10` compte quatre sprints hors perimetre (s50 a s53), engagee a s54, financee a s55 : pas un report.
+
+
+## Cloture de s55 - etat de chaque story, reserves ouvertes, stories nees des verdicts (`camille-po`, 2026-10-08)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Sources : les blocs de verdict des six fiches (`squad/conformite/FICHE-bandit-manchot-accord-sujet-verbe-ce1.md`, `-classes-de-mots-ce1.md`, `-respect-differences-cm1.md`, `-principes-republique-cm1.md`, `-exclusion-cp.md`, `-familles-d-oeuvres-cp.md`), `audit-nadia-a.md`, `audit-nadia-b-emc.md`, `audit-nadia-b-exc.md`, `ARBITRAGE-COMPLEMENT-s55-instance-a.md`, les rapports de dev du dossier de sprint et `git log` de `round-two` a `af8b326e`. **Aucun verdict n'est de moi.** Matrice : 141 / 182 (`squad/programme/MATRICE-couverture.md`, note de s55). Cette annotation ne tient pas lieu de cloture de sprint : `review.md`, `RAPPORT.md`, `retro.md`, `relecture-cloture.md` sont a `sofia-sm` et au `relecteur-pedagogique`.
+
+### Etat des stories de s55
+
+| Story | Etat a la cloture | Preuve |
+|---|---|---|
+| `S54-ART-RES-R1` a `R3` | **Close.** Livree, VALIDE, trois reserves levees, 0,25 | `f53f5c47` ; fiche `familles-d-oeuvres-cp`, verdict du 2026-10-08 (instance A) ; `ART-CP-10` reste `non couvert` |
+| `S54-EXC-CATEGORIE` | **Close.** Livree, `EXC-R15` levee, VALIDE SOUS RESERVE ; reserve neuve `EXC-R16` | `d2b317a8` ; fiche `exclusion-cp`, bloc du 2026-10-08 (instance B) ; `EMC-CP-03` reste `couvert-valide` |
+| `S55-BR-FRA-CE1-L1` | **Close.** `FRA-CE1-14` `couvert-valide`, reserves `ACV-CE1-R1` et `ACV-CE1-R2` | `c9c80937` ; fiche `accord-sujet-verbe-ce1` |
+| `S55-BR-FRA-CE1-L2` | **Close.** `FRA-CE1-12` `couvert-valide`, reserve `CLM-CE1-R1` | `2aa1e03a` ; fiche `classes-de-mots-ce1` |
+| `S55-BR-EMC-CM1-03` | **Close.** `EMC-CM1-03` `couvert-valide` avec la mention EMC CM1, reserve `EMC-CM1-R8` | `0839f9dc` ; fiche `respect-differences-cm1` |
+| `S55-BR-EMC-CM1-06` | **Close.** `EMC-CM1-06` `couvert-valide` avec la mention EMC CM1, reserve `EMC-CM1-R9` | `4636aa28` ; fiche `principes-republique-cm1` |
+| `S55-ART-CP-10-MECANIQUE` | **T2 et T3 livrees, story non close.** Aucun report : T3 est livree. Le jugement de la forme (points 2 et 5 d'`ADR-0104`) attend un paquet ; T4 et le paquet (T5) ne sont pas engages ; **rien n'a ete joue sur le jar** (aucun paquet au catalogue) ; l'enfant ne voit rien | `dfd2f107`, `363793e3`, `rapport-lea-dev-mecanique.md` ("Non verifie") ; aucun ecrit de `nadia-prof` sur la lecture de T2 et T3 annoncee par son complement, section 1.1 (`git log` : aucun commit `[NAD]` sur ce point) |
+| `S54-PONCT-GN-INDICES` | **Livree.** 12 vers 0 ; la relecture de ponctuation par le `relecteur-pedagogique` n'est pas faite a la date de cette annotation | `08cb05fd` ; `grep -cP '^ *indice: ".* [:;!?]'` sur `cm1-grands-nombres.yaml` rend 0 (relance par moi) |
+| `S54-ASCII-APOSTROPHES-TESTS` | **Livree** | `51c81763` ; `grep -cP '[\x{2018}\x{2019}]'` rend 0 et 0 sur les deux tests (relance par moi) |
+| `S55-OUTIL-JDK-JAVA-TOOL-OPTIONS` (A7) | **Livree** | `8541cffc` ; `JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 bash outils/mvn-jdk21.sh -v` sort 0 (relance par moi ; sortait 1) |
+| `S55-OUTIL-TOKENS-SANS-SPRINT` (A8) | **Livree** | `69d9d6a2` ; commande non relancee par moi : elle ecrit (mesure de `theo-archi`) |
+| `S54-OBS-SCI-CONSIGNE` | **Non engagee, premier report (s55)** | `DEC-0115` A.10 ; inchange |
+| `S55-BR-FRA-CE1-L3`, paquet a reproductions (T5), T4 | **Non engages, option ouverte**, pas un report (`DEC-0115` section 4) | `DEC-0115` A.3, A.4 |
+
+**Les quatre branchements, au catalogue** (relance par moi) : `grep -c "paquet: <nom>$" catalogue.yaml` rend 1 pour `ce1-accord-sujet-verbe`, `ce1-classes-de-mots`, `cm1-emc-respect-differences`, `cm1-emc-principes-republique` (0 a l'ouverture).
+
+**Fait de capacite, tel que `nadia-prof` l'ecrit** : A consomme `-14` 1,0, `-12` 1,0, `ART-RES` 0,25, arbitrage 0,5, plafonds 0,25, forme 0,25, `A10` 0,25 ; **la marge de rejeu de 0,5 de A n'est pas utilisee** et les 0,25 de `Q-U4` sont consommes par `A10` (complement, section 4 : le choix de l'utilisatrice est devenu un fait). B : `EMC-CM1-03` 1,0 + 0,25 (ecart de l'item 4), `EMC-CM1-06` 1,5, arbitrage 0,5, `EXC-R15` 0,25. Les deux instances ecrivent **4,0 sur 4,0** ; ma somme des tarifs de B donne 3,5 (la marge non allouee de B n'entre pas dans mon addition) : l'ecart de lecture est a `nadia-prof`, je ne le tranche pas.
+
+### Reserves ouvertes a la cloture, et ce qu'elles coutent a lever
+
+Prix ecrits par `nadia-prof` dans les fiches, additionnes sans recompte. `ACV-CE1-R1` et `EXC-R16` ont leur texte applique par un developpeur (`2b66a441`, `e6262ac2`) : **elles ne sont pas levees tant que `nadia-prof` n'a pas rejoue** ; le prix est celui du rejeu.
+
+| Reserve | Ligne | Instance | Cout de rejeu | Etat du texte |
+|---|---|---|---|---|
+| `ACV-CE1-R1` | `FRA-CE1-14` | A | 0,25 (mot pour mot) | applique (`2b66a441`), non rejoue |
+| `ACV-CE1-R2` | `FRA-CE1-14` | A | 0,5 (trois items changes, `PAR-10`, pas un lot : `PAR-14`) | non appliquee |
+| `CLM-CE1-R1` | `FRA-CE1-12` | A | **1,0** (les 24 indices changent, tarif de lot, `PAR-14`) | non appliquee |
+| `EMC-CM1-R8` | `EMC-CM1-03` | B | 0,25 (mot pour mot) | non appliquee |
+| `EMC-CM1-R9` | `EMC-CM1-06` | B | 0,25 (mot pour mot) | non appliquee |
+| `EXC-R16` | `EMC-CP-03` | B | 0,25 (mot pour mot) | appliquee (`e6262ac2`), non rejouee |
+| **Total** | | A 1,75 / B 0,75 | **2,5** | |
+
+### Stories nees des verdicts (non engagees, proposees pour s56)
+
+Chaque critere reprend les mots de `nadia-prof` (regle de ce backlog : un critere issu d'un refus ou d'une reserve ne se traduit pas). Chaque valeur "aujourd'hui" a ete lue par moi sur `af8b326e` ; un critere deja vert est signale comme tel. **Besoin** commun, du point de vue de l'enfant : "En tant qu'eleve, je veux que le texte que je lis apres une erreur m'aide a trouver la reponse par ce que je comprends, afin d'apprendre la regle et non de retrouver un mot." Mecanique : `bandit-manchot`, aucune modification.
+
+- **`S55-ACV-CE1-R1` - rejeu** (`FRA-CE1-14`, `squad/programme/francais/competences-ce1.md`). Le texte de remplacement est applique : le critere de contenu est **deja vert** (`grep -c 'lequel est le bon' ce1-accord-sujet-verbe.yaml` rend 1, et l'item 6 ne contient plus `va` ; les quatre occurrences de `lequel va avec lui` sont celles des items 9, 12, 18, 21, que `nadia-prof` garde). Ce n'est donc pas un critere de developpement. **Critere de levee** : la fiche porte un verdict de rejeu date apres le 2026-10-08 ; `grep -c 'ACV-CE1-R1.*LEVEE' FICHE-bandit-manchot-accord-sujet-verbe-ce1.md` rend **0 aujourd'hui**, doit rendre au moins 1. Instance A, 0,25. Dev : aucun.
+- **`S55-ACV-CE1-R2` - la marque muette du pluriel est la reponse** (`FRA-CE1-14`). Critere de `nadia-prof`, mot pour mot : *"au moins 8 des 12 items a sujet pluriel ont pour bonne reponse une forme du premier groupe en -ent, verbes de `PRS-CE1-1` seulement, distracteurs de meme famille (autre nombre, autre personne), et `ACV-CE1-1`, `TRV-CE1-2` restant tenues."* **Aujourd'hui : 5 sur 12** (items 2, 9, 20, 21, 23 : `écoutent`, `parlent`, `travaillent`, `dessinent`, `lavent`, lus sur `bonneReponse` ; son chiffre, fiche section 4, est le meme). Rouge. La commande de comptage est a ecrire avec `yanis-qa` ; je ne la fixe pas, les textes sont au developpeur et `nadia-prof` les juge en rejouant. Instance A, 0,5. Dev : `marc-dev`.
+- **`S55-CLM-CE1-R1` - les indices disent ou regarder et ne departagent rien** (`FRA-CE1-12`). Critere de `nadia-prof`, mot pour mot : *"un indice par item qui donne un test de classe ('hier' ou 'demain' devant la phrase pour le verbe ; la majuscule au milieu de la phrase pour le nom propre ; un, une, des ou le place devant pour le nom commun ; 'très' devant pour l'adjectif), qu'aucun distracteur de son item ne passe, douze mots au plus, jamais la classe nommee."* Elle ecrit aussi que **tous les items changent leur indice**. **Aujourd'hui** : `grep -c '^ *indice:' ce1-classes-de-mots.yaml` rend 24, et ces 24 lignes portent **4 textes** (`grep '^ *indice:' ce1-classes-de-mots.yaml | sed 's/^ *//' | sort -u | wc -l` rend 4 : *"Cherche à quoi sert ce mot dans la phrase."*, *"Relis la phrase en pensant au mot entre guillemets."*, *"Compare ce mot aux autres mots de la phrase."*, *"Demande-toi ce que ce mot fait dans la phrase."*) ; ces quatre textes doivent rendre **0 occurrence** apres. Le test de classe et le distracteur qui le passe se jugent en jouant : non automatisable, `nadia-prof` seule. Instance A, **1,0**. Dev : `marc-dev`.
+- **`S55-EMC-CM1-R8`** (`EMC-CM1-03`, `squad/programme/enseignement-moral-et-civique/competences-cm1.md`). Les deux textes sont ceux de la fiche, section 5, sans reformulation. **Aujourd'hui** sur `cm1-emc-respect-differences.yaml` : `grep -c 'Cherche le motif qui parle'` rend 2, doit rendre 0 ; `grep -c "Un motif valable ne parle pas de l'élève lui-même."` rend 0, doit rendre 1 ; `grep -c "Un motif valable pourrait concerner n'importe quel élève."` rend 0, doit rendre 1 ; `grep -c '^ *- enonce:'` rend 11 et reste 11. Instance B, 0,25. Dev : `lea-dev`.
+- **`S55-EMC-CM1-R9`** (`EMC-CM1-06`). Textes de la fiche, section 5, sans reformulation. **Aujourd'hui** sur `cm1-emc-principes-republique.yaml` : `grep -c "Ces élèves donnent pour aider d'autres enfants."` rend 0, doit rendre 1 ; `grep -c 'se soutiennent les uns les autres'` rend 1, doit rendre 0 ; `grep -c 'dans un but humanitaire'` rend 0, doit rendre au moins 1 (en-tete, item 8). Instance B, 0,25. Dev : `lea-dev`.
+- **`S55-EXC-R16` - rejeu** (`EMC-CP-03`). Texte applique (`e6262ac2`) : `grep -c "n'est pas une mise à l'écart\." cp-emc-exclusion.yaml` rend **1 aujourd'hui, deja vert**, `grep -c "n'est pas de la moquerie"` rend 0 ; ce n'est pas un critere de developpement. **Critere de levee** : `grep -c 'EXC-R16.*LEVEE' FICHE-bandit-manchot-exclusion-cp.md` rend **0 aujourd'hui**, doit rendre au moins 1. Instance B, 0,25. Dev : aucun.
+- **`S55-ART-CP-10-PAQUET` - option, pas une story engagee** (`ART-CP-10`). Paquet a reproductions (T5), T4 (trois reproductions, constantes 8 vers 11 et 176 474 vers 250 915 : voir `DEC-0115` A.4), choix des oeuvres distractrices (0,25, A), puis audit 2,5 (A, **s56 au plus tot**, laisse 0,5 a l'instance qui le porte). Sans proprietaire, sans date : Q-U1 ouverte. Les criteres s'ecrivent quand la `DEC` d'ouverture de s56 l'engage, avec les mots de `nadia-prof` (arbitrage A, section 3.4) ; je ne les devance pas.
+
+### Ce que cette annotation ne fait pas
+
+Elle n'engage aucune de ces stories (c'est la `DEC` d'ouverture de s56), ne prononce aucun Done, ne touche ni code, ni catalogue, ni paquet, ni fiche. La proposition de composition de s56 est `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/proposition-s56.md`.
