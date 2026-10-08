@@ -136,6 +136,31 @@ plafond 352 px, cliquet de `RessourcesTiercesTest` a 3 ; les trois oeuvres retir
 Developpement : **~1,75 j pour le dispositif**, hors paquet. Brancher le paquet DEGRADE texte seul coute ce que coute un des cinq
 branchements ci-dessus (6 lignes, 3 ou 4 chaines, un test) ; s'il sert la ligne est une question pedagogique, pas la mienne.
 
+**Amendement du 2026-10-08 (cloture, `theo-archi`) : le prix de T6 en tailles.** `DEC-0114` section 6 demande ce prix *"en tailles
+(le depot n'a pas de tarif de developpement, `DEC-0112` section 7)"*. Les jours ci-dessus sont mon estimation, pas un tarif du depot ; le
+prix qui repond a la demande est celui-ci. **Methode** : nombre de lignes des fichiers a toucher par `wc -l` sur `542c1c6e` ; tailles
+d'ajout estimees sur le precedent mesure d'`ADR-0082`, T2 a T4, commit `90c36ab0` (4 fichiers, +366 -30, dont 18 lignes de gabarit de
+production) et sur la taille des garde-fous existants de meme forme. Les plages sont des estimations sur precedent, pas des mesures.
+
+| Poste | Module | Fichier (lignes a `542c1c6e`) | Production | Tests |
+|---|---|---|---|---|
+| T2, garde-fou 1 | `bootstrap` (test) | `LIllustrationDeContenuResoutEtAucuneNeDortTest` (907) | 0 | modifie, +1 a 2 tests, +100 a 150 lignes (precedent +144), 1 YAML de contre-exemple (20 a 33 lignes, precedents) |
+| T2, garde-fou 2 | `adapter-content` ou `bootstrap` (test) | **neuf**, trois invariants de la decision 5 | 0 | 1 fichier, 4 tests (3 clauses, population non vide), 200 a 380 lignes (precedents `AucunePropositionNEstEgale...` 215, `AuPlusTroisPropositions...` 381) |
+| T2, garde-fou 3 | `adapter-content` (test) | `LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest` (485) | 0 | modifie, +1 test de morsure, +20 a 40 lignes |
+| T3, controleur | `adapter-web` (main) | `PartieController.java` (834) | +10 a 20 lignes : booleen `propositionsEnImage`, `reponseRevelee` nulle, `reponseAttendueVisible` faux | `PartieControllerTest` (1 046, 42 `@Test`) : +3 a 5 tests, +80 a 150 lignes |
+| T3, gabarit | `adapter-web` (main) | `fragments/manche.html` (205) ; `fragments/retour.html` (108) inchange, le controleur pose le booleen | +10 a 18 lignes (precedent 18) ; 0 CSS si `.image-item` est reutilisee | - |
+| T3, garde-fou 4 | `bootstrap` (test) | **neuf**, `bootstrap/rendu` | 0 | 1 fichier, 5 tests (4 ecrans, nom accessible) et 1 morsure sur gabarit mute, 250 a 630 lignes (precedents du paquetage : 234 a 632) |
+| T3, cliquet | `adapter-web` (test) | `RessourcesTiercesTest` (891) | 0 | 3 -> 4, 5 a 20 lignes |
+| T4, corpus | `adapter-web` (main, ressources) ; `squad/corpus` | 3 JPEG restaures de `1db6348f^`, registre `oeuvres-domaine-public.yaml` (137) | 74 441 octets ; +30 lignes de registre (lignes 107 a 136 a `1db6348f^`) | 2 constantes de `ChaqueReproductionServie...Test` : 8 -> 11, 176 474 -> 250 915 |
+
+**Totaux.** Production : **2 fichiers d'un seul module (`adapter-web`), 20 a 38 lignes**, plus 3 images et 30 lignes de registre. Tests :
+**3 fichiers neufs (dont un YAML de contre-exemple), 5 modifies, 15 a 18 tests neufs, 680 a 1 400 lignes** (somme des bornes du
+tableau). **Zero ligne** dans `domain`, `application`, le chargeur
+d'`adapter-content`, `bootstrap` main, les POM et la CI. **Zero regle ArchUnit neuve** : la regle (13) d'`ADR-0104` est la seule que ce
+chantier appelle, elle est en vigueur depuis le 2026-10-05, verte et mordue a la cloture (`confirmation-archunit.md`, section 1) ; les
+garde-fous 1 a 4 jugent des YAML, des images et du HTML rendu, aucun type Java. Hors prix : le paquet (contenu, T5) et l'audit (tarif de
+`nadia-prof`).
+
 **T7 - regle du push.** **Ecrite** dans `squad/README.md` section 9, apres l'amendement de s47 : avant tout `git push`, `clean verify`
 sur la racine sans `-pl` et les juges des jobs `prefixes`, `chemins`, `outils`, jobs nommes dans le rapport. **Elle n'est pas
 executable** : aucun crochet de pre-push n'est installe par le depot ; ce qui la rattrape est la CI, apres le push. Je ne propose pas de
