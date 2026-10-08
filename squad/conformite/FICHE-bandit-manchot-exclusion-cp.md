@@ -1246,3 +1246,111 @@ marqueur `R` dans le dernier (`ADR-0100`). Absent du depot avant d'ecrire (`git 
 Alloue dans `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le meme diff.
 
 **Signe** : `nadia-prof`, s54, instance A, 2026-10-08.
+
+## Bloc de validation pedagogique - rejeu de `S54-EXC-CATEGORIE` (`EXC-R15`), s55, 2026-10-08 - nadia-prof UNIQUEMENT
+
+`nadia-prof`, s55, instance B, le 2026-10-08 (19:45, UTC+02:00, lu par `date`). Arbre : branche `s55-nadia-audit-b-exc` a
+`7e32138a` (`round-two`, qui contient `d2b317a8`, livraison de `marc-dev`). **Joue**, pas lu.
+
+### Verdict
+
+**`EXC-R15` est LEVEE. `S54-EXC-CATEGORIE` : VALIDE SOUS RESERVE**, une reserve neuve, `EXC-R16`, non bloquante, a mon
+debit. `EMC-CP-03` reste `couvert-valide` ; aucun mouvement de matrice.
+
+### 1. Ce que j'ai fait
+
+- `bash outils/mvn-jdk21.sh -B clean verify` sur la racine, JDK 21.0.10 : **BUILD FAILURE**, dans `bootstrap`, 312 tests,
+  2 echecs, tous deux dans `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest` (`ADR-0087`) :
+  `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/rapport-sofia-outils.md`, ligne 22, porte 5 cellules pour un
+  en-tete de 3. **Ce rouge est hors de l'increment** (un rapport, aucun texte lu par l'enfant). `PaquetCpEmcExclusionTest`
+  (9 tests) et `TexteAccentueExposeParLePortEntrantTest` (5 tests) sont verts dans ce meme passage. Les tests
+  d'integration, en aval de l'echec, n'ont pas tourne. La porte technique de `round-two` n'est pas acquise a `7e32138a` :
+  c'est a `sofia-sm`, pas a moi.
+- Jar construit pour jouer par `bash outils/mvn-jdk21.sh -B -DskipTests package`, puisque `verify` s'arretait avant. Le
+  paquet et le catalogue du jar sont identiques a l'arbre (`cmp`). Jar lance sur JDK 21.0.10, port dedie, arrete par PID.
+- **30 parties** jouees par les routes servies (`POST /parties/bandit-manchot-exclusion-cp`, puis `/coups`), 300 manches :
+  10 parties justes d'emblee, 10 avec une erreur par manche, 10 avec deux erreurs par manche ; plus une sonde de 15
+  parties qui pousse les items 1, 3 et 4 jusqu'a la revelation. Chaque partie tire 10 des 11 items. Rendu lu en HTML, pas
+  vu au navigateur.
+
+### 2. Les quatre lignes, mot pour mot
+
+`git show d2b317a8` : items 1 et 3, `bonneReponse: "une mise à l'écart qui se répète"` ; item 4,
+`distracteurs: ["une mise à l'écart qui se répète", "une bagarre"]` ; catalogue,
+`consigne: "Lis bien, puis dis ce qui se passe, ou à quel adulte en parler."`. **Les quatre sont mes lignes, a la
+lettre.** Rien d'autre ne bouge dans le paquet ni dans le catalogue.
+
+### 3. Ce que l'enfant voit
+
+| Item | Vu sur 30 parties | Ce qui est servi | Juste ? |
+|---|---|---|---|
+| 1 (Aya empechee de s'asseoir) | 29 | bonne reponse *une mise à l'écart qui se répète*, contre *un accident isolé*, *une bousculade* | oui |
+| 3 (Tom ecarte du jeu) | 26 | bonne reponse *une mise à l'écart qui se répète*, contre *un accident isolé*, *un jeu de récréation* | oui |
+| 4 (Tom bouscule Malo et s'excuse) | 27 | bonne reponse *un accident isolé*, contre *une mise à l'écart qui se répète*, *une bagarre* | oui ; indice : voir `EXC-R16` |
+
+- **La mise a l'ecart est servie comme bonne reponse dans les 30 parties** (une ou deux fois par partie). Le constat de
+  `marc-dev` (*"pas vu a l'ecran"*) portait sur une seule manche ; il ne dit rien du tirage.
+- Le mot qui confirme le classement nomme maintenant ce que la situation est. Les distracteurs des items 1 et 3 restent
+  plausibles. Sur une partie, *moquerie* et *mise a l'ecart* ne sont jamais sur le meme item : l'enfant n'a jamais a
+  choisir entre deux noms justes.
+- Erreur, puis deuxieme erreur : *"Ce n'est pas ça. Essaie encore !"* et l'indice ; troisieme erreur : *"Appuie sur la
+  bonne réponse :"* et la bonne reponse nommee. Aucune manche bloquee, aucune anomalie de service sur 300 manches.
+- **La consigne neuve** est servie a chaque manche, 14 mots, sans *moquerie*. *"dis ce qui se passe"* couvre la tache A
+  (*"Qu'est-ce que c'est ?"*), *"à quel adulte en parler"* la tache B. Lisible par un enfant de CP accompagne ; aucun mot
+  hors de sa portee. Ce jeu n'est pas une ligne ou la voix est la competence : la presence de l'adulte n'y dispense de rien,
+  et la consigne n'en a pas besoin.
+
+### 4. Le titre, que j'avais dit regarder au rejeu
+
+*"Une moquerie qui se répète"* n'est affiche que sur la liste des jeux (`/`), pas sur l'ecran de manche. Il nomme la
+moitie de la competence (*"moquerie répétée ou d'exclusion"*) sans nommer une exclusion d'un faux nom au moment ou
+l'enfant repond. **Pas de reserve.**
+
+### 5. `EXC-R16` - reserve neuve, datee du 2026-10-08 (s55), non bloquante, a mon debit
+
+**Constat, a l'ecran.** Item 4 : les boutons sont *un accident isolé*, *une mise à l'écart qui se répète*, *une bagarre*.
+Apres une erreur, l'indice dit : *"Une excuse immédiate après un geste involontaire n'est pas de la moquerie."* L'indice
+ecarte un choix qui n'est plus a l'ecran : l'enfant qui a appuye sur *une mise à l'écart qui se répète* lit qu'il ne
+s'agit pas d'une moquerie, ce qu'il n'a pas dit. Ce decalage vient de ma ligne 3 d'`EXC-R15`, qui a change le
+distracteur sans l'indice ; ma barre disait *"le reste ne bouge pas : indices"*. Ce n'est pas un durcissement de
+`EXC-R15`, qui est levee telle que je l'avais ecrite.
+
+**Pourquoi une reserve et non un refus.** L'indice reste vrai et pointe toujours vers la bonne reponse (*geste
+involontaire*, *excuse immediate*). Il aide moins ; il n'enseigne rien de faux.
+
+**Ce qui la leve, mot pour mot** : une ligne de `cp-emc-exclusion.yaml`, item 4.
+
+`indice: "Une excuse immédiate après un geste involontaire n'est pas une mise à l'écart."`
+
+Rien d'autre ne bouge. Sorties observables sur le paquet :
+
+| Commande | Aujourd'hui | Apres |
+|---|---|---|
+| `grep -c "n'est pas de la moquerie" P` | 1 | 0 |
+| `grep -c "n'est pas une mise à l'écart\." P` | 0 | 1 |
+| `grep -c "une mise à l'écart qui se répète" P` | 3 | 3 |
+
+`git diff` du paquet : une ligne. `PaquetCpEmcExclusionTest` reste vert. **Prix** : 0,25 (mot pour mot, `PAR-10`). Le
+rejeu verifie le diff et l'indice de l'item 4 a l'ecran apres une erreur.
+
+### 6. Ce dont je reste la seule garde sur ce paquet
+
+- Qu'une bonne reponse de classement nomme ce que la situation est (inchange depuis `EXC-R15` : aucun garde-fou ; la
+  constante du test garde cette correction-ci, pas la propriete).
+- **Qu'un indice ecarte un choix qui est a l'ecran** : aucun garde-fou. `EXC-R16` est la premiere fois que je la nomme.
+- La plausibilite des distracteurs et la justesse des situations.
+
+### 7. Ce que je route
+
+| Suite | Destinataire | Ce que j'attends |
+|---|---|---|
+| `EXC-R15` levee | `camille-po` | Fermer `S54-EXC-CATEGORIE` ; aucun mouvement de matrice |
+| `EXC-R16` | `camille-po` | Une story au sprint qui la sert, avec la ligne et le tableau de la section 5, sans reformulation |
+| Rouge `ADR-0087` sur `rapport-sofia-outils.md:22` | `sofia-sm` | La porte technique de `round-two` a `7e32138a` ; hors de mon verdict |
+| Morsures M1 et M2 de QC4 | `yanis-qa` | Non rejouees par moi |
+
+**Identifiants** : un neuf, `EXC-R16`. Forme copiee de `EXC-R15`, alloue a ce fichier (section 4 du registre) : deux
+segments, marqueur `R` dans le dernier (`ADR-0100`). `git grep -c 'EXC-R16'` ne rendait rien avant d'ecrire. Alloue dans
+`squad/decisions/REGISTRE-identifiants.md`, section 4, dans le meme diff.
+
+**Signe** : `nadia-prof`, s55, instance B, 2026-10-08.
