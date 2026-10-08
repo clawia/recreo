@@ -53,7 +53,9 @@ lignesDeReferentiel: ["EMC-CM1-03"]
 # Ecart au texte de nadia-prof, item 4 : le distracteur de Tom dit "cette partie" et non "la partie".
 # Avec "la partie", quatre distracteurs du paquet partageaient le moule "Prenom, parce que la" (dont
 # un, a l'item 5, a un seul mot d'ecart : "Prenom, parce que c'est") et ADR-0086 (clause 2,
-# LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest) rougissait. A rejuger.
+# LaFormeDesPropositionsNeDesigneJamaisLaBonneReponseTest) rougissait. Ecart juge et accepte par
+# nadia-prof a l'audit de s55 (squad/conformite/FICHE-bandit-manchot-respect-differences-cm1.md,
+# section 3).
 #
 # HIS-3 (faits institutionnels) : l'item 8 s'appuie sur l'article 1er de la Declaration des droits
 # de l'homme et du citoyen de 1789 ("Les hommes naissent et demeurent libres et egaux en droits") et
