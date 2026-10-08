@@ -1,0 +1,32 @@
+schema: 1
+id: cm1-emc-respect-differences-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCm1EmcRespectDifferencesTest. Quatre items, chacun
+# porte un defaut que le test doit refuser : l'item 4 d'avant la correction de s55 (le relais, une
+# capacite attribuee a l'enfant en fauteuil roulant, EMC-4), les textes de l'item 7 (indice qui
+# redit la reponse) et de l'item 8 (distracteur que personne ne croit, indice qui redit la
+# reponse) refuses par nadia-prof, et un texte qui s'adresse a l'enfant (EMC-1, EMC-8). Aucune
+# origine n'y est une bonne reponse (FER-1) et la tache "motifs" n'y est pas servie (FER-3).
+descripteur:
+  matiere: "Enseignement moral et civique"
+  niveau: "CM1"
+  domaine: "Respecter autrui"
+  competence: "Identifier ce qu'interdit le respect d'autrui dans ses différences (apparence, origine, convictions, situation de handicap)."
+lignesDeReferentiel: ["EMC-CM1-03"]
+items:
+  - enonce: "Trois élèves ne sont pas pris pour un jeu de relais. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
+    bonneReponse: "Aya, parce qu'elle utilise un fauteuil roulant et que les autres refusent de l'attendre"
+    distracteurs: ["Tom, parce que l'équipe a déjà quatre joueurs et qu'il n'y a plus de place", "Léa, parce que la cloche a sonné et que la récréation est terminée"]
+    indice: "Cherche la raison qui écarte quelqu'un à cause de ce qu'il est."
+  - enonce: "Quelle phrase sur le respect d'autrui est juste ?"
+    bonneReponse: "on peut ne pas être d'accord avec un camarade sans lui manquer de respect"
+    distracteurs: ["respecter quelqu'un, c'est toujours être d'accord avec lui sur tout", "pour être respecté, il faut cacher ce qui nous rend différent des autres"]
+    indice: "On peut penser autrement sans manquer de respect."
+  - enonce: "Pourquoi le respect d'autrui interdit-il de traiter quelqu'un moins bien à cause d'une différence ?"
+    bonneReponse: "parce que chaque personne a la même valeur et les mêmes droits"
+    distracteurs: ["parce que tous les élèves sont exactement pareils", "parce que les différences disparaissent avec le temps"]
+    indice: "Cela concerne la valeur et les droits de chaque personne."
+  - enonce: "Tu n'as pas choisi Aya pour ton équipe de ballon. Que fais-tu ?"
+    bonneReponse: "je lui demande pourquoi"
+    distracteurs: ["je ne dis rien", "je choisis une autre équipe"]
+    indice: "Pense à ce que tu ferais."

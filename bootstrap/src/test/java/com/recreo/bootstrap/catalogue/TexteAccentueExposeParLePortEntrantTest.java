@@ -358,6 +358,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S54-BR-EMC-CM1-02 (s54) : entree neuve, EMC-CM1-02, reconnaitre ce qui porte atteinte
             // a la personne d'autrui et savoir a qui s'adresser.
             "bandit-manchot-atteinte-autrui-cm1",
+            // S55-BR-EMC-CM1-03 (s55) : entree neuve, EMC-CM1-03, identifier ce qu'interdit le
+            // respect d'autrui dans ses differences.
+            "bandit-manchot-respect-differences-cm1",
             // S46-EMC-EMOTION-CM1 (s46) : entree neuve, EMC-CM1-01, identifier une emotion et
             // distinguer ce que l'on ressent de ce que l'on fait.
             "bandit-manchot-emotion-ressentir-agir-cm1",
@@ -669,6 +672,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Les familles d'œuvres",
             // S54-BR-EMC-CM1-02 (s54) : titre neuf, sans niveau (ADR-0078).
             "Ce qui blesse les autres",
+            // S55-BR-EMC-CM1-03 (s55) : titre neuf, sans niveau (ADR-0078).
+            "Ce que le respect interdit",
             // S46-EMC-EMOTION-CM1 (s46) : titre neuf.
             "Ressentir et agir",
             // S46-SCI-MOUVEMENT-CM1 (s46) : titre neuf.
@@ -1555,6 +1560,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             // EMC-CM1-02).
             "Reconnaître ce qui porte atteinte à la personne d'autrui (moquerie, insulte, mise à "
                     + "l'écart, harcèlement) et savoir à qui s'adresser.",
+            // S55-BR-EMC-CM1-03 (s55) : competence neuve, libelle du referentiel copie mot pour
+            // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
+            // EMC-CM1-03).
+            "Identifier ce qu'interdit le respect d'autrui dans ses différences (apparence, "
+                    + "origine, convictions, situation de handicap).",
             // S46-EMC-EMOTION-CM1 (s46) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
             // EMC-CM1-01).
