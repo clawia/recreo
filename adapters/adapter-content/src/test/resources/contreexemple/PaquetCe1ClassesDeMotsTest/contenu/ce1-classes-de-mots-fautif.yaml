@@ -1,0 +1,27 @@
+schema: 1
+id: ce1-classes-de-mots-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1ClassesDeMotsTest. Trois prenoms masculins, aucun
+# prenom feminin : l'ecart depasse "a un pres" (K4 de s55 : TRV-CE1-6).
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Identifier la classe d'un mot dans une phrase : nom commun, nom propre, verbe, déterminant, adjectif."
+lignesDeReferentiel: ["FRA-CE1-12"]
+items:
+  - enonce: "Tom « range » ses crayons."
+    bonneReponse: "verbe"
+    distracteurs: ["nom commun", "déterminant"]
+    indice: "Cherche à quoi sert ce mot dans la phrase."
+    partDesignee: "range"
+  - enonce: "Karim aime « cette » histoire."
+    bonneReponse: "déterminant"
+    distracteurs: ["adjectif", "nom commun"]
+    indice: "Relis la phrase en pensant au mot entre guillemets."
+    partDesignee: "cette"
+  - enonce: "Tom mange « un » gâteau."
+    bonneReponse: "déterminant"
+    distracteurs: ["nom commun", "verbe"]
+    indice: "Demande-toi ce que ce mot fait dans la phrase."
+    partDesignee: "un"
