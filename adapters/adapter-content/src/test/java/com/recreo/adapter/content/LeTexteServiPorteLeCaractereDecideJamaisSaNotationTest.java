@@ -195,28 +195,56 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
                     textes.addAll(textesDUnItemDeDesignation(paquet, zone));
                     continue;
                 }
-                Question item = (Question) itemTire;
-                textes.add(new TexteServi(paquet, "enonce", item.enonce(), item.enonce()));
-                textes.add(new TexteServi(paquet, "bonneReponse", item.enonce(), item.bonneReponse()));
-                for (int rang = 0; rang < item.distracteurs().size(); rang++) {
-                    textes.add(new TexteServi(paquet, "distracteur " + (rang + 1), item.enonce(),
-                            item.distracteurs().get(rang)));
-                }
-                item.indice().ifPresent(indice ->
-                        textes.add(new TexteServi(paquet, "indice", item.enonce(), indice)));
-                item.explication().ifPresent(explication ->
-                        textes.add(new TexteServi(paquet, "explication", item.enonce(), explication)));
-                // s23 : deux champs lus par l'enfant que ce perimetre ne ramassait pas. texteSupport
-                // (ADR-0050, s22) est le plus long texte servi du depot ; partDesignee (ADR-0062) est
-                // le fragment de l'enonce que l'ecran met en evidence. Les deux traversaient les deux
-                // clauses de ce garde-fou sans etre lus - un perimetre qui a cesse de suivre son objet
-                // quand l'objet s'est etendu.
-                item.texteSupport().ifPresent(texte ->
-                        textes.add(new TexteServi(paquet, "texteSupport", item.enonce(), texte)));
-                item.partDesignee().ifPresent(part ->
-                        textes.add(new TexteServi(paquet, "partDesignee", item.enonce(), part)));
+                textes.addAll(textesDUneQuestion(paquet, (Question) itemTire));
             }
         }
+        return textes;
+    }
+
+    /** ADR-0082 decision 2, etendue aux propositions par ADR-0104 decision 3 : la population se lit sur le prefixe. */
+    private static final String PREFIXE_DE_REPRODUCTION = "oeuvre-";
+
+    /**
+     * ADR-0104 decision 6 : toutes les propositions de l'item sont des identifiants de reproduction.
+     * La meme condition que {@code propositionsEnImage} de {@code PartieController} : ce que l'enfant
+     * voit alors n'est pas un mot mais une image.
+     */
+    static boolean propositionsEnImage(Question item) {
+        return Stream.concat(Stream.of(item.bonneReponse()), item.distracteurs().stream())
+                .allMatch(proposition -> proposition.startsWith(PREFIXE_DE_REPRODUCTION));
+    }
+
+    /**
+     * Les chaines qu'une question fait servir a ce module. <b>ADR-0104 decision 6 : les propositions
+     * d'un item a propositions-images sont declarees {@code luParLEnfant = false}.</b> L'enfant n'y lit
+     * rien, il regarde des images ; l'identifiant est de l'ASCII sans accent ({@code oeuvre-champ-de-ble}),
+     * donc un faux rouge sur le garde-fou d'accent, qui lit chaque proposition comme un mot. Elles
+     * restent jugees par la clause 1 de ce garde-fou : une notation d'echappement y serait fautive.
+     * C'est le seul endroit ou cette exemption est ecrite, et les garde-fous qui consomment
+     * {@code luParLEnfant} la suivent sans etre touches.
+     */
+    static List<TexteServi> textesDUneQuestion(String paquet, Question item) {
+        boolean lues = !propositionsEnImage(item);
+        List<TexteServi> textes = new ArrayList<>();
+        textes.add(new TexteServi(paquet, "enonce", item.enonce(), item.enonce()));
+        textes.add(new TexteServi(paquet, "bonneReponse", item.enonce(), item.bonneReponse(), lues));
+        for (int rang = 0; rang < item.distracteurs().size(); rang++) {
+            textes.add(new TexteServi(paquet, "distracteur " + (rang + 1), item.enonce(),
+                    item.distracteurs().get(rang), lues));
+        }
+        item.indice().ifPresent(indice ->
+                textes.add(new TexteServi(paquet, "indice", item.enonce(), indice)));
+        item.explication().ifPresent(explication ->
+                textes.add(new TexteServi(paquet, "explication", item.enonce(), explication)));
+        // s23 : deux champs lus par l'enfant que ce perimetre ne ramassait pas. texteSupport
+        // (ADR-0050, s22) est le plus long texte servi du depot ; partDesignee (ADR-0062) est
+        // le fragment de l'enonce que l'ecran met en evidence. Les deux traversaient les deux
+        // clauses de ce garde-fou sans etre lus - un perimetre qui a cesse de suivre son objet
+        // quand l'objet s'est etendu.
+        item.texteSupport().ifPresent(texte ->
+                textes.add(new TexteServi(paquet, "texteSupport", item.enonce(), texte)));
+        item.partDesignee().ifPresent(part ->
+                textes.add(new TexteServi(paquet, "partDesignee", item.enonce(), part)));
         return textes;
     }
 
@@ -481,5 +509,114 @@ class LeTexteServiPorteLeCaractereDecideJamaisSaNotationTest {
     @Test
     void laMemeChaineReelleNonMuteeNeReprocheRien() {
         assertThat(defautsDe("production / temoin", unTexteReelPorteurDUnGuillemet())).isEmpty();
+    }
+
+    /**
+     * ADR-0104 decision 7, garde-fou 3 : materiau reel, le premier item servi qui montre une
+     * reproduction (aujourd'hui un item de {@code cp-decrire-une-oeuvre}). Derive du depot et jamais
+     * nomme, et s'invalide de lui-meme si le depot n'en sert plus.
+     */
+    private static Question unItemReelQuiMontreUneReproduction() {
+        for (String paquet : paquets(CONTENU_DE_PRODUCTION)) {
+            ContentSource source = new YamlContentPackLoader("").chargerPaquet(paquet);
+            int declares = ChaquePaquetPorteUnIndiceTest.itemsDeclares(CONTENU_DE_PRODUCTION, paquet);
+            for (Item item : itemsTires(source, declares + 1)) {
+                if (item instanceof Question question
+                        && question.illustration().filter(
+                                illustration -> illustration.startsWith(PREFIXE_DE_REPRODUCTION)).isPresent()) {
+                    return question;
+                }
+            }
+        }
+        throw new AssertionError("plus aucun item servi ne montre une reproduction : ces mises a"
+                + " l'epreuve ne mutent plus rien de reel");
+    }
+
+    private static Question avecLesPropositions(Question reel, String bonneReponse,
+                                                List<String> distracteurs) {
+        return new Question(reel.id(), reel.enonce(), bonneReponse, distracteurs, reel.indice(),
+                reel.explication(), reel.partDesignee(), reel.texteSupport(), reel.illustration(),
+                reel.illustrationTexteAlternatif(), reel.texteAVoixHaute(), reel.tableauSupport());
+    }
+
+    private static TexteServi lePremier(List<TexteServi> textes, String champ) {
+        return textes.stream().filter(texte -> texte.champ().equals(champ)).findFirst().orElseThrow();
+    }
+
+    /**
+     * Garde-fou 3 : l'item reel, mute pour proposer {@code oeuvre-champ-de-ble}, ne fait plus lire
+     * ses propositions a l'enfant. L'enonce et l'indice, eux, le restent.
+     */
+    @Test
+    void lesPropositionsDUnItemEnImageNeSontPasLuesParLEnfant() {
+        Question mute = avecLesPropositions(unItemReelQuiMontreUneReproduction(), "oeuvre-champ-de-ble",
+                List.of("oeuvre-chambre", "oeuvre-grande-vague"));
+        List<TexteServi> textes = textesDUneQuestion("paquet-mute", mute);
+
+        assertThat(propositionsEnImage(mute)).isTrue();
+        assertThat(textes).filteredOn(texte -> texte.champ().equals("bonneReponse")
+                        || texte.champ().startsWith("distracteur "))
+                .hasSize(3)
+                .allMatch(texte -> !texte.luParLEnfant());
+        assertThat(lePremier(textes, "enonce").luParLEnfant()).isTrue();
+        assertThat(textes).filteredOn(texte -> texte.champ().equals("indice"))
+                .allMatch(TexteServi::luParLEnfant);
+    }
+
+    /**
+     * Morsure du garde-fou 3 : sans l'exemption, un identifiant lu par l'enfant fait rougir le
+     * garde-fou d'accent sur {@code oeuvre-champ-de-ble} ({@code ble} n'est pas une forme du
+     * francais, {@code blé} l'est). C'est la seule preuve que l'exemption a un effet : le faux rouge
+     * mesure par ADR-0104 decision 6.
+     */
+    @Test
+    void unIdentifiantDOeuvreLuParLEnfantFaitRougirLeGardeFouDAccent() {
+        Question mute = avecLesPropositions(unItemReelQuiMontreUneReproduction(), "oeuvre-champ-de-ble",
+                List.of("oeuvre-chambre", "oeuvre-grande-vague"));
+        TexteServi propose = lePremier(textesDUneQuestion("paquet-mute", mute), "bonneReponse");
+        assertThat(propose.valeur()).isEqualTo("oeuvre-champ-de-ble");
+
+        TexteServi declareLu = new TexteServi(propose.paquet(), propose.champ(), propose.enonceDeLItem(),
+                propose.valeur(), true);
+
+        assertThat(AucunMotServiNeSEcarteDeSonAccentTest.defautsDe(declareLu.origine(), declareLu.valeur(),
+                LexiqueFrancais.charger()))
+                .as("un identifiant d'oeuvre lu par l'enfant doit rougir le garde-fou d'accent")
+                .anyMatch(defaut -> defaut.contains("\"ble\""));
+    }
+
+    /**
+     * L'exemption est etroite : un item dont une seule proposition est un texte reste lu en entier,
+     * et c'est l'invariant 1 d'ADR-0104 qui le refuse, pas cette exemption qui l'absout.
+     */
+    @Test
+    void unItemDontUneSeulePropositionEstUnTexteResteLuEnEntier() {
+        Question mute = avecLesPropositions(unItemReelQuiMontreUneReproduction(), "oeuvre-champ-de-ble",
+                List.of("oeuvre-chambre", "une peinture"));
+
+        assertThat(propositionsEnImage(mute)).isFalse();
+        assertThat(textesDUneQuestion("paquet-mute", mute))
+                .filteredOn(texte -> texte.champ().equals("bonneReponse")
+                        || texte.champ().startsWith("distracteur "))
+                .hasSize(3)
+                .allMatch(TexteServi::luParLEnfant);
+    }
+
+    /**
+     * Garde-fou 3 de bout en bout, sur un paquet commite et lu par le chargeur reel : les trois
+     * propositions-images n'atteignent pas le garde-fou d'accent, et le paquet le passe.
+     */
+    @Test
+    void unPaquetCommiteAPropositionsEnImagePasseLeGardeFouDAccent() {
+        Path racine = CONTRE_EXEMPLE.resolve("images-en-proposition");
+        String classpath = CONTRE_EXEMPLE_CLASSPATH + "/images-en-proposition";
+
+        assertThat(textesServis(racine, classpath))
+                .filteredOn(texte -> texte.champ().equals("bonneReponse")
+                        || texte.champ().startsWith("distracteur "))
+                .hasSize(3)
+                .allMatch(texte -> !texte.luParLEnfant());
+        AucunMotServiNeSEcarteDeSonAccentTest.verifierQueChaqueMotServiPorteSonAccent(
+                AucunMotServiNeSEcarteDeSonAccentTest.textesDesItems(racine, classpath));
     }
 }
