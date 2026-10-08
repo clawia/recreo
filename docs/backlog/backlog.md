@@ -20257,7 +20257,8 @@ seul** (`S54-ART-CP-10-PRIX`), puis, le 2026-10-08, **au branchement du paquet `
 
 Perimetre, instances et reports : `DEC-0114` (statut `Proposee`, section 0.4). Planning :
 `squad/sprints/s54-branchement-des-premiers-paquets-et-reports-de-s53/planning.md`. **Deux instances de `nadia-prof`**, comptees a 4,0 chacune :
-A (francais CE1), B (sciences et EMC CM1). Un dev tient un seul worktree a la fois.
+A (francais CE1), B (sciences et EMC CM1). **Une troisieme, C, demandee le 2026-10-08 pour un seul paquet** (`DEC-0114` A.9 a A.16), sous la condition de A.13 (ecart ou
+amendement de `PAR-9` a ecrire par l'utilisatrice et `nadia-prof`). Un dev tient un seul worktree a la fois.
 
 | Instance | Story | Tarif propose (a confirmer par `nadia-prof`) | Dev |
 |---|---|---|---|
@@ -20273,7 +20274,7 @@ A (francais CE1), B (sciences et EMC CM1). Un dev tient un seul worktree a la fo
 | - | `S53-REPORT-GRANDS-NOMBRES` | `Q5` : `nadia-prof` | `lea-dev` |
 | - | `S53-REPORT-REDACTION` (R3 seul reste) | - | `nadia-prof` (R3) |
 | - | `S54-ART-CP-10-PRIX` | aucun | `theo-archi`, `nadia-prof` |
-| a decider (`DEC-0114` A.5) | `S54-BR-ART-CP-10` | 1,0 propose, **non finance** | `lea-dev` (proposition, affectation a `sofia-sm`) |
+| C (`DEC-0114` A.10) | `S54-BR-ART-CP-10` (audit) | 1,0 propose + 0,5 de rejeu = 1,5, **sous la condition de A.13** | `lea-dev` (proposition, affectation a `sofia-sm`) |
 
 ### Criteres communs aux cinq stories de branchement (`S54-BR-*`)
 
@@ -20371,10 +20372,17 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
   5. **Le texte de l'entree est accentue** et ses espaces avant `? ! : ;` sont insecables (`DEC-0002`, amendement du 2026-08-04 ; meme regle que les cinq autres branchements).
 - **Ce qui n'est pas automatisable** : le critere 3 (ce que l'enfant comprend du titre), et tout ce qui touche a la validite des faits de l'en-tete (*"a confirmer par nadia-prof"*).
   `yanis-qa` le dit dans sa lecture de testabilite.
-- **Capacite** : **non financee**. Audit propose a 1,0 (tarif du depot, `Q3`), plus 0,5 de rejeu en cas de refus ; ni l'instance A (4,5 sur 4,0) ni l'instance B (4,5, quatre lots
-  si les reprises comptent) ne le portent dans `PAR-9` et `PAR-8`. Issues (a) a (d) en `DEC-0114` A.5 ; **le choix est a `nadia-prof` et a l'utilisatrice, via `sofia-sm`**.
-- **Ce qui reste a `nadia-prof`** : plafond d'une ligne, tarif, instance, `PAR-13` (arts CP terrain neuf ?), faits du paquet, verdict (`DEC-0114` A.6).
-- **Lien decision** : `DEC-0114` amendement A.1 ; `DEC-0113` section 3.1. **Agent** : `lea-dev` (proposition de `camille-po`, affectation a `sofia-sm`).
+- **Capacite** : audit porte par une **instance C** (`DEC-0114` A.10, issue (c) de A.5, choix recu le 2026-10-08, forme 3), un paquet, rien d'autre. Audit propose a 1,0 (tarif du
+  depot, `Q3`), plus 0,5 de rejeu en cas de refus : 1,5 compte, a confirmer par `nadia-prof`. A et B inchangees (3,5 allouees, 4,0 comptees). **Somme comptee 9,5 contre la borne de 8,0
+  (`PAR-9`, `PAR-8`) : un ecart ou un amendement est a ecrire par l'utilisatrice et `nadia-prof` avant que l'instance soit ouverte** (`DEC-0114` A.13) ; je ne l'ecris pas.
+- **Criteres ajoutes par `DEC-0114` A.12 a A.14** (verifies contre l'existant le 2026-10-08) :
+  6. **Plafond avant l'audit** : la ligne de plafond de `S54-ART-CP-10-PRIX` (critere 2) est ecrite par `nadia-prof` **avant** que l'instance C ouvre son arbitrage prealable ; ordre lisible
+     par `git log --format=%ad --follow` sur les deux fichiers. Rouge sur l'existant : aucune ligne de plafond n'est ecrite, aucun arbitrage de l'instance C n'existe.
+  7. **Isolation de l'instance C** : worktree, branche et scratchpad dedies, distincts de ceux de A et de B (noms a `sofia-sm`) ; `git diff --name-only` de la branche de C ne nomme que
+     la fiche `FICHE-cp-arts-oeuvres-familles.md` et son arbitrage prealable. Rouge sur l'existant : aucune branche de C n'existe.
+  8. **Ordre** : `S54-BR-ART-CP-10` est fusionnee avant l'ouverture de l'audit ; l'ordre de fusion avec les autres branches est a `sofia-sm`.
+- **Ce qui reste a `nadia-prof`** : plafond d'une ligne, tarif, `PAR-13` (arts CP terrain neuf ? si oui, C et A ne tiennent pas `PAR-13` ensemble), conditions (i) a (iii) de la borne a trois instances, faits du paquet, verdict (`DEC-0114` A.6, A.11 a A.13).
+- **Lien decision** : `DEC-0114` amendement A.1 et A.9 a A.16 ; `DEC-0113` section 3.1. **Agent** : `lea-dev` (proposition de `camille-po`, A.15, affectation a `sofia-sm`).
   **Report** : `ART-CP-10` compte quatre sprints hors perimetre (s50 a s53) ; si le paquet n'est ni branche ni audite a la cloture de s54, `DEC-0114` section 4 s'applique.
 
 ### S53-REL-10 - La base de s53 redevient verte sans assouplir de garde-fou (transverse) - entree ajoutee apres coup

@@ -216,6 +216,8 @@ l'y veut, c'est son fichier. L'amendement de `DEC-0112` (A.3) solde `S53-REL-10`
 
 ## 5. Capacite et ouverture des deux instances (`PAR-9`)
 
+> **Complete le 2026-10-08 (A.9 a A.16) :** une troisieme instance (C, un paquet, 1,5) est demandee ; le "sans ecart" ci-dessous ne vaut que pour A et B (A.13).
+
 `PAR-9` (`ARBITRAGE-PREALABLE-s52-fra-ce1-questions-de-l-avis.md` section 4.3, cite par `DEC-0111` A.14) : *"a partir de l'ouverture de s53, une `DEC`
 qui ouvre deux instances compte 4,0 par instance marge de rejeu comprise, ou elle ecrit l'ecart et son motif."* **Cette `DEC` ouvre deux instances
 de `nadia-prof` et les compte a 4,0 chacune, sans ecart.**
@@ -365,7 +367,7 @@ sprint-la, ce qui est sa decision. **Cela exige aussi l'avis de `theo-archi` sur
 5. **Une story absorbee en cours de sprint s'acte par un amendement a la `DEC` d'ouverture avant l'ouverture du premier worktree concerne.**
 6. **Amendement de `DEC-0112`** : "0 fichier" corrige en 4 (cause non etablie), provenance "Relaye de l'utilisatrice" corrigee, `S53-REL-10` actee
    (tenue). Erratum R5 au backlog. R3 reste a `nadia-prof`.
-7. **Deux instances de `nadia-prof` ouvertes, comptees a 4,0 chacune** (3,5 alloues + 0,5 non alloue), sans ecart a `PAR-9` ; tarifs, barre de B et
+7. **Deux instances de `nadia-prof` ouvertes** [complete le 2026-10-08, A.10 : une troisieme, C, sous la condition de A.13] **comptees a 4,0 chacune** (3,5 alloues + 0,5 non alloue), sans ecart a `PAR-9` ; tarifs, barre de B et
    `PAR-13` restent a `nadia-prof`.
 8. **`ART-CP-10` : prix et plafond seulement, rien n'est construit** [amende le 2026-10-08, A.1 : le paquet `DEGRADE` est aussi branche] ; `Q6` tranchee par l'arbitrage de MASTER (forme 3, option 1) ; la decision de
    financer se prend a s55 apres lecture des deux prix ; s54 n'est pas un cinquieme report.
@@ -492,3 +494,99 @@ inventaire de chaines, des declarations de garde-fous), dont les deux tiers pour
 
 Il ne touche ni `catalogue.yaml`, ni un paquet, ni une fiche, ni `MATRICE-couverture.md` (qui reste a 132 / 182 ; le mieux que s54 produit reste 137 / 182, `ART-CP-10` n'y
 entre pas). Il ne prononce aucun Done, ne fixe aucun plafond ni tarif, ne tranche pas l'instance et ne decide pas de financer la mecanique.
+
+---
+
+## Amendement du 2026-10-08 (s54, `camille-po`), suite : `Q11`, une troisieme instance de `nadia-prof` (instance C) pour auditer `cp-arts-oeuvres-familles`
+
+Meme regime que l'amendement precedent : passages amendes marques, pas effaces ; arrive apres l'ouverture de s54 ; **le statut de `DEC-0114` reste `Proposee`** (A.16).
+
+### A.9 Ce que j'ai recu, cite tel que recu et fige a la reception (`DEC-0062` regle 3.5)
+
+Un message de l'agent qui m'a lance, le 2026-10-08, **sans source dans le depot**. Il dit que l'utilisatrice a tranche `Q11`, c'est-a-dire l'issue 3 de A.5 de l'amendement
+precedent : *"UNE TROISIEME INSTANCE de nadia-prof est ouverte (instance C) pour auditer le paquet cp-arts-oeuvres-familles (S54-BR-ART-CP-10)"*, les instances A et B gardant
+*"leurs charges inchangees (3,5 chacune, pas de depassement de PAR-9)"*. Je n'ai pas ses mots ; la formule est celle du message de l'agent. **Forme 3 de `DEC-0062` (section 3.2) :
+elle fonde l'ordre dans lequel le travail se fait, jamais sa raison.** Le motif est de forme 1 et il est ecrit en A.10. Je ne promeus pas ce message en forme 2 ; qu'elle redise
+ses mots est ce qui le ferait (section 0.4).
+
+### A.10 Decision : l'instance C est ouverte, pour un paquet (retient l'issue (c) de A.5 ; ecarte (a), (b) et (d) pour s54)
+
+**Decision.** s54 compte une troisieme instance de `nadia-prof`, **l'instance C**, dont le **seul perimetre** est l'audit de `cp-arts-oeuvres-familles` (12 items, arts plastiques CP,
+`ART-CP-10`), apres son branchement par `S54-BR-ART-CP-10`. Elle ne porte aucun autre lot, aucune reprise, aucune passe. A et B gardent leurs charges de la section 5 (3,5 allouees,
+4,0 comptees chacune), sans modification. **Sous la condition de A.13** : tant que l'ecart ou l'amendement qui y est decrit n'est pas ecrit, l'ouverture est le choix recu de l'utilisatrice, pas encore une decision applicable.
+
+**Motifs, de forme 1.**
+
+1. **A.5 a chiffre les issues.** Sur A ou sur B, l'audit portait l'instance a 4,5, au-dessus de `PAR-9`, sans marge de rejeu non allouee, ou au-dessus de `PAR-8` (quatre lots sur B).
+   L'issue (c) est la seule qui ne touche ni un lot de A ni un lot de B : elle n'ajoute pas un report a un poste engage, et elle evite l'issue (d), un paquet au catalogue sans verdict
+   (la situation que `DEC-0009` a coutee a s04).
+2. **Le report se compte.** `ART-CP-10` : s50 a s53, quatre sprints hors perimetre (section 4). L'issue (d) en aurait fait un cinquieme sprint sans verdict sur un paquet deja branche.
+
+**Ce que cette instance ne fait pas.** Elle ne ferme pas la ligne, ne juge pas la mecanique "deux oeuvres ensemble" (`ADR-0104` reste `Propose`, A.1) et ne dispense pas d'un verdict ecrit
+par `nadia-prof` dans le bloc de validation de la fiche, que j'ouvre quand le jeu entre en construction.
+
+### A.11 Tarif, a confirmer par `nadia-prof` (`Q3`)
+
+| Instance C | Tarif propose | Source |
+|---|---|---|
+| Audit de `cp-arts-oeuvres-familles` | 1,0 | tarif du depot, A.5 |
+| Rejeu en cas de refus | 0,5 | A.5 ; non alloue a un lot, tenu comme second rejeu |
+| Ligne de plafond (A.12) | 0,0 | A.5 |
+| **Compte pour l'instance C** | **1,5** : 1,0 alloue + 0,5 de rejeu | |
+
+Tarifs *proposes* ; elle les confirme ou les change, et elle dit si arts plastiques CP est un terrain neuf (`PAR-13`, A.13).
+
+### A.12 Le plafond d'une ligne, a obtenir avant l'audit
+
+`S54-ART-CP-10-PRIX` porte deja le plafond d'un paquet `DEGRADE` pour `ART-CP-10` (A.3, point 2 ; backlog). **Je demande a `nadia-prof` que cette ligne soit ecrite avant que l'instance C
+ouvre l'audit** : elle dit ce que l'audit peut juger, et sans elle l'instance C juge contre une borne qu'elle ecrit en meme temps. Je le demande, je ne l'ordonne pas : le moment ou
+elle ecrit est le sien. Le backlog en fait un critere de `S54-BR-ART-CP-10` (la story n'est pas "livree" sans la ligne), pas un ordre donne a `nadia-prof`.
+
+### A.13 `PAR-9` : ce que le texte dit, et ce que je ne tranche pas
+
+**Le message dit que `PAR-9` est applique et non amende. Ce n'est pas ce que je peux ecrire apres lecture des textes.** Ce qui suit est de forme 1 ; la conclusion est a l'utilisatrice et a `nadia-prof`.
+
+1. **`PAR-9` (s30, section 1.3)** : *"le budget opposable est le budget par instance, et la somme des budgets par instance est egale a la borne du sprint"* ; la borne est 8,0 (`PAR-8`).
+   La clause de s52 (section 4.3), citee en section 5, ne parle que de *"deux instances"*. A et B restent a 4,0 chacune : **A et B, pris seuls, ne depassent rien.**
+2. **Avec C, la somme comptee passe a 9,5** (4,0 + 4,0 + 1,5), contre 8,0. Ce que `PAR-9` ecrit pour ce cas, c'est *"ou elle ecrit l'ecart et son motif"* ; la borne totale, elle, est a
+   `nadia-prof` (`PAR-8`). **Je n'ecris pas l'ecart a sa place** : je n'ai pas qualite pour dire que 9,5 est admissible, et le *"sans ecart"* de la section 5 ne vaut plus que pour A et B.
+3. **Les conditions d'une borne a trois instances** (`ARBITRAGE-PREALABLE-s46...` section 5, reprises par s51 section 5 : *"une formule n'est pas une borne sans les conditions qui
+   l'autorisent"*) : (i) vivier instruit superieur a la borne a deux instances, (ii) dernier sprint parallele clos sans occurrence des formes (a), (b) ou (c), (iii) `PAR-13`. Ces conditions
+   visent une instance de pleine capacite ; **C est une instance de 1,5**. Je ne les declare ni remplies ni inapplicables. La condition (ii) se lit sur s53 et elle est a `nadia-prof`.
+4. **`DEC-0112` section 5.1** a refuse une instance de sciences CM1 parce qu'aucune ne pouvait atteindre *"les 4,0 qu'elle a exiges d'une instance (condition (i))"*, et a pose la question
+   a l'utilisatrice : *"accepte-t-elle de ce fait qu'un sprint porte une instance sous la barre de `nadia-prof` ?"* **C est sous cette barre (1,5 contre 4,0).** La meme question se pose ici ;
+   le message recu ne dit pas si elle a ete posee sous cette forme.
+5. **`PAR-13`** : au plus une instance par sprint prend un terrain neuf. Le francais CE1 est le terrain neuf de A (`PAR-7`). Si arts plastiques CP en est un aussi pour `nadia-prof`, C et A
+   ne tiennent pas `PAR-13` ensemble.
+
+**Ce que ca donne, sans que je tranche.** Soit l'utilisatrice et `nadia-prof` ecrivent l'ecart (borne de s54 portee a 9,5, motif possible : sortir `ART-CP-10` du silence, A.10 motif 2), soit
+elles amendent `PAR-9`, la condition (i) ou `PAR-13` pour ce cas. **L'etat de `PAR-9` n'est donc pas "applique" : il est "ecart ou amendement a ecrire".** Si l'utilisatrice maintient que `PAR-9`
+est applique tel quel, c'est a elle de dire sur quel texte, et je le consigne.
+
+### A.14 Isolation (a faire dire par `sofia-sm`)
+
+La derniere occurrence de la forme (c) est celle de s50 : deux instances ont ecrit le meme fichier dans le meme scratchpad, sans le savoir (`ARBITRAGE-PREALABLE-s51-borne-a-trois-instances.md`,
+section 2.3). **Je demande trois isolations ; leurs noms et leur mecanique sont a `sofia-sm`** : (1) un worktree dedie a l'instance C ; (2) une branche dediee ; (3) un scratchpad dedie, distinct de
+ceux de A et de B. Ce que C ecrit se limite a sa section de `FICHE-cp-arts-oeuvres-familles.md` et a son arbitrage prealable ; aucun fichier de A ou de B.
+**Ordre de fusion** : a `sofia-sm`. Une seule contrainte de produit : le branchement `S54-BR-ART-CP-10` et la ligne de plafond de A.12 sont fusionnes avant que C ouvre l'audit (rien a auditer avant).
+Les fichiers partages avec A et B (`DEC-index.md`, backlog, journal de tokens) sont a elle.
+
+### A.15 Affectation du branchement
+
+`S54-BR-ART-CP-10` : **`lea-dev`** (proposition, auteure du paquet ; affectation a `sofia-sm`). Elle s'ajoute aux trois branchements de B qu'elle porte deja (`SCI-CM1-15`, `-18`, `EMC-CM1-02`) :
+l'arbitrage de la charge est a `sofia-sm` (A.5 : environ 590 lignes en six fichiers).
+
+### A.16 Statut, routage, ce que cet amendement ne fait pas
+
+`Proposee`, inchange. Un motif de forme 1 (A.10) et un message de forme 3 (A.9) ; l'ouverture reste conditionnee a A.13.
+
+| A qui | Quoi |
+|---|---|
+| utilisatrice, via `sofia-sm` | A.13 : ecart a `PAR-9`/`PAR-8`, ou amendement de `PAR-9`, de la condition (i) ou de `PAR-13` ; elle dit sur quel texte repose "applique" |
+| `nadia-prof` (instance C, puis A) | A.11 tarif ; A.12 plafond avant l'audit ; A.13 conditions (i) a (iii), `PAR-13` |
+| `sofia-sm` | A.14 isolation et ordre de fusion ; A.15 affectation ; fusion de cet amendement avant le worktree de `S54-BR-ART-CP-10` (`C1`) |
+| `lea-dev` | `S54-BR-ART-CP-10`, sur affectation |
+| `yanis-qa` | Lecture de testabilite des criteres ajoutes a la story |
+
+Il ne touche ni `catalogue.yaml`, ni un paquet, ni une fiche, ni `MATRICE-couverture.md` (inchangee, 132 / 182 ; `ART-CP-10` reste `non couvert`). Il ne prononce aucun Done, ne fixe aucun
+tarif ni plafond et n'ecrit ni l'ecart ni l'amendement de `PAR-9`.
