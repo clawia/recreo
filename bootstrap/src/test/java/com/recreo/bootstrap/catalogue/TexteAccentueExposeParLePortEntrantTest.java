@@ -352,6 +352,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S54-BR-SCI-CM1-15 (s54) : entree neuve, SCI-CM1-15, la Terre dans le systeme solaire,
             // le jour, la nuit et les saisons ; reprise corrigee, identifiant neuf.
             "bandit-manchot-jour-nuit-saisons-cm1",
+            // S54-BR-ART-CP-10 (s54) : entree neuve, paquet DEGRADE de vocabulaire, ART-CP-10 non
+            // fermee (DEC-0114 A.1).
+            "bandit-manchot-familles-d-oeuvres-cp",
             // S54-BR-EMC-CM1-02 (s54) : entree neuve, EMC-CM1-02, reconnaitre ce qui porte atteinte
             // a la personne d'autrui et savoir a qui s'adresser.
             "bandit-manchot-atteinte-autrui-cm1",
@@ -656,6 +659,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "L'être humain et l'environnement",
             // S54-BR-SCI-CM1-15 (s54) : titre neuf, sans niveau (ADR-0078).
             "Le jour, la nuit et les saisons",
+            // S54-BR-ART-CP-10 (s54) : titre neuf, sans niveau (ADR-0078).
+            "Les familles d'œuvres",
             // S54-BR-EMC-CM1-02 (s54) : titre neuf, sans niveau (ADR-0078).
             "Ce qui blesse les autres",
             // S46-EMC-EMOTION-CM1 (s46) : titre neuf.
@@ -887,6 +892,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Compte la somme, ou trouve ce qui est rendu.",
             // S39-OUTILS (s39) : consigne neuve.
             "Dis quel outil, quel support ou quel geste convient.",
+            // S54-BR-ART-CP-10 (s54) : consigne neuve.
+            "Choisis le mot qui va avec la statue, le tableau ou la photographie.",
             // S38-MOITIES (s38) : consigne neuve.
             "Quelle est la moitié ?",
             // S39-DEN (s39) : consigne neuve.
@@ -1524,6 +1531,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // SCI-CM1-15).
             "Situer la Terre dans le système solaire et relier les mouvements de la Terre au "
                     + "jour, à la nuit et aux saisons.",
+            // S54-BR-ART-CP-10 (s54) : competence du paquet, copiee telle quelle (non modifiee ici).
+            "Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres "
+                    + "(famille d'œuvre, métier, outil).",
             // S54-BR-EMC-CM1-02 (s54) : competence neuve, libelle du referentiel copie mot pour
             // mot (squad/programme/enseignement-moral-et-civique/competences-cm1.md, ligne
             // EMC-CM1-02).
