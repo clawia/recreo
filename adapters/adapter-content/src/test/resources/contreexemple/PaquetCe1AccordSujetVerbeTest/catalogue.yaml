@@ -1,0 +1,9 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1AccordSujetVerbeTest. La consigne du jeu
+# n'est pas celle du present CE1 (K3 de s55).
+jeux:
+  - id: bandit-manchot-accord-fautif
+    titre: "Un ou plusieurs"
+    consigne: "Choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-accord-sujet-verbe
+    nombreDeManches: 10

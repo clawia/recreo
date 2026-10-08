@@ -792,6 +792,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-passe-compose
     nombreDeManches: 10
+  - id: bandit-manchot-accord-sujet-verbe-ce1
+    titre: "Un ou plusieurs ?"
+    consigne: "Lis bien, puis choisis la bonne forme du verbe."
+    mecanique: bandit-manchot
+    paquet: ce1-accord-sujet-verbe
+    nombreDeManches: 10
   - id: bandit-manchot-synonymes-contraires-ce1
     titre: "Même sens ou sens contraire"
     consigne: "Lis bien, puis choisis le bon mot."
