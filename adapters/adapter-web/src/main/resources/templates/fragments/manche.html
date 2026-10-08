@@ -31,7 +31,7 @@
      valeur designe le bouton porteur de data-focus-cible ci-dessous (celui que l'enfant vient de
      presser sur un echec, celui qui porte la reponse revelee au troisieme echec). Jamais la sortie,
      sur aucune des deux valeurs : c'est la clause bloquante de M13. -->
-<div th:fragment="manche" class="ecran-de-jeu"
+<div th:fragment="manche" class="ecran-de-jeu" th:classappend="${propositionsEnImage} ? 'ecran-deux-oeuvres'"
      th:attr="data-arrivee=${arriveeParUnGeste} ? 'par-un-geste' : 'sans-geste', data-focus=${focus}">
     <p class="score" th:text="'Score : ' + ${score.reussites()}"></p>
     <!-- ADR-0075 section 7, VOI-12 (nadia-prof, ARBITRAGE-PREALABLE-s26-la-voix-est-un-adulte.md,
@@ -152,18 +152,28 @@
         <div class="cabinet-bandeau" aria-hidden="true">
             <span class="cabinet-visage"></span>
         </div>
-        <form class="propositions" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">
+        <form class="propositions" th:classappend="${propositionsEnImage} ? 'propositions-oeuvres'" th:attr="hx-post=@{'/parties/' + ${jeuId} + '/coups'}" hx-target="#jeu" hx-swap="innerHTML">
             <!-- S10, M9 : "deja-essayee" marque une proposition deja pressee sur cette manche - elle
                  reste cliquable, a sa place, de la meme taille (M8) : la classe ne nomme que la marque,
                  son habillage visuel est laisse au lot qui porte le meuble.
                  M13 clause 2 et 5 : data-focus-cible designe le bouton que ce fragment declare comme
                  point de focus quand data-focus ne vaut pas "enonce" - la proposition que l'enfant
                  vient de presser sur un echec, ou celle qui porte la reponse revelee. -->
+            <!-- ADR-0104 decisions 3 et 4 : propositionsEnImage est derive UNE fois, par le controleur,
+                 et ce gabarit branche sur lui, jamais sur un #strings.startsWith par proposition. Quand il
+                 est vrai, chaque bouton porte une image au lieu de son texte, sous le plafond de .image-item,
+                 et jamais l'identifiant en texte, en alt ou en title : l'identifiant nomme le sujet, donc
+                 la reponse (CON-5). Le nom accessible du bouton est un texte de nadia-prof (arbitrage de
+                 s55, M5), identique pour tous les items ; l'alt de l'image est vide (nadia-prof, Q-Y14) :
+                 un alt qui decrirait une oeuvre la designerait. Mise en page et marque de la bonne oeuvre
+                 a la revelation (data-oeuvre-revelee, la classe oeuvre-revelee de la proposition etant refusee par
+                 le garde-fou d'ADR-0027, qui n'admet qu'un litteral choisi selon propositionsEssayees) :
+                 proposition d'ines-design de s55. -->
             <button type="submit" class="btn proposition" data-role="action"
                     th:each="proposition : ${propositions}"
                     th:classappend="${propositionsEssayees.contains(proposition)} ? 'deja-essayee' : ''"
-                    th:attr="data-focus-cible=${focusCibles.contains(proposition)}"
-                    name="propositionChoisie" th:value="${proposition}" th:text="${proposition}"></button>
+                    th:attr="data-focus-cible=${focusCibles.contains(proposition)},aria-label=(${propositionsEnImage} ? 'Choisir cette œuvre' : null),data-oeuvre-revelee=(${propositionsEnImage == true and mancheRevelee == true and focusCibles.contains(proposition)} ? 'true' : null)"
+                    name="propositionChoisie" th:value="${proposition}"><img class="image-item" alt="" th:if="${propositionsEnImage}" th:src="@{'/oeuvres/' + ${proposition} + '.jpg'}"><th:block th:unless="${propositionsEnImage}" th:text="${proposition}"></th:block></button>
         </form>
         <div class="cabinet-levier" aria-hidden="true">
             <span class="cabinet-levier-embase"></span>
@@ -195,6 +205,11 @@
              Meme forme que .forme-de-reference / .forme-attendue sur l'ecran de saisie (SAI-9b), et
              pour le meme motif : une chaine noyee dans un texte de modele ne se verifie pas
              structurellement, une chaine seule dans son element si. -->
+        <!-- ADR-0104 decision 4, point 4 : quand les propositions sont des images, la revelation ne pose
+             aucune reponse en texte (le controleur pose reponseRevelee a null) ; la bonne oeuvre est
+             marquee (oeuvre-revelee) et cette phrase, de nadia-prof (M4), remplace les deux lignes
+             ci-dessous. -->
+        <p class="reponse-revelee" th:if="${propositionsEnImage == true and mancheRevelee == true}">C'est cette œuvre qui va avec. Appuie dessus.</p>
         <p class="reponse-revelee" th:if="${reponseRevelee != null}">Appuie sur la bonne réponse :</p>
         <p class="reponse-attendue" th:if="${reponseRevelee != null}" th:text="${reponseRevelee}"></p>
         <p class="explication" th:if="${explication != null}" th:text="${explication}"></p>

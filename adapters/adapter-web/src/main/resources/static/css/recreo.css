@@ -1747,3 +1747,103 @@ body:has(.ecran-exclusif) .chip-niveau {
     font-weight: bold;
     margin: 0.25rem 0 0;
 }
+
+/* ------------------------------------------------------------------------------------------------
+   ADR-0104, S55-ART-CP-10-MECANIQUE T3 : le dispositif "deux oeuvres ensemble". Regles reprises
+   telles quelles de proposition-ines-s55-deux-oeuvres-ensemble.md, section 4 ; le developpeur
+   applique, il ne dessine pas. Posees par fragments/manche.html quand le controleur derive
+   propositionsEnImage (ADR-0104 decision 3) : .ecran-deux-oeuvres sur .ecran-de-jeu,
+   .propositions-oeuvres sur la rangee, [data-oeuvre-revelee=true] sur la seule bonne oeuvre a la
+   revelation. Ecarts a la proposition, imposes par les garde-fous : pas de classe
+   .proposition-oeuvre ni .oeuvre-revelee (une seule th:classappend par bouton, ADR-0027 ; les
+   regles se selectionnent par .propositions-oeuvres .proposition, de meme specificite) ; pas de
+   :active propre (ADR-0053) ; content: none et non display: none sur le voile (ADR-0026). Les mots
+   de l'ecran sont ceux de nadia-prof, le gabarit
+   seul les porte. Aucune couleur neuve : la palette nommee de :root. */
+
+/* Trois cases carrees et egales (M1, X6), sans retour a la ligne. Une case ne depasse jamais le
+   plafond de .image-item (11rem) plus son propre cadre. */
+.propositions-oeuvres {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    margin: 0;
+}
+
+/* La teinte cyclique des boutons-texte (4n+1 a 4n+4) est neutralisee : une teinte qui change d'une
+   case a l'autre est une difference de presentation avant le geste (X6) et un aplat derriere une
+   reproduction (C5 clause 1). Meme specificite que ces regles, posee apres elles. */
+.propositions.propositions-oeuvres .proposition {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: calc(11rem + 0.5rem + 0.25rem);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    background-color: var(--recreo-fond);
+    color: var(--recreo-texte);
+}
+
+/* Pas de voile glissant sur une reproduction : il l'assombrirait a l'arrivee. */
+.propositions-oeuvres .proposition::after {
+    content: none;
+}
+
+.propositions-oeuvres .proposition img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 0.125rem solid var(--recreo-accent);
+}
+
+/* Etat d'echec (M3) : un mot barre n'existe pas sur une image. Ecart a la proposition d'ines-design,
+   qui ajoutait un cadre en tirets : toute declaration de border sur un sujet .proposition.deja-essayee
+   oblige ses etats :hover, :active et :focus-visible (ADR-0046, dette vide) et toucherait l'anneau de
+   focus de S17-1. Seule l'attenuation a demi est posee ici ; le canal de forme reste a decider
+   (ines-design, nadia-prof). Aucun pictogramme dans la case (X3). */
+.propositions-oeuvres .proposition.deja-essayee img {
+    opacity: 0.5;
+}
+
+/* Revelation (M4) : un anneau plein autour de la bonne oeuvre. La forme porte le sens, pas la
+   couleur. Ecart a la proposition d'ines-design, qui posait un anneau blanc hors de la case : un
+   outline sur le bouton oblige ses etats :focus-visible (ADR-0046, dette vide) et l'anneau de focus de
+   S17-1, qui arrive sur cette case (data-focus-cible), le recouvrirait. L'anneau est donc pose sur
+   l'image, dans le rembourrage de la case, en encre : le blanc ne se verrait pas sur le fond clair de
+   la case. Le cadre de la case (border) est de meme porte par l'image, pour le meme motif. */
+.propositions-oeuvres .proposition[data-oeuvre-revelee=true] img {
+    outline: 0.25rem solid var(--recreo-texte);
+    outline-offset: 0;
+}
+
+/* Disposition "cote" des 720 px : sans element de gabarit en plus, la grille place la reference dans
+   la colonne de gauche, face a l'enonce et au meuble. L'ordre du document ne change pas (la
+   reference reste avant l'enonce pour une lecture d'ecran). Sous 720 px la disposition reste
+   empilee. */
+@media (min-width: 720px) {
+    .ecran-deux-oeuvres {
+        display: grid;
+        grid-template-columns: 11rem minmax(0, 1fr);
+        column-gap: 1.5rem;
+        align-items: start;
+        grid-template-areas:
+            "score score"
+            "consigne consigne"
+            "ref enonce"
+            "ref jeu"
+            "msg msg";
+    }
+
+    .ecran-deux-oeuvres > .score { grid-area: score; }
+    .ecran-deux-oeuvres > .consigne { grid-area: consigne; }
+    .ecran-deux-oeuvres > .illustration { grid-area: ref; margin-top: 0.5rem; }
+    .ecran-deux-oeuvres > .enonce { grid-area: enonce; }
+    .ecran-deux-oeuvres > div:has(> .propositions-oeuvres) { grid-area: jeu; }
+    .ecran-deux-oeuvres > .message-jeu { grid-area: msg; }
+}

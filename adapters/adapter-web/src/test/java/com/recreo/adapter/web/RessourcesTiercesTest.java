@@ -704,9 +704,16 @@ class RessourcesTiercesTest {
      * deux coexistent dans le balisage, et jsoup en voit deux la ou il n'y en avait qu'un. Ce n'est pas
      * une troisieme reference qui emprunte l'exemption sans decision, c'est la meme reference qui se
      * dedouble en une forme bornee pour chacune des deux populations.
+     *
+     * <p><b>Porte de 3 a 4 (ADR-0104, decision 7 point 5, s55) : l'image d'une proposition.</b> Quand
+     * le controleur derive {@code propositionsEnImage}, chaque bouton de {@code fragments/manche.html}
+     * porte une image dont la cible est {@code '/oeuvres/' + ${proposition} + '.jpg'} : la forme deja
+     * admise, au terme pres. C'est une quatrieme reference, decidee par l'ADR et nommee par le critere 5
+     * de S55-ART-CP-10-MECANIQUE ; la morsure d'etroitesse ci-dessous reste rouge sur deux termes
+     * calcules.
      */
     @Test
-    void troisReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu() {
+    void quatreReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu() {
         List<String> admises = new ArrayList<>();
         for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
@@ -722,7 +729,7 @@ class RessourcesTiercesTest {
                         + "rien tant qu'aucune reference de production ne les empruntent, et elles "
                         + "cessent d'etre etroites des qu'une reference de plus les emprunte sans "
                         + "qu'on l'ait decide")
-                .hasSize(3);
+                .hasSize(4);
     }
 
     /**
