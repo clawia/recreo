@@ -19425,6 +19425,10 @@ section 16.5) : 1,0, les quatre points non bloquants repris dans le meme diff qu
 encore *"ne fait rien d'autre"* et `grep -c "corps-cm1"` sur `catalogue.yaml` rend 1 : le critere de l'item 3 est rouge.
 Motif : l'indice de l'item 3 est faux et le jeu est servi. Criteres inchanges.
 
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B) : LIVREE, `CRP-CM1-R1` a `CRP-CM1-R3` levees.** Commit `e9dd4d21` (`marc-dev`), textes de
+l'arbitrage prealable de s54 repris mot pour mot ; **VALIDE, sans reserve** (`FICHE-bandit-manchot-corps-cm1.md`, verdict du 2026-10-08). Tarif reel 0,25.
+`SCI-CM1-10` reste `couvert-valide`, la mention des reserves est retiree de sa cellule de matrice. Engagee a s54 et livree a s54 : aucun report de plus.
+
 **Contexte.** `nadia-prof` prononce **VALIDE SOUS RESERVE** sur `SCI-CM1-10` le 2026-10-06 (s51, instance
 B, `squad/conformite/FICHE-bandit-manchot-corps-cm1.md`, section 8). Trois reserves non bloquantes,
 groupees en une seule story par paquet (cinq items sur douze : 3, 5, 6, 7, 11 ; `PAR-10`, precedent
@@ -19852,6 +19856,10 @@ ouvert. Les tarifs sont ceux du bareme de `PAR-10` ou ceux que `nadia-prof` a de
 **Etat au 2026-10-07 (s54) : ENGAGEE a s54** (`DEC-0114` section 3), avec l'item 16 de `FRA-CE1-25`, instance A, 0,5, `marc-dev`, un seul re-audit
 des trois items (19, 23, 16). Second report arrete. Critere de la fiche inchange (mot pour mot, plus bas) ; non automatisable, `nadia-prof` rejoue.
 
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance A) : LIVREE, `SYC-CE1-R1` levee.** Commit `0a1f2b80` (`marc-dev`), trois lignes `enonce` (items 16, 19,
+23), textes de `K5` et `K6` repris mot pour mot ; **VALIDE, sans reserve** (`FICHE-bandit-manchot-synonymes-contraires-ce1.md`, rejeu du 2026-10-08), observation 1
+(item 16) traitee. Prix reel 0,25. `FRA-CE1-25` reste `couvert-valide`. Second report arrete a s54 : aucun troisieme.
+
 **Contexte.** `nadia-prof` audite `bandit-manchot-synonymes-contraires-ce1` a s52, instance A, et prononce
 **VALIDE SOUS RESERVE** sur `FRA-CE1-25` (`squad/conformite/FICHE-bandit-manchot-synonymes-contraires-ce1.md`,
 section 5). Reserve neuve, non bloquante, ouverte sur ce premier passage (`TRV-CE1-6`) : item 19 *"Il lance le
@@ -20112,6 +20120,11 @@ de `sofia-sm` : `S53-REL-2` en entier, `S53-REL-3` P4, `S53-REL-4` P5 sur "la re
 **Etat au 2026-10-07 (s54) : ENGAGEE a s54** (`DEC-0114` sections 1 et 4), `nadia-prof`, instance A (`PAR-7`), 0,5. Engagee a s53 et non livree : quatrieme
 sprint. Le fichier s'appelle `PASSE-TRANSVERSE-s54-*.md` ; le critere `find squad -iname 'PASSE-TRANSVERSE-s54*'` rend 0 fichier aujourd'hui (rouge).
 
+**Etat au 2026-10-08 (s54) : LIVREE**, `nadia-prof` instance A, `squad/conformite/PASSE-TRANSVERSE-s54-portee-depot-apres-les-branchements-de-francais-ce1.md`
+(`find squad -iname 'PASSE-TRANSVERSE-s54*'` rend 1 fichier). Prix reel 0,5. Aucune propriete de la portee D n'est non tenue ; `D7` (contrefacon par tirage) reste
+**non cherchee**, `nadia-prof` le dit et route a `sofia-sm` l'engagement d'un poste distinct. Ce qu'elle route a `camille-po` est ouvert plus bas dans "Sprint 54"
+(`PCO-CE1-R1`, `S54-OBS-SCI-CONSIGNE`, `S54-OBS-ART-ALT`).
+
 **Contexte.** `PAR-4` (arbitrage de s29, section 13.3) : la passe sur les proprietes de portee **D** (section 13.2) est
 une tache nommee, 0,5, affectee a l'instance qui porte l'accumulation. Elle a ete portee a trois `DEC` d'ouverture
 (s51, s52, s53) sans engagement ; `DEC-0112` section 5.4 l'engage. Dernieres passes ecrites sur le depot :
@@ -20149,6 +20162,11 @@ ligne de matrice ne change de statut par cette section.
 
 **Etat au 2026-10-07 : ENGAGEE a s54** (`DEC-0114` section 1), `lea-dev`. Criteres inchanges ; verifies contre l'existant le 2026-10-07 :
 `grep -cE '^ *- enonce: ".* :'` rend 14 sur `cm1-grands-nombres.yaml` (rouge). Prix chez `nadia-prof` (`Q5`), pas chez moi.
+
+**Etat au 2026-10-08 (s54) : LIVREE, `Q5` repondue.** Commit `d958cfc6` (`lea-dev`). Meme commande, meme critere : `grep -cE '^ *- enonce: ".* :'` sur
+`cm1-grands-nombres.yaml` rend **0** (mesure du 2026-10-08, sommet de la branche ; 14 le 2026-10-07). `nadia-prof` (`FICHE-bandit-manchot-grands-nombres-cm1.md`,
+note du 2026-10-08) : la correction ne passe pas par sa porte, la ponctuation du texte de l'enfant releve du `relecteur-pedagogique` ; aucun verdict, tarif 0,0.
+Je n'ai pas verifie si cette relecture est tracee dans le depot : a router par `sofia-sm` si elle ne l'est pas.
 
 - **Besoin** : en tant qu'eleve de CM1, je veux que la consigne "Ecris en chiffres : ..." ne coupe pas la ligne entre le mot et
   les deux-points, afin de lire une consigne correcte (`DEC-0002`, amendement du 2026-08-04).
@@ -20301,6 +20319,15 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
   renvoie a l'oreille, refus au premier passage de `FRA-CE1-17`, rejoue et leve a s52) est nommee dans la fiche de `FRA-CE1-17`, que le developpeur lit avant.
 - **Lien decision** : `DEC-0114` sections 1 et 5 ; `DEC-0112` section 8. **Instance** A, lot 1,0 chacun. **Agent** : `marc-dev`.
 
+**Etat au 2026-10-08 (s54, verdicts de `nadia-prof`, instance A, sur `5cad6650`).**
+- `S54-BR-FRA-CE1-18` : **VALIDE, sans reserve** (`FICHE-bandit-manchot-futur-ce1.md`), `FRA-CE1-18` **`couvert-valide`**, aucune mention de couverture partielle.
+- `S54-BR-FRA-CE1-19` : **VALIDE SOUS RESERVE** (`FICHE-bandit-manchot-passe-compose-ce1.md`), `FRA-CE1-19` **`couvert-valide`**, aucune mention de couverture
+  partielle ; reserve neuve non bloquante `PCO-CE1-R1`, story ci-dessous.
+- **Correction du critere "aucun indice ne renvoie a l'oreille"** (routage de `nadia-prof`, arbitrage prealable section 12) : ce critere se lit avec la barre de
+  l'arbitrage du 2026-10-08, **telle que `nadia-prof` la relit elle-meme** (`FICHE-bandit-manchot-passe-compose-ce1.md`, section 4) : un indice ne presente pas
+  comme ce qui fait la bonne reponse un critere qu'un distracteur remplit ; une interdiction ou une condition necessaire qu'un distracteur respecte n'est pas
+  un motif de refus. Les criteres de chaque fiche sont ecrits par `camille-po` dans la section "Criteres pedagogiques attendus" des deux fiches (2026-10-08).
+
 ### S54-BR-SCI-CM1-15 - Brancher `cm1-sciences-terre-jour-nuit-saisons`, reprise du paquet refuse a s51 (`SCI-CM1-15`)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux jouer a un jeu sur la Terre, le jour, la nuit et les saisons ou chaque mauvaise reponse est fausse et ou
@@ -20314,6 +20341,10 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
 - **Lien decision** : `DEC-0114` ; `DEC-0113` section 9 (remise a s54). **Instance** B, 1,0. **Agent** : `lea-dev`.
 - **Ce que la story n'engage pas** : le branchement n'engage pas la fermeture. Le paquet a ete refuse a s51 ; un refus reste un refus.
 
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `5cad6650`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-jour-nuit-saisons-cm1.md`).
+Les deux motifs du refus de s51 (item 4, item 11) sont leves a la barre de `nadia-prof`, les quatre points non bloquants sont pris. `SCI-CM1-15`
+**`couvert-valide`**, aucune mention de couverture due. Trois sprints de report (s51 a s53) clos.
+
 ### S54-BR-SCI-CM1-18 - Brancher `cm1-sciences-environnement-activite-humaine`, reprise du paquet refuse deux fois (`SCI-CM1-18`)
 
 - **Besoin** : en tant qu'eleve de CM1, je veux jouer a un jeu sur ce que l'activite des humains change dans la nature et sur un geste pour la proteger,
@@ -20322,6 +20353,10 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
 - **Criteres d'acceptation** : C2, C3, C4, C7 ; plus, mot pour mot du refus (`FICHE-bandit-manchot-activite-humaine-cm1.md`, S2-3) : *"Deux propositions
   repondent a la question ecrite"* (item 11, refuse au premier passage puis au rejeu `5a4ca6d8`). `nadia-prof` rejoue cet item en premier.
 - **Lien decision** : `DEC-0114` ; `DEC-0113` section 9. **Instance** B, 0,5 (tarif de la reprise, a confirmer, `Q4`). **Agent** : `lea-dev`.
+
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `5cad6650`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-environnement-cm1.md`).
+Le motif de l'item 11 (*"Deux propositions repondent a la question ecrite"*), maintenu deux fois a s51, est leve a la barre ecrite alors. `SCI-CM1-18`
+**`couvert-valide`**, aucune mention de couverture due. Trois sprints de report (s51 a s53) clos.
 
 ### S54-BR-EMC-CM1-02 - Brancher `cm1-emc-atteinte-autrui` (`EMC-CM1-02`)
 
@@ -20334,6 +20369,10 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
   developpeur sur les 11 items, resultat ecrit dans son rapport. **Mention exigee d'avance** (`competences-cm1.md`, section "Mention exigee d'avance si une
   ligne bouge") : due a la fermeture, par `nadia-prof`, mot pour mot ; elle n'est pas due au branchement. Aucune ligne `DEGRADE` n'est attendue (`DEC-0112` section 4).
 - **Lien decision** : `DEC-0114` ; `DEC-0112` section 4. **Instance** B, lot 1,0. **Agent** : `lea-dev`.
+
+**Etat au 2026-10-08 (s54, verdict de `nadia-prof`, instance B, sur `5cad6650`) : VALIDE, sans reserve** (`FICHE-bandit-manchot-atteinte-autrui-cm1.md`), au
+premier passage. `EMC-CM1-02` **`couvert-valide`**, avec la mention de couverture exigee d'avance, reprise mot pour mot dans la ligne.
+**Constat route a `camille-po`** : voir `S54-EXC-CATEGORIE` plus bas.
 
 ### S54-ART-CP-10-PRIX - Le prix de la mecanique qui montre deux oeuvres ensemble et le plafond du paquet `DEGRADE` (`ART-CP-10`)
 
@@ -20384,6 +20423,65 @@ Repris du planning (C1 a C7), verifies contre l'existant le 2026-10-07 :
 - **Ce qui reste a `nadia-prof`** : plafond d'une ligne, tarif, `PAR-13` (arts CP terrain neuf ? si oui, C et A ne tiennent pas `PAR-13` ensemble), conditions (i) a (iii) de la borne a trois instances, faits du paquet, verdict (`DEC-0114` A.6, A.11 a A.13).
 - **Lien decision** : `DEC-0114` amendement A.1 et A.9 a A.16 ; `DEC-0113` section 3.1. **Agent** : `lea-dev` (proposition de `camille-po`, A.15, affectation a `sofia-sm`).
   **Report** : `ART-CP-10` compte quatre sprints hors perimetre (s50 a s53) ; si le paquet n'est ni branche ni audite a la cloture de s54, `DEC-0114` section 4 s'applique.
+
+**Etat au 2026-10-08 (s54).** Paquet **branche** (`c7d56d60`, corrections de `nadia-prof` instance C avant branchement `ffbd2157`, test de paquet) : critere 1 vert. Critere 4
+tenu : `ART-CP-10` reste `non couvert` dans la matrice (motif et regle citee dans la ligne). **L'audit de l'instance C est en cours, aucun verdict** ; la ligne ne bouge pas
+avant lui. La fiche `FICHE-cp-arts-oeuvres-familles.md` n'existe pas encore dans le depot : je ne l'ouvre pas dans ce geste, la branche de C la porte (critere 7). **Ecart de
+matrice traite** : le bilan d'arts plastiques CP rangeait encore la ligne en `non couvrable en l'etat` (classement retire le 2026-10-07) ; corrige.
+
+### PCO-CE1-R1 - Sur les huit items ou l'infinitif remplace le participe, l'indice parle de cette erreur (`FRA-CE1-19`)
+
+**Etat au 2026-10-08 (s54) : OUVERTE, non engagee.** Reserve neuve, non bloquante, de `nadia-prof` sur `FRA-CE1-19` (`FICHE-bandit-manchot-passe-compose-ce1.md`,
+section 5). La ligne est `couvert-valide`, non rouverte. Report : aucun (ouverte le jour du verdict). Engagement : `DEC` d'ouverture de s55.
+
+- **Besoin** : en tant qu'eleve de CE1 qui ecrit *"tu as regarder"* au lieu de *"tu as regarde"*, je veux que l'indice me dise que j'ai recopie le verbe au lieu
+  de le changer, afin de comprendre ce que j'ai rate et pas seulement d'ecarter une proposition.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, inchangee (contenu seul).
+- **Competence programme visee** : francais, CE1, `FRA-CE1-19` (`squad/programme/francais/competences-ce1.md`).
+- **Criteres d'acceptation** (mots de `nadia-prof`, section 5 de la fiche, non reformules ; elle rejoue) : sur les items **2, 5, 8, 9, 11, 12, 20, 23**, et sur eux
+  seuls, la ligne `indice` de `ce1-passe-compose.yaml` devient `indice: "Ne recopie pas le verbe écrit au début : il change."`. Énoncés, bonnes réponses,
+  distracteurs, familles déclarées et en-tête ne changent pas. Sorties observables, depuis la racine : `grep -c 'indice: "Ne recopie pas le verbe'` rend **11
+  aujourd'hui** (mesure du 2026-10-08, rouge) et doit rendre **19** ; `grep -c 'indice: "Avec ce sujet, comment'` rend **4 aujourd'hui** et doit rendre **2** ;
+  le `git diff` du fichier ne montre que ces huit lignes. `PaquetCe1PasseComposeTest` reste vert. `TRV-CE1-5` (*"pas identique sur tout le paquet"*) reste tenue,
+  selon `nadia-prof` : `N1` sur 19 items, I2 sur 14 et 17, `N2` sur 10 et 24, I3 sur 21.
+- **Ce que la story n'engage pas** : `L3` (consigne qui nomme le passe compose) reste une recommandation sans condition. Le cout, dit par `nadia-prof` : sur les
+  items 2, 9, 11 et 12, l'enfant qui choisit l'auxiliaire faux lira un indice qui ne lui parle pas de l'auxiliaire.
+- **Prix** : mot pour mot, **0,25** (`PAR-10`), rejeu par `nadia-prof`. **Agent pressenti** : `marc-dev`, auteur du paquet (affectation a `sofia-sm`).
+- **Lien decision** : `DEC-0114` ; fiche `FICHE-bandit-manchot-passe-compose-ce1.md`.
+
+### S54-EXC-CATEGORIE - Au CP, une exclusion repetee est nommee "une moquerie qui se repete" : la categorie est plus large que le fait (`EMC-CP-03`)
+
+**Etat au 2026-10-08 (s54) : OUVERTE, non traitee, non engagee.** Constat de `nadia-prof` (instance B), ecrit en lisant `cp-emc-exclusion` a cote de `cm1-emc-atteinte-autrui`
+pour `CYC-1` (`FICHE-bandit-manchot-atteinte-autrui-cm1.md`, section 6) : au CP, *"Malo écarte Tom du jeu"* depuis plusieurs jours se nomme *"une moquerie qui se répète"*,
+faute d'un terme propre ; au CM1, l'exclusion se nomme *"une mise à l'écart"* et *"une moquerie"* est distracteur de l'item 3. Sa phrase : *"la catégorie du CP est plus
+large que le fait"*. Elle precise que ce n'est pas une contradiction du CM1, que le constat porte sur le paquet de CP et qu'il n'ouvre ni reserve ni identifiant. Je ne
+juge pas ce constat : c'est le sien. Cette entree le rend visible dans le backlog pour qu'il ait une suite.
+
+- **Besoin** : en tant qu'eleve de CP qui voit un camarade ecarte du jeu plusieurs jours de suite, je veux que le jeu nomme ce que je vois par un mot qui lui correspond,
+  afin de reconnaitre une exclusion quand j'en vois une.
+- **Competence programme visee** : enseignement moral et civique, CP, `EMC-CP-03` (*"Reconnaître une situation de moquerie répétée ou d'exclusion et savoir à quel adulte
+  en parler."*, `squad/programme/enseignement-moral-et-civique/competences-cp.md`). Ligne `couvert-valide` depuis s31, non rouverte par cette entree. Jeu :
+  `bandit-manchot-exclusion-cp`, paquet `cp-emc-exclusion` (`grep -c "moquerie qui se répète"` rend 8 sur le fichier du paquet le 2026-10-08).
+- **Criteres d'acceptation** : **non ecrits, et je ne les ecris pas.** Ils reprennent les mots du constat de `nadia-prof` (*"la catégorie du CP est plus large que le fait"*),
+  et c'est a elle de dire ce qui doit etre vrai du paquet pour que ce ne le soit plus, ou si rien n'est du (le referentiel CP dit lui-meme *"moquerie répétée ou d'exclusion"*).
+  Question a lui poser via `sofia-sm` : *le constat appelle-t-il une reserve neuve avec sa barre de levee, une condition de paquet, ou aucune suite ?* Tant qu'elle n'a pas
+  repondu, l'entree n'est pas estimable et n'est pas engageable.
+- **Lien decision** : aucune. **Report** : aucun (premiere entree).
+
+### S54-OBS-SCI-CONSIGNE et S54-OBS-ART-ALT - deux observations de la passe transverse, routees a `camille-po` (hors portee D)
+
+**Etat au 2026-10-08 (s54) : OUVERTES, non engagees.** `PASSE-TRANSVERSE-s54-*.md`, section 4 : `nadia-prof` les ecrit *"pour ne pas les avoir vues sans les dire"* ; ce ne sont pas des
+reserves, et elles ne sont pas de son lot (`PAR-2`).
+
+- `S54-OBS-SCI-CONSIGNE` - *"Lis le texte ou le tableau, puis reponds a la question."* (consigne) et *"Lis ce tableau, puis reponds a la question."* (enonce) disent deux fois
+  la meme chose a l'ecran, dans `bandit-manchot-sciences-extraire-information-cm1` (`SCI-CM1-20`, ligne `couvert-valide` avec couverture partielle, non rouverte). Besoin : en
+  tant qu'eleve de CM1, je veux lire une consigne une seule fois, afin de ne pas chercher ce que la seconde phrase ajoute. Instance qui porte cette ligne : B.
+- `S54-OBS-ART-ALT` - le texte alternatif de l'oeuvre servie par `bandit-manchot-decrire-une-oeuvre-cp` est *"Une reproduction d'oeuvre a regarder attentivement avant de repondre."*,
+  qui ne decrit pas l'oeuvre (`CON-5`). Besoin : en tant qu'eleve de CP qui ne voit pas l'image, je veux un texte qui me dise ce qu'elle montre, afin de pouvoir repondre.
+  `CON-1` interdit une contrefacon par description : ce que le texte alternatif peut dire sans donner la reponse est un jugement de `nadia-prof`, pas le mien. Ligne `ART-CP-09`,
+  `couvert-valide`, non rouverte.
+- **Criteres d'acceptation** : a ecrire quand une instance engage l'une des deux ; pour `S54-OBS-ART-ALT`, le critere repose sur ce que `nadia-prof` admet comme texte alternatif, et je
+  ne l'invente pas. Les deux phrases citees sont celles de la passe transverse ; je n'ai pas relu les deux paquets.
 
 ### S53-REL-10 - La base de s53 redevient verte sans assouplir de garde-fou (transverse) - entree ajoutee apres coup
 
