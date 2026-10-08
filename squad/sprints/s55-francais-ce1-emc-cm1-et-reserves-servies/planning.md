@@ -379,3 +379,240 @@ Ce planning est fusionne sur `round-two` par l'agent qui m'a lance avant tout wo
 - `yanis-qa` : lecture de testabilite des criteres ; `relecteur-pedagogique` : relecture de cloture.
 - `sofia-sm` : verification de lignee a chaque fusion, `review.md` avec le tableau des obstacles, `RAPPORT.md`, `python outils/rapport-tokens.py --sprint s55` (**avec `--sprint` explicite** tant que A8 n'est pas fait), `retro.md`. **Le daily n'est pas journalise.**
 - **Utilisatrice** : U1 a U4.
+
+
+---
+
+## Amendement du 2026-10-08 (`sofia-sm`, ouverture de s55) : aucun poste sans ligne
+
+Le texte ci-dessus est inchange : il dit ce que le planning savait a 14:43. Cet amendement est ecrit avant l'ouverture du premier worktree de developpement (action A5). Il ne decide ni produit, ni architecture, ni pedagogie,
+ne prononce aucun Done, et ne touche ni le backlog, ni la matrice, ni une fiche, ni `catalogue.yaml`. Il n'ajoute aucune ligne d'heure de debut ou de fin : celles du debut de ce fichier et de `review.md` restent les seules que `outils/rapport-tokens.py` lit.
+
+- **Heure de l'amendement** : 2026-10-08 16:20 (UTC+02:00), lue par `date`.
+- **Sources lues, par auteur** : camille-po (`DEC-0115` sections 0 a 8, amendement A.1 a A.8, backlog "Sprint 55") ; nadia-prof (`ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md`, 15:44 ; `ARBITRAGE-PREALABLE-s55-instance-b-emc-cm1.md`, 15:35) ;
+  theo-archi (`avis-faisabilite.md`, 15:42) ; sofia-sm (ce planning, retro de s54, amendements de s51 et s52).
+- **Lignee** : branche `s55-sofia-amendement`, `git log -1 --format=%h` rend `ba47b716` (tip de `round-two`), `bash outils/verifier-lignee.sh` sort 0, `git status --short` vide avant ecriture.
+- **Reponses de l'utilisatrice (messages relayes, forme 3, non citees comme ses mots)** : CI verte ; toutes les arts plastiques CP vont a l'instance A ; le sprint demarre. Je n'ai pas lu la CI distante. Mesure locale : la ligne `U4` de `review.md` de s54 a 3 cellules
+  (`awk -F'|'`), et `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest -Dsurefire.failIfNoSpecifiedTests=false` (perimetre : cette classe, `-am`) rend 5 tests, 0 echec.
+  **A-1 de `theo-archi` est paye par `8f740977`** ; je ne l'ouvre pas comme poste. Cette mesure ne dit rien des autres jobs de la CI.
+- **Chemins des commandes ci-dessous** : `catalogue.yaml` et `contenu/<paquet>.yaml` sont sous `adapters/adapter-content/src/main/resources/`. Tous les comptes "rouge" ont ete relances par moi sur `ba47b716`.
+
+### A. Ce qui a change depuis le planning
+
+| Ligne du planning | A l'ouverture | Source |
+|---|---|---|
+| Objectif gele | Non reecrit, complete : le dispositif d'`ART-CP-10` (T2, T3) est finance ; **l'enfant ne voit rien tant qu'aucun paquet a reproductions n'est au catalogue** ; `ART-CP-10` reste `non couvert`. Les fermetures possibles restent 137/182 a 141/182 (quatre branchements) | `DEC-0115` 5.3 et 5.4, point 7 |
+| "Tarifs proposes" 3,0 / 3,75 ; "Engage 6,75 sur 8,0" | **3,75 / 3,75 ; 7,5 sur 8,0** (section B) | `DEC-0115` A.2 |
+| B, "Corrections et reserves" : `EXC-R15` 0,25 + `ART-RES` 0,5 | B : `EXC-R15` 0,25 ; **`ART-RES` passe a A, 0,25** | A.2 |
+| `S55-BR-EMC-CM1-06`, "B, 1,0" | **1,5** | arbitrage B, section 6 |
+| `S55-BR-EMC-CM1-03`, "accepte sans changement a s53 (P9)" | **Faux** : P9 ne decidait que l'absence de ligne `DEGRADE`. Trois items a corriger avant branchement | arbitrage B, sections 1.1 et 2 |
+| `S55-BR-FRA-CE1-L1`, `-L2` | Deux conditions avant branchement chacun (`K1` a `K3` ; `K4`, `K5`) | arbitrage A, sections 4 et 5 |
+| `S54-ART-RES-R1` a `R3` : "B si Q5, 0,5" | **A, 0,25 mot pour mot** (0,5 si reecrit) ; dev inchange : lea-dev | A.2 |
+| Q3, Q4, Q5, Q7 | Q3 : `PAR-13` lue (le francais CE1 n'est pas un terrain neuf), `-14` et `-12` acceptes, paire `-12`/`-13` separable. Q4 : fait, 0,25, 15 paquets sur 16 plafonnes `non couvert`. Q5 : instance A. Q7 : passe `PAR-4` non due (0,0). **Restent ouverts : A10 et le plafond de `G3`** (l'instance A dit ne pas les traiter) | arbitrage A, sections 1, 2.1, 6, 10 |
+| O1, O2, O3 | O1 ne tient pas (4,75 sur 4,0) ; O3 fait (0,25) ; O2 : emploi des 0,25 restants, question Q-U4 (section H) | A.3 |
+| "il tient sous 8,0 uniquement si O1 et O3 ne sont pas pris" | **Fausse**, remplacee en section F | `DEC-0115` 5.2 |
+| C7, ligne `EMC-9` pour `-03` et `-06` | `EMC-9` ne vaut pas sur ces lignes : sans objet. Le developpeur relit `EMC-4`, `EMC-8`, la regle de s53 section 4.1 (un indice ne redit pas la bonne reponse) et, pour `-06`, `BIA-5` | arbitrage B, section 1.2 |
+| C2, "aucun YAML de paquet" | Les corrections de nadia-prof sont l'exception que C2 prevoit : le YAML du paquet change, dans le commit de branchement | arbitrages A 9, B 9 |
+| "ines-design : aucune" | Une tache (section D) | `DEC-0115` 5.4 |
+| "Aucun avis ecrit" de theo-archi | Ecrit. T1 oui ; T2 un test sur P3 dans le poste `-06`, P4 non garde ; T3 une seule liste, l'inventaire de `TexteAccentueExposeParLePortEntrantTest` (`LeRang...` declare deja les quatre paquets) ; T4 echappement, marc-dev ; T5 sans objet ; T6 prix reconfirme, garde-fou 2 en population exacte 0 ; T7 A7 une ligne, A8 refus | avis, sections 2 et 3 |
+| Noms de branche et de worktree | Section E, noms effectifs | - |
+
+### B. Capacite (A.2 de `DEC-0115`, tarifs de nadia-prof, recomptes par moi)
+
+| Poste | Instance A | Instance B |
+|---|---|---|
+| Deux lots | 2,0 (`-14` 1,0 ; `-12` 1,0) | 2,5 (`EMC-CM1-03` 1,0 ; `-06` 1,5) |
+| Arbitrage prealable | 0,5 | 0,5 |
+| Plafonds de `G7` a `G11` | 0,25 | - |
+| Forme d'`ART-CP-10` | 0,25 | - |
+| `S54-ART-RES-R1` a `R3` | 0,25 | - |
+| `S54-EXC-CATEGORIE` | - | 0,25 |
+| Marge de rejeu, allouee a aucun lot | 0,5 | 0,5 |
+| **Total / 4,0** | **3,75** | **3,75** |
+| Reserve non allouee | 0,25 | 0,25 |
+
+**Somme 7,5 sur 8,0.** A : 2,0 + 0,5 + 0,25 + 0,25 + 0,25 + 0,5 = 3,75. B : 2,5 + 0,5 + 0,25 + 0,5 = 3,75. `PAR-9` tenue, deux lots par instance (`PAR-8`), plafond dur de 5,0 non approche, aucune troisieme instance.
+`PAR-11`, non tranchee : en lecture amendee (0,5 de marge par lot neuf), 4,25 chacune, 8,5 en somme, au-dessus de la borne. Risque : une instance ne rejoue qu'un lot.
+`ART-RES` ou `EXC-R15` reecrits au lieu d'etre appliques mot pour mot : 0,5 au lieu de 0,25 (`PAR-10`) ; A 4,0 ou B 4,0, reserve 0.
+**Hors `PAR`, non comptes** : developpement de T2 et T3, tache d'ines-design, `PONCT`, `ASCII`, A7, A8, A9, lecture de yanis-qa, relecture.
+
+### C. Les corrections de nadia-prof "avant branchement"
+
+1. **Qui** : le developpeur du branchement, **dans le meme commit que le paquet** : le commit de `L1` porte `K1`, `K2`, `K3` et la ligne d'en-tete ; celui de `L2` porte `K4`, `K5` ; celui de `-03` les items 4, 7, 8, le paragraphe `EMC-5` de l'en-tete et la source `HIS-3` de 1948 ;
+   celui de `-06` les items 6 et 8 et la source `HIS-3` de 2018. `ART-RES` et `EXC-R15` sont des commits seuls.
+2. **Quoi** : les textes sont ceux de nadia-prof, **mot pour mot, et ne sont pas recopies ici** (une copie se perime) : arbitrage A sections 4 (`K1`, `K2`, `K3`) et 5 (`K4`, `K5`) ; arbitrage B sections 2.1 a 2.3, 3.1, 3.2 et 4.2 ; fiche d'`EXC-R15` (bloc du 2026-10-08, section 4).
+   Les blocs portent l'espace insecable (U+00A0) devant `?` et `:` et a l'interieur des guillemets francais (`TYP-1`).
+3. **Un autre texte** qui atteint la meme barre est accepte et juge contre la barre (arbitrage B, 2). Le developpeur l'ecrit dans son rapport avec le motif. Pour `ART-RES` et `EXC-R15`, le tarif passe a 0,5 (section B).
+4. **Recommandations non bloquantes** : `W1` (item 12 de `-14`), `W3` (indices de `-12`), `W4` (item 6 de `-12`) : le rapport dit "pris" ou "non pris". **`W2` ne se fait pas** : ecrire `ecoutes` pour `ecoutons` rendrait la bonne reponse la plus longue sur 11 items.
+5. **Le developpeur ne remplace pas nadia-prof** : il relit les regles qu'elle nomme (`TRV-CE1-5` avec la barre de s54 section 1.2 pour le francais ; `EMC-4`, `EMC-8`, section 4.1 de s53, `BIA-5` pour `-06`) et ecrit "relu" ou "non relu" avec le resultat (C7). Elle juge en jouant.
+
+### D. Les postes : proprietaire, porte, rang de fusion, critere mesurable
+
+| Poste | Proprietaire | Instance, tarif | Porte avant ouverture | Rang |
+|---|---|---|---|---|
+| `S54-ART-RES-R1` a `R3` | lea-dev | A, 0,25 | aucune | 1 |
+| `S54-EXC-CATEGORIE` (`EXC-R15`) | marc-dev | B, 0,25 | **QC4** (nadia-prof, instance B) | 2 |
+| `S55-BR-FRA-CE1-L1` | marc-dev | A, 1,0 | aucune | 3 |
+| `S55-BR-FRA-CE1-L2` | marc-dev | A, 1,0 | aucune | 3, apres `L1` |
+| `S55-BR-EMC-CM1-03` | lea-dev | B, 1,0 | aucune | 3 |
+| `S55-BR-EMC-CM1-06` | lea-dev | B, 1,5 | aucune | 3, apres `-03` |
+| `S55-ART-CP-10-MECANIQUE`, T2 | lea-dev | hors `PAR` | aucune | 4 |
+| `S55-ART-CP-10-MECANIQUE`, T3 | lea-dev | forme : A, 0,25 (ecrite) | **G-INES**, **G-NADIA-A** | 4 |
+| `S54-PONCT-GN-INDICES` | lea-dev | 0,0 | aucune | 5 |
+| `S54-ASCII-APOSTROPHES-TESTS` | marc-dev | 0,0 | engagement de camille-po | 5 |
+| `S55-OUTIL-JDK-JAVA-TOOL-OPTIONS` (A7), `S55-OUTIL-TOKENS-SANS-SPRINT` (A8) | sofia-sm, casquette developpeuse | 0,0 | engagement de camille-po | 6 |
+| Mise en page d'`ART-CP-10` | ines-design | hors `PAR` | aucune | avant T3 |
+| Ligne QC4 | nadia-prof, instance B | sans prix publie | aucune | avant `EXC-R15` |
+| Ligne "section 3 vaut sous (b)", A10, plafond de `G3` | nadia-prof, instance A | sans prix publie | aucune | avant T3 |
+| Lecture de testabilite, A6 | yanis-qa | hors `PAR` | aucune | avant la premiere livraison |
+| `relecture-cloture.md` (A9) | relecteur-pedagogique | hors `PAR` | aucune | cloture |
+
+**Portes** : **QC4** = une ligne ecrite par nadia-prof (instance B) disant si le seuil de `FAB-1a` (minimum 3 par categorie) se lit sur deux categories ou sur trois : `git grep -c QC4 -- squad/conformite` rend 0 fichier aujourd'hui, il doit en rendre au moins 1.
+**G-INES** = la proposition de mise en page existe : `ls squad/design | grep -c s55` rend 0, doit rendre au moins 1, et `git log --format=%ad --follow` de ce fichier precede le premier commit de rendu (critere 6, corrige par `DEC-0115` A.5).
+**G-NADIA-A** = une ligne de nadia-prof (instance A) confirmant que sa section 3 vaut sous l'issue (b), retenue par `DEC-0115` A.1 : `git grep -c "amendement A.1" -- squad/conformite` rend 0 fichier, doit en rendre au moins 1. Elle n'a pas ete demandee a l'ecrit dans son arbitrage ; `DEC-0115` A.8 la route.
+
+**Postes de dev, criteres mesures le 2026-10-08 sur `ba47b716`.** Aucun n'est vert sur ce qu'il corrige. C1, C3 a C9 du planning valent pour chacun ; ci-dessous, ce qui s'y ajoute.
+
+- **`S54-ART-RES-R1` a `R3`** (arbitrage B 4.2, rejoue par l'instance A). Un seul commit. `grep -c 'un photographe'` sur `cp-arts-oeuvres-familles.yaml` rend 3, doit rendre 0 ; `grep -c 'une photographe'` rend 0, doit rendre 3 ;
+  `grep -c 'indice: "Cette .uvre est faite avec de la peinture."'` rend 0, doit rendre 1 ; `grep -c 'va avec la statue, le tableau ou la photographie'` sur `catalogue.yaml` rend 1, doit rendre 0.
+  Les criteres du planning (tableau "Specifiques") restent. `PaquetCpArtsOeuvresFamillesTest` et l'inventaire de `TexteAccentueExposeParLePortEntrantTest` verts (la consigne change).
+- **`S54-EXC-CATEGORIE`** (fiche, bloc du 2026-10-08, section 4). Les trois comptes du planning restent (3, 0, 1 doivent devenir 1, 3, 0). **La clause "`PaquetCpEmcExclusionTest` reste vert" ne tient pas avec les quatre lignes seules** (avis 7.1, simulation C ; `DEC-0115` A.6) :
+  la categorie "moquerie" tombe a 1 bonne reponse sous le minimum de 3, `CLASSEMENTS_VALIDES` ne connait pas la categorie neuve (les items 1 et 3 basculent sans erreur dans la tache B : un faux vert), l'inventaire porte l'ancienne consigne.
+  Mesure a ajouter : `grep -c "mise . l.cart" PaquetCpEmcExclusionTest.java` rend 0, doit rendre au moins 1. Le diff reel est d'au moins 6 lignes en 4 fichiers. **Le worktree ne s'ouvre pas avant QC4** ; la reecriture du critere est a camille-po (backlog : "non tenable tel qu'ecrit").
+- **`S55-BR-FRA-CE1-L1`** (`K1` a `K3`). `grep -c 'indice: "Remplace le sujet par'` sur `ce1-accord-sujet-verbe.yaml` : 0 vers 12 ; `grep -c 'indice: "Lis le sujet avec chaque verbe'` : 0 vers 5 ; `grep -c 'compte-les'` : 6 vers 1 ;
+  `grep -c '^ *indice:'` : 24 vers 24 ; `grep -c 'il ___ au march'` : 0 vers 1 (item 6) ; `grep -c 'il ___ un g.teau'` : 0 vers 1 (item 18) ; `grep -c "satisfait par la forme d.une autre personne"` : 0 vers 1 (en-tete) ;
+  `grep -c 'Lis bien, puis choisis la bonne forme du verbe'` sur `catalogue.yaml` : **2 vers 3** (la consigne est deja servie par une autre entree ; le titre est libre). Le test neuf du paquet (`PaquetCe1<Nom>Test`) ajoute au moins un test et garde `ACV-CE1-1` (sujet nominal 17 sur 24 ; 12 singuliers, 12 pluriels).
+- **`S55-BR-FRA-CE1-L2`** (`K4`, `K5`). Sur `ce1-classes-de-mots.yaml` : `grep -c 'Fatou'` 0 vers 1 ; `grep -c 'Lina'` 0 vers 1 ; `grep -c 'Tom.*range'` 1 vers 0 ; `grep -c 'Karim aime'` 1 vers 0 ;
+  `grep -c 'dis quelle sorte de mot est entre guillemets'` sur `catalogue.yaml` : 0 vers 1. Le cliquet `AucunSigneDoubleNEstDetachableDeSonMotTest.leCliquetDeLaDetteDeTyp1EstExact` reste vert **sans toucher sa table** (la consigne de `K5` ne porte aucun signe double). Le test neuf du paquet ajoute au moins un test et garde `CLM-CE1-1` (5, 4, 5, 5, 5 par classe).
+- **`S55-BR-EMC-CM1-03`** (arbitrage B 2.1 a 2.3). Sur `cm1-emc-respect-differences.yaml` : `grep -c 'bonneReponse: "Aya, parce qu.elle utilise un fauteuil roulant et que'` 1 vers 0 ; `grep -c 'bonneReponse: "Aya, parce qu.elle utilise un fauteuil roulant"'` 0 vers 1 ;
+  `grep -c 'jeu de cartes'` 0 vers 1 ; `grep -c 'Pense . deux amis qui n.aiment pas les m.mes livres'` 0 vers 1 ; `grep -c 'disparaissent avec le temps'` 1 vers 0 ; `grep -c "puni si un adulte le voit"` 0 vers 1 ; `grep -c 1948` 0 vers au moins 1 ;
+  `grep -c '^ *- enonce:'` 11 vers 11 (le motif de `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` ne change pas). Le paragraphe `EMC-5` de l'en-tete decrit le nouvel item 4 : relu par le relecteur.
+- **`S55-BR-EMC-CM1-06`** (arbitrage B 3.1, 3.2). Sur `cm1-emc-principes-republique.yaml` : `grep -c "qu.un adulte la refuse"` 1 vers 0 ; `grep -c "pouvoir faire tout ce que l.on veut"` 0 vers 1 ; l'indice de l'item 6 **ne change pas** (`grep -c 'indice: "Teste chaque phrase avec un exemple pris dans la classe."'` reste 1, arbitrage B 1.3) ;
+  `grep -c 'bonneReponse: "se soutenir et s.entraider entre citoyens"'` 1 vers 0 ; `grep -c "s.entraider les uns les autres"` 0 vers 1 ; `grep -c 2018-717` 0 vers au moins 1.
+  **P3** : le test neuf du paquet (`PaquetCm1Emc<Nom>Test`) porte un test qui interdit le retour de "la liberte" dans les distracteurs de l'item 4 (avis 2, point 1) ; yanis-qa rejoue la mutation. **P4** : "non garde : P4" dans `rapport-lea-dev.md`, avec les six indices lus et lesquels (C8).
+- **`S55-ART-CP-10-MECANIQUE`**, criteres 1 a 9 du backlog tels que corriges par `DEC-0115` A.5. **T2** : criteres 4 (garde-fous 1 a 3, population reelle de reproductions **exactement 0**, morsures sur un item reel de `cp-decrire-une-oeuvre` mute en memoire), 7, 8 (chemin `adapters/adapter-content/src/main/resources/contenu/`), 9 ; aucun mot ne lui est necessaire.
+  **T3** : criteres 1 (`grep -c "oeuvres/' + \${proposition}" manche.html` 0 vers au moins 1), 2, 3 (42 `@Test` de `PartieControllerTest` au minimum, aucune assertion affaiblie), 4 (garde-fou 4), 5 (la methode `troisReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu` passe de `hasSize(3)` a `hasSize(4)`, `sed -n '709,730p'`), 6 pour les points 3 et 4 seuls, 7 (`ArchRule` 39 et `@ArchTest` 36 inchanges), 8, 9.
+  **T4 sort de la story** et voyage avec le fichier du paquet (avis 4). Sans paquet, l'enfant ne voit rien. **T3 non livree a la cloture : premier report, compte** (`DEC-0115` A.5, point 1). Le developpeur n'ecrit aucun mot lu par l'enfant (`CON-5`).
+- **`S54-PONCT-GN-INDICES`** : criteres du planning (12 vers 0 ; la meme avec U+00A0, 0 vers 12 ; cliquet `TYP-1` de 12 a 0 ; un commit). **`S54-ASCII-APOSTROPHES-TESTS`** : echappement `\\u2019` (avis, T4), `grep -cP '[\x{2018}\x{2019}]'` rend 1 sur chacun des deux fichiers, doit rendre 0, les deux tests restent verts.
+- **A7** : `JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 bash outils/mvn-jdk21.sh -v` sort 1 (reproduit par theo-archi), doit sortir 0 ; un cas neuf dans `outils/mvn-jdk21-test.sh` ; `bash outils/mvn-jdk21-test.sh` sort 0. **A8** : `python outils/rapport-tokens.py` sans `--sprint` sort 2 et `git status --short` reste vide ; `test_6` de `outils/rapport-tokens-journal-test.py` reecrit en "refuse et n'ecrit rien".
+- **Ines-design** : un fichier de `squad/design/` nomme pour s55 (proposition, pas de gabarit) qui dit : la reference et trois propositions tiennent-elles sans defilement aux dix largeurs deja relevees (`releves-ines-s26-ecran-voix-dix-largeurs.json`) ; la forme de la reference hors du choix (`M2`) ; la marque de la bonne oeuvre a la revelation (`M4`) ;
+  si trois images ne tiennent pas, elle le dit (nadia-prof rejuge alors, arbitrage A 3.4 regle 4). Elle ne tranche pas et n'ecrit aucun mot lu par l'enfant. Le dev de T3 applique, il ne dessine pas.
+- **Yanis-qa** : `lecture-testabilite.md` dans le dossier de sprint avant la premiere livraison ; dit lesquels des criteres ci-dessus un automate ne juge pas (`K1` a `K5`, l'indice de P4, la clause de `EXC-R15`, `X5`), et ce qu'il faut pour `EXC-R15` en l'etat. A6 (diff de `s54-nadia-c`) y figure.
+- **Relecteur-pedagogique** : `relecture-cloture.md` existe a la cloture (`ls` rend 1), avec au moins une ligne meme sans trouvaille.
+
+### E. Voies : un worktree par agent, noms effectifs, ordre de fusion
+
+**Noms effectifs (action A5).** Le planning nommait `s55-nadia-instance-a`, `s55-nadia-instance-b`, `s55-theo-avis`, `s55-camille-dec` seul. Les branches reellement ouvertes sont `s55-nadia-a`, `s55-nadia-b`, `s55-theo-faisabilite`, `s55-camille-dec`, `s55-camille-amendement`, `s55-sofia-planning`, `s55-sofia-amendement` ;
+les worktrees portent le meme nom precede de `recreo-`. Scratchpad : un par agent, dedie par instance de nadia-prof (A, B) ; choisi par l'agent qui ouvre, aucun chemin ecrit ici. Un port de jeu par instance si nadia-prof en lance un.
+
+**Regles** : un dev tient **un seul worktree a la fois**, ses postes se font l'un apres l'autre ; **une branche porte un commit par poste et se fusionne par commit**, dans l'ordre de la table ; une branche neuve est ouverte pour tout poste qui n'est pas dans la meme file.
+`R0` = sommet de `round-two` apres la fusion de `s55-sofia-amendement` ; `R+x` = `round-two` apres la fusion de `x`. **Chaque agent note `git log -1 --format=%h` dans son premier message** ; je verifie la lignee avant chaque fusion (`bash outils/verifier-lignee.sh`), meme si l'agent dit l'avoir faite.
+Les agents ne rebasent, ne poussent et ne fusionnent pas.
+
+**Table des worktrees a ouvrir** (longueur du plus long nom : 27 caracteres, soit 256 avec la formule de la section "Isolation et fusion" : sous 260).
+
+| Agent | Branche | Dossier (voisin du checkout) | Base | Taches | Ouverture |
+|---|---|---|---|---|---|
+| lea-dev | `s55-lea-art-res` | `recreo-s55-lea-art-res` | `R0` | `S54-ART-RES-R1` a `R3` ; `rapport-lea-dev.md` ouvert | des `R0` |
+| marc-dev | `s55-marc-branchement` | `recreo-s55-marc-branchement` | `R0` | `L1`, puis `L2`, puis `ASCII` si engagee (un commit chacun) ; `rapport-marc-dev.md` | des `R0` |
+| ines-design | `s55-ines-page` | `recreo-s55-ines-page` | `R0` | proposition de mise en page (G-INES) | des `R0` |
+| yanis-qa | `s55-yanis-lecture` | `recreo-s55-yanis-lecture` | `R0` | lecture de testabilite, A6 | des `R0` |
+| camille-po | `s55-camille-fiches` | `recreo-s55-camille-fiches` | `R0` | amendement d'engagement (`ASCII`, A7, A8) ; reecriture du critere d'`EXC-R15` apres QC4 ; fiches des quatre jeux a l'ouverture de leur branchement (C9) | des `R0` |
+| nadia-prof B | `s55-nadia-b` | `recreo-s55-nadia-b` (existant) | son sommet actuel, ancetre de `round-two` | ligne QC4 seule : elle amende son propre arbitrage, sans lire de code | des `R0` |
+| nadia-prof A | `s55-nadia-a` | `recreo-s55-nadia-a` (existant) | son sommet actuel, ancetre de `round-two` | ligne G-NADIA-A, A10, plafond de `G3` | des `R0` |
+| marc-dev | `s55-marc-exc` | `recreo-s55-marc-exc` | `R+` fusion de la ligne QC4 | `S54-EXC-CATEGORIE` | apres QC4 **et** apres la livraison de `L1` ; avant `L2` |
+| lea-dev | `s55-lea-branchement` | `recreo-s55-lea-branchement` | `R+s55-lea-art-res` | `EMC-CM1-03`, puis `-06`, puis `PONCT` (un commit chacun) | apres la fusion d'`ART-RES` |
+| lea-dev | `s55-lea-mecanique` | `recreo-s55-lea-mecanique` | `R+` livraison de `-06` | T2, puis T3 (un commit chacun) | T2 apres la livraison de `-06` ; T3 apres G-INES et G-NADIA-A |
+| nadia-prof A | `s55-nadia-a-art-res` | `recreo-s55-nadia-a-art-res` | `R+s55-lea-art-res` | rejeu d'`ART-RES` | apres sa fusion |
+| nadia-prof A | `s55-nadia-a-l1` | `recreo-s55-nadia-a-l1` | `R+` commit `L1` | audit de `ce1-accord-sujet-verbe` | apres sa fusion |
+| nadia-prof A | `s55-nadia-a-l2` | `recreo-s55-nadia-a-l2` | `R+` commit `L2` | audit de `ce1-classes-de-mots` | apres sa fusion |
+| nadia-prof B | `s55-nadia-b-exc` | `recreo-s55-nadia-b-exc` | `R+s55-marc-exc` | rejeu d'`EXC-R15` | apres sa fusion |
+| nadia-prof B | `s55-nadia-b-emc03` | `recreo-s55-nadia-b-emc03` | `R+` commit `-03` | audit de `cm1-emc-respect-differences` | apres sa fusion |
+| nadia-prof B | `s55-nadia-b-emc06` | `recreo-s55-nadia-b-emc06` | `R+` commit `-06` | audit de `cm1-emc-principes-republique` | apres sa fusion |
+| sofia-sm (dev) | `s55-sofia-outils` | `recreo-s55-sofia-outils` | `R+` dernier branchement | A7, A8 (deux commits) ; **tache separee, casquette annoncee** | apres les branchements, si engages |
+| yanis-qa | `s55-yanis-cloture` | `recreo-s55-yanis-cloture` | sommet de cloture | rapport qualite, quatre jobs nommes | cloture |
+| theo-archi | `s55-theo-cloture` | `recreo-s55-theo-cloture` | sommet de cloture | confirmation ArchUnit | cloture |
+| relecteur-pedagogique | `s55-rel-cloture` | `recreo-s55-rel-cloture` | sommet de cloture | relecture de fin, A9 | cloture |
+| camille-po | `s55-camille-cloture` | `recreo-s55-camille-cloture` | sommet de cloture | fiches, matrice au verdict seulement | cloture |
+| sofia-sm | `s55-sofia-cloture` | `recreo-s55-sofia-cloture` | sommet de cloture | `review.md`, `RAPPORT.md`, `RAPPORT-tokens.md`, `retro.md` | cloture |
+
+**Proprietaire de la mecanique : lea-dev.** Raison tiree de la charge, en lignes mesurees a s54 et dans l'avis : marc-dev porte environ 1 030 lignes (`L1` 493 et `L2` 523, mesures sur deux branchements de s54 ; `EXC-R15` au moins 6 ; `ASCII` 2) ;
+lea-dev environ 450 (`ART-RES` 6 a 9 ; deux EMC de l'ordre de 200 chacun, un seul mesure a s54 ; test de P3 10 a 20 ; `PONCT` 12). La mecanique ajoute 20 a 38 lignes de production et 680 a 1 400 de test : lea-dev finit a 1 150 a 1 890, marc-dev a 1 730 a 2 470 s'il la prenait. Ce sont des ordres de grandeur, pas des tarifs.
+Les fichiers : la mecanique ne partage **ni le catalogue, ni le registre, ni l'inventaire** avec aucun autre poste (avis 8) ; son ordre de fusion est libre. lea-dev est l'auteure du paquet d'`ART-RES` et du gabarit `manche.html` du bloc-adulte (`a4b22724`).
+**Cout nomme** : cinq postes sequentiels pour lea-dev. Si elle devient le chemin critique, je deplace `PONCT` vers marc-dev (qui n'a pas commence, entree au tableau d'obstacles le jour meme).
+Dans l'ordre de lea-dev, T2 passe apres les deux EMC : ce sont eux qui font attendre nadia-prof (instance B), et T2 se fusionne librement.
+
+**Ordre de fusion** (reacteur complet, `bash outils/mvn-jdk21.sh -B clean verify`, a chaque commit de fusion ; tout compte de tests est celui du reacteur sur l'arbre fusionne, jamais la somme de deux branches ; dernier total connu 2216 en `verify`, 2210 en phase `test`, a remesurer) :
+
+1. Decisions et portes : cet amendement, puis la ligne QC4, la ligne G-NADIA-A, le fichier d'ines-design, l'amendement d'engagement de camille-po.
+2. **Corrections de jeux servis, avant tout branchement** : `ART-RES` (A), puis `EXC-R15` (B). **Exception ecrite** : si QC4 n'est pas ecrite quand `L1` ou `-03` est livre, l'attente est une entree au tableau d'obstacles (route : nadia-prof B) et le branchement ne l'attend pas ; la correction attend la reponse, pas l'inverse.
+3. Branchements, dans l'ordre de livraison : `L1`, `L2` (marc-dev), `-03` puis `-06` (lea-dev).
+4. Mecanique : T2, puis T3. Libre.
+5. `PONCT`, `ASCII`.
+6. A7, A8.
+7. Cloture.
+
+**Fichiers communs et ancres** (lignes a `0a795589`, avis section 8). `catalogue.yaml` : marc-dev ajoute apres l'entree `paquet: ce1-passe-compose` (793-794) et corrige la ligne 395 (`EXC-R15`) ; lea-dev ajoute apres `paquet: cm1-emc-atteinte-autrui` (847-848) et corrige la ligne 852 (`ART-RES`).
+Inventaire de `TexteAccentueExposeParLePortEntrantTest` : marc-dev apres 423, 708, 1628 et pres de 870 ; lea-dev apres 360, 665, 1540 et pres de 896. **Zone de conflit nommee** : l'inventaire pres de la ligne 870, ou `EXC-R15` corrige une consigne et ou `L2` ajoute la sienne ; au conflit on garde les ajouts des deux cotes, jamais une assertion affaiblie.
+`REGISTRE-identifiants.md` : ecrit par nadia-prof seule, depuis le worktree de son instance (R8) ; les deux instances ajoutent, l'une apres l'autre. `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest` : **ne change pas** pour les quatre paquets (avis T1 : deja declares). Les lignes du planning qui le disent modifie par les deux couloirs sont perimees.
+
+### F. La phrase fausse du planning, corrigee
+
+Le planning ecrivait qu'un budget d'audit pour la mecanique *"tient sous 8,0 uniquement si O1 et O3 ne sont pas pris"*. **C'est faux, y compris au moment ou je l'ai ecrit** : avec le chiffre de theo-archi (2,0), 6,75 + 2,0 = 8,75 sur 8,0 sans O1 ni O3.
+Le tarif est celui de nadia-prof : **audit du paquet illustre 2,5** (lot d'arts plastiques CP 1,5 ; illustre 0,5 ; forme sans cousine 0,5). A s55, aucune instance ne le porte : A 3,75 + 2,5 = 6,25 et B 3,75 + 2,5 = 6,25, tous deux au-dessus du plafond dur de 5,0 ; somme 7,5 + 2,5 = 10,0 sur 8,0.
+**Il va a s56 au plus tot.** Charge connue de s56, que la `DEC` d'ouverture de s56 comptera : l'instance qui l'audite garde 4,0 - 0,5 - 0,5 - 2,5 = 0,5, donc aucun autre lot ; la forme n'a aucune cousine, c'est le terrain neuf de `PAR-13` ;
+un lot sans cousine (`-08`, `-09`) n'est jamais dans ce sprint. **Consequence de produit, nommee et non tranchee** : `PAR-2` met le francais CE1 chez A ; si A audite le paquet a s56, le francais CE1 n'avance pas a s56.
+
+### G. A9, A7, A8, `ASCII` et les stories de la retro de s54 : ligne ou report
+
+| Poste | Decision | Motif |
+|---|---|---|
+| A9, `relecture-cloture.md` | **Ligne** (relecteur-pedagogique) | aucun prix, une ligne meme sans trouvaille ; section D |
+| `S54-ASCII-APOSTROPHES-TESTS` | **Ligne, marc-dev, derniere de sa file.** Engagement a ecrire par camille-po (`DEC-0115` section 4 : "engageable par amendement") ; sans cet amendement a la fusion du dernier branchement de marc-dev, **report numero 1, compte** | forme et agent sont ecrits (avis T4) ; 2 fichiers, 1 ligne chacun ; le motif du non-engagement ("aucun proprietaire") est leve |
+| A7, `S55-OUTIL-JDK-JAVA-TOOL-OPTIONS` | **Ligne, sofia-sm (casquette developpeuse), dernier tour.** Meme regle d'engagement | prix et forme de theo-archi ecrits (1 ligne de production, 15 a 25 de test) ; defaut reproduit ; le motif du non-engagement ("prix manque") est leve |
+| A8, `S55-OUTIL-TOKENS-SANS-SPRINT` | **Ligne, sofia-sm (casquette developpeuse), dernier tour.** Meme regle | forme : refus sans `--sprint` (5 a 8 lignes plus un test de 15 a 30) ; `--sprint` explicite reste ma regle tant qu'A8 n'est pas fait |
+| `S54-OBS-SCI-CONSIGNE` | **Report numero 1**, propriete du report : camille-po | criteres non ecrits ("a ecrire quand une instance l'engage") ; sciences CM1 est a l'instance B, qui n'a aucun paquet de sciences a s55 |
+| A3 (motifs de refus de sciences) | **Pas de poste** | aucun paquet de sciences touche a s55 (avis 2, point 4) ; T2 s'applique au prochain poste qui les touche ; le motif P3 de `-06` est garde dans son poste |
+| `S54-OBS-ART-ALT`, `PCO-CE1-R1` | sans objet | retiree sans suite ; close |
+| A10, plafond de `G3` | **Ligne** (nadia-prof, instance A), sans prix | non traites par son arbitrage ; sans reponse a la cloture : report numero 1 |
+| Passe `PAR-4` | non due | arbitrage A 2.1 |
+| Amendements de README proposes par la retro de s54 | pas dans ce sprint | ils se decident a la retro de s55 ; la regle de l'action A5 (noms de worktree, branche, scratchpad) est appliquee dans cette section E |
+
+Reports de postes non engages dans `DEC-0115` section 4 : `ASCII`, A7, A8 et `OBS-SCI-CONSIGNE` sont des premiers reports **comptes** ; la ligne ci-dessus les place dans un couloir sans les engager.
+
+**Postes des sources hors table D** : `S55-BR-FRA-CE1-L3` non engagee (O1 ne tient pas, 4,75 sur 4,0) ; 11 paquets de `G1`/`G2` restants reportes (`PAR-2`, `PAR-8` : un lot de plus par instance sature A) ;
+`G7` a `G11` : plafonds ecrits, **seul `cm1-lire-et-restituer` (`FRA-CM1-01`) peut fermer**, apres une mesure de pli d'ines-design non faite puis un lot a 1,0 : aucun poste a s55, a placer par camille-po a la `DEC` d'ouverture de s56 ; `G3`, `G4` non engages ;
+`cp-emc-personnes-differentes` sous refus ; **paquet a reproductions (T5), T4 du corpus et choix des oeuvres distractrices : non engages, option ouverte** (Q-U1, Q-U4), ce n'est pas un report ; Q6 non engagee.
+
+### H. Questions restees a l'utilisatrice
+
+| Code | Question | Defaut propose, qui n'engage rien |
+|---|---|---|
+| Q-U1 | Le **paquet a reproductions** d'`ART-CP-10` s'ecrit-il a s55 ou a s56 ? Son audit coute 2,5 et va a s56 au plus tot dans les deux cas ; ecrit a s55, il serait pret pour cet audit ; il n'a aujourd'hui ni proprietaire, ni T4, ni choix des oeuvres distractrices | **s56** : rien n'est ecrit a s55, la `DEC` d'ouverture de s56 le prend. Si ta reponse est s55, il faut un proprietaire (lea-dev apres T3, ou sofia-sm) et l'usage 1 de Q-U4 |
+| Q-U3 | Confirmes-tu par tes mots, avec leur date, que tu finances le **dispositif seul** (T2, T3), **sans paquet ni audit**, a s55 ? La formule de `DEC-0115` est celle de l'agent qui relaie | **Pas de reponse** : `DEC-0115` reste `Proposee` (section 0.5) ; rien n'est bloque, la section 5 s'applique deja |
+| Q-U4 | Les **0,25 restants de A** : (1) choisir les oeuvres distractrices du paquet illustre (utile seulement si Q-U1 dit s55) ; (2) payer un second rejeu mot pour mot apres un refus ; (3) les laisser non alloues. (1) et (2) ne tiennent pas ensemble (0,5 sur 0,25) | **(3)** : non alloues. Un second refus a s55 est ecrit au tableau des obstacles avec son poste, et camille-po decide |
+
+U1 (ordre des matieres) et U2 (financer la mecanique) du planning sont reprises par `DEC-0115` ; U3 (CI) : la reponse relayee est "verte", non lue par moi (voir plus haut) ; U4 (trailers) : aucune reponse relayee, la regle de `DEC-0110` 17.4 (modele execute) continue, mon trailer porte `Sonnet 5.5`.
+
+### I. Risques nouveaux
+
+| Code | Risque | Ce qui le contient |
+|---|---|---|
+| R11 | `EXC-R15` attend QC4 : un texte faux reste servi tant qu'elle n'est pas ecrite | demande routee des `R0` ; exception d'ordre ecrite en section E ; entree au tableau d'obstacles |
+| R12 | lea-dev porte cinq postes sequentiels et la mecanique | `PONCT` deplacable vers marc-dev ; T2 apres les deux EMC ; T3 n'est pas sur le chemin des audits |
+| R13 | T3 attend deux portes (ines-design, nadia-prof A) ; non livree : premier report | portes demandees des `R0` ; T3 est le dernier poste de lea-dev avant `PONCT` |
+| R14 | Un second refus a s55 n'est finance par aucune marge | Q-U4 ; entree au tableau d'obstacles, decision de camille-po |
+| R15 | Le conflit de l'inventaire pres de la ligne 870 (`EXC-R15`, `L2`) est deduit, non rejoue | zone nommee en section E ; reacteur complet a chaque fusion |
+
+### J. Jobs de `ci.yml` lances pour cet amendement
+
+Voir le message de livraison de ce commit : `chemins` et `prefixes` sont lances avec une entree explicite ; `build` n'est lance que sur la classe nommee ci-dessus et sur le paquetage `com.recreo.archi` ; `outils` n'est pas lance (aucun outil modifie).
+
+### K. Decisions de planning prises par cet amendement (mon role)
+
+1. Proprietaire de la mecanique : lea-dev ; branche `s55-lea-mecanique` ; tache d'ines-design avant T3.
+2. Les corrections de nadia-prof "avant branchement" sont dans le commit du paquet, mot pour mot, avec leurs criteres mesures (sections C, D).
+3. Capacite 3,75 / 3,75, somme 7,5 ; phrase fausse corrigee (F).
+4. Une branche par file de poste, fusion par commit, ordre de fusion et zone de conflit ecrits (E).
+5. `ASCII`, A7, A8 : lignes dans un couloir, engagement a camille-po ; A9 : ligne.
+6. Aucune `ADR`, aucune `DEC` creee ou amendee. Aucun worktree ouvert, rien fusionne, rien pousse.
