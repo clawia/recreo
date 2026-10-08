@@ -77,9 +77,15 @@ class PaquetCpEmcExclusionTest {
     /** FER-3 : au moins deux taches, la moins servie portant au moins trois items. */
     private static final int MINIMUM_PAR_TACHE = 3;
 
-    /** Tache de classement : les deux seules categories attendues en bonne reponse. */
+    private static final String MOQUERIE_REPETEE = "une moquerie qui se répète";
+
+    private static final String MISE_A_L_ECART_REPETEE = "une mise à l'écart qui se répète";
+
+    private static final String ACCIDENT_ISOLE = "un accident isolé";
+
+    /** Tache de classement : les seules categories attendues en bonne reponse. */
     private static final Set<String> CLASSEMENTS_VALIDES = Set.of(
-            "une moquerie qui se répète", "un accident isolé");
+            MOQUERIE_REPETEE, MISE_A_L_ECART_REPETEE, ACCIDENT_ISOLE);
 
     /**
      * Le bouton au rabais que nadia-prof a fait retirer de la tache B a s31 ("a personne, ...").
@@ -167,14 +173,21 @@ class PaquetCpEmcExclusionTest {
         List<Question> classement = itemsDeClassement();
 
         long moquerie = classement.stream()
-                .filter(item -> item.bonneReponse().equals("une moquerie qui se répète")).count();
+                .filter(item -> item.bonneReponse().equals(MOQUERIE_REPETEE)).count();
+        long miseALEcart = classement.stream()
+                .filter(item -> item.bonneReponse().equals(MISE_A_L_ECART_REPETEE)).count();
         long accident = classement.stream()
-                .filter(item -> item.bonneReponse().equals("un accident isolé")).count();
+                .filter(item -> item.bonneReponse().equals(ACCIDENT_ISOLE)).count();
 
-        assertThat(moquerie)
-                .as("FAB-1a : la categorie \"moquerie qui se répète\" ne peut pas a elle seule"
-                        + " porter toute la tache")
+        assertThat(moquerie + miseALEcart)
+                .as("FAB-1a : le cote \"qui se répète\" (moquerie ou mise à l'écart, deux noms"
+                        + " justes du meme cote de la decision) ne peut pas a lui seul porter"
+                        + " toute la tache")
                 .isGreaterThanOrEqualTo(MINIMUM_PAR_TACHE);
+        assertThat(miseALEcart)
+                .as("FAB-1a : \"mise à l'écart qui se répète\" est servie (EXC-R15, garde-fou de"
+                        + " regression sur le nom exact)")
+                .isGreaterThanOrEqualTo(1);
         assertThat(accident)
                 .as("FAB-1a : la categorie \"accident isolé\" est reellement servie, pas seulement"
                         + " illustree une fois")
