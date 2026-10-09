@@ -248,3 +248,121 @@ Sur ce worktree, avec ce fichier, avant commit :
 - **`prefixes`** : `verifier-prefixes-test.sh` et `commit-atteignable-test.sh` sortent 0 ; le sujet de ce commit passe dans `verifier-prefixes.sh` apres sa creation, hors de ce fichier.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-09, 21:55 (theo-archi) - voie de O1, plafond d'`ines-design`, T4 de `CHOIX-OEUVRES-s56-art-cp-10.md`
+
+Annotation datee ; rien au-dessus n'est reecrit. Base : `bb4041c8` (`round-two`, fusionne dans cette branche par avance rapide). Sources lues :
+`ARBITRAGE-s56-forme-art-cp-10.md` (bloc du 2026-10-09 21:37, `Q1` et critere de la marque), `releves-s56/proposition-ines-forme-art-cp-10.md`
+(sections 1.4 et 2.2), `CHOIX-OEUVRES-s56-art-cp-10.md` (sections 2 a 4). **Methode** : deux simulations dans des worktrees jetables en `--detach`
+sur `bb4041c8`, supprimes apres mesure, chacune lancee par `bash outils/mvn-jdk21.sh -B clean verify -pl bootstrap -am -Dmaven.test.failure.ignore=true`
+(perimetre : reacteur de `bootstrap` avec `-am`, cinq modules, 2307 tests). Les fichiers simules sont recopies des documents ci-dessus, pas ecrits par moi,
+sauf l'en-tete `schema`, `id`, `descripteur` du paquet (modele de `cp-decrire-une-oeuvre.yaml` ; identifiant de ma main, `cp-rapprocher-des-oeuvres`).
+
+### A.1 `AV3` remplace : la voie de O1 est faisable moyennant un amendement d'`ADR-0026`, et elle est gardable
+
+Ma section 4 designait la boite de l'image ; `nadia-prof` retient O1. **Simulation S-O1** : la regle candidate de la section 1.4 d'`ines-design`
+recopiee telle quelle (`padding-bottom: 3.25rem` sur `.propositions-oeuvres:has(.proposition.deja-essayee)` ; `.propositions-oeuvres .proposition.deja-essayee::before`),
+`marque-echec-candidate.svg` copie en `static/images/marque-echec.svg`, et sa forme du plafond (A.2). **Resultat : 1 echec sur 2307.**
+
+| Garde-fou nomme par l'agent lanceur | Verdict mesure par S-O1 |
+|---|---|
+| `ADR-0027`, pseudo-elements (`content` autre que vide ou `none` refuse ; `clip-path` hors sujet pseudo-element) | vert : `content: ""` est la forme admise, celle des deux barres du signal faux |
+| `ADR-0046`, etats (`AucunEtatDePressableNEstAbandonneAuTiersTest` et sa famille) | vert : le `::before` ne declare rien que la feuille vendorisee ecrase sous `:hover`, `:active` ou `:focus-visible` |
+| `HabillageDesEcransTest` | vert : aucune classe neuve |
+| `ADR-0030` (`LHabillageNeRogneJamaisUnElementPressableTest`, `LHabillageResteImmobileTest`, `CabinetDeLaMachineTest`) | vert |
+| `RessourcesTiercesTest` (`url()` vers un fichier local) | vert : la cible existe |
+| **`ADR-0026` clause 3**, `LAnimationRetardeMaisNeDetermineRienTest.aucuneRegleMaisonNeRendUneActionInactionnable` | **rouge** : *"`.propositions-oeuvres .proposition.deja-essayee::before` : cette regle declare pointer-events: none sur [proposition, deja-essayee], des classes que porte un bouton d'action"* |
+
+**Ce rouge est un faux rouge, et la regle est la mienne.** La clause 3 retient toute regle dont le selecteur nomme une classe d'action, sans regarder
+son sujet ; `pointer-events: none` sur un `::before` ne rend pas le bouton inactionnable, il rend la pastille transparente au doigt. C'est l'echec par
+inclusion d'un perimetre enumere par classes. Retirer `pointer-events: none` n'est pas une issue : un pseudo-element appartient a la boite de frappe
+du bouton, la pastille etendrait de 40 px vers le bas la zone qui represse une oeuvre deja essayee. `nadia-prof` l'exige d'ailleurs (critere 3).
+
+**Issue : amender `ADR-0026` clause 3** comme `ADR-0027` clause 8 l'est deja dans le meme fichier de test : une regle dont le **sujet** (dernier compose)
+est un pseudo-element decoratif `::before` ou `::after` sort de la clause 3. Morsures exigees : `.proposition { pointer-events: none }` et
+`.proposition.deja-essayee { pointer-events: none }` restent rouges ; `.proposition.deja-essayee::before { pointer-events: none }` passe ; un selecteur
+qui contient `::before` sans finir par lui reste rouge. **Prix : environ 0,25 j, `theo-archi`**, l'amendement d'`ADR-0026` et le test dans un seul commit,
+**avant** le worktree de `S56-ART-CP-10-ECHEC`. Pas une `ArchRule` : l'objet est une feuille CSS. **Poste sans ligne au planning : demande d'amendement a
+`sofia-sm`** (action A5 de s55). Je ne l'ouvre pas dans ce commit, qui ne touche aucun code.
+
+**Garde de la marque O1** (remplace le paragraphe "Garde de la marque" de la section 4) : un test de feuille dans `adapter-web` pour les criteres 1 a 5,
+7 et 8 de `nadia-prof`, et une clause de rendu au banc du garde-fou 4 (`bootstrap/rendu`) pour le critere 6. Environ 0,25 j, dans le commit d'`ECHEC`.
+
+| # | Mutation, sur la feuille, le SVG ou le gabarit reels mutes en memoire | Critere qui doit rougir |
+|---|---|---|
+| E1 | regle `::before` retiree | 1 |
+| E2 | `filter: grayscale(1)` ajoute a `.propositions-oeuvres .proposition.deja-essayee img` | 2 |
+| E3 | `pointer-events: none` retire | 3 |
+| E4 | `top: calc(100% + 0.25rem)` devient `top: 0` | 3 |
+| E5 | remplissage du disque du SVG passe a `#c62828` (croix sur disque a 1:1) | 4 |
+| E6 | `deja-essayee` remplace par `[data-oeuvre-revelee=true]` dans le selecteur de la marque | 5 |
+| E7 | `max-height: 9rem` ajoute a `.propositions-oeuvres .proposition.deja-essayee img` | 7 |
+| E8 | a la revelation, le gabarit retire `deja-essayee` des boutons essayes | 6 |
+| E9 | `content: "x"` sur le `::before` | clause 2 d'`ADR-0027`, existante |
+
+**Deux precisions pour `camille-po`, qui recopie le critere mot pour mot.** Le critere 7 vise *"`.proposition` ou son `img`"* ; la regle de O1 declare
+`width`, `height` et `margin-left` sur `.proposition.deja-essayee::before`. Lu "dont le sujet est `.proposition` ou `img`", il laisse passer O1 ; lu
+"dont le selecteur contient `.proposition`", il refuse O1. La lecture est a `nadia-prof` ; je signale l'ambiguite. Le critere 4 lit le fond du meuble :
+le test le lit dans `:root`, pas en constante.
+
+### A.2 `AV1` amende : la forme d'`ines-design` remplace l'arithmetique de la case
+
+`max-width: min(100%, 11rem)` et `max-height: min(100%, 11rem)` sur `.propositions-oeuvres .proposition img` portent le plafond sur l'image elle-meme.
+S-O1 la contient : **elle passe toute la suite** (le seul rouge de S-O1 est celui de A.1). Avec `box-sizing: border-box`, la boite de l'image fait au
+plus 176 px bordure comprise, le dessin 172.
+
+**Le garde-fou de la section 2 change de forme, en plus simple :**
+
+1. inchange : `max-height` de `.image-item` fois 16 egale `PLAFOND_DE_RENDU_EN_PIXELS` (176) ;
+2. remplace : toute regle de la feuille maison dont le selecteur contient `propositions-oeuvres` et dont le sujet est `img` ne declare `max-width` et
+   `max-height` que sous la forme `min(100%, <x>rem)`, `x` fois 16 au plus 176, et la regle de base declare les deux ;
+3. remplace : aucune de ces regles ne declare `min-width`, `min-height`, ni `width` ou `height` autres que `auto` ;
+4. retire : l'arithmetique de la case (`calc`, `padding`, `aspect-ratio`, plus petite bordure). La case peut grandir sans que l'image grandisse, et
+   les pseudo-elements de la case (la marque de O1) sont hors perimetre, seul le sujet `img` etant lu.
+
+Morsures, qui remplacent P1 a P7 : P1' `min(100%, 11rem)` vers `min(100%, 14rem)` (clause 2) ; P2' vers `100%` (clause 2) ; P3' `max-height: 14rem` ajoute a
+la regle `.deja-essayee img` (clause 2) ; P4' `min-height: 14rem` ajoute (clause 3) ; P5' `.image-item` a `14rem` (clause 1).
+
+**Consequence sur le critere du backlog de `S55-ART-CP-10-PLAFOND`** : la mutation *"ligne 1780, `calc(11rem` vers `calc(14rem`"* doit y rendre au moins
+un echec ; avec la forme d'`ines-design` elle n'en rend legitimement aucun (la case grandit, l'image non). **A amender par `camille-po`** : la mutation
+de reference devient P1'. Prix inchange, environ 0,25 j ; les deux lignes de CSS d'`ines-design` entrent dans le commit du garde-fou, qui les juge.
+
+### A.3 T4 de `CHOIX-OEUVRES-s56-art-cp-10.md` : coherent avec `AV4` ; le commit du paquet demande deux retouches de plus et bute sur `ADR-0024`
+
+**Arithmetique : coherente.** Les onze identifiants des six items, moins les huit servis, donnent exactement les quatre reproductions nommees ;
+`8 + 4 = 12` ; `176 474 + 31 398 + 21 707 + 21 336 + 24 248 = 275 163` (tailles de ma section 5) ; six items a propositions-images, `0 -> 6` ; six items
+illustres, `81 -> 87`. `oeuvre-hippopotame` reste declaree par `cp-decrire-une-oeuvre` : rien ne dort.
+
+**Simulation S-PAQ** : les quatre JPEG et les quatre entrees de registre restaures depuis `1db6348f^`, le fichier de la section 3 recopie, les quatre
+constantes aux valeurs du document. **Resultat : 6 echecs sur 2307** (4 dans `adapter-content`, 2 dans `bootstrap`), ranges en trois causes :
+
+| # | Echecs | Cause | Ce que le commit du paquet doit faire |
+|---|---|---|---|
+| K1 | `ChaquePaquetExpliqueSesItemsAVariationTest`, 1 : *"ce paquet declare la graphie de ses items, donc tous"* | **bloquant** : la regle 1 d'`ADR-0024` fait entrer dans son controle tout paquet qui porte `explication`, et exige alors `graphie` sur chaque item et une explication sur les seuls items a variation. Le paquet porte une `explication` sur ses six items, sans graphie | voir ci-dessous |
+| K2 | `LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, 3 | le paquet n'est declare nulle part ; ses bonnes reponses ne sont pas numeriques. Les trois echecs sont attribues a cette seule cause par leur message ; a confirmer au `verify` de `lea-dev` | une entree de `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` avec son motif, comme `cp-decrire-une-oeuvre` (ligne 1352). Un ajout, pas un assouplissement |
+| K3 | `LIllustrationDeContenuResoutEtAucuneNeDortTest.unIdentifiantDOeuvreResoutDesQueLeFichierDeReproductionExiste` et `.uneOeuvreServieSeulementEnPropositionNEstPasDormante`, 2 | `oeuvre-autoportrait-leyster` n'est montree qu'en proposition. Ces deux morsures lisent le repertoire reel des reproductions mais une population de declarations privee des propositions reelles (surcharge a quatre arguments, ou une seule proposition mutee) | passer aux deux morsures les propositions reelles du depot. **Le garde-fou reel, `chaqueIllustrationDeclareeParUnPaquetServiResoutEtAucunFichierNeDort`, est vert** : ma section 6 (*"le fichier seul suffit a les faire tourner"*) tient pour lui, pas pour ces deux morsures, ecrites quand toute reproduction etait une illustration |
+
+**K1, deux issues, et le choix n'est pas a moi seul.** (a) `nadia-prof` retire les six `explication` du paquet ; la phrase de `M4` reste la seule parole
+de la revelation. (b) J'amende `ADR-0024` : le controle de la regle 1 n'entre que sur `graphie` ; un paquet sans graphie qui porte `explication` la porte
+sur tous ses items ou sur aucun. **Ce que (b) perd, nomme** : une faute de frappe `explicaton` sur tous les items d'un paquet sans graphie ne rougit plus,
+le chargeur ignorant une cle inconnue. **Prix de (b)** : environ 0,25 j, `theo-archi`, amendement et test dans un seul commit, avant le commit du paquet.
+**Je recommande (b)** : `ADR-0024` decision 1 a voulu `explication` sans nom de matiere, et c'est sa regle executable qui l'a liee au francais par
+inclusion. Le choix touche un mot lu par l'enfant : `nadia-prof` d'abord. **Poste sans ligne au planning.**
+
+### A.4 Ce qui change dans les sections 1 et 10
+
+`S56-ART-CP-10-ECHEC` : faisable **moyennant l'amendement d'`ADR-0026`** (A.1). `S55-ART-CP-10-PAQUET` : faisable en l'etat **si (a)**, **moyennant
+l'amendement d'`ADR-0024` si (b)** (A.3, K1) ; K2 et K3 sont des retouches du meme commit, a ajouter aux prerequis de ma section 6. `S55-ART-CP-10-PLAFOND` :
+faisable en l'etat, critere du backlog a amender (A.2). Section 10 : deux amendements d'`ADR` existants sont desormais appeles, aucun `ADR` neuf. Ordre
+propose a `sofia-sm` : les deux amendements avant le worktree du paquet, parce que K1 bloque son premier commit et que l'amendement d'`ADR-0026` doit
+preceder `ECHEC`. Aucun n'est ecrit dans ce commit ; `ADR-index.md` inchange.
+
+### A.5 Jobs lances pour cet amendement
+
+Sur ce worktree (`bb4041c8` plus cet amendement), avant commit, JDK 21.0.10 rapporte par Surefire :
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, `BUILD SUCCESS`, 2307 tests, 0 echec, 0 erreur (120, 18, 407, 1423, 333 et 6
+  d'integration). L'etape "Package du fat jar" n'est pas lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : sort 0.
+- **`prefixes`** : `verifier-prefixes-test.sh` et `commit-atteignable-test.sh` sortent 0 ; le sujet du commit passe dans `verifier-prefixes.sh` apres sa creation.
+- **`outils`** : non lance pour cet amendement ; aucun outil n'est touche depuis la mesure de la section 11.
