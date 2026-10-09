@@ -223,3 +223,40 @@ d'une reproduction pale et d'une sombre ; qu'elle ne se confonde ni avec l'annea
 **Prix** : compris dans les 0,25 de ce poste.
 
 **Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
+
+---
+
+## Bloc du 2026-10-09, 22:07 - lecture du critere 7 de la marque, reecrit - nadia-prof UNIQUEMENT
+
+Source : amendement de l'avis de `theo-archi` (`3f5d68c7`, A.1, *"Deux precisions pour `camille-po`"*). Il signale que mon critere 7
+(*"vise `.proposition` ou son `img`"*) se lit de deux facons, et que l'une refuse O1, que j'ai retenue au bloc de 21:37.
+
+**Ma lecture : le sujet.** Le critere 7 traduit `N6` : *"la case et l'image ne changent ni de taille ni de place quand la marque arrive"*. Il vise
+ce que l'enfant voit bouger, la case et l'image ; pas la marque elle-meme, qui a forcement une taille. La pastille de O1 declare `width`,
+`height` et `margin-left` sur son `::before`, hors du flux : elle ne deplace ni la case ni l'image. **La lecture "le selecteur contient
+`.proposition`" n'etait pas ce que j'ai voulu** ; elle refuserait toute marque posee par un pseudo-element, ce que ma propre decision de 21:37
+accepte. Le defaut est dans ma redaction. Je ne change pas la propriete, j'en ferme l'ambiguite.
+
+**Critere 7, reecrit. Il remplace le 7 du bloc de 21:37**, que je laisse lisible ; `camille-po` recopie celui-ci mot pour mot :
+
+> **7. (`N6`)** On appelle *sujet* d'un selecteur son dernier compose, pseudo-element compris. Pour toute regle de `recreo.css` dont le
+> selecteur contient `deja-essayee` et `propositions-oeuvres` :
+>
+> - **(a)** si son sujet porte la classe `proposition` ou le type `img`, **et ne porte aucun pseudo-element**, la regle ne declare ni `width`,
+>   ni `height`, ni `min-width`, ni `min-height`, ni `max-width`, ni `max-height`, ni `padding`, ni `margin`, ni `aspect-ratio`, ni une
+>   largeur de bordure differente de celle que declare la regle de meme sujet sans `deja-essayee` ;
+> - **(b)** si son sujet est un pseudo-element (`::before` ou `::after`) d'un compose qui porte la classe `proposition`, la regle declare
+>   `position: absolute` : la marque sort du flux et ne deplace ni la case ni l'image. Elle peut declarer sa propre taille et ses marges ;
+> - **(c)** une regle dont le sujet porte la classe `propositions-oeuvres` (la rangee, par exemple son `padding-bottom`) n'est pas visee : elle
+>   deplace ce qui est sous la rangee, pas les cases.
+
+**Ce que cela donne sur O1** : `.propositions-oeuvres .proposition.deja-essayee::before` tombe sous (b) et declare `position: absolute` :
+tenu. `.propositions-oeuvres:has(.proposition.deja-essayee)` tombe sous (c) : non vise. **Mutations qui doivent rougir** : `max-height: 9rem`
+ajoute a `.propositions-oeuvres .proposition.deja-essayee img` (mutation E7 de `theo-archi`, clause (a)) ; `position: absolute` retire du
+`::before` (clause (b)) ; `padding: 1rem` ajoute a `.propositions-oeuvres .proposition.deja-essayee` (clause (a)).
+
+Les criteres 1 a 6 et 8 ne changent pas. **Le faux rouge d'`ADR-0026` clause 3** (A.1) est a `theo-archi` : je n'en juge que ce qui touche
+l'enfant, et `pointer-events: none` sur la pastille est exige par mon critere 3, parce qu'une pastille qui represse l'oeuvre au doigt
+etendrait la case deja essayee de 40 px vers le bas.
+
+**Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
