@@ -113,3 +113,16 @@ Lectures :
 
 Elle n'ecrit aucune `DEC`, aucun `ADR`, aucun tarif, aucun plafond, aucun critere de story nouvelle (ceux des reserves sont au backlog, "Cloture de s55"). Elle n'engage aucun poste, n'affecte aucun agent, n'ouvre aucun
 worktree, ne prononce aucun Done et ne modifie ni code, ni catalogue, ni paquet, ni fiche. Elle n'est pas la cloture de s55 : `review.md`, `RAPPORT.md`, `retro.md`, `RAPPORT-tokens.md` sont a `sofia-sm`.
+
+
+## 9. Reponses de l'utilisatrice (2026-10-09)
+
+Annotation datee, ajoutee apres la proposition ; rien au-dessus n'est reecrit. Forme 2 de `DEC-0062` (`de l'utilisatrice`, mots cites, date). Les mots me sont parvenus dans la consigne de l'agent qui m'a lance, qui les atteste reponses directes de l'utilisatrice dans la conversation ; je ne les ai pas lus de sa main (meme reserve que `DEC-0115` A.22). Les codes D2 a D5 sont ceux de cette transmission ; la proposition porte `Q1` a `Q7` et `O1` a `O3`. Le rattachement est le mien et n'etend aucun mot.
+
+- **`Q5` (`Q6` de `DEC-0115`, financement du dispositif seul)** : "J'accepte que la mécanique d'ART-CP-10 soit financée dans s55." `DEC-0115` est `Acceptee` (A.22).
+- **D2, reponse a `Q1` (moment du paquet)** : "s56 prioritaire". **Le premier paquet a reproductions d'`ART-CP-10` passe en tete de la composition de s56.** Deux prealables, a placer avant lui : l'arbitrage de forme de `nadia-prof` a 0,25 (`RAPPORT.md`, tableau, points 10 et 11) et la dette `S55-ART-CP-10-PLAFOND` (`retro.md`, A5 : poste prealable de tout paquet a reproductions). Ces prealables viennent de ces fichiers, pas des mots de l'utilisatrice. Non dit par "s56 prioritaire" : le proprietaire du paquet, l'ecart de 0,25 ou le report d'une reserve d'EMC (seconde moitie de `Q1`), l'instance qui audite (`Q2`).
+- **D4, reponse a `Q2` (instance du francais)** : "ok". Le francais CE1 continue sur l'instance A. `Q3` (deux instances a partir de s57) n'est pas mentionnee par ce mot et reste ouverte.
+- **D5, section 1 (tableau, ligne `G1` + `G2`)** : "ok". Le decoupage actuel des 11 lots est garde (groupe X : 6, groupe Y : 5 ; `DEC-0114` 7.2). Aucune question numerotee ; le mot ne dit rien de l'ordre des lots a s56.
+- **D3, `O1` a `O3` (section 4)** : **sans reponse**, non tranchee ici. D2 et D4 ne designent aucune des trois options. `Q4`, `Q6` et `Q7` ne sont pas touchees non plus.
+
+Cette section n'est pas la `DEC` d'ouverture de s56 : elle n'engage aucun poste, ne tarife rien, n'affecte personne.

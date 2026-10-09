@@ -10,8 +10,8 @@
   pour `S54-EXC-CATEGORIE` ; `ART-CP-10` pour `S54-ART-RES-R1` a `R3` (la ligne reste `non couvert`) et pour la mecanique (section 5, la ligne ne
   ferme pas). Les autres postes sont transverses - pas de contenu pedagogique. **Aucune ligne de matrice ne change de statut par cette decision** :
   elle n'ouvre que des audits ; la matrice reste a 137 / 182.
-- **Statut** : **Proposee**. Un seul point n'a que la forme 3 de `DEC-0062` pour source : le financement de la mecanique d'`ART-CP-10` (section 5,
-  point 1), qui est un choix de l'utilisatrice et non une mesure. Tout le reste porte un motif de forme 1. Passage a `Acceptee` : section 0.5.
+- **Statut** : **Acceptee** le 2026-10-09 (A.22), sur les mots de l'utilisatrice en forme 2. Etait `Proposee` du 2026-10-08 au 2026-10-09 : le financement de la
+  mecanique d'`ART-CP-10` (section 5, point 1), un choix de l'utilisatrice et non une mesure, n'avait que la forme 3 de `DEC-0062` pour source. Tout le reste porte un motif de forme 1.
 - **Lien** : `DEC-0114` (sections 0.4, 6, 7 ; A.20, A.21 ; amendee par A.27, ce commit) ; `DEC-0113` (`Refusee`, section 9) ; `DEC-0112` section 6 ;
   `DEC-0111` A.14 ; `DEC-0110` 17.4 ; `DEC-0062` (regles 3.2 et 3.5) ; `ADR-0104` (`Accepte`) ;
   `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/planning.md` ;
@@ -75,7 +75,7 @@ de s55 reprend l'ordre sous son propre motif de forme 1"*.
 
 ### 0.5 Statut de cette decision
 
-`Proposee`, parce que la section 5 point 1 (financement de la mecanique) n'a que la forme 3 pour source : un financement est un choix, aucune mesure ne le motive.
+**`Acceptee` le 2026-10-09 (A.22).** Etait `Proposee`, parce que la section 5 point 1 (financement de la mecanique) n'a que la forme 3 pour source : un financement est un choix, aucune mesure ne le motive.
 Elle passe a `Acceptee` quand les mots de l'utilisatrice sur ce financement sont ecrits dans le depot en forme 2 avec leur date, ou quand elle l'a confirme sur le prix de la section 5.
 Le point ne bloque rien : la section 5 s'applique des maintenant (meme regime que `DEC-0114` pour l'ordre, s54). Si ses mots divergent, la section 5 est amendee et les sections 1 a 4 ne sont pas touchees.
 
@@ -281,7 +281,7 @@ et elle ne transforme pas `ok` en motif (section 0.4).
 3. Ordre des matieres repris sous un motif de forme 1 par rang (section 3) ; `G3` au dernier rang avec `G4` ; `DEC-0114` passe a `Acceptee` (A.27).
 4. Mecanique d'`ART-CP-10` : dispositif (T2, T3) finance a s55, story `S55-ART-CP-10-MECANIQUE` ; paquet et audit non finances, deux questions a l'utilisatrice ; T4 sous avis de `theo-archi`.
 5. Cinq postes non engages (`ASCII-APOSTROPHES`, A7, A8, `OBS-SCI-CONSIGNE`, et `ART-RES` sans instance) : premier report compte, motif ecrit.
-6. Statut de cette decision : `Proposee` jusqu'aux mots de l'utilisatrice sur le financement (section 0.5).
+6. Statut de cette decision : `Proposee` jusqu'aux mots de l'utilisatrice sur le financement (section 0.5) ; **`Acceptee` le 2026-10-09 (A.22)**.
 
 ---
 
@@ -572,3 +572,31 @@ Somme de A : lots `-14` 1,0 + `-12` 1,0 + `ART-RES` 0,25 + arbitrage 0,5 + plafo
 - **Statut inchange : `Proposee`** (section 0.5, A.18 point 4). Aucune ligne de matrice ne change.
 - Aucun changement de code ni de contenu : pas de routage a `sofia-sm` au sens de la regle des decisions qui impliquent du code. Les lignes de `planning.md` (27, 395, et les criteres que le relecteur range en `R2`) restent a `sofia-sm`.
 - Ne prononce aucun Done, ne fixe aucun tarif, ne cite aucun mot de l'utilisatrice.
+
+---
+
+## Amendement du 2026-10-09 (s55, `camille-po`, sixieme) : Q6 repondue, statut `Acceptee`
+
+Annotation datee. Rien au-dessus n'est reecrit, sauf le statut, en tete de fichier, en 0.5 et au point 6 de "Decisions prises" : chacun renvoie ici.
+
+### A.22 Les mots de l'utilisatrice sur le financement de la mecanique
+
+**Forme 2 de `DEC-0062` (section 3.1) : `de l'utilisatrice`, le 2026-10-09**, mot pour mot :
+
+> "J'accepte que la mécanique d'ART-CP-10 soit financée dans s55."
+
+**Reception.** Le texte m'est parvenu dans la consigne de l'agent qui m'a lance, qui l'atteste reponse directe de l'utilisatrice dans la conversation. Je ne l'ai pas lu de sa main et je ne peux pas le verifier depuis le depot : le statut ci-dessous repose sur cette attestation. Si l'utilisatrice la dement, il redevient `Proposee`.
+
+**Ce que la `DEC` fonde desormais.**
+
+1. Le financement de la mecanique d'`ART-CP-10` tel que la section 5 (decision 1) le decrit : T2 et T3, story `S55-ART-CP-10-MECANIQUE`, deja livrees (`dfd2f107`, `363793e3`). Ce financement etait une execution consignee (A.18 points 1 et 2) ; c'est maintenant une decision.
+2. A.18 : la lecture "execution consignee, non decision fondee" valait tant que ces mots manquaient ; elle ne vaut plus pour la section 5 decision 1. Le point 3 (mots divergents) ne joue pas, le point 4 (statut `Proposee`) est caduc.
+3. `Q6` (Q-U3 de la section 5.5) est close. La condition de la section 0.5 et du point 6 de "Decisions prises" est remplie.
+
+**Ce que ses mots ne disent pas, et que cet amendement n'ecrit donc pas.** Le paquet a reproductions (T5), T4, l'audit, un ecart a `PAR-9` ou a la borne de 8,0, un tarif, le proprietaire du paquet. Je lis "la mécanique" comme ce que la section 5 nomme ainsi (le dispositif, T2 et T3) et rien de plus : la section 5 reste telle qu'ecrite, paquet et audit non finances par cette `DEC`. `Q-U1` et `Q-U2` ne sont pas closes ici ; les reponses du 2026-10-09 a la proposition de s56 sont dans `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/proposition-s56.md` (section 9) et ne sont pas la `DEC` d'ouverture de s56.
+
+### A.23 Routage, limites, statut
+
+- **Statut : `Acceptee`** (2026-10-09). Sections 1 a 4 non touchees.
+- Aucun changement de code ni de contenu : le dispositif est livre et sa story existe, il n'y a rien a router a `sofia-sm`.
+- Aucune ligne de matrice ne change. Ne prononce aucun Done, ne fixe aucun tarif.
