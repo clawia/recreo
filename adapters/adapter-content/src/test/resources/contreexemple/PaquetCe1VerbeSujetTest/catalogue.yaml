@@ -1,0 +1,9 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1VerbeSujetTest. La consigne du jeu n'est pas
+# celle des cinq entrees existantes (J5 de s56).
+jeux:
+  - id: bandit-manchot-verbe-sujet-fautif
+    titre: "Le verbe et son sujet"
+    consigne: "Trouve le verbe, puis son sujet."
+    mecanique: bandit-manchot
+    paquet: ce1-verbe-sujet
+    nombreDeManches: 10

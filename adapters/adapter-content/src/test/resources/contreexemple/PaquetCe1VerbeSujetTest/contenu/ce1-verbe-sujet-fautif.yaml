@@ -1,0 +1,42 @@
+schema: 1
+id: ce1-verbe-sujet-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1VerbeSujetTest. Chaque item viole une seule
+# propriete du paquet ; les espaces insecables sont ecrites en   pour rester lisibles.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Identifier le verbe d'une phrase et son sujet (un nom, un groupe nominal court ou un pronom personnel)."
+lignesDeReferentiel: ["FRA-CE1-13"]
+items:
+  # J1 : seule la bonne reponse a une majuscule
+  - enonce: "« Il pose le livre sur la table. » Quel est le sujet du verbe « pose » ?"
+    bonneReponse: "Il"
+    distracteurs: ["le livre", "la table"]
+    indice: "Demande-toi : qui fait l'action de ce verbe ?"
+  # propriete 3 : "la maison" n'est pas dans la phrase
+  - enonce: "« Elle lit une histoire à Mia. » Quel est le sujet du verbe « lit » ?"
+    bonneReponse: "elle"
+    distracteurs: ["une histoire", "la maison"]
+    indice: "Demande-toi : qui fait l'action de ce verbe ?"
+  # propriete 8 : "la table" est avant le verbe
+  - enonce: "« Sur la table, elle pose le livre. » Quel est le sujet du verbe « pose » ?"
+    bonneReponse: "elle"
+    distracteurs: ["la table", "le livre"]
+    indice: "Demande-toi : qui fait l'action de ce verbe ?"
+  # propriete 9 : l'indice contient "des fraises"
+  - enonce: "« Ils mangent des fraises au parc. » Quel est le sujet du verbe « mangent » ?"
+    bonneReponse: "ils"
+    distracteurs: ["des fraises", "parc"]
+    indice: "Cherche qui mange des fraises."
+  # propriete 4 : deux prenoms masculins
+  - enonce: "« Tom lance le ballon à Karim. » Quel est le sujet du verbe « lance » ?"
+    bonneReponse: "Tom"
+    distracteurs: ["le ballon", "Karim"]
+    indice: "Demande-toi : qui fait l'action de ce verbe ?"
+  # propriete 4 : deux prenoms masculins de plus, un seul feminin dans le jeu (Mia)
+  - enonce: "« Hugo ouvre la porte à Sami. » Quel est le sujet du verbe « ouvre » ?"
+    bonneReponse: "Hugo"
+    distracteurs: ["la porte", "Sami"]
+    indice: "Demande-toi : qui fait l'action de ce verbe ?"

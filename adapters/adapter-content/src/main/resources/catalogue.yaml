@@ -804,6 +804,12 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-classes-de-mots
     nombreDeManches: 10
+  - id: bandit-manchot-verbe-sujet-ce1
+    titre: "Le verbe et son sujet"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-verbe-sujet
+    nombreDeManches: 10
   - id: bandit-manchot-synonymes-contraires-ce1
     titre: "Même sens ou sens contraire"
     consigne: "Lis bien, puis choisis le bon mot."
