@@ -21074,3 +21074,144 @@ Quatre clauses (mots de `theo-archi`, resumees) : (1) **ancre** : `max-height` d
 #### 10. Ce que cet amendement ne fait pas
 
 Il ne prononce aucun Done, ne choisit aucune oeuvre, n'ecrit aucun mot lu par l'enfant, ne tranche pas la reconciliation du 2, n'engage pas `A10`, n'ecrit pas le critere de la marque, et ne touche ni catalogue, ni paquet, ni fiche, ni code, ni matrice, ni planning de s56.
+
+### Amendement du 2026-10-09 (s56, `camille-po`, `DEC-0116` A.9 a A.14) : critere de la marque, plafond, deux amendements d'`ADR`, paquet, capacite reconciliee
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; les lignes remplacees sont nommees. Arbre : `round-two` a `c47582f8`. Sources lues : `ARBITRAGE-s56-forme-art-cp-10.md` (`nadia-prof`, blocs du 21:37 et du 22:07, instance B), `CHOIX-OEUVRES-s56-art-cp-10.md` (`nadia-prof`, dont le bloc `K1` du 22:07), `ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md` (bloc R.1 a R.3), `avis-faisabilite.md` de s56 (`theo-archi`, amendement du 21:55, `3f5d68c7`), `releves-s56/proposition-ines-forme-art-cp-10.md` (`ines-design`). Les mesures marquees "relu" sont les miennes, du 2026-10-09 ; celles de `theo-archi` sont les siennes, **non relancees** sauf mention.
+
+#### 1. `S56-ART-CP-10-ECHEC` : critere de la marque, voie O1
+
+**Voie retenue : O1** (`nadia-prof`, bloc du 21:37, `Q1`) : une **pastille portant une croix**, `::before` du bouton `.proposition.deja-essayee`, posee sous la case, hors du bouton et de l'image, avec `pointer-events: none`. La regle candidate est celle de la section 1.4 de la proposition d'`ines-design` (`padding-bottom` de la rangee, `::before`, fichier `marque-echec.svg`) : **`lea-dev` la verse, je ne la recopie pas** (aucun mot lu par l'enfant). `theo-archi` dit la voie faisable (amendement du 21:55, A.1) **moyennant l'amendement d'`ADR-0026` clause 3**, story `S56-ADR-0026` ci-dessous, qui precede cette story. **Repli** : O2 (cadre en tirets sur l'image, attenue a 50 %) si la voie de O1 est refusee ; les variantes de O2 sont entre crochets dans le critere.
+
+**Ce que ce critere remplace** : dans l'entree de cette story, "Le critere de la marque s'ajoute par amendement" et "worktree non ouvert". Le critere est ecrit ci-dessous ; **le worktree s'ouvre** quand `S56-ADR-0026` et `S55-ART-CP-10-PLAFOND` sont fusionnes et `S56-ART-CP-10-FORME` ecrit (`Q7` d'`ines-design` avant l'entree de catalogue).
+
+**Critere, recopie mot pour mot de `ARBITRAGE-s56-forme-art-cp-10.md`** (bloc du 2026-10-09 21:37, *"A recopier par `camille-po` mot pour mot. Ecrit pour O1 ; la variante O2, si la voie de O1 est refusee, est entre crochets."*). **Le critere 7 est celui du bloc du 22:07, qui remplace le 7 du bloc de 21:37.**
+
+1. **(`N1`, `N4`)** `recreo.css` porte une regle dont le selecteur contient `.propositions-oeuvres` et `.proposition.deja-essayee` et qui
+   declare une propriete autre que `opacity` [O2 : la regle `.propositions-oeuvres .proposition.deja-essayee img` declare une propriete de
+   bordure en plus de `opacity`]. Aujourd'hui : aucune. Apres : au moins une.
+2. **(`N1`)** Aucune regle dont le selecteur contient `deja-essayee` et se termine par `img` ne declare `filter`, `background`,
+   `background-image`, `mix-blend-mode`, `content` ni `mask` : rien n'est dessine sur l'image.
+3. **(`N1`)** [O1] Le pseudo-element de la marque declare `pointer-events: none` et une position `top` de la forme
+   `calc(100% + <longueur positive>)` : il commence sous le bord du bouton.
+4. **(`N2`)** Les couleurs de la marque (remplissages et traits du fichier SVG de la marque [O2 : la couleur de la bordure, composee avec
+   l'opacite de l'image sur le fond de case]) et celles de son entourage (fond du meuble, fond de page) donnent, par la formule de luminance
+   relative WCAG 2.x, au moins 3:1 entre le bord exterieur de la marque et son entourage, et au moins 3:1 entre le signe et son fond.
+   Calculable sur les valeurs hexadecimales, sans navigateur.
+5. **(`N3`)** Le selecteur de la marque contient `deja-essayee` et pas `data-oeuvre-revelee` ; la regle de `[data-oeuvre-revelee=true]` ne
+   reference pas le fichier de la marque.
+6. **(`N5`)** Sur une manche rendue a trois propositions, apres deux erreurs puis a la revelation : les deux boutons essayes portent la
+   classe `deja-essayee`, la bonne porte `data-oeuvre-revelee="true"` et pas `deja-essayee`. Se juge sur la page rendue (banc du garde-fou 4).
+
+
+7. **(`N6`)** *(bloc du 22:07, remplace le 7 du bloc de 21:37)*
+
+> **7. (`N6`)** On appelle *sujet* d'un selecteur son dernier compose, pseudo-element compris. Pour toute regle de `recreo.css` dont le
+> selecteur contient `deja-essayee` et `propositions-oeuvres` :
+>
+> - **(a)** si son sujet porte la classe `proposition` ou le type `img`, **et ne porte aucun pseudo-element**, la regle ne declare ni `width`,
+>   ni `height`, ni `min-width`, ni `min-height`, ni `max-width`, ni `max-height`, ni `padding`, ni `margin`, ni `aspect-ratio`, ni une
+>   largeur de bordure differente de celle que declare la regle de meme sujet sans `deja-essayee` ;
+> - **(b)** si son sujet est un pseudo-element (`::before` ou `::after`) d'un compose qui porte la classe `proposition`, la regle declare
+>   `position: absolute` : la marque sort du flux et ne deplace ni la case ni l'image. Elle peut declarer sa propre taille et ses marges ;
+> - **(c)** une regle dont le sujet porte la classe `propositions-oeuvres` (la rangee, par exemple son `padding-bottom`) n'est pas visee : elle
+>   deplace ce qui est sous la rangee, pas les cases.
+
+8. **(branche texte)** `grep -c 'line-through'` sur `recreo.css` rend 2.
+
+**Non decidable, a `nadia-prof` seule, en jouant**, recopie : que la croix se reconnaisse a 40 px et se lise "pas celle-la" ; que la marque se voie autour
+d'une reproduction pale et d'une sombre ; qu'elle ne se confonde ni avec l'anneau de focus ni avec celui de la revelation.
+
+**Valeurs d'aujourd'hui sur `c47582f8`** (aucune marque n'existe ; lecture de `recreo.css`, ligne 1810, seule regle `.deja-essayee` de la branche image, qui ne declare que `opacity: 0.5`) : critere 1 **rouge** (aucune regle de la marque autre que `opacity`) ; criteres 3, 4 et 5 **rouges par absence** (pas de `::before`, pas de fichier de marque : `ls adapters/adapter-web/src/main/resources/static/images` suivi de `grep -c marque` rend 0) ; critere 2 **vert** (la regle n'a que `opacity`), critere 7 **vert** (aucune regle a dimension), critere 8 **vert** (`grep -c 'line-through'` sur `recreo.css` rend 2) : **ce sont des bornes**, elles gardent l'existant et n'achetent pas la marque ; critere 6 : comportement existant des classes `deja-essayee` et `data-oeuvre-revelee`, **non mesure par moi** sur une page rendue. **Le critere decisif est 1, avec 3 a 5.**
+
+**Mutations a rougir** (`theo-archi`, amendement du 21:55, A.1 ; sur la feuille, le SVG ou le gabarit reels, mutes en memoire) :
+
+| # | Mutation | Critere qui doit rougir |
+|---|---|---|
+| E1 | regle `::before` retiree | 1 |
+| E2 | `filter: grayscale(1)` ajoute a `.propositions-oeuvres .proposition.deja-essayee img` | 2 |
+| E3 | `pointer-events: none` retire | 3 |
+| E4 | `top: calc(100% + 0.25rem)` devient `top: 0` | 3 |
+| E5 | remplissage du disque du SVG passe a `#c62828` (croix sur disque a 1:1) | 4 |
+| E6 | `deja-essayee` remplace par `[data-oeuvre-revelee=true]` dans le selecteur de la marque | 5 |
+| E7 | `max-height: 9rem` ajoute a `.propositions-oeuvres .proposition.deja-essayee img` | 7, clause (a) |
+| E8 | a la revelation, le gabarit retire `deja-essayee` des boutons essayes | 6 |
+| E9 | `content: "x"` sur le `::before` | clause 2 d'`ADR-0027`, existante |
+
+`nadia-prof` ajoute, pour le critere 7 reecrit : `position: absolute` retire du `::before` (clause (b)) et `padding: 1rem` ajoute a `.propositions-oeuvres .proposition.deja-essayee` (clause (a)) doivent rougir. **Le critere 4 lit le fond du meuble dans `:root`**, pas en constante (`theo-archi`). **Garde** : un test de feuille dans `adapter-web` pour les criteres 1 a 5, 7 et 8, une clause de rendu au banc du garde-fou 4 (`bootstrap/rendu`) pour le critere 6 ; environ 0,25 j, dans le commit d'`ECHEC`, hors `PAR`. **Aucune mutation n'est mesuree aujourd'hui, la marque n'existant pas** ; `lea-dev` les mesure, `yanis-qa` les rejoue.
+
+**Q3 assouplie, a l'audit** (`nadia-prof`, bloc du 21:37) : bloquant, a 744 x 551, la reference, les trois cases, les croix (echec) ou l'anneau (revelation) et la phrase de `M4` au-dessus du pli ; **non bloquant**, l'indice coupe par le pli (reserve datee, dont la levee est une story de retrait du decor du meuble, que personne n'a ecrite). Hors de cette story.
+
+#### 2. `S55-ART-CP-10-PLAFOND` : la mutation du calc ne vaut plus
+
+**Remplace** l'annotation du 2026-10-09 "S55-ART-CP-10-PLAFOND : forme du garde-fou (`AV1`), sept morsures, ordre" (quatre clauses, `P1` a `P7`) et le critere de mutation "ligne 1780, `calc(11rem` devient `calc(14rem`" de l'entree d'origine. `theo-archi` (amendement du 21:55, A.2) : la forme d'`ines-design` porte le plafond **sur l'image** (`max-width: min(100%, 11rem)` et `max-height: min(100%, 11rem)` sur `.propositions-oeuvres .proposition img`) ; la case peut grandir sans que l'image grandisse, **la mutation du calc, ligne 1780, ne rend donc legitimement plus aucun echec**. Elle n'est plus un critere. Prix inchange (environ 0,25 j), hors `PAR` ; les deux lignes de CSS entrent dans le commit du garde-fou, qui les juge.
+
+Quatre clauses du garde-fou (mots de `theo-archi`) : (1) **inchangee** : `max-height` de `.image-item` fois 16 egale `PLAFOND_DE_RENDU_EN_PIXELS` (176) ; (2) toute regle de la feuille maison dont le selecteur contient `propositions-oeuvres` et dont le sujet est `img` ne declare `max-width` et `max-height` que sous la forme `min(100%, <x>rem)`, `x` fois 16 au plus 176, et la regle de base declare les deux ; (3) aucune de ces regles ne declare `min-width`, `min-height`, ni `width` ou `height` autres que `auto` ; (4) **retiree** : l'arithmetique de la case ; les pseudo-elements de la case (la marque de O1) sont hors perimetre, seul le sujet `img` etant lu.
+
+**Mutation de reference et morsures, `P1'` a `P5'`**, remplacent `P1` a `P7` :
+
+| # | Mutation (feuille reelle mutee en memoire) | Clause qui doit rougir |
+|---|---|---|
+| P1' | `min(100%, 11rem)` devient `min(100%, 14rem)` | 2 |
+| P2' | `min(100%, 11rem)` devient `100%` | 2 |
+| P3' | `max-height: 14rem` ajoute a la regle `.deja-essayee img` | 2 |
+| P4' | `min-height: 14rem` ajoute | 3 |
+| P5' | `.image-item { max-height: 11rem }` devient `14rem` | 1 |
+
+**Valeurs d'aujourd'hui sur `c47582f8`** : la forme `min(100%, 11rem)` n'existe pas dans la feuille (`grep -c 'min(100%, 11rem)'` sur `recreo.css` rend 0, doit rendre 2 apres le commit) ; `P1'` a `P4'` ne s'appliquent donc pas a l'arbre d'aujourd'hui, ils s'appliquent a l'arbre apres les deux lignes d'`ines-design`. **`P5'` est l'ancienne `P7`** : `theo-archi` mesure 0 echec sur 2307 (avis de s56, 2.1, non relance par moi). **Ce qui tombe** : mes mutations `P1` a `P6` de l'amendement precedent (0 echec sur 2307 chacune, sur `a772c822`) sont des faits sur la feuille d'avant la forme d'`ines-design` ; elles ne valent plus comme critere. Chacune des cinq doit rendre au moins un echec dans la clause nommee, le rapport du dev nommant le test de chaque morsure ; 0 echec sur l'arbre non mute. Perimetre de mesure : `bash outils/mvn-jdk21.sh -B clean verify -pl bootstrap -am -Dmaven.test.failure.ignore=true`, reacteur de `bootstrap` avec `-am`. **Ordre** : `PLAFOND` avant `ECHEC` (`theo-archi` et `nadia-prof`) ; le critere 7 de la marque garde que la marque ne change pas la taille de la case.
+
+#### 3. Deux stories neuves, hors `PAR`, pour `theo-archi`
+
+**Besoin** commun : transverse - pas de contenu pedagogique. Deux amendements d'`ADR` que le paquet et la marque appellent (`avis-faisabilite.md`, A.1, A.3, A.4). **Sans ligne au planning de s56** (`theo-archi` : *"poste sans ligne au planning"*) : cette annotation en est la story, `sofia-sm` les place. Prix de `theo-archi` : environ 0,25 j chacune, amendement et test **dans un seul commit** ; 0,0 pour `nadia-prof`. **Instance** : aucune. **Agent** : `theo-archi`. **Ordre** : **les deux avant les worktrees du paquet et de la marque** (ordre propose par `theo-archi` a `sofia-sm`, A.4) ; au plus tard, `S56-ADR-0026` avant le worktree d'`ECHEC` et `S56-ADR-0024` avant le commit du paquet. Ni l'une ni l'autre n'est une `ArchRule` : l'objet est une feuille CSS, un `ADR` et une liste de test. `ADR-index.md` suit.
+
+##### `S56-ADR-0026` - amender `ADR-0026` clause 3 : un pseudo-element decoratif sort de la clause (deja engagee)
+
+- **Source** : `theo-archi`, A.1 : le rouge de `LAnimationRetardeMaisNeDetermineRienTest.aucuneRegleMaisonNeRendUneActionInactionnable` sur la regle de O1 est un faux rouge ; la clause 3 retient toute regle dont le selecteur nomme une classe d'action, sans regarder son sujet. Retirer `pointer-events: none` n'est pas une issue : la pastille etendrait de 40 px la zone qui represse une oeuvre deja essayee, et `nadia-prof` l'exige (critere 3 de la marque). **Deja engagee** (elle precede `ECHEC`) ; cette entree est sa story.
+- **Regle** : une regle dont le **sujet** (dernier compose) est un pseudo-element decoratif `::before` ou `::after` sort de la clause 3, comme `ADR-0027` clause 8 l'est deja dans le meme fichier de test.
+- **Criteres, mesures sur l'existant.** Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test -Dtest=LAnimationRetardeMaisNeDetermineRienTest -Dsurefire.failIfNoSpecifiedTests=false` ; perimetre : `adapter-web` avec `-am`, classe nommee ; arbre `c47582f8` ; fichier restaure apres la mesure.
+  1. La regle `.propositions-oeuvres .proposition.deja-essayee::before { content: ""; position: absolute; pointer-events: none; }` ajoutee a la fin de `recreo.css` : **relu, 1 echec sur 27** (`aucuneRegleMaisonNeRendUneActionInactionnable`, message *"cette regle declare pointer-events: none sur [proposition, deja-essayee]"*). **Doit rendre 0 echec.**
+  2. Morsures (`theo-archi`) : `.proposition { pointer-events: none }` et `.proposition.deja-essayee { pointer-events: none }` **restent rouges** (la clause 3 les refuse deja : bornes) ; `.proposition.deja-essayee::before { pointer-events: none }` **passe** (rouge aujourd'hui : c'est le critere 1) ; un selecteur qui contient `::before` sans finir par lui **reste rouge**.
+  3. L'`ADR` porte l'amendement date : `grep -ci amendement` sur `ADR-0026-*.md` rend **6 aujourd'hui** (relu) et doit rendre davantage ; `ADR-index.md` mis a jour.
+  4. Aucune assertion retiree ni affaiblie ailleurs ; `clean verify` de la racine vert.
+
+##### `S56-ADR-0024` - amender `ADR-0024` : un paquet sans graphie porte `explication` sur tous ses items ou sur aucun (`K1`)
+
+- **Source** : `theo-archi`, A.3 `K1` ; **`nadia-prof` a choisi (b)** (bloc `K1` du 2026-10-09 22:07, `CHOIX-OEUVRES-s56-art-cp-10.md`) : **les six `explication` du paquet restent** ; `theo-archi` amende `ADR-0024` pour que le controle de sa regle 1 n'entre que sur `graphie`. Sans elles, un enfant qui s'est trompe deux fois apprend qu'il s'est trompe, pas ce qu'il fallait regarder. **Ce que (b) perd, et qui le garde** : une faute de frappe sur la cle (`explicaton`) portee par tous les items d'un paquet sans graphie ne rougit plus ; sur ce paquet, `nadia-prof` est la garde (a l'audit, elle lit les six explications a l'ecran ; *"une explication absente est un motif de refus de ce paquet"*). Pour les paquets suivants, le trou est a `theo-archi`.
+- **Regle** : un paquet sans graphie qui porte `explication` la porte sur tous ses items ou sur aucun ; le controle de la regle 1 n'entre que sur `graphie`.
+- **Criteres, mesures sur l'existant.** Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=ChaquePaquetExpliqueSesItemsAVariationTest -Dsurefire.failIfNoSpecifiedTests=false` ; perimetre : `adapter-content` avec `-am`, classe nommee ; arbre `c47582f8`.
+  1. Un fichier `contenu/cp-sim-adr0024.yaml` (en-tete de `cp-decrire-une-oeuvre.yaml`, id change ; les six items du bloc de la section 3 de `CHOIX-OEUVRES-s56-art-cp-10.md` : six `explication`, aucune `graphie`) : **relu, 1 echec sur 5** (`chaquePaquetDeProductionExpliqueSesItemsAVariation`). Fichier retire apres la mesure. **Doit rendre 0 echec.**
+  2. Morsure : un paquet sans graphie dont `explication` est sur une partie des items seulement **rougit** ; un paquet avec `graphie` garde l'ancienne regle 1 (les tests existants, verts).
+  3. L'`ADR` porte l'amendement date : `grep -ci amendement` sur `ADR-0024-*.md` rend **1 aujourd'hui** (relu) et doit rendre davantage ; `ADR-index.md` mis a jour.
+  4. Aucune assertion retiree ni affaiblie ; `clean verify` de la racine vert.
+  5. **Ordre** : l'amendement est fusionne avant le commit du paquet (`nadia-prof` : *"l'amendement avant le commit du paquet"*).
+
+#### 4. `S55-ART-CP-10-PAQUET` : `B4` tranchee, valeurs de T4, `K2` et `K3`
+
+**Remplace** le tableau des quatre constantes de l'amendement precedent (colonne "Apres"), le constat sur `B4` et les valeurs *"11 et 250 915"*, et le critere de nombre d'items. **`B4` est tranchee par `nadia-prof`** (bloc R.2 de l'arbitrage B et `CHOIX-OEUVRES-s56-art-cp-10.md`) : le vivier est celui d'`AV2` (28 reproductions de provenance prouvee, restaurables depuis `1db6348f^`), pas 11 ; le Vermeer reste ; le paquet a **six items**, `nombreDeManches: 5` (`ADR-0023`). **Les six items sont ceux du bloc de la section 3 du document des oeuvres ; `lea-dev` les recopie mot pour mot** (enonce et texte alternatif identiques sur les six, `B2`, `B8` ; espace insecable U+00A0 devant le point d'interrogation, `TYP-1` ; indices de huit mots au plus). L'en-tete de commentaire, l'ordre des cles et le nom du fichier sont a `lea-dev`.
+
+| Constante | Fichier de test, ligne | Aujourd'hui (relu) | Apres |
+|---|---|---|---|
+| `ITEMS_A_PROPOSITIONS_EN_IMAGE` | `UnItemAPropositionsEnImageTientSesTroisInvariantsTest`, 69 | 0 | **6** |
+| `ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION` | `LIllustrationDeContenuResoutEtAucuneNeDortTest`, 189 | 81 | **87** |
+| `REPRODUCTIONS_SERVIES` | `ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest`, 174 | 8 | **12** |
+| `POIDS_TOTAL_MAXIMUM` | meme fichier, 176 | 176_474 | **275_163** (176 474 + 31 398 + 21 707 + 21 336 + 24 248) |
+
+**T4 : quatre reproductions**, restaurees a l'octet depuis `1db6348f^` avec leur entree de registre : `oeuvre-champ-de-ble` (31 398 octets), `oeuvre-averse-sur-le-pont` (21 707), `oeuvre-jeune-femme-aiguiere` (21 336), `oeuvre-autoportrait-leyster` (24 248 ; registre : National Gallery of Art, `1949.6.1`, `CC0-1.0`). Mesure d'aujourd'hui : `ls adapters/adapter-web/src/main/resources/static/oeuvres` suivi de `grep -c jpg` rend 8 ; `grep -c "identifiant:" squad/corpus/oeuvres-domaine-public.yaml` rend 8 ; apres : 12 et 12. **Arithmetique de `nadia-prof`, recoupee par `theo-archi` (A.3) ; le cliquet exact juge.** `11` et `250 915` d'`ADR-0104` ne valent plus (trois restaurations supposees, quatre faites). Toute autre constante qu'un garde-fou fait rougir dans le commit du paquet est nommee dans `rapport-lea-dev.md`, valeur avant et apres.
+
+**Criteres sur le fichier du paquet `P`** (nom choisi par `lea-dev` ; aucun fichier aujourd'hui, 0 partout) : `grep -c '^ *- enonce:' P` rend 6 ; `grep -c 'explication:' P` rend 6 ; `grep -c 'graphie' P` rend 0 ; les quatre `grep -c` de `B1` (critere 2 de l'entree) rendent 6 ; indices de huit mots au plus : `sed -n 's/^ *indice: "\(.*\)"$/\1/p' P` suivi de `awk 'NF>8{c++} END{print c+0}'` rend 0.
+
+**`K2` et `K3`, deux retouches du meme commit que le paquet** (`theo-archi`, A.3, simulation S-PAQ : 6 echecs sur 2307, dont `K1`, ferme par `S56-ADR-0024`) :
+- **`K2`** : une entree de `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` pour le paquet, avec son motif, comme `cp-decrire-une-oeuvre` (`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`, declaration ligne 329 ; ses bonnes reponses ne sont pas numeriques). **Un ajout, pas un assouplissement.** Mesure d'aujourd'hui, par moi : le fichier simule (six items du document, id fictif) sans l'entree, `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest -Dsurefire.failIfNoSpecifiedTests=false` : **3 echecs sur 28** (`unPaquetDeclareAtortHorsDuDomaineFaitEchouerLeGardeFou`, `uneDeclarationQuiSurvitASonPaquetFaitEchouerLeGardeFou`, `aucunPaquetNEstEcarteEnSilenceDuCalculDeRang`), fichier retire apres. **Doit rendre 0.**
+- **`K3`** : `LIllustrationDeContenuResoutEtAucuneNeDortTest.unIdentifiantDOeuvreResoutDesQueLeFichierDeReproductionExiste` et `.uneOeuvreServieSeulementEnPropositionNEstPasDormante` lisent le repertoire reel mais une population de declarations privee des propositions reelles ; `oeuvre-autoportrait-leyster` n'etant montree qu'en proposition, elles rougissent (**2 echecs, mesure de `theo-archi`, non relancee par moi** : elle demande les quatre JPEG restaures). Le commit leur passe les propositions reelles du depot. Le garde-fou reel, `chaqueIllustrationDeclareeParUnPaquetServiResoutEtAucunFichierNeDort`, est vert.
+
+**Ordre, complete** : `S56-ADR-0024` fusionne avant le commit du paquet ; `S55-ART-CP-10-PLAFOND`, `S56-ADR-0026` puis `S56-ART-CP-10-ECHEC` avant l'entree de catalogue (`theo-archi`, A.4). L'entree de catalogue porte `nombreDeManches: 5`, le titre *"Des œuvres faites de la même façon"* et la consigne *"Regarde l'œuvre, puis trouve celle qui est faite de la même façon."* (`B9`, textes de `nadia-prof`).
+
+**A l'audit** (`S56-AUD-ART-CP-10`, ajoute) : `nadia-prof` pousse chaque item jusqu'a la revelation et lit les six explications a l'ecran ; **une explication absente est un motif de refus** (bloc `K1`). Le bloquant et le non-bloquant de `Q3` sont ceux du 1.
+
+#### 5. Capacite : reconciliee, 8,25, constat
+
+**Remplace** la ligne "Etat : en attente" du 2 de l'amendement precedent. `nadia-prof`, instance B (arbitrage B, bloc R.3) a reconcilie avec l'instance A : **A 3,5, B 4,75, somme 8,25.** Son 3,75 pour A (et la somme de 8,5 qui en decoulait) prenait les deux rejeux d'`ACV-CE1` au prix separe (0,75) ; l'instance A les a tarifes ensemble a 0,5. **Constat : les deux instances ecrivent maintenant le meme total.** Les 0,25 entre 8,25 et 8,5 **ne sont alloues a aucun poste** ; **aucun poste ne s'y engage sans amendement** (`DEC-0116` 2.4). Si `S55-ACV-CE1-R2` n'est pas livree, `ACV-CE1-R1` est rejouee seule a 0,25 : la consommation de A descend, son engagement reste 3,5. Les 0,25 non alloues ne portent pas `A10` (0,5, non engagee) : la lecture de l'instance A qui le faisait tenir a s56 (3,5 + 0,5) ne vaut que par amendement.
+
+#### 6. Ce que cet amendement ne fait pas
+
+Il ne prononce aucun Done, ne juge ni la marque ni la voie, n'ecrit aucun mot lu par l'enfant (le fichier du paquet est a `nadia-prof`), ne mesure aucune mutation de la marque (elle n'existe pas) et ne touche ni catalogue, ni paquet, ni fiche, ni code, ni matrice, ni planning.

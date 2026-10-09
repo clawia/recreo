@@ -320,3 +320,35 @@ Ecrits au backlog, "Sprint 56", annotation du 2026-10-09 : conditions `J1` a `J5
 - **Statut : `Proposee`, inchange.** `Q4` reste sans reponse et n'est pas reprise (0.5). Aucun mot de l'utilisatrice n'est cite pour `Q4`, `Q3`, `Q6`.
 - Routage : `sofia-sm` (planning : B a 4,75, A sous reserve de la reconciliation, `S56-ART-CP-10-OEUVRES` sur B) ; `nadia-prof`, instance B (document des oeuvres, critere de la marque, reconciliation) ; `marc-dev` (`S56-BR-FRA-CE1-13`, ses conditions sont ecrites) ; `yanis-qa` (quelles proprietes un test de paquet porte ; test des verbes du premier groupe) ; `relecteur-pedagogique` (A.7).
 - Aucun code ni contenu change par cet amendement ; la matrice reste a 141 / 182. Ne fixe aucun tarif, ne prononce aucun Done, n'ecrit pas le critere de la marque.
+
+---
+
+## Amendement du 2026-10-09 (s56, `camille-po`, quatrieme) : critere de la marque, plafond, deux amendements d'`ADR`, paquet, capacite reconciliee
+
+Annotation datee. Rien au-dessus n'est reecrit ; les lignes remplacees sont nommees. Arbre : `round-two` a `c47582f8`. Sources lues : `ARBITRAGE-s56-forme-art-cp-10.md`, `CHOIX-OEUVRES-s56-art-cp-10.md`, `ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md` (bloc R.1 a R.3) de `nadia-prof` ; l'amendement du 21:55 de l'avis de `theo-archi` ; la proposition d'`ines-design`. Le detail est au backlog, "Sprint 56", annotation du meme jour.
+
+### A.9 Critere de la marque (O1) : ecrit
+
+`nadia-prof` a juge `Q1` (bloc du 21:37) : **O1 est retenue**, une pastille portant une croix, `::before` de `.proposition.deja-essayee`, sous la case ; O2 (cadre en tirets sur l'image) est recevable en repli. `theo-archi` dit la voie faisable **moyennant l'amendement d'`ADR-0026` clause 3** (A.10). Le critere de `S56-ART-CP-10-ECHEC` est ecrit au backlog : huit proprietes recopiees mot pour mot, dont le critere 7 du bloc du 22:07, qui remplace celui du 21:37 ; neuf mutations `E1` a `E9` de `theo-archi`. **Le worktree d'`ECHEC` s'ouvre** quand `S56-ADR-0026` et `S55-ART-CP-10-PLAFOND` sont fusionnes et `S56-ART-CP-10-FORME` ecrit. **Remplace** : 3.1 et A.6, la phrase "le critere de la marque n'est pas ecrit" ; l'ordre de 3.1 ("`PLAFOND` ; `ECHEC`") se lit avec `S56-ADR-0026` entre les deux. Valeurs d'aujourd'hui : criteres 1, 3, 4, 5 rouges (aucune marque), 2, 7, 8 verts et nommes comme des bornes, 6 non mesure par moi.
+
+### A.10 Deux stories neuves, hors `PAR`, pour `theo-archi`
+
+**`S56-ADR-0026`** (amender `ADR-0026` clause 3 : une regle dont le sujet est un pseudo-element decoratif sort de la clause) et **`S56-ADR-0024`** (`K1` : `nadia-prof` a choisi (b), les six `explication` du paquet restent ; `ADR-0024` est amende pour qu'un paquet sans graphie la porte sur tous ses items ou sur aucun). Chacune : environ 0,25 j de `theo-archi`, amendement et test dans un seul commit, 0,0 pour `nadia-prof`, **avant les worktrees du paquet et de la marque**. Criteres mesures sur l'existant le 2026-10-09 : `LAnimationRetardeMaisNeDetermineRienTest` avec la regle de la pastille, **1 echec sur 27** ; `ChaquePaquetExpliqueSesItemsAVariationTest` avec le paquet des six items, **1 echec sur 5** ; les deux doivent rendre 0. **Ces deux postes n'avaient pas de ligne au planning** (`theo-archi` le dit) : cet amendement leur donne leur story, au sens de la regle des decisions qui impliquent du code ; `sofia-sm` les place. **Ajoute** aux postes de la section 7 : deux lignes, hors `PAR`, `theo-archi`, 0,0.
+
+### A.11 `S55-ART-CP-10-PLAFOND` : la mutation du calc ne vaut plus
+
+La forme d'`ines-design` porte le plafond sur l'image (`min(100%, 11rem)`) : la mutation de la ligne 1780, que le backlog posait en critere, ne rend legitimement plus aucun echec. **Remplacee** par `P1'` a `P5'` de `theo-archi` (cinq morsures, quatre clauses). Mes mesures de l'amendement precedent (`P1` a `P6`, 0 echec sur 2307 chacune) portaient sur la feuille d'avant et ne valent plus comme critere. **Remplace** : 0.3, ligne "Plafond de 176 px" (la mutation du calc comme critere) ; le critere 2 de la section 7 du backlog pour cette story.
+
+### A.12 Paquet : `B4` tranchee, `K2`, `K3`
+
+`B4` est tranchee par `nadia-prof` : vivier de 28 (`AV2`), le Vermeer reste, **six items, quatre reproductions restaurees**, T4 de **275 163 octets** ; compteurs 0 vers 6 (`ITEMS_A_PROPOSITIONS_EN_IMAGE`), 81 vers 87 (`ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION`), 8 vers 12 (`REPRODUCTIONS_SERVIES`), 176 474 vers 275 163 (`POIDS_TOTAL_MAXIMUM`). **Remplace** 3.2 (*"l'avis de `theo-archi` de s54 ecrit 11 et 250 915"*, valeurs a remesurer). **`K2`** (une entree de `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE`, ajout et non assouplissement : 3 echecs sur 28 sans elle, mesure du jour) et **`K3`** (deux morsures de `LIllustrationDeContenuResoutEtAucuneNeDortTest` a nourrir des propositions reelles, 2 echecs mesures par `theo-archi`) entrent dans le commit du paquet. **A l'audit**, `nadia-prof` lit les six explications a l'ecran ; une explication absente est un motif de refus.
+
+### A.13 Capacite : reconciliee a 8,25
+
+**Constat, remplace A.5 sur son seul etat "en attente".** `nadia-prof`, instance B (bloc R.3), a reconcilie avec l'instance A : **A 3,5, B 4,75, somme 8,25**. Les deux instances ecrivent maintenant le meme total ; le 3,75 de A et la somme de 8,5 qui en decoulait prenaient les deux rejeux d'`ACV-CE1` au prix separe. **0,25 n'est alloue a aucun poste** (8,25 sur les 8,5 que l'ecart permet) et **aucun poste ne s'y engage sans amendement** (2.4). A.5 reste ecrit, sa ligne n'est plus ouverte. Remplace aussi, dans A.6, la lecture de l'instance A qui faisait tenir `A10` a s56 : elle ne vaut que par un amendement que je n'ecris pas.
+
+### A.14 Statut, routage, limites
+
+- **Statut : `Proposee`, inchange.** `Q4` reste sans reponse (0.5). Aucun mot de l'utilisatrice nouveau.
+- Routage : `sofia-sm` (planning : les deux stories d'`ADR`, l'ordre, B a 4,75 et A a 3,5, 0,25 sans poste) ; `theo-archi` (`S56-ADR-0026`, `S56-ADR-0024`, garde de la marque, garde du plafond) ; `lea-dev` (paquet, plafond, marque, `K2`, `K3`) ; `yanis-qa` (traduction des criteres de la marque en test, rejeu des mutations) ; `nadia-prof` (audit, six explications).
+- Aucun code ni contenu change par cet amendement ; la matrice reste a 141 / 182. Ne prononce aucun Done, ne fixe aucun tarif.
