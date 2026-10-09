@@ -129,3 +129,97 @@ la voie de `theo-archi` est compris dans ce prix.
 d'`ADR-0104` exige un nom accessible non vide, pas les mots de `M5`.
 
 **Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
+
+---
+
+## Bloc du 2026-10-09, 21:37 - jugement de `Q1` (marque de l'echec) et de `Q3` (les 40 px) - nadia-prof UNIQUEMENT
+
+Sources lues sur `a772c822` : la proposition d'`ines-design` (`releves-s56/proposition-ines-forme-art-cp-10.md`, `c4a79010`) et ses quatre
+captures a 744 x 551 (`echec-base`, `echec-A`, `echec-B`, `revelation-A`), que j'ai regardees ; l'avis de `theo-archi` (`avis-faisabilite.md`
+de s56, `026b2e17`, sections 2 et 4). **Jugement sur un vehicule statique et des captures, pas sur le jar** : degrade par nature, aucun paquet
+n'etant servi. Le jugement a l'ecran reste a l'audit.
+
+### Q1 - O1 retenue ; O2 recevable en repli seulement
+
+| Condition | O1, pastille portant une croix sous la case | O2, cadre en tirets sur l'image, attenue a 50 % |
+|---|---|---|
+| `N1` hors de l'image | oui : sous la case, hors du bouton et de l'image | oui : bord de l'image |
+| `N2` au moins 3:1, independante de l'image | oui : disque sur meuble 16,11:1, croix sur disque 5,23:1, anneau sur fond de page 14,09:1 | **3,04:1**, au plancher ; l'attenuation de l'image attenue le cadre. Sur `echec-B`, je le vois, faiblement, autour d'une estampe pale |
+| `N3` distincte par la forme de l'anneau de revelation | oui : un signe, pas un anneau | oui : discontinu contre plein |
+| `N4` attenuation en plus, pas seule | oui | oui |
+| `N5` jusqu'a la fin de la manche | oui : `revelation-A` montre les deux croix, et l'anneau sur la bonne seule | oui |
+| `N6` rien ne bouge | oui : les cases ne bougent pas, la rangee grandit sous elles | oui |
+
+**O1 est retenue.** Elle remplit `N1` a `N6` avec de la marge, et elle dit quelque chose a un enfant de CP : c'est la croix du cahier, la
+meme que celle du signal faux qu'il vient de voir sous le meuble. Des tirets ne disent rien a cet age.
+
+**`X2` et `X6`, que `ines-design` me demande de lire** : la croix n'est ni un numero, ni une lettre, ni une legende. `X2` refuse une etiquette
+qui permet de repondre en lisant ; la croix arrive apres le geste et ne marque que ce qui a deja ete essaye, ce que `M3` demande. `X6` ne
+vaut qu'avant le geste. **Ni l'un ni l'autre n'est touche.**
+
+**La voie n'est pas a moi.** L'avis de `theo-archi` designe la boite de l'image ; il a ete ecrit avant O1, qui passe par un `::before` sur le
+bouton, positionne sous la case. Il lui reste a dire si cette voie tient (`ADR-0046`, garde-fou de pseudo-elements d'`ADR-0027`,
+`HabillageDesEcransTest`) : `ines-design` n'en a lance aucun. **Si la voie de O1 est refusee, O2 est recevable** : elle remplit `N1` a `N6`
+a la lettre. Je la jugerai a l'ecran, sur une reproduction pale ; si je ne la vois pas, ce sera un refus sur `N2`, pas une barre neuve. O3
+n'est pas demandee.
+
+### Q3 - les 40 px : je corrige ma reponse de ce matin
+
+**Le fait mesure.** Ce matin j'ai ecrit, pour l'echec a 744 x 551 : l'indice entier au-dessus du pli. Les mesures d'`ines-design` disent
+que **le rendu livre ne le tient deja pas, sans aucune marque** : bas du contenu de l'echec a 588 avec le meuble, 37 px sous le pli ; sur
+`echec-B`, le cadre de l'indice commence a la ligne du pli. O1 porte ce bas a 628 (77 px), la revelation de 622 a 662. Retirer le meuble
+entier rendrait 64 px, pas 77 ; la forme de retrait de `theo-archi` n'en masque qu'une partie, et c'est une story que personne n'a ecrite.
+
+**Les deux conditions sont a moi, et je les ordonne.** `N1` a `N6` sont un motif de refus depuis le 2026-10-08 : sans marque, l'enfant presse
+deux fois la meme oeuvre sans le savoir. Un indice sous le pli, sur l'ecran d'ordinateur le plus bas du perimetre, est un defaut moindre :
+l'indice n'est pas perdu, il est un defilement plus bas, et la croix, les cases et la reference restent visibles (pastille a 437-477).
+**Donc, a la place de ma reponse de ce matin** (que je laisse lisible plus haut) :
+
+- **Bloquant a l'audit** : a 744 x 551, la reference, les trois cases, les croix (echec) ou l'anneau (revelation), et la phrase de `M4` sont
+  au-dessus du pli. Mesure : tenu avec O1 et le meuble.
+- **Non bloquant** : l'indice coupe par le pli a 744 x 551. S'il l'est sur le jeu reel, c'est une **reserve datee**, ouverte au verdict,
+  dont la levee est une story de retrait du decor du meuble. Les indices du paquet font huit mots au plus (`CHOIX-OEUVRES-s56-art-cp-10.md`)
+  pour tenir sur une ligne a 744 ; `Q7` le mesure sur le gabarit livre.
+- **`Q5`, en consequence** : le meuble est conserve pour le branchement, zero code. Sa forme de retrait (`theo-archi`, section 4) est la voie
+  de la reserve si elle s'ouvre. Ma phrase de ce matin (*"sinon il n'est pas branchable sur ce motif"*) est remplacee par ce point.
+
+C'est un assouplissement de ma condition de ce matin, et je le dis comme tel : je l'avais ecrite sans connaitre la mesure du rendu livre
+ni le prix de la marque. Personne ne l'avait encore atteinte ni manquee.
+
+### Critere de la marque, en proprietes decidables, pour `S56-ART-CP-10-ECHEC`
+
+A recopier par `camille-po` mot pour mot. Ecrit pour O1 ; la variante O2, si la voie de O1 est refusee, est entre crochets.
+
+1. **(`N1`, `N4`)** `recreo.css` porte une regle dont le selecteur contient `.propositions-oeuvres` et `.proposition.deja-essayee` et qui
+   declare une propriete autre que `opacity` [O2 : la regle `.propositions-oeuvres .proposition.deja-essayee img` declare une propriete de
+   bordure en plus de `opacity`]. Aujourd'hui : aucune. Apres : au moins une.
+2. **(`N1`)** Aucune regle dont le selecteur contient `deja-essayee` et se termine par `img` ne declare `filter`, `background`,
+   `background-image`, `mix-blend-mode`, `content` ni `mask` : rien n'est dessine sur l'image.
+3. **(`N1`)** [O1] Le pseudo-element de la marque declare `pointer-events: none` et une position `top` de la forme
+   `calc(100% + <longueur positive>)` : il commence sous le bord du bouton.
+4. **(`N2`)** Les couleurs de la marque (remplissages et traits du fichier SVG de la marque [O2 : la couleur de la bordure, composee avec
+   l'opacite de l'image sur le fond de case]) et celles de son entourage (fond du meuble, fond de page) donnent, par la formule de luminance
+   relative WCAG 2.x, au moins 3:1 entre le bord exterieur de la marque et son entourage, et au moins 3:1 entre le signe et son fond.
+   Calculable sur les valeurs hexadecimales, sans navigateur.
+5. **(`N3`)** Le selecteur de la marque contient `deja-essayee` et pas `data-oeuvre-revelee` ; la regle de `[data-oeuvre-revelee=true]` ne
+   reference pas le fichier de la marque.
+6. **(`N5`)** Sur une manche rendue a trois propositions, apres deux erreurs puis a la revelation : les deux boutons essayes portent la
+   classe `deja-essayee`, la bonne porte `data-oeuvre-revelee="true"` et pas `deja-essayee`. Se juge sur la page rendue (banc du garde-fou 4).
+7. **(`N6`)** Aucune regle dont le selecteur contient `deja-essayee` et vise `.proposition` ou son `img` ne declare `width`, `height`,
+   `min-width`, `min-height`, `max-width`, `max-height`, `padding`, `margin`, `aspect-ratio`, ni une largeur de bordure differente de celle
+   de la meme regle sans `deja-essayee`. La hauteur gagnee par la rangee (`padding-bottom` de `.propositions-oeuvres`) n'est pas visee : elle
+   deplace ce qui est sous la rangee, pas les cases.
+8. **(branche texte)** `grep -c 'line-through'` sur `recreo.css` rend 2.
+
+**Non decidable, a moi seule, en jouant** : que la croix se reconnaisse a 40 px et se lise "pas celle-la" ; que la marque se voie autour
+d'une reproduction pale et d'une sombre ; qu'elle ne se confonde ni avec l'anneau de focus ni avec celui de la revelation.
+
+### Ce qui n'est pas juge ici
+
+- La correction du plafond proposee par `ines-design` (section 2, l'ecart de 2 px) : affaire de `theo-archi` et de `lea-dev`. Les deux
+  formes me conviennent ; je n'exige pas que la reference soit plus grande que les propositions.
+- Le pli de `LIS-2` (section 3) : hors de ce poste, a `camille-po` pour le perimetre de s57.
+
+**Prix** : compris dans les 0,25 de ce poste.
+
+**Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
