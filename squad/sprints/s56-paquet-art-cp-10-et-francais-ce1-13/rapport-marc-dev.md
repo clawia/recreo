@@ -90,3 +90,69 @@ Recherche, apres chaque correction d'indice ou d'enonce, du mot de la bonne repo
 - La justesse des 24 sujets et des 24 verbes, l'homonymie de `porte` et de `souffle`, que les distracteurs de `J2` ne fassent pas l'action, la lisibilite des indices pour un enfant de CE1 : lecture de `nadia-prof`.
 - L'ecran d'une reponse juste ou fausse, l'affichage de l'indice, les 23 autres manches, l'affichage a une largeur d'enfant (tablette), le retour a la ligne devant `?` : non joues.
 - La CI elle-meme sur ce commit : non lancee, non poussee.
+
+
+---
+
+# s56, `S55-ACV-CE1-R2` (`FRA-CE1-14`, `ce1-accord-sujet-verbe`)
+
+Branche `s56-marc-acv-ce1-r2`, issue de `round-two` au commit `e5bd681b` (fusion de `-13`). Commit : **`955951f2`**. Rien n'est pousse, rebase ni fusionne. Sources : fiche `FICHE-bandit-manchot-accord-sujet-verbe-ce1.md` sections 4 et 5, backlog (`S55-ACV-CE1-R2`, "Cloture de s55" et amendement de s56), arbitrage A de s56 section 4.
+
+## 7. Livre
+
+| Poste | Application |
+|---|---|
+| Items changes (trois, `PAR-10`) | **3** `« chanter » : ils ___ une chanson.` (`chantent` ; `chante`, `chantons`), **11** `« voler » : les oiseaux ___ vers le sud.` (`volent` ; `vole`, `voles`), **15** `« marcher » : elles ___ vers l'école.` (`marchent` ; `marche`, `marchons`). Le sujet de chaque item est inchange (`ils`, `les oiseaux`, `elles`) |
+| Indices | items 3 et 15 : *"combien en voit-on ?"* remplace par l'indice de relecture deja servi a l'item 9, mot pour mot (*"Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"*). Item 11 : indice inchange (ses deux distracteurs ont l'autre nombre, la regle de `K1` le permet) |
+| Test | `PaquetCe1AccordSujetVerbeTest` : 3 tests de la reserve, 3 contre-exemples sur un jeu fautif neuf, 1 test renomme (`k1DouzeItemsPortentLIndiceDeSubstitutionEtSeptCeluiDeRelecture`, comptes 12 et 7 au lieu de 12 et 5 : les items 3 et 15 rejoignent la relecture) |
+
+Fichiers du commit : `ce1-accord-sujet-verbe.yaml`, `PaquetCe1AccordSujetVerbeTest.java`, `contreexemple/PaquetCe1AccordSujetVerbeTest/contenu/ce1-accord-sujet-verbe-pluriels-fautif.yaml`. Ni catalogue, ni inventaire, ni fiche, ni matrice, ni `REGISTRE`.
+
+**Choix des trois items (a revoir par `nadia-prof`)** : les sept pluriels qui s'entendent sont 3 (*viennent*), 5 (*sont*), 8 (*ont*), 11 (*vont*), 14 (*font*), 15 (*ont*), 17 (*disent*). J'ai pris 15 (*ont* existe deja a l'item 8), 3 et 11. Apres : *sont*, *ont*, *font*, *disent* restent comme pluriels irreguliers (4 sur 12), *viennent* et *vont* n'existent plus qu'au singulier (*vient* item 19, *va* items 6 et 10). Les items 3 et 15 sont ceux dont l'indice devait etre repris ; le troisieme (11) est le seul dont le verbe change sans toucher un indice a reprendre. Verbes neutres du point de vue des roles par genre (`TRV-CE1-6`) : *chanter*, *voler*, *marcher*, aucune activite de courses, de cuisine ou de danse.
+
+## 8. La propriete de `nadia-prof` (avant : `e5bd681b` ; apres : `955951f2`)
+
+Critere, mot pour mot : *"au moins 8 des 12 items a sujet pluriel ont pour bonne reponse une forme du premier groupe en -ent, verbes de `PRS-CE1-1` seulement, distracteurs de meme famille (autre nombre, autre personne), et `ACV-CE1-1`, `TRV-CE1-2` restant tenues."*
+
+| Point | Avant | Apres | Porteur |
+|---|---|---|---|
+| Pluriels du premier groupe en -ent, sur 12 items a sujet pluriel | **5** (items 2, 9, 20, 21, 23) | **8** (items 2, 3, 9, 11, 15, 20, 21, 23) | `acvR2HuitItemsAuMoinsASujetPluriel` ; la liste des verbes n'est pas une liste ecrite mais la regle de `PRS-CE1-1` : un verbe en *-er*, ni *aller*, ni en *-ger*, *-cer*, *-eler*, *-eter*, *-yer*, ni *acheter* ni *lever*, lu dans l'enonce et jamais deduit du suffixe de la reponse |
+| Verbes de `PRS-CE1-1` seulement | 13 verbes, tous admis | 16 verbes (les 13 restent, *venir* et *aller* au singulier ; *chanter*, *voler*, *marcher* s'y ajoutent), tous admis | `acvR2LesVerbesSontCeuxDePrsCe11` |
+| Distracteurs de meme famille | non teste | verts (portent le radical de la bonne reponse, autre forme) | `acvR2LesDistracteursDesPlurielsMuetsSontDeLaMemeFamille` |
+| `ACV-CE1-1` (17 nominaux, 12 pluriels, 12 singuliers) | tenue | tenue | test existant |
+| `TRV-CE1-2` (bonne reponse strictement la plus longue) | 6 sur 24 | 4 sur 24 | test existant, plafond 50 % ; le chiffre est de mon script de poste |
+| `grep -c 'combien en voit-on'` | 3 | 1 | grep |
+| `grep -c 'lequel va avec lui'` | 4 | 6 | grep |
+
+Le comptage par suffixe (`bonneReponse` finissant par `ent`) vaut 7 avant et 10 apres (il compte *viennent* et *disent*) : il sur-estime, il ne sert pas de critere, comme le backlog l'ecrit.
+
+## 9. Mesures
+
+Mesure sur `e5bd681b` plus mon seul lot. Ce ne sont pas des totaux apres fusion.
+
+- **Delta** : **+6 tests** (`@Test` 17 -> 23 dans `PaquetCe1AccordSujetVerbeTest` ; 23 verts a l'execution). Reacteur apres, pour memoire : `adapter-content` 1451, `bootstrap` 333, `adapter-web` 408, `domain` 120, `application` 18, integration 6 ; les chiffres de base ne sont pas ceux que j'ai mesures.
+- **Version** : JDK **21.0.10**, rapportee par `outils/mvn-jdk21.sh`.
+- **Jobs de la CI lances avant le commit** : `build` (`bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl`, `BUILD SUCCESS`, code 0 ; etape "Verifier la presence du build Maven" non lancee) ; `prefixes` (`verifier-prefixes-test.sh` 0, `commit-atteignable-test.sh` 0, `verifier-prefixes.sh` sur le sujet du commit 0) ; `chemins` (`verifier-chemins-test.sh` 0, `verifier-chemins.sh` sur `git ls-files` 0) ; `outils` (les trois motifs de la CI, 10 juges, 0 code non nul, meme boucle que pour `-13`, sans l'echo ni la garde "motif vide").
+- **Mutations sur le materiau reel** (un fichier modifie, test de classe seul avec `-pl adapters/adapter-content -am`, puis `git checkout`, arbre propre ensuite) :
+  - M1, item 15 rendu a `« avoir »` / `ont` : 1 echec, `acvR2HuitItemsAuMoinsASujetPluriel` (7 sur 12).
+  - M2, item 11 distracteur `voles` -> `viens` : 1 echec, `acvR2LesDistracteursDesPlurielsMuetsSontDeLaMemeFamille`.
+  - M3, item 3 `« manger »` / `mangent` : 2 echecs, `acvR2LesVerbesSontCeuxDePrsCe11` et `acvR2HuitItemsAuMoinsASujetPluriel` (7 sur 12 : *manger* est en *-ger*, il ne compte pas).
+- **Jeu joue** : le jar du commit, lance sur un port libre (JDK 21, arret par PID, port ferme ensuite), 70 parties ouvertes par `curl` sur `bandit-manchot-accord-sujet-verbe-ce1` : les enonces des trois items neufs (`chanter`, `voler`, `marcher`) sont servis, accents corrects, aucun ne montre sa reponse. Reponses, indices apres une erreur, ordre des propositions : non joues.
+
+## 10. `TRV-CE1-5` avec la barre de s54, sur chaque item change
+
+Relu, par moi : items 3 et 15 portent l'indice de relecture, qui ne donne aucun critere de nombre ni de personne ; il contient `va`, qui n'est une proposition d'aucun de ces deux items (`chante`, `chantons`, `chantent` ; `marche`, `marchons`, `marchent`) ; le test `trv5AucunIndiceNeContientUnePropositionDeSonItem` est vert. Item 11 : l'indice donne le nombre (*combien*) et ses deux distracteurs (`vole`, `voles`) sont au singulier, la bonne reponse au pluriel : `k1LeNombreSeulNEstUnCritereQueSurLesItemsOuIlDepartage` est vert ; j'ai ecarte `volons` comme distracteur de cet item, qui aurait le meme nombre que `volent`. Le jugement en jouant reste a `nadia-prof`.
+
+## 11. Ecarts
+
+- **E6.** Pour les items 3 et 15 le backlog ecrit "a reprendre au meme passage, sans prix propre" ; je l'ai fait en changeant le verbe **et** l'indice, parce que le verbe change de toute facon. Si `nadia-prof` preferait garder *viennent* et *ont* et ne changer que l'indice, le compte resterait a 5 sur 12 : il faudrait alors trois autres items.
+- **E7.** Le critere dit *"verbes de `PRS-CE1-1` seulement"* sans liste. Le test porte la regle (six verbes nommes, premier groupe sans modification orthographique), pas une liste ecrite : un verbe neuf du premier groupe passe sans editer le test. `yanis-qa` n'a pas ete consulte (aucun agent n'est lance par moi) ; la liste qu'il devait ecrire avec moi est remplacee par cette regle.
+
+## 12. Question a `nadia-prof`, ecart `E1` de `-13` (rien n'est touche)
+
+Dans `ce1-verbe-sujet.yaml`, `regarde` est la bonne reponse de l'item 24 (`« Mia regarde la grande lune. »`, verbe de la phrase) et ouvre l'indice `Le sujet est avant le verbe : regarde les mots devant.` des items 4, 8, 12, 16, 20. Le mot sert deux fois, une fois comme reponse, cinq fois comme verbe d'instruction. **Question** : l'enfant qui a lu `regarde` dans cinq indices est-il aide a reconnaitre `regarde` comme verbe a l'item 24, ou le mot lui est-il deja donne ? Le garde-fou de la propriete 9 (un indice contre les propositions de son propre item) ne le voit pas. Aucun fichier n'est modifie pour cette question.
+
+## 13. Non verifie
+
+- La justesse des formes de `chanter`, `voler`, `marcher` et la plausibilite des distracteurs comme erreurs d'enfant, la part reelle de la marque muette en jouant (fiche, 1,9 manche sur dix avant), la lecture de l'indice de relecture sur `ils` et `elles` : `nadia-prof`.
+- La CI sur ce commit : non lancee, non poussee.
