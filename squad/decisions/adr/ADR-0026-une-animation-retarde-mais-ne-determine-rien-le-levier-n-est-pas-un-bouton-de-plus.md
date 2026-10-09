@@ -523,3 +523,44 @@ soit 293, zero ignore**. L'etat de depart, `round-two` a `28a419f`, en comptait 
 **Constat de rendu.** Les mesures de cet ADR sont toutes issues de `outils/mesurer-rendu.sh` a 360 px
 et a 375 px, sur une maquette jetable **non commitee** dont le contenu est decrit dans la section
 "mesure" et dont le seul delta avec la production est `flex-direction: row` et `flex: 1 1 0`.
+
+
+## Amendement du 2026-10-09 (s56, `theo-archi`) - la clause 3 ne regarde plus un pseudo-element decoratif
+
+**Ce que la clause 3 disait faux.** Elle refusait `display: none`, `visibility: hidden`, `pointer-events: none` et `opacity: 0` sur
+**toute regle qui nomme** une classe d'action, sans regarder son sujet. Une regle dont le sujet est `::before` ou `::after` ne rend pas
+le bouton inactionnable : elle agit sur une boite generee. C'est un perimetre enumere par classes qui echoue par inclusion. Revele
+par la marque d'echec d'`ART-CP-10` retenue par `nadia-prof` (O1, `ARBITRAGE-s56-forme-art-cp-10.md`, bloc du 2026-10-09 21:37) :
+une pastille posee sous la case par `.propositions-oeuvres .proposition.deja-essayee::before`, qui doit declarer `pointer-events: none`
+(son critere 3), faute de quoi elle etendrait de 40 px vers le bas la zone de frappe d'un bouton deja essaye. Mesure dans l'avis de
+faisabilite de s56 (amendement, A.1) : la regle candidate d'`ines-design` rendait 1 echec sur 2307, celui-ci.
+
+**Decision amendee.** La clause 3 s'applique aux regles maison permanentes qui nomment une classe d'action **et dont le sujet (dernier
+compose) n'est pas un pseudo-element decoratif** `::before` ou `::after`, selon la meme lecture que la clause 8 d'`ADR-0027`
+(`porteSurUnPseudoElementDecoratif`, seule la forme a deux deux-points). Le reste de la clause est inchange.
+
+**Regle executable.** `LAnimationRetardeMaisNeDetermineRienTest` (`adapters/adapter-web`) : la clause 3 est extraite en
+`defautsDInactionnabilite(regles, classesDActions)`, qui saute une regle dont le sujet est un pseudo-element decoratif. Neuf :
+`laClause3AdmetLePseudoElementDecoratifEtRefuseLeBoutonSurLaFeuilleReelle`, sur la feuille **reelle** mutee en memoire. Il prend la
+premiere regle de production dont le sujet est un pseudo-element decoratif d'une classe d'action (aujourd'hui `.proposition::after`,
+le voile) et exige : `pointer-events: none` ajoute a cette regle, admis ; la meme declaration sur le bouton qui la porte
+(`.proposition`), refusee ; sur un selecteur qui traverse le pseudo-element sans finir par lui (`.proposition::after span`), refusee.
+Pas une `ArchRule` : l'objet est une feuille CSS ; le mecanisme qui le garde est le job `build`. Comptes ArchUnit inchanges.
+
+**Morsures mesurees**, chacune par `bash outils/mvn-jdk21.sh -B -q -pl adapters/adapter-web -am test -Dtest=LAnimationRetardeMaisNeDetermineRienTest
+-Dsurefire.failIfNoSpecifiedTests=false -Dmaven.test.failure.ignore=true` (perimetre : cette classe, `-am`), fichiers restaures apres :
+
+| Mutation | Resultat (28 tests) |
+|---|---|
+| aucune | 0 echec |
+| exemption retiree (la clause d'avant) | 1 echec, le test neuf : *"pointer-events: none sur .proposition::after"* refuse |
+| exemption elargie a tout selecteur contenant `::` | 1 echec, le test neuf : le selecteur traversant n'est plus refuse |
+| regle de O1 ajoutee a `recreo.css` (`::before`, `top: calc(100% + 0.25rem)`, `pointer-events: none`), clause amendee | 0 echec |
+| la meme regle de O1, clause d'avant | 2 echecs, dont `aucuneRegleMaisonNeRendUneActionInactionnable` sur `.propositions-oeuvres .proposition.deja-essayee::before` |
+
+**Ce que l'amendement laisse passer, nomme.** Un pseudo-element decoratif qui couvrirait le bouton sans etre transparent au doigt
+reste une partie du bouton : il ne le rend pas inactionnable, et ce n'est pas l'objet de la clause. Une regle `display: none` sur un
+`::after` qui porterait un texte n'est pas vue ici ; `content` autre que vide ou `none` est deja refuse par `ADR-0027` clause 2.
+
+**Ce qui me ferait changer d'avis** : un pseudo-element qui porte une information que l'enfant doit atteindre. Alors la clause 3
+redevient applicable a ce sujet, et l'exemption se restreint par propriete.

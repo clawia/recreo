@@ -421,6 +421,12 @@ class LAnimationRetardeMaisNeDetermineRienTest {
      * Clause 3 - aucune regle permanente ne rend une proposition inactionnable. C'est la clause qui
      * tient la frontiere d'ADR-0008 du cote du CSS : une animation peut traverser un etat cache, une
      * regle qui n'est pas dans des {@code @keyframes} ne le traverse pas, elle y reste.
+     *
+     * <p><b>Amendement du 2026-10-09 (s56)</b> : une regle dont le sujet est un pseudo-element
+     * decoratif sort de la clause, comme pour la clause 8 d'ADR-0027. Un {@code pointer-events: none}
+     * sur un {@code ::before} rend la boite generee transparente au doigt, pas le bouton ; la marque
+     * d'echec d'{@code ART-CP-10}, posee sous la case, en a besoin pour ne pas etendre la zone de
+     * frappe du bouton deja essaye.</p>
      */
     static void verifierQuAucuneRegleNeRendUneActionInactionnable(Path racine) {
         Set<String> classesDActions = classesDesActions(racine);
@@ -428,10 +434,16 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                 .as("ADR-0003 : cette clause ne prouve rien si aucun element [%s=%s] ne porte de "
                         + "classe dans les gabarits de %s", ATTRIBUT_DE_ROLE, ACTION, racine)
                 .isNotEmpty();
+        assertThat(defautsDInactionnabilite(reglesMaison(racine), classesDActions))
+                .as("ADR-0026 : aucune regle maison permanente ne rend inactionnable un bouton que "
+                        + "l'enfant doit pouvoir presser")
+                .isEmpty();
+    }
 
+    static List<String> defautsDInactionnabilite(List<Regle> regles, Set<String> classesDActions) {
         List<String> defauts = new ArrayList<>();
-        for (Regle regle : reglesMaison(racine)) {
-            if (regle.dansDesImagesCles()) {
+        for (Regle regle : regles) {
+            if (regle.dansDesImagesCles() || porteSurUnPseudoElementDecoratif(regle.selecteur())) {
                 continue;
             }
             Set<String> visees = classesDuSelecteur(regle.selecteur());
@@ -448,10 +460,7 @@ class LAnimationRetardeMaisNeDetermineRienTest {
                 }
             }
         }
-        assertThat(defauts)
-                .as("ADR-0026 : aucune regle maison permanente ne rend inactionnable un bouton que "
-                        + "l'enfant doit pouvoir presser")
-                .isEmpty();
+        return defauts;
     }
 
     /**
@@ -1220,6 +1229,51 @@ class LAnimationRetardeMaisNeDetermineRienTest {
     void leMemeEtatEcritDansDesImagesClesResteVert() {
         verifierQuAucuneRegleNeRendUneActionInactionnable(
                 CONTRE_EXEMPLES.resolve("proposition-cachee-dans-des-images-cles"));
+    }
+
+    /**
+     * Amendement du 2026-10-09 de la clause 3, mordu sur la feuille reelle mutee en memoire : la
+     * premiere regle de production dont le sujet est un pseudo-element decoratif d'une classe d'action
+     * (aujourd'hui le voile de {@code .proposition::after}). Le meme {@code pointer-events: none} est
+     * admis sur elle, refuse sur le bouton qui la porte, et refuse sur un selecteur qui traverse le
+     * pseudo-element sans finir par lui.
+     */
+    @Test
+    void laClause3AdmetLePseudoElementDecoratifEtRefuseLeBoutonSurLaFeuilleReelle() {
+        Set<String> classesDActions = classesDesActions(RACINE_PRODUCTION);
+        List<Regle> reelles = reglesMaison(RACINE_PRODUCTION);
+        Regle pseudo = reelles.stream()
+                .filter(regle -> !regle.dansDesImagesCles()
+                        && porteSurUnPseudoElementDecoratif(regle.selecteur())
+                        && classesDuSelecteur(regle.selecteur()).stream().anyMatch(classesDActions::contains))
+                .findFirst().orElseThrow(() -> new AssertionError(
+                        "ADR-0003 : aucune regle de production ne porte sur un pseudo-element decoratif "
+                                + "d'une classe d'action, l'amendement ne serait mordu sur rien"));
+        String transparent = "pointer-events: none";
+        String selecteur = pseudo.selecteur();
+        String porteur = selecteur.substring(0, selecteur.lastIndexOf("::"));
+
+        List<Regle> surLePseudo = new ArrayList<>(reelles);
+        surLePseudo.set(reelles.indexOf(pseudo), new Regle(pseudo.fichier(), pseudo.contexte(), selecteur,
+                pseudo.corps() + ";\n" + transparent + ";"));
+        assertThat(defautsDInactionnabilite(surLePseudo, classesDActions))
+                .as("%s sur %s : la boite generee devient transparente au doigt, pas le bouton",
+                        transparent, selecteur)
+                .isEmpty();
+
+        List<Regle> surLeBouton = new ArrayList<>(reelles);
+        surLeBouton.add(new Regle(pseudo.fichier(), "", porteur, transparent));
+        assertThat(defautsDInactionnabilite(surLeBouton, classesDActions))
+                .singleElement().asString()
+                .contains(porteur)
+                .contains("c'est un etat permanent");
+
+        List<Regle> traversant = new ArrayList<>(reelles);
+        traversant.add(new Regle(pseudo.fichier(), "", selecteur + " span", transparent));
+        assertThat(defautsDInactionnabilite(traversant, classesDActions))
+                .singleElement().asString()
+                .contains(selecteur + " span")
+                .contains("c'est un etat permanent");
     }
 
     /**
