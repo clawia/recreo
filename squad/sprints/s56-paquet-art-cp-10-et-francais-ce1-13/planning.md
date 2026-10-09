@@ -353,3 +353,106 @@ Ce planning est fusionne sur `round-two` par l'agent qui m'a lance avant tout wo
 - `yanis-qa` : lecture de testabilite, puis A8 ; `relecteur-pedagogique` : relecture de cloture (A12).
 - `sofia-sm` : lignee a chaque fusion, echeances du 2026-10-10 a dire a l'utilisatrice le jour meme si elles sont depassees, `review.md` avec le tableau des obstacles, `RAPPORT.md`, `python outils/rapport-tokens.py --sprint s56`, `retro.md`.
 - **Utilisatrice** : `Q4`, `Q3`, `Q6` de la `DEC` ; A3.
+
+---
+
+## Amendement du 2026-10-09 22:17 (UTC+02:00) (`sofia-sm`, action A5 : aucun poste sans ligne)
+
+Le texte ci-dessus est inchange : il dit ce que le planning savait a 20:36. Cet amendement est ecrit avant l'ouverture du worktree du paquet et de celui de `S56-ART-CP-10-ECHEC`. Il ne decide ni produit, ni architecture, ni pedagogie,
+ne prononce aucun Done, et ne touche ni le backlog, ni la matrice, ni une fiche, ni `catalogue.yaml`. Il n'ajoute aucune ligne d'heure de debut ou de fin de ceremonie : la seule que `outils/rapport-tokens.py` lit est celle de l'en-tete de ce fichier.
+
+- **Heure de l'amendement** : 2026-10-09 22:17 (UTC+02:00), lue par `date`.
+- **Lignee** : branche `s56-sofia-amend`, `git log -1 --format=%h` rend `c47582f8` (tip de `round-two`), `bash outils/verifier-lignee.sh` sort 0, `git status --short` vide avant ecriture.
+- **Sources lues, par auteur** : camille-po (`DEC-0116` A.4 a A.8, backlog "Sprint 56" et ses annotations) ; theo-archi (`avis-faisabilite.md`, sections 1 a 11 et amendement de 21:55, A.1 a A.4) ;
+  nadia-prof (`ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md`, `ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md` bloc de 21:37 R.1 a R.3, `CHOIX-OEUVRES-s56-art-cp-10.md` bloc de 22:07 sur `K1`) ; sofia-sm (`git worktree list`).
+- **Ce que ce planning avait suppose et qui est arrive** : l'avis, `S56-ARB-A`, `S56-ARB-B`, `S56-ART-CP-10-OEUVRES` et `S56-ART-CP-10-FORME` existent maintenant sur `round-two` (`ls squad/conformite | grep -c s56` rend 5 entrees a `c47582f8` : quatre fichiers et le dossier `releves-s56/` ;
+  l'avis est dans le dossier du sprint). Je ne reconcilie pas le planning avec eux ici : `review.md` le constatera.
+
+### A. Reponse de l'utilisatrice du 2026-10-09 : "Oui, a 4,75"
+
+Mots cites par `DEC-0116` A.4 (forme 2, recus par l'agent lanceur qui les atteste ; **je ne les ai pas lus de sa main**, meme reserve que `camille-po`). Effet, tel que la decision l'ecrit :
+
+- **B est a 4,75** (plafond dur de 5,0 non atteint) ; l'ecart de 0,5 vaut quelle que soit la repartition entre les instances.
+- **`PAR-2` : `S56-ART-CP-10-OEUVRES` est sur l'instance B** (arbitrage A 3.1, arbitrage B 2.1). Question `QS1` close. Le risque R4 de ce planning (B a 4,75 si `PAR-2` est lue autrement) est realise et couvert par l'ecart.
+- **Remplace dans ce fichier** : ligne 6 du tableau "Stories retenues" (instance B, et non "A sous `PAR-2`") ; dans "Isolation", `S56-ART-CP-10-OEUVRES` passe de la ligne de `nadia-prof` A a celle de `nadia-prof` B (`s56-nadia-b`, scratchpad dedie B) ;
+  dans "Ordre d'execution", le document des oeuvres precede la premiere ligne du paquet comme avant, ecrit par l'instance B. Il est ecrit : `CHOIX-OEUVRES-s56-art-cp-10.md`.
+
+### B. Capacite : 8,25 (A 3,5, B 4,75), 0,25 sans poste
+
+Source : reconciliation de `nadia-prof`, instance B (bloc du 21:37, R.3), qui prend le rejeu groupe de `ACV-CE1-R1` et `R2` a 0,5 de l'arbitrage de A (section 4). **Je recompte sans reprendre le total** :
+
+| Poste | A | B |
+|---|---|---|
+| Arbitrage prealable | 0,5 | 0,5 |
+| Lot `ce1-verbe-sujet` | 1,0 | - |
+| Rejeu groupe `ACV-CE1-R1` et `ACV-CE1-R2` | 0,5 | - |
+| `CLM-CE1-R1` (`PAR-14`) | 1,0 | - |
+| `EMC-CM1-R8`, `EMC-CM1-R9`, `EXC-R16` | - | 0,75 |
+| Arbitrage de forme | - | 0,25 |
+| Choix des oeuvres | 0,0 | 0,25 |
+| Audit du paquet | - | 2,5 |
+| Marge de rejeu, allouee a aucun lot | 0,5 | 0,5 |
+| **Total** | **3,5** | **4,75** |
+
+**Somme : 8,25 sur la borne de 8,0.** L'ecart accorde de 0,5 permet 8,5 : **les 0,25 entre 8,25 et 8,5 ne sont alloues a aucun poste, et ne le sont pas sans amendement** (`DEC-0116` 2.4). Remplace le tableau "Capacite" de ce fichier (A 4,0, B 4,5, somme 8,5), et ses lignes 3 et 4
+du tableau "Stories retenues" (0,25 + 0,5) lues ensemble a 0,5. Si `S55-ACV-CE1-R2` n'est pas livree, A rejoue `ACV-CE1-R1` seule a 0,25 : sa consommation descend, son engagement reste 3,5. Lots : A en porte deux, B un, sous le maximum de trois.
+**Statut de la ligne** : `DEC-0116` A.5 la dit en attente de cette reconciliation ; `camille-po` l'amende (en cours). **Je porte 8,25 a la review sur la source de `nadia-prof`, et le dis si l'amendement de la decision dit autre chose.**
+Les prix restent ceux de `nadia-prof`. `A9` : les deux instances ecrivent 3,5 consommes pour B a s55 (`DEC-0116` A.5) ; ligne close.
+
+### C. Deux postes neufs hors `PAR` pour `theo-archi`
+
+Ils naissent de l'amendement de l'avis du 21:55 (A.1, A.3, A.4) et du choix de `nadia-prof` du 22:07 sur `K1`. Hors `PAR` : **0,0 pour `nadia-prof`**, environ 0,25 jour chacun pour `theo-archi` (son estimation, pas un tarif de `nadia-prof`).
+**Story au backlog : aucune a ce jour** (`grep -rn "S56-ADR-0026\|S56-ADR-0024" docs squad` ne rend rien avant cet amendement) ; la story est a `camille-po`, et le poste a sa ligne ici, avant son worktree.
+
+| Poste | Story | Objet | Agent | Branche | Worktree | Scratchpad |
+|---|---|---|---|---|---|---|
+| Amender `ADR-0026` clause 3 | `S56-ADR-0026` | la clause 3 (`LAnimationRetardeMaisNeDetermineRienTest.aucuneRegleMaisonNeRendUneActionInactionnable`) rougit sur une regle dont le sujet est `::before` ; l'amendement et son test dans un seul commit (avis, A.1) | `theo-archi` | `s56-theo-adr0026` | `../recreo-s56-theo-adr0026`, **deja ouvert** (`git worktree list`) | `s56-theo` |
+| Amender `ADR-0024` regle 1 | `S56-ADR-0024` | `K1` : le controle de la regle 1 n'entre que sur `graphie` ; un paquet sans graphie qui porte `explication` la porte sur tous ses items ou sur aucun. **Issue (b), choisie par `nadia-prof` seule** (`CHOIX-OEUVRES-s56-art-cp-10.md`, 22:07) ; amendement et test dans un seul commit (avis, A.3) | `theo-archi` | `s56-theo-adr0024` | `../recreo-s56-theo-adr0024`, **a ouvrir** par l'agent qui me lance (aucun worktree de ce nom aujourd'hui) | `s56-theo` |
+
+Longueur du nom de worktree `recreo-s56-theo-adr0024` : 23 caracteres, sous les 26 du plus long de la section "Isolation" (marge de 5 sur 260 inchangee).
+**Ordre de fusion** : les deux amendements d'`ADR`, avec leur test, sont fusionnes sur `round-two` **avant l'ouverture du worktree du paquet (`s56-lea-paquet`) et de celui de `S56-ART-CP-10-ECHEC` (`s56-lea-echec`)**. C'est la consigne du lanceur ;
+l'avis est moins strict (`ADR-0024` bloque le premier commit du paquet, `ADR-0026` doit preceder `ECHEC`, avis A.4), et je prends la lecture la plus stricte : un seul point de controle. Aucune des deux ne change le prix ni l'heure du paquet de ce planning, sauf si l'une d'elles n'est pas fusionnee a 2026-10-10 08:00 :
+elle rejoint alors la liste des prerequis manquants que je dis a l'utilisatrice le jour meme. **`ADR-0024` et `ADR-0026` sont amendes par `theo-archi`, pas par moi** ; aucun `ADR` n'est cree par cet amendement de planning, et `ADR-index.md` n'est pas touche ici.
+
+### D. `lea-dev` : branches et ordre inchanges, prerequis du premier commit du paquet precises
+
+Branches, worktrees et ordre de la section "Isolation" : **inchanges** (`s56-lea-paquet`, `-plafond`, `-echec`, `-catalogue`, `-emc`). Prerequis du commit de `S55-ART-CP-10-PAQUET`, d'apres l'avis (A.3, simulation de 6 echecs sur 2307) :
+
+- **`K1`** : `S56-ADR-0024` fusionne (ci-dessus). Sans lui, le premier commit rougit.
+- **`K2`** : une entree de `PAQUETS_HORS_DU_DOMAINE_NUMERIQUE` avec son motif, comme `cp-decrire-une-oeuvre` (`LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest`). Un ajout, pas un assouplissement.
+- **`K3`** : les deux morsures de `LIllustrationDeContenuResoutEtAucuneNeDortTest` (`unIdentifiantDOeuvreResoutDesQueLeFichierDeReproductionExiste`, `uneOeuvreServieSeulementEnPropositionNEstPasDormante`) recoivent les propositions reelles du depot. Retouche du meme commit.
+- **Les quatre constantes**, qui montent ensemble dans le meme commit (backlog, critere de `S55-ART-CP-10-PAQUET`) : `ITEMS_A_PROPOSITIONS_EN_IMAGE`, `ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION`, `REPRODUCTIONS_SERVIES`, `POIDS_TOTAL_MAXIMUM`. Valeurs : celles que l'avis chiffre pour six items et quatre reproductions restaurees ; **`lea-dev` les relit au `verify`** (le cliquet exact juge), je n'en recopie aucune.
+- `K2` et `K3` sont des retouches du commit du paquet, pas des postes ; l'avis le dit, et leurs causes sont attribuees par message d'echec (a confirmer au `verify`).
+- **Les prerequis de la section "Ordre d'execution" sont tenus** : `S56-ARB-A`, `S56-ARB-B`, avis, `S56-ART-CP-10-OEUVRES` existent sur `round-two`. **Restent** : les deux amendements d'`ADR` (C), et pour `s56-lea-echec` l'amendement du critere de la marque (`camille-po`, en cours, F).
+
+### E. `marc-dev` : worktree ouvert
+
+`marc-dev` a ouvert **`s56-marc-fra-ce1-13`**, worktree `../recreo-s56-marc-fra-ce1-13`, pour `S56-BR-FRA-CE1-13` (`git worktree list` le confirme ; sa base est la fusion de `s56-camille-suivi`, `806aeb46`).
+La dependance de ce planning (conditions de `-13` ecrites par `nadia-prof` et criteres amendes par `camille-po`) est tenue : `S56-ARB-A` porte `J1` a `J5`, et `DEC-0116` A.6 dit que le worktree peut s'ouvrir. **La disposition conditionnelle (`S55-ACV-CE1-R2` avant `-13`) n'est pas utilisee.**
+Ses deux autres branches (`s56-marc-acv-ce1-r2`, `s56-marc-clm-ce1-r1`) restent a ouvrir, dans l'ordre, une fois celle-ci rapportee.
+
+### F. Criteres de la marque d'echec et du plafond : en cours chez `camille-po`
+
+`camille-po` amende, en ce moment, la story de la marque de `S56-ART-CP-10-ECHEC` et celle du plafond (`S55-ART-CP-10-PLAFOND`, forme d'`ines-design` selon l'avis A.2). **Je ne les reproduis pas** : la source est le backlog "Sprint 56", annotations du jour. Cet amendement n'ajoute aucun critere.
+Condition inchangee : le worktree de `S56-ART-CP-10-ECHEC` ne s'ouvre pas avant cet amendement **et** la fusion de `S56-ADR-0026`. `PLAFOND` precede `ECHEC` (`DEC-0116` A.6).
+
+### G. Verification poste/story, mise a jour
+
+Aux dix-sept lignes de la section "Stories retenues" s'ajoutent deux lignes, **dix-neuf au total** :
+
+| # | Poste | Story | Titre au backlog | Instance | Agent nominatif | Prix | Verdict |
+|---|---|---|---|---|---|---|---|
+| 18 | Amendement d'`ADR-0026` | `S56-ADR-0026` | **0 aujourd'hui** | hors `PAR` | `theo-archi` | 0,0 pour `nadia-prof` | ligne au planning ; story a ecrire par `camille-po` |
+| 19 | Amendement d'`ADR-0024` | `S56-ADR-0024` | **0 aujourd'hui** | hors `PAR` | `theo-archi` | 0,0 pour `nadia-prof` | idem |
+
+**Ecart signale, non solde** : `PAR-16` demande une story par poste a l'ouverture ; ces deux postes sont nes de l'avis apres l'ouverture, et leur story manque. Elle est a `camille-po` (le backlog est a elle). Ce planning nomme et affecte, il ne l'ecrit pas a sa place. Lignes 3, 4 et 6 : voir A et B.
+
+### H. Ce que cet amendement ne fait pas, decisions prises, jobs lances
+
+- **Decisions prises** : aucune `ADR` ni `DEC` creee ou amendee par cet amendement. Quatre decisions de planning, de mon role : (1) les deux postes d'`ADR` ont leur ligne, leur branche et leur worktree ; (2) ils precedent le worktree du paquet **et** celui d'`ECHEC` (lecture la plus stricte) ;
+  (3) la capacite est portee a 8,25 (A 3,5, B 4,75) sur la reconciliation de `nadia-prof`, sous reserve de l'amendement de `camille-po` ; (4) la disposition conditionnelle de `marc-dev` n'est pas declenchee.
+  Aucune decision n'est close par cet amendement : l'obstacle "story absente des deux postes d'`ADR`" reste ouvert tant que `camille-po` ne l'a pas ecrite, et "ADR-0024 et ADR-0026 non amendes" tant que leurs commits ne sont pas fusionnes.
+- **Il ne fait pas** : fixer un prix, ecrire un critere, amender `ADR-0024` ou `ADR-0026`, ouvrir un worktree, fusionner, pousser.
+- **Jobs lances pour cet amendement** (A6, sur l'arbre avec ce texte, avant commit) : **`build`** par `bash outils/mvn-jdk21.sh -B clean verify` de la racine, `BUILD SUCCESS`, 2307 tests, 0 echec, 0 erreur (120, 18, 407, 1423, 333 et 6 d'integration), meme total qu'au planning ;
+  **`outils`** : les juges purs de `outils/*-test.sh`, `squad/outils/*/*-test.sh` et `outils/*-test.py`, tous sortis 0 ; **`chemins`** : `verifier-chemins-test.sh` et `verifier-chemins.sh` sur `git ls-files`, sortis 0 ; **`prefixes`** : `verifier-prefixes-test.sh` sorti 0.
+  Aucun de ces resultats n'est celui de la CI distante, que personne n'a lue (`QS8`).
