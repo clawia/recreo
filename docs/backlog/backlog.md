@@ -20608,7 +20608,7 @@ ligne 65 contiennent le motif `\bt[...]`, le caractere U+2019 (apostrophe typogr
 
 ## Sprint 55 - Quatre branchements (francais CE1, EMC CM1), deux corrections de jeux servis, le dispositif d'`ART-CP-10`
 
-Perimetre, financement et ordre : `DEC-0115` (statut `Proposee`, section 0.5). Planning : `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/planning.md`. **Deux instances de `nadia-prof`**, comptees selon `PAR-9` telle qu'ecrite
+Perimetre, financement et ordre : `DEC-0115` (statut `Acceptee` le 2026-10-09, A.22 ; etait `Proposee`). Planning : `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/planning.md`. **Deux instances de `nadia-prof`**, comptees selon `PAR-9` telle qu'ecrite
 (borne de 8,0, aucun ecart, aucune troisieme instance, `DEC-0114` A.20) : A (francais CE1), B (EMC CM1, EMC CP, arts plastiques CP si Q5). Un dev tient un seul worktree a la fois. **Tarifs proposes par le planning, a confirmer par `nadia-prof`
 dans son arbitrage prealable de s55, qui n'existe pas.** Rien ne s'edite avant que `DEC-0115` soit fusionnee sur `round-two` (C1).
 
@@ -20683,7 +20683,7 @@ Source : `lecture-testabilite.md` de `yanis-qa` (base `2d0d10e7`), questions Q-Y
 
 ### S55-ART-CP-10-MECANIQUE - Montrer une oeuvre et trois autres sur le meme ecran : le dispositif d'`ADR-0104` (T2, T3), sans paquet ni audit (`ART-CP-10`)
 
-**Etat au 2026-10-08 (s55) : OUVERTE, engagee par `DEC-0115` section 5 sous reserve de ses trois questions a l'utilisatrice.** Financement : message de l'agent qui m'a lance, **recu de MASTER, sans source dans le depot** (forme 3 de `DEC-0062`, cite en `DEC-0115` 0.1 point 3 : "la mecanique d'ART-CP-10 est financee DANS CE SPRINT (s55)"). **Ce que la formule implique** (`DEC-0062` section 3.2) : cet enonce ne fonde ni la `DEC`, ni un critere, ni un verdict ; les criteres de cette story viennent d'`ADR-0104` (forme 1) ; le financement est une execution consignee et non une decision tant que les mots de l'utilisatrice ne sont pas ecrits en forme 2 (`Q6`, ouverte ; `DEC-0115` A.18). Statut de la `DEC` : `Proposee`.
+**Etat au 2026-10-08 (s55) : OUVERTE, engagee par `DEC-0115` section 5 sous reserve de ses trois questions a l'utilisatrice.** Financement : message de l'agent qui m'a lance, **recu de MASTER, sans source dans le depot** (forme 3 de `DEC-0062`, cite en `DEC-0115` 0.1 point 3 : "la mecanique d'ART-CP-10 est financee DANS CE SPRINT (s55)"). **Ce que la formule implique** (`DEC-0062` section 3.2) : cet enonce ne fonde ni la `DEC`, ni un critere, ni un verdict ; les criteres de cette story viennent d'`ADR-0104` (forme 1) ; le financement est une execution consignee et non une decision tant que les mots de l'utilisatrice ne sont pas ecrits en forme 2 (`Q6`, ouverte ; `DEC-0115` A.18). Statut de la `DEC` : `Proposee`. **Amendement du 2026-10-09 (`DEC-0115` A.22) : `Q6` repondue en forme 2, financement decide, `DEC` `Acceptee`.**
 
 - **Besoin** : en tant qu'eleve de CP, je veux, un jour, voir une oeuvre et d'autres oeuvres sur le meme ecran, et appuyer sur celle qui lui ressemble par ce que je vois (la touche, la lumiere), afin de commencer a rapprocher des oeuvres.
   **A la fin de s55 je ne verrai encore rien** : aucun jeu du catalogue n'en sert tant qu'un paquet a reproductions n'est pas ecrit ni branche.
@@ -20779,3 +20779,16 @@ Chaque critere reprend les mots de `nadia-prof` (regle de ce backlog : un criter
 ### Ce que cette annotation ne fait pas
 
 Elle n'engage aucune de ces stories (c'est la `DEC` d'ouverture de s56), ne prononce aucun Done, ne touche ni code, ni catalogue, ni paquet, ni fiche. La proposition de composition de s56 est `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/proposition-s56.md`.
+
+
+## Reponses de l'utilisatrice du 2026-10-09 (s55, `camille-po`)
+
+Annotation datee. Rien au-dessus n'est reecrit, sauf deux renvois a l'etat de `DEC-0115`. Forme 2 de `DEC-0062` (`de l'utilisatrice`, mots cites, date), recue par l'agent lanceur qui atteste des reponses directes dans la conversation ; je ne les ai pas lues de sa main (`DEC-0115` A.22). Les codes D2 a D5 sont ceux de cette transmission ; le rattachement aux questions de `proposition-s56.md` est le mien et n'etend aucun mot.
+
+- **Financement de la mecanique d'`ART-CP-10`** (`Q6` de `DEC-0115`) : "J'accepte que la mécanique d'ART-CP-10 soit financée dans s55." `DEC-0115` est `Acceptee` (A.22). Fonde le financement de `S55-ART-CP-10-MECANIQUE` (T2, T3, livrees) ; ne dit rien du paquet (T5), de T4, de l'audit ni d'un ecart.
+- **D2**, reponse a `Q1` de `proposition-s56.md`, sur le moment du paquet : "s56 prioritaire". Le premier paquet a reproductions d'`ART-CP-10` est prioritaire en s56 (`S55-ART-CP-10-PAQUET`, option du backlog, passe en tete de la composition de s56 ; pas encore une story engagee). Prealables : l'arbitrage de forme de `nadia-prof` a 0,25 et la dette `S55-ART-CP-10-PLAFOND` (ces deux prealables viennent de `RAPPORT.md` et de `retro.md` A5 de s55, pas des mots de l'utilisatrice). Reste ouvert : proprietaire du paquet, ecart ou report d'une reserve d'EMC (seconde moitie de `Q1`), qui audite (`Q2`).
+- **D4**, reponse a `Q2` (instance du francais), "ok" : le francais CE1 continue sur l'instance A. Ne repond pas a `Q3` (deux instances a partir de s57), qui reste ouverte.
+- **D5**, "ok" : le decoupage actuel des 11 lots du francais CE1 est garde (`proposition-s56.md` section 1, `DEC-0114` 7.2). Aucune question numerotee ; ne dit rien de l'ordre des lots a s56.
+- **D3** (options O1 a O3, section 4 de `proposition-s56.md`) : **sans reponse**. D2 et D4 ne designent aucune des trois.
+
+Ce que cette annotation ne fait pas : n'engage aucune story, n'ecrit pas la `DEC` d'ouverture de s56, ne tranche pas D3, ne touche ni matrice, ni planning, ni fiche, ni code.
