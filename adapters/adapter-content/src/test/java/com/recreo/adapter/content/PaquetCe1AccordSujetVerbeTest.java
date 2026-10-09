@@ -74,6 +74,18 @@ class PaquetCe1AccordSujetVerbeTest {
     private static final Set<String> PLURIELS_IRREGULIERS =
             Set.of("sont", "ont", "vont", "font", "disent");
 
+    /** PRS-CE1-1 : les six verbes nommes ; tout autre verbe est du premier groupe. */
+    private static final Set<String> VERBES_NOMMES_DE_PRS_CE1_1 =
+            Set.of("être", "avoir", "aller", "faire", "dire", "venir");
+
+    /** PRS-CE1-1 : exclus, les verbes du premier groupe a modification orthographique. */
+    private static final Pattern MODIFICATION_ORTHOGRAPHIQUE = Pattern.compile("(ger|cer|eler|eter|yer)$");
+
+    private static final Set<String> EXCLUS_NOMMES_DE_PRS_CE1_1 = Set.of("acheter", "lever");
+
+    /** ACV-CE1-R2 : au moins huit des douze items a sujet pluriel portent la marque muette. */
+    private static final int PLURIELS_MUETS_AU_MOINS = 8;
+
     private static final Pattern LETTRE_OU_CHIFFRE = Pattern.compile("[\\p{L}\\p{N}]");
 
     private static final List<String> LEXIQUE_TRV_CE1_4 = List.of(
@@ -157,6 +169,71 @@ class PaquetCe1AccordSujetVerbeTest {
     private static boolean formePlurielle(String forme) {
         return PLURIELS_IRREGULIERS.contains(forme) || forme.endsWith("ons")
                 || (forme.endsWith("ent") && !forme.equals("vient"));
+    }
+
+    private static String verbeDe(Question item) {
+        Matcher lecture = ENONCE.matcher(item.enonce());
+        assertThat(lecture.matches())
+                .as("'%s' : un verbe entre guillemets, le sujet, puis le trou", item.enonce())
+                .isTrue();
+        return lecture.group(1).toLowerCase(Locale.FRENCH);
+    }
+
+    /** Premier groupe de PRS-CE1-1 : en -er, ni aller, ni a modification orthographique. */
+    private static boolean premierGroupeSansModification(String infinitif) {
+        return infinitif.endsWith("er") && !infinitif.equals("aller")
+                && !MODIFICATION_ORTHOGRAPHIQUE.matcher(infinitif).find()
+                && !EXCLUS_NOMMES_DE_PRS_CE1_1.contains(infinitif);
+    }
+
+    private static boolean estUnPlurielMuet(Question item) {
+        return sujetPluriel(sujetDe(item)) && premierGroupeSansModification(verbeDe(item))
+                && item.bonneReponse().endsWith("ent");
+    }
+
+    /**
+     * ACV-CE1-R2, arbitrage prealable de s56 instance A et fiche de s55 : sur les items a sujet
+     * pluriel, au moins huit ont pour bonne reponse une forme du premier groupe en -ent. Le verbe est
+     * lu dans l'enonce, jamais deduit du suffixe de la reponse : viennent et disent finissent par
+     * -ent sans etre du premier groupe.
+     */
+    private static void verifierLaPartDesPlurielsMuets(List<Question> items) {
+        long pluriels = items.stream().filter(i -> sujetPluriel(sujetDe(i))).count();
+        long muets = items.stream().filter(PaquetCe1AccordSujetVerbeTest::estUnPlurielMuet).count();
+        assertThat(muets)
+                .as("ACV-CE1-R2 : %d items à sujet pluriel sur %d ont pour bonne réponse une forme du"
+                        + " premier groupe en -ent", muets, pluriels)
+                .isGreaterThanOrEqualTo(PLURIELS_MUETS_AU_MOINS);
+    }
+
+    /** ACV-CE1-R2 : les verbes sont ceux de PRS-CE1-1 et aucun autre. */
+    private static void verifierQueLesVerbesSontCeuxDePrsCe11(List<Question> items) {
+        for (Question item : items) {
+            String verbe = verbeDe(item);
+            assertThat(VERBES_NOMMES_DE_PRS_CE1_1.contains(verbe) || premierGroupeSansModification(verbe))
+                    .as("PRS-CE1-1 : '%s' - le verbe '%s' n'est ni l'un des six verbes nommés ni du"
+                            + " premier groupe sans modification orthographique", item.enonce(), verbe)
+                    .isTrue();
+        }
+    }
+
+    /**
+     * ACV-CE1-R2 : sur un item a pluriel muet, les distracteurs sont de la meme famille que la
+     * bonne reponse (autre nombre, autre personne), c'est-a-dire qu'ils en portent le radical.
+     */
+    private static void verifierQueLesDistracteursDesPlurielsMuetsSontDeLaMemeFamille(List<Question> items) {
+        for (Question item : items) {
+            if (!estUnPlurielMuet(item)) {
+                continue;
+            }
+            String radical = item.bonneReponse().substring(0, item.bonneReponse().length() - 3);
+            for (String distracteur : item.distracteurs()) {
+                assertThat(distracteur.startsWith(radical) && !distracteur.equals(item.bonneReponse()))
+                        .as("ACV-CE1-R2 : '%s' - le distracteur '%s' n'est pas une autre forme du verbe '%s'",
+                                item.enonce(), distracteur, verbeDe(item))
+                        .isTrue();
+            }
+        }
     }
 
     /**
@@ -340,7 +417,7 @@ class PaquetCe1AccordSujetVerbeTest {
     }
 
     @Test
-    void k1DouzeItemsPortentLIndiceDeSubstitutionEtCinqCeluiDeRelecture() {
+    void k1DouzeItemsPortentLIndiceDeSubstitutionEtSeptCeluiDeRelecture() {
         List<Question> items = items();
         long substitution = items.stream()
                 .filter(i -> i.indice().orElseThrow().startsWith("Remplace le sujet par")).count();
@@ -348,7 +425,23 @@ class PaquetCe1AccordSujetVerbeTest {
                 .filter(i -> i.indice().orElseThrow().startsWith("Lis le sujet avec chaque verbe"))
                 .count();
         assertThat(substitution).as("K1 : indice de substitution").isEqualTo(12);
-        assertThat(relecture).as("K1 : indice de relecture").isEqualTo(5);
+        assertThat(relecture).as("K1 : indice de relecture, dont les items 3 et 15 (ACV-CE1-R2)")
+                .isEqualTo(7);
+    }
+
+    @Test
+    void acvR2HuitItemsAuMoinsASujetPluriel() {
+        verifierLaPartDesPlurielsMuets(items());
+    }
+
+    @Test
+    void acvR2LesVerbesSontCeuxDePrsCe11() {
+        verifierQueLesVerbesSontCeuxDePrsCe11(items());
+    }
+
+    @Test
+    void acvR2LesDistracteursDesPlurielsMuetsSontDeLaMemeFamille() {
+        verifierQueLesDistracteursDesPlurielsMuetsSontDeLaMemeFamille(items());
     }
 
     @Test
@@ -412,6 +505,44 @@ class PaquetCe1AccordSujetVerbeTest {
         assertThatThrownBy(() -> verifierLesSujetsDeCoursesEtLAbsenceDeTu(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("TRV-CE1-6");
+    }
+
+    private static List<Question> itemsFautifsDesPlurielsMuets() {
+        return tousLesItems(new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-accord-sujet-verbe-pluriels-fautif"));
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif d'ACV-CE1-R2. Un seul pluriel muet du premier groupe. */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurSaPartDePlurielsMuets() {
+        List<Question> items = itemsFautifsDesPlurielsMuets();
+
+        assertThatThrownBy(() -> verifierLaPartDesPlurielsMuets(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ACV-CE1-R2")
+                .hasMessageContaining("1 items à sujet pluriel sur 3");
+    }
+
+    /** ADR-0013 obligation 3 : le meme jeu fautif. Son premier item porte "manger", en -ger. */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnVerbeHorsDePrsCe11() {
+        List<Question> items = itemsFautifsDesPlurielsMuets();
+
+        assertThatThrownBy(() -> verifierQueLesVerbesSontCeuxDePrsCe11(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("PRS-CE1-1")
+                .hasMessageContaining("manger");
+    }
+
+    /** ADR-0013 obligation 3 : le meme jeu fautif. Son deuxieme item propose "viens" pour "jouent". */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnDistracteurDUneAutreFamille() {
+        List<Question> items = itemsFautifsDesPlurielsMuets();
+
+        assertThatThrownBy(() -> verifierQueLesDistracteursDesPlurielsMuetsSontDeLaMemeFamille(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ACV-CE1-R2")
+                .hasMessageContaining("viens");
     }
 
     /** ADR-0013 obligation 3 : le catalogue fautif de K3. Sa consigne n'est pas celle du present. */

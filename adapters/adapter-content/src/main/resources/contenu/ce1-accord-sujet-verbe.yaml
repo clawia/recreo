@@ -34,10 +34,10 @@ items:
     distracteurs: ["écoute", "écoutons"]
     indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet pronom pluriel
-  - enonce: "« venir » : ils ___ de l'école."
-    bonneReponse: "viennent"
-    distracteurs: ["vient", "viens"]
-    indice: "Le sujet se trouve juste avant le trou : combien en voit-on ?"
+  - enonce: "« chanter » : ils ___ une chanson."
+    bonneReponse: "chantent"
+    distracteurs: ["chante", "chantons"]
+    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« être » : la maîtresse ___ dans la classe."
     bonneReponse: "est"
@@ -74,9 +74,9 @@ items:
     distracteurs: ["vont", "vas"]
     indice: "Remplace le sujet par « il », « elle », « ils » ou « elles », puis relis."
   # ACV-CE1-1: sujet nominal pluriel
-  - enonce: "« aller » : les oiseaux ___ vers le sud."
-    bonneReponse: "vont"
-    distracteurs: ["va", "vas"]
+  - enonce: "« voler » : les oiseaux ___ vers le sud."
+    bonneReponse: "volent"
+    distracteurs: ["vole", "voles"]
     indice: "Le sujet se trouve juste avant le trou : combien en voit-on ?"
   # ACV-CE1-1: sujet pronom singulier
   - enonce: "« être » : il ___ dans la cour."
@@ -94,10 +94,10 @@ items:
     distracteurs: ["fait", "fais"]
     indice: "Demande-toi qui agit, un seul ou plusieurs."
   # ACV-CE1-1: sujet pronom pluriel
-  - enonce: "« avoir » : elles ___ une bonne idée."
-    bonneReponse: "ont"
-    distracteurs: ["a", "as"]
-    indice: "Le sujet se trouve juste avant le trou : combien en voit-on ?"
+  - enonce: "« marcher » : elles ___ vers l'école."
+    bonneReponse: "marchent"
+    distracteurs: ["marche", "marchons"]
+    indice: "Lis le sujet avec chaque verbe proposé : lequel va avec lui ?"
   # ACV-CE1-1: sujet nominal singulier
   - enonce: "« dessiner » : Inès ___ un arbre."
     bonneReponse: "dessine"
