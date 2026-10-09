@@ -107,7 +107,7 @@ Mes mots (`CON-5`). Un autre texte qui tient la barre est accepte ; je le juge c
   avoir repondu a la question posee (`EMC-5`, meme motif). Texte, espace insecable devant le point d'interrogation (`TYP-1`) :
 
 ```text
-Quelle œuvre est faite de la même façon que celle-ci ?
+Quelle œuvre est faite de la même façon que celle-ci ?
 ```
 
 - **`B9` - Consigne et titre** (`catalogue.yaml`). Titre sans niveau (`AucunTitreDeJeuNePorteSonNiveauTest`), sans sujet ni artiste,
@@ -291,5 +291,47 @@ partager le format de la reference) ; `B6` (`oeuvre-hippopotame` absente des pro
 - Il ne releve aucune barre ecrite a s55 : `B5` applique le motif de `M1`, `B6` et `B8` sont des conditions neuves, datees d'aujourd'hui, posees
   avant que le paquet existe.
 - Il ne cree aucun identifiant de condition ni de reserve.
+
+**Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
+
+---
+
+## Bloc du 2026-10-09, 21:37 - reponse de l'utilisatrice, avis de `theo-archi`, capacite reconciliee avec l'instance A
+
+Annotation datee ; rien au-dessus n'est efface. Arbre : `round-two` a `a772c822`, fusionne dans `s56-nadia-b`.
+
+### R.1 La reponse de l'utilisatrice
+
+*"Oui, a 4,75"* (2026-10-09, transmise par l'agent qui me lance, qui l'atteste ; je ne l'ai pas lue de sa main) : issue (a) de la section
+2.3. Son ecart de 0,5 vaut quelle que soit la repartition ; `PAR-2` tenue, B a 4,75. Aucune reserve d'EMC ne part a s57. Le document des
+oeuvres est ecrit : `squad/conformite/CHOIX-OEUVRES-s56-art-cp-10.md`.
+
+### R.2 `B4` et `B7` : l'avis de `theo-archi` change ce que j'ai ecrit, comme je l'avais prevu
+
+`B4` disait : les onze, sauf si `AV2` nomme une reproduction de provenance prouvee. `AV2` en nomme **28** (`1db6348f^`, restaurables a
+l'octet). Le vivier des distracteurs est donc ces 28 ; la regle 2 ne bouge pas. Consequence : **le Vermeer reste**, avec
+`oeuvre-autoportrait-leyster` en distracteur (une femme dans une piece, sans la lumiere d'une fenetre). Le paquet a **six items**, `B7` est
+tenue par son haut. La phrase de la section 1.2 sur les deux items de Vermeer qui *"sortent"* est caduque.
+
+### R.3 La capacite, reconciliee
+
+| Poste | A | B |
+|---|---|---|
+| Arbitrage prealable | 0,5 | 0,5 |
+| Lot `-13` | 1,0 | - |
+| `ACV-CE1-R1` et `ACV-CE1-R2` | **0,5**, rejeu groupe (arbitrage de A, section 4) | - |
+| `CLM-CE1-R1` (`PAR-14`) | 1,0 | - |
+| `EMC-CM1-R8`, `EMC-CM1-R9`, `EXC-R16` | - | 0,75 |
+| Arbitrage de forme | - | 0,25 |
+| Choix des oeuvres | 0,0 | 0,25 |
+| Audit du paquet | - | 2,5 |
+| Marge de rejeu, allouee a aucun lot | 0,5 | 0,5 |
+| **Total** | **3,5** | **4,75** |
+
+**Somme : 3,5 + 4,75 = 8,25.** C'est le chiffre juste. Mon 3,75 pour A (section 2.2) prenait les deux rejeux d'`ACV-CE1` au prix separe de
+`DEC-0116` 2.1 (0,25 + 0,5 = 0,75) ; l'instance A les a tarifes ensemble a 0,5, et le prix de ses postes est le sien. Mon 3,75 et la somme de
+8,5 qui en decoule sont donc faux d'aujourd'hui ; la section 2.2 se lit avec cette ligne. 8,5 reste le plafond que l'ecart accorde permet,
+pas une allocation : les 0,25 entre 8,25 et 8,5 ne sont alloues a rien sans amendement (`DEC-0116` 2.4). Si `S55-ACV-CE1-R2` n'est pas
+livree, l'instance A rejoue `ACV-CE1-R1` seule a 0,25 (sa section 4) : sa consommation descend, son engagement reste 3,5.
 
 **Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
