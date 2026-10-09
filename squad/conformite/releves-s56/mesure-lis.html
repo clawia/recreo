@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<!--
+  Pilote de mesure de vehicule-lis.html : une iframe de largeur exacte par cas, JSON ecrit dans #sortie.
+--><html><head><meta charset="UTF-8"></head><body><pre id="sortie">en cours</pre><div id="c"></div><script>
+var LARG=[720,744,768,1024],N=21,CAS=[];LARG.forEach(function(l){for(var i=0;i<N;i++)CAS.push({l:l,i:i});});
+function R(e){var r=e.getBoundingClientRect();return [Math.round(r.top),Math.round(r.bottom)];}
+var out=[],c=document.getElementById("c");
+(function next(k){if(k>=CAS.length){document.getElementById("sortie").textContent=JSON.stringify(out);return;}
+var q=CAS[k],f=document.createElement("iframe");f.width=q.l;f.height=1600;f.style.border=0;f.style.display="block";f.src="vehicule-lis.html?i="+q.i;
+f.onload=function(){setTimeout(function(){var d=f.contentDocument,b=[].slice.call(d.querySelectorAll("#r button")).map(R);
+out.push({l:q.l,i:q.i,texte:R(d.getElementById("t")),enonce:R(d.getElementById("e")),props:b,cabinet:R(d.getElementById("cab")),hscroll:d.documentElement.scrollWidth>d.documentElement.clientWidth});c.removeChild(f);next(k+1);},60);};
+c.appendChild(f);})(0);</script></body></html>

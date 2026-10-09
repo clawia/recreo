@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!--
+  VEHICULE DE MESURE, JAMAIS DU CODE SERVI. Structure de fragments/manche.html pour un item avec texteSupport,
+  sans dessin ni bloc adulte. Parametre i = indice dans lis-items-mesures.js (0 a 19 : les vingt items de
+  cm1-lire-et-restituer.yaml ; 20 : texte de 70 mots de mesure-ines-lis-pli-s42.md avec les propositions les
+  plus longues du paquet). La consigne est un marqueur d'une ligne.
+--><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/vendor/bootstrap.min.css"><link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/css/recreo.css"></head><body>
+<header class="entete"><nav class="container entete-contenu"><img src="../../../adapters/adapter-web/src/main/resources/static/favicon.ico" alt="" class="icone-entete"><h1 class="nom-site">Recreo</h1><a class="btn chip-niveau" data-role="entree" href="#">CP</a><a class="btn chip-niveau" data-role="entree" href="#">CM1</a><a class="btn lien-accueil" data-role="sortie" href="#">Les jeux</a></nav></header>
+<main id="jeu" class="container zone-jeu"><div class="ecran-de-jeu"><p class="score">Score : 2</p><p class="consigne">[Consigne du jeu.]</p>
+<p class="texte-support" id="t"></p><p class="enonce" tabindex="-1" id="e"></p>
+<div class="cabinet" id="cab"><div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div><form class="propositions" id="r"></form>
+<div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div><div class="cabinet-socle" aria-hidden="true"></div></div></div></main>
+<script src="lis-items-mesures.js"></script>
+<script>
+var i=+new URLSearchParams(location.search).get("i"), x=ITEMS[i], P=[x.bonne].concat(x.dist);
+document.getElementById("t").textContent=x.texte; document.getElementById("e").textContent=x.enonce;
+var h=""; P.forEach(function(){h+='<button type="button" class="btn proposition" data-role="action"></button>';});
+document.getElementById("r").innerHTML=h; var b=document.querySelectorAll("#r button"); P.forEach(function(p,k){b[k].textContent=p;});
+</script></body></html>

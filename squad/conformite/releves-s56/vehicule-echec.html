@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+  VEHICULE DE MESURE, JAMAIS DU CODE SERVI (meme statut que squad/design/prototype-ines-s55-deux-oeuvres-ensemble.html).
+  Charge les deux feuilles reelles dans l'ordre d'ADR-0014, reprend la structure de
+  templates/fragments/manche.html pour les propositions en image, et pose les regles candidates de
+  proposition-ines-forme-art-cp-10.md dans un <style> APRES la feuille maison. Aucune n'est dans recreo.css.
+  Parametres d'URL : etat = fraiche | echec | echec2 | revelation ; opt = base | A | B | C | P | AP
+  (base : le rendu livre ; A : croix sous la case ; B : cadre en tirets ; C : A + B ;
+  P : plafond porte par l'image ; AP : A + P). Les textes entre crochets sont des marqueurs de longueur.
+-->
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mock s56 echec</title>
+<link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/css/recreo.css">
+<style id="candidates"></style>
+</head><body>
+<header class="entete"><nav class="container entete-contenu"><img src="../../../adapters/adapter-web/src/main/resources/static/favicon.ico" alt="" class="icone-entete"><h1 class="nom-site">Recreo</h1><a class="btn chip-niveau" data-role="entree" href="#">CP</a><a class="btn chip-niveau" data-role="entree" href="#">CM1</a><a class="btn lien-accueil" data-role="sortie" href="#">Les jeux</a></nav></header>
+<main id="jeu" class="container zone-jeu">
+<div class="ecran-de-jeu ecran-deux-oeuvres">
+<p class="score">Score : 2</p>
+<p class="consigne">[Consigne du jeu.]</p>
+<div class="illustration"><img class="image-item" alt="" src="../../../adapters/adapter-web/src/main/resources/static/oeuvres/oeuvre-femme-au-luth.jpg"></div>
+<p class="enonce" tabindex="-1">[Énoncé de la question.]</p>
+<div class="cabinet"><div class="cabinet-bandeau" aria-hidden="true"><span class="cabinet-visage"></span></div>
+<form class="propositions propositions-oeuvres" id="rangee"></form>
+<div class="cabinet-levier" aria-hidden="true"><span class="cabinet-levier-embase"></span></div><div class="cabinet-socle" aria-hidden="true"></div></div>
+<div class="message-jeu" role="status" id="msg"></div>
+</div></main>
+<script>
+var P = new URLSearchParams(location.search), etat = P.get("etat")||"fraiche", opt = P.get("opt")||"base";
+var imgs = ["oeuvre-hippopotame","oeuvre-grande-vague","oeuvre-marche-aux-chevaux"];
+var cls = ["","",""], foc = -1;
+if (etat==="echec") { cls[1]=" deja-essayee"; foc=1; }
+if (etat==="echec2") { cls[0]=" deja-essayee"; cls[1]=" deja-essayee"; foc=1; }
+if (etat==="revelation") { cls[0]=" deja-essayee"; cls[1]=" deja-essayee"; foc=2; }
+var h="";
+imgs.forEach(function(n,i){ h += '<button type="button" class="btn proposition'+cls[i]+'" data-role="action" aria-label="Choisir cette œuvre"'+(etat==="revelation"&&i===2?' data-oeuvre-revelee="true"':'')+'><img class="image-item" alt="" src="../../../adapters/adapter-web/src/main/resources/static/oeuvres/'+n+'.jpg"></button>'; });
+document.getElementById("rangee").innerHTML = h;
+var m = "";
+if (etat!=="fraiche") m += '<div class="signal est-faux"><span class="icone-signal" aria-hidden="true"></span><p class="verdict">[Message du jeu.]</p></div>';
+if (etat==="revelation") m += '<p class="reponse-revelee">C\'est cette œuvre qui va avec. Appuie dessus.</p><p class="explication">[Explication de l\'item sur deux lignes à 360 px.]</p>';
+else if (etat!=="fraiche") m += '<p class="indice">[Indice de l\'item sur deux lignes à 360 px.]</p>';
+document.getElementById("msg").innerHTML = m;
+var SVG = "url('marque-echec-candidate.svg')";
+var CA = ".propositions-oeuvres:has(.proposition.deja-essayee){padding-bottom:3.25rem}"
+ + ".propositions-oeuvres .proposition.deja-essayee::before{content:'';position:absolute;top:calc(100% + 0.25rem);left:50%;width:2.5rem;height:2.5rem;margin-left:-1.25rem;background:"+SVG+" center/contain no-repeat;pointer-events:none}";
+var CB = ".propositions-oeuvres .proposition.deja-essayee img{border:0.25rem dashed var(--recreo-texte)}";
+var CP = ".propositions-oeuvres .proposition img{max-height:min(100%,11rem);max-width:min(100%,11rem)}";
+document.getElementById("candidates").textContent = opt==="P"?CP : opt==="AP"?CA+CP : opt==="A"?CA : opt==="B"?CB : opt==="C"?CA+CB : "";
+if (foc>=0) { document.querySelectorAll("#rangee button")[foc].focus(); }
+</script></body></html>

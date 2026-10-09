@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+  Pilote de mesure de vehicule-echec.html : une iframe de largeur exacte par cas (ADR-0025), JSON ecrit dans #sortie.
+  Lancement : voir proposition-ines-forme-art-cp-10.md, section 6.
+-->
+<html><head><meta charset="UTF-8"></head><body><pre id="sortie">en cours</pre><div id="c"></div>
+<script>
+var LARG=[360,390,576,640,720,744,768,992,1200,1440], ETATS=["fraiche","echec","echec2","revelation"], OPTS=["base","A","P","AP"], CAS=[];
+LARG.forEach(function(l){OPTS.forEach(function(o){ETATS.forEach(function(e){CAS.push({l:l,o:o,e:e});});});});
+function R(r){return {g:+r.left.toFixed(1),d:+r.right.toFixed(1),h:+r.top.toFixed(1),b:+r.bottom.toFixed(1)};}
+function inter(a,b){return a.g<b.d&&b.g<a.d&&a.h<b.b&&b.h<a.b;}
+function mes(doc,win){
+  var m={}, ecran=doc.querySelector(".ecran-de-jeu"), bas=0;
+  Array.prototype.forEach.call(ecran.querySelectorAll("*"),function(n){var r=n.getBoundingClientRect(); if(r.height>0&&r.bottom>bas&&!n.classList.contains("cabinet-levier")&&!n.classList.contains("cabinet-levier-embase")) bas=r.bottom;});
+  m.basContenu=+bas.toFixed(1);
+  var btns=Array.prototype.slice.call(doc.querySelectorAll("#rangee button")), cases=btns.map(function(b){return R(b.getBoundingClientRect());}), imgs=btns.map(function(b){return R(b.querySelector("img").getBoundingClientRect());});
+  m.cases=cases; m.imgs=imgs; m.largeurCase=+(cases[0].d-cases[0].g).toFixed(1);
+  m.plusGrandCoteImage=imgs.map(function(r){return +Math.max(r.d-r.g,r.b-r.h).toFixed(1);});
+  var soc=R(doc.querySelector(".cabinet-socle").getBoundingClientRect()), cab=R(doc.querySelector(".cabinet").getBoundingClientRect()), msg=doc.querySelector("#msg").getBoundingClientRect();
+  m.cabinet=cab; m.socle=soc; m.hautMessage=+msg.top.toFixed(1);
+  m.pastilles=[]; m.chevauchements=[];
+  btns.forEach(function(b,i){
+    if(!b.classList.contains("deja-essayee"))return;
+    var cs=win.getComputedStyle(b,"::before"); if(cs.content==="none"||cs.content==="normal")return;
+    var br=b.getBoundingClientRect(), x=br.left+b.clientLeft+parseFloat(cs.left)+parseFloat(cs.marginLeft), y=br.top+b.clientTop+parseFloat(cs.top);
+    var p={g:+x.toFixed(1),d:+(x+parseFloat(cs.width)).toFixed(1),h:+y.toFixed(1),b:+(y+parseFloat(cs.height)).toFixed(1)};
+    m.pastilles.push({case:i,rect:p,largeur:parseFloat(cs.width)});
+    btns.forEach(function(_,j){ if(inter(p,imgs[j])) m.chevauchements.push("image "+j); if(inter(p,cases[j])) m.chevauchements.push("case "+j);});
+    if(inter(p,soc)) m.chevauchements.push("socle");
+    if(p.b>cab.b-8) m.chevauchements.push("sort du cadre du cabinet");
+    if(p.g<0||p.d>doc.documentElement.clientWidth) m.chevauchements.push("sort de l'ecran");
+  });
+  m.defilementHorizontal=doc.documentElement.scrollWidth>doc.documentElement.clientWidth;
+  return m;
+}
+var out=[], c=document.getElementById("c");
+(function next(i){
+  if(i>=CAS.length){document.getElementById("sortie").textContent=JSON.stringify(out);return;}
+  var k=CAS[i], f=document.createElement("iframe"); f.width=k.l; f.height=1600; f.style.border=0; f.style.display="block";
+  f.src="vehicule-echec.html?etat="+k.e+"&opt="+k.o;
+  f.onload=function(){setTimeout(function(){var m=mes(f.contentDocument,f.contentWindow); m.l=k.l;m.o=k.o;m.e=k.e;out.push(m);c.removeChild(f);next(i+1);},80);};
+  c.appendChild(f);
+})(0);
+</script></body></html>
