@@ -433,6 +433,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S55-BR-FRA-CE1-L2 (s55) : entree neuve, FRA-CE1-12, identifier la classe d'un mot
             // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.3).
             "bandit-manchot-classes-de-mots-ce1",
+            // S56-BR-FRA-CE1-13 (s56) : entree neuve, FRA-CE1-13, trouver le verbe et son sujet
+            // (squad/conformite/ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md, section 2).
+            "bandit-manchot-verbe-sujet-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -728,6 +731,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S55-BR-FRA-CE1-L2 (s55) : titre neuf, sans niveau (ADR-0078). L'espace avant le point
             // d'interrogation est insecable (ADR-0067).
             "Quelle sorte de mot ?",
+            // S56-BR-FRA-CE1-13 (s56) : titre neuf, sans niveau (ADR-0078), celui que propose
+            // nadia-prof (squad/conformite/ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md,
+            // section 2.6).
+            "Le verbe et son sujet",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
@@ -1672,6 +1679,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-12).
             "Identifier la classe d'un mot dans une phrase : nom commun, nom propre, verbe, "
                     + "déterminant, adjectif.",
+            // S56-BR-FRA-CE1-13 (s56) : competence neuve, FRA-CE1-13, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-13).
+            "Identifier le verbe d'une phrase et son sujet (un nom, un groupe nominal court ou un "
+                    + "pronom personnel).",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",
