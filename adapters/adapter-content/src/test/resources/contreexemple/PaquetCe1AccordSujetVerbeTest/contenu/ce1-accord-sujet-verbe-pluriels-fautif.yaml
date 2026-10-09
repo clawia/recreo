@@ -1,0 +1,28 @@
+schema: 1
+id: ce1-accord-sujet-verbe-pluriels-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif d'ACV-CE1-R2 pour PaquetCe1AccordSujetVerbeTest. Trois pluriels,
+# un seul du premier groupe en -ent ; "manger" est en -ger (exclu de PRS-CE1-1) ; "viens" n'est pas une
+# forme de "jouer". Les espaces insecables sont ecrites en \u00A0.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Accorder le verbe avec son sujet au présent, quand le sujet est un pronom personnel ou un nom placé juste avant le verbe."
+lignesDeReferentiel: ["FRA-CE1-14"]
+items:
+  # verbe en -ger, hors de PRS-CE1-1
+  - enonce: "«\u00A0manger\u00A0»\u00A0: les enfants ___ une pomme."
+    bonneReponse: "mangent"
+    distracteurs: ["mange", "mangeons"]
+    indice: "Regarde le sujet : un seul ou plusieurs ?"
+  # distracteur "viens" d'une autre famille
+  - enonce: "«\u00A0jouer\u00A0»\u00A0: les chats ___ dans le jardin."
+    bonneReponse: "jouent"
+    distracteurs: ["joue", "viens"]
+    indice: "Regarde le sujet : un seul ou plusieurs ?"
+  # pluriel irregulier, qui s'entend
+  - enonce: "«\u00A0être\u00A0»\u00A0: les chats ___ sur le toit."
+    bonneReponse: "sont"
+    distracteurs: ["est", "es"]
+    indice: "Regarde le sujet : un seul ou plusieurs ?"
