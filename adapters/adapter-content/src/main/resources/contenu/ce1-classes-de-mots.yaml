@@ -28,143 +28,143 @@ items:
   - enonce: "Le petit « chat » dort sur le tapis."
     bonneReponse: "nom commun"
     distracteurs: ["verbe", "adjectif"]
-    indice: "Cherche à quoi sert ce mot dans la phrase."
+    indice: "Ce mot va-t-il tout seul après « un » ou « une » ?"
     partDesignee: "chat"
   # CLM-CE1-1: verbe
   - enonce: "Le chat « dort » sur le lit."
     bonneReponse: "verbe"
     distracteurs: ["nom commun", "adjectif"]
-    indice: "Relis la phrase en pensant au mot entre guillemets."
+    indice: "Ce mot change-t-il si tu mets « hier » devant la phrase ?"
     partDesignee: "dort"
   # CLM-CE1-1: adjectif avant le nom
   - enonce: "Mia a un « joli » chapeau."
     bonneReponse: "adjectif"
     distracteurs: ["nom commun", "déterminant"]
-    indice: "Compare ce mot aux autres mots de la phrase."
+    indice: "Peux-tu mettre « très » devant ce mot ?"
     partDesignee: "joli"
   # CLM-CE1-1: nom propre
   - enonce: "Le chien de « Léa » court vite."
     bonneReponse: "nom propre"
     distracteurs: ["nom commun", "adjectif"]
-    indice: "Relis la phrase en pensant au mot entre guillemets."
+    indice: "Ce mot a-t-il une majuscule au milieu de la phrase ?"
     partDesignee: "Léa"
   # CLM-CE1-1: déterminant
   - enonce: "Tom mange « un » gâteau."
     bonneReponse: "déterminant"
     distracteurs: ["nom commun", "verbe"]
-    indice: "Demande-toi ce que ce mot fait dans la phrase."
+    indice: "Mets « le » ou « ce » à sa place : la phrase reste-t-elle juste ?"
     partDesignee: "un"
   # CLM-CE1-1: nom commun, adjectif avant le nom
   - enonce: "Inès porte un joli « sac »."
     bonneReponse: "nom commun"
     distracteurs: ["nom propre", "adjectif"]
-    indice: "Relis la phrase en pensant au mot entre guillemets."
+    indice: "Ce mot va-t-il tout seul après « un » ou « une » ?"
     partDesignee: "sac"
   # CLM-CE1-1: verbe
   - enonce: "Les enfants « jouent » dans la cour."
     bonneReponse: "verbe"
     distracteurs: ["nom commun", "déterminant"]
-    indice: "Demande-toi ce que ce mot fait dans la phrase."
+    indice: "Ce mot change-t-il si tu mets « hier » devant la phrase ?"
     partDesignee: "jouent"
   # CLM-CE1-1: adjectif avant le nom
   - enonce: "Le « grand » arbre perd ses feuilles."
     bonneReponse: "adjectif"
     distracteurs: ["nom commun", "verbe"]
-    indice: "Cherche à quoi sert ce mot dans la phrase."
+    indice: "Peux-tu mettre « très » devant ce mot ?"
     partDesignee: "grand"
   # CLM-CE1-1: nom propre
   - enonce: "Ce matin, « Mia » joue au ballon."
     bonneReponse: "nom propre"
     distracteurs: ["verbe", "nom commun"]
-    indice: "Demande-toi ce que ce mot fait dans la phrase."
+    indice: "Ce mot a-t-il une majuscule au milieu de la phrase ?"
     partDesignee: "Mia"
   # CLM-CE1-1: déterminant
   - enonce: "Mia ouvre « la » porte."
     bonneReponse: "déterminant"
     distracteurs: ["nom propre", "adjectif"]
-    indice: "Compare ce mot aux autres mots de la phrase."
+    indice: "Mets « une » ou « sa » à sa place : la phrase reste-t-elle juste ?"
     partDesignee: "la"
   # CLM-CE1-1: nom commun, adjectif avant le nom
   - enonce: "Tom mange une grosse « pomme »."
     bonneReponse: "nom commun"
     distracteurs: ["verbe", "déterminant"]
-    indice: "Demande-toi ce que ce mot fait dans la phrase."
+    indice: "Ce mot va-t-il tout seul après « un » ou « une » ?"
     partDesignee: "pomme"
   # CLM-CE1-1: verbe
   - enonce: "Elle « mange » une pomme rouge."
     bonneReponse: "verbe"
     distracteurs: ["adjectif", "nom propre"]
-    indice: "Compare ce mot aux autres mots de la phrase."
+    indice: "Ce mot change-t-il si tu mets « demain » devant la phrase ?"
     partDesignee: "mange"
   # CLM-CE1-1: adjectif après le nom
   - enonce: "Le ballon « rond » roule vite."
     bonneReponse: "adjectif"
     distracteurs: ["verbe", "nom commun"]
-    indice: "Relis la phrase en pensant au mot entre guillemets."
+    indice: "Peux-tu mettre « très » devant ce mot ?"
     partDesignee: "rond"
   # CLM-CE1-1: nom propre
   - enonce: "Le facteur salue « Noé » devant l'école."
     bonneReponse: "nom propre"
     distracteurs: ["déterminant", "nom commun"]
-    indice: "Compare ce mot aux autres mots de la phrase."
+    indice: "Ce mot a-t-il une majuscule au milieu de la phrase ?"
     partDesignee: "Noé"
   # CLM-CE1-1: déterminant
   - enonce: "Les élèves lisent « des » livres."
     bonneReponse: "déterminant"
     distracteurs: ["nom commun", "verbe"]
-    indice: "Cherche à quoi sert ce mot dans la phrase."
+    indice: "Mets « les » ou « ses » à sa place : la phrase reste-t-elle juste ?"
     partDesignee: "des"
   # CLM-CE1-1: nom commun, déterminant avant le nom
   - enonce: "Le « soleil » brille dans le ciel."
     bonneReponse: "nom commun"
     distracteurs: ["adjectif", "nom propre"]
-    indice: "Compare ce mot aux autres mots de la phrase."
+    indice: "Ce mot va-t-il tout seul après « un » ou « une » ?"
     partDesignee: "soleil"
   # CLM-CE1-1: verbe
   - enonce: "Fatou « range » ses crayons."
     bonneReponse: "verbe"
     distracteurs: ["nom commun", "déterminant"]
-    indice: "Cherche à quoi sert ce mot dans la phrase."
+    indice: "Ce mot change-t-il si tu mets « hier » devant la phrase ?"
     partDesignee: "range"
   # CLM-CE1-1: adjectif attribut, apres le verbe etre
   - enonce: "L'eau est « froide »."
     bonneReponse: "adjectif"
     distracteurs: ["nom commun", "verbe"]
-    indice: "Demande-toi ce que ce mot fait dans la phrase."
+    indice: "Peux-tu mettre « très » devant ce mot ?"
     partDesignee: "froide"
   # CLM-CE1-1: nom propre
   - enonce: "Le bus de « Karim » arrive."
     bonneReponse: "nom propre"
     distracteurs: ["nom commun", "verbe"]
-    indice: "Cherche à quoi sert ce mot dans la phrase."
+    indice: "Ce mot a-t-il une majuscule au milieu de la phrase ?"
     partDesignee: "Karim"
   # CLM-CE1-1: déterminant
   - enonce: "Lina aime « cette » histoire."
     bonneReponse: "déterminant"
     distracteurs: ["adjectif", "nom commun"]
-    indice: "Relis la phrase en pensant au mot entre guillemets."
+    indice: "Mets « une » ou « son » à sa place : la phrase reste-t-elle juste ?"
     partDesignee: "cette"
   # CLM-CE1-1: nom commun, déterminant avant le nom
   - enonce: "La maîtresse ouvre la « fenêtre »."
     bonneReponse: "nom commun"
     distracteurs: ["nom propre", "verbe"]
-    indice: "Cherche à quoi sert ce mot dans la phrase."
+    indice: "Ce mot va-t-il tout seul après « un » ou « une » ?"
     partDesignee: "fenêtre"
   # CLM-CE1-1: verbe
   - enonce: "Le vent « souffle » très fort."
     bonneReponse: "verbe"
     distracteurs: ["nom commun", "adjectif"]
-    indice: "Relis la phrase en pensant au mot entre guillemets."
+    indice: "Ce mot change-t-il si tu mets « demain » devant la phrase ?"
     partDesignee: "souffle"
   # CLM-CE1-1: adjectif après le nom
   - enonce: "Karim a un chat « noir »."
     bonneReponse: "adjectif"
     distracteurs: ["nom propre", "nom commun"]
-    indice: "Compare ce mot aux autres mots de la phrase."
+    indice: "Peux-tu mettre « très » devant ce mot ?"
     partDesignee: "noir"
   # CLM-CE1-1: déterminant
   - enonce: "Noé range « ses » crayons."
     bonneReponse: "déterminant"
     distracteurs: ["nom propre", "verbe"]
-    indice: "Demande-toi ce que ce mot fait dans la phrase."
+    indice: "Mets « les » ou « des » à sa place : la phrase reste-t-elle juste ?"
     partDesignee: "ses"

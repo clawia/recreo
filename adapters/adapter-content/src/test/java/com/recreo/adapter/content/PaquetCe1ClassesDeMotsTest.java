@@ -69,6 +69,13 @@ class PaquetCe1ClassesDeMotsTest {
 
     private static final Set<String> PRENOMS_MASCULINS = Set.of("Tom", "Karim", "Noé");
 
+    /** CLM-CE1-R1, P1 : les quatre textes qui tournaient sur les 24 items avant s56. */
+    private static final Set<String> ANCIENS_INDICES = Set.of(
+            "Cherche à quoi sert ce mot dans la phrase.",
+            "Relis la phrase en pensant au mot entre guillemets.",
+            "Compare ce mot aux autres mots de la phrase.",
+            "Demande-toi ce que ce mot fait dans la phrase.");
+
     private static final Pattern LETTRE_OU_CHIFFRE = Pattern.compile("[\\p{L}\\p{N}]");
 
     private static final List<String> LEXIQUE_TRV_CE1_4 = List.of(
@@ -153,6 +160,45 @@ class PaquetCe1ClassesDeMotsTest {
                 .as("TRV-CE1-6 : %d occurrences de prénoms féminins, %d de masculins, à un près",
                         feminins, masculins)
                 .isLessThanOrEqualTo(1);
+    }
+
+    private static String indiceDe(Question item) {
+        return item.indice().orElseThrow(() -> new AssertionError(
+                "CLM-CE1-R1 (P2) : '" + item.enonce() + "' n'a pas d'indice"));
+    }
+
+    private static boolean contientLeMot(String texte, String mot) {
+        return Pattern.compile("(?<![\\p{L}\\p{N}])" + Pattern.quote(mot) + "(?![\\p{L}\\p{N}])", FLAGS)
+                .matcher(texte).find();
+    }
+
+    /**
+     * CLM-CE1-R1, P1 (arbitrage prealable de s56 instance A, section 5.2) : aucun item ne porte
+     * encore l'un des quatre textes qui disaient seulement de reflechir.
+     */
+    private static void verifierQueLesQuatreAnciensIndicesOntDisparu(List<Question> items) {
+        for (Question item : items) {
+            assertThat(ANCIENS_INDICES)
+                    .as("CLM-CE1-R1 (P1) : '%s' porte encore l'un des quatre anciens indices",
+                            item.enonce())
+                    .doesNotContain(indiceDe(item));
+        }
+    }
+
+    /**
+     * CLM-CE1-R1, P4 : un indice ne nomme jamais la classe de sa bonne reponse ; pour nom commun et
+     * nom propre, il ne contient pas non plus le mot "nom". Mot entier, casse ignoree.
+     */
+    private static void verifierQuAucunIndiceNeNommeLaClasseDeSaBonneReponse(List<Question> items) {
+        for (Question item : items) {
+            String indice = indiceDe(item);
+            boolean estUnNom = item.bonneReponse().startsWith("nom ");
+            String interdit = estUnNom ? "nom" : item.bonneReponse();
+            assertThat(contientLeMot(indice, interdit))
+                    .as("CLM-CE1-R1 (P4) : '%s' - l'indice '%s' nomme la classe de la bonne réponse"
+                            + " '%s' (mot '%s')", item.enonce(), indice, item.bonneReponse(), interdit)
+                    .isFalse();
+        }
     }
 
     /**
@@ -281,6 +327,24 @@ class PaquetCe1ClassesDeMotsTest {
     }
 
     @Test
+    void clmR1P1LesQuatreAnciensIndicesOntDisparu() {
+        verifierQueLesQuatreAnciensIndicesOntDisparu(items());
+    }
+
+    @Test
+    void clmR1P2ChaqueItemPorteUnIndice() {
+        List<Question> items = items();
+        assertThat(items).hasSize(24);
+        assertThat(items.stream().map(PaquetCe1ClassesDeMotsTest::indiceDe).toList())
+                .as("CLM-CE1-R1 (P2) : un indice par item").hasSize(24);
+    }
+
+    @Test
+    void clmR1P4AucunIndiceNeNommeLaClasseDeSaBonneReponse() {
+        verifierQuAucunIndiceNeNommeLaClasseDeSaBonneReponse(items());
+    }
+
+    @Test
     void k5LaConsigneDuJeuDitSorteEtNonClasse() {
         verifierLaConsigneDuJeu(lire(FICHIER_CATALOGUE));
     }
@@ -308,6 +372,35 @@ class PaquetCe1ClassesDeMotsTest {
         assertThatThrownBy(() -> verifierLEquilibreDesPrenoms(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("TRV-CE1-6");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif de K4 porte encore les anciens indices (P1). */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurSesAnciensIndices() {
+        List<Question> items = tousLesItems(new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-classes-de-mots-fautif"));
+
+        assertThatThrownBy(() -> verifierQueLesQuatreAnciensIndicesOntDisparu(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CLM-CE1-R1 (P1)");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif de P4. Un indice dit "verbe", l'autre dit "nom". */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnIndiceQuiNommeLaClasse() {
+        List<Question> items = tousLesItems(new YamlContentPackLoader(CONTRE_EXEMPLE_CLASSPATH)
+                .chargerPaquet("ce1-classes-de-mots-indices-fautif"));
+
+        assertThatThrownBy(() -> verifierQuAucunIndiceNeNommeLaClasseDeSaBonneReponse(
+                items.stream().filter(i -> i.enonce().contains("dort")).toList()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CLM-CE1-R1 (P4)")
+                .hasMessageContaining("dort");
+        assertThatThrownBy(() -> verifierQuAucunIndiceNeNommeLaClasseDeSaBonneReponse(
+                items.stream().filter(i -> i.enonce().contains("soleil")).toList()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("CLM-CE1-R1 (P4)")
+                .hasMessageContaining("soleil");
     }
 
     /** ADR-0013 obligation 3 : le catalogue fautif de K5. Sa consigne dit "classe". */

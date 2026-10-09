@@ -1,0 +1,22 @@
+schema: 1
+id: ce1-classes-de-mots-indices-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1ClassesDeMotsTest pour CLM-CE1-R1 (P4). Le premier
+# indice dit "verbe", classe de sa bonne reponse ; le second contient le mot "nom" sur un nom commun.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Identifier la classe d'un mot dans une phrase : nom commun, nom propre, verbe, déterminant, adjectif."
+lignesDeReferentiel: ["FRA-CE1-12"]
+items:
+  - enonce: "Le chat « dort » sur le lit."
+    bonneReponse: "verbe"
+    distracteurs: ["nom commun", "adjectif"]
+    indice: "Cherche si c'est un verbe."
+    partDesignee: "dort"
+  - enonce: "Le « soleil » brille dans le ciel."
+    bonneReponse: "nom commun"
+    distracteurs: ["adjectif", "nom propre"]
+    indice: "Cherche si c'est un nom de chose."
+    partDesignee: "soleil"
