@@ -283,3 +283,40 @@ Mots : **"Ecart de 0,5"**. Je les rattache a l'issue (a) de 2.3 : **ecart total 
 
 - **Statut : `Proposee`, inchange.** `Q4` (ordre des matieres) reste sans reponse et n'est pas reprise sous un motif de forme 1 (0.5). Le point que 0.5 nommait comme second point ouvert, l'arbitrage de forme, est ferme par A.1.
 - Routage : `sofia-sm` porte 8,5 sur 8,0 au planning, B a 4,5 ; `nadia-prof` ecrit `S56-ARB-B` avec le prix de la forme dans ce total. Aucun code ni contenu change par cet amendement ; la matrice reste a 141 / 182. Ne fixe aucun tarif, ne prononce aucun Done.
+
+---
+
+## Amendement du 2026-10-09 (s56, `camille-po`, troisieme) : B a 4,75, capacite en attente, criteres des postes, constat de forme 3
+
+Annotation datee. Rien au-dessus n'est reecrit ; les lignes remplacees sont nommees. Sources lues : `ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md` (`nadia-prof`, instance A), `ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md` (instance B), `avis-faisabilite.md` de s56 (`theo-archi`). Le detail des criteres est au backlog, "Sprint 56", annotation du meme jour.
+
+### A.4 "Oui, a 4,75"
+
+Forme 2 de `DEC-0062` : `de l'utilisatrice`, le 2026-10-09, mots recus par l'agent lanceur qui les atteste (meme reserve que 0.1 et A.1). Mots : **"Oui, a 4,75"**, en reponse a la question `U1` de l'instance A (section 9 de son arbitrage) et de l'instance B (D4, 2.3) : l'ecart de 0,5 vaut-il quelle que soit sa repartition entre les instances, B montant a 4,75 ?
+
+- **L'ecart de 0,5 est valable quelle que soit la repartition** ; B est a **4,75**, sous le plafond dur de 5,0 (`PAR-8`). Il reste un ecart accorde pour s56 seulement, pas une jurisprudence (`DEC-0114` A.20, A.1).
+- **`PAR-2` : le choix des oeuvres distractrices (`S56-ART-CP-10-OEUVRES`, 0,25) est sur B.** Les deux instances le lisent ainsi (arbitrage A 3.1, arbitrage B 2.1). Story, prix, regles et ordre inchanges. **Remplace** : 2.1 (colonne A : "Choix des oeuvres distractrices" 0,25 passe en colonne B), 2.3 point 2 (la lecture est rendue ; la question qu'il posait est close), section 7 (instance de `S56-ART-CP-10-OEUVRES` : B), et la phrase de A.3 "B a 4,5" (B a 4,75).
+- Le point ouvert de A.1 ("si `nadia-prof` le place sur B, B monte a 4,75 ... un amendement et une question de plus") est ferme par ces mots. **Le document des oeuvres peut s'ecrire** : l'instance B l'attendait (arbitrage B 2.3).
+
+### A.5 Capacite : deux lectures de `nadia-prof`, ligne en attente
+
+| Lecture | A | B | Somme |
+|---|---|---|---|
+| Instance B (arbitrage B, 2.2 et 5), rejeu de `ACV-CE1-R1` et `R2` separe | 3,75 | 4,75 | 8,5 |
+| Instance A (arbitrage A, 3.2 et 8), rejeu groupe 0,5 | 3,5 | 4,75 | 8,25 |
+
+**Les deux sont ecrites, aucune n'est tranchee** : une reconciliation est en cours chez l'instance B ; l'arbitrage A la demande aussi (section 6). **Cette ligne de la decision est en attente**, et `sofia-sm` ne porte pas un total de A a la review avant qu'elle soit close. Sous les deux la somme reste sous 8,5. **Remplace** : 2.1, ligne "Total O3" colonne A (4,0) et la somme de A.1 pour A (4,0) ; les 0,25 ou 0,5 non alloues sur A ne sont alloues a rien sans amendement (2.4). **A9** : les deux instances ecrivent 3,5 consommes pour B a s55 ; ligne close, comme la cloture de s55 la comptait.
+
+### A.6 Criteres des postes et `A10`
+
+Ecrits au backlog, "Sprint 56", annotation du 2026-10-09 : conditions `J1` a `J5` et onze proprietes decidables de `S56-BR-FRA-CE1-13` (le worktree de `marc-dev` peut s'ouvrir) ; `P1` a `P6` de `S55-CLM-CE1-R1` ; rejeu groupe de `ACV-CE1-R1` et `ACV-CE1-R2` a 0,5 (0,25 pour `R1` seule si `R2` n'est pas livree) ; quatre constantes, decoupage en commits, ordre et `B1` a `B14` de `S55-ART-CP-10-PAQUET` ; forme du garde-fou et sept morsures de `S55-ART-CP-10-PLAFOND`, **`PLAFOND` avant `ECHEC`**. Les morsures P1 a P6 sont toutes vertes sur l'existant (0 echec sur 2307), mesure du jour. **Le critere de la marque de `S56-ART-CP-10-ECHEC` n'est pas ecrit** : `nadia-prof` le juge (`Q1`), son worktree ne s'ouvre pas, section 3.1 inchangee. **`A10`** (0,5) : non engagee ; due avant la `DEC` d'ouverture de s57 si `Q3` est acceptee ; ne tient a s56 que dans la lecture de l'instance A et par un amendement que je n'ecris pas.
+
+### A.7 Constat pour la retro de s56 : une troisieme occurrence possible de la forme 3 sans formule
+
+`theo-archi` (avis de s56, section 8) signale que `DEC-0114`, lignes 13, 52 et 79, etiquette des sources "forme 3" sans la formule `recu de MASTER, sans source dans le depot`. **Verifie par moi** : lignes 13 (statut : *"n'avait que la forme 3 de `DEC-0062` pour source"*), 52 (*"Borne de la forme 3"*) et 79 (*"n'a pas d'autre source que la forme 3"*) portent l'etiquette ; la formule, blancs normalises, n'apparait **0 fois** dans le fichier, qui compte 19 occurrences de "forme 3". Avec `R2` de s53 et `R1` de s55, ce serait la troisieme occurrence en trois sprints. **Je ne la corrige pas** (`DEC-0062` section 7 : pas de balayage retroactif) et je ne la classe pas : distinguer une attribution d'une mention de la forme est le jugement du `relecteur-pedagogique` (`DEC-0062` section 4). Route : retro de s56, `sofia-sm` ; verification : `relecteur-pedagogique`. `theo-archi` refuse un test (47 fichiers sur 65 rouges) ; le refus et sa condition de revision (une convention structurelle, amendement de `squad/README.md` section 2 bis et de `DEC-0062`) sont a `sofia-sm`, `camille-po` et l'utilisatrice.
+
+### A.8 Statut, routage, limites
+
+- **Statut : `Proposee`, inchange.** `Q4` reste sans reponse et n'est pas reprise (0.5). Aucun mot de l'utilisatrice n'est cite pour `Q4`, `Q3`, `Q6`.
+- Routage : `sofia-sm` (planning : B a 4,75, A sous reserve de la reconciliation, `S56-ART-CP-10-OEUVRES` sur B) ; `nadia-prof`, instance B (document des oeuvres, critere de la marque, reconciliation) ; `marc-dev` (`S56-BR-FRA-CE1-13`, ses conditions sont ecrites) ; `yanis-qa` (quelles proprietes un test de paquet porte ; test des verbes du premier groupe) ; `relecteur-pedagogique` (A.7).
+- Aucun code ni contenu change par cet amendement ; la matrice reste a 141 / 182. Ne fixe aucun tarif, ne prononce aucun Done, n'ecrit pas le critere de la marque.

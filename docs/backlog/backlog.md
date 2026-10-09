@@ -20947,3 +20947,130 @@ Elle ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni fiche, ni cod
 ### Amendement du 2026-10-09 (s56, `camille-po`, `DEC-0116` A.1 et A.2)
 
 Annotation datee. Rien au-dessus n'est reecrit. Forme 2 de `DEC-0062`, mots recus par l'agent lanceur qui les atteste. **`Q-U1`** : "Ecart de 0,5" : ecart total de 0,5 pour s56 seulement, pas de jurisprudence ; somme 8,5 sur 8,0, B a 4,5, A a 4,0. **`S56-ART-CP-10-FORME` (0,25) n'est plus "hors de l'ecart"** : la mention du tableau des postes et de l'entree de cette story est remplacee par "couvert par l'ecart de 0,5". La lecture de `PAR-2` sur `S56-ART-CP-10-OEUVRES` reste a `nadia-prof` (`S56-ARB-A`, `S56-ARB-B`) ; sur B, B serait a 4,75, au-dela de l'ecart. **`Q-U2`** : "Reporter a s57, abandon ou placement ecrit alors" : `S54-OBS-SCI-CONSIGNE` reste reportee (second report), troisieme interdit, la `DEC` de s57 la place ou l'abandonne. Aucun critere de story ne change.
+
+### Amendement du 2026-10-09 (s56, `camille-po`, `DEC-0116` A.4 a A.7) : B a 4,75, conditions de `-13`, criteres de `CLM-CE1-R1` et `ACV-CE1-R2`, plafond, constantes du paquet
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; les lignes remplacees sont nommees. Sources lues : `ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md` (`nadia-prof`, instance A, 21:01), `ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md` (instance B, 20:58), `avis-faisabilite.md` de s56 (`theo-archi`, 21:04). Valeurs "aujourd'hui" : arbre `a772c822`, 2026-10-09, relues par moi quand une commande `grep` ou `ls` les donne ; **celles qu'un script de poste de `nadia-prof` a comptees (hors depot) sont les siennes, non relancees**, et je le dis a chaque fois.
+
+#### 1. Reponse de l'utilisatrice : "Oui, a 4,75"
+
+Forme 2 de `DEC-0062`, 2026-10-09, mots recus par l'agent lanceur qui les atteste. Elle repond a la question `U1` de l'arbitrage A (section 9) et de l'arbitrage B (D4, section 2.3) : l'ecart de 0,5 vaut-il quelle que soit sa repartition entre les instances, B montant a 4,75 ? **Oui.** Consequences, sur ses mots et sur les deux arbitrages, qui concordent : le choix des oeuvres distractrices est sur **B** (`PAR-1`, `PAR-2` ; arbitrage A 3.1, arbitrage B 2.1) ; B est a **4,75**, sous le plafond dur de 5,0. **Remplace** : dans le tableau "Postes de s56", la ligne `S56-ART-CP-10-OEUVRES`, instance A, devient **instance B** ; story, prix (0,25), regles et ordre inchanges. Le "A confirmer par `nadia-prof`" de l'entree de cette story est leve.
+
+#### 2. Capacite : deux lectures de `nadia-prof`, non reconciliees (ligne en attente)
+
+| Lecture | A | B | Somme | Ce qui les separe |
+|---|---|---|---|---|
+| `nadia-prof`, instance B (arbitrage B, 2.2 et 5) | 3,75 | 4,75 | 8,5 | `ACV-CE1-R1` (0,25) et `ACV-CE1-R2` (0,5) rejoues separement |
+| `nadia-prof`, instance A (arbitrage A, 3.2 et 8) | 3,5 | 4,75 | 8,25 | rejeu groupe de `ACV-CE1-R1` et `ACV-CE1-R2`, 0,5 |
+
+**Etat : en attente.** Une reconciliation est en cours chez l'instance B ; l'arbitrage A le demande aussi (section 6 : *"les deux calculs sont a comparer avant que `sofia-sm` en porte un a la review"*). **Je n'en tranche aucune et je n'ecris aucun total de A comme fait.** Sous les deux lectures la somme reste sous les 8,5 que l'ecart accorde. Decomposition, additionnee sans recompte : A selon l'instance A = arbitrage 0,5 + lot 1,0 + rejeu groupe 0,5 + `CLM-CE1-R1` 1,0 + marge 0,5 ; A selon l'instance B = arbitrage 0,5 + lot 1,0 + `ACV-CE1-R1` 0,25 + `ACV-CE1-R2` 0,5 + `CLM-CE1-R1` 1,0 + marge 0,5 ; B = arbitrage 0,5 + `EMC-CM1-R8`, `EMC-CM1-R9`, `EXC-R16` 0,75 + forme 0,25 + choix des oeuvres 0,25 + audit 2,5 + marge 0,5. **Les 0,25 ou 0,5 que la lecture de A laisse non alloues ne sont alloues a rien sans amendement** (`DEC-0116` 2.4).
+
+**A9** (capacite de B a s55) : les deux instances ecrivent **3,5 consommes** (arbitrage A section 6, arbitrage B section 0) ; le "4,0" de s55 comptait deux fois 0,25. Meme lecture que celle de ma cloture de s55 ; ligne close.
+
+#### 3. `S56-BR-FRA-CE1-13` : conditions de `nadia-prof` (`J1` a `J5`) et criteres decidables
+
+Remplace la ligne de l'entree qui disait que les conditions de ce paquet *"s'ajoutent par amendement a cette entree avant l'ouverture du worktree"* : **elles s'ajoutent ici, le worktree de `marc-dev` peut s'ouvrir** une fois cette annotation fusionnee. Les textes des cinq conditions sont dans `ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md`, sections 2.2 a 2.6 ; **le developpeur les applique mot pour mot, je ne les recopie pas** (mots de `nadia-prof`, `CON-5`). Rappel des objets :
+
+- **`J1`** (bloquante) : la majuscule ne designe jamais la reponse. Dix lignes `bonneReponse` perdent leur majuscule (items 1, 2, 4, 5, 6, 14, 16, 17, 18, 20, tableau de 2.2) ; une ligne d'en-tete est ajoutee dans le meme commit.
+- **`J2`** (bloquante, partie de `J1`) : items 9, 10, 12, 13, `enonce` et `distracteurs` remplaces (2.3), un prenom par item.
+- **`J3`** (bloquante, `TRV-CE1-6`) : item 7, `enonce` et `distracteurs` remplaces (2.4).
+- **`J4`** (bloquante) : *cité* sort des indices des items 1, 5, 9, 13, 17 (2.5).
+- **`J5`** : la consigne de l'entree de catalogue est celle de cinq entrees existantes (2.6) ; le titre est libre (`nadia-prof` propose *"Le verbe et son sujet"*).
+- **`H1`** (recommandation, pas une reserve si non prise) : indice de l'item 3 ; **`H2`** (limite nommee, pas une barre) : la position seule. Non decidables, a elle seule.
+
+**Perimetre C2 : `ce1-verbe-sujet.yaml` est dans la liste de la story**, la correction est decidee (arbitrage A, 2.8, derniere phrase). Cela remplace "seulement si `nadia-prof` decide une correction".
+
+Les onze proprietes de 2.8, `Y` = `adapters/adapter-content/src/main/resources/contenu/ce1-verbe-sujet.yaml`. Les proprietes 2, 3, 4, 8, 9 et 11 se portent dans `PaquetCe1VerbeSujetTest` ; **lesquelles un test de paquet peut porter est la question que `yanis-qa` tranche** (arbitrage A, 12) :
+
+| # | Propriete | Commande ou porteur | Aujourd'hui | Cible |
+|---|---|---|---|---|
+| 1 | Bonnes reponses a majuscule : les prenoms sujets seulement | `grep -c 'bonneReponse: "[[:upper:]]' Y` | 15 (relu) | 5 (items 8, 9, 10, 12, 13) |
+| 2 | Sur aucun item la bonne reponse n'est la seule des trois propositions a commencer par une majuscule | test du paquet | 12 (`nadia-prof`) | 0 |
+| 3 | Chaque proposition, casse de la premiere lettre ignoree, est une suite de mots de la phrase citee | test du paquet | 24 (`nadia-prof`) | 24 |
+| 4 | Prenoms des phrases citees, par occurrence : ecart feminins / masculins au plus 1 ; le test porte la liste des prenoms et leur genre | test du paquet | 7 et 5 (`nadia-prof`) | 8 et 8 avec les textes de `J2` et `J3` |
+| 5 | Plus de *cité* dans un indice, la formule neuve en place | `grep -c 'verbe cité' Y` ; `grep -c "qui fait l'action de ce verbe" Y` | 5 ; 0 (relus) | 0 ; 5 |
+| 6 | Les cinq `enonce` de `J2` et `J3` sont dans le paquet, mot pour mot, espaces insecables comprises | `grep -c` de chacun des cinq debuts : `Tom prête son livre à Lina`, `Inès montre un dessin à Sami`, `Noé écrit une carte à Awa`, `Sofia ouvre la porte à Hugo`, `Noé range ses crayons` | 0 pour chacun (relus) | 1 pour chacun ; la comparaison mot pour mot et les espaces insecables sont celles du test |
+| 7 | Consigne de l'entree, et la dette `TYP-1` de `catalogue.yaml` ne monte pas | `grep -c 'consigne: "Lis bien, puis choisis la bonne réponse."' catalogue.yaml` ; `grep -cP '^ *(titre\|consigne): ".* [?:;!]' catalogue.yaml` | 5 ; 23 (relus) | 6 ; 23 |
+| 8 | `VSJ-CE1-1` et `-2` : au moins 12 items de sujet ; pronom, nom seul, groupe nominal chacun dans au moins 5 items ; sur chaque item de sujet, la bonne reponse est avant le verbe cite et les deux distracteurs apres | test du paquet | 15 ; 5, 5, 5 ; 15 sur 15 (`nadia-prof`) | inchange |
+| 9 | Aucun indice ne contient une proposition de son item (mot entier, casse ignoree) : lecon d'`ACV-CE1-R1` | test du paquet | 0 (`nadia-prof`) | 0 |
+| 10 | 24 items | `grep -c '^ *- enonce:' Y` | 24 (relu) | 24 |
+| 11 | `TRV-CE1-2` : la bonne reponse est strictement la plus longue sur 12 items au plus | test du paquet | 6 (`nadia-prof`) | au plus 12 |
+
+- **Piege de la consigne** (`theo-archi`, avis de s56, section 6 point 5) : l'en-tete du fichier dit que *"la question est portee par la consigne du jeu"* ; une consigne de catalogue qui finit par `?` derriere une espace ordinaire monte la dette `TYP-1` et rougit le cliquet exact. La propriete 7 le garde (23 avant, 23 apres) ; la consigne de `J5` ne finit pas par un signe double.
+- **Rapport de `marc-dev`** (`rapport-marc-dev.md` du dossier de s56, C7) : "relu" ou "non relu" pour `J1` a `J5`, `TRV-CE1-5` avec la barre de s54, `TRV-CE1-6`, `VSJ-CE1-1` a `-3` (arbitrage A, 11).
+- **Aucune ligne de matrice ne bouge avant le verdict** ; `FRA-CE1-13` est `non couvert`. Prix 1,0, instance A, `marc-dev`. `PAR-13` : confirme par `nadia-prof` (arbitrage A, 1) ; **le paquet n'est pas remplace par `-15`**.
+
+#### 4. `S55-CLM-CE1-R1` : proprietes `P1` a `P6`
+
+Complete l'entree "Stories nees des verdicts" de "Cloture de s55" ; le critere de `nadia-prof` (*"un indice par item qui donne un test de classe ..."*) ne change pas. **Elle le complete pour le determinant** (arbitrage A, 0.2 et 5.1) : pour les cinq items de determinant (5, 10, 15, 20, 24), le test est que remplacer le mot par un autre petit mot (*un*, *une*, *le*, *la*, *des*) garde une phrase correcte. `Y` = `adapters/adapter-content/src/main/resources/contenu/ce1-classes-de-mots.yaml`.
+
+| # | Propriete | Commande ou porteur | Aujourd'hui | Cible |
+|---|---|---|---|---|
+| `P1` | Les quatre anciens textes ont disparu | la commande des quatre textes de la section "Cloture de s55" | 24 (relu) | 0 |
+| `P2` | Un indice par item | `grep -c '^ *indice:' Y` | 24 (relu) | 24 |
+| `P3` | Douze mots au plus par indice (convention d'`ADR-0089`) | test du paquet | 24 sur 24 (`nadia-prof`), deja vert : une borne | 24 sur 24 |
+| `P4` | Aucun indice ne nomme la classe de sa bonne reponse ; pour *nom commun* et *nom propre*, aucun ne contient le mot *nom* | test du paquet | 0 en faute (`nadia-prof`), deja vert : une borne | 0 |
+| `P5` | Aucun mot exclu par `TRV-CE1-4` dans un indice | commande `P5` ci-dessous | 0 (relu), deja vert : une borne | 0 |
+| `P6` | Le diff du paquet ne touche que des lignes `indice:` et des commentaires (dont les deux corrections d'`E3` de la fiche, section 3) | commande `P6` ci-dessous | sans objet | ne rend rien |
+
+Commandes, hors du tableau parce qu'elles portent des barres verticales :
+
+- `P5` : `grep -ciE '^ *indice:.*(graphème|phonème|préfixe|suffixe|radical|participe|auxiliaire|complément|antonyme|homophone|inférence)' Y`.
+- `P6` : `git diff round-two -- Y` suivi de `grep -E '^[-+] '` puis de `grep -vE '^[-+] *(indice:|#)'`.
+
+**Lecture honnete des "aujourd'hui"** : seul `P1` est rouge (24) ; `P2`, `P3`, `P4`, `P5` sont verts sur l'existant et bornent sans remplacer `P1` (ils empechent qu'un indice neuf en deux mots ou nommant la classe passe). `P6` n'a pas de valeur avant le diff. **Non decidable, a `nadia-prof` seule** : que le test donne soit vrai pour la bonne reponse, qu'aucun des deux distracteurs ne le passe, et qu'un enfant de CE1 le lise seul. Prix : **1,0**, `PAR-14` (24 items sur 24), instance A, `marc-dev`. `rapport-marc-dev.md` : la propriete de la fiche (section 4) et 5.1, `TRV-CE1-4`, `TRV-CE1-5`.
+
+#### 5. `S55-ACV-CE1-R2`, `S55-ACV-CE1-R1` : rejeu groupe de 0,5
+
+Les criteres de "Cloture de s55" ne changent pas (dont le comptage des 5 items sur 12 et la liste des verbes du premier groupe de `PRS-CE1-1`, que `yanis-qa` ecrit avec `marc-dev`). **Ajoute** (arbitrage A, 4) : `nadia-prof` rejoue les deux reserves ensemble, sur le meme arbre qui contient `2b66a441` et le commit de `S55-ACV-CE1-R2`, a **0,5** au lieu de 0,75, parce que le rejeu de `ACV-CE1-R2` rejoue deja le paquet entier et que verifier l'item 6 (`ACV-CE1-R1`) ne coute rien de plus. **Condition** : si `S55-ACV-CE1-R2` n'est pas livree a la cloture, `ACV-CE1-R1` est rejouee seule, 0,25, avant la cloture ; la difference n'est allouee ailleurs que par amendement. Les items 3 et 15 (*"combien en voit-on ?"*) se reprennent au meme passage, sans prix propre. `rapport-marc-dev.md` : le critere de la fiche mot pour mot, `TRV-CE1-5` avec la barre de s54 sur chaque item change, `ACV-CE1-1`, `TRV-CE1-2` (arbitrage A, 11).
+
+#### 6. `A10` (verification de s54 contre les formes (a), (b), (c)) : 0,5, non engagee
+
+**Non engagee a s56**, comme `DEC-0116` 6 l'ecrit ; jamais engagee, donc pas un report. Prix de `nadia-prof` : **0,5** (s54 a trois couloirs, trois coutures a lire ; arbitrage A, 7). **Elle devient due avant la `DEC` d'ouverture de s57 si `Q3` est acceptee** (deux instances de francais CE1, avec B : trois instances) ; `Q3` est sans reponse. Elle tiendrait a s56 sous `PAR-9` seulement dans la lecture de l'instance A (3,5 + 0,5 = 4,0), **par un amendement de `DEC-0116` que je n'ecris pas** : la lecture de l'instance B (A a 3,75) ne l'y met pas, et la reconciliation du 2 est en attente. Aucune story n'est ecrite tant qu'elle n'est pas engagee (`PAR-16`).
+
+#### 7. `S55-ART-CP-10-PAQUET` : prerequis de `theo-archi` (`AV5`) et conditions de `nadia-prof` (`B1` a `B14`)
+
+**Remplace** les criteres 3 et 4 de l'entree ("le cliquet de population" et "T4") et le critere 7 (ordre), par ce qui suit. Les autres criteres tiennent.
+
+- **Quatre constantes montent, pas deux ni trois**, dans **le meme commit** que le fichier du paquet (`avis-faisabilite.md` de s56, section 6, point 1 ; `UnItemAPropositionsEnImageTientSesTroisInvariantsTest`, `ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest`, `LIllustrationDeContenuResoutEtAucuneNeDortTest`). Relues le 2026-10-09 sur `a772c822` :
+
+| Constante | Fichier de test, ligne | Aujourd'hui | Apres, avec N items et r reproductions restaurees |
+|---|---|---|---|
+| `ITEMS_A_PROPOSITIONS_EN_IMAGE` | `UnItemAPropositionsEnImageTientSesTroisInvariantsTest`, 69 | 0 | N |
+| `ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION` | `LIllustrationDeContenuResoutEtAucuneNeDortTest`, 189 (egalite exacte 735 et 736) | 81 | 81 + N (chaque item declare une `illustration` `oeuvre-`) |
+| `REPRODUCTIONS_SERVIES` | `ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest`, 174 | 8 | 8 + r |
+| `POIDS_TOTAL_MAXIMUM` | meme fichier, 176 | 176_474 | 176_474 + somme des tailles restaurees, chacune lue par `git cat-file -s 1db6348f^:<chemin>` (`avis-faisabilite.md` de s56, section 5) |
+
+  Un cliquet qui monte de la taille exacte du paquet n'est pas un assouplissement (C5 de s55). **Les valeurs ne se fixent pas avant `S56-ART-CP-10-OEUVRES`** : 11 et 250 915 ne valent que si les trois oeuvres propres a `ART-CP-10` sont exactement celles restaurees ; si l'item de Vermeer sort (`B4`), `nadia-prof` ecrit 8 vers 10 et 176 474 vers 229 579, *"son arithmetique : le cliquet exact juge"*. **Constat a lire avec `B4`** : `theo-archi` (`AV2`) compte 28 reproductions de provenance prouvee atteignables par restauration depuis `1db6348f^`, pas 11 ; `B4` de `nadia-prof` limite le vivier a onze *"sauf si `AV2` nomme autre chose"*. Lequel vaut est a `nadia-prof` dans `S56-ART-CP-10-OEUVRES`.
+- **Decoupage** (`theo-archi`, propose a `lea-dev` qui decide avec lui) : un commit pour le fichier, les reproductions restaurees, leurs entrees de registre et les quatre constantes, **inseparables** (des reproductions sans le fichier qui les declare rougissent *"aucune ne dort"* ; un fichier qui propose une reproduction absente rougit la resolution) ; puis `S55-ART-CP-10-PLAFOND` ; puis `S56-ART-CP-10-ECHEC` ; puis l'entree de catalogue (`catalogue.yaml`, inventaire de `TexteAccentueExposeParLePortEntrantTest`, et l'assertion du garde-fou 4 *"aucun jeu reel du catalogue ne sert de propositions-images"*, qui devient la liste exacte du jeu branche). `nombreDeManches` strictement inferieur au nombre d'items (`ADR-0023`) : 5 manches au plus.
+- **Ordre, remplace le critere 7** : `S56-ARB-A` et `S56-ART-CP-10-OEUVRES` sont ancetres du commit du fichier ; `S55-ART-CP-10-PLAFOND` et `S56-ART-CP-10-ECHEC` sont ancetres de l'entree de catalogue, et `S56-ART-CP-10-FORME` et `Q7` sont ecrits avant elle (`git merge-base --is-ancestor`, sort 0 ; sans objet aujourd'hui, aucun de ces commits n'existe). **`PLAFOND` avant `ECHEC`** (`theo-archi`, section 4).
+- **Conditions `B1` a `B14`** (`ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md`, section 1, mots de `nadia-prof`) : le fichier de `lea-dev` les tient, **elle recopie les textes, elle n'en redige aucun**. Celles qui se mesurent, sur le fichier du paquet `P` (nom choisi par `lea-dev`), aucune n'existant aujourd'hui (rouge par absence : `grep -lE '^ *bonneReponse: "oeuvre-' adapters/adapter-content/src/main/resources/contenu/*.yaml` suivi de `wc -l` rend 0) : `B1` un fichier, `type: question`, `lignesDeReferentiel: ["ART-CP-10"]`, trois propositions dont une juste (les quatre `grep -c` du critere 2 rendent le meme nombre) ; `B2` `illustrationTexteAlternatif` identique a `cp-decrire-une-oeuvre` sur tous les items (`grep -c` de la phrase rend N) ; `B6` aucune proposition `oeuvre-hippopotame` (`grep -c 'oeuvre-hippopotame' P` rend 0) ; `B7` **4 items au moins, 6 au plus** (`grep -c '^ *- enonce:' P`), `nombreDeManches` strictement inferieur ; `B8` l'`enonce` est le meme sur tous les items (`grep -c` de la phrase rend N) ; `B9` le titre et la consigne de l'entree sont ceux de `nadia-prof` ou un texte qui tient sa barre ; `B11` les cliquets exacts ; `B12` l'ordre ci-dessus. **Se jugent a l'oeil, `nadia-prof` seule** : `B3` (un couple reference et bonne oeuvre jamais repete), `B4` (la regle 2 sur les images), `B5` (le format ne designe jamais la bonne oeuvre, ni par la forme ni par la taille de la case egale), les textes de `B10` (ecrits dans le document de `S56-ART-CP-10-OEUVRES`). **Un test peut en mordre plusieurs** (`B1`, `B2`, `B3`, `B5`, `B6`, `B7`, `B11`, `B13`) **si `theo-archi` le juge du, sinon une ligne "non garde" dans `rapport-lea-dev.md`** (C8) ; je ne choisis pas la forme.
+- Prerequis tenu : un item qui ne peut pas tenir la regle 2 sort du paquet, la regle ne baisse pas (`B4`) ; sous 4 items le jeu n'est pas un rapprochement et serait refuse (`B7`).
+
+#### 8. `S55-ART-CP-10-PLAFOND` : forme du garde-fou (`AV1`), sept morsures, ordre
+
+**Remplace**, dans l'entree, "Sa forme et son prix sont a `theo-archi` ; je ne les choisis pas" et la ligne "si le garde-fou est une `ArchRule`" par la forme de son avis (section 2) : **un test JUnit dans `adapter-web`**, a cote des lecteurs de feuille existants, qui derive de `recreo.css` ; **pas d'`ArchRule`** (l'objet est une feuille CSS ; les comptes de 39 `ArchRule` et 36 `@ArchTest` ne bougent pas) ; pas d'`ADR` (`ADR-0104` 4.3 et `ADR-0082` decident, ce test paie la dette). Prix : environ 0,25 j de `lea-dev`, une classe de test, aucune ligne de production, 0,0 pour `nadia-prof`.
+
+Quatre clauses (mots de `theo-archi`, resumees) : (1) **ancre** : `max-height` de `.image-item`, en rem, fois 16, egale `PLAFOND_DE_RENDU_EN_PIXELS` (176) ; (2) **plus grand cote du dessin** d'une proposition, derive du `calc` de `max-width` de la case, moins le `padding` et la plus petite bordure d'image sous `.propositions-oeuvres`, **au plus** egal a l'ancre (aujourd'hui 11,75 - 0,5 - 0,25 = 11,0 rem, egal a 11 rem) ; (3) la case declare `aspect-ratio: 1 / 1` et l'image `max-width: 100%` et `max-height: 100%` ; (4) aucune autre regle dont le selecteur contient `propositions-oeuvres` ou `ecran-deux-oeuvres` et dont le dernier compose vise `.proposition` ou `img` ne declare une dimension, un `padding`, `aspect-ratio` ou `flex-basis`. "Au plus" et non "egal" (clause 2) : un plafond, pas une egalite, pour ne pas rougir une case plus petite apres `Q2`.
+
+**Critere : sept morsures sur la feuille reelle mutee en memoire** (`theo-archi` ; je remplace ma mutation seule par les sept). **Mesure d'aujourd'hui, le 2026-10-09 sur `a772c822`**, chaque mutation d'une ou deux lignes de `adapters/adapter-web/src/main/resources/static/css/recreo.css`, commande `bash outils/mvn-jdk21.sh -B clean verify -pl bootstrap -am -Dmaven.test.failure.ignore=true`, perimetre : le reacteur de `bootstrap` avec `-am` (domain, application, adapter-web, adapter-content, bootstrap), toolchain `jdk` 21, fichier restaure apres chaque mesure (`git status --short` vide) :
+
+| # | Mutation | Clause qui doit rougir | Aujourd'hui |
+|---|---|---|---|
+| P1 | ligne 1780, `calc(11rem` devient `calc(14rem` | 2 | **0 echec sur 2307** (mesure de `DEC-0116` 0.3, sur `c986adcf`, meme `recreo.css`) |
+| P2 | ligne 1785, `padding: 0.25rem` de la case devient `padding: 0` | 2 | **0 echec sur 2307** (relu) |
+| P3 | `border: none` ajoute a `.propositions-oeuvres .proposition.deja-essayee img` | 2 | **0 echec sur 2307** (relu) |
+| P4 | ligne 1798, `max-height: 100%` de l'image devient `none` | 3 | **0 echec sur 2307** (relu) |
+| P5 | ligne 1781, `aspect-ratio: 1 / 1` retire | 3 | **0 echec sur 2307** (relu) |
+| P6 | regle `.propositions-oeuvres .proposition img { min-height: 14rem; }` ajoutee | 4 | **0 echec sur 2307** (relu) |
+| P7 | ligne 449, `.image-item { max-height: 11rem }` devient `14rem` | 1 | **0 echec sur 2307** (`theo-archi`, avis de s56 2.1 ; non relu par moi) |
+
+**Les sept sont rouges sur l'existant** (le garde-fou n'existe pas) ; chacune doit rendre au moins un echec, dans la clause nommee, le rapport du dev nommant le test de chaque morsure. 2307 = 120 + 18 + 407 + 1423 + 333 + 6 d'integration. Sur l'arbre non mute, 0 echec. **Ce qu'il ne voit pas, nomme** (avis 2.4) : une regle de la feuille vendorisee, une regle qui atteint l'image sans nommer `propositions-oeuvres` ni `ecran-deux-oeuvres`, un attribut `style` du gabarit ; le rendu reel se juge a l'ecran (`Q7`, audit). **Correction d'un constat de s55** : `ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest` ne lit pas `.image-item` (il porte `PLAFOND_DE_RENDU_EN_PIXELS = 176` en constante) ; le plafond de base n'etait garde par rien non plus (`theo-archi`, 2.1), d'ou P7 et la clause 1. **Ordre** : `PLAFOND` avant `ECHEC`, pour que la marque soit jugee par le garde-fou (clause 2, P3).
+
+#### 9. `S56-ART-CP-10-ECHEC` : critere de la marque, en attente
+
+**Je n'ecris pas le critere de la marque.** `nadia-prof`, instance B, le juge (`Q1`, `ARBITRAGE-s56-forme-art-cp-10.md`) ; l'agent lanceur me relancera. L'entree reste ce qu'elle etait : criteres mesurables independants de la forme, critere de la marque *"a ajouter par amendement apres `Q1` et avant l'ouverture du worktree"*, **worktree non ouvert**. Rien n'est ajoute ici, ni la marque, ni la forme de sa garde (`theo-archi` en donne le prix, environ 0,1 j, dans le commit d'`ECHEC` ; son critere s'ecrit avec celui de la marque). **Le prealable "ordre" de 8 s'applique deja** : `PLAFOND` avant `ECHEC`.
+
+#### 10. Ce que cet amendement ne fait pas
+
+Il ne prononce aucun Done, ne choisit aucune oeuvre, n'ecrit aucun mot lu par l'enfant, ne tranche pas la reconciliation du 2, n'engage pas `A10`, n'ecrit pas le critere de la marque, et ne touche ni catalogue, ni paquet, ni fiche, ni code, ni matrice, ni planning de s56.
