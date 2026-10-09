@@ -14,6 +14,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -37,6 +38,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * controle exige alors les deux : {@code grafie} partout rend tous les items reguliers, donc leurs
  * explications interdites, donc rouge ; {@code explicaton} partout laisse les items a variation sans
  * explication, donc rouge. Aucune des deux fautes ne produit un vert.</p>
+ *
+ * <p><b>Amendement du 2026-10-09 (s56).</b> Un paquet qui ne declare aucune graphie et porte une
+ * explication n'entre plus dans ce controle : il la porte sur tous ses items ou sur aucun
+ * ({@link #verifierLesExplicationsDUnPaquetSansGraphie}). {@code grafie} partout sur un paquet de
+ * francais dont les items reguliers n'ont pas d'explication reste rouge par cette regle-la ; {@code explicaton} partout sur un paquet sans graphie
+ * passe, et c'est le prix nomme dans l'ADR.</p>
  *
  * <p>ADR-0013 obligation 1 : le perimetre vient du repertoire de contenu, comme celui d'ADR-0016 -
  * un paquet neuf entre dans le controle du jour ou il est deposé, sans etre inscrit ici. Obligation
@@ -183,6 +190,10 @@ class ChaquePaquetExpliqueSesItemsAVariationTest {
 
             List<Question> tires = itemsTires(new YamlContentPackLoader(racineClasspath).chargerPaquet(paquet),
                     ecrits.size() + MARGE_DE_TIRAGE);
+            if (ecrits.stream().noneMatch(item -> item.containsKey(GRAPHIE))) {
+                verifierLesExplicationsDUnPaquetSansGraphie(paquet, ecrits, tires);
+                continue;
+            }
             List<String> explicationsVues = new ArrayList<>();
 
             for (Map<?, ?> ecrit : ecrits) {
@@ -233,6 +244,32 @@ class ChaquePaquetExpliqueSesItemsAVariationTest {
         }
     }
 
+    /**
+     * ADR-0024, amendement du 2026-10-09 (s56) : un paquet qui ne declare aucune graphie et porte une
+     * explication la porte sur tous ses items ou sur aucun, et chaque item tire par le chargeur la
+     * transporte, non vide. La graphie est une notion du francais ; l'explication, elle, n'a pas de
+     * matiere (decision 1). Ce qui est perdu, nomme dans l'ADR : une cle {@code explicaton} mal
+     * orthographiee sur tous les items d'un paquet sans graphie ne rougit plus. La comparaison au
+     * tirage se fait sur le paquet et non par enonce : un paquet sans graphie peut repeter son enonce
+     * d'un item a l'autre (ART-CP-10).
+     */
+    static void verifierLesExplicationsDUnPaquetSansGraphie(String paquet, List<Map<?, ?>> ecrits,
+            List<Question> tires) {
+        for (Map<?, ?> ecrit : ecrits) {
+            assertThat(ecrit.containsKey(EXPLICATION))
+                    .as("paquet %s, item \"%s\" : ce paquet ne declare aucune graphie et porte une"
+                            + " explication ; il la porte donc sur tous ses items ou sur aucun"
+                            + " (ADR-0024, amendement du 2026-10-09)", paquet, ecrit.get("enonce"))
+                    .isTrue();
+        }
+        for (Question tire : tires) {
+            assertThat(tire.explication().filter(texte -> !texte.isBlank()))
+                    .as("paquet %s, item \"%s\" : l'explication ecrite n'arrive pas a la mecanique,"
+                            + " ou arrive vide", paquet, tire.enonce())
+                    .isPresent();
+        }
+    }
+
     @Test
     void chaquePaquetDeProductionExpliqueSesItemsAVariation() {
         verifierQueChaquePaquetExpliqueSesItemsAVariation(CONTENU_DE_PRODUCTION, "");
@@ -273,6 +310,57 @@ class ChaquePaquetExpliqueSesItemsAVariationTest {
                 CONTRE_EXEMPLE_CLASSPATH + "/texte-qui-ne-nomme-pas-son-mot"))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("nomme le mot que l'enfant vient de lire");
+    }
+
+    /**
+     * Amendement du 2026-10-09, materiau reel : le premier paquet de production qui declare graphie et
+     * explication, prive en memoire de toutes ses graphies. Il tombe dans la regle "tous ou aucun",
+     * et ses items reguliers, sans explication, la font rougir. C'est aussi la faute de frappe
+     * {@code grafie} sur tout un paquet de francais : elle reste refusee.
+     */
+    @Test
+    void unPaquetReelPriveDeSesGraphiesRougitSurLaRegleTousOuAucun() {
+        String paquet = ChaquePaquetPorteUnIndiceTest.paquets(CONTENU_DE_PRODUCTION).stream()
+                .filter(nom -> itemsEcrits(lireYaml("/contenu/" + nom + ".yaml")).stream()
+                        .anyMatch(item -> item.containsKey(GRAPHIE) && item.containsKey(EXPLICATION)))
+                .findFirst().orElseThrow(() -> new AssertionError(
+                        "ADR-0003 : aucun paquet de production ne declare graphie et explication"));
+        List<Map<?, ?>> sansGraphie = new ArrayList<>();
+        for (Map<?, ?> item : itemsEcrits(lireYaml("/contenu/" + paquet + ".yaml"))) {
+            Map<Object, Object> copie = new LinkedHashMap<>(item);
+            copie.remove(GRAPHIE);
+            sansGraphie.add(copie);
+        }
+        assertThat(sansGraphie)
+                .as("le materiau doit porter des items avec et sans explication")
+                .anyMatch(item -> item.containsKey(EXPLICATION))
+                .anyMatch(item -> !item.containsKey(EXPLICATION));
+
+        assertThatThrownBy(() -> verifierLesExplicationsDUnPaquetSansGraphie(paquet, sansGraphie, List.of()))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("tous ses items ou sur aucun");
+    }
+
+    /**
+     * Amendement du 2026-10-09 : les six items d'ART-CP-10 recopies de
+     * CHOIX-OEUVRES-s56-art-cp-10.md, section 3 (enonce repete, explication sur chacun, aucune
+     * graphie), passent ; le meme paquet prive d'une seule explication rougit.
+     */
+    @Test
+    void unPaquetSansGraphieQuiExpliqueTousSesItemsPasseEtUnTrouRougit() {
+        verifierQueChaquePaquetExpliqueSesItemsAVariation(
+                CONTRE_EXEMPLE.resolve("sans-graphie-explication-partout"),
+                CONTRE_EXEMPLE_CLASSPATH + "/sans-graphie-explication-partout");
+        assertThatThrownBy(() -> verifierQueChaquePaquetExpliqueSesItemsAVariation(
+                CONTRE_EXEMPLE.resolve("sans-graphie-une-explication-manque"),
+                CONTRE_EXEMPLE_CLASSPATH + "/sans-graphie-une-explication-manque"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("tous ses items ou sur aucun");
+        assertThatThrownBy(() -> verifierQueChaquePaquetExpliqueSesItemsAVariation(
+                CONTRE_EXEMPLE.resolve("sans-graphie-une-explication-vide"),
+                CONTRE_EXEMPLE_CLASSPATH + "/sans-graphie-une-explication-vide"))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("arrive vide");
     }
 
     /** Le meme paquet, ses deux defauts corriges, ne doit plus rien reprocher. */
