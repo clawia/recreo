@@ -1,0 +1,55 @@
+schema: 1
+id: paquet-sans-graphie
+type: question
+# ADR-0024, amendement du 2026-10-09 : les six items d'ART-CP-10 recopies de
+# squad/conformite/CHOIX-OEUVRES-s56-art-cp-10.md, section 3. Aucune graphie, une explication sur chaque
+# item, l'enonce repete d'un item a l'autre : la regle "tous ou aucun" est tenue.
+descripteur:
+  matiere: "Contre-exemple"
+  niveau: "Contre-exemple"
+  domaine: "Contre-exemple"
+  competence: "Contre-exemple"
+lignesDeReferentiel: ["ART-CP-10"]
+items:
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-chambre
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-champ-de-ble"
+    distracteurs: ["oeuvre-moissonneurs", "oeuvre-jeune-femme-aiguiere"]
+    indice: "Regarde bien les traits de peinture."
+    explication: "Dans ces deux œuvres, on voit chaque trait du pinceau."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-champ-de-ble
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-chambre"
+    distracteurs: ["oeuvre-moissonneurs", "oeuvre-femme-au-luth"]
+    indice: "Regarde bien les traits de peinture."
+    explication: "Dans ces deux œuvres, on voit chaque trait du pinceau."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-grande-vague
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-averse-sur-le-pont"
+    distracteurs: ["oeuvre-rue-sous-la-pluie", "oeuvre-quatre-saisons"]
+    indice: "Regarde comment l'eau est dessinée."
+    explication: "Dans ces deux œuvres, l'eau est dessinée avec des traits fins."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-averse-sur-le-pont
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-grande-vague"
+    distracteurs: ["oeuvre-rue-sous-la-pluie", "oeuvre-marche-aux-chevaux"]
+    indice: "Regarde comment l'eau est dessinée."
+    explication: "Dans ces deux œuvres, l'eau est dessinée avec des traits fins."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-femme-au-luth
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-jeune-femme-aiguiere"
+    distracteurs: ["oeuvre-autoportrait-leyster", "oeuvre-chambre"]
+    indice: "Regarde d'où vient la lumière."
+    explication: "Dans ces deux œuvres, la lumière entre par une fenêtre, à gauche."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-jeune-femme-aiguiere
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-femme-au-luth"
+    distracteurs: ["oeuvre-autoportrait-leyster", "oeuvre-moissonneurs"]
+    indice: "Regarde d'où vient la lumière."
+    explication: "Dans ces deux œuvres, la lumière entre par une fenêtre, à gauche."

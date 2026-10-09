@@ -314,3 +314,48 @@ methodes enumerees supprimees) -> 271 apres ADR-0024**.
 `LesGardeFousSontMisALEpreuveTest.toutesLesRegles` applique. Exclu explicitement : le faux depot de
 `bootstrap/src/test/resources/contreexemple/LesGardeFousSontMisALEpreuveTest/`, dont les `ArchRule` ne
 sont jamais compilees. Ni `ADR-0023` ni `ADR-0024` n'en ajoutent, et les deux disent pourquoi.
+
+
+## Amendement du 2026-10-09 (s56, `theo-archi`) - un paquet sans graphie porte son explication sur tous ses items ou sur aucun
+
+**Ce que la regle 1 disait faux.** Elle faisait entrer dans son controle tout paquet dont un item porte `graphie` **ou** `explication`,
+puis exigeait la graphie sur chaque item et l'explication sur les seuls items a variation. La decision 1 a voulu `explication` sans nom
+de matiere ; sa regle executable l'a liee au francais par inclusion. Revele par le paquet a reproductions d'`ART-CP-10`
+(`squad/conformite/CHOIX-OEUVRES-s56-art-cp-10.md`, section 3) : six items, une explication sur chacun, aucune graphie. Mesure dans
+l'avis de faisabilite de s56 (amendement, A.3, `K1`) : 1 echec, *"ce paquet declare la graphie de ses items, donc tous"*.
+Issue choisie par `nadia-prof` (meme fichier, bloc du 2026-10-09 22:07) : les six explications restent, la regle est amendee.
+
+**Decision amendee.** La regle 1 n'entre plus que sur `graphie` : un paquet dont un item declare une graphie reste sous le controle
+d'origine, inchange. **Un paquet qui ne declare aucune graphie et porte `explication` la porte sur tous ses items ou sur aucun**, et
+chaque item que le chargeur tire la transporte, non vide. L'obligation 2 (une cle posee ailleurs que sur un item rougit) est inchangee.
+
+**Ce que l'amendement perd, nomme.** Une cle `explicaton` mal orthographiee sur **tous** les items d'un paquet sans graphie ne rougit
+plus : le chargeur ignore une cle inconnue, et les explications disparaissent sans bruit. Sur le paquet d'`ART-CP-10`, `nadia-prof` en
+reste la garde a l'audit (meme bloc). Pour les suivants, le trou est a moi : un garde-fou qui refuserait une cle inconnue dans un item
+est une autre regle, non demandee aujourd'hui. Ce qui reste refuse : `grafie` sur tout un paquet de francais dont les items reguliers
+n'ont pas d'explication (il tombe dans "tous ou aucun"), et `explicaton` sur un paquet qui declare une graphie.
+
+**Regle executable.** `ChaquePaquetExpliqueSesItemsAVariationTest` (`adapters/adapter-content`) : branche neuve
+`verifierLesExplicationsDUnPaquetSansGraphie`, appelee quand aucun item ne declare de graphie. Elle compare le tirage au paquet et non
+par enonce, un paquet sans graphie pouvant repeter son enonce (c'est le cas d'`ART-CP-10`). Deux tests neufs :
+
+- `unPaquetReelPriveDeSesGraphiesRougitSurLaRegleTousOuAucun`, **materiau reel** : le premier paquet de production qui declare graphie
+  et explication (aujourd'hui `cp-le-bon-son`), prive en memoire de toutes ses graphies, rougit sur "tous ou aucun" ;
+- `unPaquetSansGraphieQuiExpliqueTousSesItemsPasseEtUnTrouRougit` : les six items de la section 3 de `CHOIX-OEUVRES-s56-art-cp-10.md`,
+  recopies tels quels (`sans-graphie-explication-partout`), passent ; le meme paquet prive d'une explication
+  (`sans-graphie-une-explication-manque`) rougit ; le meme avec une explication vide (`sans-graphie-une-explication-vide`) rougit.
+
+Pas une `ArchRule` : l'objet est un paquet YAML, pas un type Java ; le mecanisme qui le garde est le job `build`. Comptes ArchUnit inchanges.
+
+**Morsures mesurees**, chacune par `bash outils/mvn-jdk21.sh -B -q -pl adapters/adapter-content -am test -Dtest=ChaquePaquetExpliqueSesItemsAVariationTest
+-Dsurefire.failIfNoSpecifiedTests=false -Dmaven.test.failure.ignore=true` (perimetre : cette classe, `-am`), fichier restaure apres :
+
+| Mutation de la regle amendee | Resultat (7 tests) |
+|---|---|
+| aucune | 0 echec |
+| branche sans graphie retiree (la regle d'avant) | 1 echec : le paquet d'`ART-CP-10` refuse, *"ce paquet declare la graphie de ses items, donc tous"* |
+| clause "tous ou aucun" neutralisee | 2 echecs : le materiau reel ne rougit plus, le trou d'une explication non plus |
+| explication vide admise | 1 echec : l'explication vide passe |
+
+**Ce qui me ferait changer d'avis** : un paquet ou l'explication ne vaut que pour certains items sans qu'une graphie le dise. Alors il
+faut une declaration d'auteur qui dise lesquels, comme la graphie le fait pour le francais, et non un "tous ou aucun".
