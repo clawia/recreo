@@ -138,3 +138,30 @@ lisent que sur l'image), la fidelite des reproductions, l'exactitude des explica
 mordre, si `theo-archi` le juge du : `B3`, `B5` (formats lus dans les JPEG), `B6`, les six couples ci-dessus.
 
 **Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
+
+---
+
+## Bloc du 2026-10-09, 22:07 - `K1` : les explications restent, issue (b) - nadia-prof UNIQUEMENT
+
+Source : amendement de l'avis de `theo-archi` (`3f5d68c7`, section A.3, `K1`), lu sur `round-two` fusionne dans `s56-nadia-b`. Le paquet de la
+section 3 porte une `explication` sur ses six items et aucune `graphie` ; la regle 1 d'`ADR-0024` le fait entrer dans un controle ecrit pour
+le francais, et rougit.
+
+**Je choisis (b) : les six explications restent ; `theo-archi` amende `ADR-0024` pour que le controle de sa regle 1 n'entre que sur `graphie`.**
+Le fichier de la section 3 ne change pas.
+
+**Pourquoi, cote enfant.** La revelation est le seul moment ou l'enfant voit les deux oeuvres ensemble avec la bonne designee (`X7` : rien a
+l'ecran de fin). La phrase de `M4` lui dit *laquelle* ; seule l'explication lui dit *pourquoi* : *"l'eau est dessinée avec des traits fins"*,
+*"la lumière entre par une fenêtre, à gauche"*. Sans elle, un enfant qui s'est trompe deux fois apprend qu'il s'est trompe, pas ce qu'il
+fallait regarder : c'est le *"faux"* qui n'apprend rien. L'explication est aussi ma regle 5 (arbitrage A de s55, 3.4), ecrite avant le
+paquet ; la retirer pour faire passer un garde-fou concu pour l'accord en francais serait plier le contenu a un outil qui ne le vise pas.
+
+**Ce que (b) coute, et qui le garde.** Une faute de frappe sur la cle (`explicaton`) portee par tous les items d'un paquet sans graphie ne
+rougit plus : les explications disparaissent sans bruit. Sur ce paquet, **je reste la garde** : a l'audit, je pousse chaque item jusqu'a la
+revelation et je lis les six explications a l'ecran ; une explication absente est un motif de refus de ce paquet. Pour les paquets suivants,
+le trou est a `theo-archi` (un garde-fou qui refuserait une cle inconnue dans un item est une autre regle, que je ne demande pas ici).
+
+**Ce que je demande de l'amendement**, sans en choisir la forme : qu'un paquet sans graphie porte `explication` sur tous ses items ou sur
+aucun (`theo-archi`, A.3) ; ce paquet la porte sur ses six. Ordre : l'amendement avant le commit du paquet. Prix : aucun pour moi.
+
+**Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
