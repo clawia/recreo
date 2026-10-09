@@ -169,11 +169,15 @@ class ChaqueReproductionServiePorteLaPreuveDeLOeuvreEtCelleDeSaPhotographieTest 
      * DEC-0109 (sections 9 et 10.3) retire du registre et du disque les vingt reproductions hors du
      * vivier final d'ART-CP-09 - dix-sept destinees a T7/T8 et trois propres a ART-CP-10, refusee en
      * texte par nadia-prof - restaurables a l'octet depuis l'historique Git (56b6b77c et les commits
-     * anterieurs) le jour ou ces lignes s'ouvrent reellement.
+     * anterieurs) le jour ou ces lignes s'ouvrent reellement. Relevee le 2026-10-09 (s56,
+     * S55-ART-CP-10-PAQUET, lea-dev) a <b>12 fichiers et 275 163 octets</b> : les quatre
+     * reproductions que declare {@code cp-rapprocher-deux-oeuvres} (champ-de-ble 31 398,
+     * averse-sur-le-pont 21 707, jeune-femme-aiguiere 21 336, autoportrait-leyster 24 248 octets,
+     * chacune lue par {@code git cat-file -s 1db6348f^:<chemin>}) sont restaurees a l'octet.
      */
-    private static final int REPRODUCTIONS_SERVIES = 8;
+    private static final int REPRODUCTIONS_SERVIES = 12;
 
-    private static final int POIDS_TOTAL_MAXIMUM = 176_474;
+    private static final int POIDS_TOTAL_MAXIMUM = 275_163;
 
     /**
      * T4 d'ADR-0082 (sofia-sm, s49) : l'analogue matriciel du {@code viewBox} des dessins -

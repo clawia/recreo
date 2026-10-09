@@ -185,8 +185,12 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
      * <p><b>70 vers 81, lea-dev, s52, S51-MAT-SYMETRIE</b> : {@code ce1-symetrie} (MAT-CE1-17) declare
      * onze items de designation, un dessin par item, et {@code ZoneADesigner} rend l'illustration
      * obligatoire sur chacun - les onze items s'ajoutent tous.</p>
+     *
+     * <p><b>81 vers 87, lea-dev, s56, S55-ART-CP-10-PAQUET</b> : {@code cp-rapprocher-deux-oeuvres}
+     * (ART-CP-10) declare six items, une reproduction de reference par item - les six items
+     * s'ajoutent tous.</p>
      */
-    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 81;
+    private static final int ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION = 87;
 
     /**
      * <b>24 vers 26, lea-dev, s34, S33-PAL2-1</b> : les deux dessins du premier paquet de
@@ -926,7 +930,8 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         Set<String> reproductions = new LinkedHashSet<>(reproductionsDuDepot(racine));
         reproductions.add("oeuvre-fixture-test");
 
-        verifier(declarees, illustrationsDuDepot(racine), decorDuDepot(racine), reproductions);
+        verifier(declarees, propositionsDeclarees(itemsDuDepot(racine)), illustrationsDuDepot(racine),
+                decorDuDepot(racine), reproductions);
     }
 
     /**
@@ -1001,15 +1006,20 @@ class LIllustrationDeContenuResoutEtAucuneNeDortTest {
         assertThat(sansElle)
                 .as("la reproduction doit etre declaree par au moins une illustration reelle")
                 .hasSizeLessThan(declareesDuDepot(racine).size());
+        List<PropositionDeclaree> propositionsSansElle = propositionsDeclarees(itemsDuDepot(racine)).stream()
+                .filter(proposition -> !reproduction.equals(proposition.identifiant()))
+                .toList();
 
-        assertThatThrownBy(() -> verifier(sansElle, List.of(), illustrationsDuDepot(racine),
+        assertThatThrownBy(() -> verifier(sansElle, propositionsSansElle, illustrationsDuDepot(racine),
                 decorDuDepot(racine), reproductionsDuDepot(racine)))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining(reproduction + EXTENSION_REPRODUCTION)
                 .hasMessageContaining("aucun item d'aucun paquet servi ne le declare");
 
-        verifier(sansElle, propositionsEnReproductionDe(avecLaBonneReponse(reel, reproduction)),
-                illustrationsDuDepot(racine), decorDuDepot(racine), reproductionsDuDepot(racine));
+        List<PropositionDeclaree> avecElle = new ArrayList<>(propositionsSansElle);
+        avecElle.addAll(propositionsEnReproductionDe(avecLaBonneReponse(reel, reproduction)));
+        verifier(sansElle, avecElle, illustrationsDuDepot(racine), decorDuDepot(racine),
+                reproductionsDuDepot(racine));
     }
 
     /** Une proposition dont l'identifiant est un chemin sort de l'alphabet, comme une illustration. */
