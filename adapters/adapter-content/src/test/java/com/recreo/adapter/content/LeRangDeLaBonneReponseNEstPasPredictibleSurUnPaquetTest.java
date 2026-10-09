@@ -1355,7 +1355,16 @@ class LeRangDeLaBonneReponseNEstPasPredictibleSurUnPaquetTest {
                     + " materiaux observes sur une reproduction d'oeuvre (\"une chambre\", \"un"
                     + " visage\", \"une statue\"...), valeurDe rend null sur les trois propositions"
                     + " de chaque item. Mesure du 2026-10-04 sur le paquet servi : aucune des 24"
-                    + " propositions ne commence par un chiffre"));
+                    + " propositions ne commence par un chiffre"),
+            // S55-ART-CP-10-PAQUET : premier paquet a propositions en image d'arts plastiques CP
+            // (ART-CP-10, ADR-0104).
+            Map.entry("cp-rapprocher-deux-oeuvres",
+            "6 items sur 6 portent deux distracteurs (trois propositions), soit 18 propositions,"
+                    + " mais aucune n'est numerique : ce sont des identifiants de reproduction"
+                    + " d'oeuvre (\"oeuvre-chambre\", \"oeuvre-champ-de-ble\"...), jamais lus par"
+                    + " l'enfant, qui voit l'image (ADR-0104 decision 4). Mesure du 2026-10-09 sur le"
+                    + " paquet servi : le garde-fou classe 0 item sur 6 et aucune des 18 propositions"
+                    + " ne commence par un chiffre"));
 
     private enum Rang {
         LA_PLUS_PETITE, INTERMEDIAIRE, LA_PLUS_GRANDE

@@ -54,6 +54,11 @@
 # dix-sept destinees a T7/T8, trois propres a ART-CP-10 refusee en texte par nadia-prof -,
 # restaurables a l'octet depuis l'historique Git (56b6b77c et les commits anterieurs) le jour ou ces
 # lignes s'ouvrent reellement.
+#
+# Mise a jour s56 (paquet d'ART-CP-10, ADR-0104 T4) : quatre de ces reproductions, oeuvre-champ-de-ble,
+# oeuvre-averse-sur-le-pont, oeuvre-jeune-femme-aiguiere et oeuvre-autoportrait-leyster, sont
+# restaurees a l'octet depuis 1db6348f^ avec leur entree : le registre en porte 12, et les 8 premieres
+# restent celles d'ART-CP-09.
 
 schema: 1
 oeuvres:
@@ -134,4 +139,44 @@ oeuvres:
     lieuDeConservation: "Art Institute of Chicago"
     identifiantDObjet: "1964.336"
     urlDeLaSource: "https://www.artic.edu/artworks/20684/paris-street-rainy-day"
+    licenceDeLaReproduction: CC0-1.0
+
+  - identifiant: oeuvre-champ-de-ble
+    titre: "Wheat Field with Cypresses (Champ de ble avec cypres)"
+    auteur: "Vincent van Gogh"
+    anneeDeLOeuvre: 1889
+    anneeDeMortDeLAuteur: 1890
+    lieuDeConservation: "Metropolitan Museum of Art, New York"
+    identifiantDObjet: "1993.132"
+    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/436535"
+    licenceDeLaReproduction: CC0-1.0
+
+  - identifiant: oeuvre-averse-sur-le-pont
+    titre: "Sudden Shower over Shin-Ohashi Bridge and Atake (Averse soudaine sur le pont Shin-Ohashi)"
+    auteur: "Utagawa Hiroshige"
+    anneeDeLOeuvre: 1857
+    anneeDeMortDeLAuteur: 1858
+    lieuDeConservation: "Metropolitan Museum of Art, New York"
+    identifiantDObjet: "JP2522"
+    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/55433"
+    licenceDeLaReproduction: CC0-1.0
+
+  - identifiant: oeuvre-jeune-femme-aiguiere
+    titre: "Young Woman with a Water Pitcher (Jeune femme a l'aiguiere)"
+    auteur: "Johannes Vermeer"
+    anneeDeLOeuvre: 1662
+    anneeDeMortDeLAuteur: 1675
+    lieuDeConservation: "Metropolitan Museum of Art, New York"
+    identifiantDObjet: "89.15.21"
+    urlDeLaSource: "https://www.metmuseum.org/art/collection/search/437881"
+    licenceDeLaReproduction: CC0-1.0
+
+  - identifiant: oeuvre-autoportrait-leyster
+    titre: "Self-Portrait (Autoportrait)"
+    auteur: "Judith Leyster"
+    anneeDeLOeuvre: 1630
+    anneeDeMortDeLAuteur: 1660
+    lieuDeConservation: "National Gallery of Art, Washington"
+    identifiantDObjet: "1949.6.1"
+    urlDeLaSource: "https://www.nga.gov/collection/art-object-page.37003.html"
     licenceDeLaReproduction: CC0-1.0

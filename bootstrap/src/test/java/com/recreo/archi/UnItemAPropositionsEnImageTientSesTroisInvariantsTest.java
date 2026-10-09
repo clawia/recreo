@@ -42,8 +42,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * {@code LIllustrationDeContenuResoutEtAucuneNeDortTest.lesDeuxPopulationsIllustreesValentExactementCeQueLeDepotSert}) :
  * aucun paquet n'a de proposition-image. Les trois clauses se mordent donc sur un item <b>reel</b>
  * (le premier qui montre une reproduction), mute en memoire, et sur un jeu fautif commite. Le
- * commit du premier paquet a reproductions releve {@link #ITEMS_A_PROPOSITIONS_EN_IMAGE} ; un
- * "non vide" serait rouge aujourd'hui.
+ * commit du premier paquet a reproductions (s56, {@code cp-rapprocher-deux-oeuvres}) a releve
+ * {@link #ITEMS_A_PROPOSITIONS_EN_IMAGE} a six.
  */
 class UnItemAPropositionsEnImageTientSesTroisInvariantsTest {
 
@@ -64,9 +64,10 @@ class UnItemAPropositionsEnImageTientSesTroisInvariantsTest {
 
     /**
      * ADR-0051 : la taille exacte de la population reelle, 0 a s55. Elle monte dans le commit du
-     * premier paquet a propositions-images, avec sa valeur mesuree.
+     * premier paquet a propositions-images, avec sa valeur mesuree : <b>0 vers 6, lea-dev, s56,
+     * S55-ART-CP-10-PAQUET</b>, les six items de {@code cp-rapprocher-deux-oeuvres}.
      */
-    private static final int ITEMS_A_PROPOSITIONS_EN_IMAGE = 0;
+    private static final int ITEMS_A_PROPOSITIONS_EN_IMAGE = 6;
 
     private static boolean estDansLePerimetre(ItemDeclare item) {
         return propositionsDe(item.champs()).stream()

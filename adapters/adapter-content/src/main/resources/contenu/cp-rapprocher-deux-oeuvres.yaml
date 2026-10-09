@@ -1,0 +1,68 @@
+# S55-ART-CP-10-PAQUET (ART-CP-10), premier paquet a reproductions. ADR-0104 (T4, T5), DEC-0116.
+#
+# Trois paires, chacune dans les deux sens : six items. Les textes lus par l'enfant (enonce, texte
+# alternatif, indices, explications) sont ceux de nadia-prof, recopies sans changement depuis
+# squad/conformite/CHOIX-OEUVRES-s56-art-cp-10.md, section 3. Les paires, les distracteurs et
+# l'exactitude des explications sont a elle (S56-ART-CP-10-OEUVRES, conditions B1 a B14 de
+# squad/conformite/ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md).
+#
+# Forme (ADR-0104 decision 1) : l'illustration est l'oeuvre de reference, bonneReponse et chaque
+# distracteur sont des identifiants de reproduction. Aucun identifiant n'est lu par l'enfant (X1).
+#
+# Enonce et texte alternatif identiques sur les six items (B2, B8), sans sujet, titre ni artiste
+# (CON-5). Chaque oeuvre d'une paire est reference une seule fois (B3). Aucune statuette en
+# proposition (B6). nombreDeManches de l'entree de catalogue : strictement inferieur a six (ADR-0023).
+#
+# TYP-1 (ADR-0067) : l'espace qui precede le point d'interrogation est insecable.
+schema: 1
+id: cp-rapprocher-deux-oeuvres
+type: question
+descripteur:
+  matiere: "Arts plastiques"
+  niveau: "CP"
+  domaine: "Se repérer dans les domaines liés aux arts plastiques"
+  competence: "Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres."
+lignesDeReferentiel: ["ART-CP-10"]
+items:
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-chambre
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-champ-de-ble"
+    distracteurs: ["oeuvre-moissonneurs", "oeuvre-jeune-femme-aiguiere"]
+    indice: "Regarde bien les traits de peinture."
+    explication: "Dans ces deux œuvres, on voit chaque trait du pinceau."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-champ-de-ble
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-chambre"
+    distracteurs: ["oeuvre-moissonneurs", "oeuvre-femme-au-luth"]
+    indice: "Regarde bien les traits de peinture."
+    explication: "Dans ces deux œuvres, on voit chaque trait du pinceau."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-grande-vague
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-averse-sur-le-pont"
+    distracteurs: ["oeuvre-rue-sous-la-pluie", "oeuvre-quatre-saisons"]
+    indice: "Regarde comment l'eau est dessinée."
+    explication: "Dans ces deux œuvres, l'eau est dessinée avec des traits fins."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-averse-sur-le-pont
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-grande-vague"
+    distracteurs: ["oeuvre-rue-sous-la-pluie", "oeuvre-marche-aux-chevaux"]
+    indice: "Regarde comment l'eau est dessinée."
+    explication: "Dans ces deux œuvres, l'eau est dessinée avec des traits fins."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-femme-au-luth
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-jeune-femme-aiguiere"
+    distracteurs: ["oeuvre-autoportrait-leyster", "oeuvre-chambre"]
+    indice: "Regarde d'où vient la lumière."
+    explication: "Dans ces deux œuvres, la lumière entre par une fenêtre, à gauche."
+  - enonce: "Quelle œuvre est faite de la même façon que celle-ci ?"
+    illustration: oeuvre-jeune-femme-aiguiere
+    illustrationTexteAlternatif: "Une reproduction d'œuvre à regarder attentivement avant de répondre."
+    bonneReponse: "oeuvre-femme-au-luth"
+    distracteurs: ["oeuvre-autoportrait-leyster", "oeuvre-moissonneurs"]
+    indice: "Regarde d'où vient la lumière."
+    explication: "Dans ces deux œuvres, la lumière entre par une fenêtre, à gauche."
