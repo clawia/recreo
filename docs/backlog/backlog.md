@@ -20943,3 +20943,7 @@ Leurs criteres sont ceux de "Cloture de s55 - Stories nees des verdicts" (mots d
 ### Ce que cette entree ne fait pas
 
 Elle ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni fiche, ni code, ni matrice, ni planning de s56 (a `sofia-sm`). Les criteres des conditions de `nadia-prof` pour `ce1-verbe-sujet` et de la marque de `S56-ART-CP-10-ECHEC` s'ajoutent par amendement, avec ses mots, avant l'ouverture du worktree concerne.
+
+### Amendement du 2026-10-09 (s56, `camille-po`, `DEC-0116` A.1 et A.2)
+
+Annotation datee. Rien au-dessus n'est reecrit. Forme 2 de `DEC-0062`, mots recus par l'agent lanceur qui les atteste. **`Q-U1`** : "Ecart de 0,5" : ecart total de 0,5 pour s56 seulement, pas de jurisprudence ; somme 8,5 sur 8,0, B a 4,5, A a 4,0. **`S56-ART-CP-10-FORME` (0,25) n'est plus "hors de l'ecart"** : la mention du tableau des postes et de l'entree de cette story est remplacee par "couvert par l'ecart de 0,5". La lecture de `PAR-2` sur `S56-ART-CP-10-OEUVRES` reste a `nadia-prof` (`S56-ARB-A`, `S56-ARB-B`) ; sur B, B serait a 4,75, au-dela de l'ecart. **`Q-U2`** : "Reporter a s57, abandon ou placement ecrit alors" : `S54-OBS-SCI-CONSIGNE` reste reportee (second report), troisieme interdit, la `DEC` de s57 la place ou l'abandonne. Aucun critere de story ne change.

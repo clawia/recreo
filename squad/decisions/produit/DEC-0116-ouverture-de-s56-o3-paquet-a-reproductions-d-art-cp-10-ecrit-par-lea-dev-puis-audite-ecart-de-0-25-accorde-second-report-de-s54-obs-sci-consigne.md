@@ -259,3 +259,27 @@ Quatre ecarts que `rapport-qualite.md` (section 4) et la retro (A7) nomment sans
 6. Actions A1 a A15 de la retro de s55 : sort dans le tableau de 6 (neuf engagees, trois faites ou partielles, deux non engagees sans report, une reportee et comptee).
 7. Quatre ecarts de critere corriges au backlog (8).
 8. Statut : `Proposee` (0.5). `Q4`, `Q3`, `Q6` non tranchees.
+
+---
+
+## Amendement du 2026-10-09 (s56, `camille-po`) : reponses a `Q-U1` et `Q-U2`, statut inchange
+
+Annotation datee. Rien au-dessus n'est reecrit ; les lignes remplacees sont nommees ci-dessous. Forme 2 de `DEC-0062` : `de l'utilisatrice`, le 2026-10-09, mots cites. Ils me parviennent par l'agent lanceur, qui les atteste reponses directes ; je ne les ai pas lus de sa main (meme reserve que 0.1).
+
+### A.1 `Q-U1` : "Ecart de 0,5"
+
+Mots : **"Ecart de 0,5"**. Je les rattache a l'issue (a) de 2.3 : **ecart total de 0,5 au-dessus de `PAR-9` pour s56 seulement**, soit 0,25 pour l'audit du paquet (O3) et 0,25 pour l'arbitrage de forme. Somme **8,5 sur 8,0**, B a **4,5** sur 4,0, A a 4,0. Le rattachement est le mien ; ses mots ne citent pas la ventilation.
+
+- C'est un ecart accorde, pas une jurisprudence (`DEC-0114` A.20) : la `DEC` d'ouverture de s57 compte selon `PAR-9` telle qu'ecrite, 8,0. Le motif de forme 1 est celui de 2.2, inchange.
+- `S56-ART-CP-10-FORME` (0,25, B) est desormais couvert : ce n'est plus un poste "hors de l'ecart". Plafond dur de 5,0 : B a 4,5, non approche.
+- **Ce que ses mots ne couvrent pas** : la lecture de `PAR-2` sur le choix des oeuvres (2.3, point 2). Si `nadia-prof` le place sur B, B monte a 4,75, au-dela de 4,5 : un amendement et une question de plus. La lecture reste a `nadia-prof`, dans `S56-ARB-A` et `S56-ARB-B`.
+- **Remplace** : en tete, la mention "ni l'arbitrage de forme de 0,25 (2.3)" du statut ; 0.1, derniere phrase du paragraphe "ce que ces mots ne disent pas", point sur l'arbitrage de forme ; 2.3 point 1 (les trois issues, `Q-U1`) : l'issue (a) est choisie ; 2.1, ligne "Total avec l'arbitrage de forme" : 4,0 et 4,5, somme 8,5, couverte ; section 3.3 et section 9 (`sofia-sm` ne porte plus les 0,25 comme non alloues).
+
+### A.2 `Q-U2` : "Reporter a s57, abandon ou placement ecrit alors"
+
+`S54-OBS-SCI-CONSIGNE` **reste reportee** : le second report de la section 5 est confirme. **A s57 un troisieme report est interdit** (`DEC-0112` section 6) : la `DEC` d'ouverture de s57 la place (criteres de `nadia-prof`, proprietaire, prix) ou l'abandonne, par un acte ecrit. `Q-U2` est close. Rien n'est a faire sur ce poste a s56.
+
+### A.3 Statut, routage, limites
+
+- **Statut : `Proposee`, inchange.** `Q4` (ordre des matieres) reste sans reponse et n'est pas reprise sous un motif de forme 1 (0.5). Le point que 0.5 nommait comme second point ouvert, l'arbitrage de forme, est ferme par A.1.
+- Routage : `sofia-sm` porte 8,5 sur 8,0 au planning, B a 4,5 ; `nadia-prof` ecrit `S56-ARB-B` avec le prix de la forme dans ce total. Aucun code ni contenu change par cet amendement ; la matrice reste a 141 / 182. Ne fixe aucun tarif, ne prononce aucun Done.
