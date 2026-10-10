@@ -174,3 +174,92 @@ Les echecs en plus du test de la feuille sont les tests de morsure du meme fichi
 3. **Le garde de la marque** (A.1 de l'avis) : un test de feuille dans `adapter-web` pour les criteres 1 a 5, 7 et 8, une clause de rendu au banc du garde-fou 4 pour le critere 6, mutations `E1` a `E9`. L'ambiguite que `theo-archi` signale entre *"`.proposition` ou son `img`"* et *"dont le selecteur contient `.proposition`"* est a `nadia-prof`.
 4. **Comme ici** : tout test qui lit `src/main/` doit porter son jeu fautif commite sous `contreexemple/<NomDeLaClasse>` (ADR-0013), sinon `LesGardeFousSontMisALEpreuveTest` rougit. A inscrire dans le prix du commit d'`ECHEC`.
 5. Entree de catalogue, R8 et R9 : inchanges (section 8, points 3 et 4). Le point 1 de la section 8 est livre par cette section.
+
+## 10. S56-ART-CP-10-ECHEC (worktree `s56-lea-echec`, base `round-two` a `a9cf6b92`)
+
+Commits : `696f4f20` (la marque, les deux gardes, les jeux fautifs) et `8db641f5` (le test de la feuille reelle rend ses griefs avant son assertion de non-vacuite, voir 10.3, E6). **JDK 21.0.10**
+(`java.version` du rapport Surefire, enveloppe `bash outils/mvn-jdk21.sh`). Sources lues : le critere amende dans le backlog (`S56-ART-CP-10-ECHEC`, voie O1) et `DEC-0116` A.9 a A.14, `ARBITRAGE-s56-forme-art-cp-10.md`
+(bloc de 21:37 et bloc de 22:07, qui remplace le critere 7), `releves-s56/proposition-ines-forme-art-cp-10.md` (1.4), l'amendement de `theo-archi` (A.1).
+
+### 10.1 Ce qui est livre
+
+- **`recreo.css`** : trois regles. `.propositions-oeuvres:has(.proposition.deja-essayee) { padding-bottom: 3.25rem }` ; `.propositions-oeuvres .proposition.deja-essayee::before` (la pastille : `content: ""`, `position: absolute`,
+  `top: calc(100% + 0.25rem)`, `left: 50%`, 2,5 rem, `pointer-events: none`, fond `url('/images/marque-echec.svg')`) ; la regle `.deja-essayee img` garde son seul `opacity: 0.5`. Le commentaire de cette regle, qui disait
+  *"le canal de forme reste a decider"*, est reecrit. Valeurs de la section 1.4 de la proposition d'`ines-design`, recopiees.
+- **`static/images/marque-echec.svg`** : `marque-echec-candidate.svg` de `ines-design`, copie octet pour octet (disque `#f4f7fb`, anneau `#1c2733`, croix `#c62828`). Aucune couleur neuve.
+- **`LaMarqueDeLOeuvreDejaEssayeeNeDependPasDeLImageTest`** (adapter-web, 23 tests) : criteres 1 a 5, 7 et 8 sur la feuille et le SVG reels ; deux jeux fautifs commites
+  (`contreexemple/LaMarqueDeLOeuvreDejaEssayeeNeDependPasDeLImageTest/sans-marque` et `.../marque-mal-faite`, obligation d'ADR-0013 : le test lit `src/main/`).
+- **`LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`** (bootstrap, garde-fou 4, +4 tests) : critere 6, jeu de l'epreuve : erreur sur une oeuvre, erreur sur la seconde, troisieme erreur qui revele ; plus
+  la mutation E8 du gabarit reel et deux autres du meme gabarit.
+
+### 10.2 Lectures du critere que je fais, a confirmer par leurs auteurs
+
+Le critere les laisse ouvertes ou se contredit ; je n'ai pas arrete le travail, j'ai pris la lecture qui tient la forme retenue et je la nomme. **Aucune n'assouplit un garde-fou existant.**
+
+1. **Critere 4, "le bord exterieur de la marque".** Lu comme l'anneau seul, il vaut **1,14:1 contre le meuble** (`#1c2733` sur `#081c2c`) et refuserait la pastille que `nadia-prof` a retenue : l'anneau d'encre se confond avec le meuble sombre. Les 16,11:1 de
+   `ines-design` sont ceux du **disque** contre le meuble. La pastille est a deux tons (disque sur le meuble, anneau sur la page claire) : le test juge le bord comme **le meilleur du disque et de l'anneau contre chaque entourage**, le
+   fond du meuble (`--recreo-cabinet-fond`) et le fond de page (`--recreo-fond`) lus dans `:root`. Le signe contre son fond est la croix contre le disque (5,23:1). Une lecture "anneau seul" demande une autre forme : a `nadia-prof` et `camille-po`.
+2. **Critere 1, "une regle dont le selecteur contient `.propositions-oeuvres` et `.proposition.deja-essayee`".** Le `:has(.proposition.deja-essayee)` de la rangee contient ces deux motifs et declare `padding-bottom` : lu litteralement, il suffit
+   et la mutation E1 (regle `::before` retiree) resterait **verte**. Le test lit le motif **hors des parentheses** : la regle de la rangee est celle du critere 7 (c), pas de la marque.
+3. **Critere 8.** Lignes de `recreo.css`, hors commentaires, qui portent `line-through` : 2 (le `grep -c` du critere compterait aussi une ligne de commentaire).
+4. **Critere 7 (a).** `padding` et `margin` sont lus avec leurs formes longues (`padding-bottom`, `margin-left`...) ; la largeur de bordure est comparee a celle de la regle de meme sujet sans `deja-essayee`.
+5. **Critere 6.** Le jeu de preuve a deux distracteurs : pour obtenir *"deux erreurs puis la revelation"* avec deux boutons essayes, la troisieme erreur repete la premiere. Les deux boutons essayes portent la classe a la seconde erreur et a la revelation.
+
+### 10.3 Resultat de chaque propriete
+
+| # | Propriete (critere) | Commande | Avant (`a9cf6b92`) | Apres |
+|---|---|---|---|---|
+| R1 | Une regle de marque autre que `opacity` (1) | test de la feuille, `laFeuilleEtLeFichierReelsTiennentLesCriteres` | aucune : le garde ne pouvait pas etre vert | 1 regle `::before` et la regle de rangee ; juge vert |
+| R2 | Rien de dessine sur l'image (2) | `.deja-essayee img` ne declare que `opacity` | `awk` du backlog puis `grep -vc opacity` : 0 | 0 |
+| R3 | `pointer-events: none` et `top: calc(100% + 0.25rem)` (3) | idem | pas de `::before` | les deux declares |
+| R4 | Contrastes (4) | calcul sur les hexadecimaux | pas de fichier : `ls adapters/adapter-web/src/main/resources/static/images \| grep -c marque` rend 0 | 1 fichier ; croix/disque 5,23:1, disque/meuble 16,11:1, anneau/page 14,09:1 (le test reproduit ces trois valeurs) |
+| R5 | Selecteur de la marque (5) | idem | sans objet | contient `deja-essayee`, pas `data-oeuvre-revelee` ; la revelation ne cite pas le SVG |
+| R6 | Les boutons essayes et la bonne (6) | `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`, `lesBoutonsEssayesPortentDejaEssayee...` | aucun test du critere | vert sur le jeu de preuve (3 items) |
+| R7 | La case et l'image ne bougent pas (7) | test de la feuille | sans objet | vert, (a) et (b) lus sur les regles reelles |
+| R8 | Branche texte (8) | `grep -c 'line-through' adapters/adapter-web/src/main/resources/static/css/recreo.css` | 2 | 2 |
+| R9 | Reacteur complet | `bash outils/mvn-jdk21.sh -B clean verify` (racine, sans `-pl`) | base : 0 echec, 2354 tests | 0 echec, 2381 tests (10.5) |
+
+### 10.4 Mutations E1 a E9, sur le fichier reel
+
+Chacune mute un fichier reel (feuille, SVG ou gabarit), lance `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dmaven.test.failure.ignore=true` (perimetre : le reacteur de `bootstrap` avec `-am`, ITs exclus), puis restaure le fichier
+(`git status --short` vide apres la serie). Les mutations des tests de morsure (celles qui mutent une feuille deja mutee) rougissent aussi : elles ne sont pas listees.
+
+| # | Mutation | Critere attendu | Echec nomme (message de `laFeuilleEtLeFichierReelsTiennentLesCriteres`, sauf mention) |
+|---|---|---|---|
+| E1 | regle `::before` retiree | 1 | *"critere 1 : aucune regle ... ne declare une propriete autre que opacity"* |
+| E2 | `filter: grayscale(1)` sur `.deja-essayee img` | 2 | *"critere 2 : ... declare filter : quelque chose serait dessine sur l'image"* |
+| E3 | `pointer-events: none` retire | 3 | *"critere 3 : ... ne declare pas pointer-events: none"* |
+| E4 | `top: calc(100% + 0.25rem)` devient `top: 0` | 3 | *"critere 3 : ... declare top \"0\""* |
+| E5 | `fill="#f4f7fb"` devient `#c62828` | 4 | *"critere 4 : le signe #c62828 ne se detache pas du disque #c62828 : 1.00:1"* |
+| E6 | `deja-essayee` devient `[data-oeuvre-revelee=true]` dans le selecteur de la marque | 5 | *"critere 5 : le selecteur de la marque ... doit contenir deja-essayee et pas data-oeuvre-revelee"* (avec le critere 1) |
+| E7 | `max-height: 9rem` sur `.deja-essayee img` | 7 (a) | *"critere 7 (a) : ... declare max-height"* |
+| E7b | `position: absolute` retire du `::before` (`nadia-prof`) | 7 (b) | *"critere 7 (b) : ... ne declare pas position: absolute"* |
+| E7c | regle `.propositions-oeuvres .proposition.deja-essayee { padding: 1rem }` ajoutee (`nadia-prof`) | 7 (a) | *"critere 7 (a) : ... declare padding"* |
+| E8 | le gabarit retire `deja-essayee` a la revelation | 6 | `leGabaritQuiRetireDejaEssayeeALaRevelationFaitEchouerLeCritere6` et `lesBoutonsEssayesPortentDejaEssayee...` ; rougissent aussi `PartieControllerTest.unAppuiACoteApresLaRevelationMarqueSeulementLaPropositionPresseeCommeDejaEssayee` et `LEcranDeJeuDeclareCommentIlEstArriveTest.unEcranEchangeAutoriseLeMouvementSiEtSeulementSiSonTirageEstNeuf` |
+| E9 | `content: "x"` sur le `::before` | clause 2 d'ADR-0027, existante | `LAnimationRetardeMaisNeDetermineRienTest.aucuneRegleMaisonNeFabriqueDuTexte` : *"cette regle fabrique du texte (content: \"x\")"* |
+
+Une faute que cette serie a trouvee dans mon propre test : sur E6, le test de la feuille reelle echouait d'abord sur son assertion de non-vacuite (`containsExactly(MARQUE)`) et ne montrait pas le grief du critere 5. Corrige en `8db641f5` ; E6 est rejouee apres.
+
+### 10.5 Delta de tests, jobs
+
+- **+27 tests**, mesure sur `a9cf6b92` : 120 + 18 + 419 + 1458 + 333 + 6 = 2354 ; sur `8db641f5` : 120 + 18 + 442 + 1458 + 337 + 6 = 2381. adapter-web +23, bootstrap +4. Le total apres fusion est a `sofia-sm`.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine : `BUILD SUCCESS`, 0 echec, 0 erreur sur `8db641f5` (arbre propre, avant l'ajout de ce rapport).
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `a9cf6b92..HEAD` : exit 0 chacun. Non lance : la plage `BASE..SHA` de GitHub.
+- **`chemins`** (`verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh`) et **`outils`** (les dix juges `*-test.sh` et `*-test.py`) : exit 0 chacun. Non lance : l'etape `mvn -B -pl bootstrap -am package`.
+
+### 10.6 Ce qui n'est pas verifie
+
+- **Je n'ai pas vu la marque.** Le jeu n'a pas d'entree de catalogue, le jar ne peut pas servir la manche : aucune capture, aucun rendu. Les mesures de hauteur et de pli d'`ines-design` (+40 px, bas du contenu a 628 / 662, `Q3`) sont celles de son vehicule statique ; je ne les ai pas reproduites sur le gabarit livre.
+  Que la croix se reconnaisse a 40 px, se lise *"pas celle-la"*, se voie autour d'une reproduction pale et d'une sombre, ne se confonde pas avec l'anneau de focus ni celui de la revelation : `nadia-prof`, en jouant.
+- **`:has()`** : le `padding-bottom` de la rangee repose sur `:has`, deja employe par la feuille ; je n'ai pas verifie la tablette la plus ancienne du perimetre.
+- **Limites du test de la feuille** : une regle de la feuille vendorisee, une regle sous `@media`, un attribut `style` du gabarit (E8 garde le gabarit, pas le `style`).
+- **Le critere 6 sur un jeu reel** : la population reelle est vide aujourd'hui (le garde-fou 4 le dit encore) ; `joueLaMarque` et `joue` parcourent tous les items d'un jeu dans l'ordre de la source, alors qu'un jeu de 6 items a `nombreDeManches: 5`. A relire au commit de l'entree de catalogue.
+
+### 10.7 Ce qui reste pour l'entree de catalogue
+
+1. **`catalogue.yaml`** : titre *"Des œuvres faites de la même façon"*, consigne *"Regarde l'œuvre, puis trouve celle qui est faite de la même façon."*, `nombreDeManches: 5` (`B9`, `ADR-0023`). La consigne finit par un point : pas de piege `TYP-1`.
+2. **L'inventaire de `TexteAccentueExposeParLePortEntrantTest`**, et **l'assertion du garde-fou 4** (*"aucun jeu reel du catalogue ne sert de propositions-images"*, `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`) qui devient la liste exacte du jeu branche. Le meme commit doit
+   regler la boucle de `joue` et de `joueLaMarque` (6 items, 5 manches ; ordre des items servis), sans affaiblir un garde-fou.
+3. **Prerequis d'ordre** : `PLAFOND` (`1f0fe8e4`) et `ECHEC` (`696f4f20`) sont ancetres une fois fusionnes (`git merge-base --is-ancestor`, sort 0) ; `S56-ART-CP-10-FORME` est ecrit (`ARBITRAGE-s56-forme-art-cp-10.md`), `Q7` (releve d'`ines-design` sur le gabarit livre) est a verifier avant le commit.
+4. **Premier endroit ou je peux lancer le jar et regarder** : apres l'entree de catalogue. C'est la que je jouerai l'echec et la revelation, avant de dire que c'est fait.
+5. **R8 et R9** (`S55-EMC-CM1-R8`, `S55-EMC-CM1-R9`) : inchanges, apres l'entree de catalogue. Le point 2 de la section 8 est livre par cette section.
