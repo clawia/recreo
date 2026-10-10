@@ -1804,11 +1804,32 @@ body:has(.ecran-exclusif) .chip-niveau {
     border: 0.125rem solid var(--recreo-accent);
 }
 
-/* Etat d'echec (M3) : un mot barre n'existe pas sur une image. Ecart a la proposition d'ines-design,
-   qui ajoutait un cadre en tirets : toute declaration de border sur un sujet .proposition.deja-essayee
-   oblige ses etats :hover, :active et :focus-visible (ADR-0046, dette vide) et toucherait l'anneau de
-   focus de S17-1. Seule l'attenuation a demi est posee ici ; le canal de forme reste a decider
-   (ines-design, nadia-prof). Aucun pictogramme dans la case (X3). */
+/* Etat d'echec (M3). Deux canaux, qui ne dependent d'aucune reproduction (N1) : l'attenuation a demi,
+   posee sur l'image, et une marque de forme, la croix du cahier, que le signal faux dessine deja
+   sous le meuble. La marque est une pastille portee par le ::before du bouton, sous la case : hors du
+   bouton pressable et hors de l'image (X3 : rien n'est ecrit ni dessine dans l'image), sans retour
+   au doigt (pointer-events: none, ADR-0026 clause 3 amendee). Aucune border sur un sujet
+   .proposition.deja-essayee, qui obligerait ses etats :hover, :active et :focus-visible (ADR-0046) :
+   l'attenuation reste donc seule sur l'image. La rangee gagne de la hauteur sous les cases quand une
+   case est essayee, jamais avant le geste (X6) ; ni la case ni l'image ne bougent (N6). Forme
+   d'ines-design (proposition-ines-forme-art-cp-10.md, 1.4), O1 retenue par nadia-prof. Garde par
+   LaMarqueDeLOeuvreDejaEssayeeNeDependPasDeLImageTest. */
+.propositions-oeuvres:has(.proposition.deja-essayee) {
+    padding-bottom: 3.25rem;
+}
+
+.propositions-oeuvres .proposition.deja-essayee::before {
+    content: "";
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: -1.25rem;
+    background: url('/images/marque-echec.svg') center / contain no-repeat;
+    pointer-events: none;
+}
+
 .propositions-oeuvres .proposition.deja-essayee img {
     opacity: 0.5;
 }
