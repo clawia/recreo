@@ -164,7 +164,8 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
                 });
     }
 
-    private static boolean estEnImage(Question question) {
+    /** Vrai pour un item dont toutes les propositions sont des reproductions (ADR-0104 decision 3). */
+    static boolean estEnImage(Question question) {
         return java.util.stream.Stream.concat(java.util.stream.Stream.of(question.bonneReponse()),
                 question.distracteurs().stream()).allMatch(
                 proposition -> proposition.startsWith(PREFIXE_DE_REPRODUCTION));

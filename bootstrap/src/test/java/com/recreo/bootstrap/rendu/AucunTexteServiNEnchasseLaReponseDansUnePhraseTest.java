@@ -289,6 +289,27 @@ class AucunTexteServiNEnchasseLaReponseDansUnePhraseTest {
         return avecHtml(ecran, mute.body().html());
     }
 
+    /**
+     * ADR-0013 obligation 2 : l'exclusion des reponses en image est derivee de la forme de l'item, et
+     * elle n'ecarte que ces jeux. Un jeu a reponse ecrite reste dans la population, un jeu a reponse
+     * en image n'y est pas. La population des jeux ecartes peut etre vide : elle l'etait avant le
+     * branchement du premier paquet a reproductions.
+     */
+    @Test
+    void seulsLesJeuxADesReponsesEnImageSontHorsDeLaPopulation() throws Exception {
+        Set<String> jeuxJuges = new HashSet<>();
+        population().forEach(ecran -> jeuxJuges.add(ecran.jeuServi()));
+
+        for (GameDefinition jeu : partie.jeuxDisponibles()) {
+            Item premier = premierItem(jeu.contenu());
+            if (AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest.estUneReponseEnImage(premier)) {
+                assertThat(jeuxJuges).as("%s a des reponses en image", jeu.id()).doesNotContain(jeu.id());
+            } else if (!(premier instanceof ZoneADesigner)) {
+                assertThat(jeuxJuges).as("%s a des reponses ecrites", jeu.id()).contains(jeu.id());
+            }
+        }
+    }
+
     private static EcranServi avecHtml(EcranServi ecran, String html) {
         return new EcranServi(ecran.jeuServi(), ecran.mecanique(), ecran.ecran(), ecran.reponse(),
                 ecran.enonce(), ecran.textesDeContenu(), html);
@@ -309,6 +330,18 @@ class AucunTexteServiNEnchasseLaReponseDansUnePhraseTest {
         List<EcranServi> population = new ArrayList<>();
         for (GameDefinition jeu : jeux) {
             Item item = premierItem(jeu.contenu());
+            if (AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest.estUneReponseEnImage(item)) {
+                // ADR-0104 decision 4, points 4 et 5 (S55-ART-CP-10-PAQUET, s56) : une reponse en image
+                // n'est nommee en texte sur aucun de ses deux ecrans, et la phrase de revelation de ces
+                // jeux (M4 de nadia-prof) est le texte d'une autre forme de manche que celui des jeux a
+                // reponse ecrite : compares dans une meme population, les deux emplacements
+                // "reponse-revelee" paraitraient varier avec l'item. Decision et non omission, comme la
+                // designation ci-dessous (ADR-0088 clause B). Les ecrans de ces jeux sont juges par
+                // LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest, qui exige la phrase
+                // M4 exacte a la revelation. Exclusion proposee par lea-dev, a ratifier par theo-archi :
+                // ADR-0104 decision 7 ne liste pas ce garde-fou.
+                continue;
+            }
             if (item instanceof Question question) {
                 population.addAll(ecransDUneQuestion(jeu, question));
             } else if (item instanceof ReponseAEcrire aEcrire) {
