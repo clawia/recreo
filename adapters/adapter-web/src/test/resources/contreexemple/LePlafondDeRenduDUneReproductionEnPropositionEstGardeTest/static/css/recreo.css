@@ -1,0 +1,14 @@
+/* ADR-0013 obligation 3 : le jeu fautif commite de
+   LePlafondDeRenduDUneReproductionEnPropositionEstGardeTest. Les trois clauses sont violees a la
+   fois : un plafond de base de 14rem (clause 1), une image de proposition dont max-width est
+   100% et dont max-height depasse le plafond (clause 2), et un min-height qui force l'image
+   au-dela du plafond (clause 3). */
+.image-item {
+    max-height: 14rem;
+}
+
+.propositions-oeuvres .proposition img {
+    max-width: 100%;
+    max-height: min(100%, 14rem);
+    min-height: 14rem;
+}
