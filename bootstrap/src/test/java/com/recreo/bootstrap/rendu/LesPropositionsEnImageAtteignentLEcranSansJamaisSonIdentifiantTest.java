@@ -93,6 +93,14 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
     /** Le jeu de preuve, seul objet synthetique de ce fichier (voir la Javadoc de classe). */
     private static final String JEU_DE_PREUVE = "preuve-propositions-en-image";
 
+    /**
+     * Un jeu reel a propositions-images a plus d'items que de manches (ADR-0023 : {@code nombreDeManches}
+     * strictement inferieur) : une partie n'en sert qu'une partie, et un item peut ne jamais etre tire
+     * par le hasard fixe de ce fichier. Chaque item a propositions-images d'un jeu reel est donc aussi
+     * joue seul, dans un jeu d'une manche derive du jeu reel, nomme {@code <jeu>--item-<rang>}.
+     */
+    private static final String SEPARATEUR_DU_JEU_PAR_ITEM = "--item-";
+
     /** M5 de nadia-prof (ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md, 3.2), mot pour mot. */
     private static final String NOM_ACCESSIBLE = "Choisir cette œuvre";
 
@@ -169,6 +177,12 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
         return java.util.stream.Stream.concat(java.util.stream.Stream.of(question.bonneReponse()),
                 question.distracteurs().stream()).allMatch(
                 proposition -> proposition.startsWith(PREFIXE_DE_REPRODUCTION));
+    }
+
+    /** Les items qu'une partie du jeu sert au plus, dans l'ordre de la source : pas plus que de manches. */
+    private static List<Question> questionsJouables(GameDefinition jeu) {
+        List<Question> questions = questionsDe(jeu);
+        return questions.subList(0, Math.min(questions.size(), jeu.nombreDeManches()));
     }
 
     /** Les identifiants de reproduction que des items reels declarent en illustration, sans doublon. */
@@ -386,6 +400,14 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
         return defauts;
     }
 
+    /** Les jeux du catalogue reel a propositions-images : ni le jeu de preuve, ni un jeu derive par item. */
+    private List<GameDefinition> jeuxReelsAPropositionsEnImage() {
+        return jeuxAPropositionsEnImage().stream()
+                .filter(jeu -> !jeu.id().equals(JEU_DE_PREUVE))
+                .filter(jeu -> !jeu.id().contains(SEPARATEUR_DU_JEU_PAR_ITEM))
+                .toList();
+    }
+
     private List<GameDefinition> jeuxAPropositionsEnImage() {
         return partie.jeuxDisponibles().stream()
                 .filter(jeu -> questionsDe(jeu).stream().anyMatch(LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest::estEnImage))
@@ -400,19 +422,23 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
     @Test
     void chaqueEcranDeChaqueItemAPropositionsEnImageEstSainEtLePerimetreReelEstVide() throws Exception {
         List<String> defauts = new ArrayList<>();
-        List<GameDefinition> reels = jeuxAPropositionsEnImage().stream()
-                .filter(jeu -> !jeu.id().equals(JEU_DE_PREUVE)).toList();
+        List<GameDefinition> reels = jeuxReelsAPropositionsEnImage();
         for (GameDefinition jeu : reels) {
-            defauts.addAll(joue(jeu.id(), questionsDe(jeu)));
+            defauts.addAll(joue(jeu.id(), questionsJouables(jeu)));
+        }
+        for (GameDefinition jeu : jeuxAPropositionsEnImage()) {
+            if (jeu.id().contains(SEPARATEUR_DU_JEU_PAR_ITEM)) {
+                defauts.addAll(joue(jeu.id(), questionsDe(jeu)));
+            }
         }
         defauts.addAll(joue(JEU_DE_PREUVE, questionsDe(leJeuDePreuve())));
 
         assertThat(defauts).as("ADR-0104 decision 7, garde-fou 4").isEmpty();
-        assertThat(reels)
-                .as("ADR-0051 : aucun jeu reel du catalogue ne sert de propositions-images a s55 ; le"
-                        + " jeu de preuve est fait d'items reels mutes. Un paquet reel qui entre est"
-                        + " joue ici sans qu'une ligne change, et ce nombre est a relever")
-                .isEmpty();
+        assertThat(reels).extracting(GameDefinition::id)
+                .as("ADR-0051 : les jeux reels du catalogue qui servent des propositions-images, liste"
+                        + " exacte. Un paquet reel qui entre est joue ici, et cette liste est a relever ;"
+                        + " le jeu de preuve reste fait d'items reels mutes")
+                .containsExactly("bandit-manchot-rapprocher-deux-oeuvres-cp");
     }
 
     /** Non-vacuite : le jeu de preuve est bien un jeu a propositions-images, de trois items. */
@@ -551,7 +577,7 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
     void lesBoutonsEssayesPortentDejaEssayeeEtLaBonneLaRevelationSurLeJeuDePreuveEtLesJeuxReels() throws Exception {
         List<String> defauts = new ArrayList<>();
         for (GameDefinition jeu : jeuxAPropositionsEnImage()) {
-            defauts.addAll(joueLaMarque(jeu.id(), questionsDe(jeu)));
+            defauts.addAll(joueLaMarque(jeu.id(), questionsJouables(jeu)));
         }
 
         assertThat(jeuxAPropositionsEnImage())
@@ -638,6 +664,16 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
             List<GameDefinition> jeux = new ArrayList<>(new YamlContentPackLoader().games());
             List<GameDefinition> reels = List.copyOf(jeux);
             List<Question> items = itemsDePreuve(reels);
+            for (GameDefinition jeu : reels) {
+                List<Question> questions = questionsDe(jeu);
+                for (int rang = 0; rang < questions.size(); rang++) {
+                    if (estEnImage(questions.get(rang))) {
+                        jeux.add(new GameDefinition(jeu.id() + SEPARATEUR_DU_JEU_PAR_ITEM + rang, jeu.titre(),
+                                jeu.consigne(), jeu.mecanique(), jeu.descripteur(),
+                                new ListContentSource(jeu.descripteur(), List.of(questions.get(rang))), 1));
+                    }
+                }
+            }
             ContentDescriptor descripteur = new ContentDescriptor("Arts plastiques", "CP",
                     "Preuve d'ADR-0104", "jeu de preuve, jamais servi a un enfant");
             jeux.add(new GameDefinition(JEU_DE_PREUVE, "Preuve", "Consigne de preuve", BanditManchot.ID,
