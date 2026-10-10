@@ -105,3 +105,72 @@ deux morsures) et n'en ajoute aucun : le paquet est juge par les garde-fous deja
 3. **Entree de catalogue** (`catalogue.yaml`) : titre *"Des œuvres faites de la même façon"*, consigne *"Regarde l'œuvre, puis trouve celle qui est faite de la même façon."*, `nombreDeManches: 5` (`B9`, `ADR-0023`), l'inventaire de `TexteAccentueExposeParLePortEntrantTest`, et l'assertion du garde-fou 4 (`LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`, *"aucun jeu reel du catalogue ne sert de propositions-images"*) qui devient la liste exacte du jeu branche. Prealables : `PLAFOND` et `ECHEC` ancetres (`git merge-base --is-ancestor`), `S56-ART-CP-10-FORME` et `Q7` ecrits. Le premier endroit ou je joue le jar.
 4. **R8 et R9** (`S55-EMC-CM1-R8`, `S55-EMC-CM1-R9`) : ordre de `DEC-0116` 3.1, apres l'entree de catalogue. Rien commence.
 5. **Non garde, a `theo-archi`** : `B2`, `B3`, `B5`, `B6`, `B7`, `B8` (section 5). Je n'ai ecrit aucun test pour eux : ni plus ni moins que la demande, et la forme d'un garde-fou est une decision d'architecture.
+
+## 9. S55-ART-CP-10-PLAFOND (worktree `s56-lea-plafond`, base `round-two` a `e8155d7e`)
+
+Commit du garde-fou : `1f0fe8e4`. **JDK 21.0.10** (`java.version` du rapport Surefire, enveloppe `bash outils/mvn-jdk21.sh`). La forme et les mutations sont celles de l'amendement de `theo-archi`
+(`avis-faisabilite.md`, A.2) et du backlog amende par `camille-po` (`DEC-0116` A.11) : plafond porte par l'image, clauses 1 a 3, mutations `P1'` a `P5'`.
+
+### 9.1 Ce qui est livre
+
+- `adapters/adapter-web/src/main/resources/static/css/recreo.css` : `.propositions-oeuvres .proposition img` declare `max-width: min(100%, 11rem)` et `max-height: min(100%, 11rem)` (avant : `100%` et `100%`), plus un commentaire de trois lignes. La case et son arithmetique ne changent pas.
+- `adapters/adapter-web/src/test/java/com/recreo/adapter/web/LePlafondDeRenduDUneReproductionEnPropositionEstGardeTest.java` : un juge pur (`griefs`) et onze tests. Il lit la feuille par `TailleDesTextesEtBoutonsTest.blocsMaison`.
+  - clause 1 : `max-height` de `.image-item`, en rem, fois 16, egale 176 ;
+  - clause 2 : tout selecteur contenant `propositions-oeuvres` dont le sujet est `img` ne declare `max-width` et `max-height` que sous la forme `min(100%, <x>rem)`, `x` fois 16 au plus 176, et l'un d'eux declare les deux ;
+  - clause 3 : aucun de ces selecteurs ne declare `min-width`, `min-height`, ni `width` ou `height` autres que `auto`.
+- `adapters/adapter-web/src/test/resources/contreexemple/LePlafondDeRenduDUneReproductionEnPropositionEstGardeTest/static/css/recreo.css` : le jeu fautif commite. **Ecart au plan, trouve par le verify** : `LesGardeFousSontMisALEpreuveTest.aucunGardeFouDeBalayageNEchappeALaMiseALEpreuve` (ADR-0013) exige
+  qu'un test qui lit `src/main/` possede un jeu fautif sous `contreexemple/<NomDeLaClasse>` et l'execute en exigeant le rouge. Il rougissait sur la classe neuve (*"Expecting empty but was: [LePlafondDeRendu..."*) ; le jeu fautif viole les trois clauses a la fois et `leJeuFautifCommiteEstRefuse` les exige toutes.
+
+### 9.2 Resultat de chaque propriete
+
+| # | Propriete | Commande | Avant | Apres |
+|---|---|---|---|---|
+| Q1 | La forme est dans la feuille | `grep -c 'min(100%, 11rem)' adapters/adapter-web/src/main/resources/static/css/recreo.css` | 0 | 2 |
+| Q2 | Le test sur la feuille d'avant | `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test -Dtest=LePlafondDeRenduDUneReproductionEnPropositionEstGardeTest -Dsurefire.failIfNoSpecifiedTests=false` (perimetre : `adapter-web` avec `-am`, classe nommee), `recreo.css` remis a `e8155d7e` | 5 echecs sur 10, dont `laFeuilleReelleTientLesTroisClauses` : *"clause 2 : ... declare max-width: 100%, qui n'est pas min(100%, <x>rem)"* | 0 echec sur 10 avec la forme |
+| Q3 | Arbre non mute, reacteur complet | `bash outils/mvn-jdk21.sh -B clean verify` (racine, sans `-pl`) | base : 0 echec, 2343 tests | 0 echec, 2354 tests |
+| Q4 | Un test lit l'ancre | clause 1 sur la feuille reelle | aucun test ne lisait `.image-item` | `laFeuilleReelleTientLesTroisClauses` vert, ancre 176 |
+
+(Q2 : le test avait 10 tests a cette mesure ; le onzieme, `leJeuFautifCommiteEstRefuse`, est venu apres, avec le jeu fautif.)
+
+### 9.3 Mutations sur la feuille reelle
+
+Deux niveaux, tous deux sur materiau reel.
+
+**Sur le fichier** (`recreo.css` mute, puis restaure ; identifiant de blob verifie egal avant et apres la serie), commande du backlog : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dmaven.test.failure.ignore=true`, perimetre le reacteur de `bootstrap` avec `-am`, ITs exclus. Le critere demande au moins un echec nomme dans la clause nommee.
+
+| # | Mutation | Echecs (adapter-web / bootstrap) | Message de `laFeuilleReelleTientLesTroisClauses` |
+|---|---|---|---|
+| P1' | `min(100%, 11rem)` devient `min(100%, 14rem)` (les deux declarations) | 5 / 0 | clause 2, `max-width: min(100%, 14rem)` |
+| P2' | `min(100%, 11rem)` devient `100%` | 5 / 0 | clause 2, `max-width: 100%` |
+| P3' | `max-height: 14rem` ajoute a `.propositions-oeuvres .proposition.deja-essayee img` | 2 / 0 | clause 2, selecteur `.deja-essayee img` nomme |
+| P4' | `min-height: 14rem` ajoute a la regle de base de l'image | 2 / 0 | clause 3, `min-height` |
+| P5' | `.image-item { max-height: 11rem }` devient `14rem` | 3 / 0 | clause 1, *"vaut 14.0rem, soit 224 px, et non 176 px"* |
+
+Les echecs en plus du test de la feuille sont les tests de morsure du meme fichier, qui mutent une feuille deja mutee (`unPlafondPlusBas...`, `uneRegleDeBaseSansMaxHeight...`, `unPlafondDeImage...`) : ils rougissent pour la meme cause et ne sont pas des echecs independants.
+
+**En memoire, dans le test** : `unPlafondDeImageQuiMonteFaitEchouerLaClause2` (P1'), `unPlafondDeImageRemplaceParCentPourCentFaitEchouerLaClause2` (P2'), `unMaxHeightHorsDeLaFormeSurLEtatEssayeFaitEchouerLaClause2` (P3'),
+`unMinHeightSurLImageFaitEchouerLaClause3` (P4'), `unPlafondDeBaseQuiMonteFaitEchouerLaClause1` (P5'), et quatre de plus : `uneHauteurAutreQueAutoSurLImageFaitEchouerLaClause3`, `uneRegleDeBaseSansMaxHeightFaitEchouerLaClause2`,
+`lePerimetreSeDeriveDuSelecteurEtPasDUneListe` (un selecteur neuf `...nouvelle-regle img` est lu sans etre liste), `leJeuFautifCommiteEstRefuse`. Une borne dans l'autre sens : `unPlafondPlusBasQueLeNombreDecideNeFaitPasEchouerLeGardeFou` (9rem reste vert).
+
+### 9.4 Delta de tests, jobs
+
+- **+11 tests**, mesure sur `e8155d7e` : 120 + 18 + 408 + 1458 + 333 + 6 = 2343 ; sur `1f0fe8e4` : 120 + 18 + 419 + 1458 + 333 + 6 = 2354, l'ecart est tout dans `adapter-web` (408 vers 419). Le total apres fusion est a `sofia-sm`.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, `BUILD SUCCESS`, 0 echec, 0 erreur.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, et `verifier-prefixes.sh` sur `e8155d7e..HEAD` (exit 0). Non lance : la plage `BASE..SHA` de GitHub.
+- **`chemins`** : `verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh` (exit 0).
+- **`outils`** : les dix juges `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py`, exit 0 chacun.
+- Non lance : l'etape `mvn -B -pl bootstrap -am package`.
+
+### 9.5 Ce qui n'est pas verifie
+
+- **Le rendu.** Je n'ai pas lance le jar : le jeu n'a pas d'entree de catalogue, aucune page ne montre les trois images. Que `min(100%, 11rem)` rende une image de 172 px au plus dans la case, et que la propriete se voie a cette taille, est a l'ecran (`Q7`) et a `nadia-prof`. `max-height: min(100%, 11rem)` repose sur une case de hauteur definie (`aspect-ratio: 1 / 1` de la case, inchange) : je ne l'ai pas mesure dans un navigateur.
+- **Ce que le test ne voit pas** (liste de `theo-archi`, A.2, reprise) : une regle de la feuille vendorisee, une regle sous `@media` (le decoupage par accolades de `blocsMaison` range une regle imbriquee sous la cle de son `@media`, donc un selecteur `... img` ecrit dans un `@media` echappe), une regle dont le selecteur atteint l'image sans nommer `propositions-oeuvres`, un attribut `style` du gabarit.
+- Le plafond 176 est une constante de ce test, la meme valeur que celle de `ChaqueIllustrationDeContenuDeclareSaGeometrieEtResteSousLeCliquetDePoidsTest` (privee, non partagee) : deux copies du nombre, ecart signale sans y toucher.
+
+### 9.6 Ce qui reste pour `S56-ART-CP-10-ECHEC`
+
+1. **Prerequis, remplis cote code** : `PLAFOND` est ancetre (`1f0fe8e4`) ; l'amendement d'`ADR-0026` (clause 3, pseudo-element decoratif) est fusionne dans `round-two`. **Non remplis** : le critere de la marque (`nadia-prof`, `Q1`) et la proposition d'`ines-design` (`marque-echec-candidate.svg`, regle `::before` de la section 1.4 de `releves-s56/proposition-ines-forme-art-cp-10.md`) doivent etre ecrits ; je ne commence pas sans eux.
+2. **Ce que la marque doit tenir devant ce garde-fou** : la clause 2 lit toute regle dont le sujet est `img` sous `propositions-oeuvres`. Une marque posee sur la regle `.deja-essayee img` ne peut declarer ni `max-width`, ni `max-height`, ni `width`, `height`, `min-width`, `min-height` hors de la forme (P3' et P4'). Une `border` ou un `outline` sur l'image sont admis. La marque en `::before` de la case est hors perimetre du garde-fou (sujet `::before`, pas `img`).
+3. **Le garde de la marque** (A.1 de l'avis) : un test de feuille dans `adapter-web` pour les criteres 1 a 5, 7 et 8, une clause de rendu au banc du garde-fou 4 pour le critere 6, mutations `E1` a `E9`. L'ambiguite que `theo-archi` signale entre *"`.proposition` ou son `img`"* et *"dont le selecteur contient `.proposition`"* est a `nadia-prof`.
+4. **Comme ici** : tout test qui lit `src/main/` doit porter son jeu fautif commite sous `contreexemple/<NomDeLaClasse>` (ADR-0013), sinon `LesGardeFousSontMisALEpreuveTest` rougit. A inscrire dans le prix du commit d'`ECHEC`.
+5. Entree de catalogue, R8 et R9 : inchanges (section 8, points 3 et 4). Le point 1 de la section 8 est livre par cette section.
