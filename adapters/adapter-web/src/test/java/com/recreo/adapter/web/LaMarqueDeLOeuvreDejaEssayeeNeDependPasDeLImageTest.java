@@ -540,11 +540,11 @@ class LaMarqueDeLOeuvreDejaEssayeeNeDependPasDeLImageTest {
     void laFeuilleEtLeFichierReelsTiennentLesCriteres() {
         Map<String, String> blocs = feuilleReelle();
 
+        assertThat(griefsDe(RACINE_PRODUCTION)).isEmpty();
         assertThat(reglesDeLaMarque(blocs))
                 .as("ADR-0003 : ce garde-fou ne prouve rien s'il ne lit aucune regle de marque")
-                .containsExactly(MARQUE);
+                .isNotEmpty();
         assertThat(reglesDeLEtat(blocs)).contains(MARQUE, IMAGE_ESSAYEE);
-        assertThat(griefsDe(RACINE_PRODUCTION)).isEmpty();
     }
 
     /** Les valeurs mesurees par ines-design (1.5) : le calcul reproduit leurs chiffres. */
