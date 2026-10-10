@@ -1,0 +1,20 @@
+:root {
+    --recreo-fond: #f4f7fb;
+    --recreo-cabinet-fond: #081c2c;
+}
+
+/* ADR-0013 obligation 3 : jeu fautif de LaMarqueDeLOeuvreDejaEssayeeNeDependPasDeLImageTest. L'oeuvre
+   essayee ne porte que l'attenuation a 50 %, qui depend de l'image : le critere 1 est rouge, et avec
+   lui les criteres 3, 4, 5 (aucune marque) et 8 (aucune ligne line-through). Le padding-bottom de la
+   rangee n'est pas une regle de la marque. */
+.propositions-oeuvres .proposition img {
+    border: 0.125rem solid #2e6f9e;
+}
+
+.propositions-oeuvres .proposition.deja-essayee img {
+    opacity: 0.5;
+}
+
+.propositions-oeuvres:has(.proposition.deja-essayee) {
+    padding-bottom: 3.25rem;
+}

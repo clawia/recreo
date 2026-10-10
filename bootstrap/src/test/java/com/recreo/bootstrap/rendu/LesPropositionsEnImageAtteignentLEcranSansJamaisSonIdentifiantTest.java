@@ -74,8 +74,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  *
  * <p><b>Mises a l'epreuve (obligation 3) sur le gabarit reel mute en memoire</b> : un resolveur de
  * gabarit sert {@code fragments/manche.html} lu sur le classpath, mute ou non, et chaque mutation
- * est jouee par le vrai controleur. Ce que ce fichier ne juge pas : la mise en page, la marque a
- * l'oeil, que la propriete rapprochee se voie a 176 px CSS, et les mots (nadia-prof, a l'ecran).
+ * est jouee par le vrai controleur.
+ *
+ * <p><b>Critere 6 de S56-ART-CP-10-ECHEC (N5)</b> : sur une manche a trois propositions, apres deux
+ * erreurs puis a la revelation, les deux boutons essayes portent la classe {@code deja-essayee}, la
+ * bonne porte {@code data-oeuvre-revelee="true"} et pas {@code deja-essayee}. Se juge sur la page
+ * rendue, ici ; la regle de la marque elle-meme est lue dans
+ * {@code LaMarqueDeLOeuvreDejaEssayeeNeDependPasDeLImageTest}. Ce que ce fichier ne juge pas : la mise
+ * en page, la marque a l'oeil, que la propriete rapprochee se voie a 176 px CSS, et les mots (nadia-prof, a l'ecran).
  */
 @WebMvcTest(PartieController.class)
 @Import({LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest.JeuxDeTestConfiguration.class,
@@ -292,6 +298,47 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
         return defauts;
     }
 
+    /**
+     * Critere 6 (N5), fonction pure sur le document : les propositions {@code essayees} portent
+     * {@code deja-essayee}, la bonne ne le porte jamais, et elle porte {@code data-oeuvre-revelee} a la
+     * revelation et a ce moment seulement. Les propositions sont lues par la source de leur image.
+     */
+    static List<String> defautsDeLaMarqueDeLEchec(String jeuId, Question item, Etat etat, Document ecran,
+            Set<String> essayees) {
+        List<String> defauts = new ArrayList<>();
+        String ou = "jeu " + jeuId + ", item " + item.id().value() + ", ecran " + etat;
+        List<Element> boutons = ecran.select("form.propositions button.proposition");
+        if (boutons.isEmpty()) {
+            defauts.add(ou + " : aucun bouton de proposition, le critere 6 ne juge rien");
+        }
+        for (Element bouton : boutons) {
+            String source = bouton.select("img").attr("src");
+            String proposition = source.substring(source.lastIndexOf('/') + 1).replace(".jpg", "");
+            boolean essayee = essayees.contains(proposition);
+            boolean estLaBonne = proposition.equals(item.bonneReponse());
+            if (essayee && !bouton.hasClass("deja-essayee")) {
+                defauts.add(ou + " : " + proposition + " a ete essayee et ne porte pas la classe deja-essayee"
+                        + " : l'enfant la presserait une deuxieme fois sans le savoir (N5)");
+            }
+            if (!essayee && bouton.hasClass("deja-essayee")) {
+                defauts.add(ou + " : " + proposition + " n'a pas ete essayee et porte deja-essayee (X6 : aucune"
+                        + " difference de presentation avant le geste)");
+            }
+            if (estLaBonne && bouton.hasClass("deja-essayee")) {
+                defauts.add(ou + " : la bonne oeuvre porte deja-essayee : la marque de l'echec dirait \"pas"
+                        + " celle-la\" de la bonne reponse (N5)");
+            }
+            boolean marquee = "true".equals(bouton.attr("data-oeuvre-revelee"));
+            if (estLaBonne && etat == Etat.REVELATION && !marquee) {
+                defauts.add(ou + " : la bonne oeuvre ne porte pas data-oeuvre-revelee=\"true\" a la revelation (N5)");
+            }
+            if (!estLaBonne && marquee) {
+                defauts.add(ou + " : " + proposition + " porte data-oeuvre-revelee=\"true\" sans etre la bonne");
+            }
+        }
+        return defauts;
+    }
+
     // ------------------------------------------------------------------------------------------
     // Le jeu : la vraie traversee HTTP
     // ------------------------------------------------------------------------------------------
@@ -466,6 +513,95 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
                 "th:if=\"${#strings.startsWith(proposition, 'oeuvre-')}\" th:src");
 
         assertThat(mute).isNotEqualTo(gabaritReel()).contains("#strings.startsWith(proposition");
+    }
+
+    // ------------------------------------------------------------------------------------------
+    // Critere 6 de S56-ART-CP-10-ECHEC : la marque suit l'essai, la revelation suit la bonne
+    // ------------------------------------------------------------------------------------------
+
+    /**
+     * Deux erreurs sur deux oeuvres differentes, puis une troisieme erreur qui revele la bonne : les
+     * deux boutons essayes sont marques apres la seconde erreur et a la revelation.
+     */
+    private List<String> joueLaMarque(String jeuId, List<Question> items) throws Exception {
+        List<String> defauts = new ArrayList<>();
+        MockHttpSession session = new MockHttpSession();
+        demarrer(jeuId, session);
+        for (Question item : items) {
+            String premiere = item.distracteurs().get(0);
+            String seconde = item.distracteurs().get(1);
+            Set<String> apresLaPremiere = Set.of(premiere);
+            Set<String> essayees = Set.of(premiere, seconde);
+            defauts.addAll(defautsDeLaMarqueDeLEchec(jeuId, item, Etat.ECHEC,
+                    coup(jeuId, session, premiere), apresLaPremiere));
+            defauts.addAll(defautsDeLaMarqueDeLEchec(jeuId, item, Etat.ECHEC,
+                    coup(jeuId, session, seconde), essayees));
+            Document revelation = coup(jeuId, session, premiere);
+            assertThat(revelation.select("form.propositions button.proposition[data-oeuvre-revelee=true]"))
+                    .as("%s, item %s : la troisieme erreur doit reveler la bonne oeuvre", jeuId, item.id().value())
+                    .hasSize(1);
+            defauts.addAll(defautsDeLaMarqueDeLEchec(jeuId, item, Etat.REVELATION, revelation, essayees));
+            coup(jeuId, session, item.bonneReponse());
+        }
+        return defauts;
+    }
+
+    @Test
+    void lesBoutonsEssayesPortentDejaEssayeeEtLaBonneLaRevelationSurLeJeuDePreuveEtLesJeuxReels() throws Exception {
+        List<String> defauts = new ArrayList<>();
+        for (GameDefinition jeu : jeuxAPropositionsEnImage()) {
+            defauts.addAll(joueLaMarque(jeu.id(), questionsDe(jeu)));
+        }
+
+        assertThat(jeuxAPropositionsEnImage())
+                .as("ADR-0051 : le critere 6 ne prouve rien sans un jeu a propositions-images")
+                .isNotEmpty();
+        assertThat(defauts).as("S56-ART-CP-10-ECHEC, critere 6 (N5)").isEmpty();
+    }
+
+    private List<String> defautsDeLaMarqueAvecLeGabaritMute(String ancien, String nouveau) throws Exception {
+        String reel = gabaritReel();
+        assertThat(reel.split(java.util.regex.Pattern.quote(ancien), -1).length - 1)
+                .as("l'ancrage de la mutation doit apparaitre exactement une fois dans le gabarit reel : %s",
+                        ancien)
+                .isEqualTo(1);
+        GABARIT_SERVI.set(reel.replace(ancien, nouveau));
+        return joueLaMarque(JEU_DE_PREUVE, questionsDe(leJeuDePreuve()));
+    }
+
+    private static final String CLASSE_ESSAYEE =
+            "th:classappend=\"${propositionsEssayees.contains(proposition)} ? 'deja-essayee' : ''\"";
+
+    /** E8 : a la revelation, le gabarit retire deja-essayee des boutons essayes. */
+    @Test
+    void leGabaritQuiRetireDejaEssayeeALaRevelationFaitEchouerLeCritere6() throws Exception {
+        List<String> defauts = defautsDeLaMarqueAvecLeGabaritMute(CLASSE_ESSAYEE,
+                "th:classappend=\"${propositionsEssayees.contains(proposition) and mancheRevelee != true}"
+                        + " ? 'deja-essayee' : ''\"");
+
+        assertThat(defauts).isNotEmpty()
+                .anyMatch(defaut -> defaut.contains("ecran REVELATION")
+                        && defaut.contains("ne porte pas la classe deja-essayee"));
+    }
+
+    /** La bonne oeuvre ne doit jamais etre marquee comme essayee, meme a la revelation. */
+    @Test
+    void leGabaritQuiMarqueLaBonneCommeEssayeeALaRevelationFaitEchouerLeCritere6() throws Exception {
+        List<String> defauts = defautsDeLaMarqueAvecLeGabaritMute(CLASSE_ESSAYEE,
+                "th:classappend=\"${propositionsEssayees.contains(proposition) or"
+                        + " (mancheRevelee == true and focusCibles.contains(proposition))}"
+                        + " ? 'deja-essayee' : ''\"");
+
+        assertThat(defauts).anyMatch(defaut -> defaut.contains("la bonne oeuvre porte deja-essayee"));
+    }
+
+    /** X6 : avant le geste, aucune proposition ne porte la marque. */
+    @Test
+    void leGabaritQuiMarqueUneOeuvreNonEssayeeFaitEchouerLeCritere6() throws Exception {
+        List<String> defauts = defautsDeLaMarqueAvecLeGabaritMute(CLASSE_ESSAYEE,
+                "th:classappend=\"'deja-essayee'\"");
+
+        assertThat(defauts).anyMatch(defaut -> defaut.contains("n'a pas ete essayee et porte deja-essayee"));
     }
 
     // ------------------------------------------------------------------------------------------

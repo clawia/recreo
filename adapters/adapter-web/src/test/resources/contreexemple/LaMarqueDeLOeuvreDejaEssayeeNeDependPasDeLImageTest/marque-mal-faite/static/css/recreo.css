@@ -1,0 +1,26 @@
+:root {
+    --recreo-fond: #f4f7fb;
+    --recreo-cabinet-fond: #081c2c;
+}
+
+/* ADR-0013 obligation 3 : jeu fautif de LaMarqueDeLOeuvreDejaEssayeeNeDependPasDeLImageTest. Une marque
+   mal faite : un filtre et une largeur sur l'image essayee (criteres 2 et 7a), une marque posee sur la
+   revelation, a top 0 et sans pointer-events (criteres 5 et 3), un SVG dont le disque a la couleur de la
+   croix (critere 4), un pseudo-element de la case essayee hors du flux (critere 7b). */
+.propositions-oeuvres .proposition.deja-essayee img {
+    opacity: 0.5;
+    filter: grayscale(1);
+    width: 3rem;
+}
+
+.propositions-oeuvres .proposition[data-oeuvre-revelee=true]::before {
+    content: "";
+    top: 0;
+    background: url('/images/marque-echec.svg') center / contain no-repeat;
+}
+
+.propositions-oeuvres .proposition.deja-essayee::after {
+    content: "";
+    top: calc(100% + 0.25rem);
+    pointer-events: none;
+}
