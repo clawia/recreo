@@ -1,0 +1,185 @@
+== A. Cartes ou tuiles visibles sans defiler (pli = 551) ==
+vue | niveau | largeur | total | entieres | au moins en partie | hauteur du document | ecrans de defilement
+actuelle | CP | 744 | 59 | 5 | 6 | 4216 | 7.7
+V1 etage 1 | CP | 744 | 8 | 8 | 8 | 551 | 1.0
+V2 | CP | 744 | 59 | 8 | 10 | 3020 | 5.5
+actuelle | CE1 | 744 | 30 | 5 | 6 | 2244 | 4.1
+V1 etage 1 | CE1 | 744 | 2 | 2 | 2 | 551 | 1.0
+V2 | CE1 | 744 | 30 | 8 | 10 | 1390 | 2.5
+actuelle | CM1 | 744 | 58 | 5 | 6 | 4148 | 7.5
+V1 etage 1 | CM1 | 744 | 8 | 8 | 8 | 551 | 1.0
+V2 | CM1 | 744 | 58 | 8 | 10 | 2952 | 5.4
+actuelle | tous | 744 | 147 | 6 | 7 | 10162 | 18.4
+V1 etage 1 | tous | 744 | 11 | 8 | 11 | 652 | 1.2
+V2 | tous | 744 | 147 | 8 | 10 | 6354 | 11.5
+actuelle | CP | 390 | 59 | 4 | 5 | 4394 | 8.0
+V1 etage 1 | CP | 390 | 8 | 4 | 6 | 838 | 1.5
+V2 | CP | 390 | 59 | 3 | 4 | 4914 | 8.9
+actuelle | CE1 | 390 | 30 | 4 | 5 | 2332 | 4.2
+V1 etage 1 | CE1 | 390 | 2 | 2 | 2 | 551 | 1.0
+V2 | CE1 | 390 | 30 | 3 | 4 | 2468 | 4.5
+actuelle | CM1 | 390 | 58 | 4 | 5 | 4326 | 7.9
+V1 etage 1 | CM1 | 390 | 8 | 4 | 6 | 838 | 1.5
+V2 | CM1 | 390 | 58 | 3 | 4 | 4846 | 8.8
+actuelle | tous | 390 | 147 | 5 | 6 | 10490 | 19.0
+V1 etage 1 | tous | 390 | 11 | 4 | 6 | 1118 | 2.0
+V2 | tous | 390 | 147 | 3 | 4 | 11240 | 20.4
+actuelle | CP | 992 | 59 | 5 | 6 | 4216 | 7.7
+V1 etage 1 | CP | 992 | 8 | 8 | 8 | 551 | 1.0
+V2 | CP | 992 | 59 | 12 | 12 | 2400 | 4.4
+actuelle | CE1 | 992 | 30 | 5 | 6 | 2244 | 4.1
+V1 etage 1 | CE1 | 992 | 2 | 2 | 2 | 551 | 1.0
+V2 | CE1 | 992 | 30 | 9 | 12 | 1238 | 2.2
+actuelle | CM1 | 992 | 58 | 5 | 6 | 4148 | 7.5
+V1 etage 1 | CM1 | 992 | 8 | 8 | 8 | 551 | 1.0
+V2 | CM1 | 992 | 58 | 10 | 10 | 2626 | 4.8
+actuelle | tous | 992 | 147 | 6 | 7 | 10162 | 18.4
+V1 etage 1 | tous | 992 | 11 | 10 | 11 | 652 | 1.2
+V2 | tous | 992 | 147 | 12 | 15 | 5150 | 9.3
+
+== B. V1 etage 2 : cartes d'une matiere, 744 ==
+CP-arts-plastiques | 744 | total 5 | entieres 5 | en partie 5 | doc 551
+CP-arts-plastiques | 390 | total 5 | entieres 3 | en partie 4 | doc 704
+CP-arts-plastiques | 992 | total 5 | entieres 5 | en partie 5 | doc 551
+CP-education-musicale | 744 | total 2 | entieres 2 | en partie 2 | doc 551
+CP-education-musicale | 390 | total 2 | entieres 2 | en partie 2 | doc 551
+CP-education-musicale | 992 | total 2 | entieres 2 | en partie 2 | doc 551
+CP-emc | 744 | total 11 | entieres 8 | en partie 10 | doc 714
+CP-emc | 390 | total 11 | entieres 3 | en partie 4 | doc 1112
+CP-emc | 992 | total 11 | entieres 11 | en partie 11 | doc 578
+CP-eps | 744 | total 3 | entieres 3 | en partie 3 | doc 551
+CP-eps | 390 | total 3 | entieres 3 | en partie 3 | doc 551
+CP-eps | 992 | total 3 | entieres 3 | en partie 3 | doc 551
+CP-francais | 744 | total 12 | entieres 8 | en partie 10 | doc 684
+CP-francais | 390 | total 12 | entieres 3 | en partie 4 | doc 1150
+CP-francais | 992 | total 12 | entieres 12 | en partie 12 | doc 551
+CP-langues-vivantes | 744 | total 1 | entieres 1 | en partie 1 | doc 551
+CP-langues-vivantes | 390 | total 1 | entieres 1 | en partie 1 | doc 551
+CP-langues-vivantes | 992 | total 1 | entieres 1 | en partie 1 | doc 551
+CP-mathematiques | 744 | total 13 | entieres 8 | en partie 10 | doc 752
+CP-mathematiques | 390 | total 13 | entieres 3 | en partie 4 | doc 1218
+CP-mathematiques | 992 | total 13 | entieres 12 | en partie 13 | doc 616
+CP-questionner-le-monde | 744 | total 12 | entieres 8 | en partie 10 | doc 744
+CP-questionner-le-monde | 390 | total 12 | entieres 3 | en partie 4 | doc 1210
+CP-questionner-le-monde | 992 | total 12 | entieres 9 | en partie 12 | doc 608
+CE1-francais | 744 | total 14 | entieres 8 | en partie 10 | doc 752
+CE1-francais | 390 | total 14 | entieres 3 | en partie 4 | doc 1286
+CE1-francais | 992 | total 14 | entieres 9 | en partie 12 | doc 706
+CE1-mathematiques | 744 | total 16 | entieres 8 | en partie 10 | doc 850
+CE1-mathematiques | 390 | total 16 | entieres 3 | en partie 4 | doc 1452
+CE1-mathematiques | 992 | total 16 | entieres 9 | en partie 12 | doc 744
+CM1-emc | 744 | total 11 | entieres 8 | en partie 10 | doc 714
+CM1-emc | 390 | total 11 | entieres 3 | en partie 4 | doc 1112
+CM1-emc | 992 | total 11 | entieres 9 | en partie 11 | doc 638
+CM1-eps | 744 | total 2 | entieres 2 | en partie 2 | doc 551
+CM1-eps | 390 | total 2 | entieres 2 | en partie 2 | doc 551
+CM1-eps | 992 | total 2 | entieres 2 | en partie 2 | doc 551
+CM1-francais | 744 | total 10 | entieres 8 | en partie 10 | doc 616
+CM1-francais | 390 | total 10 | entieres 3 | en partie 4 | doc 1014
+CM1-francais | 992 | total 10 | entieres 10 | en partie 10 | doc 551
+CM1-histoire-des-arts | 744 | total 1 | entieres 1 | en partie 1 | doc 551
+CM1-histoire-des-arts | 390 | total 1 | entieres 1 | en partie 1 | doc 551
+CM1-histoire-des-arts | 992 | total 1 | entieres 1 | en partie 1 | doc 551
+CM1-histoire-geographie | 744 | total 4 | entieres 4 | en partie 4 | doc 551
+CM1-histoire-geographie | 390 | total 4 | entieres 3 | en partie 4 | doc 606
+CM1-histoire-geographie | 992 | total 4 | entieres 4 | en partie 4 | doc 551
+CM1-langues-vivantes | 744 | total 1 | entieres 1 | en partie 1 | doc 551
+CM1-langues-vivantes | 390 | total 1 | entieres 1 | en partie 1 | doc 551
+CM1-langues-vivantes | 992 | total 1 | entieres 1 | en partie 1 | doc 551
+CM1-mathematiques | 744 | total 10 | entieres 8 | en partie 10 | doc 646
+CM1-mathematiques | 390 | total 10 | entieres 3 | en partie 4 | doc 1044
+CM1-mathematiques | 992 | total 10 | entieres 9 | en partie 10 | doc 608
+CM1-sciences | 744 | total 19 | entieres 8 | en partie 10 | doc 1016
+CM1-sciences | 390 | total 19 | entieres 3 | en partie 4 | doc 1686
+CM1-sciences | 992 | total 19 | entieres 9 | en partie 12 | doc 842
+
+== C. Jar : liste servie ==
+jar:/ | 744 | total 147 | entieres 6 | en partie 7 | doc 10162 | 1re carte 130 | hauteurs {'56': 147}
+jar:/ | 390 | total 147 | entieres 5 | en partie 6 | doc 10490 | 1re carte 188 | hauteurs {'56': 138, '86': 9}
+jar:/ | 992 | total 147 | entieres 6 | en partie 7 | doc 10162 | 1re carte 130 | hauteurs {'56': 147}
+jar:/niveaux/CP | 744 | total 59 | entieres 5 | en partie 6 | doc 4216 | 1re carte 168 | hauteurs {'56': 59}
+jar:/niveaux/CP | 390 | total 59 | entieres 4 | en partie 5 | doc 4394 | 1re carte 226 | hauteurs {'56': 55, '86': 4}
+jar:/niveaux/CP | 992 | total 59 | entieres 5 | en partie 6 | doc 4216 | 1re carte 168 | hauteurs {'56': 59}
+jar:/niveaux/CE1 | 744 | total 30 | entieres 5 | en partie 6 | doc 2244 | 1re carte 168 | hauteurs {'56': 30}
+jar:/niveaux/CE1 | 390 | total 30 | entieres 4 | en partie 5 | doc 2332 | 1re carte 226 | hauteurs {'56': 29, '86': 1}
+jar:/niveaux/CE1 | 992 | total 30 | entieres 5 | en partie 6 | doc 2244 | 1re carte 168 | hauteurs {'56': 30}
+jar:/niveaux/CM1 | 744 | total 58 | entieres 5 | en partie 6 | doc 4148 | 1re carte 168 | hauteurs {'56': 58}
+jar:/niveaux/CM1 | 390 | total 58 | entieres 4 | en partie 5 | doc 4326 | 1re carte 226 | hauteurs {'56': 54, '86': 4}
+jar:/niveaux/CM1 | 992 | total 58 | entieres 5 | en partie 6 | doc 4148 | 1re carte 168 | hauteurs {'56': 58}
+
+== D. Parite maquette / jar (liste actuelle) ==
+tous 744 maquette doc 10162 jar doc 10162 | 1re carte 130 130 | entieres 6 6
+tous 390 maquette doc 10490 jar doc 10490 | 1re carte 188 188 | entieres 5 5
+tous 992 maquette doc 10162 jar doc 10162 | 1re carte 130 130 | entieres 6 6
+CP 744 maquette doc 4216 jar doc 4216 | 1re carte 168 168 | entieres 5 5
+CP 390 maquette doc 4394 jar doc 4394 | 1re carte 226 226 | entieres 4 4
+CP 992 maquette doc 4216 jar doc 4216 | 1re carte 168 168 | entieres 5 5
+CE1 744 maquette doc 2244 jar doc 2244 | 1re carte 168 168 | entieres 5 5
+CE1 390 maquette doc 2332 jar doc 2332 | 1re carte 226 226 | entieres 4 4
+CE1 992 maquette doc 2244 jar doc 2244 | 1re carte 168 168 | entieres 5 5
+CM1 744 maquette doc 4148 jar doc 4148 | 1re carte 168 168 | entieres 5 5
+CM1 390 maquette doc 4326 jar doc 4326 | 1re carte 226 226 | entieres 4 4
+CM1 992 maquette doc 4148 jar doc 4148 | 1re carte 168 168 | entieres 5 5
+
+== E. Cibles ==
+maquette:v1-etage1-CP 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (8, 165, 140)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CP 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (8, 169.5, 116)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CP 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (8, 177.6, 140)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CP 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (59, 342, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CP 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (59, 351, 56)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CP 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (59, 304, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CP-francais 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (12, 342, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CP-francais 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (12, 351, 56)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CP-francais 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (12, 304, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CE1 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (2, 165, 116)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CE1 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (2, 177, 116)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CE1 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (2, 177.6, 116)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CE1 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (30, 342, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CE1 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (30, 351, 56)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CE1 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (30, 304, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CE1-francais 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (14, 342, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CE1-francais 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (14, 351, 56)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CE1-francais 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (14, 304, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CM1 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (8, 165, 116)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CM1 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (8, 169.5, 116)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage1-CM1 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 148.1, 50), 'tuile': (8, 177.6, 140)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CM1 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (58, 342, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CM1 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (58, 351, 56)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v2-CM1 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (58, 304, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CM1-francais 744 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (10, 342, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CM1-francais 390 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (10, 351, 56)} ecart min 8 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+maquette:v1-etage2-CM1-francais 992 {'puce': (3, 56.4, 50), 'sortie': (1, 108.8, 50), 'bascule': (1, 171.2, 50), 'carte': (10, 304, 56)} ecart min 12 chevauchees 0 coupes 0 texte dans le rembourrage 0 debordement False
+
+== F. Bandeau colle ==
+CP 744 hauteur bandeau 48 bandeaux visibles sans defiler ['Français'] colle {'scrollA': 692, 'hauts': [-104, 0, 500, 632, 1164, 1666, 1964, 2096], 'colles': 1}
+CP 390 hauteur bandeau 48 bandeaux visibles sans defiler ['Français'] colle {'scrollA': 1158, 'hauts': [-104, 0, 908, 1040, 1980, 2822, 3256, 3456], 'colles': 1}
+CP 992 hauteur bandeau 48 bandeaux visibles sans defiler ['Français', 'Maths'] colle {'scrollA': 556, 'hauts': [-104, 0, 364, 496, 892, 1258, 1518, 1680], 'colles': 1}
+CE1 744 hauteur bandeau 48 bandeaux visibles sans defiler ['Français'] colle {'scrollA': 760, 'hauts': [-104, 0], 'colles': 1}
+CE1 390 hauteur bandeau 48 bandeaux visibles sans defiler ['Français'] colle {'scrollA': 1294, 'hauts': [-104, 0], 'colles': 1}
+CE1 992 hauteur bandeau 48 bandeaux visibles sans defiler ['Français'] colle {'scrollA': 714, 'hauts': [-77, 0], 'colles': 1}
+CM1 744 hauteur bandeau 48 bandeaux visibles sans defiler ['Français'] colle {'scrollA': 624, 'hauts': [-104, 0, 394, 526, 1330, 1530, 2032, 2164], 'colles': 1}
+CM1 390 hauteur bandeau 48 bandeaux visibles sans defiler ['Français'] colle {'scrollA': 1022, 'hauts': [-104, 0, 734, 866, 2282, 2618, 3460, 3592], 'colles': 1}
+CM1 992 hauteur bandeau 48 bandeaux visibles sans defiler ['Français', 'Maths'] colle {'scrollA': 556, 'hauts': [-104, 0, 356, 488, 1118, 1318, 1744, 1876], 'colles': 1}
+
+== G. Hauteur d'en-tete et position de la 1re ligne de contenu ==
+744 maquette:v2-CP entete bas 82 barre (122, 172) filtre (132, 162)
+744 maquette:v1-etage1-CP entete bas 82 barre (122, 172) filtre (132, 162)
+744 jar:/niveaux/CP entete bas 82 barre None filtre (122, 152)
+390 maquette:v2-CP entete bas 140 barre (180, 230) filtre (190, 220)
+390 maquette:v1-etage1-CP entete bas 140 barre (180, 230) filtre (190, 220)
+390 jar:/niveaux/CP entete bas 140 barre None filtre (180, 210)
+992 maquette:v2-CP entete bas 82 barre (122, 172) filtre (132, 162)
+992 maquette:v1-etage1-CP entete bas 82 barre (122, 172) filtre (132, 162)
+992 jar:/niveaux/CP entete bas 82 barre None filtre (122, 152)
+
+== H. Contrastes (maquette V2 et V1 etage 1, CP, 744) ==
+maquette:v2-CP {"carte": {"fond": "rgb(46, 111, 158)", "texte": "rgb(255, 255, 255)", "bord": "rgba(0, 0, 0, 0)", "bordGauche": "rgba(0, 0, 0, 0)", "texteSurFond": 5.41, "bordSurPage": 19.54, "bordGaucheSurPage": 19.54, "taillePolice": "20px", "rayon": "999px"}, "tuile": null, "bandeau": {"fond": "rgb(207, 227, 246)", "texte": "rgb(28, 39, 51)", "bord": "rgb(28, 39, 51)", "bordGauche": "rgb(47, 108, 159)", "texteSurFond": 11.51, "bordSurPage": 14.09, "bordGaucheSurPage": 5.19, "taillePolice": "24px", "rayon": "0px"}, "bascule": {"fond": "rgba(0, 0, 0, 0)", "texte": "rgb(46, 111, 158)", "bord": "rgb(46, 111, 158)", "bordGauche": "rgb(46, 111, 158)", "texteSurFond": 5.03, "bordSurPage": 5.03, "bordGaucheSurPage": 5.03, "taillePolice": "20px", "rayon": "8px"}, "filtre": {"fond": "rgba(0, 0, 0, 0)", "texte": "rgb(28, 39, 51)", "bord": "rgb(28, 39, 51)", "bordGauche": "rgb(28, 39, 51)", "texteSurFond": 14.09, "bordSurPage": 14.09, "bordGaucheSurPage": 14.09, "taillePolice": "20px", "rayon": "0px"}, "puceActive": {"fond": "rgb(255, 255, 255)", "texte": "rgb(29, 75, 107)", "bord": "rgb(29, 75, 107)", "bordGauche": "rgb(29, 75, 107)", "texteSurFond": 9.25, "bordSurPage": 8.61, "bordGaucheSurPage": 8.61, "taillePolice": "20px", "rayon": "8px"}, "sortie": {"fond": "rgba(0, 0, 0, 0)", "texte": "rgb(255, 255, 255)", "bord": "rgb(255, 255, 255)", "bordGauche": "rgb(255, 255, 255)", "texteSurFond": 1.07, "bordSurPage": 1.07, "bordGaucheSurPage": 1.07, "taillePolice": "20px", "rayon": "8px"}}
+maquette:v1-etage1-CP {"carte": null, "tuile": {"fond": "rgb(207, 227, 246)", "texte": "rgb(28, 39, 51)", "bord": "rgb(47, 108, 159)", "bordGauche": "rgb(47, 108, 159)", "texteSurFond": 11.51, "bordSurPage": 5.19, "bordGaucheSurPage": 5.19, "taillePolice": "20px", "rayon": "16px"}, "bandeau": null, "bascule": {"fond": "rgba(0, 0, 0, 0)", "texte": "rgb(46, 111, 158)", "bord": "rgb(46, 111, 158)", "bordGauche": "rgb(46, 111, 158)", "texteSurFond": 5.03, "bordSurPage": 5.03, "bordGaucheSurPage": 5.03, "taillePolice": "20px", "rayon": "8px"}, "filtre": {"fond": "rgba(0, 0, 0, 0)", "texte": "rgb(28, 39, 51)", "bord": "rgb(28, 39, 51)", "bordGauche": "rgb(28, 39, 51)", "texteSurFond": 14.09, "bordSurPage": 14.09, "bordGaucheSurPage": 14.09, "taillePolice": "20px", "rayon": "0px"}, "puceActive": {"fond": "rgb(255, 255, 255)", "texte": "rgb(29, 75, 107)", "bord": "rgb(29, 75, 107)", "bordGauche": "rgb(29, 75, 107)", "texteSurFond": 9.25, "bordSurPage": 8.61, "bordGaucheSurPage": 8.61, "taillePolice": "20px", "rayon": "8px"}, "sortie": {"fond": "rgba(0, 0, 0, 0)", "texte": "rgb(255, 255, 255)", "bord": "rgb(255, 255, 255)", "bordGauche": "rgb(255, 255, 255)", "texteSurFond": 1.07, "bordSurPage": 1.07, "bordGaucheSurPage": 1.07, "taillePolice": "20px", "rayon": "8px"}}
+
+== I. Libelles complets de matiere dans les tuiles (CM1) ==
+maquette:v1-etage1-CM1 744 tuiles coupees 0 texte dans le rembourrage 0 hauteur du document 551 entieres 8
+maquette:v1-etage1-CM1-libelles-longs 744 tuiles coupees 0 texte dans le rembourrage 2 hauteur du document 572 entieres 8
+maquette:v1-etage1-CM1 390 tuiles coupees 0 texte dans le rembourrage 0 hauteur du document 838 entieres 4
+maquette:v1-etage1-CM1-libelles-longs 390 tuiles coupees 0 texte dans le rembourrage 2 hauteur du document 934 entieres 4
+maquette:v1-etage1-CM1 992 tuiles coupees 0 texte dans le rembourrage 0 hauteur du document 551 entieres 8
+maquette:v1-etage1-CM1-libelles-longs 992 tuiles coupees 0 texte dans le rembourrage 1 hauteur du document 572 entieres 8

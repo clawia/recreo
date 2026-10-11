@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+  VEHICULE DE MESURE, JAMAIS DU CODE SERVI. Genere par generer-maquettes.py depuis le catalogue reel.
+  Charge les deux feuilles reelles dans l'ordre d'ADR-0014, puis accueil-vues.css (regles candidates).
+  Les boutons de jeu ne font rien ; les puces, les tuiles et les boutons de vue naviguent entre maquettes.
+-->
+<html lang="fr" style="filter: grayscale(1)"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bouton de bascule</title>
+<link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="../../../adapters/adapter-web/src/main/resources/static/css/recreo.css">
+<link rel="stylesheet" href="accueil-vues.css">
+<style>
+.segments{display:inline-flex;border:.125rem solid var(--recreo-accent);border-radius:.5rem;overflow:hidden}
+.segment{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:.5rem 1.1rem;font-size:1.25rem;color:var(--recreo-accent);text-decoration:none;background:transparent}
+.segment svg{width:1.5rem;height:1.5rem}
+.segment+.segment{border-left:.125rem solid var(--recreo-accent)}
+.segment.est-courant{font-weight:bold;box-shadow:inset 0 -.375rem 0 var(--recreo-accent)}
+.cas{margin:1.5rem 0}.cas small{display:block;margin-bottom:.5rem}
+</style></head><body class="">
+<main class="container zone-jeu"><div><div class="cas"><small>O1, vue par defaut (toute la liste) : le bouton nomme la vue ou il mene</small><a class="btn bascule" data-role="entree" href="#"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg><span>Par matière</span></a></div><div class="cas"><small>O1, vue par matiere (etage 1) : meme bouton, autre destination</small><a class="btn bascule" data-role="entree" href="#"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="2" y="3" width="20" height="4" rx="2"/><rect x="2" y="10" width="20" height="4" rx="2"/><rect x="2" y="17" width="20" height="4" rx="2"/></svg><span>Tout voir</span></a></div><div class="cas"><small>O2, vue par defaut : deux segments, la vue courante porte une coche et un trait plein</small><span class="segments"><span class="segment est-courant" aria-current="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L10 18L20 6"/></svg><span>Tout voir</span></span><a class="segment" href="#"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg><span>Par matière</span></a></span></div><div class="cas"><small>O2, vue par matiere</small><span class="segments"><a class="segment" href="#"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="2" y="3" width="20" height="4" rx="2"/><rect x="2" y="10" width="20" height="4" rx="2"/><rect x="2" y="17" width="20" height="4" rx="2"/></svg><span>Tout voir</span></a><span class="segment est-courant" aria-current="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L10 18L20 6"/></svg><span>Par matière</span></span></span></div></div></main>
+</body></html>
