@@ -352,3 +352,70 @@ La forme d'`ines-design` porte le plafond sur l'image (`min(100%, 11rem)`) : la 
 - **Statut : `Proposee`, inchange.** `Q4` reste sans reponse (0.5). Aucun mot de l'utilisatrice nouveau.
 - Routage : `sofia-sm` (planning : les deux stories d'`ADR`, l'ordre, B a 4,75 et A a 3,5, 0,25 sans poste) ; `theo-archi` (`S56-ADR-0026`, `S56-ADR-0024`, garde de la marque, garde du plafond) ; `lea-dev` (paquet, plafond, marque, `K2`, `K3`) ; `yanis-qa` (traduction des criteres de la marque en test, rejeu des mutations) ; `nadia-prof` (audit, six explications).
 - Aucun code ni contenu change par cet amendement ; la matrice reste a 141 / 182. Ne prononce aucun Done, ne fixe aucun tarif.
+
+---
+
+## Amendement du 2026-10-11 (s56, cloture, `camille-po`, cinquieme) : verdicts, statut tenu a `Proposee`, notes de cloture, proposition (D) sur le catalogue, candidat de s57
+
+Annotation datee. Rien au-dessus n'est reecrit ; les lignes remplacees sont nommees. Arbre : `round-two` a `7130dec6`. Sources lues : `cloture-nadia.md` et `confirmation-archunit.md` du dossier de s56, `FICHE-bandit-manchot-verbe-sujet-ce1.md`, `FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`, `planning.md` (amendement du 22:17), `avis-faisabilite.md`, `DEC-0045` section 3, `DEC-0055`, `DEC-0009`, `DEC-0049`, `DEC-0111` section 3. **Aucun mot nouveau de l'utilisatrice** : ce qui suit ne cite aucune reponse d'elle, et la proposition A.17 n'est pas sa decision.
+
+### A.15 Verdicts de s56 et matrice
+
+| Poste | Ligne | Verdict de `nadia-prof` | Matrice |
+|---|---|---|---|
+| `S56-BR-FRA-CE1-13` | `FRA-CE1-13` | **VALIDE SOUS RESERVE** ; `VSJ-CE1-R1` non bloquante | `non couvert` -> **`couvert-valide`**, sans mention de couverture partielle (la fiche l'ecrit) |
+| `S56-AUD-ART-CP-10` | `ART-CP-10` | **REFUSE** : a 744 x 551, a la revelation, la phrase de `M4` est entierement sous le pli (y = 626 a 656, pli a 551), il manque au moins 105 px ; reserves `RDO-CP-R1`, `RDO-CP-R2` | reste **`non couvert`**, colonne des jeux vide, aucune mention de s50 |
+| six reserves de s55 (`ACV-CE1-R1`, `-R2`, `CLM-CE1-R1`, `EMC-CM1-R8`, `-R9`, `EXC-R16`) | lignes deja `couvert-valide` | **LEVEES** | aucun statut ne bouge |
+
+**Compte, methode et perimetre** : commande de la "Methode du compte" de `MATRICE-couverture.md` (`awk` sur les lignes de donnees dont la deuxieme cellule est un niveau, statut lu dans la septieme), lancee le 2026-10-11 sur les 258 lignes, aucune mesure partielle. **Avant** le geste (matrice a `7130dec6`) : `couvert-valide` 141, `en cours` 4, `non couvert` 37, `non couvrable en l'etat` 76, total 258, denominateur atteignable 182, 141 / 182 = 77,47 %. **Apres** : `couvert-valide` 142, `non couvert` 36, autres inchanges, **142 / 182 = 78,02 %**. **Remplace** la borne "au mieux 143 / 182 (78,57 %)" de l'en-tete : une des deux fermetures possibles est refusee ; `nadia-prof` attendait 142 sans l'avoir mesure, la commande le confirme.
+
+### A.16 Statut : `Proposee`, tenu
+
+**Statut : `Proposee`, inchange.** `Q4` (l'ordre des matieres) reste sans reponse de l'utilisatrice et n'est pas reprise sous un motif de forme 1 (0.5). La decision passe a `Acceptee` par un amendement qui cite ses mots sur `Q4`, ou qui reprend l'ordre sous des motifs de forme 1 ; **ni l'un ni l'autre n'a eu lieu a s56**. La cloture de s56 ne la fait pas passer a `Acceptee`. La `DEC` d'ouverture de s57 ne s'appuie pas sur `DEC-0116` comme acceptee.
+
+### A.17 Proposition (D) : que faire de l'entree de catalogue d'un paquet refuse
+
+**Etat constate.** `grep -c 'id: bandit-manchot-rapprocher-deux-oeuvres-cp$' adapters/adapter-content/src/main/resources/catalogue.yaml` rend 1 (`f37e33dd`) : un enfant peut jouer, aujourd'hui, le paquet que `nadia-prof` a refuse. Ce que ce refus vise : la phrase de `M4` sous le pli au plus petit ecran de reference (`DEC-0040`), pas un contenu faux (la fiche tient les six explications, `B6`, la regle 2) ; a 1024 x 768, la phrase est au-dessus du pli (fiche, section 4).
+
+**Ce que le process dit, lu sur les fichiers.**
+
+- `DEC-0045` section 3 : *"un verdict `REFUSE` ... le jeu ne doit pas etre expose. Il en sort au meme geste que la decision qui l'y constate - jamais comme une action a planifier a part"*, par l'absence d'entree dans `catalogue.yaml`, sans drapeau. `DEC-0055` section 1 le garde comme **regime par defaut, inchange**. Precedents appliques : `DEC-0009` (`bandit-manchot-le-bon-son-cp`), `DEC-0049` (`cm1-reperes`), `DEC-0111` section 3 (deux paquets de sciences CM1).
+- `DEC-0055` section 2 : une entree ne reste exposee malgre un `REFUSE` que si **trois conditions** sont vraies au moment du refus. Lecture sur ce cas :
+
+| Condition de `DEC-0055` | Constat | Remplie ? |
+|---|---|---|
+| 1. Arbitrage explicite et ecrit, au moment de l'ouverture de la fenetre | aucun ; cette annotation est une proposition, pas un arbitrage | **non** |
+| 2. Correction deja engagee, proprietaire nomme, travail identifiable (branche, story ou commit en cours) au moment du refus | `git worktree list` : aucun worktree ni branche de correction du paquet ; les branches `s56-lea-*` precedent le refus ; la story de reprise est ecrite par cette cloture (backlog, "Cloture de s56"), apres lui | **non** |
+| 3. Motif residuel nomme et borne | 105 px, une phrase, six items, mesures par deux agents sur le meme chiffre | oui |
+
+- `DEC-0055` section 3 : la fenetre se ferme au plus tot du prochain verdict ou d'une echeance ecrite qui **ne peut depasser la cloture du sprint en cours**, ou 48 heures hors sprint. Le refus est du 2026-10-11, jour de la cloture de s56 : **un maintien "jusqu'a la correction en s57" depasse la borne que cette regle pose** ; il ne peut venir que d'un amendement de `DEC-0055` ou d'une exception ecrite par l'utilisatrice.
+
+**Options.**
+
+- **(D1) Retrait du catalogue, au meme geste que cette cloture.** C'est ce que `DEC-0045` section 3 et `DEC-0055` donnent sans arbitrage de plus. Prix : l'enfant n'a plus de jeu pour `ART-CP-10` jusqu'a la reprise ; la matrice ne change pas (la ligne est `non couvert`, colonne des jeux vide, avant comme apres). **Ce que le retrait conserve** : le fichier du paquet, ses quatre JPEG et leurs entrees de registre, les garde-fous, la fiche, la reprise (comme `DEC-0111` section 3 et `ADR-0061` : l'absence d'entree reste le seul retrait, le retour est une entree neuve apres un Done non refuse). **Cout technique que je ne tranche pas et que je signale** : l'avis de `theo-archi` (section 1, ligne "Entree de catalogue du paquet", et section 6) dit que l'assertion "perimetre reel vide" du garde-fou 4 et l'inventaire de `TexteAccentueExposeParLePortEntrantTest` ont change dans le commit de l'entree ; le retrait peut les faire rougir. A mesurer par `theo-archi` avant le commit, sans exemption nouvelle (precedent : `S52-RETRAIT-SCIENCES-CM1`).
+- **(D2) Maintien jusqu'a la correction en s57.** Argument pour : le defaut est de mise en page au plus petit ecran, aucun contenu n'est faux. Argument contre : c'est la discretion d'execution que `DEC-0055` a ecrite pour ne plus la laisser ; `DEC-0009` ecrit que la porte pedagogique ne protege plus rien si le contenu qu'elle bloque continue d'etre joue. **Il exige** : un arbitrage ecrit de l'utilisatrice (condition 1), une echeance datee (`DEC-0055` section 3) que la regle plafonne a 48 heures et que s57 ne tient pas, donc un amendement de `DEC-0055` par elle, et un proprietaire de la correction nomme avant s57 (condition 2).
+
+**Ma proposition : (D1).** C'est ce que le process donne ; (D2) demande a l'utilisatrice de modifier une regle. Je ne la tranche pas contre elle : **tant qu'elle n'a pas repondu, l'entree reste au catalogue et le paquet refuse reste jouable**, ce que `DEC-0009` nomme comme le defaut a eviter. **`Q-U3` de s56** (numerotation propre a chaque sprint, comme `Q-U1` et `Q-U2` de cette decision ; a l'utilisatrice, a porter par `sofia-sm` le jour meme, avant de fermer la cloture) : retrait (D1), ou maintien (D2) avec amendement de `DEC-0055` et echeance ecrite ?
+
+**Routage, dans le meme temps (la decision implique du code)** : story `S56-RETRAIT-RAPPROCHER-OEUVRES` ecrite au backlog ("Cloture de s56"), **s'engage sur la reponse (D1)** ; `sofia-sm` l'affecte, `theo-archi` mesure le cout technique ci-dessus. Je ne choisis ni le proprietaire ni la forme.
+
+### A.18 Notes de cloture
+
+1. **`Q3`** (deux instances de francais CE1 a partir de s57) : **sans reponse**, ouverte depuis `DEC-0114` 7.2 (s54). Rien de s56 ne la repond : A a pris le groupe X seule (`-13`), condition de 7.2 remplie ; `theo-archi` (avis, section 9) tient sa reponse de s55 : un amendement d'`ADR-0065` est une story, une a la fois, fusionnee avant tout lot de la seconde instance. **Sans reponse, s57 compte une instance de francais CE1** (trois lots au plus).
+2. **`Q6`** (mesure de pli de `LIS-2`, `ines-design`) : **sans reponse** ; `cm1-lire-et-restituer` (`FRA-CM1-01`) reste hors de toute composition tant qu'elle n'est pas faite ; `A15` reste non engagee, jamais engagee, pas un report.
+3. **`S54-OBS-SCI-CONSIGNE`** : ouverte a s54, premier report a s55 (`DEC-0115` A.10), **second report a s56** (section 5, confirme par A.2). **Compte au 2026-10-11 : deux reports.** **`DEC-0112` section 6 interdit le troisieme : la `DEC` d'ouverture de s57 la place (criteres de `nadia-prof`, proprietaire, prix) ou l'abandonne, par un acte ecrit.** Rien n'a ete fait sur ce poste a s56 (aucun commit de `git log dfcec37c..HEAD` ne la nomme) ; les criteres ne sont toujours pas ecrits. Voir A.19.
+4. **`A10`** (verification de s54, trois instances) : **non engagee a s56**, jamais engagee, donc pas un report. Elle reste due avant toute `DEC` qui propose une troisieme instance, et, selon A.6, avant la `DEC` d'ouverture de s57 si `Q3` est acceptee.
+5. **Capacite.** Engage a l'ouverture : A 3,5, B 4,75, somme 8,25, dont **0,25 sans poste** sur les 8,5 que l'ecart permettait (A.13) ; il est reste sans poste (aucun amendement ne l'a engage). Consomme, selon `cloture-nadia.md` section 6 : 5,75 (audit du paquet 2,5 ; `-13` 1,0 ; `CLM-CE1-R1` 1,0 ; `ACV-CE1-R1` et `-R2` 0,5 ; `EMC-CM1-R8`, `-R9`, `EXC-R16` 0,75 ; A11 0), reparti A 2,5, B 3,25 ; **aucun rejeu du paquet : la marge de 0,5 de B n'est pas consommee par `nadia-prof`**. **Garde-fous `B2`, `B3`, `B5`, `B7`, `B8`** : nes de l'amendement de `theo-archi` du 2026-10-11, **sans ligne au planning** (son amendement le dit), hors `PAR`, 0,0 pour `nadia-prof`, environ 0,5 jour de dev (estimation de `theo-archi`, pas un tarif) ; fusionnes (`80c06e64`). **Le depassement accepte pour ces garde-fous m'est transmis par l'agent lanceur** ; je n'en trouve aucun ecrit dans le depot (`grep -n -i 'depass'` sur `rapport-lea-dev.md`, `rapport-marc-dev.md` : aucune occurrence sur ce point) et je ne sais pas de quelle borne ni de combien. **Je ne l'inscris donc ni comme decision de l'utilisatrice, ni comme jurisprudence** ; l'ecart de s56 reste un ecart accorde pour s56 seulement (2.2, `DEC-0114` A.20), et `DEC-0116` ne sert pas de precedent a s57. A confirmer par `sofia-sm` dans `review.md`, avec la source du depassement.
+6. **Constat sur `DEC-0114`, lignes 13, 52 et 79** (A.7) : reverifie a la cloture, `grep -c 'recu de MASTER, sans source dans le depot'` sur `DEC-0114` rend 0 ; les trois lignes portent l'etiquette "forme 3" sans la formule. **Non corrige** (`DEC-0062` section 7, pas de balayage retroactif), non classe (jugement du `relecteur-pedagogique`, `DEC-0062` section 4). **Reste a `sofia-sm` pour la retro de s56** ; le refus de test de `theo-archi` (47 fichiers sur 65 rouges) et sa condition de revision restent a `sofia-sm`, a moi et a l'utilisatrice. Je n'ai relu aucun autre fichier pour ce point.
+7. **`A3`** (pousser, lire la CI sur un commit nomme) : **second report a s56** (section 6) ; aucun artefact de s56 lu par moi n'en dit la livraison. A reprendre par `sofia-sm` a la review ; un troisieme report serait a acter par ecrit.
+
+### A.19 Candidat de s57 : sciences CM1
+
+Decision de l'utilisatrice du 2026-10-09 (A.2) : **"Reporter a s57, abandon ou placement ecrit alors."** `S54-OBS-SCI-CONSIGNE` (ligne `SCI-CM1-20`, `couvert-valide` avec couverture partielle, non rouverte) est donc le candidat de s57 sur ses mots : **la `DEC` d'ouverture de s57 l'abandonne ou la place, par un acte ecrit, et ne la reporte pas.** Ce que le placement exige, tel que la section 5 le dit : criteres ecrits avec les mots de `nadia-prof`, proprietaire, prix. Ce que s56 ne fournit pas : aucun des trois. Pour ne pas le decouvrir a l'ouverture de s57 : la composition de s57 compte, **hors ce poste**, la reprise du paquet d'`ART-CP-10` (rejeu 0,5, `RDO-CP-R1` et `-R2` dans le meme rejeu) et celle de `VSJ-CE1-R1` (0,5), prix ecrits par `nadia-prof` (`cloture-nadia.md` section 3), soit 1,0 ; sciences CM1 est a l'instance B (`PAR-2`), qui portera aussi la reprise du paquet d'oeuvres. **Je ne fixe aucun tarif et je n'ecris pas la composition de s57** : c'est la `DEC` d'ouverture de s57. `Q4` sans reponse (A.16) : l'ordre des matieres n'est pas decide.
+
+### A.20 Routage et limites
+
+- `sofia-sm` : porter `Q-U3` a l'utilisatrice le jour meme (A.17) ; affecter `S56-RETRAIT-RAPPROCHER-OEUVRES` si (D1) ; `review.md` : la source du depassement des garde-fous (A.18, point 5), `A3`, `A8`, `A12` (le dossier de s56 ne porte ni `rapport-qualite.md` ni `relecture-cloture.md` a la date de cette annotation : je n'ai pas lu de preuve que ces postes sont faits) ; retro de s56 : A.18, point 6.
+- `theo-archi` : le cout technique du retrait (A.17, D1). `nadia-prof` : le rejeu du paquet corrige et de `VSJ-CE1-R1`. `lea-dev`, `ines-design`, `theo-archi` : la cause des 105 px et de l'ecran de fin (forme a eux, fiche section 7). `marc-dev` : `VSJ-CE1-R1`.
+- Les stories sont au backlog, "Cloture de s56", et ne sont engagees que par la `DEC` d'ouverture de s57. Aucun code, aucun contenu, aucun catalogue changes par cet amendement. Ne prononce aucun Done, ne fixe aucun tarif.
+- **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.

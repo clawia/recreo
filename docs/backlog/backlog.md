@@ -21215,3 +21215,108 @@ Quatre clauses du garde-fou (mots de `theo-archi`) : (1) **inchangee** : `max-he
 #### 6. Ce que cet amendement ne fait pas
 
 Il ne prononce aucun Done, ne juge ni la marque ni la voie, n'ecrit aucun mot lu par l'enfant (le fichier du paquet est a `nadia-prof`), ne mesure aucune mutation de la marque (elle n'existe pas) et ne touche ni catalogue, ni paquet, ni fiche, ni code, ni matrice, ni planning.
+
+
+## Cloture de s56 - etat de chaque story, refus d'`ART-CP-10`, stories nees des verdicts, candidat de s57 (`camille-po`, 2026-10-11)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Sources : `cloture-nadia.md` et `confirmation-archunit.md` du dossier de s56, les deux fiches (`FICHE-bandit-manchot-verbe-sujet-ce1.md`, `FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`), `git log dfcec37c..7130dec6`, `DEC-0116` A.15 a A.20, `DEC-0045` section 3, `DEC-0055`. **Aucun verdict n'est de moi.** Matrice : **142 / 182 (78,02 %)**, commande de la "Methode du compte" de `squad/programme/MATRICE-couverture.md` lancee le 2026-10-11 sur les 258 lignes, aucune mesure partielle (141 avant, 142 apres). `review.md`, `RAPPORT.md`, `retro.md`, `relecture-cloture.md`, `rapport-qualite.md` de s56 sont a `sofia-sm`, au `relecteur-pedagogique` et a `yanis-qa` : le dossier de s56 n'en porte aucun a la date de cette annotation.
+
+### Etat des stories de s56
+
+| Story | Etat a la cloture | Preuve |
+|---|---|---|
+| `S56-ARB-A`, `S56-ARB-B`, `S56-ART-CP-10-FORME`, `S56-ART-CP-10-OEUVRES` | **Closes.** Livrees par `nadia-prof` | `c92ad8f7`, `1ae74a43`, `6788abc2` |
+| `S56-ADR-0024`, `S56-ADR-0026` | **Closes.** Amendements d'`ADR` et tests | `6f8895a4`, `1de72f0f` |
+| `S55-ART-CP-10-PAQUET` | **Livree et refusee** (voir `S56-AUD-ART-CP-10`) : six items, quatre reproductions restaurees | `25f0c1ee` ; `confirmation-archunit.md` section 3 (cliquets 0 a 6, 81 a 87, 8 a 12, 176 474 a 275 163) |
+| `S55-ART-CP-10-PLAFOND` | **Close.** Garde du plafond mordu | `1f0fe8e4` ; `confirmation-archunit.md` section 4 (3 echecs sous mutation) |
+| `S56-ART-CP-10-ECHEC` | **Close.** Marque O1 livree, croix de 40 px tenue (`FICHE-...-rapprocher-deux-oeuvres-cp.md`, section 3, point 1) | `696f4f20`, `8db641f5` ; `confirmation-archunit.md` section 4 (2 echecs sous mutation) |
+| Entree de catalogue du paquet | **Livree.** Le jeu est servi ; refuse (voir plus bas) | `f37e33dd` |
+| `S56-AUD-ART-CP-10` | **Close. REFUSE.** Le poste d'audit est livre : un refus n'est pas un report (`cloture-nadia.md` section 2) | `12c1d6db` ; fiche, bloc du 2026-10-11 |
+| `S56-BR-FRA-CE1-13` | **Close.** `FRA-CE1-13` `couvert-valide`, reserve `VSJ-CE1-R1` | `550df967` ; `12c1d6db` ; fiche `verbe-sujet-ce1` |
+| `S55-ACV-CE1-R1`, `S55-ACV-CE1-R2` | **Closes.** Reserves levees (indice de l'item 6 ; 8 pluriels muets sur 12) | `955951f2` ; `cloture-nadia.md` section 1 |
+| `S55-CLM-CE1-R1` | **Close.** Reserve levee (24 indices) | `afc39a7c` ; `cloture-nadia.md` section 1 |
+| `S55-EMC-CM1-R8`, `S55-EMC-CM1-R9` | **Closes.** Reserves levees | `1d1d3ae6`, `02b938bd` |
+| `S55-EXC-R16`, A11 | **Closes.** Reserve levee, en-tete de fiche complete | `cloture-nadia.md` section 1 |
+| Garde-fous `B2`, `B3`, `B5`, `B7`, `B8` (nes de l'amendement de `theo-archi` du 2026-10-11, **sans ligne au planning**) | **Livres et fusionnes** ; `B6` refuse par `theo-archi`, gardee par `nadia-prof` | `22b5f888`, `5021ddf0`, `ca6c5e8a`, `fe150188`, `2eeabb58` ; `7b315f36` (F1 : la borne de `B8` testee a sa limite) ; `nadia-prof` ne les a ni lus en detail ni mutes (`cloture-nadia.md` section 4) |
+| `Q7` d'`ines-design` (releve a dix largeurs) | **Livre.** Memes cotes que `nadia-prof` a 744 x 551 | `b2136295` |
+| `S54-OBS-SCI-CONSIGNE` | **Non engagee, second report (s56).** Voir "Candidat de s57" | `DEC-0116` section 5, A.2, A.18 |
+| `A4`, `A14` (`theo-archi`) | **Reponses ecrites a l'avis** (section 7 : cause de `A4` incomplete, dite ; section 8 : test de la forme 3 refuse, condition de revision nommee) | `avis-faisabilite.md` |
+| `A8`, `A12` | **Non verifiees par moi** : aucun artefact du dossier ne les porte | a `sofia-sm`, `review.md` |
+
+**Reserves ouvertes a la cloture** (ecrites par `nadia-prof`, prix de rejeu `PAR-10`) :
+
+| Reserve | Ligne | Bloquante | Prix de rejeu | Story |
+|---|---|---|---|---|
+| motif de refus (sans identifiant, sa condition de `Q3`) | `ART-CP-10` | **oui** | 0,5 | `S56-ART-CP-10-REPRISE` |
+| `RDO-CP-R1` | `ART-CP-10` | non | dans le meme rejeu | `S56-RDO-CP-R1` |
+| `RDO-CP-R2` | `ART-CP-10` | non | dans le meme rejeu | `S56-RDO-CP-R2` |
+| `VSJ-CE1-R1` | `FRA-CE1-13` | non | 0,5 | `S56-VSJ-CE1-R1` |
+
+### Le refus d'`ART-CP-10` : priorite proposee
+
+**Proposition, pour la `DEC` d'ouverture de s57 : la reprise du paquet est le premier poste d'`ART-CP-10` de s57 et passe devant tout lot neuf.** Motifs de forme 1 : (1) c'est la seule ligne que s56 a engagee et n'a pas fermee, au prix de 0,5 pour le rejeu (le seul tarif que `nadia-prof` ecrit) ; (2) `ART-CP-10` porte quatre reports (s50 a s53) et trois engagements sans fermeture (s54, s55, s56), historique de `DEC-0116` 3.3 ; un refus classe sans suite en ferait un de plus ; (3) le contenu est juste, le paquet n'a besoin que de 105 px et de deux textes (fiche : les six explications, `B6`, la regle 2, `E2` tenus). **Ce n'est pas une decision** : la composition de s57, son ordre des matieres (`Q4`, sans reponse) et son plafond sont a la `DEC` d'ouverture de s57. **Ce que la reprise ne fait pas** : elle ne touche ni la matrice (la ligne ne bouge qu'au verdict de rejeu), ni le catalogue (voir `S56-RETRAIT-RAPPROCHER-OEUVRES` et `DEC-0116` A.17).
+
+### Stories nees des verdicts (non engagees, proposees pour s57)
+
+Chaque critere reprend les mots de `nadia-prof` (regle de ce backlog : un critere issu d'un refus ou d'une reserve ne se traduit pas ; en cas de doute, c'est a elle que je le demande). Valeurs "aujourd'hui" : arbre `7130dec6`. **Je n'ai pas relance la mesure de pli** : elle demande le jar (`bash outils/mvn-jdk21.sh -B clean verify`, puis un navigateur pilote) ; les cotes sont celles de `nadia-prof` et du releve `Q7` d'`ines-design` (`squad/conformite/releves-s56/Q7-releve-gabarit-livre.md`), deux mesures independantes au meme chiffre, **a 744 x 551**.
+
+#### S56-ART-CP-10-REPRISE - la phrase de `M4` au-dessus du pli (motif de refus)
+
+- **Besoin** : en tant qu'eleve de CP, je veux lire, sans faire defiler, la phrase qui me dit d'appuyer sur la bonne oeuvre quand je me suis trompe, afin de savoir quoi faire.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, propositions en image (`ADR-0104`) ; **la forme de la correction n'est pas a moi** (forme de retrait du meuble de `theo-archi`, place de la pastille, place du bloc de message : `theo-archi`, `ines-design`, `lea-dev`, fiche, "Ce qui leve le refus"). Elle peut toucher le gabarit commun : `nadia-prof` ecrit que la facon de gagner les 105 px n'est pas a elle.
+- **Competence programme visee** : arts plastiques, CP, `ART-CP-10` (`squad/programme/arts-plastiques/competences-cp.md`, ligne 46), *"Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres."* Ligne `non couvert` ; elle ne bouge qu'au verdict de rejeu.
+- **Motif, dans ses mots** : *"a 744 x 551 (`DEC-0040`), a la revelation, la phrase de `M4` (`C'est cette œuvre qui va avec. Appuie dessus.`) est entierement sous le pli : sa boite va de y = 626 a y = 656 (bas de la derniere ligne de texte a 654), le pli est a 551, sans aucun defilement (`scrollY` = 0). Il manque au moins 105 px (656 - 551). Meme position sur les six items et sur les quatre parties jouees jusqu'a la revelation."*
+- **Critere de levee, ses mots** : *"a 744 x 551, a la revelation, la boite de `.reponse-revelee` finit au-dessus de y = 551 sur les six items, et la reference, les trois cases, les croix et l'anneau restent au-dessus du pli ; `N1` a `N6` restent tenues."*
+- **Aujourd'hui** : `.reponse-revelee` finit a **656** (jar, 744 x 551, six items) : rouge. La reference, les trois cases, les croix et l'anneau sont deja au-dessus du pli (fiche, bloc du verdict, motif) : cette partie du critere est **deja verte**, c'est une condition a ne pas perdre, pas un defaut a corriger.
+- **Rejeu** : `nadia-prof`, instance B, 0,5 (`PAR-10`). Le verdict de rejeu est a elle seule.
+- **Lien** : `DEC-0116` A.15, A.17 ; fiche, bloc du 2026-10-11.
+
+#### S56-RDO-CP-R1 - a l'echec, le verdict et l'indice sont au-dessus du pli (reserve non bloquante)
+
+- **Besoin** : en tant qu'eleve de CP, je veux voir le message qui m'aide apres une erreur, afin de ne pas rester devant une croix sans savoir pourquoi.
+- **Competence** : `ART-CP-10`. **Mecanique** : celle de `S56-ART-CP-10-REPRISE`.
+- **Motif, ses mots** : *"a l'echec, a 744 x 551, ni le verdict ni l'indice ne sont au-dessus du pli. Apres une erreur, le verdict (`Ce n'est pas ça. Essaie encore !`) va de y = 567 a 597 et l'indice de 626 a 676 : l'enfant ne voit que la croix. [...] a 992 x 551, la croix elle-meme est coupee (528 - 568), alors que c'est le seul signal d'echec au-dessus du pli."*
+- **Critere de levee, ses mots** : *"apres une erreur, a 744 x 551 la boite de `.indice` finit au-dessus de y = 551, et a 992 x 551 la pastille de chaque oeuvre essayee finit au-dessus de y = 551, sur les six items."*
+- **Aujourd'hui** : `.indice` finit a **676** a 744 x 551 ; la pastille finit a **568** a 992 x 551 (23 px visibles sur 40) : les deux rouges (releve `Q7`, repris par `nadia-prof`).
+- **Rejeu** : dans celui de `S56-ART-CP-10-REPRISE`. **Lien** : `DEC-0116` A.15.
+
+#### S56-RDO-CP-R2 - l'ecran de fin ne parle pas d'une oeuvre qu'il ne montre pas (reserve non bloquante)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que ce que je lis a la fin de la partie parle de ce que je vois, afin de ne pas chercher une oeuvre qui n'est pas la.
+- **Competence** : `ART-CP-10`. **Mecanique** : `bandit-manchot`, propositions en image ; la forme est a `theo-archi` et `ines-design` (fiche, section 5). **Les mots lus par l'enfant sont juges par `nadia-prof`** (`CON-5`) ; je n'en ecris aucun.
+- **Motif, ses mots** : *"l'ecran de fin affiche `Tu n'as pas trouvé.`, puis l'enonce `Quelle œuvre est faite de la même façon que celle-ci ?` et l'explication `Dans ces deux œuvres, ...` ; apres une derniere manche reussie, `Bravo, c'est juste !` et l'explication. Aucune oeuvre n'est a l'ecran (`X7`, comme je l'ai voulu) : `celle-ci` et `ces deux œuvres` ne designent rien."* Elle precise que `X7` est tenue : ce n'est pas un durcissement d'`X7`.
+- **Critere de levee, ses mots** : *"sur l'ecran de fin d'un jeu a reponses en image, aucun texte ne designe une oeuvre qui n'est pas a l'ecran (`celle-ci`, `ces deux œuvres`)."*
+- **Aujourd'hui** : `grep -c 'celle-ci' adapters/adapter-content/src/main/resources/contenu/cp-rapprocher-deux-oeuvres.yaml` rend **6** et `grep -c 'ces deux'` rend **6** (les six enonces, les six explications) ; que ces textes soient ceux de l'ecran de fin est l'observation de `nadia-prof` sur le jar, **je ne l'ai pas rejouee**. Aucun automate ne garde cette propriete (fiche, section 6).
+- **Rejeu** : dans celui de `S56-ART-CP-10-REPRISE`. **Lien** : `DEC-0116` A.15.
+
+#### S56-VSJ-CE1-R1 - la place seule donne le sujet (reserve non bloquante)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux que trouver le sujet d'un verbe m'oblige a me demander *"qui est-ce qui ?"*, afin d'apprendre a le trouver, et non a choisir le premier groupe de la phrase.
+- **Mecanique demandee** : `bandit-manchot`, `type: question`, aucune modification.
+- **Competence programme visee** : francais, CE1, `FRA-CE1-13` (`squad/programme/francais/competences-ce1.md`), *"Identifier le verbe d'une phrase et son sujet (un nom, un groupe nominal court ou un pronom personnel)."* Ligne `couvert-valide` depuis cette cloture, non rouverte.
+- **Motif, ses mots** : *"sur les 15 items de sujet, la bonne reponse est le premier groupe de la phrase et les deux distracteurs sont apres le verbe ; l'indice de cinq d'entre eux le dit [...]. Un enfant qui choisit la proposition la plus a gauche dans la phrase reussit les 15 sans poser la question `Qui est-ce qui ?`."*
+- **Critere de levee, ses mots** : *"sur au moins 3 des items de sujet, une des deux propositions fausses est placee **avant** le verbe cite dans la phrase (par exemple un complement en tete : `Ce matin, Léa lit un livre.`, propositions Léa, ce matin, un livre), la bonne reponse restant le sujet, `LON-CE1-1` et `J1` tenues."* Elle amende elle-meme sa propriete 8 (*"les deux distracteurs apres"*) sur ces items, par un amendement date, et le test qui la porte change avec elle ; je ne l'ecris pas a sa place.
+- **Aujourd'hui** : sur `contenu/ce1-verbe-sujet.yaml`, un script de poste hors depot (lecture du YAML, position de chaque proposition fausse par rapport au verbe cite) rend **15** items de sujet, **0** avec une proposition fausse avant le verbe : rouge. Il n'est pas commite ; la commande de comptage est a ecrire avec `yanis-qa`. `PaquetCe1VerbeSujetTest` garde aujourd'hui **le contraire** (fiche, section 7) : le test change avec la propriete 8, dans le meme commit que les textes.
+- **Rejeu** : `nadia-prof`, instance A, 0,5 (`PAR-10`), trois items au moins. **Dev** : `marc-dev` (les textes sont au developpeur ; elle les juge en rejouant). **Lien** : `DEC-0116` A.15.
+
+#### S56-RETRAIT-RAPPROCHER-OEUVRES - retirer du catalogue servi le paquet refuse (transverse, **conditionnelle a `Q-U3` de s56**)
+
+- **Etat** : proposee par `DEC-0116` A.17, **option (D1)** ; **ne s'engage que sur la reponse de l'utilisatrice**. Tant qu'elle n'a pas repondu, l'entree reste au catalogue et le paquet refuse reste jouable.
+- **Besoin** : en tant qu'eleve de CP, je ne veux pas trouver dans la liste des jeux un jeu dont la phrase d'aide est hors de mon ecran, afin de ne pas rester bloque sans savoir quoi faire.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. `ART-CP-10` reste `non couvert` : le statut suit le verdict de `nadia-prof`, pas la presence du jeu au catalogue (`DEC-0009`).
+- **Criteres d'acceptation** :
+  - Etant donne le catalogue servi apres la story, quand on liste les jeux de l'accueil, alors *"Des œuvres faites de la même façon"* n'y figure pas. **Aujourd'hui** : `grep -c 'id: bandit-manchot-rapprocher-deux-oeuvres-cp$' adapters/adapter-content/src/main/resources/catalogue.yaml` rend **1** : rouge sur l'existant. Doit rendre 0 (l'absence d'entree reste le seul retrait, `ADR-0061`).
+  - Etant donne le depot apres la story, `contenu/cp-rapprocher-deux-oeuvres.yaml`, `PaquetCpRapprocherDeuxOeuvresTest`, les quatre JPEG de T4 et leurs entrees de registre, les garde-fous `B2`, `B3`, `B5`, `B7`, `B8` et la fiche existent, **inchanges** (`git diff` vide sur le fichier de contenu et les JPEG).
+  - Etant donne les tests qui nomment l'entree ou le paquet (`TexteAccentueExposeParLePortEntrantTest`, `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`, ses cliquets), quand on lance `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, alors ils passent sur le catalogue retire **sans qu'une exemption nouvelle serve a les faire passer** et sans recopier en constantes l'association entree-paquet. **Je ne sais pas aujourd'hui lesquels rougissent** : l'avis de `theo-archi` dit que l'assertion "perimetre reel vide" du garde-fou 4 a bascule dans le commit de l'entree. A mesurer par `theo-archi` avant le commit.
+  - Le retour au catalogue se fait par une entree neuve, apres un Done de `nadia-prof` qui n'est pas `REFUSE` (`DEC-0045` section 3, `ADR-0061`).
+- **Qui** : `sofia-sm` affecte ; `theo-archi` mesure le cout technique. Hors capacite de `nadia-prof` (elle ne passe pas devant elle). **Lien** : `DEC-0116` A.17 ; precedents `DEC-0009` (`S5-1`), `DEC-0111` section 3 (`S52-RETRAIT-SCIENCES-CM1`).
+
+### Candidat de s57 : sciences CM1 (`S54-OBS-SCI-CONSIGNE`)
+
+**Etat** : ouverte a s54, **premier report a s55, second report a s56**, deux reports comptes (`DEC-0116` section 5, A.18 point 3). **Decision de l'utilisatrice du 2026-10-09** (forme 2, `DEC-0116` A.2) : *"Reporter a s57, abandon ou placement ecrit alors."* **A s57 un troisieme report est interdit** (`DEC-0112` section 6) : la `DEC` d'ouverture de s57 la **place** (criteres de `nadia-prof`, proprietaire, prix) ou l'**abandonne**, par un acte ecrit. **Ce qui existe** : le besoin ecrit en s54 (ligne `SCI-CM1-20`, jeu `bandit-manchot-sciences-extraire-information-cm1` : la consigne et la premiere phrase de chacun des 12 enonces disent deux fois *"puis réponds à la question"*), l'instance (B, `PAR-2`). **Ce qui manque** : les criteres (*"a ecrire quand une instance l'engage, avec les mots de `nadia-prof`"*, entree de s54), un proprietaire, un prix. Rien n'est faux pour l'enfant (la consigne n'est pas fausse). **Je n'ecris aucun critere** : je ne l'ai pas devance a s56, et ils sont a `nadia-prof`.
+
+**Postes connus pour s57, sans composition** (prix de `nadia-prof`, additionnes sans recompte, `cloture-nadia.md` section 3) : reprise du paquet d'`ART-CP-10` avec `RDO-CP-R1` et `-R2` 0,5 ; `VSJ-CE1-R1` 0,5 ; total 1,0, hors `S54-OBS-SCI-CONSIGNE` et hors tout lot neuf. `Q3` sans reponse : une instance de francais CE1 (trois lots au plus). `Q6` sans reponse : `FRA-CM1-01` hors composition. `Q4` sans reponse : l'ordre des matieres n'est pas decide.
+
+### Ce que cette annotation ne fait pas
+
+Elle n'engage aucune de ces stories (c'est la `DEC` d'ouverture de s57), ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni fiche, ni code, ni planning de s57. Elle ne tranche pas le sort de l'entree de catalogue : c'est `Q-U3` de s56, a l'utilisatrice.
