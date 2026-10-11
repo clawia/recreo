@@ -129,4 +129,82 @@ class PaquetCpRapprocherDeuxOeuvresTest {
                 .hasSize(1)
                 .allSatisfy(grief -> assertThat(grief).contains("B2").contains("Une chambre"));
     }
+
+    // ------------------------------------------------------------------------------------------
+    // B3 : references, couples et paires dans les deux sens
+    // ------------------------------------------------------------------------------------------
+
+    private static String reference(Question item) {
+        return item.illustration().orElse("");
+    }
+
+    /**
+     * B3, le juge : les references sont deux a deux distinctes, les couples (reference, bonne
+     * oeuvre) aussi, et l'ensemble des couples est symetrique - chaque paire se joue dans les deux sens.
+     * Derive du fichier, sans liste de paires. Ce qui est interdit reellement : un couple qui revient,
+     * meme avec d'autres distracteurs - la seconde fois, l'enfant retrouverait la paire de memoire au
+     * lieu de regarder - et une paire jouee dans un seul sens.
+     */
+    static List<String> griefsB3(List<Question> items) {
+        List<String> griefs = new ArrayList<>();
+        Set<String> references = new HashSet<>();
+        Set<String> couples = new HashSet<>();
+        for (Question item : items) {
+            if (!references.add(reference(item))) {
+                griefs.add("B3 : la reference " + reference(item) + " est montree par plus d'un item");
+            }
+            String couple = reference(item) + " -> " + item.bonneReponse();
+            if (!couples.add(couple)) {
+                griefs.add("B3 : le couple " + couple + " revient : l'enfant le retrouverait de memoire");
+            }
+        }
+        for (Question item : items) {
+            String inverse = item.bonneReponse() + " -> " + reference(item);
+            if (!couples.contains(inverse)) {
+                griefs.add("B3 : le couple " + reference(item) + " -> " + item.bonneReponse()
+                        + " n'a pas son sens inverse " + inverse + " : la paire ne se joue que dans un sens");
+            }
+        }
+        return griefs;
+    }
+
+    @Test
+    void b3LesReferencesLesCouplesEtLesPairesTiennent() {
+        assertThat(griefsB3(items())).isEmpty();
+    }
+
+    /** M7 de lea-dev, restee verte avant ce garde-fou : l'item 2 rendu identique a l'item 1. */
+    @Test
+    void unItemRenduIdentiqueAUnAutreFaitEchouerLeGardeFou() {
+        List<Question> items = new ArrayList<>(items());
+        Question premier = items.get(0);
+        Question second = items.get(1);
+        items.set(1, avec(second, premier.illustration(), premier.bonneReponse(), second.distracteurs(),
+                second.illustrationTexteAlternatif()));
+
+        assertThat(griefsB3(items))
+                .anyMatch(grief -> grief.contains("est montree par plus d'un item"))
+                .anyMatch(grief -> grief.contains("revient"));
+    }
+
+    @Test
+    void uneBonneOeuvreEchangeeContreUnDistracteurRompLaSymetrieDesPaires() {
+        List<Question> items = new ArrayList<>(items());
+        Question item = items.get(0);
+        String distracteur = item.distracteurs().get(0);
+        List<String> distracteurs = new ArrayList<>(item.distracteurs());
+        distracteurs.set(0, item.bonneReponse());
+        items.set(0, avec(item, item.illustration(), distracteur, distracteurs,
+                item.illustrationTexteAlternatif()));
+
+        assertThat(griefsB3(items)).anyMatch(grief -> grief.contains("n'a pas son sens inverse"));
+    }
+
+    @Test
+    void uneSeuleMoitieDeLaPaireFaitEchouerLeGardeFou() {
+        List<Question> items = new ArrayList<>(items());
+        items.remove(0);
+
+        assertThat(griefsB3(items)).anyMatch(grief -> grief.contains("n'a pas son sens inverse"));
+    }
 }
