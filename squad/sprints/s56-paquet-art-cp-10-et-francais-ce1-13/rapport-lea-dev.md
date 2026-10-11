@@ -393,3 +393,59 @@ Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -D
 - **L'exactitude des textes** : que *"Un motif valable pourrait concerner n'importe quel élève."* ne designe pas la bonne reponse, et que *"Ces élèves donnent pour aider d'autres enfants."* ne nomme pas le principe, est a `nadia-prof` (rejeu et verdict des reserves). Je n'ai rien juge.
 - **Pas de rendu a l'ecran** : ces deux commits changent du texte lu par l'enfant ; je n'ai pas lance le jar. Les deux jeux sont deja au catalogue ; seuls les indices des items 10, 11 et 3 changent, et ils ne s'affichent qu'apres une erreur. Le premier endroit ou les voir est le rejeu de `nadia-prof`.
 - **Rejeu** : les verdicts des reserves `EMC-CM1-R8` et `EMC-CM1-R9` (leur levee dans les fiches) ne sont pas de mon fait.
+
+## 13. Garde-fous B2, B3, B5, B7, B8 du paquet `cp-rapprocher-deux-oeuvres` (worktree `s56-lea-gardes`, base `round-two` a `a6ca1751`)
+
+Cinq commits, un par garde-fou, tests dans le meme commit : `22b5f888` (B2), `5021ddf0` (B3), `ca6c5e8a` (B7), `fe150188` (B8), `2eeabb58` (B5). **JDK 21.0.10** (`java.version` du rapport Surefire, enveloppe
+`bash outils/mvn-jdk21.sh`). Source : l'amendement du 2026-10-11 de `theo-archi` dans `avis-faisabilite.md` ; `B6` est refuse par lui (a `nadia-prof`, a l'audit) et je n'y ai rien ecrit.
+C'est la ligne *"non garde"* des conditions `B2`, `B3`, `B5`, `B6`, `B7`, `B8` de la section 5 de ce rapport, levee pour cinq d'entre elles.
+
+### 13.1 Ce qui est livre
+
+| Condition | Garde-fou | Ou | Forme |
+|---|---|---|---|
+| `B2` texte alternatif identique, celui de `cp-decrire-une-oeuvre` | `PaquetCpRapprocherDeuxOeuvresTest`, `b2...` (2 tests) | `adapter-content` | les `illustrationTexteAlternatif` du paquet egalent la valeur **lue dans** `cp-decrire-une-oeuvre` (qui doit en servir une seule), jamais recopiee |
+| `B3` references uniques, couples uniques, paires dans les deux sens | meme classe, `b3...` (4 tests) | `adapter-content` | references deux a deux distinctes, couples (reference, bonne) distincts, ensemble des couples symetrique ; derive du fichier, sans liste de paires |
+| `B7` quatre a six items | meme classe, `b7...` (3 tests) | `adapter-content` | de 4 a 6 items |
+| `B8` enonce unique et de dix mots au plus | `LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest` (3 tests) | **`bootstrap/archi`** | un seul enonce, dix mots au plus ; **le texte litteral n'est pas fige** |
+| `B5` format de la bonne oeuvre | `LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest` (5 tests) | `bootstrap/archi` | format lu dans le segment `SOFn` du JPEG servi ; la bonne n'est ni seule de son format parmi les trois propositions, ni seule a partager celui de la reference ; une image carree fait rougir |
+
+**Un ecart au placement de l'amendement, pour `B8`** : `theo-archi` le met dans le test de paquet d'`adapter-content`. Je l'ai mis dans `bootstrap/archi`, parce que le comptage de mots est celui de
+`AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest.mots` (`ADR-0101` decision 2 : *"ne pas recopier la convention de comptage"*), visible de `bootstrap` seulement. A lui de confirmer ou de dire qu'il preferait une copie.
+
+**Ce que je n'ai pas pu mordre comme prevu pour `B2`** : *"un item sans texte alternatif"* ne se construit pas, le domaine le refuse (`ADR-0073` clause 5 : une illustration et son texte alternatif se declarent ensemble). Le garde-fou n'a donc pas de morsure pour ce cas, qui est impossible, et je n'en ai pas ecrit.
+
+**Jeu fautif commite (ADR-0013)** : seul `B5` lit `src/main/` ; son jeu est sous `bootstrap/src/test/resources/contreexemple/LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest/oeuvres/` : cinq fichiers JPEG de 17 octets (en-tete SOI et SOF0, sans image),
+deux en largeur, deux en hauteur, un carre. Les quatre autres garde-fous lisent le paquet par le chargeur de production, et `LesGardeFousSontMisALEpreuveTest` ne leur en demande pas ; ils se mordent sur des items reels mutes en memoire.
+
+### 13.2 Mutations sur le fichier reel du paquet
+
+Chacune mute `cp-rapprocher-deux-oeuvres.yaml`, lance `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dmaven.test.failure.ignore=true -Dtest=<les trois classes ci-dessus> -Dsurefire.failIfNoSpecifiedTests=false`
+(perimetre : le reacteur de `bootstrap` avec `-am`, trois classes nommees), puis restaure le fichier (`git status --short` vide en fin de serie).
+
+| # | Mutation | Test rouge | Message |
+|---|---|---|---|
+| `B2` | le texte alternatif de l'item de reference `oeuvre-chambre` devient *"Une chambre"* | `b2LeTexteAlternatifDeChaqueReferenceEstCeluiDuPaquetVoisin` | *"B2 : l'item de reference oeuvre-chambre declare le texte alternatif \"Une chambre\", et non celui de cp-decrire-une-oeuvre"* |
+| `B3` | **`M7`** : l'item 2 rendu identique a l'item 1 (reference `oeuvre-chambre`, bonne `oeuvre-champ-de-ble`) | `b3LesReferencesLesCouplesEtLesPairesTiennent` | *"B3 : la reference oeuvre-chambre est montree par plus d'un item"* (et le couple revient) |
+| `B5` | distracteur `oeuvre-quatre-saisons` de l'item 3 remplace par `oeuvre-moissonneurs` (en largeur) | `aucuneBonneOeuvreNEstDesigneeParSonFormatSurLePaquetEtLesFichiersReels` | *"B5 : item item-2 : la bonne oeuvre oeuvre-averse-sur-le-pont est la seule des trois propositions en hauteur"* |
+| `B7` | le paquet reduit a ses deux premiers items | `b7LePaquetPorteDeQuatreASixItems` | *"B7 : 2 item(s), 4 au moins : sous ce nombre, le paquet est une seule paire"* |
+| `B8` | l'enonce du premier item devient *"Quelle œuvre va avec celle-ci ?"* | `lEnonceDuPaquetEstUniqueEtDeDixMotsAuPlus` | *"B8 : 2 enonces differents [...] : le meme enonce sur tous les items"* |
+
+**`B3` rougit sur `M7`**, la mutation qui etait restee verte au rapport de la section 2 (item 2 rendu identique a l'item 1). Les garde-fous existants (`AucunItemNeRepeteLEcranDUnAutreItemDuMemePaquetTest`) ne la voyaient pas ; celui-ci la voit.
+Chaque test de morsure en memoire (par exemple `unItemRenduIdentiqueAUnAutreFaitEchouerLeGardeFou`, `uneBonneOeuvreEchangeeContreUnDistracteurRompLaSymetrieDesPaires`, `unDistracteurEchangeContreUneOeuvreDeLAutreFormatFaitEchouerLeGardeFou`) demontre en outre le meme rouge sans toucher au fichier.
+
+### 13.3 Delta de tests, jobs
+
+- **+17 tests** (adapter-content +9, bootstrap +8), mesure sur `a6ca1751` : 120 + 18 + 442 + 1461 + 339 + 6 = 2386 (worktree jetable, `verify` racine) ; sur `2eeabb58` : 120 + 18 + 442 + 1470 + 347 + 6 = 2403. Le total apres fusion est a `sofia-sm`.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, sur l'arbre de `2eeabb58` : `BUILD SUCCESS`, 0 echec, 0 erreur. **Non mesure commit par commit** : les quatre premiers commits ont chacun passe leur classe (`-Dtest=`) et
+  `LesGardeFousSontMisALEpreuveTest`, pas le reacteur complet ; le `verify` complet est celui du dernier.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-prefixes.sh` sur `a6ca1751..HEAD` ; **`chemins`** : `verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh` ; **`outils`** : les dix juges `*-test.sh` et `*-test.py` :
+  exit 0 chacun. Non lance : l'etape `mvn -B -pl bootstrap -am package` et la plage `BASE..SHA` de GitHub.
+
+### 13.4 Ce qui n'est pas verifie, et ce qui reste ligne "non garde"
+
+- **`B6`** reste *non garde* : refuse par `theo-archi` (aucune donnee ne porte le support). Un second objet en volume restaure le rouvrirait (champ de support au registre, `ADR-0082`).
+- **`B8`, ce que le garde-fou ne dit pas** : que l'enonce demande la facon dont l'oeuvre est faite, jamais seulement *"ce qui va avec"* ; a `nadia-prof`, a l'audit. Le test accepte un enonce unique de dix mots ou moins, quel qu'il soit.
+- **`B5`, ce que le test ne dit pas** : que la case egale ne designe pas la bonne oeuvre autrement que par le format ; que le rendu d'une image carree convienne (aucune n'existe).
+- **`B2`** garde l'egalite a un texte qui ne nomme rien, pas l'absence de sujet nomme : si `cp-decrire-une-oeuvre` changeait son texte alternatif, les deux paquets le suivraient, et le garde-fou n'en jugerait pas le contenu.
+- Les commits sont ordonnes comme je les ai ecrits (B2, B3, B7, B8, B5), pas comme la table de l'amendement les nomme.
