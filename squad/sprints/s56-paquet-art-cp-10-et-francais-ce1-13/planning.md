@@ -28,7 +28,7 @@ un Done pedagogique refuse reste un refus, et aucune ligne de matrice ne bouge a
   **`review.md` dira comment ils l'ont rattrape.**
 - **CI distante** : aucun verdict lu pour ce planning. **Je ne dis pas que la CI est verte** ; `A3` (lecture de la CI, job par job, sur un commit nomme) est a l'utilisatrice, second report (tableau des actions).
 - **Lecon de s55, appliquee ici** (retro de s55, C2 et action A5) : **aucun poste n'existe sans ligne dans ce planning ou dans un amendement date de lui, avant l'ouverture du worktree concerne.**
-  Un poste ne d'un verdict, d'une reserve ou d'un rouge de CI s'ajoute par amendement de ce fichier, et l'agent qui lance cite la ligne dans son message de lancement. Les postes sans prix (A4, A8, A11, A12, A13, A14) ont leur ligne plus bas.
+  Un poste issu d'un verdict, d'une reserve ou d'un rouge de CI s'ajoute par amendement de ce fichier, et l'agent qui lance cite la ligne dans son message de lancement. Les postes sans prix (A4, A8, A11, A12, A13, A14) ont leur ligne plus bas.
 - **Trailers** : les commits de cette tache portent `Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>`, le modele que cette session execute.
 
 ## Capacite : ce que les plafonds de `nadia-prof` permettent
