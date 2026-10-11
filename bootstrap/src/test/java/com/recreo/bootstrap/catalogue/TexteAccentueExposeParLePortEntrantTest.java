@@ -1,6 +1,7 @@
 package com.recreo.bootstrap.catalogue;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.GroupeDeJeux;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.mechanic.GameSession;
@@ -1766,14 +1767,24 @@ class TexteAccentueExposeParLePortEntrantTest {
 
     /**
      * Le perimetre derive : chaque chaine exposee par {@link PartieUseCase#jeuxDisponibles()} (donc
-     * par {@link GameDefinition} et son descripteur) et par {@link
-     * PartieUseCase#niveauxDuCatalogue()}, hors niveaux exemptes.
+     * par {@link GameDefinition} et son descripteur), par {@link
+     * PartieUseCase#niveauxDuCatalogue()} et, depuis ADR-0105, par les groupes de {@link
+     * PartieUseCase#matieresDuNiveau(String)}, hors niveaux exemptes.
      */
     private static List<ChaineExposee> chainesExposeesParLePortEntrant(List<GameDefinition> jeux,
                                                                         List<String> niveaux) {
+        return chainesExposeesParLePortEntrant(jeux, niveaux, List.of());
+    }
+
+    private static List<ChaineExposee> chainesExposeesParLePortEntrant(List<GameDefinition> jeux,
+                                                                        List<String> niveaux,
+                                                                        List<GroupeDeJeux> groupes) {
         List<ChaineExposee> chaines = new ArrayList<>();
         for (GameDefinition jeu : jeux) {
             collecter(jeu.id(), "", jeu, chaines);
+        }
+        for (GroupeDeJeux groupe : groupes) {
+            collecter("matieresDuNiveau()", "", groupe, chaines);
         }
         for (String niveau : niveaux) {
             collecter("niveauxDuCatalogue()", "", niveau, chaines);
@@ -1787,7 +1798,12 @@ class TexteAccentueExposeParLePortEntrantTest {
      * se nommant. Une entree exemptee (niveau sans lettre accentuable) n'a pas a y figurer.
      */
     static void verifierQueToutePorteEstInventoriee(List<GameDefinition> jeux, List<String> niveaux) {
-        List<ChaineExposee> chaines = chainesExposeesParLePortEntrant(jeux, niveaux);
+        verifierQueToutePorteEstInventoriee(jeux, niveaux, List.of());
+    }
+
+    static void verifierQueToutePorteEstInventoriee(List<GameDefinition> jeux, List<String> niveaux,
+                                                    List<GroupeDeJeux> groupes) {
+        List<ChaineExposee> chaines = chainesExposeesParLePortEntrant(jeux, niveaux, groupes);
         assertThat(chaines)
                 .as("S16-5 : cette clause ne prouve rien si le port entrant n'expose aucune chaine")
                 .isNotEmpty();
@@ -1807,17 +1823,27 @@ class TexteAccentueExposeParLePortEntrantTest {
     @Test
     void touteChaineExposeeParLeCatalogueReelEstInventoriee() {
         List<GameDefinition> jeuxLus = new ArrayList<>(partie.jeuxDisponibles());
-        partie.niveauxDuCatalogue().forEach(niveau -> jeuxLus.addAll(partie.jeuxDuNiveau(niveau)));
-        verifierQueToutePorteEstInventoriee(jeuxLus, partie.niveauxDuCatalogue());
+        List<GroupeDeJeux> groupesLus = new ArrayList<>();
+        for (String niveau : partie.niveauxDuCatalogue()) {
+            jeuxLus.addAll(partie.jeuxDuNiveau(niveau));
+            List<GroupeDeJeux> groupes = partie.matieresDuNiveau(niveau);
+            groupesLus.addAll(groupes);
+            groupes.forEach(groupe -> jeuxLus.addAll(partie.jeuxDeLaMatiere(niveau, groupe.matiere())));
+        }
+        assertThat(groupesLus)
+                .as("ADR-0105 : cette lecture ne prouve rien si l'accueil ne regroupe aucun jeu")
+                .isNotEmpty();
+        verifierQueToutePorteEstInventoriee(jeuxLus, partie.niveauxDuCatalogue(), groupesLus);
     }
 
     /**
      * ADR-0105, regle 1 : les methodes du port entrant que cet inventaire lit. Le test ci-dessus les
-     * appelle toutes les trois ; cette liste ne dispense de rien, elle est comparee par egalite a
+     * appelle toutes les cinq ; cette liste ne dispense de rien, elle est comparee par egalite a
      * celles que le port declare.
      */
-    private static final Set<String> METHODES_DU_PORT_LUES_PAR_L_INVENTAIRE =
-            Set.of("jeuxDisponibles", "niveauxDuCatalogue", "jeuxDuNiveau");
+    private static final Set<String> METHODES_DU_PORT_LUES_PAR_L_INVENTAIRE = Set.of(
+            "jeuxDisponibles", "niveauxDuCatalogue", "jeuxDuNiveau", "matieresDuNiveau",
+            "jeuxDeLaMatiere");
 
     /**
      * ADR-0105, regle 1 : les methodes d'un port entrant qui parlent a une vue, c'est-a-dire toutes
@@ -1852,7 +1878,7 @@ class TexteAccentueExposeParLePortEntrantTest {
      * l'enfant lit sur une tuile - passaient sous th:text sans entrer dans cet inventaire.
      */
     interface PortQuiRendLesMatieresDUnNiveau extends PartieUseCase {
-        List<String> matieresDuNiveau(String niveau);
+        List<String> libellesDeMatiereDuNiveau(String niveau);
     }
 
     @Test
@@ -1860,7 +1886,7 @@ class TexteAccentueExposeParLePortEntrantTest {
         assertThatThrownBy(() -> verifierQueChaqueMethodeDuPortEstLue(PortQuiRendLesMatieresDUnNiveau.class))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("ADR-0105")
-                .hasMessageContaining("matieresDuNiveau");
+                .hasMessageContaining("libellesDeMatiereDuNiveau");
     }
 
     /**
@@ -1916,6 +1942,42 @@ class TexteAccentueExposeParLePortEntrantTest {
      * jamais tire d'un fichier YAML : la preuve porte sur la lecture par reflexion, pas sur le
      * chargeur.
      */
+    @Test
+    void uneMatiereDeGroupeNeuveHorsDeLInventaireFaitEchouerLeGardeFou() {
+        GroupeDeJeux groupeFautif = new GroupeDeJeux("Matiere jamais arbitree", List.of());
+
+        assertThatThrownBy(() -> verifierQueToutePorteEstInventoriee(
+                List.of(), List.of(), List.of(groupeFautif)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ne porte pas")
+                .hasMessageContaining("matieresDuNiveau()")
+                .hasMessageContaining("Matiere jamais arbitree");
+    }
+
+    /**
+     * ADR-0013 obligation 3 : le meme garde-fou lu sur le groupe que le service rend vraiment. Un
+     * jeu du catalogue reel regroupe sous une matiere dont l'accent a ete retire ne passe pas : le
+     * libelle de matiere de la methode neuve est lu, pas seulement celui du descripteur des jeux.
+     */
+    @Test
+    void uneMatiereDuCatalogueReelPriveeDeSonAccentFaitEchouerLeGardeFou() {
+        String niveau = partie.niveauxDuCatalogue().get(0);
+        GroupeDeJeux reel = partie.matieresDuNiveau(niveau).stream()
+                .filter(groupe -> !groupe.matiere().equals(
+                        java.text.Normalizer.normalize(groupe.matiere(), java.text.Normalizer.Form.NFD)
+                                .replaceAll("\\p{M}", "")))
+                .findFirst().orElseThrow(() -> new AssertionError(
+                        "ADR-0105 : aucune matiere accentuee au niveau " + niveau));
+        String sansAccent = java.text.Normalizer.normalize(reel.matiere(), java.text.Normalizer.Form.NFD)
+                .replaceAll("\\p{M}", "");
+
+        assertThatThrownBy(() -> verifierQueToutePorteEstInventoriee(
+                List.of(), List.of(), List.of(new GroupeDeJeux(sansAccent, reel.jeux()))))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("matieresDuNiveau()")
+                .hasMessageContaining(sansAccent);
+    }
+
     @Test
     void unTitreDeJeuNeufHorsDeLInventaireFaitEchouerLeGardeFou() {
         GameDefinition jeuReel = partie.jeuxDisponibles().get(0);
