@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- ADR-0105, regle 4 : la tuile de matiere de la vue a deux etages, ecrite comme un lot l'ecrirait
+     sans y penser - th:href seul. Le lien de sortie garde son href litteral, pour que le rouge ne
+     nomme que la tuile. -->
+<main id="jeu" class="container zone-jeu">
+    <a class="btn lien-accueil" data-role="sortie" href="/">Les jeux</a>
+    <a class="btn tuile-matiere" data-role="action"
+       th:each="matiere : ${matieres}"
+       th:href="@{'/niveaux/' + ${niveauActif} + '/matieres/' + ${matiere.segment()}}"
+       th:text="${matiere.libelleCourt()}">Français</a>
+</main>
+</body>
+</html>
