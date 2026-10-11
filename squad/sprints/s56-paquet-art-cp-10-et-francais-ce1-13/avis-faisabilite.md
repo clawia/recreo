@@ -146,6 +146,7 @@ sur `git cat-file blob`). Fichiers et entrees de registre se restaurent a l'octe
 | `oeuvre-carreau-iznik` | 50 170 | `oeuvre-rhinoceros` | 39 747 |
 | `oeuvre-champ-de-ble` | 31 398 | `oeuvre-vase-ming` | 13 123 |
 |  |  | `oeuvre-vase-shang` | 13 661 |
+|  |  | `oeuvre-vitrail` | 30 674 |
 
 Somme des vingt : 516 335 octets ; 176 474 + 516 335 = 692 809, la valeur de `1db6348f^`, ce qui recoupe la table. Les valeurs 11 et 250 915 d'`ADR-0104` decision 8 restent justes
 si et seulement si les trois oeuvres propres a `ART-CP-10` sont exactement celles restaurees.

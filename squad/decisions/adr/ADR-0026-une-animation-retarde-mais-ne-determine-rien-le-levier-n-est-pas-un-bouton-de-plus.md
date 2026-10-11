@@ -540,7 +540,7 @@ compose) n'est pas un pseudo-element decoratif** `::before` ou `::after`, selon 
 (`porteSurUnPseudoElementDecoratif`, seule la forme a deux deux-points). Le reste de la clause est inchange.
 
 **Regle executable.** `LAnimationRetardeMaisNeDetermineRienTest` (`adapters/adapter-web`) : la clause 3 est extraite en
-`defautsDInactionnabilite(regles, classesDActions)`, qui saute une regle dont le sujet est un pseudo-element decoratif. Neuf :
+`defautsDInactionnabilite(regles, classesDActions)`, qui saute une regle dont le sujet est un pseudo-element decoratif. Test neuf :
 `laClause3AdmetLePseudoElementDecoratifEtRefuseLeBoutonSurLaFeuilleReelle`, sur la feuille **reelle** mutee en memoire. Il prend la
 premiere regle de production dont le sujet est un pseudo-element decoratif d'une classe d'action (aujourd'hui `.proposition::after`,
 le voile) et exige : `pointer-events: none` ajoute a cette regle, admis ; la meme declaration sur le bouton qui la porte
