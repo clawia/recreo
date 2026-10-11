@@ -11,6 +11,18 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, hors sprint, le 2026-10-11 (arbitrage prealable de l'accueil par matiere, `DEC-0117`).**
+Onze identifiants ajoutes, des conditions : **`APM-1`** a **`APM-11`**, tous ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md`. **Forme copiee** d'`ACC-1` : deux segments, sans
+niveau, la condition portant sur l'accueil des trois niveaux. **Un prefixe neuf**, `APM` (`git grep -n "APM-[0-9R]"`
+ne rendait rien avant d'ecrire). Les onze lignes de la section 4 sont dans le meme diff que l'arbitrage.
+
+Ligne d'etat courant portee de **933 / 159 a 944 / 160**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend : *"declare 933 identifiants
+alloues et 159 prefixes distincts, sa table en porte 944 et 160"*, seul echec des 10 tests. C'est ce **944 / 160** que je
+recopie. Si une autre branche du chantier alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, s56, le 2026-10-11 (Done pedagogique de `FRA-CE1-13`, VALIDE SOUS RESERVE ; paquet d'`ART-CP-10`,
 REFUSE).** Trois identifiants ajoutes, des reserves : **`VSJ-CE1-R1`**, ecrit dans
 `squad/conformite/FICHE-bandit-manchot-verbe-sujet-ce1.md`, et **`RDO-CP-R1`**, **`RDO-CP-R2`**, ecrits dans
@@ -804,7 +816,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `933` identifiants alloues, `159` prefixes distincts.
+**Compte courant, verifie par la CI** : `944` identifiants alloues, `160` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2321,3 +2333,14 @@ clause 2 par une exemption.
 | `CRP-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-corps-cm1.md` |
 | `RDO-CP-R1` | `squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` |
 | `RDO-CP-R2` | `squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` |
+| `APM-1` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-2` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-3` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-4` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-5` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-6` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-7` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-8` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-9` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-10` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
+| `APM-11` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
