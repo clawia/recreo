@@ -21350,3 +21350,122 @@ Annotation datee. **Rien au-dessus n'est reecrit** ; les lignes remplacees sont 
 ### Ce que cette annotation ne fait pas
 
 Elle n'engage aucune story, n'ecrit pas la `DEC` d'ouverture de s57, ne compose pas s57, ne fixe aucun tarif et ne touche ni matrice, ni catalogue, ni code. Les fichiers de cloture de s56 (`review.md`, `retro.md`, `RAPPORT.md`) disent encore `Q3`, `Q4`, `Q6` sans reponse : ils sont a `sofia-sm`, je ne les corrige pas. Je n'ai trouve aucun fichier de planning previsionnel de s57 (`git grep -i previsionnel -- squad docs` : aucun).
+
+## Chantier hors sprint : accueil par matiere
+
+**Ouvert le 2026-10-11 par `DEC-0117`** (statut `Proposee` : `Q-U1` et `Q-U2` sans reponse). Aucun sprint n'est ouvert ;
+precedent suivi : la session hors sprint de s53 (`DEC-0112`). Competence programme visee de toutes les stories :
+**transverse - pas de contenu pedagogique**. La matrice ne bouge pas.
+
+**Demande de l'utilisatrice, 2026-10-11, mots exacts** : *"il liste comme actuellement prend trop de place et on perd les
+enfants au scroll, on n'a aucune idee de la matiere associee"*, puis *"ajoute l'implementation de V1, V2 avec un switch de la
+vue sur un bouton de l'accueil"*. Arbitrages rapportes (non cites) : V2 par defaut, bouton de bascule sur l'accueil, choix en
+session, libelles et pictogrammes proposes par `ines-design` et arbitres par `nadia-prof` avant le code, squad complete.
+
+**Mecanique demandee** (commune) : aucune mecanique de jeu n'est touchee. Le chantier ne modifie que l'accueil
+(`/niveaux/{niveau}`) ; `/` n'est pas modifie tant que `Q-U1` est sans reponse.
+
+**Methode de mesure (commune, `DEC-0117` section 4)** : jar construit depuis la racine du reacteur, Chrome headless a profil
+neuf, fenetre emulee 744 x 551 (`DEC-0040`), `getBoundingClientRect()` de chaque carte. **Une carte est visible sans defiler
+si son `bottom` est inferieur ou egal a `innerHeight`.** Les comptes de jeux viennent du catalogue servi et des paquets
+qu'il designe, jamais d'un nombre ecrit dans le test.
+
+**Etat de depart, mesure le 2026-10-11, base `8ac33440`** : CP 59, CE1 30, CM1 58 jeux (147) ; 5 cartes visibles sans defiler
+a 744 x 551 dans chaque niveau ; hauteur du document 4216 px en CP ; 0 matiere nommee ; 11 matieres distinctes (CP 8, CE1 2,
+CM1 8) ; le plus gros groupe d'un niveau compte 19 jeux.
+
+**Porte technique de chaque story** : tous les jobs de `.github/workflows/ci.yml`, nommes par qui annonce la porte. Les
+cotes de rendu sont lues sur le jar qui sert, pas sur un gabarit (`lessons.md`).
+
+**Ordre** : `HS-ACCUEIL-LIBELLES` d'abord (arbitrage de `nadia-prof` avant tout code), puis `HS-ACCUEIL-V2`, `HS-ACCUEIL-V1`,
+`HS-ACCUEIL-BASCULE` ; `HS-ACCUEIL-COMPLETUDE` et `HS-ACCUEIL-MESURE` se ferment avec les trois vues.
+
+#### HS-ACCUEIL-LIBELLES - chaque matiere a un mot court et une image, arbitres avant le code
+
+- **Besoin** : en tant qu'eleve de CP, je veux lire le nom de la matiere en mots simples, avec une image a cote, afin de savoir de quoi parle un jeu avant d'appuyer dessus.
+- **Mecanique demandee** : aucune.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Texte et pictogrammes lus par un enfant : `DEC-0002` (integralement accentues, juges par `nadia-prof`).
+- **Proposition** : `ines-design`. **Arbitrage** : `nadia-prof`, par un fichier `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md`. **Je n'ecris aucun libelle et ne choisis aucun pictogramme.**
+- **Criteres d'acceptation** :
+  - Etant donne le catalogue servi, quand on releve les matieres distinctes de chaque niveau, alors chacune a un libelle court et un pictogramme, tous deux arbitres par `nadia-prof` dans le fichier d'arbitrage, **qui precede dans l'historique Git le premier commit de code de `HS-ACCUEIL-V1` et de `HS-ACCUEIL-V2`** (`git log` du fichier d'arbitrage contre `git log` des fichiers de `adapters/adapter-web`). **Aujourd'hui** : 0 libelle court, 0 pictogramme ; le seul nom est la valeur du descripteur (15 a 30 caracteres), jamais affichee : rouge.
+  - Etant donne chaque libelle court et chaque texte alternatif de pictogramme, quand l'inventaire des chaines exposees est execute, alors aucun n'est ecrit sans ses accents (`TexteAccentueExposeParLePortEntrantTest`) et chaque matiere a une seule graphie (`UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest`). **Aujourd'hui** : je n'ai pas lance ces deux tests ; `yanis-qa` rend leur verdict sur la base avant la story.
+  - Etant donne un paquet servi d'une douzieme matiere sans libelle court, quand on lance `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, alors le build echoue en nommant la matiere ; etant donne le meme paquet avec son libelle ajoute **dans la donnee et nulle part ailleurs**, alors le build est vert sans qu'aucun `.java`, `.html`, `.css` ou `.js` de production n'ait change. **Aujourd'hui** : sans objet, aucun libelle ; le defaut est impossible a observer.
+  - Etant donne les sources de production (`domain`, `application`, `adapters`, `bootstrap`), quand on y cherche un mot de matiere ecrit en clair (`Sciences et technologie`, `Arts plastiques`, `Questionner le monde`, `Enseignement moral`), alors 0 occurrence. **Aujourd'hui : 0, deja vert** ; c'est une condition a ne pas perdre (`ADR-0006`), pas un defaut.
+- **Ce qui n'est pas decide ici** : ou vit le libelle (`Q-T1`, `ADR-0049` point 2). Les criteres valent quel que soit le choix de `theo-archi`.
+- **Lien** : `DEC-0117` ; `DEC-0002` ; `DEC-0032` section 3 ; `ADR-0006` ; `ADR-0049`.
+
+#### HS-ACCUEIL-V2 - la vue par defaut : les jeux groupes par matiere sous un en-tete qui la nomme
+
+- **Besoin** : en tant qu'eleve de CP, je veux voir, des l'ouverture de l'ecran, des jeux ranges par matiere avec le nom de la matiere au-dessus, afin de trouver un jeu sans faire defiler toute la liste.
+- **Mecanique demandee** : aucune. **Vue** : cartes groupees par matiere, en-tetes collants avec pictogramme (demande de l'utilisatrice).
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** (a 744 x 551, jar, trois niveaux, sauf mention) :
+  - **Matiere nommee.** Etant donne `/niveaux/{niveau}` en V2, quand la page est rendue, alors elle porte autant d'en-tetes de groupe que le niveau a de matieres distinctes (CP 8, CE1 2, CM1 8 au 2026-10-11, nombres derives du catalogue), chacun avec son libelle court en **texte** (un noeud texte de l'en-tete, pas un attribut ni un fond) et son pictogramme, et chaque carte est dans le groupe de sa matiere. **Aujourd'hui** : 0 en-tete, 0 matiere nommee dans les 3 niveaux : rouge.
+  - **Vue par defaut.** Etant donne une requete sans cookie de session, quand elle charge `/niveaux/CP`, alors la page est en V2. **Aujourd'hui** : la liste plate, V2 n'existe pas : rouge.
+  - **Defilement.** Etant donne `/niveaux/CP` en V2 a 744 x 551, quand la page vient de se charger, alors **au moins 10 cartes** sont entierement visibles sans defiler, et le nom du premier groupe est visible. **Aujourd'hui : 5** (0 nom de matiere) : rouge. Le seuil est le double de la mesure d'aujourd'hui, ce que deux colonnes donnent dans la hauteur laissee a 168 px ; c'est ma valeur, pas une mesure sur une maquette. Si `ines-design` montre que 10 n'est pas atteignable avec un en-tete collant et des pictogrammes lisibles, elle me renvoie la mesure et je fixe un autre seuil par une `DEC` ; **personne ne le baisse en silence**.
+  - **En-tete collant.** Etant donne `/niveaux/CP` en V2, quand on defile jusqu'a ce que la premiere carte du troisieme groupe soit au milieu de la fenetre, alors le texte de l'en-tete de ce groupe est entierement dans la fenetre (`top` >= 0, `bottom` <= 551). **Aujourd'hui** : sans objet.
+  - **Chaque jeu une fois.** Etant donne `/niveaux/{niveau}` en V2, quand on compte les cartes, alors leur nombre est celui des entrees du catalogue dont le paquet declare ce niveau (**CP 59, CE1 30, CM1 58 aujourd'hui**, derives) et aucun identifiant n'apparait deux fois.
+  - **Pas de groupe vide.** Etant donne le niveau, quand on compte les en-tetes sans aucune carte, alors 0 (`DEC-0032` section 3). **Aujourd'hui** : sans objet.
+  - **Ordre stable.** Etant donne deux chargements successifs du meme niveau, alors la suite des libelles de groupe est identique. **Aujourd'hui** : sans objet.
+  - **Cibles.** Etant donne une carte et un en-tete de groupe, alors les regles de la carte portent une hauteur minimale d'au moins 44 px et un texte d'au moins 1,25 rem, **verifie par `TailleDesTextesEtBoutonsTest` et non par un second test** : la preuve est que retirer la hauteur minimale de la regle de la carte fait rougir ce test (mutation, nombre de tests lances superieur a zero). **Aujourd'hui** : les cartes n'existent pas ; les boutons de jeu actuels mesurent 56 px de haut et 20 px de texte ; je n'ai pas lance ce test, `yanis-qa` donne son verdict sur la base.
+- **Ce qui n'est pas decide ici** : la forme (colonnes, collant, place), `ines-design` ; l'ordre des matieres, `Q-T2` ; le mecanisme, `theo-archi`.
+- **Lien** : `DEC-0117` ; `DEC-0040` ; `DEC-0032` section 3. **Dev** : `lea-dev`, apres `HS-ACCUEIL-LIBELLES`.
+
+#### HS-ACCUEIL-V1 - deux etages : je choisis une matiere, puis je vois ses jeux
+
+- **Besoin** : en tant qu'eleve de CM1, je veux d'abord choisir une matiere, puis voir seulement ses jeux, afin de ne pas chercher parmi 58 jeux.
+- **Mecanique demandee** : aucune. **Vue** : etage 1, tuiles de matiere (pictogramme et mot) ; etage 2, cartes des jeux de la matiere sur 2 ou 3 colonnes.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** (a 744 x 551, jar) :
+  - **Etage 1 nomme.** Etant donne `/niveaux/{niveau}` en V1, quand la page est rendue, alors il y a une tuile par matiere distincte du niveau (CP 8, CE1 2, CM1 8, derives) portant son libelle court en texte et son pictogramme, et **toutes les tuiles sont entierement visibles sans defiler** (`bottom` <= 551). **Aujourd'hui** : 0 tuile, 0 matiere nommee : rouge.
+  - **Etage 2.** Etant donne un appui sur une tuile, quand l'etage 2 est rendu, alors il porte le libelle de la matiere en texte et autant de cartes que cette matiere a de jeux dans ce niveau (CM1 sciences et technologie 19, CM1 langues vivantes 1 au 2026-10-11, derives), sur 2 ou 3 colonnes (les cartes d'une meme rangee ont le meme `top` ; le nombre de `left` distincts est 2 ou 3 des qu'il y a au moins 2 cartes), et **au moins min(n, 6) cartes sont entierement visibles sans defiler**. 6 = 2 colonnes sur 3 rangees : c'est ma valeur, meme regle de renvoi que pour `HS-ACCUEIL-V2`. **Aujourd'hui** : sans objet, un seul etage.
+  - **Rien d'orphelin.** Etant donne un niveau en V1, quand on additionne les cartes de toutes les tuiles, alors la somme est le nombre de jeux du niveau et l'ensemble des identifiants est celui du catalogue pour ce niveau ; aucune tuile n'a 0 carte (`DEC-0032` section 3).
+  - **Revenir.** Etant donne l'etage 2, quand l'enfant veut changer de matiere, alors un controle visible en mots le ramene a l'etage 1 sans quitter l'accueil et **sans porter le mot "Les jeux"** : sur chaque ecran de V1 il y a au plus un element visible dont le texte est `Les jeux` (`BARRE-5`). **Aujourd'hui** : non mesure ; `yanis-qa` compte sur la base avant la story, et la valeur a ne pas depasser est celle de la liste actuelle.
+  - **Jouer.** Etant donne chacun des jeux d'un niveau, quand on appuie sur sa carte depuis l'etage 2, alors la partie demarre comme depuis la liste actuelle (`POST /parties/{id}` rend 200). **Aujourd'hui** : non rejoue pour les 147 jeux ; la liste actuelle les expose par ce meme POST (gabarit `accueil.html`).
+  - **Retour d'un jeu.** Etant donne une partie lancee depuis V1, quand l'enfant appuie sur `Les jeux`, alors il revient a l'accueil **en V1**. L'etage de retour (`Q-N2`) est ecrit par `nadia-prof` ; le critere de l'etage s'ajoute a sa reponse, sans que je le devine.
+  - **Cibles.** Meme critere que `HS-ACCUEIL-V2` : tuile et carte portent au moins 44 px et 1,25 rem par `TailleDesTextesEtBoutonsTest`, preuve par mutation.
+- **Ce qui n'est pas decide ici** : la forme, `ines-design` ; la maniere de passer d'un etage a l'autre, `theo-archi`.
+- **Lien** : `DEC-0117` ; `DEC-0032` section 3 ; `FICHE-barre-entree-niveau.md` (`BARRE-5`). **Dev** : `lea-dev`, apres `HS-ACCUEIL-LIBELLES`.
+
+#### HS-ACCUEIL-BASCULE - je change la facon de voir les jeux, et ca dure le temps de ma session
+
+- **Besoin** : en tant qu'eleve de CP, ou adulte qui l'accompagne, je veux changer la facon dont les jeux sont presentes, afin de garder celle qui me permet de trouver.
+- **Mecanique demandee** : aucune.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Le libelle du bouton est lu par un enfant : `DEC-0002`, arbitre par `nadia-prof`.
+- **Criteres d'acceptation** :
+  - **Un bouton, sur l'accueil.** Etant donne `/niveaux/{niveau}`, quand la page est rendue, alors elle porte **un seul** bouton de bascule dans la zone de l'accueil et **aucun** dans l'en-tete (`BARRE-8` : un seul rang). **Aujourd'hui : 0** : rouge.
+  - **Il bascule.** Etant donne V2 puis un appui sur le bouton, alors la page rendue est en V1 pour le meme niveau ; etant donne V1 puis un appui, alors elle est en V2. Le libelle du bouton **dit la vue en mots** ; l'etat de la vue n'est pas porte par une couleur seule (`M11` clause 1).
+  - **Le niveau est respecte.** Etant donne un appui sur le bouton, alors la pastille de niveau marquee active est la meme avant et apres, et le nombre de jeux atteignables est celui du niveau.
+  - **Tenu en session.** Etant donne une session qui a bascule en V1, quand elle charge `/niveaux/CE1`, alors la page est en V1 ; quand elle appuie sur `Les jeux` depuis un jeu, alors elle revient en V1.
+  - **Perdu avec elle.** Etant donne une requete sans cookie de session, alors V2 ; etant donne la session invalidee ou expiree, alors V2. **Aujourd'hui** : sans objet.
+  - **Rien de persiste.** Etant donne les reponses de `/niveaux/CP` avant et apres une bascule, alors le seul `Set-Cookie` est `JSESSIONID`, sans `Max-Age` ni `Expires` ; les fichiers de `adapters/adapter-web/src/main/resources/static/js` ne contiennent ni `localStorage`, ni `sessionStorage`, ni `document.cookie`. **Aujourd'hui : verifie le 2026-10-11 sur `8ac33440`**, `GET /niveaux/CP` pose `JSESSIONID=...; Path=/; HttpOnly` sans date, et 0 occurrence des trois termes dans le JS : **deja vert** ; c'est une condition a ne pas perdre (`DEC-0028`), pas un defaut.
+  - **Pas sur un jeu.** Etant donne un ecran de manche, de fin de partie ou de confirmation, alors le bouton est absent.
+  - **Pas de comportement dans le JS.** `FrontieresDuJavaScriptTest` reste vert ; la bascule n'ajoute aucune ligne de comportement au script client (dette 4 de la version precedente).
+- **Ce qui n'est pas decide ici** : le libelle du bouton, `ines-design` puis `nadia-prof` ; l'emplacement exact, `ines-design` ; le mecanisme de session, `theo-archi` ; `Q-N1` (ses mots sur `S15-5`).
+- **Lien** : `DEC-0117` ; `DEC-0028` ; `ADR-0044` ; `FICHE-barre-entree-niveau.md` (`BARRE-5`, `BARRE-6`, `BARRE-8`). **Dev** : `lea-dev`.
+
+#### HS-ACCUEIL-COMPLETUDE - aucun jeu ne disparait, dans aucune vue
+
+- **Besoin** : en tant qu'eleve de CM1, je veux retrouver chaque jeu qui existe pour mon niveau, quelle que soit la facon dont l'accueil les presente, afin qu'un jeu que je connais ne disparaisse pas.
+- **Mecanique demandee** : aucune.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne chacun des niveaux servis et chacune des deux vues, quand on parcourt tous les chemins de l'accueil (V1 : chaque tuile ; V2 : toute la page), alors l'ensemble des identifiants de jeu atteints est **egal** a l'ensemble des entrees du catalogue dont le paquet declare ce niveau (**CP 59, CE1 30, CM1 58, soit 147 au 2026-10-11**). Les nombres sont derives du catalogue servi et des paquets, jamais ecrits dans le test (`ADR-0013`, perimetre derive). **Aujourd'hui : 59, 30, 58 sur la liste plate, deja vert** ; c'est une condition a ne pas perdre, pas un defaut.
+  - Etant donne le niveau actif, alors **aucun** jeu d'un autre niveau n'est present dans aucune vue. **Aujourd'hui : deja vert** (`/niveaux/CP` rend 59 boutons, nombre des paquets de niveau CP).
+  - Etant donne le test de completude, quand on retire un seul groupe (V2) ou une seule tuile (V1) du rendu, alors le test echoue (mutation ; le nombre de tests lances est superieur a zero ; `yanis-qa`, `lessons.md` s56).
+  - Etant donne un nouveau jeu servi d'un niveau existant, quand on lance `mvn -B verify`, alors il est atteignable dans les deux vues sans edition d'un test.
+- **Lien** : `DEC-0117`. **Rapport** : `yanis-qa`.
+
+#### HS-ACCUEIL-MESURE - la mesure de defilement est une commande commitee
+
+- **Besoin** : en tant qu'eleve de CP, je veux que l'accueil tienne sur mon ecran comme on l'a promis, afin de ne pas me perdre dans une longue liste ; l'equipe doit pouvoir le re-mesurer sans demander comment.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Criteres d'acceptation** :
+  - Etant donne la methode de la section "Methode de mesure" ci-dessus, quand `yanis-qa` la commite sous une forme rejouable sans chemin de poste (`CLAUDE.md`, conventions de redaction), alors lancee sur la base `8ac33440` elle rend **5 cartes visibles en CP, 5 en CE1, 5 en CM1 et 0 matiere nommee**, et sur le code livre elle rend les valeurs que `HS-ACCUEIL-V1` et `HS-ACCUEIL-V2` exigent. **Aujourd'hui** : la mesure du 2026-10-11 a ete faite par une commande de poste non commitee, donc non rejouable : rouge.
+  - Etant donne son verdict d'invocation, alors il est eprouve par des entrees fabriquees et execute par un job de `.github/workflows/ci.yml` (meme forme que `outils/mesurer-rendu.sh`, `ADR-0009`) ; le prerequis nomme est un Chrome, jamais son emplacement (`ADR-0010`).
+  - Etant donne la commande lancee sur un arbre dont l'accueil a ete mute (un groupe retire), alors elle rend un autre nombre de cartes : la mesure mord.
+- **Lien** : `DEC-0117` section 4 ; `lessons.md` (une cote lue a l'oeil n'est pas recopiee comme un chiffre).
+
+#### Ce que ce chantier ne fait pas
+
+Il ne modifie ni `catalogue.yaml`, ni un paquet, ni la matrice ; il ne prononce aucun Done pedagogique ; il ne touche pas `/` tant que `Q-U1` n'a pas de reponse ; il ne pre-remplit pas le bloc de validation de `FICHE-accueil-par-matiere.md` ; il n'engage aucun poste de s57.
