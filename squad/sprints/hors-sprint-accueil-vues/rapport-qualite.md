@@ -219,8 +219,21 @@ la completude des identifiants, les 146 `POST`, la commande commitee.
 
 ## 7. Porte technique : jobs lances
 
-Arbre : `def23ead` plus mes trois fichiers, depuis ce worktree. A remplir apres la derniere mesure (ce fichier est lu par des
-garde-fous de `build`).
+Arbre : `ff86c571` (`def23ead` plus mon commit : l'outil, son test, la premiere version de ce rapport), depuis ce worktree, avant
+la derniere edition de cette section. Les quatre jobs de `.github/workflows/ci.yml` sont nommes ; deux etapes distantes ne le sont pas.
+
+| Job | Lance | Commande | Resultat |
+|---|---|---|---|
+| `build`, etape "Verify" | oui | `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl` | **BUILD SUCCESS**, exit 0, 5 min 24 s. **2493 tests, 0 echec, 0 erreur, 0 ignore** : somme des six blocs `Results:` (120, 31, 485, 1484, 367, 6), egale a la somme des attributs `tests` des `TEST-*.xml` de Surefire et Failsafe. `java.version` de tous les rapports : 21.0.10. Delta de tests Maven de mon commit : **0** (base `def23ead`, meme total que celui de `lea-dev` a son dernier commit). Mon apport est de 32 tests Python, lances par le job `outils` |
+| `build`, etape "Package du fat jar" | **non, telle quelle** | `mvn -B -pl bootstrap -am package` n'est pas lancee ; le jar est produit par `verify` et par `bash outils/mvn-jdk21.sh -B -q -DskipTests -pl bootstrap -am package` (section 2.1) | sans verdict sur l'etape |
+| `chemins` | oui | `verifier-chemins-test.sh`, puis `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` | deux exit 0 |
+| `outils` | oui | les trois motifs de la CI un a un (l'interpreteur Python est designe par `python` : sur ce poste `python3` n'est pas un interpreteur) | **11 juges, 11 exit 0** (5, 2, 4), aucun motif vide ; le onzieme est `outils/mesurer-accueil-test.py` |
+| `prefixes` | oui, localement | `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, puis `git log --no-merges --format=%s 96e05fa9..HEAD \| bash .github/scripts/verifier-prefixes.sh` (5 sujets, dont le mien) | trois exit 0. La plage `BASE..SHA` de GitHub n'existe qu'au push : non lancee, aucun push |
+
+**Ce que je n'ai pas lance** : la plage distante de `prefixes`, l'etape de package telle qu'ecrite, tout ce qui est distant. Le verdict
+de la CI est celui de la CI : personne ne l'a lue ici.
+
+Relance sur le fichier final (cette section editee) : voir la derniere ligne de ce fichier.
 
 ## 8. Ce qui n'est pas verifie
 
