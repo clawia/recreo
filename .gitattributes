@@ -11,3 +11,8 @@
 # declaree doit valoir sur tout poste. La forme est donc un motif sur tout repertoire de ressources
 # tierces, production comme jeu fautif, plutot qu'un chemin de plus a chaque fois.
 **/static/vendor/** -text
+#
+# ADR-0106 : un pictogramme de matiere est le fichier que nadia-prof a arbitre, octet pour octet
+# (APM-2), et LePictogrammeDeMatiereEstUnFichierArbitreTest le verifie par empreinte SHA-256. Meme
+# motif que la ligne ci-dessus, sur les pictogrammes servis comme sur le jeu fautif du garde-fou.
+**/static/images/matieres/** -text

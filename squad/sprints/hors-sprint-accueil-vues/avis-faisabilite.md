@@ -262,3 +262,104 @@ ont ete relances sur le fichier final, section 9 bis.
 code de sortie 0, 3 tests et 10 tests, 0 echec (rapports XML). Perimetre : `bootstrap` et ses amonts,
 pas le depot ; c'est la seule partie du depot que l'ajout de la section 9 pouvait faire rougir. Job
 `chemins` relance : sortie 0.
+
+## 10. Apres l'arbitrage de `nadia-prof` : `ADR-0106`, et le decoupage de P3 et P4
+
+- **Date** : 2026-10-11, lue par `date` : 2026-10-11 18:42 (UTC+02:00).
+- **Branche** : `theo-accueil-matieres`, base `9f03ff77` (tip de `round-two`, qui porte P1, P2 et
+  l'arbitrage `APM-1` a `APM-11`).
+- **Ce commit porte** : `ADR-0106`, ses regles (une ArchUnit, sept clauses JUnit), la donnee
+  `matieres.yaml`, les dix pictogrammes acceptes, `ContentCatalogPort.matieres()` et sa lecture par le
+  chargeur, l'ordre et l'absence de repli dans `PartieService.matieresDuNiveau`, la correction du bean de
+  `ContenuConfiguration`, et les amendements d'`ADR-0049` et d'`ADR-0043`. Aucun gabarit, aucune feuille,
+  aucune route.
+
+### 10.1 Ce que j'ai tranche, et ou c'est ecrit
+
+| Question | Reponse | Ou |
+|---|---|---|
+| Ou vit la correspondance (`Q-T1`) | une ligne par matiere dans `matieres.yaml`, lue par le chargeur unique, exposee par `ContentCatalogPort.matieres()` | `ADR-0106` decision 1 |
+| Ordre (`Q-T2`) | le rang de la ligne ; aucun repli pour une matiere sans ligne | `ADR-0106` decisions 1 et 2 |
+| Segment au port (`E2` de `marc-dev`) | oui : `groupeDeLaMatiere(niveau, segment)`, `Optional<GroupeDeJeux>`, remplace `jeuxDeLaMatiere` | `ADR-0106` decision 5 |
+| `data-role` | tuile `action`, bouton de vue `entree` dans ses trois etats ; `ADR-0043` decision 1 amendee | `ADR-0106` decision 6 |
+| Place du bouton | `#jeu`, jamais l'en-tete | `ADR-0106` decision 7 |
+| Route de vue | `POST /niveaux/{niveau}/vue/{vue}` : ecrit la vue, n'abandonne jamais ; sans partie rend la zone du niveau et pousse `/niveaux/{niveau}` ; avec partie rend la confirmation de la puce ; vue inconnue 404 | `ADR-0106` decision 8 |
+
+### 10.2 P3 - `marc-dev`
+
+Depend de : ce commit. Ne depend pas de `Q-U1`, ni du pictogramme de Maths.
+
+1. `GroupeDeJeux(Matiere matiere, List<GameDefinition> jeux)` : la ligne entiere au lieu de sa chaine.
+2. `groupeDeLaMatiere(String niveau, String segment)` rend `Optional<GroupeDeJeux>` et remplace
+   `jeuxDeLaMatiere` ; segment inconnu ou matiere absente du niveau : `Optional.empty()`.
+3. `TexteAccentueExposeParLePortEntrantTest` : la methode neuve dans `METHODES_DU_PORT_LUES_PAR_L_INVENTAIRE`
+   et appelee pour chaque groupe ; les chaines neuves exposees (six libelles qui different de la matiere,
+   onze noms de pictogramme, vingt-deux teintes, onze segments) dans l'inventaire, chacune avec son motif
+   (`APM-1`, N1, N2, N6).
+4. Tests de `PartieService` : la resolution par segment (trouve, segment inconnu, matiere d'un autre niveau),
+   et une mutation qui compare la matiere au lieu du segment.
+
+Estimation jugee : un commit, environ 200 lignes dont tests.
+
+### 10.3 P4 - `lea-dev`
+
+Depend de : P3 ; le pictogramme de Maths refait par `ines-design` et accepte par `nadia-prof` (`APM-2`,
+routage de son arbitrage : *"rien avant le pictogramme de Maths rejuge et le second ADR"*) ; la teinte de
+Histoire des arts, si elle arrive avec lui. P2 et `DEC-0117` sont la.
+
+1. Routes de `ADR-0106` decision 8, chacune exercee avec et sans partie dans les corpus de
+   `ToutEcranEchangeEstUnDocumentJouableTest` et d'`AucunArretDeTabulationNEstDestructeurTest` (F10) ; le
+   catalogue de test de `PartieControllerTest` recoit des lignes de matiere.
+2. Gabarits de V2, de l'etage 1 et de l'etage 2 dans `accueil.html`, la liste plate gardee pour `/` ;
+   `.filtre-niveau` sur toute zone rendue sous un niveau (F11) ; tuile `data-role="action"`, bouton de vue
+   `data-role="entree"`, `href` litteral sur tout lien (`ADR-0105` regle 4).
+3. Teinte par `th:style` sur la tuile et le bandeau seulement (`--teinte-fond`, `--teinte-contour`), lue par
+   `var()` dans `recreo.css` ; pictogramme `<img alt="">` a cote de son libelle.
+4. Le cliquet `aucunPictogrammeDeMatiereNEstEncoreServi` rougit : il est remplace dans le meme commit par
+   l'exigence d'au moins un pictogramme sur un ecran de V2, de l'etage 1 et de l'etage 2.
+5. Le pictogramme de Maths depose, son empreinte dans `LePictogrammeDeMatiereEstUnFichierArbitreTest.ARBITRES`,
+   son nom retire d'`EN_ATTENTE`, avec la reference de l'arbitrage ; meme geste pour la teinte et
+   `TEINTES_GRISES_EN_ATTENTE`.
+6. Tests de route qui gardent `APM-7` a `APM-11` : bouton de vue absent de l'en-tete et de tout ecran de jeu,
+   jamais "Les jeux" ; la session ne recoit que la vue (`APM-8`, `EtatDePartieEnSessionTest`) ; "Les jeux"
+   ne rend jamais un etage 2 ; toute tuile pointe vers `/niveaux/{niveau}/matieres/{segment}`, verifie sur
+   une matiere d'un seul jeu ; tuile et etage 2 pendant une partie rendent la confirmation de la puce, et la
+   route de vue n'abandonne jamais.
+
+Estimation jugee : deux a trois commits, le plus gros poste.
+
+### 10.4 Ce qui attend `Q-U1`, et rien d'autre
+
+Tout ce qui touche `/`, `/retour` et `/retour/confirmer` : la page sans niveau, la destination de "Les
+jeux", une route de vue sans niveau, et le critere "Tenu en session" d'`HS-ACCUEIL-BASCULE` (contradiction
+relevee par `nadia-prof`, section 1 de son arbitrage, routee a `camille-po`). Si l'utilisatrice retient
+l'option (c) de `nadia-prof`, aucune liste n'est rendue sur `/` et aucune route de vue sans niveau n'est
+necessaire. P3 et P4 tels que decrits ci-dessus n'en dependent pas : ils ne touchent pas ces trois routes.
+
+### 10.5 Jobs de `.github/workflows/ci.yml` lances pour ce commit
+
+Sur l'arbre de ce commit, avant le commit, depuis ce worktree.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` sur la racine, sans `-pl` : **BUILD SUCCESS**, code
+  de sortie 0. **2461 tests, 0 echec, 0 erreur, 0 ignore** : somme des six blocs `Results:` du reacteur (120,
+  28, 459, 1483, 365, 6), egale a la somme des attributs `tests` des rapports XML de Surefire et Failsafe.
+  `java.version` de tous les rapports : 21.0.10. Le jar `bootstrap/target/recreo.jar` est produit ; il n'a pas
+  ete lance, ce commit ne change aucun ecran.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (fichiers neufs ajoutes a l'index) passe
+  a `verifier-chemins.sh` : sortie 0.
+- **`outils`** : la boucle du job sur ses trois motifs, 10 juges (5, 2, 3), 0 echec ; l'interpreteur Python
+  est designe a la main.
+- **`prefixes`** : `verifier-prefixes-test.sh` et `commit-atteignable-test.sh` sortent 0 ; le sujet de ce
+  commit passe a `verifier-prefixes.sh` sort 0. La plage distante n'existe qu'au push : non lance, aucun push.
+
+Cette section est ecrite apres la mesure ; les deux garde-fous qui lisent les `.md`
+(`ToutesLesReferencesDeDecisionResolventTest`, `ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`) et le
+job `chemins` sont relances sur le fichier final, section 10.6.
+
+### 10.6 Relance sur le fichier final
+
+`bash outils/mvn-jdk21.sh -B -q -o -pl bootstrap -am test
+-Dtest='ToutesLesReferencesDeDecisionResolventTest,ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest'` :
+code de sortie 0, 3 tests et 10 tests, 0 echec (rapports XML). Perimetre : `bootstrap` et ses amonts, pas le
+depot ; c'est la seule partie du depot que les sections 10.5 et 10.6 pouvaient faire rougir. Job `chemins`
+relance : sortie 0.

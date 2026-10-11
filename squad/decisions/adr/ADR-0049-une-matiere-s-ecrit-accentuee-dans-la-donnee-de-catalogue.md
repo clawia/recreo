@@ -1,7 +1,9 @@
 # ADR-0049 - Porter la matiere accentuee dans la donnee de contenu elle-meme, et garder l'unicite de sa graphie
 
 - **Statut** : Accepte, avec sa regle ecrite dans le meme commit ; **amende le 2026-08-19 (s17)** -
-  son repliage restait muet sur un ecart de blancs, defaut mesure par `yanis-qa` sur du materiau reel
+  son repliage restait muet sur un ecart de blancs, defaut mesure par `yanis-qa` sur du materiau reel ;
+  **amende le 2026-10-11 (hors sprint) par `ADR-0106`** - le declencheur du point 2 est atteint, le
+  segment du point 4 vit dans la ligne de matiere
 - **Date** : 2026-08-19
 - **Auteur** : theo-archi
 - **Sprint** : s17 (avis de faisabilite, avant tout commit de code)
@@ -166,6 +168,26 @@ ce qu'une relecture humaine ne peut pas voir, rien de plus.
 
 **Le compte des regles ArchUnit ne bouge pas** (toujours 29) : c'est la meme regle, dont le repliage
 s'elargit, et ce n'est pas une regle ArchUnit.
+
+## Amendement du 2026-10-11 (hors sprint) - le declencheur du point 2 est atteint, et le segment ne vit pas dans le paquet
+
+**Point 2.** Le declencheur ecrit d'avance - *"un libelle affichable doit differer de la valeur pour une raison
+qui n'est pas l'accent"* - est realise, constate et non anticipe : six libelles arbitres par `nadia-prof`
+different de la valeur ("Maths", "Sciences", "Vivre ensemble", "Anglais", "Musique", "Sport"), parce que les
+valeurs font de 15 a 30 caracteres et que deux tuiles sur huit au CM1 ont leur texte dans le rembourrage a
+744 px (mesures dans `ADR-0106`, Contexte). Le libelle distinct existe donc, **une fois par matiere, dans la
+ligne de matiere d'`ADR-0106`**, jamais dans chaque paquet : le motif du point 2 contre un champ que chaque
+paquet remplit tient toujours, c'est l'endroit du libelle qui le respecte. La valeur du descripteur reste la
+seule cle, accentuee et d'une graphie, et cette regle la garde inchangee.
+
+**Point 4.** Le segment d'adresse est une donnee et jamais un calcul, comme ecrit ; il n'est pas une cle du
+paquet, il est une colonne de la meme ligne de matiere. Une cle par paquet ferait 147 copies d'une valeur
+par matiere, la meme dette.
+
+**La regle de cet ADR ne change pas.** Le repliage d'`UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest`
+est ouvert au paquet (`replie`, sans `private`) : `ChaqueMatiereServieASaLigneDeMatiereTest` l'emploie pour
+nommer une ligne qui ne differe d'une matiere servie que par l'accent, la casse ou un blanc. Une seule
+definition de "meme matiere" dans le depot.
 
 ## Consequences
 

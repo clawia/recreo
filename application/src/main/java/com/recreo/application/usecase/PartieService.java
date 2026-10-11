@@ -2,6 +2,7 @@ package com.recreo.application.usecase;
 
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.catalog.GroupeDeJeux;
+import com.recreo.application.catalog.Matiere;
 import com.recreo.application.catalog.OrdreDesNiveaux;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.application.port.out.ContentCatalogPort;
@@ -75,10 +76,10 @@ public final class PartieService implements PartieUseCase {
      * chaine du paquet, comparee telle quelle : une graphie differente fait un groupe de plus, visible,
      * plutot qu'une normalisation silencieuse.
      *
-     * <p>L'ordre des groupes est celui de la premiere apparition de la matiere au catalogue, parmi les
-     * jeux du niveau, et l'ordre des jeux d'un groupe est celui du catalogue : deterministe, sans
-     * ordre de matiere ecrit en code (ADR-0006). C'est un ordre de repli : la regle d'affichage est
-     * a arbitrer par nadia-prof.
+     * <p>ADR-0106 : l'ordre des groupes est le rang de leur ligne dans la donnee de matiere (APM-4),
+     * jamais un ordre ecrit en code (ADR-0006) ; les jeux d'un groupe gardent l'ordre du catalogue.
+     * Une matiere servie sans ligne n'a pas de repli : elle fait echouer le regroupement en se
+     * nommant, parce qu'un libelle invente n'a pas le droit d'etre servi (APM-1).
      */
     @Override
     public List<GroupeDeJeux> matieresDuNiveau(String niveau) {
@@ -86,7 +87,15 @@ public final class PartieService implements PartieUseCase {
         for (GameDefinition jeu : jeuxDuNiveau(niveau)) {
             parMatiere.computeIfAbsent(jeu.descripteur().matiere(), matiere -> new ArrayList<>()).add(jeu);
         }
+        List<String> ordre = catalogue.matieres().stream().map(Matiere::nom).toList();
+        for (String matiere : parMatiere.keySet()) {
+            if (!ordre.contains(matiere)) {
+                throw new IllegalStateException("ADR-0106 : la matiere \"" + matiere
+                        + "\" est servie sans ligne dans la donnee de matiere");
+            }
+        }
         return parMatiere.entrySet().stream()
+                .sorted(Comparator.comparingInt(entree -> ordre.indexOf(entree.getKey())))
                 .map(entree -> new GroupeDeJeux(entree.getKey(), entree.getValue()))
                 .toList();
     }

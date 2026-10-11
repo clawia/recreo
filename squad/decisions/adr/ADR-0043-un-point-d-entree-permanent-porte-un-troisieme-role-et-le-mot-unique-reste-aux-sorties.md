@@ -1,6 +1,7 @@
 # ADR-0043 - Ouvrir un troisieme role de bouton pour un point d'entree permanent, l'admettre du cote domine de la saillance, et laisser le mot unique aux seules sorties
 
-- **Statut** : Accepte
+- **Statut** : Accepte ; **decision 1 amendee le 2026-10-11 (hors sprint) par `ADR-0106`** : `entree` ne demande plus un
+  habillage permanent
 - **Date** : 2026-08-17
 - **Auteur** : theo-archi
 - **Sprint** : s14 (avis de faisabilite S14-1, question routee par `ines-design`, section 8 de
@@ -196,6 +197,28 @@ s05 appliquee dans le seul sens ou elle protege.
    yeux : `ADR-0042` a ete accepte en s13 avec sa regle "due par le lot de S13-6", le lot a ete
    annule par `DEC-0032`, et la regle n'existe toujours pas. Une regle dont l'ecriture depend d'un lot
    futur est une regle qui peut ne jamais exister.
+
+## Amendement du 2026-10-11 (hors sprint, `ADR-0106`) - `entree` ne demande plus un habillage permanent
+
+**Le cas.** Le bouton de vue de l'accueil ("Par matière", "Tout voir", et "Par matière" au chevron sur
+l'etage 2) vit dans la zone echangee, pas dans un habillage permanent. Il ne fait pas avancer l'ecran affiche
+et il n'en est pas la sortie. `action` lui donnerait la saillance d'un choix de jeu ; `sortie` est refuse par
+la clause de libelle unique, puisqu'il ne dit pas "Les jeux" (`APM-7` l'interdit d'ailleurs). C'est
+l'objet qui n'entrait dans aucune des trois valeurs, nomme dans la derniere section ci-dessous.
+
+**La decision 1 se lit desormais** : *"Un bouton qui ne fait pas avancer l'ecran affiche et qui n'est pas la
+sortie de cet ecran declare `data-role="entree"`."* La mention *"d'un habillage permanent"* tombe. Ce n'est
+pas un quatrieme role : la liste reste fermee a trois valeurs, `entree` reste du cote domine (point 2), et un
+`entree` jamais confronte a une action reste un echec (point 4). La question que la derniere section posait
+- `data-role` melange-t-il "ou va le bouton" et "qui doit appeler la main" - est tranchee pour ce cas par la
+seconde : le role sert la saillance, et le bouton de vue doit ceder a la carte et a la tuile. Ce qui me ferait
+separer les deux attributs : un bouton qui doit dominer une action sans la faire avancer.
+
+**La tuile de matiere declare `action`** : sur l'etage 1, elle est le choix qui fait avancer l'ecran, comme
+`.demarrer` sur la liste.
+
+**Le garde-fou ne change pas** : `LActionNeDeclarePasMoinsQueLaSortieTest` ne lit aucune notion d'habillage,
+seulement les valeurs de `data-role`. Le lot P4 y entre avec ses gabarits, et c'est lui qui mesure.
 
 ## Ce qui reste non gardable, et le dit
 

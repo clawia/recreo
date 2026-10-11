@@ -1,6 +1,7 @@
 package com.recreo.adapter.content;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.Matiere;
 import com.recreo.domain.content.ContentSource;
 import com.recreo.domain.content.Item;
 import com.recreo.domain.content.ItemId;
@@ -164,6 +165,22 @@ class YamlContentPackLoaderTest {
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("catalogue.yaml")
                 .hasMessageContaining("nombreDeManches");
+    }
+
+    /** ADR-0106 : les six champs d'une ligne, dans l'ordre du fichier, qui est l'ordre d'affichage. */
+    @Test
+    void laDonneeDeMatiereSeLitDansLOrdreDuFichier() {
+        assertThat(new YamlContentPackLoader("/fixtures/valide").matieres()).containsExactly(
+                new Matiere("Mathematiques", "Maths", "maths.svg", "#f4e3a1", "#7d6208", "maths"),
+                new Matiere("Francais", "Francais", "francais.svg", "#cfe3f6", "#2f6c9f", "francais"));
+    }
+
+    @Test
+    void uneLigneDeMatiereSansSegmentNommeLeFichierEtLeChamp() {
+        assertThatThrownBy(() -> new YamlContentPackLoader("/fixtures/matiere-sans-segment").matieres())
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("matieres.yaml")
+                .hasMessageContaining("segment");
     }
 
     private static GameDefinition jeu(List<GameDefinition> jeux, String id) {

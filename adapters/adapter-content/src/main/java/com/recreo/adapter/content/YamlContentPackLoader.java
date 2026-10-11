@@ -1,6 +1,7 @@
 package com.recreo.adapter.content;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.Matiere;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ContentSource;
@@ -48,6 +49,31 @@ public final class YamlContentPackLoader implements ContentCatalogPort {
             throw new IllegalStateException(catalogue + " : le champ 'jeux' doit etre une liste");
         }
         return jeux.stream().map(jeu -> definitionDeJeu(jeu, catalogue)).toList();
+    }
+
+    /**
+     * ADR-0106 : la donnee de matiere, lue dans l'ordre du fichier, qui est l'ordre d'affichage. Le
+     * chargeur exige les six champs ; la jointure avec les matieres servies, l'unicite et la forme des
+     * valeurs sont jugees par ChaqueMatiereServieASaLigneDeMatiereTest.
+     */
+    @Override
+    public List<Matiere> matieres() {
+        String chemin = racine + "/matieres.yaml";
+        Object brut = champObligatoire(charger(chemin), "matieres", chemin);
+        if (!(brut instanceof List<?> lignes)) {
+            throw new IllegalStateException(chemin + " : le champ 'matieres' doit etre une liste");
+        }
+        return lignes.stream().map(ligne -> matiere(ligne, chemin)).toList();
+    }
+
+    private static Matiere matiere(Object ligneBrute, String chemin) {
+        if (!(ligneBrute instanceof Map<?, ?> ligne)) {
+            throw new IllegalStateException(
+                    chemin + " : chaque entree de 'matieres' doit etre une correspondance (map)");
+        }
+        return new Matiere(texte(ligne, "matiere", chemin), texte(ligne, "libelle", chemin),
+                texte(ligne, "pictogramme", chemin), texte(ligne, "teinteFond", chemin),
+                texte(ligne, "teinteContour", chemin), texte(ligne, "segment", chemin));
     }
 
     private GameDefinition definitionDeJeu(Object jeuBrut, String catalogue) {
