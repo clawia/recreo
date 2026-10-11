@@ -323,3 +323,86 @@ de l'emplacement 10, s'ils arrivent ensemble, vaut **0,25**. A deduire par `sofi
 - `squad/decisions/REGISTRE-identifiants.md` : `APM-1` a `APM-11` alloues, note datee, ligne d'etat courant.
 - Aucun fichier sous `domain/`, `application/`, `adapters/`, `bootstrap/` ; ni `FICHE-accueil-par-matiere.md`,
   dont le bloc de validation attend le jeu.
+
+---
+
+## Rejugement du 2026-10-11 19:18 (UTC+02:00) - `APM-2` et `APM-6` : le pictogramme de Maths est ACCEPTE, le magenta est ACCEPTE, le repli est REFUSE
+
+Ajout date ; rien de ce qui precede n'est modifie. Worktree `nadia-accueil-picto`, base `9c49bbe1` (tip de
+`round-two`), `bash outils/verifier-lignee.sh` sort 0. Objet : la reprise d'`ines-design`
+(`proposition-ines-accueil-vues.md`, section 9), fusionnee a `97bb7392`.
+
+### 0. Methode, et ce qui reste degrade
+
+Rendu moi-meme, a 551 de haut, par `bash outils/mesurer-rendu.sh <largeur> "file:///<racine>/squad/conformite/releves-accueil/<maquette>.html" <png> 551`,
+un Chrome designe par `CHROME` : `maquette-v1-etage1-CM1` a 744, `maquette-v1-etage1-CP` a 744 et 390,
+`maquette-v1-etage2-CP-mathematiques` a 390 (bandeau de 36 px), `maquette-pictos` a 744. Pour le repli et la
+lecture sans couleur, trois copies de `maquette-v1-etage1-CM1.html` hors du depot, qui ne changent qu'une
+regle : la teinte 10 au repli `#adadeb` / `#191976`, et `filter: grayscale(1)` sur la page, avec le magenta
+puis avec le repli. Contrastes recalcules (formule WCAG 2.x, page `#f4f7fb` lue dans `recreo.css`) : je
+retrouve les chiffres d'`ines-design`. Toujours des maquettes, pas le jar ; aucune simulation de daltonisme de
+ma main.
+
+### 1. `pictos/mathematiques.svg` : ACCEPTE, `APM-2` est tenue
+
+Une ardoise portant `+` et `=`. Je le lis "maths" a ses trois tailles rendues : tuile de 56 px a 744 et a 390,
+bandeau de 36 px a 390, ou les deux barres du `=` restent separees. Le dessin montre ce que l'enfant fait le
+plus souvent dans ces jeux, ajouter et trouver un resultat. Le `-` absent : ma condition le demandait "si le
+dessin reste lisible a 48 px", et `ines-design` montre qu'il ne l'est pas (section 9.1, deux compositions
+essayees). Ce n'est pas un manque. Ce que l'enfant de CP reconnait reste a mon audit (point 1 de ma section 6).
+
+**L'empreinte qui devient le cliquet** (`ADR-0106`, regle 4, `LePictogrammeDeMatiereEstUnFichierArbitreTest`) :
+`mathematiques.svg` = **`a386ed6affee3a76ce2be04529f0c602c27d9291cc0707f6b7d357e82edf1a0f`**, SHA-256 des
+octets du fichier tel que Git le stocke a `9c49bbe1` (`git show 9c49bbe1:squad/conformite/releves-accueil/pictos/mathematiques.svg | sha256sum`).
+Meme methode que les dix empreintes deja epinglees : `francais.svg` rend ainsi `87046cf2...`, la valeur ecrite
+dans le test. **Attention** : sur un poste en `core.autocrlf=true`, le fichier extrait dans
+`squad/conformite/releves-accueil/pictos/` rend `634594d0...`, ce n'est pas l'empreinte. Le nom sort
+d'`EN_ATTENTE`, qui devient vide.
+
+### 2. Teinte 10 : magenta ACCEPTE, repli REFUSE, `APM-6` est tenue
+
+| Teinte 10 | Fond contre la page | Encre sur le fond | Lecture |
+|---|---|---|---|
+| gris refuse `#d8dde4` | - | - | "desactive" |
+| **magenta `#f0baf3` / `#85188b`** | **1,50:1** | 9,39:1 | une couleur, pas un gris |
+| repli `#adadeb` / `#191976` | **1,96:1** | 7,17:1 | la tuile la plus sombre de l'ecran |
+
+Les dix autres fonds valent de 1,22 a 1,33:1 contre la page.
+
+- **Le magenta ne se lit pas "desactive".** C'est le motif de mon refus du gris, et il est leve.
+- **Le repli est refuse** : en niveaux de gris, sa tuile ressort nettement plus foncee que toutes les autres,
+  avec un contour presque noir. Une tuile plus chargee que ses voisines se lit "deja choisie" ou "appuie
+  ici", et c'est la seule matiere d'un jeu en CM1 qui la porterait. Le magenta ressort aussi, moins
+  (1,50 contre 1,33 au plus) ; je l'accepte et je le rejuge en jouant.
+- **Le rose de "Vivre ensemble", sa voisine en CM1** : distincte a l'oeil sur mon rendu (un rose contre un
+  mauve, contours `#a03a6b` contre `#85188b`), et le mot et le pictogramme different. Ce n'est pas un motif :
+  la couleur ne fait que doubler le mot (`APM-3`).
+
+**La teinte qui devient le cliquet** (`ADR-0106`, regle 1) : la ligne `Histoire des arts` de
+`matieres.yaml` porte **`teinteFond: "#f0baf3"`** et **`teinteContour: "#85188b"`**, a la place de `#d8dde4` et
+`#4a5a6b`. `TEINTES_GRISES_EN_ATTENTE` devient vide.
+
+### 3. Les reserves 1 a 5 de la reprise (section 9.3)
+
+1. **Le magenta, la teinte la plus vive** : acceptee au point 2. Repli refuse.
+2. **Daltonisme, en simulation seulement, sur des matrices non verifiees** : ce n'est pas un motif. Sous
+   simulation, le magenta tombe pres du violet du bloc adulte, mais ce bloc ne vit que sur un ecran de jeu et
+   la teinte n'y entre jamais (`APM-5`). Les paires proches entre emplacements sont couvertes par le mot et le
+   pictogramme (`APM-3`). **Je ne declare pas le daltonisme verifie** : personne ne l'a mesure, moi non plus.
+3. **Le contour de l'emplacement 1 (`#2f6c9f`) presque identique a l'accent du bouton (`#2e6f9e`)** :
+   observation neuve et datee de ce jour, **non bloquante** et sans identifiant. Le contour d'accent veut dire
+   "secondaire" sur ce produit ; la tuile Français l'emprunte. Rien d'autre ne les confond sur mon rendu : la
+   tuile a un fond, un pictogramme et un mot, le bouton est vide et porte une icone. Une valeur de contour
+   eloignee de l'accent fermerait la question pour une ligne de donnee ; c'est une proposition a
+   `ines-design`, pas une condition. Je la regarde en jouant.
+4. **Le generateur de maquettes casse (146 jeux servis, 147 attendus) et l'ordre de N5 absent des
+   maquettes** : sans effet sur ce jugement. L'ordre vit dans la donnee servie, que j'ai relue : les onze
+   lignes de `matieres.yaml` sont dans l'ordre de N5.
+5. **Mesures de boites non rejouees** : acceptable. Un SVG de meme `viewBox` et deux couleurs ne deplacent
+   aucune boite ; mes rendus montrent les memes tuiles aux memes places.
+
+### 4. Ce que ce rejugement ne fait pas
+
+Aucun Done pedagogique. `APM-1` et `APM-3` a `APM-11` sont inchangees. Mes points d'audit de la section 6 restent
+entiers ; le point 2 (la teinte qui remplace le gris) porte desormais sur le magenta. Prix : les **0,25**
+annonces en section 7.
