@@ -207,4 +207,52 @@ class PaquetCpRapprocherDeuxOeuvresTest {
 
         assertThat(griefsB3(items)).anyMatch(grief -> grief.contains("n'a pas son sens inverse"));
     }
+
+    // ------------------------------------------------------------------------------------------
+    // B7 : quatre items au moins, six au plus
+    // ------------------------------------------------------------------------------------------
+
+    private static final int ITEMS_AU_MOINS = 4;
+
+    private static final int ITEMS_AU_PLUS = 6;
+
+    /**
+     * B7, le juge : le paquet porte de quatre a six items. Moins de quatre, c'est une seule paire : ce
+     * n'est pas un jeu de rapprochement, et {@code nadia-prof} le refuse sur ce motif. La borne haute ne se
+     * franchit qu'avec de nouvelles paires, donc de nouvelles oeuvres, et reste ecrite par coherence :
+     * trois paires dans les deux sens font six items. {@code nombreDeManches} est juge par ADR-0023.
+     */
+    static List<String> griefsB7(List<Question> items) {
+        if (items.size() < ITEMS_AU_MOINS) {
+            return List.of("B7 : " + items.size() + " item(s), " + ITEMS_AU_MOINS + " au moins : sous ce"
+                    + " nombre, le paquet est une seule paire et non un jeu de rapprochement");
+        }
+        if (items.size() > ITEMS_AU_PLUS) {
+            return List.of("B7 : " + items.size() + " items, " + ITEMS_AU_PLUS + " au plus : trois paires dans"
+                    + " les deux sens, une oeuvre neuve demande une source et une preuve (B4, ADR-0082)");
+        }
+        return List.of();
+    }
+
+    @Test
+    void b7LePaquetPorteDeQuatreASixItems() {
+        assertThat(griefsB7(items())).isEmpty();
+    }
+
+    @Test
+    void unPaquetReduitAUneSeulePaireFaitEchouerLeGardeFou() {
+        List<Question> items = items();
+
+        assertThat(griefsB7(items.subList(0, 2))).hasSize(1).allSatisfy(grief -> assertThat(grief).contains("B7"));
+        assertThat(griefsB7(items.subList(0, ITEMS_AU_MOINS - 1))).hasSize(1);
+        assertThat(griefsB7(items.subList(0, ITEMS_AU_MOINS))).isEmpty();
+    }
+
+    @Test
+    void unPaquetDeSeptItemsFaitEchouerLeGardeFou() {
+        List<Question> items = new ArrayList<>(items());
+        items.add(items.get(0));
+
+        assertThat(griefsB7(items)).hasSize(1).allSatisfy(grief -> assertThat(grief).contains("B7"));
+    }
 }
