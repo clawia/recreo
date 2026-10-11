@@ -1,6 +1,7 @@
 package com.recreo.application.usecase;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.GroupeDeJeux;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.application.port.out.MechanicRegistryPort;
 import com.recreo.domain.content.ContentDescriptor;
@@ -19,6 +20,7 @@ import com.recreo.domain.mechanics.banditmanchot.BanditManchotMove;
 import com.recreo.domain.mechanics.banditmanchot.BanditManchotSession;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Stream;
@@ -158,6 +160,124 @@ class PartieServiceTest {
                 .toList();
 
         assertThat(reunion).containsExactlyInAnyOrderElementsOf(service.jeuxDisponibles());
+    }
+
+    private static GameDefinition jeu(String id, String matiere, String niveau) {
+        ContentDescriptor descripteur = new ContentDescriptor(matiere, niveau, "Un domaine", "une competence");
+        return new GameDefinition(id, "Titre " + id, "Choisis la bonne reponse", BanditManchot.ID,
+                descripteur,
+                new ListContentSource(descripteur, List.of(
+                        new Question(new ItemId("q1"), "un", "1", List.of("2")))),
+                NOMBRE_DE_MANCHES);
+    }
+
+    private static PartieService serviceSur(GameDefinition... jeux) {
+        ContentCatalogPort catalogue = () -> List.of(jeux);
+        MechanicRegistryPort mecaniques = id -> new BanditManchot();
+        return new PartieService(catalogue, mecaniques, TOUJOURS_ZERO);
+    }
+
+    /** ADR-0105 : un groupe par matiere, les jeux du niveau dans l'ordre du catalogue. */
+    @Test
+    void matieresDuNiveauRegroupeLesJeuxDuNiveauParMatiere() {
+        GameDefinition a = jeu("a", "Mathematiques", "CP");
+        GameDefinition b = jeu("b", "Francais", "CP");
+        GameDefinition c = jeu("c", "Mathematiques", "CP");
+
+        assertThat(serviceSur(a, b, c).matieresDuNiveau("CP")).containsExactly(
+                new GroupeDeJeux("Mathematiques", List.of(a, c)),
+                new GroupeDeJeux("Francais", List.of(b)));
+    }
+
+    /**
+     * ADR-0105 : l'ordre des groupes est celui de la premiere apparition de la matiere au catalogue,
+     * ni l'ordre alphabetique ni un ordre ecrit en code. Trois matieres dont l'ordre d'apparition
+     * differe de l'alphabet, dans les deux sens.
+     */
+    @Test
+    void matieresDuNiveauSuitLOrdreDePremiereApparitionEtNonLOrdreAlphabetique() {
+        PartieService service = serviceSur(
+                jeu("a", "Sciences", "CP"), jeu("b", "Francais", "CP"), jeu("c", "Arts", "CP"),
+                jeu("d", "Francais", "CP"), jeu("e", "Sciences", "CP"));
+
+        assertThat(service.matieresDuNiveau("CP")).extracting(GroupeDeJeux::matiere)
+                .containsExactly("Sciences", "Francais", "Arts");
+    }
+
+    /** ADR-0105 : une matiere presente a deux niveaux ne melange pas leurs jeux. */
+    @Test
+    void matieresDuNiveauNeMelangePasLesNiveaux() {
+        GameDefinition cp = jeu("cp", "Francais", "CP");
+        GameDefinition cm1 = jeu("cm1", "Francais", "CM1");
+        PartieService service = serviceSur(cp, cm1);
+
+        assertThat(service.matieresDuNiveau("CM1"))
+                .containsExactly(new GroupeDeJeux("Francais", List.of(cm1)));
+    }
+
+    /** ADR-0044 : un niveau sans jeu rend une liste vide, jamais une valeur sentinelle. */
+    @Test
+    void matieresDuNiveauRendUneListeVidePourUnNiveauSansJeu() {
+        assertThat(serviceSur(jeu("a", "Francais", "CP")).matieresDuNiveau("CM2")).isEmpty();
+    }
+
+    /**
+     * Une partition, pas seulement une inclusion (meme forme que celle de {@code jeuxDuNiveau}) :
+     * chaque jeu d'un niveau est dans exactement un groupe, aucun n'est perdu ni compte deux fois.
+     */
+    @Test
+    void lesGroupesPartitionnentLesJeuxDuNiveau() {
+        PartieService service = serviceSur(
+                jeu("a", "Sciences", "CP"), jeu("b", "Francais", "CP"), jeu("c", "Sciences", "CM1"),
+                jeu("d", "Francais", "CP"), jeu("e", "Arts", "CP"));
+
+        List<GameDefinition> reunion = new ArrayList<>();
+        service.matieresDuNiveau("CP").forEach(groupe -> reunion.addAll(groupe.jeux()));
+
+        assertThat(reunion).containsExactlyInAnyOrderElementsOf(service.jeuxDuNiveau("CP"));
+    }
+
+    /**
+     * ADR-0049 : la matiere est comparee telle que le paquet la declare. Deux graphies font deux
+     * groupes, visibles a l'ecran, plutot qu'une normalisation silencieuse que rien ne garderait.
+     */
+    @Test
+    void uneGraphieDifferenteDeLaMatiereFaitUnGroupeDeCePlus() {
+        PartieService service = serviceSur(jeu("a", "Français", "CP"), jeu("b", "Francais", "CP"));
+
+        assertThat(service.matieresDuNiveau("CP")).extracting(GroupeDeJeux::matiere)
+                .containsExactly("Français", "Francais");
+    }
+
+    @Test
+    void jeuxDeLaMatiereRendLesJeuxDuNiveauEtDeLaMatiereDansLOrdreDuCatalogue() {
+        GameDefinition a = jeu("a", "Francais", "CP");
+        GameDefinition b = jeu("b", "Mathematiques", "CP");
+        GameDefinition c = jeu("c", "Francais", "CP");
+        GameDefinition d = jeu("d", "Francais", "CM1");
+        PartieService service = serviceSur(a, b, c, d);
+
+        assertThat(service.jeuxDeLaMatiere("CP", "Francais")).containsExactly(a, c);
+        assertThat(service.jeuxDeLaMatiere("CM1", "Francais")).containsExactly(d);
+    }
+
+    @Test
+    void jeuxDeLaMatiereRendUneListeVideQuandAucunJeuNeRepond() {
+        PartieService service = serviceSur(jeu("a", "Francais", "CP"));
+
+        assertThat(service.jeuxDeLaMatiere("CP", "Histoire")).isEmpty();
+        assertThat(service.jeuxDeLaMatiere("CM2", "Francais")).isEmpty();
+    }
+
+    /** Le groupe garde la liste qu'il a recue a sa construction : la modifier apres ne le change pas. */
+    @Test
+    void unGroupeDeJeuxCopieLaListeQuOnLuiDonne() {
+        List<GameDefinition> source = new ArrayList<>(List.of(jeu("a", "Francais", "CP")));
+        GroupeDeJeux groupe = new GroupeDeJeux("Francais", source);
+
+        source.add(jeu("b", "Francais", "CP"));
+
+        assertThat(groupe.jeux()).hasSize(1);
     }
 
     @Test

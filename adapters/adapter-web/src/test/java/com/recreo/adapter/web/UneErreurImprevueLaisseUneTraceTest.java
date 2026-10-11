@@ -4,6 +4,7 @@ import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.GroupeDeJeux;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.source.ListContentSource;
@@ -141,6 +142,16 @@ class UneErreurImprevueLaisseUneTraceTest {
                 @Override
                 public List<GameDefinition> jeuxDuNiveau(String niveau) {
                     return jeuxDisponibles();
+                }
+
+                @Override
+                public List<GroupeDeJeux> matieresDuNiveau(String niveau) {
+                    return List.of();
+                }
+
+                @Override
+                public List<GameDefinition> jeuxDeLaMatiere(String niveau, String matiere) {
+                    return List.of();
                 }
 
                 @Override
