@@ -22,9 +22,9 @@ public interface PartieUseCase {
     List<GameDefinition> jeuxDuNiveau(String niveau);
 
     /**
-     * ADR-0105 : les jeux d'un niveau regroupes par matiere, dans l'ordre de premiere apparition de
-     * la matiere au catalogue (rien n'est ecrit en code, l'ordre d'affichage reste a arbitrer par
-     * nadia-prof). Un niveau inconnu rend une liste vide, jamais une valeur sentinelle (ADR-0044).
+     * ADR-0105 : les jeux d'un niveau regroupes par matiere, dans l'ordre des lignes de la donnee de
+     * matiere (ADR-0106, APM-4). Un niveau inconnu rend une liste vide, jamais une valeur sentinelle
+     * (ADR-0044).
      */
     List<GroupeDeJeux> matieresDuNiveau(String niveau);
 

@@ -1,0 +1,13 @@
+matieres:
+  - matiere: "Mathematiques"
+    libelle: "Maths"
+    pictogramme: maths.svg
+    teinteFond: "#f4e3a1"
+    teinteContour: "#7d6208"
+    segment: maths
+  - matiere: "Francais"
+    libelle: "Francais"
+    pictogramme: francais.svg
+    teinteFond: "#cfe3f6"
+    teinteContour: "#2f6c9f"
+    segment: francais

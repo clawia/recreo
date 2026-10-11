@@ -83,7 +83,7 @@ class UneMatiereNAQuUneSeuleGraphieDansLeContenuServiTest {
      * genre passerait. Elle n'est pas invisible pour autant - elle est visible dans le diff du
      * paquet, la ou un blanc de bord ne l'est pas.</p>
      */
-    private static String replie(String matiere) {
+    static String replie(String matiere) {
         String decompose = Normalizer.normalize(matiere, Normalizer.Form.NFD);
         StringBuilder sans = new StringBuilder(decompose.length());
         boolean blancEnAttente = false;

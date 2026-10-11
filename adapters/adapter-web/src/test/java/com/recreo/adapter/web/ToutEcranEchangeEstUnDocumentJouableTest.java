@@ -942,6 +942,147 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 .isFalse();
     }
 
+    // --- ADR-0106 : la teinte de matiere et le pictogramme de matiere sur le document assemble ---
+
+    /** Le marqueur que les six fragments d'ecran de jeu portent (manche, retour, confirmation, erreur...). */
+    private static final String ECRAN_DE_JEU = ".ecran-de-jeu";
+
+    /**
+     * ADR-0106, APM-5 : les seules proprietes qu'un style en ligne declare sur un ecran de jeu, mesure le
+     * 2026-10-11 : un seul attribut style dans les gabarits, le cadre d'une zone de designation. Liste
+     * permise et non liste de refus : une teinte de matiere, qu'elle soit ecrite en propriete
+     * personnalisee ({@code --teinte-fond}) ou en couleur, en sort par defaut.
+     */
+    private static final Set<String> STYLE_PERMIS_SUR_UN_ECRAN_DE_JEU = Set.of("left", "top", "width", "height");
+
+    /** ADR-0106 : le repertoire servi des pictogrammes de matiere. */
+    private static final String PICTOGRAMME_DE_MATIERE = "img[src*=/images/matieres/]";
+
+    static List<String> stylesHorsGeometrieSurUnEcranDeJeu(Document document) {
+        List<String> griefs = new ArrayList<>();
+        if (document.select(ECRAN_DE_JEU).isEmpty()) {
+            return griefs;
+        }
+        for (Element porteur : document.select("[style]")) {
+            for (String declaration : porteur.attr("style").split(";")) {
+                String propriete = declaration.contains(":")
+                        ? declaration.substring(0, declaration.indexOf(':')).strip().toLowerCase(java.util.Locale.ROOT)
+                        : declaration.strip();
+                if (!propriete.isEmpty() && !STYLE_PERMIS_SUR_UN_ECRAN_DE_JEU.contains(propriete)) {
+                    griefs.add("<" + porteur.tagName() + " class=\"" + porteur.className() + "\"> declare "
+                            + declaration.strip());
+                }
+            }
+        }
+        return griefs;
+    }
+
+    static void verifierAucuneTeinteSurUnEcranDeJeu(List<Ecran> ecrans) {
+        for (Ecran ecran : ecrans) {
+            assertThat(stylesHorsGeometrieSurUnEcranDeJeu(ecran.document()))
+                    .as("ADR-0106, APM-5 : la teinte de matiere n'entre sur aucun ecran de jeu ; sur l'ecran "
+                            + "\"%s\" (%s), un style en ligne declare autre chose que la geometrie d'une zone",
+                            ecran.nom(), ecran.route())
+                    .isEmpty();
+        }
+    }
+
+    @Test
+    void aucunEcranDeJeuNePorteUneTeinteDeMatiere() throws Exception {
+        List<Ecran> ecrans = ecrans();
+        assertThat(ecrans).as("ADR-0003 : aucun ecran de jeu dans le corpus, la clause APM-5 serait vide")
+                .anyMatch(ecran -> !ecran.document().select(ECRAN_DE_JEU).isEmpty());
+        assertThat(ecrans).as("ADR-0003 : la liste permise n'est exercee par aucun style en ligne")
+                .anyMatch(ecran -> !ecran.document().select(ECRAN_DE_JEU + " [style]").isEmpty());
+
+        verifierAucuneTeinteSurUnEcranDeJeu(ecrans);
+    }
+
+    /** Sur la sortie reelle : la teinte posee sur la manche, comme sur une tuile de l'accueil. */
+    @Test
+    void uneTeinteDeMatierePoseeSurUneMancheFaitEchouerLaClauseAPM5() throws Exception {
+        Ecran manche = ecrans().stream().filter(candidat -> candidat.nom().equals("manche 1"))
+                .findFirst().orElseThrow();
+        manche.document().selectFirst(ECRAN_DE_JEU)
+                .attr("style", "--teinte-fond: #cfe3f6; --teinte-contour: #2f6c9f");
+
+        assertThatThrownBy(() -> verifierAucuneTeinteSurUnEcranDeJeu(List.of(manche)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("APM-5")
+                .hasMessageContaining("--teinte-fond");
+    }
+
+    /**
+     * ADR-0106, APM-3 : un pictogramme de matiere a un texte alternatif vide et un voisin de texte non
+     * vide dans son parent - le mot est le nom accessible ; aucune image dans une carte de jeu ni dans
+     * une puce de niveau ({@code BARRE-4}).
+     */
+    static List<String> pictogrammesQuiParlentOuSontSeuls(Document document) {
+        List<String> griefs = new ArrayList<>();
+        for (Element image : document.select(".demarrer img, .demarrer svg, .chip-niveau img, .chip-niveau svg")) {
+            griefs.add("une image dans une carte de jeu ou une puce de niveau : " + image.outerHtml());
+        }
+        for (Element pictogramme : document.select(PICTOGRAMME_DE_MATIERE)) {
+            if (!pictogramme.hasAttr("alt") || !pictogramme.attr("alt").isEmpty()) {
+                griefs.add("un pictogramme de matiere porte un texte alternatif non vide : " + pictogramme.outerHtml());
+            }
+            Element parent = pictogramme.parent();
+            if (parent == null || parent.text().isBlank()) {
+                griefs.add("un pictogramme de matiere sans texte a cote de lui : "
+                        + (parent == null ? pictogramme.outerHtml() : parent.outerHtml()));
+            }
+        }
+        return griefs;
+    }
+
+    static void verifierQueLePictogrammeNEstJamaisSeul(List<Ecran> ecrans) {
+        for (Ecran ecran : ecrans) {
+            assertThat(pictogrammesQuiParlentOuSontSeuls(ecran.document()))
+                    .as("ADR-0106, APM-3 : sur l'ecran \"%s\" (%s)", ecran.nom(), ecran.route())
+                    .isEmpty();
+        }
+    }
+
+    @Test
+    void lePictogrammeDeMatiereNEstJamaisSeulEtNeParlePas() throws Exception {
+        List<Ecran> ecrans = ecrans();
+        assertThat(ecrans).as("ADR-0003 : aucune carte de jeu ni puce de niveau dans le corpus")
+                .anyMatch(ecran -> !ecran.document().select(".demarrer").isEmpty())
+                .anyMatch(ecran -> !ecran.document().select(".chip-niveau").isEmpty());
+
+        verifierQueLePictogrammeNEstJamaisSeul(ecrans);
+    }
+
+    /**
+     * Cliquet de vacuite, ADR-0106 : aucun ecran ne montre encore de pictogramme de matiere, donc la
+     * seconde moitie d'APM-3 ne juge rien sur la production. Le lot qui pose les tuiles et les bandeaux
+     * (P4) fait rougir cette clause, et la remplace dans le meme commit par l'exigence inverse : au moins un
+     * pictogramme sur un ecran de V2, de l'etage 1 et de l'etage 2.
+     */
+    @Test
+    void aucunPictogrammeDeMatiereNEstEncoreServi() throws Exception {
+        assertThat(ecrans()).as("ADR-0106 : un pictogramme de matiere est servi ; remplace ce cliquet par la "
+                        + "non-vacuite de la clause APM-3 (voir sa Javadoc)")
+                .allMatch(ecran -> ecran.document().select(PICTOGRAMME_DE_MATIERE).isEmpty());
+    }
+
+    /** Sur l'accueil reel : une tuile dont le pictogramme parle et se tient seul, et une carte imagee. */
+    @Test
+    void unPictogrammeSeulOuQuiParleFaitEchouerLaClauseAPM3() throws Exception {
+        Ecran accueil = ecrans().get(0);
+        accueil.document().selectFirst("#jeu").append(
+                "<a href=\"/niveaux/CP/matieres/francais\"><img src=\"/images/matieres/francais.svg\" "
+                        + "alt=\"Français\"></a>");
+        accueil.document().selectFirst(".demarrer").prepend("<img src=\"/images/matieres/francais.svg\" alt=\"\">");
+
+        assertThatThrownBy(() -> verifierQueLePictogrammeNEstJamaisSeul(List.of(accueil)))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("APM-3")
+                .hasMessageContaining("texte alternatif non vide")
+                .hasMessageContaining("sans texte a cote de lui")
+                .hasMessageContaining("une carte de jeu ou une puce de niveau");
+    }
+
     /** Le corpus doit vraiment contenir des ecrans a juger, sinon les deux clauses passent a vide. */
     @Test
     void leCorpusDEcransNEstPasVide() throws Exception {

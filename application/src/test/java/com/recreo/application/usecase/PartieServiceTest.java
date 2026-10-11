@@ -2,6 +2,7 @@ package com.recreo.application.usecase;
 
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.catalog.GroupeDeJeux;
+import com.recreo.application.catalog.Matiere;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.application.port.out.MechanicRegistryPort;
 import com.recreo.domain.content.ContentDescriptor;
@@ -171,8 +172,24 @@ class PartieServiceTest {
                 NOMBRE_DE_MANCHES);
     }
 
+    /** ADR-0106 : un catalogue de test qui porte aussi la donnee de matiere. */
+    private record CatalogueAvecMatieres(List<GameDefinition> games, List<Matiere> matieres)
+            implements ContentCatalogPort {
+    }
+
+    private static Matiere ligne(String nom) {
+        return new Matiere(nom, nom, "picto.svg", "#cfe3f6", "#2f6c9f", "segment");
+    }
+
+    /** Une ligne par matiere des jeux, dans leur ordre d'apparition : les tests de regroupement. */
     private static PartieService serviceSur(GameDefinition... jeux) {
-        ContentCatalogPort catalogue = () -> List.of(jeux);
+        List<String> matieres = Stream.of(jeux).map(jeu -> jeu.descripteur().matiere()).distinct().toList();
+        return serviceSur(matieres, jeux);
+    }
+
+    private static PartieService serviceSur(List<String> lignesDeMatiere, GameDefinition... jeux) {
+        ContentCatalogPort catalogue = new CatalogueAvecMatieres(List.of(jeux),
+                lignesDeMatiere.stream().map(PartieServiceTest::ligne).toList());
         MechanicRegistryPort mecaniques = id -> new BanditManchot();
         return new PartieService(catalogue, mecaniques, TOUJOURS_ZERO);
     }
@@ -190,18 +207,29 @@ class PartieServiceTest {
     }
 
     /**
-     * ADR-0105 : l'ordre des groupes est celui de la premiere apparition de la matiere au catalogue,
-     * ni l'ordre alphabetique ni un ordre ecrit en code. Trois matieres dont l'ordre d'apparition
-     * differe de l'alphabet, dans les deux sens.
+     * ADR-0106, APM-4 : l'ordre des groupes est celui des lignes de la donnee de matiere, ni l'ordre
+     * d'apparition au catalogue (Sciences, Francais, Arts) ni l'alphabet (Arts, Francais, Sciences).
      */
     @Test
-    void matieresDuNiveauSuitLOrdreDePremiereApparitionEtNonLOrdreAlphabetique() {
-        PartieService service = serviceSur(
+    void matieresDuNiveauSuitLOrdreDesLignesDeMatiere() {
+        PartieService service = serviceSur(List.of("Francais", "Sciences", "Arts", "Musique"),
                 jeu("a", "Sciences", "CP"), jeu("b", "Francais", "CP"), jeu("c", "Arts", "CP"),
                 jeu("d", "Francais", "CP"), jeu("e", "Sciences", "CP"));
 
         assertThat(service.matieresDuNiveau("CP")).extracting(GroupeDeJeux::matiere)
-                .containsExactly("Sciences", "Francais", "Arts");
+                .containsExactly("Francais", "Sciences", "Arts");
+    }
+
+    /** ADR-0106, APM-1 : une matiere servie sans ligne n'est pas servie sous un libelle de repli. */
+    @Test
+    void uneMatiereServieSansLigneFaitEchouerLeRegroupementEnSeNommant() {
+        PartieService service = serviceSur(List.of("Francais"),
+                jeu("a", "Francais", "CP"), jeu("b", "Sciences", "CP"));
+
+        assertThatThrownBy(() -> service.matieresDuNiveau("CP"))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("ADR-0106")
+                .hasMessageContaining("\"Sciences\"");
     }
 
     /** ADR-0105 : une matiere presente a deux niveaux ne melange pas leurs jeux. */

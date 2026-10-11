@@ -100,6 +100,16 @@ class AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest {
     private static final String CLE_ITEMS = "items";
     private static final String CLE_ILLUSTRATION = "illustration";
 
+    /**
+     * ADR-0106 : la donnee de matiere se reconnait a sa cle, comme le catalogue. Le segment d'adresse
+     * n'y est pas juge, et c'est mesure le 2026-10-11 sur la production des cinq modules : "francais"
+     * figure dans 5 fichiers et "sport" dans 10 ("transport"), en prose comme dans des mots, la faute
+     * de s05 si on les jugeait par sous-chaine.
+     */
+    private static final String CLE_MATIERES = "matieres";
+    private static final List<String> CHAMPS_DE_MATIERE_JUGES =
+            List.of("matiere", "libelle", "pictogramme", "teinteFond", "teinteContour");
+
     /** ADR-0013 obligation 3 : le jeu fautif commite de ce garde-fou. */
     private static final Path CONTRE_EXEMPLE = Path.of("src", "test", "resources", "contreexemple",
             "AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest");
@@ -109,7 +119,8 @@ class AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest {
         JEU_DU_CATALOGUE("identifiant de jeu du catalogue"),
         PAQUET_D_UNE_ENTREE("paquet d'une entree de catalogue"),
         PAQUET_SERVI("identifiant d'un paquet servi"),
-        ILLUSTRATION_D_ITEM("illustration declaree par un item");
+        ILLUSTRATION_D_ITEM("illustration declaree par un item"),
+        DONNEE_DE_MATIERE("valeur de la donnee de matiere, ADR-0106");
 
         private final String libelle;
 
@@ -178,6 +189,15 @@ class AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest {
                         if (jeu instanceof Map<?, ?> entree) {
                             ajouter(identifiants, entree.get(CLE_ID), Genre.JEU_DU_CATALOGUE, nom);
                             ajouter(identifiants, entree.get(CLE_PAQUET), Genre.PAQUET_D_UNE_ENTREE, nom);
+                        }
+                    }
+                    continue;
+                }
+                if (corps.get(CLE_MATIERES) instanceof List<?> lignes) {
+                    for (Object ligne : lignes) {
+                        if (ligne instanceof Map<?, ?> champs) {
+                            CHAMPS_DE_MATIERE_JUGES.forEach(champ ->
+                                    ajouter(identifiants, champs.get(champ), Genre.DONNEE_DE_MATIERE, nom));
                         }
                     }
                     continue;
@@ -576,6 +596,34 @@ class AucunGabaritNiFeuilleMaisonNeNommeUnContenuParticulierTest {
         assertThat(identifiants).extracting(IdentifiantDeContenu::genre)
                 .as("ADR-0094 : les identifiants juges sont ceux du catalogue, des paquets et des"
                         + " illustrations - un genre absent serait un pan du perimetre non juge")
-                .contains(Genre.JEU_DU_CATALOGUE, Genre.PAQUET_D_UNE_ENTREE, Genre.ILLUSTRATION_D_ITEM);
+                .contains(Genre.JEU_DU_CATALOGUE, Genre.PAQUET_D_UNE_ENTREE, Genre.ILLUSTRATION_D_ITEM,
+                        Genre.DONNEE_DE_MATIERE);
+    }
+
+    /**
+     * <b>Morsure 6 (ADR-0106, APM-5).</b> La feuille maison recoit la regle par emplacement que la
+     * proposition d'ines-design ecrivait ({@code [data-teinte="1"]}), avec la teinte reelle lue dans la
+     * donnee de matiere : c'est le chemin le moins cher d'une couleur par matiere, et il ferait d'une
+     * matiere neuve une modification de feuille (ADR-0006). La teinte vit dans la donnee, et nulle part
+     * ailleurs.
+     */
+    @Test
+    void uneFeuilleMaisonQuiEcritUneTeinteDeMatiereFaitEchouerLeGardeFou() {
+        Path racine = LesGardeFousSontMisALEpreuveTest.racineDuDepot();
+        List<IdentifiantDeContenu> identifiants = identifiants(ressourcesDeProduction(racine));
+        String teinte = identifiants.stream()
+                .filter(identifiant -> identifiant.genre() == Genre.DONNEE_DE_MATIERE)
+                .map(IdentifiantDeContenu::valeur)
+                .filter(valeur -> valeur.startsWith("#"))
+                .findFirst().orElseThrow(() -> new IllegalStateException("aucune teinte de matiere derivee"));
+        List<SourceJugee> population = populationDeProduction(racine);
+        SourceJugee mutee = muter(population, Nature.FEUILLE,
+                "\n[data-teinte=\"1\"] { --teinte-fond: " + teinte + "; }\n");
+
+        assertThatThrownBy(() -> verifier(population, identifiants))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining(teinte)
+                .hasMessageContaining("ADR-0106")
+                .hasMessageContaining(mutee.chemin());
     }
 }

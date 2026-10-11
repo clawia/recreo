@@ -1,0 +1,74 @@
+# ADR-0106 : une ligne par matiere servie. "matiere" est la valeur exacte du descripteur des paquets
+# (ADR-0049). L'ordre des lignes est l'ordre d'affichage, le meme a tous les niveaux et dans les deux
+# vues (N5 et APM-4 de nadia-prof). Libelles : N1 et APM-1. Pictogrammes : fichiers de
+# adapter-web/src/main/resources/static/images/matieres/, N2 et APM-2. Teintes : N6, APM-5 et APM-6.
+# Deux valeurs attendent un arbitrage : le pictogramme de Maths (APM-2) et la teinte de Histoire des
+# arts (APM-6) ; ChaqueMatiereServieASaLigneDeMatiereTest et LePictogrammeDeMatiereEstUnFichierArbitreTest
+# les nomment dans un cliquet exact.
+matieres:
+  - matiere: "Français"
+    libelle: "Français"
+    pictogramme: francais.svg
+    teinteFond: "#cfe3f6"
+    teinteContour: "#2f6c9f"
+    segment: francais
+  - matiere: "Mathématiques"
+    libelle: "Maths"
+    pictogramme: mathematiques.svg
+    teinteFond: "#f4e3a1"
+    teinteContour: "#7d6208"
+    segment: maths
+  - matiere: "Questionner le monde"
+    libelle: "Questionner le monde"
+    pictogramme: questionner-le-monde.svg
+    teinteFond: "#d4ecc0"
+    teinteContour: "#4a7a1c"
+    segment: questionner-le-monde
+  - matiere: "Sciences et technologie"
+    libelle: "Sciences"
+    pictogramme: sciences.svg
+    teinteFond: "#bfe8e4"
+    teinteContour: "#1f7770"
+    segment: sciences
+  - matiere: "Histoire-géographie"
+    libelle: "Histoire-géographie"
+    pictogramme: histoire-geographie.svg
+    teinteFond: "#e8d6bf"
+    teinteContour: "#7a5230"
+    segment: histoire-geographie
+  - matiere: "Enseignement moral et civique"
+    libelle: "Vivre ensemble"
+    pictogramme: emc.svg
+    teinteFond: "#f6cde0"
+    teinteContour: "#a03a6b"
+    segment: vivre-ensemble
+  - matiere: "Langues vivantes (anglais)"
+    libelle: "Anglais"
+    pictogramme: langues-vivantes.svg
+    teinteFond: "#f8d3c2"
+    teinteContour: "#a5472a"
+    segment: anglais
+  - matiere: "Arts plastiques"
+    libelle: "Arts plastiques"
+    pictogramme: arts-plastiques.svg
+    teinteFond: "#e2d4f3"
+    teinteContour: "#6e4ba3"
+    segment: arts-plastiques
+  - matiere: "Éducation musicale"
+    libelle: "Musique"
+    pictogramme: education-musicale.svg
+    teinteFond: "#d2d6f6"
+    teinteContour: "#4a50a8"
+    segment: musique
+  - matiere: "Histoire des arts"
+    libelle: "Histoire des arts"
+    pictogramme: histoire-des-arts.svg
+    teinteFond: "#d8dde4"
+    teinteContour: "#4a5a6b"
+    segment: histoire-des-arts
+  - matiere: "Éducation physique et sportive"
+    libelle: "Sport"
+    pictogramme: eps.svg
+    teinteFond: "#fbdcb4"
+    teinteContour: "#a35a0b"
+    segment: sport
