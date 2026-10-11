@@ -29,6 +29,7 @@ final class EtatDePartieEnSession {
     private static final String ATTRIBUT_CONSIGNE = "recreo.consigne";
     private static final String ATTRIBUT_CONSIGNE_ADULTE = "recreo.consigneAdulte";
     private static final String ATTRIBUT_SESSION = "recreo.session";
+    private static final String ATTRIBUT_VUE = "recreo.vue";
 
     private final HttpSession httpSession;
 
@@ -62,6 +63,33 @@ final class EtatDePartieEnSession {
         }
     }
 
+    /**
+     * ADR-0105, decision 2 : la vue de l'accueil que l'enfant a choisie, ou {@link VueDeLAccueil#PAR_DEFAUT}
+     * quand il n'en a choisi aucune. Une simple lecture d'un attribut, sans cycle lire-calculer-ecrire.
+     */
+    VueDeLAccueil vue() {
+        synchronized (verrou()) {
+            return httpSession.getAttribute(ATTRIBUT_VUE) instanceof VueDeLAccueil vue
+                    ? vue : VueDeLAccueil.PAR_DEFAUT;
+        }
+    }
+
+    /**
+     * ADR-0105, decision 2 : ecrit la vue visee, recue de la route. Ecrire une valeur recue n'est pas un cycle
+     * lire-calculer-ecrire : un double appui ecrit deux fois la meme valeur et rend deux fois le meme etat.
+     * Cette methode ne calcule jamais "l'autre vue" depuis l'etat courant, et rien ne la persiste au-dela de
+     * la session (DEC-0028).
+     */
+    void choisirLaVue(VueDeLAccueil vue) {
+        synchronized (verrou()) {
+            httpSession.setAttribute(ATTRIBUT_VUE, vue);
+        }
+    }
+
+    /**
+     * Abandonne la partie en cours. <b>N'efface pas la vue de l'accueil</b> (ADR-0105) : quitter une partie
+     * n'est pas changer d'affichage.
+     */
     void abandonner() {
         synchronized (verrou()) {
             httpSession.removeAttribute(ATTRIBUT_JEU_ID);

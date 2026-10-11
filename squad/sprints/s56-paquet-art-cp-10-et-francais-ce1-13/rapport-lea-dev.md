@@ -509,3 +509,52 @@ Mesure : l'entree retiree, rien d'autre, `bash outils/mvn-jdk21.sh -B clean veri
 
 En verifiant le jar, j'ai lance `java -jar ... --server.port=18081` : le port etait **deja pris par un processus qui n'est pas le mien** (mon jar a refuse de demarrer, *"Port 18081 was already in use"*), et mes requetes ont atteint ce processus-la, un jar plus ancien qui servait encore le jeu. **Je l'ai ensuite arrete par PID** (48200), croyant arreter le mien : j'ai tue le processus d'un autre. Je ne sais pas qui il servait. J'ai
 refait la verification sur un port libre (28931), arrete cette fois par le PID que le journal de demarrage de mon propre jar donne (65248). Les mesures de 14.3 sont celles de ce second jar.
+
+## 15. Accueil par matiere, poste P2 : le choix de vue en session (hors sprint, `DEC-0117`, `ADR-0105` ; branche `lea-accueil-p2`, base `round-two` a `aa99f18d`)
+
+Source : `squad/sprints/hors-sprint-accueil-vues/avis-faisabilite.md` (F6, section 4 bis, poste `P2` de la section 7) et `ADR-0105`, decision 2. **JDK 21.0.10** (`java.version` du rapport Surefire, enveloppe `bash outils/mvn-jdk21.sh`).
+Je n'ai touche ni gabarit, ni feuille de style, ni `PartieService`, ni le port entrant (`P1`, `marc-dev`), ni `PartieController`.
+
+### 15.1 Ce qui est livre
+
+- **`VueDeLAccueil`** (`adapter-web`) : l'enumeration `V1` (deux etages) et `V2` (vue unique groupee par matiere), **`PAR_DEFAUT = V2`** (decision de l'utilisatrice). Une presentation de l'adaptateur, pas une donnee de contenu : `ADR-0006` ne s'y applique pas.
+  `depuis(String)` lit le segment qu'une route portera (`V1`, `v2`, sinon vide : l'appelant refuse la requete, il ne choisit pas a la place de l'enfant).
+- **`EtatDePartieEnSession`**, le seul type qui touche la session (`ADR-0019`, `AccesALEtatDeSessionTest` inchange) : `vue()` (attribut `recreo.vue`, absent = `PAR_DEFAUT`) et `choisirLaVue(VueDeLAccueil)`.
+  **L'ecriture recoit la vue visee** : elle ne lit pas l'etat courant et ne calcule jamais l'autre vue ; un double appui ecrit deux fois la meme valeur. Les deux methodes s'executent sous le verrou de la session, comme les autres.
+  **`abandonner()` n'efface pas la vue** (javadoc de la methode et test) ; `demarrer()` non plus.
+- **Rien n'est persiste** : le porteur n'ecrit que dans la session, jamais dans une reponse ; aucun cookie, aucun stockage client. Les regles qui le gardent sont celles d'`ADR-0105` (regle 2, `LeSeulCookieEstLeMarqueurDePartieTest` ; regle 3, `FrontieresDuJavaScriptTest`),
+  deja fusionnees : je n'en ecris aucune.
+- **Pas de route dans ce commit.** La route `POST /vue/{vue}` (et `POST /niveaux/{niveau}/vue/{vue}`) est au poste `P4` de l'avis : une route neuve fait rougir `ToutEcranEchangeEstUnDocumentJouableTest.chaqueRouteDuControleurEstExerceeParCeGardeFou` et son homologue tant qu'aucun ecran ne l'exerce (F10),
+  et elle demande les gabarits. L'API du porteur est faite pour elle : une route qui porte la vue visee appelle `choisirLaVue(vue)`.
+- **Jeu fautif commite (`ADR-0013`)** : aucun. Le test ne lit pas `src/main/` et ne balaie aucun artefact de production ; il mord le porteur lui-meme, par mutation.
+
+### 15.2 Tests : `VueDeLAccueilEnSessionTest` (9 tests)
+
+Valeur par defaut `V2` ; vue relue par un autre porteur de la meme session ; ecrire deux fois la meme vue rend deux fois le meme etat (double appui) ; l'ecriture ne depend pas de la vue courante (depuis `V1` comme depuis `V2`, viser `V1` donne `V1`) ;
+`abandonner()` n'efface pas la vue (avec une partie reellement en cours) ; `demarrer()` ne touche pas la vue ; une session neuve retrouve `V2` ; une session invalidee ne porte plus l'attribut `recreo.vue` et rend `V2` (DEC-0028) ; `depuis` n'accepte que `V1` et `V2`.
+
+### 15.3 Mutations sur le fichier reel
+
+Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test -Dmaven.test.failure.ignore=true -Dtest=VueDeLAccueilEnSessionTest -Dsurefire.failIfNoSpecifiedTests=false` (perimetre : `adapter-web` avec `-am`, une classe nommee) ;
+fichier restaure apres chaque mesure (`git status --short` ne montre que les trois fichiers du commit).
+
+| # | Mutation | Echecs |
+|---|---|---|
+| M1 | `abandonner()` retire aussi `recreo.vue` | `abandonnerNEffacePasLaVue` |
+| M2 | `PAR_DEFAUT = V1` | `uneSessionQuiNAPasChoisiPorteLaVueParDefautV2`, `uneSessionInvalideeNePorteQueLaVueParDefaut`, `uneSessionNeuveRetrouveLaVueParDefaut` |
+| M3 | `choisirLaVue` ecrit l'**autre** vue, calculee depuis l'etat courant (la bascule que `ADR-0105` refuse) | `lEcritureNeDependPasDeLaVueCourante`, `ecrireDeuxFoisLaMemeVueRendDeuxFoisLeMemeEtat` |
+| M4 | `demarrer()` retire `recreo.vue` | `demarrerUnePartieNeToucheQueLaPartieEtPasLaVue` |
+
+### 15.4 Delta de tests, jobs
+
+- **+9 tests** (tous adapter-web) ; sur `aa99f18d` : 120 + 18 + 445 + 1470 + 353 + 6 = 2412 (worktree jetable, `verify` racine) ; sur mon arbre : 120 + 18 + 454 + 1470 + 353 + 6 = 2421. Le total apres fusion est a `sofia-sm`.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl` : `BUILD SUCCESS`, 0 echec, 0 erreur.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `aa99f18d..HEAD` ; **`chemins`** : `verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh` ; **`outils`** : les dix juges `*-test.sh` et `*-test.py` : exit 0 chacun.
+  Non lance : l'etape `mvn -B -pl bootstrap -am package` et la plage `BASE..SHA` de GitHub.
+- **Aucun jar lance** : ce commit ne sert aucune route ni aucun ecran, il n'y a rien a jouer. Le premier endroit ou je lancerai le jar est `P4` ; port libre verifie par `netstat` et PID lu dans mon journal, comme demande.
+
+### 15.5 Ce qui n'est pas verifie, et ce qui reste
+
+- **La concurrence du porteur** : les deux methodes prennent le verrou de la session comme les autres, et la preuve d'exclusion mutuelle d'`ADR-0019` (`EtatDePartieEnSessionTest`) ne porte que sur les coups de partie ; je n'ai pas de test a deux fils pour la vue (une ecriture d'une valeur recue n'a pas de cycle a perdre).
+- **`P4`** : la route `POST /vue/{vue}` et `POST /niveaux/{niveau}/vue/{vue}`, rendue en reprenant l'ecran de la route de contexte (F7, F9), sans jamais abandonner une partie ; le segment des routes (`V1`/`V2` ou des noms) est a fixer avec les gabarits ; le corpus des deux garde-fous de routes ; les gabarits des deux vues et la feuille, apres l'arbitrage de `nadia-prof` et la proposition d'`ines-design`.
+- Le nom `EtatDePartieEnSession` dit mal qu'il porte maintenant un etat d'affichage : `ADR-0105` le dit et ne le renomme pas tant qu'un seul attribut non lie a la partie y vit.
