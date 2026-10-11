@@ -21320,3 +21320,33 @@ Chaque critere reprend les mots de `nadia-prof` (regle de ce backlog : un criter
 ### Ce que cette annotation ne fait pas
 
 Elle n'engage aucune de ces stories (c'est la `DEC` d'ouverture de s57), ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni fiche, ni code, ni planning de s57. Elle ne tranche pas le sort de l'entree de catalogue : c'est `Q-U3` de s56, a l'utilisatrice.
+
+
+## Reponses de l'utilisatrice du 2026-10-11 : `Q4`, `Q3`, `Q6` (s56, apres la cloture, `camille-po`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; les lignes remplacees sont nommees. Forme 2 de `DEC-0062` (`de l'utilisatrice`, mots cites, date), recue par l'agent lanceur qui atteste des reponses directes ; je ne les ai pas lues de sa main (`DEC-0116` A.21). Mots : **"D2 ordre ok"**, **"D3 deux instances de nadia"**, **"D4 non"**. Le rattachement a `Q4`, `Q3`, `Q6` est celui de l'agent lanceur ; `D2` et `D4` designaient d'autres questions le 2026-10-09 (annotation du 2026-10-09 de ce fichier). Decision et lectures : `DEC-0116` A.21 a A.25. **`DEC-0116` reste `Proposee`** : `Q4` ne la fait pas passer a `Acceptee`, la lecture de `DEC-0114` 0.4 (a) n'etant pas sans doute (`DEC-0116` A.22).
+
+### Ce qui change dans la section "Cloture de s56"
+
+**Remplace**, dans "Candidat de s57 : sciences CM1", le paragraphe "Postes connus pour s57, sans composition" (sa derniere phrase : *"`Q3` sans reponse : une instance de francais CE1 (trois lots au plus). `Q6` sans reponse : `FRA-CM1-01` hors composition. `Q4` sans reponse : l'ordre des matieres n'est pas decide."*) par :
+
+- **`Q4`** : l'ordre de `DEC-0115` section 3 est suivi pour s57, sans modification ; la decision d'ouverture de s57 le reprend sous des motifs de forme 1 par rang si elle veut passer `DEC-0116` a `Acceptee` (`DEC-0116` A.22). Rang 1 : francais CE1. Rang 2 : epuise. **Rang 3 (`G7` a `G11`) : vide pour s57**, sauf nouvel arbitrage de `nadia-prof`. Rang 4 : `G3`/`G4`, ne ferment aucune ligne.
+- **`Q3`** : deux instances de francais CE1 a partir de s57 (lecture de l'agent lanceur). **Prerequis de s57, a placer par la `DEC` d'ouverture** : l'accord de `nadia-prof` sur `PAR-2` ; l'amendement d'`ADR-0065` par `theo-archi`, fusionne avant tout lot de la seconde instance (story `S57-ADR-0065-DEUX-INSTANCES` ci-dessous) ; le budget de `PAR-9` (somme des budgets par instance = 8,0, soit 4,0 chacune pour deux, 3,0 hors arbitrage et marge) ; `A10` seulement si une **troisieme** instance est proposee. **Non tranche** : le compte des instances de s57, la reprise du paquet d'`ART-CP-10` (0,5) et `S54-OBS-SCI-CONSIGNE` etant a l'instance B (`PAR-2`) ; A, A' et B font trois.
+- **`Q6`** : `FRA-CM1-01` (`cm1-lire-et-restituer`) n'entre pas en s57 ; `A15` reste non engagee, ni report ni dette ; la ligne reste `non couvert` (142 / 182).
+- **Le calcul de s58 pour 10 lots** (`proposition-s56.md`) suppose la seconde instance active des s57 ; si l'amendement d'`ADR-0065` decale son premier lot a s58, le dixieme lot tombe a s59 (`DEC-0116` A.23). Postes de s57 deja chiffres par `nadia-prof`, hors tout lot neuf : reprise du paquet d'`ART-CP-10` 0,5, `VSJ-CE1-R1` 0,5.
+
+### S57-ADR-0065-DEUX-INSTANCES - amender `ADR-0065` pour que deux instances de francais CE1 ne l'amendent pas en meme temps (transverse, hors `PAR`, non engagee)
+
+- **Besoin** : transverse - pas de contenu pedagogique. Besoin de la squad : que deux instances qui ecrivent chacune des lots de francais CE1 ne modifient pas la meme liste de mots du meme test au meme moment. L'enfant n'en voit rien.
+- **Source, mots de `theo-archi`** (`avis-faisabilite.md` de s56, section 9, qui reprend l'avis de s55, T5) : *"un amendement d'`ADR-0065` et de `AucunMotServiNeSEcarteDeSonAccentTest` est une story de `theo-archi`, une a la fois, fusionnee avant tout lot qui en depend ; le lot de la seconde instance attend. Ce n'est pas encodable en `ArchRule` [...] ; le seul automate est le conflit de fusion sur ce fichier de test, qui signale la collision sans l'empecher"*. **La forme de l'amendement est a `theo-archi`** ; je n'en ecris aucune.
+- **Criteres d'acceptation** :
+  - `ADR-0065` porte un amendement date qui dit comment deux instances ajoutent leurs mots sans amender l'`ADR` ni le test en meme temps. **Aujourd'hui** : `grep -c -i 'instance'` sur le fichier de l'`ADR` rend **0** : rouge sur l'existant. Doit rendre au moins 1. C'est un indice de presence, pas un jugement : le contenu est de `theo-archi`.
+  - L'amendement et le test sont modifies dans un seul commit, **avant** le premier commit d'un lot de la seconde instance : `git merge-base --is-ancestor <commit de l'amendement> <premier commit du lot de A'>` sort 0 (sans objet aujourd'hui, aucun des deux commits n'existe).
+  - Aucune regle assouplie : le compte d'`ArchRule` et d'`@ArchTest` ne baisse pas (`confirmation-archunit.md` de s56 : 39 et 36) ; si une regle se deplace, l'amendement le dit.
+  - `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine vert.
+- **Prix** : non pose ; **ni tarif de `nadia-prof`** (hors `PAR`, 0,0 pour elle) **ni estimation de ma part** : a `theo-archi`. **Proprietaire** : aucun a ce jour ; la `DEC` d'ouverture de s57 le nomme, `sofia-sm` l'affecte. **Heure de fusion** : a inscrire au planning de s57 (la story gouverne le premier lot de la seconde instance).
+- **Lien decision** : `DEC-0116` A.23, A.25 ; `DEC-0114` 7.2.
+
+### Ce que cette annotation ne fait pas
+
+Elle n'engage aucune story, n'ecrit pas la `DEC` d'ouverture de s57, ne compose pas s57, ne fixe aucun tarif et ne touche ni matrice, ni catalogue, ni code. Les fichiers de cloture de s56 (`review.md`, `retro.md`, `RAPPORT.md`) disent encore `Q3`, `Q4`, `Q6` sans reponse : ils sont a `sofia-sm`, je ne les corrige pas. Je n'ai trouve aucun fichier de planning previsionnel de s57 (`git grep -i previsionnel -- squad docs` : aucun).
