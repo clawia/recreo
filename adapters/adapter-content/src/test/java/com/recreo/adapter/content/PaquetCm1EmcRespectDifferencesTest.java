@@ -86,6 +86,10 @@ class PaquetCm1EmcRespectDifferencesTest {
                 "item 8 : un distracteur que personne ne croit (PLA-1)");
         TEXTES_REFUSES.put("Cela concerne la valeur et les droits de chaque personne.",
                 "item 8 : l'indice redit la bonne reponse (s53, section 4.1)");
+        TEXTES_REFUSES.put("Cherche le motif qui parle du jeu.",
+                "item 10 : l'indice designe la seule proposition qui contient son mot (EMC-CM1-R8, s55)");
+        TEXTES_REFUSES.put("Cherche le motif qui parle de ce qui s'est déjà passé.",
+                "item 11 : l'indice designe la seule proposition qui contient son mot (EMC-CM1-R8, s55)");
     }
 
     /** EMC-1, EMC-8 : aucune adresse a l'enfant, en mot entier. */
@@ -233,6 +237,20 @@ class PaquetCm1EmcRespectDifferencesTest {
     void aucunTexteRefuseParNadiaProfNeRevient() {
         List<Question> items = items();
         TEXTES_REFUSES.forEach((refuse, motif) -> verifierQueLeTexteRefuseNeRevientPas(items, refuse, motif));
+    }
+
+    /**
+     * EMC-CM1-R8 : les deux indices de la fiche, mot pour mot ({@code FICHE-bandit-manchot-respect-
+     * differences-cm1.md}, section 5). Chacun dit ce qu'est un motif valable sans contenir un mot propre
+     * a la bonne reponse de son item.
+     */
+    @Test
+    void lesIndicesDesItems10Et11SontCeuxDeLaFicheDeNadiaProf() {
+        List<String> indices = items().stream().map(item -> item.indice().orElse("")).toList();
+
+        assertThat(indices)
+                .contains("Un motif valable ne parle pas de l'élève lui-même.")
+                .contains("Un motif valable pourrait concerner n'importe quel élève.");
     }
 
     @Test

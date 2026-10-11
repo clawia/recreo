@@ -5,7 +5,9 @@ type: question
 # porte un defaut que le test doit refuser : l'item 4 d'avant la correction de s55 (le relais, une
 # capacite attribuee a l'enfant en fauteuil roulant, EMC-4), les textes de l'item 7 (indice qui
 # redit la reponse) et de l'item 8 (distracteur que personne ne croit, indice qui redit la
-# reponse) refuses par nadia-prof, et un texte qui s'adresse a l'enfant (EMC-1, EMC-8). Aucune
+# reponse) refuses par nadia-prof, les deux indices d'avant EMC-CM1-R8 (items 1 et 4 de ce jeu, qui
+# designent la seule proposition contenant leur mot) et un texte qui s'adresse a l'enfant (EMC-1,
+# EMC-8). Aucune
 # origine n'y est une bonne reponse (FER-1) et la tache "motifs" n'y est pas servie (FER-3).
 descripteur:
   matiere: "Enseignement moral et civique"
@@ -17,7 +19,7 @@ items:
   - enonce: "Trois élèves ne sont pas pris pour un jeu de relais. Dans quel cas le respect d'autrui n'est-il pas respecté ?"
     bonneReponse: "Aya, parce qu'elle utilise un fauteuil roulant et que les autres refusent de l'attendre"
     distracteurs: ["Tom, parce que l'équipe a déjà quatre joueurs et qu'il n'y a plus de place", "Léa, parce que la cloche a sonné et que la récréation est terminée"]
-    indice: "Cherche la raison qui écarte quelqu'un à cause de ce qu'il est."
+    indice: "Cherche le motif qui parle du jeu."
   - enonce: "Quelle phrase sur le respect d'autrui est juste ?"
     bonneReponse: "on peut ne pas être d'accord avec un camarade sans lui manquer de respect"
     distracteurs: ["respecter quelqu'un, c'est toujours être d'accord avec lui sur tout", "pour être respecté, il faut cacher ce qui nous rend différent des autres"]
@@ -29,4 +31,4 @@ items:
   - enonce: "Tu n'as pas choisi Aya pour ton équipe de ballon. Que fais-tu ?"
     bonneReponse: "je lui demande pourquoi"
     distracteurs: ["je ne dis rien", "je choisis une autre équipe"]
-    indice: "Pense à ce que tu ferais."
+    indice: "Cherche le motif qui parle de ce qui s'est déjà passé."

@@ -48,9 +48,9 @@ lignesDeReferentiel: ["EMC-CM1-06"]
 #   - item 5 et 10 : code penal, articles 225-1 et 225-2 (la discrimination, dont le refus
 #     d'embauche, est un delit) ;
 #   - item 8 : decision du Conseil constitutionnel no 2018-717/718 QPC du 6 juillet 2018 : du principe
-#     de fraternite decoule la liberte d'aider autrui, sans consideration de la regularite de son
-#     sejour. La fraternite n'est donc pas reservee aux citoyens (arbitrage prealable de s55,
-#     instance B, section 3.2) ;
+#     de fraternite decoule la liberte d'aider autrui, dans un but humanitaire, sans consideration de
+#     la regularite de son sejour sur le territoire national. La fraternite n'est donc pas reservee aux
+#     citoyens (arbitrage prealable de s55, instance B, section 3.2) ;
 #   - devise : Constitution, article 2 ("Liberte, Egalite, Fraternite").
 # Ces references vivent ici, jamais dans un enonce.
 #
@@ -81,7 +81,7 @@ items:
   - enonce: "Des élèves d'une classe organisent une collecte de jouets pour des enfants qui en ont besoin. Quel principe de la République cela illustre-t-il ?"
     bonneReponse: "la fraternité"
     distracteurs: ["la laïcité", "la liberté"]
-    indice: "Ces élèves se soutiennent les uns les autres."
+    indice: "Ces élèves donnent pour aider d'autres enfants."
   - enonce: "Quel principe de la République garantit que l'école publique ne favorise aucune religion ?"
     bonneReponse: "la laïcité"
     distracteurs: ["la fraternité", "la démocratie"]

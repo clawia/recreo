@@ -341,3 +341,55 @@ Commande : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dmaven.test.fail
 2. **Ratification** de l'exclusion des deux garde-fous (11.1) par `theo-archi`, et des trois lectures du critere (11.2) par `nadia-prof` et `camille-po`.
 3. **Fiche de conformite** : ouverte par `camille-po` apres ce commit (`DEC-0115` A.11) ; audit `S56-AUD-ART-CP-10`, `nadia-prof`.
 4. **`S55-EMC-CM1-R8` et `S55-EMC-CM1-R9`** : branche `s56-lea-emc`, un commit chacun. **Worktree a demander** ; rien commence.
+
+## 12. S55-EMC-CM1-R8 et S55-EMC-CM1-R9 (worktree `s56-lea-emc`, base `round-two` a `bdd6dbe4`)
+
+Commits : `1d1d3ae6` (`EMC-CM1-R8`) et `02b938bd` (`EMC-CM1-R9`), un commit chacun, tests dans le meme commit. **JDK 21.0.10** (`java.version` du rapport Surefire, enveloppe `bash outils/mvn-jdk21.sh`).
+Je recopie les textes de `nadia-prof`, je n'en redige aucun : les nouveaux textes sont **lus par programme dans les blocs de ses fiches** (`FICHE-bandit-manchot-respect-differences-cm1.md` et `FICHE-bandit-manchot-principes-republique-cm1.md`, section 5) et ecrits dans les YAML, pas retapes.
+
+### 12.1 `EMC-CM1-R8` : `cm1-emc-respect-differences.yaml`
+
+- Item 10, indice : *"Un motif valable ne parle pas de l'élève lui-même."* ; item 11, indice : *"Un motif valable pourrait concerner n'importe quel élève."*. Enonces, propositions et en-tete inchanges (`git diff -U0` : deux lignes de moins, deux de plus).
+- Tests (meme commit) : les deux anciens indices entrent dans `TEXTES_REFUSES` de `PaquetCm1EmcRespectDifferencesTest` (avec leur motif) et dans son jeu fautif commite (items 1 et 4 du jeu fautif, dont les indices n'etaient la cible d'aucun autre test) ; un test, `lesIndicesDesItems10Et11SontCeuxDeLaFicheDeNadiaProf`, verifie que les deux nouveaux sont servis.
+
+| Propriete (backlog) | Commande | Avant | Apres |
+|---|---|---|---|
+| `Cherche le motif qui parle` | `grep -c 'Cherche le motif qui parle'` sur le fichier | 2 | 0 |
+| *"Un motif valable ne parle pas de l'élève lui-même."* | `grep -c` | 0 | 1 |
+| *"Un motif valable pourrait concerner n'importe quel élève."* | `grep -c` | 0 | 1 |
+| Items | `grep -c '^ *- enonce:'` | 11 | 11 |
+
+(Les comptes sont relus par un script Python sur le fichier, `grep` etant sensible a l'encodage de ce poste.)
+
+### 12.2 `EMC-CM1-R9` : `cm1-emc-principes-republique.yaml`
+
+- Item 3, indice : *"Ces élèves donnent pour aider d'autres enfants."* ; en-tete, les quatre lignes de l'item 8 de la liste `HIS-3` remplacees par celles de la fiche (*"dans un but humanitaire"*, *"sur le territoire national"*). Rien d'autre ne change.
+- Tests (meme commit) : l'ancien indice entre dans `TEXTES_REFUSES` de `PaquetCm1EmcPrincipesRepubliqueTest` et dans son jeu fautif commite (item 1 du jeu fautif) ; `lIndiceDeLItem3EstCeluiDeLaFicheDeNadiaProf` et `lEnTeteCiteLaDecisionDe2018DansSonPerimetreExact` (lit le fichier du paquet en ressource : l'en-tete n'est lu par aucun item).
+
+| Propriete (backlog) | Avant | Apres |
+|---|---|---|
+| *"Ces élèves donnent pour aider d'autres enfants."* | 0 | 1 |
+| `se soutiennent les uns les autres` | 1 | 0 |
+| `dans un but humanitaire` | 0 | 1 |
+
+### 12.3 Mutations sur le fichier reel
+
+Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=<classe du paquet> -Dsurefire.failIfNoSpecifiedTests=false` (perimetre : `adapter-content` avec `-am`, classe nommee) ; fichier restaure par `git checkout --` apres chaque mesure (`git status --short` vide).
+
+| # | Mutation | Echecs |
+|---|---|---|
+| M1 | `cm1-emc-respect-differences.yaml` : l'indice neuf de l'item 10 remis a l'ancien texte | 2 sur 14 : `aucunTexteRefuseParNadiaProfNeRevient`, `lesIndicesDesItems10Et11SontCeuxDeLaFicheDeNadiaProf` |
+| M2 | `cm1-emc-principes-republique.yaml` : l'ancien indice de l'item 3 et l'ancienne formule d'en-tete remis | 3 sur 15 : `aucunTexteRefuseParNadiaProfNeRevient`, `lIndiceDeLItem3EstCeluiDeLaFicheDeNadiaProf`, `lEnTeteCiteLaDecisionDe2018DansSonPerimetreExact` |
+
+### 12.4 Delta de tests, jobs
+
+- **+3 tests**, mesure sur `bdd6dbe4` (arbre de `round-two` fusionne ; le `verify` de l'arbre avec l'edition du fichier de `R8` seule, avant ses tests, rend les memes comptes que la base) : 120 + 18 + 442 + 1458 + 339 + 6 = 2383 ; sur `02b938bd` : 120 + 18 + 442 + 1461 + 339 + 6 = 2386.
+  `R8` : +1 (1458 vers 1459), `R9` : +2 (1459 vers 1461). Tout dans `adapter-content`. Le total apres fusion est a `sofia-sm`.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, `BUILD SUCCESS`, 0 echec, 0 erreur, sur l'arbre de chacun des deux commits (mesures separees).
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `bdd6dbe4..HEAD` ; **`chemins`** : `verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh` ; **`outils`** : les dix juges `*-test.sh` et `*-test.py` : exit 0 chacun. Non lance : l'etape `mvn -B -pl bootstrap -am package` et la plage `BASE..SHA` de GitHub.
+
+### 12.5 Ce qui n'est pas verifie
+
+- **L'exactitude des textes** : que *"Un motif valable pourrait concerner n'importe quel élève."* ne designe pas la bonne reponse, et que *"Ces élèves donnent pour aider d'autres enfants."* ne nomme pas le principe, est a `nadia-prof` (rejeu et verdict des reserves). Je n'ai rien juge.
+- **Pas de rendu a l'ecran** : ces deux commits changent du texte lu par l'enfant ; je n'ai pas lance le jar. Les deux jeux sont deja au catalogue ; seuls les indices des items 10, 11 et 3 changent, et ils ne s'affichent qu'apres une erreur. Le premier endroit ou les voir est le rejeu de `nadia-prof`.
+- **Rejeu** : les verdicts des reserves `EMC-CM1-R8` et `EMC-CM1-R9` (leur levee dans les fiches) ne sont pas de mon fait.
