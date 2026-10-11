@@ -60,3 +60,53 @@ Pas de fixture YAML : ce sont des objets construits a la main, la preuve porte s
 - L'ordre des matieres tel que l'enfant le lira : non arbitre, non joue.
 - Le comportement de `GET /` et des vues : non touche, `P4`.
 - La CI sur ce commit : non lancee, non poussee.
+
+
+---
+
+## P3 - `GroupeDeJeux` porte la ligne de matiere, `groupeDeLaMatiere` resout le segment
+
+Branche `marc-accueil-p3`, issue de `round-two` au commit `9c49bbe1` (`bash outils/verifier-lignee.sh` sort 0). Commit de code : **`1031381d`**. Rien n'est pousse, rebase ni fusionne. Sources : `ADR-0106` (decisions 1, 2, 5), `avis-faisabilite.md` section 10.2 (P3), `matieres.yaml` de `theo-archi`.
+
+### 7. Livre
+
+| Piece | Contenu |
+|---|---|
+| `GroupeDeJeux` | `record GroupeDeJeux(Matiere matiere, List<GameDefinition> jeux)` : la ligne entiere (nom, libelle, pictogramme, deux teintes, segment), plus la chaine |
+| `PartieUseCase.groupeDeLaMatiere(String niveau, String segment)` | `Optional<GroupeDeJeux>` ; **remplace** `jeuxDeLaMatiere(niveau, matiere)`, supprimee du port, du service et de ses doubles |
+| `PartieService` | le segment est resolu sur la ligne de `catalogue.matieres()` qui le porte, puis les jeux du niveau dont la matiere est le `nom` de cette ligne ; `matieresDuNiveau` rend la ligne entiere, dans l'ordre des lignes |
+| Inventaire de `TexteAccentueExposeParLePortEntrantTest` | `groupeDeLaMatiere` remplace `jeuxDeLaMatiere` dans l'ensemble des methodes lues et est appelee pour chaque groupe ; **cinq libelles, onze noms de pictogramme, vingt-deux teintes, onze segments** entrent dans la liste, par blocs motives (`APM-1`/N1, `APM-2`/N2, `APM-5`, `APM-6`/N6, `ADR-0106` decision 5) ; `chaqueChaineDeLInventaireEstEncoreExposeeParLeCatalogueReel` lit maintenant les groupes, sans quoi les nouvelles entrees auraient ete "perimees" |
+
+Un **segment inconnu, `null`, vide, ou une matiere sans jeu a ce niveau** rend `Optional.empty()`, jamais une exception.
+
+Fichiers du commit : `GroupeDeJeux.java`, `PartieUseCase.java`, `PartieService.java`, `PartieServiceTest.java`, `TexteAccentueExposeParLePortEntrantTest.java`, `LOrdreDesMatieresVientDeLaDonneeTest.java` (une ligne : `groupe.matiere().nom()`), `UneErreurImprevueLaisseUneTraceTest.java` (le `PartieUseCase` anonyme). Ni gabarit, ni feuille, ni route, ni `matieres.yaml`, ni pictogramme ; `aucunPictogrammeDeMatiereNEstEncoreServi` est inchange.
+
+### 8. Ecarts a l'avis
+
+- **E4.** L'avis compte **six** libelles qui different de la matiere ; **cinq** sont nouveaux pour l'inventaire (*Maths*, *Sciences*, *Vivre ensemble*, *Musique*, *Sport*). *Anglais* y figure deja comme chaine exacte (une autre chaine servie) : l'ajouter serait un doublon. L'entree de chaque autre chaine est calculee par script depuis `matieres.yaml` (celles que la liste ne portait pas), pas retapee.
+- **E5.** Les noms de pictogramme, teintes et segments ne sont pas du texte accentue : ils sont dans l'inventaire parce que le garde-fou compare **toute** chaine d'un record exposee par le port a la liste, par egalite (`ADR-0039`). Leur motif dit qu'ils ne sont pas lus par l'enfant.
+- **E6.** Le test `uneMatiereDuCatalogueReelPriveeDeSonAccentFaitEchouerLeGardeFou` (P1) et le jeu fautif de la matiere neuve construisent desormais une `Matiere` ; ils pointent le champ `nom`.
+
+### 9. Tests et mesures
+
+Mesure sur `9c49bbe1` plus mon seul lot. Ce ne sont pas des totaux apres fusion.
+
+- **Delta : +4 tests** (+3 dans `PartieServiceTest` : 5 tests de resolution par segment remplacent 2 de `jeuxDeLaMatiere`, donc 28 -> 31 sur le module `application` ; +1 dans `TexteAccentueExposeParLePortEntrantTest`, 365 -> 366 sur `bootstrap`). Reacteur apres : `application` 31, `bootstrap` 366, `adapter-web` 459, `adapter-content` 1483, `domain` 120, integration 6 ; les chiffres "avant" sont ceux de l'avis (section 10.5), pas ma mesure.
+- Tests de resolution : trouve (deux niveaux), segment inconnu / vide / `null`, **le nom de la matiere donne comme segment ne resout rien**, matiere d'un autre niveau et niveau inconnu, ligne entiere rendue champ par champ. Les segments de test (`seg-...`) ne sont jamais le nom de la matiere.
+- Jeux fautifs de l'inventaire (`ADR-0013` obligation 3) : une matiere neuve (nom) ; **une valeur neuve dans chacun des cinq champs** d'une ligne reelle (`matiere.libelle`, `.pictogramme`, `.teinteFond`, `.teinteContour`, `.segment`), le message nomme le champ ; une matiere reelle privee de son accent.
+- **Version** : JDK **21.0.10**, rapportee par `outils/mvn-jdk21.sh`.
+- **Jobs de la CI lances avant le commit** : `build` (`bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl`, `BUILD SUCCESS`, code 0 ; etape "Verifier la presence du build Maven" non lancee) ; `prefixes` (`verifier-prefixes-test.sh` 0, `commit-atteignable-test.sh` 0, `verifier-prefixes.sh` sur le sujet du commit 0) ; `chemins` (`verifier-chemins-test.sh` 0, `verifier-chemins.sh` sur `git ls-files` 0, rejoue avec ce rapport : voir le commit du rapport) ; `outils` (les trois motifs de la CI, 10 juges, 0 code non nul, boucle de poste sans l'echo ni la garde "motif vide").
+- **Mutations** (un fichier reel modifie, `-pl bootstrap -am`, `-Dmaven.test.failure.ignore=true`, puis `git checkout`, arbre propre ensuite) :
+  - M1, `PartieService` compare le nom de la matiere au segment : 4 echecs dans `PartieServiceTest` (dont `groupeDeLaMatiereNeResoutPasLeNomDeLaMatiereCommeUnSegment`).
+  - M2, un segment `null` leve une exception : 1 echec (`...RendVideUnSegmentInconnuOuAbsent`).
+  - M3, un segment inconnu leve une exception : 2 echecs (`...RendVideUnSegmentInconnuOuAbsent`, `...NeResoutPasLeNom...`).
+  - M4, `matieres.yaml` : `teinteFond: "#cfe3f6"` devient `"#cfe3f7"` : 3 echecs, dont `touteChaineExposeeParLeCatalogueReelEstInventoriee` et `chaqueChaineDeLInventaireEstEncoreExposeeParLeCatalogueReel` (la valeur de la ligne n'est plus celle de l'inventaire, dans les deux sens).
+  - M5, `matieres.yaml` : `segment: maths` devient `math` : 2 echecs, les memes deux.
+  - La premiere tentative de M2 n'avait pas ete appliquee (motif de remplacement sur plusieurs lignes, fins de ligne CRLF) et rendait 28 verts ; refaite, c'est la seconde qui est citee.
+- **Jeu joue** : sans objet, aucun ecran, aucune route et aucun gabarit ne changent ; le jar n'a pas ete lance.
+
+### 10. Non verifie
+
+- Que P4 appelle `groupeDeLaMatiere` avec un segment pris de l'adresse sans le traduire : non ecrit ici.
+- L'ordre des groupes face a un catalogue ou une ligne de matiere manquerait : couvert par `ADR-0106` regle 2 et `PartieServiceTest.uneMatiereServieSansLigneFaitEchouerLeRegroupementEnSeNommant`, non retouche.
+- La CI sur ce commit : non lancee, non poussee.
