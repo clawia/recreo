@@ -6,6 +6,7 @@ import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.Move;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Port entrant : ce qu'un adaptateur peut demander pour faire jouer une partie, quelle que soit
@@ -29,10 +30,12 @@ public interface PartieUseCase {
     List<GroupeDeJeux> matieresDuNiveau(String niveau);
 
     /**
-     * ADR-0105 : le sous-ensemble du catalogue dont le niveau et la matiere correspondent, dans
-     * l'ordre du catalogue ; vide si aucun jeu n'y repond.
+     * ADR-0106 : le groupe de la matiere que designe ce segment d'adresse, parmi les jeux de ce
+     * niveau. Vide, jamais une exception, quand aucune ligne de matiere ne porte ce segment ou que la
+     * matiere n'a aucun jeu a ce niveau : l'adaptateur ne traduit jamais un segment en matiere
+     * (ADR-0044), c'est ce port qui le resout.
      */
-    List<GameDefinition> jeuxDeLaMatiere(String niveau, String matiere);
+    Optional<GroupeDeJeux> groupeDeLaMatiere(String niveau, String segment);
 
     GameSession demarrer(String jeuId);
 

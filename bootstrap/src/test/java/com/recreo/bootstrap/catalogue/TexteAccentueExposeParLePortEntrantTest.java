@@ -2,6 +2,7 @@ package com.recreo.bootstrap.catalogue;
 
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.catalog.GroupeDeJeux;
+import com.recreo.application.catalog.Matiere;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.mechanic.GameSession;
@@ -16,6 +17,7 @@ import java.lang.reflect.RecordComponent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -1715,7 +1717,68 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S51-MAT-SYMETRIE (s52) : competence neuve, MAT-CE1-17, libelle du referentiel
             // (squad/programme/mathematiques/competences-ce1.md, ligne MAT-CE1-17) sans le point
             // final.
-            "Reconnaître un axe de symétrie et compléter une figure par symétrie sur quadrillage");
+            "Reconnaître un axe de symétrie et compléter une figure par symétrie sur quadrillage",
+            // Hors sprint accueil, P3 (ADR-0106) : les libelles courts de la donnee de matiere, lus par
+            // l'enfant sur une tuile, arbitres par nadia-prof (APM-1, N1). Seuls ceux qui different de la
+            // matiere ou d'une chaine deja inventoriee entrent ici ; les autres y figurent deja.
+            "Maths",
+            "Sciences",
+            "Vivre ensemble",
+            "Musique",
+            "Sport",
+            // Hors sprint accueil, P3 (ADR-0106) : noms de fichier de pictogramme, jamais lus par
+            // l'enfant (rendus en img alt vide a cote du libelle) ; arbitres par nadia-prof (APM-2, N2),
+            // octet pour octet, par LePictogrammeDeMatiereEstUnFichierArbitreTest.
+            "francais.svg",
+            "mathematiques.svg",
+            "questionner-le-monde.svg",
+            "sciences.svg",
+            "histoire-geographie.svg",
+            "emc.svg",
+            "langues-vivantes.svg",
+            "arts-plastiques.svg",
+            "education-musicale.svg",
+            "histoire-des-arts.svg",
+            "eps.svg",
+            // Hors sprint accueil, P3 (ADR-0106) : teintes de fond et de contour de la donnee de
+            // matiere, jamais lues par l'enfant : elles n'atteignent le HTML que par deux proprietes
+            // personnalisees (APM-5, APM-6, N6).
+            "#cfe3f6",
+            "#f4e3a1",
+            "#d4ecc0",
+            "#bfe8e4",
+            "#e8d6bf",
+            "#f6cde0",
+            "#f8d3c2",
+            "#e2d4f3",
+            "#d2d6f6",
+            "#d8dde4",
+            "#fbdcb4",
+            "#2f6c9f",
+            "#7d6208",
+            "#4a7a1c",
+            "#1f7770",
+            "#7a5230",
+            "#a03a6b",
+            "#a5472a",
+            "#6e4ba3",
+            "#4a50a8",
+            "#4a5a6b",
+            "#a35a0b",
+            // Hors sprint accueil, P3 (ADR-0106) : segments d'adresse de la donnee de matiere, jamais
+            // lus par l'enfant, ecrits a cote de chaque ligne et jamais calcules depuis la matiere
+            // (ADR-0049 point 4, ADR-0106 decision 5).
+            "francais",
+            "maths",
+            "questionner-le-monde",
+            "sciences",
+            "histoire-geographie",
+            "vivre-ensemble",
+            "anglais",
+            "arts-plastiques",
+            "musique",
+            "histoire-des-arts",
+            "sport");
 
     /** Une chaine exposee par le port entrant, avec l'origine qui l'a produite (pour le message). */
     private record ChaineExposee(String origine, String chemin, String valeur) {
@@ -1828,7 +1891,11 @@ class TexteAccentueExposeParLePortEntrantTest {
             jeuxLus.addAll(partie.jeuxDuNiveau(niveau));
             List<GroupeDeJeux> groupes = partie.matieresDuNiveau(niveau);
             groupesLus.addAll(groupes);
-            groupes.forEach(groupe -> jeuxLus.addAll(partie.jeuxDeLaMatiere(niveau, groupe.matiere())));
+            groupes.forEach(groupe -> partie.groupeDeLaMatiere(niveau, groupe.matiere().segment())
+                    .ifPresent(resolu -> {
+                        groupesLus.add(resolu);
+                        jeuxLus.addAll(resolu.jeux());
+                    }));
         }
         assertThat(groupesLus)
                 .as("ADR-0105 : cette lecture ne prouve rien si l'accueil ne regroupe aucun jeu")
@@ -1843,7 +1910,7 @@ class TexteAccentueExposeParLePortEntrantTest {
      */
     private static final Set<String> METHODES_DU_PORT_LUES_PAR_L_INVENTAIRE = Set.of(
             "jeuxDisponibles", "niveauxDuCatalogue", "jeuxDuNiveau", "matieresDuNiveau",
-            "jeuxDeLaMatiere");
+            "groupeDeLaMatiere");
 
     /**
      * ADR-0105, regle 1 : les methodes d'un port entrant qui parlent a une vue, c'est-a-dire toutes
@@ -1896,8 +1963,10 @@ class TexteAccentueExposeParLePortEntrantTest {
      */
     @Test
     void chaqueChaineDeLInventaireEstEncoreExposeeParLeCatalogueReel() {
+        List<GroupeDeJeux> groupes = partie.niveauxDuCatalogue().stream()
+                .flatMap(niveau -> partie.matieresDuNiveau(niveau).stream()).toList();
         List<String> valeursExposees = chainesExposeesParLePortEntrant(
-                partie.jeuxDisponibles(), partie.niveauxDuCatalogue())
+                partie.jeuxDisponibles(), partie.niveauxDuCatalogue(), groupes)
                 .stream().map(ChaineExposee::valeur).toList();
 
         assertThat(valeursExposees)
@@ -1944,7 +2013,9 @@ class TexteAccentueExposeParLePortEntrantTest {
      */
     @Test
     void uneMatiereDeGroupeNeuveHorsDeLInventaireFaitEchouerLeGardeFou() {
-        GroupeDeJeux groupeFautif = new GroupeDeJeux("Matiere jamais arbitree", List.of());
+        GroupeDeJeux groupeFautif = new GroupeDeJeux(
+                new Matiere("Matiere jamais arbitree", "Maths", "francais.svg", "#cfe3f6", "#2f6c9f", "maths"),
+                List.of());
 
         assertThatThrownBy(() -> verifierQueToutePorteEstInventoriee(
                 List.of(), List.of(), List.of(groupeFautif)))
@@ -1959,20 +2030,54 @@ class TexteAccentueExposeParLePortEntrantTest {
      * jeu du catalogue reel regroupe sous une matiere dont l'accent a ete retire ne passe pas : le
      * libelle de matiere de la methode neuve est lu, pas seulement celui du descripteur des jeux.
      */
+    private static String sansAccent(String texte) {
+        return java.text.Normalizer.normalize(texte, java.text.Normalizer.Form.NFD)
+                .replaceAll("[\\u0300-\\u036f]", "");
+    }
+
+    /**
+     * ADR-0013 obligation 3, ADR-0106 : chacune des cinq chaines d'une ligne de matiere que l'enfant
+     * ou le HTML recoit (libelle, pictogramme, deux teintes, segment) est lue ; une valeur neuve dans
+     * l'un de ces champs, sur une ligne reelle, fait echouer le garde-fou en nommant le champ.
+     */
+    @Test
+    void uneValeurNeuveDansChaqueChampDeLaLigneDeMatiereFaitEchouerLeGardeFou() {
+        GroupeDeJeux reel = partie.matieresDuNiveau(partie.niveauxDuCatalogue().get(0)).get(0);
+        Matiere l = reel.matiere();
+        Map<String, Matiere> fautives = Map.of(
+                "libelle", new Matiere(l.nom(), "Libelle jamais arbitre", l.pictogramme(), l.teinteFond(),
+                        l.teinteContour(), l.segment()),
+                "pictogramme", new Matiere(l.nom(), l.libelle(), "jamais-arbitre.svg", l.teinteFond(),
+                        l.teinteContour(), l.segment()),
+                "teinteFond", new Matiere(l.nom(), l.libelle(), l.pictogramme(), "#123456",
+                        l.teinteContour(), l.segment()),
+                "teinteContour", new Matiere(l.nom(), l.libelle(), l.pictogramme(), l.teinteFond(),
+                        "#654321", l.segment()),
+                "segment", new Matiere(l.nom(), l.libelle(), l.pictogramme(), l.teinteFond(),
+                        l.teinteContour(), "segment-jamais-arbitre"));
+
+        fautives.forEach((champ, fautive) -> assertThatThrownBy(() -> verifierQueToutePorteEstInventoriee(
+                List.of(), List.of(), List.of(new GroupeDeJeux(fautive, reel.jeux()))))
+                .as("champ %s", champ)
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("matieresDuNiveau()")
+                .hasMessageContaining("matiere." + champ));
+    }
+
     @Test
     void uneMatiereDuCatalogueReelPriveeDeSonAccentFaitEchouerLeGardeFou() {
         String niveau = partie.niveauxDuCatalogue().get(0);
         GroupeDeJeux reel = partie.matieresDuNiveau(niveau).stream()
-                .filter(groupe -> !groupe.matiere().equals(
-                        java.text.Normalizer.normalize(groupe.matiere(), java.text.Normalizer.Form.NFD)
-                                .replaceAll("\\p{M}", "")))
+                .filter(groupe -> !groupe.matiere().nom().equals(sansAccent(groupe.matiere().nom())))
                 .findFirst().orElseThrow(() -> new AssertionError(
                         "ADR-0105 : aucune matiere accentuee au niveau " + niveau));
-        String sansAccent = java.text.Normalizer.normalize(reel.matiere(), java.text.Normalizer.Form.NFD)
-                .replaceAll("\\p{M}", "");
+        Matiere ligne = reel.matiere();
+        String sansAccent = sansAccent(ligne.nom());
 
         assertThatThrownBy(() -> verifierQueToutePorteEstInventoriee(
-                List.of(), List.of(), List.of(new GroupeDeJeux(sansAccent, reel.jeux()))))
+                List.of(), List.of(), List.of(new GroupeDeJeux(new Matiere(sansAccent, ligne.libelle(),
+                        ligne.pictogramme(), ligne.teinteFond(), ligne.teinteContour(), ligne.segment()),
+                        reel.jeux()))))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("matieresDuNiveau()")
                 .hasMessageContaining(sansAccent);

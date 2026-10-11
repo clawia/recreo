@@ -178,7 +178,12 @@ class PartieServiceTest {
     }
 
     private static Matiere ligne(String nom) {
-        return new Matiere(nom, nom, "picto.svg", "#cfe3f6", "#2f6c9f", "segment");
+        return new Matiere(nom, "Libelle " + nom, nom + ".svg", "#cfe3f6", "#2f6c9f", segmentDe(nom));
+    }
+
+    /** Un segment qui n'est jamais le nom de la matiere : comparer l'un a l'autre doit rougir. */
+    private static String segmentDe(String nom) {
+        return "seg-" + nom.toLowerCase();
     }
 
     /** Une ligne par matiere des jeux, dans leur ordre d'apparition : les tests de regroupement. */
@@ -202,8 +207,8 @@ class PartieServiceTest {
         GameDefinition c = jeu("c", "Mathematiques", "CP");
 
         assertThat(serviceSur(a, b, c).matieresDuNiveau("CP")).containsExactly(
-                new GroupeDeJeux("Mathematiques", List.of(a, c)),
-                new GroupeDeJeux("Francais", List.of(b)));
+                new GroupeDeJeux(ligne("Mathematiques"), List.of(a, c)),
+                new GroupeDeJeux(ligne("Francais"), List.of(b)));
     }
 
     /**
@@ -216,7 +221,7 @@ class PartieServiceTest {
                 jeu("a", "Sciences", "CP"), jeu("b", "Francais", "CP"), jeu("c", "Arts", "CP"),
                 jeu("d", "Francais", "CP"), jeu("e", "Sciences", "CP"));
 
-        assertThat(service.matieresDuNiveau("CP")).extracting(GroupeDeJeux::matiere)
+        assertThat(service.matieresDuNiveau("CP")).extracting(groupe -> groupe.matiere().nom())
                 .containsExactly("Francais", "Sciences", "Arts");
     }
 
@@ -240,7 +245,7 @@ class PartieServiceTest {
         PartieService service = serviceSur(cp, cm1);
 
         assertThat(service.matieresDuNiveau("CM1"))
-                .containsExactly(new GroupeDeJeux("Francais", List.of(cm1)));
+                .containsExactly(new GroupeDeJeux(ligne("Francais"), List.of(cm1)));
     }
 
     /** ADR-0044 : un niveau sans jeu rend une liste vide, jamais une valeur sentinelle. */
@@ -273,35 +278,80 @@ class PartieServiceTest {
     void uneGraphieDifferenteDeLaMatiereFaitUnGroupeDeCePlus() {
         PartieService service = serviceSur(jeu("a", "Français", "CP"), jeu("b", "Francais", "CP"));
 
-        assertThat(service.matieresDuNiveau("CP")).extracting(GroupeDeJeux::matiere)
+        assertThat(service.matieresDuNiveau("CP")).extracting(groupe -> groupe.matiere().nom())
                 .containsExactly("Français", "Francais");
     }
 
+    /**
+     * ADR-0106 decision 5 : le segment d'adresse designe la ligne de matiere, les jeux sont ceux du
+     * niveau et de cette matiere, dans l'ordre du catalogue ; le groupe porte la ligne entiere.
+     */
     @Test
-    void jeuxDeLaMatiereRendLesJeuxDuNiveauEtDeLaMatiereDansLOrdreDuCatalogue() {
+    void groupeDeLaMatiereResoutLeSegmentSurLaLigneEtRendLesJeuxDuNiveau() {
         GameDefinition a = jeu("a", "Francais", "CP");
         GameDefinition b = jeu("b", "Mathematiques", "CP");
         GameDefinition c = jeu("c", "Francais", "CP");
         GameDefinition d = jeu("d", "Francais", "CM1");
         PartieService service = serviceSur(a, b, c, d);
 
-        assertThat(service.jeuxDeLaMatiere("CP", "Francais")).containsExactly(a, c);
-        assertThat(service.jeuxDeLaMatiere("CM1", "Francais")).containsExactly(d);
+        assertThat(service.groupeDeLaMatiere("CP", "seg-francais"))
+                .contains(new GroupeDeJeux(ligne("Francais"), List.of(a, c)));
+        assertThat(service.groupeDeLaMatiere("CM1", "seg-francais"))
+                .contains(new GroupeDeJeux(ligne("Francais"), List.of(d)));
     }
 
+    /** Un segment sans ligne : un Optional vide, jamais une exception (l'adresse vient d'un favori). */
     @Test
-    void jeuxDeLaMatiereRendUneListeVideQuandAucunJeuNeRepond() {
+    void groupeDeLaMatiereRendVideUnSegmentInconnuOuAbsent() {
         PartieService service = serviceSur(jeu("a", "Francais", "CP"));
 
-        assertThat(service.jeuxDeLaMatiere("CP", "Histoire")).isEmpty();
-        assertThat(service.jeuxDeLaMatiere("CM2", "Francais")).isEmpty();
+        assertThat(service.groupeDeLaMatiere("CP", "seg-histoire")).isEmpty();
+        assertThat(service.groupeDeLaMatiere("CP", "")).isEmpty();
+        assertThat(service.groupeDeLaMatiere("CP", null)).isEmpty();
+    }
+
+    /**
+     * ADR-0106 decision 5 : la matiere du paquet n'est pas un segment. Le nom d'une matiere, donne
+     * comme segment, ne resout rien : un code qui comparerait la matiere au segment le trouverait.
+     */
+    @Test
+    void groupeDeLaMatiereNeResoutPasLeNomDeLaMatiereCommeUnSegment() {
+        PartieService service = serviceSur(jeu("a", "Francais", "CP"));
+
+        assertThat(service.groupeDeLaMatiere("CP", "Francais")).isEmpty();
+    }
+
+    /** Une matiere qui a une ligne mais aucun jeu a ce niveau : vide, comme un niveau inconnu. */
+    @Test
+    void groupeDeLaMatiereRendVideUneMatiereSansJeuAuNiveauDemande() {
+        PartieService service = serviceSur(jeu("a", "Francais", "CP"), jeu("b", "Sciences", "CM1"));
+
+        assertThat(service.groupeDeLaMatiere("CP", "seg-sciences")).isEmpty();
+        assertThat(service.groupeDeLaMatiere("CM2", "seg-francais")).isEmpty();
+        assertThat(service.groupeDeLaMatiere("CM1", "seg-sciences")).isPresent();
+    }
+
+    /** Le groupe rendu par le segment porte la ligne telle que la donnee l'ecrit, champ par champ. */
+    @Test
+    void groupeDeLaMatiereRendLaLigneEntiereDeLaDonnee() {
+        Matiere ligne = new Matiere("Sciences et technologie", "Sciences", "sciences.svg", "#bfe8e4",
+                "#1f7770", "sciences");
+        ContentCatalogPort catalogue = new CatalogueAvecMatieres(
+                List.of(jeu("a", "Sciences et technologie", "CM1")), List.of(ligne));
+        PartieService service = new PartieService(catalogue, id -> new BanditManchot(), TOUJOURS_ZERO);
+
+        Matiere rendue = service.groupeDeLaMatiere("CM1", "sciences").orElseThrow().matiere();
+
+        assertThat(rendue).isEqualTo(ligne);
+        assertThat(rendue.libelle()).isEqualTo("Sciences");
+        assertThat(rendue.nom()).isEqualTo("Sciences et technologie");
     }
 
     /** Le groupe garde la liste qu'il a recue a sa construction : la modifier apres ne le change pas. */
     @Test
     void unGroupeDeJeuxCopieLaListeQuOnLuiDonne() {
         List<GameDefinition> source = new ArrayList<>(List.of(jeu("a", "Francais", "CP")));
-        GroupeDeJeux groupe = new GroupeDeJeux("Francais", source);
+        GroupeDeJeux groupe = new GroupeDeJeux(ligne("Francais"), source);
 
         source.add(jeu("b", "Francais", "CP"));
 
