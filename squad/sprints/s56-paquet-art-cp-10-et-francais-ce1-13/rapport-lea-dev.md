@@ -450,3 +450,62 @@ Chaque test de morsure en memoire (par exemple `unItemRenduIdentiqueAUnAutreFait
 - **`B2`** garde l'egalite a un texte qui ne nomme rien, pas l'absence de sujet nomme : si `cp-decrire-une-oeuvre` changeait son texte alternatif, les deux paquets le suivraient, et le garde-fou n'en jugerait pas le contenu.
 - Les commits sont ordonnes comme je les ai ecrits (B2, B3, B7, B8, B5), pas comme la table de l'amendement les nomme.
 - **F1 de `theo-archi` (`confirmation-archunit.md`), corrige** : le test de `B8` nomme *"onze mots"* prenait une phrase de 13 mots et assertait `hasSize(MOTS_AU_PLUS + 3)`, donc la borne de dix n'etait pas testee a sa limite. Il prend maintenant une phrase de **11 mots** et asserte `hasSize(MOTS_AU_PLUS + 1)` ; un test neuf, `unEnonceDeDixMotsSurTousLesItemsNeFaitPasEchouerLeGardeFou`, tient la limite de l'autre cote (10 mots, vert). **Mutation de la borne** (`MOTS_AU_PLUS` de 10 a 12, commande `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest -Dsurefire.failIfNoSpecifiedTests=false`, perimetre : le reacteur de `bootstrap` avec `-am`, classe nommee) : **2 echecs sur 4**, `unEnonceDeOnzeMotsSurTousLesItemsFaitEchouerLeGardeFou` et `unEnonceDeDixMotsSurTousLesItemsNeFaitPasEchouerLeGardeFou` (son `hasSize(MOTS_AU_PLUS)` ne vaut plus) ; restaure, 0 echec sur 4. +1 test sur la base `20f0ec73`.
+
+## 14. Retrait du jeu `bandit-manchot-rapprocher-deux-oeuvres-cp` du catalogue (`S56-RETRAIT-RAPPROCHER-OEUVRES`, branche `retrait-rapprocher-oeuvres`, base `round-two` a `8ac33440`)
+
+Decision de l'utilisatrice du 2026-10-11 (D1 de la cloture de s56) : le paquet refuse sort du catalogue servi. **Le retrait est l'absence d'entree** (`ADR-0061`, `DEC-0045` section 3, `DEC-0055` section 1) : `catalogue.yaml` perd les six lignes de l'entree ;
+`contenu/cp-rapprocher-deux-oeuvres.yaml`, les quatre JPEG et leurs entrees de registre, la marque d'echec, le plafond et leurs tests restent. **JDK 21.0.10** (`java.version` du rapport Surefire, enveloppe `bash outils/mvn-jdk21.sh`).
+
+### 14.1 Ce que le retrait fait rougir, mesure d'abord
+
+Mesure : l'entree retiree, rien d'autre, `bash outils/mvn-jdk21.sh -B clean verify -Dmaven.test.failure.ignore=true` (racine, sans `-pl`) : **10 echecs, tous dans `bootstrap`**, 0 ailleurs (120, 18, 442, 1470, 6 verts).
+
+| Garde-fou | Echecs | Cause |
+|---|---|---|
+| `LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest` (`B5`) | 4 sur 5 | il chargeait le paquet **par le catalogue** (`games()` puis l'id du jeu) : `NoSuchElementException` |
+| `LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest` (`B8`) | 4 sur 4 | meme cause |
+| `TexteAccentueExposeParLePortEntrantTest.chaqueChaineDeLInventaireEstEncoreExposeeParLeCatalogueReel` | 1 | l'inventaire porte quatre chaines (identifiant, titre, consigne, competence) que le catalogue n'expose plus |
+| `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest.chaqueEcranDeChaqueItemAPropositionsEnImageEstSainEtLePerimetreReelEstVide` (garde-fou 4) | 1 | la liste exacte des jeux reels a propositions en image nommait ce jeu |
+
+**Ne rougissent pas** : `PropositionsAccentueesJouablesIT`, les gardes de la marque et du plafond (ils lisent la feuille, et le critere 6 joue le jeu de preuve), REV-3 et `ADR-0083` (leur exclusion des reponses en image devient sans objet, leurs tests verts),
+`ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest` et `ADR-0023` (plus d'entree, plus de `nombreDeManches`), les cliquets de reproductions (`REPRODUCTIONS_SERVIES` 12, `POIDS_TOTAL_MAXIMUM` 275 163, `ITEMS_QUI_DECLARENT_UNE_ILLUSTRATION` 87,
+`ITEMS_A_PROPOSITIONS_EN_IMAGE` 6 : ils lisent les repertoires de contenu et de reproductions, pas le catalogue), `PaquetCpRapprocherDeuxOeuvresTest` (`B2`, `B3`, `B7`, qui charge le paquet hors catalogue).
+
+### 14.2 Ce que j'ai adapte, et pourquoi, sans exemption nouvelle
+
+1. **Inventaire de `TexteAccentueExposeParLePortEntrantTest`** : les quatre chaines que le commit de l'entree avait ajoutees sont retirees. Le test exige l'egalite entre l'inventaire et ce que le catalogue expose ; il n'y a rien a exempter.
+2. **Garde-fou 4** : *"liste exacte des jeux reels"* passe de `containsExactly("bandit-manchot-rapprocher-deux-oeuvres-cp")` a `isEmpty()`, la forme qu'avait ADR-0051 avant le branchement. Le jeu de preuve, fait d'items reels mutes, reste le seul jeu joue ; la boucle 6 items / 5 manches et les jeux
+   d'une manche derives par item restent, sans objet tant que la liste est vide, et rejouent des qu'un paquet reel y revient.
+3. **`B5` et `B8`** : ils ne chargent plus le paquet par le catalogue. Ils lisent le fichier du paquet par le balayage que les garde-fous d'`ADR-0104` utilisent deja (`LIllustrationDeContenuResoutEtAucuneNeDortTest.itemsDuDepot`, qui lit les repertoires de contenu, pas le catalogue). Les juges, les bornes,
+   les clauses et les jeux fautifs ne changent pas. Le test d'adaptation n'est pas un test de plus : les morsures existantes (items reels mutes en memoire, jeu fautif commite de `B5`) mordent le meme code. **Ecart au critere du backlog** (*"les garde-fous `B2`, `B3`, `B5`, `B7`, `B8` existent, inchanges"*) :
+   `B2`, `B3`, `B7` le sont ; `B5` et `B8` ne le sont pas, **leur source d'items change** (le catalogue n'a plus le paquet), rien d'autre. Ils portent maintenant un petit type local (`ItemDePaire`, `ItemDEnonce`) au lieu de `Question`, parce que le chargeur de production (`chargerPaquet`, package-prive) n'est pas visible de `bootstrap`.
+   Aucune association entree-paquet n'est recopiee : ils nomment le fichier du paquet, comme le faisait la constante de l'ancien jeu.
+4. **Mutation sur le fichier reel, hors catalogue** (`-pl bootstrap -am test` sur les trois classes, perimetre : le reacteur de `bootstrap` avec `-am`) : `B5` (distracteur `oeuvre-quatre-saisons` remplace par `oeuvre-moissonneurs` dans l'item 3) rougit
+   `aucuneBonneOeuvreNEstDesigneeParSonFormatSurLePaquetEtLesFichiersReels` ; `B8` (enonce du premier item change) rougit `lEnonceDuPaquetEstUniqueEtDeDixMotsAuPlus` ; fichier restaure, `git status` ne montre que mes cinq fichiers modifies.
+
+### 14.3 Ce qui ne peut plus etre joue tant que le paquet est hors catalogue
+
+- **Sur le jar** : le jeu n'est plus servi. `POST /parties/bandit-manchot-rapprocher-deux-oeuvres-cp` rend le fragment *"Oups ! Le jeu a un souci"*, et l'accueil liste 146 jeux au lieu de 147 (mesure sur le jar de `verify`, port dedie, JDK 21.0.10). **Plus aucun ecran de propositions en image reel** : manche, echec, marque, revelation, fin de partie.
+- **Garde-fou 4 et critere 6 de la marque** ne jouent plus que le jeu de preuve (items reels de `cp-decrire-une-oeuvre` mutes en propositions-images) : le gabarit reel, le controleur reel, la traversee HTTP reelle, mais pas les six items du paquet refuse. Ce que les six items revelaient
+  (le sixieme item, le jeu de 5 manches sur 6 items) n'est plus rejoue ; le code qui le rejoue reste et se reactive avec une entree neuve.
+- **Reste servi** : les fichiers `/oeuvres/oeuvre-champ-de-ble.jpg` et `/images/marque-echec.svg` repondent 200 (ils sont dans le jar), la regle de la marque est dans la feuille, mais plus rien ne les montre.
+- Le retour au catalogue passe par une entree neuve, apres un Done de `nadia-prof` qui n'est pas `REFUSE` (`DEC-0045` section 3, `ADR-0061`).
+
+### 14.4 Matrice et fiches
+
+- **`MATRICE-couverture.md`** : le compte ne change pas. `ART-CP-10` est `non couvert`, colonne des jeux **vide** (`-`), avant et apres : aucune ligne ne comptait ce jeu (`DEC-0009`). Je n'y ai rien modifie. **Mais** la cellule de la ligne (note *"etat a la cloture de s56"*) ecrit encore au present *"entree de catalogue `bandit-manchot-rapprocher-deux-oeuvres-cp`, `f37e33dd`"* :
+  le fait etait vrai a la cloture et ne l'est plus. A `camille-po`.
+- **`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`** : sections 1 (*"Entrée de catalogue : ... titre servi, consigne servie"*) et statut `REFUSE` du 2026-10-11 : une fiche d'audit decrit ce que `nadia-prof` a joue, elle n'affirme pas que le jeu est servi aujourd'hui. Rien a corriger par moi ; une mention du retrait est a `camille-po` si elle la veut.
+- `docs/backlog/backlog.md`, `S56-RETRAIT-RAPPROCHER-OEUVRES` : l'etat *"proposee, conditionnelle a `Q-U3`"* est a mettre a jour par elle. Je n'ai touche a aucun de ces trois fichiers.
+
+### 14.5 Delta de tests, jobs
+
+- **0 test** (les memes 2404 : 120 + 18 + 442 + 1470 + 348 + 6) : les cinq fichiers modifies changent la source d'items et un inventaire, ils n'ajoutent ni ne retirent de test. Mesure sur `8ac33440` : base non remesuree, le dernier verify de `round-two` etait 2404 apres le correctif F1 ; sur mon arbre : 2404.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl` : `BUILD SUCCESS`, 0 echec, 0 erreur.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `8ac33440..HEAD` ; **`chemins`** : `verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh` ; **`outils`** : les dix juges `*-test.sh` et `*-test.py` : exit 0 chacun.
+  Non lance : l'etape `mvn -B -pl bootstrap -am package` et la plage `BASE..SHA` de GitHub.
+
+### 14.6 Un incident de ma part, dit ici
+
+En verifiant le jar, j'ai lance `java -jar ... --server.port=18081` : le port etait **deja pris par un processus qui n'est pas le mien** (mon jar a refuse de demarrer, *"Port 18081 was already in use"*), et mes requetes ont atteint ce processus-la, un jar plus ancien qui servait encore le jeu. **Je l'ai ensuite arrete par PID** (48200), croyant arreter le mien : j'ai tue le processus d'un autre. Je ne sais pas qui il servait. J'ai
+refait la verification sur un port libre (28931), arrete cette fois par le PID que le journal de demarrage de mon propre jar donne (65248). Les mesures de 14.3 sont celles de ce second jar.

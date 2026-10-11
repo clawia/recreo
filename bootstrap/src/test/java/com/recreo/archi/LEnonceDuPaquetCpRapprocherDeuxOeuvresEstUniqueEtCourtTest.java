@@ -1,18 +1,10 @@
 package com.recreo.archi;
 
-import com.recreo.adapter.content.YamlContentPackLoader;
-import com.recreo.domain.content.ContentSource;
-import com.recreo.domain.content.Item;
-import com.recreo.domain.content.ItemId;
-import com.recreo.domain.content.Question;
-import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,34 +26,40 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest {
 
-    /** Le jeu du catalogue reel qui sert le paquet {@code cp-rapprocher-deux-oeuvres}. */
-    private static final String JEU = "bandit-manchot-rapprocher-deux-oeuvres-cp";
+    /** Le fichier du paquet {@code cp-rapprocher-deux-oeuvres}. */
+    private static final String PAQUET = "cp-rapprocher-deux-oeuvres.yaml";
 
     /** B8 : dix mots au plus, sous la convention de comptage de nadia-prof. */
     private static final int MOTS_AU_PLUS = 10;
 
-    private static List<Question> items() {
-        ContentSource contenu = new YamlContentPackLoader().games().stream()
-                .filter(jeu -> jeu.id().equals(JEU)).findFirst().orElseThrow().contenu();
-        RandomSource hasard = new Random(13)::nextInt;
-        Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
-        for (Item item = contenu.next(hasard, dejaVus).orElse(null); item != null;
-             item = contenu.next(hasard, dejaVus).orElse(null)) {
-            items.add((Question) item);
-            dejaVus.add(item.id());
+    /** Un item du paquet : son identifiant dans le fichier et son enonce. */
+    record ItemDEnonce(String id, String enonce) {
+    }
+
+    /**
+     * Les items du paquet {@code cp-rapprocher-deux-oeuvres}, lus dans son fichier de contenu par le meme
+     * balayage que les garde-fous d'ADR-0104 ({@code LIllustrationDeContenuResoutEtAucuneNeDortTest}), et
+     * non dans le catalogue : le paquet peut etre hors catalogue (le retrait d'un jeu est l'absence de son
+     * entree, ADR-0061) sans que ce garde-fou cesse de le juger.
+     */
+    private static List<ItemDEnonce> items() {
+        List<ItemDEnonce> items = new ArrayList<>();
+        for (LIllustrationDeContenuResoutEtAucuneNeDortTest.ItemDeclare item
+                : LIllustrationDeContenuResoutEtAucuneNeDortTest.itemsDuDepot(
+                        LesGardeFousSontMisALEpreuveTest.racineDuDepot())) {
+            if (item.paquet().equals(PAQUET)) {
+                items.add(new ItemDEnonce("item-" + items.size(), String.valueOf(item.champs().get("enonce"))));
+            }
         }
         return items;
     }
 
-    private static Question avecLEnonce(Question item, String enonce) {
-        return new Question(item.id(), enonce, item.bonneReponse(), item.distracteurs(), item.indice(),
-                item.explication(), item.partDesignee(), item.texteSupport(), item.illustration(),
-                item.illustrationTexteAlternatif(), item.texteAVoixHaute(), item.tableauSupport());
+    private static ItemDEnonce avecLEnonce(ItemDEnonce item, String enonce) {
+        return new ItemDEnonce(item.id(), enonce);
     }
 
     /** Le juge : un seul enonce sur tous les items, de dix mots au plus. Fonction pure sur les items. */
-    static List<String> griefs(List<Question> items) {
+    static List<String> griefs(List<ItemDEnonce> items) {
         List<String> griefs = new ArrayList<>();
         Set<String> enonces = new LinkedHashSet<>();
         items.forEach(item -> enonces.add(item.enonce()));
@@ -81,7 +79,7 @@ class LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest {
 
     @Test
     void lEnonceDuPaquetEstUniqueEtDeDixMotsAuPlus() {
-        List<Question> items = items();
+        List<ItemDEnonce> items = items();
 
         assertThat(items).as("ADR-0003 : ce garde-fou ne prouve rien sans item").isNotEmpty();
         assertThat(griefs(items)).isEmpty();
@@ -92,7 +90,7 @@ class LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest {
 
     @Test
     void unEnonceDifferentSurUnItemFaitEchouerLeGardeFou() {
-        List<Question> items = new ArrayList<>(items());
+        List<ItemDEnonce> items = new ArrayList<>(items());
         items.set(0, avecLEnonce(items.get(0), "Quelle œuvre va avec celle-ci ?"));
 
         assertThat(griefs(items)).anyMatch(grief -> grief.contains("enonces differents"));
@@ -102,7 +100,7 @@ class LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest {
     @Test
     void unEnonceDeOnzeMotsSurTousLesItemsFaitEchouerLeGardeFou() {
         String onzeMots = "Quelle œuvre est faite de la même façon que celle-ci, ici\u00a0?";
-        List<Question> items = items().stream().map(item -> avecLEnonce(item, onzeMots)).toList();
+        List<ItemDEnonce> items = items().stream().map(item -> avecLEnonce(item, onzeMots)).toList();
 
         assertThat(AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest.mots(onzeMots)).hasSize(MOTS_AU_PLUS + 1);
         assertThat(griefs(items)).hasSize(1).allSatisfy(grief -> assertThat(grief).contains("mots"));
@@ -112,7 +110,7 @@ class LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest {
     @Test
     void unEnonceDeDixMotsSurTousLesItemsNeFaitPasEchouerLeGardeFou() {
         String dixMots = "Quelle œuvre est faite de la même façon que celle-ci\u00a0?";
-        List<Question> items = items().stream().map(item -> avecLEnonce(item, dixMots)).toList();
+        List<ItemDEnonce> items = items().stream().map(item -> avecLEnonce(item, dixMots)).toList();
 
         assertThat(AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest.mots(dixMots)).hasSize(MOTS_AU_PLUS);
         assertThat(griefs(items)).isEmpty();
