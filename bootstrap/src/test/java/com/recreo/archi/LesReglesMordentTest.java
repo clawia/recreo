@@ -541,6 +541,19 @@ class LesReglesMordentTest {
     }
 
     /**
+     * ADR-0105 : la bascule de vue qui recopie le marqueur de partie pour retenir un choix
+     * d'affichage au-dela de la session.
+     */
+    @Test
+    void unChoixDeVueRetenuParUnCookieEstRefuse() {
+        assertThatThrownBy(() -> LeSeulCookieEstLeMarqueurDePartieTest.aucunCookieNeNaitHorsDuMarqueurDePartie
+                .check(contreExemples("com.recreo.adapter.web.contreexemple")))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("PreferenceDeVueEnCookieContreExemple.basculer")
+                .hasMessageContaining("jakarta.servlet.http.Cookie.<init>");
+    }
+
+    /**
      * ADR-0019 : une regle d'existence n'a pas de classe fautive - la faute serait une absence, meme
      * mecanisme que uneAbstractionCiteeQuiDisparaitEstRefusee (ADR-0005).
      */

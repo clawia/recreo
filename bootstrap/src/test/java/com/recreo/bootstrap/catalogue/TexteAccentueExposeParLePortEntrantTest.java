@@ -3,16 +3,21 @@ package com.recreo.bootstrap.catalogue;
 import com.recreo.application.catalog.GameDefinition;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.domain.content.ContentDescriptor;
+import com.recreo.domain.mechanic.GameSession;
 import com.recreo.domain.mechanic.MechanicId;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.RecordComponent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -1801,7 +1806,61 @@ class TexteAccentueExposeParLePortEntrantTest {
 
     @Test
     void touteChaineExposeeParLeCatalogueReelEstInventoriee() {
-        verifierQueToutePorteEstInventoriee(partie.jeuxDisponibles(), partie.niveauxDuCatalogue());
+        List<GameDefinition> jeuxLus = new ArrayList<>(partie.jeuxDisponibles());
+        partie.niveauxDuCatalogue().forEach(niveau -> jeuxLus.addAll(partie.jeuxDuNiveau(niveau)));
+        verifierQueToutePorteEstInventoriee(jeuxLus, partie.niveauxDuCatalogue());
+    }
+
+    /**
+     * ADR-0105, regle 1 : les methodes du port entrant que cet inventaire lit. Le test ci-dessus les
+     * appelle toutes les trois ; cette liste ne dispense de rien, elle est comparee par egalite a
+     * celles que le port declare.
+     */
+    private static final Set<String> METHODES_DU_PORT_LUES_PAR_L_INVENTAIRE =
+            Set.of("jeuxDisponibles", "niveauxDuCatalogue", "jeuxDuNiveau");
+
+    /**
+     * ADR-0105, regle 1 : les methodes d'un port entrant qui parlent a une vue, c'est-a-dire toutes
+     * sauf celles qui rendent une session de jeu. Le texte d'une session est du texte de paquet,
+     * juge dans {@code adapter-content} : c'est la frontiere que la Javadoc de cette classe trace
+     * deja entre un record et un {@code ContentSource}, lue ici sur le type de retour.
+     */
+    static Set<String> methodesQuiParlentAUneVue(Class<?> port) {
+        return Arrays.stream(port.getMethods())
+                .filter(methode -> !GameSession.class.isAssignableFrom(methode.getReturnType()))
+                .map(Method::getName)
+                .collect(Collectors.toCollection(TreeSet::new));
+    }
+
+    static void verifierQueChaqueMethodeDuPortEstLue(Class<?> port) {
+        assertThat(methodesQuiParlentAUneVue(port))
+                .as("ADR-0105 : une methode du port entrant qui parle a une vue expose des chaines "
+                        + "qu'un gabarit rend sous th:text. Cet inventaire ne les voit que s'il "
+                        + "l'appelle : appelle-la dans touteChaineExposeeParLeCatalogueReelEstInventoriee "
+                        + "et ajoute son nom a METHODES_DU_PORT_LUES_PAR_L_INVENTAIRE dans le meme commit")
+                .isEqualTo(new TreeSet<>(METHODES_DU_PORT_LUES_PAR_L_INVENTAIRE));
+    }
+
+    @Test
+    void chaqueMethodeDuPortEntrantQuiParleAUneVueEstLueParCetInventaire() {
+        verifierQueChaqueMethodeDuPortEstLue(PartieUseCase.class);
+    }
+
+    /**
+     * Le port tel que le chantier de l'accueil en deux vues le ferait grandir : une methode neuve qui
+     * rend les matieres d'un niveau. Avant ADR-0105, ses chaines - les libelles de matiere que
+     * l'enfant lit sur une tuile - passaient sous th:text sans entrer dans cet inventaire.
+     */
+    interface PortQuiRendLesMatieresDUnNiveau extends PartieUseCase {
+        List<String> matieresDuNiveau(String niveau);
+    }
+
+    @Test
+    void uneMethodeNeuveDuPortQueLInventaireNeLitPasFaitEchouerLeGardeFou() {
+        assertThatThrownBy(() -> verifierQueChaqueMethodeDuPortEstLue(PortQuiRendLesMatieresDUnNiveau.class))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("ADR-0105")
+                .hasMessageContaining("matieresDuNiveau");
     }
 
     /**

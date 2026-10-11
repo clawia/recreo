@@ -46,10 +46,18 @@ class FrontieresDuJavaScriptTest {
      * pour la comparer a un cadre reprendrait cote client une decision que le serveur seul doit
      * rendre. Verifies sur le materiau reel et non sur une fixture, comme le reste de cette liste :
      * aucun des sept ne figure dans {@code recreo.js} au jour de cet amendement.
+     *
+     * <p><b>ADR-0105, regle 3 : trois mots rejoignent la liste.</b> {@code cookie}, {@code indexedDB}
+     * et {@code caches.} nomment les trois stockages du navigateur qui survivent a la session HTTP et
+     * que {@code localStorage} ne couvrait pas. Un choix de vue de l'accueil retenu cote client par
+     * l'un d'eux survivrait a la session que DEC-0028 laisse seule porter l'etat ; c'est le chemin le
+     * moins cher d'une bascule ecrite en script. Absents de {@code recreo.js} au jour de cet
+     * amendement, verifie par recherche insensible a la casse sur {@code static/js/}.</p>
      */
     private static final List<String> INTERDITS_JS = List.of(
             "fetch(", "XMLHttpRequest", "JSON.parse", "JSON.stringify",
             "localStorage", "sessionStorage", "eval(",
+            "cookie", "indexedDB", "caches.",
             "score", "correct", "bonneReponse", "reponse",
             "proposition", "colonne",
             "zone", "clientX", "clientY", "offsetX", "offsetY",
