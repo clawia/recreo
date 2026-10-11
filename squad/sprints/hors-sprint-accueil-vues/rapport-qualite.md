@@ -252,3 +252,7 @@ Relance sur le fichier final (cette section editee) : voir la derniere ligne de 
 - **V7.** La vue en session apres expiration (critere "Perdu avec elle") et le critere "Rien de persiste" (`Set-Cookie`,
   `localStorage`) : je n'ai lu que l'en-tete `Set-Cookie` d'une reponse (section 3), pas les fichiers de `static/js`, et je n'ai pas
   invalide une session.
+
+## 9. Relance sur le fichier final
+
+`bash outils/mvn-jdk21.sh -B -q -o -pl bootstrap -am test -Dtest=ToutesLesReferencesDeDecisionResolventTest,ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest -Dsurefire.failIfNoSpecifiedTests=false` : exit 0, 3 tests et 10 tests, 0 echec, 0 erreur (rapports XML). Perimetre : `bootstrap` et ses amonts, pas le depot ; ce sont les deux garde-fous qui lisent les `.md`. Job `chemins` relance : exit 0. Lance sur le fichier tel qu il etait avant l ajout de cette section.
