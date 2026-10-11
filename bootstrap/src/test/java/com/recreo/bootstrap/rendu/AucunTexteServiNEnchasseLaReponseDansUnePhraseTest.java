@@ -302,7 +302,7 @@ class AucunTexteServiNEnchasseLaReponseDansUnePhraseTest {
 
         for (GameDefinition jeu : partie.jeuxDisponibles()) {
             Item premier = premierItem(jeu.contenu());
-            if (AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest.estUneReponseEnImage(premier)) {
+            if (AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest.aSaBonneReponseEnImage(premier)) {
                 assertThat(jeuxJuges).as("%s a des reponses en image", jeu.id()).doesNotContain(jeu.id());
             } else if (!(premier instanceof ZoneADesigner)) {
                 assertThat(jeuxJuges).as("%s a des reponses ecrites", jeu.id()).contains(jeu.id());

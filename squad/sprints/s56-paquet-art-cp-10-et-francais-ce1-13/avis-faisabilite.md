@@ -366,3 +366,31 @@ Sur ce worktree (`bb4041c8` plus cet amendement), avant commit, JDK 21.0.10 rapp
 - **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : sort 0.
 - **`prefixes`** : `verifier-prefixes-test.sh` et `commit-atteignable-test.sh` sortent 0 ; le sujet du commit passe dans `verifier-prefixes.sh` apres sa creation.
 - **`outils`** : non lance pour cet amendement ; aucun outil n'est touche depuis la mesure de la section 11.
+
+
+## Amendement du 2026-10-11 (theo-archi) - `B2`, `B3`, `B5`, `B6`, `B7`, `B8` : garde-fou propose ou refus
+
+Annotation datee ; rien au-dessus n'est reecrit. Source : `ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md` (section 1, et la liste
+*"Ce qu'un test peut mordre"*) ; `rapport-lea-dev.md` de s56, section 5 (les six conditions **non gardees**). Critere, celui de mon avis de s55
+(T2) : un test est du quand la condition est une propriete decidable d'un item nomme, et qu'il interdirait reellement quelque chose.
+
+**Etat du paquet servi, lu sur les fichiers et non sur un tableau** (script Python hors depot, lecture des segments `SOF` des JPEG de
+`static/oeuvres/` et du YAML `cp-rapprocher-deux-oeuvres.yaml` sur `bdd6dbe4`) : six items ; aucune bonne oeuvre seule de son format parmi
+les trois propositions, ni seule a partager celui de la reference ; references uniques ; couples (reference, bonne) uniques et symetriques ;
+`oeuvre-hippopotame` absente ; un seul enonce, un seul texte alternatif. **Les six conditions tiennent aujourd'hui** ; la question est ce qui
+les garde demain.
+
+| Condition | Verdict | Forme, ou motif du refus |
+|---|---|---|
+| `B2` texte alternatif de la reference, le meme partout, celui de `cp-decrire-une-oeuvre` | **garde-fou propose** | les `illustrationTexteAlternatif` du paquet forment une seule valeur, egale a celle de `cp-decrire-une-oeuvre` lue dans son fichier (pas recopiee). Interdit reellement : un texte alternatif qui nomme le sujet d'une reference, donc la paire (`X1`). Morsure : un item mute avec *"Une chambre"* |
+| `B3` reference unique, couple unique, paires dans les deux sens | **garde-fou propose** | references deux a deux distinctes ; couples (reference, bonne) distincts ; l'ensemble des couples est symetrique. Derive du fichier, sans liste des paires. Interdit reellement la mutation `M7` de `lea-dev` (item 2 rendu identique a l'item 1), restee verte |
+| `B5` aucune bonne oeuvre seule de son format | **garde-fou propose**, dans `bootstrap` | le format (largeur ou hauteur) se lit dans le segment `SOF` du JPEG servi ; pour chaque item, la bonne oeuvre n'est ni seule de son format parmi les trois propositions, ni seule a partager celui de la reference. `bootstrap` voit les deux modules (contenu et `static/oeuvres/`). Morsure : un distracteur echange contre une oeuvre de l'autre format. Une image carree ferait rougir le test plutot que d'etre classee : aucune n'existe aujourd'hui |
+| `B6` aucun objet en volume en proposition | **refus** | la propriete *"image plate"* n'est dans aucune donnee : ni le registre ni le paquet ne portent le support. Le seul test possible est une liste de noms (`oeuvre-hippopotame`) : il garderait le cas connu et passerait vert sur la prochaine restauration d'un objet (`1db6348f^` en porte au moins quatre : amphore, vase Ming, vase Shang, bateau). C'est l'echec par omission d'un perimetre enumere. `B4` ferme le vivier a s56 sur une seule statuette : `nadia-prof` la juge a l'audit. **Ce qui me ferait changer d'avis** : la restauration d'un second objet en volume ; alors un champ de support dans le registre (`ADR-0082`), et le test se derive de lui |
+| `B7` 4 a 6 items | **garde-fou propose**, a faible valeur | le compte d'items du paquet entre 4 et 6. Interdit reellement un paquet reduit a une paire (refus nomme par `nadia-prof`). La borne haute ne peut etre franchie qu'avec de nouvelles paires, donc de nouvelles oeuvres ; elle reste ecrite par coherence. `nombreDeManches` est deja juge par `ADR-0023` |
+| `B8` enonce identique sur tous les items | **garde-fou propose, partiel** | un seul enonce dans le paquet, et dix mots au plus (comptage d'`ADR-0101`). **Pas le texte litteral** : `nadia-prof` accepte *"un autre texte qui tient la barre"* ; figer le sien refuserait un texte recevable. Que l'enonce demande *"la facon dont l'oeuvre est faite"* reste a elle |
+
+**Forme et proprietaire.** `B2`, `B3`, `B7`, `B8` : un test de paquet `PaquetCpRapprocherDeuxOeuvresTest` dans `adapter-content`, sur le
+modele des tests de paquet existants, avec ses jeux fautifs sous `contreexemple/`. `B5` : un test dans `bootstrap/archi`, a cote des
+garde-fous d'`ADR-0104`. Ce sont des tests de contenu, pas des regles d'architecture : **a l'auteure du paquet, `lea-dev`**, environ
+0,25 j pour les quatre premiers et 0,25 j pour `B5`. Aucun `ADR`, aucune `ArchRule`. **Poste sans ligne au planning** : a `sofia-sm`. Tant
+qu'il n'est pas ecrit, la ligne *"non garde"* de `rapport-lea-dev.md` reste exacte.

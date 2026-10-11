@@ -443,3 +443,52 @@ largeurs deja mesurees, et la marque visuelle de la revelation.
    cliquet de `RessourcesTiercesTest` qui passe aussi a 4. **Le prix pedagogique est a `nadia-prof`** : un
    enfant qui rapproche puis presse "2" lit une etiquette, et c'est l'objection qu'elle a faite au
    quadrillage (*"un enfant qui repond 'A3' en lisant trois etiquettes n'a pas montre ou il est"*).
+
+
+## Amendement du 2026-10-11 (s56, `theo-archi`) - deux garde-fous de rendu ecartent les reponses en image ; ratification de `0076cbff`
+
+**Ce que la decision 7 ne disait pas.** Son tableau listait les garde-fous que ce chantier change ; il oubliait deux garde-fous de rendu qui
+supposent une reponse ecrite. Au branchement du premier paquet (`cp-rapprocher-deux-oeuvres`), ils ont rougi : REV-3
+(`AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest`) et celui d'`ADR-0083` (`AucunTexteServiNEnchasseLaReponseDansUnePhraseTest`).
+`lea-dev` les a fait ecarter ces jeux (`0076cbff`, fusionne par `bdd6dbe4`), en proposant l'exclusion a ma ratification.
+
+**Ratification : la forme est la bonne, avec deux corrections.** La decision 4 (points 4 et 5) ne rend la reponse en texte ni a la revelation
+ni a la fin de partie : REV-3 n'a rien a apparier, et le garde-fou d'`ADR-0083` compare un emplacement de reponse que ces ecrans n'ont pas
+(la phrase `M4` est constante). Ecarter est donc dire que l'objet n'existe pas, comme `ADR-0088` clause B pour la designation, et non
+fermer les yeux : ce que ces deux garde-fous protegeaient (aucune reponse ecrite hors de sa question, aucun identifiant dans une phrase) est
+juge sur ces ecrans par le garde-fou 4 (`LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest` : aucun `.reponse-attendue`,
+aucun `oeuvre-` dans un noeud de texte, la phrase `M4` exacte a la revelation).
+
+1. **Le test de non-exclusion ne mordait pas sur l'elargissement du predicat.** `seulsLesJeuxADesReponsesEnImageSontHorsDeLaPopulation`
+   (un par garde-fou) jugeait l'exclusion avec le predicat d'exclusion lui-meme. Mesure : `estUneReponseEnImage` mute en "toute `Question`",
+   ce qui ecarte presque tous les jeux ecrits, **REV-3 restait vert** (0 echec sur 4) ; le garde-fou d'`ADR-0083` ne rougissait que par un
+   autre test, par accident. Corrige : l'oracle de ces deux tests est `aSaBonneReponseEnImage`, ecrit a part et plus etroit (la seule bonne
+   reponse porte le prefixe). Meme mutation apres correction : 1 echec dans REV-3, 2 dans `ADR-0083`, dont le test de non-exclusion dans les deux.
+2. **REV-3 decidait sur la premiere manche jouee, l'ecran de fin nomme la reponse de la derniere.** Un paquet qui melangerait items en image
+   et items ecrits (la decision 5 ne l'interdit qu'au sein d'un item) aurait ete ecarte ou garde a tort. Corrige : la derniere manche decide.
+   **Non mordu sur materiau reel** : aucun paquet servi n'est melange ; la mutation inverse (revenir a la premiere) laisse la suite verte.
+
+**Lignes ajoutees au tableau de la decision 7** :
+
+| # | Garde-fou | Changement du | Ce qui le rappelle si on l'oublie |
+|---|---|---|---|
+| 8 | `AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest` (REV-3) | ecarte un jeu dont la derniere manche jouee a une reponse en image ; test de non-exclusion sur un oracle independant | son propre rouge au branchement (`0076cbff`) |
+| 9 | `AucunTexteServiNEnchasseLaReponseDansUnePhraseTest` (`ADR-0083`) | ecarte un item a reponse en image ; meme test de non-exclusion | idem |
+
+**Regle executable.** Les deux tests ci-dessus, dans `bootstrap/rendu`. Pas une `ArchRule` : l'objet est un ecran rendu. Comptes ArchUnit
+inchanges.
+
+**Morsures mesurees**, par `bash outils/mvn-jdk21.sh -B -q -pl bootstrap -am test -Dtest='AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest,AucunTexteServiNEnchasseLaReponseDansUnePhraseTest'
+-Dsurefire.failIfNoSpecifiedTests=false -Dmaven.test.failure.ignore=true` (perimetre : ces deux classes, `-am`), fichiers restaures apres :
+
+| Mutation | REV-3 (4 tests) | `ADR-0083` (4 tests) |
+|---|---|---|
+| aucune | 0 | 0 |
+| exclusion de REV-3 retiree | 3, dont le test de non-exclusion | 0 |
+| exclusion d'`ADR-0083` retiree | 0 | 3, dont le test de non-exclusion |
+| predicat elargi a toute `Question`, avant correction 1 | **0** | 1 (un autre test) |
+| le meme, apres correction 1 | 1, le test de non-exclusion | 2, dont le test de non-exclusion |
+| REV-3 decide sur la premiere manche (correction 2 defaite) | 0 | 0 |
+
+**Ce qui me ferait changer d'avis** : un ecran de fin de partie ou de revelation qui montre a nouveau l'oeuvre attendue (point 5 de la
+decision 4, une image de plus). Alors REV-3 a de nouveau un objet : une reponse montree, a apparier a sa question, et l'exclusion tombe.
