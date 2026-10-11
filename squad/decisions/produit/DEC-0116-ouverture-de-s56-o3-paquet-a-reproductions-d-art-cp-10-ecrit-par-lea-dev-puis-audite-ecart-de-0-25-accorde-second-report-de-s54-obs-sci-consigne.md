@@ -419,3 +419,60 @@ Decision de l'utilisatrice du 2026-10-09 (A.2) : **"Reporter a s57, abandon ou p
 - `theo-archi` : le cout technique du retrait (A.17, D1). `nadia-prof` : le rejeu du paquet corrige et de `VSJ-CE1-R1`. `lea-dev`, `ines-design`, `theo-archi` : la cause des 105 px et de l'ecran de fin (forme a eux, fiche section 7). `marc-dev` : `VSJ-CE1-R1`.
 - Les stories sont au backlog, "Cloture de s56", et ne sont engagees que par la `DEC` d'ouverture de s57. Aucun code, aucun contenu, aucun catalogue changes par cet amendement. Ne prononce aucun Done, ne fixe aucun tarif.
 - **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.
+
+---
+
+## Amendement du 2026-10-11 (s56, apres la cloture, `camille-po`, sixieme) : reponses sur `Q4`, `Q3` et `Q6`, statut inchange
+
+Annotation datee. Rien au-dessus n'est reecrit ; les lignes remplacees sont nommees. Arbre : `round-two` a `8ac33440`. Sources lues : `DEC-0114` section 0.4, section 7.2 et A.27 ; `DEC-0115` sections 0.1, 3, A.22 ; `DEC-0062` section 3 ; `DEC-0116` 0.1, 0.5, 4, A.16, A.18 ; `proposition-s56.md` (arithmetique des lots du francais CE1, section 6) ; `avis-faisabilite.md` de s56, section 9 ; `ARBITRAGE-PREALABLE-s30-...` (`PAR-9`). Cette annotation n'ecrit pas la `DEC` d'ouverture de s57.
+
+### A.21 Les mots de l'utilisatrice, forme 2 de `DEC-0062` : `de l'utilisatrice`, le 2026-10-11
+
+Trois reponses, recues par l'agent lanceur, qui les atteste reponses directes. **Je ne les ai pas lues de sa main et je ne peux pas les verifier depuis le depot** (meme reserve que 0.1, A.1, A.4) : si elle les dement, les points qui en dependent redeviennent des questions. Mots cites :
+
+> "D2 ordre ok"
+> "D3 deux instances de nadia"
+> "D4 non"
+
+**Rattachement, qui est celui de l'agent lanceur et non le sien** : `D2` repond a `Q4` (l'ordre des matieres de `DEC-0115` section 3 vaut, sans modification) ; `D3` repond a `Q3` (deux instances de `nadia-prof` en francais CE1 a partir de s57) ; `D4` repond a `Q6` (pas de mesure de pli de `LIS-2`, donc `cm1-lire-et-restituer` n'entre pas en s57). **Deux de ces codes sont deja employes** pour d'autres questions le 2026-10-09 (`D2` : "s56 prioritaire" ; `D4` : "ok", francais CE1 sur l'instance A ; backlog, "Reponses de l'utilisatrice du 2026-10-09") : un code `D` n'est lisible qu'avec sa date. **Ses mots ne nomment** ni le sprint, ni le francais CE1 pour `D3`, ni `FRA-CM1-01` pour `D4` : ces precisions sont le rattachement de l'agent lanceur, que je ne cite pas comme ses mots.
+
+### A.22 `Q4` : lecture de `DEC-0114` 0.4 (a), et le statut
+
+**Le texte.** `DEC-0114` 0.4 : `Acceptee` quand l'un des deux est vrai, *"(a) ses mots sont ecrits dans le depot en forme 2 (avec la date) ; (b) la `DEC` d'ouverture de s55 reprend l'ordre sous son propre motif de forme 1"*. `DEC-0116` 0.5 reprend la regle pour cette decision : `Acceptee` *"par un amendement qui cite les mots de l'utilisatrice sur `Q4`, ou qui reprend l'ordre sous des motifs de forme 1"*.
+
+**A la lettre, (a) est satisfaite** : ses mots sont ecrits ici, entre guillemets, avec la date (A.21). **Je ne passe pas le statut**, parce que la lecture n'est pas sans doute, pour trois raisons :
+
+1. **Le depot a deux lectures de la meme situation.** `DEC-0114` A.27, point 2, juge (a) *"non satisfaite"* pour un `ok` relaye : *"relaye, pas cite de sa main"*. `DEC-0115` A.22 passe a `Acceptee` sur des mots relayes de la meme facon (*"J'accepte que la mécanique d'ART-CP-10 soit financée dans s55."*, attestes par l'agent lanceur, *"si l'utilisatrice la dement, il redevient `Proposee`"*). **Je ne vois pas, dans les deux textes, la difference qui ferait gouverner l'une plutot que l'autre.**
+2. **Les mots sont `"D2 ordre ok"`.** Le rattachement a `Q4` est celui de l'agent lanceur (A.21), le code `D2` a deja designe une autre question le 2026-10-09, et `ok` est le mot que `DEC-0114` A.27 dit ne pas etre un motif : pour (b), mais aussi parce qu'il fonde *"que l'ordre est suivi (forme 3, `DEC-0062` section 3.2), pas pourquoi il est defendable"*. Ici il porte le mot `ordre`, ce qui est mieux que A.27, et ne dit toujours ni quel ordre ni pour quel sprint.
+3. **`DEC-0116` 0.1 s'est donne une regle** : si elle dement les mots relayes, le statut reste `Proposee`. Passer a `Acceptee` sur une attestation qu'elle peut dementir, quand le depot hesite sur sa valeur, ferait de ce passage le geste que `DEC-0114` 0.4 voulait eviter (*"je ne le promeus pas en motif en l'ecrivant dans une `DEC` `Acceptee`"*).
+
+**Statut : `Proposee`, inchange.** **Ce qui la ferait passer, au choix** : (i) ses mots lus de sa main, ou confirmes par elle dans une reponse que le depot peut citer sans intermediaire ; (ii) la `DEC` d'ouverture de s57 reprend l'ordre **sous des motifs de forme 1 par rang**, comme `DEC-0115` section 3 (satisfait `DEC-0114` 0.4 (b)). Pour (ii), la table de `DEC-0115` section 3 est a remesurer : le rang 2 est epuise (EMC CM1, 11 lignes sur 11 atteignables, `DEC-0116` 2.2 et 4), le rang 3 est vide pour s57 (A.24), le rang 4 etait cite sans mesure. Je ne le fais pas ici.
+
+**Ce que ses mots fondent malgre tout**, sous la reserve de reception de A.21 : l'ordre de `DEC-0115` section 3 est suivi pour s57, sans modification. Un ordre suivi sur forme 2 relayee n'est pas une `DEC` acceptee : la `DEC` d'ouverture de s57 le dit ainsi. **Remplace** : A.16, dernier paragraphe, dans sa seule mention que `Q4` est sans reponse ; A.19, derniere phrase (*"`Q4` sans reponse (A.16) : l'ordre des matieres n'est pas decide"*) : l'ordre est suivi, la decision n'est pas acceptee.
+
+### A.23 `Q3` : ce que la reponse engage, sans le decider a la place d'autres
+
+**Ce qu'elle dit** (A.21) : deux instances de `nadia-prof`, lues par l'agent lanceur comme deux instances de francais CE1 a partir de s57. **Remplace** A.18 point 1 (*"Sans reponse, s57 compte une instance de francais CE1"*) : la condition n'est plus remplie.
+
+**Prerequis de s57, que la `DEC` d'ouverture de s57 place et que je ne place pas ici** :
+
+1. **L'accord de `nadia-prof` sur `PAR-2`.** Elle a refuse d'amender `PAR-2` pour le francais CE1 le 2026-10-06 et a ecrit ce qui la ferait reexaminer (`DEC-0114` 7.2) : un decoupage qui ne coupe aucune frontiere de la table de s48 section 7, *"sur un sprint ou aucune autre instance ne porte de terrain neuf"*, avec un avis de `theo-archi`. **La reponse de l'utilisatrice ne vaut pas accord de `nadia-prof`** : l'autorite sur `PAR-2` est a elle. Le decoupage X / Y de `DEC-0114` 7.2 est la proposition a lui soumettre ; la condition *"un sprint ou A prend X seule"* est remplie par `-13` a s56 (`DEC-0116` section 4), sa seconde moitie (A et A' ensemble) est s57.
+2. **L'amendement d'`ADR-0065` par `theo-archi`.** Son avis de s56 (section 9, qui reprend celui de s55, T5) : une story, **une a la fois, fusionnee avant tout lot de la seconde instance** ; le lot de la seconde instance attend. Ce n'est pas encodable en `ArchRule` ; le seul automate est le conflit de fusion. **Consequence de calendrier** : si l'amendement n'est pas fusionne a l'ouverture du premier worktree de la seconde instance, son premier lot glisse. C'est un prerequis a placer, avec proprietaire et heure, dans la `DEC` d'ouverture et le planning de s57 (`sofia-sm`).
+3. **Le budget.** `PAR-9` : la somme des budgets par instance est egale a la borne du sprint ; `PAR-8` : borne 8,0, plafond dur de 5,0 par instance. **Deux instances : 4,0 chacune, marge de rejeu comprise, somme 8,0.** Chaque instance porte un arbitrage prealable (0,5) et une marge de rejeu (0,5) : il reste **3,0 par instance** pour les lots et les reprises, soit au plus trois lots de 1,0 et rien d'autre. **L'ecart de s56 (0,5, B a 4,75) n'est pas une jurisprudence** (2.2, A.18 point 5) : s57 compte a 8,0.
+4. **`A10`.** Elle n'est due que si une **troisieme** instance est proposee (`DEC-0116` section 6 : *"due avant toute `DEC` qui propose une troisieme instance"*). **Remplace** A.18 point 4, dans sa seule fin (*"et, selon A.6, avant la `DEC` d'ouverture de s57 si `Q3` est acceptee"*) : `Q3` acceptee ne la declenche pas par elle-meme.
+
+**Le point que la reponse ne tranche pas : combien d'instances compte s57.** Deux instances de francais CE1 (A et A') sont deux. S57 porte aussi la reprise du paquet d'`ART-CP-10` (0,5) et le candidat `S54-OBS-SCI-CONSIGNE` (A.19), qui etaient a l'instance B (`PAR-2` : arts plastiques CP et sciences CM1). **Si B existe en plus de A et A', s57 a trois instances** : `A10` est due, le budget est de 8,0 pour trois (environ 2,67, pas 4,0), et le motif de forme 1 de A.19 est a refaire. **Si B n'existe pas**, ces postes sont portes par A ou A', ce que `PAR-2` et `nadia-prof` disent ou non. **Je ne le lis pas a sa place** ni a celle de l'utilisatrice : la `DEC` d'ouverture de s57 le compte, avec l'avis de `nadia-prof`.
+
+**Le calcul "s58 pour 10 lots"** (`proposition-s56.md`, arithmetique du francais CE1 : *"deux instances a partir de s57 (section 6, Q3) = **s58**"* ; `DEC-0116` section 1 : 10 autres lots de francais CE1, 11 moins `-13`) **suppose** : (i) la seconde instance active des s57 ; (ii) trois lots par instance et par sprint, soit 6 puis 4 ; (iii) zero refus au-dela de la marge, hypothese que le depot n'a pas verifiee et que s56 n'a pas confirmee (un refus et une reserve sur un lot de francais livre, `VSJ-CE1-R1`, 0,5 a prendre sur le budget de l'instance qui la reprend) ; (iv) aucune reprise sur ces 3,0. **Si l'amendement d'`ADR-0065` decale le premier lot de la seconde instance a s58**, s57 compte trois lots (A seule), s58 six, le dixieme tombe a **s59**. Dit pour que s57 ne le decouvre pas a son ouverture ; aucune date n'est engagee.
+
+### A.24 `Q6` : `FRA-CM1-01` hors s57
+
+**Ce que la reponse engage** (lecture de l'agent lanceur de `D4 non`) : pas de mesure de pli de `LIS-2` par `ines-design`, donc `cm1-lire-et-restituer` (`FRA-CM1-01`) n'entre pas en s57. **`A15` reste non engagee, ni report ni dette** : jamais engagee, donc pas un report (`DEC-0116` section 6, ligne `A15`), et la reponse ne cree aucune dette. **Remplace** A.18 point 2 (*"`Q6` ... sans reponse"*). **Consequence pour l'ordre** : le rang 3 de `DEC-0115` section 3 (`G7` a `G11`, 16 paquets `DEGRADE`) est **vide pour s57**, sauf un nouvel arbitrage de `nadia-prof` sur ces paquets (`DEC-0115` section 3, rang 3 : *"aucun plafond ecrit"*) ; `proposition-s56.md` y comptait au plus une ligne achetable, `FRA-CM1-01`. La ligne reste `non couvert` ; la matrice ne change pas (142 / 182). **Ce que ses mots ne disent pas** : si `non` vaut pour s57 seulement ou au-dela ; je lis s57, comme l'agent lanceur, et je ne ferme aucun sprint suivant.
+
+### A.25 Statut, routage, limites
+
+- **Statut : `Proposee`, inchange** (A.22). Aucun passage a `Acceptee`.
+- **Routage** : `sofia-sm` (planning et `DEC` d'ouverture de s57 : les prerequis de A.23, dont l'heure de fusion de l'amendement d'`ADR-0065` ; le compte des instances) ; `nadia-prof` (l'accord sur `PAR-2`, la lecture du compte de trois instances ou de deux, un eventuel arbitrage sur `G7` a `G11`) ; `theo-archi` (la story d'amendement d'`ADR-0065`) ; `ines-design` (rien : `Q6` close pour s57).
+- **Story** : `S57-ADR-0065-DEUX-INSTANCES` ecrite au backlog ("Reponses de l'utilisatrice du 2026-10-11"), **hors `PAR`, non engagee** : elle ne s'engage que par la `DEC` d'ouverture de s57, qui lui donne son proprietaire. Cette annotation implique donc un changement de code et de `ADR` futur : elle est routee a `sofia-sm` dans le meme commit.
+- Aucun code, contenu, catalogue, planning ni ligne de matrice change. Ne prononce aucun Done, ne fixe aucun tarif, n'ecrit pas la `DEC` d'ouverture de s57.
+- **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.
