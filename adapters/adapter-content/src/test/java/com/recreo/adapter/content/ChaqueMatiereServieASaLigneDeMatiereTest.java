@@ -43,7 +43,7 @@ class ChaqueMatiereServieASaLigneDeMatiereTest {
      * APM-6 : la teinte de Histoire des arts est refusee et attend la proposition d'`ines-design`. Cliquet
      * exact : chaque nom doit designer une ligne encore grise, et aucune autre ligne grise n'est admise.
      */
-    static final Set<String> TEINTES_GRISES_EN_ATTENTE = Set.of("Histoire des arts");
+    static final Set<String> TEINTES_GRISES_EN_ATTENTE = Set.of();
 
     private static final Pattern SEGMENT = Pattern.compile("[a-z0-9]+(-[a-z0-9]+)*");
     private static final Pattern PICTOGRAMME = Pattern.compile("[a-z0-9]+(-[a-z0-9]+)*\\.svg");
@@ -257,38 +257,49 @@ class ChaqueMatiereServieASaLigneDeMatiereTest {
     }
 
     /**
-     * APM-6, sur la valeur reelle refusee : la paire grise de Histoire des arts, lue dans la donnee,
-     * posee sur la premiere ligne. Le cliquet n'exempte que la ligne qu'il nomme.
+     * APM-6, la paire grise que nadia-prof a refusee pour Histoire des arts (N6, 2026-10-11), ecrite ici
+     * parce qu'aucune ligne de la donnee n'est plus grise depuis le magenta du rejugement : c'est le
+     * materiau de la morsure, pas une valeur servie.
      */
+    private static final String GRIS_REFUSE_FOND = "#d8dde4";
+    private static final String GRIS_REFUSE_CONTOUR = "#4a5a6b";
+
+    /** APM-6 : la paire grise refusee, posee sur la premiere ligne, est refusee. */
     @Test
-    void laTeinteGriseRefuseePoseeSurUneAutreLigneFaitEchouerLeGardeFou() {
+    void laTeinteGriseRefuseePoseeSurUneLigneFaitEchouerLeGardeFou() {
         List<Matiere> lignes = lignes();
-        Matiere grise = ligneDe(lignes, "Histoire des arts");
         Matiere premiere = lignes.get(0);
-        lignes.set(0, avec(premiere, premiere.libelle(), grise.teinteFond(), grise.teinteContour(),
+        lignes.set(0, avec(premiere, premiere.libelle(), GRIS_REFUSE_FOND, GRIS_REFUSE_CONTOUR,
                 premiere.segment()));
 
         assertThat(griefs(servies(), lignes, TEINTES_GRISES_EN_ATTENTE))
                 .anyMatch(grief -> grief.contains("\"" + premiere.nom() + "\" porte une teinte grise"));
     }
 
-    /** Sans son exemption, la ligne reelle de Histoire des arts est refusee : l'exemption couvre une dette reelle. */
+    /** Le cliquet reste exact : une ligne grise exemptee par son nom est acceptee, une autre ne l'est pas. */
     @Test
-    void sansSonExemptionLaTeinteReelleDeHistoireDesArtsEstRefusee() {
-        assertThat(griefs(servies(), lignes(), Set.of()))
+    void uneExemptionNeCouvreQueLaLigneQuElleNomme() {
+        List<Matiere> lignes = lignes();
+        Matiere grise = ligneDe(lignes, "Histoire des arts");
+        lignes.set(lignes.indexOf(grise), avec(grise, grise.libelle(), GRIS_REFUSE_FOND, GRIS_REFUSE_CONTOUR,
+                grise.segment()));
+
+        assertThat(griefs(servies(), lignes, Set.of("Histoire des arts"))).isEmpty();
+        assertThat(griefs(servies(), lignes, Set.of()))
                 .anyMatch(grief -> grief.contains("\"Histoire des arts\" porte une teinte grise"));
     }
 
-    /** Le cliquet ne survit pas a sa dette : une teinte acceptee sur la ligne exemptee rend l'exemption fausse. */
+    /** La donnee servie ne porte plus aucun gris : le cliquet est vide, et la teinte de Histoire des arts n'est pas grise. */
+    @Test
+    void aucuneLigneServieNEstGriseEtLeCliquetEstVide() {
+        assertThat(TEINTES_GRISES_EN_ATTENTE).isEmpty();
+        assertThat(griefs(servies(), lignes(), Set.of())).isEmpty();
+    }
+
+    /** Le cliquet ne survit pas a sa dette : une exemption qui ne designe plus une ligne grise rend le garde-fou rouge. */
     @Test
     void uneExemptionQuiNeDesignePlusUnGrisFaitEchouerLeGardeFou() {
-        List<Matiere> lignes = lignes();
-        Matiere grise = ligneDe(lignes, "Histoire des arts");
-        Matiere premiere = lignes.get(0);
-        lignes.set(lignes.indexOf(grise), avec(grise, grise.libelle(), premiere.teinteFond(),
-                premiere.teinteContour(), grise.segment()));
-
-        assertThat(griefs(servies(), lignes, TEINTES_GRISES_EN_ATTENTE))
+        assertThat(griefs(servies(), lignes(), Set.of("Histoire des arts")))
                 .anyMatch(grief -> grief.contains("ne designe plus une ligne grise"));
     }
 

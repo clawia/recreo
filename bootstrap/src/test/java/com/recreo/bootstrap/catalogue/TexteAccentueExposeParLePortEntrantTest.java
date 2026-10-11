@@ -1752,7 +1752,7 @@ class TexteAccentueExposeParLePortEntrantTest {
             "#f8d3c2",
             "#e2d4f3",
             "#d2d6f6",
-            "#d8dde4",
+            "#f0baf3",
             "#fbdcb4",
             "#2f6c9f",
             "#7d6208",
@@ -1763,7 +1763,7 @@ class TexteAccentueExposeParLePortEntrantTest {
             "#a5472a",
             "#6e4ba3",
             "#4a50a8",
-            "#4a5a6b",
+            "#85188b",
             "#a35a0b",
             // Hors sprint accueil, P3 (ADR-0106) : segments d'adresse de la donnee de matiere, jamais
             // lus par l'enfant, ecrits a cote de chaque ligne et jamais calcules depuis la matiere
