@@ -98,12 +98,23 @@ class LEnonceDuPaquetCpRapprocherDeuxOeuvresEstUniqueEtCourtTest {
         assertThat(griefs(items)).anyMatch(grief -> grief.contains("enonces differents"));
     }
 
+    /** La borne a sa limite : onze mots sur tous les items, un de plus que la barre, font echouer le garde-fou. */
     @Test
     void unEnonceDeOnzeMotsSurTousLesItemsFaitEchouerLeGardeFou() {
-        String onzeMots = "Quelle œuvre est faite de la même façon que celle-ci, parmi ces trois ?";
+        String onzeMots = "Quelle œuvre est faite de la même façon que celle-ci, ici\u00a0?";
         List<Question> items = items().stream().map(item -> avecLEnonce(item, onzeMots)).toList();
 
-        assertThat(AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest.mots(onzeMots)).hasSize(MOTS_AU_PLUS + 3);
+        assertThat(AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest.mots(onzeMots)).hasSize(MOTS_AU_PLUS + 1);
         assertThat(griefs(items)).hasSize(1).allSatisfy(grief -> assertThat(grief).contains("mots"));
+    }
+
+    /** La borne a sa limite, de l'autre cote : dix mots sur tous les items tiennent la barre. */
+    @Test
+    void unEnonceDeDixMotsSurTousLesItemsNeFaitPasEchouerLeGardeFou() {
+        String dixMots = "Quelle œuvre est faite de la même façon que celle-ci\u00a0?";
+        List<Question> items = items().stream().map(item -> avecLEnonce(item, dixMots)).toList();
+
+        assertThat(AucunEnonceDeCpNeDepasseQuinzeMotsNiDeuxPhrasesTest.mots(dixMots)).hasSize(MOTS_AU_PLUS);
+        assertThat(griefs(items)).isEmpty();
     }
 }
