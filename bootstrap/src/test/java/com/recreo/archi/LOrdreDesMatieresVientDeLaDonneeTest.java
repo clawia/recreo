@@ -2,7 +2,6 @@ package com.recreo.archi;
 
 import com.recreo.adapter.content.YamlContentPackLoader;
 import com.recreo.adapter.web.contreexemple.MatiereEnumereeContreExemple;
-import com.recreo.application.catalog.GroupeDeJeux;
 import com.recreo.application.catalog.Matiere;
 import com.recreo.application.usecase.PartieService;
 import com.tngtech.archunit.core.domain.JavaClass;
@@ -130,7 +129,7 @@ class LOrdreDesMatieresVientDeLaDonneeTest {
         assertThat(niveaux).as("ADR-0003 : aucun niveau, aucun ordre a juger").hasSizeGreaterThan(1);
 
         for (String niveau : niveaux) {
-            List<String> rendu = service.matieresDuNiveau(niveau).stream().map(GroupeDeJeux::matiere).toList();
+            List<String> rendu = service.matieresDuNiveau(niveau).stream().map(groupe -> groupe.matiere().nom()).toList();
             assertThat(rendu).as("ADR-0106, APM-4 : les matieres du niveau %s", niveau)
                     .hasSizeGreaterThan(1)
                     .isEqualTo(ordreDuFichier.stream().filter(rendu::contains).toList());

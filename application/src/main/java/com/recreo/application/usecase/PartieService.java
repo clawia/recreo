@@ -17,6 +17,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.NoSuchElementException;
 
 /**
@@ -87,24 +88,37 @@ public final class PartieService implements PartieUseCase {
         for (GameDefinition jeu : jeuxDuNiveau(niveau)) {
             parMatiere.computeIfAbsent(jeu.descripteur().matiere(), matiere -> new ArrayList<>()).add(jeu);
         }
-        List<String> ordre = catalogue.matieres().stream().map(Matiere::nom).toList();
+        List<Matiere> lignes = catalogue.matieres();
+        List<String> ordre = lignes.stream().map(Matiere::nom).toList();
         for (String matiere : parMatiere.keySet()) {
             if (!ordre.contains(matiere)) {
                 throw new IllegalStateException("ADR-0106 : la matiere \"" + matiere
                         + "\" est servie sans ligne dans la donnee de matiere");
             }
         }
-        return parMatiere.entrySet().stream()
-                .sorted(Comparator.comparingInt(entree -> ordre.indexOf(entree.getKey())))
-                .map(entree -> new GroupeDeJeux(entree.getKey(), entree.getValue()))
+        return lignes.stream()
+                .filter(ligne -> parMatiere.containsKey(ligne.nom()))
+                .map(ligne -> new GroupeDeJeux(ligne, parMatiere.get(ligne.nom())))
                 .toList();
     }
 
+    /**
+     * ADR-0106 decision 5 : le segment d'adresse est resolu ici, sur la ligne de matiere qui le porte,
+     * jamais compare a la matiere du paquet ni traduit par l'adaptateur. Un segment sans ligne, ou
+     * une matiere sans jeu a ce niveau, rend un {@code Optional} vide : l'adresse vient d'un enfant ou
+     * d'un favori, pas d'un defaut de la donnee.
+     */
     @Override
-    public List<GameDefinition> jeuxDeLaMatiere(String niveau, String matiere) {
-        return jeuxDuNiveau(niveau).stream()
-                .filter(jeu -> jeu.descripteur().matiere().equals(matiere))
-                .toList();
+    public Optional<GroupeDeJeux> groupeDeLaMatiere(String niveau, String segment) {
+        return catalogue.matieres().stream()
+                .filter(ligne -> ligne.segment().equals(segment))
+                .findFirst()
+                .flatMap(ligne -> {
+                    List<GameDefinition> jeux = jeuxDuNiveau(niveau).stream()
+                            .filter(jeu -> jeu.descripteur().matiere().equals(ligne.nom()))
+                            .toList();
+                    return jeux.isEmpty() ? Optional.empty() : Optional.of(new GroupeDeJeux(ligne, jeux));
+                });
     }
 
     @Override

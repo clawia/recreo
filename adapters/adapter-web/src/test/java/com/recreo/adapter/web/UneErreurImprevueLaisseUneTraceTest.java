@@ -26,6 +26,7 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -150,8 +151,8 @@ class UneErreurImprevueLaisseUneTraceTest {
                 }
 
                 @Override
-                public List<GameDefinition> jeuxDeLaMatiere(String niveau, String matiere) {
-                    return List.of();
+                public Optional<GroupeDeJeux> groupeDeLaMatiere(String niveau, String segment) {
+                    return Optional.empty();
                 }
 
                 @Override
