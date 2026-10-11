@@ -1,0 +1,175 @@
+/* VEHICULE DE MESURE, JAMAIS DU CODE SERVI. Regles candidates de proposition-ines-accueil-vues.md,
+   chargees APRES les deux feuilles reelles (ordre d'ADR-0014). Aucune n'est dans recreo.css.
+   Aucune regle ne nomme une matiere ni un jeu : la teinte est un emplacement numerote (data-teinte),
+   comme les quatre teintes cycliques des propositions ; qui occupe quel emplacement est une donnee. */
+
+[data-teinte="1"]  { --teinte-fond: #cfe3f6; --teinte-bord: #2f6c9f; }
+[data-teinte="2"]  { --teinte-fond: #f4e3a1; --teinte-bord: #7d6208; }
+[data-teinte="3"]  { --teinte-fond: #f8d3c2; --teinte-bord: #a5472a; }
+[data-teinte="4"]  { --teinte-fond: #bfe8e4; --teinte-bord: #1f7770; }
+[data-teinte="5"]  { --teinte-fond: #d4ecc0; --teinte-bord: #4a7a1c; }
+[data-teinte="6"]  { --teinte-fond: #e8d6bf; --teinte-bord: #7a5230; }
+[data-teinte="7"]  { --teinte-fond: #f6cde0; --teinte-bord: #a03a6b; }
+[data-teinte="8"]  { --teinte-fond: #e2d4f3; --teinte-bord: #6e4ba3; }
+[data-teinte="9"]  { --teinte-fond: #d2d6f6; --teinte-bord: #4a50a8; }
+[data-teinte="10"] { --teinte-fond: #d8dde4; --teinte-bord: #4a5a6b; }
+[data-teinte="11"] { --teinte-fond: #fbdcb4; --teinte-bord: #a35a0b; }
+
+/* Variante sans teinte : un seul emplacement neutre, deja dans la feuille (bloc d'explication). */
+body.teinte-neutre [data-teinte] {
+    --teinte-fond: var(--recreo-explication-fond);
+    --teinte-bord: var(--recreo-explication-bordure);
+}
+
+/* Rang au-dessus de la liste : la phrase du filtre (S15-2) et, a droite, l'unique bouton de vue. */
+.barre-vue {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin: 0.5rem 0;
+}
+
+.barre-vue .filtre-niveau {
+    margin: 0 auto 0 0;
+}
+
+/* Meme boite que .retour-accueil (contour d'accent, 1,25 rem, 2,75 rem, 0,5 rem 1,1 rem) : le bouton
+   de vue ne depasse aucune action de l'ecran (ADR-0017). Un contour dit "secondaire", jamais
+   "jouer" : le plein d'accent reste a .demarrer. */
+.bascule {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    color: var(--recreo-accent);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bascule:hover,
+.bascule:active,
+.bascule:focus-visible {
+    color: var(--recreo-accent);
+    background-color: transparent;
+    border: 0.125rem solid var(--recreo-accent);
+}
+
+.bascule:focus-visible {
+    box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
+
+.bascule svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
+}
+
+/* Etage 1 de V1 : une tuile par matiere. La tuile est un CHOIX (pastel, texte sombre), comme les
+   propositions ; le plein d'accent reste le seul "lance un jeu". Memes composantes de boite que
+   .demarrer (1,25 rem, 2,75 rem, 0,75 rem 1,25 rem). */
+.matieres {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 0.75rem;
+    margin: 0.75rem 0 1rem;
+    padding: 0;
+}
+
+.tuile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--recreo-texte);
+    background-color: var(--teinte-fond);
+    border: 0.125rem solid var(--teinte-bord);
+    border-radius: 1rem;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tuile:hover,
+.tuile:active,
+.tuile:focus-visible {
+    color: var(--recreo-texte);
+    background-color: var(--teinte-fond);
+    border: 0.125rem solid var(--teinte-bord);
+}
+
+.tuile:focus-visible {
+    box-shadow: inset 0 0 0 0.1875rem currentColor;
+}
+
+.tuile img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.matieres li > .tuile {
+    height: 100%;
+}
+
+/* Bandeau de matiere : pictogramme, mot, teinte. Il n'est pas pressable : pas de rayon, pas
+   d'ombre, un liseret plein a gauche. Il reste colle en haut de la fenetre quand on defile sa
+   section (position: sticky borne par la section, donc il cede la place au suivant). */
+.entete-matiere {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    margin: 0;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--recreo-texte);
+    background-color: var(--teinte-fond);
+    border-left: 0.5rem solid var(--teinte-bord);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.entete-matiere img {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: none;
+}
+
+.bloc-matiere {
+    margin: 0 0 1rem;
+}
+
+/* Cartes de jeu : le bouton "Jouer" reel (.demarrer), en grille de deux a trois colonnes. */
+.cartes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.75rem;
+    margin: 0.75rem 0 0;
+    padding: 0;
+}
+
+.cartes .demarrer {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+/* Un bandeau colle ne doit jamais cacher la carte que le clavier vient de focaliser. */
+html:has(.bloc-matiere) {
+    scroll-padding-top: 4rem;
+}
