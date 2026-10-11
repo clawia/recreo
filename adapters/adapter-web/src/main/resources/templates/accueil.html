@@ -112,7 +112,7 @@
             <!-- Hors sprint accueil par matiere, Q-U1 (decision de l utilisatrice) : sans niveau, l'accueil ne
                  montre aucun jeu, il demande le niveau. Les trois puces de l'en-tete sont le choix ; cette phrase
                  dit a l'enfant de s'en servir. Texte candidat de lea-dev, a juger par nadia-prof (DEC-0002). -->
-            <p class="choix-niveau" th:if="${niveauActif == null}">Choisis ton niveau.</p>
+            <p class="choix-niveau" th:if="${niveauActif == null}">Choisis ta classe.</p>
             <th:block th:if="${niveauActif != null}">
                 <!-- ADR-0106 decision 7 : le bouton de vue vit dans #jeu, jamais dans l'en-tete (APM-7), et
                      son libelle dit la vue ou il mene, jamais une marque d'etat (pas de coche sur la vue en

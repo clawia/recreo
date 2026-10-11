@@ -121,7 +121,7 @@ class TexteAccentueDesGabaritsTest {
             "Il n'y a pas de jeu pour le moment.", // aucun arbitrage nomme dans le depot
             "Par matière",                         // N3 de l'arbitrage prealable de nadia-prof, accueil par matiere (APM-7)
             "Tout voir",                           // N3 de l'arbitrage prealable de nadia-prof, accueil par matiere (APM-7)
-            "Choisis ton niveau.",                 // candidat de lea-dev, NON arbitre : Q-U1 de l'utilisatrice demande le niveau, ses mots sont a nadia-prof (DEC-0002)
+            "Choisis ta classe.",                  // arbitre par nadia-prof (exigence avant fusion, identifiant non alloue au registre) : "niveau" designe pour un enfant le facile ou le difficile d'un jeu
             "Si tu pars, ta partie s'arrête.",     // arbitrage du 2026-08-14, CONF-3
             "Continuer la partie",                 // arbitrage du 2026-08-14, CONF-3
             "Bravo, c'est juste !",                // FICHE-bandit-manchot-additions-cp.md

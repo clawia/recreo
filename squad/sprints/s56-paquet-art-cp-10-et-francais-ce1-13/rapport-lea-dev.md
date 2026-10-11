@@ -596,7 +596,7 @@ l'accueil ne va pas dans `round-two` avant l'audit de `nadia-prof` (`Q-U2`) : je
   (verifie sur le jar, 16.4, etape 11). C'est la reponse de `nadia-prof` a `Q-N2` (*"Les jeux ramene au choix du niveau, et le niveau choisi s'ouvre dans la vue retenue"*). A confirmer par elle et `camille-po`.
 - **R3. Maquette contre ADR.** (a) Les maquettes ecrivent la teinte par onze regles de feuille : refuse par `ADR-0106` (regle 5) ; (b) elles gardent la vue courante sur les puces de niveau et envoient *"Les jeux"* a la vue par defaut (section 5 de la proposition) : `APM-9` et `Q-N2` disent le contraire, j'ai suivi l'arbitrage ;
   (c) `--teinte-bord` contre `--teinte-contour` : l'ADR gagne.
-- **R4. Le texte du premier ecran, *"Choisis ton niveau."*, est un candidat de ma main, non arbitre.** `Q-U1` demande le niveau d'abord et personne n'a ecrit les mots. Il est dans l'inventaire de `TexteAccentueDesGabaritsTest` **avec la mention "non arbitre"** : a `nadia-prof` (`DEC-0002`).
+- **R4. Resolu par une exigence de `nadia-prof` avant fusion** (son identifiant n'est pas encore alloue au registre de ma branche, je ne l'alloue pas). Le texte du premier ecran, candidat de ma main *"Choisis ton niveau."*, devient *"Choisis ta classe."* (motif de `nadia-prof` : *"niveau"* designe pour un enfant le facile ou le difficile d'un jeu). Il est dans l'inventaire de `TexteAccentueDesGabaritsTest` comme arbitre par `nadia-prof`.
   Le premier ecran ne porte que cette phrase sous les trois puces de l'en-tete (capture `01-racine`) : un ecran presque vide, la forme est a `ines-design`.
 - **R5. Le seuil de 10 cartes de `HS-ACCUEIL-V2` n'est pas atteint : 8** (16.4). `nadia-prof` l'avait annonce sur la maquette et l'a route a `camille-po` (*"personne ne le baisse en silence"*) ; je ne le baisse pas, je donne la mesure.
 - **R6. L'adresse apres `/retour/confirmer`.** Le fragment ne declare pas d'`HX-Push-Url` (comme avant) : la barre d'adresse montre `/niveaux/CP` pendant que l'ecran montre le choix du niveau. Un rechargement rendrait le niveau dans la vue retenue. `POST /retour`, sans partie, pousse `/` ; l'ecart est preexistant, je ne le corrige pas ici.
@@ -607,7 +607,7 @@ l'accueil ne va pas dans `round-two` avant l'audit de `nadia-prof` (`Q-U2`) : je
 
 Les garde-fous qui lisaient la liste de `/` ou nommaient les routes ont ete adaptes, sans exemption : `PartieControllerTest` (six tests de `/` reecrits : le choix du niveau, aucune liste ; `/retour` et `/retour/confirmer` rendent le choix), `PartieHttpTest` et `JarRecreoIT` (le jar sert le choix du niveau, puis la page d'un niveau),
 les trois corpus de routes d'`ADR-0038` (**chaque route neuve avec et sans partie en cours** : `AucunArretDeTabulationNEstDestructeurTest`, `LEcranDeJeuDeclareCommentIlEstArriveTest`, `ToutEcranEchangeEstUnDocumentJouableTest`, F10), `TexteAccentueDesGabaritsTest` (*"Par matière"* et *"Tout voir"* arbitres par `nadia-prof` en N3 ;
-*"Choisis ton niveau."* non arbitre), `RessourcesTiercesTest` (R1), `ToutEcranEchangeEstUnDocumentJouableTest` (le cliquet de vacuite remplace par la non-vacuite sur V2, l'etage 1 et l'etage 2). Le catalogue de test de `PartieControllerTest` et `CatalogueDeTest` recoivent une ligne de matiere.
+*"Choisis ta classe."* arbitre par `nadia-prof`), `RessourcesTiercesTest` (R1), `ToutEcranEchangeEstUnDocumentJouableTest` (le cliquet de vacuite remplace par la non-vacuite sur V2, l'etage 1 et l'etage 2). Le catalogue de test de `PartieControllerTest` et `CatalogueDeTest` recoivent une ligne de matiere.
 `TailleDesTextesEtBoutonsTest`, `LHabillageResteImmobileTest`, `LActionNeDeclarePasMoinsQueLaSortieTest`, `AucunEtatDePressableNEstAbandonneAuTiersTest`, la barre d'entree : **aucune modification** de ces fichiers (seule la feuille a change pour que `:active` passe).
 
 ### 16.4 Joue sur le jar
@@ -616,14 +616,14 @@ Jar construit par `verify` a la racine ; `java -jar bootstrap/target/recreo.jar 
 (chaque Chrome, `taskkill` de son seul PID). Pas de navigation par un enfant ni de navigateur de poste : une fenetre emulee 744 x 551 (`Emulation.setDeviceMetricsOverride`, sans mobile), avec htmx et le JavaScript du produit. Parcours et mesures rejoues sur le jar du dernier commit de code avant ce rapport ; sorties et captures hors depot.
 
 Parcours (un seul navigateur, une seule session) :
-1. `/` : *"Choisis ton niveau."*, aucune carte, aucune tuile, aucun bouton de vue, un seul *"Les jeux"* visible.
+1. `/` : *"Choisis ta classe."*, aucune carte, aucune tuile, aucun bouton de vue, un seul *"Les jeux"* visible.
 2. Puce `CP` : V2, 8 bandeaux (Français, Maths, Questionner le monde, Vivre ensemble, Anglais, Arts plastiques, Musique, Sport), 58 cartes, phrase *"Pour le CP"*, le bouton *"Par matière"* a droite.
 3. *"Par matière"* : l'etage 1, 8 tuiles ; l'adresse reste `/niveaux/CP`.
 4. Une tuile : `/niveaux/CP/matieres/francais`, l'etage 2, le chevron *"Par matière"*.
 5. Le chevron : l'etage 1 ; 6. *"Tout voir"* : V2.
 7. Une carte : la manche (enonce lu), plus aucun bouton de vue. 8. *"Les jeux"* de l'en-tete : la confirmation (*"Si tu pars, ta partie s'arrête."*).
 9. **La bascule avec une partie en cours** (`POST /niveaux/CP/vue/V1` envoyee de la page, `HX-Request`) : 200, la confirmation, **la partie reste en cours** ; la vue est ecrite.
-10. *"Les jeux"* de la confirmation : le choix du niveau (*"Choisis ton niveau."*) ; **l'adresse reste `/niveaux/CP` et la puce `CP` reste marquee active** (R6, R8). 11. Puce `CE1` : **l'etage 1 de V1** (2 tuiles, bouton *"Tout voir"*) : la vue retenue a survecu a la partie et au retour.
+10. *"Les jeux"* de la confirmation : le choix du niveau (*"Choisis ta classe."*) ; **l'adresse reste `/niveaux/CP` et la puce `CP` reste marquee active** (R6, R8). 11. Puce `CE1` : **l'etage 1 de V1** (2 tuiles, bouton *"Tout voir"*) : la vue retenue a survecu a la partie et au retour.
 
 **Mesure a 744 x 551, `getBoundingClientRect()`, une carte est visible si son `bottom` <= 551** (comptes du catalogue servi, aucun nombre ecrit dans un test ; criteres de `HS-ACCUEIL-MESURE` a `yanis-qa`) :
 
@@ -674,4 +674,4 @@ voir `N12`) ; fichier restaure apres chaque mesure (`git status --short` vide en
 - **Mesures de `HS-ACCUEIL-MESURE`** (commande commitee, rejouable, sans chemin de poste) : `yanis-qa`. Mes chiffres viennent de scripts de poste hors depot.
 - **390 px et 992 px** : non mesures par moi (fenetre unique 744 x 551) ; les maquettes d'`ines-design` annoncent +6 a +12 % de longueur de V2 a 390.
 - **Clavier et lecteur d'ecran** : non joues. **Safari, tablette reelle** : non joues.
-- **A ratifier** : R1 (`theo-archi`), R2 et R7 (`nadia-prof`, `camille-po`), R4 (`nadia-prof`, `ines-design`), R5 (`camille-po`).
+- **A ratifier** : R1 (`theo-archi`), R2 et R7 (`nadia-prof`, `camille-po`), la forme du premier ecran de R4 (`ines-design`), R5 (`camille-po`).
