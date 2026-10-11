@@ -116,8 +116,8 @@ items:
   - enonce: "Dans la cour, un jeu commence. Lequel de ces motifs peut justifier de ne pas laisser un élève y entrer ?"
     bonneReponse: "le jeu se joue à deux et les deux places sont prises"
     distracteurs: ["il a des croyances différentes de celles des autres", "il porte des lunettes épaisses"]
-    indice: "Cherche le motif qui parle du jeu."
+    indice: "Un motif valable ne parle pas de l'élève lui-même."
   - enonce: "On choisit des élèves pour ranger le matériel. Lequel de ces motifs peut justifier de ne pas choisir un élève ?"
     bonneReponse: "il a déjà été choisi la veille"
     distracteurs: ["sa façon de parler est différente de celle des autres", "il est plus petit que les autres"]
-    indice: "Cherche le motif qui parle de ce qui s'est déjà passé."
+    indice: "Un motif valable pourrait concerner n'importe quel élève."
