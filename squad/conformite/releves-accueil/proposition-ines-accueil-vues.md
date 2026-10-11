@@ -53,7 +53,7 @@ Les 11 matieres du catalogue (`descripteur.matiere`), dans l'ordre que je propos
 | Matiere (graphie du depot) | Libelle court propose | Pictogramme | Emplacement de teinte |
 |---|---|---|---|
 | Français | Français | livre ouvert | 1 |
-| Mathématiques | Maths | regle graduee | 2 |
+| Mathématiques | Maths | ardoise portant + et = (reprise du 2026-10-11, section 9) | 2 |
 | Langues vivantes (anglais) | Anglais | bulle portant "Hi" | 3 |
 | Sciences et technologie | Sciences | fiole d'Erlenmeyer | 4 |
 | Questionner le monde | Questionner le monde | loupe sur une feuille | 5 |
@@ -61,12 +61,12 @@ Les 11 matieres du catalogue (`descripteur.matiere`), dans l'ordre que je propos
 | Enseignement moral et civique | Vivre ensemble | deux personnes | 7 |
 | Arts plastiques | Arts plastiques | palette | 8 |
 | Éducation musicale | Musique | deux croches | 9 |
-| Histoire des arts | Histoire des arts | tableau dans son cadre | 10 |
+| Histoire des arts | Histoire des arts | tableau dans son cadre | 10 (teinte reprise, section 9) |
 | Éducation physique et sportive | Sport | ballon de basket | 11 |
 
 - **Pourquoi des libelles courts** : avec les noms complets, deux tuiles sur huit en CM1 ont leur texte dans le rembourrage a 744 ("Mathématiques" et "Enseignement", 3 lignes pour "Enseignement moral et civique") ; aucun avec les libelles courts. `capture-v1-etage1-CM1-libelles-longs-744x551.png`, `maquette-v1-etage1-CM1-libelles-longs.html`, `synthese-mesures.txt` section I (document de 572 px au lieu de 551 a 744, 8 tuiles entieres dans les deux cas).
 - **Trois libelles s'ecartent du nom de programme** : "Maths", "Vivre ensemble", "Sport". Ce sont des propositions de longueur, pas de contenu ; `nadia-prof` dit si un enfant de CP les reconnait. Repli si elle refuse "Vivre ensemble" : le nom complet, trois lignes, mesure ci-dessus.
-- **Ce que le pictogramme dit** : un objet que l'enfant connait de l'ecole ou de la cour pour chaque matiere ; la regle (Maths) et la loupe (Questionner le monde) sont mes choix les moins surs : une regle dit "mesure" avant "nombre".
+- **Ce que le pictogramme dit** : un objet que l'enfant connait de l'ecole ou de la cour pour chaque matiere ; la loupe (Questionner le monde) est mon choix le moins sur. La regle graduee de Maths a ete refusee et remplacee (section 9).
 
 ### 3.1 Contraste (WCAG 2.x, `contraste-teintes.py`, lu sur `accueil-vues.css` et `recreo.css`)
 
@@ -81,7 +81,7 @@ Les 11 matieres du catalogue (`descripteur.matiere`), dans l'ordre que je propos
 | 7 | `#f6cde0` | `#a03a6b` | 10,62 | 5,90 |
 | 8 | `#e2d4f3` | `#6e4ba3` | 10,77 | 6,11 |
 | 9 | `#d2d6f6` | `#4a50a8` | 10,59 | 6,51 |
-| 10 | `#d8dde4` | `#4a5a6b` | 11,09 | 6,59 |
+| 10 | `#f0baf3` | `#85188b` | 9,39 | 7,82 |
 | 11 | `#fbdcb4` | `#a35a0b` | 11,53 | 4,86 |
 
 Les planchers du depot (4,5:1 texte, 3:1 composant non textuel) sont tenus partout. **Le fond d'une teinte contre la page ne fait que 1,17 a 1,33:1** : c'est le contour (tuile) ou le liseret (bandeau) qui delimite la forme, pas l'aplat. Autres rapports lus : bouton de vue, accent sur page 5,03:1 ; carte, blanc sur accent 5,41:1 (inchange) ; pictogramme, encre sur blanc 15,14:1. Les memes rapports, lus en page par `getComputedStyle` sur l'emplacement 1 : 11,51 ; 5,19 ; 5,03 ; 5,41 (`mesures-accueil.json`, cle `couleurs`).
@@ -206,3 +206,38 @@ Les puces de niveau gardent la vue courante dans les maquettes (V1 reste V1, V2 
 
 - Ce document et le contenu de `squad/conformite/releves-accueil/` : crees.
 - Aucun fichier sous `domain/`, `application/`, `adapters/` ou `bootstrap/` n'est modifie.
+
+## 9. Reprise du 2026-10-11, apres `ARBITRAGE-PREALABLE-accueil-par-matiere.md` (`APM-2`, `APM-6`)
+
+Proposition, pas un Done : `nadia-prof` rejuge a l'ecran. Branche `ines-accueil-v2`, base `round-two`. Rien sous `domain/`, `application/`, `adapters/`, `bootstrap/`, aucun gabarit, `recreo.css` intact.
+
+### 9.1 Pictogramme de Maths (`APM-2`)
+
+`pictos/mathematiques.svg` : une ardoise blanche a contour d'encre portant `+` et `=`, sans chiffre, meme gabarit que les dix autres (48 x 48, trait de 3, bouts ronds, encre `#1c2733`, interieur blanc).
+
+| Rendu | Taille du fichier a l'ecran | Epaisseur du trait | `+` (bras a bras) | Jour clair entre les deux barres de `=` |
+|---|---|---|---|---|
+| Bandeau (2,25 rem) | 36 px | 2,25 px | 10,5 px | 3,8 px |
+| Fichier a sa taille native | 48 px | 3,0 px | 14 px | 5,0 px |
+| Tuile et planche (3,5 rem) | 56 px | 3,5 px | 16,3 px | 5,8 px |
+
+Le `-` : essaye et abandonne. Une ardoise de trois signes `+ - =` (`+` de 12 unites, `-` de 6, `=` de 12) fait disparaitre le jour entre les signes (a 36 px, `+-=` se lit comme un trait continu). Une seconde composition, `+` sur `=` dans un disque, se lit `±`. Aucun des deux n'est livre ; la regle de `nadia-prof` ("le `-` en plus si le dessin reste lisible a 48 px") est donc tenue par l'absence : il ne reste pas lisible.
+
+Lu sur rendu reel : `capture-pictos-744x760.png` (56 px), `capture-v1-etage1-CP-390x551.png` et `capture-v1-etage1-CM1-744x551.png` (tuile), `capture-v2-CP-defile-692-744x551.png` (bandeau de 36 px). Le mot "Maths" est a cote dans les quatre cas (`APM-3`). Ce que l'enfant de CP y reconnait n'est pas mesure.
+
+### 9.2 Teinte de l'emplacement 10 (`APM-6`)
+
+Fond `#f0baf3`, contour `#85188b` (un magenta ; l'ancien gris `#d8dde4` / `#4a5a6b` est retire).
+
+- Planchers du depot (`contraste-teintes.py`) : encre sur fond 9,39:1 (plancher 4,5), contour sur page 7,82:1 (plancher 3), contour sur fond 5,21:1. Fond contre page 1,50:1 (contre 1,17 a 1,33 pour les dix autres) : le contour delimite toujours la tuile.
+- Ecarts CIEDE2000 (`ecarts-teintes.py`, sortie dans `ecarts-teintes.txt`), le plus petit de fond-fond et contour-contour. Contre les dix autres emplacements, en vue normale : 7 (rose) 10,6 ; 8 (violet clair) 10,8 ; 9 (indigo) 15,4 ; les sept autres entre 21,1 et 46,8. La paire la plus proche des onze emplacements reste 6-11 (5,9), qui ne concerne pas l'emplacement 10.
+- Contre les couleurs de sens, en vue normale : bloc adulte 11,2 ; explication 20,3 ; indice 29,4 ; faux 34,0 ; accent 35,6 ; en-tete 29,2 ; juste 67,8.
+- Non gris : saturation elevee, aucune des deux couleurs n'est sur l'axe neutre.
+
+### 9.3 Reserves de la reprise
+
+1. **Le magenta est la teinte la plus vive des onze** et le fond la plus chargee (1,50:1 contre la page). En CM1 il est voisin du rose de "Vivre ensemble" (`capture-v1-etage1-CM1-744x551.png`, ligne du bas), a 10,6 d'ecart : distinct a l'oeil sur la capture, a rejuger en jouant. Repli mesure, non applique : periwinkle `#adadeb` / contour `#191976`, ecart de 11,9 au plus proche en vue normale.
+2. **Daltonisme, simulation seulement** (matrices de Machado 2009 recopiees dans `ecarts-teintes.py`, jamais comparees a une source dans cette session) : sous protanopie et deuteranopie le magenta tombe a 2,4-2,5 du violet du bloc adulte, et a 6,8 / 4,4 du violet clair (emplacement 8). La couleur n'est qu'un doublon (`APM-3`) et les deux couleurs de sens ne partagent jamais un ecran (`APM-5`). Pour mesure, l'ensemble d'origine contient deja des paires sous 1 en simulation (8-9, 2-11, 3-6).
+3. **Constat hors demande** : le contour de l'emplacement 1 (`#2f6c9f`) est a 1,6 de l'accent du bouton (`#2e6f9e`), la tuile Francais et le bouton "Tout voir" portent presque le meme bleu. Non modifie.
+4. **`generer-maquettes.py` ne tourne plus sur `round-two`** : `assert len(catalogue) == 147` echoue, le catalogue en compte 146. Les 48 maquettes HTML ne sont donc pas regenerees. Elles referencent les pictogrammes et `accueil-vues.css` par chemin, donc les captures refletent bien les deux changements. L'ordre des matieres de `N5` (Anglais au rang 7) n'est pas applique aux maquettes : elles gardent mon ordre initial (Anglais au rang 3).
+5. **Mesures non rejouees** : `pilote-accueil.mjs` et `mesures-accueil.json` (138 mesures de boites) ne sont pas relances, aucune boite ne change (un fichier SVG de meme viewBox, deux couleurs). Les captures reprises sont celles ou le pictogramme de Maths ou l'emplacement 10 est visible ; les autres sont inchangees a l'octet pres.

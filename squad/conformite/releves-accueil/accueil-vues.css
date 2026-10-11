@@ -12,7 +12,7 @@
 [data-teinte="7"]  { --teinte-fond: #f6cde0; --teinte-bord: #a03a6b; }
 [data-teinte="8"]  { --teinte-fond: #e2d4f3; --teinte-bord: #6e4ba3; }
 [data-teinte="9"]  { --teinte-fond: #d2d6f6; --teinte-bord: #4a50a8; }
-[data-teinte="10"] { --teinte-fond: #d8dde4; --teinte-bord: #4a5a6b; }
+[data-teinte="10"] { --teinte-fond: #f0baf3; --teinte-bord: #85188b; }
 [data-teinte="11"] { --teinte-fond: #fbdcb4; --teinte-bord: #a35a0b; }
 
 /* Variante sans teinte : un seul emplacement neutre, deja dans la feuille (bloc d'explication). */
