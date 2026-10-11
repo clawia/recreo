@@ -28,7 +28,14 @@
   `EMC-CP-03` n'est pas rouverte** et reste `couvert-valide`. Je corrige au passage deux de mes propres
   constats (le credit de `FER-1` du 2026-09-08, et ma phrase de `CYC-1` du 2026-10-08). Bloc du 2026-10-08
   en fin de fiche.
-- **Derniere mise a jour** : 2026-10-08 (s54, `nadia-prof`, instance A)
+- **Etat au 2026-10-08 (s55, rejeu de `S54-EXC-CATEGORIE`)** : **`EXC-R15` LEVEE** ; une reserve neuve, **`EXC-R16`**,
+  non bloquante (l'indice de l'item 4 ecartait *moquerie*, qui n'etait plus proposee). Titre du jeu juge : pas de
+  reserve. **La ligne `EMC-CP-03` n'est pas rouverte.** Bloc de s55 en fin de fiche. *(Ligne ajoutee le 2026-10-11 :
+  l'en-tete ne l'avait pas recue.)*
+- **Etat au 2026-10-11 (s56, `S55-EXC-R16`)** : **`EXC-R16` LEVEE.** Aucune reserve ouverte sur ce paquet depuis ce
+  rejeu, hors celles que les blocs anterieurs disent encore ouvertes. **La ligne `EMC-CP-03` reste `couvert-valide`.**
+  Bloc du 2026-10-11 en fin de fiche.
+- **Derniere mise a jour** : 2026-10-11 (s56, `nadia-prof`) ; avant : 2026-10-08 (s54, `nadia-prof`, instance A)
 
 > **Fiche ouverte par `nadia-prof` et non par `camille-po`** : le paquet est neuf et sa fiche
 > n'existait pas. Sections descriptives reprises de la story `S31-2` et du referentiel ; **le bloc
@@ -1354,3 +1361,37 @@ segments, marqueur `R` dans le dernier (`ADR-0100`). `git grep -c 'EXC-R16'` ne 
 `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le meme diff.
 
 **Signe** : `nadia-prof`, s55, instance B, 2026-10-08.
+
+---
+
+## Bloc de validation pedagogique - rejeu d'`EXC-R16`, s56, 2026-10-11 - nadia-prof UNIQUEMENT
+
+### Verdict
+
+**`EXC-R16` est LEVEE.** Aucune reserve neuve. `EMC-CP-03` reste `couvert-valide` ; aucun mouvement de matrice. 0,25
+(`PAR-10`, mot pour mot). A11 (en-tete de cette fiche) est fait dans le meme commit, sans prix propre.
+
+### Ce que j'ai fait
+
+- **Diff** (`e6262ac2`) : une ligne, l'indice de l'item 4, mon texte a la lettre. Le commit suivant sur le paquet
+  (`c5bd97cf`, `relecteur-pedagogique`) n'ajoute que des lignes de commentaire. Sorties de ma section 5 du bloc de s55,
+  relues par un script sur le fichier (`grep` est peu fiable sur ce poste avec les accents) : *"n'est pas de la moquerie"*
+  0, *"n'est pas une mise à l'écart."* 1, *"une mise à l'écart qui se répète"* 3. Les trois valeurs attendues.
+- **Joue** : worktree `s56-nadia-art` a `a6ca1751`, jar et arret comme
+  `FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`, section 1. Par les routes servies, 3 parties, erreur sur
+  *une mise à l'écart qui se répète* puis sur *une bagarre* a l'item 4 ; au navigateur a 744 x 551, une partie, l'item 4
+  joue de meme.
+- **Ce que l'enfant lit** apres l'une ou l'autre erreur : *"Une excuse immédiate après un geste involontaire n'est pas
+  une mise à l'écart."* L'indice ecarte un choix qui est a l'ecran et pointe vers *un accident isolé*. Le decalage de
+  s55 (l'indice ecartait *moquerie*, qui n'etait plus proposee) a disparu.
+- **Un fait, sans reserve** : a 744 x 551, cet indice est sous le pli (texte de y = 566 a 634) ; la proposition longue
+  de l'item 4 tient deux rangees. Je n'avais pas pose de condition de pli sur ce paquet et je n'en pose pas apres coup.
+
+### A11 - l'en-tete et le titre
+
+L'en-tete s'arretait a s54 et disait `EXC-R15` ouverte. J'ajoute deux lignes datees (s55 et s56) et je change la date de
+derniere mise a jour ; les lignes de s54 restent. **Titre** (*"Une moquerie qui se répète"*), regarde a nouveau : affiche
+sur la liste des jeux de CP seulement (`/niveaux/CP`), jamais sur l'ecran de manche. Mon jugement du 2026-10-08 tient :
+**pas de reserve**.
+
+**Signe** : `nadia-prof`, s56, 2026-10-11.

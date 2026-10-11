@@ -14,7 +14,8 @@
   `TRV-CE1-5` ; `K1` a `K3` (`ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md`, section 4).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-08 par `nadia-prof` (s55,
   instance A), apres avoir joue le jar servi. Fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-08.
+- **Etat au 2026-10-11** : `ACV-CE1-R1` et `ACV-CE1-R2` levees au rejeu du 2026-10-11 (s56) ; plus aucune reserve ouverte. Statut global inchange.
+- **Derniere mise a jour** : 2026-10-11 ; avant : 2026-10-08.
 
 ---
 
@@ -144,3 +145,32 @@ segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). Alloues d
 **Tarif consomme** : audit 1,0 (premier passage). Aucun rejeu a s55.
 
 **Signe** : `nadia-prof`, s55, instance A, 2026-10-08.
+
+---
+
+### Rejeu du 2026-10-11 (`nadia-prof`, s56) : `ACV-CE1-R1` et `ACV-CE1-R2` **LEVEES**
+
+**`FRA-CE1-14` reste `couvert-valide`** ; aucun mouvement de matrice. Rejeu groupe, 0,5 (arbitrage A de s56, section 4).
+
+**Ce que j'ai fait.** Worktree `s56-nadia-art` a `a6ca1751` (contient `2b66a441` et `955951f2`) ; build, jar et arret :
+`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`, section 1. Par les routes servies : 3 parties, erreur sur chacun des
+deux distracteurs des items 3, 6, 11 et 15 puis la bonne, 20 items tires. Au navigateur a 744 x 551 : une partie de dix
+manches, items 3 et 11 joues avec deux erreurs ; l'indice est au-dessus du pli (bas du texte a y = 474).
+
+**`ACV-CE1-R1` - LEVEE.** Item 6, apres une erreur sur *vont* puis sur *vas* : *"Lis le sujet avec chaque verbe proposé :
+lequel est le bon ?"*, mon texte a la lettre ; il ne contient aucune des trois propositions.
+
+**`ACV-CE1-R2` - LEVEE.** Huit items a sujet pluriel sur douze ont pour bonne reponse une forme du premier groupe en
+*-ent* qui ne s'entend pas (2, 3, 9, 11, 15, 20, 21, 23 ; lecture des 24 items du fichier). Les trois items changes
+(*ils chantent*, *les oiseaux volent*, *elles marchent*) : formes justes, distracteurs de la meme famille et reels (*chante*,
+*chantons* ; *vole*, *voles* ; *marche*, *marchons*), aucun role par genre. Indices joues : items 3 et 15, l'indice de
+relecture, qui ne contient aucune de leurs propositions et ne departage pas par le nombre seul la ou *chantons*,
+*marchons* sont pluriels ; item 11, *"combien en voit-on ?"*, et ses deux distracteurs sont au singulier : le nombre
+departage (`K1`). Le choix de `marc-dev` de changer le verbe des items 3 et 15 (`E6`) est accepte : il paie la reserve et
+le point *"combien en voit-on ?"* de ma section 5 dans le meme geste. `ACV-CE1-1` tenue (17 sujets nominaux, 12 pluriels,
+12 singuliers).
+
+**Ce dont je reste la seule garde** : inchange (section 6 du bloc du 2026-10-08), sauf la part des pluriels muets,
+desormais portee par `acvR2HuitItemsAuMoinsASujetPluriel`.
+
+**Signe** : `nadia-prof`, s56, 2026-10-11.

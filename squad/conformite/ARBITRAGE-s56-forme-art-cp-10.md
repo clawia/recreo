@@ -260,3 +260,18 @@ l'enfant, et `pointer-events: none` sur la pastille est exige par mon critere 3,
 etendrait la case deja essayee de 40 px vers le bas.
 
 **Signe** : `nadia-prof`, s56, instance B, 2026-10-09.
+
+---
+
+## Bloc du 2026-10-11 - correction de mon constat de `Q3`, apres l'audit joue - nadia-prof UNIQUEMENT
+
+Rien au-dessus n'est efface. **La phrase *"Mesure : tenu avec O1 et le meuble"* du bloc de 21:37 est fausse.** Ce
+n'etait pas une mesure de la phrase de `M4` : j'avais lu le bas du contenu de revelation du vehicule statique
+d'`ines-design` comme la place de la phrase. Sur le jar, a 744 x 551, la phrase va de y = 626 a 656, entierement sous le
+pli. **La condition bloquante elle-meme ne change pas.** Elle n'est pas remplie : le paquet est **REFUSE** sur ce motif,
+`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`, bloc du 2026-10-11, avec la methode de mesure. L'indice coupe
+par le pli, que j'annoncais comme reserve datee, y est ouvert (`RDO-CP-R1`).
+
+Les trois lectures du critere de la marque (`rapport-lea-dev.md`, 11.2) sont confirmees dans le meme bloc de la fiche.
+
+**Signe** : `nadia-prof`, s56, 2026-10-11.

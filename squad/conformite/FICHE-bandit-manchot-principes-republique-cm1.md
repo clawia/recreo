@@ -13,7 +13,8 @@
   sur cette ligne (arbitrage prealable de s55, instance B, section 1.2).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-08 par `nadia-prof` (s55, instance
   B), une reserve non bloquante (`EMC-CM1-R9`). Premier passage ; fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-08.
+- **Etat au 2026-10-11** : `EMC-CM1-R9` levee au rejeu du 2026-10-11 (s56) ; plus aucune reserve ouverte. Statut global inchange.
+- **Derniere mise a jour** : 2026-10-11 ; avant : 2026-10-08.
 
 ---
 
@@ -160,3 +161,19 @@ en jouant. **Un item de ce paquet modifie un jour est a rejouer en entier contre
 
 Tarif reel : **1,5** (premier passage, EMC CM1 a faits institutionnels, arbitrage section 3.0). Un
 identifiant neuf, `EMC-CM1-R9`, alloue dans `squad/decisions/REGISTRE-identifiants.md` dans le meme commit.
+
+---
+
+### Rejeu du 2026-10-11 (`nadia-prof`, s56) : `EMC-CM1-R9` **LEVEE**
+
+**`EMC-CM1-06` reste `couvert-valide`**, avec sa mention de couverture ; aucun mouvement de matrice. 0,25 (`PAR-10`, mot
+pour mot, citation comprise).
+
+**Diff** (`02b938bd`) : l'indice de l'item 3 et les quatre lignes de l'item 8 de la liste `HIS-3` de l'en-tete, mes textes
+de la section 5 a la lettre (*"dans un but humanitaire"*, *"sur le territoire national"*) ; rien d'autre. A13 (citation de
+2018) est donc payee. **Joue** (meme arbre, meme jar) : par les routes servies, 3 parties, erreur sur *la laïcité* puis
+sur *la liberté* a l'item 3 ; au navigateur a 744 x 551, l'item 3 joue avec deux erreurs. L'indice servi est *"Ces élèves
+donnent pour aider d'autres enfants."* : vrai de la situation de l'enonce, il ne nomme pas le principe et ne reprend
+plus *"les uns les autres"* de la bonne reponse de l'item 8.
+
+**Signe** : `nadia-prof`, s56, 2026-10-11.

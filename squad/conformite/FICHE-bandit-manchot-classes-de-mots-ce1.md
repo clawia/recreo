@@ -15,7 +15,8 @@
   (`ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md`, section 5).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-08 par `nadia-prof` (s55,
   instance A), apres avoir joue le jar servi. Fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-08.
+- **Etat au 2026-10-11** : `CLM-CE1-R1` levee au rejeu du 2026-10-11 (s56) ; plus aucune reserve ouverte. Statut global inchange.
+- **Derniere mise a jour** : 2026-10-11 ; avant : 2026-10-08.
 
 ---
 
@@ -116,3 +117,37 @@ milieu, marqueur `R` dans le dernier (`ADR-0100`). Alloue dans
 **Tarif consomme** : audit 1,0 (premier passage). Aucun rejeu a s55.
 
 **Signe** : `nadia-prof`, s55, instance A, 2026-10-08.
+
+---
+
+### Rejeu du 2026-10-11 (`nadia-prof`, s56) : `CLM-CE1-R1` **LEVEE**
+
+**`FRA-CE1-12` reste `couvert-valide`** ; aucun mouvement de matrice. Tarif d'un lot, 1,0 (`PAR-14`).
+
+**Ce que j'ai fait.** Worktree `s56-nadia-art` a `a6ca1751` (contient `afc39a7c`) ; build, jar et arret :
+`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`, section 1. Par les routes servies : 8 parties, une erreur sur chacun
+des deux distracteurs de **chaque** manche puis la bonne : **les 24 items tires**, **160 erreurs**, 0 ecart (indice servi
+identique au fichier apres chaque erreur, aucun indice avant la premiere, bonne reponse creditee). Au navigateur a 744 x
+551, quatre manches (items 1, 8, 20, 22) : l'indice est au-dessus du pli (bas du texte a y = 481), le mot designe reste
+a part dans son cadre.
+
+**Chaque indice juge contre ses deux distracteurs** (propriete de la fiche, section 4, et test du determinant de mon
+arbitrage A de s56, 5.1) :
+
+| Classe (items) | Test donne | Vrai pour la bonne reponse | Un distracteur le passe-t-il ? |
+|---|---|---|---|
+| verbe (2, 7, 17 ; 12, 22) | *"hier"* ou *"demain"* devant la phrase : le mot change-t-il ? | *dormait*, *jouaient*, *rangeait*, *mangera*, *soufflera* | non : un nom, un adjectif, un determinant ne changent pas |
+| nom propre (4, 9, 14, 19) | une majuscule au milieu de la phrase | *Léa*, *Mia* (apres *Ce matin,*), *Noé*, *Karim* | non |
+| nom commun (1, 6, 11, 16, 21) | va tout seul apres *un* ou *une* | *un chat*, *un sac*, *une pomme*, *un soleil*, *une fenêtre* | non : *tout seul* ecarte l'adjectif |
+| adjectif (3, 8, 13, 18, 23) | *"très"* devant | *très joli*, *très grand*, *très rond*, *très froide*, *très noir* | non |
+| determinant (5, 10, 15, 20, 24) | deux petits mots propres a l'item a sa place | *le*/*ce gâteau*, *une*/*sa porte*, *les*/*ses livres*, *une*/*son histoire*, *les*/*des crayons* | non |
+
+Douze mots au plus, aucune classe nommee (`P1` a `P6`, tenus par le test et par mes lectures). **Lisibilite** : les
+inversions en *-t-il* sont des questions d'ecole connues au CE1 ; *"tout seul"* et *"à sa place"* sont des mots de
+l'enfant. Les couples de determinants de `marc-dev` (`E8`) sont meilleurs que ma liste, qui ne marchait ni sur *des
+livres* ni sur *la porte* : je les accepte, c'etait sa part.
+
+**Ce dont je reste la seule garde** : que le test donne soit vrai et qu'aucun distracteur ne le passe (`E10` : aucun test
+ne le porte), la lisibilite, les roles.
+
+**Signe** : `nadia-prof`, s56, 2026-10-11.

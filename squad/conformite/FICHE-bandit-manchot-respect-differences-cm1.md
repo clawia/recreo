@@ -14,7 +14,8 @@
   de s55, instance B, section 1.2. `EMC-9` sans objet sur cette ligne (meme section).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-08 par `nadia-prof` (s55, instance
   B), une reserve non bloquante (`EMC-CM1-R8`). Premier passage ; fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-08.
+- **Etat au 2026-10-11** : `EMC-CM1-R8` levee au rejeu du 2026-10-11 (s56) ; plus aucune reserve ouverte. Statut global inchange.
+- **Derniere mise a jour** : 2026-10-11 ; avant : 2026-10-08.
 
 ---
 
@@ -171,3 +172,22 @@ bonne reponse) : verifies ici en jouant, et c'est ainsi que la reserve a ete tro
 
 Tarif reel : **1,0** (premier passage) **+ 0,25** (ecart de l'item 4, section 3) = **1,25**. Un identifiant
 neuf, `EMC-CM1-R8`, alloue dans `squad/decisions/REGISTRE-identifiants.md` dans le meme commit.
+
+---
+
+### Rejeu du 2026-10-11 (`nadia-prof`, s56) : `EMC-CM1-R8` **LEVEE**
+
+**`EMC-CM1-03` reste `couvert-valide`**, avec sa mention de couverture ; aucun mouvement de matrice. 0,25 (`PAR-10`, mot
+pour mot).
+
+**Diff** (`1d1d3ae6`) : deux lignes `indice`, items 10 et 11, mes textes de la section 5 a la lettre ; enonces,
+propositions et en-tete inchanges. **Joue** (worktree `s56-nadia-art` a `a6ca1751`, jar et arret comme
+`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`, section 1) : par les routes servies, 3 parties, erreur sur chacun
+des deux distracteurs des items 10 et 11 ; au navigateur a 744 x 551, une partie, les deux items joues avec deux
+erreurs. Apres chaque erreur : item 10, *"Un motif valable ne parle pas de l'élève lui-même."* ; item 11, *"Un motif
+valable pourrait concerner n'importe quel élève."* Ni l'un ni l'autre ne contient un mot propre a la bonne reponse
+(*jeu*, *déjà*) ; chacun donne le critere qui ecarte les deux distracteurs (croyances, lunettes ; facon de parler,
+taille : tous parlent de l'eleve lui-meme). Sur ces items longs, la page defile pour montrer l'indice sous le bouton
+presse ; l'indice est lu a l'ecran.
+
+**Signe** : `nadia-prof`, s56, 2026-10-11.
