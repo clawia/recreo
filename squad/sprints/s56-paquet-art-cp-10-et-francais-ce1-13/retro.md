@@ -1,0 +1,117 @@
+# Retro - s56 - le premier paquet a reproductions refuse, une ligne fermee, six reserves levees
+
+- **Animee par** : `sofia-sm`, casquette Scrum Master, 2026-10-11. Aucun agent invoque : cette retro lit les ecrits du sprint (`review.md`, `rapport-qualite.md`, `confirmation-archunit.md`, `relecture-cloture.md`, `cloture-nadia.md`, `DEC-0116`, fiches, backlog, rapports de developpeurs).
+  Chaque constat cite sa source ; ce que je n'ai pas pu mesurer est dit.
+- **Retro de s55 relue** : actions A1 a A15, etat en section 3.
+- **`lessons.md`** : il n'existait pas (`find . -iname lessons.md` ne rend rien, `git log --all` non plus, le planning de s56 le disait). **Cree a la racine par cette tache**, avec les neuf regles de la section 4 ; une regle de process reste a ecrire dans `squad/README.md` (section 6).
+- **Trois enonces viennent du message de lancement de cette tache et d'aucun fichier du depot** : l'arret de deux agents par l'utilisatrice, le watchdog sur `lea-dev`, les mots sur le depassement de la borne. Je les rapporte comme tels, sans detail que je n'ai pas.
+
+## 1. Ce qui a fonctionne, mesure
+
+| # | Constat | Mesure | Source |
+|---|---|---|---|
+| W1 | **Les prealables ont precede le code.** Avis de `theo-archi` (21:18), deux arbitrages (21:08, 21:11), choix des oeuvres (21:44), amendements d'`ADR-0026` (22:21) et d'`ADR-0024` (22:34) fusionnes avant le premier commit du paquet (23:34). Prealables 10 h 16 min avant leur echeance de 08:00 le lendemain | 6 prealables sur 6 | `review.md` sections 3 et 6 |
+| W2 | **La simulation de `theo-archi` a vu les rouges du paquet avant qu'il existe.** K1, K2, K3 (6 echecs simules sur 2307) ; `lea-dev` mesure 8 echecs avant ses retouches, tous dans les cinq tests que l'avis nommait ; K1 etait deja ferme par l'amendement d'`ADR-0024` | 0 echec de contenu non prevu sur le commit du paquet | `avis-faisabilite.md` amendement 22:06, A.3 ; `rapport-lea-dev.md` sections 2 et 7 |
+| W3 | **Les mutations ont ete faites sur le materiau reel par un tiers.** 90 mutations distinctes, 75 rouges, 15 vertes, chaque verte nommee et routee ; deux temoins positifs ; un mutant equivalent (A7) demontre comme tel | 15 vertes sur 90, toutes dans `rapport-qualite.md` section 5 | `rapport-qualite.md` section 4 |
+| W4 | **`theo-archi` a ecrit le prix de ce qu'il ne garde pas.** `B6` refuse avec sa condition de revision ; A14 refuse avec la mesure (47 fichiers sur 65 rouges) et sa condition de revision ; A4 : mecanisme reproduit, declencheur dit non etabli | 3 refus ou limites motives | `avis-faisabilite.md` sections 7 et 8, amendement du 2026-10-11 |
+| W5 | **Un defaut de garde-fou trouve et corrige en dix minutes.** `F1` de `confirmation-archunit.md` (borne de `B8` epinglee par arithmetique) a 12:41, `7b315f36` a 12:51 ; mutation 10 a 12 rouge pour la bonne raison | 10 min, +1 test | `rapport-lea-dev.md` 13.4 |
+| W6 | **Deux mesures independantes au meme chiffre.** `nadia-prof` (Chrome pilote, `getBoundingClientRect`) et `ines-design` (`Q7`, autre pilote) rendent les memes cotes a 744 x 551 : `M4` 626 a 656, verdict 567 a 597, indice 626 a 676 ; la croix, 486 a 526 chez elle et 484 a 524 chez lui (2 px) | 3 cotes identiques sur 4, la quatrieme a 2 px | fiche section 3, point 2 ; `Q7-releve-gabarit-livre.md` |
+| W7 | **Un Done refuse avec un motif actionnable et une correction d'elle-meme.** Barre citee mot pour mot, cote, ecart (105 px), condition de levee, prix de rejeu (0,5) ; son constat *"tenu avec O1 et le meuble"* est reconnu faux avant de s'en servir | 1 REFUSE, 0 reformulation de la barre | fiche, motif du refus |
+| W8 | **Le rapport de `yanis-qa` a ete mordu par le garde-fou qu'il decrit.** Son premier `verify` rouge (`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, codes `XX-NN`) est corrige avant son commit : la pratique d'A6 a tenu | 1 rouge vu avant le depot | `rapport-qualite.md` section 1 |
+| W9 | **La lignee a tenu.** 29 fusions, base de fusion toujours le sommet ou un ancetre direct de `round-two`, apport de 1 a 6 commits, aucune fusion dans un apport | 29 sur 29 | `review.md` en-tete |
+| W10 | **Les agents ont nomme leurs jobs, y compris ceux qu'ils n'ont pas lances.** `outils` non lance dit par `theo-archi`, `nadia-prof`, le relecteur ; etape "package" non lancee dite par `yanis-qa` et le relecteur | tous les rapports lus | rapports de cloture |
+| W11 | **Les amendements ont corrige sans effacer.** `DEC-0116` : cinq amendements datees (`A.1` a `A.20`), texte d'origine lisible ; planning amende une fois avant les worktrees du paquet et d'`ECHEC` | 5 amendements, 1 amendement de planning | `DEC-0116` ; `planning.md` |
+| W12 | **Une relecture sans trouvaille ecrit sa ligne et sa contre-verification.** A12 : quatre mesures, un script independant, 28 indices ; et un defaut de fond trouve ailleurs (`C1`, 19 lignes pour 20, somme de colonne fausse de 30 674 octets) | 4 corrections, 5 points routes | `relecture-cloture.md` |
+
+## 2. Ce qui a coute, mesure
+
+| # | Constat | Mesure | Source |
+|---|---|---|---|
+| C1 | **23 h 49 min sans livraison**, entre `f37e33dd` (2026-10-10 11:17) et `38ba3d5c` (2026-10-11 11:06). L'entree de catalogue est fusionnee 15 h 07 min apres l'echeance de 20:00. Cause transmise par le message de lancement : deux agents arretes par l'utilisatrice et remplaces, un watchdog sur `lea-dev` ; un seul fichier du depot le dit (`cloture-nadia.md`, *"l'instance B arretee"*) | 15 h 07 min de retard ; 2 agents arretes, 1 watchdog, 1 trace | `git log` ; `review.md` section 3, obstacle 6 |
+| C2 | **Un refus dont la cause est une barre fausse, ecrite avant le code.** *"Mesure : tenu avec O1 et le meuble"* : l'entree de catalogue a ete ecrite contre une barre que le texte declarait tenue. La phrase de `M4` est a 626 a 656, le pli a 551. Le signal etait dans `rapport-lea-dev.md` 11.3 (*"91 px sous le pli"*, a l'oeil), commite le 2026-10-11 a 11:06, 95 minutes avant le verdict | 105 px, 6 items sur 6, 4 parties jouees | fiche ; `rapport-lea-dev.md` 11.3 |
+| C3 | **Le jeu refuse est jouable.** `grep -c 'id: bandit-manchot-rapprocher-deux-oeuvres-cp$'` rend 1 a la cloture ; `DEC-0009` nomme cela comme le defaut a eviter ; `Q-U3` sans reponse | 1 entree, 0 reponse | `DEC-0116` A.17 ; `review.md` obstacle 10 |
+| C4 | **Le sprint a produit quatre reserves en payant six.** Neuves : motif de refus (bloquant), `RDO-CP-R1`, `RDO-CP-R2`, `VSJ-CE1-R1` ; rejeu 0,5 plus 0,5 = 1,0 pour s57 | 4 neuves, 6 levees | `cloture-nadia.md` section 3 |
+| C5 | **Cinq garde-fous sans ligne au planning, depassement de borne ecrit nulle part.** `B2`, `B3`, `B5`, `B7`, `B8` : poste ne d'un amendement de `theo-archi` du 2026-10-11 ; environ 0,5 jour de dev ; l'acceptation de l'utilisatrice ne figure que dans le message de lancement ; `camille-po` ne sait pas de quelle borne ni de combien | 5 garde-fous, 0 ligne de planning, 0 fichier | `DEC-0116` A.18 point 5 ; `review.md` section 11 |
+| C6 | **La lecture de testabilite n'a pas eu lieu.** A s55 elle avait trouve 14 criteres faux avant le premier code ; a s56 la porte du planning (*"avant la premiere livraison de code"*) n'est pas franchie : `ls squad/sprints/s56-*/lecture-testabilite.md` ne rend rien | 0 sur 1 (s55 : 1 sur 1) | `rapport-qualite.md` section 6 |
+| C7 | **Quinze mutations vertes, neuf proprietes non gardees.** Dont cinq proprietes visibles de la marque (`F3`) que ni test ni `nadia-prof` ne jugent a nouveau tant qu'elle ne rejoue pas, et la ligature `œ` (`F7`) | 15 vertes sur 90 | `rapport-qualite.md` section 5 |
+| C8 | **Trois faux verts de mutation en un sprint, chacun vu par son auteur** : `bash` de WSL qui n'executait aucun test (`yanis-qa`, serie entiere jetee), espace insecable non reconnue par le script de mutation (`marc-dev`, deux fois, 22 verts puis 18) | 3 occurrences, 0 non detectee | `rapport-qualite.md` section 3 ; `rapport-marc-dev.md` sections 3 et 16 |
+| C9 | **Un garde-fou dont le test de non-exclusion ne pouvait pas rougir** : il jugeait l'exclusion par son propre predicat (REV-3 et `ADR-0083`). Mesure : predicat elargi a toute `Question`, 0 echec sur 4. Trouve par `theo-archi` en ratifiant, corrige dans `ADR-0104` | 0 echec sur 4 avant, 1 et 2 apres | `ADR-0104` amendement du 2026-10-11 ; `rapport-qualite.md` MT37 a MT39 |
+| C10 | **Le rapport qualite mesure un arbre anterieur au sommet** (`80c06e64` : 2403 ; sommet 2404 par `7b315f36`) et la mesure de pli de `lea-dev` etait a l'oeil (indice y = 740 environ ; mesure 626 a 676) | +1 test, 1 cote fausse | `review.md` 5.3 ; `rapport-lea-dev.md` 11.3 |
+| C11 | **`lea-dev` a ecrit deux fois qu'un critere n'etait pas ecrit** (`rapport-lea-dev.md` sections 8 et 9.6) ; il etait dans sa base (`f3de5e58` ancetre de `8d40c4a5` et `e8155d7e`). La marque a ete livree 22 minutes apres la seconde affirmation | 2 affirmations fausses | `git merge-base --is-ancestor` |
+| C12 | **La forme 3 sans la formule, troisieme occurrence possible** (`DEC-0114`) : le relecteur classe lignes 13, 52, 79 comme des mentions, et la ligne 31 comme une attribution au pluriel | 1 attribution plurielle, 3 mentions | `relecture-cloture.md` P1 |
+| C13 | **Mon planning portait deux erreurs de ma main** : une porte (`Q7` avant l'entree de catalogue) insatisfiable, une phrase (*"meme perimetre"*) non demontree. Elles sont dans `relecture-cloture.md` P3 et `review.md` section 3 | 2 | section 4 |
+| C14 | **Consommation de tokens** : 2756 tours et 1 594 421 tokens d'output, contre 3706 et 2 107 822 a s55 (-25,6 % et -24,4 %). `lea-dev` 529 tours et 11 720 419 de cache cree (le plus haut), `nadia-prof` 480 (868 a s55), `theo-archi` 381 | 2756 tours | `RAPPORT-tokens.md` ; `JOURNAL-tokens.md` |
+
+## 3. Retro de s55 : etat des actions A1 a A15
+
+| # | Action de s55 | Etat a la cloture de s56 |
+|---|---|---|
+| A1 | `DEC` d'ouverture de s56 | **Faite** : `DEC-0116`, `Proposee` (`Q4` sans reponse) |
+| A2 | Mots de l'utilisatrice sur `Q6`, le moment du paquet, l'ordre, les deux instances | **Partielle** : `Q6` et le moment repondus avant s56 ; `Q4`, `Q3` et `Q6` (pli de `LIS-2`) sans reponse a la cloture |
+| A3 | Pousser et lire la CI sur un commit nomme | **Non faite** : second report (`A2` de s54, `A3` de s55, s56). Rien n'est pousse, la CI distante n'est lue par personne |
+| A4 | Cause du rouge de CI que `a3606b2f` corrige | **Partielle** : mecanisme reproduit (1 echec sur 17 avec `SOURCE_DATE_EPOCH`, 0 sans) ; declencheur sur GitHub non etabli (`avis-faisabilite.md` section 7) |
+| A5 | Poste prealable `S55-ART-CP-10-PLAFOND` et aucun poste sans ligne | **Plafond fait** (`1f0fe8e4`). **Aucun poste sans ligne : tenu pour deux postes d'`ADR`** (amendement du planning avant les worktrees), **non tenu pour `B2`, `B3`, `B5`, `B7`, `B8`** et pour la correction `F1` (`7b315f36`) |
+| A6 | Tout `.md` sous `squad/` ou `docs/` passe par `clean verify` avant commit | **Tenue** : `yanis-qa` a vu son propre rapport rouge avant de commiter (W8) ; `relecteur-pedagogique` a lance `clean verify` apres ses commits ; mes fichiers : `review.md` section 5.4 |
+| A7 | Cinq ecarts de critere du rapport qualite | **Faite pour quatre** (`DEC-0116` section 8) ; le cinquieme (planning de s55) traite a la cloture de s55. **Relecture par `yanis-qa` : non ecrite** ; `F9` est un ecart de la meme famille (critere insatisfiable laisse lisible) |
+| A8 | Rejouer `Q-Y8` ; mutation d'A7 ; morsures de T2 | **Livree** (`rapport-qualite.md` section 3). **Correction du libelle d'A7 de s55, ecrite ici sans toucher `retro.md` de s55** (une retro close ne recoit rien) : la mutation que la retro de s55 nomme (retirer `grep -m1 'version "'`) est un **mutant equivalent** (`extraire_version_java` choisit deja la ligne `version "` ; MT04 et MT05 vertes) ; la regression reelle est `head -n1`, mordue par deux cas (MT06) |
+| A9 | Laquelle des lectures de la capacite de B vaut | **Faite** : les deux instances ecrivent 3,5 consommes pour B a s55 (`DEC-0116` A.5) |
+| A10 | Verification de s54 (trois instances) contre les formes (a), (b), (c) | **Non engagee a s56** (deux instances) ; jamais engagee, pas un report ; due avant toute `DEC` qui propose une troisieme instance |
+| A11 | En-tete de la fiche d'exclusion et titre du jeu | **Faite** avec le rejeu d'`EXC-R16` (`cloture-nadia.md` section 1) |
+| A12 | Ponctuation des 12 indices de `cm1-grands-nombres` | **Faite** : rien a corriger, ligne ecrite (`relecture-cloture.md` section 1) |
+| A13 | Lever `R4`, `F2`, `F3` quand le fichier est touche | **Faite pour la citation de 2018** (`02b938bd`) ; **non declenchee pour `manche.html`** : aucun commit de s56 ne touche ce fichier (`git log -- adapters/adapter-web/src/main/resources/templates/fragments/manche.html` ne rend rien apres `363793e3`) |
+| A14 | La formule de la forme 3 peut-elle etre gardee par un test ? | **Faite** : refus motive (47 fichiers sur 65 rouges) et condition de revision (`avis-faisabilite.md` section 8) |
+| A15 | Mesure de pli de `LIS-2` | **Non engagee**, jamais engagee, pas un report |
+
+## 4. Ce qui a coince, et pourquoi (lecture de `sofia-sm`)
+
+Les regles ecrites dans `lessons.md` en decoulent. Les constats qui sont de ma main sont signales.
+
+- **`lea-dev` a lu "non ecrit" sans lire sa base** (C11). `git merge-base --is-ancestor f3de5e58 8d40c4a5` sort 0 ; `DEC-0116` A.9 dit le critere ecrit. **Je ne sais pas pourquoi** : je n'ai pas son transcript, et le rapport ne le dit pas. La regle : un "non ecrit" cite la commande qui l'a verifie et le commit sur lequel elle a tourne.
+- **Des cotes lues a l'oeil ont ete publiees avec leur methode et contredites par une mesure** (C2, C10). `rapport-lea-dev.md` 11.3 dit *"Mesure a l'oeil sur les captures, pas par `getBoundingClientRect()`"* : il a respecte la regle de methode de la section 4 du README. Ce qui a failli est l'usage du chiffre (*"91 px sous le pli"*, *"y = 740 environ"*) dans un paragraphe qui conclut, quand la mesure etait un script d'`ines-design` a une journee de la. La regle : une cote a l'oeil est routee, pas recopiee.
+- **La barre de `nadia-prof` a ete dite tenue sur un vehicule statique** (C2). Meme famille que l'amendement de s14 (*"tenu par construction"* verifie sur le document assemble), dans la bouche de l'autorite pedagogique et pour un arbitrage prealable. Elle l'a corrige elle-meme (W7).
+- **Un test de non-exclusion avait l'oracle de ce qu'il juge** (C9). `lea-dev` a propose l'exclusion en la signalant *"proposee, a ratifier par `theo-archi`"* (`rapport-lea-dev.md` 11.1) ; `theo-archi` l'a ratifiee et a trouve le defaut. Le mecanisme (proposer, ratifier, mordre) a fonctionne ; le defaut etait dans le test, pas dans la decision.
+- **Trois faux verts de mutation, trois detections par l'auteur** (C8). `yanis-qa` ecrit dans sa methode qu'un lancement a 0 test est invalide et que son remplacement de chaine refuse un motif absent ; `marc-dev` applique ses mutations par un script qui ne refuse pas. Regle : motif trouve, tests superieurs a zero, avant de lire un vert.
+- **Ma porte `Q7` etait insatisfiable** (C13). Ecrite dans mon planning (tableau des postes sans prix) et dans le backlog : `Q7` demande le jar qui sert l'entree de catalogue. Je ne l'ai pas lu dans la demande de `cloture-nadia.md` de s55 avant de l'ecrire comme prealable. Sans consequence sur le refus (le refus vient de la barre), consequence sur la lecture de la porte a la review. Pas d'amendement retrospectif du planning (README section 4).
+- **Ma phrase *"meme perimetre"* (P3 de `relecture-cloture.md`) n'etait pas demontree ; elle l'est.** `pom.xml` declare cinq modules (lignes 23 a 27) ; `bootstrap/pom.xml` depend de `recreo-domain`, `recreo-application`, `recreo-adapter-web` et `recreo-adapter-content` (lignes 20, 24, 28, 32) : `-pl bootstrap -am` construit les cinq modules du reacteur racine. La mesure de `DEC-0116` 0.3 est `clean verify -pl bootstrap -am`, ITs compris (120, 18, 407, 1423, 333 et 6) ; le reacteur complet du planning rend les memes comptes module par module. **Meme perimetre, meme total (2307).** En phase `test` seule les 6 tests d'integration seraient exclus (2397 contre 2403 chez `yanis-qa`). **P3 est clos par ce paragraphe.**
+- **Le chiffre de capacite *"consomme 5,75"* ne compte pas quatre postes livres** (section 11 de la review) : 7,25 en les comptant. Les deux sont des sommes de prix de `nadia-prof` ; l'un omet les arbitrages, la forme et le choix des oeuvres. Regle : un chiffre de capacite *"consomme"* nomme les postes qu'il additionne.
+- **La forme 3, `DEC-0114` ligne 31 (P1).** Faits : `DEC-0062` ligne 266 exige la *"formule fixe"* ; la ligne 31 ecrit *"recus de MASTER, sans source dans le depot, le 2026-10-07"* pour quatre messages cites mot pour mot avec leur date. Le texte contient donc l'enonce, MASTER en capitales, la mention *"sans source dans le depot"*, la citation et la date ; il lui manque l'accord au singulier. **Ma lecture, non une decision** : le pluriel est l'accord de la formule, pas une quatrieme forme ; un test qui compterait la chaine singuliere la lirait comme absente (`avis-faisabilite.md` section 8). **Savoir si la formule tolere l'accord est a `DEC-0062`, donc a `camille-po` et a l'utilisatrice.** Je n'edite ni `DEC-0114` (`DEC-0062` section 7 : pas de balayage retroactif), ni la section 2 bis du README, qui transcrit la `DEC`.
+- **Le glissement de l'entree de catalogue** (C1) : je n'ai pas assiste au 2026-10-10 et ne trouve aucune trace d'un message a l'utilisatrice ce jour-la (`review.md` section 3). Le planning exigeait de le dire le jour meme ; la regle n'avait pas de fichier ou le consigner. Elle l'aurait : voir la section 6, deuxieme ligne.
+- **Rien n'ecrit ce que fait un arret d'agent par l'utilisatrice** (obstacle 6). La section 9 du README dit quoi faire d'un agent arrete par une erreur d'infrastructure (lire `git log`, `git status`, relancer sur l'en-cours) ; elle ne dit rien d'un arret voulu, ni de qui l'ecrit. Un fichier le dit pour s56 (`cloture-nadia.md`).
+
+## 5. Actions pour s57
+
+| # | Action | Proprietaire | Artefact attendu |
+|---|---|---|---|
+| A1 | Ecrire la `DEC` d'ouverture de s57 : placer ou abandonner `S54-OBS-SCI-CONSIGNE` (troisieme report interdit), la reprise du paquet d'`ART-CP-10` (0,5, priorite proposee par `camille-po`), `VSJ-CE1-R1` (0,5), l'ordre des matieres | `camille-po`, utilisatrice | `DEC` |
+| A2 | Repondre a `Q-U3` (retrait D1 ou maintien D2) ; si D1, `sofia-sm` affecte `S56-RETRAIT-RAPPROCHER-OEUVRES` et `theo-archi` mesure le cout technique avant le commit | utilisatrice, `sofia-sm`, `theo-archi` | mots en forme 2, puis story affectee |
+| A3 | Repondre a `Q4`, `Q3`, `Q6` | utilisatrice | mots en forme 2 avec leur date |
+| A4 | Pousser, lire la CI sur un commit nomme, job par job ; lire le journal du job `build` rouge d'avant `a3606b2f` | utilisatrice, `theo-archi` (ecrit la cause) | verdict nomme ; note dans un avis de s57 |
+| A5 | Ecrire la lecture de testabilite **avant la premiere livraison de code** de s57 | `yanis-qa` | `lecture-testabilite.md` |
+| A6 | Traiter `F1` a `F9` : `F1`, `F2`, `F4`, `F6` (`theo-archi`), `F3` (`nadia-prof`, `ines-design`, `theo-archi`), `F5` (`lea-dev`), `F7` (`relecteur-pedagogique`, `theo-archi`), `F9` (`camille-po`). Chacun est un poste : une ligne au planning de s57 ou une decision de ne pas le faire | `camille-po` (stories), `sofia-sm` (lignes) | stories au backlog |
+| A7 | `P2` et `P5` de `relecture-cloture.md` | `nadia-prof` | une ligne chacun |
+| A8 | `P4` : nommer la commande de chaque chiffre (295 et 296 octets) | `ines-design`, `lea-dev` | une ligne |
+| A9 | `P1` : la formule de la forme 3 tolere-t-elle l'accord ? | `camille-po`, utilisatrice | amendement de `DEC-0062` ou refus |
+| A10 | Ecrire dans le depot les deux arrets d'agent et le watchdog : qui, quand, ce que chaque branche portait | `sofia-sm` (lanceur), utilisatrice (les faits) | une ligne dans le planning de s57 ou un amendement date ; aujourd'hui, `lessons.md` |
+| A11 | Si l'utilisatrice veut le depassement de borne ecrit : amendement de `DEC-0116` avec ses mots, la borne et le montant | `camille-po`, utilisatrice | amendement de `DEC-0116` |
+| A12 | Ne pas ecrire de porte de sortie qui depend d'un artefact produit par l'etape qu'elle precede (`Q7` avant l'entree de catalogue) | `sofia-sm` | verification poste/story du planning de s57 |
+| A13 | `A10` de la retro de s55 reste due avant toute `DEC` qui propose une troisieme instance ; `A15` si `FRA-CM1-01` est voulu | `nadia-prof`, `ines-design`, `camille-po` | note ou mesure |
+| A14 | Le rejeu du paquet d'`ART-CP-10` corrige se mesure au `getBoundingClientRect()` a 744 x 551, six items, avec la phrase de `M4`, la croix et l'indice ; la barre est celle de `nadia-prof`, non deplacee | `lea-dev`, `ines-design`, `theo-archi`, `nadia-prof` (rejeu) | verdict de rejeu |
+
+## 6. Amendements proposes a `squad/README.md` (non ecrits par moi)
+
+| Section | Proposition | Fait mesure | Demandee a |
+|---|---|---|---|
+| 9 (etape 1) | **Une porte de sortie ne depend pas d'un artefact que l'etape qu'elle precede produit.** La verification poste/story du planning (`PAR-16`) y ajoute : pour chaque porte, l'artefact qu'elle exige existe-t-il avant l'etape ? | s56 : `Q7` avant l'entree de catalogue, insatisfiable | `sofia-sm`, utilisatrice |
+| 9 (daily, glissement) | **Un glissement d'echeance est ecrit au moment ou il est constate**, dans un fichier du dossier du sprint (une ligne : echeance, constat, a qui dit), pas seulement dit | s56 : 15 h 07 de retard, aucune trace | `sofia-sm`, utilisatrice |
+| 9 (defaillance) | **Un agent arrete par l'utilisatrice est ecrit par celui qui relance** : qui, quand, ce que sa branche portait | s56 : deux arrets et un watchdog, un seul fichier | `sofia-sm`, utilisatrice |
+| 4 (mesure) | **Une mutation n'est lue qu'apres deux controles : motif trouve, nombre de tests superieur a zero** (la regle de `yanis-qa`, etendue aux developpeurs) | s56 : trois faux verts | `yanis-qa`, `sofia-sm` |
+| 7 (capacite) | **Un chiffre de capacite *"consomme"* nomme les postes qu'il additionne** | s56 : 5,75 contre 7,25 | `camille-po`, `nadia-prof` |
+| 4 (porte pedagogique) | **Une condition d'un arbitrage prealable dite *"tenue"* cite la cote mesuree sur le jar, pas sur son vehicule** (famille de l'amendement de s14) | s56 : *"tenu avec O1 et le meuble"* | `nadia-prof`, `sofia-sm` |
+
+## 7. Une ligne sur les ceremonies
+
+Planning (`dfcec37c`, 2026-10-09 20:36, amende une fois, heure inscrite 22:17) et review (cette tache) existent ; `retro.md`, `RAPPORT.md` et `RAPPORT-tokens.md` sont ecrits dans la meme tache. `yanis-qa`, `theo-archi`, `relecteur-pedagogique` et `nadia-prof` ont ecrit leurs rapports de cloture ; `lecture-testabilite.md` manque. Le daily n'est pas journalise.
+
+## Decisions prises
+
+**Aucune `DEC` ni `ADR` n'est creee ou amendee par cette retro.** Les amendements de la section 6 sont demandes, pas ecrits. Le seul fichier de gouvernance cree par cette tache est `lessons.md` ; aucun fichier de s55, `DEC-0114`, `DEC-0116`, planning ou README n'est modifie.
