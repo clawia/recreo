@@ -822,12 +822,6 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-decrire-une-oeuvre
     nombreDeManches: 7
-  - id: bandit-manchot-rapprocher-deux-oeuvres-cp
-    titre: "Des œuvres faites de la même façon"
-    consigne: "Regarde l'œuvre, puis trouve celle qui est faite de la même façon."
-    mecanique: bandit-manchot
-    paquet: cp-rapprocher-deux-oeuvres
-    nombreDeManches: 5
   - id: bandit-manchot-corps-cm1
     titre: "Prendre soin de son corps"
     consigne: "Lis bien, puis dis ce qui est bon pour le corps, ou à quoi cela sert."

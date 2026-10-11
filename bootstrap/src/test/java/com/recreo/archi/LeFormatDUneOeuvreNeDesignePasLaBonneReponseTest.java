@@ -1,22 +1,13 @@
 package com.recreo.archi;
 
-import com.recreo.adapter.content.YamlContentPackLoader;
-import com.recreo.domain.content.ContentSource;
-import com.recreo.domain.content.Item;
-import com.recreo.domain.content.ItemId;
-import com.recreo.domain.content.Question;
-import com.recreo.domain.content.RandomSource;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,8 +41,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  */
 class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
 
-    /** Le jeu du catalogue reel qui sert le paquet {@code cp-rapprocher-deux-oeuvres}. */
-    private static final String JEU = "bandit-manchot-rapprocher-deux-oeuvres-cp";
+    /** Le fichier du paquet {@code cp-rapprocher-deux-oeuvres}. */
+    private static final String PAQUET = "cp-rapprocher-deux-oeuvres.yaml";
 
     private static final String REPRODUCTIONS = "src/main/resources/static/oeuvres";
 
@@ -63,24 +54,29 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
     private static final String HAUTEUR = "en hauteur";
     private static final String CARRE = "carre";
 
-    private static List<Question> items() {
-        ContentSource contenu = new YamlContentPackLoader().games().stream()
-                .filter(jeu -> jeu.id().equals(JEU)).findFirst().orElseThrow().contenu();
-        RandomSource hasard = new Random(13)::nextInt;
-        Set<ItemId> dejaVus = new HashSet<>();
-        List<Question> items = new ArrayList<>();
-        for (Item item = contenu.next(hasard, dejaVus).orElse(null); item != null;
-             item = contenu.next(hasard, dejaVus).orElse(null)) {
-            items.add((Question) item);
-            dejaVus.add(item.id());
-        }
-        return items;
+    /** Un item du paquet : la reference, la bonne oeuvre et les distracteurs, lus dans le fichier du paquet. */
+    record ItemDePaire(String id, String reference, String bonneReponse, List<String> distracteurs) {
     }
 
-    private static Question avec(Question item, String reference, String bonneReponse, List<String> distracteurs) {
-        return new Question(item.id(), item.enonce(), bonneReponse, distracteurs, item.indice(),
-                item.explication(), item.partDesignee(), item.texteSupport(), Optional.of(reference),
-                item.illustrationTexteAlternatif(), item.texteAVoixHaute(), item.tableauSupport());
+    /**
+     * Les items du paquet {@code cp-rapprocher-deux-oeuvres}, lus dans son fichier de contenu par le meme
+     * balayage que les garde-fous d'ADR-0104 ({@code LIllustrationDeContenuResoutEtAucuneNeDortTest}), et
+     * non dans le catalogue : le paquet peut etre hors catalogue (le retrait d'un jeu est l'absence de son
+     * entree, ADR-0061) sans que ce garde-fou cesse de le juger.
+     */
+    private static List<ItemDePaire> items() {
+        List<ItemDePaire> items = new ArrayList<>();
+        for (LIllustrationDeContenuResoutEtAucuneNeDortTest.ItemDeclare item
+                : LIllustrationDeContenuResoutEtAucuneNeDortTest.itemsDuDepot(
+                        LesGardeFousSontMisALEpreuveTest.racineDuDepot())) {
+            if (!item.paquet().equals(PAQUET)) {
+                continue;
+            }
+            List<String> propositions = LIllustrationDeContenuResoutEtAucuneNeDortTest.propositionsDe(item.champs());
+            items.add(new ItemDePaire("item-" + items.size(), String.valueOf(item.champs().get("illustration")),
+                    propositions.get(0), List.copyOf(propositions.subList(1, propositions.size()))));
+        }
+        return items;
     }
 
     /** Les formats des fichiers de ce repertoire, par identifiant de reproduction (nom sans extension). */
@@ -113,10 +109,10 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
     }
 
     /** Le juge, pur : les formats lus et les items. Rend la liste des griefs, vide quand B5 tient. */
-    static List<String> griefs(List<Question> items, Map<String, String> formats) {
+    static List<String> griefs(List<ItemDePaire> items, Map<String, String> formats) {
         List<String> griefs = new ArrayList<>();
-        for (Question item : items) {
-            String reference = item.illustration().orElse("");
+        for (ItemDePaire item : items) {
+            String reference = item.reference();
             List<String> propositions = new ArrayList<>(item.distracteurs());
             propositions.add(item.bonneReponse());
             List<String> inconnues = new ArrayList<>();
@@ -129,13 +125,13 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
                 inconnues.add(reference);
             }
             if (!inconnues.isEmpty()) {
-                griefs.add("B5 : item " + item.id().value() + " : le format de " + inconnues
+                griefs.add("B5 : item " + item.id() + " : le format de " + inconnues
                         + " ne se lit dans aucun fichier de reproduction");
                 continue;
             }
             for (String oeuvre : propositions) {
                 if (formats.get(oeuvre).equals(CARRE)) {
-                    griefs.add("B5 : item " + item.id().value() + " : " + oeuvre + " est carree, ni en largeur"
+                    griefs.add("B5 : item " + item.id() + " : " + oeuvre + " est carree, ni en largeur"
                             + " ni en hauteur : ce test ne sait pas la classer, son rendu dans la case egale"
                             + " est a ines-design et nadia-prof");
                 }
@@ -143,7 +139,7 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
             String formatDeLaBonne = formats.get(item.bonneReponse());
             long memeFormat = propositions.stream().filter(oeuvre -> formats.get(oeuvre).equals(formatDeLaBonne)).count();
             if (memeFormat < 2) {
-                griefs.add("B5 : item " + item.id().value() + " : la bonne oeuvre " + item.bonneReponse()
+                griefs.add("B5 : item " + item.id() + " : la bonne oeuvre " + item.bonneReponse()
                         + " est la seule des trois propositions " + formatDeLaBonne + " : dans une case"
                         + " carree egale, son format la designerait");
             }
@@ -151,7 +147,7 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
                 boolean unDistracteurLePartage = item.distracteurs().stream()
                         .anyMatch(oeuvre -> formats.get(oeuvre).equals(formats.get(reference)));
                 if (!unDistracteurLePartage) {
-                    griefs.add("B5 : item " + item.id().value() + " : la bonne oeuvre " + item.bonneReponse()
+                    griefs.add("B5 : item " + item.id() + " : la bonne oeuvre " + item.bonneReponse()
                             + " est la seule a partager le format de la reference " + reference + " ("
                             + formats.get(reference) + ") : regle 3 de nadia-prof");
                 }
@@ -162,7 +158,7 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
 
     @Test
     void aucuneBonneOeuvreNEstDesigneeParSonFormatSurLePaquetEtLesFichiersReels() {
-        List<Question> items = items();
+        List<ItemDePaire> items = items();
         Map<String, String> formats = formatsDe(repertoiresDeReproductions());
 
         assertThat(items).as("ADR-0003 : ce garde-fou ne prouve rien sans item").isNotEmpty();
@@ -174,9 +170,9 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
     /** Un distracteur de l'item 3 echange contre une oeuvre de l'autre format : la bonne oeuvre est seule. */
     @Test
     void unDistracteurEchangeContreUneOeuvreDeLAutreFormatFaitEchouerLeGardeFou() {
-        List<Question> items = items();
+        List<ItemDePaire> items = items();
         Map<String, String> formats = formatsDe(repertoiresDeReproductions());
-        Question item = items.stream()
+        ItemDePaire item = items.stream()
                 .filter(candidat -> {
                     String formatDeLaBonne = formats.get(candidat.bonneReponse());
                     long memeFormat = candidat.distracteurs().stream()
@@ -190,13 +186,13 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
         String autreFormat = formats.entrySet().stream()
                 .filter(entree -> !entree.getValue().equals(formatDeLaBonne))
                 .map(Map.Entry::getKey)
-                .filter(oeuvre -> !oeuvre.equals(item.illustration().orElse("")))
+                .filter(oeuvre -> !oeuvre.equals(item.reference()))
                 .filter(oeuvre -> !item.distracteurs().contains(oeuvre) && !oeuvre.equals(item.bonneReponse()))
                 .findFirst().orElseThrow();
         List<String> distracteurs = new ArrayList<>(item.distracteurs());
         distracteurs.set(distracteurs.indexOf(partageur), autreFormat);
-        List<Question> mutes = new ArrayList<>(items);
-        mutes.set(mutes.indexOf(item), avec(item, item.illustration().orElseThrow(), item.bonneReponse(), distracteurs));
+        List<ItemDePaire> mutes = new ArrayList<>(items);
+        mutes.set(mutes.indexOf(item), new ItemDePaire(item.id(), item.reference(), item.bonneReponse(), distracteurs));
 
         assertThat(griefs(mutes, formats)).anyMatch(grief -> grief.contains("la seule des trois propositions"));
     }
@@ -205,9 +201,9 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
     @Test
     void uneBonneOeuvreSeuleAPartagerLeFormatDeLaReferenceFaitEchouerLeGardeFou() {
         Map<String, String> formats = formatsDe(List.of(CONTRE_EXEMPLE.resolve("oeuvres")));
-        List<Question> items = items();
-        Question item = items.get(0);
-        Question mute = avec(item, "oeuvre-fautif-large-un", "oeuvre-fautif-large-deux",
+        List<ItemDePaire> items = items();
+        ItemDePaire item = items.get(0);
+        ItemDePaire mute = new ItemDePaire(item.id(), "oeuvre-fautif-large-un", "oeuvre-fautif-large-deux",
                 List.of("oeuvre-fautif-haute-un", "oeuvre-fautif-haute-deux"));
 
         assertThat(griefs(List.of(mute), formats))
@@ -219,8 +215,8 @@ class LeFormatDUneOeuvreNeDesignePasLaBonneReponseTest {
     @Test
     void uneImageCarreeFaitEchouerLeGardeFouPlutotQuEtreClassee() {
         Map<String, String> formats = formatsDe(List.of(CONTRE_EXEMPLE.resolve("oeuvres")));
-        Question item = items().get(0);
-        Question mute = avec(item, "oeuvre-fautif-large-un", "oeuvre-fautif-large-deux",
+        ItemDePaire item = items().get(0);
+        ItemDePaire mute = new ItemDePaire(item.id(), "oeuvre-fautif-large-un", "oeuvre-fautif-large-deux",
                 List.of("oeuvre-fautif-carree", "oeuvre-fautif-large-un"));
 
         assertThatThrownBy(() -> assertThat(griefs(List.of(mute), formats)).isEmpty())
