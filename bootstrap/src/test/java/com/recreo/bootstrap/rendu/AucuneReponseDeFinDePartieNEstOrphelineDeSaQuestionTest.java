@@ -272,6 +272,26 @@ class AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest {
                 .isNotEmpty();
     }
 
+    /**
+     * ADR-0013 obligation 2 : l'exclusion des reponses en image est derivee de la forme de l'item, et
+     * elle n'ecarte que ces jeux. Un jeu a reponse ecrite reste dans la population, un jeu a reponse
+     * en image n'y est pas. La population des jeux ecartes peut etre vide : elle l'etait avant le
+     * branchement du premier paquet a reproductions.
+     */
+    @Test
+    void seulsLesJeuxADesReponsesEnImageSontHorsDeLaPopulation() throws Exception {
+        List<String> jeuxJuges = population().stream().map(FinDePartieServie::jeuServi).toList();
+
+        for (GameDefinition jeu : partie.jeuxDisponibles()) {
+            Item premier = itemsDe(jeu.contenu(), MANCHES).get(0);
+            if (estUneReponseEnImage(premier)) {
+                assertThat(jeuxJuges).as("%s a des reponses en image", jeu.id()).doesNotContain(jeu.id());
+            } else if (!(premier instanceof ZoneADesigner)) {
+                assertThat(jeuxJuges).as("%s a des reponses ecrites", jeu.id()).contains(jeu.id());
+            }
+        }
+    }
+
     private static FinDePartieServie avecHtml(FinDePartieServie ecran, String html) {
         return new FinDePartieServie(ecran.jeuServi(), ecran.reponse(), ecran.questionDeSaManche(),
                 ecran.questionDeLaMancheDAvant(), html);
@@ -296,6 +316,18 @@ class AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest {
                 // jamais etre jugee ici, sur aucun de ses items - ce jeu est hors de cette population.
                 continue;
             }
+            if (estUneReponseEnImage(items.get(0))) {
+                // ADR-0104 decision 4, points 4 et 5 (S55-ART-CP-10-PAQUET, s56) : quand les propositions
+                // sont des reproductions, ni la revelation ni l'ecran de fin de partie ne nomment la
+                // reponse - un identifiant n'est jamais rendu en texte (clause 1), et la bonne oeuvre
+                // est marquee sur son bouton. C'est le meme motif, applique a la meme mecanique, que
+                // celui d'ADR-0088 clause B ci-dessus : aucune reponse ne peut etre orpheline ici, et le
+                // garde-fou n'a rien a apparier. Les ecrans de ces jeux sont juges par
+                // LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest (aucun
+                // .reponse-attendue, aucun identifiant ecrit). Exclusion proposee par lea-dev, a
+                // ratifier par theo-archi : ADR-0104 decision 7 ne liste pas ce garde-fou.
+                continue;
+            }
             MockHttpSession session = new MockHttpSession();
             mockMvc.perform(post("/parties/{jeuId}", jeu.id()).session(session));
 
@@ -309,6 +341,12 @@ class AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest {
                     enonceDe(precedente), finDePartie));
         }
         return population;
+    }
+
+    /** Un item dont les propositions sont des reproductions : sa reponse n'est jamais ecrite (ADR-0104). */
+    static boolean estUneReponseEnImage(Item item) {
+        return item instanceof Question question
+                && LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest.estEnImage(question);
     }
 
     /**

@@ -263,3 +263,81 @@ Une faute que cette serie a trouvee dans mon propre test : sur E6, le test de la
 3. **Prerequis d'ordre** : `PLAFOND` (`1f0fe8e4`) et `ECHEC` (`696f4f20`) sont ancetres une fois fusionnes (`git merge-base --is-ancestor`, sort 0) ; `S56-ART-CP-10-FORME` est ecrit (`ARBITRAGE-s56-forme-art-cp-10.md`), `Q7` (releve d'`ines-design` sur le gabarit livre) est a verifier avant le commit.
 4. **Premier endroit ou je peux lancer le jar et regarder** : apres l'entree de catalogue. C'est la que je jouerai l'echec et la revelation, avant de dire que c'est fait.
 5. **R8 et R9** (`S55-EMC-CM1-R8`, `S55-EMC-CM1-R9`) : inchanges, apres l'entree de catalogue. Le point 2 de la section 8 est livre par cette section.
+
+## 11. Entree de catalogue du paquet (worktree `s56-lea-catalogue`, base `round-two` a `19d9312f`)
+
+Commits : `0076cbff` (deux garde-fous de rendu n'examinent pas une reponse en image) et `f37e33dd` (l'entree, l'inventaire, le garde-fou 4). **JDK 21.0.10** (`java.version` du rapport Surefire, enveloppe
+`bash outils/mvn-jdk21.sh`). `PLAFOND` (`1f0fe8e4`) et `ECHEC` (`696f4f20`) sont ancetres de la base : `git merge-base --is-ancestor`, sort 0 pour les deux.
+
+### 11.1 Ce qui est livre
+
+- **`catalogue.yaml`** : `bandit-manchot-rapprocher-deux-oeuvres-cp`, titre *"Des œuvres faites de la même façon"*, consigne *"Regarde l'œuvre, puis trouve celle qui est faite de la même façon."* (finit par un point : aucun signe double),
+  `nombreDeManches: 5` pour six items (`B9`, `ADR-0023`).
+- **`TexteAccentueExposeParLePortEntrantTest`** : l'inventaire gagne l'identifiant, le titre, la consigne et la competence *"Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres."*.
+- **Garde-fou 4** (`LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`) : la liste des jeux reels a propositions en image est **exacte** (`containsExactly("bandit-manchot-rapprocher-deux-oeuvres-cp")`).
+  La boucle 6 items / 5 manches : le jeu reel est joue sur ses `nombreDeManches` premiers items, et **chaque item a propositions en image est aussi joue seul** dans un jeu d'une manche derive du jeu reel (`<jeu>--item-<rang>`),
+  pour que le sixieme soit juge : avec le hasard fixe de ce fichier, un item au-dela de la cinquieme manche n'est jamais servi. Le critere 6 de la marque (`joueLaMarque`) suit la meme regle.
+- **Deux garde-fous que `ADR-0104` decision 7 ne liste pas, et qui ont rougi** (commit `0076cbff`, a part pour pouvoir etre retire sans toucher au reste) :
+  - `AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest` (REV-3) : *"aucun element hors bouton ne porte `oeuvre-chambre` seule et entiere"* ;
+  - `AucunTexteServiNEnchasseLaReponseDansUnePhraseTest` (`ADR-0083`) : *"cet emplacement dit autre chose selon l'item joue"* (`p.reponse-revelee` : *"Appuie sur la bonne réponse :"* contre la phrase `M4`), et la meme absence de reponse en texte.
+  Mesure : avec l'entree et sans l'exclusion, **4 echecs** (2 par garde-fou). Je les ai fait ecarter les jeux dont les reponses sont des reproductions, derives de la forme de l'item, **sur le precedent de la designation** (`ADR-0088` clause B, dans les memes fichiers) et sur
+  `ADR-0104` decision 4, points 4 et 5 (ni la revelation ni la fin de partie ne nomment la reponse en texte). Un test par garde-fou verifie que seuls ces jeux sont ecartes et qu'aucun jeu a reponse ecrite ne l'est
+  (`seulsLesJeuxADesReponsesEnImageSontHorsDeLaPopulation`). Les ecrans de ces jeux restent juges par le garde-fou 4 (aucun `.reponse-attendue`, aucun identifiant, phrase `M4` exacte).
+  **C'est une exclusion de garde-fou que personne n'a decidee par ecrit : proposee, a ratifier par `theo-archi`** (je n'invente pas de regle d'architecture ; le commit est separable).
+
+### 11.2 Lectures du critere de la marque, gardees pour `nadia-prof` et `camille-po`
+
+Reprises de la section 10.2, inchangees, parce que la marque est maintenant servie :
+1. **Critere 4, anneau et disque.** Lu comme l'anneau seul, le bord exterieur vaut 1,14:1 contre le meuble et refuserait la pastille retenue. Le test juge le meilleur du disque et de l'anneau contre chaque entourage (meuble et page, lus dans `:root`).
+2. **Critere 1, le `:has(...)` de la rangee.** Lu a la lettre, `padding-bottom` de la rangee suffirait et E1 resterait verte ; le test lit le motif hors des parentheses.
+3. **Critere 6, deux distracteurs.** *"Deux erreurs puis la revelation"* avec deux boutons essayes : la troisieme erreur repete la premiere.
+Aucune n'a ete tranchee par moi ; aucune n'assouplit un garde-fou.
+
+### 11.3 Releve `Q7` : le fichier n'existe pas, et ce que j'ai mesure a sa place
+
+**`Q7` n'est ecrit nulle part dans le depot.** `ls squad/design` et `squad/conformite` ne portent aucun releve d'`ines-design` a dix largeurs sur le gabarit livre ; son seul document de s56
+(`releves-s56/proposition-ines-forme-art-cp-10.md`, branche `s56-ines-design`, fusionne) est la **proposition de forme**, mesuree sur un vehicule statique et dont elle dit elle-meme qu'elle n'est pas faite sur le jar. Le prerequis d'ordre du backlog
+(*"`S56-ART-CP-10-FORME` et `Q7` ecrits avant l'entree de catalogue"*) n'est donc **pas rempli pour `Q7`** : `FORME` l'est (`ARBITRAGE-s56-forme-art-cp-10.md`). J'ai commite l'entree malgre cela, localement, sans fusion ni push, et je le dis ici plutot que de le deduire.
+Je n'ecris pas `Q7` (a `ines-design`). Ce que j'ai mesure moi-meme, **sur le jar** (11.4), en captures a 744 x 551 :
+**la phrase `M4` n'est pas au-dessus du pli a la revelation.** La condition bloquante de `nadia-prof` pour `Q3` est : la reference, les trois cases, les croix (echec) ou l'anneau (revelation) **et la phrase de `M4`** au-dessus du pli de 551 px.
+Constat : la reference, les trois cases et les deux croix sont au-dessus (les croix vers y = 505) ; le verdict *"Ce n'est pas ça."* est a y = 583 et la phrase *"C'est cette œuvre qui va avec. Appuie dessus."* a y = 642, **91 px sous le pli** ; l'indice et l'explication suivent. A l'echec, l'indice
+(*"Regarde d'où vient la lumière."*) est a y = 740 environ. Mesure a l'oeil sur les captures, pas par `getBoundingClientRect()`. Ce n'est pas mon verdict : c'est celui de `nadia-prof` a l'audit, mais le chiffre contredit *"mesure : tenu avec O1 et le meuble"* de son arbitrage.
+
+### 11.4 Ce que j'ai joue, sur le jar
+
+Commande : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am package -DskipTests`, puis `java -jar bootstrap/target/recreo.jar --server.port=18080` (JDK 21.0.10), arrete ensuite par son PID.
+- L'accueil sert l'entree *"Des œuvres faites de la même façon"* ; `POST /parties/bandit-manchot-rapprocher-deux-oeuvres-cp` rend la manche : `ecran-de-jeu ecran-deux-oeuvres`, la reference (`oeuvre-femme-au-luth`, texte alternatif de `B2`), trois boutons-images `aria-label="Choisir cette œuvre"`, aucun `oeuvre-` dans un noeud de texte.
+- Deux erreurs sur deux oeuvres puis une troisieme : apres la premiere, `oeuvre-chambre` porte `deja-essayee` ; apres la seconde, `oeuvre-chambre` et `oeuvre-autoportrait-leyster` ; a la revelation, la bonne (`oeuvre-jeune-femme-aiguiere`) porte `data-oeuvre-revelee="true"` et pas `deja-essayee`, la phrase `M4` et l'explication
+  *"Dans ces deux œuvres, la lumière entre par une fenêtre, à gauche."* s'affichent.
+- `/images/marque-echec.svg` rend 200 `image/svg+xml` (296 octets), `/oeuvres/oeuvre-femme-au-luth.jpg` et `/oeuvres/oeuvre-autoportrait-leyster.jpg` rendent 200 `image/jpeg` (17 092 et 24 248 octets), `/css/recreo.css` porte la regle de la marque.
+- **Rendu** : captures Chrome (`bash outils/mesurer-rendu.sh <largeur> <url> <png> [hauteur]`, 744 x 551, 390 et 992 de large) de la manche a l'echec et a la revelation. **Limite** : pas de navigation par un enfant ; le fragment rendu par le jar est pose dans l'en-tete de la vraie page d'accueil
+  (feuilles servies par le jar), **sans htmx ni JavaScript**, parce que l'appui par un navigateur n'est pas automatisable ici. Ce que j'ai vu : une croix rouge sur disque clair sous chacune des deux cases essayees, qui se lit sur le meuble sombre ; les cases essayees sont attenuees ; la bonne porte l'anneau d'encre a la revelation ;
+  rien ne chevauche, a 390 et a 992. Que la croix se lise *"pas celle-la"* a 40 px, la lisibilite de la propriete rapprochee a 176 px, la pale contre la sombre : a `nadia-prof`.
+
+### 11.5 Mutations sur le fichier reel
+
+Commande : `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dmaven.test.failure.ignore=true` (perimetre : le reacteur de `bootstrap` avec `-am`, ITs exclus) ; fichier restaure apres chaque mesure (`git status --short` vide en fin de serie).
+
+| # | Mutation de `catalogue.yaml` | Echec nomme |
+|---|---|---|
+| C1 | entree retiree | `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest.chaqueEcranDeChaqueItemAPropositionsEnImageEstSainEtLePerimetreReelEstVide` (liste exacte) ; `TexteAccentueExposeParLePortEntrantTest.chaqueChaineDeLInventaireEstEncoreExposeeParLeCatalogueReel` |
+| C2 | `nombreDeManches: 6` (six items) | `ChaqueJeuDuCatalogueOffrePlusDItemsQueDeManchesTest.chaqueJeuDuCatalogueDeProductionOffrePlusDItemsQueDeManches` |
+| C3 | titre suivi de *"au CP"* | `AucunTitreDeJeuNePorteSonNiveauTest.aucunTitreDuCatalogueServiNePorteLeNiveauDeSonPaquet`, et 4 echecs d'inventaire |
+| C4 | consigne finissant par une espace ordinaire puis `?` | `AucunSigneDoubleNEstDetachableDeSonMotTest.leCliquetDeLaDetteDeTyp1EstExact`, et 4 echecs d'inventaire |
+| C5 | l'exclusion des reponses en image retiree des deux garde-fous (etat avant `0076cbff`, mesure du verify du 2026-10-10) | 4 echecs : REV-3 (2) et `ADR-0083` (2), 9 echecs au total avec le garde-fou 4 non encore adapte |
+
+### 11.6 Delta de tests, jobs
+
+- **+2 tests**, mesure sur `8db641f5` (dont `19d9312f` ne differe que par `rapport-lea-dev.md`, `git diff --stat`) : 120 + 18 + 442 + 1458 + 337 + 6 = 2381 ; sur `f37e33dd` : 120 + 18 + 442 + 1458 + 339 + 6 = 2383. Les deux tests sont `seulsLesJeuxADesReponsesEnImageSontHorsDeLaPopulation`
+  (un par garde-fou). Le total apres fusion est a `sofia-sm`.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, `BUILD SUCCESS`, 0 echec, 0 erreur, sur l'arbre de `f37e33dd`.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `19d9312f..HEAD` : exit 0. Non lance : la plage `BASE..SHA` de GitHub.
+- **`chemins`** : `verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh` : exit 0.
+- **`outils`** : les dix juges `outils/*-test.sh`, `squad/outils/*/*-test.sh`, `outils/*-test.py` : exit 0 chacun. Non lance : l'etape `mvn -B -pl bootstrap -am package` du job `build` (le jar a ete construit a la main, `-DskipTests`).
+
+### 11.7 Ce qui reste
+
+1. **`Q7`** : a `ines-design`, sur le jar maintenant servi ; les 91 px de 11.3 sont a lui confronter.
+2. **Ratification** de l'exclusion des deux garde-fous (11.1) par `theo-archi`, et des trois lectures du critere (11.2) par `nadia-prof` et `camille-po`.
+3. **Fiche de conformite** : ouverte par `camille-po` apres ce commit (`DEC-0115` A.11) ; audit `S56-AUD-ART-CP-10`, `nadia-prof`.
+4. **`S55-EMC-CM1-R8` et `S55-EMC-CM1-R9`** : branche `s56-lea-emc`, un commit chacun. **Worktree a demander** ; rien commence.
