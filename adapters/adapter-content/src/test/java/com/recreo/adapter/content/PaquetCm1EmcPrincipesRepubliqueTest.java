@@ -75,6 +75,9 @@ class PaquetCm1EmcPrincipesRepubliqueTest {
                 "item 6 : vrai pour un enfant de neuf ans, que ses parents et son enseignant limitent (EMC-5)");
         TEXTES_REFUSES.put("s'entraider entre citoyens",
                 "item 8 : la fraternite n'est pas reservee aux citoyens (decision 2018-717/718 QPC, HIS-3)");
+        TEXTES_REFUSES.put("se soutiennent les uns les autres",
+                "item 3 : glose fausse, ces eleves aident d'autres enfants et ne s'entraident pas entre eux"
+                        + " (EMC-CM1-R9, s55)");
     }
 
     /** EMC-1, EMC-8 : aucune adresse a l'enfant, en mot entier. */
@@ -215,6 +218,32 @@ class PaquetCm1EmcPrincipesRepubliqueTest {
     void aucunTexteRefuseParNadiaProfNeRevient() {
         List<Question> items = items();
         TEXTES_REFUSES.forEach((refuse, motif) -> verifierQueLeTexteRefuseNeRevientPas(items, refuse, motif));
+    }
+
+    /**
+     * EMC-CM1-R9 : l'indice de l'item 3, mot pour mot ({@code FICHE-bandit-manchot-principes-republique-
+     * cm1.md}, section 5). Il decrit ce que font les eleves de l'enonce, sans nommer le principe.
+     */
+    @Test
+    void lIndiceDeLItem3EstCeluiDeLaFicheDeNadiaProf() {
+        List<String> indices = items().stream().map(item -> item.indice().orElse("")).toList();
+
+        assertThat(indices).contains("Ces élèves donnent pour aider d'autres enfants.");
+    }
+
+    /**
+     * EMC-CM1-R9, l'en-tete : la citation de la decision de 2018 ne vise que ce que le Conseil
+     * constitutionnel a dit, une liberte d'aider autrui dans un but humanitaire. Un commentaire n'est lu
+     * par personne, mais HIS-3 porte sur l'exactitude des sources.
+     */
+    @Test
+    void lEnTeteCiteLaDecisionDe2018DansSonPerimetreExact() throws java.io.IOException {
+        try (java.io.InputStream flux = getClass().getResourceAsStream("/contenu/" + PAQUET + ".yaml")) {
+            assertThat(flux).isNotNull();
+            String paquet = new String(flux.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+
+            assertThat(paquet).contains("dans un but humanitaire");
+        }
     }
 
     @Test
