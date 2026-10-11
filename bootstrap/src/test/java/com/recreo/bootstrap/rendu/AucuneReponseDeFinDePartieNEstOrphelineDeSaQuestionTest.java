@@ -283,8 +283,10 @@ class AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest {
         List<String> jeuxJuges = population().stream().map(FinDePartieServie::jeuServi).toList();
 
         for (GameDefinition jeu : partie.jeuxDisponibles()) {
-            Item premier = itemsDe(jeu.contenu(), MANCHES).get(0);
-            if (estUneReponseEnImage(premier)) {
+            List<Item> joues = itemsDe(jeu.contenu(), MANCHES);
+            Item premier = joues.get(0);
+            Item derniere = joues.get(joues.size() - 1);
+            if (aSaBonneReponseEnImage(derniere)) {
                 assertThat(jeuxJuges).as("%s a des reponses en image", jeu.id()).doesNotContain(jeu.id());
             } else if (!(premier instanceof ZoneADesigner)) {
                 assertThat(jeuxJuges).as("%s a des reponses ecrites", jeu.id()).contains(jeu.id());
@@ -316,7 +318,10 @@ class AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest {
                 // jamais etre jugee ici, sur aucun de ses items - ce jeu est hors de cette population.
                 continue;
             }
-            if (estUneReponseEnImage(items.get(0))) {
+            if (estUneReponseEnImage(items.get(items.size() - 1))) {
+                // theo-archi, ratification du 2026-10-11 : l'ecran de fin nomme la reponse de la derniere
+                // manche ; c'est donc elle qui decide, et non la premiere, au cas ou un paquet melangerait
+                // items en image et items ecrits (ADR-0104 decision 5 ne l'interdit qu'au sein d'un item).
                 // ADR-0104 decision 4, points 4 et 5 (S55-ART-CP-10-PAQUET, s56) : quand les propositions
                 // sont des reproductions, ni la revelation ni l'ecran de fin de partie ne nomment la
                 // reponse - un identifiant n'est jamais rendu en texte (clause 1), et la bonne oeuvre
@@ -341,6 +346,17 @@ class AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest {
                     enonceDe(precedente), finDePartie));
         }
         return population;
+    }
+
+    /**
+     * L'oracle des deux tests {@code seulsLesJeuxADesReponsesEnImageSontHorsDeLaPopulation}, ecrit a part
+     * de {@link #estUneReponseEnImage} et volontairement plus etroit (la seule bonne reponse) : un oracle
+     * qui appellerait le predicat qu'il juge serait vert sur tout elargissement de ce predicat. Mesure
+     * (theo-archi, 2026-10-11) : avec le meme predicat des deux cotes, faire de toute {@code Question} une
+     * reponse en image ecartait presque tous les jeux ecrits sans rougir ce test.
+     */
+    static boolean aSaBonneReponseEnImage(Item item) {
+        return item instanceof Question question && question.bonneReponse().startsWith("oeuvre-");
     }
 
     /** Un item dont les propositions sont des reproductions : sa reponse n'est jamais ecrite (ADR-0104). */
