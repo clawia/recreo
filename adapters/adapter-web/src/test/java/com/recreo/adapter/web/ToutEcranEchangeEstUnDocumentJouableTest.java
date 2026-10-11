@@ -89,6 +89,9 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
 
     private static final String NIVEAU = "CP";
 
+    /** Le segment de la seule matiere du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    private static final String SEGMENT = "maths";
+
     /**
      * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
      * partie que deux reponses fausses terminent sur un verdict faux.
@@ -286,6 +289,43 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 "POST /niveaux/{niveau}/confirmer",
                 assembler(coquilleDuNiveauConfirme, corps(post("/niveaux/{niveau}/confirmer", NIVEAU)
                         .session(partieQuiConfirmeSonChangementDeNiveau)))));
+
+        // Hors sprint accueil par matiere (ADR-0105, ADR-0106 decision 8, F10 de l'avis de theo-archi) : les
+        // routes neuves, chacune avec et sans partie en cours.
+        MockHttpSession sessionEnV1 = new MockHttpSession();
+        Document coquilleDuNiveau = Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU)));
+        ecrans.add(new Ecran("bascule vers V1, etage 1 des matieres, aucune partie en cours",
+                "POST /niveaux/{niveau}/vue/{vue}",
+                assembler(coquilleDuNiveau, corps(post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V1")
+                        .session(sessionEnV1)))));
+        ecrans.add(new Ecran("etage 1 de V1 en chargement complet, la vue vient de la session",
+                "GET /niveaux/{niveau}",
+                Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU).session(sessionEnV1)))));
+        ecrans.add(new Ecran("retour a V2 par le bouton de l'etage 1", "POST /niveaux/{niveau}/vue/{vue}",
+                assembler(Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU).session(sessionEnV1))),
+                        corps(post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V2").session(sessionEnV1)))));
+        ecrans.add(new Ecran("etage 2 d'une matiere, aucune partie en cours",
+                "GET /niveaux/{niveau}/matieres/{segment}",
+                Jsoup.parse(corps(get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT)))));
+
+        MockHttpSession partieQuiBascule = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiBascule));
+        ecrans.add(new Ecran("bascule pendant une partie : la confirmation de la puce de niveau, rien n'est quitte",
+                "POST /niveaux/{niveau}/vue/{vue}",
+                assembler(corps(post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V1").session(partieQuiBascule)))));
+
+        MockHttpSession partieQuiOuvreUneMatiere = new MockHttpSession();
+        corps(post("/parties/{jeuId}", JEU_ID).session(partieQuiOuvreUneMatiere));
+        ecrans.add(new Ecran("etage 2 pendant une partie : la confirmation directe",
+                "GET /niveaux/{niveau}/matieres/{segment}",
+                Jsoup.parse(corps(get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT)
+                        .session(partieQuiOuvreUneMatiere)))));
+        ecrans.add(new Ecran("confirmation de l'etage 2, retour a l'etage 2 demande",
+                "POST /niveaux/{niveau}/matieres/{segment}/confirmer",
+                assembler(Jsoup.parse(corps(get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT)
+                                .session(partieQuiOuvreUneMatiere))),
+                        corps(post("/niveaux/{niveau}/matieres/{segment}/confirmer", NIVEAU, SEGMENT)
+                                .session(partieQuiOuvreUneMatiere)))));
 
         return ecrans;
     }
@@ -1054,22 +1094,32 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
     }
 
     /**
-     * Cliquet de vacuite, ADR-0106 : aucun ecran ne montre encore de pictogramme de matiere, donc la
-     * seconde moitie d'APM-3 ne juge rien sur la production. Le lot qui pose les tuiles et les bandeaux
-     * (P4) fait rougir cette clause, et la remplace dans le meme commit par l'exigence inverse : au moins un
-     * pictogramme sur un ecran de V2, de l'etage 1 et de l'etage 2.
+     * Non-vacuite de la clause APM-3, qui remplace le cliquet d'ADR-0106 (<i>aucun pictogramme n'est encore
+     * servi</i>) au lot P4 de l'accueil par matiere : la clause ne juge plus un corpus sans pictogramme. Elle
+     * exige au moins un pictogramme de matiere sur un ecran de V2 (bandeau de groupe), sur l'etage 1 de V1
+     * (tuile) et sur l'etage 2 (bandeau d'une seule matiere), reconnus par leur balisage et leur route.
      */
     @Test
-    void aucunPictogrammeDeMatiereNEstEncoreServi() throws Exception {
-        assertThat(ecrans()).as("ADR-0106 : un pictogramme de matiere est servi ; remplace ce cliquet par la "
-                        + "non-vacuite de la clause APM-3 (voir sa Javadoc)")
-                .allMatch(ecran -> ecran.document().select(PICTOGRAMME_DE_MATIERE).isEmpty());
+    void unPictogrammeDeMatiereEstServiSurV2SurLEtageUnEtSurLEtageDeux() throws Exception {
+        List<Ecran> ecrans = ecrans();
+
+        assertThat(ecrans).as("V2 : un bandeau de groupe porte son pictogramme").anyMatch(ecran ->
+                ecran.route().equals("GET /niveaux/{niveau}")
+                        && !ecran.document().select(".entete-matiere " + PICTOGRAMME_DE_MATIERE).isEmpty()
+                        && ecran.document().select(".tuile").isEmpty());
+        assertThat(ecrans).as("l'etage 1 de V1 : une tuile porte son pictogramme").anyMatch(ecran ->
+                !ecran.document().select(".tuile " + PICTOGRAMME_DE_MATIERE).isEmpty());
+        assertThat(ecrans).as("l'etage 2 : le bandeau d'une matiere porte son pictogramme").anyMatch(ecran ->
+                ecran.route().equals("GET /niveaux/{niveau}/matieres/{segment}")
+                        && !ecran.document().select(".entete-matiere " + PICTOGRAMME_DE_MATIERE).isEmpty());
     }
 
     /** Sur l'accueil reel : une tuile dont le pictogramme parle et se tient seul, et une carte imagee. */
     @Test
     void unPictogrammeSeulOuQuiParleFaitEchouerLaClauseAPM3() throws Exception {
-        Ecran accueil = ecrans().get(0);
+        Ecran accueil = ecrans().stream()
+                .filter(candidat -> candidat.nom().equals("liste filtree par niveau, aucune partie en cours"))
+                .findFirst().orElseThrow();
         accueil.document().selectFirst("#jeu").append(
                 "<a href=\"/niveaux/CP/matieres/francais\"><img src=\"/images/matieres/francais.svg\" "
                         + "alt=\"Français\"></a>");

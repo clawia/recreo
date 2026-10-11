@@ -119,6 +119,9 @@ class TexteAccentueDesGabaritsTest {
             "Recreo",                              // DEC-0010, S5-8 : sans accent, nom de produit
             "Les jeux",                            // ADR-0022 / S6-9, DEC-0027 : le seul mot de sortie
             "Il n'y a pas de jeu pour le moment.", // aucun arbitrage nomme dans le depot
+            "Par matière",                         // N3 de l'arbitrage prealable de nadia-prof, accueil par matiere (APM-7)
+            "Tout voir",                           // N3 de l'arbitrage prealable de nadia-prof, accueil par matiere (APM-7)
+            "Choisis ton niveau.",                 // candidat de lea-dev, NON arbitre : Q-U1 de l'utilisatrice demande le niveau, ses mots sont a nadia-prof (DEC-0002)
             "Si tu pars, ta partie s'arrête.",     // arbitrage du 2026-08-14, CONF-3
             "Continuer la partie",                 // arbitrage du 2026-08-14, CONF-3
             "Bravo, c'est juste !",                // FICHE-bandit-manchot-additions-cp.md

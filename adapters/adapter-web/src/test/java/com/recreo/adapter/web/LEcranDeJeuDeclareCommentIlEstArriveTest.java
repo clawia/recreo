@@ -119,6 +119,9 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
 
     private static final String NIVEAU = "CP";
 
+    /** Le segment de la seule matiere du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    private static final String SEGMENT = "maths";
+
     /**
      * ADR-0034, amendement : deux manches et un contenu combinatoire (PartieControllerTest), donc une
      * partie que deux reponses fausses terminent sur un verdict faux.
@@ -243,6 +246,21 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
         reponses.add(reponse("confirmation du changement de niveau, retour a la liste filtree",
                 "POST /niveaux/{niveau}/confirmer", confirmerLeChangementDeNiveau()));
 
+        // Hors sprint accueil par matiere (ADR-0105, ADR-0106 decision 8, F10) : les routes neuves, avec et sans
+        // partie en cours. Aucune ne rend un ecran de jeu avec des propositions, comme les routes de niveau
+        // ci-dessus : seule la couverture des routes l'exige.
+        reponses.add(reponse("bascule vers V1, aucune partie en cours", "POST /niveaux/{niveau}/vue/{vue}",
+                post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V1")));
+        reponses.add(reponse("bascule pendant une partie : la confirmation de la puce de niveau",
+                "POST /niveaux/{niveau}/vue/{vue}", basculerPendantUnePartie()));
+        reponses.add(reponse("etage 2 d'une matiere, aucune partie en cours",
+                "GET /niveaux/{niveau}/matieres/{segment}",
+                get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT)));
+        reponses.add(reponse("etage 2 pendant une partie : la confirmation directe",
+                "GET /niveaux/{niveau}/matieres/{segment}", ouvrirUneMatierePendantUnePartie()));
+        reponses.add(reponse("confirmation de l'etage 2, retour a l'etage 2 demande",
+                "POST /niveaux/{niveau}/matieres/{segment}/confirmer", confirmerUneMatiere()));
+
         // S24, ADR-0058 : les deux routes de la seconde mecanique. Aucune ne rend d'ecran de jeu
         // avec des propositions - un ecran de saisie n'en porte aucune - donc ecransAnimables() y
         // sera vide et les clauses de cette classe ne les jugeront pas. Seule la couverture des
@@ -292,6 +310,25 @@ class LEcranDeJeuDeclareCommentIlEstArriveTest {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
         return get("/niveaux/{niveau}", NIVEAU).session(session);
+    }
+
+    private MockHttpServletRequestBuilder basculerPendantUnePartie() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        return post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V1").session(session);
+    }
+
+    private MockHttpServletRequestBuilder ouvrirUneMatierePendantUnePartie() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        return get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT).session(session);
+    }
+
+    private MockHttpServletRequestBuilder confirmerUneMatiere() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT).session(session));
+        return post("/niveaux/{niveau}/matieres/{segment}/confirmer", NIVEAU, SEGMENT).session(session);
     }
 
     private MockHttpServletRequestBuilder confirmerLeChangementDeNiveau() throws Exception {

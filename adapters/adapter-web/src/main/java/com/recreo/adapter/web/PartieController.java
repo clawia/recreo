@@ -1,6 +1,7 @@
 package com.recreo.adapter.web;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.GroupeDeJeux;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.domain.content.EmplacementDuLibelleDeZone;
 import com.recreo.domain.content.ExigenceDeForme;
@@ -135,6 +136,13 @@ public class PartieController {
      * lu comme non nul par le gabarit (DEC-0028, ADR-0044 point 4 : le niveau ne vit que dans l'URL
      * de {@code /niveaux/{niveau}}, jamais en session).
      */
+    /**
+     * Hors sprint accueil par matiere, decision de l utilisatrice (Q-U1) : {@code /} demande
+     * d'abord le niveau. Il ne rend plus aucune liste de jeux sans niveau : ni les 147 jeux, ni un melange de
+     * niveaux sous un meme titre de matiere. Le niveau choisi s'ouvre dans la vue que la session retient
+     * ({@code GET /niveaux/{niveau}}, ADR-0105, ADR-0106 decision 8). La reprise d'une partie en cours est
+     * inchangee.
+     */
     @GetMapping("/")
     public String accueil(Model modele, HttpServletRequest requete, HttpServletResponse reponse) {
         EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
@@ -151,7 +159,6 @@ public class PartieController {
             effacerMarqueurDePartie(reponse);
             modele.addAttribute("messageReprise", MESSAGE_PARTIE_PERDUE);
         }
-        modele.addAttribute("jeux", partie.jeuxDisponibles());
         return "accueil";
     }
 
@@ -177,7 +184,6 @@ public class PartieController {
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
         reponse.setHeader(ENTETE_ADRESSE_AFFICHEE, ADRESSE_CATALOGUE_COMPLET);
-        modele.addAttribute("jeux", partie.jeuxDisponibles());
         return "accueil :: zoneAccueil";
     }
 
@@ -186,7 +192,6 @@ public class PartieController {
     public String confirmerAbandon(HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
-        modele.addAttribute("jeux", partie.jeuxDisponibles());
         return "accueil :: zoneAccueil";
     }
 
@@ -219,8 +224,93 @@ public class PartieController {
             modele.addAttribute("confirmationDirecte", true);
             return "accueil";
         }
-        modele.addAttribute("jeux", partie.jeuxDuNiveau(niveau));
+        accueilDuNiveau(modele, niveau, new EtatDePartieEnSession(requete).vue());
         return "accueil";
+    }
+
+    /**
+     * ADR-0105 decision 2, ADR-0106 decision 8 : ecrit la vue que la route <b>porte</b> et la rend, sans jamais
+     * calculer "l'autre vue" depuis l'etat courant - un double appui rend deux fois le meme ecran. Elle
+     * <b>n'abandonne jamais une partie</b> (APM-11) : avec une partie en cours, elle rend la confirmation de la
+     * puce de niveau, memes mots, sans en-tete d'adresse (ADR-0048 : l'adresse affichee ne doit pas mentir sur ce
+     * que l'enfant vient de quitter). Sans partie, elle rend la zone du niveau dans la vue ecrite et pousse
+     * {@code /niveaux/{niveau}}. Une vue inconnue rend 404 et n'ecrit rien : la session ne retient que la vue
+     * (APM-8), et jamais une valeur que la route n'a pas reconnue.
+     */
+    @PostMapping("/niveaux/{niveau}/vue/{vue}")
+    public String choisirLaVue(@PathVariable String niveau, @PathVariable String vue,
+                                HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        java.util.Optional<VueDeLAccueil> visee = VueDeLAccueil.depuis(vue);
+        if (visee.isEmpty()) {
+            reponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return "fragments/erreur :: erreur";
+        }
+        EtatDePartieEnSession porteur = new EtatDePartieEnSession(requete);
+        porteur.choisirLaVue(visee.get());
+        if (porteur.lire().portePartieEnCours()) {
+            modele.addAttribute("urlConfirmerAbandon", "/niveaux/" + niveau + "/confirmer");
+            return "fragments/confirmation :: confirmation";
+        }
+        modele.addAttribute("niveauActif", niveau);
+        accueilDuNiveau(modele, niveau, visee.get());
+        reponse.setHeader(ENTETE_ADRESSE_AFFICHEE, "/niveaux/" + niveau);
+        return "accueil :: zoneAccueil";
+    }
+
+    /**
+     * ADR-0106 decision 8, F8 : l'etage 2 de la vue a deux etages, une route et une navigation complete (une
+     * tuile est un lien, comme une puce de niveau). Elle rend l'etage 2 <b>quelle que soit la vue de la
+     * session</b> : l'adresse gouverne, la matiere ne vit jamais en session (APM-8). Avec une partie en cours,
+     * la confirmation directe de la puce de niveau, sans toucher la session (APM-11) ; son bouton ramene a cet
+     * etage 2 par {@code .../confirmer}. Un segment que le port ne resout pas rend le niveau sans jeu, phrase
+     * {@code .pas-de-jeu} comprise, comme un niveau inconnu.
+     */
+    @GetMapping("/niveaux/{niveau}/matieres/{segment}")
+    public String matiere(@PathVariable String niveau, @PathVariable String segment,
+                           HttpServletRequest requete, Model modele) {
+        EtatDePartie etat = new EtatDePartieEnSession(requete).lire();
+        modele.addAttribute("niveaux", partie.niveauxDuCatalogue());
+        modele.addAttribute("niveauActif", niveau);
+        if (etat.portePartieEnCours()) {
+            modele.addAttribute("urlConfirmerAbandon", "/niveaux/" + niveau + "/matieres/" + segment + "/confirmer");
+            modele.addAttribute("confirmationDirecte", true);
+            return "accueil";
+        }
+        etageDeuxDuNiveau(modele, niveau, segment);
+        return "accueil";
+    }
+
+    /** Le geste que la confirmation d'un etage 2 appelle : abandonne la partie, puis rend l'etage 2 demande (APM-11). */
+    @PostMapping("/niveaux/{niveau}/matieres/{segment}/confirmer")
+    public String confirmerAbandonMatiere(@PathVariable String niveau, @PathVariable String segment,
+                                           HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
+        new EtatDePartieEnSession(requete).abandonner();
+        effacerMarqueurDePartie(reponse);
+        modele.addAttribute("niveauActif", niveau);
+        etageDeuxDuNiveau(modele, niveau, segment);
+        return "accueil :: zoneAccueil";
+    }
+
+    /**
+     * Le premier ecran d'un niveau dans la vue donnee : V2 (les groupes de jeux sous leur bandeau) ou l'etage 1
+     * de V1 (une tuile par matiere). Les deux lisent le meme regroupement, fait par le port (ADR-0105 decision
+     * 1) : ni la matiere ni son ordre ne sont calcules ici.
+     */
+    private void accueilDuNiveau(Model modele, String niveau, VueDeLAccueil vue) {
+        modele.addAttribute("niveaux", partie.niveauxDuCatalogue());
+        modele.addAttribute("niveauActif", niveau);
+        List<GroupeDeJeux> groupes = partie.matieresDuNiveau(niveau);
+        modele.addAttribute("groupes", groupes);
+        modele.addAttribute("aucunJeu", groupes.isEmpty());
+        modele.addAttribute("ecranAccueil", vue == VueDeLAccueil.V1 ? "v1-etage1" : "v2");
+    }
+
+    private void etageDeuxDuNiveau(Model modele, String niveau, String segment) {
+        modele.addAttribute("niveaux", partie.niveauxDuCatalogue());
+        java.util.Optional<GroupeDeJeux> groupe = partie.groupeDeLaMatiere(niveau, segment);
+        modele.addAttribute("groupe", groupe.orElse(null));
+        modele.addAttribute("aucunJeu", groupe.isEmpty());
+        modele.addAttribute("ecranAccueil", "v1-etage2");
     }
 
     /**
@@ -244,7 +334,7 @@ public class PartieController {
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
         modele.addAttribute("niveauActif", niveau);
-        modele.addAttribute("jeux", partie.jeuxDuNiveau(niveau));
+        accueilDuNiveau(modele, niveau, new EtatDePartieEnSession(requete).vue());
         return "accueil :: zoneAccueil";
     }
 

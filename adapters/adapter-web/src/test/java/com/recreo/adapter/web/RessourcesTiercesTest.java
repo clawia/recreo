@@ -160,6 +160,32 @@ class RessourcesTiercesTest {
 
     private static final String SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU = " + '.jpg'";
 
+    /**
+     * Hors sprint accueil par matiere, ADR-0106 decision 4 : <b>troisieme exemption etroite, proposee par
+     * lea-dev et a ratifier par theo-archi</b> (aucun ADR ne l'ecrit : ADR-0106 decide que le pictogramme est
+     * un fichier rendu en {@code <img alt="">} a cote de son libelle, dont le nom vient de la donnee de
+     * matiere, et n'a pas vu que ce garde-fou refuse toute reference de gabarit calculee). Meme forme que
+     * les deux precedentes, au terme pres : prefixe litteral exactement egal au repertoire des
+     * pictogrammes, un unique terme calcule - une variable simple, sans appel ni operateur -, et <b>pas
+     * d'extension litterale</b> : le nom de la donnee porte la sienne ({@code francais.svg}), et la preuve
+     * que chaque nom designe un fichier arbitre vit sur la donnee, dans
+     * {@code LePictogrammeDeMatiereEstUnFichierArbitreTest}, jamais ici.
+     */
+    private static final String PREFIXE_D_UN_PICTOGRAMME_DE_MATIERE = "'/images/matieres/' + ";
+
+    private static boolean estUnPictogrammeDeMatiere(String valeur) {
+        if (!valeur.startsWith(PREFIXE_D_UN_PICTOGRAMME_DE_MATIERE)) {
+            return false;
+        }
+        String terme = valeur.substring(PREFIXE_D_UN_PICTOGRAMME_DE_MATIERE.length()).strip();
+        if (!terme.startsWith("${") || !terme.endsWith("}")) {
+            return false;
+        }
+        String nom = terme.substring(2, terme.length() - 1);
+        return !nom.isEmpty()
+                && nom.chars().allMatch(c -> CARACTERES_D_UN_TERME_CALCULE.indexOf(c) >= 0);
+    }
+
     private static boolean estUneReproductionDeContenu(String valeur) {
         if (!valeur.startsWith(PREFIXE_D_UNE_REPRODUCTION_DE_CONTENU)
                 || !valeur.endsWith(SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU)) {
@@ -451,18 +477,21 @@ class RessourcesTiercesTest {
         if (valeur.startsWith("@{") && valeur.endsWith("}")) {
             valeur = valeur.substring(2, valeur.length() - 1).strip();
         }
-        if (estUneIllustrationDeContenu(valeur) || estUneReproductionDeContenu(valeur)) {
+        if (estUneIllustrationDeContenu(valeur) || estUneReproductionDeContenu(valeur)
+                || estUnPictogrammeDeMatiere(valeur)) {
             return null;
         }
         assertThat(estUneCibleLitterale(valeur))
                 .as("ADR-0014 : %s reference une ressource par une expression calculee (%s) ; une "
                         + "ressource de page s'ecrit en chemin litteral, sinon rien ne prouve "
-                        + "qu'elle est servie hors ligne. Les deux seules exceptions sont "
-                        + "l'illustration de contenu d'ADR-0073 (%s${...}%s) et la reproduction "
-                        + "d'ADR-0082 (%s${...}%s), dont la forme est bornee au terme pres et dont la "
+                        + "qu'elle est servie hors ligne. Les trois seules exceptions sont "
+                        + "l'illustration de contenu d'ADR-0073 (%s${...}%s), la reproduction "
+                        + "d'ADR-0082 (%s${...}%s) et le pictogramme de matiere d'ADR-0106 "
+                        + "(%s${...}), dont la forme est bornee au terme pres et dont la "
                         + "preuve se lit sur la donnee et non ici", gabarit, brut,
                         PREFIXE_D_UNE_ILLUSTRATION_DE_CONTENU, SUFFIXE_D_UNE_ILLUSTRATION_DE_CONTENU,
-                        PREFIXE_D_UNE_REPRODUCTION_DE_CONTENU, SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU)
+                        PREFIXE_D_UNE_REPRODUCTION_DE_CONTENU, SUFFIXE_D_UNE_REPRODUCTION_DE_CONTENU,
+                        PREFIXE_D_UN_PICTOGRAMME_DE_MATIERE)
                 .isTrue();
         return valeur;
     }
@@ -711,9 +740,15 @@ class RessourcesTiercesTest {
      * admise, au terme pres. C'est une quatrieme reference, decidee par l'ADR et nommee par le critere 5
      * de S55-ART-CP-10-MECANIQUE ; la morsure d'etroitesse ci-dessous reste rouge sur deux termes
      * calcules.
+     *
+     * <p><b>Porte de 4 a 7 (hors sprint accueil par matiere, ADR-0106 decision 4, lea-dev, a ratifier par
+     * theo-archi) : le pictogramme de matiere.</b> {@code accueil.html} rend le pictogramme d'une matiere en
+     * trois endroits - le bandeau de V2, la tuile de l'etage 1, le bandeau de l'etage 2 - par la forme
+     * {@code '/images/matieres/' + ${pictogramme}} : trois references de la meme troisieme exemption,
+     * etroite au terme pres comme les deux autres.
      */
     @Test
-    void quatreReferencesDeLaProductionSontDesIllustrationsOuDesReproductionsDeContenu() {
+    void septReferencesDeLaProductionSontDesIllustrationsDesReproductionsOuDesPictogrammes() {
         List<String> admises = new ArrayList<>();
         for (Path gabarit : gabarits(RACINE_PRODUCTION)) {
             Document document = Jsoup.parse(lire(gabarit), gabarit.toString());
@@ -729,7 +764,7 @@ class RessourcesTiercesTest {
                         + "rien tant qu'aucune reference de production ne les empruntent, et elles "
                         + "cessent d'etre etroites des qu'une reference de plus les emprunte sans "
                         + "qu'on l'ait decide")
-                .hasSize(4);
+                .hasSize(7);
     }
 
     /**
@@ -844,6 +879,45 @@ class RessourcesTiercesTest {
             assertThatThrownBy(() -> verifierLesReferencesDe(gabarit, mute))
                     .as("une seconde forme calculee de reproduction (%s) posee a cote de la forme "
                             + "admise doit rester refusee", secondeForme)
+                    .isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("expression calculee");
+        }
+    }
+
+    /**
+     * <b>Hors sprint accueil par matiere, troisieme exemption, meme motif que les deux precedentes.</b> Chaque
+     * mutation pose une seconde forme calculee dans le gabarit qui porte deja la forme admise de pictogramme, et
+     * chacune doit rester rouge : un repertoire lui-meme construit, deux termes calcules, un terme qui est un appel
+     * ou une concatenation, et un autre repertoire d'images. Sans cette morsure, l'exemption prouverait qu'elle
+     * existe, pas qu'elle est etroite.
+     */
+    @Test
+    void uneSecondeFormeCalculeeDePictogrammePoseeDansLeMemeGabaritResteRefusee() {
+        Path gabarit = null;
+        for (Path candidat : gabarits(RACINE_PRODUCTION)) {
+            Document document = Jsoup.parse(lire(candidat), candidat.toString());
+            for (Element reference : referencesDeRessource(document)) {
+                if (estUnPictogrammeDeMatiere(valeurBruteDeReference(reference))) {
+                    gabarit = candidat;
+                }
+            }
+        }
+        assertThat(gabarit).as("ADR-0051 : aucun gabarit de production ne porte de pictogramme de matiere,"
+                + " les morsures de la troisieme exemption ne s'exercent alors sur rien").isNotNull();
+        Path porteur = gabarit;
+        String source = lire(porteur);
+        verifierLesReferencesDe(porteur, source);
+
+        for (String secondeForme : List.of(
+                "@{'/' + ${repertoire} + '/' + ${pictogramme}}",
+                "@{'/images/matieres/' + ${famille} + '-' + ${pictogramme}}",
+                "@{'/images/matieres/' + ${groupe.matiere().pictogramme()}}",
+                "@{'/images/' + ${pictogramme}}")) {
+            String mute = source.replace("</body>",
+                    "<img th:src=\"" + secondeForme + "\" alt=\"\"></body>");
+            assertThatThrownBy(() -> verifierLesReferencesDe(porteur, mute))
+                    .as("une seconde forme calculee de pictogramme (%s) posee a cote de la forme admise doit "
+                            + "rester refusee", secondeForme)
                     .isInstanceOf(AssertionError.class)
                     .hasMessageContaining("expression calculee");
         }

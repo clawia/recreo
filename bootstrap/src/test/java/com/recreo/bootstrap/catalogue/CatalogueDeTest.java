@@ -1,6 +1,7 @@
 package com.recreo.bootstrap.catalogue;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.Matiere;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.domain.content.ContentDescriptor;
 import com.recreo.domain.content.ItemId;
@@ -33,5 +34,11 @@ public final class CatalogueDeTest implements ContentCatalogPort {
                         new Question(new ItemId("q1"), "un", "1", List.of("2")),
                         new Question(new ItemId("q2"), "deux", "2", List.of("3")))),
                 NOMBRE_DE_MANCHES));
+    }
+
+    /** ADR-0106 : la ligne de donnee de la matiere de ce jeu, valeurs de test ; l'accueil d'un niveau en a besoin. */
+    @Override
+    public List<Matiere> matieres() {
+        return List.of(new Matiere("Test", "Test", "mathematiques.svg", "#aabbcc", "#112233", "test"));
     }
 }

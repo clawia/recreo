@@ -100,6 +100,9 @@ class AucunArretDeTabulationNEstDestructeurTest {
     /** Le seul niveau du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
     private static final String NIVEAU = "CP";
 
+    /** Le segment de la seule matiere du catalogue de test (PartieControllerTest.JeuDeTestConfiguration). */
+    private static final String SEGMENT = "maths";
+
     private static final Path RACINE_PRODUCTION = Path.of("src/main/resources");
     private static final Path CONTRE_EXEMPLE =
             Path.of("src/test/resources/contreexemple/AucunArretDeTabulationNEstDestructeurTest");
@@ -298,6 +301,35 @@ class AucunArretDeTabulationNEstDestructeurTest {
                     corps(post("/parties/{jeuId}", JEU_ID).session(session));
                     corps(get("/niveaux/{niveau}", NIVEAU).session(session));
                     return corps(post("/niveaux/{niveau}/confirmer", NIVEAU).session(session));
+                }));
+
+        // Hors sprint accueil par matiere (ADR-0105, ADR-0106 decision 8, F10) : les routes neuves, avec et sans
+        // partie en cours.
+        ecrans.add(ecranFragment("bascule vers V1, aucune partie en cours", "POST /niveaux/{niveau}/vue/{vue}",
+                session -> corps(post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V1").session(session))));
+
+        ecrans.add(ecranFragment("bascule pendant une partie : la confirmation de la puce de niveau",
+                "POST /niveaux/{niveau}/vue/{vue}", session -> {
+                    corps(post("/parties/{jeuId}", JEU_ID).session(session));
+                    return corps(post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V1").session(session));
+                }));
+
+        ecrans.add(ecranFragment("etage 2 d'une matiere, aucune partie en cours",
+                "GET /niveaux/{niveau}/matieres/{segment}",
+                session -> corps(get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT).session(session))));
+
+        ecrans.add(ecranFragment("etage 2 pendant une partie : la confirmation directe",
+                "GET /niveaux/{niveau}/matieres/{segment}", session -> {
+                    corps(post("/parties/{jeuId}", JEU_ID).session(session));
+                    return corps(get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT).session(session));
+                }));
+
+        ecrans.add(ecranFragment("confirmation de l'etage 2, retour a l'etage 2 demande",
+                "POST /niveaux/{niveau}/matieres/{segment}/confirmer", session -> {
+                    corps(post("/parties/{jeuId}", JEU_ID).session(session));
+                    corps(get("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT).session(session));
+                    return corps(post("/niveaux/{niveau}/matieres/{segment}/confirmer", NIVEAU, SEGMENT)
+                            .session(session));
                 }));
 
         return ecrans;

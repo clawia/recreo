@@ -1,6 +1,7 @@
 package com.recreo.adapter.web;
 
 import com.recreo.application.catalog.GameDefinition;
+import com.recreo.application.catalog.Matiere;
 import com.recreo.application.port.in.PartieUseCase;
 import com.recreo.application.port.out.ContentCatalogPort;
 import com.recreo.application.port.out.MechanicRegistryPort;
@@ -85,7 +86,7 @@ class PartieControllerTest {
 
     @Test
     void laPageDAccueilProposeDeDemarrerSansCompteNiDonneePersonnelle() throws Exception {
-        String html = mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString();
+        String html = mockMvc.perform(get("/niveaux/{niveau}", NIVEAU)).andReturn().getResponse().getContentAsString();
         Document page = Jsoup.parse(html);
 
         assertThat(page.select("button.demarrer")).isNotEmpty();
@@ -93,18 +94,22 @@ class PartieControllerTest {
     }
 
     /**
-     * S14-1, critere 8 (avis-faisabilite de theo-archi, section 7.8) : au premier chargement, la
-     * liste affichee est exactement jeuxDisponibles(), sans filtre - aucun effectif ecrit ici.
+     * S14-1, critere 8 (avis-faisabilite de theo-archi, section 7.8), reecrit par Q-U1 (l'utilisatrice) : au
+     * premier chargement, {@code /} ne rend plus aucune liste de jeux, il demande le niveau. Le niveau choisi
+     * rend exactement les jeux de ce niveau, jamais ceux d'un autre - aucun effectif ecrit ici.
      */
     @Test
-    void auPremierChargementLaListeEstExactementLeCatalogueSansFiltre() throws Exception {
-        String html = mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString();
-        Document page = Jsoup.parse(html);
+    void auPremierChargementOnDemandeLeNiveauEtLeNiveauRendExactementSesJeux() throws Exception {
+        Document premier = Jsoup.parse(mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString());
+        assertThat(premier.select("button.demarrer")).as("aucune liste sans niveau").isEmpty();
+        assertThat(premier.select(".choix-niveau")).hasSize(1);
 
-        List<String> titresRendus = page.select("button.demarrer").eachText();
-        List<String> titresDuCatalogue = partieUseCase.jeuxDisponibles().stream()
+        Document niveau = Jsoup.parse(mockMvc.perform(get("/niveaux/{niveau}", NIVEAU))
+                .andReturn().getResponse().getContentAsString());
+        List<String> titresRendus = niveau.select("button.demarrer").eachText();
+        List<String> titresDuNiveau = partieUseCase.jeuxDuNiveau(NIVEAU).stream()
                 .map(GameDefinition::titre).toList();
-        assertThat(titresRendus).containsExactlyElementsOf(titresDuCatalogue);
+        assertThat(titresRendus).containsExactlyInAnyOrderElementsOf(titresDuNiveau);
     }
 
     @Test
@@ -480,7 +485,7 @@ class PartieControllerTest {
 
     /** Confirmer l'abandon depuis l'ecran de confirmation clot bien la partie. */
     @Test
-    void confirmerLAbandonClotLaPartieEtRevientALaListeDesJeux() throws Exception {
+    void confirmerLAbandonClotLaPartieEtRevientAuChoixDuNiveau() throws Exception {
         MockHttpSession session = new MockHttpSession();
         mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
         mockMvc.perform(post("/retour").session(session));
@@ -489,8 +494,10 @@ class PartieControllerTest {
                 .andReturn().getResponse().getContentAsString();
         Document fragment = Jsoup.parse(html);
 
-        assertThat(fragment.select("button.demarrer")).isNotEmpty();
+        assertThat(fragment.select(".choix-niveau")).as("Q-U1 : le premier ecran demande le niveau").hasSize(1);
+        assertThat(fragment.select("button.demarrer")).isEmpty();
         assertThat(fragment.select(".enonce")).isEmpty();
+        assertThat(etatDeLaSession(session).portePartieEnCours()).isFalse();
     }
 
     /** Annuler l'abandon depuis l'ecran de confirmation revient a la manche, rien n'est perdu. */
@@ -610,7 +617,8 @@ class PartieControllerTest {
                 .andReturn().getResponse().getContentAsString();
         Document fragment = Jsoup.parse(html);
 
-        assertThat(fragment.select("button.demarrer")).isNotEmpty();
+        assertThat(fragment.select(".question-confirmation")).as("aucune confirmation").isEmpty();
+        assertThat(fragment.select(".choix-niveau")).as("Q-U1 : le niveau d'abord").hasSize(1);
     }
 
     /**
@@ -692,7 +700,7 @@ class PartieControllerTest {
 
         assertThat(page.select(".message-reprise").text())
                 .isEqualTo("Ta partie s'est arrêtée. Choisis un nouveau jeu !");
-        assertThat(page.select("button.demarrer")).isNotEmpty();
+        assertThat(page.select(".choix-niveau")).as("Q-U1 : le niveau d'abord").hasSize(1);
     }
 
     /** Le message de partie perdue ne s'affiche pas indefiniment une fois montre une fois. */
@@ -745,15 +753,13 @@ class PartieControllerTest {
      * du tout.
      */
     @Test
-    void uneRequeteSansMarqueurObtientLeCatalogueCompletSansLeMessage() throws Exception {
+    void uneRequeteSansMarqueurObtientLeChoixDuNiveauSansLeMessage() throws Exception {
         String html = mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString();
         Document page = Jsoup.parse(html);
 
         assertThat(page.select(".message-reprise")).isEmpty();
-        List<String> titresRendus = page.select("button.demarrer").eachText();
-        List<String> titresDuCatalogue = partieUseCase.jeuxDisponibles().stream()
-                .map(GameDefinition::titre).toList();
-        assertThat(titresRendus).containsExactlyElementsOf(titresDuCatalogue);
+        assertThat(page.select(".choix-niveau")).hasSize(1);
+        assertThat(page.select("button.demarrer")).isEmpty();
     }
 
     /**
@@ -938,7 +944,7 @@ class PartieControllerTest {
 
         @Bean
         PartieUseCase partieUseCase() {
-            ContentCatalogPort catalogue = () -> List.of(
+            List<GameDefinition> jeux = List.of(
                     new GameDefinition(JEU_ID, "Un jeu", "Choisis la bonne reponse", BanditManchot.ID,
                             DESCRIPTEUR,
                             new ListContentSource(DESCRIPTEUR, List.of(
@@ -1030,6 +1036,21 @@ class PartieControllerTest {
                                                             new CadreDeZone(35, 60, 30, 22))),
                                             "fenetre", Optional.empty(), Optional.empty()))),
                             10));
+            // ADR-0106 : l'accueil rend la matiere de chaque jeu par la ligne de donnee qui la porte ; ce double
+            // en declare une pour la matiere des jeux ci-dessus, avec des valeurs de test (jamais celles de la
+            // donnee servie).
+            ContentCatalogPort catalogue = new ContentCatalogPort() {
+                @Override
+                public List<GameDefinition> games() {
+                    return jeux;
+                }
+
+                @Override
+                public List<Matiere> matieres() {
+                    return List.of(new Matiere("Mathematiques", "Maths", "mathematiques.svg", "#aabbcc",
+                            "#112233", "maths"));
+                }
+            };
             MechanicRegistryPort mecaniques = id -> {
                 if (Saisie.ID.equals(id)) {
                     return new Saisie();
