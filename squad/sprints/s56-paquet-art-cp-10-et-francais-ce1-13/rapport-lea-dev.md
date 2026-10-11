@@ -558,3 +558,120 @@ fichier restaure apres chaque mesure (`git status --short` ne montre que les tro
 - **La concurrence du porteur** : les deux methodes prennent le verrou de la session comme les autres, et la preuve d'exclusion mutuelle d'`ADR-0019` (`EtatDePartieEnSessionTest`) ne porte que sur les coups de partie ; je n'ai pas de test a deux fils pour la vue (une ecriture d'une valeur recue n'a pas de cycle a perdre).
 - **`P4`** : la route `POST /vue/{vue}` et `POST /niveaux/{niveau}/vue/{vue}`, rendue en reprenant l'ecran de la route de contexte (F7, F9), sans jamais abandonner une partie ; le segment des routes (`V1`/`V2` ou des noms) est a fixer avec les gabarits ; le corpus des deux garde-fous de routes ; les gabarits des deux vues et la feuille, apres l'arbitrage de `nadia-prof` et la proposition d'`ines-design`.
 - Le nom `EtatDePartieEnSession` dit mal qu'il porte maintenant un etat d'affichage : `ADR-0105` le dit et ne le renomme pas tant qu'un seul attribut non lie a la partie y vit.
+
+## 16. Accueil par matiere, poste P4 : routes, gabarits, feuille (hors sprint, `DEC-0117`, `ADR-0105`, `ADR-0106` ; branche `lea-accueil-p4`, base `round-two` a `96e05fa9`)
+
+Commits : `adc56649` (le pictogramme de Maths et la teinte magenta, les cliquets vides), `c7a4db50` (les routes, les gabarits, la feuille, les tests adaptes), `fa29dfac` (`AccueilParMatiereTest`) et celui de cette section.
+**JDK 21.0.10** (`java.version` du rapport Surefire, enveloppe `bash outils/mvn-jdk21.sh`). Lus dans l'ordre demande : `DEC-0117` et les stories `HS-ACCUEIL-*` du backlog, l'arbitrage de `nadia-prof` (`APM-1` a `APM-11`, rejugement du pictogramme de Maths et du magenta),
+`ADR-0105`, `ADR-0106`, l'avis de `theo-archi` (P4, section 10, garde-fous section 6), la proposition d'`ines-design` et ses maquettes. **Decisions de l'utilisatrice appliquees** : V2 par defaut avec un bouton de bascule ; `/` demande d'abord le niveau (`Q-U1`) ;
+l'accueil ne va pas dans `round-two` avant l'audit de `nadia-prof` (`Q-U2`) : je reste sur ma branche.
+
+### 16.1 Ce qui est livre
+
+1. **Donnee** (`adc56649`) : `mathematiques.svg` depose octet pour octet (`git show` depuis le blob de `squad/conformite/releves-accueil/pictos/`, identifiant de blob `91aa39c6...`, SHA-256 `a386ed6affee...`, l'empreinte du fichier tel que Git le stocke ; le fichier extrait sous
+   `core.autocrlf=true` rend `634594d0...`, ce n'est pas la bonne) ; `Histoire des arts` a `#f0baf3` / `#85188b` ; `EN_ATTENTE` et `TEINTES_GRISES_EN_ATTENTE` vides ; les trois morsures qui lisaient le gris reel dans la donnee posent la paire refusee en memoire ; l'inventaire d'`ADR-0105` porte les deux teintes.
+   Le cliquet `aucunPictogrammeDeMatiereNEstEncoreServi` est remplace par l'exigence inverse (`ADR-0106` regle 4 et 6) dans le commit des gabarits, ou le pictogramme est servi.
+2. **Routes** (`PartieController`, `ADR-0106` decision 8) :
+   - `GET /` : le choix du niveau, aucune liste (`Q-U1`) ; la reprise d'une partie en cours est inchangee.
+   - `POST /retour` et `POST /retour/confirmer` : le meme premier ecran (le choix du niveau), **jamais un etage 2** (`APM-9`).
+   - `GET /niveaux/{niveau}` et `POST /niveaux/{niveau}/confirmer` : V2 ou l'etage 1, selon la vue de la session.
+   - `POST /niveaux/{niveau}/vue/{vue}` : ecrit la vue **portee par la route**, jamais calculee ; **n'abandonne jamais une partie** (avec partie : la confirmation de la puce, vers `/niveaux/{niveau}/confirmer`, sans `HX-Push-Url`) ; sans partie, rend la zone du niveau dans la vue ecrite et pousse `/niveaux/{niveau}` ;
+     une vue inconnue rend 404 et n'ecrit rien.
+   - `GET /niveaux/{niveau}/matieres/{segment}` : l'etage 2, **quelle que soit la vue de la session** (l'adresse gouverne, `APM-8`) ; avec partie, la confirmation directe ; segment inconnu : le niveau sans jeu, phrase `.pas-de-jeu` comprise.
+   - `POST /niveaux/{niveau}/matieres/{segment}/confirmer` : abandonne, puis rend l'etage demande (`APM-11`).
+3. **Gabarit** (`accueil.html`) : V2 (un `section.bloc-matiere` par matiere, bandeau `h2.entete-matiere` : pictogramme `alt=""` et libelle en texte dans un `span`, teinte en style en ligne `--teinte-fond` / `--teinte-contour`, puis les cartes `button.demarrer`, `data-role="action"`) ;
+   etage 1 (une tuile `a.tuile` par matiere, `data-role="action"`, **`href` litteral** ecrase par `th:href`, vers l'etage 2, jamais un lancement : `APM-10`) ; etage 2 (le meme bandeau et les memes cartes pour une matiere) ;
+   le bouton de vue `button.bascule` dans `#jeu`, `data-role="entree"`, `hx-post` vers la route de vue, `hx-target="#jeu"` : *"Par matière"* (quatre carres) sur V2, *"Tout voir"* (trois lignes) sur l'etage 1, *"Par matière"* (chevron) sur l'etage 2, **aucune coche, aucun etat presse**, jamais le mot *"Les jeux"* (`APM-7`) ;
+   la phrase `Pour le <niveau>` et `.filtre-niveau` sous tout niveau (`S16-6`, F11).
+4. **Feuille** (`recreo.css`) : les regles d'`ines-design` (`accueil-vues.css`) **a deux ecarts pres que `ADR-0106` impose** : pas de regle `[data-teinte="n"]` (la teinte arrive par deux proprietes personnalisees, lues par `var()`), et `--teinte-bord` s'appelle `--teinte-contour` (nom de l'ADR) ;
+   le repli `body.teinte-neutre` n'est pas repris. Les etats `:active` de `.bascule` et `.tuile` passent par un ancetre (`.barre-vue`, `.matieres`) : la regle tierce `.btn:first-child:active` l'emportait par specificite et `AucunEtatDePressableNEstAbandonneAuTiersTest` l'a dit (`ADR-0046`) - les maquettes
+   n'avaient pas lance ce garde-fou, leur reserve 9 le dit. Aucune teinte n'est sur un ecran de jeu (`APM-5`) : ces classes ne vivent que dans `accueil.html`. Cibles : 44 px au moins, par `TailleDesTextesEtBoutonsTest`.
+
+### 16.2 Lectures et points que je remonte, au lieu de choisir
+
+- **R1. Le garde-fou d'`ADR-0014` refuse le pictogramme de matiere, et `ADR-0106` ne le dit pas.** `RessourcesTiercesTest` n'admet que deux formes calculees (illustration de contenu, reproduction) ; `ADR-0106` decision 4 rend le pictogramme depuis la donnee, donc par une reference calculee, et
+  la mutation M9 de l'ADR n'a pas lance cette classe. Sans decision, le depot est rouge ou le nom de chaque pictogramme est ecrit en dur dans le gabarit, ce que `APM-1` (*"nulle part ailleurs"*) refuse. **J'ai ecrit une troisieme forme etroite, a ratifier par `theo-archi`** : prefixe litteral
+  `'/images/matieres/' + `, un seul terme, une variable simple (`th:with="pictogramme=..."`), **sans extension litterale** (le nom de la donnee porte la sienne), avec sa morsure d'etroitesse (quatre secondes formes refusees) et le cliquet de references porte de 4 a 7. C'est dans le commit `c7a4db50`, signale dans son message.
+- **R2. `ADR-0106` decision 8** dit que `/`, `/retour` et `/retour/confirmer` ne changent pas avant `Q-U1` ; `Q-U1` est repondu : ils changent. **Lecture d'`APM-9` que j'ai prise** : le *"premier ecran de la vue retenue"* est, depuis `Q-U1`, le choix du niveau ; le niveau choisi s'ouvre ensuite dans la vue retenue
+  (verifie sur le jar, 16.4, etape 11). C'est la reponse de `nadia-prof` a `Q-N2` (*"Les jeux ramene au choix du niveau, et le niveau choisi s'ouvre dans la vue retenue"*). A confirmer par elle et `camille-po`.
+- **R3. Maquette contre ADR.** (a) Les maquettes ecrivent la teinte par onze regles de feuille : refuse par `ADR-0106` (regle 5) ; (b) elles gardent la vue courante sur les puces de niveau et envoient *"Les jeux"* a la vue par defaut (section 5 de la proposition) : `APM-9` et `Q-N2` disent le contraire, j'ai suivi l'arbitrage ;
+  (c) `--teinte-bord` contre `--teinte-contour` : l'ADR gagne.
+- **R4. Resolu par une exigence de `nadia-prof` avant fusion** (son identifiant n'est pas encore alloue au registre de ma branche, je ne l'alloue pas). Le texte du premier ecran, candidat de ma main *"Choisis ton niveau."*, devient *"Choisis ta classe."* (motif de `nadia-prof` : *"niveau"* designe pour un enfant le facile ou le difficile d'un jeu). Il est dans l'inventaire de `TexteAccentueDesGabaritsTest` comme arbitre par `nadia-prof`.
+  Le premier ecran ne porte que cette phrase sous les trois puces de l'en-tete (capture `01-racine`) : un ecran presque vide, la forme est a `ines-design`.
+- **R5. Le seuil de 10 cartes de `HS-ACCUEIL-V2` n'est pas atteint : 8** (16.4). `nadia-prof` l'avait annonce sur la maquette et l'a route a `camille-po` (*"personne ne le baisse en silence"*) ; je ne le baisse pas, je donne la mesure.
+- **R6. L'adresse apres `/retour/confirmer`.** Le fragment ne declare pas d'`HX-Push-Url` (comme avant) : la barre d'adresse montre `/niveaux/CP` pendant que l'ecran montre le choix du niveau. Un rechargement rendrait le niveau dans la vue retenue. `POST /retour`, sans partie, pousse `/` ; l'ecart est preexistant, je ne le corrige pas ici.
+- **R8. Deux ecarts observes au parcours, non corriges.** (a) Apres `/retour/confirmer`, la puce `CP` de l'en-tete reste active alors que l'ecran demande le niveau : l'en-tete est hors de la zone rendue (preexistant). (b) Au premier clic de puce, l'adresse lue est `/niveaux/CP;jsessionid=...` (reecriture d'URL par le conteneur avant que le cookie de session ne soit pose) : a regarder par `theo-archi` au regard d'`ADR-0105` (*"aucun cookie autre que le marqueur de partie"*).
+- **R7. Le critere *"Tenu en session"* d'`HS-ACCUEIL-BASCULE`** (*"quand elle appuie sur Les jeux depuis un jeu, alors elle revient en V1"*) ne se lit plus a la lettre : "Les jeux" mene au choix du niveau, et c'est le niveau choisi qui revient en V1. Meme contradiction que celle que `nadia-prof` a routee (section 1 de son arbitrage).
+
+### 16.3 Tests adaptes, sans exemption neuve
+
+Les garde-fous qui lisaient la liste de `/` ou nommaient les routes ont ete adaptes, sans exemption : `PartieControllerTest` (six tests de `/` reecrits : le choix du niveau, aucune liste ; `/retour` et `/retour/confirmer` rendent le choix), `PartieHttpTest` et `JarRecreoIT` (le jar sert le choix du niveau, puis la page d'un niveau),
+les trois corpus de routes d'`ADR-0038` (**chaque route neuve avec et sans partie en cours** : `AucunArretDeTabulationNEstDestructeurTest`, `LEcranDeJeuDeclareCommentIlEstArriveTest`, `ToutEcranEchangeEstUnDocumentJouableTest`, F10), `TexteAccentueDesGabaritsTest` (*"Par matière"* et *"Tout voir"* arbitres par `nadia-prof` en N3 ;
+*"Choisis ta classe."* arbitre par `nadia-prof`), `RessourcesTiercesTest` (R1), `ToutEcranEchangeEstUnDocumentJouableTest` (le cliquet de vacuite remplace par la non-vacuite sur V2, l'etage 1 et l'etage 2). Le catalogue de test de `PartieControllerTest` et `CatalogueDeTest` recoivent une ligne de matiere.
+`TailleDesTextesEtBoutonsTest`, `LHabillageResteImmobileTest`, `LActionNeDeclarePasMoinsQueLaSortieTest`, `AucunEtatDePressableNEstAbandonneAuTiersTest`, la barre d'entree : **aucune modification** de ces fichiers (seule la feuille a change pour que `:active` passe).
+
+### 16.4 Joue sur le jar
+
+Jar construit par `verify` a la racine ; `java -jar bootstrap/target/recreo.jar --server.port=<port>`, JDK 21.0.10. **Port verifie libre par `netstat` avant de lancer, PID lu dans mon journal de demarrage** (33620 et 49644 pour le premier parcours, 28432 pour le parcours et les mesures redonnes avant ce rapport, dont les sorties sont celles citees ci-dessous), arrete par ce seul PID ; Chrome headless a profil jetable pilote par le protocole de debogage
+(chaque Chrome, `taskkill` de son seul PID). Pas de navigation par un enfant ni de navigateur de poste : une fenetre emulee 744 x 551 (`Emulation.setDeviceMetricsOverride`, sans mobile), avec htmx et le JavaScript du produit. Parcours et mesures rejoues sur le jar du dernier commit de code avant ce rapport ; sorties et captures hors depot.
+
+Parcours (un seul navigateur, une seule session) :
+1. `/` : *"Choisis ta classe."*, aucune carte, aucune tuile, aucun bouton de vue, un seul *"Les jeux"* visible.
+2. Puce `CP` : V2, 8 bandeaux (Français, Maths, Questionner le monde, Vivre ensemble, Anglais, Arts plastiques, Musique, Sport), 58 cartes, phrase *"Pour le CP"*, le bouton *"Par matière"* a droite.
+3. *"Par matière"* : l'etage 1, 8 tuiles ; l'adresse reste `/niveaux/CP`.
+4. Une tuile : `/niveaux/CP/matieres/francais`, l'etage 2, le chevron *"Par matière"*.
+5. Le chevron : l'etage 1 ; 6. *"Tout voir"* : V2.
+7. Une carte : la manche (enonce lu), plus aucun bouton de vue. 8. *"Les jeux"* de l'en-tete : la confirmation (*"Si tu pars, ta partie s'arrête."*).
+9. **La bascule avec une partie en cours** (`POST /niveaux/CP/vue/V1` envoyee de la page, `HX-Request`) : 200, la confirmation, **la partie reste en cours** ; la vue est ecrite.
+10. *"Les jeux"* de la confirmation : le choix du niveau (*"Choisis ta classe."*) ; **l'adresse reste `/niveaux/CP` et la puce `CP` reste marquee active** (R6, R8). 11. Puce `CE1` : **l'etage 1 de V1** (2 tuiles, bouton *"Tout voir"*) : la vue retenue a survecu a la partie et au retour.
+
+**Mesure a 744 x 551, `getBoundingClientRect()`, une carte est visible si son `bottom` <= 551** (comptes du catalogue servi, aucun nombre ecrit dans un test ; criteres de `HS-ACCUEIL-MESURE` a `yanis-qa`) :
+
+| Niveau | Cartes (V2) | V2 : cartes entieres | V1 etage 1 : tuiles entieres / tuiles | V1 etage 2 : somme des cartes | etage 2 : entieres, au plus 8 ; `min(n, 6)` tenu |
+|---|---|---|---|---|---|
+| CP | 58 | **8** | 8 / 8 | 58 | oui, 8 matieres |
+| CE1 | 30 | **8** (2 bandeaux, document de 1390 px) | 2 / 2 | 30 | oui, 2 matieres |
+| CM1 | 58 | **8** | 8 / 8 | 58 | oui, 8 matieres |
+
+Le bandeau colle (troisieme groupe de CP et de CM1, sa premiere carte au milieu de la fenetre ; CE1 n'a que deux groupes, non mesure) : son texte est entierement dans la fenetre (`top` 187, `bottom` 235) et un seul bandeau est a `top: 0`. Le document de V2 mesure 2922 px en CP (2952 en CM1, 1390 en CE1), contre 4216 pour la liste d'avant (mesure d'`ines-design`) ; l'etage 1 tient dans la fenetre (551).
+**Ces nombres sont ceux que le jar rend, pas un verdict** : 8 carte(s) a 744 x 551 contre le seuil de 10 de `HS-ACCUEIL-V2` (R5).
+
+### 16.5 Mutations sur les fichiers reels
+
+Commande : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test -Dmaven.test.failure.ignore=true -Dtest=<douze classes>` (perimetre : `adapter-web` avec `-am`, soit `domain`, `application` et `adapter-web`, les douze classes nommees ; `adapter-content` n'en fait pas partie,
+voir `N12`) ; fichier restaure apres chaque mesure (`git status --short` vide en fin de serie).
+
+| # | Mutation | Echecs nommes |
+|---|---|---|
+| N01 | `th:href` de la tuile sans le segment de matiere (`APM-10`) | `chaqueTuilePointeVersLEtageDeuxDeSaMatiereEtNeLanceJamaisUnJeu`, `sommeDesEtagesDeuxEgaleLesJeuxDuNiveauEtAucuneTuileSansJeu` |
+| N02 | la route de vue abandonne la partie avant la confirmation (`APM-11`) | `basculerPendantUnePartieRendLaConfirmationDeLaPuceEtNAbandonneRien` |
+| N03 | une vue inconnue retombe sur V2 au lieu de 404 | `uneVueInconnueRend404EtN_ecritRienDansLaSession` |
+| N04 | `/retour/confirmer` rend un etage 2 (`APM-9`) | `lesJeuxNeRendJamaisUnEtageDeuxQuelleQueSoitLaVueEtLaMatiereJouee`, `PartieControllerTest.confirmerLAbandonClotLaPartieEtRevientAuChoixDuNiveau`, `surToutEcranComposeLaPhraseDeFiltreEtLaPuceActiveNommentLeMemeNiveau` |
+| N05 | un bouton de vue dans l'en-tete (`APM-7`) | `unSeulBoutonDeVueDansLaZoneDeLAccueil...`, `laRacineDemandeLeNiveau...` et trois tests de `AucunArretDeTabulationNEstDestructeurTest` |
+| N06 | le libelle du bouton de l'etage 1 devient *"Les jeux"* (`APM-7`, `BARRE-5`) | `unSeulBoutonDeVue...`, `leBoutonDeVueNePorteAucuneMarqueDEtatNiLeMotLesJeux` |
+| N07 | la tuile perd son `href` litteral (`ADR-0105` regle 4) | `ToutLienDeGabaritPorteUnHrefLitteralTest` (2 tests) et `LHabillageResteImmobileTest` (2 tests) |
+| N08 | l'etage 2 ecrit la vue en session (`APM-8`) | `lEtageDeuxRendTousLesJeuxDeLaMatiereEtRienQueSesJeuxQuelleQueSoitLaVueDeLaSession` |
+| N09 | V2 rend une carte de moins par groupe (completude) | `chaqueJeuDuNiveauParaitUneFoisDansLeGroupeDeSaMatiere...`, `PartieControllerTest.auPremierChargementOnDemandeLeNiveau...` |
+| N10 | `.tuile` perd sa hauteur minimale (cible de 44 px) | `TailleDesTextesEtBoutonsTest` (2 tests), `LActionNeDeclarePasMoinsQueLaSortieTest` |
+| N11 | `.bascule:active` sans ancetre (`ADR-0046`) | `AucunEtatDePressableNEstAbandonneAuTiersTest.chaqueEtatDeclareParLaMaisonLEmporteSurLaRegleTierceQuiLImpose` |
+| N12 | Histoire des arts redevient gris (`APM-6`), mesure sur `adapter-content` (`-pl adapters/adapter-content -am`, `ChaqueMatiereServieASaLigneDeMatiereTest`) | 3 echecs : *"porte une teinte grise (#d8dde4, #85188b) : APM-6 refuse un gris parmi des couleurs"* |
+| N13 | le pictogramme rendu par un appel de methode dans la reference (`ADR-0014`) | `RessourcesTiercesTest` (4 tests, dont la morsure d'etroitesse neuve) |
+| N14 | `alt="Maths"` sur un pictogramme de bandeau (`APM-3`) | `chaqueBandeauPorteSonMotEnTexteEtSonPictogrammeSansTexteAlternatif`, `lePictogrammeDeMatiereNEstJamaisSeulEtNeParlePas` |
+
+**Premiere mesure ecartee** : `N12` n'avait lance aucun test dans la serie (`adapter-content` n'est pas un amont d'`adapter-web`, le `-am` ne l'inclut pas) et semblait verte ; relancee sur le bon module, elle rougit. Le controle (*le nombre de tests lances de la classe vaut zero*) est celui de `lessons.md`.
+**Non mordu** : la teinte sur un ecran de jeu (`APM-5`) et l'unicite du *"Les jeux"* sur l'etage 1 reposent sur des garde-fous de `theo-archi` deja mordus par son `ADR-0106` (M8, M9) ; je ne les ai pas rejoues ici.
+
+### 16.6 Delta de tests, jobs
+
+- **Delta : +28 tests** (`domain` +0, `application` +0, `adapter-web` +26, `adapter-content` +1, `bootstrap` +1 en tests unitaires, +0 en integration), mesure par deux `verify` racine, JDK 21.0.10 : la base `96e05fa9` (worktree jetable, retire) rend 120 / 31 / 459 / 1483 / 366 / 6, mon arbre 120 / 31 / 485 / 1484 / 367 / 6 (les deux derniers chiffres : tests unitaires puis d'integration de `bootstrap`). C'est mon lot seul, pas un total apres fusion : celui-ci est a `sofia-sm`.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, **avec ce rapport dans l'arbre** : BUILD SUCCESS, JDK 21.0.10 (rapporte par ArchUnit et par l'enveloppe).
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-prefixes.sh` sur `96e05fa9..HEAD` ; **`chemins`** : `verifier-chemins-test.sh` et `git ls-files | verifier-chemins.sh` ; **`outils`** : les dix juges `*-test.sh` et `*-test.py` : exit 0 chacun.
+  Non lance : l'etape `mvn -B -pl bootstrap -am package` et la plage `BASE..SHA` de GitHub.
+
+### 16.7 Ce qui n'est pas verifie, et ce qui reste
+
+- **Pas d'audit de lisibilite** : que les onze pictogrammes se reconnaissent, que *"Par matière"* et *"Tout voir"* ne se lisent pas *"Les jeux"*, que le magenta ne se lise pas *"desactive"*, qu'un bandeau colle ne cache pas la carte qui recoit le focus clavier (je n'ai pas fait de Tabulation), le parcours avec un enfant : `nadia-prof`.
+- **Mesures de `HS-ACCUEIL-MESURE`** (commande commitee, rejouable, sans chemin de poste) : `yanis-qa`. Mes chiffres viennent de scripts de poste hors depot.
+- **390 px et 992 px** : non mesures par moi (fenetre unique 744 x 551) ; les maquettes d'`ines-design` annoncent +6 a +12 % de longueur de V2 a 390.
+- **Clavier et lecteur d'ecran** : non joues. **Safari, tablette reelle** : non joues.
+- **A ratifier** : R1 (`theo-archi`), R2 et R7 (`nadia-prof`, `camille-po`), la forme du premier ecran de R4 (`ines-design`), R5 (`camille-po`).

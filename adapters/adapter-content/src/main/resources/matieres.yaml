@@ -2,9 +2,9 @@
 # (ADR-0049). L'ordre des lignes est l'ordre d'affichage, le meme a tous les niveaux et dans les deux
 # vues (N5 et APM-4 de nadia-prof). Libelles : N1 et APM-1. Pictogrammes : fichiers de
 # adapter-web/src/main/resources/static/images/matieres/, N2 et APM-2. Teintes : N6, APM-5 et APM-6.
-# Deux valeurs attendent un arbitrage : le pictogramme de Maths (APM-2) et la teinte de Histoire des
-# arts (APM-6) ; ChaqueMatiereServieASaLigneDeMatiereTest et LePictogrammeDeMatiereEstUnFichierArbitreTest
-# les nomment dans un cliquet exact.
+# Les deux valeurs qui attendaient un arbitrage sont posees : le pictogramme de Maths (APM-2) et la teinte de
+# Histoire des arts, un magenta a la place du gris refuse (APM-6), acceptes par nadia-prof au rejugement du
+# 2026-10-11 19:18 (ARBITRAGE-PREALABLE-accueil-par-matiere.md).
 matieres:
   - matiere: "Français"
     libelle: "Français"
@@ -63,8 +63,8 @@ matieres:
   - matiere: "Histoire des arts"
     libelle: "Histoire des arts"
     pictogramme: histoire-des-arts.svg
-    teinteFond: "#d8dde4"
-    teinteContour: "#4a5a6b"
+    teinteFond: "#f0baf3"
+    teinteContour: "#85188b"
     segment: histoire-des-arts
   - matiere: "Éducation physique et sportive"
     libelle: "Sport"

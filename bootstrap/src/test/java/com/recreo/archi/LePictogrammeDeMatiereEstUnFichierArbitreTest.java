@@ -46,26 +46,29 @@ class LePictogrammeDeMatiereEstUnFichierArbitreTest {
 
     /**
      * N2 de l'arbitrage prealable de nadia-prof (2026-10-11) : dix pictogrammes acceptes, les fichiers de
-     * {@code squad/conformite/releves-accueil/pictos/} au commit e568fc6e, copies sans conversion.
+     * {@code squad/conformite/releves-accueil/pictos/} au commit e568fc6e, copies sans conversion ; et le
+     * onzieme, {@code mathematiques.svg}, refait par ines-design et accepte par nadia-prof au rejugement du
+     * 2026-10-11 19:18 (APM-2), empreinte du fichier tel que Git le stocke a 9c49bbe1 (git show, pas le
+     * fichier extrait : sous core.autocrlf=true il rend 634594d0...).
      */
-    static final Map<String, String> ARBITRES = Map.of(
-            "francais.svg", "87046cf2db96563940957bfea29db53d4612422ae2eb2568eaa16a3f25863097",
-            "questionner-le-monde.svg", "7a755f9fcb167ef80816fe886f107af5acc833da6a8e112336e621726821d644",
-            "sciences.svg", "0e3340e34c27e511695733fe48d829ee36069a343094b8c5e6c2d695b606d879",
-            "histoire-geographie.svg", "74ab6537c53f62401366a4dd0a0e0832ebdd024f351a7066825549abfa622c76",
-            "emc.svg", "aa038139a48e9a73fdd1b6427dcb94490a59ba5437565b64ecd77d59b5efe0a5",
-            "langues-vivantes.svg", "4829fff6072fa2ed6c72616796fe0215bc97911a8f501ca26682b3f9a518486b",
-            "arts-plastiques.svg", "92ed4f681551c3f9d9bef4160529c3bbe2fb5eb2e3ec29ef1c408ba7c4a4080c",
-            "education-musicale.svg", "0bb0fa5e372dda75be141b5c1f9b0478255dc51df7e78910655cbf75a3a576f8",
-            "histoire-des-arts.svg", "82f7ed2f80f0a946237aee94ca84a3210ab07be83e4893387b0767e43b1dc3dc",
-            "eps.svg", "090bd66efa455acd9881ddf26965f7c3ef94ea3fc726bd830267ceec12a905b4");
+    static final Map<String, String> ARBITRES = Map.ofEntries(
+            Map.entry("francais.svg", "87046cf2db96563940957bfea29db53d4612422ae2eb2568eaa16a3f25863097"),
+            Map.entry("questionner-le-monde.svg", "7a755f9fcb167ef80816fe886f107af5acc833da6a8e112336e621726821d644"),
+            Map.entry("sciences.svg", "0e3340e34c27e511695733fe48d829ee36069a343094b8c5e6c2d695b606d879"),
+            Map.entry("histoire-geographie.svg", "74ab6537c53f62401366a4dd0a0e0832ebdd024f351a7066825549abfa622c76"),
+            Map.entry("emc.svg", "aa038139a48e9a73fdd1b6427dcb94490a59ba5437565b64ecd77d59b5efe0a5"),
+            Map.entry("langues-vivantes.svg", "4829fff6072fa2ed6c72616796fe0215bc97911a8f501ca26682b3f9a518486b"),
+            Map.entry("arts-plastiques.svg", "92ed4f681551c3f9d9bef4160529c3bbe2fb5eb2e3ec29ef1c408ba7c4a4080c"),
+            Map.entry("education-musicale.svg", "0bb0fa5e372dda75be141b5c1f9b0478255dc51df7e78910655cbf75a3a576f8"),
+            Map.entry("histoire-des-arts.svg", "82f7ed2f80f0a946237aee94ca84a3210ab07be83e4893387b0767e43b1dc3dc"),
+            Map.entry("eps.svg", "090bd66efa455acd9881ddf26965f7c3ef94ea3fc726bd830267ceec12a905b4"),
+            Map.entry("mathematiques.svg", "a386ed6affee3a76ce2be04529f0c602c27d9291cc0707f6b7d357e82edf1a0f"));
 
     /**
-     * APM-2 : le pictogramme de Maths est refuse et sera refait. Cliquet exact : chaque nom designe un
-     * fichier que la donnee nomme et qui n'est pas depose. Le fichier refait sort d'ici et entre dans
-     * {@link #ARBITRES} dans le commit qui cite l'arbitrage de nadia-prof.
+     * Cliquet exact : chaque nom designe un fichier que la donnee nomme et qui n'est pas depose. Vide depuis
+     * le depot de {@code mathematiques.svg} (APM-2 tenue, rejugement de nadia-prof du 2026-10-11 19:18).
      */
-    static final Set<String> EN_ATTENTE = Set.of("mathematiques.svg");
+    static final Set<String> EN_ATTENTE = Set.of();
 
     static String empreinte(Path fichier) {
         try {
@@ -165,15 +168,27 @@ class LePictogrammeDeMatiereEstUnFichierArbitreTest {
                 .hasMessageContaining("francais.svg differe du fichier arbitre");
     }
 
-    /** Le pictogramme de Maths depose avant son arbitrage, ici le fichier refuse lui-meme. */
+    /**
+     * Le cliquet exact tient encore, maintenant que {@link #EN_ATTENTE} est vide : un pictogramme que le garde-fou
+     * croirait en attente de son arbitrage (ici mathematiques.svg, retire des empreintes arbitrees dans la
+     * morsure) et qui est depose fait echouer le juge. La matiere de la morsure est le fichier reel depose.
+     */
     @Test
     void lePictogrammeEnAttenteDeposeAvantSonArbitrageFaitEchouerLeGardeFou() {
         Map<String, String> deposes = new TreeMap<>(empreintesDuRepertoire(repertoiresServis().get(0)));
-        deposes.put("mathematiques.svg", "89d7f4d9ef83fa5138dd2b67d619e6273b91c0ab0d63ec66dd57846862787486");
+        Map<String, String> arbitres = new TreeMap<>(ARBITRES);
+        arbitres.remove("mathematiques.svg");
 
-        assertThatThrownBy(() -> verifier(nommes(), deposes))
-                .isInstanceOf(AssertionError.class)
-                .hasMessageContaining("mathematiques.svg est depose alors qu'il attend");
+        assertThat(griefs(nommes(), deposes, arbitres, Set.of("mathematiques.svg")))
+                .anyMatch(grief -> grief.contains("mathematiques.svg est depose alors qu'il attend"));
+    }
+
+    /** Le fichier de Maths depose est bien celui que nadia-prof a accepte, octet pour octet. */
+    @Test
+    void lePictogrammeDeMathsDeposeEstLeFichierAccepte() {
+        assertThat(EN_ATTENTE).isEmpty();
+        assertThat(empreintesDuRepertoire(repertoiresServis().get(0)))
+                .containsEntry("mathematiques.svg", ARBITRES.get("mathematiques.svg"));
     }
 
     @Test

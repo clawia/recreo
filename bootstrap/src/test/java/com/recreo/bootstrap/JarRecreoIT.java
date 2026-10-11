@@ -46,8 +46,18 @@ class JarRecreoIT {
 
             assertThat(reponse.statusCode()).isEqualTo(200);
             Document page = Jsoup.parse(reponse.body());
-            assertThat(page.select("button.demarrer"))
-                    .as("le jar empaquete sert une page jouable, pas une erreur ni une page vide")
+            assertThat(page.select("a.chip-niveau"))
+                    .as("Q-U1 : le jar empaquete sert l'accueil qui demande le niveau, pas une erreur ni une page vide")
+                    .isNotEmpty();
+            String premierNiveau = page.select("a.chip-niveau").first().attr("href");
+
+            HttpResponse<String> niveau = HttpClient.newHttpClient().send(
+                    HttpRequest.newBuilder(URI.create("http://localhost:" + port + premierNiveau))
+                            .timeout(Duration.ofSeconds(5)).build(),
+                    HttpResponse.BodyHandlers.ofString());
+            assertThat(niveau.statusCode()).isEqualTo(200);
+            assertThat(Jsoup.parse(niveau.body()).select("button.demarrer"))
+                    .as("le jar empaquete sert une page jouable pour un niveau, pas une erreur ni une page vide")
                     .isNotEmpty();
         } finally {
             arreter(processus);

@@ -35,7 +35,7 @@ class PartieHttpTest {
     /** Critere 1 : demarrer une partie sans compte ni information personnelle. */
     @Test
     void lAccueilPermetDeDemarrerUnePartieSansCompte() throws Exception {
-        String accueil = mockMvc.perform(get("/")).andReturn().getResponse().getContentAsString();
+        String accueil = mockMvc.perform(get("/niveaux/{niveau}", "Test")).andReturn().getResponse().getContentAsString();
         Document page = Jsoup.parse(accueil);
         assertThat(page.select("button.demarrer")).isNotEmpty();
         assertThat(page.select("input[type=text], input[type=email], input[name=nom]")).isEmpty();

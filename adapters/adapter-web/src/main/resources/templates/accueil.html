@@ -109,17 +109,96 @@
                  rendu au moment de l'appui (PartieController.niveaux). Libelle tranche par elle -
                  "Pour le CP" - jamais "Les jeux pour le CP", pour ne pas contredire BARRE-5 (un
                  seul mot de sortie par ecran, deja porte par le lien de l'en-tete). -->
-            <p class="filtre-niveau" th:if="${niveauActif != null}"
-               th:text="'Pour le ' + ${niveauActif}"></p>
-            <p class="pas-de-jeu" th:if="${jeux.isEmpty()}">Il n'y a pas de jeu pour le moment.</p>
-            <ul class="jeux list-unstyled" th:unless="${jeux.isEmpty()}">
-                <li th:each="jeu : ${jeux}">
-                    <button type="button" class="btn demarrer" data-role="action"
-                            th:text="${jeu.titre()}"
-                            th:attr="hx-post=@{'/parties/' + ${jeu.id()}}"
-                            hx-target="#jeu" hx-swap="innerHTML">Jouer</button>
-                </li>
-            </ul>
+            <!-- Hors sprint accueil par matiere, Q-U1 (decision de l utilisatrice) : sans niveau, l'accueil ne
+                 montre aucun jeu, il demande le niveau. Les trois puces de l'en-tete sont le choix ; cette phrase
+                 dit a l'enfant de s'en servir. Texte candidat de lea-dev, a juger par nadia-prof (DEC-0002). -->
+            <p class="choix-niveau" th:if="${niveauActif == null}">Choisis ta classe.</p>
+            <th:block th:if="${niveauActif != null}">
+                <!-- ADR-0106 decision 7 : le bouton de vue vit dans #jeu, jamais dans l'en-tete (APM-7), et
+                     son libelle dit la vue ou il mene, jamais une marque d'etat (pas de coche sur la vue en
+                     cours). data-role="entree" dans ses trois etats (ADR-0043 amende) : il ne fait pas avancer
+                     l'ecran affiche et il n'en est pas la sortie. La route porte la vue visee : jamais une
+                     bascule lue sur l'etat courant (ADR-0105). Aucun mot "Les jeux" (BARRE-5). -->
+                <div class="barre-vue">
+                    <!-- S15-2 : la phrase de filtre, sous tout niveau (S16-6, .filtre-niveau). -->
+                    <p class="filtre-niveau" th:text="'Pour le ' + ${niveauActif}"></p>
+                    <th:block th:unless="${aucunJeu}">
+                        <button type="button" class="btn bascule" data-role="entree"
+                                th:if="${ecranAccueil == 'v2'}"
+                                th:attr="hx-post=@{'/niveaux/' + ${niveauActif} + '/vue/V1'}"
+                                hx-target="#jeu" hx-swap="innerHTML"><svg viewBox="0 0 24 24" aria-hidden="true"
+                                fill="currentColor"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2"
+                                width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect
+                                x="13" y="13" width="9" height="9" rx="2"/></svg><span>Par matière</span></button>
+                        <button type="button" class="btn bascule" data-role="entree"
+                                th:if="${ecranAccueil == 'v1-etage1'}"
+                                th:attr="hx-post=@{'/niveaux/' + ${niveauActif} + '/vue/V2'}"
+                                hx-target="#jeu" hx-swap="innerHTML"><svg viewBox="0 0 24 24" aria-hidden="true"
+                                fill="currentColor"><rect x="2" y="3" width="20" height="4" rx="2"/><rect x="2" y="10"
+                                width="20" height="4" rx="2"/><rect x="2" y="17" width="20" height="4"
+                                rx="2"/></svg><span>Tout voir</span></button>
+                        <button type="button" class="btn bascule" data-role="entree"
+                                th:if="${ecranAccueil == 'v1-etage2'}"
+                                th:attr="hx-post=@{'/niveaux/' + ${niveauActif} + '/vue/V1'}"
+                                hx-target="#jeu" hx-swap="innerHTML"><svg viewBox="0 0 24 24" aria-hidden="true"
+                                fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round"><path d="M15 4L7 12L15 20"/></svg><span>Par matière</span></button>
+                    </th:block>
+                </div>
+                <p class="pas-de-jeu" th:if="${aucunJeu}">Il n'y a pas de jeu pour le moment.</p>
+                <!-- V2, la vue par defaut : un bandeau par matiere (pictogramme et mot ensemble, APM-3), puis ses
+                     jeux en cartes. La teinte n'arrive que par deux proprietes personnalisees posees en style en
+                     ligne sur le bandeau (ADR-0106 decision 3, APM-5 : jamais sur un ecran de jeu). Le groupe, le
+                     libelle, le pictogramme et la teinte viennent de la donnee de matiere par le port. -->
+                <th:block th:if="${ecranAccueil == 'v2'}">
+                    <section class="bloc-matiere" th:each="groupe : ${groupes}">
+                        <h2 class="entete-matiere"
+                            th:style="'--teinte-fond: ' + ${groupe.matiere().teinteFond()} + '; --teinte-contour: ' + ${groupe.matiere().teinteContour()}"><img
+                            th:with="pictogramme=${groupe.matiere().pictogramme()}"
+                            th:src="@{'/images/matieres/' + ${pictogramme}}"
+                            alt=""><span th:text="${groupe.matiere().libelle()}"></span></h2>
+                        <ul class="cartes list-unstyled">
+                            <li th:each="jeu : ${groupe.jeux()}">
+                                <button type="button" class="btn demarrer" data-role="action"
+                                        th:text="${jeu.titre()}"
+                                        th:attr="hx-post=@{'/parties/' + ${jeu.id()}}"
+                                        hx-target="#jeu" hx-swap="innerHTML">Jouer</button>
+                            </li>
+                        </ul>
+                    </section>
+                </th:block>
+                <!-- V1, etage 1 : une tuile par matiere du niveau. Une tuile est un lien vers l'etage 2 de sa
+                     matiere, toujours, meme pour un seul jeu (APM-10) ; elle ne lance jamais un jeu. Le href
+                     litteral est un espace reserve que th:href ecrase au rendu (ADR-0105 regle 4) : sans lui, la
+                     tuile sort en silence de cinq garde-fous de pressable. data-role="action" (ADR-0106
+                     decision 6) : c'est le choix qui fait avancer l'etage 1. -->
+                <ul class="matieres list-unstyled" th:if="${ecranAccueil == 'v1-etage1'}">
+                    <li th:each="groupe : ${groupes}">
+                        <a class="btn tuile" data-role="action" href="/niveaux/CP/matieres/francais"
+                           th:href="@{'/niveaux/' + ${niveauActif} + '/matieres/' + ${groupe.matiere().segment()}}"
+                           th:style="'--teinte-fond: ' + ${groupe.matiere().teinteFond()} + '; --teinte-contour: ' + ${groupe.matiere().teinteContour()}"><img
+                            th:with="pictogramme=${groupe.matiere().pictogramme()}"
+                            th:src="@{'/images/matieres/' + ${pictogramme}}"
+                            alt=""><span th:text="${groupe.matiere().libelle()}"></span></a>
+                    </li>
+                </ul>
+                <!-- V1, etage 2 : le bandeau et les cartes d'une seule matiere. -->
+                <section class="bloc-matiere" th:if="${ecranAccueil == 'v1-etage2' and groupe != null}">
+                    <h2 class="entete-matiere"
+                        th:style="'--teinte-fond: ' + ${groupe.matiere().teinteFond()} + '; --teinte-contour: ' + ${groupe.matiere().teinteContour()}"><img
+                        th:with="pictogramme=${groupe.matiere().pictogramme()}"
+                        th:src="@{'/images/matieres/' + ${pictogramme}}"
+                        alt=""><span th:text="${groupe.matiere().libelle()}"></span></h2>
+                    <ul class="cartes list-unstyled">
+                        <li th:each="jeu : ${groupe.jeux()}">
+                            <button type="button" class="btn demarrer" data-role="action"
+                                    th:text="${jeu.titre()}"
+                                    th:attr="hx-post=@{'/parties/' + ${jeu.id()}}"
+                                    hx-target="#jeu" hx-swap="innerHTML">Jouer</button>
+                        </li>
+                    </ul>
+                </section>
+            </th:block>
         </div>
     </div>
 </th:block>
