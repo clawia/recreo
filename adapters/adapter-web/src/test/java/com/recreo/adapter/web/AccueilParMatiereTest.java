@@ -327,13 +327,14 @@ class AccueilParMatiereTest {
     void confirmerLeChangementDeNiveauRendLaVueRetenueDeLaSession() throws Exception {
         MockHttpSession session = new MockHttpSession();
         demarrerUnePartie(session);
-        basculer(session, NIVEAU, "V1");
+        basculer(session, NIVEAU, "V2");
 
         Document apres = Jsoup.parse(mockMvc.perform(post("/niveaux/{niveau}/confirmer", NIVEAU).session(session))
                 .andReturn().getResponse().getContentAsString());
 
         assertThat(etat(session).portePartieEnCours()).isFalse();
-        assertThat(apres.select(".tuile")).hasSize(2);
+        assertThat(apres.select(".entete-matiere")).hasSize(2);
+        assertThat(apres.select(".tuile")).isEmpty();
         assertThat(apres.select(".filtre-niveau").text()).isEqualTo("Pour le CP");
     }
 
@@ -451,7 +452,7 @@ class AccueilParMatiereTest {
     @Test
     void lesJeuxNeRendJamaisUnEtageDeuxQuelleQueSoitLaVueEtLaMatiereJouee() throws Exception {
         MockHttpSession session = new MockHttpSession();
-        basculer(session, NIVEAU, "V1");
+        basculer(session, NIVEAU, "V2");
         page(session, "/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT_DE_TROIS_JEUX);
         demarrerUnePartie(session);
         mockMvc.perform(post("/retour").session(session));
@@ -463,19 +464,20 @@ class AccueilParMatiereTest {
                 .as("APM-9 : ni etage 2, ni jeux de la matiere jouee ; le premier ecran est le choix du niveau")
                 .isEmpty();
         assertThat(apres.select(".choix-niveau")).hasSize(1);
-        assertThat(vue(session)).as("la vue survit a la partie").isEqualTo(VueDeLAccueil.V1);
+        assertThat(vue(session)).as("la vue survit a la partie").isEqualTo(VueDeLAccueil.V2);
     }
 
     @Test
     void apresUnePartieLeNiveauChoisiSOuvreDansLaVueRetenue() throws Exception {
         MockHttpSession session = new MockHttpSession();
-        basculer(session, NIVEAU, "V1");
+        basculer(session, NIVEAU, "V2");
         demarrerUnePartie(session);
         mockMvc.perform(post("/retour").session(session));
         mockMvc.perform(post("/retour/confirmer").session(session));
 
-        assertThat(page(session, "/niveaux/{niveau}", AUTRE_NIVEAU).select(".tuile"))
-                .as("la vue retenue survit a la partie et au retour").isNotEmpty();
+        Document autreNiveau = page(session, "/niveaux/{niveau}", AUTRE_NIVEAU);
+        assertThat(autreNiveau.select(".entete-matiere")).as("la vue retenue survit a la partie et au retour").isNotEmpty();
+        assertThat(autreNiveau.select(".tuile")).isEmpty();
     }
 
     // ------------------------------------------------------------------------------------------

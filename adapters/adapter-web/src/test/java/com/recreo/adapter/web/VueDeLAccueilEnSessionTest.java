@@ -110,12 +110,12 @@ class VueDeLAccueilEnSessionTest {
         MockHttpServletRequest requete = requete();
         EtatDePartieEnSession etat = porteur(requete);
         etat.demarrer("un-jeu", "consigne", null, partie());
-        etat.choisirLaVue(VueDeLAccueil.V1);
+        etat.choisirLaVue(VueDeLAccueil.V2);
 
         etat.abandonner();
 
         assertThat(etat.lire().jeuId()).as("la partie est bien abandonnee").isNull();
-        assertThat(etat.vue()).as("quitter une partie n'est pas changer d'affichage").isEqualTo(VueDeLAccueil.V1);
+        assertThat(etat.vue()).as("quitter une partie n'est pas changer d'affichage").isEqualTo(VueDeLAccueil.V2);
     }
 
     @Test
