@@ -151,3 +151,21 @@ n'en ai pas trouve (`grep DEC-0117` sur ce fichier : 0). Cette entree la remplac
 
 **Ce que cette entree ne fait pas.** Elle ne declare aucune story `Done`, ne touche ni catalogue, ni paquet, ni code,
 ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas statut ni compte), et n'ouvre pas s57.
+
+## 2026-10-12 - Reponses de l'utilisatrice, chantier "accueil par matiere" et retrait d'`ART-CP-10` (`camille-po`)
+
+**Le fait.** Trois reponses de l'utilisatrice, mots recus directement dans la session du 2026-10-12 (forme 2 de `DEC-0116` A.2) :
+`Q-U1` *"ok pour c"* ; `Q-U2` *"non audit apres fusion"* ; `Q-U3` de s56 *"oui pour le retrait"*.
+
+**Ce que je verse.**
+1. **`DEC-0117` section 10** : les mots de `Q-U1` et `Q-U2`. `Q-U2` n'est pas ma recommandation (audit avant fusion) et n'est pas
+   ce qui s'est passe pour ce chantier (verdict `99008d84` a 20:49, fusions a 21:11, VALIDE SOUS RESERVE, aucun `REFUSE`). Les deux
+   faits sont ecrits cote a cote, sans conciliation.
+2. **`Q-U4`, question residuelle pour elle** : quel mecanisme pour un `REFUSE` apres la fusion d'un chantier hors sprint
+   (`DEC-0045` section 3 / `DEC-0055` : 48 h hors sprint, qui ne couvrent que le retrait d'une entree de catalogue). Non decide.
+3. **`DEC-0116` A.26** : (D1) tranchee, mots cites ; le retrait avait ete execute le 2026-10-11 (`13d00bfe`), sa decision a maintenant sa source.
+   `S56-RETRAIT-RAPPROCHER-OEUVRES` n'est plus conditionnelle.
+4. **Compte** : 147 devient 146 (CP 58) la ou `DEC-0117` et le backlog le portaient ; `catalogue.yaml` verifie a 146 entrees. Les mesures datees du 2026-10-11 sont annotees, pas reecrites.
+5. **Statut de `DEC-0117` : `Proposee`, tenu**, a cause de `Q-U4` seule.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done. Les points ouverts du 2026-10-12 (entree precedente) sont inchanges.
