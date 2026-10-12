@@ -476,3 +476,16 @@ Trois reponses, recues par l'agent lanceur, qui les atteste reponses directes. *
 - **Story** : `S57-ADR-0065-DEUX-INSTANCES` ecrite au backlog ("Reponses de l'utilisatrice du 2026-10-11"), **hors `PAR`, non engagee** : elle ne s'engage que par la `DEC` d'ouverture de s57, qui lui donne son proprietaire. Cette annotation implique donc un changement de code et de `ADR` futur : elle est routee a `sofia-sm` dans le meme commit.
 - Aucun code, contenu, catalogue, planning ni ligne de matrice change. Ne prononce aucun Done, ne fixe aucun tarif, n'ecrit pas la `DEC` d'ouverture de s57.
 - **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.
+
+## Amendement du 2026-10-12 (apres la cloture de s56, `camille-po`, septieme) : `Q-U3`, reponse de l'utilisatrice
+
+### A.26 `Q-U3` : (D1), mots recus
+
+Mots recus directement dans la session du 2026-10-12 (forme 2 de A.2), cites : *"oui pour le retrait"*. **(D1) est tranchee** :
+retrait du catalogue, au sens de A.17. **Remplace** la phrase de A.17 *"tant qu'elle n'a pas repondu, l'entree reste au
+catalogue"* : le retrait avait deja ete execute (`13d00bfe`, 2026-10-11 17:07, `catalogue.yaml` a 146 entrees, `grep` = 0
+verifie le 2026-10-12) sur une reponse que seuls des rapports d'agents attestaient ; ses mots sont maintenant dans le depot.
+Le paquet, ses JPEG, les garde-fous et la fiche sont conserves ; le retour au catalogue passe par une entree neuve apres un Done
+non refuse (A.17, `ADR-0061`). `S56-RETRAIT-RAPPROCHER-OEUVRES` n'est plus conditionnelle (backlog). `ART-CP-10` reste
+`non couvert`. Statut : `Proposee`, inchange. Aucun code ne change.
+

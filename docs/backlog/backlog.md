@@ -21299,8 +21299,9 @@ Chaque critere reprend les mots de `nadia-prof` (regle de ce backlog : un criter
 - **Aujourd'hui** : sur `contenu/ce1-verbe-sujet.yaml`, un script de poste hors depot (lecture du YAML, position de chaque proposition fausse par rapport au verbe cite) rend **15** items de sujet, **0** avec une proposition fausse avant le verbe : rouge. Il n'est pas commite ; la commande de comptage est a ecrire avec `yanis-qa`. `PaquetCe1VerbeSujetTest` garde aujourd'hui **le contraire** (fiche, section 7) : le test change avec la propriete 8, dans le meme commit que les textes.
 - **Rejeu** : `nadia-prof`, instance A, 0,5 (`PAR-10`), trois items au moins. **Dev** : `marc-dev` (les textes sont au developpeur ; elle les juge en rejouant). **Lien** : `DEC-0116` A.15.
 
-#### S56-RETRAIT-RAPPROCHER-OEUVRES - retirer du catalogue servi le paquet refuse (transverse, **conditionnelle a `Q-U3` de s56**)
+#### S56-RETRAIT-RAPPROCHER-OEUVRES - retirer du catalogue servi le paquet refuse (transverse, **non conditionnelle depuis le 2026-10-12 : `Q-U3` repondue, (D1)**)
 
+- **Etat au 2026-10-12, apres la reponse (`camille-po`, annotation datee ; rien au-dessus n'est reecrit)** : l'utilisatrice a repondu a `Q-U3` : *"oui pour le retrait"* (mots recus directement, `DEC-0116` A.26). (D1) est tranchee et la story est executee (`13d00bfe`) ; l'etat ci-dessous date d'avant la reponse.
 - **Etat** : proposee par `DEC-0116` A.17, **option (D1)** ; **ne s'engage que sur la reponse de l'utilisatrice**. Tant qu'elle n'a pas repondu, l'entree reste au catalogue et le paquet refuse reste jouable.
 - **Etat au 2026-10-12 (`camille-po`) : executee, (D1).** `13d00bfe` (`lea-dev`, branche `retrait-rapprocher-oeuvres`, 2026-10-11 17:07, ancetre de `round-two`) retire l'entree de `catalogue.yaml` ; `rapport-lea-dev.md` s56, section 14, ecrit : *"Decision de l'utilisatrice du 2026-10-11 (D1 de la cloture de s56)"*. **Ses mots : reponse non retrouvee dans le depot** ; `DEC-0116` A.17 dit encore (D) non tranchee et n'a pas ete amendee pour la reponse. Verifie ce jour : `grep -c 'id: bandit-manchot-rapprocher-deux-oeuvres-cp$' adapters/adapter-content/src/main/resources/catalogue.yaml` rend **0**, 146 entrees ; `contenu/cp-rapprocher-deux-oeuvres.yaml` et les JPEG sont presents. Le jeu n'est pas servi : `POST /parties/bandit-manchot-rapprocher-deux-oeuvres-cp` rend le fragment d'erreur, 146 jeux a l'accueil (`rapport-lea-dev.md` 14.3, `rapport-qualite.md` 2.4). Ecart a la lettre du critere de fichiers inchanges : `B5` et `B8` changent de source d'items (14.2, point 3) ; je ne le juge pas, c'est a `theo-archi`.
 - **Besoin** : en tant qu'eleve de CP, je ne veux pas trouver dans la liste des jeux un jeu dont la phrase d'aide est hors de mon ecran, afin de ne pas rester bloque sans savoir quoi faire.
@@ -21371,7 +21372,7 @@ neuf, fenetre emulee 744 x 551 (`DEC-0040`), `getBoundingClientRect()` de chaque
 si son `bottom` est inferieur ou egal a `innerHeight`.** Les comptes de jeux viennent du catalogue servi et des paquets
 qu'il designe, jamais d'un nombre ecrit dans le test.
 
-**Etat de depart, mesure le 2026-10-11, base `8ac33440`** : CP 59, CE1 30, CM1 58 jeux (147) ; 5 cartes visibles sans defiler
+**Etat de depart, mesure le 2026-10-11, base `8ac33440`** : CP 59, CE1 30, CM1 58 jeux (147 ; 146 et CP 58 depuis `13d00bfe`, `DEC-0117` 10.3) ; 5 cartes visibles sans defiler
 a 744 x 551 dans chaque niveau ; hauteur du document 4216 px en CP ; 0 matiere nommee ; 11 matieres distinctes (CP 8, CE1 2,
 CM1 8) ; le plus gros groupe d'un niveau compte 19 jeux.
 
@@ -21485,7 +21486,7 @@ Annotation datee. Rien au-dessus n'est reecrit, sauf les trois criteres que le t
 - `HS-ACCUEIL-COMPLETUDE` : 146 jeux atteints dans chaque vue, 0 inatteignable, 0 en double, par la commande de `yanis-qa` ; **aucun test Maven ne le joue sur le catalogue reel** (E2 du rapport qualite, non traite).
 - `HS-ACCUEIL-MESURE` : `outils/mesurer-accueil.py`, 32 tests, dix mutations rouges, rejoue la base a 5 / 5 / 5 et 0 matiere nommee.
 
-**Comptes.** Le catalogue compte 146 jeux (CP 58, CE1 30, CM1 58) depuis `13d00bfe` ; les nombres 147 et CP 59 de ce chantier sont ceux du 2026-10-11 (ouverture), derives, et ne sont pas reecrits.
+**Comptes.** Le catalogue compte 146 jeux (CP 58, CE1 30, CM1 58) depuis `13d00bfe` ; les nombres 147 et CP 59 de ce chantier sont ceux du 2026-10-11 (ouverture), derives, et ne sont pas reecrits. Verifie le 2026-10-12 : `catalogue.yaml` = 146 entrees ; c'est 146 (CP 58) qu'il faut lire pour le catalogue actuel (`DEC-0117` 10.3).
 
 **Version d'avant des deux criteres reecrits** (`HS-ACCUEIL-V1`, "Retour d'un jeu") : *"Etant donne une partie lancee depuis V1, quand l'enfant appuie sur `Les jeux`, alors il revient a l'accueil **en V1**. L'etage de retour (`Q-N2`) est ecrit par `nadia-prof` ; le critere de l'etage s'ajoute a sa reponse, sans que je le devine."* (`HS-ACCUEIL-BASCULE`, "Tenu en session", seconde moitie) : *"quand elle appuie sur `Les jeux` depuis un jeu, alors elle revient en V1."* Reponse de `nadia-prof` a `Q-N2` : *"Les jeux ramene au choix du niveau, et le niveau choisi s'ouvre dans la vue retenue"* (`rapport-lea-dev.md` s56, 16.2 R2, qui cite sa reponse ; "niveau" est devenu "classe" par `APM-12`).
 

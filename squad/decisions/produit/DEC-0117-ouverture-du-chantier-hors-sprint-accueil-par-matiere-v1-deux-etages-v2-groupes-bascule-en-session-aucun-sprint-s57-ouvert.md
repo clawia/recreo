@@ -8,10 +8,9 @@
   (section 3).
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
   `MATRICE-couverture.md` ne change de statut. Les matieres citees sont donnees pour information.
-- **Statut** : **Proposee**, amendee le 2026-10-12 (section 9). `Q-U1` et `Q-U2` sont repondues, et le chantier est
-  fusionne sur `round-two` (`75290b26`). **Les mots de l'utilisatrice ne sont pas dans le depot** : seuls des
-  agents ecrivent qu'elle a decide (section 9). Le statut passe a `Acceptee` sur ses mots, ou sur sa
-  confirmation ecrite ; je ne le passe pas sur la foi d'un rapport d'agent (precedent : `DEC-0116` A.22).
+- **Statut** : **Proposee**, amendee le 2026-10-12 (sections 9 et 10). Les mots de l'utilisatrice pour `Q-U1` et `Q-U2` sont
+  consignes (section 10) ; le chantier est fusionne sur `round-two` (`75290b26`). Reste ouverte une question
+  residuelle pour elle, `Q-U4` (section 10) : le statut ne passe pas a `Acceptee` tant qu'elle n'a pas repondu.
 - **Lien** : `DEC-0112` (precedent d'une session hors sprint) ; `DEC-0028` (rien de persiste) ; `DEC-0032`
   section 3 (intention : boutons de matiere derives du catalogue) ; `DEC-0002` (pictogrammes) ;
   `DEC-0053` (le pli) ; `ADR-0006`, `ADR-0044`, `ADR-0049`, `ADR-0095` ;
@@ -250,6 +249,44 @@ squad complete) sont livres et joues ; ils restent des arbitrages rapportes, non
 pictogramme) ; `nadia-prof` (clavier et bandeau colle, reconnaissance des pictogrammes, `APM-12` rejoue) ;
 `yanis-qa` (E2 : aucun test Maven ne joue le catalogue reel dans les deux vues) ; `camille-po` (`APM-R1`,
 reserve de `nadia-prof`, et E5 : pas encore ecrits en story, voir le journal). Seuil de defilement : `DEC-0118`.
+
+## 10. Amendement du 2026-10-12 (apres la cloture, `camille-po`) : mots de l'utilisatrice, comptes, `Q-U4`
+
+Rien au-dessus n'est reecrit. Les sections 4 a 9 gardent leur texte ; ce qu'elles disent des mots absents est remplace par ce qui suit.
+
+### 10.1 Les mots de l'utilisatrice, forme 2 de `DEC-0116` A.2
+
+Mots recus directement dans la session du 2026-10-12, cites tels quels :
+
+- **`Q-U1`** : *"ok pour c"*. Option (c) : `/` demande le niveau d'abord. Confirme la section 9 ; la source n'est plus
+  seulement un rapport d'agent.
+- **`Q-U2`** : *"non audit apres fusion"*. **Ce n'est pas ma recommandation** (section 5 : audit avant fusion), et **ce n'est pas ce
+  qui s'est passe pour ce chantier**. Les deux faits, cote a cote, sans que je les concilie a sa place :
+  1. Sa reponse regit les chantiers hors sprint.
+  2. Pour ce chantier, l'audit a precede la fusion (verdict `99008d84` a 20:49, fusions `62b4aa75`, `99a896c8`, `75290b26` a
+     21:11) et le verdict est **VALIDE SOUS RESERVE** : aucun `REFUSE` n'a eu a etre traite.
+
+  La section 9 (*"l'audit precede la fusion"*) decrit donc ce qui s'est passe, pas la regle que l'utilisatrice a choisie. Le
+  critere de fusion de la section 6, point 2, etait ma proposition ; il ne vaut plus pour les chantiers suivants.
+
+### 10.2 Question residuelle
+
+- **`Q-U4` (utilisatrice) - Quel mecanisme s'applique a un `REFUSE` prononce apres la fusion d'un chantier hors sprint ?** Je ne
+  le decide pas. Ce que le depot donne : `DEC-0045` section 3 et `DEC-0055` regissent le retrait d'une entree de catalogue, avec
+  48 heures au plus hors sprint ; une vue d'accueil n'est pas une entree de catalogue, rien ne s'y retire (section 5, `Q-U2`).
+  Aucun code ni story ne depend de la reponse pour ce chantier.
+
+### 10.3 Compte des jeux : 146, pas 147
+
+Verifie le 2026-10-12 sur l'arbre de `cloture-camille2` : `catalogue.yaml` porte 146 entrees (`grep -c '^  - id:'` = 146) et
+0 entree `rapprocher-deux-oeuvres`. Les 147 (CP 59) des sections 4 et 5 sont la mesure du 2026-10-11 sur la base `8ac33440`,
+avant le retrait de `13d00bfe` ; le catalogue servi compte **146 jeux (CP 58, CE1 30, CM1 58)**. Ils ne sont pas reecrits au-dessus ;
+c'est 146 qu'il faut lire pour le catalogue actuel.
+
+### 10.4 Statut, routage, limites
+
+- Statut `Proposee`, motif : `Q-U4`. Aucun changement de code : rien a router a `sofia-sm` pour cette annotation.
+- Ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni matrice, ni code.
 
 ## Impact
 
