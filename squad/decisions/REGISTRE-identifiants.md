@@ -11,6 +11,17 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, hors sprint, le 2026-10-12 (Done pedagogique de l'accueil par matiere, V1 par defaut, `DEC-0119`,
+VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve, **`APM-R2`**, ecrite dans
+`squad/conformite/FICHE-accueil-par-matiere.md`. **Forme copiee** d'`APM-R1` : deux segments, marqueur `R` dans le dernier
+(`ADR-0100`). Prefixe `APM` deja alloue. La ligne de la section 4 est dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **946 / 160 a 947 / 160**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B clean verify`, lance sur mon diff avant la mise a jour de la ligne d'etat, rend dans
+`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest` : *"declare 946 identifiants alloues et 160 prefixes distincts, sa
+table en porte 947 et 160"*, seul echec des 371 tests de `bootstrap`. C'est ce **947 / 160** que je recopie. Si une autre
+branche alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, hors sprint, le 2026-10-11 (Done pedagogique de l'accueil par matiere, VALIDE SOUS RESERVE).**
 Deux identifiants ajoutes, ecrits dans `squad/conformite/FICHE-accueil-par-matiere.md` : une condition, **`APM-12`**, et une
 reserve, **`APM-R1`**. **Formes copiees** : `APM-12` d'`APM-11` ; `APM-R1` d'`EFF-R1`, deux segments, marqueur `R` dans le
@@ -827,7 +838,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `946` identifiants alloues, `160` prefixes distincts.
+**Compte courant, verifie par la CI** : `947` identifiants alloues, `160` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2357,3 +2368,4 @@ clause 2 par une exemption.
 | `APM-11` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
 | `APM-12` | `squad/conformite/FICHE-accueil-par-matiere.md` |
 | `APM-R1` | `squad/conformite/FICHE-accueil-par-matiere.md` |
+| `APM-R2` | `squad/conformite/FICHE-accueil-par-matiere.md` |
