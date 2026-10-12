@@ -132,3 +132,49 @@ pas touche.
   pour le rebouclage de tabulation.
 - **Qu'un enfant tire un benefice de l'adresse.** Recharger, garder un signet, retrouver la page :
   jugement de `nadia-prof` sur l'increment livre, et `S16-2` le lui demande nommement.
+
+## Amendement du 2026-10-12 (hors sprint, cloture de l'accueil par matiere, `theo-archi`) - la regle nommait une route, la decision nommait un ecran
+
+**Constat, reproduit.** Jar de `75290b26` (tip de `round-two`), lance sur un port libre, JDK 21.0.10, une session par `curl` :
+`POST /parties/{id}`, puis `POST /retour` (confirmation, aucune en-tete d'adresse : juste), puis `POST /retour/confirmer` :
+200, le premier ecran (`.choix-niveau`, *"Choisis ta classe."*), **aucune en-tete `HX-Push-Url`**. Dans la meme session, sans
+partie, `POST /retour` rend le meme ecran avec `HX-Push-Url: /`. L'adresse reste celle de la page quittee, et la recharger
+rend cette page : c'est la reserve `APM-R1` de `nadia-prof` et le point R6 de `lea-dev`, constate aussi par `yanis-qa`
+(`squad/sprints/hors-sprint-accueil-vues/rapport-qualite.md`, section 3).
+
+**Verdict : defaut, anterieur au chantier.** La decision 2 dit que la condition est l'ecran rendu, jamais le geste.
+`/retour/confirmer` rend l'ecran que `/retour` sans partie accompagne de `/` - avant ce chantier, la liste complete ; depuis
+`Q-U1`, le choix de la classe. La regle executable, elle, a ete ecrite pour **la route** `/retour` et ses deux branches :
+perimetre enumere par route, echec par omission de la seconde route qui rend le meme ecran. La decision ne change pas.
+
+**Correctif, a porter par le developpeur que `sofia-sm` designe** (le code de production n'est pas touche par cet amendement) :
+
+1. `PartieController.confirmerAbandon`, avant le `return` :
+   `reponse.setHeader(ENTETE_ADRESSE_AFFICHEE, ADRESSE_CATALOGUE_COMPLET);`
+2. Dans le meme commit, `PartieControllerTest` gagne le sens qui manquait :
+
+```java
+/** ADR-0048, amendement du 2026-10-12 : confirmer l'abandon rend le premier ecran, donc declare son adresse. */
+@Test
+void confirmerLAbandonDeclareLAdresseDuPremierEcran() throws Exception {
+    MockHttpSession session = new MockHttpSession();
+    mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+    mockMvc.perform(post("/retour").session(session));
+
+    MvcResult resultat = mockMvc.perform(post("/retour/confirmer").session(session)).andReturn();
+
+    assertThat(resultat.getResponse().getHeader("HX-Push-Url")).isEqualTo("/");
+}
+```
+
+**Morsure** : l'etat d'aujourd'hui en est la moitie (rouge avant la ligne 1) ; l'autre moitie reste
+`laReponseDeRetourNeDeclareAucuneAdresseAvecUnePartieEnCours`, que la ligne 1 ne touche pas. Aucune autre route ne rend le premier
+ecran par un echange htmx : lu dans `PartieController`, `GET /` le rend par navigation complete et les routes de confirmation sous
+un niveau (`/niveaux/{niveau}/confirmer`, `.../matieres/{segment}/confirmer`) rendent l'ecran de l'adresse ou la confirmation a ete
+ouverte.
+
+**Hors de ce correctif** : la puce de niveau qui reste marquee dans l'en-tete apres la confirmation (R8 (a) de `lea-dev`) ;
+`nadia-prof` a releve que son apparence est eteinte. Apres le correctif, un rechargement rend `/`, sans puce active.
+
+**Statut de cet amendement** : la decision reste `Accepte` ; le sens ajoute a la regle est du par le commit du correctif, comme la
+regle d'origine l'etait par le lot de `S16-2`.

@@ -261,3 +261,52 @@ dont la liste est dans l'avis, section 10.
    fichiers de 312 a 518 octets ; l'empreinte garde deja chaque octet. Ce qui me ferait changer d'avis : un
    pictogramme matriciel.
 8. **Un emoji comme pictogramme.** Ecartee par `nadia-prof` (`Q7`) : il est dessine par le systeme.
+
+## Amendement du 2026-10-12 (hors sprint, cloture, `theo-archi`) - troisieme forme admise de `RessourcesTiercesTest`, ratifiee
+
+**Ce que la decision 4 ne disait pas.** Elle rend le pictogramme depuis la donnee, donc par une reference de gabarit
+calculee, et `RessourcesTiercesTest` (`ADR-0014`) refuse toute reference calculee hors des deux formes d'`ADR-0073` et
+d'`ADR-0082`. Ma mutation M9 n'avait pas lance cette classe. `lea-dev` l'a trouve au lot P4 et a ecrit une troisieme forme
+dans `c7a4db50`, en la soumettant a ma ratification (son rapport, `squad/sprints/s56-paquet-art-cp-10-et-francais-ce1-13/rapport-lea-dev.md`,
+section 16.2, R1).
+
+**Ratification.** La forme admise est `@{'/images/matieres/' + ${nom}}` : prefixe litteral exactement egal au repertoire des
+pictogrammes, un seul terme, une variable simple (lettres et chiffres, sans appel, sans point, sans operateur). Elle tient la
+garantie hors ligne d'`ADR-0014` comme les deux autres : le prefixe litteral fixe l'origine, et la preuve que chaque nom designe
+un fichier servi se lit sur la donnee (`LePictogrammeDeMatiereEstUnFichierArbitreTest`, dans les deux sens).
+
+**Elle n'a pas d'extension litterale, et c'est la seule difference avec les deux autres.** L'extension est portee par la donnee,
+et la donnee est contrainte : la clause de forme de `ChaqueMatiereServieASaLigneDeMatiereTest` exige
+`[a-z0-9]+(-[a-z0-9]+)*\.svg`, ce qui interdit aussi tout `/` et tout `..`. Ajouter `+ '.svg'` au gabarit obligerait a retirer
+l'extension de la donnee, que `LePictogrammeDeMatiereEstUnFichierArbitreTest` lit comme un nom de fichier : deux fichiers a changer
+pour deplacer une contrainte deja tenue.
+
+**Cliquet** : `septReferencesDeLaProductionSontDesIllustrationsDesReproductionsOuDesPictogrammes` vaut 7 = 4 (illustrations et
+reproductions) + 3 (pictogrammes d'`accueil.html` : bandeau de V2, tuile de l'etage 1, bandeau de l'etage 2), lu dans le gabarit.
+Le plafond vaut la population.
+
+**Morsures mesurees**, une mutation a la fois, fichier restaure par `git checkout` apres chacune, `git status --short` vide ensuite.
+Commande : `bash outils/mvn-jdk21.sh -B -q -o -pl adapters/adapter-web -am test -Dtest=RessourcesTiercesTest
+-Dsurefire.failIfNoSpecifiedTests=false -Dmaven.test.failure.ignore=true` (perimetre : `domain`, `application`, `adapter-web`, une
+classe de 23 tests) ; pour la donnee, `-pl adapters/adapter-content -am -Dtest=ChaqueMatiereServieASaLigneDeMatiereTest` (12 tests).
+Echecs lus dans les rapports XML, JDK 21.0.10 (`java.version` du rapport). Sans mutation : 23 tests, 0 echec.
+
+| Mutation | Echecs |
+|---|---|
+| le juge accepte tout terme apres le prefixe (le controle de la variable simple neutralise) | 1 : `uneSecondeFormeCalculeeDePictogrammePoseeDansLeMemeGabaritResteRefusee` |
+| la troisieme forme retiree du juge | 4 : le cliquet, la reference reelle refusee, et les deux morsures d'etroitesse qui verifient d'abord le gabarit reel |
+| un huitieme `<img th:src="@{'/images/matieres/' + ${pictogramme}}">` ajoute a `accueil.html` | 1 : le cliquet |
+| `matieres.yaml` : `francais.svg` devient `../oeuvres/francais.jpg` | 3 dans `ChaqueMatiereServieASaLigneDeMatiereTest`, dont le message *"hors de la forme `[a-z0-9]+(-[a-z0-9]+)*\.svg`"* |
+
+**Ce qu'elle ne voit pas, et c'est la meme limite que les deux autres formes.** Le juge lit `th:src`, pas le `th:with` qui lie la
+variable. Un `th:with="pictogramme=${groupe.matiere().segment() + '.svg'}"` passerait ici et rendrait une image absente ;
+`AccueilParMatiereTest` ne verifie que le prefixe et le suffixe sur le catalogue de test, et seule la partie jouee le montrerait.
+`ADR-0073` et `ADR-0082` ont la meme limite et ne l'ont pas ecrite.
+
+**Ce qui me ferait changer d'avis** : une quatrieme forme calculee, ou une forme admise empruntee hors de son gabarit. Ajouter
+une exemption par population cesse alors d'etre plus simple que l'alternative : retirer les trois et verifier sur les documents
+rendus, comme le fait `ToutEcranEchangeEstUnDocumentJouableTest`, que chaque `src` resout vers un fichier de `static/`.
+
+**Regle executable** : celles de `RessourcesTiercesTest` ci-dessus, dans `adapter-web`, et la clause de forme de
+`ChaqueMatiereServieASaLigneDeMatiereTest`. Ce ne sont pas des `ArchRule` : l'objet est un gabarit et un fichier de donnees.
+Compte des regles ArchUnit inchange.

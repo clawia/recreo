@@ -164,3 +164,52 @@ modules du `pom.xml` agregateur apres ce commit, 37 avant - methode de
 5. **Faire lire l'inventaire par reflexion sur toutes les methodes du port.** Ecartee : une methode a
    parametre (`jeuxDuNiveau`) demande une valeur que la reflexion ne derive pas ; l'egalite entre
    methodes declarees et methodes appelees tient la propriete sans deviner d'arguments.
+
+## Amendement du 2026-10-12 (hors sprint, cloture de l'accueil par matiere, `theo-archi`) - le cookie de session, et l'identifiant de session dans les adresses
+
+**Ce que la decision 3 disait faux.** *"Le seul cookie du produit reste le marqueur de partie"* : chaque reponse qui cree une
+session pose aussi `JSESSIONID`. La regle 2 ne porte que sur les cookies que le code du produit fait naitre (`Cookie`,
+`ResponseCookie`) et elle est juste ; c'est la phrase qui est trop large. **Elle se lit desormais** : *le seul cookie que le code
+du produit fait naitre est le marqueur de partie ; le cookie de session du conteneur est le transport de la session HTTP que la
+decision 2 et `DEC-0028` supposent, et il meurt avec elle.* Comportement accepte : c'est la question R8 (b) de `lea-dev`.
+
+**Ce qui est un defaut : l'identifiant de session voyage aussi dans les adresses.** Mesure, jar de `75290b26`, port libre, JDK
+21.0.10, `curl` sans cookie : `GET /` rend 9 occurrences de `jsessionid` dans le corps, dont la puce
+`href="/niveaux/CP;jsessionid=..."` ; `GET /niveaux/CP` en rend 76 (feuilles, icone, puces, `hx-post` de chaque carte) ; la meme
+requete avec le cookie en rend 0. `yanis-qa` a mesure la meme chose, et la presence sur l'arbre d'avant ce chantier
+(`rapport-qualite.md`, section 3). **Cause** : aucun fichier du depot ne regle les modes de suivi de session (lu : `bootstrap/src/main/resources`
+ne porte que `META-INF`), le conteneur garde donc le cookie **et** la reecriture d'URL, et les adresses que le gabarit compose
+sont reecrites tant que la requete n'a pas rapporte de cookie. Prouvee par l'effet : restreindre le suivi au cookie (point 1
+ci-dessous) fait tomber les occurrences a 0, sans autre changement. Un clic sur la premiere puce met l'identifiant dans la barre d'adresse, ou il reste pour toute la
+partie : une adresse copiee ou mise en signet emporte la session de l'enfant. Le produit n'a rien a gagner de ce repli : un
+navigateur qui refuse les cookies ne garde deja pas le marqueur de partie (`ADR-0047`).
+
+**Correctif, a porter par le developpeur que `sofia-sm` designe** (le code de production n'est pas touche par cet amendement) :
+
+1. Creer `bootstrap/src/main/resources/application.properties`, une ligne :
+   `server.servlet.session.tracking-modes=cookie`. Sa place est `bootstrap`, seule couche qui configure le conteneur.
+   **Mesure de ce correctif sans toucher le code** : le meme jar lance avec l'argument
+   `--server.servlet.session.tracking-modes=cookie` (Spring Boot 4.1.0) rend 0 occurrence sur `/`, `/niveaux/CP` et `/niveaux/CM1`
+   sans cookie, un seul `Set-Cookie` (`JSESSIONID`), et la session tient : une partie demarree, `POST /retour` rend la
+   confirmation.
+2. Dans le meme commit, `JarRecreoIT` garde la propriete sur le seul conteneur reel du depot (le `MockMvc` des autres tests ne
+   reecrit jamais une adresse, donc n'y verrait rien), apres la lecture de la premiere reponse :
+
+```java
+assertThat(reponse.body())
+        .as("ADR-0105, amendement du 2026-10-12 : l'identifiant de session ne voyage que par son cookie, jamais dans une adresse")
+        .doesNotContainIgnoringCase("jsessionid");
+```
+
+   Elle est rouge sur l'arbre d'aujourd'hui (9 occurrences dans la premiere reponse), ce qui en fait la moitie de l'epreuve ;
+   retirer la ligne du point 1 la refait rougir.
+
+**Ce que ce garde-fou ne voit pas** : une adresse ecrite en dur dans un gabarit avec un identifiant, ou un autre parametre de
+session ajoute plus tard. Le premier se lit dans le diff ; le second passe par le meme fichier de proprietes.
+
+**Mauvaise consequence** : le depot gagne son premier fichier de proprietes de production. `ADR-0037` a ecrit d'avance la
+propriete qu'il ne doit pas porter sans revoir son garde-fou (`spring.web.resources.static-locations`).
+
+**Ce n'est pas une regle ArchUnit** : l'objet est une configuration du conteneur et une reponse HTTP, pas du bytecode. Compte
+ArchUnit inchange. **Statut** : la phrase corrigee de la decision 3 est acceptee ; la propriete "l'identifiant de session ne
+voyage que par son cookie" est due par le commit du correctif, qui porte sa garde (precedent : `ADR-0048`).
