@@ -1,6 +1,6 @@
 # lessons.md - regles tirees des corrections
 
-Fichier cree le 2026-10-11 par `sofia-sm` a la retro de s56 : il n'existait pas (`find . -iname lessons.md`
+Fichier cree a la racine par `sofia-sm` le 2026-10-11, a la retro de s56, et deplace sous `squad/` le 2026-10-12 : il n'existait pas (`find . -iname lessons.md`
 ne rendait rien, `git log --all` non plus ; le planning de s56 le disait deja). Une ligne par regle :
 la regle, puis la correction qui la fonde, avec sa source. Le detail et les mesures sont dans
 `squad/sprints/s56-paquet-art-cp-10-et-francais-ce1-13/retro.md`. Une regle qui devient une regle de

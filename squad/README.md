@@ -321,6 +321,32 @@ paquet assemble se contredisait avec lui-meme des le premier jour ou il a ete se
 dans sa bonne reponse (`ADR-0089`), jamais dans l'enonce ni dans la consigne, et ne pouvait donc
 pas voir la contradiction.
 
+**Une mutation n'est lue qu'apres deux controles : le motif a ete trouve, et le nombre de tests lances
+est superieur a zero** (amendement du 2026-10-12, `sofia-sm`, retro de s56, section 6, proposition
+confiee a `yanis-qa` et `sofia-sm`). C'est la regle que `yanis-qa` ecrit dans sa methode, etendue a tout
+agent qui mute, developpeurs compris. Fait mesure : trois faux verts de mutation en un sprint, chacun vu
+par son auteur et aucun par un garde-fou - `bash` de WSL qui n'executait aucun test (`yanis-qa`, serie
+entiere jetee), espace insecable non reconnue par le script de mutation (`marc-dev`, deux fois, 22 verts
+puis 18) (`rapport-qualite.md` section 3 et `rapport-marc-dev.md` sections 3 et 16 de s56). Un script qui
+applique une mutation sans refuser un motif absent produit un vert qui ne dit rien. La regle est aussi
+dans `squad/lessons.md`.
+
+**Une condition d'un arbitrage prealable dite "tenue" cite la cote mesuree sur le jar qui sert, pas sur
+son vehicule** (amendement du 2026-10-12, `sofia-sm`, retro de s56, section 6, proposition confiee a
+`nadia-prof` et `sofia-sm`). Meme famille que l'amendement de s14 (*"tenu par construction"* verifie sur
+le document assemble, section 9, etape 7), pour un arbitrage prealable de la porte pedagogique. Fait
+mesure : s56, *"Mesure : tenu avec O1 et le meuble"* ; l'entree de catalogue a ete ecrite contre cette
+barre, la phrase de `M4` est a 626 a 656 pour un pli a 551 (`getBoundingClientRect()` a 744 x 551), 105 px
+d'ecart, et le jeu a ete refuse (`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`, motif du refus).
+
+**Pour tout chantier hors sprint, l'audit de `nadia-prof` precede la fusion sur `round-two`**
+(amendement du 2026-10-12, `sofia-sm`, regle decidee par `DEC-0117` section 11 et demandee a
+`sofia-sm` par `camille-po` dans le journal hors sprint, `squad/rapports/JOURNAL-gouvernance-hors-sprint.md`).
+Mots de l'utilisatrice cites par `DEC-0117` section 11, recus par `camille-po` le 2026-10-12 : *"non
+nadia passe avant la fusion comme ca on peut re corrgier si besoin"*. Un `REFUSE` se corrige donc avant
+fusion, par une story corrective, et ne laisse rien en service. Le texte d'application est en section 9,
+etape 6. En cas d'ecart, `DEC-0117` section 11 fait foi.
+
 ## 5. La synthese de sprint - `RAPPORT.md`
 
 C'est le document qu'on lit en premier pour savoir ce qui s'est passe. Ecrit par Sofia a la
@@ -454,6 +480,13 @@ fusion sur `round-two`, jamais seulement constatee a la review du sprint qui sui
 `DEC-0012` placait explicitement le rhabillage du gabarit au sprint 6 ; il a ete livre et audite
 dans s05 sans qu'aucun amendement ecrit ne le dise au moment des faits, et l'anomalie n'a ete
 constatee qu'a la cloture du sprint suivant.
+
+**Un chiffre de capacite "consomme" nomme les postes qu'il additionne** (amendement du 2026-10-12,
+`sofia-sm`, retro de s56, section 6, proposition confiee a `camille-po` et `nadia-prof`). Fait mesure :
+a s56, `cloture-nadia.md` section 6 donne 5,75 consomme et omet des postes livres (les arbitrages 1,0, la
+forme 0,25, le choix des oeuvres 0,25) ; 7,25 en les comptant. Les
+deux sommes sont justes pour les postes qu'elles additionnent ; c'est la liste qui manquait, pas
+l'arithmetique (retro de s56, section 4, avant-derniere puce).
 
 ## 8. Prefixes de commit par agent
 
@@ -625,6 +658,14 @@ dise explicitement, dans `review.md`, si et comment le planning a ete rattrape p
 avis qui devaient le suivre, plutot que de laisser une phrase du planning parler d'un futur
 entre-temps devenu le passe sans que personne ne le signale.
 
+**Une porte de sortie ne depend pas d'un artefact que produit l'etape qu'elle precede** (amendement du
+2026-10-12, `sofia-sm`, retro de s56, section 6, proposition confiee a `sofia-sm` et a l'utilisatrice).
+La verification poste/story du planning (`PAR-16`, section 4) y ajoute une question : pour chaque porte,
+l'artefact qu'elle exige existe-t-il **avant** l'etape qu'elle conditionne ? Fait mesure : le planning de
+s56 demandait `Q7` avant l'entree de catalogue ; `Q7` se mesure sur le jar qui sert cette entree
+(`Q7-releve-gabarit-livre.md` sections 0 et 1). Porte ecrite par `sofia-sm`, insatisfiable telle quelle
+(retro de s56, constat C13).
+
 **2. Developpement.** Marc, Lea et Sofia codent, tests dans le meme commit. Yanis traduit les
 criteres d'acceptation en tests et fait tourner la suite. Tout obstacle va a Sofia, qui classe,
 route, attend la decision **ecrite**, debloque.
@@ -704,6 +745,16 @@ developpeuse) ont toutes ete autocorrigees par leur auteur avant tout commit sur
 sans qu'aucune n'ait jamais ete detectee au daily : la regle relue au planning ne suffit pas seule,
 et la verifier plus tot dans le cycle - avant que le travail ne s'accumule sur la mauvaise branche
 - coute moins cher que de la verifier seulement a la fusion.
+
+**Un glissement d'echeance est ecrit au moment ou il est constate, dans un fichier du dossier du
+sprint** (amendement du 2026-10-12, `sofia-sm`, retro de s56, section 6, proposition confiee a
+`sofia-sm` et a l'utilisatrice). Une ligne : l'echeance, le constat, a qui il a ete dit. Cette ligne
+n'est pas un journal de daily : le daily reste sans fichier, et elle ne rapporte que l'ecart a une
+echeance ecrite. Fait mesure : a s56, l'entree de catalogue est fusionnee 15 h 07 min apres son echeance
+de 20:00, 23 h 49 min sans livraison entre `f37e33dd` (2026-10-10 11:17) et `38ba3d5c` (2026-10-11
+11:06), et aucun fichier du depot ne trace que le glissement a ete dit (`review.md` de s56, section 3,
+obstacle 6). Le planning de s56 exigeait de le dire le jour meme ; la regle n'avait pas de fichier ou
+le consigner.
 
 **4. Porte technique.** Les quatre jobs de la CI verts (`prefixes`, `chemins`, `outils`, `build`).
 Yanis produit le rapport qualite, Theo confirme ArchUnit avec le resultat de la commande.
@@ -838,6 +889,11 @@ sans defaut trouve reste ecrit.
 verdict dans la fiche de conformite. Si c'est `VALIDE`, Camille passe la ligne de matrice a
 `couvert-valide`.
 
+**Pour un chantier hors sprint, cette etape precede la fusion sur `round-two`** (amendement du
+2026-10-12, `sofia-sm`, `DEC-0117` section 11). Rien n'est fusionne sans l'audit de `nadia-prof` : un
+`REFUSE` ne laisse alors rien en service, et il se corrige avant fusion par une story corrective. Le
+precedent hors sprint n'avait aucune regle ; la reponse de l'utilisatrice y est citee en section 4.
+
 **7. Review.** Sofia ecrit `review.md` : horodatage de fin, duree, rapport de Yanis, confirmation
 de Theo, corrections du relecteur, tableau des obstacles, verdict de Nadia.
 
@@ -949,6 +1005,16 @@ Trace, pour qui voudrait rapprocher une autre occurrence de celle-ci : `invalid_
 occurrence a ce jour, non reproduite ; elle est ecrite ici parce qu'une seule occurrence suffit a
 faire perdre un lot de travail a qui ne sait pas ou le retrouver.
 
+**Un agent arrete par l'utilisatrice est ecrit par celui qui le relance : qui, quand, ce que sa branche
+portait** (amendement du 2026-10-12, `sofia-sm`, retro de s56, section 6, proposition confiee a
+`sofia-sm` et a l'utilisatrice). Les trois points ci-dessus couvrent l'arret par une erreur
+d'infrastructure ; ils ne disent rien d'un arret voulu ni de qui l'ecrit. Fait mesure : a s56, deux
+agents arretes par l'utilisatrice et remplaces et un watchdog sur `lea-dev` ; un seul fichier du depot
+le dit (`cloture-nadia.md`, *"l'instance B arretee"*), le reste ne figure que dans un message de
+lancement (retro de s56, constat C1 et section 4, derniere puce). Ce que l'ecriture contient : le nom de
+l'agent, la date et l'heure de l'arret, le dernier commit de sa branche et l'etat de son arbre
+(`git log`, `git status`). Un motif que celui qui relance ne connait pas est ecrit comme inconnu.
+
 **Chiffrer un chantier contre un garde-fou existant verifie chaque clause opposable du garde-fou,
 pas seulement la plus visible** (amendement s50, retro de s50). A s50, `camille-po` a engage `T6`
 (arts plastiques CP) en sous-estimant son cout reel a deux reprises, sur deux clauses distinctes du
@@ -1022,6 +1088,7 @@ squad/
   README.md               ce fichier - le process
   EQUIPE.md               les 8 agents, miroir humain de .claude/agents/
   TEMPLATES.md            gabarits vierges de tous les artefacts
+  lessons.md              regles tirees des corrections - sofia-sm
   sprints/
     sNN-<slug>/
       planning.md         sofia-sm

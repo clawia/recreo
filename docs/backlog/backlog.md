@@ -21377,7 +21377,7 @@ a 744 x 551 dans chaque niveau ; hauteur du document 4216 px en CP ; 0 matiere n
 CM1 8) ; le plus gros groupe d'un niveau compte 19 jeux.
 
 **Porte technique de chaque story** : tous les jobs de `.github/workflows/ci.yml`, nommes par qui annonce la porte. Les
-cotes de rendu sont lues sur le jar qui sert, pas sur un gabarit (`lessons.md`).
+cotes de rendu sont lues sur le jar qui sert, pas sur un gabarit (`squad/lessons.md`).
 
 **Ordre** : `HS-ACCUEIL-LIBELLES` d'abord (arbitrage de `nadia-prof` avant tout code), puis `HS-ACCUEIL-V2`, `HS-ACCUEIL-V1`,
 `HS-ACCUEIL-BASCULE` ; `HS-ACCUEIL-COMPLETUDE` et `HS-ACCUEIL-MESURE` se ferment avec les trois vues.
@@ -21454,7 +21454,7 @@ cotes de rendu sont lues sur le jar qui sert, pas sur un gabarit (`lessons.md`).
 - **Criteres d'acceptation** :
   - Etant donne chacun des niveaux servis et chacune des deux vues, quand on parcourt tous les chemins de l'accueil (V1 : chaque tuile ; V2 : toute la page), alors l'ensemble des identifiants de jeu atteints est **egal** a l'ensemble des entrees du catalogue dont le paquet declare ce niveau (**CP 59, CE1 30, CM1 58, soit 147 au 2026-10-11**). Les nombres sont derives du catalogue servi et des paquets, jamais ecrits dans le test (`ADR-0013`, perimetre derive). **Aujourd'hui : 59, 30, 58 sur la liste plate, deja vert** ; c'est une condition a ne pas perdre, pas un defaut.
   - Etant donne le niveau actif, alors **aucun** jeu d'un autre niveau n'est present dans aucune vue. **Aujourd'hui : deja vert** (`/niveaux/CP` rend 59 boutons, nombre des paquets de niveau CP).
-  - Etant donne le test de completude, quand on retire un seul groupe (V2) ou une seule tuile (V1) du rendu, alors le test echoue (mutation ; le nombre de tests lances est superieur a zero ; `yanis-qa`, `lessons.md` s56).
+  - Etant donne le test de completude, quand on retire un seul groupe (V2) ou une seule tuile (V1) du rendu, alors le test echoue (mutation ; le nombre de tests lances est superieur a zero ; `yanis-qa`, `squad/lessons.md` s56).
   - Etant donne un nouveau jeu servi d'un niveau existant, quand on lance `mvn -B verify`, alors il est atteignable dans les deux vues sans edition d'un test.
 - **Lien** : `DEC-0117`. **Rapport** : `yanis-qa`.
 
@@ -21466,7 +21466,7 @@ cotes de rendu sont lues sur le jar qui sert, pas sur un gabarit (`lessons.md`).
   - Etant donne la methode de la section "Methode de mesure" ci-dessus, quand `yanis-qa` la commite sous une forme rejouable sans chemin de poste (`CLAUDE.md`, conventions de redaction), alors lancee sur la base `8ac33440` elle rend **5 cartes visibles en CP, 5 en CE1, 5 en CM1 et 0 matiere nommee**, et sur le code livre elle rend les valeurs que `HS-ACCUEIL-V1` et `HS-ACCUEIL-V2` exigent. **Aujourd'hui** : la mesure du 2026-10-11 a ete faite par une commande de poste non commitee, donc non rejouable : rouge.
   - Etant donne son verdict d'invocation, alors il est eprouve par des entrees fabriquees et execute par un job de `.github/workflows/ci.yml` (meme forme que `outils/mesurer-rendu.sh`, `ADR-0009`) ; le prerequis nomme est un Chrome, jamais son emplacement (`ADR-0010`).
   - Etant donne la commande lancee sur un arbre dont l'accueil a ete mute (un groupe retire), alors elle rend un autre nombre de cartes : la mesure mord.
-- **Lien** : `DEC-0117` section 4 ; `lessons.md` (une cote lue a l'oeil n'est pas recopiee comme un chiffre).
+- **Lien** : `DEC-0117` section 4 ; `squad/lessons.md` (une cote lue a l'oeil n'est pas recopiee comme un chiffre).
 
 #### Ce que ce chantier ne fait pas
 
