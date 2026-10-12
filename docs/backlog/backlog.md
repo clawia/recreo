@@ -21454,7 +21454,7 @@ cotes de rendu sont lues sur le jar qui sert, pas sur un gabarit (`squad/lessons
 - **Criteres d'acceptation** :
   - Etant donne chacun des niveaux servis et chacune des deux vues, quand on parcourt tous les chemins de l'accueil (V1 : chaque tuile ; V2 : toute la page), alors l'ensemble des identifiants de jeu atteints est **egal** a l'ensemble des entrees du catalogue dont le paquet declare ce niveau (**CP 59, CE1 30, CM1 58, soit 147 au 2026-10-11**). Les nombres sont derives du catalogue servi et des paquets, jamais ecrits dans le test (`ADR-0013`, perimetre derive). **Aujourd'hui : 59, 30, 58 sur la liste plate, deja vert** ; c'est une condition a ne pas perdre, pas un defaut.
   - Etant donne le niveau actif, alors **aucun** jeu d'un autre niveau n'est present dans aucune vue. **Aujourd'hui : deja vert** (`/niveaux/CP` rend 59 boutons, nombre des paquets de niveau CP).
-  - Etant donne le test de completude, quand on retire un seul groupe (V2) ou une seule tuile (V1) du rendu, alors le test echoue (mutation ; le nombre de tests lances est superieur a zero ; `yanis-qa`, `lessons.md` s56).
+  - Etant donne le test de completude, quand on retire un seul groupe (V2) ou une seule tuile (V1) du rendu, alors le test echoue (mutation ; le nombre de tests lances est superieur a zero ; `yanis-qa`, `squad/lessons.md` s56).
   - Etant donne un nouveau jeu servi d'un niveau existant, quand on lance `mvn -B verify`, alors il est atteignable dans les deux vues sans edition d'un test.
 - **Lien** : `DEC-0117`. **Rapport** : `yanis-qa`.
 
