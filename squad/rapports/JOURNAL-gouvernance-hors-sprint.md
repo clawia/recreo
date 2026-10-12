@@ -180,3 +180,19 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 3. **A reprendre par le planning du prochain sprint ouvert** (s57 n'est pas ouvert, aucun numero n'est suppose) : story `RP-ACCUEIL-147` de `docs/backlog/backlog.md`, adressee a `nadia-prof`. Les deux occurrences de 147 dans `ARBITRAGE-PREALABLE-accueil-par-matiere.md` (lignes 41 et 236) sont a corriger ou annoter ; cause : retrait `13d00bfe`, catalogue a 146. Demande de l'utilisatrice : *"ajoute le au repo et ping nadia dessus sur le sprint prochain"*. Je ne modifie pas ce fichier.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done.
+
+## 2026-10-12 - La vue par defaut d'une classe choisie passe de V2 a V1 (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, recus directement dans la session du 2026-10-12 : *"par defaut apres avoir choisi sa classe montre le choix de la matiere"*. Lecture retenue : l'etage 1 de V1 (une tuile par matiere) devient la vue d'une session qui n'a rien choisi ; V2 reste par le bouton ; le choix reste en session (`DEC-0028`).
+
+**Ce que je verse.**
+1. **`DEC-0119`** (`Acceptee`, non appliquee : le code est inchange) : criteres A a E (ce que voit l'enfant apres la classe, libelles du bouton dans chaque sens, retour depuis un jeu, session), chacun avec son etat d'aujourd'hui (rouges : A1, B1, C1, D1 ; les autres sont des planchers deja verts, dits comme tels). **Condition de fusion : l'audit de `nadia-prof` precede la fusion** (`DEC-0117` section 11).
+2. **`DEC-0117` section 12** (amende la decision 1 de la section 2) et **`DEC-0118` section 8** (8 cartes : valeur, mesure et motif inchanges ; le critere porte sur V2 atteinte par "Tout voir" ; ce n'est pas un report). Annotations, rien reecrit. `DEC-index.md` a jour.
+3. **Backlog** : annotation datee des criteres remplaces ; stories `HS-ACCUEIL-DEFAUT-V1` et `HS-ACCUEIL-MESURE-DEFAUT`. **Fiche** : criteres de `camille-po` seulement, bloc de validation intact.
+
+**Ce que je route.**
+- `sofia-sm` : affecter `HS-ACCUEIL-DEFAUT-V1` (apres l'avis de `theo-archi`) et `HS-ACCUEIL-MESURE-DEFAUT` (`yanis-qa`) : `outils/mesurer-accueil.py` lit la page par defaut comme V2. Constat de lecture : `VueDeLAccueil.PAR_DEFAUT`, `AccueilParMatiereTest` et `VueDeLAccueilEnSessionTest` posent V2 ; le perimetre exact est a `lea-dev` et `yanis-qa`.
+- `theo-archi` : `ADR-0105` (contexte : *"vue par defaut la seconde"* ; decision 2 : *"Valeur absente = vue par defaut"*, sans nommer la vue) est-il a amender, annoter ou confirmer ? Non tranche par moi.
+- `nadia-prof` : la V1 par defaut change-t-elle son verdict ? Sa condition `N4` (*"V2 par defaut : ACCEPTEE"*) et sa lecture de `S15-5` ; "8 me suffit" (P8) dit pour le premier ecran, vaut-il pour V2 atteinte par un bouton ; l'etage 1 a 390 px (4 tuiles sur 8, E3) est maintenant la page par defaut. Non tranche par moi, bloc de validation non touche.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done. Je n'ai lance ni test ni jar : les "vert" et "rouge" de `DEC-0119` sont des lectures du code, des tests et des rapports, a rejouer par `yanis-qa`.
