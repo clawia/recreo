@@ -46,8 +46,8 @@
 
 | # | Action de s55 | Etat a la cloture de s56 |
 |---|---|---|
-| A1 | `DEC` d'ouverture de s56 | **Faite** : `DEC-0116`, `Proposee` (`Q4` sans reponse) |
-| A2 | Mots de l'utilisatrice sur `Q6`, le moment du paquet, l'ordre, les deux instances | **Partielle** : `Q6` et le moment repondus avant s56 ; `Q4`, `Q3` et `Q6` (pli de `LIS-2`) sans reponse a la cloture |
+| A1 | `DEC` d'ouverture de s56 | **Faite** : `DEC-0116`, `Proposee` (`Q4` sans reponse a la cloture ; **repondue le 2026-10-11 apres la cloture, statut inchange**, `DEC-0116` A.21 et A.22 ; corrige le 2026-10-12) |
+| A2 | Mots de l'utilisatrice sur `Q6`, le moment du paquet, l'ordre, les deux instances | **Partielle a la cloture** : `Q6` et le moment repondus avant s56 ; `Q4`, `Q3` et `Q6` (pli de `LIS-2`) sans reponse a la cloture. **Corrige le 2026-10-12 : les trois sont repondues le 2026-10-11, apres la cloture** (mots relayes, `DEC-0116` A.21 a A.24) |
 | A3 | Pousser et lire la CI sur un commit nomme | **Non faite** : second report (`A2` de s54, `A3` de s55, s56). Rien n'est pousse, la CI distante n'est lue par personne |
 | A4 | Cause du rouge de CI que `a3606b2f` corrige | **Partielle** : mecanisme reproduit (1 echec sur 17 avec `SOURCE_DATE_EPOCH`, 0 sans) ; declencheur sur GitHub non etabli (`avis-faisabilite.md` section 7) |
 | A5 | Poste prealable `S55-ART-CP-10-PLAFOND` et aucun poste sans ligne | **Plafond fait** (`1f0fe8e4`). **Aucun poste sans ligne : tenu pour deux postes d'`ADR`** (amendement du planning avant les worktrees), **non tenu pour `B2`, `B3`, `B5`, `B7`, `B8`** et pour la correction `F1` (`7b315f36`) |
@@ -84,7 +84,7 @@ Les regles ecrites dans `lessons.md` en decoulent. Les constats qui sont de ma m
 |---|---|---|---|
 | A1 | Ecrire la `DEC` d'ouverture de s57 : placer ou abandonner `S54-OBS-SCI-CONSIGNE` (troisieme report interdit), la reprise du paquet d'`ART-CP-10` (0,5, priorite proposee par `camille-po`), `VSJ-CE1-R1` (0,5), l'ordre des matieres | `camille-po`, utilisatrice | `DEC` |
 | A2 | Repondre a `Q-U3` (retrait D1 ou maintien D2) ; si D1, `sofia-sm` affecte `S56-RETRAIT-RAPPROCHER-OEUVRES` et `theo-archi` mesure le cout technique avant le commit | utilisatrice, `sofia-sm`, `theo-archi` | mots en forme 2, puis story affectee |
-| A3 | Repondre a `Q4`, `Q3`, `Q6` | utilisatrice | mots en forme 2 avec leur date |
+| A3 | Repondre a `Q4`, `Q3`, `Q6`. **Faite le 2026-10-11, apres la cloture, corrige le 2026-10-12** : `Q4` *"D2 ordre ok"*, `Q3` *"D3 deux instances de nadia"*, `Q6` *"D4 non"* (relayes, non lus de sa main). Reste : `DEC-0116` toujours `Proposee` (A.22), compte des instances de s57 non tranche (A.23) | utilisatrice | mots en forme 2 avec leur date : `DEC-0116` A.21 |
 | A4 | Pousser, lire la CI sur un commit nomme, job par job ; lire le journal du job `build` rouge d'avant `a3606b2f` | utilisatrice, `theo-archi` (ecrit la cause) | verdict nomme ; note dans un avis de s57 |
 | A5 | Ecrire la lecture de testabilite **avant la premiere livraison de code** de s57 | `yanis-qa` | `lecture-testabilite.md` |
 | A6 | Traiter `F1` a `F9` : `F1`, `F2`, `F4`, `F6` (`theo-archi`), `F3` (`nadia-prof`, `ines-design`, `theo-archi`), `F5` (`lea-dev`), `F7` (`relecteur-pedagogique`, `theo-archi`), `F9` (`camille-po`). Chacun est un poste : une ligne au planning de s57 ou une decision de ne pas le faire | `camille-po` (stories), `sofia-sm` (lignes) | stories au backlog |

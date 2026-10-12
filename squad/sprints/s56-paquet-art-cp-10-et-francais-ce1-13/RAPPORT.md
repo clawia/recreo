@@ -12,7 +12,7 @@ fait de reproductions d'oeuvres (`Des œuvres faites de la même façon`) est ec
 
 | Reference | Titre | Type | Statut |
 |---|---|---|---|
-| `DEC-0116` | Ouverture de s56 : option O3, un lot de francais CE1, six reserves levees, le paquet a reproductions d'`ART-CP-10` ecrit par `lea-dev` puis audite, ecart accorde pour s56 seulement, second report de `S54-OBS-SCI-CONSIGNE` | Produit, creee le 2026-10-09 (avant le planning) ; **amendee cinq fois** : `A.1`, `A.2` (2026-10-09), `A.4` a `A.8`, `A.9` a `A.14` (2026-10-09), `A.15` a `A.20` (2026-10-11, cloture) | **`Proposee`**, tenue : `Q4` (ordre des matieres) sans reponse de l'utilisatrice ; ses mots couvrent la composition, l'ecart et le proprietaire du paquet, pas l'ordre |
+| `DEC-0116` | Ouverture de s56 : option O3, un lot de francais CE1, six reserves levees, le paquet a reproductions d'`ART-CP-10` ecrit par `lea-dev` puis audite, ecart accorde pour s56 seulement, second report de `S54-OBS-SCI-CONSIGNE` | Produit, creee le 2026-10-09 (avant le planning) ; **amendee cinq fois** : `A.1`, `A.2` (2026-10-09), `A.4` a `A.8`, `A.9` a `A.14` (2026-10-09), `A.15` a `A.20` (2026-10-11, cloture) ; **puis un sixieme amendement apres la cloture**, `A.21` a `A.25` (2026-10-11, reponses sur `Q4`, `Q3`, `Q6`), note ici le 2026-10-12 | **`Proposee`**, tenue : `Q4` (ordre des matieres) sans reponse a la cloture ; **repondue apres la cloture** (*"D2 ordre ok"*, mots relayes), `camille-po` ne passe pas le statut (`A.22`) ; les mots couvraient la composition, l'ecart et le proprietaire du paquet, pas l'ordre |
 | `ADR-0026` | Une animation retarde ce que l'enfant voit, elle ne determine rien | Technique, **amendee** le 2026-10-09 (`1de72f0f`) : la clause 3 exclut un sujet pseudo-element decoratif ; mot corrige par le relecteur (`C3`) | `Accepte` |
 | `ADR-0024` | Faire porter l'explication d'un item par le verdict de la manche jouee | Technique, **amendee** le 2026-10-09 (`6f8895a4`) : un paquet sans graphie porte `explication` sur tous ses items ou sur aucun | `Accepte` |
 | `ADR-0104` | Rapprocher deux oeuvres se sert par des propositions qui sont des reproductions | Technique, **amendee** le 2026-10-11 (`a44a9d5b`) : deux garde-fous de rendu ecartent les reponses en image (ratification de `0076cbff`), oracle independant du test de non-exclusion | `Accepte` |
@@ -103,7 +103,7 @@ Vingt-trois lignes au tableau de `review.md` section 12.
 |---|---|---|---|
 | 9 | **`ART-CP-10` REFUSE** : phrase de `M4` sous le pli, `RDO-CP-R1`, `RDO-CP-R2` ; reprise 0,5 | `camille-po`, `lea-dev`, `ines-design`, `theo-archi`, `nadia-prof` | la `DEC` d'ouverture de s57 |
 | 10 | **`Q-U3` : le jeu refuse est jouable au catalogue** (retrait D1 ou maintien D2) | utilisatrice | sa reponse ; sans elle l'entree reste |
-| 11, 12 | `DEC-0116` `Proposee` (`Q4`) ; `Q3`, `Q6` | utilisatrice | ses mots en forme 2 |
+| 11, 12 | `DEC-0116` `Proposee` (`Q4`) ; `Q3`, `Q6`. **Corrige le 2026-10-12 : repondues le 2026-10-11, apres la cloture** (`DEC-0116` A.21 a A.24). `Q6` close pour s57 | utilisatrice, `nadia-prof`, `theo-archi` | `Q4` : ses mots lus de sa main, ou l'ordre repris en forme 1 par la `DEC` d'ouverture de s57. `Q3` : accord de `nadia-prof` sur `PAR-2`, amendement d'`ADR-0065`, compte des instances de s57 |
 | 13, 14 | Cause du rouge de CI (A4) ; CI distante non lue (A3, second report) | `theo-archi`, utilisatrice | le journal du job rouge ; un push et un verdict nomme |
 | 15, 16 | `F1` a `F9` de `rapport-qualite.md` ; `lecture-testabilite.md` absente | `theo-archi`, `nadia-prof`, `ines-design`, `lea-dev`, `relecteur-pedagogique`, `camille-po`, `yanis-qa` | stories ou decisions de ne pas faire |
 | 17, 22 | `P1`, `P2`, `P4`, `P5` de la relecture ; forme 3 de `DEC-0114` ligne 31 | `camille-po`, `nadia-prof`, `ines-design`, `lea-dev`, utilisatrice | une ligne chacun ; la lecture de `DEC-0062` |
@@ -115,7 +115,7 @@ Vingt-trois lignes au tableau de `review.md` section 12.
 Reprises de `review.md` section 15 :
 
 - **U1, `Q-U3`** : retirer l'entree du paquet refuse (D1, recommandation de `camille-po`) ou la maintenir (D2, qui exige son arbitrage ecrit, un amendement de `DEC-0055`, un proprietaire nomme) ?
-- **U2, U3** : `Q4` (ordre des matieres), `Q3` (deux instances de francais CE1), `Q6` (mesure de pli de `LIS-2`).
+- **U2, U3** : `Q4` (ordre des matieres), `Q3` (deux instances de francais CE1), `Q6` (mesure de pli de `LIS-2`). **Repondues le 2026-10-11, apres la cloture** (*"D2 ordre ok"*, *"D3 deux instances de nadia"*, *"D4 non"*, relayes par l'agent lanceur, `DEC-0116` A.21). Questions residuelles : `DEC-0116` reste `Proposee` (confirmer `Q4` de sa main ?) ; combien d'instances compte s57 ? Corrige le 2026-10-12.
 - **U4** : pousser et lire la CI sur un commit nomme, job par job ; lire le journal du job `build` rouge d'avant `a3606b2f`.
 - **U5** : le depassement des garde-fous : quelle borne, de combien, l'ecrire dans `DEC-0116` ?
 - **U6** : les deux agents arretes et le watchdog sur `lea-dev` : motifs et durees, pour les ecrire.
