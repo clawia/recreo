@@ -45,6 +45,9 @@ class JarRecreoIT {
             HttpResponse<String> reponse = attendreEtInterroger(port, processus);
 
             assertThat(reponse.statusCode()).isEqualTo(200);
+            assertThat(reponse.body())
+                    .as("ADR-0105, amendement du 2026-10-12 : l'identifiant de session ne voyage que par son cookie, jamais dans une adresse")
+                    .doesNotContainIgnoringCase("jsessionid");
             Document page = Jsoup.parse(reponse.body());
             assertThat(page.select("a.chip-niveau"))
                     .as("Q-U1 : le jar empaquete sert l'accueil qui demande le niveau, pas une erreur ni une page vide")
