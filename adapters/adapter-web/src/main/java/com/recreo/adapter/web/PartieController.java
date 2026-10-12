@@ -192,6 +192,7 @@ public class PartieController {
     public String confirmerAbandon(HttpServletRequest requete, HttpServletResponse reponse, Model modele) {
         new EtatDePartieEnSession(requete).abandonner();
         effacerMarqueurDePartie(reponse);
+        reponse.setHeader(ENTETE_ADRESSE_AFFICHEE, ADRESSE_CATALOGUE_COMPLET);
         return "accueil :: zoneAccueil";
     }
 

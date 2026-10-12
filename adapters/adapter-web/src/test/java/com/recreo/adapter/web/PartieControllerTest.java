@@ -483,6 +483,18 @@ class PartieControllerTest {
         assertThat(confirmation.getResponse().getHeader("HX-Push-Url")).isNull();
     }
 
+    /** ADR-0048, amendement du 2026-10-12 : confirmer l'abandon rend le premier ecran, donc declare son adresse. */
+    @Test
+    void confirmerLAbandonDeclareLAdresseDuPremierEcran() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session));
+        mockMvc.perform(post("/retour").session(session));
+
+        MvcResult resultat = mockMvc.perform(post("/retour/confirmer").session(session)).andReturn();
+
+        assertThat(resultat.getResponse().getHeader("HX-Push-Url")).isEqualTo("/");
+    }
+
     /** Confirmer l'abandon depuis l'ecran de confirmation clot bien la partie. */
     @Test
     void confirmerLAbandonClotLaPartieEtRevientAuChoixDuNiveau() throws Exception {
