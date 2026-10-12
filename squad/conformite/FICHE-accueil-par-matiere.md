@@ -1,7 +1,7 @@
 # Fiche de conformite - accueil par matiere (V1 deux etages, V2 cartes groupees, bascule en session)
 
-- **Increment** : l'accueil `/niveaux/{niveau}` presente les jeux du niveau par matiere, en deux vues (V2 par
-  defaut, V1) entre lesquelles un bouton de l'accueil bascule. Stories `HS-ACCUEIL-LIBELLES`,
+- **Increment** : l'accueil `/niveaux/{niveau}` presente les jeux du niveau par matiere, en deux vues (V1 par defaut depuis le 2026-10-12, `DEC-0119` ;
+  V2 par defaut avant, V1) entre lesquelles un bouton de l'accueil bascule. Stories `HS-ACCUEIL-LIBELLES`,
   `HS-ACCUEIL-V2`, `HS-ACCUEIL-V1`, `HS-ACCUEIL-BASCULE`, `HS-ACCUEIL-COMPLETUDE`, `HS-ACCUEIL-MESURE`
   (`docs/backlog/backlog.md`, section "Chantier hors sprint : accueil par matiere").
 - **Mecanique** : aucune. Chantier hors sprint, ouvert par `DEC-0117` (statut `Proposee`, amendee le 2026-10-12 :
@@ -10,7 +10,7 @@
   (nombre au 2026-10-11, derive du catalogue), leurs pictogrammes, le libelle du bouton de bascule. Aucun n'est
   ecrit par `camille-po`.
 - **Statut global** : en construction
-- **Derniere mise a jour** : 2026-10-12 (criteres de `camille-po` seulement ; le bloc de validation n'est pas touche)
+- **Derniere mise a jour** : 2026-10-12 (criteres de `camille-po` seulement, vue par defaut V1 : `DEC-0119` ; le bloc de validation n'est pas touche)
 
 ## Competences visees
 
@@ -38,6 +38,15 @@ Ce sont les points ou le produit attend le jugement de `nadia-prof`. Je n'en jug
   `S15-5` (`Q-N1`) et a quoi ramene `Les jeux` depuis un jeu en V1 (`Q-N2`).
 - [ ] Les garde-fous de l'accueil existants restent verts : `TailleDesTextesEtBoutonsTest` (44 px, 1,25 rem),
   `BARRE-4`, `BARRE-5`, `BARRE-6`, `BARRE-8` de `FICHE-barre-entree-niveau.md`.
+
+- [ ] **Vue par defaut V1** (`DEC-0119`, 2026-10-12, mots de l'utilisatrice : *"par defaut apres avoir choisi sa classe
+  montre le choix de la matiere"*). Un enfant qui choisit sa classe voit d'abord une tuile par matiere, dont le nom est lu
+  en texte, sans carte de jeu (CP : 8 tuiles) ; le bouton dit **"Tout voir"** ; V2 s'ouvre par ce bouton et le bouton y dit
+  **"Par matière"**. `nadia-prof` dit si sa condition `N4` et sa lecture de `S15-5` tiennent avec V1 par defaut, si "8 me
+  suffit" tient pour V2 atteinte par un bouton, et ce que l'etage 1 a 390 px (4 tuiles sur 8, `rapport-qualite.md` E3) change
+  pour la page par defaut. Le critere "sans defiler" ci-dessus se lit : V1 etage 1 a l'ouverture (toutes les tuiles), 8 cartes pour V2 atteinte par la bascule. Criteres de mesure : `DEC-0119` section 4 (A a E).
+- [ ] **Condition de fusion** (`DEC-0117` section 11) : l'audit de `nadia-prof` precede la fusion de ce changement sur
+  `round-two`. Le Done ci-dessous a ete prononce sur V2 par defaut ; `camille-po` ne dit pas s'il couvre V1 par defaut.
 
 ---
 

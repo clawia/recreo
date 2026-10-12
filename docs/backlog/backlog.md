@@ -21492,6 +21492,46 @@ Annotation datee. Rien au-dessus n'est reecrit, sauf les trois criteres que le t
 
 **Ouvert, non tranche ici** : `APM-R1` (adresse `/` attendue apres `Les jeux` de la confirmation ; moyen a `theo-archi`) et E5 du rapport qualite (adresse et puce active apres `/retour/confirmer`) : pas encore ecrits en story ; `;jsessionid` dans les URL de la premiere reponse (E4, `theo-archi`) ; E2 (test Maven du catalogue reel, `yanis-qa` sur ordre de `sofia-sm`) ; a 390 px, V2 montre 3 cartes contre 4 pour la liste d'avant et l'etage 1 demande du defilement (E3, valeur que personne n'a fixee) ; clavier et bandeau colle (`nadia-prof`).
 
+### Changement de la vue par defaut : V1 au lieu de V2 (2026-10-12, `camille-po`, `DEC-0119`)
+
+Annotation datee. Rien au-dessus n'est reecrit. Mots de l'utilisatrice, recus directement dans la session du 2026-10-12 :
+*"par defaut apres avoir choisi sa classe montre le choix de la matiere"*. `DEC-0119` amende la decision 1 de `DEC-0117`
+section 2 : la vue par defaut est V1 (etage 1) ; V2 reste accessible par le bouton ; le choix reste en session. Competence
+programme visee : **transverse - pas de contenu pedagogique**. Aucune mecanique de jeu n'est touchee.
+
+**Ce que cette annotation dit des criteres deja ecrits plus haut** (le texte d'origine reste lisible) :
+- `HS-ACCUEIL-V2`, critere "Vue par defaut" (*"alors la page est en V2"*) : **remplace** par A1 de `DEC-0119` (V1 sans cookie).
+- `HS-ACCUEIL-V2`, critere "Defilement" (8 cartes, `DEC-0118`) : vaut pour V2 **atteinte par la bascule**, plancher deja vert.
+- `HS-ACCUEIL-BASCULE`, critere "Perdu avec elle" (*"alors V2"*) : **remplace** par D1 (V1). "Tenu en session" : la premiere
+  moitie se lit dans l'autre sens (une session qui a bascule en V2, puis `/niveaux/CE1`, rend V2 : D2) ; la seconde ("Retour
+  d'un jeu") est reprise par C1 et C2.
+- `HS-ACCUEIL-V1`, critere "Retour d'un jeu" : *"l'etage 1 de V1"* devient le resultat **sans aucun appui sur le bouton** (C1) ;
+  son *"Meme critere en V2 avec V2"* devient C2 (apres un appui sur "Tout voir").
+- Tous les autres criteres (completude, cibles, rien de persiste, bouton absent d'un jeu) : inchanges.
+
+#### HS-ACCUEIL-DEFAUT-V1 - apres ma classe, je choisis d'abord la matiere
+
+- **Besoin** : en tant qu'eleve de CP, je veux, quand j'ai choisi ma classe, voir d'abord les matieres, afin de choisir de quoi je veux jouer avant de voir les jeux.
+- **Mecanique demandee** : aucune.
+- **Competence programme visee** : transverse - pas de contenu pedagogique. Aucun texte nouveau pour l'enfant : les libelles "Tout voir" et "Par matière" sont ceux deja arbitres par `nadia-prof`.
+- **Criteres d'acceptation** : **A1 a A4, B1 a B4, C1 a C3, D1 a D4 et E de `DEC-0119` section 4, mot pour mot** (a 744 x 551, jar, trois niveaux, nombres derives du catalogue servi). Etat d'aujourd'hui, par critere, dans la `DEC` : **rouges** A1, B1, C1, D1 ; les autres sont des planchers deja verts et dits comme tels. Deux criteres de plus, propres a la story :
+  - Etant donne l'arbre apres la story, quand on cherche dans les tests un enonce qui pose V2 comme vue d'une session neuve (`AccueilParMatiereTest`, `VueDeLAccueilEnSessionTest` au 2026-10-12), alors 0 occurrence : ils posent V1 ou nomment la vue qu'ils attendent.
+  - Etant donne le code livre dont on remet la valeur par defaut a V2, quand on lance les tests, alors A1 ou D1 echoue (mutation ; le nombre de tests lances est superieur a zero).
+- **Ce qui n'est pas decide ici** : le mecanisme (`theo-archi`, `ADR-0105`), l'effet sur l'ADR (question de `DEC-0119` section 6).
+- **Porte** : tous les jobs de `.github/workflows/ci.yml`, nommes par qui annonce la porte ; **audit de `nadia-prof` avant fusion** (`DEC-0117` section 11).
+- **Lien** : `DEC-0119` ; `DEC-0117` ; `DEC-0028` ; `ADR-0105`. **Dev** : designe par `sofia-sm`.
+
+#### HS-ACCUEIL-MESURE-DEFAUT - la mesure lit la bonne vue
+
+- **Besoin** : en tant qu'eleve de CP, je veux que l'ecran de depart tienne sur mon ecran comme on l'a promis ; l'equipe doit pouvoir le re-mesurer sans demander quelle vue est la vue par defaut.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Constat** : `outils/mesurer-accueil.py` charge `/niveaux/<niveau>` en session neuve, nomme le resultat "vue par defaut" et le juge comme V2 (cartes, bandeaux). Apres `HS-ACCUEIL-DEFAUT-V1`, il y trouvera l'etage 1.
+- **Criteres d'acceptation** :
+  - Etant donne le code livre par `HS-ACCUEIL-DEFAUT-V1`, quand la commande est lancee avec `--seuil-v2 8` et `--seuil-etage2 6`, alors elle rend, par niveau : l'etage 1 de la page par defaut (une tuile par matiere, toutes visibles, 0 carte), V2 **atteinte par "Tout voir"** avec **au moins 8 cartes** entierement visibles (`DEC-0118`), l'etage 2 de chaque tuile avec `min(n, 6)` cartes visibles, et 146 jeux atteints dans chaque vue. **Aujourd'hui** : sur la base `c274a2db` (V2 par defaut), la page par defaut ne porte pas de tuile : la commande rend un ecart sur A1, elle mord.
+  - Etant donne la commande lancee sur un arbre dont la vue par defaut a ete remise a V2, alors elle rend un ecart (mutation).
+  - Etant donne son juge pur (`outils/mesurer-accueil-test.py`), alors il est eprouve par des entrees fabriquees pour la page par defaut en V1 et execute par le job de `.github/workflows/ci.yml` qui l'execute deja ; le prerequis nomme est un Chrome, jamais son emplacement (`ADR-0010`).
+- **Lien** : `DEC-0119` section 7 ; `DEC-0118` section 8 ; `DEC-0117` section 4. **Dev** : `yanis-qa`, apres `HS-ACCUEIL-DEFAUT-V1`.
+
 ## Report au prochain sprint ouvert : arbitrage prealable de l'accueil, compte de jeux
 
 Ouvert le 2026-10-12 par `camille-po`. Aucun numero de sprint n'est suppose : s57 n'est pas ouvert ; `sofia-sm` reprend cette entree au planning du prochain sprint ouvert.

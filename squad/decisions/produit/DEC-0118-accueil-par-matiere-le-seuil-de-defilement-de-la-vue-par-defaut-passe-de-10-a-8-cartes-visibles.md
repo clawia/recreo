@@ -62,6 +62,18 @@ Si une evolution du gabarit ou de la feuille le fait descendre, la commande rend
 - **Pas un motif de `REFUSE`** : `audit-nadia.md` P8 et son arbitrage prealable (N8) le disent ; cette decision
   ne le change pas.
 
+## 8. Annotation du 2026-10-12 (`camille-po`, `DEC-0119`)
+
+Rien au-dessus n'est reecrit. `DEC-0119` fait de V1 la vue par defaut ; ce que cela change ici :
+
+- **Inchange** : la valeur 8 cartes visibles a 744 x 551, la mesure 8 / 8 / 8, le motif de `nadia-prof` (P8), le statut de
+  plancher de non-regression deja vert, l'absence de seuil en code.
+- **Change** : le critere ne porte plus sur "la vue par defaut" (titre, section 1) mais sur **V2 atteinte par "Tout voir"**.
+  La commande `--seuil-v2 8` (section 4) doit charger V2 par la bascule : `HS-ACCUEIL-MESURE-DEFAUT`.
+- **Question a `nadia-prof`, non tranchee ici** : "8 me suffit" a ete dit pour le premier ecran vu par l'enfant
+  (`DEC-0119` section 6).
+- Statut `Acceptee` inchange. Aucun code a router par cette annotation.
+
 ## Impact
 
 - `squad/decisions/produit/DEC-0118-...md` (ce fichier) : cree ; `DEC-index.md` : ligne ajoutee.
