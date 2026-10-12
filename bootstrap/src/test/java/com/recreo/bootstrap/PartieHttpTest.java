@@ -35,7 +35,10 @@ class PartieHttpTest {
     /** Critere 1 : demarrer une partie sans compte ni information personnelle. */
     @Test
     void lAccueilPermetDeDemarrerUnePartieSansCompte() throws Exception {
-        String accueil = mockMvc.perform(get("/niveaux/{niveau}", "Test")).andReturn().getResponse().getContentAsString();
+        MockHttpSession sessionEnV2 = new MockHttpSession();
+        mockMvc.perform(post("/niveaux/{niveau}/vue/V2", "Test").session(sessionEnV2));
+        String accueil = mockMvc.perform(get("/niveaux/{niveau}", "Test").session(sessionEnV2))
+                .andReturn().getResponse().getContentAsString();
         Document page = Jsoup.parse(accueil);
         assertThat(page.select("button.demarrer")).isNotEmpty();
         assertThat(page.select("input[type=text], input[type=email], input[name=nom]")).isEmpty();
