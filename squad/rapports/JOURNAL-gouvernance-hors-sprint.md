@@ -107,3 +107,47 @@ perde pas avant que `camille-po` ne juge si trois cas suffisent a instruire un a
 **Ce qui reste ouvert.** Le retrait des trois entrees, s'il doit avoir lieu, n'est pas execute
 tant que les corrections en cours n'ont pas ete verifiees et fusionnees. Aucune entree de
 `catalogue.yaml` n'est modifiee par ce fait.
+
+## 2026-10-12 - Cloture du chantier hors sprint "accueil par matiere" (`camille-po`)
+
+**Le fait.** Le chantier ouvert par `DEC-0117` (2026-10-11) est fusionne sur `round-two` a `75290b26` : implementation
+de `lea-dev` (V2 par defaut, V1, bascule en session, *"Choisis ta classe."*), audit de `nadia-prof` (**VALIDE SOUS
+RESERVE**, `APM-12` avant fusion, `APM-R1` non bloquante), mesure de `yanis-qa`. Aucun `planning.md` n'a ete ouvert ;
+aucune entree de ce journal ne repondait a l'ouverture : `DEC-0117` section 8 chargeait `sofia-sm` de la verser, je
+n'en ai pas trouve (`grep DEC-0117` sur ce fichier : 0). Cette entree la remplace pour la cloture, pas pour l'ouverture.
+
+**Ce que je verse.**
+1. **`DEC-0118`** (`Acceptee`) : le seuil de defilement de la vue par defaut passe de 10 a 8 cartes visibles a 744 x
+   551, sur la mesure (8 / 8 / 8) et le motif de `nadia-prof` (*"8 me suffit pedagogiquement"*). Le critere est un
+   plancher deja vert, dit comme tel. Aucun code ne porte 10 : rien a router.
+2. **`DEC-0117` amendee** (section 9), statut `Proposee` tenu : `Q-U1` = `/` demande le niveau d'abord (option (c)),
+   `Q-U2` = l'audit precede la fusion. **Les mots de l'utilisatrice ne sont dans aucun fichier du depot** ; seuls
+   `rapport-lea-dev.md` s56 (section 16) et la javadoc de `PartieController.accueil` ecrivent qu'elle a decide. Fait
+   Git relu : verdict `99008d84` a 20:49, les trois fusions a 21:11.
+3. **Deux criteres de `HS-ACCUEIL-V1` et `HS-ACCUEIL-BASCULE` reecrits** (R7) : `Les jeux` mene au choix de la classe,
+   la classe choisie s'ouvre en V1. L'ancien enonce (*"revient en V1"*) ne se tenait pas sur le livre ; le nouveau est
+   tenu par un test existant, que j'ai lu et non relance. La version d'avant est reprise dans le backlog.
+4. **Un ecart de matiere trouve en lisant le depot** : le jeu `bandit-manchot-rapprocher-deux-oeuvres-cp` n'est plus au
+   catalogue depuis `13d00bfe` (2026-10-11 17:07, ancetre de `round-two`, 146 entrees, `grep` = 0), sur une decision
+   de l'utilisatrice que le rapport de `lea-dev` date du 2026-10-11 et nomme (D1). Mais la cellule `ART-CP-10` de la
+   matrice disait encore l'entree au present et (D) non tranchee, et `S56-RETRAIT-RAPPROCHER-OEUVRES` disait *"l'entree
+   reste au catalogue"*. Les deux sont corriges. **`DEC-0116` A.17 n'est pas amendee** : elle dit toujours (D) non
+   tranchee, et les mots de l'utilisatrice pour (D1) ne sont pas dans le depot. Le jeu refuse a l'audit de s56 n'est
+   donc pas servi (retrait de `DEC-0045` section 3, execute le jour de la cloture de s56).
+
+**Ce qui reste ouvert, par proprietaire, sans que je le tranche.**
+- `theo-archi` : adresse apres `Les jeux` de la confirmation (`APM-R1`, R6 de `lea-dev`, E5) ; `;jsessionid` dans les
+  URL de toute premiere reponse de session, anterieur au chantier (E4, R8 b) ; forme de reference du pictogramme
+  (R1 de `lea-dev`, troisieme forme admise a ratifier) ; ecart de `B5` et `B8` a la lettre du critere de
+  `S56-RETRAIT-RAPPROCHER-OEUVRES`.
+- `nadia-prof` : clavier et bandeau colle sous le focus (non verifie) ; `APM-12` rejoue sur l'arbre fusionne (non
+  retrouve) ; reconnaissance des pictogrammes ; que `DEC-0053` couvre ou non l'accueil (elle dit que le pli n'est pas un
+  motif de `REFUSE`).
+- `yanis-qa`, par `sofia-sm` : E2, aucun test Maven ne joue le catalogue reel dans les deux vues.
+- `camille-po` : `APM-R1` et E5 ne sont pas encore des stories ; a 390 px (E3) aucune valeur n'est fixee ; amender
+  `DEC-0116` pour la reponse (D1) quand ses mots sont connus.
+- `sofia-sm` : l'entree d'ouverture de ce journal ; la capacite de `nadia-prof` consommee (1,0, annonce dans son audit)
+  a consigner au planning de s57 quand il s'ouvrira.
+
+**Ce que cette entree ne fait pas.** Elle ne declare aucune story `Done`, ne touche ni catalogue, ni paquet, ni code,
+ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas statut ni compte), et n'ouvre pas s57.

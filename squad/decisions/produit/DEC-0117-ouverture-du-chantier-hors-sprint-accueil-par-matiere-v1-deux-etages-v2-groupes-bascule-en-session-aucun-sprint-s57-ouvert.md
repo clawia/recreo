@@ -8,9 +8,10 @@
   (section 3).
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
   `MATRICE-couverture.md` ne change de statut. Les matieres citees sont donnees pour information.
-- **Statut** : **Proposee**. Deux questions de l'utilisatrice sont sans reponse (`Q-U1`, `Q-U2`, section 5) ; je
-  ne les tranche pas a sa place. Ce qui est decide par les mots de l'utilisatrice (section 2) n'est pas
-  suspendu par ce statut : c'est l'ordre d'execution et le critere de fusion qui le sont.
+- **Statut** : **Proposee**, amendee le 2026-10-12 (section 9). `Q-U1` et `Q-U2` sont repondues, et le chantier est
+  fusionne sur `round-two` (`75290b26`). **Les mots de l'utilisatrice ne sont pas dans le depot** : seuls des
+  agents ecrivent qu'elle a decide (section 9). Le statut passe a `Acceptee` sur ses mots, ou sur sa
+  confirmation ecrite ; je ne le passe pas sur la foi d'un rapport d'agent (precedent : `DEC-0116` A.22).
 - **Lien** : `DEC-0112` (precedent d'une session hors sprint) ; `DEC-0028` (rien de persiste) ; `DEC-0032`
   section 3 (intention : boutons de matiere derives du catalogue) ; `DEC-0002` (pictogrammes) ;
   `DEC-0053` (le pli) ; `ADR-0006`, `ADR-0044`, `ADR-0049`, `ADR-0095` ;
@@ -216,6 +217,39 @@ cite donc aucun chiffre pour elle) ; les largeurs autres que 744 ; le temps de r
 - **`nadia-prof`** : libelles et pictogrammes (arbitrage 4), `Q-N1`, `Q-N2`, puis l'audit.
 - **`yanis-qa`** : la commande de mesure de la section 4, commitee (`HS-ACCUEIL-MESURE`).
 - **`lea-dev`** : rien avant l'arbitrage de `nadia-prof` et l'avis de `theo-archi`.
+
+## 9. Amendement du 2026-10-12 (cloture du chantier, `camille-po`) : `Q-U1` et `Q-U2` sont repondues
+
+Rien au-dessus n'est reecrit. Pour les deux questions, **les mots de l'utilisatrice : reponse non retrouvee dans
+le depot** (aucun fichier ne les cite). Ce qui est ecrit, et par qui :
+
+- **`Q-U1` : l'option (c), `/` demande le niveau d'abord.** Sources : la javadoc de `PartieController.accueil`
+  (*"decision de l'utilisatrice (Q-U1) : `/` demande d'abord le niveau"*) ; `rapport-lea-dev.md` de s56, section 16
+  (*"Decisions de l'utilisatrice appliquees : [...] `/` demande d'abord le niveau (`Q-U1`)"*, R2) ;
+  `audit-nadia.md` P5 et P7 ; `rapport-qualite.md` section 3, etape 1 (`/` rend *"Choisis ton niveau."* sur le
+  jar mesure, avant `APM-12`). **Effet** : la restriction de la section 5 (*"les stories ne couvrent que
+  `/niveaux/{niveau}`, `/` n'est pas modifie"*) est levee ; `/`, `POST /retour` et `POST /retour/confirmer`
+  rendent le choix de la classe, sans aucune liste de jeux. Le niveau choisi s'ouvre dans la vue retenue en
+  session.
+- **`Q-U2` : l'audit precede la fusion.** Source : `rapport-lea-dev.md`, section 16 (*"l'accueil ne va pas dans
+  `round-two` avant l'audit de `nadia-prof` (`Q-U2`)"*). Fait de l'historique Git, relu ici : le verdict de
+  `nadia-prof` (`99008d84`, 2026-10-11 20:49) precede les trois fusions de la branche d'implementation, de son
+  audit et de la mesure (`62b4aa75`, `99a896c8`, `75290b26`, 21:11). C'est ma recommandation de la section 5,
+  suivie ; le critere de fusion de la section 6, point 2, est tenu.
+- **Ce que je ne peux pas dire** : l'exigence `APM-12` (*"Choisis ta classe."*) est posee par `3187d7f2`
+  (21:08), **apres** l'audit. `FICHE-accueil-par-matiere.md` ecrit que le Done vaut pour `def23ead` *augmente
+  d'`APM-12`*. Que `nadia-prof` ait rejoue `APM-12` sur l'arbre fusionne : non retrouve dans le depot. Le texte
+  est present dans `accueil.html` et dans l'inventaire de `TexteAccentueDesGabaritsTest` (lu, non lance par moi).
+  A `nadia-prof` de dire si cela suffit a sa condition ; je ne le juge pas.
+
+**Les arbitrages de la section 2** (V2 par defaut, bouton de bascule, vue en session, libelles avant le code,
+squad complete) sont livres et joues ; ils restent des arbitrages rapportes, non cites.
+
+**Ce que le chantier laisse ouvert, par proprietaire** (rien n'est tranche ici ; detail dans le journal du
+2026-10-12) : `theo-archi` (adresse apres `/retour/confirmer`, `;jsessionid` dans les URL, forme de reference du
+pictogramme) ; `nadia-prof` (clavier et bandeau colle, reconnaissance des pictogrammes, `APM-12` rejoue) ;
+`yanis-qa` (E2 : aucun test Maven ne joue le catalogue reel dans les deux vues) ; `camille-po` (`APM-R1`,
+reserve de `nadia-prof`, et E5 : pas encore ecrits en story, voir le journal). Seuil de defilement : `DEC-0118`.
 
 ## Impact
 
