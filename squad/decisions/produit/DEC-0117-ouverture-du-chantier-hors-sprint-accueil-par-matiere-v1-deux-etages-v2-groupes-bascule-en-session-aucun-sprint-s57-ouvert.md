@@ -8,9 +8,9 @@
   (section 3).
 - **Competence programme visee** : transverse - pas de contenu pedagogique. Aucune ligne de
   `MATRICE-couverture.md` ne change de statut. Les matieres citees sont donnees pour information.
-- **Statut** : **Proposee**, amendee le 2026-10-12 (sections 9 et 10). Les mots de l'utilisatrice pour `Q-U1` et `Q-U2` sont
-  consignes (section 10) ; le chantier est fusionne sur `round-two` (`75290b26`). Reste ouverte une question
-  residuelle pour elle, `Q-U4` (section 10) : le statut ne passe pas a `Acceptee` tant qu'elle n'a pas repondu.
+- **Statut** : **Acceptee** le 2026-10-12, amendee (sections 9, 10 et 11). Les mots de l'utilisatrice pour `Q-U1` et `Q-U2` sont
+  consignes (section 10), `Q-U2` corrigee par elle le meme jour (section 11) : audit **avant** fusion. `Q-U4` est sans objet
+  (section 11). Le chantier est fusionne sur `round-two` (`75290b26`). Aucune question de l'utilisatrice ne reste ouverte.
 - **Lien** : `DEC-0112` (precedent d'une session hors sprint) ; `DEC-0028` (rien de persiste) ; `DEC-0032`
   section 3 (intention : boutons de matiere derives du catalogue) ; `DEC-0002` (pictogrammes) ;
   `DEC-0053` (le pli) ; `ADR-0006`, `ADR-0044`, `ADR-0049`, `ADR-0095` ;
@@ -260,7 +260,8 @@ Mots recus directement dans la session du 2026-10-12, cites tels quels :
 
 - **`Q-U1`** : *"ok pour c"*. Option (c) : `/` demande le niveau d'abord. Confirme la section 9 ; la source n'est plus
   seulement un rapport d'agent.
-- **`Q-U2`** : *"non audit apres fusion"*. **Ce n'est pas ma recommandation** (section 5 : audit avant fusion), et **ce n'est pas ce
+- **`Q-U2`** : *"non audit apres fusion"*. **Remplacee le meme jour par la section 11 : la regle est audit avant fusion.** Le
+  texte qui suit est conserve tel qu'ecrit avant la correction. **Ce n'est pas ma recommandation** (section 5 : audit avant fusion), et **ce n'est pas ce
   qui s'est passe pour ce chantier**. Les deux faits, cote a cote, sans que je les concilie a sa place :
   1. Sa reponse regit les chantiers hors sprint.
   2. Pour ce chantier, l'audit a precede la fusion (verdict `99008d84` a 20:49, fusions `62b4aa75`, `99a896c8`, `75290b26` a
@@ -271,7 +272,7 @@ Mots recus directement dans la session du 2026-10-12, cites tels quels :
 
 ### 10.2 Question residuelle
 
-- **`Q-U4` (utilisatrice) - Quel mecanisme s'applique a un `REFUSE` prononce apres la fusion d'un chantier hors sprint ?** Je ne
+- **`Q-U4` (utilisatrice, sans objet depuis la section 11) - Quel mecanisme s'applique a un `REFUSE` prononce apres la fusion d'un chantier hors sprint ?** Je ne
   le decide pas. Ce que le depot donne : `DEC-0045` section 3 et `DEC-0055` regissent le retrait d'une entree de catalogue, avec
   48 heures au plus hors sprint ; une vue d'accueil n'est pas une entree de catalogue, rien ne s'y retire (section 5, `Q-U2`).
   Aucun code ni story ne depend de la reponse pour ce chantier.
@@ -285,8 +286,30 @@ c'est 146 qu'il faut lire pour le catalogue actuel.
 
 ### 10.4 Statut, routage, limites
 
-- Statut `Proposee`, motif : `Q-U4`. Aucun changement de code : rien a router a `sofia-sm` pour cette annotation.
+- Statut `Proposee` au moment de cette section, motif : `Q-U4`, levee par la section 11. Aucun changement de code : rien a router a `sofia-sm` pour cette annotation.
 - Ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni matrice, ni code.
+
+## 11. Amendement du 2026-10-12 (correction de `Q-U2` par l'utilisatrice, `camille-po`)
+
+Rien au-dessus n'est reecrit ; la section 10.1 est annotee, pas supprimee.
+
+Mots recus directement dans la session du 2026-10-12, cites tels quels (forme 2 de `DEC-0116` A.2), a propos de `Q-U4` :
+*"non nadia passe avant la fusion comme ca on peut re corrgier si besoin"*.
+
+1. **Regle, pour tout chantier hors sprint : l'audit de `nadia-prof` precede la fusion sur `round-two`.** Elle corrige sa reponse
+   precedente a `Q-U2` (*"non audit apres fusion"*, section 10.1, conservee). Le critere de fusion de la section 6, point 2 (rien
+   n'est fusionne sans l'audit) est **maintenu** et vaut pour les chantiers suivants, contrairement a ce que ecrivait la section 10.1.
+2. **`Q-U4` est sans objet** : sans fusion avant verdict, un `REFUSE` ne laisse rien en service, donc rien a retirer apres. Le vide
+   de `DEC-0045` section 3 et `DEC-0055` (une vue n'est pas une entree de catalogue) n'a plus a etre comble pour ce cas. Un `REFUSE`
+   se corrige avant fusion, par une story corrective.
+3. **Pour ce chantier**, rien ne change : l'audit avait precede la fusion (section 10.1).
+4. **Routage.** La regle est une regle de process, pas un changement de code. `squad/README.md` est tenu par `sofia-sm` : je lui
+   demande, par le journal, de l'y ecrire (sections 4 et 9, ou le precedent hors sprint n'a pas de regle). Tant que ce n'est pas
+   fait, cette section est la seule source.
+5. **Relecture complete** : aucune question adressee a l'utilisatrice ne reste ouverte (`Q-U1` repondue, `Q-U2` corrigee, `Q-U4`
+   sans objet). `Q-T1` a `Q-T3`, `Q-N1` et `Q-N2` sont adressees a `theo-archi` et `nadia-prof`, pas a elle ; elles ne bloquent pas
+   le statut de cette decision, et leur suivi est dans le journal du 2026-10-12.
+6. **Statut : `Acceptee`.** Ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni matrice, ni code.
 
 ## Impact
 

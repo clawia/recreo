@@ -21491,3 +21491,18 @@ Annotation datee. Rien au-dessus n'est reecrit, sauf les trois criteres que le t
 **Version d'avant des deux criteres reecrits** (`HS-ACCUEIL-V1`, "Retour d'un jeu") : *"Etant donne une partie lancee depuis V1, quand l'enfant appuie sur `Les jeux`, alors il revient a l'accueil **en V1**. L'etage de retour (`Q-N2`) est ecrit par `nadia-prof` ; le critere de l'etage s'ajoute a sa reponse, sans que je le devine."* (`HS-ACCUEIL-BASCULE`, "Tenu en session", seconde moitie) : *"quand elle appuie sur `Les jeux` depuis un jeu, alors elle revient en V1."* Reponse de `nadia-prof` a `Q-N2` : *"Les jeux ramene au choix du niveau, et le niveau choisi s'ouvre dans la vue retenue"* (`rapport-lea-dev.md` s56, 16.2 R2, qui cite sa reponse ; "niveau" est devenu "classe" par `APM-12`).
 
 **Ouvert, non tranche ici** : `APM-R1` (adresse `/` attendue apres `Les jeux` de la confirmation ; moyen a `theo-archi`) et E5 du rapport qualite (adresse et puce active apres `/retour/confirmer`) : pas encore ecrits en story ; `;jsessionid` dans les URL de la premiere reponse (E4, `theo-archi`) ; E2 (test Maven du catalogue reel, `yanis-qa` sur ordre de `sofia-sm`) ; a 390 px, V2 montre 3 cartes contre 4 pour la liste d'avant et l'etage 1 demande du defilement (E3, valeur que personne n'a fixee) ; clavier et bandeau colle (`nadia-prof`).
+
+## Report au prochain sprint ouvert : arbitrage prealable de l'accueil, compte de jeux
+
+Ouvert le 2026-10-12 par `camille-po`. Aucun numero de sprint n'est suppose : s57 n'est pas ouvert ; `sofia-sm` reprend cette entree au planning du prochain sprint ouvert.
+
+### Story RP-ACCUEIL-147 - Corriger le compte de jeux dans l'arbitrage prealable de l'accueil
+
+- **Adressee a** : `nadia-prof` (le fichier est le sien, `camille-po` n'y touche pas).
+- **Besoin** : en tant qu'enseignante qui relit son arbitrage, je veux que le compte de jeux ecrit soit celui du catalogue servi, afin de ne pas citer un chiffre que plus aucun ecran ne porte.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Constat** : `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` ecrit 147 jeux aux lignes 41 et 236. Le catalogue en compte 146 depuis le retrait `13d00bfe` (`catalogue.yaml`, 146 entrees le 2026-10-12). La ligne 398 ecrit deja "146 jeux servis, 147 attendus".
+- **Criteres d'acceptation** :
+  - Etant donne le fichier apres correction, quand on y cherche `147`, alors chaque occurrence des lignes 41 et 236 est remplacee par 146 ou annotee de sa cause (retrait `13d00bfe`) ; la ligne 398 reste lisible comme ecart constate.
+  - Etant donne les lignes 41 et 236, quand `nadia-prof` choisit entre corriger et annoter, alors elle l'ecrit dans le fichier ; ce choix est le sien.
+- **Lien** : `DEC-0117` section 10.3 ; `squad/rapports/JOURNAL-gouvernance-hors-sprint.md`, entree du 2026-10-12.

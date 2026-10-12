@@ -169,3 +169,14 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 5. **Statut de `DEC-0117` : `Proposee`, tenu**, a cause de `Q-U4` seule.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done. Les points ouverts du 2026-10-12 (entree precedente) sont inchanges.
+
+## 2026-10-12 - Audit avant fusion pour les chantiers hors sprint ; note a reprendre au planning (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, recus directement dans la session du 2026-10-12 : *"non nadia passe avant la fusion comme ca on peut re corrgier si besoin"*. Ils corrigent sa reponse a `Q-U2` (*"non audit apres fusion"*).
+
+**Ce que je verse.**
+1. **`DEC-0117` section 11** : regle, audit de `nadia-prof` avant fusion pour tout chantier hors sprint ; critere de fusion de la section 6 point 2 maintenu ; section 10.1 annotee comme remplacee, citation conservee. `Q-U4` sans objet. Statut `Acceptee` (aucune question a l'utilisatrice ne reste ouverte ; `Q-T1` a `Q-T3`, `Q-N1`, `Q-N2` sont adressees aux agents). `DEC-index.md` a jour.
+2. **A `sofia-sm`** : ecrire la regle dans `squad/README.md` (sections 4 et 9), qu'elle tient. Tant que ce n'est pas fait, `DEC-0117` section 11 est la seule source.
+3. **A reprendre par le planning du prochain sprint ouvert** (s57 n'est pas ouvert, aucun numero n'est suppose) : story `RP-ACCUEIL-147` de `docs/backlog/backlog.md`, adressee a `nadia-prof`. Les deux occurrences de 147 dans `ARBITRAGE-PREALABLE-accueil-par-matiere.md` (lignes 41 et 236) sont a corriger ou annoter ; cause : retrait `13d00bfe`, catalogue a 146. Demande de l'utilisatrice : *"ajoute le au repo et ping nadia dessus sur le sprint prochain"*. Je ne modifie pas ce fichier.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done.
