@@ -267,7 +267,13 @@ class ToutEcranEchangeEstUnDocumentJouableTest {
                 assembler(corps(post("/parties/{jeuId}/designations", JEU_DESIGNATION_ID)
                         .session(partieDeDesignation).param("zoneDesignee", "fenetre")))));
 
+        // La vue par defaut est l'etage 1 (decision du 2026-10-12) : la liste des jeux d'un niveau se juge en V2,
+        // choisie par la bascule.
+        MockHttpSession sessionEnV2 = new MockHttpSession();
+        corps(post("/niveaux/{niveau}/vue/{vue}", NIVEAU, "V2").session(sessionEnV2));
         ecrans.add(new Ecran("liste filtree par niveau, aucune partie en cours", "GET /niveaux/{niveau}",
+                Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU).session(sessionEnV2)))));
+        ecrans.add(new Ecran("etage 1 par defaut, session sans choix de vue", "GET /niveaux/{niveau}",
                 Jsoup.parse(corps(get("/niveaux/{niveau}", NIVEAU)))));
 
         MockHttpSession partieQuiChangeDeNiveau = new MockHttpSession();

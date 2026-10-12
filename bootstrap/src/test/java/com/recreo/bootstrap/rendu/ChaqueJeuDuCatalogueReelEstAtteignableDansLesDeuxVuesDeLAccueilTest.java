@@ -61,8 +61,11 @@ class ChaqueJeuDuCatalogueReelEstAtteignableDansLesDeuxVuesDeLAccueilTest {
     @Autowired
     private MockMvc mockMvc;
 
+    /** V2 n'est plus la vue par defaut (decision du 2026-10-12) : la session la choisit par la bascule. */
     private Document v2(String niveau) throws Exception {
-        return Jsoup.parse(mockMvc.perform(get("/niveaux/{niveau}", niveau))
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/niveaux/{niveau}/vue/V2", niveau).session(session));
+        return Jsoup.parse(mockMvc.perform(get("/niveaux/{niveau}", niveau).session(session))
                 .andReturn().getResponse().getContentAsString());
     }
 

@@ -59,8 +59,20 @@ class JarRecreoIT {
                             .timeout(Duration.ofSeconds(5)).build(),
                     HttpResponse.BodyHandlers.ofString());
             assertThat(niveau.statusCode()).isEqualTo(200);
-            assertThat(Jsoup.parse(niveau.body()).select("button.demarrer"))
-                    .as("le jar empaquete sert une page jouable pour un niveau, pas une erreur ni une page vide")
+            Document etage1 = Jsoup.parse(niveau.body());
+            assertThat(etage1.select("a.tuile"))
+                    .as("le jar empaquete sert l'etage 1 par defaut (decision du 2026-10-12) : les tuiles de matiere")
+                    .isNotEmpty();
+            assertThat(etage1.select("button.demarrer")).as("aucun jeu avant le choix de la matiere").isEmpty();
+
+            HttpResponse<String> etage2 = HttpClient.newHttpClient().send(
+                    HttpRequest.newBuilder(URI.create("http://localhost:" + port
+                            + etage1.select("a.tuile").first().attr("href")))
+                            .timeout(Duration.ofSeconds(5)).build(),
+                    HttpResponse.BodyHandlers.ofString());
+            assertThat(etage2.statusCode()).isEqualTo(200);
+            assertThat(Jsoup.parse(etage2.body()).select("button.demarrer"))
+                    .as("le jar empaquete sert une page jouable pour une matiere, pas une erreur ni une page vide")
                     .isNotEmpty();
         } finally {
             arreter(processus);

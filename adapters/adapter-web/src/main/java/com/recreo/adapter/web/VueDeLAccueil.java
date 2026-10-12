@@ -8,7 +8,7 @@ import java.util.Optional;
  * Une presentation de l'adaptateur, pas une donnee de contenu : l'enumeration vit ici, et ADR-0006 ne
  * s'y applique pas.
  *
- * <p>La vue par defaut est {@link #V2} (decision de l'utilisatrice). Le choix vit dans la session HTTP,
+ * <p>La vue par defaut est {@link #V1} (decision de l'utilisatrice du 2026-10-12). Le choix vit dans la session HTTP,
  * par le seul porteur ({@link EtatDePartieEnSession}), et disparait avec elle (DEC-0028).</p>
  */
 enum VueDeLAccueil {
@@ -16,7 +16,7 @@ enum VueDeLAccueil {
     V2;
 
     /** La vue d'une session qui n'en a pas choisi. */
-    static final VueDeLAccueil PAR_DEFAUT = V2;
+    static final VueDeLAccueil PAR_DEFAUT = V1;
 
     /**
      * La vue qu'une route porte dans son adresse ({@code POST /vue/{vue}}) : la valeur visee, jamais "l'autre

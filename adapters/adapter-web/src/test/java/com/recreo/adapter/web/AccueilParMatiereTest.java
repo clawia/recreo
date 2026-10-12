@@ -84,6 +84,13 @@ class AccueilParMatiereTest {
                 .andReturn().getResponse();
     }
 
+    /** La page du niveau en V2 : la vue ne se choisit que par la bascule, la session la retient. */
+    private Document pageEnV2() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        basculer(session, NIVEAU, "V2");
+        return page(session, "/niveaux/{niveau}", NIVEAU);
+    }
+
     private static Document fragment(MockHttpServletResponse reponse) throws Exception {
         return Jsoup.parse(reponse.getContentAsString());
     }
@@ -126,22 +133,27 @@ class AccueilParMatiereTest {
     }
 
     // ------------------------------------------------------------------------------------------
-    // V2, la vue par defaut : un bandeau par matiere, ses jeux dessous
+    // La vue par defaut (decision de l'utilisatrice du 2026-10-12) : V1, l'etage 1, une tuile par matiere
     // ------------------------------------------------------------------------------------------
 
     @Test
-    void sansChoixLaVueEstV2UnBandeauParMatiereDansL_ordreDesLignesDeDonnee() throws Exception {
+    void sansChoixLaVueEstV1UneTuileParMatiereDansL_ordreDesLignesDeDonnee() throws Exception {
         Document niveau = page("/niveaux/{niveau}", NIVEAU);
 
-        List<String> libelles = niveau.select(".entete-matiere span").eachText();
-        assertThat(libelles).as("APM-4 : l'ordre des lignes de donnee, pas celui du catalogue")
+        assertThat(niveau.select(".tuile span").eachText()).as("APM-4 : l'ordre des lignes de donnee")
                 .containsExactly("Français", "Maths");
-        assertThat(niveau.select(".tuile")).as("pas d'etage 1 : la vue par defaut est V2").isEmpty();
+        assertThat(niveau.select(".entete-matiere, button.demarrer"))
+                .as("pas de V2 : la vue par defaut est V1, aucun jeu avant le choix de la matiere").isEmpty();
+        assertThat(niveau.selectFirst(".bascule span").text()).isEqualTo("Tout voir");
     }
+
+    // ------------------------------------------------------------------------------------------
+    // V2, la vue qu'on choisit par la bascule : un bandeau par matiere, ses jeux dessous
+    // ------------------------------------------------------------------------------------------
 
     @Test
     void chaqueJeuDuNiveauParaitUneFoisDansLeGroupeDeSaMatiereEtAucunJeuD_unAutreNiveau() throws Exception {
-        Document niveau = page("/niveaux/{niveau}", NIVEAU);
+        Document niveau = pageEnV2();
 
         List<String> attendus = partie.jeuxDuNiveau(NIVEAU).stream().map(GameDefinition::titre).toList();
         assertThat(titresDesCartes(niveau)).containsExactlyInAnyOrderElementsOf(attendus);
@@ -160,14 +172,15 @@ class AccueilParMatiereTest {
 
     @Test
     void lOrdreDesGroupesEstStableD_unChargementAL_autre() throws Exception {
-        assertThat(page("/niveaux/{niveau}", NIVEAU).select(".entete-matiere span").eachText())
-                .isEqualTo(page("/niveaux/{niveau}", NIVEAU).select(".entete-matiere span").eachText());
+        assertThat(pageEnV2().select(".entete-matiere span").eachText()).containsExactly("Français", "Maths")
+                .isEqualTo(pageEnV2().select(".entete-matiere span").eachText());
     }
 
     /** APM-3 : le pictogramme n'est jamais seul et ne parle pas ; le mot est un noeud de texte du bandeau. */
     @Test
     void chaqueBandeauPorteSonMotEnTexteEtSonPictogrammeSansTexteAlternatif() throws Exception {
-        Document niveau = page("/niveaux/{niveau}", NIVEAU);
+        Document niveau = pageEnV2();
+        assertThat(niveau.select(".entete-matiere")).hasSize(2);
 
         for (Element bandeau : niveau.select(".entete-matiere")) {
             assertThat(bandeau.select("span").text()).isNotBlank();
@@ -185,7 +198,7 @@ class AccueilParMatiereTest {
 
     @Test
     void unSeulBoutonDeVueDansLaZoneDeLAccueilJamaisDansL_enTeteEtSonLibelleDitOuIlMene() throws Exception {
-        Document v2 = page("/niveaux/{niveau}", NIVEAU);
+        Document v2 = pageEnV2();
         assertThat(v2.select("#jeu .bascule")).hasSize(1);
         assertThat(v2.select("header .bascule")).as("APM-7 : jamais dans l'en-tete").isEmpty();
         assertThat(v2.selectFirst(".bascule span").text()).isEqualTo("Par matière");
@@ -207,7 +220,7 @@ class AccueilParMatiereTest {
 
     @Test
     void leBoutonDeVueNePorteAucuneMarqueDEtatNiLeMotLesJeux() throws Exception {
-        for (Document document : List.of(page("/niveaux/{niveau}", NIVEAU),
+        for (Document document : List.of(page("/niveaux/{niveau}", NIVEAU), pageEnV2(),
                 fragment(basculer(new MockHttpSession(), NIVEAU, "V1")),
                 page("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT_A_UN_SEUL_JEU))) {
             Element bouton = document.selectFirst(".bascule");
@@ -219,7 +232,7 @@ class AccueilParMatiereTest {
 
     @Test
     void auPlusUnLesJeuxVisibleSurChaqueEcranNeufDeLAccueil() throws Exception {
-        for (Document document : List.of(page("/niveaux/{niveau}", NIVEAU),
+        for (Document document : List.of(page("/niveaux/{niveau}", NIVEAU), pageEnV2(),
                 fragment(basculer(new MockHttpSession(), NIVEAU, "V1")),
                 page("/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT_DE_TROIS_JEUX))) {
             long occurrences = document.getAllElements().stream()
@@ -352,6 +365,7 @@ class AccueilParMatiereTest {
     @Test
     void lEtageDeuxRendTousLesJeuxDeLaMatiereEtRienQueSesJeuxQuelleQueSoitLaVueDeLaSession() throws Exception {
         MockHttpSession session = new MockHttpSession();
+        basculer(session, NIVEAU, "V2");
         assertThat(vue(session)).isEqualTo(VueDeLAccueil.V2);
 
         Document etage2 = page(session, "/niveaux/{niveau}/matieres/{segment}", NIVEAU, SEGMENT_DE_TROIS_JEUX);
