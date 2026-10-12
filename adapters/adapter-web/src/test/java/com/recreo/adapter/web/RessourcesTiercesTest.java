@@ -162,9 +162,9 @@ class RessourcesTiercesTest {
 
     /**
      * Hors sprint accueil par matiere, ADR-0106 decision 4 : <b>troisieme exemption etroite, proposee par
-     * lea-dev et a ratifier par theo-archi</b> (aucun ADR ne l'ecrit : ADR-0106 decide que le pictogramme est
+     * lea-dev et ratifiee par ADR-0106, amendement du 2026-10-12</b> (ADR-0106 decide que le pictogramme est
      * un fichier rendu en {@code <img alt="">} a cote de son libelle, dont le nom vient de la donnee de
-     * matiere, et n'a pas vu que ce garde-fou refuse toute reference de gabarit calculee). Meme forme que
+     * matiere, et n'avait pas vu que ce garde-fou refuse toute reference de gabarit calculee). Meme forme que
      * les deux precedentes, au terme pres : prefixe litteral exactement egal au repertoire des
      * pictogrammes, un unique terme calcule - une variable simple, sans appel ni operateur -, et <b>pas
      * d'extension litterale</b> : le nom de la donnee porte la sienne ({@code francais.svg}), et la preuve
@@ -741,8 +741,8 @@ class RessourcesTiercesTest {
      * de S55-ART-CP-10-MECANIQUE ; la morsure d'etroitesse ci-dessous reste rouge sur deux termes
      * calcules.
      *
-     * <p><b>Porte de 4 a 7 (hors sprint accueil par matiere, ADR-0106 decision 4, lea-dev, a ratifier par
-     * theo-archi) : le pictogramme de matiere.</b> {@code accueil.html} rend le pictogramme d'une matiere en
+     * <p><b>Porte de 4 a 7 (hors sprint accueil par matiere, ADR-0106 decision 4, lea-dev, ratifie par
+     * ADR-0106, amendement du 2026-10-12) : le pictogramme de matiere.</b> {@code accueil.html} rend le pictogramme d'une matiere en
      * trois endroits - le bandeau de V2, la tuile de l'etage 1, le bandeau de l'etage 2 - par la forme
      * {@code '/images/matieres/' + ${pictogramme}} : trois references de la meme troisieme exemption,
      * etroite au terme pres comme les deux autres.
@@ -760,7 +760,7 @@ class RessourcesTiercesTest {
         }
 
         assertThat(admises)
-                .as("ADR-0051, ADR-0073 clause 3 et ADR-0082 decision 2 : ces exemptions ne prouvent "
+                .as("ADR-0051, ADR-0073 clause 3, ADR-0082 decision 2 et ADR-0106 decision 4 : ces exemptions ne prouvent "
                         + "rien tant qu'aucune reference de production ne les empruntent, et elles "
                         + "cessent d'etre etroites des qu'une reference de plus les emprunte sans "
                         + "qu'on l'ait decide")
