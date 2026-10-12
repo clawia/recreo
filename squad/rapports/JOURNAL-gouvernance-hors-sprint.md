@@ -180,3 +180,14 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 3. **A reprendre par le planning du prochain sprint ouvert** (s57 n'est pas ouvert, aucun numero n'est suppose) : story `RP-ACCUEIL-147` de `docs/backlog/backlog.md`, adressee a `nadia-prof`. Les deux occurrences de 147 dans `ARBITRAGE-PREALABLE-accueil-par-matiere.md` (lignes 41 et 236) sont a corriger ou annoter ; cause : retrait `13d00bfe`, catalogue a 146. Demande de l'utilisatrice : *"ajoute le au repo et ping nadia dessus sur le sprint prochain"*. Je ne modifie pas ce fichier.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done.
+
+## 2026-10-12 - Accord de l'utilisatrice sur D7, D8, D9 : consigne, contenu non retrouve (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, recus directement dans la session du 2026-10-12 (attestes par l'agent lanceur, forme 2 de `DEC-0116` A.2) : *"ce qui est propose pour D7 a D11 est ok"*. `D10` et `D11` sont traites par `sofia-sm`. Les codes `D7` a `D9` ne sont dans aucun fichier du depot pour ces points ; le rattachement (`U5`, `U6`, `U7` de `RAPPORT.md` de s56, et `A9`, `A10` de la retro) est celui de l'agent lanceur.
+
+**Ce que je verse.** `DEC-0116` amendee (A.27 a A.31), `DEC-index.md` a jour. Pour chaque point, seulement ce que `review.md`, `retro.md`, `RAPPORT.md`, `DEC-0062`, `DEC-0114` et `DEC-0116` ecrivent :
+1. **`D7`** : la borne depassee et le montant sont **non retrouves dans le depot, accord donne sans le contenu**. Aucun chiffre inscrit ; A.18 point 5 inchange. `Q-U5`.
+2. **`D8`** : motifs et durees des deux arrets d'agent et du watchdog sur `lea-dev` **non retrouves dans le depot, accord donne sans le contenu** ; seule la fenetre de 23 h 49 min est mesuree (`retro.md` C1). `Q-U6`.
+3. **`D9`** : la seule proposition ecrite est la lecture de `sofia-sm` (le pluriel est l'accord de la formule, *"non une decision"*) ; la convention structurelle n'existe que comme exemple de `theo-archi`. `Q-U7`. `DEC-0062` et `DEC-0114` non touches.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; ni `DEC-0062`, ni `squad/README.md`, ni `backlog.md`, ni `lessons.md`. `DEC-0116` reste `Proposee`. Aucune borne, aucun motif, aucune duree n'est inventee ou choisie a sa place.

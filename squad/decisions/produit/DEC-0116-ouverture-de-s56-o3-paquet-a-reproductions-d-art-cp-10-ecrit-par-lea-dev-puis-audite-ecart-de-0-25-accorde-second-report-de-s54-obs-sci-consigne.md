@@ -489,3 +489,50 @@ Le paquet, ses JPEG, les garde-fous et la fiche sont conserves ; le retour au ca
 non refuse (A.17, `ADR-0061`). `S56-RETRAIT-RAPPROCHER-OEUVRES` n'est plus conditionnelle (backlog). `ART-CP-10` reste
 `non couvert`. Statut : `Proposee`, inchange. Aucun code ne change.
 
+
+## Amendement du 2026-10-12 (apres la cloture de s56, `camille-po`, huitieme) : accord de l'utilisatrice sur trois points de la cloture, contenu non retrouve
+
+Annotation datee. Rien au-dessus n'est reecrit. Sources lues : `review.md` (sections 4, 11, 12 obstacles 6, 8, 22), `retro.md` (section 0, section 4, actions A9 et A10), `RAPPORT.md` ("Questions ouvertes", U5 a U7), `relecture-cloture.md` (P1), `avis-faisabilite.md` (section 8 et amendement du 2026-10-11), `cloture-nadia.md`, `lessons.md`, `DEC-0062` (3.1, A.3), `DEC-0114` (0.1), `DEC-0116` A.18.
+
+### A.27 Les mots, forme 2 de `DEC-0062`, et ce qu'ils portent
+
+Mots de l'utilisatrice recus le 2026-10-12 par l'agent qui m'a lance, qui les atteste recus directement dans la session : *"ce qui est propose pour D7 a D11 est ok"*. **Je ne les ai pas lus de sa main** (meme reserve que 0.1, A.1, A.4, A.21) : si elle les dement, les trois points ci-dessous redeviennent des questions.
+
+**Les codes `D7` a `D11` ne sont dans aucun fichier du depot pour ces points** (`git grep` sur `docs`, `squad/sprints/s56*`, `squad/sprints/hors-sprint-accueil-vues`, `squad/rapports`, `lessons.md`, `DEC-0116`, `DEC-0117` : `D7` y designe d'autres sujets, ceux de s25 (`DEC-0083`), de la passe transverse de s54, et la cloture du chantier hors sprint dit deja ne pas retrouver ses propres `D7` a `D12`). **Le rattachement est celui de l'agent lanceur** : `D7` = `U5` de `RAPPORT.md` (le depassement des garde-fous) ; `D8` = `U6` (les arrets d'agent et le watchdog) ; `D9` = `U7` et `A9` de la retro (la formule de la forme 3). `D10` et `D11` sont traites par `sofia-sm` et ne sont pas ici. Comme en A.21, un code `D` n'est lisible qu'avec sa date et sa session.
+
+**Ce que ces mots fondent** : l'utilisatrice a accepte ce qu'on lui a propose le 2026-10-11. **Le texte de ce qu'on lui a propose n'est pas dans le depot.** Pour chaque point, je ne reprends ci-dessous que ce que les fichiers ecrivent comme proposition ; ce qui manque est dit "non retrouve dans le depot, accord donne sans le contenu" et devient une question. Je ne comble aucun vide.
+
+### A.28 `D7` : le depassement de borne des garde-fous `B2`, `B3`, `B5`, `B7`, `B8`
+
+**Ecrit dans le depot.** Garde-fous nes de l'amendement de `theo-archi` du 2026-10-11, fusionnes (`80c06e64`), hors `PAR`, 0,0 au bareme de `nadia-prof`, environ 0,5 jour de developpement (0,25 j pour quatre d'entre eux, 0,25 j pour `B5` ; estimation de `theo-archi`, pas un tarif), sans ligne au planning (A.18 point 5 ; `review.md` section 11). Mots d'acceptation du depassement, relayes par l'agent lanceur : *"Lance Q2 aussi meme si on depasse la borne"*, 2026-10-11 (`review.md` section 4). Ni `review.md`, ni `retro.md`, ni `RAPPORT.md` ne proposent de chiffre : `U5` pose la question, et `review.md` obstacle 8 dit que si elle veut un amendement, il est a `camille-po`.
+
+**Non retrouve dans le depot, accord donne sans le contenu** : **quelle borne** et **de combien**. Aucun fichier lu n'ecrit une borne en jours de developpement ; sur le bareme de `nadia-prof`, les garde-fous ne changent ni l'engage (8,25) ni le consomme (7,25, ou 5,75 selon `cloture-nadia.md`). Je ne choisis pas la borne a sa place et je n'inscris aucun chiffre.
+
+**Effet sur cette decision** : aucun chiffre de 2.1, 2.2 ni A.13 ne change. **A.18 point 5 est inchange** : le depassement reste non inscrit comme decision tant que la borne et l'ecart ne sont pas ecrits. Il reste sans jurisprudence ; s57 compte a 8,0 (A.23 point 3). Question ouverte : **`Q-U5`**.
+
+### A.29 `D8` : les arrets d'agent et le watchdog
+
+**Ecrit dans le depot.** `cloture-nadia.md` (ligne 4) : *"l'instance B arretee"*, dont `nadia-prof` reprend les postes. `retro.md` C1 : 23 h 49 min sans livraison entre `f37e33dd` (2026-10-10 11:17) et `38ba3d5c` (2026-10-11 11:06), entree de catalogue 15 h 07 min apres l'echeance de 20:00 ; la cause (deux agents arretes par l'utilisatrice et remplaces, un watchdog sur `lea-dev`) y est dite **transmise par le message de lancement, sans fichier**. Proposition de la retro, action `A10` : ecrire qui, quand, ce que chaque branche portait, par `sofia-sm` (lanceur) et l'utilisatrice (les faits), *"une ligne dans le planning de s57 ou un amendement date"*. `lessons.md` : une regle (ecrire l'arret, par celui qui relance). Les noms des deux agents arretes (`ines-design`, `nadia-prof` instance B) viennent du message qui m'a lance, non attribues a l'utilisatrice, sans autre source dans le depot ; `cloture-nadia.md` ne nomme que l'instance B de `nadia-prof`.
+
+**Non retrouve dans le depot, accord donne sans le contenu** : **le motif** de chacun des deux arrets, **la duree ou l'heure** de chacun, **le motif et la duree du watchdog** sur `lea-dev`, ce que la branche de chaque agent arrete portait, qui l'a relance. Seule la fenetre de 23 h 49 min est mesuree, et elle ne dit pas a quel arret ou au watchdog elle est due. Je n'ecris ni motif ni duree. Ces faits sont ceux de l'utilisatrice : question ouverte **`Q-U6`**.
+
+**Effet** : l'accord autorise l'ecriture ; il ne la remplace pas. Rien n'est ecrit dans un planning ni dans `lessons.md` par cette annotation. Quand la reponse a `Q-U6` est la, l'ecriture est un amendement date de cette decision, ou une ligne du planning de s57 au choix de `sofia-sm` (`retro.md` `A10`).
+
+### A.30 `D9` : la formule de la forme 3 et la convention structurelle
+
+**Ecrit dans le depot.** `DEC-0062` A.3 point 2 : la formule fixe est *"recu de MASTER, sans source dans le depot"*. `DEC-0114` 0.1 (ligne 31) ecrit *"recus de MASTER, sans source dans le depot, le 2026-10-07"* pour quatre messages cites mot pour mot avec leur date. `relecture-cloture.md` P1 : les lignes 13, 52, 79 sont des mentions, la ligne 31 est une attribution dont la formule est au pluriel, **un ecart de formule et non de provenance**, question renvoyee a `sofia-sm` et `camille-po`. `retro.md` section 4 (lecture de `sofia-sm`, ecrite *"non une decision"*) : **le pluriel est l'accord de la formule, pas une quatrieme forme** ; savoir si la formule tolere l'accord est a `DEC-0062`, donc a `camille-po` et a l'utilisatrice. `avis-faisabilite.md` section 8 (`theo-archi`) : refus de test (47 fichiers sur 65 rouges) ; ce qui lui ferait changer d'avis est *"une convention qui donne a l'attribution de forme 3 une forme structurelle (par exemple un bloc de citation dont la premiere ligne est la formule)"*, amendement de `squad/README.md` section 2 bis et de `DEC-0062`, a `sofia-sm`, `camille-po` et l'utilisatrice.
+
+**La proposition retrouvee pour la formule** est la lecture de `sofia-sm` : le pluriel de `DEC-0114` ligne 31 vaut la formule. **Pour la convention structurelle, seul un exemple est ecrit** (celui de `theo-archi`) ; aucun fichier ne propose un texte a adopter ni une forme choisie.
+
+**Non retrouve dans le depot, accord donne sans le contenu** : (i) que *"est ok"* porte sur cette lecture de `sofia-sm` (c'est la seule proposition ecrite, je ne peux pas confirmer que c'est celle qu'on lui a posee) ; (ii) **la convention structurelle** : laquelle, et si elle doit etre ecrite. Question ouverte : **`Q-U7`**.
+
+**Effet** : aucun fichier autre que celui-ci, `DEC-index.md` et le journal hors sprint n'est modifie. `DEC-0062` et `DEC-0114` ne sont pas touches (`DEC-0062` section 7 : pas de balayage retroactif) ; l'amendement d'une ligne de `DEC-0062` qui dirait que la formule tolere l'accord n'est pas ecrit ici, il suit la reponse a `Q-U7`. `squad/README.md` section 2 bis est a `sofia-sm` et n'est pas touchee. Le refus de test de `theo-archi` tient.
+
+### A.31 Questions pour l'utilisatrice, statut, routage
+
+- **`Q-U5`** : le depassement des garde-fous `B2`, `B3`, `B5`, `B7`, `B8` : depasse **quelle borne** (la borne de 8,0 de `PAR-8`, l'ecart de 0,5 de A.1, ou une borne de jours de developpement), **de combien**, et l'ecrit-on dans cette decision ?
+- **`Q-U6`** : pour `ines-design`, pour `nadia-prof` (instance B) et pour le watchdog sur `lea-dev` : le motif, l'heure ou la duree, et ce que la branche portait au moment de l'arret.
+- **`Q-U7`** : *"est ok"* portait-il sur la lecture *"le pluriel est l'accord de la formule"* (`DEC-0114` ligne 31 vaut `DEC-0062`) ? Et, pour lever le refus de test de `theo-archi`, quelle convention structurelle veut-elle (par exemple un bloc de citation dont la premiere ligne est la formule), ou aucune ?
+- **Statut : `Proposee`, inchange.** Aucun passage a `Acceptee` (A.22 tient).
+- **Routage** : `sofia-sm` (planning de s57 ou amendement pour `Q-U6` ; `squad/README.md` section 2 bis si `Q-U7` appelle une convention). Aucun code, contenu, catalogue ni ligne de matrice ne change. Ne prononce aucun Done, ne fixe aucun tarif.
+- **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.
