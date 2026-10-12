@@ -311,6 +311,23 @@ Mots recus directement dans la session du 2026-10-12, cites tels quels (forme 2 
    le statut de cette decision, et leur suivi est dans le journal du 2026-10-12.
 6. **Statut : `Acceptee`.** Ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni matrice, ni code.
 
+## 12. Amendement du 2026-10-12 (vue par defaut, `camille-po`, `DEC-0119`)
+
+Rien au-dessus n'est reecrit. Le titre, la section 2 (*"1. La vue par defaut est **V2**"*), la section 6 et les stories de
+`HS-ACCUEIL-V2` gardent leur texte d'origine.
+
+Mots recus directement dans la session du 2026-10-12, cites tels quels : *"par defaut apres avoir choisi sa classe montre le
+choix de la matiere"*.
+
+1. **La decision 1 de la section 2 est amendee** : la vue par defaut d'une session qui n'a rien choisi est **V1**
+   (etage 1, une tuile par matiere), non V2. Les decisions 2 a 5 de la section 2 (bouton de l'accueil, choix en session,
+   libelles arbitres avant le code, squad complete) sont inchangees. V2 reste accessible par le bouton.
+2. **Le titre se lit** : "V1 par defaut, V2 par la bascule". Les occurrences de "V2 par defaut" de cette decision, du
+   backlog et de la fiche decrivent l'etat du 2026-10-11 au 2026-10-12.
+3. **Les criteres, la condition de fusion (audit de `nadia-prof` avant fusion, section 11), le routage et les questions
+   pour `theo-archi` et `nadia-prof` sont dans `DEC-0119`.** Statut `Acceptee` inchange.
+4. Ne prononce aucun Done, ne touche ni catalogue, ni paquet, ni matrice, ni code.
+
 ## Impact
 
 - `squad/decisions/produit/DEC-0117-...md` (ce fichier) : cree.

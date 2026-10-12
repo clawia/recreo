@@ -84,9 +84,17 @@ class PartieControllerTest {
         return new EtatDePartieEnSession(requete).lire();
     }
 
+    /** La vue par defaut d'un niveau est l'etage 1 (tuiles) : les cartes de jeu se lisent en V2, choisie par la bascule. */
+    private MockHttpSession sessionEnV2() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        mockMvc.perform(post("/niveaux/{niveau}/vue/V2", NIVEAU).session(session));
+        return session;
+    }
+
     @Test
     void laPageDAccueilProposeDeDemarrerSansCompteNiDonneePersonnelle() throws Exception {
-        String html = mockMvc.perform(get("/niveaux/{niveau}", NIVEAU)).andReturn().getResponse().getContentAsString();
+        String html = mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(sessionEnV2()))
+                .andReturn().getResponse().getContentAsString();
         Document page = Jsoup.parse(html);
 
         assertThat(page.select("button.demarrer")).isNotEmpty();
@@ -104,7 +112,7 @@ class PartieControllerTest {
         assertThat(premier.select("button.demarrer")).as("aucune liste sans niveau").isEmpty();
         assertThat(premier.select(".choix-niveau")).hasSize(1);
 
-        Document niveau = Jsoup.parse(mockMvc.perform(get("/niveaux/{niveau}", NIVEAU))
+        Document niveau = Jsoup.parse(mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(sessionEnV2()))
                 .andReturn().getResponse().getContentAsString());
         List<String> titresRendus = niveau.select("button.demarrer").eachText();
         List<String> titresDuNiveau = partieUseCase.jeuxDuNiveau(NIVEAU).stream()
@@ -535,7 +543,7 @@ class PartieControllerTest {
      */
     @Test
     void unNiveauSansPartieEnCoursFiltreImmediatementSansPasserParLaConfirmation() throws Exception {
-        String html = mockMvc.perform(get("/niveaux/{niveau}", NIVEAU))
+        String html = mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(sessionEnV2()))
                 .andReturn().getResponse().getContentAsString();
         Document fragment = Jsoup.parse(html);
 
@@ -593,7 +601,7 @@ class PartieControllerTest {
      */
     @Test
     void confirmerDepuisUneConfirmationDeNiveauAbandonneLaPartieEtRendLaListeFiltree() throws Exception {
-        MockHttpSession session = new MockHttpSession();
+        MockHttpSession session = sessionEnV2();
         MvcResult demarrage = mockMvc.perform(post("/parties/{jeuId}", JEU_ID).session(session))
                 .andReturn();
         mockMvc.perform(get("/niveaux/{niveau}", NIVEAU).session(session));

@@ -66,9 +66,9 @@ class VueDeLAccueilEnSessionTest {
     }
 
     @Test
-    void uneSessionQuiNAPasChoisiPorteLaVueParDefautV2() {
-        assertThat(porteur(requete()).vue()).isEqualTo(VueDeLAccueil.V2);
-        assertThat(VueDeLAccueil.PAR_DEFAUT).isEqualTo(VueDeLAccueil.V2);
+    void uneSessionQuiNAPasChoisiPorteLaVueParDefautV1() {
+        assertThat(porteur(requete()).vue()).isEqualTo(VueDeLAccueil.V1);
+        assertThat(VueDeLAccueil.PAR_DEFAUT).isEqualTo(VueDeLAccueil.V1);
     }
 
     @Test
@@ -110,12 +110,12 @@ class VueDeLAccueilEnSessionTest {
         MockHttpServletRequest requete = requete();
         EtatDePartieEnSession etat = porteur(requete);
         etat.demarrer("un-jeu", "consigne", null, partie());
-        etat.choisirLaVue(VueDeLAccueil.V1);
+        etat.choisirLaVue(VueDeLAccueil.V2);
 
         etat.abandonner();
 
         assertThat(etat.lire().jeuId()).as("la partie est bien abandonnee").isNull();
-        assertThat(etat.vue()).as("quitter une partie n'est pas changer d'affichage").isEqualTo(VueDeLAccueil.V1);
+        assertThat(etat.vue()).as("quitter une partie n'est pas changer d'affichage").isEqualTo(VueDeLAccueil.V2);
     }
 
     @Test
@@ -132,13 +132,13 @@ class VueDeLAccueilEnSessionTest {
     @Test
     void uneSessionNeuveRetrouveLaVueParDefaut() {
         MockHttpServletRequest premiere = requete();
-        porteur(premiere).choisirLaVue(VueDeLAccueil.V1);
-        assertThat(porteur(premiere).vue()).isEqualTo(VueDeLAccueil.V1);
+        porteur(premiere).choisirLaVue(VueDeLAccueil.V2);
+        assertThat(porteur(premiere).vue()).isEqualTo(VueDeLAccueil.V2);
 
         MockHttpServletRequest neuve = requete();
         neuve.setSession(new MockHttpSession());
 
-        assertThat(porteur(neuve).vue()).isEqualTo(VueDeLAccueil.V2);
+        assertThat(porteur(neuve).vue()).isEqualTo(VueDeLAccueil.V1);
     }
 
     /** La vue n'existe que comme attribut de la session : une session invalidee ne la porte plus. */
@@ -146,13 +146,13 @@ class VueDeLAccueilEnSessionTest {
     void uneSessionInvalideeNePorteQueLaVueParDefaut() {
         MockHttpServletRequest requete = requete();
         MockHttpSession session = (MockHttpSession) requete.getSession();
-        porteur(requete).choisirLaVue(VueDeLAccueil.V1);
+        porteur(requete).choisirLaVue(VueDeLAccueil.V2);
         assertThat(Collections.list(session.getAttributeNames())).contains("recreo.vue");
 
         session.invalidate();
         MockHttpServletRequest suivante = requete();
 
-        assertThat(porteur(suivante).vue()).isEqualTo(VueDeLAccueil.V2);
+        assertThat(porteur(suivante).vue()).isEqualTo(VueDeLAccueil.V1);
     }
 
     @Test

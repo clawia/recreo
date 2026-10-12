@@ -16,7 +16,8 @@
 
 Le chantier demande deux presentations de l'accueil : une vue a deux etages (les matieres d'un
 niveau, puis les jeux d'une matiere) et une vue unique groupee par matiere ; vue par defaut la
-seconde ; un bouton bascule ; **le choix vit dans la session HTTP et disparait avec elle** ; la
+seconde dans la demande du 2026-10-11, **la premiere depuis `DEC-0119`** (amendement du 2026-10-12, en fin
+de fichier) ; un bouton bascule ; **le choix vit dans la session HTTP et disparait avec elle** ; la
 matiere vient de `descripteur.matiere` du paquet de chaque jeu (`ADR-0049`, `ADR-0006`).
 
 Ce qui est deja garde, verifie dans le code et non suppose :
@@ -213,3 +214,42 @@ propriete qu'il ne doit pas porter sans revoir son garde-fou (`spring.web.resour
 **Ce n'est pas une regle ArchUnit** : l'objet est une configuration du conteneur et une reponse HTTP, pas du bytecode. Compte
 ArchUnit inchange. **Statut** : la phrase corrigee de la decision 3 est acceptee ; la propriete "l'identifiant de session ne
 voyage que par son cookie" est due par le commit du correctif, qui porte sa garde (precedent : `ADR-0048`).
+
+## Amendement du 2026-10-12 (hors sprint, `DEC-0119`, `theo-archi`) - la vue par defaut est V1, et un test de retention choisit la vue qui n'est pas celle par defaut
+
+**Verdict : contexte annote, decision confirmee.** Le contexte nommait la vue par defaut comme description de la demande du
+2026-10-11 ; `DEC-0119` la remplace par V1, et la phrase du contexte le dit desormais. La decision 2 (*"Valeur absente = vue par
+defaut"*) ne nommait pas la vue et reste juste sans changement : la valeur vit en un seul point, `VueDeLAccueil.PAR_DEFAUT`,
+lu par le seul porteur (`EtatDePartieEnSession.vue()`). Quelle vue est la vue par defaut est une decision de produit
+(`DEC-0117`, puis `DEC-0119`), pas d'architecture.
+
+**Pas de regle ArchUnit pour la valeur.** ArchUnit ne lit pas la valeur d'une constante, et une regle qui la figerait
+encoderait une decision de produit dans l'architecture. La valeur est gardee par des tests JUnit. Mutation `PAR_DEFAUT = V2`
+sur `a74ff775` : 5 echecs dans `VueDeLAccueilEnSessionTest` (3), `AccueilParMatiereTest` (1) et `JarRecreoIT` (1).
+
+**Ce que le changement a expose : un test de retention ne prouve rien s'il choisit la vue par defaut.** Avant `a74ff775`,
+quatre tests choisissaient V1 pour prouver que la session retient la vue, alors distincte de la valeur absente. Ils
+choisissent toujours V1, qui est maintenant la valeur absente. Mesure par la mutation qui fait effacer la vue par
+`abandonner()` (la propriete gardee par la decision 2 et par le critere C2 de `DEC-0119`) : 5 echecs sur le parent de
+`a74ff775`, 2 sur `a74ff775`, et aucun de ces deux tests ne porte cette propriete dans son nom. N'echouent plus :
+`VueDeLAccueilEnSessionTest.abandonnerNEffacePasLaVue`,
+`AccueilParMatiereTest.apresUnePartieLeNiveauChoisiSOuvreDansLaVueRetenue`,
+`AccueilParMatiereTest.lesJeuxNeRendJamaisUnEtageDeuxQuelleQueSoitLaVueEtLaMatiereJouee` et
+`AccueilParMatiereTest.confirmerLeChangementDeNiveauRendLaVueRetenueDeLaSession`. Commande :
+`bash outils/mvn-jdk21.sh -B clean test -pl adapters/adapter-web,bootstrap -am -Dmaven.test.failure.ignore=true`, sur chacun
+des deux arbres, echecs lus dans les rapports `TEST-*.xml`. JDK 21.0.10, propriete `java.version` des rapports.
+
+**Dette ouverte, a payer par le developpeur que `sofia-sm` designe, avant la fusion du candidat sur `round-two`** (le code de
+production n'est pas touche par cet amendement) : ces quatre tests choisissent V2, la vue qui n'est pas celle par defaut,
+comme `a74ff775` l'a deja fait pour deux tests de `VueDeLAccueilEnSessionTest`. Epreuve de fermeture : la meme mutation
+d'`abandonner()` fait echouer ces quatre tests.
+
+**Pourquoi ce n'est pas une regle executable** : "le test choisit la vue qui n'est pas celle par defaut" porte sur
+l'intention d'un test, qu'aucun balayage ne lit sans deviner. Le mecanisme qui la garde est la mutation ci-dessus, rejouee a
+chaque changement de `PAR_DEFAUT`. **Ce qui me ferait changer d'avis** : un troisieme changement de la valeur par defaut, ou
+une troisieme vue. Les tests de retention devraient alors choisir leur vue a partir de `PAR_DEFAUT`, plutot que la nommer.
+
+**Compte ArchUnit inchange** : 39 declarations `ArchRule <nom> =` dans `src/test/java` des cinq modules du `pom.xml`
+agregateur, avant comme apres `a74ff775` (methode de l'ADR, la fixture `src/test/resources/contreexemple/` etant exclue) ;
+38 champs `@ArchTest`, et les 38 sont des cas executes dans les rapports `TEST-*.xml` de `mvn -B clean verify` sur les deux
+arbres. Aucune regle ArchUnit ne nomme `VueDeLAccueil` ni `PAR_DEFAUT`.
