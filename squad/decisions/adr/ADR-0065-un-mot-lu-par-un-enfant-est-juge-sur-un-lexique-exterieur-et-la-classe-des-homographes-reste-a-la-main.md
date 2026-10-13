@@ -297,3 +297,127 @@ par le chargeur reel. Le compte de regles ArchUnit du depot est inchange.
 - Le refus par `nadia-prof` de la forme *un garçon* / *un garcon* au profit d'une autre forme d'item
   (*gar_on*, propositions `c` / `ç`) : l'admission deviendrait sans objet, et cet amendement serait a
   retirer avec ses deux clauses plutot qu'a laisser dormir.
+
+## Amendement du 2026-10-13 (s57, `theo-archi`) - A2, deux instances de francais CE1 en parallele (A et A')
+
+Le texte ci-dessus est inchange, critere, perimetre et cinq clauses compris. Cet amendement repond a la
+story `S57-ADR-0065-DEUX-INSTANCES` et a la condition 2 de `nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, section 4.2) : *"Aucune
+des deux instances n'amende `ADR-0065` ni le garde-fou de l'accent : un besoin se route a `theo-archi`."*
+
+### Etat du depot que cet amendement suppose
+
+- `round-two` a `9d101ea0` ; le garde-fou tel que `c2802a32` l'a laisse (cinq clauses, admission A1) ;
+  `org.languagetool:french-pos-dict:0.7`.
+- Le decoupage de `DEC-0120` section 1 : A porte le groupe X (`-04`, `-05`, `-06`, `-07`, `-11`), A' le
+  groupe Y (`-08`, `-09`, `-10`, `-15`, `-24`). **A et A' n'ecrivent jamais le meme paquet** (condition 1
+  de `nadia-prof`) : la ressource qu'elles partagent n'est pas un paquet, c'est ce garde-fou.
+- Aucun worktree d'un lot de A' n'est ouvert. Cet amendement est fusionne avant le premier (condition 2).
+
+### Ce que la mesure a etabli, avec sa methode
+
+1. **Le garde-fou ne porte aucune liste de mots.** Lu sur le fichier : le critere ne nomme aucun mot ;
+   les seuls mots ecrits dans le test sont les assertions des clauses 2, 4 et 5 sur leurs contre-exemples
+   et leurs chaines en memoire (*ecrire*, *zero*, *zeros*, *garcon*, *garcons*). Une instance ajoute son
+   vocabulaire en ajoutant un paquet, et le lexique le juge : **aucun fichier du garde-fou n'a a changer
+   pour cela.** La formulation du backlog (*"la meme liste de mots du meme test"*) ne decrit donc pas
+   l'objet partage.
+2. **Mesure sur l'historique.** `git diff --name-status --diff-filter=A c2802a32 9d101ea0` sur
+   `adapters/adapter-content/src/main/resources/contenu/` : 31 paquets `ce1-*.yaml` ajoutes (francais et
+   mathematiques confondus). `git log --full-history --no-merges c2802a32..9d101ea0` sur les quatre chemins
+   du point 1 de la decision : un seul commit, `02ba9e80`, qui est A1 lui-meme commite une seconde fois sur
+   la branche d'une instance a s51 (meme `git patch-id --stable` que `c2802a32`, `61478649...`, recalcule
+   ce jour). Depuis l'origine (`--full-history --no-merges`, historique atteignable depuis `9d101ea0`) :
+   quatre commits, `f3848460` `[THEO]`, `acfecb32` `[SOF]`, `c2802a32` et `02ba9e80` `[THEO]`.
+3. **Ce sur quoi deux instances peuvent entrer en collision, c'est donc une admission**, pas un mot : un
+   lot dont la forme demande un mot que le critere refuse par construction. Deux cas ecrits dans le depot :
+   la cedille de `GRL-CE1-2` (A1), et les formes regularisees d'*aller* au singulier (`PRS-CE1-3` (b),
+   avis de faisabilite de s52, section 1.2, non retenues). Et un cas de modification du perimetre par un
+   autre agent que le proprietaire : `acfecb32` (s24, lot 5b) a borne les chaines jugees a celles que
+   l'enfant lit.
+
+### Decision (A2)
+
+1. **Aucune instance ne modifie le garde-fou.** Ni `nadia-prof`, ni le developpeur d'un lot de A ou de A',
+   ni aucun autre agent que `theo-archi`, ne modifie : ce fichier d'`ADR` ;
+   `AucunMotServiNeSEcarteDeSonAccentTest.java` ; `LexiqueFrancais.java` ;
+   `src/test/resources/contreexemple/AucunMotServiNeSEcarteDeSonAccentTest/` (les trois derniers sous
+   `adapters/adapter-content/`) ; la version de `french-pos-dict` dans les deux `pom.xml`.
+2. **Un lot rouge sur `chaqueMotServiEnProductionPorteSonAccent` s'arrete.** L'instance ecrit le besoin
+   (paquet, item, mot refuse, forme de l'item qui l'exige) et le route a `theo-archi`. Son lot attend ;
+   les lots de l'autre instance n'attendent pas.
+3. **Un amendement a la fois.** `theo-archi` l'ecrit sur un worktree propre issu de `round-two`, jamais sur
+   la branche d'une instance, et `sofia-sm` le fusionne sur `round-two`. Un second besoin, de l'une ou de
+   l'autre instance, part de `round-two` apres cette fusion. L'admission se derive de la forme de l'item,
+   jamais d'une liste de mots (alternative 2 et amendement A1 ci-dessus).
+4. **Une instance recoit un amendement en fusionnant `round-two` dans sa branche**, jamais en le
+   recommitant : c'est la duplication de s51.
+5. **Un faux rouge du lexique** (un mot francais rare absent du lexique) suit la meme route ; la reponse
+   reste celle de "Ce qui me ferait changer d'avis" : changer de lexique ou reduire le perimetre avec un
+   motif ecrit, jamais une liste d'exemptions.
+6. **La classe des homographes reste a la main de `nadia-prof`**, chaque instance pour ses lots.
+
+### Regle executable
+
+**Ce n'est pas une regle ArchUnit** : les objets sont des fichiers et l'auteur d'un commit, pas un graphe
+de types. Le compte de regles ArchUnit est inchange : 41 `static final ArchRule`, 38 `@ArchTest`, methode
+d'`ADR-0104` (`git grep` des deux motifs sur les `*.java` suivis a `9d101ea0`) ; cet amendement ne touche
+aucun fichier Java.
+
+**Ce qui s'execute deja :**
+
+- **Le point 2 est tenu par la clause 1 elle-meme**, dans le job `build` : un lot qui a besoin d'une
+  admission ne peut pas etre vert sans elle. L'attente est imposee par le rouge, pas par la discipline.
+- **Le point 3 est signale, pas empeche** : deux amendements differents ecrits en parallele touchent la
+  meme methode (`verifierQueChaqueMotServiPorteSonAccent`) et la fin de la meme classe, et la fusion du
+  second entre en conflit. Un amendement identique commite deux fois n'entre pas en conflit (s51) : sans
+  consequence de contenu, et sans automate.
+
+**Ce qui ne s'execute pas : le point 1.** Aucune etape de `.github/workflows/ci.yml` ne lie un chemin a
+un auteur. La forme qui le garderait, **proposee et non ecrite ici** (`.github/scripts/` et `ci.yml` sont
+hors du perimetre de cette story) : dans le job `prefixes`, sur la meme plage `RANGE`,
+
+```
+{ git log --no-merges --format=%s ${RANGE} -- <les quatre chemins du point 1>
+  git log --no-merges -G 'french-pos-dict' --format=%s ${RANGE} -- pom.xml adapters/adapter-content/pom.xml
+} | sort -u | grep -v '^\[THEO\] '
+```
+
+toute ligne restante etant un refus, avec son script de test sur le modele de `verifier-prefixes-test.sh`
+(`ADR-0009`). Ce qu'il interdirait reellement, mesure sur l'historique (mesure, point 2) : sur les quatre
+commits qui ont jamais touche ces chemins, **il aurait refuse `acfecb32`**, une modification reelle du
+perimetre par un autre agent. **Il n'aurait pas vu `02ba9e80`**, commite par moi sur la mauvaise branche :
+le point 4 reste sans automate. Le motif `-G` sur les `pom.xml` est etroit a dessein : garder le fichier
+entier refuserait tout commit d'un autre agent sur le pom parent, un perimetre qui echoue par inclusion.
+
+**Dette ouverte, nommee : le point 1 n'a pas d'automate tant que ce controle n'est pas fusionne.**
+Jusque-la, il est verifie a la main par `sofia-sm` a chaque fusion d'une branche d'instance :
+`git diff --stat round-two...<branche> -- <les quatre chemins du point 1>` doit etre vide. C'est une
+verification humaine, ecrite comme telle.
+
+**Pourquoi le test n'est pas modifie**, alors que la story demandait l'amendement et le test dans un seul
+commit : rien dans `AucunMotServiNeSEcarteDeSonAccentTest` n'est propre a une instance (mesure, point 1).
+Une clause ajoutee pour l'occasion n'interdirait rien de ce que la decision interdit : celui qui modifierait
+le garde-fou modifierait aussi cette clause. Elle serait decorative.
+
+### Consequences
+
+- **Bonne** : aucun lot de francais CE1 n'a a toucher le garde-fou pour ajouter son vocabulaire ; les 31
+  paquets de CE1 ajoutes depuis A1 l'ont fait sans le toucher.
+- **Mauvaise** : un lot de A' qui demande une admission attend un amendement, une fusion, puis une fusion
+  de `round-two` dans sa branche. Le delai depend de l'heure de fusion, a `sofia-sm`.
+- **Mauvaise** : le point 1 interdit desormais ce que `acfecb32` a fait a s24. Un developpeur qui veut
+  borner ou etendre ce garde-fou passe par `theo-archi`.
+- **Mauvaise** : tant que le controle propose n'existe pas, le point 1 est garde par une verification
+  humaine.
+
+### Ce qui me ferait changer d'avis plus tard
+
+- Un troisieme besoin d'admission dans un meme sprint : la forme des items de francais CE1 demanderait
+  souvent un mot hors du francais, et une admission par amendement serait trop lente.
+- Un conflit de fusion sur ce garde-fou qui ne viendrait pas de deux amendements : d'autres mains le
+  touchent, et le controle propose est du avant le sprint suivant.
+
+### Impact
+
+- Ce fichier, et la ligne `ADR-0065` de `ADR-index.md`. Aucun test, aucun code, aucune configuration.
