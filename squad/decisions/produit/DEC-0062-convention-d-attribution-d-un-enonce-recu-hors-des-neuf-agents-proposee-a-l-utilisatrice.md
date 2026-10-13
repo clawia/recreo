@@ -394,3 +394,7 @@ l'utilisatrice si `sofia-sm` juge qu'une charte d'agent ne se modifie pas sans e
 reecrire** : la convention est **due** a la relecture, elle n'y est pas encore opposable. **Une
 convention qui n'est pas dans la charte de celui qui doit la verifier n'est pas verifiee**, et ce
 document ne pretendra pas le contraire une seconde fois.
+
+## Amendement D du 2026-10-13 (`camille-po`) - la formule de la forme 3 tolere l'accord au pluriel
+
+La formule *"recu de MASTER, sans source dans le depot"* tolere l'accord au pluriel (*"recus de MASTER"*, quatre messages) : ce n'est pas une quatrieme forme. Source : les mots de l'utilisatrice du 2026-10-13, *"oui pour Sofia"*, sur la lecture de `sofia-sm` (`DEC-0116` A.35) ; pas de balayage retroactif (section 7).

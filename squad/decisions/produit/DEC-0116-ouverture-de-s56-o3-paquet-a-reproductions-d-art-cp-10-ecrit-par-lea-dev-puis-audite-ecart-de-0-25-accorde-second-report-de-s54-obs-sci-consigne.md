@@ -536,3 +536,53 @@ Mots de l'utilisatrice recus le 2026-10-12 par l'agent qui m'a lance, qui les at
 - **Statut : `Proposee`, inchange.** Aucun passage a `Acceptee` (A.22 tient).
 - **Routage** : `sofia-sm` (planning de s57 ou amendement pour `Q-U6` ; `squad/README.md` section 2 bis si `Q-U7` appelle une convention). Aucun code, contenu, catalogue ni ligne de matrice ne change. Ne prononce aucun Done, ne fixe aucun tarif.
 - **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.
+
+
+## Amendement du 2026-10-13 (apres la cloture de s56, `camille-po`, neuvieme) : l'utilisatrice repond a `Q-U5`, `Q-U6` et `Q-U7`
+
+Annotation datee, suite apres A.31. Rien au-dessus n'est reecrit. Statut : `Proposee`, inchange (A.22 tient).
+
+### A.32 Les mots, forme 2 de `DEC-0062`
+
+Mots de l'utilisatrice, recus directement dans la session du 2026-10-13, cites :
+
+- `Q-U5` : *"pas de bornes superieur c'est au besoin mais on la consigne"*.
+- `Q-U6` : *"je n'ai pas ces infos, la cause des arrets est la coupure de la batterie"*.
+- `Q-U7` : *"oui pour Sofia"*.
+
+### A.33 `Q-U5` : fermee. Pas de borne superieure, au besoin, consignee
+
+**La regle, telle qu'elle l'a dite.** Le depassement des garde-fous `B2`, `B3`, `B5`, `B7`, `B8` n'a **pas de borne superieure**. Il se fait **au besoin**. Il est **consigne**.
+
+**Ce que je lis, et la limite de ma lecture.** Je lis cette regle comme portant sur les cinq garde-fous nommes par `Q-U5`, qui sont hors `PAR` (A.28). **Elle ne dit rien de `PAR-8` ni de `PAR-9`** : la borne de 8,0 d'un sprint, le plafond de 5,0 par instance et la somme des budgets restent ce qu'ils sont, et s57 compte a 8,0 (A.23 point 3). Si elle voulait aussi lever `PAR-8`, ce n'est pas dans ses mots et je ne l'ecris pas.
+
+**Gabarit minimal de la consignation** : une ligne par depassement, dans la `DEC` d'ouverture ou la cloture du sprint qui le porte, avec quatre champs :
+
+1. la **date** ;
+2. le **garde-fou** (`B2`, `B3`, `B5`, `B7`, `B8`, ou un futur) ;
+3. l'**estimation**, avec son auteur et sa methode, ou la mention *"non estimee"* : aucun chiffre n'est ecrit sans source (l'estimation de `theo-archi` de A.28, environ 0,5 jour pour l'ensemble, est une estimation, pas un tarif) ;
+4. **qui l'a accepte**, avec ses mots cites et leur date (forme 2), ou la mention *"non accepte"*.
+
+**Ce que ca remplace.** A.28, dans sa seule fin (*"quelle borne et de combien"*, que je ne choisissais pas a sa place) : il n'y a pas de borne a choisir. A.18 point 5, dans sa seule clause *"le depassement reste non inscrit comme decision tant que la borne et l'ecart ne sont pas ecrits"* : la condition tombe, la consignation la remplace. A.31, premier point : close. **Ce qui ne change pas** : l'ecart de s56 (0,5, B a 4,75) n'est pas une jurisprudence pour `PAR` (A.23 point 3), et les depassements deja faits (`B2`, `B3`, `B5`, `B7`, `B8`, `80c06e64`) ne sont pas ecrits ligne par ligne par cette annotation : leur consignation est a `sofia-sm`.
+
+### A.34 `Q-U6` : fermee comme question, cause consignee, le reste non documente
+
+**Consigne, de l'utilisatrice** : *"la cause des arrets est la coupure de la batterie"*. Ses mots portent sur **les arrets** ; ils ne disent pas si le watchdog sur `lea-dev` en fait partie.
+
+**Non documente, dit comme tel : elle n'a pas ces informations.** Le motif detaille de chaque arret, la duree ou l'heure de chacun, le contenu de la branche de chaque agent arrete, le motif et la duree du watchdog, qui a relance. La fenetre de 23 h 49 min de `retro.md` C1 reste sans attribution a un arret ou au watchdog. Je n'ecris ni motif detaille, ni duree, ni contenu de branche. Aucun fichier du depot ne comble ces vides, et l'utilisatrice a dit ne pas les avoir : la question est close faute de source, pas faute de reponse a chercher.
+
+**Ce que ca remplace.** A.29, dans sa seule phrase *"Ces faits sont ceux de l'utilisatrice : question ouverte `Q-U6`"* : la question est fermee. Et `retro.md` C1, dans sa seule mention que la cause est *"transmise par le message de lancement, sans fichier"* : la cause est desormais dans le depot, en forme 2, ici. **Ce que ca ne ferme pas** : l'ecriture des arrets (`retro.md` `A10`, `lessons.md`) est a `sofia-sm`, et elle ne peut contenir que ce qui est ici.
+
+### A.35 `Q-U7` : point 1 ferme, point 2 ouvert
+
+**Point 1, ferme.** *"oui pour Sofia"* : son accord porte sur la lecture de `sofia-sm` (`retro.md` section 4) : **le pluriel de `DEC-0114` ligne 31 est l'accord de la formule de `DEC-0062`, pas une quatrieme forme.** Remplace A.30 (i). L'amendement d'une ligne de `DEC-0062` que A.30 disait attendre cette reponse est ecrit le meme jour (`DEC-0062`, amendement D). `DEC-0114` n'est pas touche, sans balayage retroactif (`DEC-0062` section 7).
+
+**Point 2, reste ouvert.** Elle n'a rien dit de la convention structurelle (par exemple un bloc de citation dont la premiere ligne est la formule). **Le refus de test de `theo-archi` tient** (`avis-faisabilite.md` section 8, 47 fichiers sur 65 rouges) : aucun test, aucune convention de forme, aucun amendement de `squad/README.md` section 2 bis sur ce point. Question ouverte : **`Q-U7` point 2**. Une absence de reponse n'est pas un `non` : je ne la lis ni comme l'un ni comme l'autre.
+
+### A.36 Statut, routage, limites
+
+- **Statut : `Proposee`, inchange.**
+- **Questions ouvertes** : `Q-U7` point 2 seulement. `Q-U5` et `Q-U6` fermees, `Q-U7` point 1 ferme.
+- **Routage a `sofia-sm`**, sans que je l'ecrive : (1) `squad/README.md` section 2 bis : dire que la formule de la forme 3 tolere l'accord au pluriel, en renvoyant a `DEC-0062` amendement D ; ne pas introduire de convention structurelle ; (2) la regle de consignation du depassement des garde-fous (A.33), et les lignes des depassements deja faits, dans la `DEC` d'ouverture ou le planning de s57 ; (3) l'ecriture des arrets d'agent (`retro.md` `A10`) dans le planning de s57 ou `lessons.md` : la cause (coupure de la batterie, ses mots, 2026-10-13) et la liste explicite de ce qui reste non documente (A.34). Routage a `nadia-prof` et `theo-archi` : aucun.
+- Aucun code, contenu, catalogue ni ligne de matrice ne change. Ne prononce aucun Done, ne fixe aucun tarif.
+- **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.

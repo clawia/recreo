@@ -207,3 +207,13 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 - `nadia-prof` : la V1 par defaut change-t-elle son verdict ? Sa condition `N4` (*"V2 par defaut : ACCEPTEE"*) et sa lecture de `S15-5` ; "8 me suffit" (P8) dit pour le premier ecran, vaut-il pour V2 atteinte par un bouton ; l'etage 1 a 390 px (4 tuiles sur 8, E3) est maintenant la page par defaut. Non tranche par moi, bloc de validation non touche.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done. Je n'ai lance ni test ni jar : les "vert" et "rouge" de `DEC-0119` sont des lectures du code, des tests et des rapports, a rejouer par `yanis-qa`.
+
+## 2026-10-13 - Reponses de l'utilisatrice a Q-U5, Q-U6, Q-U7 (`camille-po`)
+
+**Le fait.** Mots recus directement dans la session du 2026-10-13 : *"pas de bornes superieur c'est au besoin mais on la consigne"* (`Q-U5`), *"je n'ai pas ces infos, la cause des arrets est la coupure de la batterie"* (`Q-U6`), *"oui pour Sofia"* (`Q-U7`).
+
+**Ce que je verse.** `DEC-0116` A.32 a A.36 (`Proposee`, inchange) : `Q-U5` fermee (pas de borne superieure pour les garde-fous, consignation en quatre champs, `PAR-8` non touchee) ; `Q-U6` fermee (cause consignee, le reste dit non documente) ; `Q-U7` point 1 ferme, **point 2 ouvert**. `DEC-0062` amendement D (une ligne). `DEC-index.md` a jour.
+
+**Ce que je route a `sofia-sm`.** `squad/README.md` section 2 bis (la formule tolere l'accord au pluriel, sans convention structurelle) ; la consignation des depassements de garde-fous dans la `DEC` d'ouverture ou le planning de s57 ; l'ecriture des arrets (`retro.md` `A10`) dans le planning de s57 ou `lessons.md`, limitee a la cause et a la liste de ce qui n'est pas documente.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, ligne de matrice ni Done. `squad/README.md` et `lessons.md` non touches.
