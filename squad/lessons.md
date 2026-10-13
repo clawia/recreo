@@ -47,3 +47,13 @@ process s'ecrit dans `squad/README.md` ; ce fichier ne remplace ni les `ADR`, ni
   `HG-CM1-10` etait rangee parmi les lignes dont le seul manque est un dessin (`DEC-0120` A.13, A.31) ; sa cellule
   nommait aussi le lieu de vie de l'enfant (`DEC-0028`), que `nadia-prof` (s32) et `theo-archi` (`avis-faisabilite-sept-dessins.md`, 2.1)
   donnent pour l'obstacle. Corrige par `DEC-0120` A.41.
+- **Un vivier se compte avec le plafond de celui qui le porte.** La condition (i) de la derivation au-dela de 8,0 demande
+  *"au moins 4,0 de lots instruits"* prenables par une troisieme instance sous `PAR-1` et `PAR-2` ; mesuree, elle donne 18,0
+  sous ces deux regles et 3,0 sous `PAR-8` (trois lots a 1,0 par instance). L'exemple de `nadia-prof` (quatre lots de `G4`,
+  4,0) ne tient pas sur une instance. Ecrit par `DEC-0120` A.50 ; la lecture est a `nadia-prof`.
+- **Une mesure routee a soi-meme se fait dans le geste qui la rend due.** La mesure de la condition (i) a ete laissee deux
+  fois (`DEC-0120` A.36, A.45) pour *"hors du travail demande"* ; elle etait due depuis A.5 point 2 et s'est faite avec
+  des commandes sur des fichiers deja presents (`DEC-0120` A.50). Un report de sa propre mesure se compte comme un autre.
+- **Une seconde lecture d'un compte de matrice lit huit champs, pas neuf.** Trois lignes de donnees n'ont pas de barre
+  finale (`DEC-0120` A.40) : une analyse qui l'exige rend 274 au lieu de 277. C'est le desaccord entre les deux methodes
+  qui l'a montre.
