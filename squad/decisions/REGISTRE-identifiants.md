@@ -11,6 +11,13 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, hors sprint, le 2026-10-13, 17:01 (`QLM-CE1-09`, forme degradee de `theo-archi` jugee
+recevable).** Un identifiant ajoute, une condition, **`PLG-CE1-2`**, ecrite dans la section 11 de
+`squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`. **Forme copiee** de `PLG-CE1-1` :
+trois segments, sans marqueur de reserve ; prefixe deja alloue, numero suivant. Ligne d'etat portee de **980 / 178 a
+981 / 178**, chiffre recopie du garde-fou sur mon diff avant la mise a jour : *"declare 980 identifiants alloues et 178
+prefixes distincts, sa table en porte 981 et 178"*, seul echec des 10 tests.
+
 **Note de `nadia-prof`, hors sprint, le 2026-10-13 (instruction des referentiels de CE1 de questionner le monde et d'EMC,
 `DEC-0120` A.36).** Trente-trois identifiants ajoutes, des conditions, tous ecrits dans
 `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` : `NRC-CE1-1`, `QMT-CE1-1` et
@@ -852,7 +859,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `980` identifiants alloues, `178` prefixes distincts.
+**Compte courant, verifie par la CI** : `981` identifiants alloues, `178` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2403,6 +2410,7 @@ clause 2 par une exemption.
 | `DEL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `DEL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `PLG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `PLG-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `PAY-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `PAY-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
 | `COC-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |

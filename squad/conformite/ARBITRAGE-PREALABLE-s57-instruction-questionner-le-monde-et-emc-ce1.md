@@ -256,6 +256,9 @@ moitie textuelle : lire une legende sans plan est une contrefacon (`CON-1`).
 > et ne compte pas ici (`NRC-CE1-1`). Plan d'un lieu fictif nomme ; aucun item ne suppose le quartier de l'enfant
 > (`EMC-6`).
 
+*Ajout du 2026-10-13, 17:01 : la forme degradee proposee par `theo-archi` est jugee en section 11 (recevable sous
+`PLG-CE1-2`, sur la moitie "situer un lieu" seule, plafond `en cours`). Le verdict ci-dessus n'est pas reecrit.*
+
 ### 3.10 `QLM-CE1-10` - identifier un paysage par ses elements
 
 **Verdict : ACCEPTEE SOUS CONDITIONS `PAY-CE1-1`, `PAY-CE1-2`.** Plafond : `couvert-valide`.
@@ -490,3 +493,106 @@ sans dessin (`QLM-CE1-07`), 2 qui n'ont rien sans dessin (`-09`, `-11`) ; 1 non 
 | `sofia-sm` | Aucun geste ; `PAR-2` (5.3) le jour ou un lot de ces matieres est compose |
 
 **Signe** : `nadia-prof`, hors sprint, 2026-10-13.
+
+---
+
+## 11. `QLM-CE1-09` : la forme degradee de `theo-archi` (Q4), jugee le 2026-10-13, 17:01 (UTC+02:00)
+
+### 11.1 Ce qui m'est soumis, et ce que j'ai lu
+
+- **La forme** (Q4 de l'avis de faisabilite des sept dessins, `theo-archi`) : le plan se sert en designation ; la legende
+  n'a aucune place a l'ecran, parce qu'un dessin ne porte aucun texte (`ADR-0073` clause 4) et que `ZoneADesigner` n'a ni
+  `texteSupport` ni `tableauSupport`. Le sens du symbole est donne dans l'enonce, l'enfant designe le symbole sur le plan.
+  Pour l'itineraire, un geste par manche : seule l'arrivee se designe. La forme fidele, la legende lue dans le dessin,
+  demanderait un `ADR`.
+- **L'avis de `theo-archi` n'est pas dans le depot** a `9e55f87f` : `git grep -l "sept dessins"` rend `DEC-0120`, le
+  backlog, la matrice et le referentiel, aucun avis. Je juge sur le resume que l'agent qui me lance m'a transmis, et j'ai
+  verifie moi-meme les deux faits techniques dont il depend : la Javadoc de `ZoneADesigner` ecrit *"ni texteSupport, ni
+  partDesignee"* et le record n'a aucun champ de texte support ; `ADR-0073` clause 4 interdit `<text` et `<tspan` dans
+  un dessin, et ecrit que la clause *"cede"* le jour ou je demande une figure legendee.
+- **La reponse de l'utilisatrice** : *"oui"* a Q4, le 2026-10-13, transmis par un agent ; je ne l'ai pas lue de sa main.
+  C'est son avis sur la forme, pas un Done ni une recevabilite : celles-ci sont jugees ici.
+- **Je n'ai rien joue.** Aucun plan a legende n'existe, aucun paquet, aucun item. Ce jugement est une instruction sur
+  description, pas un audit.
+
+### 11.2 Verdict : RECEVABLE SOUS CONDITION `PLG-CE1-2`, sur la moitie "situer un lieu" seule. Plafond : `en cours`
+
+**Ce que la forme degradee sert.** Un enfant qui lit *"La croix verte, c'est la pharmacie. Montre la pharmacie."* et
+appuie sur la croix verte parmi d'autres symboles a fait le geste central de la legende : passer du lieu cherche a son
+symbole, puis du symbole a sa place sur le plan. Le test de `CON-1` tient : en effacant le plan, la reponse ne se trouve
+plus, puisque c'est un endroit.
+
+**Ce qu'elle ne sert pas.** La legende n'est plus une table a cote du plan, ou l'enfant cherche une entree parmi
+plusieurs : l'enonce lui tend l'entree utile. C'est la moitie de la competence que l'enfant de CE1 rencontre sur une
+fiche de classe, et elle manque. D'ou `en cours`, jamais `couvert-valide`, dans cette forme.
+
+**Pourquoi l'itineraire n'entre pas.** Avec un seul geste, l'arrivee seule, un item d'itineraire n'a que deux ecritures
+possibles, et je les refuse toutes les deux :
+
+1. l'itineraire est decrit par les symboles eux-memes (*"Pars de la croix verte, passe devant le rond bleu"*) : l'enfant
+   suit des formes, il ne lit plus aucune legende. L'item se resout sans elle et sert `QLM-CP-11`, pas cette ligne
+   (`PLG-CE1-1`, `NRC-CE1-1`) ;
+2. l'itineraire est decrit par des lieux (*"Pars de la pharmacie, passe devant la piscine"*) : chaque lieu demande son
+   entree de legende dans l'enonce. Deux entrees, le depart, l'etape et la question depassent les 20 mots et les trois
+   phrases de `LON-CE1-1` et `LON-CE1-2`.
+
+Un itineraire trace sur le dessin ne vaut pas mieux : son arrivee est l'autre bout du trait, visible sans le suivre.
+**Aucun item d'itineraire n'entre dans un paquet de cette ligne sous la forme degradee.**
+
+> **`PLG-CE1-2` - la forme degradee, bornee.** Valable tant que la legende ne peut pas etre lue dans le dessin.
+> 1. **L'enonce donne une ou deux entrees de legende** (*"la croix verte, c'est la pharmacie"*), puis demande un lieu.
+>    Quand il en donne deux, le lieu demande n'est pas toujours le premier nomme. `LON-CE1-1` et `LON-CE1-2` valent sans
+>    exception.
+> 2. **Derogation a `CON-2`, limitee et ecrite** : l'enonce peut nommer la forme et la couleur d'un symbole, parce que
+>    c'est le contenu d'une legende. Il ne dit jamais **sa position** (ni *en haut*, ni *a cote de*, ni *pres de*), qui
+>    reste la donnee du plan.
+> 3. **Chaque symbole n'apparait qu'une fois sur le plan**, et parmi les zones designables, au moins un autre symbole
+>    partage avec la bonne zone sa forme ou sa couleur : l'enfant lit le symbole entier, pas un seul trait.
+> 4. **Aucun texte a l'ecran ne contourne la legende.** `ZON-16` (aucun libelle de zone ne nomme un objet du dessin) et
+>    `ZON-3` (le texte alternatif dit ce qu'est l'image, jamais ou est la reponse) valent sur ce plan : un libelle ou un
+>    texte alternatif qui dit *"la pharmacie"* ou *"la croix verte en haut"* donne la reponse. `ZON-14` (un item, un
+>    geste) et `DES-7` (rien n'est ecrit sur le dessin) valent aussi.
+> 5. **Aucun item d'itineraire** (11.2, ci-dessus).
+
+`PLG-CE1-1` n'est pas modifie : une barre que j'ai ecrite le matin ne se releve pas l'apres-midi. Les items de la forme
+degradee la tiennent par sa premiere branche (*"lire un symbole de la legende pour trouver un lieu"*).
+
+### 11.3 Ce que cela change pour `QLM-CE1-09`
+
+| | Avant (3.9, 9) | Apres ce jugement |
+|---|---|---|
+| Verdict | ACCEPTEE SOUS CONDITION `PLG-CE1-1`, en attente d'un dessin | ACCEPTEE SOUS CONDITIONS `PLG-CE1-1`, `PLG-CE1-2`, **toujours en attente d'un dessin** : la forme degradee demande elle aussi un plan avec ses symboles, et il n'existe pas |
+| Plafond avec le plan, forme degradee | - | **`en cours`**, mention : *"situer un lieu par un symbole dont le sens est donne dans l'enonce ; lire la legende sur le plan et suivre un itineraire ne sont pas servis"* |
+| `couvert-valide` | avec le dessin | avec **les deux** : la legende lue dans le dessin (forme fidele), et l'itineraire servi sous une forme ou l'enfant lit la legende pour le suivre |
+
+**Couverture partielle, et elle compte.** Sous la forme degradee, `QLM-CE1-09` rejoint `QLM-CE1-07` : une ligne qui
+peut atteindre `en cours`, pas `couvert-valide`. Le recapitulatif de la section 9 se lit desormais : 13 lignes a
+`couvert-valide` atteignable sans dessin, 2 plafonnees `en cours` (`-07` sans dessin, `-09` avec un plan en forme
+degradee), 1 qui n'a rien sans dessin (`-11`), 1 non couvrable.
+
+**`PAR-13` ne change pas** (5.1) : un plan a symboles reste un support qu'aucun paquet n'a servi, et la lecture d'une
+entree de legende n'a jamais rencontre de contenu. La ligne reste un terrain neuf.
+
+**La forme fidele, je la demande.** `ADR-0073` clause 4 ecrit qu'elle cede le jour ou je demande une figure legendee :
+je la demande pour cette ligne, parce que c'est la seule voie vers `couvert-valide`. Je ne dis ni quand, ni par quel
+moyen : la priorite est a `camille-po`, le moyen et l'`ADR` a `theo-archi`.
+
+### 11.4 Ce dont je reste la seule garde sur cette ligne
+
+| Propriete | Qui la tient |
+|---|---|
+| `PLG-CE1-2` points 1, 2 et 3 (entrees dans l'enonce, aucune position, symboles qui partagent un trait) | moi seule, item par item |
+| `PLG-CE1-2` point 4 (libelle et texte alternatif qui ne nomment pas le lieu) | moi, en lisant les libelles et en jouant ; `git grep -ln "ZON-16\|ZON-3\b" -- '*.java'` ne rend aucun fichier |
+| `CON-1` sur le plan | moi seule, en jouant, image effacee |
+
+### 11.5 Routage
+
+| A qui | Quoi |
+|---|---|
+| `camille-po` | Reporter dans la matrice le plafond `en cours` de `QLM-CE1-09` sous forme degradee, et sa mention (11.3) ; l'effet sur le maximum de `DEC-0120` A.31 ; la demande de forme fidele, a prioriser |
+| `theo-archi` | L'`ADR` de la forme fidele, que la clause 4 d'`ADR-0073` attendait de ma demande (11.3) ; rien a faire pour la forme degradee, qui ne change aucun code |
+
+Identifiant ecrit : `PLG-CE1-2`, forme copiee de `PLG-CE1-1` (trois segments, sans marqueur de reserve), allouee dans la
+section 4 du registre dans le meme diff.
+
+**Signe** : `nadia-prof`, hors sprint, 2026-10-13, 17:01.
