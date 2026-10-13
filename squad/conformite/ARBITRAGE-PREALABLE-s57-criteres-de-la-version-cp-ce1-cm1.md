@@ -313,7 +313,7 @@ section 5). Je juge le decoupage de `DEC-0120` section 1 : X (`-04`, `-05`, `-06
 | Instance | Sans lot de `G4` | Avec un lot de `G4` |
 |---|---|---|
 | A (X) | **2,5** : arbitrage, marge, `VSJ-CE1-R1`, 1 lot | **2,5** : idem |
-| A' (Y) | **3,0** : arbitrage, marge, 2 lots | **2,75** : arbitrage, marge, 1 lot ; 0,25 non affectes |
+| A' (Y) | **3,0** : arbitrage, marge, 2 lots | **2,75** : arbitrage, marge, 1 lot ; 0,25 non affectes [faux : 0,75, section 10.2] |
 | B | **2,5** : arbitrage, marge, rejeu d'`ART-CP-10`, `S54-OBS-SCI-CONSIGNE` ; 0,75 non affectes | **2,75** : idem, plus 1 lot de `G4` |
 | Somme | 8,0 ; 3 lots de francais CE1 | 8,0 ; 2 lots de francais CE1, 1 lot de mathematiques CE1 |
 
@@ -404,5 +404,76 @@ dix. Je ne l'applique pas.
   declares par leurs referentiels (`ADR-0081`).
 - Il ne verifie pas s56 contre les trois formes, et ne derive aucune borne au-dela de 8,0.
 - Il n'edite ni `retro.md` de s56, ni `DEC-0120`, ni aucun fichier d'un sprint clos.
+
+**Signe** : `nadia-prof`, hors sprint, 2026-10-13.
+
+---
+
+## 10. Amendement du 2026-10-13, 16:33 (UTC+02:00) (`nadia-prof`, apres `DEC-0120` A.27 a A.37)
+
+Annotation datee, branche `s57-nadia` a `9d101ea0`. **Rien au-dessus n'est reecrit**, sauf un renvoi ajoute dans la
+cellule fausse de 4.3. Ce que `DEC-0120` A.36 me route : `PAR-13` pour les deux matieres neuves de CE1, l'instruction
+des deux referentiels et son prix, `Q-N1`. S'y ajoutent `LVE-CM1-06` et la conformite a la reponse de l'utilisatrice.
+
+### 10.1 Instruction et `PAR-13` : faites, dans un document a part
+
+`squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`. Ce que 2.3 disait *"pas faite
+ici"* l'est la : 16 lignes acceptees sous conditions, `EMC-CE1-05` confirmee non couvrable, `QLM-CE1-07` plafonnee
+`en cours` sur sa moitie textuelle. `PAR-13` : ni l'EMC CE1 ni les lignes textuelles de questionner le monde CE1 ne sont
+un terrain neuf ; chacune des trois lignes a dessin en est un. **Prix de l'instruction : aucun prix mesurable**, la
+methode et la source (`DEC-0106` section 4) sont dans ce document, section 6.
+
+### 10.2 `Q-N1`
+
+**(a) L'ecart est reel, et il est de moi.** Colonne "avec un lot de `G4`", A' : 0,5 + 0,5 + 1,0 = 2,0 ; 2,75 moins 2,0 =
+**0,75 non affectes, pas 0,25**. La somme de 8,0 etait juste, `PAR-9` tient. `camille-po` l'a lu juste (`DEC-0120` A.33,
+motif 4) : les deux colonnes affectent 7,25 et laissent 0,75 non affectes. Le tableau corrige :
+
+| Instance | Sans lot de `G4` | Avec un lot de `G4` |
+|---|---|---|
+| A (X) | 2,5 | 2,5 |
+| A' (Y) | 3,0 | 2,75, dont **0,75** non affectes |
+| B | 2,5, dont 0,75 non affectes | 2,75 |
+| Somme | 8,0 | 8,0 |
+
+**(b) L'instruction n'entre pas dans les 0,75 non affectes de B, parce qu'elle n'a plus a y entrer** : elle est faite
+hors sprint (10.1), comme celle du francais CE1 l'a ete hors chiffrage de la borne d'audit a s48. Les 0,75 de B restent
+non affectes. **Aucun lot de ces dix-sept lignes n'y entre non plus** : un lot neuf vaut 1,0 a mon bareme, plus que
+0,75. La repartition de `camille-po` (A 2,5, A' 3,0, B 2,5) ne change pas.
+
+### 10.3 `LVE-CM1-06` : la valeur que j'estime juste
+
+La cellule de la matrice dit *"non couvert - jouable par saisie, sous conditions `ANG-S1` et `ANG-S2`"*. **Elle est
+fausse depuis le 2026-10-01.** Valeur que j'estime juste, statut inchange :
+
+> `non couvert` - **refusee a la saisie** depuis le 2026-10-01 (`nadia-prof`, `ARBITRAGE-PREALABLE-s45-cinq-lots.md`,
+> section 5.1, motif `R6`) : sur un clavier qui corrige, c'est l'appareil qui produit les lettres du mot anglais.
+> Aucune autre mecanique ne la sert : au choix, l'enfant reconnait le mot, c'est `LVE-CM1-04`. Hors vivier. Levable
+> aux conditions de `R6` (correction automatique non acceptee, ou appareil ou elle ne s'applique pas), que
+> l'utilisatrice a ecartees.
+
+**Pourquoi `non couvert` et pas `non couvrable en l'etat`** : ce statut est reserve a une contrainte fondatrice du
+produit ou a un jugement humain sur une production libre ("Comment la lire"). `R6` n'est ni l'une ni l'autre : la
+saisie existe, c'est l'appareil qui la defait, et une decision de l'utilisatrice la leverait. Le denominateur ne change
+pas. **La matrice est a `camille-po`** ; je ne la touche pas.
+
+### 10.4 La reponse de l'utilisatrice du 2026-10-13 : conformite verifiee
+
+Mots transmis par `DEC-0120` A.27, forme 2, que je n'ai pas lus de sa main : `Q1` *"non nouveaux items"*, `Q2` *"non pas
+de son"*. Les deux questions de la section 8 sont closes.
+
+| Point | Etat | Geste |
+|---|---|---|
+| Critere de 2.1 (pas de ligne jumelle) | **conforme** : c'est la reponse de `Q1` | aucun |
+| Referentiels de CE1, au niveau des lignes | **conformes** : chaque ligne a un contenu propre et sa frontiere | aucun |
+| Referentiels de CE1, au niveau des items | **non conformes avant ce jour** : quatre lignes pouvaient recevoir un item de CP (`QLM-CE1-04`, `-05`, `-11`, `EMC-CE1-01`), et une demi-ligne (`QLM-CE1-12`) | **corrige** : `NRC-CE1-1` et cinq conditions de ligne (instruction, 1.2) ; une note datee dans chaque referentiel |
+| Pas de son : les deux referentiels | **conformes** : aucune ligne ne demande une voix ; `TRV-CE1-1` les couvre | aucun |
+| Pas de son : l'anglais au CE1 (2.2, *"reportee"*) | **le statut ne tient plus** : il ne restait qu'un declencheur, une decision sur le son, et elle est refusee | **l'anglais au CE1 passe de reportee a refusee**, au motif deja ecrit en 2.2 (programme oral d'abord, aucun son, aucun adulte qui prononce l'anglais). La ligne de 2.2 reste ecrite |
+| Education musicale, EPS au CE1 | refusees, inchangees | aucun |
+| Arts plastiques au CE1 | reportee, inchangee : aucun son en cause ; quand je l'ecrirai, `NRC-CE1-1` vaudra pour elle | aucun |
+
+### 10.5 Ce que cet amendement ne fait pas
+
+Il ne touche ni la matrice, ni `DEC-0120`, ni un paquet, ni le code. Il ne compose pas s57. Il ne prononce aucun Done.
 
 **Signe** : `nadia-prof`, hors sprint, 2026-10-13.

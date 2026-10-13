@@ -11,6 +11,20 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, hors sprint, le 2026-10-13 (instruction des referentiels de CE1 de questionner le monde et d'EMC,
+`DEC-0120` A.36).** Trente-trois identifiants ajoutes, des conditions, tous ecrits dans
+`squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` : `NRC-CE1-1`, `QMT-CE1-1` et
+`-2`, puis deux par ligne (un pour `PLG-CE1-1` et `COC-CE1-1`) : `DVP`, `RAL`, `BPL`, `FAL`, `ETE`, `AIM`, `CIR`, `DEL`,
+`PAY`, `GEN`, `BCO`, `RSA`, `DDE`, `INT`. **Forme copiee** de `TRV-CE1-6` et `LON-CE1-5` : trois segments, niveau au
+milieu, sans marqueur de reserve. **Dix-huit prefixes neufs** : `git grep -E` de chacun rendait 0 avant d'ecrire ; `DEV`
+etait pris, d'ou `DVP`. Les trente-trois lignes de la section 4 sont dans le meme diff que l'arbitrage.
+
+Ligne d'etat courant portee de **947 / 160 a 980 / 178**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend : *"declare 947 identifiants
+alloues et 160 prefixes distincts, sa table en porte 980 et 178"*, seul echec des 10 tests. C'est ce **980 / 178** que je
+recopie. Si une autre branche alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, hors sprint, le 2026-10-12 (Done pedagogique de l'accueil par matiere, V1 par defaut, `DEC-0119`,
 VALIDE SOUS RESERVE).** Un identifiant ajoute, une reserve, **`APM-R2`**, ecrite dans
 `squad/conformite/FICHE-accueil-par-matiere.md`. **Forme copiee** d'`APM-R1` : deux segments, marqueur `R` dans le dernier
@@ -838,7 +852,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `947` identifiants alloues, `160` prefixes distincts.
+**Compte courant, verifie par la CI** : `980` identifiants alloues, `178` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2369,3 +2383,36 @@ clause 2 par une exemption.
 | `APM-12` | `squad/conformite/FICHE-accueil-par-matiere.md` |
 | `APM-R1` | `squad/conformite/FICHE-accueil-par-matiere.md` |
 | `APM-R2` | `squad/conformite/FICHE-accueil-par-matiere.md` |
+| `NRC-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `QMT-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `QMT-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `DVP-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `DVP-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `RAL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `RAL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `BPL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `BPL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `FAL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `FAL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `ETE-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `ETE-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `AIM-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `AIM-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `CIR-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `CIR-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `DEL-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `DEL-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `PLG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `PAY-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `PAY-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `COC-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `GEN-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `GEN-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `BCO-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `BCO-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `RSA-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `RSA-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `DDE-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `DDE-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `INT-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |
+| `INT-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md` |

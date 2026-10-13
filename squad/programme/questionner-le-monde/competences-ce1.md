@@ -94,3 +94,16 @@ non avec les légumes, la vapeur d'eau qui ne se voit pas, la buée qui n'en est
 **Aucun intitulé ci-dessus ne devient un titre de jeu.** Un titre de jeu ne porte jamais le niveau
 de son paquet (`ADR-0078`) ; ces intitulés nomment une compétence pour l'adulte qui pilote la
 couverture, pas un jeu pour l'enfant.
+
+## Note du 2026-10-13, après la réponse de l'utilisatrice (`nadia-prof`)
+
+L'utilisatrice ne veut pas de nouveaux items au CE1 par reprise du CP, ni de son (`DEC-0120` A.27).
+Les lignes ci-dessus y sont conformes ; **leurs items ne l'étaient pas d'avance**. En lisant les
+paquets de CP, j'ai trouvé trois lignes qui pouvaient recevoir un item de CP : `QLM-CE1-04` (le repas
+varié, déjà servi par `cp-qlm-hygiene`), `QLM-CE1-05` (solide ou liquide, et la fonte, servis par
+`cp-qlm-etats-eau`), `QLM-CE1-11` (la France, son continent et son océan, écrits dans
+`cp-qlm-situer-la-france`), et une demi-ligne, `QLM-CE1-12` (les événements d'une journée,
+`QLM-CP-14`). Aucun intitulé ne change. La frontière tient désormais item par item :
+`NRC-CE1-1` et les conditions de chaque ligne, dans
+`squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, qui
+remplace aussi la phrase *"L'instruction ... est due avant le premier paquet"* : elle est faite.

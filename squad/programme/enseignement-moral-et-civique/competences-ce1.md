@@ -79,3 +79,13 @@ présentée comme attestant une conduite. Ce produit vérifie ce qu'un enfant sa
 fait.
 
 **Aucun intitulé ci-dessus ne devient un titre de jeu** (`ADR-0078`).
+
+## Note du 2026-10-13, après la réponse de l'utilisatrice (`nadia-prof`)
+
+L'utilisatrice ne veut pas de nouveaux items au CE1 par reprise du CP, ni de son (`DEC-0120` A.27).
+Les lignes ci-dessus y sont conformes ; **leurs items ne l'étaient pas d'avance** sur une ligne :
+`EMC-CE1-01`, dont *"le geste qui le protège"* pouvait recevoir les items de rangement de
+`cp-emc-regles-de-vie` (*"les remettre à leur place"*). Aucun intitulé ne change. La frontière tient
+désormais item par item : `NRC-CE1-1` et `BCO-CE1-1`, dans
+`squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, où
+l'instruction ligne par ligne est faite.
