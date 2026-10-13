@@ -246,3 +246,19 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 **Ce que je route.** `nadia-prof` : `A10`, accord sur `PAR-2`, lecture de (i) et (iii), borne, affectation et prix de B, criteres de `S54-OBS-SCI-CONSIGNE` si elle veut la placer. `sofia-sm` : duree, planning a trois instances, heure de fusion de l'amendement d'`ADR-0065`. `theo-archi` : `S57-ADR-0065-DEUX-INSTANCES`. Utilisatrice : `Q-U2`, `Q-U8`.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, de tarif, de borne ni de duree ; n'ouvre pas s57.
+
+## 2026-10-13 (second) - la version couvre CP, CE1 et CM1 au maximum ; `Q-U8` fermee en (a), distance mesuree (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, je ne les ai pas lus de sa main), en reponse a `Q-U8` : *"idealement CP-CE1-CM1 avec un maximum de couverture"*. Ni date ni statut de ligne exige : non inventes.
+
+**Ce que je verse.** `DEC-0120` amendement A.9 a A.17 (`Proposee`, inchange) :
+1. `Q-U8` (a) fermee. (b) la date et (c) le statut exige restent ouvertes, en questions precises. (d) nouvelle : le CE1 n'a que deux referentiels (francais, mathematiques) contre 8 au CP et 10 au CM1.
+2. Mesure, commande de la "Methode du compte" par niveau : CP 51 / 59, CE1 25 / 44, CM1 66 / 79 ; 142 / 182 = 78,02 % ; 142 / 258 = 55,04 %.
+3. Les 40 lignes non fermees, une par une : rang A 11 (dix lots de francais CE1, reprise d'`ART-CP-10`), rang B 10 (fermable par ecriture, jugement de `nadia-prof`), rang C 19 (bloquee, motif et source par ligne). Maximum atteignable 163 / 182 = 89,56 % ; rang A seul 153 / 182 = 84,07 %.
+4. Projection : arithmetique (O1 : 3 a 5 sprints pour le rang A, O2 : 2) distinguee de la capacite mesuree de s54 a s56 (2, 2, 1 lots de francais CE1 par sprint, 1,67 en moyenne : O2 3 sprints sans marge, O1 4). Maximum : 3 sprints au plancher sous O2 au plafond dur, 6 a 8 sous O1 ; rythme des lots illustres non mesure. Borne et duree non choisies.
+5. Lignes qui sortiraient non couvertes, nommees : 29 si la version sort au rang A, 19 au maximum, plus les 76 hors perimetre.
+6. Ecart signale, non corrige : la cellule de matrice de `LVE-CM1-06` dit *"jouable par saisie"*, `nadia-prof` refuse la saisie depuis le 2026-10-01.
+
+**Ce que je route.** `nadia-prof` : jugement du rang B, prix de ses lots, lecture d'A.15 pour `PAR-8`, `A10`, referentiels de CE1 si l'utilisatrice repond oui a `Q-U8` (d). `sofia-sm` : duree et planning. `theo-archi` : avis sur les quatre dessins manquants, lien de `A3` avec `MAT-CP-10`. Utilisatrice : `Q-U2`, `Q-U8` (b), (c), (d).
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, de tarif, de borne ni de duree ; n'ouvre pas s57.

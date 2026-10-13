@@ -322,3 +322,177 @@ Mots de l'utilisatrice : *"il faut sortir une version"*. Le depot ne dit pas ce 
 - Il n'ecrit ni `A10`, ni l'accord sur `PAR-2`, ni les criteres de `S54-OBS-SCI-CONSIGNE`, ni l'avis de `theo-archi`.
 - Il ne touche ni code, ni catalogue, ni paquet, ni matrice, ni fiche. Il ne dit pas que la CI distante est verte.
 - **Jobs de `ci.yml` lances pour son commit** : `prefixes` et `chemins` (resultats dans le message de livraison). `outils` et `build` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil.
+
+---
+
+## Amendement du 2026-10-13, second (`camille-po`, apres la reponse partielle a `Q-U8`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.10. Le sprint n'est toujours pas ouvert : ni `planning.md`, ni tarif, ni borne, ni duree, ni affectation. **Aucune ligne de matrice, aucun catalogue, aucun paquet, aucun code n'est touche** : 142 / 182 (78,02 %).
+
+### A.9 Les mots de l'utilisatrice, forme 2 de `DEC-0062`
+
+Mots de la session du 2026-10-13, tels que l'agent qui m'a lance me les transmet, en les donnant pour recus directement et citables (forme 2) ; **je ne les ai pas lus de sa main** (meme reserve que 0.1 et A.1) : *"idealement CP-CE1-CM1 avec un maximum de couverture"*. Ils repondent a `Q-U8`. Ils ne donnent ni date ni statut de ligne exige : je n'en invente aucun.
+
+**Lecture, qui est la mienne.** La version couvre les trois niveaux CP, CE1 et CM1, avec le maximum de couverture de `MATRICE-couverture.md`. *"Idealement"* n'est pas une exigence ferme : ce que la version sort si un niveau n'atteint pas ce maximum a la date n'est pas dit ; je ne le decide pas et le laisse a `Q-U8` (b) plutot que de le presumer.
+
+### A.10 Ce que cet amendement ferme et ce qu'il laisse ouvert
+
+| Point de `Q-U8` (A.6) | Etat | Remplace |
+|---|---|---|
+| (a) le contenu | **fermee** : trois niveaux, couverture maximale de la matrice (A.9) | la phrase *"quelles competences ou quels jeux, ou l'etat du produit a la cloture de s57"* |
+| (b) la date | **ouverte**, question precise ci-dessous | - |
+| (c) le statut exige des lignes | **ouverte**, question precise ci-dessous | - |
+| (d) le perimetre du CE1 | **nouvelle**, decoulee de la mesure A.11 | - |
+
+| Code | Question precise pour l'utilisatrice |
+|---|---|
+| `Q-U8` (b) | **Quelle date, ou quel nombre de sprints ?** Un jour precis, la fin d'un sprint nomme, ou *"quand le maximum est atteint"* ? A.15 donne, pour chaque cible, le nombre de sprints sous O1 et sous O2 : de 2 a 5 sprints pour 153 lignes sur 182, de 3 a 8 pour 163 |
+| `Q-U8` (c) | **La version sort-elle uniquement des lignes `couvert-valide` (Done de `nadia-prof`), ou aussi des lignes `en cours` et des jeux branches sans Done a la date ?** Sans reponse, seul `couvert-valide` compte (definition du statut dans la matrice) |
+| `Q-U8` (d) | **Le maximum du CE1 se mesure-t-il sur les deux referentiels qui existent (francais et mathematiques, 49 lignes), ou faut-il des referentiels de CE1 pour les autres matieres ?** Le CE1 n'a que deux referentiels (`ls squad/programme/*/competences-ce1.md` rend 2 fichiers) contre 8 au CP et 10 au CM1 : un *"maximum de couverture"* du CE1 est aujourd'hui un maximum sur deux matieres. Ecrire un referentiel est un travail de `nadia-prof` (`DEC-0103`), pas le mien |
+
+### A.11 Mesures lancees pour cet amendement (arbre `round-two` a `32cfb7ac`, worktree `version-camille`, 2026-10-13, perimetre : le worktree entier)
+
+| Mesure | Commande ou fichier | Rendu |
+|---|---|---|
+| Matrice, total | commande de la "Methode du compte" de `MATRICE-couverture.md`, 258 lignes | `couvert-valide` 142, `en cours` 4, `non couvert` 36, `non couvrable en l'etat` 76 ; 142 / 182 = 78,02 % |
+| Matrice, par niveau et par matiere | la meme commande, `$3` puis `$2"/"$3` ajoutes comme cle de comptage | tableau A.12 ; 20 couples matiere / niveau |
+| Code de chaque ligne non fermee | script de poste, non commite : lit les 40 lignes `non couvert` ou `en cours` de la matrice et les rapproche du texte des referentiels `squad/programme/*/competences-*.md` | 40 lignes, un code chacune ; `ART-CM1-07` non rapprochee par le script, trouvee par `grep` sur le referentiel |
+| Referentiels par niveau | `ls squad/programme/*/competences-<niveau>.md \| wc -l` | CP 8, CE1 2, CM1 10 |
+| Fichiers de contenu sans entree de catalogue | `comm -23` des fichiers de `contenu/` et des `paquet:` de `catalogue.yaml` (commande de `proposition-s56.md` section 1) | **37** sur 183 fichiers ; 146 `paquet:` au catalogue : inchange depuis 0.3 |
+| Plafonds du francais CE1 | `ARBITRAGE-PREALABLE-s48-francais-ce1.md` section 12 (recapitulatif des 26 verdicts) | 24 `couvert-valide`, 2 `en cours` (`FRA-CE1-03`, `-21`) |
+| Plafonds de `G7` a `G11` | `ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md` section 6 | 15 paquets sur 16 plafonnes a `non couvert` ; `cm1-lire-et-restituer` : `couvert-valide`, apres une mesure de pli non faite |
+| Plafonds de mathematiques CE1 | `ARBITRAGE-PREALABLE-s52-instances-ce1.md` section 4.2, tableau des huit lignes | `MAT-CE1-01`, `-10`, `-11`, `-15` : `en cours` au plus ; `-14` : `couvert-valide` sur deux moities dont une designation |
+| `LVE-CM1-06` | `ARBITRAGE-PREALABLE-s45-cinq-lots.md`, `Q5` (section 5) | *"refusee a la saisie"* au motif de `R6`, depuis 2026-10-01 |
+| Corpus d'oeuvres | `grep -c "identifiant: oeuvre-" squad/corpus/oeuvres-domaine-public.yaml` | 12 |
+| `non couvrable en l'etat` : nature | `awk` sur la septieme cellule des 76 lignes, mots *"nature irreversible"* et *"reversible"* | irreversible 54, reversible 13, sans mention 9 |
+| Capacite mesuree, francais CE1 | notes de cloture de `MATRICE-couverture.md` pour s54, s55, s56 ; `cloture-nadia.md` de s56 section 6 ; `proposition-s56.md` section 2 | lignes de francais CE1 fermees par l'instance A : **2** a s54 (`FRA-CE1-18`, `-19`), **2** a s55 (`-14`, `-12`), **1** a s56 (`-13`) ; moyenne 5 / 3 = **1,67** par sprint et par instance, contre 3 en arithmetique de `PAR-8` |
+
+Ce que je n'ai pas lu ni lance : aucun avis de `theo-archi`, aucun arbitrage prealable de `nadia-prof` pour s57 (ils n'existent pas) ; aucun jar, aucun test de contenu ; aucun prix de `nadia-prof` pour les lignes du rang B autres que `QLM-CP-10`.
+
+### A.12 Distance au maximum, par niveau
+
+**Denominateur.** Les 258 lignes se partagent en 182 atteignables et 76 `non couvrable en l'etat` (definition du statut dans la matrice : retirees du denominateur, sans l'etre du referentiel). 142 / 182 = 78,02 % ; **142 / 258 = 55,04 %** si l'on compte les 76.
+
+| Niveau | Lignes | `couvert-valide` | `en cours` | `non couvert` | `non couvrable` | Atteignables | Taux |
+|---|---|---|---|---|---|---|---|
+| CP | 92 | 51 | 2 | 6 | 33 | 59 | 51 / 59 = 86,44 % |
+| CE1 | 49 | 25 | 2 | 17 | 5 | 44 | 25 / 44 = 56,82 % |
+| CM1 | 117 | 66 | 0 | 13 | 38 | 79 | 66 / 79 = 83,54 % |
+| **Total** | **258** | **142** | **4** | **36** | **76** | **182** | **78,02 %** |
+
+Le CE1 est le niveau le plus loin du maximum : 19 lignes non fermees sur 44, dont les 10 du francais en rang 1.
+
+### A.13 Les 40 lignes non fermees : fermable, bloquee, hors perimetre
+
+Definitions. **Rang A (fermable, paquet ecrit)** : un paquet existe, son plafond ecrit permet `couvert-valide`, il reste un lot d'audit de `nadia-prof`. **Rang B (fermable par ecriture)** : le depot n'ecrit ni plafond, ni refus, ni decision, ni mecanique manquante qui l'interdise ; aucun paquet jugeable n'existe (absent, ou plafonne a `non couvert` faute d'image) ; **que l'ecriture reussisse est un jugement de `nadia-prof`, pas le mien**. **Rang C (bloquee)** : le depot ecrit ce qui manque, et ce n'est ni un lot ni une ecriture. **Hors perimetre produit** : les 76 `non couvrable en l'etat`, hors de ce tableau (A.12 les compte, A.16 les nomme par matiere).
+
+| Rang | Lignes | Niveau | Ce que le depot dit | Source |
+|---|---|---|---|---|
+| A | `FRA-CE1-04`, `-05`, `-06`, `-07`, `-08`, `-09`, `-10`, `-11`, `-15`, `-24` (10) | CE1 | dix paquets ecrits, sans entree de catalogue : `ce1-texte-narratif`, `-pronoms`, `-inference`, `-texte-documentaire`, `-ordre-des-mots`, `-relire-une-phrase`, `-phrases-types`, `-negation`, `-accord-groupe-nominal`, `-familles-de-mots` ; plafond `couvert-valide` ; `-15` avant `-09` | `comm -23` ; s48 section 12 ; section 1 |
+| A | `ART-CP-10` (1) | CP | paquet refuse (656 px pour un pli a 551), retire du catalogue ; correctif de 105 px et de deux textes, rejeu de 0,5 | `cloture-nadia.md` s56 ; 4.2 |
+| B | `QLM-CP-10` | CP | palier 1 illustre existe (`ADR-0073`), cout de 2,0 ; le fichier `cp-qlm-vocabulaire-de-position` est plafonne a `non couvert` (sans image) | s55 A section 6 ; cellule de matrice (`DEC-0099` section 4 ter) |
+| B | `QLM-CP-16` | CP | il manque un paquet ou *comparer* est la tache de la plupart des items, sous `BIA-1`, `BIA-2` ; le fichier ecrit ne compare que sur 1 item de 12 | s55 A section 6 |
+| B | `ART-CM1-07` | CM1 | palier 1 illustre, image d'oeuvre requise ; droits tranches (`DEC-0077`) ; aucun paquet | cellule de matrice |
+| B | `ART-CM1-08` | CM1 | paquet ecrit plafonne a `non couvert` : il faut une reproduction par item | s55 A section 6 |
+| B | `HDA-CM1-01`, `-02`, `-03`, `-04` | CM1 | quatre paquets ecrits plafonnes a `non couvert` : il faut une reproduction par item | s55 A section 6 |
+| B | `HDA-CM1-06` | CM1 | idem ; mention exigee : *"identification et ordre entre deux oeuvres seuls ; le placement sur une frise reste non couvert"* | s55 A section 6 ; cellule |
+| B | `LVE-CM1-05` | CM1 | condition de `nadia-prof` : un second paquet lexical valide avant que la ligne s'ouvre (deux lots, pas un) | s55 A section 6 |
+| C, plafond | `MAT-CE1-01`, `-10`, `-11`, `-15` ; `FRA-CE1-03`, `-21` (6) | CE1 | plafond ecrit `en cours` : un lot fait passer la ligne a `en cours`, jamais a `couvert-valide`. `-21` : releve seulement par une decision de l'utilisatrice (dictee ou saisie alphabetique au CE1) ; `-03` : rien de connu | s52 4.2 ; complement s55 section 3 |
+| C, mecanique ou materiau | `MAT-CP-01` | CP | *denombrer* ne se sert pas par une mecanique textuelle (constat de `theo-archi`) | cellule ; `ARBITRAGE-PREALABLE-s39-den-longueur-monnaie-solides.md` section 1 |
+| C, mecanique ou materiau | `MAT-CE1-09` | CE1 | aucune image de regle, aucune lecture de graduation | cellule |
+| C, mecanique ou materiau | `MAT-CE1-02` | CE1 | `couvert-valide` seulement avec une ligne graduee dessinee (`ORD-CE1-6`) ; moitie designation non engagee, deux reports | cellule ; `DEC-0111` section 9 |
+| C, mecanique ou materiau | `MAT-CE1-14`, `MAT-CP-10` | CE1, CP | designation sur quadrillage : `A3` d'`ADR-0080` non ecrit. Le lien `A3` / `MAT-CE1-14` est ecrit (`DEC-0112` 5.3) ; **pour `MAT-CP-10` il ne l'est pas, c'est la meme moitie (quadrillage) : a confirmer par `theo-archi`** | `ADR-0080` ; cellule de `MAT-CP-10` |
+| C, mecanique ou materiau | `QLM-CP-12`, `HG-CM1-09`, `HG-CM1-10` | CP, CM1 | aucun dessin de carte, de globe ni de planisphere (palier 2 existe, trois entrees au catalogue) ; `HG-CM1-10` : le lieu de vie de l'enfant n'est pas connu du produit (`DEC-0028`) | cellules (commandes `grep -c` et `find` de la cellule) |
+| C, mecanique ou materiau | `HDA-CM1-09` | CM1 | un plan de musee en designation, absent | s55 A section 6 |
+| C, decision | `FRA-CM1-01` | CM1 | paquet ecrit, plafond `couvert-valide`, apres une mesure de pli de `LIS-2` que l'utilisatrice a ecartee (*"D4 non"*) | `DEC-0116` A.21, A.24 |
+| C, refus ecrit | `EMC-CP-04` | CP | refusee d'avance (`EMC-4` : une seule tache possible, l'interdit) | `DEC-0081` section 7 |
+| C, refus ecrit | `LVE-CM1-06` | CM1 | refusee a la saisie (`R6`) depuis le 2026-10-01. **Ecart** : la cellule de matrice dit encore *"jouable par saisie, sous `ANG-S1` et `ANG-S2`"* ; non corrige ici (matrice) | `ARBITRAGE-PREALABLE-s45-cinq-lots.md` `Q5` ; cellule |
+| C, aucune forme | `FRA-CP-05` | CP | *"une forme ou la proposition ne reproduit pas les lettres du stimulus ; je n'en connais pas sans image ni son"* | s55 A section 6 |
+
+**Compte** : rang A 11, rang B 10, rang C 19 ; 11 + 10 + 19 = 40 = 4 `en cours` + 36 `non couvert`. Les quatre `en cours` (`MAT-CP-01`, `MAT-CP-10`, `MAT-CE1-02`, `MAT-CE1-09`) sont toutes en rang C.
+
+**Les lignes les plus proches du rang B** : quatre lignes de rang C n'ont pour seul manque qu'un dessin (`QLM-CP-12`, `HG-CM1-09`, `HG-CM1-10`, `HDA-CM1-09`). L'avis de faisabilite de `theo-archi` est a obtenir avant tout chiffrage (`DEC-0099` section 4 ter) ; je ne le presume pas.
+
+### A.14 Le maximum atteignable
+
+**Definition.** Le maximum atteignable est le nombre de lignes `couvert-valide` si tous les lots du rang A et du rang B ferment, **sous les plafonds, refus et decisions tels que le depot les ecrit aujourd'hui**. Ce n'est pas une promesse : le rang B depend du jugement de `nadia-prof`, et chaque lot peut etre refuse.
+
+| Cible | Lignes `couvert-valide` | Sur 182 | Sur 258 |
+|---|---|---|---|
+| Aujourd'hui | 142 | 78,02 % | 55,04 % |
+| Rang A ferme (+ 11) | **153** | 84,07 % | 59,30 % |
+| **Maximum : rangs A et B (+ 21)** | **163** | **89,56 %** | 63,18 % |
+| Si l'utilisatrice leve `D4` (+ `FRA-CM1-01`) | 164 | 90,11 % | 63,57 % |
+
+| Niveau | Aujourd'hui | Rang A ferme | Maximum (A + B) | Taux au maximum |
+|---|---|---|---|---|
+| CP | 51 | 52 | 54 | 54 / 59 = 91,53 % |
+| CE1 | 25 | 35 | 35 | 35 / 44 = 79,55 % |
+| CM1 | 66 | 66 | 74 | 74 / 79 = 93,67 % |
+
+**Lecture.** Le CE1 plafonne a 79,55 % : ses 9 lignes restantes (`MAT-CE1-01`, `-02`, `-09`, `-10`, `-11`, `-14`, `-15`, `FRA-CE1-03`, `-21`) sont toutes en rang C. Le rang B profite au CM1 (8 lignes) et au CP (2). Un maximum de 163 laisse 19 lignes atteignables non fermees et 76 hors perimetre.
+
+### A.15 Projection : ce que l'arithmetique permet, ce que la capacite mesuree a donne
+
+**Hypotheses, ecrites pour pouvoir etre contestees.** Celles de A.4 (un lot de francais CE1 = 1,0 ; arbitrage 0,5 et rejeu 0,5 par instance ; au plus 3 lots et 5,0 par instance, `PAR-8` ; une seule instance par matiere, `PAR-2` ; reprise d'`ART-CP-10` 0,5 chez B ; `VSJ-CE1-R1` 0,5 chez A) et : **un lot du rang B coute 2,0**, seul prix ecrit (`QLM-CP-10`, `DEC-0099` section 4 ter) ; **2,5** si le prix est celui de l'audit du paquet d'`ART-CP-10` (`cloture-nadia.md` de s56, section 6). Aucun autre prix du rang B n'est ecrit. La borne est a `nadia-prof` (`PAR-8`), la duree a `sofia-sm` : ces chiffres sont des planchers de calcul, pas des propositions.
+
+**Arithmetique, rang A (153).** Travail : 10 lots + 0,5 (reprise) + 0,5 (`VSJ-CE1-R1`) = 11,0.
+
+| | O1 : 8,0, trois instances a s57 | O2 : borne relevee |
+|---|---|---|
+| s57 | 2 lots de francais CE1 (A.4) | 5 lots si A a 3,5 et A' a 4,0 de budget : **plancher de 9,0** avec B a 1,5 ; 12,0 (exemple de A.4) y suffit |
+| Fin du rang A | **s59** si s58 revient a deux instances a 8,0 (6 lots) ; **s61** si les trois instances durent (2 lots par sprint) | **s58** : deux sprints est le minimum, car deux instances de francais CE1 prennent 6 lots au plus par sprint |
+| Sprints | 3 a 5 | 2 |
+
+**Mesure, rang A.** A.11 : 2, 2, 1 lots de francais CE1 par sprint pour une instance (s54, s55, s56), soit 1,67. Les reserves de lots anterieurs ont pris la place des lots neufs (s55 : 1,75 de rejeux sur 3,5 consommes ; s56 : `CLM-CE1-R1` 1,0 et `ACV-CE1-R1`, `-R2` 0,5 dans les 2,5 d'A). Deux instances de francais CE1 au rythme mesure : 3,33 lots par sprint.
+
+| | O1 | O2 |
+|---|---|---|
+| s57 | 2 (l'arithmetique plafonne sous le rythme mesure) | 3,33 |
+| s58 | 3,33 | 3,33 |
+| s59 | 3,33, cumul 8,67 | 3,33, cumul **10,0** |
+| Fin du rang A au rythme moyen | **s60** | **s59**, sans marge |
+| Rythme maximal observe (2 par instance) | s59 | s59 |
+| Rythme minimal observe (1 par instance) | s61 | s61 |
+
+**Ce que la mesure dit de l'arithmetique** : l'arithmetique de s58 (O2) demande 5 lots a s57, soit 2,5 par instance de francais CE1 ; le rythme mesure n'a jamais depasse 2. **Aucune des deux options ne tient le francais CE1 en deux sprints sur la capacite mesuree.** O2 le tient en trois, sans marge ; O1 en quatre.
+
+**Arithmetique, maximum (163).** Travail : 11,0 + 10 x 2,0 = **31,0** (36,0 a 2,5 le lot). Travail par sprint : O1 a trois instances 5,0 (1,67 chacune : **aucun lot de 2,0 ne tient dans une instance**, le rang B n'avance pas) ; O1 a deux instances 6,0 ; O2 a 15,0 (3 x 5,0, plafond dur de `PAR-8`) 12,0.
+
+| | O1 (8,0) | O2 (15,0 au plus) |
+|---|---|---|
+| Travail 31,0 | 6 sprints (deux instances, 31,0 / 6,0) a 7 (trois instances, 31,0 / 5,0) | **3 sprints** (31,0 / 12,0) |
+| Travail 36,0 | 6 a 8 sprints | **3 sprints** (36,0 / 12,0, sans marge) |
+| Chaine de `HDA-CM1` | cinq lots d'une meme matiere, une seule instance (`PAR-2`) : 5 sprints a 4,0 de budget (un lot par sprint), 3 a 5,0 (deux lots par sprint) | idem |
+
+3 sprints est un **plancher** : il suppose que A, A' et B ne laissent aucun budget inemploye, que les matieres du rang B (arts plastiques CM1, histoire des arts CM1, questionner le monde CP, anglais CM1) tiennent sur ces trois instances, et que la borne est au plafond dur. **Je n'ai aucune mesure du rythme des lots illustres** : le depot en donne une fermeture au troisieme passage (`ART-CP-09`, s50), et une ligne engagee trois fois sans fermeture (`ART-CP-10`, 4.2). Le nombre de sprints du maximum n'est donc pas projetable sur la capacite mesuree ; l'ecrire serait inventer un taux.
+
+**Laquelle des deux options est necessaire.** (i) **Rang A (153) en deux sprints** : O2 est necessaire (O1 donne s59 au mieux), et la capacite mesuree ne le permet sous aucune option. (ii) **Rang A en trois sprints** : O2 suffit, O1 ne suffit pas (s60 au rythme moyen). (iii) **Maximum (163) en trois sprints** : O2 au plafond dur est necessaire ; O1 est exclue, car a trois instances a 8,0 le rang B n'avance pas du tout. **Je ne choisis ni la borne (`PAR-8`, `nadia-prof`) ni la duree (`sofia-sm`)** ; ces trois lignes disent ce que chaque cible exige.
+
+### A.16 Ce que la version sortirait non couvert
+
+**Les 76 `non couvrable en l'etat` sortent non couvertes, quelle que soit la cible.** Par niveau et matiere : CP 33 (musique 9, arts plastiques 7, EPS 7, anglais 5, EMC 2, francais 2, questionner le monde 1) ; CE1 5 (francais) ; CM1 38 (musique 10, arts plastiques 8, EPS 8, anglais 3, histoire des arts 3, mathematiques 2, francais 2, EMC 1, sciences 1). Motifs, lus dans les cellules : 54 de nature irreversible (production libre jugee par un humain, geste moteur, groupe absent), **13 de nature reversible** (aucun son fourni, voix de l'adulte, trace graphomotrice : seule une decision de l'utilisatrice les rouvre, `CLAUDE.md`, `DEC-0046`, `DEC-0068`), 9 sans mention de nature dans la cellule.
+
+**Si la version sort au rang A ferme (153)**, 29 lignes atteignables sortent non couvertes (4 `en cours`, 25 `non couvert`) :
+
+- CP (7) : `MAT-CP-01` (`en cours`), `MAT-CP-10` (`en cours`), `FRA-CP-05`, `QLM-CP-10`, `QLM-CP-12`, `QLM-CP-16`, `EMC-CP-04`.
+- CE1 (9) : `MAT-CE1-01`, `-02` (`en cours`), `-09` (`en cours`), `-10`, `-11`, `-14`, `-15`, `FRA-CE1-03`, `-21`.
+- CM1 (13) : `FRA-CM1-01`, `HG-CM1-09`, `HG-CM1-10`, `LVE-CM1-05`, `LVE-CM1-06`, `ART-CM1-07`, `-08`, `HDA-CM1-01`, `-02`, `-03`, `-04`, `-06`, `-09`.
+
+Compte : 7 + 9 + 13 = 29.
+
+**Si la version sort au maximum (163)**, 19 lignes atteignables sortent non couvertes, les 19 du rang C, dont quatre `en cours` :
+
+- CP (5) : `MAT-CP-01` (`en cours`), `MAT-CP-10` (`en cours`), `FRA-CP-05`, `QLM-CP-12`, `EMC-CP-04`.
+- CE1 (9) : `MAT-CE1-01`, `-02` (`en cours`), `-09` (`en cours`), `-10`, `-11`, `-14`, `-15`, `FRA-CE1-03`, `-21`.
+- CM1 (5) : `FRA-CM1-01`, `HG-CM1-09`, `HG-CM1-10`, `LVE-CM1-06`, `HDA-CM1-09`.
+
+Compte : 5 + 9 + 5 = 19.
+
+### A.17 Statuts, routage, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Proposee`.** Elle passe a `Acceptee` quand `A10` est ecrite, que `Q-U2` et `Q-U8` (b), (c), (d) ont leur reponse, et que la borne et la duree sont ecrites (A.7, complete).
+- **Routage.** `nadia-prof` : jugement du rang B (A.13), prix de ses lots, lecture d'A.15 pour `PAR-8`, `A10`, referentiels de CE1 si l'utilisatrice repond oui a `Q-U8` (d). `sofia-sm` : la duree a la lumiere d'A.15, le planning. `theo-archi` : avis de faisabilite des quatre dessins (A.13) ; lien de `A3` avec `MAT-CP-10`. Utilisatrice : `Q-U2`, `Q-U8` (b), (c), (d).
+- **Ecart signale, non corrige** : la cellule de matrice de `LVE-CM1-06` contredit le refus de saisie de `nadia-prof` (A.13). Le corriger est un geste de matrice, a faire avec le build complet ; il n'est pas fait ici.
+- **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni O1 ni O2, ne fixe ni borne ni duree ; ne prononce aucun Done et ne juge aucun contenu (le rang B est une lecture des plafonds ecrits, pas un avis pedagogique) ; ne touche ni code, ni catalogue, ni paquet, ni fiche, ni matrice ; ne dit pas que la CI distante est verte.
+- **Jobs lances pour son commit** : `prefixes` (`.github/scripts/verifier-prefixes.sh`) et `chemins` (`.github/scripts/verifier-chemins.sh`), plus le test de registre des identifiants (`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, `-pl bootstrap -am`) parce que cet amendement cite des identifiants ; resultats dans le message de livraison. `outils` et `build` complet ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, ni matrice.

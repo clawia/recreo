@@ -21609,3 +21609,15 @@ Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, tran
 **`A10` est due** (verification des formes (a), (b), (c) sur s54, par `nadia-prof`) : non ecrite. Mesure de la condition (i) de `nadia-prof` : B peut prendre 0,5 chiffre plus un candidat sans prix, contre 4,0 exiges (`DEC-0120` A.5). **`Q-U8`** : quel contenu doit sortir dans la version et pour quelle date (`DEC-0120` A.6) ; aucun contenu de version n'est presume ici.
 
 **Ce que cette annotation ne fait pas** : elle n'ouvre pas s57, ne fixe ni borne ni duree, n'ecrit ni `A10` ni les criteres de `S54-OBS-SCI-CONSIGNE`, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche.
+
+### Amendement du 2026-10-13, second : la version couvre CP, CE1 et CM1 au maximum de la matrice, distance mesuree (`camille-po`, `DEC-0120` A.9 a A.17)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, non lus de sa main) : *"idealement CP-CE1-CM1 avec un maximum de couverture"*. **`Q-U8` (a) fermee** ; **(b) la date et (c) le statut exige des lignes restent ouvertes** ; **(d) nouvelle** : le CE1 n'a que deux referentiels (francais, mathematiques), le maximum du CE1 est donc un maximum sur deux matieres. Le sprint n'est pas ouvert ; aucun planning, aucun tarif, aucune borne, aucune duree. Matrice : 142 / 182, inchangee.
+
+**Distance au maximum (`DEC-0120` A.12 a A.14)** : 40 lignes non fermees (36 `non couvert`, 4 `en cours`). Rang A (paquet ecrit, 11) : les dix lots de francais CE1 du rang 1 et la reprise d'`ART-CP-10`, soit **153 / 182 = 84,07 %**. Rang B (fermable par ecriture, 10, jugement de `nadia-prof`) : `QLM-CP-10`, `QLM-CP-16`, `ART-CM1-07`, `ART-CM1-08`, `HDA-CM1-01` a `-04`, `HDA-CM1-06`, `LVE-CM1-05`. Rang C (bloquee, 19) : plafond `en cours` (6), mecanique ou materiau (9), decision de l'utilisatrice (1), refus ecrit (2), aucune forme connue (1). **Maximum atteignable : 163 / 182 = 89,56 %**. Les 76 `non couvrable en l'etat` sortent non couvertes quelle que soit la cible (142 / 258 = 55,04 %).
+
+**Projection (`DEC-0120` A.15)** : rang A, O2 en 2 sprints (arithmetique), O1 en 3 a 5 ; sur la capacite mesuree de s54 a s56 (1,67 lot de francais CE1 par instance et par sprint), O2 en 3 sprints sans marge, O1 en 4. Maximum : O2 au plafond dur en 3 sprints au plus tot, O1 en 6 a 8 ; le rythme des lots illustres n'est pas mesure. Ni la borne (`nadia-prof`, `PAR-8`) ni la duree (`sofia-sm`) ne sont choisies.
+
+**Stories** : aucune story neuve, aucun statut de story ne change. Ecart signale, non corrige : la cellule de matrice de `LVE-CM1-06` dit encore *"jouable par saisie"* alors que `nadia-prof` refuse la saisie depuis le 2026-10-01 (`ARBITRAGE-PREALABLE-s45-cinq-lots.md`, `Q5`).
+
+**Ce que cette annotation ne fait pas** : elle n'ouvre pas s57, ne choisit ni O1 ni O2, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche, et ne juge aucun contenu.
