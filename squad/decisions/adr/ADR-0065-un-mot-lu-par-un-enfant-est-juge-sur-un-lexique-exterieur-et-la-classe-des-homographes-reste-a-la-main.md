@@ -373,27 +373,63 @@ aucun fichier Java.
   second entre en conflit. Un amendement identique commite deux fois n'entre pas en conflit (s51) : sans
   consequence de contenu, et sans automate.
 
-**Ce qui ne s'execute pas : le point 1.** Aucune etape de `.github/workflows/ci.yml` ne lie un chemin a
-un auteur. La forme qui le garderait, **proposee et non ecrite ici** (`.github/scripts/` et `ci.yml` sont
-hors du perimetre de cette story) : dans le job `prefixes`, sur la meme plage `RANGE`,
+**Le point 1 : controle par chemin et prefixe, dans le job `prefixes`.** Le commit `7a34366c` de cet
+amendement le proposait sans l'ecrire (`.github/scripts/` et `ci.yml` etaient hors du perimetre de la
+story) et ouvrait une dette. Ecrit dans le commit suivant de la meme branche, sur autorisation de
+l'utilisatrice du 2026-10-13. **La dette est payee** ; ce qui reste est nomme plus bas.
 
-```
-{ git log --no-merges --format=%s ${RANGE} -- <les quatre chemins du point 1>
-  git log --no-merges -G 'french-pos-dict' --format=%s ${RANGE} -- pom.xml adapters/adapter-content/pom.xml
-} | sort -u | grep -v '^\[THEO\] '
-```
+- **Script** : `.github/scripts/verifier-garde-fou-accent.sh <plage>`. Il refuse tout commit de la plage
+  qui touche un chemin garde sans le prefixe `[THEO]` en tete de sujet. Chemins gardes : ce fichier,
+  `AucunMotServiNeSEcarteDeSonAccentTest.java`, `LexiqueFrancais.java`, le repertoire des
+  contre-exemples, `adapters/adapter-content/pom.xml` **entier**, et le `pom.xml` parent par
+  `git log -G 'french-pos-dict'`.
+- **Etape** : `.github/workflows/ci.yml`, job `prefixes`, deux etapes apres les prefixes : le test, puis
+  le controle sur `BASE..SHA`, ou `SHA^!` sans base comparable.
+- **Test** : `.github/scripts/verifier-garde-fou-accent-test.sh` (`ADR-0009`), 21 cas. Un depot jetable,
+  un commit juge par cas : chaque chemin garde mord, deux voisins ne mordent pas (une autre ligne du pom
+  parent, un paquet de contenu). Puis l'historique reel : `acfecb32^!` refuse, `c2802a32^!` et
+  `02ba9e80^!` acceptes ; un commit absent est un echec, jamais un cas saute.
 
-toute ligne restante etant un refus, avec son script de test sur le modele de `verifier-prefixes-test.sh`
-(`ADR-0009`). Ce qu'il interdirait reellement, mesure sur l'historique (mesure, point 2) : sur les quatre
-commits qui ont jamais touche ces chemins, **il aurait refuse `acfecb32`**, une modification reelle du
-perimetre par un autre agent. **Il n'aurait pas vu `02ba9e80`**, commite par moi sur la mauvaise branche :
-le point 4 reste sans automate. Le motif `-G` sur les `pom.xml` est etroit a dessein : garder le fichier
-entier refuserait tout commit d'un autre agent sur le pom parent, un perimetre qui echoue par inclusion.
+**Quatre ecarts a la forme proposee par `7a34366c`**, chacun trouve en l'ecrivant :
 
-**Dette ouverte, nommee : le point 1 n'a pas d'automate tant que ce controle n'est pas fusionne.**
-Jusque-la, il est verifie a la main par `sofia-sm` a chaque fusion d'une branche d'instance :
-`git diff --stat round-two...<branche> -- <les quatre chemins du point 1>` doit etre vide. C'est une
-verification humaine, ecrite comme telle.
+1. **Le pom d'`adapter-content` est garde entier.** `-G 'french-pos-dict'` ne voit pas une ligne
+   `<version>` ajoutee dans le bloc de la dependance, qui ne nomme pas le lexique. Ce fichier n'a ete
+   touche que par deux commits, tous deux `[THEO]` (`git log --format='%h %s' -- adapters/adapter-content/pom.xml` :
+   `d2005d2c`, `f3848460`) : le garder entier n'exclut personne. Le pom parent reste garde par `-G`,
+   pour le motif que la proposition donnait.
+2. **Les fusions ne sont pas exclues.** La simplification d'historique de `git log -- <chemins>` ecarte
+   une fusion identique a l'un de ses parents sur ces chemins ; elle ne garde que celle qui y ecrit autre
+   chose, une resolution de conflit, qui est alors jugee comme un commit. `--no-merges` la laissait
+   passer. Sur l'historique reel, aucune fusion n'est retenue (`git log --merges HEAD -- <chemins>` ne
+   rend rien) : le changement n'exclut personne.
+3. **Sans base comparable, la plage est `SHA^!`, et le script refuse toute plage qui commence par un
+   tiret** (code 2). La plage `-1` de l'etape des prefixes, recopiee ici, aurait juge
+   `git log -1 -- <chemins>` : le dernier commit qui a touche ces chemins, pas le dernier commit.
+4. **Un chemin garde absent de `HEAD` rend le controle rouge.** Sans cela, un renommage le rendrait muet.
+
+**La morsure, prouvee par mutation du script** (`sed` sur une copie, le test relance, la copie restauree ;
+chaque mutation a modifie au moins une ligne et le test a lance 21 cas) : sept mutations, sept rouges,
+chacune sur le cas qu'elle vise et sur lui seul. Retirer le repertoire des contre-exemples, accepter
+`[THEO]` hors de la tete du sujet, retirer le pom d'`adapter-content`, remettre `--no-merges`, neutraliser
+le controle d'existence, retirer la garde du tiret, casser le motif du pom parent.
+
+**Ce qu'il interdit reellement, mesure sur l'historique.** `verifier-garde-fou-accent.sh HEAD` sur
+l'historique atteignable depuis la tete de cet amendement : refuse **`acfecb32`** (`[SOF]`, s24, lot 5b)
+et lui seul. Sur une plage qui le couvre, **`02ba9e80` n'est pas juge** : la simplification le cache,
+sa modification etant celle de `c2802a32` ; juge seul (`02ba9e80^!`), il est accepte.
+
+**Ce qui reste sans automate :**
+
+- **Le point 4** : `02ba9e80`, un amendement de ma main recommite sur la branche d'une instance, porte
+  `[THEO]` et passe. Rien ne lie un commit a sa branche.
+- **Le prefixe est declaratif.** Un autre agent qui ecrirait `[THEO]` passerait ; le controle tient
+  contre `acfecb32`, un agent qui signe de son propre prefixe, pas contre une usurpation.
+- **Une resolution de conflit sur la ligne du lexique du pom parent** : `-G` ne lit pas le diff d'une
+  fusion.
+
+La verification a la main par `sofia-sm` que ce paragraphe exigeait jusqu'a la fusion du controle
+(`git diff --stat round-two...<branche> -- <chemins>`) cesse d'etre due quand cette branche est fusionnee
+sur `round-two`.
 
 **Pourquoi le test n'est pas modifie**, alors que la story demandait l'amendement et le test dans un seul
 commit : rien dans `AucunMotServiNeSEcarteDeSonAccentTest` n'est propre a une instance (mesure, point 1).
@@ -408,16 +444,19 @@ le garde-fou modifierait aussi cette clause. Elle serait decorative.
   de `round-two` dans sa branche. Le delai depend de l'heure de fusion, a `sofia-sm`.
 - **Mauvaise** : le point 1 interdit desormais ce que `acfecb32` a fait a s24. Un developpeur qui veut
   borner ou etendre ce garde-fou passe par `theo-archi`.
-- **Mauvaise** : tant que le controle propose n'existe pas, le point 1 est garde par une verification
-  humaine.
+- **Mauvaise** : le job `prefixes` refuse un commit d'un autre agent sur ces chemins, y compris une
+  correction juste. Elle passe par `theo-archi`.
 
 ### Ce qui me ferait changer d'avis plus tard
 
 - Un troisieme besoin d'admission dans un meme sprint : la forme des items de francais CE1 demanderait
   souvent un mot hors du francais, et une admission par amendement serait trop lente.
 - Un conflit de fusion sur ce garde-fou qui ne viendrait pas de deux amendements : d'autres mains le
-  touchent, et le controle propose est du avant le sprint suivant.
+  touchent malgre le controle, et le prefixe declaratif ne suffit plus.
 
 ### Impact
 
-- Ce fichier, et la ligne `ADR-0065` de `ADR-index.md`. Aucun test, aucun code, aucune configuration.
+- Commit `7a34366c` : ce fichier, et la ligne `ADR-0065` de `ADR-index.md`.
+- Commit suivant : `.github/scripts/verifier-garde-fou-accent.sh`, son test, deux etapes du job
+  `prefixes` de `.github/workflows/ci.yml`, et ce paragraphe. Aucun fichier Java ; compte ArchUnit
+  inchange.
