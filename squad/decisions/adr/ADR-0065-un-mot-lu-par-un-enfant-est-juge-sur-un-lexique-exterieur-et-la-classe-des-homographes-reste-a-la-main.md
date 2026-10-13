@@ -297,3 +297,166 @@ par le chargeur reel. Le compte de regles ArchUnit du depot est inchange.
 - Le refus par `nadia-prof` de la forme *un garçon* / *un garcon* au profit d'une autre forme d'item
   (*gar_on*, propositions `c` / `ç`) : l'admission deviendrait sans objet, et cet amendement serait a
   retirer avec ses deux clauses plutot qu'a laisser dormir.
+
+## Amendement du 2026-10-13 (s57, `theo-archi`) - A2, deux instances de francais CE1 en parallele (A et A')
+
+Le texte ci-dessus est inchange, critere, perimetre et cinq clauses compris. Cet amendement repond a la
+story `S57-ADR-0065-DEUX-INSTANCES` et a la condition 2 de `nadia-prof`
+(`squad/conformite/ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, section 4.2) : *"Aucune
+des deux instances n'amende `ADR-0065` ni le garde-fou de l'accent : un besoin se route a `theo-archi`."*
+
+### Etat du depot que cet amendement suppose
+
+- `round-two` a `9d101ea0` ; le garde-fou tel que `c2802a32` l'a laisse (cinq clauses, admission A1) ;
+  `org.languagetool:french-pos-dict:0.7`.
+- Le decoupage de `DEC-0120` section 1 : A porte le groupe X (`-04`, `-05`, `-06`, `-07`, `-11`), A' le
+  groupe Y (`-08`, `-09`, `-10`, `-15`, `-24`). **A et A' n'ecrivent jamais le meme paquet** (condition 1
+  de `nadia-prof`) : la ressource qu'elles partagent n'est pas un paquet, c'est ce garde-fou.
+- Aucun worktree d'un lot de A' n'est ouvert. Cet amendement est fusionne avant le premier (condition 2).
+
+### Ce que la mesure a etabli, avec sa methode
+
+1. **Le garde-fou ne porte aucune liste de mots.** Lu sur le fichier : le critere ne nomme aucun mot ;
+   les seuls mots ecrits dans le test sont les assertions des clauses 2, 4 et 5 sur leurs contre-exemples
+   et leurs chaines en memoire (*ecrire*, *zero*, *zeros*, *garcon*, *garcons*). Une instance ajoute son
+   vocabulaire en ajoutant un paquet, et le lexique le juge : **aucun fichier du garde-fou n'a a changer
+   pour cela.** La formulation du backlog (*"la meme liste de mots du meme test"*) ne decrit donc pas
+   l'objet partage.
+2. **Mesure sur l'historique.** `git diff --name-status --diff-filter=A c2802a32 9d101ea0` sur
+   `adapters/adapter-content/src/main/resources/contenu/` : 31 paquets `ce1-*.yaml` ajoutes (francais et
+   mathematiques confondus). `git log --full-history --no-merges c2802a32..9d101ea0` sur les quatre chemins
+   du point 1 de la decision : un seul commit, `02ba9e80`, qui est A1 lui-meme commite une seconde fois sur
+   la branche d'une instance a s51 (meme `git patch-id --stable` que `c2802a32`, `61478649...`, recalcule
+   ce jour). Depuis l'origine (`--full-history --no-merges`, historique atteignable depuis `9d101ea0`) :
+   quatre commits, `f3848460` `[THEO]`, `acfecb32` `[SOF]`, `c2802a32` et `02ba9e80` `[THEO]`.
+3. **Ce sur quoi deux instances peuvent entrer en collision, c'est donc une admission**, pas un mot : un
+   lot dont la forme demande un mot que le critere refuse par construction. Deux cas ecrits dans le depot :
+   la cedille de `GRL-CE1-2` (A1), et les formes regularisees d'*aller* au singulier (`PRS-CE1-3` (b),
+   avis de faisabilite de s52, section 1.2, non retenues). Et un cas de modification du perimetre par un
+   autre agent que le proprietaire : `acfecb32` (s24, lot 5b) a borne les chaines jugees a celles que
+   l'enfant lit.
+
+### Decision (A2)
+
+1. **Aucune instance ne modifie le garde-fou.** Ni `nadia-prof`, ni le developpeur d'un lot de A ou de A',
+   ni aucun autre agent que `theo-archi`, ne modifie : ce fichier d'`ADR` ;
+   `AucunMotServiNeSEcarteDeSonAccentTest.java` ; `LexiqueFrancais.java` ;
+   `src/test/resources/contreexemple/AucunMotServiNeSEcarteDeSonAccentTest/` (les trois derniers sous
+   `adapters/adapter-content/`) ; la version de `french-pos-dict` dans les deux `pom.xml`.
+2. **Un lot rouge sur `chaqueMotServiEnProductionPorteSonAccent` s'arrete.** L'instance ecrit le besoin
+   (paquet, item, mot refuse, forme de l'item qui l'exige) et le route a `theo-archi`. Son lot attend ;
+   les lots de l'autre instance n'attendent pas.
+3. **Un amendement a la fois.** `theo-archi` l'ecrit sur un worktree propre issu de `round-two`, jamais sur
+   la branche d'une instance, et `sofia-sm` le fusionne sur `round-two`. Un second besoin, de l'une ou de
+   l'autre instance, part de `round-two` apres cette fusion. L'admission se derive de la forme de l'item,
+   jamais d'une liste de mots (alternative 2 et amendement A1 ci-dessus).
+4. **Une instance recoit un amendement en fusionnant `round-two` dans sa branche**, jamais en le
+   recommitant : c'est la duplication de s51.
+5. **Un faux rouge du lexique** (un mot francais rare absent du lexique) suit la meme route ; la reponse
+   reste celle de "Ce qui me ferait changer d'avis" : changer de lexique ou reduire le perimetre avec un
+   motif ecrit, jamais une liste d'exemptions.
+6. **La classe des homographes reste a la main de `nadia-prof`**, chaque instance pour ses lots.
+
+### Regle executable
+
+**Ce n'est pas une regle ArchUnit** : les objets sont des fichiers et l'auteur d'un commit, pas un graphe
+de types. Le compte de regles ArchUnit est inchange : 41 `static final ArchRule`, 38 `@ArchTest`, methode
+d'`ADR-0104` (`git grep` des deux motifs sur les `*.java` suivis a `9d101ea0`) ; cet amendement ne touche
+aucun fichier Java.
+
+**Ce qui s'execute deja :**
+
+- **Le point 2 est tenu par la clause 1 elle-meme**, dans le job `build` : un lot qui a besoin d'une
+  admission ne peut pas etre vert sans elle. L'attente est imposee par le rouge, pas par la discipline.
+- **Le point 3 est signale, pas empeche** : deux amendements differents ecrits en parallele touchent la
+  meme methode (`verifierQueChaqueMotServiPorteSonAccent`) et la fin de la meme classe, et la fusion du
+  second entre en conflit. Un amendement identique commite deux fois n'entre pas en conflit (s51) : sans
+  consequence de contenu, et sans automate.
+
+**Le point 1 : controle par chemin et prefixe, dans le job `prefixes`.** Le commit `7a34366c` de cet
+amendement le proposait sans l'ecrire (`.github/scripts/` et `ci.yml` etaient hors du perimetre de la
+story) et ouvrait une dette. Ecrit dans le commit suivant de la meme branche, sur autorisation de
+l'utilisatrice du 2026-10-13. **La dette est payee** ; ce qui reste est nomme plus bas.
+
+- **Script** : `.github/scripts/verifier-garde-fou-accent.sh <plage>`. Il refuse tout commit de la plage
+  qui touche un chemin garde sans le prefixe `[THEO]` en tete de sujet. Chemins gardes : ce fichier,
+  `AucunMotServiNeSEcarteDeSonAccentTest.java`, `LexiqueFrancais.java`, le repertoire des
+  contre-exemples, `adapters/adapter-content/pom.xml` **entier**, et le `pom.xml` parent par
+  `git log -G 'french-pos-dict'`.
+- **Etape** : `.github/workflows/ci.yml`, job `prefixes`, deux etapes apres les prefixes : le test, puis
+  le controle sur `BASE..SHA`, ou `SHA^!` sans base comparable.
+- **Test** : `.github/scripts/verifier-garde-fou-accent-test.sh` (`ADR-0009`), 21 cas. Un depot jetable,
+  un commit juge par cas : chaque chemin garde mord, deux voisins ne mordent pas (une autre ligne du pom
+  parent, un paquet de contenu). Puis l'historique reel : `acfecb32^!` refuse, `c2802a32^!` et
+  `02ba9e80^!` acceptes ; un commit absent est un echec, jamais un cas saute.
+
+**Quatre ecarts a la forme proposee par `7a34366c`**, chacun trouve en l'ecrivant :
+
+1. **Le pom d'`adapter-content` est garde entier.** `-G 'french-pos-dict'` ne voit pas une ligne
+   `<version>` ajoutee dans le bloc de la dependance, qui ne nomme pas le lexique. Ce fichier n'a ete
+   touche que par deux commits, tous deux `[THEO]` (`git log --format='%h %s' -- adapters/adapter-content/pom.xml` :
+   `d2005d2c`, `f3848460`) : le garder entier n'exclut personne. Le pom parent reste garde par `-G`,
+   pour le motif que la proposition donnait.
+2. **Les fusions ne sont pas exclues.** La simplification d'historique de `git log -- <chemins>` ecarte
+   une fusion identique a l'un de ses parents sur ces chemins ; elle ne garde que celle qui y ecrit autre
+   chose, une resolution de conflit, qui est alors jugee comme un commit. `--no-merges` la laissait
+   passer. Sur l'historique reel, aucune fusion n'est retenue (`git log --merges HEAD -- <chemins>` ne
+   rend rien) : le changement n'exclut personne.
+3. **Sans base comparable, la plage est `SHA^!`, et le script refuse toute plage qui commence par un
+   tiret** (code 2). La plage `-1` de l'etape des prefixes, recopiee ici, aurait juge
+   `git log -1 -- <chemins>` : le dernier commit qui a touche ces chemins, pas le dernier commit.
+4. **Un chemin garde absent de `HEAD` rend le controle rouge.** Sans cela, un renommage le rendrait muet.
+
+**La morsure, prouvee par mutation du script** (`sed` sur une copie, le test relance, la copie restauree ;
+chaque mutation a modifie au moins une ligne et le test a lance 21 cas) : sept mutations, sept rouges,
+chacune sur le cas qu'elle vise et sur lui seul. Retirer le repertoire des contre-exemples, accepter
+`[THEO]` hors de la tete du sujet, retirer le pom d'`adapter-content`, remettre `--no-merges`, neutraliser
+le controle d'existence, retirer la garde du tiret, casser le motif du pom parent.
+
+**Ce qu'il interdit reellement, mesure sur l'historique.** `verifier-garde-fou-accent.sh HEAD` sur
+l'historique atteignable depuis la tete de cet amendement : refuse **`acfecb32`** (`[SOF]`, s24, lot 5b)
+et lui seul. Sur une plage qui le couvre, **`02ba9e80` n'est pas juge** : la simplification le cache,
+sa modification etant celle de `c2802a32` ; juge seul (`02ba9e80^!`), il est accepte.
+
+**Ce qui reste sans automate :**
+
+- **Le point 4** : `02ba9e80`, un amendement de ma main recommite sur la branche d'une instance, porte
+  `[THEO]` et passe. Rien ne lie un commit a sa branche.
+- **Le prefixe est declaratif.** Un autre agent qui ecrirait `[THEO]` passerait ; le controle tient
+  contre `acfecb32`, un agent qui signe de son propre prefixe, pas contre une usurpation.
+- **Une resolution de conflit sur la ligne du lexique du pom parent** : `-G` ne lit pas le diff d'une
+  fusion.
+
+La verification a la main par `sofia-sm` que ce paragraphe exigeait jusqu'a la fusion du controle
+(`git diff --stat round-two...<branche> -- <chemins>`) cesse d'etre due quand cette branche est fusionnee
+sur `round-two`.
+
+**Pourquoi le test n'est pas modifie**, alors que la story demandait l'amendement et le test dans un seul
+commit : rien dans `AucunMotServiNeSEcarteDeSonAccentTest` n'est propre a une instance (mesure, point 1).
+Une clause ajoutee pour l'occasion n'interdirait rien de ce que la decision interdit : celui qui modifierait
+le garde-fou modifierait aussi cette clause. Elle serait decorative.
+
+### Consequences
+
+- **Bonne** : aucun lot de francais CE1 n'a a toucher le garde-fou pour ajouter son vocabulaire ; les 31
+  paquets de CE1 ajoutes depuis A1 l'ont fait sans le toucher.
+- **Mauvaise** : un lot de A' qui demande une admission attend un amendement, une fusion, puis une fusion
+  de `round-two` dans sa branche. Le delai depend de l'heure de fusion, a `sofia-sm`.
+- **Mauvaise** : le point 1 interdit desormais ce que `acfecb32` a fait a s24. Un developpeur qui veut
+  borner ou etendre ce garde-fou passe par `theo-archi`.
+- **Mauvaise** : le job `prefixes` refuse un commit d'un autre agent sur ces chemins, y compris une
+  correction juste. Elle passe par `theo-archi`.
+
+### Ce qui me ferait changer d'avis plus tard
+
+- Un troisieme besoin d'admission dans un meme sprint : la forme des items de francais CE1 demanderait
+  souvent un mot hors du francais, et une admission par amendement serait trop lente.
+- Un conflit de fusion sur ce garde-fou qui ne viendrait pas de deux amendements : d'autres mains le
+  touchent malgre le controle, et le prefixe declaratif ne suffit plus.
+
+### Impact
+
+- Commit `7a34366c` : ce fichier, et la ligne `ADR-0065` de `ADR-index.md`.
+- Commit suivant : `.github/scripts/verifier-garde-fou-accent.sh`, son test, deux etapes du job
+  `prefixes` de `.github/workflows/ci.yml`, et ce paragraphe. Aucun fichier Java ; compte ArchUnit
+  inchange.

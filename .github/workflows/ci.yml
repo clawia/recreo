@@ -43,6 +43,28 @@ jobs:
 
           git log --no-merges --format=%s ${RANGE} | bash .github/scripts/verifier-prefixes.sh
 
+      # ADR-0065 A2, point 1 : seul theo-archi modifie le garde-fou de l'accent. Le test joue
+      # aussi l'historique reel (acfecb32, c2802a32, 02ba9e80), d'ou fetch-depth: 0 ci-dessus.
+      - name: Tester le controle du garde-fou de l'accent
+        run: bash .github/scripts/verifier-garde-fou-accent-test.sh
+
+      # Meme base que l'etape precedente. Sans base comparable, le commit seul s'ecrit SHA^! et non
+      # -1, que le script refuse : "git log -1 -- <chemins>" jugerait un autre commit.
+      - name: Verifier le proprietaire du garde-fou de l'accent
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${BASE}" ] || [ "${BASE}" = "0000000000000000000000000000000000000000" ] \
+             || ! bash .github/scripts/commit-atteignable.sh "${BASE}"; then
+            PLAGE="${GITHUB_SHA}^!"
+          else
+            PLAGE="${BASE}..${GITHUB_SHA}"
+          fi
+
+          bash .github/scripts/verifier-garde-fou-accent.sh "${PLAGE}"
+
   chemins:
     name: Chemins de poste de travail
     runs-on: ubuntu-latest
