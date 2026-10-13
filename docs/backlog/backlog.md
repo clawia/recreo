@@ -21684,3 +21684,15 @@ Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, tran
 ### S54-OBS-SCI-CONSIGNE - developpeur `lea-dev` (annotation du 2026-10-13, `DEC-0120` A.44)
 
 Mots de l'utilisatrice, forme 2, transmis par l'agent lanceur (non lus de sa main), a `Q2` de `sofia-sm` : *"lea dev"*. **Developpeur : `lea-dev`.** Les trois elements du placement existent (criteres de `nadia-prof`, proprietaire, prix 0,25) : **le placement est complet**. Le reste de la story ci-dessus ne change pas : criteres, prix, rejeu par `nadia-prof` instance B. Deux reports comptes (s55, s56) ; non livree et rejouee a la cloture de s57, ce serait un troisieme report, interdit, donc un abandon ecrit. La ligne d'affectation s'ecrit au planning par `sofia-sm` (`PAR-16`) ; `lea-dev` porte aussi la correction d'`ART-CP-10`, la charge est a `sofia-sm`. Commits de la story : prefixe `[LEA]`.
+
+### Amendement du 2026-10-13, sixieme : arts plastiques CE1 dans la matrice, maximum fige a 200, condition (i) mesuree (`camille-po`, `DEC-0120` A.46 a A.52)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Elle remplace *"le maximum de la version est en attente du referentiel d'arts plastiques CE1, denominateur `198 + k`"* de l'amendement du 2026-10-13, cinquieme. Le sprint n'est pas ouvert ; aucune duree, aucun planning, aucune borne.
+
+**Matrice.** `ART-CE1-01` et `-02` entrent (`non couvert`, statut de `nadia-prof`, rang C : un materiau manque, et pour `-02` une forme refusee et pas rejouee). Commande de la "Methode du compte", avant (`3988e15a`) puis apres : 142 / 4 / 52 / 77, total 275, **142 / 198 = 71,72 %** ; 142 / 4 / 54 / 77, total 277, **142 / 200 = 71,00 %**. Le numerateur ne bouge pas.
+
+**Maximum fige : 200 lignes atteignables** (CP 59, CE1 62, CM1 79). Cibles sur 200 : compteur de version **146 / 200 = 73,00 %** ; maximum en `couvert-valide` **176 / 200 = 88,00 %** ; borne haute sous (c) **187 / 200 = 93,50 %** ; 13 lignes atteignables hors de la borne haute. Plancher de travail : 49,0, inchange. Aucune story neuve : les deux lignes n'ont ni lot ni ecriture.
+
+**Condition (i) de la derivation au-dela de 8,0, mesuree.** Composition a deux instances (A et A', 4,0 chacune, 8,0, six lots de francais CE1) ; lots instruits laisses dehors et prenables hors du francais CE1 : `G4` 4 lots, questionner le monde CE1 10 lots, EMC CE1 4 lots, tous a 1,0 : **18,0**, plus la reprise d'`ART-CP-10` (0,5). Tenue sur la lettre de la condition (`PAR-1` et `PAR-2`, 4,0 requis) ; non tenue si on lit le plafond d'une instance (`PAR-8` : trois lots, 3,0), sauf si `QLM-CP-10` (2,0) est *"instruite"*. **La lecture est a `nadia-prof`.** (ii) n'est pas etablie : O2 reste non derivable.
+
+**A `nadia-prof`** : la lecture de (i) ; la verification de s56 (0,25) si elle veut etablir (ii) ; l'instruction d'`ART-CE1-01` et `-02`. **A `theo-archi`** : les droits d'un corpus de dessins et de photographies. **A `sofia-sm`** : la duree et le planning, inchange. **A l'utilisatrice** : `Q3` de `nadia-prof` (sprint plus long comme suite de paliers de 8,0).

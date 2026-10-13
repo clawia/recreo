@@ -947,3 +947,110 @@ Les trois elements du placement de `DEC-0114` section 4 et `DEC-0115` section 4 
 
 - **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni la borne, ni la duree ; ne fige aucun maximum ; ne prononce aucun Done et ne juge aucun contenu (les plafonds et la valeur de `LVE-CM1-06` sont ceux de `nadia-prof`) ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne dit pas que la CI distante est verte.
 - **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`build` par `bash outils/mvn-jdk21.sh -B clean verify`, `chemins`, `prefixes`). `outils` n'est pas lance : le commit ne modifie aucun outil, et je n'en deduis pas le resultat.
+
+---
+
+## Amendement du 2026-10-13, sixieme (`camille-po`, apres le referentiel d'arts plastiques CE1 de `nadia-prof`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.47. Le sprint n'est toujours pas ouvert : ni `planning.md`, ni duree, ni borne, ni affectation. **La matrice gagne deux lignes et aucun statut ne change** (A.48) : 142 / 200. **Le maximum de la version est fige** (A.49). **La condition (i) de la derivation au-dela de 8,0 est mesuree** (A.50), ce que A.36 et A.45 avaient laisse a deux reprises. Aucun catalogue, aucun paquet, aucun code, aucune fiche.
+
+### A.46 Ce qui le declenche
+
+`Q-U10` est fermee par la reponse *"avec ART plastique CE1"* (A.38) : le maximum n'etait fige qu'une fois le referentiel d'arts plastiques CE1 ecrit. **Il l'est** : `squad/programme/arts-plastiques/competences-ce1.md`, ecrit par `nadia-prof` le 2026-10-13 (`squad/conformite/ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, section 11.5, qui ecrit que *"le maximum peut etre fige des que `camille-po` aura integre ces deux lignes ; le figer est a elle"*). Son report de 2.2 (*"apres le verdict du rejeu d'`ART-CP-10`"*) etait plus large que son motif : elle le corrige en 11.5, ce qui attend ce verdict est l'instruction de `ART-CE1-02`, pas l'existence de la ligne. Les gestes d'A.24 s'appliquent : points 1 a 3 en A.48, points 4 et 5 en A.49, point 6 deja ecrit par elle (11.5 : les deux lignes sont des terrains neufs pour `PAR-13`), point 7 clos par A.38.
+
+### A.47 Ce que cet amendement ferme, ouvre et remplace
+
+| Point | Etat | Remplace |
+|---|---|---|
+| `Q-U10` | **executee** : le maximum est fige (A.49) | A.39, ligne *"Maximum de la version : en attente du referentiel d'arts plastiques CE1"* |
+| Denominateur | **200** (`198 + k`, `k` = 2) | A.39, ligne *"198 + `k`"*. A.31, A.32 et A.42 sont des calculs sur 198, avant ce geste : ils ne sont pas recopies ligne a ligne, les valeurs a 200 sont en A.49 |
+| Referentiels de CE1 | **cinq ecrits** : francais, mathematiques, questionner le monde, EMC, arts plastiques ; anglais, education musicale et EPS refusees (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, 2.2 et 10.4) | A.28, ligne *"Referentiels de CE1"* (arts plastiques *reportee*) |
+| Condition (i) | **mesuree** (A.50) ; sa lecture est a `nadia-prof` | A.38 et A.45 : *"non faite ici"* |
+| Rang C | **24 lignes** (22 plus `ART-CE1-01` et `-02`) ; rangs A et B inchanges (11, 23) ; 58 lignes non fermees = 4 `en cours` + 54 `non couvert` = 11 + 23 + 24 | A.31, *"Rang C : 22"* |
+| Plancher de travail | **49,0, inchange** : les deux lignes neuves n'ont ni lot ni ecriture | - |
+
+### A.48 La matrice : deux lignes entrent (A.24 points 1 a 3)
+
+Mesures lancees pour cet amendement (arbre `round-two` a `3988e15a`, worktree `s57c-camille`, 2026-10-13, perimetre : les lignes de donnees de la matrice, aucune mesure partielle). `ls squad/programme/*/competences-ce1.md | wc -l` rend **5** (2 en A.24). Commande de la "Methode du compte" de `MATRICE-couverture.md`, reprise telle quelle, sur `git show 3988e15a:squad/programme/MATRICE-couverture.md` puis sur le fichier du worktree :
+
+| Sortie | Avant | Apres |
+|---|---|---|
+| `cv` | 142 | 142 |
+| `ec` | 4 | 4 |
+| `nc` | 52 | 54 |
+| `ncb` | 77 | 77 |
+| `total` | 275 | 277 |
+| denominateur (`total` moins `ncb`) | 198 | **200** |
+| `cv` / denominateur | 142 / 198 = 71,72 % | **142 / 200 = 71,00 %** |
+
+**Le numerateur ne bouge pas : le taux baisse de 0,72 point par le seul effet du denominateur, pas par un mouvement de couverture** (A.24 point 3, meme formule que la note de la matrice du 2026-10-07). Par niveau (`$3` comme cle) : CE1 `cv` 25, `ec` 2, `nc` 35, `ncb` 6, total 68 (66 avant) ; CP 92 et CM1 117 inchanges. Par section (`$2` et `$3`) : arts plastiques / CE1 `nc` 2, total 2. **Seconde lecture, ecrite autrement** : une analyse des cellules en Python, sans `awk`, rend 142 / 4 / 54 / 77, total 277, denominateur 200. Sa premiere version rendait 274 : elle exigeait une barre finale, et trois lignes de donnees n'en ont pas (A.40 : *"3 a huit"* champs) ; corrigee pour lire huit champs, elle rend 277.
+
+Les deux lignes, statuts de `nadia-prof` (referentiel, section "Jugement de faisabilite") : `ART-CE1-01` `non couvert`, **en attente d'un materiau** (la forme existe, celle d'`ART-CP-09`) ; `ART-CE1-02` `non couvert`, **en attente de la forme a deux oeuvres et d'un materiau** (la forme d'`ART-CP-10`, refusee le 2026-10-11 et pas rejouee ; son instruction attend ce verdict). Aucun plafond `en cours` n'est ecrit pour l'une ni pour l'autre. La mention exigee d'avance si une ligne ferme (*"reception d'oeuvres seule ; aucune pratique plastique n'est servie par ce produit"*) est reprise dans les deux cellules. Corpus : `grep -c "identifiant: \"\?oeuvre-" squad/corpus/oeuvres-domaine-public.yaml` rend 12. **Le registre ne porte aucun champ de technique : la phrase "aucun dessin ni aucune photographie" est celle de `nadia-prof`, que je ne verifie pas par commande.**
+
+### A.49 Le maximum de la version, fige
+
+**Maximum : 200 lignes atteignables** (CP 59, CE1 62, CM1 79 ; 59 + 62 + 79 = 200), sur une matrice de 277 lignes dont 77 `non couvrable en l'etat`. **Il ne bouge plus que par un acte ecrit qui le dit** : un referentiel neuf, ou le classement d'une ligne en `non couvrable en l'etat` ; il bouge alors par le seul effet du denominateur, et la note de la matrice l'ecrit comme tel. Un changement de rang d'une ligne (par exemple `ART-CE1-01` en rang B le jour ou un corpus de dessins et de photographies existe) change les cibles ci-dessous, pas le denominateur. **Place dans l'ordre de la section 1 (A.24 point 5)** : hors rang, avec les lignes de rang C dont le manque n'est ni un lot ni une ecriture.
+
+Cibles, **methode d'A.31 et A.32 reprise sans rien d'autre**, sous les plafonds, refus et decisions que le depot ecrit aujourd'hui (A.42) :
+
+| Cible | Sur 198 (A.42) | Sur 200 |
+|---|---|---|
+| Matrice, `couvert-valide` | 142 / 198 = 71,72 % | **142 / 200 = 71,00 %** |
+| Compteur de version (`cv` plus 4 `en cours` jouables) | 146 / 198 = 73,74 % | **146 / 200 = 73,00 %** |
+| Maximum en `couvert-valide` (rangs A et B, + 34) | 176 / 198 = 88,89 % | **176 / 200 = 88,00 %** |
+| Borne haute sous (c) | 187 / 198 = 94,44 % | **187 / 200 = 93,50 %** |
+| Distance compteur - borne haute | 41 lignes, 20,71 points | **41 lignes, 20,50 points** |
+
+| Niveau | Atteignables | `cv` | Compteur | Maximum `cv` | Borne haute sous (c) |
+|---|---|---|---|---|---|
+| CP | 59 | 51 / 59 = 86,44 % | 53 / 59 = 89,83 % | 54 / 59 = 91,53 % | 56 / 59 = 94,92 % |
+| CE1 | 62 | 25 / 62 = 40,32 % | 27 / 62 = 43,55 % | 48 / 62 = 77,42 % | 57 / 62 = 91,94 % |
+| CM1 | 79 | 66 / 79 = 83,54 % | 66 / 79 = 83,54 % | 74 / 79 = 93,67 % | 74 / 79 = 93,67 % |
+| **Total** | **200** | **142 / 200 = 71,00 %** | **146 / 200 = 73,00 %** | **176 / 200 = 88,00 %** | **187 / 200 = 93,50 %** |
+
+**Verifications d'arithmetique.** 57 + 56 + 74 = 187 ; 187 + 13 = 200. **Treize lignes atteignables restent hors de la borne haute** (onze en A.42, plus `ART-CE1-01` et `-02`) : `MAT-CE1-14`, `QLM-CP-12`, `HG-CM1-09`, `HG-CM1-10`, `HDA-CM1-09`, `FRA-CM1-01`, `EMC-CP-04`, `LVE-CM1-06`, `FRA-CP-05`, `QLM-CE1-09`, `QLM-CE1-11`, `ART-CE1-01`, `ART-CE1-02`. CE1 : 57 + 5 (`MAT-CE1-14`, `QLM-CE1-09`, `-11`, `ART-CE1-01`, `-02`) = 62. **Rang des deux lignes : C**, par la definition d'A.13 : le depot ecrit ce qui manque (un materiau, et pour `-02` une forme refusee), et ce n'est ni un lot ni une ecriture. **Ce que cela dit a l'utilisatrice** : sur 200 lignes atteignables, 13 ne se ferment par aucun lot ni aucune ecriture que le depot connaisse aujourd'hui ; le maximum de 187 est un plafond, pas une promesse.
+
+**Libelle devant un adulte** (A.32, denominateur change) : *"146 lignes sur 200 : 142 validees par la professeure, 4 en cours, dont le jeu est jouable pour la part de la competence que la ligne dit servir."* Il reste non publie tel quel tant que la version n'est pas decidee (`nadia-prof`, 1.4 : pas de Done de version).
+
+### A.50 La condition (i) de la derivation au-dela de 8,0, mesuree
+
+**Ce que la condition dit** (`ARBITRAGE-PREALABLE-s46-trois-instances-refusees-le-vivier-borne-avant-la-capacite.md`, section 5, reprise en 4.3 du document de criteres du 2026-10-13) : *"une composition a deux instances qui remplit 8,0 (`PAR-8` respecte) et laisse dehors au moins 4,0 de lots instruits, soit la capacite d'une instance"*, prenables par la troisieme sous `PAR-1` et `PAR-2`. Mesure placee chez `camille-po` (A.5 point 2, A.36, A.45).
+
+**Composition a deux instances, C2 (A et A', francais CE1, accord `PAR-2` de `nadia-prof` pour s57, six conditions).** Chacune : arbitrage 0,5, marge de rejeu 0,5, trois lots a 1,0 = **4,0** (`PAR-9` ; `PAR-8` : au plus 5,0 et trois lots). Somme **8,0**, six lots de francais CE1 sur les dix du rang 1 (section 1). Faisable sans deplacer de frontiere : A' dispose de trois lots de Y hors `-08` et `-09` (`FRA-CE1-10`, `-15`, `-24`, soit `ce1-phrases-types`, `ce1-accord-groupe-nominal`, `ce1-familles-de-mots`) ; A prend trois des cinq de X. **Hors de C2, non comptes** : `VSJ-CE1-R1` (0,5, reste a A, condition 3 de `nadia-prof`) et les quatre lots de francais CE1 restants (deux de X, `-08`, `-09`) : meme matiere que A et A', donc non prenables par une troisieme instance sous `PAR-2`.
+
+**Lots instruits laisses dehors, prenables par la troisieme.** Mesure : `comm -23` des fichiers de `adapters/adapter-content/src/main/resources/contenu/` et des `paquet:` de `catalogue.yaml`, filtre `ce1-` : **17 paquets sans entree de catalogue**, dont, par `lignesDeReferentiel` de chacun, 12 de francais (`FRA-CE1-03`, `-04` a `-11`, `-15`, `-21`, `-24`) et 5 de mathematiques (`MAT-CE1-01`, `-10`, `-11`, `-14`, `-15`).
+
+| Groupe (matiere et niveau, `PAR-2`) | Lots | Prix ecrit | Source du prix | Instruit par | `PAR-13` |
+|---|---|---|---|---|---|
+| Mathematiques CE1, `G4` : `ce1-nombres-jusqu-a-1000` (`MAT-CE1-01`), `ce1-masses-contenances` (`-10`), `ce1-calendrier-dates` (`-11`), `ce1-figures-planes` (`-15`), plafond `en cours` | 4 | 1,0 chacun, **4,0** | A.31 ; criteres de `nadia-prof`, 4.3 et 11.4 | plafonds de `nadia-prof` (section 1, rang 4 ; A.35) | terrain connu |
+| Questionner le monde CE1 : `QLM-CE1-01` a `-06`, `-08`, `-10`, `-12` (9) et la moitie textuelle de `-07` (1) | 10 | 1,0 chacun, **10,0** | `ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, 6.2 (bareme, application, pas mesure) | meme document, sections 3 et 9 | pas un terrain neuf (5.1) |
+| EMC CE1 : `EMC-CE1-01` a `-04` | 4 | 1,0 chacun, **4,0** | meme document, 6.2 (bareme, application, pas mesure) | meme document, sections 4 et 9 | pas un terrain neuf (5.1) |
+| **Total des lots** | **18** | **18,0** | | | |
+| Reprise d'`ART-CP-10` (rejeu, pas un lot, `PAR-10`) | - | 0,5 | `cloture-nadia.md` de s56, section 3, reprise en 4.3 du document de criteres | | - |
+
+Le compte des 14 lots de questionner le monde et d'EMC est relu au disque : un `awk` sur le recapitulatif des dix-sept verdicts (section 9 du document d'instruction) rend 14 lignes `ACCEPTEE` hors `QLM-CE1-09` et `-11` (*"rien sans dessin"*) : `QLM` 10, `EMC` 4. **Exclus du compte, avec leur motif** : `QLM-CE1-09` et `-11` (aucun dessin, aucun prix) et la moitie dessinee de `-07` ; `MAT-CE1-14` (conditionnee a `A3` d'`ADR-0080`, non ecrit) ; les deux lots de `G3` (francais CE1, `PAR-2`) ; les dix lignes de rang B d'A.13 (aucune n'a d'instruction ligne par ligne ecrite : *"ecriture possible"* ne dit pas *"instruit"*) ; `ART-CE1-01` et `-02` (aucune instruction) ; `S54-OBS-SCI-CONSIGNE` (0,25, pas un lot).
+
+**Resultat, sous deux lectures que je ne departage pas.**
+
+1. **Lecture de la lettre de la condition (`PAR-1` et `PAR-2` seuls) : tenue.** 18,0 de lots instruits, prenables hors du francais CE1, contre 4,0 requis ; 18,5 avec la reprise d'`ART-CP-10`. Chaque lot est entier (`PAR-1`) et chaque groupe de matiere et niveau tient sur une seule instance (`PAR-2`).
+2. **Lecture avec le plafond de l'instance qui les porterait (`PAR-8` : trois lots, 5,0 ; `PAR-9` : 4,0 dont 1,0 fixe) : non tenue.** Une troisieme instance porte au plus **trois lots**, soit **3,0** (3,5 avec la reprise d'`ART-CP-10`, qui n'est pas un lot au sens de `PAR-10`), moins que les 4,0 requis. Les 18 lots instruits sont tous a 1,0 : aucune combinaison de trois d'entre eux n'atteint 4,0. Les quatre lots de `G4`, que `nadia-prof` donne en exemple de 4,0 prenable par B (4.3 et 11.4 de son document), ne tiennent pas non plus sur une seule instance : quatre lots depassent `PAR-8`. **Un cas change ce resultat, et je ne le tranche pas** : `QLM-CP-10`, rang B, prix ecrit 2,0 (`DEC-0099` 4 ter, repris dans le tableau de 5 du document de criteres), compte avec questionner le monde CE1 sous `PAR-2` ; si *"ecriture possible"* valait *"instruit"*, trois lots (2,0 + 1,0 + 1,0) feraient 4,0 sur une seule instance.
+
+**Ce que je ne tranche pas** : laquelle des deux lectures est celle de sa condition (la section 5 de `ARBITRAGE-PREALABLE-s46...` dit *"soit la capacite d'une instance"* et nomme `PAR-1` et `PAR-2`, pas `PAR-8`) et si `QLM-CP-10` est *"instruit"* : **`nadia-prof`**. **Ce que la mesure ne change pas** : (i) est une des trois conditions. (ii) n'est pas etablie (s54 porte une occurrence de la forme (c) ; s56 n'est pas verifie, document de criteres, 11.4), donc **O2 reste non derivable meme si la lecture 1 est la bonne**. L'utilisatrice a repondu *"oui plus que 8"* (A.38) ; `nadia-prof` y repond par des paliers de 8,0, chacun clos avant le suivant (11.3), sans borne au-dela de 8,0 dans un meme palier. **Un palier est un moyen de porter plus de 8,0 sans (i)**, pas une derivation de O2 : c'est sa question `Q3` a l'utilisatrice, que je ne ferme pas.
+
+**Compte du report.** Mesure due depuis A.5 point 2 : laissee a A.36 (premiere fois), a A.45 (seconde fois), faite ici. Aucun troisieme report.
+
+### A.51 Ce que je ne tranche pas, et a qui c'est
+
+| A qui | Quoi |
+|---|---|
+| `nadia-prof` | La lecture de la condition (i) et le statut de `QLM-CP-10` (A.50) ; la verification de s56 contre les trois formes (condition (ii), 0,25, *"quand `camille-po` me la demande"*) ; le rang des deux lignes d'arts plastiques CE1 s'il change (un corpus de dessins et de photographies) ; l'instruction de `ART-CE1-01` et de `-02` (celle de `-02` apres le rejeu d'`ART-CP-10`) |
+| `theo-archi` | La question des droits d'un corpus de dessins et de photographies, que `nadia-prof` ne tranche pas (`ART-3`, 11.8 de son document) ; rien d'autre |
+| `sofia-sm` | La duree et le planning de s57 a la lumiere de `Q1` et de la borne (A.45, inchange) ; `PAR-2` quand un lot de ces matieres est compose |
+| Utilisatrice | `Q3` de `nadia-prof` : un sprint plus long comme suite de paliers de 8,0, chacun audite et clos avant le suivant. Aucune question neuve de ma part |
+
+### A.52 Statuts, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Proposee`.** Elle passe a `Acceptee` quand la duree et la borne de s57 sont ecrites (A.45, inchange). Le maximum fige n'en est pas une condition.
+- **Statuts de stories** : aucun ne change ; aucune story neuve (les deux lignes n'ont ni lot ni ecriture).
+- **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni la borne, ni la duree, ni le nombre de paliers ; ne compose aucun lot de s57 ; ne prononce aucun Done et ne juge aucun contenu (les statuts des deux lignes et la nature de leur manque sont ceux de `nadia-prof`) ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`chemins` par `bash .github/scripts/verifier-chemins.sh` sur `git ls-files`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.

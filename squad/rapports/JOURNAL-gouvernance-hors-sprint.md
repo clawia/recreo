@@ -309,3 +309,20 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 **Ce que je route.** `sofia-sm` : duree (P2 de `preparation.md` contredit par la reponse a `Q1`) ; ligne d'affectation et charge de `lea-dev` ; question a `theo-archi` sur l'`ADR` de la forme fidele. `nadia-prof` : borne `PAR-8`, conditions de derivation, itineraire de `QLM-CE1-09`, referentiel d'arts plastiques CE1. `camille-po` : la mesure de la condition (i) de la derivation au-dela de 8,0, **non faite ici**, seconde fois que je la laisse (premiere : `DEC-0120` A.36).
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, fiche ni Done ; n'ouvre pas s57 ; ne fixe ni la borne, ni la duree, ni aucun maximum.
+
+## 2026-10-13 (sixieme) - arts plastiques CE1 dans la matrice, maximum fige a 200, condition (i) mesuree (`camille-po`)
+
+**Le fait.** Le referentiel d'arts plastiques CE1 de `nadia-prof` (2 lignes) est ecrit et fusionne ; l'utilisatrice avait repondu a `Q-U10` : *"avec ART plastique CE1"* (mots transmis par l'agent lanceur, forme 2, non lus de sa main). `nadia-prof` ecrit que le maximum peut etre fige des que ces deux lignes sont integrees, et que le figer est a `camille-po`.
+
+**Ce que je verse.** `DEC-0120` amendement A.46 a A.52 (`Proposee`, inchange), la matrice, le backlog :
+1. **Matrice** : `ART-CE1-01` et `-02` entrent, `non couvert`, rang C, sans plafond `en cours`. Commande de la "Methode du compte", avant (`3988e15a`) : `couvert-valide` 142, `en cours` 4, `non couvert` 52, `non couvrable` 77, total 275, 142 / 198 = 71,72 % ; apres : 142, 4, 54, 77, total 277, **142 / 200 = 71,00 %**. Le numerateur ne bouge pas. Une seconde lecture en Python, sans `awk`, rend les memes comptes.
+2. **Maximum fige : 200 lignes atteignables.** Compteur de version 146 / 200 = 73,00 % ; maximum en `couvert-valide` 176 / 200 = 88,00 % ; borne haute sous (c) 187 / 200 = 93,50 % ; 13 lignes atteignables hors de la borne haute (11 avant). Il ne bouge plus que par un acte ecrit qui le dit.
+3. **Condition (i) mesuree** : 18,0 de lots instruits hors francais CE1 (`G4` 4, questionner le monde CE1 10, EMC CE1 4, a 1,0 chacun), 18,5 avec la reprise d'`ART-CP-10`. **Tenue** sur la lettre de la condition (`PAR-1` et `PAR-2`), **non tenue** si on lit le plafond d'une instance (`PAR-8`, trois lots, 3,0), sauf si `QLM-CP-10` (2,0) est *"instruite"*. Le choix de lecture est a `nadia-prof` ; (ii) est toujours non etablie, donc O2 non derivable.
+
+**Ce qui s'est passe pendant la mesure, non minimise.** La premiere version de ma seconde lecture (analyse des cellules en Python) rendait 274 lignes au lieu de 277 : elle exigeait une barre finale, et trois lignes de donnees n'en ont pas (`DEC-0120` A.40 le disait : *"3 a huit"* champs). Je l'ai vu parce que les deux methodes ne rendaient pas le meme chiffre ; corrigee, elle rend 277, comme la commande de la matrice.
+
+**Compte du report.** La mesure de la condition (i) etait due depuis `DEC-0120` A.5 point 2 : laissee a A.36 (*"hors du travail demande"*), laissee a A.45 (seconde fois), faite ici. Aucun troisieme report.
+
+**Ce que je route.** `nadia-prof` : la lecture de (i), le statut de `QLM-CP-10`, la verification de s56 si elle veut etablir (ii), l'instruction d'`ART-CE1-01` et `-02`. `theo-archi` : les droits d'un corpus de dessins et de photographies (`ART-3`). `sofia-sm` : duree et planning, inchange. Utilisatrice : `Q3` de `nadia-prof`.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, fiche ni Done ; n'ouvre pas s57 ; ne fixe ni la borne, ni la duree, ni le nombre de paliers ; ne choisit pas entre les deux lectures de (i).
