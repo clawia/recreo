@@ -21621,3 +21621,15 @@ Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, tran
 **Stories** : aucune story neuve, aucun statut de story ne change. Ecart signale, non corrige : la cellule de matrice de `LVE-CM1-06` dit encore *"jouable par saisie"* alors que `nadia-prof` refuse la saisie depuis le 2026-10-01 (`ARBITRAGE-PREALABLE-s45-cinq-lots.md`, `Q5`).
 
 **Ce que cette annotation ne fait pas** : elle n'ouvre pas s57, ne choisit ni O1 ni O2, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche, et ne juge aucun contenu.
+
+### Amendement du 2026-10-13, troisieme : pas de date, compteur de version avec les lignes `en cours` jouables, CE1 ouvert a d'autres matieres (`camille-po`, `DEC-0120` A.18 a A.26)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, non lus de sa main) : (b) *"pas de date"* ; (c) *"on compte toutes les lignes meme en cours si le jeux est jouable"* ; (d) *"pour le CE1 ouvre d'autres matieres"*. **`Q-U8` (b), (c), (d) fermees dans leur principe.** Le sprint n'est pas ouvert ; aucun planning, aucun tarif, aucune borne, aucune duree. Matrice : 142 / 182, inchangee.
+
+**Ce que ca change** (`DEC-0120` A.19 a A.23) : la version sort quand le maximum est atteint, sans date. Son compteur est `couvert-valide` plus les lignes `en cours` dont le jeu est jouable ; **les criteres de jouabilite sont ceux de `nadia-prof`, en attente, non inventes ici**. Le statut de matrice ne change pas : le compteur de version est un second nombre. **Non mesurable aujourd'hui** : le nombre de lignes `en cours` jouables ; seule la borne est ecrite (0 a 4 lignes : 142 a 146 / 182, soit 78,02 % a 80,22 %). Le maximum sous (c), borne haute : **173 / 182 = 95,05 %** (163 plus 4 lignes `en cours` plus 6 lignes de plafond `en cours` qu'un lot rend `en cours`), 9 lignes atteignables restant dehors, nommees. Les six lots ajoutes n'ont ni prix ni place ; le travail d'A.15 est un plancher.
+
+**(d)** : le CE1 a 2 referentiels aujourd'hui (44 lignes atteignables). Effet sur le denominateur **non mesure** tant qu'aucun referentiel neuf n'existe ; les sept gestes a faire a leur arrivee sont en `DEC-0120` A.24. **`Q-U9` neuve** : le maximum se mesure-t-il sur la matrice figee quand les referentiels de CE1 seront ecrits, ou sur la matrice vivante ?
+
+**Stories** : aucune story neuve. **`S54-OBS-SCI-CONSIGNE`** : `Q-U2` en attente, `nadia-prof` interrogee le 2026-10-13 ; sans ses criteres avant l'ouverture du planning, la retraite tient (deux reports comptes, s55 et s56, un troisieme interdit).
+
+**Ce que cette annotation ne fait pas** : elle n'ouvre pas s57, ne choisit ni O1 ni O2, n'invente aucun critere de jouabilite, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche, et ne juge aucun contenu.

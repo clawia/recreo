@@ -496,3 +496,118 @@ Compte : 5 + 9 + 5 = 19.
 - **Ecart signale, non corrige** : la cellule de matrice de `LVE-CM1-06` contredit le refus de saisie de `nadia-prof` (A.13). Le corriger est un geste de matrice, a faire avec le build complet ; il n'est pas fait ici.
 - **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni O1 ni O2, ne fixe ni borne ni duree ; ne prononce aucun Done et ne juge aucun contenu (le rang B est une lecture des plafonds ecrits, pas un avis pedagogique) ; ne touche ni code, ni catalogue, ni paquet, ni fiche, ni matrice ; ne dit pas que la CI distante est verte.
 - **Jobs lances pour son commit** : `prefixes` (`.github/scripts/verifier-prefixes.sh`) et `chemins` (`.github/scripts/verifier-chemins.sh`), plus le test de registre des identifiants (`ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest`, `-pl bootstrap -am`) parce que cet amendement cite des identifiants ; resultats dans le message de livraison. `outils` et `build` complet ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, ni matrice.
+
+---
+
+## Amendement du 2026-10-13, troisieme (`camille-po`, apres les reponses de l'utilisatrice a `Q-U8` (b), (c) et (d))
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.19. Le sprint n'est toujours pas ouvert : ni `planning.md`, ni tarif, ni borne, ni duree, ni affectation. **Aucune ligne de matrice, aucun catalogue, aucun paquet, aucun code, aucune fiche n'est touche** : 142 / 182 (78,02 %).
+
+### A.18 Les mots de l'utilisatrice, forme 2 de `DEC-0062`
+
+Mots de la session du 2026-10-13, tels que l'agent qui m'a lance me les transmet, en les donnant pour recus directement et citables (forme 2) ; **je ne les ai pas lus de sa main** (meme reserve que 0.1, A.1 et A.9). Ils repondent aux points (b), (c) et (d) de `Q-U8` (A.10), cites tels quels :
+
+- (b) *"pas de date"*
+- (c) *"on compte toutes les lignes meme en cours si le jeux est jouable"*
+- (d) *"pour le CE1 ouvre d'autres matieres"*
+
+| Point | Ce que les mots fondent | Ce qu'ils ne fondent pas |
+|---|---|---|
+| (b) | Aucune date de sortie. La version sort quand le maximum est atteint selon (c) | La valeur du maximum, que (c) et (d) font dependre de documents qui n'existent pas encore ; ce qui se passe si une ligne ne ferme pas |
+| (c) | Le compteur de la version inclut les lignes `en cours` dont le jeu est jouable | Qui juge *"jouable"* et sur quoi : ce sont les criteres de `nadia-prof`, ecrits en parallele, **en attente**. Je ne les invente pas |
+| (d) | Le perimetre du CE1 s'ouvre a d'autres matieres | Lesquelles. Les referentiels sont de `nadia-prof` (`DEC-0103`), en parallele |
+
+**Lecture, qui est la mienne.** *"Toutes les lignes"* s'entend dans le denominateur atteignable (182) : les 76 `non couvrable en l'etat` en sont retirees par definition (matrice, section "Comment la lire"), et les mots ne les nomment pas. Si l'utilisatrice les contredit, A.21 et A.23 sont amendes.
+
+### A.19 Ce que cet amendement ferme, ouvre et remplace
+
+| Point | Etat | Remplace |
+|---|---|---|
+| `Q-U8` (b) la date | **fermee** : pas de date | la question *"quelle date, ou quel nombre de sprints ?"* (A.10) |
+| `Q-U8` (c) le statut exige | **fermee dans son principe** : `couvert-valide` et `en cours` jouables comptent. **Formule incomplete** : criteres de `nadia-prof`, en attente (A.21) | la phrase *"sans reponse, seul `couvert-valide` compte"* (A.10) |
+| `Q-U8` (d) le perimetre du CE1 | **fermee dans son principe** : le CE1 s'ouvre. Matieres et referentiels : `nadia-prof`, en attente (A.24) | la question sur les deux referentiels (A.10) |
+| `Q-U9` | **nouvelle** (ci-dessous) | - |
+| `Q-U2` | **ouverte**, `nadia-prof` interrogee, en attente (A.25) | - |
+
+Lectures d'A.15 qui ne tiennent plus : (iii) *"O1 est exclue"* lisait la cible *"163 en 3 sprints"* ; sans date, cette cible n'existe plus (A.23). Les nombres de sprints d'A.15 restent des previsions de sortie, plus des contraintes. Le maximum de 163 (A.14) n'est plus la cible de la version (A.23).
+
+| Code | Question precise pour l'utilisatrice |
+|---|---|
+| `Q-U9` | **Le maximum de la version se mesure-t-il sur la matrice telle qu'elle sera quand les referentiels de CE1 seront ecrits, puis fige, ou sur la matrice vivante ?** Sans date (b) et avec un perimetre qui s'ouvre (d), chaque referentiel neuf ajoute des lignes au denominateur (A.24) : sur la matrice vivante, la cible bouge tant qu'un referentiel arrive. Je ne choisis pas |
+
+### A.20 Mesures lancees pour cet amendement (arbre `round-two` a `59c4b56f`, worktree `decisions-camille`, 2026-10-13, perimetre : le worktree entier)
+
+| Mesure | Commande ou fichier | Rendu |
+|---|---|---|
+| Matrice, total | commande de la "Methode du compte" de `MATRICE-couverture.md`, 258 lignes de donnees | `couvert-valide` 142, `en cours` 4, `non couvert` 36, `non couvrable en l'etat` 76 ; 142 / 182 = 78,02 % |
+| Les lignes `en cours` | la meme commande, filtre `s ~ /^en cours/`, sorties : matiere, niveau, competence, jeu | 4 lignes : `MAT-CP-01` (`bandit-manchot-nombres-jusqu-a-100-cp`), `MAT-CP-10` (`bandit-manchot-deplacements-quadrillage-cp`), `MAT-CE1-02` (`bandit-manchot-comparer-ranger-ce1`), `MAT-CE1-09` (`bandit-manchot-longueurs-ce1`). Codes repris d'A.13 ; leurs cellules ecrivent un verdict `VALIDE` ou `VALIDE SOUS RESERVE` de `nadia-prof` sur la part servie, sans passer a `couvert-valide` |
+| Jeux au catalogue | `grep -n` des quatre identifiants de jeu sur `catalogue.yaml` | 4 lignes `- id:` (495, 501, 591, 831) : chacun des quatre jeux a une entree. **C'est un fait de catalogue, pas un jugement de jouabilite** |
+| Referentiels par niveau | `ls squad/programme/*/competences-<niveau>.md \| wc -l` | CP 8, CE1 2, CM1 10 : inchange depuis A.11 |
+| Criteres de jouabilite de `nadia-prof` | sur `59c4b56f` : `git ls-tree -r --name-only HEAD \| grep -i jouabilit` ; `git grep -l -i jouabilit HEAD -- squad docs CLAUDE.md` | 0 nom de fichier ; 9 fichiers citent le mot (autres decisions et sprints, **non lus comme criteres de version : aucun n'est le document attendu**). Le document de `nadia-prof` n'est pas dans l'arbre `round-two` : je ne le cite pas et n'en reprends aucun terme |
+
+Ce que je n'ai pas mesure : le nombre de lignes `en cours` dont le jeu est jouable, faute de criteres (A.22).
+
+### A.21 Le compteur de la version : formule, incomplete
+
+**Compteur de version = lignes `couvert-valide` + lignes `en cours` dont le jeu est jouable selon les criteres de `nadia-prof`, en attente.** Denominateur : les lignes atteignables (182 aujourd'hui), non change par (c).
+
+- **Le statut de matrice ne change pas.** (c) definit un compteur de version, pas un statut : une ligne `en cours` reste `en cours`, et `couvert-valide` n'est toujours attribue que par le Done de `nadia-prof` (`CLAUDE.md`, double Done). La matrice garde son taux (142 / 182) ; le compteur de version est un second nombre, ecrit a cote, jamais a sa place.
+- **Commande.** La commande de la "Methode du compte" donne les deux termes `cv` et `ec` ; la liste des lignes `ec` (A.20) est ce que `nadia-prof` croise avec ses criteres. Sans ses criteres, seul le premier terme est mesurable.
+- **Texte existant que je signale sans en faire un critere** : `DEC-0045` section 3 ecrit que l'exposition d'un jeu au catalogue suit le Done pedagogique par jeu, pas le statut de la ligne. Savoir si elle fait partie de *"jouable"* est a `nadia-prof`.
+
+### A.22 Distance au maximum : ce qui se mesure aujourd'hui
+
+Le nombre `j` de lignes `en cours` jouables **n'est pas mesurable** : il depend de criteres que le depot n'a pas (A.20). Je ne l'estime pas. Le depot permet seulement l'encadrement par le nombre de lignes `en cours` (4), qui est une borne, pas une estimation :
+
+| Niveau | Atteignables | Compteur si `j` = 0 | Compteur si `j` = 4 |
+|---|---|---|---|
+| CP | 59 | 51 (86,44 %) | 53 (89,83 %), `MAT-CP-01` et `-10` |
+| CE1 | 44 | 25 (56,82 %) | 27 (61,36 %), `MAT-CE1-02` et `-09` |
+| CM1 | 79 | 66 (83,54 %) | 66 (83,54 %), aucune ligne `en cours` |
+| **Total** | **182** | **142 (78,02 %)** | **146 (80,22 %)** |
+
+### A.23 Le maximum sous (c)
+
+A.14 definissait le maximum par les seules lignes `couvert-valide` : 163 / 182. Sous (c), il compte aussi les lignes `en cours` jouables. Deux apports, tous deux **conditionnes aux criteres de `nadia-prof`** :
+
+1. Les 4 lignes `en cours` d'aujourd'hui (A.20), sans lot.
+2. Les 6 lignes de plafond `en cours` du rang C (`MAT-CE1-01`, `-10`, `-11`, `-15`, `FRA-CE1-03`, `-21`) : A.13 ecrit qu'un lot les fait passer a `en cours`, jamais a `couvert-valide`. Sous (c), ce lot suffit a les compter. **Ce reclassement est le mien**, tire de ce texte ; aucun de ces six lots n'a de prix ni de place ecrits.
+
+| Niveau | Maximum A.14 (`couvert-valide`) | Maximum sous (c), borne haute | Taux |
+|---|---|---|---|
+| CP | 54 | 54 + 2 = 56 | 56 / 59 = 94,92 % |
+| CE1 | 35 | 35 + 2 + 6 = 43 | 43 / 44 = 97,73 % |
+| CM1 | 74 | 74 | 74 / 79 = 93,67 % |
+| **Total** | **163** (89,56 %) | **173** | **173 / 182 = 95,05 %** |
+
+**9 lignes atteignables restent hors du maximum, meme sous (c)** : `MAT-CE1-14`, `QLM-CP-12`, `HG-CM1-09`, `HG-CM1-10`, `HDA-CM1-09` (mecanique ou materiau), `FRA-CM1-01` (decision de l'utilisatrice, `D4 non`), `EMC-CP-04`, `LVE-CM1-06` (refus ecrits), `FRA-CP-05` (aucune forme connue). 173 + 9 = 182. Le rang C passe de 19 lignes a 9 ; rang A (11) et rang B (10) inchanges.
+
+**Ce que (b) et (c) changent a la projection d'A.15.**
+
+- Sans date, les sprints d'A.15 sont des previsions de sortie. O1 n'est plus exclue par un delai ; elle reste plus longue (6 a 8 sprints pour 31,0 a 36,0 de travail). Le choix de la borne reste a `nadia-prof` (`PAR-8`), la duree a `sofia-sm`.
+- (c) n'allege pas le travail des 21 lignes de rangs A et B : aucune n'est `en cours` aujourd'hui. Il **ajoute six lots non chiffres** : le travail d'A.15 (31,0 a 36,0) est un plancher, pas un total, et je n'ecris pas de total faute de prix.
+- **Question a `nadia-prof`, pas critere de ma main** : une ligne dont le paquet est branche avant son Done est `en cours` au planning (matrice, "Qui la met a jour"). Ses criteres disent-ils si un tel jeu est *"jouable"* ? C'est la situation que `DEC-0045` section 3 et `DEC-0009` ont voulu eviter.
+- **Lecture, qui est la mienne** : A.14 definit le maximum *"sous les plafonds, refus et decisions tels que le depot les ecrit aujourd'hui"*. Une ligne dont `nadia-prof` ecrit un plafond ou un refus abaisse donc le maximum et ne bloque pas la sortie. Si l'utilisatrice la lit autrement, c'est `Q-U9`.
+
+### A.24 (d) : ce que l'ouverture du CE1 change au denominateur, a faire quand les referentiels existeront
+
+Aujourd'hui : 2 referentiels de CE1 (francais, mathematiques ; A.20), 44 lignes atteignables. **Je ne mesure pas l'effet maintenant et je n'estime pas le nombre de lignes** : il n'existe aucun referentiel neuf. A l'arrivee de chaque referentiel `squad/programme/<matiere>/competences-ce1.md` commite sur `round-two` :
+
+1. Verifier qu'il existe : `ls squad/programme/*/competences-ce1.md | wc -l`, contre 2.
+2. Ajouter ses lignes a la matrice, **dans un geste de matrice distinct, avec le build complet** (A.17), une section par matiere comme les existantes, statut `non couvert`, ou `non couvrable en l'etat` seulement sur la lecture de `nadia-prof` selon `DEC-0042`.
+3. Relancer la commande de la "Methode du compte", par niveau, avant et apres, perimetre nomme. Ecrire : lignes ajoutees, `k` lignes atteignables ajoutees, denominateur 182 + `k`, CE1 44 + `k`. Le numerateur ne bouge pas : le taux devient 142 / (182 + `k`), **par le seul effet du denominateur, pas un mouvement de couverture** (meme formule que la note de la matrice du 2026-10-07).
+4. Classer les lignes neuves en rangs A, B, C (A.13) et recalculer A.14, A.22 et A.23 sur le nouveau denominateur.
+5. Placer la matiere dans l'ordre (`DEC-0115` section 3, `DEC-0120` section 1) : c'est mon geste.
+6. Relire la condition (iii) d'`A10` (A.5 point 2) et `PAR-13` : une matiere de CE1 neuve est un terrain neuf, **lecture de `nadia-prof`**.
+7. Avant le point 3, savoir si `Q-U9` fige le maximum a ce moment.
+
+### A.25 `Q-U2` : en attente de `nadia-prof`
+
+`nadia-prof` est interrogee sur `S54-OBS-SCI-CONSIGNE`, le 2026-10-13, par l'agent lanceur. **Statut : en attente, aucune reponse a cette heure.** Elle ecrit ses criteres (A.3 point 1) ou non. Sans criteres avant l'ouverture du planning, la retraite de 4.1 tient et le troisieme report reste interdit : deux reports comptes (s55, s56), inchange.
+
+### A.26 Statuts, routage, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Proposee`.** Elle passe a `Acceptee` quand : `A10` est ecrite ; `Q-U2` et `Q-U9` ont leur reponse ; les criteres de jouabilite et les referentiels de CE1 de `nadia-prof` sont ecrits (la formule d'A.21 et le denominateur d'A.24 en dependent) ; la borne et la duree sont ecrites (A.17, complete). `Q-U8` (b), (c), (d) ont leur reponse.
+- **Routage.** `nadia-prof` : criteres de jouabilite (en parallele), referentiels de CE1, reponse a `Q-U2`, question d'A.23, lecture d'A.23 pour `PAR-8`. `sofia-sm` : la duree, sans date, a la lumiere d'A.23. Utilisatrice : `Q-U9`. Aucun poste neuf, aucune story neuve, aucun changement de code.
+- **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni O1 ni O2, ne fixe ni borne ni duree ; n'invente aucun critere de jouabilite ; ne prononce aucun Done ; ne touche ni code, ni catalogue, ni paquet, ni fiche, ni matrice ; ne dit pas que la CI distante est verte.
+- **Jobs lances pour son commit** : `prefixes` (`.github/scripts/verifier-prefixes.sh`) et `chemins` (`.github/scripts/verifier-chemins.sh`), resultats dans le message de livraison. `outils` et `build` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, ni matrice.
