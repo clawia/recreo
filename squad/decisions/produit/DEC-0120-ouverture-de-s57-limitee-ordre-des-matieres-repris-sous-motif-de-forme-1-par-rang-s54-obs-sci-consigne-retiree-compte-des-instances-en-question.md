@@ -611,3 +611,197 @@ Aujourd'hui : 2 referentiels de CE1 (francais, mathematiques ; A.20), 44 lignes 
 - **Routage.** `nadia-prof` : criteres de jouabilite (en parallele), referentiels de CE1, reponse a `Q-U2`, question d'A.23, lecture d'A.23 pour `PAR-8`. `sofia-sm` : la duree, sans date, a la lumiere d'A.23. Utilisatrice : `Q-U9`. Aucun poste neuf, aucune story neuve, aucun changement de code.
 - **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni O1 ni O2, ne fixe ni borne ni duree ; n'invente aucun critere de jouabilite ; ne prononce aucun Done ; ne touche ni code, ni catalogue, ni paquet, ni fiche, ni matrice ; ne dit pas que la CI distante est verte.
 - **Jobs lances pour son commit** : `prefixes` (`.github/scripts/verifier-prefixes.sh`) et `chemins` (`.github/scripts/verifier-chemins.sh`), resultats dans le message de livraison. `outils` et `build` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, ni matrice.
+
+---
+
+## Amendement du 2026-10-13, quatrieme (`camille-po`, apres les reponses de l'utilisatrice sur les referentiels CE1 et l'arbitrage prealable de `nadia-prof`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.28. Le sprint n'est toujours pas ouvert : ni `planning.md`, ni duree, ni affectation. **La matrice change** : 17 lignes de CE1 y entrent (A.30), 142 / 182 devient 142 / 198. Aucun catalogue, aucun paquet, aucun code, aucune fiche n'est touche.
+
+### A.27 Les mots de l'utilisatrice, forme 2 de `DEC-0062`
+
+Mots de la session du 2026-10-13, tels que l'agent qui m'a lance me les transmet, en les donnant pour recus directement et citables (forme 2) ; **je ne les ai pas lus de sa main** (meme reserve que 0.1, A.1, A.9, A.18). Les deux premiers repondent aux questions de `nadia-prof` (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, section 8, `Q1` et `Q2`), le troisieme a `Q-U9` ; les gloses sont celles de l'agent lanceur, pas des mots de l'utilisatrice.
+
+| Question | Mots | Ce qu'ils fondent | Ce qu'ils ne fondent pas |
+|---|---|---|---|
+| `Q1` de `nadia-prof` (lignes de CE1 jumelles de celles du CP) | *"non nouveaux items"* | Aucune ligne de CE1 ne reprend une ligne de CP avec des items plus difficiles ; le critere de `nadia-prof` (une ligne de CE1 n'est ecrite que si un paquet de CE1 sert autre chose qu'un paquet de CP) tient | Le contenu d'une ligne de CE1 : il reste a elle |
+| `Q2` de `nadia-prof` (rouvrir un son) | *"non pas de son"* | Aucun son, enregistre ou synthetique ; l'anglais et l'education musicale restent fermes au CE1 | Le CP et le CM1, dont les lignes `non couvrable en l'etat` restent comme A.16 les nomme |
+| `Q-U9` (matrice figee ou vivante) | *"avec referentiels ecrits"* | Le maximum de la version se mesure une fois les referentiels de CE1 ecrits ; `Q-U9` est close sur cette reponse | **Le moment ou la matrice est figee** : `Q-U10` (A.28) |
+| Ma lecture d'A.18 et de la derniere puce d'A.23 | *"oui"* | *"Toutes les lignes"* s'entend dans les lignes atteignables ; un plafond ou un refus ecrit de `nadia-prof` baisse le maximum et ne bloque pas la sortie | - |
+| Travail demande dans cette session | *"ok"* | L'integration des deux referentiels a la matrice et le recompte (A.29 a A.32), le choix de repartition, le placement de `S54-OBS-SCI-CONSIGNE` et le rang de `G3` / `G4` (A.33 a A.35) | - |
+
+### A.28 Ce que cet amendement ferme, ouvre et remplace
+
+| Point | Etat | Remplace |
+|---|---|---|
+| `Q-U9` | **fermee** (A.27) | la question d'A.19 |
+| `Q-U2` | **sans objet** : `nadia-prof` a ecrit ses criteres (`ARBITRAGE-PREALABLE-s57-...`, section 3), la condition d'A.3 point 1 est remplie ; `S54-OBS-SCI-CONSIGNE` est placee (A.34) | A.25 (*"en attente"*) et la retraite de 4.1 |
+| `Q-U10` | **nouvelle**, ci-dessous | - |
+| Criteres de jouabilite | **ecrits** : cinq criteres cumulatifs (`ARBITRAGE-PREALABLE-s57-...`, section 1.2, `D1`) | A.21 (*"formule incomplete"*), A.22 (*"non mesurable"*) |
+| Referentiels de CE1 | **ecrits** : questionner le monde (12 lignes), EMC (5 lignes). Arts plastiques *reportee*, anglais *reportee* (rouvrable seulement par une decision sur le son, refusee en A.27), education musicale et EPS *refusees* (`ARBITRAGE-PREALABLE-s57-...`, section 2.2) | A.24 (*"a faire quand les referentiels existeront"*) |
+| Gestes d'A.24 | points 1 a 5 faits ici (A.29 a A.35) ; point 6 (condition (iii) d'`A10` et `PAR-13` pour une matiere de CE1 neuve) **reste a `nadia-prof`** ; point 7 : `Q-U9` close | A.24 |
+| `A10` | **ecrite par `nadia-prof`** (section 4.1) : condition (ii) non remplie pour s54, une occurrence de la forme (c), instance C en cause. Aucune derivation au-dela de 8,0 | A.5 (*"n'est pas ecrite"*) |
+| Borne de s57 | **8,0 pour trois instances** (`nadia-prof`, `D7`, option O1). La duree reste a `sofia-sm` | A.4 (*"aucune valeur choisie"*) |
+| Maximum de la version | **186 / 198** sous (c), borne haute (A.31) | A.23 (173 / 182) |
+| Section 1, rang 4, *"ne ferment aucune ligne"* | remplace par A.35 | section 1, tableau, rang 4 ; 1.2 point 4 |
+
+| Code | Question precise pour l'utilisatrice |
+|---|---|
+| `Q-U10` | **Le maximum de 198 lignes atteignables est-il fige maintenant, ou attend-il le referentiel d'arts plastiques CE1 ?** `nadia-prof` l'a *reporte* apres le verdict du rejeu d'`ART-CP-10` (section 2.2) ; s'il est ecrit, il ajoute des lignes. Lecture par defaut, la mienne : *"avec referentiels ecrits"* designe les referentiels qui existent le 2026-10-13 ; un referentiel qui arrive ensuite se traite par les gestes d'A.24, et le maximum bouge alors par le seul effet du denominateur, ecrit comme tel. Je ne fige rien sans sa reponse |
+
+### A.29 Mesures lancees pour cet amendement (arbre `round-two` a `13e2588a`, worktree `matrice-camille`, 2026-10-13, perimetre : les 258 puis 275 lignes de donnees de la matrice, aucune mesure partielle)
+
+Commande de la "Methode du compte" de `MATRICE-couverture.md`, reprise telle quelle :
+
+```
+awk -F'|' '/^\| [a-z]/ && ($3 ~ /^ (CP|CE1|CM1) $/) {s=$8; gsub(/^ +/,"",s); gsub(/^\*\*/,"",s);
+  k="autre"; if (s ~ /^couvert-valide/) k="cv"; else if (s ~ /^non couvert( |$)/) k="nc";
+  else if (s ~ /^en cours/) k="ec"; else if (s ~ /^non couvrable/) k="ncb"; c[k]++; t++}
+  END {for (k in c) print k, c[k]; print "total", t}' squad/programme/MATRICE-couverture.md
+```
+
+| Sortie | Avant (`git show 13e2588a:squad/programme/MATRICE-couverture.md` passe a la commande) | Apres (fichier du worktree) |
+|---|---|---|
+| `cv` (`couvert-valide`) | 142 | 142 |
+| `ec` (`en cours`) | 4 | 4 |
+| `nc` (`non couvert`) | 36 | 52 |
+| `ncb` (`non couvrable en l'etat`) | 76 | 77 |
+| `total` | 258 | 275 |
+| denominateur atteignable (`total` moins `ncb`) | 182 | **198** |
+| `cv` / denominateur | 142 / 182 = 78,02 % | **142 / 198 = 71,72 %** |
+| `cv` / `total` | 142 / 258 = 55,04 % | 142 / 275 = 51,64 % |
+
+**Le numerateur ne bouge pas** : le taux baisse de 6,30 points par le seul effet du denominateur, pas par un mouvement de couverture (meme formule que la note de la matrice du 2026-10-07 ; A.24 point 3). Par niveau (`$3` comme cle) : CE1 `cv` 25, `ec` 2, `nc` 33, `ncb` 6, total 66 (49 avant) ; CP 92 et CM1 117, inchanges. Par section (`$2` et `$3` comme cle) : questionner le monde / CE1 `nc` 12, total 12 ; EMC / CE1 `nc` 4, `ncb` 1, total 5.
+
+### A.30 La matrice : 17 lignes entrent, avec le statut de `nadia-prof`
+
+Les 17 lignes sont copiees des deux referentiels (`squad/programme/questionner-le-monde/competences-ce1.md`, `squad/programme/enseignement-moral-et-civique/competences-ce1.md`), aucun mot change, sans jeu ni mecanique, chacune avec le statut que son jugement de faisabilite lui attribue. **Audit degrade, et elle le declare** : aucun paquet n'existe sur ces lignes, rien n'a ete joue. Ces statuts sont ceux d'*entree dans la matrice*, pas une instruction ligne par ligne, qui reste due avant le premier paquet.
+
+| Section | Lignes | Statut a l'entree | Motif de `nadia-prof` |
+|---|---|---|---|
+| questionner le monde / CE1 | `QLM-CE1-01` a `-06`, `-08`, `-10`, `-12` (9) | `non couvert`, jouable au choix textuel | connaissances exactes et verifiables en trois propositions ; `-10` sans image |
+| questionner le monde / CE1 | `QLM-CE1-07`, `-09`, `-11` (3) | `non couvert`, **en attente d'un materiau** | un circuit, un plan avec legende, un planisphere dessines : absents du depot (meme manque que `QLM-CP-12` et `HG-CM1-09`) |
+| EMC / CE1 | `EMC-CE1-01` a `-04` (4) | `non couvert`, jouable au choix | `EMC-1` a `EMC-7` du CP valent telles qu'ecrites |
+| EMC / CE1 | `EMC-CE1-05` (1) | **`non couvrable en l'etat`**, nature irreversible | cooperer est une conduite, pas une connaissance ; la faire passer pour un clic serait une contrefacon (`CON-1`) |
+
+La forme est celle des sections voisines (sept cellules par ligne, une section par matiere et niveau, bilan sous le tableau). Le texte de tete de la matrice passe de vingt a vingt-deux referentiels. **Aucun test ni garde-fou n'a ete modifie** : la seule exigence de forme que j'ai trouvee qui lise la matrice est `AucuneLigneDeTableauNePortePlusDeCellulesQueSonEnTeteTest`, que le build complet execute ; son resultat est dans le message de livraison.
+
+### A.31 Distance au maximum, recalculee sur 198 (remplace A.12, A.13, A.14, A.16 et A.23)
+
+**A.12, par niveau.**
+
+| Niveau | Lignes | `couvert-valide` | `en cours` | `non couvert` | `non couvrable` | Atteignables | Taux |
+|---|---|---|---|---|---|---|---|
+| CP | 92 | 51 | 2 | 6 | 33 | 59 | 51 / 59 = 86,44 % |
+| CE1 | 66 | 25 | 2 | 33 | 6 | 60 | 25 / 60 = 41,67 % |
+| CM1 | 117 | 66 | 0 | 13 | 38 | 79 | 66 / 79 = 83,54 % |
+| **Total** | **275** | **142** | **4** | **52** | **77** | **198** | **71,72 %** |
+
+Le CE1 passe de 56,82 % a 41,67 % par le denominateur seul (44 a 60 lignes atteignables). Lignes non fermees : 56 = 4 `en cours` + 52 `non couvert` (40 avant, plus 16).
+
+**A.13, rangs** (definitions inchangees). Rang A : 11, inchange. Rang B : **23**, les 10 d'A.13 plus 13 lignes neuves (`QLM-CE1-01` a `-06`, `-08`, `-10`, `-12`, `EMC-CE1-01` a `-04`), fermables par ecriture, que l'ecriture reussisse etant un jugement de `nadia-prof`. Rang C : **22**, les 19 d'A.13 plus 3 lignes neuves dont le seul manque est un dessin (`QLM-CE1-07`, `-09`, `-11`). 11 + 23 + 22 = 56. Les lignes de rang C dont le seul manque est un dessin sont maintenant sept (`QLM-CP-12`, `HG-CM1-09`, `HG-CM1-10`, `HDA-CM1-09` et les trois neuves) ; l'avis de faisabilite de `theo-archi` reste a obtenir avant tout chiffrage (`DEC-0099` section 4 ter). `QLM-CE1-07` a une moitie textuelle jouable (*nommer les elements*) : aucun plafond `en cours` n'est ecrit pour elle, je ne le presume pas.
+
+**A.14, maximum en `couvert-valide`** (sous les plafonds, refus et decisions que le depot ecrit) :
+
+| Cible | Lignes `couvert-valide` | Sur 198 | Sur 275 |
+|---|---|---|---|
+| Aujourd'hui | 142 | 71,72 % | 51,64 % |
+| Rang A ferme (+ 11) | 153 | 77,27 % | 55,64 % |
+| **Maximum, rangs A et B (+ 34)** | **176** | **88,89 %** | 64,00 % |
+| Si l'utilisatrice leve `D4` (+ `FRA-CM1-01`) | 177 | 89,39 % | 64,36 % |
+
+| Niveau | Aujourd'hui | Rang A ferme | Maximum (A + B) | Taux au maximum |
+|---|---|---|---|---|
+| CP | 51 | 52 | 54 | 54 / 59 = 91,53 % |
+| CE1 | 25 | 35 | 48 | 48 / 60 = 80,00 % |
+| CM1 | 66 | 66 | 74 | 74 / 79 = 93,67 % |
+
+**A.23, maximum sous (c), borne haute.** Les 176, plus les 4 lignes `en cours` d'aujourd'hui, plus les 6 lignes de plafond `en cours` (`MAT-CE1-01`, `-10`, `-11`, `-15`, `FRA-CE1-03`, `-21`) qu'un lot rend `en cours` : **186 / 198 = 93,94 %** (173 / 182 = 95,05 % avant). CP 56 / 59 = 94,92 % ; CE1 56 / 60 = 93,33 % ; CM1 74 / 79 = 93,67 % ; 56 + 56 + 74 = 186. Un plafond ou un refus ecrit de `nadia-prof` baisse ce nombre sans bloquer la sortie (A.27, *"oui"*).
+
+**A.16, ce que la version sortirait non couvert.** Les 77 `non couvrable en l'etat` sortent non couvertes, quelle que soit la cible (CE1 : 5 de francais et `EMC-CE1-05`). **12 lignes atteignables restent hors du maximum, meme sous (c)** : les 9 d'A.23 (`MAT-CE1-14`, `QLM-CP-12`, `HG-CM1-09`, `HG-CM1-10`, `HDA-CM1-09`, `FRA-CM1-01`, `EMC-CP-04`, `LVE-CM1-06`, `FRA-CP-05`) et `QLM-CE1-07`, `-09`, `-11`. 186 + 12 = 198.
+
+**Travail (A.15), plancher.** A.15 donnait 31,0 pour 163 (rang A 11,0 plus dix lots de rang B a 2,0). Ajouts : 13 lots textuels neufs au bareme de lot neuf de `nadia-prof` (1,0, *"application, pas mesure"*), soit 13,0 ; les quatre lots de `G4` a son prix ecrit de 1,0, soit 4,0. **Les deux lots de `G3` et l'instruction ligne par ligne des deux referentiels n'ont aucun prix ecrit** (section 2.3 de son arbitrage) et sont hors du total. Plancher : 31,0 + 13,0 + 4,0 = **48,0**. A 5,0 de travail par sprint a trois instances (8,0 moins 3 x 1,0 de fixe) : 10 sprints ; a 6,0 (deux instances) : 8. **Previsions de sortie, pas contraintes** (pas de date, A.19), sur des tarifs de bareme et le rythme mesure de 1,67 lot par sprint et par instance de francais CE1 (A.11). Je n'en tire aucune conclusion de planning.
+
+### A.32 Le compteur de version, sous les criteres de `nadia-prof` (remplace A.21 et A.22)
+
+**Compteur de version = lignes `couvert-valide` + lignes `en cours` dont le jeu remplit les cinq criteres de `nadia-prof`** : servi au catalogue ; CI verte, jobs nommes, sur l'arbre de la version ; verdict ecrit de sa main, non `REFUSE`, sur le jar qui sert l'entree ; plafond ecrit de sa main qui autorise `en cours`, avec la mention de couverture partielle reprise dans la cellule ; aucune reserve bloquante ouverte. Denominateur : les lignes atteignables, 198.
+
+- **Ce qui est mesure.** `nadia-prof` ecrit que les quatre lignes `en cours` (`MAT-CP-01`, `MAT-CP-10`, `MAT-CE1-02`, `MAT-CE1-09`) remplissent les cinq criteres (sections 0 et 1.4 : un jeu au catalogue chacune, un verdict de sa main limite a la part servie). Ma part, lue sur la matrice : les quatre cellules portent la mention de couverture partielle (`awk` sur les lignes `en cours`, test `couverture partielle|mention` : oui sur les quatre). **Le critere 2 se lit sur l'arbre de la version, pas sur celui-ci** : le compteur est ecrit sous cette condition.
+- **Ce qui ne compte pas aujourd'hui** : les six lignes dont `nadia-prof` plafonne le jeu a `en cours` (`MAT-CE1-01`, `-10`, `-11`, `-15`, `FRA-CE1-03`, `-21`) sont `non couvert` ; elles ne rempliront les criteres qu'apres un lot audite chacune (section 1.4).
+
+| Niveau | Atteignables | `couvert-valide` | Compteur (+ 4 `en cours`) | Taux du compteur |
+|---|---|---|---|---|
+| CP | 59 | 51 | 53 | 89,83 % |
+| CE1 | 60 | 25 | 27 | 45,00 % |
+| CM1 | 79 | 66 | 66 | 83,54 % |
+| **Total** | **198** | **142** | **146** | **73,74 %** |
+
+La matrice garde son taux (142 / 198 = 71,72 %) ; le compteur est un second nombre, ecrit a cote, jamais a sa place (A.21). **Libelle devant un adulte** (`nadia-prof`, 1.4 : annoncer un total sans la distinction *"ferait passer une couverture partielle pour une couverture"* ; le libelle est a moi) : *"146 lignes sur 198 : 142 validees par la professeure, 4 en cours, dont le jeu est jouable pour la part de la competence que la ligne dit servir."* L'enfant ne voit pas la matrice. `nadia-prof` ne prononce aucun Done de version (`D2`) ; je n'en ecris pas.
+
+### A.33 Repartition de s57 entre A, A' et B : choix de `camille-po` (`D7`)
+
+`nadia-prof` fixe la borne (8,0, O1) et donne deux repartitions, en ecrivant que *"le choix est un ordre, donc a `camille-po`"* (section 4.3). **Retenue : la colonne "sans lot de `G4`".**
+
+| Instance | Budget | Contenu |
+|---|---|---|
+| A (groupe X) | **2,5** | arbitrage 0,5, marge de rejeu 0,5, `VSJ-CE1-R1` 0,5, un lot de francais CE1 |
+| A' (groupe Y) | **3,0** | arbitrage 0,5, marge de rejeu 0,5, deux lots de francais CE1 |
+| B | **2,5** | arbitrage 0,5, marge de rejeu 0,5, rejeu d'`ART-CP-10` 0,5, `S54-OBS-SCI-CONSIGNE` 0,25 ; 0,75 non affectes |
+| Somme | **8,0** (`PAR-9`) | trois lots de francais CE1 |
+
+**Motifs, verifiables dans son arbitrage et dans cette decision :**
+
+1. **L'ordre de la section 1 tient.** Le rang 1 (francais CE1, dix lots) passe devant le rang 4. L'autre colonne retire un lot de rang 1 a A', qui porte deux lots sous 3,0, pour le donner a un lot de rang 4 chez B.
+2. **Meme gain au compteur, plus ferme.** Sous (c) et `D1`, les deux colonnes ajoutent trois lignes au compteur. La colonne retenue en ferme trois en `couvert-valide` ; l'autre en ferme deux et laisse la troisieme `en cours`, sous mention de couverture partielle (plafond de `G4`).
+3. **Meme budget non affecte.** Les deux colonnes affectent 7,25 sur 8,0 (A 2,5, A' 3,0, B 1,75 d'un cote ; A 2,5, A' 2,0, B 2,75 de l'autre) : l'avantage de la seconde, B pleine, ne consomme pas moins de capacite de `nadia-prof`.
+4. **Un ecart d'arithmetique dans son tableau, signale et non corrige** (c'est son document). La colonne "avec un lot de `G4`" ecrit pour A' *"2,75 : arbitrage, marge, 1 lot ; 0,25 non affectes"*. Sur ses tarifs, 0,5 + 0,5 + 1,0 = 2,0 et 2,75 moins 2,0 = **0,75**, pas 0,25. Sa somme de 8,0 est juste ; ce sont les non affectes qui sont de 0,75 dans les deux colonnes. Question `Q-N1`.
+
+**Ce qui reste hors de ma main** : le contenu exact des lots, l'accord sur `PAR-2` (ecrit, six conditions, section 4.2, dont *"`-08` et `-09` ne sont pas des lots de s57"*), `PAR-13` sur le groupe Y et l'affectation des lots aux instances. Si elle juge a l'arbitrage de A' qu'un second lot de Y n'est pas prenable, le lot libere ne va pas de lui-meme a `G4` : ce serait un amendement de cette repartition.
+
+| Code | Question a `nadia-prof` (routee par `sofia-sm`, pas une question a l'utilisatrice) |
+|---|---|
+| `Q-N1` | (a) Corriger ou confirmer le 0,25 de la colonne "avec un lot de `G4`" (0,75 sur ses tarifs). (b) Les 0,75 non affectes de B peuvent-ils porter l'instruction ligne par ligne de l'un des deux referentiels de CE1, due avant le premier paquet de ces lignes et dont elle n'a pas ecrit le prix (section 2.3) ? Si oui, elle fixe le prix ; je ne l'invente pas |
+
+### A.34 `S54-OBS-SCI-CONSIGNE` : placee en B (`Q-U2` sans objet)
+
+**Compte des reports.** Ouverte a s54 ; **premier report a s55** (`DEC-0115` A.10), **second report a s56** (`DEC-0116` section 5, A.2). `DEC-0112` section 6 : *"un troisieme report n'est plus permis"* ; l'utilisatrice, le 2026-10-09 : *"Reporter a s57, abandon ou placement ecrit alors"*. 4.1 l'a retiree faute de criteres, de proprietaire et de prix ; A.3 point 1 la rendait candidate de B a une seule condition, que `nadia-prof` ecrive ses criteres. **Elle les a ecrits** (section 3 de son arbitrage), avec un prix (0,25) et un avis : *"la placer en B"*, parce qu'elle est visible sur toutes les manches et ne coute presque rien.
+
+**Decision : placee a s57, instance B, 0,25.** C'est un placement ecrit, pas un report : le compte reste a deux. **Si elle n'est pas livree et rejouee a la cloture de s57, ce serait un troisieme report, interdit** : elle est alors abandonnee par un acte ecrit a la cloture, pas reportee a s58 (`nadia-prof` ne demande pas de troisieme report, section 3).
+
+**Criteres, ses mots** (section 3, la story complete est au backlog) : (1) les 12 enonces de `cm1-sciences-extraire-information.yaml` perdent leur premiere phrase, chacun commence par *"D'après ce tableau,"* ou *"D'après ce texte,"* ; mesure : `grep -c "puis réponds à la question"` sur le paquet rend 0 ; (2) rien d'autre ne change, `git diff` ne touche que les 12 lignes `enonce:` ; (3) la consigne du catalogue ne change pas ; (4) les tests qui lisent ce paquet restent verts, le developpeur nomme ceux qu'il a lances ; (5) rejeu par elle, instance B, une partie de dix manches, `SCI-CM1-20` reste `couvert-valide`.
+
+**Verification contre l'existant, faite avant d'ecrire** (elle est a ma charge) : le critere 1 rend **12 aujourd'hui** (`grep -c` sur le paquet, 2026-10-13), donc rouge sur l'existant : c'est un critere. Les criteres 2 et 3 sont des clauses de non-regression, vertes par construction aujourd'hui ; je ne les presente pas comme des correctifs. Critere 4 : `PaquetCm1SciencesExtraireInformationTest` ne contient ni *"Lis"* ni *"puis r"* (`grep -n`), donc aucune de ses assertions ne lit la phrase retiree ; ce n'est pas un test que j'ai lance, le developpeur le reverifie.
+
+**Proprietaire.** La story est la mienne ; le developpeur est **a designer par `sofia-sm`** (`nadia-prof` : *"Developpeur : a designer par `sofia-sm`"*) ; le rejeu est a `nadia-prof`, instance B. **Une decision qui implique un changement de code n'est pas prise tant que ce changement n'a pas de proprietaire** : tant que `sofia-sm` n'a pas designe le developpeur avant l'ouverture du planning, le placement n'est pas complet et la retraite de 4.1 tient. La story est routee a `sofia-sm` dans le meme geste (A.37).
+
+### A.35 Rang de `G3` et `G4`, et des lignes neuves (remplace la section 1, rang 4, et 1.2 point 4)
+
+**Ce qui change.** Le rang 4 etait ecrit *"ne ferment aucune ligne"*. Sous (c) et `D1`, un lot de `G3` ou de `G4` fait compter une ligne dans la version (`en cours`, un lot audite, plafond de `nadia-prof`) ; elle le nomme et renvoie le rang a `camille-po` (section 1.4). **Les rangs ne sont pas renumerotes.**
+
+| Rang | Contenu | Place, et motif |
+|---|---|---|
+| 1 | dix lots de francais CE1 (`couvert-valide`) | **inchange, premier.** Ils ferment des lignes ; les cinq derniers lots n'ont eu aucun refus ecrit (0.3) |
+| 2, 3 | epuise, vide | inchanges |
+| **4a** | **`G4` : cinq paquets de mathematiques CE1.** Quatre lignes `en cours` au plus (`MAT-CE1-01`, `-10`, `-11`, `-15`), 1,0 par lot (`nadia-prof`) ; `MAT-CE1-14` reste conditionnee a `A3` d'`ADR-0080` | **juste apres le rang 1.** Matiere distincte du francais CE1 : prenable par B sous `PAR-2`, donc sans consommer la capacite de A et A' ; chaque lot fait compter une ligne. **Aucun lot de `G4` a s57** (A.33, motif 1) : B n'a que 0,75 non affectes, moins que le lot |
+| **4b** | **`G3` : deux paquets de francais CE1** (`FRA-CE1-03`, `-21`), plafond `en cours` | **apres les dix lots du rang 1 et apres 4a.** Meme matiere que le rang 1 : ils prennent la capacite de A et A', qui est le goulot (`PAR-2`), et ne font compter une ligne qu'`en cours`. `-21` n'est releve que par une decision de l'utilisatrice (dictee ou saisie alphabetique au CE1) |
+| **5** (neuf) | les 23 lignes de rang B : les 10 d'A.13 et les 13 de CE1 (A.31) | **derriere les rangs 1 et 4.** Aucune n'est engageable aujourd'hui : l'instruction des deux referentiels de CE1 est due avant le premier paquet et son prix n'est pas ecrit ; le rang B d'A.13 n'a pas de prix mesure. **Pas d'ordre interne : un ordre ne se derive pas de prix qui n'existent pas** (`DEC-0114` section 4 : rien n'est engage sans proprietaire ni prix). Il se fait quand `nadia-prof` ecrit les prix |
+| hors rang | les 22 lignes de rang C (A.31) | bloquees par un materiau, une mecanique, une decision ou un refus ecrit : ni lot ni ecriture |
+
+**Matieres neuves.** Questionner le monde CE1 et EMC CE1 sont des matieres de CE1 que le depot n'a jamais servies : leur place dans `PAR-13` (terrain neuf) est a `nadia-prof` (A.24 point 6). Je ne la presume pas.
+
+### A.36 Ce que je ne tranche pas, et a qui c'est
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | **La duree du sprint** (sans date, A.19) ; **l'heure de fusion de l'amendement d'`ADR-0065`** avant le premier worktree d'un lot de A' (condition 2 de `nadia-prof`, 4.2) ; **la seconde ligne `A10`** de `retro.md` de s56 (*"Ecrire dans le depot les deux arrets d'agent et le watchdog"*, collision d'identifiant signalee en A.5) ; **le developpeur de `S54-OBS-SCI-CONSIGNE`** ; les sous-repertoires de scratchpad et les ports par agent (condition 5) ; la question `Q-N1`. Je n'ecris aucun de ces points |
+| `theo-archi` | `S57-ADR-0065-DEUX-INSTANCES` avant le premier worktree de A' (engagee, A.2) ; l'avis de faisabilite des sept dessins (A.31). Je ne tranche aucun moyen technique |
+| `nadia-prof` | L'affectation des lots aux instances ; `PAR-13` pour les deux matieres neuves de CE1 ; l'instruction ligne par ligne des deux referentiels et son prix ; les prix du rang B ; `Q-N1`. Si une derivation au-dela de 8,0 est voulue pour s58, la condition (i) est a montrer par moi dans un document de planning (4.3) : **non faite ici** |
+| Utilisatrice | `Q-U10` |
+
+### A.37 Statuts, routage, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Proposee`.** Elle passe a `Acceptee` quand la duree de s57 est ecrite par `sofia-sm` et que `Q-U10` a sa reponse. Cet amendement leve : `A10` (ecrite par `nadia-prof`), `Q-U2` (sans objet), `Q-U9`, les criteres de jouabilite, les referentiels de CE1, la borne.
+- **Statuts de stories** : `S54-OBS-SCI-CONSIGNE` passe de *retiree, candidat de B sous condition* a **placee a s57, instance B, 0,25, developpeur a designer** (A.34). Aucune autre story ne change ; `S57-ADR-0065-DEUX-INSTANCES` reste engagee.
+- **Routage** : le developpeur de `S54-OBS-SCI-CONSIGNE` et les autres points d'A.36 sont routes a `sofia-sm` par le backlog et le journal de gouvernance du meme commit.
+- **Ne fait pas** : n'ouvre pas s57 ; ne fixe ni la duree ni l'heure de fusion d'`ADR-0065` ; ne prononce aucun Done et ne juge aucun contenu (les statuts des 17 lignes sont ceux de `nadia-prof`) ; ne compose aucun lot ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne corrige pas l'ecart de `LVE-CM1-06` signale en A.17 (la cellule dit encore *"jouable par saisie"* alors que `nadia-prof` l'a refusee a la saisie : geste de matrice a part, non demande) ; ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`build` par `bash outils/mvn-jdk21.sh -B clean verify`, `chemins`, `prefixes`). `outils` n'est pas lance : le commit ne modifie aucun outil, et je n'en deduis pas le resultat.

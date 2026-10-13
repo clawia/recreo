@@ -278,3 +278,18 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 **Ce que je route.** `nadia-prof` : criteres de jouabilite, referentiels de CE1, reponse a `Q-U2`, question sur le jeu branche avant son Done (A.23). `sofia-sm` : duree, sans date. Utilisatrice : `Q-U9`.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, de tarif, de borne ni de duree ; n'ouvre pas s57 ; n'invente aucun critere de jouabilite.
+
+## 2026-10-13 (quatrieme) - les referentiels CE1 entrent dans la matrice, repartition de s57, `S54-OBS-SCI-CONSIGNE` placee (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, je ne les ai pas lus de sa main), en reponse aux questions de `nadia-prof` et a `Q-U9` : *"non nouveaux items"*, *"non pas de son"*, *"avec referentiels ecrits"* ; *"oui"* a ma lecture de *"toutes les lignes"* (dans les lignes atteignables) ; *"ok"* pour le travail.
+
+**Ce que je verse.** `DEC-0120` amendement A.27 a A.37 (`Proposee`, inchange) et la matrice :
+1. **Matrice** : 17 lignes de CE1 entrent, statut de `nadia-prof` (12 `QLM-CE1-*` `non couvert`, 4 `EMC-CE1-*` `non couvert`, `EMC-CE1-05` `non couvrable en l'etat`). Commande de la "Methode du compte", avant (`13e2588a`) : `couvert-valide` 142, `en cours` 4, `non couvert` 36, `non couvrable` 76, total 258, 142 / 182 = 78,02 % ; apres : 142, 4, 52, 77, total 275, **142 / 198 = 71,72 %**. Le numerateur ne bouge pas.
+2. **Distance au maximum recalculee** : compteur de version 146 / 198 = 73,74 % ; maximum en `couvert-valide` 176 / 198 = 88,89 % ; sous (c), borne haute, 186 / 198 = 93,94 % ; 12 lignes atteignables hors du maximum.
+3. **Repartition de s57** (borne 8,0, trois instances, `nadia-prof` `D7`) : colonne "sans lot de `G4`", A 2,5, A' 3,0, B 2,5 ; motifs ecrits en A.33. Ecart d'arithmetique signale a `nadia-prof` (0,25 contre 0,75 non affectes, `Q-N1`), non corrige dans son document.
+4. **`S54-OBS-SCI-CONSIGNE`** placee a s57, instance B, 0,25, criteres de `nadia-prof` ; deux reports comptes (s55, s56), un troisieme interdit ; critere 1 rouge sur l'existant (12 occurrences). `Q-U2` sans objet.
+5. **Rang** : `G4` 4a (apres le rang 1, prenable par B, aucun lot a s57) ; `G3` 4b (apres les dix lots de francais CE1) ; lignes de rang B : rang 5, sans ordre interne faute de prix.
+
+**Ce que je route.** `sofia-sm` : duree du sprint ; heure de fusion d'`ADR-0065` avant A' ; seconde `A10` de la retro de s56 ; developpeur de `S54-OBS-SCI-CONSIGNE` ; sous-repertoires et ports par agent ; `Q-N1`. `theo-archi` : `S57-ADR-0065-DEUX-INSTANCES`, avis de faisabilite des dessins. `nadia-prof` : `PAR-13` pour les deux matieres neuves, instruction et prix, `Q-N1`. Utilisatrice : `Q-U10`.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, fiche ni Done ; n'ouvre pas s57 ; ne fixe ni la duree ni l'heure de fusion d'`ADR-0065` ; ne compose aucun lot.
