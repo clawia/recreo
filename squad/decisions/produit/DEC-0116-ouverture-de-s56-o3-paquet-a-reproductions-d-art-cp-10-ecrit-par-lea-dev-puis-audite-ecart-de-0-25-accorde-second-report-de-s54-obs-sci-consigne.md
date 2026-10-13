@@ -5,7 +5,7 @@
 - **Auteur** : `camille-po`
 - **Sprint** : s56
 - **Competences programme visees** : `FRA-CE1-13` (lot `ce1-verbe-sujet`) et `ART-CP-10` (paquet a reproductions et audit) pour les deux fermetures possibles ; `FRA-CE1-14`, `FRA-CE1-12`, `EMC-CM1-03`, `EMC-CM1-06`, `EMC-CP-03` pour les six reserves (lignes deja `couvert-valide`, non rouvertes). Les autres postes (arbitrages, plafond, actions de retro) sont transverses - pas de contenu pedagogique. **Aucune ligne de matrice ne change par cette decision** : elle n'ouvre que des audits. Matrice a `c986adcf` : **141 / 182 (77,47 %)** ; au mieux **143 / 182 (78,57 %)**.
-- **Statut** : **Proposee**, section 0.5. Les mots de l'utilisatrice couvrent la composition (O3), l'ecart et le proprietaire du paquet ; ils ne couvrent ni l'ordre des matieres pour s56 (Q4), ni l'arbitrage de forme de 0,25 (2.3).
+- **Statut** : **Acceptee le 2026-10-13 (amendement A.37)**, `Proposee` du 2026-10-09 au 2026-10-13. `DEC-0120` section 1 reprend l'ordre des matieres sous un motif de forme 1 par rang, ce que 0.5 et A.22 (ii) exigeaient. Etait `Proposee` parce que les mots de l'utilisatrice couvraient la composition (O3), l'ecart et le proprietaire du paquet, et non l'ordre des matieres (Q4).
 - **Lien** : `DEC-0115` (A.4, A.10, A.15, A.18, A.22) ; `DEC-0114` (section 4, 7.2, A.20) ; `DEC-0112` section 6 ; `DEC-0062` (regles 3.1, 3.2, 3.5) ; `ADR-0104` (`Accepte`, tableau "Cout et decoupage") ; `ADR-0082` ; `ADR-0087` ;
   `squad/sprints/s55-francais-ce1-emc-cm1-et-reserves-servies/proposition-s56.md` (sections 1 a 9), `retro.md` (sections 3 et 5), `RAPPORT.md`, `cloture-nadia.md` ;
   `squad/conformite/ARBITRAGE-PREALABLE-s55-instance-a-francais-ce1.md` (sections 1.1, 2.3, 3.4, 3.5) ; `docs/backlog/backlog.md` ("Cloture de s55", "Sprint 56")
@@ -45,6 +45,8 @@ Reponses que l'agent qui m'a lance transmet comme directes de l'utilisatrice dan
 `DEC-0115` section 3 (ordre des matieres, repris a s55 sous des motifs de forme 1 par rang) n'est **pas reprise ici** : voir 4.
 
 ### 0.5 Statut de cette decision
+
+> **Amende le 2026-10-13 (A.37) :** `Acceptee`, par la seconde voie de cette section (reprendre l'ordre sous des motifs de forme 1), portee par `DEC-0120` section 1. Le texte ci-dessous est celui du 2026-10-09.
 
 **`Proposee`.** Raison : `DEC-0114` 0.4 et `DEC-0115` 0.4 font passer une decision a `Acceptee` quand les mots de l'utilisatrice sur l'ordre sont ecrits en forme 2, ou quand la decision d'ouverture reprend l'ordre sous son propre motif de forme 1. Ni l'un ni l'autre ici : `Q4` est sans reponse (4) et je ne reprends pas l'ordre rang par rang. **Ce que `Proposee` ne retient pas** : rien de s56 n'attend `Q4`. La composition vient de ses mots (O3), l'ecart et le proprietaire du paquet aussi ; le reste porte des motifs de forme 1. Cette decision s'applique des maintenant, comme `DEC-0115` 0.5. Elle passe a `Acceptee` par un amendement qui cite les mots de l'utilisatrice sur `Q4`, ou qui reprend l'ordre sous des motifs de forme 1. **Un point reste ouvert qui n'est pas l'ordre : l'arbitrage de forme (2.3, `Q-U1`)**, dont l'ecart n'est pas couvert par ses mots.
 
@@ -586,3 +588,35 @@ Mots de l'utilisatrice, recus directement dans la session du 2026-10-13, cites :
 - **Routage a `sofia-sm`**, sans que je l'ecrive : (1) `squad/README.md` section 2 bis : dire que la formule de la forme 3 tolere l'accord au pluriel, en renvoyant a `DEC-0062` amendement D ; ne pas introduire de convention structurelle ; (2) la regle de consignation du depassement des garde-fous (A.33), et les lignes des depassements deja faits, dans la `DEC` d'ouverture ou le planning de s57 ; (3) l'ecriture des arrets d'agent (`retro.md` `A10`) dans le planning de s57 ou `lessons.md` : la cause (coupure de la batterie, ses mots, 2026-10-13) et la liste explicite de ce qui reste non documente (A.34). Routage a `nadia-prof` et `theo-archi` : aucun.
 - Aucun code, contenu, catalogue ni ligne de matrice ne change. Ne prononce aucun Done, ne fixe aucun tarif.
 - **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.
+
+
+## Amendement du 2026-10-13 (apres la cloture de s56, `camille-po`, dixieme) : `Acceptee`, par `DEC-0120` section 1
+
+Annotation datee, suite apres A.36. Rien au-dessus n'est reecrit, sauf la ligne "Statut" de l'en-tete et une note sous 0.5, qui portent le nouvel etat (meme geste que `DEC-0114` A.27 et `DEC-0115` A.22). Arbre : `round-two` a `900db2dc`. Sources lues : `DEC-0114` 0.4, 7.1, A.27 ; `DEC-0115` 0.4, section 3 ; `DEC-0116` 0.5, A.16, A.19, A.22 a A.25, A.32 a A.36 ; `DEC-0062` formes 1, 2, 3 ; `DEC-0120`.
+
+### A.37 Les mots, forme 2 de `DEC-0062`, et ce qu'ils portent
+
+Mots de l'utilisatrice, recus directement dans la session du 2026-10-13, tels que l'agent lanceur me les transmet : *"reprend l'ordre"*. Je ne les ai pas lus de sa main (meme reserve que 0.1, A.21, A.32). L'agent lanceur les rattache au choix (ii) de A.22 ; ses mots ne le nomment pas. **Ils ne passent pas le statut** : A.22 (point 2) a ecrit pourquoi un mot d'accord n'est pas un motif, et le choix (ii) est precisement la voie qui n'en a pas besoin. Le statut repose sur A.38.
+
+### A.38 `DEC-0114` 0.4 (b) est satisfaite par `DEC-0120` section 1
+
+`DEC-0114` 0.4 (b), lue par `DEC-0115` 0.4 : satisfaite *"si, et seulement si, chaque rang de l'ordre porte un motif de forme 1 que je peux verifier"*, le rang dont la source n'est pas remesuree etant nomme. Lu sur `DEC-0120` :
+
+| Exigence | Constat |
+|---|---|
+| Un motif de forme 1 par rang (1 a 4) | oui : section 1, chaque rang avec son atteignable mesure, son motif et sa source (commande ou fichier de `nadia-prof`) |
+| La table de `DEC-0115` section 3 remesuree (A.22 (ii)) | oui : matrice par matiere et niveau, `comm -23` (37 fichiers sans entree), plafonds lus ; le rang rapporte comme *"cite sans mesure"* (rang 4) est remesure ; il n'en reste aucun |
+| Ce que la remesure change est dit | oui : rang 1, 13 paquets devenus 10 ; rang 2 epuise ; rang 3 vide a s57, motif remplace (plafonds ecrits) ; rang 4 precise (`MAT-CE1-14` conditionnee a `A3`) |
+| Aucun rang ne repose sur un mot de l'utilisatrice seul | oui : 0.1 de `DEC-0120` |
+
+**Lecture que je ne cache pas** : `DEC-0114` 0.4 (b) dit *"la `DEC` d'ouverture de s55"*, A.22 (ii) *"la `DEC` d'ouverture de s57"*. `DEC-0120` est une decision d'ouverture **limitee** (elle n'ouvre pas le sprint, a la demande de l'utilisatrice) : je lis (b) sur sa substance, un motif de forme 1 par rang dans la `DEC` qui prend l'ordre pour le sprint, et non sur le fait qu'elle ouvre le sprint. Si l'utilisatrice l'entend autrement, `DEC-0116` revient a `Proposee` jusqu'a la `DEC` qui ouvre s57.
+
+### A.39 Statut
+
+**`Acceptee` le 2026-10-13.** `DEC-0120` est elle-meme `Proposee` (une question a l'utilisatrice reste ouverte sur la composition, pas sur l'ordre) : c'est le cas de `DEC-0114`, passee a `Acceptee` par `DEC-0115` quand celle-ci etait `Proposee` (A.27). **Ce qui la ferait revenir a `Proposee`** : la section 1 de `DEC-0120` amendee parce qu'une mesure s'avere fausse, ou un dementi des mots de A.37 qui ferait amender cette section. **`Q-U7` point 2** (A.35) reste ouverte : elle porte sur une convention de `DEC-0062` et de `squad/README.md`, pas sur une decision de cette `DEC`, et aucun code n'en depend ; elle ne retient pas le statut.
+
+**Remplace** : la ligne "Statut" de l'en-tete et 0.5 (annotes) ; A.16, dernier paragraphe (*"La decision passe a `Acceptee` par un amendement qui ..."*) ; A.22, **Statut : `Proposee`, inchange** ; A.25 premier point ; A.31 et A.36, ligne **Statut : `Proposee`, inchange**. Rien d'autre de A.16 a A.36 ne change : la lecture de (a) (A.22, points 1 a 3) reste ecrite, elle n'est simplement plus necessaire.
+
+### A.40 Routage, limites
+
+Routage : `sofia-sm` (`DEC-index.md` tenu ; planning de s57 selon `DEC-0120` section 6). Aucun code, contenu, catalogue ni ligne de matrice ne change (142 / 182). Ne prononce aucun Done, ne fixe aucun tarif. **Jobs de `ci.yml` lances pour ce commit** : voir le message de livraison.

@@ -217,3 +217,16 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 **Ce que je route a `sofia-sm`.** `squad/README.md` section 2 bis (la formule tolere l'accord au pluriel, sans convention structurelle) ; la consignation des depassements de garde-fous dans la `DEC` d'ouverture ou le planning de s57 ; l'ecriture des arrets (`retro.md` `A10`) dans le planning de s57 ou `lessons.md`, limitee a la cause et a la liste de ce qui n'est pas documente.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, ligne de matrice ni Done. `squad/README.md` et `lessons.md` non touches.
+
+## 2026-10-13 - L'ordre des matieres est repris sous des motifs de forme 1 ; `DEC-0116` `Acceptee` ; `DEC-0120` (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, recus directement dans la session du 2026-10-13, tels que l'agent lanceur me les transmet (je ne les ai pas lus de sa main) : *"reprend l'ordre"*. Lecture de l'agent lanceur : le choix (ii) de `DEC-0116` A.22. Ses mots ne sont pas le motif : le statut repose sur des motifs de forme 1 mesures.
+
+**Ce que je verse.**
+1. **`DEC-0120`** (`Proposee`, ouverture de s57 **limitee**, le sprint n'est pas ouvert) : la table de `DEC-0115` section 3 remesuree sur `900db2dc`. Rang 1 : dix paquets de francais CE1 ; rang 2 : epuise (EMC CM1 11 sur 11, sciences CM1 19 sur 19) ; rang 3 : vide a s57, le motif de `DEC-0115` ("aucun plafond ecrit") est remplace par les plafonds de `nadia-prof` ; rang 4 : aucune ligne fermable aujourd'hui, `MAT-CE1-14` conditionnee a `A3` d'`ADR-0080`. `S54-OBS-SCI-CONSIGNE` retiree par un acte ecrit (deux reports, troisieme interdit), reversible. Prerequis du francais CE1 a deux instances places avec leur etat mesure. Reprise d'`ART-CP-10` et `VSJ-CE1-R1` retenues. **Le compte des instances est une question** (`Q-U1`) : *"deux instances de nadia"* ne dit pas si ce sont A et A' ou A et B ; deux sous les deux lectures, s58 contre s60 pour les dix lots.
+2. **`DEC-0116` amendee** (A.37 a A.40) : **`Acceptee`**, par `DEC-0114` 0.4 (b) satisfaite par `DEC-0120` section 1. Lecture signalee dans A.38 : `DEC-0120` est une ouverture limitee.
+3. **Backlog** : section "Ouverture limitee de s57" ; story `HS-ACCUEIL-APM-R2` ecrite (reserve de `nadia-prof`, criteres avec leur etat d'aujourd'hui) ; `S54-OBS-SCI-CONSIGNE` annotee retiree. `DEC-index.md` a jour.
+
+**Ce que je route.** `sofia-sm` : planning de s57 apres `Q-U1` ; developpeur d'`APM-R2` ; heure de fusion de l'amendement d'`ADR-0065` si (A, A'). `nadia-prof` : accord sur `PAR-2`, tarifs, `RP-ACCUEIL-147`. `theo-archi` : `S57-ADR-0065-DEUX-INSTANCES`, moyen d'`APM-R2`. `yanis-qa` : `HS-ACCUEIL-MESURE-DEFAUT`.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, pas de tarif, pas d'affectation ; n'ouvre pas s57. `Q-U7` point 2 reste ouverte.
