@@ -293,3 +293,19 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 **Ce que je route.** `sofia-sm` : duree du sprint ; heure de fusion d'`ADR-0065` avant A' ; seconde `A10` de la retro de s56 ; developpeur de `S54-OBS-SCI-CONSIGNE` ; sous-repertoires et ports par agent ; `Q-N1`. `theo-archi` : `S57-ADR-0065-DEUX-INSTANCES`, avis de faisabilite des dessins. `nadia-prof` : `PAR-13` pour les deux matieres neuves, instruction et prix, `Q-N1`. Utilisatrice : `Q-U10`.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, fiche ni Done ; n'ouvre pas s57 ; ne fixe ni la duree ni l'heure de fusion d'`ADR-0065` ; ne compose aucun lot.
+
+## 2026-10-13 (cinquieme) - reponses `Q1`, `Q2`, `Q-U10`, plafonds de `QLM-CE1-07` et `-09`, `HG-CM1-10` reclassee (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, je ne les ai pas lus de sa main) : a `Q1` de `sofia-sm`, *"oui plus que 8"* (un sprint plus long qui porte plus de 8,0) ; a `Q2` de `sofia-sm`, *"lea dev"* (developpeur de `S54-OBS-SCI-CONSIGNE`) ; a `Q-U10`, *"avec ART plastique CE1"* (maximum de la version fige apres le referentiel d'arts plastiques CE1).
+
+**Ce que je verse.** `DEC-0120` amendement A.38 a A.45 (`Proposee`, inchange), la matrice, le backlog :
+1. **Borne et maximum en attente.** La borne au-dela de 8,0 est de `nadia-prof` (`PAR-8`), en attente, aucun chiffre ecrit ; la duree est a `sofia-sm`. Le maximum de la version est en attente du referentiel d'arts plastiques CE1 : denominateur `198 + k`, aucun maximum fige.
+2. **Matrice** : trois cellules de texte, aucun statut. `QLM-CE1-07` plafond `en cours` (moitie textuelle) ; `QLM-CE1-09` plafond `en cours` avec un plan dessine en forme degradee, rien sans plan ; `LVE-CM1-06` corrigee, refusee a la saisie (motif `R6`), `non couvert`. Commande de la "Methode du compte", avant (`729b0d8a`) et apres : 142 / 4 / 52 / 77, total 275, **142 / 198 = 71,72 %** des deux cotes.
+3. **Distance au maximum, sur la matrice du 2026-10-13 (`k` = 0)** : compteur de version 146 / 198 = 73,74 % ; borne haute sous (c) 187 / 198 = 94,44 % (186 avant) ; distance 41 lignes ; 11 lignes hors de la borne haute (12 avant). Ce n'est pas le maximum de la version.
+4. **`HG-CM1-10` reclassee** : le manque est le lieu de vie (`DEC-0028`), pas un dessin ; lignes dont le seul manque est un dessin : six, pas sept. Erreur de mon classement (A.13, A.31), corrigee par amendement.
+5. **Forme fidele de la legende de `QLM-CE1-09`** : non prioritaire, non engagee, aucune story de code ; trois conditions de reouverture (verdict d'un lot en forme degradee, forme d'itineraire de `nadia-prof`, avis de `theo-archi`). Zero gain au compteur de la version, un a la matrice.
+6. **`S54-OBS-SCI-CONSIGNE`** : developpeur `lea-dev`, placement complet ; deux reports comptes, un troisieme interdit.
+
+**Ce que je route.** `sofia-sm` : duree (P2 de `preparation.md` contredit par la reponse a `Q1`) ; ligne d'affectation et charge de `lea-dev` ; question a `theo-archi` sur l'`ADR` de la forme fidele. `nadia-prof` : borne `PAR-8`, conditions de derivation, itineraire de `QLM-CE1-09`, referentiel d'arts plastiques CE1. `camille-po` : la mesure de la condition (i) de la derivation au-dela de 8,0, **non faite ici**, seconde fois que je la laisse (premiere : `DEC-0120` A.36).
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, fiche ni Done ; n'ouvre pas s57 ; ne fixe ni la borne, ni la duree, ni aucun maximum.

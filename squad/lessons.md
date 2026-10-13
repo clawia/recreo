@@ -40,3 +40,10 @@ process s'ecrit dans `squad/README.md` ; ce fichier ne remplace ni les `ADR`, ni
 - **Un agent arrete par l'utilisatrice laisse une trace ecrite de celui qui relance : qui, quand, ce que
   sa branche portait.** Un seul fichier du depot le dit pour s56 (`cloture-nadia.md`, "l'instance B
   arretee") ; le reste est dans un message de lancement.
+
+## s57 (hors sprint)
+
+- **Un classement "seul manque : X" se verifie contre chaque obstacle que la cellule de matrice nomme, pas contre le premier.**
+  `HG-CM1-10` etait rangee parmi les lignes dont le seul manque est un dessin (`DEC-0120` A.13, A.31) ; sa cellule
+  nommait aussi le lieu de vie de l'enfant (`DEC-0028`), que `nadia-prof` (s32) et `theo-archi` (`avis-faisabilite-sept-dessins.md`, 2.1)
+  donnent pour l'obstacle. Corrige par `DEC-0120` A.41.
