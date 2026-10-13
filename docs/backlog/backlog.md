@@ -21633,3 +21633,34 @@ Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, tran
 **Stories** : aucune story neuve. **`S54-OBS-SCI-CONSIGNE`** : `Q-U2` en attente, `nadia-prof` interrogee le 2026-10-13 ; sans ses criteres avant l'ouverture du planning, la retraite tient (deux reports comptes, s55 et s56, un troisieme interdit).
 
 **Ce que cette annotation ne fait pas** : elle n'ouvre pas s57, ne choisit ni O1 ni O2, n'invente aucun critere de jouabilite, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche, et ne juge aucun contenu.
+
+### Amendement du 2026-10-13, quatrieme : referentiels CE1 dans la matrice, repartition de s57, `S54-OBS-SCI-CONSIGNE` placee, rang de `G3` et `G4` (`camille-po`, `DEC-0120` A.27 a A.37)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, non lus de sa main) : *"non nouveaux items"* (pas de lignes de CE1 jumelles de celles du CP), *"non pas de son"* (aucun son ; anglais et musique restent fermes au CE1), *"avec referentiels ecrits"* (le maximum de la version se mesure une fois les referentiels de CE1 ecrits ; `Q-U9` close), *"oui"* a ma lecture (*"toutes les lignes"* = dans les lignes atteignables ; un plafond ou un refus ecrit de `nadia-prof` baisse le maximum sans bloquer la sortie), *"ok"* pour ce travail. Le sprint n'est pas ouvert ; aucune duree, aucun planning.
+
+**Matrice.** 17 lignes de CE1 entrent (`QLM-CE1-01` a `-12`, `EMC-CE1-01` a `-05`), avec le statut de `nadia-prof` : 16 atteignables `non couvert`, 1 `non couvrable en l'etat` (`EMC-CE1-05`). Commande de la "Methode du compte", avant (`13e2588a`) puis apres : 142 / 4 / 36 / 76, total 258, **142 / 182 = 78,02 %** ; 142 / 4 / 52 / 77, total 275, **142 / 198 = 71,72 %**. Le numerateur ne bouge pas. Compteur de version sous les criteres de `nadia-prof` : **146 / 198 = 73,74 %** (142 plus les 4 lignes `en cours`). Maximum en `couvert-valide` : **176 / 198 = 88,89 %** ; sous (c), borne haute : **186 / 198 = 93,94 %** ; 12 lignes atteignables hors du maximum.
+
+**Repartition de s57 (`D7` de `nadia-prof`, choix de `camille-po`).** Borne 8,0 pour trois instances. Colonne retenue, **sans lot de `G4`** : A 2,5 (`VSJ-CE1-R1` plus un lot de francais CE1), A' 3,0 (deux lots), B 2,5 (rejeu d'`ART-CP-10`, `S54-OBS-SCI-CONSIGNE`, 0,75 non affectes). Motifs : l'ordre de `DEC-0120` section 1 tient, meme gain au compteur (+3) mais trois `couvert-valide` au lieu de deux plus une `en cours`. Ecart signale a `nadia-prof` : *"0,25 non affectes"* en A' sur la colonne "avec un lot de `G4`" est 0,75 sur ses tarifs (`Q-N1`).
+
+**Rang de `G3` et `G4`.** `G4` (mathematiques CE1) : rang 4a, juste apres le rang 1, prenable par B, aucun lot a s57. `G3` (francais CE1) : rang 4b, apres les dix lots du rang 1. Les 23 lignes de rang B (dont 13 de CE1) : rang 5, sans ordre interne faute de prix.
+
+**Stories.** **`S54-OBS-SCI-CONSIGNE` : placee a s57, instance B, 0,25, developpeur a designer par `sofia-sm`** (ci-dessous). Deux reports comptes (s55, s56) ; un placement n'est pas un report ; non livree et rejouee a la cloture de s57, ce serait un troisieme report interdit, donc un abandon ecrit. `Q-U2` sans objet. `Q-U10` neuve (utilisatrice : maximum fige maintenant ou apres le referentiel d'arts plastiques CE1 ?). `Q-N1` a `nadia-prof`, routee par `sofia-sm`. **Pas de story de contenu pour les 17 lignes** : l'instruction ligne par ligne est due avant le premier paquet, sans prix ecrit.
+
+**A `sofia-sm`, non tranche ici** : la duree du sprint ; l'heure de fusion de l'amendement d'`ADR-0065` avant le premier lot de A' ; la seconde `A10` de `retro.md` de s56 ; le developpeur de `S54-OBS-SCI-CONSIGNE` ; les sous-repertoires et ports par agent. **A `theo-archi`** : `S57-ADR-0065-DEUX-INSTANCES` ; l'avis de faisabilite des sept dessins.
+
+### S54-OBS-SCI-CONSIGNE - placee a s57, instance B, 0,25 (`DEC-0120` A.34)
+
+**Etat au 2026-10-13 : placee, developpeur a designer.** Deux reports comptes (s55, s56) ; ce placement n'en est pas un ; la non-livraison a la cloture de s57 serait le troisieme, interdit (`DEC-0112` section 6). Criteres, prix et rejeu de `nadia-prof` (`squad/conformite/ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, section 3).
+
+- **Besoin** : en tant qu'eleve de CM1, je veux lire une seule fois ce qu'on me demande de faire, afin de ne pas chercher ce que la seconde phrase ajoute.
+- **Mecanique demandee** : aucune (texte d'un paquet existant).
+- **Competence programme visee** : `SCI-CM1-20` (`squad/programme/sciences-et-technologie/competences-cm1.md`), ligne `couvert-valide` avec couverture partielle, **non rouverte**. Jeu `bandit-manchot-sciences-extraire-information-cm1`.
+- **Le defaut** (relu par `nadia-prof` sur le paquet a `59c4b56f`) : a chaque manche, l'enfant lit la consigne *"Lis le texte ou le tableau, puis réponds à la question."*, puis un enonce qui la redit (*"Lis ce tableau, puis réponds à la question."*), puis *"D'après ce tableau, ..."*. Ce n'est pas une erreur, c'est une charge de lecture inutile sur les douze items.
+- **Criteres d'acceptation, ses mots** (section 3 de son arbitrage) :
+  1. Les 12 enonces de `cm1-sciences-extraire-information.yaml` perdent leur premiere phrase : chacun commence par *"D'après ce tableau,"* ou *"D'après ce texte,"*. Mesure : `grep -c "puis réponds à la question"` sur le paquet rend 0. **Aujourd'hui : 12** (mesure du 2026-10-13) : rouge sur l'existant.
+  2. Rien d'autre ne change dans le paquet : ni document, ni bonne reponse, ni distracteur, ni indice (`git diff` ne touche que les 12 lignes `enonce:`). Clause de non-regression, verte aujourd'hui par construction.
+  3. **La consigne du catalogue ne change pas.** Toucher le paquet et sa consigne dans la meme story serait la forme (a) que `nadia-prof` garde ; la consigne reste vraie pour un enonce raccourci. Clause de non-regression, verte aujourd'hui par construction.
+  4. Les tests qui lisent ce paquet restent verts, garde-fou de la phrase du texte support compris ; le developpeur nomme ceux qu'il a lances. (`PaquetCm1SciencesExtraireInformationTest` ne contient ni *"Lis"* ni *"puis r"* : lu par `grep -n`, non lance.)
+  5. **Rejeu par `nadia-prof`**, instance B, sur le jar qui sert l'entree : une partie de dix manches, chaque enonce lu a l'ecran une fois. `SCI-CM1-20` reste `couvert-valide`, non rouverte.
+- **Prix** : 0,25, le rejeu de `nadia-prof` (precedent : le rejeu mot pour mot de `PCO-CE1-R1`). Developpeur : **a designer par `sofia-sm`**. Sans developpeur designe avant l'ouverture du planning, le placement n'est pas complet et la retraite de `DEC-0120` 4.1 tient.
+- **Lien** : `DEC-0120` A.3 point 1, A.34 ; `DEC-0112` section 6 ; `DEC-0115` A.10 ; `DEC-0116` section 5, A.2.
