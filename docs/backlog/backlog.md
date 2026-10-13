@@ -21546,3 +21546,46 @@ Ouvert le 2026-10-12 par `camille-po`. Aucun numero de sprint n'est suppose : s5
   - Etant donne le fichier apres correction, quand on y cherche `147`, alors chaque occurrence des lignes 41 et 236 est remplacee par 146 ou annotee de sa cause (retrait `13d00bfe`) ; la ligne 398 reste lisible comme ecart constate.
   - Etant donne les lignes 41 et 236, quand `nadia-prof` choisit entre corriger et annoter, alors elle l'ecrit dans le fichier ; ce choix est le sien.
 - **Lien** : `DEC-0117` section 10.3 ; `squad/rapports/JOURNAL-gouvernance-hors-sprint.md`, entree du 2026-10-12.
+
+## Ouverture limitee de s57 : ordre, postes connus, `APM-R2` (`camille-po`, 2026-10-13, `DEC-0120`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; les lignes remplacees sont nommees. Sources : `DEC-0120`, `DEC-0116` A.37 a A.40, `audit-nadia-v1-defaut.md` (section 3), `FICHE-accueil-par-matiere.md`. **Le sprint n'est pas ouvert** : aucun planning, aucune composition, aucun tarif. Matrice : 142 / 182, inchangee.
+
+### Ce qui change dans "Cloture de s56" et "Reponses de l'utilisatrice du 2026-10-11"
+
+- **Remplace**, dans "Candidat de s57 : sciences CM1", `S54-OBS-SCI-CONSIGNE` *"la `DEC` d'ouverture de s57 la place ou l'abandonne"* : **retiree** (`DEC-0120` 4.1), voir ci-dessous.
+- **Remplace** le paragraphe "Ce qui change dans la section Cloture de s56", puce `Q4` : l'ordre de `DEC-0115` section 3 est repris pour s57 **sous un motif de forme 1 par rang, remesure** (`DEC-0120` section 1) ; `DEC-0116` est `Acceptee` (A.37). Rang 1 : dix lots de francais CE1 ; rang 2 : epuise ; rang 3 : vide a s57 ; rang 4 : aucune ligne fermable aujourd'hui.
+- **Etat des stories pour le planning de s57** (aucune n'est engagee par cette annotation) :
+
+| Story | Etat au 2026-10-13 | Ce que `DEC-0120` dit |
+|---|---|---|
+| `S56-ART-CP-10-REPRISE`, `S56-RDO-CP-R1`, `S56-RDO-CP-R2` | non engagees ; criteres inchanges, rouges | retenues en tete des postes d'arts plastiques CP (4.2) ; developpeur et forme a designer |
+| `S56-VSJ-CE1-R1` | non engagee ; critere inchange, rouge | retenue, apres la reprise d'`ART-CP-10` (4.3) ; `marc-dev` |
+| `S57-ADR-0065-DEUX-INSTANCES` | non engagee ; `grep -c -i instance` sur l'`ADR` : 0 | proprietaire `theo-archi` (son avis de s56, section 9) ; engagee **seulement** si les deux instances sont deux de francais CE1 (`Q-U1`) |
+| `RP-ACCUEIL-147` | ouverte ; 147 aux lignes 41 et 236 | a reprendre au planning de s57, a `nadia-prof` |
+| `HS-ACCUEIL-MESURE-DEFAUT` | ouverte ; `outils/mesurer-accueil.py` juge encore la page par defaut comme V2 (lignes 120 et 155) | `yanis-qa`, hors `PAR` |
+| `HS-ACCUEIL-APM-R2` | **ecrite ici**, non engagee | ci-dessous |
+
+### S54-OBS-SCI-CONSIGNE - retiree par un acte ecrit (`DEC-0120` 4.1)
+
+**Etat au 2026-10-13** : deux reports comptes (s55, s56) ; `DEC-0112` section 6 interdit le troisieme. Les criteres, le proprietaire et le prix qu'un placement exige n'existent pas. **Retiree du backlog actif, sans suite engagee, reversible** : une story neuve, avec criteres ecrits par `nadia-prof`, proprietaire et prix, la rouvre. Le constat reste ecrit ci-dessus (section "S54-OBS-SCI-CONSIGNE", s54) : la consigne et la premiere phrase des 12 enonces disent deux fois *"puis réponds à la question"* (12 occurrences dans le paquet et 1 dans la consigne du catalogue, mesure du 2026-10-13, inchange). La ligne `SCI-CM1-20` reste `couvert-valide`. `Q-U2` a l'utilisatrice si elle prefere la placer.
+
+### HS-ACCUEIL-APM-R2 - un bouton de vue presse puis annule par "Continuer la partie" n'a aucun effet (reserve non bloquante, chantier hors sprint)
+
+- **Besoin** : en tant qu'eleve de CP, je veux que le bouton que j'ai presse puis annule ne change rien, afin de retrouver, en revenant au choix de ma matiere, l'ecran que j'avais choisi.
+- **Mecanique demandee** : aucune. Accueil par matiere (`DEC-0117`, `DEC-0119`) ; le moyen est a `theo-archi`.
+- **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Motif, ses mots** (`nadia-prof`, `audit-nadia-v1-defaut.md` section 3) : *"Un geste que l'enfant a annule ne doit pas avoir d'effet. "Continuer la partie" veut dire "je n'ai rien fait"."* Le constat : apres un retour arriere du navigateur pendant une partie, "Tout voir", la confirmation, "Continuer la partie", puis la sortie de la partie et le choix de la classe, l'accueil s'ouvre en V2 au lieu de l'etage 1.
+- **Critere de levee, ses mots** : *"apres "Tout voir" (ou "Par matière") presse pendant une partie, puis "Continuer la partie", la vue retenue en session est celle d'avant l'appui ; apres "Tout voir" puis "Les jeux" de la confirmation, la vue retenue est celle que l'enfant a demandee"*. La propriete se tient par un test de route, pas par le jeu de `nadia-prof`.
+- **Criteres d'acceptation** :
+  - Etant donne une session neuve (etage 1) dont une partie est en cours, quand l'appui sur "Tout voir" est envoye puis "Continuer la partie", puis la partie quittee et la classe choisie, alors la page rendue est l'etage 1. **Aujourd'hui** : rouge. `nadia-prof` l'a reproduit hors du navigateur dans une meme session (V2 avec la bascule envoyee pendant la partie, etage 1 sans) ; `PartieController.choisirLaVue` ecrit la vue en session (ligne 250) avant de tester la partie en cours (ligne 251). Lecture du code, non rejouee par moi.
+  - Meme critere avec "Par matière" depuis V2 : la vue retenue reste V2.
+  - Etant donne "Tout voir" puis "Les jeux" de la confirmation (l'enfant abandonne), alors la vue retenue est V2, celle qu'il a demandee. **Aujourd'hui : deja vert** (`audit-nadia-v1-defaut.md`, ligne 10 du parcours) ; c'est une condition a ne pas perdre, pas un defaut.
+  - Etant donne le code livre dont l'ecriture de la vue est remise avant le test de la partie en cours, quand on lance les tests, alors le test de route du premier critere echoue (mutation ; le nombre de tests lances est superieur a zero).
+  - `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine est vert, sans regle assouplie.
+- **Qui** : developpeur a designer par `sofia-sm` ; moyen `theo-archi` ; test de route `yanis-qa` ; **audit de `nadia-prof` avant fusion** (`DEC-0117` section 11), prix non ecrit (`PAR-10`). Hors `PAR` pour le developpement.
+- **Lien** : `DEC-0120` 4.5 ; `DEC-0119` ; `DEC-0117` ; `FICHE-accueil-par-matiere.md` (reserve `APM-R2`).
+
+### Ce que cette annotation ne fait pas
+
+Elle n'engage aucune story, n'ouvre pas s57, ne fixe aucun tarif, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche.
