@@ -230,3 +230,19 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 **Ce que je route.** `sofia-sm` : planning de s57 apres `Q-U1` ; developpeur d'`APM-R2` ; heure de fusion de l'amendement d'`ADR-0065` si (A, A'). `nadia-prof` : accord sur `PAR-2`, tarifs, `RP-ACCUEIL-147`. `theo-archi` : `S57-ADR-0065-DEUX-INSTANCES`, moyen d'`APM-R2`. `yanis-qa` : `HS-ACCUEIL-MESURE-DEFAUT`.
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, pas de tarif, pas d'affectation ; n'ouvre pas s57. `Q-U7` point 2 reste ouverte.
+
+## 2026-10-13 - s57 compte trois instances, A, A' et B ; `DEC-0120` amendee, `Q-U8` ouverte (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, je ne les ai pas lus de sa main), en reponse a `Q-U1` : *"on plannifie A A' et B, on adapte les instances et la duree car il faut sortir une version"*. Ils ne disent ni la valeur de la borne, ni la duree, ni le contenu de la version.
+
+**Ce que je verse.** `DEC-0120` amendement A.1 a A.8 (`Proposee`, inchange) :
+1. `Q-U1` fermee : trois instances. A et A' de francais CE1, B pour les arts plastiques CP (reprise d'`ART-CP-10`, 0,5) et les sciences CM1. `VSJ-CE1-R1` reste a A. Ordre des matieres inchange.
+2. `S54-OBS-SCI-CONSIGNE` : candidat de B **si** `nadia-prof` ecrit ses criteres ; sinon la retraite tient (deux reports, pas de troisieme).
+3. Budget : deux options chiffrees, aucune choisie. O1, 8,0 maintenue : 2,67 par instance, 5,0 de travail, deux lots a s57, dix lots finis a s59 au plus tot. O2, borne relevee : exemple a 4,0 par instance (12,0, formule de `nadia-prof` de s32, pas une proposition), cinq lots, s58, 2,5 de B sans poste nomme. La borne est a `nadia-prof` (`PAR-8`), la duree a `sofia-sm`.
+4. `A10` (verification de s54 contre les formes (a), (b), (c)) est due et non ecrite ; qui l'ecrit : `nadia-prof` ; `sofia-sm` et `theo-archi` fournissent le planning, les chiffres de sprint et, si elle le demande, l'isolation de trois couloirs. Mesure de la condition (i) de `nadia-prof` : B prend 0,5 chiffre contre 4,0 exiges. Collision d'identifiant signalee : `retro.md` de s56 porte deux lignes `A10`.
+5. `Q-U8` : quel contenu doit sortir dans la version, pour quelle date.
+6. Statuts : `DEC-0120` `Proposee`, `DEC-0116` `Acceptee` inchanges ; `S57-ADR-0065-DEUX-INSTANCES` engagee ; `S54-OBS-SCI-CONSIGNE` retiree, candidat de B sous condition. Backlog ("Ouverture limitee de s57") et `DEC-index.md` a jour.
+
+**Ce que je route.** `nadia-prof` : `A10`, accord sur `PAR-2`, lecture de (i) et (iii), borne, affectation et prix de B, criteres de `S54-OBS-SCI-CONSIGNE` si elle veut la placer. `sofia-sm` : duree, planning a trois instances, heure de fusion de l'amendement d'`ADR-0065`. `theo-archi` : `S57-ADR-0065-DEUX-INSTANCES`. Utilisatrice : `Q-U2`, `Q-U8`.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, de tarif, de borne ni de duree ; n'ouvre pas s57.

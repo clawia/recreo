@@ -222,3 +222,103 @@ Cette decision implique du code (`S57-ADR-0065-DEUX-INSTANCES`, la correction d'
 5. Prerequis de la lecture (A, A') places avec leur etat (3) ; `S57-ADR-0065-DEUX-INSTANCES` a `theo-archi`, engagee dans cette seule lecture.
 6. Reprise d'`ART-CP-10` retenue en tete des postes d'arts plastiques CP, `VSJ-CE1-R1` retenue apres elle ; `RP-ACCUEIL-147`, `APM-R2`, `HS-ACCUEIL-MESURE-DEFAUT` listes, non composes ; story `APM-R2` ecrite.
 7. Statut de cette decision : `Proposee` (`Q-U1`, `Q-U2`).
+
+---
+
+## Amendement du 2026-10-13 (`camille-po`, apres la reponse a `Q-U1`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; les phrases remplacees sont nommees (A.2). Aucun fichier de code, de contenu, de catalogue ni de matrice n'est touche. Le sprint n'est toujours pas ouvert : ni `planning.md`, ni tarif, ni affectation.
+
+### A.1 Les mots de l'utilisatrice, forme 2 de `DEC-0062`
+
+Mots de la session du 2026-10-13, tels que l'agent qui m'a lance me les transmet, en les donnant pour recus directement et citables (forme 2) ; **je ne les ai pas lus de sa main** (meme reserve que 0.1) : *"on plannifie A A' et B, on adapte les instances et la duree car il faut sortir une version"*. Ils repondent a `Q-U1`.
+
+**Ce qu'ils fondent** : s57 compte **trois instances** de `nadia-prof`. A et A' portent le francais CE1 ; B porte les arts plastiques CP et les sciences CM1 (`PAR-2`). La borne et la duree du sprint sont a **adapter** a ce compte. **Ce qu'ils ne fondent pas** : la valeur de la borne, la duree, le contenu de la version, ni l'accord de `nadia-prof` sur `PAR-2` pour le francais CE1.
+
+`Q-U1` est **fermee**. Sa reponse est une troisieme lecture que ni (A, A') ni (A, B) ne portaient : (A, A', B).
+
+### A.2 Ce que cet amendement remplace dans le texte ci-dessus
+
+| Phrase ou ligne | Remplacee par |
+|---|---|
+| Section 2, titre et tableau (*"deux sous les deux lectures, la lecture n'est pas decidee"*) | trois instances, A, A', B (A.1) ; le calcul est en A.4 |
+| Section 2 et decision 4 (*"s57 compte a 8,0"*) | la borne de s57 est **a adapter** (A.1) ; deux options chiffrees en A.4, valeur non choisie |
+| Section 3.3 (*"Budget : 4,0 par instance, somme 8,0"*) | `PAR-9` s'applique a trois budgets (A.4) |
+| Section 3.4 (*"`A10` ... due seulement pour une troisieme instance ... sans objet"*) | **`A10` est due** : la troisieme instance est proposee (A.5) |
+| Section 3.2 et 4.4 (*"Engagee seulement dans la lecture (A, A')"*) | la lecture (A, A') est retenue : `S57-ADR-0065-DEUX-INSTANCES` est **engagee**, proprietaire `theo-archi`, hors `PAR`, 0,0 pour `nadia-prof` ; l'heure de fusion est a `sofia-sm` |
+| Section 4.1 et decision 3 (*"retiree, sans suite engagee"*) | retiree **tant que** la condition de A.3 point 1 n'est pas remplie ; candidat de B **si** elle l'est |
+| Section 4.2 (reprise d'`ART-CP-10`, instance non nommee) | portee par **B** (A.3 point 2), sous l'affectation de `nadia-prof` |
+| Section 5, `Q-U1` | fermee (A.1) ; `Q-U8` ouverte (A.6) |
+
+### A.3 Ce qui decoule de B
+
+1. **`S54-OBS-SCI-CONSIGNE` : candidat de B, a la place de sa retraite, a une seule condition : `nadia-prof` ecrit ses criteres.** B porte les sciences CM1 (`PAR-2`) : l'instance qui l'auditerait existe. Mais le placement exige trois elements (`DEC-0114` section 4, `DEC-0115` section 4) : criteres de `nadia-prof`, proprietaire, prix. **Aucun n'existe** (4.1) et je n'ecris pas ses criteres a sa place. Sans ses criteres avant l'ouverture du planning, la retraite de 4.1 tient et le troisieme report reste interdit (`DEC-0112` section 6). Le compte reste : deux reports (s55, s56). `Q-U2` reste ouverte et devient sans objet si elle ecrit les criteres.
+2. **Reprise d'`ART-CP-10`** (`S56-ART-CP-10-REPRISE`, `S56-RDO-CP-R1`, `S56-RDO-CP-R2`, 0,5) : **retenue pour B**, les arts plastiques CP etant sa matiere et B ayant audite ce paquet a s56. L'affectation et le prix sont a `nadia-prof`. Les conditions de 4.2 (developpeur et forme de la correction, rejeu d'un paquet sans entree de catalogue) sont inchangees.
+3. **`VSJ-CE1-R1`** (0,5) : reste a l'instance qui porte le groupe X, donc A (`PAR-2` : une seule instance lit le francais CE1 pour une reserve de `FRA-CE1-13` ; 4.3 inchange). Elle consomme 0,5 de A.
+4. **Ordre des matieres : inchange** (section 1). Les quatre rangs, leurs motifs et leurs mesures tiennent. B n'a aucun lot dans l'ordre : rang 2 epuise (EMC CM1 11 sur 11, sciences CM1 19 sur 19), rang 3 vide a s57, rang 4 sans ligne fermable. **Ce que B porte aujourd'hui, mesure : 0,5 chiffre** (la reprise d'`ART-CP-10`) **plus un candidat sans prix** (`S54-OBS-SCI-CONSIGNE`, point 1). Aucune commande nouvelle : section 1 et 0.3, meme jour, meme arbre.
+
+### A.4 Le budget a trois instances : arithmetique, deux options, aucune valeur choisie
+
+**Ce que je ne decide pas.** La borne est `PAR-8`, un arbitrage de `nadia-prof`. La duree du sprint releve de `sofia-sm`. La repartition entre instances est a `nadia-prof` (`PAR-9` dit seulement que la somme des budgets par instance egale la borne).
+
+**Hypotheses communes aux deux options** (celles de la section 2) : zero refus au-dela de la marge de rejeu ; un lot de francais CE1 coute 1,0 ; chaque instance porte dans son budget un arbitrage prealable (0,5) et une marge de rejeu (0,5), soit 1,0 fixe par instance (`DEC-0116` A.23 point 3) ; au plus trois lots par instance (`PAR-8`) ; reprise d'`ART-CP-10` (0,5) chez B, `VSJ-CE1-R1` (0,5) chez A. Un amendement de `PAR-8` ou `PAR-9` par `nadia-prof` prime sur ces chiffres.
+
+**Etat de reference, deux instances (A, A') a 8,0** (section 2) : 6,0 de travail, dont 1,0 pour les deux reprises, **cinq lots**, les dix lots du rang 1 finis a **s58**.
+
+| | Option O1 : borne 8,0 maintenue | Option O2 : borne relevee |
+|---|---|---|
+| Formule | somme des trois budgets = 8,0 : 8,0 / 3 = **2,67** par instance (au quart pres, par exemple 2,75 + 2,75 + 2,50 : repartition a `nadia-prof`) | somme des trois budgets = borne ; borne = 3 x budget par instance, au plus 3 x 5,0 = 15,0 (plafond dur de `PAR-8`) |
+| Fixe (arbitrage + rejeu) | 1,0 x 3 = 3,0 | 1,0 x 3 = 3,0 |
+| Travail total | **5,0** (contre 6,0 a deux instances) | borne - 3,0 |
+| Travail par instance | environ 1,67 | budget par instance - 1,0 |
+| A (0,5 de `VSJ-CE1-R1`) et A' | A : 1,67 - 0,5 = 1,17 ; A' : 1,67. **Un lot chacun, deux lots** ; un deuxieme lot ne tient dans aucune des deux | exemple a 4,0 par instance (borne 12,0) : A 3,0 - 0,5 = 2,5, deux lots ; A' 3,0, trois lots ; **cinq lots** |
+| B (0,5 de reprise d'`ART-CP-10`) | 1,67 - 0,5 = **1,17 sans poste nomme** | exemple a 4,0 : 3,0 - 0,5 = **2,5 sans poste nomme** |
+| Les 10 lots du rang 1 | 2 lots a s57, 8 restants : **s59 au plus tot**, si s58 revient a deux instances (6 lots au plus par sprint a 8,0) | 5 lots a s57 : **s58**, comme l'etat de reference |
+| Effet de la troisieme instance sur le calendrier du francais CE1 | **un sprint de retard** sur l'etat de reference (s59 contre s58) | **aucun** : meme calendrier qu'a deux instances, pour 4,0 de budget de plus (B), dont 2,5 sans poste nomme |
+
+**Le chiffre 12,0 de l'exemple d'O2 n'est pas une proposition.** C'est ce que rend la formule de `nadia-prof` de s32 (3 x 5,0 - 3 paires x 1,0 = 12,0, soit 4,0 par instance, `ARBITRAGE-PREALABLE-s32...` section 4.2). Elle ecrit elle-meme (`ARBITRAGE-PREALABLE-s46...` section 5) que le chiffre d'une derivation future est *"recalcule sur les mesures de ce jour-la, sans reprendre 12,0 d'avance"* et que la fenetre est *"bornee au nombre de sprints que dure l'excedent du vivier"*.
+
+**Ce que le tableau dit sans conclure.** A 8,0 (O1), trois budgets de 2,67 laissent 5,0 de travail contre 6,0 a deux budgets de 4,0, et 1,17 de ce travail est chez B, hors de portee des lots du francais CE1 : la troisieme instance retarde le francais CE1 d'un sprint. Relevee (O2), elle ne le retarde pas et ne l'accelere pas, et le surplus de B n'a pas de poste nomme aujourd'hui (A.3 point 4). **Ce que cet ecart vaut depend du contenu de la version** (`Q-U8`) : je ne le lis pas a sa place.
+
+### A.5 `A10` : ce qu'elle exige maintenant, et qui l'ecrit
+
+**Ce que dit le depot.** `DEC-0116` section 6, ligne `A10` : verification de s54 (trois instances) contre les formes (a), (b), (c), *"due avant toute `DEC` qui propose une troisieme instance"*, proprietaire `nadia-prof`. Routee a elle par la retro de s55 (`A10`, *"note dans son arbitrage de s56"*), non engagee a s56 (`retro.md` de s56, tableau des actions de s55, `A10`), jamais faite : `ARBITRAGE-COMPLEMENT-s55-instance-a.md` section 2.5 ecrit que cette verification *"n'est routee a personne aujourd'hui, et elle n'est pas faite"*. **Cet amendement est la `DEC` qui propose une troisieme instance** (A.1) : `A10` est due et **n'est pas ecrite**. Les mots de l'utilisatrice sont l'instruction de composer trois instances ; ils ne remplacent pas la verification (meme raisonnement que 0.1 pour `PAR-2`).
+
+**Collision d'identifiant.** `retro.md` de s56 porte deux lignes `A10` : celle des actions de s55 (la verification) et celle des actions de s56 (*"Ecrire dans le depot les deux arrets d'agent et le watchdog"*, `sofia-sm` et utilisatrice). Ce sont deux actions. Ici, `A10` designe la verification des formes ; l'ecriture des arrets reste `DEC-0116` A.36 point 3.
+
+**Ce qu'`A10` demande, dans les mots des documents de `nadia-prof`** (`ARBITRAGE-PREALABLE-s46...` section 5 ; `ARBITRAGE-PREALABLE-s52-instances-ce1.md` sections 2 et 6) :
+
+1. **La verification du dernier sprint a trois instances (s54) contre les formes (a), (b), (c)**, transcriptions comprises, par elle : *"Une seule occurrence de l'une des trois formes suffit."* La condition (ii) se lit sur *"le dernier sprint parallele clos"* ; s55 et s56 sont des sprints paralleles clos apres s54, a deux instances. **Si la verification porte sur s54 seul ou sur s54 a s56 : a elle.** Je ne l'ecris pas.
+2. **Les conditions (i) et (iii), pour toute derivation d'une borne a trois instances (O2).** (iii) : au plus une instance sur un terrain dont ses conditions n'ont jamais rencontre de contenu reel ; A et A' sont sur le francais CE1, B sur deux matieres deja servies : lecture a elle. (i) : *"une composition a deux instances qui remplit 8,0 et laisse dehors au moins 4,0 de lots instruits"* que la troisieme instance peut prendre sous `PAR-1` et `PAR-2`, **mesure que sa section 5 place chez `camille-po`**. Ma mesure, sans commande nouvelle (A.3 point 4) : ce que B peut prendre est **0,5 chiffre** (la reprise d'`ART-CP-10`) plus un candidat sans prix ; le francais CE1 n'est pas prenable par une troisieme instance (`PAR-2`) ; **0,5 contre 4,0**. Ce que cette mesure vaut pour sa derivation est a elle. Si O1 (8,0) est retenue, savoir si la derivation est requise est aussi a elle.
+3. **Son accord sur `PAR-2` pour le francais CE1** (3.1), place avant le premier worktree d'un lot de A'. Il n'est pas `A10`, mais il est dans le meme arbitrage.
+
+| Qui | Ce qu'il ecrit | Ou |
+|---|---|---|
+| `nadia-prof` | La verification (point 1) ; la lecture des conditions (i) et (iii) et, si elle derive, la borne (`PAR-8`) ; l'accord ou le refus sur `PAR-2` (3.1) ; l'affectation et le prix de B ; les criteres de `S54-OBS-SCI-CONSIGNE` si elle veut la placer | son arbitrage prealable de s57 |
+| `sofia-sm` | La duree et le planning de s57 a trois instances ; l'heure de fusion de l'amendement d'`ADR-0065` ; les chiffres de sprint que la forme (b) peut lui demander (`review.md`, `RAPPORT.md` de s54 a s56) | `planning.md` de s57 |
+| `theo-archi` | `S57-ADR-0065-DEUX-INSTANCES` ; pour la forme (c), l'isolation des worktrees, des ports et des fichiers partages de trois couloirs, **si `nadia-prof` le lui demande** (precedent : l'isolation de l'instance C de s54, `A6`, *"faisable, et tenu"*) | `ADR-0065` ; avis de faisabilite de s57 |
+| `camille-po` | La mesure de la condition (i) (ci-dessus) ; l'ordre ; `Q-U8` | cet amendement |
+
+**Ce que je ne peux pas faire tenir seule.** Le planning de s57 ne s'ecrit pas sur trois budgets avant `A10` et l'accord sur `PAR-2` ; la borne et la duree ne s'ecrivent pas avant la lecture de `nadia-prof` et la reponse a `Q-U8`.
+
+### A.6 `Q-U8` : la version
+
+Mots de l'utilisatrice : *"il faut sortir une version"*. Le depot ne dit pas ce qu'est cette version : `git tag` ne rend que `s54-avant-reecriture-trailers`, et aucun fichier de `squad/` ni de `docs/backlog/` consulte ne definit une version a sortir (recherche de "sortir une version", "release", "sortie de version" dans les `DEC-0114` a `DEC-0120`, `squad/README.md` et le backlog : rien). Je ne presume rien.
+
+| Code | Question |
+|---|---|
+| `Q-U8` | **Quel contenu doit sortir dans cette version, et pour quelle date ?** (a) Le contenu : quelles competences ou quels jeux, ou l'etat du produit a la cloture de s57, quel qu'il soit ? (b) La date : un jour precis, ou la fin de s57 ? (c) Si le contenu est nomme : doit-il etre `couvert-valide` (Done de `nadia-prof`) a la date, ou sorti tel quel ? Sa reponse gouverne le choix entre O1 et O2 (A.4) et la duree |
+
+### A.7 Statuts et routage
+
+- **`DEC-0120` reste `Proposee`.** Elle devait passer a `Acceptee` quand `Q-U1` aurait une reponse et que la retraite de `S54-OBS-SCI-CONSIGNE` ne serait pas contredite. `Q-U1` a sa reponse, mais l'amendement ajoute une troisieme instance dont `A10` n'est pas ecrite, une condition sur la retraite (A.3 point 1), et laisse `Q-U2` et `Q-U8` ouvertes. Elle passe a `Acceptee` quand `A10` est ecrite, que `Q-U2` et `Q-U8` ont leur reponse, et que la borne et la duree sont ecrites.
+- **`DEC-0116` : `Acceptee`, inchange.** Sa section 6, ligne `A10`, est la reference d'A.5.
+- **Statuts de stories** : `S57-ADR-0065-DEUX-INSTANCES` passe de non engagee a **engagee** (A.2). `S54-OBS-SCI-CONSIGNE` passe de *retiree* a *retiree, candidat de B sous condition* (A.3 point 1). Aucune autre story ne change. **Aucune ligne de matrice ne change** : 142 / 182.
+- **Routage** : `nadia-prof`, `sofia-sm`, `theo-archi` : tableau d'A.5. Utilisatrice : `Q-U2`, `Q-U8`. Les postes de la section 6 gardent leur story ou leur proprietaire ; aucun n'est cree ici.
+
+### A.8 Ce que cet amendement ne fait pas
+
+- Il n'ouvre pas s57, ne choisit ni O1 ni O2, ne donne aucune duree et ne fixe aucune borne.
+- Il n'ecrit ni `A10`, ni l'accord sur `PAR-2`, ni les criteres de `S54-OBS-SCI-CONSIGNE`, ni l'avis de `theo-archi`.
+- Il ne touche ni code, ni catalogue, ni paquet, ni matrice, ni fiche. Il ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : `prefixes` et `chemins` (resultats dans le message de livraison). `outils` et `build` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil.

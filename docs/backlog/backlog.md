@@ -21589,3 +21589,23 @@ Annotation datee. **Rien au-dessus n'est reecrit** ; les lignes remplacees sont 
 ### Ce que cette annotation ne fait pas
 
 Elle n'engage aucune story, n'ouvre pas s57, ne fixe aucun tarif, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche.
+
+### Amendement du 2026-10-13 : s57 compte trois instances, A, A' et B (`camille-po`, `DEC-0120` amendement A.1 a A.8)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, non lus de sa main) : *"on plannifie A A' et B, on adapte les instances et la duree car il faut sortir une version"*. **Le sprint n'est pas ouvert** : aucun planning, aucun tarif, aucune affectation, aucune borne ni duree ecrite. Matrice : 142 / 182, inchangee.
+
+**Remplace**, dans le tableau "Etat des stories pour le planning de s57" ci-dessus :
+
+| Story | Etat au 2026-10-13, apres l'amendement | Ce qui change |
+|---|---|---|
+| `S57-ADR-0065-DEUX-INSTANCES` | **engagee**, proprietaire `theo-archi`, hors `PAR`, 0,0 pour `nadia-prof` | remplace *"engagee seulement si les deux instances sont deux de francais CE1"* : A et A' sont deux de francais CE1 ; heure de fusion a `sofia-sm` |
+| `S56-ART-CP-10-REPRISE`, `S56-RDO-CP-R1`, `S56-RDO-CP-R2` | non engagees, criteres inchanges | retenues pour **B** (arts plastiques CP) ; affectation et prix a `nadia-prof` |
+| `S56-VSJ-CE1-R1` | non engagee, critere inchange | reste a A (groupe X), 0,5 |
+| `S54-OBS-SCI-CONSIGNE` | **retiree, candidat de B sous une seule condition** : `nadia-prof` ecrit ses criteres avant l'ouverture du planning | remplace *"retiree, sans suite engagee"* ; sans ses criteres, la retraite tient ; deux reports comptes (s55, s56), pas de troisieme |
+| `RP-ACCUEIL-147`, `HS-ACCUEIL-MESURE-DEFAUT`, `HS-ACCUEIL-APM-R2` | inchangees | - |
+
+**Budget a trois instances (`DEC-0120` A.4)** : deux options chiffrees, aucune choisie. O1, borne 8,0 maintenue : 2,67 par instance, 5,0 de travail, deux lots de francais CE1 a s57, dix lots finis a s59 au plus tot. O2, borne relevee : somme des trois budgets ; a titre d'exemple, 4,0 par instance et borne 12,0 rendent cinq lots et s58, avec 2,5 de B sans poste nomme. La borne est un arbitrage de `nadia-prof` (`PAR-8`), la duree releve de `sofia-sm`.
+
+**`A10` est due** (verification des formes (a), (b), (c) sur s54, par `nadia-prof`) : non ecrite. Mesure de la condition (i) de `nadia-prof` : B peut prendre 0,5 chiffre plus un candidat sans prix, contre 4,0 exiges (`DEC-0120` A.5). **`Q-U8`** : quel contenu doit sortir dans la version et pour quelle date (`DEC-0120` A.6) ; aucun contenu de version n'est presume ici.
+
+**Ce que cette annotation ne fait pas** : elle n'ouvre pas s57, ne fixe ni borne ni duree, n'ecrit ni `A10` ni les criteres de `S54-OBS-SCI-CONSIGNE`, ne touche ni catalogue, ni paquet, ni matrice, ni code, ni fiche.
