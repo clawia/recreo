@@ -262,3 +262,19 @@ ne change aucune ligne de matrice hors la cellule de `ART-CP-10` (texte, pas sta
 **Ce que je route.** `nadia-prof` : jugement du rang B, prix de ses lots, lecture d'A.15 pour `PAR-8`, `A10`, referentiels de CE1 si l'utilisatrice repond oui a `Q-U8` (d). `sofia-sm` : duree et planning. `theo-archi` : avis sur les quatre dessins manquants, lien de `A3` avec `MAT-CP-10`. Utilisatrice : `Q-U2`, `Q-U8` (b), (c), (d).
 
 **Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, de tarif, de borne ni de duree ; n'ouvre pas s57.
+
+## 2026-10-13 (troisieme) - pas de date, les lignes `en cours` jouables comptent, le CE1 s'ouvre ; `Q-U8` fermee dans son principe (`camille-po`)
+
+**Le fait.** Mots de l'utilisatrice, transmis par l'agent lanceur comme recus directement (forme 2, je ne les ai pas lus de sa main), en reponse a `Q-U8` (b), (c), (d) : *"pas de date"* ; *"on compte toutes les lignes meme en cours si le jeux est jouable"* ; *"pour le CE1 ouvre d'autres matieres"*. Aucun critere de jouabilite ni aucune matiere nommee dans ces mots : non inventes.
+
+**Ce que je verse.** `DEC-0120` amendement A.18 a A.26 (`Proposee`, inchange) :
+1. (b) : aucune date, la version sort quand le maximum est atteint selon (c). Les sprints d'A.15 deviennent des previsions ; O1 n'est plus exclue par un delai.
+2. (c) : compteur de version = `couvert-valide` plus lignes `en cours` dont le jeu est jouable selon les **criteres de `nadia-prof`, en attente**. Le statut de matrice ne change pas (142 / 182).
+3. Mesure, commande de la "Methode du compte" sur `59c4b56f` : `couvert-valide` 142, `en cours` 4 (`MAT-CP-01`, `MAT-CP-10`, `MAT-CE1-02`, `MAT-CE1-09`, un jeu au catalogue chacune), `non couvert` 36, `non couvrable en l'etat` 76. **Le nombre de lignes `en cours` jouables n'est pas mesurable sans les criteres** : borne seulement, 142 a 146 / 182 (78,02 % a 80,22 %), pas d'estimation. Aucun document de jouabilite de `nadia-prof` dans l'arbre `round-two` (`git ls-tree -r --name-only HEAD | grep -i jouabilit` : 0).
+4. Maximum sous (c), borne haute : 173 / 182 = 95,05 % (163 + 4 lignes `en cours` + 6 lignes de plafond `en cours` qu'un lot rend `en cours`) ; 9 lignes atteignables restent dehors, nommees. Six lots non chiffres s'ajoutent : le travail d'A.15 est un plancher.
+5. (d) : le CE1 a 2 referentiels. Effet sur le denominateur non mesure, aucun referentiel neuf ; les gestes a faire a leur arrivee sont ecrits (A.24).
+6. `Q-U9` neuve : maximum sur la matrice figee ou vivante. `Q-U2` : `nadia-prof` interrogee sur `S54-OBS-SCI-CONSIGNE`, en attente ; deux reports comptes, un troisieme interdit.
+
+**Ce que je route.** `nadia-prof` : criteres de jouabilite, referentiels de CE1, reponse a `Q-U2`, question sur le jeu branche avant son Done (A.23). `sofia-sm` : duree, sans date. Utilisatrice : `Q-U9`.
+
+**Ce que cette entree ne fait pas.** Aucun code, catalogue, paquet, ligne de matrice ni Done ; pas de `planning.md`, de tarif, de borne ni de duree ; n'ouvre pas s57 ; n'invente aucun critere de jouabilite.
