@@ -477,3 +477,167 @@ de son"*. Les deux questions de la section 8 sont closes.
 Il ne touche ni la matrice, ni `DEC-0120`, ni un paquet, ni le code. Il ne compose pas s57. Il ne prononce aucun Done.
 
 **Signe** : `nadia-prof`, hors sprint, 2026-10-13.
+
+---
+
+## 11. Amendement du 2026-10-13, 18:32 (UTC+02:00) (`nadia-prof`) : un sprint plus long, le referentiel d'arts plastiques CE1
+
+Annotation datee, branche `s57b-nadia` a `729b0d8a`, arbre propre avant ecriture. **Rien au-dessus n'est reecrit** : les
+phrases que cette section complete ou corrige sont nommees, et restent lisibles.
+
+### 11.1 Les mots de l'utilisatrice (forme 2 de `DEC-0062`)
+
+Reponses du 2026-10-13, telles que l'agent qui m'a lancee me les transmet. **Je ne les ai pas lues de sa main.**
+
+| Question | Mots | Ce qu'ils fondent | Ce qu'ils ne fondent pas |
+|---|---|---|---|
+| `Q1` de `preparation.md` de s57 (1.3) : *"on adapte les instances et la duree"* voulait-il dire un sprint plus long pour porter plus de 8,0 ? | *"oui plus que 8"* | s57 porte plus de 8,0 d'audit, sur une duree plus longue | la borne par fenetre d'audit, qui est `PAR-8` (11.3) ; la duree, qui est a `sofia-sm` |
+| `Q-U10` de `DEC-0120` (A.28) | *"avec ART plastique CE1"* | le maximum de la version n'est fige qu'une fois le referentiel d'arts plastiques CE1 ecrit | son contenu, qui est a moi (11.5) |
+| Developpeur de `S54-OBS-SCI-CONSIGNE` | *"developpeuse lea-dev"* | `lea-dev` ecrit le poste | rien sur mes criteres (11.6) |
+
+### 11.2 Correction de mon propre constat, avant d'arbitrer
+
+J'ai ecrit en 4.4, point 2 : *"Allonger un sprint n'augmente pas ma borne. [...] Un sprint plus long qui empilerait plus
+de lots par instance, je le refuserais au meme motif."* **La phrase est juste pour des lots audites dans une meme
+fenetre, et incomplete** : elle ne distingue pas un sprint plus long dont les lots s'empilent d'un sprint plus long dont
+les lots se succedent. `sofia-sm` a fonde sur elle sa proposition `P2` (*"On ne l'allonge pas pour absorber plus de 8,0"*,
+`preparation.md` 1.3). Ce que ma borne mesure est ecrit depuis s29, et je le relis au lieu de le supposer :
+
+> `PAR-0` (`ARBITRAGE-PREALABLE-s29-...`, 13.1) : *"Ma borne est une limite d'attention avec une composante de debit"* ;
+> *"une auditrice qui travaille en serie produit les trouvailles transverses en sous-produit gratuit, parce qu'elle
+> accumule l'image en avancant."*
+
+Ma borne ne mesure pas des heures : elle mesure ce que je tiens ensemble dans une fenetre ou des lots restent ouverts,
+jusqu'a ce que leurs verdicts soient ecrits. Le sprint etait cette fenetre parce que rien ne la coupait plus tot. **Un
+verdict ecrit libere l'attention : le depot garde l'image, et `PAR-0` dit que la serie l'enrichit.** Deux fenetres
+successives, la seconde ouverte apres que la premiere est close, ne se cumulent donc pas. Le point 2 de 4.4 reste vrai
+pour une fenetre ; il ne l'est pas pour une suite de fenetres closes une a une.
+
+### 11.3 La borne d'un sprint plus long : 8,0 par palier, un palier clos avant le suivant
+
+**Derivation.** Elle ne cree aucun chiffre neuf : elle repete ma borne actuelle sur des fenetres successives.
+
+| Etape | Source | Ce qu'elle donne |
+|---|---|---|
+| Ce que mesure la borne | `PAR-0` (s29, 13.1) | une fenetre d'attention, pas une duree |
+| Borne par fenetre | `PAR-8` (s29, 13.5) ; D7 de ce document (4.3) | **8,0** a deux ou trois instances, **5,0** a une ; au plus 5,0 et trois lots par instance ; inchangee |
+| Couts fixes par instance et par fenetre | 4.3 : arbitrage prealable 0,5, marge de rejeu 0,5 | **1,0**, seul tarif ecrit ; un tarif plus bas pour une fenetre qui en suit une autre n'a aucune mesure, je ne l'ecris pas |
+| Fenetre suivante | 11.2 | s'ouvre quand la precedente est close, et pas avant |
+
+> **Decision du 2026-10-13 : un sprint peut porter plus de 8,0, s'il est decoupe en paliers.** Un palier est une fenetre
+> d'audit qui tient seule `PAR-8` et `PAR-9`. **La borne d'un sprint est la somme des bornes de ses paliers** : 8,0 x *n*
+> pour *n* paliers a deux ou trois instances. **Par instance : 5,0 et trois lots par palier**, inchanges. **Par duree :
+> aucune borne**, je n'ai aucune mesure en heures (4.4, point 4) et je n'en derive pas.
+>
+> Six conditions, toutes necessaires :
+>
+> 1. **Chaque palier tient seul `PAR-8` et `PAR-9`** : la somme des budgets de ses instances egale sa borne (8,0, ou 5,0 a
+>    une instance) ; au plus 5,0 et trois lots par instance ; une marge de rejeu de 0,5 par instance qui porte un lot,
+>    nommee a l'ouverture du palier, allouee a aucun lot.
+> 2. **Un palier s'ouvre quand le precedent est clos pour toutes ses instances** : chaque lot engage a un verdict ecrit
+>    sur sa fiche (`VALIDE`, `VALIDE SOUS RESERVE` ou `REFUSE`), chaque refus est rejoue dans la marge ou ecrit comme
+>    report. Un lot non audite a la cloture d'un palier glisse au suivant, ecrit comme tel, et compte dans la borne du
+>    palier ou il est audite.
+> 3. **L'arbitrage prealable de chaque instance pour un palier est ecrit avant le premier lot de ce palier** (0,5), et il
+>    porte la cloture du palier precedent : les verdicts, et le consomme avec les postes qu'il additionne
+>    (`squad/lessons.md`, s56).
+> 4. **Les six conditions de mon accord sur `PAR-2` (4.2) valent pour tous les paliers de s57, sans changement.** `-08` et
+>    `-09` ne sont pas des lots de s57, quelle que soit sa duree. La condition 5 (un sous-repertoire de scratchpad et un
+>    port) se lit par agent, par instance **et par palier**.
+> 5. **`PAR-13` ne change pas**, et ma lecture de 4.2 (aucune autre instance sur un terrain neuf tant que A' existe) vaut
+>    pour tous les paliers de s57.
+> 6. **Le nombre de paliers n'est pas fixe par moi** : un palier sans lot instruit ne s'ouvre pas. La duree, et le
+>    nombre de paliers qu'elle porte, sont a `sofia-sm` ; la composition de chaque palier est a `camille-po`.
+
+**Ce que cela achete, et ce que cela n'achete pas, dit pour que personne ne le decouvre en review.** En capacite d'audit,
+*n* paliers valent *n* sprints : 8,0 de plus par palier, ni plus ni moins. Ce que le sprint long economise, ce sont les
+ceremonies entre deux sprints, que je ne mesure pas. Ce qu'il perd, ce sont la review et la retro entre deux fenetres : la
+condition 3 remplace ma part de cette cloture, pas celle des autres.
+
+### 11.4 Ce qui manque pour plus de 8,0 dans un meme palier (O2)
+
+Ma barre de s46 (section 5), inchangee :
+
+| Condition | Etat le 2026-10-13, 18:32 | Ce qui la debloque, et a qui |
+|---|---|---|
+| (i) une composition a deux instances remplit 8,0 et laisse dehors au moins 4,0 de lots instruits, **prenables par la troisieme** sous `PAR-1` et `PAR-2` (reserve de s51, section 4) | **non montree.** Ma lecture de 4.3 : les quatre lots textuels de `G4` (4,0) et la reprise d'`ART-CP-10` (0,5) seraient prenables par B. Je ne la montre pas : c'est une composition | un document de planning de `camille-po` |
+| (ii) le dernier sprint parallele clos est sans occurrence des formes (a), (b), (c), verifie par moi transcriptions comprises | **non etablie.** s54 en porte une (4.1). s56 est le dernier sprint parallele clos ; **je ne l'ai pas verifie**, et `cloture-nadia.md` de s56 dit qu'un seul agent a repris les audits des deux instances apres l'arret de B. **Un palier clos ne compte pas pour (ii)** : la condition lit un sprint clos, avec sa review, ou un tiers peut recompter (forme (b)). Je ne la change pas | moi : la verification de s56, 0,25, sur les transcriptions de sa session, quand `camille-po` me la demande |
+| (iii) `PAR-13` | **tenue** (4.2) | - |
+
+Si (i) est montree et que (ii) tient sur s56, la derivation se fait dans un document neuf, avec la formule de s32
+recalculee sur les mesures de ce jour-la. **Je n'ecris aucun chiffre au-dela de 8,0 par palier aujourd'hui.**
+
+### 11.5 Le referentiel d'arts plastiques CE1 : ecrit
+
+**Correction de mon propre constat (2.2, ligne "Arts plastiques").** J'ecrivais : *"Je reprends ce referentiel apres le
+verdict du rejeu d'`ART-CP-10`, pas avant : ecrire des lignes de CE1 sur une forme non prouvee, c'est ecrire contre une
+barre que je n'ai pas vue tenir."* **Le report etait plus large que son motif.** Ce qui depend du verdict, c'est
+l'instruction d'une ligne qui demande deux oeuvres montrees ensemble (ses conditions, son plafond), pas l'existence de la
+ligne ni son compte : un refus de forme ne rend pas une ligne non couvrable (`ARBITRAGE-PREALABLE-s50-art-cp.md`, Q1 :
+*"`ART-CP-10` reste `non couvert` (constructible), jamais `non couvrable en l'etat`"*). Le meme jour, j'ai ecrit
+`QLM-CE1-07`, `-09` et `-11`, qui attendent un materiau. **Rien ne bloquait l'ecriture ; ce qui attend le rejeu, c'est
+l'instruction d'une ligne.**
+
+**Ecrit** : `squad/programme/arts-plastiques/competences-ce1.md`, a l'emplacement et dans la forme de `competences-cp.md`
+(meme dossier ; en-tete ; codes `[ART-CE1-nn]` en tete de ligne ; frontieres ; jugement de faisabilite ; bilan).
+
+| Ligne | Situation a l'entree dans la matrice | Ce qui attend |
+|---|---|---|
+| `ART-CE1-01` - reconnaitre comment une oeuvre montree a ete faite (peinte, dessinee, photographiee) | `non couvert` | un materiau : aucun dessin ni aucune photographie dans le corpus (11 peintures ou estampes et 1 objet, lus dans `squad/corpus/oeuvres-domaine-public.yaml`) ; la forme existe (`ART-CP-09`) |
+| `ART-CE1-02` - comparer deux oeuvres d'un meme sujet montrees ensemble, dire ce qui les distingue | `non couvert` | la forme a deux oeuvres (verdict du rejeu d'`ART-CP-10`) et un materiau ; **son instruction attend ce verdict** |
+
+**Conformite a la reponse de l'utilisatrice du 2026-10-13** (`DEC-0120` A.27) :
+
+- *"non nouveaux items"* : chaque ligne a sa frontiere avec le CP, ecrite ; couleurs, outils, decrire et rapprocher
+  restent au CP et ne recoivent aucune jumelle ; `NRC-CE1-1` est etendue aux arts plastiques CE1, sans identifiant neuf
+  (`ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`, section 12).
+- *"non pas de son"* : aucune ligne ne demande une voix ; `TRV-CE1-1` s'applique.
+- Les sept lignes de pratique du CP (`ART-CP-01` a `-04`, `-06` a `-08`) n'ont pas de jumelle : non couvrables par
+  nature a tout niveau, elles n'ajouteraient rien au denominateur atteignable.
+
+**`PAR-13`** : les deux lignes sont des terrains neufs (aucun dessin, aucune photographie, aucune paire d'un meme sujet
+n'a rencontre de contenu). **Effet sur la matrice, a compter par `camille-po`** : deux lignes, deux atteignables.
+
+**Pour `Q-U10`** : avec ce referentiel, **toutes les matieres du CE1 ont ma decision** : francais, mathematiques,
+questionner le monde, EMC et arts plastiques ecrits ; anglais refuse (10.4) ; education musicale et EPS refusees (2.2).
+Je n'ai plus de referentiel de CE1 a ecrire. Le maximum peut etre fige des que `camille-po` aura integre ces deux lignes ;
+le figer est a elle.
+
+### 11.6 `S54-OBS-SCI-CONSIGNE` : `lea-dev`
+
+Mes criteres (section 3) et mon rejeu par B ne changent pas. `lea-dev` porte aussi la correction d'`ART-CP-10` : deux
+paquets distincts, audites par la meme instance B ; ce n'est pas la forme (a), qui suppose un paquet et sa consigne
+modifies par deux stories.
+
+### 11.7 Ce dont je reste la seule garde, ajoute
+
+| Propriete | Qui la tient |
+|---|---|
+| Qu'un palier ne s'ouvre pas avant que le precedent soit clos (condition 2) | moi, dans l'arbitrage du palier (condition 3) ; `sofia-sm` au planning. Aucun garde-fou ne lit une fiche |
+| `NRC-CE1-1` et `ART-1` sur les arts plastiques CE1 | moi seule, en jouant et en lisant les paquets de CP voisins |
+
+### 11.8 Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | La duree de s57 en paliers (11.3, condition 6) ; `P2` de `preparation.md` a revoir sur 11.2 ; la regle d'ouverture d'un palier (condition 2) dans `planning.md` ; les sous-repertoires et ports par palier (condition 4) |
+| `camille-po` | La composition de chaque palier ; integrer `ART-CE1-01` et `-02` a la matrice et figer le maximum (`Q-U10`) ; la condition (i) si un palier au-dela de 8,0 est voulu ; me demander la verification de s56 (11.4) si elle la veut |
+| `theo-archi` | Rien de neuf : la forme d'`ART-CE1-02` est celle d'`ART-CP-10` ; un corpus de dessins et de photographies pose la question des droits, que je ne tranche pas (`ART-3`) |
+
+### 11.9 Question pour l'utilisatrice
+
+| Code | Question |
+|---|---|
+| `Q3` | **Un sprint plus long, je l'accepte comme une suite de paliers de 8,0, chacun audite et clos avant le suivant (11.3). Est-ce ce qu'elle veut ?** Plus de 8,0 audites dans une meme fenetre reste refuse tant que (i) et (ii) manquent (11.4). En capacite d'audit, *n* paliers valent *n* sprints ; le gain est dans les ceremonies evitees |
+
+### 11.10 Ce que cet amendement ne fait pas
+
+Il ne fixe ni la duree, ni le nombre de paliers, ni la composition. Il ne touche ni la matrice, ni `DEC-0120`, ni
+`preparation.md`, ni un paquet, ni le code, ni le registre : **aucun identifiant de condition ou de reserve n'est ecrit
+ni alloue** (`ART-CE1-01` et `-02` sont des codes de ligne, declares par leur referentiel, `ADR-0081`). Il ne prononce
+aucun Done et ne verifie pas s56.
+
+**Ce que je n'ai pas joue** : rien, et il n'y avait rien a jouer : les deux lignes d'arts plastiques CE1 n'ont aucun
+paquet, et le rejeu d'`ART-CP-10` n'est pas fait. Audit degrade, declare.
+
+**Signe** : `nadia-prof`, hors sprint, 2026-10-13, 18:32.

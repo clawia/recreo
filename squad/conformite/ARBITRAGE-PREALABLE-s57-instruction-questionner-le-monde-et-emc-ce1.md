@@ -596,3 +596,24 @@ Identifiant ecrit : `PLG-CE1-2`, forme copiee de `PLG-CE1-1` (trois segments, sa
 section 4 du registre dans le meme diff.
 
 **Signe** : `nadia-prof`, hors sprint, 2026-10-13, 17:01.
+
+---
+
+## 12. Amendement du 2026-10-13, 18:32 (UTC+02:00) (`nadia-prof`) : `NRC-CE1-1` etendue aux arts plastiques CE1
+
+Branche `s57b-nadia` a `729b0d8a`. **Rien au-dessus n'est reecrit.**
+
+J'ecris le referentiel d'arts plastiques CE1 (`squad/programme/arts-plastiques/competences-ce1.md`,
+deux lignes ; motif et methode dans `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, section 11.5).
+Le 2026-10-13 (meme arbitrage, 10.4), j'ecrivais : *"quand je l'ecrirai, `NRC-CE1-1` vaudra pour elle"*. C'est fait :
+
+> **`NRC-CE1-1` vaut, telle qu'ecrite en section 2, pour les paquets de CE1 d'arts plastiques**, en plus de questionner
+> le monde et de l'EMC. Les paquets de CP voisins a lire a chaque audit sont `cp-decrire-une-oeuvre`, `cp-arts-couleurs`,
+> `cp-arts-outils`, `cp-arts-oeuvres-familles` et `cp-rapprocher-deux-oeuvres` ; la frontiere est le tableau
+> "Frontieres" du referentiel.
+
+Meme condition, un perimetre de plus : **aucun identifiant neuf**, la ligne du registre de `NRC-CE1-1` ne change pas.
+L'instruction des deux lignes d'arts plastiques CE1 n'est pas faite ici : elle est due avant le premier paquet, et celle
+d'`ART-CE1-02` attend le verdict du rejeu d'`ART-CP-10`.
+
+**Signe** : `nadia-prof`, hors sprint, 2026-10-13, 18:32.
