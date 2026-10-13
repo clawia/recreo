@@ -118,6 +118,16 @@ d'attribution, et la loger ici en chassait une.*
   signale comme tel plutot que de se reconstituer : **choisir entre deux formulations reviendrait a
   fabriquer la citation que la convention protege.**
 
+**La formule tolere l'accord au pluriel** (amendement du 2026-10-13, `sofia-sm`, preparation de s57).
+*"recus de MASTER, sans source dans le depot"* pour plusieurs enonces cites mot pour mot avec leur date
+est la formule fixe accordee, pas une quatrieme forme. Source : `DEC-0062`, amendement D
+(`camille-po`, 2026-10-13, sur les mots de l'utilisatrice *"oui pour Sofia"*), et `DEC-0116` A.35. La
+lecture est celle de `retro.md` de s56, section 4 (`relecture-cloture.md` P1 : un ecart de formule, pas
+de provenance). **Aucune convention structurelle n'est introduite** : `Q-U7`, point 2, est sans reponse
+de l'utilisatrice, et le refus de test de `theo-archi` tient (`avis-faisabilite.md` de s56, section 8 :
+47 fichiers sur 65 rouges). Pas de balayage retroactif (`DEC-0062` section 7) : `DEC-0114` n'est pas
+touchee.
+
 **MASTER s'ecrit toujours en capitales** et n'apparait jamais seul, mais dans la formule fixe -
 c'est ce qui le distingue a la lecture de *Scrum Master*. **MASTER n'ecrit jamais dans le depot** et
 n'entre pas dans la table des prefixes de commit de la section 8 : un commit prefixe `[MASTER]` est
