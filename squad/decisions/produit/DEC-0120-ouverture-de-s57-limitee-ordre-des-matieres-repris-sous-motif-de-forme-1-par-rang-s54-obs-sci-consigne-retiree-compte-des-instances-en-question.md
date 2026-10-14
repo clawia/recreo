@@ -1415,3 +1415,43 @@ Annotation datee, 21:53 (UTC+02:00). **Rien au-dessus n'est reecrit.** **Le stat
 - **`DEC-0120` reste `Acceptee`.** Ne fait pas : ne prononce aucun Done, ne juge aucun contenu, ne choisit aucune forme, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, ni paquet, ni fiche, ni matrice, ni `planning.md`, ni `cloture-palier-1.md` ; ne dit pas que la CI distante est verte.
 - **Statuts de stories** : `S57-TPH-CE1-R1`, `S57-GNA-CE1-R1`, `S57-VSJ-CE1-R2` ecrites, non engagees ; `RP-ACCUEIL-147` ouverte, critere 1 amende. Aucun autre statut ne change.
 - **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
+
+---
+
+## Amendement du 2026-10-14, treizieme (`camille-po`, matrice apres les verdicts du palier 1)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** **Le statut ne change pas : `Acceptee` (A.77).** Reponse a `Q-A1` de l'agent principal (A.87, point 4) : mettre la matrice a jour, en ne tranchant que ce que ses regles tranchent.
+
+### A.89 Ce que les regles de la matrice tranchent, et l'etat des fiches
+
+La section "Qui la met a jour" fait passer une ligne a `couvert-valide` quand `nadia-prof` a rendu un verdict `VALIDE` ; la phrase qui renvoie une ligne a `en cours` vise un statut remis en cause par une reserve non levee, pas une fermeture sous reserve non bloquante (precedent ecrit dans la note du 2026-10-08, s54 : `FRA-CE1-19`, `FRA-CE1-25`, puis `FRA-CE1-13`, `FRA-CE1-14`). **Ce qui decide de la fermeture est la phrase de la fiche** : *"`camille-po` peut passer `FRA-CE1-NN` a `couvert-valide`, sans mention de couverture partielle"*. Je n'ai fait passer que les lignes dont la fiche l'ecrit.
+
+| Verification | Commande | Sortie |
+|---|---|---|
+| Verdict de `FRA-CE1-10` | `grep -n "^### Verdict du 2026-10-14" FICHE-bandit-manchot-phrases-types-ce1.md` | ligne 22, **VALIDE SOUS RESERVE** ; ligne 24 : *"`camille-po` peut passer `FRA-CE1-10` a `couvert-valide`, sans mention de couverture partielle, apres la fusion de `1f6642ab`"* |
+| Verdict de `FRA-CE1-15` | idem, `FICHE-bandit-manchot-accord-groupe-nominal-ce1.md` | ligne 22, **VALIDE SOUS RESERVE** ; ligne 24 : meme phrase, *"apres la fusion de `72931c94`"* |
+| Condition de fusion | `git merge-base --is-ancestor 1f6642ab round-two` ; idem `72931c94`, `7dc40fb0` | sort 0 pour les trois |
+| `FRA-CE1-13` | `grep -n "^### Rejeu du 2026-10-14" FICHE-bandit-manchot-verbe-sujet-ce1.md` | ligne 117 : `VSJ-CE1-R1` **levee**, statut **VALIDE SOUS RESERVE**, reserve neuve `VSJ-CE1-R2` ; la ligne etait deja `couvert-valide`, seule sa cellule change |
+| `SCI-CM1-20` | idem, `FICHE-bandit-manchot-sciences-extraire-information-cm1.md` | ligne 112 : `S54-OBS-SCI-CONSIGNE` **VALIDE** ; la ligne n'est pas rouverte, rien ne change |
+
+Autres lignes dont la matrice compte un `VALIDE SOUS RESERVE` comme couvert : aucune n'a de verdict au palier 1. `ART-CP-10` reste `non couvert` (correction non engagee, A.84). Les lignes du palier 1 sans verdict (`FRA-CE1-04`, poste 7) ne bougent pas.
+
+| | Avant (`98362908`, `round-two` a `8d106f4d`) | Apres |
+|---|---|---|
+| `couvert-valide` | 142 | **144** |
+| `en cours` | 4 | 4 |
+| `non couvert` | 54 | **52** |
+| `non couvrable en l'etat` | 77 | 77 |
+| Total | 277 | 277 |
+| Denominateur atteignable | 200 | **200** |
+| Taux | 142 / 200 = 71,00 % | **144 / 200 = 72,00 %** |
+
+Commande : celle de la "Methode du compte" de la matrice (`awk -F'|'`, lignes de donnees, aucune mesure partielle), lancee avant et apres l'edition sur le meme fichier. `git diff 8d106f4d --stat` : un seul fichier, `MATRICE-couverture.md`, 3 lignes de tableau modifiees (`FRA-CE1-10`, `FRA-CE1-13`, `FRA-CE1-15`) plus la note.
+
+**Le maximum de la version, fige a 200 (A.38, A.46 a A.52), est inchange** : ni referentiel neuf, ni ligne classee `non couvrable en l'etat` (77 des deux cotes). Compteur de version (A.32) : 148 / 200 = 74,00 % par la formule (144 + 4), son critere 2 (CI verte sur l'arbre de la version) restant a lire sur cet arbre.
+
+### A.90 Ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Acceptee`.** Ne fait pas : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, fiche, `planning.md`, `cloture-palier-1.md`. Ne dit pas que la CI distante est verte.
+- **Ecart de la fiche de `FRA-CE1-15` a nommer** : elle autorise la fermeture apres la fusion de `72931c94`. La fusion de `sofia-sm` (`d67204de`) porte le sommet `3459ddb8`, qui n'ajoute que le rapport de la developpeuse (`rejeu-nadia-palier-1.md`, amendement de 20:40) ; `cloture-palier-1.md` section 4 dit que le contenu fusionne est celui qui a ete joue. Verifie : `git diff 72931c94 d67204de -- <paquet>` rend 0 ligne, et `git diff 1f6642ab c935d764 -- <paquet>` rend 0 ligne pour `ce1-phrases-types.yaml`.
+- **Statuts de stories** : aucun ne change. **Matrice : 144 / 200.**
