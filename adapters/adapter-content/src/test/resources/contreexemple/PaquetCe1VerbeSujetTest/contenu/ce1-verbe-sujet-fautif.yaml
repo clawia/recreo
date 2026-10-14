@@ -20,11 +20,16 @@ items:
     bonneReponse: "elle"
     distracteurs: ["une histoire", "la maison"]
     indice: "Demande-toi : qui fait l'action de ce verbe ?"
-  # propriete 8 : "la table" est avant le verbe
+  # propriete 8 : "le soir" et "la table" sont tous deux avant le verbe, aucun distracteur apres
+  - enonce: "« Le soir, sur la table, elle pose le livre. » Quel est le sujet du verbe « pose » ?"
+    bonneReponse: "elle"
+    distracteurs: ["le soir", "la table"]
+    indice: "Demande-toi : qui fait l'action de ce verbe ?"
+  # VSJ-CE1-R1 point 2 : un distracteur est avant le verbe et l'indice dit que le sujet est avant le verbe
   - enonce: "« Sur la table, elle pose le livre. » Quel est le sujet du verbe « pose » ?"
     bonneReponse: "elle"
     distracteurs: ["la table", "le livre"]
-    indice: "Demande-toi : qui fait l'action de ce verbe ?"
+    indice: "Le sujet est avant le verbe : regarde les mots devant."
   # propriete 9 : l'indice contient "des fraises"
   - enonce: "« Ils mangent des fraises au parc. » Quel est le sujet du verbe « mangent » ?"
     bonneReponse: "ils"

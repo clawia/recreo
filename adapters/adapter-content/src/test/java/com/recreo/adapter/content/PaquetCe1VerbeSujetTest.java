@@ -72,6 +72,13 @@ class PaquetCe1VerbeSujetTest {
 
     private static final String QUESTION_VERBE = "Quel est le verbe de la phrase";
 
+    /** VSJ-CE1-R1 : l'indice qui dit que le sujet est avant le verbe, faux des qu'un distracteur l'est aussi. */
+    private static final String INDICE_DE_LA_PLACE =
+            "Le sujet est avant le verbe : regarde les mots devant.";
+
+    /** VSJ-CE1-R1 : au moins trois items de sujet ont un distracteur avant le verbe cite. */
+    private static final int MINIMUM_D_ITEMS_AVEC_DISTRACTEUR_AVANT = 3;
+
     private static final Set<String> PRONOMS = Set.of("il", "elle", "ils", "elles");
 
     /** TRV-CE1-6 : le genre de chaque prenom des phrases citees, porte ici et non deduit. */
@@ -259,9 +266,27 @@ class PaquetCe1VerbeSujetTest {
                 .isLessThanOrEqualTo(1);
     }
 
+    /** Rang du verbe cite d'un item de sujet dans sa phrase, ou -1 si le verbe n'est pas dans la phrase. */
+    private static int rangDuVerbeCite(Question item, List<String> phrase) {
+        Matcher verbe = VERBE_CITE.matcher(item.enonce());
+        assertThat(verbe.find()).as("'%s' : un verbe cité", item.enonce()).isTrue();
+        return rangDansLaPhrase(phrase, verbe.group(1));
+    }
+
+    /** Les distracteurs d'un item de sujet qui sont dans la phrase et avant le verbe cite. */
+    private static List<String> distracteursAvantLeVerbe(Question item) {
+        List<String> phrase = motsDeLaPhraseCitee(item);
+        int rangDuVerbe = rangDuVerbeCite(item, phrase);
+        return item.distracteurs().stream()
+                .filter(d -> rangDuVerbe >= 0 && rangDansLaPhrase(phrase, d) >= 0
+                        && rangDansLaPhrase(phrase, d) < rangDuVerbe)
+                .toList();
+    }
+
     /**
-     * VSJ-CE1-2, propriete 8 : sur chaque item de sujet, la bonne reponse est avant le verbe cite et
-     * les deux distracteurs apres. Une proposition hors de la phrase est l'affaire de VSJ-CE1-1.
+     * VSJ-CE1-2, propriete 8 amendee le 2026-10-14 : sur chaque item de sujet, la bonne reponse est
+     * avant le verbe cite, au moins un distracteur est apres le verbe et au plus un est avant. Une
+     * proposition hors de la phrase est l'affaire de VSJ-CE1-1.
      */
     private static void verifierLaPlaceDuSujetParRapportAuVerbe(List<Question> items) {
         for (Question item : items) {
@@ -269,21 +294,77 @@ class PaquetCe1VerbeSujetTest {
                 continue;
             }
             List<String> phrase = motsDeLaPhraseCitee(item);
-            Matcher verbe = VERBE_CITE.matcher(item.enonce());
-            assertThat(verbe.find()).as("'%s' : un verbe cité", item.enonce()).isTrue();
-            int rangDuVerbe = rangDansLaPhrase(phrase, verbe.group(1));
+            int rangDuVerbe = rangDuVerbeCite(item, phrase);
             int rangDeLaReponse = rangDansLaPhrase(phrase, item.bonneReponse());
             if (rangDuVerbe >= 0 && rangDeLaReponse >= 0) {
                 assertThat(rangDeLaReponse).as(
                         "VSJ-CE1-2 : '%s' - le sujet '%s' est avant le verbe", item.enonce(),
                         item.bonneReponse()).isLessThan(rangDuVerbe);
             }
-            for (String distracteur : item.distracteurs()) {
-                int rang = rangDansLaPhrase(phrase, distracteur);
-                if (rangDuVerbe >= 0 && rang >= 0) {
-                    assertThat(rang).as("VSJ-CE1-2 : '%s' - le distracteur '%s' est après le verbe",
-                            item.enonce(), distracteur).isGreaterThan(rangDuVerbe);
-                }
+            List<String> avant = distracteursAvantLeVerbe(item);
+            assertThat(avant.size())
+                    .as("VSJ-CE1-2 : '%s' - au plus un distracteur avant le verbe, trouvés : %s",
+                            item.enonce(), avant)
+                    .isLessThanOrEqualTo(1);
+            long apres = item.distracteurs().stream()
+                    .filter(d -> rangDuVerbe >= 0 && rangDansLaPhrase(phrase, d) > rangDuVerbe)
+                    .count();
+            assertThat(apres)
+                    .as("VSJ-CE1-3 (a) : '%s' - au moins un distracteur après le verbe", item.enonce())
+                    .isGreaterThanOrEqualTo(1);
+        }
+    }
+
+    /**
+     * VSJ-CE1-R1 : sur au moins trois items de sujet, un distracteur est place avant le verbe cite,
+     * de sorte que la place seule ne donne pas le sujet. Le rang d'un distracteur absent de la
+     * phrase est -1 et ne compte pas : la propriete 3 le refuse.
+     */
+    private static void verifierQueLaPlaceSeuleNeDonnePasLeSujet(List<Question> items) {
+        long avecUnDistracteurAvant = items.stream()
+                .filter(PaquetCe1VerbeSujetTest::estUnItemDeSujet)
+                .filter(item -> !distracteursAvantLeVerbe(item).isEmpty())
+                .count();
+        assertThat(avecUnDistracteurAvant)
+                .as("VSJ-CE1-R1 : %d items de sujet ont un distracteur avant le verbe, au moins %d attendus",
+                        avecUnDistracteurAvant, MINIMUM_D_ITEMS_AVEC_DISTRACTEUR_AVANT)
+                .isGreaterThanOrEqualTo(MINIMUM_D_ITEMS_AVEC_DISTRACTEUR_AVANT);
+    }
+
+    /**
+     * VSJ-CE1-R1, point 1 de l'amendement : le distracteur avant le verbe ouvre la phrase et est
+     * suivi d'une virgule. Que ce soit un complement de temps ou de lieu, et jamais une personne,
+     * reste a la lecture de nadia-prof.
+     */
+    private static void verifierQueLeDistracteurAvantOuvreLaPhraseParUneVirgule(List<Question> items) {
+        for (Question item : items) {
+            if (!estUnItemDeSujet(item)) {
+                continue;
+            }
+            Matcher phrase = PHRASE_CITEE.matcher(item.enonce());
+            assertThat(phrase.find()).as("'%s' : une phrase citée entre guillemets", item.enonce()).isTrue();
+            for (String distracteur : distracteursAvantLeVerbe(item)) {
+                String texte = sansMajusculeInitiale(phrase.group(1));
+                String avantLaVirgule = texte.substring(0, Math.max(texte.indexOf(','), 0));
+                assertThat(avantLaVirgule)
+                        .as("VSJ-CE1-R1 : '%s' - le distracteur '%s' termine le complément qui ouvre la phrase et est suivi d'une virgule",
+                                item.enonce(), distracteur)
+                        .endsWith(distracteur);
+            }
+        }
+    }
+
+    /**
+     * VSJ-CE1-R1, point 2 de l'amendement : sur un item dont un distracteur est avant le verbe,
+     * l'indice ne dit pas que le sujet est avant le verbe.
+     */
+    private static void verifierQueLIndiceNeDitPasLaPlace(List<Question> items) {
+        for (Question item : items) {
+            if (estUnItemDeSujet(item) && !distracteursAvantLeVerbe(item).isEmpty()) {
+                assertThat(item.indice().orElse(""))
+                        .as("VSJ-CE1-R1 : '%s' - l'indice ne dit pas que le sujet est avant le verbe",
+                                item.enonce())
+                        .isNotEqualTo(INDICE_DE_LA_PLACE);
             }
         }
     }
@@ -423,8 +504,23 @@ class PaquetCe1VerbeSujetTest {
     }
 
     @Test
-    void vsjCe12LeSujetEstAvantLeVerbeCiteEtLesDeuxDistracteursApres() {
+    void vsjCe12LeSujetEstAvantLeVerbeCiteAuMoinsUnDistracteurApresEtAuPlusUnAvant() {
         verifierLaPlaceDuSujetParRapportAuVerbe(items());
+    }
+
+    @Test
+    void vsjCe1R1TroisItemsDeSujetAuMoinsOntUnDistracteurAvantLeVerbe() {
+        verifierQueLaPlaceSeuleNeDonnePasLeSujet(items());
+    }
+
+    @Test
+    void vsjCe1R1LeDistracteurAvantLeVerbeOuvreLaPhraseParUneVirgule() {
+        verifierQueLeDistracteurAvantOuvreLaPhraseParUneVirgule(items());
+    }
+
+    @Test
+    void vsjCe1R1SurUnItemADistracteurAvantLIndiceNeDitPasQueLeSujetEstAvantLeVerbe() {
+        verifierQueLIndiceNeDitPasLaPlace(items());
     }
 
     @Test
@@ -525,15 +621,50 @@ class PaquetCe1VerbeSujetTest {
                 .hasMessageContaining("occurrences de prénoms");
     }
 
-    /** ADR-0013 obligation 3 : le jeu fautif de la propriete 8, un distracteur avant le verbe. */
+    /** ADR-0013 obligation 3 : le jeu fautif de la propriete 8, deux distracteurs avant le verbe. */
     @Test
-    void leJeuFautifCommiteEstRefuseSurUnDistracteurAvantLeVerbe() {
+    void leJeuFautifCommiteEstRefuseSurDeuxDistracteursAvantLeVerbe() {
         List<Question> items = itemsFautifs();
 
         assertThatThrownBy(() -> verifierLaPlaceDuSujetParRapportAuVerbe(items))
                 .isInstanceOf(AssertionError.class)
                 .hasMessageContaining("VSJ-CE1-2")
-                .hasMessageContaining("Sur la table");
+                .hasMessageContaining("au plus un distracteur avant le verbe")
+                .hasMessageContaining("Le soir, sur la table");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif de VSJ-CE1-R1, un seul item avec un distracteur avant le verbe. */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurSaPlaceSeuleQuiDonneLeSujet() {
+        List<Question> items = itemsFautifs();
+
+        assertThatThrownBy(() -> verifierQueLaPlaceSeuleNeDonnePasLeSujet(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("VSJ-CE1-R1")
+                .hasMessageContaining("au moins 3 attendus");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif du point 1 de VSJ-CE1-R1, un distracteur avant qui n'ouvre pas la phrase. */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnDistracteurAvantQuiNOuvrePasLaPhraseParUneVirgule() {
+        List<Question> items = itemsFautifs();
+
+        assertThatThrownBy(() -> verifierQueLeDistracteurAvantOuvreLaPhraseParUneVirgule(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("VSJ-CE1-R1")
+                .hasMessageContaining("la table")
+                .hasMessageContaining("complément qui ouvre la phrase et est suivi d'une virgule");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif du point 2 de VSJ-CE1-R1, l'indice de la place sur un item a distracteur avant. */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurLIndiceDeLaPlaceSurUnItemADistracteurAvant() {
+        List<Question> items = itemsFautifs();
+
+        assertThatThrownBy(() -> verifierQueLIndiceNeDitPasLaPlace(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("VSJ-CE1-R1")
+                .hasMessageContaining("l'indice ne dit pas que le sujet est avant le verbe");
     }
 
     /** ADR-0013 obligation 3 : le jeu fautif de la propriete 9, un indice qui contient une proposition. */
