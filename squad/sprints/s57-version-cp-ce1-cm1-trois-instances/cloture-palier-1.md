@@ -1,6 +1,6 @@
 # [Sprint s57] Cloture du palier 1 - SQUELETTE
 
-- **Statut : squelette, le palier 1 n'est pas clos ; la section 4 est remplie au fil des fusions (2026-10-14), le reste ne l'est pas.** Ce fichier ne vaut pas cloture : il n'a ni horodatage de fin, ni verdict, ni report constate par la cloture. Il fixe les sections que `squad/README.md` section 4 demande, pour que la cloture ne les invente pas. **A la cloture, `sofia-sm` le remplace en une seule ecriture** (pas d'ajout a la suite) ; le diff garde alors le squelette comme etat precedent.
+- **Statut : squelette, le palier 1 n'est pas clos ; la section 4 est remplie au fil des fusions (2026-10-14), les sections 1, 2 et 5 portent des constats du 2026-10-14 avant cloture, le reste ne l'est pas.** Ce fichier ne vaut pas cloture : il n'a ni horodatage de fin, ni verdict, ni report constate par la cloture. Il fixe les sections que `squad/README.md` section 4 demande, pour que la cloture ne les invente pas. **A la cloture, `sofia-sm` le remplace en une seule ecriture** (pas d'ajout a la suite) ; le diff garde alors le squelette comme etat precedent.
 - **Horodatage de fin du palier** : non ecrit.
 - **Ecrit par** : `sofia-sm`, casquette Scrum Master, squelette du 2026-10-14, sur `round-two` a `6ca84317`.
 
@@ -10,11 +10,11 @@ Un poste engage a un verdict ecrit de `nadia-prof` ou un report ecrit (condition
 
 | Poste | Instance | Verdict de `nadia-prof`, ou glissement ecrit | Fiche ou fichier du verdict |
 |---|---|---|---|
-| 3, `VSJ-CE1-R1` | A | a remplir | a remplir |
-| 4, `ce1-phrases-types` | A' | a remplir | a remplir |
-| 5, `ce1-accord-groupe-nominal` | A' | a remplir | a remplir |
-| 6, `S54-OBS-SCI-CONSIGNE` | B | a remplir | a remplir |
-| 7, `ce1-texte-narratif`, si engage | A | a remplir | a remplir |
+| 3, `VSJ-CE1-R1` | A | constate avant cloture, 2026-10-14 : `VSJ-CE1-R1` levee ; `FRA-CE1-13` VALIDE SOUS RESERVE, reserve neuve non bloquante `VSJ-CE1-R2` | `rejeu-nadia-palier-1.md` ; `FICHE-bandit-manchot-verbe-sujet-ce1.md` |
+| 4, `ce1-phrases-types` | A' | constate avant cloture : VALIDE SOUS RESERVE, `TPH-CE1-R1` non bloquante ; `Q-N4` = non | `FICHE-bandit-manchot-phrases-types-ce1.md` |
+| 5, `ce1-accord-groupe-nominal` | A' | constate avant cloture : VALIDE SOUS RESERVE, `GNA-CE1-R1` non bloquante | `FICHE-bandit-manchot-accord-groupe-nominal-ce1.md` |
+| 6, `S54-OBS-SCI-CONSIGNE` | B | constate avant cloture : VALIDE, sans reserve ; `SCI-CM1-20` non rouverte | `rejeu-nadia-palier-1.md` ; `FICHE-bandit-manchot-sciences-extraire-information-cm1.md` |
+| 7, `ce1-texte-narratif` | A | **engage le 2026-10-14** par l'amendement de `planning.md` (`marc-dev`, 1,0) ; aucun verdict : a remplir | a remplir |
 | 8, correction et rejeu d'`ART-CP-10`, si engage | B | a remplir | a remplir |
 | 9, branche B2, si engagee | B | a remplir | a remplir |
 
@@ -22,9 +22,10 @@ Un poste engage a un verdict ecrit de `nadia-prof` ou un report ecrit (condition
 
 Regle (`DEC-0120` A.72, confirmee par `planning.md`, amendement du 2026-10-14 18:20) : un poste glisse au plus une fois ; le second glissement est un report compte ; le troisieme report est interdit. A ecrire a la cloture : chaque glissement avec sa date et sa cause, dit a l'utilisatrice le jour meme.
 
+- Poste 7 : engage apres l'ouverture ; **son premier report reste ecrit** (A.83). S'il n'est pas audite a la cloture, il glisse une seule fois (A.72) : a ecrire ici avec date et cause. Postes 8 et 9 : non engages a cet instant (`theo-archi`, `C1` a `C4`).
 - Reports comptes a l'ouverture du palier 1 (`planning.md`, amendement) : poste 7, premier report ; poste 8, premier report de la reprise ; ligne `ART-CP-10`, huit evenements sans fermeture. **A reprendre ici tels quels s'ils n'ont pas change.**
 - `S54-OBS-SCI-CONSIGNE` : deux reports comptes ; glissement permis une fois ; acte d'abandon a la cloture du palier 2 si la story n'est pas livree et rejouee (A.73). A remplir.
-- `RP-ACCUEIL-147` : echeance avant la cloture du palier 1 (A.74). Fait, ou glissement ecrit ici. A remplir.
+- `RP-ACCUEIL-147` : echeance avant la cloture du palier 1 (A.74). **Non fait au 2026-10-14** : `grep -n "147" squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` rend encore les lignes 41 et 236 (la ligne 398 est l'ecart constate). Fait, ou glissement ecrit ici. A remplir a la cloture.
 
 ## 3. Porte technique
 
@@ -49,7 +50,7 @@ Une ligne par fusion (`planning.md`, section "Ordre de fusion") : `grep -c "^  -
 
 ## 5. Ordre du critere 3 de `S57-ARB-PALIER-1`
 
-Une ligne par paquet : le commit qui porte la ligne *"lecture complete"* de `nadia-prof` est ancetre du commit du premier verdict (`git merge-base --is-ancestor`). A remplir pour `ce1-phrases-types` (24 items), `ce1-accord-groupe-nominal` (24) et `ce1-texte-narratif` (20) s'il est engage.
+Une ligne par paquet : le commit qui porte la ligne *"lecture complete"* de `nadia-prof` est ancetre du commit du premier verdict (`git merge-base --is-ancestor`). Constate le 2026-10-14, a confirmer a la cloture : les trois lignes *"lecture complete"* sont dans `rejeu-nadia-palier-1.md`, section 7, commit `13d6285f` (`ce1-phrases-types` 24 items, `ce1-accord-groupe-nominal` 24, `ce1-texte-narratif` 20). `ce1-accord-groupe-nominal` : verdict `0688b581`, `git merge-base --is-ancestor 13d6285f 0688b581` sort 0. `ce1-phrases-types` : la ligne et le premier verdict sont dans le **meme commit** `13d6285f` ; un commit est son propre ancetre, l'ordre est donc tenu a la lettre et non demontre entre deux commits. `ce1-texte-narratif` : la ligne dit *"version d'avant la correction de `D1`"* ; si `nadia-prof` veut une lecture de la version corrigee, c'est a elle de l'ecrire, aucun verdict n'existe encore.
 
 ## 6. Isolation
 
