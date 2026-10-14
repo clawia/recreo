@@ -79,3 +79,7 @@ Aucune fiche de conformite n'est ouverte ici : les lots sont des branchements de
 - Ne compose pas le palier 2, ne pose aucun chiffre au-dela de 8,0 par palier, ne derive pas O2.
 - Ne designe aucun developpeur hors ceux que le depot nomme deja (`marc-dev` pour `VSJ-CE1-R1`, `lea-dev` pour `S54-OBS-SCI-CONSIGNE`) ; les autres sont a `sofia-sm`.
 - Ne touche ni la matrice, ni un catalogue, ni un paquet, ni du code.
+
+## 7. Mise a jour du 2026-10-14 : arbitrage de `nadia-prof`
+
+Rien au-dessus n'est reecrit. `arbitrage-nadia-palier-1.md` (`8396696e`, fusionne `7180f666`) confirme **toutes les affectations et tous les prix** de la section 2 ; `Q-P1` : B garde sa marge de 0,5 ; `Q-P2` : `FRA-CE1-04` a A, `FRA-CE1-10` et `FRA-CE1-15` a A', `FRA-CE1-24` au palier 2. Les mentions *"proposee"* de la section 2 valent donc *"confirmee par `nadia-prof`"* ; **les lignes ne sont engagees que par `planning.md`**. Stories des trois lots : backlog, `S57-BR-FRA-CE1-04`, `-10`, `-15` (`DEC-0120` A.58 a A.62).

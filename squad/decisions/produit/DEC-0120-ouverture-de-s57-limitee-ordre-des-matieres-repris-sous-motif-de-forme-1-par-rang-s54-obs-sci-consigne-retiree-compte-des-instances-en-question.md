@@ -1121,3 +1121,58 @@ La composition est dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/co
 
 - **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni la duree, ni le nombre de paliers ; ne passe pas `DEC-0120` a `Acceptee` ; n'engage aucune affectation ; ne prononce aucun Done et ne juge aucun contenu ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne dit pas que la CI distante est verte.
 - **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`chemins`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.
+
+---
+
+## Amendement du 2026-10-14, huitieme (`camille-po`, apres l'arbitrage prealable du palier 1 de `nadia-prof`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.59. Le sprint n'est toujours pas ouvert : ni `planning.md`, ni objectif gele, ni affectation engagee. **Aucun fichier de matrice n'est touche** (`git diff round-two --stat -- squad/programme/` : vide) : 142 / 200 inchange. Aucun catalogue, aucun paquet, aucun code, aucune fiche.
+
+### A.58 Ce que `nadia-prof` a tranche : `Q-P1`, `Q-P2`, affectations
+
+Source : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/arbitrage-nadia-palier-1.md` (`8396696e`, fusionne `7180f666`, 2026-10-14). Ce sont ses decisions, pas des mots de l'utilisatrice ; je les consigne sans les juger (`D1` a `D6` de son document).
+
+| Point | Decision de `nadia-prof` | Section |
+|---|---|---|
+| `Q-P1`, marge de rejeu de B | *"B garde sa marge de 0,5, nommee a l'ouverture du palier, allouee a aucun poste."* Elle couvre un second rejeu d'`ART-CP-10` (0,5) ou de `S54-OBS-SCI-CONSIGNE` (0,25). Elle corrige sa condition 1 de 11.3 : *"par instance qui porte un lot ou un rejeu"*. **Seule exception sur les 0,75 non affectes de B** : si les deux rejeux de B sont refuses dans ce palier, le second rejeu de `S54-OBS-SCI-CONSIGNE` (0,25) se prend sur eux ; aucun lot n'y entre. B reste a 2,5 | 2 |
+| `Q-P2`, groupe X | `FRA-CE1-04`, `ce1-texte-narratif`, a A | 3.1 |
+| `Q-P2`, groupe Y | `FRA-CE1-10`, `ce1-phrases-types`, et `FRA-CE1-15`, `ce1-accord-groupe-nominal`, a A'. `FRA-CE1-24` attend le palier 2 | 3.2 |
+| Affectations et prix | **toutes confirmees** aux prix de `composition-palier-1.md` (A 2,5 ; A' 3,0 ; B 2,5 ; somme 8,0) ; aucun lot refuse ni reduit | 4 |
+| Bornes | tenues (8,0 ; 5,0 par instance ; trois lots au plus ; 0,5 de marge par instance) | 5 |
+
+**Mon propre choix, `-04`, `-10`, `-15`, coincide avec le sien ; son motif est neuf et est le sien** : je n'avais pris que l'ordre du referentiel (`composition-palier-1.md`, section 3, point 4). Le motif retenu est celui de son arbitrage, sections 3.1 et 3.2.
+
+### A.59 Ce que cet amendement ferme, ouvre et remplace
+
+| Point | Etat | Remplace |
+|---|---|---|
+| `Q-P1`, `Q-P2` de `composition-palier-1.md` | **fermees** (A.58) | section 5 de ce fichier |
+| Affectations d'instance du palier 1 | **confirmees par `nadia-prof`** ; elles restent des lignes de composition, engagees seulement par `planning.md` | *"proposee"* dans `composition-palier-1.md`, section 2 (le fichier porte la mise a jour datee en section 7, rien n'y est reecrit) |
+| Premier report de A.56 (lots sans story) | **solde** : trois stories ecrites, `S57-BR-FRA-CE1-04`, `-10`, `-15` (backlog, annotation du meme jour) | A.56, *"premier report de ce poste"* : un geste a l'autre, aucun sprint ecoule |
+| Glissement de `S54-OBS-SCI-CONSIGNE` du palier 1 au palier 2 | `nadia-prof` : un glissement de palier n'est pas un report *"au sens de ma porte"* (arbitrage, section 4) ; le compte des reports est a `camille-po` et `sofia-sm`. **Ma lecture : le compte reste a deux.** Un glissement entre deux paliers de s57 n'est pas un report de sprint ; l'acte ecrit d'abandon se prend a la cloture de s57 si la story n'est pas livree et rejouee (A.34, A.44, inchange). **Elle vaut sauf avis contraire de `sofia-sm` au planning** | la question de `composition-palier-1.md`, section 4, derniere ligne |
+| `ce1-familles-de-mots`, item *"livre"* | route a `camille-po` par `nadia-prof` (6.3, section 8) : story `S57-FRA-FAMILLES-LIVRE` ecrite, **non engagee**, sans prix, anterieure au branchement de `FRA-CE1-24` (palier 2) | - |
+
+### A.60 Les stories du palier 1
+
+Trois stories de branchement au backlog, criteres verifies contre l'existant le 2026-10-14 : `S57-BR-FRA-CE1-04` (A), `S57-BR-FRA-CE1-10` et `S57-BR-FRA-CE1-15` (A'). Elles portent les points d'audit de `nadia-prof` (section 6 de son arbitrage) **avec ses mots**, sans les traduire en une propriete plus commode : `ce1-texte-narratif` en porte trois (6.1), les deux paquets de A' un seul, a recompter (6.2). **Ce que la verification contre l'existant a donne** :
+
+- Rouges aujourd'hui : l'entree de catalogue (0 pour les trois noms), le test de paquet (0 fichier), `planning.md` (absent), les rapports de developpeur (absents), la mesure de la majuscule (2 items), celle de l'indice (1 indice).
+- **Vertes aujourd'hui, ecrites comme clauses de non-regression et non comme correctifs** : les bornes `LON-CE1-3` et `LON-CE1-4` sur les vingt textes (au plus 22 mots, 4 phrases, 10 mots par phrase) ; les proportions de `TPH-CE1-1` (15 items de type, 5 par type, 9 de reconnaissance) et de `GNA-CE1-1` (21 groupes a adjectif, 12 en -x, 6 en -e, 6 en -s) ; la clause du garde-fou de l'accent. Ce qui manque et que les stories demandent est le **garde-fou** qui les recompte, ou une ligne *"non garde"* au rapport.
+- **Cibles non ecrites** : pour les points 6.1 (1) et (2), `nadia-prof` ecrit *"Je le jugerai en jouant"* ; je n'invente pas de cible. `Q-B1`.
+
+### A.61 Ce qui reste pour que `DEC-0120` passe de `Proposee` a `Acceptee`
+
+**Inchange (A.55).** Etat mesure : `grep -n "Statut" squad/sprints/s57-version-cp-ce1-cm1-trois-instances/duree-et-paliers.md` rend toujours *"proposition de `sofia-sm`"*. La borne est ecrite ; la duree ne l'est pas comme decidee. **`DEC-0120` reste `Proposee`.**
+
+### A.62 Routage, statuts, ce que cet amendement ne fait pas
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | La duree ecrite comme decidee et l'amendement de `squad/README.md` section 4 (A.55) ; `planning.md` du palier 1 ; **les developpeurs des trois stories de branchement** ; la marge de B nommee a l'ouverture ; sa lecture du glissement de `S54-OBS-SCI-CONSIGNE` (A.59) ; `Q-B1` et `Q-B2` a `nadia-prof` |
+| `nadia-prof` | `Q-B1` : pour les points 6.1 (1) et (2) de `ce1-texte-narratif`, correction avant le branchement (cible 0 sur les deux mesures) ou valeur consignee et jugee au jeu ? `Q-B2` : l'indice qu'elle cite en 6.3 (*"Un mot de la même famille garde un morceau du mot."*) figure sur cinq items de `ce1-familles-de-mots` mais pas sur l'item *livre*, qui porte *"Cherche le mot qui parle de la même chose."* ; est-ce bien l'indice qu'elle visait ? |
+| `theo-archi` | Rien de neuf |
+| Utilisatrice | Aucune question neuve |
+
+- **Statuts de stories** : `S57-BR-FRA-CE1-04`, `-10`, `-15` ecrites, **non engagees** (aucun `planning.md`) ; `S57-FRA-FAMILLES-LIVRE` ecrite, non engagee. Aucun autre statut ne change. **Matrice : 142 / 200, aucun statut.**
+- **Ne fait pas** : n'ouvre pas s57 ; ne passe pas `DEC-0120` a `Acceptee` ; n'engage aucune ligne ; ne designe aucun developpeur ; ne prononce aucun Done et ne juge aucun contenu (les points d'audit sont ceux de `nadia-prof`) ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`chemins`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.
