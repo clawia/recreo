@@ -329,3 +329,80 @@ N'engage ni le poste 7 ni le poste 8, ne passe aucun poste a `Done`, ne juge auc
 ### Decisions prises
 
 **Aucune `ADR` ni `DEC` n'est creee ou amendee.** Cet amendement applique `DEC-0120` A.66 a A.73, confirme A.72 comme regle de ce planning, aligne deux noms de branche, constate l'etat des postes 1 a 9 et la porte P-4 non remplie par la lignee de `s57-sci-consigne`.
+
+---
+
+## Amendement du 2026-10-14 21:48 (UTC+02:00), engagement du poste 7 et etat apres les fusions
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme. Arbre : `round-two` a `f95736b5` (avance rapide sur `s57-sofia-fusion`), branche `s57-sofia-engage7`, `bash outils/verifier-lignee.sh` sort 0. Sources : `DEC-0120` A.79 a A.86, annotation du backlog *"poste 7 : amendement qui precede le worktree"*, `lecture-nadia-palier-1.md`, `rejeu-nadia-palier-1.md`, fiches de `nadia-prof`. **Le poste 8 n'est pas touche** : il attend `theo-archi` (`C1` a `C4`) et la seconde moitie de `Q-Y4` ; il reste non engage, report compte, et le poste 9 avec lui.
+
+### Etat des postes 3 a 6 : remplace les lignes 3 a 6 du tableau "Engagements, etat au 2026-10-14 18:20"
+
+Les faits sont lus dans le depot, pas dans les rapports des agents. Verdicts de `nadia-prof`, qui seule les prononce.
+
+| # | Poste | Fusion sur `round-two` | Verdict de `nadia-prof` | Source |
+|---|---|---|---|---|
+| 3 | `VSJ-CE1-R1` | `65d00d8d` (branche `7dc40fb0`) | **`VSJ-CE1-R1` levee** ; `FRA-CE1-13` **VALIDE SOUS RESERVE**, reserve neuve non bloquante `VSJ-CE1-R2` | `rejeu-nadia-palier-1.md`, resume ; `FICHE-bandit-manchot-verbe-sujet-ce1.md` |
+| 4 | `ce1-phrases-types` | `c935d764` (branche `1f6642ab`) | **VALIDE SOUS RESERVE**, reserve non bloquante `TPH-CE1-R1`. `Q-N4` = non (`7d162b3c`) : le pli ne devient pas bloquant | `FICHE-bandit-manchot-phrases-types-ce1.md` |
+| 5 | `ce1-accord-groupe-nominal` | `d67204de` (branche `3459ddb8`, jar joue sur `72931c94`) | **VALIDE SOUS RESERVE**, reserve non bloquante `GNA-CE1-R1` (`0688b581`) | `FICHE-bandit-manchot-accord-groupe-nominal-ce1.md` |
+| 6 | `S54-OBS-SCI-CONSIGNE` | `14d6cf47` (branche `ac32f976`, jouee a ce commit) | **VALIDE**, sans reserve ; `SCI-CM1-20` non rouverte | `rejeu-nadia-palier-1.md`, resume |
+
+- **Porte P-4, close** : `git merge-base --is-ancestor 829db5eb ac32f976` sort 0 ; `lea-dev` a fusionne `round-two` dans sa branche avant le verdict, ce qui ferme l'ecart que l'amendement du 18:20 avait note.
+- **Les verdicts du tableau sont ceux de `nadia-prof`, seule autorite sur le Done pedagogique** ; ce planning n'en prononce aucun. **Les statuts de matrice sont a `camille-po`** : ce planning n'en ecrit aucun.
+- Comptage du catalogue et des tests de chaque fusion : `cloture-palier-1.md`, section 4.
+
+### Poste 7 engage : `S57-BR-FRA-CE1-04`, `ce1-texte-narratif`, `FRA-CE1-04`
+
+**Porte `P-5`, remplie**, chaque element par sa commande, lue sur `round-two` a `f95736b5` :
+
+| Element de `P-5` | Commande | Sortie |
+|---|---|---|
+| `Q-B1` et `Q-Y6` repondues | `lecture-nadia-palier-1.md` (`7161ab69`) : `git merge-base --is-ancestor 7161ab69 HEAD` | 0 ; `D1` et `D2` (correction avant le branchement, cible 0), `D3` (regle de s47) |
+| amendement de `S57-BR-FRA-CE1-04` par `camille-po` | `git log -S"poste 7 : amendement qui precede le worktree" -- docs/backlog/backlog.md` rend `6bbef9dd` ; `git merge-base --is-ancestor 6bbef9dd HEAD` | 0 ; `grep -c "poste 7 : amendement qui precede le worktree" docs/backlog/backlog.md` rend 1 |
+| story au backlog (`PAR-16`) | `grep -c "^#\{3,4\} .*S57-BR-FRA-CE1-04" docs/backlog/backlog.md` | 3 titres : la story et deux annotations (precisions de `Q-Y6`, amendement de `P-5`) |
+| ce planning est sur `round-two` (`K1 (a)`) | `git merge-base --is-ancestor 3a3ea97e HEAD` (fusion de `b7a64ab4`) | 0 |
+
+**Ligne engagee** (verification poste par poste, `PAR-16`) :
+
+| Champ | Valeur |
+|---|---|
+| Poste | 7, lot `ce1-texte-narratif` |
+| Story, titre au backlog | `S57-BR-FRA-CE1-04`, criteres `K1` a `K10` et `S1` a `S6` tels que l'amendement les remplace |
+| Competence visee | `FRA-CE1-04`, *"Comprendre un texte narratif court lu seul : personnages, lieu, moment, ordre chronologique des evenements."* |
+| Instance | A (groupe X), audit par `nadia-prof` (A) |
+| Developpeur | **`marc-dev`**, nominatif |
+| Prix | **1,0**, dans A |
+| Branche, worktree | `s57-marc-fra-ce1-04`, `../recreo-s57-marc-fra-ce1-04` : nom du planning, inchange, ouvert par `marc-dev` apres la fusion de cet amendement sur `round-two` |
+| Scratchpad, port (`I1` a `I3`) | `marc-dev` : `s57-p1-marc-dev-a`, port 18521 ; `nadia-prof` (A) : `s57-p1-nadia-prof-a`, port 18511. Le poste 3 a utilise ce repertoire et ce port, sa branche est fusionnee et aucun jar n'est suppose vivant : `I3` s'applique a chaque lancement (port libre avant, ligne *"Tomcat started on port"* et PID lus dans son propre journal, arret par PID seul) |
+| Etat | **engage** |
+
+- **Ce que le developpeur applique** : la correction avant le branchement (`D1`, `D2`) : le YAML du paquet entre dans la liste de `K2`, **les mots que l'indice neuf dit sont a lui, `nadia-prof` les juge en jouant** ; la regle de comptage de `LON-CE1-3` et `-4` est celle de s47 ; son premier message note `git log -1 --format=%h` ; je verifie la lignee avant la fusion.
+- **Marge de A** : 0,5, nommee, allouee a aucun poste, **intacte** (`rejeu-nadia-palier-1.md`, section 11 : marges de A, A' et B intactes).
+- **Capacite recomptee** par `awk` sur les prix, sortie lue ce jour : A 2,5 (arbitrage 0,5, marge 0,5, `VSJ-CE1-R1` 0,5, lot 1,0), A' 3,0, B 2,5 ; **engage 6,75**, non engage 0,5 (poste 8), non affecte 0,75, total 8,0. Plafond de 5,0 non approche ; A porte un lot, A' deux.
+- **Report** : le premier report du poste 7 (`DEC-0120` A.67) **reste ecrit** : A.83, *"l'engagement tardif n'efface pas le report, il evite le suivant"*. Le poste, une fois engage et non audite a la cloture du palier 1, glisse au plus une fois (A.72).
+- **Ce qui reste a nommer** : rien. Le Done pedagogique de `FRA-CE1-04` est a `nadia-prof`, apres jeu.
+
+### Charge des developpeurs : remplace le tableau de la section du meme nom
+
+| Developpeur | Postes livres et fusionnes | Postes engages en cours | Reserve |
+|---|---|---|---|
+| `marc-dev` | 3 (`65d00d8d`), 4 (`c935d764`) | 7 | - |
+| `sofia-sm` (casquette developpeuse) | 5 (`d67204de`) | - | - |
+| `lea-dev` | 6 (`14d6cf47`) | - | 8, 9 |
+
+**Lecture.** Le seul travail de developpement engage et ouvert est le poste 7, a `marc-dev`, qui l'a devant lui avec ses deux autres postes livres : un worktree a la fois, pas de chevauchement. `lea-dev` n'a plus de poste engage ; le poste 8 s'engagera sur une reponse de `theo-archi`, pas sur sa capacite, et le poste 9 apres le verdict du poste 8. **Aucun goulot a l'ouverture de ce poste.** La charge en tours n'est pas remesuree ici (celle de s56, 183 pour `marc-dev`, 529 pour `lea-dev`, est un repere de ce planning, pas de l'etat d'aujourd'hui). **Si le poste 7 est le chemin critique a la cloture, je le dis a l'utilisatrice, je ne le reaffecte pas** : `marc-dev` est celui que `DEC-0120` A.80 et le backlog nomment.
+
+### Ce qui reste ouvert, poste 8 compris, a cet instant
+
+Postes 8 et 9 non engages (A.84 : `C1` a `C4`, seconde moitie de `Q-Y4`, amendement de `P-6`). `S57-ARB-PALIER-1`, `RP-ACCUEIL-147` (non fait : `grep -n "147" squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` rend encore les lignes 41 et 236) et la cloture : `cloture-palier-1.md`.
+
+### Jobs de `ci.yml` lances pour ce commit
+
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` (21 cas) sortent 0 ; le sujet du commit passe dans `verifier-prefixes.sh`, sortie 0.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh`, sortie 0.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl` : `BUILD SUCCESS`, 2548 tests (120, 31, 486, 1534, 371 et 6 d'integration), 0 echec ; le commit ne change ni code ni contenu, ce total egale celui de la derniere fusion. Le build a lu ces fichiers avant l'ecriture de cette section, qui ne contient aucun tableau.
+- **`outils`** : non lance, aucun outil modifie. La CI distante n'est pas lue.
+
+### Decisions prises
+
+**Aucune `ADR` ni `DEC` n'est creee ou amendee.** Cet amendement engage le poste 7 sous la porte `P-5`, nomme `marc-dev`, constate les fusions et verdicts des postes 3 a 6 et la fermeture de la porte `P-4`. Le poste 8 n'est ni engage ni modifie.
