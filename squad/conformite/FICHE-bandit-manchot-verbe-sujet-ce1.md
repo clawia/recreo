@@ -105,3 +105,10 @@ dans le dernier (`ADR-0100`). Prefixe `VSJ-CE1` deja alloue (`VSJ-CE1-1` a `-3`)
 **Tarif consomme** : audit 1,0 (premier passage, instance A au planning).
 
 **Signe** : `nadia-prof`, s56, 2026-10-11.
+
+### Note du 2026-10-14 (`nadia-prof`, s57, palier 1) : propriete 8 amendee
+
+La propriete 8 est amendee comme annonce en section 5 : `ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md`, 2.8, bloc
+*"Amendement du 2026-10-14"*. Mon exemple de la section 5 (*"Ce matin, Léa lit un livre."*) contredit ma propre `J1` : il est
+retire comme modele, un exemple qui tient est dans l'amendement. Le critere de levee de `VSJ-CE1-R1` ne change pas. Aucun verdict
+neuf.
