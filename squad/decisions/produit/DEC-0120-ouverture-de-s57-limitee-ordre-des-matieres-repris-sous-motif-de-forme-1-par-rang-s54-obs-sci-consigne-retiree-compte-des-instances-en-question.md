@@ -1305,3 +1305,73 @@ Annotation datee. **Rien au-dessus n'est reecrit**, a une exception nommee : la 
 ### A.78 Routage, ce que cet amendement ne fait pas
 
 `DEC-0120` etait deja appliquee dans ses decisions (en-tete : *"s'appliquent des maintenant"*) ; le statut ne change aucune affectation. **Statut : `Acceptee` le 2026-10-14.** `DEC-index.md` suit. Ne fait pas : ne touche aucun poste, aucune story, aucune ligne de matrice ; ne prononce aucun Done.
+
+---
+
+## Amendement du 2026-10-14, onzieme (`camille-po`, apres les decisions `D1` a `D7` de `nadia-prof` sur les postes 7 et 8)
+
+Annotation datee, apres 18:24 (UTC+02:00). **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.80. **Le statut ne change pas : `Acceptee` (A.77).** Source : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/lecture-nadia-palier-1.md` (`7161ab69`, fusionne `6ca84317`). Les criteres sont dans l'annotation du meme jour du backlog ("onzieme") ; cet amendement porte la consignation, pas les criteres. Ce sont des decisions de `nadia-prof`, consignees sans etre jugees ; aucun mot de l'utilisatrice n'est en jeu.
+
+### A.79 Mesures de cet amendement
+
+Arbre `round-two` a `6ca84317`, worktree `s57-camille-amend`, 2026-10-14. Scripts hors depot ; le premier est repris dans le backlog.
+
+| Commande | Sortie |
+|---|---|
+| `git rev-parse --short HEAD` (worktree, avant ecriture) | `6ca84317` |
+| propriete de la majuscule (script du backlog, `S2`) sur `ce1-texte-narratif.yaml` | 2 |
+| meme script sur une copie sans majuscule pour Sara et Nour | 0 |
+| meme script sur cette copie avec une bonne reponse `Élise pèle une pomme` ; ancien `awk` de `S2` | 1 ; 0 |
+| `grep '^ *indice:' ... \| grep -vcE 'indice: "(Relis\|Cherche)'` (`S3`) | 1 |
+| `grep -c "Pense à ce qu'on fait avant de couper un fruit"` (meme fichier) | 1 |
+| comptage de `LON-CE1-3` et `-4`, regle de s47 : mots, phrases, mots par phrase, maximum sur 20 textes | `22 4 10` |
+| meme comptage, texte a 5 phrases ; texte a 13 mots dans une phrase (copies) | `22 5 10` ; `22 4 13` |
+| propositions absentes de leur texte, sur le paquet ; sur la copie corrigee | `0 60` ; `0 60` |
+| `grep -c 'celle-ci'`, `grep -c 'ces deux'`, `grep -c 'explication:'` sur `cp-rapprocher-deux-oeuvres.yaml` | 6, 6, 6 |
+| `grep -c "id: bandit-manchot-rapprocher-deux-oeuvres-cp$"` sur `catalogue.yaml` | 0 |
+
+**Ce que je n'ai pas fait** : lancer `mvn`, jouer un jeu, mesurer une cote dans un navigateur (le jeu n'est pas servi), lire la CI distante. Les cotes 676, 568 et 656 sont celles du jar de s56, reprises de `nadia-prof` et d'`ines-design`. Le rouge de `S56-RDO-CP-R2` est etabli par lecture de `PartieController.retourModele`, pas par un test lance.
+
+### A.80 Poste 7 : `S57-BR-FRA-CE1-04` amende (`D1`, `D2`, `D3`)
+
+- **`D1`, la majuscule : correction avant le branchement, cible 0 sur les 20 items** (aujourd'hui 2), majuscule Unicode. **`D2`, l'indice de Sara : correction avant le branchement, cible 0** sur la mesure de `S3` (aujourd'hui 1). Ses mots, qui remplacent *"je le jugerai en jouant"* : la propriete se decide sur le fichier.
+- **`D3`, la regle de comptage de `LON-CE1-3` et `-4` est celle de s47** (`ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`, section 2). **Remplace A.71**, qui donnait celle de `yanis-qa`. Le motif d'A.71 (*"elle ne change aucun verdict"*) reste exact, il ne suffisait pas : `nadia-prof` a une regle ecrite, c'est elle qui fait foi. Les deux se separent sur une phrase qui s'ouvre par un chiffre ou une minuscule.
+- Le YAML du paquet entre dans la liste de `K2` (la clause *"seulement si `nadia-prof` decide une correction"* joue) ; `S6` ajoute une clause de non-regression (aucune proposition hors du texte).
+- **Le poste n'est pas engage par cet amendement.** Reste : l'amendement de `planning.md` par `sofia-sm` (`P-5`) et le developpeur a designer. Il ne manque rien de la part de `nadia-prof` ni de la mienne (sa section 4.1).
+
+### A.81 Poste 8 : `S56-RDO-CP-R1` (`D5`)
+
+`RDO-CP-R1` se leve dans le meme rejeu que le refus. **La forme vise 125 px a 744 x 551** (`.indice`, aujourd'hui a 676) **et 17 px a 992 x 551** (pastille, aujourd'hui a 568). **La barre du refus reste 105 px** (`.reponse-revelee`, 656), sur son seul critere : 125 est la cible de la forme, pas une barre relevee du verdict ; si le rejeu montre la phrase de `M4` au-dessus du pli et l'indice dessous, le refus est leve et `RDO-CP-R1` reste une reserve non bloquante. **Je ne decide pas la forme visuelle des 125 px** : elle revient a `ines-design` (dans `C1` a `C4` de `theo-archi`), jugee par `nadia-prof` sur `M1`, `N1` a `N6`, la regle 6 et `C4` de s55, sans cote de vehicule. Prix du rejeu inchange : 0,5.
+
+### A.82 Poste 8 : `S56-RDO-CP-R2` (`D6`, `D7`)
+
+**Voie (b)** : sur l'ecran de fin d'un jeu dont la bonne reponse est une reproduction, ni la question rappelee ni l'explication ne sont posees, que la derniere manche soit juste ou revelee. (a) et (c) sont ecartees par `nadia-prof`, motifs dans sa section 1.5. **Critere : liste fermee des textes permis** (`D7`), pas une liste de mots interdits : `Les jeux` ; `Tu as trouvé, tout seul :` ; `Tu as joué toutes les questions :` ; les deux nombres du score ; `Bravo, c'est juste !` ; `Tu n'as pas trouvé.` ; `C'est fini !` ; aucun texte de l'item. Le contenu du paquet ne change pas (`celle-ci` : 6, doit rester 6). Amendements d'`ADR-0104` (decision 4, point 5) et d'`ADR-0084` (`REV-3`) : `theo-archi`, dans le commit du code. **Ce que `nadia-prof` garde seule** : ce que ces textes disent a un enfant de CP.
+
+### A.83 Ce que cela change aux comptes de A.67 : rien
+
+A.66 compte un report **a l'ouverture** du palier et dit : *"l'engagement tardif n'efface pas le report, il evite le suivant."* Les postes 7 et 8 ne sont pas engages a cette ouverture : le premier report de chacun (s57, palier 1, 2026-10-14) **reste ecrit**, y compris si `sofia-sm` les engage plus tard dans le palier. **La ligne `ART-CP-10` garde ses huit evenements sans fermeture** (A.67) tant qu'un rejeu ne l'a pas fermee. Une fois engage, un poste non audite a la cloture glisse selon A.72.
+
+### A.84 Ce qui bloque encore l'engagement
+
+| Poste | Reste a faire | A qui |
+|---|---|---|
+| 7 | amendement date de `planning.md` (`P-5`) ; developpeur designe | `sofia-sm` |
+| 8 | proposition de forme des pixels de `RDO-CP-R1` ; seconde moitie de `Q-Y4` (juge pur sur le releve) ; amendement date de `planning.md` (`P-6`) ; `C1` a `C4` au rapport du developpeur | `ines-design` ; `theo-archi`, `yanis-qa` ; `sofia-sm` ; developpeur |
+| 9 (B2) | poste 8 fusionne ; `Q3` repondue (A.65) | `sofia-sm` |
+
+### A.85 Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Fusionner l'annotation du backlog et cet amendement **avant** le worktree du poste 7 (`P-5`) et celui du poste 8 (`P-6`) ; amender `planning.md` pour engager chaque poste quand ses portes sont remplies, en nommant le developpeur ; l'entree `S56-VSJ-CE1-R1` du backlog dit encore `Q-N1` ouverte alors que `D4` y repond |
+| `nadia-prof` | `Q-C1` : `D7` couvre-t-elle les attributs (`alt`, `title`, `aria-label`) du fragment `retour` en plus des noeuds de texte ? |
+| `ines-design` | Proposer d'ou viennent les 125 px et les 17 px, sur les quatre points de `nadia-prof` (backlog, `S56-RDO-CP-R1`, point 3) |
+| `theo-archi` | Amendements d'`ADR-0104` et d'`ADR-0084` dans le commit du code ; seconde moitie de `Q-Y4` |
+| `yanis-qa` | Le test de `D1` (majuscule Unicode), la regle de s47 pour `LON-CE1-3` et `-4`, la liste fermee de `D7` ; juge pur du releve avec `theo-archi` |
+| Utilisatrice | Aucune question neuve. A lire : la ligne `ART-CP-10` compte toujours huit evenements (A.83) |
+
+### A.86 Statuts, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Acceptee`.** Statuts de stories : `S57-BR-FRA-CE1-04` amendee, non engagee ; `S56-RDO-CP-R1` et `S56-RDO-CP-R2` amendees, non engagees ; la correction d'`ART-CP-10` reste `non couvert`. **Matrice : 142 / 200, aucun statut** (`git diff round-two --stat -- squad/programme/` : vide).
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne choisit aucune forme visuelle, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, ni paquet, ni fiche ; ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison. Ceux qui ne sont pas lances ne sont pas deduits.
