@@ -3,7 +3,7 @@
 - **Auteure** : `camille-po`, 2026-10-14 14:29 (UTC+02:00), lu par `date`. Arbre : `round-two` a `544159d9`, worktree dedie.
 - **Ce fichier n'est pas `planning.md`** : s57 n'est pas ouvert, aucun horodatage de debut, aucun objectif gele. La composition d'un palier est a `camille-po` (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 11.3 condition 6 et 11.8 ; `duree-et-paliers.md` P4').
 - **Statut** : proposition. **Chaque affectation d'instance ci-dessous est proposee** : l'affectation des lots aux instances et le jugement de `PAR-13` sont a `nadia-prof` (`DEC-0120` A.33, A.36), qui les ecrit dans l'arbitrage prealable de chaque instance avant le premier lot du palier (11.3 condition 3).
-- **Sources** : `DEC-0120` A.33 (repartition retenue), A.39 (elle se rouvre quand la borne est ecrite), A.44, A.50, A.53 ; `ARBITRAGE-PREALABLE-s57-criteres-...` 4.2, 4.3, 10.2, 11.3 ; `duree-et-paliers.md` ; matrice (`squad/programme/MATRICE-couverture.md`, lignes `francais` / `CE1` `non couvert`).
+- **Sources** : `DEC-0120` A.33 (repartition retenue), A.39 (elle se rouvre quand la borne est ecrite), A.44, A.50, A.53 ; `ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` 4.2, 4.3, 10.2, 11.3 ; `duree-et-paliers.md` ; matrice (`squad/programme/MATRICE-couverture.md`, lignes `francais` / `CE1` `non couvert`).
 
 ## 1. Ce que le palier 1 doit tenir
 

@@ -70,7 +70,7 @@ reste unique. **Sans reserve.**
 
 **Tenu.** Quatre mots, tous admis par `TRV-CE1-4` (*phrase* et les noms de type sont ceux de la ligne), sans niveau
 (`ADR-0078`). C'est le nom de la lecon que l'enfant entend en classe, dans le registre des titres voisins (*"Le verbe et son
-sujet"*, *"Les verbes au présent"*). Il annonce la plus grande moitie du paquet (15 items sur 24) ; l'autre moitie,
+sujet"*, *"Les verbes au présent"*). Il annonce la plus grande partie du paquet (15 items sur 24) ; l'autre moitie,
 reconnaitre une phrase, est l'etape que la meme lecon pose d'abord, et l'enfant qui la rencontre sous ce titre n'est pas
 trompe sur ce qu'on lui demande. **Pas une reserve.**
 

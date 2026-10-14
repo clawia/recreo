@@ -46,7 +46,7 @@ Pourquoi s56 est le plus long : 23 h 49 min sans livraison (`retro.md` de s56, C
 
 1. **Pas de date.** *"pas de date"* (de l'utilisatrice, 2026-10-13, `DEC-0120` A.18). La lecture *"la version sort quand le maximum est atteint selon (c)"* est celle de `camille-po` (A.18, tableau), pas un mot de l'utilisatrice.
 2. **Pas de timebox** : un sprint est un increment (`squad/README.md` section 3).
-3. **8,0 par sprint, trois instances** : borne de `nadia-prof`, O1 (`ARBITRAGE-PREALABLE-s57-criteres-...`, 4.3 ; `DEC-0120` A.28). `PAR-8` : plafond dur 5,0 par instance, trois lots au plus.
+3. **8,0 par sprint, trois instances** : borne de `nadia-prof`, O1 (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, 4.3 ; `DEC-0120` A.28). `PAR-8` : plafond dur 5,0 par instance, trois lots au plus.
 4. **Allonger un sprint n'augmente pas la borne** : `nadia-prof`, meme arbitrage, 4.4 point 2 (*"un sprint plus long qui empilerait plus de lots par instance, je le refuserais au meme motif"*).
 5. **La duree laisse un rejeu** : un refus, sa correction et le rejeu tiennent dans la marge de 0,5 de chaque instance (4.4 point 3). Un lot engage a, a la cloture, un verdict ecrit ou il est un report (4.4 point 1).
 6. **Le chemin vers le maximum passe par le nombre de sprints.** `DEC-0120` A.31 : plancher de travail 48,0 (hors les lots sans prix), soit 10 sprints a 5,0 de travail par sprint a trois instances. Une version sans date sort a la cloture du dernier de ces sprints, pas plus tot parce qu'un sprint a ete allonge.
@@ -63,7 +63,7 @@ Pourquoi s56 est le plus long : 23 h 49 min sans livraison (`retro.md` de s56, C
 
 ## 2. Heure de fusion de l'amendement d'ADR-0065 : sequence de planning avant A'
 
-**Ce que le depot ecrit.** `nadia-prof`, accord sur `PAR-2` pour s57, condition 2 : *"L'amendement d'`ADR-0065` est fusionne avant le premier worktree d'un lot de A'. Aucune des deux instances n'amende `ADR-0065` ni le garde-fou de l'accent : un besoin se route a `theo-archi`."* (`ARBITRAGE-PREALABLE-s57-criteres-...`, 4.2). `theo-archi` : *"une story de `theo-archi`, une a la fois, fusionnee avant tout lot qui en depend"* ; le seul automate est le conflit de fusion sur le fichier de test (`avis-faisabilite.md` de s56, section 9). **L'ADR est de `theo-archi` : je n'en ecris aucune ligne.**
+**Ce que le depot ecrit.** `nadia-prof`, accord sur `PAR-2` pour s57, condition 2 : *"L'amendement d'`ADR-0065` est fusionne avant le premier worktree d'un lot de A'. Aucune des deux instances n'amende `ADR-0065` ni le garde-fou de l'accent : un besoin se route a `theo-archi`."* (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, 4.2). `theo-archi` : *"une story de `theo-archi`, une a la fois, fusionnee avant tout lot qui en depend"* ; le seul automate est le conflit de fusion sur le fichier de test (`avis-faisabilite.md` de s56, section 9). **L'ADR est de `theo-archi` : je n'en ecris aucune ligne.**
 
 **Sequence a copier dans `planning.md`.** Elle tient sans l'avis de `theo-archi` ; l'avis ne fait que remplir l'echeance de l'etape 2.
 
