@@ -21696,3 +21696,12 @@ Annotation datee. **Rien au-dessus n'est reecrit.** Elle remplace *"le maximum d
 **Condition (i) de la derivation au-dela de 8,0, mesuree.** Composition a deux instances (A et A', 4,0 chacune, 8,0, six lots de francais CE1) ; lots instruits laisses dehors et prenables hors du francais CE1 : `G4` 4 lots, questionner le monde CE1 10 lots, EMC CE1 4 lots, tous a 1,0 : **18,0**, plus la reprise d'`ART-CP-10` (0,5). Tenue sur la lettre de la condition (`PAR-1` et `PAR-2`, 4,0 requis) ; non tenue si on lit le plafond d'une instance (`PAR-8` : trois lots, 3,0), sauf si `QLM-CP-10` (2,0) est *"instruite"*. **La lecture est a `nadia-prof`.** (ii) n'est pas etablie : O2 reste non derivable.
 
 **A `nadia-prof`** : la lecture de (i) ; la verification de s56 (0,25) si elle veut etablir (ii) ; l'instruction d'`ART-CE1-01` et `-02`. **A `theo-archi`** : les droits d'un corpus de dessins et de photographies. **A `sofia-sm`** : la duree et le planning, inchange. **A l'utilisatrice** : `Q3` de `nadia-prof` (sprint plus long comme suite de paliers de 8,0).
+
+### Amendement du 2026-10-14, septieme : `Q3` et `Q-S1` consignees, `S57-ADR-0065-DEUX-INSTANCES` livree, composition du palier 1 (`camille-po`, `DEC-0120` A.53 a A.57)
+
+Annotation datee. **Rien au-dessus n'est reecrit.** Le sprint n'est pas ouvert.
+
+- **`S57-ADR-0065-DEUX-INSTANCES`** : statut **livree avant l'ouverture**, fusion `729b0d8a` (2026-10-13 17:42:21), `git merge-base --is-ancestor 729b0d8a HEAD` sortie 0 ; remplace *"engagee"* (annotation du 2026-10-13, deuxieme). Proprietaire `theo-archi`, hors `PAR`, 0,0. Aucune ligne engagee au planning.
+- **Composition du palier 1** : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/composition-palier-1.md` (A 2,5, A' 3,0, B 2,5 ; affectations d'instance proposees, `nadia-prof` arbitre).
+- **Lots du palier 1 sans story** : `FRA-CE1-04`, `-10`, `-15` (`grep -c '^### S57-BR' docs/backlog/backlog.md` : 0). **Premier report, s57, 2026-10-14.** Stories de branchement a ecrire par `camille-po` avant que `planning.md` engage les lots.
+- **A `sofia-sm`** : la duree ecrite comme decidee ; l'amendement de `squad/README.md` section 4 (fichier de cloture de palier, `Q-S1`) ; `planning.md`. **A `nadia-prof`** : arbitrage prealable du palier 1, `Q-P1`, `Q-P2`.

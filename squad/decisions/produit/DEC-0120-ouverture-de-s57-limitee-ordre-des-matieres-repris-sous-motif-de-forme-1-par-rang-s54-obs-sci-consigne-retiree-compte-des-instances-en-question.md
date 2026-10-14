@@ -1054,3 +1054,70 @@ Le compte des 14 lots de questionner le monde et d'EMC est relu au disque : un `
 - **Statuts de stories** : aucun ne change ; aucune story neuve (les deux lignes n'ont ni lot ni ecriture).
 - **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni la borne, ni la duree, ni le nombre de paliers ; ne compose aucun lot de s57 ; ne prononce aucun Done et ne juge aucun contenu (les statuts des deux lignes et la nature de leur manque sont ceux de `nadia-prof`) ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne dit pas que la CI distante est verte.
 - **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`chemins` par `bash .github/scripts/verifier-chemins.sh` sur `git ls-files`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.
+
+---
+
+## Amendement du 2026-10-14, septieme (`camille-po`, apres les reponses de l'utilisatrice a `Q3` de `nadia-prof` et `Q-S1` de `sofia-sm`, et la fusion de `duree-et-paliers.md`)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.54 et A.55. Le sprint n'est toujours pas ouvert : ni `planning.md`, ni objectif gele, ni affectation engagee. **Aucun fichier de matrice n'est touche** (`git diff --stat` sur `squad/programme/` : vide) : 142 / 200 inchange. Aucun catalogue, aucun paquet, aucun code, aucune fiche.
+
+### A.53 Les mots de l'utilisatrice, forme 2 de `DEC-0062`
+
+Mots du 2026-10-14, tels que l'agent qui m'a lance me les transmet, en les donnant pour recus directement et citables (forme 2) ; **je ne les ai pas lus de sa main** (meme reserve que 0.1, A.1, A.9, A.18, A.27, A.38). Les parentheses qui accompagnent `Q-S1` dans la transmission sont une glose de l'agent lanceur, pas des mots de l'utilisatrice.
+
+| Question | Mots | Ce qu'ils fondent | Ce qu'ils ne fondent pas |
+|---|---|---|---|
+| `Q3` de `nadia-prof` (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, 11.9) : *"Un sprint plus long, je l'accepte comme une suite de paliers de 8,0, chacun audite et clos avant le suivant. Est-ce ce qu'elle veut ?"* | *"oui"* | s57 est un sprint long, suite de paliers de 8,0, chacun audite et clos avant le suivant (11.3). Il complete *"oui plus que 8"* (A.38) : la borne par fenetre reste 8,0 et le *"plus que 8"* se porte par la suite de paliers | Un chiffre au-dela de 8,0 dans un palier (O2 non derivable, (ii) non etablie, A.50) ; le nombre de paliers et la duree (`sofia-sm`, 11.3 condition 6) |
+| `Q-S1` de `sofia-sm` (`duree-et-paliers.md`, section 4) : une seule `review.md` et une seule `retro.md` a la cloture du sprint, plus un fichier de cloture de palier de `sofia-sm` a chaque palier, avec amendement de `squad/README.md` section 4 ; alternative : un sprint par palier | *"ok"* | La proposition de `sofia-sm`, pas l'alternative (glose de l'agent lanceur : une review, une retro, un fichier de cloture de palier par `sofia-sm`) | Le texte de l'amendement de `squad/README.md` section 4 et le contenu du fichier de cloture de palier : `sofia-sm`, pas moi. Elle ne dit pas que la duree est ecrite |
+
+### A.54 `S57-ADR-0065-DEUX-INSTANCES` : livree avant l'ouverture
+
+**Mesures** (arbre `round-two` a `544159d9`, worktree `s57-camille-p1`, 2026-10-14) :
+
+| Commande | Sortie |
+|---|---|
+| `git merge-base --is-ancestor 729b0d8a HEAD` | 0 |
+| `git merge-base --is-ancestor 7a34366c HEAD` et `git merge-base --is-ancestor bac0a6d1 HEAD` | 0 et 0 |
+| `git log -1 --format='%h %ci %s' 729b0d8a` | `729b0d8a 2026-10-13 17:42:21 +0200 [SOF] fusion de s57-theo` |
+| `git log -1 --format='%h %ci %s' 7a34366c` | `7a34366c 2026-10-13 16:49:57 +0200 [THEO] s57: ADR-0065 amendement A2 - deux instances de francais CE1, aucune ne modifie le garde-fou` |
+| `git log -1 --format='%h %ci %s' bac0a6d1` | `bac0a6d1 2026-10-13 17:40:48 +0200 [THEO] s57: ADR-0065 A2 point 1 - controle chemin et prefixe dans le job prefixes, dette payee` |
+| `grep -c -i instance` sur le fichier d'`ADR-0065` | 15 (0 quand A.2 engageait la story, 3.2) |
+
+**Statut : livree avant l'ouverture, fusion `729b0d8a`, 2026-10-13 17:42:21.** Proprietaire `theo-archi`, hors `PAR`, 0,0 pour `nadia-prof`, **aucune ligne engagee au planning** : il la cite comme livree avant l'ouverture (`duree-et-paliers.md` section 5). Remplace *"engagee"* en A.2, et *"`S57-ADR-0065-DEUX-INSTANCES` reste engagee"* en A.37. Le critere 1 de la story (`grep -c -i instance` au moins 1) est vert ; je n'ai relu ni son critere 3 (compte d'`ArchRule`) ni son critere 4 (`mvn verify`) : ils sont a `theo-archi` et a la CI, et **cette decision ne dit pas que la CI distante est verte**. Le contenu de l'amendement est de `theo-archi` : je ne le juge pas.
+
+**Ce qui reste pour les lots de A'** : la condition 2 de `nadia-prof` (accord `PAR-2`) porte sur le premier worktree d'un lot de A', que le planning n'a pas ouvert : l'amendement est fusionne avant lui ; le premier worktree d'un lot de A' relance `git merge-base --is-ancestor 729b0d8a HEAD` et cite sa sortie (`duree-et-paliers.md` section 5).
+
+### A.55 Ce qui reste pour que `DEC-0120` passe de `Proposee` a `Acceptee`
+
+**Condition en vigueur (A.45)** : *"quand la duree et la borne de s57 sont ecrites (`sofia-sm`, `nadia-prof`)"*. Etat mesure :
+
+| Element | Etat | Ce qui reste |
+|---|---|---|
+| Borne | **ecrite** : 8,0 par palier, 5,0 et trois lots par instance et par palier, aucun chiffre au-dela de 8,0 dans un palier (`nadia-prof`, 11.3, 2026-10-13 18:32) ; sa forme est confirmee par `Q3` (A.53) | rien |
+| Duree | **proposee, pas ecrite** : `duree-et-paliers.md`, ligne *"Statut"* : *"proposition de `sofia-sm`"*, section *"Decisions prises"* : *"Aucune `ADR` ni `DEC` n'est creee ou amendee par ce fichier"*, `Q3` et `Q-S1` ouvertes. Les deux sont repondues (A.53), le fichier ne le dit pas | `sofia-sm` ecrit la duree comme decidee : une ligne datee, dans `duree-et-paliers.md` ou dans `planning.md`, qui reprend `P1'` a `P6'` ou les amende a la lumiere d'A.53, et l'amendement de `squad/README.md` section 4 (fichier de cloture de palier) que `Q-S1` appelle |
+
+**Je ne passe pas `DEC-0120` a `Acceptee` dans ce geste.** La decision est la mienne, mais sa condition porte sur un ecrit de `sofia-sm` qui n'existe pas sous forme de decision : le passer sur la foi d'un *"oui"* et d'un *"ok"* relayes et d'une proposition fusionnee reviendrait a declarer ecrit ce qui est propose. Je la passe, dans un amendement date, quand la ligne de `sofia-sm` est dans le depot.
+
+**Ce que le planning exige en plus, hors acceptation de cette decision** (etat : `ls squad/sprints/s57-version-cp-ce1-cm1-trois-instances/` : `composition-palier-1.md`, `duree-et-paliers.md`, `preparation.md`) : l'avis de faisabilite de `theo-archi` pour s57 (absent) ; l'arbitrage prealable de `nadia-prof` pour chaque instance du palier 1, qui tranche les affectations proposees (absent) ; `lecture-testabilite.md` de `yanis-qa` (absente) ; les stories des trois lots de francais CE1 du palier 1 (A.56).
+
+### A.56 Palier 1 : composition ecrite, lots sans story, report compte
+
+La composition est dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/composition-palier-1.md` : **A.33 reprise sans changement** (A 2,5, A' 3,0, B 2,5, somme 8,0, plafond de 5,0 et trois lots par instance tenus, marge de 0,5 par instance), trois lots de francais CE1 (`FRA-CE1-04` a A, `-10` et `-15` a A'). **Toutes les affectations d'instance y sont proposees** ; `nadia-prof` les arbitre.
+
+**Report compte.** Les trois lots n'ont aucune story au backlog (`grep -c '^### S57-BR' docs/backlog/backlog.md` : 0). Je ne les ecris pas dans ce geste (hors du perimetre demande) : **premier report de ce poste, s57, 2026-10-14**. Elles s'ecrivent avant que `planning.md` engage les lots ; un lot sans story n'est pas engage.
+
+### A.57 Statuts, routage, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Proposee`** (A.55). **Statuts de stories** : `S57-ADR-0065-DEUX-INSTANCES` livree avant l'ouverture (A.54). Aucune autre ne change. **Matrice : 142 / 200, aucun statut.**
+- **Routage.**
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | La duree ecrite comme decidee (A.55) ; l'amendement de `squad/README.md` section 4 pour le fichier de cloture de palier (`Q-S1`) ; `planning.md` : regle d'ouverture d'un palier, sous-repertoires de scratchpad et ports par agent, par instance et par palier, `729b0d8a` cite comme livree avant l'ouverture ; la lecture du glissement de `S54-OBS-SCI-CONSIGNE` entre paliers (`composition-palier-1.md` section 4) |
+| `nadia-prof` | Arbitrage prealable de A, A' et B pour le palier 1 : affectations proposees, `Q-P1` (marge de B) et `Q-P2` (quels lots de X et de Y) de `composition-palier-1.md` ; lecture de la condition (i) (A.51, inchange) |
+| `camille-po` | Les trois stories de lots du palier 1 (A.56) ; la composition des paliers suivants, apres la cloture du palier 1 |
+| `theo-archi` | Rien de neuf |
+| Utilisatrice | Aucune question neuve |
+
+- **Ne fait pas** : n'ouvre pas s57 ; ne choisit ni la duree, ni le nombre de paliers ; ne passe pas `DEC-0120` a `Acceptee` ; n'engage aucune affectation ; ne prononce aucun Done et ne juge aucun contenu ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`chemins`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.
