@@ -117,3 +117,12 @@ dans le dernier (`ADR-0100`) ; prefixe `TPH-CE1` deja alloue (`TPH-CE1-1` a `-3`
 **Tarif consomme** : audit 1,0 (poste 4, instance A'). Marge de rejeu de A' intacte.
 
 **Signe** : `nadia-prof`, s57, palier 1, instance A', 2026-10-14.
+
+### Amendement du 2026-10-14 (`nadia-prof`, s57, palier 1, instance A') : reponse de l'utilisatrice a `Q-N4`
+
+Reponse de l'utilisatrice, le 2026-10-14, forme 2 (relayee par l'agent principal, non lue de sa main) : **`Q-N4` = non.**
+Le pli a 744 x 551 ne redevient pas bloquant pour un jeu neuf. **Le verdict ci-dessus ne change pas** : `FRA-CE1-10` reste
+**VALIDE SOUS RESERVE**, `TPH-CE1-R1` reste une reserve non bloquante, avec son critere de levee inchange. **Ma
+recommandation** (*"oui pour les lots suivants"*, `rejeu-nadia-palier-1.md` section 8) **n'est pas retenue par
+l'utilisatrice** : le pli reste, pour les lots a venir aussi, une reserve que je nomme et date, pas un motif de refus. Rien
+n'est efface de la section 5.

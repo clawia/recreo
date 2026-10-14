@@ -175,3 +175,12 @@ Sur ce worktree, avec les cinq fichiers du commit, avant commit. Je ne deduis au
 - **`outils`** : non lance ; aucun outil n'est modifie.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-14 : reponse de l'utilisatrice a `Q-N4`
+
+Forme 2, relayee par l'agent principal, non lue de sa main : **`Q-N4` = non.** Le pli a 744 x 551 ne redevient pas
+bloquant pour un jeu neuf. **Consequences** : `FRA-CE1-10` reste **VALIDE SOUS RESERVE** avec `TPH-CE1-R1` (fiche, amendement
+du meme jour) ; aucun refus n'est ecrit. **Ma recommandation de la section 8, *"oui pour la suite"*, n'est pas retenue par
+l'utilisatrice** : je traite le pli des lots suivants comme une reserve datee, sur le regime de `RDO-CP-R1` et `TPH-CE1-R1`.
+La section 8 reste ecrite telle quelle. Pour `theo-archi` et `ines-design` : la forme des propositions longues n'attend plus
+`Q-N4` (section 9) ; elle suit la story que `camille-po` tirera de `TPH-CE1-R1`.
