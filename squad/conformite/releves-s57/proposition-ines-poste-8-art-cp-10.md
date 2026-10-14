@@ -8,6 +8,72 @@
 - Fichiers de ce dossier : ce document, `candidat-poste-8.css` (les regles candidates, texte exact injecte pour la mesure), `pilote-poste-8.mjs`
   (le pilote de mesure) et `agreger-poste-8.mjs` (le calcul des cotes les plus basses).
 
+## Revision 2 (2026-10-14, 22:14) - le message dans la largeur du meuble
+
+Apres `reponse-nadia-forme-poste-8.md` (veto sur le bandeau sous la reference ; `L1` et `L2` acceptes) et `avis-theo-poste-8-art-cp-10.md` (`C1'` remplace `C1`, grille `". msg msg"`).
+**Remplacent les sections 0, 4.3, 5, 6, 7 (point 3) et 10 de la premiere version, qui restent ci-dessous pour l'historique.** Inchangees : 1 a 4.2, 4.4, 8 (sauf ses points 2 et 5, revus ici) et 9. Avec les regles de la revision 2 dans `recreo.css`, `adapter-web` rend 486 tests dont le meme seul echec (`CabinetDeLaMachineTest`).
+Le texte exact des regles est `candidat-poste-8.css`. La coupure du verdict a sa proposition separee : `proposition-ines-poste-8-coupure-du-verdict.md`.
+
+### R2.1 Ce qui change
+
+| Point | Premiere version | Revision 2 | Pourquoi |
+|---|---|---|---|
+| Zone du message | `"msg msg msg"` : trois colonnes, le signal sous la reference | `". msg msg"` : les deux colonnes du meuble, la colonne de la reference vide | Veto de `nadia-prof` (section 2) ; `C1'`, points 2 et 3 |
+| Colonnes internes du message | `2fr` et `3fr` | `15rem` et `1fr` | Dans 496 px, a `2fr` (194 px) le verdict passe sur **trois** lignes a 744 (90 px, mesure) |
+| Marges au-dessus du meuble (`L4`) | aucune | `.score`, `.consigne` (bas) et `.enonce` (bas) a zero : 12 px | Sans elles l'indice tient 9 px sous le pli (section R2.4) |
+
+`L1`, `L2` et `.signal .verdict { margin-bottom: 0 }` sont inchanges.
+
+### R2.2 Lecture de `C1'`
+
+| Point de `C1'` | Lecture |
+|---|---|
+| 1 : une regle dont le sujet est hors de `.message-jeu` ne nomme ni `.message-jeu`, ni `.signal`, ni un etat | `L1`, la grille, et les trois marges de `L4` ne nomment aucun de ces noms |
+| 2 : une regle dont le sujet est dans `.message-jeu` peut nommer `.message-jeu` et `.signal`, jamais un etat | `> .message-jeu`, `> .signal`, `> :not(.signal)` et `.signal .verdict` : aucun etat nomme ; mesure : le signal est a x = 216,5 (744) ou 220,5 (992) dans l'echec, la double erreur et la revelation, et a 224 (744) a la bonne reponse, ou la barre de defilement disparait |
+| 3 : aucun element ne s'etend sur la rangee du message et sur une rangee au-dessus | La reference occupe les rangees 2 et 3, le message la rangee 4 seule ; la colonne 1 de la rangee 4 est `.` |
+
+**Bords du message contre le meuble** (juge `J4` de `theo-archi` : contre `.cabinet`) : a 744, message et meuble vont de 216,5 a 712,5 (de 224 a 720 sans barre de defilement) ; a 992, de 220,5 a 956,5. Identiques, dans les quatre etats, sur les six items.
+
+### R2.3 Mesures sur le jar
+
+Jar construit depuis `round-two` a `9229ca28` plus l'entree de catalogue du paquet (non commitee, equivalent de B2), en `-DskipTests -am`. La base rejouee redonne les cotes de s56 (744 : `M4` 656, indice 676, croix 524 ; 992 : croix 568). Regles injectees apres la feuille reelle (equivalence avec une edition en place verifiee en revision 1 : cotes identiques au pixel). Six items, 744 et 992, tous les etats ; revelation atteinte sur les six aux deux largeurs.
+
+| Largeur | Cote | Avant | Revision 2 | Barre | Marge |
+|---|---|---|---|---|---|
+| 744 | bas de `.reponse-revelee`, revelation | 656 | **528** | 551 (refus, 105) | **23** |
+| 744 | bas de `.indice`, echec | 676 | **548** | 551 (`RDO-CP-R1`, 125) | **3** |
+| 744 | bas du verdict, echec | 597 | 532 | - | 19 |
+| 744 | bas de la boite `.signal`, echec | 622 | 540 | - | 11 |
+| 744 | bas de la croix de la case | 524 | 446 | - | 105 |
+| 992 | bas de la croix de la case | 568 | **490** | 551 (`RDO-CP-R1`, 17) | **61** |
+| 992 | bas de `.reponse-revelee`, revelation | 700 | 542 | - | 9 |
+| 992 | bas de `.indice`, echec | 720 | 562 | - | -11 |
+
+Aucun debordement horizontal. Les trois cases ne bougent ni en haut ni en largeur entre les etats (six items, 744 et 992). A 744 le verdict de l'echec fait deux lignes (60 px), l'indice deux (80 px), la phrase de `M4` deux (60 px, *"C'est cette œuvre qui va / avec. Appuie dessus."*) ; a 992 le verdict fait deux lignes, le reste une.
+
+**La barre de 105 px tient, avec 23 px de marge. La barre de 125 px tient, avec 3 px de marge : c'est fragile.** Elle ne tient que grace a `L4`. Sans `L4` (variante `15rem`, mesuree sur 5 items vus et 2 revelations seulement) : `M4` 540 (marge 11) et indice 560 (9 px de moins). `nadia-prof` a ecrit que `RDO-CP-R1` reste une reserve non bloquante si l'indice repasse sous le pli (`D5`, section 2 de sa reponse) : le choix entre avec ou sans `L4` est le sien.
+
+### R2.4 Ce que la police change
+
+Mesure au 744, regles de la revision 2, police imposee par le style de `<body>` (`polices-poste-8.mjs`), une manche :
+
+| Police | Bas de `M4` | Bas de l'indice | Hauteur de l'indice |
+|---|---|---|---|
+| celle du poste, Arial, Georgia, Times New Roman, Tahoma | 528 | 548 | 80 |
+| Comic Sans MS, Trebuchet MS | 558 | 578 | 80 |
+| Verdana | 606 | 626 | 80 |
+| Courier New | 636 | 656 | 110 |
+
+**Les barres de 105 et de 125 px ne tiennent que sur les polices etroites.** Sur Comic Sans MS et Trebuchet MS, `M4` finit 7 px sous le pli ; sur Verdana, 55 px. La pile entiere descend, pas seulement le message : je n'ai pas cherche pourquoi (l'interligne ou une ligne de plus dans l'enonce). La base souffre de la meme dependance : cette mesure n'est pas un defaut de la revision. Question 1 plus bas.
+
+### R2.5 Questions pour `nadia-prof` et `theo-archi`
+
+1. `nadia-prof` : tes barres sont-elles jugees sur la police du poste (celle de `DEC-0040`) ? Sur trois polices sur neuf (Comic Sans MS, Trebuchet MS, Verdana), `M4` passe sous le pli.
+2. `nadia-prof` : avec ou sans `L4` ? Avec : l'indice a 744 tient (3 px) ; le gabarit perd 12 px d'air au-dessus du meuble, l'enonce touche le haut du meuble (son interligne de 8 px les separe). Sans : refus leve (marge 11), `RDO-CP-R1` reste une reserve.
+3. `nadia-prof` : a 744 la phrase de `M4` se coupe *"C'est cette œuvre qui va / avec. Appuie dessus."*, a l'interieur de sa premiere phrase. Ta condition de coupure vise le verdict ; la veux-tu aussi pour `M4` ? La meme technique s'applique (proposition separee, section 6).
+4. `theo-archi` : `L4` ajoute trois regles sur `.score`, `.consigne`, `.enonce` : sujet hors de `.message-jeu`, sans etat, sans `@media` neuf (bloc existant). Conforme a `C1'` point 1 selon ma lecture.
+5. `theo-archi` : le jeu fautif de `CabinetDeLaMachineTest` reste a mettre a jour avec `L1` (inchange).
+
 ## 0. Resume
 
 **Les 125 px viennent de la pile verticale, pas d'un seul element** : 48 px de decoration du meuble (bandeau 32, socle 16), 34 px de rang du score,
