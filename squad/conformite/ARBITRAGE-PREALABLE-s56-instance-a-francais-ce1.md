@@ -220,6 +220,52 @@ Pour l'amendement de `S56-BR-FRA-CE1-13` par `camille-po`. Fichier : `adapters/a
 `LON-CE1-1`, `-2`, `-5` sont deja tenues par les garde-fous de longueur. Le perimetre C2 du branchement compte `ce1-verbe-sujet.yaml` :
 la correction est decidee ici.
 
+#### Amendement du 2026-10-14 (`nadia-prof`, s57, palier 1) : propriete 8, pour lever `VSJ-CE1-R1`
+
+Annonce dans la fiche (`FICHE-bandit-manchot-verbe-sujet-ce1.md`, section 5) : *"ma propriete 8 [...] est amendee par moi sur ces
+items quand la story s'ecrit"*. La ligne 8 du tableau ci-dessus reste ecrite ; elle se lit desormais ainsi :
+
+| # | Propriete, amendee | Porteur | Aujourd'hui (`3a3ea97e`) | Cible |
+|---|---|---|---|---|
+| 8 | `VSJ-CE1-1`, `-2` : au moins 12 items de sujet ; pronom, nom seul, groupe nominal chacun dans au moins 5 items ; sur chaque item de sujet, la bonne reponse est avant le verbe cite, **au moins un distracteur est apres le verbe** (famille (a) de `VSJ-CE1-3`) et **au plus un est avant** ; **sur au moins 3 items de sujet, un distracteur est avant le verbe cite** | test du paquet | 15 ; 5, 5, 5 ; 0 item avec un distracteur avant | 3 items au moins |
+
+**Ce qui va avec, et qui n'est pas une barre neuve** (chaque point applique une condition deja ecrite) :
+
+1. **Le distracteur place avant le verbe est un complement en tete de phrase, de temps ou de lieu, suivi d'une virgule** (*"ce
+   matin"*, *"dans la cour"*). Jamais une personne ni un animal : il ferait mentir l'indice *"qui fait l'action"* (`J4`, 2.5) ou
+   ferait un sujet coordonne (`VSJ-CE1-2`). La virgule est decidable ; *"de temps ou de lieu"* est a moi, au rejeu.
+2. **Sur ces items, l'indice n'est pas *"Le sujet est avant le verbe : regarde les mots devant."*** Deux propositions sont alors
+   devant le verbe : l'indice serait satisfait par un distracteur, ce que `J4` exclut (2.5 ; section 10, point 1). *"Demande-toi : qui
+   fait l'action de ce verbe ?"* et *"Pose la question « Qui est-ce qui ? » avant le verbe."* conviennent. Decidable : test du paquet.
+3. **`J1` reste tenue** (propriete 2) : le complement copie du debut de la phrase perd sa majuscule (*"ce matin"*), comme le dit deja
+   l'en-tete du paquet. Un prenom sujet seul a majuscule la rendrait rouge : le sujet de ces items est un pronom ou un groupe nominal,
+   ou bien l'autre distracteur est un prenom.
+4. **Le plancher de 5 par forme de sujet et la propriete 4 restent tenus.** Le mot a majuscule qui ouvre le complement (*"Ce"*) n'est
+   pas un prenom : la liste des ouvertures du test le recoit, **lui seul**, et la regle des prenoms ne change pas.
+5. **Le jeu fautif de la propriete 8** (`ADR-0013`, obligation 3) doit rester refuse par la propriete amendee : un seul distracteur
+   avant le verbe y devient permis. Sa forme est au developpeur.
+
+**Correction de mon propre exemple, avant que quiconque s'en serve.** Mon critere de levee cite *"« Ce matin, Léa lit un livre. »,
+propositions Léa, ce matin, un livre"*. **Il contredit ma propre `J1`** : *Léa* y est la seule proposition a majuscule. Il retire en
+plus un pronom sujet (plancher) et fait lire *"Ce"* hors des listes du test (`lecture-testabilite.md` de s57, 2.1, `Q-Y2` : 5 echecs
+sur 23). **C'etait une illustration, pas un texte a servir** ; elle est retiree comme modele et reste ecrite dans la fiche, pour que
+l'erreur se lise. Exemple qui tient, applique a l'item 1 dans un worktree jetable sur `3a3ea97e` :
+
+```yaml
+  - enonce: "« Ce matin, elle lit un livre. » Quel est le sujet du verbe « lit » ?"
+    bonneReponse: "elle"
+    distracteurs: ["ce matin", "un livre"]
+```
+
+`bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=PaquetCe1VerbeSujetTest` : 22 tests, **2 echecs, les deux
+attendus** - l'ancienne propriete 8 (*"le distracteur 'ce matin' est après le verbe"*) et la propriete 4 (*"'Ce' [...] est une majuscule
+hors des listes"*, point 4). `J1`, le plancher, les proprietes 3, 9, 11 et `LON-CE1-1` restent vertes. JDK 21.0.10 (`java.version` du
+rapport). Les textes restent au developpeur ; je les juge en rejouant (0,5, `PAR-10`).
+
+**Ce que cet amendement ne fait pas** : il ne touche ni `VSJ-CE1-1` a `-3`, ni `J1` a `J5`, ni les 12 items de sujet non concernes,
+dont l'indice *"regarde les mots devant"* reste permis. Le test qui porte la propriete 8 change dans le meme commit que les textes
+(backlog, `S56-VSJ-CE1-R1`). Aucun identifiant neuf.
+
 ### 2.9 Prix
 
 **1,0** : premier passage complet d'un paquet jamais audite, tarif de lot (s28, 4.3). `J1` a `J5` le rendent plus court, pas moins cher.
