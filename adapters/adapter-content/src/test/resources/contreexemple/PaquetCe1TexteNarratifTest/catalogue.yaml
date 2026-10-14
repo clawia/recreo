@@ -1,0 +1,9 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1TexteNarratifTest. La consigne du jeu n'est
+# pas celle que l'enfant lit deja sur l'entree du texte narratif du CP.
+jeux:
+  - id: bandit-manchot-texte-narratif-fautif
+    titre: "Lis et réponds"
+    consigne: "Lis le texte et trouve la réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-texte-narratif
+    nombreDeManches: 10

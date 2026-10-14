@@ -894,3 +894,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: ce1-accord-groupe-nominal
     nombreDeManches: 10
+  - id: bandit-manchot-texte-narratif-ce1
+    titre: "Lis et réponds"
+    consigne: "Lis le petit texte, puis réponds à la question."
+    mecanique: bandit-manchot
+    paquet: ce1-texte-narratif
+    nombreDeManches: 10
