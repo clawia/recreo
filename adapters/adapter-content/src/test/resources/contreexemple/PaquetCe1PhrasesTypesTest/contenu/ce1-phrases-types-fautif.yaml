@@ -1,0 +1,51 @@
+schema: 1
+id: ce1-phrases-types-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1PhrasesTypesTest. Chaque item viole une seule
+# propriete du paquet ; les espaces insecables sont ecrites en   pour rester lisibles.
+# Les commentaires "TPH-CE1-2" ci-dessous annoncent des items de reconnaissance qui n'en sont pas :
+# le test recompte les champs enonce et bonneReponse, il ne lit pas les commentaires. Un seul item
+# est de reconnaissance.
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Orthographe et grammaire"
+  competence: "Reconnaître une phrase (majuscule, point) et identifier son type (déclarative, interrogative, exclamative) par sa ponctuation."
+lignesDeReferentiel: ["FRA-CE1-10"]
+items:
+  # TPH-CE1-3 : le signe final est "!" alors que la bonne reponse est "interrogative"
+  # TPH-CE1-2: a, b
+  - enonce: "« Où est le crayon ! » Quel est le type de cette phrase ?"
+    bonneReponse: "interrogative"
+    distracteurs: ["déclarative", "exclamative"]
+    indice: "Regarde le signe tout à la fin de la phrase."
+  # TPH-CE1-3 : deux signes combines, "?!"
+  # TPH-CE1-2: a, b
+  - enonce: "« Quelle belle journée ?! » Quel est le type de cette phrase ?"
+    bonneReponse: "exclamative"
+    distracteurs: ["déclarative", "interrogative"]
+    indice: "Le signe final aide à trouver le type de la phrase."
+  # TPH-CE1-2 : le distracteur sans ponctuation finale est remplace par un point d'exclamation
+  - enonce: "Quel groupe de mots est une phrase ?"
+    bonneReponse: "Le chat boit du lait."
+    distracteurs: ["le chat boit du lait.", "Le chat boit du lait!"]
+    indice: "Regarde comment commence et comment finit chaque groupe de mots."
+  # TRV-CE1-5 : l'indice contient une proposition, "déclarative"
+  # TPH-CE1-2: a, b
+  - enonce: "« Le train part à midi. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Une phrase déclarative se termine par un point."
+  # TRV-CE1-6 : trois prenoms masculins, aucun feminin
+  - enonce: "« Karim a faim. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Lis la phrase, puis regarde son dernier signe."
+  - enonce: "« Tom lit un livre. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Regarde le signe tout à la fin de la phrase."
+  - enonce: "« Hugo court vite. » Quel est le type de cette phrase ?"
+    bonneReponse: "déclarative"
+    distracteurs: ["interrogative", "exclamative"]
+    indice: "Le signe final aide à trouver le type de la phrase."
