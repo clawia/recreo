@@ -10,7 +10,7 @@
   les dix lots du rang 1) ; `ART-CP-10` (reprise, ligne `non couvert`) ; `FRA-CE1-13` et `SCI-CM1-20` (lignes deja `couvert-valide`,
   non rouvertes). Les autres postes sont transverses - pas de contenu pedagogique. **Aucune ligne de matrice ne change** : 142 / 182
   (78,02 %), commande de la "Methode du compte" relancee le 2026-10-13.
-- **Statut** : **Proposee**. Ses decisions portent un motif de forme 1 ou 2 et s'appliquent des maintenant ; une question a
+- **Statut** : **Acceptee le 2026-10-14 (amendement A.77)**, `Proposee` du 2026-10-13 au 2026-10-14 ; le texte d'origine de cette ligne, qui decrit l'etat du 2026-10-13, n'est pas reecrit. Ses decisions portent un motif de forme 1 ou 2 et s'appliquent des maintenant ; une question a
   l'utilisatrice reste ouverte (`Q-U1`, section 5) et gouverne la composition de s57, pas l'ordre. Elle passe a `Acceptee` quand `Q-U1`
   a une reponse et que la retraite de `S54-OBS-SCI-CONSIGNE` (4.1) n'est pas contredite. **Elle est la `DEC` qui reprend l'ordre sous des
   motifs de forme 1 : `DEC-0116` passe a `Acceptee` par son amendement A.37**, comme `DEC-0114` l'a ete par `DEC-0115` (A.27) quand
@@ -1276,3 +1276,32 @@ Deux reports comptes (s55, s56) ; le placement n'en est pas un (A.34, A.44). **U
 - **Statuts de stories** : `S57-ARB-PALIER-1` ecrite, engagee (poste 1) ; `S57-ADR-0065-DEUX-INSTANCES` livree, critere 2 remplace ; les postes 7 et 8 non engages, reports comptes ; `HS-ACCUEIL-APM-R2` non engagee. **Matrice : 142 / 200, aucun statut.**
 - **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, ni paquet, ni fiche ; ne dit pas que la CI distante est verte ; ne decide rien de technique (le moyen de B2, le juge de pli, la forme de la correction restent a `theo-archi` et `ines-design`).
 - **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison (`chemins`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.
+
+---
+
+## Amendement du 2026-10-14, dixieme (`camille-po`, passage de `Proposee` a `Acceptee`)
+
+Annotation datee. **Rien au-dessus n'est reecrit**, a une exception nommee : la ligne `Statut` de l'en-tete porte desormais le nouveau statut, avec l'ancien. Meme geste que `DEC-0116` A.37. **Aucun fichier de matrice, de catalogue, de paquet, de code ni de fiche n'est touche.**
+
+### A.77 Motif du passage a `Acceptee`
+
+**Condition que j'avais ecrite** (A.45, A.55) : *"quand la duree et la borne de s57 sont ecrites (`sofia-sm`, `nadia-prof`)"*, et A.55 : *"je la passe, dans un amendement date, quand la ligne de `sofia-sm` est dans le depot"*. Etat mesure le 2026-10-14 sur `round-two` a `829db5eb` (cet amendement s'ecrit sur le commit de A.63 a A.76) :
+
+| Element | Commande | Sortie |
+|---|---|---|
+| Borne : 8,0 par palier, 5,0 et trois lots par instance | `grep -n "^### 11.3" squad/conformite/ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` | ligne 516, *"La borne d'un sprint plus long : 8,0 par palier, un palier clos avant le suivant"* (A.55 : ecrite) |
+| Duree ecrite comme decidee | `grep -n "^- \*\*D[1-5] " squad/sprints/s57-version-cp-ce1-cm1-trois-instances/planning.md` | cinq lignes, D1 a D5, lignes 45 a 49 ; la ligne 43 dit : *"Ce paragraphe est la ligne datee de duree que `DEC-0120` A.55 demande"* |
+| Amendement de `squad/README.md` section 4 (`Q-S1`) | `grep -n "Un sprint a paliers a une seule" squad/README.md` | ligne 166 |
+| `Q-U1` | amendement A.1 | trois instances A, A' et B, mots de l'utilisatrice forme 2 |
+
+**La condition est remplie sur ses termes ecrits.** La condition d'origine de l'en-tete (*"`Q-U1` a une reponse et la retraite de `S54-OBS-SCI-CONSIGNE` n'est pas contredite"*) a ete remplacee par A.37 puis A.45 ; la retraite a ete remplacee par un placement (A.34) sur la reponse de l'utilisatrice.
+
+**Ce sur quoi l'acceptation repose, et ce sur quoi elle ne repose pas.**
+
+- Elle repose sur A.55 (forme 1 : un fichier du depot, une commande) et sur les mots de l'utilisatrice en forme 2 deja consignes (*"oui plus que 8"*, *"oui"*, *"ok"*, *"on plannifie A A' et B"*, A.1, A.38, A.53), **que je n'ai pas lus de sa main** (meme reserve que partout dans cette decision).
+- Elle ne repose **pas** sur A.63 a A.76 de ce jour (report compte a l'ouverture, limite d'un glissement par poste, identifiant de B2) : ces points sont de ma main, motif de forme 1, sans mots de l'utilisatrice. Si elle les conteste, un amendement les remplace sans toucher au statut.
+- Elle ne dit pas que la CI distante est verte, ni qu'un lot est valide : aucun Done n'est prononce.
+
+### A.78 Routage, ce que cet amendement ne fait pas
+
+`DEC-0120` etait deja appliquee dans ses decisions (en-tete : *"s'appliquent des maintenant"*) ; le statut ne change aucune affectation. **Statut : `Acceptee` le 2026-10-14.** `DEC-index.md` suit. Ne fait pas : ne touche aucun poste, aucune story, aucune ligne de matrice ; ne prononce aucun Done.
