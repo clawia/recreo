@@ -161,6 +161,21 @@ Trois produisent un fichier, une non.
 | Daily | **aucun** | Synchronisation de travail. Sofia collecte, classe et route ; elle n'ecrit pas de fichier |
 | Review | `review.md` | Horodatage de fin, duree, rapport qualite de Yanis, confirmation ArchUnit de Theo, corrections du relecteur, tableau des obstacles, avis de Nadia et Done pedagogique |
 | Retro | `retro.md` | Ce qui a marche, ce qui a coince, amendements a ce README |
+| Cloture de palier (sprint a paliers seulement) | `cloture-palier-N.md` | Horodatage de fin du palier, verdict ecrit de Nadia ou report ecrit pour chaque poste engage, CI verte avec les jobs nommes sur l'arbre fusionne, total de tests recompte sur cet arbre, comptage du catalogue a chaque fusion, glissements, obstacles du palier, section `## Decisions prises` |
+
+**Un sprint a paliers a une seule review et une seule retro, plus un fichier de cloture par palier**
+(amendement du 2026-10-14, `sofia-sm`, planning de s57, `Q-S1`). Un palier est la fenetre d'audit de
+Nadia qui tient seule les plafonds `PAR-8` et `PAR-9`, close pour toutes ses instances avant
+l'ouverture de la suivante (`ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md`, 11.3). Le
+sprint garde un seul `planning.md`, un seul `review.md` et un seul `retro.md`, ecrits a l'ouverture et
+a la cloture du sprint ; chaque palier clos ajoute un `cloture-palier-N.md`, ecrit une seule fois par
+Sofia. Il n'est ni une review, ni une retro, ni un `RAPPORT.md` : le rapport de tokens reste un seul
+par sprint (section 6), sur la fenetre qui va de l'horodatage de `planning.md` a celui de
+`review.md`. Les obstacles d'un palier vont dans son fichier de cloture, puis dans le tableau de
+`review.md` ; un palier suivant s'ouvre par un amendement date de `planning.md`, jamais par un fichier
+de ceremonie reecrit. Un sprint sans palier n'a pas ce fichier. Motif : sans lui, un sprint long perd la
+review et la retro entre deux fenetres d'audit, et la condition 3 de Nadia ne remplace que sa part de
+la cloture. Mots de l'utilisatrice, 2026-10-14, forme 2 (relayes, non lus de sa main) : `Q-S1` = ok.
 
 **Pourquoi le daily n'est pas journalise.** Sur la version precedente de `recreo`, le daily etait
 une ceremonie documentee dont **aucun fichier n'a jamais ete ecrit en 25 sprints**. Plutot que de
