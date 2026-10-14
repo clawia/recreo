@@ -14,7 +14,7 @@
   ligne 1033, mention exigee d'avance : *"document textuel et tableau seuls ; le schema et le
   graphique restent non couverts"*. Referentiel : `squad/programme/sciences-et-
   technologie/competences-cm1.md`, ligne 20.
-- **Derniere mise a jour** : 2026-09-23 (premier audit, s40).
+- **Derniere mise a jour** : 2026-10-14 (rejeu de `S54-OBS-SCI-CONSIGNE`, s57, bloc en fin de fiche).
 
 ---
 
@@ -106,3 +106,57 @@ l'ecran en plus de le lire.
 >
 > **Mouvement de ligne** : ce Done ouvre la voie a `SCI-CM1-20` en `couvert-valide` **avec cette
 > mention**. Le mouvement lui-meme est ecrit par `camille-po`, pas par moi.
+
+---
+
+### Rejeu du 2026-10-14 (`nadia-prof`, s57, palier 1, instance B) : `S54-OBS-SCI-CONSIGNE` **VALIDE**
+
+**Objet joue** : branche `s57-sci-consigne`, commit `c3875936` (`lea-dev`), **non fusionne**. Les 12 enonces perdent leur
+premiere phrase ; `PaquetCm1SciencesExtraireInformationTest` recoit le test de substitution. `SCI-CM1-20` reste
+`couvert-valide` avec sa mention ; **non rouverte**, le statut global ci-dessus ne change pas.
+
+**Build** : `bash outils/mvn-jdk21.sh -B clean verify` dans le worktree de la branche, racine, sans `-pl` : `BUILD
+SUCCESS`, 2499 tests (120, 31, 486, 1485, 371 et 6 d'integration), 0 echec ; JDK 21.0.10. Job `build` seul, lance par
+moi. **Jar** : port 18513 (B, palier 1, libre avant), *"Tomcat started on port 18513"*, PID 42788, arrete par ce PID seul.
+Dossier de poste `s57-p1-nadia-prof-b`.
+
+| Critere | Constat |
+|---|---|
+| 1. Chaque enonce commence par *"D'après ce tableau,"* ou *"D'après ce texte,"* | `grep -c "puis réponds à la question"` sur le paquet de la branche : **0**. **Tenu** |
+| 2. Rien d'autre ne change (commande de paires amendee, `DEC-0120` A.70) | `git diff -U0 3a3ea97e c3875936 -- <paquet>`, passe dans l'`awk` de l'amendement : **`12 0 0`**. **Tenu.** Le commit precede l'amendement (`git merge-base --is-ancestor 829db5eb c3875936` sort 1) : la porte P-4 est une affaire de lignee que `sofia-sm` a nommee ; le contenu, lui, tient le critere amende |
+| 3. La consigne du catalogue ne change pas | `git diff 3a3ea97e c3875936 -- catalogue.yaml` : vide ; servie a chaque manche : *"Lis le texte ou le tableau, puis réponds à la question."* **Tenu** |
+| 4. Tests du paquet verts | inclus dans les 2499 ci-dessus. Je n'ai pas rejoue la mutation du test neuf : elle est a `yanis-qa` |
+| 5. **Rejeu : une partie de dix manches, chaque enonce lu a l'ecran une fois** | une partie de dix manches (10 items, 0 ecart) : a chaque manche, la consigne une fois, puis le document, puis l'enonce, qui ne redit plus la consigne. Puis 5 parties de plus pour voir **les 12 enonces** a l'ecran (au moins 3 fois chacun), dont une jusqu'a la revelation. **Tenu** |
+
+**Les 12 enonces, relus a l'ecran un par un** (servis identiques au fichier, comparaison caractere par caractere par mon
+script) :
+
+1. D'après ce tableau, quel est le régime alimentaire de la vache ?
+2. D'après ce tableau, quel est le régime alimentaire du loup ?
+3. D'après ce tableau, quel est le régime alimentaire de l'ours brun ?
+4. D'après ce tableau, dans quel état se trouve le fer à température ambiante ?
+5. D'après ce tableau, dans quel état se trouve l'eau à température ambiante ?
+6. D'après ce tableau, dans quel état se trouve le dioxygène à température ambiante ?
+7. D'après ce texte, comment s'appelle la fine couche d'air qui entoure la Terre ?
+8. D'après ce texte, de quoi cette couche d'air protège-t-elle les êtres vivants ?
+9. D'après ce texte, que permet la chaleur retenue par cette couche d'air ?
+10. D'après ce texte, que récoltent les abeilles en butinant les fleurs ?
+11. D'après ce texte, que transportent aussi les abeilles en passant de fleur en fleur ?
+12. D'après ce texte, que ce transport de pollen permet-il à de nombreuses plantes ?
+
+Accents lus : *après* sur les douze, *régime*, *état*, *à*, *température*, *dioxygène*, *protège*, *êtres*, *récoltent*.
+Aucun manquant a ma lecture ; chaque `?` est precede d'une espace insecable (U+00A0, lu sur le texte servi). **Cette
+lecture ne remplace pas le controle de l'orthographe, de l'accentuation et de la ponctuation, qui est au
+`relecteur-pedagogique`** (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`).
+
+**Ce que l'enfant de CM1 lit maintenant** : une consigne, un document, une question. La charge de lecture inutile que
+j'avais nommee (deux fois *"puis réponds à la question"*) a disparu ; rien de ce qui servait a repondre n'a bouge.
+
+**Observation, sans reserve** : sur l'ecran de fin, quand la derniere manche est revelee, la question rappelee commence
+par *"D'après ce tableau,"* ou *"D'après ce texte,"* sans le document a l'ecran. C'etait deja le cas avant le lot (avec une
+phrase de plus). Pour un enfant de CM1 qui sort de la manche, *"ce tableau"* est celui qu'il vient de lire, le seul de la
+manche ; ce n'est pas le cas de `RDO-CP-R2`, ou *"celle-ci"* designe une image parmi plusieurs pour un enfant de CP.
+
+**Tarif consomme** : rejeu 0,25 (poste 6, instance B). Marge de rejeu de B intacte, 0,75 non affectes intacts.
+
+**Signe** : `nadia-prof`, s57, palier 1, instance B, 2026-10-14.

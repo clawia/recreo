@@ -10,7 +10,7 @@
   les dix lots du rang 1) ; `ART-CP-10` (reprise, ligne `non couvert`) ; `FRA-CE1-13` et `SCI-CM1-20` (lignes deja `couvert-valide`,
   non rouvertes). Les autres postes sont transverses - pas de contenu pedagogique. **Aucune ligne de matrice ne change** : 142 / 182
   (78,02 %), commande de la "Methode du compte" relancee le 2026-10-13.
-- **Statut** : **Proposee**. Ses decisions portent un motif de forme 1 ou 2 et s'appliquent des maintenant ; une question a
+- **Statut** : **Acceptee le 2026-10-14 (amendement A.77)**, `Proposee` du 2026-10-13 au 2026-10-14 ; le texte d'origine de cette ligne, qui decrit l'etat du 2026-10-13, n'est pas reecrit. Ses decisions portent un motif de forme 1 ou 2 et s'appliquent des maintenant ; une question a
   l'utilisatrice reste ouverte (`Q-U1`, section 5) et gouverne la composition de s57, pas l'ordre. Elle passe a `Acceptee` quand `Q-U1`
   a une reponse et que la retraite de `S54-OBS-SCI-CONSIGNE` (4.1) n'est pas contredite. **Elle est la `DEC` qui reprend l'ordre sous des
   motifs de forme 1 : `DEC-0116` passe a `Acceptee` par son amendement A.37**, comme `DEC-0114` l'a ete par `DEC-0115` (A.27) quand
@@ -1176,3 +1176,202 @@ Trois stories de branchement au backlog, criteres verifies contre l'existant le 
 - **Statuts de stories** : `S57-BR-FRA-CE1-04`, `-10`, `-15` ecrites, **non engagees** (aucun `planning.md`) ; `S57-FRA-FAMILLES-LIVRE` ecrite, non engagee. Aucun autre statut ne change. **Matrice : 142 / 200, aucun statut.**
 - **Ne fait pas** : n'ouvre pas s57 ; ne passe pas `DEC-0120` a `Acceptee` ; n'engage aucune ligne ; ne designe aucun developpeur ; ne prononce aucun Done et ne juge aucun contenu (les points d'audit sont ceux de `nadia-prof`) ; ne touche ni catalogue, ni paquet, ni code, ni fiche ; ne dit pas que la CI distante est verte.
 - **Jobs de `ci.yml` lances pour son commit** : nommes, avec leurs sorties, dans le message de livraison (`chemins`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.
+
+---
+
+## Amendement du 2026-10-14, neuvieme (`camille-po`, apres `planning.md` du palier 1 et les questions qui me sont routees)
+
+Annotation datee. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.66 et A.73. `planning.md` existe sur `round-two` (`3a3ea97e`) et s57 est ouvert sur la confirmation de l'utilisatrice que ce planning cite, pas sur l'acceptation de cette decision. **Aucun fichier de matrice n'est touche** (`git diff round-two --stat -- squad/programme/` : vide) : 142 / 200 inchange. Aucun catalogue, aucun paquet, aucun code, aucune fiche. Les criteres des stories sont dans l'annotation du meme jour du backlog ("neuvieme") ; cet amendement porte les decisions, pas les criteres.
+
+### A.63 Mesures de cet amendement
+
+Arbre `round-two` a `3a3ea97e`, worktree `s57-camille-q`, 2026-10-14.
+
+| Commande | Sortie |
+|---|---|
+| `grep -c "^  - id:" adapters/adapter-content/src/main/resources/catalogue.yaml` | 146 |
+| `grep -c "id: bandit-manchot-rapprocher-deux-oeuvres-cp$"` sur le meme fichier | 0 |
+| `grep -c "REFUSE" squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` | 2 |
+| `grep -c "puis réponds à la question"` sur `cm1-sciences-extraire-information.yaml` | 12 |
+| `git merge-base --is-ancestor` de `729b0d8a`, `7a34366c`, `bac0a6d1` sur `HEAD` | 0, 0, 0 |
+| comptage de `LON-CE1-3` et `-4` sous trois regles de mots et trois de phrases (script hors depot) | au plus 22, 23, 23 mots par texte ; 4, 4, 4 phrases ; 10 mots par phrase |
+| commande de paires de `S54-OBS-SCI-CONSIGNE` sur trois copies du fichier hors depot | `12 0 0`, `11 1 0`, `0 0 0` |
+
+**Ce que je n'ai pas fait** : lancer le reacteur (`mvn`), joue un jeu, lu la CI distante. Aucun test n'est cite comme vert par moi ; les chiffres de tests sont ceux de `yanis-qa` sur `544159d9`, nommes comme tels.
+
+### A.64 `S57-ARB-PALIER-1` : le poste 1 a une story (`Q-S3`, premiere partie)
+
+**Decision : je l'ecris.** `PAR-16` demande une story par poste ; le livrable de `nadia-prof` est sur le disque, la part restante est sa lecture des items avant son premier lot, qui a un observable (une ligne datee par paquet, avec le nombre d'items lus). Competence : transverse. Prix : aucun, pris sur le 0,5 de l'arbitrage de chaque instance. Criteres dans le backlog ; **la forme de la ligne est la sienne** et le critere s'amende si elle l'ecrit autrement. Rien n'est ecrit sur ce qu'elle lit ni sur ce qu'elle conclut.
+
+### A.65 Identifiant de l'entree de B2 (`Q3` de `theo-archi`)
+
+**Decision : l'entree neuve reprend l'identifiant `bandit-manchot-rapprocher-deux-oeuvres-cp`.** Motifs de forme 1 :
+
+1. **Le refus reste attache au jeu.** La fiche porte ce nom (`FICHE-bandit-manchot-<id>.md`) et son verdict `REFUSE` du 2026-10-11 (2 occurrences). Un identifiant neuf ouvrirait une fiche sans refus : le contenu refuse reviendrait au catalogue sous un nom qui n'a jamais ete refuse. C'est la famille du defaut de `DEC-0009` : un contenu refuse que rien n'identifie plus comme refuse.
+2. **B2 est l'inverse de `13d00bfe`** sur trois fichiers (avis de `theo-archi`, 3.2) ; avec le meme identifiant, `R1` compare six lignes identiques a celles retirees, et l'inventaire et le garde-fou 4 suivent un nom qu'ils connaissent.
+3. **`DEC-0116` A.17 dit "entree neuve", pas "identifiant neuf"** : la regle porte sur le moment (apres un Done qui n'est pas `REFUSE`), pas sur le nom.
+
+**Ce que ce choix coute** : l'identifiant d'un jeu retire puis rejoue est le meme ; la matrice et `REGISTRE-identifiants.md` (a `nadia-prof`) n'en changent pas. Je n'ouvre pas de fiche : elle existe. **R3 de l'avis est repondue.** `theo-archi` n'a rien a amender (l'avis dit que les deux tiennent techniquement).
+
+### A.66 Ce qu'est un report, et quand il se compte (`Q-S2`, premiere partie)
+
+**Remplace** la condition de `DEC-0120` 4.2 : *"si le correctif n'est pas fusionne quand le rejeu devrait commencer, il glisse : premier report de ce poste"*, et la position de `planning.md` (section "Compte des reports") qui n'en compte aucun. **Motif** : *"quand le rejeu devrait commencer"* n'a pas de date. Sans date, la condition ne se declenche jamais, et le compte disparait : c'est ce que `sofia-sm` ecrit du glissement entre paliers, et c'est le mecanisme de `DEC-0007` (trois sprints, un motif defendable chaque fois).
+
+**Regle.** Un poste **retenu par la composition d'un palier** et **non engage a l'ouverture de ce palier** est un report, compte a l'ouverture, **quelle qu'en soit la cause**. Precedent : `DEC-0112` section 6 (les postes de s52 non engages a s53 : "second report") et `DEC-0115` A.10. Un poste engage plus tard dans le palier par amendement date de `planning.md` reste compte : l'engagement tardif n'efface pas le report, il evite le suivant. Le compte n'est pas un reproche : il a pour seul effet la limite de A.67.
+
+### A.67 Postes 7 et 8 : reports comptes
+
+| Poste | Compte | Ce qui debloque |
+|---|---|---|
+| 7, lot `ce1-texte-narratif` (`FRA-CE1-04`) | **premier report de ce poste, s57 palier 1, 2026-10-14** | `Q-B1`, a `nadia-prof`, **seule** (`Q-Y6` est repondue par A.71) |
+| 8, correction d'`ART-CP-10` | **premier report de la reprise elle-meme, s57 palier 1, 2026-10-14** | `Q1`, `Q2`, `Q-Y5` (`nadia-prof`, `ines-design`) |
+
+**Compte de la ligne `ART-CP-10`** : quatre reports (s50 a s53), trois engagements sans fermeture (s54, s55, s56) et ce report : **huit evenements, aucune fermeture**. `DEC-0120` 4.2 la retenait *"avant tout lot neuf"* ; le planning engage deux lots neufs et pas elle. **Je ne le conteste pas** : ces lots ne prennent rien au 0,5 du poste 8 (il reste dans B, `planning.md` "Capacite du palier 1") et ce qui la bloque est une reponse de `nadia-prof` ou d'`ines-design`, pas une capacite. Le poste 9 (B2) n'est pas un report : il suit le poste 8 et le verdict, il n'est jamais retenu seul.
+
+**Limite.** Un deuxieme report du meme poste (non engage a l'ouverture du palier suivant) s'ecrit de la meme facon. **Un troisieme n'est pas permis** : `DEC-0112` section 6 interdit le troisieme report des postes de s53 ; je l'etends ici aux postes 7 et 8. Au troisieme, j'ecris le jour de l'ouverture du palier un acte, abandon du poste ou question a l'utilisatrice, et ce poste n'entre pas dans la composition du palier sans lui.
+
+### A.68 `S57-ADR-0065-DEUX-INSTANCES`, critere 2 (`Q-Y1`)
+
+**Decision : critere remplace, pas conserve.** *"Un seul commit"* n'est pas tenu (deux commits, test inchange) et je l'avais ecrit avant que la forme soit connue. Nouveau critere : `git merge-base --is-ancestor 729b0d8a HEAD` sort 0 dans le worktree de chaque lot de A'. **Contre l'existant** : vert sur `round-two`, ne mord que dans un worktree de lot de A' qui n'existe pas : une clause de porte, dite comme telle. La story reste livree.
+
+### A.69 `VSJ-CE1-R1`, l'exemple de `nadia-prof` (`Q-Y2`, ma part)
+
+**Decision.** Le critere garde ses mots. Je lis *"par exemple"* comme une illustration ; servi tel quel, l'exemple rend rouge `J1`, qu'elle exige tenue : le critere se contredirait. **Regle du poste** : `J1` et les deux tests nommes par `yanis-qa` restent verts sans modification ; si `marc-dev` ne peut pas, il s'arrete et route a `nadia-prof`, qui amende ou non par un amendement date avant le commit. Je ne decide pas quelle condition s'assouplit : `Q-N1` lui demande si ma lecture est la sienne. **Le poste 3 reste engage.**
+
+### A.70 `S54-OBS-SCI-CONSIGNE`, criteres 1 et 2 (`Q-Y3`)
+
+**Decision : les deux sont remplaces dans leur commande, pas dans ses mots.** Le critere 2 laissait passer une question reecrite sur sa ligne (mesure de `yanis-qa`, refaite par moi sur des copies hors depot : `11 1 0`) ; la commande de paires rend `12 0 0` sur le resultat conforme. Le critere 1 est garde par un test : sans lui, remettre la phrase laissait la CI verte. **Je ne remets pas ma commande a `nadia-prof` comme sa definition** : sa phrase est testable, c'est ma commande qui etait faible ; la seule reserve ecrite est de savoir si *"rien d'autre ne change"* couvre le texte des questions (je le lis ainsi). Les amendements precedent le premier commit de `lea-dev` (porte `P-4`).
+
+### A.71 Trois lots de francais CE1 (`Q-Y6`, ma part)
+
+**Decision.** Regle de comptage de `LON-CE1-3` et `-4` pour le test de paquet : celle de `yanis-qa`. **Je ne la tranche pas par preference : elle ne change aucun verdict** sur les vingt textes de `ce1-texte-narratif` sous trois regles de mots et trois de phrases (A.63) ; les phrases sont a 4, a la borne, jamais au-dessus. Si un texte approche de la borne un jour, la question revient a `nadia-prof`. La propriete de la majuscule s'ecrit en commande sur tous les items (2 aujourd'hui, identique a la mesure limitee a `# ordre`) ; la cible est `Q-B1`. Le module et les classes de test sont nommes. **Les postes 4 et 5 n'etaient pas bloques** ; le poste 7 l'est par `Q-B1` seule.
+
+### A.72 Glissements de palier : une limite par poste (`sofia-sm`, `planning.md`, section "Compte des reports")
+
+**Decision.** Un poste **engage** au palier N et non audite a sa cloture glisse au palier N+1 (`planning.md` D2 ; condition 2 de 11.3 de `nadia-prof`). C'est un glissement, pas un report, comme A.59 le dit. **Un poste glisse au plus une fois.** S'il n'est pas audite a la cloture du palier N+1, le second glissement est un **report compte** au sens de A.66, ecrit par moi le jour de la cloture, et A.67 s'applique : le troisieme est interdit. **Aucune limite n'est posee au nombre de paliers** : l'utilisatrice a repondu *"oui"* a une suite de paliers de 8,0 (A.53) et le sprint s'arrete quand aucun lot instruit ne reste ou quand elle l'arrete (`planning.md` D1, D3). Ce que la limite borne est la duree de vie d'un poste, pas celle du sprint : c'est la reponse a *"la cloture n'a pas de date, l'interdiction du troisieme report ne mord que tard"*.
+
+### A.73 Application a `S54-OBS-SCI-CONSIGNE`
+
+Deux reports comptes (s55, s56) ; le placement n'en est pas un (A.34, A.44). **Un glissement du palier 1 au palier 2 est permis une fois (A.72). A la cloture du palier 2, si la story n'est pas livree et rejouee par `nadia-prof`, c'est le troisieme report, interdit par `DEC-0112` section 6, et l'acte d'abandon s'ecrit ce jour-la.** **Remplace** *"a la cloture de s57"* dans A.34, A.44 et A.59 (la phrase *"l'acte ecrit d'abandon se prend a la cloture de s57 si la story n'est ni livree ni rejouee"*). Si s57 se cloture avant qu'un palier 2 existe, l'acte se prend a cette cloture. La ligne `SCI-CM1-20` reste `couvert-valide` et n'est pas rouverte. Elle est le premier poste de `lea-dev` : la correction d'`ART-CP-10` ne passe pas devant elle (`planning.md`, "Charge des developpeurs").
+
+### A.74 `RP-ACCUEIL-147` et `HS-ACCUEIL-APM-R2` (`Q-S3`, suite)
+
+**`RP-ACCUEIL-147`** : l'instance et le moment sont a `nadia-prof` ; l'instance n'a pas d'effet sur le produit (fichier d'accueil, ni jar ni port, hors du jeu de conflits des instances). **Je fixe l'echeance** : faite avant la cloture du palier 1 ; sinon un glissement, ecrit dans `cloture-palier-1.md` (A.72). Demandee par l'utilisatrice le 2026-10-12 (`DEC-0120` 4.5).
+
+**`HS-ACCUEIL-APM-R2`** : **reste non engagee**. Ce qui m'en empeche : le prix de l'audit est a `nadia-prof` et n'est pas ecrit. **Je fixe** que cet audit ne se prend ni sur les marges de rejeu ni sur les 0,75 non affectes de B, et qu'il entre dans les 8,0 du palier qui engage la story. Aucun developpeur n'est designe avant le prix. Ce n'est pas un report : la story n'a pas ete retenue par la composition du palier 1.
+
+### A.75 Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Fusionner l'annotation du backlog et cet amendement **avant** le premier commit de `lea-dev` (`P-4`) ; amender la section "Compte des reports" de `planning.md` (postes 7 et 8 : report, A.67) ; ecrire dans `cloture-palier-1.md` les glissements, les reports et la limite d'A.72 ; `S57-ARB-PALIER-1` comme ligne du poste 1 ; verifier l'ordre du critere 3 de `S57-ARB-PALIER-1` a la cloture |
+| `nadia-prof` | `Q-B1` ; `Q-N1` (l'exemple de `VSJ-CE1-R1`) ; `Q-N2` (prix de l'audit d'`APM-R2`) ; `Q-N3` : `Q1`, `Q2`, `Q-Y5`, a repondre dans le palier 1 ; `RP-ACCUEIL-147` ; la ligne de lecture complete de chaque paquet |
+| `theo-archi` | Rien de neuf : `R3` est repondue ; `Q-Y4` (juge pur) reste a lui et a `yanis-qa` |
+| `yanis-qa` | Ecrire, avec `lea-dev`, le test du critere 1 de `S54-OBS-SCI-CONSIGNE` et, avec `marc-dev`, le comptage de `VSJ-CE1-R1` |
+| Utilisatrice | Aucune question neuve. A lire : le compte d'`ART-CP-10`, huit evenements sans fermeture (A.67) |
+
+### A.76 Statuts, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Proposee` dans cet amendement** ; son passage est le sujet du suivant, ecrit a part.
+- **Statuts de stories** : `S57-ARB-PALIER-1` ecrite, engagee (poste 1) ; `S57-ADR-0065-DEUX-INSTANCES` livree, critere 2 remplace ; les postes 7 et 8 non engages, reports comptes ; `HS-ACCUEIL-APM-R2` non engagee. **Matrice : 142 / 200, aucun statut.**
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, ni paquet, ni fiche ; ne dit pas que la CI distante est verte ; ne decide rien de technique (le moyen de B2, le juge de pli, la forme de la correction restent a `theo-archi` et `ines-design`).
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison (`chemins`, `prefixes`). `build` et `outils` ne sont pas lances : le commit ne modifie ni code, ni contenu, ni outil, et je n'en deduis pas le resultat.
+
+---
+
+## Amendement du 2026-10-14, dixieme (`camille-po`, passage de `Proposee` a `Acceptee`)
+
+Annotation datee. **Rien au-dessus n'est reecrit**, a une exception nommee : la ligne `Statut` de l'en-tete porte desormais le nouveau statut, avec l'ancien. Meme geste que `DEC-0116` A.37. **Aucun fichier de matrice, de catalogue, de paquet, de code ni de fiche n'est touche.**
+
+### A.77 Motif du passage a `Acceptee`
+
+**Condition que j'avais ecrite** (A.45, A.55) : *"quand la duree et la borne de s57 sont ecrites (`sofia-sm`, `nadia-prof`)"*, et A.55 : *"je la passe, dans un amendement date, quand la ligne de `sofia-sm` est dans le depot"*. Etat mesure le 2026-10-14 sur `round-two` a `829db5eb` (cet amendement s'ecrit sur le commit de A.63 a A.76) :
+
+| Element | Commande | Sortie |
+|---|---|---|
+| Borne : 8,0 par palier, 5,0 et trois lots par instance | `grep -n "^### 11.3" squad/conformite/ARBITRAGE-PREALABLE-s57-criteres-de-la-version-cp-ce1-cm1.md` | ligne 516, *"La borne d'un sprint plus long : 8,0 par palier, un palier clos avant le suivant"* (A.55 : ecrite) |
+| Duree ecrite comme decidee | `grep -n "^- \*\*D[1-5] " squad/sprints/s57-version-cp-ce1-cm1-trois-instances/planning.md` | cinq lignes, D1 a D5, lignes 45 a 49 ; la ligne 43 dit : *"Ce paragraphe est la ligne datee de duree que `DEC-0120` A.55 demande"* |
+| Amendement de `squad/README.md` section 4 (`Q-S1`) | `grep -n "Un sprint a paliers a une seule" squad/README.md` | ligne 166 |
+| `Q-U1` | amendement A.1 | trois instances A, A' et B, mots de l'utilisatrice forme 2 |
+
+**La condition est remplie sur ses termes ecrits.** La condition d'origine de l'en-tete (*"`Q-U1` a une reponse et la retraite de `S54-OBS-SCI-CONSIGNE` n'est pas contredite"*) a ete remplacee par A.37 puis A.45 ; la retraite a ete remplacee par un placement (A.34) sur la reponse de l'utilisatrice.
+
+**Ce sur quoi l'acceptation repose, et ce sur quoi elle ne repose pas.**
+
+- Elle repose sur A.55 (forme 1 : un fichier du depot, une commande) et sur les mots de l'utilisatrice en forme 2 deja consignes (*"oui plus que 8"*, *"oui"*, *"ok"*, *"on plannifie A A' et B"*, A.1, A.38, A.53), **que je n'ai pas lus de sa main** (meme reserve que partout dans cette decision).
+- Elle ne repose **pas** sur A.63 a A.76 de ce jour (report compte a l'ouverture, limite d'un glissement par poste, identifiant de B2) : ces points sont de ma main, motif de forme 1, sans mots de l'utilisatrice. Si elle les conteste, un amendement les remplace sans toucher au statut.
+- Elle ne dit pas que la CI distante est verte, ni qu'un lot est valide : aucun Done n'est prononce.
+
+### A.78 Routage, ce que cet amendement ne fait pas
+
+`DEC-0120` etait deja appliquee dans ses decisions (en-tete : *"s'appliquent des maintenant"*) ; le statut ne change aucune affectation. **Statut : `Acceptee` le 2026-10-14.** `DEC-index.md` suit. Ne fait pas : ne touche aucun poste, aucune story, aucune ligne de matrice ; ne prononce aucun Done.
+
+---
+
+## Amendement du 2026-10-14, onzieme (`camille-po`, apres les decisions `D1` a `D7` de `nadia-prof` sur les postes 7 et 8)
+
+Annotation datee, apres 18:24 (UTC+02:00). **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme en A.80. **Le statut ne change pas : `Acceptee` (A.77).** Source : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/lecture-nadia-palier-1.md` (`7161ab69`, fusionne `6ca84317`). Les criteres sont dans l'annotation du meme jour du backlog ("onzieme") ; cet amendement porte la consignation, pas les criteres. Ce sont des decisions de `nadia-prof`, consignees sans etre jugees ; aucun mot de l'utilisatrice n'est en jeu.
+
+### A.79 Mesures de cet amendement
+
+Arbre `round-two` a `6ca84317`, worktree `s57-camille-amend`, 2026-10-14. Scripts hors depot ; le premier est repris dans le backlog.
+
+| Commande | Sortie |
+|---|---|
+| `git rev-parse --short HEAD` (worktree, avant ecriture) | `6ca84317` |
+| propriete de la majuscule (script du backlog, `S2`) sur `ce1-texte-narratif.yaml` | 2 |
+| meme script sur une copie sans majuscule pour Sara et Nour | 0 |
+| meme script sur cette copie avec une bonne reponse `Élise pèle une pomme` ; ancien `awk` de `S2` | 1 ; 0 |
+| `grep '^ *indice:' ... \| grep -vcE 'indice: "(Relis\|Cherche)'` (`S3`) | 1 |
+| `grep -c "Pense à ce qu'on fait avant de couper un fruit"` (meme fichier) | 1 |
+| comptage de `LON-CE1-3` et `-4`, regle de s47 : mots, phrases, mots par phrase, maximum sur 20 textes | `22 4 10` |
+| meme comptage, texte a 5 phrases ; texte a 13 mots dans une phrase (copies) | `22 5 10` ; `22 4 13` |
+| propositions absentes de leur texte, sur le paquet ; sur la copie corrigee | `0 60` ; `0 60` |
+| `grep -c 'celle-ci'`, `grep -c 'ces deux'`, `grep -c 'explication:'` sur `cp-rapprocher-deux-oeuvres.yaml` | 6, 6, 6 |
+| `grep -c "id: bandit-manchot-rapprocher-deux-oeuvres-cp$"` sur `catalogue.yaml` | 0 |
+
+**Ce que je n'ai pas fait** : lancer `mvn`, jouer un jeu, mesurer une cote dans un navigateur (le jeu n'est pas servi), lire la CI distante. Les cotes 676, 568 et 656 sont celles du jar de s56, reprises de `nadia-prof` et d'`ines-design`. Le rouge de `S56-RDO-CP-R2` est etabli par lecture de `PartieController.retourModele`, pas par un test lance.
+
+### A.80 Poste 7 : `S57-BR-FRA-CE1-04` amende (`D1`, `D2`, `D3`)
+
+- **`D1`, la majuscule : correction avant le branchement, cible 0 sur les 20 items** (aujourd'hui 2), majuscule Unicode. **`D2`, l'indice de Sara : correction avant le branchement, cible 0** sur la mesure de `S3` (aujourd'hui 1). Ses mots, qui remplacent *"je le jugerai en jouant"* : la propriete se decide sur le fichier.
+- **`D3`, la regle de comptage de `LON-CE1-3` et `-4` est celle de s47** (`ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`, section 2). **Remplace A.71**, qui donnait celle de `yanis-qa`. Le motif d'A.71 (*"elle ne change aucun verdict"*) reste exact, il ne suffisait pas : `nadia-prof` a une regle ecrite, c'est elle qui fait foi. Les deux se separent sur une phrase qui s'ouvre par un chiffre ou une minuscule.
+- Le YAML du paquet entre dans la liste de `K2` (la clause *"seulement si `nadia-prof` decide une correction"* joue) ; `S6` ajoute une clause de non-regression (aucune proposition hors du texte).
+- **Le poste n'est pas engage par cet amendement.** Reste : l'amendement de `planning.md` par `sofia-sm` (`P-5`) et le developpeur a designer. Il ne manque rien de la part de `nadia-prof` ni de la mienne (sa section 4.1).
+
+### A.81 Poste 8 : `S56-RDO-CP-R1` (`D5`)
+
+`RDO-CP-R1` se leve dans le meme rejeu que le refus. **La forme vise 125 px a 744 x 551** (`.indice`, aujourd'hui a 676) **et 17 px a 992 x 551** (pastille, aujourd'hui a 568). **La barre du refus reste 105 px** (`.reponse-revelee`, 656), sur son seul critere : 125 est la cible de la forme, pas une barre relevee du verdict ; si le rejeu montre la phrase de `M4` au-dessus du pli et l'indice dessous, le refus est leve et `RDO-CP-R1` reste une reserve non bloquante. **Je ne decide pas la forme visuelle des 125 px** : elle revient a `ines-design` (dans `C1` a `C4` de `theo-archi`), jugee par `nadia-prof` sur `M1`, `N1` a `N6`, la regle 6 et `C4` de s55, sans cote de vehicule. Prix du rejeu inchange : 0,5.
+
+### A.82 Poste 8 : `S56-RDO-CP-R2` (`D6`, `D7`)
+
+**Voie (b)** : sur l'ecran de fin d'un jeu dont la bonne reponse est une reproduction, ni la question rappelee ni l'explication ne sont posees, que la derniere manche soit juste ou revelee. (a) et (c) sont ecartees par `nadia-prof`, motifs dans sa section 1.5. **Critere : liste fermee des textes permis** (`D7`), pas une liste de mots interdits : `Les jeux` ; `Tu as trouvé, tout seul :` ; `Tu as joué toutes les questions :` ; les deux nombres du score ; `Bravo, c'est juste !` ; `Tu n'as pas trouvé.` ; `C'est fini !` ; aucun texte de l'item. Le contenu du paquet ne change pas (`celle-ci` : 6, doit rester 6). Amendements d'`ADR-0104` (decision 4, point 5) et d'`ADR-0084` (`REV-3`) : `theo-archi`, dans le commit du code. **Ce que `nadia-prof` garde seule** : ce que ces textes disent a un enfant de CP.
+
+### A.83 Ce que cela change aux comptes de A.67 : rien
+
+A.66 compte un report **a l'ouverture** du palier et dit : *"l'engagement tardif n'efface pas le report, il evite le suivant."* Les postes 7 et 8 ne sont pas engages a cette ouverture : le premier report de chacun (s57, palier 1, 2026-10-14) **reste ecrit**, y compris si `sofia-sm` les engage plus tard dans le palier. **La ligne `ART-CP-10` garde ses huit evenements sans fermeture** (A.67) tant qu'un rejeu ne l'a pas fermee. Une fois engage, un poste non audite a la cloture glisse selon A.72.
+
+### A.84 Ce qui bloque encore l'engagement
+
+| Poste | Reste a faire | A qui |
+|---|---|---|
+| 7 | amendement date de `planning.md` (`P-5`) ; developpeur designe | `sofia-sm` |
+| 8 | proposition de forme des pixels de `RDO-CP-R1` ; seconde moitie de `Q-Y4` (juge pur sur le releve) ; amendement date de `planning.md` (`P-6`) ; `C1` a `C4` au rapport du developpeur | `ines-design` ; `theo-archi`, `yanis-qa` ; `sofia-sm` ; developpeur |
+| 9 (B2) | poste 8 fusionne ; `Q3` repondue (A.65) | `sofia-sm` |
+
+### A.85 Routage
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Fusionner l'annotation du backlog et cet amendement **avant** le worktree du poste 7 (`P-5`) et celui du poste 8 (`P-6`) ; amender `planning.md` pour engager chaque poste quand ses portes sont remplies, en nommant le developpeur ; l'entree `S56-VSJ-CE1-R1` du backlog dit encore `Q-N1` ouverte alors que `D4` y repond |
+| `nadia-prof` | `Q-C1` : `D7` couvre-t-elle les attributs (`alt`, `title`, `aria-label`) du fragment `retour` en plus des noeuds de texte ? |
+| `ines-design` | Proposer d'ou viennent les 125 px et les 17 px, sur les quatre points de `nadia-prof` (backlog, `S56-RDO-CP-R1`, point 3) |
+| `theo-archi` | Amendements d'`ADR-0104` et d'`ADR-0084` dans le commit du code ; seconde moitie de `Q-Y4` |
+| `yanis-qa` | Le test de `D1` (majuscule Unicode), la regle de s47 pour `LON-CE1-3` et `-4`, la liste fermee de `D7` ; juge pur du releve avec `theo-archi` |
+| Utilisatrice | Aucune question neuve. A lire : la ligne `ART-CP-10` compte toujours huit evenements (A.83) |
+
+### A.86 Statuts, ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Acceptee`.** Statuts de stories : `S57-BR-FRA-CE1-04` amendee, non engagee ; `S56-RDO-CP-R1` et `S56-RDO-CP-R2` amendees, non engagees ; la correction d'`ART-CP-10` reste `non couvert`. **Matrice : 142 / 200, aucun statut** (`git diff round-two --stat -- squad/programme/` : vide).
+- **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne choisit aucune forme visuelle, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, ni paquet, ni fiche ; ne dit pas que la CI distante est verte.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison. Ceux qui ne sont pas lances ne sont pas deduits.

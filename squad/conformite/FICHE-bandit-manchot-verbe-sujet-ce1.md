@@ -12,8 +12,9 @@
   (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`), avec la barre de s54 sur `TRV-CE1-5` ; `J1` a `J5`, `H1`, `H2` et les onze
   proprietes de la section 2.8 (`ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md`, section 2).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-11 par `nadia-prof` (s56), apres avoir joue le jar
-  servi. Fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-11.
+  servi. Fiche ouverte par ce verdict. Rejeu du 2026-10-14 (s57) : `VSJ-CE1-R1` levee sur `7dc40fb0`, reserve neuve
+  `VSJ-CE1-R2` ; statut inchange, **VALIDE SOUS RESERVE**.
+- **Derniere mise a jour** : 2026-10-14.
 
 ---
 
@@ -105,3 +106,82 @@ dans le dernier (`ADR-0100`). Prefixe `VSJ-CE1` deja alloue (`VSJ-CE1-1` a `-3`)
 **Tarif consomme** : audit 1,0 (premier passage, instance A au planning).
 
 **Signe** : `nadia-prof`, s56, 2026-10-11.
+
+### Note du 2026-10-14 (`nadia-prof`, s57, palier 1) : propriete 8 amendee
+
+La propriete 8 est amendee comme annonce en section 5 : `ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md`, 2.8, bloc
+*"Amendement du 2026-10-14"*. Mon exemple de la section 5 (*"Ce matin, Léa lit un livre."*) contredit ma propre `J1` : il est
+retire comme modele, un exemple qui tient est dans l'amendement. Le critere de levee de `VSJ-CE1-R1` ne change pas. Aucun verdict
+neuf.
+
+### Rejeu du 2026-10-14 (`nadia-prof`, s57, palier 1, instance A) : `VSJ-CE1-R1` **levee** ; statut **VALIDE SOUS RESERVE**, reserve neuve `VSJ-CE1-R2`
+
+**Objet joue** : branche `s57-marc-vsj-ce1-r1`, commit `7dc40fb0` (`marc-dev`), **non fusionne**. Trois items de sujet
+reecrits (items 1, 16 et 20 du fichier) et `PaquetCe1VerbeSujetTest`. L'amendement de la propriete 8 (`7161ab69`) est ancetre
+du commit (`git merge-base --is-ancestor 7161ab69 7dc40fb0` sort 0) ; `bash outils/verifier-lignee.sh` sort 0.
+
+#### 1. Ce que j'ai fait
+
+- **Build** : `bash outils/mvn-jdk21.sh -B clean verify` dans le worktree de la branche, racine, sans `-pl` : `BUILD
+  SUCCESS`, 2504 tests (120, 31, 486, 1490, 371 et 6 d'integration), 0 echec, 0 erreur, 0 ignore ; JDK 21.0.10
+  (`java.version` d'un rapport Surefire de `bootstrap`). Done technique : job `build` seul, lance par moi ; les autres jobs ne
+  sont pas les miens sur ce commit.
+- **Jar** : `java -jar bootstrap/target/recreo.jar --server.port=18511` (port de A, palier 1, libre avant : `netstat -ano`
+  filtre sur `:18511 ` ne rendait rien) ; journal : *"Tomcat started on port 18511"*, PID 55476, arrete par ce PID seul.
+  Dossier de poste `s57-p1-nadia-prof-a`, hors depot.
+- **Par les routes servies** (`POST /parties/bandit-manchot-verbe-sujet-ce1`, puis `/coups`, script de poste) : 27 parties
+  de dix manches, **les 24 items tires**, 555 erreurs, 105 revelations, **0 ecart** (propositions servies identiques au
+  fichier, aucun indice avant la premiere erreur, indice servi identique au fichier apres chaque erreur, revelation de la
+  bonne reponse). Les trois items reecrits tires 24 fois (8, 10 et 6), joues sur chacun de leurs distracteurs et jusqu'a
+  la revelation.
+- **Rendu a 744 x 551, apres une erreur** (methode de `P3`, s25) : page servie, fragment de la manche jouee insere dans
+  `#jeu`, Chrome sans tete, `getBoundingClientRect()` ; fenetre reglee pour que `innerWidth` x `innerHeight` vaille 744 x
+  551. **Methode differente de `pilote-q7.mjs`** (pas de protocole de debogage, pas de port 19222) ; etalonnee sur un item
+  non modifie : bas du bloc `.indice` a 534, la ou s56 relevait le bas du texte a 522. Les 24 items, un par un.
+
+#### 2. Le critere de levee, joue
+
+| Point | Constat sur le jar |
+|---|---|
+| Au moins 3 items de sujet avec un distracteur avant le verbe | **3** : *"le soir"* (item 1), *"le toit"* (16), *"le matin"* (20). Sur ces trois items, la proposition la plus a gauche dans la phrase est un distracteur : l'enfant qui choisit le premier groupe de la phrase se trompe. **Tenu** |
+| La bonne reponse reste le sujet | *elle*, *les oiseaux*, *un grand bus*. **Tenu** |
+| Point 1 de l'amendement : complement en tete, de temps ou de lieu, suivi d'une virgule ; jamais une personne ni un animal | *le soir*, *le matin* (temps), *le toit* (lieu, copie raccourcie de *sur le toit*, comme *la table* ou *le sac* ailleurs dans le paquet). Aucun n'est une personne ni un animal, aucun ne fait l'action. **Tenu**. La virgule est gardee par le test ; le sens, par moi |
+| Point 2 : pas *"regarde les mots devant"* sur ces items | *"Demande-toi : qui fait l'action de ce verbe ?"* (1) ; *"Pose la question « Qui est-ce qui ? » avant le verbe."* (16, 20). Servis apres chaque erreur. **Tenu** |
+| `J1`, plancher, propriete 4, liste d'ouvertures de `TRV-CE1-6` | aucune majuscule dans les trois propositions des trois items ; pronom 5, prenom 5, groupe nominal 5 ; aucun prenom ajoute ; *Le* et *Sur* etaient deja dans la liste d'ouvertures du test, **qui ne change pas** (mon point 4 prevoyait d'y ajouter le mot d'ouverture : aucun n'etait neuf). **Tenu** |
+| `LON-CE1-1` | 10 mots au plus pour la phrase la plus longue (*"Le matin, un grand bus emmène les élèves à l'école."*). **Tenu** |
+| Exactitude, ton | les trois phrases et leurs sujets sont justes ; rien a relever |
+
+Les trois items *"regarde les mots devant"* qui restent (4, 8, 12) n'ont aucun distracteur avant le verbe : l'indice y est
+vrai, et l'enfant qui l'applique a la lettre aux items 1, 16 et 20 y trouve deux candidats. C'est ce que la reserve demandait.
+
+#### 3. Correction de mon propre constat de s56
+
+J'ai ecrit le 2026-10-11 (section 1) : *"l'indice est au-dessus du pli sur les dix"*. C'etait vrai des dix manches jouees,
+**pas du paquet** : l'ancien item 16 (*"« Les oiseaux mangent des graines sur le toit. »"*), que je n'avais pas tire au
+navigateur, met deja l'enonce sur trois lignes et le bloc de l'indice a 532 - 582. Mesure faite aujourd'hui en remplacant
+le seul texte de l'enonce dans la page servie, pas sur le jar de s56.
+
+#### 4. Reserve neuve, datee du 2026-10-14, non bloquante
+
+**`VSJ-CE1-R2` - a 744 x 551, apres une erreur, l'indice des items 16 et 20 est coupe par le pli.** Sur 22 items, le bloc
+`.indice` va de 484 a 534 ; sur les items 16 (*"Sur le toit, ..."*) et 20 (*"Le matin, un grand bus ..."*), l'enonce
+passe sur trois lignes et le bloc va de **532 a 582** : l'enfant voit *"Ce n'est pas ça. Essaie encore !"* et le bord
+haut d'un cadre vide. **Item 20 : introduit par ce lot** (l'ancien texte, mesure de la meme facon, laissait l'indice a 484 -
+534). **Item 16 : anterieur** (section 3). Ce sont deux des trois items qui portent la methode *"Qui est-ce qui ?"* a la
+place de la position. **Non bloquante** : le verdict et la croix sont au-dessus du pli, l'indice est atteint en
+faisant defiler, et c'est le regime de `RDO-CP-R1`. **Ce qui la leve** : a 744 x 551, apres une erreur, le bas du bloc
+`.indice` est au-dessus de y = 551 sur les 24 items. La forme est au developpeur (par exemple une phrase citee plus courte
+sur ces deux items, sans perdre le complement en tete) ; je la juge en rejouant.
+
+#### 5. Ce dont je reste la seule garde sur cette ligne
+
+Le test garde le compte de 3, la virgule, l'indice de la place, `J1`, le plancher. **Il ne garde pas** : que le complement
+en tete soit de temps ou de lieu et ne fasse pas l'action ; la position de l'indice par rapport au pli (`VSJ-CE1-R2`) ;
+l'exactitude des 48 reponses. **Je les tiens en jouant.**
+
+**Identifiants** : un neuf, `VSJ-CE1-R2`. Forme copiee de `VSJ-CE1-R1` : trois segments, niveau au milieu, marqueur `R`
+dans le dernier (`ADR-0100`) ; prefixe deja alloue ; ligne de la section 4 de `REGISTRE-identifiants.md` dans le meme diff.
+
+**Tarif consomme** : rejeu 0,5 (poste 3, instance A). Marge de rejeu de A intacte.
+
+**Signe** : `nadia-prof`, s57, palier 1, instance A, 2026-10-14.

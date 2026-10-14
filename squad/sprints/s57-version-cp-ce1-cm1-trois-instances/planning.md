@@ -262,3 +262,70 @@ Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
 ## Decisions prises
 
 **Aucune `ADR` ni `DEC` n'est creee ou amendee par ce fichier.** `DEC-0120` reste `Proposee` (`Q-S2`, `Q-S3`, et son passage a `Acceptee` sont a `camille-po`). Ce planning ecrit : la duree comme decidee (D1 a D5), les affectations nominatives du palier 1 et les developpeurs des postes 3 a 9, la marge de B nommee, la regle d'ouverture d'un palier, la table d'isolation `I1` a `I3`, la ligne de B2, l'ordre de fusion et le comptage du catalogue, la position sur le glissement de `S54-OBS-SCI-CONSIGNE`. Il ouvre s57 **sur la confirmation relayee de l'utilisatrice et non sur l'acceptation de `DEC-0120`**. Le seul autre fichier modifie dans ce commit est `squad/README.md`, section 4 (`Q-S1`). Les questions ouvertes ci-dessus sont les obstacles de `review.md` a l'ouverture, avec leur route.
+
+---
+
+## Amendement du 2026-10-14 18:20 (UTC+02:00), apres les decisions fusionnees depuis ce planning
+
+Annotation datee, heure lue par `date`. **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme. Arbre : `round-two` a `6ca84317`, branche `s57-sofia-amend`, `bash outils/verifier-lignee.sh` sort 0. Sources : `DEC-0120` A.63 a A.78 (`camille-po`), `lecture-nadia-palier-1.md` (`nadia-prof`, `7161ab69`), annotations du backlog. **Cet amendement n'engage ni le poste 7 ni le poste 8** : `camille-po` (amendement des stories) et `ines-design` (forme des 125 px) sont en cours, et leurs portes P-5 et P-6 ne sont pas remplies.
+
+### Statut de `DEC-0120`
+
+**Remplace** *"`DEC-0120` n'est pas `Acceptee`"* (section "Sur quoi repose l'ouverture") : `grep -n "^- \*\*Statut"` sur `DEC-0120` rend, ligne 13, **`Acceptee le 2026-10-14 (amendement A.77)`**. Le passage est de `camille-po`, motif A.55 : la ligne de duree de ce planning (D1 a D5) est dans le depot. **Ce qui ne change pas** : l'ouverture a eu lieu sur la confirmation relayee de l'utilisatrice, avant le passage ; A.77 dit elle-meme qu'elle repose sur les memes mots en forme 2, non lus de sa main, et pas sur A.63 a A.76.
+
+### Compte des reports : remplace la section du meme nom
+
+`Q-S2` est repondue en premiere partie par `DEC-0120` A.66 et A.67. **Je confirme A.72 comme regle de ce planning** : elle est ecrite a ma place (*"`sofia-sm`, `planning.md`"*), elle porte sur les paliers et la duree, qui sont mon poste ; elle remplace ma phrase *"je ne pose aucune limite au nombre de paliers de glissement : c'est un compte de report, donc a `camille-po`"*. Deux regles, appliquees ici :
+
+- **Un report** est un poste retenu par la composition d'un palier et non engage a l'ouverture de ce palier, quelle qu'en soit la cause (A.66). Il est compte a l'ouverture ; un engagement tardif ne l'efface pas, il evite le suivant.
+- **Un glissement** est un poste engage au palier N et non audite a sa cloture (D2, condition 2 de 11.3). **Un poste glisse au plus une fois.** Le second glissement est un report compte, ecrit par moi le jour de la cloture ; **le troisieme report est interdit** (A.67, A.72). Aucune limite n'est posee au nombre de paliers de s57.
+
+| Poste | Compte a l'ouverture du palier 1, 2026-10-14 | Ce qui debloque |
+|---|---|---|
+| 7, `ce1-texte-narratif` (`FRA-CE1-04`) | **premier report de ce poste** (A.67). Remplace *"je ne compte pas de report"* | `Q-B1` est repondue (`lecture-nadia-palier-1.md`, D1 et D2 : correction avant le branchement, cible 0) ; reste l'amendement de `S57-BR-FRA-CE1-04` par `camille-po` |
+| 8, correction d'`ART-CP-10` et rejeu | **premier report de la reprise elle-meme** (A.67). Remplace *"je ne compte pas de report"* | `Q1`, `Q2`, `Q-Y5` sont repondues (D5 a D7, voie (b), 125 px a 744) ; reste la forme d'`ines-design` et l'amendement de `S56-RDO-CP-R1` et `-R2` par `camille-po` |
+| 9, branche B2 | **pas un report** : elle suit le poste 8 et le verdict, jamais retenue seule (A.67). `Q3` est repondue (A.65) : l'entree reprend l'identifiant `bandit-manchot-rapprocher-deux-oeuvres-cp` | le poste 8 |
+
+**Compte de la ligne `ART-CP-10`** : quatre reports (s50 a s53), trois engagements sans fermeture (s54, s55, s56), plus ce report : **huit evenements, aucune fermeture** (A.67). A lire par l'utilisatrice, comme A.75 le dit.
+
+**`S54-OBS-SCI-CONSIGNE`** : deux reports comptes (s55, s56), le placement n'en est pas un, le poste est engage et livre sur branche. **Remplace** *"l'acte ecrit d'abandon se prend a la cloture de s57"* (section "Compte des reports", premiere ligne) par A.73 : un glissement du palier 1 au palier 2 est permis une fois ; **a la cloture du palier 2, si la story n'est pas livree et rejouee par `nadia-prof`, c'est le troisieme report, interdit, et l'acte d'abandon s'ecrit ce jour-la**. Si s57 se cloture avant qu'un palier 2 existe, l'acte se prend a cette cloture.
+
+**Lots de francais CE1** : le premier report de `DEC-0120` A.56 reste solde (A.59). Le poste 7 est un report neuf, ligne ci-dessus. **Au palier 2, le poste 7 s'il n'est toujours pas engage a l'ouverture est le second report, puis le troisieme est interdit** : je l'ecrirai ce jour-la.
+
+### Engagements, etat au 2026-10-14 18:20
+
+Les faits sont lus sur les branches (`git log`, `git diff --stat round-two...<branche>`), pas sur les rapports des agents. **Livre veut dire commit sur une branche non fusionnee** : aucun Done, `nadia-prof` joue les branches.
+
+| # | Poste | Etat | Faits |
+|---|---|---|---|
+| 1 | Arbitrage prealable | **engage, story `S57-ARB-PALIER-1`** | titre au backlog : `grep -c "^#\{3,4\} .*S57-ARB-PALIER-1" docs/backlog/backlog.md` rend 1 (A.64). Part ecrite livree. **Criteres 2 et 3 non constates verts** : aucune ligne datee *"lecture complete"* avec le nom du paquet et le nombre d'items lus n'est dans `lecture-nadia-palier-1.md` (`grep -rnE "lecture complete"` sur ce fichier et sur `squad/conformite` : une phrase de l'en-tete qui cite l'arbitrage, aucune ligne de paquet). La forme de la ligne est a `nadia-prof`. Ordre du critere 3 verifie par moi a la cloture, une ligne par paquet |
+| 3 | `VSJ-CE1-R1` | **engage ; `marc-dev` l'a repris** | worktree et branche `s57-marc-vsj-ce1-r1` sur `6ca84317`, **aucun commit** (`git log round-two..s57-marc-vsj-ce1-r1` vide). Porte P-3 **remplie** : l'amendement date de la propriete 8 est sur `round-two` (`grep -c "Amendement du 2026-10-14"` sur `ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md` rend 1). A.69 : `J1` et les deux tests nommes restent verts sans modification ; sinon `marc-dev` s'arrete et route |
+| 4 | `ce1-phrases-types` (A') | **livre**, branche `s57-fra-ce1-10`, commit `1f6642ab` (16:39:44), non fusionne | 5 fichiers, 624 insertions : `catalogue.yaml`, `PaquetCe1PhrasesTypesTest`, son dossier de fixtures, `TexteAccentueExposeParLePortEntrantTest`. Le YAML du paquet n'est pas touche. Porte P-2 : `git merge-base --is-ancestor 729b0d8a 1f6642ab` sort 0. Base `3a3ea97e` |
+| 5 | `ce1-accord-groupe-nominal` (A') | **engage**, ma tache de developpeuse, separee de celle-ci | non constate ici |
+| 6 | `S54-OBS-SCI-CONSIGNE` (B) | **livre**, branche `s57-sci-consigne`, commit `c3875936` (16:29:52), non fusionne | 2 fichiers, 31 insertions, 12 suppressions : le paquet et `PaquetCm1SciencesExtraireInformationTest`. Base `3a3ea97e`. **Porte P-4 non remplie par la lignee** : les amendements de `Q-Y3` (A.70) sont dans `829db5eb` (16:28:55), fusionnes dans `72719521` a 16:32:10, apres ce commit ; `git merge-base --is-ancestor 829db5eb s57-sci-consigne` sort 1. Le message du commit cite le test du critere 1 et le critere 3, pas la commande de paires du critere 2 amende. **Je ne juge pas le contenu** : `lea-dev` cite la commande de paires de A.70 et sa sortie avant la fusion, et `yanis-qa` la relit |
+| 7 | `ce1-texte-narratif` | **non engage**, report compte | tableau ci-dessus |
+| 8 | Correction d'`ART-CP-10` et rejeu | **non engage**, report compte | tableau ci-dessus |
+| 9 | Branche B2 | **non engage** | tableau ci-dessus |
+
+**Lignee des deux branches livrees.** Elles partent de `3a3ea97e`, avant les fusions de `camille-po` et de `nadia-prof` : `git merge-base --is-ancestor round-two <branche>` sort 1 pour les deux, ce qui est attendu quand `round-two` a avance, et `bash outils/verifier-lignee.sh` reste le juge. **Je le relance avant chaque fusion, branche par branche** ; la fusion de `round-two` dans une branche d'agent n'est pas demandee.
+
+**Hors capacite.** `RP-ACCUEIL-147` : echeance fixee par A.74, **faite avant la cloture du palier 1, sinon un glissement ecrit dans `cloture-palier-1.md`**. `HS-ACCUEIL-APM-R2` : non engagee, son audit ne se prend ni sur les marges ni sur les 0,75 non affectes de B (A.74) ; le prix est `Q-N2` de `nadia-prof`.
+
+### Noms de branche et de worktree : alignes sur les branches reelles
+
+**Remplace** les lignes 4 et 6 du tableau "Branches, worktrees" : poste 4 `s57-fra-ce1-10`, worktree `../recreo-s57-fra-ce1-10` ; poste 6 `s57-sci-consigne`, worktree `../recreo-s57-sci-consigne`. Je n'ai pas renomme ces branches : elles portent des commits d'autres agents et un renommage est une mutation git sans effet sur le contenu. Les autres lignes (3, 5, 7, 8, 9) gardent le nom du planning ; le poste 3 est deja `s57-marc-vsj-ce1-r1`. Les repertoires de scratchpad et les ports du tableau d'isolation ne changent pas.
+
+### Ce que cet amendement ne fait pas
+
+N'engage ni le poste 7 ni le poste 8, ne passe aucun poste a `Done`, ne juge aucun contenu, ne fusionne rien, ne repond pas a `Q-N2`. **`cloture-palier-1.md` est ecrit en squelette** (voir ce fichier), sans horodatage de fin ni verdict.
+
+### Jobs de `ci.yml` lances pour ce commit
+
+- **`prefixes`** : trois tests (`verifier-prefixes-test.sh`, `commit-atteignable-test.sh`, `verifier-garde-fou-accent-test.sh`, 21 cas) sortent 0 ; le sujet du commit passe dans `verifier-prefixes.sh`, sortie 0.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; fichiers suivis et non suivis passes a `verifier-chemins.sh`, sortie 0.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl` : `BUILD SUCCESS`, 2498 tests (120, 31, 486, 1484, 371 et 6 d'integration), 0 echec ; ce commit ne change ni code ni contenu. Le build a lu ce fichier avant l'ecriture de cette section, qui ne contient aucun tableau.
+- **`outils`** : non lance, aucun outil modifie. La CI distante n'est pas lue.
+
+### Decisions prises
+
+**Aucune `ADR` ni `DEC` n'est creee ou amendee.** Cet amendement applique `DEC-0120` A.66 a A.73, confirme A.72 comme regle de ce planning, aligne deux noms de branche, constate l'etat des postes 1 a 9 et la porte P-4 non remplie par la lignee de `s57-sci-consigne`.
