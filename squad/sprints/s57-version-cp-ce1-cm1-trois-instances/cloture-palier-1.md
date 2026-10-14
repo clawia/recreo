@@ -1,6 +1,6 @@
 # [Sprint s57] Cloture du palier 1 - SQUELETTE
 
-- **Statut : squelette, le palier 1 n'est pas clos.** Ce fichier ne vaut pas cloture : il n'a ni horodatage de fin, ni verdict, ni report constate par la cloture. Il fixe les sections que `squad/README.md` section 4 demande, pour que la cloture ne les invente pas. **A la cloture, `sofia-sm` le remplace en une seule ecriture** (pas d'ajout a la suite) ; le diff garde alors le squelette comme etat precedent.
+- **Statut : squelette, le palier 1 n'est pas clos ; la section 4 est remplie au fil des fusions (2026-10-14), le reste ne l'est pas.** Ce fichier ne vaut pas cloture : il n'a ni horodatage de fin, ni verdict, ni report constate par la cloture. Il fixe les sections que `squad/README.md` section 4 demande, pour que la cloture ne les invente pas. **A la cloture, `sofia-sm` le remplace en une seule ecriture** (pas d'ajout a la suite) ; le diff garde alors le squelette comme etat precedent.
 - **Horodatage de fin du palier** : non ecrit.
 - **Ecrit par** : `sofia-sm`, casquette Scrum Master, squelette du 2026-10-14, sur `round-two` a `6ca84317`.
 
@@ -34,9 +34,18 @@ CI verte avec les jobs nommes, sur l'arbre fusionne. A remplir : commit teste, j
 
 Une ligne par fusion (`planning.md`, section "Ordre de fusion") : `grep -c "^  - id:" adapters/adapter-content/src/main/resources/catalogue.yaml` apres la fusion vaut le compte d'avant plus le nombre d'entrees fusionnees ; `grep -c "paquet: <nom>$"` rend 1 pour chaque paquet fusionne. Compte de depart mesure sur `round-two` a `6ca84317` : 146. Un ecart arrete la fusion et va a `theo-archi`. A remplir.
 
-| Fusion | SHA de fusion | Compte d'avant | Entrees fusionnees | Compte d'apres | Lignee verifiee (`verifier-lignee.sh`) |
-|---|---|---|---|---|---|
-| a remplir | a remplir | 146 | a remplir | a remplir | a remplir |
+| Fusion | SHA de fusion | Compte d'avant | Entrees fusionnees | Compte d'apres | `grep -c "paquet: <nom>$"` | Tests du reacteur sur l'arbre fusionne | Base de la branche, ancetre de `round-two` |
+|---|---|---|---|---|---|---|---|
+| Poste 4, `s57-fra-ce1-10` (`1f6642ab`, `marc-dev`) | `c935d764` | 146 | 1 | 147 | `ce1-phrases-types` : 1 | 2520 | `3a3ea97e`, oui |
+| Poste 5, `s57-sofia-fra-ce1-15` (`3459ddb8`). **Branche de `sofia-sm` en casquette developpeuse, fusionnee par `sofia-sm` en casquette Scrum Master : aucun autre juge que `yanis-qa` a la cloture** | `d67204de` | 147 | 1 | 148 | `ce1-accord-groupe-nominal` : 1 | 2541 | `ea6d6f92`, oui |
+| Poste 6, `s57-sci-consigne` (`ac32f976`, `lea-dev`) | `14d6cf47` | 148 | 0 | 148 | sans objet, aucune entree | 2542 | `faf7e285`, oui |
+| Poste 3, `s57-marc-vsj-ce1-r1` (`7dc40fb0`, `marc-dev`) | `65d00d8d` | 148 | 0 | 148 | sans objet, aucune entree | 2548 | `6ca84317`, oui |
+
+**Methode des tests** : `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl`, apres chaque fusion, somme des attributs `Tests run` des cinq modules Surefire et du Failsafe lus dans la sortie Maven ; JDK 21.0.10 (`java.version` d'un rapport Surefire de `bootstrap`). Modules apres la derniere fusion : domain 120, application 31, adapter-web 486, adapter-content 1534, bootstrap 371, integration 6. Ecarts : +22 (poste 4), +21 (poste 5), +1 (poste 6), +6 (poste 3), chacun egal au lot que la branche annonce. Aucun total annonce par un agent n'est relaye. Base : 2498 sur `544159d9`, **non remesuree** sur `round-two` avant la premiere fusion.
+
+**Conflits.** Seule la fusion du poste 5 en a eu, sur `catalogue.yaml` (une entree) et sur `TexteAccentueExposeParLePortEntrantTest.java` (trois blocs d'inventaire, aux memes ancres), celui prevu par `rapport-sofia-dev.md`. **Resolution** : les ajouts des deux cotes sont gardes dans l'ordre des postes (4 puis 5), `nombreDeManches: 10` redonne a l'entree du poste 4 dont les deux entrees se partageaient la ligne. Aucune assertion n'est modifiee ni retiree : `git diff c935d764 d67204de` sur ces deux fichiers rend 6 et 9 lignes ajoutees, 0 supprimee. Le poste 5 est ma propre branche : ce point est dit ici pour que `yanis-qa` le relise a la cloture.
+
+**Ce qui est fusionne est ce qui a ete joue** : `git diff <branche> <fusion> -- <paquet>` rend 0 ligne pour les quatre paquets (`ce1-phrases-types`, `ce1-accord-groupe-nominal`, `cm1-sciences-extraire-information`, `ce1-verbe-sujet`) ; les entrees de catalogue des postes 4 et 5 sont identiques a celles de leur branche (empreinte des six lignes). Le poste 6 est fusionne a `ac32f976`, le commit que `nadia-prof` a joue.
 
 ## 5. Ordre du critere 3 de `S57-ARB-PALIER-1`
 
