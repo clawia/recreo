@@ -1,31 +1,41 @@
-/* Poste 8 de s57, reprise d'ART-CP-10 : regles candidates d'ines-design, NON versees dans recreo.css.
-   Texte injecte tel quel apres la feuille reelle par pilote-poste-8.mjs ; lea-dev les verse apres l'avis
-   de nadia-prof. Aucune couleur neuve, aucun gabarit touche. */
+/* Poste 8 de s57, reprise d'ART-CP-10 : regles candidates d'ines-design, revision 2, NON versees dans recreo.css.
+   Texte injecte tel quel apres la feuille reelle par pilote-poste-8.mjs ; lea-dev les verse apres revue de nadia-prof
+   et de theo-archi. Aucune couleur neuve, aucun gabarit touche. Revision 2 : message dans la largeur du meuble
+   (grille ". msg msg", C1' de theo-archi, veto de nadia-prof sur le bandeau sous la reference). */
 
 /* L1 : la decoration du meuble. .cabinet reste, avec sa bordure, son rembourrage et son levier de flanc
    (zero pixel de hauteur). Hors de tout @media : le meuble est le meme a toute largeur. */
 .ecran-deux-oeuvres .cabinet-bandeau,
 .ecran-deux-oeuvres .cabinet-socle { display: none; }
 
-/* L2 et L3 : dans le bloc @media (min-width: 720px) deja existant de .ecran-deux-oeuvres, dont elles
-   remplacent grid-template-columns et grid-template-areas (L2) et auquel elles ajoutent quatre regles (L3). */
+/* Dans le bloc @media (min-width: 720px) deja existant de .ecran-deux-oeuvres, dont elles remplacent
+   grid-template-columns et grid-template-areas (L2) et auquel elles ajoutent les regles suivantes (L3). */
 @media (min-width: 720px) {
+    /* L2 : le score a droite de la consigne. La rangee du message ne partage sa zone avec aucune autre
+       (C1', point 3) et laisse la colonne de la reference vide : le message tient dans la largeur du meuble. */
     .ecran-deux-oeuvres {
         grid-template-columns: 11rem minmax(0, 1fr) auto;
         grid-template-areas:
             "consigne consigne score"
             "ref enonce enonce"
             "ref jeu jeu"
-            "msg msg msg";
+            ". msg msg";
     }
 
+    /* L3 : le signal (15 rem) a gauche, le texte a droite, dans la largeur du meuble. 15 rem et non une
+       fraction : a 2fr/3fr le verdict passait sur trois lignes a 744. */
     .ecran-deux-oeuvres > .message-jeu {
         display: grid;
-        grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        grid-template-columns: 15rem minmax(0, 1fr);
         column-gap: 0.75rem;
         align-items: start;
     }
     .ecran-deux-oeuvres > .message-jeu > .signal { grid-column: 1; grid-row: 1 / span 3; }
     .ecran-deux-oeuvres > .message-jeu > :not(.signal) { grid-column: 2; }
     .ecran-deux-oeuvres .signal .verdict { margin-bottom: 0; }
+
+    /* L4 : trois marges a zero au-dessus du meuble (12 px). Elles seules font tenir l'indice a 744 (marge de 3 px). */
+    .ecran-deux-oeuvres > .score { margin: 0; }
+    .ecran-deux-oeuvres > .consigne { margin-bottom: 0; }
+    .ecran-deux-oeuvres > .enonce { margin-bottom: 0; }
 }
