@@ -1375,3 +1375,43 @@ A.66 compte un report **a l'ouverture** du palier et dit : *"l'engagement tardif
 - **`DEC-0120` reste `Acceptee`.** Statuts de stories : `S57-BR-FRA-CE1-04` amendee, non engagee ; `S56-RDO-CP-R1` et `S56-RDO-CP-R2` amendees, non engagees ; la correction d'`ART-CP-10` reste `non couvert`. **Matrice : 142 / 200, aucun statut** (`git diff round-two --stat -- squad/programme/` : vide).
 - **Ne fait pas** : ne prononce aucun Done, ne juge aucun contenu, ne choisit aucune forme visuelle, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, ni paquet, ni fiche ; ne dit pas que la CI distante est verte.
 - **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison. Ceux qui ne sont pas lances ne sont pas deduits.
+
+---
+
+## Amendement du 2026-10-14, douzieme (`camille-po`, apres le rejeu de `nadia-prof` au palier 1)
+
+Annotation datee, 21:53 (UTC+02:00). **Rien au-dessus n'est reecrit.** **Le statut ne change pas : `Acceptee` (A.77).** Sources : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/rejeu-nadia-palier-1.md` et ses amendements du 2026-10-14, les fiches de `FRA-CE1-10`, `-13` et `-15`. Les criteres sont dans l'annotation du meme jour de `docs/backlog/backlog.md` (*"Reserves du palier 1 de s57 a solder"*) ; cet amendement porte la consignation, pas les criteres.
+
+### A.87 Ce que cet amendement consigne
+
+1. **`Q-N4` = non** (`rejeu-nadia-palier-1.md`, amendement du 2026-10-14). Reponse de l'utilisatrice en forme 2, relayee par l'agent principal, **que je n'ai pas lue de sa main**. Le pli a 744 x 551 ne redevient pas bloquant pour un jeu neuf ; la recommandation *"oui pour la suite"* de `nadia-prof` n'est pas retenue.
+   - **Ecart de premisse, a dire.** La section 8 du rejeu pose la question sur `DEC-0051` (*"les jeux neufs naissent sans le defaut"*). `DEC-0053`, arbitrage 1 (utilisatrice, 2026-08-28, `Acceptee`), **remplace** `DEC-0051` sur ce point : *"oui, pour tout le catalogue, paquets neufs de s22 compris"*, le pli devient une reserve non bloquante et la dette est *"explicitement croissante et assumee"* (`grep -n "Arbitrage 1" DEC-0053-*.md` : ligne 32). La reponse *non* redit le regime que `DEC-0053` pose depuis le 2026-08-28 et que `nadia-prof` applique depuis (`RDO-CP-R1`, s56), et l'etend sans ambiguite aux lots de s57 ; **aucune direction ne change**. Je ne conteste rien sur le fond pedagogique : c'est une premisse d'intention produit, routee a `sofia-sm` (point 5).
+2. **Trois stories de reserve ecrites, non engagees** : `S57-TPH-CE1-R1`, `S57-GNA-CE1-R1`, `S57-VSJ-CE1-R2`. **Ce qui est decide ici** : leur ecriture et leur ordre (TPH, puis GNA, puis VSJ ; motif produit au backlog). **Ce qui n'est pas decide ici** : le changement de code. Il n'a pas de proprietaire tant que `sofia-sm` ne l'a pas engage au planning d'un palier avec un developpeur ; **jusqu'a cet engagement, rien n'est applique et le regime est celui de `DEC-0053`**. Palier cible propose : 2, prix proposes a `nadia-prof` (`Q-R1`). Aucun report : premiere inscription des trois.
+3. **`RP-ACCUEIL-147`, etat verifie sur `round-two` a `f95736b5`** (echeance : cloture du palier 1, A.74).
+
+| Commande | Sortie |
+|---|---|
+| `git rev-parse --short HEAD` (worktree, avant ecriture) | `f95736b5` |
+| `grep -n 147 squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` | lignes 41, 236 et 398 |
+| `git log --oneline -1 -- squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` | `90904751` (aucun commit depuis la story) |
+| `git diff --quiet round-two...<branche> -- <le fichier>` sur les 168 branches locales | 167 sans difference ; `main` : *"no merge base"*, branche orpheline, sans objet |
+| `grep -c "^  - id:" adapters/adapter-content/src/main/resources/catalogue.yaml` | 148 |
+| `grep -c 147 .../rejeu-nadia-palier-1.md` | 0 (l'instance et le moment demandes par `Q-S3` ne sont pas ecrits) |
+
+   **Constat** : l'echeance n'est pas tenue a ce jour et n'est pas encore depassee (le palier 1 n'est pas clos : `cloture-palier-1.md` est un squelette). **Le critere 1 de la story etait faux tel qu'ecrit** : il demandait de remplacer 147 par 146, et le catalogue en compte 148 depuis les fusions `c935d764` et `d67204de`. Je l'amende au backlog (date et compte du jour de la correction). **Reste a faire** : `nadia-prof` corrige ou annote les lignes 41 et 236 de son fichier (commit `[NAD]`, ni jar ni port) ; `sofia-sm` ecrit, dans la section 2 de `cloture-palier-1.md`, *fait* avec le SHA ou *glissement* avec date et cause (un seul permis, A.72). Ce n'est pas un report : aucun glissement n'est ecrit.
+4. **Matrice, ecart constate, non corrige ici** : `FRA-CE1-10` (ligne 1432) et `FRA-CE1-15` (ligne 1437) sont `non couvert`, alors que `nadia-prof` a prononce le Done pedagogique le 2026-10-14 et que `1f6642ab` et `72931c94` sont ancetres de `round-two` (`git merge-base --is-ancestor` sort 0 pour les deux). Son routage (section 9 et amendement de 20:40) m'en donne la charge. Cet amendement ne les passe pas : la tache qui l'a produit ne le demandait pas ; **question posee a l'agent principal**. Matrice : 142 / 200, inchangee (`git diff round-two --stat -- squad/programme/` : vide).
+5. **Routage** :
+
+| A qui | Quoi |
+|---|---|
+| `sofia-sm` | Les trois stories pour le planning d'un palier 2 (D2) ; la ligne `RP-ACCUEIL-147` de `cloture-palier-1.md` ; la premisse de `Q-N4` (point 1) a `nadia-prof`, si elle veut l'ecrire dans sa section 8 |
+| `nadia-prof` | `Q-R1` (prix, instances, palier), `Q-R2` (la revelation fait-elle partie de la levee), `Q-R4` (jeux de non-regression) ; `RP-ACCUEIL-147` |
+| `theo-archi`, `ines-design` | `Q-R3` : une forme commune leve-t-elle les trois reserves, avant la composition du palier 2 |
+| `yanis-qa` | Rien a tirer en test du reacteur : la position de l'indice n'a pas d'automate ; il relit les criteres 3 et 4 de `S57-TPH-CE1-R1` |
+| Utilisatrice | Aucune question neuve |
+
+### A.88 Ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Acceptee`.** Ne fait pas : ne prononce aucun Done, ne juge aucun contenu, ne choisit aucune forme, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, ni paquet, ni fiche, ni matrice, ni `planning.md`, ni `cloture-palier-1.md` ; ne dit pas que la CI distante est verte.
+- **Statuts de stories** : `S57-TPH-CE1-R1`, `S57-GNA-CE1-R1`, `S57-VSJ-CE1-R2` ecrites, non engagees ; `RP-ACCUEIL-147` ouverte, critere 1 amende. Aucun autre statut ne change.
+- **Jobs de `ci.yml` lances pour son commit** : nommes dans le message de livraison ; ceux qui ne sont pas lances ne sont pas deduits.
