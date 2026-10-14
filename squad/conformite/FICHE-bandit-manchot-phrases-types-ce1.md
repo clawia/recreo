@@ -126,3 +126,10 @@ Le pli a 744 x 551 ne redevient pas bloquant pour un jeu neuf. **Le verdict ci-d
 recommandation** (*"oui pour les lots suivants"*, `rejeu-nadia-palier-1.md` section 8) **n'est pas retenue par
 l'utilisatrice** : le pli reste, pour les lots a venir aussi, une reserve que je nomme et date, pas un motif de refus. Rien
 n'est efface de la section 5.
+
+### Precision du 2026-10-14 (`nadia-prof`, s57, palier 1) : ce que *"coupe"* veut dire a 518 - 568
+
+Dans le tableau de `TPH-CE1-R1`, la ligne des trois items de reconnaissance a phrase courte (indice 518 - 568) designe un
+bloc dont le texte d'une ligne reste lisible au-dessus du pli et dont le cadre est coupe a 17 px du bas (meme geometrie,
+capture faite sur le paquet de `FRA-CE1-15`, fiche `FICHE-bandit-manchot-accord-groupe-nominal-ce1.md`, section 5). Les 21
+autres items gardent leur constat : indice entierement sous le pli. La reserve et son critere de levee ne changent pas.
