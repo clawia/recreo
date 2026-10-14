@@ -130,4 +130,23 @@ class PaquetCm1SciencesExtraireInformationTest {
             }
         }
     }
+
+    /**
+     * S54-OBS-SCI-CONSIGNE, critere 1 : la consigne du catalogue dit deja "Lis le texte ou le
+     * tableau, puis reponds a la question." ; l'enonce ne la redit pas et commence par le document
+     * dont il parle. Remettre la premiere phrase dans un item fait echouer ce test.
+     */
+    @Test
+    void sciConsigneChaqueEnonceCommenceParLeDocumentSansRedireLaConsigne() {
+        List<Question> items = items();
+        assertThat(items).hasSize(12);
+
+        for (Question item : items) {
+            assertThat(item.enonce())
+                    .as("item %s : l'enonce ne redit pas la consigne du catalogue",
+                            item.id().value())
+                    .doesNotContain("puis réponds à la question")
+                    .matches("^D'après ce (tableau|texte),.*");
+        }
+    }
 }
