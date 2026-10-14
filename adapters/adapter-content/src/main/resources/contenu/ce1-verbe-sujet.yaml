@@ -7,6 +7,9 @@
 # cinquieme chacun) ; le sujet precede le verbe, un seul verbe conjugue par phrase, aucun sujet coordonne.
 # VSJ-CE1-3 : (a) le groupe place apres le verbe, (b) un autre nom de la phrase, (c) pour les items de
 # verbe, un nom ou un adjectif de la phrase ; chaque item declare ses familles dans l'ordre du fichier.
+# VSJ-CE1-R1 (propriete 8 amendee le 2026-10-14) : sur trois items de sujet, un complement de temps ou de lieu
+# en tete de phrase, suivi d'une virgule, est une proposition fausse placee avant le verbe ; l'indice de ces items
+# ne dit pas que le sujet est avant le verbe.
 # Majuscule : une proposition copiee du debut de la phrase perd sa majuscule, un prenom garde la sienne ; sur aucun item
 # la bonne reponse n'est la seule proposition a majuscule.
 # TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
@@ -26,9 +29,9 @@ items:
   # VSJ-CE1-1: sujet
   # VSJ-CE1-2: pronom
   # VSJ-CE1-3: a, b
-  - enonce: "« Elle pose le livre sur la table. » Quel est le sujet du verbe « pose » ?"
+  - enonce: "« Le soir, elle pose le livre sur la table. » Quel est le sujet du verbe « pose » ?"
     bonneReponse: "elle"
-    distracteurs: ["le livre", "la table"]
+    distracteurs: ["le soir", "le livre"]
     indice: "Demande-toi : qui fait l'action de ce verbe ?"
   # VSJ-CE1-1: sujet
   # VSJ-CE1-2: pronom
@@ -127,10 +130,10 @@ items:
   # VSJ-CE1-1: sujet
   # VSJ-CE1-2: groupe nominal
   # VSJ-CE1-3: a, b
-  - enonce: "« Les oiseaux mangent des graines sur le toit. » Quel est le sujet du verbe « mangent » ?"
+  - enonce: "« Sur le toit, les oiseaux mangent des graines. » Quel est le sujet du verbe « mangent » ?"
     bonneReponse: "les oiseaux"
-    distracteurs: ["des graines", "le toit"]
-    indice: "Le sujet est avant le verbe : regarde les mots devant."
+    distracteurs: ["le toit", "des graines"]
+    indice: "Pose la question « Qui est-ce qui ? » avant le verbe."
   # VSJ-CE1-1: sujet
   # VSJ-CE1-2: groupe nominal
   # VSJ-CE1-3: a, b
@@ -154,10 +157,10 @@ items:
   # VSJ-CE1-1: sujet
   # VSJ-CE1-2: groupe nominal
   # VSJ-CE1-3: a, b
-  - enonce: "« Un grand bus emmène les élèves à l'école. » Quel est le sujet du verbe « emmène » ?"
+  - enonce: "« Le matin, un grand bus emmène les élèves à l'école. » Quel est le sujet du verbe « emmène » ?"
     bonneReponse: "un grand bus"
-    distracteurs: ["les élèves", "l'école"]
-    indice: "Le sujet est avant le verbe : regarde les mots devant."
+    distracteurs: ["le matin", "les élèves"]
+    indice: "Pose la question « Qui est-ce qui ? » avant le verbe."
   # VSJ-CE1-1: verbe
   # VSJ-CE1-3: c
   - enonce: "« Le vent froid souffle fort. » Quel est le verbe de la phrase ?"
