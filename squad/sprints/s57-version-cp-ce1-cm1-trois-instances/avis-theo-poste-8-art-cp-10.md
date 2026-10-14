@@ -317,3 +317,183 @@ executable : celle de l'amendement d'`ADR-0104`.
 ```markdown
 | ADR-0104 | 2026-10-14 (s57) | **son point 5 de la decision 4 laissait la question rappelee et l'explication sur l'ecran de fin d'un jeu a reponse en image**, ou elles designent des oeuvres absentes (`RDO-CP-R2`). Voie (b) de `nadia-prof` : ni question, ni reponse, ni explication sur cet ecran, sur le predicat existant. Renvois dans `ADR-0084` (clause 3) et `ADR-0024` (decision 1). Regle : les tests de `D7` dans `PartieControllerPropositionsEnImageTest`, trois morsures. Aucun garde-fou existant ne voyait la voie (b) (2498 tests verts avec elle). Compte ArchUnit inchange (41 declarations, 38 `@ArchTest`) |
 ```
+
+## Annexe B. 2026-10-14, 22:48 (UTC+02:00) - revision 2 d'`ines-design`, coupure du verdict, `Q-R3`
+
+Ajoutee sur la branche `s57-theo-forme2`, base `2018b7d0` (tip de `round-two`). **Rien au-dessus n'est reecrit.** Lu : `proposition-ines-poste-8-art-cp-10.md` (revision 2, `0af762b8`),
+`candidat-poste-8.css` (revision 2), `proposition-ines-poste-8-coupure-du-verdict.md`, le backlog (`S57-TPH-CE1-R1`, `S57-GNA-CE1-R1`, `S57-VSJ-CE1-R2`, `Q-R3`).
+**L'annexe A est inchangee** : la forme retenue ici ne touche ni l'ecran de fin ni ses `ADR`. Codes `TB1` a `TB5` : ceux de cette annexe, distincts des `D1` a `D7` de `nadia-prof`.
+
+### B.1 Decisions
+
+| Code | Decision | Section |
+|---|---|---|
+| `TB1` | `L4` (trois marges a zero : `.score`, bas de `.consigne`, bas de `.enonce`) est **conforme a `C1'`** | B.2 |
+| `TB2` | Coupure du verdict : **forme C**, des espaces insecables dans les trois constantes du verdict, sous un amendement d'`ADR-0067` dont le texte est fige en B.7. **Sous une condition** : `nadia-prof` accepte que la coupure change sur tous les jeux. Si elle la refuse hors d'`ART-CP-10`, c'est la forme B, et j'ecris l'amendement de la decision 1 d'`ADR-0067` a ce moment-la | B.3 |
+| `TB3` | Avec la forme C, **le reacteur complet reste vert, et ce vert n'est pas une preuve** : aucun garde-fou existant ne lit ces constantes avec leurs espaces. Le garde-fou de la forme C lit `wholeText()` ou la valeur du modele, jamais `text()` | B.4 |
+| `TB4` | `Q-R3` : deux causes distinctes, un remede commun possible. Une forme commune est faisable sans condition de paquet, mais elle ne reprend `L1` et `L2` qu'avec un accord neuf de `nadia-prof`, et son gain n'est pas mesure | B.6 |
+| `TB5` | Aucune regle ArchUnit : compte inchange, 41 et 38 (methode de 3.4, sur `2018b7d0`) | - |
+
+### B.2 `L4` et `C1'`
+
+Les trois regles ont pour sujet `.ecran-deux-oeuvres > .score`, `> .consigne` et `> .enonce`, hors de `.message-jeu`. Elles ne nomment ni `.message-jeu`, ni `.signal`, ni aucun etat.
+Elles s'appliquent avant toute reponse comme apres : la geometrie qu'elles changent est la meme dans tous les etats. **Point 1 tenu ; points 2 et 3 sans objet pour elles.** Elles sont
+dans le bloc `@media (min-width: 720px)` existant, ne visent aucune image (`C2`) et ne masquent rien (`C3`).
+
+**Ce que `C1'` ne juge pas** : la marge de 3 px de l'indice a 744, que `L4` seul fait tenir et qui tombe sur trois polices sur neuf (revision 2, R2.4). C'est une cote, jugee par
+`J3` sur le jar. Avec ou sans `L4` : question 2 d'`ines-design` a `nadia-prof`, pas une question d'architecture.
+
+### B.3 Coupure du verdict : la forme C
+
+**Le motif est un `ADR` accepte, pas une preference.** `ADR-0067` decision 1 : le caractere qui empeche une coupure vit *"dans la donnee servie, jamais dans le rendu. Il n'est pose ni
+par un gabarit, ni par un filtre, ni par une regle de style"*, pour qu'un garde-fou qui juge le texte juge ce que l'enfant recoit. **La forme B est exactement ce que cette decision
+ecarte** (un `<span>` par phrase et `white-space: nowrap`). La forme C l'applique, avec moins de pieces : un fichier de production au lieu de quatre, aucune liste neuve dans le modele.
+
+**Ce que la forme C etend, et que l'amendement dit** :
+
+1. **Le perimetre d'`ADR-0067`.** Son cliquet lit les paquets et le catalogue ; les constantes de `PartieController` lui echappent. Elles portent une espace ordinaire devant un `!`
+   (*"Bravo !"*, *"Essaie encore !"*) : le defaut de `TYP-1` que le cliquet arrete ailleurs, deja servi (a 390 px, le `!` se detache de son mot, proposition sur la coupure,
+   section 3). Le perimetre enumerait les sources du contenu et omettait le texte que l'adaptateur web ecrit lui-meme.
+2. **La propriete.** `TYP-1` empeche de detacher un signe double de son mot ; la condition 5 de `nadia-prof` empeche une coupure dans une phrase du verdict. Meme moyen, meme caractere :
+   U+00A0, deja servi par le depot devant les signes doubles. U+202F est ecarte : etroite, elle collerait les mots a l'oeil.
+
+**Si `nadia-prof` refuse le changement hors d'`ART-CP-10`** : la forme C est impossible, la chaine etant commune aux 148 jeux servis (`grep -c "^  - id:"` sur `catalogue.yaml` a
+`2018b7d0` : 148). Reste la forme B limitee a `.ecran-deux-oeuvres`, qui demande un amendement de la decision 1 d'`ADR-0067`. Je l'ecrirai alors, pas avant : il servirait un usage
+que personne n'a choisi.
+
+### B.4 Verification avant la forme C (troisieme point de la demande)
+
+**Mesure** : arbre jetable en `--detach` sur `2018b7d0`, supprime apres. Les trois constantes du verdict ecrites avec U+00A0 entre les mots de chaque phrase et devant le `!`, une
+espace ordinaire entre les deux phrases de `MESSAGE_ECHEC`. `bash outils/mvn-jdk21.sh -B clean verify -Dmaven.test.failure.ignore=true` depuis la racine : **`BUILD SUCCESS`, 2548
+tests, 0 echec** (120, 31, 486, 1534, 371, 6), JDK **21.0.10** (`java.version` des 59 rapports de `bootstrap`, une valeur).
+
+**Ce vert ne prouve rien sur la forme C. Lu dans le code** :
+
+- **Le garde-fou de l'accent ne lit pas ces constantes.** `AucunMotServiNeSEcarteDeSonAccentTest` lit les paquets ; `TexteAccentueDesGabaritsTest` lit le texte ecrit en clair dans les
+  gabarits et saute `th:text`, par lequel le verdict arrive. Aucun des deux ne decoupe ces chaines, sur `\s` ou autrement : leur vert vient de ce qu'ils ne les voient pas.
+- **Les tests qui lisent le verdict passent par `Jsoup ... .text()`**, qui normalise U+00A0 en espace ordinaire (`PartieControllerTest` lignes 307 a 309 et 841 a 843). C'est
+  pourquoi la ligne 309, qu'`ines-design` donnait a changer, reste verte : **elle ne voit ni la forme C, ni sa disparition.**
+- **Les decoupages sur `\s+` du depot** (une quarantaine, balayage des `*Test.java` suivis) sont dans des tests de paquets et de feuille ; aucun ne recoit ces constantes. En Java, `\s`
+  ne reconnait pas U+00A0 sans `UNICODE_CHARACTER_CLASS`. Les deux garde-fous de rendu qui comparent du texte servi le neutralisent deja explicitement
+  (`AucunTexteServiNEnchasseLaReponseDansUnePhraseTest` ligne 146, `AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest` ligne 134).
+
+**Donc, sans garde-fou neuf, retaper une espace ordinaire dans une constante ne rougit rien.** Sa forme :
+
+1. **Perimetre derive du comportement** : les verdicts rendus par le controleur sur les trois issues (juste, echec avec essais restants, revelation) de chacune des trois mecaniques
+   servies. Pas une liste de constantes, a laquelle une quatrieme echapperait.
+2. **Lecture** : la valeur du modele `message`, ou `wholeText()` de `.verdict`. **Jamais `text()`.**
+3. **Propriete** : dans chaque verdict, aucune espace ordinaire devant `?`, `!`, `;` ou `:`, et toute espace ordinaire suit immediatement une fin de phrase (`.`, `!`, `?`).
+4. **Morsures** : une espace ordinaire remise entre deux mots de `MESSAGE_ECHEC`, puis devant le `!` de `MESSAGE_BRAVO` : chacune rougit, nombre de tests lances superieur a 0.
+5. **Ecriture** : ` ` en sequence d'echappement dans la source Java, jamais le caractere tape, qu'aucun relecteur ne distingue d'une espace.
+
+### B.5 Conditions pour `lea-dev`, mises a jour
+
+Les sections 6.1 a 6.4 tiennent, sauf ceci :
+
+| # | Condition | A qui |
+|---|---|---|
+| `P1` | **Tenue pour la place du message** : la revision 2 (`0af762b8`) respecte le veto et `C1'`. Restent a `nadia-prof` : avec ou sans `L4` (question 2 de la revision 2) | `nadia-prof` |
+| `P3` | **Neuve** : la reponse de `nadia-prof` sur le perimetre de la coupure (question 1 de la proposition sur la coupure) precede le commit de la forme C | `nadia-prof`, route par `sofia-sm` |
+
+**B1 compte trois commits** :
+
+1. **La feuille** : `candidat-poste-8.css` de la revision 2, avec ou sans `L4`, et le jeu fautif de `CabinetDeLaMachineTest` (6.2, point 1).
+2. **La forme C** : les trois constantes (B.4, point 5), le garde-fou de B.4 avec ses deux morsures, et **le texte de B.7 verse tel quel** dans `ADR-0067` et `ADR-index.md`. Les
+   assertions de `PartieControllerTest` qui lisent `.text()` peuvent rester ; le rapport dit qu'elles ne jugent pas la coupure.
+3. **La voie (b)** : 6.2, point 2, et l'annexe A, inchangees.
+
+**Mesure au jar (6.3)** : la coupure s'ajoute au releve. `coupure-poste-8.mjs` est rejoue sur la tete de B2 **sans reecriture du DOM**, puisque le jar porte la forme. Le compte du
+catalogue de la section 5 se lit a la base reelle de B2 : 148 a `2018b7d0`, et non plus 146.
+
+### B.6 `Q-R3` de `camille-po`
+
+**Les causes sont distinctes.** Le mecanisme est commun : l'indice est au bout d'une pile verticale dont une partie grandit avec le contenu. Mais ce n'est pas la meme partie :
+
+- `TPH-CE1-R1` et `GNA-CE1-R1` : **les rangees de propositions** (deux ou trois pour des propositions longues) ;
+- `VSJ-CE1-R2` : **la longueur de l'enonce** (trois lignes).
+
+**Le remede peut etre commun.** Une forme qui raccourcit la partie fixe de la pile (decoration, marges, place du message) gagne les memes pixels quelle que soit la partie qui grandit.
+Si ce gain atteint a 744 le plus grand ecart des trois (99 px, cotes du backlog), il leve les trois ; `VSJ-CE1-R2` n'en demande que 31. **La voie des textes reste la seule a lever
+`VSJ-CE1-R2` sans la forme**, comme la story le prevoit.
+
+**Faisable en architecture**, a ces conditions :
+
+1. Les regles visent l'ecran de manche du `bandit-manchot`, sans condition de paquet (critere 4 de la story), et sans marqueur neuf derive par le controleur : une longueur de
+   proposition qui deciderait d'une classe serait une condition de contenu deguisee.
+2. `C1'` et `C3` valent pour cet ecran : la condition `C4` de `nadia-prof` y est nee.
+3. **`L1` et `L2` ne se transposent pas d'office.** `nadia-prof` les a acceptes *"sur cet ecran seul"* (`reponse-nadia-forme-poste-8.md`, sections 1 et 3 : *"les autres jeux gardent le
+   visage et les etoiles"*). Sur les 143 jeux `bandit-manchot`, il faut son accord neuf. Sans eux, restent la place du message (`L3`) et les marges (`L4`).
+4. **Le gain n'est pas mesure.** Les 64 px de `L3` et les 12 px de `L4` sont mesures sur l'ecran a images, en grille ; l'ecran a propositions ecrites est une pile, et une cote ne
+   se transpose pas d'un ecran a l'autre par arithmetique. Il faut une mesure d'`ines-design` sur un jar qui sert `ce1-phrases-types`, `ce1-accord-groupe-nominal` et
+   `ce1-verbe-sujet`, avant la composition du palier 2.
+5. **Aucune forme ne garantit l'indice au-dessus du pli pour un contenu futur** : la pile grandit avec le contenu. Le releve juge un etat, pas une borne. Le juge pur de la section 4,
+   etendu a ces paquets (`J1` a `J3`), est la seule garde executable.
+
+Pas d'`ADR` tant que la forme reste une feuille de style. Il en faudrait un si elle demandait un marqueur du controleur ou un gabarit par forme d'item.
+
+### B.7 Texte fige de l'amendement d'`ADR-0067`, a verser tel quel dans le commit de la forme C
+
+```markdown
+## Amendement du 2026-10-14 (s57, `theo-archi`) - le texte que l'adaptateur web ecrit lui-meme, et la coupure dans une phrase du verdict
+
+**Ce que le perimetre de la decision 2 omettait.** Le cliquet lit les paquets et le catalogue. Les constantes de `PartieController`
+qui forment le verdict sont aussi du texte servi a l'enfant, et elles portaient une espace ordinaire devant un `!` (*"Bravo !"*,
+*"Essaie encore !"*) : le defaut de `TYP-1`, le `!` detache de son mot a 390 px (`ines-design`,
+`proposition-ines-poste-8-coupure-du-verdict.md`, section 3). Un perimetre enumere par sources avait omis la seule qui n'est pas un
+fichier de contenu.
+
+**Decision 1, etendue.** Le moyen vit dans le texte servi, qu'il vienne d'un paquet, du catalogue ou d'une constante de l'adaptateur
+web. Il sert aussi une seconde propriete, la condition 5 de `nadia-prof` (`reponse-nadia-forme-poste-8.md` de s57) : le verdict ne
+se coupe jamais a l'interieur d'une de ses phrases. Les mots d'une meme phrase du verdict sont separes par U+00A0, un signe double
+est precede de U+00A0, deux phrases sont separees par une seule espace ordinaire. Pour ce texte, la section "Ce qui reste a decider a
+deux" est tranchee : U+00A0, U+202F collant les mots a l'oeil. Le moyen n'est pose ni par un gabarit ni par une regle de style : la
+forme B de la proposition (un `<span>` par phrase en `white-space: nowrap`) est ecartee pour ce motif.
+
+**Regle executable.** Pas une `ArchRule` : l'objet est une chaine servie. Un test d'`adapters/adapter-web`, ecrit dans le meme commit
+que cet amendement. Il lit chaque verdict rendu par le controleur sur les trois issues (juste, echec avec essais restants,
+revelation) de chacune des trois mecaniques servies, par la valeur du modele ou par `wholeText()`, jamais par `text()`, qui
+normalise U+00A0 en espace ordinaire. Il exige : aucune espace ordinaire devant `?`, `!`, `;` ou `:`, et toute espace ordinaire
+immediatement apres une fin de phrase. Deux morsures, citees dans le rapport du developpeur : une espace ordinaire remise entre deux
+mots de `MESSAGE_ECHEC`, une espace ordinaire remise devant le `!` de `MESSAGE_BRAVO`.
+
+**Mesure prealable** (`theo-archi`, arbre jetable sur `2018b7d0` plus les trois constantes ecrites ainsi, reacteur complet, JDK
+21.0.10) : 2548 tests, 0 echec. **Ce vert ne prouve pas la propriete** : aucun garde-fou existant ne lit ces constantes avec leurs
+espaces. Les deux garde-fous de l'accent ne les lisent pas, et les tests du controleur passent par `text()`. La regle ci-dessus est
+neuve.
+
+**Ce qui n'est pas couvert, nomme** : `MESSAGE_PARTIE_PERDUE` (*"Choisis un nouveau jeu !"*) n'est pas un verdict et garde son espace
+ordinaire devant le `!`. C'est une occurrence de `TYP-1` hors du cliquet, que ce commit ne corrige pas.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`.
+
+**Ce qui me ferait changer d'avis** : un lecteur d'ecran qui annoncerait U+00A0 autrement qu'une espace (non verifie, reserve F11 de
+`nadia-prof`) ; ou un refus de `nadia-prof` d'un changement de coupure hors d'`ART-CP-10`, qui obligerait a poser le moyen dans le
+rendu pour un seul ecran, donc a amender la decision 1 elle-meme.
+```
+
+Ligne a ajouter a la table "Amendements" d'`ADR-index.md`, apres la derniere :
+
+```markdown
+| ADR-0067 | 2026-10-14 (s57) | **son perimetre omettait le texte que l'adaptateur web ecrit lui-meme** : les constantes du verdict portaient une espace ordinaire devant `!`. Decision 1 etendue a ces constantes et a la condition 5 de `nadia-prof` (pas de coupure dans une phrase du verdict) : U+00A0 entre les mots d'une phrase et devant un signe double ; forme B (balisage et `nowrap`) ecartee par la decision 1. Regle : test d'`adapter-web` sur les verdicts rendus des trois mecaniques, lus hors de `text()`, deux morsures. `MESSAGE_PARTIE_PERDUE` nomme, non corrige. Compte ArchUnit inchange (41 declarations, 38 `@ArchTest`) |
+```
+
+### B.8 Questions
+
+| Code | Question | A qui |
+|---|---|---|
+| `Q-T4` | La coupure entre les deux phrases vaut-elle pour tous les jeux (forme C), ou pour `ART-CP-10` seul (forme B, avec un amendement de la decision 1 d'`ADR-0067`) ? C'est la question 1 de la proposition sur la coupure | `nadia-prof` |
+| `Q-T5` | `Q-R3` : demande-t-on a `nadia-prof` `L1` et `L2` sur les 143 jeux `bandit-manchot`, ou la forme commune se cherche-t-elle sans eux ? Puis la mesure d'`ines-design` sur les trois paquets | `sofia-sm`, `nadia-prof`, `ines-design` |
+| `Q-T6` | `MESSAGE_PARTIE_PERDUE` porte le defaut de `TYP-1` hors du cliquet : story a ouvrir ou non | `camille-po` |
+
+### B.9 Jobs de `ci.yml` lances pour ce commit
+
+Lances sur ce worktree, ce fichier indexe, avant le commit :
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl` : `BUILD SUCCESS`, 2548 tests, 0 echec (120, 31, 486, 1534, 371, 6), JDK 21.0.10. L'etape
+  "Package du fat jar" n'est pas lancee.
+- **`chemins`** : `verifier-chemins-test.sh` et `verifier-chemins.sh` sur `git ls-files` sortent 0.
+- **`outils`** : 11 juges lances, 11 sortis 0.
+- **`prefixes`** : les trois tests sortent 0 ; le sujet du commit passe dans `verifier-prefixes.sh`. Le controle du proprietaire du garde-fou de l'accent n'est pas lance : aucun de
+  ses chemins n'est touche.
+
+Aucun n'est le resultat de la CI distante.
