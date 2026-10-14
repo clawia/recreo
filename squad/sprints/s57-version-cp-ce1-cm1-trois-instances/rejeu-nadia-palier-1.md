@@ -175,3 +175,42 @@ Sur ce worktree, avec les cinq fichiers du commit, avant commit. Je ne deduis au
 - **`outils`** : non lance ; aucun outil n'est modifie.
 
 Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+## Amendement du 2026-10-14 : reponse de l'utilisatrice a `Q-N4`
+
+Forme 2, relayee par l'agent principal, non lue de sa main : **`Q-N4` = non.** Le pli a 744 x 551 ne redevient pas
+bloquant pour un jeu neuf. **Consequences** : `FRA-CE1-10` reste **VALIDE SOUS RESERVE** avec `TPH-CE1-R1` (fiche, amendement
+du meme jour) ; aucun refus n'est ecrit. **Ma recommandation de la section 8, *"oui pour la suite"*, n'est pas retenue par
+l'utilisatrice** : je traite le pli des lots suivants comme une reserve datee, sur le regime de `RDO-CP-R1` et `TPH-CE1-R1`.
+La section 8 reste ecrite telle quelle. Pour `theo-archi` et `ines-design` : la forme des propositions longues n'attend plus
+`Q-N4` (section 9) ; elle suit la story que `camille-po` tirera de `TPH-CE1-R1`.
+
+## Amendement du 2026-10-14, 20:40 : poste 5 audite, reponses a `ines-design` (poste 8)
+
+Branche `s57-nadia-rejeu` avancee par `git merge --ff-only` a `faf7e285` (`round-two`, qui contient deja `13d6285f`) ;
+`bash outils/verifier-lignee.sh` sort 0. Rien au-dessus n'est reecrit.
+
+- **Poste 5, `ce1-accord-groupe-nominal` (A')** : branche `s57-sofia-fra-ce1-15`, commit `72931c94` (le sommet `3459ddb8`
+  n'ajoute que le rapport de la developpeuse). **VALIDE SOUS RESERVE** : Done pedagogique de `FRA-CE1-15`, reserve neuve non
+  bloquante `GNA-CE1-R1` (pli a 744 x 551 sur 23 items sur 24). Titre *"Des mots bien accordés"* et consigne reprise de
+  `-13` et `-10` : tenus. Fiche : `squad/conformite/FICHE-bandit-manchot-accord-groupe-nominal-ce1.md`. Build de la branche :
+  2519 tests, 0 echec, JDK 21.0.10 ; jar sur 18512, PID 53496, arrete par ce PID ; 15 parties, 24 items sur 24, 0 ecart.
+  Audit 1,0 sur A' ; marge de A' intacte.
+- **Poste 8, six questions d'`ines-design`** : `reponse-nadia-forme-poste-8.md` (ce dossier). `L1` et `L2` acceptes ; veto
+  sur le bandeau a croix sous la reference, deux colonnes acceptees sous le meuble ; coupes hors barres confirmees sans effet
+  sur le refus ; verdict sur deux lignes accepte si la coupure tombe entre les deux phrases ; repli `L1 + L3` sans objet.
+- **Precision** de `TPH-CE1-R1` (fiche de `FRA-CE1-10`, bloc date) : a 518 - 568 le texte de l'indice reste lisible, le cadre
+  est coupe.
+- **Routage ajoute** : `camille-po`, `FRA-CE1-15` a `couvert-valide` apres fusion de `72931c94` et story de `GNA-CE1-R1` ;
+  `sofia-sm`, ce verdict pour `cloture-palier-1.md` et la resolution de `catalogue.yaml` entre les postes 4 et 5 sans toucher
+  les six lignes de chaque entree ; `ines-design`, la section 2 de la reponse.
+
+Jobs de `ci.yml` pour le commit de cet amendement : section suivante.
+
+### Jobs de `ci.yml` lances pour le commit de l'amendement de 20:40
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl` : `BUILD SUCCESS`, 2498 tests (120, 31, 486,
+  1484, 371 et 6 d'integration), 0 echec ; JDK 21.0.10. Le build a lu ce fichier avant l'ajout de cette section, sans
+  tableau. Avant lui, le garde-fou du registre : *"declare 983 identifiants alloues et 178 prefixes distincts, sa table en
+  porte 984 et 178"*, ligne d'etat portee a 984 / 178, relance verte (10 tests, 0 echec).
+- **`chemins`**, **`prefixes`** : voir le compte rendu de la tache ; **`outils`** : non lance, aucun outil modifie.
