@@ -1,0 +1,9 @@
+# ADR-0013 obligation 3 : catalogue fautif de PaquetCe1AccordGroupeNominalTest. La consigne du jeu
+# n'est pas celle que l'enfant lit deja sur les entrees existantes.
+jeux:
+  - id: bandit-manchot-accord-groupe-nominal-fautif
+    titre: "Des mots bien accordés"
+    consigne: "Choisis le groupe de mots bien écrit."
+    mecanique: bandit-manchot
+    paquet: ce1-accord-groupe-nominal
+    nombreDeManches: 10

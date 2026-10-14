@@ -882,3 +882,9 @@ jeux:
     mecanique: bandit-manchot
     paquet: cp-arts-oeuvres-familles
     nombreDeManches: 10
+  - id: bandit-manchot-accord-groupe-nominal-ce1
+    titre: "Des mots bien accordés"
+    consigne: "Lis bien, puis choisis la bonne réponse."
+    mecanique: bandit-manchot
+    paquet: ce1-accord-groupe-nominal
+    nombreDeManches: 10
