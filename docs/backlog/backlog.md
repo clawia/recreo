@@ -21786,3 +21786,82 @@ Reprise de C1 a C9 de "Criteres communs aux quatre stories de branchement (`S55-
 - **Lien decision** : `DEC-0120` A.58. **Agent** : a designer par `sofia-sm`.
 
 **Questions a `nadia-prof`, routees par `sofia-sm`** : `Q-B1` pour les points 6.1 (1) et (2) de `ce1-texte-narratif` : correction avant le branchement (cible 0 sur les deux mesures) ou valeur consignee et jugee au jeu ? `Q-B2` : l'indice cite en 6.3 est-il celui de l'item *livre* ? **A `sofia-sm`** : designer les developpeurs des trois stories ; `planning.md` du palier 1. **A l'utilisatrice** : aucune question neuve.
+
+### Amendement du 2026-10-14, neuvieme : reponses de `camille-po` aux questions routees du palier 1 (`camille-po`, `DEC-0120` A.63 a A.76)
+
+Annotation datee, 2026-10-14 apres 16:23 (UTC+02:00). **Rien au-dessus n'est reecrit** ; ce que chaque point remplace est nomme. Sources : `planning.md` de s57 (`3a3ea97e`), `lecture-testabilite.md` (`da1991b7`), `avis-faisabilite.md` (`ea6cd1fd`). Les valeurs "aujourd'hui" sont mesurees le 2026-10-14 sur `round-two` a `3a3ea97e`. **`K1 (a)` est remplie** : `planning.md` existe et nomme les stories. Aucune ligne de matrice ne bouge.
+
+**Cette annotation est l'amendement que la porte `P-4` attend** : elle doit etre fusionnee avant le premier commit de `lea-dev` sur `S54-OBS-SCI-CONSIGNE`. Les criteres 1 et 2 de cette story sont remplaces ci-dessous.
+
+#### S57-ARB-PALIER-1 - la lecture complete des items avant le premier lot (poste 1 du palier 1, `Q-S3`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux que les exercices que je joue aient ete lus en entier par une enseignante avant de m'etre proposes, afin de ne pas tomber sur un exercice que personne n'a lu.
+- **Mecanique demandee** : aucune. **Competence programme visee** : transverse - pas de contenu pedagogique (la story porte l'obligation de lecture, pas une competence).
+- **Source, ses mots** (`arbitrage-nadia-palier-1.md`, section 4) : *"La lecture complete des items de chaque lot reste due par l'instance qui l'audite, avant son premier lot, sur ce meme poste."*
+- **Criteres d'acceptation** :
+  1. **Clause de non-regression, verte aujourd'hui** : l'arbitrage est sur `round-two`. `git show round-two:squad/sprints/s57-version-cp-ce1-cm1-trois-instances/arbitrage-nadia-palier-1.md > /dev/null` sort 0.
+  2. Pour chaque paquet de A' branche au palier 1, et pour `ce1-texte-narratif` s'il est engage, une ligne datee de `nadia-prof`, dans un fichier de `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/` ou de `squad/conformite/`, porte `lecture complete`, le nom du paquet et le nombre d'items lus, egal au compte du paquet : 24 pour `ce1-phrases-types`, 24 pour `ce1-accord-groupe-nominal`, 20 pour `ce1-texte-narratif` (`grep -c 'bonneReponse:'` sur chaque fichier de `adapters/adapter-content/src/main/resources/contenu/`, mesure du jour). Mesure : `grep -rE "lecture complete.*ce1-phrases-types.*24" squad/sprints/s57-version-cp-ce1-cm1-trois-instances/ squad/conformite/` rend au moins une ligne, et de meme pour les deux autres. **Aujourd'hui : 0 ligne pour chacun des trois : rouge.** Les mots du `grep` sont ceux de son arbitrage ; si elle ecrit la ligne autrement, elle le dit et le critere s'amende, la forme est la sienne.
+  3. **Ordre** : le commit qui porte la ligne d'un paquet est ancetre du commit de son premier verdict (`git merge-base --is-ancestor <commit de la ligne> <commit du verdict>` sort 0). Sans objet aujourd'hui (aucun verdict). Verifie par `sofia-sm` a la cloture de palier, une ligne par paquet.
+- **Ce que la story ne dit pas** : ce que `nadia-prof` lit, ni ce qu'elle en conclut.
+- **Prix** : aucun prix neuf, pris sur le 0,5 de l'arbitrage de chaque instance (arbitrage, section 4). **Etat** : engagee, poste 1 du palier 1 ; la part ecrite est livree (`8396696e`, fusionne `7180f666`). **Lien** : `DEC-0120` A.64 ; `PAR-16`.
+
+#### `S57-ADR-0065-DEUX-INSTANCES` - critere 2 remplace (`Q-Y1`)
+
+Le critere 2, *"l'amendement et le test sont modifies dans un seul commit, avant le premier commit d'un lot de la seconde instance"*, n'est pas tenu a la lettre : le test est inchange et la dette est payee en deux commits (`7a34366c`, amendement de l'`ADR` ; `bac0a6d1`, controle du job `prefixes` ; `lecture-testabilite.md` 2.4). **Je l'avais ecrit avant que la forme de l'amendement soit connue** (la story dit que la forme est a `theo-archi`) : un critere qui fixe le nombre de commits contraignait cette forme. **Remplace** par :
+
+- Le controle et l'amendement sont fusionnes **avant le premier worktree d'un lot de A'** : dans ce worktree, `git merge-base --is-ancestor 729b0d8a HEAD` sort 0 (la fusion `729b0d8a` contient `7a34366c` et `bac0a6d1`). Commande et sortie citees dans le rapport du developpeur (`K1 (c)`).
+- **Contre l'existant** : sur `round-two`, les trois commandes (`729b0d8a`, `7a34366c`, `bac0a6d1`) sortent 0 (mesure du jour). Le critere est donc **vert sur la livraison et ne mord que dans le worktree d'un lot de A'**, qui n'existe pas encore : c'est une clause de porte (`P-2` du planning), pas un correctif. La story reste **livree**.
+
+#### `S56-VSJ-CE1-R1` - ce que le critere tient et ce qu'il ne dit pas (`Q-Y2`, poste 3)
+
+Sans changement de ses mots. Trois precisions, aucune ne remplace une phrase de `nadia-prof` :
+
+- **Commande de comptage, due par le backlog** (*"a ecrire avec `yanis-qa`"*) : un test de `PaquetCe1VerbeSujetTest` (module `adapters/adapter-content`) compte les items de sujet dont une proposition fausse est avant le verbe cite, attendu au moins 3 ; `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=PaquetCe1VerbeSujetTest`. **Aujourd'hui : 1 echec sur 23 tests, le comptage rend 0 pour 3 attendus** (mesure de `yanis-qa`, `lecture-testabilite.md` 2.1, avec son test) : rouge. **Mutation** : les trois items remis dans leur forme actuelle rendent le test rouge, nombre de tests lances superieur a 0.
+- **`J1` tenue, ses mots** : `propriete2J1LaMajusculeNeDesigneJamaisLaBonneReponse` reste verte **sans etre modifiee**. Clause de non-regression, verte aujourd'hui.
+- **L'exemple de `nadia-prof`** (`Ce matin, Léa lit un livre.`) est introduit par *"par exemple"* ; **ma lecture : une illustration**. Servi tel quel, il rend rouges `J1`, la liste d'ouvertures de `TRV-CE1-6` et le plancher de formes de sujet (`lecture-testabilite.md` 2.1), donc il contredit sa propre clause `J1`. **Regle du poste** : `marc-dev` ecrit trois items qui gardent verts `J1`, `propriete4LesPrenomsFemininsEtMasculinsSontALUnPres` et `vsjCe11EtCe12QuinzeItemsDeSujetAuMoinsEtCinqPourChaqueFormeDeSujet` ; **s'il ne le peut pas, il s'arrete et route a `nadia-prof`, qui amende ou non ces tests par un amendement date avant le commit** (meme porte que `P-3`). Je ne decide pas lequel de ces tests s'assouplit : ce sont ses conditions. **`Q-N1`** (a `nadia-prof`) : l'exemple est-il une illustration, comme je le lis ?
+
+#### `S54-OBS-SCI-CONSIGNE` - criteres 1 et 2 remplaces, glissement borne (`Q-Y3`, poste 6)
+
+Source des criteres : les mots de `nadia-prof` (section 3 de son arbitrage), inchanges. Ce qui change est la **commande**, pas ses mots. **Remplace** les criteres 1 et 2 de l'annotation du 2026-10-13 (`DEC-0120` A.34) :
+
+1. Les 12 enonces commencent par *"D'après ce tableau,"* ou *"D'après ce texte,"* : `grep -c "puis réponds à la question"` sur `cm1-sciences-extraire-information.yaml` rend 0. **Aujourd'hui : 12** : rouge. **Gardee par un test** (neuf, `lea-dev`, avec `yanis-qa`) : remettre la phrase dans un des 12 enonces rend au moins un test rouge de `PaquetCm1SciencesExtraireInformationTest` (module `adapters/adapter-content`, nombre de tests lances superieur a 0). **Aujourd'hui : la phrase est dans les 12 enonces et le reacteur est vert (2498 tests, 0 echec, mesure de `yanis-qa` sur `544159d9`)** : aucun test ne la lit, rouge.
+2. *"Rien d'autre ne change dans le paquet : ni document, ni bonne reponse, ni distracteur, ni indice"* (ses mots). **La commande `git diff` sur 12 lignes ne mordait pas** : une question reecrite sur sa ligne donnait 0 (`yanis-qa`, 2.2). **Nouvelle commande**, qui lit chaque paire de lignes `enonce:` : `git diff -U0 -- adapters/adapter-content/src/main/resources/contenu/cm1-sciences-extraire-information.yaml | grep -E '^[+-] ' | awk '/^-  - enonce: "/{o=$0; sub(/^-  - enonce: "/,"",o); next} /^\+  - enonce: "/{n=$0; sub(/^\+  - enonce: "/,"",n); if (o == "Lis ce tableau, puis réponds à la question. " n || o == "Lis ce texte, puis réponds à la question. " n) ok++; else ko++; next} /^[+-]/ && !/^(\+\+\+|---)/ {autre++} END{print ok+0, ko+0, autre+0}'` doit rendre **`12 0 0`** : chaque ancien enonce egale la phrase retiree suivie du nouveau, et aucune autre ligne ne change. **Mesuree sur des copies du fichier hors depot, avec `diff -U0` a la place de `git diff`** : les 12 phrases retirees, `12 0 0` ; les 12 retirees plus une question reecrite (`le régime alimentaire de la vache` devenu `le repas de la vache`), `11 1 0` ; sans difference, `0 0 0`. **Aujourd'hui `0 0 0` : rouge** (la story n'est pas faite). **Reserve** : je lis *"rien d'autre ne change"* comme couvrant le texte de la question de chaque enonce ; si `nadia-prof` le lit autrement, elle le dit.
+3. a 5 : inchanges. Le critere 3 est garde (mutation mesuree par `yanis-qa` : 4 echecs sur 10 de `TexteAccentueExposeParLePortEntrantTest`).
+
+**Limite du glissement, `DEC-0120` A.72 et A.73.** La story est engagee au palier 1, **premier poste de `lea-dev`**. Un glissement du palier 1 au palier 2 est permis une fois ; **a la cloture du palier 2, non livree et rejouee, c'est le troisieme report, interdit, et l'acte d'abandon s'ecrit ce jour-la** (et non a la cloture de s57, qui n'a pas de date). Remplace *"a la cloture de s57"* dans les annotations du 2026-10-13 (`DEC-0120` A.34, A.44) et du 2026-10-14 (A.59).
+
+#### `S57-BR-FRA-CE1-04`, `-10`, `-15` - precisions de `Q-Y6` (poste 7 pour `-04` ; les postes 4 et 5 ne sont pas bloques)
+
+Les valeurs ci-dessous completent K4, S2 et S4 ; rien n'est reecrit.
+
+- **K4, module et classe** : `PaquetCe1TexteNarratifTest`, `PaquetCe1PhrasesTypesTest`, `PaquetCe1AccordGroupeNominalTest`, module `adapters/adapter-content` (modele : `PaquetCe1VerbeSujetTest`), avec leur dossier de fixtures.
+- **S4, regle de comptage de `LON-CE1-3` et `-4`, qui fait foi pour le test de paquet** : celle de `yanis-qa` (`lecture-testabilite.md` 2.5) : un mot est un jeton de `split()` qui porte une lettre ou un chiffre ; une phrase se coupe apres `.`, `!` ou `?` suivi d'un blanc. **Son choix ne change aucun verdict sur les vingt textes** : mesure de `camille-po`, trois regles de mots (jetons ; elisions et traits d'union comptes double ; toute suite de lettres) et trois regles de phrases (blanc apres signe ; `:` et `;` en plus, points de suspension compris ; coupure sur tout signe), script hors depot sur `ce1-texte-narratif.yaml` : **au plus 22, 23 et 23 mots par texte (borne 30) ; au plus 4 phrases sous les trois regles (borne : au plus 4, atteinte, pas depassee) ; au plus 10 mots par phrase (borne 12)**. Les 20 textes sont distincts. Clause de non-regression, verte aujourd'hui sous les trois regles. Si un texte corrige un jour s'approche de la borne de 4 phrases, la regle redevient une question a `nadia-prof`.
+- **S2, propriete de la majuscule, en commande** : le script de S2 (limite a la categorie `# ordre`) rend 2 ; **la meme commande sur tous les items** (sans la condition de categorie) rend aussi 2, les deux memes : `awk '/bonneReponse:/{match($0,/: "/); b=substr($0,RSTART+3,1)} /distracteurs:/{s=$0; n=0; while(match(s,/"[^"]*"/)){if(substr(s,RSTART+1,1) ~ /[A-Z]/)n++; s=substr(s,RSTART+RLENGTH)} if(b ~ /[A-Z]/ && n==0)k++} END{print k+0}' adapters/adapter-content/src/main/resources/contenu/ce1-texte-narratif.yaml` rend **2 aujourd'hui**. Le test de paquet porte la propriete sur **tous** les items (comme `J1` de `ce1-verbe-sujet`) ; la cible est celle de `Q-B1` : **rouge si la cible est 0**.
+- **Ce qui reste bloquant pour `-04`** : `Q-B1`, a `nadia-prof`, seule. Ce que je pouvais repondre l'est.
+
+#### `S56-RETRAIT-RAPPROCHER-OEUVRES` - identifiant de l'entree de B2 (`Q3` de `theo-archi`, poste 9)
+
+Decision : **B2 reprend l'identifiant `bandit-manchot-rapprocher-deux-oeuvres-cp`** (`DEC-0120` A.65). Le dernier critere de la story (*"une entree neuve, apres un Done qui n'est pas `REFUSE`"*) reste : l'entree est neuve, l'identifiant ne l'est pas. Criteres de B2 qui s'ajoutent :
+
+- `grep -c "id: bandit-manchot-rapprocher-deux-oeuvres-cp$" adapters/adapter-content/src/main/resources/catalogue.yaml` rend 1 apres B2 ; **aujourd'hui 0**, rouge attendu (B2 n'existe pas).
+- Aucune fiche d'un autre nom pour ce paquet : `ls squad/conformite | grep -c "^FICHE-bandit-manchot-rapprocher"` rend 1 apres B2 comme aujourd'hui (clause de non-regression, verte).
+- Le compte de `REFUSE` dans la fiche ne baisse pas : `grep -c "REFUSE" squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` rend **2 aujourd'hui** et au moins 2 apres B2 (clause de non-regression). Le verdict du rejeu est un bloc date de plus, ecrit par `nadia-prof`.
+- Je n'ouvre pas de fiche (elle existe) et je ne touche pas son bloc de validation.
+
+#### Report et glissement : compte du palier 1 (`Q-S2`, `DEC-0120` A.66, A.67, A.72)
+
+| Poste | Compte | Decision |
+|---|---|---|
+| 7, lot `ce1-texte-narratif` (`FRA-CE1-04`) | **premier report de ce poste, s57 palier 1, 2026-10-14** | retenu par la composition, non engage a l'ouverture. Debloque par `Q-B1` seule. S'engage par amendement date de `planning.md` |
+| 8, correction d'`ART-CP-10` | **premier report de la reprise elle-meme, s57 palier 1, 2026-10-14.** La ligne porte alors quatre reports (s50 a s53), trois engagements sans fermeture (s54 a s56) et celui-ci : **huit evenements sans fermeture** | retenue "avant tout lot neuf" (`DEC-0120` 4.2) ; deux lots neufs sont engages, elle non. Debloquee par `Q1`, `Q2`, `Q-Y5` (`nadia-prof`, `ines-design`) |
+| 9, B2 | pas un report | suite du poste 8 et du verdict, jamais retenue seule |
+| `S57-FRA-FAMILLES-LIVRE`, `HS-ACCUEIL-APM-R2` | pas des reports | palier 2 par construction ; jamais retenues au palier 1 |
+
+Un troisieme report d'un meme poste n'est pas permis (`DEC-0112` section 6, etendu ici aux postes 7 et 8) : au troisieme, un acte ecrit de ma main, abandon ou question a l'utilisatrice, le jour de l'ouverture du palier.
+
+#### `RP-ACCUEIL-147` et `HS-ACCUEIL-APM-R2` (`Q-S3`, `DEC-0120` A.74)
+
+- **`RP-ACCUEIL-147`** : correction d'un fichier de `nadia-prof`, sans jar ni port ; **l'instance n'a pas d'effet sur le produit**, et le fichier n'est dans le jeu de conflits d'aucune instance. Elle choisit l'instance et le moment. **Ce que je fixe** : faite avant la cloture du palier 1 ; sinon glissement ecrit dans `cloture-palier-1.md` (un seul permis). Demandee par l'utilisatrice le 2026-10-12.
+- **`HS-ACCUEIL-APM-R2`** : reste **non engagee**. **Ce qui m'en empeche** : le prix de l'audit de `nadia-prof` avant fusion (`DEC-0117` section 11) est le sien et n'est pas ecrit (`Q-N2`). **Ce que je fixe** : son audit ne se prend ni sur les marges de rejeu ni sur les 0,75 non affectes de B (reserves a leurs motifs, arbitrage section 2) ; il entre dans les 8,0 du palier qui l'engage, par la composition de ce palier. Aucun developpeur n'est designe tant que le prix n'existe pas.
+
+**Questions** : **`Q-N1`** (a `nadia-prof`) : l'exemple de `VSJ-CE1-R1` est-il une illustration ? **`Q-N2`** : quel prix pour l'audit d'`APM-R2` ? **`Q-N3`** : `Q1`, `Q2`, `Q-Y5` de la correction d'`ART-CP-10`, a repondre dans le palier 1 pour que le poste 8 s'engage par amendement avant sa cloture. **`Q-B1`** inchange. **A `sofia-sm`** : amender la section "Compte des reports" de `planning.md` (elle dit *"aucun report"* pour les postes 7 et 8), ecrire les comptes et la limite dans `cloture-palier-1.md`. **A l'utilisatrice** : aucune question neuve ; a lire : le compte de la ligne `ART-CP-10` (huit evenements).
