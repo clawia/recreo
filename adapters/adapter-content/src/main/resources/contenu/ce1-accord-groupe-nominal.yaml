@@ -13,7 +13,7 @@
 # TRV-CE1-1 a TRV-CE1-7 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 2) : niveau CE1, une seule ligne de referentiel, aucun champ a
 # voix haute ni texteSupport ni illustration, un indice sur chaque item (douze mots au plus, jamais
 # la reponse, jamais un renvoi a l'ecoute), plancher de vingt items atteint. LON-CE1-5 : au plus six mots
-# par proposition. La question est portee par la consigne du jeu quand l'enonce ne la porte pas.
+# par proposition. Chaque enonce porte sa question ; la consigne du jeu (catalogue.yaml) est generique.
 schema: 1
 id: ce1-accord-groupe-nominal
 type: question

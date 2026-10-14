@@ -1,8 +1,8 @@
 # Fiche de conformite - bandit-manchot-sciences-extraire-information-cm1
 
 - **Mecanique** : bandit manchot.
-- **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-sciences-extraire-
-  information.yaml` (12 items, type `question`). **Premier paquet a utiliser `tableauSupport`
+- **Contenu** : `adapters/adapter-content/src/main/resources/contenu/cm1-sciences-extraire-information.yaml`
+  (12 items, type `question`). **Premier paquet a utiliser `tableauSupport`
   (`ADR-0099`).**
 - **Entree de catalogue** : `bandit-manchot-sciences-extraire-information-cm1`, titre servi *"Lis
   le document scientifique"*, consigne servie *"Lis le texte ou le tableau, puis reponds a la
@@ -10,10 +10,10 @@
 - **Ligne declaree** : `SCI-CM1-20`, **couverture partielle** (texte et tableau seuls).
 - **Statut global** : **VALIDE**. Done pedagogique **prononce le 2026-09-23** par `nadia-prof`,
   apres avoir joue le jar servi.
-- **Arbitrage prealable** : `ARBITRAGE-PREALABLE-s32-...-le-prix-d-une-ligne-marginale.md`,
+- **Arbitrage prealable** : `ARBITRAGE-PREALABLE-s32-trois-instances-ma-borne-a-douze-le-terrain-sans-image-et-le-prix-d-une-ligne-marginale.md`,
   ligne 1033, mention exigee d'avance : *"document textuel et tableau seuls ; le schema et le
-  graphique restent non couverts"*. Referentiel : `squad/programme/sciences-et-
-  technologie/competences-cm1.md`, ligne 20.
+  graphique restent non couverts"*. Referentiel :
+  `squad/programme/sciences-et-technologie/competences-cm1.md`, ligne `SCI-CM1-20`.
 - **Derniere mise a jour** : 2026-10-14 (rejeu de `S54-OBS-SCI-CONSIGNE`, s57, bloc en fin de fiche).
 
 ---
