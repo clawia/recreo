@@ -447,6 +447,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-FRA-CE1-10 (s57) : entree neuve, FRA-CE1-10, reconnaitre une phrase et son type
             // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.1).
             "bandit-manchot-phrases-types-ce1",
+            // S57-BR-FRA-CE1-15 (s57) : entree neuve, FRA-CE1-15, accorder dans le groupe nominal
+            // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.6).
+            "bandit-manchot-accord-groupe-nominal-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -748,6 +751,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Le verbe et son sujet",
             // S57-BR-FRA-CE1-10 (s57) : titre neuf, sans niveau (ADR-0078).
             "Les types de phrases",
+            // S57-BR-FRA-CE1-15 (s57) : titre neuf, sans niveau (ADR-0078).
+            "Des mots bien accordés",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : titre neuf, sans niveau (ADR-0078).
             "Même sens ou sens contraire",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
@@ -1700,6 +1705,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-10).
             "Reconnaître une phrase (majuscule, point) et identifier son type (déclarative, "
                     + "interrogative, exclamative) par sa ponctuation.",
+            // S57-BR-FRA-CE1-15 (s57) : competence neuve, FRA-CE1-15, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-15).
+            "Accorder en nombre et en genre dans le groupe nominal (déterminant, nom, adjectif)\u00A0:"
+                    + " pluriel en -s et en -x (-eau, -au, -eu), féminin en -e.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",
