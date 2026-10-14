@@ -1,0 +1,31 @@
+/* Poste 8 de s57, reprise d'ART-CP-10 : regles candidates d'ines-design, NON versees dans recreo.css.
+   Texte injecte tel quel apres la feuille reelle par pilote-poste-8.mjs ; lea-dev les verse apres l'avis
+   de nadia-prof. Aucune couleur neuve, aucun gabarit touche. */
+
+/* L1 : la decoration du meuble. .cabinet reste, avec sa bordure, son rembourrage et son levier de flanc
+   (zero pixel de hauteur). Hors de tout @media : le meuble est le meme a toute largeur. */
+.ecran-deux-oeuvres .cabinet-bandeau,
+.ecran-deux-oeuvres .cabinet-socle { display: none; }
+
+/* L2 et L3 : dans le bloc @media (min-width: 720px) deja existant de .ecran-deux-oeuvres, dont elles
+   remplacent grid-template-columns et grid-template-areas (L2) et auquel elles ajoutent quatre regles (L3). */
+@media (min-width: 720px) {
+    .ecran-deux-oeuvres {
+        grid-template-columns: 11rem minmax(0, 1fr) auto;
+        grid-template-areas:
+            "consigne consigne score"
+            "ref enonce enonce"
+            "ref jeu jeu"
+            "msg msg msg";
+    }
+
+    .ecran-deux-oeuvres > .message-jeu {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        column-gap: 0.75rem;
+        align-items: start;
+    }
+    .ecran-deux-oeuvres > .message-jeu > .signal { grid-column: 1; grid-row: 1 / span 3; }
+    .ecran-deux-oeuvres > .message-jeu > :not(.signal) { grid-column: 2; }
+    .ecran-deux-oeuvres .signal .verdict { margin-bottom: 0; }
+}
