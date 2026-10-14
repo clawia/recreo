@@ -11,6 +11,19 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s57, palier 1, le 2026-10-14 (rejeu de `VSJ-CE1-R1`, levee ; Done pedagogique de `FRA-CE1-10`,
+VALIDE SOUS RESERVE).** Deux identifiants ajoutes, des reserves : **`VSJ-CE1-R2`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-verbe-sujet-ce1.md`, et **`TPH-CE1-R1`**, ecrit dans
+`squad/conformite/FICHE-bandit-manchot-phrases-types-ce1.md`. **Forme copiee** de `VSJ-CE1-R1` : trois segments, niveau au
+milieu, marqueur `R` dans le dernier (`ADR-0100`). Prefixes `VSJ-CE1` et `TPH-CE1` deja alloues ; `git grep` sur `VSJ-CE1-R2`
+et `TPH-CE1-R` ne rendait rien avant d'ecrire. Les deux lignes de la section 4 sont dans le meme diff que les fiches.
+
+Ligne d'etat courant portee de **981 / 178 a 983 / 178**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend : *"declare 981 identifiants
+alloues et 178 prefixes distincts, sa table en porte 983 et 178"*, seul echec des 10 tests. C'est ce **983 / 178** que je
+recopie. Si une autre branche alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, hors sprint, le 2026-10-13, 17:01 (`QLM-CE1-09`, forme degradee de `theo-archi` jugee
 recevable).** Un identifiant ajoute, une condition, **`PLG-CE1-2`**, ecrite dans la section 11 de
 `squad/conformite/ARBITRAGE-PREALABLE-s57-instruction-questionner-le-monde-et-emc-ce1.md`. **Forme copiee** de `PLG-CE1-1` :
@@ -859,7 +872,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `981` identifiants alloues, `178` prefixes distincts.
+**Compte courant, verifie par la CI** : `983` identifiants alloues, `178` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2314,6 +2327,7 @@ clause 2 par une exemption.
 | `TPH-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `TPH-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `TPH-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
+| `TPH-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-phrases-types-ce1.md` |
 | `NEG-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `NEG-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `NEG-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
@@ -2325,6 +2339,7 @@ clause 2 par une exemption.
 | `VSJ-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `VSJ-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `VSJ-CE1-R1` | `squad/conformite/FICHE-bandit-manchot-verbe-sujet-ce1.md` |
+| `VSJ-CE1-R2` | `squad/conformite/FICHE-bandit-manchot-verbe-sujet-ce1.md` |
 | `ACV-CE1-1` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `ACV-CE1-2` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
 | `ACV-CE1-3` | `squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md` |
