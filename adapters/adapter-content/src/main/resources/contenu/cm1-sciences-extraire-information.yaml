@@ -35,7 +35,7 @@ lignesDeReferentiel: ["SCI-CM1-20"]
 #
 # Douze items, strictement superieur aux dix manches par defaut (DEC-0064, ADR-0023).
 items:
-  - enonce: "Lis ce tableau, puis réponds à la question. D'après ce tableau, quel est le régime alimentaire de la vache ?"
+  - enonce: "D'après ce tableau, quel est le régime alimentaire de la vache ?"
     tableauSupport:
       enTete: ["Animal", "Régime alimentaire"]
       lignes:
@@ -45,7 +45,7 @@ items:
     bonneReponse: "herbivore"
     distracteurs: ["carnivore", "omnivore"]
     indice: "Cherche la ligne de la vache dans le tableau."
-  - enonce: "Lis ce tableau, puis réponds à la question. D'après ce tableau, quel est le régime alimentaire du loup ?"
+  - enonce: "D'après ce tableau, quel est le régime alimentaire du loup ?"
     tableauSupport:
       enTete: ["Animal", "Régime alimentaire"]
       lignes:
@@ -55,7 +55,7 @@ items:
     bonneReponse: "carnivore"
     distracteurs: ["herbivore", "omnivore"]
     indice: "Cherche la ligne du loup dans le tableau."
-  - enonce: "Lis ce tableau, puis réponds à la question. D'après ce tableau, quel est le régime alimentaire de l'ours brun ?"
+  - enonce: "D'après ce tableau, quel est le régime alimentaire de l'ours brun ?"
     tableauSupport:
       enTete: ["Animal", "Régime alimentaire"]
       lignes:
@@ -65,7 +65,7 @@ items:
     bonneReponse: "omnivore"
     distracteurs: ["herbivore", "carnivore"]
     indice: "Cherche la ligne de l'ours brun dans le tableau."
-  - enonce: "Lis ce tableau, puis réponds à la question. D'après ce tableau, dans quel état se trouve le fer à température ambiante ?"
+  - enonce: "D'après ce tableau, dans quel état se trouve le fer à température ambiante ?"
     tableauSupport:
       enTete: ["Matériau", "État à température ambiante"]
       lignes:
@@ -75,7 +75,7 @@ items:
     bonneReponse: "solide"
     distracteurs: ["liquide", "gazeux"]
     indice: "Cherche la ligne du fer dans le tableau."
-  - enonce: "Lis ce tableau, puis réponds à la question. D'après ce tableau, dans quel état se trouve l'eau à température ambiante ?"
+  - enonce: "D'après ce tableau, dans quel état se trouve l'eau à température ambiante ?"
     tableauSupport:
       enTete: ["Matériau", "État à température ambiante"]
       lignes:
@@ -85,7 +85,7 @@ items:
     bonneReponse: "liquide"
     distracteurs: ["solide", "gazeux"]
     indice: "Cherche la ligne de l'eau dans le tableau."
-  - enonce: "Lis ce tableau, puis réponds à la question. D'après ce tableau, dans quel état se trouve le dioxygène à température ambiante ?"
+  - enonce: "D'après ce tableau, dans quel état se trouve le dioxygène à température ambiante ?"
     tableauSupport:
       enTete: ["Matériau", "État à température ambiante"]
       lignes:
@@ -95,32 +95,32 @@ items:
     bonneReponse: "gazeux"
     distracteurs: ["solide", "liquide"]
     indice: "Cherche la ligne du dioxygène dans le tableau."
-  - enonce: "Lis ce texte, puis réponds à la question. D'après ce texte, comment s'appelle la fine couche d'air qui entoure la Terre ?"
+  - enonce: "D'après ce texte, comment s'appelle la fine couche d'air qui entoure la Terre ?"
     texteSupport: "Autour de la Terre se trouve une fine couche d'air : l'atmosphère. Elle protège les êtres vivants des rayons dangereux du Soleil. Elle retient aussi la chaleur, ce qui permet à l'eau de rester liquide à la surface de la planète."
     bonneReponse: "l'atmosphère"
     distracteurs: ["la stratosphère", "la mésosphère"]
     indice: "Le nom de cette couche d'air est donné juste après les deux points, dans la première phrase."
-  - enonce: "Lis ce texte, puis réponds à la question. D'après ce texte, de quoi cette couche d'air protège-t-elle les êtres vivants ?"
+  - enonce: "D'après ce texte, de quoi cette couche d'air protège-t-elle les êtres vivants ?"
     texteSupport: "Autour de la Terre se trouve une fine couche d'air : l'atmosphère. Elle protège les êtres vivants des rayons dangereux du Soleil. Elle retient aussi la chaleur, ce qui permet à l'eau de rester liquide à la surface de la planète."
     bonneReponse: "des rayons dangereux du Soleil"
     distracteurs: ["des vents violents", "du froid de l'espace"]
     indice: "Relis la deuxième phrase du texte, elle commence par ce que fait cette couche d'air."
-  - enonce: "Lis ce texte, puis réponds à la question. D'après ce texte, que permet la chaleur retenue par cette couche d'air ?"
+  - enonce: "D'après ce texte, que permet la chaleur retenue par cette couche d'air ?"
     texteSupport: "Autour de la Terre se trouve une fine couche d'air : l'atmosphère. Elle protège les êtres vivants des rayons dangereux du Soleil. Elle retient aussi la chaleur, ce qui permet à l'eau de rester liquide à la surface de la planète."
     bonneReponse: "à l'eau de rester liquide"
     distracteurs: ["à l'eau de geler", "à l'air de se réchauffer"]
     indice: "Relis la dernière phrase du texte, après les mots ce qui permet."
-  - enonce: "Lis ce texte, puis réponds à la question. D'après ce texte, que récoltent les abeilles en butinant les fleurs ?"
+  - enonce: "D'après ce texte, que récoltent les abeilles en butinant les fleurs ?"
     texteSupport: "Les abeilles butinent les fleurs pour récolter du nectar. En passant de fleur en fleur, elles transportent aussi du pollen. Ce transport de pollen permet à de nombreuses plantes de produire des fruits et des graines."
     bonneReponse: "du nectar"
     distracteurs: ["du miel", "de l'eau"]
     indice: "Relis la première phrase du texte, elle dit pourquoi les abeilles butinent."
-  - enonce: "Lis ce texte, puis réponds à la question. D'après ce texte, que transportent aussi les abeilles en passant de fleur en fleur ?"
+  - enonce: "D'après ce texte, que transportent aussi les abeilles en passant de fleur en fleur ?"
     texteSupport: "Les abeilles butinent les fleurs pour récolter du nectar. En passant de fleur en fleur, elles transportent aussi du pollen. Ce transport de pollen permet à de nombreuses plantes de produire des fruits et des graines."
     bonneReponse: "du pollen"
     distracteurs: ["de la cire", "des épines"]
     indice: "Relis la deuxième phrase du texte, après le mot aussi."
-  - enonce: "Lis ce texte, puis réponds à la question. D'après ce texte, que ce transport de pollen permet-il à de nombreuses plantes ?"
+  - enonce: "D'après ce texte, que ce transport de pollen permet-il à de nombreuses plantes ?"
     texteSupport: "Les abeilles butinent les fleurs pour récolter du nectar. En passant de fleur en fleur, elles transportent aussi du pollen. Ce transport de pollen permet à de nombreuses plantes de produire des fruits et des graines."
     bonneReponse: "de produire des fruits et des graines"
     distracteurs: ["de pousser plus vite", "de changer de couleur"]
