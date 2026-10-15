@@ -38,7 +38,7 @@ libelles et pictogrammes arbitres par moi avant tout code.
 `/retour` (le bouton "Les jeux", sur une manche comme sur la fin de partie) rend `accueil :: zoneAccueil`
 avec `partie.jeuxDisponibles()` et declare l'adresse `/` (`PartieController.retour`, constante
 `ADRESSE_CATALOGUE_COMPLET`). **Aujourd'hui, apres une partie lancee depuis `/niveaux/CP`, "Les jeux"
-ramene a la liste des 147 jeux des trois niveaux, sans niveau.** C'est ma condition S15-5 (le filtre ne
+ramene a la liste des 147 jeux [faux des l'ecriture, annotation du 2026-10-15 en fin de fichier] des trois niveaux, sans niveau.** C'est ma condition S15-5 (le filtre ne
 survit pas a une sortie de partie), tenue.
 
 Consequence : la page `/` n'est pas seulement le premier chargement. **C'est l'ecran ou l'enfant revient
@@ -233,7 +233,7 @@ matiere et jamais dans une regle de feuille (clause 6 de `theo-archi`, section 5
 `/` est le premier ecran et l'ecran de retour apres chaque partie (section 1).
 
 - **(c) `/` demande le niveau d'abord : mon avis.** C'est la seule option qui regle la plainte la ou elle se
-  produit le plus : ni 147 jeux, ni jeux d'un autre niveau. Le cout : un appui sur la puce du niveau apres
+  produit le plus : ni 147 jeux [faux des l'ecriture, annotation du 2026-10-15 en fin de fichier], ni jeux d'un autre niveau. Le cout : un appui sur la puce du niveau apres
   chaque partie. S15-5 reste intact : aucune puce pleine sur `/`.
 - **(a) `/` garde la liste actuelle : acceptable**, c'est l'etat d'aujourd'hui. Il ne regle rien sur ces
   deux ecrans, et la vue retenue en session y serait invisible apres chaque partie.
@@ -406,3 +406,20 @@ Les dix autres fonds valent de 1,22 a 1,33:1 contre la page.
 Aucun Done pedagogique. `APM-1` et `APM-3` a `APM-11` sont inchangees. Mes points d'audit de la section 6 restent
 entiers ; le point 2 (la teinte qui remplace le gris) porte desormais sur le magenta. Prix : les **0,25**
 annonces en section 7.
+
+## Annotation du 2026-10-15 (`nadia-prof`, s57, palier 1, instance B) - le compte de 147, lignes 41 et 236 (`RP-ACCUEIL-147`)
+
+Rien au-dessus n'est reecrit ; les deux occurrences portent une mention datee qui renvoie ici. La ligne 398 n'est pas touchee.
+
+**Cause : mon erreur, des l'ecriture.** J'ai ecrit ce fichier sur `aa99f18d` (en-tete). `git show
+aa99f18d:adapters/adapter-content/src/main/resources/catalogue.yaml | grep -c "^  - id:"` rend **146**, et
+`git merge-base --is-ancestor 13d00bfe aa99f18d` sort 0 : le retrait d'`ART-CP-10` etait deja dans mon arbre. J'ai recopie
+un compte anterieur au retrait sans le lire sur l'arbre que je citais.
+
+**Compte du jour** : **148**, meme commande sur `round-two` a `1a3ec5d9`, le 2026-10-15. Je ne l'ecris pas dans les deux
+phrases : elles decrivent le produit du 2026-10-11, et y mettre le compte d'un autre jour les rendrait fausses autrement.
+**Ce que la ligne 41 ne decrit plus** : `/` sert *"Choisis ta classe."* et aucune liste de jeux (constate le 2026-10-15
+sur le jar du poste 7 de s57, dont `adapter-web` est celui de `round-two`).
+
+Choix de la voie (b) du critere 1 de `RP-ACCUEIL-147`, ecrit ici comme le demande son critere 2. Motif et instance :
+`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/reponse-nadia-forme2-palier-1.md`, section 6.
