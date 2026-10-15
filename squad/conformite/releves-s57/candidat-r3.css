@@ -1,0 +1,42 @@
+/* s57, palier 1, R8 / Q-R3 : forme commune candidate pour l'ecran de manche du bandit-manchot a propositions en
+   texte, d'ines-design. NON versee dans recreo.css : texte injecte tel quel apres la feuille reelle par
+   pilote-r3.mjs ; la verser est un commit de developpeur, apres l'avis de theo-archi et le veto de nadia-prof.
+   Sans L1 ni L2 : le visage, les etoiles, le bandeau et le socle gardent leur hauteur, le score garde sa ligne.
+   Aucune couleur neuve, aucune taille de police, de bouton ni de case touchee, aucun gabarit, aucun marqueur
+   derive par le controleur. Le sujet est l'ecran de manche (il porte .propositions) hors dispositif deux oeuvres
+   (.ecran-deux-oeuvres garde sa feuille et ses cotes) ; aucune regle ne nomme un paquet, un etat ou une longueur.
+   Dans le bloc @media (min-width: 720px), comme les regles de deux oeuvres : sous 720 px rien ne change. */
+
+@media (min-width: 720px) {
+    /* R3-1 : le haut de la zone de jeu. Les 2 rem de .zone-jeu sont retires quand la zone porte une manche (-32 px) :
+       le score commence au bord de la bande pleine de l'en-tete (82 px de haut), sa ligne de 30 px laisse environ 5 px
+       d'air au-dessus des lettres. Trop serre ? A juger par nadia-prof : 4 px rendus ici remettent le pire item a 552. */
+    .zone-jeu:has(> .ecran-de-jeu:not(.ecran-deux-oeuvres) .propositions) { padding-top: 0; }
+
+    /* R3-2 : quatre marges de 4 px au-dessus du meuble (haut et bas du score, bas de la consigne, bas de l'enonce : -16 px), les memes
+       que L4 du poste 8 (nadia-prof les a acceptees sous C1' de theo-archi). */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .score { margin: 0; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .consigne { margin-bottom: 0; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .enonce { margin-bottom: 0; }
+
+    /* R3-3 : l'ecart entre deux rangees de propositions, 1 rem -> 0,5 rem. L'ecart lateral (gap de 1 rem) et la
+       taille des cases ne changent pas. */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .propositions { row-gap: 0.5rem; }
+
+    /* R3-4 : la place du message, le signal a gauche (15 rem, comme L3 du poste 8), le texte a droite. Les
+       enfants de .message-jeu hors du signal se rangent dans la colonne de droite : l'indice, la revelation et
+       l'explication ne passent plus sous le signal. Meme disposition dans tous les etats : aucune regle ne lit
+       .est-juste ni .est-faux (C1' point 2). */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu {
+        display: grid;
+        grid-template-columns: 15rem minmax(0, 1fr);
+        column-gap: 0.75rem;
+        align-items: start;
+    }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu > .signal { grid-column: 1; grid-row: 1 / span 3; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu > :not(.signal) { grid-column: 2; }
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .signal .verdict { margin-bottom: 0; }
+
+    /* R3-5 : le premier bloc de la colonne de droite n'a plus de marge haute (4 px) : plus rien ne le precede. */
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .message-jeu > .signal + * { margin-top: 0; }
+}

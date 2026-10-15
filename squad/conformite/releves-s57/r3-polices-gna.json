@@ -1,0 +1,200 @@
+[
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "(police du poste)",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -354.1,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": -32.9,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Arial",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -337.8,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": -25.2,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Georgia",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -354.7,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": -35,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Times New Roman",
+  "base": {
+   "indice": 568,
+   "signal": 514,
+   "verdict": 489,
+   "debordVerdict": -375.5,
+   "dernier": 568,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 474,
+   "signal": 470,
+   "verdict": 462,
+   "debordVerdict": -45.5,
+   "dernier": 474,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Verdana",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -304.7,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": -8.2,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Courier New",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -239.9,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": 24,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Comic Sans MS",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -334.3,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": -22.5,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Trebuchet MS",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -343.9,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": -28.5,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-accord-groupe-nominal-ce1",
+  "repere": "des manteaus chauds",
+  "police": "Tahoma",
+  "base": {
+   "indice": 650,
+   "signal": 596,
+   "verdict": 571,
+   "debordVerdict": -345.5,
+   "dernier": 650,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 548,
+   "signal": 544,
+   "verdict": 536,
+   "debordVerdict": -28.9,
+   "dernier": 548,
+   "lignesIndice": 80
+  }
+ }
+]

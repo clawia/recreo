@@ -1,0 +1,8 @@
+/* s57, R8 / Q-R3 : OPTION d'ines-design, a ajouter APRES candidat-r3.css (cat candidat-r3.css candidat-r3-option-bandeau.css).
+   Non comprise dans la forme proposee : elle ne sert qu'a dire si 4 px de plus levent les trois items de ce1-texte-narratif
+   que la forme laisse a 552 (cote a gagner 133 px, forme : 132 px). Le visage (18 px de haut) et l'accent peint du bandeau
+   restent ; seul le bandeau passe de 2 rem a 1,75 rem. Une regle qui nomme .cabinet-bandeau entre dans le perimetre de
+   CabinetDeLaMachineTest (jeu fautif a completer, comme au poste 8). */
+@media (min-width: 720px) {
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) .cabinet-bandeau { height: 1.75rem; }
+}

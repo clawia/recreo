@@ -1,0 +1,48 @@
+accord-groupe-nominal-ce1  des manteaus chauds       feuille reelle seule       cabinet haut 238 signal bas 596 indice bas 650
+accord-groupe-nominal-ce1  des manteaus chauds       candidat entier            cabinet haut 190 signal bas 544 indice bas 548
+accord-groupe-nominal-ce1  des manteaus chauds       R3-1 seule                 cabinet haut 206 signal bas 564 indice bas 618
+accord-groupe-nominal-ce1  des manteaus chauds       R3-2 seule                 cabinet haut 222 signal bas 580 indice bas 634
+accord-groupe-nominal-ce1  des manteaus chauds       R3-3 seule                 cabinet haut 238 signal bas 580 indice bas 634
+accord-groupe-nominal-ce1  des manteaus chauds       R3-4 seule                 cabinet haut 238 signal bas 608 indice bas 616
+accord-groupe-nominal-ce1  des manteaus chauds       R3-5 seule                 cabinet haut 238 signal bas 596 indice bas 646
+accord-groupe-nominal-ce1  des manteaus chauds       candidat sans R3-1         cabinet haut 222 signal bas 576 indice bas 580
+accord-groupe-nominal-ce1  des manteaus chauds       candidat sans R3-2         cabinet haut 206 signal bas 560 indice bas 564
+accord-groupe-nominal-ce1  des manteaus chauds       candidat sans R3-3         cabinet haut 190 signal bas 560 indice bas 564
+accord-groupe-nominal-ce1  des manteaus chauds       candidat sans R3-4         cabinet haut 190 signal bas 532 indice bas 582
+accord-groupe-nominal-ce1  des manteaus chauds       candidat sans R3-5         cabinet haut 190 signal bas 544 indice bas 552
+phrases-types-ce1          inès range ses crayons.   feuille reelle seule       cabinet haut 238 signal bas 596 indice bas 650
+phrases-types-ce1          inès range ses crayons.   candidat entier            cabinet haut 190 signal bas 544 indice bas 518
+phrases-types-ce1          inès range ses crayons.   R3-1 seule                 cabinet haut 206 signal bas 564 indice bas 618
+phrases-types-ce1          inès range ses crayons.   R3-2 seule                 cabinet haut 222 signal bas 580 indice bas 634
+phrases-types-ce1          inès range ses crayons.   R3-3 seule                 cabinet haut 238 signal bas 580 indice bas 634
+phrases-types-ce1          inès range ses crayons.   R3-4 seule                 cabinet haut 238 signal bas 608 indice bas 586
+phrases-types-ce1          inès range ses crayons.   R3-5 seule                 cabinet haut 238 signal bas 596 indice bas 646
+phrases-types-ce1          inès range ses crayons.   candidat sans R3-1         cabinet haut 222 signal bas 576 indice bas 550
+phrases-types-ce1          inès range ses crayons.   candidat sans R3-2         cabinet haut 206 signal bas 560 indice bas 534
+phrases-types-ce1          inès range ses crayons.   candidat sans R3-3         cabinet haut 190 signal bas 560 indice bas 534
+phrases-types-ce1          inès range ses crayons.   candidat sans R3-4         cabinet haut 190 signal bas 532 indice bas 582
+phrases-types-ce1          inès range ses crayons.   candidat sans R3-5         cabinet haut 190 signal bas 544 indice bas 522
+verbe-sujet-ce1            le toit                   feuille reelle seule       cabinet haut 334 signal bas 528 indice bas 582
+verbe-sujet-ce1            le toit                   candidat entier            cabinet haut 286 signal bas 492 indice bas 496
+verbe-sujet-ce1            le toit                   R3-1 seule                 cabinet haut 302 signal bas 496 indice bas 550
+verbe-sujet-ce1            le toit                   R3-2 seule                 cabinet haut 318 signal bas 512 indice bas 566
+verbe-sujet-ce1            le toit                   R3-3 seule                 cabinet haut 334 signal bas 528 indice bas 582
+verbe-sujet-ce1            le toit                   R3-4 seule                 cabinet haut 334 signal bas 540 indice bas 548
+verbe-sujet-ce1            le toit                   R3-5 seule                 cabinet haut 334 signal bas 528 indice bas 578
+verbe-sujet-ce1            le toit                   candidat sans R3-1         cabinet haut 318 signal bas 524 indice bas 528
+verbe-sujet-ce1            le toit                   candidat sans R3-2         cabinet haut 302 signal bas 508 indice bas 512
+verbe-sujet-ce1            le toit                   candidat sans R3-3         cabinet haut 286 signal bas 492 indice bas 496
+verbe-sujet-ce1            le toit                   candidat sans R3-4         cabinet haut 286 signal bas 480 indice bas 530
+verbe-sujet-ce1            le toit                   candidat sans R3-5         cabinet haut 286 signal bas 492 indice bas 500
+texte-narratif-ce1         Chloé plante une graine   feuille reelle seule       cabinet haut 272 signal bas 630 indice bas 684
+texte-narratif-ce1         Chloé plante une graine   candidat entier            cabinet haut 224 signal bas 578 indice bas 552
+texte-narratif-ce1         Chloé plante une graine   R3-1 seule                 cabinet haut 240 signal bas 598 indice bas 652
+texte-narratif-ce1         Chloé plante une graine   R3-2 seule                 cabinet haut 256 signal bas 614 indice bas 668
+texte-narratif-ce1         Chloé plante une graine   R3-3 seule                 cabinet haut 272 signal bas 614 indice bas 668
+texte-narratif-ce1         Chloé plante une graine   R3-4 seule                 cabinet haut 272 signal bas 642 indice bas 620
+texte-narratif-ce1         Chloé plante une graine   R3-5 seule                 cabinet haut 272 signal bas 630 indice bas 680
+texte-narratif-ce1         Chloé plante une graine   candidat sans R3-1         cabinet haut 256 signal bas 610 indice bas 584
+texte-narratif-ce1         Chloé plante une graine   candidat sans R3-2         cabinet haut 240 signal bas 594 indice bas 568
+texte-narratif-ce1         Chloé plante une graine   candidat sans R3-3         cabinet haut 224 signal bas 594 indice bas 568
+texte-narratif-ce1         Chloé plante une graine   candidat sans R3-4         cabinet haut 224 signal bas 566 indice bas 616
+texte-narratif-ce1         Chloé plante une graine   candidat sans R3-5         cabinet haut 224 signal bas 578 indice bas 556
