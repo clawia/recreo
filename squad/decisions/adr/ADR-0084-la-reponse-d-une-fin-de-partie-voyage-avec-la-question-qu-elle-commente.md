@@ -314,3 +314,9 @@ Ce qui reste ecrit ici sans changement : la propriete de `REV-3`, son garde-fou 
 mecanisme que cette section-la annoncait pour le jour ou la question se poserait - *"la population du
 garde-fou echoue sur une forme d'item qu'aucun ecran de fin de partie ne sait jouer"*. **Ce mecanisme
 a tenu** : c'est encore lui qui rendra rouge l'ecran de fin de partie de designation le jour de T6.
+
+## Renvoi du 2026-10-14 (s57) - l'ecran de fin d'un jeu a reponse en image ne pose plus la question rappelee
+
+`ADR-0104`, amendement du 2026-10-14 : sur l'ecran de fin d'un jeu dont la bonne reponse est une reproduction, ni la reponse, ni la question
+rappelee, ni l'explication ne sont posees (voie (b) de `RDO-CP-R2`, choisie par `nadia-prof`). La clause 3 n'y a plus d'objet. Les clauses
+1 et 2 ne changent pas : le verdict porte toujours l'enonce. Regle executable : celle de l'amendement d'`ADR-0104`.

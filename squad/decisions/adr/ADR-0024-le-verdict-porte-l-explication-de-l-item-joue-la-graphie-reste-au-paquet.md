@@ -359,3 +359,11 @@ Pas une `ArchRule` : l'objet est un paquet YAML, pas un type Java ; le mecanisme
 
 **Ce qui me ferait changer d'avis** : un paquet ou l'explication ne vaut que pour certains items sans qu'une graphie le dise. Alors il
 faut une declaration d'auteur qui dise lesquels, comme la graphie le fait pour le francais, et non un "tous ou aucun".
+
+## Renvoi du 2026-10-14 (s57) - l'explication n'est pas posee sur l'ecran de fin d'un jeu a reponse en image
+
+`ADR-0104`, amendement du 2026-10-14 : sur l'ecran de fin d'un jeu dont la bonne reponse est une reproduction, l'explication n'est pas posee
+(voie (b) de `RDO-CP-R2`, choisie par `nadia-prof`) ; elle designe des oeuvres que cet ecran ne montre pas. La decision 1 (*"s'affiche sur
+l'ecran de retour apres chaque reponse a cet item"*) vaut partout ailleurs. Les decisions 2 et 3 ne changent pas : le verdict porte toujours
+l'explication, et c'est l'adaptateur web qui ne la pose pas, sur le predicat de la population d'images, sans lire son texte. Regle
+executable : celle de l'amendement d'`ADR-0104`.
