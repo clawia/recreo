@@ -1,0 +1,67 @@
+schema: 1
+id: ce1-texte-narratif-fautif
+type: question
+# ADR-0013 obligation 3 : jeu fautif de PaquetCe1TexteNarratifTest. Chaque item viole une seule
+# propriete du paquet ; le jeu entier viole en plus les proportions des quatre questions (un seul
+# item de moment sur neuf) et l'equilibre des prenoms (huit feminins distincts, cinq masculins).
+descripteur:
+  matiere: "Français"
+  niveau: "CE1"
+  domaine: "Lecture et compréhension de l'écrit"
+  competence: "Comprendre un texte narratif court lu seul : personnages, lieu, moment, ordre chronologique des événements."
+lignesDeReferentiel: ["FRA-CE1-04"]
+items:
+  # D1 : la bonne reponse est la seule proposition a majuscule, et la majuscule est un E accent
+  - enonce: "Que fait Élise en premier ?"
+    texteSupport: "Élise pèle une pomme. Elle la coupe en morceaux. Puis elle la mange."
+    bonneReponse: "Élise pèle une pomme"
+    distracteurs: ["la coupe en morceaux", "la mange"]
+    indice: "Relis le début du texte."
+  # S3 : l'indice ne commence ni par Relis ni par Cherche
+  - enonce: "Qui lit un livre ?"
+    texteSupport: "Mila lit un livre. Hugo dessine. Zoé chante."
+    bonneReponse: "Mila"
+    distracteurs: ["Hugo", "Zoé"]
+    indice: "Pense à ce qu'on fait avec un livre."
+  # LON-CE1-4 : cinq phrases
+  - enonce: "Que fait Lina en dernier ?"
+    texteSupport: "Lina lave la pomme. Elle l'essuie. Elle la pèle. Elle la coupe. Puis elle la mange."
+    bonneReponse: "la mange"
+    distracteurs: ["la pèle", "la coupe"]
+    indice: "Relis la dernière phrase."
+  # LON-CE1-3 : trente et un mots, trois phrases de dix, dix et onze mots
+  - enonce: "Quand Tom mange-t-il à la cantine ?"
+    texteSupport: "Ce matin, Tom prend son sac et part à l'école. À midi, il mange avec Lola dans la grande cantine. Le soir, il rentre à la maison et lit un peu."
+    bonneReponse: "à midi"
+    distracteurs: ["ce matin", "le soir"]
+    indice: "Cherche le mot « cantine » dans le texte."
+  # LON-CE1-4 : une phrase de treize mots
+  - enonce: "Où va Tom ce matin ?"
+    texteSupport: "Ce matin, Tom va à la piscine avec son père et sa sœur. Il nage."
+    bonneReponse: "à la piscine"
+    distracteurs: ["avec son père", "et sa sœur"]
+    indice: "Relis la première phrase."
+  # RCT-CE1-2 : "Léo" n'est pas dans le texte
+  - enonce: "Qui range ses jouets ?"
+    texteSupport: "Nour range ses jouets. Yanis lit. Jade dessine."
+    bonneReponse: "Nour"
+    distracteurs: ["Yanis", "Léo"]
+    indice: "Relis la première phrase."
+  # RCT-CE1-3 : quatre personnages nommes
+  - enonce: "Qui joue au ballon ?"
+    texteSupport: "Malo, Alice, Tom et Lola jouent au ballon."
+    bonneReponse: "Malo"
+    distracteurs: ["Alice", "Tom"]
+    indice: "Relis le texte."
+  # RCT-CE1-3 : une question d'ordre sur un texte de deux phrases
+  - enonce: "Que fait Hugo en dernier ?"
+    texteSupport: "Hugo ouvre la porte. Puis il sort."
+    bonneReponse: "il sort"
+    distracteurs: ["Hugo ouvre la porte", "la porte"]
+    indice: "Relis la dernière phrase."
+  # TRV-CE1-5 : l'indice contient une proposition de l'item, "dans la cour"
+  - enonce: "Où joue Noé ?"
+    texteSupport: "Mila dessine dans la classe. Noé joue dans la cour. Hugo lit dans la bibliothèque."
+    bonneReponse: "dans la cour"
+    distracteurs: ["dans la classe", "dans la bibliothèque"]
+    indice: "Cherche « dans la cour » dans le texte."

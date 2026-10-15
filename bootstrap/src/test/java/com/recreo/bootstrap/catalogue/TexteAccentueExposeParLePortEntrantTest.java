@@ -450,6 +450,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S57-BR-FRA-CE1-15 (s57) : entree neuve, FRA-CE1-15, accorder dans le groupe nominal
             // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.6).
             "bandit-manchot-accord-groupe-nominal-ce1",
+            // S57-BR-FRA-CE1-04 (s57) : entree neuve, FRA-CE1-04, comprendre un texte narratif court
+            // (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 3.4).
+            "bandit-manchot-texte-narratif-ce1",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : entree neuve, FRA-CE1-25, neuvieme ligne du
             // referentiel de francais CE1 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md,
             // section 6.3).
@@ -1709,6 +1712,10 @@ class TexteAccentueExposeParLePortEntrantTest {
             // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-15).
             "Accorder en nombre et en genre dans le groupe nominal (déterminant, nom, adjectif)\u00A0:"
                     + " pluriel en -s et en -x (-eau, -au, -eu), féminin en -e.",
+            // S57-BR-FRA-CE1-04 (s57) : competence neuve, FRA-CE1-04, libelle du referentiel copie
+            // (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-04).
+            "Comprendre un texte narratif court lu seul : personnages, lieu, moment, ordre "
+                    + "chronologique des événements.",
             // S52-FRA-SYNONYMES-CONTRAIRES (s52) : competence neuve, FRA-CE1-25, libelle du
             // referentiel copie (squad/programme/francais/competences-ce1.md, ligne FRA-CE1-25).
             "Trouver un synonyme ou un contraire d'un mot fréquent.",

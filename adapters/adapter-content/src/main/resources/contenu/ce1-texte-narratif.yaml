@@ -113,9 +113,9 @@ items:
   # ordre
   - enonce: "Que fait Sara avant de couper la pomme ?"
     texteSupport: "Sara pèle une pomme. Elle la coupe en morceaux. Puis elle la mange."
-    bonneReponse: "Sara pèle une pomme"
-    distracteurs: ["elle la coupe en morceaux", "elle la mange"]
-    indice: "Pense à ce qu'on fait avant de couper un fruit."
+    bonneReponse: "pèle une pomme"
+    distracteurs: ["la coupe en morceaux", "la mange"]
+    indice: "Relis le début du texte."
   # ordre
   - enonce: "Que se passe-t-il après l'arrivée de la vague ?"
     texteSupport: "Paul fait un château de sable. Une vague arrive. Le château s'écroule."
@@ -125,8 +125,8 @@ items:
   # ordre
   - enonce: "Que fait Nour en premier ?"
     texteSupport: "Nour range ses jouets. Ensuite, elle se lave les mains. Enfin, elle se met à table."
-    bonneReponse: "Nour range ses jouets"
-    distracteurs: ["elle se lave les mains", "elle se met à table"]
+    bonneReponse: "range ses jouets"
+    distracteurs: ["se lave les mains", "se met à table"]
     indice: "Relis la première phrase."
   # ordre
   - enonce: "Que fait Ibrahim en dernier ?"
