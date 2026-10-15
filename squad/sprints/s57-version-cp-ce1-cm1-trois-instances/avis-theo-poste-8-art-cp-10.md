@@ -765,3 +765,105 @@ Ligne a ajouter a la table "Amendements" d'`ADR-index.md`, apres la derniere (ap
 | `Q-T8` | `Q-R6` : si le prix des 65 enonces (environ 52 parties scriptees) est refuse, acceptes-tu un echantillon, justifie par une premiere partie mesuree ou le bas de `.indice` ne varie pas ? | `nadia-prof`, par `sofia-sm` |
 | `Q-T9` | Story et commit de la phrase de `M4` (`TD2`) : `S57-FORME-C-VERDICT` exclut les textes des gabarits | `camille-po`, `sofia-sm` |
 | `Q-T10` | Les neuf textes de gabarit de `TD3` : story ou non | `camille-po` |
+
+## Annexe E. 2026-10-15, 16:08 (UTC+02:00) - `J5` et la barre de defilement, `Q1` de `yanis-qa`
+
+Ajoutee sur la branche `s57-theo-j5`, base `6661e530` (juge pur de `yanis-qa`, sur le releve de B2 `ebceb838`, tete mesuree `06c7804f`). Les annexes A a D ne sont pas reecrites.
+Lu : `outils/juger-pli-deux-oeuvres.py` ; `squad/conformite/releves-s57/releve-b2-jar.json` ; `recreo.css` lignes 244 a 282 et 1764 a 1899 ; `pilote-poste-8.mjs` ligne 35 ;
+`proposition-ines-poste-8-art-cp-10.md` 8.5 ; `FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` lignes 116 a 119.
+
+### E.1 Decisions
+
+| Code | Decision | Section |
+|---|---|---|
+| `TE1` | (a) Le decalage de `cabinet.gauche` du a la barre de defilement est **exclu de `J5`**, au meme motif que celui des cases. La ligne `J5` de 4.2 le nommait pendant que le paragraphe suivant excluait sa cause : le defaut est dans l'avis, pas dans le juge | E.2 |
+| `TE2` | (b) La reduction a 720 (meuble 496 puis 481, cases 144 puis 139) **n'enfreint pas `C1'`** : aucune regle de la correction ne la produit. Ce n'est pas non plus un artefact de l'outil : un navigateur a barre de defilement classique la rend. Si elle tombe sous `N6`, c'est a `nadia-prof` de le dire | E.3 |
+| `TE3` | (c) Le releve de B2 **n'est pas rouge au sens de l'avis**. `J5` est corrige ici (E.4) ; le juge est a corriger par `yanis-qa`, demande figee en E.5 | E.4, E.5 |
+| `TE4` | Aucune regle ArchUnit : l'objet est un outil de poste et une feuille de style | - |
+
+### E.2 (a) `cabinet.gauche`
+
+**Ce que le releve montre.** Dans chaque etat ou `clientW` vaut `innerW` moins 15 (barre classique du Chrome de mesure ; `pilote-poste-8.mjs` ligne 35 releve les deux), le
+meuble se decale de 7,5 px : 224 puis 216,5 a 744, 236 puis 228,5 a 768, 228 puis 220,5 a 992, 242 puis 234,5 a 1200. Les cases se decalent de la meme valeur (244 puis 236,5
+a 744) : elles sont dans le meuble. **Le juge, a la lettre de la ligne `J5` de 4.2, compare la gauche du meuble** (lignes 319 a 322 du juge) ; il ne compare pas celle des
+cases (lignes 315 a 318).
+
+**Pourquoi c'est le meme fait.** A 744, 768, 992 et 1200, `.zone-jeu` est a son plafond et centree ; la barre retire 15 px a la largeur disponible, et le centrage deplace tout
+le contenu de la moitie. La largeur du meuble ne change pas (496 dans tous les etats a 744). `nadia-prof` a deja qualifie ce fait pour les cases : *"Ce n'est pas la marque qui
+les deplace (`N6` vise ce que la marque fait bouger), c'est l'apparition du defilement, commune a tout jeu"*, observation sans reserve (fiche, lignes 116 a 119).
+
+**Mon defaut.** Le paragraphe de 4.2 exclut le decalage *"des cases"* : j'ai nomme l'objet au lieu de la cause, et j'ai garde dans la ligne `J5` une cote du meuble qui porte la
+meme cause. Perimetre enumere, echec par inclusion. L'exclusion vaut pour la cause : **une cote horizontale ne compare que deux etats de meme largeur disponible**.
+
+### E.3 (b) La reduction a 720
+
+**Mecanisme, lu dans la feuille.** De 720 a 767,98 px de fenetre, `.zone-jeu` est plafonnee a 720 px (`recreo.css` lignes 277 a 282). A 720, la barre ramene la largeur
+disponible a 705, sous ce plafond : la zone n'est plus centree mais fluide, et la colonne `minmax(0, 1fr)` du meuble (ligne 1866) perd les 15 px. Les cases se partagent la
+rangee (`flex: 1 1 0`, ligne 1778) et sont carrees (`aspect-ratio`, ligne 1781) : (465 - 48) / 3 = 139. Le haut du meuble (240) et celui des cases (260) ne bougent pas. Par
+calcul, la bande touchee va de 720 a 734 px de fenetre ; au-dessus, la largeur disponible reste au plafond et seul le decalage de E.2 subsiste.
+
+**Ce qui fait apparaitre la barre, contrairement a l'hypothese de `Q1`** : a l'echec, **ce n'est pas l'indice**. Il finit a 543 (720) et 548 (744), au-dessus de 551 (`J3`
+vert). Le document mesure 575 et 580 : bas du message plus 32, le `padding-bottom: 2rem` de `.zone-jeu` (`recreo.css` ligne 245). Ce sont 24 et 29 px de marge vide qui passent
+le pli. A la revelation, le message finit a 751 (720) : la, du contenu passe le pli. A 992, une bonne reponse suffit (document de 564).
+
+**Qualification.**
+
+1. **Pas `C1'`.** `C1'` porte sur les regles de la correction (2.2). Aucune regle de `recreo.css` lignes 1848 a 1899 ne nomme un etat ; la seule dependance d'etat du meuble
+   reste `O1` (ligne 1817). La cause est hors de `.ecran-deux-oeuvres` : marge de `.zone-jeu`, plafond de la bande 720, barre de la plateforme.
+2. **Pas un artefact de l'outil.** Un Chrome a barre classique rend ces cotes a cette fenetre ; une plateforme a barre superposee ne les rend pas. Quelle plateforme compte pour
+   le produit n'est pas a moi : `ines-design` note que les appareils de CP ne sont pas mesures (8.1).
+3. **`N6` est a `nadia-prof`.** Elle a classe le decalage hors de `N6` ; elle n'a pas vu une case qui retrecit de 5 px, ni l'image avec elle quand celle-ci depasse 131 px de
+   large (plafond `min(100%, 11rem)`, ligne 1799). La question lui est routee (`Q-T11`). Le remede deja nomme par `ines-design` (`scrollbar-gutter`, 8.5) touche tous les
+   jeux : s'il est demande, c'est une proposition d'`ines-design`, pas une ligne du juge.
+
+### E.4 (c) `J5` corrige, et ce que cela donne sur B2
+
+**La ligne `J5` de 4.2 se lit desormais ainsi** (le tableau n'est pas reecrit ; cette annexe le remplace pour `J5`) :
+
+> `J5` : `C1'` et `N6`. Pour chaque item : haut des cases et haut de `cabinet` identiques dans tous les etats. Largeur et hauteur des cases, gauche et largeur de `cabinet`
+> identiques entre deux etats de meme `clientW`. Hauteur de `cabinet` identique entre deux etats de meme `clientW` qui ont tous deux au moins une case essayee, ou tous deux
+> aucune (`O1`). Un etat sans `clientW` rend le releve incomplet (`J1`). Les ecarts horizontaux entre etats de `clientW` differents sont imprimes, hors verdict.
+
+La hauteur des cases et celle du meuble suivent la largeur (cases carrees) : elles vont avec les cotes horizontales.
+
+**Simulation sur le releve reel de B2** (script jetable hors depot, sur `releve-b2-jar.json` tel que commite par `ebceb838`, Python 3.14) : 0 ecart jugeable, 108 comparaisons
+horizontales entre etats de meme `clientW`, et les six ecarts imprimes hors verdict sont ceux de `Q1`. **Ce que la regle corrigee interdit encore**, mordu sur une copie du
+releve reel : le meuble de `juste1` deplace de 7,5 px a 744 (meme `clientW` que `fraiche`) rougit ; les cases d'`echec2` reduites de 5 px a 720 (meme `clientW` qu'`echec1`)
+rougit ; le haut d'une case de `revelation` abaisse de 3 px a 744 rougit.
+
+**Sa limite, nommee.** Deux etats ne se comparent horizontalement que s'ils partagent une largeur disponible. Sur B2 : a 720, 744, 768 et 1200, `fraiche` et les bonnes
+reponses d'un cote, echecs et revelation de l'autre ; a 992, `fraiche` seule. Paires de resultats couvertes : fraiche et juste (quatre largeurs), juste et echec (992), echec et
+revelation (toutes). **Aucune largeur ne compare `fraiche` a un echec.** Une regle d'etat qui ne deplacerait le meuble qu'a l'echec et a la revelation est vue a 992, contre
+`juste1` ; sur un releve ou aucune bonne reponse ne porte de barre, elle ne le serait pas. La garde premiere de `C1'` reste la lecture du diff (2.2, points 1 a 3).
+
+**Verdict sur B2** : `J1` a `J4` passent ; `J5`, corrige, passe. Le releve n'est pas rouge au sens de l'avis. Le verdict sur le refus reste a `nadia-prof`, et `Q-T11` lui est
+posee avant son rejeu.
+
+### E.5 Demande figee a `yanis-qa`, a appliquer telle quelle a `outils/juger-pli-deux-oeuvres.py` et a son test
+
+1. `juger_j1` : un etat sans `clientW` numerique est une ligne d'echec, `"<largeur> <item> <etat> : clientW absent"`.
+2. `juger_j5` : `cases.haut` et `cabinet.haut` comparent chaque etat a l'etat de reference, comme aujourd'hui. `cases.largeur`, `cases.hauteur`, `cabinet.gauche` et
+   `cabinet.largeur` comparent chaque etat au premier etat **de meme `clientW`** (`fraiche` s'il en fait partie). Les groupes de `cabinet.hauteur` sont indexes par le couple
+   (case essayee ou non, `clientW`).
+3. Les ecarts de ces quatre cotes entre un etat et l'etat de reference de `clientW` different sont imprimes sous `J5`, prefixes `hors verdict (barre de defilement) :`, avec
+   les deux `clientW`. Ils ne changent ni `ok`, ni le code de sortie.
+4. Le resume de `J5` donne le nombre de comparaisons horizontales faites et, par largeur, les groupes d'etats de meme `clientW`.
+5. La docstring (lignes 6 a 8 et 19 a 21) dit la regle du point 2 et renvoie a cette annexe.
+6. Le test, entrees fabriquees : (i) meuble et cases decales de 7,5 px avec `clientW` reduit de 15 : `J5` vert, ligne hors verdict presente ; (ii) meme decalage a `clientW`
+   egal : `J5` rouge ; (iii) cases de 139 contre 144 a `clientW` egal : rouge ; (iv) haut de case different a `clientW` different : rouge ; (v) `clientW` absent : `J1` rouge.
+7. Preuve sur materiau reel, dans le rapport : le juge corrige sur `releve-b2-jar.json` sort 0, et les six lignes hors verdict sont celles de `Q1`.
+
+### E.6 Question
+
+| Code | Question | A qui |
+|---|---|---|
+| `Q-T11` | A 720 x 551, sur un navigateur a barre classique, les cases passent de 144 a 139 px (et l'image avec elles si elle depasse 131 px de large) des que le document depasse la fenetre apres une erreur, par 24 px de marge vide. Est-ce un mouvement que `N6` refuse, ou une observation comme le decalage de 7,5 px ? | `nadia-prof`, par `sofia-sm` |
+
+### E.7 Jobs de `ci.yml` lances pour ce commit
+
+Lances sur ce worktree, ce fichier indexe, avant le commit : `chemins` (`verifier-chemins-test.sh`, puis `git ls-files` passe a `verifier-chemins.sh`) et `prefixes`
+(`verifier-prefixes-test.sh`, et le sujet de ce commit passe a `verifier-prefixes.sh`) : tous sortent 0. **`build`** aussi, parce que des tests de `bootstrap` lisent les
+fichiers de `squad/` (tableaux, identifiants de condition, references de decision) : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl`, avant l'ajout de
+ce paragraphe : `BUILD SUCCESS`, **2597 tests, 0 echec, 0 erreur** (120, 31, 492, 1567, 381 et 6 d'integration, lignes `Tests run` de la sortie Maven), JDK **21.0.10**
+(`java.version` des 60 rapports Surefire de `bootstrap`, une valeur). Etape *"Package du fat jar"* non lancee. `outils` non lance : aucun outil n'est touche. Aucun n'est le
+resultat de la CI distante.

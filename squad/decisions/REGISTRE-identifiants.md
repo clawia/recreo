@@ -11,6 +11,17 @@ definit. S'il n'y est pas, le prefixe est libre. **Un identifiant ecrit sans sa 
 CI** ; deux instances qui allouent le meme identifiant produisent deux lignes de meme identifiant, et
 la CI rougit aussi. C'est tout ce que ce fichier fait, et c'est ce qu'on lui demande.
 
+**Note de `nadia-prof`, s57, palier 1, instance B, le 2026-10-15 (rejeu d'`ART-CP-10`, VALIDE SOUS RESERVE).**
+Un identifiant ajoute, une reserve, **`RDO-CP-R3`**, ecrite dans `squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`.
+**Forme copiee** de `RDO-CP-R1` : trois segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). Prefixe `RDO-CP`
+deja alloue ; `git grep "RDO-CP-R3"` ne rendait rien avant d'ecrire. La ligne de la section 4 est dans le meme diff que la fiche.
+
+Ligne d'etat courant portee de **985 / 178 a 986 / 178**. **Methode : le chiffre est celui que le garde-fou affiche sur
+mon diff.** `bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=ToutIdentifiantDeConditionEstAlloueDansLeRegistreTest
+-Dsurefire.failIfNoSpecifiedTests=false`, avant la mise a jour de la ligne d'etat, rend : *"declare 985 identifiants
+alloues et 178 prefixes distincts, sa table en porte 986 et 178"*, seul echec des 10 tests. C'est ce **986 / 178** que je
+recopie. Si une autre branche alloue aussi, le compte se reverifie a la fusion (`ADR-0085`, clause 5).
+
 **Note de `nadia-prof`, s57, palier 1, le 2026-10-15 (Done pedagogique de `FRA-CE1-04`, VALIDE SOUS RESERVE).**
 Un identifiant ajoute, une reserve, **`RCT-CE1-R1`**, ecrite dans `squad/conformite/FICHE-bandit-manchot-texte-narratif-ce1.md`.
 **Forme copiee** de `TPH-CE1-R1` : trois segments, niveau au milieu, marqueur `R` dans le dernier (`ADR-0100`). Prefixe `RCT-CE1`
@@ -894,7 +905,7 @@ nommee trois fois dans ce fichier, pas une occurrence neuve.
 
 ## 1. La methode du comptage, a cote de son chiffre
 
-**Compte courant, verifie par la CI** : `985` identifiants alloues, `178` prefixes distincts.
+**Compte courant, verifie par la CI** : `986` identifiants alloues, `178` prefixes distincts.
 
 *Cette ligne est la seule du fichier qui pretende dire l'etat courant, et c'est la seule que la CI
 verifie : le garde-fou d'`ADR-0085`, clause 5, compte les lignes de la table de la section 4 et
@@ -2415,6 +2426,7 @@ clause 2 par une exemption.
 | `CRP-CM1-R3` | `squad/conformite/FICHE-bandit-manchot-corps-cm1.md` |
 | `RDO-CP-R1` | `squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` |
 | `RDO-CP-R2` | `squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` |
+| `RDO-CP-R3` | `squad/conformite/FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md` |
 | `APM-1` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
 | `APM-2` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |
 | `APM-3` | `squad/conformite/ARBITRAGE-PREALABLE-accueil-par-matiere.md` |

@@ -436,11 +436,9 @@ class LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest {
         assertThat(defauts).as("ADR-0104 decision 7, garde-fou 4").isEmpty();
         assertThat(reels).extracting(GameDefinition::id)
                 .as("ADR-0051 : les jeux reels du catalogue qui servent des propositions-images, liste"
-                        + " exacte. Vide depuis le retrait du jeu cp-rapprocher-deux-oeuvres (le retrait est"
-                        + " l'absence d'entree, ADR-0061) : le jeu de preuve, fait d'items reels mutes, reste"
-                        + " le seul jeu joue. Un paquet reel qui entre est joue ici, et cette liste est a"
-                        + " relever")
-                .isEmpty();
+                        + " exacte. Un paquet reel qui entre est joue ici, et cette liste est a relever ;"
+                        + " le jeu de preuve reste fait d'items reels mutes")
+                .containsExactly("bandit-manchot-rapprocher-deux-oeuvres-cp");
     }
 
     /** Non-vacuite : le jeu de preuve est bien un jeu a propositions-images, de trois items. */

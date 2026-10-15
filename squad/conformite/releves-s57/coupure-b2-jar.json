@@ -1,0 +1,1217 @@
+[
+ {
+  "largeur": 720,
+  "police": "(police du poste)",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "(police du poste)",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "(police du poste)",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Arial",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Arial",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Arial",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Georgia",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Georgia",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Georgia",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Times New Roman",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Times New Roman",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Times New Roman",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Verdana",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Verdana",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Verdana",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Courier New",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Courier New",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Courier New",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Comic Sans MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Comic Sans MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Comic Sans MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Trebuchet MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Trebuchet MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Trebuchet MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Tahoma",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Tahoma",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 720,
+  "police": "Tahoma",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "(police du poste)",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "(police du poste)",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "(police du poste)",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Arial",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Arial",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Arial",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Georgia",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Georgia",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Georgia",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Times New Roman",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Times New Roman",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Times New Roman",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Verdana",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Verdana",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Verdana",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Courier New",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Courier New",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Courier New",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Comic Sans MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Comic Sans MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Comic Sans MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Trebuchet MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Trebuchet MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Trebuchet MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Tahoma",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Tahoma",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 744,
+  "police": "Tahoma",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "(police du poste)",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "(police du poste)",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "(police du poste)",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Arial",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Arial",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Arial",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Georgia",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Georgia",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Georgia",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Times New Roman",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Times New Roman",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Times New Roman",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Verdana",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Verdana",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Verdana",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Courier New",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Courier New",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Courier New",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Comic Sans MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Comic Sans MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Comic Sans MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Trebuchet MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Trebuchet MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Trebuchet MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Tahoma",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Tahoma",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 768,
+  "police": "Tahoma",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "(police du poste)",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "(police du poste)",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "(police du poste)",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Arial",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Arial",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Arial",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Georgia",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Georgia",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Georgia",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Times New Roman",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Times New Roman",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Times New Roman",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Verdana",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Verdana",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Verdana",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Courier New",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Courier New",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Courier New",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Comic Sans MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Comic Sans MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Comic Sans MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Trebuchet MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Trebuchet MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Trebuchet MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Tahoma",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Tahoma",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 992,
+  "police": "Tahoma",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "(police du poste)",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "(police du poste)",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "(police du poste)",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Arial",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Arial",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Arial",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Georgia",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Georgia",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Georgia",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Times New Roman",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Times New Roman",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Times New Roman",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Verdana",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Verdana",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Verdana",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Courier New",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Courier New",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Courier New",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": true,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Comic Sans MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Comic Sans MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Comic Sans MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Trebuchet MS",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Trebuchet MS",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Trebuchet MS",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Tahoma",
+  "variante": "A",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Tahoma",
+  "variante": "B",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ },
+ {
+  "largeur": 1200,
+  "police": "Tahoma",
+  "variante": "C",
+  "lignes": 2,
+  "coupureDansUnePhrase": false,
+  "depasseLeBandeau": false,
+  "texte": "Ce n'est pas ça. / Essaie encore !"
+ }
+]
