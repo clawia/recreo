@@ -1,0 +1,200 @@
+[
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "(police du poste)",
+  "base": {
+   "indice": 582,
+   "signal": 528,
+   "verdict": 503,
+   "debordVerdict": -354.1,
+   "dernier": 582,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 496,
+   "signal": 492,
+   "verdict": 484,
+   "debordVerdict": -32.9,
+   "dernier": 496,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Arial",
+  "base": {
+   "indice": 582,
+   "signal": 528,
+   "verdict": 503,
+   "debordVerdict": -337.8,
+   "dernier": 582,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 496,
+   "signal": 492,
+   "verdict": 484,
+   "debordVerdict": -25.2,
+   "dernier": 496,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Georgia",
+  "base": {
+   "indice": 582,
+   "signal": 528,
+   "verdict": 503,
+   "debordVerdict": -354.7,
+   "dernier": 582,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 496,
+   "signal": 492,
+   "verdict": 484,
+   "debordVerdict": -35,
+   "dernier": 496,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Times New Roman",
+  "base": {
+   "indice": 534,
+   "signal": 480,
+   "verdict": 455,
+   "debordVerdict": -375.5,
+   "dernier": 534,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 418,
+   "signal": 444,
+   "verdict": 436,
+   "debordVerdict": -45.5,
+   "dernier": 444,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Verdana",
+  "base": {
+   "indice": 582,
+   "signal": 528,
+   "verdict": 503,
+   "debordVerdict": -304.7,
+   "dernier": 582,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 496,
+   "signal": 492,
+   "verdict": 484,
+   "debordVerdict": -8.2,
+   "dernier": 496,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Courier New",
+  "base": {
+   "indice": 664,
+   "signal": 610,
+   "verdict": 585,
+   "debordVerdict": -239.9,
+   "dernier": 664,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 570,
+   "signal": 566,
+   "verdict": 558,
+   "debordVerdict": 24,
+   "dernier": 570,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Comic Sans MS",
+  "base": {
+   "indice": 582,
+   "signal": 528,
+   "verdict": 503,
+   "debordVerdict": -334.3,
+   "dernier": 582,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 496,
+   "signal": 492,
+   "verdict": 484,
+   "debordVerdict": -22.5,
+   "dernier": 496,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Trebuchet MS",
+  "base": {
+   "indice": 582,
+   "signal": 528,
+   "verdict": 503,
+   "debordVerdict": -343.9,
+   "dernier": 582,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 496,
+   "signal": 492,
+   "verdict": 484,
+   "debordVerdict": -28.5,
+   "dernier": 496,
+   "lignesIndice": 80
+  }
+ },
+ {
+  "largeur": 744,
+  "jeu": "bandit-manchot-verbe-sujet-ce1",
+  "repere": "le toit",
+  "police": "Tahoma",
+  "base": {
+   "indice": 582,
+   "signal": 528,
+   "verdict": 503,
+   "debordVerdict": -345.5,
+   "dernier": 582,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 496,
+   "signal": 492,
+   "verdict": 484,
+   "debordVerdict": -28.9,
+   "dernier": 496,
+   "lignesIndice": 80
+  }
+ }
+]
