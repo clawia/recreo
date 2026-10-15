@@ -575,7 +575,7 @@ docs/backlog/backlog.md` ne rend aucune ligne) et l'annexe A re-figee au commit 
 un rendu avant d'y poser U+00A0. Je ne le tranche pas ici ; B.7 ne couvre que les constantes du verdict.
 
 **Corrige dans B.4, point 5, trouve en relisant ce fichier** : la ligne qui demande U+00A0 *"en sequence d'echappement, jamais le caractere tape"* portait entre ses
-accents graves le caractere tape lui-meme, introduit par `33f975c2` (`git log -S` sur U+00A0). Un developpeur y lisait une espace. Elle porte maintenant ` `. Seul
+accents graves le caractere tape lui-meme, introduit par `33f975c2` (`git log -S` sur U+00A0). Un developpeur y lisait une espace. Elle porte maintenant `\u00A0`. Seul
 caractere hors ASCII de l'annexe B ; le reste du fichier n'en porte qu'au titre du jeu, section 5, qui est un texte servi.
 
 ### C.4 Regle ArchUnit
@@ -598,3 +598,170 @@ Sur ce worktree, ce fichier indexe, avant le commit. Je ne deduis aucun job que 
 - **`outils`** : non lance ; aucun outil n'est modifie.
 
 Aucun n'est le resultat de la CI distante.
+
+## Annexe D. 2026-10-15 (UTC+02:00) - la phrase de `M4` sous `ADR-0067`, et `Q-R6`
+
+Ajoutee sur la branche `s57-theo-q`, base `05598be4` (tip de `round-two`). Les annexes A, B et C ne sont pas reecrites. Lu : `ADR-0067`, `ADR-0060` (section "Decision"),
+`reponse-nadia-forme2-palier-1.md` (`R4`, sections 2.3 et 5.3), le backlog (`S57-FORME-C-VERDICT`, amendement `Q-R4`, `Q-R6`), le gabarit, le controleur et la source des
+additions.
+
+### D.1 Decisions
+
+| Code | Decision | Section |
+|---|---|---|
+| `TD1` | La phrase de `M4` est une **donnee servie dont le gabarit est la seule source**. U+00A0 s'ecrit dans `fragments/manche.html`, sous la forme `&nbsp;`. Elle ne sort ni vers le modele ni vers une constante | D.2 |
+| `TD2` | **Un amendement d'`ADR-0067` est necessaire** : la decision 1, lue a la lettre, interdit ce geste. Texte fige en D.4, **non verse ici** : il entre dans le commit qui ecrit `&nbsp;` dans le gabarit et le garde-fou, comme B.7 (C.3) | D.2, D.4 |
+| `TD3` | Neuf textes de gabarit portent une espace ordinaire devant un signe double : hors du cliquet d'`ADR-0067`, nommes, non corriges | D.2 |
+| `TD4` | `Q-R6` : *"tous ses items"* de `bandit-manchot-additions-cp` = **les 65 enonces generables**, derives du code et du paquet, pas un echantillon | D.3 |
+| `TD5` | Ce qui se mesure au pli : le bas de `.indice` apres une erreur, enonce par enonce, sur les 65. **Faisable par script seulement** : le jar tire sans graine, la couverture coute environ 513 manches | D.3 |
+| `TD6` | Aucune regle ArchUnit : 41 `static final ArchRule`, 38 `@ArchTest` sur `05598be4` (methode de C.4) | - |
+
+### D.2 La phrase de `M4` : donnee ou rendu
+
+**Ce que la decision 1 interdit, lu dans son motif.** `ADR-0067` lignes 24 a 26 : le caractere *"n'est pose ni par un gabarit, ni par un filtre, ni par une regle de style"*.
+Lignes 31 et 32 : *"Poser l'insecable au rendu ferait par ailleurs mentir tous les garde-fous de contenu, qui jugent ce que le chargeur rend."* L'interdit vise un rendu qui
+**ajoute** le caractere a un texte ecrit ailleurs : le garde-fou qui juge la source ne verrait pas ce que l'enfant recoit. L'alternative 3 (ligne 141) le dit de meme.
+
+**La phrase de `M4` n'a pas d'autre source que le gabarit.** `fragments/manche.html` ligne 212 l'ecrit en noeud de texte, sans `th:text`. Le commentaire des lignes 195 a 198
+(`ADR-0083`) y loge *"les mots que la mecanique adresse a l'enfant"*, et `TexteAccentueDesGabaritsTest` (ligne 161) l'inventorie comme texte lu par l'enfant (`ADR-0039`).
+Ecrire U+00A0 dans ce noeud, c'est l'ecrire dans la donnee servie : aucun garde-fou ne juge une autre source de ce texte, aucun ne peut donc mentir.
+
+**La voie ecartee : sortir la phrase vers le modele ou une constante.** Elle retirerait la phrase de l'inventaire d'`ADR-0039`, qui saute `th:text` (ligne 86), et contredirait
+`ADR-0083`. Elle ajoute un attribut de modele et une constante pour un texte qui n'en a pas besoin : plus de pieces, et un garde-fou de moins.
+
+**Pourquoi un amendement quand meme.** La decision 1 enumere ses sources (*"dans le paquet et dans le catalogue"*), B.7 en ajoute une (*"une constante de l'adaptateur web"*).
+Un perimetre enumere par sources a deja omis une source une fois, et il omet celle-ci. L'amendement de D.4 definit le perimetre par son objet (le gabarit ecrit-il les
+caracteres de ce texte ?) et garde l'interdit qui compte : ajouter le caractere, ou son effet, a un texte recu d'ailleurs.
+
+**La notation, mesuree.** `&nbsp;` dans le gabarit, jamais le caractere tape, pour le motif de B.4 point 5. Ce n'est pas la notation que refuse `ADR-0060` clause 1, qui juge
+*"le texte servi, jamais les octets du fichier"* : le parseur resout l'entite. **Mesure** (arbre jetable en `--detach` sur `05598be4`, supprime apres) : la ligne 212 ecrite
+avec `&nbsp;` entre les mots de chaque phrase et une espace ordinaire entre les deux phrases, plus une assertion de sonde dans
+`PartieControllerPropositionsEnImageTest.laRevelationNePoseAucuneReponseEnTexteEtMarqueLaBonneOeuvreSeule` : `wholeText()` de `.reponse-revelee` egal a la phrase ecrite avec
+`\u00A0`. `bash outils/mvn-jdk21.sh -B clean verify -Dmaven.test.failure.ignore=true` depuis la racine : **`BUILD SUCCESS`, 2580 tests, 0 echec, 0 erreur** (120, 31, 486,
+1566, 371, 6, lignes `Tests run` de la sortie Maven), JDK **21.0.10** (`java.version` des 54 rapports Surefire d'`adapter-web`, une valeur). La sonde a tourne : la classe
+compte 5 tests, 0 echec, et le cas de la sonde figure dans son rapport. Donc :
+
+- le controleur et Thymeleaf servent U+00A0, et non la chaine `&nbsp;` ;
+- **les trois tests qui lisent cette phrase restent verts sans changement, et ne jugent pas la coupure** : `TexteAccentueDesGabaritsTest` lit `TextNode.text()` (ligne 269),
+  `PartieControllerPropositionsEnImageTest` `eachText()` (lignes 111 et 112), `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest` `Element::text` (lignes
+  306 et 307). Verifie a part sur jsoup 1.23.1, JDK 21.0.10 : `TextNode.text()` et `Element.text()` rendent U+0020 la ou `wholeText()` rend U+00A0, que la source porte le
+  caractere ou `&nbsp;`.
+
+**Sans garde-fou neuf, retaper une espace ordinaire dans la phrase ne rougit rien** : meme constat que B.4 pour le verdict. Le garde-fou est decrit en D.4.
+
+**La voie de `lea-dev`** :
+
+1. Ligne 212 : `C'est&nbsp;cette&nbsp;œuvre&nbsp;qui&nbsp;va&nbsp;avec. Appuie&nbsp;dessus.`, une seule espace ordinaire, entre `avec.` et `Appuie`. Aucun mot ni signe ne
+   change ; l'inventaire (ligne 161) ne change pas.
+2. Le garde-fou de D.4, dans `adapters/adapter-web`, avec ses deux morsures.
+3. Le bloc de D.4 verse tel quel dans `ADR-0067`, et sa ligne dans la table "Amendements" d'`ADR-index.md`, **dans ce meme commit**.
+4. Le commit qui le porte (commit 2 de B1 ou un commit a part) et la story sont a `camille-po` et `sofia-sm` : `S57-FORME-C-VERDICT` exclut les textes des gabarits
+   (backlog, *"Ce que la story ne couvre pas"*). Si les deux amendements entrent dans le meme commit, B.7 est verse avant D.4.
+
+**Ce que je ne tranche pas** : si la premiere phrase, insecable, tient dans la colonne de 1fr a 744 sans deborder. C'est la mesure d'`ines-design` et le jugement de `nadia-prof`
+(2.3 : *"la mesure me revient et je tranche"*).
+
+**Trouve en lisant (`TD3`).** Les gabarits ne portent aucune U+00A0 ni aucune entite (`git grep` de l'octet et de `&...;` sur `templates/` a `05598be4` : aucune ligne). Neuf
+textes de l'inventaire d'`ADR-0039` (lignes 118 a 181, egal par ses deux tests a l'ensemble des noeuds de texte des gabarits) portent donc une espace ordinaire devant un
+signe double : *"Bravo, c'est juste !"*, *"Tu as trouvé, tout seul :"*, *"Tu as joué toutes les questions :"*, *"La bonne réponse :"*, *"Appuie sur la bonne réponse :"*,
+*"C'est fini !"*, *"Oups ! Le jeu a un souci."*, *"On écrit :"*, *"Adulte, à voix haute :"*. C'est le defaut de `TYP-1`, hors du cliquet d'`ADR-0067`, comme
+`MESSAGE_PARTIE_PERDUE`. Je ne les corrige pas : story ou non, `camille-po` ; orthotypographie, `relecteur-pedagogique`.
+
+**Corrige dans C.3, trouve en relisant ce fichier.** La phrase de C.3 qui annonce que B.4 point 5 *"porte maintenant"* la sequence d'echappement portait elle-meme, entre ses
+accents graves, le caractere U+00A0 tape (`grep -c` de l'octet sur ce fichier a `05598be4` : 1). Mon outil d'ecriture resout la sequence en caractere ; la meme cause l'avait
+glissee dans la premiere ecriture de D.2. Les deux portent maintenant la sequence de six caracteres, et l'octet ne figure plus dans ce fichier (`grep -c` : 0). C'est le motif
+meme de B.4 point 5 : un developpeur y lisait une espace.
+
+### D.3 `Q-R6` : *"tous ses items"* d'un jeu tire
+
+**L'ensemble, lu dans le code.** `bandit-manchot-additions-cp` sert le paquet `cp-additions-jusqu-a-10` (`catalogue.yaml` lignes 3 a 8), de type `additions-bornees`,
+`sommeMaximale: 10` (paquet ligne 11). `AdditionsBorneesContentSource.couplesValides` (lignes 55 a 67) enumere les couples `(a, b)` d'entiers tels que `a + b <= 10`, `(0, 0)`
+excepte ; chaque tirage en rend un, d'identifiant `addition-a-b` et d'enonce `a + b` (lignes 113 a 118). Compte : la somme de `11 - a` pour `a` de 0 a 10, moins 1, soit **65**.
+
+**`TD4` : "tous ses items" = ces 65 enonces.** L'ensemble est fini, petit et derive : le fichier de cote le derive de `sommeMaximale` et de la regle des lignes 55 a 67, il ne le
+recopie pas d'une liste. Ce n'est pas un echantillon, et je n'en propose pas a la place de `nadia-prof` : reduire *"tous ses items"* changerait sa barre.
+
+**Un item, pour la mesure, c'est son enonce.** Le reste de l'ecran ne depend pas de l'item ou ne fait pas partie de son identite :
+
+- l'indice est constant (*"Compte sur tes doigts."*, paquet ligne 13, pose ligne 118) ; ni texte support, ni explication, ni illustration (la `Question` est construite sans) ;
+- les trois propositions sont retirees a chaque manche : le rang de la bonne reponse (lignes 136 a 151) et l'ordre (`BanditManchotSession.melanger`). Leurs valeurs vont de
+  0 a 12. Elles sont relevees, pas enumerees ;
+- l'enonce a 5 caracteres, sauf `10 + 0` et `0 + 10` (6).
+
+**Ce qui se mesure au pli (`TD5`)** : sur le jar de base, a 744 x 551, apres une erreur, le bas de `.indice` pour chacun des 65 enonces. **La couverture se verifie** : le fichier
+de cote porte 65 enonces distincts, egaux a l'ensemble derive. **L'hypothese "item = enonce" se verifie aussi** : si un meme enonce, vu deux fois, donne deux cotes differentes,
+elle tombe, et la clause retourne a `nadia-prof`.
+
+**Le prix, avec sa methode.** Le jar tire au hasard : `HasardConfiguration` (`bootstrap`, lignes 21 a 24) sert `new Random()` sans graine, et le mesureur ne choisit pas
+l'item. Une partie compte 10 manches, une manche tire un item (`BanditManchotSession.tirerManche`, ligne 162), un item deja tire dans la partie est retire jusqu'a 20 fois
+(lignes 93 a 99), et un couple a operande nul n'est retenu qu'une fois sur trois (lignes 101 a 109). Reproduction de ces trois regles en Python (generateur de Python, pas
+celui de Java), 2000 executions jusqu'a ce que les 65 enonces soient vus : **moyenne 513 manches, 52 parties ; 90e centile 74 parties**. Les 20 couples a operande nul
+coutent l'essentiel. **Faisable par un script, pas a la main** : l'enonce donne la bonne reponse, le script choisit une autre proposition, releve la cote, puis repond juste.
+
+**Ce que je n'ajoute pas** : une graine reglable dans le jar. Ce serait une fonction de production pour une seule mesure, et le jar mesure ne serait plus celui qui est servi.
+
+**Ce qui me ferait changer d'avis** : si une premiere partie scriptee montre que le bas de `.indice` ne varie pas d'un enonce a l'autre, un echantillon devient defendable sur une
+mesure. Il reste a `nadia-prof` de l'accepter (`Q-T8`).
+
+**`bandit-manchot-comprehension-cm1`**, pour comparaison : paquet `cm1-comprehension`, `type: question`, 20 items listes. *"Tous ses items"* y est sa liste ; aucune question.
+
+### D.4 Texte fige de l'amendement d'`ADR-0067`, a verser tel quel avec la phrase de `M4` et son garde-fou
+
+```markdown
+## Amendement du 2026-10-15 (s57, `theo-archi`) - un texte ecrit par un gabarit porte son caractere la ou il est ecrit
+
+**Ce que la decision 1 laissait lire de travers.** *"Il n'est pose ni par un gabarit, ni par un filtre, ni par une regle de style"*
+vise un rendu qui ajoute le caractere a un texte ecrit ailleurs : le garde-fou qui juge la source ne verrait pas ce que l'enfant
+recoit. Lu a la lettre, il interdit aussi d'ecrire U+00A0 dans un texte que le gabarit ecrit lui-meme. Le cas existe : la phrase de
+`M4` (`fragments/manche.html`, `.reponse-revelee`), que `nadia-prof` veut sans coupure dans une de ses deux phrases
+(`reponse-nadia-forme2-palier-1.md` de s57, section 2.3). Ce texte n'a pas d'autre source que le gabarit : `ADR-0083` y loge les mots
+que la mecanique adresse a l'enfant, et `ADR-0039` l'inventorie comme texte lu par l'enfant.
+
+**Decision 1, precisee par son objet.** Le caractere vit dans le texte la ou ce texte est ecrit : paquet, catalogue, constante de
+l'adaptateur web (amendement du 2026-10-14) ou noeud de texte d'un gabarit. Reste interdit : qu'un gabarit, un filtre ou une regle de
+style ajoute le caractere, ou son effet, a un texte qu'il recoit d'ailleurs (`th:text` transforme, `<span>` en `white-space: nowrap`,
+`content` d'un pseudo-element). Critere : le gabarit ecrit-il les caracteres de ce texte ? Si oui, le caractere s'y ecrit.
+
+**Notation.** Dans un gabarit, U+00A0 s'ecrit `&nbsp;`, jamais le caractere tape, qu'un relecteur ne distingue pas d'une espace. Ce
+n'est pas la notation que refuse `ADR-0060` clause 1, qui juge le texte servi et non les octets du fichier : le parseur la resout.
+
+**La phrase de `M4`.** U+00A0 entre les mots de chaque phrase, une seule espace ordinaire entre les deux phrases. Aucun mot ni signe ne
+change.
+
+**Regle executable.** Pas une `ArchRule` : l'objet est une chaine servie. Un test d'`adapters/adapter-web`, ecrit dans le meme commit
+que cet amendement. Il rend par le controleur et le gabarit reels la revelation d'une manche a propositions en image et lit
+`wholeText()` de `.reponse-revelee`, jamais `text()`, qui normalise U+00A0 en espace ordinaire (jsoup 1.23.1 : `TextNode.text()` et
+`Element.text()`). Il exige : U+00A0 lue comme une espace, le texte vaut la phrase de `M4` ; toute espace ordinaire suit
+immediatement `.`, `!` ou `?` ; la premiere phrase est suivie d'une espace ordinaire. Deux morsures, citees dans le rapport du
+developpeur avec le nom du test et le nombre de tests lances : une espace ordinaire remise entre `va` et `avec` ; `&nbsp;` mis entre
+les deux phrases.
+
+**Mesure prealable** (`theo-archi`, arbre jetable sur `05598be4`, la phrase ecrite ainsi, reacteur complet, JDK 21.0.10) : 2580
+tests, 0 echec, et `wholeText()` du fragment rendu porte U+00A0. **Ce vert ne prouve pas la propriete** : les trois tests qui lisent
+cette phrase (`TexteAccentueDesGabaritsTest`, `PartieControllerPropositionsEnImageTest`,
+`LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`) passent par `text()`. La regle ci-dessus est neuve.
+
+**Ce qui n'est pas couvert, nomme.** La ligne rendue : si la premiere phrase tient dans sa colonne a 744 sans deborder, `ines-design`
+le mesure et `nadia-prof` le juge. Neuf autres textes de gabarit portent une espace ordinaire devant un signe double (*"C'est fini !"*,
+*"La bonne réponse :"* et sept autres, avis de `theo-archi` sur le poste 8 de s57, annexe D.2) : `TYP-1` hors du cliquet, non
+corrige par ce commit.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`.
+
+**Ce qui me ferait changer d'avis** : un texte de gabarit qu'une autre source devrait aussi porter. Il aurait alors deux sources, il
+faudrait en garder une, et ce ne serait plus le gabarit.
+```
+
+Ligne a ajouter a la table "Amendements" d'`ADR-index.md`, apres la derniere (apres celle de B.7 si elle est versee avant) :
+
+```markdown
+| ADR-0067 | 2026-10-15 (s57) | **la decision 1, lue a la lettre, interdisait U+00A0 dans un texte que le gabarit ecrit lui-meme**. Precisee par son objet : le caractere vit la ou le texte est ecrit (paquet, catalogue, constante, noeud de texte d'un gabarit) ; reste interdit de l'ajouter a un texte recu d'ailleurs. `&nbsp;` dans un gabarit, jamais le caractere tape. Phrase de `M4` sans coupure dans une phrase (`nadia-prof`, 2.3). Regle : test d'`adapter-web` sur `wholeText()` de `.reponse-revelee` a la revelation d'une manche en image, deux morsures. Neuf textes de gabarit nommes, non corriges. Compte ArchUnit inchange (41 declarations, 38 `@ArchTest`) |
+```
+
+### D.5 Questions
+
+| Code | Question | A qui |
+|---|---|---|
+| `Q-T8` | `Q-R6` : si le prix des 65 enonces (environ 52 parties scriptees) est refuse, acceptes-tu un echantillon, justifie par une premiere partie mesuree ou le bas de `.indice` ne varie pas ? | `nadia-prof`, par `sofia-sm` |
+| `Q-T9` | Story et commit de la phrase de `M4` (`TD2`) : `S57-FORME-C-VERDICT` exclut les textes des gabarits | `camille-po`, `sofia-sm` |
+| `Q-T10` | Les neuf textes de gabarit de `TD3` : story ou non | `camille-po` |
