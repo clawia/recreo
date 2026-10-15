@@ -40,6 +40,16 @@
     height: 16px;
 }
 
+/* Poste 8 de s57 (forme d'ines-design, L1) : les deux regles qui masquent la decoration du meuble
+   sur l'ecran des deux oeuvres. Meme geste, chacune avec sa dimension en pixels. */
+.ecran-deux-oeuvres .cabinet-bandeau {
+    height: 32px;
+}
+
+.ecran-deux-oeuvres .cabinet-socle {
+    height: 16px;
+}
+
 /* S10 : les dix selecteurs de decor ajoutes par la forme du meuble (visage, enseigne, levier et
    ses etoiles de socle), chacun avec sa dimension en pixels - le meme geste que ci-dessus, paye
    une fois par la derivation plutot que par une liste tenue a jour a la main. */

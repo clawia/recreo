@@ -1845,22 +1845,32 @@ body:has(.ecran-exclusif) .chip-niveau {
     outline-offset: 0;
 }
 
+/* Poste 8 de s57 (reprise d'ART-CP-10), forme d'ines-design revision 2, L1 : la decoration du meuble
+   n'est pas rendue sur cet ecran. .cabinet reste, avec sa bordure, son rembourrage et son levier de
+   flanc ; seuls le bandeau et le socle disparaissent. Hors de tout @media : le meuble est le meme a
+   toute largeur. Garde par CabinetDeLaMachineTest. */
+.ecran-deux-oeuvres .cabinet-bandeau,
+.ecran-deux-oeuvres .cabinet-socle {
+    display: none;
+}
+
 /* Disposition "cote" des 720 px : sans element de gabarit en plus, la grille place la reference dans
    la colonne de gauche, face a l'enonce et au meuble. L'ordre du document ne change pas (la
    reference reste avant l'enonce pour une lecture d'ecran). Sous 720 px la disposition reste
-   empilee. */
+   empilee. L2 : le score a droite de la consigne ; la rangee du message ne partage sa zone avec
+   aucune autre et laisse vide la colonne de la reference, le message tient dans la largeur du
+   meuble (C1' de theo-archi, veto de nadia-prof). */
 @media (min-width: 720px) {
     .ecran-deux-oeuvres {
         display: grid;
-        grid-template-columns: 11rem minmax(0, 1fr);
+        grid-template-columns: 11rem minmax(0, 1fr) auto;
         column-gap: 1.5rem;
         align-items: start;
         grid-template-areas:
-            "score score"
-            "consigne consigne"
-            "ref enonce"
-            "ref jeu"
-            "msg msg";
+            "consigne consigne score"
+            "ref enonce enonce"
+            "ref jeu jeu"
+            ". msg msg";
     }
 
     .ecran-deux-oeuvres > .score { grid-area: score; }
@@ -1869,6 +1879,23 @@ body:has(.ecran-exclusif) .chip-niveau {
     .ecran-deux-oeuvres > .enonce { grid-area: enonce; }
     .ecran-deux-oeuvres > div:has(> .propositions-oeuvres) { grid-area: jeu; }
     .ecran-deux-oeuvres > .message-jeu { grid-area: msg; }
+
+    /* L3 : le signal (15 rem) a gauche, le texte a droite, dans la largeur du meuble. 15 rem et non
+       une fraction : a 2fr/3fr le verdict passait sur trois lignes a 744. */
+    .ecran-deux-oeuvres > .message-jeu {
+        display: grid;
+        grid-template-columns: 15rem minmax(0, 1fr);
+        column-gap: 0.75rem;
+        align-items: start;
+    }
+    .ecran-deux-oeuvres > .message-jeu > .signal { grid-column: 1; grid-row: 1 / span 3; }
+    .ecran-deux-oeuvres > .message-jeu > :not(.signal) { grid-column: 2; }
+    .ecran-deux-oeuvres .signal .verdict { margin-bottom: 0; }
+
+    /* L4 : trois marges a zero au-dessus du meuble (12 px). Elles seules font tenir l'indice a 744. */
+    .ecran-deux-oeuvres > .score { margin: 0; }
+    .ecran-deux-oeuvres > .consigne { margin-bottom: 0; }
+    .ecran-deux-oeuvres > .enonce { margin-bottom: 0; }
 }
 
 /* Hors sprint accueil par matiere (DEC-0117, ADR-0105, ADR-0106, arbitrage de nadia-prof APM-1 a APM-11).

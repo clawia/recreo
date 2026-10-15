@@ -152,3 +152,39 @@ le constater coute une execution, le supposer coute un garde-fou decoratif.
 - `adapters/adapter-content/src/test/java/com/recreo/adapter/content/AucunSigneDoubleNEstDetachableDeSonMotTest.java` : cree.
 - `squad/decisions/adr/ADR-index.md` : ligne `ADR-0067` ajoutee.
 - Aucun fichier de contenu modifie par cette decision.
+
+## Amendement du 2026-10-14 (s57, `theo-archi`) - le texte que l'adaptateur web ecrit lui-meme, et la coupure dans une phrase du verdict
+
+**Ce que le perimetre de la decision 2 omettait.** Le cliquet lit les paquets et le catalogue. Les constantes de `PartieController`
+qui forment le verdict sont aussi du texte servi a l'enfant, et elles portaient une espace ordinaire devant un `!` (*"Bravo !"*,
+*"Essaie encore !"*) : le defaut de `TYP-1`, le `!` detache de son mot a 390 px (`ines-design`,
+`proposition-ines-poste-8-coupure-du-verdict.md`, section 3). Un perimetre enumere par sources avait omis la seule qui n'est pas un
+fichier de contenu.
+
+**Decision 1, etendue.** Le moyen vit dans le texte servi, qu'il vienne d'un paquet, du catalogue ou d'une constante de l'adaptateur
+web. Il sert aussi une seconde propriete, la condition 5 de `nadia-prof` (`reponse-nadia-forme-poste-8.md` de s57) : le verdict ne
+se coupe jamais a l'interieur d'une de ses phrases. Les mots d'une meme phrase du verdict sont separes par U+00A0, un signe double
+est precede de U+00A0, deux phrases sont separees par une seule espace ordinaire. Pour ce texte, la section "Ce qui reste a decider a
+deux" est tranchee : U+00A0, U+202F collant les mots a l'oeil. Le moyen n'est pose ni par un gabarit ni par une regle de style : la
+forme B de la proposition (un `<span>` par phrase en `white-space: nowrap`) est ecartee pour ce motif.
+
+**Regle executable.** Pas une `ArchRule` : l'objet est une chaine servie. Un test d'`adapters/adapter-web`, ecrit dans le meme commit
+que cet amendement. Il lit chaque verdict rendu par le controleur sur les trois issues (juste, echec avec essais restants,
+revelation) de chacune des trois mecaniques servies, par la valeur du modele ou par `wholeText()`, jamais par `text()`, qui
+normalise U+00A0 en espace ordinaire. Il exige : aucune espace ordinaire devant `?`, `!`, `;` ou `:`, et toute espace ordinaire
+immediatement apres une fin de phrase. Deux morsures, citees dans le rapport du developpeur : une espace ordinaire remise entre deux
+mots de `MESSAGE_ECHEC`, une espace ordinaire remise devant le `!` de `MESSAGE_BRAVO`.
+
+**Mesure prealable** (`theo-archi`, arbre jetable sur `2018b7d0` plus les trois constantes ecrites ainsi, reacteur complet, JDK
+21.0.10) : 2548 tests, 0 echec. **Ce vert ne prouve pas la propriete** : aucun garde-fou existant ne lit ces constantes avec leurs
+espaces. Les deux garde-fous de l'accent ne les lisent pas, et les tests du controleur passent par `text()`. La regle ci-dessus est
+neuve.
+
+**Ce qui n'est pas couvert, nomme** : `MESSAGE_PARTIE_PERDUE` (*"Choisis un nouveau jeu !"*) n'est pas un verdict et garde son espace
+ordinaire devant le `!`. C'est une occurrence de `TYP-1` hors du cliquet, que ce commit ne corrige pas.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`.
+
+**Ce qui me ferait changer d'avis** : un lecteur d'ecran qui annoncerait U+00A0 autrement qu'une espace (non verifie, reserve F11 de
+`nadia-prof`) ; ou un refus de `nadia-prof` d'un changement de coupure hors d'`ART-CP-10`, qui obligerait a poser le moyen dans le
+rendu pour un seul ecran, donc a amender la decision 1 elle-meme.

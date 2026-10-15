@@ -68,9 +68,14 @@ public class PartieController {
     private static final String ENTETE_ADRESSE_AFFICHEE = "HX-Push-Url";
     private static final String ADRESSE_CATALOGUE_COMPLET = "/";
 
-    /** M12 : les trois textes exacts, voulus par nadia-prof, ecrits ici pour ne pas etre reinventes. */
-    private static final String MESSAGE_BRAVO = "Bravo !";
-    private static final String MESSAGE_ECHEC = "Ce n'est pas ça. Essaie encore !";
+    /**
+     * M12 : les trois textes exacts, voulus par nadia-prof, ecrits ici pour ne pas etre reinventes.
+     * ADR-0067, amendement du 2026-10-14 : les mots d'une meme phrase et le signe double sont separes
+     * par U+00A0 (ecrite en sequence d'echappement, jamais tapee), les deux phrases d'un verdict par
+     * une seule espace ordinaire, pour que le verdict ne se coupe qu'entre ses phrases.
+     */
+    private static final String MESSAGE_BRAVO = "Bravo\u00A0!";
+    private static final String MESSAGE_ECHEC = "Ce\u00A0n'est\u00A0pas\u00A0ça. Essaie\u00A0encore\u00A0!";
 
     /**
      * Le texte que l'enfant lit quand ses trois essais sont depenses, sur <b>les deux</b> mecaniques
@@ -80,7 +85,7 @@ public class PartieController {
      * ines-design l'emploie : la formulation de tout ce que l'enfant lit apres avoir repondu est une
      * propriete dont nadia-prof reste la seule garde, et elle la jugera sur l'increment joue.
      */
-    private static final String MESSAGE_REVELATION = "Ce n'est pas ça.";
+    private static final String MESSAGE_REVELATION = "Ce\u00A0n'est\u00A0pas\u00A0ça.";
 
     /**
      * ADR-0027 : chaque point d'appel de l'ecran de jeu declare si un geste de l'enfant a demande
