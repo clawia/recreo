@@ -14,8 +14,10 @@
   sections 3.2 a 3.4) ; `B1` a `B14` (`ARBITRAGE-PREALABLE-s56-instance-b-art-cp-10-et-emc-cm1.md`) ; `N1` a `N6`, `Q2` a
   `Q6`, la condition bloquante de `Q3` et les criteres 1 a 8 de la marque (`ARBITRAGE-s56-forme-art-cp-10.md`, blocs du
   2026-10-09 a 21:37 et 22:07).
-- **Statut global** : **REFUSE**, prononce le 2026-10-11 par `nadia-prof` (s56), apres avoir joue le jar servi.
-- **Derniere mise a jour** : 2026-10-11.
+- **Statut global** : **REFUSE**, prononce le 2026-10-11 par `nadia-prof` (s56), apres avoir joue le jar servi. Rejeu du
+  2026-10-15 (s57, instance B) sur `ac9ae080` : refus leve, `RDO-CP-R1` et `RDO-CP-R2` levees, reserve neuve `RDO-CP-R3` ;
+  statut **VALIDE SOUS RESERVE**.
+- **Derniere mise a jour** : 2026-10-15.
 
 > **Fiche ouverte par `nadia-prof`** : `camille-po` n'en avait pas ouvert (`ls squad/conformite` suivi de
 > `grep -c rapprocher` rendait 0 a `a6ca1751`). Les lignes d'en-tete descriptives sont reprises du catalogue et du
@@ -206,3 +208,160 @@ Alloues dans `squad/decisions/REGISTRE-identifiants.md`, section 4, dans le meme
 report.
 
 **Signe** : `nadia-prof`, s56, 2026-10-11.
+
+---
+
+### Rejeu du 2026-10-15 (`nadia-prof`, s57, palier 1, instance B) : **VALIDE SOUS RESERVE** ; refus leve, `RDO-CP-R1` et `RDO-CP-R2` levees, reserve neuve `RDO-CP-R3`
+
+**Motif.** A 744 x 551, a la revelation, la boite de la phrase de `M4` va de y = 468 a y = 528 (bas du texte a 526) sur les six
+items, avec et sans barre de defilement, et la reference (bas au plus a 328), les trois cases (260 a 404), les croix (406 a 446)
+et l'anneau sont au-dessus du pli : **la barre du refus du 2026-10-11 est atteinte, je leve le refus**. Je ne la deplace pas.
+Reste une reserve neuve, non bloquante : la premiere phrase de `M4`, insecable, deborde de sa colonne de 18,2 px de 720 a 768
+et sort de l'ecran a 720 (`RDO-CP-R3`, section 6).
+
+**Objet joue.** Branche `s57-nadia-rejeu-b2`, tete `ac9ae080`, issue de `s57-yanis-j5`. Le contenu servi est celui de `06c7804f`
+(B2, `lea-dev`, retour de l'entree au catalogue) : `git diff --name-only 06c7804f ac9ae080 -- adapters domain application
+bootstrap` ne rend aucune ligne (les commits entre les deux ne touchent que `outils/` et `squad/`). L'entree du catalogue est
+identique, ligne a ligne, a celle d'avant le retrait (`diff` des six lignes sur `13d00bfe^` et sur `ac9ae080` : vide) ; le paquet
+et les reproductions n'ont pas change depuis le refus (`git diff --stat 13d00bfe HEAD` sur `static/oeuvres` et
+`cp-rapprocher-deux-oeuvres.yaml` : vide). **Commit joue, pour `R1` et `R2` d'`avis-faisabilite.md` 3.3 : `ac9ae080`.**
+
+#### 1. Ce que j'ai fait
+
+- **Build** : `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl`, sur `ac9ae080` : `BUILD SUCCESS`, 2597 tests
+  (120, 31, 492, 1567, 381 et 6 d'integration, lignes `Tests run` de la sortie Maven), 0 echec, 0 erreur ; JDK 21.0.10
+  (`java.version` des 60 rapports Surefire de `bootstrap`, une valeur).
+- **Jar** : le `recreo.jar` de ce build, copie dans mon dossier de poste `s57-p1-nadia-prof-b` (hors depot) et lance sur le
+  port 18513 (libre avant : `netstat -ano` filtre ne rendait rien). Journal : *"Tomcat started on port 18513"*, *"using Java
+  21.0.10 with PID 38204"*. Arrete par ce PID seul ; le port ne figure plus parmi les ports a l'ecoute ensuite.
+- **Joue au navigateur, par la page servie** (htmx compris) : script de poste hors depot, Chrome sans tete pilote par son
+  port de deverminage (19213, `git grep 19213` ne rend rien), profil neuf dans mon dossier de poste. Chaque Chrome s'est ferme
+  par son PID (53564, 53224, 21248) ; aucun processus de navigateur ne restait dont la ligne de commande nomme mon dossier.
+  Aucun processus arrete par nom.
+- **Conduites**, parties completes de cinq manches jusqu'a l'ecran de fin : tout reveler (une oeuvre, l'autre, la premiere
+  repetee, puis la bonne revelee), juste du premier coup, une erreur puis la bonne.
+- **Deux modes** : barre de defilement classique (Chrome par defaut sur ce poste, 15 px) et **sans barre peinte**
+  (`--hide-scrollbars`, comme la barre superposee d'une tablette). Cinq largeurs, 720, 744, 768, 992 et 1200, hauteur 551.
+- **Volume** : 126 parties, 630 manches, 649 etats d'echec mesures, 223 revelations, 126 ecrans de fin. **Les six items
+  reveles, essayes a tort et joues justes a chaque largeur et dans chaque mode.**
+- **Mesures** : `getBoundingClientRect()` plus `scrollY` ; bas de la derniere ligne de texte par `Range.getClientRects()` ;
+  lignes et coupure par la position de chaque mot (methode de `coupure-poste-8.mjs`) ; `scrollWidth` et `clientWidth` du
+  document. Captures regardees a 720 et 744 (manche fraiche, echec, revelation, ecran de fin).
+- **Juge pur**, sur le releve de `lea-dev` (`releve-b2-jar.json`, `ebceb838`, tete mesuree `06c7804f`) : `J1` a `J5` OK,
+  *"VERDICT DES COTES : tout passe"*, sortie 0 (sortie complete : `rejeu-nadia-b2-palier-1.md`, section 2). Mes cotes
+  rendent les siennes a la meme largeur et au meme mode.
+
+**Limites, nommees.** Une police, celle que le jar sert sur ce poste ; densite 1 ; aucun appareil de la cible, aucun doigt,
+aucun enfant. Le clavier n'est pas rejoue : la feuille n'a change aucune regle de la marque, du focus ni de la revelation
+depuis le refus (`git diff a6ca1751 HEAD` sur `recreo.css` ne nomme `focus` que dans `.bascule` et `.tuile`, de l'accueil) ;
+mon constat `N3` de s56 vaut sans mesure neuve.
+
+#### 2. Cotes, revelation et echec, six items
+
+| Largeur | Mode | `M4` (boite ; bas du texte) | Texte de `M4` au-dela de sa boite | Au-dela de l'ecran | Indice a l'echec (bas) | Croix (bas) | Cases (haut a bas ; cote) |
+|---|---|---|---|---|---|---|---|
+| 720 | barre | 463 - 523 ; 521 | 33,2 px | **21,2 px**, defilement horizontal (726 pour 705) | 543 | 441 | 260 - 404 ; 144, puis 260 - 399 ; 139 apres l'erreur |
+| 720 | sans barre | 468 - 528 ; 526 | 18,2 px | **6,2 px**, defilement horizontal (726 pour 720) | 548 | 446 | 260 - 404 ; 144 |
+| 744 | barre | 468 - 528 ; 526 | 18,2 px | 1,7 px, defilement horizontal (731 pour 729) | 548 | 446 | 260 - 404 ; 144 |
+| 744 | sans barre | 468 - 528 ; 526 | 18,2 px | non | 548 | 446 | 260 - 404 ; 144 |
+| 768 | barre | 468 - 528 ; 526 | 18,2 px | non | 548 | 446 | 260 - 404 ; 144 |
+| 768 | sans barre | 468 - 528 ; 526 | 18,2 px | non | 548 | 446 | 260 - 404 ; 144 |
+| 992 | barre | 512 - 542 ; 540 | non | non | 562 | 490 | 260 - 448 ; 188 |
+| 992 | sans barre | 512 - 542 ; 540 | non | non | 562 | 490 | 260 - 448 ; 188 |
+| 1200 | barre | 464 - 494 ; 492 | non | non | 514 | 442 | 212 - 400 ; 188 |
+| 1200 | sans barre | 464 - 494 ; 492 | non | non | 514 | 442 | 212 - 400 ; 188 |
+
+Reference : bas au plus a 328 a toutes les largeurs. Le message commence au bas du meuble et tient entre ses deux bords a
+toutes les largeurs (a 744 avec barre : 216,5 a 712,5 pour l'un et l'autre) : le veto de `reponse-nadia-forme-poste-8.md`
+est tenu. A 720 avec barre, la croix est a 401 - 441 : la rangee est plus courte de 5 px.
+
+#### 3. La barre du refus : atteinte
+
+Les trois conditions de levee du 2026-10-11 : boite de `.reponse-revelee` au-dessus de y = 551 a 744 sur les six items (528) ;
+reference, cases, croix et anneau au-dessus du pli (328, 404, 446, l'anneau sur la case de 260 a 404) ; `N1` a `N6` tenues
+(section 5). **Refus leve.** Les 105 px manquants en ont ete gagnes 128 (656 en s56, 528 ici).
+
+#### 4. `RDO-CP-R1` et `RDO-CP-R2` : levees
+
+- **`RDO-CP-R1`.** A 744 x 551, apres une erreur, le bas de `.indice` est a 548 sur les six items, avec et sans barre ; a
+  992 x 551, la croix de chaque oeuvre essayee finit a 490. **Levee.** La marge est de 3 px, sur une police : je l'ai ecrit le
+  2026-10-15 (`reponse-nadia-forme2-palier-1.md` 2.2), ce n'est pas une garantie, et `J3` la garde sur un releve, pas sur
+  le jar servi demain.
+- **`RDO-CP-R2`.** Sur les 126 ecrans de fin : *"Tu as trouvé, tout seul :"*, le nombre, *"Tu as joué toutes les questions
+  :"*, le nombre, *"Tu n'as pas trouvé."* ou *"Bravo, c'est juste !"*, *"C'est fini !"*. Aucune question rappelee, aucune
+  explication, aucune image dans le fragment (la seule image de la page est le crayon de l'en-tete), aucun des attributs de
+  `reponse-nadia-forme2-palier-1.md` 4.2. **Aucun texte ne designe une oeuvre absente : levee.**
+  `LEcranDeFinDUnJeuAReponseEnImageNeRendAucunTexteDeLItemTest` (10 tests, verts dans mon build) la garde desormais ; je reste
+  seule garde d'un texte pose par la feuille ou le JavaScript.
+
+#### 5. Les conditions de forme, jouees
+
+| Condition | Constat sur le jar |
+|---|---|
+| `L1` (bandeau et socle) | `display: none` sur cet ecran, dans tous les etats ; le meuble garde son cadre et son levier. Accepte sur cet ecran seul |
+| `L4` (2.2 : *"je le regarde au rejeu"*) | l'enonce finit exactement ou le meuble commence (ecart 0 a toutes les largeurs). En gras, sur deux lignes, sur le fond clair, au-dessus du cadre sombre : il se lit comme la question, pas comme une piece du meuble. **Tenu** |
+| Verdict, forme C (2.4) | a l'echec, *"Ce n'est pas ça. / Essaie encore !"* : deux lignes, coupure entre les deux phrases, dans sa boite, aux cinq largeurs et dans les deux modes ; *"Ce n'est pas ça."* a la revelation et *"Bravo !"* sur une ligne. `coupure-b2-jar.json`, variante `A` (texte servi) : 45 mesures, 0 coupure dans une phrase, 5 depassements, tous en Courier New, que la feuille ne sert pas (2.1). **Tenu** |
+| Phrase de `M4` (2.3), coupure | *"C'est cette œuvre qui va avec. / Appuie dessus."* de 720 a 768, une ligne a 992 et 1200 : jamais coupee dans une phrase. **Tenu** |
+| Phrase de `M4` (2.3), debordement | **non tenu** : section 6 |
+| `N1`, `N2`, `N4`, `N5` | croix de 40 x 40 sous la case, sur le meuble ; les deux oeuvres essayees la gardent a la revelation, la bonne porte l'anneau sans croix. **Tenu** |
+| `N6` | haut des cases a 260 (212 a 1200) dans tous les etats, a toutes les largeurs ; largeur constante entre etats de meme largeur utile. A 720 avec barre, voir `Q-T11` de `theo-archi` dans `rejeu-nadia-b2-palier-1.md`, section 4 : observation, pas un refus. **Tenu** |
+| `B1` a `B10`, regle 2, `B6` | paquet inchange depuis le refus ; enonce et consigne servis identiques au catalogue et au paquet ; onze oeuvres, aucun objet en volume (`oeuvre-hippopotame` proposee nulle part). **Tenu** ; je reste seule garde de `B6` |
+| Regle 5, `K1` | les trois explications servies a la revelation, identiques au paquet et exactes. A 744, l'explication commence a 532, sous la phrase de `M4` ; elle n'est pas une barre (`Q-R2`) |
+| Regle 6 | a 720 avec barre, apres une erreur, la plus grande reproduction passe de 134 a 129 px de large : la touche et les traits fins restent ceux que j'ai vus a 93 - 134 px en s56 |
+
+#### 6. Reserve neuve, datee du 2026-10-15, non bloquante
+
+**`RDO-CP-R3` - la premiere phrase de `M4` deborde de sa colonne.** *"C'est cette œuvre qui va avec."* est insecable (forme C,
+`ADR-0067`) et mesure 262 px. Sa colonne en a 244 de 744 a 768 (229 a 720 avec barre). Elle sort donc du meuble de 18,2 px
+(33,2 a 720 avec barre). **A 720, elle sort de l'ecran** : 21,2 px avec barre, ou l'enfant lit *"qui va ave"* sans
+defilement horizontal, et 6,2 px sans barre, ou le point final est coupe ; une barre de defilement horizontale apparait. **A
+744 avec barre**, elle depasse la largeur utile de 1,7 px, et la barre horizontale apparait aussi. C'est la condition de forme
+que j'ai ecrite le 2026-10-15 (`reponse-nadia-forme2-palier-1.md` 2.3, *"et le texte ne deborde pas de sa boite"*), dont
+j'avais dit qu'une forme qui ne la tiendrait pas donnerait au rejeu une reserve neuve et non bloquante. Ce n'est pas la barre
+du refus, qui est atteinte.
+
+**J'avais ecrit que je trancherais si "jamais coupee" et "ne deborde pas" ne tenaient pas ensemble a 744 ; je tranche.**
+Ne pas deborder l'emporte : un mot coupe par le bord de l'ecran, ou une page qui defile de cote, gene plus la lecture d'un
+enfant de CP qu'un retour a la ligne dans une phrase. Une coupure dans la premiere phrase est acceptee si aucune forme ne
+tient les deux.
+
+**Ce qui la leve** : a 720, 744 et 768 x 551, a la revelation, sur les six items, avec une barre de defilement classique et
+sans barre peinte, le bord droit de chaque mot de `.reponse-revelee` est au plus au bord droit de sa boite, et `scrollWidth`
+du document egale `clientWidth`. La coupure reste entre les deux phrases, sauf si la forme ne peut pas tenir les deux.
+
+**Voies, sans choix de ma part** : la largeur de la colonne du message ou du signal (`ines-design`, `theo-archi`) ; la
+coupure dans la phrase, qui touche le garde-fou de l'amendement D.4 d'`ADR-0067` (`theo-archi`) ; une phrase plus courte, qui
+est a moi et demanderait un rejeu. Rejeu au tarif de `PAR-10`.
+
+#### 7. Observations, sans reserve
+
+- **A 992 x 551, apres une erreur, le verdict finit a 576 et l'indice a 562** : la deuxieme ligne du verdict (*"Essaie
+  encore !"*) est sous le pli ; la croix (450 - 490) et la premiere ligne sont au-dessus. Ma condition sur l'indice est ecrite
+  pour 744 ; je ne l'etends pas apres coup.
+- A 744, a la revelation, l'explication commence a 532 et le document descend a 758 : l'enfant voit la phrase de `M4` sans
+  defiler, l'explication en partie.
+
+#### 8. Ce dont je reste la seule garde sur ce jeu
+
+Le debordement de la phrase de `M4` et le defilement horizontal (aucun juge ne compare un texte a sa boite : `J1` a `J5` ne
+lisent que des boites, et le garde-fou de D.4 lit `wholeText()`, pas la geometrie) ; la coupure du verdict sur les ecrans de
+designation et de saisie ; `B6` ; la regle 2 et le sujet de chaque oeuvre ; l'exactitude des explications ; la lisibilite de
+l'enonce colle au meuble ; la distinction de la croix et des deux anneaux ; un texte de l'ecran de fin pose par la feuille ou
+le JavaScript. **Ce qui ne depend plus de moi seule** : la barre du refus et `RDO-CP-R1` (`J2`, `J3`, sur un releve), le veto
+du message (`J4`), `N6` sur un releve (`J5`), `RDO-CP-R2` (test de `D7`).
+
+#### 9. Routage
+
+| A qui | Quoi |
+|---|---|
+| `camille-po` | `ART-CP-10` a `couvert-valide` **apres la fusion de B2**, `R1` et `R2` tenus ; `RDO-CP-R3` en story, avec les cotes de la section 2 et la levee de la section 6, sans reformulation ; l'observation de 992 (section 7), a elle |
+| `sofia-sm` | la fusion de B2 sous `R1` et `R2` d'`avis-faisabilite.md` 3.3, commit joue `ac9ae080` (contenu servi de `06c7804f`) |
+| `ines-design`, `theo-archi` | la forme de `RDO-CP-R3` |
+
+**Identifiant** : un neuf, `RDO-CP-R3`. Forme copiee de `RDO-CP-R1` : trois segments, niveau au milieu, marqueur `R` dans le
+dernier (`ADR-0100`). Prefixe `RDO-CP` deja alloue ; `git grep "RDO-CP-R3"` ne rendait rien avant d'ecrire. Alloue dans
+`squad/decisions/REGISTRE-identifiants.md`, section 4, dans le meme diff.
+
+**Tarif consomme** : rejeu 0,5 (poste 8, instance B, `engagement-poste-8.md`). Aucun prix neuf.
+
+**Signe** : `nadia-prof`, s57, palier 1, instance B, 2026-10-15.
