@@ -1,7 +1,7 @@
 # DEGRADE : la saisie alphabetique d'un mot (l'ecrire sans modele) manque, le type question ne sert que la reconnaissance de la graphie juste parmi trois.
 # Plafond "en cours" fixe par l'arbitrage prealable, section 5.12 : la saisie alphabetique au CE1 n'est pas arbitree.
 #
-# S53-FRA-MOTS-INVARIABLES (s53, generation de contenu seul, brouillon soumis a nadia-prof). Conditions
+# S53-FRA-MOTS-INVARIABLES (s53, generation de contenu seul, ecrit par marc-dev ; l'etat de validation est dans la fiche de conformite, squad/conformite/). Conditions
 # MIV-CE1-1 a MIV-CE1-3 (squad/conformite/ARBITRAGE-PREALABLE-s48-francais-ce1.md, section 5.12).
 #
 # MIV-CE1-1 : mots cibles, vingt-quatre mots distincts : souvent, toujours, jamais, aujourd'hui, maintenant,
