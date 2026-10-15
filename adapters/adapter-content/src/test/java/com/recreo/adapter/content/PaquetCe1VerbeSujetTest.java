@@ -285,8 +285,10 @@ class PaquetCe1VerbeSujetTest {
 
     /**
      * VSJ-CE1-2, propriete 8 amendee le 2026-10-14 : sur chaque item de sujet, la bonne reponse est
-     * avant le verbe cite, au moins un distracteur est apres le verbe et au plus un est avant. Une
-     * proposition hors de la phrase est l'affaire de VSJ-CE1-1.
+     * avant le verbe cite, au moins un distracteur est apres le verbe et au plus un est avant. Aucun
+     * distracteur n'est au rang du verbe cite (VSJ-CE1-3 : un autre nom de la phrase, non le verbe),
+     * y compris un groupe qui commence par lui. Une proposition hors de la phrase est l'affaire de
+     * VSJ-CE1-1.
      */
     private static void verifierLaPlaceDuSujetParRapportAuVerbe(List<Question> items) {
         for (Question item : items) {
@@ -306,6 +308,13 @@ class PaquetCe1VerbeSujetTest {
                     .as("VSJ-CE1-2 : '%s' - au plus un distracteur avant le verbe, trouvés : %s",
                             item.enonce(), avant)
                     .isLessThanOrEqualTo(1);
+            List<String> auRangDuVerbe = item.distracteurs().stream()
+                    .filter(d -> rangDuVerbe >= 0 && rangDansLaPhrase(phrase, d) == rangDuVerbe)
+                    .toList();
+            assertThat(auRangDuVerbe)
+                    .as("VSJ-CE1-3 : '%s' - aucun distracteur au rang du verbe cité, trouvés : %s",
+                            item.enonce(), auRangDuVerbe)
+                    .isEmpty();
             long apres = item.distracteurs().stream()
                     .filter(d -> rangDuVerbe >= 0 && rangDansLaPhrase(phrase, d) > rangDuVerbe)
                     .count();
@@ -631,6 +640,21 @@ class PaquetCe1VerbeSujetTest {
                 .hasMessageContaining("VSJ-CE1-2")
                 .hasMessageContaining("au plus un distracteur avant le verbe")
                 .hasMessageContaining("Le soir, sur la table");
+    }
+
+    /** ADR-0013 obligation 3 : le jeu fautif de VSJ-CE1-3, un distracteur egal au verbe cite. */
+    @Test
+    void leJeuFautifCommiteEstRefuseSurUnDistracteurEgalAuVerbeCite() {
+        List<Question> items = itemsFautifs().stream()
+                .filter(item -> item.enonce().contains("Elles rangent"))
+                .toList();
+
+        assertThat(items).as("l'item du jeu fautif au distracteur égal au verbe cité").hasSize(1);
+        assertThatThrownBy(() -> verifierLaPlaceDuSujetParRapportAuVerbe(items))
+                .isInstanceOf(AssertionError.class)
+                .hasMessageContaining("VSJ-CE1-3")
+                .hasMessageContaining("Elles rangent les jouets dans le sac")
+                .hasMessageContaining("rangent");
     }
 
     /** ADR-0013 obligation 3 : le jeu fautif de VSJ-CE1-R1, un seul item avec un distracteur avant le verbe. */
