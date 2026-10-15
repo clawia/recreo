@@ -53,7 +53,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @Import(PartieControllerTest.JeuDeTestConfiguration.class)
 class PartieControllerTest {
 
-    private static final String JEU_ID = "un-jeu";
+    static final String JEU_ID = "un-jeu";
     private static final String JEU_INFINI_ID = "jeu-infini";
     private static final String JEU_REPETE_ID = "jeu-repete";
     private static final String JEU_QUATRE_PROPOSITIONS_ID = "jeu-quatre-propositions";
