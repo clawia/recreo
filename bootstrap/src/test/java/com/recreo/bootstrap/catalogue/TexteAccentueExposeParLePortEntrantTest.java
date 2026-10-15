@@ -460,6 +460,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-ART (s50) : entree neuve, ART-CP-09, deuxieme ligne du referentiel d'arts
             // plastiques CP (DEC-0109, squad/conformite/ARBITRAGE-PREALABLE-s50-art-cp.md).
             "bandit-manchot-decrire-une-oeuvre-cp",
+            // S55-ART-CP-10-PAQUET (s56) : entree neuve, ART-CP-10, premier paquet a propositions en
+            // image (ADR-0104, squad/conformite/CHOIX-OEUVRES-s56-art-cp-10.md, B9).
+            "bandit-manchot-rapprocher-deux-oeuvres-cp",
             // S51-MAT-COMPARER-RANGER (s52) : entree neuve, MAT-CE1-02, moitie textuelle.
             "bandit-manchot-comparer-ranger-ce1",
             // S51-MAT-MULTIPLICATION (s52) : entree neuve, MAT-CE1-06, sens de la multiplication.
@@ -760,6 +763,8 @@ class TexteAccentueExposeParLePortEntrantTest {
             "Même sens ou sens contraire",
             // S50-ART (s50) : titre neuf, sans niveau (ADR-0078).
             "Décrire une œuvre",
+            // S55-ART-CP-10-PAQUET (s56) : titre neuf, sans niveau (ADR-0078), de nadia-prof (B9).
+            "Des œuvres faites de la même façon",
             // S51-MAT-COMPARER-RANGER (s52) : titre neuf, sans niveau (ADR-0078).
             "Comparer, ranger, encadrer",
             // S51-MAT-MULTIPLICATION (s52) : titre neuf, sans niveau (ADR-0078).
@@ -1075,6 +1080,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // S50-ART (s50) : consigne neuve, generique - elle ne nomme aucun sujet, aucune forme
             // ni aucun materiau d'aucun item.
             "Regarde l'œuvre, puis dis ce que tu vois.",
+            // S55-ART-CP-10-PAQUET (s56) : consigne neuve de nadia-prof (B9) ; elle finit par un point,
+            // aucun signe double (ADR-0067).
+            "Regarde l'œuvre, puis trouve celle qui est faite de la même façon.",
             // S51-MAT-COMPARER-RANGER (s52) : consigne neuve, generique - elle ne nomme ni la tache
             // ni aucun nombre d'aucun item.
             "Lis bien les nombres, puis choisis la bonne réponse.",
@@ -1729,6 +1737,9 @@ class TexteAccentueExposeParLePortEntrantTest {
             // passage) : "formes" retiree a son tour, aucun item ne la servant plus apres la
             // reecriture d'oeuvre-quatre-saisons (motif 2).
             "Décrire une œuvre : dire ce qu'on y voit (sujet et matériaux).",
+            // S55-ART-CP-10-PAQUET (s56) : competence neuve, ART-CP-10, libelle du referentiel
+            // (squad/programme/arts-plastiques/competences-cp.md, ligne ART-CP-10).
+            "Reconnaître quelques œuvres déjà rencontrées et les rapprocher les unes des autres.",
             // S51-MAT-COMPARER-RANGER (s52) : competence neuve, MAT-CE1-02. Libelle = la mention
             // d'ORD-CE1-5 (DEC-0111 section 5.4, point 2), accentuee, avec l'espace insecable devant
             // le point-virgule (ADR-0067).
