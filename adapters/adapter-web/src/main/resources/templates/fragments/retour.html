@@ -100,7 +100,10 @@
          PartieController, vide quand le contenu n'en porte pas (ecrite par ChaquePaquetExpliqueSesItemsAVariationTest
          sur les seuls items dont la graphie differe de la reponse attendue). Affichee systematiquement,
          que la reponse soit juste ou fausse - nadia-prof, arbitrage du 2026-08-06, S5-9 : "l'enfant qui
-         a trouve DENT par elimination a autant besoin de l'explication que celui qui s'est trompe". -->
+         a trouve DENT par elimination a autant besoin de l'explication que celui qui s'est trompe".
+         Sauf quand la bonne reponse est une reproduction : le controleur ne la pose alors a aucun
+         verdict (ADR-0104, amendement du 2026-10-14, voie (b) de nadia-prof), elle designe des
+         oeuvres que cet ecran ne montre pas. -->
     <p class="explication" th:if="${explication != null}" th:text="${explication}"></p>
     <p class="fin-de-partie">C'est fini !</p>
 </div>

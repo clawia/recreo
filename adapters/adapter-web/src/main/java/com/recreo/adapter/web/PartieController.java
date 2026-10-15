@@ -844,7 +844,11 @@ public class PartieController {
      *
      * <p>ADR-0024 : l'explication de l'item joue est posee au modele sous "explication", vide quand
      * le contenu n'en porte pas. Le controleur ne decide pas si elle merite d'etre affichee, il ne
-     * lit pas son texte, et il n'en fabrique jamais : il transmet ce que le verdict porte.</p>
+     * lit pas son texte, et il n'en fabrique jamais : il transmet ce que le verdict porte. Une seule
+     * exception, ecrite par ADR-0104 (amendement du 2026-10-14) : quand la bonne reponse est une
+     * reproduction, l'explication et la question rappelee ne sont posees a aucun verdict, juste ou
+     * revele, parce qu'elles designent des oeuvres que cet ecran ne montre pas. Le predicat est
+     * celui de {@code reponseAttendueVisible}, et aucun texte n'est lu.</p>
      */
     private String retourModele(Model modele, String jeuId, BanditManchotSession session) {
         Verdict verdict = session.dernierVerdict().orElseThrow();
@@ -860,9 +864,10 @@ public class PartieController {
         // cet instant la session n'a plus de manche courante - c'est exactement pourquoi la reponse
         // etait orpheline.
         modele.addAttribute("enonceRevele", verdict.enonce());
-        modele.addAttribute("explication", verdict.explication().orElse(null));
+        modele.addAttribute("explication", reponseEnImage ? null : verdict.explication().orElse(null));
         // S33-PAL2-TROU-A, S33-PAL2-TROU-B : voir le commentaire de retourDeDesignation.
-        modele.addAttribute("questionRappeleeVisible", !verdict.juste());
+        // ADR-0104, amendement du 2026-10-14 : ni question rappelee ni explication sur cet ecran.
+        modele.addAttribute("questionRappeleeVisible", !verdict.juste() && !reponseEnImage);
         modele.addAttribute("reponseAttendueVisible", !verdict.juste() && !reponseEnImage);
         return "fragments/retour :: retour";
     }

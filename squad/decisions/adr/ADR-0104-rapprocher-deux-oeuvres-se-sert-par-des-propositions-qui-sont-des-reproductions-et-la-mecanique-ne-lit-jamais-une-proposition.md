@@ -492,3 +492,58 @@ inchanges.
 
 **Ce qui me ferait changer d'avis** : un ecran de fin de partie ou de revelation qui montre a nouveau l'oeuvre attendue (point 5 de la
 decision 4, une image de plus). Alors REV-3 a de nouveau un objet : une reponse montree, a apparier a sa question, et l'exclusion tombe.
+
+## Amendement du 2026-10-14 (s57, `theo-archi`) - l'ecran de fin d'un jeu a reponse en image ne rend aucun texte de l'item
+
+**Ce que le point 5 de la decision 4 laissait passer.** Il retirait la reponse attendue de l'ecran de fin quand la bonne reponse est une
+reproduction, et y laissait la question rappelee (fin revelee) et l'explication (toute fin). Ces deux textes designent des oeuvres que cet
+ecran ne montre pas : reserve `RDO-CP-R2` de `nadia-prof` (`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`). Elle a choisi la voie (b)
+(`D6`) et ecrit le critere en liste fermee (`D7`, `lecture-nadia-palier-1.md` de s57, section 1.6), precise le 2026-10-15
+(`reponse-nadia-forme2-palier-1.md` de s57, sections 4.1 et 4.2) : aucune exemption sous `aria-hidden`, qui retire un element du lecteur
+d'ecran et non de l'oeil, et les attributs qui portent un texte lu ou entendu, pas trois noms. Elle a ecarte l'oeuvre a l'ecran de fin : la
+phrase *"une image de plus a cet ecran"* du point 5 n'est pas retenue.
+
+**Point 5 remplace.** Sur l'ecran de fin d'un jeu dont la bonne reponse de la derniere manche est une reproduction, le controleur ne pose ni la
+question rappelee, ni la reponse attendue, ni l'explication, que la manche soit juste ou revelee. Le predicat est celui qui pose deja
+`reponseAttendueVisible` dans `PartieController.retourModele` (prefixe `oeuvre-` de la bonne reponse, decision 3), et aucun autre ; le
+controleur ne lit le texte d'aucun de ces champs. Le domaine ne change pas : le verdict porte toujours l'enonce (`ADR-0084`, clauses 1 et 2)
+et l'explication (`ADR-0024`, decision 2). L'ecran de manche n'est pas touche.
+
+**Ce que cela restreint ailleurs**, par un renvoi date dans chacun, sans reecrire leur texte : `ADR-0084` clause 3 (il n'y a sur cet ecran ni
+reponse ni question a apparier ; REV-3 ecartait deja ces jeux, amendement du 2026-10-11) ; `ADR-0024` decision 1 (l'explication s'affiche
+sur l'ecran de retour apres chaque reponse, sauf sur celui-ci).
+
+**Regle executable.** Pas une `ArchRule` : l'objet est un ecran rendu, motif d'`ADR-0084` (section "Regle executable"). Les tests du critere
+`D7` (backlog, `S56-RDO-CP-R2`, points 1 a 4), dans
+`bootstrap/src/test/java/com/recreo/bootstrap/rendu/LEcranDeFinDUnJeuAReponseEnImageNeRendAucunTexteDeLItemTest.java`, ecrits dans le meme
+commit que cet amendement. Ils vivent dans `bootstrap` parce qu'ils rendent le fragment `retour` par le controleur et le gabarit reels sur les
+donnees reelles de `cp-rapprocher-deux-oeuvres.yaml` (`ADR-0013`, amendement du 2026-08-06) : `adapter-web` ne voit pas `adapter-content`,
+precedent `LExplicationDUnItemReelAtteintLEcranDeRetourTest`. Population derivee du paquet lu (bonne reponse au prefixe `oeuvre-`), non vide.
+
+1. fin revelee et fin juste d'un jeu a reponse en image dont l'item porte un enonce, un indice et une explication non vides. Sur le fragment
+   `retour`, **sous `aria-hidden` ou non** :
+   - tout noeud de texte non blanc, et toute valeur d'`alt`, `title`, `aria-label`, `aria-description`, `aria-roledescription`,
+     `placeholder` ou `value`, appartient a la liste fermee de `D7` ou est vide ;
+   - tout identifiant cite par `aria-labelledby` ou `aria-describedby` designe un element du fragment, faute de quoi le test est rouge ; le
+     texte de cet element est soumis a la meme liste ;
+   - toute `<img>` porte un attribut `alt`, vide permis ;
+   - aucun `.question-rappelee`, aucun `.explication`.
+2. non-regression sur un jeu a reponse ecrite : question rappelee et reponse attendue apres une fin revelee, explication apres une fin juste.
+
+Cinq morsures, mesurees dans ce commit et citees avec leurs nombres dans le rapport du developpeur, nombre de tests lances superieur a 0 :
+remettre `questionRappeleeVisible` a `!verdict.juste()` rougit le point 1 ; poser l'explication a tout verdict rougit le point 1 ; poser
+l'enonce de l'item dans l'element `aria-hidden` du signal rougit le point 1 ; ajouter au fragment une `<img>` sans `alt` rougit le point 1 ;
+etendre le predicat a tout jeu rougit le point 2.
+
+**Ce que la regle ne voit pas, nomme** : un texte pose par la feuille (`content` d'un pseudo-element) ou par le JavaScript apres le rendu.
+`nadia-prof` en reste la garde (`reponse-nadia-forme2-palier-1.md` de s57, sections 4.2 et 8).
+
+**Mesure prealable** (`theo-archi`, arbre jetable sur `a457d2f3` plus les deux lignes du controleur, reacteur complet, JDK 21.0.10) : 2498
+tests, 0 echec. Aucun garde-fou existant ne voyait la voie (b) : cette regle est neuve. Le predicat etendu a tout jeu rougit deja 3 tests de
+`bootstrap` sur les paquets reels (`AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest` 2, `LExplicationDUnItemReelAtteintLEcranDeRetourTest` 1) ;
+le point 2 le garde aussi.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest` (methode de la section "Regle executable", sur `a457d2f3`).
+
+**Ce qui me ferait changer d'avis** : un ecran de fin qui montre a nouveau l'oeuvre attendue. La question rappelee et l'explication auraient
+alors de nouveau leur objet a l'ecran, et ce point se rouvrirait avec l'exclusion de REV-3.

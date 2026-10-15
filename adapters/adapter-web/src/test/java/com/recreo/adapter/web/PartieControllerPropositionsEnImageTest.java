@@ -41,7 +41,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @Import(PartieControllerPropositionsEnImageTest.JeuxDeTestConfiguration.class)
 class PartieControllerPropositionsEnImageTest {
 
-    private static final String JEU_EN_IMAGE = "jeu-en-image";
+    static final String JEU_EN_IMAGE = "jeu-en-image";
     private static final String JEU_MELANGE = "jeu-melange";
     private static final String JEU_EN_TEXTE = "jeu-en-texte";
 

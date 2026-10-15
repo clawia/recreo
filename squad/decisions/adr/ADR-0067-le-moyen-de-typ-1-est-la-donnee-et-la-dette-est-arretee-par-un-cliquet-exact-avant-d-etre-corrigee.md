@@ -188,3 +188,46 @@ ordinaire devant le `!`. C'est une occurrence de `TYP-1` hors du cliquet, que ce
 **Ce qui me ferait changer d'avis** : un lecteur d'ecran qui annoncerait U+00A0 autrement qu'une espace (non verifie, reserve F11 de
 `nadia-prof`) ; ou un refus de `nadia-prof` d'un changement de coupure hors d'`ART-CP-10`, qui obligerait a poser le moyen dans le
 rendu pour un seul ecran, donc a amender la decision 1 elle-meme.
+
+## Amendement du 2026-10-15 (s57, `theo-archi`) - un texte ecrit par un gabarit porte son caractere la ou il est ecrit
+
+**Ce que la decision 1 laissait lire de travers.** *"Il n'est pose ni par un gabarit, ni par un filtre, ni par une regle de style"*
+vise un rendu qui ajoute le caractere a un texte ecrit ailleurs : le garde-fou qui juge la source ne verrait pas ce que l'enfant
+recoit. Lu a la lettre, il interdit aussi d'ecrire U+00A0 dans un texte que le gabarit ecrit lui-meme. Le cas existe : la phrase de
+`M4` (`fragments/manche.html`, `.reponse-revelee`), que `nadia-prof` veut sans coupure dans une de ses deux phrases
+(`reponse-nadia-forme2-palier-1.md` de s57, section 2.3). Ce texte n'a pas d'autre source que le gabarit : `ADR-0083` y loge les mots
+que la mecanique adresse a l'enfant, et `ADR-0039` l'inventorie comme texte lu par l'enfant.
+
+**Decision 1, precisee par son objet.** Le caractere vit dans le texte la ou ce texte est ecrit : paquet, catalogue, constante de
+l'adaptateur web (amendement du 2026-10-14) ou noeud de texte d'un gabarit. Reste interdit : qu'un gabarit, un filtre ou une regle de
+style ajoute le caractere, ou son effet, a un texte qu'il recoit d'ailleurs (`th:text` transforme, `<span>` en `white-space: nowrap`,
+`content` d'un pseudo-element). Critere : le gabarit ecrit-il les caracteres de ce texte ? Si oui, le caractere s'y ecrit.
+
+**Notation.** Dans un gabarit, U+00A0 s'ecrit `&nbsp;`, jamais le caractere tape, qu'un relecteur ne distingue pas d'une espace. Ce
+n'est pas la notation que refuse `ADR-0060` clause 1, qui juge le texte servi et non les octets du fichier : le parseur la resout.
+
+**La phrase de `M4`.** U+00A0 entre les mots de chaque phrase, une seule espace ordinaire entre les deux phrases. Aucun mot ni signe ne
+change.
+
+**Regle executable.** Pas une `ArchRule` : l'objet est une chaine servie. Un test d'`adapters/adapter-web`, ecrit dans le meme commit
+que cet amendement. Il rend par le controleur et le gabarit reels la revelation d'une manche a propositions en image et lit
+`wholeText()` de `.reponse-revelee`, jamais `text()`, qui normalise U+00A0 en espace ordinaire (jsoup 1.23.1 : `TextNode.text()` et
+`Element.text()`). Il exige : U+00A0 lue comme une espace, le texte vaut la phrase de `M4` ; toute espace ordinaire suit
+immediatement `.`, `!` ou `?` ; la premiere phrase est suivie d'une espace ordinaire. Deux morsures, citees dans le rapport du
+developpeur avec le nom du test et le nombre de tests lances : une espace ordinaire remise entre `va` et `avec` ; `&nbsp;` mis entre
+les deux phrases.
+
+**Mesure prealable** (`theo-archi`, arbre jetable sur `05598be4`, la phrase ecrite ainsi, reacteur complet, JDK 21.0.10) : 2580
+tests, 0 echec, et `wholeText()` du fragment rendu porte U+00A0. **Ce vert ne prouve pas la propriete** : les trois tests qui lisent
+cette phrase (`TexteAccentueDesGabaritsTest`, `PartieControllerPropositionsEnImageTest`,
+`LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`) passent par `text()`. La regle ci-dessus est neuve.
+
+**Ce qui n'est pas couvert, nomme.** La ligne rendue : si la premiere phrase tient dans sa colonne a 744 sans deborder, `ines-design`
+le mesure et `nadia-prof` le juge. Neuf autres textes de gabarit portent une espace ordinaire devant un signe double (*"C'est fini !"*,
+*"La bonne réponse :"* et sept autres, avis de `theo-archi` sur le poste 8 de s57, annexe D.2) : `TYP-1` hors du cliquet, non
+corrige par ce commit.
+
+**Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest`.
+
+**Ce qui me ferait changer d'avis** : un texte de gabarit qu'une autre source devrait aussi porter. Il aurait alors deux sources, il
+faudrait en garder une, et ce ne serait plus le gabarit.
