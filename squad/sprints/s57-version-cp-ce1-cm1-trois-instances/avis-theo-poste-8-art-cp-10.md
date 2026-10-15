@@ -237,6 +237,9 @@ Aucun n'est le resultat de la CI distante.
 
 Le developpeur ne change rien de ce texte. Quatre blocs, separes par une ligne `---` qui n'est pas a verser.
 
+**A.1 et A.4 re-figes le 2026-10-15 (annexe C)**, sous `R7` et `R8` de `nadia-prof`. A.2 et A.3 sont inchanges. Le texte du 2026-10-14 reste dans l'historique de ce fichier ;
+seul le texte ci-dessous est a verser.
+
 ### A.1 A ajouter a la fin d'`ADR-0104`
 
 ```markdown
@@ -245,9 +248,10 @@ Le developpeur ne change rien de ce texte. Quatre blocs, separes par une ligne `
 **Ce que le point 5 de la decision 4 laissait passer.** Il retirait la reponse attendue de l'ecran de fin quand la bonne reponse est une
 reproduction, et y laissait la question rappelee (fin revelee) et l'explication (toute fin). Ces deux textes designent des oeuvres que cet
 ecran ne montre pas : reserve `RDO-CP-R2` de `nadia-prof` (`FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`). Elle a choisi la voie (b)
-(`D6`) et ecrit le critere en liste fermee (`D7`, `lecture-nadia-palier-1.md` de s57 ; attributs `alt`, `title` et `aria-label` compris,
-`rejeu-nadia-palier-1.md` section 5). Elle a ecarte l'oeuvre a l'ecran de fin : la phrase *"une image de plus a cet ecran"* du point 5 n'est
-pas retenue.
+(`D6`) et ecrit le critere en liste fermee (`D7`, `lecture-nadia-palier-1.md` de s57, section 1.6), precise le 2026-10-15
+(`reponse-nadia-forme2-palier-1.md` de s57, sections 4.1 et 4.2) : aucune exemption sous `aria-hidden`, qui retire un element du lecteur
+d'ecran et non de l'oeil, et les attributs qui portent un texte lu ou entendu, pas trois noms. Elle a ecarte l'oeuvre a l'ecran de fin : la
+phrase *"une image de plus a cet ecran"* du point 5 n'est pas retenue.
 
 **Point 5 remplace.** Sur l'ecran de fin d'un jeu dont la bonne reponse de la derniere manche est une reproduction, le controleur ne pose ni la
 question rappelee, ni la reponse attendue, ni l'explication, que la manche soit juste ou revelee. Le predicat est celui qui pose deja
@@ -261,22 +265,33 @@ sur l'ecran de retour apres chaque reponse, sauf sur celui-ci).
 
 **Regle executable.** Pas une `ArchRule` : l'objet est un ecran rendu, motif d'`ADR-0084` (section "Regle executable"). Les tests du critere
 `D7` (backlog, `S56-RDO-CP-R2`, points 1 a 4), dans
-`adapters/adapter-web/src/test/java/com/recreo/adapter/web/PartieControllerPropositionsEnImageTest.java`, ecrits dans le meme commit que cet
-amendement :
+`bootstrap/src/test/java/com/recreo/bootstrap/rendu/LEcranDeFinDUnJeuAReponseEnImageNeRendAucunTexteDeLItemTest.java`, ecrits dans le meme
+commit que cet amendement. Ils vivent dans `bootstrap` parce qu'ils rendent le fragment `retour` par le controleur et le gabarit reels sur les
+donnees reelles de `cp-rapprocher-deux-oeuvres.yaml` (`ADR-0013`, amendement du 2026-08-06) : `adapter-web` ne voit pas `adapter-content`,
+precedent `LExplicationDUnItemReelAtteintLEcranDeRetourTest`. Population derivee du paquet lu (bonne reponse au prefixe `oeuvre-`), non vide.
 
-1. fin revelee et fin juste d'un jeu a reponse en image dont l'item porte une explication : tout noeud de texte et toute valeur d'`alt`,
-   `title` ou `aria-label` du fragment `retour`, hors sous-arbre `aria-hidden="true"`, appartient a la liste de `D7` ou est vide ; aucun
-   `.question-rappelee`, aucun `.explication` ;
+1. fin revelee et fin juste d'un jeu a reponse en image dont l'item porte un enonce, un indice et une explication non vides. Sur le fragment
+   `retour`, **sous `aria-hidden` ou non** :
+   - tout noeud de texte non blanc, et toute valeur d'`alt`, `title`, `aria-label`, `aria-description`, `aria-roledescription`,
+     `placeholder` ou `value`, appartient a la liste fermee de `D7` ou est vide ;
+   - tout identifiant cite par `aria-labelledby` ou `aria-describedby` designe un element du fragment, faute de quoi le test est rouge ; le
+     texte de cet element est soumis a la meme liste ;
+   - toute `<img>` porte un attribut `alt`, vide permis ;
+   - aucun `.question-rappelee`, aucun `.explication`.
 2. non-regression sur un jeu a reponse ecrite : question rappelee et reponse attendue apres une fin revelee, explication apres une fin juste.
 
-Trois morsures, mesurees dans ce commit et citees avec leurs nombres dans le rapport du developpeur, nombre de tests lances superieur a 0 :
-remettre `questionRappeleeVisible` a `!verdict.juste()` rougit le point 1 ; poser l'explication a tout verdict rougit le point 1 ; etendre le
-predicat a tout jeu rougit le point 2.
+Cinq morsures, mesurees dans ce commit et citees avec leurs nombres dans le rapport du developpeur, nombre de tests lances superieur a 0 :
+remettre `questionRappeleeVisible` a `!verdict.juste()` rougit le point 1 ; poser l'explication a tout verdict rougit le point 1 ; poser
+l'enonce de l'item dans l'element `aria-hidden` du signal rougit le point 1 ; ajouter au fragment une `<img>` sans `alt` rougit le point 1 ;
+etendre le predicat a tout jeu rougit le point 2.
+
+**Ce que la regle ne voit pas, nomme** : un texte pose par la feuille (`content` d'un pseudo-element) ou par le JavaScript apres le rendu.
+`nadia-prof` en reste la garde (`reponse-nadia-forme2-palier-1.md` de s57, sections 4.2 et 8).
 
 **Mesure prealable** (`theo-archi`, arbre jetable sur `a457d2f3` plus les deux lignes du controleur, reacteur complet, JDK 21.0.10) : 2498
 tests, 0 echec. Aucun garde-fou existant ne voyait la voie (b) : cette regle est neuve. Le predicat etendu a tout jeu rougit deja 3 tests de
 `bootstrap` sur les paquets reels (`AucuneReponseDeFinDePartieNEstOrphelineDeSaQuestionTest` 2, `LExplicationDUnItemReelAtteintLEcranDeRetourTest` 1) ;
-le point 2 le garde aussi sur le jeu de preuve.
+le point 2 le garde aussi.
 
 **Compte ArchUnit inchange** : 41 `static final ArchRule`, 38 `@ArchTest` (methode de la section "Regle executable", sur `a457d2f3`).
 
@@ -315,7 +330,7 @@ executable : celle de l'amendement d'`ADR-0104`.
 ### A.4 Ligne a ajouter a la table "Amendements" d'`ADR-index.md`, apres la derniere
 
 ```markdown
-| ADR-0104 | 2026-10-14 (s57) | **son point 5 de la decision 4 laissait la question rappelee et l'explication sur l'ecran de fin d'un jeu a reponse en image**, ou elles designent des oeuvres absentes (`RDO-CP-R2`). Voie (b) de `nadia-prof` : ni question, ni reponse, ni explication sur cet ecran, sur le predicat existant. Renvois dans `ADR-0084` (clause 3) et `ADR-0024` (decision 1). Regle : les tests de `D7` dans `PartieControllerPropositionsEnImageTest`, trois morsures. Aucun garde-fou existant ne voyait la voie (b) (2498 tests verts avec elle). Compte ArchUnit inchange (41 declarations, 38 `@ArchTest`) |
+| ADR-0104 | 2026-10-14 (s57) | **son point 5 de la decision 4 laissait la question rappelee et l'explication sur l'ecran de fin d'un jeu a reponse en image**, ou elles designent des oeuvres absentes (`RDO-CP-R2`). Voie (b) de `nadia-prof` : ni question, ni reponse, ni explication sur cet ecran, sur le predicat existant. Renvois dans `ADR-0084` (clause 3) et `ADR-0024` (decision 1). Regle : les tests de `D7` (aucune exemption `aria-hidden`, attributs de `reponse-nadia-forme2-palier-1.md` 4.2, `alt` sur toute `<img>`) dans `LEcranDeFinDUnJeuAReponseEnImageNeRendAucunTexteDeLItemTest` de `bootstrap`, sur le paquet reel, cinq morsures. Aucun garde-fou existant ne voyait la voie (b) (2498 tests verts avec elle). Compte ArchUnit inchange (41 declarations, 38 `@ArchTest`) |
 ```
 
 ## Annexe B. 2026-10-14, 22:48 (UTC+02:00) - revision 2 d'`ines-design`, coupure du verdict, `Q-R3`
@@ -384,7 +399,7 @@ tests, 0 echec** (120, 31, 486, 1534, 371, 6), JDK **21.0.10** (`java.version` d
 2. **Lecture** : la valeur du modele `message`, ou `wholeText()` de `.verdict`. **Jamais `text()`.**
 3. **Propriete** : dans chaque verdict, aucune espace ordinaire devant `?`, `!`, `;` ou `:`, et toute espace ordinaire suit immediatement une fin de phrase (`.`, `!`, `?`).
 4. **Morsures** : une espace ordinaire remise entre deux mots de `MESSAGE_ECHEC`, puis devant le `!` de `MESSAGE_BRAVO` : chacune rougit, nombre de tests lances superieur a 0.
-5. **Ecriture** : ` ` en sequence d'echappement dans la source Java, jamais le caractere tape, qu'aucun relecteur ne distingue d'une espace.
+5. **Ecriture** : `\u00A0` en sequence d'echappement dans la source Java, jamais le caractere tape, qu'aucun relecteur ne distingue d'une espace.
 
 ### B.5 Conditions pour `lea-dev`, mises a jour
 
@@ -495,5 +510,91 @@ Lances sur ce worktree, ce fichier indexe, avant le commit :
 - **`outils`** : 11 juges lances, 11 sortis 0.
 - **`prefixes`** : les trois tests sortent 0 ; le sujet du commit passe dans `verifier-prefixes.sh`. Le controle du proprietaire du garde-fou de l'accent n'est pas lance : aucun de
   ses chemins n'est touche.
+
+Aucun n'est le resultat de la CI distante.
+
+## Annexe C. 2026-10-15, 11:19 (UTC+02:00) - A.1 re-fige sous `R7` et `R8`, porte `P-9`
+
+Ajoutee sur la branche `s57-theo-a1`, base `13affd6f` (tip de `round-two`). Lu : `reponse-nadia-forme2-palier-1.md` (`R5`, `R7`, `R8`, sections 2.4, 4 et 8),
+`engagement-poste-8.md` (`P-8`, `P-9`, section 3), `cloture-palier-1.md`, `releve-yanis-palier-1.md` section 4, `lecture-nadia-palier-1.md` section 1.6. Les annexes A et B
+au-dessus ne sont reecrites qu'en A.1 et A.4, et l'en-tete de l'annexe A le dit.
+
+### C.1 Decisions
+
+| Code | Decision | Section |
+|---|---|---|
+| `TC1` | A.1 et A.4 re-figes : aucune exemption `aria-hidden`, les attributs de `R8`, la cible d'`aria-labelledby` et d'`aria-describedby` dans le fragment, un `alt` sur toute `<img>`. **`P-9` levee** | C.2 |
+| `TC2` | Le test de `D7` vit dans `bootstrap`, pas dans `adapter-web` : le texte du 2026-10-14 le placait dans un module qui ne peut pas lire le paquet reel | C.2 |
+| `TC3` | Les amendements d'`ADR-0104`, `ADR-0084`, `ADR-0024` (annexe A) et d'`ADR-0067` (B.7) **ne sont pas verses par ce commit** : leur regle n'existe pas encore | C.3 |
+| `TC4` | B.7 inchange : `Q-T4` acceptee (`R5`) leve la condition de `TB2` sans changer un mot du texte fige | C.3 |
+| `TC5` | Aucune regle ArchUnit : 41 `static final ArchRule`, 38 `@ArchTest` sur `13affd6f`, compte de B.4 et de 3.4 confirme | C.4 |
+
+### C.2 Ce qui change dans A.1, et pourquoi
+
+1. **`aria-hidden`.** Le point 1 disait *"hors sous-arbre `aria-hidden="true"`"*. `nadia-prof` retire l'exemption (`R7`) : un noeud de texte se lit, un `title` s'affiche au
+   survol, un `alt` s'affiche quand l'image ne se charge pas. Le texte verse tel quel aurait autorise ce que le test de `D7` refuse. Il dit maintenant *"sous `aria-hidden` ou
+   non"*, et une morsure le prouve (l'enonce pose dans l'icone du signal).
+2. **Les attributs.** Trois noms (`alt`, `title`, `aria-label`) deviennent les sept de `R8`, plus la cible d'`aria-labelledby` et d'`aria-describedby`, qui doit etre dans le
+   fragment. Un perimetre enumere par noms d'attributs echoue par omission ; celui-ci est la liste que `nadia-prof` a ecrite pour sa propriete (*"ce que l'ecran donne a lire ou
+   a entendre"*), et la limite qu'elle garde elle-meme (feuille, JavaScript) est nommee dans l'amendement.
+3. **`alt` sur toute `<img>`.** Obligation neuve de `R8` ; une morsure la prouve (une `<img>` sans `alt` ajoutee au fragment). `retour.html` n'a aujourd'hui aucune `<img>` ni
+   aucun `alt` (`grep -n "alt=\|<img"` sur le gabarit : aucune ligne) : pas de faux rouge, et sans morsure la regle ne serait verifiee sur rien.
+4. **Le module du test** (`TC2`). A.1 nommait `adapters/adapter-web/.../PartieControllerPropositionsEnImageTest.java`. `engagement-poste-8.md` (section 3, commit 3) et
+   `releve-yanis-palier-1.md` (4.2) exigent les donnees reelles de `cp-rapprocher-deux-oeuvres.yaml` : sa fixture porte `Optional.empty()` en indice et en explication, et une
+   mutation qui remet l'explication y resterait verte. Or `adapters/adapter-web/pom.xml` ne depend que d'`application` et de `domain` (lu : aucune dependance a
+   `adapter-content`), et le paquet est dans les ressources principales d'`adapter-content`. Seul `bootstrap` voit les deux ; precedent
+   `LExplicationDUnItemReelAtteintLEcranDeRetourTest`, dont la Javadoc ecrit le meme motif. **Le nom du fichier est fixe par moi** pour que l'`ADR` nomme un chemin ; la forme
+   du test reste a `yanis-qa` et au developpeur. S'ils le nomment autrement, le texte se re-fige avant le commit, il ne se corrige pas au versement.
+5. **Ce qui ne change pas** : la liste fermee de `D7`, le predicat (`PREFIXE_DE_REPRODUCTION`), le point 2, les trois morsures du 2026-10-14 (cinq avec les deux de 1 et 3),
+   la mesure prealable, le compte ArchUnit, la clause *"ce qui me ferait changer d'avis"*. A.2 et A.3 renvoient a la regle d'`ADR-0104` sans la decrire : inchanges.
+
+**Interaction avec la forme C, verifiee** : les textes de l'ecran de fin sont des litteraux de `retour.html` (lignes 44, 46, 53, 62, 105), pas les constantes de
+`PartieController` que la forme C change. Le commit 2 de B1 ne deplace donc pas la liste de `D7`.
+
+### C.3 Pourquoi ce commit ne verse pas les amendements dans les `ADR`
+
+La demande de cette tache dit *"verser les amendements tels que l'avis et la cloture les prevoient"*. Ce qu'ils prevoient, lu :
+
+- **Annexe A** : versee par le developpeur *"dans le commit qui porte les deux lignes du controleur et le test de `D7`"* (section 3.2 ; `engagement-poste-8.md`, commit 3).
+- **B.7** : verse *"dans le commit de la forme C"*, avec le garde-fou de B.4 (B.5 ; `engagement-poste-8.md`, commit 2).
+- **`cloture-palier-1.md`**, "Decisions prises" : *"l'amendement entre dans le commit du code de `lea-dev`"*.
+
+Ce n'est pas une forme : chacun de ces textes a une section "Regle executable" qui nomme un test que l'arbre ne porte pas a `13affd6f`. Mesure : `git grep -ln "wholeText"
+-- '*.java'` ne rend aucun test de `adapter-web` ni aucun test des verdicts ; les constantes de `PartieController` (lignes 72 et 73) portent une espace ordinaire devant `!` ;
+aucun fichier de test ne porte le nom fixe en C.2. Verser maintenant, ce serait ecrire dans quatre `ADR` une decision que le code dement et une regle qui n'existe pas :
+la premiere dette de la version precedente, sous la forme d'un amendement. La section 3.2 refusait deja ce geste ; il n'y a aucun fait neuf qui le change.
+
+**Ce qui reste a faire, par qui** : `lea-dev` verse B.7 au commit 2 de B1 (qui attend `P-8`, story de `camille-po`, absente du backlog a `13affd6f` : `grep -n "MESSAGE_ECHEC\|MESSAGE_BRAVO\|Q-T4"
+docs/backlog/backlog.md` ne rend aucune ligne) et l'annexe A re-figee au commit 3. Je verifie a la lecture du diff, avant la fusion de B1, que le texte verse est celui-ci, par
+`diff` a la ligne pres.
+
+**Aucun amendement n'est absent de l'avis** : les cinq blocs (A.1 a A.4, B.7 et sa ligne d'index) sont tous ecrits. Je n'en ai invente aucun.
+
+**Hors de cette tache, nomme** : la coupure de la phrase de `M4` (`R4`, `reponse-nadia-forme2-palier-1.md` 2.3) m'est routee. C'est un texte du gabarit
+(`fragments/manche.html`), et la decision 1 d'`ADR-0067` dit que le moyen n'est pas pose *"par un gabarit"* : il faut dire si un litteral de gabarit est une donnee servie ou
+un rendu avant d'y poser U+00A0. Je ne le tranche pas ici ; B.7 ne couvre que les constantes du verdict.
+
+**Corrige dans B.4, point 5, trouve en relisant ce fichier** : la ligne qui demande U+00A0 *"en sequence d'echappement, jamais le caractere tape"* portait entre ses
+accents graves le caractere tape lui-meme, introduit par `33f975c2` (`git log -S` sur U+00A0). Un developpeur y lisait une espace. Elle porte maintenant ` `. Seul
+caractere hors ASCII de l'annexe B ; le reste du fichier n'en porte qu'au titre du jeu, section 5, qui est un texte servi.
+
+### C.4 Regle ArchUnit
+
+**Aucune.** Le re-figement change un test de vue, pas une dependance entre types. Compte sur `13affd6f`, methode de 3.4 (fichiers `*.java` suivis par `git ls-files`, qui
+exclut les worktrees d'agents ; motifs `^\s*(public |private |protected )?static final ArchRule ` et `^\s*@ArchTest\s*$`) : **41** et **38**, dans 16 fichiers. Identique a 3.4
+(`a457d2f3`) et a B.4 (`2018b7d0`).
+
+### C.5 Jobs de `ci.yml` lances pour ce commit
+
+Sur ce worktree, ce fichier indexe, avant le commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl` : `BUILD SUCCESS`, **2580 tests, 0 echec, 0 erreur, 0 ignore** (120, 31, 486, 1566,
+  371 et 6 d'integration, lignes `Tests run` de la sortie Maven), JDK **21.0.10** (`java.version` des 59 rapports Surefire de `bootstrap`, une seule valeur). L'ecart a
+  2548 (B.9, `cloture-palier-1.md`) est dans `adapter-content`, +32 : le poste 7 est fusionne a `13affd6f`. Le build a lu ce fichier avant l'ajout de cette section, qui ne
+  contient aucun tableau. Etape *"Package du fat jar"* non lancee.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou) passe a `verifier-chemins.sh` : sort 0.
+- **`prefixes`** : `verifier-prefixes-test.sh`, `commit-atteignable-test.sh` et `verifier-garde-fou-accent-test.sh` sortent 0 ; le sujet de ce commit passe dans
+  `verifier-prefixes.sh` : sort 0. Le controle du proprietaire du garde-fou de l'accent n'est pas lance : aucun de ses chemins n'est touche.
+- **`outils`** : non lance ; aucun outil n'est modifie.
 
 Aucun n'est le resultat de la CI distante.
