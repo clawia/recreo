@@ -45,3 +45,8 @@ items:
     bonneReponse: "Hugo"
     distracteurs: ["la porte", "Sami"]
     indice: "Demande-toi : qui fait l'action de ce verbe ?"
+  # VSJ-CE1-3 : "rangent", un distracteur, est le verbe cite ; "le sac" est bien apres le verbe
+  - enonce: "« Elles rangent les jouets dans le sac. » Quel est le sujet du verbe « rangent » ?"
+    bonneReponse: "elles"
+    distracteurs: ["rangent", "le sac"]
+    indice: "Demande-toi : qui fait l'action de ce verbe ?"
