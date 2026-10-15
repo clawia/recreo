@@ -1455,3 +1455,43 @@ Commande : celle de la "Methode du compte" de la matrice (`awk -F'|'`, lignes de
 - **`DEC-0120` reste `Acceptee`.** Ne fait pas : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, fiche, `planning.md`, `cloture-palier-1.md`. Ne dit pas que la CI distante est verte.
 - **Ecart de la fiche de `FRA-CE1-15` a nommer** : elle autorise la fermeture apres la fusion de `72931c94`. La fusion de `sofia-sm` (`d67204de`) porte le sommet `3459ddb8`, qui n'ajoute que le rapport de la developpeuse (`rejeu-nadia-palier-1.md`, amendement de 20:40) ; `cloture-palier-1.md` section 4 dit que le contenu fusionne est celui qui a ete joue. Verifie : `git diff 72931c94 d67204de -- <paquet>` rend 0 ligne, et `git diff 1f6642ab c935d764 -- <paquet>` rend 0 ligne pour `ce1-phrases-types.yaml`.
 - **Statuts de stories** : aucun ne change. **Matrice : 144 / 200.**
+
+---
+
+## Amendement du 2026-10-15, quatorzieme (`camille-po`, matrice apres la cloture du palier 1)
+
+Annotation datee, 18:06 (UTC+02:00). **Rien au-dessus n'est reecrit.** **Le statut ne change pas : `Acceptee` (A.77).** Sources : `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/cloture-palier-1.md` (section 0 `R1`, section 2, section 9 `P11`), `rejeu-nadia-b2-palier-1.md`, `FICHE-bandit-manchot-texte-narratif-ce1.md` et `FICHE-bandit-manchot-rapprocher-deux-oeuvres-cp.md`.
+
+### A.91 Ce que cet amendement consigne : deux fermetures
+
+La regle est celle d'A.89 : ce qui decide de la fermeture est la phrase de la fiche, et la condition de fusion est lue par `git`.
+
+| Ligne | Verdict et phrase de la fiche | Condition de fusion | Mention de couverture partielle |
+|---|---|---|---|
+| `FRA-CE1-04` | **VALIDE SOUS RESERVE**, 2026-10-15, instance A ; fiche, ligne 26 : *"`camille-po` peut passer `FRA-CE1-04` a `couvert-valide`, sans mention de couverture partielle, apres la fusion de `4dd6f298`"* ; reserve neuve `RCT-CE1-R1`, non bloquante | `git merge-base --is-ancestor 4dd6f298 HEAD` et `13affd6f` : sort 0 ; `git diff 4dd6f298 HEAD -- .../ce1-texte-narratif.yaml` : 0 ligne ; `grep -c "paquet: ce1-texte-narratif$"` du catalogue : 1 | aucune (fiche) |
+| `ART-CP-10` | **VALIDE SOUS RESERVE**, rejeu du 2026-10-15, instance B, sur `ac9ae080` ; refus du 2026-10-11 leve, `RDO-CP-R1` et `RDO-CP-R2` levees ; routage de la fiche, section 9 : *"`ART-CP-10` a `couvert-valide` apres la fusion de B2"* ; reserve neuve `RDO-CP-R3`, non bloquante | `git merge-base --is-ancestor ac9ae080 HEAD` et `e7497db7` : sort 0 ; `git diff ac9ae080 HEAD -- adapters domain application bootstrap` : 0 ligne ; catalogue a 150 entrees | la fiche n'en ecrit aucune (`grep -c "couverture partielle"` : 0) ; **la fiche ne porte pas la formule *"sans mention de couverture partielle"* de `FRA-CE1-04`** : j'ai lu son silence comme une absence de mention, pas comme une mention exigee a deviner. `nadia-prof` la corrige si elle l'entend autrement |
+
+| | Avant (`65bc1a9b`, `round-two` a `6dbb855d`) | Apres |
+|---|---|---|
+| `couvert-valide` | 144 | **146** |
+| `en cours` | 4 | 4 |
+| `non couvert` | 52 | **50** |
+| `non couvrable en l'etat` | 77 | 77 |
+| Total | 277 | 277 |
+| Denominateur atteignable | 200 | **200** |
+| Taux | 144 / 200 = 72,00 % | **146 / 200 = 73,00 %** |
+
+Commande : celle de la "Methode du compte" de la matrice (`awk -F'|'`, lignes de donnees, aucune mesure partielle), lancee avant et apres l'edition sur le meme fichier. Compteur de version (A.32) : 146 + 4 = 150 / 200 = 75,00 % par la formule, son critere 2 (CI verte sur l'arbre de la version) restant a lire sur cet arbre. Par niveau : CP 59 / 52, CE1 62 / 28, CM1 79 / 66. Le maximum de la version, fige a 200, est inchange.
+
+### A.92 Reports, tels qu'A.67 et A.83 les comptent
+
+- **Poste 7 (`FRA-CE1-04`)** : premier report (s57, palier 1, 2026-10-14), audite dans le palier, **solde** par la fermeture. Aucun second report.
+- **Poste 8 (`ART-CP-10`)** : A.83 gardait *"huit evenements sans fermeture"* tant qu'un rejeu ne l'avait pas fermee. **Le neuvieme evenement est la fermeture** : rejeu du 2026-10-15, `couvert-valide`. Le compte des reports de la ligne s'arrete ici ; il n'y a pas de troisieme report a interdire.
+- **Poste 9 (B2)** : pas un report (A.67). Fusionne `e7497db7`.
+
+### A.93 Ce que cet amendement ne fait pas
+
+- **`DEC-0120` reste `Acceptee`.** Ne fait pas : ne prononce aucun Done, ne juge aucun contenu, ne touche ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni catalogue, paquet, fiche, `planning.md`, `cloture-palier-1.md`. Ne dit pas que la CI distante est verte.
+- **Aucun changement de code decide ici.** Les deux reserves `RCT-CE1-R1` et `RDO-CP-R3` ont chacune une story non engagee au backlog (annotation du 2026-10-15, 18:06) ; **jusqu'a l'engagement de `sofia-sm` au planning d'un palier avec un developpeur, rien n'est applique et le regime est celui de `DEC-0053`** (le pli reste une reserve non bloquante).
+- **Composition du palier 2** : non faite, elle suit l'arbitrage prealable de `nadia-prof` (`cloture-palier-1.md` section 9, condition (b)).
+- **Statuts de stories** : aucun ne change. **Matrice : 146 / 200.**
