@@ -63,7 +63,7 @@ s'ouvrent pareil : seul le signe final les separe, c'est la ligne. **Distracteur
 noms de type ; sur les items de reconnaissance, les deux fautes de la ligne. Aucun absurde.
 
 **Observation de ma lecture, jouee** : sur les items dont la phrase commence par un prenom, le distracteur (a)
-(*"inès range ses crayons."*) manque deux majuscules. A l'ecran, la faute montree reste une faute de majuscule et la reponse
+(*"inès range ses crayons."*) manque deux majuscules *(compte inexact, annotation du 2026-10-15 en fin de fiche)*. A l'ecran, la faute montree reste une faute de majuscule et la reponse
 reste unique. **Sans reserve.**
 
 #### 4. Le titre *"Les types de phrases"*, pour l'enfant
@@ -120,7 +120,8 @@ dans le dernier (`ADR-0100`) ; prefixe `TPH-CE1` deja alloue (`TPH-CE1-1` a `-3`
 
 ### Amendement du 2026-10-14 (`nadia-prof`, s57, palier 1, instance A') : reponse de l'utilisatrice a `Q-N4`
 
-Reponse de l'utilisatrice, le 2026-10-14, forme 2 (relayee par l'agent principal, non lue de sa main) : **`Q-N4` = non.**
+Reponse de l'utilisatrice, le 2026-10-14, forme 2 (relayee par l'agent principal, non lue de sa main) : **`Q-N4` = non.** *(Ses mots ne sont pas cites : forme 2
+incomplete, annotation du 2026-10-15 en fin de fiche.)*
 Le pli a 744 x 551 ne redevient pas bloquant pour un jeu neuf. **Le verdict ci-dessus ne change pas** : `FRA-CE1-10` reste
 **VALIDE SOUS RESERVE**, `TPH-CE1-R1` reste une reserve non bloquante, avec son critere de levee inchange. **Ma
 recommandation** (*"oui pour les lots suivants"*, `rejeu-nadia-palier-1.md` section 8) **n'est pas retenue par
@@ -133,3 +134,18 @@ Dans le tableau de `TPH-CE1-R1`, la ligne des trois items de reconnaissance a ph
 bloc dont le texte d'une ligne reste lisible au-dessus du pli et dont le cadre est coupe a 17 px du bas (meme geometrie,
 capture faite sur le paquet de `FRA-CE1-15`, fiche `FICHE-bandit-manchot-accord-groupe-nominal-ce1.md`, section 5). Les 21
 autres items gardent leur constat : indice entierement sous le pli. La reserve et son critere de levee ne changent pas.
+
+### Annotation du 2026-10-15 (`nadia-prof`, s57, palier 1) : `N4` et `D3` du `relecteur-pedagogique`
+
+Source : `releve-relecteur-palier-1.md`, sections 3.1 et 3.2. Rien au-dessus n'est efface.
+
+**`N4`, correction de mon propre compte.** La section 3 dit que le distracteur (a) *"inès range ses crayons."* *"manque deux
+majuscules"* ; `lecture-nadia-palier-1.md` (section 2.2) dit *"deux majuscules, celle de la phrase et celle du nom propre"*.
+**Il ne manque qu'une majuscule** : celle de la premiere lettre, que deux regles demandent ensemble, le debut de la phrase et
+le nom propre. **Le constat ne change pas** : la faute montree reste une faute de majuscule, la reponse reste unique, sans
+reserve. Le verdict ne change pas.
+
+**`D3`, forme 2 incomplete.** L'amendement *"`Q-N4` = non"* est ma notation, pas les mots de l'utilisatrice que `DEC-0062`
+3.1 exige entre guillemets. Je ne peux pas les citer : aucun fichier du depot ne les porte. Ils sont demandes par `sofia-sm`
+a l'agent lanceur et s'ajouteront ici par une annotation datee. **Le verdict ne depend pas de ce point** : `TPH-CE1-R1` est
+non bloquante par le precedent de `RDO-CP-R1` (`rejeu-nadia-palier-1.md`, section 3), ecrit avant la question.

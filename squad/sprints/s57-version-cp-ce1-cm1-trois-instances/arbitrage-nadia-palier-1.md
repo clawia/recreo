@@ -8,7 +8,7 @@
   `composition-palier-1.md`, `Q-P1` et `Q-P2`.
 - **Ce qu'il n'est pas** : `planning.md`. s57 n'est pas ouvert. Aucun Done, aucun verdict de jeu.
 - **Audit degrade, declare** : aucun lot n'est branche, je n'ai rien joue. J'ai lu les cinq paquets candidats de Y et
-  le paquet de X que je retiens (section 0) ; une lecture de fichier n'est pas un audit.
+  le paquet de X que je retiens (section 0) *(inexact, annotation du 2026-10-15 en fin de fichier)* ; une lecture de fichier n'est pas un audit.
 
 ## Resume
 
@@ -45,7 +45,8 @@ Non lance : aucun jar, aucun jeu, aucun test Maven de contenu.
 
 ## 1. Ce que le palier 1 doit tenir, rappele de ma main
 
-Ma decision du 2026-10-13 (11.3), confirmee par l'utilisatrice (`DEC-0120` A.53, *"oui"*, forme 2, relaye) : borne de
+Ma decision du 2026-10-13 (11.3), confirmee par l'utilisatrice (`DEC-0120` A.53, *"oui"*, forme 2, relaye ; date de la reponse : annotation du
+2026-10-15 en fin de fichier) : borne de
 **8,0** pour le palier, somme des budgets des instances (`PAR-9`) ; **5,0** et **trois lots** au plus par instance
 (`PAR-8`) ; marge de rejeu de **0,5**, nommee a l'ouverture, allouee a aucun lot ; arbitrage prealable de **0,5** par
 instance avant le premier lot ; **aucun chiffre au-dela de 8,0** dans ce palier (11.4). Les six conditions de mon accord
@@ -240,3 +241,19 @@ A corriger avant le branchement du palier 2, ou ce sera un motif de refus.
 - Il ne lit pas la condition (i) (`DEC-0120` A.51) : le palier 1 ne demande aucune derivation au-dela de 8,0.
 
 **Signe** : `nadia-prof`, s57, palier 1, 2026-10-14.
+
+## Annotation du 2026-10-15 (`nadia-prof`, s57, palier 1) : `D2` et `D4` du `relecteur-pedagogique`
+
+Source : `releve-relecteur-palier-1.md`, section 3.2. Rien au-dessus n'est efface ; les phrases visees portent un renvoi ici.
+Les codes `D2` et `D4` sont ceux du releve, pas les `D2` et `D4` du resume de ce fichier.
+
+**`D2`, correction de mon propre constat.** L'en-tete dit *"J'ai lu les cinq paquets candidats de Y et le paquet de X que je
+retiens"*. **Faux** : Y n'a que trois lots disponibles (`-10`, `-15`, `-24`, section 3.2), et la section 0, ligne *"Lu en
+entier"*, nomme quatre paquets : les trois de Y (`ce1-phrases-types`, `ce1-accord-groupe-nominal`, `ce1-familles-de-mots`)
+et celui de X (`ce1-texte-narratif`). **Lecture juste** : *"J'ai lu les trois paquets candidats de Y et le paquet de X que
+je retiens, quatre en tout (section 0)"*. Aucune decision de ce fichier ne change : la section 3 s'appuie sur ces quatre
+lectures et sur le referentiel.
+
+**`D4`, date manquante.** La section 1 cite *"oui"* sans la date de la reponse ; la date ecrite est celle de ma decision
+(2026-10-13). **La reponse est du 2026-10-14** : `DEC-0120` A.53 la donne comme *"Mots du 2026-10-14"*, relayes par l'agent
+lanceur, que `camille-po` n'a pas lus de sa main, moi non plus.

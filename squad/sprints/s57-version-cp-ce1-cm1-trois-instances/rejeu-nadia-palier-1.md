@@ -51,7 +51,7 @@ aucun processus de navigateur n'a ete arrete par nom.
 - **`E1` et `E2`, tels que la demande me les nomme** (*"distracteur de temps ou de lieu, jamais une personne"*) : *le soir*,
   *le matin* (temps), *le toit* (lieu) ; aucun n'est une personne ni un animal, aucun ne fait l'action. **Tenus.** Les
   reperes `E1` et `E2` ne sont ecrits dans aucun fichier de `round-two` ni des trois branches (`git grep`), je les lis
-  comme le point 1 de l'amendement de la propriete 8.
+  comme le point 1 de l'amendement de la propriete 8. *(Inexact, annotation du 2026-10-15 en fin de fichier.)*
 - **Liste d'ouvertures de `TRV-CE1-6`** : **inchangee**. *Le* et *Sur* y etaient avant le lot ; aucun mot d'ouverture neuf
   n'etait necessaire.
 - **Ce que le jeu a montre en plus** : `VSJ-CE1-R2`, l'indice coupe par le pli sur les items 16 et 20 a 744 x 551 (20 :
@@ -70,7 +70,7 @@ aucun processus de navigateur n'a ete arrete par nom.
 
 - **Critere 5** : une partie de dix manches jouee, chaque enonce lu une fois, puis les 12 vus a l'ecran. **Tenu.**
 - **`E3`, accents des 12 enonces** : relus un par un a l'ecran, recopies dans la fiche ; aucun manquant a ma lecture. Le
-  repere `E3` n'est ecrit nulle part dans le depot ; je le lis comme la demande de relecture des 12 enonces. **Ce controle
+  repere `E3` n'est ecrit nulle part dans le depot *(inexact, annotation du 2026-10-15 en fin de fichier)* ; je le lis comme la demande de relecture des 12 enonces. **Ce controle
   reste celui du `relecteur-pedagogique`** (`DEC-0002`, amendement du 2026-08-04 ; `DEC-0056`) ; ma lecture ne le remplace pas.
 - **Critere 2 amende** (`DEC-0120` A.70) : la commande de paires rend `12 0 0` sur `3a3ea97e..c3875936`. Le contenu tient le
   critere amende ; la porte P-4 (lignee) est nommee par `sofia-sm` et reste a elle.
@@ -178,7 +178,8 @@ Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
 
 ## Amendement du 2026-10-14 : reponse de l'utilisatrice a `Q-N4`
 
-Forme 2, relayee par l'agent principal, non lue de sa main : **`Q-N4` = non.** Le pli a 744 x 551 ne redevient pas
+Forme 2, relayee par l'agent principal, non lue de sa main : **`Q-N4` = non.** *(Ses mots ne sont pas cites : forme 2
+incomplete, annotation du 2026-10-15 en fin de fichier.)* Le pli a 744 x 551 ne redevient pas
 bloquant pour un jeu neuf. **Consequences** : `FRA-CE1-10` reste **VALIDE SOUS RESERVE** avec `TPH-CE1-R1` (fiche, amendement
 du meme jour) ; aucun refus n'est ecrit. **Ma recommandation de la section 8, *"oui pour la suite"*, n'est pas retenue par
 l'utilisatrice** : je traite le pli des lots suivants comme une reserve datee, sur le regime de `RDO-CP-R1` et `TPH-CE1-R1`.
@@ -214,3 +215,23 @@ Jobs de `ci.yml` pour le commit de cet amendement : section suivante.
   tableau. Avant lui, le garde-fou du registre : *"declare 983 identifiants alloues et 178 prefixes distincts, sa table en
   porte 984 et 178"*, ligne d'etat portee a 984 / 178, relance verte (10 tests, 0 echec).
 - **`chemins`**, **`prefixes`** : voir le compte rendu de la tache ; **`outils`** : non lance, aucun outil modifie.
+
+## Annotation du 2026-10-15 (`nadia-prof`, s57, palier 1) : `D1` et `D3` du `relecteur-pedagogique`
+
+Source : `releve-relecteur-palier-1.md`, section 3.2. Rien au-dessus n'est efface ; les phrases visees portent un renvoi ici.
+
+**`D1`, correction de mon propre constat.** J'ai ecrit, section 2, que `E1` et `E2` ne sont ecrits *"dans aucun fichier de
+`round-two`"*, et section 4 que `E3` *"n'est ecrit nulle part dans le depot"*. **C'est faux, et c'etait faux sur ma propre
+base** : `git grep -c -w -e E1 -e E2 ea6d6f92 -- squad/conformite/FICHE-bandit-manchot-verbe-sujet-ce1.md` rend 2 (lignes 64
+et 92 : `E1` et `E2` de `marc-dev`, dans une fiche que j'ai ecrite) ; `git grep -c -w E3 ea6d6f92` rend 4 sur
+`docs/backlog/backlog.md` et 1 sur `ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md`. Ces codes y designent d'autres objets.
+**Lecture juste** : `E1`, `E2` et `E3` de cette section 2 et de cette section 4 sont les reperes de la demande de l'agent
+lanceur, propres a cette demande ; je les ai lus par leur contenu, cite a chaque fois. Aucun constat ni verdict de ce fichier
+ne change.
+
+**`D3`, forme 2 incomplete.** L'amendement du 2026-10-14 ecrit *"`Q-N4` = non"* : c'est ma notation, pas les mots de
+l'utilisatrice, et `DEC-0062` 3.1 exige ses mots entre guillemets. **Je ne peux pas les citer** : aucun fichier du depot ne
+les porte (`DEC-0120`, ligne 1387, ecrit la meme notation), et je ne les ai pas recus. Je les demande a l'agent lanceur par
+`sofia-sm` ; ils s'ajouteront ici par une annotation datee. **Ce qui depend de ce point** : aucun verdict. Le caractere non
+bloquant de `TPH-CE1-R1` repose sur le precedent de `RDO-CP-R1` (section 3), pas sur `Q-N4` ; `Q-N4` portait sur ma
+recommandation de section 8, plus stricte, qui reste non retenue tant que l'utilisatrice ne l'a pas acceptee.
