@@ -406,3 +406,236 @@ Postes 8 et 9 non engages (A.84 : `C1` a `C4`, seconde moitie de `Q-Y4`, amendem
 ### Decisions prises
 
 **Aucune `ADR` ni `DEC` n'est creee ou amendee.** Cet amendement engage le poste 7 sous la porte `P-5`, nomme `marc-dev`, constate les fusions et verdicts des postes 3 a 6 et la fermeture de la porte `P-4`. Le poste 8 n'est ni engage ni modifie.
+
+---
+
+## Amendement du 2026-10-15 20:56 (UTC+02:00), ouverture du palier 2
+
+Annotation datee, heure lue par `date`, **inscrite avant l'ouverture de tout worktree du palier 2** (`D2` (c), precedent s56). **Rien au-dessus n'est reecrit** ; ce que cet amendement remplace est nomme. Arbre : `round-two` a `0cdccb62`, branche `s57-sofia-planning2`, `bash outils/verifier-lignee.sh` sort 0, `git status --short` vide avant ecriture. Sources, par auteur : `sofia-sm` (`cloture-palier-1.md`, `a8ff6fc6`, section 9) ; `nadia-prof` (`arbitrage-nadia-palier-2.md`, `b4fe7eb4`) ; `camille-po` (`composition-palier-2.md`, `8de576d0`, annotation du backlog du 2026-10-15 20:40, `DEC-0120` A.66 a A.73 et A.91 a A.93) ; `duree-et-paliers.md`. **Cet amendement ouvre le palier 2. Il n'ouvre aucun worktree** : `K1 (a)` des stories de branchement demande qu'il soit fusionne sur `round-two`, et je ne le fusionne pas.
+
+### 1. Regle d'ouverture (`D2`), condition par condition
+
+| Condition de `D2` | Preuve lue sur l'arbre | Etat |
+|---|---|---|
+| (a) `cloture-palier-1.md` sur `round-two` | `git show HEAD:squad/sprints/s57-version-cp-ce1-cm1-trois-instances/cloture-palier-1.md` sort 0 | tenue |
+| (b) arbitrage prealable de `nadia-prof`, trois instances | meme commande sur `arbitrage-nadia-palier-2.md` : sort 0 ; titre *"instances A, A' et B"* ; il porte la lecture de l'isolation (section 3) et le critere 3 de `ce1-texte-narratif` (section 4), que ma cloture lui demandait | tenue |
+| (c) composition de `camille-po`, avec la reference de l'arbitrage, heure avant les worktrees | `composition-palier-2.md` : sort 0 ; reference `b4fe7eb4` ; heure de ce titre | tenue par cet amendement (sections 2 a 4) |
+| (d) table d'isolation du palier, repertoires et ports neufs | section 6 | tenue par cet amendement |
+
+Sur le meme arbre : `grep -n "^- \*\*Statut"` sur `DEC-0120` rend, ligne 13, *"Acceptee le 2026-10-14 (amendement A.77)"* ; `git merge-base --is-ancestor 729b0d8a HEAD` sort 0 (`K1 (c)` de `-24`, instance A').
+
+**Ce que `D2` ne demande pas et qui reste ouvert, nomme pour qu'aucun ne passe pour clos** :
+
+- **`E3`** (lecture du diff de B1 par `theo-archi`) : aucune trace ecrite : `grep -rln "lecture du diff"` sur le dossier du sprint rend quatre fichiers (`avis-faisabilite.md`, `avis-theo-poste-8-art-cp-10.md`, `cloture-palier-1.md`, `engagement-poste-8.md`) qui la posent ou la constatent absente, et `git log --since=2026-10-15T17:30` sur `squad` et `docs` ne rend aucun commit de `theo-archi`. Ma cloture, section 7, l'ecrit comme condition de l'ouverture ; `D2` (a) a (d) ne la contient pas et la section 9 ne la liste pas. **Je ne l'applique pas comme porte du palier** : `-05`, `-24` et `S57-OBS-SCI-N1-N2` ne touchent aucun fichier de B1. **Je l'applique comme porte des deux postes qui reprennent le code de B1** : la forme commune (feuille et gabarit de B1) et `RDO-CP-R3` (ligne 215 de `manche.html`, garde-fou de `ADR-0067` D.4). Leur engagement attend la trace de `theo-archi`. Que la porte couvre tout le palier est a l'utilisatrice : `Q-S7`.
+- **`E1`** : aucun rapport de `lea-dev` ni de `marc-dev` pour le palier 1. Reprise par `K7` des stories de branchement (nom `rapport-<developpeur>-palier-2.md`) ; chaque developpeur du palier 2 ecrit le sien.
+- **Mots de l'utilisatrice** (`Q-N4`, `S2`, et provenance `S1` a `S4`, `P5` de la cloture) : toujours absents du depot. Je n'inscris aucune correction de provenance dans cet amendement, faute de mots a inscrire.
+
+### 2. Composition portee (`camille-po`), prix de `nadia-prof`
+
+Reprise de `composition-palier-2.md` **sans modifier un prix ni un lot**. Chaque prix est le maximum du registre de `nadia-prof` ; l'ecart a 8,0 reste non affecte. Somme recomptee par `awk` sur les prix de la section 3, sortie lue ce jour : engage 3,75 ; marges 1,50 ; non engage 2,50 ; non affecte 0,25 ; total 8,00.
+
+| Instance | Total | Engage a l'ouverture | Marge, allouee a aucun poste | Non engage, retenu par la composition | Lots |
+|---|---|---|---|---|---|
+| A (groupe X) | 3,0 | 1,5 (arbitrage 0,5, lot `-05` 1,0) | 0,5 | 1,0 (`RCT-CE1-R1` 0,5, `VSJ-CE1-R2` 0,5) | 1 |
+| A' (groupe Y) | 3,0 | 1,5 (arbitrage 0,5, lot `-24` 1,0) | 0,5 | 1,0 (`TPH-CE1-R1` 0,5, `GNA-CE1-R1` 0,5) | 1 |
+| B | 1,75 | 0,75 (arbitrage 0,5, `S57-OBS-SCI-N1-N2` 0,25) | 0,5 | 0,5 (`RDO-CP-R3`) | 0 |
+| hors instance | 0,25 | - | - | non affecte, aucun poste | - |
+
+Bornes relues : somme 8,0 (`PAR-9`) ; plafond de 5,0 par instance, aucune ne s'en approche (`PAR-8`) ; trois lots au plus par instance, A et A' en portent un ; aucun chiffre au-dela de 8,0 ; aucune marge du palier 1 entamee.
+
+### 3. Postes du palier 2, verification poste par poste (`PAR-16`)
+
+Numerotation propre au palier 2, sans lien avec celle du palier 1. Titres lus par `grep -c "^#\{3,4\} .*<story>" docs/backlog/backlog.md` sur `0cdccb62` ; le compte compte aussi les annotations qui portent le meme titre.
+
+| # | Poste | Story, titres au backlog | Inst. | Agent nominatif | Competence visee | Prix | Etat |
+|---|---|---|---|---|---|---|---|
+| p2-1 | Arbitrage et lecture complete | `S57-ARB-PALIER-2` (1) | A, A', B | `nadia-prof` | transverse | 0,5 par instance | **engage** : part ecrite livree (`b4fe7eb4`). Reste la ligne datee *"lecture complete"* de `ce1-pronoms` (20 items) et de `ce1-familles-de-mots` (24 items), avant le premier verdict de chacun ; ordre verifie par moi a la cloture |
+| p2-2 | Marges de rejeu | aucune | A, A', B | aucun | - | 0,5 par instance | nommees, allouees a aucun poste |
+| p2-3 | Lot `ce1-pronoms` | `S57-BR-FRA-CE1-05` (2) | A | `marc-dev` ; audit `nadia-prof` (A) | `FRA-CE1-05` | 1,0 | **engage** |
+| p2-4 | Lot `ce1-familles-de-mots`, correction de l'item *livre* comprise | `S57-BR-FRA-CE1-24` (2), `S57-FRA-FAMILLES-LIVRE` (2) | A' | `sofia-sm`, casquette developpeuse ; audit `nadia-prof` (A') | `FRA-CE1-24` | 1,0 | **engage** |
+| p2-5 | Recommandations `N1` et `N2` | `S57-OBS-SCI-N1-N2` (1) | B | `marc-dev` ; rejeu `nadia-prof` (B) | `SCI-CM1-20` | 0,25 | **engage** : l'acte de `sofia-sm` que la story demande est cet amendement |
+| p2-6 | Script des 43 enonces d'`additions-cp` (`PA1`) | aucun titre (`CR14` du backlog est une ligne de routage) | transverse | `marc-dev` ; mesure `ines-design` | transverse | 0, hors `PAR` | **engage**, sans story : `Q-S5` |
+| p2-7 | Forme commune des propositions longues | `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES` (1) | A' (jar rejoue par `nadia-prof` A') | `lea-dev` | transverse | 0, hors `PAR` | **non engage**, report compte (section 8) : `PA3`, `PA4`, `PA5`, `E3` |
+| p2-8 | `TPH-CE1-R1` | `S57-TPH-CE1-R1` (2) | A' | developpeur de p2-7 ; rejeu `nadia-prof` (A') | `FRA-CE1-10` | 0,5 | **non engage**, report compte |
+| p2-9 | `GNA-CE1-R1` | `S57-GNA-CE1-R1` (1) | A' | developpeur de p2-7 ; rejeu `nadia-prof` (A') | `FRA-CE1-15` | 0,5 | **non engage**, report compte ; jamais avant p2-8 |
+| p2-10 | `RCT-CE1-R1` | `S57-RCT-CE1-R1` (2) | A | `marc-dev` si des textes changent, sinon developpeur de p2-7 ; rejeu `nadia-prof` (A) | `FRA-CE1-04` | 0,5 | **non engage**, report compte : `PA7` |
+| p2-11 | `VSJ-CE1-R2` | `S57-VSJ-CE1-R2` (1) | A | `marc-dev` si les textes, aucun si la forme ; rejeu `nadia-prof` (A) | `FRA-CE1-13` | 0,5 | **non engage**, report compte : voie non ecrite, `Q-S9` |
+| p2-12 | `RDO-CP-R3` | `S57-RDO-CP-R3` (1) | B | `lea-dev`, sous la regle de la section 5 ; rejeu `nadia-prof` (B) | `ART-CP-10` | 0,5 | **non engage**, report compte : `PA8`, `E3` |
+
+**Hors `PAR`, non engages, aucun prix, aucun report compte** (la composition ne les retient pas, section 9 de `composition-palier-2.md`) : `S57-MESSAGE-PARTIE-PERDUE` (1), `S57-TYP1-TEXTES-DE-GABARIT` (2), `S57-GARDE-NOMBRE-DE-MANCHES` (1), `D5`. **Je ne designe aucun developpeur pour eux a l'ouverture** : aucun ne part avant son prealable (mesure des lignes a 744 et 1200, `Q-T12` de `theo-archi`, liste de depart de `DEC-0121`), et en nommer un maintenant chargerait une des deux chaines de la section 5. Je le fais a leur engagement. **`D5` ne s'engage pas avant la fusion de la forme commune** : il modifie l'en-tete de paquets que la forme mesure (`ce1-phrases-types`, `ce1-accord-groupe-nominal`, `ce1-verbe-sujet`) et celui de `ce1-familles-de-mots` que `-24` modifie, et le critere 4 de la forme exige que `git diff --stat <base> <commit livre>` ne nomme aucun paquet.
+
+**Actions des autres agents, sans budget** (`DEC-0116` section 9) : `yanis-qa`, `rapport-qualite.md` sur l'arbre fusionne a la cloture du sprint ; `theo-archi`, confirmation ArchUnit a la review ; `relecteur-pedagogique`, `relecture-cloture.md` a la review, et l'orthotypographie des chevrons de `S57-OBS-SCI-N1-N2` avant son rejeu ; `camille-po`, fiche `FICHE-bandit-manchot-<id>.md` apres chaque commit de branchement (`K9`), matrice au verdict seulement.
+
+### 4. Ce qui peut commencer, ce qui est bloque
+
+**Peut commencer des que cet amendement est fusionne, sans prealable** (la porte est `K1 (a)`) :
+
+- p2-1 : `nadia-prof` lit les items ; ce poste n'attend pas la fusion.
+- p2-6 : l'ecriture du script par `marc-dev`. Il ne depend ni de la base ni du jar : il recoit son port en argument, comme `pilote-r3.mjs`.
+- p2-5 : `S57-OBS-SCI-N1-N2` (`marc-dev`). Les textes sont ceux de `nadia-prof`, copies sans reformulation ; aucun prealable hors `K1`.
+- p2-3 et p2-4 : le worktree s'ouvre, les fixtures, le test du paquet et l'entree de catalogue s'ecrivent (`K3`, `K4`). **Ce qui attend, et c'est la porte du commit, pas du worktree (precedent `P-3` du palier 1)** : pour `-05`, la reponse de `nadia-prof` a `Q-P6` (l'item 15, bonne reponse *"Elias"*, seule proposition a majuscule : `PN4` est rouge sur l'existant, un test vert est impossible avant sa decision) ; pour `-24`, la forme de la correction de l'item *livre*, qui est a `nadia-prof` et au developpeur (`S57-FRA-FAMILLES-LIVRE` : `grep -c 'bonneReponse: "librairie"'` doit rendre 0) : `Q-S8`. **Une lecture de la lettre de `PN8` et `FM5`** (*"avant l'ouverture du worktree"*) demanderait la lecture complete de `nadia-prof` avant le worktree ; je ne la tranche pas, c'est une story de `camille-po` : `Q-S4`. En attendant, **aucun developpeur ne touche le YAML d'un paquet** (`K2`), ce qui garde les deux lectures ouvertes.
+- Les marges : rien a faire, aucun poste.
+- Les reponses attendues, qui n'attendent pas la fusion : `PA3`, `PA4`, `PA5`, `PA7`, `PA8`, `Q-P4`, `Q-P6`, `Q-S8`, `Q-S9`, `E3` (section 7).
+
+**Bloque, avec ce qui le debloque** :
+
+- p2-7, la forme : `PA3`, `PA4` (`nadia-prof`), `PA5` (`theo-archi`), `E3` (`theo-archi`). Engagee par un amendement date, avec la base de la cote (section 9).
+- p2-8 et p2-9 : la forme fusionnee, `PA1` et `PA2` ecrits en entier. Aucun rejeu de la forme avant (arbitrage, section 8, point 4).
+- p2-10 : `PA7` et la forme.
+- p2-11 : la voie (`Q-S9`) ; par la forme, comme p2-8.
+- p2-12 : `PA8` (`Q-R7`), `E3`, et la regle de la section 5.
+- Les quatre stories a prix 0 et `D5` : section 3.
+
+### 5. Affectations nominatives des developpeurs
+
+Proposition de `camille-po` (`composition-palier-2.md` sections 3 et 4), confirmee ou ajustee. **Ce choix est de capacite, donc a moi ; l'utilisatrice peut l'inverser.**
+
+| Developpeur | Postes engages, dans cet ordre | Nommes, non engages | Tours de s56 (repris de la section *Charge des developpeurs* ci-dessus, colonne *Tours* de `RAPPORT-tokens.md` de s56) |
+|---|---|---|---|
+| `marc-dev` | p2-6 (script), p2-5 (`N1`, `N2`), p2-3 (`-05`) | p2-10 et p2-11 si la voie est celle des textes | 183 |
+| `sofia-sm` (casquette developpeuse) | p2-4 (`-24`) | - | 192 |
+| `lea-dev` | aucun a l'ouverture | p2-7 (forme), puis p2-12 (`RDO-CP-R3`) | 529 |
+
+- **Confirme : `marc-dev` pour `-05`** (la forme de `PaquetCe1TexteNarratifTest` et la regle de s47 de `LON-CE1-3` et `-4`, que `-05` reprend) **et `sofia-sm` pour `-24`** (deux developpeurs distincts sur deux instances et deux jeux de fichiers partages, `catalogue.yaml` et l'inventaire ; mon geste de casquette, mes limites et la relecture de `yanis-qa` pour la fusion de ma propre branche sont ceux du palier 1, section "Charge des developpeurs").
+- **Ajuste : `marc-dev` porte aussi le script de `PA1` et `S57-OBS-SCI-N1-N2`**, que la composition laissait au developpeur "a designer". Ordre : le script d'abord, parce que c'est le seul element de la chaine de la forme que le developpement porte avant la reponse de `nadia-prof` ; `-05` attend de toute facon `Q-P6` pour son YAML. Le palier 1 lui a donne trois postes et `F1` ; ici trois postes, dont deux petits.
+- **Confirme : `lea-dev` pour la forme commune.** Elle a fait la chaine B1 de la feuille de style et de la forme C (`25e4a823`, `472dce51`, `6a80fe66`, `7ab7bfd7`) sur laquelle la forme commune s'ajoute ; un autre developpeur paierait ce contexte. **Ajuste : `RDO-CP-R3` n'est nominee a `lea-dev` que sous condition.** Elle a 529 tours en s56 (2,9 fois `marc-dev`), et la chaine forme puis `RDO-CP-R3` sur un seul developpeur etait le chemin critique du palier 1. **Regle ecrite : a l'amendement qui engage p2-12, si la forme commune n'est pas fusionnee, je nomme `marc-dev` (s'il a fusionne `-05`) ou j'ecris a l'utilisatrice que `lea-dev` est le chemin critique ; je ne reaffecte pas la forme.** `RDO-CP-R3` et la forme touchent la meme feuille de style : deux developpeurs en meme temps imposent un ordre de fusion et une resolution de conflit que j'ecris alors.
+- **La charge en tours n'est pas remesuree** : le rapport de tokens est un seul pour le sprint, a la review (`squad/README.md`, section 6). Les nombres de s56 sont un repere, pas l'etat d'aujourd'hui.
+- **Si `marc-dev` a trois postes ouverts et que l'un d'eux bloque**, il ne les entrelace pas : un worktree a la fois, et il me le dit.
+
+### 6. Isolation : repertoire, port et worktree, par agent, instance et palier
+
+`I1` a `I3` du palier 1 s'appliquent **sans changement** : un repertoire par agent, par instance et par palier, a un seul niveau sous la racine, nomme `s57-p2-<agent>-<instance>`, jamais reutilise ; un port de jeu par agent, par instance et par palier ; avant chaque lancement le port est libre (`netstat -ano` filtre sur `":<port> "`), apres, la ligne *"Tomcat started on port <port>"* et le PID sont lus dans **son** journal, arret par PID, jamais par nom d'image. **Remplace** la table du palier 1 pour le palier 2. Le port de debogage de Chrome est dans la table : **port de jeu plus 700**, la regle que `lea-dev` (19231) et `ines-design` (19243) ont suivie au palier 1, reprise ici pour tous. Etat de l'ecoute a l'ouverture : `netstat -ano` filtre sur les ports 185xx et 192xx rend 0 ligne.
+
+| Agent | Instance | Postes | Repertoire de scratchpad | Port de jeu | Port de debogage |
+|---|---|---|---|---|---|
+| `nadia-prof` | A | audits et rejeux de A | `s57-p2-nadia-prof-a` | 18511 | 19211 |
+| `nadia-prof` | A' | audits et rejeux de A' | `s57-p2-nadia-prof-ap` | 18512 | 19212 |
+| `nadia-prof` | B | rejeux de B | `s57-p2-nadia-prof-b` | 18513 | 19213 |
+| `marc-dev` | A | p2-3, puis p2-10 et p2-11 si les textes | `s57-p2-marc-dev-a` | 18521 | 19221 |
+| `sofia-sm` (developpeuse) | A' | p2-4 | `s57-p2-sofia-dev-ap` | 18523 | 19223 |
+| `marc-dev` | B | p2-5 | `s57-p2-marc-dev-b` | 18524 | 19224 |
+| `marc-dev` | transverse | p2-6, script de `PA1` | `s57-p2-marc-dev-t` | 18525 | 19225 |
+| `lea-dev` | B | p2-12 | `s57-p2-lea-dev-b` | 18531 | 19231 |
+| `lea-dev` | A' | p2-7 | `s57-p2-lea-dev-ap` | 18532 | 19232 |
+| `yanis-qa` | transverse | rapport qualite, mesures | `s57-p2-yanis-qa-t` | 18541 | 19241 |
+| `theo-archi` | transverse | avis, confirmation | `s57-p2-theo-archi-t` | 18542 | 19242 |
+| `ines-design` | transverse | cote de reference, mesures de la forme, jar de base | `s57-p2-ines-design-t` | 18543 | 19243 |
+| `ines-design` | transverse, second jar | jar de la branche de la forme, mesure appariee | `s57-p2-ines-design-t2` | 18544 | 19244 |
+| `camille-po`, `relecteur-pedagogique`, `sofia-sm` (Scrum Master) | transverse | aucun jar | `s57-p2-camille-po-t`, `s57-p2-relecteur-t`, `s57-p2-sofia-sm-t` | aucun | aucun |
+
+**Collisions evitees, et d'ou elles viennent** (mesurees par `git grep` sur `0cdccb62` et par l'arbitrage, section 3) :
+
+- **`C1`, 19222.** `pilote-q7.mjs` fixe ce port de debogage en dur (ligne 6). Avec la regle *"jeu plus 700"*, le port 18522 du palier 1 (`marc-dev`, instance A') donne 19222 : **18522 n'est donne a personne au palier 2**, et `marc-dev` n'a plus d'instance A'. `pilote-q7.mjs` reste a un seul agent a la fois, sa ligne s'ecrit dans ce fichier avant l'usage (consigne du palier 1, reprise).
+- **`C2`, 19333 et 19334.** `pilote-accueil.mjs` et `capture-colle.mjs` (`squad/conformite/releves-accueil/`) fixent ces deux ports en dur. Aucun n'est donne ; a un seul agent a la fois.
+- **`C3`, `outils/mesurer-accueil.py`** ouvre Chrome avec `--remote-debugging-port=0` (port aleatoire) : aucun port de la table ne le contient. Rien a allouer, a lancer seul.
+- **`C4`, ports hors table du palier 1.** `ines-design` a servi sur **18457** (2026-10-14) et **18571** (jar de base de `rapport-ines-r8-forme-commune.md`), au lieu de 18543 ; `lea-dev` a utilise 19231 (debogage) sans qu'il soit dans la table. Aucune collision n'en est resultee. Les trois sont maintenant dans la table, et `ines-design` a une seconde ligne (18544, 19244) pour le jar de base et le jar de la branche qu'elle compare : un second lancement concurrent n'a plus a attendre une ligne ajoutee.
+- **`C5`, un meme repertoire et un meme port pour deux instances.** `marc-dev` a servi les postes 3 (A) et 7 (A) sur `s57-p1-marc-dev-a` et 18521, `m1.log` du poste 4 (A') est tombe a la racine. Ici `marc-dev` a trois lignes (A, B, transverse), chacune avec son port.
+- **`C6`, noms de repertoire hors format.** Au palier 1, `camille`, `camille-po-s57-p1`, `theo-s57-avis`, `ines-s57` et `s57-p1-nadia-prof-a-poste7` ont remplace les noms de la table, et `s57-p1-sofia-dev-ap` n'a jamais ete cree. **Le nom se copie de la table, lettre pour lettre, et le repertoire se cree avant la premiere commande.**
+- **`C7`, un agent qui prend les fichiers d'un autre.** `yanis-qa` a deplace sept fichiers de `camille-po` et du `relecteur-pedagogique` pendant 19 secondes (arbitrage, 3.3). La consigne ci-dessous interdit de deplacer, renommer ou supprimer un fichier qu'on n'a pas cree.
+
+**Consigne ecrite, a repeter en tete du message de lancement de chaque agent du palier 2** (constat de `nadia-prof`, arbitrage 3.2 : la regle *"aucune ecriture a la racine du scratchpad"* n'est pas tenue par huit agents sur neuf ; le crochet du harnais ne bloque que l'outil d'ecriture de fichier et ne voit pas les redirections du shell). **Ce n'est pas un moyen de garde et ce n'est pas le crochet** : le crochet est `Q4` de `theo-archi`, routee a l'utilisatrice, sans reponse dans le depot ; je n'en decide pas.
+
+> 1. Ton repertoire de scratchpad est celui de la table du palier 2 de `planning.md`, copie lettre pour lettre. Ta premiere commande le cree (`mkdir -p`). Tu n'en utilises aucun autre.
+> 2. **Tout ce que tu ecris, tu l'ecris dans ce repertoire, quel que soit l'outil** : l'outil d'ecriture, mais aussi chaque redirection du shell (`>`, `>>`, `2>`, `&>`, `tee`), chaque journal de build ou de jar, chaque profil de Chrome, chaque capture, chaque fichier de PID, chaque sortie d'un script Python ou Node.
+> 3. **Chemin absolu, toujours, construit a partir de ton repertoire.** Le repertoire courant est reinitialise entre deux commandes : un chemin relatif n'est pas sur.
+> 4. Trois endroits sont interdits pour tes fichiers : la racine du scratchpad, le repertoire parent des worktrees, le repertoire temporaire du systeme (`$TEMP`, `/tmp`).
+> 5. Tu ne deplaces, ne renommes et ne supprimes aucun fichier que tu n'as pas cree, meme s'il te gene ou si tu crois qu'il est a toi.
+> 6. Avant de rendre la main : tu listes la racine du scratchpad et le repertoire parent des worktrees ; tout fichier que tu y as ecrit est nomme dans ton rapport, puis deplace dans ton repertoire (ou supprime, s'il est a toi). Ton rapport porte une ligne *"racine : propre"* ou la liste des noms. Tu ne declares jamais propre une racine que tu n'as pas listee.
+
+**Ce que je mesure, et ce que je ne mesure pas** : a la cloture du palier 2, je liste (`ls`) les racines que ma session peut lire et je compte les fichiers qui n'y ont rien a faire ; c'est une mesure, pas une garde. Les racines des autres sessions, redirections comprises, restent lues par `nadia-prof` dans les transcriptions (arbitrage, 3.4, point 3, et section 10) : je ne m'y substitue pas.
+
+**Branches et worktrees**, une branche et un worktree dedies par poste, voisins du checkout (`recreo-<branche>`), sans rebase, sans push, sans fusion par les agents ; chaque agent note `git log -1 --format=%h` dans son premier message ; **je verifie la lignee avant chaque fusion** (`bash outils/verifier-lignee.sh`), meme quand l'agent dit l'avoir faite. Aucune de ces branches n'existe (`git branch --list`, rien) et aucun de ces worktrees non plus.
+
+| Poste | Branche | Worktree |
+|---|---|---|
+| p2-3 | `s57-marc-fra-ce1-05` | `../recreo-s57-marc-fra-ce1-05` |
+| p2-4 | `s57-sofia-fra-ce1-24` | `../recreo-s57-sofia-fra-ce1-24` |
+| p2-5 | `s57-marc-sci-n1-n2` | `../recreo-s57-marc-sci-n1-n2` |
+| p2-6 | `s57-marc-script-additions-cp` | `../recreo-s57-marc-script-additions-cp` |
+| p2-7 (si engage) | `s57-lea-forme-commune` | `../recreo-s57-lea-forme-commune` |
+| p2-12 (si engage) | `s57-lea-rdo-cp-r3` | `../recreo-s57-lea-rdo-cp-r3` |
+| audits de `nadia-prof` | `s57-nadia-p2-a`, `s57-nadia-p2-ap`, `s57-nadia-p2-b` | `../recreo-s57-nadia-p2-a`, `-ap`, `-b` |
+| cloture de palier | `s57-sofia-cloture-p2` | `../recreo-s57-sofia-cloture-p2` |
+
+### 7. Prealables, avec titulaire et ordre
+
+Codes `PA1` a `PA9` : reperes de `composition-palier-2.md` section 6, pas des identifiants. **Ordre 1** : la question est posee ou le travail part des l'ouverture, en parallele. Les ordres suivants disent ce qui precede quoi.
+
+| Code | Quoi | Titulaire | Ordre | Bloque | Etat au 2026-10-15 20:56 |
+|---|---|---|---|---|---|
+| `PA1` | Script des 43 enonces restants d'`additions-cp` (22 mesures sur 65 aujourd'hui) | **ecriture : `marc-dev`** (mon affectation, `CR14`) ; **mesure : `ines-design`**, sur le jar de la base | ecriture 1 ; mesure apres la base (ordre 4) | tout rejeu de la forme | script non ecrit ; aucune story (`Q-S5`) |
+| `PA2` | Cote de reference de `Q-R4` ecrite en entier, fichier date | `ines-design` (mesure et fichier) ; `nadia-prof` dit si une base de code identique suffit (`Q-P4`) | 4, apres `PA3` et `PA5` et la base de la section 9 | tout rejeu de la forme | elements 1, 2 et 4 mesures, element 3 incomplet (depend de `PA1`) |
+| `PA3` | Accord de `nadia-prof` sur `R3-1` | `nadia-prof` (`Q-P3`) | 1 | l'ouverture du worktree de la forme | non repondue |
+| `PA4` | Lecture de l'ascenseur a la revelation | `nadia-prof` (`Q-P3`) | 1 | idem | non repondue |
+| `PA5` | Lecture de `C1'`, `C2` et `C3` par `theo-archi`, amendement d'`ADR` eventuel | `theo-archi` (`Q-P7`) | 1 ; porte aussi la trace de `E3` | l'ouverture du worktree de la forme | non ecrit |
+| `PA6` | Story de mise en oeuvre de la forme | `camille-po` | - | - | **faite** : `grep -c` rend 1 pour `S57-FORME-COMMUNE-PROPOSITIONS-LONGUES` |
+| `PA7` | Voie de `RCT-CE1-R1` pour les 3 items a 552 | `nadia-prof` (regle du bandeau), developpeur et `theo-archi` (propositions plus courtes) : `Q-P5` | question 1 ; engagement apres la forme fusionnee | p2-10 et son prix (0,25 ou 0,5) | non repondue |
+| `PA8` | Voie de `RDO-CP-R3` (`Q-R7`) | `ines-design`, `theo-archi` | 1 ; engagement apres `E3` et la regle de la section 5 | p2-12 | non repondue |
+| `Q-P6` | Item 15 de `ce1-pronoms` | `nadia-prof` | 1 | le commit de p2-3 | non repondue |
+| `Q-S8` | Forme de la correction de l'item *livre* | `nadia-prof`, avec `sofia-sm` developpeuse | 1 | le commit de p2-4 | non repondue ; `Q-B2` (l'indice cite) reste aussi ouverte, sans effet sur le motif de fond |
+
+**Chaine de la forme, dans l'ordre** : (1) `PA3`, `PA4`, `PA5` et la trace de `E3` ; (2) un amendement date de ce fichier engage p2-7, nomme la base (section 9) ; (3) `lea-dev` coupe la branche sur cette base, `ines-design` mesure `PA2` sur le meme commit et `marc-dev` a deja livre le script de `PA1` ; (4) `lea-dev` developpe ; (5) fusion apres `build` vert ; (6) rejeu de `TPH-CE1-R1` avec `GNA-CE1-R1` sur le meme jar, puis `VSJ-CE1-R2` et `RCT-CE1-R1` selon leurs voies. Un raccourci n'existe pas : le rejeu avant la cote ecrite est un interdit de `nadia-prof` (arbitrage, section 8, point 4).
+
+### 8. Compte des reports
+
+Regles de `DEC-0120` A.66 a A.73, confirmees par moi au palier 1 (amendement du 2026-10-14 18:20) et appliquees a l'identique. **Un report est un poste retenu par la composition et non engage a l'ouverture du palier, quelle qu'en soit la cause.**
+
+| Poste | Compte a l'ouverture du palier 2, 2026-10-15 | Ce qui debloque |
+|---|---|---|
+| p2-7 forme commune (hors `PAR`) | **premier report** | `PA3`, `PA4`, `PA5`, `E3` |
+| p2-8 `TPH-CE1-R1` | **premier report** | la forme, `PA1`, `PA2` |
+| p2-9 `GNA-CE1-R1` | **premier report** | idem, apres p2-8 |
+| p2-10 `RCT-CE1-R1` | **premier report** | `PA7`, la forme |
+| p2-11 `VSJ-CE1-R2` | **premier report** | `Q-S9` |
+| p2-12 `RDO-CP-R3` | **premier report** | `PA8`, `E3` |
+
+- **Ecart avec `composition-palier-2.md`, section 9** : elle ecrit *"premiere inscription ; un glissement du palier 2 est le premier report"* pour ces postes. A.66 compte le report **a l'ouverture** (precedent : postes 7 et 8 du palier 1, comptes le jour de l'ouverture, `DEC-0120` A.67). **J'applique A.66 telle qu'ecrite et je le dis** ; si `camille-po` lit autrement, elle l'ecrit par amendement a `DEC-0120` : `Q-S6`. L'enjeu est reel : un second report au palier 3, puis le troisieme interdit.
+- **Un engagement tardif n'efface pas le report, il evite le suivant** (A.83). **Un poste glisse au plus une fois** : engage au palier 2 et non audite a sa cloture, il glisse au palier 3 ; le second glissement est un report compte, ecrit par moi le jour de la cloture. Le troisieme report est interdit (A.67, A.72).
+- **`-06`, `-07`, `-11` (groupe X)** : deuxieme ecartement, compte de `camille-po` (`composition-palier-2.md`, section 9), que je ne recalcule pas. *"Si `-06` n'entre pas au palier 3, c'est le troisieme : une `DEC` le dit, avec le motif."*
+- **`S54-OBS-SCI-CONSIGNE`** : VALIDE au palier 1, rien a compter.
+
+### 9. Ordre de fusion
+
+**Reacteur complet a chaque fusion** : `bash outils/mvn-jdk21.sh -B clean verify`, racine, sans `-pl`. **Tout compte de tests est celui du reacteur sur l'arbre fusionne, que j'etablis moi-meme.** Dernier total mesure : 2597 sur `e7497db7` (`cloture-palier-1.md`, section 3) ; le total de l'ouverture est dans la section 12 (jobs).
+
+- **Catalogue** : 150 entrees sur cet arbre (`grep -c "^  - id:" adapters/adapter-content/src/main/resources/catalogue.yaml`), dont 145 `bandit-manchot` (`grep -c "mecanique: bandit-manchot"`). `grep -c "paquet: ce1-pronoms$"` et `grep -c "paquet: ce1-familles-de-mots$"` rendent 0. Apres `-05` et `-24` : 152 et 147, chacun des deux `grep` rendant 1. **Une ligne par fusion dans `cloture-palier-2.md`** : SHA, compte d'avant, entrees fusionnees, compte d'apres ; un ecart arrete la fusion et va a `theo-archi`. Resolution des fichiers partages (`catalogue.yaml`, inventaire de `TexteAccentueExposeParLePortEntrantTest`, `REGISTRE-identifiants.md`) : celle du palier 1, section "Ordre de fusion" : **je resous, j'ai les ajouts des deux cotes, jamais une assertion affaiblie.**
+- **Ordre** : p2-5, p2-3 et p2-4 dans l'ordre ou ils sont prets, un a la fois, `clean verify` entier apres chacun. Je ne retiens aucune fusion de lot pour attendre la forme : la preference de `nadia-prof` (forme fusionnee avant l'audit de `-05`) est la sienne, elle audite quand elle le decide, et sans la forme un lot audite porte une reserve de la famille de `RCT-CE1-R1` (arbitrage, 6.1, point 4, et section 7).
+- **Base de la cote de reference** (`Q-R5`) : c'est **le sommet de `round-two` au moment ou `lea-dev` coupe la branche de la forme**. Je note son SHA dans l'amendement qui engage p2-7 ; `PA2` nomme ce commit ; **toute fusion sur `round-two` entre la mesure et la coupe force la remesure**. Les lots fusionnes avant la coupe sont dans la base (le compte de jeux monte de 1 par entree `bandit-manchot`, `composition-palier-2.md` `CT2`) ; ceux fusionnes apres ne sont pas dans le jar rejoue.
+- **Forme, apres sa fusion** : `git diff <jar rejoue> <resultat de la fusion> -- adapters domain application bootstrap` vide, ou ce qu'il montre nomme a `nadia-prof` avant (`R1` de s57, section "Branche de rejeu B2", transpose).
+- **Garde-fou de l'accent** : aucune instance ne le modifie (`K10`, `ADR-0065` A2).
+
+### 10. Questions et routes
+
+Je classe, je ne reponds a aucune. Un obstacle n'est clos que quand le fichier qui le tranche existe.
+
+| Question | Objet | Route | Ce que le planning engage en attendant |
+|---|---|---|---|
+| `Q-S4` | La lettre de `PN8` et `FM5` (*"avant l'ouverture du worktree"*) interdit-elle d'ouvrir le worktree de `-05` et `-24` avant la lecture complete de `nadia-prof` ? | `camille-po` | worktrees ouverts, aucun YAML de paquet touche (section 4) |
+| `Q-S5` | p2-6 (script de `PA1`) n'a pas de story ; `PAR-16` en demande une pour tout poste engage ; hors `PAR` et sans prix, `CR14` n'est qu'une ligne de routage | `camille-po` | p2-6 engage sans story, ecart dit ici ; `PAR-16` n'est pas assoupli |
+| `Q-S6` | Compte des reports a l'ouverture : A.66 ou section 9 de la composition (section 8 de cet amendement) | `camille-po` | A.66 appliquee |
+| `Q-S7` | `E3` est-elle une porte de tout le palier, comme ma cloture l'avait ecrit, ou des deux seuls postes qui reprennent le code de B1 ? | utilisatrice, routee par `sofia-sm` | porte des postes p2-7 et p2-12 seulement |
+| `Q-S8` | Forme de la correction de l'item *livre* | `nadia-prof` | commit de p2-4 en attente |
+| `Q-S9` | Voie de `VSJ-CE1-R2` : la forme commune (aucun developpeur) ou les textes (`marc-dev`) | `nadia-prof` | p2-11 non engage |
+| `Q-P3`, `Q-P4`, `Q-P5`, `Q-P6`, `Q-P7`, `Q-R7`, `Q-B2` | ouvertes dans `composition-palier-2.md` section 7 et le backlog | voir section 7 | voir section 7 |
+| `Q4` de `theo-archi` | crochet du harnais sur les redirections du shell | utilisatrice, `theo-archi` | la consigne de la section 6, sans decision de crochet |
+| mots de `Q-N4` et `S2` | absents du depot (`P5` de la cloture) | agent lanceur | rien n'en depend a l'ouverture, sauf le regime du pli (arbitrage, section 9) |
+
+### 11. Ce que cet amendement ne fait pas
+
+N'ouvre aucun worktree, ne lance aucun agent, ne fusionne rien. N'engage ni p2-7 a p2-12 ni les quatre stories a prix 0. Ne modifie aucun prix, aucun lot, aucun critere de story. Ne prononce aucun Done, ne juge aucun contenu, ne touche pas la matrice (146 / 200, `DEC-0120` A.91). Ne decide aucun crochet. Ne tranche ni `Q-S4`, ni `Q-S6`, ni `Q-S7`. Ne modifie aucun fichier signe : `planning.md` s'amende par cette annotation datee, comme sa section "Duree" l'a prevu (`D2`).
+
+### 12. Jobs de `ci.yml` lances pour ce commit
+
+Lances sur ce worktree, avec ce fichier modifie, avant commit. Je ne deduis aucun job que je n'ai pas lance.
+
+- **`prefixes`** : `verifier-prefixes-test.sh` sort 0 (*"Tous les cas passent : le garde-fou de prefixes mord, et sur le bon motif."*), `commit-atteignable-test.sh` sort 0, `verifier-garde-fou-accent-test.sh` sort 0 (21 cas) ; le sujet prevu du commit et les sujets de `0cdccb62~3..HEAD` passent dans `verifier-prefixes.sh` : *"Tous les commits portent un prefixe d'agent connu."*, sortie 0. L'etape *"Verifier le proprietaire du garde-fou de l'accent"* n'est pas lancee : aucun de ses chemins n'est touche.
+- **`chemins`** : `verifier-chemins-test.sh` sort 0 ; `git ls-files` (moins le test du garde-fou), ce fichier modifie compris, passe a `verifier-chemins.sh` : *"Aucun chemin de poste de travail ni nom de compte dans les fichiers verifies."*, sortie 0.
+- **`outils`** : les trois balayages (`outils/*-test.sh` : 5 ; `squad/outils/*/*-test.sh` : 2 ; `outils/*-test.py` : 5), 12 juges lances avec `python`, 12 sortis 0, aucun balayage vide. Lance bien qu'aucun outil ne soit modifie, parce que la porte technique nomme ses jobs.
+- **`build`** : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, sans `-pl` : `BUILD SUCCESS`, exit 0, 3 min 46 s. **2597 tests, 0 echec, 0 erreur, 0 ignore** : domain 120, application 31, adapter-web 492, adapter-content 1567, bootstrap 381, integration 6, somme recomptee par `awk`. JDK 21.0.10 (`java.version` de 60 rapports Surefire de `bootstrap`, une seule valeur). Le total egale celui de `e7497db7` : ce commit ne change ni code ni contenu. Des tests de `bootstrap` lisent `squad/` et `docs/` : le build a lu ce fichier avant l'ajout de la presente section, qui ne contient aucun tableau.
+- **Etape "Package du fat jar"** : non lancee.
+
+Aucun de ces resultats n'est celui de la CI distante, que je n'ai pas lue.
+
+### 13. Decisions prises
+
+**Aucune `ADR` ni `DEC` n'est creee ou amendee par cet amendement.** Il ecrit : l'heure d'ouverture du palier 2 ; la composition de `camille-po` portee, sans changement de prix ; les affectations nominatives de p2-3, p2-4, p2-5, p2-6 et les developpeurs nommes de p2-7 a p2-12 ; la regle de reaffectation de `RDO-CP-R3` ; la table d'isolation du palier 2 et la consigne ecrite sur la racine du scratchpad ; l'ordre de la chaine de la forme et la base de la cote ; le compte des reports a l'ouverture. **L'amendement de `DEC-0120` qui porte la composition** (precedent : A.53 a A.62) est a `camille-po` : les proprietaires qu'elle attendait sont nommes ici (`composition-palier-2.md`, section 9, derniere phrase).
