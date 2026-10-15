@@ -4,21 +4,23 @@ squad/sprints/s57-version-cp-ce1-cm1-trois-instances/avis-theo-poste-8-art-cp-10
 
 Ce que ce script juge : des cotes, lues dans le JSON que squad/conformite/releves-s57/pilote-poste-8.mjs
 ecrit (largeur -> item -> etat -> mesure). Il ne juge ni la coupure du verdict, ni la taille rendue des
-reproductions, ni le decalage lateral des cases (avis, 4.2, dernier paragraphe), ni la pedagogie : le verdict
-pedagogique reste a nadia-prof.
+reproductions, ni le decalage lateral entre deux largeurs disponibles differentes (clientW, barre de
+defilement : avis, annexe E), ni la pedagogie : le verdict pedagogique reste a nadia-prof.
 
 Regles, telles que l'avis les definit :
-  J1  completude : hauteur 551 sur toute mesure ; largeurs 744 et 992 presentes ; a chaque largeur autant
-      d'items que le paquet en porte (compte lu sur le YAML du paquet, jamais ecrit ici), chacun avec
-      fraiche, echec1 et revelation. Un releve incomplet sort 1.
+  J1  completude : hauteur 551 et clientW numerique sur toute mesure ; largeurs 744 et 992 presentes ; a
+      chaque largeur autant d'items que le paquet en porte (compte lu sur le YAML du paquet, jamais ecrit
+      ici), chacun avec fraiche, echec1 et revelation. Un releve incomplet sort 1.
   J2  barre du refus : a 744, revelation, bas de m4 au plus 551 sur chaque item.
   J3  RDO-CP-R1, imprime a part de J2 (un echec de J3 seul est une reserve, pas un refus) : a 744, bas de
       indice au plus 551 a chaque echec ; a 992, bas de chaque marque au plus 551 a chaque echec.
   J4  veto de nadia-prof : a chaque largeur de 720 et plus, la boite de messageJeu commence sous le bas de
       cabinet et tient entre son bord gauche et son bord droit, a 1 px pres.
-  J5  C1' et N6 : par item, haut, largeur et hauteur des cases identiques dans tous les etats ; haut, gauche et
-      largeur de cabinet identiques dans tous les etats ; hauteur de cabinet identique entre deux etats qui ont
-      tous deux au moins une case essayee, ou tous deux aucune.
+  J5  C1' et N6 (avis, annexe E.4 et E.5) : par item, haut des cases et haut de cabinet identiques dans tous
+      les etats ; largeur et hauteur des cases, gauche et largeur de cabinet identiques entre deux etats de
+      meme clientW ; hauteur de cabinet identique entre deux etats de meme clientW qui ont tous deux au
+      moins une case essayee, ou tous deux aucune. Les ecarts de ces quatre cotes entre clientW differents
+      sont imprimes hors verdict (barre de defilement) et ne changent ni le verdict ni la sortie.
 
 Conventions du juge, la ou l'avis ne dit rien : une cote absente d'un etat qu'une regle doit lire est un
 echec (un releve a trous ne passe pas vert, comme J1 le pose) ; "au plus 551" est une comparaison large ;
@@ -57,13 +59,15 @@ PAQUET_PAR_DEFAUT = (
 
 
 class Verdict:
-    def __init__(self, code, titre, ok, resume, lignes=None, reserve=False):
+    def __init__(self, code, titre, ok, resume, lignes=None, reserve=False, hors_verdict=None, infos=None):
         self.code = code
         self.titre = titre
         self.ok = ok
         self.resume = resume
         self.lignes = lignes or []
         self.reserve = reserve
+        self.hors_verdict = hors_verdict or []
+        self.infos = infos or []
 
 
 def compter_items_paquet(texte):
@@ -122,6 +126,11 @@ def _cote(mesure, boite, cle):
     return v if isinstance(v, (int, float)) else None
 
 
+def _client_w(mesure):
+    v = mesure.get("clientW") if isinstance(mesure, dict) else None
+    return v if isinstance(v, (int, float)) and not isinstance(v, bool) else None
+
+
 def _num(v):
     return ("%g" % v) if v is not None else "absente"
 
@@ -154,11 +163,13 @@ def juger_j1(releve, nb_items):
                     lignes.append("%d %s : etat %s absent" % (w, src, requis))
             for nom, m in etats.items():
                 mesures += 1
+                if _client_w(m) is None:
+                    lignes.append("%d %s %s : clientW absent" % (w, src, nom))
                 if m.get("innerH") != HAUTEUR_FENETRE:
                     lignes.append(
                         "%d %s %s : hauteur de fenetre %s, %d attendue" % (w, src, nom, _num(m.get("innerH")), HAUTEUR_FENETRE)
                     )
-    resume = "largeurs %s, %d items par largeur (paquet : %d), hauteur %d sur %d mesures" % (
+    resume = "largeurs %s, %d items par largeur (paquet : %d), hauteur %d et clientW sur %d mesures" % (
         ", ".join(map(str, presentes)), nb_items, nb_items, HAUTEUR_FENETRE, mesures,
     )
     return Verdict("J1", titre, not lignes, resume, lignes)
@@ -284,17 +295,41 @@ def _essayees(mesure):
 
 
 def juger_j5(releve):
-    titre = "C1' et N6 (cases : haut, largeur, hauteur ; cabinet : haut, gauche, largeur, hauteur par groupe)"
+    titre = "C1' et N6 (hauts partout ; largeur, hauteur, gauche a clientW egal ; hauteur de cabinet par groupe)"
     if not _forme_valide(releve):
         return _non_juge("J5", titre, "releve sans la forme attendue")
     ecarts = {}  # (largeur, critere, valeur de reference, valeur divergente) -> (mesures, items)
+    hors = {}  # (largeur, critere, clientW de reference, clientW divergent, ref, val) -> (mesures, items)
     comparees = 0
+    horizontales = 0
+    groupes_par_largeur = {}  # largeur -> {clientW: [noms d'etats, dans l'ordre d'apparition]}
 
     def noter(w, src, critere, ref, val):
         cle = (w, critere, ref, val)
         mesures, items = ecarts.get(cle, (0, set()))
         items.add(src)
         ecarts[cle] = (mesures + 1, items)
+
+    def noter_hors(w, src, critere, cw_ref, cw, ref, val):
+        cle = (w, critere, cw_ref, cw, ref, val)
+        mesures, items = hors.get(cle, (0, set()))
+        items.add(src)
+        hors[cle] = (mesures + 1, items)
+
+    def horizontales_divergentes(cr, cm):
+        """(critere, reference, valeur) des cotes horizontales qui different, a TOLERANCE_J5 pres."""
+        sortie = []
+        if len(cr["cases"]) == len(cm["cases"]):
+            for br, bm in zip(cr["cases"], cm["cases"]):
+                for crit, cle in (("cases.largeur", "w"), ("cases.hauteur", "h")):
+                    a, b = (br.get("box") or {}).get(cle), (bm.get("box") or {}).get(cle)
+                    if a is None or b is None or abs(a - b) > TOLERANCE_J5:
+                        sortie.append((crit, _num(a), _num(b)))
+        for crit, cle in (("cabinet.gauche", "left"), ("cabinet.largeur", "w")):
+            a, b = _cote(cr, "cabinet", cle), _cote(cm, "cabinet", cle)
+            if a is None or b is None or abs(a - b) > TOLERANCE_J5:
+                sortie.append((crit, _num(a), _num(b)))
+        return sortie
 
     for w, items in _largeurs(releve):
         for src, item in items.items():
@@ -304,7 +339,16 @@ def juger_j5(releve):
             noms = list(etats)
             nom_ref = "fraiche" if "fraiche" in etats else noms[0]
             ref = etats[nom_ref]
-            groupes = {}
+            cw_ref = _client_w(ref)
+            premier_par_cw = {}  # clientW -> premier etat de ce clientW, la reference d'abord
+            for nom in [nom_ref] + [n for n in noms if n != nom_ref]:
+                cw = _client_w(etats[nom])
+                if cw is not None:
+                    premier_par_cw.setdefault(cw, nom)
+                    membres = groupes_par_largeur.setdefault(w, {}).setdefault(cw, [])
+                    if nom not in membres:
+                        membres.append(nom)
+            groupes_cabinet = {}  # (case essayee ou non, clientW) -> mesures
             for nom in noms:
                 m = etats[nom]
                 comparees += 1
@@ -312,26 +356,49 @@ def juger_j5(releve):
                     noter(w, src, "cases.nombre", len(ref["cases"]), len(m["cases"]))
                 else:
                     for cr, cm in zip(ref["cases"], m["cases"]):
-                        for crit, cle in (("cases.haut", "top"), ("cases.largeur", "w"), ("cases.hauteur", "h")):
-                            a, b = (cr.get("box") or {}).get(cle), (cm.get("box") or {}).get(cle)
-                            if a is None or b is None or abs(a - b) > TOLERANCE_J5:
-                                noter(w, src, crit, _num(a), _num(b))
-                for crit, cle in (("cabinet.haut", "top"), ("cabinet.gauche", "left"), ("cabinet.largeur", "w")):
-                    a, b = _cote(ref, "cabinet", cle), _cote(m, "cabinet", cle)
-                    if a is None or b is None or abs(a - b) > TOLERANCE_J5:
-                        noter(w, src, crit, _num(a), _num(b))
-                groupes.setdefault(_essayees(m) > 0, []).append((nom, m))
-            for membres in groupes.values():
-                ref_g = _cote(membres[0][1], "cabinet", "h")
-                for nom, m in membres[1:]:
+                        a, b = (cr.get("box") or {}).get("top"), (cm.get("box") or {}).get("top")
+                        if a is None or b is None or abs(a - b) > TOLERANCE_J5:
+                            noter(w, src, "cases.haut", _num(a), _num(b))
+                a, b = _cote(ref, "cabinet", "top"), _cote(m, "cabinet", "top")
+                if a is None or b is None or abs(a - b) > TOLERANCE_J5:
+                    noter(w, src, "cabinet.haut", _num(a), _num(b))
+                cw = _client_w(m)
+                if cw is None:
+                    continue  # J1 rougit : un etat sans clientW rend le releve incomplet
+                groupes_cabinet.setdefault((_essayees(m) > 0, cw), []).append(m)
+                ref_cw = etats[premier_par_cw[cw]]
+                if ref_cw is not m:
+                    horizontales += 1
+                    for crit, a, b in horizontales_divergentes(ref_cw, m):
+                        noter(w, src, crit, a, b)
+                if cw_ref is not None and cw != cw_ref:
+                    for crit, a, b in horizontales_divergentes(ref, m):
+                        noter_hors(w, src, crit, cw_ref, cw, a, b)
+            for membres in groupes_cabinet.values():
+                ref_g = _cote(membres[0], "cabinet", "h")
+                for m in membres[1:]:
                     h = _cote(m, "cabinet", "h")
                     if ref_g is None or h is None or abs(ref_g - h) > TOLERANCE_J5:
                         noter(w, src, "cabinet.hauteur", _num(ref_g), _num(h))
     lignes = []
     for (w, critere, ref, val), (mesures, items) in sorted(ecarts.items()):
         lignes.append("%d %s : %s puis %s (%d mesures, %d items)" % (w, critere, ref, val, mesures, len(items)))
-    resume = "%d mesures comparees a leur etat de reference" % comparees
-    return Verdict("J5", titre, not lignes, resume, lignes)
+    lignes_hors = []
+    for (w, critere, cw_ref, cw, ref, val), (mesures, items) in sorted(hors.items()):
+        lignes_hors.append(
+            "hors verdict (barre de defilement) : %d %s : %s puis %s (clientW %s puis %s, %d mesures, %d items)"
+            % (w, critere, ref, val, _num(cw_ref), _num(cw), mesures, len(items))
+        )
+    infos = []
+    for w in sorted(groupes_par_largeur):
+        groupes = " ; ".join(
+            "clientW %s (%s)" % (_num(cw), ", ".join(noms)) for cw, noms in groupes_par_largeur[w].items()
+        )
+        infos.append("%d, groupes d'etats de meme clientW : %s" % (w, groupes))
+    resume = "%d mesures comparees pour les hauts, %d comparaisons horizontales entre etats de meme clientW" % (
+        comparees, horizontales,
+    )
+    return Verdict("J5", titre, not lignes, resume, lignes, hors_verdict=lignes_hors, infos=infos)
 
 
 def juger(releve, nb_items):
@@ -350,6 +417,10 @@ def formater(verdicts):
         etat = "OK" if v.ok else ("ROUGE (reserve)" if v.reserve else "ROUGE")
         sortie.append("%s %s - %s : %s" % (v.code, etat, v.titre, v.resume))
         for ligne in v.lignes:
+            sortie.append("    - " + ligne)
+        for info in v.infos:
+            sortie.append("    . " + info)
+        for ligne in v.hors_verdict:
             sortie.append("    - " + ligne)
     echecs = [v.code for v in verdicts if not v.ok]
     sortie.append("VERDICT DES COTES : " + ("tout passe" if not echecs else "rouge sur " + ", ".join(echecs)))

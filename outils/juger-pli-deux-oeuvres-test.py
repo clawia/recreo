@@ -40,7 +40,7 @@ def boite(top, left, w, h):
     return {"top": top, "bottom": top + h, "left": left, "right": left + w, "w": w, "h": h}
 
 
-def mesure(nom, largeur, essayees, m4_bas=None, indice_bas=None, marques_bas=None):
+def mesure(nom, largeur, essayees, m4_bas=None, indice_bas=None, marques_bas=None, client_w=None):
     """Une mesure conforme : cases immobiles, cabinet dont seule la hauteur depend de la presence d'une
     case essayee (O1), message sous le cabinet et dans ses bords."""
     cab_h = 224 if essayees else 184
@@ -50,7 +50,7 @@ def mesure(nom, largeur, essayees, m4_bas=None, indice_bas=None, marques_bas=Non
         for i in range(3)
     ]
     m = {
-        "innerW": largeur, "innerH": 551, "cabinet": cabinet, "cases": cases,
+        "innerW": largeur, "clientW": largeur if client_w is None else client_w, "innerH": 551, "cabinet": cabinet, "cases": cases,
         "messageJeu": None, "m4": None, "indice": None, "marques": [],
     }
     if nom != "fraiche":
@@ -145,6 +145,18 @@ class J1Completude(unittest.TestCase):
                 del it["echec2"]
                 del it["juste1"]
         self.assertTrue(verdict(r, "J1").ok)
+
+    def test_annexe_e_6_v_un_etat_sans_clientw_numerique_est_rouge_et_nomme_l_etat(self):
+        for invalide in ("absent", None, "744", True):
+            r = releve_conforme()
+            mesure_ = r["768"]["/oeuvres/oeuvre-1.jpg"]["echec2"]
+            if invalide == "absent":
+                del mesure_["clientW"]
+            else:
+                mesure_["clientW"] = invalide
+            v = verdict(r, "J1")
+            self.assertFalse(v.ok, invalide)
+            self.assertIn("768 /oeuvres/oeuvre-1.jpg echec2 : clientW absent", v.lignes, invalide)
 
     def test_un_releve_qui_n_a_pas_la_forme_du_pilote_est_rouge(self):
         for r in ([{"largeur": 720, "variante": "A"}], {}, {"744": []}, "texte"):
@@ -328,6 +340,7 @@ class J5Geometrie(unittest.TestCase):
 
     def test_la_largeur_d_une_case_qui_bouge_est_rouge(self):
         r = self.modifier(744, "revelation", lambda m: m["cases"][0]["box"].update(w=139))
+        self.assertFalse(verdict(r, "J5").ok)
         self.assertTrue(any("cases.largeur" in ligne for ligne in verdict(r, "J5").lignes))
 
     def test_la_hauteur_d_une_case_qui_bouge_est_rouge(self):
@@ -338,13 +351,107 @@ class J5Geometrie(unittest.TestCase):
         r = self.modifier(744, "echec1", lambda m: m["cases"][0]["box"].update(top=260.1))
         self.assertFalse(verdict(r, "J5").ok)
 
-    def test_le_decalage_lateral_des_cases_n_est_pas_juge(self):
-        def decaler(m):
-            for c in m["cases"]:
-                c["box"]["left"] -= 7.5
-                c["box"]["right"] -= 7.5
+    @staticmethod
+    def decaler(m, client_w=None):
+        """Le decalage de 7,5 px du meuble et des cases (centrage sous une barre de 15 px, annexe E.2)."""
+        for boite_ in [m["cabinet"]] + [c["box"] for c in m["cases"]]:
+            boite_["left"] -= 7.5
+            boite_["right"] -= 7.5
+        if client_w is not None:
+            m["clientW"] = client_w
 
-        self.assertTrue(verdict(self.modifier(744, "echec1", decaler), "J5").ok)
+    def test_annexe_e_6_i_decalage_de_7_5_px_avec_clientw_reduit_de_15_est_vert_et_imprime_hors_verdict(self):
+        r = self.modifier(744, "echec1", lambda m: self.decaler(m, client_w=729))
+        v = verdict(r, "J5")
+        self.assertTrue(v.ok, v.lignes)
+        self.assertTrue(
+            any(
+                ligne.startswith("hors verdict (barre de defilement) : 744 cabinet.gauche")
+                and "224 puis 216.5" in ligne and "clientW 744 puis 729" in ligne
+                for ligne in v.hors_verdict
+            ),
+            v.hors_verdict,
+        )
+        self.assertEqual([], v.lignes)
+
+    def test_annexe_e_6_ii_le_meme_decalage_a_clientw_egal_est_rouge(self):
+        r = self.modifier(744, "echec1", self.decaler)
+        v = verdict(r, "J5")
+        self.assertFalse(v.ok)
+        self.assertTrue(any("cabinet.gauche" in ligne and "216.5" in ligne for ligne in v.lignes), v.lignes)
+        self.assertEqual([], v.hors_verdict)
+
+    def test_annexe_e_6_ii_le_decalage_du_meuble_seul_a_clientw_egal_est_rouge(self):
+        r = self.modifier(744, "juste1", lambda m: m["cabinet"].update(left=216.5, right=712.5))
+        self.assertFalse(verdict(r, "J5").ok)
+
+    def test_annexe_e_6_iii_des_cases_de_139_contre_144_a_clientw_egal_sont_rouges(self):
+        def reduire(m):
+            for c in m["cases"]:
+                c["box"].update(w=139, h=139)
+
+        v = verdict(self.modifier(720, "echec2", reduire), "J5")
+        self.assertFalse(v.ok)
+        self.assertTrue(any("cases.largeur" in ligne and "144 puis 139" in ligne for ligne in v.lignes), v.lignes)
+        self.assertTrue(any("cases.hauteur" in ligne for ligne in v.lignes), v.lignes)
+
+    def test_les_cases_de_139_a_clientw_reduit_sont_vertes_et_imprimees_hors_verdict(self):
+        def reduire(m):
+            m["clientW"] = 705
+            m["cabinet"].update(w=481, right=224 + 481)
+            for c in m["cases"]:
+                c["box"].update(w=139, h=139)
+
+        r = releve_conforme()
+        for etat in ("echec1", "echec2", "revelation"):
+            reduire(r["720"]["/oeuvres/oeuvre-1.jpg"][etat])
+        v = verdict(r, "J5")
+        self.assertTrue(v.ok, v.lignes)
+        crits = " ".join(v.hors_verdict)
+        for crit in ("cases.largeur", "cases.hauteur", "cabinet.largeur"):
+            self.assertIn(crit, crits)
+
+    def test_annexe_e_6_iv_un_haut_de_case_different_a_clientw_different_est_rouge(self):
+        r = self.modifier(744, "revelation", lambda m: (m["cases"][0]["box"].update(top=263), m.update(clientW=729)))
+        v = verdict(r, "J5")
+        self.assertFalse(v.ok)
+        self.assertTrue(any("cases.haut" in ligne for ligne in v.lignes), v.lignes)
+
+    def test_un_haut_de_cabinet_different_a_clientw_different_est_rouge(self):
+        r = self.modifier(744, "echec1", lambda m: (m["cabinet"].update(top=241), m.update(clientW=729)))
+        v = verdict(r, "J5")
+        self.assertTrue(any("cabinet.haut" in ligne for ligne in v.lignes), v.lignes)
+
+    def test_la_hauteur_du_cabinet_se_compare_par_groupe_case_essayee_et_clientw(self):
+        r = releve_conforme()
+        for etat in ("echec1", "echec2", "revelation"):
+            r["744"]["/oeuvres/oeuvre-0.jpg"][etat]["clientW"] = 729
+            r["744"]["/oeuvres/oeuvre-0.jpg"][etat]["cabinet"]["h"] = 230
+        self.assertTrue(verdict(r, "J5").ok)
+        r["744"]["/oeuvres/oeuvre-0.jpg"]["echec2"]["cabinet"]["h"] = 231
+        v = verdict(r, "J5")
+        self.assertFalse(v.ok)
+        self.assertTrue(any("cabinet.hauteur" in ligne for ligne in v.lignes), v.lignes)
+
+    def test_la_hauteur_du_cabinet_a_clientw_different_n_est_pas_comparee(self):
+        r = releve_conforme()
+        r["744"]["/oeuvres/oeuvre-0.jpg"]["juste1"]["clientW"] = 729
+        r["744"]["/oeuvres/oeuvre-0.jpg"]["juste1"]["cabinet"]["h"] = 190
+        self.assertTrue(verdict(r, "J5").ok)
+
+    def test_le_resume_donne_les_comparaisons_horizontales_et_les_groupes_par_largeur(self):
+        r = releve_conforme(largeurs=(744, 992))
+        for it in r["744"].values():
+            for etat in ("echec1", "echec2", "revelation"):
+                it[etat]["clientW"] = 729
+        v = verdict(r, "J5")
+        # par item a 744 : 5 etats, 2 groupes (744 : fraiche, juste1 ; 729 : 3 echecs) -> 3 comparaisons ; a 992 : 4
+        self.assertIn("%d comparaisons horizontales" % (3 * (3 + 4)), v.resume)
+        info744 = [i for i in v.infos if i.startswith("744")]
+        self.assertEqual(1, len(info744))
+        self.assertIn("clientW 744 (fraiche, juste1)", info744[0])
+        self.assertIn("clientW 729 (echec1, echec2, revelation)", info744[0])
+        self.assertTrue(any(i.startswith("992") for i in v.infos))
 
     def test_le_nombre_de_cases_qui_change_est_rouge(self):
         r = self.modifier(744, "echec1", lambda m: m["cases"].pop())
@@ -468,6 +575,17 @@ class Commande(unittest.TestCase):
         self.assertEqual(2, code)
         self.assertEqual(2, self.lancer("{pas du json")[0])
         self.assertEqual(2, self.lancer(releve_conforme(), paquet=self.dir / "absent.yaml")[0])
+
+    def test_les_ecarts_hors_verdict_sont_imprimes_et_laissent_la_sortie_a_0(self):
+        r = releve_conforme()
+        for etat in ("echec1", "echec2", "revelation"):
+            m = r["744"]["/oeuvres/oeuvre-0.jpg"][etat]
+            J5Geometrie.decaler(m, client_w=729)
+            m["messageJeu"].update(left=m["messageJeu"]["left"] - 7.5, right=m["messageJeu"]["right"] - 7.5)
+        code, sortie = self.lancer(r)
+        self.assertEqual(0, code)
+        self.assertIn("hors verdict (barre de defilement) : 744 cabinet.gauche", sortie)
+        self.assertIn("VERDICT DES COTES : tout passe", sortie)
 
     def test_le_compte_du_paquet_fait_foi_a_l_execution(self):
         self.paquet.write_text("items:\n" + "  - a: 1\n" * (NB_ITEMS + 1), encoding="utf-8")
