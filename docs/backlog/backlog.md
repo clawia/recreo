@@ -22776,3 +22776,216 @@ Les codes `CR28` a `CR31` suivent `CR27` (annotation du 2026-10-16 15:30) ; une 
 | `CR31` | Ecrire la correction : paquet, table de genre, jeu fautif de `TRV-CE1-6` ; lancer `PN8-7` a `PN8-14` sur son commit et nommer les jobs de `ci.yml` qu'il a lances | `marc-dev` |
 
 **Ce qui reste a faire de mon cote, non fait ici** : la ligne de statut en tete de `FICHE-bandit-manchot-pronoms-ce1.md` (`nadia-prof` la route a `camille-po`, rejeu, section 4). La fiche porte son verdict sur la branche `s57-nadia-p2-a2`, non fusionnee : la toucher ici ferait un conflit. Je la mets a jour apres cette fusion.
+
+
+## Voies de `PA7` et `PA8` ecrites en criteres, `FM5-6` a base explicite, `FM3` amendee, retrait du paquet refuse de `-05` (`camille-po`, 2026-10-16 17:40, palier 2)
+
+Annotation datee, sur `round-two` a `78270b4c`. **Rien au-dessus n'est reecrit** ; ce qui est amende est nomme. Sources : `reponse-nadia-pa7-pa8.md` (sections 1.4, 2.4, 2.5, 4), `avis-theo-pa7-pa8.md` (2.4, 3.4), `planning.md` (amendement du 2026-10-16 16:59, sections 3 et 4), `rapport-qualite-lot-24.md` (`E4`), `DEC-0045` section 3, `DEC-0055`.
+
+**Ce que j'ai mesure, et ou.** Une copie jetable de `round-two` a `78270b4c`, hors depot, dans mon repertoire de mesure, avec un commit de mesure par histoire (cinq fichiers pour `RDO-CP-R3`, un fichier pour `RCT-CE1-R1`) ; le depot reel n'est pas touche. Les commandes git ci-dessous sont lancees sur `78270b4c` (rouge ou clause) et sur la copie (vert). Les commandes Maven nomment leur perimetre : `-am` partout, **mesure partielle, pas la porte technique**. La porte, `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, a ete lancee sur chaque copie : `BUILD SUCCESS`, **2669 tests, 0 echec** (120, 31, 501, 1630, 381 et 6 d'integration, somme par `awk` des lignes `Tests run` du reacteur), JDK 21.0.10. Les trois autres jobs de `ci.yml` et les cotes de pixels ne sont pas lances par moi.
+
+**Ce que je n'ai pas fait** : jouer un jar, mesurer une largeur de phrase ou une cote d'indice dans un navigateur (`191 px` pour une colonne de 229 ou 244 px est la mesure de `nadia-prof`, reprise sans la remesurer), juger un texte.
+
+### `S57-RDO-CP-R3` : critere 4 remplace, critere 6 precise
+
+**Critere 4 remplace (le texte conditionnel *"Si la voie (iii) est retenue..."* est retire : elle l'est, `NP4`).**
+
+4. **La phrase de la voie (iii), mots de `nadia-prof`** (`reponse-nadia-pa7-pa8.md` 2.4) : `.reponse-revelee`, pour un ecran a propositions en image, a la revelation, porte exactement *"Voici la bonne œuvre. Appuie dessus."* Forme d'`ADR-0067`, amendement du 2026-10-15, inchangee : **U+00A0 entre les mots d'une meme phrase** (ecrite `&nbsp;` dans le gabarit, jamais le caractere tape), **une seule espace ordinaire entre les deux phrases**. Soit trois U+00A0 dans la premiere phrase (quatre mots) et une dans la seconde (deux mots). **Verifie dans le fichier de `nadia-prof`** : sa ligne 122 (`sed -n 122p reponse-nadia-pa7-pa8.md`) porte des espaces ordinaires (0x20 partout, aucun 0xC2 0xA0) et *œ* en U+0153 (octets c5 93) : le fichier note la phrase en Markdown, la forme des espaces est celle de l'`ADR` et de `NP4` (*"Forme d'`ADR-0067`, inchangee"*). Aucun mot ni signe ne differe entre sa ligne et le texte ci-dessus.
+
+Commandes (`<ref>` = le commit a juger, `<C>` = le commit livre, base ecrite en SHA : `78270b4c`). `G` = `adapters/adapter-web/src/main/resources/templates/fragments/manche.html`. `OE` s'obtient par `OE=$(printf '\305\223uvre')` : les commandes restent en ASCII et ne dependent pas de la locale.
+
+```
+RD3-1  git show <ref>:G | grep -cF ">Voici&nbsp;la&nbsp;bonne&nbsp;${OE}. Appuie&nbsp;dessus.</p>"
+RD3-2  git show <ref>:G | grep -cF "C'est&nbsp;cette&nbsp;${OE}&nbsp;qui&nbsp;va&nbsp;avec."
+RD3-3  git show <ref>:G | grep -cF "$(printf '\302\240')"
+RD3-4  git grep -l -F "cette ${OE} qui va avec" <ref> -- adapters bootstrap | wc -l
+RD3-5  git show <ref>:adapters/adapter-web/src/test/java/com/recreo/adapter/web/LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest.java | grep -cF -e "PHRASE_DE_M4 = \"Voici la bonne ${OE}. Appuie dessus.\"" -e "PREMIERE_PHRASE = \"Voici la bonne ${OE}.\"" -e 'SECONDE_PHRASE = "Appuie dessus."'
+```
+
+| Code | Attendu | `78270b4c` (rouge ou clause) | Copie corrigee |
+|---|---|---|---|
+| `RD3-1` (gabarit : la phrase neuve, une fois) | **1** | 0, **rouge** | 1 |
+| `RD3-2` (gabarit : la phrase d'avant) | **0** | 1, **rouge** | 0 |
+| `RD3-3` (U+00A0 tapee dans le gabarit) | **0** | 0, clause | 0 |
+| `RD3-4` (fichiers qui citent encore l'ancienne phrase) | **0** | 4, **rouge** (les quatre fichiers de test) | 0 |
+| `RD3-5` (les trois constantes du garde-fou de `D.4`) | **3** | 1 (`SECONDE_PHRASE` seule), **rouge** | 3 |
+
+**Les constantes du garde-fou changent avec le texte, sans amendement d'`ADR`** (`avis-theo-pa7-pa8.md` 2.4 : `D.4` dit la forme, pas les mots). Les deux comptes litteraux changent : **cinq U+00A0 dans la premiere phrase devient trois**, la seconde garde une. C'est un fait de mesure et pas une inference : sur la copie, le garde-fou ecrit `!= 3` et son message *"trois attendues"* ; avec les constantes d'avant, le garde-fou lirait cinq et rougirait sur le texte juste.
+
+**Les cinq fichiers changent ensemble, et la mesure le montre.** Copie ou le seul gabarit change (les quatre tests gardent l'ancienne phrase) : `adapter-web`, 16 tests, **4 echecs** (le garde-fou de `D.4`, `PartieControllerPropositionsEnImageTest`, deux dans `TexteAccentueDesGabaritsTest`) ; `bootstrap`, 14 tests, **3 echecs** (`LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`). Les quatre tests sont `lea-dev` a ecrire dans le meme commit que le gabarit.
+
+**Critere 4 bis, les quatre classes sont vertes sur le commit livre** (perimetre : les modules nommes et leurs amonts) :
+
+```
+bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test -Dtest=LaPhraseDeRevelationDUneMancheEnImageNeSeCoupeJamaisDansUnePhraseTest,TexteAccentueDesGabaritsTest,PartieControllerPropositionsEnImageTest -Dsurefire.failIfNoSpecifiedTests=false
+bash outils/mvn-jdk21.sh -B -pl bootstrap -am test -Dtest=LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest -Dsurefire.failIfNoSpecifiedTests=false
+```
+
+Sorties : `78270b4c` **16 tests, 0 echec** puis **14 tests, 0 echec** (clause, verte sur l'ancienne phrase : ces deux commandes ne distinguent pas l'ancien du neuf, `RD3-1` a `RD3-5` le font) ; copie corrigee, memes chiffres. **Morsure** (copie corrigee, une espace ordinaire remise entre *Voici* et *la* dans le gabarit) : le garde-fou de `D.4` rend `Tests run: 2, Failures: 1`, message *"espace ordinaire qui ne suit pas une fin de phrase, en position 5"* ; le rapport de `lea-dev` cite le nom du test et le nombre de tests lances, puis le fichier est restaure.
+
+**Critere 7 (neuf) : la feuille de style et les autres ecrans ne sont pas touches** (`avis-theo-pa7-pa8.md` 2.4 : la voie (iii) ne touche *"aucune feuille, aucun autre ecran"*). Sortie sur le commit livre `<C>` :
+
+```
+RD3-6  git diff-tree --no-commit-id --name-only -r <C> | wc -l
+RD3-7  git diff-tree --no-commit-id --name-only -r <C> | grep -c 'static/css/'
+RD3-8  git diff-tree --no-commit-id --name-only -r <C> | grep '^adapters/adapter-web/src/main/resources/templates/' | grep -vc 'fragments/manche\.html$'
+RD3-9  git diff -U0 78270b4c <C> -- G | grep -cE '^[-+][^-+]'
+RD3-10 git diff -U0 78270b4c <C> -- G | grep -E '^[-+][^-+]' | grep -vcF 'class="reponse-revelee" th:if="${propositionsEnImage == true and mancheRevelee == true}">'
+```
+
+Attendus : `RD3-6` **5** (le gabarit et les quatre tests), `RD3-7` **0**, `RD3-8` **0**, `RD3-9` **2** (la ligne de la revelation retiree et reecrite), `RD3-10` **0**. Sur la copie : 5, 0, 0, 2, 0. **Aujourd'hui** : aucun commit livre, `RD3-6` ne se lit pas sur `78270b4c` (le commit de `sofia-sm` en nomme un autre) ; `RD3-9` rend 0 sur `78270b4c` (**rouge**, aucune edition) ; `RD3-7`, `RD3-8` et `RD3-10` sont des bornes, vertes par construction. La liste de cinq fichiers est celle de `planning.md` (amendement du 16:59, section 4) et de `git grep -l` ; la porte `clean verify` rend vert avec ces cinq seuls (ci-dessus). Si `lea-dev` doit en toucher un sixieme, son rapport le dit et le nomme, et `RD3-6` s'amende, pas la mesure.
+
+**Forme valable apres fusion.** `RD3-9` et `RD3-10` lisent `78270b4c` comme base : ils valent pour le commit livre, pour la fusion et pour `round-two` **tant qu'aucun autre commit ne touche `G`** (precondition : `git log --oneline 78270b4c..<ref> -- G | wc -l` rend **1**). Au-dela, ou pour juger la fusion `<F>` seule : `git diff -U0 <F>^1 <F> -- G | grep -cE '^[-+][^-+]'` rend **2**, precondition `git rev-list --parents -n1 <F> | wc -w` rend **3** (fusion non fast-forward ; en avance rapide, lire `<C>`). Sur une fusion simulee dans la copie : 2, 0 (`static/css/`), 5 fichiers. `RD3-1` a `RD3-5` lisent `<ref>` et valent pour n'importe quel commit.
+
+**Critere 6 precise : le critere ecrit ne peut pas etre tenu avec le critere 4.** Le critere 6 dit : `git diff <base> HEAD -- <son fichier> | grep -E '^-.*assert'` ne rend aucune ligne. Sur la copie corrigee, qui tient le critere 4, la commande rend **6 lignes** : six `assertThat(defauts(...))` du second test du garde-fou portent la phrase d'avant et doivent porter la neuve. C'est une propriete mal ecrite par moi, pas un defaut de la copie : le critere 6 voulait qu'aucune assertion ne disparaisse, pas qu'aucun texte ne change. **Remplace**, pour la voie (iii), la commande par un compte qui ne bouge pas, sur les quatre fichiers (`<T1>` = le garde-fou de `D.4`) :
+
+```
+RD3-11 git show <ref>:<T1> | grep -c 'assertThat('        doit rendre 9
+RD3-12 git show <ref>:<T1> | grep -c 'isNotEmpty()'       doit rendre 6   (les six morsures du garde-fou)
+RD3-13 git show <ref>:<T1> | grep -c '@Test'               doit rendre 2
+```
+
+Et `grep -c 'assertThat('` rend **9, 22 et 23** sur `TexteAccentueDesGabaritsTest`, `PartieControllerPropositionsEnImageTest` et `LesPropositionsEnImageAtteignentLEcranSansJamaisSonIdentifiantTest`. **Vert aujourd'hui sur `78270b4c`** (9, 6, 2 et 9, 22, 23) : ce sont des clauses, elles rougissent le jour ou une assertion est retiree. Le reste du critere 6 (le garde-fou de `D.4` reste vert, compte ArchUnit inchange : 41 declarations, 38 `@ArchTest`) est inchange. **Critere 3 (a)**, qui cite *"C'est cette œuvre qui va avec."* : se lit sur la phrase neuve ; sa mesure, la position de chaque mot, est celle de `coupure-poste-8.mjs` et de `nadia-prof`, pas la mienne.
+
+**Prix, palier, rejeu** : inchanges (0,5, `lea-dev`, instance B), `planning.md` 16:59 section 4.
+
+### `S57-RCT-CE1-R1` : critere 3 remplace par la voie des textes, critere 4 inchange
+
+Le critere 3 offrait deux voies (la forme, ou des propositions plus courtes) ; **la voie des textes est choisie** (`NP1`) et la forme commune n'y suffisait pas (`CT3`). **Critere 3, remplace.** Dans `adapters/adapter-content/src/main/resources/contenu/ce1-texte-narratif.yaml` (`<YAML>`), sur les trois items designes par leur enonce, **mot pour mot de `reponse-nadia-pa7-pa8.md` 1.4** (apostrophe droite, comme le reste du paquet) :
+
+| Enonce | Champ | Texte exact |
+|---|---|---|
+| *Que fait Inès en dernier ?* | `bonneReponse` | `saute dans une flaque` |
+| | `distracteurs` | `["enfile ses bottes", "sort dehors"]` |
+| *Que fait Ibrahim en dernier ?* | `bonneReponse` | `s'assoit près de la fenêtre` |
+| | `distracteurs` | `["attend le bus", "monte"]` |
+| *Que se passe-t-il à la fin ?* | `bonneReponse` | `une fleur pousse` (inchangee) |
+| | `distracteurs` | `["Chloé plante une graine", "elle l'arrose"]` |
+
+**Enonces, textes support et indices inchanges.** Numeros comptes depuis 1 sur `- enonce:` (Inès 14, Ibrahim 18, Chloé 19 ; ce sont les 13, 17 et 18 de l'avis de `theo-archi`, comptes depuis 0). `<ref>` = le commit a juger, `<C>` = le commit livre, base en SHA `78270b4c`.
+
+```
+RC1-1  git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==14' | grep -cP '^  - enonce: "Que fait Inès en dernier\x{A0}\?"$|^    bonneReponse: "saute dans une flaque"$|^    distracteurs: \["enfile ses bottes", "sort dehors"\]$'
+RC1-2  git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==18' | grep -cP '^  - enonce: "Que fait Ibrahim en dernier\x{A0}\?"$|^    bonneReponse: "s\x27assoit près de la fenêtre"$|^    distracteurs: \["attend le bus", "monte"\]$'
+RC1-3  git show <ref>:<YAML> | awk '/^  - enonce:/{n++} n==19' | grep -cP '^  - enonce: "Que se passe-t-il à la fin\x{A0}\?"$|^    bonneReponse: "une fleur pousse"$|^    distracteurs: \["Chloé plante une graine", "elle l\x27arrose"\]$'
+RC1-4  git diff -U0 78270b4c <ref> -- <YAML> | grep -c '^@@'
+RC1-5  git diff -U0 78270b4c <ref> -- <YAML> | grep -cE '^[-+] '
+RC1-6  git diff -U0 78270b4c <ref> -- <YAML> | grep -cE '^[-+] +(enonce|texteSupport|indice):'
+RC1-7  git diff-tree --no-commit-id --name-only -r <C> | grep -vc '^adapters/adapter-content/src/main/resources/contenu/ce1-texte-narratif.yaml$'
+```
+
+| Code | Attendu | `78270b4c` | Copie corrigee |
+|---|---|---|---|
+| `RC1-1` (Inès : enonce et deux lignes) | **3** | 1, **rouge** | 3 |
+| `RC1-2` (Ibrahim) | **3** | 1, **rouge** | 3 |
+| `RC1-3` (Chloé : la bonne reponse est inchangee, le distracteur change) | **3** | 2, **rouge** | 3 |
+| `RC1-4` (hunks : Inès, Ibrahim, Chloé) | **3** | 0, **rouge** | 3 |
+| `RC1-5` (cinq lignes retirees, cinq ajoutees) | **10** | 0, **rouge** | 10 |
+| `RC1-6` (aucun enonce, texte support ni indice ne change) | **0** | 0, clause | 0 |
+| `RC1-7` (le seul fichier du commit) | **0** | non lisible (aucun commit livre) | 0 |
+
+`RC1-1` a `RC1-3` comptent l'enonce **et** les lignes de proposition : un enonce modifie fait baisser le compte. `RC1-6` est la preuve que les enonces, textes support et indices ne bougent pas, **par le diff**, sans reposer sur la forme des lignes. `RC1-4` a `RC1-6` sont des bornes : un chiffre different de 3, 10 et 0 signale une edition que `nadia-prof` n'a pas demandee. **Forme apres fusion** : precondition `git log --oneline 78270b4c..<ref> -- <YAML> | wc -l` rend **1** (lue : 1 sur la copie) ; pour la fusion `<F>` seule, `git diff -U0 <F>^1 <F> -- <YAML>` rend 3 hunks, 10 lignes et 0 pour `RC1-6` (fusion simulee dans la copie, `git rev-list --parents -n1 <F> | wc -w` rend 3).
+
+**Le test du paquet, vert dans le meme commit, sans assertion retiree.** Commande, perimetre `adapter-content` et ses amonts : `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-content -am test -Dtest=PaquetCe1TexteNarratifTest -Dsurefire.failIfNoSpecifiedTests=false`, doit rendre `Tests run: 32, Failures: 0, Errors: 0` et `BUILD SUCCESS`. **Sorties lues** : `78270b4c` **32, 0** ; copie corrigee **32, 0**. **C'est une clause, pas un rouge** : les trois jeux de `nadia-prof` ne font rougir aucune assertion du test, et le commit n'a donc rien a changer dans `PaquetCe1TexteNarratifTest.java` (`git diff 78270b4c <C> -- <son fichier> | grep -cE '^-.*assert'` rend 0 sur la copie, comme sur `78270b4c`). **Le test mord sur ces items** : une proposition hors du texte support (*"monte"* remplace par *"descend"*, copie corrigee) le fait echouer, `rct2s6AucunePropositionNEstHorsDuTexteSupport`, `Tests run: 32, Failures: 1`. Le commentaire de tete du YAML (lignes 10 a 28) ne compte rien que ces textes changent : **il reste inchange**, et le developpeur le dit dans son rapport (sa relecture, pas la mienne). **Ce qu'aucun test ne garde, et qui reste a `nadia-prof`** (`reponse-nadia-pa7-pa8.md` 3) : que les trois textes departagent par l'ordre des faits.
+
+**Criteres 1, 2, 4, 5 inchanges.** Le critere 1 (*"le bas de `.indice` est au-dessus de y = 551 sur les 20 items"*) est celui du rejeu de `nadia-prof`, sur le jar du commit livre ; la marge de 73 px est mesuree par `ines-design` sur ses propres textes, pas sur un commit. **Lecture de la police, `DEC-0122`** : *"rendu a 744 x 551"* s'entend sur la pile que la feuille sert, rendue par Chrome sur le poste de mesure ; les polices imposees sont une sensibilite rapportee, pas un critere de levee. **Palier, prix, rejeu** : `planning.md` 16:59, section 4 (engage tardif, `marc-dev` apres la correction de `-05`, 0,5, instance A).
+
+### `FM5-6` (`CR24`) : base ecrite en SHA
+
+**Constat, verifie.** `FM5-6` ecrit `git diff -U0 $(git merge-base round-two <ref>) <ref> -- <YAML> | grep -cE '^[-+] '` : sur `round-two` a `78270b4c` il rend **0**, parce que la branche de `-24` est fusionnee (`9f110983`) et que `git merge-base round-two <ref>` rend alors `<ref>` lui-meme. **Meme defaut que `PN8-6`** (annotation du 15:30, section T2) ; je l'avais annonce sans le lancer (`CR24`), je l'ai lance. `<YAML>` = `adapters/adapter-content/src/main/resources/contenu/ce1-familles-de-mots.yaml`.
+
+**`FM5-6` amendee (remplace la commande, pas le chiffre 34).** Base ecrite en SHA : `4004fab767102ace22230516a28ddceb98fe30c1`, **premier parent du commit livre `1febd011`** (`git rev-parse 1febd011^1`), point de depart de la branche :
+
+`git diff -U0 4004fab767102ace22230516a28ddceb98fe30c1 <ref> -- <YAML> | grep -cE '^[-+] '` doit rendre **34**
+
+| `<ref>` | Sortie lue |
+|---|---|
+| `4004fab7` (la base) | 0 |
+| `1febd011` (commit livre) | **34** |
+| `e918f43e` (tete de la branche, premier rapport) | **34** |
+| `6b70d7e5` (tete relue par `yanis-qa`) | **34** |
+| `9f110983` (fusion) | **34** |
+| `round-two` (`78270b4c`) | **34** |
+
+**Precondition**, a lancer d'abord : `git log --oneline 4004fab767102ace22230516a28ddceb98fe30c1..<ref> -- <YAML> | wc -l` rend **1** (lu sur `round-two` : 1, `1febd011` ; aucun autre commit n'a touche le fichier depuis). **Forme qui ne depend pas de l'historique ulterieur**, pour la fusion : `git diff -U0 9f110983^1 9f110983 -- <YAML> | grep -cE '^[-+] '` rend **34** (lu), precondition `git rev-list --parents -n1 9f110983 | wc -w` rend **3** (lu). `FM5-6` reste une borne : 34 compte les quatorze indices de `FM6` et l'item 12, rien d'autre ; la regle de repli sur 8 si `nadia-prof` retirait `FM6` est inchangee.
+
+### `FM3` (`E4`) : amendee, a partir de ce que le code dit
+
+**Ce qui est ecrit et ce que j'ai verifie.** `FM3` dit que *"le mot *prefixe* figure dans `descripteur.competence`, que les gabarits ne servent pas"* et laisse a `theo-archi` la confirmation. `rapport-qualite-lot-24.md` (`E4`) confirme les gabarits (0 ligne) et ajoute que le libelle est inventorie par `TexteAccentueExposeParLePortEntrantTest` comme chaine exposee au port entrant. **Lu sur `78270b4c`, par moi, avec `git grep`** :
+
+```
+git grep -n '\.competence()' -- adapters/adapter-web/src/main adapters/adapter-content/src/main application/src/main domain/src/main bootstrap/src/main        rend 0 ligne
+git grep -c -i 'competence' -- adapters/adapter-web/src/main/resources/templates        ne rend aucune ligne
+```
+
+Aucun code de production ne lit `ContentDescriptor.competence()` et aucun gabarit ne l'ecrit : le champ est charge, jamais affiche. Les seuls lecteurs sont des tests (`AucunMotServiNeSEcarteDeSonAccentTest`, ligne 247, qui le traite en chaine servie, plus large que le gabarit). **Les deux faits sont vrais** : le garde-fou d'accent lit plus large que l'ecran, et l'enfant ne lit pas le libelle. Le mot *prefixe* du libelle de `-24` n'atteint donc pas un enfant (`FAM-CE1-3`, `TRV-CE1-4`).
+
+**`FM3` amendee.** La clause garde sa mesure sur les quatre champs que l'enfant lit (`grep -E '^\s*(- enonce|bonneReponse|distracteurs|indice):' ... | grep -ciE 'préfixe|prefixe|suffixe|radical|affixe'` rend 0, verte, clause). **Elle perd la phrase *"`theo-archi` la confirme s'il le faut"* et gagne une seconde clause, `FM3b`** : *"le libelle `descripteur.competence` n'est lu par aucun code de production ni ecrit par aucun gabarit"*, par les deux commandes ci-dessus, **vertes aujourd'hui, clause** ; elle rougit le jour ou un ecran lit le libelle, et ce jour-la le mot *prefixe* atteint un enfant de CE1 sans qu'aucune autre clause le voie. **Ce que je ne decide pas** : si `theo-archi` lit le port entrant autrement (le libelle expose a une vue qui n'existe pas encore), il le dit et `FM3b` s'amende ; je n'ecris aucun changement du libelle (le texte est une copie de `competences-ce1.md`, ligne 76, et le changer ouvre un ecart avec le referentiel). `K10` est tenu (`ADR-0065` A3, `76642a48`, un affixe cite avec son trait d'union n'est pas un mot).
+
+### Stories fermees par les verdicts de `nadia-prof` du 2026-10-16, et une recommandation declinee
+
+| Story | Verdict, ses mots | Fichier |
+|---|---|---|
+| `S57-TPH-CE1-R1` | `TPH-CE1-R1` **levee** ; `FRA-CE1-10` **VALIDE** | `rejeu-nadia-palier-2-ap.md`, resume |
+| `S57-GNA-CE1-R1` | `GNA-CE1-R1` **levee** ; `FRA-CE1-15` **VALIDE** ; prix **0,25** | idem |
+| `S57-VSJ-CE1-R2` | `VSJ-CE1-R2` **levee** ; `FRA-CE1-13` **VALIDE**, *"aucune reserve ouverte"* | `rejeu-nadia-palier-2-a.md`, resume |
+| `S57-OBS-SCI-N1-N2` | `N1` et `N2` **prises en compte** ; `SCI-CM1-20` reste `couvert-valide` | `rejeu-nadia-palier-2-b.md`, verdict |
+| `S57-BR-FRA-CE1-24` et `S57-FRA-FAMILLES-LIVRE` | **VALIDE**, *"sans reserve"* ; `FRA-CE1-24` a `couvert-valide` | `rejeu-nadia-palier-2-ap-lot24.md`, verdict |
+
+Ces cinq histoires sont **closes** par ces verdicts ; aucun critere n'est reecrit. **`S57-BR-FRA-CE1-05` reste ouverte** : refusee le 2026-10-16 (`rejeu-nadia-palier-2-a-lot05.md`), corrigee par `PN8-7` a `PN8-14`, rejeu engage (0,5). **Ecart de `planning.md`**, 16:59, section 2 : *"les passer a `couvert-valide` est le geste de `camille-po`"* est vrai pour `FRA-CE1-24` seule ; `FRA-CE1-10`, `-13` et `-15` etaient `couvert-valide` depuis le 2026-10-14, le 2026-10-11 et le 2026-10-14 (`DEC-0120` A.107).
+
+**Recommandation de `nadia-prof` sur l'indice des dix items d'affixe de `-24`** (`rejeu-nadia-palier-2-ap-lot24.md` 2.3 et section 6, *"a prendre ou non"*) : **declinee au palier 2**. Motifs : (1) elle ne donne aucun texte (*"l'indice ... dit ou regarder, ce que mon critere demande"*) et je n'ecris pas un indice a sa place : un critere qui reprendrait mes mots ne serait pas les siens ; (2) c'est une *"observation sans reserve"* qui *"ne releve pas ma barre"* ; (3) elle changerait un paquet valide et appellerait un rejeu (0,25 ou 0,5 a son registre), alors que le non affecte du palier 2 est de 0,25 (`DEC-0120` A.105). **Reprise possible** : si `nadia-prof` ecrit l'indice, je le recopie en critere sans reformulation (precedent `FM6`) et `sofia-sm` le place a un palier. Je ne la classe pas sans suite : `Q-N5`, a `nadia-prof`, *"ecrire l'indice de la recommandation de 2.3, ou la retirer"*.
+
+### Un paquet refuse reste jouable : `bandit-manchot-pronoms-ce1` (ecart trouve en ecrivant la fiche)
+
+**Fait.** `nadia-prof` a refuse le lot `-05` le 2026-10-16 (`rejeu-nadia-palier-2-a-lot05.md`, 16:18, motif `TRV-CE1-6`). `git grep -c 'id: bandit-manchot-pronoms-ce1$' 78270b4c -- adapters/adapter-content/src/main/resources/catalogue.yaml` rend **1** : l'entree est au catalogue, le paquet que `nadia-prof` a refuse est servi et jouable. Aucun fichier du depot ne le dit ni ne traite : `git grep -n -i 'retrait' 78270b4c -- squad/sprints/s57-version-cp-ce1-cm1-trois-instances` ne rend rien sur ce paquet, et l'amendement de `PN8` du 16:40 comme le planning du 16:59 ecrivent la correction et le rejeu, pas la sortie du catalogue.
+
+**Ce que les regles disent.** `DEC-0045` section 3 : un `REFUSE` fait sortir l'entree du catalogue *"au meme geste que la decision"*. `DEC-0055` ouvre une fenetre sous trois conditions cumulatives, *"toutes verifiables au moment du refus"* : (1) arbitrage ecrit : **aucun** ; (2) correction engagee, proprietaire et travail identifiables **au moment du refus** (16:18) : la story de correction est de 16:40 et le developpeur de 16:59, **non remplie** ; (3) motif borne : remplie (cinq items, neuf textes). **Aucune fenetre n'est ouverte** ; le regime par defaut s'applique. Meme analyse qu'en `DEC-0116` A.17 pour `ART-CP-10`, dont l'utilisatrice a repondu *"oui pour le retrait"*.
+
+### S57-RETRAIT-PRONOMS-CE1 - le paquet refuse de `-05` sort du catalogue servi jusqu'a son rejeu (transverse, hors `PAR`)
+
+- **Besoin** : en tant qu'eleve de CE1, je ne veux pas trouver dans la liste des jeux un jeu ou les filles et les garcons ne font pas les memes choses, afin de ne pas apprendre que certaines actions sont pour les uns et pas pour les autres.
+- **Mecanique demandee** : aucune ; le retrait est l'absence d'entree dans `catalogue.yaml` (`ADR-0061`, sans drapeau). **Competence programme visee** : transverse - pas de contenu pedagogique. `FRA-CE1-05` reste `non couvert` : le statut suit le verdict de `nadia-prof`, pas la presence du jeu au catalogue (`DEC-0009`).
+- **Criteres d'acceptation** :
+  1. **Le jeu n'est plus servi.** Sortie : `git show <ref>:adapters/adapter-content/src/main/resources/catalogue.yaml | grep -c 'id: bandit-manchot-pronoms-ce1$'` rend **0**. **Aujourd'hui : 1, rouge.**
+  2. **Le paquet, son test et sa fiche ne changent pas dans ce commit.** Sortie : `git diff-tree --no-commit-id --name-only -r <C> | grep -cE 'ce1-pronoms\.yaml|PaquetCe1PronomsTest|FICHE-bandit-manchot-pronoms-ce1'` rend **0**. **Aujourd'hui : non lisible (aucun commit livre) ; clause.** La correction de `-05` (`marc-dev`) touche ces trois fichiers et ce retrait aucun : les deux ne se disputent rien, l'ordre de fusion est libre.
+  3. **Les tests qui nomment l'entree passent sans exemption neuve.** Sortie : `bash outils/mvn-jdk21.sh -B clean verify` depuis la racine, `BUILD SUCCESS`, et le rapport nomme chaque test modifie et dit qu'**aucune exemption neuve** ne sert a le faire passer (precedent : `S56-RETRAIT-RAPPROCHER-OEUVRES`, `S52-RETRAIT-SCIENCES-CM1`). Le compte du catalogue baisse de 1 (`grep -c "^  - id:"` rend 152 a `78270b4c`, 151 attendu) ; tout fichier qui l'ecrit est corrige ou annote de sa cause. **Je ne sais pas aujourd'hui quels tests rougissent** : l'inventaire de `TexteAccentueExposeParLePortEntrantTest` porte le titre et la consigne de l'entree, a mesurer par `theo-archi` avant le commit.
+  4. **Le retour est une entree neuve apres un Done non refuse.** Le rejeu de `nadia-prof` joue un jar ou l'entree existe : la forme est celle de la branche de rejeu de `ART-CP-10` (`planning.md`, section *"Branche de rejeu B2"*, `DEC-0120` 4.2) ; **la forme et la capacite sont a `sofia-sm` et `theo-archi`**, je n'en decide aucune.
+- **Ce que la story coute, nomme** : le rejeu engage de `-05` (0,5, instance A) a besoin de la branche de rejeu ; un rejeu non fait a la cloture du palier 2 glisse (A.72). **Palier** : 2, le retrait au plus tot (le jeu est expose depuis 16:18). **Qui** : `sofia-sm` affecte, `theo-archi` mesure le cout technique ; hors capacite de `nadia-prof`. **Report** : aucun, premiere inscription. **Exception** : un arbitrage ecrit de l'utilisatrice ou de moi, **avant** que `sofia-sm` engage la story, qui nomme son echeance (`DEC-0055` 2 et 5), la remplace par une fenetre ; je n'en ecris aucun, la condition 2 n'etant pas remplie. `Q-U11`, a l'utilisatrice, par `sofia-sm`.
+- **Lien** : `DEC-0045` section 3 ; `DEC-0055` ; `DEC-0009` ; `DEC-0116` A.17 et A.26 ; `DEC-0120` A.106 ; `DEC-0122`.
+
+### S57-GARDE-PILE-DE-POLICES - la pile de polices que la feuille sert ne change pas sans qu'un test le voie (`DEC-0122`, poste hors `PAR`)
+
+- **Besoin** : en tant qu'eleve de CE1, je veux que les mots et les phrases de mon jeu s'ecrivent avec la meme police que celle avec laquelle on a verifie que tout tient dans l'ecran, afin que l'indice et la phrase d'aide restent entiers et visibles.
+- **Mecanique demandee** : aucune ; la feuille maison et les gabarits de `adapter-web`, tout jeu, toute matiere, tout niveau. **Competence programme visee** : transverse - pas de contenu pedagogique.
+- **Source** : `DEC-0122` 3.5 : le perimetre d'une cote est la pile servie ; `ADR-0054` nomme *"la pile de polices declaree - qu'elle ne change pas en silence"* comme *"ce qui serait gardable"*. **Le fait, mesure par moi** sur `78270b4c`, commande `bash outils/mvn-jdk21.sh -B -pl adapters/adapter-web -am test` (perimetre `adapter-web` et ses amonts) : la feuille maison ne declare aucune police (`git grep -c 'font-family' -- adapters/adapter-web/src/main/resources/static/css/recreo.css` ne rend aucune ligne) ; avec `body { font-family: Georgia, serif; }` ajoute en fin de feuille, 120, 31 et **501 tests, 0 echec** ; avec, ensemble, cette regle, `.consigne { font: 1rem Georgia, serif; }`, `:root { --bs-body-font-family: Georgia, serif; }` et `@font-face { font-family: Zz; src: local(Arial); }`, **501 tests, 0 echec** aussi. La feuille tierce est deja epinglee par empreinte (`RessourcesTiercesTest`, `ADR-0014`) et une police chargee depuis le reseau est deja refusee (jeu fautif `police-sur-le-reseau`) : ce qui manque est la police **declaree par la feuille maison**.
+- **Criteres d'acceptation** (commande de mesure : celle ci-dessus ; "aujourd'hui" = `78270b4c`, ma mesure du 2026-10-16) :
+  1. **`font-family`.** On ajoute a la fin de `recreo.css` : `body { font-family: Georgia, serif; }`. Sortie : la commande sort non nul, au moins un test echoue, et son message cite `font-family`. **Aujourd'hui : 501 tests, 0 echec, rouge.**
+  2. **Les trois autres formes, une a la fois** : `.consigne { font: 1rem Georgia, serif; }` ; `:root { --bs-body-font-family: Georgia, serif; }` ; `@font-face { font-family: Zz; src: local(Arial); }`. Sortie : meme chose pour chacune, le message cite le jeton fautif (`font:`, `--bs-body-font-family`, `@font-face`). **Aujourd'hui : mesure faite pour les quatre ensemble (501, 0 echec), pas une a une** ; chacune est donc au moins aussi rouge que le compte l'indique, sans que je l'aie isolee. A ne pas tenir pour acquis (`Z1` a `Z4` de la garde de `C1'`).
+  3. **Ce qui ne doit pas rougir.** La feuille de `round-two` telle quelle : 0 echec. **Vert aujourd'hui, clause.**
+  4. **Les gabarits.** Un attribut `style` ou une balise `style` qui declare une police dans un gabarit : sortie au choix de `theo-archi` (refuse par le garde-fou, ou nomme dans l'`ADR` comme limite avec son declencheur). **Non mesure** : je n'ecris pas de critere sur une mutation que je n'ai pas lancee.
+  5. **Le commit porte sa regle.** `git show --stat <commit>` nomme le fichier de test et l'`ADR` que `theo-archi` designe ; le compte ArchUnit avant et apres est ecrit par `theo-archi` (aujourd'hui 41 declarations, 38 `@ArchTest`, compte de `theo-archi` sur `e8d14ddb`, non recompte par moi).
+  6. **Aucun code produit, aucun contenu.** `git diff-tree --no-commit-id --name-only -r <C>` ne nomme aucun fichier de `adapters/*/src/main`, `domain`, `application`, `bootstrap`. Vide par construction ; clause.
+  7. **Done technique** : tous les jobs de `ci.yml` (`build`, `chemins`, `prefixes`, `outils`), nommes par qui l'annonce avec leur sortie.
+- **Ce que la story ne couvre pas, nomme** : les polices de tablette (risque nomme de `DEC-0122` 3.3, non mesure) ; un navigateur autre que Chrome ; la valeur d'une marge, qui reste a `nadia-prof`.
+- **Prix** : **0, hors `PAR`** (aucune lecture, aucun rejeu, aucun verdict ; rien de ce que l'enfant voit ne change). **Palier** : 3 au plus tot, **avant tout poste qui modifie `recreo.css`**, meme regle que `S57-GARDE-C1-VIRGULE-ET-IMBRIQUE` (`DEC-0120` A.101) ; proposition a `sofia-sm`. **Report** : aucun, premiere inscription le 2026-10-16. **Agent** : `theo-archi` pour la forme, `yanis-qa` pour le test des criteres par mutation ; developpeur a designer par `sofia-sm`. **Done pedagogique** : aucun propre, transverse.
+- **Lien** : `DEC-0122` ; `ADR-0054`, `ADR-0014` ; `DEC-0120` A.108.
+
+### Routage de cette annotation
+
+Les codes `CR32` a `CR39` suivent `CR31` (annotation du 2026-10-16 16:40).
+
+| Code | Quoi | A qui |
+|---|---|---|
+| `CR32` | `S57-RDO-CP-R3` critere 4 (`RD3-1` a `RD3-5`), critere 6 (`RD3-11` a `RD3-13`) et critere 7 (`RD3-6` a `RD3-10`) : a lire avant le commit ; cinq fichiers qui changent ensemble | `lea-dev` |
+| `CR33` | `S57-RDO-CP-R3` : tests des criteres, rouge sur `78270b4c` pour `RD3-1`, `RD3-2`, `RD3-4`, `RD3-5`, `RD3-9`, vert sur le commit livre ; la morsure de l'espace ordinaire a rejouer | `yanis-qa` |
+| `CR34` | `S57-RCT-CE1-R1` critere 3 (`RC1-1` a `RC1-7`) : a lire avant le commit, apres celui de `-05` | `marc-dev` |
+| `CR35` | `S57-RCT-CE1-R1` : tests des criteres, rouge sur `78270b4c` pour `RC1-1` a `RC1-5`, vert sur le commit livre | `yanis-qa` |
+| `CR36` | `FM5-6` a base explicite, `FM3b` : a rejouer ; `FM3b` confirmee ou amendee si le port entrant doit exposer le libelle | `yanis-qa`, `theo-archi` |
+| `CR37` | `S57-RETRAIT-PRONOMS-CE1` : affecter, mesurer le cout technique, nommer la forme de la branche de rejeu de `-05` ; porter `Q-U11` | `sofia-sm`, `theo-archi` |
+| `CR38` | Orthotypographie de la phrase de `RD3-1` et des trois jeux de `RC1-1` a `RC1-3` (suite de `CR30`) | `relecteur-pedagogique` |
+| `CR39` | `S57-GARDE-PILE-DE-POLICES` : affecter, forme du garde-fou, test des quatre formes une a une | `sofia-sm`, `theo-archi`, `yanis-qa` |
+| `Q-N5` | Recommandation de 2.3 (indice des dix items d'affixe de `-24`) : ecrire le texte de l'indice, ou retirer la recommandation | `nadia-prof` |
+| `Q-U11` | Un paquet refuse (`bandit-manchot-pronoms-ce1`, 2026-10-16 16:18) est servi depuis le refus : retrait (regime par defaut, `DEC-0045` section 3), ou fenetre bornee par un arbitrage ecrit (`DEC-0055`) ? | l'utilisatrice, par `sofia-sm` |
+
+**Ce que cette annotation ne fait pas** : ne prononce aucun Done, ne juge aucun texte, ne modifie ni `domain/`, `application/`, `adapters/`, `bootstrap/`, ni paquet, ni catalogue, ni test.

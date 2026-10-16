@@ -16,9 +16,12 @@
 - **Conditions opposables** : `PRN-CE1-1` a `PRN-CE1-3`, `LON-CE1-3` et `-4` (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`,
   section 3.5), `TRV-CE1-1` a `-7`, `LON-CE1-1`, `-2`, `-5`, et `arbitrage-nadia-palier-2.md` section 6.1 (points 1 a 5)
   et 6.2 (ligne `-05`). Plafond de la ligne : `couvert-valide`.
-- **Statut global** : **en attente d'audit**. Fiche ouverte par `camille-po` le 2026-10-16, apres le commit de
-  branchement (`K9`, `arbitrage-nadia-palier-2.md`). Aucun verdict. La ligne `FRA-CE1-05` reste `non couvert` dans la
-  matrice, qui ne bouge qu'au verdict.
+- **Statut global** : **refuse**, verdict `REFUSE` prononce le 2026-10-16 par `nadia-prof` (s57, palier 2, instance A), motif
+  unique `TRV-CE1-6` (roles distribues par genre), bloc de validation ci-dessous. **Correction engagee** (`PN8-7` a `PN8-14`,
+  `marc-dev`, story `S57-BR-FRA-CE1-05`), rejeu a 0,5 engage au palier 2. Etat precedent : **en attente d'audit** (fiche
+  ouverte par `camille-po` le 2026-10-16, apres le commit de branchement, `K9`, `arbitrage-nadia-palier-2.md`). La ligne
+  `FRA-CE1-05` reste `non couvert` dans la matrice. **L'entree `bandit-manchot-pronoms-ce1` est encore au catalogue servi** :
+  son retrait est la story `S57-RETRAIT-PRONOMS-CE1` (`DEC-0120` A.106).
 - **Derniere mise a jour** : 2026-10-16.
 
 ---
