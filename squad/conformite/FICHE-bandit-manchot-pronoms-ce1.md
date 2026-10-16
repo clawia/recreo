@@ -161,3 +161,147 @@ lui ferait valider un item dont la majuscule donne la reponse a l'enfant qui ne 
 ## Bloc de validation pedagogique - nadia-prof UNIQUEMENT
 
 > Ce bloc n'est jamais pre-rempli ni anticipe par un autre agent.
+
+### Verdict du 2026-10-16 (`nadia-prof`, s57, palier 2, instance A, p2-3) : **REFUSE**
+
+**Done pedagogique non prononce.** `FRA-CE1-05` reste `non couvert`. Motif unique : `TRV-CE1-6`, condition opposable de ce
+paquet, n'est pas tenue (section 4). Tout le reste est tenu (sections 2 et 3) : le refus porte sur quatre textes, que je donne
+(section 5), et un prenom. Le refus renvoie le lot a `camille-po` ; il ne bloque aucun autre poste.
+
+#### 1. Ce que j'ai fait
+
+- **Objet joue** : le code servi par `e8d14ddb`, qui contient la fusion `edcd3de9` du lot `b9f1c62f`. Jar construit dans le
+  worktree `s57-nadia-p2-a2` par `bash outils/mvn-jdk21.sh -B clean package -DskipTests` (`BUILD SUCCESS`). `ce1-pronoms.yaml`
+  du jar egal octet pour octet a celui de `b9f1c62f` et de `e8d14ddb` (SHA-256 `60a1e5be...159f` sur les trois, retours chariot
+  retires). Lance sur le port 18511 (libre avant, `netstat -ano` filtre) ; journal *"Tomcat started on port 18511"*, PID 34004,
+  arrete par ce PID seul. Dossier de poste `s57-p2-nadia-prof-a`, hors depot.
+- **Done technique** : non lance par moi. Lu : `clean verify` de `marc-dev` sur `b9f1c62f` (2634 tests) et de `sofia-sm` sur
+  `056f8c88` (2669 tests, 0 echec), code identique a `e8d14ddb` (`planning.md`, amendement du 2026-10-16 15:27, section 10).
+- **Lecture complete** : la ligne *"lecture complete : `ce1-pronoms`, 20 items lus"* (`reponse-nadia-q-palier-2.md`, section 1,
+  forme de `c62e0ad8`) est dans un commit ancetre de celui de ce verdict (`git merge-base --is-ancestor c62e0ad8 HEAD` sort 0).
+  Les items changes depuis la version lue (10, 13, 15, et le commentaire de tete) sont relus et joues ici.
+- **Joue comme un enfant, par l'ecran** : Chrome sans tete, fenetre dont `innerWidth` x `innerHeight` vaut 744 x 551, verifie a
+  chaque manche. Page CE1 de francais, bouton *"Il, elle, ils, elles"*. 10 parties de dix manches, 100 manches : 60 justes du
+  premier coup ; sur les 40 autres, deux erreurs puis un troisieme appui jusqu'a la revelation. **Chacun des 20 items joue deux
+  fois en erreur**, ses deux distracteurs presses. Captures regardees : items 1, 10, 13, 15, 16, 19, apres chaque erreur et a la
+  revelation ; deux ecrans de fin.
+- **Ecarts contre le fichier** : 0 (propositions servies, aucun indice avant l'erreur, indice servi apres chaque erreur).
+
+#### 2. Criteres tenus
+
+| Critere | Constat |
+|---|---|
+| Ancrage, `FRA-CE1-05` | les 20 questions citent le mot entre chevrons et demandent ce qu'il designe : c'est la competence, pas une question de personnage (`PRN-CE1-1`). Frontiere avec `-04` tenue |
+| `PRN-CE1-1` | il 5, elle 5, ils 4, elles 3, substituts 3, lus a l'ecran |
+| `PRN-CE1-2`, a moi seule | **10 items sur 20** ou deux candidats du texte ont le genre et le nombre du mot, et ou seul le sens decide : 1, 2, 4, 5, 7, 8, 11, 12, 15, 20, relus un par un (*les fraises* ne mettent rien dans un panier, *le ballon* n'attrape rien). **Tenu** |
+| `PRN-CE1-3` | le mot cite apparait une fois dans chaque texte ; son referent est dans la meme phrase ou la precedente ; aucun *il* impersonnel |
+| Exactitude | **20 referents justes sur 20**, chacun relu avec son texte ; 40 distracteurs, tous des mots du texte, tous plausibles, aucun absurde |
+| `PN4`, ma propriete | 0 item ou la bonne reponse est la seule proposition a majuscule |
+| Intrus du premier mot | 5 items (5, 6, 7, 8, 14) ; bonne reponse sur 1, distracteur sur 4 : pas regulier vers la reponse |
+| `TRV-CE1-2` | bonne reponse strictement la plus longue sur 8 items sur 20 |
+| `LON-CE1-3`, `-4`, `-5` | textes de 8 a 12 mots, 3 phrases au plus, 8 mots au plus par phrase ; 3 mots au plus par proposition |
+| `TRV-CE1-4`, `-5`, `-7` | aucun mot exclu ; neuf indices distincts, dix mots au plus, aucun ne donne la reponse ni n'enseigne une regle fausse ; 20 textes distincts |
+| Items 10 et 13 | indice servi *"« Elle » désigne un mot féminin : cherche-le dans la phrase d'avant."* : on lit qu'il s'agit du mot. **Tenu** |
+| Item 15 | mon texte, servi tel quel ; *le chat* et *Elias*, masculins singuliers, que le sens departage (un chat ne donne pas de biscuit) ; *Julie* s'ecarte par l'accord |
+| Titre *"Il, elle, ils, elles"* (`marc-dev`) | **accepte**. Il nomme ce que l'enfant va chercher, sans mot de grammaire ni niveau. Les trois items de substitut (*le garçon*, *l'animal*, *la fille*) n'y sont pas nommes : un titre d'enfant ne dit pas tout le contenu, et ces items posent la meme question |
+| Consigne *"Lis le petit texte, puis réponds à la question."* | **acceptee** : neuf mots, une seule action par proposition, celle de `ce1-texte-narratif`, deja jugee |
+| Place de l'entree | derniere du catalogue ; sur la page CE1 de francais, le bouton vient juste apres *"Lis et réponds"* (`texte-narratif-ce1`) : les deux jeux a texte sont voisins. **Acceptee** |
+| Commentaire de tete (*"vingt prenoms masculins et vingt et un prenoms feminins"*) | **exact pour la table du test** : 41 prenoms distincts dans les textes, 20 et 21 en comptant *Sacha* masculin et *Nour* feminin, deux prenoms mixtes. L'equilibre a un pres de `TRV-CE1-6` depend de ce classement, qui est une declaration d'auteur (le test le dit) |
+| *Julie* | prenom de ma correction (3.5) ; il fait passer les feminins a 21, dans l'equilibre a un pres |
+
+#### 3. Le pli, mesure : je suis la seule garde sur ce paquet
+
+Le paquet n'est pas dans la cote d'`ines-design`. Mesure faite sur ce jar, a 744 x 551, bas de `.indice` apres une erreur :
+
+- ordre servi : **20 sur 20** au plus 551, de 404 a 508 ;
+- six ordres : **240 couples sur 240**, maximum 508 (item 20, dont les trois propositions passent sur deux rangees) ;
+- apres la seconde erreur : memes valeurs.
+
+**Tenu**, aucune reserve de pli. **Revelation, hors levee** (`Q-R2`) : sur l'item 20 seul, l'indice descend a 594 et la barre de
+defilement apparait ; la reponse revelee reste visible. **Non mesure** : une autre largeur que 744, un appareil reel, une autre
+police, un autre navigateur. Aucun test ne garde cette position : une modification de `recreo.css` ou des gabarits peut la defaire
+sans un rouge.
+
+#### 4. Motif du refus : roles distribues par genre (`TRV-CE1-6`)
+
+`TRV-CE1-6` (`ARBITRAGE-PREALABLE-s48-francais-ce1.md`, section 2) : *"aucun rôle, aucune activité, aucune émotion distribués par
+genre"*. Sur les huit items ou un garcon et une fille sont en relation, l'un agissant envers l'autre :
+
+| Item | Texte servi | Qui agit, qui recoit |
+|---|---|---|
+| 3 | *Zoé range le jeu de Paul.* | la fille range les affaires du garcon |
+| 9 | *Bastien ouvre la porte à Maëlle. Il entre dans la classe.* | le garcon agit, la fille ne fait rien |
+| 10 | *Ilyes donne un gâteau à Sofia. Elle dit merci.* | le garcon donne, la fille remercie |
+| 13 | *Léo lit un livre à Rose. Elle écoute bien.* | le garcon lit, la fille ecoute |
+| 15 | *Le chat de Julie voit Elias. Il lui donne un biscuit.* | le garcon donne ; *Julie* n'agit pas (mon texte) |
+| 16 | *Mina et Hamza regardent un chien. Le garçon lui donne de l'eau.* | le garcon agit |
+| 18 | *Adrien parle à Manon. La fille lui répond avec un sourire.* | le garcon parle, la fille sourit |
+| 19 | *Nael et Eva cueillent des fleurs. Ils les offrent à Clément.* | un garcon et une fille donnent a un garcon |
+
+**Aucun item ou une fille agit envers un garcon qui recoit, ecoute ou remercie.** Sur sept items, le garcon donne, lit, parle,
+ouvre, et la fille recoit, remercie, ecoute, sourit, ou range pour lui. Chaque phrase seule est banale ; c'est la regularite
+que la condition interdit, et un enfant qui joue dix manches en voit plusieurs. Ce n'est pas un fait faux ni un defaut de
+pronom : c'est la seule condition opposable que le paquet ne tient pas.
+
+**Correction de mon propre constat.** Ma lecture complete du 2026-10-16 (`reponse-nadia-q-palier-2.md`, 1.1) a ecrit *"rien"*
+pour seize items : elle lisait les referents et `PRN-CE1-3`, pas `TRV-CE1-6`. Et l'item 15, que j'ai ecrit, ajoute un cas de
+plus : *Julie* n'y est que la proprietaire du chat. La condition date de s48 : je l'applique, je ne la releve pas.
+
+**Item 16, joue.** J'avais garde ce point pour le jeu (1.1). Seul le prenom dit qui est *le garçon*, et *Hamza* finit en *-a*
+comme *Mina* et comme la plupart des prenoms de filles que lit un enfant de CE1. L'enfant qui ne connait pas ce prenom choisit
+au hasard entre deux, et l'indice *"Cherche qui est un garçon dans la phrase d'avant."* ne l'aide pas : l'item mesure la
+connaissance d'un prenom, pas le substitut. Il entre dans la correction parce qu'elle rouvre le paquet ; seul, il aurait ete une
+reserve non bloquante.
+
+#### 5. Ce qui leve le refus : textes exacts
+
+Numeros comptes depuis 1 sur `- enonce:`. Enonces inchanges. Espaces ordinaires ici ; dans le paquet, U+00A0 dans les chevrons et
+devant `?` et `:`, comme ailleurs. L'orthotypographie est au `relecteur-pedagogique`.
+
+| Item | Champ | Texte exact |
+|---|---|---|
+| 3 | `texteSupport` | `Zoé prête son jeu à Paul. Elle ouvre la boîte.` |
+| | `distracteurs` | `["Paul", "son jeu"]` (bonne reponse et indice inchanges) |
+| 9 | `texteSupport` | `Maëlle ouvre la porte à Bastien. Il entre dans la classe.` |
+| | `indice` | `« Il » désigne un mot masculin : cherche-le dans la phrase d'avant.` (bonne reponse et distracteurs inchanges) |
+| 13 | `texteSupport` | `Rose lit un livre à Léo. Elle tourne les pages.` (le reste inchange) |
+| 16 | `texteSupport` | `Mina et Omar regardent un chien. Le garçon lui donne de l'eau.` |
+| | `bonneReponse` | `Omar` (distracteurs et indice inchanges) |
+| 18 | `texteSupport` | `Manon parle à Adrien. La fille lui pose une question.` |
+| | `distracteurs` | `["Adrien", "une question"]` (bonne reponse et indice inchanges) |
+
+**Ce qui tient apres correction**, verifie a la lecture : sur les huit items en relation, la fille agit envers le garcon sur 3, 9,
+13 et 18, le garcon envers la fille sur 10, 15 et 16, l'item 19 reste mixte. Item 9 : l'ancien indice (*"Cherche qui fait
+l'action dans la phrase d'avant."*) designerait *Maëlle*, d'ou l'indice neuf, de la forme de 10 et 13 ; *Bastien* est le seul
+masculin du texte, et le sens dit maintenant la meme chose que l'accord. Categories inchangees (3, 9, 13 par l'accord ; 16 et 18
+substituts) : `PRN-CE1-2` reste a 10. Mot cite une fois par texte ; textes de 10 a 12 mots, phrases de 8 mots au plus ; aucune
+bonne reponse seule a majuscule ; aucun mot exclu ; prenoms 20 et 21, *Omar* remplacant *Hamza* (origines inchangees dans leur
+variete). Distracteurs, tous des mots du texte. La table de prenoms du test et le reste du code sont au developpeur.
+
+**Rejeu** : 0,5 (des textes changent), au palier qui l'engage. Je rejoue les 20 items, le pli compris.
+
+#### 6. Item 19, *"Nael"* : je le garde, et je le ferme
+
+Je l'avais route au `relecteur-pedagogique` ; son releve ne le traite pas, et l'item est a moi. **Aucune correction.** *Nael* est
+un prenom ; aucune regle du depot ne fixe la graphie d'un prenom, et la reponse ne demande pas de le prononcer : *"Nael et Eva"*
+se distingue de *"Eva"* et de *"Clément"* par le nombre. Je n'ai verifie dans aucune source du depot que cette graphie sans trema
+est donnee en France ; je ne le pretends pas. Si l'equipe prefere *Naël*, qui aide l'enfant a lire deux voyelles, c'est une
+recommandation non bloquante.
+
+**Recommandation non bloquante, item 19** : l'indice *"Demande-toi : qui peut faire cette action ?"* ne departage pas apres une
+erreur sur *"Eva"*, qui peut cueillir et offrir. *"Relis la phrase d'avant pour trouver qui agit."* (items 6 et 14) le ferait. A
+`camille-po` de la prendre ou non ; l'enfant avance de toute facon.
+
+#### 7. Ce dont je reste la seule garde sur cette ligne
+
+`PRN-CE1-2`, l'exactitude de chaque referent, la distribution des roles par genre (le test compte les prenoms, pas ce qu'ils
+font), qu'un indice departage apres chaque erreur, la position de l'indice par rapport au pli. Aucun test ne les voit.
+
+**Ce que je n'ai pas joue** : une autre largeur que 744 ; un appareil reel, une autre police, un autre navigateur ; la lecture
+d'ecran.
+
+**Identifiants** : aucun neuf, aucun renomme.
+
+**Tarif consomme** : 1,0 (lot `-05`, instance A).
+
+**Signe** : `nadia-prof`, s57, palier 2, instance A, 2026-10-16.
