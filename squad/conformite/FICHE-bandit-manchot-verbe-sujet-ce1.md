@@ -13,8 +13,9 @@
   proprietes de la section 2.8 (`ARBITRAGE-PREALABLE-s56-instance-a-francais-ce1.md`, section 2).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-11 par `nadia-prof` (s56), apres avoir joue le jar
   servi. Fiche ouverte par ce verdict. Rejeu du 2026-10-14 (s57) : `VSJ-CE1-R1` levee sur `7dc40fb0`, reserve neuve
-  `VSJ-CE1-R2` ; statut inchange, **VALIDE SOUS RESERVE**.
-- **Derniere mise a jour** : 2026-10-14.
+  `VSJ-CE1-R2` ; statut inchange, **VALIDE SOUS RESERVE**. Rejeu du 2026-10-16 (s57, palier 2) : `VSJ-CE1-R2` levee sur
+  le jar du code de `0c0d2142` (forme commune fusionnee) ; aucune reserve ouverte, statut **VALIDE**.
+- **Derniere mise a jour** : 2026-10-16.
 
 ---
 
@@ -185,3 +186,104 @@ dans le dernier (`ADR-0100`) ; prefixe deja alloue ; ligne de la section 4 de `R
 **Tarif consomme** : rejeu 0,5 (poste 3, instance A). Marge de rejeu de A intacte.
 
 **Signe** : `nadia-prof`, s57, palier 1, instance A, 2026-10-14.
+
+### Rejeu du 2026-10-16 (`nadia-prof`, s57, palier 2, instance A, p2-11) : `VSJ-CE1-R2` **levee** ; statut **VALIDE**
+
+**Done pedagogique prononce, sans reserve ouverte.** `FRA-CE1-13` reste `couvert-valide` ; `camille-po` peut fermer la story
+`S57-VSJ-CE1-R2`. Rien n'est efface au-dessus : le verdict du 2026-10-11 et le rejeu du 2026-10-14 restent la trace des deux
+reserves.
+
+**Objet joue** : le code servi par `round-two` a `e8d14ddb`, identique a celui de `0c0d2142` (`git diff --quiet 0c0d2142
+e8d14ddb -- adapters domain application bootstrap pom.xml outils` sort 0), qui porte la forme commune des propositions longues
+(`dc6f423d`, fusionnee). **Voie de la forme** (`Q-S9`, `reponse-nadia-q-palier-2.md` 3.8) : le paquet n'a pas change de contenu
+depuis le commit que j'ai joue au palier 1 (`git diff 7dc40fb0 0c0d2142` sur `ce1-verbe-sujet.yaml` : deux lignes de commentaire
+d'en-tete, aucun item).
+
+#### 1. Ce que j'ai fait
+
+- **Jar** : `bash outils/mvn-jdk21.sh -B clean package -DskipTests` dans le worktree `s57-nadia-p2-a2` (a `e8d14ddb`), `BUILD
+  SUCCESS` ; JDK de la toolchain 21.0.10. Feuille servie par le jar, retours chariot retires : SHA-256 `c312cd1b...3ef6`, egal a
+  celle de `0c0d2142` et a celle du sommet de la cote. Paquet servi par le jar : egal octet pour octet a celui de `0c0d2142`.
+  Lance par `java -jar bootstrap/target/recreo.jar --server.port=18511` (port libre avant : `netstat -ano` filtre ne rendait
+  rien) ; journal : *"Tomcat started on port 18511"*, PID 39296, *"using Java 21.0.12.1"* (le `java` du poste, pas celui de la
+  toolchain ; sans effet sur ce que la page affiche). Arrete par ce PID seul. Dossier de poste `s57-p2-nadia-prof-a`, hors depot.
+- **Done technique** : je ne l'ai pas lance. Je le lis : `sofia-sm` a passe `clean verify` a la racine sur `056f8c88` (2669
+  tests, 0 echec), code identique a `e8d14ddb` (`planning.md`, amendement du 2026-10-16 15:27, section 10).
+- **Joue comme un enfant, par l'ecran** : Chrome sans tete, **fenetre dont `innerWidth` x `innerHeight` vaut 744 x 551**,
+  verifie a chaque manche (taille de fenetre reglee, pas d'emulation d'appareil : methode independante de celle d'`ines-design`).
+  Page CE1 de francais, appui sur le bouton *"Le verbe et son sujet"*, puis sur les propositions. 10 parties de dix manches,
+  100 manches : 52 justes du premier coup ; sur les 48 autres, deux erreurs, puis un troisieme appui jusqu'a la revelation.
+  **Chacun des 24 items joue deux fois en erreur**, ses deux distracteurs presses. Bas de `.indice` releve apres la premiere
+  erreur dans l'ordre servi, puis dans les six ordres des trois propositions (boutons reranges dans la page), et apres la
+  seconde erreur. Captures regardees : items 1, 16 et 20, apres chaque erreur et a la revelation ; deux ecrans de fin.
+- **Ecarts contre le fichier** : 0. Propositions servies egales au paquet, aucun indice avant la premiere erreur, indice servi
+  egal au paquet apres chaque erreur.
+
+#### 2. Le critere de levee, joue
+
+Critere ecrit le 2026-10-14 (section 4 du rejeu precedent), inchange : *"a 744 x 551, apres une erreur, le bas du bloc
+`.indice` est au-dessus de y = 551 sur les 24 items"*.
+
+| Point | Constat sur le jar |
+|---|---|
+| Les 24 items, apres la premiere erreur, ordre servi | bas de `.indice` de **418 a 496** ; 24 sur 24 au plus 551 |
+| Les 24 items, six ordres | **288 couples (item, ordre) sur 288** au plus 551, maximum 496 |
+| Apres la seconde erreur | 24 sur 24, memes valeurs |
+| Items 16 (*"Sur le toit, ..."*) et 20 (*"Le matin, un grand bus ..."*) | enonce sur trois lignes (142 - 286), verdict jusqu'a 484, **indice 416 - 496** : 55 px d'air sous la phrase d'aide. Sur la capture, l'enfant lit *"Ce n'est pas ça. Essaie encore !"* et, a cote, *"Pose la question « Qui est-ce qui ? » avant le verbe."* en entier, sans faire defiler |
+| Les 22 autres | indice 368 - 418 (indice sur une ligne) ou 368 - 448 (deux lignes) |
+
+**Tenu.** La reserve demandait que l'enfant bloque voie l'aide sur les deux items qui portent la methode *"Qui est-ce qui ?"*
+a la place de la position : il la voit.
+
+**Revelation, hors levee** (`Q-R2`, que je ne releve pas) : sur les items 16 et 20, au troisieme appui, la reponse revelee
+(*"les oiseaux"*, *"un grand bus"*) est au-dessus du pli, l'indice reste affiche et descend a 582, la barre de defilement
+apparait. Sur les 22 autres, l'indice reste au-dessus du pli. Observation, pas une reserve : a ce moment l'enfant a la reponse
+sous les yeux.
+
+#### 3. La clause `Q-R4`, sur la cote ecrite avant ce rejeu
+
+Lue dans `squad/sprints/s57-version-cp-ce1-cm1-trois-instances/cote-de-reference-forme-commune-2026-10-16.md`, commit
+`96f5e101` (`ines-design`, 15:02), fusionne par `056f8c88`, ancetre de `e8d14ddb` ; blob identique aux deux commits
+(`16bb8df4`). Ecrite avant ce rejeu (15:58).
+
+- **Ce qu'elle dit de ce jeu** (section 4.1 et section 5) : base `aa9d703c` *"534 - 582, 22 sur 24"* ; sommet `0c0d2142`
+  *"418 - 496, 24 sur 24"*, *"144 / 144"* couples, *"Perdu : 0"*. **Ma mesure rend les memes bornes** (418 et 496, items 16 et
+  20 a 496) par une autre methode de fenetre ; ses items 15 et 19 sont mes 16 et 20 (elle compte depuis 0).
+- **Ses quatre elements** : `ce1-verbe-sujet` 22 sur 22 et *"les gateaux"* 486 -> 400 ; `ce1-texte-narratif`, 11 sur 11 de 550 a
+  434 ; `additions-cp`, **65 enonces sur 65**, 486 -> 370 ; `comprehension-cm1`, aucun item ne perd le pli. Sortie de la clause
+  (*"tout item dont l'indice finit au-dessus de y = 551 sur le jar de base y reste apres le commit"*) : **tenue sur les quatre**.
+- **Base au sens de `Q-R5`** : `aa9d703c`, parent de `dc6f423d` (verifie par `sofia-sm`, `git rev-parse dc6f423d^`).
+- **Deuxieme commande de `Q-R5`, dite et tranchee.** Elle est tenue pour `dc6f423d` (5 fichiers, la forme et son test), **pas
+  pour `0c0d2142`**, que je joue (22 fichiers : deux paquets neufs, `catalogue.yaml`, `N1` et `N2`, des tests). Je ne la tiens
+  pas pour un empechement, et je dis pourquoi plutot que de la taire : cette commande sert a attribuer a la forme un item qui
+  perdrait le pli ; ici **aucun n'en perd**, et la comparaison n'est pas une deduction mais une mesure faite sur le jar meme que
+  l'enfant aura, contre le jar de base joue seul. Je l'ai verifiee sur l'arbre : `git diff --stat aa9d703c 0c0d2142` est vide
+  sur `ce1-verbe-sujet.yaml` et sur les gabarits ; le diff de `catalogue.yaml` n'ajoute que deux entrees (`familles-de-mots-ce1`,
+  `pronoms-ce1`). Ce n'est pas l'exception de contenu que `Q-P4` refuse : rien n'est juge a la place d'une mesure.
+- **Condition de `Q-S9`** (`PA5`) : `theo-archi` tient `C1'`, `C2`, `C3` et n'amende rien (`avis-theo-palier-2.md`, `TP1` a
+  `TP3`) ; sa lecture du diff trouve la feuille fusionnee egale au candidat (`lecture-theo-p2-7-forme-commune.md`, section 2).
+  Aucune regle dont depend la cote de ce jeu n'est retiree.
+
+#### 4. Exactitude, ton
+
+Les 24 items relus dans le paquet servi ; 72 propositions (24 bonnes reponses, 48 distracteurs), inchangees depuis mon audit
+du 2026-10-14, justes. Rien a relever.
+
+**Correction de mon propre constat** : le 2026-10-14 (section 5 de ce rejeu-la) j'ai ecrit *"l'exactitude des 48 reponses"*.
+Le paquet porte 72 propositions ; 48 est le compte des distracteurs. La garde porte sur les 72.
+
+#### 5. Ce dont je reste la seule garde sur cette ligne
+
+**La position de l'indice par rapport au pli n'a aucun garde-fou executable** : aucun test du reacteur ne rend une page, et
+`C1'` n'a pas de garde sur l'ecran de manche (`TP4`). La levee vaut pour la feuille de `0c0d2142` ; **toute modification de
+`recreo.css` ou du gabarit de manche peut la defaire sans un rouge**. Restent aussi a moi, comme au 2026-10-14 : que le
+complement en tete soit de temps ou de lieu et ne fasse pas l'action ; l'exactitude des 72 propositions.
+
+**Ce que je n'ai pas joue** : une autre largeur que 744 (le critere n'en demande pas) ; un appareil reel, une autre police, un
+autre navigateur ; la lecture d'ecran.
+
+**Identifiants** : aucun neuf, aucun renomme. `VSJ-CE1-R2` est deja alloue (section 4 de `REGISTRE-identifiants.md`).
+
+**Tarif consomme** : 0,25 (p2-11, paquet inchange, instance A).
+
+**Signe** : `nadia-prof`, s57, palier 2, instance A, 2026-10-16.
