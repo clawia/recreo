@@ -14,8 +14,9 @@
   (`ARBITRAGE-PREALABLE-s48-francais-ce1.md` ; `ARBITRAGE-s47-longueur-du-texte-support-au-ce1.md`) ; `D1` et `D2`
   (`squad/sprints/s57-version-cp-ce1-cm1-trois-instances/lecture-nadia-palier-1.md`, section 1.1).
 - **Statut global** : **VALIDE SOUS RESERVE**, prononce le 2026-10-15 par `nadia-prof` (s57, palier 1, instance A), apres
-  avoir joue le jar de la branche. Fiche ouverte par ce verdict.
-- **Derniere mise a jour** : 2026-10-15.
+  avoir joue le jar de la branche. Fiche ouverte par ce verdict. Rejeu du 2026-10-16 (s57, palier 2) : `RCT-CE1-R1` levee
+  sur le jar de `3eef868d` (textes de `c77560f2`) ; aucune reserve ouverte, statut **VALIDE**.
+- **Derniere mise a jour** : 2026-10-16.
 
 ---
 
@@ -157,3 +158,77 @@ d'ecrire ; ligne de la section 4 de `REGISTRE-identifiants.md` dans le meme diff
 **Tarif consomme** : audit 1,0 (poste 7, instance A). Marge de rejeu de A intacte.
 
 **Signe** : `nadia-prof`, s57, palier 1, instance A, 2026-10-15.
+
+### Rejeu du 2026-10-16 (`nadia-prof`, s57, palier 2, instance A, p2-10) : `RCT-CE1-R1` **levee** ; statut **VALIDE**
+
+**Done pedagogique prononce, sans reserve ouverte.** `FRA-CE1-04` reste `couvert-valide` ; `camille-po` peut fermer
+`S57-RCT-CE1-R1`. Le verdict du 2026-10-15 et sa reserve restent ecrits.
+
+#### 1. Objet joue
+
+- **Voie des textes** (`reponse-nadia-pa7-pa8.md`, 1.2) : commit `c77560f2` (`marc-dev`), fusionne par `4e5c9314`. Le diff du
+  paquet entre `e8d14ddb` et `3eef868d` porte les trois jeux de propositions d'Inès, d'Ibrahim et de Chloé (items 13, 17 et 18
+  comptes depuis 0), mot pour mot ceux de `reponse-nadia-q-palier-2.md` 3.4 ; textes support, enonces et indices inchanges ;
+  rien d'autre.
+- **Jar** : worktree `s57-nadia-p2-a3` a `3eef868d`, `bash outils/mvn-jdk21.sh -B clean package -DskipTests` (`BUILD SUCCESS`).
+  `ce1-texte-narratif.yaml` du jar egal a celui de `3eef868d` et de `7c9ac220` (SHA-256 `6d8a26a2...`, retours chariot retires).
+  `recreo.css` : celle de `0c0d2142`, forme commune comprise. `git diff --quiet 7c9ac220 3eef868d` sur le code sort 1 : la seule
+  ligne servie qui change est la phrase de revelation des ecrans a propositions en image, qui ne s'affiche pas sur ce jeu.
+- Port 18511 libre avant ; PID 42696 lu dans le journal, arrete par ce PID seul ; Chrome sur un profil de mon dossier de poste,
+  sorti seul. Done technique non lance par moi.
+- **Joue** a trois largeurs, fenetre verifiee a chaque manche : 744 x 551 (8 parties), 720 x 551 (11), 768 x 551 (6). A chaque
+  largeur, **les 20 items joues deux fois en erreur**, les deux distracteurs presses, puis la revelation ; 0 ecart contre le
+  fichier. Captures d'Inès, d'Ibrahim et de Chloé a 744, apres chaque erreur et a la revelation, regardees.
+
+#### 2. Le critere de levee, joue
+
+Critere du 2026-10-15 (section 5), inchange : a 744 x 551, apres une erreur, le bas de `.indice` au-dessus de y = 551 sur les 20
+items. Condition de `reponse-nadia-q-palier-2.md` 3.4 : dans les six ordres.
+
+| Point | 744 | 720 | 768 |
+|---|---|---|---|
+| Inès, Ibrahim, Chloé, bas de `.indice`, six ordres | **478** | 478 | 478 |
+| Les 20 items, ordre servi | **20 sur 20**, 434 a 508 | 20 sur 20 | 20 sur 20 |
+| Couples (item, ordre) | **240 sur 240**, maximum 508 | 240 sur 240, maximum 508 | 240 sur 240, maximum 508 |
+
+**Tenu.** Les trois propositions passent sur deux rangees au lieu de trois ; sur la capture, l'enfant qui s'est trompe lit le
+verdict et, a cote, *"Relis la dernière phrase."* (Ibrahim), *"Cherche ce qui arrive en dernier."* (Chloé), *"Relis le texte
+jusqu'à la fin."* (Inès), en entier, sans faire defiler. Le maximum de 508 est sur les items 5, 6 et 9 (comptes depuis 0 :
+Noé, Léa, Louis) ; sur ces trois, la page depasse 551 de 15 px apres l'erreur et la barre de defilement apparait, sous un indice
+qui reste visible. C'est le mecanisme deja classe en observation (`reponse-nadia-q-palier-2.md` 3.2), pas une barre neuve.
+
+**Revelation, hors levee** (`Q-R2`) : l'indice descend sous le pli sur 9 items, la reponse revelee restant au-dessus. Observation.
+
+#### 3. Les trois jeux de propositions, pour l'enfant
+
+| Item | Propositions servies | Ordre des faits dans le texte |
+|---|---|---|
+| Inès | **saute dans une flaque** / enfile ses bottes / sort dehors | enfile, sort, *puis* saute : la bonne reponse est le dernier fait. Juste |
+| Ibrahim | **s'assoit près de la fenêtre** / attend le bus / monte | attend, monte, s'assoit : dernier fait. Juste. *monte* est une action d'Ibrahim (*il monte*), copie raccourcie du texte |
+| Chloé | **une fleur pousse** / Chloé plante une graine / elle l'arrose | plante, arrose, *un jour* la fleur pousse : la fin. Juste |
+
+**Aucun test ne garde l'ordre des faits** : je le tiens en le lisant. `RCT-CE1-2` (copie du texte, raccourcie) et `LON-CE1-5`
+(six mots au plus) tenus. `D1` : aucune bonne reponse seule a majuscule sur les 20 items (recompte par script). Les trois items
+d'Inès et d'Ibrahim n'ont plus de majuscule ; sur Chloé, la seule est sur un distracteur.
+
+**L'intrus du premier mot, recompte comme je l'avais promis (section 3).** 5 items au lieu de 6 : bonne reponse sur 4 (*au
+marché*, *au printemps*, Sara, Nour), distracteur sur 1 (*au parc*). Celui qui disparait est le distracteur d'Inès, retire par
+**mon** texte. Le signe mene donc plus souvent a la reponse qu'au 2026-10-15 (4 sur 5 au lieu de 4 sur 6). **Je ne le classe pas
+en reserve**, et je dis pourquoi plutot que de le taire : il porte sur cinq items de trois questions differentes (lieu, moment,
+ordre), au plus deux par question ; il ne porte aucun sens enseigne ; sur Sara, l'ecarter est une lecture juste. S'il passe a un
+troisieme item d'une meme question, je le rejuge.
+
+**Les 17 autres items** : textes, propositions et indices inchanges depuis le verdict du 2026-10-15 ; leurs reponses restent
+justes. Pli constate ci-dessus.
+
+#### 4. Ce que je n'ai pas joue, et ce que je garde seule
+
+**Non mesure** : un appareil reel, une autre police que celle que la feuille sert, un autre navigateur, la lecture d'ecran. Les
+largeurs 720 et 768 ne sont pas dans le critere ; je les ai mesurees parce que la demande les nommait.
+
+**Seule garde** : l'ordre des faits, l'exactitude des 20 reponses, l'intrus du premier mot, la position de l'indice par rapport
+au pli. Aucun test ne les voit.
+
+**Identifiants** : aucun neuf, aucun renomme. **Tarif consomme** : rejeu 0,5 (p2-10, instance A).
+
+**Signe** : `nadia-prof`, s57, palier 2, instance A, 2026-10-16.

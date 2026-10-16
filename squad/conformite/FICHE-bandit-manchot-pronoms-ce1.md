@@ -308,3 +308,70 @@ d'ecran.
 **Tarif consomme** : 1,0 (lot `-05`, instance A).
 
 **Signe** : `nadia-prof`, s57, palier 2, instance A, 2026-10-16.
+
+### Rejeu du 2026-10-16 (`nadia-prof`, s57, palier 2, instance A) : refus leve ; **VALIDE**
+
+**Done pedagogique prononce, sans reserve.** `camille-po` peut passer `FRA-CE1-05` a `couvert-valide`. Le refus ci-dessus reste
+ecrit : il est leve, pas efface.
+
+#### 1. Objet joue
+
+- **Correction** : `42071c23` (`marc-dev`), fusionnee par `02b4a34e`. Jar construit dans le worktree `s57-nadia-p2-a3`, a
+  `3eef868d` (`round-two`), par `bash outils/mvn-jdk21.sh -B clean package -DskipTests` (`BUILD SUCCESS`). `ce1-pronoms.yaml` du
+  jar egal a celui de `3eef868d` et de `7c9ac220` (SHA-256 `c09d3eeb...` sur les trois, retours chariot retires).
+- **Code servi, verifie, et ce n'est pas exactement ce qu'on m'a annonce** : `git diff --quiet 7c9ac220 3eef868d -- adapters domain
+  application bootstrap pom.xml` sort **1**, pas 0. Le diff est la phrase de `RDO-CP-R3` dans `manche.html` (ligne sous
+  `th:if="${propositionsEnImage == true and mancheRevelee == true}"`) et quatre tests. Cette ligne n'est rendue que sur un ecran a
+  propositions en image : **elle ne s'affiche ni sur ce jeu ni sur `texte-narratif-ce1`**. `recreo.css` est celle de `0c0d2142`.
+- Port 18511 libre avant ; *"Tomcat started on port 18511"*, PID 42696, arrete par ce PID seul. Chrome sur un profil de mon
+  dossier de poste, sorti seul. Done technique non lance par moi.
+- **Joue** : fenetre de 744 x 551 verifiee a chaque manche ; 9 parties, 20 items sur 20 joues deux fois en erreur, les deux
+  distracteurs presses, jusqu'a la revelation ; 0 ecart contre le fichier. Captures des items 3, 9, 13, 16, 18 apres chaque
+  erreur et a la revelation, regardees.
+
+#### 2. Le motif du refus, relu item par item
+
+Les cinq textes servis sont ceux de ma section 5, mot pour mot (diff `e8d14ddb..3eef868d` sur le paquet : ces cinq items, rien
+d'autre). Les huit items ou un garcon et une fille sont en relation :
+
+| Item | Texte servi | Qui agit envers qui |
+|---|---|---|
+| 3 | *Zoé prête son jeu à Paul. Elle ouvre la boîte.* | la fille envers le garcon |
+| 9 | *Maëlle ouvre la porte à Bastien. Il entre dans la classe.* | la fille envers le garcon |
+| 13 | *Rose lit un livre à Léo. Elle tourne les pages.* | la fille envers le garcon |
+| 18 | *Manon parle à Adrien. La fille lui pose une question.* | la fille envers le garcon |
+| 10 | *Ilyes donne un gâteau à Sofia. Elle dit merci.* | le garcon envers la fille |
+| 15 | *Le chat de Julie voit Elias. Il lui donne un biscuit.* | le garcon |
+| 16 | *Mina et Omar regardent un chien. Le garçon lui donne de l'eau.* | le garcon |
+| 19 | *Nael et Eva cueillent des fleurs. Ils les offrent à Clément.* | un garcon et une fille ensemble |
+
+**Quatre dans un sens, trois dans l'autre, un mixte : plus de regularite. `TRV-CE1-6` tenue.** Le reste de la condition, tel que
+je l'ai lu au verdict et sans le durcir : sourires et rires sur Adam, Aya, Jade et Anna ; prenoms 20 et 21, *Omar* a la place de
+*Hamza*, origines variees. Item 16 : *Omar* ne finit pas en *-a* comme *Mina* ; le prenom reste la seule marque du garcon, comme
+*Adrien* et *Manon* a l'item 18, mais sa fin n'oriente plus vers une fille.
+
+#### 3. Le reste, rejoue
+
+| Critere | Constat |
+|---|---|
+| `PRN-CE1-1` | enonces inchanges : il 5, elle 5, ils 4, elles 3, substituts 3 |
+| `PRN-CE1-2` | les items corriges sont restes dans leur categorie (3, 9, 13 par l'accord ; 16, 18 substituts) : le sens decide toujours sur 10 items sur 20 |
+| `PRN-CE1-3` | le mot cite apparait une fois dans chacun des 20 textes (recompte par script, mot entier) ; aucun *il* impersonnel |
+| Exactitude | *Zoé*, *Bastien*, *Rose*, *Omar*, *Manon* : justes. Item 9 : *Bastien* est le seul masculin du texte, et le sens dit maintenant la meme chose que l'accord. 20 referents justes sur 20 |
+| Item 9, indice neuf | *"« Il » désigne un mot masculin : cherche-le dans la phrase d'avant."*, lu en entier sur la capture ; il designe le mot, pas une personne |
+| `PN4` | 0 item |
+| Intrus du premier mot | inchange : 5 items, bonne reponse sur 1 |
+| Item 19 | inchange. La recommandation sur son indice est **declinee** par `camille-po` (backlog, *"Recommandation non reprise ici : l'indice de l'item 19"*) : constate, rien a lever, ce n'etait pas une reserve |
+| Titre, consigne, place | inchanges, deja acceptes |
+
+#### 4. Le pli : je reste la seule garde
+
+A 744 x 551, bas de `.indice` apres une erreur : **20 sur 20** au plus 551 (404 a 508), **240 couples (item, ordre) sur 240**,
+maximum 508 (item 20). Memes cotes qu'au verdict ; les cinq items corriges a 404 ou 434. **Non mesure** : 720 et 768 sur ce jeu,
+un appareil reel, une autre police, un autre navigateur. Aucun test ne garde cette position.
+
+**Ce dont je reste la seule garde** : `PRN-CE1-2`, l'exactitude des referents, la distribution des roles par genre, le pli.
+
+**Identifiants** : aucun neuf, aucun renomme. **Tarif consomme** : rejeu 0,5 (instance A).
+
+**Signe** : `nadia-prof`, s57, palier 2, instance A, 2026-10-16.
