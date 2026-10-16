@@ -1,0 +1,200 @@
+[
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "(police du poste)",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -32.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -32.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Arial",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -25.2,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -25.2,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Georgia",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -35,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -35,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Times New Roman",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -45.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -45.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Verdana",
+  "base": {
+   "indice": 582,
+   "signal": 608,
+   "verdict": 600,
+   "debordVerdict": -8.2,
+   "dernier": 608,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 582,
+   "signal": 608,
+   "verdict": 600,
+   "debordVerdict": -8.2,
+   "dernier": 608,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Courier New",
+  "base": {
+   "indice": 582,
+   "signal": 608,
+   "verdict": 600,
+   "debordVerdict": 24,
+   "dernier": 608,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 582,
+   "signal": 608,
+   "verdict": 600,
+   "debordVerdict": 24,
+   "dernier": 608,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Comic Sans MS",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -22.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -22.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Trebuchet MS",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -28.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -28.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "enfile ses bottes",
+  "police": "Tahoma",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -28.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -28.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ }
+]

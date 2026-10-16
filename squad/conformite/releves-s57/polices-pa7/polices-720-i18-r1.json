@@ -1,0 +1,200 @@
+[
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "(police du poste)",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -32.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -32.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Arial",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -25.2,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -25.2,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Georgia",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -35,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -35,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Times New Roman",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -45.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -45.5,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Verdana",
+  "base": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": -8.2,
+   "dernier": 534,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": -8.2,
+   "dernier": 534,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Courier New",
+  "base": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": 24,
+   "dernier": 534,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": 24,
+   "dernier": 534,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Comic Sans MS",
+  "base": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": -22.5,
+   "dernier": 534,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": -22.5,
+   "dernier": 534,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Trebuchet MS",
+  "base": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": -28.5,
+   "dernier": 534,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 508,
+   "signal": 534,
+   "verdict": 526,
+   "debordVerdict": -28.5,
+   "dernier": 534,
+   "lignesIndice": 50
+  }
+ },
+ {
+  "largeur": 720,
+  "jeu": "bandit-manchot-texte-narratif-ce1",
+  "repere": "Chloé plante une graine",
+  "police": "Tahoma",
+  "base": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -28.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  },
+  "cand": {
+   "indice": 478,
+   "signal": 504,
+   "verdict": 496,
+   "debordVerdict": -28.9,
+   "dernier": 504,
+   "lignesIndice": 50
+  }
+ }
+]
