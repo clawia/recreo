@@ -74,8 +74,8 @@ items:
     indice: "Elle désigne un mot féminin : cherche-le dans la phrase d'avant."
   # substituts simples, cinq sur quatorze
   - enonce: "Que désigne « le garçon » dans le texte ?"
-    texteSupport: "Mina et Hamza regardent un chien. Le garçon lui donne de l'eau."
-    bonneReponse: "Hamza"
+    texteSupport: "Mina et Omar regardent un chien. Le garçon lui donne de l'eau."
+    bonneReponse: "Omar"
     distracteurs: ["Mina", "un chien"]
     indice: "Cherche qui est un garçon dans la phrase d'avant."
   - enonce: "Que désigne « l'animal » dans le texte ?"

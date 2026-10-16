@@ -120,9 +120,9 @@ class PaquetCe1PronomsTest {
             Map.entry("Rose", "f"), Map.entry("Sofia", "f"), Map.entry("Zoé", "f"),
             Map.entry("Adam", "m"), Map.entry("Adrien", "m"), Map.entry("Bastien", "m"),
             Map.entry("Clément", "m"), Map.entry("Elias", "m"), Map.entry("Enzo", "m"),
-            Map.entry("Hamza", "m"), Map.entry("Hugo", "m"), Map.entry("Ilyes", "m"),
-            Map.entry("Karim", "m"), Map.entry("Léo", "m"), Map.entry("Malo", "m"),
-            Map.entry("Nael", "m"), Map.entry("Noé", "m"), Map.entry("Paul", "m"),
+            Map.entry("Hugo", "m"), Map.entry("Ilyes", "m"), Map.entry("Karim", "m"),
+            Map.entry("Léo", "m"), Map.entry("Malo", "m"), Map.entry("Nael", "m"),
+            Map.entry("Noé", "m"), Map.entry("Omar", "m"), Map.entry("Paul", "m"),
             Map.entry("Rayan", "m"), Map.entry("Sacha", "m"), Map.entry("Samir", "m"),
             Map.entry("Tom", "m"), Map.entry("Yanis", "m"));
 
