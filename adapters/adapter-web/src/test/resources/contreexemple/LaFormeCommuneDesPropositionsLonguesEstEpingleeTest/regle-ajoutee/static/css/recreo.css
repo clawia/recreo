@@ -1,0 +1,4 @@
+/* Contre-exemple : une regle qui exclut l'ecran a deux oeuvres sans faire partie de la forme mesuree. */
+@media (min-width: 720px) {
+    .ecran-de-jeu:has(.propositions):not(.ecran-deux-oeuvres) > .indice { margin: 0; }
+}
